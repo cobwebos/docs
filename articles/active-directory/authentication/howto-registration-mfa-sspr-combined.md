@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cafe81a1b5ab6d26e71eff05e355d2ed79c4d5e7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d006bd36cc8f8c84fb13bae43702a3e472f8876a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119382"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113292"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>启用结合安全信息注册 （预览版）
 
@@ -53,7 +53,7 @@ ms.locfileid: "66119382"
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>组合注册的条件性访问策略
 
-保护何时以及如何为 Azure 多重身份验证和自助服务密码重置的用户注册现已可用于条件性访问策略中的用户操作。 此预览功能可供组织对已启用[结合使用注册预览](../authentication/concept-registration-mfa-sspr-combined.md)。 在组织中所需用户注册 Azure 多重身份验证和从中心位置，如受信任的网络位置的 SSPR HR 载入期间的位置，可能会启用此功能。 有关创建条件访问中的受信任的位置的详细信息，请参阅文章[什么是 Azure Active Directory 条件访问中的位置条件？](../conditional-access/location-condition.md#named-locations)
+保护何时以及如何为 Azure 多重身份验证和自助服务密码重置的用户注册现已可用于条件性访问策略中的用户操作。 此预览功能可供组织对已启用[结合使用注册预览](../authentication/concept-registration-mfa-sspr-combined.md)。 在组织中所需用户注册 Azure 多重身份验证和从中心位置，如受信任的网络位置的 SSPR HR 载入期间的位置，可能会启用此功能。 有关创建受信任的位置的条件性访问的详细信息，请参阅文章[什么是 Azure Active Directory 条件访问中的位置条件？](../conditional-access/location-condition.md#named-locations)
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>创建一个策略需要从受信任位置的注册
 
@@ -62,7 +62,7 @@ ms.locfileid: "66119382"
 ![创建用于控制安全信息注册的 CA 策略](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
 
 1. 在中**Azure 门户**，浏览到**Azure Active Directory** > **条件性访问**
-1. 选择“新建策略”
+1. 选择“新建策略” 
 1. 在名称，输入此策略的名称。 例如，**结合安全信息注册受信任的网络上**
 1. 下**分配**，单击**用户和组**，并选择用户和你想要应用此策略的组
 
@@ -92,4 +92,4 @@ ms.locfileid: "66119382"
 
 [故障排除结合安全信息注册](howto-registration-mfa-sspr-combined-troubleshoot.md)
 
-[什么是 Azure Active Directory 条件性访问的位置条件？](../conditional-access/location-condition.md)
+[什么是 Azure Active Directory 条件访问中的位置条件？](../conditional-access/location-condition.md)

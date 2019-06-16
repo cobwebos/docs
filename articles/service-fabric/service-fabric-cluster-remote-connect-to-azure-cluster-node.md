@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/23/2018
 ms.author: aljo
 ms.openlocfilehash: 4cc2d6355a0147c33048f1c2c27a3648b9223db4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110917"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>远程连接到虚拟机规模集实例或群集节点
@@ -28,9 +28,9 @@ ms.locfileid: "62110917"
 
 1. 获取远程桌面协议 (RDP) 的入站 NAT 规则。
 
-    通常，群集中定义的每种节点类型有自己的虚拟 IP 地址和专用的负载均衡器。 默认情况下，节点类型的负载均衡器进行命名并采用以下格式：*LB-{群集名称}-{节点类型}*; 例如， *LB mycluster 前端*。 
+    通常，群集中定义的每种节点类型有自己的虚拟 IP 地址和专用的负载均衡器。 默认情况下，节点类型的负载均衡器进行命名并采用以下格式：*LB-{群集名称}-{节点类型}* ; 例如， *LB mycluster 前端*。 
     
-    在 Azure 门户中的负载均衡器页上，选择“设置” > “入站 NAT 规则”： 
+    在 Azure 门户中的负载均衡器页上，选择“设置” > “入站 NAT 规则”   ： 
 
     ![负载均衡器入站 NAT 规则](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
@@ -38,11 +38,11 @@ ms.locfileid: "62110917"
 
     ![负载均衡器入站 NAT 规则](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
-    对于每个节点，IP 地址显示在“DESTINATION”列中，“TARGET”列提供规模集实例，“SERVICE”列提供端口号。 对于远程连接，从端口 3389 开始按升序将端口分配到每个节点。
+    对于每个节点，IP 地址显示在“DESTINATION”列中，“TARGET”列提供规模集实例，“SERVICE”列提供端口号    。 对于远程连接，从端口 3389 开始按升序将端口分配到每个节点。
 
     还可以在群集资源管理器模板的 `Microsoft.Network/loadBalancers` 部分找到入站 NAT 规则。
     
-2. 若要确认节点的入站端口到目标端口映射，可以单击其规则并查看“目标端口”值。 以下屏幕截图显示上一步中“FrontEnd (实例 1)”节点的入站 NAT 规则。 请注意，虽然（入站）端口号为 3390，但是目标端口映射到端口 3389，即目标上 RDP 服务的端口。  
+2. 若要确认节点的入站端口到目标端口映射，可以单击其规则并查看“目标端口”值  。 以下屏幕截图显示上一步中“FrontEnd (实例 1)”节点的入站 NAT 规则  。 请注意，虽然（入站）端口号为 3390，但是目标端口映射到端口 3389，即目标上 RDP 服务的端口。  
 
     ![目标端口映射](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/port-mapping.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "62110917"
 
 3. 远程连接到特定节点（规模集实例）。 可以使用创建群集时设置的用户名和密码，也可使用已配置的其他任意凭据。 
 
-    以下屏幕截图显示在 Windows 群集中使用远程桌面连接连接到“FrontEnd (实例 1)”节点：
+    以下屏幕截图显示在 Windows 群集中使用远程桌面连接连接到“FrontEnd (实例 1)”节点  ：
     
     ![远程桌面连接](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/rdp-connect.png)
 

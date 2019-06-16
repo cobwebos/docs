@@ -11,17 +11,17 @@ author: Blackmist
 ms.date: 04/16/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: abe497ed96515e8194fb2ddefd8e7f4cb9908758
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205128"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>使用 Azure 资源管理器模板来创建用于 Azure 机器学习服务的工作区
 
 本文介绍几种使用 Azure 资源管理器模板创建 Azure 机器学习服务工作区的方法。 使用资源管理器模板可以轻松地通过单个协调操作创建资源。 模板是一个 JSON 文档，定义部署所需的资源。 它还可以指定部署参数。 使用模板时，参数用于提供输入值。
 
-有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../../azure-resource-manager/resource-group-template-deploy.md)。
+有关详细信息，请参阅[使用 Azure 资源管理器模板部署应用程序](../../azure-resource-manager/resource-group-template-deploy.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -38,7 +38,7 @@ ms.locfileid: "65205128"
 此模板创建以下 Azure 服务：
 
 * Azure 资源组
-* Azure 存储空间帐户
+* Azure 存储帐户
 * Azure 密钥保管库
 * Azure Application Insights
 * Azure 容器注册表
@@ -58,14 +58,14 @@ ms.locfileid: "65205128"
 
 有关模板的详细信息，请参阅以下文章：
 
-* [创作 Azure Resource Manager 模板](../../azure-resource-manager/resource-group-authoring-templates.md)
-* [使用 Azure Resource Manager 模板部署应用程序](../../azure-resource-manager/resource-group-template-deploy.md)
+* [创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)
+* [使用 Azure 资源管理器模板部署应用程序](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Microsoft.MachineLearningServices 资源类型](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-1. 遵循[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)中的步骤。 显示“编辑模板”屏幕后，请粘贴本文档中所述的模板。
-1. 选择“保存”以使用该模板。 提供以下信息并同意列出的条款和条件：
+1. 遵循[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)中的步骤。 显示“编辑模板”屏幕后，请粘贴本文档中所述的模板。 
+1. 选择“保存”以使用该模板。  提供以下信息并同意列出的条款和条件：
 
    * 订阅：选择用于这些资源的 Azure 订阅。
    * 资源组：选择或创建一个用于包含服务的资源组。

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: 1d45e1a5e4053ead4330967c5e250c0797c19fe7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827454"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>为 P2S 转换到公共 CA 网关证书
@@ -42,11 +42,11 @@ ms.locfileid: "65827454"
 
    * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
    * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
-4. 如果 ServerCertRotCn 和 ServerCertIssuerCn 是“DigiCert Global Root CA”，则你不受此项更新的影响，无需继续执行本文中的步骤。 但如果它们显示其他内容，则表示你的网关证书需要更新和转换。
+4. 如果 ServerCertRotCn 和 ServerCertIssuerCn 是“DigiCert Global Root CA”，则你不受此项更新的影响，无需继续执行本文中的步骤   。 但如果它们显示其他内容，则表示你的网关证书需要更新和转换。
 
 ### <a name="classic"></a>经典
 
-1. 在客户端计算机上导航到路径`%appdata%/Microsoft/Network/Connections/Cm/<gatewayID>`。 在网关 ID 文件夹中，可以查看证书。
+1. 在客户端计算机上，导航到路径 `%appdata%/Microsoft/Network/Connections/Cm/<gatewayID>`。 在网关 ID 文件夹中，可以查看证书。
 2. 在证书的常规选项卡上，验证颁发机构是否是"DigiCert 全局根 CA"。 如果颁发机构并非此机构，则网关证书将作为更新的一部分进行转换。
 
 ## <a name="2-check-certificate-transition-schedule"></a>2.检查证书转换计划

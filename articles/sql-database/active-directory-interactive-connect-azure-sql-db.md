@@ -13,10 +13,10 @@ ms.reviewer: GeneMi
 ms.date: 03/12/2019
 manager: craigg
 ms.openlocfilehash: bc7274308b8a349d16866f107eac4a57e115be9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160860"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>连接到 Azure SQL 数据库使用 Azure 多重身份验证
@@ -35,7 +35,7 @@ ms.locfileid: "66160860"
 
    如果 Azure AD 策略实施多重身份验证用户，将显示以下两个对话框。
 
-* 第一次用户将完成多重身份验证，系统会显示一个对话框，要求提供移动电话号码发送短信到。 每条短信提供了用户必须在下一对话框中输入的验证码。
+* 第一次用户将完成多重身份验证，系统会显示一个对话框，要求提供移动电话号码发送短信到。 每条短信提供了用户必须在下一对话框中输入的验证码。 
 
 * 要求多重身份验证验证码，系统已发送到移动电话的对话框。
 
@@ -54,13 +54,13 @@ ms.locfileid: "66160860"
 
 ### <a name="register-your-app-and-set-permissions"></a>注册应用并设置权限
 
-若要使用 Azure AD 身份验证，必须将 C# 程序注册为 Azure AD 应用程序。 只有 Azure AD 管理员或者分配有 Azure AD“应用程序开发人员”角色的用户才能注册应用。 有关如何将角色分配的详细信息，请参阅[将管理员和非管理员角色分配给用户使用 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+若要使用 Azure AD 身份验证，必须将 C# 程序注册为 Azure AD 应用程序。 只有 Azure AD 管理员或者分配有 Azure AD“应用程序开发人员”角色的用户才能注册应用。  有关如何将角色分配的详细信息，请参阅[将管理员和非管理员角色分配给用户使用 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
 完成应用注册生成并显示**应用程序 ID**。 程序中必须包含此 ID 才能建立连接。
 
 注册应用程序并为其设置所需的权限：
 
-1. 在 Azure 门户中，依次选择 Azure Active Directory > “应用注册” > “新应用程序注册”。
+1. 在 Azure 门户中，依次选择 Azure Active Directory > “应用注册” > “新应用程序注册”    。
 
     ![应用注册](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
@@ -106,7 +106,7 @@ SQL 数据库服务器的 Azure AD 管理员可以运行 C# 示例程序。 数�
 
 - `SqlAuthenticationMethod.ActiveDirectoryIntegrated`
 
-  对联合帐户使用此值。 对于联合帐户，Windows 域已知用户名。 此身份验证方法不支持多重身份验证。
+  对联合帐户使用此值  。 对于联合帐户，Windows 域已知用户名。 此身份验证方法不支持多重身份验证。
 
 - `SqlAuthenticationMethod.ActiveDirectoryPassword`
 
@@ -118,11 +118,11 @@ SQL 数据库服务器的 Azure AD 管理员可以运行 C# 示例程序。 数�
 
 | 静态字段名称 | 示例值 | Azure 门户中的位置 |
 | :---------------- | :------------ | :-------------------- |
-| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | “SQL 服务器” > “按名称筛选” |
-| AzureAD_UserID | "auser\@abc.onmicrosoft.com" | “Azure Active Directory” > “用户” > “新建来宾用户” |
-| Initial_DatabaseName | "myDatabase" | “SQL 服务器” > “SQL 数据库” |
-| ClientApplicationID | “a94f9c62-97fe-4d19-b06d-111111111111” | “Azure Active Directory” > “应用注册” > “按名称搜索” > “应用程序 ID” |
-| RedirectUri | new Uri("https://mywebserver.com/") | **Azure Active Directory** > **应用注册** > **按名称搜索** > *[你的应用-注册]*  > **设置** > **RedirectURIs**<br /><br />对于本文中，任何有效的值是相当不错的重定向 Uri，因为它不此处使用。 |
+| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | “SQL 服务器” > “按名称筛选”   |
+| AzureAD_UserID | "auser\@abc.onmicrosoft.com" | “Azure Active Directory”   > “用户”   > “新建来宾用户”  |
+| Initial_DatabaseName | "myDatabase" | “SQL 服务器”   > “SQL 数据库”  |
+| ClientApplicationID | “a94f9c62-97fe-4d19-b06d-111111111111” | “Azure Active Directory” > “应用注册” > “按名称搜索” > “应用程序 ID”     |
+| RedirectUri | new Uri("https://mywebserver.com/") | **Azure Active Directory** > **应用注册** > **按名称搜索** >  *[你的应用-注册]*  > **设置** > **RedirectURIs**<br /><br />对于本文中，任何有效的值是相当不错的重定向 Uri，因为它不此处使用。 |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="verify-with-sql-server-management-studio"></a>使用 SQL Server Management Studio 验证
@@ -135,18 +135,18 @@ SQL 数据库服务器的 Azure AD 管理员可以运行 C# 示例程序。 数�
 
 ### <a name="verify-azure-active-directory-multi-factor-authentication"></a>验证 Azure Active Directory 多重身份验证
 
-再次运行 SSMS，这一次将“身份验证”设为“具有 MFA 支持的 Active Directory - 通用”。 此选项需要 SSMS 17.5 或更高版本。
+再次运行 SSMS，这一次将“身份验证”设为“具有 MFA 支持的 Active Directory - 通用”   。 此选项需要 SSMS 17.5 或更高版本。
 
 有关详细信息，请参阅[SSMS 和 Azure AD 配置多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。
 
 > [!NOTE]
-> 如果您是在数据库中的来宾用户，还需要提供数据库的 Azure AD 域名：选择**选项** > **AD 域名或租户 ID**。 若要在 Azure 门户中查找域名，请选择“Azure Active Directory” > “自定义域名”。 在 C# 示例程序中，不必要提供域名。
+> 如果您是在数据库中的来宾用户，还需要提供数据库的 Azure AD 域名：选择**选项** > **AD 域名或租户 ID**。 若要在 Azure 门户中查找域名，请选择“Azure Active Directory” > “自定义域名”。   在 C# 示例程序中，不必要提供域名。
 
 ## <a name="c-code-example"></a>C# 代码示例
 
 示例 C# 程序依赖于 [*Microsoft.IdentityModel.Clients.ActiveDirectory*](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory) DLL 程序集。
 
-若要安装此包，请在 Visual Studio 中选择“项目” > “管理 NuGet 包”。 搜索并安装 **Microsoft.IdentityModel.Clients.ActiveDirectory**。
+若要安装此包，请在 Visual Studio 中选择“项目” > “管理 NuGet 包”。   搜索并安装 **Microsoft.IdentityModel.Clients.ActiveDirectory**。
 
 这是一个示例的C#的源代码。
 

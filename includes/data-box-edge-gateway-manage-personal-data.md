@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: af4c3829c8b12bfcaae0602dde8f459de7e50f3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60754239"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67120508"
 ---
 - **订单详细信息**。 创建订单时，寄送地址、 电子邮件地址和用户的联系信息存储在 Azure 门户中。 保存的信息包括：
   - 联系人姓名

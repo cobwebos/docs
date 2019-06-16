@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc81f0a5c75d9aeee39f0633521d692c8d30c474
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 4b1c68d9254b0da2e5296c83d8dd4c95091fde1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823470"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111803"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 
@@ -67,7 +67,7 @@ ID 令牌将传递给网站和本机客户端。 ID 令牌包含有关用户的�
 ### <a name="single-sign-on-session-tokens"></a>单一登录会话令牌
 当用户通过 Azure AD 进行身份验证时，系统将在用户的浏览器与 Azure AD 之间建立单一登录会话 (SSO)。 SSO 令牌采用 Cookie 形式，代表此会话。 SSO 会话令牌未绑定到特定资源/客户端应用程序。 SSO 会话令牌可以吊销，每次使用它们时，系统都会检查其有效性。
 
-Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。 浏览器将持久性会话令牌存储为持久性 Cookie， 将非持久性会话令牌存储为会话 Cookie。 （关闭浏览器会销毁会话 Cookie。）通常会存储一个非持久性会话令牌。 但如果用户在身份验证期间选择“使我保持登录状态”复选框，则存储的是持久性会话令牌。
+Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。 浏览器将持久性会话令牌存储为持久性 Cookie， 将非持久性会话令牌存储为会话 Cookie。 （关闭浏览器会销毁会话 Cookie。）通常会存储一个非持久性会话令牌。 但如果用户在身份验证期间选择“使我保持登录状态”复选框，则存储的是持久性会话令牌  。
 
 非持久性会话令牌的生存期为 24 小时。 持久性令牌的生存期为 180 天。 每当在 SSO 会话令牌在其有效期内使用，有效期会再次延长 24 小时或 180 天，具体取决于令牌的类型。 如果 SSO 会话令牌在其有效期内未被使用，则将它视为过期，不再被系统接受。
 
@@ -242,7 +242,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3. 若要查看新策略并获取其 ObjectId，请运行以下命令：
+    3. 若要查看新策略并获取其  ObjectId，请运行以下命令：
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id

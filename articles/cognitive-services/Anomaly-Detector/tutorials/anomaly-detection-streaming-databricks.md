@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: a5790b5412023f06d9f9fd1d2ff61c11db4c53f3
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 7009771f2b647bb582b3d8091edce99fe901a9f1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66807482"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080794"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据进行异常情况检测
 
@@ -670,22 +670,22 @@ adResult.show()
 +--------------------+-------+
 |2019-04-16T00:00:00Z|  false|
 +--------------------+-------+
+```
 
+就这么简单！ 使用 Azure Databricks，已成功数据流式传输到 Azure 事件中心、 通过使用流数据的事件中心连接器，并在流式处理数据以近乎实时运行异常情况检测。
+虽然在本教程中，粒度为每小时，你可以随时更改以满足你需求的粒度。 
 
-That's it! Using Azure Databricks, you have successfully streamed data into Azure Event Hubs, consumed the stream data using the Event Hubs connector, and then run anomaly detection on streaming data in near real time.
-Although in this tutorial, the granularity is hourly, you can always change the granularity to meet your need. 
+## <a name="clean-up-resources"></a>清理资源
 
-## Clean up resources
+运行完本教程后，可以终止群集。 为此，请在 Azure Databricks 工作区中，选择**群集**在左窗格中。 针对想要终止的群集，将光标移动到下面的省略号**操作**列，并选择**终止**图标，然后选择**确认**。
 
-After you have finished running the tutorial, you can terminate the cluster. To do so, in the Azure Databricks workspace, select **Clusters** from the left pane. For the cluster you want to terminate, move the cursor over the ellipsis under **Actions** column, and select the **Terminate** icon and then select **Confirm**.
+![停止 Databricks 群集](../media/tutorials/terminate-databricks-cluster.png "停止 Databricks 群集")
 
-![Stop a Databricks cluster](../media/tutorials/terminate-databricks-cluster.png "Stop a Databricks cluster")
+如果不手动终止的群集将自动停止，提供所选**处于不活动状态\_\_处于非活动状态的分钟数**创建群集时的复选框。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 
-If you don't manually terminate the cluster it will automatically stop, provided you selected the **Terminate after \_\_ minutes of inactivity** checkbox while creating the cluster. In such a case, the cluster will automatically stop if it has been inactive for the specified time.
+## <a name="next-steps"></a>后续步骤
 
-## Next steps
-
-In this tutorial, you learned how to use Azure Databricks to stream data into Azure Event Hubs and then read the streaming data from Event Hubs in real time. Advance to the next tutorial to learn how to call the Anomaly Detector API and visualize anomalies using Power BI desktop. 
+本教程介绍了如何使用 Azure Databricks 将数据流式传输到 Azure 事件中心，然后从事件中心实时读取流数据。 转到下一步的教程，了解如何调用异常检测器 API 并直观显示使用 Power BI desktop 的异常。 
 
 > [!div class="nextstepaction"]
->[Batch anomaly detection with Power BI desktop](batch-anomaly-detection-powerbi.md)
+>[使用 Power BI desktop 的批处理异常情况检测](batch-anomaly-detection-powerbi.md)

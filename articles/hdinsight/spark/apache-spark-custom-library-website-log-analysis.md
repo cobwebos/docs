@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
 ms.openlocfilehash: bef71f210e015dc10cd6f5c0c655d0d3beee3655
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64728917"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>将自定义 Python 库与 HDInsight 上的 Apache Spark 群集配合使用来分析网站日志
@@ -20,7 +20,7 @@ ms.locfileid: "64728917"
 此笔记本演示如何将自定义库与 HDInsight 上的 Apache Spark 配合使用来分析日志数据。 我们使用的自定义库是一个名为 **iislogparser.py** 的 Python 库。
 
 > [!TIP]  
-> 本教程也以在 HDInsight 中创建的 Spark (Linux) 群集上的 Jupyter notebook 的形式提供。 笔记本体验可让你从笔记本本身运行 Python 代码片段。 要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)，并运行 **PySpark** 文件夹下的笔记本“使用自定义 library.ipynb 分析 Spark 的日志”。
+> 本教程也以在 HDInsight 中创建的 Spark (Linux) 群集上的 Jupyter notebook 的形式提供。 笔记本体验可让你从笔记本本身运行 Python 代码片段。 要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)，并运行 **PySpark** 文件夹下的笔记本“使用自定义 library.ipynb 分析 Spark 的日志”  。
 >
 >
 
@@ -37,8 +37,8 @@ ms.locfileid: "64728917"
 
 将数据保存为 Apache Hive 表之后，下一部分我们将使用 Power BI 和 Tableau 等 BI 工具来连接该 Hive 表。
 
-1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。   
-2. 在 Spark 群集边栏选项卡中单击“群集仪表板”，并单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览”   > “HDInsight 群集”  导航到群集。   
+2. 在 Spark 群集边栏选项卡中单击“群集仪表板”  ，并单击“Jupyter 笔记本”  。 出现提示时，请输入群集的管理员凭据。
 
    > [!NOTE]
    > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
@@ -46,7 +46,7 @@ ms.locfileid: "64728917"
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
-3. 创建新的笔记本。 单击“新建”，并单击“PySpark”。
+3. 创建新的笔记本。 单击“新建”  ，并单击“PySpark”  。
 
     ![创建新的 Jupyter 笔记本](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "创建新的 Jupyter 笔记本")
 4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，并输入一个友好名称。
@@ -195,7 +195,7 @@ ms.locfileid: "64728917"
    应看到如下输出：
 
    ![Matplotlib 输出](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib 输出")
-8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这会关闭笔记本。
+8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”  菜单中，单击“关闭并停止”  。 这会关闭笔记本。
 
 ## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)

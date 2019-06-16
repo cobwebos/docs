@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
 ms.openlocfilehash: c72ac62b55b2b08be5aaad563933bcb2b703cba9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66245078"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
@@ -130,7 +130,7 @@ Azure Monitor 中的警报规则使用[操作组](platform/action-groups.md)，�
 通常，我们需要将 Azure Monitor 与其他系统集成，并生成使用监视数据的自定义解决方案。 其他 Azure 服务使用 Azure Monitor 来提供这种集成。
 
 ### <a name="event-hub"></a>事件中心
-[Azure 事件中心](https://docs.microsoft.com/azure/event-hubs)是一个流式传输平台和事件引入服务，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储数据。 使用事件中心[流式传输 Azure Monitor 数据](platform/stream-monitoring-data-event-hubs.md)到合作伙伴 SIEM 和监视工具。
+[Azure 事件中心](https://docs.microsoft.com/azure/event-hubs)是一个流式传输平台和事件引入服务，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储数据。 使用事件中心可[将 Azure Monitor 数据流式传输](platform/stream-monitoring-data-event-hubs.md)到合作伙伴 SIEM 和监视工具。
 
 
 ### <a name="logic-apps"></a>逻辑应用

@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.openlocfilehash: dfb34f8c0fca792618860e0a8d5a1bf1736f3611
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65416047"
 ---
 # <a name="machine-learning-integration-in-stream-analytics-preview"></a>机器学习集成在 Stream Analytics （预览版）
@@ -21,10 +21,10 @@ ms.locfileid: "65416047"
 ## <a name="overview-azure-machine-learning-terminology"></a>概述：Azure 机器学习术语
 Microsoft Azure 机器学习是一个协作型拖放式工具，可用于根据数据生成、测试和部署预测分析解决方案。 此工具称为 *Azure 机器学习工作室*。 该工作室用于与机器学习资源交互，并轻松生成、测试和循环访问设计。 这些资源及其定义如下。
 
-* **工作区**：工作区是保存所有其他机器学习资源以进行管理和控制的容器。
-* **试验**：试验由数据科学家创建，以便利用数据集和定型机器学习模型。
-* **终结点**：终结点是 Azure 机器学习对象，用于以功能作为输入、应用指定的机器学习模型并返回已评分输出。
-* **评分 Web 服务**：评分 Web 服务是终结点的集合，如上所述。
+* **工作区**：工作区是保存所有其他机器学习资源以进行管理和控制的容器  。
+* **试验**：试验由数据科学家创建，以便利用数据集和定型机器学习模型  。
+* **终结点**：终结点是 Azure 机器学习对象，用于以功能作为输入、应用指定的机器学习模型并返回已评分输出  。
+* **评分 Web 服务**：评分 Web 服务是终结点的集合，如上所述  。
 
 每个终结点都具有批处理执行和同步执行的 API。 流分析使用同步执行。 在 Azure 机器学习工作室中，将特定的服务命名为[请求/响应服务](../machine-learning/studio/consume-web-services.md)。
 

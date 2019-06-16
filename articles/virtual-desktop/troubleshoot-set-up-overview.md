@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 8e344d6908ba19f8e2294c7777b9c1016eafaf52
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 43f940c3c5b0fcf06fb5aa9be268f85db19fc8a6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927637"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077665"
 ---
-# <a name="troubleshooting-overview-feedback-and-support"></a>故障排除概述、 反馈和支持
+# <a name="troubleshooting-overview-feedback-and-support"></a>故障排除概述、反馈和支持
 
 本文概述了设置的 Windows 虚拟桌面租户环境时可能会遇到并提供方法来解决问题的问题。
 
@@ -24,7 +24,7 @@ ms.locfileid: "64927637"
 
 ## <a name="escalation-tracks"></a>升级跟踪
 
-使用下表来确定和解决设置使用远程桌面客户端的租户环境时可能遇到的问题。
+使用下表来确定和解决设置使用远程桌面客户端的租户环境时可能遇到的问题。 你的租户的设置后，你可以使用我们的新[诊断服务](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service)来识别常见方案的问题。
 
 >[!NOTE]
 >目前我们不会受理 Windows 虚拟桌面预览版的支持案例。 只要我们引用 Windows 虚拟桌面支持，请转到我们的技术社区论坛现在。 请访问[Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)讨论与产品团队和活跃的社区成员的问题。 如果你需要解决支持问题，包括活动 ID 和近似时间范围时，出现了问题。
@@ -34,8 +34,8 @@ ms.locfileid: "64927637"
 | 创建租户                                                    | 如果 Azure 服务中断，请联系[Azure 支持](https://azure.microsoft.com/support/options/); 否则为联系人**远程桌面服务/Windows 虚拟桌面支持**。|
 | 访问 Azure 门户中的 Marketplace 模板       | 如果 Azure 服务中断，请联系[Azure 支持](https://azure.microsoft.com/support/options/)。 <br> <br> Azure Marketplace Windows 虚拟桌面模板是免费提供。|
 | 从 GitHub 中访问 Azure 资源管理器模板                                  | 请参阅的"创建 Windows 虚拟桌面会话主机的虚拟机"部分[租户以及主机池创建](troubleshoot-set-up-issues.md)。 如果仍未解决此问题，请联系[GitHub 支持团队](https://github.com/contact)。 <br> <br> 如果访问 GitHub 中的模板后，出现错误，请联系[Azure 支持](https://azure.microsoft.com/support/options/)。|
-| 会话主机池 Azure 虚拟网络 (VNET) 和 Express 路由设置               | 请联系**Azure 支持 （网络）**。 |
-| 会话主机池时不会使用与 Windows 虚拟桌面提供的 Azure 资源管理器模板创建虚拟机 (VM) | 请联系**Azure 支持 （计算）**。 <br> <br> 有关使用 Windows 虚拟桌面提供的 Azure 资源管理器模板的问题，请参阅创建 Windows 虚拟桌面租户部分[租户以及主机池创建](troubleshoot-set-up-issues.md)。 |
+| 会话主机池 Azure 虚拟网络 (VNET) 和 Express 路由设置               | 请联系**Azure 支持 （网络）** 。 |
+| 会话主机池时不会使用与 Windows 虚拟桌面提供的 Azure 资源管理器模板创建虚拟机 (VM) | 请联系**Azure 支持 （计算）** 。 <br> <br> 有关使用 Windows 虚拟桌面提供的 Azure 资源管理器模板的问题，请参阅创建 Windows 虚拟桌面租户部分[租户以及主机池创建](troubleshoot-set-up-issues.md)。 |
 | 从 Azure 门户中管理 Windows 虚拟桌面会话主机环境    | 请联系**Azure 支持**。 <br> <br> 有关使用远程桌面服务/Windows 虚拟桌面 PowerShell 时的管理问题，请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)或联系**远程桌面服务/Windows 虚拟桌面支持团队**. |
 | 管理 Windows 虚拟桌面配置绑定到主机池和应用程序组 （应用组）      | 请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)，或联系**远程桌面服务/Windows 虚拟桌面支持团队**。 <br> <br> 如果问题都将绑定到示例图形用户界面 (GUI)，通过 Yammer 社区。|
 | 开始上的远程桌面客户端工作不正常                                                 | 请参阅[远程桌面客户端连接](troubleshoot-client-connection.md)，如果仍未解决此问题，请联系**远程桌面服务/Windows 虚拟桌面支持团队**。  <br> <br> 如果是网络问题，你的用户将需要与网络管理员联系。 |

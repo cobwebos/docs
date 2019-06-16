@@ -9,10 +9,10 @@ ms.date: 11/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d9b7296a116ebd06542a53087afbd083dbd3a7eb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64696748"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
@@ -134,9 +134,9 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 **示例：** 在 `"West US"` 中部署存储同步服务并在其中注册自己的服务器。 在本例中，允许与服务器通信的 URL 为：
 
-> - https://kailani.one.microsoft.com（主终结点：美国西部）
-> - https://kailani1.one.microsoft.com（配对的故障转移区域：美国东部）
-> - https://tm-kailani.one.microsoft.com（主要区域的发现 URL）
+> - https://kailani.one.microsoft.com （主终结点：美国西部）
+> - https://kailani1.one.microsoft.com （配对的故障转移区域：美国东部）
+> - https://tm-kailani.one.microsoft.com （主要区域的发现 URL）
 
 ## <a name="summary-and-risk-limitation"></a>摘要和风险限制
 本文档前面部分的列表包含 Azure 文件同步目前用来通信的 URL。 防火墙必须能够允许发往这些域的出站流量。 Microsoft 会不断更新此列表。

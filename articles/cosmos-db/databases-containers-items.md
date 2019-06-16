@@ -8,10 +8,10 @@ ms.date: 05/20/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 574dd9fd6189b6d0f1e5d455146d6d083ad7ff77
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389467"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>使用数据库、 容器和 Azure Cosmos DB 中的项
@@ -106,7 +106,7 @@ Azure Cosmos 容器具备一组系统定义的属性。 具体取决于您使用
 
 ## <a name="azure-cosmos-items"></a>Azure Cosmos 项
 
-具体取决于您使用哪个 API，Azure Cosmos 项可以表示集合，一个表，或节点中的行中的文档，或者在图形中的边缘。 下表显示了为 Azure Cosmos 项特定于 API 的实体的映射：
+根据所用的 API，Azure Cosmos 项可以代表集合中的文档、表中的行，或者图形中的节点或边缘。 下表显示了为 Azure Cosmos 项特定于 API 的实体的映射：
 
 | Cosmos 实体 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
 ms.openlocfilehash: d7c63ffe5a318507053f59bf3a18242ee8c327a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61327748"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
@@ -22,7 +22,7 @@ ms.locfileid: "61327748"
 
 每个设备方法针对一个设备。 [在多个设备上计划作业](iot-hub-devguide-jobs.md)展示了一种方法，用于对多个设备调用直接方法，并为已断开连接的设备计划方法调用。
 
-只要拥有 IoT 中心的“服务连接”权限，任何人都可以调用设备上的方法。
+只要拥有 IoT 中心的“服务连接”  权限，任何人都可以调用设备上的方法。
 
 直接方法遵循请求-响应模式，适用于需要立即确认其结果的通信。 例如对设备的交互式控制，如打开风扇。
 
@@ -50,17 +50,17 @@ ms.locfileid: "61327748"
 
 设备上的直接方法调用是 HTTPS 调用，它由以下项构成：
 
-* 特定于设备的请求 URI 以及 [API 版本](/rest/api/iothub/service/invokedevicemethod)：
+* 特定于设备的请求 URI 以及 [API 版本](/rest/api/iothub/service/invokedevicemethod)  ：
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
     ```
 
-* POST 方法
+* POST 方法 
 
-* 标头，包含身份验证、请求 ID、内容类型和内容编码。
+* 标头  ，包含身份验证、请求 ID、内容类型和内容编码。
 
-* 采用以下格式的透明 JSON 正文：
+* 采用以下格式的透明 JSON 正文  ：
 
     ```json
     {
@@ -98,11 +98,11 @@ curl -X POST \
 
 后端应用接收响应，响应由以下项构成：
 
-* HTTP 状态代码，用于 IoT 中心发出的错误，包括 404 错误（针对当前未连接的设备）。
+* HTTP 状态代码  ，用于 IoT 中心发出的错误，包括 404 错误（针对当前未连接的设备）。
 
-* 标头，包含 ETag、请求 ID、内容类型和内容编码。
+* 标头  ，包含 ETag、请求 ID、内容类型和内容编码。
 
-* 采用以下格式的 JSON 正文：
+* 采用以下格式的 JSON 正文  ：
 
     ```json
     {

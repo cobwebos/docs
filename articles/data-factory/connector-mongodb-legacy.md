@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 86dcd39ad7b9f1e207e9254ec72698db3998bbd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61400468"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [当前版本](connector-mongodb.md)
 
@@ -36,7 +36,7 @@ ms.locfileid: "61400468"
 具体而言，此 MongoDB 连接器支持：
 
 - MongoDB **版本 2.4、2.6、3.0、3.2、3.4 和 3.6**。
-- 使用基本或匿名身份验证复制数据。
+- 使用基本  或匿名  身份验证复制数据。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -54,11 +54,11 @@ MongoDB 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type |type 属性必须设置为：MongoDb |是 |
+| type |type 属性必须设置为：MongoDb  |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
 | port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |否（默认值为 27017） |
 | databaseName |要访问的 MongoDB 数据库名称。 |是 |
-| authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许值包括：基本和匿名。 |是 |
+| authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许值包括：基本和匿名   。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
 | password |用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果使用基本身份验证）。 |
 | authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |不。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
@@ -97,7 +97,7 @@ MongoDB 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：MongoDbCollection | 是 |
+| type | 数据集的 type 属性必须设置为：MongoDbCollection  | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
 
 **示例：**
@@ -124,7 +124,7 @@ MongoDB 链接的服务支持以下属性：
 
 ### <a name="mongodb-as-source"></a>以 MongoDB 作为源
 
-复制活动源部分支持以下属性：
+复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -238,7 +238,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 | 1111 |0 |5 |
 | 1111 |第 |6 |
 | 2222 |0 |第 |
-| 2222 |1 |2 |
+| 2222 |第 |2 |
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e792551f4cac857f56454c67d527e01cb9c4281
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b481030c5d2d8e7d5e7061cdf256a202e08d6cbf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113127"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108785"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 检测到的漏洞
 
@@ -37,7 +37,7 @@ Azure 多重身份验证提供了第二层到用户身份验证的安全性。 �
 * 移动应用通知
 * OTP 验证码
 
-我们建议将 Azure 多重身份验证用于用户登录。多重身份验证在通过 Identity Protection 提供的基于风险的条件访问策略中起重要作用。
+我们建议将 Azure 多重身份验证用于用户登录。多重身份验证通过 Identity Protection 提供的基于风险的条件性访问策略中扮演着关键角色。
 
 有关详细信息，请参阅[什么是 Azure 多重身份验证？](../authentication/multi-factor-authentication.md)
 

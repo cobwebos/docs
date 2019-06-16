@@ -10,10 +10,10 @@ ms.date: 04/03/2019
 ms.author: danlep
 ms.custom: ''
 ms.openlocfilehash: 12de4ef31084d8ac8586c79ffe3d0a8e891727bf
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411387"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>启用容器组中的 SSL 终结点
@@ -44,7 +44,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 按照提示后，若要添加的标识信息。 对于公用名，请输入与证书关联的主机名。 当系统提示输入密码，而无需键入要跳过添加密码按 Enter。
 
-运行以下命令以创建自签名的证书 （.crt 文件） 的证书请求中。 例如:
+运行以下命令以创建自签名的证书 （.crt 文件） 的证书请求中。 例如：
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62121317"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
@@ -42,8 +42,8 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 事件中心 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 事件中心 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [事件中心身份验证和安全模型概述](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -53,8 +53,8 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Dynamics CRM | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Dynamics CRM | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -64,7 +64,7 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 数据工厂 | 
+| 组件                | Azure 数据工厂 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 链接的服务类型-Azure 和本地 |
@@ -75,7 +75,7 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 标识服务器 | 
+| 组件                | 标识服务器 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -86,8 +86,8 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -97,8 +97,8 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
 | **参考**              | [为 Azure 应用服务中的应用启用 HTTPS](../app-service/app-service-web-tutorial-custom-ssl.md) |
@@ -108,8 +108,8 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
 | **参考**              | [对 Azure 应用服务强制执行 HTTPS](../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
@@ -141,8 +141,8 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [OWASP HTTP 严格传输安全性速查表](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
@@ -152,8 +152,8 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | SQL Azure  |
 | **属性**              | SQL 版本 - V12 |
 | **参考**              | [有关为 SQL 数据库编写安全连接字符串的最佳做法](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
@@ -163,8 +163,8 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | OnPrem |
 | **属性**              | SQL 版本 - MsSQL2016，SQL 版本 - MsSQL2012，SQL 版本 - MsSQL2014 |
 | **参考**              | [启用与数据库引擎的加密连接](https://msdn.microsoft.com/library/ms191192)  |
@@ -174,7 +174,7 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
+| 组件                | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -185,8 +185,8 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 存储 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
 | **参考**              | [Windows Azure Blob MD5 概述](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
@@ -196,8 +196,8 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 移动客户端 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 移动客户端 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - 文件 |
 | **参考**              | [Azure 文件存储](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931)、[Windows 客户端的 Azure 文件存储 SMB 支持](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/#_mount-the-file-share) |
@@ -207,8 +207,8 @@ ms.locfileid: "62121317"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 存储 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 通用、Windows Phone |
 | **属性**              | 不适用  |
 | **参考**              | [证书和公钥绑定](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
@@ -284,8 +284,8 @@ namespace CertificatePinningExample
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
@@ -295,8 +295,8 @@ namespace CertificatePinningExample
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
@@ -324,8 +324,8 @@ string GetData(int value);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
@@ -335,8 +335,8 @@ string GetData(int value);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 不适用  |
 | **参考**              | [在 Web API 控制器中强制 SSL](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
@@ -376,8 +376,8 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 用于 Redis 的 Azure 缓存 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 用于 Redis 的 Azure 缓存 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [Azure Redis SSL 支持](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
@@ -389,8 +389,8 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 现场网关 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 现场网关 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -400,8 +400,8 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 云网关 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 云网关 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [选择通信协议](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |

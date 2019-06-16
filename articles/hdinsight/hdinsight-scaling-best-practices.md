@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: eb68421c4f62d94eedf266a0c34a0e276eacc4a6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/10/2019
+ms.openlocfilehash: b85277a4238351b6448c2cf29676ae3d8c118385
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479281"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077211"
 ---
 # <a name="scale-hdinsight-clusters"></a>缩放 HDInsight 群集
 
@@ -21,6 +21,9 @@ HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点�
 如果有定期批量处理，HDInsight 群集可以扩展该操作前的几分钟中，以便你的群集具有足够的内存和 CPU 能力。  在完成处理并且用量再次下降后，可将 HDInsight 群集缩减为更少的工作节点。
 
 可以手动使用一种方法，如下所述的群集也可以使用[自动缩放](hdinsight-autoscale-clusters.md)选项以便让系统自动向上和向下缩放以响应 CPU、 内存和其他指标。
+
+> [!NOTE]  
+> 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页。
 
 ## <a name="utilities-to-scale-clusters"></a>用来缩放群集的实用程序
 
@@ -47,6 +50,50 @@ Microsoft 提供以下实用程序来缩放群集：
 当您**添加**到正在运行 HDInsight 群集 （纵向扩展），任何挂起或正在运行的作业的节点不会受到影响。 在运行缩放过程时，可以安全提交新作业。 如果缩放操作出于任何原因失败，将处理失败，将你的群集保留在正常运行状态。
 
 如果您**删除**缩放操作完成时，节点 （向下缩放），任何挂起或正在运行的作业将失败。 此失败是由于某些在缩放过程中重新启动服务。 此外，还有群集可以手动缩放操作期间获取停滞在安全模式下的风险。
+
+对于 HDInsight 支持的每种类型的群集，更改数据节点数的影响有所不同：
+
+* Apache Hadoop
+
+    可以顺利地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 也可在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
+
+    减少数据节点数目以缩减 Hadoop 群集时，系统会重新启动群集中的某些服务。 此行为会导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，可以在操作完成后重新提交这些作业。
+
+* Apache HBase
+
+    可以顺利地在 HBase 群集运行时对其添加或删除节点。 在完成缩放操作后的几分钟内，区域服务器就能自动平衡。 不过，也可以手动平衡区域服务器，方法是登录到群集的头节点，并在命令提示符窗口中运行以下命令：
+
+    ```bash
+    pushd %HBASE_HOME%\bin
+    hbase shell
+    balancer
+    ```
+
+    有关使用 HBase shell 的详细信息，请参阅 [HDInsight 中的 Apache HBase 示例入门](hbase/apache-hbase-tutorial-get-started-linux.md)。
+
+* Apache Storm
+
+    可以顺利地在 Storm 群集运行时对其添加或删除数据节点。 但是，在缩放操作成功完成后，需要重新平衡拓扑。
+
+    可以使用两种方法来完成重新平衡操作：
+
+  * Storm Web UI
+  * 命令行界面 (CLI) 工具
+
+    有关详细信息，请参阅 [Apache Storm 文档](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
+
+    HDInsight 群集上提供了 Storm Web UI：
+
+    ![HDInsight Storm 规模重新平衡](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
+    以下是用于重新平衡 Storm 拓扑的示例 CLI 命令：
+
+    ```cli
+    ## Reconfigure the topology "mytopology" to use 5 worker processes,
+    ## the spout "blue-spout" to use 3 executors, and
+    ## the bolt "yellow-bolt" to use 10 executors
+    $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+    ```
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>如何安全地缩减群集
 
@@ -140,13 +187,13 @@ org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.server
 1. 停止 Hive 服务，并确保所有查询和作业都已完成。
 2. 列出 scratch 目录，上面找到的内容`hdfs://mycluster/tmp/hive/`以查看它是否包含任何文件：
 
-    ```
+    ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     ```
 
     下面是存在文件时的示例输出：
 
-    ```
+    ```output
     sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/_tmp_space.db
@@ -160,7 +207,7 @@ org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.server
 
     用于从 HDFS 中删除文件的示例命令行：
 
-    ```
+    ```bash
     hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
     ```
 
@@ -173,7 +220,6 @@ org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.server
 #### <a name="run-the-command-to-leave-safe-mode"></a>运行命令来退出安全模式。
 
 最后一个选项是执行保留安全模式的命令。 如果您知道，HDFS 进入安全模式的原因是 Hive 文件未得到充分复制是因为，你可以执行以下命令来退出安全模式：
-
 
 ```bash
 hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
@@ -201,4 +247,3 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 
 * [自动缩放 Azure HDInsight 群集](hdinsight-autoscale-clusters.md)
 * [Azure HDInsight 简介](hadoop/apache-hadoop-introduction.md)
-* [缩放群集](hdinsight-administer-use-portal-linux.md#scale-clusters)

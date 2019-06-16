@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
 ms.openlocfilehash: f5819194e7967b5921f34223cad299752460de30
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66255644"
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights 中的 Analytics
@@ -35,7 +35,7 @@ Analytics 是 [Application Insights](app-insights-overview.md) 的强大搜索�
 
 ## <a name="query-data-in-analytics"></a>在 Analytics 中查询数据
 典型查询以表名开头，后跟一系列由 `|` 分隔的*运算符*。
-例如，让我们找出多少个请求的最后一个 3 小时内收到来自不同国家/地区，我们的应用程序：
+例如，让我们查明我们的应用在过去 3 个小时内从不同的国家/地区收到了多少请求：
 ```AIQL
 requests
 | where timestamp > ago(3h)

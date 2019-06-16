@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
 ms.openlocfilehash: c0ec2616d8bdcf3cfd6d649f12e9bfceea33690a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65467749"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
@@ -32,7 +32,7 @@ Azure 中的每个虚拟机 (VM) 都创建至定义 Linux 分发和 OS 版本的
 ## <a name="create-azure-resource-group"></a>创建 Azure 资源组
 在生成过程中，Packer 会在生成源 VM 时创建临时 Azure 资源。 要捕获该源 VM 用作映像，必须定义资源组。 Packer 生成过程的输出存储在此资源组中。
 
-使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli
 az group create -n myResourceGroup -l eastus
@@ -70,16 +70,16 @@ az account show --query "{ subscription_id: id }"
 ## <a name="define-packer-template"></a>定义 Packer 模板
 若要生成映像，需创建一个模板作为 JSON 文件。 在模板中，定义执行实际生成过程的生成器和配置器。 Packer 具有[用于 Azure 的配置器](https://www.packer.io/docs/builders/azure.html)，可用于定义 Azure 资源，如在前面创建的服务主体凭据。
 
-创建名为 ubuntu.json 的文件并粘贴以下内容。 为以下内容输入自己的值：
+创建名为 ubuntu.json  的文件并粘贴以下内容。 为以下内容输入自己的值：
 
 | 参数                           | 获取位置 |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | `az ad sp` 创建命令的第一行输出 - appId |
-| client_secret                     | `az ad sp` 创建命令的第二行输出 - password |
-| tenant_id                         | `az ad sp` 创建命令的第三行输出 - tenant |
-| subscription_id                   | `az account show` 命令的输出 |
-| managed_image_resource_group_name | 在第一步中创建的资源组的名称 |
-| managed_image_name                | 创建的托管磁盘映像的名称 |
+| *client_id*                         | `az ad sp` 创建命令的第一行输出 - appId  |
+| client_secret                      | `az ad sp` 创建命令的第二行输出 - password  |
+| tenant_id                          | `az ad sp` 创建命令的第三行输出 - tenant  |
+| subscription_id                    | `az account show` 命令的输出 |
+| managed_image_resource_group_name  | 在第一步中创建的资源组的名称 |
+| managed_image_name                 | 创建的托管磁盘映像的名称 |
 
 
 ```json
@@ -204,7 +204,7 @@ Packer 生成 VM、运行配置程序以及清理部署需要几分钟时间。
 
 
 ## <a name="create-vm-from-azure-image"></a>从 Azure 映像创建 VM
-现在可使用 [az vm create](/cli/azure/vm) 从映像创建 VM。 指定使用 `--image` 参数创建的映像。 以下示例从 myPackerImage 创建一个名为 myVM 的 VM，并生成 SSH 密钥（如果它们尚不存在）：
+现在可使用 [az vm create](/cli/azure/vm) 从映像创建 VM。 指定使用 `--image` 参数创建的映像。 以下示例从 myPackerImage  创建一个名为 myVM  的 VM，并生成 SSH 密钥（如果它们尚不存在）：
 
 ```azurecli
 az vm create \

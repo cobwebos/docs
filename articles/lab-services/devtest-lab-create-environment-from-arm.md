@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 144fd11e9c1ee3e00412320840e864a3190ccdb0
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833985"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源
@@ -67,28 +67,28 @@ Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库
 以下步骤指导完成使用 Azure 门户将存储库添加到实验室的整个过程。 
 
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+1. 选择“所有服务”  ，并从列表中选择“开发测试实验室”  。
 1. 从实验室列表，选择所需的实验室。   
-1. 在实验室的“概览”窗格中，选择“配置和策略”。
+1. 在实验室的“概览”  窗格中，选择“配置和策略”  。
 
     ![配置和策略](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
 
-1. 从“配置和策略”设置列表中选择“存储库”。 “存储库”窗格列出已添加到实验室的存储库。 名为 `Public Repo` 的存储库是系统自动为所有实验室生成的，它连接到包含你所用的多个 VM 项目的[开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-devtestlab)。
+1. 从“配置和策略”设置列表中选择“存储库”。   “存储库”窗格列出已添加到实验室的存储库。  名为 `Public Repo` 的存储库是系统自动为所有实验室生成的，它连接到包含你所用的多个 VM 项目的[开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-devtestlab)。
 
     ![公共存储库](./media/devtest-lab-create-environment-from-arm/public-repo.png)
 
-1. 选择“添加+”来添加 Azure 资源管理器模板存储库。
-1. 当第二个“存储库”窗格打开时，请如下所示输入所需的信息：
+1. 选择“添加+”来添加 Azure 资源管理器模板存储库。 
+1. 当第二个“存储库”  窗格打开时，请如下所示输入所需的信息：
     - **名称** - 输入实验室中使用的存储库名称。
-    - Git 克隆 URI - 输入 GitHub 或 Azure DevOps Services 中的 GIT HTTPS 克隆 URL。  
+    - Git 克隆 URI  - 输入 GitHub 或 Azure DevOps Services 中的 GIT HTTPS 克隆 URL。  
     - **分支** - 输入用于访问 Azure 资源管理器模板定义的分支名称。 
-    - **个人访问令牌** - 个人访问令牌用于安全访问存储库。 要从 Azure DevOps Services 获取令牌，请选择“&lt;姓名>”>“我的配置文件”>“安全”>“公共访问令牌”。 要从 GitHub 获取令牌，请选择头像，然后选择“设置”>“公共访问令牌”。 
+    - **个人访问令牌** - 个人访问令牌用于安全访问存储库。 要从 Azure DevOps Services 获取令牌，请选择“&lt;姓名>”>“我的配置文件”>“安全”>“公共访问令牌”。  要从 GitHub 获取令牌，请选择头像，然后选择“设置”>“公共访问令牌”。  
     - **文件夹路径** - 使用两个输入字段中的一个，输入以正斜杠“/”开头的文件夹路径，该路径是项目定义（第一个输入字段）或 Azure 资源管理器模板定义的 Git 克隆 URI 的相对路径。   
     
         ![公共存储库](./media/devtest-lab-create-environment-from-arm/repo-values.png)
 
 
-1. 输入所有必填字段并通过验证后，请选择“保存”。
+1. 输入所有必填字段并通过验证后，请选择“保存”。 
 
 下一部分将逐步讲解如何通过 Azure 资源管理器模板创建环境。
 
@@ -97,14 +97,14 @@ Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库
 在实验室中配置 Azure 资源管理器模板存储库后，实验室用户可在 Azure 门户中使用以下步骤创建环境：
 
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+1. 选择“所有服务”  ，并从列表中选择“开发测试实验室”  。
 1. 从实验室列表，选择所需的实验室。   
-1. 在实验室的窗格中，选择“添加+”。
-1. “选择库”窗格显示了可与最前面列出的 Azure 资源管理器模板配合使用的基本映像。 选择所需的 Azure 资源管理器模板。
+1. 在实验室的窗格中，选择“添加+”。 
+1. “选择库”窗格显示了可与最前面列出的 Azure 资源管理器模板配合使用的基本映像。  选择所需的 Azure 资源管理器模板。
 
     ![选择一个库](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
   
-1. 在“添加”窗格中，输入“环境名称”值。 环境名称是向实验室中的用户显示的名称。 剩余的输入字段已在 Azure 资源管理器模板中定义。 如果模板中定义了默认值或者存在 `azuredeploy.parameter.json` 文件，默认值会显示在这些输入字段中。 对于*安全字符串*类型的参数，可以使用 Azure 密钥保管库中存储的机密。 若要了解如何在密钥保管库中保存机密并在创建实验室资源时使用这些机密，请参阅[在 Azure 密钥保管库中存储机密](devtest-lab-store-secrets-in-key-vault.md)。  
+1. 在“添加”窗格中，输入“环境名称”值。   环境名称是向实验室中的用户显示的名称。 剩余的输入字段已在 Azure 资源管理器模板中定义。 如果模板中定义了默认值或者存在 `azuredeploy.parameter.json` 文件，默认值会显示在这些输入字段中。 对于*安全字符串*类型的参数，可以使用 Azure 密钥保管库中存储的机密。 若要了解如何在密钥保管库中保存机密并在创建实验室资源时使用这些机密，请参阅[在 Azure 密钥保管库中存储机密](devtest-lab-store-secrets-in-key-vault.md)。  
 
     ![添加窗格](./media/devtest-lab-create-environment-from-arm/add.png)
 
@@ -116,8 +116,8 @@ Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库
     > - GEN-SSH-PUB-KEY
     > - GEN-PASSWORD 
  
-1. 选择“添加”创建环境。 环境随即会开始预配，其状态显示在“我的虚拟机”列表中。 实验室会自动创建一个新资源组，用于预配 Azure 资源管理器模板中定义的所有资源。
-1. 创建环境后，请在“我的虚拟机”列表中选择该环境，打开资源组窗格并浏览该环境中预配的所有资源。
+1. 选择“添加”创建环境。  环境随即会开始预配，其状态显示在“我的虚拟机”列表中。  实验室会自动创建一个新资源组，用于预配 Azure 资源管理器模板中定义的所有资源。
+1. 创建环境后，请在“我的虚拟机”列表中选择该环境，打开资源组窗格并浏览该环境中预配的所有资源  。
     
     ![“我的虚拟机”列表](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
    
@@ -243,7 +243,7 @@ Write-Output "Environment $EnvironmentName completed."
 您还可以使用 Azure CLI 使用资源管理器模板部署资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)。
 
 > [!NOTE]
-> 只有具有实验室所有者权限的用户才能使用 Azure PowerShell 根据 Resource Manager 模板创建 VM。 如果想要使用 Resource Manager 模板自动创建 VM，并且只具有用户权限，则可以使用 [CLI 中的 az lab vm create 命令](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create)。
+> 只有具有实验室所有者权限的用户才能使用 Azure PowerShell 根据 Resource Manager 模板创建 VM。 如果想要使用 Resource Manager 模板自动创建 VM，并且只具有用户权限，则可以使用 [CLI 中的 az lab vm create 命令](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create)  。
 
 ### <a name="general-limitations"></a>一般限制 
 
@@ -273,15 +273,15 @@ Write-Output "Environment $EnvironmentName completed."
 请按照下列步骤向实验室用户授予“参与者”访问权限。 然后，当他们部署资源管理器模板时，他们将能够编辑该环境中的资源。 
 
 
-1. 在实验室的“概览”窗格中，选择“配置和策略”。
-1. 选择“实验室设置”。
-1. 在“实验室设置”窗格中，选择“参与者”以向实验室用户授予写入权限。
+1. 在实验室的“概览”  窗格中，选择“配置和策略”  。
+1. 选择“实验室设置”  。
+1. 在“实验室设置”窗格中，选择“参与者”  以向实验室用户授予写入权限。
 
     ![可配置的实验室用户访问权限](./media/devtest-lab-create-environment-from-arm/configure-access-rights.png)
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ## <a name="next-steps"></a>后续步骤
-* 创建 VM 后，可以通过在 VM 的管理窗格中选择“连接”来连接到该 VM。
-* 在实验室的“我的虚拟机”列表中选择环境，查看和管理该环境中的资源。 
+* 创建 VM 后，可以通过在 VM 的管理窗格中选择“连接”来连接到该 VM。 
+* 在实验室的“我的虚拟机”列表中选择环境，查看和管理该环境中的资源  。 
 * 浏览 [Azure 快速入门模板库中的 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)。

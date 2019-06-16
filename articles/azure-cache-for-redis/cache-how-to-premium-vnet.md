@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: f8c95b2981933764bc8d6dcf8bf57e9ab40ef53b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 4f97f6925c482cb282324dcc1c97bbfe2a701643
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752058"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074209"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
 Azure Redis 缓存有不同的缓存套餐，因此在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上很灵活。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
@@ -131,7 +131,7 @@ Azure Redis 缓存有不同的缓存套餐，因此在缓存大小和功能（�
 
 | 端口 | Direction | 传输协议 | 目的 | 本地 IP | 远程 IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 | （Redis 子网） | （Redis 子网）、虚拟网络、Azure 负载均衡器 |
+| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 | （Redis 子网） | (Redis 子网)、 虚拟网络、 Azure 负载均衡器<sup>2</sup> |
 | 8443 |入站 |TCP |Redis 的内部通信 | （Redis 子网） |（Redis 子网） |
 | 8500 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） |Azure 负载均衡器 |
 | 10221-10231 |入站 |TCP |Redis 的内部通信 | （Redis 子网） |（Redis 子网）、Azure 负载均衡器 |
@@ -139,6 +139,8 @@ Azure Redis 缓存有不同的缓存套餐，因此在缓存大小和功能（�
 | 15000-15999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 | （Redis 子网） |虚拟网络、Azure 负载均衡器 |
 | 16001 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） |Azure 负载均衡器 |
 | 20226 |入站 |TCP |Redis 的内部通信 | （Redis 子网） |（Redis 子网） |
+
+<sup>2</sup>可以使用服务标记 AzureLoadBalancer （资源管理器） （或经典部署模型 AZURE_LOADBALANCER） 用于创作的 NSG 规则。
 
 #### <a name="additional-vnet-network-connectivity-requirements"></a>其他 VNET 网络连接要求
 

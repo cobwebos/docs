@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4b61b661d9da0748bc354b8defa4e6d67a047a2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7e61207ea23b9b9560668b58b33e3f32f5f70ab2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920486"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083943"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -94,11 +94,11 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 2. 若要选择的租户是需要在其中使用 Privileged Identity Management 的租户，请选择 Azure 门户右上角的用户名。
 
-3. 选择“所有服务”，然后从列表中筛选出“Azure AD Privileged Identity Management”。
+3. 选择“所有服务”  ，然后从列表中筛选出“Azure AD Privileged Identity Management”  。
 
-4. 打开“所有服务”列表中的 Open Privileged Identity Management，将其固定到仪表板。
+4. 打开“所有服务”列表中的 Open Privileged Identity Management，将其固定到仪表板。 
 
-系统会自动在租户中为第一个在租户中使用 Azure AD Privileged Identity Management 的人分配“安全管理员”和“特权角色管理员”角色。 只有特权角色管理员才能管理用户的 Azure AD 目录角色分配。 另外，在添加 Azure AD Privileged Identity Management 以后，会显示安全向导，引导你完成初始发现和分配体验。 现在可以退出向导，不做任何其他的更改。 
+系统会自动在租户中为第一个在租户中使用 Azure AD Privileged Identity Management 的人分配“安全管理员”  和“特权角色管理员”  角色。 只有特权角色管理员才能管理用户的 Azure AD 目录角色分配。 另外，在添加 Azure AD Privileged Identity Management 以后，会显示安全向导，引导你完成初始发现和分配体验。 现在可以退出向导，不做任何其他的更改。 
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>对特许权限高的角色中的帐户进行标识和分类 
 
@@ -213,9 +213,9 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>组织通过 Azure AD 管理其他云应用的访问权限时所需的其他步骤
 
-#### <a name="configure-conditional-access-policies"></a>配置条件访问策略
+#### <a name="configure-conditional-access-policies"></a>配置条件性访问策略
 
-为本地应用程序和托管在云中的应用程序准备条件访问策略。 如果有加入了用户工作区的设备，请参阅[使用 Azure Active Directory 设备注册设置本地条件访问](../active-directory-device-registration-on-premises-setup.md)中提供的详细信息。
+准备在本地和云托管应用程序的条件性访问策略。 如果有用户已加入工作区的设备，获取详细信息来自[设置本地条件性访问通过使用 Azure Active Directory 设备注册](../active-directory-device-registration-on-premises-setup.md)。
 
 
 ## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>阶段 3：构建管理活动的可见性并对其进行完全控制
@@ -261,7 +261,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>确定是否向基于密码的登录协议公开（如果使用 Exchange Online）
 
-在过去，协议假定用户名/密码组合已嵌入设备中、电子邮件帐户中、电话中，等等。 但现在，随着云中的网络攻击风险的增加，建议你确定每一位在其凭据泄漏的情况下可能会对组织造成灾难性后果的用户，通过实施强身份验证要求和条件访问，阻止其通过用户名/密码登录电子邮件。 你可以阻止[旧式身份验证使用条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)。 请查看详细信息[如何阻止基本身份验证](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)通过 Exchnage 联机。 
+在过去，协议假定用户名/密码组合已嵌入设备中、电子邮件帐户中、电话中，等等。 但现在在云中的网络攻击的风险，我们建议标识的每个潜在用户，如果其凭据泄漏的情况，可能会导致灾难性后果到组织，并且不对它们进行能够登录到其电子邮件通过用户名 /通过实施强身份验证要求和条件性访问的密码。 你可以阻止[旧式身份验证使用条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)。 请查看详细信息[如何阻止基本身份验证](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)通过 Exchnage 联机。 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>针对 Office 365 角色完成角色审核评估（如果使用 Office 365）
 
@@ -304,9 +304,9 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 可以使用 MCAS 根据 Azure 信息保护分类标签来调查文件并设置策略，从而增加云中数据的可见性并加强对此类数据的控制。 对云中的文件进行扫描和分类，并应用 Azure 信息保护标签。 有关详细信息，请参阅 [Azure 信息保护集成](https://docs.microsoft.com/cloud-app-security/azip-integration)。
 
-#### <a name="configure-conditional-access"></a>配置条件访问
+#### <a name="configure-conditional-access"></a>配置条件性访问
 
-根据组、位置和应用程序敏感性为 [SaaS 应用](https://azure.microsoft.com/overview/what-is-saas/)和 Azure AD 连接应用配置条件访问。 
+配置基于组、 位置和应用程序敏感性为条件性访问[SaaS 应用](https://azure.microsoft.com/overview/what-is-saas/)和 Azure AD 连接应用。 
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>监视连接的云应用中的活动
 

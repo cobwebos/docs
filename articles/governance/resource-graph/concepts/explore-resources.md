@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 0b4a75558f5e82b707ae5d012acef4d2c5c4b7a0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64723809"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
@@ -43,7 +43,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit
 ```
 
 > [!NOTE]
-> Azure PowerShell `Search-AzGraph` cmdlet 默认情况下会返回 PSCustomObject。 若要让输出与 Azure CLI 返回的内容相同，请使用 `ConvertTo-Json` cmdlet。 “深度”的默认值是“2”。 将它设置为“100”应转换所有返回的级别。
+> Azure PowerShell `Search-AzGraph` cmdlet 默认情况下会返回 PSCustomObject  。 若要让输出与 Azure CLI 返回的内容相同，请使用 `ConvertTo-Json` cmdlet。 “深度”  的默认值是“2”  。 将它设置为“100”  应转换所有返回的级别。
 
 JSON 结果的结构类似于下面的示例：
 
@@ -114,7 +114,7 @@ JSON 结果的结构类似于下面的示例：
 
 ### <a name="virtual-machines-by-location"></a>按位置列出的虚拟机
 
-根据我们对虚拟机资源的了解，我们使用“位置”属性按位置计算所有虚拟机。 要更新查询，我们将删除限制并汇总位置值的计数。
+根据我们对虚拟机资源的了解，我们使用“位置”  属性按位置计算所有虚拟机。 要更新查询，我们将删除限制并汇总位置值的计数。
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -152,7 +152,7 @@ JSON 结果的结构类似于下面的示例：
 
 ### <a name="virtual-machines-by-sku"></a>按 SKU 列出的虚拟机
 
-回到原始虚拟机属性，尝试查找 SKU 大小为“Standard_B2s”的所有虚拟机。 查看返回的 JSON，我们看到它存储在 properties.hardwareprofile.vmsize中。 我们将更新查询以查找与此大小匹配的所有 VM，并仅返回 VM 和区域的名称。
+回到原始虚拟机属性，尝试查找 SKU 大小为“Standard_B2s”  的所有虚拟机。 查看返回的 JSON，我们看到它存储在 properties.hardwareprofile.vmsize  中。 我们将更新查询以查找与此大小匹配的所有 VM，并仅返回 VM 和区域的名称。
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -179,7 +179,7 @@ where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile
 ```
 
 > [!NOTE]
-> 获得 SKU 的另一种方法是使用 aliases 属性 Microsoft.Compute/virtualMachines/sku.name。 请参阅[显示别名](../samples/starter.md#show-aliases)并[显示不同的别名值](../samples/starter.md#distinct-alias-values)示例。
+> 获得 SKU 的另一种方法是使用 aliases  属性 Microsoft.Compute/virtualMachines/sku.name  。 请参阅[显示别名](../samples/starter.md#show-aliases)并[显示不同的别名值](../samples/starter.md#distinct-alias-values)示例。
 
 ```azurecli-interactive
 az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -209,8 +209,8 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
 where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-在运行查询之前，如何知道“类型”现在是 Microsoft.Compute/disks？
-如果查看完整 ID，会看到作为字符串一部分的 /providers/Microsoft.Compute/disks/。 此字符串片段为你提供了要搜索的类型的提示。 另一种方法是按类型删除限制，而只搜索 ID 字段。 由于 ID 是唯一的，因此只返回一条记录，并且 ID 的 type 属性提供该详细信息。
+在运行查询之前，如何知道“类型”  现在是 Microsoft.Compute/disks  ？
+如果查看完整 ID，会看到作为字符串一部分的 /providers/Microsoft.Compute/disks/  。 此字符串片段为你提供了要搜索的类型的提示。 另一种方法是按类型删除限制，而只搜索 ID 字段。 由于 ID 是唯一的，因此只返回一条记录，并且 ID 的 type  属性提供该详细信息。
 
 > [!NOTE]
 > 要使此示例起作用，必须使用自己的环境中的结果替换 ID 字段。

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/24/2019
 ms.openlocfilehash: 5045c48a00c51a16d37dcf4b7f72f25633f23b3f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926029"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>使用 Windows 电脑在 HDInsight 上的 Apache Hadoop 生态系统中工作
@@ -78,13 +78,13 @@ HDInsight 中的 Apache Spark 群集包含可与 Jupyter Notebook 配合使用�
 
 如果在某种情况下，必须使用的某种工具或技术只能在 Linux 上使用，请考虑以下选项：
 
-* **基于 Windows 10 上的 Ubuntu bash**在 Windows 上提供一个 Linux 子系统。 Bash 允许直接运行 Linux 实用工具，而无需维护专用的 Linux 安装。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)。  也可以使用其他 [Unix shell](https://www.gnu.org/software/bash/)。
+* **Windows 10 版 Bash on Ubuntu** 在 Windows 上提供一个 Linux 子系统。 Bash 允许直接运行 Linux 实用工具，而无需维护专用的 Linux 安装。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)。  也可以使用其他 [Unix shell](https://www.gnu.org/software/bash/)。
 * 使用**适用于 Windows 的 Docker** 可以访问许多基于 Linux 的工具，可以直接从 Windows 运行。 例如，可以直接在 Windows 中使用 Docker 来运行适用于 Hive 的 Beeline 客户端。 还可以使用 Docker 运行本地 Jupyter Notebook，以及远程连接到 Spark on HDInsight。 [适用于 Windows 的 Docker 入门](https://docs.docker.com/docker-for-windows/)
 * 使用 **[MobaXTerm](https://mobaxterm.mobatek.net/)** 可以通过 SSH 连接以图形方式浏览群集文件系统。
 
 ## <a name="cross-platform-tools"></a>跨平台工具
 
-Azure 命令行接口 (CLI) 是用于管理 Azure 资源的 Microsoft 跨平台命令行体验。  有关详细信息，请参阅[Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
+Azure 命令行接口 (CLI) 是用于管理 Azure 资源的 Microsoft 跨平台命令行体验。  有关详细信息，请参阅 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 
 ## <a name="next-steps"></a>后续步骤
 如果不太熟悉如何在基于 Linux 的群集中操作，请参阅以下文章：

@@ -3,24 +3,24 @@ title: 配置容器
 titlesuffix: Face - Azure Cognitive Services
 description: 容器配置设置。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
-ms.openlocfilehash: 4152cf90d9de2eda15a798fbf6b5b4aa4f5646f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: d30c2218fe20d6b760f379caf52ca0bf97e1c750
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815407"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071498"
 ---
 # <a name="configure-face-docker-containers"></a>配置人脸 Docker 容器
 
-使用 `docker run` 命令参数配置人脸容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
+使用 `docker run` 命令参数配置人脸  容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
 ## <a name="configuration-settings"></a>配置设置
 
@@ -31,11 +31,11 @@ ms.locfileid: "60815407"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值，该值必须为有效的密钥_认知服务_为指定的资源[ `Billing` ](#billing-configuration-setting)配置设置。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”  资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**资源管理下**密钥**
+* Azure 门户：**认知服务**“资源管理”部分的“密钥”下 
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,7 +43,7 @@ ms.locfileid: "60815407"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing`设置指定的终结点 URI 的_认知服务_使用在 Azure 上的资源要计数的容器的计费信息。 必须指定此配置设置，一个值，该值必须是有效的终结点 URI 对于_认知服务_在 Azure 上的资源。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”  资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”  资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
@@ -51,7 +51,7 @@ ms.locfileid: "60815407"
 
 请记住添加_人脸_路由到终结点 URI，该示例中所示。 
 
-|需要| 名称 | 数据类型 | 描述 |
+|必选| 名称 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
 
@@ -143,7 +143,7 @@ ms.locfileid: "60815407"
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](face-how-to-install-containers.md#billing)。
-> ApiKey 当值**键**从 Azure`Cognitive Services`资源密钥页。 
+> ApiKey 值是来自 Azure `Cognitive Services`“资源密钥”页的“密钥”  。 
 
 ## <a name="face-container-docker-examples"></a>人脸容器 Docker 示例
 

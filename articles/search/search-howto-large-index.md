@@ -10,10 +10,10 @@ ms.date: 12/19/2018
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 8923c94409dcf079179ed0464046e39ef7654c4c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65949823"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>如何在 Azure 搜索中为大型数据集编制索引
@@ -79,9 +79,9 @@ ms.locfileid: "65949823"
 
 对于索引器，处理能力并不严格依赖于搜索服务所用每个服务单位 (SU) 的一个索引器子系统。 可以在基本或标准层上预配的、至少包含两个副本的 Azure 搜索服务中创建多个并发索引器。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，在搜索服务仪表板的“概述”页上，选中“定价层”以确认它能够适应并行索引。 基本和标准层提供多个副本。
+1. 在 [Azure 门户](https://portal.azure.com)中，在搜索服务仪表板的“概述”页上，选中“定价层”以确认它能够适应并行索引。   基本和标准层提供多个副本。
 
-2. 在“设置” > “缩放”中，为并行处理[增加副本](search-capacity-planning.md)：为每个索引器工作负荷额外添加一个副本。 保留足够数量的现有查询卷。 为索引牺牲查询工作负荷并不是一个很好的折衷方法。
+2. 在“设置” > “缩放”中，为并行处理[增加副本](search-capacity-planning.md)：为每个索引器工作负荷额外添加一个副本。   保留足够数量的现有查询卷。 为索引牺牲查询工作负荷并不是一个很好的折衷方法。
 
 3. 在 Azure 搜索索引器可以访问的级别，将数据分配到多个容器。 这可能是 Azure SQL 数据库中的多个表、Azure Blob 存储中的多个容器，或多个集合。 为每个表或容器定义一个数据源对象。
 

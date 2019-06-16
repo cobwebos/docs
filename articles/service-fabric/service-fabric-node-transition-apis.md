@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
 ms.openlocfilehash: df0e53736c08fd2c26c467def7328e85f2989f26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60718132"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>将启动节点 API 和停止节点 API 替换为节点转换 API
@@ -45,7 +45,7 @@ ms.locfileid: "60718132"
 如果调用节点转换 API 后未引发异常，则表示系统已接受异步操作，将执行该操作。  成功的调用并不意味着操作已完成。  若要获取有关该操作的当前状态的信息，请使用为此操作调用节点转换 API 时使用的 guid 来调用节点转换进度 API（在托管环境中为：[GetNodeTransitionProgressAsync()][gntp]）。  节点转换进度 API 返回 NodeTransitionProgress 对象。  此对象的 State 属性指定当前操作状态。  如果状态为“Running”，则表示该操作正在执行。  如果状态为“Completed”，则表示该操作已完成且未出错。  如果状态为“Faulted”，则表示执行该操作时出现问题。  Result 属性的 Exception 属性将指示具体的问题。  请参阅 https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate 了解有关状态属性的详细信息，并查看以下“示例用法”部分了解代码示例。
 
 
-**区分停止的节点和关闭的节点** 如果节点是使用节点转换 API“停止的”，则节点查询（在托管环境中为：[GetNodeListAsync()][nodequery]，在 PowerShell 中为：[Get-ServiceFabricNode][nodequeryps]）的输出将显示此节点的 *IsStopped* 属性值为 true。  请注意，这与 *NodeStatus* 属性的值不同，后者显示 *Down*。  如果 *NodeStatus* 属性的值为 *Down*，但 *IsStopped* 为 false，则表示未使用节点转换 API 停止该节点，而是出于其他原因而使该节点处于*关闭*状态。  如果 *IsStopped* 属性为 true，*NodeStatus* 属性为 *Down*，则表示已使用节点转换 API 停止该节点。
+**区分停止的节点和关闭的节点** 如果节点是使用节点转换 API“停止的”  ，则节点查询（在托管环境中为：[GetNodeListAsync()][nodequery]，在 PowerShell 中为：[Get-ServiceFabricNode][nodequeryps]）的输出将显示此节点的 *IsStopped* 属性值为 true。  请注意，这与 *NodeStatus* 属性的值不同，后者显示 *Down*。  如果 *NodeStatus* 属性的值为 *Down*，但 *IsStopped* 为 false，则表示未使用节点转换 API 停止该节点，而是出于其他原因而使该节点处于*关闭*状态。  如果 *IsStopped* 属性为 true，*NodeStatus* 属性为 *Down*，则表示已使用节点转换 API 停止该节点。
 
 使用节点转换 API 启动*停止的*节点可让它重新成为群集的正常成员。  节点查询 API 的输出会显示 *IsStopped* 为 false，*NodeStatus* 为除 Down 以外的某个值（例如 Up）。
 

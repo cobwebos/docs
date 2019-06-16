@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
 ms.openlocfilehash: 235cc1c74c099a71d289d38369ebc10132564825
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66383298"
 ---
 # <a name="news-search-api-upgrade-guide"></a>新闻搜索 API 升级指南
@@ -25,7 +25,7 @@ ms.locfileid: "66383298"
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如， https://api.cognitive.microsoft.com/bing/v7.0  /news/search。
+- 终结点的版本号已从 v5 更改为 v7。 例如， https://api.cognitive.microsoft.com/bing/ v7.0  /news/search。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 

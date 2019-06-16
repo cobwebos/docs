@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: c8fce104d48acc3a562599c65eb15cb0a66657b7
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66495275"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-visual-studio-code"></a>通过 Visual Studio Code 注册新 Azure IoT Edge 设备

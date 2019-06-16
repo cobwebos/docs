@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61069889"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>分析 Microsoft Azure CDN 中的边缘节点性能
@@ -55,7 +55,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN 管理门户打开。
-2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件。  单击“**仪表板**”。
+2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件   。  单击“**仪表板**”。
    
     将显示边缘节点分析仪表板。
 
@@ -143,7 +143,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN 管理门户打开。
-2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件。  单击“**HTTP 大型对象**”。
+2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件   。  单击“**HTTP 大型对象**”。
    
     将显示边缘节点分析报告屏幕。
 

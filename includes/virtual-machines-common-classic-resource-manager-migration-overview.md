@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: jeconnoc
 ms.custom: include file
 ms.openlocfilehash: 289912e1519a68ae607ace7766e35731af0016b9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158273"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移
@@ -75,13 +75,13 @@ ms.locfileid: "66158273"
 > [!NOTE]
 > Resource Manager 部署模型没有经典映像和磁盘的概念。 迁移存储帐户时，经典映像和磁盘不在 Resource Manager 堆栈中可见，但后备 VHD 保留在存储帐户中。
 
-以下屏幕截图显示如何将经典存储帐户升级为使用 Azure 门户的 Azure 资源管理器存储帐户：
+以下屏幕截图演示了如何使用 Azure 门户将经典存储帐户升级到 Azure 资源管理器存储帐户：
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到存储帐户。
-3. 在中**设置**部分中，单击**迁移到 ARM**。
-4. 单击**验证**来确定迁移可行性。
-5. 如果通过了验证，请单击**准备**创建已迁移的存储帐户。
-6. 类型**是**以确认迁移，然后单击**提交**以完成迁移。
+3. 在“设置”部分单击“迁移到 ARM”。  
+4. 单击“验证”，确定迁移可行性。 
+5. 如果验证通过，请单击“准备”  ，以便创建迁移的存储帐户。
+6. 键入“是”对迁移进行确认，然后单击“提交”   完成迁移。
 
     ![验证存储帐户](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
     
@@ -115,7 +115,7 @@ ms.locfileid: "66158273"
 
 | 服务 | 配置 | 建议 |
 | --- | --- | --- |
-| 资源管理器 |基于角色的访问控制 (RBAC) 的经典资源 |由于资源的 URI 在迁移后会进行修改，因此建议用户规划需要在迁移后进行的 RBAC 策略更新。 |
+| 资源管理器 |经典资源的基于角色的访问控制 (RBAC) |由于资源的 URI 在迁移后会进行修改，因此建议用户规划需要在迁移后进行的 RBAC 策略更新。 |
 | 计算 |与 VM 关联的多个子网 |将子网配置更新为只引用一个子网。 这可能需要从 VM 中删除辅助 NIC（该 NIC 引用另一个子网） ，完成迁移后再将其重新附加。 |
 | 计算 |属于虚拟网络，但未分配显式子网的虚拟机 |可以选择性地删除 VM。 |
 | 计算 |具有警报、自动缩放策略的虚拟机 |迁移进行下去时，这些设置会删除。 强烈建议用户在进行迁移之前先评估其环境。 或者，也可以在迁移完成之后重新配置警报设置。 |

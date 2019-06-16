@@ -8,10 +8,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 09777a9980e4576a5d00123516e33696e845dcac
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990227"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>一致性、可用性和性能权衡 
@@ -55,13 +55,13 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性。 此方法包
 |第|单主或多主数据库|任何一致性级别|< 240 分钟|<1 周|
 |>1|单主数据库|会话、一致的前缀或最终|< 15 分钟|< 15 分钟|
 |>1|单主数据库|有限过期|*K* & *T*|< 15 分钟|
-|>1|单主数据库|强|0|< 15 分钟|
+|>1|单主数据库|非常|0|< 15 分钟|
 |>1|多主数据库|会话、一致的前缀或最终|< 15 分钟|0|
 |>1|多主数据库|有限过期|*K* & *T*|0|
 
-*K* = 某个项的“K”版本（即更新）的数目。
+*K* = 某个项的“K”版本（即更新）的数目。 
 
-*T* = 自上次更新以来的时间间隔“T”。
+*T* = 自上次更新以来的时间间隔“T”。 
 
 ## <a name="next-steps"></a>后续步骤
 

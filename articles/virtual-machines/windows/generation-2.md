@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
 ms.openlocfilehash: 1dcc0d3a652ccbf365a18ce734a54dc78515b1a7
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66388364"
 ---
 # <a name="generation-2-vms-preview-on-azure"></a>在 Azure 上的第 2 代 Vm （预览版）

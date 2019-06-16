@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 0d44e5d9f0d1ed893a16c318e3cfa0ee1bfc123b
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0acef783b4877b5b1787f142aec6cc3588293f83
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823354"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111459"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Microsoft 标识平台集成清单
 
@@ -33,7 +33,7 @@ Microsoft 标识平台集成清单旨在引导您找到高质量和安全的集�
 
 使用以下清单确保有效地结合您的应用程序[Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)。
 
-### <a name="basics"></a>基本
+### <a name="basics"></a>基础
 
 |   |   |
 |---|---|
@@ -62,7 +62,7 @@ Microsoft 标识平台集成清单旨在引导您找到高质量和安全的集�
 
 |   |   |
 |---|---|
-| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 保持所有重定向 Uri 的所有权并确保它们的 DNS 记录保持最新状态。 不要在 Uri 中使用通配符 （*）。 对于 web 应用，请确保所有 Uri 安全并且经过加密 （例如，使用 https 方案）。 对于公共客户端，使用特定于平台的重定向 Uri 可能的话 （主要用于 iOS 和 Android）。 否则，使用重定向 Uri 使用大量的随机性，以避免冲突时调用返回到您的应用程序。 如果你的应用正在使用从独立的 web 代理，则可能使用 https://login.microsoftonline.com/nativeclient。 查看和剪裁所有未使用或不必要的重定向 Uri 定期进行。 |
+| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 保持所有重定向 Uri 的所有权并确保它们的 DNS 记录保持最新状态。 不要在 Uri 中使用通配符 （*）。 对于 web 应用，请确保所有 Uri 安全并且经过加密 （例如，使用 https 方案）。 对于公共客户端，使用特定于平台的重定向 Uri 可能的话 （主要用于 iOS 和 Android）。 否则，使用重定向 Uri 使用大量的随机性，以避免冲突时调用返回到您的应用程序。 如果你的应用正在使用从独立的 web 代理，则可能使用 https://login.microsoftonline.com/nativeclient 。 查看和剪裁所有未使用或不必要的重定向 Uri 定期进行。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 如果在目录中注册您的应用程序，则最小化和手动监视应用程序注册所有者的列表。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 不支持[OAuth2 隐式授权流](v2-oauth2-implicit-grant-flow.md)除非明确要求。 了解有关有效的方案[此处](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 不要使用[资源所有者密码凭据流 (ROPC)](v2-oauth-ropc.md)，它直接处理用户的密码。 此流需要很高的信任和用户风险，并仅用于时不能使用其他、 更安全的流。 |

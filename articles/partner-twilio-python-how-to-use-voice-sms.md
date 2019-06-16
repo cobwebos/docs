@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457662"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>如何通过 Python 使用 Twilio 实现语音和 SMS 功能
@@ -42,21 +42,21 @@ Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。 
 Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
 ### <a id="Verbs"></a>Twilio 谓词
-API 利用了 Twilio 谓词；例如，**&lt;Say&gt;** 谓词指示 Twilio 在呼叫时传递语音消息。
+API 利用了 Twilio 谓词；例如， **&lt;Say&gt;** 谓词指示 Twilio 在呼叫时传递语音消息。
 
 下面是 Twilio 谓词的列表。 通过 [Twilio 标记语言文档][twiml]了解其他谓词和功能。
 
-* **&lt;Dial&gt;**：将呼叫方连接到其他电话。
-* **&lt;Gather&gt;**：收集通过电话按键输入的数字。
-* **&lt;Hangup&gt;**：结束呼叫。
-* **&lt;Pause&gt;**：安静地等待指定的秒数。
-* **&lt;Play&gt;**：播放音频文件。
-* **&lt;Queue&gt;**：添加到呼叫方队列。
-* **&lt;Record&gt;**：记录呼叫方的声音并返回包含记录信息的文件 URL。
-* **&lt;Redirect&gt;**：将对呼叫或短信的控制转移到其他 URL 上的 TwiML。
-* **&lt;Reject&gt;**：拒绝对 Twilio 号码的传入呼叫且无需付费。
-* **&lt;Say&gt;**：将文本转换为通话语音。
-* **&lt;Sms&gt;**：发送短信。
+* **&lt;Dial&gt;** ：将呼叫方连接到其他电话。
+* **&lt;Gather&gt;** ：收集通过电话按键输入的数字。
+* **&lt;Hangup&gt;** ：结束呼叫。
+* **&lt;Pause&gt;** ：安静地等待指定的秒数。
+* **&lt;Play&gt;** ：播放音频文件。
+* **&lt;Queue&gt;** ：添加到呼叫方队列。
+* **&lt;Record&gt;** ：记录呼叫方的声音并返回包含记录信息的文件 URL。
+* **&lt;Redirect&gt;** ：将对呼叫或短信的控制转移到其他 URL 上的 TwiML。
+* **&lt;Reject&gt;** ：拒绝对 Twilio 号码的传入呼叫且无需付费。
+* **&lt;Say&gt;** ：将文本转换为通话语音。
+* **&lt;Sms&gt;** ：发送短信。
 
 ### <a id="TwiML"></a>TwiML
 TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何处理呼叫或 SMS 的 Twilio 谓词为基础。
@@ -75,7 +75,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 ## <a id="CreateAccount"></a>创建 Twilio 帐户
 准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级帐户。
 
-注册 Twilio 帐户时，将收到帐户 SID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 SID 和身份验证令牌会分别显示在 [Twilio 控制台][twilio_console]上标记为“帐户 SID”和“身份验证令牌”的字段中。
+注册 Twilio 帐户时，将收到帐户 SID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 SID 和身份验证令牌会分别显示在 [Twilio 控制台][twilio_console]上标记为“帐户 SID”  和“身份验证令牌”  的字段中。
 
 ## <a id="create_app"></a>创建 Python 应用程序
 使用 Twilio 服务且在 Azure 中运行的 Python 应用程序与任何其他使用 Twilio 服务的 Python 应用程序没有任何差别。 Twilio 服务是基于 REST 的且可通过几种方法从 Python 中调用，本文将重点介绍如何将 Twilio 服务与 [GitHub 提供的用于 Python 的 Twilio 库][twilio_python]一起使用。 有关使用用于 Python 的 Twilio 库的详细信息，请参阅 [https://www.twilio.com/docs/libraries/python][twilio_lib_docs]。
@@ -90,7 +90,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 ### <a name="set-the-dns-name-label"></a>设置 DNS 名称标签
   1. 转到 [公共 IP 地址][azure_nsg] 页。
   2. 选择与虚拟机对应的公共 IP。
-  3. 在“配置”部分中设置“DNS 名称标签”。 就此示例而言，它将如此 *your-domain-label*.centralus.cloudapp.azure.com 中所示
+  3. 在“配置”  部分中设置“DNS 名称标签”  。 就此示例而言，它将如此 *your-domain-label*.centralus.cloudapp.azure.com 中所示
 
 能够通过 SSH 连接到虚拟机后，便可以安装所选的 Web 框架（Python 中两个最著名的 Web 框架是 [Flask](http://flask.pocoo.org/) 和 [Django](https://www.djangoproject.com)）。 只需运行 `pip install` 命令即可安装其中任一个 Web 框架。
 
@@ -103,7 +103,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
    
         $ pip install twilio
 
-    - 或 -
+    \- 或 -
 
 * 从 GitHub 下载用于 Python 的 Twilio 库 ([https://github.com/twilio/twilio-python][twilio_python]) 并进行安装，如下所示：
 

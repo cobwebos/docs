@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
 ms.openlocfilehash: 6ec981164de0ff61b0e83d54255d046a1418ed96
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66000105"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>自动缩放 Azure HDInsight 群集（预览）
@@ -20,24 +20,24 @@ ms.locfileid: "66000105"
 > [!Important]
 > 自动缩放功能仅适用于 5 月 8 日 2019年之后创建的 Spark、 Hive 和 MapReduce 群集。 
 
-Azure HDInsight 群集自动缩放功能自动缩放辅助角色节点数在群集中向上和向下。 不能当前缩放其他类型的群集中的节点。  创建新 HDInsight 群集期间，可以设置最小和最大工作节点数。 然后，自动缩放监视 analytics 负载的资源要求，并向上或向下缩放辅助角色节点数。 没有此功能无任何额外费用。
+Azure HDInsight 的群集自动缩放功能可以自动增加和减少群集中的工作器节点数。 目前无法缩放群集中其他类型的节点。  创建新 HDInsight 群集期间，可以设置最小和最大工作节点数。 自动缩放功能随后监视分析负载的资源需求，并增加或减少工作器节点数。 此功能不会产生额外的费用。
 
 ## <a name="cluster-compatibility"></a>群集兼容性
 
-下表介绍的群集类型和自动缩放功能与兼容的版本。
+下表描述了与自动缩放功能兼容的群集类型和版本。
 
-| Version | Spark | Hive | LLAP | Hbase | Kafka | Storm | ML |
+| Version | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3.6 而无需 ESP | “是” | 是 | 否 | 否 | 否 | 否 | “否” |
-| HDInsight 4.0 而无需 ESP | “是” | 是 | 否 | 否 | 否 | 否 | “否” |
-| 对于 ESP HDInsight 3.6 | “是” | 是 | 否 | 否 | 否 | 否 | “否” |
-| 对于 ESP HDInsight 3.6 | “是” | 是 | 否 | 否 | 否 | 否 | “否” |
+| 不包含 ESP 的 HDInsight 3.6 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
+| 不包含 ESP 的 HDInsight 4.0 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
+| 包含 ESP 的 HDInsight 3.6 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
+| 包含 ESP 的 HDInsight 3.6 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
 
 ## <a name="how-it-works"></a>工作原理
 
-可以选择基于负载的缩放或基于计划的缩放 HDInsight 群集。 基于负载的缩放会更改在群集中，将设置，以确保最佳 CPU 利用率并降低运行成本的范围内的节点数。
+可为 HDInsight 群集选择基于负载的缩放或基于计划的缩放。 基于负载的缩放会在设置的范围内更改群集中的节点数，以确保获得最佳的 CPU 利用率并尽量降低运行成本。
 
-基于计划的缩放更改群集中的节点数根据特定时间才会生效的条件。 这些条件缩放到所需数目的节点群集。
+基于计划的缩放根据特定时间生效的条件更改群集中的节点数。 这些条件会将群集缩放到所需的节点数。
 
 ### <a name="metrics-monitoring"></a>指标监视
 
@@ -50,73 +50,73 @@ Azure HDInsight 群集自动缩放功能自动缩放辅助角色节点数在群�
 * **每个节点的已使用内存**：工作节点上的负载。 使用了 10 GB 内存的工作节点的负载被认为比使用了 2 GB 内存的工作节点的负载更大。
 * **每个节点的应用程序主机数**：在工作节点上运行的应用程序主机 (AM) 容器的数量。 托管两个 AM 容器的工作节点被认为比托管零个 AM 容器的工作节点更重要。
 
-每 60 秒检查一次上述指标。 自动缩放可以纵向扩展和缩减决策基于这些指标。
+每 60 秒检查一次上述指标。 自动缩放根据这些指标做出纵向扩展和纵向缩减决策。
 
-### <a name="load-based-cluster-scale-up"></a>基于负载的群集向上扩展
+### <a name="load-based-cluster-scale-up"></a>基于负载的群集纵向扩展
 
 检测到以下情况时，自动缩放将发出纵向扩展请求：
 
-* 挂起的 CPU 总数大于总可用 CPU 的时间超过 3 分钟。
-* 挂起的内存总数大于可用内存总量超过 3 分钟。
+* 总待处理 CPU 大于总可用 CPU 的时间超过 3 分钟。
+* 总待处理内存大于总可用内存的时间超过 3 分钟。
 
-HDInsight 服务计算多少新辅助角色节点所需满足的当前 CPU 和内存需求，然后添加所需的节点数的不断增长的请求。
+HDInsight 服务将计算需要多少个新的工作器节点才能满足当前的 CPU 和内存要求，然后发出纵向扩展请求来添加所需的节点数。
 
-### <a name="load-based-cluster-scale-down"></a>基于负载的群集缩减
+### <a name="load-based-cluster-scale-down"></a>基于负载的群集纵向缩减
 
 检测到以下情况时，自动缩放将发出纵向缩减请求：
 
 * 总待处理 CPU 小于总可用 CPU 的时间超过 10 分钟。
 * 总待处理内存小于总可用内存的时间超过 10 分钟。
 
-根据每个节点的当前 CPU 和内存要求 AM 容器数，自动缩放发出一个请求将删除一定数量的节点。 该服务还检测它们节点是基于当前的作业执行的删除候选项。 缩放减少操作首先取消配置节点，，并从群集删除它们。
+根据每个节点的 AM 容器数目以及当前的 CPU 和内存要求，自动缩放将发出请求来删除特定数量的节点。 该服务还会根据当前的作业执行来检测哪些节点可以删除。 纵向缩减操作首先会解除节点，然后从群集中删除它们。
 
 ## <a name="get-started"></a>开始使用
 
-### <a name="create-a-cluster-with-load-based-autoscaling"></a>创建具有基于负载的自动缩放的群集
+### <a name="create-a-cluster-with-load-based-autoscaling"></a>使用基于负载的自动缩放创建群集
 
-若要启用基于负载的缩放的自动缩放功能，作为正常的群集创建过程的一部分完成以下步骤：
+若要结合基于负载的缩放启用自动缩放功能，请在创建普通群集的过程中完成以下步骤：
 
-1. 选择“自定义(大小、设置、应用)”而非“快速创建”。
-1. 上**自定义**第 5 步 (**群集大小**)，检查**辅助角色节点自动缩放**复选框。
-1. 选择的选项**基于负载**下**自动缩放类型**。
+1. 选择“自定义(大小、设置、应用)”  而非“快速创建”  。
+1. 在“自定义”安装的步骤 5（指定“群集大小”）中，选中“工作器节点自动缩放”复选框。   
+1. 在“自动缩放类型”下选择“基于负载”选项。  
 1. 为以下属性输入所需的值：  
 
-    * 初始工作节点数。  
-    * 最小工作节点数。  
-    * 最大工作节点数。  
+    * 初始工作节点数  。  
+    * 最小  工作节点数。  
+    * 最大  工作节点数。  
 
-    ![启用辅助角色节点基于负载的自动缩放选项](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
+    ![启用工作器节点的基于负载的自动缩放选项](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
 
 工作节点的初始数量必须介于最小值和最大值之间（含最大值和最小值）。 此值定义创建群集时的群集初始大小。 最小工作节点数必须大于零。
 
-### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>创建具有基于计划的自动缩放的群集
+### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>使用基于计划的自动缩放创建群集
 
-若要启用基于计划的缩放的自动缩放功能，作为正常的群集创建过程的一部分完成以下步骤：
+若要结合基于计划的缩放启用自动缩放功能，请在创建普通群集的过程中完成以下步骤：
 
-1. 选择“自定义(大小、设置、应用)”而非“快速创建”。
-1. 上**自定义**第 5 步 (**群集大小**)，检查**辅助角色节点自动缩放**复选框。
-1. 输入**辅助节点数**，它可以控制扩展群集的限制。
-1. 选择的选项**计划基于**下**自动缩放类型**。
-1. 单击**配置**以打开**自动缩放配置**窗口。
-1. 选择你的时区，然后单击 **+ 添加条件**
-1. 选择新的条件应该应用到一周的日期。
-1. 编辑条件的生效时间及群集应缩放到的节点数的时间。
-1. 如果需要，添加更多条件。
+1. 选择“自定义(大小、设置、应用)”  而非“快速创建”  。
+1. 在“自定义”安装的步骤 5（指定“群集大小”）中，选中“工作器节点自动缩放”复选框。   
+1. 输入**工作器节点的数目**，以控制纵向扩展群集的限制。
+1. 在“自动缩放类型”下选择“基于计划”选项。  
+1. 单击“配置”打开“自动缩放配置”窗口。  
+1. 选择时区，然后单击“+ 添加条件” 
+1. 选择新条件要应用到的星期日期。
+1. 编辑该条件生效的时间，以及群集要缩放到的节点数。
+1. 根据需要添加更多条件。
 
-    ![启用辅助角色节点基于计划的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    ![启用工作器节点的基于计划的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
 
-节点数必须介于 1 和添加条件之前输入的辅助角色节点数之间。
+节点数最小为 1，最大为添加条件之前输入的工作器节点数。
 
 ### <a name="final-creation-steps"></a>最终创建步骤
 
-对于基于负载和计划的缩放，请通过单击选择辅助角色节点的 VM 类型**辅助角色节点大小**并**头节点大小**。 选择每个节点类型的 VM 类型后，可以看到整个群集的估计的开销范围。 调整以适合你的预算的 VM 类型。
+对于基于负载和基于计划的缩放，请单击“工作器节点大小”和“头节点大小”选择工作器节点的 VM 类型。   为每个节点类型选择 VM 类型后，可以看到整个群集的估算成本范围。 请根据预算调整 VM 类型。
 
-![启用辅助角色节点基于计划的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
+![启用工作器节点的基于计划的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
 
 你的订阅具有针对每个区域的容量配额。 头节点核心总数加最大工作节点数不能超过容量配额。 但是，此配额是软性限制；始终可创建支持票证来轻松地增加此配额。
 
 > [!Note]  
-> 如果你超出总核心配额限制，你将收到错误消息，指出最大节点超出此区域中的可用内核，请选择另一个区域或联系支持人员增加配额。
+> 如果超出总核心配额限制，将收到一条错误消息，指出“最大节点数超出此区域中的可用核心数，请选择其他区域或联系客户支持以增加配额”。
 
 有关使用 Azure 门户创建 HDInsight 群集的详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。  
 
@@ -124,7 +124,7 @@ HDInsight 服务计算多少新辅助角色节点所需满足的当前 CPU 和�
 
 #### <a name="load-based-autoscaling"></a>基于负载的自动缩放
 
-您可以创建 HDInsight 群集与基于负载的自动缩放的 Azure 资源管理器模板，通过添加`autoscale`到节点`computeProfile`  >  `workernode`的属性部分`minInstanceCount`和`maxInstanceCount`作为下面的 json 代码段中所示。
+可以使用 Azure 资源管理器模板创建支持基于负载的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到包含属性 `minInstanceCount` 和 `maxInstanceCount` 的 `computeProfile` > `workernode` 节，如以下 JSON 代码片段所示。
 
 ```json
 {
@@ -154,7 +154,7 @@ HDInsight 服务计算多少新辅助角色节点所需满足的当前 CPU 和�
 
 #### <a name="schedule-based-autoscaling"></a>基于计划的自动缩放
 
-您可以创建 HDInsight 群集基于计划的自动缩放 Azure 资源管理器模板，通过添加`autoscale`到节点`computeProfile`  >  `workernode`部分。 `autoscale`节点包含`recurrence`具有`timezone`和`schedule`描述更改将时生效。
+可以使用 Azure 资源管理器模板创建支持基于计划的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到 `computeProfile` > `workernode` 节。 `autoscale` 节点包含 `recurrence`，其中的 `timezone` 和 `schedule` 描述了更改生效的时间。
 
 ```json
 {
@@ -186,9 +186,9 @@ HDInsight 服务计算多少新辅助角色节点所需满足的当前 CPU 和�
 
 ### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>为正在运行的群集启用和禁用自动缩放
 
-若要在正在运行的群集上启用自动缩放，请选择**群集大小**下**设置**。 然后单击**启用自动缩放**。 选择您想和输入的基于负载或基于计划的缩放选项的自动缩放的类型。 最后，单击“保存”。
+若要在运行中的群集上启用自动缩放，请选择“设置”下的“群集大小”。   然后单击“启用自动缩放”。  选择所需的自动缩放类型，然后输入基于负载或基于计划的缩放选项。 最后，单击“保存”  。
 
-![启用辅助角色节点基于计划的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+![启用工作器节点的基于计划的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
 
 ## <a name="best-practices"></a>最佳做法
 
@@ -213,29 +213,29 @@ HDInsight 服务计算多少新辅助角色节点所需满足的当前 CPU 和�
 
 ### <a name="cluster-status"></a>群集状态
 
-在 Azure 门户中列出的群集状态可以帮助您监视自动缩放活动。
+Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
 
-![启用辅助角色节点基于负载的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+![启用工作器节点的基于负载的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
 
-以下列表介绍了所有可能会看到群集状态消息。
+以下列表解释了你可能会看到的所有群集状态消息。
 
 | 群集状态 | 说明 |
 |---|---|
-| 正在运行 | 群集运行正常。 所有以前的自动缩放活动已成功完成。 |
+| 正在运行 | 群集在正常运行。 所有以前的自动缩放活动已成功完成。 |
 | 正在更新  | 正在更新群集自动缩放配置。  |
-| HDInsight 配置  | 群集增加或减少操作正在进行中。  |
-| 更新时出错  | HDInsight 自动缩放配置更新过程中遇到问题。 客户可以选择以重试更新或禁用自动缩放。  |
-| 错误  | 群集后，出错了，并且不可用。 删除此群集，并创建一个新。  |
+| HDInsight 配置  | 某个群集纵向扩展或缩减操作正在进行。  |
+| 更新时出错  | 更新自动缩放配置期间 HDInsight 遇到问题。 客户可以选择重试更新或禁用自动缩放。  |
+| 错误  | 群集发生错误且不可用。 请删除此群集，然后新建一个。  |
 
-若要查看在群集中当前的节点数，请转到**群集大小**图表上**概述**页上为群集，或单击**群集大小**下**设置**。
+若要查看群集中当前的节点数，请转到群集“概述”页上的“群集大小”图表，或单击“设置”下的“群集大小”。    
 
-### <a name="operation-history"></a>运行历史记录
+### <a name="operation-history"></a>操作历史记录
 
-可查看群集指标中包含的群集增加和减少历史记录。 此外可以通过过去一天、 周或其他时间段内的列出所有的缩放操作。
+可查看群集指标中包含的群集增加和减少历史记录。 还可以列出过去一天、过去一周或其他时间段的所有缩放操作。
 
-选择**指标**下**监视**。 然后单击**添加的度量值**并**活动工作线程数**从**指标**下拉框中。 单击右上方，若要更改的时间范围中的按钮。
+在“监视”下选择“指标”。   然后单击“添加指标”，并从“指标”下拉框中选择“活动辅助角色数”。    单击右上角的按钮更改时间范围。
 
-![启用辅助角色节点基于计划的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+![启用工作器节点的基于计划的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 
 ## <a name="next-steps"></a>后续步骤

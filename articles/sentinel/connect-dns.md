@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 6429568b33ece3ed4f26614e55e8c3069dd65d71
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65204407"
 ---
 # <a name="connect-your-domain-name-server"></a>连接连接到域的名称服务器
@@ -51,7 +51,7 @@ DNS 连接是通过 DNS 计算机上安装代理来完成。 该代理从 DNS �
 
 2. 如果你的 DNS 机不是 Azure VM:
     1. 单击**下载并安装适用于 Windows 非 Azure 计算机代理**。
-    1. 在中**直接代理**窗口中，选择**下载 Windows 代理 （64 位）** 或**下载 Windows 代理 （32 位）**。
+    1. 在中**直接代理**窗口中，选择**下载 Windows 代理 （64 位）** 或**下载 Windows 代理 （32 位）** 。
     1. 在 DNS 计算机上安装代理。 复制**工作区 ID**，**主键**，并**辅助密钥**并在安装过程中出现提示时使用。
 
 3. 若要使用 Log Analytics 中的 DNS 日志相关的架构，搜索**DnsEvents**。

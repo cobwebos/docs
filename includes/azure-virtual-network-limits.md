@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 05/15/2019
+ms.date: 06/13/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: cb586be1a139b331c259a1197cc62e7ca4f25666
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 813c8e92907a60046c2e53f97d4dd05125076241
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238253"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133195"
 ---
 <a name="virtual-networking-limits-classic"></a>以下限制仅适用于网络通过管理资源**经典**每个订阅的部署模型。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -81,7 +81,7 @@ ms.locfileid: "66238253"
 | 每个资源的规则数，基本 | 250 |
 | 每个资源的规则数，标准 | 1,500 | 
 | 每个 IP 配置的规则数 | 299 |
-| 每个 NIC 的规则数 | 500 |
+| 每个 NIC 的规则数 | 300 |
 | 前端 IP 配置数基本 | 200 |
 | 前端 IP 配置数标准 | 600 |
 | 后端池基本 | 100，单个可用性集中 |

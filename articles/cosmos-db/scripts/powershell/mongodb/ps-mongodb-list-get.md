@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB 列表，并通过 MongoDB API 的操作
-description: Azure PowerShell 脚本-Azure Cosmos DB 列表，并通过 MongoDB API 的操作
+title: Azure PowerShell 脚本 - Azure Cosmos DB MongoDB API 的列出和获取操作
+description: Azure PowerShell 脚本 - Azure Cosmos DB MongoDB API 的列出和获取操作
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: samples
 ms.date: 05/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: af0ec094e7f77cf9c55456ce026c67a4ebae493d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66247434"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>列表，并通过 Azure Cosmos DB 的 MongoDB API 的数据库和图形
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>列出和获取 Azure Cosmos DB 的数据库和图 - MongoDB API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

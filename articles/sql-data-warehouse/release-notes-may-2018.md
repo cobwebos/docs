@@ -11,10 +11,10 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: eb933e8085ec956be713a18602b8baff9c87084b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65912199"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 5 月 
@@ -38,7 +38,7 @@ ALTER DATABASE { database_name } SET { AUTO_CREATE_STATISTICS { OFF | ON } } [;]
 作为最佳做法和指导，我们建议将 `AUTO_CREATE_STATISTICS` 选项设置为 `ON`。
 
 > [!NOTE]
-> 默认已对所有新数据仓库启用自动统计创建。
+> 默认已对所有新数据仓库启用自动统计创建。 
 >  
 
 有关更多详细信息，请参阅 [ALTER DATABASE SET 选项](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)一文。

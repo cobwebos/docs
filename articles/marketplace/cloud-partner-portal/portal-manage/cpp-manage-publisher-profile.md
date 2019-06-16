@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: pabutler
 ms.openlocfilehash: c97bf10daa8f062cc833c7d7c5f7b0ca4835ca6f
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257545"
 ---
 # <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>管理 Azure Marketplace 和 AppSource 发布者个人资料

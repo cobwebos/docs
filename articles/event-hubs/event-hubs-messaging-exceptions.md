@@ -14,10 +14,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 7b6323e02225be3d954e4ee91ea06952bb3ce396
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001765"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>事件中心消息传送异常
@@ -83,9 +83,9 @@ ms.locfileid: "66001765"
     
     解决方法：修改分区分发策略，或尝试 [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) 可能会有所帮助。
 
-2. 事件中心命名空间没有足够的吞吐量单位（可以在 [Azure 门户](https://portal.azure.com)中检查事件中心命名空间窗口中的“指标”屏幕来确认）。 门户显示聚合（1 分钟）的信息，但吞吐量是实时测量的 - 因此吞吐量只是一个估计值。
+2. 事件中心命名空间没有足够的吞吐量单位（可以在 [Azure 门户](https://portal.azure.com)中检查事件中心命名空间窗口中的“指标”  屏幕来确认）。 门户显示聚合（1 分钟）的信息，但吞吐量是实时测量的 - 因此吞吐量只是一个估计值。
 
-    解决方法：增加命名空间上的吞吐量单位可有所帮助。 可在门户上的事件中心命名空间屏幕的“缩放”窗口中执行此操作。 或者，可以使用[自动膨胀](event-hubs-auto-inflate.md)。
+    解决方法：增加命名空间上的吞吐量单位可有所帮助。 可在门户上的事件中心命名空间屏幕的“缩放”  窗口中执行此操作。 或者，可以使用[自动膨胀](event-hubs-auto-inflate.md)。
 
 ### <a name="error-code-50001"></a>错误代码 50001
 

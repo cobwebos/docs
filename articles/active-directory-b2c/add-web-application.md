@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: a1d098550c6fb733e088f8ad211d29f48f55d2d6
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511702"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>向 Azure Active Directory B2C 租户添加 Web API 应用程序
 
- 在租户中注册 Web API 资源，以便它们可以接受并响应请求的客户端应用程序提供访问令牌。 本文介绍如何在 Azure Active Directory (Azure AD) B2C 中注册应用程序。
+ 在租户中注册 Web API 资源，以便他们可以接受并响应呈现访问令牌的客户端应用程序的请求。 本文介绍如何在 Azure Active Directory (Azure AD) B2C 中注册应用程序。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
 4. 选择“应用程序”，然后选择“添加”   。
 5. 输入应用程序的名称。 例如，“webapi1”  。
 6. 对于“包括 Web 应用/Web API”和“允许隐式流”，请选择“是”。   
-7. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点  。 在生产应用程序，你可能会设置回复 URL 的值如`https://localhost:44332`。 出于测试目的，将回复 URL 设置为`https://jwt.ms`。
+7. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点  。 在生产应用程序中，可以将回复 URL 设置为 `https://localhost:44332` 之类的值。 出于测试目的，将回复 URL 设置为 `https://jwt.ms`。
 8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。  包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api`。
 9. 单击**创建**。
 10. 在属性页上，记录在配置 Web 应用程序时要使用的应用程序 ID。

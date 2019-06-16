@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
 ms.openlocfilehash: 24b0bc01b5cb4f1d2696a7c9526d586c9b42d0fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60899605"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 对 Web 应用和服务进行深度诊断
@@ -133,7 +133,7 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 * 跟踪特定用户的会话与响应时间，使支持与运营团队能够即时提供客户支持。
 * 确定常用的应用功能，以便能够解答功能优先问题。
 
-客户 DNN 说：“Application Insights 为我们提供了方程式中遗漏的部分，使我们能够根据需要合并、排序、查询及筛选数据。 我们的团队可以使用自己的创意和体验，通过功能强大的查询语言来查找数据，得到相关见解，解决我们甚至都不知道发生了的问题。 很多有意思的回答都是针对开头为‘我想知道，如果...’这样的问题。”
+客户 DNN 说：“Application Insights 为我们提供了方程式中遗漏的部分，使我们能够根据需要合并、排序、查询及筛选数据。 我们的团队可以使用自己的创意和体验，通过功能强大的查询语言来查找数据，得到相关见解，解决我们甚至都不知道发生了的问题。 很多有意思的回答都是针对开头为‘我想知道，如果...’这样的问题。” 
 
 ## <a name="development-tools-integration"></a>开发工具集成
 ### <a name="configuring-application-insights"></a>配置 Application Insights
@@ -166,7 +166,7 @@ Visual Studio 和 Eclipse 提供相应的工具来为开发中的项目配置正
 ## <a name="next-steps"></a>后续步骤
 Application Insights 入门非常简单。 主要选项包括：
 
-* [IIS 服务器](../../azure-monitor/app/monitor-performance-live-website-now.md)，，另外还用于[Azure 应用服务](../../azure-monitor/app/app-insights-overview.md)。
+* [IIS 服务器](../../azure-monitor/app/monitor-performance-live-website-now.md)，以及 [Azure 应用服务](../../azure-monitor/app/app-insights-overview.md)。
 * 在开发期间检测项目。 可以针对 [ASP.NET](../../azure-monitor/app/asp-net.md) 或 [Java](../../azure-monitor/app/java-get-started.md) 应用以及 [Node.js](../../azure-monitor/app/nodejs.md) 和很多[其他类型](../../azure-monitor/app/platforms.md)的应用执行此操作。 
 * 通过添加简短的代码片段来检测[任何网页](../../azure-monitor/app/javascript.md)。
 

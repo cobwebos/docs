@@ -12,10 +12,10 @@ ms.date: 04/08/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 8ff3c497372a761bd8a02ae81bc897c8ee297bd0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65794866"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>使用导出-导入迁移知识库
@@ -31,24 +31,24 @@ ms.locfileid: "65794866"
 1. 登录 [QnA Maker 门户](https://qnamaker.ai)。
 1. 选择要迁移的知识库。
 
-1. 在“设置”页上，选择“导出知识库”，下载包含知识库内容（问题、答案、元数据和从中提取这些内容的数据源的名称）的 .tsv 文件。
+1. 在“设置”  页上，选择“导出知识库”  ，下载包含知识库内容（问题、答案、元数据和从中提取这些内容的数据源的名称）的 .tsv 文件。
 
-1. 从顶部菜单选择“创建知识库”，然后创建一个空知识库。 
+1. 从顶部菜单选择“创建知识库”  ，然后创建一个空知识库。 
 
     ![设置数据源](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - 为服务提供一个“名称”。 支持重复的名称，也可以使用特殊字符。
+    - 为服务提供一个“名称”  。 支持重复的名称，也可以使用特殊字符。
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
     ![创建知识库](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-1. 在此新的知识库中，打开“设置”选项卡，然后选择“导入知识库”。 此操作可导入问题、答案和元数据，同时保留从中提取这些内容的数据源的名称。
+1. 在此新的知识库中，打开“设置”选项卡，然后选择“导入知识库”   。 此操作可导入问题、答案和元数据，同时保留从中提取这些内容的数据源的名称。
 
    ![导入知识库](../media/qnamaker-how-to-migrate-kb/Import.png)
 
-1. 使用“测试”面板测试新知识库。 了解如何[测试知识库](../How-To/test-knowledge-base.md)。
-1. 发布知识库。 了解如何[发布知识库](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)。
+1. 使用“测试”面板测试新知识库  。 了解如何[测试知识库](../How-To/test-knowledge-base.md)。
+1. 发布知识库  。 了解如何[发布知识库](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)。
 1. 在应用程序或机器人代码中使用此终结点。 参阅此处，了解如何[创建 QnA 机器人](../Tutorials/create-qna-bot.md)。
 
     ![QnA Maker 值](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)

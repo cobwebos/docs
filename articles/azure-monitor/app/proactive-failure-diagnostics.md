@@ -14,10 +14,10 @@ ms.date: 12/18/2018
 ms.reviewer: yossiy
 ms.author: mbullwin
 ms.openlocfilehash: cfa00504cd2a05985fde2af3357418eac8baceeb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61299031"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
@@ -105,7 +105,7 @@ ms.locfileid: "61299031"
 
 ## <a name="review-recent-alerts"></a>查看最近的警报
 
-单击“智能检测”以转到最近警报：
+单击“智能检测”  以转到最近警报：
 
 ![警报摘要](./media/proactive-failure-diagnostics/070.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "61299031"
 
 * 我们尝试针对应用中断或降级发出警报，但只有可以完全了解语义以及对应用或用户的影响。
 
-所以你们会查看我的数据？
+所以你们会查看我的数据？ 
 
 * 不。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
 

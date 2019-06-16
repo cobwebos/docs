@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: hrasheed
 ms.openlocfilehash: 7f7f6fe31afe35d9ccfd6ee33617bd7e4fbe46b7
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409560"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
@@ -31,26 +31,26 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* 将现有[存储容器](../storage/blobs/storage-quickstart-blobs-portal.md)。  
+* 一个现有的[存储容器](../storage/blobs/storage-quickstart-blobs-portal.md)。  
 
-* 如果使用 PowerShell，则需要[Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果使用 PowerShell，你将需要 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
-* 如果想要使用 Azure CLI 和你尚未安装它，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 若要使用 Azure CLI 但尚未安装它，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-* 如果使用[Python](https://www.python.org/downloads/)，2.7 或更高版本。
+* 如果使用 [Python](https://www.python.org/downloads/)，请安装 2.7 或更高版本。
 
-* 如果使用C#，Visual Studio 必须是 2013年或更高版本。
+* 如果使用 C#，Visual Studio 的版本必须是 2013 或更高。
 
-* [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)为存储帐户。 这将是`wasb://`适用于 Azure 存储`abfs://`有关 Azure 数据湖存储第 2 代或`adl://`的 Azure 数据湖存储 Gen1。 如果为 Azure 存储或数据湖存储第 2 代启用了安全传输，则 URI 将为`wasbs://`或`abfss://`分别另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 存储帐户的 [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 将是 `wasbs://` 或 `abfss://`。另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
-* 若要添加到共享访问签名现有 HDInsight 群集。 如果没有，则可以使用 Azure PowerShell 创建群集，并在创建群集期间添加共享访问签名。
+* 共享访问签名要添加到的现有 HDInsight 群集。 如果没有，则可以使用 Azure PowerShell 创建群集，并在创建群集期间添加共享访问签名。
 
 * 来自 [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature) 的示例文件。 此存储库包含以下项：
 
   * Visual Studio 项目，可以创建存储容器、存储策略，以及配合 HDInsight 使用的 SAS
   * Python 脚本，可以创建存储容器、存储策略，以及配合 HDInsight 使用的 SAS
-  * PowerShell 脚本，可以创建 HDInsight 群集并将其配置为使用 SAS。 使用更新的版本进一步下面。
-  * 示例文件： `hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
+  * PowerShell 脚本，可以创建 HDInsight 群集并将其配置为使用 SAS。 下面进一步使用更新的版本。
+  * 示例文件：`hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
 
 ## <a name="shared-access-signatures"></a>共享访问签名
 
@@ -80,9 +80,9 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 有关共享访问签名的详细信息，请参阅[了解 SAS 模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
-## <a name="create-a-stored-policy-and-sas"></a>创建存储的策略和 SAS
+## <a name="create-a-stored-policy-and-sas"></a>创建存储策略和 SAS
 
-保存的每个方法结束时生成的 SAS 令牌。 令牌将类似于以下形式：
+保存每个方法结束时生成的 SAS 令牌。 令牌如下所示：
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
@@ -90,7 +90,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-替换`RESOURCEGROUP`， `STORAGEACCOUNT`，和`STORAGECONTAINER`替换为你现有的存储容器的适当值。 将目录更改为`hdinsight-dotnet-python-azure-storage-shared-access-signature-master`或修订`-File`参数以包含的绝对路径`Set-AzStorageblobcontent`。 输入以下 PowerShell 命令：
+请将 `RESOURCEGROUP`、`STORAGEACCOUNT` 和 `STORAGECONTAINER` 替换为现有存储容器的相应值。 将目录更改为 `hdinsight-dotnet-python-azure-storage-shared-access-signature-master`，或修改 `-File` 参数以包含 `Set-AzStorageblobcontent` 的绝对路径。 输入以下 PowerShell 命令：
 
 ```PowerShell
 $resourceGroupName = "RESOURCEGROUP"
@@ -154,9 +154,9 @@ Set-AzStorageblobcontent `
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
-在本部分中的变量使用基于 Windows 环境。 将需要 bash 或其他环境的细微的变体。
+本部分使用的变量基于 Windows 环境。 对于 bash 或其他环境，需要做出轻微的改动。
 
-1. 替换`STORAGEACCOUNT`，和`STORAGECONTAINER`替换为你现有的存储容器的适当值。
+1. 请将 `STORAGEACCOUNT` 和 `STORAGECONTAINER` 替换为现有存储容器的相应值。
 
     ```azurecli
     # set variables
@@ -173,14 +173,14 @@ Set-AzStorageblobcontent `
     az storage account keys list --account-name %AZURE_STORAGE_ACCOUNT% --query "[0].{PrimaryKey:value}" --output table
     ```
 
-2. 设置为以供将来使用的变量检索的主键。 替换为`PRIMARYKEY`与检索到前面的步骤中的值，然后输入以下命令：
+2. 将检索到的主键设置为某个变量，供稍后使用。 请将 `PRIMARYKEY` 替换为在前一步骤中检索到的值，然后输入以下命令：
 
     ```azurecli
     #set variable for primary key
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```
 
-3. 将目录更改为`hdinsight-dotnet-python-azure-storage-shared-access-signature-master`或修订`--file`参数以包含的绝对路径`az storage blob upload`。 执行剩余的命令：
+3. 将目录更改为 `hdinsight-dotnet-python-azure-storage-shared-access-signature-master`，或修改 `--file` 参数以包含 `az storage blob upload` 的绝对路径。 执行剩余的命令：
 
     ```azurecli
     # Create stored access policy on the containing object
@@ -201,17 +201,17 @@ Set-AzStorageblobcontent `
 
 ### <a name="using-python"></a>使用 Python
 
-打开`SASToken.py`文件，并替换`storage_account_name`， `storage_account_key`，和`storage_container_name`替换为现有的存储容器，然后运行该脚本的相应值。
+打开 `SASToken.py` 文件，将 `storage_account_name`、`storage_account_key` 和 `storage_container_name` 替换为现有存储容器的相应值，然后运行该脚本。
 
-您可能需要执行`pip install --upgrade azure-storage`如果收到错误消息`ImportError: No module named azure.storage`。
+如果收到错误消息 `ImportError: No module named azure.storage`，可能需要执行 `pip install --upgrade azure-storage`。
 
 ### <a name="using-c"></a>使用 C#
 
 1. 在 Visual Studio 中打开解决方案。
 
-2. 在解决方案资源管理器，右键单击**SASExample**项目，然后选择**属性**。
+2. 在解决方案资源管理器中，右键单击“SASExample”项目并选择“属性”。  
 
-3. 选择“设置”，并添加以下条目的值：
+3. 选择“设置”  ，并添加以下条目的值：
 
    * StorageConnectionString：想要为其创建存储策略和 SAS 的存储帐户的连接字符串。 格式应为 `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`，其中 `myaccount` 是存储帐户名称，`mykey` 是存储帐户密钥。
 
@@ -227,11 +227,11 @@ Set-AzStorageblobcontent `
 
 创建 HDInsight 群集时，必须指定主存储帐户，可以选择性地指定其他存储帐户。 这两种添加存储的方法都需要对所用存储帐户和容器拥有完全访问权限。
 
-要使用共享访问签名来限制对容器的访问，请将一个自定义条目添加到群集的 **core-site** 配置中。 使用 PowerShell 创建群集期间或者使用 Ambari 的群集创建之后，您可以添加条目。
+要使用共享访问签名来限制对容器的访问，请将一个自定义条目添加到群集的 **core-site** 配置中。 可以在创建群集期间使用 PowerShell 添加该条目，或者在创建群集之后使用 Ambari 添加该条目。
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>创建使用 SAS 的群集
 
-替换`CLUSTERNAME`， `RESOURCEGROUP`， `DEFAULTSTORAGEACCOUNT`， `STORAGECONTAINER`， `STORAGEACCOUNT`，并`TOKEN`使用适当的值。 输入 PowerShell 命令：
+将 `CLUSTERNAME`、`RESOURCEGROUP`、`DEFAULTSTORAGEACCOUNT`、`STORAGECONTAINER`、`STORAGEACCOUNT` 和 `TOKEN` 替换为相应的值。 输入 PowerShell 命令：
 
 ```powershell
 
@@ -354,29 +354,29 @@ Remove-AzResourceGroup `
 
 ### <a name="use-the-sas-with-an-existing-cluster"></a>对现有群集使用 SAS
 
-如果拥有现有的群集，则可以添加到 SAS **core 站点**配置通过使用以下步骤：
+如果已有一个群集，可使用以下步骤将 SAS 添加到 **core-site** 配置：
 
 1. 打开群集的 Ambari Web UI。 此页的地址是 `https://YOURCLUSTERNAME.azurehdinsight.net`。 出现提示时，请使用在创建群集时使用的管理员名称 (admin) 和密码对群集进行身份验证。
 
-2. 从 Ambari Web UI 的左侧，选择“HDFS”，并在页面的中间选择“配置”选项卡。
+2. 从 Ambari Web UI 的左侧，选择“HDFS”  ，并在页面的中间选择“配置”  选项卡。
 
-3. 选择“高级”选项卡，并向下滚动，找到“自定义 core-site”部分。
+3. 选择“高级”  选项卡，并向下滚动，找到“自定义 core-site”  部分。
 
-4. 展开“自定义 core-site”部分，并滚动到底部，选择“添加属性...”链接。 在“密钥”和“值”字段中使用以下值：
+4. 展开“自定义 core-site”  部分，并滚动到底部，选择“添加属性...”  链接。 在“密钥”  和“值”  字段中使用以下值：
 
-   * **密钥**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-   * **值**：返回的一种方法之前执行 SAS。
+   * **键**：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+   * **值**：前面执行的某个方法返回的 SAS。
 
-     替换`CONTAINERNAME`与容器的名称与一起使用C#或 SAS 应用程序。 替换为`STORAGEACCOUNTNAME`与您使用的存储帐户名称。
+     将 `CONTAINERNAME` 替换为用于 C# 或 SAS 应用程序的容器名称。 将 `STORAGEACCOUNTNAME` 替换为所用的存储帐户名称。
 
-5. 单击“添加”按钮以保存此密钥和值，并单击“保存”按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”。
+5. 单击“添加”  按钮以保存此密钥和值，并单击“保存”  按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”  。
 
-    完成更改后，单击“确定”。
+    完成更改后，单击“确定”  。
 
    > [!IMPORTANT]  
    > 必须重启几个服务才能使更改生效。
 
-6. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”，并从右侧的“服务操作”下拉列表中选择“重启所有受影响项”。 出现提示时，选择“确认全部重启”。
+6. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”  ，并从右侧的“服务操作”  下拉列表中选择“重启所有受影响项”  。 出现提示时，选择“确认全部重启”  。
 
     对 MapReduce2 和 YARN 重复此过程。
 
@@ -384,9 +384,9 @@ Remove-AzResourceGroup `
 
 ## <a name="test-restricted-access"></a>测试限制的访问
 
-使用以下步骤来验证可以仅读取和列出 SAS 存储帐户上的项。
+使用以下步骤验证是否只能读取和列出 SAS 存储帐户中的项。
 
-1. 连接到群集。 替换为`CLUSTERNAME`与群集的名称，然后输入以下命令：
+1. 连接到群集。 将 `CLUSTERNAME` 替换为群集的名称，然后输入以下命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -398,11 +398,11 @@ Remove-AzResourceGroup `
     hdfs dfs -ls wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
     ```
 
-    替换为`SASCONTAINER`SAS 存储帐户创建的容器的名称。 替换为`SASACCOUNTNAME`具有用于 SAS 的存储帐户的名称。
+    将 `SASCONTAINER` 替换为针对 SAS 存储帐户创建的容器名称。 将 `SASACCOUNTNAME` 替换为用于 SAS 的存储帐户名称。
 
     该列表包含创建容器和 SAS 时上传的文件。
 
-3. 使用以下命令验证是否可以读取文件的内容。 替换`SASCONTAINER`和`SASACCOUNTNAME`如在上一步中所示。 替换为`sample.log`与前一个命令中显示的文件的名称：
+3. 使用以下命令验证是否可以读取文件的内容。 按上一步骤中所述替换 `SASCONTAINER` 和 `SASACCOUNTNAME`。 将 `sample.log` 替换为前一个命令中显示的名称：
 
     ```bash
     hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
@@ -418,7 +418,7 @@ Remove-AzResourceGroup `
 
     此命令会将文件下载到名为 **testfile.txt** 的本地文件中。
 
-5. 使用以下命令将本地文件上传到 SAS 存储上名为 testupload.txt 的新文件中：
+5. 使用以下命令将本地文件上传到 SAS 存储上名为 testupload.txt 的新文件中： 
 
     ```bash
     hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt

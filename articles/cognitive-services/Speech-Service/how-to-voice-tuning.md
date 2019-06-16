@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 8d3e25f8217f3cc8772de9fbbb06a407008ca6f6
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65593891"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>微调文本转语音输出
@@ -41,7 +41,7 @@ Azure 的语音服务，可以调整速度、 发音、 卷、 音调、 和的�
 5. 选择**新的优化**。 然后执行以下步骤：
 
    * 找到并选择**的所有订阅**。  
-   * 选择“连接现有订阅”。  
+   * 选择“连接现有订阅”  。  
      ![连接现有的订阅](./media/custom-voice/custom-voice-connect-subscription.png)。
    * 输入你 Azure 语音服务的订阅密钥，然后选择**添加**。 订阅密钥是从语音自定义门户中提供[订阅页](https://go.microsoft.com/fwlink/?linkid=2090458)。 此外可以在的资源管理窗格中获取的密钥[Azure 门户](https://portal.azure.com/)。
    * 如果你有多个你打算使用的语音服务订阅，请为每个订阅重复这些步骤。

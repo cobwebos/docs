@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
 ms.openlocfilehash: 0f10b9b45f63485417685a0826c047725a264772
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64686119"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>使用 Azure 网络观察程序排查虚拟网络网关和连接问题
@@ -33,8 +33,8 @@ ms.locfileid: "64686119"
 
 本文逐步讲解如何完成当前可用于资源故障排除的不同管理任务。
 
-- [排查虚拟网络网关问题](#troubleshoot-a-virtual-network-gateway)
-- [排查连接问题](#troubleshoot-connections)
+- [排查虚拟网络网关问题](#troubleshoot-a-virtual-network-gateway) 
+- [排查连接问题](#troubleshoot-connections) 
 
 ## <a name="before-you-begin"></a>开始之前
 

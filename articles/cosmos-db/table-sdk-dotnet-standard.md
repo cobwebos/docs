@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.openlocfilehash: 1c9894772f440a568cbc08890feb961471d84137
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66480215"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明
@@ -58,7 +58,7 @@ ms.locfileid: "66480215"
 ### <a name="a-name091-preview091-preview"></a><a name="0.9.1-preview"/>0.9.1 预览版
 * Azure Cosmos DB 表 .NET Standard SDK 是一个跨平台 .NET 库，可高效访问 Cosmos DB 上的表数据模型。 此初始版本支持完整的表和实体 CRUD + 查询功能集，其中 API 与[用于 .NET Framework 的 Cosmos DB 表 SDK](table-sdk-dotnet.md) 类似。 
    > [!NOTE]
-   >  0.9.1 预览版尚不支持 Azure 存储表终结点。
+   >  0\.9.1 预览版尚不支持 Azure 存储表终结点。
 
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
 Microsoft 至少会在停用 SDK 前提前 12 个月  发出通知，以便顺利转换为更高版本/受支持版本。

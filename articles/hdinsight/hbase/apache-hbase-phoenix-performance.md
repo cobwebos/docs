@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
 ms.openlocfilehash: 4fc4d1843ddb8d007ca062d928ebbddf90909583
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64690036"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix 性能最佳做法
@@ -62,7 +62,7 @@ Phoenix 使用此新主键生成的行键是：
 
 现在，此行键存储了数据的重复副本。 请考虑要包含在主键中的列大小和数目，因为此值将与基础 HBase 表中的每个单元格包含在一起。
 
-此外，如果主键包含单调递增的值，则应使用盐桶创建表，以帮助避免产生写入热点 - 请参阅[将分区数据](#partition-data)。
+此外，如果主键包含单调递增的值，则应使用盐桶创建表，以帮助避免产生写入热点 - 请参阅[将分区数据](#partition-data)。 
 
 ### <a name="column-family-design"></a>列系列设计
 

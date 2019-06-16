@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
 ms.openlocfilehash: 85e342f08e5402e50e5b0dfd1fe2df90337f29ca
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66254298"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>部署 IoT Edge 设备上的安全模块
@@ -156,7 +156,7 @@ ms.locfileid: "66254298"
    
 1. 验证以下容器正在运行：
    
-   | 名称 | IMAGE |
+   | Name | IMAGE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
    | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |

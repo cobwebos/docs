@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB 创建 SQL (Core) API 数据库和容器
-description: Azure PowerShell 脚本-Azure Cosmos DB 创建 SQL (Core) API 数据库和容器
+title: Azure PowerShell 脚本 - Azure Cosmos DB 创建 SQL (Core) API 数据库和容器
+description: Azure PowerShell 脚本 - Azure Cosmos DB 创建 SQL (Core) API 数据库和容器
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: samples
 ms.date: 05/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: 1b8680471f7626cc084eda004323b44c93e770d1
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66247374"
 ---
-# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>为 Azure Cosmos DB-SQL （核心） API 创建数据库和容器
+# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>为 Azure Cosmos DB 创建数据库和容器 - SQL (Core) API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 82a8eecb4fb211117000c94c51644ce1fd27916d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463882"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64709527"
 ---
 # <a name="encoding-error-codes"></a>编码错误代码
 
@@ -30,7 +30,7 @@ ms.locfileid: "61463882"
 | Unknown |执行任务期间发生未知的错误 |
 | ErrorDownloadingInputAssetMalformedContent |涵盖下载输入资产时出错（例如，错误的文件名称、文件长度为零、格式不正确，等等）的错误类别。 |
 | ErrorDownloadingInputAssetServiceFailure |涵盖服务端问题（例如，下载时发生网络或存储错误）的错误类别。 |
-| ErrorParsingConfiguration |任务 <see cref="MediaTask.PrivateData"/>（配置）无效的错误类别，例如，配置不是有效的系统预设或包含无效的 XML。 |
+| ErrorParsingConfiguration |错误类别的任务\<请参阅 cref="MediaTask.PrivateData"/ > （配置） 无效，例如配置不是有效的系统预设或包含无效的 XML。 |
 | ErrorExecutingTaskMalformedContent |在执行任务期间因输入媒体文件内部问题导致失败的错误类别。 |
 | ErrorExecutingTaskUnsupportedFormat |媒体处理器无法处理提供的文件（不支持的媒体格式或与配置不匹配）的错误类别。 例如，尝试从只包含视频的资产生成只包含音频的输出 |
 | ErrorProcessingTask |媒体处理器在处理与内容无关的任务时发生的其他错误类别。 |

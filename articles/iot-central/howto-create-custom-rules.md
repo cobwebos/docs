@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 5248b9546ffe931b72123778d0d23574e5238405
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66742413"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>使用自定义规则发送通知来扩展 Azure IoT Central
@@ -60,7 +60,7 @@ ms.locfileid: "66742413"
 
 | 设置 | 值 |
 | ------- | ----- |
-| 名称    | 选择你的命名空间名称 |
+| Name    | 选择你的命名空间名称 |
 | 定价层 | 基本 |
 | 订阅 | 订阅 |
 | 资源组 | DetectStoppedDevices |

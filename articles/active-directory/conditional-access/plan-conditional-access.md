@@ -1,6 +1,6 @@
 ---
-title: 规划 Azure Active Directory 中的条件访问策略 | Microsoft Docs
-description: 本文介绍如何为 Azure Active Directory 规划条件访问策略。
+title: 计划在 Azure Active Directory 中的条件性访问策略 |Microsoft Docs
+description: 在本文中，您将了解如何规划 Azure Active Directory 条件性访问策略。
 services: active-directory
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -13,58 +13,58 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e277f31dcf2627959b88d58f325fb4dad024a00
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 44a64611d4e31767b4705f41e47234af7b0848c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001195"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112228"
 ---
-# <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：规划 Azure Active Directory 中的条件访问部署
+# <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：规划在 Azure Active Directory 中的条件性访问部署
 
-规划条件访问部署至关重要，这样可以确保针对组织中的应用和资源实现所需的访问策略。 在部署规划阶段，应将主要时间花费在设计所需的各种策略上，以便在所选的不同条件下授予或阻止用户的访问权限。 本文档将介绍应该执行哪些步骤来实施安全高效的条件访问策略。 在开始之前，请确保了解[条件访问](overview.md)的工作原理及其使用时机。
+规划你的条件性访问部署是必须确保你的组织中实现应用程序和资源的所需的访问策略。 在部署规划阶段，应将主要时间花费在设计所需的各种策略上，以便在所选的不同条件下授予或阻止用户的访问权限。 本文档介绍应执行以实现安全、 高效的条件性访问策略的步骤。 在开始之前，请确保你已了解如何[条件性访问](overview.md)工作原理以及何时应使用它。
 
 
 ## <a name="what-you-should-know"></a>要点
 
-应将条件访问视为一个用于控制对组织中应用和资源的访问的框架，而不是一个独立的功能。 因此，某些条件访问设置需要配置附加的功能。 例如，可以配置一个用于响应特定[登录风险级别](../identity-protection/howto-sign-in-risk-policy.md#what-is-the-sign-in-risk-policy)的策略。 但是，基于登录风险级别的策略需要启用 [Azure Active Directory Identity Protection](../identity-protection/overview.md)。
+将条件性访问视为一个框架，可用于控制对组织的应用和资源，而不是独立的功能的访问。 因此，某些条件性访问设置需要其他功能进行配置。 例如，可以配置一个用于响应特定[登录风险级别](../identity-protection/howto-sign-in-risk-policy.md#what-is-the-sign-in-risk-policy)的策略。 但是，基于登录风险级别的策略需要启用 [Azure Active Directory Identity Protection](../identity-protection/overview.md)。
 
-如果需要附加的功能，则还可能需要获取相关的许可证。 例如，条件访问属于 Azure AD Premium P1 功能，而 Identity Protection 需要 Azure AD Premium P2 许可证。
+如果需要附加的功能，则还可能需要获取相关的许可证。 例如，而条件性访问是 Azure AD Premium P1 功能，标识保护需要一个 Azure AD Premium P2 许可证。
 
-有两种类型的条件访问策略：基线策略和标准策略。 [基线策略](baseline-protection.md)是预定义的条件访问策略。 这些策略的目标是确保至少启用了基线安全级别。 基线策略。 基线策略适用于所有 Azure AD 版本，只提供有限的自定义选项。 如果方案需要更大的灵活性，请禁用基线策略，并在自定义标准策略中实现要求。
+有两种类型的条件性访问策略： 基线和标准。 一个[基准策略](baseline-protection.md)是预定义的条件性访问策略。 这些策略的目标是确保至少启用了基线安全级别。 基线策略。 基线策略适用于所有 Azure AD 版本，只提供有限的自定义选项。 如果方案需要更大的灵活性，请禁用基线策略，并在自定义标准策略中实现要求。
 
-在标准条件访问策略中，可以自定义所有设置，以根据业务要求调整策略。 标准策略需要 Azure AD Premium P1 许可证。
+在标准的条件性访问策略，可以自定义调整该策略与你的业务要求的所有设置。 标准策略需要 Azure AD Premium P1 许可证。
 
 
 
 
 ## <a name="draft-policies"></a>草拟策略
 
-使用 Azure Active Directory 条件访问可将云应用的保护提升到一个新的级别。 在此新级别中，云应用的访问方式取决于动态策略评估而不是静态访问配置。 使用条件访问策略时，需定义针对某个特定条件（“发生这种情况时”）的响应（“这样做”）。
+Azure Active Directory 条件性访问，可以将你的云应用的保护集成到一个新级别。 在此新级别中，云应用的访问方式取决于动态策略评估而不是静态访问配置。 使用条件性访问策略，定义响应 (**执行此操作**) 为访问条件 (**这何时发生**)。
 
 ![原因和响应](./media/plan-conditional-access/10.png)
 
-使用此规划模型定义要实施的每个条件访问策略。 规划练习：
+定义你想要使用此计划的模型实现每个条件性访问策略。 规划练习：
 
 - 帮助你概括每个策略的响应和条件。
-- 为组织生成适当阐述的条件访问策略目录。 
+- 完备的条件性访问策略目录为你的组织中的结果。 
 
 可以使用目录来评估策略实施是否反映了组织的业务要求。 
 
-使用以下示例模板为组织创建条件访问策略：
+使用下面的示例模板来创建条件性访问策略为你的组织：
 
-|发生这种情况时：|这样做：|
+|发生这种情况时： |这样做： |
 |-|-|
-|尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|阻止访问应用程序|
-|尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|使用 (AND) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
-|尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|使用 (OR) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
+|尝试访问：<br>- 访问云应用<br>- 由用户和组 <br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|阻止访问应用程序|
+|尝试访问：<br>- 访问云应用<br>- 由用户和组 <br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|使用 (AND) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
+|尝试访问：<br>- 访问云应用<br>- 由用户和组 <br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|使用 (OR) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
 
-“发生这种情况时”最起码要定义尝试访问云应用（“什么”）的主体（“谁”）。 如果需要，还可以包含访问尝试是“如何”执行的。 在条件访问中，定义“谁”、“什么”和“如何”的要素称为条件。 有关详细信息，请参阅 [Azure Active Directory 条件访问中的条件是什么？](conditions.md) 
+“发生这种情况时”最起码要定义尝试访问云应用（“什么”）的主体（“谁”）。    如果需要，还可以包含访问尝试是“如何”执行的。  条件访问中元素的定义的人员、 内容和如何称为条件。 有关详细信息，请参阅[中 Azure Active Directory 条件性访问的条件是什么？](conditions.md) 
 
-对于“这样做”，请定义策略对访问条件做出的响应。 在响应中，可以使用附加的要求（例如，多重身份验证 (MFA)）阻止或授予访问权限。 有关完整概述，请参阅 [Azure Active Directory 条件访问中的访问控制是什么？](controls.md)  
+对于“这样做”，请定义策略对访问条件做出的响应。  在响应中，可以使用附加的要求（例如，多重身份验证 (MFA)）阻止或授予访问权限。 有关完整概述，请参阅[什么是访问控制在 Azure Active Directory 条件性访问？](controls.md)  
  
 
-条件与访问控制的组合表示一种条件访问策略。
+与访问控制条件的组合表示条件性访问策略。
 
 ![原因和响应](./media/plan-conditional-access/51.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "66001195"
  
 ![命名标准](./media/plan-conditional-access/11.png)
 
-虽然描述性名称有助于概述你的条件访问实现，但如果需要在对话中引用策略，则序列号非常有用。 例如，如果在电话上交谈的其他管理员，你可以要求他们打开策略 EM063 来解决问题。
+虽然一个描述性名称可帮助你使条件访问实现的概述，序列号将需要引用在会话中的策略的情况下十分有用。 例如，如果在电话上交谈的其他管理员，你可以要求他们打开策略 EM063 来解决问题。
 
 
 
@@ -111,7 +111,7 @@ ms.locfileid: "66001195"
 
 ## <a name="plan-policies"></a>规划策略
 
-规划条件访问策略解决方案时，请评估是否需要创建策略来实现以下结果。 
+在规划你的条件性访问策略解决方案时，评估是否需要创建策略，以实现以下结果。 
 
 
 ### <a name="block-access"></a>阻止访问
@@ -127,7 +127,7 @@ ms.locfileid: "66001195"
 
 ### <a name="require-mfa"></a>要求 MFA
 
-为了简化用户的登录体验，你可能希望允许他们使用用户名和密码登录你的云应用。 但是，一般情况下，我们至少建议在某些方案中要求采用较强形式的帐户验证。 使用条件访问策略可以限制为在某些方案中要求执行 MFA。 
+为了简化用户的登录体验，你可能希望允许他们使用用户名和密码登录你的云应用。 但是，一般情况下，我们至少建议在某些方案中要求采用较强形式的帐户验证。 使用条件性访问策略，可以限制对某些情况下为 MFA 要求。 
 
 要求执行 MFA 的常见用例包括：
 
@@ -138,9 +138,9 @@ ms.locfileid: "66001195"
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>响应可能已泄密的帐户
 
-使用条件访问策略可以自动响应从可能已泄密的标识进行登录的活动。 帐户泄密的可能性以风险级别的形式表示。 Identity Protection 计算两种风险级别：登录风险和用户风险。 若要对登录风险实施响应，可以使用两个选项：
+使用条件性访问策略，您可以实现对登录名从可能遭到入侵的标识的自动的响应。 帐户泄密的可能性以风险级别的形式表示。 Identity Protection 计算两种风险级别：登录风险和用户风险。 若要对登录风险实施响应，可以使用两个选项：
 
-- 条件访问策略中的[登录风险条件](conditions.md#sign-in-risk)
+- [登录风险条件](conditions.md#sign-in-risk)中条件性访问策略
 - Identity Protection 中的[登录风险策略](../identity-protection/howto-sign-in-risk-policy.md) 
 
 解决条件形式的登录风险是首选方法，因为它提供更多的自定义选项。
@@ -152,16 +152,16 @@ ms.locfileid: "66001195"
 
 ### <a name="require-managed-devices"></a>需要托管设备
 
-扩大用来访问云资源的受支持设备的范围有助于提高用户的工作效率。 另一方面，你可能不希望具有未知保护级别的设备访问你的环境中的某些资源。 对于受影响的资源，你应当要求用户只能使用受管理设备访问它们。 有关详细信息，请参阅[如何通过条件访问要求使用受管理设备进行云应用访问](require-managed-devices.md)。 
+扩大用来访问云资源的受支持设备的范围有助于提高用户的工作效率。 另一方面，你可能不希望具有未知保护级别的设备访问你的环境中的某些资源。 对于受影响的资源，你应当要求用户只能使用受管理设备访问它们。 有关详细信息，请参阅[如何要求使用条件性访问的云应用访问权限的被管理的设备](require-managed-devices.md)。 
 
 ### <a name="require-approved-client-apps"></a>需要已批准的客户端应用
 
-对于自带设备 (BYOD) 方案，需要做出的首要决策之一是，是需要管理整个设备，还是只管理其中的数据。 员工使用移动设备执行个人和工作任务。 既要确保提高员工的工作效率，也要防止数据丢失。 借助 Azure Active Directory (Azure AD) 条件访问，可以限制对云应用程序的访问，仅允许可以保护公司数据的经批准的客户端应用进行访问。 有关详细信息，请参阅[如何使用条件访问要求使用经批准的设备进行云应用访问](app-based-conditional-access.md)。
+对于自带设备 (BYOD) 方案，需要做出的首要决策之一是，是需要管理整个设备，还是只管理其中的数据。 员工使用移动设备执行个人和工作任务。 既要确保提高员工的工作效率，也要防止数据丢失。 使用 Azure Active Directory (Azure AD) 条件性访问，可以限制对云应用程序可以保护公司数据的已批准的客户端应用程序的访问。 有关详细信息，请参阅[如何使用条件性访问的云应用访问需要批准的客户端应用](app-based-conditional-access.md)。
 
 
 ### <a name="block-legacy-authentication"></a>阻止传统身份验证
 
-Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧身份验证。 如何阻止使用旧身份验证的应用访问租户的资源？ 建议只使用条件访问策略阻止它们。 如有必要，只允许某些用户和特定网络位置使用基于旧身份验证的应用程序。 有关详细信息，请参阅[如何使用条件访问来阻止 Azure AD 上的旧式身份验证](block-legacy-authentication.md)。
+Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧身份验证。 如何阻止使用旧身份验证的应用访问租户的资源？ 建议是只需使用条件性访问策略阻止它们。 如有必要，只允许某些用户和特定网络位置使用基于旧身份验证的应用程序。 有关详细信息，请参阅[如何阻止到 Azure AD 与条件性访问的旧式身份验证](block-legacy-authentication.md)。
 
 
 ## <a name="test-your-policy"></a>测试策略
@@ -195,10 +195,10 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 |策略 |场景 |预期结果 | 结果 |
 |---|---|---|---|
-|[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户在受信任的位置/工作时登录到应用|不提示用户执行 MFA| |
-|[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户不在受信任的位置/工作时登录到应用|提示用户执行 MFA，他们可以成功登录| |
-|[要求执行 MFA（针对管理员）](https://docs.microsoft.com/azure/active-directory/conditional-access/baseline-protection#require-mfa-for-admins)|全局管理员登录到应用|提示管理员执行 MFA| |
-|[有风险的登录](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|用户使用 [Tor 浏览器](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)登录到应用|提示管理员执行 MFA| |
+|[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户在受信任的位置/工作时登录到应用 |不提示用户执行 MFA| |
+|[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户不在受信任的位置/工作时登录到应用 |提示用户执行 MFA，他们可以成功登录| |
+|[要求执行 MFA（针对管理员）](https://docs.microsoft.com/azure/active-directory/conditional-access/baseline-protection#require-mfa-for-admins)|全局管理员登录到应用 |提示管理员执行 MFA| |
+|[有风险的登录](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|用户使用 [Tor 浏览器](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)登录到应用 |提示管理员执行 MFA| |
 |[设备管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|经授权的用户尝试从已授权的设备登录|授予访问权限| |
 |[设备管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|经授权的用户尝试从未授权的设备登录|阻止访问| |
 |[有风险用户的密码更改](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|经授权的用户尝试使用已泄密的凭据登录（高风险登录）|根据策略提示用户更改密码或阻止访问| |
@@ -206,23 +206,23 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 ### <a name="configure-the-policy"></a>配置策略
 
-条件访问策略的管理是一项手动任务。 在 Azure 门户中，可在一个中心位置（条件访问页）管理条件访问策略。 条件访问页的一个入口点是 **Active Directory** 导航窗格中的“安全性”部分。 
+管理条件访问策略是一项手动任务。 在 Azure 门户中，可以管理您在一个中心位置的条件性访问页面的条件性访问策略。 一个入口点为条件性访问页面**安全**主题中**Active Directory**导航窗格中。 
 
 ![条件性访问](media/plan-conditional-access/03.png)
 
 
-若要详细了解如何创建条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定的应用执行 MFA](app-based-mfa.md)。 此快速入门可帮助你：
+如果你想要了解有关如何创建条件性访问策略，请参阅详细[需要 MFA 的特定应用的 Azure Active Directory 条件性访问](app-based-mfa.md)。 此快速入门可帮助你：
 
 - 熟悉用户界面。
-- 初步认识条件访问的工作原理。 
+- 获取条件性访问的工作原理的第一印象。 
 
 
 ### <a name="evaluate-a-simulated-sign-in"></a>评估模拟登录
 
-你已经配置了条件访问策略，现在可能想知道它是否按预期工作。 第一步，使用条件访问 [what if 策略工具](what-if-tool.md)模拟测试用户登录。 该模拟会估计此登录对策略的影响并生成模拟报表。
+现在，已配置条件性访问策略，你可能想要知道它能否按预期运行。 第一步，使用条件性访问[怎么办策略工具](what-if-tool.md)来模拟测试用户的单一登录。 该模拟会估计此登录对策略的影响并生成模拟报表。
 
 >[!NOTE]
-> 尽管模拟运行可让你初步了解条件访问策略的影响，但它不能取代实际的测试运行。
+> 模拟的运行给你的条件性访问策略影响的印象，但它不会替换实际测试运行。
 
 
 ### <a name="test-your-policy"></a>测试策略

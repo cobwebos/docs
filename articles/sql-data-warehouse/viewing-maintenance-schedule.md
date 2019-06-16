@@ -11,10 +11,10 @@ ms.date: 11/27/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.openlocfilehash: 61537a4cb8ca1e6e98f2fa04959861eb03480fe9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61474857"
 ---
 # <a name="view-a-maintenance-schedule"></a>查看维护计划 
@@ -27,7 +27,7 @@ ms.locfileid: "61474857"
 
 1.  登录到 [Azure 门户](https://portal.azure.com/)。
 2.  选择要查看的数据仓库。 
-3.  所选的数据仓库将在“概述”边栏选项卡上打开。 应用于所选数据仓库的维护计划将显示在“维护计划(预览版)”下方。
+3.  所选的数据仓库将在“概述”边栏选项卡上打开。 应用于所选数据仓库的维护计划将显示在“维护计划(预览版)”下方。 
 
 ![概述边栏选项卡](media/sql-data-warehouse-maintenance-scheduling/clear-overview-blade.PNG)
 

@@ -11,16 +11,16 @@ ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
 ms.openlocfilehash: 823ebc985c77785f8b48d12d5919dbbd1b2b1459
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60821690"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-using-go"></a>发送到事件或使用 Go 从事件中心接收事件
+# <a name="send-events-to-or-receive-events-from-event-hubs-using-go"></a>使用 Go 将事件发送到事件中心或从其接收事件
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
-本教程介绍如何编写 Go 应用程序发送到事件或从事件中心接收事件。 
+本教程介绍了如何编写 Go 应用程序来将事件发送到事件中心或从其接收事件。 
 
 > [!NOTE]
 > 可以从 [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
@@ -31,10 +31,10 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 - 已本地安装 Go。 若有必要，请按照[以下说明操作](https://golang.org/doc/install)。
 - 有效的 Azure 帐户。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][]。
-- **创建事件中心命名空间和事件中心**。 使用[Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间并获取你的应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。
+- **创建事件中心命名空间和事件中心**。 使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。
 
 ## <a name="send-events"></a>发送事件
-本部分演示如何创建 Go 应用程序将事件发送到事件中心。 
+本部分展示了如何创建 Go 应用程序来将事件发送到事件中心。 
 
 ### <a name="install-go-package"></a>安装 Go 包
 
@@ -137,7 +137,7 @@ log.Printf("got partition IDs: %s\n", info.PartitionIDs)
 
 [Go 示例存储库](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage)中和教程对应的示例中提供了使用 Go SDK 创建存储项目的示例。
 
-### <a name="go-packages"></a>转到包
+### <a name="go-packages"></a>Go 包
 
 若要接收消息，请使用 `go get` 或 `dep` 获取事件中心的 Go 包：
 
@@ -214,11 +214,11 @@ if err != nil {
 }
 ```
 
-### <a name="create-a-check-pointer-and-a-leaser"></a>创建检查指针和 leaser 
+### <a name="create-a-check-pointer-and-a-leaser"></a>创建检查指针和出租人 
 
-创建**leaser**，负责租给特定的接收方的分区和一个**检查指针**，负责编写消息流的检查点，以便可以开始其他接收方正在从正确的偏移量读取。
+创建“出租人”，负责将分区租给特定接收器；创建检查指针，负责编写消息流的检查点，以便其他接收器可开始读取正确的偏移量   。
 
-目前，提供使用相同存储容器的单个 StorageLeaserCheckpointer 来管理租用和检查点。 除存储帐户和容器名称外，StorageLeaserCheckpointer 还需要上一步中创建的凭据和 Azure 结构，才能正确访问容器。
+目前，提供使用相同存储容器的单个 StorageLeaserCheckpointer 来管理租用和检查点  。 除存储帐户和容器名称外，StorageLeaserCheckpointer 还需要上一步中创建的凭据和 Azure 结构，才能正确访问容器  。
 
 ```go
 leaserCheckpointer, err := storageLeaser.NewStorageLeaserCheckpointer(
@@ -233,7 +233,7 @@ if err != nil {
 
 ### <a name="construct-event-processor-host"></a>构造事件处理器主机
 
-现已拥有构造 EventProcessorHost 所需的部分，如下所示。 相同**StorageLeaserCheckpointer**用作 leaser 和检查指针，如前面所述：
+现已拥有构造 EventProcessorHost 所需的部分，如下所示。 如之前所述，同一 **StorageLeaserCheckpointer** 同时用作出租人和检查指针：
 
 ```go
 ctx := context.Background()
@@ -285,7 +285,7 @@ if err != nil {
 请阅读以下文章：
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [功能和 Azure 事件中心内的术语](event-hubs-features.md)
+- [Azure 事件中心的功能和术语](event-hubs-features.md)
 - [事件中心常见问题解答](event-hubs-faq.md)
 
 

@@ -10,10 +10,10 @@ ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: dae0ea3e564a3dfafcd7f072f9b0d8854df17ed7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61304194"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>查看“更改跟踪”跟踪的文件的内容
@@ -30,17 +30,17 @@ ms.locfileid: "61304194"
 
 ## <a name="enable-file-content-tracking"></a>启用文件内容跟踪
 
-1. 在 Azure 门户中，打开自动化帐户，然后选择“更改跟踪”。
-2. 在顶部菜单中选择“编辑设置”。
-3. 选择“文件内容”并单击“链接”。 这将打开“添加更改跟踪的内容位置”窗格。
+1. 在 Azure 门户中，打开自动化帐户，然后选择“更改跟踪”  。
+2. 在顶部菜单中选择“编辑设置”  。
+3. 选择“文件内容”并单击“链接”   。 这将打开“添加更改跟踪的内容位置”窗格  。
 
    ![enable](./media/change-tracking-file-contents/enable.png)
 
-4. 选择要用于存储文件内容的订阅和存储帐户。 如果想针对所有现有的已跟踪文件启用文件内容跟踪，请在“上传所有设置的文件内容”处选择“开启”。 可在之后的每个文件路径中更改这一设置。
+4. 选择要用于存储文件内容的订阅和存储帐户。 如果想针对所有现有的已跟踪文件启用文件内容跟踪，请在“上传所有设置的文件内容”处选择“开启”   。 可在之后的每个文件路径中更改这一设置。
 
    ![设置存储帐户](./media/change-tracking-file-contents/storage-account.png)
 
-5. 启用后，会显示存储帐户以及 SAS URI。 SAS URI 会在 365 天以后过期，并且可以通过单击“再生成”按钮重新创建。
+5. 启用后，会显示存储帐户以及 SAS URI。 SAS URI 会在 365 天以后过期，并且可以通过单击“再生成”按钮重新创建  。
 
    ![列出帐户密钥](./media/change-tracking-file-contents/account-keys.png)
 
@@ -48,23 +48,23 @@ ms.locfileid: "61304194"
 
 通过以下步骤可以为文件开启更改跟踪：
 
-1. 在“更改跟踪”的“编辑设置”页面上选择“Windows 文件”或“Linux 文件”选项卡，然后单击“添加”
+1. 在“更改跟踪”的“编辑设置”页面上选择“Windows 文件”或“Linux 文件”选项卡，然后单击“添加”     
 
-1. 填写文件路径信息，并在“上传所有设置的文件内容”处选择“True”。 此设置只会为该文件路径启用文件内容跟踪。
+1. 填写文件路径信息，并在“上传所有设置的文件内容”处选择“True”   。 此设置只会为该文件路径启用文件内容跟踪。
 
    ![添加 Linux 文件](./media/change-tracking-file-contents/add-linux-file.png)
 
 ## <a name="viewing-the-contents-of-a-tracked-file"></a>查看所跟踪文件的内容
 
-1. 只要在文件或该路径中的某个文件中检测到了更改，就会将其显示在门户中。 从更改列表中选择文件更改。 已显示“更改详细信息”窗格。
+1. 只要在文件或该路径中的某个文件中检测到了更改，就会将其显示在门户中。 从更改列表中选择文件更改。 已显示“更改详细信息”窗格  。
 
    ![列出更改内容](./media/change-tracking-file-contents/change-list.png)
 
-1. 在“更改详细信息”页面上，能看到文件信息前后的标准，单击左上角的“查看文件内容更改”可以查看文件的内容。
+1. 在“更改详细信息”页面上，能看到文件信息前后的标准，单击左上角的“查看文件内容更改”可以查看文件的内容   。
 
    ![更改详细信息](./media/change-tracking-file-contents/change-details.png)
 
-1. 该新页面会以对比视图显示文件内容。 也可选择“内联”，以内联视图查看这些更改。
+1. 该新页面会以对比视图显示文件内容。 也可选择“内联”，以内联视图查看这些更改  。
 
    ![查看文件更改](./media/change-tracking-file-contents/view-file-changes.png)
 

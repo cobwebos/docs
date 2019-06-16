@@ -1,6 +1,6 @@
 ---
 title: Azure 事件中心的常见安全属性
-description: 评估 Azure 事件中心的常见安全属性进行的检查表
+description: 用于评估 Azure 事件中心的常见安全属性的清单
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 50f19d50f211972c2042c69a1e3177ffb4a47624
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66247194"
 ---
 # <a name="common-security-attributes-for-azure-event-hubs"></a>Azure 事件中心的常见安全属性
 
-本文介绍 Azure 事件中心中内置的常见安全属性。
+本文记录了内置到 Azure 事件中心的常见安全属性。
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 

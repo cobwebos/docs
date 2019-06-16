@@ -1,6 +1,6 @@
 ---
-title: 会话和单一登录配置-Azure Active Directory B2C |Microsoft Docs
-description: 会话和 Azure Active Directory B2C 中的单一登录配置。
+title: 会话和单一登录配置 - Azure Active Directory B2C | Microsoft Docs
+description: Azure Active Directory B2C 中的会话和单一登录配置。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,13 +11,13 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 472e494d445ae4a22c988076994649543ec1f7f8
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66508122"
 ---
-# <a name="session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>会话和 Azure Active Directory B2C 中的单一登录配置
+# <a name="session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的会话和单一登录配置
 
 通过此功能，可以对以下各方面进行[按用户流](active-directory-b2c-reference-policies.md)的精细控制：
 

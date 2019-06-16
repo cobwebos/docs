@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: e8d4ab46c598580a3a87f4344202f2700926bf5c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510323"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
@@ -23,7 +23,7 @@ ms.locfileid: "65510323"
 
 若要完成本文中的步骤，需要以下各项：
 
-- 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+- 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序  。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 
 - 运行 Windows 10 IoT Core 操作系统的设备。 有关详细信息，请参阅[设置 Windows 10 IoT Core 设备](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "65510323"
 
 ## <a name="the-sample-devkits-application"></a>示例 Devkits 应用程序
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Windows IoT Core 设备模板：
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Windows IoT Core 设备模板   ：
 
 - 设备的遥测度量：**湿度**，**温度**，和**压力**。
 - 设置控制**风扇转速**。
@@ -74,7 +74,7 @@ Azure IoT Central 应用程序中使用**Device Explorer**页，将添加从实�
 [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal)包括可用于你的设备进行故障排除的工具：
 
 - **应用程序管理器**页可用于控制设备上运行的应用。
-- 如果你没有连接到你的设备的监视器，则可以使用**设备设置**页后，可以捕获你的设备的屏幕截图。 例如:
+- 如果你没有连接到你的设备的监视器，则可以使用**设备设置**页后，可以捕获你的设备的屏幕截图。 例如：
 
     ![应用程序的屏幕截图](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
@@ -84,7 +84,7 @@ Azure IoT Central 应用程序中使用**Device Explorer**页，将添加从实�
 
 ## <a name="device-template-details"></a>设备模板详细信息
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Windows IoT Core 设备模板：
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Windows IoT Core 设备模板   ：
 
 ### <a name="telemetry-measurements"></a>遥测数据度量
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
 ms.openlocfilehash: ef4ea2419c64d0376023ea5d291460df48a51c63
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943409"
 ---
 # <a name="azure-application-skus-tab"></a>Azure 应用程序 SKU 选项卡
@@ -27,12 +27,12 @@ ms.locfileid: "64943409"
 
 通过以下步骤新建 SKU：
 
-1. 选择“SKU”选项卡。
-2. 在 SKU 下选择“+ 新建 SKU”。
+1. 选择“SKU”选项卡  。
+2. 在 SKU 下选择“+ 新建 SKU”  。
 
     ![新建 SKU 提示](./media/azureapp-plus-sku.png)
 
-3. 在“新建 SKU”弹出窗口中，键入 SKU ID。 此 ID 仅限 50 个字符，只能包含小写的字母数字字符、短划线或下划线。 不能以短划线结尾。
+3. 在“新建 SKU”弹出窗口中，键入 SKU ID  。 此 ID 仅限 50 个字符，只能包含小写的字母数字字符、短划线或下划线。 不能以短划线结尾。
 4. 客户可以在产品 URL、资源管理器模板和计费报表中看到此 SKU ID。 不能在产品/服务发布后修改此 ID。
 
 ### <a name="sku-details-for-a-solution-template"></a>解决方案模板的 SKU 详细信息
@@ -49,7 +49,7 @@ ms.locfileid: "64943409"
 | **摘要\***    | SKU 的简短摘要说明。 （最大长度为 100 个字符。）  |
 | **说明\*** | SKU 的详细的说明。 支持基本的 HTML。                 | 
 | **SKU 类型\***   | 类型的 Azure 应用程序解决方案，选择 ***解决方案模板**对于此方案。 |
-| **云可用性\*** | SKU 的位置。 默认值为“公共 Azure”。  <b/>   **公共 Azure** -应用程序为可部署到集成了 marketplace 的所有公共 Azure 区域中的客户。  <b/>   **Azure 政府版云**-将在 Azure 政府版云中部署应用。 之前发布到[Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)，Microsoft 建议发布者测试并验证其解决方案的工作原理，此环境中的预期。 若要暂存和测试，可请求一个[试用帐户](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)。  |
+| **云可用性\*** | SKU 的位置。 默认值为“公共 Azure”  。  <b/>   **公共 Azure** -应用程序为可部署到集成了 marketplace 的所有公共 Azure 区域中的客户。  <b/>   **Azure 政府版云**-将在 Azure 政府版云中部署应用。 之前发布到[Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)，Microsoft 建议发布者测试并验证其解决方案的工作原理，此环境中的预期。 若要暂存和测试，可请求一个[试用帐户](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)。  |
 | **这是一种专用的 SKU？\*** | 选择**是**如果此 SKU 仅供一组精选的客户。 |
 |   |   |
 
@@ -71,9 +71,9 @@ ms.locfileid: "64943409"
 | **摘要\***    | SKU 的简短摘要说明。 （最大长度为 100 个字符。）  |
 | **说明\*** | SKU 的详细的说明。 支持基本的 HTML。                 | 
 | **SKU 类型\***   | 类型的 Azure 应用程序解决方案，选择 ***托管应用程序**对于此方案。 
-| **云可用性\*** | SKU 的位置。 默认值为“公共 Azure”。  <b/>   **公共 Azure** -应用程序为可部署到集成了 marketplace 的所有公共 Azure 区域中的客户。  <b/>   **Azure 政府版云**-将在 Azure 政府版云中部署应用。 之前发布到[Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)，Microsoft 建议发布者测试并验证其解决方案的工作原理，此环境中的预期。 若要暂存和测试，可请求一个[试用帐户](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)。   Microsoft Azure 政府是政府社区云，美国联邦、州、地方或部落客户和有资格服务于这些实体的合作伙伴对政府社区云具有受控访问权限。 |
+| **云可用性\*** | SKU 的位置。 默认值为“公共 Azure”  。  <b/>   **公共 Azure** -应用程序为可部署到集成了 marketplace 的所有公共 Azure 区域中的客户。  <b/>   **Azure 政府版云**-将在 Azure 政府版云中部署应用。 之前发布到[Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)，Microsoft 建议发布者测试并验证其解决方案的工作原理，此环境中的预期。 若要暂存和测试，可请求一个[试用帐户](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)。   Microsoft Azure 政府是政府社区云，美国联邦、州、地方或部落客户和有资格服务于这些实体的合作伙伴对政府社区云具有受控访问权限。 |
 | **这是一种专用的 SKU？\*** | 选择**是**如果此 SKU 仅供一组精选的客户。 |
-| **国家/地区/区域可用性\*** | 使用**选择区域**若要查看可用的国家/地区的列表。 勾选国家/地区，然后选择“确定”保存你的选择。  <b/>   ![国家/地区和区域可用性列表](./media/azure-app-select-country-region.png)  |
+| **国家/地区/区域可用性\*** | 使用**选择区域**若要查看可用的国家/地区的列表。 勾选国家/地区，然后选择“确定”保存你的选择  。  <b/>   ![国家/地区和区域可用性列表](./media/azure-app-select-country-region.png)  |
 | **旧的定价\*** | 每月的以美元为单位的 sku 价格。 配置时，使用当前汇率换算为以本地货币为单位的价格。 请验证这些设置，因为它们最终归你所有。 若要单独设置或查看每个国家/地区的价格，请导出定价电子表格并导入应用了自定义定价的表格。  必须保存定价更改以便导出/导入的定价数据。  |
 | **简化的货币定价\*** | 每月的以美元为单位的 sku 价格。 这与旧定价相同。 有关详细信息，请参阅[简化的货币定价](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer)。 |
 |  |  |
@@ -135,22 +135,22 @@ ms.locfileid: "64943409"
 
 **新建授权：**
 
-1. 在“授权”下，选择“+ 新建授权”。
-2. 键入要授予对托管资源组的访问权限的用户、组或应用程序的 Azure Active Directory 标识符，作为“主体 ID”。 角色定义 ID 指示授予的权限。
-3. 从下拉列表中选择以下某个选项作为“角色定义”：所有者或参与者。 有关详细信息，请参阅 [Azure 资源的内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+1. 在“授权”下，选择“+ 新建授权”   。
+2. 键入要授予对托管资源组的访问权限的用户、组或应用程序的 Azure Active Directory 标识符，作为“主体 ID”  。 角色定义 ID 指示授予的权限。
+3. 从下拉列表中选择以下某个选项作为“角色定义”  ：所有者或参与者。 有关详细信息，请参阅 [Azure 资源的内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
 
 >[!NOTE] 
 >可以添加多个授权。 但建议创建一个 Active Directory 用户组并在 PrincipalId 中指定其 ID。 这样，可以向用户组中添加更多用户，而无需更新 SKU。
 
 **创建新策略：**
 
-1. 在“策略设置”下，选择“+ 新建策略”。
-2. 在“策略名称”处输入策略的名称。 名称最长 50 个字符。
-3. 从下拉列表中选择一项作为“策略”。 选择数据提供商希望在应用程序使用数据时已启用的策略。 有关详细信息，请参阅 [Azure Policy 示例](https://docs.microsoft.com/azure/governance/policy/samples/index)。
+1. 在“策略设置”下，选择“+ 新建策略”   。
+2. 在“策略名称”处输入策略的名称  。 名称最长 50 个字符。
+3. 从下拉列表中选择一项作为“策略”  。 选择数据提供商希望在应用程序使用数据时已启用的策略。 有关详细信息，请参阅 [Azure Policy 示例](https://docs.microsoft.com/azure/governance/policy/samples/index)。
 
     ![托管应用程序的策略设置](./media/azureapp-sku-policy-settings.png)
 
-4. 在“策略 SKU”处，选择“免费”或“标准”作为策略 SKU 类型。 审核策略需选择标准 SKU。
+4. 在“策略 SKU”处，选择“免费”或“标准”作为策略 SKU 类型  。 审核策略需选择标准 SKU。
 
 
 ## <a name="next-steps"></a>后续步骤

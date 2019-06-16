@@ -1,8 +1,8 @@
 ---
-title: 什么是 Azure Active Directory 条件访问中的服务依赖项？ | Microsoft Docs
-description: 了解如何在 Azure Active Directory 条件访问中使用条件来触发策略。
+title: Azure Active Directory 条件访问中的服务依赖项有哪些？ | Microsoft Docs
+description: 了解如何条件中使用 Azure Active Directory 条件性访问来触发策略。
 services: active-directory
-keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
+keywords: 条件访问应用，Azure AD 中，安全地访问公司资源，条件性访问策略的条件性访问
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,14 +18,14 @@ ms.date: 03/18/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f727fc7133ebc9ee124e63253e8a266862b0d908
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54e5de5fdb03cfaff4d4ed53da94b512f30db58a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354345"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112101"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>什么是 Azure Active Directory 条件访问中的服务依赖项？ 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的服务依赖项有哪些？ 
 
 
 使用条件性访问策略，可以指定到网站和服务的访问要求。 例如，您的访问要求可以包括需要多重身份验证 (MFA) 或[托管设备](require-managed-devices.md)。 
@@ -79,4 +79,4 @@ ms.locfileid: "60354345"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何在环境中实现条件访问，请参阅[在 Azure Active Directory 中规划条件访问部署](plan-conditional-access.md)。
+若要了解如何在您的环境中实现条件性访问，请参阅[规划在 Azure Active Directory 中的条件性访问部署](plan-conditional-access.md)。

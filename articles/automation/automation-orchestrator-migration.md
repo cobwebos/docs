@@ -10,10 +10,10 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ae47cba8f8e9a7cdf914c0b3ea5dfb9fa6c259a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60738207"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>从 Orchestrator 迁移到 Azure 自动化 (Beta)
@@ -104,7 +104,7 @@ Runbook 转换器在与转换的 Runbook 所在的相同位置创建以下日志
 ### <a name="exporting-runbooks-from-orchestrator"></a>从 Orchestrator 导出 Runbook
 Runbook 转换器可以处理 Orchestrator 中包含一个或多个 Runbook 的导出文件。  它将为导出文件中的每个 Orchestrator Runbook 创建相应的 Azure 自动化 Runbook。  
 
-要从 Orchestrator 导出 Runbook，请在 Runbook 设计器中右键单击 Runbook 名称，并选择“导出”。  要导出文件夹中的所有 Runbook，请右键单击文件夹名称，并选择“导出”。
+要从 Orchestrator 导出 Runbook，请在 Runbook 设计器中右键单击 Runbook 名称，并选择“导出”  。  要导出文件夹中的所有 Runbook，请右键单击文件夹名称，并选择“导出”  。
 
 ### <a name="runbook-activities"></a>Runbook 活动
 Runbook 转换器将 Orchestrator Runbook 中的每个活动转换成 Azure 自动化中的相应活动。  对于无法转换的活动，会在 Runbook 中创建占位符活动，并提供警告文本。  将转换的 Runbook 导入 Azure 自动化之后，必须将这些活动替换为可执行所需功能的有效活动。
@@ -126,7 +126,7 @@ Orchestrator 中的 Runbook 接受具有**初始化数据**活动的输入参数
 使用此策略的原因是能够最好地镜像 Orchestrator Runbook 中的功能。  新的图形 Runbook 中的活动应使用 Runbook 输入数据源直接引用输入参数。
 
 ### <a name="invoke-runbook-activity"></a>调用 Runbook 活动
-Orchestrator 中的 Runbook 使用**调用 Runbook** 活动来启动其他 Runbook。 如果要转换的 Runbook 包含此活动，并且设置了“等待完成”选项，则在转换后的 Runbook 中为其创建 Runbook 活动。  如果未设置“等待完成”选项，则创建使用 **Start-AzureAutomationRunbook** 的工作流脚本活动来启动 Runbook。  将转换的 Runbook 导入 Azure 自动化之后，必须以活动中指定的信息修改此活动。
+Orchestrator 中的 Runbook 使用**调用 Runbook** 活动来启动其他 Runbook。 如果要转换的 Runbook 包含此活动，并且设置了“等待完成”  选项，则在转换后的 Runbook 中为其创建 Runbook 活动。  如果未设置“等待完成”  选项，则创建使用 **Start-AzureAutomationRunbook** 的工作流脚本活动来启动 Runbook。  将转换的 Runbook 导入 Azure 自动化之后，必须以活动中指定的信息修改此活动。
 
 ## <a name="related-articles"></a>相关文章
 * [System Center 2012 - Orchestrator](https://technet.microsoft.com/library/hh237242.aspx)

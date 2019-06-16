@@ -14,17 +14,17 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: f0612a688bb1e0fd79325b9a1f9b43731a210d10
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399238"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>针对 Azure SQL 数据库异地复制和故障转移配置 Azure-SSIS Integration Runtime
 
 本文介绍了如何针对 Azure SQL 数据库异地复制和 SSISDB 数据库配置 Azure-SSIS Integration Runtime。 发生故障转移时，你可以确保 Azure-SSIS IR 使用辅助数据库保持工作。
 
-异地复制和 SQL 数据库的故障转移的详细信息，请参阅[概述：活动异地复制和自动故障转移组](../sql-database/sql-database-geo-replication-overview.md)。
+有关 SQL 数据库的异地复制和故障转移的详细信息，请参阅[概述：活动异地复制和自动故障转移组](../sql-database/sql-database-geo-replication-overview.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -101,9 +101,9 @@ ms.locfileid: "66399238"
 
 3. 再次启动 IR。
 
-## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>方案 3-将现有的 SSISDB （SSIS 目录） 附加到新的 Azure SSIS IR
+## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>方案 3 - 将现有的 SSISDB（SSIS 目录）附加到新的 Azure-SSIS IR
 
-ADF 或 Azure SSIS IR 灾难发生在当前区域中，您可以在你使用新的 Azure SSIS IR，新区域中的 SSISDB 保留。
+在当前区域中发生 ADF 或 Azure-SSIS IR 灾难时，可以使 SSISDB 在新区域中继续使用新的 Azure-SSIS IR。
 
 ### <a name="prerequisites"></a>必备组件
 
@@ -115,22 +115,22 @@ ADF 或 Azure SSIS IR 灾难发生在当前区域中，您可以在你使用新�
 
 遵循以下步骤停止 Azure-SSIS IR，切换到新区域，然后再次启动该 IR。
 
-1. 执行存储的过程以使附加到 SSISDB **\<new_data_factory_name\>** 或 **\<new_integration_runtime_name\>** 。
+1. 执行存储过程以使 SSISDB 附加到 **\<new_data_factory_name\>** 或 **\<new_integration_runtime_name\>** 。
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
    ```
 
-2. 创建名为的新数据工厂 **\<new_data_factory_name\>** 新区域中。 有关详细信息，请参阅创建数据工厂。
+2. 在新区域中创建名为 **\<new_data_factory_name\>** 的新数据工厂。 有关详细信息，请参阅“创建数据工厂”。
 
      ```powershell
      Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
                          -Location "new region"`
                          -Name "<new_data_factory_name>"
      ```
-    有关此 PowerShell 命令的详细信息，请参阅[创建 Azure 数据工厂使用 PowerShell](quickstart-create-data-factory-powershell.md)
+    有关此 PowerShell 命令的详细信息，请参阅[使用 PowerShell 创建 Azure 数据工厂](quickstart-create-data-factory-powershell.md)
 
-3. 创建名为新的 Azure SSIS IR **\<new_integration_runtime_name\>** 中使用 Azure PowerShell，在新区域。
+3. 使用 Azure PowerShell 在新区域中创建名为 **\<new_integration_runtime_name\>** 的新 Azure-SSIS IR。
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `

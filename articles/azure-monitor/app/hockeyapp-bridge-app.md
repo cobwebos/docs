@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
 ms.openlocfilehash: 79adfbfde25903bfe92c94507071c9d0fe303ef1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60898668"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>在 Application Insights 中浏览 HockeyApp 数据
@@ -56,7 +56,7 @@ HockeyApp Bridge 应用是一项核心功能，可让用户通过 Analytics 和�
 让我们简单回顾一下其中可用的每项功能。
 
 ## <a name="analytics"></a>分析
-Analytics 是一个强大的工具进行即席查询的数据，从而可以诊断和分析遥测数据，快速找出根本原因和模式。
+Analytics 是功能强大的即席数据查询工具，可用于诊断和分析遥测数据，快速找出根本原因和模式。
 
 ![分析](./media/hockeyapp-bridge-app/05.png)
 

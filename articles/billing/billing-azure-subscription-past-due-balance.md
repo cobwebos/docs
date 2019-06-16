@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
 ms.openlocfilehash: 45b5d2c94a72cb23ef2b4a8db100623b0c58b0a9
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66023402"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>处理 Azure 订阅的逾期未付余额问题
@@ -34,7 +34,7 @@ ms.locfileid: "66023402"
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>处理逾期余额在 Azure 门户中
 
 1. 登录到[Azure 门户](https://portal.azure.com)为帐户管理员。
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 1. 在概述页中，将看到订阅的列表。 如果您订阅的状态已过期，请单击**处理的余额**链接。
     ![显示的屏幕截图结算余额链接](./media/billing-azure-subscription-past-due-balance/settle-balance-entry-point.png)
 1. 总未付余额跨所有 Microsoft 服务使用失败的付款方式反映未付费用。

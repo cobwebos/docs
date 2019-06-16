@@ -1,24 +1,22 @@
 ---
 title: 通过 Spark 创建/插入数据到 Azure Cosmos DB Cassandra API
 description: 本文详细介绍如何将示例数据插入 Azure Cosmos DB Cassandra API 表
-author: rockboyfor
-ms.author: v-yeche
+author: kanshiG
+ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 03/18/2019
+ms.date: 09/24/2018
 ms.openlocfilehash: aea646e7a390d5b53f0d4b388cfecd0c80fb19da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60894039"
 ---
-<!--Verify sucessfully-->
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>通过 Spark 创建/插入数据到 Azure Cosmos DB Cassandra API
-
+ 
 本文介绍如何通过 Spark 将示例数据插入 Azure Cosmos DB Cassandra API 的表中。
 
 ## <a name="cassandra-api-configuration"></a>Cassandra API 配置
@@ -33,7 +31,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -139,13 +137,10 @@ select * from books;
 ## <a name="next-steps"></a>后续步骤
 
 将数据插入 Azure Cosmos DB Cassandra API 表后，请继续阅读以下文章，对 Cosmos DB Cassandra API 中存储的数据执行其他操作：
-
+ 
 * [读取操作](cassandra-spark-read-ops.md)
 * [upsert 操作](cassandra-spark-upsert-ops.md)
 * [删除操作](cassandra-spark-delete-ops.md)
 * [聚合操作](cassandra-spark-aggregation-ops.md)
 * [表复制操作](cassandra-spark-table-copy-ops.md)
 
-<!--Verify sucessfully-->
-<!--Update_Description: new articles on  -->
-<!--ms.date: 03/18/2019-->

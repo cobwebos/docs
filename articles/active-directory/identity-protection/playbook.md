@@ -17,19 +17,19 @@ ms.date: 06/27/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 697bb8a60861acb120e92d8fd1dda3892a957b57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 24c3af12d35d07796db9255f0ac76dd1389bd013
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294312"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108834"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection 操作手册
 
 此操作手册有助于：
 
 * 通过模拟风险事件和漏洞在 Identity Protection 环境中填充数据
-* 设置基于风险的条件访问策略并测试这些策略的影响
+* 设置基于风险的条件性访问策略和测试这些策略的影响
 
 
 ## <a name="simulating-risk-events"></a>模拟风险事件
@@ -125,17 +125,17 @@ ms.locfileid: "60294312"
 
 1. 使用租户的全局管理员凭据登录到 [https://portal.azure.com](https://portal.azure.com)。
 2. 导航到 **Identity Protection**。 
-3. 在“Azure AD Identity Protection”页中，单击“用户风险策略”。
-4. 在“分配”部分，选择所需的用户（和组）以及用户风险级别。
+3. 在“Azure AD Identity Protection”页中，单击“用户风险策略”。  
+4. 在“分配”部分，选择所需的用户（和组）以及用户风险级别。 
 
     ![用户风险](./media/playbook/03.png "演练手册")
 
 5. 在“控制”部分，选择所需的访问控制（例如，需要更改密码）。
-5. 对于“强制实施策略”，请选择“关闭”。
+5. 对于“强制实施策略”  ，请选择“关闭”  。
 6. 可以通过特定的方式来提升测试帐户的用户风险，例如，可以多次模拟某个风险事件。
 7. 等待几分钟，验证用户的用户级别是否为“中等”。 如果否，请为用户模拟更多的风险事件。
-8. 对于“强制实施策略”，请选择“打开”。
-9. 现在可以使用风险级别已提升的用户登录，以便测试基于用户风险的条件访问。
+8. 对于“强制实施策略”  ，请选择“打开”  。
+9. 现在可以测试用户使用提升的风险级别使用用户登录基于风险的条件性访问。
     
     
 
@@ -152,20 +152,20 @@ ms.locfileid: "60294312"
 
 2. 导航到 **Azure AD Identity Protection**。
 
-3. 在“Azure AD Identity Protection”主页中，单击“登录风险策略”。 
+3. 在“Azure AD Identity Protection”主页中，单击“登录风险策略”。   
 
-4. 在“分配”部分，选择所需的用户（和组）以及登录风险级别。
+4. 在“分配”部分，选择所需的用户（和组）以及登录风险级别。 
 
     ![登录风险](./media/playbook/04.png "演练手册")
 
 
-5. 在“控制”部分，选择所需的访问控制（例如，“需要多重身份验证”）。 
+5. 在“控制”部分，选择所需的访问控制（例如，“需要多重身份验证”  ）。  
 
-6. 对于“强制实施策略”，请选择“打开”。
+6. 对于“强制实施策略”  ，请选择“打开”  。
 
 7. 单击“ **保存**”。
 
-8. 现在可以使用风险会话（例如，使用 Tor 浏览器）登录，以便测试基于登录风险的条件访问。 
+8. 你现在可以使用风险会话 （例如，通过使用 Tor 浏览器） 登录测试登录基于风险的条件性访问。 
 
  
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.openlocfilehash: 79cb9bb82862f5720d5ec2262ba30dbbcf3e3f66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60930115"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件
@@ -209,7 +209,7 @@ ms.locfileid: "60930115"
 ![发送邮件结果][emailresult]
 
 ## <a name="next-steps"></a>后续步骤
-将应用程序部署到计算模拟器，然后在浏览器内运行 emailform.jsp，在窗体中输入值，单击“发送此电子邮件”，然后在 sendemail.jsp 中查看结果。
+将应用程序部署到计算模拟器，然后在浏览器内运行 emailform.jsp，在窗体中输入值，单击“发送此电子邮件”  ，然后在 sendemail.jsp 中查看结果。
 
 提供这段代码是为了向你演示如何在 Azure 上通过 Java 使用 SendGrid。 在生产中部署到 Azure 之前，可能希望添加更多错误处理或其他功能。 例如： 
 

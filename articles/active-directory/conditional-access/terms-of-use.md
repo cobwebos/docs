@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1abae0a454e17e8f633f68bc5853bfb4a4b24d14
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 0534613a9df3177290e9b4b57e9830fe62f9741a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383181"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112129"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用条款
 
@@ -115,23 +115,23 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 
 1. 下**条件访问**，使用**强制实施条件性访问策略模板与**列表可以选择模板以强制实施的使用条款。
 
-   ![条件访问模板](./media/terms-of-use/conditional-access-templates.png)
+   ![条件性访问模板](./media/terms-of-use/conditional-access-templates.png)
 
    | 模板 | 描述 |
    | --- | --- |
-   | **所有来宾对云应用的访问权限** | 将会针对所有来宾和所有云应用创建一个条件访问策略。 此策略会影响 Azure 门户。 创建后，可能需要注销再登录。 |
-   | **所有用户对云应用的访问权限** | 将会针对所有用户和所有云应用创建条件访问策略。 此策略会影响 Azure 门户。 创建后，需要注销再登录。 |
+   | **所有来宾对云应用的访问权限** | 条件性访问策略将创建所有来宾和所有云应用。 此策略会影响 Azure 门户。 创建后，可能需要注销再登录。 |
+   | **所有用户对云应用的访问权限** | 条件性访问策略将创建为所有用户和所有云应用。 此策略会影响 Azure 门户。 创建后，需要注销再登录。 |
    | **自定义策略** | 选择用户、 组和此使用条款将应用于的应用。 |
-   | **稍后创建条件访问策略** | 此使用条款将显示在创建条件访问策略时弹出的授予控制权列表中。 |
+   | **稍后创建条件性访问策略** | 创建条件性访问策略时，此使用条款将显示在授予控制权列表中。 |
 
    >[!IMPORTANT]
-   >条件访问策略控制（包括使用条款）不支持对服务帐户强制实施。 我们建议从条件访问策略中排除所有服务帐户。
+   >条件性访问策略控件 （包括的使用条款） 不支持强制服务帐户。 我们建议从条件性访问策略中排除所有服务帐户。
 
     自定义的条件性访问策略启用，到特定的云应用程序或用户组的具体的使用条款。 有关详细信息，请参阅[快速入门：在访问云应用之前要求接受使用条款](require-tou.md)。
 
 1. 单击**创建**。
 
-   选择自定义条件访问模板后，会显示一个新的屏幕用于创建自定义的条件访问策略。
+   如果选择自定义的条件性访问模板，然后将显示新屏幕，可用于创建自定义的条件性访问策略。
 
    ![自定义策略](./media/terms-of-use/custom-policy.png)
 
@@ -302,12 +302,12 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 
 ## <a name="policy-changes"></a>策略更改
 
-条件访问策略会立即生效。 发生此情况时，管理员就会看到“表示遗憾的阴云”或“Azure AD 令牌问题”。 管理员必须注销然后重新登录才能符合新策略的要求。
+条件性访问策略会立即生效。 发生此情况时，管理员就会看到“表示遗憾的阴云”或“Azure AD 令牌问题”。 管理员必须注销然后重新登录才能符合新策略的要求。
 
 > [!IMPORTANT]
 > 在以下情况下，处于范围的用户必须在注销后登录才能符合新策略的要求：
 >
-> - 在使用条款上启用了条件访问策略
+> - 启用了条件性访问策略上的使用条款
 > - 或创建了第二个使用条款
 
 ## <a name="b2b-guests-preview"></a>B2B 来宾（预览版）
@@ -364,10 +364,10 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 答：在登录体验期间触发使用条款。
 
 **问：哪些应用程序我可以目标到使用条款？**<br />
-答：可以使用新式验证对企业应用程序创建条件访问策略。 有关详细信息，请参阅[企业应用程序](./../manage-apps/view-applications-portal.md)。
+答：使用新式身份验证对企业应用程序，可以创建条件性访问策略。 有关详细信息，请参阅[企业应用程序](./../manage-apps/view-applications-portal.md)。
 
 **问：可以向给定的用户或应用程序添加多个使用条款？**<br />
-答：可以，方法是创建多个以这些组或应用程序为目标的条件访问策略。 如果用户属于多个使用条款的作用域中，它们接受一次一个的使用条款。
+答：是的通过创建多个面向这些组或应用程序的条件性访问策略。 如果用户属于多个使用条款的作用域中，它们接受一次一个的使用条款。
 
 **问：如果用户拒绝使用条款，会发生什么情况？**<br />
 答：将阻止此用户访问该应用程序。 用户需要重新登录并接受条款才能获取访问权限。
@@ -379,9 +379,9 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 答：如果已配置这两个 Azure AD 使用条款和[Intune 条款和条件](/intune/terms-and-conditions-create)，用户将需要接受这两项。 有关详细信息，请参阅[为组织博客文章选择合适的条款解决方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)。
 
 **问：使用服务条款使用了哪些终结点进行身份验证？**<br />
-答：使用条款利用以下终结点进行身份验证： https://tokenprovider.termsofuse.identitygovernance.azure.com和 https://account.activedirectory.windowsazure.com。 如果你的组织已注册的 Url 的允许列表，您需要添加到允许列表，以及 Azure AD 终结点的这些终结点登录。
+答：使用条款利用以下终结点进行身份验证： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com 。 如果你的组织已注册的 Url 的允许列表，您需要添加到允许列表，以及 Azure AD 终结点的这些终结点登录。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门：在访问云应用之前要求接受使用条款](require-tou.md)
-- [Azure Active Directory 中条件访问的最佳做法](best-practices.md)
+- [Azure Active Directory 中条件性访问的最佳做法](best-practices.md)

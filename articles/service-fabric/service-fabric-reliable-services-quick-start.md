@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/16/2018
 ms.author: vturecek
 ms.openlocfilehash: d27702983a4378becdbc67f3f156c92be3dc3af6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130086"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
@@ -127,7 +127,7 @@ Service Fabric 引入了一种新的有状态服务。 有状态服务能够可�
 
 ![向 Service Fabric 应用程序添加服务](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-选择 **.NET Core 2.0-> 有状态服务**并将其命名*HelloWorldStateful*。 单击“确定”。
+选择 **.NET Core 2.0-> 有状态服务**并将其命名*HelloWorldStateful*。 单击“确定”。 
 
 ![使用“新建项目”对话框新建 Service Fabric 有状态服务](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 

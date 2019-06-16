@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
 ms.openlocfilehash: a021ed2be3a94add7500a98d71a962bb580078e9
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66729468"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
@@ -141,7 +141,7 @@ module.exports = async function (context, req) {
 
 可通过以下方式之一将数据分配到输出绑定（不要结合使用这些方法）：
 
-- ** _[有多个输出时建议使用]_ 返回对象。** 如果将异步/Promise 返回函数，可以返回具有分配的输出数据的对象。 在以下示例中，*function.json* 中的输出绑定名为“httpResponse”和“queueOutput”。
+- ** _[有多个输出时建议使用]_ 返回对象。** 如果使用异步函数/返回 Promise 的函数，可以返回分配有输出数据的对象。 在以下示例中，*function.json* 中的输出绑定名为“httpResponse”和“queueOutput”。
 
   ```javascript
   module.exports = async function(context) {
@@ -204,7 +204,7 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-返回用于读取或分配数据绑定的命名的对象。 可以通过在读取属性访问输入和触发器绑定数据`context.bindings`。 可以通过将数据添加到分配输出绑定数据 `context.bindings`
+返回用于读取或分配绑定数据的命名对象。 可以通过读取 `context.bindings` 上的属性来访问输入和触发器绑定数据。 可以通过将数据添加到 `context.bindings` 来分配输出绑定数据
 
 例如，function.json 中的以下绑定定义允许通过 `context.bindings.myInput` 访问队列的内容和使用 `context.bindings.myOutput` 将输出分配给队列。
 
@@ -292,7 +292,7 @@ context.log.warn("Something has happened.");
 
 ## <a name="writing-trace-output-to-the-console"></a>将跟踪输出写入到控制台 
 
-在 Functions 中，可以使用 `context.log` 方法将跟踪输出写入到控制台。 在 Functions v2.x 中，使用 `console.log` 的跟踪输出在函数应用级别捕获。 这意味着，来自输出`console.log`不受限于特定函数调用，且不会显示在特定函数的日志中。 但是，它们将传播到 Application Insights。 在 Functions v1.x 中，不能使用 `console.log` 向控制台进行写入。
+在 Functions 中，可以使用 `context.log` 方法将跟踪输出写入到控制台。 在 Functions v2.x 中，使用 `console.log` 的跟踪输出在函数应用级别捕获。 这意味着 `console.log` 的输出不受限于特定的函数调用，因此不会显示在特定函数的日志中。 但是，它们将传播到 Application Insights。 在 Functions v1.x 中，不能使用 `console.log` 向控制台进行写入。
 
 调用 `context.log()` 时，消息会在默认跟踪级别（即_信息_跟踪级别）写入到控制台。 以下代码在信息跟踪级别向控制台进行写入：
 
@@ -568,7 +568,7 @@ module.exports = myObj;
 TypeScript 文件 (.ts) 转译为 `dist` 输出目录中的 JavaScript (.js) 文件。 TypeScript 模板使用 `function.json` 中的 [`scriptFile` 参数](#using-scriptfile)来指示 `dist` 文件夹中相应 .js 文件的位置。 模板使用 `tsconfig.json` 文件中的 `outDir` 参数设置输出位置。 如果更改此设置或文件夹的名称，则运行时将找不到要运行的代码。
 
 > [!NOTE]
-> 1.x 版 Functions 运行时提供 TypeScript 的试验性支持。 调用函数时，试验版本会将 TypeScript 文件转译为 JavaScript 文件。 在版本 2.x 中，此试验性支持已由工具驱动的方法取代，该方法在初始化主机之前以及部署期间执行转译。
+> 1\.x 版 Functions 运行时提供 TypeScript 的试验性支持。 调用函数时，试验版本会将 TypeScript 文件转译为 JavaScript 文件。 在版本 2.x 中，此试验性支持已由工具驱动的方法取代，该方法在初始化主机之前以及部署期间执行转译。
 
 在本地通过 TypeScript 项目进行开发和部署的方式取决于所用的开发工具。
 
@@ -613,7 +613,7 @@ TypeScript 文件 (.ts) 转译为 `dist` 输出目录中的 JavaScript (.js) 文
 
 ### <a name="connection-limits"></a>连接限制
 
-Azure Functions 应用程序中使用特定于服务的客户端时，不创建新的客户端与每个函数调用。 相反，在全局作用域中创建单个的静态客户端。 有关详细信息，请参阅[管理在 Azure Functions 中的连接](manage-connections.md)。
+在 Azure Functions 应用程序中使用特定于服务的客户端时，不要在每次函数调用时都创建新的客户端。 而是，应在全局范围内创建单个静态客户端。 有关详细信息，请参阅[在 Azure Functions 中管理连接](manage-connections.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

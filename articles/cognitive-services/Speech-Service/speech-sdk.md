@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: wolfma
 ms.openlocfilehash: 2bfe111cbe1e352c16c9cbdd6d2ecc999bbe444f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003010"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
@@ -31,7 +31,7 @@ ms.locfileid: "66003010"
 
 对于 Windows，我们支持以下语言：
 
-* C#（UWP 和 .NET）、C++：可以引用和使用语音 SDK NuGet 包的最新版本。 此包包括 32 位和 64 位客户端库，以及托管 (.NET) 库。 可以使用 NuGet 在 Visual Studio 中安装该 SDK。 搜索 Microsoft.CognitiveServices.Speech NuGet。
+* C#（UWP 和 .NET）、C++：可以引用和使用语音 SDK NuGet 包的最新版本。 此包包括 32 位和 64 位客户端库，以及托管 (.NET) 库。 可以使用 NuGet 在 Visual Studio 中安装该 SDK。 搜索 Microsoft.CognitiveServices.Speech NuGet  。
 
 * Java:可以引用和使用语音 SDK Maven 包的最新版本，该包仅支持 Windows x64。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` 引用为一个依赖项。
 
@@ -68,7 +68,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
   |路径|描述|
   |-|-|
-  |`license.md`|许可证|
+  |`license.md`|许可|
   |`ThirdPartyNotices.md`|第三方声明|
   |`include`|用于 C 和 C++ 的头文件|
   |`lib/x64`|用于与应用程序链接的本机 x64 库|

@@ -10,10 +10,10 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 5f9cd5edfb360da507320306314e67ac61503132
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60738468"
 ---
 # <a name="managing-azure-automation-data"></a>管理 Azure 自动化数据
@@ -67,7 +67,7 @@ Azure 自动化帐户中标配的异地复制可将帐户数据备份到其他�
 
 下表显示了可用的主要区域和次要区域配对。
 
-| 主要 | 辅助 |
+| 基本 | 辅助 |
 | --- | --- |
 | 美国中南部 |美国中北部 |
 | 美国东部 2 |美国中部 |

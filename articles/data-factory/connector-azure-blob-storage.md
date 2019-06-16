@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 1ff20322f1d4f6024d4f41037ca18c327a0cc21f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233199"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Blob 存储复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-blob-connector.md)
 > * [当前版本](connector-azure-blob-storage.md)
 
-本文概述了如何向 / 从 Azure Blob 存储复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述了如何将数据复制到 Azure Blob 存储和从 Azure Blob 存储复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -42,7 +42,7 @@ ms.locfileid: "65233199"
 - 按原样复制 Blob，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析或生成 Blob。
 
 >[!NOTE]
->如果启用 _"允许受信任的 Microsoft 服务访问此存储帐户"_ 上使用 Azure 集成运行时连接到 Blob 存储的 Azure 存储防火墙设置的选项将失败，并禁止访问错误，因为 ADF 不是被视为受信任的 Microsoft 服务。 请改为连接通过自承载集成运行时。
+>如果启用 _"允许受信任的 Microsoft 服务访问此存储帐户"_ 上使用 Azure 集成运行时连接到 Blob 存储的 Azure 存储防火墙设置的选项将失败，并禁止访问错误，因为 ADF 不是被视为受信任的 Microsoft 服务。 请改用自承载集成运行时进行连接。
 
 ## <a name="get-started"></a>开始使用
 
@@ -143,7 +143,7 @@ Azure Blob 连接器支持以下身份验证类型，有关详细信息，请参
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureBlobStorage**（建议）或 **AzureStorage**（参阅下面的注释）。 |是 |
-| sasUri | 指定存储资源（例如 Blob/容器）的共享访问签名 URI。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 在 Azure 密钥保管库来利用自动旋转和删除令牌部分中，还可以将 SAS 令牌。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
+| sasUri | 指定存储资源（例如 Blob/容器）的共享访问签名 URI。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将 SAS 令牌放在 Azure 密钥保管库中，以利用自动轮换以及删除令牌部分。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
@@ -202,7 +202,7 @@ Azure Blob 连接器支持以下身份验证类型，有关详细信息，请参
 在创建共享访问签名 URI 时，请注意以下几点：
 
 - 根据链接服务（读取、写入、读/写）在数据工厂中的用法，设置针对对象的适当读/写权限。
-- 根据需要设置“到期时间”。 确保存储对象的访问权限不会在管道的活动期限内过期。
+- 根据需要设置“到期时间”  。 确保存储对象的访问权限不会在管道的活动期限内过期。
 - 应该根据需要在正确的容器/Blob 中创建 URI。 数据工厂可以使用 Blob 的共享访问签名 URI 访问该特定 Blob。 数据工厂可以使用 Blob 存储容器的共享访问签名 URI 迭代该容器中的 Blob。 以后若要提供更多/更少对象的访问权限或需要更新共享访问签名 URI，请记得使用新 URI 更新链接服务。
 
 ### <a name="service-principal-authentication"></a>服务主体身份验证
@@ -219,8 +219,8 @@ Azure Blob 连接器支持以下身份验证类型，有关详细信息，请参
 
 2. 授予服务主体在 Azure Blob 存储中的适当权限。 有关角色的更多详细信息，请参阅[使用 RBAC 管理 Azure 存储数据的访问权限](../storage/common/storage-auth-aad-rbac.md)。
 
-    - **对于源**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据读取者”角色。
-    - **对于接收器**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据参与者”角色。
+    - **对于源**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据读取者”角色。 
+    - **对于接收器**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据参与者”角色。 
 
 Azure Blob 存储链接服务支持以下属性：
 
@@ -262,16 +262,16 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="managed-identity"></a> Azure 资源的托管标识身份验证
 
-可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 对于 Blob 存储身份验证类似于使用服务主体，可以直接使用此托管的标识。 此指定工厂可通过此方法访问以及从/向 Blob 存储复制数据。
+可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可以像使用自己的服务主体一样，直接使用此托管标识进行 Blob 存储身份验证。 此指定工厂可通过此方法访问以及从/向 Blob 存储复制数据。
 
-请参阅[进行身份验证对 Azure 存储使用 Azure Active Directory 访问](../storage/common/storage-auth-aad.md)的常规 Azure 存储身份验证。 若要使用 Azure 资源的托管标识身份验证，请执行以下步骤：
+有关 Azure 存储身份验证的一般信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](../storage/common/storage-auth-aad.md)。 若要使用 Azure 资源的托管标识身份验证，请执行以下步骤：
 
-1. [检索数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)通过复制"服务标识应用程序 ID"与工厂一起生成的值。
+1. 通过复制连同工厂一起生成的“服务标识应用程序 ID”值[检索数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
 
 2. 授予托管标识在 Azure Blob 存储中的适当权限。 有关角色的更多详细信息，请参阅[使用 RBAC 管理 Azure 存储数据的访问权限](../storage/common/storage-auth-aad-rbac.md)。
 
-    - **对于源**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据读取者”角色。
-    - **对于接收器**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据参与者”角色。
+    - **对于源**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据读取者”角色。 
+    - **对于接收器**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据参与者”角色。 
 
 Azure Blob 存储链接服务支持以下属性：
 
@@ -306,23 +306,23 @@ Azure Blob 存储链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
-- 有关**Parquet 和带分隔符的文本格式**，请参阅[Parquet 和带分隔符的文本格式的数据集](#parquet-and-delimited-text-format-dataset)部分。
-- 其他格式，例如**ORC/Avro/JSON/二进制格式**，请参阅[其他格式数据集](#other-format-dataset)部分。
+- 有关 **Parquet 和带分隔符的文本格式**，请参阅 [Parquet 和带分隔符的文本格式数据集](#parquet-and-delimited-text-format-dataset)部分。
+- 有关其他格式（如 **ORC/Avro/JSON/Binary 格式**），请参阅[其他格式数据集](#other-format-dataset)部分。
 
-### <a name="parquet-and-delimited-text-format-dataset"></a>Parquet 和带分隔符的文本格式的数据集
+### <a name="parquet-and-delimited-text-format-dataset"></a>Parquet 和带分隔符的文本格式数据集
 
-若要向 / 从 Parquet 或带分隔符的文本格式的 Blob 存储复制数据，请参阅[Parquet 格式](format-parquet.md)并[分隔符的文本格式](format-delimited-text.md)上基于格式的数据集和支持的设置的文章。 Azure Blob 下支持以下属性`location`中基于格式的数据集的设置：
+若要以 Parquet 或带分隔符的文本格式将数据复制到 Blob 存储或从中复制数据，请参阅 [Parquet 格式](format-parquet.md)和[带分隔符的文本格式](format-delimited-text.md)一文，了解基于格式的数据集和支持的设置。 基于格式的数据集中 `location` 设置下的 Azure Blob 支持以下属性：
 
 | 属性   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | 在数据集中的位置的 type 属性必须设置为**AzureBlobStorageLocation**。 | 是      |
-| container  | Blob 容器中。                                          | 是      |
-| folderPath | 在给定容器下的文件夹的路径。 如果你想要到筛选器文件夹中使用通配符，跳过此设置，在活动源设置中指定。 | 否       |
-| fileName   | 在给定的容器 + folderPath 文件名。 如果你想要使用通配符筛选文件，跳过此设置，在活动源设置中指定。 | 否       |
+| type       | 数据集中位置的 type 属性必须设置为 AzureBlobStorageLocation  。 | 是      |
+| container  | Blob 容器。                                          | 是      |
+| folderPath | 给定容器下的文件夹路径。 如果要使用通配符筛选文件夹，请跳过此设置并在活动源设置中指定。 | 否       |
+| fileName   | 给定容器 + folderPath 下的文件名。 如果要使用通配符筛选文件，请跳过此设置并在活动源设置中指定。 | 否       |
 
 > [!NOTE]
 >
-> **AzureBlob**类型与下一节中所述的 Parquet/文本格式的数据集作为仍受支持的是用于复制/查找/GetMetadata 活动的向后兼容，但它不使用映射数据流。 建议以使用从长远看，此新模型和创作 UI 的 ADF 已切换为生成这些新类型。
+> Copy/Lookup/GetMetadata 活动仍然按原样支持下一部分中提到的带有 Parquet/Text 格式的 **AzureBlob** 类型数据集，以实现向后兼容，但它不适用于映射数据流。 建议你继续使用此新模型，并且 ADF 创作 UI 已切换为生成这些新类型。
 
 **示例：**
 
@@ -353,20 +353,20 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="other-format-dataset"></a>其他格式数据集
 
-若要向 / 从 ORC/Avro/JSON/二进制文件格式中的 Blob 存储复制数据，设置为数据集的 type 属性**AzureBlob**。 支持以下属性。
+若要向/从 Blob 存储复制 ORC/Avro/JSON/Binary 格式的数据，请将数据集的 type 属性设置为 **AzureBlob**。 支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 **AzureBlob**。 |是 |
 | folderPath | 到 Blob 存储中的容器和文件夹的路径。 <br/><br/>不包含容器名称的路径支持通配符筛选器。 允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“myblobcontainer/myblobfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |对于复制/查找活动，为“是”；对于 GetMetadata 活动，为“否” |
-| fileName | 指定的“folderPath”下 blob 的名称或通配符筛选器。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有 Blob。 <br/><br/>对于筛选器，允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。<br/><br/>如果没有为输出数据集指定 fileName，并且没有在活动接收器中指定 **preserveHierarchy**，则复制活动会自动生成采用以下模式的 Blob 名称："*数据。[活动运行 ID GUID]。[GUID 如果 FlattenHierarchy]。[格式如果配置]。[压缩如果配置]*"，例如“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz”；如果使用表名称而不是查询从表格源进行复制，则名称模式为“[table name].[format].[compression if configured]”，例如“MyTable.csv”。 |否 |
-| modifiedDatetimeStart | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意当你想要执行大量文件从文件筛选器时启用此设置会影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，意味着任何文件属性筛选器将应用于数据集。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
-| modifiedDatetimeEnd | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意当你想要执行大量文件从文件筛选器时启用此设置会影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，意味着任何文件属性筛选器将应用于数据集。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
-| format | 若要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果要分析或生成具有特定格式的文件，以下是受支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
-| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为“最佳”和“最快”。 |否 |
+| fileName | 指定的“folderPath”下 blob 的名称或通配符筛选器  。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有 Blob。 <br/><br/>对于筛选器，允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。<br/><br/>如果没有为输出数据集指定 fileName，并且没有在活动接收器中指定 **preserveHierarchy**，则复制活动会自动生成采用以下模式的 Blob 名称：“Data.[activity run ID GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]  ”，例如“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz  ”；如果使用表名称而不是查询从表格源进行复制，则名称模式为“[table name].[format].[compression if configured]”，例如“MyTable.csv”。 |否 |
+| modifiedDatetimeStart | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意，当你要从大量文件中进行文件筛选时，启用此设置将影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，这意味着不向数据集应用任何文件属性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
+| modifiedDatetimeEnd | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意，当你要从大量文件中进行文件筛选时，启用此设置将影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，这意味着不向数据集应用任何文件属性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
+| format | 若要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果要分析或生成具有特定格式的文件，以下是受支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat      。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
+| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为“最佳”  和“最快”  。 |否 |
 
 >[!TIP]
->如需复制文件夹下的所有 blob，请仅指定 folderPath。<br>如需复制具有给定名称的单个 blob，请指定文件夹部分的 folderPath 和文件名部分的 fileName。<br>如需复制文件夹下的一部分 blob，请指定文件夹部分的 folderPath 和通配符筛选器部分的 fileName。 
+>如需复制文件夹下的所有 blob，请仅指定  folderPath。<br>如需复制具有给定名称的单个 blob，请指定文件夹部分的  folderPath 和文件名部分的 fileName  。<br>如需复制文件夹下的一部分 blob，请指定文件夹部分的  folderPath 和通配符筛选器部分的 fileName  。 
 
 **示例：**
 
@@ -404,25 +404,25 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="blob-storage-as-a-source-type"></a>将 Blob 存储用作源类型
 
-- 从副本**Parquet 和带分隔符的文本格式**，请参阅[Parquet 和带分隔符的文本格式源](#parquet-and-delimited-text-format-source)部分。
-- 从等其他格式的副本**ORC/Avro/JSON/二进制格式**，请参阅[其他格式源](#other-format-source)部分。
+- 若要从 **Parquet 和带分隔符的文本格式**复制，请参阅 [Parquet 和带分隔符的文本格式源](#parquet-and-delimited-text-format-source)部分。
+- 若要从其他格式（如 **ORC/Avro/JSON/Binary 格式**）复制，请参阅[其他格式源](#other-format-source)部分。
 
 #### <a name="parquet-and-delimited-text-format-source"></a>Parquet 和带分隔符的文本格式源
 
-若要从 Parquet 或带分隔符的文本格式中的 Blob 存储复制数据，请参阅[Parquet 格式](format-parquet.md)并[分隔符的文本格式](format-delimited-text.md)基于格式的复制活动源服务器和受支持的设置上的文章。 Azure Blob 下支持以下属性`storeSettings`基于格式的复制源中的设置：
+若要以 Parquet 或带分隔符的文本格式从 Blob 存储复制数据，请参阅 [Parquet 格式](format-parquet.md)和[带分隔符的文本格式](format-delimited-text.md)一文，了解基于格式的复制活动源和支持的设置。 基于格式的复制源中 `storeSettings` 设置下的 Azure Blob 支持以下属性：
 
 | 属性                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | 下面的类型属性`storeSettings`必须设置为**AzureBlobStorageReadSetting**。 | 是                                           |
+| type                     | `storeSettings` 下的 type 属性必须设置为 **AzureBlobStorageReadSetting**。 | 是                                           |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | 否                                            |
-| wildcardFolderPath       | 包含配置数据集筛选器的源文件夹中的给定容器下的通配符字符的文件夹路径。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 否                                            |
-| wildcardFileName         | 包含在给定的容器 + folderPath/wildcardFolderPath 筛选器源文件的通配符字符的文件名。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 是如果`fileName`中数据集未指定 |
+| wildcardFolderPath       | 数据集中配置的给定容器下包含通配符的文件夹路径，用于筛选源文件夹。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 否                                            |
+| wildcardFileName         | 给定的容器 + folderPath/wildcardFolderPath 下带有通配符的文件名，用于筛选源文件。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 如果数据集中未指定 `fileName`，则为“是” |
 | modifiedDatetimeStart    | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
-| maxConcurrentConnections | 若要同时连接到存储存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | “否”                                            |
+| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否                                            |
 
 > [!NOTE]
-> Parquet/分隔文本格式**BlobSource**作为仍受支持类型的复制活动源下一节中提到的是为了向后兼容。 建议以使用从长远看，此新模型和创作 UI 的 ADF 已切换为生成这些新类型。
+> 对于 Parquet/带分隔符的文本格式，仍然按原样支持下一部分中提到的 **BlobSource** 类型复制活动源，以实现向后兼容性。 建议你继续使用此新模型，并且 ADF 创作 UI 已切换为生成这些新类型。
 
 **示例：**
 
@@ -467,13 +467,13 @@ Azure Blob 存储链接服务支持以下属性：
 
 #### <a name="other-format-source"></a>其他格式源
 
-要从 ORC/Avro/JSON/二进制文件格式中的 Blob 存储复制数据，请将复制活动中设置的源类型**BlobSource**。 复制活动的 **source** 节支持以下属性。
+若要从 Blob 存储复制 ORC/Avro/JSON/Binary 格式的数据，请将复制活动中的源类型设置为 **BlobSource**。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **BlobSource**。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 **true**（默认值）和 **false**。 | 否 |
-| maxConcurrentConnections | 若要同时连接到存储存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | 否 |
+| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否 |
 
 **示例：**
 
@@ -509,21 +509,21 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="blob-storage-as-a-sink-type"></a>用作接收器类型的 Blob 存储
 
-- 复制到以下**Parquet 和带分隔符的文本格式**，请参阅[Parquet 和带分隔符的文本格式接收器](#parquet-and-delimited-text-format-sink)部分。
-- 为复制到等其他格式**ORC/Avro/JSON/二进制格式**，请参阅[其他格式接收器](#other-format-sink)部分。
+- 若要复制到 **Parquet 和带分隔符的文本格式**，请参阅 [Parquet 和带分隔符的文本格式接收器](#parquet-and-delimited-text-format-sink)部分。
+- 若要复制为其他格式（如 **ORC/Avro/JSON/Binary 格式**），请参阅[其他格式接收器](#other-format-sink)部分。
 
 #### <a name="parquet-and-delimited-text-format-sink"></a>Parquet 和带分隔符的文本格式接收器
 
-若要将数据复制到 Blob 存储以 Parquet 或带分隔符的文本格式，请参阅[Parquet 格式](format-parquet.md)并[分隔符的文本格式](format-delimited-text.md)上基于格式的复制活动接收器和受支持的设置的文章。 Azure Blob 下支持以下属性`storeSettings`格式基于复制接收器中的设置：
+若要将数据复制到 Parquet 或带分隔符的文本格式的 Blob 存储，请参阅 [Parquet 格式](format-parquet.md)和[带分隔符的文本格式](format-delimited-text.md)一文，了解基于格式的复制活动接收器和支持的设置。 基于格式的复制接收器中 `storeSettings` 设置下的 Azure Blob 支持以下属性：
 
 | 属性                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | 下面的类型属性`storeSettings`必须设置为**AzureBlobStorageWriteSetting**。 | 是      |
+| type                     | `storeSettings` 下的 type 属性必须设置为 **AzureBlobStorageWriteSetting**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
-| maxConcurrentConnections | 若要同时连接到存储存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | “否”       |
+| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
 
 > [!NOTE]
-> Parquet/分隔文本格式**BlobSink**作为仍受支持类型复制活动接收器中下一节提到的是为了向后兼容。 建议以使用从长远看，此新模型和创作 UI 的 ADF 已切换为生成这些新类型。
+> 对于 Parquet/带分隔符的文本格式，仍然按原样支持下一部分中提到的 **BlobSink** 类型复制活动接收器，以实现向后兼容性。 建议你继续使用此新模型，并且 ADF 创作 UI 已切换为生成这些新类型。
 
 **示例：**
 
@@ -560,7 +560,7 @@ Azure Blob 存储链接服务支持以下属性：
 ]
 ```
 
-#### <a name="other-format-sink"></a>其他格式的接收器
+#### <a name="other-format-sink"></a>其他格式接收器
 
 若要向 Blob 存储复制数据，请将复制活动中的接收器类型设置为 **BlobSink**。 **sink** 节支持以下属性。
 
@@ -568,7 +568,7 @@ Azure Blob 存储链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **BlobSink**。 |是 |
 | copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否 |
-| maxConcurrentConnections | 若要同时连接到存储存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | 否 |
+| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否 |
 
 **示例：**
 
@@ -626,9 +626,9 @@ Azure Blob 存储链接服务支持以下属性：
 | false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
 | false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 的内容将合并到一个文件中，且自动生成文件名。 File1 的自动生成的名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
 
-## <a name="mapping-data-flow-properties"></a>数据流属性映射
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-详细信息请参阅[源转换](data-flow-source.md)并[接收器转换](data-flow-sink.md)中映射数据流动。
+从“映射数据流”中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,10 +10,10 @@ ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: f366726f539a817f515a78fbc35bfeaa3b65514e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024500"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Azure 搜索中的安全性和数据隐私
@@ -44,7 +44,7 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 |----------------|-------------|
 | 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 搜索在 HTTPS 端口 443 上侦听。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>所有从客户端到服务的 Azure 搜索交互都支持 SSL/TLS 1.2。  请务必为你的服务的 SSL 连接使用 TLSv1.2。|
 | 静态加密 <br>Microsoft 托管的密钥 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。<br><br> 加密在 Azure 搜索内部进行，证书和加密密钥由 Microsoft 内部管理，并广泛应用。 无法在门户中或以编程方式打开或关闭加密、管理或替换为自己的密钥，或者查看加密设置。<br><br>静态加密已于 2018 年 1 月 24 日宣布推出并应用于所有区域中的所有服务层级，包括共享（免费）服务。 对于完全加密，必须删除该日期之前创建的索引并重新生成，以便进行加密。 否则，仅对 1 月 24 日以后添加的新数据进行加密。|
-| 静态加密 <br>客户管理的密钥 | 使用客户托管密钥的加密是**预览版**功能未免费提供的服务。 对于付费服务，它才可用于搜索服务上创建或年 1 月 2019年之后使用最新预览 api 版本 (api 版本 = 2019年-05-06-预览)。<br><br>Azure 搜索索引和同义词映射可以现在是静态加密与 Azure Key Vault 中客户托管的密钥密钥。 若要了解详细信息，请参阅[在 Azure 搜索管理加密密钥](search-security-manage-encryption-keys.md)。<br>此功能不会替代默认静态加密，但除了它而不是应用。<br>启用此功能将增加索引的大小，并会降低查询性能。 根据迄今为止观察结果，您有望看到查询时间提高 30%-60%的实际性能将会有所不同，具体取决于索引定义和类型的查询但。 由于这种性能影响，我们建议你仅启用此功能在真正需要的索引。
+| 静态加密 <br>客户管理的密钥 | 使用客户管理的密钥进行加密是一项**预览版**功能，不适用于免费服务。 对于付费服务，该功能仅适用于在 2019 年 1 月或之后使用最新预览版 api-version (api-version=2019-05-06-Preview) 创建的搜索服务。<br><br>现在可以使用 Azure Key Vault 中客户管理的密钥来静态加密 Azure 搜索索引和同义词映射。 有关详细信息，请参阅[在 Azure 搜索中管理加密密钥](search-security-manage-encryption-keys.md)。<br>此功能不会替代默认的静态加密，而是对默认静态加密的补充。<br>启用此功能会增大索引大小，降低查询性能。 根据迄今为止的观察结果，查询时间预期会增加 30%-60%，不过，实际性能根据索引定义和查询类型而有所不同。 由于这种性能影响，我们建议仅对真正需要此功能的索引启用此功能。
 
 ## <a name="azure-wide-user-access-controls"></a>Azure 范围的用户访问控制
 
@@ -64,11 +64,11 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 有两个搜索服务访问级别，可通过两种类型的密钥启用它们：
 
 * 管理员访问（适用于服务的任何读写操作）
-* 查询 （适用于只读操作，例如，对索引的文档集合的查询） 的访问权限
+* 查询访问权限（适用于只读操作，例如，针对索引文档集合运行的查询）
 
-预配服务时会创建*管理员密钥*。 有两个管理密钥，分别指定为*主要*和*辅助*密钥以将它们保持在各自的位置，但事实上是可互换的。 每个服务都有两个管理密钥，以便在转换其中一个时不会丢失服务的访问权限。 你可以[重新生成管理密钥](search-security-api-keys.md#regenerate-admin-keys)定期每个 Azure 安全最佳实践，但您不能将添加到管理密钥总计数。 有最多为每个搜索服务的两个管理密钥。
+预配服务时会创建*管理员密钥*。 有两个管理密钥，分别指定为*主要*和*辅助*密钥以将它们保持在各自的位置，但事实上是可互换的。 每个服务都有两个管理密钥，以便在转换其中一个时不会丢失服务的访问权限。 可以根据 Azure 安全最佳做法定期[重新生成管理密钥](search-security-api-keys.md#regenerate-admin-keys)，但不能将其添加到管理密钥总数。 每个搜索服务最多有两个管理密钥。
 
-*查询密钥*根据需要创建并设计用于客户端应用程序发出查询。 最多可以创建 50 个查询密钥。 在应用程序代码中，指定搜索 URL 和查询 api 密钥以允许对特定索引的文档集合的只读访问。 终结点、仅供只读访问的 API 密钥以及目标索引共同定义客户端应用程序连接的作用域和访问级别。
+*查询密钥*根据需要创建，专用于发出查询的客户端应用程序。 最多可以创建 50 个查询密钥。 在应用程序代码中，可以指定搜索 URL 和查询 API 密钥，以便对特定索引的文档集合进行只读访问。 终结点、仅供只读访问的 API 密钥以及目标索引共同定义客户端应用程序连接的作用域和访问级别。
 
 需要对每个请求进行身份验证，而每个请求由必需密钥、操作和对象组成。 链接在一起后，两个权限级别（完全或只读）加上上下文（例如，索引上的查询操作）便足以针对服务操作提供全面的安全性。 有关密钥的详细信息，请参阅[创建和管理 API 密钥](search-security-api-keys.md)。
 
@@ -82,9 +82,9 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 
 需要索引级安全边界的多租户解决方案通常包含一个中间层，客户可以使用它来处理索引隔离。 有关多租户用例的详细信息，请参阅[多租户 SaaS 应用程序与 Azure 搜索的设计模式](search-modeling-multitenant-saas-applications.md)。
 
-## <a name="admin-access"></a>管理员访问权限
+## <a name="admin-access"></a>管理访问权限
 
-[基于角色的访问 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)确定你是否有权访问控制服务和其内容。 如果是 Azure 搜索服务的所有者或参与者，则可以使用门户或 PowerShell **Az.Search**模块来创建、 更新或删除该服务的对象。 此外可以使用[Azure 搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+[基于角色的访问 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 确定你是否对服务及其内容拥有控制访问权限。 Azure 搜索服务中的“所有者”或“参与者”可以使用门户或 PowerShell **Az.Search** 模块在服务中创建、更新或删除对象。 也可以使用 [Azure 搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 
 ## <a name="user-access"></a>用户访问权限
 
