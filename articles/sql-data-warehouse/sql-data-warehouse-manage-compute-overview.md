@@ -11,10 +11,10 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 47be738a4e5dcec144d482c28e39cbe950bba3e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60748915"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>管理 Azure SQL 数据仓库中的计算资源
@@ -34,7 +34,7 @@ SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许�
 
 | 数据仓库单位数  | 计算节点数 \# | 每个节点的分布区 \# |
 | ---- | ------------------ | ---------------------------- |
-| 100  | 1                  | 60                           |
+| 100  | 第                  | 60                           |
 | 200  | 2                  | 30                           |
 | 300  | 3                  | 20                           |
 | 400  | 4                  | 15                           |

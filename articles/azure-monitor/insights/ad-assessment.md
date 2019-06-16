@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.openlocfilehash: 3b5da6c9046fc694bd5eb0f55cf031b82b6d0103
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60919738"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
@@ -34,7 +34,7 @@ ms.locfileid: "60919738"
 
 可以选择对组织最重要的重点领域，并跟踪一个运行正常无风险环境的进度。
 
-在添加解决方案并完成检查后，会在环境中基础结构的“AD 运行状况检查”仪表板上显示有关重点领域的摘要信息。 以下部分介绍如何使用“AD 运行状况检查”仪表板上的信息，可以在其中查看并针对 Active Directory 服务器基础结构采取建议的操作。  
+在添加解决方案并完成检查后，会在环境中基础结构的“AD 运行状况检查”  仪表板上显示有关重点领域的摘要信息。 以下部分介绍如何使用“AD 运行状况检查”  仪表板上的信息，可以在其中查看并针对 Active Directory 服务器基础结构采取建议的操作。  
 
 ![AD 运行状况检查磁贴的图像](./media/ad-assessment/ad-healthcheck-summary-tile.png)
 
@@ -83,7 +83,7 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 ### <a name="how-weights-are-calculated"></a>如何计算权重
 权重是基于三个关键因素的聚合值：
 
-* 所发现的问题会导致不良后果的概率。 概率较高相当于建议的总体分数较高。
+* 所发现的问题会导致不良后果的概率  。 概率较高相当于建议的总体分数较高。
 * 问题对组织的*影响*（如果它确实会导致不良后果）。 影响较大相当于建议的总体分数更高。
 * 实施建议所需的*工作*。 工作量较大相当于建议的总体分数较低。
 
@@ -111,10 +111,10 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-1. 在“概述”页上，单击“Active Directory 运行状况检查”磁贴。
-1. 在“运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。
+1. 在“概述”页上，单击“Active Directory 运行状况检查”磁贴。  
+1. 在“运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。 
 1. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“**受影响的对象**”下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![运行状况检查建议图像](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
-1. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且合规性分数将提高。 已更正的项会显示为“通过的对象”。
+1. 可以采取“建议的操作”  中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且合规性分数将提高。 已更正的项会显示为“通过的对象”  。
 
 ## <a name="ignore-recommendations"></a>忽略建议
 如果有要忽略的建议，可以创建 Azure Monitor 用来防止建议出现在评估结果中的文本文件。
@@ -141,7 +141,7 @@ ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Co
    * 在 Operations Manager 2016 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2016\Operations Manager\Server
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>验证建议是否已被忽略
-在下一次计划运行状况检查运行后（默认情况下每隔七天运行一次），指定的建议会被标记为“已忽略”，不会在仪表板上显示。
+在下一次计划运行状况检查运行后（默认情况下每隔七天运行一次），指定的建议会被标记为“已忽略”，不会在仪表板上显示。 
 
 1. 可以使用以下日志查询列出所有已忽略的建议。
 
@@ -152,19 +152,19 @@ ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Co
 2. 如果以后决定想要查看已忽略的建议，请删除任何 IgnoreRecommendations.txt 文件，或者可以从中删除 RecommendationID。
 
 ## <a name="ad-health-check-solutions-faq"></a>AD 运行状况检查解决方案常见问题解答
-运行状况检查的运行频率如何？
+运行状况检查的运行频率如何？ 
 
 * 每隔七天运行检查。
 
-是否有某种方法可配置运行状况检查的运行频率？
+是否有某种方法可配置运行状况检查的运行频率？ 
 
 * 现在不行。
 
-如果添加运行状况检查解决方案后发现另一台服务器，那么它是否会被检查？
+如果添加运行状况检查解决方案后发现另一台服务器，那么它是否会被检查？ 
 
 * 是的，一经发现，会每隔七天对其进行一次检查。
 
-如果服务器已停用，何时会将其从运行状况检查中删除？
+如果服务器已停用，何时会将其从运行状况检查中删除？ 
 
 * 如果服务器 3 周未提交数据，则会被删除。
 

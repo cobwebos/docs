@@ -12,15 +12,15 @@ ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 9871e0106ee6caf11c5a1e24459fbd2044f5f3d7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65021438"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>语音合成标记语言 (SSML)
 
-语言合成标记语言 (SSML) 是一种基于 XML 的标记语言，它提供了一种方法来控制文本到语音翻译的发音和“韵律”。 韵律是指语音的节奏和音高 - 其音乐（如果你希望如此）。 你可以按照发音指定单词，提供用于解释数字的提示，插入暂停，控制音高、音量、速度和其他方面。 有关详细信息，请参阅[语音合成标记语言 (SSML) 版本 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/)。 
+语言合成标记语言 (SSML) 是一种基于 XML 的标记语言，它提供了一种方法来控制文本到语音翻译的发音和“韵律”  。 韵律是指语音的节奏和音高 - 其音乐（如果你希望如此）。 你可以按照发音指定单词，提供用于解释数字的提示，插入暂停，控制音高、音量、速度和其他方面。 有关详细信息，请参阅[语音合成标记语言 (SSML) 版本 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/)。 
 
 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
 

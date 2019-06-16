@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e059762cbbf5de2ac03a8a74397e59c9b3bdb97e
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 042277899ff22066cfa890e64f5c6c0f2e0134f9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66387105"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080477"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
 
@@ -264,7 +264,7 @@ ms.locfileid: "66387105"
 
 此类别中的属性定义连接的工厂仪表板的可视外观。 示例包括：
 
-* 名称
+* Name
 * 描述
 * Image
 * Location
@@ -340,4 +340,4 @@ NumberOfManufactureredProducts 节点值的一个特征是它只会增加  。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-建议执行的下一步骤是了解如何[在 Windows 或 Linux 上为连接的工厂解决方案加速器部署网关](iot-accelerators-connected-factory-gateway-deployment.md)。
+建议下一步是了解如何[自定义连接工厂解决方案](iot-accelerators-connected-factory-customize.md)。

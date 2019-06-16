@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: 465b53e1c5f56c5c05c860ebd69a825141f7e703
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706075"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Azure HDInsight 上的 ML Services 入门
@@ -30,9 +30,9 @@ ms.locfileid: "64706075"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 导航到“+ 创建资源” > “Analytics” > “HDInsight”。
+2. 导航到“+ 创建资源” > “Analytics” > “HDInsight”    。
 
-3. 在“基本信息”中输入以下信息：
+3. 在“基本信息”  中输入以下信息：
 
     * **群集名称**：HDInsight 群集的名称。
     * **订阅**：选择要使用的订阅。
@@ -43,7 +43,7 @@ ms.locfileid: "64706075"
 
         ![群集基本详细信息](./media/r-server-get-started/clustername.png)
 
-4. 选择“群集类型”，并在“群集配置”部分设置以下值：
+4. 选择“群集类型”，并在“群集配置”  部分设置以下值： 
 
     * **群集类型**：ML Services
 
@@ -55,13 +55,13 @@ ms.locfileid: "64706075"
 
         ![群集基本详细信息](./media/r-server-get-started/clustertypeconfig.png)
 
-4. 选择群集类型后，使用“选择”按钮设置群集类型。 接下来，使用“下一步”按钮完成基本配置。
+4. 选择群集类型后，使用“选择”  按钮设置群集类型。 接下来，使用“下一步”  按钮完成基本配置。
 
-5. 在“存储”部分，选择或创建存储帐户。 对于本文档中的步骤，请让此部分的其他字段保留默认值。 使用“下一步”按钮保存存储配置。
+5. 在“存储”  部分，选择或创建存储帐户。 对于本文档中的步骤，请让此部分的其他字段保留默认值。 使用“下一步”  按钮保存存储配置。
 
     ![设置 HDInsight 的存储帐户设置](./media/r-server-get-started/cluster-storage.png)
 
-6. 在“摘要”部分，查看群集的配置。 使用“编辑”链接更改不正确的设置。 最后，使用“创建”按钮创建群集。
+6. 在“摘要”  部分，查看群集的配置。 使用“编辑”  链接更改不正确的设置。 最后，使用“创建”按钮创建群集。 
 
     ![设置 HDInsight 的存储帐户设置](./media/r-server-get-started/clustersummary.png)
 
@@ -79,15 +79,15 @@ ms.locfileid: "64706075"
 
 * **选项 2** - 使用 Azure 门户。
   在门户中：
-  1. 在左侧菜单中，选择“所有服务”。
-  2. 在“ANALYTICS”下，选择“HDInsight 群集”。
-  3. 从“HDInsight 群集”页选择群集名称。
-  4. 从“ML 服务仪表板”中，选择“R Studio 服务器”。 
+  1. 在左侧菜单中，选择“所有服务”  。
+  2. 在“ANALYTICS”下，选择“HDInsight 群集”   。
+  3. 从“HDInsight 群集”页选择群集名称  。
+  4. 从“ML 服务仪表板”中，选择“R Studio 服务器”   。 
 
      ![设置 HDInsight 的存储帐户设置](./media/r-server-get-started/r-studio-server-dashboard.png)
 
      > [!IMPORTANT]  
-     > 无论使用哪种方法，首次登录时都需进行两次身份验证。  第一次出现身份验证的提示时，请提供群集管理员用户 ID 和密码。 第二次出现身份验证的提示时，请提供 SSH 用户 ID 和密码。 后续登录只需要 SSH 凭据。
+     > 无论使用哪种方法，首次登录时都需进行两次身份验证。  第一次出现身份验证的提示时，请提供群集管理员用户 ID 和密码。   第二次出现身份验证的提示时，请提供 SSH 用户 ID 和密码。   后续登录只需要 SSH 凭据。
 
 连接后，屏幕应如以下屏幕截图所示：
 
@@ -174,7 +174,7 @@ ms.locfileid: "64706075"
 
    `ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net`
 
-若要查找群集的 SSH 命令，请在 Azure 门户中单击群集名称，单击“SSH + 群集登录”，然后为“主机名”选择边缘节点。 这会显示边缘节点的 SSH 终结点信息。
+若要查找群集的 SSH 命令，请在 Azure 门户中单击群集名称，单击“SSH + 群集登录”，然后为“主机名”选择边缘节点。   这会显示边缘节点的 SSH 终结点信息。
 
 ![边缘节点 SSH 终结点的图像](./media/r-server-get-started/sshendpoint.png)
 

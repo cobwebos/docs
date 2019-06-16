@@ -27,6 +27,7 @@
       items:
         - name: 使用 .NET
           href: stream-live-tutorial-with-api.md
+          displayName: 'Live Events, Live Outputs, ingest'
     - name: 分析视频
       items:
         - name: 使用 .NET
@@ -122,6 +123,7 @@
           href: live-streaming-overview.md
         - name: 实时事件和实时输出
           href: live-events-outputs-concept.md
+          displayName: 'vanity, ingest'
         - name: 推荐的实时编码器
           href: recommended-on-premises-live-encoders.md
         - name: 使用云 DVR

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
 ms.openlocfilehash: d5a4b3a07854c2664de7ec60f3677b666798a9bd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66145361"
 ---
 ### <a name="standard-and-neural-voices"></a>标准和神经语音
@@ -17,24 +17,24 @@ ms.locfileid: "66145361"
 
 | 区域 | 终结点 | 标准语音 | 神经语音 |
 |--------|----------|-----------------|---------------|
-| 澳大利亚东部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “是” |
-| 加拿大中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “是” |
-| 美国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “否” |
-| 东亚 | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “否” |
-| 美国东部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “是” |
-| 美国东部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “否” |
-| 法国中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “否” |
-| 印度中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “是” |
-| 日本东部 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “否” |
-| 韩国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “否” |
-| 美国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “否” |
-| 北欧 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “否” |
-| 美国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “是” |
-| 东南亚 | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “是” |
-| 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “是” |
-| 西欧 | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “是” |
-| 美国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “否” |
-| 美国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | “是” | “是” |
+| 澳大利亚东部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
+| 加拿大中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
+| 美国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| 东亚 | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| 美国东部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
+| 美国东部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| 法国中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| 印度中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
+| 日本东部 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| 韩国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| 美国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| 北欧 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| 美国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
+| 东南亚 | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
+| 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
+| 西欧 | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
+| 美国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| 美国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 
 ### <a name="custom-voices"></a>自定义语音
 

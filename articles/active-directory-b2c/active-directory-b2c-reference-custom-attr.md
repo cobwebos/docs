@@ -11,10 +11,10 @@ ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 16907cb06d7e291a3da5b9d30b4d88cf4d50abf3
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66509585"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中定义自定义属性
@@ -24,7 +24,7 @@ ms.locfileid: "66509585"
  可以在 [Azure 门户](https://portal.azure.com/) 中创建自定义属性并将其用于注册用户流、注册或登录用户流或配置文件编辑用户流。 还可以使用 [Azure AD 图形 API](active-directory-b2c-devquickstarts-graph-dotnet.md) 读取和写入这些属性。 Azure AD B2C 中的自定义属性使用 [Azure AD 图形 API 目录架构扩展](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)。  
 
 > [!NOTE]
-> 支持的较新[Microsoft Graph API](https://docs.microsoft.com/graph/overview?view=graph-rest-1.0)用于查询 Azure AD B2C 租户仍处于开发阶段。
+> 对用于查询 Azure AD B2C 租户的较新 [Microsoft Graph API](https://docs.microsoft.com/graph/overview?view=graph-rest-1.0) 的支持仍在开发中。
 >
 
 ## <a name="create-a-custom-attribute"></a>创建自定义属性
@@ -56,5 +56,5 @@ ms.locfileid: "66509585"
 5. 选择“应用程序声明”  ，然后选择自定义属性。 
 6. 单击“ **保存**”。
 
-创建新的用户使用用户流，它使用新创建的自定义属性后，可以在查询对象[Azure AD Graph 资源管理器](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)。 或者可以使用[**运行用户流**](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)上用户流，以验证客户体验的功能。 现在可以在注册期间收集的属性的列表中看到“ShoeSize”  ，并在发送回应用程序的令牌中看到它。 
+利用使用新创建的自定义属性的用户流创建新用户后，可以在 [Azure AD Graph 浏览器](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)中查询该对象。 或者，可以使用用户流上的[运行用户流](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)  功能来验证客户体验。 现在可以在注册期间收集的属性的列表中看到“ShoeSize”  ，并在发送回应用程序的令牌中看到它。 
 

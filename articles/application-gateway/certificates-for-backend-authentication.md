@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 3/14/2019
 ms.author: absha
 ms.openlocfilehash: 72ee9123ad959c0c7240d4f7a906adc1a4dd1a93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831514"
 ---
 # <a name="create-certificates-for-whitelisting-backend-with-azure-application-gateway"></a>创建证书用于将 Azure 应用程序网关中的后端加入白名单
 
-若要执行端到端 SSL，应用程序网关要求通过上传身份验证证书/受信任的根证书，将后端实例加入白名单。 如果 v1 SKU，身份验证证书所需而发生 v2 SKU 时受信任的根证书所需的允许列表的证书
+若要执行端到端 SSL，应用程序网关要求通过上传身份验证证书/受信任的根证书，将后端实例加入白名单。 将证书加入允许列表时，如果使用 v1 SKU，则需要身份验证证书，而如果使用 v2 SKU，则需要受信任的根证书。
 
 在本文中，学习如何：
 
@@ -35,27 +35,27 @@ ms.locfileid: "60831514"
 
 从 SSL 证书中导出公钥 .cer 文件（不是私钥）。 以下步骤可帮助你导出证书的 .cer 文件，其格式为 Base-64 编码的 X.509(.CER)：
 
-1. 若要获取证书 .cer 文件，请打开“管理用户证书”。 找到该证书（通常位于“证书 - 当前用户”>“个人”>“证书”中），并单击右键。 单击“所有任务”，并单击“导出”。 此操作将打开“证书导出向导”。 如果在 Current User\Personal\Certificates 下找不到证书，可能会意外地打开“Certificates - Local Computer”而不是“Certificates - Current User”）。 如果想要使用 PowerShell 在当前用户范围内打开证书管理程序，请在控制台窗口中键入“certmgr”。
+1. 若要获取证书 .cer 文件，请打开“管理用户证书”  。 找到该证书（通常位于“证书 - 当前用户”>“个人”>“证书”中），并单击右键。 单击“所有任务”  ，并单击“导出”  。 此操作将打开“证书导出向导”  。 如果在 Current User\Personal\Certificates 下找不到证书，可能会意外地打开“Certificates - Local Computer”而不是“Certificates - Current User”）。 如果想要使用 PowerShell 在当前用户范围内打开证书管理程序，请在控制台窗口中键入“certmgr”  。
 
    ![导出](./media/certificates-for-backend-authentication/export.png)
 
-2. 在向导中，单击“下一步”。
+2. 在向导中，单击“下一步”  。
 
    ![导出证书](./media/certificates-for-backend-authentication/exportwizard.png)
 
-3. 选择“否，不导出私钥”，并单击“下一步”。
+3. 选择“否，不导出私钥”  ，并单击“下一步”  。
 
    ![不要导出私钥](./media/certificates-for-backend-authentication/notprivatekey.png)
 
-4. 在“导出文件格式”页上，选择“Base-64 编码的 X.509 (.CER)”，并单击“下一步”。
+4. 在“导出文件格式”  页上，选择“Base-64 编码的 X.509 (.CER)”  ，并单击“下一步”  。
 
    ![Base-64 编码](./media/certificates-for-backend-authentication/base64.png)
 
-5. 对于“要导出的文件”，“浏览”到要将证书导出的目标位置。 在“文件名”中，为证书文件命名。 然后单击“下一步”。
+5. 对于“要导出的文件”  ，“浏览”  到要将证书导出的目标位置。 在“文件名”  中，为证书文件命名。 然后单击“下一步”。 
 
    ![浏览](./media/certificates-for-backend-authentication/browse.png)
 
-6. 单击“完成”导出证书。
+6. 单击“完成”  导出证书。
 
    ![完成](./media/certificates-for-backend-authentication/finish.png)
 

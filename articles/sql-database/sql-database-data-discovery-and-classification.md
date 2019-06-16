@@ -13,15 +13,15 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/22/2019
 ms.openlocfilehash: e451b7837a1cff4bbeaecd1573dc860524caf4d3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65142659"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL 数据库和 SQL 数据仓库数据发现和分类
 
-数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 & 
+数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。     &  
 发现最敏感的数据（业务、财务、医疗保健、个人身份数据 (PII)，等等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
 
 - 帮助满足数据隐私标准和法规符合性要求。
@@ -77,57 +77,57 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-2. 导航到 Azure SQL 数据库窗格“安全”标题下的“高级数据安全”。 单击以启用“高级数据安全”，然后单击“数据发现和分类(预览)”卡。
+2. 导航到 Azure SQL 数据库窗格“安全”标题下的“高级数据安全”  。 单击以启用“高级数据安全”，然后单击“数据发现和分类(预览)”卡  。
 
    ![扫描数据库](./media/sql-data-discovery-and-classification/data_classification.png)
 
-3. “概述”选项卡包含数据库当前分类状态的摘要，其中包括所有已分类列的详细列表，你还可以筛选此列表，仅查看特定的架构部分、信息类型和标签。 如果尚未对任何列进行分类，请[跳到步骤 5](#step-5)。
+3. “概述”选项卡包含数据库当前分类状态的摘要，其中包括所有已分类列的详细列表，你还可以筛选此列表，仅查看特定的架构部分、信息类型和标签  。 如果尚未对任何列进行分类，请[跳到步骤 5](#step-5)。
 
    ![当前分类状态摘要](./media/sql-data-discovery-and-classification/2_data_classification_overview_dashboard.png)
 
-4. 要下载 Excel 格式的报表，请单击窗口顶部菜单中的“导出”选项。
+4. 要下载 Excel 格式的报表，请单击窗口顶部菜单中的“导出”选项  。
 
    ![导出到 Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
-5. <a id="step-5"></a>要开始对数据进行分类，请单击窗口顶部的“分类”选项卡。
+5. <a id="step-5"></a>要开始对数据进行分类，请单击窗口顶部的“分类”选项卡  。
 
     ![对数据进行分类](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
-6. 分类引擎会扫描数据库，查找包含潜在敏感数据的列，并提供“建议列分类”列表。 查看并应用分类建议：
+6. 分类引擎会扫描数据库，查找包含潜在敏感数据的列，并提供“建议列分类”列表  。 查看并应用分类建议：
 
    - 要查看建议的列分类列表，请单击窗口底部的“建议”面板：
 
       ![对数据进行分类](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
 
-   - 查看建议列表 - 要接受特定列的建议，请选中相关行左侧列中的复选框。 还可以通过选中建议表格表头中的复选框，将所有建议标记为“已接受”。
+   - 查看建议列表 - 要接受特定列的建议，请选中相关行左侧列中的复选框。 还可以通过选中建议表格表头中的复选框，将所有建议标记为“已接受”  。
 
        ![查看建议列表](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
 
-   - 要应用所选建议，请单击蓝色的“接受所选建议”按钮。
+   - 要应用所选建议，请单击蓝色的“接受所选建议”按钮  。
 
       ![应用建议](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
 
-7. 此处，还可选择手动分类列表，或者根据建议进行分类：
+7. 此处，还可选择手动分类列表，或者根据建议进行分类  ：
 
-   - 单击窗口顶部菜单中的“添加分类”。
+   - 单击窗口顶部菜单中的“添加分类”  。
 
       ![手动添加分类](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
-   - 在打开的“上下文”窗口中，选择“架构”>“表格”>“想要分类的列”，以及“信息类型”和“敏感度标签”。 然后单击“上下文”窗口底部的蓝色“添加分类”按钮。
+   - 在打开的“上下文”窗口中，选择“架构”>“表格”>“想要分类的列”，以及“信息类型”和“敏感度标签”。 然后单击“上下文”窗口底部的蓝色“添加分类”按钮  。
 
       ![选择要进行分类的列](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
-8. 要完成分类并使用新的分类元数据永久标记数据库的列，请在窗口顶部菜单中单击“保存”。
+8. 要完成分类并使用新的分类元数据永久标记数据库的列，请在窗口顶部菜单中单击“保存”  。
 
    ![保存](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a id="subheading-3"></a>审核对敏感数据的访问
 
-信息保护范例的一个重要方面是能够监视对敏感数据的访问。 [Azure SQL 数据库审核](sql-database-auditing.md) 已经过增强，在审核日志中包含了名为 data_sensitivity_information 的新字段，该字段会记录查询返回的实际数据的敏感度分类（标签）。
+信息保护范例的一个重要方面是能够监视对敏感数据的访问。 [Azure SQL 数据库审核](sql-database-auditing.md) 已经过增强，在审核日志中包含了名为 data_sensitivity_information 的新字段，该字段会记录查询返回的实际数据的敏感度分类（标签）  。
 
 ![审核日志](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>管理数据分类使用 T-SQL
+## <a id="subheading-4"></a>使用 T-SQL 管理数据分类
 
 可以使用 T-SQL 添加/删除列分类，以及检索整个数据库的所有分类。
 
@@ -146,11 +146,11 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 - [按数据库列出当前项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 获取给定数据库的当前敏感度标签
 - [按数据库列出建议项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 获取给定数据库的建议敏感度标签
 
-## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>管理数据发现和分类使用 Azure PowerShell
+## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>使用 Azure PowerShell 管理数据发现和分类
 
 可以使用 PowerShell 获取 Azure SQL 数据库和托管的实例中的所有建议的列。
 
-### <a name="powershell-cmdlets-for-azure-sql-database"></a>适用于 Azure SQL 数据库 PowerShell Cmdlet
+### <a name="powershell-cmdlets-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 PowerShell Cmdlet
 
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 08cae51da20b6093b284618de92c61aab4bf5b55
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65508387"
 ---
 # <a name="devtest-labs-concepts"></a>开发测试实验室概念
@@ -70,7 +70,7 @@ Azure 可认领 VM 是可供具备权限的任何实验室用户使用的虚拟�
 安全访问权限由 Azure 基于角色的访问控制 (RBAC) 决定。 若要了解如何访问，最好先了解权限、角色和由 RBAC 定义的作用域之间的差异。
 
 * 权限 - 权限是对特定操作的定义访问，例如，对所有虚拟机的读取访问权限。
-* 角色 - 角色是一组可进行分组、可分配给用户的权限。 例如，“订阅所有者”角色对订阅中所有资源都具有访问权限。
+* 角色 - 角色是一组可进行分组、可分配给用户的权限。 例如，“订阅所有者”  角色对订阅中所有资源都具有访问权限。
 * 作用域 - 作用域是 Azure 资源层次结构中的级别，例如，资源组、单个实验室或整个订阅。
 
 开发测试实验室的作用域中存在两种定义用户权限的角色：实验室所有者和实验室用户。

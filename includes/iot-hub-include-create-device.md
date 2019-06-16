@@ -9,10 +9,10 @@ ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: d70544866b9e321d98acd3978da145276e036025
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66146543"
 ---
 <!-- put the ## header in the file that includes this file -->
@@ -30,7 +30,7 @@ ms.locfileid: "66146543"
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 
-1. 创建设备后，在“IoT 设备”窗格的列表中打开该设备。 复制“连接字符串 ---主密钥”供以后使用。
+1. 创建设备后，在“IoT 设备”窗格的列表中打开该设备  。 复制“连接字符串 ---主密钥”供以后使用  。
 
     ![设备连接字符串](./media/iot-hub-include-create-device/device-details.png)
 

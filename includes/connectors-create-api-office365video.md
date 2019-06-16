@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: 20729d1e73dd0ff9010201a1c6597b616b364a09
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66149678"
 ---
 ### <a name="prerequisites"></a>必备组件
@@ -18,7 +18,7 @@ ms.locfileid: "66149678"
 
 下面介绍授权逻辑应用连接到 Office 365 视频帐户的步骤：  
 
-1. 要与 Office 365 视频建立连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“Office 365 视频”。 选择要使用的触发器或操作：  
+1. 要与 Office 365 视频建立连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“Office 365 视频”。   选择要使用的触发器或操作：  
    ![Office 365 视频连接创建步骤](./media/connectors-create-api-office365video/office365video-1.png)  
 2. 如果以前尚未与 Office 365 视频建立任何连接，系统会提示提供 Office 365 视频凭据。 这些凭据用于授权逻辑应用连接到 Office 365 视频帐户，然后访问该帐户中的数据：  
    ![Office 365 视频连接创建步骤](./media/connectors-create-api-office365video/office365video-2.png)  

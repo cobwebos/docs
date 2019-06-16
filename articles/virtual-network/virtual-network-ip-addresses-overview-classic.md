@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
 ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60742108"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure 中的 IP 地址类型和分配方法（经典）
@@ -41,7 +41,7 @@ ms.locfileid: "60742108"
 * 应用程序网关数
 
 ### <a name="allocation-method"></a>分配方法
-如果需要向 Azure 资源分配公共 IP 地址，将 动态地从资源的创建位置中的可用公共 IP 地址池分配该 IP 地址。 停止该资源时，将释放此 IP 地址。 对于云服务，所有角色实例均已停止时会发生这种情况，可以使用*静态*（保留）IP 地址避免发生这种情况（请参阅[云服务](#cloud-services)）。
+如果需要向 Azure 资源分配公共 IP 地址，将  动态地从资源的创建位置中的可用公共 IP 地址池分配该 IP 地址。 停止该资源时，将释放此 IP 地址。 对于云服务，所有角色实例均已停止时会发生这种情况，可以使用*静态*（保留）IP 地址避免发生这种情况（请参阅[云服务](#cloud-services)）。
 
 > [!NOTE]
 > 将公共 IP 地址分配到 Azure 资源时所依据的 IP 范围列表已在 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)中发布。
@@ -87,7 +87,7 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 ### <a name="at-a-glance"></a>速览
 下表显示了具有可能分配方法（动态/静态）的每种资源类型以及它是否具有分配多个公共 IP 地址的能力。
 
-| 资源 | 动态 | 静态 | 多个 IP 地址 |
+| Resource | 动态 | 静态 | 多个 IP 地址 |
 | --- | --- | --- | --- |
 | 云服务 |是 |是 |是 |
 | IaaS VM 或 PaaS 角色实例 |是 |否 |否 |
@@ -116,7 +116,7 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 
 如果是虚拟网络中部署的云服务，资源将获取从关联子网（在其网络配置中指定）的地址范围中分配的专用 IP 地址。 此专用 IP 地址可用于 VNet 中所有 VM 之间的通信。
 
-此外，如果是 VNet 中的云服务，则默认*动态*（使用 DHCP）分配专用 IP 地址。 停止和启动该资源时，该地址可能更改。 要确保 IP 地址保持不变，则需要将分配方法设置为 静态，并提供相应地址范围内的有效 IP 地址。
+此外，如果是 VNet 中的云服务，则默认*动态*（使用 DHCP）分配专用 IP 地址。 停止和启动该资源时，该地址可能更改。 要确保 IP 地址保持不变，则需要将分配方法设置为  静态，并提供相应地址范围内的有效 IP 地址。
 
 静态专用 IP 地址通常用于：
 
@@ -137,10 +137,10 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 ### <a name="at-a-glance"></a>速览
 下表显示了具有可能分配方法（动态/静态）的每种资源类型以及它是否具有分配多个专用 IP 地址的能力。
 
-| 资源 | 动态 | 静态 | 多个 IP 地址 |
+| Resource | 动态 | 静态 | 多个 IP 地址 |
 | --- | --- | --- | --- |
-| VM（在独立云服务或 VNet 中） |是 |是 |是 |
-| PaaS 角色实例（在独立云服务或 VNet 中） |是 |否 |否 |
+| VM（在独立云服务或 VNet 中）  |是 |是 |是 |
+| PaaS 角色实例（在独立云服务或 VNet 中）  |是 |否 |否 |
 | 内部负载均衡器前端 |是 |是 |是 |
 | 应用程序网关前端 |是 |是 |是 |
 
@@ -162,7 +162,7 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>Resource Manager 与经典部署之间的差异
 下面是 Resource Manager 和经典部署模型中的 IP 寻址功能的比较。
 
-|  | 资源 | 经典 | 资源管理器 |
+|  | Resource | 经典 | 资源管理器 |
 | --- | --- | --- | --- |
 | **公共 IP 地址** |***VM*** |称为 ILPIP（仅限动态） |称为公共 IP（动态或静态） |
 |  ||分配到 IaaS VM 或 PaaS 角色实例 |与 VM 的 NIC 关联 |

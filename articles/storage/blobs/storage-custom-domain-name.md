@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: blobs
 ms.openlocfilehash: 4f6776a5f15cf391f3a65aceb6e9e783d87a2078
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148930"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>为 Azure 存储帐户配置自定义域名
@@ -36,8 +36,8 @@ ms.locfileid: "65148930"
 | --- | --- | --- |
 | 存储帐户 | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
 | Blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
-| 根容器 | http://mystorageaccount.blob.core.windows.net/myblob 或 http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob 或 http://www.contoso.com/$root/myblob |
-| Web |  http://mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] 或 http://mystorageaccount.[zone].web.core.windows.net/[indexdoc] 或 http://mystorageaccount.[zone].web.core.windows.net/$web 或 http://mystorageaccount.[zone].web.core.windows.net/ | http://www.contoso.com/$web 或 http://www.contoso.com/ 或 http://www.contoso.com/$web/[indexdoc] 或 http://www.contoso.com/[indexdoc] |
+| 根容器 | http://mystorageaccount.blob.core.windows.net/myblob 或 http://mystorageaccount.blob.core.windows.net/ $root/myblob| http://www.contoso.com/myblob 或 http://www.contoso.com/ $root/myblob |
+| Web |  http://mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] 或 http://mystorageaccount.[zone].web.core.windows.net/[indexdoc] 或 http://mystorageaccount.[zone].web.core.windows.net/$web 或 http://mystorageaccount.[zone].web.core.windows.net/ | http://www.contoso.com/ $web 或 http://www.contoso.com/ 或 http://www.contoso.com/ $web/[indexdoc] 或 http://www.contoso.com/ [indexdoc] |
 
 > [!NOTE]  
 > 如以下部分中所示，Blob 服务终结点的所有示例同样适用于 Web 服务终结点。
@@ -54,13 +54,13 @@ ms.locfileid: "65148930"
 
 “注册自定义域”部分介绍了直接方法。
 
-### <a name="intermediary-mapping-with-asverify"></a>使用 asverify 进行中间映射
+### <a name="intermediary-mapping-with-asverify"></a>使用 asverify 进行中间映射 
 
 第二种方法也使用 CNAME 记录。 但是，为了避免停机，此方法先采用了可由 Azure 识别的特殊子域 *asverify*。
 
 将自定义域映射到 Blob 终结点会导致在 [Azure 门户](https://portal.azure.com)中注册域时出现短暂的停机。 如果该域目前所支持的应用程序的服务级别协议 (SLA) 要求不能有停机时间，请使用 Azure *asverify* 子域作为中间注册步骤。 此步骤可确保用户能够在 DNS 映射期间访问域。
 
-使用 asverify 子域注册自定义域中介绍了中间方法。
+使用 asverify 子域注册自定义域中介绍了中间方法  。
 
 ## <a name="register-a-custom-domain"></a>注册自定义域
 如果符合以下陈述，则可以使用本部分所述的过程来注册域：
@@ -69,7 +69,7 @@ ms.locfileid: "65148930"
 
 可以使用 Azure DNS 为 Azure Blob 存储配置自定义 DNS 名称。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage)。
 
-如果自定义域目前在支持不能有任何停机时间的应用程序，请遵循使用 asverify 子域注册自定义域中的过程。
+如果自定义域目前在支持不能有任何停机时间的应用程序，请遵循使用 asverify 子域注册自定义域中的过程  。
 
 若要配置自定义域名，请在 DNS 中创建一个新的 CNAME 记录。 该 CNAME 记录指定了域名的别名。 本示例将自定义域的地址映射到存储帐户的 Blob 存储终结点。
 
@@ -77,22 +77,22 @@ ms.locfileid: "65148930"
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
 
-1. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。  
-   此时会打开“自定义域”窗格。
+1. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。    
+   此时会打开“自定义域”窗格。 
 
 1. 登录到域注册机构的网站，并转到用于管理 DNS 的页面。  
-   可在名为“域名”、“DNS”或“名称服务器管理”的部分中找到该页。
+   可在名为“域名”、“DNS”或“名称服务器管理”的部分中找到该页。   
 
 1. 找到用于管理 CNAME 的部分。  
-   可能需要转到高级设置页，并查找“CNAME”、“别名”或“子域”。
+   可能需要转到高级设置页，并查找“CNAME”、“别名”或“子域”。   
 
 1. 创建新的 CNAME 记录，输入 **www** 或 **photos** 等子域别名（子域是必需的，根域不受支持），然后提供主机名。  
-   主机名是 Blob 服务终结点。 主机名格式为 *\<mystorageaccount>.blob.core.windows.net*，其中，*mystorageaccount* 是存储帐户的名称。 要使用的主机名显示在 [Azure 门户](https://portal.azure.com)的“自定义域”窗格的第 1 项中。 
+   主机名是 Blob 服务终结点。 主机名格式为 *\<mystorageaccount>.blob.core.windows.net*，其中，*mystorageaccount* 是存储帐户的名称。 要使用的主机名显示在 [Azure 门户](https://portal.azure.com)的“自定义域”窗格的第 1 项中。  
 
-1. 在“自定义域”窗格中的文本框内，输入自定义域的名称，包括子域。  
+1. 在“自定义域”窗格中的文本框内，输入自定义域的名称，包括子域。   
    例如，如果域是 *contoso.com*，子域别名是 *www*，请输入 **www\.contoso.com**。 如果子域是 *photos*，则请输入 **photos.contoso.com**。
 
-1. 若要注册自定义域，请选择“保存”。  
+1. 若要注册自定义域，请选择“保存”。   
    如果注册成功，则门户会通知存储帐户已成功更新。
 
 新的 CNAME 记录通过 DNS 传播后，如果用户具有相应的权限，则他们可以使用自定义域查看 Blob 数据。
@@ -104,24 +104,24 @@ ms.locfileid: "65148930"
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
 
-1. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。  
-   此时会打开“自定义域”窗格。
+1. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。    
+   此时会打开“自定义域”窗格。 
 
 1. 登录到 DNS 提供程序的网站，并转到用于管理 DNS 的页面。  
-   可在名为“域名”、“DNS”或“名称服务器管理”的部分中找到该页。
+   可在名为“域名”、“DNS”或“名称服务器管理”的部分中找到该页。   
 
 1. 找到用于管理 CNAME 的部分。  
-   可能需要转到高级设置页，并查找“CNAME”、“别名”或“子域”。
+   可能需要转到高级设置页，并查找“CNAME”、“别名”或“子域”。   
 
 1. 创建新的 CNAME 记录，并且提供包含 *asverify* 子域的子域别名（例如 **asverify.www** 或 **asverify.photos**），然后提供主机名。  
-   主机名是 Blob 服务终结点。 主机名格式为 *asverify.\<mystorageaccount>.blob.core.windows.net*，其中，*mystorageaccount* 是存储帐户的名称。 要使用的主机名显示在 [Azure 门户](https://portal.azure.com)的“自定义域”窗格的第 2 项中。
+   主机名是 Blob 服务终结点。 主机名格式为 *asverify.\<mystorageaccount>.blob.core.windows.net*，其中，*mystorageaccount* 是存储帐户的名称。 要使用的主机名显示在 [Azure 门户](https://portal.azure.com)的“自定义域”窗格的第 2 项中。 
 
-1. 在“自定义域”窗格中的文本框内，输入自定义域的名称，包括子域。  
-   请不要包含 asverify 例如，如果域是 *contoso.com*，子域别名是 *www*，请输入 **www\.contoso.com**。 如果子域是 *photos*，则请输入 **photos.contoso.com**。
+1. 在“自定义域”窗格中的文本框内，输入自定义域的名称，包括子域。   
+   请不要包含 asverify  例如，如果域是 *contoso.com*，子域别名是 *www*，请输入 **www\.contoso.com**。 如果子域是 *photos*，则请输入 **photos.contoso.com**。
 
-1. 选中“使用间接 CNAME 验证”复选框。
+1. 选中“使用间接 CNAME 验证”复选框。 
 
-1. 若要注册自定义域，请选择“保存”。  
+1. 若要注册自定义域，请选择“保存”。   
    如果注册成功，则门户会通知存储帐户已成功更新。 自定义域已由 Azure 验证，但发往域的流量尚未路由到存储帐户。
 
 1. 返回到 DNS 提供程序的网站，创建将子域映射到 Blob 服务终结点的另一条 CNAME 记录。  
@@ -147,12 +147,12 @@ ms.locfileid: "65148930"
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
 
-1. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。  
-   此时会打开“自定义域”窗格。
+1. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。    
+   此时会打开“自定义域”窗格。 
 
 1. 清除包含自定义域名的文本框的内容。
 
-1. 选择“保存”按钮。
+1. 选择“保存”按钮  。
 
 成功删除自定义域后，会看到一条门户通知，指出存储帐户已成功更新。
 

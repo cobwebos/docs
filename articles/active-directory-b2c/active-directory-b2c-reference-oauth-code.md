@@ -11,10 +11,10 @@ ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 7157682d7952529f9dfa98e8bc8707df9cfe944f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66509247"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 OAuth 2.0 授权代码流
@@ -130,11 +130,11 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | 参数 | 必需？ | 描述 |
 | --- | --- | --- |
 | p |必选 |用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 请注意，将此参数添加到*查询字符串*中，而不是添加到 POST 正文中。 |
-| client_id |需要 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
+| client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | grant_type |必选 |授权的类型。 对于授权代码流，授权类型必须为 `authorization_code`。 |
 | scope |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 范围表示应用需要刷新令牌才能获取对资源的长生存期访问权限。  还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |
 | code |需要 |在流的第一个阶段获取的授权代码。 |
-| redirect_uri |需要 |在其中收到授权代码的应用程序的重定向 URI。 |
+| redirect_uri |必选 |在其中收到授权代码的应用程序的重定向 URI。 |
 
 成功令牌响应如下所示：
 
@@ -193,13 +193,13 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_s
 
 | 参数 | 必需？ | 描述 |
 | --- | --- | --- |
-| p |需要 |用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 请注意，将此参数添加到*查询字符串*中，而不是添加到 POST 正文中。 |
+| p |必选 |用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 请注意，将此参数添加到*查询字符串*中，而不是添加到 POST 正文中。 |
 | client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
-| client_secret |必选 |在 [Azure 门户](https://portal.azure.com)中关联到 client_id 的 client_secret。 |
-| grant_type |必选 |授权的类型。 对于授权代码流的此阶段，授权类型必须为 `refresh_token`。 |
+| client_secret |需要 |在 [Azure 门户](https://portal.azure.com)中关联到 client_id 的 client_secret。 |
+| grant_type |需要 |授权的类型。 对于授权代码流的此阶段，授权类型必须为 `refresh_token`。 |
 | scope |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 范围表示应用需要刷新令牌才能获取对资源的长生存期访问权限。  还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |
 | redirect_uri |可选 |在其中收到授权代码的应用程序的重定向 URI。 |
-| refresh_token |必选 |在授权代码流的第二个阶段获取的原始刷新令牌。 |
+| refresh_token |需要 |在授权代码流的第二个阶段获取的原始刷新令牌。 |
 
 成功令牌响应如下所示：
 

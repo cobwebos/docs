@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 375d0de60b916becc8e86a1e33cf4ed46f12c077
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: e9363f88db4fa44879eb8f6a6a04e23563c5ba44
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754834"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125736"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 
@@ -34,22 +34,22 @@ ms.locfileid: "66754834"
 
     SMB 3.0 加密支持在 Linux 内核版本 4.11 中引入，已向后移植到常见 Linux 分发版的早期内核版本中。 在本文档发布时，Azure 库中的以下发行版支持表标题中指定的装载选项。 
 
-* **具有相应装载功能的最低建议版本（SMB 版本 2.1 与 SMB 版本 3.0）**    
+### <a name="minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30"></a>具有相应装载功能的最低建议版本（SMB 版本 2.1 与 SMB 版本 3.0）
 
-    |   | SMB 2.1 <br>（装载在同一 Azure 区域内的 VM 上） | SMB 3.0 <br>（从本地和跨区域装载） |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04+ |
-    | RHEL | 7+ | 7.5+ |
-    | CentOS | 7+ |  7.5+ |
-    | Debian | 8+ |   |
-    | openSUSE | 13.2+ | 42.3+ |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+|   | SMB 2.1 <br>（装载在同一 Azure 区域内的 VM 上） | SMB 3.0 <br>（从本地和跨区域装载） |
+| --- | :---: | :---: |
+| Ubuntu Server | 14.04+ | 16.04+ |
+| RHEL | 7+ | 7.5+ |
+| CentOS | 7+ |  7.5+ |
+| Debian | 8+ |   |
+| openSUSE | 13.2+ | 42.3+ |
+| SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
-    如果此处未列出你的 Linux 分发版，则你可以使用以下命令查看 Linux 内核版本：
+如果此处未列出你的 Linux 分发版，则你可以使用以下命令查看 Linux 内核版本：
 
-   ```bash
-   uname -r
-   ```
+```bash
+uname -r
+```
 
 * <a id="install-cifs-utils"></a>**cifs-utils 包已安装。**  
     可在所选的 Linux 分发版上使用包管理器安装 cifs-utils 包。 
@@ -75,7 +75,7 @@ ms.locfileid: "66754834"
 
     在其他分发版上，请使用相应的包管理器，或[从源编译](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **确定已装载共享的目录/文件权限**：在以下示例中，权限 `0777` 用于向所有用户授予读取、写入和执行权限。 可以将它与其他[chmod 权限](https://en.wikipedia.org/wiki/Chmod)根据需要，但这意味着可能会限制的访问。 如果您使用其他权限，应考虑还保留为所选的本地组的访问权限才能使用 uid 和 gid。
+* **确定已装载共享的目录/文件权限**：在以下示例中，权限 `0777` 用于向所有用户授予读取、写入和执行权限。 可以将它与其他[chmod 权限](https://en.wikipedia.org/wiki/Chmod)根据需要，但这意味着可能会限制的访问。 如果您使用其他权限，应考虑也为了保留访问权限的本地用户和组所选的使用 uid 和 gid。
 
 > [!NOTE]
 > 如果未显式分配 dir_mode 和 file_mode 目录和文件权限，它们将默认为 0755年。

@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 1bab1ed9e2a24b0a84f4327d47a910934319b397
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475877"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>使用 RecoveryManager 类解决分片映射问题
@@ -33,7 +33,7 @@ RecoveryManager 类是[弹性数据库客户端库](sql-database-elastic-databas
 
 ## <a name="why-use-the-recovery-manager"></a>为何使用恢复管理器
 
-在分片数据库环境中，每个数据库有一个租户，而每个服务器有多个数据库。 环境中也可能有多个服务器。 每个数据库映射在分片映射中，以便将调用路由到正确的服务器和数据库。 根据分片键跟踪数据库，将为每个分片分配一系列键值。 例如，分片键可能代表从“D”到“F”的客户名称。 所有分片（也称为数据库）及其映射范围的映射都包含在全局分片映射 (GSM) 中。 每个数据库还包含分片上所包含范围的映射，称为**本地分片映射 (LSM)**。 当应用连接到分片时，会在应用中缓存映射以供快速检索。 LSM 用于验证缓存的数据。
+在分片数据库环境中，每个数据库有一个租户，而每个服务器有多个数据库。 环境中也可能有多个服务器。 每个数据库映射在分片映射中，以便将调用路由到正确的服务器和数据库。 根据分片键  跟踪数据库，将为每个分片分配一系列键值  。 例如，分片键可能代表从“D”到“F”的客户名称。 所有分片（也称为数据库）及其映射范围的映射都包含在全局分片映射 (GSM)  中。 每个数据库还包含分片上所包含范围的映射，称为**本地分片映射 (LSM)** 。 当应用连接到分片时，会在应用中缓存映射以供快速检索。 LSM 用于验证缓存的数据。
 
 GSM 和 LSM 可能因以下原因变得不同步：
 
@@ -89,7 +89,7 @@ GSM 和 LSM 可能因以下原因变得不同步：
    rm.DetectMappingDifferences(location, shardMapName);
    ```
 
-* location 指定服务器名称和数据库名称。
+* location  指定服务器名称和数据库名称。
 * *shardMapName* 参数是分片映射名称。 仅当多个分片映射由同一分片映射管理器管理时才是必需的。 可选。
 
 ## <a name="to-resolve-mapping-differences"></a>解决映射差异
@@ -100,7 +100,7 @@ GSM 和 LSM 可能因以下原因变得不同步：
    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    ```
 
-* RecoveryToken 参数枚举特定分片的 GSM 与 LSM 之间映射的差异。
+* RecoveryToken  参数枚举特定分片的 GSM 与 LSM 之间映射的差异。
 * [MappingDifferenceResolution 枚举](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) 指示用于解决分片映射之间差异的方法。
 * LSM 包含正确映射时，建议使用 **MappingDifferenceResolution.KeepShardMapping**，因此应该使用分片中的映射。 这通常是因为发生故障转移：分片现在驻留在新的服务器上。 由于必须先从 GSM 中删除分片（使用 RecoveryManager.DetachShard 方法），所以 GSM 上不再存在映射。 因此，必须使用 LSM 重新建立分片映射。
 
@@ -113,7 +113,7 @@ GSM 和 LSM 可能因以下原因变得不同步：
    ```
 
 * *location* 参数是要附加的分片的服务器名称和数据库名称。
-* shardMapName 参数是分片映射名称。 仅当多个分片映射由同一分片映射管理器管理时才是必需的。 可选。
+* shardMapName  参数是分片映射名称。 仅当多个分片映射由同一分片映射管理器管理时才是必需的。 可选。
 
 此示例将分片添加到最近从较早时间点还原的分片映射。 由于已还原分片（也就是 LSM 中的分片映射），因此该分片可能与 GSM 中的分片条目不一致。 在此示例代码之外，分片已还原并重命名为数据库的原始名称。 由于它已还原，因此假设 LSM 中的映射为受信任的映射。
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.openlocfilehash: 478714f48782adb138f1ed803d53c81ec48f2efd
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967294"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化多区域成本
@@ -35,8 +35,8 @@ ms.locfileid: "65967294"
 |----|----|----|----|
 |美国西部容器的吞吐量帐单（多个写入区域） |10K RU/秒 * 24 * 31 |每小时每 100 RU/s 为 0.016 美元 |1,190.40 美元 |
 |3 个其他区域（美国东部、北欧和东亚）的吞吐量帐单（多个写入区域） |(3 + 1) * 10K RU/秒 * 24 * 31 |每小时每 100 RU/s 为 0.016 美元 |4,761.60 美元 |
-|美国西部容器的存储帐单 |100 GB |0.25 美元/GB |25 美元 |
-|3 个其他区域（美国东部、北欧和东亚）的存储帐单 |3 * 1 TB |0.25 美元/GB |75 美元 |
+|美国西部容器的存储帐单 |100 GB |0\.25 美元/GB |25 美元 |
+|3 个其他区域（美国东部、北欧和东亚）的存储帐单 |3 * 1 TB |0\.25 美元/GB |75 美元 |
 |**总计**|||**6,052 美元** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>按每个区域提高吞吐量利用率

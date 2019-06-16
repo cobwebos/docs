@@ -10,21 +10,21 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 00147002317f15345f01c88e81973837d16e6669
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65797610"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
 如果在你的环境中运行 Azure IoT Edge 时遇到问题，请使用本文作为指南来进行疑难解答并解决问题。
 
-## <a name="run-the-iotedge-check-command"></a>运行 iotedge 检查命令
+## <a name="run-the-iotedge-check-command"></a>运行 iotedge 的“check”命令
 
-IoT Edge 进行故障排除时的第一步应该是使用`check`命令，后者将执行一系列配置和连接测试有关的常见问题。 `check`命令将出现在[释放 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7)及更高版本。
+排查 IoT Edge 问题时，第一步应该是使用 `check` 命令，针对常见问题执行一系列配置和连接性测试。 `check` 命令在[版本 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) 及更高版本中提供。
 
-你可以运行`check`命令，如下所示，或包括`--help`标志可查看选项的完整列表：
+可以运行 `check` 命令（如下所示），也可以包括 `--help` 标志，以便查看选项的完整列表：
 
 * 在 Linux 上：
 
@@ -38,19 +38,19 @@ IoT Edge 进行故障排除时的第一步应该是使用`check`命令，后者�
   iotedge check
   ```
 
-检查运行该工具的类型可以分类为：
+此工具运行的检查类型可以分类为：
 
-* 配置检查：检查可能阻止 Edge 设备连接到云，包括问题的详细信息*config.yaml*和容器引擎。
-* 连接检查：验证 IoT Edge 运行时可以访问主机设备上的端口，所有 IoT Edge 组件均可都连接到 IoT 中心。
-* 生产的准备情况检查：寻找建议的生产的最佳做法，例如设备证书颁发机构 (CA) 证书和模块的日志文件配置的状态。
+* 配置检查：检查妨碍 Edge 设备连接到云的详细情况，包括 *config.yaml* 和容器引擎出现的问题。
+* 连接检查：验证 IoT Edge 运行时能否访问主机设备上的端口，以及所有 IoT Edge 组件能否连接到 IoT 中心。
+* 生产就绪性检查：查找建议的生产最佳做法，例如设备证书颁发机构 (CA) 证书的状态以及模块日志文件配置。
 
-诊断检查的完整列表，请参阅[内置故障排除功能](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
+如需诊断检查的完整列表，请参阅[内置的故障排除功能](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
 
 ## <a name="standard-diagnostic-steps"></a>标准诊断步骤
 
-如果遇到问题，您可了解有关详细的 IoT Edge 设备的状态通过查看容器日志和自的消息传递到设备。 可以使用本部分中的命令和工具来收集信息。
+如果遇到问题，可以通过查看容器日志和传递到设备以及来自设备的消息来详细了解 IoT Edge 设备的状态。 可以使用本部分中的命令和工具来收集信息。
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>检查 IoT Edge 安全管理器和其日志的状态
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>检查 IoT Edge 安全管理器的状态及其日志
 
 在 Linux 上：
 - 若要查看 IoT Edge 安全管理器的状态，请执行以下命令：
@@ -104,7 +104,7 @@ IoT Edge 进行故障排除时的第一步应该是使用`check`命令，后者�
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>如果 IoT Edge 安全管理器未运行，请验证 yaml 配置文件
 
 > [!WARNING]
-> YAML 文件不能包含作为缩进选项卡。 请改用 2 个空格。
+> YAML 文件不能包含制表符作为缩进。 请改用 2 个空格。
 
 在 Linux 上：
 
@@ -261,12 +261,12 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
 看到此错误时，可以配置虚拟机的 DNS 名称，然后在设置命令中将 DNS 名称设置为主机名。
 
 1. 在 Azure 门户中，导航到虚拟机的概述页面。 
-2. 选择 DNS 名称下的“配置”。 如果你的虚拟机已配置 DNS 名称，则不需要再配置。 
+2. 选择 DNS 名称下的“配置”  。 如果你的虚拟机已配置 DNS 名称，则不需要再配置。 
 
    ![配置虚拟机的 DNS 名称](./media/troubleshoot/configure-dns.png)
 
-3. 为“DNS 名称标签”提供一个值，然后选择“保存”。
-4. 复制新的 DNS 名称，此名称应该为 \<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com。
+3. 为“DNS 名称标签”提供一个值，然后选择“保存”   。
+4. 复制新的 DNS 名称，此名称应该为 \<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com  。
 5. 在虚拟机中使用下列命令，以 DNS 名称设置 IoT Edge 运行时：
 
    - 在 Linux 上：
@@ -292,7 +292,7 @@ IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下已针对性�
 
 在 UI 中： 
 
-在门户中，导航到“设备详细信息” > “设置模块” > “配置高级 Edge 运行时设置”。 为 Edge 中心模块创建名为 *OptimizeForPerformance*、设置为 *false* 的环境变量。
+在门户中，导航到“设备详细信息” > “设置模块” > “配置高级 Edge 运行时设置”    。 为 Edge 中心模块创建名为 *OptimizeForPerformance*、设置为 *false* 的环境变量。
 
 ![设为 false 的 OptimizeForPerformance](./media/troubleshoot/optimizeforperformance-false.png)
 

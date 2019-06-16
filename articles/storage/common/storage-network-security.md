@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 56a25c95d9bc01078b3eff3729a8a693ee3cf510
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65520260"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
@@ -50,7 +50,7 @@ Azure 存储提供分层安全模型。 借助此模型，可保护存储帐户�
 默认情况下，存储帐户接受来自任何网络上客户端的连接。 若要限制为仅允许选定网络访问，必须先更改默认操作。
 
 > [!WARNING]
-> 更改网络规则可能会使应用程序无法正常连接到 Azure 存储。 除非还应用了**授予**访问权限的特定网络规则，否则将默认网络规则设置为“拒绝”会阻止对数据的所有访问。 在将默认规则更改为拒绝访问之前，务必先使用网络规则对所有许可网络授予访问权限。
+> 更改网络规则可能会使应用程序无法正常连接到 Azure 存储。 除非还应用了**授予**访问权限的特定网络规则，否则将默认网络规则设置为“拒绝”会阻止对数据的所有访问  。 在将默认规则更改为拒绝访问之前，务必先使用网络规则对所有许可网络授予访问权限。
 
 ### <a name="managing-default-network-access-rules"></a>管理默认网络访问规则
 
@@ -60,11 +60,11 @@ Azure 存储提供分层安全模型。 借助此模型，可保护存储帐户�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”的设置菜单。
+1. 单击名为“防火墙和虚拟网络”  的设置菜单。
 
-1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问。 若要允许来自所有网络的流量，请选择允许从“所有网络”进行访问。
+1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问  。 若要允许来自所有网络的流量，请选择允许从“所有网络”进行访问  。
 
-1. 单击“保存”应用所做的更改。
+1. 单击“保存”  应用所做的更改。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -141,18 +141,18 @@ Azure 存储提供分层安全模型。 借助此模型，可保护存储帐户�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”的设置菜单。
+1. 单击名为“防火墙和虚拟网络”  的设置菜单。
 
-1. 检查并确保已选择允许从“所选网络”进行访问。
+1. 检查并确保已选择允许从“所选网络”进行访问  。
 
-1. 若要使用新的网络规则向虚拟网络授予访问权限，请在“虚拟网络”下，单击“添加现有虚拟网络”，选择“虚拟网络”和“子网”选项，然后单击“添加”。 若要创建新的虚拟网络并授予其访问权限，请单击“添加新的虚拟网络”。 提供创建新的虚拟网络所需的信息，然后单击“创建”。
+1. 若要使用新的网络规则向虚拟网络授予访问权限，请在“虚拟网络”下，单击“添加现有虚拟网络”，选择“虚拟网络”和“子网”选项，然后单击“添加”      。 若要创建新的虚拟网络并授予其访问权限，请单击“添加新的虚拟网络”  。 提供创建新的虚拟网络所需的信息，然后单击“创建”  。
 
     > [!NOTE]
     > 如果之前没有为所选的虚拟网络和子网配置 Azure 存储的服务终结点，则可在执行此操作时进行配置。
 
-1. 若要删除虚拟网络或子网规则，请单击“...”打开虚拟网络或子网的上下文菜单，然后单击“删除”。
+1. 若要删除虚拟网络或子网规则，请单击“...”打开虚拟网络或子网的上下文菜单，然后单击“删除”   。
 
-1. 单击“保存”应用所做的更改。
+1. 单击“保存”  应用所做的更改。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -185,7 +185,7 @@ Azure 存储提供分层安全模型。 借助此模型，可保护存储帐户�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果  。
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -218,7 +218,7 @@ Azure 存储提供分层安全模型。 借助此模型，可保护存储帐户�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果  。
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>允许从 Internet IP 范围进行访问
 
@@ -229,7 +229,7 @@ Azure 存储提供分层安全模型。 借助此模型，可保护存储帐户�
    > [!NOTE]
    > 不支持使用“/31”或“/32”前缀大小的小型地址范围。 这些范围应使用单独的 IP 地址规则配置。
 
-IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许使用为专用网络保留的 IP 地址范围（如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定义）。 专用网络包括以 _10.*_、_172.16.*_ - _172.31.*_ 和 _192.168.*_ 开头的地址。
+IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许使用为专用网络保留的 IP 地址范围（如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定义）。 专用网络包括以 _10.*_ 、_172.16.*_  - _172.31.*_ 和 _192.168.*_ 开头的地址。
 
    > [!NOTE]
    > IP 网络规则对源自与存储帐户相同的 Azure 区域的请求不起作用。 请使用[虚拟网络规则](#grant-access-from-a-virtual-network)来允许相同区域的请求。
@@ -252,15 +252,15 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”的设置菜单。
+1. 单击名为“防火墙和虚拟网络”  的设置菜单。
 
-1. 检查并确保已选择允许从“所选网络”进行访问。
+1. 检查并确保已选择允许从“所选网络”进行访问  。
 
-1. 若要向 Internet IP 范围授予访问权限，请在“防火墙” > “地址范围”下输入 IP 地址或地址范围（采用 CIDR 格式）。
+1. 若要向 Internet IP 范围授予访问权限，请在“防火墙” > “地址范围”下输入 IP 地址或地址范围（采用 CIDR 格式）   。
 
 1. 若要删除某个 IP 网络规则，请单击该地址范围旁边的垃圾桶图标。
 
-1. 单击“保存”应用所做的更改。
+1. 单击“保存”  应用所做的更改。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -297,7 +297,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果  。
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -334,7 +334,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果  。
 
 ## <a name="exceptions"></a>例外
 
@@ -346,7 +346,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 若要帮助此类服务按预期方式工作，请允许受信任的 Microsoft 服务集绕过网络规则。 这些服务随后会使用强身份验证访问存储帐户。
 
-如果启用“允许受信任的 Microsoft 服务...”例外，以下服务（在订阅中注册后）有权访问存储帐户：
+如果启用“允许受信任的 Microsoft 服务...”例外，以下服务（在订阅中注册后）有权访问存储帐户  ：
 
 |服务|资源提供程序名称|目的|
 |:------|:---------------------|:------|
@@ -355,7 +355,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 |Azure 开发测试实验室|Microsoft.DevTestLab|自定义映像创建和项目安装。 [了解详细信息](/azure/devtest-lab/devtest-lab-overview)。|
 |Azure 事件网格|Microsoft.EventGrid|启用 Blob 存储事件发布并允许事件网格发布到存储队列。 了解有关 [blob 存储事件](/azure/event-grid/event-sources)和[发布到队列](/azure/event-grid/event-handlers)的信息。|
 |Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。 [了解详细信息](/azure/event-hubs/event-hubs-capture-overview)。|
-|Azure HDInsight|Microsoft.HDInsight|预配新的 HDInsight 群集的默认文件系统的初始内容。 [了解详细信息](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。|
+|Azure HDInsight|Microsoft.HDInsight|为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详细信息](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。|
 |Azure Monitor|Microsoft.Insights|允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。|
 |Azure 网络|Microsoft.Network|存储和分析网络流量日志。 [了解详细信息](/azure/network-watcher/network-watcher-packet-capture-overview)。|
 |Azure Site Recovery|Microsoft.SiteRecovery |通过启用 Azure IaaS 虚拟机的复制来配置灾难恢复。 如果使用启用了防火墙的缓存存储帐户、源存储帐户或目标存储帐户，则这是必需的。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。|
@@ -373,13 +373,13 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”的设置菜单。
+1. 单击名为“防火墙和虚拟网络”  的设置菜单。
 
-1. 检查并确保已选择允许从“所选网络”进行访问。
+1. 检查并确保已选择允许从“所选网络”进行访问  。
 
-1. 在“例外”下，选择要允许的例外。
+1. 在“例外”下，选择要允许的例外  。
 
-1. 单击“保存”应用所做的更改。
+1. 单击“保存”  应用所做的更改。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -404,7 +404,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则，删除例外操作不会有任何效果。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则，删除例外操作不会有任何效果  。
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -429,7 +429,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则，删除例外操作不会有任何效果。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则，删除例外操作不会有任何效果  。
 
 ## <a name="next-steps"></a>后续步骤
 

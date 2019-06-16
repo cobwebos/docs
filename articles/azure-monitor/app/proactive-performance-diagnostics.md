@@ -14,10 +14,10 @@ ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
 ms.openlocfilehash: b1a3b04427839736359c88f8ad6a8db5eedf8488
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61294029"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
@@ -58,11 +58,11 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 ## <a name="configure-email-notifications"></a>配置电子邮件通知
 
-智能检测通知默认已启用，将发送到[对 Application Insights 资源拥有所有者、参与者和读取者访问权限](../../azure-monitor/app/resources-roles-access-control.md)的用户。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。 
+智能检测通知默认已启用，将发送到[对 Application Insights 资源拥有所有者、参与者和读取者访问权限](../../azure-monitor/app/resources-roles-access-control.md)的用户。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。  
   
   ![智能检测设置](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * 可使用“智能检测”电子邮件中的“取消订阅”链接来停止接收电子邮件通知。
+  * 可使用“智能检测”电子邮件中的“取消订阅”链接来停止接收电子邮件通知。 
 
 每天只会针对每个 Application Insights 资源发送一封有关智能检测性能异常的电子邮件。 只有当天至少检测到一个新问题时，才会发送电子邮件。 将不会收到任何重复的消息。 
 
@@ -91,7 +91,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * *如果不执行任何操作来响应通知，是否会收到提醒？*
   * 否，仅会收到关于每个问题的消息一次。 如果问题持续出现，它会在“智能检测源”边栏选项卡中更新。
 * *我丢失了电子邮件。在哪里可以找到门户中的通知？*
-  * 在应用的 Application Insights 概述中，单击“智能检测”磁贴。 在该磁贴中可以找到过去最长 90 天的所有通知。
+  * 在应用的 Application Insights 概述中，单击“智能检测”  磁贴。 在该磁贴中可以找到过去最长 90 天的所有通知。
 
 ## <a name="how-can-i-improve-performance"></a>如何提高性能？
 正如你从自己的经验所知，缓慢和失败的响应对于网站用户而言是最大的困扰之一。 因此，必须解决问题。

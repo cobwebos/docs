@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/06/2019
 ms.author: magoedte
 ms.openlocfilehash: f4e15c4fc7bd7b786c5204153fe64f010e5ffe85
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148858"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新用于容器的 Azure Monitor 启用指标
@@ -35,7 +35,7 @@ ms.locfileid: "65148858"
 可以处理分配**监视指标发布服务器**到群集的服务主体的角色，以便代理收集的数据可以发布到群集资源。 监视指标发布服务器具有权限仅推送到资源的指标，它不能更改任何状态、 更新的资源，或读取的任何数据。 有关角色的详细信息，请参阅[监视指标发布者角色](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)。
 
 ## <a name="prerequisites"></a>必备组件 
-在开始之前，请确保你是的成员**[所有者](../../role-based-access-control/built-in-roles.md#owner)** AKS 群集资源，以启用节点的集合和 pod 自定义性能指标的角色。 
+在开始之前，请确保你是的成员 **[所有者](../../role-based-access-control/built-in-roles.md#owner)** AKS 群集资源，以启用节点的集合和 pod 自定义性能指标的角色。 
 
 如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 

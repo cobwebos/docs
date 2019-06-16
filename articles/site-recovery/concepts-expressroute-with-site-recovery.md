@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/18/2019
 ms.author: mayg
 ms.openlocfilehash: bf4cce8a224db81b8db7fae6a69b8b578bb3d47a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772293"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>将 Azure ExpressRoute 与 Azure Site Recovery 结合使用
@@ -40,14 +40,14 @@ Azure Site Recovery 支持从本地 [Hyper-V 虚拟机](hyper-v-azure-architectu
 
 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。 若要将 ExpressRoute 用于 Site Recovery 复制，可以利用[公共对等互连](../expressroute/expressroute-circuit-peerings.md#publicpeering)（新的创建已弃用） 或[Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)。 在复制时，建议使用 Microsoft 对等互连作为路由域。 此外，复制时还应确保满足[网络要求](vmware-azure-configuration-server-requirements.md#network-requirements)。 在将虚拟机或服务器故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#privatepeering)访问它们。 私有对等互连不支持复制。
 
-在本地使用代理服务器并且想要对复制流量使用 ExpressRoute，你需要配置服务器和进程服务器上配置代理跳过列表。 请遵循以下步骤进行配置：
+如果你在本地使用代理并希望将 ExpressRoute 用于复制流量，则需要在配置服务器和进程服务器上配置代理绕过列表。 请遵循以下步骤进行配置：
 
-- 下载 PsExec 工具从[此处](https://aka.ms/PsExec)以访问系统用户上下文。
-- 在系统用户上下文中打开 Internet Explorer，通过运行以下命令行 psexec-s-i"%programfiles%\Internet Explorer\iexplore.exe"
+- 从[此处](https://aka.ms/PsExec)下载 PsExec 工具来访问系统用户上下文。
+- 通过运行以下命令行在系统用户上下文中打开 Internet Explorer：psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
 - 在 IE 中添加代理设置
 - 在忽略列表中，添加 Azure 存储 URL *。 blob.core.windows.net
 
-这将确保仅复制流量流经 ExpressRoute，通信可以通过代理转而。
+这将确保只有复制流量流经 ExpressRoute，而通信可以通过代理。
 
 下图描绘了这种组合方案：![使用 ExpressRoute 进行本地到 Azure 的复制](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
@@ -65,4 +65,4 @@ Azure Site Recovery 支持对 [Azure 虚拟机](azure-to-azure-architecture.md)�
 - 详细了解 [ExpressRoute 线路](../expressroute/expressroute-circuit-peerings.md)。
 - 详细了解 [ExpressRoute 路由域](../expressroute/expressroute-circuit-peerings.md#peeringcompare)。
 - 详细了解 [ExpressRoute 位置](../expressroute/expressroute-locations.md)。
-- 了解有关灾难恢复的详细信息[使用 ExpressRoute 的 Azure 虚拟机](azure-vm-disaster-recovery-with-expressroute.md)。
+- 详细了解[使用 ExpressRoute 的 Azure 虚拟机](azure-vm-disaster-recovery-with-expressroute.md)的灾难恢复。

@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
 ms.openlocfilehash: 7686014adb989494e6df277de4137b76c3125696
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65992131"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>如何使用 Node.js 和 azure/服务总线包中使用服务总线主题和订阅
-> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]
 > - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 > - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
@@ -47,7 +47,7 @@ npm install @azure/service-bus
 交互使用服务总线主题首先实例化[ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient)类，用来实例化[TopicClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient)类。 主题客户端之后，可以创建一个发送方和使用两种[发送](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-)或[sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---)上其发送消息的方法。
 
 1. 打开你喜爱的编辑器，如[Visual Studio Code](https://code.visualstudio.com/)
-2. 创建一个名为文件`send.js`并粘贴以下代码到它。 此代码将向主题发送 10 条消息。
+2. 创建一个名为 `send.js` 的文件，并将下面的代码粘贴到其中。 此代码将向主题发送 10 条消息。
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus"); 
@@ -85,9 +85,9 @@ npm install @azure/service-bus
     });
     ```
 3. 在上述代码中输入的连接字符串和主题的名称。
-4. 然后运行命令`node send.js`在命令提示符中执行此文件。 
+4. 然后在命令提示符下运行命令 `node send.js` 以执行此文件。 
 
-恭喜! 你刚刚向服务总线队列发送消息。
+祝贺你！ 你刚刚向服务总线队列发送消息。
 
 消息具有一些标准属性，如`label`和`messageId`发送时可以设置的。 如果你想要设置任何自定义属性，使用`userProperties`，即可以容纳自定义数据的键 / 值对的 json 对象。
 
@@ -97,7 +97,7 @@ npm install @azure/service-bus
 交互使用服务总线订阅启动的实例化[ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient)类，用来实例化[SubscriptionClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient)类。 订阅客户端之后，可以创建接收器并使用任一[receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-)或[registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-)它以接收消息的方法。
 
 1. 打开你喜爱的编辑器，如[Visual Studio Code](https://code.visualstudio.com/)
-2. 创建一个名为文件`recieve.js`并粘贴以下代码到它。 此代码将尝试从订阅接收 10 条消息。 您收到与实际计数取决于中的订阅和网络延迟的消息数。
+2. 创建一个名为 `recieve.js` 的文件，并将下面的代码粘贴到其中。 此代码将尝试从订阅接收 10 条消息。 您收到与实际计数取决于中的订阅和网络延迟的消息数。
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -128,9 +128,9 @@ npm install @azure/service-bus
     });
     ```
 3. 在上述代码中输入的连接字符串和主题和订阅的名称。
-4. 然后运行命令`node receiveMessages.js`在命令提示符中执行此文件。
+4. 然后在命令提示符下运行命令 `node receiveMessages.js` 以执行此文件。
 
-恭喜! 您只需从服务总线订阅接收消息。
+祝贺你！ 您只需从服务总线订阅接收消息。
 
 [CreateReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-)方法采用`ReceiveMode`这是一个枚举值[ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations)并[PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)。 请记住[结清消息](message-transfers-locks-settlement.md#settling-receive-operations)如果你使用`PeekLock`模式下使用的任何`complete()`， `abandon()`， `defer()`，或`deadletter()`上消息的方法。
 
@@ -146,7 +146,7 @@ npm install @azure/service-bus
 每个订阅具有使用真正的筛选器以允许所有传入消息的默认规则。 在添加新规则，请记得删除默认筛选器使你的新规则中的筛选器，若要运行。 如果订阅没有任何规则，它将接收任何消息。
 
 > [!NOTE]
-> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 若要了解详细信息，请参阅以下资源。

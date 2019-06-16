@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pabutler
-ms.openlocfilehash: 6886c8a2ddc3345650d9dbb4d8ffa7eed86cf2bd
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: a47d16108d98c5449d57d1db4892bffcead7e5f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938348"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072615"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>创建与 Azure 兼容的 VHD
 
@@ -26,7 +26,7 @@ ms.locfileid: "64938348"
 用于 VM 映像的操作系统 VHD 必须基于 Azure 批准的基本映像（包含 Windows Server 或 SQL Server）。
 若要开始，请基于 Microsoft Azure 门户中的以下映像创建 VM：
 
--   Windows Server（[2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/)、[2012 Datacenter](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/)、[2008 R2 SP1](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/)）
+-   Windows Server（[2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)）
 -   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)（Enterprise、Standard、Web）
 -   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)（Enterprise、Standard、Web）
 
@@ -42,34 +42,34 @@ Azure 还提供一系列已批准的 Linux 分发版。  有关最新列表，�
 
 1. 使用要在其中发布 VM 套餐的 Azure 订阅的 Microsoft 帐户登录到门户。
 2. 创建新资源组，并提供**资源组名称**、**订阅**和**资源组位置**。  有关更多指导，请参阅[管理资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)。
-3. 在左侧菜单栏中单击“虚拟机”，显示“虚拟机详细信息”页。 
-4. 在此新页中，单击“+添加”显示“计算”边栏选项卡。  如果初始屏幕上未显示 VM 类型，可以搜索基础 VM 的名称，例如：
+3. 在左侧菜单栏中单击“虚拟机”，显示“虚拟机详细信息”页。  
+4. 在此新页中，单击“+添加”显示“计算”边栏选项卡。    如果初始屏幕上未显示 VM 类型，可以搜索基础 VM 的名称，例如：
 
     ![新 VM 的“计算”边栏选项卡](./media/publishvm_014.png)
 
 5. 选择适当的虚拟映像后，提供以下值：
-   * 在“基本信息”边栏选项卡中，输入虚拟机的**名称**（1-15 个字母数字字符）。 （本示例使用 `DemoVm009`。）
+   * 在“基本信息”边栏选项卡中，输入虚拟机的**名称**（1-15 个字母数字字符）。  （本示例使用 `DemoVm009`。）
    * 输入**用户名**和强**密码**，用于在 VM 上创建本地帐户。  （此处使用了 `adminUser`。）密码长度必须为 8 到 123 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 有关详细信息，请参阅[用户名和密码要求](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm)。
    * 选择创建的资源组（此处为 `DemoResourceGroup`）。
    * 选择 Azure 数据中心的**位置**（此处为 `West US`）。
-   * 单击“确定”以保存这些值。 
+   * 单击“确定”以保存这些值。  
 
 6. 根据以下建议选择要部署的 VM 的大小：
    * 如果计划在本地开发 VHD，大小则无关紧要。 请考虑使用一个较小的 VM。
    * 如果计划在 Azure 中开发映像，请考虑对所选映像使用一个建议的 VM 大小。
-   * 有关定价信息，请参阅门户上显示的“建议定价层”选择器。 其中会显示发布者提供的三个建议大小。 （此处的发布者为 Microsoft。）
+   * 有关定价信息，请参阅门户上显示的“建议定价层”  选择器。 其中会显示发布者提供的三个建议大小。 （此处的发布者为 Microsoft。）
 
    ![新 VM 的“大小”边栏选项卡](./media/publishvm_015.png)
 
-7. 在“设置”边栏选项卡中，将“使用托管磁盘”选项设置为“否”。  这样，便可以手动管理新 VHD。 （在“设置”边栏选项卡中，还可以更改其他存储和网络选项，例如，在“磁盘类型”中选择“高级(SSD)”。）单击“确定”以继续。
+7. 在“设置”边栏选项卡中，将“使用托管磁盘”选项设置为“否”。     这样，便可以手动管理新 VHD。 （在“设置”边栏选项卡中，还可以更改其他存储和网络选项，例如，在“磁盘类型”中选择“高级(SSD)”。）    单击“确定”以继续。 
 
     ![新 VM 的“设置”边栏选项卡](./media/publishvm_016.png)
 
-8. 单击“摘要”查看所做的选择。 看到“验证通过”消息后，单击“确定”。
+8. 单击“摘要”查看所做的选择。  看到“验证通过”消息后，单击“确定”。  
 
     ![新 VM 的“摘要”边栏选项卡](./media/publishvm_017.png)
 
-Azure 随即开始预配所指定的虚拟机。  可以单击左侧的“虚拟机”选项卡来跟踪预配进度。  创建虚拟机后，状态将更改为“正在运行”。  此时，可以[连接到该虚拟机](./cpp-connect-vm.md)。
+Azure 随即开始预配所指定的虚拟机。  可以单击左侧的“虚拟机”选项卡来跟踪预配进度。   创建虚拟机后，状态将更改为“正在运行”。   此时，可以[连接到该虚拟机](./cpp-connect-vm.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

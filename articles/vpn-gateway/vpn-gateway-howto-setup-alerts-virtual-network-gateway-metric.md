@@ -8,10 +8,10 @@ ms.topic: conceptional
 ms.date: 04/22/2019
 ms.author: alzam
 ms.openlocfilehash: e54dadbda0582095e8152ea30376d369177bfd86
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65509910"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>设置 VPN 网关指标相关警报
@@ -21,10 +21,10 @@ ms.locfileid: "65509910"
 
 |**指标**   | **单位** | **粒度** | **说明** | 
 |---       | ---        | ---       | ---            | ---       |
-|**AverageBandwidth**| 字节/秒  | 5 分钟| 平均网关上的所有站点到站点连接的组合的带宽的使用率。     |
-|**P2SBandwidth**| 字节/秒  | 1 分钟  | 平均网关上的所有点到站点连接的组合的带宽的使用率。    |
+|**AverageBandwidth**| 字节数/秒  | 5 分钟| 平均网关上的所有站点到站点连接的组合的带宽的使用率。     |
+|**P2SBandwidth**| 字节数/秒  | 1 分钟  | 平均网关上的所有点到站点连接的组合的带宽的使用率。    |
 |**P2SConnectionCount**| Count  | 1 分钟  | 在网关上的点到站点连接的计数。   |
-|**TunnelAverageBandwidth** | 字节/秒    | 5 分钟  | 在网关创建的隧道的平均带宽利用率。 |
+|**TunnelAverageBandwidth** | 字节数/秒    | 5 分钟  | 在网关创建的隧道的平均带宽利用率。 |
 |**TunnelEgressBytes** | 字节 | 5 分钟 | 在网关创建的隧道的传出流量。   |
 |**TunnelEgressPackets** | Count | 5 分钟 | 在网关创建的隧道上的传出数据包计数。   |
 |**TunnelEgressPacketDropTSMismatch** | Count | 5 分钟 | 在隧道引起的不匹配流量选择器上丢弃的传出数据包计数。 |
@@ -40,7 +40,7 @@ ms.locfileid: "65509910"
 - **指标：** TunnelAverageBandwidth
 - **条件：** 带宽 > 10 个字节/秒
 - **窗口：** 5 分钟
-- **警报操作：** 电子邮件
+- **警报操作：** Email
 
 
 
