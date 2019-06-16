@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: a91a3538a9c176e3c76e351eb53eb84decc85938
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65200537"
 ---
 # <a name="send-security-messages-sdk"></a>发送安全消息 SDK
@@ -96,7 +96,7 @@ ms.locfileid: "65200537"
 
 ### <a name="send-security-message-api"></a>发送安全消息 API
 
-“发送安全消息”API 目前可在 C 和 C# 中使用。  
+“发送安全消息”API 目前可在 C 和 C# 中使用。   
 
 #### <a name="c-api"></a>C# API
 

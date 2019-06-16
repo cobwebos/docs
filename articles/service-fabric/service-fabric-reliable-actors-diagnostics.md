@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: 5f573db887b3acc2c4a668a8c19c7f8e3cb25019
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60726564"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors 的诊断和性能监视

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.openlocfilehash: df35ee9791dc1090385e2d2aed5966a1292ddc64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708187"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
@@ -65,7 +65,7 @@ ms.locfileid: "64708187"
 > 如果在使用 Apache 技术，可通过 [https://apache.org](https://apache.org) 上的 Apache 项目站点（如 [Apache Hadoop](https://hadoop.apache.org/) 站点）获取帮助。
 
 > [!IMPORTANT]
-> Ubuntu 映像在发布后 3 个月内可用于新建 HDInsight 群集。 自 2019 年 1 月起，运行的群集（包括边缘节点）不进行自动修补。 客户必须使用脚本操作或其他机制来修补运行的群集。  有关详细信息，请参阅[针对 HDInsight 的 OS 修补](./hdinsight-os-patching.md)。
+> Ubuntu 映像在发布后 3 个月内可用于新建 HDInsight 群集。 自 2019 年 1 月起，运行的群集（包括边缘节点）不进行自动修补  。 客户必须使用脚本操作或其他机制来修补运行的群集。  有关详细信息，请参阅[针对 HDInsight 的 OS 修补](./hdinsight-os-patching.md)。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>将边缘节点添加到现有群集
 本部分介绍如何使用 Resource Manager 模板将边缘节点添加到现有 HDInsight 群集。  可以在 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/) 中找到 Resource Manager 模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh 的脚本操作。该脚本不执行任何操作。  它只是演示如何从 Resource Manager 模板调用脚本操作。
@@ -82,9 +82,9 @@ ms.locfileid: "64708187"
    * **位置**：选择现有 HDInsight 群集的位置。
    * **群集名称**：输入现有 HDInsight 群集的名称。
    * **边缘节点大小**：选择一个 VM 大小。 vm 的大小必须满足工作节点 vm 的大小要求。 有关建议的工作节点 vm 的大小信息，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。
-   * **边缘节点前缀**：默认值为“new”。  如果使用默认值，边缘节点的名称为 **new-edgenode**。  可以通过门户自定义前缀。 也可以通过模板自定义完整名称。
+   * **边缘节点前缀**：默认值为“new”  。  如果使用默认值，边缘节点的名称为 **new-edgenode**。  可以通过门户自定义前缀。 也可以通过模板自定义完整名称。
 
-4. 选中“我同意上述条款和条件”，并单击“购买”创建边缘节点。
+4. 选中“我同意上述条款和条件”  ，并单击“购买”  创建边缘节点。
 
 >[!IMPORTANT]  
 > 请确保选择现有 HDInsight 群集的 Azure 资源组。  否则，会收到错误消息“无法对嵌套资源执行请求的操作。 父资源 '&lt;ClusterName>' 未找到。”
@@ -111,7 +111,7 @@ ms.locfileid: "64708187"
    * **安装脚本操作**：保存默认值，用于本教程的全过程。
      
      某些属性已在模板中硬编码：集群类型、群集辅助角色节点计数、边缘节点大小和边缘节点名称。
-4. 选中“我同意上述条款和条件”，并单击“购买”，以创建包含该边缘节点的群集。
+4. 选中“我同意上述条款和条件”  ，并单击“购买”  ，以创建包含该边缘节点的群集。
 
 ## <a name="add-multiple-edge-nodes"></a>添加多个边缘节点
 
@@ -148,8 +148,8 @@ ms.locfileid: "64708187"
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开包含边缘节点的 HDInsight 群集。
 3. 单击“**应用程序**”。 此时会显示边缘节点的列表。  
-4. 右键单击要删除的边缘节点，并单击“删除”。
-5. 单击“是”确认。
+4. 右键单击要删除的边缘节点，并单击“删除”  。
+5. 单击“是”  确认。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何添加边缘节点以及如何访问边缘节点。 若要了解更多信息，请参阅下列文章：

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 275178998948e357a6a72fbe5d0b3c9c01485a3a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65800159"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>比较 Azure 媒体服务 v3 预设和视频索引器 
 
-本文比较视频索引器 API 和媒体服务 v3 API 的功能。 
+本文比较视频索引器 API 和媒体服务 v3 API 的功能   。 
 
 目前，没有提供的功能之间的重叠[视频索引器 Api](https://api-portal.videoindexer.ai/)并[媒体服务 v3 Api](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。 下表提供当前用于了解二者异同的准则。 
 

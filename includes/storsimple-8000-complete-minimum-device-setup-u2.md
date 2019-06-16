@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: c44effe0bde3c7e880e53706fcb59d91a8605e7b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66118235"
 ---
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>完成最低要求的 StorSimple 设备设置
@@ -16,15 +16,15 @@ ms.locfileid: "66118235"
    > [!NOTE]
    > 完成最低要求的设备设置后，将无法更改设备名称。
    
-1. 从“设备”边栏选项卡中的表格式设备列表中，选择并单击设备。 该设备处于“就绪可设置”状态。 “配置设备”边栏选项卡随即打开。
+1. 从“设备”边栏选项卡中的表格式设备列表中，选择并单击设备。  该设备处于“就绪可设置”状态。  “配置设备”边栏选项卡随即打开。 
 
      ![StorSimple 最低要求设备设置网络接口](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig1.png)
 
-2. 在“配置设备”边栏选项卡中：
+2. 在“配置设备”  边栏选项卡中：
    
-   1. 为设备提供“友好名称”。 默认设备名称可反映设备型号和序列号等信息。 可分配最多包含 64 个字符的友好名称来管理设备。
+   1. 为设备提供“友好名称”  。 默认设备名称可反映设备型号和序列号等信息。 可分配最多包含 64 个字符的友好名称来管理设备。
    2. 基于部署设备的地理位置设置“时区”  。 设备将此时区用于所有计划操作。
-   3. 在“DATA 0 设置”下：
+   3. 在“DATA 0 设置”  下：
 
        1. DATA 0 网络接口显示为已启用，并且具有通过设置向导配置的网络设置（IP、子网、网关）。 还会自动为云和 iSCSI 启用 DATA 0。
 
@@ -36,7 +36,7 @@ ms.locfileid: "66118235"
 
             ![Test-HcsmConnection 显示可路由的 IP](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. 单击“确定”。 设备配置将启动。 当设备配置完成时，将收到通知。 在“设备”边栏选项卡中，设备状态将更改为“联机”。
+1. 单击“确定”。  设备配置将启动。 当设备配置完成时，将收到通知。 在“设备”边栏选项卡中，设备状态将更改为“联机”。  
 
     ![StorSimple 最低要求设备设置网络接口](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 

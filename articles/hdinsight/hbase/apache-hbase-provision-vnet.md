@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
 ms.openlocfilehash: 85eaa81a0cfd7ccfe8ad3ae818f89966280d279e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64730363"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>在 Azure 虚拟网络中的 HDInsight 上创建 Apache HBase 群集
@@ -52,16 +52,16 @@ ms.locfileid: "64730363"
 1. 单击下面的图像即可在 Azure 门户中打开该模板。 模板位于[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. 在“自定义部署”边栏选项卡中输入以下属性：
+2. 在“自定义部署”边栏选项卡中输入以下属性： 
 
    * **订阅**：选择用来创建 HDInsight 群集的 Azure 订阅、相关存储帐户和 Azure 虚拟网络。
-   * **资源组**：选择“新建”，并指定新的资源组名称。
+   * **资源组**：选择“新建”  ，并指定新的资源组名称。
    * **位置**：选择资源组的位置。
    * **ClusterName**：为要创建的 Hadoop 群集输入名称。
-   * **群集登录名和密码**：默认登录名为“admin”。
-   * **SSH 用户名和密码**：默认用户名为“sshuser”。  可以重命名它。
+   * **群集登录名和密码**：默认登录名为“admin”  。
+   * **SSH 用户名和密码**：默认用户名为“sshuser”  。  可以重命名它。
    * **我同意上述条款和条件**：（选择）
-3. 单击“购买”。 创建群集大约需要 20 分钟时间。 创建群集之后，便可以在门户中单击群集边栏选项卡以打开它。
+3. 单击“购买”  。 创建群集大约需要 20 分钟时间。 创建群集之后，便可以在门户中单击群集边栏选项卡以打开它。
 
 完成教程之后，可能要删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Apache Hadoop 群集](../hdinsight-administer-use-portal-linux.md#delete-clusters)。
 
@@ -86,7 +86,7 @@ ms.locfileid: "64730363"
    * 使用 Ambari 网站：
 
      1. 浏览到 https://&lt;ClusterName>.azurehdinsight.net。
-     2. 在顶部菜单中单击“主机”。
+     2. 在顶部菜单中单击“主机”  。
    * 使用 Curl 发出 REST 调用：
 
      ```bash

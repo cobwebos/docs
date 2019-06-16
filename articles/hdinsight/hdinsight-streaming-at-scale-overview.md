@@ -8,10 +8,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: e2b6cbabc9a0c727c9eb0232bd55048493b29128
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64696928"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight 中的大规模流式处理
@@ -19,7 +19,7 @@ ms.locfileid: "64696928"
 实时大数据解决方案可以处理在移动的数据。 通常，这些数据在抵达时的作用最大。 如果传入的数据流比当时可处理的大小更大，则可能需要限制资源。 或者，可以按需添加节点，根据流式处理解决方案的需要纵向扩展 HDInsight 群集。
 
 
-在流式处理应用程序中，一个或多个数据源会生成事件（有时达到每秒几百万个事件），此时，需要在不丢弃任何有用信息的情况下快速引入这些事件。 [Apache Kafka](kafka/apache-kafka-introduction.md) 或[事件中心](https://azure.microsoft.com/services/event-hubs/)等服务使用流缓冲（也称为事件队列）来处理传入的事件。 收集事件后，可以使用流处理层中的实时分析系统（例如 [Apache Storm](storm/apache-storm-overview.md) 或 [Apache Spark Streaming](spark/apache-spark-streaming-overview.md)）来分析数据。 处理的数据可存储在长期存储系统（例如 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)）中，并实时显示在商业智能仪表板（例如 [Power BI](https://powerbi.microsoft.com)、Tableau）或自定义的网页上。
+在流式处理应用程序中，一个或多个数据源会生成事件（有时达到每秒几百万个事件），此时，需要在不丢弃任何有用信息的情况下快速引入这些事件。 [Apache Kafka](kafka/apache-kafka-introduction.md) 或[事件中心](https://azure.microsoft.com/services/event-hubs/)等服务使用流缓冲（也称为事件队列）来处理传入的事件。   收集事件后，可以使用流处理层中的实时分析系统（例如 [Apache Storm](storm/apache-storm-overview.md) 或 [Apache Spark Streaming](spark/apache-spark-streaming-overview.md)）来分析数据。  处理的数据可存储在长期存储系统（例如 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)）中，并实时显示在商业智能仪表板（例如 [Power BI](https://powerbi.microsoft.com)、Tableau）或自定义的网页上。
 
 
 ![HDInsight Streaming 模式](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
@@ -58,7 +58,7 @@ Apache Storm 和 Spark Streaming 都支持将工作节点添加到其群集，�
 
 若要利用通过缩放 Storm 添加的新节点，需要重新均衡在增加群集大小之前启动的任何 Storm 拓扑。 可以使用 Storm Web UI 或其 CLI 实现这种重新均衡。 有关详细信息，请参阅 [Apache Storm 文档](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
 
-Apache Spark 根据应用程序的要求使用三个关键参数来配置其环境：`spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory`。 执行器是针对 Spark 应用程序启动的进程。 执行器在工作节点上运行，负责执行应用程序的任务。 执行器的默认数目和每个群集的执行器大小是根据工作节点数目和工作节点大小计算的。 这些数字存储在每个群集头节点上的 `spark-defaults.conf` 文件中。
+Apache Spark 根据应用程序的要求使用三个关键参数来配置其环境：`spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory`。 执行器是针对 Spark 应用程序启动的进程。  执行器在工作节点上运行，负责执行应用程序的任务。 执行器的默认数目和每个群集的执行器大小是根据工作节点数目和工作节点大小计算的。 这些数字存储在每个群集头节点上的 `spark-defaults.conf` 文件中。
 
 这三个参数可在群集级别进行配置（适用于群集上运行的所有应用程序），也可以针对每个应用程序指定。 有关详细信息，请参阅[管理 Apache Spark 群集的资源](spark/apache-spark-resource-manager.md)。
 

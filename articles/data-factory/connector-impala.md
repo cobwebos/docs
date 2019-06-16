@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: f86931aad4eab697e4a0d2dfc47a6d4ff5bfc256
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61401172"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Impala 复制数据
@@ -86,7 +86,7 @@ Impala 链接服务支持以下属性。
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Impala 数据集支持的属性列表。
 
-要从 Impala 复制数据，请将数据集的 type 属性设置为“ImpalaObject”。 支持以下属性：
+要从 Impala 复制数据，请将数据集的 type 属性设置为“ImpalaObject”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -115,7 +115,7 @@ Impala 链接服务支持以下属性。
 
 ### <a name="impala-as-a-source-type"></a>以 Impala 作为源类型
 
-要从 Impala 复制数据，请将复制活动中的源类型设置为“ImpalaSource”。 复制活动的 **source** 节支持以下属性。
+要从 Impala 复制数据，请将复制活动中的源类型设置为“ImpalaSource”  。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

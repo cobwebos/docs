@@ -12,10 +12,10 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6c0951eb6ad3b7651da97e1a49c5edf5ab55a199
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61044321"
 ---
 # <a name="copy-data-to-and-from-azure-blob-storage-using-azcopy"></a>使用 AzCopy 将数据复制到 Azure Blob 存储或从 Azure Blob 存储复制数据
@@ -81,8 +81,8 @@ AzCopy 命令的基本语法是：
 
 ## <a name="tips-for-using-azcopy"></a>使用 AzCopy 的提示
 > [!TIP]
-> 1. **上传**文件时，*/S* 以递归方式上传文件。 如果没有此参数，则不会上传子目录中的文件。  
-> 2. **下载**文件时，*/S* 以递归方式搜索容器，直到指定目录及其子目录中的所有文件，或与给定目录及其子目录中指定模式匹配的所有文件，都已下载。  
+> 1. **上传**文件时， */S* 以递归方式上传文件。 如果没有此参数，则不会上传子目录中的文件。  
+> 2. **下载**文件时， */S* 以递归方式搜索容器，直到指定目录及其子目录中的所有文件，或与给定目录及其子目录中指定模式匹配的所有文件，都已下载。  
 > 3. 不能指定要使用 */Source* 参数下载的**特定 blob 文件**。 若要下载特定文件，请指定要使用 */Pattern* 参数下载的 blob 文件名称。 **/S** 参数可用于使用 AzCopy 以递归方式查找文件名称模式。 如果不使用模式参数，AzCopy 将下载该目录中的所有文件。
 > 
 > 

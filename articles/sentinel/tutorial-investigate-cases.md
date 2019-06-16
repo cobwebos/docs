@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
 ms.openlocfilehash: d1da180d3b30b57ca2b69985bf3d0261b8d70c39
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205509"
 ---
 # <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>教程：调查情况下使用 Azure Sentinel 预览版

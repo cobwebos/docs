@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: f7f4f9ae6a80052e06b2cafa68cb5c11dfa1333a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62097923"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
@@ -127,7 +127,7 @@ ms.locfileid: "62097923"
 
 | 参数 | 描述 | 默认 |
 | --- | --- | --- |
-| 名称 |缓存的名称 | |
+| Name |缓存的名称 | |
 | Location |缓存的位置 | |
 | ResourceGroupName |将在其中创建缓存的资源组名称 | |
 | 大小 |缓存的大小。 有效值是：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
@@ -340,7 +340,7 @@ ms.locfileid: "62097923"
 > * 不能从**标准**缓存向下缩放到**基本**缓存。
 > * 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
 > * 不能从**基本**缓存直接缩放到**高级**缓存。 必须在一个缩放操作中从**基本**缩放到**标准**，并在后续的缩放操作中从**标准**缩放到**高级**。
-> * 不能从较大的大小减小为 **C0 (250 MB)**。
+> * 不能从较大的大小减小为 **C0 (250 MB)** 。
 > 
 > 有关详细信息，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale.md)。
 > 

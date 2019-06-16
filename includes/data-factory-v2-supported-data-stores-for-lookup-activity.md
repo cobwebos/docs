@@ -9,10 +9,10 @@ ms.date: 05/24/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: 2b250f9f722bb1992d72b0555207a64dbc2dd972
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66271563"
 ---
 | 类别 | 数据存储 |
@@ -50,7 +50,7 @@ ms.locfileid: "66271563"
 | &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |
 | &nbsp; |[通过 MDX 实现的 SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
-| &nbsp; |[SAP 表](../articles/data-factory/connector-sap-table.md) |
+| &nbsp; |[SAP Table](../articles/data-factory/connector-sap-table.md) |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |

@@ -14,10 +14,10 @@ ms.date: 02/07/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
 ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61461555"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Application Insights 智能检测规则
@@ -31,7 +31,7 @@ ms.locfileid: "61461555"
 - 是否已启用该规则（默认值为 **true**。）
 - 找到检测项时，是否将电子邮件发送到订阅所有者、参与者或读取者（默认值为 **true**。）
 - 找到检测项时，应收到通知的其他任何电子邮件收件人。
-- * 电子邮件配置不适用于标记为“预览”的智能检测规则。
+- * 电子邮件配置不适用于标记为“预览”的智能检测规则  。
 
 为了让用户通过 Azure 资源管理器配置规则设置，智能检测规则配置现已在 Application Insights 资源中提供一个名为 **ProactiveDetectionConfigs** 的内部资源。
 为了提供最大的灵活性，可为每个智能检测规则配置独特的通知设置。
@@ -162,10 +162,10 @@ ms.locfileid: "61461555"
 
 * 建议将智能检测/经典警报通知应用于特定收件人。
 
-* 对于智能检测警报，“批/组”复选框选项（如果已启用）将发送给订阅中具有所有者、参与者或读者角色的用户。 实际上，可以访问订阅 Application Insights 资源的_所有_用户均会接收到通知。 
+* 对于智能检测警报，“批/组”复选框选项（如果已启用）将发送给订阅中具有所有者、参与者或读者角色的用户  。 实际上，可以访问订阅 Application Insights 资源的_所有_用户均会接收到通知。 
 
 > [!NOTE]
-> 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改。
+> 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改  。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4fa3885f9c273cf6aaf9173ebd3fee3d4499be34
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60519432"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808096"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>为 Azure 中的角色实例启用通信
 云服务角色通过内部和外部连接进行通信。 外部连接称为**输入终结点**，内部连接称为**内部终结点**。 本主题介绍如何修改[服务定义](cloud-services-model-and-package.md#csdef)来创建终结点。
 
 ## <a name="input-endpoint"></a>输入终结点
-想要向外部公开某个端口时，使用输入终结点。 可以指定该终结点的协议类型和端口，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，用户可以使用 [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#InputEndpoint) 属性为终结点指定不同的内部端口。
+想要向外部公开某个端口时，使用输入终结点。 可以指定该终结点的协议类型和端口，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，用户可以使用 [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) 属性为终结点指定不同的内部端口。
 
 输入终结点可以使用以下协议：**http、https、tcp、udp**。
 
-若要创建输入终结点，请将 InputEndpoint 子元素添加到 Web 角色或辅助角色的 Endpoints 元素。
+若要创建输入终结点，请将 InputEndpoint  子元素添加到 Web 角色或辅助角色的 Endpoints  元素。
 
 ```xml
 <Endpoints>
@@ -42,7 +42,7 @@ ms.locfileid: "60519432"
 
 实例输入终结点只能使用 **tcp** 或 **udp** 作为协议。
 
-若要创建实例输入终结点，请将 InstanceInputEndpoint 子元素添加到 Web 角色或辅助角色的 Endpoints 元素。
+若要创建实例输入终结点，请将 InstanceInputEndpoint 子元素添加到 Web 角色或辅助角色的 Endpoints 元素   。
 
 ```xml
 <Endpoints>
@@ -59,7 +59,7 @@ ms.locfileid: "60519432"
 
 内部终结点可以使用以下协议：**http、tcp、udp、任何**。
 
-若要创建内部输入终结点，请将 InternalEndpoint 子元素添加到 Web 角色或辅助角色的 Endpoints 元素。
+若要创建内部输入终结点，请将 InternalEndpoint 子元素添加到 Web 角色或辅助角色的 Endpoints 元素   。
 
 ```xml
 <Endpoints>
@@ -104,7 +104,7 @@ Azure 托管库提供了角色实例在运行时用来通信的方法。 可以�
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-Instances 属性将返回一个 RoleInstance 对象集合。 此集合始终包含当前实例。 如果角色未定义内部终结点，则集合包含当前实例，但不包含任何其他实例。 如果未为角色定义内部终结点，则集合中的角色实例的数目会始终为 1。 如果角色定义了一个内部终结点，则其实例在运行时是可发现的，并且集合中的实例数将与在服务配置文件中为角色指定的实例数对应。
+Instances  属性将返回一个 RoleInstance  对象集合。 此集合始终包含当前实例。 如果角色未定义内部终结点，则集合包含当前实例，但不包含任何其他实例。 如果未为角色定义内部终结点，则集合中的角色实例的数目会始终为 1。 如果角色定义了一个内部终结点，则其实例在运行时是可发现的，并且集合中的实例数将与在服务配置文件中为角色指定的实例数对应。
 
 > [!NOTE]
 > Azure 托管库不提供用来确定其他角色实例的运行状况的方法，但如果服务需要此功能，则可以自行实现此类运行状况评估。 可以使用 [Azure 诊断](cloud-services-dotnet-diagnostics.md)来获取有关正在运行的角色实例的信息。
@@ -129,7 +129,7 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 下面的辅助角色示例将获取通过服务定义公开的终结点，并开始侦听连接。
 
 > [!WARNING]
-> 此代码仅适用于已部署的服务。 在 Azure 计算模拟器中运行时，将忽略创建直接端口终结点的服务配置元素（InstanceInputEndpoint 元素）。
+> 此代码仅适用于已部署的服务。 在 Azure 计算模拟器中运行时，将忽略创建直接端口终结点的服务配置元素（InstanceInputEndpoint  元素）。
 > 
 > 
 
@@ -258,7 +258,7 @@ namespace WorkerRole1
 > 
 > 
 
-默认情况下，在定义内部终结点后，通信可以从任意角色流动到角色的内部终结点，而不会受到任何限制。 若要限制通信，必须将 NetworkTrafficRules 元素添加到服务定义文件中的 ServiceDefinition 元素。
+默认情况下，在定义内部终结点后，通信可以从任意角色流动到角色的内部终结点，而不会受到任何限制。 若要限制通信，必须将 NetworkTrafficRules 元素添加到服务定义文件中的 ServiceDefinition 元素   。
 
 ### <a name="scenario-1"></a>方案 1
 仅允许从 **WebRole1** 到 **WorkerRole1** 的网络流量。

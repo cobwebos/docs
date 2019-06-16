@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
 ms.openlocfilehash: 02becd787fcc5f82efff7ef21feaf336fba3a26f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967585"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
@@ -35,7 +35,7 @@ ms.locfileid: "65967585"
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-用于存储日志并在门户上的“监视”选项卡中显示这些日志的可选存储帐户连接字符串。 存储帐户必须是支持 Blob、队列和表的通用帐户。 请参阅[存储帐户](functions-infrastructure-as-code.md#storage-account)和[存储帐户要求](functions-create-function-app-portal.md#storage-account-requirements)。
+用于存储日志并在门户上的“监视”选项卡中显示这些日志的可选存储帐户连接字符串。  存储帐户必须是支持 Blob、队列和表的通用帐户。 请参阅[存储帐户](functions-infrastructure-as-code.md#storage-account)和[存储帐户要求](functions-create-function-app-portal.md#storage-account-requirements)。
 
 |密钥|示例值|
 |---|------------|
@@ -106,7 +106,7 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 ## <a name="functionappeditmode"></a>FUNCTION\_APP\_EDIT\_MODE
 
-指示是否启用了在 Azure 门户中进行编辑。 有效值为“readwrite”和“readonly”。
+指示是否在 Azure 门户中启用了编辑。 有效值为“readwrite”和“readonly”。
 
 |密钥|示例值|
 |---|------------|

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 1/27/2019
 ms.author: v-mohabe
 ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966816"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>使用 Azure 安全中心保护应用服务
@@ -47,16 +47,16 @@ Azure 安全中心保护运行应用服务的 VM 实例以及管理接口。 此
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>启用应用服务的监视和保护
 
 1. 在 Azure 中，选择“安全中心”。
-2. 转到“安全策略”并选择一个订阅。
-3. 在订阅行的末尾，单击“编辑设置”。
-4. 在“定价层”下面的“应用服务”行中，将计划切换为“已启用”。
+2. 转到“安全策略”并选择一个订阅。 
+3. 在订阅行的末尾，单击“编辑设置”。 
+4. 在“定价层”下面的“应用服务”行中，将计划切换为“已启用”。   
 
 ![应用服务切换](./media/security-center-app-services/app-services-toggle.png)
 
 >[!NOTE]
 > 为资源数量列出的实例数表示在打开定价层边栏选项卡时，处于活动状态的相关应用服务实例的数目。 由于此数字会根据所选缩放选项而变化，因此，付费的实例数会相应地修改。
 
-若要禁用应用服务的监视和建议，请重复此过程，并将**应用服务**计划切换为“已禁用”。
+若要禁用应用服务的监视和建议，请重复此过程，并将**应用服务**计划切换为“已禁用”。 
 
 
 

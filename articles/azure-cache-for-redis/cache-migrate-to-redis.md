@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: yegu
 ms.openlocfilehash: 116e54fd39af801cf8941a974da2b72c483097dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60830230"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>从托管缓存服务迁移到 Azure Redis 缓存
@@ -80,7 +80,7 @@ Microsoft Azure Redis 缓存在下述层中提供：
 ### <a name="remove-the-managed-cache-service-configuration"></a>删除托管缓存服务配置
 要将客户端应用程序配置为使用 Azure Redis 缓存，必须先卸载托管缓存服务 NuGet 包，以便删除现有托管缓存服务的配置和组件引用。
 
-要卸载托管缓存服务 NuGet 包，请在“解决方案资源管理器”中右键单击客户端项目，并选择“管理 NuGet 程序包”。 选择“已安装的包”节点，并在“搜索已安装的包”框中键入 **WindowsAzure.Caching**。 选择“Windows Azure Cache”（或“Windows Azure Caching”，视 NuGet 包的版本而定）、单击“卸载”，并单击“关闭”。
+要卸载托管缓存服务 NuGet 包，请在“解决方案资源管理器”  中右键单击客户端项目，并选择“管理 NuGet 程序包”  。 选择“已安装的包”  节点，并在“搜索已安装的包”框中键入 **WindowsAzure.Caching**。 选择“Windows Azure Cache”   （或“Windows Azure Caching”   ，视 NuGet 包的版本而定）、单击“卸载”  ，并单击“关闭”  。
 
 ![卸载 Azure 托管缓存服务 NuGet 包](./media/cache-migrate-to-redis/IC757666.jpg)
 
@@ -154,7 +154,7 @@ public static ConnectionMultiplexer Connection
 }
 ```
 
-可以从缓存实例的“Azure Redis 缓存”边栏选项卡中获取缓存终结点、密钥和端口。 有关详细信息，请参阅 [Azure Redis 缓存属性](cache-configure.md#properties)。
+可以从缓存实例的“Azure Redis 缓存”  边栏选项卡中获取缓存终结点、密钥和端口。 有关详细信息，请参阅 [Azure Redis 缓存属性](cache-configure.md#properties)。
 
 建立连接后，通过调用 `ConnectionMultiplexer.GetDatabase` 方法返回对 Azure Redis 缓存数据库的引用。 从 `GetDatabase` 方法返回的对象是一个轻型直通对象，不需要存储。
 

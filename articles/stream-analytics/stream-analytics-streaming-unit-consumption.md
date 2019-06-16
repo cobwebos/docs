@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.openlocfilehash: 60cddf15ee8a93aa01a72fdc124fa27e68184e04
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65916040"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
@@ -29,7 +29,7 @@ SU % 利用率指标（范围从 0% 到 100%）描述了工作负载的内存使
 
 2. 在资源列表中，找到要缩放的流分析作业，然后将其打开。 
 
-3. 在作业页中的“配置”标题下，选择“缩放”。 
+3. 在作业页中的“配置”标题下，选择“缩放”。   
 
     ![Azure 门户流分析作业配置][img.stream.analytics.preview.portal.settings.scale]
     
@@ -44,9 +44,9 @@ SU % 利用率指标（范围从 0% 到 100%）描述了工作负载的内存使
 
 ## <a name="how-many-sus-are-required-for-a-job"></a>一个作业需要多少 SU？
 
-为特定作业选择所需的 SU 数量时，需要根据输入的分区配置以及在作业内定义的查询来决定。 可以使用“缩放”页设置正确的 SU 数量。 分配的 SU 数最好超过所需的数量。 流分析处理引擎会针对延迟和吞吐量进行优化，不过，代价是需要分配额外的内存。
+为特定作业选择所需的 SU 数量时，需要根据输入的分区配置以及在作业内定义的查询来决定。 可以使用“缩放”  页设置正确的 SU 数量。 分配的 SU 数最好超过所需的数量。 流分析处理引擎会针对延迟和吞吐量进行优化，不过，代价是需要分配额外的内存。
 
-通常情况下，最佳做法是一开始为不使用 PARTITION BY 的查询分配 6 个 SU。 然后，在传递了具有代表性的数据量并检查了 SU 利用率指标后，使用修改 SU 数量的试用和错误方法来确定最佳数量。 流分析作业所能使用的最大流单元数取决于为作业定义的查询中的步骤数，以及每一步中的分区数。 可在[此处](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)了解更多有关限制的信息。
+通常情况下，最佳做法是一开始为不使用 PARTITION BY  的查询分配 6 个 SU。 然后，在传递了具有代表性的数据量并检查了 SU 利用率指标后，使用修改 SU 数量的试用和错误方法来确定最佳数量。 流分析作业所能使用的最大流单元数取决于为作业定义的查询中的步骤数，以及每一步中的分区数。 可在[此处](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)了解更多有关限制的信息。
 
 有关如何选择正确的 SU 数量的详细信息，请参阅此页：[扩展 Azure 流分析作业以增加吞吐量](stream-analytics-scale-jobs.md)
 
@@ -110,7 +110,7 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
 
 在本示例中，有可能显示了很多广告，但很少有人点击它们，并且需要保留该时间范围内的所有事件。 内存消耗量与时间范围大小和事件发生速率成比例。 
 
-若要修正此问题，请将事件发送到依据联接键（在此情况下为 ID）分区的事件中心，并通过允许系统使用 PARTITION BY 分别处理每个输入分区来横向扩展查询，如下所示：
+若要修正此问题，请将事件发送到依据联接键（在此情况下为 ID）分区的事件中心，并通过允许系统使用 PARTITION BY  分别处理每个输入分区来横向扩展查询，如下所示：
 
    ```sql
    SELECT clicks.id
@@ -124,7 +124,7 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
 ## <a name="temporal-analytic-functions"></a>时态分析函数
 时态分析函数的消耗内存（状态大小）与事件速率和持续时间的乘积成正比。 分析函数消耗的内存与窗口大小不成正比，而是与每个时间窗口中的分区计数成正比。
 
-修正的方法类似于临时联接。 你可以使用 PARTITION BY 来横向扩展查询。 
+修正的方法类似于临时联接。 你可以使用 PARTITION BY  来横向扩展查询。 
 
 ## <a name="out-of-order-buffer"></a>无序缓冲区 
 在“事件排序配置”窗格中，用户可以配置无序的缓冲区大小。 可以使用缓冲区来保留窗口持续时间内的输入，并对其进行重新排序。 缓冲区的大小与事件输入速率和无序窗口大小的乘积成正比。 默认窗口大小为 0。 
@@ -139,7 +139,7 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
 对于包含 6 个流单元的作业，可能需要事件中心的 4 个或 8 个分区。 但是，请避免过多的不必要分区，否则可能会超出资源用量。 例如，在包含 1 个流单元的流分析作业中，使用包含 16 个分区的事件中心或更大的事件中心。 
 
 ## <a name="reference-data"></a>引用数据 
-ASA 中的引用数据会被加载到内存中，以便快速查找。 在当前的实现中，每个带有引用数据的联接操作都在内存中保留有一份引用数据，即使你多次使用相同的引用数据进行联接也是如此。 对于使用 PARTITION BY 的查询，每个分区都有一份引用数据，因此，这些分区是完全分离的。 通过倍增效应，如果多次使用多个分区联接引用数据，内存使用率很快就会变得非常高。  
+ASA 中的引用数据会被加载到内存中，以便快速查找。 在当前的实现中，每个带有引用数据的联接操作都在内存中保留有一份引用数据，即使你多次使用相同的引用数据进行联接也是如此。 对于使用 PARTITION BY  的查询，每个分区都有一份引用数据，因此，这些分区是完全分离的。 通过倍增效应，如果多次使用多个分区联接引用数据，内存使用率很快就会变得非常高。  
 
 ### <a name="use-of-udf-functions"></a>使用 UDF 函数
 当添加 UDF 函数时，Azure 流分析会将 JavaScript 运行时加载到内存中。 这将影响 SU%。

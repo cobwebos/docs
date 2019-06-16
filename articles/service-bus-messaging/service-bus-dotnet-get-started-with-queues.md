@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/10/2019
 ms.author: aschhab
 ms.openlocfilehash: abef7815effcf420c8a0065ed46ce3c16c19ebe0
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991755"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
@@ -46,8 +46,8 @@ ms.locfileid: "65991755"
 
 ### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
 
-1. 右键单击新创建的项目，并选择“管理 NuGet 包” 。
-2. 单击“浏览”选项卡，搜索 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)，然后选择“Microsoft.Azure.ServiceBus”项。 单击“安装”以完成安装，并关闭此对话框。
+1. 右键单击新创建的项目，并选择“管理 NuGet 包”  。
+2. 单击“浏览”  选项卡，搜索 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)，然后选择“Microsoft.Azure.ServiceBus”   项。 单击“安装”  以完成安装，并关闭此对话框。
    
     ![选择 NuGet 包][nuget-pkg]
 
@@ -191,7 +191,7 @@ ms.locfileid: "65991755"
     }
     ```
 
-7. 运行该程序并检查 Azure 门户：在命名空间“概览”窗口中单击队列的名称。 此时会显示队列的“基本信息”屏幕。 请注意，队列的“活动消息计数”值现在为 **10**。 每次运行发件人应用程序而没有检索消息（如下一部分所述）时，该值会增加 10。 另请注意，每次该应用将消息添加到队列，队列的当前大小就会递增，增量为“基本信息”窗口中的“当前”值。
+7. 运行该程序并检查 Azure 门户：在命名空间“概览”窗口中单击队列的名称。  此时会显示队列的“基本信息”屏幕。  请注意，队列的“活动消息计数”  值现在为 **10**。 每次运行发件人应用程序而没有检索消息（如下一部分所述）时，该值会增加 10。 另请注意，每次该应用将消息添加到队列，队列的当前大小就会递增，增量为“基本信息”窗口中的“当前”值。  
    
       ![消息大小][queue-message]
 
@@ -385,14 +385,14 @@ ms.locfileid: "65991755"
         }
     }
     ```
-4. 运行该程序，并再次检查门户。 请注意，“活动消息计数”和“当前”值现在为 **0**。
+4. 运行该程序，并再次检查门户。 请注意，“活动消息计数”和“当前”值现在为 **0**。  
    
     ![队列长度][queue-message-receive]
 
-恭喜! 你现在已创建队列、将一组消息发送到该队列，以及从该队列接收这些消息。
+祝贺你！ 你现在已创建队列、将一组消息发送到该队列，以及从该队列接收这些消息。
 
 > [!NOTE]
-> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 

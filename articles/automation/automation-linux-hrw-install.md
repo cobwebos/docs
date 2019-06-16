@@ -10,10 +10,10 @@ ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: cc07aa9c1b2c540c33949a8c591bd98f91b04666
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60738853"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
@@ -36,7 +36,7 @@ ms.locfileid: "60738853"
 
 ## <a name="installing-a-linux-hybrid-runbook-worker"></a>安装 Linux 混合 Runbook 辅助角色
 
-若要在 Linux 计算机上安装和配置混合 Runbook 辅助角色，请按照一个简单明了的过程手动安装和配置此角色。 它需要启用 Azure Log Analytics 工作区中的“自动化混合辅助角色”解决方案，然后运行一组命令将计算机注册为辅助角色，并且将它添加到组中。
+若要在 Linux 计算机上安装和配置混合 Runbook 辅助角色，请按照一个简单明了的过程手动安装和配置此角色。 它需要启用 Azure Log Analytics 工作区中的“自动化混合辅助角色”解决方案，然后运行一组命令将计算机注册为辅助角色，并且将它添加到组中  。
 
 Linux 混合 Runbook 辅助角色的最低要求如下：
 
@@ -58,9 +58,9 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 
 ### <a name="installation"></a>安装
 
-在继续操作之前，请记下自动化帐户链接到的 Log Analytics 工作区。 另请记下自动化帐户的主密钥。 在 Azure 门户中选择自己的自动化帐户，选择工作区 ID 对应的“工作区”，然后选择主密钥对应的“密钥”，即可找到这两个值。 有关混合 Runbook 辅助角色所需的端口和地址的信息，请参阅[配置网络](automation-hybrid-runbook-worker.md#network-planning)。
+在继续操作之前，请记下自动化帐户链接到的 Log Analytics 工作区。 另请记下自动化帐户的主密钥。 在 Azure 门户中选择自己的自动化帐户，选择工作区 ID 对应的“工作区”，然后选择主密钥对应的“密钥”，即可找到这两个值。   有关混合 Runbook 辅助角色所需的端口和地址的信息，请参阅[配置网络](automation-hybrid-runbook-worker.md#network-planning)。
 
-1. 使用以下方法之一，在 Azure 中启用“自动化混合辅助角色”解决方案：
+1. 使用以下方法之一，在 Azure 中启用“自动化混合辅助角色”解决方案： 
 
    * 添加**自动化混合辅助角色**解决方案添加到你的订阅使用的过程[添加 Azure Monitor 记录到你的工作区解决方案](../log-analytics/log-analytics-add-solutions.md)。
    * 运行以下 cmdlet：
@@ -77,13 +77,13 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
    ```
 
-1. 运行以下命令，更改 *-w*、*-k*、*-g* 和 *-e* 参数的值。 对于 *-g* 参数，请将值替换为新的 Linux 混合 Runbook 辅助角色应加入的混合 Runbook 辅助角色组的名称。 如果自动化帐户中尚不存在该名称，系统会使用该名称生成一个新的混合 Runbook 辅助角色组。
+1. 运行以下命令，更改 *-w*、 *-k*、 *-g* 和 *-e* 参数的值。 对于 *-g* 参数，请将值替换为新的 Linux 混合 Runbook 辅助角色应加入的混合 Runbook 辅助角色组的名称。 如果自动化帐户中尚不存在该名称，系统会使用该名称生成一个新的混合 Runbook 辅助角色组。
 
    ```bash
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
    ```
 
-1. 命令完成后，Azure 门户中的“混合辅助角色组”页面会显示新组和成员数。 如果这是现有的组，则成员数会递增。 可以从“混合辅助角色组”页上的列表中选择组，并选择“混合辅助角色”磁贴。 在“混合辅助角色”页上，会列出组的每个成员。
+1. 命令完成后，Azure 门户中的“混合辅助角色组”页面会显示新组和成员数。  如果这是现有的组，则成员数会递增。 可以从“混合辅助角色组”  页上的列表中选择组，并选择“混合辅助角色”  磁贴。 在“混合辅助角色”  页上，会列出组的每个成员。
 
 > [!NOTE]
 > 如果使用 Azure Monitor 虚拟机扩展适用于 Linux 的 Azure VM 建议设置`autoUpgradeMinorVersion`为 false 为自动升级版本可能会导致问题混合 Runbook 辅助角色。 若要了解如何手动升级该扩展，请参阅[Azure CLI 部署](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)。

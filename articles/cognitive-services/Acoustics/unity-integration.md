@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 8605fe2ea86f875b5c5fd8ea451a287442dcd51b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922489"
 ---
 # <a name="project-acoustics-unity-integration"></a>项目噪声 Unity 集成
@@ -26,13 +26,13 @@ ms.locfileid: "64922489"
 
 ## <a name="import-the-plugin"></a>导入插件
 将声学 UnityPackage 导入项目。 
-* 在 Unity 中，转到“资产”>“导入包”>“自定义包...”
+* 在 Unity 中，转到“资产”>“导入包”>“自定义包...” 
 
     ![Unity 导入包的屏幕截图菜单](media/import-package.png)  
 
-* 选择 ProjectAcoustics.unitypackage
+* 选择 ProjectAcoustics.unitypackage 
 
-如果要将插件导入现有的项目，项目根目录下可能已具有 mcs.rsp 文件，该文件指定 C# 编译器选项。 需要将该文件与 Project Acoustics 插件附带的 mcs.rsp 文件的内容合并。
+如果要将插件导入现有的项目，项目根目录下可能已具有 mcs.rsp 文件，该文件指定 C# 编译器选项  。 需要将该文件与 Project Acoustics 插件附带的 mcs.rsp 文件的内容合并。
 
 ## <a name="enable-the-plugin"></a>启用插件
 音效工具包的制作部分需要 .NET 4.x 脚本编写运行时版本。 包导入将更新 Unity 播放器设置。 重启 Unity，使此设置生效。
@@ -48,12 +48,12 @@ ms.locfileid: "64922489"
 
 ![与所选项目噪声 spatializer Unity Spatializer 屏幕快照设置面板](media/choose-spatializer.png)
 
-然后打开音频 Mixer (**窗口 > 音频 Mixer**)。 请确保一组至少具有一个混音器。 如果没有，请单击“混音器”右侧的“+”按钮。 右键单击底部的效果部分中，在通道条带，添加**项目噪声 Mixer**效果。 请注意，一次仅支持一个 Project Acoustics 混音器。
+然后打开音频 Mixer (**窗口 > 音频 Mixer**)。 请确保一组至少具有一个混音器。 如果没有，请单击“混音器”右侧的“+”按钮  。 右键单击底部的效果部分中，在通道条带，添加**项目噪声 Mixer**效果。 请注意，一次仅支持一个 Project Acoustics 混音器。
 
 ![屏幕截图的 Unity 音频 Mixer 承载项目噪声混音器](media/audio-mixer.png)
 
 ## <a name="enable-acoustics-on-sound-sources"></a>启用声音的源上的噪声
-创建音频源。 单击显示“空间化”的 AudioSource 检查器面板底部的复选框。 请确保“空间混合”已设置为“全三维”。  
+创建音频源。 单击显示“空间化”的 AudioSource 检查器面板底部的复选框  。 请确保“空间混合”已设置为“全三维”  。  
 
 ![Unity 音频源的屏幕截图面板](media/audio-source.png)
 

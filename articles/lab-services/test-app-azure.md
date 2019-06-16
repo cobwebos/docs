@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
 ms.openlocfilehash: f8c57b9e1fabbd04a7d9c92484b0f52f074c2577
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65872425"
 ---
 # <a name="test-your-app-in-azure"></a>在 Azure 中测试应用 
@@ -27,7 +27,7 @@ ms.locfileid: "65872425"
 ## <a name="prerequisites"></a>必备组件 
 1. [创建一个 Azure 订阅](https://azure.microsoft.com/free/)（如果没有订阅），并登录到 [Azure 门户](https://portal.azure.com)。
 2. 遵照[此文](devtest-lab-create-lab.md)中的说明，使用 Azure 开发测试实验室创建一个实验室。 将该实验室固定到仪表板，以便下次登录时可以轻松找到它。 使用 Azure 开发测试实验室可在 Azure 中快速创建资源，同时可以最大程度地减少浪费和控制成本。 有关开发测试实验室的详细信息，请参阅[概述](devtest-lab-overview.md)。 
-3. 遵照[创建存储帐户](../storage/common/storage-create-storage-account.md)一文中的说明，在实验室的资源组中创建一个 Azure 存储帐户。 在“创建存储帐户”页上，为“资源组”选择“使用现有项”，然后选择“实验室的资源组”。 
+3. 遵照[创建存储帐户](../storage/common/storage-create-storage-account.md)一文中的说明，在实验室的资源组中创建一个 Azure 存储帐户。 在“创建存储帐户”页上，为“资源组”选择“使用现有项”，然后选择“实验室的资源组”。     
 4. 遵照[在 Azure 文件中创建文件共享](../storage/files/storage-how-to-create-file-share.md)一文中的说明，在 Azure 存储中创建文件共享。 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>在本地计算机上装载文件共享
@@ -37,19 +37,19 @@ ms.locfileid: "65872425"
     `net use Z: \\<YOUR AZURE STORAGE NAME>.file.core.windows.net\<YOUR FILE SHARE NAME> /persistent:yes`
 
 ## <a name="create-a-vm-in-the-lab"></a>在实验室中创建 VM
-1. 在“文件共享”页上，选择顶部痕迹导航菜单中的“资源组”。 此时会显示“资源组”页。 
+1. 在“文件共享”页上，选择顶部痕迹导航菜单中的“资源组”。   此时会显示“资源组”页。  
     
     ![在痕迹导航菜单中选择“资源组”](media/test-app-in-azure/select-resource-group-bread-crump.png)
-2. 在“资源组”页上，选择在开发测试实验室中创建的**实验室**。
+2. 在“资源组”页上，选择在开发测试实验室中创建的**实验室**。 
 
     ![选择实验室](media/test-app-in-azure/select-devtest-lab-in-resource-group.png)
-3. 在实验室的“开发测试实验室”页上，选择工具栏中的“+ 添加”。 
+3. 在实验室的“开发测试实验室”页上，选择工具栏中的“+ 添加”   。 
 
     ![实验室“添加”按钮](media/test-app-in-azure/add-button-in-lab.png)
-4. 在“选择基础操作系统”页上搜索 **smalldisk**，然后选择“[smalldisk] Windows Server 2016 Data Center”。 
+4. 在“选择基础操作系统”页上搜索 **smalldisk**，然后选择“[smalldisk] Windows Server 2016 Data Center”。   
 
     ![选择小磁盘 Windows Server](media/test-app-in-azure/choose-small-disk-windows-server.png)
-5. 在“虚拟机”页上，指定“虚拟机名称”、“用户名”和“密码”，然后选择“创建”。    
+5. 在“虚拟机”页上，指定“虚拟机名称”、“用户名”和“密码”，然后选择“创建”。         
     
     ![创建虚拟机的页](media/test-app-in-azure/create-virtual-machine-page.png)    
 
@@ -57,7 +57,7 @@ ms.locfileid: "65872425"
 1. 成功创建虚拟机后，在列表中选择该**虚拟机**。    
 
     ![选择实验室 VM](media/test-app-in-azure/select-lab-vm.png)
-2. 在工具栏上选择“连接”以连接到 VM。 
+2. 在工具栏上选择“连接”以连接到 VM。  
 3. [安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 4. 请遵照“装载文件共享”部分的说明操作。 
 
@@ -66,8 +66,8 @@ ms.locfileid: "65872425"
 
 1. 使用 Visual Studio 2019 创建桌面/web 应用程序。
 2. 生成应用。
-3. 若要发布应用，请在“解决方案资源管理器”中右键单击相应的项目，然后选择“发布”。 
-4. 在“发布向导”中，输入映射到文件共享的**驱动器**。
+3. 若要发布应用，请在“解决方案资源管理器”中右键单击相应的项目，然后选择“发布”。   
+4. 在“发布向导”中，输入映射到文件共享的**驱动器**。 
 
     **桌面应用：**
 
@@ -77,22 +77,22 @@ ms.locfileid: "65872425"
 
     ![Web 应用](media/test-app-in-azure/web-app.png)
 
-1. 选择“下一步”以完成发布工作流，然后选择“完成”。 完成向导步骤后，Visual Studio 会生成应用程序，并将其发布到文件共享。 
+1. 选择“下一步”以完成发布工作流，然后选择“完成”。   完成向导步骤后，Visual Studio 会生成应用程序，并将其发布到文件共享。 
 
 
 ## <a name="test-the-app-on-your-test-vm-in-the-lab"></a>在实验室中的测试 VM 上测试应用
 
 1. 导航到实验室中 VM 的“虚拟机”页。 
-2. 在工具栏上选择“启动”以启动 VM（如果它处于停止状态）。 可以针对 VM 设置自动启动和自动关闭策略，以免每次测试时都要启动和停止。 
-3. 选择“连接”。
+2. 在工具栏上选择“启动”以启动 VM（如果它处于停止状态）。  可以针对 VM 设置自动启动和自动关闭策略，以免每次测试时都要启动和停止。 
+3. 选择“连接”  。
 
     ![虚拟机页](media/test-app-in-azure/virtual-machine-page.png)
-4. 在虚拟机中启动“文件资源管理器”，然后选择“此电脑”找到自己的文件共享。
+4. 在虚拟机中启动“文件资源管理器”，然后选择“此电脑”找到自己的文件共享。  
 
     ![在 VM 上找到共享](media/test-app-in-azure/find-share-on-vm.png)
 
     > [!NOTE]
-    > 如果出于任何原因在虚拟机或本地计算机上找不到自己的文件共享，可以运行 `net use` 命令来重新装载该文件共享。 在 Azure 门户上，你的**文件共享**的“连接”向导中提供了 `net use` 命令。
+    > 如果出于任何原因在虚拟机或本地计算机上找不到自己的文件共享，可以运行 `net use` 命令来重新装载该文件共享。 在 Azure 门户上，你的**文件共享**的“连接”向导中提供了 `net use` 命令。 
 1. 打开文件共享，并确认看到了从 Visual Studio 部署的应用。 
 
     ![在 VM 上打开共享](media/test-app-in-azure/open-file-share.png)

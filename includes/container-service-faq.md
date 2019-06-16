@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66148835"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>（已弃用）容器服务常见问题解答
@@ -93,13 +93,13 @@ DNSnamePrefix.AzureRegion.cloudapp.azure.net
 
 1. 在门户中，导航到群集部署的资源组。  
 
-2. 单击“概览”，并在“概要”下单击“部署”的链接。 
+2. 单击“概览”，并在“概要”下单击“部署”的链接。    
 
-3. 在“部署历史记录”边栏选项卡中，单击其名称以 **microsoft-acs** 开头（后跟部署日期）的部署。 示例：microsoft-acs-201701310000。  
+3. 在“部署历史记录”  边栏选项卡中，单击其名称以 **microsoft-acs** 开头（后跟部署日期）的部署。 示例：microsoft-acs-201701310000。  
 
-4. 在“摘要”页的“输出”下通过了多个群集链接。 **SSHMaster0** 提供的 SSH 连接字符串用于连接到容器服务群集中的第一个主机。 
+4. 在“摘要”页的“输出”下通过了多个群集链接   。 **SSHMaster0** 提供的 SSH 连接字符串用于连接到容器服务群集中的第一个主机。 
 
-如上文所述，也可使用 Azure 工具查找主机的 FQDN。 使用主机的 FQDN 以及在创建群集时指定的用户名建立到主机的 SSH 连接。 例如:
+如上文所述，也可使用 Azure 工具查找主机的 FQDN。 使用主机的 FQDN 以及在创建群集时指定的用户名建立到主机的 SSH 连接。 例如：
 
 ```bash
 ssh userName@masterFQDN –A –p 22 

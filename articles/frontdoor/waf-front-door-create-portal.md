@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 15a80dac0e0601480e22ad960f2827f3d8f290c0
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66479051"
 ---
 # <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>使用 Azure 门户创建 WAF 策略用于 Azure 第一道防线
@@ -77,5 +77,5 @@ ms.locfileid: "66479051"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[Azure web 应用程序防火墙](waf-overview.md)。
+- 了解 [Azure Web 应用程序防火墙](waf-overview.md)。
 - 详细了解如何[Azure 第一道防线](front-door-overview.md)。

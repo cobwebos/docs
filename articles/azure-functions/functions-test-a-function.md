@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 7489f42719223dbd7f9cc2908f666dca53fe7c04
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 9a078579fff355d7ddb996316af2a2136fb62335
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66496390"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
@@ -44,7 +44,7 @@ ms.locfileid: "66496390"
 2. [从模板创建 HTTP 函数](./functions-create-first-azure-function.md)并将其命名为 *HttpTrigger*。
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为 *TimerTrigger*。
 4. 单击“文件”>“新建”>“项目”>“Visual C#”>“.NET Core”>“xUnit 测试项目”，在 Visual Studio 中[创建 xUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)，并将其命名为“Functions.Test”   。 
-5. 使用 Nuget 添加引用从测试应用[Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+5. 使用 Nuget 从测试应用 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 添加引用
 6. [从 *Functions.Test* 应用引用 *Functions* 应用](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)。
 
 ### <a name="create-test-classes"></a>创建测试类
@@ -55,7 +55,7 @@ ms.locfileid: "66496390"
 
 `ListLogger` 类用于实现 `ILogger` 接口并保存在消息的内部列表中，以便在测试期间用于评估。
 
-**右键单击**上*Functions.Test*应用程序并选择**添加 > 类**，其命名为**NullScope.cs**并输入以下代码：
+**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **NullScope.cs**，然后输入以下代码：  
 
 ```csharp
 using System;
@@ -73,7 +73,7 @@ namespace Functions.Tests
 }
 ```
 
-下一步，**右击**上*Functions.Test*应用程序并选择**添加 > 类**，其命名为**ListLogger.cs**和输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **ListLogger.cs**，然后输入以下代码：  
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -111,7 +111,7 @@ namespace Functions.Tests
 
 `ListLogger` 类实现 `ILogger` 接口收缩的以下成员：
 
-- **BeginScope**：范围将上下文添加到日志记录。 在这种情况下，测试只是指向静态实例上`NullScope`类，以允许对函数的测试。
+- **BeginScope**：范围将上下文添加到日志记录。 在本例中，测试只是指向 `NullScope` 类中的静态实例，使测试能够正常运行。
 
 - **IsEnabled**：提供 `false` 的默认值。
 
@@ -253,7 +253,7 @@ namespace Functions.Tests
 
 - **Timer_should_log_message**：此测试创建 `ListLogger` 的实例并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
 
-如果你想要访问在测试中的应用程序设置，则可以使用[System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
+如果要在测试中访问应用程序设置，可以使用 [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
 
 ### <a name="run-tests"></a>运行测试
 
@@ -312,7 +312,7 @@ module.exports = {
 ```
 此模块实现 `IsPastDue` 属性，表示该实例是一个虚构的计时器实例。
 
-接下来，使用 VS Code Functions 扩展[创建新的 JavaScript HTTP 函数](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started)，并将其命名为 *HttpTrigger*。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
+接下来，使用 VS Code Functions 扩展[创建新的 JavaScript HTTP 函数](https://code.visualstudio.com/tutorials/functions-extension/getting-started)，并将其命名为 *HttpTrigger*。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
 
 ```javascript
 const httpFunction = require('./index');

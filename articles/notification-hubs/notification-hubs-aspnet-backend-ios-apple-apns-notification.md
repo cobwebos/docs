@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 9b6c0715cb85e245aba94adfb8b33d0d07ece9a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60880423"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户推送通知
@@ -58,11 +58,11 @@ ms.locfileid: "60880423"
 
    * **用户名**：包含占位符文本“*输入用户名*”的 UITextField，直接位于发送结果标签的下面并受左右边距的限制。
    * **密码**：包含占位符文本“*输入密码*”的 UITextField，直接位于用户名文本字段的下面并受左右边距的限制。 选中属性检查器中“*返回密钥*”下的“**安全文本输入**”选项。
-   * **登录**：直接位于密码文本字段下方的标签式 UIButton，并取消选中属性检查器中“控件内容”下的“已启用”选项
+   * **登录**：直接位于密码文本字段下方的标签式 UIButton，并取消选中属性检查器中“控件内容”下的“已启用”选项  
    * **WNS**：标签和开关，用于已在中心设置 Windows 通知服务时，启用将通知发送到 Windows 通知服务。 请参阅 [Windows 入门](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)教程。
    * **GCM**：标签和开关，用于已在中心设置 Google Cloud Messaging 时，启用将通知发送到 Google Cloud Messaging。 请参阅 [Android 入门](notification-hubs-android-push-notification-google-gcm-get-started.md)教程。
    * **APNS**：标签和开关，用于启用将通知发送到 Apple 平台通知服务。
-   * **收件人用户名**：包含占位符文本“收件人用户名标记”的 UITextField，直接位于 GCM 标签下，受左右边距限制。
+   * **收件人用户名**：包含占位符文本“收件人用户名标记”的 UITextField，直接位于 GCM 标签下，受左右边距限制  。
 
      某些组件已在[通知中心入 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 教程中添加。
 
@@ -479,11 +479,11 @@ ms.locfileid: "60880423"
 ## <a name="test-the-application"></a>测试应用程序
 
 1. 在 XCode 中，在物理 iOS 设备上运行此应用（推送通知无法在模拟器中正常工作）。
-2. 在 iOS 应用 UI 中，为用户名和密码输入相同的值。 然后单击“登录”。
+2. 在 iOS 应用 UI 中，为用户名和密码输入相同的值。 然后单击“登录”  。
 
     ![iOS 测试应用程序][2]
 
-3. 应看到弹出窗口通知你注册成功。 单击“确定”。
+3. 应看到弹出窗口通知你注册成功。 单击“确定”。 
 
     ![显示的 iOS 测试通知][3]
 

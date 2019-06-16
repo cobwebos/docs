@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 117a4e5e238e754524ff813ce25ebc1105e2153c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64934980"
 ---
 <a name="publish-an-offer"></a>发布产品/服务
@@ -28,14 +28,14 @@ ms.locfileid: "64934980"
 |  ------------- |  ------------------------------------            |   -----------  |
 |  publisherId   | 发布者标识符，例如 `contoso`      |   String       |
 |  offerId       | 产品/服务标识符                                 |   String       |
-|  api-version   | API 最新版本                        |   date         |
+|  api-version   | API 最新版本                        |   Date         |
 |  |  |
 
 
-<a name="header"></a>标头
+<a name="header"></a>Header
 ------
 
-|  **名称**        |    **值**          |
+|  **名称**        |    **ReplTest1**          |
 |  --------        |    ---------          |
 |  Content-Type    | `application/json`    |
 |  授权   |  `Bearer YOUR_TOKEN`  |
@@ -71,7 +71,7 @@ ms.locfileid: "64934980"
 
 ### <a name="response-header"></a>响应标头
 
-|  **名称**             |    **值**                                                                 |
+|  **名称**             |    **ReplTest1**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
 | Operation-Location    | URL，可以查询它以确定操作的当前状态。    |
 |  |  |

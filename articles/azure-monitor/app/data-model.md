@@ -13,10 +13,10 @@ ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60899178"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights 遥测数据模型
@@ -29,11 +29,11 @@ Application Insights 收集的数据为典型的应用程序执行模式建模�
 
 使用以下类型的遥测监视应用的执行情况。 Application Insights SDK 通常会从 Web 应用程序框架自动收集以下三种类型：
 
-* [请求](data-model-request-telemetry.md) - 生成该类型的遥测用以记录应用接收的请求。 例如，Application Insights Web SDK 会自动为 Web 应用接收到的每个 HTTP 请求生成请求遥测项。 
+* [请求](data-model-request-telemetry.md)  - 生成该类型的遥测用以记录应用接收的请求。 例如，Application Insights Web SDK 会自动为 Web 应用接收到的每个 HTTP 请求生成请求遥测项。 
 
-    “操作”是处理请求的执行线程。 还可以[编写代码](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)监视其他类型的操作，例如 Web 作业或函数中定期处理数据的“唤醒”操作。  每个操作都有一个 ID。 此 ID 可用于对应用处理请求时生成的所有遥测[进行分组](../../azure-monitor/app/correlation.md)。 每个操作无论成功或失败都需要持续一段时间。
-* [异常](data-model-exception-telemetry.md) - 通常表示导致操作失败的异常。
-* [依赖项](data-model-dependency-telemetry.md) - 表示从应用到外部服务或存储（如 REST API 或 SQL）的调用。 在 ASP.NET 中，对 SQL 的依赖项调用由 `System.Data` 定义。 对 HTTP 终结点的调用由 `System.Net` 定义。 
+    “操作”  是处理请求的执行线程。 还可以[编写代码](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)监视其他类型的操作，例如 Web 作业或函数中定期处理数据的“唤醒”操作。  每个操作都有一个 ID。 此 ID 可用于对应用处理请求时生成的所有遥测[进行分组](../../azure-monitor/app/correlation.md)。 每个操作无论成功或失败都需要持续一段时间。
+* [异常](data-model-exception-telemetry.md)  - 通常表示导致操作失败的异常。
+* [依赖项](data-model-dependency-telemetry.md)  - 表示从应用到外部服务或存储（如 REST API 或 SQL）的调用。 在 ASP.NET 中，对 SQL 的依赖项调用由 `System.Data` 定义。 对 HTTP 终结点的调用由 `System.Net` 定义。 
 
 Application Insights 为自定义遥测提供了三种额外的数据类型：
 

@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: e09c4530fc6dce00e6d807908c7de598422a440b
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511853"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -42,7 +42,7 @@ ClaimsSchema  元素定义了可以引用为策略的一部分的声明类型。
 
 ClaimType  元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 用于声明类型的标识符。 其他元素可以在策略中使用此标识符。 |
 
@@ -104,7 +104,7 @@ Protocol  元素包含以下属性：
 
 Mask  元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | `Type` | 是 | 声明掩码的类型。 可能的值：`Simple` 或 `Regex`。 `Simple` 值表示简单的文本掩码应用于字符串声明的前导部分。 `Regex` 值指示正则表达式总体上应用于字符串声明。  如果指定了 `Regex` 值，则还必须通过要使用的正则表达式定义可选属性。 |
 | `Regex` | 否 | 如果 **`Type`** 设置为`Regex`，指定要使用的正则表达式。
@@ -159,7 +159,7 @@ Restriction  元素包含以下元素：
 
 Enumeration  元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | Text | 是 | 在用户界面中向用户显示的此选项的显示字符串。 |
 |值 | 是 | 与此选项关联的声明值。 |

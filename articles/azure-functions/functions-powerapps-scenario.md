@@ -13,10 +13,10 @@ ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
 ms.openlocfilehash: 26f6502f63b39d3f1ecf8dfeb09c8df4daa63b68
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65786113"
 ---
 # <a name="call-a-function-from-powerapps"></a>从 PowerApps 调用函数
@@ -52,15 +52,15 @@ ms.locfileid: "65786113"
 ## <a name="add-a-connection-to-the-api"></a>添加到 API 的连接
 自定义 API（也称为自定义连接器）可用于 PowerApps，但必须先创建到 API 的连接，然后才能用于应用。
 
-1. 在 [web.powerapps.com](https://web.powerapps.com) 中，单击“连接”。
+1. 在 [web.powerapps.com](https://web.powerapps.com) 中，单击“连接”。 
 
     ![PowerApps 连接](media/functions-powerapps-scenario/powerapps-connections.png)
 
-1. 单击“新建连接”，向下滚动到“涡轮机修复”连接器并在其上单击。
+1. 单击“新建连接”，向下滚动到“涡轮机修复”连接器并在其上单击。  
 
     ![新建连接](media/functions-powerapps-scenario/new-connection.png)
 
-1. 输入 API 密钥，然后单击“创建”。
+1. 输入 API 密钥，然后单击“创建”。 
 
     ![创建连接](media/functions-powerapps-scenario/create-connection.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "65786113"
 ## <a name="create-an-app-and-add-data-sources"></a>创建应用并添加数据源
 现在可以在 PowerApps 中创建应用，并添加 Excel 数据和自定义 API 作为应用数据源。
 
-1. 在 [web.powerapps.com](https://web.powerapps.com) 中，选择“从空白开始” >  ![手机应用图标](media/functions-powerapps-scenario/icon-phone-app.png)（手机）>“生成此应用”。
+1. 在 [web.powerapps.com](https://web.powerapps.com) 中，选择“从空白开始” >  ![手机应用图标](media/functions-powerapps-scenario/icon-phone-app.png)（手机）>“生成此应用”。  
 
     ![从空白开始 - 手机应用](media/functions-powerapps-scenario/create-phone-app.png)
 
@@ -96,55 +96,55 @@ ms.locfileid: "65786113"
 
     ![要导入的 Excel 数据](media/functions-powerapps-scenario/excel-table.png)
 
-    1. 在应用画布上，选择“连接到数据”。
+    1. 在应用画布上，选择“连接到数据”。 
 
-    1. 在“数据”面板中，单击“将静态数据添加到应用”。
+    1. 在“数据”  面板中，单击“将静态数据添加到应用”  。
 
         ![添加数据源](media/functions-powerapps-scenario/add-static-data.png)
 
         通常情况下是从外部数据源中读取和写入数据，但这里是将 Excel 数据添加为静态数据，因为这是一个示例。
 
-    1. 导航到保存的 Excel 文件，选择“涡轮机”表，再单击“连接”。
+    1. 导航到保存的 Excel 文件，选择“涡轮机”表，再单击“连接”。  
 
         ![添加数据源](media/functions-powerapps-scenario/choose-table.png)
 
 
 1. 将自定义 API 添加为数据源。
 
-    1. 在“数据”面板上，单击“添加数据源”。
+    1. 在“数据”面板上，单击“添加数据源”。  
 
-    1. 单击“涡轮机修复”。
+    1. 单击“涡轮机修复”。 
 
         ![涡轮机修复连接器](media/functions-powerapps-scenario/turbine-connector.png)
 
 ## <a name="add-controls-to-view-data-in-the-app"></a>添加控件以在应用中查看数据
 现在应用中已具有数据源，接下来可以将屏幕添加到应用，以查看涡轮机数据。
 
-1. 在“主页”选项卡上，单击“新建屏幕” > “列表屏幕”。
+1. 在“主页”选项卡上，单击“新建屏幕” > “列表屏幕”。   
 
     ![列表屏幕](media/functions-powerapps-scenario/list-screen.png)
 
-    PowerApps 将添加一个屏幕，该屏幕包含的“库”可显示项和其他可进行搜索、排序和筛选的控件。
+    PowerApps 将添加一个屏幕，该屏幕包含的“库”可显示项和其他可进行搜索、排序和筛选的控件。 
 
 1. 将标题栏更改为 `Turbine Repair` 并重设库的大小，在其下方留出添加更多控件所需的空间。
 
     ![更改标题和重设库的大小](media/functions-powerapps-scenario/gallery-title.png)
 
-1. 选择库之后，在右窗格中的“属性”下，单击 **CustomGallerySample**。
+1. 选择库之后，在右窗格中的“属性”  下，单击 **CustomGallerySample**。
 
     ![更改数据源](media/functions-powerapps-scenario/change-data-source.png)
 
-1. 在“数据”面板中，从列表中选择“涡轮机”。
+1. 在“数据”  面板中，从列表中选择“涡轮机”  。
 
     ![选择数据源](media/functions-powerapps-scenario/select-data-source.png)
 
     数据集不包含图像，所以下一步更改布局以更好地适应数据。 
 
-1. 仍在“数据”面板中，将“布局”更改为“标题、副标题和正文”。
+1. 仍在“数据”面板中，将“布局”更改为“标题、副标题和正文”。   
 
     ![更改库布局](media/functions-powerapps-scenario/change-layout.png)
 
-1. 在“数据”面板中执行的最后一步是更改库中显示的字段。
+1. 在“数据”  面板中执行的最后一步是更改库中显示的字段。
 
     ![更改库字段](media/functions-powerapps-scenario/change-fields.png)
     
@@ -152,7 +152,7 @@ ms.locfileid: "65786113"
     + **Subtitle2** = 需要维修
     + **Title2** = 标题 
 
-1. 选择库后，将“TemplateFill”属性设置为以下公式：`If(ThisItem.IsSelected, Orange, White)`。
+1. 选择库后，将“TemplateFill”属性设置为以下公式：`If(ThisItem.IsSelected, Orange, White)`。 
 
     ![模板填充公式](media/functions-powerapps-scenario/formula-fill.png)
 
@@ -160,18 +160,18 @@ ms.locfileid: "65786113"
 
     ![选择的项](media/functions-powerapps-scenario/selected-item.png)
 
-1. 不需要应用中的原始屏幕。 在左窗格中，将鼠标悬停在“Screen1”，依次单击“...”和“删除”。
+1. 不需要应用中的原始屏幕。 在左窗格中，将鼠标悬停在“Screen1”，依次单击“...”和“删除”。   
 
     ![删除屏幕](media/functions-powerapps-scenario/delete-screen.png)
 
-1. 单击“文件”，并命名应用。 单击左侧菜单中的“保存”，然后单击右下角的“保存”。
+1. 单击“文件”  ，并命名应用。 单击左侧菜单中的“保存”  ，然后单击右下角的“保存”  。
 
 在生产应用中通常还会涉及到许多其他格式设置，但我们将转移到此方案的重要部分，即调用函数。
 
 ## <a name="add-controls-to-call-the-function-and-display-data"></a>添加控件以调用函数并显示数据
 拥有一个显示所有涡轮机的摘要数据之后，现在可以添加控件来调用创建的函数并显示返回的数据。 基于函数在 OpenAPI 定义中的命名方式（此示例中为 `TurbineRepair.CalculateCosts()`）访问函数。
 
-1. 在功能区的“插入”选项卡上，单击“按钮”。 然后在同一选项卡上，单击“标签”
+1. 在功能区的“插入”选项卡上，单击“按钮”。   然后在同一选项卡上，单击“标签” 
 
     ![插入按钮和标签](media/functions-powerapps-scenario/insert-controls.png)
 
@@ -181,20 +181,20 @@ ms.locfileid: "65786113"
 
     ![带按钮的应用](media/functions-powerapps-scenario/move-button-label.png)
 
-1. 选择按钮，并为按钮的“OnSelect”属性输入以下公式。
+1. 选择按钮，并为按钮的“OnSelect”属性输入以下公式。 
 
     ```
     If (BrowseGallery1.Selected.ServiceRequired="Yes", ClearCollect(DetermineRepair, TurbineRepair.CalculateCosts({hours: BrowseGallery1.Selected.EstimatedEffort, capacity: BrowseGallery1.Selected.MaxOutput})))
     ```
-    此公式在单击按钮时执行，如果所选库项的“ServiceRequired”值为 `Yes`，则会执行以下操作：
+    此公式在单击按钮时执行，如果所选库项的“ServiceRequired”值为 `Yes`，则会执行以下操作： 
 
-    + 清除集合 `DetermineRepair` 以从前面的调用中删除数据。 集合是一个表格变量。
+    + 清除集合 `DetermineRepair` 以从前面的调用中删除数据。  集合是一个表格变量。
 
     + 为集合分配通过调用函数 `TurbineRepair.CalculateCosts()` 返回的数据。 
     
-        传递到函数的值来自库中所选项的“EstimatedEffort”和“MaxOutput”字段。 这些字段未显示在库中，但仍可用于公式。
+        传递到函数的值来自库中所选项的“EstimatedEffort”和“MaxOutput”字段。   这些字段未显示在库中，但仍可用于公式。
 
-1. 选择标签，为标签的“文本”属性输入以下公式。
+1. 选择标签，为标签的“文本”属性输入以下公式。 
 
     ```
     "Repair decision: " & First(DetermineRepair).message & " | Cost: " & First(DetermineRepair).costToFix & " | Revenue: " & First(DetermineRepair).revenueOpportunity
@@ -211,7 +211,7 @@ ms.locfileid: "65786113"
 
 1. 在 PowerApps Studio 的右上角，单击“运行”按钮： ![运行应用按钮](media/functions-powerapps-scenario/f5-arrow-sm.png).
 
-1. 选择“ServiceRequired”为 `Yes` 值的涡轮机，然后单击“计算成本”按钮。 应看到类似于下图的结果。
+1. 选择“ServiceRequired”为 `Yes` 值的涡轮机，然后单击“计算成本”按钮。   应看到类似于下图的结果。
 
     ![PowerApps 中已完成的应用](media/functions-powerapps-scenario/finished-app.png)
 

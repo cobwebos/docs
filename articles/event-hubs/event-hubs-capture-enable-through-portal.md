@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: shvija
 ms.openlocfilehash: 9108c52529319288fba48dbad3c6f8aa6cb5f725
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60822537"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
@@ -32,7 +32,7 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心的流式
 
 ## <a name="capture-data-to-an-azure-storage-account"></a>将数据捕获到 Azure 存储帐户  
 
-创建事件中心以后，即可在“创建事件中心”门户屏幕中单击“启用”按钮，以便启用捕获。 然后在“捕获提供程序”框中单击“Azure 存储”，指定存储帐户和容器。 由于事件中心捕获对存储使用服务到服务身份验证，因此无需指定存储连接字符串。 资源选取器自动为存储帐户选择资源 URI。 如果使用 Azure 资源管理器，必须以字符串形式显式提供此 URI。
+创建事件中心以后，即可在“创建事件中心”门户屏幕中单击“启用”按钮，以便启用捕获。   然后在“捕获提供程序”框中单击“Azure 存储”，指定存储帐户和容器。   由于事件中心捕获对存储使用服务到服务身份验证，因此无需指定存储连接字符串。 资源选取器自动为存储帐户选择资源 URI。 如果使用 Azure 资源管理器，必须以字符串形式显式提供此 URI。
 
 默认时间段为 5 分钟。 最小值为 1，最大值为 15。 **大小**窗口的范围为 10-500 MB。
 
@@ -56,15 +56,15 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心的流式
 
 ### <a name="create-an-event-hub"></a>创建事件中心
 
-1. 注意，事件中心与刚创建的Azure Data Lake Store 必须属于同一 Azure 订阅。 创建事件中心，在“创建事件中心”门户页中单击“捕获”下的“启用”按钮。 
-2. 在“创建事件中心”门户页的“捕获提供程序”框中选择“Azure Data Lake Store”。
-3. 在“选择 Data Lake Store”中指定此前创建的 Data Lake Store 帐户，并在“Data Lake 路径”字段中输入已创建的数据文件夹的路径。
+1. 注意，事件中心与刚创建的Azure Data Lake Store 必须属于同一 Azure 订阅。 创建事件中心，在“创建事件中心”门户页中单击“捕获”下的“启用”按钮。    
+2. 在“创建事件中心”  门户页的“捕获提供程序”框中选择“Azure Data Lake Store”。  
+3. 在“选择 Data Lake Store”中指定此前创建的 Data Lake Store 帐户，并在“Data Lake 路径”字段中输入已创建的数据文件夹的路径。  
 
     ![选择 Data Lake Storage 帐户][3]
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>在现有的事件中心添加或配置捕获
 
-可以在事件中心命名空间中的现有事件中心配置捕获。 若要对现有的事件中心启用“捕获”功能，或者要更改“捕获”设置，请单击命名空间以加载概览屏幕，然后单击要启用或更改“捕获”设置的事件中心。 最后，单击已打开页面左侧的“捕获”选项，然后编辑设置，如以下各图所示：
+可以在事件中心命名空间中的现有事件中心配置捕获。 若要对现有的事件中心启用“捕获”功能，或者要更改“捕获”设置，请单击命名空间以加载概览屏幕，然后单击要启用或更改“捕获”设置的事件中心。 最后，单击已打开页面左侧的“捕获”  选项，然后编辑设置，如以下各图所示：
 
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 

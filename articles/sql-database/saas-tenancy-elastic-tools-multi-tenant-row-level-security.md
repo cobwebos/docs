@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 4834688496330210b273f40f1d6f11230a6ae1c8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66234123"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序

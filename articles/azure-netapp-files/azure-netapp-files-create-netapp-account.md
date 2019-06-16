@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522816"
 ---
 # <a name="create-a-netapp-account"></a>创建 NetApp 帐户
@@ -33,12 +33,12 @@ ms.locfileid: "65522816"
 
 1. 登录到 Azure 门户。 
 2. 使用以下方法之一访问“Azure NetApp 文件”边栏选项卡：  
-   * 在 Azure 门户的搜索框中搜索“Azure NetApp 文件”。  
-   * 在导航栏中单击“所有服务”，然后筛选找到“Azure NetApp 文件”。  
+   * 在 Azure 门户的搜索框中搜索“Azure NetApp 文件”  。  
+   * 在导航栏中单击“所有服务”  ，然后筛选找到“Azure NetApp 文件”。  
 
    可以通过单击“Azure NetApp 文件”边栏选项卡旁边的星星图标来“收藏”它。 
 
-3. 单击“+ 添加”来创建新的 NetApp 帐户。  
+3. 单击“+ 添加”  来创建新的 NetApp 帐户。  
    此时将出现“新建 NetApp 帐户”窗口。  
 
 4. 提供 NetApp 帐户的以下信息： 

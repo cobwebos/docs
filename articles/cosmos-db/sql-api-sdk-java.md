@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
 ms.openlocfilehash: 03f7f050e158ba30d2f89e79ffcc9e8723eb5268
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66298691"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
@@ -220,7 +220,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 >
 
 > [!WARNING]
-> 1.0.0 版之前的所有 Azure SQL SDK for Java 版本都已在 2016 年 2 月 29 日停用   。
+> 1\.0.0 版之前的所有 Azure SQL SDK for Java 版本都已在 2016 年 2 月 29 日停用   。
 > 
 > 
 

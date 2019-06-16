@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.openlocfilehash: d72901653e995e811a1d3e89cef8a5f77a9ea8bd
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523809"
 ---
 # <a name="api-versions-in-azure-search"></a>Azure 搜索中的 API 版本
@@ -32,10 +32,10 @@ Azure 搜索会定期发布功能更新。 这些更新有时（但并非总是�
 
 | 接口 | 最新的主要版本 | 状态 |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |通常，发布 2019 年 5 |
-| [.NET SDK 预览版](https://aka.ms/search-sdk-preview) |8.0-preview |预览版，发布 2019 年 4 月 |
+| [.NET SDK](https://aka.ms/search-sdk) |9.0 |正式版，2019 年 5 月发布 |
+| [.NET SDK 预览版](https://aka.ms/search-sdk-preview) |8.0-preview |预览版，2019 年 4 月发布 |
 | [服务 REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |正式版 |
-| [Service REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-Preview |预览 |
+| [服务 REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-Preview |预览 |
 | [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |3.0 |正式版 |
 | [管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |正式版 |
 
@@ -48,7 +48,7 @@ Azure 搜索会定期发布功能更新。 这些更新有时（但并非总是�
 >
 > 服务 REST API 和管理 REST API 的版本控制彼此独立。 版本号如有相似之处，实属巧合。
 
-正式版（或 GA）API 可以在生产中使用，并遵循 Azure 服务级别协议。 预览版中的实验功能并不总是会迁移到 GA 版本。 强烈建议不要在生产应用程序中使用预览版 API。
+正式版（或 GA）API 可以在生产中使用，并遵循 Azure 服务级别协议。 预览版中的实验功能并不总是会迁移到 GA 版本。 强烈建议不要在生产应用程序中使用预览版 API。 
 
 ## <a name="about-preview-and-generally-available-versions"></a>关于预览版和正式版
 Azure 搜索始终先通过 REST API 预发布实验功能，再通过 .NET SDK 的预发布版本进行发布。

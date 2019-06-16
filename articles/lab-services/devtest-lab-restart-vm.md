@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 34c08a79abf6acb5ae8582ecd0743a890d850fc8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60864356"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的实验室中重启 VM
@@ -38,22 +38,22 @@ ms.locfileid: "60864356"
 
 ## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的实验室中重启 VM 的步骤
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+1. 选择“所有服务”  ，并从列表中选择“开发测试实验室”  。
 1. 从实验室列表中，选择包含要重启 VM 的实验室。
-1. 在左面板中，选择“我的虚拟机”。
+1. 在左面板中，选择“我的虚拟机”  。
 1. 从 VM 列表中选择正在运行的 VM。
-1. 在 VM 管理窗格顶部，选择“重启”。
+1. 在 VM 管理窗格顶部，选择“重启”  。
 
     ![“重启 VM”按钮](./media/devtest-lab-restart-vm/devtest-lab-restart-vm.png)
 
-1. 在窗口右上角，选择“通知”图标，监视重启状态。
+1. 在窗口右上角，选择“通知”图标，监视重启状态  。
 
     ![查看 VM 重启的状态](./media/devtest-lab-restart-vm/devtest-lab-restart-notification.png)
 
-还可在“我的虚拟机”列表中选择省略号 (...)，重启运行中的 VM。
+还可在“我的虚拟机”列表中选择省略号 (...)，重启运行中的 VM  。
 
 ![通过省略号重启 VM](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 重启 VM 后，即可在其管理窗格中选择“连接”重新连接到 VM。
+* 重启 VM 后，即可在其管理窗格中选择“连接”重新连接到 VM  。
 * 浏览[开发测试实验室 Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)

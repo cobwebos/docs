@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60800299"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 1
@@ -74,7 +74,7 @@ ms.locfileid: "60800299"
 * 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](../linux/using-cloud-init.md)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 Systemd 服务单元。
 * 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
-* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。
+* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl  。
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
 
 ## <a name="extension-schema"></a>扩展架构
@@ -122,14 +122,14 @@ ms.locfileid: "60800299"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| 发布者 | Microsoft.OSTCExtensions | string |
-| type | CustomScriptForLinux | string |
+| publisher | Microsoft.OSTCExtensions | 字符串 |
+| type | CustomScriptForLinux | 字符串 |
 | typeHandlerVersion | 1.5 | int |
 | fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | 数组 |
-| commandToExecute（例如） | python MyPythonScript.py \<my-param1\> | string |
+| commandToExecute（例如） | python MyPythonScript.py \<my-param1\> | 字符串 |
 | enableInternalDNSCheck | true | boolean |
-| storageAccountName（例如） | examplestorageacct | string |
-| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName（例如） | examplestorageacct | 字符串 |
+| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
 
 ### <a name="property-value-details"></a>属性值详细信息
 
@@ -296,7 +296,7 @@ az vm extension set
 
 1. Enable 表示该命令何时开始运行。
 1. Download 涉及下载 Azure 中的 CustomScript 扩展包，而非 fileUris 中指定的脚本文件。
-1. 您还可以查看写出到的日志文件 `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. 还可查看它写出到 `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log` 的日志文件
 
 下一步是查看以下格式的日志文件：
 

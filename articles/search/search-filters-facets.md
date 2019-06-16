@@ -10,10 +10,10 @@ ms.date: 5/13/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 8dffc5b87aefe23953d3a74f1d96b5ee03e0315d
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65597390"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>如何在 Azure 搜索中生成分面筛选器 
@@ -35,26 +35,26 @@ ms.locfileid: "65597390"
 
 ## <a name="choose-fields"></a>选择字段
 
-可通过单值字段以及集合计算分面。 适合分面导航中的字段具有较小的基数： 少量的文档中搜索语料库 （例如，颜色、 国家/地区或品牌名列表） 重复的非重复值。 
+可通过单值字段以及集合计算分面。 适合分面导航的字段的多重性较低：搜索语料库（例如，颜色、国家/地区或品牌名列表）的文档中重复的不同值较少。 
 
-通过设置创建索引时，按逐个字段启用分面`facetable`属性为`true`。 通常，应该还设置`filterable`属性为`true`对于此类字段，以便搜索应用程序可对最终用户选择的分面基于这些字段进行筛选。 
+通过将 `facetable` 属性设置为 `true`，便可在创建索引时逐字段启用分面。 通常，对于此类字段，还应该将 `filterable` 属性设置为 `true`，使搜索应用程序能够根据最终用户选择的分面，基于这些字段进行筛选。 
 
-创建使用 REST API 中，任何索引时[字段中，键入](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)，可能无法用于分面导航被标记为`facetable`默认情况下：
+使用 REST API 创建索引时，可能会在分面导航中使用的任何[字段类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)默认将被标记为 `facetable`：
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
 + `Edm.Boolean`
-+ 数值字段类型： `Edm.Int32`， `Edm.Int64`， `Edm.Double`
-+ 上述类型的集合 (例如，`Collection(Edm.String)`或`Collection(Edm.Double)`)
++ 数字字段类型：`Edm.Int32`、`Edm.Int64`、`Edm.Double`
++ 上述类型的集合（例如 `Collection(Edm.String)` 或 `Collection(Edm.Double)`）
 
-不能使用`Edm.GeographyPoint`或`Collection(Edm.GeographyPoint)`分面导航中的字段。 方面最适合对字段使用较小的基数。 地理坐标的分辨率，由于很少坐标任何两个集将在给定的数据集相等。 因此，地理坐标不支持分面。 需要城市或区域字段才可实现按位置进行分面。
+无法在分面导航中的使用 `Edm.GeographyPoint` 或 `Collection(Edm.GeographyPoint)` 字段。 分面最适合用于基数较小的字段。 由于地理坐标的精度，给定数据集中两组坐标完全相同的情况很少见。 因此，地理坐标不支持分面。 需要城市或区域字段才可实现按位置进行分面。
 
 ## <a name="set-attributes"></a>设置属性
 
-将控制字段使用方式的索引属性添加到索引中的各字段定义。 在以下示例中，具有低多重性用于分面的字段组成： `category` （酒店、 汽车旅馆、 招待所） `tags`，和`rating`。 这些字段具有`filterable`和`facetable`属性集，在下面的示例中显式用于说明目的。 
+将控制字段使用方式的索引属性添加到索引中的各字段定义。 在以下示例中，基数较小且适合用于分面的字段包括：`category`（酒店、汽车旅馆、招待所）、`tags` 和 `rating`。 在以下示例中，为方便演示，已显式为这些字段设置了 `filterable` 和 `facetable` 属性。 
 
 > [!Tip]
-> 为实现最佳性能和存储优化，请针对绝不应用作分面的字段关闭分面功能。 具体而言，唯一的值，例如 ID 或产品名称的字符串字段应设置为`"facetable": false`以防止在分面导航中的意外 （和无效） 使用。
+> 为实现最佳性能和存储优化，请针对绝不应用作分面的字段关闭分面功能。 具体而言，应将唯一值的字符串字段（例如 ID 或产品名称）设置为 `"facetable": false`，以避免在分面导航中意外（和无效）使用它们。
 
 
 ```json
@@ -78,7 +78,7 @@ ms.locfileid: "65597390"
 ```
 
 > [!Note]
-> 此索引定义复制自[使用 REST API 创建 Azure 搜索索引](https://docs.microsoft.com/azure/search/search-create-index-rest-api)。 除了字段定义的表面差异外，二者完全相同。 `filterable`并`facetable`属性显式添加上`category`， `tags`， `parkingIncluded`， `smokingAllowed`，和`rating`字段。 在实践中，`filterable`和`facetable`使用 REST API 时，会在这些字段上默认启用。 使用.NET SDK 时，必须显式启用这些属性。
+> 此索引定义复制自[使用 REST API 创建 Azure 搜索索引](https://docs.microsoft.com/azure/search/search-create-index-rest-api)。 除了字段定义的表面差异外，二者完全相同。 已在 `category`、`tags`、`parkingIncluded`、`smokingAllowed` 和 `rating` 字段中显式添加 `filterable` 和 `facetable` 属性。 在实践中，使用 REST API 时，默认会在这些字段中启用 `filterable` 和 `facetable`。 使用 .NET SDK 时，必须显式启用这些属性。
 
 ## <a name="build-and-load-an-index"></a>生成和加载索引
 
@@ -99,7 +99,7 @@ var sp = new SearchParameters()
 
 ### <a name="return-filtered-results-on-click-events"></a>针对单击事件返回筛选结果
 
-当最终用户单击方面值时，click 事件处理程序应使用的筛选器表达式来实现用户的意图。 给定`category`方面，单击类别"motel"通过实现`$filter`选择该类型的便利设施的表达式。 当用户单击"汽车旅馆"，指示应显示仅旅馆时，应用程序发送的下一个查询将包括`$filter=category eq 'motel'`。
+当最终用户单击某个分面值时，单击事件的处理程序应使用筛选表达式来实现用户的意图。 假设分面依据为 `category`，通过 `$filter` 表达式单击类别“汽车旅馆”，表示选择属于该类型的住宿。 当用户单击“汽车旅馆”，指示应仅显示汽车旅馆时，应用程序发送的下一条查询将包括 `$filter=category eq 'motel'`。
 
 下面的代码片段添加类别以筛选用户是否从类别分面中选择某个值。
 
@@ -108,7 +108,7 @@ if (!String.IsNullOrEmpty(categoryFacet))
     filter = $"category eq '{categoryFacet}'";
 ```
 
-如果用户单击集合字段等分面值`tags`，示例值"池"中，你的应用程序应使用以下筛选器语法： `$filter=tags/any(t: t eq 'pool')`
+如果用户单击 `tags` 等集合字段的分面值（例如值“pool”），则应用程序应使用以下筛选语法：`$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>提示和解决方法
 

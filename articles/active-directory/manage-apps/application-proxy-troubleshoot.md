@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbdccf3b7a3ba1b8e55befa0fdc24eeff3e403da
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 315aba8ac8617f8bf2db71784ec0f9a8dec66cf7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782935"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108367"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>应用程序代理问题和错误消息故障排除
 如果在访问已发布应用程序或发布应用程序时出现错误，请检查以下选项，查看 Microsoft Azure AD 应用程序代理是否正确工作：
@@ -42,7 +42,7 @@ ms.locfileid: "65782935"
 
 ## <a name="connector-errors"></a>连接器错误
 
-如果注册在连接器向导安装期间失败，有两种方法可查看失败原因。 查看“应用程序和服务日志\Microsoft\AadApplicationProxy\Connector\Admin”下的事件日志，或运行以下 Windows PowerShell 命令：
+如果注册在连接器向导安装期间失败，有两种方法可查看失败原因。 查看“应用程序和服务日志\Microsoft\AadApplicationProxy\Connector\Admin”  下的事件日志，或运行以下 Windows PowerShell 命令：
 
     Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
 
@@ -53,7 +53,7 @@ ms.locfileid: "65782935"
 | 连接器注册失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：“发生了一个或多个错误。” | 如果关闭了注册窗口但没有登录到 Azure AD，请再次运行连接器向导并注册连接器。 <br><br> 如果注册窗口打开后立即关闭，无法进行登录，则可能看到此错误。 当系统上存在网络错误时，可能出现此错误。 确保可从浏览器连接到公共网站，并且端口以[应用程序代理先决条件](application-proxy-add-on-premises-application.md)中所指定的方式打开。 |
 | 注册窗口中出现明确错误。 无法继续 | 如果看到此错误，然后窗口关闭，这意味着输入的用户名或密码错误。 重试。 |
 | 连接器注册失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：AADSTS50059：未在请求中找到或所提供的任何凭据均未暗示任何租户识别信息，并且服务主体 URI 的搜索已失败。 | 正尝试使用 Microsoft 帐户登录，而不是使用作为正尝试登录的目录组织 ID 一部分的域进行登录。 确保管理员是租户域的相同域名的一部分，例如，如果 Azure AD 域为 contoso.com，则管理员应为 admin@contoso.com。 |
-| 无法检索运行 PowerShell 脚本的当前执行策略。 | 如果连接器安装已失败，请检查确保 PowerShell 执行策略未禁用。 <br><br>1.打开组策略编辑器。<br>2.依次转到“计算机配置” > “管理模板” > “Windows 组件” > **“Windows PowerShell”** ，并双击“打开脚本执行”。<br>3.可将执行策略设置为“未配置”或“已启用”。 如果设置为“已启用”，请确保在“选项”下将“执行策略”设置为“允许本地脚本和远程签名脚本”或“允许所有脚本”。 |
+| 无法检索运行 PowerShell 脚本的当前执行策略。 | 如果连接器安装已失败，请检查确保 PowerShell 执行策略未禁用。 <br><br>1.打开组策略编辑器。<br>2.依次转到“计算机配置”   > “管理模板”   > “Windows 组件”   >  **“Windows PowerShell”** ，并双击“打开脚本执行”  。<br>3.可将执行策略设置为“未配置”  或“已启用”  。 如果设置为“已启用”  ，请确保在“选项”下将“执行策略”设置为“允许本地脚本和远程签名脚本”  或“允许所有脚本”  。 |
 | 连接器无法下载配置。 | 用于身份验证的连接器客户端证书已过期。 如果将连接器安装在代理后，则可能发生此情况。 在此情况下，连接器无法访问 Internet，并且将无法向远程用户提供应用程序。 在 Windows PowerShell 中使用 `Register-AppProxyConnector` cmdlet 手动续订信任。 如果连接器在代理后，则必须向连接器帐户“网络服务”和“本地系统”授予 Internet 访问权限。 可通过向它们授予代理访问权限或将它们设置为绕过代理来实现此目的。 |
 | 连接器注册失败：要注册连接器，请确保是 Active Directory 的应用程序管理员。 错误：“注册请求被拒绝。” | 尝试登录时所使用的别名不是此域上的管理员。 始终为拥有用户域的目录安装连接器。 确保尝试登录时所使用的管理员帐户至少具有 Azure AD 租户的应用程序管理员权限。 |
 
@@ -63,7 +63,7 @@ ms.locfileid: "65782935"
 
 | 错误 | 建议的步骤 |
 | ----- | ----------------- |
-| 无法检索运行 PowerShell 脚本的当前执行策略。 | 如果连接器安装已失败，请检查确保 PowerShell 执行策略未禁用。<br><br>1.打开组策略编辑器。<br>2.依次转到“计算机配置” > “管理模板” > “Windows 组件” > **“Windows PowerShell”** ，并双击“打开脚本执行”。<br>3.可将执行策略设置为“未配置”或“已启用”。 如果设置为“已启用”，请确保在“选项”下将“执行策略”设置为“允许本地脚本和远程签名脚本”或“允许所有脚本”。 |
+| 无法检索运行 PowerShell 脚本的当前执行策略。 | 如果连接器安装已失败，请检查确保 PowerShell 执行策略未禁用。<br><br>1.打开组策略编辑器。<br>2.依次转到“计算机配置”   > “管理模板”   > “Windows 组件”   >  **“Windows PowerShell”** ，并双击“打开脚本执行”  。<br>3.可将执行策略设置为“未配置”  或“已启用”  。 如果设置为“已启用”  ，请确保在“选项”下将“执行策略”设置为“允许本地脚本和远程签名脚本”  或“允许所有脚本”  。 |
 | 12008 - Azure AD 超出了对后端服务器的 Kerberos 身份验证尝试的最大允许次数。 | 此错误可能表示 Azure AD 和后端应用程序服务器之间的配置不正确，或者两台计算机上的时间和日期配置存在问题。 后端服务器拒绝了由 Azure AD 创建的 Kerberos 票证。 验证 Azure AD 和后端应用程序服务器是否正确配置。 确保 Azure AD 和后端应用程序服务器上的时间和日期配置已同步。 |
 | 13016 - Azure AD 无法代表用户检索 Kerberos 票证，因为边缘令牌或访问 cookie 中没有 UPN。 | STS 配置出现问题。 在 STS 中修复 UPN 声明配置。 |
 | 13019 - Azure AD 由于以下常规 API 错误而无法代表用户检索 Kerberos 票证。 | 此事件可能表示 Azure AD 和域控制器服务器之间的配置不正确，或者两台计算机上的时间和日期配置存在问题。 域控制器拒绝了由 Azure AD 创建的 Kerberos 票证。 验证 Azure AD 和后端应用程序服务器是否正确配置，尤其是 SPN 配置。 确保 Azure AD 加入与域控制器相同的域，以确保域控制器与 Azure AD 建立信任。 确保 Azure AD 和域控制器上的时间和日期配置已同步。 |
@@ -78,9 +78,9 @@ ms.locfileid: "65782935"
 | ----- | ----------------- |
 | 网站无法显示页面。 | 如果应用程序是 IWA 应用程序，用户可能在尝试访问已发布的应用时得到此错误。 为此应用程序定义的 SPN 可能不正确。 对于 IWA 应用，确保为此应用程序配置的 SPN 正确。 |
 | 网站无法显示页面。 | 如果应用程序是 OWA 应用程序，用户可能在尝试访问已发布的应用时得到此错误。 这可能由以下原因之一导致：<br><li>为此应用程序定义的 SPN 不正确。 确保针对此应用程序配置的 SPN 正确。</li><li>尝试访问应用程序的用户正在使用 Microsoft 帐户（而不是正确的公司帐户）登录，或者该用户是来宾用户。 确保用户使用与已发布应用程序的域匹配的公司帐户登录。 Microsoft 帐户用户和来宾无法访问 IWA 应用程序。</li><li>用户尝试访问应用程序未正确定义此应用程序上的本地端。 请确保此用户具有针对此后端应用程序在本地机器上定义适当的权限。 |
-| 无法访问此公司应用。 无权访问此应用程序。 授权失败。 确保向用户分配此应用程序的访问权限。 | 尝试访问发布如果他们使用 Microsoft 帐户而不是公司帐户登录的应用时，你的用户可能会收到此错误。 来宾用户也可能得到此错误。 Microsoft 帐户用户和来宾无法访问 IWA 应用程序。 确保用户使用与已发布应用程序的域匹配的公司帐户登录。<br><br>可能未针对此应用程序分配用户。 转到“应用程序”选项卡，并在“用户和组”下将此用户或用户组分配到此应用程序。 |
+| 无法访问此公司应用。 无权访问此应用程序。 授权失败。 确保向用户分配此应用程序的访问权限。 | 尝试访问发布如果他们使用 Microsoft 帐户而不是公司帐户登录的应用时，你的用户可能会收到此错误。 来宾用户也可能得到此错误。 Microsoft 帐户用户和来宾无法访问 IWA 应用程序。 确保用户使用与已发布应用程序的域匹配的公司帐户登录。<br><br>可能未针对此应用程序分配用户。 转到“应用程序”  选项卡，并在“用户和组”  下将此用户或用户组分配到此应用程序。 |
 | 当前无法访问此公司应用。 请稍后重试…连接器已超时。 | 尝试访问发布如果它们未正确定义此应用程序的本地端的应用时，你的用户可能会收到此错误。 请确保你的用户具有适当的权限，为在本地机器上此后端应用程序定义的一样。 |
-| 无法访问此公司应用。 无权访问此应用程序。 授权失败。 确保用户具有 Azure Active Directory Premium 或 Basic 的许可证。 | 尝试访问发布如果它们未显式分配 Premium/Basic 许可证与订阅服务器的管理员的应用时，你的用户可能会收到此错误。 转到订阅方的 Active Directory“许可证”选项卡并确保向此用户或用户组分配 Premium 或 Basic 许可证。 |
+| 无法访问此公司应用。 无权访问此应用程序。 授权失败。 确保用户具有 Azure Active Directory Premium 或 Basic 的许可证。 | 尝试访问发布如果它们未显式分配 Premium/Basic 许可证与订阅服务器的管理员的应用时，你的用户可能会收到此错误。 转到订阅方的 Active Directory“许可证”  选项卡并确保向此用户或用户组分配 Premium 或 Basic 许可证。 |
 | 找不到具有指定的主机名的服务器。 | 尝试访问应用程序的自定义域配置不正确，如果你发布的应用时，你的用户可能会收到此错误。 请确保已上传的证书的域并正确配置的 DNS 记录中的步骤[使用的 Azure AD 应用程序代理中的自定义域](application-proxy-configure-custom-domain.md) |
 
 ## <a name="my-error-wasnt-listed-here"></a>此处未列出我遇到的错误

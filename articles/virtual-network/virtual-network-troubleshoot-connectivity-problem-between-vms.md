@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: fc3d6ab1d7fdf05963d9ecd350deccd940a95b87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61036251"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>排查 Azure VM 间的连接问题
@@ -87,7 +87,7 @@ Azure 虚拟机 (VM) 间可能出现连接问题。 本文提供解决此问题�
 
     netstat -l
 
-- 对虚拟机本身运行 telnet 命令，测试端口。 如果测试失败，则应用程序或服务未配置为侦听该端口。
+- 对虚拟机本身运行 telnet 命令，测试端口  。 如果测试失败，则应用程序或服务未配置为侦听该端口。
 
 ### <a name="step-5-check-whether-the-problem-is-caused-by-snat"></a>步骤 5：检查问题是否由 SNAT 引起
 

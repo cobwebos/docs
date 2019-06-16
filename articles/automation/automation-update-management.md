@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4df40febefa872fa52afdfaaf31b94dba7000af5
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
-ms.translationtype: MT
+ms.openlocfilehash: b28d590390cd1a1ef1c6651e6943ac2a7fa0af29
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729483"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075505"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -45,7 +45,7 @@ ms.locfileid: "66729483"
 
 如果 MMA 重启，除了按扫描计划扫描，更新符合性扫描还会在更新安装前和更新安装后的 15 分钟内启动。
 
-对于 Linux 计算机，符合性扫描默认情况下每 3 小时执行一次。 如果 MMA 代理重启，则会在 15 分钟内启动符合性扫描。
+对于 Linux 计算机，符合性扫描是默认情况下执行每隔一小时。 如果 MMA 代理重启，则会在 15 分钟内启动符合性扫描。
 
 解决方案根据所配置的与之进行同步的源来报告计算机的更新情况。 如果将 Windows 计算机配置为向 WSUS 报告，则结果可能不同于 Microsoft 更新所显示的内容，具体取决于 WSUS 上次通过 Microsoft 更新进行同步的时间。 对于配置为向本地存储库（而非公共存储库）报告的 Linux 计算机来说，行为也是如此。
 
@@ -227,7 +227,7 @@ Heartbeat
 | --- | --- |
 | Name |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
-| 若要更新的组 |适用于 Azure 机定义的订阅、 资源组、 位置和标记来生成要在部署中包含的 Azure Vm 的动态组组合所基于的查询。 </br></br>对于非 Azure 计算机，选择现有的已保存搜索以选择要包括在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
+| 要更新的组 |对于 Azure 计算机，请定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 </br></br>对于非 Azure 计算机，请选择现有的已保存搜索，以选择要包含在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
 | 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示   。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
 |更新分类|选择所需的所有更新分类|
 |包括/排除更新|这将打开“包括/排除”  页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[包含行为](automation-update-management.md#inclusion-behavior) |
@@ -303,7 +303,7 @@ sudo yum -q --security check-update
 
 ### <a name="pre-download-updates"></a>预下载更新
 
-若要在组策略中自动配置下载更新，可以将“[配置自动更新设置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5)”设置为 **3**。 将在后台下载所需的更新，但不会安装它们。 这让更新管理可以始终控制计划，但允许在更新管理维护时段外下载更新。 这可阻止更新管理中出现“已超过维护时段”  错误。
+若要在组策略中自动配置下载更新，可以将“[配置自动更新设置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates)”设置为 **3**。 将在后台下载所需的更新，但不会安装它们。 这让更新管理可以始终控制计划，但允许在更新管理维护时段外下载更新。 这可阻止更新管理中出现“已超过维护时段”  错误。
 
 此外，还可以使用 PowerShell 进行相关设置，在要自动下载更新的系统上运行 PowerShell。
 
@@ -346,8 +346,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|* .azure-automation.net|*.azure-automation.us|
+|\* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|\* .azure-automation.net|*.azure-automation.us|
 
 有关混合 Runbook 辅助角色所需端口的详细信息，请参阅[混合辅助角色端口](automation-hybrid-runbook-worker.md#hybrid-worker-role)。
 

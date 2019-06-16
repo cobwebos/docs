@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: b7962f42b4244121a67b88ef3bf789ce40f7b1e5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719617"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure AD 身份验证
@@ -58,7 +58,7 @@ ms.locfileid: "64719617"
 * 媒体服务（本机）应用程序重定向 URI 
 * REST 媒体服务的资源 URI
 
-可以在“通过用户身份验证连接媒体服务 API”页上获取这些参数的值。 
+可以在“通过用户身份验证连接媒体服务 API”  页上获取这些参数的值。 
 
 ![“通过用户身份验证连接媒体服务 API”页](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started02.png)
 
@@ -73,13 +73,13 @@ ms.locfileid: "64719617"
 * Azure AD 租户终结点
 * 媒体服务资源 URI 
 * REST 媒体服务的资源 URI
-* Azure AD 应用程序值：客户端 ID和客户端密钥
+* Azure AD 应用程序值：客户端 ID  和客户端密钥 
 
-可以在“通过服务主体选项连接媒体服务 API”页上获取这些参数的值。 在此页上，可以新建 Azure AD 应用程序，也可以选择现有应用程序。 选择 Azure AD 应用程序后，可以获取客户端 ID（应用程序 ID），并生成客户端密码（密钥）值。 
+可以在“通过服务主体选项连接媒体服务 API”  页上获取这些参数的值。 在此页上，可以新建 Azure AD 应用程序，也可以选择现有应用程序。 选择 Azure AD 应用程序后，可以获取客户端 ID（应用程序 ID），并生成客户端密码（密钥）值。 
 
 ![“通过服务主体选项连接媒体服务 API”页](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started04.png)
 
-在打开的“服务主体”边栏选项卡上，选择首个满足以下条件的 Azure AD 应用程序：
+在打开的“服务主体”  边栏选项卡上，选择首个满足以下条件的 Azure AD 应用程序：
 
 - 已注册的 Azure AD 应用程序。
 - 对帐户拥有基于参与者或所有者角色的访问控制权限。
@@ -98,17 +98,17 @@ ms.locfileid: "64719617"
 
 ![“管理权限”按钮和“管理应用程序”按钮](./media/media-services-portal-get-started-with-aad/media-services-portal-manage.png)
 
-若要打开 Azure AD 应用程序边栏选项卡，请单击“管理应用程序”。 在“管理应用程序”边栏选项卡上，可以获取应用程序的客户端 ID（应用程序 ID）。 若要生成客户端密码（密钥），请选择“密钥”。
+若要打开 Azure AD 应用程序边栏选项卡，请单击“管理应用程序”  。 在“管理应用程序”  边栏选项卡上，可以获取应用程序的客户端 ID（应用程序 ID）。 若要生成客户端密码（密钥），请选择“密钥”  。
 
 ![“管理应用程序”边栏选项卡上的“密钥”选项](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started06.png) 
 
 ### <a name="manage-permissions-and-the-application"></a>管理权限和应用程序
 
-选择 Azure AD 应用程序后，可以管理应用程序和权限。 若要将 Azure AD 应用程序设置为访问其他应用程序，请单击“管理权限”。 若要执行管理任务（如更改密钥和回复 URL）或编辑应用程序清单，请单击“管理应用程序”。
+选择 Azure AD 应用程序后，可以管理应用程序和权限。 若要将 Azure AD 应用程序设置为访问其他应用程序，请单击“管理权限”  。 若要执行管理任务（如更改密钥和回复 URL）或编辑应用程序清单，请单击“管理应用程序”  。
 
 ### <a name="edit-the-apps-settings-or-manifest"></a>编辑应用程序设置或清单
 
-若要编辑应用程序设置或清单，请单击“管理应用程序”。
+若要编辑应用程序设置或清单，请单击“管理应用程序”  。
 
 ![“管理应用程序”页](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started05.png)
 

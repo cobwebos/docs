@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
 ms.openlocfilehash: 6b5f0e96b90ee0515c0a86f41c6ee2161d6c54a6
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66752716"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
@@ -69,7 +69,7 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 
 ## <a name="tools"></a>工具
 
-|类别   |名称   |
+|类别   |Name   |
 |---|---|
 |Linux 工具            |bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
 |Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 经典 CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [批处理 Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|

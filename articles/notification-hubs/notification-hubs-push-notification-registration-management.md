@@ -15,10 +15,10 @@ ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
 ms.openlocfilehash: 5a70eec15003a1f75a80740f269f6df3523012a8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64685396"
 ---
 # <a name="registration-management"></a>注册管理
@@ -36,7 +36,7 @@ ms.locfileid: "64685396"
 注册将设备的平台通知服务 (PNS) 句柄与标记（有时还包括模板）相关联。 PNS 句柄可以是 ChannelURI、设备令牌或 FCM 注册 ID。标记用于将通知路由到一组正确的设备句柄。 有关详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。 模板用于实现按注册转换。 有关详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
 
 > [!NOTE]
-> Azure 通知中心支持最多 60 标记每个设备。
+> Azure 通知中心支持每个设备注册最多 60 个标记。
 
 ### <a name="installations"></a>安装
 

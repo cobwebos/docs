@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
 ms.openlocfilehash: bdf88657c11bdb5ab5bcde97c155780328065c7e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954467"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
@@ -55,7 +55,7 @@ steps: # A collection of image or container actions.
 
 ### <a name="supported-task-filename-extensions"></a>支持的任务文件扩展名
 
-ACR 任务具有多个保留的文件扩展名（包括 `.yaml`），它将这些文件作为任务文件进行处理。 ACR 任务将以下列表中未列出的任何扩展名视为 Dockerfile：.yaml、.yml、.toml、.json、.sh、.bash、.zsh、.ps1、.ps、.cmd、.bat、.ts、.js、.php、.py、.rb、.lua
+ACR 任务具有多个保留的文件扩展名（包括 `.yaml`），它将这些文件作为任务文件进行处理。 ACR 任务将以下列表中未列出的任何扩展名视为 Dockerfile：.yaml、.yml、.toml、.json、.sh、.bash、.zsh、.ps1、.ps、.cmd、.bat、.ts、.js、.php、.py、.rb、.lua 
 
 YAML 是 ACR 任务目前支持的唯一一种文件格式。 其他文件扩展名是保留的，将来可能受到支持。
 
@@ -81,22 +81,22 @@ az configure --defaults acr=myregistry
 
 | 属性 | Type | 可选 | 描述 | 支持的重写 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | “是” | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 如果未指定，默认为最新版本。 | “否” | 无 |
-| `stepTimeout` | 整数（秒） | “是” | 步骤可以运行的最大秒数。 如果任务指定的属性，它会设置默认`timeout`属性的所有步骤。 如果`timeout`属性指定上一步，它将替代任务提供的属性。 | “是” | 600（10 分钟） |
-| `workingDirectory` | string | “是” | 在运行时容器的工作目录。 如果任务指定的属性，它会设置默认`workingDirectory`属性的所有步骤。 如果指定上一步，它将替代任务提供的属性。 | “是” | `$HOME` |
-| `env` | [字符串, 字符串, ...] | “是” |  中的字符串数组`key=value`定义该任务的环境变量的格式。 如果任务指定的属性，它会设置默认`env`属性的所有步骤。 如果指定上一步，它将替代继承自该任务的任何环境变量。 | 无 |
-| `secrets` | [secret, secret, ...] | “是” | 数组[机密](#secret)对象。 | 无 |
-| `networks` | [网络，网络，...] | “是” | 数组[网络](#network)对象。 | 无 |
+| `version` | 字符串 | 是 | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 如果未指定，默认为最新版本。 | 否 | 无 |
+| `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 如果任务指定的属性，它会设置默认`timeout`属性的所有步骤。 如果`timeout`属性指定上一步，它将替代任务提供的属性。 | 是 | 600（10 分钟） |
+| `workingDirectory` | 字符串 | 是 | 在运行时容器的工作目录。 如果任务指定的属性，它会设置默认`workingDirectory`属性的所有步骤。 如果指定上一步，它将替代任务提供的属性。 | 是 | `$HOME` |
+| `env` | [字符串, 字符串, ...] | 是 |  中的字符串数组`key=value`定义该任务的环境变量的格式。 如果任务指定的属性，它会设置默认`env`属性的所有步骤。 如果指定上一步，它将替代继承自该任务的任何环境变量。 | 无 |
+| `secrets` | [secret, secret, ...] | 是 | 数组[机密](#secret)对象。 | 无 |
+| `networks` | [网络，网络，...] | 是 | 数组[网络](#network)对象。 | 无 |
 
-### <a name="secret"></a>密
+### <a name="secret"></a>secret
 
 机密对象具有以下属性。
 
 | 属性 | Type | 可选 | 描述 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | string | “否” | 机密标识符。 | 无 |
-| `keyvault` | string | “是” | Azure 密钥保管库机密 URL。 | 无 |
-| `clientID` | string | “是” | 客户端 ID 的用户分配管理 Azure 资源的标识。 | 无 |
+| `id` | 字符串 | 否 | 机密标识符。 | 无 |
+| `keyvault` | 字符串 | 是 | Azure 密钥保管库机密 URL。 | 无 |
+| `clientID` | 字符串 | 是 | 客户端 ID 的用户分配管理 Azure 资源的标识。 | 无 |
 
 ### <a name="network"></a>网络
 
@@ -104,11 +104,11 @@ az configure --defaults acr=myregistry
 
 | 属性 | Type | 可选 | 描述 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | string | “否” | 网络的名称。 | 无 |
-| `driver` | string | “是” | 若要管理的网络驱动程序。 | 无 |
-| `ipv6` | bool | “是” | 是否已启用 IPv6 网络。 | `false` |
-| `skipCreation` | bool | “是” | 是否要跳过网络创建。 | `false` |
-| `isDefault` | bool | “是” | 该网络是提供使用 Azure 容器注册表的默认网络 | `false` |
+| `name` | 字符串 | 否 | 网络的名称。 | 无 |
+| `driver` | 字符串 | 是 | 若要管理的网络驱动程序。 | 无 |
+| `ipv6` | bool | 是 | 是否已启用 IPv6 网络。 | `false` |
+| `skipCreation` | bool | 是 | 是否要跳过网络创建。 | `false` |
+| `isDefault` | bool | 是 | 该网络是提供使用 Azure 容器注册表的默认网络 | `false` |
 
 ## <a name="task-step-types"></a>步骤任务类型
 
@@ -137,9 +137,9 @@ steps:
 
 | 参数 | 描述 | 可选 |
 | --------- | ----------- | :-------: |
-| `-t` &#124; `--image` | 定义所生成的映像的完全限定 `image:tag`。<br /><br />由于映像可用于内部任务验证（例如功能测试），并非所有映像都需要通过 `push` 推送到注册表。 但是，若要实例化任务执行中的某个映像，该映像确实需要引用某个名称。<br /><br />与不同`az acr build`，正在运行的 ACR 任务不提供默认推送行为。 使用 ACR 任务时，默认方案假设能够生成、验证再推送映像。 请参阅 [push](#push)，了解如何选择性地推送所生成的映像。 | “是” |
-| `-f` &#124; `--file` | 指定要传递给 `docker build` 的 Dockerfile。 如果未指定，则假设使用上下文根目录中的默认 Dockerfile。 若要指定的 Dockerfile，传递相对于上下文的根文件名。 | “是” |
-| `context` | 传递给 `docker build` 的根目录。 每个任务的根目录设置为某个共享的 [workingDirectory](#task-step-properties)，包括关联的 Git 克隆目录所在的根目录。 | “否” |
+| `-t` &#124; `--image` | 定义所生成的映像的完全限定 `image:tag`。<br /><br />由于映像可用于内部任务验证（例如功能测试），并非所有映像都需要通过 `push` 推送到注册表。 但是，若要实例化任务执行中的某个映像，该映像确实需要引用某个名称。<br /><br />与不同`az acr build`，正在运行的 ACR 任务不提供默认推送行为。 使用 ACR 任务时，默认方案假设能够生成、验证再推送映像。 请参阅 [push](#push)，了解如何选择性地推送所生成的映像。 | 是 |
+| `-f` &#124; `--file` | 指定要传递给 `docker build` 的 Dockerfile。 如果未指定，则假设使用上下文根目录中的默认 Dockerfile。 若要指定的 Dockerfile，传递相对于上下文的根文件名。 | 是 |
+| `context` | 传递给 `docker build` 的根目录。 每个任务的根目录设置为某个共享的 [workingDirectory](#task-step-properties)，包括关联的 Git 克隆目录所在的根目录。 | 否 |
 
 ### <a name="properties-build"></a>属性：build
 
@@ -149,12 +149,12 @@ steps:
 | -------- | ---- | -------- |
 | `detach` | bool | 可选 |
 | `disableWorkingDirectoryOverride` | bool | 可选 |
-| `entryPoint` | string | 可选 |
+| `entryPoint` | 字符串 | 可选 |
 | `env` | [字符串, 字符串, ...] | 可选 |
 | `expose` | [字符串, 字符串, ...] | 可选 |
-| `id` | string | 可选 |
+| `id` | 字符串 | 可选 |
 | `ignoreErrors` | bool | 可选 |
-| `isolation` | string | 可选 |
+| `isolation` | 字符串 | 可选 |
 | `keep` | bool | 可选 |
 | `network` | 对象 | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
@@ -166,7 +166,7 @@ steps:
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
 | `when` | [字符串, 字符串, ...] | 可选 |
-| `workingDirectory` | string | 可选 |
+| `workingDirectory` | 字符串 | 可选 |
 
 ### <a name="examples-build"></a>示例：build
 
@@ -220,7 +220,7 @@ steps:
 | | | |
 | -------- | ---- | -------- |
 | `env` | [字符串, 字符串, ...] | 可选 |
-| `id` | string | 可选 |
+| `id` | 字符串 | 可选 |
 | `ignoreErrors` | bool | 可选 |
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
@@ -266,12 +266,12 @@ steps:
 | -------- | ---- | -------- |
 | `detach` | bool | 可选 |
 | `disableWorkingDirectoryOverride` | bool | 可选 |
-| `entryPoint` | string | 可选 |
+| `entryPoint` | 字符串 | 可选 |
 | `env` | [字符串, 字符串, ...] | 可选 |
 | `expose` | [字符串, 字符串, ...] | 可选 |
-| `id` | string | 可选 |
+| `id` | 字符串 | 可选 |
 | `ignoreErrors` | bool | 可选 |
-| `isolation` | string | 可选 |
+| `isolation` | 字符串 | 可选 |
 | `keep` | bool | 可选 |
 | `network` | 对象 | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
@@ -283,7 +283,7 @@ steps:
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
 | `when` | [字符串, 字符串, ...] | 可选 |
-| `workingDirectory` | string | 可选 |
+| `workingDirectory` | 字符串 | 可选 |
 
 可在本文的[任务步骤属性](#task-step-properties)部分找到这些属性的详细信息。
 
@@ -364,28 +364,28 @@ steps:
 
 | 属性 | Type | 可选 | 描述 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
-| `detach` | bool | “是” | 在运行时是否应分离容器。 | `false` |
-| `disableWorkingDirectoryOverride` | bool | “是” | 是否禁用`workingDirectory`重写功能。 结合使用这`workingDirectory`具有完全控制容器的工作目录。 | `false` |
-| `entryPoint` | string | “是” | 重写步骤容器的 `[ENTRYPOINT]`。 | 无 |
-| `env` | [字符串, 字符串, ...] | “是” | 采用 `key=value` 格式的字符串数组，定义步骤的环境变量。 | 无 |
-| `expose` | [字符串, 字符串, ...] | “是” | 从容器公开的端口的数组。 |  无 |
-| [`id`](#example-id) | string | “是” | 唯一标识任务中的步骤。 任务中的其他步骤可以引用步骤的 `id`，例如，使用 `when` 执行依赖项检查。<br /><br />`id` 也是正在运行的容器的名称。 例如，在任务的其他容器中运行的进程可以引用 `id` 作为其 DNS 主机名，或者通过 Docker 日志 [id] 来访问该步骤。 | `acb_step_%d`其中`%d`是自上而下的 YAML 文件中的步的基于 0 的索引 |
-| `ignoreErrors` | bool | “是” | 是否要将步骤标记为成功而不考虑是否在容器执行期间发生了错误。 | `false` |
-| `isolation` | string | “是” | 容器的隔离级别。 | `default` |
-| `keep` | bool | “是” | 执行后是否应保留该步骤的容器。 | `false` |
-| `network` | 对象 | “是” | 标识在其中的容器运行的网络。 | 无 |
-| `ports` | [字符串, 字符串, ...] | “是” | 从容器发布到主机的端口的数组。 |  无 |
-| `pull` | bool | “是” | 是否要强制执行它以防止任何缓存的行为之前的容器的请求。 | `false` |
-| `privileged` | bool | “是” | 是否要在特权模式下运行该容器。 | `false` |
-| `repeat` | int | “是” | 重试重复容器的执行次数。 | 0 |
-| `retries` | int | “是” | 若要尝试，则在容器失败执行的重试次数。 如果容器的退出代码为非零值，只被尝试重试。 | 0 |
-| `retryDelay` | 整数（秒） | “是” | 以秒为单位的容器的执行的重试之间延迟。 | 0 |
-| `secret` | 对象 | “是” | 标识 Azure 密钥保管库机密或 Azure 资源的托管的标识。 | 无 |
-| `startDelay` | 整数（秒） | “是” | 容器的执行的延迟秒数。 | 0 |
-| `timeout` | 整数（秒） | “是” | 步骤在终止之前可以执行的最大秒数。 | 600 |
-| [`when`](#example-when) | [字符串, 字符串, ...] | “是” | 配置某个步骤对任务中其他一个或多个步骤的依赖。 | 无 |
-| `user` | string | “是” | 用户名或 UID 的容器 | 无 |
-| `workingDirectory` | string | “是” | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `$HOME` |
+| `detach` | bool | 是 | 在运行时是否应分离容器。 | `false` |
+| `disableWorkingDirectoryOverride` | bool | 是 | 是否禁用`workingDirectory`重写功能。 结合使用这`workingDirectory`具有完全控制容器的工作目录。 | `false` |
+| `entryPoint` | 字符串 | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 | 无 |
+| `env` | [字符串, 字符串, ...] | 是 | 采用 `key=value` 格式的字符串数组，定义步骤的环境变量。 | 无 |
+| `expose` | [字符串, 字符串, ...] | 是 | 从容器公开的端口的数组。 |  无 |
+| [`id`](#example-id) | 字符串 | 是 | 唯一标识任务中的步骤。 任务中的其他步骤可以引用步骤的 `id`，例如，使用 `when` 执行依赖项检查。<br /><br />`id` 也是正在运行的容器的名称。 例如，在任务的其他容器中运行的进程可以引用 `id` 作为其 DNS 主机名，或者通过 Docker 日志 [id] 来访问该步骤。 | `acb_step_%d`其中`%d`是自上而下的 YAML 文件中的步的基于 0 的索引 |
+| `ignoreErrors` | bool | 是 | 是否要将步骤标记为成功而不考虑是否在容器执行期间发生了错误。 | `false` |
+| `isolation` | 字符串 | 是 | 容器的隔离级别。 | `default` |
+| `keep` | bool | 是 | 执行后是否应保留该步骤的容器。 | `false` |
+| `network` | 对象 | 是 | 标识在其中的容器运行的网络。 | 无 |
+| `ports` | [字符串, 字符串, ...] | 是 | 从容器发布到主机的端口的数组。 |  无 |
+| `pull` | bool | 是 | 是否要强制执行它以防止任何缓存的行为之前的容器的请求。 | `false` |
+| `privileged` | bool | 是 | 是否要在特权模式下运行该容器。 | `false` |
+| `repeat` | int | 是 | 重试重复容器的执行次数。 | 0 |
+| `retries` | int | 是 | 若要尝试，则在容器失败执行的重试次数。 如果容器的退出代码为非零值，只被尝试重试。 | 0 |
+| `retryDelay` | 整数（秒） | 是 | 以秒为单位的容器的执行的重试之间延迟。 | 0 |
+| `secret` | 对象 | 是 | 标识 Azure 密钥保管库机密或 Azure 资源的托管的标识。 | 无 |
+| `startDelay` | 整数（秒） | 是 | 容器的执行的延迟秒数。 | 0 |
+| `timeout` | 整数（秒） | 是 | 步骤在终止之前可以执行的最大秒数。 | 600 |
+| [`when`](#example-when) | [字符串, 字符串, ...] | 是 | 配置某个步骤对任务中其他一个或多个步骤的依赖。 | 无 |
+| `user` | 字符串 | 是 | 用户名或 UID 的容器 | 无 |
+| `workingDirectory` | 字符串 | 是 | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `$HOME` |
 
 ### <a name="examples-task-step-properties"></a>示例：任务步骤属性
 

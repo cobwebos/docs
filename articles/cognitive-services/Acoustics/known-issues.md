@@ -11,10 +11,10 @@ ms.topic: resources
 ms.date: 03/20/2019
 ms.author: kylestorck
 ms.openlocfilehash: 50de4d983ed24440d655cf5b9ba3fb5e33d8d7cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61335341"
 ---
 # <a name="project-acoustics-known-issues"></a>项目噪声的已知问题
@@ -22,7 +22,7 @@ ms.locfileid: "61335341"
 
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>重命名场景时丢失声学参数
 
-如果重命名一个场景，所有属于该场景的声学参数不会自动传输到新的场景。 它们仍将但是存在旧的资产文件中。 在场景文件旁边的“编辑器”目录内查找 SceneName_AcousticParameters.asset 文件。 重命名文件以反映新的场景名称。
+如果重命名一个场景，所有属于该场景的声学参数不会自动传输到新的场景。 它们仍将但是存在旧的资产文件中。 在场景文件旁边的“编辑器”目录内查找 SceneName_AcousticParameters.asset 文件   。 重命名文件以反映新的场景名称。
 
 ## <a name="unity-crashes-when-closing-project"></a>关闭项目时，Unity 崩溃
 
@@ -34,7 +34,7 @@ ms.locfileid: "61335341"
 
 ## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>收到“找不到元数据文件 System.Security.dll”错误
 
-请确保播放机设置中的“脚本编写运行时版本”已设置为“.NET 4.x 等效版本”，并重启 Unity。
+请确保播放机设置中的“脚本编写运行时版本”已设置为“.NET 4.x 等效版本”，并重启 Unity  。
 
 ## <a name="im-having-authentication-problems-when-connecting-to-azure"></a>连接到 Azure 时遇到身份验证问题
 

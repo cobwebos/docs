@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: jeconnoc
 ms.custom: include file
 ms.openlocfilehash: 74496cd3d4cd01be326baae870b075eb923983af
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158247"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>有关从经典部署模型迁移到 Azure 资源管理器部署模型的常见问题
@@ -53,7 +53,7 @@ ms.locfileid: "66158247"
 
 <a name="vault">当</a>将 VM 从经典模式移到资源管理器模式时，在迁移之前进行的备份不会迁移到新迁移的资源管理器 VM 中。 但是，如果希望保留经典 VM 的备份，请在迁移之前执行以下步骤。 
 
-1. 在恢复服务保管库中，转到“受保护的项”选项卡并选择 VM。 
+1. 在恢复服务保管库中，转到“受保护的项”选项卡并选择 VM  。 
 2. 单击停止保护。 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
 
 > [!NOTE]

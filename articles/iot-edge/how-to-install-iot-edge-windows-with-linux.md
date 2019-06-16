@@ -1,6 +1,6 @@
 ---
-title: 在 Windows 上安装适用于 Linux 的 Azure IoT Edge |Microsoft Docs
-description: 在 Windows、 Windows Server 和 Windows IoT Core 上的 Linux 容器的 azure IoT Edge 安装说明
+title: 在 Windows 上安装适用于 Linux 的 Azure IoT Edge | Microsoft Docs
+description: 有关在 Windows 10、Windows Server 和 Windows IoT Core 上安装适用于 Linux 容器的 Azure IoT Edge 的说明
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
 ms.openlocfilehash: b7386cbbe18d7e05c2fbffb96f6214b468956192
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66151706"
 ---
-# <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>在 Windows 上使用 IoT Edge 运行 Linux 容器
+# <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>使用 Windows 上的 IoT Edge 运行 Linux 容器
 
-测试使用 Windows 计算机的 Linux 设备的 IoT Edge 模块。 
+使用 Windows 计算机测试适用于 Linux 设备的 IoT Edge 模块。 
 
-在生产方案中，Windows 设备应仅运行 Windows 容器。 但是，一种常见开发方案是使用 Windows 计算机来生成适用于 Linux 设备的模块的 IoT Edge。 Windows IoT Edge 运行时，可运行 Linux 的容器**测试和开发**目的。 
+在生产方案中，Windows 设备应该只运行 Windows 容器。 但是，一种常见的开发方案是使用 Windows 计算机生成适用于 Linux 设备的 IoT Edge 模块。 使用适用于 Windows 的 IoT Edge 运行时可以运行 Linux 容器以实现**测试和开发**目的。 
 
-本文列出了安装在 Windows x64 (AMD/Intel) 上使用 Linux 容器的 Azure IoT Edge 运行时的步骤系统。 若要了解有关 IoT Edge 运行时安装程序，包括所有安装参数的详细信息的详细信息请参阅[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)。
+本文列出了在 Windows x64 (AMD/Intel) 系统上使用 Linux 容器安装 Azure IoT Edge 运行时的步骤。 若要详细了解 IoT Edge 运行时安装程序，包括有关所有安装参数的详细信息，请参阅 [在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -30,7 +30,7 @@ ms.locfileid: "66151706"
 
 ### <a name="supported-windows-versions"></a>支持的 Windows 版本
 
-与 Linux 容器的 azure IoT Edge 可以在以下版本的 Windows 上运行： 
+包含 Linux 容器的 Azure IoT Edge 可在以下版本的 Windows 上运行： 
 * Windows 10 周年更新（内部版本 14393）或更高版本
 * Windows Server 2016 或更高版本
 
@@ -40,9 +40,9 @@ ms.locfileid: "66151706"
 
 ### <a name="prepare-the-container-engine"></a>准备容器引擎 
 
-Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器引擎。 在 Windows 计算机是 IoT Edge 安装包括 Windows 容器运行时，但你需要安装 IoT Edge 之前为 Linux 容器提供自己的运行时上运行 Windows 和 Linux 容器之间的最大配置差异。 
+Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器引擎。 在 Windows 计算机上运行 Windows 与 Linux 容器的最大配置差别在于，IoT Edge 安装包含 Windows 容器运行时，但在安装 IoT Edge 之前，需要提供自己的 Linux 容器运行时。 
 
-若要设置用于开发和测试容器的 Linux 设备的 Windows 计算机，可以使用[Docker 桌面](https://www.docker.com/docker-windows)作为容器引擎。 您需要安装 Docker 并对其进行配置[使用 Linux 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)之前安装 IoT Edge。  
+若要设置一台 Windows 计算机用于开发和测试适用于 Linux 设备的容器，可以使用 [Docker Desktop](https://www.docker.com/docker-windows) 作为容器引擎。 在安装 IoT Edge 之前，需要安装 Docker 并将其配置为[使用 Linux 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)。  
 
 如果 IoT Edge 设备是 Windows 计算机，请检查它是否符合 Hyper-V 的[系统要求](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)。
 
@@ -53,11 +53,11 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 某个 PowerShell 脚本将下载并安装 Azure IoT Edge 安全守护程序。 然后，安全守护程序将启动两个运行时模块中的第一个，即 IoT Edge 代理，以便能够远程部署其他模块。 
 
-首次在设备上安装 IoT Edge 运行时时，需要使用 IoT 中心内的标识预配该设备。 可以使用 IoT 中心提供设备连接字符串手动预配单个 IoT Edge 设备。 或者，可以使用设备预配服务自动预配设备，需要设置多个设备时，这种做法非常有用。 
+首次在设备上安装 IoT Edge 运行时时，需要使用 IoT 中心内的标识预配该设备。 可以使用 IoT 中心提供的设备连接字符串手动预配单个 IoT Edge 设备。 或者，可以使用设备预配服务自动预配设备，需要设置多个设备时，这种做法非常有用。 
 
-你可以阅读更多有关的不同安装选项和一文中的参数[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)。 安装和配置 Linux 容器的 Docker 桌面后，主安装差异声明使用 Linux **-ContainerOs**参数。 例如: 
+可以在[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)一文中详细了解不同的安装选项和参数。 为 Linux 容器安装并配置 Docker Desktop 后，主要安装差别是使用 **-ContainerOs** 参数声明 Linux。 例如： 
 
-1. 如果你尚未准备好，注册新的 IoT Edge 设备，并检索设备连接字符串。 复制连接字符串以供以后使用在本部分中。 你可以完成此步骤中使用以下工具：
+1. 注册新的 IoT Edge 设备并检索设备连接字符串（如果尚未这样做）。 复制连接字符串，以便稍后在本部分中使用。 可以使用以下工具完成此步骤：
 
    * [Azure 门户](how-to-register-device-portal.md)
    * [Azure CLI](how-to-register-device-cli.md)
@@ -66,35 +66,35 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 2. 以管理员身份运行 PowerShell。
 
    >[!NOTE]
-   >使用 PowerShell 的 AMD64 会话安装 IoT Edge，不是 PowerShell (x86)。 如果不能确定要将哪个会话类型，运行以下命令：
+   >使用 PowerShell 的 AMD64 会话安装 IoT Edge，不要使用 PowerShell (x86)。 如果不确定您使用的是什么会话类型，请运行以下命令：
    >
    >```powershell
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. **部署 IoTEdge**命令将检查你的 Windows 计算机上受支持的版本中，将启用容器功能，并下载小鲸鱼运行库 （其中未使用 Linux 容器） 和 IoT Edge 运行时。 命令默认为 Windows 容器，因此将 Linux 声明为所需的容器操作系统。 
+3. **Deploy-IoTEdge** 命令检查 Windows 计算机是否使用了支持的版本，启用容器功能，然后下载 moby 运行时（不是用于 Linux 容器）和 IoT Edge 运行时。 该命令默认使用 Windows 容器，因此会将 Linux 声明为所需的容器操作系统。 
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Linux
    ```
 
-4. 在此情况下，IoT Core 设备可能会自动重新启动。 Windows 10 或 Windows Server 的其他设备可能会提示您重新启动。 如果是这样，立即重新启动你的设备。 你的设备准备就绪后，再次以管理员身份运行 PowerShell。
+4. 此时，IoT Core 设备可能会自动重启。 其他 Windows 10 或 Windows Server 设备可能会提示你重启。 如果是这样，请立即重启设备。 设备准备就绪后，再次以管理员身份运行 PowerShell。
 
-5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为手动预配设备连接字符串。 再次声明为所需的容器操作系统的 Linux。 
+5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时  。 该命令默认为使用设备连接字符串进行手动预配。 再次将 Linux 声明为所需的容器操作系统。 
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ContainerOs Linux
    ```
 
-6. 出现提示时，提供你在步骤 1 中检索的设备连接字符串。 设备连接字符串将物理设备与 IoT 中心中的设备 ID 相关联。 
+6. 出现提示时，请提供在步骤 1 中检索到的设备连接字符串。 该设备连接字符串会将物理设备与 IoT 中心内的设备 ID 相关联。 
 
-   设备连接字符串会采用以下格式，并且不应该包括引号： `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   该设备连接字符串采用以下格式（不包括引号）：`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 
-检查 IoT Edge 服务的状态。 它应列出为正在运行。  
+检查 IoT Edge 服务的状态。 该服务应列为“正在运行”。  
 
 ```powershell
 Get-Service iotedge

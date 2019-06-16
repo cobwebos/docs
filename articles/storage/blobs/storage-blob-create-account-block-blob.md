@@ -9,10 +9,10 @@ ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 9d8fb8f5f470dc47088efb30b7f823a0b8c624c8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65141001"
 ---
 # <a name="create-a-block-blob-storage-account"></a>创建块 Blob 存储帐户
@@ -47,13 +47,13 @@ ms.locfileid: "65141001"
    |---------|---------|
    |**性能**    |  选择**高级**。   |
    |**帐户种类**    | 选择**BlockBlobStorage**。      |
-   |**复制**    |  保留默认设置**本地冗余存储 (LRS)**。      |
+   |**复制**    |  保留默认设置**本地冗余存储 (LRS)** 。      |
 
    ![显示门户 UI 创建块 blob 存储帐户](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
 1. 选择**查看 + 创建**若要查看存储帐户设置。
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
 ## <a name="create-account-using-azure-powershell"></a>使用 Azure PowerShell 创建帐户
 

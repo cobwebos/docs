@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 171a88045531f1fdc01d7046ef0ad8157859d28c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66418269"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>将 VMware/物理服务器复制到辅助本地站点的体系结构

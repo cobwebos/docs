@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Mingfeiy;willzhan;Juliako
 ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61232558"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 将 Widevine 许可证传送到 Azure 媒体服务 
@@ -106,8 +106,8 @@ castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令�
 1. 打开新的选项卡并启动 STS： http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid]。
 2. 转到 [Azure 媒体播放器](https://amsplayer.azurewebsites.net/azuremediaplayer.html)。
 3. 粘贴到流 URL 中。
-4. 单击“高级选项”复选框。
-5. 在“保护”下拉列表中选择 PlayReady 和/或 Widevine。
+4. 单击“高级选项”  复选框。
+5. 在“保护”  下拉列表中选择 PlayReady 和/或 Widevine。
 6. 将从 STS 获取的令牌粘贴到“令牌”文本框中。 
    
    castLab 许可证服务器不需要在令牌前面加“Bearer=”前缀。 因此，请在提交令牌之前删除该前缀。

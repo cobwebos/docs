@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 9aeae0ab68d809b36a3316054f12a5a9657721f1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65468599"
 ---
 # <a name="return-your-azure-data-box-edge-device"></a>返回 Azure 数据框边缘设备
@@ -66,12 +66,12 @@ ms.locfileid: "65468599"
 
 ## <a name="schedule-a-pickup"></a>安排提货
 
-1. 关闭设备。 在本地 Web UI 中，转到“维护”>“电源设置”。
+1. 关闭设备。 在本地 Web UI 中，转到“维护”>“电源设置”。 
 2. 选择**关闭**。 当系统提示确认，单击**是**以继续。 有关详细信息，请参阅[管理能力](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)。
 3. 拔下电源线，并从设备中删除所有网络电缆。
 4. 使用你自己的框或从 Azure 收到的空框准备发货包。 将设备和与在框中的设备附带的电源线。
 5. 粘贴从 Azure 收到包的发货标签。
-6. 与区域运营商安排提货。 如果在美国返回设备，您的运营商为 UPS。 安排提货：
+6. 安排区域快递公司取件。 如果在美国返回设备，您的运营商为 UPS。 安排提货：
 
     1. 给本地 UPS 打电话（特定于国家/地区的免费电话号码）。
     2. 在您调用中，用引号括起来反向发货跟踪号上打印标签所示。

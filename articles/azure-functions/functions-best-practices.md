@@ -10,15 +10,14 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 10/16/2017
-ms.date: 03/25/2019
-ms.author: v-junlch
+ms.date: 10/16/2017
+ms.author: glenga
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 30b187676f0c1fb03b7124d93b3991b0e32d61ae
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104657"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
@@ -109,7 +108,7 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 使用函数应用中的 `host.json` 文件可以配置主机运行时和触发器行为。  除了批处理行为以外，还可以管理大量触发器的并发性。  调整这些选项中的值往往有助于每个实例根据被调用函数的需求适当缩放。
 
-主机文件中的设置应用于应用中的所有函数，以及函数的单个实例。 例如，如果有包含 2 个 HTTP 函数的函数应用，并且并发请求设置为 25，则针对任一 HTTP 触发器发出的请求将计入 25 个共享的并发请求。  如果该函数应用扩展到 10 个实例，则 2 个函数将有效地允许 250 个并发请求（10 个实例 * 每个实例 25 个并发请求）。
+主机文件中的设置应用于应用中的所有函数，以及函数的单个实例。  例如，如果有包含 2 个 HTTP 函数的函数应用，并且并发请求设置为 25，则针对任一 HTTP 触发器发出的请求将计入 25 个共享的并发请求。  如果该函数应用扩展到 10 个实例，则 2 个函数将有效地允许 250 个并发请求（10 个实例 * 每个实例 25 个并发请求）。
 
 **HTTP 并发性主机选项**
 
@@ -123,5 +122,3 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 * [如何在 Azure Functions 中管理连接](manage-connections.md)
 * [Azure 应用服务最佳实践](../app-service/app-service-best-practices.md)
-
-<!-- Update_Description: wording update -->

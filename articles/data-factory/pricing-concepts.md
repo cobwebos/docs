@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
 ms.openlocfilehash: a825982532047f6e311c5508394df243310f02ab
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233922"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
@@ -162,7 +162,7 @@ ms.locfileid: "65233922"
   - 监视  = 2\*000005 = $0.00001 [1 监视 = $0.25/50000 = 0.000005]
 - 管道业务流程&amp;执行 =**美元 0.301**
   - 活动运行 = 001\*2 = 0.002 [1 运行 = $1/1000 = 0.001]
-  - 数据流动活动 20 分钟 （10 分钟的执行时间 + 10 分钟，TTL） = $0.299 按比例。 0.112 美元/小时在 Azure 集成运行时具有 8 个核心常规计算
+  - 数据流动活动 20 分钟 （10 分钟的执行时间 + 10 分钟，TTL） = $0.299 按比例。 0\.112 美元/小时在 Azure 集成运行时具有 8 个核心常规计算
 
 ## <a name="next-steps"></a>后续步骤
 

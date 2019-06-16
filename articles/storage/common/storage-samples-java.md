@@ -10,10 +10,10 @@ ms.date: 05/03/2019
 ms.author: mhopkins
 ms.subservice: common
 ms.openlocfilehash: 3d241f1905244d3a8039372262f84ba0fd25220d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209780"
 ---
 # <a name="azure-storage-samples-using-java"></a>使用 Java 的 Azure 存储示例
@@ -25,7 +25,7 @@ ms.locfileid: "65209780"
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">终结点</th><th style="font-size:110%">场景</th><th style="font-size:110%">代码示例</th></tr></thead><tbody>
 <tr>
 <td rowspan="16"><b>Blob</b></td>
-<td>追加 blob</td>
+<td>追加 Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java 中 Azure Blob 服务入门</a></td>
 </tr>
 <tr>
@@ -73,7 +73,7 @@ ms.locfileid: "65209780"
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java 中 Azure Blob 服务入门</a></td>
 </tr>
 <tr>
-<td>页 Blob</td>
+<td>页 blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java 中 Azure Blob 服务入门</a></td>
 </tr>
 <tr>

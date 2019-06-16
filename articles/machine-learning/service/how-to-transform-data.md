@@ -13,10 +13,10 @@ ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
 ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65471836"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>使用 Azure 机器学习数据准备 SDK 转换数据
@@ -46,7 +46,7 @@ dflow = dprep.read_csv(path=r'data\crime0-10.csv')
 dflow.head(3)
 ```
 
-||ID|案例号|date|阻止|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
+||ID|案例号|Date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 |0|10140490|HY329907|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
 |第|10139776|HY329265|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|第|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
@@ -63,7 +63,7 @@ case_category = dflow.add_column(new_column_name='Case Category',
 case_category.head(3)
 ```
 
-||ID|案例号|案例类别|date|阻止|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
+||ID|案例号|案例类别|Date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|------|
 |0|10140490|HY329907|HY|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
 |第|10139776|HY329265|HY|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|第|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
@@ -214,7 +214,7 @@ builder.preview(skip=30, count=5)
 ||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/1/2015 22:54|Jan 1, 2015 10PM-12AM|
-|1|1/1/2015 23:54|Jan 1, 2015 10PM-12AM|
+|第|1/1/2015 23:54|Jan 1, 2015 10PM-12AM|
 |2|1/1/2015 23:59|Jan 1, 2015 10PM-12AM|
 |3|1/2/2015 0:54|Jan 2, 2015 12AM-2AM|
 |4|1/2/2015 1:00|Jan 2, 2015 12AM-2AM|
@@ -229,7 +229,7 @@ builder.preview(skip=75, count=5)
 ||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|2015 年 1 月 3 日上午 6 点-8|
-|1|1/3/2015 7:54|2015 年 1 月 3 日上午 6 点-8|
+|第|1/3/2015 7:54|2015 年 1 月 3 日上午 6 点-8|
 |2|1/29/2015 6:54|无|
 |3|1/29/2015 7:00|无|
 |4|1/29/2015 7:54|无|
@@ -256,7 +256,7 @@ examples = builder.list_examples()
 | |DATE|示例|example_id|
 | -------- | -------- | -------- | -------- |
 |0|1/1/2015 1:00|Jan 1, 2015 12AM-2AM|-1|
-|1|1/2/2015 0:54|Jan 2, 2015 12AM-2AM|-2|
+|第|1/2/2015 0:54|Jan 2, 2015 12AM-2AM|-2|
 |2|1/29/2015 20:54|Jan 29, 2015 8PM-10PM|-3|
 
 
@@ -270,7 +270,7 @@ dflow = builder.to_dataflow()
 df = dflow.to_pandas_dataframe()
 ```
 
-## <a name="filtering"></a>筛选
+## <a name="filtering"></a>Filtering
 
 SDK 包括方法[ `drop_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow)并[ `filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py)以便你可以筛选出列或行。
 
@@ -288,8 +288,8 @@ dflow.head(5)
 |0|无|无|无|无|无|无|无|无|无|无|无|无|无|
 |第|2013-08-01 08:14:37|2013-08-01 09:09:06|N|第|0|0|0|0|第|.00|0|0|21.25|
 |2|2013-08-01 09:13:00|2013-08-01 11:38:00|N|第|0|0|0|0|2|.00|0|0|75|
-|3|2013-08-01 09:48:00|2013-08-01 09:49:00|N|5|0|0|0|0|1|.00|0|第|2.1|
-|4|2013-08-01 10:38:35|2013-08-01 10:38:51|N|第|0|0|0|0|1|.00|0|0|3.25|
+|3|2013-08-01 09:48:00|2013-08-01 09:49:00|N|5|0|0|0|0|第|.00|0|第|2.1|
+|4|2013-08-01 10:38:35|2013-08-01 10:38:51|N|第|0|0|0|0|第|.00|0|0|3.25|
 
 ### <a name="filtering-columns"></a>筛选列
 
@@ -307,7 +307,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|无|无|无|无|无|无|无|无|无|无|无|
-|1|2013-08-01 08:14:37|2013-08-01 09:09:06|0|0|0|0|第|.00|0|0|21.25|
+|第|2013-08-01 08:14:37|2013-08-01 09:09:06|0|0|0|0|第|.00|0|0|21.25|
 
 #### <a name="filtering-columns-with-regex"></a>使用正则表达式筛选列
 
@@ -321,7 +321,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|无|无|无|无|无|无|无|
-|第|2013-08-01 08:14:37|2013-08-01 09:09:06|1|.00|0|0|21.25|
+|第|2013-08-01 08:14:37|2013-08-01 09:09:06|第|.00|0|0|21.25|
 
 ## <a name="filtering-rows"></a>筛选行
 
@@ -345,7 +345,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-01 19:33:28|2013-08-01 19:35:21|5|.00|0.08|0|4.58|
-|1|2013-08-05 13:16:38|2013-08-05 13:18:24|1|.00|0.30|0|3.8|
+|第|2013-08-05 13:16:38|2013-08-05 13:18:24|第|.00|0.30|0|3.8|
 
 ### <a name="filtering-rows-with-complex-expressions"></a>使用复杂表达式筛选行
 
@@ -413,8 +413,8 @@ dflow.head(2)
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|
-|0|阿拉巴马州|第|101710|Hale County|10171002158| |
-|第|阿拉巴马州|第|101710|Hale County|10171002162| |
+|0|ALABAMA|第|101710|Hale County|10171002158| |
+|第|ALABAMA|第|101710|Hale County|10171002162| |
 
 减少数据集和执行一些基本的转换，包括删除列、 替换值和转换类型。
 
@@ -427,8 +427,8 @@ dflow.head(2)
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
-|0|阿拉巴马州|Hale County|1.017100e+10|无|
-|第|阿拉巴马州|Hale County|1.017100e+10|无|
+|0|ALABAMA|Hale County|1.017100e+10|无|
+|第|ALABAMA|Hale County|1.017100e+10|无|
 
 使用以下筛选器查找空值。
 
@@ -438,8 +438,8 @@ dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
-|0|阿拉巴马州|Hale County|1.017100e+10|无|
-|第|阿拉巴马州|Hale County|1.017100e+10|无|
+|0|ALABAMA|Hale County|1.017100e+10|无|
+|第|ALABAMA|Hale County|1.017100e+10|无|
 
 ### <a name="transform-partition"></a>转换分区
 
@@ -458,8 +458,8 @@ df.head(2)
 
 ||stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
-|0|阿拉巴马州|Hale County|1.017100e+10|0.0|
-|第|阿拉巴马州|Hale County|1.017100e+10|0.0|
+|0|ALABAMA|Hale County|1.017100e+10|0.0|
+|第|ALABAMA|Hale County|1.017100e+10|0.0|
 
 ### <a name="new-script-column"></a>新脚本列
 
@@ -477,8 +477,8 @@ dflow.head(2)
 
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
-|0|阿拉巴马州|Hale County|Hale County, Alabama|1.017100e+10|0.0|
-|第|阿拉巴马州|Hale County|Hale County, Alabama|1.017100e+10|0.0|
+|0|ALABAMA|Hale County|Hale County, Alabama|1.017100e+10|0.0|
+|第|ALABAMA|Hale County|Hale County, Alabama|1.017100e+10|0.0|
 
 ### <a name="new-script-filter"></a>新脚本筛选器
 
@@ -495,8 +495,8 @@ dflow.head(2)
 
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
-|0|阿拉巴马州|Jefferson County|Jefferson County, Alabama|1.019200e+10|1.0|
-|第|阿拉巴马州|Jefferson County|Jefferson County, Alabama|1.019200e+10|0.0|
+|0|ALABAMA|Jefferson County|Jefferson County, Alabama|1.019200e+10|1.0|
+|第|ALABAMA|Jefferson County|Jefferson County, Alabama|1.019200e+10|0.0|
 
 ## <a name="next-steps"></a>后续步骤
 

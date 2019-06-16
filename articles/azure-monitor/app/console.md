@@ -14,10 +14,10 @@ ms.date: 01/30/2019
 ms.reviewer: lmolkova
 ms.author: mbullwin
 ms.openlocfilehash: 602cd9696271931babad9aa962638c5b646c80ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60901831"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
@@ -27,8 +27,8 @@ ms.locfileid: "60901831"
 
 ## <a name="getting-started"></a>入门
 
-* 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。 对于应用程序类型，选择“常规”。
-* 获取检测密钥的副本。 在创建的新资源的“概要”下拉列表中找到该密钥。 
+* 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。 对于应用程序类型，选择“常规”。 
+* 获取检测密钥的副本。 在创建的新资源的“概要”下拉列表中找到该密钥。  
 * 安装最新的 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) 包。
 * 在跟踪任何遥测之前，请先在代码中设置检测密钥（或设置 APPINSIGHTS_INSTRUMENTATIONKEY 环境变量）。 设置后，应能手动跟踪遥测并在 Azure 门户中查看
 
@@ -63,7 +63,7 @@ var telemetryClient = new TelemetryClient(configuration);
 
 有关详细信息，请参阅[配置文件参考](configuration-with-applicationinsights-config.md)。
 
-通过安装最新版本的 [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) 包，可以获取配置文件的完整示例。 此处是依赖项集合的“最小”配置，等效于代码示例。
+通过安装最新版本的 [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) 包，可以获取配置文件的完整示例。 此处是依赖项集合的“最小”配置，等效于代码示例  。
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>

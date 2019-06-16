@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 108a3e7d899eef4ca78ae7507bf4852b861e74d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 243713d7961c911cdda93d3d680a952d424da22b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722181"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078365"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>使用 PowerShell 运行 Apache Hive 查询
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -29,9 +29,6 @@ ms.locfileid: "64722181"
 
 * 基于 Linux 的 Apache Hadoop on HDInsight 群集版本 3.4 或更高版本。
 
-  > [!IMPORTANT]  
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
-
 * 具有 Azure PowerShell 的客户端。
 
 [!INCLUDE [upgrade-powershell](../../../includes/hdinsight-use-latest-powershell.md)]
@@ -43,8 +40,8 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 在远程 HDInsight 群集上运行 Hive 查询时，将使用以下 Cmdlet：
 
 * `Connect-AzAccount`：在 Azure 订阅中进行 Azure PowerShell 身份验证。
-* `New-AzHDInsightHiveJobDefinition`：使用指定的 HiveQL 语句创建作业定义。
-* `Start-AzHDInsightJob`：将作业定义发送到 HDInsight 并启动作业。 将返回作业对象。
+* `New-AzHDInsightHiveJobDefinition`：使用指定的 HiveQL 语句创建作业定义  。
+* `Start-AzHDInsightJob`：将作业定义发送到 HDInsight 并启动作业。 将返回作业对象  。
 * `Wait-AzHDInsightJob`：使用作业对象来检查作业的状态。 它等到作业完成或超出等待时间。
 * `Get-AzHDInsightJobOutput`：用于检索作业的输出。
 * `Invoke-AzHDInsightHiveJob`：用于运行 HiveQL 语句。 此 cmdlet 将阻止查询完成，然后返回结果。
@@ -60,7 +57,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 
         .\hivejob.ps1
 
-    脚本运行时，系统会提示输入群集名称和 HTTPS/群集管理员帐户凭据。 可能还会提示登录到 Azure 订阅。
+    脚本运行时，系统会提示输入群集名称和 HTTPS/群集管理员帐户凭据。 您还可能会提示登录到你的 Azure 订阅。
 
 3. 作业完成时，它会返回类似以下文本的信息：
 

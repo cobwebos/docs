@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 6911e06dc023027ab32b99387b9f7d3f5e708f86
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158615"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>创建用于访问 Azure 存储的应用程序
@@ -29,7 +29,7 @@ ms.locfileid: "66158615"
 
 * **DefaultEndpointsProtocol** - 可以选择 HTTP 或 HTTPS。 但是，强烈建议使用 HTTPS。
 * **帐户名** - 存储帐户的名称
-* **帐户密钥** - 在 [Azure 门户](https://portal.azure.com)上，导航到存储帐户，并单击“密钥”图标以查看此信息。
+* **帐户密钥** - 在 [Azure 门户](https://portal.azure.com)上，导航到存储帐户，并单击“密钥”  图标以查看此信息。
 * （可选）**EndpointSuffix** - 用于区域中具有不同终结点后缀的存储服务，例如 Azure 中国或 Azure 调控。
 
 以下是使用共享密钥身份验证的连接字符串示例：
