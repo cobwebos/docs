@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
 ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60888429"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-usql-activity.md)
 > * [当前版本](transform-data-using-data-lake-analytics.md)
 
@@ -36,7 +36,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 | 属性                 | 说明                              | 需要                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| type                 | 类型属性应设置为：AzureDataLakeAnalytics。 | 是                                      |
+| **type**                 | 类型属性应设置为：  AzureDataLakeAnalytics。 | 是                                      |
 | **accountName**          | Azure Data Lake Analytics 帐户名。  | 是                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | 否                                       |
 | **subscriptionId**       | Azure 订阅 ID                    | 否                                       |
@@ -53,7 +53,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 需要 |
+| 属性                | 说明                              | 必选 |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | 指定应用程序的客户端 ID。     | 是      |
 | **servicePrincipalKey** | 指定应用程序的密钥。           | 是      |
@@ -162,7 +162,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-在上面的脚本示例的输入和输出到脚本中定义**\@中**并**\@出**参数。 值**\@中**并**\@出**参数在 U-SQL 脚本中的使用动态传递由数据工厂参数部分。 
+在上面的脚本示例的输入和输出到脚本中定义 **\@中**并 **\@出**参数。 值 **\@中**并 **\@出**参数在 U-SQL 脚本中的使用动态传递由数据工厂参数部分。 
 
 也可在 Azure Data Lake Analytics 服务上运行的作业的管道定义中指定其他属性，如 degreeOfParallelism 和 priority。
 

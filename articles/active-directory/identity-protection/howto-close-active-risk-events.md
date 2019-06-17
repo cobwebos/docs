@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e003aec8fa5aeab587fa07acdae3a13b370a535
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55c56674b04c4359fba741d10176fc91e3a991eb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453422"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109033"
 ---
 # <a name="how-to-close-active-risk-events"></a>如何：关闭活动风险事件
 
@@ -32,7 +32,7 @@ Azure Active Directory 使用[风险事件](../reports-monitoring/concept-risk-e
 
 ## <a name="options-to-close-risk-events"></a>用于关闭风险事件的选项 
 
-风险事件的状态为“活动”或“已关闭”。 计算称作“用户风险级别”的值时，会考虑到所有活动风险事件。 用户风险级别是反映帐户泄露可能性的一个指标（低、中、高）。 
+风险事件的状态为“活动”或“已关闭”。   计算称作“用户风险级别”的值时，会考虑到所有活动风险事件。 用户风险级别是反映帐户泄露可能性的一个指标（低、中、高）。 
 
 若要关闭活动风险事件，可使用以下选项：
 
@@ -48,7 +48,7 @@ Azure Active Directory 使用[风险事件](../reports-monitoring/concept-risk-e
 
 ## <a name="require-password-reset-with-a-user-risk-policy"></a>要求使用用户风险策略进行密码重置
 
-通过配置[用户风险条件访问策略](howto-user-risk-policy.md)，可以要求在自动检测到指定的用户风险级别时更改密码。 
+通过配置[用户风险的条件访问策略](howto-user-risk-policy.md)，如果指定的用户风险级别自动检测到，可能需要更改密码。 
 
 ![重置密码](./media/howto-close-active-risk-events/13.png)
 
@@ -85,7 +85,7 @@ Azure Active Directory 使用[风险事件](../reports-monitoring/concept-risk-e
 
 ![重置密码](./media/howto-close-active-risk-events/03.png)
 
-单击“清除所有事件”时，所有事件都会关闭，受影响的用户不再有风险。 但是，此方法不会对现有密码产生影响，因为它不能将相关的标识恢复安全状态。 如果删除了存在活动风险事件的用户，则此方法是首选方法。 
+单击“清除所有事件”时，所有事件都会关闭，受影响的用户不再有风险。  但是，此方法不会对现有密码产生影响，因为它不能将相关的标识恢复安全状态。 如果删除了存在活动风险事件的用户，则此方法是首选方法。 
 
 
 ## <a name="close-individual-risk-events-manually"></a>手动关闭单个风险事件

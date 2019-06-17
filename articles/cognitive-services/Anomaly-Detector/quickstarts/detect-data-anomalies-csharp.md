@@ -6,15 +6,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 04b331f3b63ad6400b4bb8efcd053d04ac88989b
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 2a02b56c2fa0f99166cfde0f0089273ed2af4cb9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595841"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073217"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入门：检测异常的异常情况检测程序 REST API 使用时序数据和C# 
 
@@ -33,9 +33,9 @@ ms.locfileid: "65595841"
 
 - [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。 若要安装 Newtonsoft.Json NuGet 包在 Visual Studio 中的形式：
     
-    1. 右键单击您的项目**解决方案资源管理器**。
-    2. 选择**管理 NuGet 包**。
-    3. 搜索*Newtonsoft.Json*和安装包。
+    1. 在**解决方案资源管理器**中右键单击你的项目。
+    2. 选择“管理 NuGet 包”。 
+    3. 搜索 *Newtonsoft.Json* 并安装该包。
 
 - 如果使用的 Linux/MacOS，可以通过使用运行此应用程序[Mono](https://www.mono-project.com/)。
 
@@ -59,7 +59,7 @@ ms.locfileid: "65595841"
     using System.Threading.Tasks;
     ```
 
-2. 为你的订阅密钥和你的终结点创建变量。 下面是可用于异常情况检测的 Uri。 这些将追加到你的服务终结点更高版本才能创建 API 请求 Url。
+2. 为订阅密钥和终结点创建变量。 下面是可用于异常情况检测的 Uri。 这些将追加到你的服务终结点更高版本才能创建 API 请求 Url。
 
     |检测方法  |URI  |
     |---------|---------|
@@ -78,11 +78,11 @@ ms.locfileid: "65595841"
     const string batchDetectionUrl = "/anomalydetector/v1.0/timeseries/entire/detect";
     ```
 
-## <a name="create-a-function-to-send-requests"></a>创建一个函数来发送请求
+## <a name="create-a-function-to-send-requests"></a>创建用于发送请求的函数
 
-1. 创建一个名为的新异步函数`Request`采用上面创建的变量。
+1. 创建名为 `Request` 的新异步函数，该函数使用上面创建的变量。
 
-2. 设置客户端的安全协议和标头信息使用`HttpClient`对象。 请确保添加到你的订阅密钥`Ocp-Apim-Subscription-Key`标头。 然后创建`StringContent`请求对象。
+2. 使用 `HttpClient` 对象设置客户端的安全协议和标头信息。 请务必将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头中。 然后，为请求创建 `StringContent` 对象。
 
 3. 发送包含请求`PostAsync()`，然后返回响应。
 
@@ -102,9 +102,9 @@ static async Task<string> Request(string apiAddress, string endpoint, string sub
 
 ## <a name="detect-anomalies-as-a-batch"></a>作为一批中检测异常
 
-1. 创建一个名为的新函数`detectAnomaliesBatch()`。 构造请求并将其发送通过调用`Request()`与你的终结点、 订阅密钥、 批处理异常情况检测的 URL 和时间序列数据的函数。
+1. 创建名为 `detectAnomaliesBatch()` 的新函数。 构造请求并将其发送通过调用`Request()`与你的终结点、 订阅密钥、 批处理异常情况检测的 URL 和时间序列数据的函数。
 
-2. 反序列化 JSON 对象，并将其写入到控制台。
+2. 反序列化 JSON 对象，并将其写入控制台。
 
 3. 如果响应包含`code`字段中，打印的错误代码和错误消息。 
 
@@ -141,9 +141,9 @@ static void detectAnomaliesBatch(string requestData){
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>检测到异常情况状态的最新的数据点
 
-1. 创建一个名为的新函数`detectAnomaliesLatest()`。 构造请求并将其发送通过调用`Request()`与你的终结点、 订阅密钥、 最新点异常情况检测的 URL 和时间序列数据的函数。
+1. 创建名为 `detectAnomaliesLatest()` 的新函数。 构造请求并将其发送通过调用`Request()`与你的终结点、 订阅密钥、 最新点异常情况检测的 URL 和时间序列数据的函数。
 
-2. 反序列化 JSON 对象，并将其写入到控制台。
+2. 反序列化 JSON 对象，并将其写入控制台。
 
 ```csharp
 static void detectAnomaliesLatest(string requestData){
@@ -163,7 +163,7 @@ static void detectAnomaliesLatest(string requestData){
 
 1. 应用程序的 main 方法，与将 JSON 时间系列数据加载`File.ReadAllText()`。 
 
-2. 调用上面创建的异常情况检测函数。 使用`System.Console.ReadKey()`后运行应用程序保留在控制台窗口打开。
+2. 调用上面创建的异常情况检测函数。 使用 `System.Console.ReadKey()`，在运行应用程序后让控制台窗口保持打开状态。
 
 ```csharp
 static void Main(string[] args){
@@ -179,7 +179,7 @@ static void Main(string[] args){
 
 ### <a name="example-response"></a>示例响应
 
-JSON 格式返回成功的响应。 单击以下链接，查看 GitHub 上的 JSON 响应：
+成功的响应以 JSON 格式返回。 单击以下链接，查看 GitHub 上的 JSON 响应：
 * [示例批处理检测响应](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [示例最新点检测响应](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 06/02/2018
 ms.author: tomfitz
 ms.openlocfilehash: 3641833f0b55f20066302de350bfab17adfade0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128523"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>将 Azure 资源部署到多个订阅或资源组
@@ -50,7 +50,7 @@ ms.locfileid: "66128523"
 ]
 ```
 
-如果资源组位于同一订阅中，则可以删除“subscriptionId”值。
+如果资源组位于同一订阅中，则可以删除“subscriptionId”值  。
 
 以下示例部署两个存储帐户 - 一个在部署期间指定的资源组中，另一个在 `secondResourceGroup` 参数指定的资源组中：
 
@@ -176,7 +176,7 @@ ms.locfileid: "66128523"
 
 ### <a name="powershell"></a>PowerShell
 
-对于 PowerShell，若要将两个存储帐户部署到同一订阅中的两个资源组，请使用：
+对于 PowerShell，若要将两个存储帐户部署到同一订阅中的两个资源组，请使用： 
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -193,7 +193,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-对于 PowerShell，若要将两个存储帐户部署到两个订阅，请使用：
+对于 PowerShell，若要将两个存储帐户部署到两个订阅，请使用： 
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -217,7 +217,7 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-对于 PowerShell，若要测试如何解析父模板、内联模板和链接模板的资源组对象，请使用：
+对于 PowerShell，若要测试如何解析父模板、内联模板和链接模板的资源组对象，请使用： 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -262,7 +262,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-对于 Azure CLI，若要将两个存储帐户部署到同一订阅中的两个资源组，请使用：
+对于 Azure CLI，若要将两个存储帐户部署到同一订阅中的两个资源组，请使用： 
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -277,7 +277,7 @@ az group deployment create \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-对于 Azure CLI，若要将两个存储帐户部署到两个订阅，请使用：
+对于 Azure CLI，若要将两个存储帐户部署到两个订阅，请使用： 
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -299,7 +299,7 @@ az group deployment create \
   --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
 ```
 
-对于 Azure CLI，若要测试如何解析父模板、内联模板和链接模板的资源组对象，请使用：
+对于 Azure CLI，若要测试如何解析父模板、内联模板和链接模板的资源组对象，请使用： 
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus

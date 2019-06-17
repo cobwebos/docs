@@ -70,16 +70,16 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ---- 
-| apiVersion | `2017-12-01` | 字符串（日期） |
+| apiVersion | `2017-12-01` | string （date） |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
 | type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
-| typeHandlerVersion | `1210.12` | 字符串（双精度） |
+| typeHandlerVersion | `1210.12` | string （double） |
 
 ### <a name="settings"></a>设置
 
 | 名称 | 值/示例 | 数据类型 | 必需？
 | ---- | ---- | ---- | ----
-| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | 字符串 (url) | Y |
+| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Y |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | 字符串 | Y |
 | settings/runlist | `recipe[mycookbook::default]` | 字符串 | Y |
 

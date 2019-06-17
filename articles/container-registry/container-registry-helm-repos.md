@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.openlocfilehash: ba0e1386d67e920f1805d244f9042044bb462ec9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62109845"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>使用 Azure 容器注册表作为应用程序图表的 Helm 存储库
@@ -29,9 +29,9 @@ ms.locfileid: "62109845"
 
 若要完成本文中的步骤，必须满足以下先决条件：
 
-- Azure 容器注册表 - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
-- Helm 客户端版本 2.11.0（而不是 RC 版本）或更高版本 - 运行 `helm version` 以查找当前版本。 还需要在 Kubernetes 群集中初始化的一个 Helm 服务器 (Tiller)。 如果需要，可以[创建 Azure Kubernetes 服务群集][aks-quickstart]。 有关如何安装和升级 Helm 的详细信息，请参阅[安装 Helm][helm-install]。
-- Azure CLI 版本 2.0.46 或更高版本 - 运行 `az --version` 查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+- Azure 容器注册表  - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
+- Helm 客户端版本 2.11.0（而不是 RC 版本）或更高版本  - 运行 `helm version` 以查找当前版本。 还需要在 Kubernetes 群集中初始化的一个 Helm 服务器 (Tiller)。 如果需要，可以[创建 Azure Kubernetes 服务群集][aks-quickstart]。 有关如何安装和升级 Helm 的详细信息，请参阅[安装 Helm][helm-install]。
+- Azure CLI 版本 2.0.46 或更高版本  - 运行 `az --version` 查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="add-a-repository-to-helm-client"></a>将一个存储库添加到 Helm 客户端
 
@@ -59,16 +59,16 @@ az acr helm repo add
 
 ## <a name="add-a-chart-to-the-repository"></a>将图表添加到存储库中
 
-在本文中，让我们从公共 Helm 稳定存储库中获取现有 Helm 图表。 稳定存储库是组织有序的公共存储库，包括常见的应用程序图表。 包维护人员可以将其图表提交到稳定存储库中，就像 Docker Hub 向常见容器映像提供公共注册表一样。 然后，可以将从公共稳定存储库下载的图表推送到专用 Azure 容器注册表存储库。 在大多数情况下，你将为自己开发的应用生成并上传自己的图表。 有关如何生成你自己的 Helm 图表的详细信息，请参阅[开发 Helm 图表][develop-helm-charts]。
+在本文中，让我们从公共 Helm 稳定  存储库中获取现有 Helm 图表。 稳定  存储库是组织有序的公共存储库，包括常见的应用程序图表。 包维护人员可以将其图表提交到稳定  存储库中，就像 Docker Hub 向常见容器映像提供公共注册表一样。 然后，可以将从公共稳定  存储库下载的图表推送到专用 Azure 容器注册表存储库。 在大多数情况下，你将为自己开发的应用生成并上传自己的图表。 有关如何生成你自己的 Helm 图表的详细信息，请参阅[开发 Helm 图表][develop-helm-charts]。
 
-首先，在 ~/acr-helm 创建一个目录 ，然后下载现有的 stable/wordpress 图表：
+首先，在 ~/acr-helm  创建一个目录 ，然后下载现有的 stable/wordpress  图表：
 
 ```console
 mkdir ~/acr-helm && cd ~/acr-helm
 helm fetch stable/wordpress
 ```
 
-列出已下载的图表，并记下文件名中包含的 Wordpress 版本。 `helm fetch stable/wordpress` 命令未指定特定版本，因此会获取最新版本。 所有 Helm 图表会在符合 [SemVer 2][semver2] 标准的文件名中包含一个版本号。 在以下示例输出中，Wordpress 图表的版本是 2.1.10：
+列出已下载的图表，并记下文件名中包含的 Wordpress 版本。 `helm fetch stable/wordpress` 命令未指定特定版本，因此会获取最新  版本。 所有 Helm 图表会在符合 [SemVer 2][semver2] 标准的文件名中包含一个版本号。 在以下示例输出中，Wordpress 图表的版本是 2.1.10  ：
 
 ```
 $ ls
@@ -76,7 +76,7 @@ $ ls
 wordpress-2.1.10.tgz
 ```
 
-现在，使用 Azure CLI [az acr helm push][az-acr-helm-push] 命令将图表推送到 Azure 容器注册表中的 Helm 图表存储库。 指定在上一步骤中下载的 Helm 图表的名称，例如 wordpress 2.1.10.tgz：
+现在，使用 Azure CLI [az acr helm push][az-acr-helm-push] 命令将图表推送到 Azure 容器注册表中的 Helm 图表存储库。 指定在上一步骤中下载的 Helm 图表的名称，例如 wordpress 2.1.10.tgz  ：
 
 ```azurecli
 az acr helm push wordpress-2.1.10.tgz
@@ -129,7 +129,7 @@ az acr helm list
 helm inspect <acrName>/wordpress
 ```
 
-如果没有版本号，将使用最新版本。 Helm 将返回有关图表的详细信息，如以下精简示例输出中所示：
+如果没有版本号，将使用最新  版本。 Helm 将返回有关图表的详细信息，如以下精简示例输出中所示：
 
 ```
 $ helm inspect myacrhelm/wordpress
@@ -157,7 +157,7 @@ version: 2.1.10
 [...]
 ```
 
-此外，还可以使用 Azure CLI [az acr helm show][az-acr-helm-show] 命令显示图表的信息。 同样，默认情况下会返回图表的最新版本。 可以附加 `--version` 以列出图表的特定版本，如 2.1.10：
+此外，还可以使用 Azure CLI [az acr helm show][az-acr-helm-show] 命令显示图表的信息。 同样，默认情况下会返回图表的最新  版本。 可以附加 `--version` 以列出图表的特定版本，如 2.1.10  ：
 
 ```azurecli
 az acr helm show wordpress
@@ -200,7 +200,7 @@ irreverent-jaguar-mariadb-0                   0/1    Pending  0         1s
 
 ## <a name="delete-a-helm-chart-from-the-repository"></a>从存储库删除 Helm 图表
 
-若要从存储库中删除一个图表，请使用 [az acr helm delete][az-acr-helm-delete] 命令。 指定图表的名称，如 wordpress，以及要删除的版本，如 *2.1.10*。
+若要从存储库中删除一个图表，请使用 [az acr helm delete][az-acr-helm-delete] 命令。 指定图表的名称，如 wordpress  ，以及要删除的版本，如 *2.1.10*。
 
 ```azurecli
 az acr helm delete wordpress --version 2.1.10
@@ -216,7 +216,7 @@ az acr helm repo add
 
 ## <a name="next-steps"></a>后续步骤
 
-本文使用了从公共稳定存储库中获取的现有 Helm 图表。 有关如何创建和部署 Helm 图表的详细信息，请参阅[开发 Helm 图表][develop-helm-charts]。
+本文使用了从公共稳定  存储库中获取的现有 Helm 图表。 有关如何创建和部署 Helm 图表的详细信息，请参阅[开发 Helm 图表][develop-helm-charts]。
 
 Helm 图表可以用作容器生成过程的一部分。 有关详细信息，请参阅[使用 Azure 容器注册表任务][acr-tasks]。
 

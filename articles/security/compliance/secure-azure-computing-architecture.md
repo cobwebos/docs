@@ -7,10 +7,10 @@ ms.date: 4/9/2019
 ms.topic: article
 ms.service: security
 ms.openlocfilehash: 017a26d5672f666d4d8eaf629a0f53fe0cfe517f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963231"
 ---
 # <a name="secure-azure-computing-architecture"></a>保护 Azure 计算体系结构
@@ -126,7 +126,7 @@ TCCM 是业务角色。 此类人员负责管理 SCCA。 其职责是：
     - [Azure 安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)
     - [Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)
     - [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/overview)
-- 调整大小
+- 大小调整
     - 必须完成大小调整操作。 看一下您可能通过 SACA 实例和网络吞吐量要求的并发连接数。 
     - 此步骤至关重要。 它有助于调整 Vm 的大小并确定所需来自 SACA 实例中使用不同供应商的许可证。 
     - 很好的成本分析才能完成此练习中调整大小。 为了获得最佳性能还允许正确的大小调整。 

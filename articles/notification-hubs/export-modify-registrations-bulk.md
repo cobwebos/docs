@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: jowargo
 ms.openlocfilehash: d7e38e8eca58c06fc6896887522b320a797fc42e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64575295"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>批量导出和导入 Azure 通知中心注册
@@ -34,7 +34,7 @@ ms.locfileid: "64575295"
 
 - 一个预配的通知中心。
 - 一个 Azure 存储 Blob 容器。
-- 对引用[Azure 存储 NuGet 包](https://www.nuget.org/packages/windowsazure.storage/)并[通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+- 对 [Azure 存储 NuGet 包](https://www.nuget.org/packages/windowsazure.storage/)和[通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)的引用。
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>创建输入文件并将其存储在 Blob 中
 输入文件包含以 XML 格式序列化的注册列表，每行包含一个注册。 以下代码示例演示如何使用 Azure SDK 序列化注册并将其上传到 Blob 容器。

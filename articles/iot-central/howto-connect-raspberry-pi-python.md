@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: eccc4100c89c971e264b9b915cd17b9f5ce4477b
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617437"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64405877"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (Python)
 
@@ -25,12 +25,12 @@ ms.locfileid: "59617437"
 
 若要完成本文中的步骤，需要以下组件：
 
-* 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+* 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序  。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 * 运行 Raspbian 操作系统的 Raspberry Pi 设备。 在 Raspberry Pi 必须能够连接到 internet。 有关详细信息，请参阅[设置 Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)。
 
 ## <a name="sample-devkits-application"></a>**示例 Devkits** 应用程序
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板：
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板   ：
 
 - 遥测数据，包括设备将收集的以下度量值：
   - 湿度
@@ -66,12 +66,12 @@ Azure IoT Central 应用程序中添加真实的设备，从**Raspberry Pi**设�
 1. 配置设备后，你的设备开始将遥测度量发送到 Azure IoT 中心。
 1. 在 Azure IoT Central 应用程序中，可以看到在 Raspberry Pi 上运行的代码如何与应用程序交互：
 
-    * 在真实设备的“度量”页上，可以看到从 Raspberry Pi 发送的遥测数据。
+    * 在真实设备的“度量”页上，可以看到从 Raspberry Pi 发送的遥测数据  。
     * 上**设置**页上，你可以如电压和风扇速度在 Raspberry Pi 上的设置。 当在 Raspberry Pi 确认更改时，该设置显示了作为**同步**。
 
 ## <a name="raspberry-pi-device-template-details"></a>Raspberry Pi 设备模板详细信息
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板：
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板   ：
 
 ### <a name="telemetry-measurements"></a>遥测数据度量
 

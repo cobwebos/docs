@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中的租户之间共享库映像 |Microsoft Docs
-description: 了解如何在使用共享图像库的 Azure 租户间共享的 VM 映像。
+description: 了解如何使用共享映像库跨 Azure 租户共享 VM 映像。
 services: virtual-machine-scale-sets
 author: cynthn
 manager: jeconnoc
@@ -11,20 +11,20 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: cynthn
 ms.openlocfilehash: cbaaac629fd013602eed75cc7dc357f13a62e3b1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65160120"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>在 Azure 租户之间共享库的 VM 映像
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租户共享库 VM 映像
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
 ## <a name="create-a-scale-set-using-azure-cli"></a>使用 Azure CLI 创建规模集
 
-在租户 1 使用 appID、 应用密钥和租户 1 的 ID 的服务主体登录。 可以使用`az account show --query "tenantId"`以根据需要获取租户 Id。
+使用租户 1 的 appID、应用密钥以及 ID 登录到租户 1 的服务主体。 可以根据需要使用 `az account show --query "tenantId"` 获取租户 ID。
 
 ```azurecli-interactive
 az account clear
@@ -32,14 +32,14 @@ az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 1 ID>
 az account get-access-token 
 ```
  
-在租户 2 使用 appID、 应用密钥和租户 2 的 ID 的服务主体登录：
+使用租户 2 的 appID、应用密钥以及 ID 登录到租户 2 的服务主体：
 
 ```azurecli-interactive
 az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 2 ID>'
 az account get-access-token
 ```
 
-创建规模集。 在示例中的信息将替换为自己。
+创建规模集。 请将示例中的信息替换为你自己的。
 
 ```azurecli-interactive
 az vmss create \

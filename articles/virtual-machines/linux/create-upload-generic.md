@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1ef273b65bb3a8b8536d27c70e8ba05e74faa39b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327960"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64702487"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -44,7 +44,7 @@ Azure 上运行的所有分发版都要满足一些先决条件。 本文的内�
 本文重点介绍有关在 Azure 上运行 Linux 分发版的一般准则。
 
 ## <a name="general-linux-installation-notes"></a>常规 Linux 安装说明
-* Azure 不支持 Hyper-V 虚拟硬盘 (VHDX) 格式，仅支持固定大小的 VHD。  可使用 Hyper-V 管理器或 [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) cmdlet 将磁盘转换为 VHD 格式。 如果使用 VirtualBox，请在创建磁盘时选择“固定大小”，而不要选择默认（动态分配的）大小。
+* Azure 不支持 Hyper-V 虚拟硬盘 (VHDX) 格式，仅支持固定大小的 VHD。   可使用 Hyper-V 管理器或 [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) cmdlet 将磁盘转换为 VHD 格式。 如果使用 VirtualBox，请在创建磁盘时选择“固定大小”，而不要选择默认（动态分配的）大小。 
 * Azure 仅支持第 1 代虚拟机。 可将第 1 代虚拟机从 VHDX 转换为 VHD 文件格式，从动态扩展磁盘转换为固定大小磁盘。 但无法更改虚拟机的代次。 有关详细信息，请参阅[是否应在 Hyper-V 中创建第 1 代或第 2 代虚拟机？](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
 * VHD 允许的最大大小为 1,023 GB。
 * 在安装 Linux 系统时，建议使用标准分区而不是逻辑卷管理器 (LVM)，这是许多安装的默认设置。 使用标准分区可避免 LVM 名称与克隆的 VM 发生冲突，特别是在 OS 磁盘曾经连接到另一台相同的 VM 进行故障排除的情况下。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 可以在数据磁盘上使用。
@@ -74,12 +74,12 @@ Azure 在 Hyper-V 虚拟机监控程序上运行，因此 Linux 需要某些内�
 ### <a name="resizing-vhds"></a>调整 VHD 大小
 Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。  通常情况下，使用 Hyper-V 创建的 VHD 已正确调整。  如果未正确调整 VHD，在尝试基于 VHD 创建映像时，可能会收到如下错误消息：
 
-* VHD http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd 的虚拟大小为 21475270656 字节，这是不受支持的。 大小必须是整数（以 MB 为单位）。
+* VHD http:\//\<mystorageaccount >.blob.core.windows.net/vhds/MyLinuxVM.vhd 具有不受支持的虚拟大小为 21475270656 字节。 大小必须是整数（以 MB 为单位）。
 
 在这种情况下，可使用 Hyper-V 管理器控制台或 [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell cmdlet 调整 VM 大小。  如果不是在 Windows 环境中运行，我们建议使用 `qemu-img` 转换（如果需要）并调整 VHD 大小。
 
 > [!NOTE]
-> 2.2.1 或更高版本的 qemu-img 存在一个[已知的 bug](https://bugs.launchpad.net/qemu/+bug/1490611)，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 我们建议使用 `qemu-img` 2.2.0 或更低版本，或者 2.6 或更高版本。
+> 2\.2.1 或更高版本的 qemu-img 存在一个[已知的 bug](https://bugs.launchpad.net/qemu/+bug/1490611)，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 我们建议使用 `qemu-img` 2.2.0 或更低版本，或者 2.6 或更高版本。
 > 
 
 1. 直接使用工具（如 `qemu-img` 或 `vbox-manage`）调整 VHD 大小可能会生成无法启动的 VHD。  我们建议先将 VHD 转换为 RAW 磁盘映像。  如果已将 VM 映像创建为 RAW 磁盘映像（对于 KVM 等某些虚拟机监控程序，这是默认设置），则可以跳过此步骤。
@@ -166,7 +166,7 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
     ```  
     console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300
     ```
-    我们还建议删除以下参数（如果存在）。
+    我们还建议删除以下参数（如果存在）。 
     ```  
     rhgb quiet crashkernel=auto
     ```
@@ -180,7 +180,7 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
 
 1. 不要在 OS 磁盘上创建交换空间。
   
-    Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。 本地资源磁盘是临时磁盘，并可能在取消预配 VM 时被清空。 安装 Azure Linux 代理（上述步骤 2）后，根据需要在 /etc/waagent.conf 中修改以下参数。
+    Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。 本地资源磁盘是临时  磁盘，并可能在取消预配 VM 时被清空。 安装 Azure Linux 代理（上述步骤 2）后，根据需要在 /etc/waagent.conf 中修改以下参数。
     ```  
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
