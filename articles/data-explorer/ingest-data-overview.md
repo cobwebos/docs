@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.openlocfilehash: 891d2acc42f8d6f03976f0553e2e3127bc6d16f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759312"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
@@ -128,7 +128,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 
 ## <a name="ingestion-recommendations-and-limitations"></a>引入建议和限制
 
-* 引入数据的有效保留策略衍生自数据库的保留策略。 请参阅[保留策略](/azure/kusto/concepts/retentionpolicy)获取详细信息。 引入数据需要“表引入器”或“数据库引入器”权限。
+* 引入数据的有效保留策略衍生自数据库的保留策略。 请参阅[保留策略](/azure/kusto/concepts/retentionpolicy)获取详细信息。 引入数据需要“表引入器”或“数据库引入器”权限   。
 * 引入支持的最大文件大小为 5 GB。 建议引入 100 MB 到 1 GB 的文件。
 
 ## <a name="schema-mapping"></a>架构映射

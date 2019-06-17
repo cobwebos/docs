@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 09ce4cdc6ab4556f0ba68507bb23d09e02ae0357
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 45d575488db8d740069fba961203842899024747
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66296811"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807196"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -267,11 +267,13 @@ foreach ($deployment in $deployments){
 
 ## <a name="get-support"></a>获取支持
 
-如果您遇到报表或登录到合作伙伴中心的任何问题，请与合作伙伴中心支持团队创建支持请求： [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+有两个支持渠道，具体取决于所面临的问题。
+
+如果遇到任何问题在合作伙伴中心，例如，查看客户使用情况归属报告或登录，与合作伙伴中心支持团队创建支持请求： [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
-如果为 Marketplace 载入和/或客户使用情况归属需要帮助，请执行以下步骤。
+如果需要帮助 Marketplace 载入和/或客户使用情况归属的一般情况下，例如，如何设置客户使用情况属性，请执行以下步骤：
 
 1. 转到[支持页](https://go.microsoft.com/fwlink/?linkid=844975)。
 

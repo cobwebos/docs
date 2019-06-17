@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 7f3fc69bbfd881a26ceb25705852558b66c60153
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64716900"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 网络观察程序执行数据包检查
@@ -79,7 +79,7 @@ ms.locfileid: "64716900"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “协议层次结构”
+使用前一方案中的同一个捕获。单击“统计信息” > “协议层次结构”  
 
 ![协议层次结构菜单][2]
 
@@ -95,7 +95,7 @@ ms.locfileid: "64716900"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “IPv4 统计信息” > “目标和端口”
+使用前一方案中的同一个捕获。单击“统计信息” > “IPv4 统计信息” > “目标和端口”   
 
 ![数据包捕获窗口][4]
 

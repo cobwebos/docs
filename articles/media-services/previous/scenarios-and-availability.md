@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991433"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
@@ -39,9 +39,9 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 * 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
 * Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
-* 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
+* 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 
-    创建 AMS 帐户后，系统会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。
+    创建 AMS 帐户后，系统会将一个处于“已停止”状态的默认  流式处理终结点添加到帐户。  若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
 
 ### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>针对 AMS OData 模型进行开发时的常用对象
 
@@ -147,13 +147,13 @@ Azure 媒体服务提供所需的工具，以便创建适用于大多数平台�
 
 AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理和存储。
 
-* 媒体服务客户可以选择“标准”或“高级”流式处理终结点。 “标准”流式处理终结点适用于大多数流式处理工作负荷。 它拥有与“高级”流式处理终结点相同的功能，且可以自动缩放出站带宽。 
+* 媒体服务客户可以选择“标准”  或“高级”  流式处理终结点。 “标准”流式处理终结点适用于大多数流式处理工作负荷。  它拥有与“高级”流式处理终结点相同的功能，且可以自动缩放出站带宽。  
 
-    “高级”流式处理终结点适用于高级工作负荷，可提供专用且可缩放的带宽容量。 默认情况下，使用高级流式处理终结点的客户会获得一个流式处理单位 (SU)。 可通过添加 SU 来缩放流式处理终结点。 每个 SU 为应用程序提供额外的带宽容量。 若要详细了解如何缩放“高级”流式处理终结点，请参阅[缩放流式处理终结点](media-services-portal-scale-streaming-endpoints.md)主题。
+    “高级”  流式处理终结点适用于高级工作负荷，可提供专用且可缩放的带宽容量。 默认情况下，使用高级  流式处理终结点的客户会获得一个流式处理单位 (SU)。 可通过添加 SU 来缩放流式处理终结点。 每个 SU 为应用程序提供额外的带宽容量。 若要详细了解如何缩放“高级”  流式处理终结点，请参阅[缩放流式处理终结点](media-services-portal-scale-streaming-endpoints.md)主题。
 
 * 媒体服务帐户与预留单位类型关联，后者决定了编码处理任务的处理速度。 可以在以下预留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 预留单位类型相比，使用 **S2** 预留单位类型时，同一编码作业运行速度更快。
 
-    除了指定预留单位类型，还可以指定为帐户预配预留单位 (RU)。 预配的 RU 数决定了给定帐户中可并发处理的媒体任务数。
+    除了指定预留单位类型，还可以指定为帐户预配预留单位  (RU)。 预配的 RU 数决定了给定帐户中可并发处理的媒体任务数。
 
     >[!NOTE]
     >RU 可用于并行化所有媒体处理，包括使用 Azure Media Indexer 为作业编制索引。 但是，与编码不同，索引作业使用更快的预留单位并不能更快地完成处理。
@@ -169,15 +169,15 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 #### <a name="availability"></a>可用性
 
-若要确定数据中心是否提供媒体服务，请浏览到 https://azure.microsoft.com/status/，并滚动到 MEDIA 表。
+若要确定数据中心是否提供媒体服务，请浏览到 https://azure.microsoft.com/status/ ，并滚动到 MEDIA 表。
 
 ### <a name="streaming-endpoints"></a>流式处理终结点 
 
-媒体服务客户可以选择“标准”或“高级”流式处理终结点。 有关详细信息，请参阅[缩放](#scaling)部分。
+媒体服务客户可以选择“标准”  或“高级”  流式处理终结点。 有关详细信息，请参阅[缩放](#scaling)部分。
 
 #### <a name="availability"></a>可用性
 
-|名称|状态|数据中心
+|Name|状态|数据中心
 |---|---|---|
 |标准|GA|全部|
 |高级|GA|全部|
@@ -190,14 +190,14 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 ### <a name="encoding-media-processors"></a>编码媒体处理器
 
-AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premium Workflow。 有关详细信息，请参阅 [Azure 按需媒体编码器的概述和比较](media-services-encode-asset.md)。 
+AMS 提供两个按需编码器：  Media Encoder Standard 和  Media Encoder Premium Workflow。 有关详细信息，请参阅 [Azure 按需媒体编码器的概述和比较](media-services-encode-asset.md)。 
 
 #### <a name="availability"></a>可用性
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|媒体编码器标准|GA|全部|
-|Media Encoder Premium Workflow|GA|除中国以外|
+|媒体编码器标准版|GA|全部|
+|媒体编码器高级工作流|GA|除中国以外|
 
 ### <a name="analytics-media-processors"></a>分析媒体处理器
 
@@ -207,14 +207,14 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|Azure 媒体面部检测器|Preview|全部|
+|Azure 媒体面部检测器|预览|全部|
 |Azure 媒体索引器|GA|全部|
-|Azure Media Motion Detector|Preview|全部|
-|Azure 媒体 OCR|Preview|全部|
-|Azure 媒体修订|Preview|全部|
-|Azure 媒体稳定器|Preview|全部|
+|Azure Media Motion Detector|预览|全部|
+|Azure 媒体 OCR|预览|全部|
+|Azure 媒体修订|预览|全部|
+|Azure 媒体稳定器|预览|全部|
 |Azure 媒体视频缩略图|预览|全部|
-|Azure Media Indexer 2|Preview|除中国和联邦政府区域以外|
+|Azure Media Indexer 2|预览|除中国和联邦政府区域以外|
 
 ### <a name="protection"></a>保护
 

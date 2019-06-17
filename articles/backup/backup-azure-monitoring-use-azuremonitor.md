@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2d7c158b32c15fb8be153511136eafb73147afa6
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
-ms.translationtype: MT
+ms.openlocfilehash: 1e85b633024b5a3e85874707ae9a1f068e7a328d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734859"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808520"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>大规模使用 Azure Monitor 监视
 
@@ -257,7 +257,7 @@ on BackupItemUniqueId_s
 尽管可以使用通知通过活动日志，但***Azure 备份服务强烈建议用于在规模和不活动日志监视由于以下原因 LA***。
 
 - **有限的情况：** 仅适用于 Azure VM 备份，并且应重复的每个 RS 保管库。
-- **定义适合：** 计划的备份活动不适合使用活动日志的最新定义，并符合[诊断日志](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-are-azure-monitor-diagnostic-logs)。 意外的影响，如下面所述更改通过活动日志通道发送的数据时此销售线索。
+- **定义适合：** 计划的备份活动不适合使用活动日志的最新定义，并符合[诊断日志](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs)。 意外的影响，如下面所述更改通过活动日志通道发送的数据时此销售线索。
 - **与活动日志通道相关的问题：** 我们已经转移到新的模型，即从恢复服务保管库上的 Azure 备份中抽取活动日志。 遗憾的是，在移动影响 Azure 主权云中的活动日志的生成。 如果 Azure 主权云用户创建或配置任何从通过 Azure Monitor 活动日志警报，它们不会触发。 此外，在所有 Azure 公共区域中，如果用户正在将恢复服务活动日志收集到[此处](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs)提到的 Log Analytics 工作区中，那么这些日志也不会显示。
 
 因此，强烈建议用于日志分析工作区进行监视和大规模警报针对所有 Azure 备份保护工作负荷。

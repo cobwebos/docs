@@ -9,15 +9,15 @@ ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 268467796e67caf2d20fedb44d83fd455a09b83e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66147820"
 ---
 **出站数据传输**：[出站数据传输](https://azure.microsoft.com/pricing/details/bandwidth/)（传出 Azure 数据中心的数据）会产生带宽使用费。
 
-**事务**：会根据你对标准托管磁盘执行的事务数向你收费。 对于标准的 Ssd，每个 I/O 操作小于或等于为 256 KiB 吞吐量被视为单个 I/O 操作。 I/O 的吞吐量大于 256 KiB 操作被视为多个 I/o 大小为 256 KiB。 有关标准 Hdd，每个 IO 操作被视为单个事务，而不考虑 I/O 大小。
+**事务**：会根据你对标准托管磁盘执行的事务数向你收费。 对于标准的 Ssd，每个 I/O 操作小于或等于为 256 KiB 吞吐量被视为单个 I/O 操作。 I/O 的吞吐量大于 256 KiB 操作被视为多个 I/o 大小为 256 KiB。 对于标准 HDD，每个 IO 操作会被视为单个事务，无论 I/O 大小如何。
 
 有关托管磁盘定价的详细信息（包括事务成本），请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
 

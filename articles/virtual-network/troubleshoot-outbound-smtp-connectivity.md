@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
 ms.openlocfilehash: 385163d791bff0c02a05ee1b27afd82c3afd0ac3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61401913"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>在 Azure 中排查出站 SMTP 连接问题
@@ -36,7 +36,7 @@ ms.locfileid: "61401913"
 ## <a name="pay-as-you-go"></a>即用即付
 如果已在 2017 年 11 月 15 日前注册即用即付或 Microsoft 合作伙伴网络订阅产品/服务，则依然能够尝试发送出站电子邮件。 将能够继续尝试从这些订阅中的 Azure VM 直接向外部电子邮件提供商发送出站电子邮件，且没有任何 Azure 平台限制。 同样，不保证电子邮件提供商会接受来自任何给定用户的传入电子邮件，用户需要直接与电子邮件提供商协作，以处理涉及特定提供商的所有邮件发送或垃圾邮件筛选问题。
 
-在 2017 年 11 月 15 日之后创建的即用即付或 Microsoft 合作伙伴网络订阅中存在一个技术限制，它会阻止这些订阅中的 VM 直接发送电子邮件。 如需将电子邮件从 Azure VM 直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 Microsoft 将会根据自行的判断审批请求，并且只会在执行额外的防欺诈检查后才授予权限。 用于发出请求，请使用下面的问题类型打开支持案例：**技术** > **虚拟网络** > **连接** > **无法发送电子邮件 (SMTP/端口 25)**。 请确保添加详细信息，解释为什么要直接向电子邮件提供商发送邮件而不是使用经身份验证的中继。
+在 2017 年 11 月 15 日之后创建的即用即付或 Microsoft 合作伙伴网络订阅中存在一个技术限制，它会阻止这些订阅中的 VM 直接发送电子邮件。 如需将电子邮件从 Azure VM 直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 Microsoft 将会根据自行的判断审批请求，并且只会在执行额外的防欺诈检查后才授予权限。 用于发出请求，请使用下面的问题类型打开支持案例：**技术** > **虚拟网络** > **连接** > **无法发送电子邮件 (SMTP/端口 25)** 。 请确保添加详细信息，解释为什么要直接向电子邮件提供商发送邮件而不是使用经身份验证的中继。
 
 如果豁免了某个即用即付或 Microsoft 合作伙伴网络订阅，则该订阅中的 VM 仅在此后被豁免。
 

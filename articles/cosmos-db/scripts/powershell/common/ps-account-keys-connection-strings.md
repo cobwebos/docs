@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本-帐户密钥和连接字符串的 Azure Cosmos 帐户的操作
-description: Azure PowerShell 脚本示例-Azure Cosmos 帐户的帐户密钥和连接字符串操作
+title: Azure PowerShell 脚本 - Azure Cosmos 帐户的帐户密钥和连接字符串操作
+description: Azure PowerShell 脚本示例 - Azure Cosmos 帐户的帐户密钥和连接字符串操作
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: samples
 ms.date: 05/20/2019
 ms.author: mjbrown
 ms.openlocfilehash: a7f86bfee0ee2472260b622dc709dc437e53414c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66247854"
 ---
-# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>连接字符串和帐户密钥用于使用 PowerShell 的 Azure Cosmos 帐户的操作
+# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 执行 Azure Cosmos 帐户的连接字符串和帐户密钥操作
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,7 @@ ms.locfileid: "66247854"
 
 ## <a name="sample-script"></a>示例脚本
 
-此示例需要资源组和帐户存在。 使用现有的 PowerShell 创建示例首先设置一个帐户。
+此示例需要资源组和帐户存在。 首先使用现有的 PowerShell 创建示例来预配帐户。
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
 

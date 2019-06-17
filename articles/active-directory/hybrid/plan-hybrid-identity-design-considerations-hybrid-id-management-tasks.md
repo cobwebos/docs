@@ -1,6 +1,6 @@
 ---
 title: 混合标识设计 - 管理任务 Azure | Microsoft Docs
-description: 借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
+description: 使用条件访问控制，Azure Active Directory 检查选取用户进行身份验证时，然后才允许访问应用程序的特定条件。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb3f7baa38305215a8b8383d25132327327d182
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472951"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109381"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>规划混合标识生命周期
 标识是企业移动性和应用程序访问策略的基石之一。 无论登录移动设备还是 SaaS 应用，标识都是能否进行访问的关键所在。 从最高层面讲，标识管理解决方案涉及到存储库的统合与同步，其中又包含预配资源过程的自动化和集中化。 标识解决方案应为跨本地与云的集中式标识功能，且应使用某种形式的标识联合，以维护集中式身份验证，安全地与外部用户和企业进行共享和协作。 资源的范围涵盖操作系统和应用程序，乃至组织中或隶属于组织的人员。 组织结构可以改变，以适应预配策略和过程。

@@ -16,10 +16,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 19b347423c28b4c615f90f325ead462b9d3e8e9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60822584"
 ---
 # <a name="azure-event-hubs---authentication-and-security-model"></a>Azure 事件中心 - 身份验证和安全模型
@@ -44,7 +44,7 @@ Azure 事件中心安全模型满足以下要求：
 
 ### <a name="create-the-sas-key"></a>创建 SAS 密钥
 
-创建事件中心命名空间时，此服务自动生成名为 RootManageSharedAccessKey 的 256 位 SAS 密钥。 此规则具有关联的主密钥对和辅助密钥对，可用于向命名空间授予发送、侦听和管理权限。 还可创建其他密钥。 建议生成一个密钥，用于授予对特定事件中心的发送权限。 对于本主题的其余部分，假设将此密钥命名为 **EventHubSendKey**。
+创建事件中心命名空间时，此服务自动生成名为 RootManageSharedAccessKey 的 256 位 SAS 密钥  。 此规则具有关联的主密钥对和辅助密钥对，可用于向命名空间授予发送、侦听和管理权限。 还可创建其他密钥。 建议生成一个密钥，用于授予对特定事件中心的发送权限。 对于本主题的其余部分，假设将此密钥命名为 **EventHubSendKey**。
 
 在创建事件中心时，以下示例将创建一个仅限发送的密钥：
 

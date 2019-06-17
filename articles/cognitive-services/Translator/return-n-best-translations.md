@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-pawal
 ms.openlocfilehash: 27138fc82515983bb07df845e1204fe04dff915a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389674"
 ---
 # <a name="how-to-return-n-best-translations"></a>如何返回 N 个最佳翻译
@@ -38,7 +38,7 @@ Microsoft Translator API 的 GetTranslations() 和 GetTranslationsArray() 方法
 | 参数 | 描述 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
-| Text | **必需** 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|
+| text | **必需** 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|
 | from | **必需** 一个字符串，表示要翻译的文本的语言代码。 |
 | 至 | **必需** 一个字符串，表示要将文本翻译成的语言代码。 |
 | maxTranslations | **必需** 一个整数，表示要返回的最大翻译数。 |

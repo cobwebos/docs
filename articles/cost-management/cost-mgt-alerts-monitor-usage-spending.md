@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: alavital
 ms.custom: ''
 ms.openlocfilehash: f1bf62596b6edcc6fff6572e431f3a777be93f05
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002091"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>通过成本警报监视使用情况和支出
@@ -42,7 +42,7 @@ ms.locfileid: "66002091"
 | 警报类型 | 企业协议 | Microsoft 客户协议 | Web direct/付 As-You-进行 |
 |---|---|---|---|
 | 预算 | ✔ | ✔ | ✔ |
-| 信用 | ✔ |✘ | ✘ |
+| 额度 | ✔ |✘ | ✘ |
 | 部门支出配额 | ✔ | ✘ | ✘ |
 
 
@@ -57,7 +57,7 @@ ms.locfileid: "66002091"
 
 所有警报都显示警报类型。 预算警报会显示其生成原因以及其适用的预算的名称。 每个警报会显示其生成日期、状态以及适用范围（订阅或管理组）。
 
-可能的状态包括“活动”和“已消除”。 状态为“活动”表示警报仍然相关。 状态为“已消除”表示某人已通过标记的方式将警报设置为不再相关。
+可能的状态包括“活动”和“已消除”。   状态为“活动”表示警报仍然相关。 状态为“已消除”表示某人已通过标记的方式将警报设置为不再相关。
 
 从列表中选择一个警报，查看其详细信息。 警报详细信息显示有关警报的详细信息。 预算警报包括一个预算链接。 如果提供了预算警报的建议，则也会显示该建议的链接。 预算、信用额度和部门支出配额警报在成本分析中有一个分析链接，用于浏览警报范围的成本。 以下示例显示某个部门的支出，其中包含警报详细信息。
 

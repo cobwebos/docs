@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: allensu
 ms.openlocfilehash: 304beeae02da5836ba88a56d7166fc681e263501
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258355"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教程：使用流量管理器改善网站响应
@@ -54,23 +54,23 @@ ms.locfileid: "66258355"
 
 #### <a name="create-vms-for-running-websites"></a>创建用于运行网站的 VM
 
-在本部分中，您将创建两个 Vm *myIISVMEastUS*并*myIISVMWestEurope*中**美国东部**并**欧洲西部**Azure 区域。
+在此部分，请在“美国东部”和“西欧”Azure 区域创建两个 VM：*myIISVMEastUS* 和 *myIISVMWestEurope*。  
 
-1. 在右上方，左上角 Azure 门户中，选择**创建资源** > **计算** > **Windows Server 2019 Datacenter**。
+1. 在 Azure 门户的左上角选择“创建资源” > “计算” > “Windows Server 2019 Datacenter”    。
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值：  
 
-   - **订阅** > **资源组**：选择**新建**，然后键入**myResourceGroupTM1**。
-   - **实例详细信息** > **虚拟机名称**：类型*myIISVMEastUS*。
-   - **实例详细信息** > **区域**:选择“美国东部”  。
-   - **管理员帐户** > **用户名**:输入所选用户名。
-   - **管理员帐户** > **密码**:输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
-   - **入站端口规则** > **公共入站的端口**:选择“允许所选端口”  。
-   - **入站端口规则** > **选择入站的端口**:选择**RDP**并**HTTP**在下拉列表框。
+   - **订阅** > **资源组**：选择“新建”，然后键入 **myResourceGroupTM1**。 
+   - **实例详细信息** > **虚拟机名称**：键入 *myIISVMEastUS*。
+   - “实例详细信息” > “区域”：   选择“美国东部”  。
+   - “管理员帐户”   >   “用户名”：输入所选用户名。
+   - “管理员帐户”   >   “密码”：输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
+   - “入站端口规则”   >   “公共入站端口”：选择“允许所选端口”  。
+   - “入站端口规则”   >   “选择入站端口”：在下拉框中选择“RDP”和“HTTP”。  
 
-3. 选择**管理**选项卡上，或选择**下一步：磁盘”，然后选择“下一步:** **网络**，然后**下一步：管理**。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
+3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
 4. 选择“查看 + 创建”  。
-5. 查看设置，然后依次**创建**。  
-6. 请按照步骤创建名为的第二个 VM *myIISVMWestEurope*，使用**资源组**的名称*myResourceGroupTM2*、**位置**的*西欧*，以及所有其他设置与相同*myIISVMEastUS*。
+5. 查看设置，并单击“创建”。   
+6. 按步骤创建另一个 VM，其名称为 *myIISVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myIISVMEastUS* 相同。   
 7. 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
 
    ![创建 VM](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -104,32 +104,32 @@ ms.locfileid: "66258355"
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>为运行 IIS 的 VM 配置 DNS 名称
 
-流量管理器基于服务终结点的 DNS 名称路由用户流量。 在本部分中，你将配置的 IIS 服务器的 DNS 名称*myIISVMEastUS*并*myIISVMWestEurope*。
+流量管理器基于服务终结点的 DNS 名称路由用户流量。 在此部分，请为 IIS 服务器 *myIISVMEastUS* 和 *myIISVMWestEurope* 配置 DNS 名称。
 
 1. 在左侧菜单中单击“所有资源”，然后在资源列表中，选择位于 *myResourceGroupTM1* 资源组中的“myIISVMEastUS”。  
 2. 在“概述”页上的“DNS 名称”下，选择“配置”。   
 3. 在“配置”页上的 DNS 名称标签下添加唯一的名称，然后选择“保存”。  
-4. 重复步骤 1-3，vm 名为*myIISVMWestEurope*位于*myResourceGroupTM2*资源组。
+4. 针对 *myResourceGroupTM2* 资源组中名为 *myIISVMWestEurope* 的 VM 重复步骤 1-3。
 
 ### <a name="create-test-vms"></a>创建测试 VM
 
-在本部分中，创建 VM (*myVMEastUS*并*myVMWestEurope*) 中每个 Azure 区域 (**美国东部**并**欧洲西部**)。 稍后将使用这些 VM 来测试当你浏览到该网站时，流量管理器如何将流量路由到最近的 IIS 服务器。
+在本部分，我们将在每个 Azure 区域（“美国东部”和“西欧”）各创建一个 VM（*myVMEastUS* 和 *myVMWestEurope*）。   稍后将使用这些 VM 来测试当你浏览到该网站时，流量管理器如何将流量路由到最近的 IIS 服务器。
 
-1. 在右上方，左上角 Azure 门户中，选择**创建资源** > **计算** > **Windows Server 2019 Datacenter**。
+1. 在 Azure 门户的左上角选择“创建资源” > “计算” > “Windows Server 2019 Datacenter”    。
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值：  
 
    - **订阅** > **资源组**：选择“myResourceGroupTM1”  。
-   - **实例详细信息** > **虚拟机名称**：类型*myVMEastUS*。
-   - **实例详细信息** > **区域**:选择“美国东部”  。
-   - **管理员帐户** > **用户名**:输入所选用户名。
-   - **管理员帐户** > **密码**:输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
-   - **入站端口规则** > **公共入站的端口**:选择“允许所选端口”  。
-   - **入站端口规则** > **选择入站的端口**:选择**RDP**在下拉列表框。
+   - **实例详细信息** > **虚拟机名称**：键入 *myVMEastUS*。
+   - “实例详细信息” > “区域”：   选择“美国东部”  。
+   - “管理员帐户”   >   “用户名”：输入所选用户名。
+   - “管理员帐户”   >   “密码”：输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
+   - “入站端口规则”   >   “公共入站端口”：选择“允许所选端口”  。
+   - “入站端口规则”   >   “选择入站端口”：在下拉框中选择“RDP”。 
 
-3. 选择**管理**选项卡上，或选择**下一步：磁盘”，然后选择“下一步:** **网络**，然后**下一步：管理**。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
+3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
 4. 选择“查看 + 创建”  。
-5. 查看设置，然后依次**创建**。  
-6. 请按照步骤创建名为的第二个 VM *myVMWestEurope*，使用**资源组**的名称*myResourceGroupTM2*即**位置***西欧*，以及所有其他设置与相同*myVMEastUS*。
+5. 查看设置，并单击“创建”。   
+6. 按步骤创建另一个 VM，其名称为 *myVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myVMEastUS* 相同。   
 7. 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
 
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
@@ -161,7 +161,7 @@ ms.locfileid: "66258355"
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | Type                    | Azure 终结点                                   |
-    | 名称           | myEastUSEndpoint                                        |
+    | Name           | myEastUSEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMEastUS-ip* 的公共 IP 地址。  这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |        |           |
@@ -178,7 +178,7 @@ ms.locfileid: "66258355"
 1. 确定流量管理器配置文件的 DNS 名称。
 2. 按如下所述查看流量管理器的运作方式：
     - 在位于“美国东部”区域的测试 VM (*myVMEastUS*) 上，通过 Web 浏览器浏览到流量管理器配置文件的 DNS 名称。 
-    - 从测试虚拟机 (*myVMWestEurope*)，位于**欧洲西部**区域，在 web 浏览器中，浏览到你的流量管理器配置文件的 DNS 名称。
+    - 在位于“西欧”区域的测试 VM (myVMWestEurope) 上，通过 Web 浏览器浏览到流量管理器配置文件的 DNS 名称   。
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>确定流量管理器配置文件的 DNS 名称
 
