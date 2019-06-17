@@ -10,10 +10,10 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: b065b611c923c4a28dc79c390ffb56ed97b316fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60880177"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>在 Azure 自动化中启动 Runbook
@@ -36,11 +36,11 @@ ms.locfileid: "60880177"
 
 ## <a name="start-a-runbook-with-the-azure-portal"></a>使用 Azure 门户启动 Runbook
 
-1. 在 Azure 门户中，选择“自动化”，并单击自动化帐户的名称。
-2. 在“中心”菜单中选择“Runbook”。
-3. 在“Runbook”页上，选择 Runbook 并单击“启动”。
+1. 在 Azure 门户中，选择“自动化”  ，并单击自动化帐户的名称。
+2. 在“中心”菜单中选择“Runbook”。 
+3. 在“Runbook”页上，选择 Runbook 并单击“启动”   。
 4. 如果 Runbook 包含参数，则系统会提示在文本框中提供每个参数的值。 有关参数的详细信息，请参阅 [Runbook 参数](#runbook-parameters)。
-5. 在“作业”页上，可以查看 runbook 作业的状态。
+5. 在“作业”  页上，可以查看 runbook 作业的状态。
 
 ## <a name="start-a-runbook-with-powershell"></a>使用 PowerShell 启动 Runbook
 
@@ -84,7 +84,7 @@ Azure 自动化 Web 服务将为使用特定数据类型的参数提供特殊功
 
 ### <a name="named-values"></a>命名值
 
-如果参数的数据类型为 [object]，则可以使用以下 JSON 格式向它发送命名值列表：*{Name1:'Value1', Name2:'Value2', Name3:'Value3'}*。 这些值必须使用简单类型。 Runbook 以 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) 的形式接收参数，该对象的属性对应于每个命名值。
+如果参数的数据类型为 [object]，则可以使用以下 JSON 格式向它发送命名值列表： *{Name1:'Value1', Name2:'Value2', Name3:'Value3'}* 。 这些值必须使用简单类型。 Runbook 以 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) 的形式接收参数，该对象的属性对应于每个命名值。
 
 请考虑以下接受名为 user 的参数的测试 Runbook。
 
@@ -121,7 +121,7 @@ Smith
 
 ### <a name="arrays"></a>数组
 
-如果参数是数组（如 [array] 或 [string[]]），则可以使用以下 JSON 格式向它发送值列表：*[Value1,Value2,Value3]*。 这些值必须使用简单类型。
+如果参数是数组（如 [array] 或 [string[]]），则可以使用以下 JSON 格式向它发送值列表： *[Value1,Value2,Value3]* 。 这些值必须使用简单类型。
 
 请考虑以下接受名为 *user* 的参数的测试 Runbook。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 080a37a88e46117a9963f07c14d64f00c6bae6d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 19bcac68084c4817e0dc0e67f31ab62244db5a2a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570471"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113409"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -68,7 +68,7 @@ Windows Server 2008 R2 SP1 或更高版本。
 
 使用 NPS 扩展的任何用户必须使用 Azure AD Connect 同步到 Azure Active Directory，并且必须注册 MFA。
 
-安装该扩展时，需要使用 Azure AD 租户的目录 ID 和管理员凭据。 可在 [Azure 门户](https://portal.azure.com)中找到该目录 ID。 以管理员身份登录，在左侧选择“Azure Active Directory”图标，然后选择“属性”即可。 复制“目录 ID”框中的 GUID 并保存。 安装 NPS 扩展时，使用此 GUID 作为租户 ID。
+安装该扩展时，需要使用 Azure AD 租户的目录 ID 和管理员凭据。 可在 [Azure 门户](https://portal.azure.com)中找到该目录 ID。 以管理员身份登录，在左侧选择“Azure Active Directory”图标，然后选择“属性”即可。   复制“目录 ID”  框中的 GUID 并保存。 安装 NPS 扩展时，使用此 GUID 作为租户 ID。
 
 ![在 Azure Active Directory 属性下找到目录 ID](./media/howto-mfa-nps-extension/find-directory-id.png)
 
@@ -93,10 +93,10 @@ NPS 服务器必须能够通过端口 80 和 443 与以下 URL 通信。
 
 NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份验证。 为此角色选择一台服务器。 我们建议选择一台不处理来自其他服务的请求的服务器，因为对于不是 RADIUS 的任何请求，NPS 扩展都会引发错误。 NPS 服务器必须设置为环境的主要和次要身份验证服务器，它不能将 RADIUS 请求代理到另一台服务器。
 
-1. 在服务器上，从“服务器管理器快速入门”菜单中打开“添加角色和功能向导”。
-2. 为安装类型选择“基于角色或基于功能的安装”。
-3. 选择“网络策略和访问服务”服务器角色。 可能会弹出窗口，以通知运行此角色所需的功能。
-4. 继续完成该向导，直到出现“确认”页。 选择“安装”。
+1. 在服务器上，从“服务器管理器快速入门”菜单中打开“添加角色和功能向导”  。
+2. 为安装类型选择“基于角色或基于功能的安装”  。
+3. 选择“网络策略和访问服务”  服务器角色。 可能会弹出窗口，以通知运行此角色所需的功能。
+4. 继续完成该向导，直到出现“确认”页。 选择“安装”  。
 
 既然已为 NPS 指定了服务器，还应配置此服务器以处理来自 VPN 解决方案的传入 RADIUS 请求。
 
@@ -109,8 +109,8 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 此步骤可能已在租户上完成，但最好仔细检查 Azure AD Connect 最近是否已同步数据库。
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 依次选择“Azure Active Directory” > “Azure AD Connect”
-3. 确认同步状态是“已启用”，并确认上次同步时间是在不到一小时前。
+2. 依次选择“Azure Active Directory”   > “Azure AD Connect” 
+3. 确认同步状态是“已启用”  ，并确认上次同步时间是在不到一小时前。
 
 如果需要启动新一轮的同步，可使用 [Azure AD Connect 同步：计划程序](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)中的说明。
 
@@ -119,7 +119,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 有两个因素会影响 NPS 扩展部署可以使用哪些身份验证方法：
 
 1. 在 RADIUS 客户端（VPN、Netscaler 服务器或其他客户端）与 NPS 服务器之间使用的密码加密算法。
-   - PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码。
+   - PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码  。
    - **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。
 2. 客户端应用程序（VPN、Netscaler 服务器或其他客户端）可以处理的输入方法。 例如，VPN 客户端是否有一些手段允许用户键入通过文本或移动应用收到的验证码？
 
@@ -134,7 +134,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 使用以下步骤以启动一个测试帐户：
 1. 通过测试帐户登录 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 
 2. 按照提示设置验证方法。
-3. 创建条件性访问策略或[更改用户状态](howto-mfa-userstates.md)需要对测试帐户进行双重验证。 
+3. 创建条件性访问策略或[更改用户状态](howto-mfa-userstates.md)来测试帐户要求进行双重验证。 
 
 用户还需要按照以下步骤注册，然后才能使用 NPS 扩展进行身份验证。
 
@@ -187,7 +187,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 如果你以前的计算机证书已过期，并且已生成新证书，则应删除任何过期的证书。 具有已过期的证书可能会导致问题的 NPS 扩展启动。
 
 > [!NOTE]
-> 如果使用自己的证书，而不是使用 PowerShell 脚本生成的证书，请确保它们符合 NPS 命名约定。 使用者名称必须为“CN=\<TenantID\>”，“OU=Microsoft NPS Extension”。 
+> 如果使用自己的证书，而不是使用 PowerShell 脚本生成的证书，请确保它们符合 NPS 命名约定。 使用者名称必须为“CN=\<TenantID\>”，“OU=Microsoft NPS Extension”  。 
 
 ## <a name="configure-your-nps-extension"></a>配置 NPS 扩展
 
@@ -198,7 +198,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 - Azure MFA 的 NPS 扩展不包含用于将用户和设置从 MFA 服务器迁移到云的工具。 出于此原因，我们建议将扩展用于新部署，而非现有部署。 如果在现有部署上使用扩展，用户必须重新进行证明才能在云中填充其 MFA 详细信息。  
 - NPS 扩展使用本地 Active Directory 中的 UPN 来标识 Azure MFA 中的用户，以便执行辅助身份验证。可将该扩展配置为使用其他标识符，例如备用登录 ID，或者除 UPN 以外的自定义 Active Directory 字段。 有关详细信息，请参阅[用于多重身份验证的 NPS 扩展的高级配置选项](howto-mfa-nps-extension-advanced.md)一文。
 - 并非所有加密协议都支持所有验证方法。
-   - PAP 支持电话呼叫、单向短信、移动应用通知和移动应用验证码
+   - PAP 支持电话呼叫、单向短信、移动应用通知和移动应用验证码 
    - **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知
 
 ### <a name="control-radius-clients-that-require-mfa"></a>控制需要 MFA 的 RADIUS 客户端
@@ -221,7 +221,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>如何验证是否已按预期安装了客户端证书？
 
-请在证书存储中查找安装程序创建的自签名证书，然后检查私钥中是否包含授予“网络服务”用户的权限。 证书的使用者名称为 **CN \<tenantid\>，OU = Microsoft NPS Extension**
+请在证书存储中查找安装程序创建的自签名证书，然后检查私钥中是否包含授予“网络服务”用户的权限。  证书的使用者名称为 **CN \<tenantid\>，OU = Microsoft NPS Extension**
 
 生成的自签名的证书*AzureMfaNpsExtnConfigSetup.ps1*脚本还具有一个有效的生存期的两年。 验证安装了证书，还应检查该证书未过期。
 
@@ -266,7 +266,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 1. 重新启动 NPS 服务器。
 2. 验证是否已按预期安装了客户端证书。
 3. 验证该证书是否与 Azure AD 上的租户关联。
-4. 验证是否可以从运行该扩展的服务器访问 https://login.microsoftonline.com/。
+4. 验证是否可以从运行该扩展的服务器访问 https://login.microsoftonline.com/ 。
 
 -------------------------------------------------------------
 
@@ -278,7 +278,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>日志中为何出现 HTTP 连接错误，并且所有身份验证都失败？
 
-验证是否可以从运行该 NPS 扩展的服务器访问 https://adnotifications.windowsazure.com。
+验证是否可以从运行该 NPS 扩展的服务器访问 https://adnotifications.windowsazure.com 。
 
 -------------------------------------------------------------
 

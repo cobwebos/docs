@@ -16,21 +16,21 @@ ms.date: 03/22/2019
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af10596fb1ddf4a4f9eba2b8265eb77221a19f4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e29c58c0e9a31b2eb3e3d7e237a3db8173214faf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60353119"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110651"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>问：我最近注册了设备。 但为什么在 Azure 门户中我的用户信息下看不到该设备？ 或者为什么设备所有者标记为已加入混合 Azure Active Directory (Azure AD) 的不适用的设备？
 
-**答:** 已加入混合 Azure AD 的 Windows 10 设备不显示在“USER 设备”下。
-使用 Azure 门户中的“所有设备”视图。 还可以使用 PowerShell [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
+**答:** 已加入混合 Azure AD 的 Windows 10 设备不显示在“USER 设备”下  。
+使用 Azure 门户中的“所有设备”视图  。 还可以使用 PowerShell [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
 
-“USER 设备”下面只会列出以下设备：
+“USER 设备”下面只会列出以下设备： 
 
 - 所有未加入混合 Azure AD 的个人设备。 
 - 所有非 Windows 10 或 Windows Server 2016 设备。
@@ -40,7 +40,7 @@ ms.locfileid: "60353119"
 
 ### <a name="q-how-do-i-know-what-the-device-registration-state-of-the-client-is"></a>问：如何知道客户端的设备注册状态是什么？
 
-**答:** 在 Azure 门户中，转到“所有设备”。 使用设备 ID 搜索设备。 检查“联接类型”列下的值。 有时，设备可能已重置或已重置映像。 因此，还必须检查设备上的设备注册状态：
+**答:** 在 Azure 门户中，转到“所有设备”  。 使用设备 ID 搜索设备。 检查“联接类型”列下的值。 有时，设备可能已重置或已重置映像。 因此，还必须检查设备上的设备注册状态：
 
 - 对于 Windows 10 和 Windows Server 2016 或更高版本的设备，请运行 `dsregcmd.exe /status`。
 - 对于低级别操作系统版本，请运行 `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`。
@@ -49,7 +49,7 @@ ms.locfileid: "60353119"
 
 ### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>问：我在 Azure 门户中看到了 USER 信息下面的设备记录。 我在设备上看到状态为已注册。 正在设置正确使用条件性访问？
 
-**答:** deviceID 所显示的设备加入状态必须与 Azure AD 上的状态相符，并且必须符合条件性访问的任何评估条件。 有关详细信息，请参阅[通过条件访问要求使用受管理设备进行云应用访问](../conditional-access/require-managed-devices.md)。
+**答:** 通过显示的设备联接状态**deviceID**，必须在 Azure AD 匹配状态，任何评估条件满足的条件性访问。 有关详细信息，请参阅[需要管理的设备使用条件性访问的云应用访问权限的](../conditional-access/require-managed-devices.md)。
 
 ---
 
@@ -81,7 +81,7 @@ ms.locfileid: "60353119"
 
 -   对于 Windows 10 和 Windows Server 2016，如果反复尝试分离再重新加入同一个设备，则可能会出现重复条目。 
 
--   使用“添加工作或学校帐户”的每个 Windows 用户将创建具有相同设备名称的新设备记录。
+-   使用“添加工作或学校帐户”的每个 Windows 用户将创建具有相同设备名称的新设备记录  。
 
 -   对于已加入本地 Azure Directory 域的低级别 Windows 操作系统版本，自动注册将为登录设备的每个域用户创建具有相同设备名称的新设备记录。 
 
@@ -111,15 +111,15 @@ ms.locfileid: "60353119"
 **答:** 
 - 对于加入混合 Azure AD 的设备，请确保关闭自动注册。 然后计划任务不会再次注册设备。 接下来，以管理员身份打开命令提示符并输入 `dsregcmd.exe /debug /leave`。 或者将此命令作为脚本在多个设备上运行，以批量取消加入。
 
-- 对于已加入纯 Azure AD 的设备，请确保拥有脱机本地管理员帐户或创建一个该账户。 无法使用 Azure AD 用户凭据登录。 接下来，转到“设置” > “帐户” > “访问工作单位或学校”。 选择帐户，然后选择“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
+- 对于已加入纯 Azure AD 的设备，请确保拥有脱机本地管理员帐户或创建一个该账户。 无法使用 Azure AD 用户凭据登录。 接下来，转到“设置”   > “帐户”   > “访问工作单位或学校”  。 选择帐户，然后选择“断开连接”  。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
 
 ---
 
 ### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>问：可以我的用户登录到要删除或禁用在 Azure AD 中的 Azure AD 加入设备？
 
-**答:** 可以。 Windows 具有缓存用户名和密码功能，该功能允许先前登录的用户即使没有网络连接也能快速访问桌面。 
+**答:** 是的。 Windows 具有缓存用户名和密码功能，该功能允许先前登录的用户即使没有网络连接也能快速访问桌面。 
 
-设备在 Azure AD 中已删除或禁用时，Windows 设备不会知道此情况。 因此，先前登录的用户继续使用缓存的用户名和密码访问桌面。 但是，由于设备已删除或禁用，用户无法访问由基于设备的条件访问保护的任何资源。 
+设备在 Azure AD 中已删除或禁用时，Windows 设备不会知道此情况。 因此，先前登录的用户继续使用缓存的用户名和密码访问桌面。 但是，如删除或禁用设备，用户无法访问受保护的基于设备的条件性访问任何资源。 
 
 先前没有登录的用户无法访问设备。 他们没有启用的缓存用户名和密码。 
 
@@ -155,7 +155,7 @@ ms.locfileid: "60353119"
 
 ### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>问：为什么我的用户看*你无法从此处获取那里*？
 
-**答:** 是否配置了某些条件访问规则以要求特定的设备状态? 如果设备不满足条件，就会阻止用户，并且他们会看到该消息。 评估条件性访问策略规则。 确保设备满足条件，避免出现该消息。
+**答:** 未配置特定的条件性访问规则需要特定的设备状态？ 如果设备不满足条件，就会阻止用户，并且他们会看到该消息。 评估条件性访问策略规则。 确保设备满足条件，避免出现该消息。
 
 ---
 
@@ -222,9 +222,9 @@ ms.locfileid: "60353119"
  
 ### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>问：为什么看到重复的 Azure AD 注册的记录我的 Windows 10 混合 Azure AD 的已加入 Azure AD 的设备列表中的设备？
 
-**答:** 用户在已加入域的设备上将其帐户添加到应用时，可能会提示他们“将帐户添加到 Windows？” 如果他们在提示时输入“确定”，设备会注册 Azure AD。 信任类型标记为已注册 Azure AD。 在组织中启用混合 Azure AD 加入后，设备还将加入混合 Azure AD。 然后显示同一设备的两种设备状态。 
+**答:** 用户在已加入域的设备上将其帐户添加到应用时，可能会提示他们“将帐户添加到 Windows？”  如果他们在提示时输入“确定”，设备会注册 Azure AD  。 信任类型标记为已注册 Azure AD。 在组织中启用混合 Azure AD 加入后，设备还将加入混合 Azure AD。 然后显示同一设备的两种设备状态。 
 
-混合 Azure AD 加入优先于 Azure AD 已注册状态。 因此，对于任何身份验证和条件访问评估，视作设备已加入混合 Azure AD。 可以安全地从 Azure AD 门户中删除已注册 Azure AD 设备记录。 了解[避免或清理 Windows 10 计算机上的此双状态](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)。 
+混合 Azure AD 加入优先于 Azure AD 已注册状态。 因此你的设备被视为加入的混合 Azure AD 以进行任何身份验证和条件性访问评估。 可以安全地从 Azure AD 门户中删除已注册 Azure AD 设备记录。 了解[避免或清理 Windows 10 计算机上的此双状态](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)。 
 
 
 ---
@@ -243,7 +243,7 @@ ms.locfileid: "60353119"
 
 ### <a name="q-what-happens-if-a-user-changes-their-password-and-tries-to-login-to-their-windows-10-hybrid-azure-ad-joined-device-outside-the-corporate-network"></a>问：如果用户更改其密码，并尝试登录到其 Windows 10 混合 Azure AD 会发生什么情况已加入公司网络外部的设备？
 
-**答:**（例如，通过使用 Azure AD SSPR） 更改公司网络外部的密码时，如果用户使用新密码登录将失败。 对于混合 Azure AD 加入设备的本地 Active Directory 是主要授权机构。 如果设备不具有与域控制器建立直通，不能验证新密码。 因此，用户需要与域控制器 （无论是通过 VPN 或公司网络中） 建立连接，它们可以在登录到设备的新密码之前。 否则，他们可以仅注册使用其旧密码由于在 Windows 中的缓存的登录功能。 然而，旧密码由 Azure AD 在令牌请求期间失效，因此，防止上单一登录和失败的任何基于设备的条件性访问策略。 如果您使用 Windows hello 企业版，则不会出现此问题。 
+**答:** （例如，通过使用 Azure AD SSPR） 更改公司网络外部的密码时，如果用户使用新密码登录将失败。 对于混合 Azure AD 加入设备的本地 Active Directory 是主要授权机构。 如果设备不具有与域控制器建立直通，不能验证新密码。 因此，用户需要与域控制器 （无论是通过 VPN 或公司网络中） 建立连接，它们可以在登录到设备的新密码之前。 否则，他们可以仅注册使用其旧密码由于在 Windows 中的缓存的登录功能。 然而，旧密码由 Azure AD 在令牌请求期间失效，因此，防止上单一登录和失败的任何基于设备的条件性访问策略。 如果您使用 Windows hello 企业版，则不会出现此问题。 
 
 ---
 
@@ -259,11 +259,11 @@ ms.locfileid: "60353119"
 **答:** 执行以下步骤：
 
 1.  [创建符合性策略](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
-2.  [定义适用于 macOS 设备的条件访问策略](../active-directory-conditional-access-azure-portal.md) 
+2.  [定义适用于 macOS 设备的条件性访问策略](../active-directory-conditional-access-azure-portal.md) 
 
 **备注：**
 
-- 条件访问策略中包含的用户必须有 [macOS 支持的 Office 版本](../conditional-access/technical-reference.md#client-apps-condition)，才能访问资源。 
+- 包含在条件性访问策略需求的用户[支持的 macOS 的 Office 版本](../conditional-access/technical-reference.md#client-apps-condition)访问资源。 
 
 - 在首次尝试访问期间，用户使用公司门户时会看到注册设备的提示。
 

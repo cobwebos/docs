@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 326382339e2b4aeaa488d3d7f76b7ff35f9bc620
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7515c061467419412608bb8103136791845ae093
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147780"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133495"
 ---
 # <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>启用并部署 Azure 超高 Ssd （预览版）
 
@@ -33,11 +33,12 @@ CLI：`az vm list-skus --resource-type disks --query "[?name=='UltraSSD_LRS'].lo
 
 保留**区域**值，它表示可用性区域，并将它将部署所需的超高 SSD。
 
-|ResourceType  |名称  |Location  |区域  |限制  |功能  |值  |
+|ResourceType  |Name  |Location  |区域  |限制  |功能  |值  |
 |---------|---------|---------|---------|---------|---------|---------|
-|磁盘     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
-如果从命令中，没有响应，则你的注册功能仍为挂起，或不已尚未批准。
+> [!NOTE]
+> 如果从命令中，没有响应，则你的注册功能仍为挂起，或不已尚未批准。
 
 在知道了要部署到哪个区域后，请按照本文中的部署步骤来部署第一个具有超级 SSD 的 VM。
 

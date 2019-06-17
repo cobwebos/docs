@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 58ac15c1aba715c9a5b67e723401b531e76608b2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153600"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure 存储指标迁移
@@ -28,7 +28,7 @@ Azure 存储收集旧指标值，将其聚合并存储在同一存储帐户内�
 
 旧指标仅对 Azure Blob 存储提供容量指标。 旧指标对 Blob 存储、表存储、Azure 文件和队列存储提供事务指标。
 
-旧指标采用平面架构设计。 当没有可触发指标的流量模式时，此设计会导致生成指标值 0。 例如，即使未在流向存储帐户的实时流量中收到任何服务器超时错误，$Metric 表中的 ServerTimeoutError 值也将设置为 0。
+旧指标采用平面架构设计。 当没有可触发指标的流量模式时，此设计会导致生成指标值 0。 例如，即使未在流向存储帐户的实时流量中收到任何服务器超时错误，$Metric 表中的 ServerTimeoutError 值也将设置为 0  。
 
 ## <a name="understand-new-metrics-managed-by-azure-monitor"></a>了解 Azure Monitor 托管的新指标
 
@@ -36,7 +36,7 @@ Azure 存储收集旧指标值，将其聚合并存储在同一存储帐户内�
 
 新指标提供 Blob、表、文件、队列和高级存储上的容量指标和事务指标。
 
-多维度是 Azure Monitor 提供的一种功能。 Azure 存储采用这一设计来定义新指标架构。 有关指标支持的维度的详细信息，请参阅 [Azure Monitor 中的 Azure 存储指标](./storage-metrics-in-azure-monitor.md)。 多维设计可节约存储指标的带宽（包括引入和容量两方面）成本。 因此，如果流量未触发相关指标，则不会生成相关指标数据。 例如，如果流量未触发任何服务器超时错误，当查询事务指标（维度 ResponseType 等于 ServerTimeoutError）的值时，Azure Monitor 不会返回任何数据。
+多维度是 Azure Monitor 提供的一种功能。 Azure 存储采用这一设计来定义新指标架构。 有关指标支持的维度的详细信息，请参阅 [Azure Monitor 中的 Azure 存储指标](./storage-metrics-in-azure-monitor.md)。 多维设计可节约存储指标的带宽（包括引入和容量两方面）成本。 因此，如果流量未触发相关指标，则不会生成相关指标数据。 例如，如果流量未触发任何服务器超时错误，当查询事务指标（维度 ResponseType 等于 ServerTimeoutError）的值时，Azure Monitor 不会返回任何数据    。
 
 ## <a name="metrics-mapping-between-old-metrics-and-new-metrics"></a>旧指标和新指标之间的指标映射
 
@@ -46,8 +46,8 @@ Azure 存储收集旧指标值，将其聚合并存储在同一存储帐户内�
 
 | 旧指标 | 新指标 |
 | ------------------- | ----------------- |
-| **容量**            | BlobCapacity（维度 BlobType 等于 BlockBlob 或 PageBlob） |
-| **ObjectCount**        | BlobCount（维度 BlobType 等于 BlockBlob 或 PageBlob） |
+| **容量**            | BlobCapacity（维度 BlobType 等于 BlockBlob 或 PageBlob）     |
+| **ObjectCount**        | BlobCount（维度 BlobType 等于 BlockBlob 或 PageBlob）     |
 | **ContainerCount**      | **ContainerCount** |
 
 以下是旧指标不支持的新指标：
@@ -74,20 +74,20 @@ Azure 存储收集旧指标值，将其聚合并存储在同一存储帐户内�
 | **AnonymousServerTimeoutError** | 维度 **ResponseType** 等于 **ServerTimeoutError** 且维度 **Authentication** 等于 **Anonymous** 的事务 |
 | **AnonymousSuccess** | 维度 **ResponseType** 等于 **Success** 且维度 **Authentication** 等于 **Anonymous** 的事务 |
 | **AnonymousThrottlingError** | 维度 **ResponseType** 等于 **ClientThrottlingError** 或 **ServerBusyError** 且维度 **Authentication** 等于 **Anonymous** 的事务 |
-| **AuthorizationError** | 事务（维度 ResponseType 等于 AuthorizationError） |
+| **AuthorizationError** | 事务（维度 ResponseType 等于 AuthorizationError）   |
 | **可用性** | **可用性** |
 | **AverageE2ELatency** | **SuccessE2ELatency** |
 | **AverageServerLatency** | **SuccessServerLatency** |
-| **ClientOtherError** | 事务（维度 ResponseType 等于 ClientOtherError） |
-| **ClientTimeoutError** | 事务（维度 ResponseType 等于 ClientTimeoutError） |
-| **NetworkError** | 事务（维度 ResponseType 等于 NetworkError） |
-| **PercentAuthorizationError** | 事务（维度 ResponseType 等于 AuthorizationError） |
-| **PercentClientOtherError** | 事务（维度 ResponseType 等于 ClientOtherError） |
-| **PercentNetworkError** | 事务（维度 ResponseType 等于 NetworkError） |
-| **PercentServerOtherError** | 事务（维度 ResponseType 等于 ServerOtherError） |
-| **PercentSuccess** | 事务（维度 ResponseType 等于 Success） |
-| **PercentThrottlingError** | 事务（维度 ResponseType 等于 ClientThrottlingError 或 ServerBusyError） |
-| **PercentTimeoutError** | 事务（维度 ResponseType 等于 ServerTimeoutError 或 ResponseType 等于 ClientTimeoutError） |
+| **ClientOtherError** | 事务（维度 ResponseType 等于 ClientOtherError）   |
+| **ClientTimeoutError** | 事务（维度 ResponseType 等于 ClientTimeoutError）   |
+| **NetworkError** | 事务（维度 ResponseType 等于 NetworkError）   |
+| **PercentAuthorizationError** | 事务（维度 ResponseType 等于 AuthorizationError）   |
+| **PercentClientOtherError** | 事务（维度 ResponseType 等于 ClientOtherError）   |
+| **PercentNetworkError** | 事务（维度 ResponseType 等于 NetworkError）   |
+| **PercentServerOtherError** | 事务（维度 ResponseType 等于 ServerOtherError）   |
+| **PercentSuccess** | 事务（维度 ResponseType 等于 Success）   |
+| **PercentThrottlingError** | 事务（维度 ResponseType 等于 ClientThrottlingError 或 ServerBusyError）    |
+| **PercentTimeoutError** | 事务（维度 ResponseType 等于 ServerTimeoutError 或 ResponseType 等于 ClientTimeoutError）     |
 | **SASAuthorizationError** | 维度 **ResponseType** 等于 **AuthorizationError** 且维度 **Authentication** 等于 **SAS** 的事务 |
 | **SASClientOtherError** | 维度 **ResponseType** 等于 **ClientOtherError** 且维度 **Authentication** 等于 **SAS** 的事务 |
 | **SASClientTimeoutError** | 维度 **ResponseType** 等于 **ClientTimeoutError** 且维度 **Authentication** 等于 **SAS** 的事务 |
@@ -96,10 +96,10 @@ Azure 存储收集旧指标值，将其聚合并存储在同一存储帐户内�
 | **SASServerTimeoutError** | 维度 **ResponseType** 等于 **ServerTimeoutError** 且维度 **Authentication** 等于 **SAS** 的事务 |
 | **SASSuccess** | 维度 **ResponseType** 等于 **Success** 且维度 **Authentication** 等于 **SAS** 的事务 |
 | **SASThrottlingError** | 维度 **ResponseType** 等于 **ClientThrottlingError** 或 **ServerBusyError** 且维度 **Authentication** 等于 **SAS** 的事务 |
-| **ServerOtherError** | 事务（维度 ResponseType 等于 ServerOtherError） |
-| **ServerTimeoutError** | 事务（维度 ResponseType 等于 ServerTimeoutError） |
-| **Success** | 事务（维度 ResponseType 等于 Success） |
-| **ThrottlingError** | 事务（维度 ResponseType 等于 ClientThrottlingError 或 ServerBusyError）|
+| **ServerOtherError** | 事务（维度 ResponseType 等于 ServerOtherError）   |
+| **ServerTimeoutError** | 事务（维度 ResponseType 等于 ServerTimeoutError）   |
+| **Success** | 事务（维度 ResponseType 等于 Success）   |
+| **ThrottlingError** | 事务（维度 ResponseType 等于 ClientThrottlingError 或 ServerBusyError）    |
 | **TotalBillableRequests** | **Transactions** |
 | **TotalEgress** | **流出量** |
 | **TotalIngress** | **流入量** |

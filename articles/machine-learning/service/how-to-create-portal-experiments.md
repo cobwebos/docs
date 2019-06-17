@@ -12,10 +12,10 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
 ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990144"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>创建和浏览自动化的机器学习试验 （预览版） 在 Azure 门户中
@@ -103,7 +103,7 @@ ms.locfileid: "65990144"
     高级设置|描述
     ------|------
     主要指标| 用于进行评分模型的主要度量。 [详细了解模型度量](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics)。
-    退出条件| 当满足以下任意条件时，训练作业结束之前完全完成。 <br> *训练作业时间 （分钟）*:允许运行训练作业的时间。  <br> *最大迭代数*:管道 （迭代） 中，以便测试在训练作业的最大数目。 该作业将不会运行多个指定的迭代次数。 <br> *指标分数阈值*:所有管道的最小指标分数。 这可确保，如果您想要达到定义的目标度量值，则执行不花更多时间比实际所需的培训作业。
+    退出条件| 当满足以下任意条件时，训练作业结束之前完全完成。 <br> *训练作业时间 （分钟）* :允许运行训练作业的时间。  <br> *最大迭代数*:管道 （迭代） 中，以便测试在训练作业的最大数目。 该作业将不会运行多个指定的迭代次数。 <br> *指标分数阈值*:所有管道的最小指标分数。 这可确保，如果您想要达到定义的目标度量值，则执行不花更多时间比实际所需的培训作业。
     预处理| 选择此选项可以启用或禁用通过自动的机器学习的预处理。 预处理包括自动数据清理、 准备，和转换以生成综合的功能。 [了解有关预处理](#preprocess)。
     验证| 选择一个要在训练作业中使用的交叉验证选项。 [详细了解交叉验证](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options)。
     并发| 选择你想要使用多核计算时使用的多核限制。
@@ -213,7 +213,7 @@ ms.locfileid: "65990144"
 
     您可以通过其说明，将采用以下格式包括运行的 ID，迭代数来确定模型： *< Run_ID > _ < Iteration_number > _Model*
 
-    ![模型:创建映像](media/how-to-create-portal-experiments/model-create-image.png)
+    ![模型：创建映像](media/how-to-create-portal-experiments/model-create-image.png)
 
 1. 输入映像的名称。 
 1. 选择**浏览**"评分文件"框中，若要上传之前下载的计分概要文件 (scoring.py) 旁边的按钮。
@@ -236,7 +236,7 @@ ms.locfileid: "65990144"
 
      ![映像：创建部署](media/how-to-create-portal-experiments/images-create-deployment.png)
 
-1. 完成后，选择“创建”。 部署模型可能需要几分钟时间完成运行每个管道。
+1. 完成后，选择“创建”。  部署模型可能需要几分钟时间完成运行每个管道。
 
 1. 就这么简单！ 有一个操作的 web 服务来生成预测。
 

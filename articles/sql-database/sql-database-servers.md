@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 21d4e7bd3bf7453d2c770034728aedfdaa5ab85e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65790174"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL 数据库服务器及其管理
@@ -69,9 +69,9 @@ SQL 数据库服务器：
 
 ### <a name="manage-an-existing-sql-server"></a>管理现有 SQL 服务器
 
-若要管理现有服务器，请使用多种方法转到服务器，如通过特定 SQL 数据库网页、“SQL 服务器”页或“所有资源”页。
+若要管理现有服务器，请使用多种方法转到服务器，如通过特定 SQL 数据库网页、“SQL 服务器”  页或“所有资源”  页。
 
-若要管理现有数据库，请转到“SQL 数据库”页，再单击要管理的数据库。 下面的屏幕截图展示了如何通过数据库的“概述”页开始为数据库设置服务器级防火墙。
+若要管理现有数据库，请转到“SQL 数据库”  页，再单击要管理的数据库。 下面的屏幕截图展示了如何通过数据库的“概述”  页开始为数据库设置服务器级防火墙。
 
    ![服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule.png)
 

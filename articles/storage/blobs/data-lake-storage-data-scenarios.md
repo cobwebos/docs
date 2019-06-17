@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
 ms.openlocfilehash: c5b6287757f6b71cfd60687f463673f142db04d9
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939296"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
@@ -35,9 +35,9 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 ## <a name="create-a-file-system"></a>创建文件系统
 
-文件系统是一个包含文件夹和文件的容器。 必须至少有其中一个，然后才能将数据引入存储帐户中。  下面是可以用来创建它们的工具的列表。
+文件系统  是一个包含文件夹和文件的容器。 必须至少有其中一个，然后才能将数据引入存储帐户中。  下面是可以用来创建它们的工具的列表。
 
-|工具 | 指南 |
+|Tool | 指南 |
 |---|--|
 |Azure 存储资源管理器 | [使用存储资源管理器创建文件系统](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-filesystem) |
 |AzCopy | [使用 AzCopyV10 创建 Blob 容器或文件共享](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-blob-container-or-file-share)|
@@ -66,7 +66,7 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 下表介绍如何为每个 Azure 服务或工具授予访问权限。
 
-|工具 | 授予访问权限 | 指南 |
+|Tool | 授予访问权限 | 指南 |
 |---|--|---|
 |存储资源管理器| 向用户和组分配角色 | [为具有 Azure Active Directory 的用户分配管理员和非管理员角色](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
 |AzCopy| 向用户和组分配角色 <br>**or**<br> 使用 SAS 令牌| [为具有 Azure Active Directory 的用户分配管理员和非管理员角色](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[轻松创建从 Azure 存储下载文件所需的 SAS - 使用 Azure 存储资源管理器](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
@@ -106,7 +106,7 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 下面是一个列表，其中包含可以用来引入流式处理的数据的工具。
 
-|工具 | 指南 |
+|Tool | 指南 |
 |---|--|
 |Azure HDInsight Storm | [从 Apache Storm on HDInsight 写入到 Apache Hadoop HDFS](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
 
@@ -116,7 +116,7 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 下面是一个列表，其中包含可以用来引入关系数据的工具。
 
-|工具 | 指南 |
+|Tool | 指南 |
 |---|--|
 |Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 
@@ -126,7 +126,7 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 下面是一个列表，其中包含可以用来引入 Web 服务器日志数据的工具。
 
-|工具 | 指南 |
+|Tool | 指南 |
 |---|--|
 |Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
 
@@ -138,7 +138,7 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 下面是一个列表，其中包含可以用来引入与 HDInsight 群集关联的数据的工具。
 
-|工具 | 指南 |
+|Tool | 指南 |
 |---|--|
 |Apache DistCp | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
 |AzCopy 工具 | [使用 AzCopy 传输数据](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
@@ -167,7 +167,7 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 
 下面是一个列表，其中包含的工具可以用来对存储在 Data Lake Storage Gen2 中的数据运行数据分析作业。
 
-|工具 | 指南 |
+|Tool | 指南 |
 |---|--|
 |Azure HDInsight | [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[快速入门：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的数据](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[教程：使用 Azure Databricks 提取、转换和加载数据](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
@@ -193,7 +193,7 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 
 下面是一个列表，其中包含的工具可以用来从 Data Lake Storage Gen2 下载数据。
 
-|工具 | 指南 |
+|Tool | 指南 |
 |---|--|
 |Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCop | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

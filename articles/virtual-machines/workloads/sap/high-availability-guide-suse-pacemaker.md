@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
 ms.openlocfilehash: 9a23f13947c4c7a77460ff389861e1dcc1de3c7f
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65992111"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
@@ -176,7 +176,7 @@ o- / ...........................................................................
 
 从群集连接到在最后一步中创建的 iSCSI 设备。
 在要创建的新群集的节点上运行以下命令。
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2    。
 
 1. **[A]** 连接到 iSCSI 设备
 
@@ -314,9 +314,9 @@ o- / ...........................................................................
 
 ## <a name="cluster-installation"></a>群集安装
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2    。
 
-1. [A] 更新 SLES
+1. [A] 更新 SLES 
 
    <pre><code>sudo zypper update
    </code></pre>
@@ -360,7 +360,7 @@ o- / ...........................................................................
    CLOUD_NETCONFIG_MANAGE="no"
    </code></pre>
 
-1. [1] 启用 SSH 访问
+1. [1] 启用 SSH 访问 
 
    <pre><code>sudo ssh-keygen
    
@@ -372,7 +372,7 @@ o- / ...........................................................................
    sudo cat /root/.ssh/id_rsa.pub
    </code></pre>
 
-1. [2] 启用 SSH 访问
+1. [2] 启用 SSH 访问 
 
    <pre><code># insert the public key you copied in the last step into the authorized keys file on the second server
    sudo vi /root/.ssh/authorized_keys
@@ -387,18 +387,18 @@ o- / ...........................................................................
    sudo cat /root/.ssh/id_rsa.pub
    </code></pre>
 
-1. [1] 启用 SSH 访问
+1. [1] 启用 SSH 访问 
 
    <pre><code># insert the public key you copied in the last step into the authorized keys file on the first server
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. [A] 安装隔离代理
+1. [A] 安装隔离代理 
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
-1. [A] 设置主机名称解析
+1. [A] 设置主机名称解析 
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
    请替换以下命令中的 IP 地址和主机名。 使用 /etc/hosts 的好处是群集可以独立于 DNS（也可能会成为单一故障点）。
@@ -414,7 +414,7 @@ o- / ...........................................................................
    <b>10.0.0.7 prod-cl1-1</b>
    </code></pre>
 
-1. [1] 安装群集
+1. [1] 安装群集 
 
    <pre><code>sudo ha-cluster-init
    
@@ -428,7 +428,7 @@ o- / ...........................................................................
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
-1. [2] 向群集添加节点
+1. [2] 向群集添加节点 
 
    <pre><code>sudo ha-cluster-join
    
@@ -438,12 +438,12 @@ o- / ...........................................................................
    # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
    </code></pre>
 
-1. [A] 将 hacluster 密码更改为相同的密码
+1. [A] 将 hacluster 密码更改为相同的密码 
 
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. [A] 将 corosync 配置为使用其他传输，并添加 nodelist。 否则，群集不会工作。
+1. [A] 将 corosync 配置为使用其他传输，并添加 nodelist  。 否则，群集不会工作。
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
@@ -497,7 +497,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 1. 转到 [https://portal.azure.com](https://portal.azure.com)
 1. 打开“Azure Active Directory”边栏选项卡  
-   转到“属性”并记下目录 ID。 这是“租户 ID”。
+   转到“属性”并记下目录 ID。 这是“租户 ID”  。
 1. 单击“应用注册”
 1. 单击“添加”
 1. 输入名称，选择应用程序类型“Web 应用/API”，输入登录 URL（例如 http\://localhost），并单击“创建”
@@ -505,7 +505,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
 1. 记下值。 此值用作服务主体的**密码**
-1. 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
+1. 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”） 
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: mjbrown
 ms.openlocfilehash: 82e2a436bf6b25b6164d845d234896390a262292
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65968820"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>管理 Azure Cosmos DB 表 API 使用 Azure 资源管理器模板的资源
@@ -23,7 +23,7 @@ ms.locfileid: "65968820"
 
 ### <a name="deploy-via-powershell"></a>通过 PowerShell 部署
 
-若要部署使用 PowerShell、 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要部署使用 PowerShell、 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
 
 ```azurepowershell-interactive
 
@@ -49,7 +49,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="deploy-via-azure-cli"></a>通过 Azure CLI 部署
 
-若要部署使用 Azure CLI 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要部署使用 Azure CLI 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -77,7 +77,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ### <a name="deploy-table-throughput-via-powershell"></a>部署表吞吐量通过 PowerShell
 
-若要部署使用 PowerShell、 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要部署使用 PowerShell、 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -95,7 +95,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="deploy-table-template-via-azure-cli"></a>部署通过 Azure CLI 的表模板
 
-若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName

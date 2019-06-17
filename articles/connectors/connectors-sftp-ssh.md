@@ -11,10 +11,10 @@ ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
 ms.openlocfilehash: 5f82c654b443d58c9ce38c2fb0f48c1654daeb34
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922246"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
@@ -48,7 +48,7 @@ ms.locfileid: "64922246"
 
   > [!NOTE]
   >
-  > SFTP-SSH 连接器仅支持以下私钥、格式、算法和指纹：
+  > SFTP-SSH 连接器仅支持以下私钥、格式、算法和指纹： 
   >
   > * **私钥格式**：采用 OpenSSH 和 ssh.com 格式的 RSA (Rivest Shamir Adleman) 和 DSA（数字签名算法）密钥
   > * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
@@ -56,11 +56,11 @@ ms.locfileid: "64922246"
 
 * 操作可以读取或写入文件*达 1 GB*相比 SFTP 连接器，但 15 MB 分块，而不是 1 GB 的句柄数据片段。 对于大于 1 GB 的文件，操作也可以使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 目前，SFTP-SSH 触发器不支持分块。
 
-* 提供“创建文件夹”操作，用于在 SFTP 服务器上的指定路径中创建文件夹。
+* 提供  “创建文件夹”操作，用于在 SFTP 服务器上的指定路径中创建文件夹。
 
-* 提供“重命名文件”操作，用于在 SFTP 服务器上重命名文件。
+* 提供  “重命名文件”操作，用于在 SFTP 服务器上重命名文件。
 
-* 将 SFTP 服务器连接缓存最长 1 小时，这可以提高性能，并减少服务器的连接尝试次数。 若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank">**ClientAliveInterval**</a> 属性。
+* 将 SFTP 服务器连接缓存最长 1 小时，这可以提高性能，并减少服务器的连接尝试次数。  若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank">**ClientAliveInterval**</a> 属性。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -70,7 +70,7 @@ ms.locfileid: "64922246"
 
   > [!IMPORTANT]
   >
-  > SFTP-SSH 连接器仅支持以下私钥、格式、算法和指纹：
+  > SFTP-SSH 连接器仅支持以下私钥、格式、算法和指纹： 
   > 
   > * **私钥格式**：采用 OpenSSH 和 ssh.com 格式的 RSA (Rivest Shamir Adleman) 和 DSA（数字签名算法）密钥
   > * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
@@ -82,7 +82,7 @@ ms.locfileid: "64922246"
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 要在其中访问 SFTP 帐户的逻辑应用。 若要从 SFTP-SSH 触发器开始，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP-SSH 操作，请使用另一个触发器（例如“重复”触发器）启动逻辑应用。
+* 要在其中访问 SFTP 帐户的逻辑应用。 若要从 SFTP-SSH 触发器开始，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP-SSH 操作，请使用另一个触发器（例如“重复”触发器）启动逻辑应用。 
 
 ## <a name="connect-to-sftp-with-ssh"></a>使用 SSH 连接到 SFTP
 
@@ -94,18 +94,18 @@ ms.locfileid: "64922246"
 
    -或-
 
-   对于现有逻辑应用，请在要添加操作的最后一个步骤下，选择“新建步骤”。 
+   对于现有逻辑应用，请在要添加操作的最后一个步骤下，选择“新建步骤”  。 
    在搜索框中，输入“sftp ssh”作为筛选器。 
    在操作列表下，选择所需的操作。
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。 
 
 1. 为连接提供所需的详细信息。
 
    > [!IMPORTANT] 
    >
-   > 在“SSH 私钥”属性中输入 SSH 私钥时，请遵循以下附加步骤，帮助确保提供此属性的完整正确值。 
+   > 在“SSH 私钥”属性中输入 SSH 私钥时，请遵循以下附加步骤，帮助确保提供此属性的完整正确值。  
    > 无效的密钥会导致连接失败。
    
    可以使用任何文本编辑器。以下步骤以 Notepad.exe 为例，说明如何正确复制并粘贴密钥。
@@ -113,14 +113,14 @@ ms.locfileid: "64922246"
    1. 在文本编辑器中打开 SSH 私钥文件。 
    这些步骤以记事本为例。
 
-   1. 在记事本的“编辑”菜单中，选择“全选”。
+   1. 在记事本的“编辑”菜单中，选择“全选”。  
 
-   1. 选择“编辑” > “复制”。
+   1. 选择“编辑”   >   “复制”。
 
-   1. 在添加的 SFTP-SSH 触发器或操作中，粘贴已复制到“SSH 私钥”属性中的完整密钥，支持换行。 
+   1. 在添加的 SFTP-SSH 触发器或操作中，粘贴已复制到“SSH 私钥”属性中的完整密钥，支持换行。   
    请务必粘贴该密钥， 而不要手动输入或编辑密钥。
 
-1. 输入完连接详细信息后，选择“创建”。
+1. 输入完连接详细信息后，选择“创建”。 
 
 1. 现在，为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
@@ -130,17 +130,17 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 | SFTP 客户端 | 操作 | 
 |-------------|--------| 
-| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用” |
-| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用” | 
+| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用”       |
+| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用”    | 
 ||| 
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。 
 
 在请求文件内容时，触发器不获取文件大于 15 MB。 若要获取大于 15 MB 的文件，请遵循以下模式： 
 
-* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
+* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”  。
 
-* 跟随触发器执行读取完整文件的操作，如“使用路径获取文件内容”，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
+* 跟随触发器执行读取完整文件的操作，如“使用路径获取文件内容”  ，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
 
 ## <a name="examples"></a>示例
 
@@ -150,13 +150,13 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 在 SFTP 服务器上添加或更改文件时，此触发器将启动逻辑应用工作流。 例如，可以添加一个条件，用于检查文件内容，并根据该内容是否符合指定的条件来获取内容。 然后可以添加一个操作，用于获取文件内容并将其放在 SFTP 服务器上的某个文件夹中。 
 
-**企业示例**：可以使用此触发器监视 SFTP 文件夹中表示客户订单的新文件。 然后，可以使用“获取文件内容”等 SFTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
+**企业示例**：可以使用此触发器监视 SFTP 文件夹中表示客户订单的新文件。 然后，可以使用“获取文件内容”等 SFTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。 
 
 在请求文件内容时，触发器不获取文件大于 15 MB。 若要获取大于 15 MB 的文件，请遵循以下模式： 
 
-* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
+* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”  。
 
-* 按照触发器执行读取完整文件的操作，如“使用路径获取文件内容”，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
+* 按照触发器执行读取完整文件的操作，如“使用路径获取文件内容”  ，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
 
 <a name="get-content"></a>
 
@@ -166,9 +166,9 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 在请求文件内容时，触发器不获取文件大于 15 MB。 若要获取大于 15 MB 的文件，请遵循以下模式： 
 
-* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
+* 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”  。
 
-* 跟随触发器执行读取完整文件的操作，如“使用路径获取文件内容”，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
+* 跟随触发器执行读取完整文件的操作，如“使用路径获取文件内容”  ，并让操作使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
 
 ## <a name="connector-reference"></a>连接器参考
 

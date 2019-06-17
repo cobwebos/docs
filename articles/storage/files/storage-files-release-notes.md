@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 5/7/2019
+ms.date: 6/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 421f255353a3cf0b6cc000677c91d0f8c84cbc73
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: c90e466bb7798fae3008dd72a4a4a0e2a0e7a0b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540606"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125760"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,7 +25,8 @@ ms.locfileid: "65540606"
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| 2019 年 5 更新汇总- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日， | 支持（建议的版本） |
+| 2019 年 6 月更新汇总- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13日日 | 支持（建议的版本） |
+| 2019 年 5 更新汇总- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日 | 支持 |
 | V6 发布版- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019 年 4 月 21日日 | 支持 |
 | 2019 年 4 月更新汇总- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019 年 4 月 4日日 | 支持 |
 | 2019 年 3 月更新汇总- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019 年 3 月 7日日 | 支持 |
@@ -41,6 +42,14 @@ ms.locfileid: "65540606"
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-6200"></a>代理版本 6.2.0.0
+以下发行说明仅适用于 2019 年 6 月 13 日发布的 Azure 文件同步代理的版本 6.2.0.0。 这些说明是版本 6.0.0.0 列出的发行说明。
+
+此版本修复的问题列表：  
+- 创建服务器终结点之后, CPU 使用率较高时，可能发生背景召回率将文件下载到服务器
+- 同步和云分层操作可能会因错误 ECS_E_SERVER_CREDENTIAL_NEEDED 由于令牌过期
+- 如果要下载该文件的 URL 包含保留的字符撤回文件可能会失败 
 
 ## <a name="agent-version-6100"></a>代理版本 6.1.0.0
 以下发行说明仅适用于发布 2019 年 5 月 6 日，Azure 文件同步代理的版本 6.1.0.0。 这些说明是版本 6.0.0.0 列出的发行说明。

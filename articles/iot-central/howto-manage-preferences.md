@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 00d40b9910f9b549443373c84b079c543037ce62
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236322"
 ---
 # <a name="manage-your-application-preferences"></a>管理应用程序首选项
@@ -32,7 +32,7 @@ IoT 中心都支持多种语言。 您可以通过使用切换您的首选的语
 ![IoT Central 主题选取器](media/howto-manage-preferences/settings.png)
 
 > [!NOTE]
-> 如果你的管理员已配置应用程序的自定义主题，浅色和深色主题之间选择的选项不可用。
+> 如果管理员已为应用程序配置自定义主题，则无法在浅色主题和深色主题之间切换。
 
 ## <a name="next-steps"></a>后续步骤
 

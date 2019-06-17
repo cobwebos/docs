@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.openlocfilehash: e0c39ae5f5c23ae0715ef1eee38b6dd34704538a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64690965"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 的 Apache Spark 流式处理 (DStream) 示例
@@ -43,14 +43,14 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Azure 资源管理器模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**。
+    Azure 资源管理器模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** 。
 
     > [!WARNING]  
     > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。 此模板创建的 Kafka 群集包含三个工作节点。
 
     此模板为 Kafka 和 Spark 创建 HDInsight 3.6 群集。
 
-2. 使用以下信息填充“自定义部署”部分中的条目：
+2. 使用以下信息填充“自定义部署”部分中的条目  ：
    
     ![HDInsight 自定义部署](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
@@ -68,9 +68,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * **SSH 密码**：Spark 和 Kafka 群集的 SSH 用户的密码。
 
-3. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
+3. 阅读“条款和条件”  ，并选择“我同意上述条款和条件”  。
 
-4. 最后，选择“购买”。 创建群集大约需要 20 分钟时间。
+4. 最后，选择“购买”  。 创建群集大约需要 20 分钟时间。
 
 创建资源后，会显示摘要页面。
 

@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 337f2a31d60d54b47c692b06b5d63c28c0964061
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 5092872433529f11f699aa8a0c5e87d110cb59f7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876220"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077423"
 ---
 # <a name="using-azure-cdn-with-cors"></a>将 Azure CDN 与 CORS 一起使用
 ## <a name="what-is-cors"></a>什么是 CORS？
 CORS（跨域资源共享）是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 为了减少跨站点脚本攻击的可能性，所有现代 Web 浏览器都实现了称为[同源策略](https://www.w3.org/Security/wiki/Same_Origin_Policy)的安全限制。  这可以防止网页调用其他域中的 API。  CORS 提供了一种安全方式，允许一个源（源域）调用另一个源中的 API。
 
 ## <a name="how-it-works"></a>工作原理
-CORS 请求有两种类型：简单请求和复杂请求。
+CORS 请求有两种类型：简单请求  和复杂请求  。
 
 ### <a name="for-simple-requests"></a>简单请求：
 
-1. 浏览器发送带有附加**源** HTTP 请求标头的 CORS 请求。 此标头的值是为父页面提供服务的源，它被定义为协议、域和端口的组合。  从 https 的页面时\:/ / www.contoso.com 尝试访问 fabrikam.com 源中的用户的数据，以下请求标头将发送到 fabrikam.com:
+1. 浏览器发送带有附加**源** HTTP 请求标头的 CORS 请求。 此标头的值是为父页面提供服务的源，它被定义为协议  、域  和端口  的组合。  从 https 的页面时\:/ / www.contoso.com 尝试访问 fabrikam.com 源中的用户的数据，以下请求标头将发送到 fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
@@ -48,7 +48,7 @@ CORS 请求有两种类型：简单请求和复杂请求。
 
 ### <a name="for-complex-requests"></a>复杂请求：
 
-复杂请求是一个 CORS 请求，它要求浏览器在发送实际 CORS 请求之前发送预检请求（即初步探测）。 如果原始 CORS 请求可以继续并且是对同一 URL 的 `OPTIONS` 请求，则预检请求会向服务器请求权限。
+复杂请求是一个 CORS 请求，它要求浏览器在发送实际 CORS 请求之前发送预检请求  （即初步探测）。 如果原始 CORS 请求可以继续并且是对同一 URL 的 `OPTIONS` 请求，则预检请求会向服务器请求权限。
 
 > [!TIP]
 > 有关 CORS 流和常见问题的详细信息，请查看 [REST API 的 CORS 指南](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/)。
@@ -85,7 +85,7 @@ CORS 请求有两种类型：简单请求和复杂请求。
 ![带正则表达式的规则示例](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>为每个源请求标头规则。
-与其使用正则表达式，不如用 **Request Header Wildcard** [匹配条件](/previous-versions/azure/mt757336(v=azure.100)#Anchor_1).为每个要允许的源创建单独的规则。 与正则表达式方法一样，规则引擎单独设置 CORS 标头。 
+与其使用正则表达式，不如用 **Request Header Wildcard** [匹配条件](/previous-versions/azure/mt757336(v=azure.100)#match-conditions).为每个要允许的源创建单独的规则。 与正则表达式方法一样，规则引擎单独设置 CORS 标头。 
 
 ![没有正则表达式的规则示例](./media/cdn-cors/cdn-cors-no-regex.png)
 

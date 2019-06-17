@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
 ms.openlocfilehash: 318df03c7c4447d051dfa396098462c0f8bbf423
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410441"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>在 Azure 上预配深度学习虚拟机 
@@ -33,7 +33,7 @@ DLVM 包含 AI 的多个工具，包括 GPU 版本的常用深度学习框架（
 
 1. 在 [Azure 门户](https://portal.azure.com/#create/microsoft-ads.dsvm-deep-learningtoolkit
 )中导航到虚拟机列表。
-2. 选择底部的“创建”按钮进入向导。![create-dlvm](./media/dlvm-provision-wizard.PNG)
+2. 选择底部的“创建”  按钮进入向导。![create-dlvm](./media/dlvm-provision-wizard.PNG)
 3. 用于创建 DLVM 的向导要求针对上图右侧列举的每个步骤（共有**四个步骤**）提供**输入**。 以下是配置每个步骤所需的输入：
 
    <a name="basics"></a>   
@@ -44,17 +44,17 @@ DLVM 包含 AI 的多个工具，包括 GPU 版本的常用深度学习框架（
       2. **用户名**：管理员帐户登录 ID。
       3. **密码**：管理员帐户密码。
       4. **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。
-      5. **资源组**：可以创建一个新资源组，也可以使用订阅中现有的空 Azure 资源组。
+      5. **资源组**：可以创建一个新资源组，也可以使用订阅中现有的空 Azure 资源组  。
       6. **位置**：选择最合适的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近实际位置以实现最快的网络访问。 
       
       > [!NOTE]
-      > DLVM 支持所有 NC 和 ND 系列 GPU VM 实例。 预配 DLVM 时，必须在 Azure 中选择一个具有 GPU 的位置。 在 [Azure 产品（按区域）](https://azure.microsoft.com/regions/services/)页中查看是否有可用位置，并在“计算”下查找 **NC 系列**、**NCv2 系列**、**NCv3 系列**或 **ND 系列**。 
+      > DLVM 支持所有 NC 和 ND 系列 GPU VM 实例。 预配 DLVM 时，必须在 Azure 中选择一个具有 GPU 的位置。 在 [Azure 产品（按区域）](https://azure.microsoft.com/regions/services/)页中查看是否有可用位置，并在“计算”  下查找 **NC 系列**、**NCv2 系列**、**NCv3 系列**或 **ND 系列**。 
 
    1. **设置**：选择 NC 系列（NC、NCv2、NCv3）或 ND 系列中满足功能要求和成本约束的 GPU 虚拟机大小之一。 为 VM 创建存储帐户。  ![dlvm 设置](./media/dlvm-provision-step-2.PNG)
    
    1. **汇总**：验证输入的所有信息是否正确。
 
-   1. **购买**：单击“购买”开始预配。 此时会显示交易条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
+   1. **购买**：单击“购买”开始预配  。 此时会显示交易条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
 
 > [!NOTE]
 > 预配约需要 10 到 20 分钟。 预配的状态在 Azure 门户上显示。
@@ -79,12 +79,12 @@ DLVM 包含 AI 的多个工具，包括 GPU 版本的常用深度学习框架（
 Linux DLVM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 若要连接到 Linux VM 图形桌面，请在客户端上完成以下过程：
 
 1. 从 [X2Go ](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
-2. 运行 X2Go 客户端，并选择“新建会话”。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
+2. 运行 X2Go 客户端，并选择“新建会话”  。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
    * **会话选项卡**：
      * **主机**：Linux Data Science VM 的主机名或 IP 地址。
      * **登录名**：Linux VM 上的用户名。
      * **SSH 端口**：保留默认值 22。
-     * **会话类型**：将值更改为“XFCE”。 Linux DSVM 目前仅支持 XFCE 桌面。
+     * **会话类型**：将值更改为“XFCE”  。 Linux DSVM 目前仅支持 XFCE 桌面。
    * **媒体选项卡**：如果无需使用声音支持和客户端打印功能，可将其关闭。
    * **共享文件夹**：如果希望将目录从客户端计算机装入 Linux VM，则在此选项卡上添加要与 VM 共享的客户端计算机目录。
 

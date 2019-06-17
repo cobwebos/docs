@@ -17,10 +17,10 @@ ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 93fae0babdee5eac87d50679fdd5b2b938c4df2e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236873"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷规划和部署清单 
@@ -97,8 +97,8 @@ ms.locfileid: "65236873"
       1.  再次验证 SAP 支持说明、SAP HANA 硬件目录和 SAP PAM 上的资源，以确保支持的 Azure VM、这些 VM 类型支持的 OS 版本以及支持的 SAP 和 DBMS 版本没有发生更改
       2.  再次验证 Azure 上部署的应用程序和基础结构的大小。 如果要移动现有应用程序，通常可以从使用的基础结构和 [SAP 基准网页](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)中获取必要的 SAPS，并将其与 SAP 支持说明 [#1928533](https://launchpad.support.sap.com/#/notes/1928533) 中列出的 SAPS 编号进行比较。 另请注意[这篇文章](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208)
       3.  评估和测试 Azure VM 的大小，了解在规划阶段选择的不同 VM 类型的最大存储吞吐量和网络吞吐量。 数据可在以下位置找到：
-          1.  [Azure 中 Windows 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量”
-          2.  [Azure 中 Linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)：重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量”
+          1.  [Azure 中 Windows 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量” 
+          2.  [Azure 中 Linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)：重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量” 
    2. 存储
       1.  使用[Azure 标准 SSD 存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd)代表 SAP 应用程序层 Vm 和非性能敏感的 DBMS 部署最小
       2.  我们建议不应使用[Azure 标准 HDD 磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)一般情况下

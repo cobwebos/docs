@@ -9,10 +9,10 @@ ms.date: 10/22/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 0cfa0fdb51969c92e767adfa86a0065d11da56e2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66237748"
 ---
 [Azure 文件](../articles/storage/files/storage-files-introduction.md)使用 [Azure Active Directory (Azure AD) 域服务](../articles/active-directory-domain-services/overview.md)，支持通过 SMB（服务器消息块）实现的基于标识的身份验证（预览版）。 域加入 Windows 虚拟机 (VM) 可使用 [Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md) 凭据访问 Azure 文件共享。 

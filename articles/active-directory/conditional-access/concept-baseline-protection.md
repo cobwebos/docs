@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca062f4024bb5b0946812e00c8ccc1254b56d333
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 39a591a335d022ef7b2b99fdec930ddf0496cd47
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003291"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112586"
 ---
 # <a name="what-are-baseline-policies"></a>什么是基线策略？
 
@@ -95,7 +95,7 @@ ms.locfileid: "66003291"
 有关详细信息，请参阅：
 
 * [保护标识基础结构的五个步骤](../../security/azure-ad-secure-steps.md)
-* [什么是 Azure Active Directory 中的条件访问？](overview.md)
+* [什么是 Azure Active Directory 中条件性访问？](overview.md)
 * [适用于管理员要求 MFA](howto-baseline-protect-administrators.md)
 * [最终用户保护 （预览版）](howto-baseline-protect-end-users.md)
 * [块旧式身份验证 （预览版）](howto-baseline-protect-legacy-auth.md)

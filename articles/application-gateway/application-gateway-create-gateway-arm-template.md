@@ -1,6 +1,6 @@
 ---
-title: 创建 Azure 应用程序网关-模板
-description: 本文介绍如何使用 Azure 资源管理器模板创建 Azure 应用程序网关
+title: 创建 Azure 应用程序网关 - 模板
+description: 本文提供了有关使用 Azure 资源管理器模板创建 Azure 应用程序网关的说明
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 29b607f10c15ba35a515b55b059b7b55ff594fe6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66135744"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建应用程序网关
@@ -54,7 +54,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
    | **backendIpaddress1** |第一个 Web 服务器的 IP 地址。 |
    | **backendIpaddress2** |第二个 Web 服务器的 IP 地址。 |
    | **wafEnabled** | 用于确定是否启用了 WAF 的设置。|
-   | **wafMode** | Web 应用程序防火墙的模式。  可用选项有：“预防”或“检测”。|
+   | **wafMode** | Web 应用程序防火墙的模式。  可用选项有：“预防”  或“检测”  。|
    | **wafRuleSetType** | WAF 的规则集类型。  目前，OWASP 是唯一受支持的选项。 |
    | **wafRuleSetVersion** |规则集版本。 OWASP CRS 2.2.9 和 3.0 目前是支持的选项。 |
 
@@ -161,9 +161,9 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
     az group create --location westus --name appgatewayRG
     ```
     
-    **-n（或 --name）**。 新资源组的名称。 在本方案中为 *appgatewayRG*。
+    **-n（或 --name）** 。 新资源组的名称。 在本方案中为 *appgatewayRG*。
     
-    **-l（或 --location）**。 将创建新资源组的 Azure 区域。 在本方案中为 *westus*。
+    **-l（或 --location）** 。 将创建新资源组的 Azure 区域。 在本方案中为 *westus*。
 
 1. 运行 `az group deployment create` cmdlet，使用上述步骤中下载并修改的模板和参数文件部署新虚拟网络。 在输出后显示的列表说明了所用的参数。
 
@@ -177,17 +177,17 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 
 1. 转到[创建具有 Web 应用程序防火墙的应用程序网关](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/)。
 
-1. 单击 **“部署到 Azure”**。
+1. 单击 **“部署到 Azure”** 。
 
     ![“部署到 Azure”](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
     
-1. 在门户上填写部署模板的参数，并单击“确定” 。
+1. 在门户上填写部署模板的参数，并单击“确定”  。
 
     ![parameters](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
     
-1. 选择“我同意上述条款和条件”，并单击“购买”。
+1. 选择“我同意上述条款和条件”  ，并单击“购买”  。
 
-1. 在“自定义部署”边栏选项卡上，单击“创建” 。
+1. 在“自定义部署”边栏选项卡上，单击“创建”  。
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>对 Resource Manager 模板提供证书数据
 

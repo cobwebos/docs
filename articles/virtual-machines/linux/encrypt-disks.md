@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
 ms.openlocfilehash: 15bd3cf2ab6ea5285662610c2c0a850bb180e2f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60731611"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>如何加密 Azure 中的 Linux 虚拟机
@@ -30,7 +30,7 @@ ms.locfileid: "60731611"
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
 
 如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -65,11 +65,11 @@ Linux VM 上的虚拟磁盘是使用 [dm-crypt](https://wikipedia.org/wiki/Dm-cr
 
 
 ## <a name="create-an-azure-key-vault-and-keys"></a>创建 Azure Key Vault 和密钥
-在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 myResourceGroup、myKey 和 myVM。
+在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 myResourceGroup  、myKey  和 myVM  。
 
 第一步是创建用于存储加密密钥的 Azure 密钥保管库。 Azure 密钥保管库可以存储能够在应用程序和服务中安全实现的密钥、机密或密码。 对于虚拟磁盘加密，可以使用密钥保管库来存储用于加密或解密虚拟磁盘的加密密钥。
 
-在 Azure 订阅中使用 [az provider register](/cli/azure/provider#az-provider-register) 启用 Azure Key Vault 提供程序，并使用 [az group create](/cli/azure/group#az-group-create) 创建一个资源组。 以下示例在 `eastus` 位置创建名为 myResourceGroup 的资源组：
+在 Azure 订阅中使用 [az provider register](/cli/azure/provider#az-provider-register) 启用 Azure Key Vault 提供程序，并使用 [az group create](/cli/azure/group#az-group-create) 创建一个资源组。 以下示例在 `eastus` 位置创建名为 myResourceGroup  的资源组：
 
 ```azurecli-interactive
 az provider register -n Microsoft.KeyVault
@@ -77,7 +77,7 @@ resourcegroup="myResourceGroup"
 az group create --name $resourcegroup --location eastus
 ```
 
-包含加密密钥和关联的计算资源（例如存储和 VM 本身）的 Azure 密钥保管库必须位于同一区域。 使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create) 创建 Azure Key Vault，并启用 Key Vaul，将其用于磁盘加密。 指定 keyvault_name 的唯一 Key Vault 名称，如下所示：
+包含加密密钥和关联的计算资源（例如存储和 VM 本身）的 Azure 密钥保管库必须位于同一区域。 使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create) 创建 Azure Key Vault，并启用 Key Vaul，将其用于磁盘加密。 指定 keyvault_name  的唯一 Key Vault 名称，如下所示：
 
 ```azurecli-interactive
 keyvault_name=myvaultname$RANDOM
@@ -90,7 +90,7 @@ az keyvault create \
 
 可以使用软件或硬件安全模型 (HSM) 保护来存储加密密钥。 使用 HSM 时需要高级密钥保管库。 与用于存储受软件保护的密钥的标准密钥保管库不同，创建高级密钥保管库会产生额外的费用。 要创建高级密钥保管库，请在前一步骤中，将 `--sku Premium` 添加到命令。 由于创建的是标准 Key Vault，以下示例使用受软件保护的密钥。
 
-对于这两种保护模型，在启动 VM 解密虚拟磁盘时，都需要向 Azure 平台授予请求加密密钥的访问权限。 使用 [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) 在 Key Vault 中创建加密密钥。 以下示例创建名为 myKey 的密钥：
+对于这两种保护模型，在启动 VM 解密虚拟磁盘时，都需要向 Azure 平台授予请求加密密钥的访问权限。 使用 [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) 在 Key Vault 中创建加密密钥。 以下示例创建名为 myKey  的密钥：
 
 ```azurecli-interactive
 az keyvault key create \
@@ -101,7 +101,7 @@ az keyvault key create \
 
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
-使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM 并附加一个 5Gb 数据磁盘。 只有特定市场映像才支持磁盘加密。 以下示例使用 Ubuntu 16.04 LTS 映像创建一个名为 myVM 的 VM：
+使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM 并附加一个 5Gb 数据磁盘。 只有特定市场映像才支持磁盘加密。 以下示例使用 Ubuntu 16.04 LTS 映像创建一个名为 myVM 的 VM   ：
 
 ```azurecli-interactive
 az vm create \

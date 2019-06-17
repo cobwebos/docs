@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
 ms.openlocfilehash: 58d22e3fcae5c30e5d7dcc39b317afeef4a693ee
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606009"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>查看部署历史记录与 Azure 资源管理器
@@ -102,7 +102,7 @@ PropertiesText : {duration:PT23.0227078S, provisioningOperation:Create, provisio
                 serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
 ```
 
-若要获取有关失败操作的更多详细信息，请检索状态为“失败”的操作的属性。
+若要获取有关失败操作的更多详细信息，请检索状态为“失败”的操作的属性。 
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -DeploymentName azuredeploy -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed

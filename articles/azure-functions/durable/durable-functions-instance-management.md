@@ -8,14 +8,13 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 12/07/2018
-ms.date: 03/19/2019
-ms.author: v-junlch
+ms.date: 12/07/2018
+ms.author: azfuncdf
 ms.openlocfilehash: ee96bc5e17051ab37be34eecbb8e4fe35599cd5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60730763"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的实例
@@ -87,11 +86,11 @@ module.exports = async function(context, input) {
 
 还可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable start-new` 命令启动实例。 它采用了以下参数：
 
-* **`function-name`（必需）**：要启动的函数的名称。
-* **`input`（可选）**：以内联方式或通过 JSON 文件提供的函数输入。 对于文件，请使用 `@` 将路径前缀添加到文件，例如 `@path/to/file.json`。
-* **`id`（可选）**：业务流程实例的 ID。 如果未指定此参数，该命令将使用随机 GUID。
-* **`connection-string-setting`（可选）**：包含要使用的存储连接字符串的应用程序设置的名称。 默认值为 AzureWebJobsStorage。
-* **`task-hub-name`（可选）**：要使用的 Durable Functions 任务中心的名称。 默认值为 DurableFunctionsHub。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`function-name`（必需）** ：要启动的函数的名称。
+* **`input`（可选）** ：以内联方式或通过 JSON 文件提供的函数输入。 对于文件，请使用 `@` 将路径前缀添加到文件，例如 `@path/to/file.json`。
+* **`id`（可选）** ：业务流程实例的 ID。 如果未指定此参数，该命令将使用随机 GUID。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认值为 AzureWebJobsStorage。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认值为 DurableFunctionsHub。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 > [!NOTE]
 > Core Tools 命令假设要从函数应用的根目录运行这些命令。 如果显式提供了 `connection-string-setting` 和 `task-hub-name` 参数，则可以从任何目录运行这些命令。 尽管无需运行函数应用主机即可运行这些命令，但除非运行主机，否则可能观察不到某些效果。 例如，`start-new` 命令会在目标任务中心内将某个启动消息排队，但除非某个正在运行的函数应用程序主机进程可以处理该消息，否则业务流程实际上不会运行。
@@ -110,9 +109,9 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 它采用 `instanceId`（必需）、`showHistory`（可选）、`showHistoryOutput`（可选）和 `showInput`（可选，仅 .NET）作为参数。
 
-* **`showHistory`**：如果设置为 `true`，则响应包含执行历史记录。
-* **`showHistoryOutput`**：如果设置为 `true`，则执行历史记录包含活动输出。
-* **`showInput`**：如果设置为 `false`，则响应不会包含函数的输入。 默认值为 `true`。 （仅 .NET）
+* **`showHistory`** ：如果设置为 `true`，则响应包含执行历史记录。
+* **`showHistoryOutput`** ：如果设置为 `true`，则执行历史记录包含活动输出。
+* **`showInput`** ：如果设置为 `false`，则响应不会包含函数的输入。 默认值为 `true`。 （仅 .NET）
 
 该方法返回包含以下属性的 JSON 对象：
 
@@ -164,11 +163,11 @@ module.exports = async function(context, instanceId) {
 
 也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable get-runtime-status` 命令获取业务流程实例的状态。 它采用了以下参数：
 
-* **`id`（必需）**：业务流程实例的 ID。
-* **`show-input`（可选）**：如果设置为 `true`，则响应包含函数的输入。 默认值为 `false`。
-* **`show-output`（可选）**：如果设置为 `true`，则响应包含函数的输出。 默认值为 `false`。
-* **`connection-string-setting`（可选）**：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）**：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`id`（必需）** ：业务流程实例的 ID。
+* **`show-input`（可选）** ：如果设置为 `true`，则响应包含函数的输入。 默认值为 `false`。
+* **`show-output`（可选）** ：如果设置为 `true`，则响应包含函数的输出。 默认值为 `false`。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 以下命令检索业务流程实例 ID 为 0ab8c55a66644d68a3a8b220b12d209c 的实例的状态（包括输入和输出）。 假设从函数应用的根目录运行 `func` 命令：
 
@@ -178,9 +177,9 @@ func durable get-runtime-status --id 0ab8c55a66644d68a3a8b220b12d209c --show-inp
 
 可以使用 `durable get-history` 命令检索业务流程实例的历史记录。 它采用了以下参数：
 
-* **`id`（必需）**：业务流程实例的 ID。
-* **`connection-string-setting`（可选）**：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）**：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 host.json 中设置此参数。
+* **`id`（必需）** ：业务流程实例的 ID。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 host.json 中设置此参数。
 
 ```bash
 func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
@@ -228,10 +227,10 @@ module.exports = async function(context, req) {
 
 也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable get-instances` 命令查询实例。 它采用了以下参数：
 
-* **`top`（可选）**：此命令支持分页。 此参数对应于每个请求检索的实例数。 默认值为 10。
-* **`continuation-token`（可选）**：用于指示要检索的实例页或节的标记。 每次执行 `get-instances` 都会向下一个实例集返回一个标记。
-* **`connection-string-setting`（可选）**：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）**：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`top`（可选）** ：此命令支持分页。 此参数对应于每个请求检索的实例数。 默认值为 10。
+* **`continuation-token`（可选）** ：用于指示要检索的实例页或节的标记。 每次执行 `get-instances` 都会向下一个实例集返回一个标记。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 ```bash
 func durable get-instances
@@ -295,13 +294,13 @@ module.exports = async function(context, req) {
 
 在 Azure Functions Core Tools 中，还可以结合筛选器使用 `durable get-instances` 命令。 除了前面提到的 `top`、`continuation-token`、`connection-string-setting` 和 `task-hub-name` 参数以外，还可以使用三个筛选器参数（`created-after`、`created-before` 和 `runtime-status`）。
 
-* **`created-after`（可选）**：检索在此日期/时间 (UTC) 之后创建的实例。 接受 ISO 8601 格式的日期时间。
-* **`created-before`（可选）**：检索在此日期/时间 (UTC) 之前创建的实例。 接受 ISO 8601 格式的日期时间。
-* **`runtime-status`（可选）**：检索具有特定状态（例如 running 或 completed）的实例。 可以提供多个状态（用空格分隔）。
-* **`top`（可选）**：每个请求检索的实例数。 默认值为 10。
-* **`continuation-token`（可选）**：用于指示要检索的实例页或节的标记。 每次执行 `get-instances` 都会向下一个实例集返回一个标记。
-* **`connection-string-setting`（可选）**：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）**：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`created-after`（可选）** ：检索在此日期/时间 (UTC) 之后创建的实例。 接受 ISO 8601 格式的日期时间。
+* **`created-before`（可选）** ：检索在此日期/时间 (UTC) 之前创建的实例。 接受 ISO 8601 格式的日期时间。
+* **`runtime-status`（可选）** ：检索具有特定状态（例如 running 或 completed）的实例。 可以提供多个状态（用空格分隔）。
+* **`top`（可选）** ：每个请求检索的实例数。 默认值为 10。
+* **`continuation-token`（可选）** ：用于指示要检索的实例页或节的标记。 每次执行 `get-instances` 都会向下一个实例集返回一个标记。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 如果未提供任何筛选器（`created-after`、`created-before` 或 `runtime-status`），则无论运行时状态或创建时间是什么，该命令都会检索 `top` 实例。
 
@@ -348,10 +347,10 @@ module.exports = async function(context, instanceId) {
 
 也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable terminate` 命令终止业务流程实例。 它采用了以下参数：
 
-* **`id`（必需）**：要终止的业务流程实例的 ID。
-* **`reason`（可选）**：终止的原因。
-* **`connection-string-setting`（可选）**：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）**：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`id`（必需）** ：要终止的业务流程实例的 ID。
+* **`reason`（可选）** ：终止的原因。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 以下命令终止 ID 为 0ab8c55a66644d68a3a8b220b12d209c 的业务流程实例：
 
@@ -404,11 +403,11 @@ module.exports = async function(context, instanceId) {
 
 也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable raise-event` 命令向业务流程实例引发事件。 它采用了以下参数：
 
-* **`id`（必需）**：业务流程实例的 ID。
-* **`event-name`（可选）**：要引发的事件的名称。 默认为 `$"Event_{RandomGUID}"`。
-* **`event-data`（可选）**：要发送到业务流程实例的数据。 这可以是某个 JSON 文件的路径，或者，你可以直接在命令行中提供数据。
-* **`connection-string-setting`（可选）**：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）**：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`id`（必需）** ：业务流程实例的 ID。
+* **`event-name`（可选）** ：要引发的事件的名称。 默认为 `$"Event_{RandomGUID}"`。
+* **`event-data`（可选）** ：要发送到业务流程实例的数据。 这可以是某个 JSON 文件的路径，或者，你可以直接在命令行中提供数据。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 ```bash
 func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEvent --event-data @eventdata.json
@@ -426,91 +425,9 @@ func durable raise-event --id 1234567 --event-name MyOtherEvent --event-data 3
 
 下面的 HTTP 触发型函数示例演示了如何使用此 API：
 
-```C#
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE in the project root for license information.
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
 
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.Extensions.Logging;
-
-namespace VSSample
-{
-    public static class HttpSyncStart
-    {
-        private const string Timeout = "timeout";
-        private const string RetryInterval = "retryInterval";
-
-        [FunctionName("HttpSyncStart")]
-        public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}/wait")]
-            HttpRequestMessage req,
-            [OrchestrationClient] DurableOrchestrationClientBase starter,
-            string functionName,
-            ILogger log)
-        {
-            // Function input comes from the request content.
-            dynamic eventData = await req.Content.ReadAsAsync<object>();
-            string instanceId = await starter.StartNewAsync(functionName, eventData);
-
-            log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
-
-            TimeSpan timeout = GetTimeSpan(req, Timeout) ?? TimeSpan.FromSeconds(30);
-            TimeSpan retryInterval = GetTimeSpan(req, RetryInterval) ?? TimeSpan.FromSeconds(1);
-            
-            return await starter.WaitForCompletionOrCreateCheckStatusResponseAsync(
-                req,
-                instanceId,
-                timeout,
-                retryInterval);
-        }
-
-        private static TimeSpan? GetTimeSpan(HttpRequestMessage request, string queryParameterName)
-        {
-            string queryParameterStringValue = request.RequestUri.ParseQueryString()[queryParameterName];
-            if (string.IsNullOrEmpty(queryParameterStringValue))
-            {
-                return null;
-            }
-
-            return TimeSpan.FromSeconds(double.Parse(queryParameterStringValue));
-        }
-    }
-}
-```
-
-```Javascript
-const df = require("durable-functions");
-
-const timeout = "timeout";
-const retryInterval = "retryInterval";
-
-module.exports = async function (context, req) {
-    const client = df.getClient(context);
-    const instanceId = await client.startNew(req.params.functionName, undefined, req.body);
-
-    context.log(`Started orchestration with ID = '${instanceId}'.`);
-
-    const timeoutInMilliseconds = getTimeInSeconds(req, timeout) || 30000;
-    const retryIntervalInMilliseconds = getTimeInSeconds(req, retryInterval) || 1000;
-
-    return client.waitForCompletionOrCreateCheckStatusResponse(
-        context.bindingData.req,
-        instanceId,
-        timeoutInMilliseconds,
-        retryIntervalInMilliseconds);
-};
-
-function getTimeInSeconds (req, queryParameterName) {
-    const queryValue = req.query[queryParameterName];
-    return queryValue
-        ? queryValue // expected to be in seconds
-        * 1000 : undefined;
-}
-```
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpSyncStart/index.js)]
 
 使用以下行调用该函数。 使用 2 秒作为超时，使用 0.5 秒作为重试间隔：
 
@@ -616,7 +533,7 @@ modules.exports = async function(context, ctx) {
 
 ## <a name="rewind-instances-preview"></a>回退实例（预览）
 
-如果意外的原因导致业务流程失败，可以使用相应的 API 将实例回退到以前的正常状态。
+如果意外的原因导致业务流程失败，可以使用相应的 API 将实例回退到以前的正常状态。 
 
 > [!NOTE]
 > 此 API 不是为了替换正确的错误处理和重试策略。 而是仅用于业务流程实例意外失败的情况。 有关错误处理和重试策略的详细信息，请参阅[错误处理](durable-functions-error-handling.md)主题。
@@ -626,7 +543,7 @@ modules.exports = async function(context, ctx) {
 例如，假设某个工作流涉及到一系列[人工审批](durable-functions-concepts.md#human)。 假设有一系列活动函数会通知某人做出审批并等待其实时响应。 在所有审批活动收到响应或超时后，假设另一活动因应用程序配置错误（例如数据库连接字符串无效）而失败。 于是，工作流中存在业务流程故障。 使用 `RewindAsync` (.NET) 或 `rewindAsync` (JavaScript) API，应用程序管理员可以修复配置错误并将失败的业务流程回退到失败前的状态。 无需再次审批任何人工交互步骤，业务流程现可成功完成。
 
 > [!NOTE]
-> 回退功能不支持回退使用持久计时器的业务流程实例。
+> 回退功能不支持回退使用持久计时器的业务流程实例。 
 
 ### <a name="c"></a>C#
 
@@ -658,10 +575,10 @@ module.exports = async function(context, instanceId) {
 
 也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable rewind` 命令回退业务流程实例。 它采用了以下参数：
 
-* **`id`（必需）**：业务流程实例的 ID。
-* **`reason`（可选）**：回退业务流程实例的原因。
-* **`connection-string-setting`（可选）**：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）**：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`id`（必需）** ：业务流程实例的 ID。
+* **`reason`（可选）** ：回退业务流程实例的原因。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 ```bash
 func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator failed and needs to be revived."
@@ -711,11 +628,11 @@ public static Task Run(
 
 可以使用 [Azure Functions Core Tools](../functions-run-local.md) `durable purge-history` 命令清除业务流程实例的历史记录。 类似于前一部分中的第二个 C# 示例，该命令将清除在指定时间间隔内创建的所有业务流程实例的历史记录。 可按运行时状态进一步筛选已清除的实例。 该命令有多个参数：
 
-* **`created-after`（可选）**：清除此日期/时间 (UTC) 之后创建的实例的历史记录。 接受 ISO 8601 格式的日期时间。
-* **`created-before`（可选）**：清除此日期/时间 (UTC) 之前创建的实例的历史记录。 接受 ISO 8601 格式的日期时间。
-* **`runtime-status`（可选）**：清除具有特定状态（例如 running 或 completed）的实例的历史记录。 可以提供多个状态（用空格分隔）。
-* **`connection-string-setting`（可选）**：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）**：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`created-after`（可选）** ：清除此日期/时间 (UTC) 之后创建的实例的历史记录。 接受 ISO 8601 格式的日期时间。
+* **`created-before`（可选）** ：清除此日期/时间 (UTC) 之前创建的实例的历史记录。 接受 ISO 8601 格式的日期时间。
+* **`runtime-status`（可选）** ：清除具有特定状态（例如 running 或 completed）的实例的历史记录。 可以提供多个状态（用空格分隔）。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 以下命令删除在 2018 年 11 月 14 日下午 7:35 (UTC) 之前创建的所有失败实例的历史记录。
 
@@ -727,8 +644,8 @@ func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runti
 
 使用 [Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` 命令可以删除与特定任务中心关联的所有存储项目。 这包括 Azure 存储表、队列和 Blob。 该命令有两个参数：
 
-* **`connection-string-setting`（可选）**：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）**：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 以下命令删除与 `UserTest` 任务中心关联的所有 Azure 存储数据。
 
@@ -740,5 +657,3 @@ func durable delete-task-hub --task-hub-name UserTest
 
 > [!div class="nextstepaction"]
 > [了解如何使用 HTTP API 进行实例管理](durable-functions-http-api.md)
-
-<!-- Update_Description: wording update -->

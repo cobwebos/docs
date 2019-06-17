@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mbullwin
 ms.openlocfilehash: edbd7000001ae6927078e2f1bb9e348cc78f9efa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61299612"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智能检测
@@ -32,7 +32,7 @@ ms.locfileid: "61299612"
     ![电子邮件警报](./media/proactive-diagnostics/03.png)
   
     单击大按钮以在门户中打开更多详细信息。
-* 应用“概述”边栏选项卡上的“智能检测”磁贴会显示最近警报的计数。 单击磁贴以查看最近的警报列表。
+* 应用“概述”边栏选项卡上的“智能检测”磁贴  会显示最近警报的计数。 单击磁贴以查看最近的警报列表。
 
 ![查看最近的检测](./media/proactive-diagnostics/04.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "61299612"
 
 除了标为预览版的规则以外，所有智能检测规则都默认配置为在发现检测时发送电子邮件通知。
 
-可以通过打开智能检测“设置”边栏选项卡并选择规则（这将打开“编辑规则”边栏选项卡）来为特定的智能检测规则配置电子邮件通知。
+可以通过打开智能检测“设置”  边栏选项卡并选择规则（这将打开“编辑规则”  边栏选项卡）来为特定的智能检测规则配置电子邮件通知。
 
 另外，还可以使用 Azure 资源管理器模板来更改配置。 有关更多详细信息，请参阅[使用 Azure 资源管理器模板管理 Application Insights 智能检测规则](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)。
 
