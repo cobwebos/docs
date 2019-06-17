@@ -110,16 +110,16 @@ ms.locfileid: "64725243"
 | 名称 | 值/示例 | 数据类型 | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute.Extensions | 字符串 |
-| type | CustomScript | 字符串 |
+| publisher | Microsoft.Compute.Extensions | string |
+| type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
-| fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | 数组 |
-| commandToExecute（例如） | python MyPythonScript.py \<my-param1> | 字符串 |
-| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 字符串 |
+| fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| commandToExecute（例如） | python MyPythonScript.py \<my-param1> | string |
+| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
 | skipDos2Unix（示例） | false | boolean |
 | timestamp（示例） | 123456789 | 32 位整数 |
-| storageAccountName（例如） | examplestorageacct | 字符串 |
-| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
+| storageAccountName（例如） | examplestorageacct | string |
+| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
 ### <a name="property-value-details"></a>属性值详细信息
 * `skipDos2Unix`：（可选，布尔值）跳过对基于脚本的文件 URL 或脚本进行的 dos2unix 转换。
