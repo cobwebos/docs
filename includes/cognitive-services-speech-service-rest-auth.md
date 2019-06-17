@@ -18,7 +18,7 @@ ms.locfileid: "66145356"
 | 支持的授权标头 | 语音转文本 | 文本转语音 |
 |------------------------|----------------|----------------|
 | Ocp-Apim-Subscription-Key | “是” | “否” |
-| Authorization:持有者 | “是” | “是” |
+| Authorization: Bearer | “是” | “是” |
 
 使用 `Ocp-Apim-Subscription-Key` 标头时，只需提供订阅密钥。 例如:
 
