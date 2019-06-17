@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 078c62913b903eafe9e0fcfcef4189f5ca735d0f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002822"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
@@ -37,10 +37,10 @@ Azure 存储定期验证使用循环冗余检查 (Crc) 存储的数据的完整�
 
 | 场景                                                                                                 | LRS                             | ZRS                              | GRS                                  | RA-GRS                               |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| 数据中心内的节点不可用                                                                 | “是”                             | 是                              | 是                                  | “是”                                  |
-| 整个数据中心（区域性或非区域性）不可用                                           | “否”                              | 是                              | 是                                  | “是”                                  |
-| 区域范围的服务中断                                                                                     | “否”                              | 否                               | 是                                  | “是”                                  |
-| 整个区域不可用时对数据进行读取访问（远程异地复制区域中） | “否”                              | 否                               | 否                                   | “是”                                  |
+| 数据中心内的节点不可用                                                                 | 是                             | 是                              | 是                                  | 是                                  |
+| 整个数据中心（区域性或非区域性）不可用                                           | 否                              | 是                              | 是                                  | 是                                  |
+| 区域范围的服务中断                                                                                     | 否                              | 否                               | 是                                  | 是                                  |
+| 整个区域不可用时对数据进行读取访问（远程异地复制区域中） | 否                              | 否                               | 否                                   | 是                                  |
 | 旨在给定年份为对象提供 \_\_ 的持续性                                          | 至少为 99.999999999% (11 9's) | 至少为 99.9999999999% (12 9's) | 至少为 99.99999999999999% (16 9's) | 至少为 99.99999999999999% (16 9's) |
 | 支持的存储帐户类型                                                                   | GPv2、GPv1、Blob                | GPv2                             | GPv2、GPv1、Blob                     | GPv2、GPv1、Blob                     |
 | 读取请求的可用性 SLA | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.99%（冷访问层为 99.9%） |
@@ -54,13 +54,13 @@ Azure 存储定期验证使用循环冗余检查 (Crc) 存储的数据的完整�
 > 高级存储仅支持本地冗余存储 (LRS)。
 
 ## <a name="changing-replication-strategy"></a>更改复制策略
-可以使用来更改存储帐户的复制策略[Azure 门户](https://portal.azure.com/)， [Azure Powershell](storage-powershell-guide-full.md)， [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，或其中一个[Azure 客户端库](https://docs.microsoft.com/azure/index#pivot=sdkstools)。 更改存储帐户的复制类型不会导致停机。
+你可以使用 [Azure 门户](https://portal.azure.com/)、[Azure Powershell](storage-powershell-guide-full.md)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure 客户端库](https://docs.microsoft.com/azure/index#pivot=sdkstools)之一来更改存储帐户的复制策略。 更改存储帐户的复制类型不会导致停机。
 
    > [!NOTE]
    > 目前，无法使用门户或 API 将帐户转换为 ZRS。 如果想要将帐户的复制转换为 ZRS，请参阅[区域冗余存储 (ZRS)](storage-redundancy-zrs.md) 以了解详细信息。
     
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>更改帐户的复制策略是否产生任何费用？
-这取决于转换路径。 从最便宜到最昂贵的冗余产品/服务依次为 LRS、ZRS、GRS 和 RA-GRS。 例如，从 LRS 转移到其他任何存储会产生额外的费用，因为这是转移到更高级的冗余级别。 转移到 GRS 或 RA-GRS 会产生出口带宽费用，因为（主要区域中的）数据将复制到远程次要区域。 这是在初始设置期间收取的一次性费用。 复制数据后，无需进一步支付转换费用。 只有在复制任何新数据，或者复制现有数据的更新时才要付费。 有关带宽费用的详细信息，请参阅 [Azure 存储定价页面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+这取决于转换路径。 从最便宜到最昂贵的冗余产品/服务依次为 LRS、ZRS、GRS 和 RA-GRS。 例如，从 LRS 转移到其他任何存储会产生额外的费用，因为这是转移到更高级的冗余级别。  转移到 GRS 或 RA-GRS 会产生出口带宽费用，因为（主要区域中的）数据将复制到远程次要区域。  这是在初始设置期间收取的一次性费用。 复制数据后，无需进一步支付转换费用。 只有在复制任何新数据，或者复制现有数据的更新时才要付费。 有关带宽费用的详细信息，请参阅 [Azure 存储定价页面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 如果将存储帐户从 GRS 转换为 LRS，则不会产生额外的费用，但从次要位置复制的数据将被删除。
 

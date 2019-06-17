@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00ed40bef3f3cbe59825f546ffa39c3ebfb2e41f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 24b54a3645fe97903219841dd148c0942dfcda76
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003171"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112382"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>基准策略：服务管理 （预览版） 要求进行 MFA
 
@@ -40,7 +40,7 @@ ms.locfileid: "66003171"
 Connect-AzAccount
 ```
 
-在运行时，此 cmdlet 将显示一个令牌字符串。 若要登录，请复制此字符串并将其粘贴到 [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) 在浏览器中。 PowerShell 会话在进行身份验证后就会连接到 Azure。
+在运行时，此 cmdlet 将显示一个令牌字符串。 若要登录，请复制此字符串并将其粘贴到 [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)  在浏览器中。 PowerShell 会话在进行身份验证后就会连接到 Azure。
 
 若要执行交互式登录中使用[Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)，请运行 [az 登录](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令。
 
@@ -84,4 +84,4 @@ az login
 
 * [条件性访问基线保护策略](concept-baseline-protection.md)
 * [保护标识基础结构的五个步骤](../../security/azure-ad-secure-steps.md)
-* [什么是 Azure Active Directory 中的条件访问？](overview.md)
+* [什么是 Azure Active Directory 中条件性访问？](overview.md)

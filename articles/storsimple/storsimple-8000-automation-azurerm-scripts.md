@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 10/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 646b862733e8727c9c8729f1ac038fa88cfa0580
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60726411"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备
@@ -77,7 +77,7 @@ ms.locfileid: "60726411"
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [将 NuGet CLI 下载](https://www.nuget.org/downloads)到上一步中创建的文件夹下。 nuget.exe 的版本有很多种。 选择与 SDK 对应的版本。 每个下载链接都直接指向 .exe 文件。 请务必右键单击文件，并将它保存到计算机，而不是在浏览器中运行它。
+2. [将 NuGet CLI 下载](https://www.nuget.org/downloads)到上一步中创建的文件夹下。 nuget.exe  的版本有很多种。 选择与 SDK 对应的版本。 每个下载链接都直接指向 .exe  文件。 请务必右键单击文件，并将它保存到计算机，而不是在浏览器中运行它。
 
     也可以运行下面的命令，将此脚本下载并存储到先前创建的同一个文件夹中。
     

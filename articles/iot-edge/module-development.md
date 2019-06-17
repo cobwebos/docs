@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 5285490ca1a27494cbcd3ea3d6527b78c7d38c8c
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833439"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>开发你自己的 IoT Edge 模块
@@ -67,7 +67,7 @@ IoT Edge 中心基于[部署清单](module-composition.md)中介绍的声明性�
 
 [为 IoT Edge 准备开发和测试环境](development-environment.md)
 
-[使用 Visual Studio 来开发C#IoT edge 模块](how-to-visual-studio-develop-module.md)
+[使用 Visual Studio 开发适用于 IoT Edge 的 C# 模块](how-to-visual-studio-develop-module.md)
 
 [使用 Visual Studio Code 开发适用于 IoT Edge 的模块](how-to-vs-code-develop-module.md)
 

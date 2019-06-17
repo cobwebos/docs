@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69b6bd07699d179fc87ac6c5364a7a34b23d14eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5d10562a70b7d37908bc272bf555fd967831009
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477501"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076925"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的安全注意事项
 
@@ -42,11 +42,11 @@ Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运�
 
 ## <a name="secure-connections"></a>安全连接
 
-使用库映像创建 SQL Server 虚拟机时，可以使用“SQL Server 连接”选项来选择“本地(VM 内部)”、“专用(虚拟网络内部)”或“公共(Internet)”。
+使用库映像创建 SQL Server 虚拟机时，可以使用“SQL Server 连接”选项来选择“本地(VM 内部)”、“专用(虚拟网络内部)”或“公共(Internet)”。    
 
 ![SQL Server 连接](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
 
-为了获得最佳安全性，请为方案选择限制性最强的选项。 例如，如果要运行的应用程序需要访问同一个 VM 的 SQL Server，则“本地”是最安全的选项。 如果要运行的 Azure 应用程序需要访问 SQL Server，则“专用”选项只能保护与指定的 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)中的 SQL Server 之间的通信。 如果需要使用“公共(Internet)”选项访问 SQL Server VM，请确保遵照本主题中的其他最佳做法，以减小受攻击面。
+为了获得最佳安全性，请为方案选择限制性最强的选项。 例如，如果要运行的应用程序需要访问同一个 VM 的 SQL Server，则“本地”是最安全的选项。  如果要运行的 Azure 应用程序需要访问 SQL Server，则“专用”选项只能保护与指定的 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)中的 SQL Server 之间的通信。  如果需要使用“公共(Internet)”选项访问 SQL Server VM，请确保遵照本主题中的其他最佳做法，以减小受攻击面  。
 
 在门户中选择的选项使用 VM [网络安全组](../../../virtual-network/security-overview.md) (NSG) 上的入站安全规则来允许或拒绝发往虚拟机的网络流量。 可以修改或创建新的入站 NSG 规则，以允许发往 SQL Server 端口（默认为 1433）的流量。 此外，还可以指定被允许通过此端口通信的特定 IP 地址。
 
@@ -60,11 +60,13 @@ Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运�
 
 ## <a name="use-a-non-default-port"></a>使用非默认端口
 
-SQL Server 默认在已知端口 1433 上侦听。 为了提高安全性，请将 SQL Server 配置为在非默认端口（例如 1401）上侦听。 如果在 Azure 门户中预配 SQL Server 库映像，可以在“SQL Server 设置”边栏选项卡中指定此端口。
+SQL Server 默认在已知端口 1433 上侦听。 为了提高安全性，请将 SQL Server 配置为在非默认端口（例如 1401）上侦听。 如果在 Azure 门户中预配 SQL Server 库映像，可以在“SQL Server 设置”边栏选项卡中指定此端口。 
+
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
 若要在预配后配置此端口，可以使用两个选项：
 
-- 对于 Resource Manager VM，可以从 VM 概述边栏选项卡中选择“SQL Server 配置”。 这会提供一个用于更改端口的选项。
+- 对于 Resource Manager Vm，你可以选择**安全**从[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)。 这会提供一个用于更改端口的选项。
 
   ![在门户中更改 TCP 端口](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 
@@ -85,10 +87,10 @@ SQL Server 默认在已知端口 1433 上侦听。 为了提高安全性，请�
 
 - 默认情况下，Azure 在 SQL Server 虚拟机安装期间会选择 Windows 身份验证。 因此，会禁用 **SA** 登录名，并由安装程序分配密码。 我们不建议使用或启用 **SA** 登录名。 如果必须使用 SQL 登录名，请使用以下策略之一：
 
-  - 创建一个具有 **sysadmin** 成员身份且名称唯一的 SQL 帐户。 在门户中预配期间启用“SQL 身份验证”即可实现此目的。
+  - 创建一个具有 **sysadmin** 成员身份且名称唯一的 SQL 帐户。 在门户中预配期间启用“SQL 身份验证”即可实现此目的。 
 
     > [!TIP] 
-    > 如果在预配期间未启用“SQL 身份验证”，则必须手动将身份验证模式更改为“SQL Server 和 Windows 身份验证模式”。 有关详细信息，请参阅 [更改服务器身份验证模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode)。
+    > 如果在预配期间未启用“SQL 身份验证”，则必须手动将身份验证模式更改为“SQL Server 和 Windows 身份验证模式”。  有关详细信息，请参阅 [更改服务器身份验证模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode)。
 
   - 如果必须使用 **SA** 登录名，请在预配后启用该登录名，并分配一个新的强密码。
 

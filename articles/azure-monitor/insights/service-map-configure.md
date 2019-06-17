@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: magoedte
 ms.openlocfilehash: a50f080ee4d72ad098ca87f5b3a62b42f8cd5907
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65142733"
 ---
 # <a name="configure-service-map-in-azure"></a>在 Azure 中配置服务映射
@@ -135,7 +135,7 @@ ms.locfileid: "65142733"
 
 在 Linux 上，适用于 Linux 的 Log Analytics 代理收集监视数据并将其发送到 Log Analytics。 可以在服务器上配合使用服务映射和直接连接服务或向 Log Analytics 集成的 Operations Manager 管理组报告的 Log Analytics 代理。  
 
-本文中将所有代理都称为“Log Analytics 代理”（不论是 Linux 还是 Windows，也不论是连接到 System Center Operations Manager 管理组还是直接连接到 Log Analytics）。 
+本文中将所有代理都称为“Log Analytics 代理”（不论是 Linux 还是 Windows，也不论是连接到 System Center Operations Manager 管理组还是直接连接到 Log Analytics）  。 
 
 服务映射代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 服务映射中的数据始终由 Log Analytics 代理直接或通过 Log Analytics 网关传输到 Log Analytics 服务。
 
@@ -202,7 +202,7 @@ ForEach-Object {
 }
 ```
 
-可通过一种更为简单的方法来确保 Dependency Agent 安装在每个 VM 上，即在 Azure 资源管理器模板中包含此代理。  以下 JSON 代码示例可以添加到模板的“资源”节中。
+可通过一种更为简单的方法来确保 Dependency Agent 安装在每个 VM 上，即在 Azure 资源管理器模板中包含此代理。  以下 JSON 代码示例可以添加到模板的“资源”节中  。
 
 ```JSON
 "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -374,13 +374,13 @@ sudo apt -y purge dependency-agent
 
 #### <a name="installer-prompts-for-a-reboot"></a>安装程序提示重新启动
 
-安装或卸载 Dependency Agent 时，通常不需要重启。 在极少数的某些情况下，Windows Server 需要重启才能继续安装。 依赖关系（通常是 Microsoft Visual C++ 可再发行组件）因锁定的文件而需要重启时会发生这种情况。
+安装或卸载 Dependency Agent 时，通常不需要重启  。 在极少数的某些情况下，Windows Server 需要重启才能继续安装。 依赖关系（通常是 Microsoft Visual C++ 可再发行组件）因锁定的文件而需要重启时会发生这种情况。
 
 #### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>出现消息“无法安装 Dependency Agent:Visual Studio 运行时库安装失败(code = [code_number])”
 
 Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果安装库时出现问题，将收到一条消息。 
 
-运行时库安装程序在 %LOCALAPPDATA%\temp 文件夹中创建日志。 该文件为 dd_vcredist_arch_yyyymmddhhmmss.log，其中体系结构为“x86”或“amd64”，yyyymmddhhmmss 为创建该日志时的日期和时间（24 小时制）。 该日志提供有关阻止安装的问题的详细信息。
+运行时库安装程序在 %LOCALAPPDATA%\temp 文件夹中创建日志。 该文件为 dd_vcredist_arch_yyyymmddhhmmss.log，其中体系结构为“x86”或“amd64”，yyyymmddhhmmss 为创建该日志时的日期和时间（24 小时制）。   该日志提供有关阻止安装的问题的详细信息。
 
 这可能有助于首次自行安装[最新运行时库](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
 
@@ -396,8 +396,8 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 
 如果已成功安装 Dependency Agent，但在服务映射解决方案中看不到服务器：
 * Dependency Agent 是否已安装成功？ 可通过检查是否已安装并运行服务来验证这一点。<br><br>
-Windows：查找名为“Microsoft Dependency Agent”的服务。<br>
-Linux：查找正在运行的进程“microsoft-dependency-agent”。
+Windows  ：查找名为“Microsoft Dependency Agent”的服务。<br>
+Linux  ：查找正在运行的进程“microsoft-dependency-agent”。
 
 * 是否属于 [Operations Management Suite/Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)？ 免费计划允许最多 5 个仅有的服务映射服务器。 服务映射中不再有任何其他的服务器，即使前 5 个服务器不再发送数据。
 

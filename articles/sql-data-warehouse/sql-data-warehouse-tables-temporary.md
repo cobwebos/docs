@@ -11,10 +11,10 @@ ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 56c15a9505b3f0e4344c9164268082da1ff7cc22
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65851575"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL 数据仓库中的临时表
@@ -24,7 +24,7 @@ ms.locfileid: "65851575"
 临时表在处理数据时非常有用 - 尤其是在具有暂时性中间结果的转换期间。 临时表位于 SQL 数据仓库中的会话级别。  它们仅对创建它们的会话可见，并在该会话注销时被自动删除。  临时表可以提高性能，因为其结果将写入到本地而不是远程存储。
 
 ## <a name="create-a-temporary-table"></a>创建临时表
-只需为表名添加 `#` 前缀，即可创建临时表。  例如:
+只需为表名添加 `#` 前缀，即可创建临时表。  例如：
 
 ```sql
 CREATE TABLE #stats_ddl

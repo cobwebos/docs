@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.openlocfilehash: db36bbf6e20f9fab2f9a99f59be7a088e8f208e1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65800912"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>将交互式查询与 HDInsight 配合使用
@@ -58,7 +58,7 @@ ms.locfileid: "65800912"
 若要查找 Java Database Connectivity (JDBC) 连接字符串：
 
 1. 使用以下 URL 登录到 Apache Ambari: `https://<cluster name>.AzureHDInsight.net`。
-2. 在左侧菜单中，选择“Hive”。
+2. 在左侧菜单中，选择“Hive”  。
 3. 若要复制 URL，请选择剪贴板图标：
    
    ![HDInsight Hadoop 交互式查询 LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
@@ -67,7 +67,7 @@ ms.locfileid: "65800912"
 
 * 了解如何[在 HDInsight 中创建交互式查询群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 * 了解如何[在 Azure HDInsight 中使用 Power BI 直观显示大数据](../hadoop/apache-hadoop-connect-hive-power-bi.md)。
-* 了解如何[使用 Apache Zeppelin 在 Azure HDInsight 运行 Apache Hive 查询](../interactive-query/hdinsight-connect-hive-zeppelin.md)。
+* 了解如何[在 Azure HDInsight 中使用 Apache Zeppelin 运行 Apache Hive 查询](../interactive-query/hdinsight-connect-hive-zeppelin.md)。
 * 了解如何[使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries)。
 * 了解如何[使用用于 Visual Studio Code 的 HDInsight 工具](../hdinsight-for-vscode.md)。
 * 了解如何[在 HDInsight 中将 Apache Hive 视图与 Apache Hadoop 配合使用](../hadoop/apache-hadoop-use-hive-ambari-view.md)

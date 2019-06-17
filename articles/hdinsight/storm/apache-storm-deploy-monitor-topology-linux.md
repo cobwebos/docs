@@ -8,21 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 8b27ad34bdc6fcbd7a1eb46515fbf33c96d02528
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c8b05886ae338bb73b0f4ddce4d02a1f1a926a45
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682898"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078246"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑 
 
 本文档介绍有关如何在 HDInsight 群集上管理和监视 Storm 上运行的 [Apache Storm](https://storm.apache.org/) 拓扑的基本知识。
-
-> [!IMPORTANT]  
-> 本文中的步骤需要使用 HDInsight 群集上基于 Linux 的 Storm。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。 
->
-
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -54,18 +49,18 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
     >
     > 针对 Visual Studio 的 Data Lake 工具包含在 Visual Studio 2017 的 __Azure 工作负荷__中。
 
-2. 打开 Visual Studio，选择“文件” > “新建” > “项目”。
+2. 打开 Visual Studio，选择“文件”   > “新建”   > “项目”  。
 
-3. 在“新建项目”对话框中，展开“已安装” > “模板”，并选择“HDInsight”。 从模板列表中，选择“Storm 示例”。 在对话框底部，键入应用程序的名称。
+3. 在“新建项目”  对话框中，展开“已安装”   > “模板”  ，并选择“HDInsight”  。 从模板列表中，选择“Storm 示例”  。 在对话框底部，键入应用程序的名称。
 
     ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 
-4. 在“解决方案资源管理器”中，右键单击项目，并选择“提交到 Storm on HDInsight”。
+4. 在“解决方案资源管理器”  中，右键单击项目，并选择“提交到 Storm on HDInsight”  。
 
    > [!NOTE]  
    > 如果出现提示，请输入 Azure 订阅的登录凭据。 如果有多个订阅，请登录包含 Storm on HDInsight 群集的订阅。
 
-5. 从“Storm 群集”下拉列表中选择 Storm on HDInsight 群集，并选择“提交”。 可以使用“输出”窗口监视提交是否成功。
+5. 从“Storm 群集”  下拉列表中选择 Storm on HDInsight 群集，并选择“提交”  。 可以使用“输出”  窗口监视提交是否成功。
 
 ## <a name="submit-a-topology-ssh-and-the-storm-command"></a>提交拓扑：SSH 和 Storm 命令
 
@@ -92,31 +87,31 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
 
 ## <a name="monitor-and-manage-visual-studio"></a>监视和管理：Visual Studio
 
-使用 Visual Studio 提交拓扑后，会出现“Storm 拓扑”视图。 从列表中选择拓扑，以查看有关正在运行的拓扑的信息。
+使用 Visual Studio 提交拓扑后，会出现“Storm 拓扑”视图  。 从列表中选择拓扑，以查看有关正在运行的拓扑的信息。
 
 ![visual studio 监视器](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
 
 > [!NOTE]  
-> 也可以通过依次展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，并选择“查看 Storm 拓扑”，以从“服务器资源管理器”查看“Storm 拓扑”。
+> 也可以通过依次展开“Azure”   > “HDInsight”  ，右键单击 Storm on HDInsight 群集，并选择“查看 Storm 拓扑”  ，以从“服务器资源管理器”  查看“Storm 拓扑”  。
 
 选择 Spout 或 Bolt 的形状可查看有关这些组件的信息。 每选择一项都会打开一个新窗口。
 
 ### <a name="deactivate-and-reactivate"></a>停用和重新激活
 
-停用某个拓扑会使它暂停，直到将它终止或重新激活。 若要执行这些操作，请使用“拓扑摘要”顶部的“停用”和“重新激活”按钮。
+停用某个拓扑会使它暂停，直到将它终止或重新激活。 若要执行这些操作，请使用“拓扑摘要”  顶部的“停用”  和“重新激活”  按钮。
 
 ### <a name="rebalance"></a>重新平衡
 
 重新平衡拓扑可以让系统修改拓扑的并行度。 例如，如果调整了群集的大小以添加更多节点，则重新平衡允许拓扑查看新节点。
 
-若要重新平衡拓扑，请使用“拓扑摘要”顶部的“重新平衡”按钮。
+若要重新平衡拓扑，请使用“拓扑摘要”  顶部的“重新平衡”  按钮。
 
 > [!WARNING]  
 > 重新平衡某个拓扑首先会停用该拓扑，然后跨群集平均重新分布辅助角色，最后让拓扑返回到发生重新平衡之前的状态。 因此，如果拓扑原本处于活动，则它将再次变为活动状态。 如果它原本已停用，则将保持停用状态。
 
 ### <a name="kill-a-topology"></a>终止拓扑
 
-Storm 拓扑会一直运行，直到它被停止，或者群集被删除。 若要停止拓扑，请使用“拓扑摘要”顶部的“终止”按钮。
+Storm 拓扑会一直运行，直到它被停止，或者群集被删除。 若要停止拓扑，请使用“拓扑摘要”  顶部的“终止”  按钮。
 
 ## <a name="monitor-and-manage-ssh-and-the-storm-command"></a>监视和管理：SSH 和 Storm 命令
 
@@ -159,7 +154,7 @@ Storm 拓扑在启动后，会不断运行，直到将其停止。 若要停止�
 
 ## <a name="monitor-and-manage-storm-ui"></a>监视和管理：Storm UI
 
-Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight 群集随附了此界面。 若要查看 Storm UI，请使用 Web 浏览器打开 **https://CLUSTERNAME.azurehdinsight.net/stormui**，其中 **CLUSTERNAME** 是群集的名称。
+Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight 群集随附了此界面。 若要查看 Storm UI，请使用 Web 浏览器打开 **https://CLUSTERNAME.azurehdinsight.net/stormui** ，其中 **CLUSTERNAME** 是群集的名称。
 
 > [!NOTE]  
 > 如果系统要求提供用户名和密码，请输入创建群集时使用的群集管理员用户名 (admin) 和密码。
@@ -175,7 +170,7 @@ Storm UI 的主页面提供以下信息：
 
 ### <a name="topology-summary"></a>拓扑摘要
 
-选择“拓扑摘要”部分中的链接会显示有关拓扑的以下信息：
+选择“拓扑摘要”  部分中的链接会显示有关拓扑的以下信息：
 
 * **拓扑摘要**：有关拓扑的基本信息。
 * **拓扑操作**：可对拓扑执行的管理操作。
@@ -186,20 +181,20 @@ Storm UI 的主页面提供以下信息：
 
     有关详细信息，请参阅<a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">了解 Apache Storm 拓扑的并行度</a>。
   * **终止**：在经过指定的超时之后终止 Storm 拓扑。
-* **拓扑统计信息**：有关拓扑的统计信息。 若要设置页面上剩余项的时间范围，请使用“窗口”列中的链接。
+* **拓扑统计信息**：有关拓扑的统计信息。 若要设置页面上剩余项的时间范围，请使用“窗口”  列中的链接。
 * **Spout**：拓扑使用的 Spout。 使用此部分中的链接可以查看有关特定 Spout 的详细信息。
 * **Bolt**：拓扑使用的 Bolt。 使用此部分中的链接可以查看有关特定 Bolt 的详细信息。
 * **拓扑配置**：所选拓扑的配置。
 
 ### <a name="spout-and-bolt-summary"></a>Spout 和 Bolt 摘要
 
-从“Spout”或“Bolt”部分中选择 spout 会显示有关选定项的以下信息：
+从“Spout”  或“Bolt”  部分中选择 spout 会显示有关选定项的以下信息：
 
 * **组件摘要**：有关 Spout 或 Bolt 的基本信息。
-* **Spout/Bolt 统计信息**：有关 Spout 或 Bolt 的统计信息。 若要设置页面上剩余项的时间范围，请使用“窗口”列中的链接。
+* **Spout/Bolt 统计信息**：有关 Spout 或 Bolt 的统计信息。 若要设置页面上剩余项的时间范围，请使用“窗口”  列中的链接。
 * **输入统计信息**（仅限 Bolt）：有关 Bolt 使用的输入流的信息。
 * **输出统计信息**：有关 Spout 或 Bolt 所发出的流的信息。
-* **执行程序**：有关 Spout 或 Bolt 实例的信息。 选择特定执行器的“端口”项可以查看针对此实例生成的诊断信息的日志。
+* **执行程序**：有关 Spout 或 Bolt 实例的信息。 选择特定执行器的“端口”  项可以查看针对此实例生成的诊断信息的日志。
 * **Errors**:Spout 或 Bolt 的任何错误信息。
 
 ## <a name="monitor-and-manage-rest-api"></a>监视和管理：REST API
@@ -213,12 +208,12 @@ Storm UI 是以 REST API 为基础生成的，因此，可以使用 API 执行�
 
 ### <a name="base-uri"></a>基本 URI
 
-基于 Linux 的 HDInsight 群集上的 REST API 的基本 URI 是在头节点上可用**https:\//HEADNODEFQDN:8744/api/v1/**。 头节点的域名在群集创建过程中生成，且非静态。
+基于 Linux 的 HDInsight 群集上的 REST API 的基本 URI 是在头节点上可用**https:\//HEADNODEFQDN:8744/api/v1/** 。 头节点的域名在群集创建过程中生成，且非静态。
 
 可以使用多种不同的方式查找群集头节点的完全限定域名 (FQDN)：
 
 * **从 SSH 会话**：通过与群集建立的 SSH 会话使用 `headnode -f` 命令。
-* **从 Ambari Web**：从页面顶部选择“服务”，然后选择“Storm”。 在“摘要”选项卡中，选择“Storm UI 服务器”。 页面顶部会显示承载 Storm UI 和 REST API 的节点的 FQDN。
+* **从 Ambari Web**：从页面顶部选择“服务”，然后选择“Storm”   。 在“摘要”  选项卡中，选择“Storm UI 服务器”  。 页面顶部会显示承载 Storm UI 和 REST API 的节点的 FQDN。
 * **从 Ambari REST API**：使用 `curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 命令来检索有关 Storm UI 和 REST API 正在其上运行的节点的信息。 将 **CLUSTERNAME** 替换为群集名称。 出现提示时，请输入登录（管理员）帐户的密码。 在响应中，“host_name”条目包含节点的 FQDN。
 
 ### <a name="authentication"></a>Authentication

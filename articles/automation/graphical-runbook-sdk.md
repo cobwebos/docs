@@ -10,10 +10,10 @@ ms.date: 07/20/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: bc9f1feff6d8d45e52c8621d1ec4b36e0a4a4a76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61303199"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>使用 Azure 自动化图形 Runbook SDK
@@ -95,7 +95,7 @@ var initializeRunbookVariable = runbook.AddActivity(
 
 活动由 `Orchestrator.GraphRunbook.Model` 命名空间中的以下类实现：
 
-|类  |活动  |
+|类  |activities  |
 |---------|---------|
 |CommandActivity     | 调用 PowerShell 命令（cmdlet、函数等）。        |
 |InvokeRunbookActivity     | 调用另一个内联 Runbook。        |

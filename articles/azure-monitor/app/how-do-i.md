@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
 ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60902010"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
@@ -25,13 +25,13 @@ ms.locfileid: "60902010"
 设置[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)。
 
 ### <a name="email-if-my-site-is-overloaded"></a>站点过载时发送电子邮件
-针对“服务器响应时间”设置[警报](../../azure-monitor/app/alerts.md)。 介于 1 和 2 秒之间的阈值应可解决问题。
+针对“服务器响应时间”设置[警报](../../azure-monitor/app/alerts.md)。  介于 1 和 2 秒之间的阈值应可解决问题。
 
 ![](./media/how-do-i/030-server.png)
 
-应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。
+应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。 
 
-如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。
+如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。 
 
 ### <a name="email-on-exceptions"></a>发生异常时发送电子邮件
 1. [设置异常监视](../../azure-monitor/app/asp-net-exceptions.md)
@@ -149,7 +149,7 @@ ms.locfileid: "60902010"
 若要**禁用选定的标准收集器**（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](../../azure-monitor/app/api-custom-events-metrics.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
 
 ## <a name="view-system-performance-counters"></a>查看系统性能计数器
-可以在指标资源管理器中显示的指标信息是一组系统性能计数器。 有一个标题为“服务器”的预定义边栏选项卡显示了其中的多个计数器。
+可以在指标资源管理器中显示的指标信息是一组系统性能计数器。 有一个标题为“服务器”的预定义边栏选项卡显示了其中的多个计数器。 
 
 ![打开 Application Insights 资源并单击“服务器”](./media/how-do-i/121-servers.png)
 

@@ -15,10 +15,10 @@ ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 15b3fb4ae483e5b0e4f930d0dc08de6d198d0e5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61128781"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 端的监视和故障排除
@@ -94,10 +94,10 @@ ms.locfileid: "61128781"
 请参阅 [SAP Note #2081065 - Troubleshooting SAP HANA Network](https://launchpad.support.sap.com/#/notes/2081065)（SAP 说明 #2081065 - SAP HANA 网络故障排除）并执行此 SAP 说明中的网络故障排除步骤。
 
 1. 分析服务器与客户端之间的往返时间。
-  A. 运行 SQL 脚本 [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700)_。_
+  A. 运行 SQL 脚本 [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) _。_
   
 2. 分析节点间通信。
-  A. 运行 SQL 脚本 [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700)_。_
+  A. 运行 SQL 脚本 [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) _。_
 
 3. 运行 Linux 命令 **ifconfig**（输出会显示是否发生了任何丢包情况）。
 4. 运行 Linux 命令 **tcpdump**。
@@ -108,7 +108,7 @@ ms.locfileid: "61128781"
 
 ## <a name="storage"></a>存储
 
-从最终用户的角度看，应用程序 （或作为一个整体系统） 运行缓慢、 无响应，或可能甚至看起来停止响应是否输入/输出性能问题。 在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷。
+从最终用户的角度看，应用程序 （或作为一个整体系统） 运行缓慢、 无响应，或可能甚至看起来停止响应是否输入/输出性能问题。 在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷。 
 
 ![在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
@@ -124,7 +124,7 @@ ms.locfileid: "61128781"
 
 请参阅 [SAP Note #1969700 - SQL statement collection for SAP HANA](https://launchpad.support.sap.com/#/notes/1969700)（SAP 说明 #1969700 - SAP HANA 的 SQL 语句集合），并下载该说明随附的 SQL Statements.zip 文件。 将此 .zip 文件存储在本地硬盘上。
 
-在 SAP HANA Studio 中的“System Information”（系统信息）选项卡上，右键单击“Name”（名称）并选择“Import SQL Statements”（导入 SQL 语句）。
+在 SAP HANA Studio 中的“System Information”（系统信息）选项卡上，右键单击“Name”（名称）并选择“Import SQL Statements”（导入 SQL 语句）。   
 
 ![在 SAP HANA Studio 中的“System Information”（系统信息）选项卡上，右键单击“Name”（名称）并选择“Import SQL Statements”（导入 SQL 语句）](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
@@ -136,7 +136,7 @@ ms.locfileid: "61128781"
 
 ![整个 SQL 语句会打开，允许用户更改然后执行输入参数（modification 节）](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-另一个示例是用鼠标右键单击下面的语句**复制：概述**。 从上下文菜单中选择“Execute”（执行）：
+另一个示例是用鼠标右键单击下面的语句**复制：概述**。 从上下文菜单中选择“Execute”（执行）： 
 
 ![另一个示例是用鼠标右键单击复制下面的语句：概述。 从上下文菜单中选择“Execute”（执行）](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
@@ -160,11 +160,11 @@ ms.locfileid: "61128781"
 
 ![用于显示 SAP HANA 服务信息的 HANA\_Services\_Statistics](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-用于显示有关 SAP HANA 实例的常规信息的 **HANA\_Configuration\_Overview\_Rev110+**。
+用于显示有关 SAP HANA 实例的常规信息的 **HANA\_Configuration\_Overview\_Rev110+** 。
 
 ![用于显示有关 SAP HANA 实例的常规信息的 HANA\_Configuration\_Overview\_Rev110+](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-用于检查 SAP HANA 参数的 **HANA\_Configuration\_Parameters\_Rev70+**。
+用于检查 SAP HANA 参数的 **HANA\_Configuration\_Parameters\_Rev70+** 。
 
 ![用于检查 SAP HANA 参数的 HANA\_Configuration\_Parameters\_Rev70+](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 

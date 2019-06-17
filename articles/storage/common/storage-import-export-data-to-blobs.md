@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 68f62a6945f3b651781414e3194104b6d2e6295c
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.openlocfilehash: 72a91fefc26e9c0b6d5a91223119815c4fcb9551
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455809"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808584"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
@@ -58,7 +58,7 @@ ms.locfileid: "66455809"
 6.  若要准备磁盘，请运行以下命令。 **这可能要花费几小时到几天时间，具体取决于数据大小。** 
 
     ```
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite /enablecontentmd5 
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite 
     ```
     在运行该工具的同一文件夹中会创建一个日志文件。 还会创建两个其他文件 - 一个 *.xml* 文件（您在其中运行工具的文件夹）和一个 *drive-manifest.xml* 文件（数据所在的文件夹）。
     
@@ -74,7 +74,7 @@ ms.locfileid: "66455809"
     |/dstdir:     |Azure 存储中的目标容器的名称。         |
     |/blobtype:     |此选项指定你想要导入到数据的 blob 的类型。 对于块 blob，这是`BlockBlob`对于页 blob，它是`PagaBlob`。         |
     |/skipwrite:     |此选项指定没有需要复制的新数据并且要准备磁盘上的现有数据。          |
-    |/enablecontentmd5:     |选项启用时，可确保 MD5 计算过程中上传到 Azure 块 blob。          |
+    |/enablecontentmd5:     |选项启用时，可确保 MD5 计算，并将设置为`Content-md5`上每个 blob 的属性。 使用此选项，仅当你想要使用`Content-md5`字段后将数据上传到 Azure。 <br> 此选项不会影响数据完整性检查 （即默认情况下发生）。 该设置会增加所需上传到云的数据的时间。          |
 7. 为需要寄送的每个磁盘重复前面的步骤。 每次运行该命令行时，都会使用所提供的名称创建一个日志文件。
     
     > [!IMPORTANT]
@@ -84,7 +84,7 @@ ms.locfileid: "66455809"
 
 在 Azure 门户中执行以下步骤来创建导入作业。
 
-1. 登录到 https://portal.azure.com/。
+1. 登录到 https://portal.azure.com/ 。
 2. 转到“所有服务”>“存储”>“导入/导出作业”  。 
     
     ![转到导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob1.png)

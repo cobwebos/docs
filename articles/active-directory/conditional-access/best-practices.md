@@ -1,8 +1,8 @@
 ---
-title: Azure Active Directory 中条件性访问的最佳实践 | Microsoft Docs
-description: 了解用户须知内容，以及在配置条件性访问策略时应避免的操作。
+title: Azure Active Directory 中条件性访问的最佳实践 |Microsoft Docs
+description: 了解用户须知以及它是配置条件性访问策略时，应避免这样做。
 services: active-directory
-keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
+keywords: 条件访问应用，Azure AD 中，安全地访问公司资源，条件性访问策略的条件性访问
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,21 +18,21 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67811e03bfa87a991b9eeb6f80ddddd87f781335
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 8e7b77376989031dc1697d155cccf59954233a85
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305740"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112656"
 ---
-# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件性访问的最佳实践
+# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件性访问的最佳做法
 
-使用 [Azure Active Directory (Azure AD) 条件访问](../active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用程序的方式。 本文提供以下事项的信息：
+与[Azure Active Directory (Azure AD) 条件性访问](../active-directory-conditional-access-azure-portal.md)，可以控制如何授权的用户访问你的云应用。 本文提供以下事项的信息：
 
 - 应了解的内容 
-- 在配置条件性访问策略时应避免的操作。 
+- 它是什么，应避免在配置条件性访问策略。 
 
-本文假定你熟悉 [Azure Active Directory 中的条件访问是什么？](../active-directory-conditional-access-azure-portal.md)中所述的概念和术语
+本文假定，您熟悉的概念和术语中所述[什么是 Azure Active Directory 中条件访问？](../active-directory-conditional-access-azure-portal.md)
 
 
 
@@ -48,8 +48,8 @@ ms.locfileid: "66305740"
 
 | 对象           | 方式                                  | Why |
 | :--            | :--                                  | :-- |
-| 云应用  |选择一个或多个应用。  | 条件访问策略的目标是使你能够控制已授权用户访问云应用的方式。|
-| 用户和组  | 至少选择一个已经授权的用户或组来访问所选云应用。 | 未在其中分配任何用户和组的条件性访问策略永远不会触发。 |
+| 云应用  |选择一个或多个应用。  | 条件性访问策略的目标是使您可以控制如何获得授权的用户可以访问云应用。|
+| 用户和组  | 至少选择一个已经授权的用户或组来访问所选云应用。 | 永远不会触发任何用户和组分配，一个条件性访问策略。 |
 | 访问控制  | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。 |
 
 
@@ -59,9 +59,9 @@ ms.locfileid: "66305740"
 
 
 
-### <a name="how-are-conditional-access-policies-applied"></a>条件访问策略是如何应用的？
+### <a name="how-are-conditional-access-policies-applied"></a>如何应用条件性访问策略？
 
-访问云应用时，可能会应用多个条件访问策略。 在这种情况下，必须满足所应用的所有策略。 例如，如果一个策略需要 MFA，并且另一个策略需要符合标准的设备，则你必须通过 MFA 并使用符合标准的设备。 
+访问云应用程序时，可能会应用多个条件性访问策略。 在这种情况下，必须满足所应用的所有策略。 例如，如果一个策略需要 MFA，并且另一个策略需要符合标准的设备，则你必须通过 MFA 并使用符合标准的设备。 
 
 所有策略都是在两个阶段中强制实施的：
 
@@ -87,11 +87,11 @@ ms.locfileid: "66305740"
 
 ### <a name="what-to-do-if-you-are-locked-out-of-the-azure-ad-admin-portal"></a>如果你被锁定在 Azure AD 管理门户之外，该怎么办？
 
-如果你因为条件性访问策略中的设置不正确而被锁定在 Azure AD 门户之外，则请执行以下操作：
+如果你被锁定在 Azure AD 门户之外由于条件性访问策略中设置不正确：
 
 - 检查组织中是否有其他管理员尚未被阻止。 具有 Azure 门户访问权限的管理员可以禁用影响你登录的策略。 
 
-- 如果组织中没有管理员可以更新策略，则需提交支持请求。 Microsoft 支持人员可以审核并更新妨碍访问的条件性访问策略。
+- 如果组织中没有管理员可以更新策略，则需提交支持请求。 Microsoft 支持部门可以查看并更新妨碍访问的条件性访问策略。
 
 
 ### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>如果在 Azure 经典门户和 Azure 门户中配置了策略，会发生什么情况？  
@@ -109,7 +109,7 @@ ms.locfileid: "66305740"
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件性访问是否适用于 Exchange ActiveSync？
 
-是的可以在某些条件性访问策略中使用 Exchange ActiveSync[限制](https://docs.microsoft.com/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo#exchange-activesync)。 
+是的可以在某些条件性访问策略中使用 Exchange ActiveSync[限制](https://docs.microsoft.com/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo)。 
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>要如何与 Office 365 应用配置条件性访问？
 
@@ -125,7 +125,7 @@ ms.locfileid: "66305740"
 
 ## <a name="what-you-should-avoid-doing"></a>应避免的操作
 
-条件访问框架提供了极大的配置灵活性。 不过，极大的灵活性也意味着应先仔细检查每个配置策略，然后才能发布，以免产生不良结果。 在这种情况下，应该特别注意影响完整集的任务，例如**所有用户/组/云应用**。
+条件性访问框架提供了极大的配置灵活性。 不过，极大的灵活性也意味着应先仔细检查每个配置策略，然后才能发布，以免产生不良结果。 在这种情况下，应该特别注意影响完整集的任务，例如**所有用户/组/云应用**。
 
 在环境中，应避免以下配置：
 
@@ -171,7 +171,7 @@ ms.locfileid: "66305740"
 
 - 可以通过合并来减少需要管理的策略数。   
 
-- 可以在一个中心位置管理所有条件访问策略。
+- 你可以管理在一个中心位置的所有条件性访问策略。
 
 - Azure 经典门户已停用。   
 
@@ -183,5 +183,5 @@ ms.locfileid: "66305740"
 
 如果希望了解：
 
-- 如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
-- 如何规划条件访问策略，请参阅[如何在 Azure Active Directory 中规划条件访问部署](plan-conditional-access.md)。
+- 如何配置条件性访问策略，请参阅[需要 MFA 的特定应用的 Azure Active Directory 条件性访问](app-based-mfa.md)。
+- 如何计划条件性访问策略，请参阅[如何规划 Azure Active Directory 中的条件性访问部署](plan-conditional-access.md)。

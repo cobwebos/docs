@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66125213"
 ---
 ## <a name="transfer-local-files-to-cloud-shell"></a>将本地文件传输到 Cloud Shell
@@ -19,13 +19,13 @@ ms.locfileid: "66125213"
 ![本地文件列表](../articles/cloud-shell/media/persisting-shell-storage/download.png)
 1. 在 Azure 门户中，转到已装载的文件共享。
 2. 选择目标文件。
-3. 选择“下载”按钮。
+3. 选择“下载”按钮  。
 
-### <a name="upload-files"></a>上载文件
+### <a name="upload-files"></a>上传文件
 
 ![要上传的本地文件](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
 1. 请转到已装在的文件共享。
-2. 选择“上传”按钮。
+2. 选择“上传”按钮  。
 3. 选择要上传的文件。
 4. 确认上传。
 

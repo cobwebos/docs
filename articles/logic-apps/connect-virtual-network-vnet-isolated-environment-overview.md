@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/06/2019
 ms.openlocfilehash: 1ef8c8eec3865f2a6e363e7da1dbda9504b81c05
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546443"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
@@ -57,7 +57,7 @@ ISE 和非 ISE 连接器之间的区别在于触发器和操作运行的位置�
 
   ![选择"Core"内置触发器和操作](./media/connect-virtual-network-vnet-isolated-environment-overview/select-core-built-in-actions-triggers.png)
 
-* 在 ISE 中运行的连接器具有可公开宿主的全局的逻辑应用服务中提供的版本。 提供两个版本，连接器与连接器**ISE**标签始终在逻辑应用所在的同一 ISE 中运行。 没有 ISE 标签的连接器运行在全局逻辑应用服务中。
+* 在 ISE 中运行的连接器具有可公开宿主的全局的逻辑应用服务中提供的版本。 提供两个版本，连接器与连接器**ISE**标签始终在逻辑应用所在的同一 ISE 中运行。 没有 ISE  标签的连接器运行在全局逻辑应用服务中。
 
   ![选择 ISE 连接器](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
@@ -81,7 +81,7 @@ ISE 和非 ISE 连接器之间的区别在于触发器和操作运行的位置�
 
 ## <a name="integration-accounts-with-ise"></a>集成帐户与 ISE
 
-可以在集成服务环境 (ISE) 中将集成帐户与逻辑应用结合使用。 但是，这些集成帐户必须使用相同的 ISE 作为链接的逻辑应用。 ISE 中的逻辑应用只能引用同一 ISE 中的这些集成帐户。 创建集成帐户时，可以选择 ISE 作为集成帐户的位置。
+可以在集成服务环境 (ISE) 中将集成帐户与逻辑应用结合使用。 但是，这些集成帐户必须使用相同的 ISE  作为链接的逻辑应用。 ISE 中的逻辑应用只能引用同一 ISE 中的这些集成帐户。 创建集成帐户时，可以选择 ISE 作为集成帐户的位置。
 
 ## <a name="next-steps"></a>后续步骤
 

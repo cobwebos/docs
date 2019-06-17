@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
 ms.openlocfilehash: fe6705dc3dedd521357f924dd433c7eacf88ba84
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64718643"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>使用 psql 将数据批量加载到 Apache Phoenix
@@ -62,7 +62,7 @@ ms.locfileid: "64718643"
     SELECT Name, Income from Customers group by Country;
     ```
 
-4. 打开一个新的 Hadoop 命令窗口，以批量加载数据。 首先，使用 `cd` 命令切换到执行目录位置，然后使用 `psql` 工具（Python `psql.py` 命令）。 
+4. 打开一个新的 Hadoop 命令窗口，以批量加载数据。  首先，使用 `cd` 命令切换到执行目录位置，然后使用 `psql` 工具（Python `psql.py` 命令）。 
 
     以下示例要求已使用 `hdfs` 将 `customers.csv` 文件从存储帐户复制到本地临时目录，如上面的步骤 2 所示。
 
@@ -136,7 +136,7 @@ ms.locfileid: "64718643"
 
 * 将输入文件拆分成大约 10 GB 的区块。 批量加载是存储密集型操作，因此将输入文件拆分成多个区块可以提高性能。
 
-* 避免区域服务器作用点。 如果行键单调递增，HBase 顺序写入可能导致生成区域服务器作用点。 对行键进行加盐处理可以减少顺序写入。 Phoenix 提供一种可在后台以加盐字节对特定表的行键进行加盐处理的方法，如以下参考文档中所述。
+* 避免区域服务器作用点。 如果行键单调递增，HBase 顺序写入可能导致生成区域服务器作用点。 对行键进行加盐处理可以减少顺序写入。  Phoenix 提供一种可在后台以加盐字节对特定表的行键进行加盐处理的方法，如以下参考文档中所述。
 
 ## <a name="next-steps"></a>后续步骤
 

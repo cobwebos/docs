@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bb0726fdddf6d20a9c8c5f20d6cec0cae68322ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60586891"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67119262"
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>简介
@@ -204,11 +204,11 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 -   当某个指标超过特定的阈值，从而影响资源的性能时，可以**接收通知**。
 
--   配置自动化操作，例如自动缩放资源，或者在指标超过特定的阈值时触发 runbook。
+-   配置自动化操作  ，例如自动缩放资源，或者在指标超过特定的阈值时触发 runbook。
 
 -   针对资源的性能或使用趋势**执行高级分析**或报告。
 
--   出于符合性或审核目的，对资源的性能或运行状况历史记录进行存档。
+-   出于符合性或审核目的，对资源的性能或运行状况历史记录进行存档  。
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
@@ -224,10 +224,10 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 网络观察程序目前提供以下功能：
 
--   <a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">审核日志</a> - 记录网络配置过程中执行的操作。 可在 Azure 门户中查看，或者使用 Power BI 等 Microsoft 工具或第三方工具检索这些日志。 可通过门户、PowerShell、CLI 和 REST API 获取审核日志。 有关审核日志的详细信息，请参阅“使用资源管理器审核操作”。 针对所有网络资源执行的操作都有相应的审核日志。
+-   <a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">审核日志</a>  - 记录网络配置过程中执行的操作。 可在 Azure 门户中查看，或者使用 Power BI 等 Microsoft 工具或第三方工具检索这些日志。 可通过门户、PowerShell、CLI 和 REST API 获取审核日志。 有关审核日志的详细信息，请参阅“使用资源管理器审核操作”。 针对所有网络资源执行的操作都有相应的审核日志。
 
 
--   <a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP 流验证</a> - 根据流信息 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果网络安全组拒绝了数据包，则返回拒绝该数据包的规则和网络安全组。
+-   <a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP 流验证</a>  - 根据流信息 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果网络安全组拒绝了数据包，则返回拒绝该数据包的规则和网络安全组。
 
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">下一跃点</a>** - 确定 Azure 网络结构中路由的数据包的下一跃点，以便诊断任何错误配置的用户定义路由。
 
@@ -276,7 +276,7 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 Azure AD 还包含整套标识管理功能，例如多重身份验证、设备注册、自助密码管理、自助组管理、特权帐户管理、基于角色的访问控制、应用程序使用情况监视、多样化审核以及安全监视和警报。
 
--   使用 Azure AD 多重身份验证和条件性访问提高应用程序安全性。
+-   提高应用程序与 Azure AD 多重身份验证和条件性访问的安全性。
 
 -   利用安全报告和监视来监视应用程序使用情况并防止企业受到严重威胁。
 

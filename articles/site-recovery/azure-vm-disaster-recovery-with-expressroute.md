@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772357"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成
@@ -89,7 +89,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 - **分支 VNet**。 应用部署在两个分支 vNet 中：
     - **源 vNet1**：10.1.0.0/24。
     - **源 vNet2**：10.2.0.0/24。
-    - 每个分支虚拟网络都连接到“中心 vNet”。
+    - 每个分支虚拟网络都连接到“中心 vNet”  。
 - **中心 vNet**。 **中心 vNet“源中心 vNet”：** 10.10.10.0/24。
   - 此中心 vNet 充当网关守卫。
   - 跨子网的所有通信都通过此中心进行。
@@ -104,7 +104,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 
 #### <a name="spoke-to-hub"></a>分支到中心
 
-**Direction** | **设置** | **State**
+**Direction** | **设置** | **状态**
 --- | --- | ---
 分支到中心 | 允许虚拟网络地址 | Enabled
 分支到中心 | 允许转发流量 | Enabled
@@ -115,7 +115,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 
 #### <a name="hub-to-spoke"></a>中心到分支
 
-**Direction** | **设置** | **State**
+**Direction** | **设置** | **状态**
 --- | --- | ---
 中心到分支 | 允许虚拟网络地址 | Enabled
 中心到分支 | 允许转发流量 | Enabled

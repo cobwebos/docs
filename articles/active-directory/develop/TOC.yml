@@ -139,6 +139,8 @@
                   href: scenario-protected-web-api-app-registration.md
                 - name: 代码配置
                   href: scenario-protected-web-api-app-configuration.md
+                - name: 范围或应用角色的验证
+                  href: scenario-protected-web-api-verification-scope-app-roles.md
                 - name: 移到生产环境
                   href: scenario-protected-web-api-production.md
             - name: 用于调用 Web API 的 Web API

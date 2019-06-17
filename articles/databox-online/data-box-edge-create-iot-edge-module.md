@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: alkohli
 ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64680901"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>开发C#IoT Edge 模块来移动数据框边缘上的文件
@@ -63,24 +63,24 @@ ms.locfileid: "64680901"
 Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中存储和管理专用 Docker 容器映像。 可以在云中使用的两个常见 Docker 注册表服务分别是 Azure 容器注册表和 Docker 中心。 本文使用容器注册表。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 选择“创建资源”>“容器”>“容器注册表”。 单击**创建**。
+2. 选择“创建资源”>“容器”>“容器注册表”  。 单击**创建**。
 3. 提供：
 
-   1. Azure 中的唯一“注册表名称”，可包含 5 到 50 个字母数字字符。
-   2. 选择“订阅”。
-   3. 创建新的资源组，或选择现有的“资源组”。
-   4. 选择“位置” 。 我们建议此位置应该与 Data Box Edge 资源的关联位置相同。
-   5. 将“管理员用户”切换到“启用”。
-   6. 将 SKU 设置为“基本”。
+   1. Azure 中的唯一“注册表名称”  ，可包含 5 到 50 个字母数字字符。
+   2. 选择“订阅”  。
+   3. 创建新的资源组，或选择现有的“资源组”  。
+   4. 选择“位置”  。 我们建议此位置应该与 Data Box Edge 资源的关联位置相同。
+   5. 将“管理员用户”切换到“启用”。  
+   6. 将 SKU 设置为“基本”  。
 
       ![创建容器注册表](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. 选择“创建”。
-5. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。
+4. 选择“创建”  。
+5. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。 
 
     ![获取访问密钥](./media/data-box-edge-create-iot-edge-module/get-access-keys-1.png)
  
-6. 复制“登录服务器”、“用户名”和“密码”的值。 你稍后使用这些值将 Docker 映像发布到注册表，并将注册表凭据添加到 Azure IoT Edge 运行时。
+6. 复制“登录服务器”、“用户名”和“密码”的值。    你稍后使用这些值将 Docker 映像发布到注册表，并将注册表凭据添加到 Azure IoT Edge 运行时。
 
 
 ## <a name="create-an-iot-edge-module-project"></a>创建 IoT Edge 模块项目
@@ -91,8 +91,8 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 创建可以使用自己的代码自定义的 C# 解决方案模板。
 
-1. 在 Visual Studio Code 中，选择“查看”>“命令面板”，以打开 VS Code 命令面板。
-2. 在命令面板中，输入并运行命令“Azure: Sign in”并按照说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
+1. 在 Visual Studio Code 中，选择“查看”>“命令面板”  ，以打开 VS Code 命令面板。
+2. 在命令面板中，输入并运行命令“Azure:  Sign in”并按照说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
 3. 在命令面板中，输入并运行“Azure IoT Edge: **New IoT Edge Solution** 命令。 在命令面板中提供以下信息，以便创建解决方案：
 
     1. 选择要在其中创建解决方案的文件夹。
@@ -100,8 +100,8 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
     
         ![创建新解决方案 1](./media/data-box-edge-create-iot-edge-module/create-new-solution-1.png)
 
-    3. 选择“C# 模块”作为模块模板。
-    4. 将默认模块名称替换为你想要分配的名称，在此案例中，它是“FileCopyModule”。
+    3. 选择“C# 模块”作为模块模板。 
+    4. 将默认模块名称替换为你想要分配的名称，在此案例中，它是“FileCopyModule”  。
     
         ![创建新解决方案 2](./media/data-box-edge-create-iot-edge-module/create-new-solution-2.png)
 
@@ -111,11 +111,11 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
         ![创建新解决方案 3](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
 
-4. 转到“文件”>“打开文件夹”。
+4. 转到“文件”>“打开文件夹”  。
 
     ![创建新解决方案 4](./media/data-box-edge-create-iot-edge-module/create-new-solution-4.png)
 
-5. 浏览并指向先前创建的文件夹 EdgeSolution。 VS Code 窗口将加载你的 IoT Edge 解决方案空间及其五个顶级组件。 在本文中，不会编辑 .vscode 文件夹、.gitignore 文件、.env  文件和 deployment.template.json。
+5. 浏览并指向先前创建的文件夹 EdgeSolution  。 VS Code 窗口将加载你的 IoT Edge 解决方案空间及其五个顶级组件。 在本文中，不会编辑 .vscode  文件夹、.gitignore  文件、.env  文件和 deployment.template.json  。
     
     修改的组件仅是 modules 文件夹。 此文件夹包含 module 和 Docker 文件的 C# 代码，可将模块生成为容器映像。
 
@@ -124,13 +124,13 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 ### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
 1. 在 VS Code 资源管理器中打开**模块 > FileCopyModule > Program.cs**。
-2. 在 FileCopyModule namespace 的顶部，为稍后要使用的类型添加三个 using 语句。 Microsoft.Azure.Devices.Client.Transport.Mqtt 是一种协议，可将消息发送到 IoT Edge 中心。
+2. 在 FileCopyModule namespace  的顶部，为稍后要使用的类型添加三个 using 语句。 Microsoft.Azure.Devices.Client.Transport.Mqtt  是一种协议，可将消息发送到 IoT Edge 中心。
 
     ```
     using Microsoft.Azure.Devices.Client.Transport.Mqtt;
     using Newtonsoft.Json;
     ```
-3. 将“InputFolderPath”和“OutputFolderPath”变量添加到 Program 类。
+3. 将“InputFolderPath”  和“OutputFolderPath”  变量添加到 Program 类。
 
     ```
     class Program
@@ -140,7 +140,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. 将 MessageBody 类添加到 Program 类。 这些类将为传入消息的正文定义所需的架构。
+4. 将 MessageBody  类添加到 Program 类。 这些类将为传入消息的正文定义所需的架构。
 
     ```
     /// <summary>
@@ -156,7 +156,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
     }
     ```
 
-5. 在 Init 方法中，此代码创建并配置 ModuleClient 对象。 该对象允许模块使用 MQTT 协议连接到本地 Azure IoT Edge 运行时，以发送并接收消息。 在 Init 方法中使用的连接字符串由 IoT Edge 运行时提供给模块。 代码注册 FileCopy 回调，以通过 input1 终结点从 IoT Edge 中心接收消息。
+5. 在 Init 方法中，此代码创建并配置 ModuleClient 对象   。 该对象允许模块使用 MQTT 协议连接到本地 Azure IoT Edge 运行时，以发送并接收消息。 在 Init 方法中使用的连接字符串由 IoT Edge 运行时提供给模块。 代码注册 FileCopy 回调，以通过 input1  终结点从 IoT Edge 中心接收消息。
 
     ```
     /// <summary>
@@ -178,7 +178,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
     }
     ```
 
-6. 插入 FileCopy 的代码。
+6. 插入 FileCopy  的代码。
 
     ```
         /// <summary>
@@ -250,15 +250,15 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
     ![生成并推送 IoT Edge 解决方案](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
 
-2. 提示输入密码时，提供密码。 还可以从 Azure 门户中容器注册表的“访问密钥”中检索登录服务器的值、用户名和密码。
+2. 提示输入密码时，提供密码。 还可以从 Azure 门户中容器注册表的“访问密钥”  中检索登录服务器的值、用户名和密码。
  
-3. 提供凭据后，可将模块映像推送到 Azure 容器注册表。 在 VS Code 资源管理器中，右键单击 module.json 文件，然后选择“生成并推送 IoT Edge 解决方案”。
+3. 提供凭据后，可将模块映像推送到 Azure 容器注册表。 在 VS Code 资源管理器中，右键单击 module.json 文件  ，然后选择“生成并推送 IoT Edge 解决方案”  。
 
     ![生成并推送 IoT Edge 解决方案](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     告知 Visual Studio Code 生成解决方案时，它将在集成终端中运行两个命令：docker build 和 docker push。 这两个命令会生成代码，将 CSharpModule.dll 容器化，然后将代码推送到在初始化解决方案时指定的容器注册表。
 
-    系统将提示你选择模块平台。 选择和 Linux 对应的 amd64。
+    系统将提示你选择模块平台。 选择和 Linux 对应的 amd64  。
 
     ![选择平台](./media/data-box-edge-create-iot-edge-module/select-platform.png)
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9adf8dd4a5a3c469ed130b29308a0d828aee40bf
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873985"
 ---
 # <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室的实验室中的自动关闭策略
@@ -27,8 +27,8 @@ ms.locfileid: "65873985"
 ## <a name="set-auto-shutdown-policy-for-a-lab"></a>设置自动关闭策略的实验室
 实验室所有者可针对实验室中的所有 VM 配置关机计划。 这样可以节省成本，因为未使用（空闲）的计算机不会运行。 可以集中针对所有实验室 VM 实施关机策略，省得实验室用户付出精力针对每个计算机设置计划。 使用此功能可以针对实验室计划设置策略，一开始不为实验室用户提供任何控制权，逐渐为他们提供完全控制权。 实验室所有者可通过以下步骤配置此策略：
 
-1. 在实验室的主页上，选择“配置和策略”。
-2. 在左侧菜单的“计划”部分选择“自动关机策略”。
+1. 在实验室的主页上，选择“配置和策略”。 
+2. 在左侧菜单的“计划”部分选择“自动关机策略”。  
 3. 选择一个选项。 以下各节提供了有关这些选项的更多详细信息：设置策略仅适用于在实验室中创建的新 Vm 和不到现有的 Vm。 
 
     ![自动关闭策略选项](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
@@ -39,18 +39,18 @@ ms.locfileid: "65873985"
 若要查看（和更改）实验室策略，请按以下步骤操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+2. 选择“所有服务”  ，并从列表中选择“开发测试实验室”  。
 3. 从实验室列表，选择所需的实验室。   
-4. 选择“配置和策略”。
+4. 选择“配置和策略”。 
 
     ![策略设置窗格](./media/devtest-lab-set-lab-policy/policies-menu.png)
 5. 在实验室的**配置和策略**窗格中，选择**自动关闭**下**计划**。
    
     ![自动关闭](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
-6. 选择“开启”启用此策略，选择“关闭”禁用此策略。
+6. 选择“开启”  启用此策略，选择“关闭”  禁用此策略。
 7. 如果启用此策略，请指定要关闭当前实验室中所有 VM 的时间（和时区）。
-8. 指定**是**或**否**选项来指定自动关闭时间前 15 分钟发送一条通知。 如果选择“是”，请输入 Webhook URL 终结点或电子邮件地址，指定要将通知发布或发送到的位置。 用户会收到通知，其中提供了延迟关闭的选项。 有关详细信息，请参阅[通知](#notifications)部分。 
-9. 选择“保存”。
+8. 指定**是**或**否**选项来指定自动关闭时间前 15 分钟发送一条通知。 如果选择“是”，请输入 Webhook URL 终结点或电子邮件地址，指定要将通知发布或发送到的位置  。 用户会收到通知，其中提供了延迟关闭的选项。 有关详细信息，请参阅[通知](#notifications)部分。 
+9. 选择“保存”。 
 
     默认情况下，一旦启用，此策略会应用到当前实验室中所有 VM。 若要从特定 VM 中删除此设置，请打开 VM 的管理窗格，并更改其**自动关闭**设置。
 
@@ -96,7 +96,7 @@ ms.locfileid: "65873985"
 2. 上**逻辑应用-创建**页上，执行以下步骤： 
     1. 输入**名称**为逻辑应用。
     2. 选择 **Azure 订阅**。
-    3. 创建新的资源组，或选择现有资源组。 
+    3. 创建新的资源组  ，或选择现有资源组。 
     4. 选择**位置**为逻辑应用。 
 
         ![新的逻辑应用的设置](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
@@ -174,11 +174,11 @@ ms.locfileid: "65873985"
         ![发送电子邮件选项](./media/devtest-lab-auto-shutdown/select-send-email.png)
     3. 选择**登录**登录到电子邮件帐户。 
     4. 选择**TO**字段，并选择所有者。
-    5. 选择**使用者**，并输入电子邮件通知的主题。 例如:"关闭实验室的机 vmName: labName。"
+    5. 选择**使用者**，并输入电子邮件通知的主题。 例如："关闭实验室的机 vmName: labName。"
     6. 选择**正文**，并定义电子邮件通知的正文内容。 例如:"vmName 计划在 15 分钟内关闭。 通过单击跳过此次关闭：URL。 一小时的延迟关闭： delayUrl60。 2 小时的延迟关闭： delayUrl120。"
 
         ![请求正文 JSON 架构](./media/devtest-lab-auto-shutdown/email-options.png)
-1. 在工具栏上选择“保存”。 现在，你可以将复制**HTTP POST URL**。 选择复制按钮以将 URL 复制到剪贴板。 
+1. 在工具栏上选择“保存”。  现在，你可以将复制**HTTP POST URL**。 选择复制按钮以将 URL 复制到剪贴板。 
 
     ![WebHook URL](./media/devtest-lab-auto-shutdown/webhook-url.png)
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f430a832ffb35b95d0bf4eff2d82be5ecc3d865c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42de060d81539030ef1970e01e753383662e924f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472343"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083911"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 
-必须防止意外地被锁在 Azure Active Directory (Azure AD) 租户之外，因为在这种情况下，无法以管理员的身份登录或激活现有的个人用户帐户。 可在租户中创建两个或更多紧急访问帐户，缓解不经意丧失管理访问权限造成的影响。
+必须防止意外地被锁在 Azure Active Directory (Azure AD) 租户之外，因为在这种情况下，无法以管理员的身份登录或激活现有的个人用户帐户。 可在租户中创建两个或更多紧急访问帐户，缓解不经意丧失管理访问权限造成的影响  。
 
 紧急访问帐户拥有较高的特权，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“破窗”紧急情况，即不能使用正常管理帐户的情况。 组织必须始终以将紧急帐户的使用限于绝对必要情况为目标。
 
@@ -43,7 +43,7 @@ ms.locfileid: "60472343"
 配置这些帐户时，必须满足以下要求：
 
 - 紧急访问帐户不应与组织中的任何单个用户相关联。 确保帐户未关联到任何员工提供的移动电话、会随单个员工流动的硬件令牌或其他特定于员工的凭据。 此预防措施介绍需要凭据而无法找到某个拥有凭据的员工时的情况。 请务必确保将任何已注册设备保存在与 Azure AD 有多种通信方式的已知安全位置。
-- 紧急访问帐户使用的身份验证机制应该不同于其他管理帐户（包括其他紧急访问帐户）使用的机制。  例如，如果管理员通过本地 MFA 正常登录，则 Azure MFA 是不同的机制。  但是，如果 Azure MFA 是管理帐户的主要身份验证部分，请考虑对这些帐户使用不同的方法，例如，结合第三方 MFA 提供程序使用条件访问。
+- 紧急访问帐户使用的身份验证机制应该不同于其他管理帐户（包括其他紧急访问帐户）使用的机制。  例如，如果管理员通过本地 MFA 正常登录，则 Azure MFA 是不同的机制。  但是如果 Azure MFA 是您主身份验证管理帐户的一部分，请考虑不同的方法对于这些数据，例如使用第三方 MFA 提供程序的条件性访问。
 - 设备或凭据不得过期，或者由于使用次数不多而划归到自动清理的范围内。  
 - 应将全局管理员角色分配设为紧急访问帐户的永久角色。 
 
@@ -52,11 +52,11 @@ ms.locfileid: "60472343"
 
 为降低泄露密码所致攻击的风险，Azure AD 建议要求所有用户使用多重身份验证。 此组包括管理员和被盗帐户将产生重大影响的其他所有用户（例如财务）。
 
-但是，至少应有一个紧急访问帐户的多重身份验证机制与其他非紧急帐户不同。 这包括第三方多重身份验证解决方案。 如果条件访问策略要求每个管理员针对 Azure AD 及连接的其他软件即服务 (SaaS) 应用执行[多重身份验证](../authentication/howto-mfa-userstates.md)，则应从此要求中排除紧急访问帐户，并改而配置其他机制。 此外，应确保这些帐户不使用按用户的多重身份验证策略。
+但是，至少应有一个紧急访问帐户的多重身份验证机制与其他非紧急帐户不同。 这包括第三方多重身份验证解决方案。 如果您有一个条件性访问策略，需要[每个管理员的多重身份验证](../authentication/howto-mfa-userstates.md)Azure ad 和其他连接的软件即服务 (SaaS) 应用，则应从这中排除紧急访问帐户要求，并改为配置不同的机制。 此外，应确保这些帐户不使用按用户的多重身份验证策略。
 
-### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>从条件访问策略中排除至少一个帐户
+### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>从条件性访问策略中排除至少一个帐户
 
-在紧急情况下，你不希望某个策略阻止你进行访问以解决问题。 应从所有条件访问策略中排除至少一个紧急访问帐户。 如果已启用[基准策略](../conditional-access/baseline-protection.md)，应排除紧急访问帐户。
+在紧急情况下，你不希望某个策略阻止你进行访问以解决问题。 至少一个紧急访问帐户应从所有条件访问策略中排除。 如果已启用[基准策略](../conditional-access/baseline-protection.md)，应排除紧急访问帐户。
 
 ## <a name="additional-guidance-for-hybrid-customers"></a>面向混合客户的更多指导
 
