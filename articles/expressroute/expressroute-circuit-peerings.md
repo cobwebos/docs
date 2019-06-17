@@ -9,10 +9,10 @@ ms.date: 04/24/2019
 ms.author: mialdrid
 ms.custom: seodec18
 ms.openlocfilehash: c4290473a7c1edce02d74a4a787c62ccf0d9c052
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924313"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 线路和对等互连
@@ -41,7 +41,7 @@ ExpressRoute 线路不会映射到任何物理实体。 线路由称为服务密
 
 ## <a name="routingdomains"></a>ExpressRoute 对等互连
 
-一条 ExpressRoute 线路有多个与之关联的路由域/对等互连：Azure 公用对等互连、Azure 专用对等互连和 Microsoft 对等互连。 在一对路由器上（采用主动-主动或负载共享配置），每个对等互连采用相同的配置以实现高可用性。 Azure 服务分类为 Azure 公共和 Azure 专用以表示 IP 寻址方案。
+一条 ExpressRoute 线路有多个与之关联的路由域/对等互连：Azure 公用对等互连、Azure 专用对等互连和 Microsoft 对等互连。 在一对路由器上（采用主动-主动或负载共享配置），每个对等互连采用相同的配置以实现高可用性。 Azure 服务分类为 Azure 公共  和 Azure 专用  以表示 IP 寻址方案。
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 

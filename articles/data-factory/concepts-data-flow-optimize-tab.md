@@ -1,20 +1,19 @@
 ---
 title: Azure 数据工厂映射数据流“优化”选项卡
-description: 使用“优化”选项卡分区设置优化 Azure 数据工厂映射数据流
+description: 优化 Azure 数据工厂映射数据流分区设置中使用优化选项卡
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 3802a8475d8a39a2f275dbc7fcf21ce69892a117
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 372922fff600aaa12fddfeeb86ff4522eca3e602
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61262231"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075098"
 ---
-# <a name="mapping-data-flow-transformation-optimize-tab"></a>映射数据流转换“优化”选项卡
+# <a name="mapping-data-flow-transformation-optimize-tab"></a>将数据映射到数据流转换优化选项卡
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -51,3 +50,8 @@ Azure 数据工厂将生成列的哈希来生成统一的分区，使包含类�
 ### <a name="key"></a>密钥
 
 如果你已充分了解数据的基数，则键分区可能是不错的分区策略。 键分区将为列中的每个唯一值创建分区。 无法设置分区数目，因为该数目基于数据中的唯一值。
+
+## <a name="next-steps"></a>后续步骤
+
+[映射到数据流的性能指南](concepts-data-flow-performance.md)
+[数据流监视](concepts-data-flow-monitoring.md)

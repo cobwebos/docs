@@ -10,10 +10,10 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.openlocfilehash: 0e85d2b2c7e9a3022e7fea2063ffa0aa915abb53
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939058"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据
@@ -52,17 +52,17 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
         hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
 
-    该命令会将 Blob 存储中 /example/data/gutenberg/ 文件夹的内容复制到 Data Lake Storage 帐户中的 /myfolder。
+    该命令会将 Blob 存储中 /example/data/gutenberg/ 文件夹的内容复制到 Data Lake Storage 帐户中的 /myfolder   。
 
 5. 同样，使用 DistCp 从 Data Lake Storage 帐户将数据复制到 Blob 存储 (WASB)。
 
         hadoop distcp abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg
 
-    该命令会将 Data Lake Store 帐户中 /myfolder 的内容复制到 WASB 中的 /example/data/gutenberg/ 文件夹。
+    该命令会将 Data Lake Store 帐户中 /myfolder 的内容复制到 WASB 中的 /example/data/gutenberg/ 文件夹   。
 
 ## <a name="performance-considerations-while-using-distcp"></a>使用 DistCp 时的性能注意事项
 
-由于 DistCp 的最小粒度是单个文件，设置同步复制的最大数目是针对 Data Lake Storage 对其进行优化的最重要参数。 同步复制的数目等于命令行上的映射器数 (m) 参数。 此参数指定用于复制数据的映射器的最大数目。 默认值为 20。
+由于 DistCp 的最小粒度是单个文件，设置同步复制的最大数目是针对 Data Lake Storage 对其进行优化的最重要参数。 同步复制的数目等于命令行上的映射器数 (m  ) 参数。 此参数指定用于复制数据的映射器的最大数目。 默认值为 20。
 
 **示例**
 
@@ -74,7 +74,7 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
 * **步骤 1：确定可用于“默认”YARN 应用队列的总内存** - 第一步是确定可用于“默认”YARN 应用队列的内存。 可在与群集关联的 Ambari 门户中获取此信息。 导航到 YARN 并查看“配置”选项卡可看到可用于“默认”应用队列的 YARN 内存。 这是 DistCp 作业（实际是 MapReduce 作业）的总可用内存。
 
-* **步骤 2：计算映射器数** - m 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
+* **步骤 2：计算映射器数** - m  的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 

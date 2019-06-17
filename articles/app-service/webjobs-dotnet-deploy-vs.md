@@ -14,12 +14,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: b8cc628ef7db198c5068bb3917cf41113ba1687a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 9f4d3ff6fa02369c0e4a01949cc686b842a63a12
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417102"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808466"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 开发和部署 WebJobs - Azure 应用服务
 
@@ -27,7 +27,7 @@ ms.locfileid: "66417102"
 
 可将多个 WebJob 发布到单个 Web 应用。 请确保 Web 应用中的每个 WebJob 具有唯一的名称。
 
-版本 3.x [Azure WebJobs SDK](webjobs-sdk-how-to.md) ，可以开发以.NET Core 应用程序或.NET Framework 运行时版本 2.x 支持仅在.NET Framework 的应用的 web 作业。 部署某个 web 作业项目的方式是不同的.NET Core 与.NET Framework 的项目。
+[Azure WebJobs SDK](webjobs-sdk-how-to.md) 版本 3.x 可用于开发作为 .NET Core 应用或 .NET Framework 应用运行的 WebJobs，而版本 2.x 仅支持 .NET Framework。 部署 WebJobs 项目的方式因该项目是 .NET Core 项目还是 .NET Framework 项目而有所不同。
 
 ## <a name="webjobs-as-net-core-console-apps"></a>用作 .NET Core 控制台应用的 WebJob
 
@@ -92,7 +92,7 @@ ms.locfileid: "66417102"
 
 如果使用的是 Visual Studio 2015，请安装[用于 .NET 的 Azure SDK (Visual Studio 2015)](https://azure.microsoft.com/downloads/)。
 
-如果正在使用 Visual Studio 2019，安装[Azure 开发工作负荷](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads)。
+如果使用的是 Visual Studio 2019，请安装 [Azure 开发工作负荷](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)。
 
 ### <a id="convert"></a> 为现有控制台应用程序项目启用 WebJobs 部署
 

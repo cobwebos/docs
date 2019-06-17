@@ -15,10 +15,10 @@ ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 21232e5a678d6deed920e57cd0433a3b85ca4fdc
-ms.sourcegitcommit: 60606c5e9a20b2906f6b6e3a3ddbcb6c826962d6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64987902"
 ---
 # <a name="backup-and-restore"></a>备份和还原
@@ -214,7 +214,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 ## <a name="snapshot-strategies"></a>快照策略
 不同类型快照的频率取决于是否使用 HANA 大型实例灾难恢复功能。 此功能依赖于存储快照，这可能需要实施某些与存储快照频率和执行时间长短相关的特殊建议。 
 
-以下注意事项和建议假设不使用 HANA 大型实例提供的灾难恢复功能。 假设用户使用存储快照来获取备份并提供过去 30 天的时点恢复。 鉴于快照数和空间限制，请考虑以下要求：
+以下注意事项和建议假设不  使用 HANA 大型实例提供的灾难恢复功能。 假设用户使用存储快照来获取备份并提供过去 30 天的时点恢复。 鉴于快照数和空间限制，请考虑以下要求：
 
 - 时间点恢复的恢复时间。
 - 使用的空间。
@@ -290,7 +290,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 在特定的存储卷上，可以监视快照的数量以及这些快照的存储消耗量。 `ls` 命令不会显示快照目录或文件。 Linux OS 命令`du`显示有关这些存储快照的详细信息，因为它们存储在相同的卷上。 该命令使用以下选项：
 
 - `du –sh .snapshot`：此选项提供快照目录中所有快照的总数。
-- `du –sh --max-depth=1`：此选项列出 .snapshot 文件夹中保存的所有快照，以及每个快照的大小。
+- `du –sh --max-depth=1`：此选项列出 .snapshot  文件夹中保存的所有快照，以及每个快照的大小。
 - `du –hc`：此选项提供所有快照占用的总大小。
 
 使用以下命令以确保创建和存储的快照不使用卷上的所有存储。

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 50d0ed644b5afa744e8bce478199079fd4fb7432
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878940"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
@@ -45,7 +45,7 @@ Azure Active Directory 服务主体通常可供 Azure HDInsight 之类的服务�
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>启用 Data Lake Storage Gen1 防火墙，允许 Azure 服务访问
 
-Data Lake Storage Gen1 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要减少来自外部入侵者的攻击途径，建议使用这一选项。 可以通过“防火墙” > “启用防火墙(启用)” > “允许 Azure 服务访问”选项在 Azure 门户的 Data Lake Storage Gen1 帐户上启用防火墙。
+Data Lake Storage Gen1 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要减少来自外部入侵者的攻击途径，建议使用这一选项。 可以通过“防火墙”   > “启用防火墙(启用)”   >   “允许 Azure 服务访问”选项在 Azure 门户的 Data Lake Storage Gen1 帐户上启用防火墙。
 
 ![Data Lake Storage Gen1 中的防火墙设置](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage Gen1 中的防火墙设置")
 
@@ -130,13 +130,13 @@ Data Lake Storage Gen1 提供详细的诊断日志和审核。 Data Lake Storage
 
 ### <a name="export-data-lake-storage-gen1-diagnostics"></a>导出 Data Lake Storage Gen1 诊断
 
-若要从 Data Lake Storage Gen1 访问可搜索的日志，最快速的一个方法是在 Data Lake Storage Gen1 帐户的“诊断”边栏选项卡下启用到 **Log Analytics** 的日志传送。 这样就可以使用时间和内容筛选器立即访问传入日志，并且可以使用在 15 分钟时间间隔内触发的警报选项（电子邮件/Webhook）。 有关说明，请参阅[访问 Azure Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)。
+若要从 Data Lake Storage Gen1 访问可搜索的日志，最快速的一个方法是在 Data Lake Storage Gen1 帐户的“诊断”边栏选项卡下启用到 **Log Analytics** 的日志传送。  这样就可以使用时间和内容筛选器立即访问传入日志，并且可以使用在 15 分钟时间间隔内触发的警报选项（电子邮件/Webhook）。 有关说明，请参阅[访问 Azure Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)。
 
 如需日志放置位置的更多实时警报并对放置位置进行更多的控制，可以考虑将日志导出到 Azure EventHub，以便对内容单独进行分析或按时间窗口进行分析，这样就可以向队列提交实时通知。 然后可以通过单独的应用程序（例如[逻辑应用](../connectors/connectors-create-api-azure-event-hubs.md)）使用这些警报并将其传送到适当的通道，以及向监视工具（例如 NewRelic、Datadog 或 AppDynamics）提交指标。 或者，如果使用的是 ElasticSearch 之类的第三方工具，则可将日志导出到 Blob 存储，然后通过 [Azure Logstash 插件](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)将数据用到 Elasticsearch、Kibana 和 Logstash (ELK) 堆栈中。
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>在 HDInsight 中启用调试级日志记录
 
-如果 Data Lake Storage Gen1 日志传送未启用，Azure HDInsight 还会提供一种启用 [Data Lake Storage Gen1 客户端日志记录](data-lake-store-performance-tuning-mapreduce.md)的方式，即 log4j。 必须在“Ambari” > “YARN” > “配置” > “高级 yarn-log4j 配置”中设置以下属性：
+如果 Data Lake Storage Gen1 日志传送未启用，Azure HDInsight 还会提供一种启用 [Data Lake Storage Gen1 客户端日志记录](data-lake-store-performance-tuning-mapreduce.md)的方式，即 log4j。 必须在“Ambari”   > “YARN”   >   “配置” >   “高级 yarn-log4j 配置”中设置以下属性：
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG
 
@@ -166,7 +166,7 @@ Data Lake Storage Gen1 提供详细的诊断日志和审核。 Data Lake Storage
 
 概括地讲，在批处理中，常用的方法是先将数据置于“in”文件夹中。 然后，当数据处理完以后，再将新数据置于“out”文件夹中，供下游进程使用。 有的作业需要对单个文件进行处理，但可能不需要对大型数据集进行大规模并行处理。对于这种作业，有时候会使用此目录结构。 与上面建议的 IoT 结构一样，好的目录结构会设置父级文件夹，用于存储区域和主题之类的内容（例如，组织、产品/制造者）。 此结构有助于确保组织数据的安全，并可更好地管理工作负荷中的数据。 另外，可以考虑在结构中添加日期和时间，以便更好地在处理过程中进行组织和筛选式搜索，增强安全性并提高自动化程度。 日期结构的粒度级别取决于上传或处理数据的时间间隔，例如每小时、每天甚至每月。
 
-有时候，数据损坏或格式异常会导致文件处理失败。 在这种情况下，可以将这些文件移到 **/bad** 文件夹中进一步进行检查，这样的目录结构更有效。 还可以通过批处理作业将这些损坏的文件报告或通知给相关人员，要求其进行人工干预。 请考虑以下模板结构：
+有时候，数据损坏或格式异常会导致文件处理失败。 在这种情况下，可以将这些文件移到 **/bad** 文件夹中进一步进行检查，这样的目录结构更有效。 还可以通过批处理作业将这些损坏的文件报告或通知给相关人员，要求其进行人工干预。  请考虑以下模板结构：
 
     {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
     {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/

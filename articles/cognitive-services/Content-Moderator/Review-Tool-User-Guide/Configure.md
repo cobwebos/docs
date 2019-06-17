@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: sajagtap
 ms.openlocfilehash: f88ccbabc925b651abbc06f571a9d4220ed8aeb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61285343"
 ---
 # <a name="configure-the-review-tool"></a>配置审阅工具
@@ -66,7 +66,7 @@ ms.locfileid: "61285343"
 
 ## <a name="tags"></a>标记
 
-**标记**选项卡可以定义自定义审查标记除了两个默认审查标记&mdash;**isadult** () 和**isracy** (**r**)。 创建自定义标记，可用在默认标记和评论。 您可以更改哪些标记显示在评审切换其可见性设置。
+**标记**选项卡可以定义自定义审查标记除了两个默认审查标记&mdash;**isadult** (  ) 和**isracy** (**r**)。 创建自定义标记，可用在默认标记和评论。 您可以更改哪些标记显示在评审切换其可见性设置。
 
 ![查看标记，包括"是可见"复选框](images/tags-4-disable.png)
 
