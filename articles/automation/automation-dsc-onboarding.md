@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
 ms.openlocfilehash: 8a505e88ff92c5227d3b42da2adaf1dce58e6fbb
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65441505"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
@@ -50,13 +50,13 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在 [Azure 门户](https://portal.azure.com/)中，导航到要在其中登记虚拟机的 Azure 自动化帐户。 在 State Configuration 页上的“节点”选项卡中，单击“+ 添加”。
+在 [Azure 门户](https://portal.azure.com/)中，导航到要在其中登记虚拟机的 Azure 自动化帐户。 在 State Configuration 页上的“节点”选项卡中，单击“+ 添加”。  
 
 选择要登记的 Azure 虚拟机。
 
-如果虚拟机未安装 PowerShell 所需状态扩展且电源状态为“正在运行”，请单击“连接”。
+如果虚拟机未安装 PowerShell 所需状态扩展且电源状态为“正在运行”，请单击“连接”  。
 
-在“注册”下，输入用例所需的[“PowerShell DSC 本地配置管理器”值](/powershell/dsc/metaconfig4)，并选择性地输入要分配给 VM 的节点配置。
+在“注册”  下，输入用例所需的[“PowerShell DSC 本地配置管理器”值](/powershell/dsc/metaconfig4)，并选择性地输入要分配给 VM 的节点配置。
 
 ![加入](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
@@ -85,7 +85,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 1. 确保已在要加入到 Azure Automation State Configuration 的计算机上安装最新版本的 [WMF 5](https://aka.ms/wmf5latest)。
 1. 请根据以下[**生成 DSC 元配置**](#generating-dsc-metaconfigurations)部分中的说明生成包含所需 DSC 元配置的文件夹。
-1. 从远程将 PowerShell DSC 元配置应用到想要登记的计算机。 **运行此命令的计算机必须已安装最新版本的 [WMF 5](https://aka.ms/wmf5latest)**：
+1. 从远程将 PowerShell DSC 元配置应用到想要登记的计算机。 **运行此命令的计算机必须已安装最新版本的 [WMF 5](https://aka.ms/wmf5latest)** ：
 
    ```powershell
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
@@ -144,7 +144,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 1. 在本地复制以下脚本。 此脚本包含用于创建元配置的 PowerShell DSC 配置，以及用于开始执行元配置创建操作的命令。
 
 > [!NOTE]
-> State Configuration 节点配置名称在门户中区分大小写。 如果大小写不匹配，节点将不会显示在“节点”选项卡下。
+> State Configuration 节点配置名称在门户中区分大小写。 如果大小写不匹配，节点将不会显示在“节点”选项卡下。 
 
    ```powershell
    # The DSC configuration that will generate metaconfigurations
@@ -295,14 +295,14 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 计算机可以通过 WMF 5 DSC 注册协议安全加入到 Azure 自动化帐户，这样，DSC 节点便可向 PowerShell DSC“拉”服务器或报告服务器（包括 Azure Automation State Configuration）进行身份验证。 节点将注册到位于**注册 URL** 的服务器，并使用**注册密钥**进行身份验证。 在注册期间，DSC 节点和 DSC“拉”服务器/报告服务器将协商唯一证书，以便在注册后使用此节点向服务器进行身份验证。 此过程可防止登记的节点彼此模拟，例如当节点遭到入侵并且具有恶意行为时。 注册之后，注册密钥不再用于身份验证，而是从节点中删除。
 
-可以从 Azure 门户中“帐户设置”下的“密钥”中获取 State Configuration 注册协议所需的信息。 在自动化帐户的“基本信息”面板中单击密钥图标即可打开此边栏选项卡。
+可以从 Azure 门户中“帐户设置”  下的“密钥”  中获取 State Configuration 注册协议所需的信息。 在自动化帐户的“基本信息”  面板中单击密钥图标即可打开此边栏选项卡。
 
 ![Azure 自动化密钥和 URL](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
 
 - “注册 URL”是“管理密钥”边栏选项卡中的“URL”字段。
 - “注册密钥”是“管理密钥”边栏选项卡中的主访问密钥或辅助访问密钥。 可以使用其中的任一密钥。
 
-为了提高安全性，可随时重新生成自动化帐户的主密钥和辅助密钥（在“管理密钥”页上），以避免将来的节点注册使用以前的密钥。
+为了提高安全性，可随时重新生成自动化帐户的主密钥和辅助密钥（在“管理密钥”  页上），以避免将来的节点注册使用以前的密钥。
 
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>排查 Azure 虚拟机登记问题
 
@@ -311,7 +311,7 @@ Azure Automation State Configuration 可让你轻松加入 Azure Windows VM 以�
 > [!NOTE]
 > 将 Azure Windows VM 加入到使用 Azure VM Desired State Configuration 扩展的 Azure Automation State Configuration 的任何方法最多可能需要一小时，节点才显示为已在 Azure 自动化中注册。 Azure VM DSC 扩展会在 VM 上安装 Windows Management Framework 5.0，以便将 VM 加入到 Azure Automation State Configuration。
 
-若要查看 Azure VM 所需状态配置扩展的状态或对其进行故障排除，请在 Azure 门户中，导航到正在登记的 VM，并单击“设置”下的“扩展”。 然后单击 **DSC** 或 **DSCForLinux**，具体取决于操作系统。 有关详细信息，可以单击“查看详细状态”。
+若要查看 Azure VM 所需状态配置扩展的状态或对其进行故障排除，请在 Azure 门户中，导航到正在登记的 VM，并单击“设置”下的“扩展”   。 然后单击 **DSC** 或 **DSCForLinux**，具体取决于操作系统。 有关详细信息，可以单击“查看详细状态”  。
 
 ## <a name="certificate-expiration-and-reregistration"></a>证书过期和重新注册
 

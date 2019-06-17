@@ -12,15 +12,15 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: e7577dcf4859b1192121fe0406d0efb63a9f5990
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148637"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 DatetimeV2 预生成实体
 
-**datetimeV2** 预生成实体提取日期和时间值。 将以标准化格式解析这些值，使客户端程序能够使用它们。 当某条陈述包含不完整的日期或时间时，LUIS 会在终结点响应中包含过去的值和未来的值。 由于此实体已经过训练，因此不需要将包含 datetimeV2 的陈述示例添加到应用程序意向中。 
+**datetimeV2** 预生成实体提取日期和时间值。 将以标准化格式解析这些值，使客户端程序能够使用它们。 当某条陈述包含不完整的日期或时间时，LUIS 会在终结点响应中包含过去的值和未来的值。  由于此实体已经过训练，因此不需要将包含 datetimeV2 的陈述示例添加到应用程序意向中。 
 
 ## <a name="types-of-datetimev2"></a>datetimeV2 的类型
 通过 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub 存储库管理 DatetimeV2
@@ -82,7 +82,7 @@ ms.locfileid: "65148637"
 |属性名称|属性说明|
 |--|--|
 |timex|遵循 [ISO 8601 标准](https://en.wikipedia.org/wiki/ISO_8601)的、以 TIMEX 格式表示的时间、日期或日期范围，以及使用 TimeML 语言的注释的 TIMEX3 属性。 [TIMEX 准则](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)中描述了此注释。|
-|type|子类型可以是以下项之一： `datetime`， `date`， `time`， `daterange`， `timerange`， `datetimerange`， `duration`， `set`。|
+|type|子类型，可以是下述项目之一：`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set`。|
 |value|**可选。** 采用 yyyy:MM:dd（日期）、HH:mm:ss（时间）、yyyy:MM:dd HH:mm:ss（日期时间）格式的日期时间对象。 如果 `type` 为 `duration`，则值是秒数（持续时间） <br/> 仅当 `type` 为 `datetime`、`date`、`time` 或 `duration 时才使用。|
 
 ## <a name="valid-date-values"></a>有效日期值
@@ -206,15 +206,15 @@ ms.locfileid: "65148637"
   ]
 ```
 
-## <a name="preview-api-version-3x"></a>预览 API 版本 3.x
+## <a name="preview-api-version-3x"></a>预览版 API 版本 3.x
 
-DatetimeV2 JSON 响应 API V3 中已更改。 
+DatetimeV2 JSON 响应在 API V3 中已更改。 
 
-从 API V2 的更改：
-* `datetimeV2.timex.type` 由于返回在父级别，因此不能再返回属性`datetimev2.type`。 
-* `datetimeV2.timex`属性已更名为`datetimeV2.value`。
+自 API V2 以来的更改：
+* `datetimeV2.timex.type` 属性不再返回，因为它在父级别 `datetimev2.type` 返回。 
+* `datetimeV2.timex` 属性已重名为 `datetimeV2.value`。
 
-有关将语音样本， `8am on may 2nd 2017`，DatetimeV2 V3 版本是：
+对于话语 `8am on may 2nd 2017`，DatetimeV2 的 V3 版本为：
 
 ```JSON
 {
@@ -244,7 +244,7 @@ DatetimeV2 JSON 响应 API V3 中已更改。
 }
 ```
 
-以下 JSON 是与`verbose`参数设置为`false`:
+以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
 {
@@ -291,14 +291,14 @@ DatetimeV2 JSON 响应 API V3 中已更改。
 
 ## <a name="deprecated-prebuilt-datetime"></a>已弃用的预生成日期时间
 
-`datetime` 预生成实体已弃用，已由 datetimeV2 取代。 
+`datetime` 预生成实体已弃用，已由 datetimeV2 取代  。 
 
 若要在 LUIS 应用中将 `datetime` 替换为 `datetimeV2`，请完成以下步骤：
 
-1. 打开 LUIS Web 界面的“实体”窗格。 
+1. 打开 LUIS Web 界面的“实体”窗格。  
 2. 删除 **datetime** 预生成实体。
-3. 单击“添加预生成实体”
-4. 选择“datetimeV2”并单击“保存”。
+3. 单击“添加预生成实体” 
+4. 选择“datetimeV2”并单击“保存”。  
 
 ## <a name="next-steps"></a>后续步骤
 

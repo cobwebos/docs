@@ -12,10 +12,10 @@ ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8754eedc8284aab01006ea71bfd870064b91ea17
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65851123"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>管理和请求 Azure 资源的配额
@@ -60,7 +60,7 @@ ms.locfileid: "65851123"
 
 + 每个区域的群集数默认限制为 100，最大限制为 200。 如果请求增加的配额超出此限制，请与 Azure 支持部门联系。
 
-+ 下面是“其他严格限制”，不能超出这些限制。
++ 下面是“其他严格限制”，不能超出这些限制  。
 
 | **资源** | **最大限制** |
 | --- | --- |
@@ -91,15 +91,15 @@ ms.locfileid: "65851123"
 
 通过 Azure 门户可以轻松查看各种资源的配额，例如虚拟机、存储和网络。
 
-1. 在左窗格上，选择“所有服务”，然后在“一般”类别下选择“订阅”。
+1. 在左窗格上，选择“所有服务”，然后在“一般”类别下选择“订阅”   。
 
 1. 从订阅列表中选择要查找其配额的订阅。
 
-   有一个警告提示，专门用于查看 Azure 机器学习计算配额。 如上所述，此配置独立于订阅上的计算配额。
+   有一个警告提示，专门用于查看 Azure 机器学习计算配额  。 如上所述，此配置独立于订阅上的计算配额。
 
 1. 在左窗格中，选择**机器学习服务**，然后从显示的列表中选择任何工作区
 
-1. 在下一个边栏选项卡中，在“支持 + 故障排除部分”下，选择“使用情况 + 配额”以查看当前配额限制和使用情况。
+1. 在下一个边栏选项卡中，在“支持 + 故障排除部分”下，选择“使用情况 + 配额”以查看当前配额限制和使用情况   。
 
 1. 选择订阅以查看配额限制。 请记住筛选到所需的区域。
 
@@ -110,7 +110,7 @@ ms.locfileid: "65851123"
 
 无法将限制提高到表中所示的最大限制值。 如果没有最大限制，则资源没有可调整的限制。 [这篇文章](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)详细介绍了配额增加过程。
 
-请求配额增加时，需要选择要请求提高配额的服务，这可能是机器学习服务配额、容器实例或存储配额的服务。 此外，对于 Azure 机器学习计算，只需单击“请求配额”按钮，然后按照上述步骤查看配额。
+请求配额增加时，需要选择要请求提高配额的服务，这可能是机器学习服务配额、容器实例或存储配额的服务。 此外，对于 Azure 机器学习计算，只需单击“请求配额”按钮，然后按照上述步骤查看配额  。
 
 > [!NOTE]
 > [免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合增加限制或配额的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅[将 Azure 免费试用版订阅升级到即用即付订阅](../../billing/billing-upgrade-azure-subscription.md)和[免费试用版订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。

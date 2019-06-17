@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: victorh
 ms.openlocfilehash: 89a88d79b6b93a233dbd4f335d0eb449e49d5289
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122194"
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>使用经典部署模型配置应用程序网关以进行 SSL 卸载
@@ -33,7 +33,7 @@ ms.locfileid: "62122194"
 
 ## <a name="before-you-begin"></a>开始之前
 
-1. 使用 Web 平台安装程序安装最新版本的 Azure PowerShell cmdlet。 可以从[下载页](https://azure.microsoft.com/downloads/)的“Windows PowerShell”部分下载并安装最新版本。
+1. 使用 Web 平台安装程序安装最新版本的 Azure PowerShell cmdlet。 可以从[下载页](https://azure.microsoft.com/downloads/)的“Windows PowerShell”  部分下载并安装最新版本。
 2. 请确认已创建包含有效子网、可正常运行的虚拟网络。 请确保没有虚拟机或云部署正在使用子网。 应用程序网关必须单独位于虚拟网络子网中。
 3. 必须存在配置为使用应用程序网关的服务器，或者必须在虚拟网络中为其创建终结点，或者必须为其分配公共 IP 地址或虚拟 IP 地址 (VIP)。
 
@@ -56,7 +56,7 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 
 若要验证是否已创建网关，可以输入 `Get-AzureApplicationGateway` cmdlet。
 
-在此示例中，**Description**、**InstanceCount** 和 **GatewaySize** 是可选参数。 InstanceCount 的默认值为 2，最大值为 10。 GatewaySize 的默认值为 Medium。 其他可用值为 Small 和 Large。 VirtualIPs 和 DnsName 显示为空白，因为网关尚未启动。 这些值在网关进入运行状态后创建。
+在此示例中，**Description**、**InstanceCount** 和 **GatewaySize** 是可选参数。 InstanceCount  的默认值为 2  ，最大值为 10  。 GatewaySize  的默认值为 Medium  。 其他可用值为 Small 和 Large。 VirtualIPs  和 DnsName  显示为空白，因为网关尚未启动。 这些值在网关进入运行状态后创建。
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -107,7 +107,7 @@ State..........: Provisioned
 
 **其他配置说明**
 
-对于 SSL 证书配置， **HttpListener** 中的协议应更改为 **Https** （区分大小写）。 需要将“SslCert”元素添加到“HttpListener”，其值设置为[上传 SSL 证书](#upload-ssl-certificates)部分中使用的名称。 前端端口应更新为 443。
+对于 SSL 证书配置， **HttpListener** 中的协议应更改为 **Https** （区分大小写）。 需要将“SslCert”  元素添加到“HttpListener”  ，其值设置为[上传 SSL 证书](#upload-ssl-certificates)部分中使用的名称。 前端端口应更新为 443  。
 
 **启用基于 Cookie 的相关性**：可以配置应用程序网关，以确保来自客户端会话的请求始终被定向到 Web 场中的同一 VM。 这种情况可通过插入允许网关适当定向流量的会话 Cookie 实现。 要启用基于 Cookie 的相关性，请在 **BackendHttpSettings** 元素中将 **CookieBasedAffinity** 设置为 **Enabled**。
 
@@ -185,7 +185,7 @@ Start-AzureApplicationGateway AppGwTest
 
 ## <a name="verify-the-gateway-status"></a>验证网关状态
 
-输入 `Get-AzureApplicationGateway` cmdlet 检查网关状态。 如果前一步骤中的 `Start-AzureApplicationGateway` 成功，则“状态”应为“正在运行”，VirtualIPs 和 DnsName 应包含有效的条目。
+输入 `Get-AzureApplicationGateway` cmdlet 检查网关状态。 如果前一步骤中的 `Start-AzureApplicationGateway` 成功，则“状态”  应为“正在运行”  ，VirtualIPs  和 DnsName  应包含有效的条目。
 
 此示例演示了一个正常运行并已准备好接收流量的应用程序网关：
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 711fce9627537e68171c3b170121900d6b14ca1e
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 8827feaf1d541edc7c0b54d8af951ddab79c5aaa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743645"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808621"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>集成 Microsoft Azure 和 Oracle 云基础结构 （预览版） 的 oracle 应用程序解决方案
 
@@ -45,7 +45,7 @@ Microsoft 和 Oracle 合作提供低延迟、 高吞吐量跨云连接，让您�
 * Oracle 零售应用程序
 * Oracle Hyperion 财务管理
 
-下图是已连接解决方案的高级概述。 为简单起见，该图显示仅应用层和数据层。 具体取决于应用程序 architecutre，解决方案可以包括在 Azure 中的更多层，如 web 层。 有关详细信息，请参阅以下部分。
+下图是已连接解决方案的高级概述。 为简单起见，该图显示仅应用层和数据层。 具体取决于应用程序体系结构，解决方案可以包括在 Azure 中的更多层，如 web 层。 有关详细信息，请参阅以下部分。
 
 ![Azure OCI 解决方案概述](media/oracle-oci-overview/crosscloud.png)
 

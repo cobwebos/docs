@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
 ms.openlocfilehash: cd0bceae770182e778410d8065d34dfeed055acc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61433054"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>在 Azure 云服务中使用 Socket.IO 生成 Node.js 聊天应用程序
@@ -39,13 +39,13 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
 ## <a name="create-a-cloud-service-project"></a>创建云服务项目
 以下步骤创建将托管 Socket.IO 应用程序的云服务项目。
 
-1. 在“开始”菜单或“开始”屏幕中，搜索 **Windows PowerShell**。 最后，右键单击“Windows PowerShell”并选择“以管理员身份运行”。
+1. 在“开始”  菜单或“开始”  屏幕中，搜索 **Windows PowerShell**。 最后，右键单击“Windows PowerShell”  并选择“以管理员身份运行”  。
    
     ![Azure PowerShell 图标][powershell-menu]
 2. 创建一个名为 **c:\\node** 的目录。 
    
         PS C:\> md node
-3. 将目录更改为 c:\\node 目录
+3. 将目录更改为 c:\\node 目录 
    
         PS C:\> cd node
 4. 输入以下命令以创建一个名为 **chatapp** 的新解决方案和一个名为 **WorkerRole1** 的辅助角色：
@@ -60,21 +60,21 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
 ## <a name="download-the-chat-example"></a>下载聊天示例
 对于此项目，我们使用 [Socket.IO GitHub 存储库]中的聊天示例。 执行以下步骤下载该示例，并将其添加到先前创建的项目中。
 
-1. 使用“克隆”按钮创建存储库的本地副本。 还可以使用 **ZIP** 按钮下载项目。
+1. 使用“克隆”  按钮创建存储库的本地副本。 还可以使用 **ZIP** 按钮下载项目。
    
    ![用于查看 https://github.com/LearnBoost/socket.io/tree/master/examples/chat 的浏览器窗口，其中突出显示 ZIP 下载图标](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
-2. 浏览本地存储库的目录结构，找到 **examples\\chat** 目录。 将此目录的内容复制到先前创建的 C:\\node\\chatapp\\WorkerRole1 目录。
+2. 浏览本地存储库的目录结构，找到 **examples\\chat** 目录。 将此目录的内容复制到先前创建的 C:\\node\\chatapp\\WorkerRole1 目录  。
    
    ![资源管理器，显示从存档中解压缩的 examples\\chat 目录的内容][chat-contents]
    
    上面的屏幕截图中突出显示的项目是从 **examples\\chat** 目录复制的文件
-3. 在 C:\\node\\chatapp\\WorkerRole1 目录中，删除 server.js 文件，然后将 app.js 文件重命名为 server.js。 这会删除前面由 **Add-AzureNodeWorkerRole** cmdlet 创建的默认 **server.js** 文件并替换为聊天示例中的应用程序文件。
+3. 在 C:\\node\\chatapp\\WorkerRole1 目录中，删除 server.js 文件，然后将 app.js 文件重命名为 server.js     。 这会删除前面由 **Add-AzureNodeWorkerRole** cmdlet 创建的默认 **server.js** 文件并替换为聊天示例中的应用程序文件。
 
 ### <a name="modify-serverjs-and-install-modules"></a>修改 Server.js 并安装模块
 在 Azure 模拟器中测试应用程序之前，必须进行一些小改动。 对 server.js 文件执行以下步骤：
 
 1. 在 Visual Studio 或任何文本编辑器中打开 **server.js** 文件。
-2. 在 server.js 的开头处查找 Module dependencies 节，将包含 sio = require('..//..//lib//socket.io') 的行更改为 sio = require('socket.io')，如下所示：
+2. 在 server.js 的开头处查找 Module dependencies 节，将包含 sio = require('..//..//lib//socket.io') 的行更改为 sio = require('socket.io')，如下所示    ：
    
        var express = require('express')
          , stylus = require('stylus')
@@ -82,7 +82,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
        //, sio = require('..//..//lib//socket.io'); //Original
          , sio = require('socket.io');                //Updated
          var port = process.env.PORT || 3000;         //Updated
-3. 为了确保应用程序侦听正确端口，请在记事本或偏好的编辑器中打开 server.js，然后通过将 3000 替换为 process.env.port，更改以下行，如下所示：
+3. 为了确保应用程序侦听正确端口，请在记事本或偏好的编辑器中打开 server.js，然后通过将 3000 替换为 process.env.port，更改以下行，如下所示   ：
    
        //app.listen(3000, function () {            //Original
        app.listen(process.env.port, function () {  //Updated
@@ -92,7 +92,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
 
 保存对 **server.js** 所做更改后，使用以下步骤安装所需的模块，并在 Azure 模拟器中测试应用程序：
 
-1. 使用 Azure PowerShell，将目录切换到 C:\\node\\chatapp\\WorkerRole1 目录，然后使用以下命令安装此应用程序所需的模块：
+1. 使用 Azure PowerShell，将目录切换到 C:\\node\\chatapp\\WorkerRole1 目录，然后使用以下命令安装此应用程序所需的模块   ：
    
        PS C:\node\chatapp\WorkerRole1> npm install
    
@@ -113,7 +113,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
    > 
    > 重新安装 AzureAuthoringTools v 2.7.1 和 AzureComputeEmulator v 2.7-请确保版本匹配。
 
-2. 打开浏览器并导航到 **http://127.0.0.1**。
+2. 打开浏览器并导航到 **http://127.0.0.1** 。
 3. 当浏览器窗口打开时，输入一个昵称，并按 Enter。
    这样，就可以用特定昵称发布消息。 要测试多用户功能，请使用同一 URL 打开另外的浏览器窗口但输入不同的昵称。
    
@@ -135,7 +135,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
    ![显示托管在 Azure 上的服务的浏览器窗口][completed-app]
    
    > [!NOTE]
-   > 如果收到错误消息，指出导入的发布配置文件中不存在提供的订阅名称，则必须先为订阅下载和导入发布配置文件，再部署到 Azure。 请参阅[生成 Node.js 应用程序并将其部署到 Azure 云服务](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)中的“将应用程序部署到 Azure”部分
+   > 如果收到错误消息，指出导入的发布配置文件中不存在提供的订阅名称，则必须先为订阅下载和导入发布配置文件，再部署到 Azure。 请参阅[生成 Node.js 应用程序并将其部署到 Azure 云服务](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)中的“将应用程序部署到 Azure”  部分
    > 
    > 
 

@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
 ms.openlocfilehash: 3c420882b734883039ec95d609c155617359fa25
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510724"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>适用于 SQL API 的 Azure Cosmos DB .NET SDK：下载和发行说明
@@ -348,7 +348,7 @@ ms.locfileid: "65510724"
 * 添加了对 Newtonsoft.Json v5.0.7 的依赖关系。
 * 更改为支持 OrderBy：
   
-  * LINQ 提供程序支持 OrderBy() 或 OrderByDescending() 
+  * LINQ 提供程序支持 OrderBy() 或 OrderByDescending()
   * 支持 Order By 的 IndexingPolicy 
     
     **可能推出的重大更改** 
@@ -365,7 +365,7 @@ ms.locfileid: "65510724"
 * GA SDK
 
 ## <a name="release--retirement-dates"></a>发布和停用日期
-Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
+Microsoft 至少会在停用 SDK 前提前 12 个月  发出通知，以便顺利转换为更高版本/受支持版本。
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
 

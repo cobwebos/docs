@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: geg
 ms.openlocfilehash: 19b249a76a339ce870609fbcdceaf70bf79a6ea2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65906510"
 ---
 # <a name="restore-azure-vms"></a>还原 Azure VM
@@ -63,9 +63,9 @@ Azure 备份提供多种方法用于还原 VM。
 
 ## <a name="select-a-restore-point"></a>选择还原点
 
-1. 在与要还原的 VM 关联的保管库中，单击“备份项” > “Azure 虚拟机”。
+1. 在与要还原的 VM 关联的保管库中，单击“备份项” > “Azure 虚拟机”。  
 2. 单击某个 VM。 VM 仪表板默认会显示过去 30 天的恢复点。 可以显示 30 天以前的恢复点，或者根据日期、时间范围和不同类型的快照一致性进行筛选，以找到所需的恢复点。
-3. 若要还原 VM，请单击“还原 VM”。
+3. 若要还原 VM，请单击“还原 VM”。 
 
     ![还原点](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -73,7 +73,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 ## <a name="choose-a-vm-restore-configuration"></a>选择 VM 还原配置
 
-1. 在“还原配置”中选择一个还原选项：
+1. 在“还原配置”中选择一个还原选项： 
     - **新建**：若要创建新的 VM，请使用此选项。 可以使用简单的设置创建 VM，或还原某个磁盘并创建自定义的 VM。
     - **替换现有项**：若要替换现有 VM 上的磁盘，请使用此选项。
 
@@ -85,15 +85,15 @@ Azure 备份提供多种方法用于还原 VM。
 
 作为[还原选项](#restore-options)之一，你可以使用基本的设置从还原点快速创建 VM。
 
-1. 在“还原配置” > “新建 > 还原类型”中，选择“创建虚拟机”。
-2. 在“虚拟机名称”中，指定订阅中不存在的 VM。
-3. 在“资源组”中，为新 VM 选择现有资源组，或创建具有全局唯一名称的新资源组。 如果分配的名称已存在，则 Azure 将为该组分配与 VM 相同的名称。
-4. 在“虚拟网络”中，选择将放置 VM 的 VNet。 将显示与订阅关联的所有 VNet。 选择子网。 默认情况下选择第一个子网。
+1. 在“还原配置” > “新建 > 还原类型”中，选择“创建虚拟机”     。
+2. 在“虚拟机名称”中，指定订阅中不存在的 VM  。
+3. 在“资源组”中，为新 VM 选择现有资源组，或创建具有全局唯一名称的新资源组  。 如果分配的名称已存在，则 Azure 将为该组分配与 VM 相同的名称。
+4. 在“虚拟网络”中，选择将放置 VM 的 VNet  。 将显示与订阅关联的所有 VNet。 选择子网。 默认情况下选择第一个子网。
 5. 在中**存储位置**，为 VM 指定存储帐户。 [了解详细信息](#storage-accounts)。
 
     ![还原配置向导](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
-6. 在“还原配置”中，选择“确定”。 在“还原”中，单击“还原”以触发还原操作。
+6. 在“还原配置”中，选择“确定”   。 在“还原”中，单击“还原”以触发还原操作   。
 
 
 ## <a name="restore-disks"></a>还原磁盘
@@ -104,13 +104,13 @@ Azure 备份提供多种方法用于还原 VM。
 - [将已还原的磁盘附加](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)到现有 VM。
 - [创建新的 VM](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)从还原的磁盘使用 PowerShell。
 
-1. 在“还原配置” > “新建 > 还原类型”中，选择“还原磁盘”。
-2. 在“资源组”中，为还原的磁盘选择现有资源组，或创建具有全局唯一名称的新资源组。
-3. 在“存储帐户”中，指定要将 VHD 复制到的帐户。 [了解详细信息](#storage-accounts)。
+1. 在“还原配置” > “新建 > 还原类型”中，选择“还原磁盘”     。
+2. 在“资源组”中，为还原的磁盘选择现有资源组，或创建具有全局唯一名称的新资源组  。
+3. 在“存储帐户”中，指定要将 VHD 复制到的帐户  。 [了解详细信息](#storage-accounts)。
 
     ![已完成恢复配置](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
-4. 在“还原配置”中，选择“确定”。 在“还原”中，单击“还原”以触发还原操作。
+4. 在“还原配置”中，选择“确定”   。 在“还原”中，单击“还原”以触发还原操作   。
 
 在 VM 还原期间，Azure 备份不使用存储帐户。 但在使用**还原磁盘**和**即时还原**时，存储帐户用于存储模板。
 
@@ -118,19 +118,19 @@ Azure 备份提供多种方法用于还原 VM。
 
 还原磁盘后，使用执行还原操作期间生成的模板进行自定义并创建新的 VM：
 
-1. 打开相关作业的“还原作业详细信息”。
+1. 打开相关作业的“还原作业详细信息”。 
 
-2. 在“还原作业详细信息”中，选择“部署模板”启动模板部署。
+2. 在“还原作业详细信息”中，选择“部署模板”启动模板部署   。
 
     ![深入到还原作业](./media/backup-azure-arm-restore-vms/restore-job-drill-down1.png)
 
-3. 若要自定义模板中提供的 VM 设置，请单击“编辑模板”。 若要添加其他自定义项，请单击“编辑参数”。
+3. 若要自定义模板中提供的 VM 设置，请单击“编辑模板”。  若要添加其他自定义项，请单击“编辑参数”。 
     - [详细了解](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)如何从自定义模板部署资源。
     - [详细了解](../azure-resource-manager/resource-group-authoring-templates.md)如何创作模板。
 
    ![加载模板部署](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
-4. 输入 VM 的自定义值，接受“条款和条件”，然后单击“购买”。
+4. 输入 VM 的自定义值，接受“条款和条件”，然后单击“购买”。  
 
    ![提交模板部署](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
@@ -139,8 +139,8 @@ Azure 备份提供多种方法用于还原 VM。
 
 作为[还原选项](#restore-options)之一，你可以使用选定的还原点替换现有的 VM 磁盘。 [查看](#restore-options)所有还原选项。
 
-1. 在“还原配置”中，单击“替换现有”。
-2. 在“还原类型”中，选择“替换磁盘”。 这是用于替换现有 VM 磁盘的还原点。
+1. 在“还原配置”中，单击“替换现有”   。
+2. 在“还原类型”中，选择“替换磁盘”。   这是用于替换现有 VM 磁盘的还原点。
 3. 在中**暂存位置**，指定当前的托管磁盘的快照应保存在还原过程中的位置。 [了解详细信息](#storage-accounts)。
 
    ![还原配置向导“替换现有”](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
@@ -152,7 +152,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 **方案** | **指南**
 --- | ---
-**通过混合使用权益还原 VM** | 如果 Windows VM 使用[混合使用权益 (HUB) 许可](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，请还原磁盘，并使用提供的模板（将“许可证类型”设置为“Windows_Server”）或 PowerShell 创建新的 VM。  创建 VM 后也可以应用此设置。
+**通过混合使用权益还原 VM** | 如果 Windows VM 使用[混合使用权益 (HUB) 许可](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，请还原磁盘，并使用提供的模板（将“许可证类型”设置为“Windows_Server”）或 PowerShell 创建新的 VM。    创建 VM 后也可以应用此设置。
 **在发生 Azure 数据中心灾难期间还原 VM** | 如果保管库使用 GRS 并且 VM 的主数据中心出现故障，Azure 备份支持将已备份的 VM 还原到配对的数据中心。 在配对的数据中心选择一个存储帐户，然后像平时一样进行还原。 Azure 备份使用配对位置中的计算服务来创建已还原的 VM。 [详细了解](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)数据中心复原能力。
 **还原单个域中的单个域控制器 VM** | 像还原其他任何 VM 一样还原该 VM。 请注意：<br/><br/> 从 Active Directory 的角度来看，Azure VM 与任何其他 VM 类似。<br/><br/> 还可使用目录服务还原模式 (DSRM)，因此所有 Active Directory 恢复方案都是可行的。 [详细了解](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controllers-hyper-v)虚拟化域控制器的备份和还原注意事项。
 **还原单一域中的多个域控制器 VM** | 如果可以通过网络访问同一个域中的其他域控制器，则可以像还原任何 VM 一样还原域控制器。 对于域中剩余的最后一个域控制器，或者在隔离的网络中执行恢复，请使用[林恢复](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
@@ -163,17 +163,17 @@ Azure 备份提供多种方法用于还原 VM。
 **区域固定的 VM** | Azure Backup 支持备份和还原区域固定的 VM。 [了解详细信息](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>跟踪还原操作
-触发还原操作后，备份服务会创建一个作业用于跟踪。 Azure 备份在门户中显示有关作业的通知。 如果未显示通知，单击“通知”符号即可显示。
+触发还原操作后，备份服务会创建一个作业用于跟踪。 Azure 备份在门户中显示有关作业的通知。 如果未显示通知，单击“通知”符号即可显示。 
 
 ![已触发还原](./media/backup-azure-arm-restore-vms/restore-notification1.png)
 
  按如下所述跟踪还原：
 
-1. 若要查看针对作业的操作，请单击通知超链接。 或者，在保管库中单击“备份作业”，然后单击相关的 VM。
+1. 若要查看针对作业的操作，请单击通知超链接。 或者，在保管库中单击“备份作业”，然后单击相关的 VM。 
 
     ![保管库中的 VM 列表](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
-2. 若要监视还原进度，请单击状态为“正在进行”的任何还原作业。 此时会出现进度栏，其中显示了有关还原进度的信息：
+2. 若要监视还原进度，请单击状态为“正在进行”的任何还原作业。  此时会出现进度栏，其中显示了有关还原进度的信息：
 
     - **还原估计所需时间**：最初提供完成还原操作所需的时间。 随着操作的不断进行，该时间会不断减少，还原操作完成后，将显示为 0。
     - **还原百分比**。 显示还原操作的完成百分比。

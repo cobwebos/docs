@@ -12,10 +12,10 @@ ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: 357ed4c42cc2758766b9ccd45a3fafa541338d11
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154574"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的边界
@@ -32,10 +32,10 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 | [批处理测试][batch-testing]| 10 个数据集，每个数据集 1000 条话语|
 | 显式列表 | 每个应用程序 50 个实体|
 | 外部实体 | 无限制 |
-| [意向][intents]|每个应用程序 500 个意向：499 个自定义意向，以及必需的“无”意向。<br>[基于调度](https://aka.ms/dispatch-tool)的应用程序具有相应的 500 个调度源。|
+| [意向][intents]|每个应用程序 500 个意向：499 个自定义意向，以及必需的“无”  意向。<br>[基于调度](https://aka.ms/dispatch-tool)的应用程序具有相应的 500 个调度源。|
 | [列表实体](./luis-concept-entity-types.md) | 父级：50 个，子级：20,000 项。 规范名称是 *默认最大字符长度。同义词值没有长度限制。 |
-| [机器学习的内容实体 + 角色](./luis-concept-entity-types.md):<br> 组合键，<br>简单，<br>实体的角色|限制为 100 个父实体或 330 实体，准限制用户命中第一次。 角色作为此边界用于实体计数。 一个示例是复合与简单实体具有 2 个角色是：简单 1 的复合 + 1 + 2 个角色 = 4 330 实体。|
-| [预览版-动态列表实体](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|为 ~ 1 2 列出了每个查询预测终结点请求 k|
+| [机器学习实体 + 角色](./luis-concept-entity-types.md)：<br> 复合、<br>简单、<br>实体角色|限制为 100 个父实体或 330 个实体，以用户先达到的限制为准。 就此边界来说，一个角色计为一个实体。 例如，一个复合实体包含一个简单实体，并且有 2 个角色：1 个复合实体 + 1 个简单实体 + 2 个角色 = 4 个实体（最多 330 个实体）。|
+| [预览 - 动态列表实体](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 个列表，其中的每个查询预测终结点请求约 1k 个实体|
 | [模式](luis-concept-patterns.md)|每个应用程序 500 个模式。<br>模式的最大长度为 400 个字符。<br>每个模式 3 个 Pattern.any 实体<br>模式中最多 2 个嵌套可选文本|
 | [Pattern.any](./luis-concept-entity-types.md)|每个应用程序 100 个，每个模式 3 个 pattern.any 实体 |
 | [短语列表][phrase-list]|10 个短语列表，每个列表 5,000 项|
@@ -43,7 +43,7 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 | [正则表达式实体](./luis-concept-entity-types.md)|20 个实体<br>每个正则表达式实体模式 最多 500 个字符|
 | [角色](luis-concept-roles.md)|每个应用程序 300 个角色。 每个实体 10 个角色|
 | [单条话语][utterances] | 500 个字符|
-| [话语][utterances] | 15,000 每个应用程序-为每个意向的语音样本的数量没有限制|
+| [话语][utterances] | 每个应用程序 15,000 条 - 对每个意向的话语数量没有限制|
 | [版本](luis-concept-version.md)| 无限制 |
 | [版本名称][luis-how-to-manage-versions] | 10 个字符，仅限字母数字和句点 (.) |
 
@@ -53,11 +53,11 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 
 ## <a name="object-naming"></a>对象命名
 
-以下名称中使用以下字符。
+请勿在下列名称中使用下列字符。
 
-|Object|排除的字符|
+|Object|排除字符|
 |--|--|
-|意向、 实体和角色名称|`:`<br>`$`|
+|意向、实体和角色名称|`:`<br>`$`|
 |版本名称|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>密钥使用情况
@@ -76,7 +76,7 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 |语言理解[订阅][pricing] - S0 - 基本层|无效|50/秒|查询 LUIS 终结点|
 |认知服务[订阅][ pricing] - S0 - 标准层|无效|50/秒|查询 LUIS 终结点|
 |[情绪分析集成](luis-how-to-publish-app.md#enable-sentiment-analysis)|无效|免费|添加情绪信息，包括关键短语数据提取 |
-|语音集成|无效|5.50 美元/1 千终结点请求|将口语话语转为文本话语并返回 LUIS 结果|
+|语音集成|无效|5\.50 美元/1 千终结点请求|将口语话语转为文本话语并返回 LUIS 结果|
 
 ## <a name="keyboard-controls"></a>键盘控件
 
@@ -86,7 +86,7 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 
 ## <a name="website-sign-in-time-period"></a>网站登录时间段
 
-登录访问权限为 60 分钟。 在此时间段后，会出现此错误。 需重新登录。
+登录访问权限为 60 分钟  。 在此时间段后，会出现此错误。 需重新登录。
 
 [luis-get-started-create-app]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app
 [batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test#batch-testing

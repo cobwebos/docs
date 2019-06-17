@@ -17,34 +17,34 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60822347"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
 可以查看两种类型的 Azure 事件中心日志：
 
-* **[活动日志](../azure-monitor/platform/activity-logs-overview.md)**：此类日志提供对作业执行的操作的相关信息。 这些日志始终启用。
-* **[诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)**：可以配置诊断日志，从而更全面地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
+* **[活动日志](../azure-monitor/platform/activity-logs-overview.md)** ：此类日志提供对作业执行的操作的相关信息。 这些日志始终启用。
+* **[诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)** ：可以配置诊断日志，从而更全面地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
 
 ## <a name="enable-diagnostic-logs"></a>启用诊断日志
 
 诊断日志默认已禁用。 若要启用诊断日志，请执行以下步骤：
 
-1.  在[Azure 门户](https://portal.azure.com)中的“监视 + 管理”下，点击“诊断日志”。
+1.  在[Azure 门户](https://portal.azure.com)中的“监视 + 管理”下，点击“诊断日志”   。
 
     ![在窗格中导航到诊断日志](./media/event-hubs-diagnostic-logs/image1.png)
 
 2.  单击想要监视的资源。
 
-3.  单击“启用诊断”。
+3.  单击“启用诊断”  。
 
     ![启用诊断日志](./media/event-hubs-diagnostic-logs/image2.png)
 
-4.  对于“状态”，单击“打开”。
+4.  对于“状态”  ，单击“打开”  。
 
     ![更改诊断日志的状态](./media/event-hubs-diagnostic-logs/image3.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "60822347"
 
 6.  保存新的诊断设置。
 
-新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中。
+新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中  。
 
 有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)。
 

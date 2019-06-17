@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 03/08/2018
 ms.author: tomfitz
 ms.openlocfilehash: ee4bce38e0fcde93ba0417617ae90dab2eefda67
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61061385"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>解决无效模板错误
@@ -72,7 +72,7 @@ Message=Deployment template validation failed: 'The template resource {resource-
 for type {resource-type} has incorrect segment lengths.
 ```
 
-根级别的资源其名称中的段必须比资源类型中的段少一个。 段之间用斜杠隔开。 在下面的示例中，类型有两个段，名称有一个段，因此为有效名称。
+根级别的资源其名称中的段必须比资源类型中的段少一个。 段之间用斜杠隔开。 在下面的示例中，类型有两个段，名称有一个段，因此为有效名称  。
 
 ```json
 {

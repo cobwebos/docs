@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 968b7dd703ba40f46a068deb1d8b7d2b32e0de2b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64688221"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>诊断虚拟机网络路由问题 - Azure CLI
@@ -36,13 +36,13 @@ ms.locfileid: "64688221"
 
 ## <a name="create-a-vm"></a>创建 VM
 
-在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM：
+使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM  ：
 
 ```azurecli-interactive
 az vm create \
@@ -85,7 +85,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-数秒钟后，输出结果指示 nextHopType 为“Internet”，routeTableId 为“系统路由”。 此结果指示存在通往目标的有效路由。
+数秒钟后，输出结果指示 nextHopType 为“Internet”，routeTableId 为“系统路由”     。 此结果指示存在通往目标的有效路由。
 
 测试从 VM 发往 172.31.0.100 的出站通信：
 
@@ -99,7 +99,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-输出结果指示“nextHopType”为“无”，“routeTableId”仍为“系统路由”。 此结果指示，虽然存在有效的通往目标的系统路由，但是没有将流量路由到目标的下一跃点。
+输出结果指示“nextHopType”为“无”，“routeTableId”仍为“系统路由”     。 此结果指示，虽然存在有效的通往目标的系统路由，但是没有将流量路由到目标的下一跃点。
 
 ## <a name="view-details-of-a-route"></a>查看路由详细信息
 
@@ -129,7 +129,7 @@ az network nic show-effective-route-table \
 },
 ```
 
-使用 `az network watcher show-next-hop` 命令测试在[使用下一跃点](#use-next-hop)中发送到的 13.107.21.200 的出站通信时，地址前缀为 0.0.0.0/0** 的路由用于将流量路由到该地址，因为该输出中没有其他路由包含该地址。 默认情况下，未在另一路由的地址前缀中指定的所有地址都会路由到 Internet。
+使用 `az network watcher show-next-hop` 命令测试在[使用下一跃点](#use-next-hop)中发送到的 13.107.21.200 的出站通信时，地址前缀为 0.0.0.0/0** 的路由用于将流量路由到该地址，因为该输出中没有其他路由包含该地址  。 默认情况下，未在另一路由的地址前缀中指定的所有地址都会路由到 Internet。
 
 但是，使用 `az network watcher show-next-hop` 命令测试发送到 172.31.0.100 的出站通信时，结果显示没有下一跃点类型。 返回的输出中包含以下文本：
 
@@ -149,7 +149,7 @@ az network nic show-effective-route-table \
 },
 ```
 
-从 `az network watcher nic show-effective-route-table` 命令的输出结果中可以看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”。 Azure 会创建到 172.16.0.0/12 的默认路由，但不会无缘无故地指定下一跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。 此时进行检查会将“nextHopType”显示为“虚拟网络”。
+从 `az network watcher nic show-effective-route-table` 命令的输出结果中可以看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”   。 Azure 会创建到 172.16.0.0/12 的默认路由，但不会无缘无故地指定下一跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。   此时进行检查会将“nextHopType”显示为“虚拟网络”   。
 
 ## <a name="clean-up-resources"></a>清理资源
 

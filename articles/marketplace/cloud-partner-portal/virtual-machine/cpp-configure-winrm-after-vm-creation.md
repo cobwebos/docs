@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
 ms.openlocfilehash: 4a4248efcfda76dfd8907069e167fdfa144d0365
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938522"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>在创建虚拟机后配置 WinRM
@@ -26,17 +26,17 @@ ms.locfileid: "64938522"
 
 基于 HTTPS 协议的 WinRM 使用端口 5896，默认情况下，Azure 市场上提供的预配置 Windows VM 未启用此端口。 若要启用此协议，请使用以下步骤通过 [Azure 门户](https://portal.azure.com)向网络安全组 (NSG) 中添加一个新规则。  有关 NSG 的详细信息，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)。
 
-1.  导航到“虚拟机”>   <*vm-name*>   >“设置/网络”边栏选项卡。
+1.  导航到“虚拟机”>   <*vm-name*>   >“设置/网络”边栏选项卡。  
 2.  单击 NSG 名称（在此示例中为 **testvm11002**）以显示其属性：
 
     ![网络安全组属性](./media/nsg-properties.png)
  
-3. 在“设置”下，选择“入站安全规则”以显示此边栏选项卡。
-4. 单击“+添加”来为 TCP 端口 5986 创建名为 `WinRM_HTTPS` 的新规则。
+3. 在“设置”下，选择“入站安全规则”以显示此边栏选项卡。  
+4. 单击“+添加”  来为 TCP 端口 5986 创建名为 `WinRM_HTTPS` 的新规则。
 
     ![添加入站网络安全规则](./media/nsg-new-rule.png)
 
-5. 提供值后，单击“确定”。  入站安全规则的列表应包含以下新条目。
+5. 提供值后，单击“确定”。   入站安全规则的列表应包含以下新条目。
 
     ![入站网络安全规则的列表](./media/nsg-new-inbound-listing.png)
 

@@ -14,10 +14,10 @@ ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
 ms.openlocfilehash: 76bbcd6fa400111514ec3496005a28ec28ae6ab7
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65977901"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
@@ -41,7 +41,7 @@ ms.locfileid: "65977901"
 
 ![创建资源 > 开发人员工具 > Application Insights](./media/monitor-web-app-availability/1create-resource-appinsights.png)
 
-单击“所有资源”，打开新资源的“概述”边栏选项卡。
+单击“所有资源”，打开新资源的“概述”边栏选项卡  。
 
 ## <a name="setup"></a>创建 URL ping 测试
 打开“可用性”边栏选项卡，并添加一个测试。
@@ -63,13 +63,13 @@ ms.locfileid: "65977901"
 
 * **成功准则**：
 
-    **测试超时**：减少此值可以接收有关响应变慢的警报。 如果未在这段时间内收到站点的响应，则将测试视为失败。 如果选择了“分析依赖请求”，则必须在这段时间内收到所有图像、样式文件、脚本和其他依赖资源。
+    **测试超时**：减少此值可以接收有关响应变慢的警报。 如果未在这段时间内收到站点的响应，则将测试视为失败。 如果选择了“分析依赖请求”，则必须在这段时间内收到所有图像、样式文件、脚本和其他依赖资源  。
 
     **HTTP 响应**：视为成功的返回状态代码。 代码 200 指示返回了正常网页。
 
-    **内容匹配**：类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。 **内容匹配当前支持只能使用英文字符。** 
+    **内容匹配**：类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。 **内容匹配目前仅支持英文字符。** 
 
-* **警报位置阈值**：建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置。
+* **警报位置阈值**：建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置   。
 
 ## <a name="multi-step-web-tests"></a>多步骤 Web 测试
 可以监视涉及一连串 URL 的方案。 例如，如果正在监视销售网站，可以测试是否能够正常地将商品添加购物车。
@@ -92,7 +92,7 @@ ms.locfileid: "65977901"
 
     ![在 Visual Studio Enterprise 版中，基于“Web 性能测试和负载测试”模板创建项目。](./media/monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
- * *看不到 Web 性能与负载测试模板？* - 关闭 Visual Studio Enterprise。 打开 **Visual Studio 安装程序**，修改 Visual Studio Enterprise 安装。 在“各个组件”下，选择“Web 性能和负载测试工具”。
+ * *看不到 Web 性能与负载测试模板？* - 关闭 Visual Studio Enterprise。 打开 **Visual Studio 安装程序**，修改 Visual Studio Enterprise 安装。 在“各个组件”下，选择“Web 性能和负载测试工具”。  
 
 2. 打开 .webtest 文件并开始录制。
 
@@ -131,7 +131,7 @@ ms.locfileid: "65977901"
 
 Web 测试插件提供时间参数化方式。
 
-1. 针对所需的每个变量参数值添加一个 Web 测试插件。 在 Web 测试工具栏中，选择“添加 Web 测试插件”。
+1. 针对所需的每个变量参数值添加一个 Web 测试插件。 在 Web 测试工具栏中，选择“添加 Web 测试插件”  。
 
     ![选择“添加 Web 测试插件”并选择类型。](./media/monitor-web-app-availability/appinsights-72webtest-plugins.png)
 
@@ -150,7 +150,7 @@ Web 测试插件提供时间参数化方式。
 
 概述选项卡显示测试的成功率，而详细信息选项卡则显示特定详细信息的散点图和网格。
 
-几分钟之后，单击“刷新”即可查看测试结果。
+几分钟之后，单击“刷新”  即可查看测试结果。
 
 ![详细信息边栏选项卡上的散点图](./media/monitor-web-app-availability/4refresh.png)
 
@@ -167,9 +167,9 @@ Web 测试插件提供时间参数化方式。
 
 ## <a name="edit"></a> 检查和编辑测试
 
-从详细信息选项卡上，在特定测试中选择最右侧的省略号以编辑、临时禁用、删除或下载 Web 测试。 可能需要 20 分钟的时间进行配置更改传播。
+从详细信息选项卡上，在特定测试中选择最右侧的省略号以编辑、临时禁用、删除或下载 Web 测试。 传播配置更改最多可能需要 20 分钟。
 
-从特定测试中选择“查看测试详细信息”以查看其散点图和特定的测试位置详细信息。
+从特定测试中选择“查看测试详细信息”  以查看其散点图和特定的测试位置详细信息。
 
 ![查看测试详细信息，编辑以及禁用 Web 测试](./media/monitor-web-app-availability/5viewdetails.png)
 
@@ -208,7 +208,7 @@ Web 测试插件提供时间参数化方式。
 ![创建体验](./media/monitor-web-app-availability/appinsights-71webtestUpload.png)
 
 > [!NOTE]
->  使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，必须在警报体验中配置预警规则严重性和[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。
+>  使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，必须在警报体验中配置预警规则严重性和[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)的通知首选项  。 如果不执行以下步骤，则只会收到门户内通知。
 
 1. 保存可用性测试后，在详细信息选项卡上单击你刚才所做的测试旁边的省略号。 单击“编辑警报”。
 ![保存后编辑](./media/monitor-web-app-availability/9editalert.png)
@@ -274,11 +274,11 @@ Web 测试插件提供时间参数化方式。
 
 ## <a name="performance-tests"></a>性能测试
 > [!NOTE]  
-> 不推荐使用基于云的负载测试服务。 可以找到有关不推荐使用、 服务可用性和其他服务的详细信息[此处](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops)。
+> 基于云的负载测试服务已弃用。 有关弃用、服务可用性和替代服务的更多信息，请参见[此处](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops)。
 
 可以在网站上运行负载测试。 与可用性测试一样，可以从全球各地的站点发送简单请求或多步骤请求。 与可用性测试不同的是，发送的许多请求可以模拟多个并发用户。
 
-在“配置”下，转到“性能测试”并单击“新建”以创建测试。
+在“配置”  下，转到“性能测试”  并单击“新建”以创建测试。
 
 ![创建新的性能测试](./media/monitor-web-app-availability/11new-performance-test.png)
 
@@ -316,13 +316,13 @@ Web 测试插件提供时间参数化方式。
 
     检查以确保接收 Webhook 通知的应用程序可用并成功处理 Webhook 请求。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
 
-* 出现间歇性测试失败和违反协议错误？
+*  出现间歇性测试失败和违反协议错误？
 
     错误（“违反协议: CR 必须后跟 LF”）表明服务器（或依赖项）存在问题。 在响应中设置的标头格式错误时，会发生这种情况。 可能是负载均衡器或 CDN 引发的。 具体说来，某些标头可能没有使用 CRLF 来指示行结束，这违反了 HTTP 规范，因此无法通过 .NET WebRequest 级别的验证。 请检查响应，找出可能违反规范的标头。
     
     请注意:在 HTTP 标头验证比较宽松的浏览器上，URL 可能不会失败。 有关该问题的详细说明，请参阅此博客文章： http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
     
-* 看不到任何相关的、用于诊断测试失败的服务器端遥测数据？
+*  看不到任何相关的、用于诊断测试失败的服务器端遥测数据？
     
     如果已为服务器端应用程序设置 Application Insights，则可能是因为[采样](../../azure-monitor/app/sampling.md)正在进行。 请选择其他可用性结果。
 
@@ -332,7 +332,7 @@ Web 测试插件提供时间参数化方式。
 
 * *是否支持 HTTPS？*
 
-    支持 TLS 1.1 和 TLS 1.2。 我们目前不会检查有 HTTPS 证书错误。  
+    支持 TLS 1.1 和 TLS 1.2。 我们目前不检查 HTTPS 证书错误。  
 
 * *“Web 测试”与“可用性测试”之间是否有差异？*
 
@@ -367,12 +367,12 @@ Web 测试插件提供时间参数化方式。
 
 * 建议将经典警报通知用于特定接收人。
 
-* 对于 Y 个位置中 X 个位置的失败相关警报，如已启用“批/组”复选框选项，会向具有管理员/共同管理员角色的用户发送相关通知。  实质上是_订阅_的_所有_管理员均会收到通知。
+* 对于 Y 个位置中 X 个位置的失败相关警报，如已启用“批/组”  复选框选项，会向具有管理员/共同管理员角色的用户发送相关通知。  实质上是_订阅_的_所有_管理员均会收到通知。
 
-* 对于有关可用性指标（或任何相关 Application Insights 指标）的警报，如果启用“批/组”复选框选项，则会发送给订阅中具有所有者、参与者或读者角色的用户。 实际上，可以访问订阅 Application Insights 资源的_所有_用户均会接收到通知。 
+* 对于有关可用性指标（或任何相关 Application Insights 指标）的警报，如果启用“批/组”复选框选项，则会发送给订阅中具有所有者、参与者或读者角色的用户  。 实际上，可以访问订阅 Application Insights 资源的_所有_用户均会接收到通知。 
 
 > [!NOTE]
-> 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改。
+> 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改  。
 
 如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../platform/action-groups.md)，可以为具有任何参与者/所有者/读者角色的用户配置电子邮件通知（不作为单一选项组合在一起）。
 

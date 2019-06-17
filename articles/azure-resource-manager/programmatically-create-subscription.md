@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/10/2019
 ms.author: jureid
 ms.openlocfilehash: 7985451eb2bb5e9fd4fbcfb3d2fcf35149122c15
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796064"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>以编程方式创建 Azure Enterprise 订阅（预览版）
@@ -40,7 +40,7 @@ Azure [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreeme
 
 将你作为帐户所有者添加到 Azure EA 注册后，Azure 使用帐户到注册的关系来确定订阅收费对象。 在该帐户下创建的所有订阅均针对该帐户所在的 EA 注册进行计费。 若要创建订阅，必须传入拥有订阅所需的合约帐户和用户主体的相关值。 
 
-若要运行以下命令，必须登录到帐户所有者的主目录（默认在该目录中创建订阅）。
+若要运行以下命令，必须登录到帐户所有者的主目录（默认在该目录中创建订阅）。 
 
 ## <a name="resttabrest"></a>[REST](#tab/rest)
 
@@ -170,7 +170,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| 元素名称  | 需要 | Type   | 描述                                                                                               |
+| 元素名称  | 必选 | Type   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `OfferType`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |

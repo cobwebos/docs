@@ -1,6 +1,6 @@
 ---
 title: Azure 状态监视器 v2 的详细说明 |Microsoft Docs
-description: 有关如何开始使用状态监视器 v2 的详细的说明。 监视网站性能，无需重新部署该网站。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
+description: 有关如何开始使用状态监视器 v2 的详细说明。 无需重新部署网站即可监视网站性能。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: d0960c749d74903acc778c0f21d5c49f380195ae
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: c8199c960229f9cc53cf57f9da3e1f17ebd9f5c7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734200"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074163"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>状态监视器 v2:详细说明
 
@@ -26,7 +26,7 @@ ms.locfileid: "66734200"
 在没有 internet 访问权限的情况下，它还包括手动说明。
 
 > [!IMPORTANT]
-> 状态监视器 v2 目前处于公共预览状态。
+> 状态监视器 v2 目前为公共预览版。
 > 没有附带服务级别协议，提供此预览版本，我们不建议将其用于生产工作负荷。 可能不支持某些功能，以及一些可能会受约束的功能。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -100,7 +100,7 @@ SerializationVersion           1.1.0.1
         - `-Proxy`。 指定请求的代理服务器。
         - `-Force`。 绕过确认提示。
     
-    如果 NuGet 未设置，你会收到此提示：
+    如果未设置 NuGet，则会看到此提示：
         
         NuGet provider is required to continue
         PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet
@@ -117,7 +117,7 @@ SerializationVersion           1.1.0.1
     - 可选参数：
         - `-Proxy`。 指定请求的代理服务器。
 
-    如果 PowerShell 库不受信任，你会收到此提示：
+    如果 PowerShell 库不受信任，则会看到此提示：
 
         Untrusted repository
         You are installing the modules from an untrusted repository. If you trust this repository, change its
@@ -128,7 +128,7 @@ SerializationVersion           1.1.0.1
     可以确认此更改，并通过运行审核所有 PSRepositories`Get-PSRepository`命令。
 
 4. 安装最新版本的 PowerShellGet。
-    - 说明:此模块包含用于从 PowerShell 库获取其他模块的工具。 版本 1.0.0.1 随附于 Windows 10 和 Windows Server。 版本 1.6.0 或更高版本是必需的。 若要确定安装哪个版本，请运行`Get-Command -Module PowerShellGet`命令。
+    - 说明:此模块包含用于从 PowerShell 库中获取其他模块的工具。 版本 1.0.0.1 随附于 Windows 10 和 Windows Server。 版本 1.6.0 或更高版本是必需的。 若要确定安装哪个版本，请运行`Get-Command -Module PowerShellGet`命令。
     - 参考：[安装 PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget)。
     - 命令： `Install-Module -Name PowerShellGet`。
     - 可选参数：
@@ -144,7 +144,7 @@ SerializationVersion           1.1.0.1
             CategoryInfo          : InvalidArgument: (:) [Install-Module], ParameterBindingException
             FullyQualifiedErrorId : NamedParameterNotFound,Install-Module
     
-5. 重新启动 PowerShell。 无法在当前会话中加载新版本。 新的 PowerShell 会话将加载 PowerShellGet 的最新版本。
+5. 重启 PowerShell。 无法在当前会话中加载新版本。 新的 PowerShell 会话将加载 PowerShellGet 的最新版本。
 
 ## <a name="download-and-install-the-module-via-powershell-gallery"></a>下载并安装通过 PowerShell 库模块
 
@@ -178,7 +178,7 @@ SerializationVersion           1.1.0.1
 
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>通过使用 Expand-archive (v1.0.1.0) 为 zip 文件解压缩 nupkg
 
-- 说明:Microsoft.PowerShell.Archive (v1.0.1.0) 的基础版本不能将 nupkg 文件解压缩。 重命名该文件具有.zip 扩展名。
+- 说明:基础版本的 Microsoft.PowerShell.Archive (v1.0.1.0) 无法解压缩 nupkg 文件。 重命名该文件具有.zip 扩展名。
 - 参考：[展开存档](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)。
 - 命令：
 
@@ -204,7 +204,7 @@ SerializationVersion           1.1.0.1
 
 ### <a name="option-2-unzip-and-import-nupkg-manually"></a>选项 2：解压缩，然后手动导入 nupkg
 手动下载的 PowerShell 模块安装到 PowerShell 目录中，使其可发现 PowerShell 会话。
-有关详细信息，请参阅[安装 PowerShell 模块](https://docs.mircrosoft.com/powershell/developer/module/installing-a-powershell-module)。
+有关详细信息，请参阅[安装 PowerShell 模块](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module)。
 
 如果要在模块安装到任何其他目录，手动导入模块通过使用[导入模块](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6)。
 
@@ -247,10 +247,10 @@ Application Insights SDK 将需要将应用的遥测数据发送给 Microsoft。
 
  添加更多遥测：
 
-- [创建 web 测试](monitor-web-app-availability.md)以确保你的站点保持活动状态。
+- [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
 - [添加 web 客户端遥测](../../azure-monitor/app/javascript.md)，查看网页代码中的异常，并启用跟踪调用。
 - [将 Application Insights SDK 添加到你的代码](../../azure-monitor/app/asp-net.md)以便插入跟踪和记录调用。
 
-用做更多状态监视器 v2:
+使用状态监视器 v2 执行更多操作：
 
 - 使用指南，了解如何[进行故障排除](status-monitor-v2-troubleshoot.md)状态监视器 v2。

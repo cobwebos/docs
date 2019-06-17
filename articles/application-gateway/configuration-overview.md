@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 55c7670821ee6c6f5b924bf18b5f7ad01d4b6d51
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: c5cc39c2f2a7f2a79b8d6bc2bd95506ee5532a84
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431299"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073975"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -71,7 +71,10 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 使用 v1 SKU 时，只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网就会支持这些 UDR。 例如，可以在应用程序网关子网中设置一个指向防火墙设备的、用于检查数据包的 UDR。 但是，必须确保数据包在检查后可以访问其预期目标。 否则，可能会导致不正确的运行状况探测或流量路由行为。 这包括已探测到的路由，或者通过 Azure ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。
 
-V2 sku，不支持应用程序网关子网 Udr。 有关详细信息，请参阅[Azure 应用程序网关 v2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku)。
+对于 v2 SKU，Udr 不支持对应用程序网关子网。 有关详细信息，请参阅[Azure 应用程序网关 v2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku)。
+
+> [!NOTE]
+> V2 SKU 不支持 Udr。  如果您需要 Udr 应继续部署 v1 SKU。
 
 > [!NOTE]
 > 在应用程序网关子网中使用 UDR 会导致[后端运行状况视图](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)中的运行状态显示为“未知”。 此外，还会导致应用程序网关日志和指标生成失败。 建议不要在应用程序网关子网中使用 UDR，以便能够查看后端运行状况、日志和指标。
@@ -84,7 +87,7 @@ V2 sku，不支持应用程序网关子网 Udr。 有关详细信息，请参阅
 
 仅支持 1 个公共 IP 地址或 1 个专用 IP 地址。 在创建应用程序网关时选择前端 IP。
 
-- 对于公共 IP，可以在应用程序网关所在的同一位置创建新的公共 IP 地址或使用现有的公共 IP。 如果创建新的公共 IP，则以后无法更改选定的 IP 地址类型（静态或动态）。 有关详细信息，请参阅[静态与动态公共 IP 地址](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address)。
+- 对于公共 IP，可以在应用程序网关所在的同一位置创建新的公共 IP 地址或使用现有的公共 IP。 如果创建新的公共 IP，则以后无法更改选定的 IP 地址类型（静态或动态）。 有关详细信息，请参阅[静态与动态公共 IP 地址](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address)。
 
 - 对于专用 IP，可以在创建应用程序网关的子网中指定一个专用 IP 地址。 如果不显式指定专用 IP 地址，则系统会在子网中自动选择一个任意 IP 地址。 有关详细信息，请参阅[创建包含内部负载均衡器的应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)。
 
@@ -124,7 +127,7 @@ V2 sku，基本侦听器之前处理多站点侦听器。
 
 - 如果选择 HTTP，则客户端与应用程序网关之间的流量将不会加密。
 
-- 如果想要实现 [SSL 终止](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl)或[端到端 SSL 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 SSL 连接将在应用程序网关上终止。 若要实现端到端的 SSL 加密，必须选择 HTTPS，并配置**后端 HTTP** 设置。 这可以确保流量在从应用程序网关传输到后端时重新得到加密。
+- 如果想要实现 [SSL 终止](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination)或[端到端 SSL 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 SSL 连接将在应用程序网关上终止。 若要实现端到端的 SSL 加密，必须选择 HTTPS，并配置**后端 HTTP** 设置。 这可以确保流量在从应用程序网关传输到后端时重新得到加密。
 
 若要配置 SSL 终止和端到端 SSL 加密，必须将一个证书添加到侦听器，使应用程序网关能够派生对称密钥。 派生过程中根据 SSL 协议规范进行的。 使用该对称密钥可以加密和解密发送到网关的流量。 网关证书必须采用个人信息交换 (PFX) 格式。 使用此格式可以导出私钥，供网关用来加密和解密流量。
 
@@ -172,7 +175,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="rule-type"></a>规则类型
 
-创建规则时，可以选择[“基本”或“基于路径”](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule)。  
+创建规则时，可以选择[“基本”或“基于路径”](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules)。  
 
 - 若要将关联的侦听器（例如 *blog<i></i>.contoso.com/\** ）上的所有请求转发到单个后端池，请选择“基本”。
 - 若要将来自特定 URL 路径的请求路由到特定的后端池，请选择“基于路径”。 路径模式仅应用到 URL 的路径，而不应用到该 URL 的查询参数。
@@ -245,7 +248,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 此设置将添加、 删除或更新时请求的 HTTP 请求和响应头和响应数据包的客户端和后端池之间移动。 您只能配置此功能通过 PowerShell。 Azure 门户和 CLI 支持尚不可用。 有关详细信息，请参阅：
 
  - [重写 HTTP 标头概述](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [配置 HTTP 标头重写](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-your-http-header-rewrite-rule-configuration)
+ - [配置 HTTP 标头重写](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-the-http-header-rewrite-rule-configuration)
 
 ## <a name="http-settings"></a>HTTP 设置
 

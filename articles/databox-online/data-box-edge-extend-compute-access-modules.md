@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 907647725dd6795b3b6482476de7442fbbf66114
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65917230"
 ---
 # <a name="enable-compute-network-on-your-azure-data-box-edge"></a>启用你的 Azure 数据框边缘上的计算网络
@@ -40,7 +40,7 @@ ms.locfileid: "65917230"
 
 在本地 Web UI 上执行下述步骤，以便配置计算设置。
 
-1. 在本地 Web UI 中，转到“配置”>“计算设置”。  
+1. 在本地 Web UI 中，转到“配置”>“计算设置”。   
 
 2. **启用**你想要用于连接到将在设备运行的计算模块的网络接口。
 
@@ -49,7 +49,7 @@ ms.locfileid: "65917230"
 
     ![启用计算设置 1](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-1.png)
 
-3. 选择“应用”以应用设置。 记下分配给网络接口，如果使用 DHCP 的 IP 地址。
+3. 选择“应用”以应用设置。  记下分配给网络接口，如果使用 DHCP 的 IP 地址。
 
     ![启用计算设置](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-2.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "65917230"
 
         ![IoT Edge 的自定义模块边栏选项卡中指定的端口信息](media/data-box-edge-extend-compute-access-modules/module-information.png)
 
-    4. 选择“保存”。
+    4. 选择“保存”。 
 
 ## <a name="verify-module-access"></a>验证模块的访问权限
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
 ms.openlocfilehash: de4e9fb4b15f4c346926fe46f23255c668204c2e
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65413894"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>附加或分离 Azure 实验室服务中共享的映像库
@@ -39,7 +39,7 @@ ms.locfileid: "65413894"
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>创建并附加共享的映像库
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中，选择“所有服务”。 在“DEVOPS”部分中，选择“实验室服务”。 如果选择“实验室服务”旁边的星星 (`*`)，则会将其添加到左侧菜单上的“收藏夹”部分。 从下次开始，请在“收藏夹”下选择“实验室服务”。
+2. 在左侧菜单中，选择“所有服务”  。 在“DEVOPS”部分中，选择“实验室服务”   。 如果选择“实验室服务”旁边的星星 (`*`)，则会将其添加到左侧菜单上的“收藏夹”部分。   从下次开始，请在“收藏夹”下选择“实验室服务”。  
 
     ![“所有服务”->“实验室服务”](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. 选择实验室帐户，请参阅**实验室帐户**页。 

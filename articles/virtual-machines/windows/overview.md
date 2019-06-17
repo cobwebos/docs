@@ -17,10 +17,10 @@ ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 604a47ef73d50a2d127d1569b0b6a240a7a27d73
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65506842"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机概述
@@ -54,7 +54,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 如果使用 Azure 创建操作系统磁盘，计算机名称与虚拟机名称相同。 如果[上传包含以前配置的操作系统的自有映像](upload-generalized-managed.md)并使用它来创建虚拟机，则名称可以不同。 建议在上传自己的映像文件时，使操作系统中的计算机名称与虚拟机名称保持相同。
 
 ### <a name="locations"></a>位置
-在 Azure 中创建的所有资源分布在世界各地的多个[地理区域](https://azure.microsoft.com/regions/)。 创建 VM 时，区域通常称为“位置”。 位置指定 VM 虚拟硬盘的存储位置。
+在 Azure 中创建的所有资源分布在世界各地的多个[地理区域](https://azure.microsoft.com/regions/)。 创建 VM 时，  区域通常称为“位置”。 位置指定 VM 虚拟硬盘的存储位置。
 
 下表显示了获取可用位置列表的一些方法。
 
@@ -101,14 +101,14 @@ VM [扩展](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ft
 ### <a name="related-resources"></a>相关资源
 VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则要予以创建。
 
-| 资源 | 需要 | 描述 |
+| Resource | 必选 | 描述 |
 | --- | --- | --- |
-| [资源组](../../azure-resource-manager/resource-group-overview.md) |“是” |VM 必须包含在资源组中。 |
-| [存储帐户](../../storage/common/storage-create-storage-account.md) |“是” |VM 需要使用存储帐户来存储其虚拟硬盘。 |
-| [虚拟网络](../../virtual-network/virtual-networks-overview.md) |“是” |VM 必须是虚拟网络的成员。 |
-| [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |“否” |可以向 VM 分配一个公共 IP 地址，以便远程访问它。 |
-| [网络接口](../../virtual-network/virtual-network-network-interface.md) |“是” |VM 需要使用网络接口在网络中通信。 |
-| [数据磁盘](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |“否” |VM 可以包含数据磁盘，以便扩展存储功能。 |
+| [资源组](../../azure-resource-manager/resource-group-overview.md) |是 |VM 必须包含在资源组中。 |
+| [存储帐户](../../storage/common/storage-create-storage-account.md) |是 |VM 需要使用存储帐户来存储其虚拟硬盘。 |
+| [虚拟网络](../../virtual-network/virtual-networks-overview.md) |是 |VM 必须是虚拟网络的成员。 |
+| [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |否 |可以向 VM 分配一个公共 IP 地址，以便远程访问它。 |
+| [网络接口](../../virtual-network/virtual-network-network-interface.md) |是 |VM 需要使用网络接口在网络中通信。 |
+| [数据磁盘](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |否 |VM 可以包含数据磁盘，以便扩展存储功能。 |
 
 ## <a name="how-do-i-create-my-first-vm"></a>如何创建第一个 VM？
 可以选择多种方法创建 VM。 选择哪种方法取决于所在的环境。 
@@ -134,7 +134,7 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 
 | 方法 | 描述 |
 | --- | --- |
-| Azure 门户 |在中心菜单中，单击“虚拟机”，并从列表中选择 VM。 在 VM 的边栏选项卡中，可以访问概述信息、设置值以及监控指标。 |
+| Azure 门户 |在中心菜单中，单击“虚拟机”，并从列表中选择 VM。  在 VM 的边栏选项卡中，可以访问概述信息、设置值以及监控指标。 |
 | Azure PowerShell |若要了解如何使用 PowerShell 来管理 VM，请参阅[使用 Azure PowerShell 模块创建和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 |
 | REST API |使用 [获取 VM 信息](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get) 操作获取有关 VM 的信息。 |
 | 客户端 SDK |有关使用 C# 管理 VM 的信息，请参阅[使用 Azure 资源管理器与 C# 来管理 Azure 虚拟机](csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 |

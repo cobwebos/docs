@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: eca5e4cc96996c35e7c2181746cdb3de2e5a602c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61259511"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制或粘贴数据
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-documentdb-connector.md)
 > * [当前版本](connector-azure-cosmos-db.md)
 
@@ -169,7 +169,7 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **DocumentDbCollectionSource**。 |是 |
 | query |指定要读取数据的 Azure Cosmos DB 查询。<br/><br/>示例：<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行此 SQL 语句：`select <columns defined in structure> from mycollection` |
-| nestingSeparator |特殊字符，用于指示文档是嵌套的以及如何平展结果集。<br/><br/>例如，如果 Azure Cosmos DB 查询返回嵌套结果 `"Name": {"First": "John"}`，则当 **nestedSeparator** 值为 **.**（点）时，复制活动将以值为“John”的 `Name.First` 标识列名称。 |否<br />（默认值为 **.** （点）） |
+| nestingSeparator |特殊字符，用于指示文档是嵌套的以及如何平展结果集。<br/><br/>例如，如果 Azure Cosmos DB 查询返回嵌套结果 `"Name": {"First": "John"}`，则当 **nestedSeparator** 值为 **.** （点）时，复制活动将以值为“John”的 `Name.First` 标识列名称。 |否<br />（默认值为 **.** （点）） |
 
 **示例**
 
@@ -213,11 +213,11 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **DocumentDbCollectionSink**。 |是 |
 | writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则数据工厂会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
-| writeBatchSize | 数据工厂使用 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入 Azure Cosmos DB。 **writeBatchSize** 属性控制 ADF 提供给库的文档的大小。 可尝试增加 writeBatchSize 的值以提高性能，并在文档大小较大时降低该值 - 请参阅下面的提示。 |否<br />（默认值为 **10,000**） |
-| nestingSeparator |**源**列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>例如，当 **nestedSeparator** 为 **.**（点）时，输出数据集结构中的 `Name.First` 在 Azure Cosmos DB 文档中生成以下 JSON 结构： `"Name": {"First": "[value maps to this column from source]"}`  |否<br />（默认值为 **.** （点）） |
+| writeBatchSize | 数据工厂使用 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入 Azure Cosmos DB。 **writeBatchSize** 属性控制 ADF 提供给库的文档的大小。 可尝试增加 writeBatchSize 的值以提高性能，并在文档大小较大时降低该值 - 请参阅下面的提示  。 |否<br />（默认值为 **10,000**） |
+| nestingSeparator |**源**列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>例如，当 **nestedSeparator** 为 **.** （点）时，输出数据集结构中的 `Name.First` 在 Azure Cosmos DB 文档中生成以下 JSON 结构： `"Name": {"First": "[value maps to this column from source]"}`  |否<br />（默认值为 **.** （点）） |
 
 >[!TIP]
->Cosmos DB 将单个请求的大小限制为 2MB。 公式为请求大小 = 单个文档大小 * 写入批大小。 若出现“请求太大。”错误，请减少复制接收器配置中的 `writeBatchSize` 值。
+>Cosmos DB 将单个请求的大小限制为 2MB。 公式为请求大小 = 单个文档大小 * 写入批大小。 若出现“请求太大。”错误，请减少复制接收器配置中的 `writeBatchSize` 值   。
 
 **示例**
 
@@ -261,7 +261,7 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 
 若要实现“架构不可知”复制，请执行以下操作：
 
-* 使用复制数据工具时，选择“原样导出到 JSON 文件或 Cosmos DB 集合”选项。
+* 使用复制数据工具时，选择“原样导出到 JSON 文件或 Cosmos DB 集合”选项  。
 * 使用活动创作时，请勿在 Azure Cosmos DB 数据集中指定 **structure**（也称为 *schema*）节， 也不要在复制活动的 Azure Cosmos DB 源或接收器中指定 **nestingSeparator** 属性。 从 JSON 文件进行导入或导出到 JSON 文件时，请在相应的文件存储数据集中，将 **format** 类型指定为 **JsonFormat**，并按 [JSON 格式](supported-file-formats-and-compression-codecs.md#json-format)部分中所述配置 **filePattern**。 然后不要指定 **structure** 节并跳过其余的格式设置。
 
 ## <a name="next-steps"></a>后续步骤

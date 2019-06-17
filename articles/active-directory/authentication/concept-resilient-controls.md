@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff59b93603af61fd8ea571966a3c43a06929ae04
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414947"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113475"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -37,8 +37,8 @@ ms.locfileid: "60414947"
 本文档有四个要点：
 
 * 使用紧急访问帐户避免管理员锁定。
-* 使用条件访问 (CA) 实施 MFA，而不是实施每用户 MFA。
-* 通过使用多种条件访问 (CA) 控制来缓解用户锁定风险。
+* 实现使用条件性访问 (CA) 的 MFA，而不是每用户 MFA。
+* 通过使用多个条件性访问 (CA) 控件来缓解用户锁定。
 * 通过为每个用户预配多种身份验证方法或等效项来缓解用户锁定风险。
 
 ## <a name="before-a-disruption"></a>中断前
@@ -58,11 +58,11 @@ ms.locfileid: "60414947"
 
 ### <a name="mitigating-user-lockout"></a>缓解用户锁定风险
 
- 若要缓解用户锁定风险，请使用包含多种控制的条件访问策略，以便用户可以选择如何访问应用和资源。 通过为用户提供多种选择，例如，使用 MFA 登录**或**从受管理设备登录**或**从公司网络登录，用户可以在其中一种访问控制不可用时，使用其他选项来继续工作。
+ 若要降低用户锁定的风险，使用与多个控件条件性访问策略为用户提供一种，它们将如何访问应用和资源。 通过为用户提供多种选择，例如，使用 MFA 登录**或**从受管理设备登录**或**从公司网络登录，用户可以在其中一种访问控制不可用时，使用其他选项来继续工作。
 
 #### <a name="microsoft-recommendations"></a>Microsoft 的建议
 
-在组织的现有条件访问策略中加入以下访问控制机制：
+合并现有的条件性访问策略为组织中的以下访问控制：
 
 1. 为每个用户预配依赖于不同信道的多种身份验证方法，例如基于 Internet 的 Microsoft Authenticator 应用、在设备上生成的 OATH 令牌和手机短信。
 2. 在 Windows 10 设备上部署 Windows Hello for Business，以便直接通过设备登录满足 MFA 要求。
@@ -109,7 +109,7 @@ ms.locfileid: "60414947"
 
 #### <a name="microsoft-recommendations"></a>Microsoft 的建议
 
-应急条件访问策略是一种**被禁用的策略**，它会忽略 Azure MFA、第三方 MFA、基于风险或基于设备的控制。 当组织决定激活你的应急计划时，管理员可以启用该策略并禁用基于控制的常规策略。
+应变的条件性访问策略是**禁用策略**省略 Azure MFA，第三方 MFA 的基于风险的或基于设备的控件。 当组织决定激活你的应急计划时，管理员可以启用该策略并禁用基于控制的常规策略。
 
 >[!IMPORTANT]
 > 启用应急计划时，禁用对用户强制执行安全措施的策略（即使只是暂时的）会对你的安全状况造成威胁。
@@ -121,13 +121,13 @@ ms.locfileid: "60414947"
   * 配置一个将受限会话声明发送到 Exchange 和 SharePoint 的备用策略。
   * 如果组织使用 Microsoft Cloud App Security，请考虑回退到使用 MCAS 的策略，MCAS 允许只读访问但不允许上传。
 * 请将策略命名，以确保在中断期间能够轻松找到它们。 在策略名称中包含以下元素：
-  * 策略的标签编号。
-  * 要显示的文本。此策略仅用于紧急情况。 例如：“在紧急情况下启用”
-  * 策略应用到的中断。 例如：“MFA 中断期间”
-  * 一个序号，用于指示策略的激活顺序。
-  * 策略应用到的应用。
-  * 策略应用到的控制措施。
-  * 策略要求满足的条件。
+  * 策略的标签编号。 
+  * 要显示的文本。此策略仅用于紧急情况。 例如：“在紧急情况下启用” 
+  * 策略应用到的中断。  例如：“MFA 中断期间” 
+  * 一个序号，用于指示策略的激活顺序。 
+  * 策略应用到的应用。 
+  * 策略应用到的控制措施。 
+  * 策略要求满足的条件。 
   
 应变策略的此命名标准如下： 
 
@@ -247,7 +247,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 
 ## <a name="emergency-options"></a>紧急选项
 
- 在出现紧急情况时，如果组织以前未实施任何缓解或应急计划，但他们已经使用条件访问策略来强制执行 MFA，则按照[用户锁定应急计划](#contingencies-for-user-lockout)部分中的建议操作。
+ 在出现紧急情况和你的组织没有以前未实现缓解或应急计划，然后按照中的建议[用户锁定的紧急情况](#contingencies-for-user-lockout)部分如果他们已使用条件性访问策略以强制实施 MFA。
 如果你的组织使用的是每用户 MFA 旧策略，则可以考虑以下替代方法：
 
 1. 如果有公司网络出站 IP 地址，则可以将它们添加为受信任的 IP，以便仅对公司网络启用身份验证。
@@ -269,4 +269,4 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 * [Windows Hello for Business 部署指南](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [密码指南 - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Azure Active Directory 条件访问中的条件是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Azure Active Directory 条件访问中的访问控制是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
+* [什么是 Azure Active Directory 条件访问中的访问控制？](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

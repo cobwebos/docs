@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: victorh
-ms.openlocfilehash: 8434340bb7ed95cc36115c05048b2b67682b5796
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 256fb42be8fec056ed7d10cfc4197a1b5a33fac1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831282"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807175"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>应用程序网关对多租户后端（例如应用服务）的支持
 
 在 Web 服务器的多租户体系结构设计中，多个网站在同一 Web 服务器实例上运行。 主机名用于区分托管的不同应用程序。 默认情况下，应用程序网关不更改从客户端传入的 HTTP 主机标头，而是将该标头原封不动地发送到后端。 这适用于后端池成员，例如 NIC、虚拟机规模集、公共 IP 地址、内部 IP 地址和 FQDN，因为这些资源无需依赖于特定的主机标头或 SNI 扩展即可解析为正确的终结点。 但是，有许多服务（例如 Azure 应用服务 Web 应用和 Azure API 管理）在性质上是多租户的，需要依赖于特定的主机标头或 SNI 扩展才能解析为正确的终结点。 通常，应用程序的 DNS 名称（也是与应用程序网关关联的 DNS 名称）不同于后端服务的域名。 因此，应用程序网关收到的原始请求中的主机标头不同于后端服务的主机名。 正因如此，除非从应用程序网关发往后端的请求中的主机标头已更改为后端服务的主机名，否则多租户后端无法将请求解析为正确的终结点。 
 
-应用程序网关提供相应的功能，让用户根据后端的主机名替代请求中的 HTTP 主机标头。 此功能支持 Azure 应用服务 Web 应用和 API 管理等多租户后端。 此功能仅供的 v1 和 v2 标准和 WAF Sku。 
+应用程序网关提供相应的功能，让用户根据后端的主机名替代请求中的 HTTP 主机标头。 此功能支持多租户后端，例如 Azure 应用服务 Web 应用和 API 管理。 此功能适用于 v1 和 v2 标准 SKU 和 WAF SKU。 
 
 ![主机替代](./media/application-gateway-web-app-overview/host-override.png)
 
@@ -31,7 +31,7 @@ ms.locfileid: "60831282"
 
 - 在 HTTP 设置中显式输入将主机名设置为固定值的功能。 此功能可确保将主机标头替代为该值，前提是在流量流向的后端池中应用了特定的 HTTP 设置。 使用端到端 SSL 时，会在 SNI 扩展中使用该替代的主机名。 有了此功能，后端池场收到的主机标头就可以不同于传入的客户主机标头。
 
-- 从后端池成员的 IP 或 FQDN 派生主机名的功能。 HTTP 设置还提供了一个选项，用于从后端池成员的 FQDN 动态选取主机名，前提是配置了从单个后端池成员派生主机名的选项。 使用端到端 SSL 时，该主机名派生自 FQDN，用在 SNI 扩展中。 有了此功能，后端池就可以有两个或两个以上的多租户 PaaS 服务（例如 Azure Web 应用），而针对每个成员的请求的主机标头就可以包含从该成员的 FQDN 派生的主机名。 为了实现此方案，我们在 HTTP 设置中使用了名为[从后端地址中选取主机名](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-backend-address)的开关，此开关会将原始请求中的主机标头动态替代为后端池中指定的标头。  例如，如果后端池 FQDN 包含"contoso11.azurewebsites.net"和"contoso22.azurewebsites.net"，为 contoso.com 原始请求的主机标头将被重写到 contoso11.azurewebsites.net 或 contoso22.azurewebsites.net当请求是发送到相应的后端服务器。 
+- 从后端池成员的 IP 或 FQDN 派生主机名的功能。 HTTP 设置还提供了一个选项，用于从后端池成员的 FQDN 动态选取主机名，前提是配置了从单个后端池成员派生主机名的选项。 使用端到端 SSL 时，该主机名派生自 FQDN，用在 SNI 扩展中。 有了此功能，后端池就可以有两个或两个以上的多租户 PaaS 服务（例如 Azure Web 应用），而针对每个成员的请求的主机标头就可以包含从该成员的 FQDN 派生的主机名。 为了实现此方案，我们在 HTTP 设置中使用了名为[从后端地址中选取主机名](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)的开关，此开关会将原始请求中的主机标头动态替代为后端池中指定的标头。  例如，如果后端池 FQDN 包含"contoso11.azurewebsites.net"和"contoso22.azurewebsites.net"，为 contoso.com 原始请求的主机标头将被重写到 contoso11.azurewebsites.net 或 contoso22.azurewebsites.net当请求是发送到相应的后端服务器。 
 
   ![Web 应用方案](./media/application-gateway-web-app-overview/scenario.png)
 

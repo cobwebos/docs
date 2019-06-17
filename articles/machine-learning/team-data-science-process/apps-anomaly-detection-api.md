@@ -12,10 +12,10 @@ ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926185"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
@@ -39,7 +39,7 @@ ms.locfileid: "64926185"
 * [Web 应用程序](https://anomalydetection-aml.azurewebsites.net/)可帮助评估和可视化数据上的异常情况检测 API。
 
 > [!NOTE]
-> 请尝试由 [此 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) 提供的“IT 异常 Insights 解决方案”
+> 请尝试由 [此 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) 提供的“IT 异常 Insights 解决方案” 
 >
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
@@ -113,10 +113,10 @@ Score API 用于运行非季节性时序数据的异常情况检测。 Score API
 
 | 检测程序类别 | 检测程序 | 描述 | 输入参数 | Outputs |
 | --- | --- | --- | --- | --- |
-| 峰值检测程序 |TSpike 检测程序 |根据值与第一个和第三个四分位数的距离，检测峰值和低值 |tspikedetector.sensitivity：取 1-10 范围内的整数值，默认值：3；更高的值会捕获更多极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
-| 峰值检测程序 | ZSpike 检测程序 |根据数据点与平均值的距离，检测峰值和低值 |spikedetector.sensitivity：取 1-10 范围内的整数值，默认值：3；更高的值会捕获更多极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
-| 慢速趋势检测程序 |慢速趋势检测程序 |根据每组的敏感度，检测慢速正面发展趋势 |trenddetector.sensitivity：检测程序分数的阈值（默认值：3.25，3.25 – 5 是合理的取值范围；值越高敏感度越低） |tscore：浮动数字，表示趋势的异常分数 |
-| 级别更改检测程序 | 双向级别更改检测程序 |根据每组的敏感度，检测向下和向上级别的更改 |bileveldetector.sensitivity：检测程序分数的阈值（默认值：3.25，3.25 – 5 是合理的取值范围；值越高敏感度越低） |rpscore：浮动数字，表示向上和向下级别更改的异常分数 |
+| 峰值检测程序 |TSpike 检测程序 |根据值与第一个和第三个四分位数的距离，检测峰值和低值 |tspikedetector.sensitivity：取 1-10 范围内的整数值，默认值  ：3；更高的值会捕获更多极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
+| 峰值检测程序 | ZSpike 检测程序 |根据数据点与平均值的距离，检测峰值和低值 |spikedetector.sensitivity：取 1-10 范围内的整数值，默认值  ：3；更高的值会捕获更多极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
+| 慢速趋势检测程序 |慢速趋势检测程序 |根据每组的敏感度，检测慢速正面发展趋势 |trenddetector.sensitivity：检测程序分数的阈值（默认值  ：3.25，3.25 – 5 是合理的取值范围；值越高敏感度越低） |tscore：浮动数字，表示趋势的异常分数 |
+| 级别更改检测程序 | 双向级别更改检测程序 |根据每组的敏感度，检测向下和向上级别的更改 |bileveldetector.sensitivity：检测程序分数的阈值（默认值  ：3.25，3.25 – 5 是合理的取值范围；值越高敏感度越低） |rpscore：浮动数字，表示向上和向下级别更改的异常分数 |
 
 ### <a name="parameters"></a>parameters
 下表中列出了这些输入参数的更多详细信息：
@@ -136,7 +136,7 @@ API 在时间系列数据上运行所有检测程序，并及时返回异常的�
 
 | Outputs | 描述 |
 | --- | --- |
-| 时间 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
+| Time |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
 | 数据 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的值 |
 | TSpike |二进制指示符指示 TSpike 检测程序是否检测到峰值 |
 | ZSpike |二进制指示符指示 ZSpike 检测程序是否检测到峰值 |
@@ -179,7 +179,7 @@ API 在时间系列数据上运行所有检测程序，并及时返回异常的�
 
 | Outputs | 描述 |
 | --- | --- |
-| 时间 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
+| Time |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
 | 原始数据 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的值 |
 | ProcessedData |执行下列操作之一： <ul><li>如果检测到重大季节性变化并选中非季节性选项，随季节波动调整时间序列；</li><li>如果检测到重大季节性变化并选中非季节性选项，随季节波动调整时间序列，并去除其趋势</li><li>否则，与 OriginalData 相同</li> |
 | TSpike |二进制指示符指示 TSpike 检测程序是否检测到峰值 |

@@ -17,11 +17,11 @@ ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 687012e73b4b0c869b491ac1c9ea128662b23510
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391431"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64680873"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>一个 Azure 区域内的 SAP HANA 可用性
 本文介绍一个 Azure 区域内的多种可用性场景。 Azure 已在许多区域上市，这些区域分散在世界各地。 有关 Azure 区域的列表，请查阅 [Azure 区域](https://azure.microsoft.com/regions/)。 Microsoft 将 SAP HANA 部署在一个 Azure 区域内的 VM 上，可以提供包含一个 HANA 实例的单一 VM 部署。 为了提高可用性，可将包含两个 HANA 实例的两个 VM 部署在一个 [Azure 可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)中，并使用 HANA 系统复制来实现可用性。 
@@ -36,7 +36,7 @@ Azure 可用性集是一种逻辑分组功能，可帮助确保在将可用性�
 
 ## <a name="single-vm-scenario"></a>单一 VM 场景
 
-在单一 VM 场景中，我们将为 SAP HANA 实例创建一个 Azure VM。 使用 Azure 高级存储来托管操作系统磁盘和所有数据磁盘。 99.9% 的 Azure 正常运行时间 SLA 和其他 Azure 组件提供的 SLA 足以向客户履行可用性 SLA。 在此方案中，无需对运行 DBMS 层的 VM 使用 Azure 可用性集。 此场景依赖于两种不同的功能：
+在单一 VM 场景中，我们将为 SAP HANA 实例创建一个 Azure VM。 使用 Azure 高级存储来托管操作系统磁盘和所有数据磁盘。 99\.9% 的 Azure 正常运行时间 SLA 和其他 Azure 组件提供的 SLA 足以向客户履行可用性 SLA。 在此方案中，无需对运行 DBMS 层的 VM 使用 Azure 可用性集。 此场景依赖于两种不同的功能：
 
 - Azure VM 自动重启（也称为 Azure 服务修复）
 - SAP HANA 自动重启

@@ -11,10 +11,10 @@ ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 94646c41d9894dd00018ff5ca44d76534d35e8c5
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873267"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>将 Azure 流分析与 SQL 数据仓库配合使用
@@ -34,7 +34,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 ## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>指定作业输出：Azure SQL 数据仓库数据库
 ### <a name="step-1"></a>步骤 1
-在流分析作业中，单击页面顶部的“输出”，然后单击“添加”。
+在流分析作业中，单击页面顶部的“输出”  ，然后单击“添加”  。
 
 ### <a name="step-2"></a>步骤 2
 选择 SQL 数据库。

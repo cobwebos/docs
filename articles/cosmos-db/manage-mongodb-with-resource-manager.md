@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: mjbrown
 ms.openlocfilehash: 99f1e41107c277c8b3f1b21f81952d5d5cadaa29
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65968865"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>管理 Azure Cosmos DB MongoDB API 使用 Azure 资源管理器模板的资源
@@ -23,7 +23,7 @@ ms.locfileid: "65968865"
 
 ### <a name="deploy-via-azure-cli"></a>通过 Azure CLI 部署
 
-若要部署使用 Azure CLI 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要部署使用 Azure CLI 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
 
 ```azurecli-interactive
 
@@ -55,7 +55,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ### <a name="deploy-database-template-via-azure-cli"></a>部署数据库模板通过 Azure CLI
 
-若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -76,7 +76,7 @@ az group deployment create --resource-group $resourceGroupName \
 
 ### <a name="deploy-collection-template-via-azure-cli"></a>部署集合模板通过 Azure CLI
 
-若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName

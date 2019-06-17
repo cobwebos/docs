@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/12/2019
 ms.author: spelluru
 ms.openlocfilehash: f7c9feedddab1aea031cb3a8879e868aae04df00
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236869"
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>了解 Azure 开发测试实验室中的共享的 IP 地址
@@ -26,11 +26,11 @@ Azure 开发测试实验室允许实验室 VM 共享相同的 IP 地址，以最
 
 ## <a name="shared-ip-setting"></a>共享 IP 设置
 
-在创建实验室时，在其中创建虚拟网络的子网。  默认情况下，创建此子网时会将“启用共享公共 IP”设置为“是”。  此配置会为整个子网配置一个公共 IP 地址。  若要深入了解如何配置虚拟网络和子网，请参阅[在 Azure 开发测试实验室中配置虚拟网络](devtest-lab-configure-vnet.md)。
+在创建实验室时，在其中创建虚拟网络的子网。  默认情况下，创建此子网时会将“启用共享公共 IP”  设置为“是”。   此配置会为整个子网配置一个公共 IP 地址。  若要深入了解如何配置虚拟网络和子网，请参阅[在 Azure 开发测试实验室中配置虚拟网络](devtest-lab-configure-vnet.md)。
 
 ![新建实验室子网](media/devtest-lab-shared-ip/lab-subnet.png)
 
-对于现有的实验室，可以通过选择“配置和策略”>“虚拟网络”启用此选项。 然后，从列表中选择虚拟网络并为所选的子网选择“启用共享的公共 IP”。 如果不想在实验室 Vm 之间共享一个公共 IP 地址，也可以禁用此选项在所有实验室中。
+对于现有的实验室，可以通过选择“配置和策略”>“虚拟网络”启用此选项  。 然后，从列表中选择虚拟网络并为所选的子网选择“启用共享的公共 IP”  。 如果不想在实验室 Vm 之间共享一个公共 IP 地址，也可以禁用此选项在所有实验室中。
 
 在此实验室中创建的任何 VM 都将默认设置为使用共享 IP。  在创建 VM 时，此设置可以观察到在**高级设置**页**IP 地址配置**。
 

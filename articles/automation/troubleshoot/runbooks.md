@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 65de80004dd05e3eb29f3313bc17405c40450d7a
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66397122"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
@@ -137,7 +137,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 #### <a name="issue"></a>问题
 
-调用子 runbook 中的使用时，收到以下错误`-Wait`交换机和输出流包含和对象：
+使用 `-Wait` 开关调用子 runbook 并且输出流包含对象时，会收到以下错误：
 
 ```error
 Object reference not set to an instance of an object
@@ -303,9 +303,9 @@ The job was tried three times but it failed
 
 3. 模块不兼容。 如果模块依赖关系不正确，则可能会发生此错误，并且如果它们不正确，则 runbook 通常会返回“找不到命令”或“无法绑定参数”消息。
 
-4. 在 runbook 尝试调用可执行文件或在 Azure 沙盒中运行的 runbook 中子进程。 Azure 沙盒不支持此方案。
+4. Runbook 尝试调用在 Azure 沙盒中运行的 Runbook 中的可执行文件或子过程。 Azure 沙盒不支持此方案。
 
-5. 你尝试将太多异常数据写入到输出流的 runbook。
+5. runbook 尝试向输出流写入太多异常数据。
 
 #### <a name="resolution"></a>解决方法
 
@@ -319,7 +319,7 @@ The job was tried three times but it failed
 
 * 如果需要在 Runbook 中调用进程（如 .exe 或 subprocess.call），则需要在[混合 Runbook 辅助角色](../automation-hrw-run-runbooks.md)上运行 Runbook。
 
-* 在作业输出流上没有上限为 1 MB。 请确保将对可执行文件或子进程的调用放在 try/catch 块中。 如果它们将引发异常，写入到一个自动化变量的异常消息。 这将阻止它被写入到作业的输出流。
+* 作业输出流限制为 1MB。 请确保在 try/catch 块中包含对可执行文件或子进程的调用。 如果这些调用引发异常，请将该异常中的消息写入自动化变量中。 这将防止将其写入作业输出流中。
 
 ### <a name="fails-deserialized-object"></a>场景：Runbook 因反序列化的对象而失败
 

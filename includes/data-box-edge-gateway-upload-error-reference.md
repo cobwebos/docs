@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 05673885336dbfb9a70843bd0ccc4e700091ad7e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161127"
 ---
 |     错误代码     |      错误说明     |
@@ -35,8 +35,8 @@ ms.locfileid: "66161127"
 |    2007            | 由于帐户权限错误或已过期，无法连接到容器。 请检查访问权限。|
 |    2008            | 容器已满，无法添加新数据。 在 Azure 规范中根据类型检查受支持的容器大小。 例如，Azure 文件仅支持最大文件大小 5 TB。|
 |    2009            | 无法上传数据，因为与共享关联的容器不存在。|    
-|    2997            | 发生意外错误。 这是一种可以自行解决的暂时性错误。|
-|    2998            | 发生意外错误。 该错误可能会自行解决，如果持续 24 小时以上，请联系 Microsoft 支持人员。|
+|    2997            | 发生了意外错误。 这是一种可以自行解决的暂时性错误。|
+|    2998            | 发生了意外错误。 该错误可能会自行解决，如果持续 24 小时以上，请联系 Microsoft 支持人员。|
 |    16000           | 无法关闭此文件。|
 |    16001           | 无法关闭此文件，因为它已在本地系统上存在。|
 |    16002           |无法刷新此文件，因为它未完全上传。|

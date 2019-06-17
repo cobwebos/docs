@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
 ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65992099"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>如何使用服务总线主题和订阅使用 Node.js 和 azure sb 包
-> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]
 > - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 > - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
@@ -54,7 +54,7 @@ ms.locfileid: "65992099"
 若要使用服务总线，请下载 Node.js Azure 包。 此包包括一组用来与服务总线 REST 服务通信的库。
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node 包管理器 (NPM) 可获取该程序包
-1. 打开命令行接口，例如 PowerShell (Windows)、Terminal (Mac) 或 Bash (Unix)。
+1. 打开命令行接口，例如 PowerShell (Windows)、Terminal (Mac) 或 Bash (Unix)    。
 2. 导航到创建示例应用程序的文件夹。
 3. 在命令窗口中键入 **npm install azure**，这应会生成以下输出：
 
@@ -71,7 +71,7 @@ ms.locfileid: "65992099"
    ├── xml2js@0.2.7 (sax@0.5.2)
    └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
    ```
-3. 可以手动运行 **ls** 命令来验证是否创建了 **node\_modules** 文件夹。 在该文件夹中，找到 azure 包，其中包含访问服务总线主题所需的库。
+3. 可以手动运行 **ls** 命令来验证是否创建了 **node\_modules** 文件夹。 在该文件夹中，找到 azure 包，其中包含访问服务总线主题所需的库  。
 
 ### <a name="import-the-module"></a>导入模块
 使用记事本或其他文本编辑器将以下内容添加到应用程序的 **server.js** 文件的顶部：
@@ -94,7 +94,7 @@ Azure 模块将读取前面在执行步骤“获取凭据”时获取的连接�
 var serviceBusService = azure.createServiceBusService();
 ```
 
-如果调用 ServiceBusService 对象上的 `createTopicIfNotExists`，会返回指定的主题（如果存在），否则会使用指定的名称创建一个新主题。 以下代码使用 `createTopicIfNotExists` 创建或连接到名为 `MyTopic` 的主题：
+如果调用 ServiceBusService 对象上的 `createTopicIfNotExists`，会返回指定的主题（如果存在），否则会使用指定的名称创建一个新主题  。 以下代码使用 `createTopicIfNotExists` 创建或连接到名为 `MyTopic` 的主题：
 
 ```javascript
 serviceBusService.createTopicIfNotExists('MyTopic',function(error){
@@ -137,7 +137,7 @@ function (returnObject, finalCallback, next)
 
 在此回叫中并且在处理 `returnObject`（来自对服务器请求的响应）后，回叫必须调用 next（如果存在），继续处理其他筛选器或调用 `finalCallback` 以结束服务调用。
 
-Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 以下代码创建一个 ServiceBusService 对象，该对象使用 ExponentialRetryPolicyFilter：
+Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 以下代码创建一个 ServiceBusService 对象，该对象使用 ExponentialRetryPolicyFilter   ：
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -153,7 +153,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 >
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
-MatchAll 筛选器是创建订阅时使用的默认筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为“AllMessages”的订阅，并使用默认的 MatchAll 筛选器。
+MatchAll 筛选器是创建订阅时使用的默认筛选器  。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为“AllMessages”的订阅，并使用默认的 MatchAll 筛选器  。
 
 ```javascript
 serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
@@ -168,14 +168,14 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 
 订阅支持的最灵活的一种筛选器类型是 **SqlFilter**，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关可用于 SQL 筛选器的表达式的更多详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
 
-可以使用 ServiceBusService 对象的 `createRule` 方法向订阅中添加筛选器。 此方法允许向现有订阅中添加新筛选器。
+可以使用 ServiceBusService 对象的 `createRule` 方法向订阅中添加筛选器  。 此方法允许向现有订阅中添加新筛选器。
 
 > [!NOTE]
-> 由于默认筛选器会自动应用到所有新订阅，因此，必须首先删除默认筛选器，否则 MatchAll 会替代可能指定的任何其他筛选器。 可以使用 ServiceBusService 对象的 `deleteRule` 方法删除默认规则。
+> 由于默认筛选器会自动应用到所有新订阅，因此，必须首先删除默认筛选器，否则 MatchAll 会替代可能指定的任何其他筛选器  。 可以使用 ServiceBusService 对象的 `deleteRule` 方法删除默认规则  。
 >
 >
 
-以下示例创建一个名为 `HighMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择自定义 `messagenumber` 属性大于 3 的消息：
+以下示例创建一个名为 `HighMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择自定义 `messagenumber` 属性大于 3 的消息  ：
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'HighMessages', function (error){
@@ -210,7 +210,7 @@ var rule={
 }
 ```
 
-同样，以下示例创建一个名为 `LowMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择 `messagenumber` 属性小于或等于 3 的消息：
+同样，以下示例创建一个名为 `LowMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择 `messagenumber` 属性小于或等于 3 的消息  ：
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'LowMessages', function (error){
@@ -248,9 +248,9 @@ var rule={
 现在，当消息发送到 `MyTopic` 时，它会传送给订阅了 `AllMessages` 主题订阅的接收者，并且选择性地传送给订阅了 `HighMessages` 和 `LowMessages` 主题订阅的接收者（具体取决于消息内容）。
 
 ## <a name="how-to-send-messages-to-a-topic"></a>如何将消息发送到主题
-要将消息发送到服务总线主题，应用程序必须使用 ServiceBusService 对象的 `sendTopicMessage` 方法。
+要将消息发送到服务总线主题，应用程序必须使用 ServiceBusService 对象的 `sendTopicMessage` 方法  。
 发送到服务总线主题的消息是 **BrokeredMessage** 对象。
-BrokeredMessage 对象具有一组标准属性（如 `Label` 和 `TimeToLive`）、一个用于保存特定于应用程序的自定义属性的字典，以及一段字符串数据正文。 应用程序可以通过将字符串值传递给 `sendTopicMessage` 设置消息正文，并且任何必需的标准属性将用默认值填充。
+BrokeredMessage 对象具有一组标准属性（如 `Label` 和 `TimeToLive`）、一个用于保存特定于应用程序的自定义属性的字典，以及一段字符串数据正文  。 应用程序可以通过将字符串值传递给 `sendTopicMessage` 设置消息正文，并且任何必需的标准属性将用默认值填充。
 
 以下示例演示如何向 `MyTopic` 发送五条测试消息。 每条消息的 `messagenumber` 属性值因循环迭代而异（此属性确定哪些订阅接收它）：
 
@@ -276,12 +276,12 @@ for (i = 0;i < 5;i++) {
 服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息容量为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个主题中包含的消息数量不受限制，但消息的总大小受限制。 此主题大小是在创建时定义的，上限为 5 GB。
 
 ## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
-对 ServiceBusService 对象使用 `receiveSubscriptionMessage` 方法可从订阅接收消息。 默认情况下，会在读取消息后将其从订阅删除。 但是，可以将可选参数 `isPeekLock` 设置为“true”以读取（速览）并锁定消息，而不将其从订阅中删除。
+对 ServiceBusService 对象使用 `receiveSubscriptionMessage` 方法可从订阅接收消息  。 默认情况下，会在读取消息后将其从订阅删除。 但是，可以将可选参数 `isPeekLock` 设置为“true”以读取（速览）并锁定消息，而不将其从订阅中删除  。
 
 在接收过程中读取并删除消息的默认行为是最简单的模式，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解此行为，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线已将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它就漏掉了在发生故障前使用的消息。
 
-如果将 `isPeekLock` 参数设置为“true”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序。 服务总线收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用者接收它，并将该消息返回给应用程序。
-应用程序处理该消息（或将它可靠地存储起来留待将来处理）后，通过调用 deleteMessage 方法来完成接收过程的第二阶段，并将要删除的消息作为参数传递。 deleteMessage 方法会将消息标记为已使用，并将其从订阅中删除。
+如果将 `isPeekLock` 参数设置为“true”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序  。 服务总线收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用者接收它，并将该消息返回给应用程序。
+应用程序处理该消息（或将它可靠地存储起来留待将来处理）后，通过调用 deleteMessage 方法来完成接收过程的第二阶段，并将要删除的消息作为参数传递  。 deleteMessage 方法会将消息标记为已使用，并将其从订阅中删除  。
 
 以下示例演示如何使用 `receiveSubscriptionMessage` 接收和处理消息。 该示例先从“LowMessages”订阅接收并删除一条消息，然后将 `isPeekLock` 设置为“true”，从“HighMessages”订阅接收一条消息。 最后使用 `deleteMessage` 删除该消息：
 
@@ -307,11 +307,11 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则它可以对 ServiceBusService 对象调用 `unlockMessage` 方法。 此方法会导致服务总线解锁订阅中的消息并使其能够重新被接收。 在此实例中，消息被相同的使用方应用程序或另一个使用方应用程序重新接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则它可以对 ServiceBusService 对象调用 `unlockMessage` 方法  。 此方法会导致服务总线解锁订阅中的消息并使其能够重新被接收。 在此实例中，消息被相同的使用方应用程序或另一个使用方应用程序重新接收。
 
 订阅中也有一个超时与锁定的消息关联。 如果应用程序无法在锁定超时期满前处理消息（例如，如果应用程序发生故障），服务总线会自动解锁消息，让它再次可供接收。
 
-如果应用程序在处理消息之后，但在调用 `deleteMessage` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”。 也就是说，每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案不允许重复处理，则应该向应用程序添加逻辑来处理重复消息传送。 可以使用消息的 MessageId 属性，该属性在各次传送尝试中保持不变。
+如果应用程序在处理消息之后，但在调用 `deleteMessage` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”  。 也就是说，每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案不允许重复处理，则应该向应用程序添加逻辑来处理重复消息传送。 可以使用消息的 MessageId 属性，该属性在各次传送尝试中保持不变  。
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
 主题和订阅具有持久性，必须通过 [Azure 门户][Azure portal]或以编程方式显式删除。
@@ -336,7 +336,7 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 ```
 
 > [!NOTE]
-> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 现在，已了解有关 Service Bus 主题的基础知识，单击下面的链接可了解更多信息。

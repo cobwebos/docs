@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60729218"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>具有中高速网络带宽的大型数据集的数据传输
@@ -49,8 +49,8 @@ ms.locfileid: "60729218"
 
 如果可用的网络带宽为高速带宽，则使用下面的一种工具。
 
-- AzCopy - 使用此命令行工具在保证最佳性能的同时轻松向/从 Azure Blob、文件和表存储复制数据。 AzCopy 支持并发度和并行度，并且可以在复制操作中断后进行恢复。
-- Azure 存储 REST API/SDK - 生成应用程序时，可以对照着 Azure 存储 REST API 开发应用程序，并使用以多种语言提供的 Azure SDK。
+- AzCopy  - 使用此命令行工具在保证最佳性能的同时轻松向/从 Azure Blob、文件和表存储复制数据。 AzCopy 支持并发度和并行度，并且可以在复制操作中断后进行恢复。
+- Azure 存储 REST API/SDK  - 生成应用程序时，可以对照着 Azure 存储 REST API 开发应用程序，并使用以多种语言提供的 Azure SDK。
 - **用于在线传输的 Azure Data Box 系列** – Data Box Edge 和 Data Box Gateway 是可以将数据移入和移出 Azure 的联机网络设备。 在上传之前同时需要持续引入和预处理数据时，请使用 Data Box Edge 物理设备。 Data Box Gateway 是该设备的虚拟版本，具有相同的数据传输功能。 每种情况下，数据传输都是由设备进行管理。
 - **Azure 数据工厂** - 如果需要业务流程和企业级监视功能，应使用数据工厂横向扩展传输操作。 使用数据工厂在多个 Azure 服务、本地或两者的组合之间定期传输文件。 使用数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据并自动执行数据移动和数据传输。
 

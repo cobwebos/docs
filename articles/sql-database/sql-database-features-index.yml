@@ -37,7 +37,7 @@ sections:
             html: <p>跨多个 SQL 数据库和 SQL Server 实例同步数据。</p>
           - title: 作业自动化
             href: /azure/sql-database/sql-database-job-automation-overview
-            html: <p>计划使用 SQL 代理和弹性作业的重复任务。</p>
+            html: <p>使用 SQL 代理和弹性作业计划重复任务。</p>
           - title: 临时表
             href: /azure/sql-database/sql-database-temporal-tables
             html: <p>跟踪和分析数据更改的完整历史记录。</p>

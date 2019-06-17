@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99c8c074365707fed0a6d079bdfdbd138a91255d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c37edffcc6aa00db3f052088ec712ec2921b470b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730416"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083961"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator 应用常见问题解答
 
@@ -34,7 +34,7 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 |此应用中的代码有哪些用途？|打开 Microsoft Authenticator 应用时，会看到已添加的帐户，它们以带有六位数或八位数编号的磁贴形式显示。<br><br>你将使用这些代码来验证自己声明的身份。 使用用户名和密码登录后，需要键入帐户磁贴中显示相同的验证码。 例如，如果以 Alain 的身份登录到 Contoso 帐户，应使用验证码 427303。<br><br>![应用中的“帐户”屏幕](./media/user-help-auth-app-faq/auth-app-accounts.png)|
 |为何代码旁边的数字不断地倒计数？|活动验证码的旁边可能会出现 30 秒倒计时。 此计时器可防止使用同一代码登录两次。 与密码不同，你不需要记住此数字。 此机制确保只有有权访问你手机的人才知道验证码。|
 |帐户磁贴为何灰显？|某些组织要求 Microsoft Authenticator 应用使用单一登录并保护组织资源。 在此情况下，该帐户不会用于双重验证，并且灰显或处于非活动状态。 此类帐户往往称为“代理”帐户。|
-|什么是设备注册？|组织可能希望你注册设备，以便知道哪些设备正在访问受保护的资源（例如文件和应用），并可能启用条件访问，以减少不当地访问这些资源的风险。 可以使用“设置”来取消注册设备，但这可能会失去 Outlook 中电子邮件、OneDrive 中文件的访问权限，同时，可能无法使用手机登录。 |
+|什么是设备注册？|你的组织可能希望你可以注册设备以便它们可以了解哪些设备访问受保护的资源，如文件和应用程序，并可能是启用条件性访问以减少对这些资源不适当的访问的风险。 可以使用“设置”来取消注册设备，但这可能会失去 Outlook 中电子邮件、OneDrive 中文件的访问权限，同时，可能无法使用手机登录。 |
 |是否需要连接到 Internet 或网络才能获取和使用验证码？|无需连接到 Internet 或数据网络即可获取验证码，因此，无需手机服务即可登录。 此外，应用在关闭后会停止运行，因为不会耗尽电池。|
 |仅当应用处于打开状态时才会收到通知。 如果应用关闭，则无法收到通知。|如果接收的是通知而不是警报，则即使打开了铃声，也应该检查应用设置。 请确保在应用中启用声音或振动通知。 如果完全收不到通知，应检查是否存在以下情况：<ul><li>手机是否进入“免打扰”或“静音”模式？ 这些模式可能阻止应用发送通知。</li><li>是否能从其他应用收到通知？ 如果不能，原因可能是手机出现网络连接问题，或者 Android 或 Apple 的通知通道出现问题。 可以尝试通过手机设置解决网络连接问题，但可能需要联系服务提供商来帮助解决 Android 或 Apple 通知通道问题。</li><li>是否应用中的某些帐户可以收到通知，而其他帐户则不能？ 如果是，请从应用中删除有问题的帐户，然后再次添加并允许其发送通知，看看是否能解决问题。</li></ul>如果尝试了所有这些步骤但仍有问题，我们建议发送日志文件做诊断。 打开应用，转到“帮助”并选择“发送日志”。   然后，转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)告知遇到的问题，以及目前为止已尝试过的步骤。|
 |我在应用中使用了验证码，但如何切换到推送通知？|可以针对工作或学校帐户（如果管理员已启用）或个人 Microsoft 帐户设置此方法，并通知并不适用于 Google 或 Facebook 等第三方帐户。<br><br>若要将个人帐户切换到通知，必须在帐户中重新注册设备。 转到“添加帐户”  ，选择“个人 Microsoft 帐户”  ，然后使用你的用户名和密码进行登录。<br><br>组织会决定是否允许工作或学校帐户使用一键式通知，因此，组织可能已禁用此功能。|

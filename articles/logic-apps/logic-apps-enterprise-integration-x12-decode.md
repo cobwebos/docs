@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
 ms.openlocfilehash: 4a19462f4f849602fd14fe1204f1c7e3c01e6ec4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64701449"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中解码 X12 消息
@@ -36,7 +36,7 @@ ms.locfileid: "64701449"
 
 2. 解码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 
-3.  在搜索框中，输入“x12”作为筛选器。 选择“X12 - 解码 X12 消息”。
+3.  在搜索框中，输入“x12”作为筛选器。 选择“X12 - 解码 X12 消息”。 
    
     ![搜索“x12”](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
@@ -51,7 +51,7 @@ ms.locfileid: "64701449"
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”。
+5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”  。
    
     ![集成帐户连接详细信息](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
 

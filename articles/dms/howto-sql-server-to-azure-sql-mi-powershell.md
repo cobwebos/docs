@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 04/29/2019
 ms.openlocfilehash: d83410efd26f8c2078d3abdb01d061db0b83d33d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233731"
 ---
 # <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>将本地 SQL Server 迁移到使用 Azure PowerShell 为 Azure SQL 数据库托管实例
@@ -74,11 +74,11 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 可以通过 `New-AzDataMigrationService` cmdlet 创建 Azure 数据库迁移服务的新实例。
 此 cmdlet 需要以下必需参数：
 
-* Azure 资源组名称。 可以使用[ `New-AzResourceGroup` ](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)命令以创建前面所示的 Azure 资源组，并提供其名称作为参数。
-* 服务名称。 对应于 Azure 数据库迁移服务的所需的唯一服务名称的字符串。
+*  Azure 资源组名称。 可以使用[ `New-AzResourceGroup` ](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)命令以创建前面所示的 Azure 资源组，并提供其名称作为参数。
+*  服务名称。 对应于 Azure 数据库迁移服务的所需的唯一服务名称的字符串。
 * *位置*。 指定服务的位置。 指定 Azure 数据中心位置，例如美国西部或亚洲东南部。
-* Sku。 此参数对应于 DMS Sku 名称。 当前支持的 Sku 名称为*Basic_1vCore*， *Basic_2vCores*， *GeneralPurpose_4vCores*。
-* 虚拟子网标识符。 可以使用 cmdlet [ `New-AzVirtualNetworkSubnetConfig` ](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig)创建子网。
+*  Sku。 此参数对应于 DMS Sku 名称。 当前支持的 Sku 名称为*Basic_1vCore*， *Basic_2vCores*， *GeneralPurpose_4vCores*。
+*  虚拟子网标识符。 可以使用 cmdlet [ `New-AzVirtualNetworkSubnetConfig` ](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig)创建子网。
 
 下面的示例创建一个名为服务*MyDMS*中的资源组*MyDMSResourceGroup*位于*美国东部*使用名为的虚拟网络区域*MyVNET*和名为的子网*MySubnet*。
 
@@ -105,9 +105,9 @@ $service = New-AzDms -ResourceGroupName myResourceGroup `
 
 可以使用创建数据库连接信息对象`New-AzDmsConnInfo`cmdlet，需要以下参数：
 
-* ServerType。 请求的数据库连接的类型，例如 SQL、Oracle 或 MySQL。 将 SQL 用于 SQL Server 和 Azure SQL。
-* DataSource。 名称或 SQL Server 实例或 Azure SQL 数据库实例的 IP。
-* AuthType。 连接的身份验证类型，可以为 SqlAuthentication 或 WindowsAuthentication。
+*  ServerType。 请求的数据库连接的类型，例如 SQL、Oracle 或 MySQL。 将 SQL 用于 SQL Server 和 Azure SQL。
+*  DataSource。 名称或 SQL Server 实例或 Azure SQL 数据库实例的 IP。
+*  AuthType。 连接的身份验证类型，可以为 SqlAuthentication 或 WindowsAuthentication。
 * *TrustServerCertificate*。 此参数设置一个值，指示通道进行加密时绕过证书链以验证信任。 值可以是`$true`或`$false`。
 
 下面的示例创建名为 SQL Server 的源的连接信息对象*MySourceSQLServer*使用 sql 身份验证：
@@ -280,16 +280,16 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 
 无论执行脱机或联机迁移， `New-AzDataMigrationTask` cmdlet 需要以下参数：
 
-* TaskType。 要创建的迁移任务的类型。对于从 SQL Server 到 Azure SQL 数据库托管实例的迁移类型，此项应为 *MigrateSqlServerSqlDbMi*。 
-* ResourceGroupName。 要在其中创建任务的 Azure 资源组的名称。
-* ServiceName。 要在其中创建任务的 Azure 数据库迁移服务实例。
-* ProjectName。 要在其中创建任务的 Azure 数据库迁移服务项目的名称。 
-* TaskName。 要创建的任务的名称。 
-* *SourceConnection*。 AzDmsConnInfo 表示源 SQL Server 连接对象。
+*  TaskType。 要创建的迁移任务的类型。对于从 SQL Server 到 Azure SQL 数据库托管实例的迁移类型，此项应为 *MigrateSqlServerSqlDbMi*。 
+* ResourceGroupName。  要在其中创建任务的 Azure 资源组的名称。
+*  ServiceName。 要在其中创建任务的 Azure 数据库迁移服务实例。
+*  ProjectName。 要在其中创建任务的 Azure 数据库迁移服务项目的名称。 
+*  TaskName。 要创建的任务的名称。 
+* *SourceConnection*。 表示源 SQL Server 连接的 AzDmsConnInfo 对象。
 * *TargetConnection*。 AzDmsConnInfo 对象，表示目标 Azure SQL 数据库托管实例连接。
-* SourceCred。 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 对象，用于连接到源服务器。
-* TargetCred。 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 对象，用于连接到目标服务器。
-* SelectedDatabase。 AzDataMigrationSelectedDB 对象，表示源和目标数据库的映射。
+*  SourceCred。 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 对象，用于连接到源服务器。
+*  TargetCred。 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 对象，用于连接到目标服务器。
+*  SelectedDatabase。 表示源和目标数据库映射的 AzDataMigrationSelectedDB 对象。
 * *BackupFileShare*。 表示 Azure 数据库迁移服务可在其上创建源数据库备份的本地网络共享的 FileShare 对象。
 * *BackupBlobSasUri*。 为 Azure 数据库迁移服务提供存储帐户容器访问权限的 SAS URI，该服务将备份文件上传到该容器。 了解如何获取 Blob 容器的 SAS URI。
 * *SelectedLogins*。 要迁移的选定登录名列表。

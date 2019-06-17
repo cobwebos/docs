@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29569302d20e23c95b6508a5b58c7ed96e005885
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: bd8cebbd7c60715bc90412d9f53458edfee6c56d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66499244"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108207"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>规划单一登录部署
 
@@ -146,7 +146,7 @@ MCAS 有关的信息，请参阅[Microsoft Cloud App Security 概述](https://do
 
 使用条件性访问，可以为你的云应用自动基于标准的访问控制决策。
 
-完成第一因素身份验证后将强制执行条件访问策略。 因此，不应条件性访问，如方案第一个行防御拒绝服务 (DoS) 攻击，但可以使用从这些事件的信号来确定访问权限。 有关示例的登录风险级别，可以使用位置为请求中，依次类推。 有关条件性访问的详细信息，请参阅[概述](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)并[部署计划](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
+第一个双因素身份验证完成后，会强制执行条件性访问策略。 因此，不应条件性访问，如方案第一个行防御拒绝服务 (DoS) 攻击，但可以使用从这些事件的信号来确定访问权限。 有关示例的登录风险级别，可以使用位置为请求中，依次类推。 有关条件性访问的详细信息，请参阅[概述](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)并[部署计划](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
 
 ## <a name="azure-sso-technical-requirements"></a>Azure 的 SSO 技术要求
 

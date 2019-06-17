@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dech
 ms.openlocfilehash: 04cfdd1f96f83898710b6f292116f0afddc8df96
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66237235"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>使用 Azure Cosmos 资源管理器处理数据 
@@ -29,7 +29,7 @@ Azure Cosmos DB 资源管理器是基于 Web 的独立界面，允许查看和�
 
 2. 从“所有资源”中，查找并导航到 Azure Cosmos DB 帐户，然后选择“密钥”并复制“主连接字符串”   。  
 
-3. 转到 https://cosmos.azure.com/，粘贴连接字符串，并选择“连接”  。 通过使用连接字符串，可以不受任何时间限制地访问 Azure Cosmos DB 资源管理器。  
+3. 转到 https://cosmos.azure.com/ ，粘贴连接字符串，并选择“连接”  。 通过使用连接字符串，可以不受任何时间限制地访问 Azure Cosmos DB 资源管理器。  
 
    如果想为其他用户提供 Azure Cosmos DB 帐户的临时访问权限，可以使用读写和读取访问 URL 来实现。 
 

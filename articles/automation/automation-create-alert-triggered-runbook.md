@@ -10,10 +10,10 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 8a1ae906a72d781f638fb171a409b860ffa6d501
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65517703"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
@@ -37,7 +37,7 @@ ms.locfileid: "65517703"
 |---------|---------|---------|
 |[常见警报](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|今天标准化在 Azure 中的警报通知的使用体验常见警报架构。|[常见警报有效负载架构](../azure-monitor/platform/alerts-common-schema-definitions.md?toc=%2fazure%2fautomation%2ftoc.json#sample-alert-payload)|
 |[活动日志警报](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |当 Azure 活动日志中的任何新事件符合特定条件时，就会发送通知。 例如，当 **myProductionResourceGroup** 中出现 `Delete VM` 操作或出现状态为 **Active** 的新 Azure 服务运行状况事件时。| [活动日志警报有效负载架构](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[准实时指标警报](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |当一个或多个平台级指标满足指定条件时，就会以快于指标警报的速度发送通知。 例如，当 VM 的“CPU 百分比”大于 **90** 并且过去 5 分钟“网络传入”大于 **500 MB** 时。| [准实时指标警报有效负载架构](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[准实时指标警报](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |当一个或多个平台级指标满足指定条件时，就会以快于指标警报的速度发送通知。 例如，当 VM 的“CPU 百分比”大于 **90** 并且过去 5 分钟“网络传入”大于 **500 MB** 时。  | [准实时指标警报有效负载架构](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 由于每种警报提供的数据不同，因此需要以不同的方式处理每种警报。 下一部分将介绍如何创建 Runbook 来处理不同类型的警报。
 
@@ -56,7 +56,7 @@ ms.locfileid: "65517703"
 1. 转到 Azure 自动化帐户。
 2. 下**流程自动化**，选择**Runbook**。
 3. 在 runbook 列表的顶部，选择 **+ 创建 runbook**。
-4. 上**添加 Runbook**页上，输入**Stop-azurevminresponsetovmalert** runbook 名称。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”。  
+4. 上**添加 Runbook**页上，输入**Stop-azurevminresponsetovmalert** runbook 名称。 对于 runbook 类型，选择“PowerShell”  。 然后选择“创建”  。  
 5. 将复制到下面的 PowerShell 示例**编辑**页。
 
     ```powershell-interactive
@@ -168,7 +168,7 @@ ms.locfileid: "65517703"
     }
     ```
 
-6. 选择“发布”以保存并发布 Runbook。
+6. 选择“发布”  以保存并发布 Runbook。
 
 ## <a name="create-the-alert"></a>创建警报
 
@@ -179,13 +179,13 @@ ms.locfileid: "65517703"
 1. 单击**选择**下**资源**。 上**选择一个资源**页上，选择你的 VM 关闭的警报，单击**完成**。
 1. 单击**添加条件**下**条件**。 选择你想要使用，例如的信号**CPU 百分比**然后单击**完成**。
 1. 上**配置信号逻辑**页上，输入你**阈值**下**警报逻辑**，然后单击**完成**。
-1. 在“操作组”下，选择“新建”。
+1. 在“操作组”下，选择“新建”   。
 1. 上**添加操作组**页上，指定操作组的名称和短名称。
 1. 为操作指定一个名称。 对于操作类型中，选择**自动化 Runbook**。
-1. 选择**编辑详细信息**。 在“配置 Runbook”页上的“Runbook 源”下，选择“用户”。  
+1. 选择**编辑详细信息**。 在“配置 Runbook”  页上的“Runbook 源”下，选择“用户”   。  
 1. 选择**订阅**和**自动化帐户**，然后选择 **Stop-AzureVmInResponsetoVMAlert** Runbook。  
 1. 选择**是**有关**启用常见警报架构**。
-1. 若要创建操作组，请选择“确定”。
+1. 若要创建操作组，请选择“确定”  。
 
     ![“添加操作组”页](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 

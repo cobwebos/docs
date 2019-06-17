@@ -11,35 +11,38 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 06/05/2019
-ms.openlocfilehash: b39d2c839444e3cad60d5ff08e117282ecc04d7a
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.date: 06/12/2019
+ms.openlocfilehash: b740b49e2decabd5f104d1db5d38b48f2bc2111c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734775"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116204"
 ---
-# <a name="sql-database-serverless-preview"></a>SQL 数据库无服务器（预览版）
+# <a name="azure-sql-database-serverless-preview"></a>Azure SQL 数据库无服务器 （预览版）
+
+每秒使用无服务器 （预览版） 是单一数据库的自动缩放计算基于工作负荷需求并计算量的费用的计算层的 azure SQL 数据库。 无服务器计算层还会自动暂停期间处于非活动状态时唯一的存储进行计费和活动返回时自动恢复数据库的数据库。
 
 ## <a name="serverless-compute-tier"></a>无服务器计算层
 
-SQL 数据库无服务器 （预览版） 是单一数据库计算层措施计算和对每秒使用的计算量进行收费。 
-
-无服务器计算层中的数据库由它可以使用的计算范围和自动暂停延迟进行参数化。
+单一数据库的无服务器计算层是由计算自动缩放范围和 autopause 延迟参数化。  这些参数的配置调整数据库性能体验和计算成本。
 
 ![无服务器计费](./media/sql-database-serverless/serverless-billing.png)
 
-### <a name="performance"></a>性能
+### <a name="performance-configuration"></a>性能配置
 
-- 最小 vcore 数和最大 Vcore 数个可配置参数来定义的数据库可用的计算能力的范围。 内存和 IO 限制与指定的 vCore 范围成正比。  
-- 自动暂停延迟是可配置的参数，用于定义数据库在自动暂停之前必须处于非活动状态的时间段。 发生下一次登录时，数据库会自动恢复。
+- **最小 Vcore**并**最大 vcore 数**个可配置参数来定义的数据库可用的计算能力的范围。 内存和 IO 限制与指定的 vCore 范围成正比。  
+- **Autopause 延迟**自动暂停之前定义的时间段的数据库的可配置参数必须为非活动状态。 下一步的登录名或其他活动发生时自动恢复数据库。  或者，可以禁用 autopausing。
 
-### <a name="pricing"></a>定价
+### <a name="cost"></a>成本
 
-- 无服务器数据库的总帐单是计算帐单和存储帐单之和。
-计算费用基于使用的 vCore 数和每秒使用的内存量。
-- 计费的最小计算量基于最小 vCore 数和最小内存。
-- 数据库处于暂停状态时，仅收取存储费用。
+- 无服务器数据库的成本是计算成本和存储成本的总和。
+- 在计算使用量之间的最小值和配置的最大限制时，计算成本基于 vCore 和所用内存。
+- 计算使用率配置最小限制以下时，计算成本取决于最小 vcore 数和最小内存配置。
+- 数据库暂停时，计算开销为零，并且会产生仅存储成本。
+- 如下所示的预配的计算层相同的方式确定的存储成本。
+
+有关成本的详细信息，请参阅[计费](sql-database-serverless.md#billing)。
 
 ## <a name="scenarios"></a>方案
 
@@ -73,7 +76,7 @@ SQL 数据库无服务器 （预览版） 是单一数据库计算层措施计�
 
 目前，仅 vCore 购买模型中第 5 代硬件上的常规用途层中支持 SQL 数据库无服务器。
 
-## <a name="autoscale"></a>自动缩放
+## <a name="autoscaling"></a>自动缩放
 
 ### <a name="scaling-responsiveness"></a>缩放响应能力
 
@@ -98,9 +101,9 @@ SQL 数据库无服务器 （预览版） 是单一数据库计算层措施计�
 
 从提取数据磁盘的速度相同预配数据库具有相同的方式以及随着 SQL 缓存。 当数据库忙碌时，缓存可以增长不受约束，直至达到最大内存限制。
 
-## <a name="autopause-and-autoresume"></a>自动暂停和自动恢复
+## <a name="autopausing-and-autoresuming"></a>Autopausing 和 autoresuming
 
-### <a name="autopause"></a>自动暂停
+### <a name="autopausing"></a>Autopausing
 
 如果所有以下条件成立 autopause 延迟的持续时间内，则触发 Autopausing:
 
@@ -117,7 +120,7 @@ SQL 数据库无服务器 （预览版） 是单一数据库计算层措施计�
 
 在要求数据库处于联机状态的一些服务更新部署过程中暂时阻止 Autopausing。  在这种情况下，autopausing 将成为服务更新完成后再次允许。
 
-### <a name="autoresume"></a>自动恢复
+### <a name="autoresuming"></a>Autoresuming
 
 如果以下任何条件成立在任何时候，会触发 Autoresuming:
 
@@ -148,7 +151,7 @@ Autoresume 和 autopause 无服务器数据库连接的延迟时间通常是 1 �
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>载入到无服务器计算层级
 
-创建新的数据库，或将现有数据库移动到无服务器计算层中的模式与在预配计算层中创建新的数据库相同，均包含以下两个步骤：
+创建新的数据库或移动到无服务器计算层的现有数据库遵循相同的模式与创建的新数据库中预配计算层，包括以下两个步骤。
 
 1. 指定服务目标名称。 服务目标规定了服务层、 硬件代次和最大 vcore 数。 下表显示了服务目标选项：
 
@@ -163,18 +166,20 @@ Autoresume 和 autopause 无服务器数据库连接的延迟时间通常是 1 �
    |参数|可选的值|默认值|
    |---|---|---|---|
    |最小 Vcore|{0.5, 1, 2, 4} 中的任何值，不超过最大 vCore 数|0.5 个 vCore|
-   |自动暂停延迟|最小值：360 分钟（6 小时）<br>最大值：10080 分钟（7 天）<br>增量：60 分钟<br>禁用自动暂停：-1|360 分钟|
+   |自动暂停延迟|最低：360 分钟（6 小时）<br>最大值：10080 分钟（7 天）<br>增量：60 分钟<br>禁用自动暂停：-1|360 分钟|
 
 > [!NOTE]
 > 目前不支持使用 T-SQL 将现有数据库移动到无服务器或更改其计算大小，但可以通过 Azure 门户或 PowerShell 完成这些操作。
 
-### <a name="create-new-serverless-database-using-azure-portal"></a>创建新的无服务器数据库，使用 Azure 门户
+### <a name="create-new-database-in-serverless-compute-tier"></a>无服务器计算层中创建新的数据库 
+
+#### <a name="use-azure-portal"></a>使用 Azure 门户
 
 请参阅[快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](sql-database-single-database-get-started.md)。
 
-### <a name="create-new-serverless-database-using-powershell"></a>创建新的无服务器数据库，使用 PowerShell
+#### <a name="use-powershell"></a>使用 PowerShell
 
-下面的示例在名为 GP_S_Gen5_4（使用最小 vCore 数和自动暂停延迟的默认值）的服务目标定义的无服务器计算层中创建新数据库。
+下面的示例在无服务器计算层中创建新的数据库。  此示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
 
 ```powershell
 New-AzSqlDatabase `
@@ -189,9 +194,11 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
-### <a name="move-provisioned-compute-database-into-serverless-compute-tier"></a>将预配的计算数据库移到无服务器计算层
+### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>将数据库从预配的计算层移到无服务器计算层
 
-下面的示例将现有单一数据库从预配计算层中移入无服务器计算层。 此示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
+#### <a name="use-powershell"></a>使用 PowerShell
+
+下面的示例将数据库从预配的计算层移到无服务器计算层。 此示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
 
 ```powershell
 Set-AzSqlDatabase
@@ -206,7 +213,7 @@ Set-AzSqlDatabase
   -AutoPauseDelayInMinutes 1440
 ```
 
-### <a name="move-serverless-database-into-provisioned-compute-tier"></a>将无服务器数据库移到预配的计算层
+### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>将数据库从无服务器计算层移到预配的计算层
 
 无服务器数据库可以移动到预配计算层中，方法与将预配的计算数据库移动到无服务器计算层相同。
 
@@ -214,13 +221,19 @@ Set-AzSqlDatabase
 
 ### <a name="maximum-vcores"></a>最大 vCore 数
 
+#### <a name="use-powershell"></a>使用 PowerShell
+
 修改最大 vcore 数使用执行[集 AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)命令，在 PowerShell 中使用`MaxVcore`参数。
 
 ### <a name="minimum-vcores"></a>最小 vCore 数
 
+#### <a name="use-powershell"></a>使用 PowerShell
+
 使用修改的最小 Vcore 执行[集 AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)命令，在 PowerShell 中使用`MinVcore`参数。
 
 ### <a name="autopause-delay"></a>自动暂停延迟
+
+#### <a name="use-powershell"></a>使用 PowerShell
 
 修改自动暂停延迟执行通过[集 AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)命令，在 PowerShell 中使用`AutoPauseDelayInMinutes`参数。
 
@@ -228,7 +241,7 @@ Set-AzSqlDatabase
 
 ### <a name="resources-used-and-billed"></a>已使用和计费的资源
 
-无服务器数据库的资源由以下实体进行封装：
+通过应用程序包、 SQL 实例和用户资源池实体封装的无服务器数据库的资源。
 
 #### <a name="app-package"></a>应用包
 

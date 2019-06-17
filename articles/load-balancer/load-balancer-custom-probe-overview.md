@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: kumud
 ms.openlocfilehash: e488a4a6438279270f3d86dafa16c45eda184059
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65415708"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
@@ -30,7 +30,7 @@ Azure 负载均衡器提供可与负载均衡规则配合使用的运行状况�
 | | 标准 SKU | 基本 SKU |
 | --- | --- | --- |
 | [探测类型](#types) | TCP、HTTP、HTTPS | TCP、HTTP |
-| [探测停止行为](#probedown) | 所有探测停止，所有 TCP 流继续。 | 向下的所有探测，所有 TCP 流后都都过期。 | 
+| [探测停止行为](#probedown) | 所有探测停止，所有 TCP 流继续。 | 所有探测停止，所有 TCP 流过期。 | 
 
 > [!IMPORTANT]
 > 负载均衡器运行状况探测源自 IP 地址 168.63.129.16，要使探测将实例标记为运行，不得阻止这些探测。  有关详细信息，请查看[探测源 IP 地址](#probesource)。
@@ -178,7 +178,7 @@ UDP 是无连接的，并且系统不会跟踪 UDP 的流状态。 如果后端�
 
 AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-overview.md)中标识此源 IP 地址，默认允许运行状况探测流量。
 
-除了负载均衡器运行状况探测[以下操作使用此 IP 地址](../virtual-network/what-is-ip-address-168-63-129-16.md):
+除了负载均衡器运行状况探测外，[以下操作也使用此 IP 地址](../virtual-network/what-is-ip-address-168-63-129-16.md)：
 
 - 使 VM 代理能够与平台通信，以表明它处于“就绪”状态
 - 启用与 DNS 虚拟服务器的通信，以便为未定义自定义 DNS 服务器的客户提供筛选的名称解析。  此筛选可确保客户只能解析其部署的主机名。
@@ -188,7 +188,7 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-o
 
 运行状况探测使服务具有复原能力，并使其可缩放。 错误的配置或不当的设计模式可能会影响服务的可用性与可伸缩性。 请通篇阅读本文档，并考虑在将此探测响应标记为停机或运行时对方案造成的影响，以及对应用程序方案可用性造成的影响。
 
-为应用程序设计运行状况模型时，应该探测后端实例上可以反映该实例以及所提供应用程序服务的运行状况的端口。  应用程序端口和探测端口不必相同。  在某些方案中，探测端口可能需要不同于应用程序提供服务所用的端口。  
+为应用程序设计运行状况模型时，应该探测后端实例上可以反映该实例以及所提供应用程序服务的运行状况的端口。   应用程序端口和探测端口不必相同。  在某些方案中，探测端口可能需要不同于应用程序提供服务所用的端口。  
 
 有时，有效的方案是让应用程序生成运行状况探测响应，以便不仅检测应用程序的运行状况，而且还直接让负载均衡器知道实例是否要接收新流。  可以通过使运行状况探测发生故障来操控探测响应，使应用程序能够创建反压并限制向某个实例传送新流；或者，可以准备维护应用程序并开始清理方案。  使用标准负载均衡器时，[探测停止](#probedown)信号始终允许继续处理 TCP 流，直到达到空闲超时或连接关闭为止。 
 

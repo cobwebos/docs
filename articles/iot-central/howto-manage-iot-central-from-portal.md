@@ -9,10 +9,10 @@ ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: c72de0ef874659a5d7840689e38bd7857c25b840
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65464119"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>通过 Azure 门户管理 IoT Central
@@ -27,7 +27,7 @@ ms.locfileid: "65464119"
 
 ![管理门户：导航菜单](media/howto-manage-iot-central-from-portal/image0.png)
 
-在搜索栏中，键入“IoT Central”。
+在搜索栏中，键入“IoT Central”  。
 
 ![管理门户：搜索](media/howto-manage-iot-central-from-portal/image0a1.png)
 
@@ -35,7 +35,7 @@ ms.locfileid: "65464119"
 
 ![管理门户：搜索结果](media/howto-manage-iot-central-from-portal/image0b1.png)
 
-现在选择“创建”。
+现在选择“创建”  。
 
 ![管理门户：IoT Central 资源](media/howto-manage-iot-central-from-portal/image0c1.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "65464119"
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image3.png)
 
-若要移动到不同的资源组应用程序，选择**更改**旁边的资源组。 在“移动资源”页上，选取要将此应用程序迁移到其中的资源组。
+若要移动到不同的资源组应用程序，选择**更改**旁边的资源组。 在“移动资源”页上，选取要将此应用程序迁移到其中的资源组  。
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image4a.png)
 

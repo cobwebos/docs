@@ -9,10 +9,10 @@ ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: 23973445992ceaeb0cd3bc0589665f2fac5b64e5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64575332"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
@@ -45,16 +45,16 @@ ms.locfileid: "64575332"
 
 ## <a name="run-a-command"></a>运行命令
 
-导航到 [Azure](https://portal.azure.com) 中的某个 VM，然后在“操作”下选择“运行命令”。 将会显示可以在 VM 上运行的可用命令的列表。
+导航到 [Azure](https://portal.azure.com) 中的某个 VM，然后在“操作”下选择“运行命令”。   将会显示可以在 VM 上运行的可用命令的列表。
 
 ![运行命令列表](./media/run-command/run-command-list.png)
 
-选择要运行的命令。 某些命令可能有可选或必需的输入参数。 对于这些命令，参数将呈现为文本字段，你可以在其中提供输入值。 对于每个命令，可以通过展开“查看脚本”来查看所运行的脚本。 **RunPowerShellScript** 不同于其他命令，因为它允许你提供自己的自定义脚本。
+选择要运行的命令。 某些命令可能有可选或必需的输入参数。 对于这些命令，参数将呈现为文本字段，你可以在其中提供输入值。 对于每个命令，可以通过展开“查看脚本”来查看所运行的脚本。  **RunPowerShellScript** 不同于其他命令，因为它允许你提供自己的自定义脚本。
 
 > [!NOTE]
 > 内置命令不可编辑。
 
-选择命令后，单击“运行”来运行脚本。 脚本将运行，完成时，将在输出窗口中返回输出和任何错误。 下面的屏幕截图显示了运行 **RDPSettings** 命令时的示例输出。
+选择命令后，单击“运行”  来运行脚本。 脚本将运行，完成时，将在输出窗口中返回输出和任何错误。 下面的屏幕截图显示了运行 **RDPSettings** 命令时的示例输出。
 
 ![运行命令脚本输出](./media/run-command/run-command-script-output.png)
 
@@ -83,9 +83,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>限制对“运行命令”的访问
 
-列出运行的命令或显示命令的详细信息需要`Microsoft.Compute/locations/runCommands/read`订阅级别的权限的内置[读取器](../../role-based-access-control/built-in-roles.md#reader)角色和具有更高版本。
+列出“运行命令”或显示某个命令的详细信息需要订阅级别的 `Microsoft.Compute/locations/runCommands/read` 权限，内置的[读者](../../role-based-access-control/built-in-roles.md#reader)角色或更高角色具有此权限。
 
-运行命令需要`Microsoft.Compute/virtualMachines/runCommand/action`在订阅级别的权限这[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和具有更高版本。
+运行某个命令需要订阅级别的 `Microsoft.Compute/virtualMachines/runCommand/action` 权限，[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和更高角色具有此权限。
 
 若要使用“运行命令”，可以使用[内置](../../role-based-access-control/built-in-roles.md)角色之一，也可以创建一个[自定义](../../role-based-access-control/custom-roles.md)角色。
 

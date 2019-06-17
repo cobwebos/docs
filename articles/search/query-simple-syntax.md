@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 75e2d7c493b535c984b0ef61dd9a9fae53aee80a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024201"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Azure 搜索中的简单查询语法
@@ -44,9 +44,9 @@ Azure 搜索实现两种基于 Lucene 的查询语言：[简单查询分析器](
 
 通常情况下，更有可能在搜索内容的应用程序的用户交互模式中看到这些行为，其中用户更有可能在查询中包含运算符，而不是具有更多内置导航结构的电子商务网站。 有关详细信息，请参阅 [NOT 运算符](#not-operator)。 
 
-## <a name="boolean-operators-and-or-not"></a>布尔运算符 (AND、 OR、 NOT) 
+## <a name="boolean-operators-and-or-not"></a>布尔运算符（AND、OR、NOT） 
 
-可以在一个查询字符串来生成一组丰富的条件对其找到匹配的文档中嵌入运算符。 
+可以在查询字符串中嵌入运算符，以生成丰富的一组用于查找匹配文档的标准。 
 
 ### <a name="and-operator-"></a>AND 运算符 `+`
 
@@ -67,15 +67,15 @@ NOT 运算符是一个减号。 例如，`wifi –luxury` 将搜索包含 `wifi`
 
 ## <a name="suffix-operator"></a>后缀运算符
 
-后缀运算符是一个星号`*`。 例如，`lux*` 将搜索包含以 `lux` 开头的词条的文档（忽略大小写）。  
+后缀运算符是一个星号 `*`。 例如，`lux*` 将搜索包含以 `lux` 开头的词条的文档（忽略大小写）。  
 
 ## <a name="phrase-search-operator"></a>短语搜索运算符
 
-短语运算符用引号将短语`" "`。 例如，`Roach Motel`（没有引号）会以任何顺序在任何位置搜索包含 `Roach` 和/或 `Motel` 的文档，而 `"Roach Motel"`（带引号）只会匹配包含整个短语并按该顺序排列的文档（文本分析仍然适用）。
+短语运算符将短语括在引号 `" "` 中。 例如，`Roach Motel`（没有引号）会以任何顺序在任何位置搜索包含 `Roach` 和/或 `Motel` 的文档，而 `"Roach Motel"`（带引号）只会匹配包含整个短语并按该顺序排列的文档（文本分析仍然适用）。
 
 ## <a name="precedence-operator"></a>优先运算符
 
-优先运算符将此字符串用括号`( )`。 例如，`motel+(wifi | luxury)`将搜索包含 motel 一词并的文档`wifi`或`luxury`（或两者）。  
+优先运算符将字符串括在括号 `( )` 中。 例如，`motel+(wifi | luxury)` 将搜索包含 motel 词条以及 `wifi` 或 `luxury`（或两者）的文档。  
 
 ## <a name="escaping-search-operators"></a>转义搜索运算符  
 

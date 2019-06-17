@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
 ms.openlocfilehash: d078ca181b2eed4b80d4f12f1c03b42f4e242194
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154442"
 ---
 # <a name="manage-azure-blockchain-service-with-azure-cli"></a>管理 Azure 区块链服务中使用 Azure CLI
@@ -37,7 +37,7 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName> --re
 |---------|-------------|
 | **resource-group** | 在其中创建 Azure 区块链服务资源的资源组名称。 |
 | **name** | 用于标识 Azure 区块链服务区块链成员的唯一名称。 此名称用于公共终结点地址。 例如，`myblockchainmember.blockchain.azure.com`。 |
-| **位置** | 在其中创建区块链成员的 Azure 区域。 例如，`eastus`。 选择最靠近用户或其他 Azure 应用程序的位置。 |
+| **location** | 在其中创建区块链成员的 Azure 区域。 例如，`eastus`。 选择最靠近用户或其他 Azure 应用程序的位置。 |
 | **password** | 成员帐户密码。 成员帐户密码用来使用基本身份验证向区块链成员的公共终结点进行身份验证。 密码必须满足三个以下四个要求： 长度必须介于 12 和 72 个字符、 1 个小写字符、 1 个大写字符、 1 个数字和 1 个特殊字符不数字 sign(#)、 percent(%)、 逗号 （，）、 star(*)，反引号(\`)，双击 quote(")、 单引号、 dash(-) 和 semicolumn(;)|
 | **protocol** | 公共预览版支持仲裁。 |
 | **consortium** | 要加入或创建的联盟的名称。 |
@@ -73,7 +73,7 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName>/tran
 |---------|-------------|
 | **resource-group** | 在其中创建 Azure 区块链服务资源的资源组名称。 |
 | **name** | 此外包括新的事务节点名称的 Azure 区块链服务区块链成员的名称。 |
-| **位置** | 在其中创建区块链成员的 Azure 区域。 例如，`eastus`。 选择最靠近用户或其他 Azure 应用程序的位置。 |
+| **location** | 在其中创建区块链成员的 Azure 区域。 例如，`eastus`。 选择最靠近用户或其他 Azure 应用程序的位置。 |
 | **password** | 事务节点密码。 密码必须满足三个以下四个要求： 长度必须介于 12 和 72 个字符、 1 个小写字符、 1 个大写字符、 1 个数字和 1 个特殊字符不数字 sign(#)、 percent(%)、 逗号 （，）、 star(*)，反引号(\`)，双击 quote(")、 单引号、 dash(-) 和分号 （;）。 |
 | **ruleName** | 列入允许列表 IP 地址范围的规则名称。 防火墙规则的可选参数。 |
 | **startIpAddress** | 列入允许列表 IP 地址范围的开始。 防火墙规则的可选参数。 |

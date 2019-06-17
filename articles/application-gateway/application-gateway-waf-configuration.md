@@ -8,10 +8,10 @@ ms.date: 5/15/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 5ddcdeca41e2f21fa27db25f7e0721c7ef87e491
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65620273"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 应用程序防火墙请求大小限制和排除列表
@@ -50,7 +50,7 @@ WAF 排除列表允许你忽略 WAF 评估中的某些请求属性。 常见示�
 
 下面是受支持的匹配条件运算符：
 
-- **等于**：此运算符用于完全匹配。 例如，要选择名为“bearerToken”的标头，请结合使用等号运算符和设为“bearerToken”的选择器。
+- **等于**：此运算符用于完全匹配。 例如，要选择名为“bearerToken”的标头，请结合使用等号运算符和设为“bearerToken”的选择器   。
 - **开头为**：此运算符与以指定选择器值开头的所有字段匹配。
 - **结尾为**：此运算符与以指定选择器值结尾的所有请求字段匹配。
 - **包含**：此运算符与包含指定选择器值的所有请求字段匹配。
@@ -91,7 +91,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "Equals" `
    -Selector "user"
 ```
-因此，如果 URL **http://www.contoso.com/?user=fdafdasfda**传递到 WAF，它不会计算该字符串**fdafdasfda**。
+因此，如果 URL **http://www.contoso.com/?user=fdafdasfda** 传递到 WAF，它不会计算该字符串**fdafdasfda**。
 
 ## <a name="next-steps"></a>后续步骤
 

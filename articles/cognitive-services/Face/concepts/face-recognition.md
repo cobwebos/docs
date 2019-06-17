@@ -1,5 +1,5 @@
 ---
-title: 人脸识别概念
+title: 人脸识别的概念
 titleSuffix: Azure Cognitive Services
 description: 了解有关人脸识别的概念。
 services: cognitive-services
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: fa38c492530cb8938e49bc15e13fdd39ed5b6f1c
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65890878"
 ---
-# <a name="face-recognition-concepts"></a>人脸识别概念
+# <a name="face-recognition-concepts"></a>人脸识别的概念
 
 本文介绍的概念验证、 查找相似、 组和标识人脸识别操作和基础数据结构。 广泛地说，识别描述了比较两个不同的人脸，以确定它们是类似是否属于同一人的工作。
 
-## <a name="recognition-related-data-structures"></a>识别相关的数据结构
+## <a name="recognition-related-data-structures"></a>与识别相关的数据结构
 
-识别操作使用主要的以下数据结构。 这些对象存储在云中，并可由其 ID 字符串引用。 ID 字符串始终是订阅中唯一的。 可以重复名称字段。
+识别操作主要使用以下数据结构。 这些对象存储在云中，可按其 ID 字符串引用。 ID 字符串始终是订阅中唯一的。 可以重复名称字段。
 
-|名称|描述|
+|Name|描述|
 |:--|:--|
 |DetectedFace| 检索此单个面部表示形式[人脸检测](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)操作。 其 ID 过期后创建的 24 小时。|
 |PersistedFace| DetectedFace 对象添加到组，如 FaceList 或人员，他们会变为 PersistedFace 对象。 它们可以是[检索](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)在任何时间，并不过期。|
 |[FaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)或[大型人脸列表](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)| 此数据结构是 PersistedFace 对象的各种类型的列表。 FaceList 具有唯一 ID、 名称字符串，将根据需要将用户的数据字符串。|
-|[Person](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| 此数据结构是属于同一人的 PersistedFace 对象的列表。 它具有唯一 ID、 名称字符串，将根据需要将用户的数据字符串。|
-|[Person Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)或[大型人物组](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)| 此数据结构是 Person 对象的各种类型的列表。 它具有唯一 ID、 名称字符串，将根据需要将用户的数据字符串。 必须为 person Group[训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)才能识别操作中使用。|
+|[Person](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| 此数据结构是属于同一人的 PersistedFace 对象的列表。 它具有唯一的 ID、名称字符串，以及（可选的）用户数据字符串。|
+|[Person Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)或[大型人物组](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)| 此数据结构是 Person 对象的各种类型的列表。 它具有唯一的 ID、名称字符串，以及（可选的）用户数据字符串。 必须为 person Group[训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)才能识别操作中使用。|
 
 ## <a name="recognition-operations"></a>识别操作
 
@@ -43,7 +43,7 @@ ms.locfileid: "65890878"
 
 ### <a name="find-similar"></a>查找相似
 
-[查找相似](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)操作将人脸 ID 从 DetectedFace 或 PersistedFace 和 FaceList 或其他人脸 Id 的数组。 FaceList，它将返回类似于给定的人脸的人脸的较小 FaceList。 使用人脸 Id 的数组，它同样会返回一个较小的数组。
+[查找相似](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)操作将人脸 ID 从 DetectedFace 或 PersistedFace 和 FaceList 或其他人脸 Id 的数组。 FaceList，它将返回类似于给定的人脸的人脸的较小 FaceList。 使用人脸 ID 的数组时，它同样会返回较小的数组。
 
 ### <a name="group"></a>组
 
@@ -55,10 +55,10 @@ ms.locfileid: "65890878"
 
 ## <a name="input-data"></a>输入数据
 
-使用以下提示来确保你输入的映像提供最准确的识别结果：
+使用以下提示来确保输入的图像提供最准确的识别结果：
 
-* 支持的输入的图像格式为 JPEG、 PNG、 GIF （第一个帧）、 BMP。
-* 图像文件的大小应为不大于 4 MB。
+* 支持的输入图像格式为 JPEG、PNG、GIF（第一帧）和 BMP。
+* 图像文件不得大于 4 MB。
 * 创建 Person 对象时，使用功能不同的角度和照明的照片。
 * 某些面部可能无法识别由于技术难题，例如：
   * 具有极端照明，例如，严重的图像背景光。

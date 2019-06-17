@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: c6baa9f8330338c1e5fdc9ee0b5a8cc8b344e871
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61435936"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>项目噪声 Unreal 和 Wwise 集成
@@ -45,7 +45,7 @@ ms.locfileid: "61435936"
 7. Unreal 中的音频设置
 
 ## <a name="1-install-the-project-acoustics-mixer-plugin"></a>1.安装项目噪声混音器插件
-* 打开 Wwise Launcher，然后在“插件”选项卡的“安装新插件”下，选择“从目录添加”。 
+* 打开 Wwise Launcher，然后在“插件”选项卡的“安装新插件”下，选择“从目录添加”    。 
 
     ![安装插件 Wwise 启动器中的屏幕截图](media/wwise-install-new-plugin.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "61435936"
 
 * **引擎插件：** 如果您有 Wwise 中 Unreal 的游戏插件作为安装C++项目中，跳过此步骤。 如果安装改成作为引擎插件实例，由于 Unreal 项目是使用我们 mixer 插件蓝图仅限 Wwise 部署已更复杂。 创建虚拟、 空 UnrealC++项目中，如果 Unreal 编辑器打开后，将其关闭并按照部署到此虚拟项目 Wwise 的剩余步骤。 然后将复制出的已部署的 Wwise 插件。
  
-* 在 Wwise Launcher 中，单击“Unreal Engine”选项卡，单击“最近的 Unreal Engine 项目”旁边的汉堡菜单，然后选择“浏览项目”。 打开您的游戏 Unreal 项目`.uproject`文件。
+* 在 Wwise Launcher 中，单击“Unreal Engine”选项卡，单击“最近的 Unreal Engine 项目”旁边的汉堡菜单，然后选择“浏览项目”    。 打开您的游戏 Unreal 项目`.uproject`文件。
 
     ![屏幕截图的 Wwise 启动器的 Unreal 选项卡](media/wwise-unreal-tab.png)
 

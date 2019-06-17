@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pabutler
 ms.openlocfilehash: 603dd63b31536bf906afc49223f4d6ac99819293
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935045"
 ---
 <a name="how-to-create-your-new-microsoft-dynamics-365-business-central-offer"></a>如何新建 Microsoft Dynamics 365 Business Central 产品/服务
@@ -21,7 +21,7 @@ ms.locfileid: "64935045"
 
 若要定义属性，请使用在开发人员中心注册时使用的 Microsoft 帐户登录到 Microsoft [云合作伙伴门户](https://cloudpartner.azure.com/)。
 
-1. 在云合作伙伴门户中，从左侧导航栏单击“+ 新建产品/服务”，从应用程序列表中选择“Dynamics 365 Business Central”。
+1. 在云合作伙伴门户中，从左侧导航栏单击“+ 新建产品/服务”  ，从应用程序列表中选择“Dynamics 365 Business Central”  。
 
    ![新建产品/服务](./media/d365-financials/image003.png)
 

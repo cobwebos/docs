@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
 ms.openlocfilehash: 92844b5faf691b67617c9f3424a1322aa05429bb
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64875736"
 ---
 # <a name="paper-entity"></a>论文实体
@@ -24,11 +24,11 @@ ms.locfileid: "64875736"
 
 名称    |描述                                        |Type       | 操作
 ------- | ------------------------------------------------- | --------- | ----------------------------
-ID      |实体 ID                                          |Int64      |等于
+Id      |实体 ID                                          |Int64      |等于
 Ti      |论文标题                                        |String     |Equals、<br/>-StartsWith
 L       |纸张语言代码分隔"\@\@\@"          |String     |等于
 Y       |论文年份                                         |Int32      |Equals、<br/>IsBetween
-D       |论文日期                                         |date       |Equals、<br/>IsBetween
+D       |论文日期                                         |Date       |Equals、<br/>IsBetween
 CC      |引文计数                                     |Int32      |无  
 ECC     |估计的引文计数                           |Int32      |无
 AA.AuN  |作者姓名                                        |String     |Equals、<br/>-StartsWith

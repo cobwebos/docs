@@ -12,23 +12,23 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 43d0b855c25ed10b074d99b247ee56dc2ba7769b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65146180"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>电话号码预生成的实体的 LUIS 应用
 `phonenumber` 实体提取各种包括国家/地区代码在内的电话号码。 此实体已定型，因此不需要将陈述示例添加到应用程序。 仅在 `en-us` 区域性中支持 `phonenumber` 实体。 
 
-## <a name="types-of-a-phone-number"></a>类型的电话号码
-`Phonenumber` 从托管[识别器文本](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml)GitHub 存储库
+## <a name="types-of-a-phone-number"></a>电话号码的类型
+`Phonenumber` 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) GitHub 存储库中
 
-## <a name="resolution-for-this-prebuilt-entity"></a>此预生成的实体的解析
+## <a name="resolution-for-this-prebuilt-entity"></a>针对此预生成实体的解决方法
 
 ### <a name="api-version-2x"></a>API 版本 2.x
 
-以下示例演示了 builtin.phonenumber 实体解析。
+以下示例演示了 builtin.phonenumber  实体解析。
 
 ```json
 {
@@ -58,9 +58,9 @@ ms.locfileid: "65146180"
 }
 ```
 
-### <a name="preview-api-version-3x"></a>预览 API 版本 3.x
+### <a name="preview-api-version-3x"></a>预览版 API 版本 3.x
 
-以下 JSON 是与`verbose`参数设置为`false`:
+以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
 {
@@ -82,7 +82,7 @@ ms.locfileid: "65146180"
 }
 ```
 
-以下 JSON 是与`verbose`参数设置为`true`:
+以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
 {

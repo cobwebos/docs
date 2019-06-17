@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines-widows
 manager: jeconnoc
 ms.openlocfilehash: 2453d37720bcf48b95b428cf78c6186de40b31aa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65160105"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Windows 映像，并将其分发给共享映像库 

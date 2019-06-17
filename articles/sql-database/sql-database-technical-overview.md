@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: ed94677eea91e3543dced9825a1372f60550a524
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073619"
 ---
 # <a name="what-is-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务
@@ -39,11 +39,11 @@ Azure SQL 数据库提供下述适用于 Azure SQL 数据库的部署选项：
 
 SQL 数据库与 [Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)共享其代码库。 利用 Microsoft 的云优先策略，首先将 SQL Server 的最新功能发布到 SQL 数据库，然后再发布到 SQL Server 本身。 此方法可为你提供 SQL Server 的最新功能，这些新功能已经过数百万个数据库的测试且无任何修补或升级开销。 有关公布的新功能信息，请参阅：
 
-- **[SQL 数据库的 Azure 路线图](https://azure.microsoft.com/roadmap/?category=databases)**：
+- **[SQL 数据库的 Azure 路线图](https://azure.microsoft.com/roadmap/?category=databases)** ：
 
   可在此处找到新增功能和即将推出的功能。
 
-- **[Azure SQL 数据库博客](https://azure.microsoft.com/blog/topics/database)**：
+- **[Azure SQL 数据库博客](https://azure.microsoft.com/blog/topics/database)** ：
 
   SQL Server 产品团队成员在此处发布关于 SQL 数据库新闻和功能的博客。
 
@@ -54,7 +54,7 @@ SQL 数据库通过多个资源类型、服务层和计算大小提供可预测�
 
 ## <a name="scalable-performance-and-pools"></a>可缩放的性能和池
 
-- 使用单一数据库，每个数据库相互隔离且可移植，每个数据库都有自己有保证的计算、内存和存储资源量。 SQL 数据库提供各种满足不同需求的计算、内存和存储资源，并支持纵向和横向动态[扩展单一数据库资源](sql-database-single-database-scale.md)。 [超大规模服务层](sql-database-service-tier-hyperscale.md)单一数据库，您可以扩展到 100 TB，使用快速备份和还原功能。
+- 使用单一数据库，每个数据库相互隔离且可移植，每个数据库都有自己有保证的计算、内存和存储资源量。 SQL 数据库提供各种满足不同需求的计算、内存和存储资源，并支持纵向和横向动态[扩展单一数据库资源](sql-database-single-database-scale.md)。 借助单一数据库的[“超大规模”服务层级](sql-database-service-tier-hyperscale.md)，可以通过快速备份和还原功能扩展到 100TB。
 - 使用弹性池，可以新建数据库，也可以将单一数据库移到资源池中，以最大限度地使用资源和节省资金，并且还能纵向和横向动态[扩展弹性池资源](sql-database-elastic-pool-scale.md)。
 - 使用托管实例，每个托管实例都与其他实例隔离开来，并包含有保证的资源。 在托管实例中，实例数据库共用资源集，并且能够纵向和横向动态[扩展托管实例资源](sql-database-managed-instance-resource-limits.md)。
 
@@ -110,20 +110,20 @@ Azure 可用性区域是高可用性问题上的播放。  它将尝试以防范
 
 事实上，Azure 的业界领先的 99.99%可用性服务级别协议[(SLA)](https://azure.microsoft.com/support/legal/sla/)，由 Microsoft 托管数据中心的全球网络提供支持，有助于保持应用全天候运行。 Azure 平台完全管理每个数据库，并保证不会丢失数据并实现高百分比数据可用性。 Azure 会自动处理修补、备份、复制、故障检测；基础的潜在硬件、软件或网络故障；部署 bug 修复、故障转移、数据库升级和其他维护任务。 标准可用性是通过将计算层与存储层相隔离来实现的。 高级可用性的实现方式是将计算和存储层集成到单个节点以提高性能，然后藉此实施类似于 Always On 可用性组的技术。 有关 Azure SQL 数据库的高可用性功能的完整讨论，请参阅 [SQL 数据库可用性](sql-database-high-availability.md)。 此外，SQL 数据库还提供内置[业务连续性和全局可伸缩性](sql-database-business-continuity.md)功能，包括：
 
-- **[自动备份](sql-database-automated-backups.md)**：
+- **[自动备份](sql-database-automated-backups.md)** ：
 
   SQL 数据库自动执行 Azure SQL 数据库的完整备份、差异备份和事务日志备份，以便能够还原到任何时间点。 对于单一数据库和入池数据库，可以将 SQL 数据库配置为，将完整数据库备份存储到 Azure 存储，以供长期备份保留。 对于托管实例，还可以执行仅复制备份，以供长期备份保留。
 
-- **[时间点还原](sql-database-recovery-using-backups.md)**：
+- **[时间点还原](sql-database-recovery-using-backups.md)** ：
 
   所有 SQL 数据库部署选项都支持恢复到任何 Azure SQL 数据库的自动备份保留期内的任何时间点。
-- **[活动异地复制](sql-database-active-geo-replication.md)**：
+- **[活动异地复制](sql-database-active-geo-replication.md)** ：
 
   使用单一数据库和入池数据库，可以在同一或全球分布式 Azure 数据中心内配置至多 4 个可读辅助数据库。  例如，如果有一个 SaaS 应用程序，其中的目录数据库包含大量并发只读事务，请使用活动异地复制来启用全局读取缩放并删除主数据库上因读取工作负荷产生的瓶颈。 对于托管实例，请使用自动故障转移组。
-- **[自动故障转移组](sql-database-auto-failover-group.md)**：
+- **[自动故障转移组](sql-database-auto-failover-group.md)** ：
 
   通过所有 SQL 数据库部署选项，可使用故障转移组实现全球范围内的高可用性和负载均衡，包括大量数据库、弹性池和托管实例的透明异地复制和故障转移。 通过故障转移组，可以最小管理开销创建全球分布式 SaaS 应用程序，将所有复杂监视、路由和故障转移业务流程都留给 SQL 数据库。
-- **[区域冗余数据库](sql-database-high-availability.md)**：
+- **[区域冗余数据库](sql-database-high-availability.md)** ：
 
   通过 SQL 数据库，可以跨多个可用性区域预配高级或业务关键数据库或弹性池。 由于这些数据库和弹性池有多个用于确保高可用性的冗余副本，因此将这些副本置于多个可用性区域可以提高复原能力，包括自动从数据中心规模的故障中恢复而不丢失数据的能力。
 
@@ -191,16 +191,16 @@ SQL 数据库参与定期审核，并已针对多个符合性标准进行验证�
 
 SQL 数据库让应用程序的构建和维护更加轻松、高效。 SQL 数据库让你能够专注于自己的专长：生成优秀的应用。 可使用已有工具和技能在 SQL 数据库进行管理和开发。
 
-- **[Azure 门户](https://portal.azure.com/)**：
+- **[Azure 门户](https://portal.azure.com/)** ：
 
   用于管理所有 Azure 服务的基于 Web 的应用程序
-- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)**：
+- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)** ：
 
   用于管理任何 SQL 基础结构（从 SQL Server 到 SQL 数据库，不一而足）的免费可下载客户端应用程序。
-- **[Visual Studio 中的 SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)**：
+- **[Visual Studio 中的 SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)** ：
 
   用于开发 SQL Server 关系数据库、Azure SQL 数据库、Integration Services 包、Analysis Services 数据模型和 Reporting Services 报表的免费可下载客户端应用程序。
-- **[Visual Studio Code](https://code.visualstudio.com/docs)**：
+- **[Visual Studio Code](https://code.visualstudio.com/docs)** ：
 
   一种可免费下载的开源代码编辑器，适用于 Windows、macOS 和 Linux，并支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 SQL 数据仓库）。
 

@@ -7,13 +7,13 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
 ms.openlocfilehash: f9fd346d4c4eaed0797d564fe52dd44e9f0e240a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65795648"
 ---
-# <a name="mapping-data-flow-conditional-split-transformation"></a>映射数据流条件拆分转换
+# <a name="mapping-data-flow-conditional-split-transformation"></a>映射数据流有条件拆分转换
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "65795648"
 
 若要添加附加条件，请在底部配置窗格中选择“添加流”，并单击“表达式生成器”文本框来生成表达式。
 
-![有条件拆分多](media/data-flow/conditionalsplit3.png "有条件拆分多")
+![有条件拆分（多个）](media/data-flow/conditionalsplit3.png "有条件拆分（多个）")
 
 ## <a name="next-steps"></a>后续步骤
 

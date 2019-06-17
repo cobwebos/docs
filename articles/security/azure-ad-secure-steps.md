@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 8e9101a1e23d361e66c5c30969069cbd4b971590
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f63ceb6a80f253ea1661d215939705f8e39f3e58
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236773"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67119297"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -36,7 +36,7 @@ ms.locfileid: "65236773"
 
 本文档中的建议符合[标识安全评分](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score)（Azure AD 租户的标识安全配置的自动评估）。 组织可以使用 Azure AD 门户中的“标识安全评分”页查找当前安全配置的差距，以确保遵循当前的 Microsoft 安全最佳做法。 实施“安全评分”页中的每条建议可以提高评分和跟踪进度，并有助于将实施方案与其他类似规模的组织或行业进行比较。
 
-![标识安全功能分数](media/azure-ad/azure-ad-sec-steps0.png)
+![标识安全评分](media/azure-ad/azure-ad-sec-steps0.png)
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>开始之前：使用 MFA 保护特权帐户
 
@@ -95,15 +95,15 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 
 ### <a name="block-legacy-authentication"></a>阻止传统身份验证
 
-使用自身的传统方法在 Azure AD 中进行身份验证和访问公司数据的应用给组织带来了另一种风险。 使用传统身份验证的应用示例包括 POP3、IMAP4 或 SMTP 客户端。 传统身份验证应用会代表用户执行身份验证，并阻止 Azure AD 执行高级安全评估。 替代的新式身份验证可降低安全风险，因为它支持多重身份验证和条件访问。 我们建议采取以下三项措施：
+使用自身的传统方法在 Azure AD 中进行身份验证和访问公司数据的应用给组织带来了另一种风险。 使用传统身份验证的应用示例包括 POP3、IMAP4 或 SMTP 客户端。 传统身份验证应用会代表用户执行身份验证，并阻止 Azure AD 执行高级安全评估。 备用的新式身份验证，将降低安全风险，因为它支持多重身份验证和条件性访问。 我们建议采取以下三项措施：
 
 1. [如果使用 AD FS，则阻止传统身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)。
 2. [将 SharePoint Online 和 Exchange Online 设置为使用新式身份验证](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication)。
-3. [使用条件访问策略来阻止传统身份验证](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions)。
+3. 使用[条件性访问策略来阻止旧式身份验证](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions)。
 
 ### <a name="block-invalid-authentication-entry-points"></a>阻止无效的身份验证入口点
 
-使用假设违规思路会减少用户凭据泄露造成的影响。 对于环境中的每个应用，请考虑有效的方案：要为哪些组、哪些网络、哪些设备和其他元素授权 – 然后阻止余下的部分。 使用 [Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)，可以控制已获授权的用户根据定义的特定条件访问其应用和资源的方式。
+使用假设违规思路会减少用户凭据泄露造成的影响。 对于环境中的每个应用，请考虑有效的方案：要为哪些组、哪些网络、哪些设备和其他元素授权 – 然后阻止余下的部分。 与[Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)，可以控制如何授权的用户访问的应用和资源基于特定条件定义。
 
 ### <a name="block-end-user-consent"></a>阻止最终用户许可
 
@@ -130,13 +130,13 @@ Azure Active Directory 中的许多功能可以自动截获攻击，以消除检
 
 ### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>使用 Azure AD Identity Protection 实施用户风险安全策略
 
-用户风险指示用户身份透露的可能性，它是根据与用户身份关联的[用户风险事件](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)计算的。 用户风险策略是一种条件访问策略，评估特定用户或组的风险级别。 根据“低”、“中”、“高”风险级别，可以配置一个策略来阻止访问，或者要求使用多重身份验证进行安全密码更改。 Microsoft 建议要求高风险用户进行安全密码更改。
+用户风险指示用户身份透露的可能性，它是根据与用户身份关联的[用户风险事件](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)计算的。 用户风险策略是条件访问策略的计算结果为特定用户或组的风险级别。 根据“低”、“中”、“高”风险级别，可以配置一个策略来阻止访问，或者要求使用多重身份验证进行安全密码更改。 Microsoft 建议要求高风险用户进行安全密码更改。
 
 ![已标记为存在风险的用户](media/azure-ad/azure-ad-sec-steps1.png)
 
 ### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>使用 Azure AD Identity Protection 实施登录风险策略
 
-登录风险是指除帐户所有者以外的其他某人尝试使用标识登录的可能性。 [登录风险策略](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)是一种条件访问策略，评估特定用户或组的风险级别。 根据风险级别（高/中/低），可以配置一个策略来阻止访问，或强制实施多重身份验证。 请确保针对“中”或更高风险的登录强制实施多重身份验证。
+登录风险是指除帐户所有者以外的其他某人尝试使用标识登录的可能性。 一个[登录风险策略](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)是条件性访问策略的计算结果为特定用户或组的风险级别。 根据风险级别（高/中/低），可以配置一个策略来阻止访问，或强制实施多重身份验证。 请确保针对“中”或更高风险的登录强制实施多重身份验证。
 
 ![从匿名 IP 登录](media/azure-ad/azure-ad-sec-steps2.png)
 
