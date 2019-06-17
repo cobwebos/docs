@@ -10,10 +10,10 @@ ms.date: 04/03/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.openlocfilehash: cc60a8ca0e0b04a5fcec5300fbeb1a0f34d1c7b4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64686384"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Apache Hadoop)
@@ -88,7 +88,7 @@ SSH 密钥使用[公钥加密](https://en.wikipedia.org/wiki/Public-key_cryptogr
 
 | 创建方法 | 如何使用公钥 |
 | ------- | ------- |
-| Azure 门户 | 取消选中“使用与群集登录相同的密码”，并选择“公钥”作为 SSH 身份验证类型。 最后，在“SSH 公钥”字段中选择公钥文件，或粘贴该文件的文本内容。</br>![创建 HDInsight 群集时的 SSH 公钥对话框](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
+| Azure 门户 | 取消选中“使用与群集登录相同的密码”，并选择“公钥”作为 SSH 身份验证类型。   最后，在“SSH 公钥”字段中选择公钥文件，或粘贴该文件的文本内容。 </br>![创建 HDInsight 群集时的 SSH 公钥对话框](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
 | Azure PowerShell | 使用`-SshPublicKey`的参数[新建 AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 并将作为字符串传递的公钥的内容。|
 | Azure CLI | 使用`--sshPublicKey`的参数[az hdinsight 创建](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)命令，并以字符串形式传递公钥内容。 |
 | Resource Manager 模板 | 有关在模板中使用 SSH 密钥的示例，请参阅 [Deploy HDInsight on Linux with SSH key](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/)（使用 SSH 密钥在 Linux 上部署 HDInsight）。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) 文件中的 `publicKeys` 元素用于在创建群集时向 Azure 传递密钥。 |
@@ -107,7 +107,7 @@ SSH 密钥使用[公钥加密](https://en.wikipedia.org/wiki/Public-key_cryptogr
 
 | 创建方法 | 如何指定密码 |
 | --------------- | ---------------- |
-| Azure 门户 | 默认情况下，SSH 用户帐户的密码与群集登录帐户的密码相同。 要使用不同的密码，请取消选中“使用与群集登录相同的密码”，并在“SSH 密码”字段中输入密码。</br>![创建 HDInsight 群集时的 SSH 密码对话框](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
+| Azure 门户 | 默认情况下，SSH 用户帐户的密码与群集登录帐户的密码相同。 要使用不同的密码，请取消选中“使用与群集登录相同的密码”，并在“SSH 密码”字段中输入密码。  </br>![创建 HDInsight 群集时的 SSH 密码对话框](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
 | Azure PowerShell | 使用`--SshCredential`的参数[新建 AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 并传递`PSCredential`对象，其中包含的 SSH 用户帐户名和密码。 |
 | Azure CLI | 使用`--sshPassword`的参数[az hdinsight 创建](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)命令，并提供密码值。 |
 | Resource Manager 模板 | 有关在模板中使用密码的示例，请参阅 [Deploy HDInsight on Linux with SSH password](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)（使用 SSH 密码在 Linux 上部署 HDInsight）。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) 文件中的 `linuxOperatingSystemProfile` 元素用于在创建群集时向 Azure 传递 SSH 帐户名和密码。|
@@ -138,7 +138,7 @@ sudo service sshd restart
 
 可以通过 Internet 在端口 22 和 23 上访问头节点和边缘节点（如果有）。
 
-* 连接到头节点时，请使用端口 22 连接到主头节点，使用端口 23 连接到辅助头节点。 要使用的完全限定的域名为 `clustername-ssh.azurehdinsight.net`，其中的 `clustername` 为群集的名称。
+* 连接到头节点时，请使用端口 22 连接到主头节点，使用端口 23 连接到辅助头节点。    要使用的完全限定的域名为 `clustername-ssh.azurehdinsight.net`，其中的 `clustername` 为群集的名称。
 
     ```bash
     # Connect to primary head node
@@ -149,7 +149,7 @@ sudo service sshd restart
     ssh -p 23 sshuser@clustername-ssh.azurehdinsight.net
     ```
     
-* 连接到边缘节点时请使用端口 22。 完全限定的域名为 `edgenodename.clustername-ssh.azurehdinsight.net`，其中的 `edgenodename` 是在创建边缘节点时提供的名称。 `clustername` 是群集的名称。
+* 连接到边缘节点时请使用端口 22。  完全限定的域名为 `edgenodename.clustername-ssh.azurehdinsight.net`，其中的 `edgenodename` 是在创建边缘节点时提供的名称。 `clustername` 是群集的名称。
 
     ```bash
     # Connect to edge node
