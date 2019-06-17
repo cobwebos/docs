@@ -17,10 +17,10 @@ ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 226986fb7c41c19b58f0163414628ad08ddeda15
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409980"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
@@ -54,21 +54,21 @@ ms.locfileid: "65409980"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
 [2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -365,7 +365,7 @@ ms.locfileid: "65409980"
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
-[sap-pam]:https://support.sap.com/pam (SAP 产品可用性对照表)
+[sap-pam]: https://support.sap.com/pam (SAP 产品可用性对照表)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -683,7 +683,7 @@ Azure 资源管理器中的三层模板还支持高可用性方案，例如体�
 
 准备体系结构模板 1 的基础结构：
 
-- 在 Azure 门户中的“参数”边栏选项卡上，从“SYSTEMAVAILABILITY”框中选择“HA”。
+- 在 Azure 门户中的“参数”边栏选项卡上，从“SYSTEMAVAILABILITY”框中选择“HA”。   
 
   ![图 11：设置 SAP 高可用性 Azure 资源管理器参数][sap-ha-guide-figure-3000]
 
@@ -699,7 +699,7 @@ _**图 11：** 设置 SAP 高可用性 Azure 资源管理器参数_
 
   * **所有虚拟机的网卡以及关联的 IP 地址**：
     * <*SAPSystemSID*>-nic-di-<*Number*>
-    * <SAPSystemSID>-nic-ascs-<Number>
+    * <SAPSystemSID>-nic-ascs-<Number>  
     * <*SAPSystemSID*>-nic-db-<*Number*>
 
   * **Azure 存储帐户**
@@ -717,7 +717,7 @@ _**图 11：** 设置 SAP 高可用性 Azure 资源管理器参数_
     * 带有 <*SAPSystemSID*>-ascs-0 虚拟机的开放外部远程桌面协议 (RDP) 端口
 
 > [!NOTE]
-> 默认情况下，网卡和 Azure 内部负载均衡器的所有 IP 地址均为“动态”。 将它们更改为“静态”IP 地址。 本文稍后介绍操作方法。
+> 默认情况下，网卡和 Azure 内部负载均衡器的所有 IP 地址均为“动态”  。 将它们更改为“静态”  IP 地址。 本文稍后介绍操作方法。
 >
 >
 
@@ -729,15 +729,15 @@ _**图 11：** 设置 SAP 高可用性 Azure 资源管理器参数_
 >
 >
 
-1. 在 Azure 门户中的“参数”边栏选项卡上，从“NEWOREXISTINGSUBNET”框中选择“现有”。
-2. 在“SUBNETID”框中，添加已准备好的“Azure 网络 SubnetID”的完整字符串，这是打算用于部署 Azure 虚拟机的位置。
+1. 在 Azure 门户中的“参数”边栏选项卡上，从“NEWOREXISTINGSUBNET”框中选择“现有”。   
+2. 在“SUBNETID”框中，添加已准备好的“Azure 网络 SubnetID”的完整字符串，这是打算用于部署 Azure 虚拟机的位置。 
 3. 若要获取所有 Azure 网络子网的列表，请运行以下 PowerShell 命令：
 
    ```PowerShell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
-   “ID”字段显示“SUBNETID”。
+   “ID”  字段显示“SUBNETID”  。
 4. 若要获取所有 **SUBNETID** 值的列表，请运行以下 PowerShell 命令：
 
    ```PowerShell
@@ -753,7 +753,7 @@ _**图 11：** 设置 SAP 高可用性 Azure 资源管理器参数_
 ### <a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a> 部署用于测试和演示的仅限云 SAP 实例
 可以在仅限云的部署模型中部署高可用性 SAP 系统。 这种部署主要用于演示和测试目的。 它不适合生产用例。
 
-- 在 Azure 门户中的“参数”边栏选项卡上，从“NEWOREXISTINGSUBNET”框中选择“新建”。 将“SUBNETID”字段保留空白。
+- 在 Azure 门户中的“参数”边栏选项卡上，从“NEWOREXISTINGSUBNET”框中选择“新建”。    将“SUBNETID”  字段保留空白。
 
   SAP Azure 资源管理器模板自动创建 Azure 虚拟网络和子网。
 
@@ -796,10 +796,10 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
   - **堆栈类型**。 选择 SAP 系统的堆栈类型。 根据堆栈类型，Azure 负载均衡器将为每个 SAP 系统提供一个（ABAP 或仅限 Java）或两个 (ABAP + Java) 专用 IP 地址。
   -  **OS 类型**。 选择虚拟机的操作系统。
   -  **SAP 系统计数**。 选择要在此群集中安装的 SAP 系统数目。
-  -  **系统可用性**。 选择“HA”。
+  -  **系统可用性**。 选择“HA”。 
   -  **管理员用户名和管理员密码**。 创建可用于登录计算机的新用户。
   -  **新的或现有的子网**。 设置是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择**现有**虚拟网络。
-  -  **子网 ID**。如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/<订阅 ID>/resourceGroups/<资源组名称>/providers/Microsoft.Network/virtualNetworks/<虚拟网络名称>/subnets/<子网名称>
+  -  **子网 ID**。如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/<订阅 ID>/resourceGroups/<资源组名称>/providers/Microsoft.Network/virtualNetworks/<虚拟网络名称>/subnets/<子网名称>    
 
 模板将部署一个支持多个 SAP 系统的 Azure 负载均衡器实例。
 
@@ -829,12 +829,12 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 - **SAP 系统 ID**。输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
 - **OS 类型**。 选择虚拟机的操作系统。
-- **Dbtype**。 选择要在群集上安装的数据库的类型。 若要安装 Microsoft SQL Server，请选择“SQL”。 若要在虚拟机上安装 SAP HANA，请选择“HANA”。 请确保选择正确的操作系统类型：对于 SQL，请选择“Windows”；对于 HANA，请选择一个 Linux 分发版。 连接到虚拟机的 Azure 负载均衡器将配置为支持所选的数据库类型：
+- **Dbtype**。 选择要在群集上安装的数据库的类型。 若要安装 Microsoft SQL Server，请选择“SQL”。  若要在虚拟机上安装 SAP HANA，请选择“HANA”。  请确保选择正确的操作系统类型：对于 SQL，请选择“Windows”；对于 HANA，请选择一个 Linux 分发版。  连接到虚拟机的 Azure 负载均衡器将配置为支持所选的数据库类型：
   * **SQL**。 负载均衡器将对端口 1433 进行负载均衡。 请确保在 SQL Server Always On 设置中使用此端口。
   * **HANA**。 负载均衡器将对端口 35015 和 35017 进行负载均衡。 请确保使用实例编号 **50** 安装 SAP HANA。
   负载均衡器将使用探测端口 62550。
 - **SAP 系统大小**。 设置新系统要提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
-- **系统可用性**。 选择“HA”。
+- **系统可用性**。 选择“HA”。 
 - **管理员用户名和管理员密码**。 创建可用于登录计算机的新用户。
 - **子网 ID**。输入在部署 ASCS/SCS 模板期间使用的子网的 ID，或部署 ASCS/SCS 模板过程中创建的子网的 ID。
 
@@ -847,7 +847,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
   -  **SAP 系统 ID**。输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
   -  **OS 类型**。 选择虚拟机的操作系统。
   -  **SAP 系统大小**。 新系统将提供的 SAPS 数目。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
-  -  **系统可用性**。 选择“HA”。
+  -  **系统可用性**。 选择“HA”。 
   -  **管理员用户名和管理员密码**。 创建可用于登录计算机的新用户。
   -  **子网 ID**。输入在部署 ASCS/SCS 模板期间使用的子网的 ID，或部署 ASCS/SCS 模板过程中创建的子网的 ID。
 
@@ -864,7 +864,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 若要设置所需的 DNS IP 地址，请执行以下步骤。
 
-1. 在 Azure 门户中的“DNS 服务器”边栏选项卡上，确保虚拟网络的“DNS 服务器”选项设置为“自定义 DNS”。
+1. 在 Azure 门户中的“DNS 服务器”边栏选项卡上，确保虚拟网络的“DNS 服务器”选项设置为“自定义 DNS”。   
 2. 根据使用的网络类型选择设置。 有关详细信息，请参阅以下资源：
    * [企业网络连接（跨界）][planning-guide-2.2]：添加本地 DNS 服务器的 IP 地址。  
    可将本地 DNS 服务器扩展到正在 Azure 中运行的虚拟机。 在该情况下，可添加运行 DNS 服务器的 Azure 虚拟机的 IP 地址。
@@ -903,8 +903,8 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 ### <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> 设置 SAP 虚拟机的静态 IP 地址
 部署要在群集中使用的虚拟机之后，需要为所有虚拟机设置静态 IP 地址。 请在 Azure 虚拟网络配置中而不是来宾操作系统中执行此操作。
 
-1. 在 Azure 门户中，选择“资源组” > “网卡” > “设置” > “IP 地址”。
-2. 在“IP 地址”边栏选项卡中的“分配”下面，选择“静态”。 在“IP 地址”框中，输入要使用的 IP 地址。
+1. 在 Azure 门户中，选择“资源组” > “网卡” > “设置” > “IP 地址”。    
+2. 在“IP 地址”边栏选项卡中的“分配”下面，选择“静态”。    在“IP 地址”框中，输入要使用的 IP 地址。 
 
    > [!NOTE]
    > 如果更改了网卡的 IP 地址，则需要重新启动 Azure 虚拟机才能应用更改。  
@@ -942,7 +942,7 @@ SAP Azure Resource Manager 模板可创建用于 SAP ASCS/SCS 实例和 DBMS 实
 
 为 Azure 内部负载均衡器设置静态 IP 地址：
 
-1. 初始部署将内部负载均衡器 IP 地址设置为“动态”。 在 Azure 门户的“IP 地址”边栏选项卡中的“分配”下面，选择“静态”。
+1. 初始部署将内部负载均衡器 IP 地址设置为“动态”  。 在 Azure 门户的“IP 地址”边栏选项卡中的“分配”下面，选择“静态”。   
 2. 将内部负载均衡器 **pr1-lb-ascs** 的 IP 地址设置为 SAP ASCS/SCS 实例的虚拟主机名 IP 地址。
 3. 将内部负载均衡器 **pr1-lb-dbms** 的 IP 地址设置为 DBMS 实例的虚拟主机名 IP 地址。
 
@@ -1014,10 +1014,10 @@ _**图 15：** Azure 内部负载均衡器的默认 ASCS/SCS 负载均衡规则_
 
 如果想要将其他编号用于 SAP ASCS 或 SCS 实例，必须更改这些实例的名称和默认值。
 
-1. 在 Azure 门户中，依次选择“<SID>-lb-ascs 负载均衡器” > “负载均衡规则”。
+1. 在 Azure 门户中，依次选择“<SID>-lb-ascs 负载均衡器” > “负载均衡规则”    。
 2. 对于属于 SAP ASCS 或 SCS 实例的所有负载均衡规则，请更改以下值：
 
-   * 名称
+   * Name
    * Port
    * 后端端口
 
@@ -1075,7 +1075,7 @@ _**表 4：** 更改第二个 TCP/IP 参数_
 #### <a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a> 收集群集配置中的群集节点
 
 1. 在“添加角色和功能向导”中，将故障转移群集功能添加到两个群集节点。
-2. 使用故障转移群集管理器设置故障转移群集。 在故障转移群集管理器中选择“创建群集”，然后只添加第一个群集节点 A 的名称。暂时不要添加第二个节点；会在后面的步骤中添加第二个节点。
+2. 使用故障转移群集管理器设置故障转移群集。 在故障转移群集管理器中选择“创建群集”，然后只添加第一个群集节点 A 的名称。暂时不要添加第二个节点；会在后面的步骤中添加第二个节点。 
 
    ![图 18：添加第一个群集节点的服务器或虚拟机名称][sap-ha-guide-figure-3007]
 
@@ -1103,13 +1103,13 @@ _**表 4：** 更改第二个 TCP/IP 参数_
 
    _**图 22：** 核心群集资源需要新 IP 地址_
 
-5. 更改核心群集服务的 IP 地址。 由于服务器的 IP 地址指向虚拟机节点之一，因此，在更改核心群集服务的 IP 地址之前，群集无法启动。 请在核心群集服务的 IP 资源“属性”页上执行此操作。
+5. 更改核心群集服务的 IP 地址。 由于服务器的 IP 地址指向虚拟机节点之一，因此，在更改核心群集服务的 IP 地址之前，群集无法启动。 请在核心群集服务的 IP 资源“属性”页上执行此操作。 
 
    例如，需要为群集虚拟主机名 **pr1-ascs-vir** 分配 IP 地址（在本例中为 **10.0.0.42**）。
 
    ![图 23：在“属性”对话框中更改 IP 地址][sap-ha-guide-figure-3012]
 
-   _**图 23：** 在“属性”对话框中更改 IP 地址_
+   _**图 23：** 在“属性”对话框中更改 IP 地址  _
 
    ![图 24：分配为群集保留的 IP 地址][sap-ha-guide-figure-3013]
 
@@ -1136,7 +1136,7 @@ _**表 4：** 更改第二个 TCP/IP 参数_
    _**图 27：** 输入第二个群集节点主机名_
 
    > [!IMPORTANT]
-   > **切勿**选中“将所有符合条件的存储添加到群集”复选框。  
+   > **切勿**选中“将所有符合条件的存储添加到群集”复选框。   
    >
    >
 
@@ -1177,9 +1177,9 @@ _**表 4：** 更改第二个 TCP/IP 参数_
 
    _**图 30：** 为群集名称对象分配共享权限_
 
-   请确保权限包括针对群集名称对象（在本例中为 **pr1-ascs-vir$**）更改共享中的数据的授权。
+   请确保权限包括针对群集名称对象（在本例中为 **pr1-ascs-vir$** ）更改共享中的数据的授权。
 
-3. 要将群集名称添加到列表，请选择“添加”。 更改筛选器，以便除了检查图 31 中所示的项以外，还检查计算机对象。
+3. 要将群集名称添加到列表，请选择“添加”  。 更改筛选器，以便除了检查图 31 中所示的项以外，还检查计算机对象。
 
    ![图 31：将“对象类型”更改为包括计算机][sap-ha-guide-figure-3020]
 
@@ -1187,11 +1187,11 @@ _**表 4：** 更改第二个 TCP/IP 参数_
 
    ![图 32：选中“计算机”复选框][sap-ha-guide-figure-3021]
 
-   _**图 32：** 选中“计算机”复选框_
+   _**图 32：** 选中“计算机”复选框  _
 
 4. 输入群集名称对象，如图 31 所示。 由于已创建记录，因此可以更改权限，如图 30 所示。
 
-5. 选择共享的“安全性”选项卡，并为群集名称对象设置更详细的权限。
+5. 选择共享的“安全性”选项卡，并为群集名称对象设置更详细的权限。 
 
    ![图 33：为文件共享仲裁上的群集名称对象设置安全属性][sap-ha-guide-figure-3022]
 
@@ -1205,25 +1205,25 @@ _**表 4：** 更改第二个 TCP/IP 参数_
 
    _**图 34：** 启动“配置群集仲裁设置向导”_
 
-2. 上“选择仲裁配置”页上，选择“选择仲裁见证”。
+2. 上“选择仲裁配置”页上，选择“选择仲裁见证”。  
 
    ![图 35：可供选择的仲裁配置][sap-ha-guide-figure-3024]
 
    _**图 35：** 可供选择的仲裁配置_
 
-3. 在“选择仲裁见证”页上，选择“配置文件共享见证”。
+3. 在“选择仲裁见证”页上，选择“配置文件共享见证”。  
 
    ![图 36：选择文件共享见证][sap-ha-guide-figure-3025]
 
    _**图 36：** 选择文件共享见证_
 
-4. 输入文件共享的 UNC 路径（在本例中为 \\domcontr-0\FSW）。 若要查看可进行的更改列表，请选择“下一步”。
+4. 输入文件共享的 UNC 路径（在本例中为 \\domcontr-0\FSW）。 若要查看可进行的更改列表，请选择“下一步”。 
 
    ![图 37：定义见证共享的文件共享位置][sap-ha-guide-figure-3026]
 
    _**图 37：** 定义见证共享的文件共享位置_
 
-5. 选择所需的更改，并选择“下一步”。 需要成功重新配置群集配置，如图 38 中所示。  
+5. 选择所需的更改，并选择“下一步”  。 需要成功重新配置群集配置，如图 38 中所示。  
 
    ![图 38：确认已重新配置群集][sap-ha-guide-figure-3027]
 
@@ -1274,7 +1274,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 在安装 SIOS 软件前，创建域用户 **DataKeeperSvc**。
 
 > [!NOTE]
-> 请将 **DataKeeperSvc** 用户添加到两个群集节点上的“本地管理员”组中。
+> 请将 **DataKeeperSvc** 用户添加到两个群集节点上的“本地管理员”  组中。
 >
 >
 
@@ -1288,13 +1288,13 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
    _**图 41：** SIOS DataKeeper 安装程序的第一页_
 
-2. 在图 42 所示的对话框中，选择“是”。
+2. 在图 42 所示的对话框中，选择“是”  。
 
    ![图 42：DataKeeper 通知将会禁用服务][sap-ha-guide-figure-3032]
 
    _**图 42：** DataKeeper 通知将会禁用服务_
 
-3. 在图 43 所示的对话框中，建议选择“域或服务器帐户”。
+3. 在图 43 所示的对话框中，建议选择“域或服务器帐户”。 
 
    ![图 43：用户为 SIOS DataKeeper 选中的选项][sap-ha-guide-figure-3033]
 
@@ -1318,7 +1318,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
 在两个节点上安装 SIOS DataKeeper 之后，必须开始配置。 配置的目的是在连接到每个虚拟机的附加 VHD 之间进行同步数据复制。
 
-1. 启动 DataKeeper 管理和配置工具，并选择“连接服务器”。 （在图 46 中，此选项标有红色圆圈。）
+1. 启动 DataKeeper 管理和配置工具，并选择“连接服务器”  。 （在图 46 中，此选项标有红色圆圈。）
 
    ![图 46：SIOS DataKeeper 管理和配置工具][sap-ha-guide-figure-3036]
 
@@ -1361,11 +1361,11 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
    _**图 52：** 定义复制详细信息_
 
-8. 定义是否应向 Windows Server 故障转移群集配置将复制作业所复制的卷表示为共享磁盘。 对于 SAP ASCS/SCS 配置，选择“是”，以便 Windows 群集将复制的卷视为可用作群集卷的共享磁盘。
+8. 定义是否应向 Windows Server 故障转移群集配置将复制作业所复制的卷表示为共享磁盘。 对于 SAP ASCS/SCS 配置，选择“是”  ，以便 Windows 群集将复制的卷视为可用作群集卷的共享磁盘。
 
    ![图 53：选择“是”将复制的卷设置为群集卷][sap-ha-guide-figure-3043]
 
-   _**图 53：** 选择“是”将复制的卷设置为群集卷_
+   _**图 53：** 选择“是”将复制的卷设置为群集卷  _
 
    创建卷后，DataKeeper 管理和配置工具显示复制作业处于活动状态。
 
@@ -1410,7 +1410,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 1. 在 Windows DNS 管理器中为 ASCS/SCS 实例的虚拟主机名创建 DNS 条目。
 
    > [!IMPORTANT]
-   > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器 (<SID>-lb-ascs) 的 IP 地址相同。  
+   > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器 (<SID>-lb-ascs) 的 IP 地址相同  。  
    >
    >
 
@@ -1420,7 +1420,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
    _**图 56：** 定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目_
 
-2. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” > “域”。
+2. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” > “域”。  
 
    ![图 57：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址][sap-ha-guide-figure-3047]
 
@@ -1488,7 +1488,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
    端口号在 SAP Azure 资源管理器模板中定义。 可在 PowerShell 中分配端口号。
 
-   若要为 SAP <SID> IP 群集资源设置新的 ProbePort 值，请运行以下 PowerShell 脚本。 更新环境的 PowerShell 变量。 运行该脚本后，系统会提示重新启动 SAP 群集组以激活更改。
+   若要为 SAP <SID> IP 群集资源设置新的 ProbePort 值，请运行以下 PowerShell 脚本  。 更新环境的 PowerShell 变量。 运行该脚本后，系统会提示重新启动 SAP 群集组以激活更改。
 
    ```PowerShell
    $SAPSID = "PR1"      # SAP <SID>
@@ -1582,7 +1582,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
 ### <a name="094bc895-31d4-4471-91cc-1513b64e406a"></a> 更改 SAP ERS Windows 服务实例的启动类型
 
-将两个群集节点上的 SAP 排队复制服务器 (ERS) Windows 服务的启动类型更改为“自动(延迟启动)”。
+将两个群集节点上的 SAP 排队复制服务器 (ERS) Windows 服务的启动类型更改为“自动(延迟启动)”。 
 
 ![图 60：将 SAP ERS 实例的服务类型更改为自动延迟][sap-ha-guide-figure-3050]
 
@@ -1612,7 +1612,7 @@ _**图 60：** 将 SAP ERS 实例的服务类型更改为自动延迟_
 
 _**图 61：** 故障转移群集管理器：SAP <*SID*> 群集组在群集节点 A 上运行_
 
-在 SIOS DataKeeper 管理和配置工具中，可以看到共享磁盘数据以同步方式从群集节点 A 上的源卷 S 复制到群集节点 B 上的目标卷 S。例如，从 **pr1-ascs-0 [10.0.0.40]** 复制到 **pr1-ascs-1 [10.0.0.41]**。
+在 SIOS DataKeeper 管理和配置工具中，可以看到共享磁盘数据以同步方式从群集节点 A 上的源卷 S 复制到群集节点 B 上的目标卷 S。例如，从 **pr1-ascs-0 [10.0.0.40]** 复制到 **pr1-ascs-1 [10.0.0.41]** 。
 
 ![图 62：在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B][sap-ha-guide-figure-5001]
 
@@ -1635,13 +1635,13 @@ _**图 62：** 在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到
 3. 在 Azure 门户中重新启动群集节点 A（这会启动将 SAP <*SID*> 群集组从节点 A 故障转移到节点 B 的自动故障转移）。  
 4. 使用 Azure PowerShell 重新启动群集节点 A（这会启动将 SAP <*SID*> 群集组从节点 A 故障转移到节点 B 的自动故障转移）。
 
-   故障转移后，SAP <SID> 群集组在群集节点 B 上运行。例如，在 pr1-ascs-1 上运行。
+   故障转移后，SAP <SID> 群集组在群集节点 B 上运行。例如，在 pr1-ascs-1 上运行   。
 
    ![图 63：在故障转移群集管理器中，SAP <SID> 群集组在群集节点 B 上运行][sap-ha-guide-figure-5002]
 
    _**图 63**：在故障转移群集管理器中，SAP <*SID*> 群集组在群集节点 B 上运行_
 
-   共享磁盘现在已装载到群集节点 B。SIOS DataKeeper 正在将数据从群集节点 B 上的源卷 S 复制到群集节点 A 上的目标卷 S。例如，从 **pr1-ascs-1 [10.0.0.41]** 复制到 **pr1-ascs-0 [10.0.0.40]**。
+   共享磁盘现在已装载到群集节点 B。SIOS DataKeeper 正在将数据从群集节点 B 上的源卷 S 复制到群集节点 A 上的目标卷 S。例如，从 **pr1-ascs-1 [10.0.0.41]** 复制到 **pr1-ascs-0 [10.0.0.40]** 。
 
    ![图 64：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A][sap-ha-guide-figure-5003]
 
