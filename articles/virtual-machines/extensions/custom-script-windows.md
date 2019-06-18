@@ -105,8 +105,8 @@ ms.locfileid: "65408273"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute | 字符串 |
-| type | CustomScriptExtension | 字符串 |
+| publisher | Microsoft.Compute | string |
+| type | CustomScriptExtension | string |
 | typeHandlerVersion | 1.9 | int |
 | fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp（示例） | 123456789 | 32 位整数 |
