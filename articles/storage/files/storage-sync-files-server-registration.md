@@ -9,10 +9,10 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: ef6def9f03a880d9fc8d649fe226caf597ba0ad5
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991828"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>管理已向 Azure 文件同步注册的服务器
@@ -23,7 +23,7 @@ ms.locfileid: "65991828"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>向存储同步服务注册/注销服务器
-向 Azure 文件同步注册服务器可在 Windows Server 和 Azure 之间建立信任关系。 这种关系随后可用于创建服务器上的服务器终结点，该终结点表示应与 Azure 文件共享（也称为云终结点）同步的特定文件夹。 
+向 Azure 文件同步注册服务器可在 Windows Server 和 Azure 之间建立信任关系。 这种关系随后可用于创建服务器上的服务器终结点  ，该终结点表示应与 Azure 文件共享（也称为云终结点）  同步的特定文件夹。 
 
 ### <a name="prerequisites"></a>必备组件
 若要向存储同步服务注册服务器，首先必须确保服务器满足以下先决条件：
@@ -61,7 +61,7 @@ ms.locfileid: "65991828"
 ```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>向存储同步服务注册服务器
-服务器必须先向存储同步服务注册，然后才能在 Azure 文件同步同步组中用作服务器终结点。 服务器一次只能向一个存储同步服务注册。
+服务器必须先向存储同步服务  注册，然后才能在 Azure 文件同步同步组  中用作服务器终结点  。 服务器一次只能向一个存储同步服务注册。
 
 #### <a name="install-the-azure-file-sync-agent"></a>安装 Azure 文件同步代理
 1. [下载 Azure 文件同步代理](https://go.microsoft.com/fwlink/?linkid=858257)。
@@ -83,7 +83,7 @@ ms.locfileid: "65991828"
 > 云解决方案提供商 (CSP) 订阅不能使用服务器注册 UI。 请改用 PowerShell（在本部分下面介绍）。
 
 1. 如果服务器注册 UI 在完成 Azure 文件同步代理安装之后未立即启动，则可以通过执行 `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` 来手动启动它。
-2. 单击“登录”以访问 Azure 订阅。 
+2. 单击“登录”  以访问 Azure 订阅。 
 
     ![服务器注册 UI 的打开对话框](media/storage-sync-files-server-registration/server-registration-ui-1.png)
 
@@ -149,7 +149,7 @@ Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName
 #### <a name="unregister-the-server"></a>注销服务器
 现在已召回所有数据并已从所有同步组中删除服务器，服务器可以进行注销。 
 
-1. 在 Azure 门户中，导航到存储同步服务的“已注册的服务器”部分。
+1. 在 Azure 门户中，导航到存储同步服务的“已注册的服务器”  部分。
 2. 右键单击要注销的服务器，然后单击“注销服务器”。
 
     ![注销服务器](media/storage-sync-files-server-registration/unregister-server-1.png)

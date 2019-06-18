@@ -17,22 +17,22 @@ ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 83319118c778d89749b1eb5d5fd792a5200c19c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60835993"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上的 SAP MaxDB、liveCache 和内容服务器部署
 
-[767598]:https://launchpad.support.sap.com/#/notes/767598
+[767598]: https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
-[826037]:https://launchpad.support.sap.com/#/notes/826037
+[826037]: https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
-[1139904]:https://launchpad.support.sap.com/#/notes/1139904
-[1173395]:https://launchpad.support.sap.com/#/notes/1173395
+[1139904]: https://launchpad.support.sap.com/#/notes/1139904
+[1173395]: https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
 [1409604]:https://launchpad.support.sap.com/#/notes/1409604
 [1558958]:https://launchpad.support.sap.com/#/notes/1558958
@@ -42,7 +42,7 @@ ms.locfileid: "60835993"
 [1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
-[1619726]:https://launchpad.support.sap.com/#/notes/1619726
+[1619726]: https://launchpad.support.sap.com/#/notes/1619726
 [1619967]:https://launchpad.support.sap.com/#/notes/1619967
 [1750510]:https://launchpad.support.sap.com/#/notes/1750510
 [1752266]:https://launchpad.support.sap.com/#/notes/1752266
@@ -55,7 +55,7 @@ ms.locfileid: "60835993"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
@@ -339,7 +339,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 
 简而言之，必须：
 
-* 如果使用 Azure 存储帐户，请将保存 SAP MaxDB 数据和日志卷（数据和日志文件）的 Azure 存储帐户设置为本地冗余存储 (LRS)，如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述。
+* 如果使用 Azure 存储帐户，请将保存 SAP MaxDB 数据和日志卷（数据和日志文件）的 Azure 存储帐户设置为本地冗余存储 (LRS)  ，如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述。
 * 将 SAP MaxDB 数据卷（数据文件）的 IO 路径与日志卷（日志文件）的 IO 路径隔开。 这表示 SAP MaxDB 数据卷（数据文件）必须安装在一个逻辑驱动器上，而 SAP MaxDB 日志卷（日志文件）必须安装在另一个逻辑驱动器上。
 * 根据[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述，为每个磁盘设置适当的缓存类型，具体取决于是将其用于 SAP MaxDB 数据卷还是日志卷（数据和日志文件），以及是使用 Azure 标准存储还是 Azure 高级存储。
 * 只要每个磁盘当前的 IOPS 配额能满足需求，就可以将所有数据卷存储在装载的单个磁盘上，同时将所有数据库日志卷存储在装载的另一个磁盘上。
@@ -381,7 +381,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 
 ## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>有关 Windows 上的 SAP liveCache 部署的具体信息
 ### <a name="sap-livecache-version-support"></a>SAP liveCache 版本支持
-Azure 虚拟机支持的 SAP liveCache 最低版本是针对 EhP 2 for SAP SCM 7.0 和更新版本发行的 SAP LC/LCAPPS 10.0 SP 25，其中包括 liveCache 7.9.08.31 和 LCA-Build 25。
+Azure 虚拟机支持的 SAP liveCache 最低版本是针对 EhP 2 for SAP SCM 7.0 和更新版本发行的 SAP LC/LCAPPS 10.0 SP 25，其中包括 liveCache 7.9.08.31 和 LCA-Build 25     。
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>SAP liveCache DBMS 支持的 Microsoft Windows 版本和 Azure VM 类型
 若要为 Azure 上的 SAP liveCache DBMS 查找受支持的 Microsoft Windows 版本，请参阅：
@@ -426,7 +426,7 @@ SAP 目前支持：
 * **SAP MaxDB 版本 7.9**
 * **Microsoft IIS (Internet Information Server) 版本 8.0（和更高版本）**
 
-强烈建议使用最新版的 SAP 内容服务器以及最新版的 Microsoft IIS。 
+强烈建议使用最新版的 SAP 内容服务器以及最新版的 Microsoft IIS  。 
 
 在 [SAP 产品可用性对照表 (PAM)][sap-pam] 中查看支持的最新 SAP 内容服务器和 Microsoft IIS 版本。
 

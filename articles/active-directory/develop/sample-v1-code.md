@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b14dcb5f5af971b10c83ea7fd9064a08cde3ab35
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 1858b3e8d659d8810c54cab96566d03c24c92adf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545432"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111276"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory 代码示例（v1.0 终结点）
 
@@ -114,7 +114,7 @@ ASP.NET Web 应用  | ![.NET](media/sample-v2-code/logo_NETframework.png) | 客�
 
 ### <a name="web-api-calling-microsoft-graph-or-another-web-api"></a>调用 Microsoft Graph 或另一个 Web API 的 Web API
 
-以下示例展示了调用另一个 Web API 的 Web API。 第二个示例展示了如何处理条件访问。
+以下示例展示了调用另一个 Web API 的 Web API。 第二个示例演示如何处理条件性访问。
 
  平台 |  调用 Microsoft Graph | 调用另一个 ASP.NET 或 ASP.NET Core 2.0 Web API
  -------- |  --------------------- | -------------------------

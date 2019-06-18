@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: f7b762d5502986c306de240519688aa639f58445
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60756776"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-edge"></a>使用 Azure 门户管理 Azure Data Box Edge 上的带宽计划  
@@ -33,17 +33,17 @@ ms.locfileid: "60756776"
 
 在 Azure 门户中执行以下步骤可以添加计划。
 
-1. 在 Data Box Edge 资源的 Azure 门户中，转到“带宽”。
-2. 在右窗格中，选择“+ 添加计划”。
+1. 在 Data Box Edge 资源的 Azure 门户中，转到“带宽”。 
+2. 在右窗格中，选择“+ 添加计划”  。
 
     ![选择带宽](media/data-box-edge-manage-bandwidth-schedules/add-schedule-1.png)
 
-3. 在“添加计划”中： 
+3. 在“添加计划”中：  
 
-   1. 提供计划的“开始日期”、“结束日期”、“开始时间”和“结束时间”。
-   2. 如果此计划应该全天运行，请选中“全天”选项。
-   3. “带宽速率”是指设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。 为此字段提供介于 20 和 1,000,000,007 之间的数字。
-   4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。
+   1. 提供计划的“开始日期”、“结束日期”、“开始时间”和“结束时间”。    
+   2. 如果此计划应该全天运行，请选中“全天”选项。 
+   3. “带宽速率”是指设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。  为此字段提供介于 20 和 1,000,000,007 之间的数字。
+   4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。 
    5. 选择 **添加** 。
 
       ![添加计划](media/data-box-edge-manage-bandwidth-schedules/add-schedule-2.png)
@@ -56,7 +56,7 @@ ms.locfileid: "60756776"
 
 执行以下步骤可以编辑带宽计划。
 
-1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“带宽”。 
+1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“带宽”。  
 2. 在带宽计划列表中，选择要修改的计划。
     ![选择带宽计划](media/data-box-edge-manage-bandwidth-schedules/modify-schedule-1.png)
 
@@ -73,9 +73,9 @@ ms.locfileid: "60756776"
 
 执行以下步骤可以删除与 Data Box Edge 设备关联的带宽计划。
 
-1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“带宽”。  
+1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“带宽”。   
 
-2. 在带宽计划列表中，选择要删除的计划。 在“编辑计划”中，选择“删除”。 出现确认提示时，选择“是”。
+2. 在带宽计划列表中，选择要删除的计划。 在“编辑计划”中  ，选择“删除”  。 出现确认提示时，选择“是”  。
 
    ![删除用户](media/data-box-edge-manage-bandwidth-schedules/delete-schedule-2.png)
 

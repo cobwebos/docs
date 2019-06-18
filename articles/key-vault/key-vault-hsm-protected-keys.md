@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
 ms.openlocfilehash: 1ae94718aa41c58f4d5e397942492ad8ed643ae3
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65556202"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
@@ -58,7 +58,7 @@ Microsoft 已与 nCipher hsm 增强的安全。 这些增强功能可使你能�
 | Azure 订阅 |若要创建 Azure Key Vault，需要 Azure 订阅：[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) |
 | 用于支持受 HSM 保护的密钥的 Azure 密钥保管库“高级”服务层级 |请参阅 [Azure 密钥保管库定价](https://azure.microsoft.com/pricing/details/key-vault/)网站，了解有关 Azure 密钥保管库的服务层级和功能的详细信息。 |
 | nCipher nShield Hsm、 智能卡和支持软件 |您必须具有到 nCipher 硬件安全模块的访问权限和 nCipher nShield Hsm 的基本操作知识。 请参阅[nCipher nShield 硬件安全模块](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy)兼容型号，或者如果你没有订阅，请购买 HSM 的列表。 |
-| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统 Windows 7 和 nCipher nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
+| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统 Windows 7 和 nCipher nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) 安装版本为 1.1.0。 </li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>生成密钥并将其传输到 Azure 密钥保管库 HSM
 
@@ -134,7 +134,7 @@ KeyVault-BYOK-Tools-Japan.zip
 3933C13CC6DC06651295ADC482B027AF923A76F1F6BF98B4D4B8E94632DEC7DF
 
 - - -
-韩国：
+韩国： 
 
 KeyVault-BYOK-Tools-Korea.zip
 
@@ -162,14 +162,14 @@ KeyVault-BYOK-Tools-Australia.zip
 CD0FB7365053DEF8C35116D7C92D203C64A3D3EE2452A025223EEB166901C40A
 
 - - -
-[**Azure 政府：**](https://azure.microsoft.com/features/gov/)
+[**Azure 政府：** ](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
 F8DB2FC914A7360650922391D9AA79FF030FD3048B5795EC83ADC59DB018621A
 
 - - -
-美国政府国防部：
+美国政府国防部： 
 
 KeyVault-BYOK-Tools-USGovernmentDoD.zip
 
@@ -222,7 +222,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 * 名称以 **BYOK-KEK-pkg-** 开头的密钥交换密钥 (KEK) 包。
 * 名称以 **BYOK-SecurityWorld-pkg-** 开头的的安全体系包。
-* 名称为 verifykeypackage.py 的 Python 脚本。
+* 名称为 verifykeypackage.py 的 Python 脚本。 
 * 名称为 **KeyTransferRemote.exe** 的命令行可执行文件以及关联的 DLL。
 * 名称为 **vcredist_x64.exe** 的 Visual c + + 可再发行组件包。
 
@@ -236,7 +236,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 在 Windows 计算机上安装 nCipher 支持软件并将 nCipher nShield HSM 连接到该计算机。
 
-确保 nCipher 工具在你的路径 (**%nfast_home%\bin**)。 例如，请键入以下内容：
+确保 nCipher 工具在你的路径 ( **%nfast_home%\bin**)。 例如，请键入以下内容：
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
@@ -437,7 +437,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
 
-运行此命令时，请将 *contosokey* 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。**
+运行此命令时，请将 *contosokey* 替换为在生成密钥步骤的“步骤 3.5：新建密钥”中指定的相同值。**
 
 系统会要求插入安全体系的管理员卡。
 
@@ -512,7 +512,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 * 将 *SubscriptionID* 替换为包含密钥保管库的 Azure 订阅 ID。 以前已在准备连接到 Internet 的工作站步骤的**步骤 1.2：获取 Azure 订阅 ID** 中检索此值。
 * 将 *ContosoFirstHSMKey* 替换为用于输出文件名称的标签。
 
-此操作成功完成后，它会显示“结果:成功”，并且具有以下名称的当前文件夹中会出现一个新文件：KeyTransferPackage-*ContosoFirstHSMkey*.byok
+此操作成功完成后，它会显示“结果:  成功”，并且具有以下名称的当前文件夹中会出现一个新文件：KeyTransferPackage-*ContosoFirstHSMkey*.byok
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>步骤 4.3：将密钥传输包复制到连接 Internet 的工作站
 
