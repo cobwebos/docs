@@ -4,6 +4,11 @@
   items:
     - name: 什么是 HDInsight 中的 Apache Storm？
       href: apache-storm-overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 在 HDInsight 中创建 Apache Storm 拓扑
+      href: ./apache-storm-quickstart.md
 - name: 入门
   items:
     - name: 创建 Apache Storm 群集
