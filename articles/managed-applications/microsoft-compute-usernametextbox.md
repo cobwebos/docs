@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 88ab13329a719ba1e1b8a7b5fba2f7a2d381eca2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251350"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64700843"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox UI 元素
 一个具有针对 Windows 和 Linux 用户名的内置验证的文本框控件。
@@ -44,7 +44,7 @@ ms.locfileid: "60251350"
 ```
 
 ## <a name="remarks"></a>备注
-- 如果 `constraints.required` 设置为 true，则文本框必须包含值才能成功通过验证。 默认值为 **true**。
+- 如果 `constraints.required` 设置为 true，则文本框必须包含值才能成功通过验证  。 默认值为 **true**。
 - 必须指定 `osPlatform`，它可以是 **Windows** 或 **Linux**。
 - `constraints.regex` 是一个 JavaScript 正则表达式模式。 如果指定，则文本框的值必须与模式完全匹配才能成功通过验证。 默认值为 **null**。
 - `constraints.validationMessage` 是当文本框的值未通过 `constraints.regex` 指定的验证时会显示的一个字符串。 如果未指定，则会使用文本框的内置验证消息。 默认值为 **null**。

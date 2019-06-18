@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: a4dc7293c00097c7a5752e29bf7c9a203cbb31a5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64721156"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Spark 进行故障排除
@@ -24,15 +24,15 @@ ms.locfileid: "64721156"
 
 可以优化 Spark 配置值，避免出现 Apache Spark 应用程序 OutofMemoryError 异常。 以下步骤显示了 Azure HDInsight 中的默认 Spark 配置值： 
 
-1. 在群集列表中选择“Spark2”。
+1. 在群集列表中选择“Spark2”。 
 
     ![从列表中选择群集](./media/apache-troubleshoot-spark/update-config-1.png)
 
-2. 选择“配置”选项卡。
+2. 选择“配置”  选项卡。
 
     ![选择“配置”选项卡](./media/apache-troubleshoot-spark/update-config-2.png)
 
-3. 在配置列表中，选择“Custom-spark2-defaults”。
+3. 在配置列表中，选择“Custom-spark2-defaults”。 
 
     ![选择 custom-spark-defaults](./media/apache-troubleshoot-spark/update-config-3.png)
 
@@ -44,19 +44,19 @@ ms.locfileid: "64721156"
 
     ![将值更改为 2048m](./media/apache-troubleshoot-spark/update-config-5.png)
 
-6. 保存值，并保存配置。 在工具栏上选择“保存”。
+6. 保存值，并保存配置。 在工具栏上选择“保存”。 
 
     ![保存设置和配置](./media/apache-troubleshoot-spark/update-config-6a.png)
 
-    如果有任何配置需要引以注意，系统会发出通知。 记下这些项，并选择“仍然继续”。 
+    如果有任何配置需要引以注意，系统会发出通知。 记下这些项，并选择“仍然继续”。  
 
     ![选择“仍然继续”](./media/apache-troubleshoot-spark/update-config-6b.png)
 
-    编写有关配置更改的注释，并选择“保存”。
+    编写有关配置更改的注释，并选择“保存”。 
 
     ![输入有关所做更改的注释](./media/apache-troubleshoot-spark/update-config-6c.png)
 
-7. 每次保存配置时，系统都会提示重启服务。 选择“重启”。
+7. 每次保存配置时，系统都会提示重启服务。 选择“重启”。 
 
     ![选择“重启”](./media/apache-troubleshoot-spark/update-config-7a.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "64721156"
 
     ![查看正在运行的进程](./media/apache-troubleshoot-spark/update-config-7c.png)
 
-8. 可以添加配置。 在配置列表中，依次选择“Custom-spark2-defaults”、“添加属性”。
+8. 可以添加配置。 在配置列表中，依次选择“Custom-spark2-defaults”、“添加属性”。  
 
     ![选择“添加属性”](./media/apache-troubleshoot-spark/update-config-8.png)
 
@@ -188,7 +188,7 @@ java.lang.OutOfMemoryError
 
 1. 确定 Spark 应用程序要处理的数据大小上限。 可以根据输入数据的最大大小、转换输入数据时生成的中间数据，以及应用程序进一步转换中间数据时生成的输出数据来做出推测。 如果无法做出正式的初始推测，此过程也可能是迭代性的。 
 
-2. 确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 若要确定资源是否足够，可以在 YARN UI 的“群集指标”部分中查看“已用内存与内存总计”以及“已用 VCore 与 VCore 总计”的值。
+2. 确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 若要确定资源是否足够，可以在 YARN UI 的“群集指标”部分中查看“已用内存与内存总计”  以及“已用 VCore 与 VCore 总计”   的值。 
 
 3. 将以下 Spark 配置设置为不超过可用内存和核心数 90% 的适当值。 这些值应仍在 Spark 应用程序的内存要求范围内。 
 

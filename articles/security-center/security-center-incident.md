@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/29/2018
 ms.author: rkarlin
 ms.openlocfilehash: 68bcd2b1916ccdf68eaa31ed251661a6b7e1bca0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60704059"
 ---
 # <a name="handling-security-incidents-in-azure-security-center"></a>处理 Azure 安全中心的安全事件
@@ -44,7 +44,7 @@ ms.locfileid: "60704059"
 
     ![安全事件](./media/security-center-incident/security-center-incident-fig3.png)
 
-4. 在“事件”边栏选项卡上，将看到有关此安全事件的详细信息，其中包括其完整的说明、严重程度（这种情况下严重程度较高）、当前状态（在本例中仍*在发生*，这表明用户尚未对它采取措施 - 可以通过右键单击“安全警报”边栏选项卡中的事件完成操作）、被攻击的资源（在本例中为 *VM1*）、事件的补救步骤，并且在底部窗格中有包含在此事件中的警报。 如果想要获取每个警报的详细信息，只需单击它，另一个边栏选项卡会打开，如下所示：
+4. 在“事件”边栏选项卡上，将看到有关此安全事件的详细信息，其中包括其完整的说明、严重程度（这种情况下严重程度较高）、当前状态（在本例中仍*在发生*，这表明用户尚未对它采取措施 - 可以通过右键单击“安全警报”边栏选项卡中的事件完成操作）、被攻击的资源（在本例中为 *VM1*）、事件的补救步骤，并且在底部窗格中有包含在此事件中的警报。   如果想要获取每个警报的详细信息，只需单击它，另一个边栏选项卡会打开，如下所示：
 
     ![安全事件](./media/security-center-incident/security-center-incident-fig4.png)
 
