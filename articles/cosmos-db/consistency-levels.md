@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.openlocfilehash: dcd51756a9c5a5a24a082862bb911cc2d2605d61
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954370"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性级别
@@ -50,7 +50,7 @@ Azure Cosmos DB 提供的综合 SLA 可保证 100% 的读取请求满足所选�
 
 - **会话一致性**：保证读取操作遵循一致前缀（假定一个“writer”会话）、单调读取、单调写入、读取写入和写入后读取保证。 会话一致性划归到客户端会话。
 
-- 一致前缀：返回的更新包含所有更新的一些前缀，不带间隔。 一致前缀一致性级别保证读取永远不会看到无序写入。
+- 一致前缀  ：返回的更新包含所有更新的一些前缀，不带间隔。 一致前缀一致性级别保证读取永远不会看到无序写入。
 
 - **最终一致性**：不保证读取的顺序。 如果缺少任何进一步的写入，则副本最终会收敛。
 

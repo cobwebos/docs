@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rajanaki
 ms.openlocfilehash: dc15c8935cd3c20037bbed01f0f24cd2b8642045
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540928"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Azure Site Recovery 中的服务更新
@@ -65,11 +65,11 @@ Azure Site Recovery 定期发布服务更新 - 包括添加新功能、改进支
 2. 在 Azure 门户中转到“恢复服务保管库”对应的“已复制的项”窗格。
 3. 单击屏幕顶部的以下通知：
     
-    “有新的 Site Recovery 复制代理更新可用。
+    “有新的 Site Recovery 复制代理更新可用。 
     
-    请单击此处安装 ->”
+    请单击此处安装 ->” 
 
-4. 选择要将更新应用到的 VM，然后单击“确定”。
+4. 选择要将更新应用到的 VM，然后单击“确定”。 
 
 ## <a name="between-two-on-premises-vmm-sites"></a>在两个本地 VMM 站点之间
 1. 下载 Microsoft Azure Site Recovery 提供程序的最新更新汇总。
@@ -101,7 +101,7 @@ Azure Site Recovery 定期发布服务更新 - 包括添加新功能、改进支
 
 1. 根据当前版本和上面提供的支持声明，按照[此处](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server)提供的准则，先在本地管理服务器上安装更新。 这是具有配置服务器和进程服务器角色的服务器。
 2. 如果横向扩展了进程服务器，接下来请按照[此处](vmware-azure-manage-process-server.md#upgrade-a-process-server)提供的准则更新这些服务器。
-3. 接下来，若要对每个受保护的项更新移动代理，请转到 Azure 门户，然后转到“受保护的项” > “复制的项”页面。 在此页上选择一个 VM。 选择页面底部显示的、每个 VM 对应的“更新代理”按钮。 这会更新所有受保护 VM 上的移动服务代理。
+3. 接下来，若要对每个受保护的项更新移动代理，请转到 Azure 门户，然后转到“受保护的项”   > “复制的项”  页面。 在此页上选择一个 VM。 选择页面底部显示的、每个 VM 对应的“更新代理”按钮。  这会更新所有受保护 VM 上的移动服务代理。
 
 ### <a name="reboot-of-source-machine-after-mobility-agent-upgrade"></a>移动代理升级之后重新启动源计算机
 

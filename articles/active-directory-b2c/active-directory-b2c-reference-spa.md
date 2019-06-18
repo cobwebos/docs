@@ -1,6 +1,6 @@
 ---
-title: 使用隐式流-Azure Active Directory B2C 的单页登录 |Microsoft Docs
-description: 了解如何添加在 OAuth 2.0 隐式流中使用 Azure Active Directory B2C 的单页的注册。
+title: 使用隐式流的单页登录 - Azure Active Directory B2C | Microsoft Docs
+description: 了解如何添加使用 Azure Active Directory B2C 的 OAuth 2.0 隐式流的单页登录。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,23 +11,23 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: a66fa70f6f5615257554e98e40e605d6a7e981fe
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66508972"
 ---
-# <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OAuth 2.0 隐式流的单页的登录
+# <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 OAuth 2.0 隐式流的单页登录
 
-许多现代应用程序有一个单页应用前端主要是用 JavaScript 编写的。 通常，该应用通过 AngularJS、Ember.js 或 Durandal 等框架编写。 主要在浏览器上运行的单页应用和其他 JavaScript 应用在身份验证时还面临一些其他挑战：
+许多新式应用程序都有一个单页应用前端（主要以 JavaScript 编写）。 通常，该应用通过 AngularJS、Ember.js 或 Durandal 等框架编写。 主要在浏览器上运行的单页应用和其他 JavaScript 应用在身份验证时还面临一些其他挑战：
 
-- 这些应用程序的安全特征与传统的基于服务器的 web 应用程序不同。
+- 这些应用程序的安全特征与传统的基于服务器的 Web 应用程序不同。
 - 许多授权服务器与标识提供者不支持跨源资源共享 (CORS) 请求。
-- 整页的浏览器重定向离开应用程序可以对用户体验侵入性。
+- 重定向离开应用的完整网页浏览器可能会对用户体验具有侵略性。
 
-为了支持这些应用程序，Azure Active Directory B2C (Azure AD B2C) 使用 OAuth 2.0 隐式流。 [OAuth 2.0 规范第 4.2 部分](https://tools.ietf.org/html/rfc6749)描述了 OAuth 2.0 授权隐式授权流。 在隐式流中，应用直接从 Azure Active Directory (Azure AD) 授权终结点接收令牌，无需任何服务器到服务器的交换。 所有身份验证逻辑和会话处理完成完全在 JavaScript 客户端，没有其他页将重定向。
+为了支持这些应用程序，Azure Active Directory B2C (Azure AD B2C) 使用 OAuth 2.0 隐式流。 [OAuth 2.0 规范第 4.2 部分](https://tools.ietf.org/html/rfc6749)描述了 OAuth 2.0 授权隐式授权流。 在隐式流中，应用直接从 Azure Active Directory (Azure AD) 授权终结点接收令牌，无需任何服务器到服务器的交换。 所有身份验证逻辑和会话处理全部都是在 JavaScript 客户端中执行的，无需进行额外的页面重定向。
 
-Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了简单的身份验证和授权。 Azure AD B2C 引入了[策略参数](active-directory-b2c-reference-policies.md)。 通过该策略参数，可以使用 OAuth 2.0 向应用添加策略，例如注册、登录和配置文件管理用户流。 在本文中的示例 HTTP 请求**fabrikamb2c.onmicrosoft.com**用作示例。 您可以替换`fabrikamb2c`与租户如果有一个并且已创建用户流的名称。
+Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了简单的身份验证和授权。 Azure AD B2C 引入了[策略参数](active-directory-b2c-reference-policies.md)。 通过该策略参数，可以使用 OAuth 2.0 向应用添加策略，例如注册、登录和配置文件管理用户流。 在本文中的示例 HTTP 请求**fabrikamb2c.onmicrosoft.com**用作示例。 如果你有一个租户并已创建了用户流，则可将 `fabrikamb2c` 替换为该租户的名称。
 
 隐式登录流看起来类似于下图。 本文后面将详细说明每个步骤。
 
@@ -35,9 +35,9 @@ Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了�
 
 ## <a name="send-authentication-requests"></a>发送身份验证请求
 
-当 web 应用程序需要对用户进行身份验证并运行用户流时，它可以将用户定向到`/authorize`终结点。 用户可以采取操作，具体取决于用户流。
+当 Web 应用程序需要对用户进行身份验证并运行用户流时，它可以将用户定向到 `/authorize` 终结点。 用户可以根据用户流执行操作。
 
-在此请求中，客户端指示必须获取从中的用户的权限`scope`参数，用户流运行`p`参数。 以下部分中提供了三个示例（带换行符以便阅读），每个示例使用不同的用户流。 要了解每个请求的工作原理，请尝试将请求粘贴到浏览器并运行它。 您可以替换`fabrikamb2c`与租户如果有一个并且已创建用户流的名称。
+在此请求中，客户端指示在 `scope` 参数中需要从用户获取的权限以及要在 `p` 参数中运行的用户流。 以下部分中提供了三个示例（带换行符以便阅读），每个示例使用不同的用户流。 要了解每个请求的工作原理，请尝试将请求粘贴到浏览器并运行它。 如果你有一个租户并已创建了用户流，则可将 `fabrikamb2c` 替换为该租户的名称。
 
 ### <a name="use-a-sign-in-user-flow"></a>使用登录用户流
 
@@ -79,9 +79,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 必选 | 描述 |
 | --------- | -------- | ----------- |
-| client_id | 是 | 应用程序 ID [Azure 门户](https://portal.azure.com/)分配给你的应用程序。 |
+| client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
 | response_type | 是 | 必须包含 OpenID Connect 登录的 `id_token`。 也可以包含响应类型 `token`。 如果使用 `token`，则应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。  如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
 | redirect_uri | 否 | 应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须完全匹配在门户中注册的其中一个重定向 URI，但必须经 URL 编码。 |
 | response_mode | 否 | 指定用于将生成的令发送回应用的方法。  对于隐式流，使用 `fragment`。 |
@@ -89,9 +89,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | state | 否 | 同时随令牌响应返回的请求中所包含的值。 它可以是你想要使用的任何内容的字符串。 随机生成的唯一值通常用于防止跨站点请求伪造攻击。 该状态也用于在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户之前所在的页面。 |
 | nonce | 是 | 由应用生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机产生的唯一字符串，可用于识别请求的来源。 |
 | p | 是 | 要执行的策略。 它是在 Azure AD B2C 租户中创建的策略（用户流）的名称。 策略名称值应以“b2c\_1\_”  开头。 |
-| prompt | 否 | 需要的用户交互类型。 目前唯一有效的值是 `login`。 此参数将强制用户在该请求上输入其凭据。 单一登录才会生效。 |
+| prompt | 否 | 需要的用户交互类型。 目前唯一有效的值是 `login`。 此参数会强制用户在该请求上输入其凭据。 单一登录不会生效。 |
 
-此时，要求用户完成策略的工作流。 用户可能必须输入其用户名和密码，注册使用社交标识登录目录或任何其他若干步骤。 用户操作取决于用户流是如何定义的。
+此时，要求用户完成策略的工作流。 用户可能必须输入其用户名和密码、用社交标识登录、注册目录或者执行任何其他数目的步骤。 用户操作取决于用户流是如何定义的。
 
 用户完成用户流后，Azure AD 会在你用于 `redirect_uri` 的值处将响应返回到应用。 它使用在 `response_mode` 参数中指定的方法。 对于每种用户操作情况，响应完全相同，与执行的用户流无关。
 
@@ -129,13 +129,13 @@ error=access_denied
 
 | 参数 | 描述 |
 | --------- | ----------- |
-| error | 用于分类发生的错误的类型代码。 |
+| error | 一个代码，用于对发生的错误类型进行分类。 |
 | error_description | 可帮助用户识别身份验证错误根本原因的特定错误消息。 |
 | state | 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用需验证请求和响应中的 `state` 值是否相同。|
 
 ## <a name="validate-the-id-token"></a>验证 ID 令牌
 
-收到 ID 令牌并不表示可以对用户进行身份验证。 验证 ID 令牌的签名，并验证每个应用程序的要求在令牌中的声明。 Azure AD B2C 使用 [JSON Web 令牌 (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) 和公钥加密对令牌进行签名并验证其是否有效。
+收到 ID 令牌并不表示可以对用户进行身份验证。 根据应用的要求验证 ID 令牌的签名和令牌中的声明。 Azure AD B2C 使用 [JSON Web 令牌 (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) 和公钥加密对令牌进行签名并验证其是否有效。
 
 许多开放源代码库都可用于验证 JWT，具体取决于首选使用的语言。 请考虑浏览可用的开放源代码库，而不是实现自己的验证逻辑。 可以使用本文中的信息了解如何正确使用这些库。
 
@@ -169,11 +169,11 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点。 应用可以使用终�
 验证 ID 令牌后，可以开始与用户的会话。 在应用中，使用 ID 令牌中的声明来获取用户的相关信息。 此信息可以用于显示、记录和授权等等。
 
 ## <a name="get-access-tokens"></a>获取访问令牌
-如果 Web 应用唯一需要做的是执行用户流，则可以跳过下面几节。 以下各节中的信息是仅适用于 web 应用，需要经过身份验证调用 web API，并且受 Azure AD B2C。
+如果 Web 应用唯一需要做的是执行用户流，则可以跳过下面几节。 下面几节中的信息仅适用于需要对 Web API 进行验证调用，并且受 Azure AD B2C 保护的 Web 应用。
 
-现在，用户登录到单页应用后，便可以获取访问令牌以调用 web Api 受 Azure AD 保护的。 即使已使用 `token` 响应类型收到令牌，也仍可以使用此方法获取其他资源的令牌，而无需再次将用户重定向到登录页。
+将用户登录到单页应用后，便可获取访问令牌以调用受 Azure AD 保护的 Web API。 即使已使用 `token` 响应类型收到令牌，也仍可以使用此方法获取其他资源的令牌，而无需再次将用户重定向到登录页。
 
-在典型的 web 应用流中，会使对请求`/token`终结点。 但是，该终结点不支持 CORS 请求，因此进行 AJAX 调用以获取和刷新令牌并不可取。 相反，可以在隐藏的 HTML iframe 元素中使用隐式流，以获取其他 Web API 的新令牌。 下面是一个示例（带换行符以便阅读）：
+在典型的 Web 应用流中，你将对 `/token` 终结点发出请求。 但是，该终结点不支持 CORS 请求，因此进行 AJAX 调用以获取和刷新令牌并不可取。 相反，可以在隐藏的 HTML iframe 元素中使用隐式流，以获取其他 Web API 的新令牌。 下面是一个示例（带换行符以便阅读）：
 
 ```
 
@@ -193,21 +193,21 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | 参数 | 必需？ | 描述 |
 | --- | --- | --- |
-| client_id |需要 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
+| client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | response_type |必选 |必须包含 OpenID Connect 登录的 `id_token`。  也可能包含响应类型 `token`。 如果在此处使用 `token`，应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
 | redirect_uri |建议 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 |
-| scope |必选 |范围的空格分隔列表。  若要获取令牌，请包含相应资源所需的所有范围。 |
+| scope |需要 |范围的空格分隔列表。  若要获取令牌，请包含相应资源所需的所有范围。 |
 | response_mode |建议 |指定用于将生成的令牌送回到应用的方法。  可以是 `query`、`form_post` 或 `fragment`。 |
 | state |建议 |随令牌响应返回的请求中所包含的值。  它可以是你想要使用的任何内容的字符串。  随机生成的唯一值通常用于防止跨站点请求伪造攻击。  它还可用于在身份验证请求发生前，对有关用户在应用中的状态信息进行编码。 例如，用户之前所在的页面或视图。 |
-| nonce |需要 |由应用生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌 中。  应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机产生的唯一字符串，可识别请求的来源。 |
-| prompt |需要 |若要刷新并获取隐藏的 iframe 中的令牌，请使用 `prompt=none` 以确保 iframe 会立即返回，而不会停滞在登录页面上。 |
+| nonce |必选 |由应用生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌 中。  应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机产生的唯一字符串，可识别请求的来源。 |
+| prompt |必选 |若要刷新并获取隐藏的 iframe 中的令牌，请使用 `prompt=none` 以确保 iframe 会立即返回，而不会停滞在登录页面上。 |
 | login_hint |必选 |若要刷新并获取隐藏的 iframe 中的令牌，请在此提示中加入用户的用户名，以便区分用户在给定时间内可能具有的多个会话。 可以使用 `preferred_username` 声明从以前的登录中提取用户名。 |
-| domain_hint |需要 |可以是 `consumers` 或 `organizations`。  对于刷新并获取隐藏的 iframe 中的令牌，包括`domain_hint`请求中的值。  从以前登录的 ID 令牌提取 `tid` 声明，以确定要使用哪个值。  如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，请使用 `domain_hint=consumers`。  否则使用 `domain_hint=organizations`。 |
+| domain_hint |需要 |可以是 `consumers` 或 `organizations`。  若要刷新并获取隐藏的 iframe 中的令牌，请在请求中包含 `domain_hint` 值。  从以前登录的 ID 令牌提取 `tid` 声明，以确定要使用哪个值。  如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，请使用 `domain_hint=consumers`。  否则使用 `domain_hint=organizations`。 |
 
 通过设置 `prompt=none` 参数，此请求会立即成功或立即失败，并返回到应用程序。  成功的响应会通过 `response_mode` 参数中指定的方法，发送到位于所指示的重定向 URI 的应用。
 
 ### <a name="successful-response"></a>成功的响应
-通过使用成功的响应`response_mode=fragment`如本示例所示：
+使用 `response_mode=fragment` 的成功响应如以下示例所示：
 
 ```
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -227,7 +227,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | scope |访问令牌有效的范围。 |
 
 ### <a name="error-response"></a>错误响应
-错误响应也可能发送到重定向 URI，使应用可以对其进行适当处理。  有关`prompt=none`，如下例所预期的错误：
+错误响应也可能发送到重定向 URI，使应用可以对其进行适当处理。  对于 `prompt=none`，错误应如以下示例所示：
 
 ```
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -246,7 +246,7 @@ error=user_authentication_required
 ID 令牌和访问令牌在较短时间后都会过期。 应用必须准备好定期刷新这些令牌。  若要刷新任一类型的令牌，请使用 `prompt=none` 参数控制 Azure AD 步骤，执行我们在先前示例中使用的同一隐藏的 iframe 请求。  若要接收新的 `id_token` 值，请务必使用 `response_type=id_token` 和 `scope=openid`，以及 `nonce` 参数。
 
 ## <a name="send-a-sign-out-request"></a>发送注销请求
-如果想要从应用中注销用户，请将用户重定向到 Azure AD 进行注销。如果不将用户重定向，它们可以进行身份验证，您的应用程序而无需再次输入其凭据，因为它们具有有效的单一登录会话与 Azure AD。
+如果想要从应用中注销用户，请将用户重定向到 Azure AD 进行注销。如果不对用户进行重定向，用户可能不需要输入其凭据就能重新通过应用的身份验证，因为他们与 Azure AD 之间仍然存在有效的单一登录会话。
 
 只需将用户重定向到[验证 ID 令牌](#validate-the-id-token)中所述的相同 OpenID Connect 元数据文档中列出的 `end_session_endpoint`。 例如：
 
@@ -258,7 +258,7 @@ p=b2c_1_sign_in
 
 | 参数 | 必需？ | 描述 |
 | --- | --- | --- |
-| p |必选 |要用于从应用程序中注销用户的策略。 |
+| p |需要 |要用于从应用程序中注销用户的策略。 |
 | post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
 
 > [!NOTE]

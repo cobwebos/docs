@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/09/2019
 ms.openlocfilehash: 5b5b83fe0028e43ca35bf883b29cb71bad6ca2c8
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66253693"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>创建并在 Azure HDInsight 中配置企业安全性套餐群集
@@ -304,14 +304,14 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
         | 属性 | 值 |
         |---|---|
-        | 源 | 任意 |
+        | source | 任意 |
         | 源端口范围 | * |
         | 目标 | 任意 |
         | 目标端口范围 | 636 |
         | Protocol | 任意 |
         | 操作 | 允许 |
         | 优先度 | <Desired Number> |
-        | 名称 | Port_LDAP_636 |
+        | Name | Port_LDAP_636 |
 
     ![入站的安全规则](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 

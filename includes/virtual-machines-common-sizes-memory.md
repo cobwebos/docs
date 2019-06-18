@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 87fca23cab27ec27bfc9799066c126994167f46e
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 499b5ac77728bc14aadd5a2ef235e28b6ca83516
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391376"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133856"
 ---
 内存优化 VM 大小提供适用于关系数据库服务器、中到大型规模的缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。 
 
@@ -188,48 +188,6 @@ ACU：160-180 <sup>1</sup>
 <sup>4</sup> 实例与专用于单个客户的硬件隔离。
 <br>
 
-## <a name="gs-series"></a>GS 系列 
-
-ACU：180 - 240 <sup>1</sup>
-
-高级存储：支持
-
-高级存储缓存：支持
-
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
-|---|---|---|---|---|---|---|---|
-| Standard_GS1 |2 |28 |56 |8 |10000 / 100 (264) |5000 / 125 |2 / 2000 |
-| Standard_GS2 |4 |56 |112 |16 |20000 / 200 (528) |10000 / 250 |2 / 4000 |
-| Standard_GS3 |8 |112 |224 |32 |40000 / 400 (1056) |20000 / 500 |4 / 8000 |
-| Standard_GS4&nbsp;<sup>3</sup> |16 |224 |448 |64 |80000 / 800 (2112) |40000 / 1000 |8 / 16000 |
-| Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> |32 |448 |896 |64 |160000 / 1600 (4224) |80000 / 2000 |8 / 20000 |
-
-<sup>1</sup> GS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。 有关详细信息，请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)。
-
-<sup>2</sup> 实例对于专用于单个客户的硬件独立。
-
-<sup>3</sup> 受约束的可用核心大小。
-
-<br>
-
-## <a name="g-series"></a>G 系列
-
-ACU：180 - 240
-
-高级存储：不支持
-
-高级存储缓存：不支持
-
-| 大小         | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_G1  | 2         | 28          | 384            | 6000/93/46                                           | 8/8 x 500                       | 2 / 2000                     |
-| Standard_G2  | 4         | 56          | 768            | 12000/187/93                                         | 16/16 x 500                       | 2 / 4000                     |
-| Standard_G3  | 8         | 112         | 1536          | 24000/375/187                                        | 32/32 x 500                     | 4 / 8000                |
-| Standard_G4  | 16        | 224         | 3072          | 48000/750/375                                        | 64/64 x 500                     | 8 / 16000          |
-| Standard_G5&nbsp;<sup>1</sup> | 32        | 448         | 6144          | 96000 / 1500 / 750                                       | 64/64 x 500                     | 8 / 20000           |
-
-<sup>1</sup> 实例对于专用于单个客户的硬件独立。
-<br>
 
 ## <a name="dsv2-series-11-15"></a>DSv2 系列 11-15
 

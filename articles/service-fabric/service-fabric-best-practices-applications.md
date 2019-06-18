@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/26/2019
 ms.author: msfussell
 ms.openlocfilehash: 55f043effc7cdb102acea856e89c58f660d0cde5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65237742"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric 应用程序设计最佳做法

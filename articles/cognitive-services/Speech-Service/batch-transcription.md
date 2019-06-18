@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 22d85f7a1c5b89c005b4c5b92f2f6b9ea449fe8d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1828cdce66104424cc7845fea89127219e6b77a0
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064075"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137269"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
@@ -102,6 +102,40 @@ Batch 听录 API 支持以下格式：
 
 有关更多详细信息，请参阅[Webhook](webhooks.md)。
 
+## <a name="speaker-separation-diarization"></a>演讲者分离 (Diarization)
+
+Diarization 是音频的分离扬声器段中的过程。 我们批处理的管道支持 Diarization，能够识别两个扬声器单通道记录。
+
+若要请求你的音频听录请求为 diarization 处理，只是需要在 HTTP 请求中添加相关参数，如下所示。
+
+ ```json
+{
+  "recordingsUrl": "<URL to the Azure blob to transcribe>",
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
+  "description": "<optional description of the transcription>",
+  "properties": {
+    "AddWordLevelTimestamps" : "True",
+    "AddDiarization" : "True"
+  }
+}
+```
+
+Word 级别时间戳还必须为开启为更高版本的请求中的参数，表示。 
+
+对应的音频将包含由一个编号标识发言人 (目前我们支持只有两个语音，因此演讲者将被标识为演讲者 1 和"演讲者 2") 后跟脚本输出。
+
+另请注意，Diarization 选项不适用于立体声录制。 此外，所有的 JSON 输出将包含演讲者标记。 如果未使用 diarization，它将显示演讲者：Null' JSON 输出中。
+
+下面列出了支持的区域设置。
+
+| 语言 | 区域设置 |
+|--------|-------|
+| 英语 | en-US |
+| 中文 | zh-CN |
+| Deutsch | de-DE |
+
 ## <a name="sentiment"></a>情绪
 
 情绪是批处理脚本 API 中的新功能和是调用 center 域中的重要功能。 客户可以使用`AddSentiment`为其请求的参数 
@@ -112,7 +146,7 @@ Batch 听录 API 支持以下格式：
 4.  找出启用负正调用时也发生了什么
 5.  标识客户喜欢什么以及什么他们不喜欢有关产品或服务
 
-情感评分音频段的每个音频段指查询文本 （偏移量） 的开始日期和检测出 silence 的字节流的末尾之间的时间推移。 在该时间段内的整个文本用于计算情绪。 我们不计算整个调用或每个通道的整个语音的任何聚合情绪值。 这些是从左到域所有者协作更多应用。
+情感评分音频段的每个音频段指查询文本 （偏移量） 的开始日期和检测出 silence 的字节流的末尾之间的时间推移。 在该时间段内的整个文本用于计算情绪。 我们不计算整个调用或每个通道的整个语音的任何聚合情绪值。 向域所有者进一步应用也会保留这些聚合。
 
 情绪应用词法窗体上。
 
@@ -151,7 +185,7 @@ JSON 输出示例类似于下面：
   ]
 }
 ```
-用于当前处于测试阶段的情绪模型功能。
+该功能使用一个情绪模型，它目前处于 beta 版本。
 
 ## <a name="sample-code"></a>代码示例
 

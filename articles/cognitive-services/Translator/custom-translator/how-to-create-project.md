@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: v-pawal
 ms.topic: conceptual
 ms.openlocfilehash: 456860c74810a692b4839e4204ec0b78d5620864
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66383006"
 ---
 # <a name="create-a-project"></a>创建一个项目
@@ -44,7 +44,7 @@ ms.locfileid: "66383006"
 
     ![“创建项目”对话框](media/how-to/how-to-create-project-dialog.png)
 
-3.  单击“法律条款” 
+3.  单击“法律条款”
 
 ## <a name="view-project-details"></a>查看项目详细信息
 

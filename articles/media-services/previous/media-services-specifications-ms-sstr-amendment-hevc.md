@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: johndeu;
 ms.openlocfilehash: b9756920d25891dbe6b71fa24c06ed8f0c8eabb0
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963254"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 
@@ -151,7 +151,7 @@ ms.locfileid: "65963254"
 > 
 >   **CodecPrivateData（变量）：** 指定特定于媒体格式的参数，并在轨迹的所有样本中通用的数据，以十六进制编码字节的字符串表示。 字节序列的格式和语义含义根据 **FourCC** 字段的值而异，如下所述：
 > 
->   * 如果 TrackElement 描述 HEVC 视频，则 **FourCC** 字段应等于 **"hev1"**；
+>   * 如果 TrackElement 描述 HEVC 视频，则 **FourCC** 字段应等于 **"hev1"** ；
 > 
 >   **CodecPrivateData**字段应包含 ABNF 中指定的以下字节序列的十六进制编码的字符串表示形式[[RFC5234]:](https://go.microsoft.com/fwlink/?LinkId=123096) （与 MS-SSTR 无变化）
 > 

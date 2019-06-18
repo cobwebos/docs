@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: 7f184178343f69f522148777752c51afc5c5dcb6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65790412"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL 数据库“高级 RS”服务层级（预览版）即将停用 - 迁移选项
@@ -27,7 +27,7 @@ ms.locfileid: "65790412"
 
 - vCore 服务层级
 
-  [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中的“常规用途”和“业务关键”服务层级。 这两个服务层级已推出正式版。 此外提供了基于 vCore 的购买模型**超大规模**调整按需自动缩放每个数据库最多 100 TB 的工作负荷的需求的服务层。 “超大规模”服务层级提供的 IO 性能与[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)中的“高级”服务层级相当，价格与“高级 RS”服务层级比较接近。
+  [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中的“常规用途”和“业务关键”服务层级。   这两个服务层级已推出正式版。 此外提供了基于 vCore 的购买模型**超大规模**调整按需自动缩放每个数据库最多 100 TB 的工作负荷的需求的服务层。 “超大规模”服务层级提供的 IO 性能与[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)中的“高级”服务层级相当，价格与“高级 RS”服务层级比较接近。
 - 开发/测试定价
 
   与 Visual Studio 订阅的许可证涵盖费率相比，[开发/测试定价](https://azure.microsoft.com/pricing/dev-test/)最多可将成本节省 55%。

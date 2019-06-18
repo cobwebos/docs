@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
 ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62101553"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建虚拟机 
@@ -51,7 +51,7 @@ ms.locfileid: "62101553"
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>查看和保存虚拟机的 Resource Manager 模板
 1. 请遵循[在实验室中创建你的第一个 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)中的步骤，开始创建虚拟机。
 1. 输入虚拟机所需的信息并添加要用于此 VM 的任何项目。
-1. 在配置设置窗口的底部，选择“查看 ARM 模板”。
+1. 在配置设置窗口的底部，选择“查看 ARM 模板”  。
 
    ![“查看 ARM 模板”按钮](./media/devtest-lab-use-arm-template/devtestlab-lab-view-rm-template.png)
 1. 复制并保存 Resource Manager 模板，以便稍后用于创建另一个虚拟机。

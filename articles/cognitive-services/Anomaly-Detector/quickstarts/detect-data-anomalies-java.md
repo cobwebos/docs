@@ -6,15 +6,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 1b52e578afb505c87c4084684e345b7aff6a4362
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 04ace16559a6f5b747bc735aa89265d2962a32b3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922423"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073229"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>快速入门：使用异常检测器 REST API 和 Java 时序数据中检测异常
 
@@ -29,11 +29,11 @@ ms.locfileid: "64922423"
 
 ## <a name="prerequisites"></a>必备组件
 
-- [Java&trade;开发 Kit(JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)或更高版本。
+- [Java&trade; 开发工具包 (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 或更高版本。
 
-- 从 Maven 存储库导入这些库
-    - [在 Java 中的 JSON](https://mvnrepository.com/artifact/org.json/json)包
-    - [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient)包
+- 将这些库从 Maven 存储库导入
+    - [以 Java 编写的 JSON](https://mvnrepository.com/artifact/org.json/json) 包
+    - [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) 包
 
 - JSON 文件包含时间序列数据点。 本快速入门教程的示例数据，可[GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "64922423"
     import java.nio.file.Paths;
     ```
 
-2. 为你的订阅密钥和你的终结点创建变量。 下面是可用于异常情况检测的 Uri。 这些将追加到你的服务终结点更高版本才能创建 API 请求 Url。
+2. 为订阅密钥和终结点创建变量。 下面是可用于异常情况检测的 Uri。 这些将追加到你的服务终结点更高版本才能创建 API 请求 Url。
 
     |检测方法  |URI  |
     |---------|---------|
@@ -85,19 +85,19 @@ ms.locfileid: "64922423"
     String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "utf-8");
     ```
 
-## <a name="create-a-function-to-send-requests"></a>创建一个函数来发送请求
+## <a name="create-a-function-to-send-requests"></a>创建用于发送请求的函数
 
-1. 创建一个名为的新函数`sendRequest()`采用上面创建的变量。 然后，执行以下步骤。
+1. 创建名为 `sendRequest()` 的新函数，该函数使用上面创建的变量。 然后，执行以下步骤。
 
-2. 创建`CloseableHttpClient`可以向 API 发送请求的对象。 将请求发送到`HttpPost`通过合并你的终结点和异常情况检测程序 URL 的请求对象。
+2. 创建可以向 API 发送请求的 `CloseableHttpClient` 对象。 将请求发送到`HttpPost`通过合并你的终结点和异常情况检测程序 URL 的请求对象。
 
-3. 使用请求的`setHeader()`函数来设置`Content-Type`标头`application/json`，并添加你的订阅密钥的`Ocp-Apim-Subscription-Key`标头。
+3. 使用请求的 `setHeader()` 函数将 `Content-Type` 标头设置为 `application/json`，然后将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
 
-4. 使用请求的`setEntity()`要发送的数据的函数。
+4. 使用请求的 `setEntity()` 函数来设置要发送的数据。
 
-5. 使用客户端`execute()`函数发送请求，并将其保存到`CloseableHttpResponse`对象。
+5. 使用客户端的 `execute()` 函数来发送请求，并将其保存到 `CloseableHttpResponse` 对象。
 
-6. 创建`HttpEntity`对象来存储响应内容。 获取与内容`getEntity()`。 如果响应不为空，则将其返回。
+6. 创建 `HttpEntity` 对象，用于存储响应内容。 使用 `getEntity()` 获取内容。 如果响应不为空，请将其返回。
 
 ```java
 static String sendRequest(String apiAddress, String endpoint, String subscriptionKey, String requestData) {
@@ -125,7 +125,7 @@ static String sendRequest(String apiAddress, String endpoint, String subscriptio
 
 ## <a name="detect-anomalies-as-a-batch"></a>作为一批中检测异常
 
-1. 创建一个名为方法`detectAnomaliesBatch()`来检测异常在整个数据作为一个批。 调用`sendRequest()`上面创建的终结点、 url、 订阅密钥和 json 数据的方法。 获取结果，并将其打印到控制台。
+1. 创建一个名为方法`detectAnomaliesBatch()`来检测异常在整个数据作为一个批。 调用在上面使用终结点、URL、订阅密钥和 JSON 数据创建的 `sendRequest()` 方法。 获取结果，并将其输出到控制台。
 
 2. 如果响应包含`code`字段中，打印的错误代码和错误消息。
 
@@ -155,7 +155,7 @@ static void detectAnomaliesBatch(String requestData) {
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>检测到异常情况状态的最新的数据点
 
-* 创建一个名为方法`detectAnomaliesLatest()`来检测数据集中的最后一个数据点的异常状态。 调用`sendRequest()`上面创建的终结点、 url、 订阅密钥和 json 数据的方法。 获取结果，并将其打印到控制台。
+* 创建一个名为方法`detectAnomaliesLatest()`来检测数据集中的最后一个数据点的异常状态。 调用在上面使用终结点、URL、订阅密钥和 JSON 数据创建的 `sendRequest()` 方法。 获取结果，并将其输出到控制台。
 
 ```java
 static void detectAnomaliesLatest(String requestData) {
@@ -167,7 +167,7 @@ static void detectAnomaliesLatest(String requestData) {
 
 ## <a name="load-your-time-series-data-and-send-the-request"></a>加载时间系列数据并发送请求
 
-1. 在您的应用程序，在包含将添加到请求的数据的 JSON 文件中读取的主要方法。
+1. 在应用程序的 main 方法中读入 JSON 文件，其中包含将要添加到请求中的数据。
 
 2. 调用上面创建的两个异常情况检测函数。
 
@@ -181,7 +181,7 @@ public static void main(String[] args) throws Exception {
 
 ### <a name="example-response"></a>示例响应
 
-JSON 格式返回成功的响应。 单击以下链接，查看 GitHub 上的 JSON 响应：
+成功的响应以 JSON 格式返回。 单击以下链接，查看 GitHub 上的 JSON 响应：
 * [示例批处理检测响应](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [示例最新点检测响应](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 

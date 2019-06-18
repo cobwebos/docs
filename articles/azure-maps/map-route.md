@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: codepen
 ms.openlocfilehash: 31403a11e8989cee6a1c166879a0b2f594892704
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66357634"
 ---
 # <a name="show-directions-from-a-to-b"></a>显示从 A 到 B 的路线

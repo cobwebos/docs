@@ -16,10 +16,10 @@ ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 666430a11fb95871eb601b2a38eb7b97ad16119f
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66498944"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能

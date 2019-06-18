@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: aee51793c66ae57f740300797b8fdc1799e685cd
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604037"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>了解有关 Microsoft 客户协议发票的术语
@@ -63,10 +63,10 @@ You are invoiced on a monthly basis. You can find out which day of the month you
 | 致谢 |返回从收到的信用额度 |
 | 应用的 azure 额度 | Azure 额度，将自动应用于 Azure 的费用每个计费周期 |
 | 小计 |到期税前金额 |
-| 税费 |类型和量付费，具体取决于你计费的配置文件的国家/地区的税务。 如果不需要交税，你不会看到税务发票上。 |
+| 税务 |类型和量付费，具体取决于你计费的配置文件的国家/地区的税务。 如果不需要交税，你不会看到税务发票上。 |
 | 估计的总节省金额 |估计的总金额，用于保存从有效的折扣。 如果适用，有效的折扣率按发票部分列出下购买行项详细信息中。 |
 
-### <a name="invoice-sections"></a>发票科目
+### <a name="invoice-sections"></a>发票部分
 
 对于每个计费配置文件下发票部分中，您将看到费用、 应用的 Azure 信用额度量、 税款和总应付金额。
 

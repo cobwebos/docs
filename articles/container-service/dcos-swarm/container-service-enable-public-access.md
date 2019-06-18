@@ -37,7 +37,7 @@ ACS [公共代理池](container-service-mesos-marathon-ui.md#deploy-a-docker-for
    
    | 字段 | 描述 |
    | --- | --- |
-   | Name |探测的描述性名称。 |
+   | 名称 |探测的描述性名称。 |
    | Port |要测试的容器端口。 |
    | 路径 |（处于 HTTP 模式时）探测的相对网站路径。 不支持 HTTPS。 |
    | Interval |探测尝试之间的时间量（秒）。 |
@@ -49,7 +49,7 @@ ACS [公共代理池](container-service-mesos-marathon-ui.md#deploy-a-docker-for
    
    | 字段 | 描述 |
    | --- | --- |
-   | 名称 |负载均衡器的描述性名称。 |
+   | Name |负载均衡器的描述性名称。 |
    | Port |公共传入端口。 |
    | 后端端口 |要将流量路由到其中的容器的内部公共端口。 |
    | 后端池 |此池中的容器将面向此负载均衡器。 |
