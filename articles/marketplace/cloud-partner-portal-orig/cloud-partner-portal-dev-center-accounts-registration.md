@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 4fde5d81fb97bec23fdb46ff53b05874c88d9d67
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935862"
 ---
 <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
@@ -21,7 +21,7 @@ ms.locfileid: "64935862"
 
 ## <a name="create-a-microsoft-account"></a>创建 Microsoft 帐户
 
-若要启动发布过程，需要完成 **Microsoft 开发人员中心**注册。 在**[云合作伙伴门户](https://cloudpartner.azure.com/)** 中，你将使用同一个已注册的帐户来启动发布过程。
+若要启动发布过程，需要完成 **Microsoft 开发人员中心**注册。 在 **[云合作伙伴门户](https://cloudpartner.azure.com/)** 中，你将使用同一个已注册的帐户来启动发布过程。
 
 ### <a name="general-account-guidelines"></a>一般帐户准则
 
@@ -94,47 +94,47 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 
 3. 运行“帮助我们保护你的帐户”向导，以使用电话号码或电子邮件地址验证身份。
 
-4. 在“注册帐户信息”中，从下拉列表中选择“帐户所在国家/地区”，然后选择“下一步”。
+4. 在“注册帐户信息”中，从下拉列表中选择“帐户所在国家/地区”，然后选择“下一步”。  
 
    ![选择国家/地区](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
     >"销售 from"国家/地区：若要销售你在 Azure Marketplace 上的服务，注册的实体必须是从一个已批准"sell-from"国家/地区的下拉列表中所示。 此限制是出于付款和税务的原因。 有关详细信息，请参阅“市场参与策略”。
 
-5. 选择“公司”作为“帐户类型”，然后选择“下一步”。
+5. 选择“公司”作为“帐户类型”，然后选择“下一步”。  
 
     >[!IMPORTANT]
     >若要更好地了解帐户类型并确定最适合自己的类型，请查看以下屏幕截图中所示的“帐户类型、位置和费用”页
 
     ![卖方的帐户类型](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_05.png)
 
-6. 输入“发布者显示名称”。 这通常是公司的名称。
+6. 输入“发布者显示名称”。  这通常是公司的名称。
 
     >[!NOTE]
     >套餐列出后，开发人员中心中输入的发布者显示名称不会显示在 Azure 市场中。 但若要完成注册过程，必须填写此信息。
 
-7. 输入用于帐户验证的“联系人信息”。
+7. 输入用于帐户验证的“联系人信息”  。
 
     >[!IMPORTANT]
     >必须提供准确的联系人信息，因为该信息用于对公司在开发人员中心中获得批准的验证过程。
 
-8. 输入“公司审批者”的联系人信息。 公司审批者是如下人员：可以验证你是否有权代表组织在开发人员中心中创建帐户。 提供此信息后，选择“下一步”转到“付款”部分。
+8. 输入“公司审批者”  的联系人信息。 公司审批者是如下人员：可以验证你是否有权代表组织在开发人员中心中创建帐户。 提供此信息后，选择“下一步”转到“付款”部分。  
 
     ![确定公司审批者](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_08.png)
 
-9. 输入帐户的付款信息。 如果有抵扣注册费用的促销代码，可以在此处输入该代码。 否则，请提供信用卡信息（或所在市场支持的 PayPal）。 选择“下一步”转到最终的“检查”屏幕。
+9. 输入帐户的付款信息。 如果有抵扣注册费用的促销代码，可以在此处输入该代码。 否则，请提供信用卡信息（或所在市场支持的 PayPal）。 选择“下一步”转到最终的“检查”屏幕。  
 
    ![付款注册](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_09.png)
 
 10. 检查帐户信息，确认所有内容都正确无误。 阅读并接受 [Microsoft Azure 市场发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)的条款和条件。 选中该框，即表明已阅读并接受这些条款。
 
-11. 选择“完成”以确认注册。 一封确认邮件将发送到你的电子邮件地址。
+11. 选择“完成”  以确认注册。 一封确认邮件将发送到你的电子邮件地址。
 
 12. 如果你只是打算发布免费套餐，请选择“[转到云合作伙伴门户](https://cloudpartner.azure.com/)”，然后跳转到本文的“在云合作伙伴门户中注册帐户”部分。
 
 ### <a name="commercial-offers"></a>商业套餐
 
-如果你打算发布商业套餐（例如，带有每小时计费模型的虚拟机套餐），则必须提供税务和银行信息。 为此，请登录到开发人员中心帐户，并选择“更新帐户信息”。 遵照下一部分“添加银行和税务信息”中的说明操作。
+如果你打算发布商业套餐（例如，带有每小时计费模型的虚拟机套餐），则必须提供税务和银行信息。 为此，请登录到开发人员中心帐户，并选择“更新帐户信息”。  遵照下一部分“添加银行和税务信息”中的说明操作。
 
 >[!IMPORTANT]
 >在未提供银行帐户和税务信息的情况下，无法将商业套餐投入生产。
@@ -151,11 +151,11 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 **提供银行信息**
 
 1.  使用 Microsoft 帐户登录到 [Microsoft 开发人员中心](https://dev.windows.com/registration?accountprogram=azure)。
-2.  在左侧菜单中选择“付款帐户”，在“选择付款方式”下选择“银行帐户”或“PayPal”。
+2.  在左侧菜单中选择“付款帐户”  ，在“选择付款方式”  下选择“银行帐户”  或“PayPal”  。
 
     >[!NOTE]
     >如果拥有客户在市场购买过的商业产品/服务，该帐户即用于对这些购买进行收款。
-3.  输入付款信息，然后选择“保存”。
+3.  输入付款信息，然后选择“保存”。 
 
     >[!IMPORTANT]
     >如果需要更新或更改付款帐户，请遵循上述步骤，将当前信息替换为新信息。
@@ -167,12 +167,12 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 **提供税务信息**
 
 1.  必要时使用 Microsoft 帐户登录到 [Microsoft 开发人员中心](https://dev.windows.com/registration?accountprogram=azure)。
-2.  在左侧菜单中选择“税务配置文件”。
-3.  在“设置税务表单”页上：
+2.  在左侧菜单中选择“税务配置文件”。 
+3.  在“设置税务表单”页上： 
     - 选择你永久居留的国家或地区。
     - 选择你拥有主要国籍的国家或地区。
     - 选择“**下一步**”。
-4.  输入税务详细信息，然后选择“下一步”。
+4.  输入税务详细信息，然后选择“下一步”  。
 
 >[!WARNING]
 >如果未在 Microsoft 开发人员中心帐户中提供银行帐户和税务信息，则你无法将商业套餐投入生成。
@@ -182,15 +182,15 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 如果执行开发人员中心注册时遇到问题，请使用以下步骤开具支持票证。
 
 1.  转到[支持链接](https://developer.microsoft.com/windows/support)。
-2.  在“联系我们”下，选择“提交事件”。
+2.  在“联系我们”下，选择“提交事件”。  
     ![开具票证](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_02.png)
-3.  选择“开发人员中心帮助”作为“问题类型”，选择“发布和管理应用”作为“类别”。 选择“启动电子邮件”。
+3.  选择“开发人员中心帮助”作为“问题类型”，选择“发布和管理应用”作为“类别”。   选择“启动电子邮件”。 
 
     ![确定问题的类型](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_03.png)
 
 4.  此时会显示登录页。 请使用任何 Microsoft 帐户登录。 如果没有 Microsoft 帐户，请[创建一个](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1)。\
 
-5.  提供问题的详细信息，然后选择“提交”以发送票证。
+5.  提供问题的详细信息，然后选择“提交”以发送票证。 
 
     ![提交票证](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_05.png)
 

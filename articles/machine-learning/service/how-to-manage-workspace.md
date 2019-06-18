@@ -12,10 +12,10 @@ author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7f0806a1d68cd2cede1ae51f0a50a8125c1e7c8b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66016540"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>创建和管理 Azure 机器学习服务工作区
@@ -30,7 +30,7 @@ ms.locfileid: "66016540"
 
 ## <a name="view"></a>查看工作区
 
-1. 选择门户左上角的“所有服务”。
+1. 选择门户左上角的“所有服务”  。
 
 1. 在中**所有服务**筛选器字段中，键入**机器学习服务**。  
 

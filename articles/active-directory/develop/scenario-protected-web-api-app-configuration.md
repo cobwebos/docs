@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e206cb29338445e30a7462bcbaf0079236e75510
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bdd68d9ec5d0dd83df4628f39785ce255482245d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074960"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111155"
 ---
 # <a name="protected-web-api---code-configuration"></a>受保护的 web API 的代码配置
 
@@ -159,4 +159,4 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [迁移到生产环境](scenario-protected-web-api-production.md)
+> [验证作用域和在代码中的应用程序角色](scenario-protected-web-api-verification-scope-app-roles.md)

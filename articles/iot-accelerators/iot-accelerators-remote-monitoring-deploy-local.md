@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1adf59feca7db4c5903b04c59e1bd23290c1855e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967506"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>在本地部署远程监视解决方案加速器 - Visual Studio
@@ -64,17 +64,17 @@ ms.locfileid: "65967506"
 
 1. 启动 Visual Studio。
 1. 打开存储库本地副本中 **services** 文件夹内的 **remote-monitoring.sln** 解决方案。
-1. 在“解决方案资源管理器”中右键单击解决方案，然后单击“属性”。
-1. 选择“通用属性”>“启动项目”。
-1. 选择“多个启动项目”，并将以下项目的“操作”设置为“启动”：
+1. 在“解决方案资源管理器”中右键单击解决方案，然后单击“属性”。  
+1. 选择“通用属性”>“启动项目”。 
+1. 选择“多个启动项目”，并将以下项目的“操作”设置为“启动”：   
     * WebService (asa-manager\WebService)
     * WebService (auth\WebService)
     * WebService (config\WebService)
     * WebService (device-telemetry\WebService)
     * WebService (iothub-manager\WebService)
     * WebService (storage-adapter\WebService)
-1. 单击“确定”以保存选择。
-1. 单击“调试”>“开始调试”，以在本地计算机上生成并运行 Web 服务。
+1. 单击“确定”以保存选择。 
+1. 单击“调试”>“开始调试”，以在本地计算机上生成并运行 Web 服务。 
 
 每个 Web 服务将打开一个命令提示符和 Web 浏览器窗口。 在命令提示符下，查看正在运行的服务的输出；在浏览器窗口中可以监视状态。 请不要关闭命令提示符或网页，此操作会停止 Web 服务。
 
@@ -84,8 +84,8 @@ ms.locfileid: "65967506"
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 1. 导航到为解决方案创建的**资源组**。 该资源组的名称是在运行 **start.cmd** 脚本时为解决方案选择的名称。
-1. 在资源列表中单击“流分析作业”。
-1. 在流分析作业的“概述”页上，单击“启动”按钮。 然后单击“启动”以立即启动该作业。
+1. 在资源列表中单击“流分析作业”。 
+1. 在流分析作业的“概述”页上，单击“启动”按钮。   然后单击“启动”以立即启动该作业  。
 
 ### <a name="run-the-web-ui"></a>运行 Web UI
 

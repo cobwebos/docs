@@ -11,10 +11,10 @@ ms.topic: conceptual
 description: 描述的过程，该 power Azure 开发人员空格和如何 azds.yaml 配置文件中配置
 keywords: azds.yaml，Azure 开发人员空格、 开发空格、 Docker、 Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
 ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399828"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure 开发人员空间如何工作，是配置
@@ -210,7 +210,7 @@ azds up
 1. 生成你的应用程序的容器。
 1. 将部署到开发应用程序。
 1. 如果配置，请创建具有可公开访问的应用程序终结点的 DNS 名称。
-1. 使用*端口转发*来提供对应用程序终结点使用访问 http://locahost。
+1. 使用*端口转发*来提供对应用程序终结点使用访问 http://locahost 。
 1. 将转发 stdout 和 stderr 到客户端工具。
 
 
@@ -225,7 +225,7 @@ azds up
 1. 控制器替换 *$(tag)* Helm 图表使用唯一的会话 ID 和安装 Helm 图表为您的服务中的占位符。 添加到 Helm 图表的唯一会话 id 的引用允许容器部署到 AKS 群集，此特定会话中进行关联回到会话请求和相关信息。
 1. 安装过程中的 Helm 图表，Kubernetes webhook 许可服务器将更多的容器添加到应用程序的 pod 规范和访问你的项目的源代码。 添加 devspaces 代理和 devspaces 代理初始化容器来提供 HTTP 跟踪和空间路由。 添加 devspaces 生成容器，以提供用于构建应用程序的容器的 Docker 实例和项目源代码的访问权限的 pod。
 1. 启动应用程序的 pod，devspaces 生成容器和 devspaces 代理初始化容器用于生成应用程序容器。 然后启动应用程序容器和 devspaces 代理容器。
-1. 客户端功能的应用程序容器启动后，使用 Kubernetes*端口转发*功能通过提供对你的应用程序的 HTTP 访问 http://localhost。 此端口转发将在开发计算机连接到你的开发空间中的服务。
+1. 客户端功能的应用程序容器启动后，使用 Kubernetes*端口转发*功能通过提供对你的应用程序的 HTTP 访问 http://localhost 。 此端口转发将在开发计算机连接到你的开发空间中的服务。
 1. 当在 pod 中的所有容器都启动后时，服务正在运行。 此时，客户端功能开始流式传输的 HTTP 跟踪、 stdout 和 stderr。 开发人员的情况下，此信息显示的客户端的功能。
 
 ### <a name="updating-a-running-service"></a>更新正在运行的服务
@@ -272,7 +272,7 @@ azds up
 
 ### <a name="how-routing-works"></a>路由的工作原理
 
-适用于开发人员空间基于 AKS，并使用相同[的网络概念](../aks/concepts-network.md)。 Azure 开发人员空格也有集中式*ingressmanager*服务并将其自身入口控制器部署到 AKS 群集。 *Ingressmanager*服务的监视 AKS 群集使用适用于开发人员空间并增加 Azure 开发人员空格入口控制器与入口路由到应用程序 pod 的对象在群集中的内容。 每个 pod 中的 devspaces 代理容器添加`azds-route-as`HTTP 标头的 HTTP 流量传输到开发人员空间根据 URL。 例如，对 URL 的请求 *http://azureuser.s.default.serviceA.fedcba09...azds.io* 将获取 HTTP 标头与`azds-route-as: azureuser`。 将不会添加 devspaces 代理容器`azds-route-as`标头，如果已存在。
+适用于开发人员空间基于 AKS，并使用相同[的网络概念](../aks/concepts-network.md)。 Azure 开发人员空格也有集中式*ingressmanager*服务并将其自身入口控制器部署到 AKS 群集。 *Ingressmanager*服务的监视 AKS 群集使用适用于开发人员空间并增加 Azure 开发人员空格入口控制器与入口路由到应用程序 pod 的对象在群集中的内容。 每个 pod 中的 devspaces 代理容器添加`azds-route-as`HTTP 标头的 HTTP 流量传输到开发人员空间根据 URL。 例如，对 URL 的请求 *http://azureuser.s.default.serviceA.fedcba09...azds.io* 将获取 HTTP 标头与`azds-route-as: azureuser` 。 将不会添加 devspaces 代理容器`azds-route-as`标头，如果已存在。
 
 当 HTTP 请求从群集外部的服务请求将发送到入口控制器。 入口控制器请求将直接路由到相应的 pod 根据其入口对象和规则。 Pod 中的 devspaces 代理容器收到请求时，将添加`azds-route-as`标头基于 URL，并随后将请求路由到应用程序容器。
 

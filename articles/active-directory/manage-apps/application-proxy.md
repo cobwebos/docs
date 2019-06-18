@@ -12,12 +12,12 @@ ms.date: 05/09/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2ecc458183006872d5a4c6712cdf00a97993dbc
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 780dedd52e492aceaab1aa00eedb631d0814ebf3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825534"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108383"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>通过 Azure Active Directory 应用程序代理远程访问本地应用程序 
 
@@ -27,7 +27,7 @@ Azure AD 应用程序代理的特性：
 
 - **简单易用**。 用户可以像访问 O365 以及其他与 Azure AD 集成的 SaaS 应用一样访问本地应用程序。 无需更改或更新应用程序即可使用应用程序代理。 
 
-- **安全**。 本地应用程序可以使用 Azure 的授权控制和安全分析功能。 例如，本地应用程序可以使用条件访问和双重验证。 应用程序代理不要求通过防火墙打开入站连接。
+- **安全**。 本地应用程序可以使用 Azure 的授权控制和安全分析功能。 例如，在本地应用程序可以使用条件性访问和双重验证。 应用程序代理不要求通过防火墙打开入站连接。
  
 - **经济高效**。 本地解决方案通常需要设置和维护隔离区 (DMZ)、边缘服务器或其他复杂的基础结构。 应用程序代理在云中运行，易于使用。 若要使用应用程序代理，无需更改网络基础结构或在本地环境中安装其他设备。
 

@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fe1324479ed3b1438e993504552c6279bcef5a15
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66431081"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 HDFS 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](data-factory-hdfs-connector.md)
 > * [版本 2（当前版本）](../connector-hdfs.md)
 
@@ -435,7 +435,7 @@ ms.locfileid: "66431081"
 
    配置后**重新启动** KDC 服务。
 
-2. 准备名为主体**krbtgt/REALM.COM\@AD.COM**在 KDC 服务器，使用以下命令：
+2. 使用以下命令准备 KDC 服务器中名为 **krbtgt/REALM.COM\@AD.COM** 的主体：
 
            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
@@ -448,7 +448,7 @@ ms.locfileid: "66431081"
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  建立从 Windows 域到 Kerberos 领域的信任关系。 [password] 是主体的密码**krbtgt/REALM.COM\@AD.COM**。
+2.  建立从 Windows 域到 Kerberos 领域的信任关系。 [password] 是主体 **krbtgt/REALM.COM\@AD.COM** 的密码。
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
@@ -456,7 +456,7 @@ ms.locfileid: "66431081"
 
     1. 转到“服务器管理器”>“组策略管理”>“域”>“组策略对象”>“默认或活动的域策略”，单击“编辑”。
 
-    2. 在“组策略管理编辑器”  弹出窗口中，转到“计算机配置”>“策略”>“Windows 设置”>“安全设置”>“本地策略”>“安全选项”，配置“网络安全:  配置 Kerberos 允许使用的加密类型”。
+    2. 在“组策略管理编辑器”弹出窗口中，转到“计算机配置”>“策略”>“Windows 设置”>“安全设置”>“本地策略”>“安全选项”，配置“网络安全:   配置 Kerberos 允许使用的加密类型”。
 
     3. 选择连接到 KDC 时要使用的加密算法。 通常情况下，可以简单地选择所有选项。
 

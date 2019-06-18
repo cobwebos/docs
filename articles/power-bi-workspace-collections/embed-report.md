@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: a7d6ccc2360d63b888dc46badc742f2618a08dac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64724615"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>嵌入 Power BI 工作区集合中的报表
@@ -109,7 +109,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="embed-using-javascript"></a>使用 JavaScript 嵌入
 
-获取访问令牌和报表 ID 后，可以使用 JavaScript 来嵌入报表。 这就需要安装 NuGet [Power BI JavaScript 包](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)。 embedUrl 将只是 https://embedded.powerbi.com/appTokenReportEmbed。
+获取访问令牌和报表 ID 后，可以使用 JavaScript 来嵌入报表。 这就需要安装 NuGet [Power BI JavaScript 包](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)。 embedUrl 将只是 https://embedded.powerbi.com/appTokenReportEmbed 。
 
 > [!NOTE]
 > 可以使用 [JavaScript 报表嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)测试功能。 我们还提供了适用于不同操作的代码示例。

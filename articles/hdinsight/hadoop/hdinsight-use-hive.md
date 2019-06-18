@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: fbf10e992843d9297363398ca5ea13b8e0aa10a6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/06/2019
+ms.openlocfilehash: ea8f14a7013a937ddd77baf0f50b8dca09cabad6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715622"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076312"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
@@ -48,7 +48,7 @@ HDInsight 提供已针对特定工作负荷进行优化的多种群集类型。 
 
 ## <a name="hiveql-language-reference"></a>HiveQL 语言参考
 
-HiveQL 语言参考可在[语言手册 (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 中找到。
+HiveQL 语言参考现已推出[语言手册](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)。
 
 ## <a name="hive-and-data-structure"></a>Hive 和数据结构
 
@@ -67,7 +67,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化程序/反序列化程序 (SerDe)**。 有关详细信息，请参阅[如何将自定义 JSON SerDe 与 HDInsight 配合使用](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)文档。
+Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化程序/反序列化程序 (SerDe)** 。 有关详细信息，请参阅[如何将自定义 JSON SerDe 与 HDInsight 配合使用](https://web.archive.org/web/20190217104719/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)文档。
 
 有关 Hive 支持的文件格式的详细信息，请参阅[语言手册 (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
@@ -91,7 +91,7 @@ Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化�
     * 需要一个自定义位置，例如非默认存储帐户。
     * 由 Hive 以外的某个程序管理数据格式、位置等。
 
-有关详细信息，请参阅 [Hive 内部和外部表简介][cindygross-hive-tables]博客文章。
+有关详细信息，请参阅[Hive 内部和外部表简介](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/)博客文章。
 
 ## <a name="user-defined-functions-udf"></a>用户定义函数 (UDF)
 
@@ -137,13 +137,13 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 * `DROP TABLE`：如果该表已存在，则删除它。
 
-* `CREATE EXTERNAL TABLE`：在 Hive 中创建一个新的“外部”表。 外部表只会在 Hive 中存储表定义。 数据以原始格式的形式保留在原始位置中。
+* `CREATE EXTERNAL TABLE`：在 Hive 中创建一个新的“外部”表  。 外部表只会在 Hive 中存储表定义。 数据以原始格式的形式保留在原始位置中。
 
 * `ROW FORMAT`：让 Hive 知道数据的格式已如何进行了设置。 在此情况下，每个日志中的字段以空格分隔。
 
 * `STORED AS TEXTFILE LOCATION`：让 Hive 知道数据的存储位置（`example/data` 目录），并且数据已存储为文本。 数据可以在一个文件中，也可以分散在目录的多个文件内。
 
-* `SELECT`：选择“t4”列中包含值“[ERROR]”的所有行的计数。 此语句返回的值为 **3**，因为有三行包含此值。
+* `SELECT`：选择“t4”列中包含值“[ERROR]”的所有行的计数   。 此语句返回的值为 **3**，因为有三行包含此值。
 
 * `INPUT__FILE__NAME LIKE '%.log'` - Hive 会尝试向目录中的所有文件应用架构。 在这种情况下，目录包含与架构不匹配的文件。 为防止结果中包含垃圾数据，此语句指示 Hive 应当仅返回以 .log 结尾的文件中的数据。
 
@@ -175,7 +175,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 * `STORED AS ORC`：以优化的行纵栏式 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。
 
-* `INSERT OVERWRITE ... SELECT`：从包含“[ERROR]”的“log4jLogs”表中选择行，然后将数据插入“errorLogs”表中。
+* `INSERT OVERWRITE ... SELECT`：从包含“[ERROR]”的“log4jLogs”表中选择行，然后将数据插入“errorLogs”表中    。
 
 > [!NOTE]  
 > 与外部表不同，删除内部表会同时删除基础数据。
@@ -204,50 +204,20 @@ Azure 数据工厂允许将 HDInsight 用作数据工厂管道的一部分。 �
 
 可以使用 SQL Server Integration Services (SSIS) 来运行 Hive 作业。 Azure Feature Pack for SSIS 提供适用于 HDInsight 上的 Hive 作业的以下组件。
 
-* [Azure HDInsight Hive 任务][hivetask]
+* [Azure HDInsight Hive 任务](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Azure 订阅连接管理器][connectionmanager]
+* [Azure 订阅连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-有关详细信息，请参阅 [Azure 功能包][ssispack]文档。
+有关详细信息，请参阅[的 Azure 功能包](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis)文档。
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
 Apache Oozie 是一个管理 Hadoop 作业的工作流和协调系统。 有关将 Oozie 与 Hive 配合使用的详细信息，请参阅[使用 Apache Oozie 定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)文档。
 
-## <a id="nextsteps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 现在，已了解什么是 Hive，以及如何将它与 HDInsight 中的 Hadoop 配合使用，请使用以下链接来学习 Azure HDInsight 的其他用法。
 
-* [将数据上传到 HDInsight][hdinsight-upload-data]
-* [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
-* [将 MapReduce 作业与 HDInsight 配合使用][hdinsight-use-mapreduce]
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[apache-tez]: https://tez.apache.org
-[apache-hive]: https://hive.apache.org/
-[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
-[hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-[hivetask]: https://msdn.microsoft.com/library/mt146771(v=sql.120).aspx
-[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
-
-[hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-[hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
-
-
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
-[hdinsight-upload-data]: ../hdinsight-upload-data.md
-
-[Powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
-
-
-[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+* [将数据上传到 HDInsight](../hdinsight-upload-data.md)
+* [在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)](./python-udf-hdinsight.md)
+* [将 MapReduce 作业与 HDInsight 配合使用](hdinsight-use-mapreduce.md)

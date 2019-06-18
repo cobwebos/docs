@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: a620b592a33f9de11de53d623d257f203da2157b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61370220"
 ---
 # <a name="door-monitor"></a>门监视器          
@@ -52,9 +52,9 @@ MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附�
 
 ### <a name="sendgrid-deployment"></a>SendGrid 部署
 
-若要预配 Azure 服务，请使用“部署到 Azure”按钮。 可以通过此按钮将开源项目轻松快捷地部署到 Microsoft Azure。
+若要预配 Azure 服务，请使用“部署到 Azure”按钮。  可以通过此按钮将开源项目轻松快捷地部署到 Microsoft Azure。
 
-单击下面的“部署到 Azure”按钮。 
+单击下面的“部署到 Azure”按钮  。 
 
 [![部署到 Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2FSendGridDeploy%2Fazuredeploy.json)
 
@@ -74,19 +74,19 @@ MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附�
 
    * **电子邮件**：SendGrid 服务将向此电子邮件地址发送验证。
 
-选中“固定到仪表板”选项，以便以后能够轻松查找此应用程序，然后单击“购买”以提交注册表单。
+选中“固定到仪表板”选项，以便以后能够轻松查找此应用程序，然后单击“购买”以提交注册表单   。
  
 ### <a name="sendgrid-api-key-creation"></a>创建 SendGrid API 密钥
 
-完成部署后，请单击此部署，然后单击“管理”按钮。 此时将显示 SendGrid 帐户页，需要在其中验证电子邮件地址。
+完成部署后，请单击此部署，然后单击“管理”按钮  。 此时将显示 SendGrid 帐户页，需要在其中验证电子邮件地址。
 
 ![SendGrid 的“管理”按钮](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-在 SendGrid 页上，单击“设置” > “API 密钥” > “创建 API 密钥”。
+在 SendGrid 页上，单击“设置”   >   “API 密钥” >   “创建 API 密钥”。
 
 ![SendGrid 的第一个“创建 API”](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
 
-在“创建 API 密钥”页上，输入 API 密钥名称，然后单击“创建和查看”。
+在“创建 API 密钥”页上，输入 API 密钥名称，然后单击“创建和查看”    。
 
 ![SendGrid 的第二个“创建 API”](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-second.png)
 
@@ -96,7 +96,7 @@ API 密钥仅显示一次。 请确保将其安全地复制和存储，因为下
 
 以下步骤将预配其他 Azure IoT 相关服务并为此项目部署 Azure Functions。
 
-单击下面的“部署到 Azure”按钮。 
+单击下面的“部署到 Azure”按钮  。 
 
 [![部署到 Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2Fazuredeploy.json)
 
@@ -114,7 +114,7 @@ API 密钥仅显示一次。 请确保将其安全地复制和存储，因为下
 
    * **发件人电子邮件**：此字段的值应与设置 SendGrid 服务时使用的电子邮件地址相同。
 
-选中“固定到仪表板”选项，以便以后能够轻松查找此应用程序，然后准备好继续下一步时单击“购买”。
+选中“固定到仪表板”选项，以便以后能够轻松查找此应用程序，然后准备好继续下一步时单击“购买”   。
  
 ## <a name="build-and-upload-the-code"></a>生成并上传代码
 
@@ -131,11 +131,11 @@ API 密钥仅显示一次。 请确保将其安全地复制和存储，因为下
 
 ### <a name="open-arduino-examples-folder"></a>打开 Arduino 示例文件夹
 
-展开左侧的“ARDUINO 示例”部分，浏览到“MXCHIP AZ3166 的示例 > AzureIoT”，然后选择“DoorMonitor”。 此操作会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
+展开左侧的“ARDUINO 示例”  部分，浏览到  “MXCHIP AZ3166 的示例 > AzureIoT”，然后选择“DoorMonitor”  。 此操作会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
 
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-还可以从命令面板打开示例应用。 使用 `Ctrl+Shift+P`（macOS: `Cmd+Shift+P`）打开命令面板，键入“Arduino”，然后找到并选择“Arduino:Examples”。
+还可以从命令面板打开示例应用。 使用 `Ctrl+Shift+P`（macOS: `Cmd+Shift+P`）打开命令面板，键入“Arduino”，然后找到并选择“Arduino:   Examples”。
 
 ### <a name="provision-azure-services"></a>预配 Azure 服务
 

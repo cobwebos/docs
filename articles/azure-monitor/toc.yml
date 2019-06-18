@@ -115,12 +115,8 @@
       href: visualizations.md
     - name: 合作伙伴集成
       href: platform/partners.md
-    - name: OMS 门户转换
-      items:
-        - name: 概述
-          href: platform/oms-portal-transition.md
-        - name: 常见问题
-          href: platform/oms-portal-faq.md
+    - name: OMS 门户弃用
+      href: platform/oms-portal-transition.md
     - name: 常见问题解答
       items:
         - name: Log Analytics
@@ -249,6 +245,8 @@
               items:
                 - name: Log Analytics VM 扩展
                   href: platform/vmext-troubleshoot.md
+                - name: Log Analytics Windows 代理
+                  href: platform/agent-windows-troubleshoot.md
                 - name: Log Analytics Linux 代理
                   href: platform/agent-linux-troubleshoot.md
         - name: 代理数据源
@@ -985,6 +983,8 @@
           href: app/nuget.md
         - name: 平台支持
           href: app/platforms.md
+        - name: 终结点重写
+          href: app/custom-endpoints.md
     - name: Application Insights 数据模型
       items:
         - name: 概述

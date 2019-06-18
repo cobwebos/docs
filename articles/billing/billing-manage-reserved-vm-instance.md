@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66127145"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
@@ -47,9 +47,9 @@ ms.locfileid: "66127145"
 若要更新预订范围，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务” > “预订”。
+2. 选择“所有服务”   > “预订”  。
 3. 选择该预订。
-4. 选择“设置” > “配置”。
+4. 选择“设置”   > “配置”  。
 5. 更改范围。
 
 如果要从“共享”更改为单个范围，只能选择自己是其所有者的订阅。 只能选择与该预订相同的计费上下文中的订阅。
@@ -68,12 +68,12 @@ ms.locfileid: "66127145"
 若要委托预订的访问管理，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务” > “预订”以列出自己有权访问的预订。
+2. 选择“所有服务”   > “预订”  以列出自己有权访问的预订。
 3. 选择要将访问权限委托给其他用户的预订。
-4. 选择“访问控制 (IAM)”。
-5. 选择“添加角色分配” > “角色” > “所有者”。 或者，如果希望提供有限的访问权限，请选择其他角色。
+4. 选择“访问控制 (IAM)”  。
+5. 选择“添加角色分配”   > “角色”   > “所有者”  。 或者，如果希望提供有限的访问权限，请选择其他角色。
 6. 键入要添加为“所有者”的用户的电子邮件地址。
-7. 选择用户，再选择“保存”。
+7. 选择用户，再选择“保存”  。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>将一个预订拆分为两个预订
 
@@ -127,10 +127,10 @@ ms.locfileid: "66127145"
 若要更新预留的优化设置，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务” > “预订”。
+2. 选择“所有服务”   > “预订”  。
 3. 选择该预订。
-4. 选择“设置” > “配置”。
-5. 更改“优化对象”设置。
+4. 选择“设置”   > “配置”  。
+5. 更改“优化对象”  设置。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

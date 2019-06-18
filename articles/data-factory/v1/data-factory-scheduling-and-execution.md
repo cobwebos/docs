@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 2d7fc45faf1fb77c7d9181e5a2419096dd1ad0f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61258874"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>数据工厂计划和执行
@@ -52,7 +52,7 @@ ms.locfileid: "61258874"
 },
 ```
 
-如下图中所示，指定为活动计划创建一系列翻转与窗口在管道开始和结束时间。 翻转时段是一系列固定大小、非重叠、连续的时间间隔。 活动的这些逻辑翻转时段称为“活动时段”。
+如下图中所示，指定为活动计划创建一系列翻转与窗口在管道开始和结束时间。 翻转时段是一系列固定大小、非重叠、连续的时间间隔。 活动的这些逻辑翻转时段称为“活动时段”。 
 
 ![活动计划程序示例](media/data-factory-scheduling-and-execution/scheduler-example.png)
 
@@ -228,7 +228,7 @@ ms.locfileid: "61258874"
 ```
 
 ### <a name="dataset-policy"></a>数据集策略
-数据集可以具有定义的验证策略，该策略指定切片执行生成的数据在准备好进行使用之前应如何验证。 在这种情况下，切片执行完成后，输出切片状态将变为“等待”且子状态为“验证”。 切片验证后，切片状态将更改为“就绪”。 如果数据切片已生成但没有通过验证，因此将不会处理依赖于此切片的下游切片的活动运行。 [监视和管理管道](data-factory-monitor-manage-pipelines.md)介绍数据工厂中的数据切片的各种状态。
+数据集可以具有定义的验证策略，该策略指定切片执行生成的数据在准备好进行使用之前应如何验证。 在这种情况下，切片执行完成后，输出切片状态将变为“等待”  且子状态为“验证”  。 切片验证后，切片状态将更改为“就绪”  。 如果数据切片已生成但没有通过验证，因此将不会处理依赖于此切片的下游切片的活动运行。 [监视和管理管道](data-factory-monitor-manage-pipelines.md)介绍数据工厂中的数据切片的各种状态。
 
 数据集定义中的**策略**部分定义了数据集切片必须满足的标准或条件。 下表描述了可在 **policy** 节中使用的属性：
 
@@ -296,7 +296,7 @@ ms.locfileid: "61258874"
 
 使用数据工厂监视和管理工具可以深入查看失败切片的诊断日志，从而轻松找到问题的根本原因并进行修复。 修复问题后，便可轻松地启动活动运行以生成失败切片。 有关如何重新运行和了解数据切片的状态转换的详细信息，请参阅[使用 Azure 门户边栏选项卡监视和管理管道](data-factory-monitor-manage-pipelines.md)或[监视和管理应用](data-factory-monitor-manage-app.md)。
 
-重新运行“Dataset2”的“上午 9-10 点”切片后，数据工厂会在最终数据集上启动运行“上午 9-10 点”依赖切片。
+重新运行“Dataset2”  的“上午 9-10 点”切片后，数据工厂会在最终数据集上启动运行“上午 9-10 点”依赖切片。
 
 ![重新运行失败的切片](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 

@@ -16,21 +16,21 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.openlocfilehash: a74dd1a932cac41081786f76938a5b35de62d878
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64689717"
 ---
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
-[2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[1612105]:https://launchpad.support.sap.com/#/notes/1612105
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1984787]: https://launchpad.support.sap.com/#/notes/1984787
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2233094]: https://launchpad.support.sap.com/#/notes/2233094
+[1612105]: https://launchpad.support.sap.com/#/notes/1612105
 
 [sles-for-sap-bp]:https://www.suse.com/documentation/sles-for-sap-12/
 [db2-hadr-11.1]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
@@ -144,7 +144,7 @@ HADR，仅复制功能。 它具有无故障检测和没有自动接管或故障
 
 IBM Db2 LUW 的资源代理包含在 SUSE Linux Enterprise Server for SAP 应用程序。 对于本文档中所述的设置，必须为 SAP 应用程序使用 SUSE Linux 服务器。 Azure Marketplace 包含一个图像适用于 SUSE Enterprise Server for SAP Applications 12 的可用于部署新的 Azure 虚拟机。 请注意的 Azure VM Marketplace 中选择 VM 映像时通过 Azure Marketplace 的 SUSE 提供各种支持或服务模型。 
 
-### <a name="hosts-dns-updates"></a>主机:DNS 更新
+### <a name="hosts-dns-updates"></a>主机：DNS 更新
 列出所有的主机名，包括虚拟主机名的列表并更新你的 DNS 服务器来启用主机名解析为正确的 IP 地址。 如果 DNS 服务器不存在或无法更新和创建 DNS 条目，您需要使用单独的 Vm，在此方案中加入的本地主机文件。 如果您使用的主机文件条目，请确保条目将应用到 SAP 系统环境中的所有 Vm。 但是，我们建议使用你的 DNS，理想情况下，扩展到 Azure
 
 
@@ -337,13 +337,13 @@ Execute command as db2&lt;sid&gt; db2pd -hadr -db &lt;SID&gt;
 
 以下各项带有前缀：
 
-- **[A]**：适用于所有节点
-- **[1]**：仅适用于节点 1 
-- **[2]**：仅适用于节点 2
+- **[A]** ：适用于所有节点
+- **[1]** ：仅适用于节点 1 
+- **[2]** ：仅适用于节点 2
 
 **[A]** 系统 Pacemaker 配置必备组件：
 1. 关闭这两个数据库服务器与用户 db2\<sid > 与 db2stop。
-1. 更改用于 db2 的 shell 环境\<sid > 用户*ksh/bin/*。 我们建议使用 Yast 工具。 
+1. 更改用于 db2 的 shell 环境\<sid > 用户*ksh/bin/* 。 我们建议使用 Yast 工具。 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker 配置
@@ -427,7 +427,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    c. 设置**赋值**到**静态**，并输入 IP 地址**虚拟 IP**开始时定义。
 
-   d. 选择“确定”。
+   d. 选择“确定”  。
 
    e. 创建新前端 IP 池后，请记下池 IP 地址。
 
@@ -437,13 +437,13 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    b. 输入新后端池的名称 (例如， **Db2 后端**)。
 
-   c. 选择“添加虚拟机”。
+   c. 选择“添加虚拟机”。 
 
    d. 选择可用性集或承载在上一步中创建的 IBM Db2 数据库的虚拟机。
 
    e. 选择 IBM Db2 群集的虚拟机。
 
-   f. 选择“确定”。
+   f. 选择“确定”  。
 
 1. 创建运行状况探测：
 
@@ -453,7 +453,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    c. 选择**TCP**作为协议和端口**62500**。 保持**间隔**值设置为**5**，并保留**不正常阈值**值设置为**2**。
 
-   d. 选择“确定”。
+   d. 选择“确定”  。
 
 1. 创建负载均衡规则：
 
@@ -465,11 +465,11 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    d. 保持**协议**设置为**TCP**，并输入端口*数据库通信端口*。
 
-   e. 将“空闲超时”增大到 30 分钟。
+   e. 将“空闲超时”增大到 30 分钟。 
 
    f. 确保**启用浮动 IP**。
 
-   g. 选择“确定”。
+   g. 选择“确定”  。
 
 
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>对要用于连接的虚拟 IP 的 SAP 配置文件进行更改
@@ -595,8 +595,8 @@ crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
 - **crm 资源迁移\<res_name > <host>:** 创建位置约束，并可能导致接管出现问题
-- **crm 资源清除\<res_name >**:清除位置约束
-- **crm 资源清理\<res_name >**:清除所有错误的资源
+- **crm 资源清除\<res_name >** :清除位置约束
+- **crm 资源清理\<res_name >** :清除所有错误的资源
 
 ### <a name="test-the-fencing-agent"></a>测试隔离代理
 

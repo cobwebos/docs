@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65203627"
 ---
-# <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>在 HDInsight 群集速度慢或故障作业进行故障排除
+# <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或作业失败问题
 
-如果应用程序处理运行缓慢或失败，错误代码的 HDInsight 群集上的数据，则必须多个故障排除选项。 如果作业的运行时间超过预期或者响应时间比平时要慢，原因可能是群集的上游组件（例如运行群集的服务）发生故障。 但是，这些速度变慢问题的最常见原因是缩放不足。 在创建新的 HDInsight 群集时，选择适当[虚拟机大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)。
+如果 HDInsight 群集上的应用程序处理数据运行速度缓慢或者发生故障并返回错误代码，你可以使用多个故障排除选项。 如果作业的运行时间超过预期或者响应时间比平时要慢，原因可能是群集的上游组件（例如运行群集的服务）发生故障。 但是，这些速度变慢问题的最常见原因是缩放不足。 创建新的 HDInsight 群集时，请选择适当的[虚拟机大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)。
 
 若要诊断群集变慢或故障的原因，请收集有关环境的各个方面的信息，例如，关联的 Azure 服务、群集配置和作业执行信息。 一种有效的诊断方法是尝试在另一个群集上再现错误状态。
 
@@ -78,11 +78,11 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>使用 Ambari UI 查看群集配置设置
 
-可以在 Apache Ambari 中使用 Web UI 和 REST API 对 HDInsight 群集进行管理和监视。 基于 Linux 的 HDInsight 群集上已随附 Ambari。 在 Azure 门户的“HDInsight”页上选择“群集仪表板”窗格。  选择“HDInsight 群集仪表板”窗格打开 Ambari UI，并输入群集登录凭据。  
+可以在 Apache Ambari 中使用 Web UI 和 REST API 对 HDInsight 群集进行管理和监视。 基于 Linux 的 HDInsight 群集上已随附 Ambari。 在 Azure 门户的“HDInsight”页上选择“群集仪表板”窗格。   选择“HDInsight 群集仪表板”窗格打开 Ambari UI，并输入群集登录凭据。   
 
 ![Ambari UI](./media/hdinsight-troubleshoot-failed-cluster/ambari-ui.png)
 
-若要打开服务视图列表，请在 Azure 门户页上选择“Ambari 视图”。  此列表的内容取决于安装的库。 例如，可能会显示“YARN 队列管理器”、“Hive 视图”和“Tez 视图”。  选择某个服务链接以查看配置和服务信息。
+若要打开服务视图列表，请在 Azure 门户页上选择“Ambari 视图”。   此列表的内容取决于安装的库。 例如，可能会显示“YARN 队列管理器”、“Hive 视图”和“Tez 视图”。  选择某个服务链接以查看配置和服务信息。
 
 #### <a name="check-for-azure-service-outages"></a>检查 Azure 服务中断
 
@@ -172,7 +172,7 @@ Templeton 调用 YARN 来运行作业，Templeton 与 YARN 之间的通信可能
 
     如果打开 `/var/log/webhcat/webhcat.log` 日志文件并搜索“queued job”的话，可以看到执行时间过长（超过 2000 毫秒）的条目，以及等待时间不断增加的条目。
 
-    排队作业的等待时间之所以不断增加，是因为新作业的提交速率大于已完成的旧作业的提交速率。 在 YARN 内存使用率达到 100% 之后，joblauncher 队列不再能够从默认队列借用容量。 因此，joblauncher 队列中不再接受新作业。 此行为可能导致等待时间变得越来越长，从而导致超时错误，并继而引发其他许多错误。
+    排队作业的等待时间之所以不断增加，是因为新作业的提交速率大于已完成的旧作业的提交速率。 在 YARN 内存使用率达到 100% 之后，joblauncher 队列不再能够从默认队列借用容量。   因此，joblauncher 队列中不再接受新作业。 此行为可能导致等待时间变得越来越长，从而导致超时错误，并继而引发其他许多错误。
 
     下图显示了过度使用内存 (714.4%) 时的 joblauncher 队列。 只要默认队列中仍有可借用的容量，则此状态都是可接受的。 但是，当群集完全被占用并且 YARN 内存容量已被 100% 使用时，新作业必须等待，最终导致超时。
 
@@ -206,7 +206,7 @@ Templeton 调用 YARN 来运行作业，Templeton 与 YARN 之间的通信可能
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>步骤 4：查看环境堆栈和版本
 
-Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务版本历史记录的信息。  错误的 Hadoop 服务库版本可能是群集故障的原因。  在 Ambari UI 中选择“管理”菜单，然后选择“堆栈和版本”。  选择页面上的“版本”选项卡查看服务版本信息：
+Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务版本历史记录的信息。   错误的 Hadoop 服务库版本可能是群集故障的原因。  在 Ambari UI 中选择“管理”菜单，然后选择“堆栈和版本”。    选择页面上的“版本”选项卡查看服务版本信息： 
 
 ![堆栈和版本](./media/hdinsight-troubleshoot-failed-cluster/stack-versions.png)
 
@@ -222,13 +222,13 @@ Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务�
 
 ### <a name="check-the-script-action-logs"></a>检查脚本操作日志
 
-使用 HDInsight [脚本操作](hdinsight-hadoop-customize-cluster-linux.md)可以手动或者根据指定在群集上运行脚本。 例如，可以使用脚本操作在群集上安装其他软件，或者更改配置设置的默认值。 检查脚本操作日志可以深入了解群集安装和配置期间发生的错误。  可以通过选择 Ambari UI 中的“操作”按钮，或者访问默认存储帐户中的日志，来查看脚本操作的状态。
+使用 HDInsight [脚本操作](hdinsight-hadoop-customize-cluster-linux.md)可以手动或者根据指定在群集上运行脚本。 例如，可以使用脚本操作在群集上安装其他软件，或者更改配置设置的默认值。 检查脚本操作日志可以深入了解群集安装和配置期间发生的错误。  可以通过选择 Ambari UI 中的“操作”按钮，或者访问默认存储帐户中的日志，来查看脚本操作的状态。 
 
 脚本操作日志位于 `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` 目录中。
 
 ### <a name="view-hdinsight-logs-using-ambari-quick-links"></a>使用 Ambari 快速链接查看 HDInsight 日志
 
-HDInsight Ambari UI 中包含一些“快速链接”部分。  若要访问 HDInsight 群集中特定服务的日志链接，请打开该群集的 Ambari UI，然后在左侧列表中选择服务链接。 依次选择“快速链接”下拉列表、所需的 HDInsight 节点及其关联日志的链接。
+HDInsight Ambari UI 中包含一些“快速链接”部分。   若要访问 HDInsight 群集中特定服务的日志链接，请打开该群集的 Ambari UI，然后在左侧列表中选择服务链接。 依次选择“快速链接”下拉列表、所需的 HDInsight 节点及其关联日志的链接。 
 
 例如，对于 HDFS 日志：
 
@@ -263,6 +263,6 @@ HDInsight 群集中预配置了相关服务（例如 Hadoop、Hive、HBase 等�
 
 * [使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
 * [分析 HDInsight 日志](hdinsight-debug-jobs.md)
-* [访问基于 Linux 的 HDInsight 中的 Apache Hadoop YARN 应用程序登录](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [HDInsight 上的 Apache Spark 群集的已知问题](hdinsight-apache-spark-known-issues.md)

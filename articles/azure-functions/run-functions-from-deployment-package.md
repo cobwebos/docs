@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: glenga
 ms.openlocfilehash: 88e5f1ac7834caa32302a3817e1779d0d733a7b3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65787546"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>从包文件运行 Azure Functions
@@ -67,10 +67,10 @@ ms.locfileid: "65787546"
 
 ## <a name="troubleshooting"></a>故障排除
 
-- 运行从程序包使得`wwwroot`只读的因此此目录中写入文件时，会收到错误。
-- 不支持 tar 和 gzip 格式。
-- 使用本地缓存时未构成此功能。
-- 要改进的冷启动性能，请使用本地 Zip (`WEBSITE_RUN_FROM_PACKAGE`= 1)。
+- Run From Package 将 `wwwroot` 设为只读，因此在将文件写入此目录时将收到一个错误。
+- 不支持 Tar 和 gzip 格式。
+- 此功能不与本地缓存组合。
+- 若要提高冷启动性能，请使用本地 Zip 选项 (`WEBSITE_RUN_FROM_PACKAGE`=1)。
 
 ## <a name="next-steps"></a>后续步骤
 

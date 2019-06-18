@@ -11,10 +11,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: a3b6327b9e05b039696cc1743fc2d16c5e945e26
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65152634"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
@@ -50,15 +50,15 @@ apt-get install libiothsm iotedge
 
 ### <a name="windows-devices"></a>Windows 设备
 
-在 Windows 设备上使用 PowerShell 脚本更新安全守护程序。 该脚本自动拉取安全守护程序的最新版本。 
+在 Windows 设备上，请使用 PowerShell 脚本更新安全守护程序。 脚本会自动提取最新版本的安全守护程序。 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
 ```
 
-运行更新 IoTEdge 命令从你的设备，以及两个运行时容器映像中删除安全守护程序。 （如果使用的 Windows 容器），config.yaml 文件将保持在设备，以及小鲸鱼容器引擎中的数据。 保持配置信息，则意味着无需提供的连接字符串或再次在更新过程中为你的设备的设备预配服务信息。 
+运行 Update-IoTEdge 命令会从设备中删除安全守护程序以及两个运行时容器映像。 config.yaml 文件以及 Moby 容器引擎中的数据会保留在设备上（如果使用 Windows 容器）。 保留配置信息意味着，在更新过程中，不需再次为设备提供连接字符串或设备预配服务信息。 
 
-如果你想要安装特定版本的安全守护程序，下载相应的 Microsoft Azure IoTEdge.cab 文件从[IoT Edge 释放](https://github.com/Azure/azure-iotedge/releases)。 然后，使用 `-OfflineInstallationPath` 参数指向文件位置。 有关详细信息，请参阅[脱机安装](how-to-install-iot-edge-windows.md#offline-installation)。
+若要安装特定版本的安全守护程序，请从 [IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)下载相应的 Microsoft-Azure-IoTEdge.cab 文件。 然后，使用 `-OfflineInstallationPath` 参数指向文件位置。 有关详细信息，请参阅[脱机安装](how-to-install-iot-edge-windows.md#offline-installation)。
 
 ## <a name="update-the-runtime-containers"></a>更新运行时容器
 
@@ -94,7 +94,7 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
 
 如果在部署中使用特定标记（例如 mcr.microsoft.com/azureiotedge-hub:**1.0.2**），则只需更新部署清单中的标记，并将更改应用到设备即可。 
 
-在 Azure 门户中，运行时部署映像在“配置高级 Edge 运行时设置”部分中声明。 
+在 Azure 门户中，运行时部署映像在“配置高级 Edge 运行时设置”部分中声明。  
 
 ![配置高级 Edge 运行时设置](./media/how-to-update-iot-edge/configure-runtime.png)
 

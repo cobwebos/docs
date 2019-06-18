@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f4ab484b76bb536dd4e9d3c4fff2c85d93e4a41
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bc352c6867779fd8f4487acdb1d11c0fabe4b9f7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235190"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110996"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委托用户标识的服务到服务调用
 
@@ -213,7 +213,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 ### <a name="error-response-example"></a>错误响应示例
 
-Azure AD 令牌终结点在尝试获取使用条件访问策略（例如，多重身份验证）设置的下游 API 的访问令牌时，会返回错误响应。 中间层服务应向客户端应用程序显示此错误，以便客户端应用程序可以提供用户交互，以满足条件访问策略。
+尝试设置条件性访问策略 （例如，多重身份验证） 与为下游 api 获取访问令牌时，Azure AD 令牌终结点将返回错误响应。 中间层服务应给客户端应用程序中显示此错误，以便客户端应用程序可以提供用户交互，以满足条件性访问策略。
 
 ```
 {

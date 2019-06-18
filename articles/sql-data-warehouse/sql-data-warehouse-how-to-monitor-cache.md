@@ -11,10 +11,10 @@ ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 26791aecb2ca57b31358d3385d07230c73c84904
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61474383"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>如何监视 Gen2 缓存
@@ -24,9 +24,9 @@ Gen2 存储体系结构自动将最常查询的列存储段归类到特定的缓
 
 ![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
 
-选择指标按钮，填写数据仓库的“订阅”、“资源组”、“资源类型”和“资源名称”。
+选择指标按钮  ，填写数据仓库的“订阅”  、“资源组”  、“资源类型”  和“资源名称”  。
 
-排查 Gen2 缓存问题时，关键指标是“缓存命中百分比”和“缓存使用百分比”。 配置 Azure 指标图表，以便显示这两个指标。
+排查 Gen2 缓存问题时，关键指标是“缓存命中百分比”和“缓存使用百分比”。   配置 Azure 指标图表，以便显示这两个指标。
 
 ![缓存指标](./media/sql-data-warehouse-cache-portal/cache_1.png)
 

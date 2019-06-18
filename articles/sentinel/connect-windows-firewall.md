@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 9388e267c52ef53b59aacad844e964d3cfeb13d7
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233813"
 ---
 # <a name="connect-windows-firewall"></a>连接 Windows 防火墙
@@ -37,7 +37,7 @@ Windows 防火墙连接器，可轻松地连接 Windows 防火墙日志，如果
 
 1. 在 Azure Sentinel 门户中，选择**数据连接器**，然后单击**Windows 防火墙**磁贴。 
 1. 选择你想要流式传输的数据类型。
-1. 单击“安装”。
+1. 单击“安装”  。
 6. 若要使用 Log Analytics 中的 Windows 防火墙相关的架构，搜索**SecurityEvent**。
 
 ## <a name="validate-connectivity"></a>验证连接

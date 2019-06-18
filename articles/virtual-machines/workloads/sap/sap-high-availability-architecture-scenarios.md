@@ -18,10 +18,10 @@ ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 37f5040585681a53743fb3426b7f7ffac36de51c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60936177"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性体系结构和方案
@@ -232,23 +232,23 @@ ms.locfileid: "60936177"
 
 ## <a name="terminology-definitions"></a>术语定义
 
-**高可用性**：指的是一系列技术，这些技术通过相同数据中心内受冗余、容错或故障转移保护的组件，为 IT 服务提供业务连续性，以最大程度减少 IT 中断的情况。 在本例中，数据中心驻留在一个 Azure 区域内。
+**高可用性**：指的是一系列技术，这些技术通过相同数据中心内受冗余、容错或故障转移保护的组件，为 IT 服务提供业务连续性，以最大程度减少 IT 中断的情况。  在本例中，数据中心驻留在一个 Azure 区域内。
 
-**灾难恢复**：也是指最大程度减少 IT 服务中断及其恢复，但可在彼此相距数百英里的不同数据中心内执行操作。 在我们的示例中，数据中心可能位于同一地理位置的多个 Azure 区域，也可能位于你以客户身份创建的位置。
+**灾难恢复**：也是指最大程度减少 IT 服务中断及其恢复，但可在彼此相距数百英里的不同数据中心内执行操作。  在我们的示例中，数据中心可能位于同一地理位置的多个 Azure 区域，也可能位于你以客户身份创建的位置。
 
 
 ## <a name="overview-of-high-availability"></a>高可用性概述
 Azure 中的 SAP 高可用性可以分为三种类型：
 
-* Azure 基础结构高可用性： 
+*  Azure 基础结构高可用性： 
 
     例如，高可用性可以包括计算 (VM)、网络或存储，以及提高 SAP 应用程序可用性的优点。
 
-* 利用 Azure 基础结构 VM 重启来实现 SAP 应用程序的更高可用性： 
+*   利用 Azure 基础结构 VM 重启来实现 SAP 应用程序的更高可用性： 
 
     如果你决定不在 Linux 上使用 Windows Server 故障转移群集 (WSFC) 或 Pacemaker 等功能，则可利用 Azure VM 重启。 它可以保护 SAP 系统不受 Azure 物理服务器基础结构和整个基础 Azure 平台的计划和非计划停机的影响。
 
-* SAP 应用程序高可用性： 
+*  SAP 应用程序高可用性： 
 
     要实现完整的 SAP 系统高可用性，必须保护所有关键的 SAP 系统组件。 例如：
     * 冗余 SAP 应用程序服务器。
@@ -273,13 +273,13 @@ Azure 中的 SAP 高可用性与本地物理或虚拟环境中的 SAP 高可用�
 (99.95/100) * (99.9/100) * (99.9/100) = 0.9975，即总体可用性为 99.75%。
 
 ### <a name="multiple-instances-of-virtual-machines-in-the-same-availability-set"></a>同一个可用性集中虚拟机的多个实例
-对于在同一可用性集中部署两个或更多实例的所有虚拟机，我们保证至少在 99.95% 的时间内具有至少一个实例的虚拟机连接。
+对于在同一可用性集  中部署两个或更多实例的所有虚拟机，我们保证至少在 99.95% 的时间内具有至少一个实例的虚拟机连接。
 
-当两个或多个 VM 同属一个可用性集时，基础 Azure 平台将为可用性集中的每个虚拟机分配一个更新域和一个容错域。
+当两个或多个 VM 同属一个可用性集时，基础 Azure 平台将为可用性集中的每个虚拟机分配一个更新域  和一个容错域  。
 
-* 更新域保证在计划内的 Azure 基础结构维护期间，不会同时重新启动多个 VM。 一次只重新启动一个 VM。
+* 更新域  保证在计划内的 Azure 基础结构维护期间，不会同时重新启动多个 VM。 一次只重新启动一个 VM。
 
-* 容错域保证 VM 部署在不共享通用电源和网络交换机的硬件组件上。 当服务器、网络交换机或电源发生计划外故障时，只会有一个 VM 受到影响。
+* 容错域  保证 VM 部署在不共享通用电源和网络交换机的硬件组件上。 当服务器、网络交换机或电源发生计划外故障时，只会有一个 VM 受到影响。
 
 有关详细信息，请参阅[在 Azure 中管理 Windows 虚拟机的可用性][azure-virtual-machines-manage-availability]。
 
@@ -305,9 +305,9 @@ Azure 正在各个不同的 [Azure 区域](https://azure.microsoft.com/global-in
 
 两种类型的 Azure 平台事件都可能会影响虚拟机的可用性：
 
-* 计划内维护事件是由 Microsoft 对基础 Azure 平台进行的定期更新。 这些更新将提高虚拟机在其上运行的平台基础结构的总体可靠性、性能与安全性。
+* 计划内维护  事件是由 Microsoft 对基础 Azure 平台进行的定期更新。 这些更新将提高虚拟机在其上运行的平台基础结构的总体可靠性、性能与安全性。
 
-* 计划外维护事件发生于虚拟机所在硬件或物理基础结构出现某类故障的情况。 此类故障可能包括：本地网络故障、本地磁盘故障，或者其他机架级别的故障。 检测到此类故障时，Azure 平台会自动将虚拟机从所在的不健康物理服务器迁移到健康的物理服务器。 此类事件很少见，但也会导致虚拟机重启。
+* 计划外维护  事件发生于虚拟机所在硬件或物理基础结构出现某类故障的情况。 此类故障可能包括：本地网络故障、本地磁盘故障，或者其他机架级别的故障。 检测到此类故障时，Azure 平台会自动将虚拟机从所在的不健康物理服务器迁移到健康的物理服务器。 此类事件很少见，但也会导致虚拟机重启。
 
 有关详细信息，请参阅[在 Azure 中管理 Windows 虚拟机的可用性][azure-virtual-machines-manage-availability]。
 
@@ -327,7 +327,7 @@ Azure 正在各个不同的 [Azure 区域](https://azure.microsoft.com/global-in
 
 
 
-## <a name="utilizing-azure-infrastructure-high-availability-to-achieve-higher-availability-of-sap-applications"></a>利用 Azure 基础结构高可用性来实现 SAP 应用程序的更高可用性
+## <a name="utilizing-azure-infrastructure-high-availability-to-achieve-higher-availability-of-sap-applications"></a>利用 Azure 基础结构高可用性来实现 SAP 应用程序的更高可用性 
 
 如果你决定不在 Linux（目前仅支持 SUSE Linux Enterprise Server [SLES] 12 和更高版本）上使用 WSFC 或 Pacemaker 等功能，则可利用 Azure 虚拟机重启。 它可以保护 SAP 系统不受 Azure 物理服务器基础结构和整个基础 Azure 平台的计划和非计划停机的影响。
 
@@ -369,7 +369,7 @@ Azure 缩放单元内的 Azure 可用性集可使用不限数目的更新和容�
 如果将一些 SAP 应用程序服务器实例部署在其专用 VM 中，假设有 5 个更新域，则会出现下图所示的情况。 可用性集内的更新域和容错域的实际数目上限将来可能会变化：
 
 图 2：![Azure 可用性集中 SAP 应用程序服务器的高可用性][planning-guide-figure-3000]
-_**图 2：** Azure 可用性集中 SAP 应用程序服务器的高可用性_
+ _**图 2：** Azure 可用性集中 SAP 应用程序服务器的高可用性_
 
 有关详细信息，请参阅[在 Azure 中管理 Windows 虚拟机的可用性][azure-virtual-machines-manage-availability]。
 

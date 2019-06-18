@@ -11,10 +11,10 @@ ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
 ms.openlocfilehash: bc183cb8ac2155b8dd31dc603d70506ad3d5e20a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65797486"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
@@ -240,9 +240,9 @@ Spacious,||air-condition*+"Ocean view"
 
 要在倒排索引中生成字词，搜索引擎将针对文档内容执行词法分析，这类似于查询处理期间执行的操作：
 
-1. 根据分析器的配置，执行将文本输入传递给分析器、转换为小写、去除标点等操作。 
-2. 令牌是文本分析的输出。
-3. 将词语添加到索引。
+1. 根据分析器的配置，执行将文本输入传递给分析器、转换为小写、去除标点等操作  。 
+2. 令牌是文本分析的输出  。
+3. 将词语添加到索引  。
 
 我们经常（但不是非要这样做）使用相同的分析器来执行搜索和索引编制操作，使查询词看上去更像是索引中的字词。
 
@@ -263,7 +263,7 @@ Spacious,||air-condition*+"Ocean view"
 | resort | 3 |
 | retreat | 4 |
 
-在标题字段中，只有“酒店”显示在以下两个文档中：1、3。
+在标题字段中，只有“酒店”显示在以下两个文档中  ：1、3。
 
 对于**说明**字段，索引如下所示：
 

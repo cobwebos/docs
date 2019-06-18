@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: bcaa990cc2186a5f1eecdbbca91804c92370277c
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66357184"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>识别打印文本和手写文本
@@ -24,12 +24,12 @@ ms.locfileid: "66357184"
 
 ## <a name="read-api"></a>读取 API
 
-读取 API 使用我们最新的识别模型检测图像中的文本内容，并将已识别的文本转换为机器可读的字符流。 它经过优化的文字较多映像 （例如已进行数字扫描的文档） 以及对于具有大量视觉干扰的图像。 它将确定要使用的每行文本，支持打印和手写文本图像的识别模型。 以异步方式执行读取 API，因为较大的文档可能需要几分钟时间才能返回结果。
+读取 API 使用我们最新的识别模型检测图像中的文本内容，并将已识别的文本转换为机器可读的字符流。 该 API 已针对包含大量文本的图像（例如，数码扫描的文档）以及包含大量视觉噪点的图像进行优化。 它将确定用于每行文本的识别模型，并支持包含印刷文本和手写文本的图像。 读取 API 以异步方式执行，因为处理较大文档时，可能需要花费好几分钟才能返回结果。
 
 “读取”操作会在其输出中保留已识别字的原始行分组。 每一行附带边框坐标，行中的每个字也有其自身的坐标。 如果某个字的识别置信度较低，该结果中也会反映该信息。 有关详细信息，请参阅[阅读 API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)。
 
 > [!NOTE]
-> 此功能才适用于英语文本。
+> 此功能仅适用于英语文本。
 
 ### <a name="image-requirements"></a>图像要求
 

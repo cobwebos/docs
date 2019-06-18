@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
 ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61467447"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
@@ -58,20 +58,20 @@ ms.locfileid: "61467447"
    }
    ```
 
-2. 登录到 [Azure 门户](https://portal.azure.com)。 在 Azure 主菜单中，选择“所有资源”。 在搜索框中，查找并选择你的集成帐户。
+2. 登录到 [Azure 门户](https://portal.azure.com)。 在 Azure 主菜单中，选择“所有资源”  。 在搜索框中，查找并选择你的集成帐户。
 
    ![选择“集成帐户”](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-3.  在“组件”下，选择“映射”。
+3.  在“组件”  下，选择“映射”  。
 
     ![选择映射](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
 
-4. 选择“添加”，并为映射提供以下详细信息：
+4. 选择“添加”，并为映射提供以下详细信息  ：
 
    | 属性 | 值 | 说明 | 
    |----------|-------|-------------|
    | **名称** | JsonToJsonTemplate | 映射的名称，在此示例中为“JsonToJsonTemplate” | 
-   | **映射类型** | **liquid** | 你的映射的类型。 对于 JSON 到 JSON 转换，必须选择“liquid”。 | 
+   | **映射类型** | **liquid** | 你的映射的类型。 对于 JSON 到 JSON 转换，必须选择“liquid”  。 | 
    | **Map** | "SimpleJsonToJsonTemplate.liquid" | 用于转换的现有 Liquid 模板或映射文件，在此示例中为“SimpleJsonToJsonTemplate.liquid”。 若要查找此文件，可使用文件选取器。 |
    ||| 
 
@@ -83,25 +83,25 @@ ms.locfileid: "61467447"
 
 2. 在逻辑应用设计器中，向逻辑应用中添加[请求触发器](../connectors/connectors-native-reqres.md#use-the-http-request-trigger)。
 
-3. 在触发器下，选择“新建步骤”。 
+3. 在触发器下，选择“新建步骤”。  
    在搜索框中，输入“liquid”作为筛选器，然后选择以下操作：**将 JSON 转换为 JSON - Liquid**
 
    ![查找并选择 Liquid 操作](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
-4. 在“内容”框中单击以显示动态内容列表，并选择“正文”标记。
+4. 在“内容”框中单击以显示动态内容列表，并选择“正文”标记。  
   
    ![选择正文](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
  
-5. 从“映射”列表中选择 Liquid 模板，此示例中为“JsonToJsonTemplate”。
+5. 从“映射”列表中选择 Liquid 模板，此示例中为“JsonToJsonTemplate”  。
 
    ![选择映射](./media/logic-apps-enterprise-integration-liquid-transform/select-map.png)
 
    如果映射列表为空，则逻辑应用很可能未链接到集成帐户。 
    要将逻辑应用链接到具有 Liquid 模板或映射的集成帐户，请执行以下步骤：
 
-   1. 在逻辑应用菜单中选择“工作流设置”。
+   1. 在逻辑应用菜单中选择“工作流设置”  。
 
-   2. 从“选择集成帐户”列表中，选择集成帐户，并选择“保存”。
+   2. 从“选择集成帐户”列表中，选择集成帐户，并选择“保存”   。
 
       ![将逻辑应用链接到集成帐户](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 

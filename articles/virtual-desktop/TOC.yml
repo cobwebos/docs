@@ -44,6 +44,8 @@
       href: configure-vm-gpu.md
     - name: 自动缩放会话主机
       href: set-up-scaling-script.md
+    - name: 为 Windows 虚拟桌面用户自定义源
+      href: customize-feed-for-virtual-desktop-users.md
     - name: 自定义 RDP 属性
       href: customize-rdp-properties.md
 - name: 概念

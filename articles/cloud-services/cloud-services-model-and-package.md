@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c8833dc0db80dde96dda92c426c7840c44c1f1b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61432630"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080760"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什么是云服务模型以及如何将其打包？
-云服务由以下三个组件创建：服务定义 *(.csdef)*、服务配置 *(.cscfg)* 和服务包 *(.cspkg)*。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 文件都基于 XML，同时介绍云服务的结构及其配置方式；统称为模型。 **ServicePackage.cspkg** 是基于 **ServiceDefinition.csdef** 和其他文件生成的 zip 文件，它包含所有必需的基于二进制的依赖项。 Azure 可从 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 两者创建云服务。
+云服务由以下三个组件创建：服务定义 *(.csdef)* 、服务配置 *(.cscfg)* 和服务包 *(.cspkg)* 。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 文件都基于 XML，同时介绍云服务的结构及其配置方式；统称为模型。 **ServicePackage.cspkg** 是基于 **ServiceDefinition.csdef** 和其他文件生成的 zip 文件，它包含所有必需的基于二进制的依赖项。 Azure 可从 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 两者创建云服务。
 
 云服务在 Azure 中开始运行后，可以通 **ServiceConfig.cscfg** 文件重新进行配置，但不能更改定义。
 
@@ -155,7 +155,7 @@ ms.locfileid: "61432630"
 <p/>
 
 > [!NOTE]
-> 通过使用文本编辑器，可以将证书的指纹添加到配置文件中。 或者，可以在 Visual Studio 中角色的“属性”页的“证书”选项卡上添加值。
+> 通过使用文本编辑器，可以将证书的指纹添加到配置文件中。 或者，可以在 Visual Studio 中角色的“属性”  页的“证书”  选项卡上添加值。
 > 
 > 
 
@@ -186,7 +186,7 @@ Azure 仅允许 Web 角色有一个入口点。 即所有通信都通过一个 I
   </Site>
   <Site name="MailSite" packageDir="MailSite">
     <Bindings>
-      <Binding name="mail" endpointName="HttpIn" hostheader="mail.mysite.cloudapp.net" />
+      <Binding name="mail" endpointName="HttpIn" hostHeader="mail.mysite.cloudapp.net" />
     </Bindings>
     <VirtualDirectory name="artifacts" />
     <VirtualApplication name="storageproxy">
@@ -240,7 +240,7 @@ Azure 仅允许 Web 角色有一个入口点。 即所有通信都通过一个 I
 <p />
 
 > [!TIP]
-> 在“Microsoft Azure 计算模拟器”中本地运行云服务时，使用 **/copyonly** 选项。 此选项将应用程序的二进制文件复制到目录布局，以便可以在计算模拟器中运行它们。
+> 在“Microsoft Azure 计算模拟器”  中本地运行云服务时，使用 **/copyonly** 选项。 此选项将应用程序的二进制文件复制到目录布局，以便可以在计算模拟器中运行它们。
 > 
 > 
 

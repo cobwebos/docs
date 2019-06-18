@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
 ms.openlocfilehash: 9763c8d520b8736d8f7d7bc5db81b75762cb98f9
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938212"
 ---
 # <a name="virtual-machine-support-tab"></a>虚拟机“支持”选项卡
 
-使用“新建产品/服务”页的“支持”选项卡可以为产品/服务提供技术和用户支持资源。  它分为三个方面：**工程**，**客户支持部门**，和**支持 Url**。
+使用“新建产品/服务”  页的“支持”  选项卡可以为产品/服务提供技术和用户支持资源。  它分为三个方面：**工程**，**客户支持部门**，和**支持 Url**。
 
 ![虚拟机的“新建产品/服务”表单上的“支持”选项卡](./media/publishvm_012.png)
 

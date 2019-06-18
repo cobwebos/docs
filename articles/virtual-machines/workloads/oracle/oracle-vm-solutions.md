@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: b62b35320ba1f4473e9b3a039d181d6a2fb58257
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 9dd7f7d07b34ed3c1076b46c0bf5185d6c8cd31a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743615"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074229"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM 映像和 Microsoft Azure 上部署
 
@@ -68,6 +68,18 @@ Oracle 支持在基于 Oracle Linux 的虚拟机映像上的 Azure 中运行 Ora
 ### <a name="attached-disk-configuration-options"></a>附加磁盘配置选项
 
 附加磁盘依赖于 Azure Blob 存储服务。 每个标准磁盘理论上每秒最多能够完成大约 500 个输入/输出操作 (IOPS)。 高级磁盘产品主要针对高性能数据库工作负荷，每个磁盘 IOPS 高达 5000。 如果满足性能需求，可以使用单个磁盘。 但是，如果使用多个附加的磁盘、 数据库数据分散到它们，然后使用 Oracle 自动存储管理 (ASM) 可以提高有效 IOPS 性能。 请参阅 [Oracle 自动存储概述](https://www.oracle.com/technetwork/database/index-100339.html)，了解更多 Oracle ASM 的具体信息。 有关如何安装和配置 Linux Azure VM 上的 Oracle ASM 的示例，请参阅[安装和配置 Oracle 自动存储管理](configure-oracle-asm.md)教程。
+
+### <a name="shared-storage-configuration-options"></a>共享的存储的配置选项
+
+Azure 的 NetApp 文件旨在满足在云中运行如数据库的高性能工作负荷的核心要求，并提供;
+- Azure 本机共享 NFS 存储服务用于运行 Oracle 工作负荷是通过本机 NFS 客户端 VM 或 Oracle dNFS
+- 反映真实世界范围内的 IOPS 需求的可缩放的性能层
+- 低延迟
+- 高可用性、 高持续性和可管理性在规模较大，通常所要求的任务关键企业工作负荷 （如 SAP 和 Oracle）
+- 快速、 高效地备份和恢复，以实现最高的 RTO 和 RPO SLA
+
+因为 Azure NetApp 文件基于 Azure 数据中心环境-作为本机 Azure 服务中运行的 NetApp ONTAP® 所有闪存系统，可使用这些功能。 结果是一种理想的数据库存储技术，可以预配和使用就像其他 Azure 存储选项一样。 请参阅[Azure NetApp 文件文档](https://docs.microsoft.com/azure/azure-netapp-files/)有关如何部署和访问 Azure NetApp 文件 NFS 卷上的详细信息。 请参阅[Azure 部署最佳实践指南使用 Azure NetApp 文件上的 Oracle](https://www.netapp.com/us/media/tr-4780.pdf)有关操作 Azure NetApp 文件上的 Oracle 数据库的最佳做法建议。
+
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
 Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故障。 它依赖于网络多播和共享磁盘这两项本地技术，而这两项技术并非源自超大规模公有云环境。 如果数据库解决方案需要在 Azure 中的 Oracle RAC，需要第三方软件来启用这些技术。 有关 Oracle RAC 的详细信息，请参阅[FlashGrid SkyCluster 页](https://www.flashgrid.io/oracle-rac-in-azure/)。

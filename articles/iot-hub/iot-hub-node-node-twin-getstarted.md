@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: elioda
 ms.openlocfilehash: 20b804f3d15543d0cf415d00dc81a6f55a348260
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65597413"
 ---
 # <a name="get-started-with-device-twins-node"></a>设备孪生入门 (Node)
@@ -23,7 +23,7 @@ ms.locfileid: "65597413"
 
 * **AddTagsAndQuery.js**（Node.js 后端应用），用于添加标记和查询设备孪生。
 
-* TwinSimulatedDevice.js（Node.js 应用），用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况。
+*  TwinSimulatedDevice.js（Node.js 应用），用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况。
 
 > [!NOTE]
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文介绍了可用于构建设备和后端应用的 Azure IoT SDK。
@@ -98,7 +98,7 @@ ms.locfileid: "65597413"
 
     **Registry** 对象公开从服务与设备孪生进行交互所需的所有方法。 前面的代码首先初始化 **Registry** 对象，并检索 **myDeviceId** 的设备孪生，最后使用所需位置信息更新其标记。
 
-    更新标记后，它将调用 queryTwins 函数。
+    更新标记后，它将调用 queryTwins 函数  。
 
 5. 在 **AddTagsAndQuery.js** 末尾添加以下代码以实现 **queryTwins** 函数：
 
@@ -126,7 +126,7 @@ ms.locfileid: "65597413"
 
     上面的代码执行两个查询：第一个仅选择位于 **Redmond43** 工厂的设备孪生，第二个将查询细化为仅选择还要通过蜂窝网络连接的设备。
 
-    上面的代码创建 query 对象时，会指定返回的最大文档数。 **query** 对象包含 **hasMoreResults** 布尔值属性，可以使用它多次调用 **nextAsTwin** 方法来检索所有结果。 名为 next 的方法可用于非设备孪生的结果（例如聚合查询的结果）。
+    上面的代码创建 query 对象时，会指定返回的最大文档数  。 **query** 对象包含 **hasMoreResults** 布尔值属性，可以使用它多次调用 **nextAsTwin** 方法来检索所有结果。 名为 next 的方法可用于非设备孪生的结果（例如聚合查询的结果）  。
 
 6. 使用以下方法运行应用程序：
 

@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66167304"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
@@ -194,7 +194,7 @@ ms.locfileid: "66167304"
 | audience | “是” | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
 | clientId | “是” | 请求访问权限的客户端的 GUID - 逻辑应用的应用程序标识中的客户端 ID | 
 | secret | “是” | 请求访问令牌的客户端的应用程序标识中的密钥或密码 | 
-| type | “是” | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
+| 类型 | “是” | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
 |||| 
 
 例如:
@@ -236,7 +236,7 @@ ms.locfileid: "66167304"
 
 | 元素 | 需要 | 描述 | 
 | ------- | -------- | ----------- | 
-| type | “是” | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 | 
+| 类型 | “是” | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 | 
 | password | “是” | 用于访问客户端证书（PFX 文件）的密码 | 
 | pfx | “是” | 客户端证书（PFX 文件）的 base64 编码内容 | 
 |||| 
@@ -253,7 +253,7 @@ ms.locfileid: "66167304"
 
 | 元素 | 需要 | 描述 | 
 | ------- | -------- | ----------- | 
-| type | “是” | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
+| 类型 | “是” | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
 | username | “是” | 要用于身份验证的用户名 | 
 | password | “是” | 要用于身份验证的密码 | 
 |||| 

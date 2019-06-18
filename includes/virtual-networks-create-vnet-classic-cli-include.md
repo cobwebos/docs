@@ -9,10 +9,10 @@ ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: cd686e1bf62bbd7f37f61ced767e92918edf919c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116916"
 ---
 ## <a name="how-to-create-a-classic-vnet-using-azure-cli"></a>如何使用 Azure CLI 创建经典 VNet
@@ -32,12 +32,12 @@ ms.locfileid: "66116916"
             info:    network vnet create command OK
    
    * **--vnet**。 要创建的 VNet 的名称。 对于该方案，为 *TestVNet*
-   * **-e（或 --address-space）**。 VNet 地址空间。 对于该方案，为 *192.168.0.0*
-   * **-i（或 -cidr）**。 采用 CIDR 格式的网络掩码。 对于该方案，为 *16*。
-   * **-n（或 --subnet-name）**。 第一个子网的名称。 对于该方案，为 *FrontEnd*。
-   * **-p（或 --subnet-start-ip）**。 子网或子网地址空间的起始 IP 地址。 对于该方案，为 *192.168.1.0*。
-   * **-r（或 --subnet-cidr）**。 子网的网络掩码（采用 CIDR 格式）。 对于该方案，为 *24*。
-   * **-l（或 --location）**。 要在其中创建 VNet 的 Azure 区域 。 对于该方案，为 *Central US*。
+   * **-e（或 --address-space）** 。 VNet 地址空间。 对于该方案，为 *192.168.0.0*
+   * **-i（或 -cidr）** 。 采用 CIDR 格式的网络掩码。 对于该方案，为 *16*。
+   * **-n（或 --subnet-name）** 。 第一个子网的名称。 对于该方案，为 *FrontEnd*。
+   * **-p（或 --subnet-start-ip）** 。 子网或子网地址空间的起始 IP 地址。 对于该方案，为 *192.168.1.0*。
+   * **-r（或 --subnet-cidr）** 。 子网的网络掩码（采用 CIDR 格式）。 对于该方案，为 *24*。
+   * **-l（或 --location）** 。 要在其中创建 VNet 的 Azure 区域 。 对于该方案，为 *Central US*。
 3. 若要创建子网，请运行 **azure network vnet subnet create** 命令：
    
             azure network vnet subnet create -t TestVNet -n BackEnd -a 192.168.2.0/24
@@ -54,9 +54,9 @@ ms.locfileid: "66116916"
             data:    Address prefix                  : 192.168.2.0/24
             info:    network vnet subnet create command OK
    
-   * **-t（或 --vnet-name）**。 将在其中创建子网的 VNet 的名称。 对于该方案，为 *TestVNet*。
-   * **-n（或 --name）**。 新子网的名称。 对于该方案，为 *BackEnd*。
-   * **-a（或 --address-prefix）**。 子网 CIDR 块。 对于该方案，为 *192.168.2.0/24*。
+   * **-t（或 --vnet-name）** 。 将在其中创建子网的 VNet 的名称。 对于该方案，为 *TestVNet*。
+   * **-n（或 --name）** 。 新子网的名称。 对于该方案，为 *BackEnd*。
+   * **-a（或 --address-prefix）** 。 子网 CIDR 块。 对于该方案，为 *192.168.2.0/24*。
 4. 若要查看新 vnet 的属性，请运行 **azure network vnet show** 命令：
    
             azure network vnet show

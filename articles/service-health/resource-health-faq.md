@@ -8,10 +8,10 @@ ms.service: service-health
 ms.date: 01/29/2019
 ms.workload: Supportability
 ms.openlocfilehash: 03c5fb0f399e43af2584743655eeea8af4c5b2f5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924450"
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
@@ -54,9 +54,9 @@ ms.locfileid: "64924450"
 
 ## <a name="where-do-i-find-resource-health"></a>在何处查找资源运行状况？
 登录 Azure 门户以后，即可通过多种方式访问资源运行状况：
-- 导航到资源。 在左侧导航栏中，选择“资源运行状况”
-- 转到“Azure 服务运行状况”边栏选项卡。  在左侧导航栏中，选择“资源运行状况”。
-- 通过选择门户右上角的问号，并选择“帮助 + 支持”，打开“帮助 + 支持”边栏选项卡。 该边栏选项卡打开后，选择“资源运行状况”
+- 导航到资源。 在左侧导航栏中，选择“资源运行状况” 
+- 转到“Azure 服务运行状况”边栏选项卡。  在左侧导航栏中，选择“资源运行状况”  。
+- 通过选择门户右上角的问号，并选择“帮助 + 支持”，打开“帮助 + 支持”边栏选项卡。   该边栏选项卡打开后，选择“资源运行状况” 
 
 也可使用资源运行状况 API，获取资源运行状况的相关信息。
 
@@ -64,7 +64,7 @@ ms.locfileid: "64924450"
 如需资源运行状况支持的运行状况检查和资源类型的列表，可单击[此处](resource-health-checks-resource-types.md)。
 
 ## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>如果我的资源显示可用，但我认为它不可用，该怎么办？
-检查资源的运行状况时，可直接在运行状态下单击“报告不正确的运行状态”。 在提交报告之前，可以选择提供更多详细信息，说明为什么你认为当前的运行状态不正确。
+检查资源的运行状况时，可直接在运行状态下单击“报告不正确的运行状态”。  在提交报告之前，可以选择提供更多详细信息，说明为什么你认为当前的运行状态不正确。
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>资源运行状况是否适用于所有 Azure 区域？ 
 资源运行状况是在所有 Azure 地理区域提供。

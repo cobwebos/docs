@@ -5,10 +5,10 @@ ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
 ms.openlocfilehash: a108cb5b7e9ec32c83c6ed6d3c4f0be03142393f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66130911"
 ---
 使用 log analytics 创建查询和分析 Azure Monitor 中的日志数据通过单击**日志**中**Azure Monitor**在 Azure 门户中的菜单。 

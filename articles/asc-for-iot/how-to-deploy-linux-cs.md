@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 5623b9870788edfb3b96ef248154e8b9f60b4593
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65198434"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>为 IoT 部署 Azure 安全中心C#-基于 Linux 的安全代理
@@ -110,7 +110,7 @@ ms.locfileid: "65198434"
        **logFilePath** 值是可以配置的。 
 
        > [!NOTE]
-       > 建议在故障排除操作完成后关闭日志记录功能。 让日志记录保持启用状态会增加日志文件大小和数据使用量。
+       > 建议在故障排除操作完成后关闭日志记录功能。  让日志记录保持启用状态会增加日志文件大小和数据使用量。 
 
    1. 通过运行以下命令重启代理：
 

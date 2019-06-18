@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: rajanaki
 ms.openlocfilehash: 1d36145b2a38c0f1106b4468eab226996e270ae1
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65922192"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务的自动更新
@@ -49,13 +49,13 @@ Azure Site Recovery 使用每月的发布节奏以修复任何问题和增强现
 
 如果启用了 VM 的复制任一启动[从 VM 视图](azure-to-azure-quickstart.md)或[从恢复服务保管库](azure-to-azure-how-to-enable-replication.md)，你可以允许 Site Recovery，以管理 Site Recovery 扩展的更新或对其进行管理手动。
 
-![扩展设置](./media/azure-to-azure-autoupdate/enable-rep.png)
+![扩展插件设置](./media/azure-to-azure-autoupdate/enable-rep.png)
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>在保管库内切换扩展更新设置
 
 1. 在保管库中，转到**管理** > **Site Recovery 基础结构**。
 2. 下**适用于 Azure 虚拟机** > **扩展更新设置**，打开**允许 Site Recovery 管理**切换。 若要手动管理，将其关闭。 
-3. 选择“保存”。
+3. 选择“保存”。 
 
 ![扩展更新设置](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
@@ -520,7 +520,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 如果无法启用自动更新，请参阅以下常见错误和建议的操作：
 
-- **错误**：你没有权限创建 Azure 运行方式帐户(服务主体)并向服务主体授予参与者角色。
+- **错误**：你没有权限创建 Azure 运行方式帐户（服务主体）并向服务主体授予参与者角色。
 
    **建议的操作**:请确保登录的帐户被指定为参与者，然后重试。 中的所需的权限部分，请参阅[使用门户创建 Azure AD 应用程序和服务主体可访问资源的](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)有关分配权限的详细信息。
  

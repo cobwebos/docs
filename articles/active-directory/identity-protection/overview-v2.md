@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37c63e32f1ee9c404e8b84a6eb17bc6eec30a761
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 2b4f8caf03aad339cea3c3fcc732fc1af6086ea7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956931"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108890"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory Identity Protection（已刷新）是什么？
 
@@ -56,7 +56,7 @@ Identity Protection 体验已经过刷新，以更好地保护组织的标识。
 
  
 
-Azure AD Identity Protection 是 Azure Active Directory Premium P2 的一项功能，它允许你配置策略，以便在用户标识遭到入侵或帐户所有者以外的其他人试图使用其标识登录时自动进行响应。 除了 Azure AD 提供的条件访问控制以外，这些策略还可以自动阻止或启用缓解措施，如密码重置或强制实施多重身份验证。 此外，Identity Protection 还提供监视和报告功能，以便更深入地了解组织中的风险和潜在威胁。 
+Azure AD Identity Protection 是 Azure Active Directory Premium P2 的一项功能，它允许你配置策略，以便在用户标识遭到入侵或帐户所有者以外的其他人试图使用其标识登录时自动进行响应。 也可以自动阻止这些策略，除了 Azure AD 提供其他条件性访问控制，访问或启动缓解措施，例如密码重置或强制实施多重身份验证。 此外，Identity Protection 还提供监视和报告功能，以便更深入地了解组织中的风险和潜在威胁。 
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 

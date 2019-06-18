@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: cf801b8b6b458104a469932487860285102a641b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a19a257e2b4a39d9df8777215364f9cc026f72ac
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65777642"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072072"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-c"></a>如何将 QnA Maker REST API 与 C# 配合使用 
 <a name="HOLTop"></a>
@@ -44,7 +44,7 @@ ms.locfileid: "65777642"
 
 需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）
 
-必须创建一个具有 Microsoft QnA Maker API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
+必须创建一个具有 Microsoft QnA Maker API  的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
 
 <a name="Create"></a>
 
@@ -778,7 +778,7 @@ namespace QnAMaker
 
 ## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>使用知识库获取问题的答案
 
-以下代码通过“Generate answers”方法，使用指定知识库来获取问题的答案。
+以下代码通过“Generate answers”  方法，使用指定知识库来获取问题的答案。
 
 1. 在最喜爱的 IDE 中新建 C# 项目。
 1. 添加以下提供的代码。

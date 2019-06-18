@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 3e77494eacaf16ac23a531cb7a16fe8bf6117006
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714418"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (C#)
@@ -25,12 +25,12 @@ ms.locfileid: "64714418"
 
 若要完成本文中的步骤，需要以下组件：
 
-* 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+* 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序  。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 * 运行 Raspbian 操作系统的 Raspberry Pi 设备。 在 Raspberry Pi 必须能够连接到 internet。 有关详细信息，请参阅[设置 Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)。
 
 ## <a name="sample-devkits-application"></a>**示例 Devkits** 应用程序
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板：
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板   ：
 
 - 遥测数据，包括设备将收集的以下度量值：
   - 湿度
@@ -91,7 +91,7 @@ Azure IoT Central 应用程序中添加真实的设备，从**Raspberry Pi**设�
     > [!NOTE]
     > 你的 **Microsoft.Azure.Devices.Client** 包版本号可能高于所示版本号。
 
-1. 保存 **pisample.csproj**。 如果 Visual Studio Code 提示执行还原命令，请选择“还原”。
+1. 保存 **pisample.csproj**。 如果 Visual Studio Code 提示执行还原命令，请选择“还原”。 
 
 1. 打开 **Program.cs**，将内容替换为以下代码：
 
@@ -307,9 +307,9 @@ Azure IoT Central 应用程序中添加真实的设备，从**Raspberry Pi**设�
 
 1. 在 Azure IoT Central 应用程序中，可以看到在 Raspberry Pi 上运行的代码如何与应用程序交互：
 
-   * 在真实设备的“度量”页上，可以看到遥测数据。
-   * 在“属性”页上，可以看到报告的“模具编号”属性的值。
-   * 在“设置”页中，可以更改 Raspberry Pi 上的各种设置，例如电压和风扇速度。
+   * 在真实设备的“度量”页上，可以看到遥测数据。 
+   * 在“属性”页上，可以看到报告的“模具编号”属性的值。  
+   * 在“设置”页中，可以更改  Raspberry Pi 上的各种设置，例如电压和风扇速度。
 
      以下屏幕截图显示 Raspberry Pi 接收设置更改：
 
@@ -317,7 +317,7 @@ Azure IoT Central 应用程序中添加真实的设备，从**Raspberry Pi**设�
 
 ## <a name="raspberry-pi-device-template-details"></a>Raspberry Pi 设备模板详细信息
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板：
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板   ：
 
 ### <a name="telemetry-measurements"></a>遥测数据度量
 

@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL-单个服务器中的使用 PostgreSQL 扩展
-description: 描述扩展的数据库使用 Azure database for PostgreSQL-单台服务器扩展功能的能力。
+title: 使用 Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
+description: 介绍有关使用 Azure Database for PostgreSQL（单一服务器）中的扩展来扩展数据库功能的功能。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 962e2b10136cf1cbab7cc5d3d06059922c363b15
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410273"
 ---
-# <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单个服务器中的 PostgreSQL 扩展
+# <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展允许在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载之后，扩展可以如同内置功能一样运行。 有关 PostgreSQL 扩展的详细信息，请参阅  [Packaging Related Objects into an Extension](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)（将相关对象打包到扩展中）。
 
 ## <a name="how-to-use-postgresql-extensions"></a>如何使用 PostgreSQL 扩展
@@ -49,7 +49,7 @@ Azure Database for PostgreSQL 目前支持部分关键扩展（已在下面列�
 > | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | 提供函数和运算符，用于基于三元匹配确定字母数字文本的相似性。 |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | 提供可操作整个表（包括交叉表）的函数。 |
 > | [uuid ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | 生成全局唯一标识符 (UUID)。 |
-> | [orafce](https://github.com/orafce/orafce) | 提供了功能和包从商业数据库模拟的子集。 |
+> | [orafce](https://github.com/orafce/orafce) | 提供部分通过商业数据库模拟的函数和包。 |
 
 ### <a name="full-text-search-extensions"></a>全文搜索扩展
 
@@ -133,7 +133,7 @@ TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 T
 
 1. 选择你的 Azure Database for PostgreSQL 服务器。
 
-2. 在侧栏中选择“服务器参数”。
+2. 在侧栏中选择“服务器参数”。 
 
 3. 搜索 `shared_preload_libraries` 参数。
 
@@ -142,7 +142,7 @@ TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 T
    timescaledb
    ```
 
-5. 选择“保存”，保留所做的更改。 保存更改后会获得通知。 
+5. 选择“保存”  ，保留所做的更改。 保存更改后会获得通知。 
 
 6. 获得通知后，请**重启**服务器以应用这些更改。 若要了解如何重启服务器，请参阅[重启 Azure Database for PostgreSQL 服务器](howto-restart-server-portal.md)。
 

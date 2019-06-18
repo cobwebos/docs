@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: amishu
-ms.openlocfilehash: 41a55eca321cbe1bfa23a889b8e3ce7c701ce769
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 8717dad27786450e4275c9fd91523c0e9379f375
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65468045"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073061"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>使用编解码器压缩音频输入使用语音 SDK
 
@@ -23,6 +23,7 @@ Speech SDK**压缩音频输入 Stream** API 提供了一种方法来流式传输
 
 > [!IMPORTANT]
 > 仅支持流式处理压缩的音频C++， C#，并在 Linux （Ubuntu 16.04、 Ubuntu 18.04、 Debian 9） 上的 Java。
+> 语音 SDK 版本 1.4.0 或更高版本是必需的。
 
 Wav/PCM 请参阅主线语音文档。  外部 wav/PCM，支持以下编解码器压缩输入的格式：
 

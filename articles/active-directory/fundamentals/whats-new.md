@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6a66aefec69a0551f85b11a380c90d1915bd776
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: f57b0189708f48d1dc403ce778f5f9693b6dc702
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474202"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110381"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -357,7 +357,7 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 ---
 
-### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Microsoft Edge （公共预览版） 中 Azure AD 单一登录和条件性访问新的支持
+### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>对 Azure AD 单一登录和 Microsoft Edge （公共预览版） 中的条件性访问的新支持
 
 **类型：** 新功能  
 **服务类别：** 条件性访问  

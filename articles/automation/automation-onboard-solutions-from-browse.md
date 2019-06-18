@@ -10,10 +10,10 @@ ms.topic: article
 manager: carmonm
 ms.custom: mvc
 ms.openlocfilehash: e6359d57a1f4cce6ec89fd76ef343b515cafae6e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66133142"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>在多台 VM 上启用更新管理、更改跟踪和清单解决方案
@@ -22,11 +22,11 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure (https://portal.azure.com)
+登录 Azure (https://portal.azure.com )
 
 ## <a name="enable-solutions"></a>启用解决方案
 
-在 Azure 门户中，导航到“虚拟机”。
+在 Azure 门户中，导航到“虚拟机”  。
 
 使用复选框，选择要载入“更改跟踪”和“清单”或“更新管理”功能的虚拟机。 载入一次最多可用于三个不同的资源组。 Azure Vm 可以位于任何区域，无论你的自动化帐户的位置。
 
@@ -34,10 +34,10 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 > [!TIP]
 > 使用筛选器控件修改虚拟机列表，然后单击顶部的复选框来选择列表中的所有虚拟机。
 
-从命令栏中，单击“服务”，然后选择“更改跟踪”、“清单”或“更新管理”。
+从命令栏中，单击“服务”  ，然后选择“更改跟踪”  、“清单”  或“更新管理”  。
 
 > [!NOTE]
-> “更改跟踪”和“清单”使用相同的解决方案，启用其中一个后，另一个也会启用。
+> “更改跟踪”  和“清单”  使用相同的解决方案，启用其中一个后，另一个也会启用。
 
 下图是关于“更新管理”的。 “更改跟踪”和“清单”具有相同的布局和行为。
 
@@ -51,11 +51,11 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ![载入更新管理解决方案](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-查看 Log Analytics 工作区和自动化帐户的选项。 默认情况下会选择一个现有的工作区和自动化帐户。 如果希望使用不同的 Log Analytics 工作区和自动化帐户，请单击“自定义”来从“自定义配置”页面选择它们。 当你选择 Log Analytics 工作区时，将会进行检查来确定它是否与某个自动化帐户相链接。 如果找到了链接的自动化帐户，则会看到以下屏幕。 完成后单击“确定”。
+查看 Log Analytics 工作区和自动化帐户的选项。 默认情况下会选择一个现有的工作区和自动化帐户。 如果希望使用不同的 Log Analytics 工作区和自动化帐户，请单击“自定义”  来从“自定义配置”页面选择它们。  当你选择 Log Analytics 工作区时，将会进行检查来确定它是否与某个自动化帐户相链接。 如果找到了链接的自动化帐户，则会看到以下屏幕。 完成后单击“确定”  。
 
 ![选择工作区和帐户](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
 
-如果所选的工作区未链接到自动化帐户，则会看到以下屏幕。 选择一个自动化帐户，完成后单击“确定”。
+如果所选的工作区未链接到自动化帐户，则会看到以下屏幕。 选择一个自动化帐户，完成后单击“确定”。 
 
 ![无工作区](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
@@ -66,7 +66,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 取消选择不想启用的任何虚拟机旁边的复选框。 无法启用的虚拟机已被取消选择。
 
-单击“启用”以启用解决方案。 启用此解决方案最长需要 15 分钟的时间。
+单击“启用”以启用解决方案。  启用此解决方案最长需要 15 分钟的时间。
 
 ## <a name="unlink-workspace"></a>取消链接工作区
 
@@ -83,15 +83,15 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 > [!NOTE]
 > 某些解决方案（包括早期版本的 Azure SQL 监视解决方案）可能已创建自动化资产并可能还需要在取消链接工作区之前删除。
 
-1. 从 Azure 门户中打开自动化帐户，并在“自动化帐户”页左侧的“相关资源”部分下，选择“链接工作区”。
+1. 从 Azure 门户中打开自动化帐户，并在“自动化帐户”页左侧的“相关资源”部分下，选择“链接工作区”   。
 
-2. 在“取消链接工作区”页上，单击“取消链接工作区”。
+2. 在“取消链接工作区”页上，单击“取消链接工作区”  。
 
    ![“取消链接工作区”页](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
 
    系统会提示用户确认是否要继续。
 
-3. 当 Azure 自动化尝试从 Log Analytics 工作区中取消链接该帐户时，可以在菜单中的“通知”下跟踪进度。
+3. 当 Azure 自动化尝试从 Log Analytics 工作区中取消链接该帐户时，可以在菜单中的“通知”  下跟踪进度。
 
 如果使用了“更新管理”解决方案，可能会选择要删除在删除该解决方案后不再需要的以下项。
 
@@ -109,13 +109,13 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ## <a name="troubleshooting"></a>故障排除
 
-当载入多台计算机时，可能会有显示为“无法启用”的计算机。 有各种原因会导致某些计算机无法启用。 以下各部分显示了当尝试载入时 VM 上出现“无法启用”状态的可能原因。
+当载入多台计算机时，可能会有显示为“无法启用”  的计算机。 有各种原因会导致某些计算机无法启用。 以下各部分显示了当尝试载入时 VM 上出现“无法启用”  状态的可能原因。
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM 向一个不同的工作区进行报告：“\<workspaceName\>”。  请更改配置以将其用于启用
 
 **原因**：此错误表明你尝试载入的 VM 向另一个工作区报告。
 
-**解决方案**；单击“用作配置”来更改目标自动化帐户和 Log Analytics 工作区。
+**解决方案**；单击“用作配置”  来更改目标自动化帐户和 Log Analytics 工作区。
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM 向此订阅中不可用的工作区进行报告
 
@@ -129,7 +129,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>VM 操作系统版本或分发版不受支持
 
-原因：并非所有 Linux 分发版或所有 Windows 版本都支持此解决方案。
+原因：  并非所有 Linux 分发版或所有 Windows 版本都支持此解决方案。
 
 **解决方案：** 请参阅解决方案的[受支持客户端列表](automation-update-management.md#clients)。
 
@@ -141,9 +141,9 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ### <a name="vm-is-stopped-deallocated"></a>VM 已停止。 （已解除分配）
 
-**原因**：虚拟机未处于“正在运行”状态。
+**原因**：虚拟机未处于“正在运行”  状态。
 
-**解决方案**；为了将 VM 载入到解决方案，VM 必须处于运行状态。 单击“启动 VM”内联链接来启动 VM 且不离开页面。
+**解决方案**；为了将 VM 载入到解决方案，VM 必须处于运行状态。 单击“启动 VM”  内联链接来启动 VM 且不离开页面。
 
 ## <a name="next-steps"></a>后续步骤
 

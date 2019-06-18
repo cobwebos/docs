@@ -1,6 +1,6 @@
 ---
 title: 帮助进行标识管理的 Azure 安全功能 | Microsoft Docs
-description: " 本文概述了可帮助进行标识管理的核心 Azure 安全功能。 Microsoft 标识和访问管理解决方案可帮助 IT 部门保护对企业数据中心和云中的应用程序和资源的访问，因此支持附加的验证级别，比如多重身份验证和条件访问策略。 "
+description: " 本文概述了可帮助进行标识管理的核心 Azure 安全功能。 Microsoft 标识和访问管理解决方案可帮助 IT 保护对应用程序和资源的访问对企业数据中心和到云，从而支持附加的验证，如多重身份验证和条件性访问级别策略。 "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 29c04fc04b5d277e982a37402a128b2dbe787e2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 758ed2e44718da709acec1379cfc79936c8b7cdf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444225"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083640"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 
- 标识管理是对[安全主体](https://docs.microsoft.com/windows/security/identity-protection/access-control/security-principals)进行身份验证和授权的过程。 它还包括控制有关这些主体（标识）的信息。 安全主体（标识）可能包括服务、应用程序、用户和组等等。Microsoft 标识和访问管理解决方案可帮助 IT 部门保护对企业数据中心和云中的应用程序和资源的访问。 此类保护支持附加的验证级别，比如多重身份验证和条件访问策略。 通过高级安全报告、审核和警报来监视可疑活动，以便减少潜在的安全问题。 [Azure Active Directory Premium](../active-directory/active-directory-editions.md) 向数千个云软件即服务 (SaaS) 应用提供单一登录 (SSO)，并且可以用来访问在本地运行的 Web 应用。
+ 标识管理是对[安全主体](https://docs.microsoft.com/windows/security/identity-protection/access-control/security-principals)进行身份验证和授权的过程。 它还包括控制有关这些主体（标识）的信息。 安全主体（标识）可能包括服务、应用程序、用户和组等等。Microsoft 标识和访问管理解决方案可帮助 IT 部门保护对企业数据中心和云中的应用程序和资源的访问。 此类保护，可以附加的验证，例如多重身份验证和条件性访问策略级别。 通过高级安全报告、审核和警报来监视可疑活动，以便减少潜在的安全问题。 [Azure Active Directory Premium](../active-directory/active-directory-editions.md) 向数千个云软件即服务 (SaaS) 应用提供单一登录 (SSO)，并且可以用来访问在本地运行的 Web 应用。
  
 利用 Azure Active Directory (Azure AD) 的安全优势，可以实现以下目的：
 
@@ -129,9 +129,9 @@ Azure AD B2C 是一项高度可用的全局性标识管理服务，适用于面�
 
 ## <a name="device-registration"></a>设备注册
 
-Azure AD 设备注册是基于设备的[条件访问](../active-directory/active-directory-conditional-access-device-registration-overview.md)方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件访问策略。
+Azure AD 设备注册是基础设备基于[条件性访问](../active-directory/active-directory-conditional-access-device-registration-overview.md)方案。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 经过身份验证的设备和设备的属性然后可强制执行在云中和本地托管的应用程序的条件性访问策略。
 
-当与 Intune 之类的移动设备管理解决方案结合使用时，Azure AD 中的设备属性将使用关于设备的更多信息进行更新。 然后即可根据安全性和符合性方面的标准来创建条件访问规则，强制从设备进行访问。
+当与 Intune 之类的移动设备管理解决方案结合使用时，Azure AD 中的设备属性将使用关于设备的更多信息进行更新。 然后可以创建条件性访问规则，强制实施从设备以满足安全和符合性标准的访问权限。
 
 了解更多：
 
