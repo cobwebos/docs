@@ -9,29 +9,28 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 06/18/2019
 ms.author: diberry
-ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f82bf5a40df0554d4f98b2d835fcbd69279be43
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198528"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204159"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>将订阅密钥与 LUIS 应用配合使用
 
-无需创建订阅密钥即可免费使用前 1000 个终结点查询。 使用这些终结点查询后，在 [Azure 门户](https://portal.azure.com)中创建一个 Azure 资源，然后在 [LUIS 门户](https://www.luis.ai)中将该资源分配到 LUIS 应用。
-
-如果收到 HTTP 403 或 429 形式的“超出配额”错误，则需要创建密钥并将其分配到应用。  
+首次使用语言理解 (LUIS)，您不需要创建订阅密钥。 你首先可以 1000年终结点查询。 
 
 如果仅用于测试和原型，请使用免费 (F0) 层。 对于生产系统，请使用[付费](https://aka.ms/luis-price-tier)层。 不要将[创作密钥](luis-concept-keys.md#authoring-key)用于生产中的终结点查询。
+
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
 ## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>在 Azure 门户中创建预测终结点运行时资源
 
-使用[构建应用](get-started-portal-build-app.md)快速入门了解更多信息。
+您创建[预测终结点资源](get-started-portal-deploy-app.md#create-the-endpoint-resource)在 Azure 门户中。 此资源仅应用于终结点预测查询。 请勿使用此资源来创建对应用的更改。
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -49,7 +48,7 @@ ms.locfileid: "60198528"
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>在 LUIS 门户中将资源密钥分配到 LUIS 应用
 
-使用[部署](get-started-portal-deploy-app.md)快速入门了解更多信息。
+每次为 LUIS 创建新的资源，需要[将资源分配到 LUIS 应用](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。 分配后，除非创建新资源，否则无需再次执行此步骤。 可以创建新资源来扩展应用的区域或支持更多预测查询。
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>
@@ -155,10 +154,30 @@ ms.locfileid: "60198528"
     ![验证 LUIS 支付层](./media/luis-usage-tiers/updated.png)
 1. 请记住在“发布”页[分配此终结点密钥](#assign-endpoint-key)，并将其用于所有终结点查询  。 
 
-## <a name="how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage"></a>当密钥超过定价层用量时如何修复“超出配额”错误
-每层允许以特定速率向 LUIS 帐户发送终结点请求。 如果请求速率高于计费帐户的每分钟或每月的允许速率，则请求会出现 HTTP 错误“429:请求过多”。
+## <a name="fix-http-status-code-403-and-429"></a>修复 403 和 429 的 HTTP 状态代码
 
-每层允许按月累计请求数。 如果总请求数大于允许的速率，则请求会出现 HTTP 错误“403: 禁止”。  
+当超过每秒事务或事务，每月的定价层时获取以状态代码 403 和 429 错误。
+
+### <a name="when-you-receive-an-http-403-error-status-code"></a>当收到 HTTP 403 错误状态代码
+
+当您使用所有这些免费 1000年终结点查询或超过定价层的每月的事务配额时，您将收到 HTTP 403 错误状态代码。 
+
+若要修复此错误，则需要[更改定价层](luis-how-to-azure-subscription.md#change-pricing-tier)到较高级别或[创建新的资源](get-started-portal-deploy-app.md#create-the-endpoint-resource)并[将其分配给您的应用程序](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。
+
+此错误的解决方案包括：
+
+* 在中[Azure 门户](https://portal.azure.com)，在您的语言资源，了解上**资源管理-> 定价层**，将定价层更改为更高的 TPS 层。 您不必执行任何操作语言理解门户中，如果你的资源已分配给您的语言理解应用程序。
+*  如果你的使用情况超过最高的定价层，添加与在它们的前面的负载均衡器的更多语言理解资源。 [语言理解容器](luis-container-howto.md)与 Kubernetes 或 Docker Compose 可以与此帮助。
+
+### <a name="when-you-receive-an-http-429-error-status-code"></a>当收到 HTTP 429 错误状态代码
+
+返回此状态代码时你每秒事务数超过了定价层。  
+
+解决方案包括：
+
+* 你可以[提升定价层](#change-pricing-tier)，如果你不在最高的层。
+* 如果你的使用情况超过最高的定价层，添加与在它们的前面的负载均衡器的更多语言理解资源。 [语言理解容器](luis-container-howto.md)与 Kubernetes 或 Docker Compose 可以与此帮助。
+* 可以入口在客户端应用程序请求[重试策略](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)时收到此状态代码实现您自己。 
 
 ## <a name="viewing-summary-usage"></a>查看使用概况
 可在 Azure 中查看 LUIS 使用情况信息。 “概述”页显示包含调用和错误在内的最新摘要信息  。 如果发出 LUIS 终结点请求并立即查看“概述”页，则最多需要五分钟才会显示使用情况  。
