@@ -12,18 +12,18 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
 ms.openlocfilehash: 653fbd65e5ccfbc65781f2332b35d10237f718d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60712774"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS 应用中已弃用的预生成实体
 以下预构建实体已被弃用，不能添加到新的 LUIS 应用中。
 
-* **Datetime**：使用 datetime 的现有 LUIS 应用应当迁移到 datetimeV2，虽然 datetime 实体在使用它的现存应用中可以继续工作。
-* **Geography**：使用 geography 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
-* **Encyclopedia**：使用 encyclopedia 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
+* **Datetime**：使用 datetime  的现有 LUIS 应用应当迁移到 datetimeV2  ，虽然 datetime 实体在使用它的现存应用中可以继续工作。
+* **Geography**：使用 geography  的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
+* **Encyclopedia**：使用 encyclopedia  的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
 
 ## <a name="geography-culture"></a>Geography 语言区域
 **Geography** 仅在 `en-us` 区域设置中可用。

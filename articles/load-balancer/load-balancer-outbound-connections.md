@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: kumud
 ms.openlocfilehash: f9742d14fc14230f2424d005aa6aa8b1db3cece4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967736"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
@@ -77,7 +77,7 @@ SNAT 端口是按照[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 在此场景中，VM 不是公共负载均衡器池的一部分（也不是内部标准负载均衡器池的一部分），并且没有分配给它的 ILPIP 地址。 当 VM 创建出站流时，Azure 将此出站流的专用源 IP 地址转换为公共源 IP 地址。 用于此出站流的公共 IP 地址是不可配置的，并且不会影响订阅的公共 IP 资源限制。 此公共 IP 地址不属于你，不能保留。 如果重新部署 VM、可用性集或虚拟机规模集，则将释放此公共 IP 地址并请求新的公共 IP 地址。 请不要使用此方案将 IP 地址加入允许列表。 而是使用其他两个方案之一，其中你显式声明出站方案和要用于出站连接的公共 IP 地址。
 
 >[!IMPORTANT] 
->仅当附加了内部基本负载均衡器时，此场景才适用。 如果已将内部标准负载均衡器附加到 VM，则场景 3 不适用。  除了使用内部标准负载均衡器以外，还必须显式创建[场景 1](#ilpip) 或[场景 2](#lb)。
+>仅当附加了内部基本负载均衡器时，此场景才适用。  如果已将内部标准负载均衡器附加到 VM，则场景 3 不适用。   除了使用内部标准负载均衡器以外，还必须显式创建[场景 1](#ilpip) 或[场景 2](#lb)。
 
 Azure 结合端口伪装 ([PAT](#pat)) 使用 SNAT 来执行此功能。 此方案类似于[方案 2](#lb)，但无法控制使用的 IP 地址。 这是方案 1 和方案 2 不存在时的回退方案。 如果需要控制出站地址，则我们不建议使用此方案。 如果出站连接是应用程序的关键部分，应该选择另一种方案。
 

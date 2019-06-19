@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: bc72cc21ab525ec82d9ce4b24e80ce82d92a5d21
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233489"
 ---
 # <a name="machine-learning-capability-in-azure-data-explorer"></a>机器学习在 Azure 数据资源管理器的功能
@@ -108,7 +108,7 @@ demo_clustering1
 | evaluate autocluster()
 ```
 
-| 段 ID | Count | 百分比 | 区域 | ScaleUnit | DeploymentId | ServiceHost |
+| 段 ID | Count | Percent | 区域 | ScaleUnit | DeploymentId | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 第 | 94 | 9.67078189300411 | scus | su5 | 9dbd1b161d5b4779a73cf19a7836ebd6 |  |
@@ -132,10 +132,10 @@ demo_clustering1
 | evaluate basket()
 ```
 
-| 段 ID | Count | 百分比 | 区域 | ScaleUnit | DeploymentId | 跟踪点 | ServiceHost |
+| 段 ID | Count | Percent | 区域 | ScaleUnit | DeploymentId | 跟踪点 | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
-| 1 | 642 | 66.0493827160494 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |  |
+| 第 | 642 | 66.0493827160494 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |  |
 | 2 | 324 | 33.3333333333333 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 | 0 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 3 | 315 | 32.4074074074074 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 | 16108 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 4 | 328 | 33.7448559670782 |  |  |  | 0 |  |
@@ -174,7 +174,7 @@ demo_clustering1
 | 段 ID | 计数 A | 计数 B | 百分比 A | 百分比 B | PercentDiffAB | 区域 | ScaleUnit | DeploymentId | 跟踪点 |
 |-----------|--------|--------|----------|----------|---------------|--------|-----------|----------------------------------|------------|
 | 0 | 639 | 21 | 65.74 | 1.7 | 64.04 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |
-| 1 | 167 | 544 | 17.18 | 44.16 | 26.97 | scus |  |  |  |
+| 第 | 167 | 544 | 17.18 | 44.16 | 26.97 | scus |  |  |  |
 | 2 | 92 | 356 | 9.47 | 28.9 | 19.43 |  |  |  | 10007007 |
 | 3 | 90 | 336 | 9.26 | 27.27 | 18.01 |  |  |  | 10007006 |
 | 4 | 82 | 318 | 8.44 | 25.81 | 17.38 | ncus | su1 | e24ef436e02b4823ac5d5b1465a9401e |  |

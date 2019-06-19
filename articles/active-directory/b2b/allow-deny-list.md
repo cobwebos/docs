@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b302ec0265473e09b3960660b10661faa1960442
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fa975446c19db3176fdb89ccfb1a987b1fda049d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812968"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113220"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>允许或阻止向特定组织中的 B2B 用户发送邀请
 
@@ -32,7 +32,7 @@ ms.locfileid: "65812968"
 
 ## <a name="set-the-allow-or-deny-list-policy-in-the-portal"></a>在门户中设置允许或拒绝列表策略
 
-“允许将邀请发送到任何域(最大范围)”默认已启用。 在这种情况下，可以邀请任何组织中的 B2B 用户。
+“允许将邀请发送到任何域(最大范围)”默认已启用。  在这种情况下，可以邀请任何组织中的 B2B 用户。
 
 ### <a name="add-a-deny-list"></a>添加拒绝列表
 
@@ -41,14 +41,14 @@ ms.locfileid: "65812968"
 添加拒绝列表：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“Azure Active Directory” > “用户” > “用户设置”。
-3. 在“外部用户”下，选择“管理外部协作设置”。
-4. 在“协作限制”下，选择“拒绝向指定的域发送邀请”。
-5. 在“目标域”下，输入要阻止的某个域的名称。 若要阻止多个域，请分行输入每个域。 例如：
+2. 选择“Azure Active Directory” > “用户” > “用户设置”。   
+3. 在“外部用户”下，选择“管理外部协作设置”。  
+4. 在“协作限制”下，选择“拒绝向指定的域发送邀请”。  
+5. 在“目标域”下，输入要阻止的某个域的名称。  若要阻止多个域，请分行输入每个域。 例如：
 
    ![显示针对添加的域的拒绝选项](./media/allow-deny-list/DenyListSettings.png)
  
-6. 完成后，单击“保存”。
+6. 完成后，单击“保存”。 
 
 设置策略后，如果尝试邀请被阻止域中的用户，将会收到一条消息，指出该用户的域当前已被邀请策略阻止。
  
@@ -62,14 +62,14 @@ ms.locfileid: "65812968"
 若要添加允许列表，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“Azure Active Directory” > “用户” > “用户设置”。
-3. 在“外部用户”下，选择“管理外部协作设置”。
-4. 在“协作限制”下，选择“只允许向指定的域发送邀请(限制性最强)”。
-5. 在“目标域”下，输入要允许的某个域的名称。 若要阻止多个域，请分行输入每个域。 例如：
+2. 选择“Azure Active Directory” > “用户” > “用户设置”。   
+3. 在“外部用户”下，选择“管理外部协作设置”。  
+4. 在“协作限制”下，选择“只允许向指定的域发送邀请(限制性最强)”。  
+5. 在“目标域”下，输入要允许的某个域的名称。  若要阻止多个域，请分行输入每个域。 例如：
 
    ![显示已添加域的允许选项](./media/allow-deny-list/AllowListSettings.png)
  
-6. 完成后，单击“保存”。
+6. 完成后，单击“保存”。 
 
 设置策略后，如果尝试邀请的用户来自不在允许列表中的域，则会收到一条消息，指出该用户的域当前已被邀请策略阻止。
 
@@ -157,7 +157,7 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 Azure AD B2B 的概述，请参阅[什么是 Azure AD B2B 协作？](what-is-b2b.md)
-- 有关条件访问和 B2B 协作的信息，请参阅 [B2B 协作用户的条件访问](conditional-access.md)。
+- 有关条件性访问和 B2B 协作的信息，请参阅[B2B 协作用户的条件性访问](conditional-access.md)。
 
 
 

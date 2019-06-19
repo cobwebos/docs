@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
 ms.openlocfilehash: d361b6b8b08f9556cd57215ebdf82c1bf69d372d
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938157"
 ---
 # <a name="virtual-machine-offer-settings-tab"></a>虚拟机“产品/服务设置”选项卡
 
-虚拟机的“新建产品/服务”页面在打开时将显示名为“产品/服务设置”的第一个选项卡。  
+虚拟机的“新建产品/服务”  页面在打开时将显示名为“产品/服务设置”的第一个选项卡。   
 
 ![虚拟机的“新建产品/服务”页面](./media/publishvm_004.png)
 

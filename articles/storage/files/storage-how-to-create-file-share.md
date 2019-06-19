@@ -9,10 +9,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d945d5b79c274aa8e142203c56b27eb673e36741
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510509"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>在 Azure 文件中创建文件共享
@@ -28,7 +28,7 @@ ms.locfileid: "65510509"
 1. **转到 Azure 门户中的“存储帐户”边栏选项卡**：    
     ![“存储帐户”边栏选项卡](./media/storage-how-to-create-file-share/create-file-share-portal1.png)
 
-2. 单击”添加文件共享”按钮：    
+2.  单击”添加文件共享”按钮：    
     ![单击”添加文件共享”按钮](./media/storage-how-to-create-file-share/create-file-share-portal2.png)
 
 3. **提供名称和配额。配额目前的最大值为 5 TiB**：    
@@ -50,13 +50,13 @@ ms.locfileid: "65510509"
 > [!Note]  
 > 建议下载并安装最新的 Azure PowerShell 模块或升级到最新模块。
 
-1. 为存储帐户和密钥创建上下文：上下文封装存储帐户名称和帐户密钥。 有关从  [Azure 门户](https://portal.azure.com/)复制帐户密钥的说明，请参阅 [存储帐户访问密钥](../common/storage-account-manage.md#access-keys)。
+1.  为存储帐户和密钥创建上下文：上下文封装存储帐户名称和帐户密钥。 有关从  [Azure 门户](https://portal.azure.com/)复制帐户密钥的说明，请参阅 [存储帐户访问密钥](../common/storage-account-manage.md#access-keys)。
 
     ```powershell
     $storageContext = New-AzStorageContext <storage-account-name> <storage-account-key>
     ```
     
-2. 创建新的文件共享：    
+2.  创建新的文件共享：    
     
     ```powershell
     $share = New-AzStorageShare logs -Context $storageContext
@@ -69,7 +69,7 @@ ms.locfileid: "65510509"
 1. **若要准备使用命令行界面 (CLI)，请下载并安装 Azure CLI。**  
     请参阅 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 和 [Azure CLI 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。
 
-2. 创建可连接到存储帐户的连接字符串，你需要在该帐户中创建共享。  
+2.  创建可连接到存储帐户的连接字符串，你需要在该帐户中创建共享。  
     请将以下示例中的  ```<storage-account>``` 和 ```<resource_group>```  替换为自己的存储帐户名称和资源组：
 
    ```azurecli

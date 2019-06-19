@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
 ms.openlocfilehash: e1d47be159d4721aed4b055a51acf675688b855e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65071800"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>如何管理用于容器的 Azure Monitor 代理
@@ -39,7 +39,7 @@ ms.locfileid: "65071800"
 
 启用监视后，可能需要约 15 分钟才能查看群集的更新后运行状况指标。 若要验证代理是否成功升级，请运行以下命令：`kubectl logs omsagent-484hw --namespace=kube-system`
 
-状态应类似于以下示例，其中 omi 和 omsagent 的值应与[代理发布历史记录](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)中指定的最新版本相匹配。  
+状态应类似于以下示例，其中 omi 和 omsagent 的值应与[代理发布历史记录](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)中指定的最新版本相匹配   。  
 
     User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
     :
@@ -61,9 +61,9 @@ ms.locfileid: "65071800"
     docker-cimprov 1.0.0.31
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>如何禁用容器上的环境变量集合
-用于容器的 Azure Monitor 从在 pod 中运行的容器中收集环境变量，并将这些环境变量显示在“容器”视图中所选容器的属性窗格中。 可在部署 AKS 集群期间或之后通过设置环境变量 AZMON_COLLECT_ENV 禁用特定容器的集合来控制此行为。 此功能可从代理版本 ciprod11292018 或更高版本获得。  
+用于容器的 Azure Monitor 从在 pod 中运行的容器中收集环境变量，并将这些环境变量显示在“容器”视图中所选容器的属性窗格中  。 可在部署 AKS 集群期间或之后通过设置环境变量 AZMON_COLLECT_ENV 禁用特定容器的集合来控制此行为  。 此功能可从代理版本 ciprod11292018 或更高版本获得。  
 
-要禁用新容器或现有容器上的环境变量集合，请在 Kubernetes 部署 yaml 配置文件中将变量 AZMON_COLLECT_ENV 设置为“False”值。   
+要禁用新容器或现有容器上的环境变量集合，请在 Kubernetes 部署 yaml 配置文件中将变量 AZMON_COLLECT_ENV 设置为“False”值   。   
 
 ```  
 - name: AZMON_COLLECT_ENV  
@@ -72,9 +72,9 @@ ms.locfileid: "65071800"
 
 运行以下命令将更改应用到 AKS 容器：`kubectl apply -f  <path to yaml file>`。
 
-要验证配置更改是否生效，请在用于容器的 Azure Monitor 中的“容器”视图中选择容器，并在属性面板中展开“环境变量”。  此部分应只显示前面创建的变量 - AZMON_COLLECT_ENV=FALSE。 对于所有其他容器，环境变量部分应列出发现的所有环境变量。   
+要验证配置更改是否生效，请在用于容器的 Azure Monitor 中的“容器”视图中选择容器，并在属性面板中展开“环境变量”   。  此部分应只显示前面创建的变量 - AZMON_COLLECT_ENV=FALSE  。 对于所有其他容器，环境变量部分应列出发现的所有环境变量。   
 
-要重新启用环境变量的发现，请应用与前面相同的过程，将值从“False”更改为“True”，然后重新运行 `kubectl` 命令来更新容器。  
+要重新启用环境变量的发现，请应用与前面相同的过程，将值从“False”更改为“True”，然后重新运行 `kubectl` 命令来更新容器   。  
 
 ```  
 - name: AZMON_COLLECT_ENV  

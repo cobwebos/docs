@@ -1,6 +1,6 @@
 ---
 title: Azure 状态监视器 v2 概述 |Microsoft Docs
-description: 状态监视器 v2 的概述。 监视网站性能，无需重新部署该网站。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
+description: 状态监视器 v2 的概述。 无需重新部署网站即可监视网站性能。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
 ms.openlocfilehash: 2126408222433e6339723dc2da0d2611bb234fe8
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66734163"
 ---
 # <a name="status-monitor-v2"></a>状态监视器 v2
@@ -27,13 +27,13 @@ ms.locfileid: "66734163"
 遥测数据发送到 Azure 门户中，您可以在其中[监视器](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)您的应用程序。
 
 > [!IMPORTANT]
-> 状态监视器 v2 目前处于公共预览状态。
+> 状态监视器 v2 目前为公共预览版。
 > 没有附带服务级别协议，提供此预览版本，我们不建议将其用于生产工作负荷。 可能不支持某些功能，以及一些可能会受约束的功能。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="powershell-gallery"></a>PowerShell 库
 
-PowerShell 库位于此处： https://www.powershellgallery.com/packages/Az.ApplicationMonitor。
+PowerShell 库位于此处： https://www.powershellgallery.com/packages/Az.ApplicationMonitor 。
 
 
 ## <a name="instructions"></a>说明
@@ -83,7 +83,7 @@ PowerShell 库位于此处： https://www.powershellgallery.com/packages/Az.Appl
 
 添加更多遥测：
 
-* [创建 web 测试](monitor-web-app-availability.md)以确保你的站点保持活动状态。
+* [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
 * [添加 web 客户端遥测](../../azure-monitor/app/javascript.md)，查看网页代码中的异常，并启用跟踪调用。
 * [将 Application Insights SDK 添加到你的代码](../../azure-monitor/app/asp-net.md)以便插入跟踪和记录调用。
 

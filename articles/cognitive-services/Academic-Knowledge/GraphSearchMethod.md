@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 5d47b938560fb1bd15adfe1a1c2d35b7359d47a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61339109"
 ---
 # <a name="graph-search-method"></a>Graph 搜索方法
 
-Graph 搜索 REST API 用于根据给定 Graph 模式返回一组学术实体。  响应是一组符合用户指定约束的 Graph 路径。 Graph 路径是 Graph 节点和边缘的交错序列，格式为“v0, e0, v1, e1, ..., vn”，其中 v0 是路径的起始节点。
+Graph 搜索  REST API 用于根据给定 Graph 模式返回一组学术实体。  响应是一组符合用户指定约束的 Graph 路径。 Graph 路径是 Graph 节点和边缘的交错序列，格式为“v0, e0, v1, e1, ..., vn”  ，其中 v0  是路径的起始节点。
 <br>
 
 **REST 终结点：**  
@@ -30,32 +30,32 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 
 ## <a name="request-parameters"></a>请求参数  
 
-名称     | 值 | 必需？  | 描述
+Name     | 值 | 必需？  | 描述
 -----------|-----------|---------|--------
-**mode**       | 文本字符串 | 是 | 要使用的模式的名称。 值为 json 或 lambda。
+**mode**       | 文本字符串 | 是 | 要使用的模式的名称。 值为 json  或 lambda  。
 
-必须通过 HTTP POST 请求调用 Graph 搜索方法。 post 请求应包括内容类型请求头：application/json。
+必须通过 HTTP POST 请求调用 Graph 搜索方法。 post 请求应包括内容类型请求头：application/json  。
 
 ##### <a name="json-search"></a>JSON 搜索 
 
-对于 JSON 搜索，POST 正文是 JSON 对象。 JSON 对象描述了含用户指定约束的路径模式（对于 JSON 搜索，请参阅 [JSON 对象规范](JSONSearchSyntax.md)）。
+对于 JSON  搜索，POST 正文是 JSON 对象。 JSON 对象描述了含用户指定约束的路径模式（对于 JSON  搜索，请参阅 [JSON 对象规范](JSONSearchSyntax.md)）。
 
 
 ##### <a name="lambda-search"></a>lambda 搜索
 
-对于 lambda 搜索，POST 正文是纯文本字符串。 POST 正文是 LIKQ lambda 查询字符串，即为一个 C# 语句（对于 lambda 搜索，请参阅[查询字符串规范](LambdaSearchSyntax.md)）。 
+对于 lambda  搜索，POST 正文是纯文本字符串。 POST 正文是 LIKQ lambda 查询字符串，即为一个 C# 语句（对于 lambda  搜索，请参阅[查询字符串规范](LambdaSearchSyntax.md)）。 
 
 <br>
 
 ## <a name="response-json"></a>响应 (JSON)
 
-名称 | 描述
+Name | 描述
 -------|-----   
 **results** | 一组与查询表达式匹配的 0 个或多个实体。 每个实体都包含请求获取的属性值。 如果已成功处理请求，此字段就会显示。
 **error** | HTTP 状态代码。 如果请求失败，此字段就会显示。
-**message** | 错误消息。 如果请求失败，此字段就会显示。
+message  | 错误消息。 如果请求失败，此字段就会显示。
 
-如果无法在 800 毫秒内处理查询，就会返回超时错误。 
+如果无法在 800 毫秒  内处理查询，就会返回超时  错误。 
 
 <br>
 
@@ -66,7 +66,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?mode=json
 ```
 <br>
-对于 JSON 搜索，若要获得标题包含“Graph 引擎”且由“bin shao”撰写的论文，可以指定如下查询。
+对于 JSON  搜索，若要获得标题包含“Graph 引擎”且由“bin shao”撰写的论文，可以指定如下查询。
 
 ```JSON
 {
@@ -87,7 +87,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?mode=json
 }
 ```
 
-查询输出的是一组 Graph 路径。 Graph 路径是一组与查询路径中指定的节点对应的节点对象。 这些节点对象至少有一个表示实体 ID 的属性 CellID。 其他属性的检索方法为，通过[遍历操作对象](JSONSearchSyntax.md)的 select 运算符来指定属性名。
+查询输出的是一组 Graph 路径。 Graph 路径是一组与查询路径中指定的节点对应的节点对象。 这些节点对象至少有一个表示实体 ID 的属性 CellID  。 其他属性的检索方法为，通过[遍历操作对象  ](JSONSearchSyntax.md)的 select 运算符来指定属性名。
 
 ```JSON
 {
@@ -138,7 +138,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?mode=json
 https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?mode=lambda
 ```
 <br>
-对于 lambda 搜索，若要获取给定论文的作者 ID，可以编写如下查询。
+对于 lambda  搜索，若要获取给定论文的作者 ID，可以编写如下查询。
 
 ```
 MAG.StartFrom(@"{
@@ -149,7 +149,7 @@ MAG.StartFrom(@"{
 }").FollowEdge("AuthorIDs").VisitNode(Action.Return)
 ```
 
-lambda 搜索查询输出的也是一组 Graph 路径：
+lambda  搜索查询输出的也是一组 Graph 路径：
 
 ```JSON
 {

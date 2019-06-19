@@ -10,10 +10,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 238e5971e79b192e0ef422dcd452859ff7566580
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64721663"
 ---
 # <a name="develop-for-azure-files-with-java"></a>使用 Java 针对 Azure 文件进行开发
@@ -61,7 +61,7 @@ public static final String storageConnectionString =
 > 
 
 ## <a name="connecting-to-an-azure-storage-account"></a>连接到 Azure 存储帐户
-若要连接到存储帐户，需要使用 CloudStorageAccount 对象，将连接字符串传递到其 parse 方法。
+若要连接到存储帐户，需要使用 CloudStorageAccount  对象，将连接字符串传递到其 parse  方法。
 
 ```java
 // Use the CloudStorageAccount object to connect to your storage account
@@ -75,7 +75,7 @@ try {
 **CloudStorageAccount.parse** 会引发 InvalidKeyException，因此需将其置于 try/catch 块内。
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
-Azure 文件中的所有文件和目录都位于名为 Share 的容器内。 存储帐户可以拥有无数的共享，只要帐户容量允许。 要获得共享及其内容的访问权限，需要使用 Azure 文件客户端。
+Azure 文件中的所有文件和目录都位于名为 Share 的容器内  。 存储帐户可以拥有无数的共享，只要帐户容量允许。 要获得共享及其内容的访问权限，需要使用 Azure 文件客户端。
 
 ```java
 // Create the Azure Files client.

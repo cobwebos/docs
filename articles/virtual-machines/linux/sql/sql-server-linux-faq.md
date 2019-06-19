@@ -14,10 +14,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fb1cafcf9405576749ea91aeea033c6ee783a026
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60739261"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>在 Linux Azure 虚拟机上运行 SQL Server 的常见问题
@@ -43,21 +43,21 @@ ms.locfileid: "60739261"
 
    每隔两个月，都会使用最新的 Linux 和 Windows 更新对虚拟机库中的 SQL Server 映像进行更新。 对于 Linux 映像，这包括最新的系统更新。 对于 Windows 映像，这包括 Windows 更新中标记为重要的任何更新，以及重要的 SQL Server 安全更新和 Service Pack。 Linux 和 Windows 的 SQL Server 累积更新以不同的方式进行处理。 对于 Linux，SQL Server 累积更新也包含在刷新中。 但目前，Windows VM 不会连同 SQL Server 或 Windows Server 累积更新一起更新。
 
-1. 还会安装哪些相关的 SQL Server 包？
+1. 还会安装哪些相关的 SQL Server 包？ 
 
    若要查看默认情况下在 SQL Server Linux VM 上安装的 SQL Server 包，请参阅[安装的程序包](sql-server-linux-virtual-machines-overview.md#packages)。
 
 1. **是否可以从库中删除 SQL Server 虚拟机映像？**
 
-   可以。 Azure 只为每个主要版本维护一个映像。 例如，发布新的 SQL Server Service Pack 时，Azure 会将新映像添加到该 Service Pack 的库。 先前 Service Pack 的 SQL Server 映像将立即从 Azure 门户中删除。 但是，在接下来的三个月，仍可以通过 PowerShell 预配该映像。 三个月之后，先前的 Service Pack 映像不再可用。 如果 SQL Server 版本由于生命周期结束而不受支持，则也会应用此删除策略。
+   是的。 Azure 只为每个主要版本维护一个映像。 例如，发布新的 SQL Server Service Pack 时，Azure 会将新映像添加到该 Service Pack 的库。 先前 Service Pack 的 SQL Server 映像将立即从 Azure 门户中删除。 但是，在接下来的三个月，仍可以通过 PowerShell 预配该映像。 三个月之后，先前的 Service Pack 映像不再可用。 如果 SQL Server 版本由于生命周期结束而不受支持，则也会应用此删除策略。
 
 ## <a name="creation"></a>创建
 
-1. 如何创建装有 SQL Server 的 Linux Azure 虚拟机？
+1. 如何创建装有 SQL Server 的 Linux Azure 虚拟机？ 
 
    最简单的解决方法是创建包含 SQL Server 的 Linux 虚拟机。 有关注册 Azure 并从门户创建 SQL VM 的教程，请参阅[在 Azure 门户中预配 Linux SQL Server 虚拟机](provision-sql-server-linux-virtual-machine.md)。 此外，你也可以选用免费许可版（开发人员版或速成版），或通过重新使用本地许可证在 VM 上手动安装 SQL Server。 如果自带许可，必须[在 Azure 上通过软件保障实现许可证移动性](https://azure.microsoft.com/pricing/license-mobility)。
 
-1. 为什么无法使用有支出限制的 Azure 订阅来设置 RHEL 或 SLES SQL Server VM？
+1. 为什么无法使用有支出限制的 Azure 订阅来设置 RHEL 或 SLES SQL Server VM？ 
 
    RHEL 和 SLES 虚拟机需要无支出限制的订阅和与订阅相关联的经验证付款方式（通常为信用卡）。 如果你在设置 RHEL 或 SLES VM 时没有删除支出限制，订阅将被禁用，并且所有 VM/服务都将停止。 如果你确实进入了此状态，请重新启用订阅[删除支出限制](https://account.windowsazure.com/subscriptions)。 如果你选择重新启动并继续运行，则剩余信用额度将在当前账单周期恢复，但 RHEL 或 SLES VM 映像附加费将会从你的信用卡中扣除。
 
@@ -67,7 +67,7 @@ ms.locfileid: "60739261"
 
    首先，创建仅限 Linux OS 的虚拟机。 然后，运行适用于 Linux 分发版的 [SQL Server 安装步骤](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms)。 除非你要安装 SQL Server 的一个免费许可版，否则还必须拥有 SQL Server 许可证和[通过 Azure 上的软件保障的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)。
 
-1. 是否有适用于 SQL Server 的自带许可 (BYOL) Linux 虚拟机映像？
+1. 是否有适用于 SQL Server 的自带许可 (BYOL) Linux 虚拟机映像？ 
 
    目前，没有适用于 SQL Server 的任何 BYOL Linux 虚拟机映像。 但是，可以在仅限 Linux 的 VM 上手动安装 SQL Server ，如前面问题中所述。
 
@@ -93,7 +93,7 @@ ms.locfileid: "60739261"
 
 ## <a name="general"></a>常规
 
-1. Azure VM 上是否支持 SQL Server 的高可用性解决方案？
+1. Azure VM 上是否支持 SQL Server 的高可用性解决方案？ 
 
    现在不行。 Always On 可用性组和故障转移群集都需要 Linux 中的聚类分析解决方案，如 Pacemaker。 SQL Server 受支持的 Linux 分发版在云中不支持其高可用性加载项。
 

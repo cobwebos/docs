@@ -37,9 +37,9 @@ ms.locfileid: "60388669"
 
 | 分发 | Version |
 |---|---|
-| Windows 10（最高版本 1803）| 核心 |
-| Windows Server 2016 | 核心 |
-| Windows Server 2012R2 | 核心 |
+| Windows 10（最高版本 1803）| Core |
+| Windows Server 2016 | Core |
+| Windows Server 2012R2 | Core |
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -74,8 +74,8 @@ ms.locfileid: "60388669"
 | Name | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | 字符串 |
-| type | NvidiaGpuDriverWindows | 字符串 |
+| publisher | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
 
@@ -162,7 +162,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | 错误代码 | 含义 | 可能的操作 |
 | :---: | --- | --- |
 | 0 | 操作成功 |
-| 第 | 操作成功。 需要重新启动。 |
+| 1 | 操作成功。 需要重新启动。 |
 | 100 | 操作不受支持或无法完成。 | 可能的原因：不支持 PowerShell 版本、VM 大小不是 N 系列 VM、下载数据失败。 请检查日志文件，以确定错误原因。 |
 | 240、840 | 操作超时。 | 请重试操作。 |
 | -1 | 发生异常。 | 请检查日志文件，以确定异常原因。 |

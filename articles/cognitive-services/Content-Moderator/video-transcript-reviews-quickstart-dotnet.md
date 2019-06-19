@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
 ms.openlocfilehash: fa782f687979f1d32cdf1c18bd08f6672e39adfe
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64868589"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>使用 .NET 创建视频脚本评论
@@ -48,9 +48,9 @@ ms.locfileid: "64868589"
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用(.NET Framework)”项目。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”项目  。
 
-1. 将项目命名为“VideoTranscriptReviews”。
+1. 将项目命名为“VideoTranscriptReviews”  。
 
 1. 将此项目选为解决方案的单一启动项目。
 
@@ -157,9 +157,9 @@ public static ContentModeratorClient NewClient()
 1. **IList\<CreateVideoReviewsBodyItem >** 对象。 每个 CreateVideoReviewsBodyItem  对象表示一次视频审查。 本快速入门一次创建一条评论。
 
 **CreateVideoReviewsBodyItem** 具有多个属性。 至少应设置以下属性：
-- Content。 要评论的视频的 URL。
-- ContentId。 要分配给视频评论的 ID。
-- Status。 将该值设置为“未发布”。 如果未进行设置，则默认为“挂起”，这意味着视频评论已发布并且正在等待人工评论。 视频评论发布后，就无法再向其中添加视频帧、脚本或脚本审查结果。
+- Content  。 要评论的视频的 URL。
+- ContentId  。 要分配给视频评论的 ID。
+- Status  。 将该值设置为“未发布”。 如果未进行设置，则默认为“挂起”，这意味着视频评论已发布并且正在等待人工评论。 视频评论发布后，就无法再向其中添加视频帧、脚本或脚本审查结果。
 
 > [!NOTE]
 > **CreateVideoReviews**返回 IList\<字符串 >。 这些字符串中的每一个都包含视频评论 ID。 这些 ID 是 GUID，与 **ContentId** 属性的值不同。
@@ -376,7 +376,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>导航到视频脚本评论
 
-转到“评论”>“视频”>“视频”屏幕上内容审查器评论工具中的的视频脚本评论。
+转到“评论”>“视频”>“视频”屏幕上内容审查器评论工具中的的视频脚本评论    。
 
 你会看到以下功能：
 - 你添加的两行脚本

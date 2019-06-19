@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: security
 ms.reviewer: rochiou
 ms.openlocfilehash: 6f92c609cbc9c5ba7d5d185b369bbf0a9d798a3e
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66743099"
 ---
 # <a name="azure-services-by-fedramp-and-dod-cc-srg-audit-scope"></a>Azure 服务的 FedRAMP 和 DoD CC SRG 审核作用域

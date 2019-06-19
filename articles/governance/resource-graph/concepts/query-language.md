@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: dcb21a6aedf16b034fad4f0822e22758dda03c33
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65800512"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
@@ -69,7 +69,7 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每项工作�
 
   - **bash** - `\`
 
-    转义属性的示例查询_\$类型_在 bash 中：
+    转义属性的示例查询 _\$类型_在 bash 中：
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
@@ -79,7 +79,7 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每项工作�
 
   - **PowerShell** - ``` ` ```
 
-    转义属性的示例查询_\$类型_在 PowerShell 中：
+    转义属性的示例查询 _\$类型_在 PowerShell 中：
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type

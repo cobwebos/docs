@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pabutler
 ms.openlocfilehash: 8ec1a6a6ec77838ec75666d219d90739bf74517b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943273"
 ---
 # <a name="new-offer-menu"></a>“新产品/服务”菜单
 
-“新产品/服务”菜单可使合作伙伴能够创建[云合作伙伴门户](https://cloudpartner.azure.com)支持的产品/服务类型的实例。  选择左侧导航菜单栏上的“新产品/服务”菜单项，随即将显示以下产品/服务类型的列表。  选择任一类型即可开始进行产品/服务的创建和发布过程。
+“新产品/服务”菜单可使合作伙伴能够创建[云合作伙伴门户](https://cloudpartner.azure.com)支持的产品/服务类型的实例  。  选择左侧导航菜单栏上的“新产品/服务”菜单项，随即将显示以下产品/服务类型的列表  。  选择任一类型即可开始进行产品/服务的创建和发布过程。
 
 |    **新产品/服务菜单项**     |     **相应的文档部分**                       |
 |    -----------------------     |     -----------------------------                       |

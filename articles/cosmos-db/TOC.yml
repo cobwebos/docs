@@ -145,6 +145,12 @@
             - name: 索引策略
               displayName: 'consistent, none'
               href: index-policy.md
+        - name: 数据类型
+          items:
+            - name: DateTime
+              href: working-with-dates.md
+            - name: 地理空间
+              href: geospatial.md
         - name: 生存时间
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md
@@ -164,7 +170,11 @@
           displayName: change feed
           href: change-feed-functions.md
     - name: 将内置分析功能与 Apache Spark 配合使用
-      href: spark-api-introduction.md
+      items:
+        - name: 介绍
+          href: spark-api-introduction.md
+        - name: Lambda 架构
+          href: lambda-architecture.md
     - name: 服务器端编程
       items:
         - name: 存储过程、触发器和 UDF
@@ -480,8 +490,16 @@
           href: bootstrap-kubernetes-cluster.md
 - name: 操作指南
   items:
-    - name: 管理 Azure Cosmos 帐户
+    - name: 使用 Azure Cosmos 帐户
       href: how-to-manage-database-account.md
+    - name: 使用 Azure Cosmos DB 资源
+      items:
+        - name: 使用 PowerShell
+          href: manage-with-powershell.md
+        - name: 使用 Azure CLI
+          href: manage-with-cli.md
+        - name: 使用资源管理器模板
+          href: manage-sql-with-resource-manager.md
     - name: 全球分布
       items:
         - name: 配置多主数据库
@@ -506,6 +524,12 @@
           href: find-request-unit-charge.md
     - name: 使用容器和项
       items:
+        - name: 使用 Cosmos DB 数据
+          items:
+            - name: 使用 Azure 存储资源管理器处理数据
+              href: storage-explorer.md
+            - name: 使用 Azure Cosmos 资源管理器处理数据
+              href: data-explorer.md
         - name: 创建容器
           href: how-to-create-container.md
         - name: 使用大型分区键创建容器
@@ -520,10 +544,6 @@
         - name: 配置生存时间
           displayName: 'delete, delete data, ttl'
           href: how-to-time-to-live.md
-        - name: 使用 Azure 存储资源管理器处理数据
-          href: storage-explorer.md
-        - name: 使用 Azure Cosmos 资源管理器处理数据
-          href: data-explorer.md
         - name: 管理索引策略
           href: how-to-manage-indexing-policy.md
         - name: 定义唯一键
@@ -531,14 +551,48 @@
         - name: SQL 子查询示例
           displayName: 'subquery, exists'
           href: how-to-sql-subquery.md
+    - name: 最佳做法
+      items:
+        - name: 性能提示
+          items:
+            - name: 获取查询执行指标
+              displayName: 'query profile, profile'
+              href: profile-sql-api-query.md
+            - name: 调整查询性能
+              href: sql-api-query-metrics.md
+            - name: .NET SDK 性能提示
+              href: performance-tips.md
+            - name: Java SDK 性能提示
+              href: performance-tips-java.md
+            - name: Async Java SDK 性能提示
+              href: performance-tips-async-java.md
+            - name: 性能测试 - 示例应用
+              href: performance-testing.md
+        - name: 以经济高效的方式读取和写入
+          href: key-value-store-cost.md
+    - name: 故障排除
+      items:
+        - name: 排查 Java Async SDK 问题
+          href: troubleshoot-java-async-sdk.md
+        - name: 排查 .NET SDK 问题
+          href: troubleshoot-dot-net-sdk.md
     - name: 更改源
       items:
+        - name: Azure Cosmos DB 触发器日志
+          href: how-to-configure-cosmos-db-trigger-logs.md
         - name: Azure Cosmos DB 触发器连接策略
           href: how-to-configure-cosmos-db-trigger-connection-policy.md
         - name: 多个 Azure Cosmos DB 触发器
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: 排查 Azure Cosmos DB 触发器问题
           href: troubleshoot-changefeed-functions.md
+    - name: 将内置分析功能与 Apache Spark 配合使用
+      items:
+        - name: Azure Databricks Spark 连接器
+          href: spark-connector.md
+        - name: 使用 Apache Kafka 和 Cosmos DB 进行流式处理
+          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
+          maintainContext: true
     - name: 服务器端编程
       items:
         - name: 编写存储过程、触发器和 UDF
@@ -557,18 +611,12 @@
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: 使用 Key Vault 保护 Azure Cosmos 密钥
           href: access-secrets-from-keyvault.md
+        - name: 使用 Azure AD 进行基于证书的身份验证
+          href: certificate-based-authentication.md
     - name: 企业就绪情况
       items:
         - name: 从备份还原数据
           href: how-to-backup-and-restore.md
-    - name: 管理 Azure Cosmos DB 资源
-      items:
-        - name: 使用 PowerShell 管理
-          href: manage-with-powershell.md
-        - name: 使用 Azure CLI 进行管理
-          href: manage-with-cli.md
-        - name: 使用资源管理器模板进行管理
-          href: manage-sql-with-resource-manager.md
     - name: 日志记录
       items:
         - name: 诊断日志记录
@@ -592,30 +640,6 @@
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
     - name: 设置 Azure DevOps CI/CD 管道
       href: tutorial-setup-ci-cd.md
-    - name: 数据类型
-      items:
-        - name: DateTime
-          href: working-with-dates.md
-        - name: 地理空间
-          href: geospatial.md
-    - name: 最佳做法
-      items:
-        - name: 性能提示
-          items:
-            - name: 获取查询执行指标
-              href: profile-sql-api-query.md
-            - name: 调整查询性能
-              href: sql-api-query-metrics.md
-            - name: .NET SDK 性能提示
-              href: performance-tips.md
-            - name: Java SDK 性能提示
-              href: performance-tips-java.md
-            - name: Async Java SDK 性能提示
-              href: performance-tips-async-java.md
-            - name: 性能测试 - 示例应用
-              href: performance-testing.md
-        - name: 以经济高效的方式读取和写入
-          href: key-value-store-cost.md
     - name: 将 Cosmos DB 数据可视化
       items:
         - name: 使用 Power BI
@@ -651,13 +675,6 @@
         - name: 使用 Spring Boot Starter
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
           maintainContext: true
-        - name: Lambda 架构
-          href: lambda-architecture.md
-        - name: Azure Databricks（Spark 连接器）
-          href: spark-connector.md
-        - name: Spark 和 Kafka
-          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
-          maintainContext: true
         - name: ODBC 驱动程序
           href: odbc-driver.md
     - name: 批量执行程序库
@@ -668,12 +685,6 @@
           href: bulk-executor-dot-net.md
         - name: 批量执行程序 - Java 库
           href: bulk-executor-java.md
-    - name: 故障排除
-      items:
-        - name: 排查 Java Async SDK 问题
-          href: troubleshoot-java-async-sdk.md
-        - name: 排查 .NET SDK 问题
-          href: troubleshoot-dot-net-sdk.md
 - name: 引用
   items:
     - name: .NET

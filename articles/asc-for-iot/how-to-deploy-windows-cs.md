@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
 ms.openlocfilehash: 64fc576885bb9d9c3c46aafd808db65d2f8ff77f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65200603"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>为 IoT 部署 Azure 安全中心C#-基于 Windows 的安全代理
@@ -100,7 +100,7 @@ ms.locfileid: "65200603"
 
 ## <a name="troubleshooting"></a>故障排除
 
-如果代理无法启动，请启用日志记录（日志记录默认设置为“禁用”）以获取更多信息。
+如果代理无法启动，请启用日志记录（日志记录默认设置为“禁用”  ）以获取更多信息。
 
 若要启用日志记录，请执行以下操作：
 
@@ -116,7 +116,7 @@ ms.locfileid: "65200603"
    ```
 
     > [!NOTE]
-    > 建议在故障排除操作完成后关闭日志记录功能。 让日志记录保持启用状态会增加日志文件大小和数据使用量。 
+    > 建议在故障排除操作完成后关闭日志记录功能。  让日志记录保持启用状态会增加日志文件大小和数据使用量。  
 
 1. 运行以下 PowerShell 或命令行，以便重启代理：
 

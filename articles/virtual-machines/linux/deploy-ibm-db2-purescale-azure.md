@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
 ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60716041"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
@@ -118,7 +118,7 @@ GitHub 存储库包含一个响应 (.rsp) 文件 DB2server.rsp，通过该文件
 
 - 设置脚本使用 iSCSI 磁盘的别名，以便可以轻松找到实际名称。
 
-- 在 d0 上运行设置脚本时，d1、cf0 和 cf1 上的 /dev/dm-\* 值可能不同。 值之间的差异不会影响 DB2 pureScale 设置。
+- 在 d0 上运行设置脚本时，d1、cf0 和 cf1 上的 /dev/dm-\* 值可能不同  。 值之间的差异不会影响 DB2 pureScale 设置。
 
 ## <a name="troubleshooting-and-known-issues"></a>故障排除和已知问题
 

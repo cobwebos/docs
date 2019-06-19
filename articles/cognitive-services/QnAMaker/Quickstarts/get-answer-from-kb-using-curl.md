@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 42ca0c116521b7493c587271422fa760f2376533
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 817a19d5cabd7d20dc17154f29b4430e6b96c5fa
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65767229"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072044"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>快速入门：使用 cURL 从知识库获取答案
 
@@ -23,7 +23,7 @@ ms.locfileid: "65767229"
 
 ## <a name="prerequisites"></a>必备组件
 
-* 最新的 [cURL](https://curl.haxx.se/)。
+* 最新的 [  cURL](https://curl.haxx.se/)。
 * 必须拥有 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)，并拥有[包含问题和答案的知识库](../Tutorials/create-publish-query-in-portal.md)。
 
 ## <a name="publish-to-get-endpoint"></a>通过发布来获取终结点
@@ -32,7 +32,7 @@ ms.locfileid: "65767229"
 
 ## <a name="use-production-endpoint-with-curl"></a>通过 cURL 使用生产终结点
 
-发布知识库后，“发布”页将显示 HTTP 请求设置以生成答案。 “CURL”选项卡显示了从命令行工具 [CURL](https://www.getpostman.com) 生成答案所需的设置。
+发布知识库后，“发布”页将显示 HTTP 请求设置以生成答案  。  “CURL”选项卡显示了从命令行工具 [CURL](https://www.getpostman.com) 生成答案所需的设置。
 
 [![发布结果](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 

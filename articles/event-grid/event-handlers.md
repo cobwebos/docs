@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 915d1284d66438219fc9aba893512e5f6a5b02b3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 6093e1017af2fb8c54eaf1c3192f937172567982
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305046"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080560"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure 事件网格中的事件处理程序
 
@@ -78,9 +78,45 @@ ms.locfileid: "66305046"
 
 请注意，服务总线时如处理程序是在公共预览版中，您必须安装 CLI 或 PowerShell 扩展时使用这些凭据创建事件订阅。
 
-### <a name="using-cli"></a>使用 CLI
+### <a name="install-extension-for-azure-cli"></a>安装适用于 Azure CLI 的扩展
 
-以下示例订阅的 Azure CLI 连接到服务总线队列的事件网格主题和：
+对于 Azure CLI，需要[事件网格扩展](/cli/azure/azure-cli-extensions-list)。
+
+在 [CloudShell](/azure/cloud-shell/quickstart) 中：
+
+* 如果您以前安装扩展，将其与更新`az extension update -n eventgrid`。
+* 如果你以前尚未安装该扩展，安装使用`az extension add -n eventgrid`。
+
+对于本地安装：
+
+1. [安装 Azure CLI](/cli/azure/install-azure-cli)。 请确保通过检查与具有最新版本， `az --version`。
+1. 卸载早期版本的扩展的`az extension remove -n eventgrid`。
+1. 安装`eventgrid`扩展名`az extension add -n eventgrid`。
+
+### <a name="install-module-for-powershell"></a>安装适用于 PowerShell 的模块
+
+对于 PowerShell，需要 [AzureRM.EventGrid 模块](https://www.powershellgallery.com/packages/AzureRM.EventGrid/0.4.1-preview)。
+
+在 [CloudShell](/azure/cloud-shell/quickstart-powershell) 中：
+
+* 安装的模块`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`。
+
+对于本地安装：
+
+1. 以管理员身份打开 PowerShell 控制台。
+1. 安装的模块`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`。
+
+如果 `-AllowPrerelease` 参数不可用，请使用以下步骤：
+
+1. 运行 `Install-Module PowerShellGet -Force`。
+1. 运行 `Update-Module PowerShellGet`。
+1. 关闭 PowerShell 控制台。
+1. 以管理员身份重新启动 PowerShell。
+1. 安装模块`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`。
+
+### <a name="using-cli-to-add-a-service-bus-handler"></a>使用 CLI 添加服务总线处理程序
+
+有关 Azure CLI，下面的示例订阅，并连接到服务总线队列的事件网格主题：
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.

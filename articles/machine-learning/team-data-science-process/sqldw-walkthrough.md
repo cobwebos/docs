@@ -12,10 +12,10 @@ ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f9da031fd4b35c2fa9126f545eecacf6143b18a1
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66478857"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>团队数据科学过程实务：使用 SQL 数据仓库

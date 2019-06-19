@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: magattus
 ms.openlocfilehash: 6bd1d24cdece91265a7355678ea2bc0b0f9e3910
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60767992"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>通过 Azure CDN 进行动态站点加速
@@ -27,12 +27,12 @@ ms.locfileid: "60767992"
 
 标准内容分发网络 (CDN) 功能包括更接近于最终用户缓存文件，以加快静态文件的分发这一功能。 但是，使用动态 web 应用程序无法在边缘位置缓存该内容，因为服务器将生成内容以响应用户行为。 加快此类内容交付比传统边缘缓存更加复杂，需要沿着从开始到交付的整个数据路径微调每个元素的端到端解决方案。 通过 Azure CDN 动态站点加速 (DSA) 优化，显著改进了包含动态内容的网页性能。
 
-在终结点创建期间，Akamai 的 Azure CDN 和 Verizon 的 Azure CDN 都通过“优化对象”菜单提供 DSA 优化。 通过提供来自 Microsoft 的动态站点加速[Azure 第一道防线服务](https://docs.microsoft.com/azure/frontdoor/front-door-overview)。
+在终结点创建期间，Akamai 的 Azure CDN 和 Verizon 的 Azure CDN 都通过“优化对象”菜单提供 DSA 优化    。 通过提供来自 Microsoft 的动态站点加速[Azure 第一道防线服务](https://docs.microsoft.com/azure/frontdoor/front-door-overview)。
 
 > [!Important]
-> 对于“Akamai 的 Azure CDN”配置文件，可以在创建 CDN 终结点后更改其优化设置。
+> 对于“Akamai 的 Azure CDN”  配置文件，可以在创建 CDN 终结点后更改其优化设置。
 >   
-> 对于“Verizon 的 Azure CDN”配置文件，无法在创建 CDN 终结点后更改其优化设置。
+> 对于“Verizon 的 Azure CDN”  配置文件，无法在创建 CDN 终结点后更改其优化设置。
 
 ## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>配置 CDN 终结点，以加速动态文件的交付
 
@@ -40,34 +40,34 @@ ms.locfileid: "60767992"
 
 **若要使用 Azure 门户为 CDN 终结点配置 DSA 优化，请执行以下操作：**
 
-1. 在“CDN 配置文件”页中，选择“终结点”。
+1. 在“CDN 配置文件”页中，选择“终结点”   。
 
    ![添加新的 CDN 终结点](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
-   此时会显示“添加终结点”窗格。
+   此时会显示“添加终结点”  窗格。
 
-2. 在“优化对象”下，选择“动态站点加速”。
+2. 在“优化对象”  下，选择“动态站点加速”  。
 
     ![创建使用 DSA 的新 CDN 终结点](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
 
-3. 对于“探测路径”，输入文件的有效路径。
+3. 对于“探测路径”  ，输入文件的有效路径。
 
-    探测路径是一项特定于 DSA 的功能，创建时需要一个有效路径。 DSA 使用一个放置在源服务器上的较小“探测路径”文件来优化 CDN 的网络路由配置。 如需探测路径文件，可以下载示例文件并将其上传到你的站点，或者使用源上现有的约 10 KB 大小的资产。
+    探测路径是一项特定于 DSA 的功能，创建时需要一个有效路径。 DSA 使用一个放置在源服务器上的较小“探测路径”  文件来优化 CDN 的网络路由配置。 如需探测路径文件，可以下载示例文件并将其上传到你的站点，或者使用源上现有的约 10 KB 大小的资产。
 
-4. 输入其他所需的终结点选项（有关详细信息，请参阅[新建 CDN 终结点](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)），然后选择“添加”。
+4. 输入其他所需的终结点选项（有关详细信息，请参阅[新建 CDN 终结点](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)），然后选择“添加”  。
 
    创建 CDN 终结点后，它会将 DSA 优化应用于符合特定条件的所有文件。 
 
 
 **若要为现有终结点配置 DSA（仅限“Akamai 的 Azure CDN”配置文件），请执行以下操作：**
 
-1. 在“CDN 配置文件”页中，选择要修改的终结点。
+1. 在“CDN 配置文件”  页中，选择要修改的终结点。
 
-2. 在左窗格中，选择“优化”。 
+2. 在左窗格中，选择“优化”  。 
 
-   此时将显示“优化”页。
+   此时将显示“优化”  页。
 
-3. 在“优化对象”下，选择“动态站点加速”，然后选择“保存”。
+3. 在“优化对象”  下，选择“动态站点加速”  ，然后选择“保存”  。
 
 > [!Note]
 > DSA 会产生额外费用。 有关详细信息，请参阅[内容分发网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
@@ -103,7 +103,7 @@ Akamai 网络使用技术来收集实时数据，并比较通过 Akamai 服务�
 
 #### <a name="eliminating-tcp-slow-start"></a>消除 TCP 慢启动
 
-TCP 慢启动是 TCP 协议的算法，用于通过限制通过网络发送的数据量来防止网络拥塞。 它从发送者和接收者之间的较小拥塞窗口大小开始，直到达到最大值或检测到数据包丢失。
+TCP 慢启动  是 TCP 协议的算法，用于通过限制通过网络发送的数据量来防止网络拥塞。 它从发送者和接收者之间的较小拥塞窗口大小开始，直到达到最大值或检测到数据包丢失。
 
  **Akamai 的 Azure CDN** 和 **Verizon 的 Azure CDN** 配置文件使用以下三个步骤消除 TCP 慢启动：
 
@@ -133,7 +133,7 @@ TCP 慢启动是 TCP 协议的算法，用于通过限制通过网络发送的�
 
 大多数网站包含引用映像和脚本等各种其他资源的 HTML 页。 通常情况下，当客户端请求网页时，浏览器将首先下载和分析 HTML 对象，然后对完全加载页所需的链接资产进行其他请求。 
 
-“预提取”是一种在 HTML 服务于浏览器时，以及在浏览器做出这些对象请求之前，用于检索嵌入在 HTML 页中的图像和脚本的技术。 
+“预提取”  是一种在 HTML 服务于浏览器时，以及在浏览器做出这些对象请求之前，用于检索嵌入在 HTML 页中的图像和脚本的技术。 
 
 如果 CDN 向客户端浏览器提供 HTML 基本页时打开了“预提取”选项，CDN 将分析 HTML 文件并对任何链接资源进行额外的请求并将其存储在其缓存中。 当客户端发出对链接资产的请求时，CDN 边缘服务器已拥有所请求的对象，且可以立即提供服务，而不必往返于原点。 此优化有益于可缓存和不可缓存内容。
 
@@ -157,25 +157,25 @@ JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
 访问缓存规则：
 
-1. 从“CDN 配置文件”页面中，在“设置”下，选择“缓存规则”。  
+1. 从“CDN 配置文件”页面中，在“设置”下，选择“缓存规则”。    
     
     ![CDN 缓存规则按钮](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
-    “缓存规则”页随即打开。
+    “缓存规则”  页随即打开。
 
 2. 创建一个全局的或自定义的缓存规则，来为 DSA 终结点启用缓存。 
 
-仅对于“Verizon 提供的高级 Azure CDN”配置文件，可以通过使用[规则引擎](cdn-rules-engine.md)为特定 DSA 终结点启用缓存。 创建的任何规则仅影响配置文件中已针对 DSA 进行优化的这些终结点。 
+仅对于“Verizon 提供的高级 Azure CDN”  配置文件，可以通过使用[规则引擎](cdn-rules-engine.md)为特定 DSA 终结点启用缓存。 创建的任何规则仅影响配置文件中已针对 DSA 进行优化的这些终结点。 
 
 访问规则引擎：
     
-1. 从“CDN 配置文件”页中，选择“管理”。  
+1. 从“CDN 配置文件”页中，选择“管理”   。  
     
     ![CDN 配置文件管理按钮](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     CDN 管理门户打开。
 
-2. 在 CDN 管理门户中，依次选择 **ADN**、“规则引擎”。 
+2. 在 CDN 管理门户中，依次选择 **ADN**、“规则引擎”  。 
 
     ![适用于 DSA 的规则引擎](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 

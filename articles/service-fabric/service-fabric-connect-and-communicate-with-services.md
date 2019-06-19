@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 55a0a1a8097ea46c7a3407b5f42824973edcf1a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60882235"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>在 Service Fabric 中与服务建立连接和通信

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
 ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60830001"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>如何排查 Azure Redis 缓存问题
@@ -47,7 +47,7 @@ ms.locfileid: "60830001"
 
 ### <a name="memory-pressure-on-the-client"></a>客户端内存压力
 
-客户端计算机上出现的内存压力会导致各种性能问题，这些问题可能会延迟对缓存所发出的响应的处理。 出现内存压力时，系统可能会将数据分页到磁盘。 此分页错误导致系统性能显著下降。
+客户端计算机上出现的内存压力会导致各种性能问题，这些问题可能会延迟对缓存所发出的响应的处理。 出现内存压力时，系统可能会将数据分页到磁盘。 此分页错误  导致系统性能显著下降。
 
 检测客户端上的内存压力：
 
@@ -79,7 +79,7 @@ ms.locfileid: "60830001"
 
 客户端 CPU 使用率偏高表示系统跟不上所要求执行的工作的进度。 即使缓存发送响应的速度很快，客户端也可能无法及时处理该响应。
 
-使用 Azure 门户中提供的指标或者通过计算机上的性能计数器监视客户端的系统范围的 CPU 使用率。 请注意不要监视进程 CPU，因为即使单个进程的 CPU 使用率较低，但系统范围的 CPU 使用率也可能很高。 注意与超时相对应的 CPU 使用率峰值。 CPU 使用率较高可能还会导致 `TimeoutException` 错误消息中出现较大的 `in: XXX` 值，如[流量激增](#burst-of-traffic)部分所述。
+使用 Azure 门户中提供的指标或者通过计算机上的性能计数器监视客户端的系统范围的 CPU 使用率。 请注意不要监视进程 CPU，因为即使单个进程的 CPU 使用率较低，但系统范围的 CPU 使用率也可能很高。  注意与超时相对应的 CPU 使用率峰值。 CPU 使用率较高可能还会导致 `TimeoutException` 错误消息中出现较大的 `in: XXX` 值，如[流量激增](#burst-of-traffic)部分所述。
 
 > [!NOTE]
 > StackExchange.Redis 1.1.603 及更高版本在 `TimeoutException` 错误消息中包括了 `local-cpu` 指标。 确保使用最新版本的 [StackExchange.Redis NuGet 包](https://www.nuget.org/packages/StackExchange.Redis/)。 我们会不断对代码中的 Bug 进行修正，以便更好地应对超时情况。因此，请务必使用最新的版本。
@@ -135,7 +135,7 @@ ms.locfileid: "60830001"
 
 ### <a name="memory-pressure-on-the-server"></a>服务器上的内存压力
 
-服务器端的内存压力会导致各种性能问题，从而延缓对请求的处理。 出现内存压力时，系统可能会将数据分页到磁盘。 此分页错误导致系统性能显著下降。 这种内存压力可能有多个原因：
+服务器端的内存压力会导致各种性能问题，从而延缓对请求的处理。 出现内存压力时，系统可能会将数据分页到磁盘。 此分页错误  导致系统性能显著下降。 这种内存压力可能有多个原因：
 
 - 缓存中填充的数据即将达到其最大容量。
 - Redis 出现大量内存碎片。 这种碎片往往是存储大型对象造成的，因为 Redis 已针对小型对象进行优化。
@@ -202,7 +202,7 @@ StackExchange.Redis 使用名为 `synctimeout` 的配置设置进行同步操作
 | --- | --- |
 | inst |在上一个时间切片中：已发出了 0 个命令 |
 | mgr |套接字管理器正在执行 `socket.select`，即，它正在请求 OS 指示一个需要执行某种操作的套接字。 读取器并未主动从网络读取数据，因为它认为不需执行任何操作 |
-| 队列 |总共有 73 个正在进行的操作 |
+| queue |总共有 73 个正在进行的操作 |
 | qu |正在进行的操作中，有 6 个操作位于未发送队列中，而尚未写入到出站网络 |
 | qs |正在进行的操作中，有 67 个操作已发送给服务器，但尚未得到响应。 响应可能为 `Not yet sent by the server` 或 `sent by the server but not yet processed by the client.` |
 | qc |正在进行的操作中，有 0 个操作已看到回复，但尚未标记为完成，因为它们正在完成循环中等待 |

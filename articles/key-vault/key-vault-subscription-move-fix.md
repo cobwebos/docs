@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
 ms.openlocfilehash: f32146697be234a8a288ff991b1f7adf6e76dc7e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64724491"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>订阅移动后更改密钥保管库租户 ID
@@ -39,7 +39,7 @@ $vault.Properties.AccessPolicies = @()
 Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>
 
-因为移动前此保管库位于租户 A，所以“$vault.Properties.TenantId”的原始值为租户 A，而“(Get-AzContext).Tenant.TenantId”的值为租户 B。
+因为移动前此保管库位于租户 A，所以“$vault.Properties.TenantId”的原始值为租户 A，而“(Get-AzContext).Tenant.TenantId”的值为租户 B   。
 
 现在，保管库与正确的租户 ID 相关联，并且会删除旧的访问策略条目，请使用 [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) 设置新的访问策略条目。
 

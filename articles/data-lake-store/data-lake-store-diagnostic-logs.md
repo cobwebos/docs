@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878670"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>访问 Azure Data Lake Storage Gen1 的诊断日志
@@ -30,21 +30,21 @@ ms.locfileid: "60878670"
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>对 Data Lake Storage Gen1 帐户启用诊断日志记录
 1. 登录到新的 [Azure 门户](https://portal.azure.com)。
-2. 打开 Data Lake Storage Gen1 帐户，在 Data Lake Storage Gen1 帐户边栏选项卡中单击“诊断设置”。
-3. 在“诊断设置”边栏选项卡中，单击“启用诊断”。
+2. 打开 Data Lake Storage Gen1 帐户，在 Data Lake Storage Gen1 帐户边栏选项卡中单击“诊断设置”  。
+3. 在“诊断设置”  边栏选项卡中，单击“启用诊断”  。
 
     ![启用诊断日志记录](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "启用诊断日志")
 
-3. 在“诊断设置”边栏选项卡上，作出以下更改来配置诊断日志记录。
+3. 在“诊断设置”  边栏选项卡上，作出以下更改来配置诊断日志记录。
    
     ![启用诊断日志记录](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "启用诊断日志")
    
-   * 对于“名称”，请输入诊断日志配置的值。
+   * 对于“名称”，请输入诊断日志配置的值  。
    * 可选择以不同的方式存储/处理数据。
      
-        * 选择选项“存档到存储帐户”将日志存储到 Azure 存储帐户。 要存档以后会进行批处理的数据时使用此选项。 如果选择此选项，必须提供一个要将日志保存到的 Azure 存储帐户。
+        * 选择选项“存档到存储帐户”  将日志存储到 Azure 存储帐户。 要存档以后会进行批处理的数据时使用此选项。 如果选择此选项，必须提供一个要将日志保存到的 Azure 存储帐户。
         
-        * 选择选项“流式传输到事件中心”将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时最可能使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
+        * 选择选项“流式传输到事件中心”  将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时最可能使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
 
         * 选择选项**发送到 Log Analytics**若要使用 Azure Monitor 服务分析生成的日志数据。 如果选择此选项，必须提供要用于执行日志分析的 Log Analytics 工作区的详细信息。 请参阅[查看或分析使用 Azure Monitor 日志搜索收集的数据](../azure-monitor/learn/tutorial-viewdata.md)有关使用 Azure Monitor 的详细信息记录。
      
@@ -52,7 +52,7 @@ ms.locfileid: "60878670"
    * 指定数据必须保留的天数。 保留期仅在使用 Azure 存储帐户存档日志数据时才适用。
    * 单击“ **保存**”。
 
-启用诊断设置后，可在“诊断日志”选项卡中查看日志。
+启用诊断设置后，可在“诊断日志”  选项卡中查看日志。
 
 ## <a name="view-diagnostic-logs-for-your-data-lake-storage-gen1-account"></a>查看 Data Lake Storage Gen1 帐户诊断日志
 查看 Data Lake Storage Gen1 帐户日志数据有两种方式。
@@ -61,17 +61,17 @@ ms.locfileid: "60878670"
 * 从存储数据的 Azure 存储帐户查看
 
 ### <a name="using-the-data-lake-storage-gen1-settings-view"></a>使用 Data Lake Storage Gen1 设置视图
-1. 从 Data Lake Storage Gen1 帐户的“设置”边栏选项卡，单击“诊断日志”。
+1. 从 Data Lake Storage Gen1 帐户的“设置”  边栏选项卡，单击“诊断日志”  。
    
     ![查看诊断日志](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "查看诊断日志") 
-2. 在“诊断日志”边栏选项卡上，可看到按“审核日志”和“请求日志”分类的日志。
+2. 在“诊断日志”  边栏选项卡上，可看到按“审核日志”  和“请求日志”  分类的日志。
    
    * 请求日志捕获 Data Lake Storage Gen1 帐户上作出的每个 API 请求。
    * 审核日志类似于请求日志，但提供 Data Lake Storage Gen1 帐户上正在执行的操作的更详细的分解结构。 例如，一个单一上传 API 调用请求日志可能导致审核日志中有多个“附加”操作。
-3. 要下载日志，请单击每个日志条目的“下载”链接。
+3. 要下载日志，请单击每个日志条目的“下载”链接  。
 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>从包含日志数据的 Azure 存储帐户查看
-1. 打开与日志记录的 Data Lake Storage Gen1 关联的 Azure 存储帐户边栏选项卡，并单击“Blob”。 “Blob 服务”边栏选项卡上会列出两个容器。
+1. 打开与日志记录的 Data Lake Storage Gen1 关联的 Azure 存储帐户边栏选项卡，并单击“Blob”。 “Blob 服务”  边栏选项卡上会列出两个容器。
    
     ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "查看诊断日志记录")
    
@@ -117,7 +117,7 @@ ms.locfileid: "60878670"
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的 ID |
-| category |String |日志类别。 例如，“请求”。 |
+| category |String |日志类别。 例如，“请求”  。 |
 | operationName |String |被记录的操作的名称。 例如 getfilestatus。 |
 | resultType |String |操作状态，例如，200。 |
 | callerIpAddress |String |作出请求的客户端 的IP 地址 |
@@ -164,7 +164,7 @@ ms.locfileid: "60878670"
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的 ID |
-| category |String |日志类别。 例如，“审核”。 |
+| category |String |日志类别。 例如，“审核”  。 |
 | operationName |String |被记录的操作的名称。 例如 getfilestatus。 |
 | resultType |String |操作状态，例如，200。 |
 | resultSignature |String |有关操作的其他详细信息。 |

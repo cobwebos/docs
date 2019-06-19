@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/23/2019
 ms.openlocfilehash: e824ac81f1336644fa70cc24539284feacee3199
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66244536"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
@@ -26,7 +26,7 @@ ms.locfileid: "66244536"
 
 下面是针对单个逻辑应用定义的限制：
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 每个工作流的操作数 | 500 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
 | 操作的允许嵌套深度 | 8 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
@@ -48,7 +48,7 @@ ms.locfileid: "66244536"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
+| Name | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 运行持续时间 | 90 天 | 365 天 | 若要更改默认限制，请参阅[更改运行持续时间](#change-duration)。 |
 | 存储保留期 | 90 天（从运行开始时间计算） | 365 天 | 若要更改默认限制，请参阅[更改存储保留期](#change-retention)。 |
@@ -75,7 +75,7 @@ ms.locfileid: "66244536"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 触发器并发 | * 在并发控制关闭时无限制 <p><p>* 在并发控制打开时，25 是默认限制（在打开控制之后无法撤消）。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
 | 最大等待运行数 | 并发控制打开时，最小等待运行数是 10 加上并发运行（触发器并发）数。 可以将最大数更改为多达 100 个（含）。 | 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要更改此默认限制，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
@@ -93,7 +93,7 @@ ms.locfileid: "66244536"
 
 ### <a name="multi-tenant-logic-apps-service"></a>多租户逻辑应用服务
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 操作：每 5 分钟执行的次数 | 默认限制为 100,000，最大限制为 300,000。 | 若要更改此默认限制，请参阅处于预览阶段的[在“高吞吐量”模式下运行逻辑应用](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)。 或者，你可根据需要在多个逻辑应用之间分配工作负荷。 |
 | 操作：并发传出调用数 | ~2,500 | 你可减少并发请求数，或根据需要减少持续时间。 |
@@ -124,7 +124,7 @@ ms.locfileid: "66244536"
 
 某些连接器操作会进行异步调用或侦听 Webhook 请求，因此，这些操作的超时时间可能会长于以下限制。 有关详细信息，请参阅特定连接器的技术详细信息以及[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)。
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
+| Name | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 传出的请求 | 120 秒 | 240 秒 | 对于运行时间较长的操作，请使用[异步轮询模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或 [until 循环](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 |
 | 同步响应 | 120 秒 | 240 秒 | 要使原始请求能够获得响应，则除非以嵌套工作流的形式调用其他逻辑应用，否则必须在限制内完成响应的所有步骤。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 |
@@ -132,7 +132,7 @@ ms.locfileid: "66244536"
 
 #### <a name="message-size"></a>消息大小
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
+| Name | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 消息大小 | 100 MB | 200 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 |
 | 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或可以在其运行时配置中启用分块的操作。 <p>就集成服务环境来说，逻辑应用引擎支持此限制，但连接器有其自己的分块限制（不得超出引擎限制）。如需示例，请参阅 [Azure Blob 存储连接器](/connectors/azureblob/)。 有关分块的详细信息，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
@@ -141,7 +141,7 @@ ms.locfileid: "66244536"
 
 #### <a name="retry-policy"></a>重试策略
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 重试次数 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最大延迟 | 1 天 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
@@ -164,7 +164,7 @@ ms.locfileid: "66244536"
 
 ## <a name="managed-identities"></a>托管标识
 
-| 名称 | 限制 |
+| Name | 限制 |
 | ---- | ----- |
 | 每个 Azure 订阅中具有系统分配的托管标识的逻辑应用数量 | 100 |
 |||
@@ -218,7 +218,7 @@ ms.locfileid: "66244536"
 
 以下消息大小限制适用于 B2B 协议：
 
-| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
+| Name | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 - 100 MB<br>v1 - 50 MB | v2-200 MB <br>v1 - 50 MB | 适用于解码和编码 |
 | X12 | 50 MB | 50 MB | 适用于解码和编码 |

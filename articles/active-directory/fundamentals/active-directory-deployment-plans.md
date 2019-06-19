@@ -12,12 +12,12 @@ ms.date: 02/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa7c4865313a48ae5d9041d2dceb6c91787bb6be
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: c5c761cad49ad42bd592b1fd8105052b39ef1177
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733551"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110457"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
 正在查找有关如何部署某些 Azure Active Directory (Azure AD) 功能的端到端指南？ 以下部署计划详述了成功推出部分更常用 Azure AD 功能所需的业务价值、规划注意事项、设计和运营过程。 
@@ -58,7 +58,7 @@ ms.locfileid: "66733551"
 |场景 |描述 |
 |-|-|
 |[多重身份验证](../authentication/howto-mfa-getstarted.md)|Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 使用管理员批准的身份验证方法，Azure MFA 可帮助保护对数据和应用程序的访问，同时满足对简单登录过程的需求。|
-|[条件性访问](https://aka.ms/deploymentplans/ca)|使用条件访问时，可以根据条件实施自动化的访问控制决策，决定谁能够访问云应用。|
+|[条件性访问](https://aka.ms/deploymentplans/ca)|使用条件性访问，您可以实现为谁可以访问你的云应用，根据条件自动的访问控制决策。|
 |[自助密码重置](https://aka.ms/SSPRDPDownload)|自助密码重置允许用户在需要时重置其密码，不需要管理员干预。|
 |[Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)|Azure AD Privileged Identity Management (PIM) 可帮助跨 Azure AD、Azure 资源和其他 Microsoft 联机服务管理特权管理角色。 PIM 提供实时访问、请求审批工作流和完全集成的访问评审等解决方案，让用户可以实时识别、发现并防止特权角色的恶意活动。|
 |[单一登录](https://aka.ms/SSODPDownload)|进行单一登录时，只需使用单个用户帐户登录一次，就能访问开展业务所需的全部应用和资源。 登录之后，可以从 Microsoft Office 转到 SalesForce，再转到 Box，无需再次进行身份验证（例如键入密码）。|

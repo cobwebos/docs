@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 73aab0750d97981d6684d04415683435bbd28797
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: be00f8338430452faa8bd5a20d9e2ddfcbb9d09d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980408"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64701296"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>使用 PowerShell 更改 Azure VM 使用的 OS 磁盘
 
 如果当前具备 VM，但希望将磁盘更换为备份磁盘或其他 OS 磁盘，可使用 Azure PowerShell 更换 OS 磁盘。 无需删除和重新创建 VM。 甚至可在另一资源组中使用托管磁盘，只要该磁盘尚未使用。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 需要停止/取消分配 VM，然后才可将该托管磁盘的资源 ID 替换为其他托管磁盘的资源 ID。
 
@@ -38,7 +38,7 @@ ms.locfileid: "55980408"
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name
 ```
  
-如果知道要使用的磁盘的名称，请将其设置为该 VM 的 OS 磁盘。 此示例停止/取消分配名为 myVM 的 VM，并将名为 newDisk 的磁盘分配为新的 OS 磁盘。 
+如果知道要使用的磁盘的名称，请将其设置为该 VM 的 OS 磁盘。 此示例停止/取消分配名为 myVM 的 VM，并将名为 newDisk 的磁盘分配为新的 OS 磁盘   。 
  
 ```azurepowershell-interactive 
 # Get the VM 

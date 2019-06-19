@@ -16,10 +16,10 @@ ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d4e16ca40e8026861d492f950396d6aa39d4c445
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65791563"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储
@@ -58,8 +58,8 @@ Azure Batch 提供多种方式来保存任务输出。 文件约定最适合以�
 若要使用文件约定库将输出数据保存到 Azure 存储，必须先将 Azure 存储帐户链接到 Batch 帐户。 如果尚未这样做，请使用 [Azure 门户](https://portal.azure.com)将存储帐户链接到 Batch 帐户：
 
 1. 导航到 Azure 门户中的 Batch 帐户。
-1. 在“设置”下面，选择“存储帐户”。
-1. 如果目前没有任何存储帐户与 Batch 帐户关联，请单击“存储帐户(无)”。
+1. 在“设置”下面，选择“存储帐户”。  
+1. 如果目前没有任何存储帐户与 Batch 帐户关联，请单击“存储帐户(无)”。 
 1. 从订阅列表中选择一个存储帐户。 为获得最佳性能，请使用运行任务的 Batch 帐户所在的区域中的 Azure 存储帐户。
 
 ## <a name="persist-output-data"></a>保存输出数据
@@ -112,10 +112,10 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 
 [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage).[SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) 方法的 `kind` 参数将保存的文件分类。 有四个预定义的 [TaskOutputKind][net_taskoutputkind] 类型：`TaskOutput`、`TaskPreview`、`TaskLog` 和 `TaskIntermediate.`。也可以定义输出的自定义类别。
 
-以后在 Batch 中查询给定任务的已保存输出时，可以使用这些输出类型来指定要列出哪种类型的输出。 换而言之，列出某个任务的输出时，可以根据某种输出类型来筛选列表。 例如，“列出任务 *109* 的预览输出。” 本文稍后的“检索输出”部分中会详细介绍如何列出和检索输出。
+以后在 Batch 中查询给定任务的已保存输出时，可以使用这些输出类型来指定要列出哪种类型的输出。 换而言之，列出某个任务的输出时，可以根据某种输出类型来筛选列表。 例如，“列出任务 *109* 的预览  输出。” 本文稍后的“检索输出”部分中会详细介绍如何列出和检索输出。
 
 > [!TIP]
-> 输出种类还决定了特定文件在 Azure 门户中的显示位置：TaskOutput 类别的文件显示在“任务输出文件”下，TaskLog 文件显示在“任务日志”下。
+> 输出种类还决定了特定文件在 Azure 门户中的显示位置：TaskOutput  类别的文件显示在“任务输出文件”  下，TaskLog  文件显示在“任务日志”  下。
 
 ### <a name="store-job-outputs"></a>存储作业输出
 
@@ -167,7 +167,7 @@ using (ITrackedSaveOperation stdout =
 节点代理是一个程序，它在池中的每个节点上运行，并在节点与 Batch 服务之间提供命令和控制接口。 此 `using` 块的末尾必须有 `Task.Delay` 调用，确保节点代理有时间将标准输出的内容刷新到节点上的 stdout.txt 文件。 若没有此延迟，可能会遗漏最后几秒的输出。 并非所有文件都需要此延迟。
 
 > [!NOTE]
-> 启用 **SaveTrackedAsync** 文件跟踪时，只会在 Azure 存储中保存被跟踪文件的追加内容。 此方法只应该用于跟踪非轮转的日志文件，或使用文件末尾的追加操作进行写入的其他文件。
+> 启用 **SaveTrackedAsync** 文件跟踪时，只会在 Azure 存储中保存被跟踪文件的追加内容。  此方法只应该用于跟踪非轮转的日志文件，或使用文件末尾的追加操作进行写入的其他文件。
 
 ## <a name="retrieve-output-data"></a>检索输出数据
 
@@ -200,7 +200,7 @@ Azure 门户将显示使用 [Batch 文件约定标准](https://github.com/Azure/
 1. 将 Azure 存储帐户链接到 Batch 帐户。
 1. 保存输出时遵循存储容器和文件的预定义命名约定。 可以在文件约定库的[自述文件][github_file_conventions_readme]中找到这些约定的定义。 如果使用 [Azure Batch 文件约定][nuget_package]库保存输出，则会根据文件约定标准保存文件。
 
-若要在 Azure 门户中查看任务输出文件和日志，请导航到要查看其输出的任务，然后单击“保存的输出文件”或“保存的日志”。 下图显示了 ID 为“007”的任务的“保存的输出文件”：
+若要在 Azure 门户中查看任务输出文件和日志，请导航到要查看其输出的任务，然后单击“保存的输出文件”或“保存的日志”。   下图显示了 ID 为“007”的任务的“保存的输出文件”  ：
 
 ![Azure 门户中的“任务输出”边栏选项卡][2]
 

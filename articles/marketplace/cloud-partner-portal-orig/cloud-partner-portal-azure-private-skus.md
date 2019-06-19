@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 6efdb1c28777d9230727066fdba03d2850be62b0
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935908"
 ---
 <a name="private-skus-and-plans"></a>专用 SKU 和计划
@@ -37,7 +37,7 @@ ms.locfileid: "64935908"
 
 ![将 SKU 标记为专用](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
 
-可以重复使用另一 SKU 中的磁盘，并修改定价或说明。 若要重复使用磁盘，请在回答“此 SKU 是否重复使用公共 SKU 中的映像”提示时选择“是”。
+可以重复使用另一 SKU 中的磁盘，并修改定价或说明。 若要重复使用磁盘，请在回答“此 SKU 是否重复使用公共 SKU 中的映像”提示时选择“是”。 
 
 如果 SKU 已标记为专用，并且套餐包含带有可重复使用磁盘的其他 SKU，则你需要指明该 SKU 将重复使用另一 SKU 中的磁盘。 此外，需要指定专用 SKU 的目标受众。
 
@@ -47,7 +47,7 @@ ms.locfileid: "64935908"
 <a name="select-an-image"></a>选择映像
 ------------------
 
-可为专用 SKU 提供新磁盘，或重复使用另一 SKU 中已提供的相同磁盘，只需修改定价或说明即可。 若要重复使用磁盘，请在回答“此 SKU 是否重复使用公共 SKU 中的映像”提示时选择“是”。
+可为专用 SKU 提供新磁盘，或重复使用另一 SKU 中已提供的相同磁盘，只需修改定价或说明即可。 若要重复使用磁盘，请在回答“此 SKU 是否重复使用公共 SKU 中的映像”提示时选择“是”。 
 
 ![指明要重复使用映像](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
 

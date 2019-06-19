@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
 ms.openlocfilehash: 09755922da78a3e856c491c01ce9f34f50063d71
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606512"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
@@ -33,15 +33,15 @@ ms.locfileid: "65606512"
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="enable-service-map"></a>启用服务映射
-1. 在 Azure 门户中，单击“+ 创建资源”。
-2. 在搜索栏中键入“Service Map”，并按“Enter”。
-3. 在市场搜索结果页，选择列表中的“服务映射”。<br><br> ![选择 Azure 市场搜索结果中的服务映射解决方案](./media/service-map/marketplace-search-results.png)<br>
-4. 在“服务映射概述”窗格上，查看解决方案详细信息，然后单击“创建”以开始将进程载入到你的 Log Analytics 工作区。<br><br> ![载入服务映射解决方案](./media/service-map/service-map-onboard.png)。
-5. 在“配置解决方案”窗格中，选择现有工作区或创建一个新的 Log Analytics 工作区。  有关如何创建新工作区的详细信息，请参阅[在 Azure 门户创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。 提供所需的信息后，单击“创建”。  
+1. 在 Azure 门户中，单击“+ 创建资源”  。
+2. 在搜索栏中键入“Service Map”  ，并按“Enter”  。
+3. 在市场搜索结果页，选择列表中的“服务映射”  。<br><br> ![选择 Azure 市场搜索结果中的服务映射解决方案](./media/service-map/marketplace-search-results.png)<br>
+4. 在“服务映射概述”  窗格上，查看解决方案详细信息，然后单击“创建”  以开始将进程载入到你的 Log Analytics 工作区。<br><br> ![载入服务映射解决方案](./media/service-map/service-map-onboard.png)。
+5. 在“配置解决方案”  窗格中，选择现有工作区或创建一个新的 Log Analytics 工作区。  有关如何创建新工作区的详细信息，请参阅[在 Azure 门户创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。 提供所需的信息后，单击“创建”  。  
 
-在验证信息和部署解决方案期间，可以在菜单中的“通知”下面跟踪操作进度。 
+在验证信息和部署解决方案期间，可以在菜单中的“通知”  下面跟踪操作进度。 
 
-在 Azure 门户从 Log Analytics 工作区访问服务映射，并选择左窗格中的“解决方案”选项。<br><br> ![选择工作区中的“解决方案”选项](./media/service-map/select-solution-from-workspace.png)。<br> 从解决方案列表中选择“ServiceMap(workspaceName)”，并在服务映射解决方案概述页面单击“服务映射摘要”标题。<br><br> ![服务映射摘要标题](./media/service-map/service-map-summary-tile.png)。
+在 Azure 门户从 Log Analytics 工作区访问服务映射，并选择左窗格中的“解决方案”  选项。<br><br> ![选择工作区中的“解决方案”选项](./media/service-map/select-solution-from-workspace.png)。<br> 从解决方案列表中选择“ServiceMap(workspaceName)”  ，并在服务映射解决方案概述页面单击“服务映射摘要”标题。<br><br> ![服务映射摘要标题](./media/service-map/service-map-summary-tile.png)。
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>用例：使 IT 进程依赖关系具有感知
 
@@ -89,11 +89,11 @@ ms.locfileid: "65606512"
 ![计算机组](media/service-map/machine-group.png)
 
 ### <a name="creating-a-machine-group"></a>创建计算机组
-若要创建组，请在“计算机”列表中选择所需的一个或多个计算机，然后单击“添加到组”。
+若要创建组，请在“计算机”列表中选择所需的一个或多个计算机，然后单击“添加到组”  。
 
 ![创建组](media/service-map/machine-groups-create.png)
 
-在这里，可以选择“新建”，并为组指定名称。
+在这里，可以选择“新建”  ，并为组指定名称。
 
 ![为组命名](media/service-map/machine-groups-name.png)
 
@@ -117,19 +117,19 @@ ms.locfileid: "65606512"
 
 ![筛选组](media/service-map/machine-groups-filter.png)
 
-如果选择“所有进程”，映射将包括组中每个计算机上的所有进程和连接。
+如果选择“所有进程”  ，映射将包括组中每个计算机上的所有进程和连接。
 
 ![计算机组 所有进程](media/service-map/machine-groups-all.png)
 
-如果将视图更改为仅显示“与组连接的进程”，映射将缩小为仅包括与组中的其他计算机直接相关的进程和连接，从而创建一个简化的视图。
+如果将视图更改为仅显示“与组连接的进程”  ，映射将缩小为仅包括与组中的其他计算机直接相关的进程和连接，从而创建一个简化的视图。
 
 ![计算机组 筛选后的进程](media/service-map/machine-groups-filtered.png)
  
 ### <a name="adding-machines-to-a-group"></a>将计算机添加到组
-若要将计算机添加到现有组，请选中所需计算机旁边的框，单击“添加到组”。  然后选择要将计算机添加到的组。
+若要将计算机添加到现有组，请选中所需计算机旁边的框，单击“添加到组”  。  然后选择要将计算机添加到的组。
  
 ### <a name="removing-machines-from-a-group"></a>从组中删除计算机
-在“组”列表中，展开组名称以列出计算机组中的计算机。  然后，单击要删除的计算机旁边的省略号菜单，选择“删除”。
+在“组”列表中，展开组名称以列出计算机组中的计算机。  然后，单击要删除的计算机旁边的省略号菜单，选择“删除”  。
 
 ![从组中删除计算机](media/service-map/machine-groups-remove.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "65606512"
 
 ![客户端组](media/service-map/client-groups.png)
 
-若要查看客户端组中的服务器 IP 地址，请选择该组。 “客户端组属性”窗格中会列出该组的内容。
+若要查看客户端组中的服务器 IP 地址，请选择该组。 “客户端组属性”  窗格中会列出该组的内容。
 
 ![客户端组属性](media/service-map/client-group-properties.png)
 
@@ -180,13 +180,13 @@ ms.locfileid: "65606512"
 ![失败的连接](media/service-map/context-menu.png)
 
 ### <a name="load-server-map"></a>加载服务器映射
-单击“加载服务器映射”，转到新映射，其中所选服务器作为新的焦点计算机。
+单击“加载服务器映射”  ，转到新映射，其中所选服务器作为新的焦点计算机。
 
 ### <a name="show-self-links"></a>显示自链接
-单击“显示自链接”，重绘包含任何自链接的服务器节点，这些自链接是表示服务器中进程的开始和结束的 TCP 连接。 如果显示了自链接，则该菜单命令更改为“隐藏自链接”，以便隐藏自链接。
+单击“显示自链接”  ，重绘包含任何自链接的服务器节点，这些自链接是表示服务器中进程的开始和结束的 TCP 连接。 如果显示了自链接，则该菜单命令更改为“隐藏自链接”  ，以便隐藏自链接。
 
 ## <a name="computer-summary"></a>计算机摘要
-“计算机摘要”窗格包括服务器的操作系统、依赖关系计数以及来自其他解决方案的各种数据的概述。 此类数据包括性能指标、服务台票证、更改跟踪、安全性和更新。
+“计算机摘要”  窗格包括服务器的操作系统、依赖关系计数以及来自其他解决方案的各种数据的概述。 此类数据包括性能指标、服务台票证、更改跟踪、安全性和更新。
 
 ![“计算机摘要”窗格](media/service-map/machine-summary.png)
 
@@ -199,17 +199,17 @@ ms.locfileid: "65606512"
 
 ![“进程属性”窗格](media/service-map/process-properties.png)
 
-“进程摘要”窗格提供有关该进程的连接性的其他信息，包括其绑定端口、入站和出站连接以及失败的连接。
+“进程摘要”  窗格提供有关该进程的连接性的其他信息，包括其绑定端口、入站和出站连接以及失败的连接。
 
 ![“进程摘要”窗格](media/service-map/process-summary.png)
 
 ## <a name="alerts-integration"></a>警报集成
-服务映射与 Azure 警报集成，可显示所选时间范围内所选服务器触发的警报。 如果当前有警报，服务器会显示一个图标，且“计算机警报”窗格会列出警报。
+服务映射与 Azure 警报集成，可显示所选时间范围内所选服务器触发的警报。 如果当前有警报，服务器会显示一个图标，且“计算机警报”  窗格会列出警报。
 
 ![“计算机警报”窗格](media/service-map/machine-alerts.png)
 
 若要使服务映射能够显示相关警报，请创建对特定计算机触发的警报规则。 创建相应的警报：
-- 包含一个子句，以按计算机分组（例如“by Computer interval 1 minute”）。
+- 包含一个子句，以按计算机分组（例如“by Computer interval 1 minute”  ）。
 - 根据指标度量值选择警报。
 
 ## <a name="log-events-integration"></a>日志事件集成
@@ -220,28 +220,28 @@ ms.locfileid: "65606512"
 ## <a name="service-desk-integration"></a>服务台集成
 当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与 IT Service Management Connector 集成。 服务映射中的集成标记为“服务台”。 有关详细信息，请参阅[使用 IT Service Management Connector 集中管理 ITSM 工作项](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)。
 
-“计算机服务台”窗格列出所选时间范围内选定服务器的所有 IT Service Management 事件。 如果当前存在项，服务器会显示一个图标，且“计算机服务台”窗格会列出存在的项。
+“计算机服务台”  窗格列出所选时间范围内选定服务器的所有 IT Service Management 事件。 如果当前存在项，服务器会显示一个图标，且“计算机服务台”窗格会列出存在的项。
 
 ![“计算机服务台”窗格](media/service-map/service-desk.png)
 
-若要打开连接的 ITSM 解决方案中的项，请单击“查看工作项”。
+若要打开连接的 ITSM 解决方案中的项，请单击“查看工作项”  。
 
-若要在日志搜索中查看项的详细信息，请单击“在日志搜索中显示”。
+若要在日志搜索中查看项的详细信息，请单击“在日志搜索中显示”  。
 连接指标将写入到 Log Analytics 的两个新表中 
 
 ## <a name="change-tracking-integration"></a>更改跟踪集成
 当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与更改跟踪集成。
 
-“计算机更改跟踪”窗格列出所有更改（最新更改列在顶部），以及一个向下钻取到日志搜索以获取其他详细信息的链接。
+“计算机更改跟踪”  窗格列出所有更改（最新更改列在顶部），以及一个向下钻取到日志搜索以获取其他详细信息的链接。
 
 ![“计算机更改跟踪”窗格](media/service-map/change-tracking.png)
 
-下图是在选择“在 Log Analytics 中显示”后可能显示的 ConfigurationChange 事件的详细视图。
+下图是在选择“在 Log Analytics 中显示”  后可能显示的 ConfigurationChange 事件的详细视图。
 
 ![ConfigurationChange 事件](media/service-map/configuration-change-event-01.png)
 
 ## <a name="performance-integration"></a>性能集成
-“计算机性能”窗格显示所选服务器的标准性能指标。 指标包括 CPU 利用率、内存利用率、发送和接收的网络字节数，以及发送和接收网络字节数最多的进程的列表。
+“计算机性能”  窗格显示所选服务器的标准性能指标。 指标包括 CPU 利用率、内存利用率、发送和接收的网络字节数，以及发送和接收网络字节数最多的进程的列表。
 
 ![“计算机性能”窗格](media/service-map/machine-performance.png)
 
@@ -264,14 +264,14 @@ Linux：
 ## <a name="security-integration"></a>安全集成
 当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与安全和审核集成。
 
-“计算机安全”面板显示所选服务器的安全和审核解决方案的数据。 该窗格列出所选时间范围内服务器的所有未解决安全问题的摘要。 单击任意安全问题，向下钻取到日志搜索，了解有关安全问题的详细信息。
+“计算机安全”面板显示所选服务器的安全和审核解决方案的数据。  该窗格列出所选时间范围内服务器的所有未解决安全问题的摘要。 单击任意安全问题，向下钻取到日志搜索，了解有关安全问题的详细信息。
 
 ![“计算机安全性”窗格](media/service-map/machine-security.png)
 
 ## <a name="updates-integration"></a>更新集成
 当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与更新管理集成。
 
-“计算机更新”面板显示所选服务器的更新管理解决方案的数据。 该窗格列出所选时间范围内服务器缺少的所有更新的摘要。
+“计算机更新”面板显示所选服务器的更新管理解决方案的数据。  该窗格列出所选时间范围内服务器缺少的所有更新的摘要。
 
 ![“计算机更改跟踪”窗格](media/service-map/machine-updates.png)
 
@@ -285,8 +285,8 @@ Linux：
 
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
-- 计算机：使用 ResourceId 或 ResourceName_s 来唯一标识 Log Analytics 工作区中的计算机。
-- 进程：使用 ResourceId 来唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
+- 计算机：使用 ResourceId 或 ResourceName_s 来唯一标识 Log Analytics 工作区中的计算机   。
+- 进程：使用 ResourceId 来唯一标识 Log Analytics 工作区中的进程  。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
@@ -358,14 +358,14 @@ Linux：
 | 属性 | 描述 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 地址 |
-| `IndicatorThreadType` |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
+| `IndicatorThreadType` |检测到的威胁标志是以下值之一：Botnet  、C2  、CryptoMining  、Darknet  、DDos  、MaliciousUrl  、Malware  、Phishing  、Proxy  、PUA  和 Watchlist  。   |
 | `Description` |观察到的威胁说明。 |
-| `TLPLevel` |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
-| `Confidence` |值介于 0 和 100 之间。 |
-| `Severity` |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
+| `TLPLevel` |交通信号灯协议 (TLP) 级别是以下定义值之一：White  、Green  、Amber  和 Red  。 |
+| `Confidence` |值介于 0 和 100  之间。 |
+| `Severity` |值介于 0 和 5  之间，其中 5  表示最严重，0  表示毫不严重。 默认值为 3  。  |
 | `FirstReportedDateTime` |提供程序第一次报告指标。 |
 | `LastReportedDateTime` |Interflow 最后一次看到指标。 |
-| `IsActive` |使用值 True 或 False 指明是否停用标志。 |
+| `IsActive` |使用值 True  或 False  指明是否停用标志。 |
 | `ReportReferenceLink` |与给定可观测结果相关的报告的链接。 |
 | `AdditionalInformation` |提供观测到的威胁的其他信息（若有）。 |
 

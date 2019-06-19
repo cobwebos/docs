@@ -16,12 +16,12 @@ ms.date: 11/08/2017
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb7dc356c8101c1b0907818b45618ef6372c691
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3671623312f0da00c8f6172a101529a5cd12be1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250891"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110549"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题 
 
@@ -34,7 +34,7 @@ ms.locfileid: "60250891"
 
 本文假设你已[配置已加入混合 Azure Active Directory 的设备](hybrid-azuread-join-plan.md)，以支持以下方案：
 
-- 基于设备的条件访问
+- 基于设备的条件性访问
 
 - [企业设置漫游](../active-directory-windows-enterprise-state-roaming-overview.md)
 
@@ -141,7 +141,7 @@ WamDefaultAuthority: organizations
 
 ### <a name="workplacejoined--no"></a>WorkplaceJoined：否  
 
-此字段指示设备是否以个人设备的形式注册到 Azure AD（标记为“已加入工作区”）。 对于已加入域，同时已加入混合 Azure AD 的计算机，此值应为 **NO**。 如果值为 **YES**，则表示在完成混合 Azure AD 加入之前已添加工作或学校帐户。 在这种情况下，如果使用 Windows 10 周年更新版 (1607)，则会忽略该帐户。
+此字段指示设备是否以个人设备的形式注册到 Azure AD（标记为“已加入工作区”）。  对于已加入域，同时已加入混合 Azure AD 的计算机，此值应为 **NO**。 如果值为 **YES**，则表示在完成混合 Azure AD 加入之前已添加工作或学校帐户。 在这种情况下，如果使用 Windows 10 周年更新版 (1607)，则会忽略该帐户。
 
 ---
 

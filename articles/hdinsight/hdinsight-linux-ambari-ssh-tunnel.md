@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: hrasheed
 ms.openlocfilehash: 943bf0f4bba014c31a11bb30bf8d3b6a7c11a343
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66299351"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>使用 SSH 隧道访问 Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie 和其他 Web UI
@@ -56,7 +56,7 @@ Ambari 中的多个菜单仅通过 SSH 隧道工作。 这些菜单依赖于辅�
 
 ## <a name="usessh"></a>使用 SSH 命令创建隧道
 
-使用以下 `ssh` 命令创建 SSH 隧道。 替换`sshuser`替换为你的 HDInsight 群集和替换的 SSH 用户`clustername`与 HDInsight 群集的名称：
+使用以下 `ssh` 命令创建 SSH 隧道。 将 `sshuser` 替换为 HDInsight 群集的 SSH 用户，将 `clustername` 替换为 HDInsight 群集的名称：
 
 ```cmd
 ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
@@ -81,7 +81,7 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 
 ### <a name="create-or-load-a-session"></a>创建或加载会话
 
-1. 打开 PuTTY，并确保在左侧菜单中选择“会话”  。 如果已保存的会话，选择会话名称从**保存的会话**列表，然后选择**负载**。
+1. 打开 PuTTY，并确保在左侧菜单中选择“会话”  。 如果已保存了一个会话，请从“已保存的会话”列表中选择该会话名称并选择“加载”。  
 
 1. 如果你没有已保存的会话，请输入你的连接信息：
     * **主机名(或 IP 地址)** - HDInsight 群集的 SSH 地址。 例如，**mycluster-ssh.azurehdinsight.net**
@@ -104,7 +104,7 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
      
      ![隧道选项图像](./media/hdinsight-linux-ambari-ssh-tunnel/puttytunnel.png)
 
-1. 选择**外**以添加设置，然后单击**打开**以打开 SSH 连接。
+1. 选择“添加”  以添加设置，并单击“打开”  以打开 SSH 连接。
 
 1. 出现提示时，登录到服务器。
 
@@ -129,7 +129,7 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 1. 在浏览器中转到 `http://headnodehost:8080`。 `headnodehost` 地址通过隧道发送到群集，并解析为运行 Ambari 的头节点。 出现提示时，请输入群集的管理员用户名 (admin) 和密码。 Ambari Web UI 可能会再次出现提示。 如果出现，请重新输入信息。
 
    > [!NOTE]  
-   > 如果使用 `http://headnodehost:8080` 地址连接到群集，则将通过隧道进行连接。 通信的安全是通过使用 SSH 隧道而非 HTTPS 实现的。 若要使用 HTTPS 通过 internet 连接，请使用`https://clustername.azurehdinsight.net`，其中`clustername`是群集的名称。
+   > 如果使用 `http://headnodehost:8080` 地址连接到群集，则将通过隧道进行连接。 通信的安全是通过使用 SSH 隧道而非 HTTPS 实现的。 若要使用 HTTPS 通过 Internet 进行连接，请使用 `https://clustername.azurehdinsight.net`，其中 `clustername` 是群集的名称。
 
 2. 在 Ambari Web UI 中，请选择页面左侧列表中的“HDFS”。
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: e4968310459097fc6a00f7c453846fe61726c3d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64716121"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
@@ -77,7 +77,7 @@ ms.locfileid: "64716121"
    * **-u**：指示用来对请求进行身份验证的用户名和密码
    * **-G**：指示此操作是 GET 请求。
 
-   URI 的开头 (**https://CLUSTERNAME.azurehdinsight.net/templeton/v1**) 对于所有请求都是相同的。
+   URI 的开头 ( **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** ) 对于所有请求都是相同的。
 
 4. 若要提交 MapReduce 作业，请使用以下命令：
 

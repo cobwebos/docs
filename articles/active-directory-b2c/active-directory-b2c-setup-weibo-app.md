@@ -11,10 +11,10 @@ ms.date: 09/11/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 808d4bc8521917b89a7265be6dfab60757baf910
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66508052"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过微博帐户注册与登录

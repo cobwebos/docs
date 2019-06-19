@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
 ms.openlocfilehash: 1426b3d31159280ad9aac2dd240a5f083c40752d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65988309"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azure-sb-package"></a>如何使用 Node.js 和 azure sb 包使用服务总线队列
-> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]
 > - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
 > - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
@@ -64,7 +64,7 @@ ms.locfileid: "65988309"
         ├── xml2js@0.2.7 (sax@0.5.2)
         └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
     ```
-3. 可以手动运行 ls 命令，验证是否创建了 node_modules 文件夹。 在该文件夹中，找到**azure**包，其中包含访问服务总线队列所需的库。
+3. 可以手动运行 ls 命令，验证是否创建了 node_modules 文件夹   。 在该文件夹中，找到**azure**包，其中包含访问服务总线队列所需的库。
 
 ### <a name="import-the-module"></a>导入模块
 使用记事本或其他文本编辑器将以下内容添加到应用程序的 **server.js** 文件的顶部：
@@ -85,7 +85,7 @@ Azure 模块读取环境变量 `AZURE_SERVICEBUS_CONNECTION_STRING`，获取连�
 var serviceBusService = azure.createServiceBusService();
 ```
 
-通过对 ServiceBusService 对象调用 `createQueueIfNotExists`，会返回指定的队列（如果存在），否则会使用指定的名称创建一个新队列。 以下代码使用 `createQueueIfNotExists` 创建或连接到名为 `myqueue` 的队列：
+通过对 ServiceBusService 对象调用 `createQueueIfNotExists`，会返回指定的队列（如果存在），否则会使用指定的名称创建一个新队列  。 以下代码使用 `createQueueIfNotExists` 创建或连接到名为 `myqueue` 的队列：
 
 ```javascript
 serviceBusService.createQueueIfNotExists('myqueue', function(error){
@@ -133,7 +133,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="send-messages-to-a-queue"></a>向队列发送消息
-要向服务总线队列发送消息，应用程序需对 ServiceBusService 对象调用 `sendQueueMessage` 方法。 发往服务总线队列的消息以及从服务总线队列接收的消息是 **BrokeredMessage** 对象，它们具有一组标准属性（如 **Label** 和 **TimeToLive**）、一个用来保存自定义应用程序特定属性的字典和一段任意应用程序数据正文。 应用程序可以通过将字符串作为消息传递来设置消息正文。 任何必需的标准属性将用默认值来填充。
+要向服务总线队列发送消息，应用程序需对 ServiceBusService 对象调用 `sendQueueMessage` 方法  。 发往服务总线队列的消息以及从服务总线队列接收的消息是 **BrokeredMessage** 对象，它们具有一组标准属性（如 **Label** 和 **TimeToLive**）、一个用来保存自定义应用程序特定属性的字典和一段任意应用程序数据正文。 应用程序可以通过将字符串作为消息传递来设置消息正文。 任何必需的标准属性将用默认值来填充。
 
 以下示例演示如何使用 `sendQueueMessage` 向名为 `myqueue` 的队列发送一条测试消息：
 
@@ -153,13 +153,13 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 在队列中包含的消息数量没有限制，但有持有的队列的消息的总大小是上限。 此队列大小是在创建时定义的，上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
-对 ServiceBusService 对象使用 `receiveQueueMessage` 方法可从队列接收消息。 默认情况下，消息被读取后即从队列删除；但是可以读取（速览）并锁定消息而不将其从队列删除，只要将可选参数 `isPeekLock` 设置为“true”即可。
+对 ServiceBusService 对象使用 `receiveQueueMessage` 方法可从队列接收消息  。 默认情况下，消息被读取后即从队列删除；但是可以读取（速览）并锁定消息而不将其从队列删除，只要将可选参数 `isPeekLock` 设置为“true”即可  。
 
 读取并删除该消息接收操作的一部分的默认行为是最简单的模式，并且最适合在其中应用程序可容忍出现故障时不处理消息的方案。 为了理解此行为，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将标记为已使用的消息，则当应用程序重启并开始再次使用消息，它会漏掉在发生崩溃前已使用的消息。
 
 如果`isPeekLock`参数设置为**true**，则接收将变成一个两阶段操作，这样就可以支持无法容忍遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序处理完该消息（或将它可靠地存储起来留待将来处理）后，通过调用 `deleteMessage` 方法并提供要删除的消息作为参数，完成接收过程的第二阶段。 `deleteMessage` 方法会将消息标记为已使用，并将其从队列中删除。
 
-以下示例演示如何使用 `receiveQueueMessage` 接收和处理消息。 该示例先接收并删除一条消息，然后使用设置为“true”的 `isPeekLock` 接收一条消息，最后使用 `deleteMessage` 删除该消息：
+以下示例演示如何使用 `receiveQueueMessage` 接收和处理消息。 该示例先接收并删除一条消息，然后使用设置为“true”的 `isPeekLock` 接收一条消息，最后使用 `deleteMessage` 删除该消息  ：
 
 ```javascript
 serviceBusService.receiveQueueMessage('myqueue', function(error, receivedMessage){
@@ -180,14 +180,14 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则它可以对 ServiceBusService 对象调用 `unlockMessage` 方法。 它将导致 Service Bus 解锁队列中的消息并使其可供同一使用方应用程序或其他使用方应用程序再次接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则它可以对 ServiceBusService 对象调用 `unlockMessage` 方法  。 它将导致 Service Bus 解锁队列中的消息并使其可供同一使用方应用程序或其他使用方应用程序再次接收。
 
 此外存在与队列中的锁定消息关联的超时并且如果应用程序失败，若要在锁定超时之前处理消息过期 （例如，如果应用程序崩溃），则服务总线将自动解锁该消息并使它可再次被接收。
 
 如果应用程序在处理消息之后，但在调用 `deleteMessage` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 这种方法通常称为*至少处理一次*，也就是说，每条消息将至少一次处理，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，应用程序开发人员应该向其应用程序来处理重复消息传送添加其他逻辑。 它通常使用实现**MessageId**了消息保持不变多次传送尝试中的属性。
 
 > [!NOTE]
-> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关队列的详细信息，请参阅以下资源。

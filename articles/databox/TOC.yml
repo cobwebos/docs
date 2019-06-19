@@ -111,8 +111,16 @@
           items:
             - name: 通过 Azure 门户管理
               href: data-box-portal-ui-admin.md
-            - name: 排查 Data Box Disk 问题
-              href: data-box-disk-troubleshoot.md
+            - name: 故障排除
+              items:
+                - name: 解锁问题
+                  href: data-box-disk-troubleshoot-unlock.md
+                - name: 数据复制问题
+                  href: data-box-disk-troubleshoot-data-copy.md
+                - name: 验证问题
+                  href: data-box-disk-troubleshoot.md
+                - name: 上传问题
+                  href: data-box-disk-troubleshoot-upload.md
             - name: 联系支持人员
               href: data-box-disk-contact-microsoft-support.md
     - name: Data Box Heavy

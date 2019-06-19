@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
 ms.openlocfilehash: b6e0e57881154f5885e9f518363eda3c5b1169a0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66171270"
 ---
 ### <a name="install-via-composer"></a>通过 Composer 安装
@@ -21,7 +21,7 @@ ms.locfileid: "66171270"
       }
     }
     ```
-2. 将 [composer.phar][composer-phar] 下载到项目根目录中。
+2. 将 [composer.phar][composer-phar] 下载到项目根目录中  。
 3. 打开命令提示符并在项目根目录中执行以下命令
    
     ```

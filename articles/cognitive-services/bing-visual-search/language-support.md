@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: 1639b8066f3c9943bc42f5151fcb456585441baf
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64866235"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>必应视觉搜索 API 的语言和区域支持
 
 必应视觉搜索 API 支持超过 36 个国家/地区，其中很多具有多种语言。 每个请求都应包含用户所选的国家/地区和语言。 知道用户的市场有助于必应返回合适的结果。 如果用户未指定国家/地区和语言，必应将尽量确定这些内容。 因为结果可能包含指向必应的链接，如果用户单击必应链接，知道国家/地区和语言可以提供首选的本地化必应用户体验。
 
-要指定国家/地区和语言，请将 `mkt`（市场）查询参数设置为下面的“市场”表中的一个代码。 市场同时指定国家/地区和语言。 如果用户希望以其他语言查看显示文本，请将 `setLang` 查询参数设置为相应的语言代码。
+要指定国家/地区和语言，请将 `mkt`（市场）查询参数设置为下面的“市场”表中的一个代码  。 市场同时指定国家/地区和语言。 如果用户希望以其他语言查看显示文本，请将 `setLang` 查询参数设置为相应的语言代码。
 
 另外，也可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` HTTP 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言。
 

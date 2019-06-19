@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 69e51f23980aa1d4225f2e5062470f94e5ca9008
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 4888ea8473c50b8774add7a930612c585fc9cbde
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753782"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074349"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
@@ -205,7 +205,13 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [我们建议你实现广泛是已知且经过严格测试，如 Microsoft 安全基准，而不是自己创建基线的符合行业标准配置](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); 一个的预配这些虚拟机上的选项使用 Azure Desired State Configuration (DSC) 扩展处理程序，因为它们均已联机，使它们能够运行生产软件配置 Vm 规模集。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
-[Azure 防火墙是一种托管的基于云的网络安全服务，可保护你的 Azure 虚拟网络资源。它使用内置的高可用性和可伸缩性不受限制的云服务是完全有状态防火墙。](https://docs.microsoft.com/azure/firewall/overview); 这样就可以以出站 HTTP/S 将通信限制为指定的完全限定的域名 (FQDN) 包括通配符列表。 此功能不需要 SSL 终止。 其建议利用[Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)终结点的 Windows 更新，并启用 Microsoft Windows update 的网络流量可以流经防火墙。 [部署 Azure 防火墙使用模板](https://docs.microsoft.com/azure/firewall/deploy-template)提供 Microsoft.Network/azureFirewalls 资源模板定义了一个示例。 普遍适用于 Service Fabric 应用程序的两个防火墙规则是允许您的群集网络通信与 * download.microsoft.com，和 * servicefabric.azure.com;若要提取 Windows 更新和 Service Fabric 计算虚拟机扩展插件代码。
+[Azure 防火墙是一种托管的基于云的网络安全服务，可保护你的 Azure 虚拟网络资源。它使用内置的高可用性和可伸缩性不受限制的云服务是完全有状态防火墙。](https://docs.microsoft.com/azure/firewall/overview); 这样就可以以出站 HTTP/S 将通信限制为指定的完全限定的域名 (FQDN) 包括通配符列表。 此功能不需要 SSL 终止。 其建议利用[Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)终结点的 Windows 更新，并启用 Microsoft Windows update 的网络流量可以流经防火墙。 [部署 Azure 防火墙使用模板](https://docs.microsoft.com/azure/firewall/deploy-template)提供 Microsoft.Network/azureFirewalls 资源模板定义了一个示例。 普遍适用于 Service Fabric 应用程序防火墙规则是允许以下群集虚拟网络：
+
+- *download.microsoft.com
+- *servicefabric.azure.com
+- *.core.windows.net
+
+这些防火墙规则可补充允许出站网络安全组，将包含 service Fabric 和存储，以允许从虚拟网络的目标。
 
 ## <a name="tls-12"></a>TLS 1.2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
@@ -243,6 +249,18 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 > [!NOTE]
 > 如果不使用 Windows Defender，请参阅有关配置规则的反恶意软件文档。 Linux 不支持 Windows Defender。
+
+## <a name="platform-isolation"></a>平台隔离
+默认情况下，Service Fabric 应用程序有权访问 Service Fabric 运行时本身，其表现出不同的形式：[环境变量](service-fabric-environment-variables-reference.md)指向对应于应用程序主机上的文件路径和Fabric 文件、 接受特定于应用程序的请求和客户端的进程间通信终结点的证书的 Fabric 预期应用程序使用自身进行身份验证。 在偶发性中该服务承载本身不受信任的代码，则最好禁用这种访问权限 SF 运行时-除非明确需要。 在应用程序清单的策略部分中使用的以下声明删除到运行时的访问权限： 
+
+```xml
+<ServiceManifestImport>
+    <Policies>
+        <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+    </Policies>
+</ServiceManifestImport>
+
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 50cec0774729073678498922b2c58f1ca62d7d82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a2a2fffa9ed3a4dae3c0768291b7585be4bfc6d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341941"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64690840"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性
 
@@ -89,7 +89,9 @@ ms.locfileid: "60341941"
 > [!NOTE]
 > 如果要授予用户对辅助数据库而不是主数据库的访问权限，可以使用以下语法更改主服务器上的用户登录名来实现此目的。
 >
+> ```sql
 > ALTER LOGIN <login name> DISABLE
+> ```
 >
 > DISABLE 不会更改密码，因此，始终可以根据需要启用该登录名。
 

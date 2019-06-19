@@ -1,6 +1,6 @@
 ---
 title: Azure 状态监视器 v2 疑难解答和已知的问题 |Microsoft Docs
-description: 状态监视器 v2 和故障排除示例的已知的问题。 监视网站性能，无需重新部署该网站。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
+description: 状态监视器 v2 的已知问题和故障排除示例。 无需重新部署网站即可监视网站性能。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
 ms.openlocfilehash: f2115ee14b58030f695c9410870615f03d353cd2
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66734951"
 ---
-# <a name="troubleshooting-status-monitor-v2"></a>状态的故障排除监视 v2
+# <a name="troubleshooting-status-monitor-v2"></a>对状态监视器 v2 进行故障排除
 
 时启用监视，您可能会阻止数据收集的问题。
 本文列出了所有已知的问题，并提供故障排除示例。
@@ -27,7 +27,7 @@ ms.locfileid: "66734951"
 
 
 > [!IMPORTANT]
-> 状态监视器 v2 目前处于公共预览状态。
+> 状态监视器 v2 目前为公共预览版。
 > 没有附带服务级别协议，提供此预览版本，我们不建议将其用于生产工作负荷。 可能不支持某些功能，以及一些可能会受约束的功能。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "66734951"
 这些 Dll 的一些包括在 Visual Studio 默认应用程序模板，即使您的应用程序不会使用它们。
 故障排除工具可用于查看症状行为：
 
-- PerfView:
+- PerfView：
     ```
     ThreadID="7,500" 
     ProcessorNumber="0" 
@@ -66,7 +66,7 @@ ms.locfileid: "66734951"
     0x0000000004d20000  0xb2000   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.Extensions.Base_x64.dll
     ```
 
-### <a name="conflict-with-iis-shared-configuration"></a>使用 IIS 共享配置冲突
+### <a name="conflict-with-iis-shared-configuration"></a>与 IIS 共享配置冲突
 
 如果你拥有的 web 服务器群集，则可能使用[共享的配置](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)。
 HttpModule 不能注入到此共享的配置。
@@ -83,7 +83,7 @@ HttpModule 不能注入到此共享的配置。
     ```
 ## <a name="troubleshooting"></a>故障排除
     
-### <a name="troubleshooting-powershell"></a>故障排除的 PowerShell
+### <a name="troubleshooting-powershell"></a>PowerShell 故障排除
 
 #### <a name="determine-which-modules-are-available"></a>确定哪些模块可用
 可以使用`Get-Module -ListAvailable`命令，以确定安装哪些模块。
@@ -92,7 +92,7 @@ HttpModule 不能注入到此共享的配置。
 如果模块尚未加载到 PowerShell 会话，则可以手动加载它通过使用`Import-Module <path to psd1>`命令。
 
 
-### <a name="troubleshooting-the-status-monitor-v2-module"></a>故障排除状态监视器 v2 模块
+### <a name="troubleshooting-the-status-monitor-v2-module"></a>对状态监视器 v2 模块进行故障排除
 
 #### <a name="list-the-commands-available-in-the-status-monitor-v2-module"></a>列出可对状态监视器 v2 模块中的命令
 运行命令`Get-Command -Module Az.ApplicationMonitor`若要获取可用命令：
@@ -118,7 +118,7 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.2.1      Az
 审阅[API 参考](status-monitor-v2-api-get-status.md)有关如何使用此 cmdlet 的详细说明。
 
 
-### <a name="troubleshooting-running-processes"></a>故障排除正在运行的进程
+### <a name="troubleshooting-running-processes"></a>对正在运行的进程进行故障排除
 
 您可以检查以确定是否将加载所有 Dll 检测计算机上的进程。
 监视正常运行，如果应加载至少为 12 的 Dll。
@@ -147,7 +147,7 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.2.1      Az
 1. 在具有管理员权限的命令控制台，运行`iisreset /stop`命令将其关闭 IIS 和所有 web 应用。
 2. 在 PerfView 中选择**开始收集**。
 3. 在具有管理员权限的命令控制台，运行`iisreset /start`命令以启动 IIS。
-4. 尝试浏览到您的应用程序。
+4. 尝试浏览到你的应用。
 5. 您的应用程序加载后，返回到 PerfView，然后选择**停止收集**。
 
 

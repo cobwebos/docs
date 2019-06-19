@@ -12,10 +12,10 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 688ef059387dc4c312873051c7c9d1eae259b1ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61429871"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 连接器将数据移入或移出 Azure Blob 存储
@@ -42,7 +42,7 @@ ms.locfileid: "61429871"
 
 若要使用 **SSIS 连接器**，则必须下载：
 
-* **SQL Server 2014 或 2016 标准版（或更高版本）**：安装包括 SQL Server Integration Services。
+* **SQL Server 2014 或 2016 标准版（或更高版本）** ：安装包括 SQL Server Integration Services。
 * **适用于 Azure 的 Microsoft SQL Server 2014 或 2016 Integration Services 功能包**：可以从 [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) 和 [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) 页面分别下载这两个功能包。
 
 > [!NOTE]

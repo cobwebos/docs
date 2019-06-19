@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
 ms.openlocfilehash: 105454205c0fe3a0020693a1289a65cecd2bf57b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65519020"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Azure Monitor 日志查询入门
@@ -69,10 +69,10 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-此查询在 *SecurityEvent* 表中搜索包含短语“Cryptographic”的记录。 返回并显示了其中的 10 条记录。 如果省略 `in (SecurityEvent)` 部分并直接运行 `search "Cryptographic"`，则搜索将遍历所有表，因此花费的时间更长且更低效。
+此查询在 *SecurityEvent* 表中搜索包含短语“Cryptographic”的记录。 返回并显示了其中的 10 条记录。 如果省略 `in (SecurityEvent)` 部分并直接运行 `search "Cryptographic"`，则搜索将遍历所有表，因此花费的时间更长且更低效。 
 
 > [!NOTE]
-> 默认设置的时间范围为过去 24 小时。 若要使用不同的范围，请使用时间选取器（位于“搜索”按钮旁边），或者在查询中添加明确的时间范围筛选器。
+> 默认设置的时间范围为过去 24 小时。  若要使用不同的范围，请使用时间选取器（位于“搜索”按钮旁边），或者在查询中添加明确的时间范围筛选器。 
 
 ## <a name="sort-and-top"></a>sort 和 top
 虽然 **take** 可用于获取一些记录，但选择和显示的结果不遵循特定的顺序。 若要获取排序的视图，可按首选列**排序**：
@@ -82,7 +82,7 @@ SecurityEvent
 | sort by TimeGenerated desc
 ```
 
-不过，这可能会返回过多的结果，此外可能需要一段时间。 上述查询按 TimeGenerated 列将整个 SecurityEvent 表排序。 然后，Analytics 门户将结果限制为仅显示 10,000 条记录。 当然，这种方法不是最佳的。
+不过，这可能会返回过多的结果，此外可能需要一段时间。 上述查询按 TimeGenerated 列将整个 SecurityEvent 表排序。  然后，Analytics 门户将结果限制为仅显示 10,000 条记录。 当然，这种方法不是最佳的。
 
 仅获取最新 10 条记录的最佳方式是使用 **top**，它会在服务器端将整个表排序，然后返回前几条记录：
 
@@ -136,7 +136,7 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>指定时间范围
 
 ### <a name="time-picker"></a>时间选取器
-时间选取器位于“运行”按钮的旁边，指示我们只查询过去 24 小时的记录。 这是应用到所有查询的默认时间范围。 如果只要获取过去一个小时的记录，请选择“过去一小时”并再次运行查询。
+时间选取器位于“运行”按钮的旁边，指示我们只查询过去 24 小时的记录。 这是应用到所有查询的默认时间范围。 如果只要获取过去一个小时的记录，请选择“过去一小时”并再次运行查询。 
 
 ![时间选取器](media/get-started-queries/timepicker.png)
 
@@ -188,7 +188,7 @@ SecurityEvent
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Summarize：聚合行组
-使用 **summarize** 可以根据一个或多个列标识记录组，并向其应用聚合。 summarize 最常见的用途是计数，可以返回每个组中的结果数。
+使用 **summarize** 可以根据一个或多个列标识记录组，并向其应用聚合。 summarize  最常见的用途是计数  ，可以返回每个组中的结果数。
 
 以下查询检查过去一小时的所有 *Perf* 记录，按 *ObjectName* 将其分组，然后统计每个组中的记录数： 
 ```Kusto

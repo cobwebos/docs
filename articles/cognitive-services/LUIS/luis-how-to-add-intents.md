@@ -12,23 +12,23 @@ ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
 ms.openlocfilehash: 0c42ab44ba317888b982ba7c72f78be4ca73d93c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148169"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>添加意向以确定用户的话语意向
 
 向 LUIS 应用添加[意向](luis-concept-intent.md)，识别具有相同意向的问题或命令组。 
 
-可以依次转到顶部导航栏的“生成”部分和左侧面板的“意向”来管理意向。 
+可以依次转到顶部导航栏的“生成”部分和左侧面板的“意向”来管理意向。   
 
 ## <a name="add-intent"></a>添加意向
 
-1. 在“意向”页上，选择“创建新意向”。
+1. 在“意向”页上，选择“创建新意向”。  
 
-1. 在“创建新意向”对话框中，输入意向名称 `GetEmployeeInformation`，然后单击“完成”。
+1. 在“创建新意向”对话框中，输入意向名称 `GetEmployeeInformation`，然后单击“完成”   。
 
     ![添加意向](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "65148169"
 
 示例表述是用户问题或命令的文本示例。 若要传授语言理解 (LUIS)，需将示例话语添加到意向。
 
-1. 在“GetEmployeeInformation”意向详细信息页上的意向名称下的文本框中，输入预期用户会输入的相关话语，例如 `Does John Smith work in Seattle?`，然后按 Enter。
+1. 在“GetEmployeeInformation”意向详细信息页上的意向名称下的文本框中，输入预期用户会输入的相关话语，例如 `Does John Smith work in Seattle?`，然后按 Enter。 
  
     ![意向详细信息页的屏幕截图，其中突出显示了表述](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
@@ -46,27 +46,27 @@ ms.locfileid: "65148169"
 
 ## <a name="intent-prediction-errors"></a>意向预测错误 
 
-示例查询文本中意向可能有意向预测错误之间的示例查询文本目前处于意向和在定型过程中确定的预测目的。 
+意向中的示例话语可能会在示例话语当前表现出的意向和在训练过程中确定的预测意向之间存在意向预测错误。 
 
-若要查找预测错误的查询文本并修复它们，请使用**筛选器**选项的**评估**与结合使用的不正确和 Unclear 选项**视图**选项**详细的视图**。 
+若要找出并修复话语预测错误，请将“筛选器”  选项的“评估”  选项“不正确”和“不清楚”与“视图”  选项“详细视图”配合使用。  
 
-![查找查询文本预测错误并解决这些问题，请使用筛选器选项。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+![若要找出并修复话语预测错误，请使用“筛选器”选项。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-时应用的筛选器和视图，并且有示例语音样本，但出现错误，列出的示例查询文本显示了语音样本和问题。
+应用筛选器和视图以后，如果示例话语出现错误，则示例话语列表会显示话语和问题。
 
-![![时应用的筛选器和视图，并且有示例语音样本，但出现错误，此示例查询文本列表显示查询文本和问题。](。 / media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+![![应用筛选器和视图以后，如果示例话语出现错误，则示例话语列表会显示话语和问题。](./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
 
-每行显示当前训练的预测得分的示例查询文本，最接近的竞争对手的分数，这是这些两个分数中的差异。 
+每一行会显示当前训练的示例话语预测分数、最接近的对手的分数，以及这两个分数之间的差异。 
 
 ### <a name="fixing-intents"></a>修复意向
 
-若要了解如何修复意向预测错误，请使用[摘要仪表板](luis-how-to-use-dashboard.md)。 摘要仪表板对活动版本的最后一个培训进行了分析，并提供前的建议，以修复您的模型。  
+若要了解如何修复意向预测错误，请使用[摘要仪表板](luis-how-to-use-dashboard.md)。 摘要仪表板提供对活动版本的上一次训练的分析，并提供排名靠前的建议，用于修复模型。  
 
 ## <a name="add-a-custom-entity"></a>添加自定义实体
 
 将话语添加到意向后，可以选择话语内部的文本来创建自定义实体。 通过自定义实体可以标记要提取的文本，以及正确的意向。 
 
-请参阅[将实体添加到查询文本](luis-how-to-add-example-utterances.md)若要了解详细信息。
+请参阅[将实体添加到话语](luis-how-to-add-example-utterances.md)以了解更多信息。
 
 ## <a name="entity-prediction-discrepancy-errors"></a>实体预测偏差错误 
 
@@ -82,7 +82,7 @@ ms.locfileid: "65148169"
 
 ## <a name="using-the-contextual-toolbar"></a>使用上下文工具栏
 
-在列表中，选择一个或多个示例语音样本，应检查查询文本，左侧的框时会查询文本列表上方的工具栏可以执行以下操作：
+通过选中话语左侧的框在列表中选择一个或多个示例话语后，使用话语列表上方的工具栏可以执行以下操作：
 
 * 重新分配意向：将话语移到不同的意向
 * 删除话语
@@ -99,7 +99,7 @@ ms.locfileid: "65148169"
 * 删除：从意向中删除话语。 如果仍想保留该话语，则更好的方法是将其移到 **None** 意向。 
 * 添加模式：使用模式可以提取常用话语以及标记可替换的文本和可忽略的文本，从而减少在意向中提供更多话语的需要。 
 
-使用“已标记的意向”列可以更改话语的意向。
+使用“已标记的意向”列可以更改话语的意向。 
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>在对模型进行意向更改后对应用进行培训
 

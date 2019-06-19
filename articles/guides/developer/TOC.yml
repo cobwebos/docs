@@ -83,7 +83,7 @@
     - name: 计划
       items:
         - name: Web 应用程序体系结构
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/managed-web-app/'
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
         - name: VM 体系结构
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/'
         - name: 连接到本地网络

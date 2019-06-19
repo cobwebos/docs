@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 5197fdfe78b1b091de713754967f58157cc4a1b3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66481649"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN from Verizon Premium 规则引擎匹配条件
@@ -30,7 +30,7 @@ ms.locfileid: "66481649"
 
 “始终”匹配条件向所有请求应用默认的一组功能。
 
-Name | 目的
+名称 | 目的
 -----|--------
 [始终](#always) | 向所有请求应用默认的一组功能。
 
@@ -38,7 +38,7 @@ Name | 目的
 
 “设备”匹配条件用于根据属性标识来自移动设备的请求。  
 
-Name | 目的
+名称 | 目的
 -----|--------
 [设备](#device) | 根据设备属性标识来自移动设备的请求。
 
@@ -46,7 +46,7 @@ Name | 目的
 
 “位置”匹配条件根据请求者的位置标识请求。
 
-Name | 目的
+名称 | 目的
 -----|--------
 [AS 编号](#as-number) | 标识源自特定网络的请求。
 [国家/地区](#country) | 标识源自指定国家/地区的请求。
@@ -804,7 +804,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 - 在 URL 比较之前，边缘 CNAME URL 将重写入 CDN URL。
 
     例如，以下两个 URL 指向同一个资产，因此具有相同的 URL 路径：
-     - CDN URL： http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+     - CDN URL： http://wpc.0001.&lt ;domain&gt; /800001/CustomerOrigin/path/asset.htm
      - 边缘 CNAME URL：http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     其他信息：
@@ -1053,7 +1053,7 @@ Email | Joe\* | 当所请求 URL 的查询字符串包含以“Joe”开头的 E
 
 以下示例演示此选项在特定场合下的工作方式：
 
- Name                 | 描述
+ 名称                 | 描述
  ---------------------|------------
 user=joe              | 当所请求 URL 的查询字符串为“?user=joe”时匹配此模式。
 \*user=\* \*optout=\* | 当 CDN URL 查询包含 user 或 optout 参数时匹配此模式。

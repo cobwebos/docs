@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
 ms.openlocfilehash: 4e224a1abf72bfa068bebaf971e34c492b15d7c0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65142997"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性
@@ -28,14 +28,14 @@ ms.locfileid: "65142997"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2009879]:https://launchpad.support.sap.com/#/notes/2009879
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2009879]: https://launchpad.support.sap.com/#/notes/2009879
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -151,7 +151,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    1. 管理员用户名、管理员密码或 SSH 密钥  
       创建一个新用户，可用于登录到计算机。
    1. 子网 ID  
-   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
+   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;    
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -201,7 +201,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
          1. 打开负载均衡器，选择负载均衡规则并单击添加
          1. 输入新的负载均衡器规则的名称（例如 **nw1-lb-3200**）
          1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **nw1-ascs-frontend**）
-         1. 将协议保留为“TCP”，输入端口 **3200**
+         1. 将协议保留为“TCP”，输入端口 **3200** 
          1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
@@ -219,9 +219,9 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>准备 SAP Netweaver 安装
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2    。
 
-1. [A] 设置主机名称解析
+1. [A] 设置主机名称解析 
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
    请替换以下命令中的 IP 地址和主机名
@@ -241,7 +241,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    <b>10.0.0.8 nw1-aers</b>
    </code></pre>
 
-1. [A] 创建共享目录
+1. [A] 创建共享目录 
 
    <pre><code>sudo mkdir -p /sapmnt/<b>NW1</b>
    sudo mkdir -p /usr/sap/trans
@@ -300,7 +300,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    <pre><code>sudo mount -a
    </code></pre>
 
-1. [A] 配置交换文件
+1. [A] 配置交换文件 
 
    <pre><code>sudo vi /etc/waagent.conf
    
@@ -358,7 +358,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    #      vip_<b>NW1</b>_ASCS       (ocf::heartbeat:IPaddr2):       Started <b>nw1-cl-0</b>
    </code></pre>
 
-1. [1] 安装 SAP NetWeaver ASCS  
+1. [1] 安装 SAP NetWeaver ASCS   
 
    使用映射到适用于 ASCS 的负载均衡器前端配置的 IP 地址（例如 <b>nw1-ascs</b>、<b>10.0.0.7</b>）以及用于负载均衡器探测的实例编号（例如 <b>00</b>）的虚拟主机名，在第一个节点上以 root 身份安装 SAP NetWeaver ASCS。
 
@@ -414,7 +414,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    #      vip_<b>NW1</b>_AERS       (ocf::heartbeat:IPaddr2):       Started <b>nw1-cl-1</b>
    </code></pre>
 
-1. [2] 安装 SAP Netweaver ERS  
+1. [2] 安装 SAP Netweaver ERS   
 
    使用映射到适用于 ERS 的负载均衡器前端配置的 IP 地址（例如 <b>nw1-ers</b>、<b>10.0.0.8</b>）以及用于负载均衡器探测的实例编号（例如 <b>02</b>）的虚拟主机名，在第二个节点上以 root 身份安装 SAP NetWeaver ERS。
 
@@ -432,7 +432,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ERS<b>02</b>
    </code></pre>
 
-1. [1] 调整 ASCS/SCS 和 ERS 实例配置文件
+1. [1] 调整 ASCS/SCS 和 ERS 实例配置文件 
 
    * ASCS/SCS 配置文件
 
@@ -459,7 +459,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    </code></pre>
 
 
-1. [A] 配置 Keep Alive
+1. [A] 配置 Keep Alive 
 
    SAP NetWeaver 应用程序服务器和 ASCS/SCS 之间的通信是通过软件负载均衡器进行路由的。 负载均衡器在可配置的超时之后将断开非活动连接。 若要防止此情况，需要在 SAP NetWeaver ASCS/SCS 配置文件中设置参数并更改 Linux 系统设置。 有关详细信息，请参阅 [SAP 说明 1410736][1410736]。
 
@@ -483,7 +483,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    # LD_LIBRARY_PATH=/usr/sap/<b>NW1</b>/ERS<b>02</b>/exe:$LD_LIBRARY_PATH; export LD_LIBRARY_PATH; /usr/sap/<b>NW1</b>/ERS<b>02</b>/exe/sapstartsrv pf=/usr/sap/<b>NW1</b>/ERS<b>02</b>/profile/<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b> -D -u <b>nw1</b>adm
    </code></pre>
 
-1. [1] 创建 SAP 群集资源
+1. [1] 创建 SAP 群集资源 
 
   如果使用排队服务器 1 体系结构 (ENSA1)，定义的资源，如下所示：
 
@@ -715,7 +715,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
      DATABASE: <b>NW1</b>
    </code></pre>
 
-   输出显示，默认条目的 IP 地址正在指向虚拟机而不是负载均衡器的 IP 地址。 需将此条目更改为指向负载均衡器的虚拟主机名。 请确保使用相同端口（上述输出中为“30313”）和数据库名称（上述输出中为“HN1”）！
+   输出显示，默认条目的 IP 地址正在指向虚拟机而不是负载均衡器的 IP 地址。 需将此条目更改为指向负载均衡器的虚拟主机名。 请确保使用相同端口（上述输出中为“30313”）和数据库名称（上述输出中为“HN1”）   ！
 
    <pre><code>su - <b>nw1</b>adm
    hdbuserstore SET DEFAULT <b>nw1-db</b>:<b>30313@NW1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>

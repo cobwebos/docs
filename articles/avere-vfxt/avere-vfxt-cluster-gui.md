@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60794293"
 ---
 # <a name="access-the-vfxt-cluster"></a>访问 vFXT 群集
@@ -31,7 +31,7 @@ ms.locfileid: "60794293"
 
 如果使用基于 Linux 的客户端，请通过以下形式使用 SSH 隧道： 
 
-ssh -L local_port:cluster_mgmt_ip:443 controller_username\@controller_public_IP
+   ssh -L local_port:cluster_mgmt_ip:443 controller_username\@controller_public_IP 
 
 此命令通过群集控制器的 IP 地址连接到群集的管理 IP 地址。
 
@@ -51,15 +51,15 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
 示例： ``azureuser@203.0.113.51``
 
-在“配置”面板中：
+在“配置”  面板中：
 
-1. 展开左侧的“连接” > “SSH”。 
-1. 单击“隧道”。 
+1. 展开左侧的“连接” > “SSH”   。 
+1. 单击“隧道”  。 
 1. 输入源端口，如 8443。 
 1. 对于目标，请输入 vFXT 群集的管理 IP 地址和端口 443。 
    示例： ``203.0.113.51:443``
-1. 单击“添加”。
-1. 单击“打开”。
+1. 单击“添加”  。
+1. 单击“打开”  。
 
 ![Putty 应用程序的屏幕截图，显示了单击以添加隧道的位置](media/avere-vfxt-ptty-numbered.png)
 
@@ -75,13 +75,13 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
 * 如果你使用 VPN 或 ExpressRoute 来访问群集，请在浏览器中导航到群集管理 IP 地址。 示例： ``https://203.0.113.51``
 
-可能需要单击“高级”并确认是否可以安全地继续浏览该页面，具体取决于浏览器。
+可能需要单击“高级”并确认是否可以安全地继续浏览该页面  ，具体取决于浏览器。
 
 输入创建群集时提供的用户名 `admin` 和管理密码。
 
 ![填写了用户名“管理员”和密码的 Avere 登录页面的屏幕截图](media/avere-vfxt-gui-login.png)
 
-单击“登录”或在键盘上按 Enter。
+单击“登录”或在键盘上按 Enter  。
 
 ## <a name="next-steps"></a>后续步骤
 

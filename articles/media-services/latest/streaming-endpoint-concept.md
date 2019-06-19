@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
 ms.openlocfilehash: 3e1a5d8ba8b6d0ec8e3ec1ba9506a88ee87d8ed1
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66515730"
 ---
 # <a name="streaming-endpoints"></a>流式处理终结点 
@@ -154,7 +154,7 @@ IP 筛选/G20/自定义主机<sup>2</sup>|是|是
 
 ### <a name="determine-if-dns-change-has-been-made"></a>确定是否已进行 DNS 更改
 
-可以通过确定是否已流式处理终结点 （流量将被定向到 Azure CDN） 上进行 DNS 更改 https://www.digwebinterface.com。 如果结果包含在结果中 azureedge.net 域名称，流量现在指向 CDN。
+可以通过确定是否已流式处理终结点 （流量将被定向到 Azure CDN） 上进行 DNS 更改 https://www.digwebinterface.com 。 如果结果包含在结果中 azureedge.net 域名称，流量现在指向 CDN。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

@@ -1,5 +1,5 @@
 ---
-title: 如何使用队列存储 (C++)-Azure 存储
+title: 如何使用队列存储 (C++) - Azure 存储
 description: 了解如何在 Azure 中使用队列存储服务。 示例用 C++ 编写。
 services: storage
 author: mhopkins-msft
@@ -11,10 +11,10 @@ ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
 ms.openlocfilehash: 440033233bbd60421cc3245a04544cd04caec6f4
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153126"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>如何通过 C++ 使用队列存储
@@ -42,7 +42,7 @@ ms.locfileid: "65153126"
 要安装适用于 C++ 的 Azure 存储客户端库，可以使用以下方法：
 
 * **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。
-* **Windows**：在 Visual Studio 中，单击“工具”>“NuGet 包管理器”>“包管理器控制台”。 在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
+* **Windows**：在 Visual Studio 中，单击“工具”>“NuGet 包管理器”>“包管理器控制台”。  在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
 
 ```powershell
 Install-Package wastorage
@@ -71,7 +71,7 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-若要启动 Azure 存储模拟器，请选择“开始”按钮或按 **Windows** 键。 开始键入“Azure 存储模拟器”，并从应用程序列表中选择“Microsoft Azure 存储模拟器”。
+若要启动 Azure 存储模拟器，请选择“开始”  按钮或按 **Windows** 键。 开始键入“Azure 存储模拟器”  ，并从应用程序列表中选择“Microsoft Azure 存储模拟器”  。
 
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。
 

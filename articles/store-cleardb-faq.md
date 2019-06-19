@@ -12,10 +12,10 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 1838dbb627a6dec46f817101fc1d0cca0961ef77
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64574174"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySql 数据库搭配 Azure 应用服务的 FAQ
@@ -40,14 +40,14 @@ ms.locfileid: "64574174"
 
 * [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)：需要信用卡，购买付费的 MySQL 数据库时会向信用卡收费。
 * [免费试用版](https://azure.microsoft.com/pricing/free-trial/)：包括可用于 Microsoft Azure 服务的信用额度，但不允许购买第三方资源。 若要购买第三方服务或付费的 MySQL 数据库，需使用支持信用卡的订阅。 对于 Web 应用，可以创建免费的 ClearDB MySQL 数据库。
-* [MSDN 订阅](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)和 MSDN 开发即付即用开发/测试：类似于免费试用版，MSDN 订阅需要用户使用信用卡从 ClearDB 购买付费的 MySQL 解决方案。
+* [MSDN 订阅](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)和 MSDN 开发即付即用开发/测试  ：类似于免费试用版，MSDN 订阅需要用户使用信用卡从 ClearDB 购买付费的 MySQL 解决方案。
 * [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)：每季以单独的合并发票按照 EA 向客户从 Azure 市场（第三方）购买的所有商品收费。 针对任何市场购买，以货币承诺付款以外的方式收费。 请注意，Azure 应用商店目前无法供在阿塞拜疆、克罗地亚、挪威和波多黎各注册的客户使用。 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>为什么我要为 Azure 市场中的 Web 应用和 MySQL 付 3.50 美元的费用？
-默认数据库选项是 Titan，需 3.50 美元。 创建数据库时我们不会显示成本，可能会错误地购买不想要的数据库。 我们正在设法改善此体验，但在那之前，需要先检查为 Web 应用和数据库选择的定价层，然后再单击“创建”并开始部署资源。
+默认数据库选项是 Titan，需 3.50 美元。 创建数据库时我们不会显示成本，可能会错误地购买不想要的数据库。 我们正在设法改善此体验，但在那之前，需要先检查为 Web 应用和数据库选择的定价层，然后再单击“创建”  并开始部署资源。
 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>我在自己的 Azure 虚拟机上运行 MySQL。 我是否可以将 Azure Web 应用连接到数据库？
-可以。 只要 Azure VM 已向 Web 应用授予远程访问权限，Web 应用就能连接到数据库。 有关详细信息，请参阅[在虚拟机上安装 MySQL](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+是的。 只要 Azure VM 已向 Web 应用授予远程访问权限，Web 应用就能连接到数据库。 有关详细信息，请参阅[在虚拟机上安装 MySQL](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>中的国家/地区都支持 ClearDB Premium MySQL 群集？
 除印度、澳大利亚、巴西南部和中国之外的所有 Azure 区域都可以使用 ClearDB 高级 MySQL 群集。
@@ -98,7 +98,7 @@ Azure 市场无法供在阿塞拜疆、克罗地亚、挪威或波多黎各注�
 ## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>在何处可查看 EA 订阅中 ClearDB 资源的计费情况？
 直接 EA 客户可以在企业门户上看到 Azure 市场费用。 请注意，所有市场购买和使用均会在每季季末就货币承诺付款以外收费。 EA 客户需要直接付费给第三方服务提供商，或者通过启用其 EA 帐户的付款方式（例如信用卡）完成付费。
 
-间接 EA 客户可以在企业门户的“管理订阅”页上找到其 Azure 市场订阅，但定价处于隐藏状态。 客户应该联系其 LSP 以了解市场费用的相关信息。
+间接 EA 客户可以在企业门户的“管理订阅”  页上找到其 Azure 市场订阅，但定价处于隐藏状态。 客户应该联系其 LSP 以了解市场费用的相关信息。
 
 EA Azure 注册管理员可以管理 Azure 市场第三方服务的访问权限。 在企业门户中，管理员可在“帐户”部分下的“管理帐户和订阅”中禁用或重新启用对应用商店内所购第三方服务的访问权限。
 

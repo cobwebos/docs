@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8ebd871c314d3ecbc0c89e6c9081926558b181fd
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 59155b41906ffd401b971bee1248a225d0c33657
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237095"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072448"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -64,13 +64,13 @@ ms.locfileid: "65237095"
 | 美国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
-### <a name="request-headers"></a>请求头
+### <a name="request-headers"></a>请求标头
 
 此表列出了必需和可选标头的文本到语音转换请求。
 
-| 页眉 | 描述 | 必需/可选 |
+| Header | 描述 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 需要 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
 
 ### <a name="request-body"></a>请求正文
 
@@ -138,10 +138,10 @@ Authorization: Bearer [Base64 access_token]
 
 | HTTP 状态代码 | 描述 | 可能的原因 |
 |------------------|-------------|-----------------|
-| 200 |  确定 | 请求已成功。 |
+| 200 | OK | 请求已成功。 |
 | 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
-| 401 | 未经授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 |
-| 429 | 请求太多 | 已经超过了订阅允许的配额或请求速率。 |
+| 401 | 未授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 |
+| 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
 | 502 | 错误的网关 | 网络或服务器端问题。 也可能表示标头无效。 |
 
 
@@ -155,20 +155,20 @@ Authorization: Bearer [Base64 access_token]
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-### <a name="request-headers"></a>请求头
+### <a name="request-headers"></a>请求标头
 
 此表列出了必需和可选标头的文本到语音转换请求。
 
-| 页眉 | 描述 | 必需/可选 |
+| Header | 描述 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 需要 |
-| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 需要 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
+| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必选 |
 | `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 需要 |
-| `User-Agent` | 应用程序名称。 提供的值必须是少于 255 个字符。 | 需要 |
+| `User-Agent` | 应用程序名称。 提供的值必须是少于 255 个字符。 | 必选 |
 
 ### <a name="audio-outputs"></a>音频输出
 
-这是在每个请求中作为 `X-Microsoft-OutputFormat` 标头发送的受支持音频格式的列表。 每种格式合并了比特率和编码类型。 语音服务支持 24 KHz，16 KHz 和 8 KHz 音频输出。
+这是在每个请求中作为 `X-Microsoft-OutputFormat` 标头发送的受支持音频格式的列表。 每种格式合并了比特率和编码类型。 语音服务支持 24 kHz，16 kHz 和 8 kHz 音频输出。
 
 |||
 |-|-|
@@ -181,7 +181,7 @@ Authorization: Bearer [Base64 access_token]
 | `audio-24khz-48kbitrate-mono-mp3` | |
 
 > [!NOTE]
-> 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 但是，24khz 语音不支持 `audio-16khz-16kbps-mono-siren` 和 `riff-16khz-16kbps-mono-siren` 输出格式。
+> 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 但是，不支持 24 kHz 语音`audio-16khz-16kbps-mono-siren`和`riff-16khz-16kbps-mono-siren`输出格式。
 
 ### <a name="request-body"></a>请求正文
 
@@ -221,11 +221,11 @@ Authorization: Bearer [Base64 access_token]
 
 | HTTP 状态代码 | 描述 | 可能的原因 |
 |------------------|-------------|-----------------|
-| 200 |  确定 | 请求成功；响应正文是一个音频文件。 |
+| 200 | OK | 请求成功；响应正文是一个音频文件。 |
 | 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
-| 401 | 未经授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 |
+| 401 | 未授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 |
 | 413 | 请求实体太大 | SSML 输入超过了 1024 个字符。 |
-| 429 | 请求太多 | 已经超过了订阅允许的配额或请求速率。 |
+| 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
 | 502 | 错误的网关 | 网络或服务器端问题。 也可能表示标头无效。 |
 
 如果 HTTP 状态为 `200 OK`，则响应正文包含采用所请求格式的音频文件。 可以一边传输一边播放此文件，或者将其保存到缓冲区或文件中。

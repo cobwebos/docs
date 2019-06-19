@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e1fc7809ad94d589483b87c638d027a39098164e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209537"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门-配置私有云环境
@@ -24,7 +24,7 @@ ms.locfileid: "65209537"
 
 ## <a name="create-a-private-cloud"></a>创建私有云
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 2. 搜索**CloudSimple 服务**。
 3. 选择你想要创建您的私有云的 CloudSimple 服务。
 4. 从概述中，单击**创建私有云**打开新 CloudSimple 门户的浏览器选项卡。  如果系统提示，请使用你的 Azure 登录在凭据登录。  
@@ -53,7 +53,7 @@ ms.locfileid: "65209537"
 
 可以从 Azure 门户来访问 CloudSimple 门户。  将你的 Azure 启动 CloudSimple 门户中使用单一登录 (SSO) 的凭据登录。  访问 CloudSimple 门户需要进行授权**CloudSimple 服务授权**应用程序。  有关授予权限的详细信息，请参阅[同意 CloudSimple 服务授权应用程序](https://docs.azure.cloudsimple.com/access-cloudsimple-portal/#consent-to-cloudsimple-service-authorization-application)
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 2. 搜索**CloudSimple 服务**。
 3. 选择你想要创建您的私有云的 CloudSimple 服务。
 4. 从概述中，单击**转到 CloudSimple 门户**打开新 CloudSimple 门户的浏览器选项卡。  如果系统提示，请使用你的 Azure 登录在凭据登录。  
@@ -79,7 +79,7 @@ ms.locfileid: "65209537"
     * 选择部署 CloudSimple 服务所在的 Azure 位置。
     * 指定的点到站点网关的客户端子网。  在连接时，将来自此子网提供 DHCP 地址。
 
-5. 有关**用户的连接/**，指定以下设置，然后单击**下一步**。
+5. 有关**用户的连接/** ，指定以下设置，然后单击**下一步**。
 
     * 若要自动允许所有当前和未来用户通过此点到站点网关访问私有云，请选择**自动添加的所有用户**。 如果选择此选项时，会自动选择的用户列表中的所有用户。 可以通过取消选中列表中的各个用户覆盖自动选项。
     * 若要选择只有单个用户，请单击用户列表中的复选框。
@@ -101,7 +101,7 @@ VPN 客户端需要从您的计算机连接到 CloudSimple。  下载[OpenVPN �
 1. 启动 CloudSimple 门户并选择**网络**。
 2. 选择**VPN 网关**。
 3. 从 VPN 网关列表中，单击点到站点 VPN 网关。
-4. 选择“用户”。
+4. 选择“用户”  。
 5. 单击**下载我的 VPN 配置**
 
     ![下载 VPN 配置](media/download-p2s-vpn-configuration.png)
@@ -127,7 +127,7 @@ VPN 客户端需要从您的计算机连接到 CloudSimple。  下载[OpenVPN �
 5. 从列表中选择一个 VLAN ID。  
 6. 输入用于标识子网的子网名称。
 7. 指定的子网 CIDR 范围和掩码。  此范围不得与任何现有的子网重叠。
-8. 单击“提交”。
+8. 单击“提交”  。
 
     ![创建子网 VLAN/详细信息](media/create-new-vlan-subnet-details.png)
 
@@ -147,7 +147,7 @@ CloudSimple 提供了一条 ExpressRoute 线路的私有云。 您可以在 Azur
 
 2. 选择首选的 vSphere 客户端访问 vCenter 和使用你的用户名和密码登录。  默认值如下：
     * 用户名： **CloudOwner@cloudsimple.local**
-    * 密码:**CloudSimple123!**  
+    * 密码：**CloudSimple123!**  
 
 在下一步的过程中的 vCenter 屏幕都是从 vSphere (HTML5) 客户端。
 
@@ -176,7 +176,7 @@ CloudSimple 建议您在第一次登录到 vCenter 更改密码。
 使用默认密码，NSX manager 进行部署。  我们建议在创建您的私有云后更改密码。
 
    * 用户名：**管理员**
-   * 密码:**CloudSimple123!**
+   * 密码：**CloudSimple123!**
 
 可以在 CloudSimple 门户上找到的完全限定的域名 (FQDN) 和 NSX 管理器的 IP 地址。
 
