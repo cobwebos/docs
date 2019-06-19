@@ -70,14 +70,17 @@
     - name: OS 功能
       href: operating-system-functionality.md
     - name: 安全
-      href: overview-security.md
       items:
+        - name: 建议
+          href: security-recommendations.md
         - name: 身份验证和授权
           href: overview-authentication-authorization.md
         - name: OS 和运行时修补
           href: overview-patch-os-runtime.md
         - name: 安全属性
           href: app-service-security-attributes.md
+        - name: 安全概述
+          href: overview-security.md
     - name: 网络功能
       href: networking-features.md
     - name: 入站和出站 IP
