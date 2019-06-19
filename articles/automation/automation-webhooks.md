@@ -10,15 +10,15 @@ ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61304535"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>通过 Webhook 启动 Azure 自动化 Runbook
 
-Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特定的 Runbook。 这样，如 Azure DevOps 服务、 GitHub、 Azure Monitor 日志或自定义应用程序可以在启动 runbook，而无需实现完整的解决方案使用 Azure 自动化 API 的外部服务。  
+Webhook  可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特定的 Runbook。 这样，如 Azure DevOps 服务、 GitHub、 Azure Monitor 日志或自定义应用程序可以在启动 runbook，而无需实现完整的解决方案使用 Azure 自动化 API 的外部服务。  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 可以将 Webhook 与[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md) 中其他启动 Runbook 的方法进行比较
@@ -32,10 +32,10 @@ Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特�
 
 | 属性 | 描述 |
 |:--- |:--- |
-| 名称 |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 <br> 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
-| 代码 |Webhook 的 URL 是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应将其视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
+| Name |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 <br> 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
+| URL |Webhook 的 URL 是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应将其视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
 | 到期日期 |与证书一样，每个 Webhook 都有一个过期日期，到了过期日期 Webhook 不再可用。 创建 Webhook 后，只要它没有到期，就可以修改此到期日期。 |
-| Enabled |Webhook 在创建后默认启用。 如果将它设置为“已禁用”，则没有客户端可以使用它。 可以在创建 Webhook 时设置“已启用”属性，也可以在创建后随时设置它。 |
+| Enabled |Webhook 在创建后默认启用。 如果将它设置为“已禁用”，则没有客户端可以使用它。 可以在创建 Webhook 时设置“已启用”  属性，也可以在创建后随时设置它。 |
 
 ### <a name="parameters"></a>parameters
 
@@ -45,7 +45,7 @@ Webhook 可以定义 Runbook 参数的值，当该 Webhook 启动 Runbook 时会
 
 ![Webhookdata 属性](media/automation-webhooks/webhook-data-properties.png)
 
-$WebhookData 对象具有以下属性：
+$WebhookData  对象具有以下属性：
 
 | 属性 | 描述 |
 |:--- |:--- |
@@ -64,7 +64,7 @@ $WebhookData 对象具有以下属性：
 对于以下 Runbook，如果 WebhookData 参数具有以下属性：
 
 * WebhookName：*MyWebhook*
-* RequestBody: [{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]
+* RequestBody: [{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}] 
 
 那么，应为 WebhookData 参数传递以下 UI 中的 JSON 值。 下面的示例带有回车符和换行符，与从 Webhook 中传递的格式相匹配。
 
@@ -89,16 +89,16 @@ Webhook 的安全性取决于其 URL 的私密性，可以通过 URL 中包含�
 
 在 Azure 门户中使用以下过程来创建新的链接到 Runbook 的 Webhook。
 
-1. 在 Azure 门户的“Runbook”页中，单击需要通过 Webhook 来启动以查看其详细信息页的 Runbook。 请确保 runbook **状态**为“已发布”。
-2. 单击页顶部的“Webhook”以打开“添加 Webhook”页。
-3. 单击“新建 Webhook”以打开“创建 Webhook”页。
+1. 在 Azure 门户的“Runbook”页  中，单击需要通过 Webhook 来启动以查看其详细信息页的 Runbook。 请确保 runbook **状态**为“已发布”  。
+2. 单击页顶部的“Webhook”以打开“添加 Webhook”页   。
+3. 单击“新建 Webhook”以打开“创建 Webhook”页   。
 4. 指定 Webhook 的**名称**、**到期日期**，以及是否应启用它。 有关这些属性的详细信息，请参阅 [Webhook 详细信息](#details-of-a-webhook)。
 5. 单击复制图标，并按 Ctrl+C 以复制 Webhook 的 URL。 然后，将其记录在某个安全的位置。 **一旦创建 Webhook，就不能再次检索该 URL。**
 
    ![Webhook URL](media/automation-webhooks/copy-webhook-url.png)
 
-1. 单击“参数”为 Runbook 参数提供值。 如果 Runbook 包含必需的参数，除非提供了相应的值，否则无法创建 Webhook。
-1. 单击“创建”以创建 Webhook。
+1. 单击“参数”  为 Runbook 参数提供值。 如果 Runbook 包含必需的参数，除非提供了相应的值，否则无法创建 Webhook。
+1. 单击“创建”  以创建 Webhook。
 
 ## <a name="using-a-webhook"></a>使用 Webhook
 
@@ -129,11 +129,11 @@ http://<Webhook Server>/token?=<Token Value>
 
 Webhook 在创建后将具有一年的有效期。 一年后，Webhook 将自动到期。 Webhook 到期后将无法将其重新激活，必须将其删除并重新创建。 如果 Webhook 还未达到其到期时间，则可对其进行延期。
 
-若要扩展 Webhook，请导航到包含 Webhook 的 runbook。 选择“资源”****下的“Webhook”****。 单击要延期的 Webhook，此操作将打开“Webhook”页面。  选择新的到期日期和时间，然后单击“保存”。
+若要扩展 Webhook，请导航到包含 Webhook 的 runbook。 选择“资源”  下的“Webhook”  。 单击要延期的 Webhook，此操作将打开“Webhook”  页面。  选择新的到期日期和时间，然后单击“保存”  。
 
 ## <a name="sample-runbook"></a>示例 Runbook
 
-以下示例 Runbook 将接受 Webhook 数据，并启动请求正文中指定的虚拟机。 若要在“Runbook”下的自动化帐户中测试此 Runbook，请单击“+ 添加 Runbook”。 如果不知道如何创建 Runbook，请参阅[创建 Runbook](automation-quickstart-create-runbook.md)。
+以下示例 Runbook 将接受 Webhook 数据，并启动请求正文中指定的虚拟机。 若要在“Runbook”  下的自动化帐户中测试此 Runbook，请单击“+ 添加 Runbook”  。 如果不知道如何创建 Runbook，请参阅[创建 Runbook](automation-quickstart-create-runbook.md)。
 
 ```powershell
 param
@@ -207,7 +207,7 @@ $response = Invoke-WebRequest -Method Post -Uri $uri -Body $body -Headers $heade
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 
-下面的示例显示请求的正文，可在“WebhookData”的“RequestBody”属性中提供给 Runbook 使用。 此值格式化为 JSON，因为这是请求正文中包含的格式。
+下面的示例显示请求的正文，可在“WebhookData”  的“RequestBody”  属性中提供给 Runbook 使用。 此值格式化为 JSON，因为这是请求正文中包含的格式。
 
 ```json
 [

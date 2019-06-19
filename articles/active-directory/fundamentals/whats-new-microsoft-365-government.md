@@ -14,10 +14,10 @@ ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b077c7b5efbad2add971d42ff31938b56f6bc33
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258889"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>什么是 Azure Active Directory，Microsoft 365 政府版中的新增功能
@@ -51,7 +51,7 @@ Microsoft 365 政府版云实例，这适用于使用以下服务的客户中，
 
 下表显示了为所有客户的终结点：
 
-| 名称 | 终结点详细信息 |
+| Name | 终结点详细信息 |
 |------|------------------|
 | 门户 |Microsoft Azure 政府版： https://portal.azure.us<p>Microsoft 365 政府版 GCC 高： https://portal.office365.us<p>Microsoft 365 政府版 DoD: https://portal.apps.mil |
 | Azure Active Directory 颁发机构终结点 | https://login.microsoftonline.us |
