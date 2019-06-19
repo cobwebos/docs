@@ -35,7 +35,7 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 Windows 的 Log Analytics 代理扩展支持以下版本的 Windows 操作系统：
 
 - Windows Server 2019
-- Windows Server 2008 R2、2012、2012 R2、2016，版本 1709 和 1803
+- Windows Server 2008 R2、2012、2012 R2、2016、版本 1709 和 版本 1803
 
 ### <a name="agent-and-vm-extension-version"></a>代理和 VM 扩展版本
 下表提供了 Log Analytics 代理捆绑包的每个版本的 Windows Azure 监视 VM 扩展的版本的映射。 
