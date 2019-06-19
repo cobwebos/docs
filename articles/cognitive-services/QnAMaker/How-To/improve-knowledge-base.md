@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/19/2019
 ms.author: diberry
-ms.openlocfilehash: f8d2f6d9fce6a249a782f959ac7672ac8e123fbc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b73884e544ea1b8ee76c8a891048e6a8e17d6ab3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075160"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204090"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用 active 学习来改善您的知识库
 
@@ -195,7 +195,7 @@ JSON 正文具有多个设置：
 |--|--|--|--|
 |`feedbackRecords`|数组|反馈的列表。|
 |`userId`|字符串|接受建议的问题的人员的用户 ID。 用户 ID 格式是由您决定。 例如，电子邮件地址可以是您的体系结构中的有效用户 ID。 可选。|
-|`userQuestion`|字符串|问题的确切文本。 必需。|
+|`userQuestion`|字符串|用户的查询的确切文本。 必需。|
 |`qnaID`|数字|在中找到的问题的 ID [GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)。 |
 
 一个 JSON 正文示例如下所示：
@@ -213,6 +213,36 @@ JSON 正文具有多个设置：
 ```
 
 成功响应将返回 204，而且没有 JSON 响应正文中的状态。 
+
+### <a name="batch-many-feedback-records-into-a-single-call"></a>批处理大量反馈记录到一个调用
+
+在客户端应用程序，如智能机器人应用程序，可以存储数据，然后在中的单个 JSON 正文中发送多条记录`feedbackRecords`数组。 
+
+一个 JSON 正文示例如下所示：
+
+```json
+{
+    "feedbackRecords": [
+        {
+            "userId": "1",
+            "userQuestion": "How do I ...",
+            "qnaId": 1
+        },
+        {
+            "userId": "2",
+            "userQuestion": "Where is ...",
+            "qnaId": 40
+        },
+        {
+            "userId": "3",
+            "userQuestion": "When do I ...",
+            "qnaId": 33
+        }
+    ]
+}
+```
+
+
 
 <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>
 

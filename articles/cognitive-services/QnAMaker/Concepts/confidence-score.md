@@ -3,20 +3,20 @@ title: 置信度分数 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 此置信度分数指明了答案是给定用户查询的正确匹配答案的置信度。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
-ms.author: tulasim
+ms.date: 06/17/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4fb5d1e20c4c857dedcec2dc4695f82fccd9269d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c14c607e4c563bbeeaff02b2c2478cc4b4d96ee5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65792748"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165140"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的置信度分数
 如果用户查询的匹配依据为知识库，QnA Maker 会返回相关答案和置信度分数。 此分数指明了答案是给定用户查询的正确匹配答案的置信度。 
@@ -46,7 +46,7 @@ ms.locfileid: "65792748"
 |0|无匹配，因此未返回任何答案。|“服务费用是多少”|
 
 ## <a name="choose-a-score-threshold"></a>选择分数阈值
-上表指明了大多数知识库上应该会出现的分数。 不过，由于每个知识库都不同，它们具有不同类型的字词、意向和目标，因此建议测试并选择最适合自己的阈值。 默认情况下将阈值设置为 0，以便返回所有可能的答案。 应适用于大多数知识库的建议阈值**50**。
+上表指明了大多数知识库上应该会出现的分数。 但是，因为每个知识库是不同的并且有不同类型的单词、 意图，和目标-我们建议你测试和选择阈值最适合您。 默认情况下将阈值设置为 0，以便返回所有可能的答案。 应适用于大多数知识库的建议阈值**50**。
 
 选择阈值时，请务必平衡“准确度”和“覆盖率”，并根据自己的需求来调整阈值。
 
@@ -56,6 +56,12 @@ ms.locfileid: "65792748"
 
 > [!NOTE]
 > 较新版本的 QnA Maker 包括对评分逻辑的改进，并可能影响你的阈值。 每次更新服务时，请务必测试阈值并在必要时调整阈值。 可以在[此处](https://www.qnamaker.ai/UserSettings)查看 QnA 服务版本，并在[此处](../How-To/troubleshooting-runtime.md)了解如何获取最新更新。
+
+## <a name="set-threshold"></a>设置的阈值 
+
+为属性的设置的阈值评分[GenerateAnswer API JSON 正文](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)。 这意味着将其设置 GenerateAnswer 每次调用。 
+
+从智能机器人应用程序框架，具有的选项对象的一部分设置分数[ C# ](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c)或[Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)。
 
 ## <a name="improve-confidence-scores"></a>提高置信度分数
 若要提高对用户查询的特定响应的置信度分数，可以将用户查询添加到知识库，作为该响应的备用问题。 还可以使用区分大小写的[字变更](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace)向知识库中的关键字添加同义词。
