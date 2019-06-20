@@ -20,9 +20,6 @@
     - name: 创建按需群集
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
       maintainContext: true
-    - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
-      href: ../hdinsight-cluster-availability.md
-      maintainContext: true
 - name: 示例
   items:
     - name: .NET 示例
@@ -36,6 +33,9 @@
       maintainContext: true
 - name: 概念
   items:
+    - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
+      href: ../hdinsight-cluster-availability.md
+      maintainContext: true
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
       maintainContext: true
