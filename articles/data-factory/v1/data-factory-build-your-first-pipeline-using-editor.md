@@ -27,7 +27,7 @@ ms.locfileid: "64573818"
 > * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Azure 资源管理器模板](data-factory-build-your-first-pipeline-using-arm.md)
+> * [Azure Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
@@ -212,11 +212,11 @@ ms.locfileid: "64573818"
    | 属性 | 嵌套位置 | 说明 |
    |:--- |:--- |:--- |
    | type | properties |type 属性设置为 **AzureBlob**，因为数据位于 Blob 存储中。 |
-   | linkedServiceName | 格式 |表示前面创建的 AzureStorageLinkedService。 |
+   | linkedServiceName | format |表示前面创建的 AzureStorageLinkedService。 |
    | folderPath | typeProperties | 指定 Blob 容器以及包含输入 Blob 的文件夹。 | 
    | fileName | typeProperties |此属性是可选的。 如果省略此属性，将选择 folderPath 中的所有文件。 在本教程中，只处理 input.log 文件。 |
-   | type | 格式 |日志文件采用文本格式，因此这里使用 **TextFormat**。 |
-   | columnDelimiter | 格式 |日志文件中的列以逗号 (`,`) 分隔。 |
+   | type | format |日志文件采用文本格式，因此这里使用 **TextFormat**。 |
+   | columnDelimiter | format |日志文件中的列以逗号 (`,`) 分隔。 |
    | frequency/interval | availability |frequency 设置为 **Month**，interval 为 **1**，表示每月获取输入切片。 |
    | external | properties | 如果输入数据不是由该管道生成的，此属性设置为 **true**。 在本教程中，input.log 文件不是由该管道生成的，因此将此属性设置为 **true**。 |
 
