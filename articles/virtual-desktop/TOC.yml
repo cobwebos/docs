@@ -8,9 +8,9 @@
   items:
     - name: 1. 在 Windows 虚拟桌面中创建租户
       href: tenant-setup-azure-active-directory.md
-    - name: 2. 使用 PowerShell 创建服务主体和角色分配
+    - name: 2. 通过使用 PowerShell 创建服务主体和角色分配
       href: create-service-principal-role-powershell.md
-    - name: 3. 通过 Azure 市场创建主机池
+    - name: 3. 通过使用 Azure 市场创建主机池
       href: create-host-pools-azure-marketplace.md
     - name: 4. 管理应用组
       href: manage-app-groups.md

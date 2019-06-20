@@ -7,8 +7,28 @@
       href: Welcome.md
     - name: 语言支持
       href: language-support.md
+- name: 容器支持
+  items:
     - name: 容器支持
       href: cognitive-services-container-support.md
+    - name: 容器方案
+      items:
+        - name: 容器重复使用
+          href: ./containers/container-reuse-recipe.md
+        - name: 部署到 Azure 容器实例
+          href: ./containers/azure-container-instance-recipe.md
+        - name: 部署到 Azure Kubernetes
+          href: ./containers/azure-kubernetes-recipe.md
+        - name: 使用 Docker Compose 进行部署
+          href: ./containers/docker-compose-recipe.md
+    - name: 其他容器服务
+      items:
+        - name: Azure 容器实例
+          href: ../container-instances/container-instances-tutorial-prepare-app.md
+        - name: Azure 容器注册表
+          href: ../container-registry/container-registry-get-started-azure-cli.md
+        - name: Azure Kubernetes 服务 (AKS)
+          href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: 快速入门
   items:
     - name: 创建帐户

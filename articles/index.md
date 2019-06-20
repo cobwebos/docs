@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: bc052b749724a76df3df3572913f4bcbc146df17
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: dffb0fc1ca08cb0b1ab73448c987d648bc8aead7
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497074"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67191037"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -773,6 +773,12 @@ Azure DevOps Projects </a>
                                             <a href="/azure/frontdoor/">
                                                 <img src="media/index/frontdoor.svg" alt="" />
                                                 <p>Azure Front Door 服务</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/bastion/">
+                                                <img src="media/index/web_connect.svg" alt="" />
+                                                <p>Azure Bastion</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2414,6 +2420,25 @@ Azure DevOps Projects </a>
                                                 <div class="cardText">
                                                     <h3>Azure Front Door 服务</h3>
                                                     <p>用于提交全局 Web 应用的可缩放安全入口点</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+<li>
+                                <a href="/azure/bastion/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/web_connect.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Bastion</h3>
+                                                    <p>不使用公共 IP 地址，在 Azure 门户中配置与虚拟机之间通过 SSL 的安全、无缝连接</p>
                                                 </div>
                                             </div>
                                         </div>
