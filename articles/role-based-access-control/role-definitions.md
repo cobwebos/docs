@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2019
+ms.date: 06/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 00501ec72dff99f93fa04944c5ab733fce38ce21
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f5f9b3595074c26c80c824052727e962b01162a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074004"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275048"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>了解 Azure 资源的角色定义
 
@@ -52,7 +52,8 @@ AssignableScopes []
 | ------------------- | ------------------- |
 | `*` | 通配符授予对与字符串匹配的所有操作的访问权限。 |
 | `read` | 允许读取操作 (GET)。 |
-| `write` | 允许写入操作（PUT、POST 和 PATCH）。 |
+| `write` | 启用写操作 （PUT 或 PATCH）。 |
+| `action` | 使自定义操作，例如重新启动虚拟机 (POST)。 |
 | `delete` | 允许删除操作 (DELETE)。 |
 
 下面是 JSON 格式的[参与者](built-in-roles.md#contributor)角色定义。 `Actions` 下的通配符 (`*`) 操作表示分配给此角色的主体可以执行所有操作，换句话说，它可以管理所有内容。 这包括将来定义的操作，因为 Azure 会添加新的资源类型。 `NotActions` 下的操作会从 `Actions` 中减去。 就[参与者](built-in-roles.md#contributor)角色而言，`NotActions` 去除了此角色管理资源访问权限以及分配资源访问权限的能力。
@@ -79,7 +80,7 @@ AssignableScopes []
 }
 ```
 
-## <a name="management-and-data-operations-preview"></a>管理和数据操作（预览版）
+## <a name="management-and-data-operations"></a>管理和数据操作
 
 管理操作的基于角色的访问控制在角色定义的 `Actions` 和 `NotActions` 属性中指定。 下面是 Azure 中管理操作的一些示例：
 
@@ -89,7 +90,7 @@ AssignableScopes []
 
 数据不会继承管理访问权限。 此分隔可防止带通配符 (`*`) 的角色无限制地访问数据。 例如，如果用户对订阅具有[读取者](built-in-roles.md#reader)角色，则他们可以查看存储帐户，但他们默认无法查看基础数据。
 
-以前，基于角色的访问控制不用于数据操作。 数据操作的授权根据资源提供程序的不同而异。 用于管理操作的同一基于角色的访问控制授权模型已扩展到数据操作（当前为预览版）。
+以前，基于角色的访问控制不用于数据操作。 数据操作的授权根据资源提供程序的不同而异。 用于管理操作的同一个基于角色的访问控制授权模型已扩展到数据操作。
 
 为了支持数据操作，已将新的数据属性添加到角色定义结构。 数据操作在 `DataActions` 和 `NotDataActions` 属性中指定。 通过添加这些数据属性，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `DataActions` 和 `NotDataActions` 中指定的一些数据操作：
 
@@ -147,9 +148,9 @@ Alice 的[所有者](built-in-roles.md#owner)角色和 Bob 的[存储 Blob 数�
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-由于 Alice 包含一个通配符 (`*`) 在订阅范围内的操作，其权限继承下以使他们能够执行所有管理操作。 Alice 可以读取、写入和删除容器。 但是，Alice 在不采取其他步骤的情况下无法执行数据操作。 例如，默认情况下，Alice 无法读取容器内的 blob。 若要读取 blob，Alice 必须检索存储访问密钥并使用它们来访问 blob。
+由于 Alice 具有订阅范围的通配符 (`*`) 操作，其权限将向下继承，使其可以执行所有管理操作。 Alice 可以读取、写入和删除容器。 但是，Alice 在不采取其他步骤的情况下无法执行数据操作。 例如，默认情况下，Alice 无法读取容器内的 blob。 若要读取 blob，Alice 必须检索存储访问密钥并使用它们来访问 blob。
 
-Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色中指定的 `Actions` 和 `DataActions`。 Bob 可以基于角色执行管理和数据操作。 例如，Bob 可以读取、 写入和删除指定的存储帐户中的容器和可以请参阅、 写入和删除 blob。
+Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色中指定的 `Actions` 和 `DataActions`。 Bob 可以基于角色执行管理和数据操作。 例如，Bob 可以读取、写入和删除指定存储帐户中的容器，并可以读取、写入和删除 Blob。
 
 有关存储的管理和数据平面安全性的详细信息，请参阅 [Azure 存储安全指南](../storage/common/storage-security-guide.md)。
 
@@ -169,11 +170,7 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 若要查看和使用 REST API 中的数据操作，必须将 **api-version** 参数设置为以下版本或更高版本：
 
-- 2018-01-01-preview
-
-Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 Blob 容器的内容。 若要查看和管理队列或 Blob 容器的内容，请单击“存储帐户概述”上的“使用 Azure AD 预览版浏览数据”  。
-
-![使用 Azure AD 预览版探索队列和 Blob 容器](./media/role-definitions/rbac-dataactions-browsing.png)
+- 2018-07-01
 
 ## <a name="actions"></a>操作
 
@@ -195,7 +192,7 @@ Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 
 > 如果用户分配到的一个角色排除了 `NotActions` 中的一个操作，而分配到的第二个角色向同一操作授予访问权限，则用户可以执行该操作。 `NotActions` 不是拒绝规则 - 它只是一个简便方法，可在需要排除特定操作时创建一组允许的操作。
 >
 
-## <a name="dataactions-preview"></a>DataActions（预览版）
+## <a name="dataactions"></a>DataActions
 
 `DataActions` 权限指定此角色允许对该对象中的数据执行的数据操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `DataActions` 中使用的一些数据操作的示例。
 
@@ -206,7 +203,7 @@ Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | 返回消息。 |
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | 返回消息，或返回写入或删除消息的结果。 |
 
-## <a name="notdataactions-preview"></a>NotDataActions（预览版）
+## <a name="notdataactions"></a>NotDataActions
 
 `NotDataActions` 权限指定从允许的 `DataActions` 中排除的数据操作。 通过从 `DataActions` 操作中减去 `NotDataActions` 操作可以计算出角色授予的访问权限（有效权限）。 每个资源提供程序提供相应的一组 API 用于实现数据操作。
 

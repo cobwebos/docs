@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c0f19e3ea4f5952ac96b589fa267a2136c85e4f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abf48f3edc090550647b6865e96afeabe3727cf5
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711649"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190531"
 ---
 # <a name="monitor-azure-file-sync"></a>监视 Azure 文件同步
 
@@ -69,7 +69,10 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 | 指标名称 | 描述 |
 |-|-|
 | 同步的字节数 | 传输数据大小（上传和下载）。<br><br>单位：字节<br>聚合类型：Sum<br>适用维度：服务器终结点名称、同步方向、同步组名称 |
-| 云分层回调 | 回调的数据大小。<br><br>单位：字节<br>聚合类型：Sum<br>适用的维度：服务器名称 |
+| 云分层回调 | 回调的数据大小。<br><br>请注意:将在以后删除此度量值。 使用云分层召回大小指标来监视召回的数据的大小。<br><br>单位：字节<br>聚合类型：Sum<br>适用的维度：服务器名称 |
+| 云分层召回大小 | 回调的数据大小。<br><br>单位：字节<br>聚合类型：Sum<br>适用的维度：服务器名称，同步组名称 |
+| 云分层召回大小的应用程序 | 召回由应用程序的数据的大小。<br><br>单位：字节<br>聚合类型：Sum<br>适用的维度：应用程序名称、 服务器名称，同步组名称 |
+| 云分层召回吞吐量 | 数据召回吞吐量的大小。<br><br>单位：字节<br>聚合类型：Sum<br>适用的维度：服务器名称，同步组名称 |
 | 未同步的文件 | 未能同步的文件数。<br><br>单位：Count<br>聚合类型：Sum<br>适用维度：服务器终结点名称、同步方向、同步组名称 |
 | 同步的文件 | 已传输的文件数（上传和下载）。<br><br>单位：Count<br>聚合类型：Sum<br>适用维度：服务器终结点名称、同步方向、同步组名称 |
 | 服务器联机状态 | 从服务器接收的检测信号数。<br><br>单位：Count<br>聚合类型：最大值<br>适用的维度：服务器名称 |

@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 70e0d766fe3c9669912ce9f13f729fb1c757a26f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66140502"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173458"
 ---
 1. 右键单击 Windows 应用商店项目，单击“设为启动项目”  ，并按 F5 键运行 Windows 应用商店应用。
 

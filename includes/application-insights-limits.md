@@ -9,11 +9,11 @@ ms.date: 06/21/2018
 ms.author: mbullwin
 ms.custom: include file
 ms.openlocfilehash: 31ff6ae66b13eb5e5abcde94e8d3df7f6e32f63c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66130812"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172709"
 ---
 有一些限制的度量值和每个应用程序，事件数，即每个检测密钥。 限制取决于选择的[定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
 

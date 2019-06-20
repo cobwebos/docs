@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c14c3aaf2a5d648572fdc251540264e8057a00f9
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152327"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144306"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -154,7 +154,7 @@ az container exec --resource-group myResourceGroup --name mycontainer --exec-com
 在容器的 bash shell 中运行以下命令。 若要获取访问令牌以使用 Azure Active Directory 对 Key Vault 进行身份验证，请运行以下命令：
 
 ```bash
-curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net%2F' -H Metadata:true -s
+curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true -s
 ```
 
 输出：

@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: bda289e73b9a782cd56c0c94b8f53e8002b1ccf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66116832"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172867"
 ---
 ## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>如何通过 PowerShell 使用网络配置文件创建虚拟网络
 Azure 使用 xml 文件定义适用于订阅的所有虚拟网络。 可以下载此文件并进行编辑，以修改或删除现有虚拟网络并创建新的虚拟网络。 通过本教程，可了解如何下载此文件（称为网络配置（或 netcgf）文件），并进行编辑，创建新的虚拟网络。 若要深入了解网络配置文件，请参阅 [Azure 虚拟网络配置架构](https://msdn.microsoft.com/library/azure/jj157100.aspx)。

@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 3/14/2019
-ms.openlocfilehash: d8aaf51c836a8e88c4e9b92798067167cd044e72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f73fc58abfa6cde4133bd56858b7f26bf0c3d4a3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848073"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204820"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放弹性池资源
 
@@ -44,7 +44,7 @@ ms.locfileid: "60848073"
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小所造成的延迟
 
-可根据如下所述，将更改服务层级或者重新缩放单一数据库或弹性池的计算大小所造成的延迟参数化：
+若要更改服务层或重新缩放单一数据库或弹性池的计算大小的预计的延迟为参数化，如下所示：
 
 |服务层|基本单一数据库，</br>标准 (S0-S1)|基本弹性池，</br>标准 (S2-S12)， </br>超大规模， </br>常规用途单一数据库或弹性池|高级或业务关键型单一数据库或弹性池|
 |:---|:---|:---|:---|

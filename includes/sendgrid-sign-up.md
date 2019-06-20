@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: erikre
 ms.openlocfilehash: 96c4da8465a87fee4c00bfc6177515c94910704a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121365"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172627"
 ---
 Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 25,000 封免费电子邮件，可使用高级报告和分析以及[所有 API][all APIs]（Web、SMTP、事件、分析等）。 有关 SendGrid 提供的其他服务的信息，请访问 [SendGrid 解决方案][SendGrid Solutions]页。
 

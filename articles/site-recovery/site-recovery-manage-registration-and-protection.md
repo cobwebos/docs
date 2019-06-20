@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 06/18/2019
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 1b4cd5bb020e73dc9045eb164ce49931f818f72d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 400ffaa9e6fed14ceabf34283cd5fa7c7a0336b8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65415491"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203401"
 ---
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
 
@@ -151,6 +151,8 @@ ms.locfileid: "65415491"
 > [!NOTE]
 > 这两个选项都不会从受保护的服务器中卸载移动服务，需要手动卸载。 如果打算使用相同的配置服务器重新保护服务器，可以跳过卸载移动服务这一步。
 
+> [!NOTE]
+> 如果已故障转移 VM 并且在 Azure 中运行，请注意，禁用保护不会删除/影响故障转移的 VM。
 ## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>禁用对 Azure VM (Azure 到 Azure) 的保护
 
 -  依次转到“受保护的项”   > “复制的项”  ，右键单击计算机，再单击“禁用复制”  。
@@ -167,8 +169,12 @@ ms.locfileid: "65415491"
    - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理本地虚拟机上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
    - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会  清理本地虚拟机上的复制配置。 
 
-     > [!NOTE]
+ > [!NOTE]
      > 如果选择“删除”  选项，请运行下面的一组脚本，清理本地 Hyper-V 服务器上的复制设置。
+
+> [!NOTE]
+> 如果已故障转移 VM 并且在 Azure 中运行，请注意，禁用保护不会删除/影响故障转移的 VM。
+
 1. 在源 Hyper-V 主机服务器上，取消复制虚拟机。 将 SQLVM1 替换为虚拟机名称，并通过管理 PowerShell 运行以下脚本
 
 ```powershell

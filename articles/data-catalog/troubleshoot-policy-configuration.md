@@ -1,23 +1,35 @@
 ---
-title: 如何配置 Azure Active Directory 策略的 Azure 数据目录
-description: 可能会遇到的情况，其中你可以登录到 Azure 数据目录门户中，但当您尝试登录到数据源注册工具时，会遇到一条错误消息。
+title: 如何排查 Azure 数据目录
+description: 本文介绍 Azure 数据目录资源的常见故障排除问题。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
-ms.date: 04/06/2019
-ms.openlocfilehash: e69a7e3bd104d0fb82b248b6560d4fd082c88426
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: troubleshooting
+ms.date: 06/13/2019
+ms.openlocfilehash: ed74e90e5e8ed55b75968f51cb50e6a1b4cdd75d
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116595"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203510"
 ---
-# <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory 策略配置
+# <a name="troubleshooting-azure-data-catalog"></a>故障排除的 Azure 数据目录
+
+本文介绍 Azure 数据目录资源的常见故障排除问题。 
+
+## <a name="functionality-limitations"></a>功能限制
+
+在使用 Azure 数据目录时，以下功能会受到限制：
+
+- 类型为科目**来宾角色**不受支持。 不能将来宾帐户添加为 Azure 数据目录的用户和来宾用户不能使用门户在 www.azuredatacatalog.com。
+
+- 不支持创建 Azure 数据目录资源使用 Azure 资源管理器模板或 Azure PowerShell 命令。
+
+- 不能 Azure 租户之间移动 Azure 数据目录资源。
+
+## <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory 策略配置
 
 可能会遇到这种情况：可以登录 Azure 数据目录门户，但在尝试登录数据源注册工具时出现错误消息，导致无法登录。 当您在公司网络上或者要从连接公司网络外部时，可能会发生此错误。
-
-## <a name="registration-tool"></a>注册工具
 
 注册工具使用 *窗体身份验证* 针对 Azure Active Directory 验证用户登录。 若要成功登录，Azure Active Directory 管理员必须在 *全局身份验证策略*中启用窗体验证。
 

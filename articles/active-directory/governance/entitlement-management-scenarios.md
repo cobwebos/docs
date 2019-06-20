@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a50f4a8a63022668dac68c974f8c828c72777c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27d54d51a16f4ed94f24f9afa005c63b22778cf9
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473105"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190350"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 授权管理 （预览版） 中的常见方案
 
@@ -124,4 +124,4 @@ ms.locfileid: "66473105"
 ## <a name="next-steps"></a>后续步骤
 
 - [教程：创建第一个访问包](entitlement-management-access-package-first.md)
-- [编辑和管理现有访问包](entitlement-management-access-package-edit.md)
+- [委派任务](entitlement-management-delegate.md)

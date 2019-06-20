@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: dd45be69ec29fdcd00710b7366348846f325b151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 350d2c6253a417637c7ec8f2e38919dc4b969340
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65921985"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190775"
 ---
 # <a name="connect-your-barracuda-appliance"></a>连接 Barracuda 设备 
 
@@ -41,7 +41,7 @@ Barracuda Web 应用程序防火墙可以集成并将日志导出 Azure 通过 M
 2. 在 Azure Sentinel 门户中，转到在其部署 Azure Sentinel 工作区并选择省略号 （...） 末尾的行并选择**高级设置**。 
 1. 选择**数据**，然后**Syslog**。
 1. 请确保在 Barracuda 中设置的功能存在并设置严重性，然后单击**保存**。
-6. 若要使用 Log Analytics 中为 Barracuda 事件相关的架构，搜索**CommonSecurityLog**。
+6. 若要使用 Log Analytics 中为 Barracuda 事件相关的架构，搜索**CommonSecurityLog**并**barracuda_CL**。
 
 
 ## <a name="validate-connectivity"></a>验证连接

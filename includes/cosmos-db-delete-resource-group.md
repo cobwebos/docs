@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: sngun
 ms.openlocfilehash: e7fc8f57c0fe290809354ce19fe92337178a84b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66151347"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173493"
 ---
 执行完 Web 应用和 Azure Cosmos DB 帐户的操作以后，可以删除所创建的 Azure 资源，以免产生更多费用。 若要删除资源，请执行以下操作：
 

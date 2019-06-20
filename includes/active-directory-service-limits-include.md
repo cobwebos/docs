@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 067280cdad85f59106bce5ff214e2fa9eddf3b71
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: e6e1014ac20ef70f21344ec6ece5627eccb7ba66
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133687"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67148397"
 ---
 下面是 Azure Active Directory (Azure AD) 服务的使用限制和其他服务限制。
 
@@ -29,4 +29,4 @@ ms.locfileid: "67133687"
 | 访问面板 |<ul><li>对于可以在访问面板中按用户查看的应用程序，其数量没有限制。 这适用于 Azure AD Premium 或企业移动性套件的用户分配许可证。</li><li>每位用户最多可以在访问面板中看到 10 个应用磁贴。 此限制适用于获得免费版或 Azure AD 基本版 Azure Active Directory 许可证的用户。 Box、Salesforce、Dropbox 都是应用磁贴的示例。 此限制不适用于管理员帐户。</li></ul> |
 | 报告 | 在报告中最多可查看或下载 1,000 行。 系统会截断其他任何数据。 |
 | 管理单元 | 对象可以是不超过 30 个管理单位的成员。 |
-| 管理员角色和权限 | <ul><li>不能将组添加作为[所有者](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)。</li><li>无法将组分配给[角色](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。</li><li>用户的能力读取其他用户的目录信息不能进行限制之外全租户切换以禁用所有非管理员用户访问所有目录信息 （不推荐）。 默认权限的详细信息[此处](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)。</li><li>它可能需要长达 15 分钟或签名扩展/在登录之前管理员角色成员身份新增功能和吊销才会生效。</li></ul> |
+| 管理员角色和权限 | <ul><li>不能将组添加作为[所有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)。</li><li>无法将组分配给[角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。</li><li>用户的能力读取其他用户的目录信息不能进行限制之外全租户切换以禁用所有非管理员用户访问所有目录信息 （不推荐）。 默认权限的详细信息[此处](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)。</li><li>它可能需要长达 15 分钟或签名扩展/在登录之前管理员角色成员身份新增功能和吊销才会生效。</li></ul> |

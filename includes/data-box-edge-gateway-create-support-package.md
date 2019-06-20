@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161155"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173409"
 ---
 如果遇到任何设备问题，您可以从系统日志中创建支持包。 Microsoft 支持部门使用此包的问题进行疑难解答。 请按照下列步骤以创建支持包：
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 23cd77d4a2d0c8203670039dd44c878bf7217fd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe163fc2370e884bed58bfffe5baffa5642b6d90
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799111"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147995"
 ---
 # <a name="public-ip-address-prefix"></a>公共 IP 地址前缀
 
@@ -32,7 +32,7 @@ ms.locfileid: "65799111"
 
 ## <a name="why-create-a-public-ip-address-prefix"></a>为什么要创建公共 IP 地址前缀？
 
-创建公共 IP 地址资源时，Azure 将从某个区域中使用的任何一个范围分配可用的公共 IP 地址。 Azure 分配地址后，你就会知道是哪一个地址，但在 Azure 分配地址之前，你并不知道可能会分配哪个地址。 有时这可能会是一个问题，例如，你或你的业务合作伙伴设置防火墙规则，允许使用特定 IP 地址。 每当向资源分配新的公共 IP 地址时，必需将该地址添加到防火墙规则。 当从公共 IP 地址前缀向资源分配地址时，无需在每次分配一个地址时都更新防火墙规则，因为可以将整个范围添加到规则。
+当创建公共 IP 地址资源时，Azure 将从任何区域中使用的范围分配可用的公共 IP 地址。 Azure 分配地址后，你就会知道是哪一个地址，但在 Azure 分配地址之前，你并不知道可能会分配哪个地址。 有时这可能会是一个问题，例如，你或你的业务合作伙伴设置防火墙规则，允许使用特定 IP 地址。 每当向资源分配新的公共 IP 地址时，必需将该地址添加到防火墙规则。 当从公共 IP 地址前缀向资源分配地址时，无需在每次分配一个地址时都更新防火墙规则，因为可以将整个范围添加到规则。
 
 ## <a name="benefits"></a>优点
 

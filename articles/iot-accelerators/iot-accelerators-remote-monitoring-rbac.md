@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61443047"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203163"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>在远程监视解决方案加速器中配置基于角色的访问控制
 
@@ -91,11 +91,11 @@ Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程�
 
 1. 在 Azure 门户中找到解决方案的“应用注册”。  应用程序名称即是远程监视解决方案的名称。 在以下屏幕截图中，解决方案和应用程序显示名称为 **contoso-rm4**。
 
-    ![应用注册](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
+    ![应用注册](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. 选择应用程序，然后单击“清单”。  可以看到，为应用程序定义了两个现有的[应用角色](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles)：
 
-    ![查看清单](media/iot-accelerators-remote-monitoring-rbac/viewmanifest.png)
+    ![查看清单](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
 1. 按以下代码片段中所示编辑清单，以添加名为 **ManageDevices** 的角色。 需要为新角色 ID 指定一个唯一的字符串，例如 GUID。 可以使用 [Online GUID Generator](https://www.guidgenerator.com/) 等服务生成新 GUID：
 
