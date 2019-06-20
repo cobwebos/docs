@@ -49,7 +49,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="array"></a>数组
+## <a name="array"></a>Array
 `array(convertToArray)`
 
 将值转换为数组。
