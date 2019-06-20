@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 26a5876971749a1a63447ef813219dad8485781c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd1416befb74a7299136ea497eccc8a06b7f0f6a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65160165"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164870"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>CloudSimple 节点配额限制
 
-四个节点时为 CloudSimple 服务启用了你的订阅可供购买的默认数量。  你可以购买任何[节点类型](cloudsimple-node.md)从 Azure 门户。  创建私有云需要在同一 SKU 的三个节点的最小值。  如果已购买节点，可能会遇到错误，当您尝试购买额外的节点。
+四个节点时为 CloudSimple 服务启用了你的订阅可用于预配的默认数量。  你可以设置任何[节点类型](cloudsimple-node.md)从 Azure 门户。  创建私有云需要在同一 SKU 的三个节点的最小值。  如果已预配节点，可能会遇到错误，当您尝试预配其他节点。
 
 ## <a name="quota-increase"></a>增加配额
 
@@ -40,5 +40,5 @@ ms.locfileid: "65160165"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [购买节点](create-nodes.md)
+* [设置节点](create-nodes.md)
 * [CloudSimple 节点概述](cloudsimple-node.md)

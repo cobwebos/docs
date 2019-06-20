@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/05/2019
-ms.openlocfilehash: 02bc8835ddb163d81f389e13b21b88adca55cb2f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd0e8099be5422d561541aeb8911c9a1610befcb
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082620"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272761"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>部署模型使用自定义 Docker 映像
 
@@ -43,6 +43,7 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
 * Azure 机器学习服务工作组。 有关详细信息，请参阅[创建工作区](setup-create-workspace.md)一文。
 * Azure 机器学习 SDK。 有关详细信息，请参阅 Python SDK 一部分[创建工作区](setup-create-workspace.md#sdk)一文。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [适用于 Azure 机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * [Azure 容器注册表](/azure/container-registry)或其他可访问 internet 的 Docker 注册表。
 * 本文档中的步骤假定你熟悉创建和使用__推理配置__对象作为模型部署的一部分。 有关详细信息，请参阅的"准备部署"部分[部署的位置和方式](how-to-deploy-and-where.md#prepare-to-deploy)。
 

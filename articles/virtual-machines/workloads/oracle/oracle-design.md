@@ -15,18 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c5a76b9cee8fd6eb09ee4d24c1380202fd17cc6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f808161087dff614ef83aacc606501bce96d3eb
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836238"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155129"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
 ## <a name="assumptions"></a>假设
 
 - 计划将 Oracle 数据库从本地迁移到 Azure。
+- 你有[诊断包](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm)要迁移的 Oracle 数据库
 - 了解 Oracle AWR 报表中的各种指标。
 - 了解应用程序性能和平台利用率的基线。
 
@@ -72,11 +73,11 @@ ms.locfileid: "60836238"
 
 ### <a name="generate-an-awr-report"></a>生成 AWR 报表
 
-如果有现有的 Oracle 数据库并且计划将其迁移到 Azure，则有多个选项可供使用。 可以运行 Oracle AWR 报表来获取指标（IOPS、Mbps、GiB 等）。 然后基于收集的指标选择虚拟机。 或者，也可以联系基础结构团队，获取类似的信息。
+如果有现有的 Oracle 数据库并且计划将其迁移到 Azure，则有多个选项可供使用。 如果有[诊断包](https://www.oracle.com/technetwork/oem/pdf/511880.pdf)Oracle 实例，可以运行 Oracle AWR 报表来获取指标 （IOPS、 Mbps、 Gib 等）。 然后基于收集的指标选择虚拟机。 或者，也可以联系基础结构团队，获取类似的信息。
 
 可考虑分别在正常工作负荷与峰值工作负荷期间运行 AWR 报表，以便进行比较。 根据这些报表，可基于平均工作负荷或最大工作负荷来调整虚拟机的大小。
 
-下面的示例演示了如何生成 AWR 报表：
+下面是如何生成 AWR 报表的示例 （生成 AWR 报表使用 Oracle 企业管理器，如果您当前的安装有一个）：
 
 ```bash
 $ sqlplus / as sysdba
@@ -143,6 +144,10 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - 与本地部署相比，网络延迟更高。 减少网络往返次数可显著提高性能。
 - 若要减少网络往返，可在同一虚拟机上合并事务繁多的应用或“聊天式”应用。
+- 使用与虚拟机[加速网络](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)以提高网络性能。
+- 对于某些 Linux distrubutions，请考虑启用[TRIM/UNMAP 支持](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)。
+- 安装[Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html)上单独的虚拟机。
+- Linux 上，巨页未默认情况下启用。 请考虑启用巨页并设置`use_large_pages = ONLY `上 Oracle DB。 这可能有助于提高性能。 可在[此处](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到更多信息。
 
 ### <a name="disk-types-and-configurations"></a>磁盘类型和配置
 
@@ -183,20 +188,21 @@ SQL> @?/rdbms/admin/awrrpt.sql
 - 使用数据压缩来降低 I/O（针对数据和索引）。
 - 将重做日志、system、temps 和 undo TS 分隔在不同的数据磁盘上。
 - 不要将任何应用程序文件放在默认 OS 磁盘 (/dev/sda) 中。 这些磁盘未针对快速 VM 启动时间进行优化，可能无法为应用程序提供良好的性能。
+- 当使用高级存储上的 M 系列 Vm，启用[写入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)上重做日志磁盘。
 
 ### <a name="disk-cache-settings"></a>磁盘缓存设置
 
 有三个主机缓存选项：
 
-- 只读  ：缓存所有请求，供将来读取。 将所有写入直接保存到 Azure Blob 存储。
+- *ReadOnly*:缓存所有请求，供将来读取。 将所有写入直接保存到 Azure Blob 存储。
 
-- 读/写  ：这是一种“预读”算法。 将缓存所有读取和写入，供将来读取。 非直写式写入首先会保存在本地缓存中。 对于 SQL Server，写入将保存到 Azure 存储，因为它使用直写。 它还为轻型工作负荷提供最低的磁盘延迟。
+- *ReadWrite*:这是一种“预读”算法。 将缓存所有读取和写入，供将来读取。 非直写式写入首先会保存在本地缓存中。 它还为轻型工作负荷提供最低的磁盘延迟。 对不负责保留所需数据的应用程序使用 ReadWrite 缓存可能会在 VM 崩溃时导致数据丢失。
 
 - 无（已禁用）：  使用此选项可绕过缓存。 所有数据都传输到磁盘，并保存在 Azure 存储中。 此方法可为 I/O 密集型工作负荷提供最高的 I/O 速率。 此外，还需要考虑“事务成本”。
 
 **建议**
 
-要最大限度提高吞吐量，建议对主机缓存启用“无”  选项。 请注意，对于高级存储，在使用“只读”  或“无”  选项来装载文件系统时，必须禁用“屏障”。 通过 UUID 将 /etc/fstab 文件更新到磁盘。
+若要最大化吞吐量，我们建议您开始**None**个主机缓存。 请注意，对于高级存储，在使用“只读”  或“无”  选项来装载文件系统时，必须禁用“屏障”。 通过 UUID 将 /etc/fstab 文件更新到磁盘。
 
 ![“托管磁盘”页的屏幕截图](./media/oracle-design/premium_disk02.png)
 
@@ -206,12 +212,11 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 保存数据磁盘设置后，将无法更改主机缓存设置，除非在 OS 级别卸载驱动器，然后在进行更改后重新装载它。
 
-
 ## <a name="security"></a>安全
 
 设置并配置 Azure 环境后，下一步是保护网络的安全。 以下是一些建议：
 
-- NSG 策略  ：NSG 可由子网或 NIC 定义。 对于诸如应用程序防火墙等内容，可更轻松地控制子网级别的访问，确保安全性和强制路由。
+- NSG 策略  ：NSG 可由子网或 NIC 定义。 它是可更轻松地控制子网级别，同时为安全性和强制路由对于诸如应用程序防火墙等内容的访问。
 
 - *Jumpbox*：为了提高访问的安全性，管理员不应直接连接到应用程序服务或数据库。 使用 Jumpbox 作为管理员计算机与 Azure 资源之间的媒介。
 ![“Jumpbox 拓扑”页屏幕截图](./media/oracle-design/jumpbox.png)

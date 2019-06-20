@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886118614427bea61f745e1ded28824b60225919
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd62cda209a8ac95a41fa271ce3a96001a3b4811
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112293"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164774"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>什么是 Azure Active Directory 条件访问中的位置条件？ 
 
@@ -56,7 +56,10 @@ Azure AD 启用单一登录方式登录到设备，应用程序，并从任意�
 - **国家/地区** - 使用此选项可以选择一个或多个国家或地区，以定义命名位置。
 - **包含未知的区域**-某些 IP 地址未映射到特定国家或地区。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
 
-可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 组织可以配置最高达到 90 命名的位置，每个配置了高达 1200 IP 范围。
+可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 你可以配置位置基于以下限制：
+
+- 一个命名位置最多可以有 1200 个 IP 范围。
+- 最多可有 90 个命名位置，其中每个都分配有一个 IP 范围。
 
 条件性访问策略适用于 IPv4 和 IPv6 通信。 当前命名的位置不允许进行配置的 IPv6 范围。 此限制会导致以下情况：
 

@@ -9,11 +9,11 @@ ms.date: 06/27/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: a5252d64c00a4de4c5d2faf083904a994e67a994
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66131411"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172714"
 ---
 >[!IMPORTANT]  
 > 不要将本地开发和门户开发混合在同一函数应用中。 从本地项目创建和发布函数时，不应尝试维护或修改门户中的项目代码。

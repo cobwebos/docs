@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: a61c2577f79f32f97fe2ef10a2ac67fdbbc1feda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 932d250d6685a1b905e4a03a0118d8c8f1f26418
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073736"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151246"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>存储帐户的 Azure 存储可伸缩性和性能目标
 
@@ -45,6 +45,9 @@ ms.locfileid: "67073736"
 
 > [!IMPORTANT]
 > 存储帐户限制适用于所有共享。 最多缩放的存储帐户的最大值才可实现，如果只有一个共享每个存储帐户。
+>
+> 大于 5 TiB 的标准文件共享处于预览状态，存在一定的限制。
+> 有关列表的限制和要加入到的这些更大的文件共享大小的预览，请参阅[标准文件共享](../files/storage-files-planning.md#standard-file-shares)部分 Azure 文件规划的指导。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 

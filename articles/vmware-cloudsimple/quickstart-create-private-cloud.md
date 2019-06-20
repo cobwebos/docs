@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e1fc7809ad94d589483b87c638d027a39098164e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a67cd2f82eb069555bda68e4cb04a6634e3b31d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209537"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164360"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门-配置私有云环境
 
@@ -33,7 +33,7 @@ ms.locfileid: "65209537"
 
 5. 在 CloudSimple 门户中，提供您的私有云的名称
 6. 选择**位置**的您的私有云
-7. 选择**节点类型**购买在 Azure 上。  你可以选择[CS28 或 CS36 选项](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)。 后一种包含的最大的计算和内存容量。
+7. 选择**节点类型**Azure 上预配。  你可以选择[CS28 或 CS36 选项](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)。 后一种包含的最大的计算和内存容量。
 8. 指定**节点计数**。  创建私有云所需的最少三个节点
 
     ![创建私有云-基本信息](media/create-private-cloud-basic-info.png)

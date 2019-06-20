@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: c10482029e6cfce7063d205161fed54030919c48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66159726"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173008"
 ---
 #### <a name="to-stop-and-start-a-cloud-appliance"></a>停止和启动云设备
 

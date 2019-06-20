@@ -10,12 +10,12 @@ ms.author: minxia
 author: mx-iao
 ms.date: 06/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: bd2552cdfde19995413f4665f04c41c295304d50
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: e070b80f86cb6c8b1d9e7575e19022b5cb08f340
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082594"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165553"
 ---
 # <a name="train-and-register-keras-models-at-scale-with-azure-machine-learning-service"></a>训练和大规模的 Keras 模型注册到 Azure 机器学习服务
 
@@ -27,12 +27,20 @@ Keras 是高级神经网络 API 能够运行其他常用的 DNN 框架的顶部�
 
 ## <a name="prerequisites"></a>必备组件
 
-- Azure 订阅。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
-- [安装 Azure 机器学习的 Python SDK](setup-create-workspace.md#sdk)
-- [创建工作区配置文件](setup-create-workspace.md#write-a-configuration-file)
-- [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)`mnist-keras.py`和 `utils.py`
+在两种环境上运行此代码：
 
-您还可以查找已完成[Jupyter 笔记本版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb)GitHub 示例页本指南。 此 notebook 包括扩展的部分，介绍智能超参数优化、 模型部署和笔记本小组件。
+ - Azure 机器学习 Notebook VM-无下载或安装有必要
+
+     - 完成[基于云的笔记本快速入门](quickstart-run-cloud-notebook.md)来使用 SDK 和示例存储库创建的专用的笔记本服务器预加载。
+    - 在 notebook 服务器上的示例文件夹中，通过导航到此目录查找已完成和展开 notebook:**说明-到-使用-azureml > 培训使用深度学习 > train-hyperparameter-tune-deploy-with-keras**文件夹。 
+ 
+ - 你自己的 Jupyter 笔记本服务器
+
+     - [安装 Azure 机器学习的 Python SDK](setup-create-workspace.md#sdk)
+    - [创建工作区配置文件](setup-create-workspace.md#write-a-configuration-file)
+    - [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)`mnist-keras.py`和 `utils.py`
+     
+    您还可以查找已完成[Jupyter 笔记本版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb)本指南的 GitHub 示例页。 此 notebook 包括扩展的部分，介绍智能超参数优化、 模型部署和笔记本小组件。
 
 ## <a name="set-up-the-experiment"></a>设置的实验
 
@@ -105,12 +113,24 @@ exp = Experiment(workspace=ws, name='keras-mnist')
     shutil.copy('./utils.py', script_folder)
     ```
 
-## <a name="get-the-default-compute-target"></a>获取默认计算目标
+## <a name="create-a-compute-target"></a>创建计算目标
 
-每个工作区附带了两个，默认值的计算目标： 基于 gpu 的计算目标和基于 cpu 的计算目标。 默认值的计算目标必须设置为 0，这意味着它们不分配，直到您使用的自动缩放。 赢取此示例中，使用默认 GPU 计算目标。
+创建计算目标为 TensorFlow 作业上运行。 在此示例中，创建启用了 GPU 的 Azure 机器学习计算群集。
 
 ```Python
-compute_target = ws.get_default_compute_target(type="GPU")
+cluster_name = "gpucluster"
+
+try:
+    compute_target = ComputeTarget(workspace=ws, name=cluster_name)
+    print('Found existing compute target')
+except ComputeTargetException:
+    print('Creating a new compute target...')
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_NC6', 
+                                                           max_nodes=4)
+
+    compute_target = ComputeTarget.create(ws, cluster_name, compute_config)
+
+    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
 计算目标的详细信息，请参阅[什么是计算目标](concept-compute-target.md)一文。

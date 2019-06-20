@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 4b4d2e2099f0d49c7dd9a150ac659ffde62eaa21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506341"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64693090"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>详细故障排除步骤：针对 Azure 中到 Windows VM 的远程桌面连接问题
 本文提供详细的故障排除步骤，用于为基于 Windows 的 Azure 虚拟机诊断和修复复杂的远程桌面错误。
@@ -33,7 +33,7 @@ ms.locfileid: "60506341"
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“获取支持”。  有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="components-of-a-remote-desktop-connection"></a>远程桌面连接的组件
 RDP 连接涉及以下组件：
@@ -147,7 +147,7 @@ $vmName="<Name of the target virtual machine>"
 
 可以从 **Get-AzureSubscription** 命令显示的 *SubscriptionName* 属性获取正确的订阅名称。 可以从 **Get-AzureVM** 命令显示的 *ServiceName* 列中获取虚拟机的云服务名称。
 
-检查是否有新证书。 打开当前用户的“证书”管理单元，并在“受信任的根证书颁发机构\证书”文件夹中查找。 应看到在“颁发给”列中具有云服务的 DNS 名称的证书（示例：cloudservice4testing.cloudapp.net）。
+检查是否有新证书。 打开当前用户的“证书”管理单元，并在“受信任的根证书颁发机构\证书”文件夹中查找。  应看到在“颁发给”列中具有云服务的 DNS 名称的证书（示例：cloudservice4testing.cloudapp.net）。
 
 接下来，使用以下命令启动远程 Azure PowerShell 会话。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc9f8e29a744a3a40d17b3814c7124eb37c1543b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597078"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269418"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -174,6 +174,15 @@ Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重
 
 **Windows Server 2012 R2 或之前的代理版本**  
 对于未启用云分层的卷，Azure 文件同步支持在卷上启用 Windows Server 重复数据删除。
+
+**说明**
+- 如果在安装 Azure 文件同步代理之前安装重复数据删除，则需要重新启动以支持重复数据删除和云分层在同一个卷上。
+- 如果重复数据删除的卷上启用后云分层已启用，初始的重复数据删除优化作业将优化卷上的文件，它已不分层并将对云产生以下影响分层：
+    - 根据可用空间的卷上的层文件，可用空间策略将继续使用热度地图。
+    - 日期策略将跳过的文件可能已否则适合分层由于重复数据删除优化作业访问文件分层。
+- 对于正在进行重复数据删除优化作业，将获取云分层与日期策略延迟由重复数据删除[MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps)设置，如果没有已分层文件。 
+    - 示例：如果 MinimumFileAgeDays 设置为 7 天，云分层日期策略为 30 天，策略将文件分层 37 天后的日期。
+    - 请注意:一旦文件分层的 Azure 文件同步时，重复数据删除优化作业将跳过该文件。
 
 ### <a name="distributed-file-system-dfs"></a>分布式文件系统 (DFS)
 Azure 文件同步支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进行互操作。

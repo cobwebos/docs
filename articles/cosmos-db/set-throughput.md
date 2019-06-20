@@ -4,14 +4,14 @@ description: 了解如何为 Azure Cosmos 容器和数据库设置预配的吞�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 06/14/2019
 ms.author: rimman
-ms.openlocfilehash: ce059e542ee7bfa67e899b4923e3410e13e4930e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 61f8e93fd82f7da632e0ab7e16ad6fbf4ca25646
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067506"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165036"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
 
@@ -72,6 +72,9 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 * 可以创建预配吞吐量为“K”RU 的名为“Z”的 Azure Cosmos 数据库。   
 * 接下来，在该数据库中创建名为 A、B、C、D、E 的五个容器。      创建容器 B 时，请确保启用**为此容器的预配专用的吞吐量**选项，并显式配置 *"P"* 此容器上预配吞吐量的 ru 数。 请注意，只有在创建数据库和容器时，您可以配置共享和专用吞吐量。 
+
+   ![在容器级别设置吞吐量](./media/set-throughput/coll-level-throughput.png)
+
 * “K”RU 吞吐量在 A、C、D、E 这四个容器之间共享。      提供给 A、C、D 或 E 的确切吞吐量各不相同。     每个容器的吞吐量没有 SLA 的保障。
 * 保证名为 B 的容器始终可以获得“P”RU 吞吐量。   该容器有 SLA 的保障。
 

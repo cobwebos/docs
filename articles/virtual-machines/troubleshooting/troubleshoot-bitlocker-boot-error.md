@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 5ac40e3c98da613b53c06908bcde927cc2e81b08
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 116748d7887ebf2ad821e3159c7c1bdcc2428121
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "64684763"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
@@ -32,7 +32,7 @@ ms.locfileid: "64684763"
 
 - 插入含 BitLocker 密钥的 USB 驱动程序
 
-- 你被锁定！ 输入恢复密钥，以便再次开始操作（键盘布局：美式键盘）错误登录信息输入次数过多，因此，你的 PC 被锁定以保护你的隐私。 若要检索恢复密钥，请从另一电脑或移动设备转到 https://windows.microsoft.com/recoverykeyfaq。 如果需要，密钥 ID 为 XXXXXXX。 或者，可以重置电脑。
+- 你被锁定！ 输入恢复密钥，以便再次开始操作（键盘布局：美式键盘）错误登录信息输入次数过多，因此，你的 PC 被锁定以保护你的隐私。 若要检索恢复密钥，请从另一电脑或移动设备转到 https://windows.microsoft.com/recoverykeyfaq 。 如果需要，密钥 ID 为 XXXXXXX。 或者，可以重置电脑。
 
 - 输入密码以解锁此驱动器 [ ] 按 Insert 键在键入时查看密码。
 - 输入恢复密钥 从 USB 设备加载恢复密钥。
@@ -104,7 +104,7 @@ ms.locfileid: "64684763"
 
     如果看到两个重复的卷，具有较新时间戳的卷为恢复 VM 使用的当前 BEK 文件。
 
-    如果“内容类型”值为“包装的 BEK”，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
+    如果“内容类型”  值为“包装的 BEK”  ，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
 
     获取驱动器的 BEK 文件名称后，须创建 secret-file-name.BEK 文件以解锁驱动器。 
 
@@ -145,7 +145,7 @@ ms.locfileid: "64684763"
 
 对于密钥加密密钥方案，请执行以下步骤：
 
-1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”中 Key Vault 访问策略中的“解包”权限。
+1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”  中 Key Vault 访问策略中的“解包”权限。
 2. 将以下脚本保存到 .PS1 文件：
 
     ```powershell

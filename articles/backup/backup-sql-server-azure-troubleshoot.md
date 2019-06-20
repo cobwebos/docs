@@ -6,14 +6,14 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 05/27/2019
+ms.date: 06/18/2019
 ms.author: anuragm
-ms.openlocfilehash: 8459bb451c4ff462ee816b986cafdbf776603917
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ed30a35f30d1b6b9fdcd43110ed93618a10dbc3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306965"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204197"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>排查在 Azure 上备份 SQL Server 的问题
 
@@ -25,8 +25,7 @@ ms.locfileid: "66306965"
 
 ## <a name="sql-server-permissions"></a>SQL Server 权限
 
-若要在虚拟机上为 SQL Server 数据库配置保护，必须在该虚拟机上安装 **AzureBackupWindowsWorkload** 扩展。 如果收到错误 **UserErrorSQLNoSysadminMembership**，则表示 SQL 实例没有所需的备份权限。 若要解决此错误，请遵循[为非市场 SQL VM 设置权限](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)中的步骤。
-
+若要在虚拟机上为 SQL Server 数据库配置保护，必须在该虚拟机上安装 **AzureBackupWindowsWorkload** 扩展。 如果收到错误 **UserErrorSQLNoSysadminMembership**，则表示 SQL 实例没有所需的备份权限。 若要解决此错误，请遵循[为非市场 SQL VM 设置权限](backup-azure-sql-database.md#set-vm-permissions)中的步骤。
 
 ## <a name="backup-type-unsupported"></a>不受支持的备份类型
 

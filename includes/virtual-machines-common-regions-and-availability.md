@@ -9,11 +9,11 @@ ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: include file
 ms.openlocfilehash: 7f33312d0a5fbe383d438408d471dd9ae09d0332
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156241"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172917"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Azure 中虚拟机的区域和可用性
 Azure 在世界各地的多个数据中心运行。 这些数据中心分组到地理区域，让用户可灵活选择构建应用程序的位置。 请务必了解 Azure 中虚拟机 (VM) 运行的方式和位置，以及最大化性能、可用性和冗余的选项。 本文提供了 Azure 的可用性和冗余功能的概述。

@@ -1,24 +1,17 @@
 ---
 title: “找不到 Azure 资源”错误 | Microsoft Docs
 description: 介绍如何解决找不到资源时出现的错误。
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: ''
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0dfbfa73009b5fa47dd7bb0804b612d0c2ad0a5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c999a70ffdbed0c954cfc960b5febdaff06e4ae
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61062231"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206191"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>解决找不到 Azure 资源的错误
 

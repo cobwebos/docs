@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 7cf6b4984f3941da3b2cd0e4eada5eb1d87f2b01
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6aad0502b5739906d1fa8fa896f8d0af8cc38e30
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054742"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204999"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余的应用程序网关 v2 
 
@@ -24,7 +24,7 @@ ms.locfileid: "67054742"
 - **区域冗余**：应用程序网关或 WAF 部署可以跨多个可用性区域，无需预配每个区域使用流量管理器中的单独应用程序网关实例。 您可以选择一个区域或多个区域部署应用程序网关实例位置，这将发生区域故障更具弹性。 应用程序的后端池可以通过类似方式分布在多个可用性区域中。
 
   区域冗余是可用仅 Azure 区域提供的。 在其他区域，支持所有其他功能。 有关详细信息，请参阅[在 Azure 中的可用性区域是什么？](../availability-zones/az-overview.md#services-support-by-region)
-- **静态 VIP**：应用程序网关 v2 SKU 支持静态 VIP 类型以独占方式。 这可确保与应用程序网关相关联的 VIP 不会更改的部署，即使在重启后的生命周期。
+- **静态 VIP**：应用程序网关 v2 SKU 仅支持静态 VIP 类型。 这可确保与应用程序网关相关联的 VIP 不会更改的部署，即使在重启后的生命周期。  不存在静态 VIP 在 v1 中，因此你必须使用应用程序网关 URL 而不是 IP 地址的域名称路由到应用服务通过应用程序网关。
 - **标头重写**:应用程序网关，可添加、 删除或更新与 v2 SKU 的 HTTP 请求和响应标头。 有关详细信息，请参阅[重写 HTTP 标头与应用程序网关](rewrite-http-headers.md)
 - **密钥保管库集成 （预览版）** :应用程序网关 v2 支持的附加到启用 HTTPS 侦听器的服务器证书 （在公共预览版） 与密钥保管库集成。 有关详细信息，请参阅[使用密钥保管库证书的 SSL 终止](key-vault-certs.md)。
 - **Azure Kubernetes 服务入口控制器 （预览版）** :应用程序网关 v2 入口控制器允许 Azure 应用程序网关要用作入口的 Azure Kubernetes 服务 (AKS) 名为 AKS 群集。 有关详细信息，请参阅[文档页](https://azure.github.io/application-gateway-kubernetes-ingress/)。
@@ -42,7 +42,7 @@ ms.locfileid: "67054742"
 具有 v2 SKU 的定价模型由消耗驱动和不再附加到实例计数或大小。 V2 SKU 的定价有两个组件：
 
 - **固定的价格**-这是每小时 （或不足 1 小时） 来预配 Standard_v2 或 WAF_v2 网关的价格。
-- **容量单位价格**-这是基于使用量的费用，收取固定费用。 容量单位费用也计算每小时或部分每小时。 有三个维度到容量单位-计算单元、 永久连接和吞吐量。 计算单位是所占用的处理器容量度量。 因素会影响计算单位是 TLS 连接/sec、 URL 重写计算和 WAF 规则处理。 持续性连接是在给定计费间隔中的应用程序网关建立 TCP 连接的度量值。 吞吐量是由系统处理给定的计费时间间隔中的平均兆位/秒。
+- **容量单位价格**-这是基于使用量的费用，收取固定费用。 容量单位费用也按小时或部分按小时计算。 容量单位有 3 个维度：计算单位、持久连接和吞吐量。 计算单位测量的是所使用的处理器容量。 因素会影响计算单位是 TLS 连接/sec、 URL 重写计算和 WAF 规则处理。 持续性连接是在给定计费间隔中的应用程序网关建立 TCP 连接的度量值。 吞吐量是由系统处理给定的计费时间间隔中的平均兆位/秒。
 
 每个容量单位最多个组成：1 个计算单元，或 2500年持久连接或 2.22 Mbps 吞吐量。
 

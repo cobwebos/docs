@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 2627554647c6c20cbdedfec53c1028b3edfa9c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66132990"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172762"
 ---
 若要创建高级缓存，请登录到 [Azure 门户](https://portal.azure.com)，并单击“创建资源”   > “数据库”   > “Azure Redis 缓存”  。
 

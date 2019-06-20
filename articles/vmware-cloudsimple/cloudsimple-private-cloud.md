@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: dc07b4eea553e6cb3d9b522826e860ddbfbc1513
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3ab53466cae5bd39d85f8d846c8e59ad94f1f2d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64577040"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165746"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple 私有云概述
 
@@ -63,7 +63,7 @@ CloudSimple 转换，并在几分钟内扩展到公有云的 VMware 工作负荷
 
 你可以部署的 Azure 位置中的专用的节点。 然后您可以使用 Azure 和 CloudSimple 管理它们。 私有云由一个或多个 vSphere 群集和每个群集包含 3 到 16 个节点。
 
-你可以创建私有云使用购买节点：
+可以创建私有云使用预配的节点：
 
 * 即用即付节点
 * 保留的专用节点

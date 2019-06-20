@@ -17,12 +17,12 @@ ms.date: 01/29/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d9b0c80522a988447b2753953c0c51b058fdd43
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 8a1154e6484ebc86743202239dcd94f0772c8011
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66015217"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67204515"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 是什么？
 
@@ -42,7 +42,7 @@ Microsoft 在基于云的标识保护方面拥有数十载的经验。 通过 Az
 
 发现标识是否遭到入侵并不容易。 Azure Active Directory 使用自适应机器学习算法和试探法来检测异常和可疑事件，这些事件能指示可能遭到入侵的标识。 Identity Protection 使用此数据生成报告和警报，使你能够评估检测到的问题并采取相应的缓解措施或补救措施。
 
-Azure Active Directory Identity Protection 不只是一个监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。 除了 Azure Active Directory 与[企业移动性 + 安全性](https://docs.microsoft.com/enterprise-mobility-security/) (EMS) 提供的条件访问控制以外，这些策略也可以自动阻止或启用自适应补救措施，包括密码重置和强制实施多重身份验证。
+Azure Active Directory Identity Protection 不只是一个监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。 这些策略，除了提供 Azure Active Directory 的其他条件性访问控制和[企业移动性 + 安全性](https://docs.microsoft.com/enterprise-mobility-security/)(EMS)，可以自动阻止或启动自适应补救措施包括重置密码和强制实施多重身份验证。
 
 ### <a name="identity-protection-capabilities"></a>Identity Protection 功能
 
@@ -96,8 +96,8 @@ Identity Protection 的使用通常从 Identity Protection 仪表板开始。
 
 在仪表板中可以访问：
 
-- “已标记为存在风险的用户”、“风险事件”和“漏洞”等报告
-- 各种设置，例如“安全策略”、“通知”和“多重身份验证注册”的配置
+- “已标记为存在风险的用户”、“风险事件”和“漏洞”等报告   
+- 各种设置，例如“安全策略”、“通知”和“多重身份验证注册”的配置   
 
 这通常是调查的起点，在调查过程中查看风险事件相关活动、日志和其他相关信息可以确定是否需要采取补救或缓解措施，了解标识如何遭到入侵，以及遭到入侵的标识如何被利用。
 

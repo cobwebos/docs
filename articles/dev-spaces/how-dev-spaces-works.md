@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: 描述的过程，该 power Azure 开发人员空格和如何 azds.yaml 配置文件中配置
 keywords: azds.yaml，Azure 开发人员空格、 开发空格、 Docker、 Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 083ed45a8fa95ac5fc26af6547b5765acf80e43b
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399828"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154554"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure 开发人员空间如何工作，是配置
 
@@ -210,7 +210,7 @@ azds up
 1. 生成你的应用程序的容器。
 1. 将部署到开发应用程序。
 1. 如果配置，请创建具有可公开访问的应用程序终结点的 DNS 名称。
-1. 使用*端口转发*来提供对应用程序终结点使用访问 http://locahost 。
+1. 使用*端口转发*来提供对应用程序终结点使用访问 http://localhost 。
 1. 将转发 stdout 和 stderr 到客户端工具。
 
 

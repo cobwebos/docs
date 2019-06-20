@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 5ba55e339db4c33d1b0d759e4682481e20318938
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122838"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203729"
 ---
 ### <a name="prepare-for-a-push-installation-on-a-linux-server"></a>在 Linux 服务器上准备推送安装
 
@@ -22,15 +22,15 @@ ms.locfileid: "62122838"
 
     a. 以 **root** 身份登录。
 
-    b. 在 **/etc/ssh/sshd_config** 文件中，找到以“PasswordAuthentication”开头的行。
+    b. 在 **/etc/ssh/sshd_config** 文件中，找到以“PasswordAuthentication”  开头的行。
 
     c. 取消注释该行，并将值更改为 **yes**。
 
-    d. 找到以“Subsystem”开头的行，并取消注释该行。
+    d. 找到以“Subsystem”  开头的行，并取消注释该行。
 
       ![Linux](./media/site-recovery-prepare-push-install-mob-svc-lin/mobility2.png)
 
-    e. 重启 sshd 服务。
+    e. 重启 sshd 服务。 
 
 1. 添加在 CSPSConfigtool 中创建的帐户。 执行以下步骤:
 
@@ -38,7 +38,7 @@ ms.locfileid: "62122838"
 
     b. 打开 **cspsconfigtool.exe**。 桌面上有该工具的快捷方式，也可以在 %ProgramData%\home\svsystems\bin 文件夹中找到它。
 
-    c. 在“管理帐户”选项卡中，选择“添加帐户”。
+    c. 在“管理帐户”选项卡中，选择“添加帐户”。  
 
     d. 添加已创建的帐户。
 

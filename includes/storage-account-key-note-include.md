@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 3cfdca99c91dc54a711801d92aa0da91fb9703e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115523"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173169"
 ---
 > [!IMPORTANT]
 > 存储帐户密钥类似于存储帐户的根密码。 始终要小心保护帐户密钥。 避免将其分发给其他用户、对其进行硬编码或将其以纯文本形式保存在其他人可以访问的任何位置。 如果认为帐户密钥可能已泄漏，请使用 Azure 门户重新生成帐户密钥。

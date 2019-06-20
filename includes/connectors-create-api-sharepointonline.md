@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: 0cabc58d856c09accd9b1924fe63d6518b1cb9ef
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129992"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205780"
 ---
 要连接到 **SharePoint Online**，需要向 SharePoint Online 提供标识（用户名和密码、智能卡凭据等）。 经过身份验证后，可以继续在逻辑应用中使用 SharePoint Online 连接器。 
 
-逻辑应用的设计器打开时，按照以下步骤操作登录到 SharePoint，创建要在逻辑应用中使用的连接：
+逻辑应用的设计器打开时，按照以下步骤操作登录到 SharePoint，创建要在逻辑应用中使用的连接  ：
 
 1. 在搜索框中输入“SharePoint”，并等待该搜索返回与 SharePoint Online 有关的所有触发器和操作：   
    ![配置 SharePoint][1]  
-2. 选择“SharePoint Online - 创建文件时”触发器  
-3. 选择“登录到 SharePoint Online”：   
+2. 选择“SharePoint Online - 创建文件时”  触发器  
+3. 选择“登录到 SharePoint Online”  ：   
    ![配置 SharePoint][2]    
 4. 提供 SharePoint 凭据进行登录，以使用 SharePoint 进行身份验证   
    ![配置 SharePoint][3]     
