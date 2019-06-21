@@ -1,6 +1,6 @@
 ---
 title: 为 Vm （预览版） 使用 Azure PowerShell 或 Resource Manager 模板中启用 Azure Monitor |Microsoft Docs
-description: 本文介绍如何在 Azure Monitor 为 Vm 启用的一个或多个 Azure 虚拟机或虚拟机规模集使用 Azure PowerShell 或 Azure 资源管理器模板。
+description: 本文介绍如何在 Azure Monitor 为 Vm 启用一个或更多的 Azure 虚拟机或虚拟机规模集使用 Azure PowerShell 或 Azure 资源管理器模板。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,37 +13,37 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2019
 ms.author: magoedte
-ms.openlocfilehash: a22bc88fb066d9b845f7fdf1592e2194a03915bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: ff284ea0adf6021ace84cd6a41f0a0e4e987a9c8
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65524125"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144252"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-template"></a>为 Vm （预览版） 使用 Azure PowerShell 或 Resource Manager 模板中启用 Azure Monitor
+# <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>为 Vm （预览版） 使用 Azure PowerShell 或 Resource Manager 模板中启用 Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文介绍如何为 Azure 虚拟机或虚拟机规模集使用 Azure PowerShell 或 Azure 资源管理器模板为 Vm （预览版） 中启用 Azure Monitor。 将已成功开始此过程末尾监视的所有虚拟机，并了解是否任何遇到性能或可用性问题。 
+本文介绍如何为 Vm （预览版） 中启用 Azure Monitor 的 Azure 虚拟机或虚拟机规模集使用 Azure PowerShell 或 Azure 资源管理器模板。 在此过程结束时，你将具有已成功开始监视的所有虚拟机，并了解是否任何遇到性能或可用性问题。
 
 ## <a name="set-up-a-log-analytics-workspace"></a>设置 Log Analytics 工作区 
 
-如果没有 Log Analytics 工作区，创建一个通过查看中建议的方法[先决条件](vminsights-enable-overview.md#log-analytics)部分再继续进行配置以完成的 Azure 监视的部署的步骤使用 Azure 资源管理器模板方法的 Vm。
+如果没有 Log Analytics 工作区，需要创建一个。 查看中建议的方法[先决条件](vminsights-enable-overview.md#log-analytics)部分之前继续对其进行配置的步骤。 然后可以使用 Azure 资源管理器模板方法完成适用于 Vm 的 Azure Monitor 部署。
 
 ### <a name="enable-performance-counters"></a>启用性能计数器
 
-如果解决方案引用的 Log Analytics 工作区尚未配置为收集解决方案所需的性能计数器，则需要启用性能计数器。 可通过两种方式中的一种进行启用：
+如果解决方案引用的 Log Analytics 工作区尚未配置为收集解决方案所需的性能计数器，则需要启用性能计数器。 您可以执行操作在两种方式之一：
 * 手动方式，如 [Log Analytics 中的 Windows 和 Linux 性能数据源](../../azure-monitor/platform/data-sources-performance-counters.md)所述
-* 通过下载并运行可从 [Azure PowerShell 库](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)获取的 PowerShell 脚本
+* 通过下载并运行 PowerShell 脚本，可从[Azure PowerShell 库](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
 
 ### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>安装 ServiceMap 和 InfrastructureInsights 解决方案
 此方法包含一个 JSON 模板，其中指定了用于在 Log Analytics 工作区中启用解决方案组件的配置。
 
-如果对使用模板部署资源不熟悉，请参阅：
+如果不知道如何使用模板部署资源，请参阅：
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
 * [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+若要使用 Azure CLI，首先需要本地安装并使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 若要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 1. 将以下 JSON 语法复制并粘贴到文件中：
 
@@ -121,7 +121,7 @@ ms.locfileid: "65524125"
         New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
         ```
 
-        配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
+        配置更改可能需要几分钟才能完成。 完成后，则显示一条消息，类似于以下和包括的结果：
 
         ```powershell
         provisioningState       : Succeeded
@@ -135,54 +135,54 @@ ms.locfileid: "65524125"
         az group deployment create --name DeploySolutions --resource-group <ResourceGroupName> --template-file InstallSolutionsForVMInsights.json --parameters WorkspaceName=<workspaceName> WorkspaceLocation=<WorkspaceLocation - example: eastus>
         ```
 
-配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
+        配置更改可能需要几分钟才能完成。 完成后，将显示一条消息，类似于以下和包括的结果：
 
-```azurecli
-provisioningState       : Succeeded
-```
+        ```azurecli
+        provisioningState       : Succeeded
+        ```
 
-## <a name="enable-with-azure-resource-manager-template"></a>让使用 Azure 资源管理器模板
-我们创建了示例 Azure 资源管理器模板为载入虚拟机和虚拟机规模集。 这些模板包括用于启用监视功能的现有资源和创建新的资源会启用监视方案。
+## <a name="enable-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板进行启用
+我们创建了示例 Azure 资源管理器模板为载入虚拟机和虚拟机规模集。 这些模板包括可用于现有的资源上启用监视和创建新的资源具有启用监视的方案。
 
 >[!NOTE]
->该模板需要同一资源组中的资源要加入部署。
+>该模板需要同一资源组中的资源将被在板上部署。
 
-如果不熟悉使用模板部署资源的概念，请参阅：
+如果不知道如何使用模板部署资源，请参阅：
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
 * [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+若要使用 Azure CLI，首先需要本地安装并使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 若要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ### <a name="download-templates"></a>下载模板
 
-在存档文件 (.zip) 中，你可以提供 Azure 资源管理器模板[下载](https://aka.ms/VmInsightsARMTemplates)从 GitHub 存储库。 该文件的内容包括表示每个部署方案使用的模板和参数文件的文件夹。 在运行之前, 修改参数文件并指定所需的值。 除非需要进行自定义，以支持特定的要求，否则不要修改的模板文件。 已修改的参数文件后可以部署它使用更高版本在本文中所述的以下方法。 
+在存档文件 (.zip) 中，你可以提供 Azure 资源管理器模板[下载](https://aka.ms/VmInsightsARMTemplates)从 GitHub 存储库。 该文件的内容包括表示每个部署方案使用的模板和参数文件的文件夹。 在运行它们之前，修改参数文件，并指定所需的值。 除非需要进行自定义，以支持特定的要求，否则不要修改的模板文件。 修改参数文件后，可以使用更高版本在本文中所述的以下方法来部署它。 
 
 下载文件包含不同的方案的以下模板：
 
 - **ExistingVmOnboarding**模板为 Vm 启用 Azure 监视器，如果虚拟机已存在。
 - **NewVmOnboarding**模板创建虚拟机，并启用 Azure Vm 来对其进行监视的监视器。
 - **ExistingVmssOnboarding**模板为 Vm 启用 Azure 监视器，如果虚拟机规模集已存在。
-- **NewVmssOnboarding**模板创建的虚拟机规模集并启用要监视这些 Vm 的 Azure Monitor。
-- **ConfigureWorksapce*** 模板配置 Log Analytics 工作区以支持 Azure Monitor 的 Vm 通过启用的解决方案和 Linux 和 Windows 操作系统性能计数器的集合。
+- **NewVmssOnboarding**模板创建虚拟机规模集并启用要监视这些 Vm 的 Azure Monitor。
+- **ConfigureWorksapce**模板配置 Log Analytics 工作区以支持 Azure Monitor 的 Vm 通过启用的解决方案和 Linux 和 Windows 操作系统性能计数器的集合。
 
 >[!NOTE]
->如果虚拟机规模集已经存在并且升级策略设置为**手动**，Vm 的 Azure Monitor 将不启用实例默认情况下运行之后**ExistingVmssOnboarding**Azure 资源管理器模板。 您必须手动升级的实例。
+>如果虚拟机规模集已经存在并且升级策略设置为**手动**，Vm 的 Azure Monitor 不会为启用实例默认情况下运行之后**ExistingVmssOnboarding**Azure 资源管理器模板。 您必须手动升级的实例。
 
-### <a name="deploy-using-azure-powershell"></a>使用 Azure PowerShell 进行部署
+### <a name="deploy-by-using-azure-powershell"></a>使用 Azure PowerShell 进行部署
 
-以下步骤启用监视使用 Azure PowerShell。
+以下步骤可使用 Azure PowerShell 进行监视。
 
 ```powershell
 New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile <Template.json> -TemplateParameterFile <Parameters.json>
 ```
-配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
+配置更改可能需要几分钟才能完成。 完成后，则显示一条消息，类似于以下和包括的结果：
 
 ```powershell
 provisioningState       : Succeeded
 ```
-### <a name="deploy-using-azure-cli"></a>使用 Azure CLI 进行部署
+### <a name="deploy-by-using-the-azure-cli"></a>使用 Azure CLI 进行部署
 
-以下步骤启用使用 Azure CLI 监视。   
+以下步骤可使用 Azure CLI 进行监视。
 
 ```azurecli
 az login
@@ -198,7 +198,13 @@ provisioningState       : Succeeded
 
 ## <a name="enable-with-powershell"></a>使用 PowerShell 启用
 
-若要为多个 VM 或虚拟机规模集启用用于 VM 的 Azure Monitor，可以使用 Azure PowerShell 库中提供的 PowerShell 脚本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)。 此脚本会循环访问订阅中、*ResourceGroup* 指定的限定资源组中的每个虚拟机和虚拟机规模集，或循环访问 *Name* 指定的单个 VM 或虚拟机规模集。 对于每个 VM 或虚拟机规模集，该脚本将验证是否已安装 VM 扩展。 如果未安装 VM 扩展，脚本会尝试重新安装它。 如果已安装 VM 扩展，脚本将安装 Log Analytics 代理和 Dependency Agent VM 扩展。
+若要为多个虚拟机或虚拟机规模集为 Vm 启用 Azure Monitor，请使用 PowerShell 脚本[安装 VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)。 也可以从 Azure PowerShell 库。 此脚本循环访问：
+
+- 每个虚拟机和虚拟机规模集在订阅中。
+- 由指定的作用域内的资源组*ResourceGroup*。 
+- 单一的虚拟机或虚拟机规模集，指定*名称*。
+
+对于每个 VM 或虚拟机规模集，该脚本将验证是否已安装 VM 扩展。 如果未安装 VM 扩展，脚本会尝试重新安装它。 如果已安装 VM 扩展，脚本将安装 Log Analytics 代理和 Dependency Agent VM 扩展。
 
 此脚本需要 Azure PowerShell 模块 Az 版本 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
@@ -218,23 +224,23 @@ SYNTAX
 
 
 DESCRIPTION
-    This script installs or re-configures following on VMs and VM Scale Sets:
-    - Log Analytics VM Extension configured to supplied Log Analytics Workspace
-    - Dependency Agent VM Extension
+    This script installs or reconfigures the following on VMs and virtual machine scale sets:
+    - Log Analytics VM extension configured to supplied Log Analytics workspace
+    - Dependency agent VM extension
 
     Can be applied to:
     - Subscription
-    - Resource Group in a Subscription
-    - Specific VM/VM Scale Set
-    - Compliance results of a policy for a VM or VM Extension
+    - Resource group in a subscription
+    - Specific VM or virtual machine scale set
+    - Compliance results of a policy for a VM or VM extension
 
-    Script will show you list of VMs/VM Scale Sets that will apply to and let you confirm to continue.
+    Script will show you a list of VMs or virtual machine scale sets that will apply to and let you confirm to continue.
     Use -Approve switch to run without prompting, if all required parameters are provided.
 
-    If the extensions are already installed will not install again.
-    Use -ReInstall switch if you need to for example update the workspace.
+    If the extensions are already installed, they will not install again.
+    Use -ReInstall switch if you need to, for example, update the workspace.
 
-    Use -WhatIf if you would like to see what would happen in terms of installs, what workspace configured to, and status of the extension.
+    Use -WhatIf if you want to see what would happen in terms of installs, what workspace configured to, and status of the extension.
 
 
 PARAMETERS
@@ -289,19 +295,19 @@ PARAMETERS
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -ResourceGroup <ResourceGroup>
 
-    Install for all VMs in a Resource Group in a subscription
+    Install for all VMs in a resource group in a subscription
 
     -------------------------- EXAMPLE 2 --------------------------
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -ResourceGroup <ResourceGroup> -ReInstall
 
-    Specify to reinstall extensions even if already installed, for example to update to a different workspace
+    Specify to reinstall extensions even if already installed, for example, to update to a different workspace
 
     -------------------------- EXAMPLE 3 --------------------------
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -PolicyAssignmentName a4f79f8ce891455198c08736 -ReInstall
 
-    Specify to use a PolicyAssignmentName for source, and to reinstall (move to a new workspace)
+    Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
 以下示例演示如何在文件夹中使用 PowerShell 命令来启用用于 VM 的 Azure Monitor，并了解预期的输出：
@@ -312,16 +318,16 @@ $WorkspaceKey = "<Key>"
 $SubscriptionId = "<GUID>"
 .\Install-VMInsights.ps1 -WorkspaceId $WorkspaceId -WorkspaceKey $WorkspaceKey -SubscriptionId $SubscriptionId -WorkspaceRegion eastus
 
-Getting list of VMs or VM ScaleSets matching criteria specified
+Getting list of VMs or virtual machine scale sets matching criteria specified
 
-VMs or VM ScaleSets matching criteria:
+VMs or virtual machine scale sets matching criteria:
 
 db-ws-1 VM running
 db-ws2012 VM running
 
-This operation will install the Log Analytics and Dependency agent extensions on above 2 VMs or VM Scale Sets.
+This operation will install the Log Analytics and Dependency agent extensions on the previous two VMs or virtual machine scale sets.
 VMs in a non-running state will be skipped.
-Extension will not be reinstalled if already installed. Use -ReInstall if desired, for example to update workspace
+Extension will not be reinstalled if already installed. Use -ReInstall if desired, for example, to update workspace.
 
 Confirm
 Continue?
@@ -338,7 +344,7 @@ db-ws2012 : Successfully deployed MicrosoftMonitoringAgent
 
 Summary:
 
-Already Onboarded: (0)
+Already onboarded: (0)
 
 Succeeded: (4)
 db-ws-1 : Successfully deployed DependencyAgentWindows
@@ -355,4 +361,9 @@ Failed: (0)
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你的虚拟机启用监视，此信息是可用于分析的 Vm 的 Azure monitor。 若要了解如何使用运行状况功能，请参阅[查看用于 VM 的 Azure Monitor 的运行状况](vminsights-health.md)。 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。 若要查明 VM 性能的瓶颈和整体利用率，请参阅[查看 Azure VM 性能](vminsights-performance.md)；若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。
+现在，你的虚拟机启用监视，此信息是可用于分析的 Vm 的 Azure monitor。
+ 
+- 若要了解如何使用运行状况的功能，请参阅[查看 Azure Vm 运行状况的监视器](vminsights-health.md)。 
+- 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。 
+- 若要标识瓶颈和 VM 的性能的整体利用率，请参阅[查看 Azure VM 性能](vminsights-performance.md)。 
+- 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。

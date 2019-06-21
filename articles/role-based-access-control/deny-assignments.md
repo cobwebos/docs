@@ -15,12 +15,12 @@ ms.date: 06/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 432703b5acb4cd56dac9b25edf99165ca26b0aa0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f15d6fd81337aa4a859539e86f37a516848c9370
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118279"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165989"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>了解 Azure 资源的拒绝分配
 
@@ -34,7 +34,7 @@ ms.locfileid: "67118279"
 
 ## <a name="compare-role-assignments-and-deny-assignments"></a>比较角色分配，并拒绝分配
 
-拒绝分配遵循类似的模式拒绝分配，但也有一些差异。
+拒绝分配为角色分配，遵循类似的模式，但也有一些差异。
 
 | 功能 | 角色分配 | 拒绝分配 |
 | --- | --- | --- |
@@ -51,7 +51,7 @@ ms.locfileid: "67118279"
  拒绝分配具有以下属性：
 
 > [!div class="mx-tableFixed"]
-> | 属性 | 必选 | Type | 描述 |
+> | 属性 | 需要 | Type | 描述 |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | 是 | String | 拒绝分配的显示名称。 对于给定作用域，名称必须是唯一的。 |
 > | `Description` | 否 | String | 拒绝分配的说明。 |

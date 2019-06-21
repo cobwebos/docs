@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: monhaber
-ms.openlocfilehash: e7420adfe1608df39ef72124817f1d6dadf07db8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 76e691df0a026802682b57ff78496f6b66d7ff79
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66400139"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154829"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-iaas"></a>IaaS 上的 SQL 服务器的高级的数据安全性
-为 SQL Server Azure 虚拟机上的高级的数据安全是高级 SQL 安全功能的统一的包。 它当前包括用于呈现和缓解潜在的数据库漏洞和检测异常活动，可能指示威胁到你的数据库的功能。 
+# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>SQL 服务器在 Azure 虚拟机 （公共预览版） 的高级的数据安全性
+为 SQL Server Azure 虚拟机上的高级的数据安全是高级 SQL 安全功能的统一的包。 它目前 （处于公共预览状态） 包括用于呈现和缓解潜在的数据库漏洞和检测异常活动，可能指示威胁到你的数据库的功能。 
 
 为 Azure 虚拟机 SQL server 提供了此安全性基于中使用相同的基本技术[Azure SQL 数据库高级数据安全包](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "66400139"
 
 ## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>开始使用高级数据安全的 Azure Vm 上的 SQL
 
-以下步骤可帮助你为 SQL Azure Vm 上启动具有高级数据安全性。
+以下步骤可帮助你开始使用高级数据安全性以公共预览版的 Azure Vm 上的 SQL。
 
 ### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>为 SQL Azure Vm 上设置高级数据安全
 
@@ -145,7 +145,7 @@ ms.locfileid: "66400139"
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>高级威胁防护功能用于 SQL 服务器上的 Azure Vm 警报
 通过异常和潜在有害尝试访问或使用 SQL Server 将生成警报。 这些事件可以触发以下警报：
 
-### <a name="anomalous-access-pattern-alerts"></a>异常访问模式的警报
+### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>异常访问模式警报 （公共预览版中受支持）
 
 * **从异常位置访问：** 当 SQL Server 的访问模式发生更改，有人从异常的地理位置登录到 SQL Server 时，会触发此警报。 可能的原因：
      * 攻击者或前者的恶意使用已访问你的 SQL Server。

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 81180d6930816a4a7715ce60313347019029fccd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9306e44655bd172343f20ac4fda2b2c56afcfb88
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416090"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164494"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教程：根据建议优化成本
 
@@ -54,7 +54,7 @@ Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 
 高影响建议包括：
 - [购买保留的虚拟机实例可节省即用即付成本](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
 - [优化虚拟机花费通过调整或关闭未充分利用的实例](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [使用标准存储来存储托管磁盘快照 ](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+- [使用标准存储来存储托管磁盘快照](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
 
 中等影响建议包括：
 - [删除未通过的 Azure 数据工厂管道](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)

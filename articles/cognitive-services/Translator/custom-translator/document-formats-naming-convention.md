@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 29b74aeaaae0bcfd5f6ae4a3c38cc00176292899
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0959be545f541da2f0efd5bd1e8cc209ab5a0996
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66386915"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275418"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文档格式和命名约定指南
 
@@ -37,7 +37,7 @@ ms.locfileid: "66386915"
 
 ## <a name="dictionary-formats"></a>字典格式
 
-对于字典，自定义翻译支持训练集所支持的所有文件格式。 如果使用 Excel 字典，请确保电子表格的第一行是语言代码。
+对于字典，自定义转换器支持的定型集支持的所有文件格式。 如果使用 Excel 字典中，第一行的电子表格的行应为语言代码。
 
 ## <a name="zip-file-formats"></a>Zip 文件格式
 

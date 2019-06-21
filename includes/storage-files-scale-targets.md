@@ -4,22 +4,22 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: df5d8ff941c742d546208c27c7af4e7bcbeec08a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 241e43a9cd851bf550c3eef8cad1fc3e0cc3e5a9
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073757"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150461"
 ---
 | Resource | 标准文件共享 | 高级文件共享（预览版） |
 |----------|---------------|------------------------------------------|
 | 文件共享的最小大小 | 没有最小值;现用现付 | 100 giB;预配 |
-| 文件共享的最大大小 | 5 TiB | 100 TiB |
+| 文件共享的最大大小 | 5 TiB (GA)、 100 TiB （预览版） | 100 TiB |
 | 文件共享中文件的最大大小 | 1 TiB | 1 TiB |
 | 文件共享中的文件数上限 | 无限制 | 无限制 |
-| 每个共享的最大 IOPS | 1,000 IOPS | 100,000 IOPS |
+| 每个共享的最大 IOPS | 1000 IOPS (GA）)，10,000 IOPS （预览版） | 100,000 IOPS |
 | 每个文件共享的存储的访问策略的最大数目 | 5 | 5 |
-| 单个文件共享的目标吞吐量 | 最多 60 MiB/秒 | 请参阅高级文件共享入口和出口值|
+| 单个文件共享的目标吞吐量 | 高达 60 MiB/秒 (GA）)，最多 300 MiB/秒 （预览版） | 请参阅高级文件共享入口和出口值|
 | 单个文件共享的最大出口 | 请参阅标准文件共享的目标吞吐量 | 高达 6,204 MiB/秒 |
 | 单个文件共享的最大入口 | 请参阅标准文件共享的目标吞吐量 | 高达 4,136 MiB/秒 |
 | 每个文件打开图柄的最大数目 | 2,000 个打开句柄 | 2,000 个打开句柄 |

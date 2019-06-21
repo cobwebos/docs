@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1130885cc3168582935264ffaad9fd7a8ba3c60b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36ca46d6df9c32f23d3051d1205c3c6b39e69f5a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64920266"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164726"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>集成 Azure Active Directory 中的 LinkedIn 帐户连接
 
@@ -44,7 +44,7 @@ ms.locfileid: "64920266"
 1. 下**LinkedIn 帐户连接**，允许用户连接其帐户以访问其某些 Microsoft 应用中的 LinkedIn 连接。 直到用户同意连接其帐户不共享任何数据。
 
     * 选择**是**若要启用你的组织中的所有用户服务
-    * 选择**选定**可以使仅组织中的所选用户的组
+    * 选择**所选组**以启用该服务仅在你的组织中的所选用户的组
     * 选择**否**若要从你的组织中的所有用户撤销许可
 
     ![将集成在组织中的 LinkedIn 帐户连接](./media/linkedin-integration/linkedin-integration.png)

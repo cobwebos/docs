@@ -12,13 +12,13 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 56b4e948f4e1aab20de95a16f45ab790c7e591bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.date: 06/14/2019
+ms.openlocfilehash: adbe8dfd41725c11516f820656b0476ed1aa8881
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66019823"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144032"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>处理 SQL 数据库连接问题和暂时性错误
 
@@ -93,7 +93,7 @@ ms.locfileid: "66019823"
 - **SqlException.Number** = 11001
 - 消息：“此主机不存在”
 
-在首次重试过程中，程序可以更正拼写错误，然后尝试连接。
+作为第一次重试尝试的一部分，可以重新连接到网络客户端计算机并尝试连接。
 
 要使此测试可行，请从网络中断开计算机的连接，再启动程序。 然后，程序将识别促使它执行以下操作的运行时参数：
 

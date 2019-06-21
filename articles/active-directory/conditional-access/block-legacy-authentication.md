@@ -2,37 +2,27 @@
 title: 如何阻止到 Azure Active Directory (Azure AD) 条件访问的旧式身份验证 |Microsoft Docs
 description: 了解如何通过阻止旧式身份验证使用 Azure AD 条件访问来改善安全状况。
 services: active-directory
-keywords: 条件访问应用，Azure AD 中，安全地访问公司资源，条件性访问策略的条件性访问
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: conditional-access
+ms.topic: conceptual
+ms.date: 06/17/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: ''
-ms.subservice: conditional-access
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
-ms.service: active-directory
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 03/25/2019
-ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a638b501ea04db787ca366aa015850d94eb475ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2120466652db363206ec20c2303ad56670228c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112702"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164804"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：阻止到 Azure AD 条件性访问与传统的身份验证   
 
 为了让用户轻松访问云应用程序，Azure Active Directory (Azure AD) 支持各种身份验证协议，包括旧身份验证。 但是，旧协议不支持多重身份验证 (MFA)。 许多环境通常都会要求使用 MFA，以解决身份盗用的情况。 
 
-
 如果你的环境是否已准备好块旧式身份验证来提高你的租户的保护，也可使用条件性访问完成此目标。 本文介绍如何配置条件性访问策略，阻止旧式身份验证为你的租户。
-
-
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -40,8 +30,6 @@ ms.locfileid: "67112702"
 
 - [基本概念](overview.md)的 Azure AD 条件访问 
 - [最佳做法](best-practices.md)在 Azure 门户中配置条件性访问策略
-
-
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -57,12 +45,21 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 第一个双因素身份验证完成后，会强制执行条件性访问策略。 因此，条件性访问不应作为用于方案，如拒绝服务 (DoS) 攻击，第一个行防御措施，但可以利用这些事件 （例如登录风险级别，位置为请求中，依次类推） 从信号来确定访问权限。
 
-
-
-
 ## <a name="implementation"></a>实现
 
 本部分介绍如何配置条件性访问策略来阻止旧式身份验证。 
+
+### <a name="identify-legacy-authentication-use"></a>识别旧式身份验证，请使用
+
+在目录中，你可以阻止旧式身份验证之前，需要首先了解用户是否拥有使用传统的身份验证以及它如何影响你的整个目录的应用。 可以使用 azure AD 单一登录日志以了解是否使用旧式身份验证。
+
+1. 导航到**Azure 门户** > **Azure Active Directory** > **登录**。
+1. 如果它不显示通过单击添加客户端应用程序列**列** > **客户端应用**。
+1. 通过筛选**客户端应用程序** > **其他客户端**然后单击**应用**。
+
+筛选仅显示在登录尝试所做的旧式身份验证协议。 单击每个单独的登录尝试会显示更多详细信息。 **客户端应用程序**字段下**的基本信息**选项卡将指示的旧式身份验证协议。
+
+这些日志将指出哪些用户仍依赖于传统的身份验证以及哪些应用程序使用传统协议进行身份验证请求。 对于不会显示在这些日志中，确认它可以不使用传统的身份验证的用户，实现条件性访问策略仅适用于这些用户。
 
 ### <a name="block-legacy-authentication"></a>阻止传统身份验证 
 

@@ -9,11 +9,11 @@ ms.date: 02/19/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 97387e24d5b55c1438a69da1a1fd0a9bc1720e47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66136166"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173109"
 ---
 1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”  。
 

@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6d0737a7300b2a6025f776c1ed65a05cacf2141a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157675"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172816"
 ---
 创建远程桌面连接来连接到部署到 VNet 的 VM。 若要验证是否能够连接到 VM，最好的方式是使用其专用 IP 地址而不是计算机名称进行连接。 这种方式测试的是能否进行连接，而不是测试名称解析是否已正确配置。 
 

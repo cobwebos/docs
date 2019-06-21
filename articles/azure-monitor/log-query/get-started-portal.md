@@ -8,20 +8,20 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: af01ebdc72df096b45c4ca4e755b2ed3880bab65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17b5c0b459e70909d9f305beb8bf87b83f1cf65c
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255266"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296517"
 ---
-# <a name="get-started-with-azure-monitor-log-analytics"></a>开始使用 Azure 监视器 Log Analytics
+# <a name="get-started-with-log-analytics-in-azure-monitor"></a>开始使用 Azure Monitor 中的 Log Analytics
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-在本教程中，您将学习如何在 Azure 门户中使用 Azure 监视器 Log Analytics 编写 Azure Monitor 日志查询。 具体内容包括：
+在本教程中，您将学习如何使用 Azure 门户中 Log Analytics 编写 Azure Monitor 日志查询。 具体内容包括：
 
-- 编写简单的查询
+- 使用 Log Analytics 编写一个简单的查询
 - 了解数据的架构
 - 筛选、排序和分组结果
 - 应用时间范围
@@ -29,13 +29,22 @@ ms.locfileid: "66255266"
 - 保存和加载查询
 - 导出和共享查询
 
+有关编写日志查询的教程，请参阅[开始使用 Azure Monitor 中的日志查询](get-started-queries.md)。<br>
+日志查询的更多详细信息，请参阅[日志概述在 Azure Monitor 中查询](log-query-overview.md)。
 
 ## <a name="meet-log-analytics"></a>满足日志分析
 Log Analytics 是一种用于编写和执行 Azure Monitor 日志查询的 web 工具。 可以通过在 Azure Monitor 菜单中选择“日志”来将其打开。  它将启动并显示一个新的空白查询。
 
 ![主页](media/get-started-portal/homepage.png)
 
+## <a name="firewall-requirements"></a>防火墙要求
+若要使用 Log Analytics，你的浏览器需要访问以下地址。 如果浏览器通过防火墙访问 Azure 门户，则必须允许访问这些地址。
 
+| Uri | IP | 端口 |
+|:---|:---|:---|
+| portal.loganalytics.io | 动态 | 80,443 |
+| api.loganalytics.io | 动态 | 80,443 |
+| docs.loganalytics.io | 动态 | 80,443 |
 
 ## <a name="basic-queries"></a>基本查询
 查询可用于搜索字词、识别趋势、分析模式，以及基于数据提供其他许多见解。 从基本查询着手：
@@ -44,9 +53,9 @@ Log Analytics 是一种用于编写和执行 Azure Monitor 日志查询的 web �
 Event | search "error"
 ```
 
-此查询在 _Event_ 表中搜索任何属性中包含词语“error”的记录。
+此查询搜索_事件_表的记录，其中包含一词_错误_中的任何属性。
 
-查询可以从表名或 **search** 命令开始。 上面的示例从定义查询范围的表名 _Event_ 开始。 竖线 (|) 分隔命令，因此第一个输出用作输入以下命令。 可在单个查询中添加任意数目的命令。
+查询可以从表名或 [search](/kusto/query/searchoperator) 命令开始。 上面的示例中的表名称开头_事件_，则事件表中检索所有记录。 竖线 (|) 分隔命令，因此第一个输出用作输入以下命令。 可在单个查询中添加任意数目的命令。
 
 编写同一查询的另一种方法是：
 
@@ -54,18 +63,18 @@ Event | search "error"
 search in (Event) "error"
 ```
 
-在此示例中，**search** 的范围限定为 _Event_ 表，将在该表中搜索包含词语“error”的所有记录。
+在此示例中，**搜索**仅限于_事件_搜索术语表，并将该表中的所有记录_错误_。
 
 ## <a name="running-a-query"></a>运行查询
 通过单击“运行”按钮或按 **Shift+Enter** 来运行查询。  请注意以下详细信息，其中确定了要运行的代码以及返回的数据：
 
-- 换行符：使用单个换行符可让查询变得更清晰。 使用多个换行符会将查询拆分为多个独立的查询。
+- 换行符：单个中断可使查询易于阅读。 使用多个换行符会将查询拆分为多个独立的查询。
 - 游标：将游标置于查询中的某个位置以执行它。 当前查询被视为空行之前的代码。
 - 时间范围 - 默认设置的时间范围为过去 24 小时。  若要使用不同的范围，请使用时间选取器，或者在查询中添加明确的时间范围筛选器。
 
 
 ## <a name="understand-the-schema"></a>了解架构
-架构是直观分组到某个逻辑类别下的表集合。 有多个类别来自监视解决方案。 _LogManagement_ 类别包含公用数据，例如 Windows 和 Syslog 事件、性能数据和客户端检测信号。
+架构是直观分组到某个逻辑类别下的表集合。 有多个类别来自监视解决方案。 _LogManagement_类别包含公共数据，例如 Windows 和 Syslog 事件、 性能数据，以及代理检测信号。
 
 ![架构](media/get-started-portal/schema.png)
 

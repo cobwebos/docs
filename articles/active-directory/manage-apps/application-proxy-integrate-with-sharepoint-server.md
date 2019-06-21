@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5eff7925599931104440213112ce288fd521b61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d15bb4a1cd19af70b29d1d74f43e137cf884c4db
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473772"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164099"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
 
@@ -129,7 +129,7 @@ setspn -S HTTP/SharePoint demo\spAppPoolAccount
    1. 在门户中的应用程序页上，选择“单一登录”  。
    2. 对于单一登录模式，选择“集成 Windows 身份验证”  。
    3. 将“内部应用程序 SPN”设置为此前设置的值。 此示例中为 **HTTP/SharePoint**。
-   4. 在“委托的登录标识”中，选择“本地 SAM 帐户名”。 
+   4. 在"委派的登录标识"，选择 Active Directory 林配置的最合适选项。 例如，如果在您的林中，选择使用单个 AD 域**在本地 SAM 帐户名**（如下所示），但如果用户不是在与 SharePoint 相同的域中，然后选择应用程序代理连接器服务器**在本地用户主体名称**（未显示）。
 
    ![为 SSO 配置集成 Windows 身份验证](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 
