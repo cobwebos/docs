@@ -33,7 +33,7 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="deployment"></a>部署
+## <a name="deployment"></a>deployment
 `deployment()`
 
 返回有关当前部署操作的信息。
@@ -167,7 +167,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| parameterName |是 |字符串 |要返回的参数名称。 |
+| parameterName |是 |string |要返回的参数名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -255,7 +255,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | option 1 |
-| intOutput | Int | 第 |
+| intOutput | Int | 1 |
 | objectOutput | Object | {"one": "a", "two": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | option 1 |
