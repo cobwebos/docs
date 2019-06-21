@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: d114a1e62ae0d28e7d4a3ad453d5d7bd3e1d5b7a
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427687"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
@@ -65,7 +65,7 @@ ms.locfileid: "66427687"
 
 将脚本从 Visual Studio Code 提交到 HDInsight 群集之前，需要连接到 Azure 帐户，或链接群集（使用 Ambari 用户名/密码或已加入域的帐户）。  完成以下步骤以连接到 Azure：
 
-1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 **HDInsight:   **Login”。
+1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 HDInsight:   Login”。 
 
     ![用于 Visual Studio Code 的 HDInsight 工具 - 登录](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "66427687"
 
 可以使用 [Apache Ambari](https://ambari.apache.org/) 管理的用户名链接标准群集，也可以使用域用户名（例如：user1@contoso.com）链接 Enterprise Security Pack 安全 Hadoop 群集。
 
-1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 **HDInsight:   **链接群集”。
+1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 HDInsight:   链接群集”。 
 
    ![链接群集命令](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "66427687"
 
 ## <a name="create-link-generic-livy-endpoint"></a>创建链接：通用 Livy 终结点
 
-1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 **HDInsight:   **链接群集”。
+1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 HDInsight:   链接群集”。 
 
 2. 选择链接的群集类型“通用 Livy 终结点”。 
 
@@ -147,7 +147,7 @@ ms.locfileid: "66427687"
 
 1. [连接](#connect-to-hdinsight-cluster)到 Azure 帐户（如果尚未这样做）。
 
-2. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 **HDInsight:   **设置 Azure 环境”。
+2. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 HDInsight:   设置 Azure 环境”。 
 
 3. 选择一个环境作为默认登录入口。
 
@@ -369,7 +369,7 @@ Visual Studio Code 的 HDInsight 支持以下功能：
 
 ## <a name="unlink-cluster"></a>取消链接群集
 
-1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 **HDInsight:   Unlink a Cluster**。  
+1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 HDInsight:   Unlink a Cluster。   
 
 2. 选择要取消链接的群集。  
 
@@ -378,7 +378,7 @@ Visual Studio Code 的 HDInsight 支持以下功能：
 
 ## <a name="logout"></a>注销  
 
-在菜单栏中，导航到“视图” > “命令面板...”，然后输入 **HDInsight:   Logout** 命令。  右下角会弹出一个窗口，指出“注销成功!”。 
+在菜单栏中，导航到“视图” > “命令面板...”，然后输入 HDInsight:   Logout 命令。   右下角会弹出一个窗口，指出“注销成功!”。 
 
 
 ## <a name="next-steps"></a>后续步骤

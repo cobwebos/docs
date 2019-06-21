@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b19c0fd8af2792a4ffb877e5c6a7fc6b3f94511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 975289f338e638ed0209d4f6cf2a163ced996e42
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836106"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202942"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项
 [1114181]: https://launchpad.support.sap.com/#/notes/1114181
@@ -150,7 +150,7 @@ Azure 强制实施每个数据磁盘的 IOPS 配额。 这些配额是不同的�
 如已所述，如果你的 IOPS 要求超过了单个 VHD 可提供，平衡的数据库文件需要跨多个 Vhd 的 IOPS 数。 在磁盘之间分配 IOPS 负载的最简单方法是基于不同的磁盘构建一个软件带区。 然后，将多个 SAP dbms 数据文件放在划分出软件条带的 Lun 上。 条带中的磁盘数是根据 IOPs 要求、 磁盘吞吐量需求和卷驱动需求。
 
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > 我们建议使用 Windows 存储空间来跨多个 Azure Vhd 中创建的带区集。 请至少使用 Windows Server 2012 R2 或 Windows Server 2016。
@@ -164,7 +164,7 @@ Azure 强制实施每个数据磁盘的 IOPS 配额。 这些配额是不同的�
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > Azure 存储会保留三个映像的 Vhd，因为它毫无意义时来条带化配置冗余。 只需配置条带化，以便 I/o 分布在不同的 Vhd。
@@ -230,7 +230,7 @@ M 系列部署，建议将 DBMS 部署 Azure 写入加速器。 有关详细信�
 
 有关详细信息，请参阅[了解 Azure 中 Windows Vm 上的临时驱动器](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)。
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > 在 Azure VM 中的驱动器 D 是持久化的驱动器，这由 Azure 计算节点上的部分本地磁盘。 因为它是持久化，重新启动 VM 时，对驱动器 D 上的内容进行任何更改都会丢失。 更改包括存储的文件、 已创建的目录以及安装的应用程序。
@@ -241,7 +241,7 @@ M 系列部署，建议将 DBMS 部署 Azure 写入加速器。 有关详细信�
 >
 >
 
-- - -
+---
 
 
 
@@ -339,7 +339,7 @@ Azure 提供两个不同[负载均衡器 Sku](https://docs.microsoft.com/azure/l
 > 并非所有 VM 类型都支持加速网络。 前一篇文章列出了支持加速网络的 VM 类型。
 >
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > 若要了解如何使用加速网络的 Windows 部署的 Vm，请参阅[创建具有加速网络的 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)。
@@ -350,7 +350,7 @@ Azure 提供两个不同[负载均衡器 Sku](https://docs.microsoft.com/azure/l
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > SUSE、Red Hat 和 Oracle Linux 的最新版本支持加速网络。 SLES 12 SP2 或 RHEL 7.2 等较旧版本不支持 Azure 加速网络。

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: c93bca14d9385eaf9f79f69d76e9e704796da7a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82ab400c89cb57f3cf72cfb9196ea7c6402808fe
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154175"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203916"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -534,7 +534,7 @@ ms.locfileid: "66154175"
 因为不同版本的操作系统或 DBMS 具有不同的修补程序要求，因此，在 Azure 市场中找到的映像不一定能满足需求。 可能需要使用自己的 OS/DBMS VM 映像创建一个 VM，以后可以再次部署该 VM。
 为 Linux 创建专用映像时使用的步骤不同于为 Windows 创建专用映像时使用的步骤。
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > 若要准备可用来部署多台虚拟机的 Windows 映像，必须在本地 VM 上抽象化或通用化 Windows 设置（例如 Windows SID 和主机名）。 可以使用 [sysprep](https://msdn.microsoft.com/library/hh825084.aspx) 来执行此操作。
@@ -545,7 +545,7 @@ ms.locfileid: "66154175"
 >
 >
 
-- - -
+---
 可以准备并创建自定义映像，使用它创建多个新的 VM。 这在[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中进行了介绍。 设置数据库内容的方式是使用 SAP Software Provisioning Manager 安装新的 SAP 系统（从附加到虚拟机的磁盘还原数据库备份）或直接从 Azure 存储还原数据库备份（如果 DBMS 支持此操作）。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]。 如果已在本地 VM 中安装了 SAP 系统（尤其是对于两层系统），则在部署 Azure VM 后，可以使用 SAP Software Provisioning Manager 支持的系统重命名过程来修改 SAP 系统设置（SAP 说明 [1619720]）。 否则，可以在部署 Azure VM 之后安装 SAP 软件。
 
 下面的流程图显示了从自定义映像部署 VM 时特定于 SAP 的步骤序列：
@@ -674,7 +674,7 @@ ms.locfileid: "66154175"
 
 有关 Azure VM 代理的详细信息，请参阅以下资源。
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > [Azure 虚拟机代理概述][virtual-machines-windows-agent-user-guide]
@@ -685,7 +685,7 @@ ms.locfileid: "66154175"
 >
 >
 
-- - -
+---
 
 下面的流程图显示了使用非通用化 Azure VHD 移动本地 VM 时的步骤序列：
 
