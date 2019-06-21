@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 5/21/2019
+ms.date: 6/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6b66a9cf28faccf5ba22bc016297f1d53febe533
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07bcf50a816c090ccef846909dff671486e514c4
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157345"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203065"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点连接：Azure 门户
 
@@ -98,7 +98,7 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 2. 单击“立即配置”，打开配置页。 
 
    ![立即配置](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. 在“点到站点”配置页的“地址池”框中，添加要使用的专用 IP 地址范围。   VPN 客户端动态接收指定范围内的 IP 地址。 单击“保存”  验证和保存设置。
+3. 在“点到站点”配置页的“地址池”框中，添加要使用的专用 IP 地址范围。   VPN 客户端动态接收指定范围内的 IP 地址。 最小的子网掩码是 29 位的主动/被动和主动/主动配置 28 位。 单击“保存”  验证和保存设置。
 
    ![客户端地址池](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 

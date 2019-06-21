@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 6/21/2019
 ms.author: victorh
-ms.openlocfilehash: 75b1131f2853cb444481b9c7a6c96e28f8537538
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 933b4167f25db5a01cf1160f5e781a1fe31afc6b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384671"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304597"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -76,7 +76,6 @@ Azure 防火墙服务为网络安全组功能提供了补充。 两者共同提�
 
 Azure 防火墙是托管的服务的多个保护层，包括平台保护使用 NIC 级别 Nsg （不可见）。  子网级 Nsg 不需要对 Azure 防火墙子网，而且已禁用，以确保不会中断服务。
 
-
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>如何使用服务终结点设置 Azure 防火墙？
 
 若要安全访问 PaaS 服务，我们建议使用服务终结点。 可以选择在 Azure 防火墙子网中启用服务终结点，并在连接的分支虚拟网络中禁用它们。 这样可以受益于以下两个功能：服务终结点安全性和针对所有流量的集中日志记录。
@@ -123,6 +122,10 @@ Set-AzFirewall -AzureFirewall $azfw
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure 防火墙能否转发和筛选同一虚拟网络或对等互连虚拟网络中子网之间的网络流量？
 
 是的。 但是，配置 Udr，将在同一 VNET 中的子网之间的流量重定向，需要多加注意。 虽然使用 VNET 地址范围作为 UDR 的目标前缀就足够了，但这也会通过 Azure 防火墙实例将所有流量从一台计算机路由到同一子网中的另一台计算机。 为避免这种情况，请在 UDR 中包含下一跃点类型为 **VNET** 的子网路由。 管理这些路由可能很麻烦并且容易出错。 建议的内部网络分段方法是使用不需要 UDR 的网络安全组。
+
+## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>专用网络之间的 Azure 防火墙出站 SNAT 吗？
+
+每个专用 IP 范围的目标 IP 地址时，azure 防火墙不 SNAT [IANA RFC 1918](https://tools.ietf.org/html/rfc1918)。 如果你的组织使用的专用网络的公共 IP 地址范围，Azure 防火墙 SNATs 到其中一个的防火墙的专用 IP 地址的流量在 AzureFirewallSubnet 中。
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>强制隧道/链接到支持网络虚拟设备？
 

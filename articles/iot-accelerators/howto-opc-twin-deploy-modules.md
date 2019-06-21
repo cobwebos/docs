@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f0fc3722ee440b6f50b86f916afef7ddc5876eef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41d544fd23d258393cc83ea09371332655223581
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693414"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203931"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>部署 OPC 孪生模块从零开始的依赖项
 
@@ -200,52 +200,6 @@ OPC 孪生模块在 IoT Edge 上运行，并提供了多个边缘服务添加到
    ```
 
    设备 ID 参数是区分大小写。 ![az iot hub module-identity list output](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
-
-## <a name="run-and-debug-locally"></a>本地运行和调试
-
-对于故障排除和调试它非常有用若要运行的 Edge 模块，使用本地[IoT Edge 开发模拟器](https://github.com/Azure/iotedgehubdev)。  它与模拟器中提供的本地开发体验的创建、 开发、 测试、 运行和调试 Azure IoT Edge 模块并使用相同的位或代码在生产环境中使用的解决方案。
-
-### <a name="prerequisites"></a>必备组件
-
-1. 部署 OPC 孪生[依赖项](howto-opc-twin-deploy-dependencies.md)。
-
-2. 安装[Docker CE (18.02.0+)](https://www.docker.com/community-edition)上[Windows](https://docs.docker.com/docker-for-windows/install/)， [macOS](https://docs.docker.com/docker-for-mac/install/)或者[Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)。
-
-3. 安装[Docker Compose (1.20.0+)](https://docs.docker.com/compose/install/#install-compose) (才需要**Linux**。 Compose 已包含在 Windows/macOS Docker CE 安装)
-
-4. 安装[Python (2.7 / 3.5+) 和 Pip](https://www.python.org/)
-
-5. 通过运行以下命令在终端中安装 iotedgehubdev
-
-   ```bash
-   pip install --upgrade iotedgehubdev
-   ```
-
-> [!NOTE]
-> 安装`iotedgehubdev`到**根**Linux/macOS 上 (*不使用-用户中 pip install 命令选项*)。
-> 请确保没有 iotedgehubdev 与在同一台计算机上运行，因为它们需要相同的端口的 Azure IoT Edge 运行时。
-
-### <a name="quickstart"></a>快速入门
-
-1. 按照说明[Azure 门户中创建 Edge 设备](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)。  将复制 edge 设备连接字符串。
-
-2. 设置模拟器使用 edge 连接字符串。
-
-    ```bash
-    iotedgehubdev setup -c <edge-device-connection-string>
-    ```
-
-3. 复制上面到清单`deployment.json`同一文件夹中的文件。  使用在模拟器中启动的部署
-
-    ```bash
-    iotedgehubdev start -d deployment.json
-    ```
-
-4. 停止模拟器使用
-
-   ```bash
-   iotedgehubdev stop
-   ```
 
 ## <a name="next-steps"></a>后续步骤
 

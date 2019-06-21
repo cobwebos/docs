@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: f5dfa34760bcef23bf54d65b35e3ad8f48cc2ee5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49b6b49d908a7426e7cfd1bae5260ff399d9953b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831822"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273229"
 ---
 # <a name="application-gateway-components"></a>应用程序网关组件
 
@@ -26,7 +26,9 @@ ms.locfileid: "60831822"
 
 ### <a name="static-versus-dynamic-public-ip-address"></a>静态与动态公共 IP 地址
 
-Azure 应用程序网关 v2 SKU 支持这两个静态内部和静态公共 IP 地址，但 v1 SKU 支持仅静态内部 IP 地址。 如果停止再启动应用程序网关，虚拟 IP (VIP) 地址可能会变化。
+可以配置 Azure 应用程序网关 V2 SKU 以支持同时静态内部 IP 地址和静态公共 IP 地址或仅静态公共 IP 地址。 它不能配置为支持仅静态内部 IP 地址。
+
+V1 SKU 可以配置为支持静态内部 IP 地址和动态公共 IP 地址，只有静态内部 IP 地址或仅动态公共 IP 地址。 应用程序网关的动态 IP 地址上正在运行的网关不会更改。 仅在停止或启动网关时，可以更改它。 它不会更改系统故障、 更新、 Azure 主机上更新等。 
 
 与应用程序网关关联的 DNS 名称在网关的整个生命周期内不会变化。 出于此原因，应使用 CNAME 别名并使其指向应用程序网关的 DNS 地址。
 

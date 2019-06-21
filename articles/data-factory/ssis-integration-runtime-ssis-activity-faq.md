@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: f17c364d258ef356a98180c9903603d92a6a9245
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7789970b47f0e55adee5bbe9da9f303aee6cdb25
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078516"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190122"
 ---
 # <a name="troubleshooting-package-execution-in-ssis-integration-runtime"></a>SSIS 集成运行时中的包执行故障排除
 
@@ -103,6 +103,13 @@ ms.locfileid: "67078516"
 ### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>错误消息："集成运行时不能升级，并且最终将停止工作，因为我们无法访问自定义安装程序提供的 Azure Blob 容器。"
 
 * SSIS 集成运行时无法访问自定义安装程序配置的存储时，将发生此错误。 检查你提供的 SAS Uri 有效并且尚未过期。
+
+### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>错误消息："Microsoft OLE DB Provider for Analysis Services。 Hresult:0x80004005 说明:COM 错误：COM 错误： mscorlib;已通过调用目标引发异常"
+
+* 可能的原因和建议的操作：
+  * 一个可能的原因是使用 MFA 启用该用户名/密码配置为使用 Azure Analysis Services 身份验证，尚不支持 SSIS 集成运行时中。 请尝试使用服务主体进行 Azure Analysis Service 身份验证：
+    1. 为 AAS 准备服务主体 [https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)
+    2. 连接管理器中配置"使用特定用户名和密码":"AppID"设置为用户名和密码"clientSecret"
 
 ### <a name="package-takes-unexpected-long-time-to-execute"></a>包需要意外的长时间才能执行
 

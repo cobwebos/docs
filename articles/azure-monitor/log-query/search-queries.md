@@ -13,20 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: b5860243b6b605288aaf8d6dffe2260bc031a592
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b118740f3a57e168c5dfb071c199bcf424bd5113
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65560826"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295563"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor 日志中的搜索查询
-
-> [!NOTE]
-> 在完成本课程之前，应先完成 [Azure Monitor 日志查询入门](get-started-queries.md)。
-
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
 Azure Monitor 日志查询可以从表名或 search 命令开始。 本教程介绍基于搜索的查询。 每种方法各有优势。
 
 基于表的查询首先限定查询范围，因此往往比搜索查询更加高效。 搜索查询的结构化程度不高，因此，在跨列或表搜索特定的值时，它是更好的选择。 **搜索**可以在给定表或所有表的所有列中扫描指定的值。 处理的数据量可能十分巨大，正因如此，这些查询可能需要更长的时间才能完成，并且可能返回极大的结果集。

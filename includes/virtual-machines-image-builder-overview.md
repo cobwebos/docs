@@ -6,11 +6,11 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
 ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66111456"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172932"
 ---
 标准化的虚拟机 (VM) 映像，组织可迁移到云，并确保在部署中的一致性。 映像通常包括预定义的安全和配置设置和必要的软件。 设置映像管道需要时间、 基础结构和安装过程中，但使用 Azure VM 映像生成器，只需提供简单的配置描述你的映像、 将其提交到服务，和生成，并分发映像。
  

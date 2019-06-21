@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 87e35573eea836fc8a88c7515409c070ec63aa3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6871c75f0af662762ffac6e7346d4999e55eb937
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024896"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303439"
 ---
 # <a name="indexers-in-azure-search"></a>Azure 搜索中的索引器
 
@@ -25,7 +25,7 @@ Azure 搜索中的*索引器*是一种爬网程序，它从外部 Azure 数据�
 
 可以单独使用索引器来引入数据，也可以结合索引器使用多种技术来加载索引中的部分字段。
 
-可以按需运行索引器，也可以采用每 15 分钟运行一次的定期数据刷新计划来运行索引器。 要进行更频繁的更新，则需要采用“推送模式”，便于同时更新 Azure 搜索和外部数据源中的数据。
+可以按需运行索引器或的定期数据刷新计划来根据每隔五分钟的频率运行。 要进行更频繁的更新，则需要采用“推送模式”，便于同时更新 Azure 搜索和外部数据源中的数据。
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>创建及管理索引器的方法
 

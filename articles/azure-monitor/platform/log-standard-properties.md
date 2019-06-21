@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: bwren
-ms.openlocfilehash: 4d7c1d9b59e802343f6d8fe258e8e4ac961bb2df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50804e1f6ab4f352239d3f405e5b41e4e0c58d14
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061004"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67292811"
 ---
-# <a name="standard-properties-in-azure-monitor-log-records"></a>Azure Monitor 日志记录中的标准属性
-Azure Monitor 中的日志数据[以一组记录的形式存储](../log-query/log-query-overview.md)，每个记录都有一个特定的数据类型，该数据类型具有一组独特属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
+# <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准属性
+Azure Monitor 日志中的数据[存储为一组在 Log Analytics 工作区或 Application Insights 应用程序中的记录](../log-query/logs-structure.md)，每个都有特定的数据类型具有一组唯一的属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
 
 其中一些属性仍在实现过程中，因此你可能会在某些数据类型中看到它们，但在其他数据类型中却看不到。
 
-## <a name="timegenerated"></a>TimeGenerated
-**TimeGenerated** 属性包含创建记录的日期和时间。 它提供了一个用于按时间进行筛选或汇总的常用属性。 为 Azure 门户中的视图或仪表板选择时间范围时，它使用 TimeGenerated 来筛选结果。
+## <a name="timegenerated-and-timestamp"></a>TimeGenerated 和时间戳
+**TimeGenerated** （Log Analytics 工作区） 和**时间戳**（Application Insights 应用程序） 属性包含的日期和时间，已创建了记录。 它提供了一个用于按时间进行筛选或汇总的常用属性。 在 Azure 门户中选择一个视图或仪表板的时间范围，它使用 TimeGenerated 或时间戳来筛选结果。
 
 ### <a name="examples"></a>示例
 
@@ -39,16 +39,25 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-## <a name="type"></a>Type
-**Type** 属性包含从中检索记录的表的名称，也可以将其视为记录类型。 此属性在将多个表的记录进行组合的查询中非常有用，例如，使用 `search` 运算符区分不同类型的记录的那些查询。 在某些地方， **$table** 可以用来替代 **Type**。
+以下查询返回在上一周中每一天创建的异常数。
+
+```Kusto
+exceptions
+| where timestamp between(startofweek(ago(7days))..endofweek(ago(7days))) 
+| summarize count() by bin(TimeGenerated, 1day) 
+| sort by timestamp asc 
+```
+
+## <a name="type-and-itemtype"></a>类型和 itemType
+**类型**（Log Analytics 工作区） 和**itemType** （Application Insights 应用程序） 属性保留的记录检索到它可从还的表的名称被视为记录类型。 此属性在将多个表的记录进行组合的查询中非常有用，例如，使用 `search` 运算符区分不同类型的记录的那些查询。 在某些地方， **$table** 可以用来替代 **Type**。
 
 ### <a name="examples"></a>示例
 以下查询返回过去一小时内按类型收集的记录计数。
 
 ```Kusto
 search * 
-| where TimeGenerated > ago(1h) 
-| summarize count() by Type 
+| where TimeGenerated > ago(1h)
+| summarize count() by Type
 ```
 
 ## <a name="resourceid"></a>\_ResourceId

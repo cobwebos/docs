@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.custom: vs-azure
 ms.topic: article
-ms.date: 04/25/2019
-ms.openlocfilehash: fb071ac056355a056e5333284808417a258515de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: e51a3f9971006a0b50cec1abdc5e955d06c23466
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467454"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295856"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>在 Visual Studio 中使用 Azure 逻辑应用和 Azure Functions 生成第一个无服务器应用
 
@@ -34,7 +34,6 @@ ms.locfileid: "65467454"
 
     > [!IMPORTANT]
     > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。 
-    > 对于 Visual Studio 2019，Cloud Explorer 可在 Azure 门户中打开逻辑应用设计器，但目前无法打开嵌入式逻辑应用设计器。
 
   * [用于 .NET 的 Microsoft Azure SDK（2.9.1 或更高版本）](https://azure.microsoft.com/downloads/)。 
   详细了解[用于 .NET 的 Azure SDK](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet)。
@@ -128,6 +127,9 @@ ms.locfileid: "65467454"
 
    ![在逻辑应用设计器中打开“azuredeploy.json”](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
 
+   > [!TIP]
+   > 如果在 Visual Studio 2019 中没有此命令，检查你的 Visual Studio 具有最新的更新。
+
 1. 显示“逻辑应用属性”框后，在“订阅”下面选择自己的 Azure 订阅（如果尚未选择）。   在“资源组”下面，选择解决方案部署到的资源组和位置，然后选择“确定”。  
 
    ![逻辑应用属性](./media/logic-apps-serverless-get-started-vs/logic-app-properties.png)
@@ -153,6 +155,9 @@ ms.locfileid: "65467454"
 1. 在“所有订阅”下面，选择与要管理的逻辑应用关联的 Azure 订阅，然后选择“应用”。  
 
 1. 在“逻辑应用”下面，选择自己的逻辑应用。  在该应用的快捷菜单中，选择“使用逻辑应用编辑器打开”  。
+
+   > [!TIP]
+   > 如果在 Visual Studio 2019 中没有此命令，检查你的 Visual Studio 具有最新的更新。
 
 现在，可将已发布的逻辑应用下载到资源组项目中。 即使某个逻辑应用是在 Azure 门户中启动的，也仍可以在 Visual Studio 中导入和管理该应用。 有关详细信息，请参阅[使用 Visual Studio 管理逻辑应用](../logic-apps/manage-logic-apps-with-visual-studio.md)。
 

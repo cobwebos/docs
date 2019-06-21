@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 05/29/2019
 ms.author: dalek
-ms.openlocfilehash: ebcb0922335a2bdc5423ec4e4bfce7c1cd71c46a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 188911fa3fb872c8db1612406bf3d4e9b36d837b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357268"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303844"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -30,7 +30,7 @@ ms.locfileid: "66357268"
 
 ## <a name="pricing-model"></a>定价模型
 
-[Azure Application Insights][start] 的定价基于所引入的数据量。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。
+定价[Azure Application Insights][start]引入的数据量为基础。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。
 
 ### <a name="data-volume-details"></a>数据量详细信息
 
@@ -38,11 +38,12 @@ ms.locfileid: "66357268"
 * 自 2018 年 4 月起，应用程序的数据量费用将在名为“数据引入”  的新计费表中报告。 此新计量共享跨监视 Application Insights 和 Log Analytics 等技术，目前正在服务名称**Log Analytics**。 
 * 定价未考虑[实时指标流](../../azure-monitor/app/live-stream.md)数据。
 
-有关在你所在区域中以适合你的货币计价的当前价格，请参阅 [Application Insights 定价][pricing]
+> [!NOTE]
+> 例如，这篇文章中的屏幕截图中显示的所有价格都均只是为了便于。 有关在你所在区域中以适合你的货币计价的当前价格，请参阅 [Application Insights 定价][pricing]。
 
 ### <a name="multi-step-web-tests"></a>多步骤 Web 测试
 
-[多步骤 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests)会额外收费。 多步骤 Web 测试是指执行一系列操作的 Web 测试。
+[多步骤 Web 测试](../../azure-monitor/app/availability-multistep.md)会额外收费。 多步骤 Web 测试是指执行一系列操作的 Web 测试。
 
 单页“ping 测试”不单独计费  。 进行 ping 测试和多步测试时发送的遥测数据与应用发送的其他遥测数据计费方式相同。
 
@@ -53,7 +54,7 @@ ms.locfileid: "66357268"
 ![选择定价](./media/pricing/pricing-001.png)
 
 A. 查看当月数据量。 这包括接收和保留的所有数据（在通过服务器和客户端应用以及可用性测试进行[采样](../../azure-monitor/app/sampling.md)后）。  
-B. 会单独对[多步骤 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests)计费。 （这不包括简单可用性测试，它已包括在数据量费用中。）  
+B. 会单独对[多步骤 Web 测试](../../azure-monitor/app/availability-multistep.md)计费。 （这不包括简单可用性测试，它已包括在数据量费用中。）  
 C. 查看上个月的数据量趋势。  
 D. 启用数据引入[采样](../../azure-monitor/app/sampling.md)。   
 E. 设置每日数据量上限。  

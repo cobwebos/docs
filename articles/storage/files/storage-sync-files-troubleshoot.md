@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cd1be26f6832fffb86dfefd0d93d9dbb393c0f0
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65555944"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303873"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -245,17 +245,16 @@ PerItemErrorCount: 1006.
 | HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 补救 |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 由于尚未同步某个相关的文件夹，无法同步文件或目录更改。 在同步相关的更改后，此项将会同步。 | 无需采取措施。 |
-| 0x7b | 123 | ERROR_INVALID_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
-| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
+| 0x8007007b | -2147024773 | ERROR_INVALID_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 Azure 文件同步每天在服务器上创建临时 VSS 快照一次，以同步包含开放句柄的文件。 |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | 文件已更改，但同步尚未检测到此项更改。检测到此项更改后，同步将会恢复。 | 无需采取措施。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | 无法同步该文件，因为已达到 Azure 文件共享限制。 | 要解决此问题，请参阅疑难解答指南中的[达到 Azure 文件共享存储限制](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)部分。 |
 | 0x80070005 | -2147024891 | E_ACCESSDENIED | 此错误可能由于以下原因： 文件已由不受支持解决方案 （如 NTFS EFS) 加密、 文件有挂起状态的删除或文件位于 DFS-R 只读复制文件夹 | 如果文件已加密不受支持的解决方案，解密文件，并使用支持的加密解决方案。 有关支持解决方案的列表，请参阅计划指南中的[加密解决方案](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)部分。 如果文件处于删除待定状态，一旦关闭所有打开的文件句柄，将删除该文件。 如果在 DFS-R 只读复制文件夹位于该文件，则 Azure 文件同步不支持服务器终结点上 DFS-R 只读复制文件夹。 请参阅[规划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)有关详细信息。
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 |
+| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同步期间更改了文件，因此需要重新同步。 | 无需采取措施。 |
 
 #### <a name="handling-unsupported-characters"></a>处理不受支持的字符
-如果 FileSyncErrorsReport.ps1 PowerShell 脚本显示不受支持的字符导致失败（错误代码 0x7b 和 0x8007007b），请从相关的文件名中删除或重命名错误的字符  。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-tool)可用于标识不受支持的字符。
+如果**FileSyncErrorsReport.ps1** PowerShell 脚本显示由于不支持的字符 （错误代码 0x8007007b） 导致的失败，应删除或重命名从各自的文件名称的错误上的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-tool)可用于标识不受支持的字符。
 
 下表包含 Azure 文件同步尚不支持的所有 Unicode 字符。
 
@@ -863,6 +862,8 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 如果问题未得到解决，请运行 AFSDiag 工具：
 1. 创建用于保存 AFSDiag 输出的目录（例如，C:\Output）。
+    > [!NOTE]
+    >AFSDiag 将删除之前收集日志的输出目录中的所有内容。 指定输出位置未包含数据。
 2. 打开权限提升的 PowerShell 窗口并运行以下命令（在每条命令后面按 Enter）：
 
     ```powershell

@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 85639e2648131f9475ad2ae77f31d43e64bf82e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0c855a3e0280e1fadf2362f2d8959beff2f5d00a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509208"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271969"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -152,7 +153,9 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运
 
 如果仅需要 Web 应用程序运行用户流，则可以跳过下面几个部分。 这些部分仅适用于需要对 Web API 进行验证的调用，以及受到 Azure AD B2C 保护的 Web 应用程序。
 
-通过将 `POST` 请求发送到 `/token` 终结点，可以将获取的授权代码（通过 `response_type=code+id_token` 获取）兑换为所需资源的令牌。 当前可以为其请求令牌的唯一资源是应用程序的后端 Web API。 用于向自己请求令牌的约定是使用应用程序的客户端 ID 作为范围：
+通过将 `POST` 请求发送到 `/token` 终结点，可以将获取的授权代码（通过 `response_type=code+id_token` 获取）兑换为所需资源的令牌。 在 Azure AD B2C 中，你可以[请求的其他 API 的访问令牌](active-directory-b2c-access-tokens.md#request-a-token)像往常一样通过在请求中指定其范围。
+
+按照约定的使用应用程序的客户端 ID 作为所请求的范围 （这将导致与该客户端 ID 作为"audience"访问令牌），还可以为应用的后端 Web API 请求访问令牌：
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
@@ -162,7 +165,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | p | 是 | 用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
 | client_id | 是 | Azure 门户分配给应用程序的[应用程序 ID](https://portal.azure.com/) 。 |
@@ -229,7 +232,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
-| 参数 | 必选 | 描述 |
+| 参数 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | p | 是 | 用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
 | client_id | 是 | Azure 门户分配给应用程序的[应用程序 ID](https://portal.azure.com/) 。 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22802950c68dc5a3cf0df8ee26ff38ccb937b551
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782744"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295503"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure Monitor 中的日志数据和工作区
 Azure Monitor 将日志数据存储在 Log Analytics 工作区中，该工作区本质上是一个包含数据和配置信息的容器。 若要管理对日志数据的访问，需要对工作区执行各种管理任务。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
@@ -278,7 +278,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 ## <a name="table-level-rbac"></a>表级 RBAC
 使用**表级 RBAC** 可以针对 Log Analytics 工作区中的数据提供更精细的控制，此外还能分配其他权限。 使用此控制措施可以定义仅供特定一组用户访问的特定数据类型。
 
-使用 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)实现表访问控制，以授予或拒绝对工作区中特定[表](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized)的访问权限。 无论用户的[访问模式](#access-modes)是什么，这些角色都会应用到使用以工作区为中心或者以资源为中心[访问控制模式](#access-control-mode)的工作区。
+使用 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)实现表访问控制，以授予或拒绝对工作区中特定[表](../log-query/logs-structure.md)的访问权限。 无论用户的[访问模式](#access-modes)是什么，这些角色都会应用到使用以工作区为中心或者以资源为中心[访问控制模式](#access-control-mode)的工作区。
 
 使用以下操作创建[自定义角色](../../role-based-access-control/custom-roles.md)，以定义对表访问控制的访问权限。
 

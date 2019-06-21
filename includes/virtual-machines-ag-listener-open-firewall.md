@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: e128f3c67a41322d9c25a8d6941e937729760bf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165374"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172896"
 ---
 在此步骤中，创建一个防火墙规则以打开负载均衡终结点的探测端口（同样采用之前指定的 59999）和另一规则来打开可用性组侦听器端口。 由于在包含可用性组副本的 VM 上创建了负载均衡的终结点，需要打开相应 VM 上的探测端口和侦听器端口。
 

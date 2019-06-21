@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 04/23/2019
-ms.openlocfilehash: 83c5401298d2682328da4e45d150d2d0416601fc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2c8a3f36e04fbedfdd127939d55fab376e3e6b30
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/14/2019
 ms.locfileid: "64691951"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>联机迁移到 Azure DB for PostgreSQL 时存在的已知问题/迁移限制
@@ -27,12 +27,12 @@ ms.locfileid: "64691951"
 - 仅支持相同版本的迁移。 例如，不支持将 PostgreSQL 9.5.11 迁移到 Azure Database for PostgreSQL 9.6.7。
 
     > [!NOTE]
-    > 用于 PostgreSQL 版本 10，目前 DMS 仅支持迁移的版本 10.3 的 Azure Database for PostgreSQL。 我们计划很快支持较新版本的 PostgreSQL。
+    > 对于 PostgreSQL 版本 10，DMS 目前仅支持将版本 10.3 迁移到 Azure Database for PostgreSQL。 我们打算不久之后支持较新版本的 PostgreSQL。
 
-- 若要在源 PostgreSQL postgresql.config 文件中启用逻辑复制，请设置以下参数：
-    - wal_level = logical
-    - max_replication_slots = [要迁移的数据库最大数]；如果要迁移 4 个数据库，请将该值设为 4
-    - max_wal_senders = [并发运行的数据库数]；建议值为 10
+- 若要在源 PostgreSQL postgresql.config 文件中启用逻辑复制，请设置以下参数  ：
+    - wal_level = logical 
+    - max_replication_slots = [要迁移的数据库最大数]；如果要迁移 4 个数据库，请将该值设为 4 
+    - max_wal_senders = [并发运行的数据库数]；建议值为 10 
 - 向源 PostgresSQL pg_hba.conf 添加 DMS 代理 IP
     1. 预配 DMS 实例完成以后，记下 DMS IP 地址。
     2. 向 pg_hba.conf 文件添加 IP 地址，如下所示：

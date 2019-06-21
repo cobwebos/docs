@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: ab3b742d50cc141420f9bffa1961a6e170b99d2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 9b762f1b3f1c17e15b051e72f5d2cf98bef446bf
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234347"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137761"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>使用 Azure 数据科学虚拟机
 
@@ -56,6 +56,17 @@ ms.locfileid: "66234347"
 ![Azure Notebook 中的关闭按钮](media/shutdown.png)
 
 当在 VM 上运行项目时，将文件装载到 Jupyter 服务器 （在 JupyterHub 中所示的目录） 的根目录上替换默认 Azure Notebook 文件。 当您关闭的情况下使用 VM**关闭**notebook 用户界面，Azure Notebooks 按钮还原默认的文件。
+
+![Azure Notebook 中的关闭按钮](media/shutdown.png)
+
+## <a name="create-new-dsvm-users"></a>创建新的 DSVM 用户
+
+如果多个用户共享 DSVM，则可以避免相互阻止通过创建并为每个 notebook 用户使用 DSVM 用户：
+
+1. 上[Azure 门户](https://portal.azure.com)，导航到你的虚拟机。
+1. 下**支持 + 故障排除**左边距中选择**重置密码**。
+1. 输入新用户名和密码，然后选择**更新**。 （不影响现有的用户名。）
+1. 任何其他用户重复上一步。
 
 ## <a name="next-steps"></a>后续步骤
 

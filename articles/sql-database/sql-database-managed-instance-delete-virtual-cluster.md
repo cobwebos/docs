@@ -1,6 +1,6 @@
 ---
-title: 删除 Azure SQL 数据库托管实例后删除 VNet | Microsoft Docs
-description: 了解如何在删除 Azure SQL 数据库托管实例后删除 VNet。
+title: 删除子网后删除 Azure SQL 数据库托管实例 |Microsoft Docs
+description: 了解如何删除 Azure 虚拟网络后删除 Azure SQL 数据库托管实例。
 services: sql-database
 ms.service: sql-database
 ms.subservice: management
@@ -12,39 +12,39 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 61f6c25031c4906e65c2f75a7679600741e8311a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec5d99e160e739f59e2bf2ea369fe83e9900a1f1
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791379"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295299"
 ---
-# <a name="delete-subnet-after-deleting-azure-sql-database-managed-instance"></a>删除 Azure SQL 数据库托管实例后删除子网
+# <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>删除子网后删除 Azure SQL 数据库托管实例
 
-本文提供有关如何在删除子网中的最后一个 Azure SQL 数据库托管实例后，手动删除该子网的指导。
+本文提供有关如何删除最后一个 Azure SQL 数据库托管实例驻留在其中后，手动删除子网的指导原则。
 
-包含已删除的托管实例的[虚拟群集](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)在删除该实例后，将保留 12 个小时。 该虚拟群集将按设计保持活动状态，以便更快地在同一子网中创建托管实例。 保留为空的虚拟群集是免费。 在此期间，无法删除与该虚拟群集关联的子网。
+使用 SQL 数据库[虚拟群集](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)以包含已删除托管的实例。 虚拟群集仍然存在实例删除，以使您能够快速创建托管的实例位于同一子网后的 12 小时。 不保留为空的虚拟群集收费。 在此期间，无法删除与该虚拟群集关联的子网。
 
-可以通过手动删除虚拟群集，来立即释放空虚拟群集使用的子网。 可以通过 Azure 门户或虚拟群集 API 删除虚拟群集。
+如果您不想等待 12 个小时，并想要立即删除虚拟群集和它的子网，你可以手动执行此操作。 通过使用 Azure 门户或虚拟群集 API 手动删除虚拟群集。
 
 > [!NOTE]
 > 若要成功删除，该虚拟群集不能包含任何托管实例。
 
-## <a name="delete-virtual-cluster-from-azure-portal"></a>在 Azure 门户中删除虚拟群集
+## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Azure 门户中删除虚拟群集
 
-若要使用 Azure 门户删除虚拟群集，请使用内置的搜索功能搜索虚拟群集资源。
+若要使用 Azure 门户删除虚拟群集，请搜索虚拟群集资源。
 
-![搜索虚拟群集。](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
+![Azure 门户中，使用搜索框中突出显示的屏幕截图](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
 
-找到要删除的虚拟群集后，请选择此资源，然后选择“删除”选项。 系统会提示你确认删除该虚拟群集。
+找到要删除的虚拟群集后，选择此资源，并选择**删除**。 系统会提示确认虚拟群集删除。
 
-![删除虚拟群集。](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
+![Azure 门户中虚拟的屏幕截图群集仪表板，其中突出显示的删除选项](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-Azure 门户通知中会提供已删除虚拟群集的确认消息。 成功删除虚拟群集后，会立即释放子网，供将来重复使用。
+Azure 门户的通知区域显示虚拟群集已删除的确认。 成功删除虚拟群集立即释放以供重复使用的子网。
 
-## <a name="delete-virtual-cluster-using-api"></a>使用 API 删除虚拟群集
+## <a name="delete-virtual-cluster-by-using-the-api"></a>通过使用 API 删除虚拟群集
 
-若要通过 API 删除虚拟群集，请使用[虚拟群集删除方法](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)中指定的 URI 参数。
+若要删除通过 API 虚拟群集，请使用 URI 参数中指定[虚拟群集删除方法](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5194b9e6f40dbcd5e48b33c12db4b3cd94f75de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd4690e27be38c3fef3053562ebee773698a70d7
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478414"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154771"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -249,7 +249,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric 在 .NET SDK 中已弃用。 在发送之前，应当始终对一段时间内的指标进行预聚合。 使用 GetMetric(..) 重载之一获取用于访问 SDK 预聚合功能的指标对象。 如果实现你自己的预聚合逻辑，则可以使用 Track(ITelemetry metricTelemetry) 方法来发送生成的聚合。 如果应用程序需要在每种场合下发送单独的遥测项而不需要在整个时间段上进行聚合，那么你可能就有了一个事件遥测用例；请参阅 TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry)。
+> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric 不发送指标的首选的方法。 在发送之前，应当始终对一段时间内的指标进行预聚合。 使用 GetMetric(..) 重载之一获取用于访问 SDK 预聚合功能的指标对象。 如果要实现您自己的预聚合逻辑，您可以使用 trackmetric （） 方法发送生成的聚合。 如果应用程序需要在每种场合下发送单独的遥测项而不需要在整个时间段上进行聚合，那么你可能就有了一个事件遥测用例；请参阅 TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry)。
 
 Application Insights 可绘制未附加到特定事件的指标。 例如，可以定期监视队列长度。 对指标而言，变化和趋势比单个度量值更具价值，因此统计图表非常实用。
 

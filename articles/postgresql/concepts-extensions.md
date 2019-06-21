@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 962e2b10136cf1cbab7cc5d3d06059922c363b15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: efa4cc070f47174634c8dc67b37f10bc3d112d08
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410273"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293206"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展允许在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载之后，扩展可以如同内置功能一样运行。 有关 PostgreSQL 扩展的详细信息，请参阅  [Packaging Related Objects into an Extension](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)（将相关对象打包到扩展中）。
@@ -73,6 +73,7 @@ Azure Database for PostgreSQL 目前支持部分关键扩展（已在下面列�
 > | **扩展** | **说明** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL 可加载过程语言。 |
+> | [plv8](https://plv8.github.io/) | 可用于存储过程、触发器等的 PostgreSQL 的 Javascript 语言扩展。 |
 
 ### <a name="miscellaneous-extensions"></a>其他扩展
 
@@ -124,7 +125,7 @@ TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 T
 [详细了解 TimescaleDB](https://docs.timescale.com/latest)，[Timescale, Inc.](https://www.timescale.com/) 的注册商标。
 
 ### <a name="installing-timescaledb"></a>安装 TimescaleDB
-若要安装 TimescaleDB，需将其包括在服务器的共享预加载库中。 对 Postgres 的共享预加载库进行的更改需**重启服务器**才能生效。
+若要安装 TimescaleDB，需将其包括在服务器的共享预加载库中。 Postgres 的更改`shared_preload_libraries`参数需要**重新启动服务器**才会生效。 你可以使用参数[Azure 门户](howto-configure-server-parameters-using-portal.md)或[Azure CLI](howto-configure-server-parameters-using-cli.md)。
 
 > [!NOTE]
 > 可以在 Azure Database for PostgreSQL 版本 9.6 和 10 上启用 TimescaleDB
@@ -137,10 +138,7 @@ TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 T
 
 3. 搜索 `shared_preload_libraries` 参数。
 
-4. 复制并粘贴以下内容作为 `shared_preload_libraries` 的值
-   ```
-   timescaledb
-   ```
+4. 选择**TimescaleDB**。
 
 5. 选择“保存”  ，保留所做的更改。 保存更改后会获得通知。 
 
@@ -158,4 +156,4 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 
 
 ## <a name="next-steps"></a>后续步骤
-如果未看到要使用的扩展，请告诉我们。 若要支持现有请求或提出新反馈和请求，请访问我们的[客户反馈论坛](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)。
+如果未看到要使用的扩展，请告诉我们。 支持现有请求或提出新反馈请求中的我们[反馈论坛](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)。

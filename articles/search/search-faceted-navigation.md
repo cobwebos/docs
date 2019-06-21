@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fc1e1aaaa3b2489dd4083f56d45ab0abc2b6892
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65793624"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165969"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实现分面导航
 分面导航是一种筛选机制，用于在搜索应用程序中提供自定向的深化导航。 术语“分面导航”可能让人觉得陌生，但我们以前也许用过它。 如以下示例所示，分面导航就是用于筛选结果的类别。
@@ -401,5 +401,5 @@ Azure 搜索作业门户演示包含本文中参考的示例。
 有关分面导航设计准则的更多见解，建议查看以下链接：
 
 * [设计模式：分面导航](https://alistapart.com/article/design-patterns-faceted-navigation)
-* [Front End Concerns When Implementing Faceted Search – Part 1 ](https://articles.uie.com/faceted_search2/)（实现分面搜索时的前端关注 - 第 1 部分）
+* [前端问题时实现分面搜索 – 第 1 部分](https://articles.uie.com/faceted_search2/)
 

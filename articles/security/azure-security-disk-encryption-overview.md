@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b00a5262b1e144aa47cd7fd640906225ff4fecd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 58c5c8321e505fe2c1c7d19c58fe0d031b75b3e4
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068787"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294867"
 ---
 # <a name="azure-disk-encryption-overview"></a>Azure 磁盘加密概述
 
@@ -45,7 +45,7 @@ Azure 磁盘加密支持以下客户方案：
 它还支持以下方案的 Vm 时已在 Microsoft Azure 中启用这些：
 
 * 与 Azure Key Vault 集成。
-* [标准层 Vm](https://azure.microsoft.com/pricing/details/virtual-machines/)。 这些层中的 [Linux VM](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) 必须满足最小 7 GB 内存要求。 
+* [标准层 Vm](https://azure.microsoft.com/pricing/details/virtual-machines/)符合[最低内存要求](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes)。 
 * 启用加密 Windows 和 Linux 虚拟机、 托管的磁盘和规模集通过受支持的 Azure 库映像的 Vm。
 * 禁用对 OS 和数据加密驱动器对于 Windows Vm，规模集 Vm，并托管磁盘 Vm。
 * 禁用加密数据驱动器上的 Linux Vm，规模集 Vm，并托管磁盘 Vm。
@@ -56,7 +56,7 @@ Azure 磁盘加密支持以下客户方案：
 * 上的 Linux VM OS 和数据磁盘启用加密。
 
    > [!NOTE]
-   > 不支持对某些 Linux 分发版进行 OS 驱动器加密。 有关详细信息，请参阅 [Azure 磁盘加密常见问题解答](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)一文。
+   > 不支持对某些 Linux 分发版进行 OS 驱动器加密。 有关详细信息，请参阅[Azure 磁盘加密支持的操作系统：Linux](azure-security-disk-encryption-prerequisites.md#linux)。
    
 * 使用 Windows 存储空间开始 Windows Server 2016 中配置的 Vm 上启用加密。
 * 备份和还原加密密钥加密密钥 (KEK) 和非 KEK 方案的 Vm。
@@ -93,8 +93,6 @@ Azure 磁盘加密并不适用于以下方案、 功能和技术：
 * [PowerShell 磁盘加密 cmdlet](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.2.0)。
 * [Azure CLI 磁盘加密 cmdlet](/cli/azure/vm/encryption?view=azure-cli-latest)。
 * [Azure 资源管理器磁盘加密模板](azure-security-disk-encryption-appendix.md#resource-manager-templates)。
-
-在运行 Windows 或 Linux OS 的 Vm 上支持 azure 磁盘加密。 有关支持的操作系统的详细信息，请参阅[方面的常见问题](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)。
 
 > [!NOTE]
 > 可以免费使用 Azure 磁盘加密来加密 VM 磁盘。 标准 [Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)适用于用来存储加密密钥的 Key Vault。 
