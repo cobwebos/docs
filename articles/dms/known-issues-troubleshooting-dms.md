@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/22/2019
-ms.openlocfilehash: 5a7c6c4553f46e8a7308995e05d6c06c0eb10f27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/18/2019
+ms.openlocfilehash: 1d639a8b1d5c7a5dd2b7bac7c5e020be7c8b1c50
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002210"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190948"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>排查常见的 Azure 数据库迁移服务问题和错误
 
@@ -59,6 +59,16 @@ Azure 数据库迁移服务项目中创建新的活动，活动会保持在排�
 | 原因         | 解决方法 |
 | ------------- | ------------- |
 | 如果尝试停止的服务实例包含仍在运行的或者存在于迁移项目中的活动，则会显示此错误。 <br><br><br><br><br><br> | 确保尝试停止的 Azure 数据库迁移服务实例中没有任何活动正在运行。 在尝试停止该服务之前，还可以删除活动或项目。 以下步骤演示如何通过删除所有正在运行的任务来删除项目，以清理迁移服务实例：<br>1.Install-Module -Name AzureRM.DataMigration <br>2.Login-AzureRmAccount <br>3.Select-AzureRmSubscription -SubscriptionName "<subName>" <br> 4.Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask |
+
+## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>正尝试以启动 Azure 数据库迁移服务时出错
+
+启动 Azure 数据库迁移服务实例时收到以下错误：
+
+* **错误**：服务启动失败。 错误: {errorDetail: 服务无法启动，请联系 Microsoft 支持部门}
+
+| 原因         | 解决方法 |
+| ------------- | ------------- |
+| 此错误显示在前一个实例在内部失败时。 很少，出现此错误并且工程团队已意识到这一点。 <br> | 删除服务无法启动，并设置新密码以将其替换为的实例。 |
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>还原数据库时迁移到 Azure SQL DB 的 SQL 托管实例时出错
 

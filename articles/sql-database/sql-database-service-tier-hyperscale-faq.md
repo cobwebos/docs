@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 38d9ad007b67756bdca0c6f98267aa16ba38ee9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 535ae91abc04b2fdcebb6a2083db95ec50f61798
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791428"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275585"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL“超大规模”数据库的常见问题解答
 
@@ -79,7 +79,7 @@ Azure SQL 数据库“超大规模”层级目前已在 [Azure SQL 数据库“�
 
 是的。 有关每个逻辑服务器的“超大规模”数据库数量的详细信息和限制，请参阅[逻辑服务器上单一和共用数据库的 SQL 数据库资源限制](sql-database-resource-limits-logical-server.md)。
 
-### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>“超大规模”数据库的性能特征有哪些
+### <a name="what-are-the-performance-characteristics-of-a-hyperscale-database"></a>超大规模数据库的性能特征是什么
 
 SQL 数据库“超大规模”服务层级体系结构提供高性能和吞吐量，同时支持大型数据库。 
 
@@ -94,7 +94,7 @@ SQL 数据库“超大规模”服务层级根据工作负荷需求，提供快�
 
   借助“超大规模”数据库，还能够预配一个或多个额外的计算节点，用于为读取请求提供服务。 这意味着，可以将这些额外的计算节点用作只读节点，从主计算卸载读取工作负荷。 除用作只读节点外，在主计算发生故障转移时，它们还充当热备用节点。
 
-  对每个额外的计算节点的预配可在恒定时间内完成，并且是联机操作。 将连接字符串的 `ApplicationIntent` 参数设置为 `read_only`，即可连接到这些额外的只读计算节点。 任何标记为 `read-only` 的连接均自动路由到某个额外的只读计算节点。
+  对每个额外的计算节点的预配可在恒定时间内完成，并且是联机操作。 将连接字符串的 `ApplicationIntent` 参数设置为 `readonly`，即可连接到这些额外的只读计算节点。 任何标记为 `readonly` 的连接均自动路由到某个额外的只读计算节点。
 
 ## <a name="deep-dive-questions"></a>深入的问题
 
@@ -140,7 +140,7 @@ SQL 数据库“超大规模”服务层级支持所有 SQL Server 工作负荷�
 
 ### <a name="how-many-read-scale-replicas-are-supported"></a>支持多少个读取扩展副本
 
-默认情况下，超大规模数据库是使用一个读取缩放副本（总共 2 个副本）创建的。 您可以介于 0 和 4 使用之间的只读副本数量进行缩放[Azure 门户](https://portal.azure.com)， [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)， [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase)或者[CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)...
+默认情况下，超大规模数据库是使用一个读取缩放副本（总共 2 个副本）创建的。 可以使用 [Azure 门户](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)、[Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) 或 [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) 创建 0 到 4 个只读副本。
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-nodes"></a>若要实现高可用性，是否需要预配额外的计算节点
 
@@ -361,7 +361,7 @@ IOPS 和 IO 延迟根据工作负荷模式而异。  如果需要访问的数据
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>如何连接到这些次要计算节点
 
-将连接字符串的 `ApplicationIntent` 参数设置为 `read_only`，即可连接到这些额外的只读计算节点。 任何标记为 `read-only` 的连接均自动路由到某个额外的只读计算节点。  
+将连接字符串的 `ApplicationIntent` 参数设置为 `readonly`，即可连接到这些额外的只读计算节点。 任何标记为 `readonly` 的连接均自动路由到某个额外的只读计算节点。  
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>能不能为读取扩展副本创建专用终结点
 
