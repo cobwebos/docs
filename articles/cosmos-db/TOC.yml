@@ -624,10 +624,12 @@
         - name: 使用逻辑应用进行应用程序日志记录
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: 监视
+    - name: 使用指标进行监视
       items:
-        - name: 使用指标进行监视
+        - name: 从 Cosmos DB 帐户中查看指标
           href: use-metrics.md
+        - name: 从 Azure Monitor 中查看指标
+          href: cosmos-db-azure-monitor-metrics.md
         - name: 监视 SLA
           href: monitor-accounts.md
     - name: 本地开发

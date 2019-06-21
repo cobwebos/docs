@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 98b316f8a9c1c8ceba91870af4ff67b1aa854a9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 0b92fb9c9bf022adce4cc0dd3e58ce8e476ed5b7
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785337"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303503"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库中的数据库
 
@@ -35,6 +35,9 @@ ms.locfileid: "65785337"
 > [!NOTE]
 > [托管实例](sql-database-managed-instance.md)当前不支持使用 Azure 门户从 BACPAC 文件将数据库迁移到实例数据库。 若要导入托管实例，请使用 SQL Server Management Studio 或 SQLPackage。
 
+> [!NOTE]
+> 处理导入/导出请求通过门户或 Powershell 提交的机需要存储 bacpac 文件和数据层应用程序框架 (DacFX) 所生成的临时文件。 所需的磁盘空间之间的差异显著数据库使用相同的大小，可能需要最多 3 倍的数据库大小。 运行导入/导出请求只能机拥有 450 GB 本地磁盘空间。 因此，某些请求可能会因"没有足够空间的磁盘上"错误。 在这种情况下，解决方法是具有足够的本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出时大于 150 GB 的数据库，请使用[SqlPackage](#import-from-a-bacpac-file-using-sqlpackage)要避免此问题。
+ 
 1. 若要使用 Azure 门户从 BACPAC 文件导入新的单个数据库，请打开相应的数据库服务器页面，然后在工具栏上选择“导入数据库”  。  
 
    ![数据库 import1](./media/sql-database-import/import1.png)
@@ -81,6 +84,8 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > [托管的实例](sql-database-managed-instance.md)目前不支持将数据库迁移到使用 Azure PowerShell 将 BACPAC 文件从实例数据库。 若要导入托管实例，请使用 SQL Server Management Studio 或 SQLPackage。
 
+> [!NOTE]
+> 处理导入/导出请求通过门户或 Powershell 提交的机需要存储 bacpac 文件和数据层应用程序框架 (DacFX) 所生成的临时文件。 所需的磁盘空间之间的差异显著数据库使用相同的大小，可能需要最多 3 倍的数据库大小。 运行导入/导出请求只能机拥有 450 GB 本地磁盘空间。 因此，某些请求可能会因"没有足够空间的磁盘上"错误。 在这种情况下，解决方法是具有足够的本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出时大于 150 GB 的数据库，请使用[SqlPackage](#import-from-a-bacpac-file-using-sqlpackage)要避免此问题。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]

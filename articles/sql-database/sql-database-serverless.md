@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 06/12/2019
-ms.openlocfilehash: b740b49e2decabd5f104d1db5d38b48f2bc2111c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afa575c9015cbb21386d23101b74456822dfa33c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116204"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275462"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL 数据库无服务器 （预览版）
 
@@ -253,6 +253,8 @@ Set-AzSqlDatabase
 
 ### <a name="metrics"></a>度量值
 
+下表列出了用于监视无服务器数据库的应用包和用户池的资源使用情况指标：
+
 |实体|指标|描述|单位|
 |---|---|---|---|
 |应用包|app_cpu_percent|应用使用的 vCore 数相对于应用允许的最大 vCore 数的百分比。|百分比|
@@ -263,10 +265,6 @@ Set-AzSqlDatabase
 |用户池|log_IO_percent|用户工作负载使用的日志 MB/s 相对于用户工作负载允许的最大日志 MB/s 的百分比。|百分比|
 |用户池|workers_percent|用户工作负载使用的工作进程数相对于用户工作负载允许的最大工作进程数的百分比。|百分比|
 |用户池|sessions_percent|用户工作负载使用的会话数相对于用户工作负载允许的最大会话数的百分比。|百分比|
-____
-
-> [!NOTE]
-> Azure 门户中单一数据库的指标均位于“监视”下的数据库窗格中  。
 
 ### <a name="pause-and-resume-status"></a>暂停和恢复状态
 

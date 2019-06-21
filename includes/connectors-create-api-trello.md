@@ -1,10 +1,15 @@
 ---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
 ms.openlocfilehash: 5ac2b6972c224f5e987bbd2b0e667a26d2edea1c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129977"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205760"
 ---
 ### <a name="prerequisites"></a>必备组件
 * 一个 [Trello](http://trello.com) 帐户 
@@ -13,7 +18,7 @@ ms.locfileid: "62129977"
 
 下面介绍授权逻辑应用连接到 Trello 帐户的步骤：
 
-1. 要创建与 Trello 的连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“Trello”。 选择要使用的触发器或操作：  
+1. 要创建与 Trello 的连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”  ，并在搜索框中输入“Trello”  。 选择要使用的触发器或操作：  
    ![](./media/connectors-create-api-trello/trello-1.png)
 2. 如果以前尚未创建任何与 Trello 的连接，系统会提示提供 Trello 凭据。 这些凭据用于授权逻辑应用连接到 Trello 帐户，然后访问该帐户中的数据：  
    ![](./media/connectors-create-api-trello/trello-2.png) 
