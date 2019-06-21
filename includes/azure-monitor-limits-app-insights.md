@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: dff3605a8d7855cfb0d5d6cb62ffc389492a1a4e
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
-ms.translationtype: HT
+ms.openlocfilehash: fb57d8322cfd3f72862dc8edd1d2e231338a66de
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295977"
+ms.locfileid: "67305255"
 ---
 有一些限制的度量值和每个应用程序，事件数，即每个检测密钥。 限制取决于选择的[定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
 
@@ -22,7 +22,7 @@ ms.locfileid: "67295977"
 | 每日的总数据量 | 100 GB | 可以通过设置一个上限来减少数据。 如果需要更多数据，可以在门户中最多将上限提高到 1,000 GB。 容量大于 1,000 GB，将发送电子邮件发送到AIDataCap@microsoft.com。
 | 限制 | 32,000 事件/秒 | 限制按分钟计量。
 | 数据保留 | 90 天 | 此资源适用于[搜索](../articles/azure-monitor/app/diagnostic-search.md)、[分析](../articles/azure-monitor/app/analytics.md)和[指标资源管理器](../articles/azure-monitor/app/metrics-explorer.md)。
-| [可用性多步骤测试](../articles/azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests)详细结果保留 | 90 天 | 此资源提供了每个步骤的详细结果。
+| [可用性多步骤测试](../articles/azure-monitor/app/availability-multistep.md)详细结果保留 | 90 天 | 此资源提供了每个步骤的详细结果。
 | 最大事件大小 | 64,000 |
 | 属性和指标名称长度 | 150 | 请参阅[类型架构](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)。
 | 属性值字符串长度 | 8,192 | 请参阅[类型架构](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)。

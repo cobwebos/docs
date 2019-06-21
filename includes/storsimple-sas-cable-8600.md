@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155911"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172984"
 ---
 #### <a name="to-attach-the-sas-cables"></a>连接 SAS 电缆
 1. 识别主机箱与 EBOD 机箱。 可以通过查看相应的背板来识别这两个机箱。 请参考下图。 

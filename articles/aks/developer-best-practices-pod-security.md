@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
 ms.openlocfilehash: f9d49d143b31b0b9e73d8a147605935cd88d412b
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65073974"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>保护 Azure Kubernetes 服务 (AKS) 中的 Pod 的最佳做法
@@ -31,19 +31,19 @@ ms.locfileid: "65073974"
 
 **最佳做法指南** - 要作为其他用户或组运行，并限制对基础节点进程和服务的访问权限，请定义 Pod 安全性上下文设置。 请分配所需的最少权限。
 
-为使应用程序正常运行，Pod 应作为已定义的用户或组运行，而不是根用户或组。 通过 Pod 或容器的 `securityContext`，可定义 runAsUser 或 fsGroup 等设置，以承担相应权限。 仅分配所需的用户或组权限，不要使用安全性上下文来承担其他权限。 *RunAsUser*，权限提升和其他 Linux 功能设置仅适用于 Linux 节点和 pod。
+为使应用程序正常运行，Pod 应作为已定义的用户或组运行，而不是根用户或组  。 通过 Pod 或容器的 `securityContext`，可定义 runAsUser 或 fsGroup 等设置，以承担相应权限   。 仅分配所需的用户或组权限，不要使用安全性上下文来承担其他权限。 *RunAsUser*，权限提升和其他 Linux 功能设置仅适用于 Linux 节点和 pod。
 
 作为非根用户运行时，容器无法绑定到 1024 下的特权端口。 此时可使用 Kubernetes 服务掩盖应用程序正在特定端口上运行这一事实。
 
 Pod 安全性上下文还可定义用于访问进程和服务的其他功能或权限。 可设置以下常见安全性上下文定义：
 
-* allowPrivilegeEscalation 定义 Pod 是否可承担根特权。 设计应用程序，将此设置始终设为 false。
-* Linux 功能可使 Pod 访问基础节点进程。 请小心分配这些功能。 请分配所需的最少权限。 有关详细信息，请参阅 [Linux 功能][linux-capabilities]。
-* SELinux 标签是一个 Linux 内核安全模块，允许你定义服务、进程和文件系统访问权限的访问策略。 同样，请分配所需的最少权限。 有关详细信息，请参阅 [Kubernetes 中的 SELinux 选项][selinux-labels]
+* allowPrivilegeEscalation 定义 Pod 是否可承担根特权   。 设计应用程序，将此设置始终设为 false  。
+* Linux 功能可使 Pod 访问基础节点进程  。 请小心分配这些功能。 请分配所需的最少权限。 有关详细信息，请参阅 [Linux 功能][linux-capabilities]。
+* SELinux 标签是一个 Linux 内核安全模块，允许你定义服务、进程和文件系统访问权限的访问策略  。 同样，请分配所需的最少权限。 有关详细信息，请参阅 [Kubernetes 中的 SELinux 选项][selinux-labels]
 
 以下示例 Pod YAML 清单设置了安全性上下文设置，给出了以下定义：
 
-* Pod 以 ID 为 1000 的用户身份和 ID 为 2000 的部分组运行
+* Pod 以 ID 为 1000 的用户身份和 ID 为 2000 的部分组运行  
 * 无法提升特权，无法使用 `root`
 * 允许 Linux 功能访问网络接口和主机的实时（硬件）时钟
 

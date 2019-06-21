@@ -1,25 +1,17 @@
 ---
 title: Azure 资源管理器模板函数 - 数组和对象 | Microsoft Docs
 description: 介绍可在 Azure 资源管理器模板中用来处理数组和对象的函数。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/8/2018
 ms.author: tomfitz
-ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e093cb65137576a725a7d23676e5b2288bb778a0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128698"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206375"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的数组和对象函数
 
@@ -49,14 +41,14 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="array"></a>Array
+## <a name="array"></a>数组
 `array(convertToArray)`
 
 将值转换为数组。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | convertToArray |是 |整数、字符串、数组或对象 |要转换为数组的值。 |
 
@@ -193,7 +185,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | default |
 | intOutput | Int | 第 |
@@ -311,7 +303,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -336,7 +328,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
@@ -430,7 +422,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串、整数、数组或对象 |数组中的第一个值。 |
 | 其他参数 |否 |字符串、整数、数组或对象 |数组中的其他值。 |
@@ -628,7 +620,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -654,7 +646,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于查找通用元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于查找通用元素的第二个值。 |
@@ -707,7 +699,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | objectOutput | 对象 | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
@@ -731,7 +723,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串 |要转换为 JSON 的值。 |
 
@@ -779,7 +771,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | jsonOutput | Object | {"a": "b"} |
 | nullOutput | Boolean | True |
@@ -806,7 +798,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
@@ -845,7 +837,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -871,7 +863,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |用于获取元素数的数组，或用于获取字符数的字符串。 |
 
@@ -917,7 +909,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
@@ -954,7 +946,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -1082,7 +1074,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | startingInteger |是 |int |数组中的第一个整数。 |
 | numberofElements |是 |int |数组中的整数个数。 |
@@ -1308,7 +1300,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于联接元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |

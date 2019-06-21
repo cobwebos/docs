@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.custom: rimman
-ms.openlocfilehash: 956f63dd92c82df0998cfaca76c7ecf5b10f053e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cf075c2909b35bb08ca4cb24aaa3b99597f34c6
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953858"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203516"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的数据建模
 
@@ -176,9 +176,9 @@ ms.locfileid: "65953858"
 
 ## <a name="referencing-data"></a>引用数据
 
-因此，嵌入式数据在很多情况下都可以很好运作，但很明显在一些情况下，非规范化数据将导致更多问题而得不偿失。 因此我们现在该怎么办？
+嵌入数据可以很好地适用于许多情况下，但有方案时非规范化数据将导致更多问题而得不偿失。 因此我们现在该怎么办？
 
-关系型数据库不是可以在实体之间创建关系的唯一数据库。 在文档数据库中，一个文档中的信息实际与其他文档中的数据相关。 现在，我甚至一分钟也不提倡在 Azure Cosmos DB 或任何其他文档数据库中构建可以更好地适应关系型数据库的系统，但是简单关系是可以的，并且还非常有用。
+关系型数据库不是可以在实体之间创建关系的唯一数据库。 在文档数据库中，可以与其他文档中的数据相关的一个文档中具有的信息。 我们不建议构建到 Azure Cosmos DB 中的关系数据库或任何其他文档数据库，可以更好的系统，但是简单关系是没问题，可以很有用。
 
 在下面的 JSON 代码中我们选择使用前面的股票投资组合示例，但是这次我们引用了投资组合中的股票项目，而不是嵌入此项目。 在这种情况下，当一天当中股票项发生频繁更改时，仅有的需要更新的文档就是一个股票文档。
 

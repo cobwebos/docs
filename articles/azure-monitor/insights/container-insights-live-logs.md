@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.date: 06/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 71c6f1936f8cbc700a24d0ffb497947c8c8d3a50
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7fd9248fd38054b7f0e1fad2888d8b0d4cf2e60c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075291"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274226"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>如何在实时 （预览版） 中查看日志和事件
 用于容器的 azure 监视器包含一项功能，目前以预览版提供，而无需运行 kubectl 命令提供到您的 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderr) 和事件的实时视图。 选择任一选项，一个新窗格将显示下面的性能数据的表上**节点**，**控制器**，并**容器**视图。 它显示实时日志记录和生成容器引擎，为进一步协助解决在真实时间中的问题的事件。
@@ -77,6 +77,9 @@ ms.locfileid: "67075291"
 
 >[!NOTE]
 >对于单一登录配置与 Azure Active Directory 的身份验证只能在初始部署新的 AKS 群集的过程来完成。 不能为已部署的 AKS 群集配置单一登录。
+  
+>[!IMPORTANT]
+>如果重新配置 Azure AD 进行用户身份验证使用更新后的 URI，请清除浏览器的缓存，以确保下载和应用更新后的身份验证令牌。   
 
 ## <a name="view-live-logs-and-events"></a>查看实时日志和事件
 

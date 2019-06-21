@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19bcac68084c4817e0dc0e67f31ab62244db5a2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97bad4d9cd599890dd5e26cbc77f81156c0f1070
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113409"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204662"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -225,7 +225,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 生成的自签名的证书*AzureMfaNpsExtnConfigSetup.ps1*脚本还具有一个有效的生存期的两年。 验证安装了证书，还应检查该证书未过期。
 
--------------------------------------------------------------
+---
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>如何验证客户端证书是否已关联到 Azure Active Directory 中的租户？
 
@@ -251,13 +251,13 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 如果该命令返回了多个证书，可以使用 Valid-From 和 Valid-Until 时间戳（采用用户可读格式）来筛选出每个不相符的项。
 
--------------------------------------------------------------
+---
 
 ### <a name="why-cant-i-sign-in"></a>为何无法登录？
 
 检查密码是否未过期。 NPS 扩展不支持在登录工作流中更改密码。 与组织的 IT 人员联系以获得进一步帮助。
 
--------------------------------------------------------------
+---
 
 ### <a name="why-are-my-requests-failing-with-adal-token-error"></a>我的请求为何失败并返回 ADAL 令牌错误？
 
@@ -268,19 +268,19 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 3. 验证该证书是否与 Azure AD 上的租户关联。
 4. 验证是否可以从运行该扩展的服务器访问 https://login.microsoftonline.com/ 。
 
--------------------------------------------------------------
+---
 
 ### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>身份验证为何失败并在 HTTP 日志中返回一条错误，指出找不到用户？
 
 验证 AD Connect 是否正在运行，并且该用户是否在 Windows Active Directory 和 Azure Active Directory 中存在。
 
--------------------------------------------------------------
+---
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>日志中为何出现 HTTP 连接错误，并且所有身份验证都失败？
 
 验证是否可以从运行该 NPS 扩展的服务器访问 https://adnotifications.windowsazure.com 。
 
--------------------------------------------------------------
+---
 
 ### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>身份验证不工作的原因，尽管存在有效的证书？
 

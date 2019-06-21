@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: c957a98cdb6c195f7ed9b41dabc66a32714f57e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7f68398cb473ca166d328ee15a92f3c848840f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142521"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273300"
 ---
 # <a name="tutorial-use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>教程：使用 AES-128 动态加密和密钥传递服务
+
+> [!NOTE]
+> 即使本教程使用也是如此[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)示例中，一般步骤是相同的[REST API](https://docs.microsoft.com/rest/api/media/liveevents)， [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)，或其他受支持[Sdk](media-services-apis-overview.md#sdks).
 
 借助媒体服务，可以传送使用 AES 通过 128 位加密密钥加密的 HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。 如果希望媒体服务来动态加密你的视频，您将加密密钥与流式处理定位符相关联，并还配置内容密钥的策略。 当播放器请求流时，媒体服务将使用指定的密钥来动态加密使用 AES-128 内容。 为解密流，播放器从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
 

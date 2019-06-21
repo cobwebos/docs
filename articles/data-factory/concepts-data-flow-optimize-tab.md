@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 372922fff600aaa12fddfeeb86ff4522eca3e602
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 40023931b2a0b3788a583a5b5240e7916b187e34
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075098"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190648"
 ---
 # <a name="mapping-data-flow-transformation-optimize-tab"></a>将数据映射到数据流转换优化选项卡
 
@@ -45,7 +45,7 @@ Azure 数据工厂将生成列的哈希来生成统一的分区，使包含类�
 
 ### <a name="fixed-range"></a>固定范围
 
-必须生成一个表达式用于在分区的数据列中提供值的固定范围。 使用此选项之前，应该充分了解你的数据，以避免分区偏斜。 为表达式输入的值将用作分区函数的一部分。 可以设置物理分区数目。
+必须生成一个表达式用于在分区的数据列中提供值的固定范围。 使用此选项之前，应该充分了解你的数据，以避免分区偏斜。 输入表达式的值将用作分区函数的一部分。 可以设置物理分区数目。
 
 ### <a name="key"></a>密钥
 

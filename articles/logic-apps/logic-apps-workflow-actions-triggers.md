@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/13/2019
-ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: 490131d1743b366b5ac51a5a0fdac4b89ffe08f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596947"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274177"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure 逻辑应用的工作流定义语言中的触发器和操作类型参考
 
@@ -2624,7 +2624,7 @@ ID,Product_Name
 
 ### <a name="run-in-high-throughput-mode"></a>在高吞吐量模式下运行
 
-对于单个逻辑应用运行，每 5 分钟执行的操作数具有[默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 若要将此限制提高到可能的[最大值](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)，请将 `operationOptions` 属性设为 `OptimizedForHighThroughput`。 此设置将逻辑应用置于“高吞吐量”模式之中。 
+针对单个逻辑应用定义，每隔 5 分钟执行的操作的数目已[默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 若要将此限制提高到可能的[最大值](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)，请将 `operationOptions` 属性设为 `OptimizedForHighThroughput`。 此设置将逻辑应用置于“高吞吐量”模式之中。 
 
 > [!NOTE]
 > 高吞吐量模式处于预览状态。 此外，还可根据需要在多个逻辑应用之间分配工作负荷。

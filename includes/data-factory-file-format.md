@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 89d5483347f93cd3b57a02ced19b1e8b099a5ab0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66151608"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173621"
 ---
 ## <a name="specifying-formats"></a>指定格式
 Azure 数据工厂支持以下格式类型：
@@ -23,7 +23,7 @@ Azure 数据工厂支持以下格式类型：
 ### <a name="specifying-textformat"></a>指定 TextFormat
 若要分析文本文件或以文本格式写入数据，请将 `format` `type` 属性设置为 **TextFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [TextFormat 示例](#textformat-example)部分，了解如何进行配置。
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中不太可能存在的极少见的不可打印字符：例如，指定“\u0001”表示标题开头 (SOH)。 |只允许一个字符。 **默认**值为**逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
 | rowDelimiter |用于分隔文件中的行的字符。 |只允许一个字符。 **默认**值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |否 |
@@ -73,7 +73,7 @@ Azure 数据工厂支持以下格式类型：
 
 若要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：**setOfObjects** 和 **arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
 | jsonNodeReference | 若要进行迭代操作，以同一模式从数组字段中的对象提取数据，请指定该数组的 JSON 路径。 只有从 JSON 文件复制数据时，才支持此属性。 | 否 |

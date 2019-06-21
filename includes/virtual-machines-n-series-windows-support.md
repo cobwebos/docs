@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0dda467c3906c217c18e1340f7dc2a464dcbccae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 12f053d7255c21441d78dab8c7937bcf45ec48c2
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154855"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151810"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
@@ -36,5 +36,5 @@ Microsoft 为用作虚拟工作站或用于虚拟应用程序的 NV 和 NVv2 系
 
 | 操作系统 | 驱动程序 |
 | -------- |------------- |
-| Windows Server 2016<br/><br/>Windows 10（最高版本 1803） | [网格 8.0 (425.31)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe) |
+| Windows Server 2019<br/><br/>Windows Server 2016<br/><br/>Windows 10 （最多版本 1809年。 未修补/不支持的 1809年的修补程序级别 0）。 | [网格 8.0 (425.31)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe) |
 | Windows Server 2012 R2 | [网格 8.0 (425.31)](https://go.microsoft.com/fwlink/?linkid=874184) (.exe)  |

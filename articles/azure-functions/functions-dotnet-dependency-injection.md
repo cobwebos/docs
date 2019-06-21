@@ -10,19 +10,21 @@ ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/28/2019
-ms.author: jehollan, glenga, cshoe
-ms.openlocfilehash: b1a6751f0d788c26af60b28eee994dc9b3877f00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.author: jehollan, cshoe
+ms.openlocfilehash: 9f932bf92cb3871af7f0eb294ac15dec82cdc8ba
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693252"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274245"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
 Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是在类及其依赖项之间实现[控制反转 (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的一种技术。
 
 Azure Functions 基于 ASP.NET Core 依赖项注入功能。 在 Azure Functions 应用中使用 DI 功能之前，建议了解 [ASP.NET Core 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)的服务、生存期和设计模式。
+
+支持的依赖关系注入开始使用 Azure Functions 2.x。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -32,13 +34,22 @@ Azure Functions 基于 ASP.NET Core 依赖项注入功能。 在 Azure Functions
 
 - [Microsoft.NET.Sdk.Functions 包](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/)版本 1.0.28 或更高版本
 
+- 可选：[Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/)仅注册所需的 HttpClient 在启动时
+
 ## <a name="register-services"></a>注册服务
 
 若要注册服务，可以创建一个方法来配置组件并将组件添加到 `IFunctionsHostBuilder` 实例。  Azure Functions 主机创建 `IFunctionsHostBuilder` 的实例并将其直接传递到你的方法。
 
-若要注册方法，请添加 `FunctionsStartup` 程序集属性来指定在启动期间使用的类型名称。
+若要注册方法，请添加 `FunctionsStartup` 程序集属性来指定在启动期间使用的类型名称。 代码引用的预发行版还[Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) Nuget 上。
 
 ```csharp
+using System;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using Microsoft.Azure.Cosmos;
+
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
 
 namespace MyNamespace
@@ -62,6 +73,16 @@ namespace MyNamespace
 ASP.NET Core 使用构造函数注入来使依赖项可供你的函数使用。 以下示例演示了 `IMyService` 和 `HttpClient` 依赖项是如何注入到 HTTP 触发的函数中的。
 
 ```csharp
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+
 namespace MyNamespace
 {
     public class HttpTrigger
