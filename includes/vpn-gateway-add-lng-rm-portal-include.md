@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d9825ea41937dc9436fe8b465b48b378e13407c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150248"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172822"
 ---
 1. 在门户中，从“所有资源”单击“+添加”   。
 2. 在“所有内容”页搜索框中键入“本地网关”，单击即可返回资源的列表   。 单击“本地网络网关”打开相应页，然后单击“创建”打开“创建本地网络网关”页    。

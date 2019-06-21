@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 5/21/2019
+ms.date: 06/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: fdfabf328ddfa6b5e4b578be5a1b329cb3219a18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a3806a7f64f30e5073182f96f552b8584cf1ce0c
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65989079"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147259"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>配置 Azure VPN 网关 OpenVPN 客户端
 
@@ -26,7 +26,7 @@ ms.locfileid: "65989079"
 
 ## <a name="windows"></a>Windows 客户端
 
-1. 从官方 [OpenVPN 网站](https://openvpn.net/index.php/open-source/downloads.html)下载并安装 OpenVPN 客户端。
+1. 下载并安装 OpenVPN 客户端 （版本 2.4 或更高版本） 从官方[OpenVPN 网站](https://openvpn.net/index.php/open-source/downloads.html)。
 2. 下载网关的 VPN 配置文件。 可通过 Azure 门户中的“点到站点配置”选项卡或 PowerShell 中的“New-AzVpnClientConfiguration”来完成此操作。
 3. 解压缩该配置文件。 接下来，使用记事本打开 OpenVPN 文件夹中的 *vpnconfig.ovpn* 配置文件。
 4. [导出](vpn-gateway-certificates-point-to-site.md#clientexport)创建的 P2S 客户端证书，并将其上传到网关上的 P2S 配置。
@@ -61,7 +61,7 @@ ms.locfileid: "65989079"
 
 ## <a name="mac"></a>Mac 客户端
 
-1. 下载并安装 OpenVPN 客户端，如 [TunnelBlik](https://tunnelblick.net/downloads.html)。 
+1. 下载并安装 OpenVPN 客户端，如[TunnelBlick](https://tunnelblick.net/downloads.html)。 
 2. 下载网关的 VPN 配置文件。 可通过 Azure 门户中的“点到站点配置”选项卡，或使用 PowerShell 中的“New-AzVpnClientConfiguration”来完成此操作。
 3. 解压缩该配置文件。 在记事本中打开 OpenVPN 文件夹中的 vpnconfig.ovpn 配置文件。
 4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，你只需打开 .cer 文件并通过证书标头之间的 base64 密钥进行复制。 有关如何导出证书以获取已编码的公钥的详细信息，请参阅[导出公钥](vpn-gateway-certificates-point-to-site.md#cer)

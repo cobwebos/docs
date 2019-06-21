@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c97ccd82a9c09e10572733040e238443cbf777da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0de4d2b9ad0d009b9cd363d19a2de3f29d810d4
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696599"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303454"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>认知搜索故障排除提示
 
@@ -94,7 +94,10 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 最长运行时间因层而异：免费层为数分钟，收费层为 24 小时（索引编制）。 进行按需处理时，如果处理无法在 24 小时期限内完成，则可改用计划形式，让索引器在计划时间接着上次的工作继续处理。 
 
-对于计划的索引器来说，索引编制会按计划从已知正常的最后一个文档继续开始。 使用定时计划时，索引器可以在计划的一系列时间或日期进行积压图像的处理，直至所有未处理的图像得到处理。 有关计划语法的详细信息，请参阅[步骤 3：创建索引器](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)。
+对于计划的索引器来说，索引编制会按计划从已知正常的最后一个文档继续开始。 使用定时计划时，索引器可以在计划的一系列时间或日期进行积压图像的处理，直至所有未处理的图像得到处理。 有关计划语法的详细信息，请参阅[步骤 3：创建一个索引](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)或参阅[如何安排 Azure 搜索索引器](search-howto-schedule-indexers.md)。
+
+> [!NOTE]
+> 如果索引器设置为特定计划，但反复失败上相同文档反复地每次它运行，则索引器将开始运行在不太频繁地 （最多每 24 小时至少一次的最大值） 的时间间隔之前已成功使进度 aga在中。  如果你认为你解决任何要停留在某一时间点的索引器会导致了问题，则可以执行的索引器将按需运行，如果可成功地将进度，索引器将其设置计划间隔再次返回。
 
 进行基于门户的索引编制（如快速入门中所述）时，选择“运行一次”索引器选项即可将处理时间限制为 1 小时 (`"maxRunTime": "PT1H"`)。 可能需要延长处理时间至更长。
 

@@ -9,11 +9,11 @@ ms.date: 06/10/2019
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: c5fedc59c80c68fc222693a67664ef60ddd210a9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133696"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293453"
 ---
 以下限制适用于当前基于消费的定价层中引入了在 2018 年 4 月中每个 Log Analytics 工作区：
 

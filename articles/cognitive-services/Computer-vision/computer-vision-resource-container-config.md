@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 1fa6f04f28da2613f8b78e8885515ac40fa5961e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4613b576b444059d448cf1094284f2a68e6c31a8
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071306"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275154"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>配置“识别文本”Docker 容器
 
@@ -51,7 +51,7 @@ ms.locfileid: "67071306"
 
 请记住添加`vision/v1.0`路由到终结点 URI 下, 表中所示。 
 
-|需要| 名称 | 数据类型 | 描述 |
+|必选| Name | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 

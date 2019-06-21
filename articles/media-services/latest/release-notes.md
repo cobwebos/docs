@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa4e37e3b360727feb998ef5e9ca9b776c4b0e53
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688648"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303954"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -33,6 +33,19 @@ ms.locfileid: "66688648"
 > 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或支持的 SDK 之一。
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
+
+## <a name="june-2019"></a>2019 年 7 月
+
+### <a name="video-subclipping"></a>子剪辑视频
+
+现在可以剪裁，或使用对其进行编码时，子剪辑视频[作业](https://docs.microsoft.com/rest/api/media/jobs)。 
+
+此功能适用于任何[转换](https://docs.microsoft.com/rest/api/media/transforms)生成使用[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)预设，或者[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)预设。 
+
+请参阅示例：
+
+* [子剪辑使用.NET 的视频](subclip-video-dotnet-howto.md)
+* [子剪辑与其余部分的视频](subclip-video-rest-howto.md)
 
 ## <a name="may-2019"></a>2019 年 5 月
 

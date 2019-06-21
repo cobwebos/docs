@@ -1,24 +1,27 @@
 ---
 title: 将 Azure Blob 存储模块部署到设备 - Azure IoT Edge | Microsoft Docs
 description: 将 Azure Blob 存储模块部署到 IoT Edge 设备以在边缘存储数据。
-author: kgremban
-ms.author: kgremban
-ms.date: 05/21/2019
+author: arduppal
+ms.author: arduppal
+ms.date: 06/19/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
-manager: philmea
-ms.openlocfilehash: d844e81de9cfb556e91ab5c0d5a8074c822cce0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: mchad
+ms.openlocfilehash: 468e4fca5e67850949e7d5826e4bc88fa504b9d6
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990473"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295207"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>将 IoT Edge 上的 Azure Blob 存储模块部署到设备
 
 有多种方法可以将模块部署到 IoT Edge 设备，并且所有这些方法都适用于 IoT Edge 上的 Azure Blob 存储模块。 两种最简单的方法是使用 Azure 门户或 Visual Studio Code 模板。
+
+> [!NOTE]
+> IoT Edge 上的 Azure Blob 存储现为[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -88,35 +91,35 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
      > [!IMPORTANT]
      > 请不要更改存储目录绑定值的后半部分，该部分指向模块中的特定位置。 对于 Linux 容器，存储目录绑定应始终以 **:/blobroot** 结尾；对于 Windows 容器，应以 **:C:/BlobRoot** 结尾。
 
-    ![更新模块容器创建选项 - 门户](./media/how-to-store-data-blob/edit-module.png)
-
-1. 设置模块的[分层](how-to-store-data-blob.md#tiering-properties)和[生存时间](how-to-store-data-blob.md#time-to-live-properties)属性，方法是：复制以下 JSON 并将其粘贴到“设置模块孪生的所需属性”框中。  为每个属性配置适当的值，保存后继续进行部署。
+1. 设置[deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties)并[deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties)通过复制以下 JSON 并将其粘贴到你的模块的属性**集模块孪生的所需属性**框。 为每个属性配置适当的值，保存后继续进行部署。
 
    ```json
    {
      "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>,
-         "timeToLiveInMinutes": <timeToLiveInMinutes>
+       "deviceAutoDeleteProperties": {
+         "deleteOn": <true, false>,
+         "deleteAfterMinutes": <timeToLiveInMinutes>,
+         "retainWhileUploading":<true,false>
        },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
+       "deviceToCloudUploadProperties": {
+         "uploadOn": <true, false>,
+         "uploadOrder": "<NewestFirst, OldestFirst>",
+         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
+         "storageContainersForUpload": {
            "<source container name1>": {
              "target": "<target container name1>"
            }
-         }
+         },
+         "deleteAfterUpload":<true,false>
        }
      }
    }
 
       ```
 
-   ![设置分层和生存时间属性](./media/how-to-store-data-blob/iotedge_custom_module.png)
+   ![设置容器创建选项、 deviceAutoDeleteProperties 和 deviceToCloudUploadProperties 属性](./media/how-to-deploy-blob/iotedge-custom-module.png)
 
-   若要了解如何在部署模块以后配置分层和 TTL，请参阅 [Edit the Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)（编辑模块孪生）。 若要详细了解所需属性，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
+   有关配置 deviceToCloudUploadProperties 和 deviceAutoDeleteProperties 部署模块后的信息，请参阅[编辑模块孪生](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)。 若要详细了解所需属性，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
 
 1. 选择“保存”。 
 
@@ -158,7 +161,7 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
    | 选择文件夹 | 在适用于 Visual Studio Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
    | 选择模块模板 | 选择“现有模块(输入完整映像 URL)”。  |
-   | 提供模块名称 | 输入模块的全小写名称，例如 **azureblobstorage**。<br /><br />必须对 IoT Edge 上的 Azure Blob 存储模块使用小写名称。 引用模块时，IoT Edge 区分大小写，存储 SDK 默认为小写。 |
+   | 提供模块名称 | 输入你的模块的全小写名称，如**azureblobstorageoniotedge**。<br /><br />必须对 IoT Edge 上的 Azure Blob 存储模块使用小写名称。 引用模块时，IoT Edge 区分大小写，存储 SDK 默认为小写。 |
    | 提供模块的 Docker 映像 | 提供映像 URI：**mcr.microsoft.com/azure-blob-storage:latest** |
 
    Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后在新窗口中加载它。 解决方案模板创建包含 blob 存储模块映像的部署清单模板，但需要配置模块的创建选项。
@@ -182,7 +185,7 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
       }
       ```
 
-      ![更新模块 createOptions - Visual Studio Code](./media/how-to-store-data-blob/create-options.png)
+      ![更新模块 createOptions - Visual Studio Code](./media/how-to-deploy-blob/create-options.png)
 
 1. 请将 `<your storage account name>` 替换为容易记住的名称。 帐户名长度应为 3 到 24 个字符，并带有小写字母和数字。 不含空格。
 
@@ -196,32 +199,34 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
       > [!IMPORTANT]
       > 请不要更改存储目录绑定值的后半部分，该部分指向模块中的特定位置。 对于 Linux 容器，存储目录绑定应始终以 **:/blobroot** 结尾；对于 Windows 容器，应以 **:C:/BlobRoot** 结尾。
 
-1. 配置模块的[分层](how-to-store-data-blob.md#tiering-properties)和[生存时间](how-to-store-data-blob.md#time-to-live-properties)属性，方法是：将以下 JSON 添加到 *deployment.template.json* 文件中。 为每个属性配置适当的值并保存文件。
+1. 配置[deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties)并[deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties)模块添加到以下 JSON *deployment.template.json*文件。 为每个属性配置适当的值并保存文件。
 
    ```json
    "<your azureblobstorageoniotedge module name>":{
      "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>,
-         "timeToLiveInMinutes": <timeToLiveInMinutes>
+       "deviceAutoDeleteProperties": {
+         "deleteOn": <true, false>,
+         "deleteAfterMinutes": <timeToLiveInMinutes>,
+         "retainWhileUploading": <true, false>
        },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
+       "deviceToCloudUploadProperties": {
+         "uploadOn": <true, false>,
+         "uploadOrder": "<NewestFirst, OldestFirst>",
+         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
+         "storageContainersForUpload": {
            "<source container name1>": {
              "target": "<target container name1>"
            }
-         }
+         },
+         "deleteAfterUpload": <true, false>
        }
      }
    }
    ```
 
-   ![设置 azureblobstorageoniotedge 的所需属性 - Visual Studio Code](./media/how-to-store-data-blob/tiering_ttl.png)
+   ![设置 azureblobstorageoniotedge 的所需属性 - Visual Studio Code](./media/how-to-deploy-blob/devicetocloud-deviceautodelete.png)
 
-   若要了解如何在部署模块以后配置分层和 TTL，请参阅 [Edit the Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)（编辑模块孪生）。 若要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 所需属性](module-edgeagent-edgehub.md#edgeagent-desired-properties)。
+   有关配置 deviceToCloudUploadProperties 和 deviceAutoDeleteProperties 部署模块后的信息，请参阅[编辑模块孪生](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)。 若要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 所需属性](module-edgeagent-edgehub.md#edgeagent-desired-properties)。
 
 1. 保存 *deployment.template.json* 文件。
 

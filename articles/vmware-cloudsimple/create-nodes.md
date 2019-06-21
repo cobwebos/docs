@@ -1,5 +1,5 @@
 ---
-title: 购买 VMware 解决方案通过 CloudSimple-Azure 节点
+title: VMware CloudSimple-Azure 解决方案的设置节点
 description: 了解如何将节点添加到与 CloudSimple 部署在 VMWare
 author: dikamath
 ms.author: dikamath
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9f5108207c4f8debc65b9d1fe625ae7033ca4e70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33de07663c91f12d4e10c4661b841cd2dbe5a162
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64577175"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165256"
 ---
-# <a name="purchase-nodes-for-vmware-solution-by-cloudsimple---azure"></a>购买 VMware 解决方案通过 CloudSimple-Azure 节点
+# <a name="provision-nodes-for-vmware-solution-by-cloudsimple---azure"></a>VMware CloudSimple-Azure 解决方案的设置节点
 
 在 Azure 门户中的设置节点。 然后可以将设置付款现转容量 CloudSimple 私有云环境。
 
-## <a name="add-a-purchased-node-to-your-cloudsimple-private-cloud"></a>将已购买的节点添加到 CloudSimple 私有云
+## <a name="add-a-provisioned-node-to-your-cloudsimple-private-cloud"></a>将预配的节点添加到 CloudSimple 私有云
 
 1. 选择“所有服务”  。
 2. 搜索**CloudSimple 节点**。
@@ -31,7 +31,7 @@ ms.locfileid: "64577175"
 
     ![添加 CloudSimple 节点](media/create-cloudsimple-node-add.png)
 
-5. 选择你想要购买 CloudSimple 节点的订阅。
+5. 选择你想要预配 CloudSimple 节点的订阅。
 6. 选择节点的资源组。 若要添加新的资源组，请单击**创建新**。
 7. 输入标识的节点的前缀。
 8. 选择节点资源的位置。

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/16/2019
 ms.author: juliako
-ms.openlocfilehash: fa09185e68c8d3a70562fe50c583ff872bf91e48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0abc3eec380cccae2672d0e9aa4a3a4c7199362f
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556226"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295665"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -31,7 +31,7 @@ ms.locfileid: "65556226"
 - 媒体服务中的组件，用于引入、预览、打包、记录、加密实时事件并将其广播给客户，或者广播给 CDN 进行进一步分发。
 
 本文提供了概述和指南的实时传送视频流媒体服务和其他相关文章的链接。
-
+ 
 > [!NOTE]
 > 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
 
@@ -49,27 +49,27 @@ ms.locfileid: "65556226"
 
 ## <a name="live-event-types"></a>实时事件类型
 
-实时事件可以是两种类型之一： 直通和实时编码。 有关实时传送视频流媒体服务 v3 中的详细信息，请参阅[实时事件和实时输出](live-events-outputs-concept.md)。
+[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 实时事件可以是两种类型之一： 直通和实时编码。 有关实时传送视频流媒体服务 v3 中的详细信息，请参阅[实时事件和实时输出](live-events-outputs-concept.md)。
 
 ### <a name="pass-through"></a>直通
 
 ![直通](./media/live-streaming/pass-through.svg)
 
-使用直通**实时事件**，可以依赖本地实时编码器生成多比特率视频流，并将其作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 然后，实时事件会接受无需进一步处理的传入视频流。 此类传递实时事件适用于长时间运行的实时事件或 24x365 线性实时传送视频流。 
+当使用传递身份验证**Live 事件**，依赖于你的本地实时编码器生成多个比特率视频流并传送中所占比例为程序源 （使用 RTMP 或分段 MP4 输入的协议） 实时事件。 通过动态打包程序 （流式处理终结点），而无需任何进一步的转码为传入的视频流然后携带实时事件。 此类传递实时事件适用于长时间运行的实时事件或 24x365 线性实时传送视频流。 
 
 ### <a name="live-encoding"></a>实时编码  
 
 ![实时编码](./media/live-streaming/live-encoding.svg)
 
-将实时编码与媒体服务配合使用时，需配置本地实时编码器，以便将单比特率视频作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 实时事件会将该传入的单比特率流编码为[多比特率视频流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，使其可通过 MPEG-DASH、HLS 和平滑流式处理等协议传送到播放设备。 
+在使用云编码使用 Media Services 时，将配置你的本地实时编码器，以便发送单比特率视频所占比例作为源 （最多 32Mbps 聚合) 到 （使用 RTMP 或分段 MP4 输入的协议） 实时事件。 实时事件转码传入的单比特率流式传输到[多个比特率视频流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)在不同的分辨率，以提高交付和使其可用于传递到通过行业标准协议的播放设备例如 MPEG DASH、 Apple HTTP Live Streaming (HLS)、 和 Microsoft 平滑流式处理。 
 
 ## <a name="live-streaming-workflow"></a>实时传送视频流工作流
 
 若要了解媒体服务 v3 中的实时流式处理工作流，你必须首先回顾一下，并了解以下概念： 
 
-- [流式处理终结点 API](streaming-endpoint-concept.md)
-- [实时事件和实时输出 API](live-events-outputs-concept.md)
-- [流式处理定位符 API](streaming-locators-concept.md)
+- [流式处理终结点](streaming-endpoint-concept.md)
+- [实时事件和实时输出](live-events-outputs-concept.md)
+- [流式处理定位符](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>常规步骤
 
@@ -79,7 +79,7 @@ ms.locfileid: "65556226"
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的**资产**对象。
 6. 创建**实时输出**并使用创建的资产名称。<br/>**实时输出**会将流存档到**资产**中。
-7. 使用内置的**流式处理策略**类型创建**流式处理定位符**。<br/>如果想要加密内容，请查看[内容保护概述](content-protection-overview.md)。
+7. 创建**流式处理定位符**与[内置流式处理策略类型](streaming-policy-concept.md)
 8. 列出流式处理定位器的路径，以取回要使用的 URL（这些是确定性的）  。
 9. 获取的主机名**流式处理终结点**想要从 （源）。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。

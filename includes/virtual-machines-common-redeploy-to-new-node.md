@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 1c3996c3f40da496af0cd795d0873864667a1f19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160287"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172955"
 ---
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 1. 选择想要重新部署的 VM，然后选择“设置”边栏选项卡中的“重新部署”按钮。   可能需要向下滚动，查看包含“重新部署”按钮的“支持和故障排除”  部分，如以下示例所示：

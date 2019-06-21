@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: 105454205c0fe3a0020693a1289a65cecd2bf57b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b03109ee5cdb76247bf3be6fda97e0cf6e434f17
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519020"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296093"
 ---
-# <a name="get-started-with-azure-monitor-log-queries"></a>Azure Monitor 日志查询入门
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>开始使用 Azure Monitor 中的日志查询
 
 
 > [!NOTE]
@@ -28,9 +28,9 @@ ms.locfileid: "65519020"
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-在本教程中，你将学习编写 Azure Monitor 日志查询。 具体内容包括：
+在本教程中您将了解如何在 Azure Monitor 中编写日志查询。 具体内容包括：
 
-- 了解查询的结构
+- 了解查询结构
 - 将查询结果排序
 - 筛选查询结果
 - 指定时间范围
@@ -38,6 +38,8 @@ ms.locfileid: "65519020"
 - 定义和使用自定义字段
 - 聚合和分组结果
 
+在 Azure 门户中使用 Log Analytics 的教程，请参阅[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)。<br>
+Azure Monitor 中的日志查询的更多详细信息，请参阅[日志概述在 Azure Monitor 中查询](log-query-overview.md)。
 
 ## <a name="writing-a-new-query"></a>编写新查询
 查询可以从表名或 *search* 命令开始。 首先应从表名开始，因为它为查询定义了明确的范围，并可以改善查询性能和结果的相关性。
@@ -71,8 +73,8 @@ search in (SecurityEvent) "Cryptographic"
 
 此查询在 *SecurityEvent* 表中搜索包含短语“Cryptographic”的记录。 返回并显示了其中的 10 条记录。 如果省略 `in (SecurityEvent)` 部分并直接运行 `search "Cryptographic"`，则搜索将遍历所有表，因此花费的时间更长且更低效。 
 
-> [!NOTE]
-> 默认设置的时间范围为过去 24 小时。  若要使用不同的范围，请使用时间选取器（位于“搜索”按钮旁边），或者在查询中添加明确的时间范围筛选器。 
+> [!WARNING]
+> 搜索查询不基于表的查询比通常慢，因为它们具有处理更多的数据。 
 
 ## <a name="sort-and-top"></a>sort 和 top
 虽然 **take** 可用于获取一些记录，但选择和显示的结果不遵循特定的顺序。 若要获取排序的视图，可按首选列**排序**：

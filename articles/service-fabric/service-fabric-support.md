@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 667ee6a49238c1ecaabec631cb72804b0c4b2323
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60545055"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304261"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 
@@ -43,7 +43,7 @@ ms.locfileid: "60545055"
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>报告生产问题，或者请求独立 Service Fabric 群集的付费支持
 
-若要报告部署在本地或其他云上的 Service Fabric 群集的问题，请通过 [Microsoft 支持门户](https://support.microsoft.com/oas/default.aspx?prid=16146)开具专业支持票证。
+若要报告部署在本地或其他云上的 Service Fabric 群集的问题，请通过 [Microsoft 支持门户](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)开具专业支持票证。
 
 了解有关以下方面的详细信息：
 
@@ -60,11 +60,11 @@ ms.locfileid: "60545055"
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow 和 MSDN 论坛
 
-[StackOverflow 上的 Service Fabric 标记][stackoverflow]和 [MSDN 上的 Service Fabric 论坛][msdn-forum]最适合提问有关平台工作方式以及如何通过该平台完成某些任务的问题。
+[StackOverflow 上的 Service Fabric 标记][stackoverflow] and the [Service Fabric forum on MSDN][msdn-forum] ，可考虑使用提问有关平台的工作原理以及您如何完成与它的某些任务。
 
 ### <a name="azure-feedback-forum"></a>Azure 反馈论坛
 
-[有关 Service Fabric 的 Azure 反馈论坛][uservoice-forum]最适合提交用户关于产品的大型功能创意，我们可以看到，大多数常见的请求都属于我们的中长期规划。 我们鼓励你在社区内争取大家对建议的支持。
+[适用于 Service Fabric 的 Azure 反馈论坛][uservoice-forum]是最适合提交大型功能创意，我们查看最常见的请求产品已我们的中长期规划的一部分。 我们鼓励你在社区内争取大家对建议的支持。
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 预览版本 - 不支持在生产环境中使用
 

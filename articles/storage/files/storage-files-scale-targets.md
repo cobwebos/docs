@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c765c3e29166358f3504949136a67d8d0db96be8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 5e2f7b52ca3cb8a4d472b353e844bdad3aa1b0c1
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078153"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150447"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -45,7 +45,13 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 高级文件共享中一个名为特殊的存储帐户预配**文件存储 （预览版）** 。 此帐户具有比使用标准文件共享的存储帐户的略有不同的缩放目标。 有关存储帐户规模目标，请参阅中的表[Azure 存储帐户规模目标](#azure-storage-account-scale-targets)部分。
 
 > [!IMPORTANT]
-> 存储帐户限制适用于所有共享。 最多缩放的存储帐户的最大值才可实现，如果只有一个共享每个存储帐户。
+> 存储帐户限制适用于所有共享。 最多缩放是只可实现，如果每个文件存储帐户只有一个共享的文件存储帐户的最大值。
+
+### <a name="file-share-and-file-scale-targets"></a>文件共享和文件规模目标
+
+> [!NOTE]
+> 大于 5 TiB 的标准文件共享处于预览状态，存在一定的限制。
+> 有关列表的限制和要加入到的这些更大的文件共享大小的预览，请参阅[标准文件共享](storage-files-planning.md#standard-file-shares)计划指南的部分。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 

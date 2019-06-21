@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 7f80c8f1773cfeb8ddfb222d068a5c6571c2e5c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66126300"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173296"
 ---
 ## <a name="prerequisites"></a>必备组件
 在编写 CDN 管理代码之前，需要做一些准备工作，使代码能够与 Azure 资源管理器进行交互。 若要执行此准备工作，你需要：

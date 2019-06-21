@@ -4,15 +4,15 @@ description: 本文介绍 Azure Cosmos DB 中存储过程、触发器和用户�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/14/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 40d120fe5fcc79721923d3493e74b5195ecc129c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 529c536d9ea3b898745f03c80b63702b2af485da
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965702"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165583"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>存储过程、触发器和用户定义的函数
 
@@ -75,7 +75,7 @@ JavaScript 函数还有[预配的吞吐量容量](request-units.md)方面的约�
 
 ## <a name="triggers"></a>触发器
 
-本部分介绍两种类型的触发器：
+Azure Cosmos DB 支持两种类型的触发器：
 
 ### <a name="pre-triggers"></a>前触发器
 
@@ -84,6 +84,9 @@ Azure Cosmos DB 提供可以通过对 Azure Cosmos DB 项执行操作来调用�
 ### <a name="post-triggers"></a>后触发器
 
 类似于前触发器，后触发器也与针对 Azure Cosmos DB 项执行的操作相关联，但它们不需要任何输入参数。 后触发器在操作完成之后运行，且具有对发送到客户端的响应消息的访问权限。  有关示例，请参阅[如何编写触发器](how-to-write-stored-procedures-triggers-udfs.md#triggers)一文。
+
+> [!NOTE]
+> 注册触发器不自动运行时及其相应的操作 （创建 / 删除 / 替换 / 更新） 发生这种情况。 他们必须显式调用时执行这些操作。 若要了解详细信息，请参阅[如何运行触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)一文。
 
 ## <a id="udfs"></a>用户定义的函数
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-pawal
-ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f58ff566ebb83ed6163637aa3899a925ed06242a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387520"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269212"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -144,7 +144,7 @@ Authorization: Bearer <Base64-access_token>
 | 400036| 目标语言（“To”字段）缺失或无效。|
 | 400042| 指定的某个选项（“Options”字段）无效。|
 | 400043| 客户端跟踪 ID（ClientTraceId 字段或 X-ClientTranceId 标头）缺失或无效。|
-| 400050| 输入文本过长。 视图[请求限制](../request-limits.md)。|
+| 400050| 输入文本过长。 查看[请求限制](../request-limits.md)。|
 | 400064| “translation”参数缺失或无效。|
 | 400070| 目标脚本（ToScript 参数）的数目与目标语言（To 参数）的数目不匹配。|
 | 400071| TextType 的值无效。|
@@ -152,17 +152,18 @@ Authorization: Bearer <Base64-access_token>
 | 400073| 脚本参数无效。|
 | 400074| 请求正文是无效的 JSON。|
 | 400075| 语言对和类别组合无效。|
-| 400077| 超过了最大请求大小。 视图[请求限制](../request-limits.md)。|
+| 400077| 超过了最大请求大小。 查看[请求限制](../request-limits.md)。|
 | 400079| 请求用于在源语言与目标语言之间进行翻译的自定义系统不存在。|
+| 400080| 音译不支持的语言或脚本。|
 | 401000| 由于凭据缺失或无效，请求未授权。|
 | 401015| “提供的凭据适用于语音 API。 此请求需要文本 API 的凭据。 请使用文本翻译 API 的订阅。”|
 | 403000| 不允许该操作。|
 | 403001| 由于订阅已超过其免费配额，因此不允许该操作。|
 | 405000| 请求的资源不支持该请求方法。|
-| 408001| 正在准备所需的翻译系统。 请在几分钟后重试。|
-| 408002| 请求已超时等待传入的流。 客户端没有已准备好服务器要等待的时间内生成请求。 客户端可以在任何更高版本时重复而无需修改请求。|
+| 408001| 正在准备所请求的翻译系统。 请在几分钟后重试。|
+| 408002| 等待传入流时请求超时。 客户端没有在服务器准备等待的时间内生成请求。 客户端可以在以后的任何时间重复该请求，而不做任何修改。|
 | 415000| Content-Type 标头缺失或无效。|
-| 429000、429001、429002| 服务器拒绝了请求，因为客户端已超出请求限制。|
+| 429000、429001、429002| 由于客户端已超出请求限制，服务器拒绝了请求。|
 | 500000| 发生了意外错误。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 | 503000| 服务暂时不可用。 请重试。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 
