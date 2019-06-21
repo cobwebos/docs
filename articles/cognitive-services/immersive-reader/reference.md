@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: bf337f8d4eac859dc39a36ba12dd9645aa23fe41
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c128608b3c4a8e1155c3ac962bcfd07f589fbf23
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67297046"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311784"
 ---
 # <a name="immersive-reader-sdk-reference"></a>令人着迷的读取器 SDK 参考
 
@@ -22,7 +22,7 @@ ms.locfileid: "67297046"
 
 ## <a name="functions"></a>函数
 
-SDK 公开一个单一的函数， `ImmersiveReader.launchAsync(token, data, options)`。
+SDK 公开一个单一的函数， `ImmersiveReader.launchAsync(token, resourceName, content, options)`。
 
 ### <a name="launchasync"></a>launchAsync
 
@@ -34,10 +34,10 @@ launchAsync(token: string, resourceName: string, content: Content, options?: Opt
 
 #### <a name="parameters"></a>parameters
 
-| Name | 类型 | 描述 |
+| 名称 | 类型 | 描述 |
 | ---- | ---- |------------ |
-| `token` | 字符串 | 通过调用获取的访问令牌`issueToken`终结点。 |
-| `resourceName` | 字符串 | 保留。 必须设置为 `null`。 |
+| `token` | string | 通过调用获取的访问令牌`issueToken`终结点。 |
+| `resourceName` | string | 保留。 必须设置为 `null`。 |
 | `content` | [内容](#content) | 包含要在沉浸式读取器中显示的内容的对象。 |
 | `options` | [选项](#options) | 用于配置沉浸式读取器的某些行为的选项。 可选。 |
 

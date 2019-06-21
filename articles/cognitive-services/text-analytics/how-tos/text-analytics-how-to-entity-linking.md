@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 881c829424124cca843beb7005306edd53be2673
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: ff4f9af82024e9d39ad89a39bcb2fe4130de9101
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203994"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304180"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -105,7 +105,7 @@ ms.locfileid: "67203994"
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
-在收到请求时执行分析。 该服务每秒最多接受 100 个请求，每分钟最多接受 1000 个请求。 每个请求最大为 1 MB。
+在收到请求时执行分析。 请参阅[数据限制](../overview.md#data-limits)中信息的大小和数量的请求可以发送每分钟和秒的概述部分。
 
 记住，该服务是无状态服务。 帐户中未存储任何数据。 结果会立即在响应中返回。
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1828cdce66104424cc7845fea89127219e6b77a0
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 45ed0167f5a83fa843a224ada35e96672a6752a1
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137269"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311847"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
@@ -91,6 +91,7 @@ Batch 听录 API 支持以下格式：
 | `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `none`（禁用标点）、`dictated`（表示使用显式标点）、`automatic`（允许解码器处理标点）或 `dictatedandautomatic`（表示使用专用标点符号或自动使用标点）。 |
  | `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 |
  | `AddSentiment` | 指定情绪应添加到查询文本。 接受的值是`true`可让每个查询文本的情绪和`false`（默认值） 以禁用它。 |
+ | `AddDiarization` | 指定该 diarization alalysis 应执行上输入这应为包含两个语音的单通道。 接受的值是`true`这样 diarization 和`false`（默认值） 以禁用它。 它还需要`AddWordLevelTimestamps`设置为 true。|
 
 ### <a name="storage"></a>存储
 
@@ -128,13 +129,8 @@ Word 级别时间戳还必须为开启为更高版本的请求中的参数，表
 
 另请注意，Diarization 选项不适用于立体声录制。 此外，所有的 JSON 输出将包含演讲者标记。 如果未使用 diarization，它将显示演讲者：Null' JSON 输出中。
 
-下面列出了支持的区域设置。
-
-| 语言 | 区域设置 |
-|--------|-------|
-| 英语 | en-US |
-| 中文 | zh-CN |
-| Deutsch | de-DE |
+> [!NOTE]
+> 在所有区域中，对于所有区域设置，diarization 已推出 ！
 
 ## <a name="sentiment"></a>情绪
 
