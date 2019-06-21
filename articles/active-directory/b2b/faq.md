@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df4f06528d0dd261dd92ab84b07bb705e23f7fd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 523f1adc94870f79d198366059f33ad52f5dad68
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113075"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293071"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
@@ -42,7 +42,7 @@ ms.locfileid: "67113075"
 邀请方组织执行多重身份验证。 邀请方组织必须确保为其使用多重身份验证的 B2B 用户提供足够的许可证。
 
 ### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>如果合作伙伴组织已设置多重身份验证会怎样？ 我们是否可以信任他们的多重身份验证，而不使用我们自己的多重身份验证？
-计划在将来的版本中推出此功能，这样一来就可以选择要从（邀请方组织的）多重身份验证中排除的特定合作伙伴。
+当前不支持此功能。 如果你的组织资源的访问权限需要多重身份验证，合作伙伴组织将需要多重身份验证中注册你 （邀请） 组织。
 
 ### <a name="how-can-i-use-delayed-invitations"></a>如何使用延迟的邀请？
 某家组织想要添加 B2B 协作用户，根据需要将这些用户预配到应用程序中，然后发送邀请。 可以使用 B2B 协作邀请 API 自定义载入工作流。

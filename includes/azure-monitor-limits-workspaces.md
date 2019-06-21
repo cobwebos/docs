@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: dfcf47a95d1dbff34ff322768fc4ac6c9674cff4
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
-ms.translationtype: HT
+ms.openlocfilehash: 21e2d3f75028d239175effa7a3608cc18ccfc95c
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295947"
+ms.locfileid: "67305254"
 ---
 **数据收集量和保留期** 
 
 | 层 | 每日限制 | 数据保留 | 注释 |
 |:---|:---|:---|:---|
 | 当前每个 GB 定价层<br>（已引入 2018 年 4 月） | 无限制 | 30-730 天 | 数据保留 31 天以上仅适用于额外的费用。 了解有关 Azure Monitor 定价的详细信息。 |
-| 旧版免费层<br>（已引入 2016 年 4 月） | 500 MB | 7 天 | 当你的工作区达到每日数据传输限制时 500 MB，数据分析会停止，并在恢复下一天的开始。 日期基于 UTC。 |
+| 旧版免费层<br>（已引入 2016 年 4 月） | 500 MB | 7 天 | 当你的工作区达到每日限制 500 MB 时，数据引入停止，并在恢复第二天的开始。 日期基于 UTC。 请注意，Azure 安全中心收集的数据不包含在此 500 MB / 天的限制，并将继续收集超出此限制。  |
 | 旧的独立按 GB 层<br>（已引入 2016 年 4 月） | 无限制 | 30 到 730 天 | 数据保留 31 天以上仅适用于额外的费用。 了解有关 Azure Monitor 定价的详细信息。 |
 | 每个节点 (OMS) 的旧<br>（已引入 2016 年 4 月） | 无限制 | 30 到 730 天 | 数据保留 31 天以上仅适用于额外的费用。 了解有关 Azure Monitor 定价的详细信息。 |
 | 旧的标准层 | 无限制 | 30 天  | 不能调整保留期 |
