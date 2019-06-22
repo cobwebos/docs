@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: wolfma
-ms.openlocfilehash: 2bfe111cbe1e352c16c9cbdd6d2ecc999bbe444f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4092cfb11fc37b9a4d145c3a2994138e5ae6dbf
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003010"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331914"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
-语音软件开发工具包 (SDK) 为您的应用程序的访问权限提供功能的语音服务，使其更轻松地开发支持语音的软件。 目前，Sdk 提供访问权限**语音到文本**，**文本到语音转换**，**语音翻译**，以及**意图识别**。 可以在文档上找到有关功能和支持的平台的常规概述[入口页](https://aka.ms/csspeech)。
+语音软件开发工具包 (SDK) 为您的应用程序的访问权限提供功能的语音服务，使其更轻松地开发支持语音的软件。 目前，Sdk 提供访问权限**语音到文本**，**文本到语音转换**，**语音翻译**，**意图识别**，和**Bot Framework 直接行语音通道**。 可以在文档上找到有关功能和支持的平台的常规概述[入口页](https://aka.ms/csspeech)。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-pawal
-ms.openlocfilehash: f58ff566ebb83ed6163637aa3899a925ed06242a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 4133cec401723ab103b0b3bfff62eee21b653e2b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269212"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331822"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -31,20 +31,20 @@ ms.locfileid: "67269212"
 
 ## <a name="base-urls"></a>基 URL
 
-Microsoft Translator 位于多个数据中心位置之外。 目前位于 6 个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions)中：
+Microsoft Translator 位于多个数据中心位置之外。 这些文件在当前位于 6 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/regions):
 
 * **美洲：** 美国西部 2 和美国中西部 
 * **亚太区：** 亚洲东南部和韩国南部
 * **欧洲：** 欧洲北部和欧洲西部
 
-在大多数情况下，对 Microsoft 文本翻译 API 的请求由距离请求的来源位置最近的数据中心处理。 如果数据中心发生故障，则可能会在该区域之外路由请求。
+在大多数情况下，对 Microsoft 文本翻译 API 的请求由距离请求的来源位置最近的数据中心处理。 如果出现数据中心故障，可能 Azure 地理位置外部路由请求。
 
-若要强制特定数据中心处理该请求，请将 API 请求中的全球终结点更改为所需的区域终结点：
+若要强制执行由特定 Azure 地理位置处理的请求，请更改为所需的区域的终结点的 API 请求中的全局终结点：
 
-|描述|区域|基 URL|
+|描述|Azure 地理位置|基 URL|
 |:--|:--|:--|
-|Azure|全局|  api.cognitive.microsofttranslator.com|
-|Azure|北美|   api-nam.cognitive.microsofttranslator.com|
+|Azure|全局 （非区域性）|   api.cognitive.microsofttranslator.com|
+|Azure|美国|   api-nam.cognitive.microsofttranslator.com|
 |Azure|欧洲|  api-eur.cognitive.microsofttranslator.com|
 |Azure|亚太区|    api-apc.cognitive.microsofttranslator.com|
 
