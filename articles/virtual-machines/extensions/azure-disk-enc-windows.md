@@ -150,7 +150,7 @@ V1.1 架构建议，并且不需要 Azure Active Directory 属性。
 | (0.1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (0.1 schema) AADClientSecret | password | string |
 | (0.1 schema) AADClientCertificate | thumbprint | string |
-| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON dictionary |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
