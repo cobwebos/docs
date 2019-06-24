@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: badf351f8336e501b3ee1c035fcb389a570750c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c7476a82df75d8ba653a2a8e6c0f9f557b53c42
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072855"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341877"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>将实体添加到示例话语 
 
 示例表述是用户问题或命令的文本示例。 若要教授语言理解 (LUIS)，需将[示例表述](luis-concept-utterance.md)添加到[意向](luis-concept-intent.md)。
 
-通常先将示例话语添加到意向，然后创建实体并在意向页上标记话语。 若要先创建实体，请参阅[添加实体](luis-how-to-add-entities.md)。
+通常，首先，将示例查询文本添加到意向，然后创建实体和意向页上的语音样本添加标签。 若要先创建实体，请参阅[添加实体](luis-how-to-add-entities.md)。
 
 ## <a name="marking-entities-in-example-utterances"></a>在示例话语中标记实体
 

@@ -8,20 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: a3469e4f7fe1c234a6df694d7bdd6d9e2c46407a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
-ms.translationtype: HT
+ms.openlocfilehash: c5f7b0b739e9311e2527e63db7279d2075f0f1ff
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204892"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341287"
 ---
 # <a name="what-is-text-to-speech"></a>文本到语音转换是什么？
 
 Azure 语音服务从文本到语音转换为一个服务，使你的应用程序、 工具或设备，将文本转换为自然人合成语音。 从标准和神经声音，选择或创建你自己的自定义语音唯一的产品或品牌。 75 标准语音可在多个 45 语言和区域设置，以及 5 神经语音有 4 个语言和区域设置。 有关完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 文本到语音转换技术，使内容创建者可以以不同方式与他们的用户交互。 通过为用户提供用于呼叫与内容进行交互的选项，文本到语音转换可以提高可访问性。 无论用户有视觉障碍者，学习为残疾人士，还是需要导航信息，同时还能降低，文本到语音转换可以提高现有体验。 文本到语音转换也是有价值的语音机器人和虚拟助手外接程序。
+
+
+使用文本到语音转换服务的开发人员可以通过利用语音合成标记语言 (SSML) 一种基于 XML 的标记语言，指定如何输入的文本转换为合成语音。 使用 SSML，您可以调整间距，发音，谈到率、 卷和的详细信息。 有关详细信息，请参阅[SSML](#speech-synthesis-markup-language-ssml)。
 
 ### <a name="standard-voices"></a>标准语音
 

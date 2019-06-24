@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 59155b41906ffd401b971bee1248a225d0c33657
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 08bf1363f3c6c9b68243cc10ffb2785f53e02107
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072448"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342188"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -70,7 +70,7 @@ ms.locfileid: "67072448"
 
 | Header | 描述 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 需要 |
 
 ### <a name="request-body"></a>请求正文
 
@@ -161,10 +161,10 @@ Authorization: Bearer [Base64 access_token]
 
 | Header | 描述 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
-| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必选 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 需要 |
+| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 需要 |
 | `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 需要 |
-| `User-Agent` | 应用程序名称。 提供的值必须是少于 255 个字符。 | 必选 |
+| `User-Agent` | 应用程序名称。 提供的值必须是少于 255 个字符。 | 需要 |
 
 ### <a name="audio-outputs"></a>音频输出
 
@@ -225,6 +225,7 @@ Authorization: Bearer [Base64 access_token]
 | 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
 | 401 | 未授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 |
 | 413 | 请求实体太大 | SSML 输入超过了 1024 个字符。 |
+| 415 | 不支持的媒体类型 | 可能的错误`Content-Type`提供。 `Content-Type` 应设置为`application/ssml+xml`。 | 
 | 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
 | 502 | 错误的网关 | 网络或服务器端问题。 也可能表示标头无效。 |
 
