@@ -150,8 +150,8 @@ V1.1 架构建议，并且不需要 Azure Active Directory 属性。
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
-| KeyEncryptionKeyURL | url | 字符串 |
-| （可选）KeyVaultURL | url | 字符串 |
+| KeyEncryptionKeyURL | url | string |
+| (可选) KeyVaultURL | url | string |
 | Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | OS, Data, All | string |
