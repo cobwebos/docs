@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 607da7983cabe4c36c01171ba8d88c752b99ce3d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721089"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303814"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
-通过使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的实时指标流探测实时和生产时的 Web 应用程序的信号。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 实时指标流与[探查器](../../azure-monitor/app/profiler.md)、[快照调试器](../../azure-monitor/app/snapshot-debugger.md)和[性能测试](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests)一同为实时网站提供了功能强大且非入侵性的诊断工具。
+通过使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的实时指标流探测实时和生产时的 Web 应用程序的信号。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 连同[Profiler](../../azure-monitor/app/profiler.md)，[快照调试程序](../../azure-monitor/app/snapshot-debugger.md)。 实时指标 Stream 实时网站提供了功能强大且非入侵性的诊断工具。
 
 使用实时指标流可实现以下操作：
 
@@ -36,13 +36,13 @@ ms.locfileid: "64721089"
 
 [![实时指标流视频](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-实时指标当前支持的 ASP.NET、 ASP.NET Core、 Azure Functions、 Java 和 Node.js 应用。
+目前 ASP.NET、ASP.NET Core、Azure Functions、Java 和 Node.js 应用支持实时指标。
 
 ## <a name="get-started"></a>开始使用
 
 1. 如果尚未在 Web 应用中[安装 Application Insights](../../azure-monitor/azure-monitor-app-hub.md)，现在请进行安装。
 2. 若要启用实时指标流，除了标准 Application Insights 包之外，还需要 [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)。
-3. 更新到最新版本的 Application Insights 包。 在 Visual Studio 中右键单击项目，然后选择“管理 NuGet 包”。 打开“更新”选项卡，并选择所有的 Microsoft.ApplicationInsights.* 包。
+3. 更新到最新版本的 Application Insights 包。  在 Visual Studio 中右键单击项目，然后选择“管理 NuGet 包”。  打开“更新”  选项卡，并选择所有的 Microsoft.ApplicationInsights.* 包。
 
     重新部署应用。
 
@@ -52,7 +52,7 @@ ms.locfileid: "64721089"
 
 ### <a name="nodejs"></a>Node.js
 
-若要通过 Node.js 使用实时指标必须更新到版本 1.30 或更高版本的 sdk。 默认情况下实时指标禁用 Node.js SDK 中。 若要启用实时指标添加`setSendLiveMetrics(true)`为你[配置方法](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)如初始化 SDK。
+要将实时指标与 Node.js 一起使用，必须更新到 SDK 的 1.30 版或更高版本。 默认情况下，Node.js SDK 中禁用了实时指标。 若要启用实时指标，请在初始化 SDK 时将 `setSendLiveMetrics(true)` 添加到[配置方法](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)。
 
 ### <a name="no-data-check-your-server-firewall"></a>没有数据？ 请检查服务器的防火墙
 
@@ -96,7 +96,7 @@ ms.locfileid: "64721089"
 
 请注意:目前，对于基于异常消息的条件，请使用外部异常消息。 在前面的示例中，若要筛选出具有内部异常消息“客户端已断开连接”（追随“<--”分隔符查找）的良性异常， 请使用不包含“读取请求内容时出错”条件的消息。
 
-单击实时源中的某个项可查看其详细信息。 可以通过单击“暂停”、向下滚动或单击某个项来暂停源。 在实时源处于暂停状态时，滚回到顶部后，或者单击收集的项的计数器时，该实时源会恢复。
+单击实时源中的某个项可查看其详细信息。 可以通过单击“暂停”、向下滚动或单击某个项来暂停源。  在实时源处于暂停状态时，滚回到顶部后，或者单击收集的项的计数器时，该实时源会恢复。
 
 ![采样的实时失败](./media/live-stream/live-metrics-eventdetail.png)
 
@@ -167,7 +167,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 对于使用 API 密钥来保护通道的 Azure 函数应用 (v2)，可以通过一个环境变量来实现。 
 
-从 Application Insights 资源中创建一个 API 密钥，并转到你的 Function App 的**应用程序设置**。 选择“添加新设置”并输入名称 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 和与你的 API 密钥对应的值。
+从 Application Insights 资源中创建一个 API 密钥，并转到你的 Function App 的**应用程序设置**。 选择“添加新设置”  并输入名称 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 和与你的 API 密钥对应的值。
 
 ### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET 核心（需要 Application Insights ASP.NET 核心 SDK 2.3.0 版本或更高版本）
 
@@ -192,15 +192,6 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 >[!NOTE]
 >在筛选条件中输入 CustomerID 等潜在的敏感信息之前，我们强烈建议设置经过身份验证的通道。
 >
-
-## <a name="generating-a-performance-test-load"></a>生成性能测试负载
-
-若要监视负载增大的效果，请使用“性能测试”边栏选项卡。 可模拟多个用户同时发出的请求。 可运行单一 URL 的“手动测试”（ping 测试），或运行上传的[多步骤 Web 性能测试](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests)（方式与可用性测试相同）。
-
-> [!TIP]
-> 创建性能测试后，请在不同窗口中打开测试和“实时流”边栏选项卡。 可以看到排队的性能测试的启动时间，同时监视实时流。
->
-
 
 ## <a name="troubleshooting"></a>故障排除
 

@@ -1,6 +1,6 @@
 ---
-title: 登录后应用程序的页面上有错误 | Microsoft Docs
-description: 如何解决应用程序本身发出错误的 Azure AD 登录问题
+title: 登录后，应用页上会出现错误消息 |Microsoft Docs
+description: 如何解决与 Azure AD 登录应用时返回一条错误消息的问题。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,150 +16,152 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: adfc96d2d7abf38c00f32a5d53615bb7c99c320e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d41ec1f510b028a2ffe2554bfcbd77bc439c4e79
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742385"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272951"
 ---
-# <a name="error-on-an-applications-page-after-signing-in"></a>登录后应用程序的页面上出现错误
+# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>用户登录后，应用页面会显示一条错误消息
 
-在这种情况下，用户已登录到 Azure AD，但应用程序显示错误，使得用户无法成功完成登录流。 在这种情况下，应用程序不接受 Azure AD 作出的响应。
+在此方案中，Azure Active Directory (Azure AD) 让用户登录。 但应用程序显示一条错误消息，不允许用户完成登录流。 问题在于应用程序未接受 Azure AD 发出的响应。
 
-应用程序不接受来自 Azure AD 的响应的原因可能有几个。 如果无法根据应用程序的错误清楚知道响应中缺少的内容，那么：
+有几个可能的原因，应用程序为何未接受来自 Azure AD 的响应。 如果不清楚地响应中缺少了什么识别错误消息，请尝试以下解决方法：
 
--   如果应用程序位于 Azure AD 库，请确认已遵循[如何在 Azure Active Directory 中调试对应用程序进行基于 SAML 的单一登录](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)文章中的所有步骤。
+-   如果 Azure AD 库应用，则验证是否遵循中的步骤[如何在 Azure AD 中调试基于 SAML 的单一登录对应用程序](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)。
 
--   使用 [Fiddler](https://www.telerik.com/fiddler) 之类的工具捕获 SAML 请求、SAML 响应和 SAML 令牌。
+-   使用之类的工具[Fiddler](https://www.telerik.com/fiddler)捕获 SAML 请求、 响应和令牌。
 
--   与应用程序供应商共享 SAML 响应以了解缺少的内容。
+-   发送到应用程序供应商为 SAML 响应并请求他们缺少的内容。
 
-## <a name="missing-attributes-in-the-saml-response"></a>SAML 响应中缺少属性
+## <a name="attributes-are-missing-from-the-saml-response"></a>属性是 SAML 响应中缺少
 
-若要在 Azure AD 配置中添加要在 Azure AD 响应中发送的属性，请执行以下步骤：
+若要将 Azure AD 响应中发送的 Azure AD 配置中添加的属性，请按照下列步骤：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。  
+1. 打开[ **Azure 门户**](https://portal.azure.com/)并以全局管理员或共同管理员。
 
-2. 在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
+2. 在左侧导航窗格的顶部，选择**所有服务**以打开 Azure AD 扩展。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
+3. 类型**Azure Active Directory**在筛选器搜索框，然后选择**Azure Active Directory**。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”  。
+4. 选择**企业应用程序**在 Azure AD 的导航窗格中。
 
-5. 单击“所有应用程序”  ，查看所有应用程序的列表。
+5. 选择**所有应用程序**若要查看您的应用程序的列表。
 
-   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”  顶部的“筛选器”  控件，并将“显示”  选项设为“所有应用程序”  。
+   > [!NOTE]
+   > 如果未看到所需的应用，使用**筛选器**顶部的控件**应用程序列表中所有**。 设置**显示**选项为"所有应用程序。"
 
-6. 选择要配置单一登录的应用程序。
+6. 选择想要配置为单一登录的应用程序。
 
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”  。
+7. 应用程序加载后，选择**单一登录**在导航窗格中。
 
-8. 单击“用户属性”  部分下的“查看和编辑所有其他用户属性”  ，以编辑在用户登录时要发送至应用程序（位于 SAML 令牌中）的属性。
+8. 在中**用户属性**部分中，选择**视图和编辑所有其他用户属性**。 可以在此处更改要将用户登录时发送到 SAML 令牌中的应用程序的属性。
 
    若要添加属性：
 
-   * 单击“添加属性”  。 输入“名称”  ，并从下拉列表中选择“值”  。
+   1. 选择“添加属性”。  输入**名称**，然后选择**值**从下拉列表。
 
-   * 单击“保存”  。 然后就能在表中看到新属性了。
+   1.  选择“保存”。  你将看到表中的新属性。
 
 9. 保存配置。
 
-用户下次登录应用程序时，Azure AD 便会发送 SAML 响应中的新属性。
+   下次用户登录到应用程序中，Azure AD 将在 SAML 响应中发送新的属性。
 
-## <a name="the-application-doesnt-identify-the-user"></a>应用程序不会标识用户
+## <a name="the-app-doesnt-identify-the-user"></a>应用程序不会标识用户
 
-登录到应用程序失败因为 SAML 响应缺少属性，如角色或应用程序需要不同的格式或 EntityID 属性的值。
+登录到应用程序失败，因为 SAML 响应缺少属性如一个角色。 它会失败，因为该应用程序需要不同的格式或值或**NameID** （用户标识符） 特性。
 
-如果您使用的[Azure AD 自动用户预配](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)创建、 维护和删除应用程序中的用户。 然后，确保用户已成功设置到 SaaS 应用程序。 有关详细信息，请参阅[没有用户预配到 Azure AD 库应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
+如果您使用的[Azure AD 自动用户预配](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)要创建，维护和删除应用中的用户，验证对 SaaS 应用程序预配用户。 有关详细信息，请参阅[没有用户预配到 Azure AD 库应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)。
 
-## <a name="add-an-attribute-in-the-azure-ad-application-configuration"></a>在 Azure AD 应用程序配置中添加属性:
+## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>将属性添加到 Azure AD 应用程序配置
 
 若要更改用户标识符值，请执行以下步骤：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。  
+1. 打开[ **Azure 门户**](https://portal.azure.com/)并以全局管理员或共同管理员。
 
-2. 在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
+2. 选择**所有服务**左侧和右侧以打开 Azure AD 扩展导航窗格的顶部。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
+3. 类型**Azure Active Directory**在筛选器搜索框，然后选择**Azure Active Directory**。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”  。
+4. 选择**企业应用程序**在 Azure AD 的导航窗格中。
 
-5. 单击“所有应用程序”  ，查看所有应用程序的列表。
+5. 选择**所有应用程序**若要查看您的应用程序的列表。
 
-   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”  顶部的“筛选器”  控件，并将“显示”  选项设为“所有应用程序”  。
+   > [!NOTE]
+   > 如果未看到所需的应用，使用**筛选器**顶部的控件**应用程序列表中所有**。 设置**显示**选项为"所有应用程序。"
 
-6. 选择要配置单一登录的应用程序。
+6. 选择你想要为 SSO 配置的应用。
 
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”  。
+7. 应用程序加载后，选择**单一登录**在导航窗格中。
 
-8. 在“用户属性”  下的“用户标识符”  下拉列表中，为用户选择唯一标识符。
+8. 下**用户属性**，选择从用户的唯一标识符**用户标识符**下拉列表。
 
-## <a name="change-entityid-user-identifier-format"></a>更改 EntityID（用户标识符）格式
+## <a name="change-the-nameid-format"></a>NameID 格式更改
 
-如果应用程序需要其他格式的 EntityID 属性。 将无法选择在用户进行身份验证后，Azure AD 在响应中发送给应用程序的 EntityID（用户标识符）格式。
+如果应用程序需要其他格式**NameID** （用户标识符） 属性，请参阅[编辑 nameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization.md#editing-nameid) NameID 格式更改。
 
-Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式，为 NameID 属性（用户标识符）选择格式。 有关详细信息，请参阅 NameIDPolicy 部分下的[单一登录 SAML 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest)文章。
+Azure AD 中选择的格式**NameID**属性 （用户标识符） 基于选择的值或 SAML AuthRequest 中应用请求的格式。 有关详细信息，请参阅的"NameIDPolicy"部分[单一登录 SAML 协议](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy)。
 
-## <a name="the-application-expects-a-different-signature-method-for-the-saml-response"></a>应用程序对 SAML 响应要求其他签名方法
+## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>应用应在 SAML 响应不同的签名方法
 
-若要更改 SAML 令牌中由 Azure Active Directory 进行数字签名的部分。 执行以下步骤:
+若要更改 SAML 令牌中的哪些部分由 Azure AD 进行了数字签名，请按照下列步骤：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。  
+1. 打开[Azure 门户](https://portal.azure.com/)并以全局管理员或共同管理员。
 
-2. 在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
+2. 选择**所有服务**左侧和右侧以打开 Azure AD 扩展导航窗格的顶部。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
+3. 类型**Azure Active Directory**在筛选器搜索框，然后选择**Azure Active Directory**。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”  。
+4. 选择**企业应用程序**在 Azure AD 的导航窗格中。
 
-5. 单击“所有应用程序”  ，查看所有应用程序的列表。
+5. 选择**所有应用程序**若要查看您的应用程序的列表。
 
-   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”  顶部的“筛选器”  控件，并将“显示”  选项设为“所有应用程序”  。
+   > [!NOTE]
+   > 如果看不到所需的应用程序，使用**筛选器**顶部的控件**应用程序列表中所有**。 设置**显示**选项为"所有应用程序。"
 
-6. 选择要配置单一登录的应用程序。
+6. 选择想要配置为单一登录的应用程序。
 
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”  。
+7. 应用程序加载后，选择**单一登录**在导航窗格中。
 
-8. 单击“SAML 签名证书”  部分下的“显示高级证书签名设置”  。
+8. 下**SAML 签名证书**，选择**显示高级证书签名设置**。
 
-9. 选择应用程序要求的相应“签名选项”  ：
+9. 选择**签名选项**，应用应在从这些选项中进行：
 
-   * 对 SAML 响应进行签名
+   * **签名 SAML 响应**
+   * **签名 SAML 响应和断言**
+   * **SAML 断言进行签名**
 
-   * 对 SAML 响应和断言进行签名
+   下次用户登录到应用程序中，Azure AD 签名 SAML 响应所选的一部分。
 
-   * 对 SAML 断言进行签名
+## <a name="the-app-expects-the-sha-1-signing-algorithm"></a>应用程序要求 sha-1 签名算法
 
-用户下次登录应用程序时，Azure AD 会对所选择的 SAML 响应部分进行签名。
-
-## <a name="the-application-expects-the-signing-algorithm-to-be-sha-1"></a>应用程序要求 SHA-1 签名算法
-
-默认情况下，Azure AD 使用最安全的算法对 SAML 令牌进行签名。 除非应用程序要求，否则不建议将签名算法更改为 SHA-1。
+默认情况下，Azure AD 签名 SAML 令牌使用最安全的算法。 我们建议你不要更改到的签名算法*sha-1*除非应用程序要求 sha-1。
 
 若要更改签名算法，请执行以下步骤：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。  
+1. 打开[Azure 门户](https://portal.azure.com/)并以全局管理员或共同管理员。
 
-2. 在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
+2. 选择**所有服务**左侧和右侧以打开 Azure AD 扩展导航窗格的顶部。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
+3. 类型**Azure Active Directory**在筛选器搜索框，然后选择**Azure Active Directory**。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”  。
+4. 选择**企业应用程序**在 Azure AD 的导航窗格中。
 
-5. 单击“所有应用程序”  ，查看所有应用程序的列表。
+5. 选择**所有应用程序**若要查看应用程序的列表。
 
-   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”  顶部的“筛选器”  控件，并将“显示”  选项设为“所有应用程序”  。
+   > [!NOTE]
+   > 如果看不到所需的应用程序，使用**筛选器**顶部的控件**应用程序列表中所有**。 设置**显示**选项为"所有应用程序。"
 
-6. 选择要配置单一登录的应用程序。
+6. 选择想要配置为单一登录的应用。
 
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”  。
+7. 应用程序加载后，选择**单一登录**从应用程序的左侧导航窗格。
 
-8. 单击“SAML 签名证书”  部分下的“显示高级证书签名设置”  。
+8. 下**SAML 签名证书**，选择**显示高级证书签名设置**。
 
-9. 在“签名算法”  中选择“SHA-1”。
+9. 选择**sha-1**作为**签名算法**。
 
-用户下次登录应用程序时，Azure AD 会使用 SHA-1 算法对 SAML 令牌进行签名。
+   下次用户登录到应用程序中，Azure AD 会使用 sha-1 算法签名的 SAML 令牌。
 
 ## <a name="next-steps"></a>后续步骤
-[如何在 Azure Active Directory 中调试对应用程序进行基于 SAML 的单一登录](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)
+[如何在 Azure AD 中调试基于 SAML 的单一登录对应用程序](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)。

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 48c59ddc1e203030bd967911d536930cb94761d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1cb7c9aa0844c82acd333c4f9dd87a4dda013e7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356179"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165337"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>安全地运行试验和在 Azure 虚拟网络内的推理
 
@@ -35,9 +35,13 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
 ## <a name="storage-account-for-your-workspace"></a>工作区的存储帐户
 
 > [!IMPORTANT]
-> 您可以将只有在执行试验时，附加到虚拟网络背后的 Azure 机器学习服务工作区的存储帐户。 推理需要无限制的访问的存储帐户。 如果不确定是否已修改这些设置，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)中的“更改默认网络访问规则”。  使用步骤期间推理，允许来自所有网络访问或模型评分。
+> __默认存储帐户__在 Azure 机器学习服务可以位于虚拟网络__仅在执行试验时__。
+>
+> 有关__试验的非默认存储帐户__，或者如果正在使用的存储帐户__推理__，您必须具有__无限访问权限的存储帐户__.
+> 
+> 如果不确定是否已修改这些设置，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)中的“更改默认网络访问规则”。  使用步骤期间推理，允许来自所有网络访问或模型评分。
 
-若要使用 Azure 机器学习的试验功能与 Azure 存储的虚拟网络的后面，请执行以下步骤：
+若要使用的位置的虚拟网络中的工作区的默认 Azure 存储帐户，请使用以下步骤：
 
 1. 创建示例试验计算。 机器学习计算后的虚拟网络或附加到工作区 ex 试验计算。 HDInsight 群集或虚拟机。 有关详细信息，请参阅[使用机器学习计算](#use-machine-learning-compute)并[使用虚拟机或 HDInsight 群集](#use-a-virtual-machine-or-hdinsight-cluster)本文档中的部分
 2. 请转到附加到工作区的存储。 ![显示连接到 Azure 机器学习服务工作区的 Azure 存储的 Azure 门户的映像](./media/how-to-enable-virtual-network/workspace-storage.png)

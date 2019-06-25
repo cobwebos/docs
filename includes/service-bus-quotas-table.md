@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: f48ad6ca74e6ce10148d66549fea16bc74015b2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c1c4a0384342db82ee9c1f6b9e806188d5949681
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171218"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67235250"
 ---
 下表列出了特定于 Azure 服务总线消息传送配额信息。 有关定价的信息和其他服务总线配额，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 | 配额名称 | 范围 | 说明 | 值 |
 | --- | --- | --- | --- |
 | 每个 Azure 订阅的基本或标准命名空间的最大数目 |命名空间 |通过 Azure 门户将拒绝更多基本或标准命名空间的后续请求。 |100|
-| 每个 Azure 订阅的高级命名空间的最大数目 |命名空间 |更多高级命名空间的后续请求会被门户拒绝。 |25 |
+| 每个 Azure 订阅的高级命名空间的最大数目 |命名空间 |更多高级命名空间的后续请求会被门户拒绝。 |50 |
 | 队列或主题大小 |实体 |创建队列或主题时定义。 <br/><br/> 将拒绝后续的传入消息，且调用代码会收到异常。 |1、2、3、4 GB 或 5 GB。<br /><br />在高级 SKU，并使用标准 SKU[分区](/azure/service-bus-messaging/service-bus-partitioning)启用，最大队列或主题大小是 80 GB。 |
 | 命名空间上的并发连接数 |命名空间 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 REST 操作不计入并发 TCP 连接。 |NetMessaging：1,000.<br /><br />AMQP：5,000. |
 | 并发接收队列、 主题或订阅实体上的请求数 |实体 |后续的接收请求被拒绝，并且调用代码会收到异常。 此配额适用于一个主题上所有订阅的并发接收操作总数。 |5,000 |

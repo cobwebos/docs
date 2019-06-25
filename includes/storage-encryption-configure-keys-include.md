@@ -9,11 +9,11 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.custom: include
 ms.openlocfilehash: 3076065d23d4701711c0ecb60349e77ee5c9b7c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115428"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173165"
 ---
 Azure 存储使用 Microsoft 托管的密钥或客户托管密钥支持静态加密。 使用客户管理的密钥可以创建、轮换、禁用和撤销访问控制。
 

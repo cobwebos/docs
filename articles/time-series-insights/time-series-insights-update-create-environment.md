@@ -114,7 +114,7 @@ ms.locfileid: "66237844"
     | **属性 ID** | 输入一个用于唯一标识时序实例的值。 在“属性 ID”框中输入的值  是固定不变的。 之后不能更改它。 在本教程中，请输入 **iothub-connection-device-id**。若要详细了解时序 ID，请参阅[选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。 |
     | **存储帐户名称** | 为要创建的新存储帐户输入全局唯一名称。 |
    
-   在完成时选择“下一步:**事件源”  。
+   在完成时选择“下一步:**事件源”** 。
 
    [![用于创建时序见解环境的窗格](media/v2-update-provision/payg-two-create.png)](media/v2-update-provision/payg-two-create.png#lightbox)
 

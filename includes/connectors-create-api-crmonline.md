@@ -1,10 +1,15 @@
 ---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
 ms.openlocfilehash: 53c683dacbb3b94e34bd8662743673c3a0490d94
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119955"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205824"
 ---
 #### <a name="prerequisites"></a>必备组件
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
@@ -14,11 +19,11 @@ ms.locfileid: "62119955"
 
 按照以下步骤操作，即可授权逻辑应用连接到 CRM Online 帐户：
 
-1. 创建逻辑应用。 在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“dynamics”。 选择其中一个触发器或操作：  
+1. 创建逻辑应用。 在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”  ，并在搜索框中输入“dynamics”。 选择其中一个触发器或操作：  
    ![](./media/connectors-create-api-crmonline/dynamics-triggers.png)
 2. 如果以前尚未创建任何与 Dynamics 的连接，系统会提示使用 Dynamics 凭据进行登录：  
    ![](./media/connectors-create-api-crmonline/dynamics-signin.png)
-3. 选择“登录”，并输入用户名和密码。 选择“登录”。 
+3. 选择“登录”  ，并输入用户名和密码。 选择“登录”  。 
    
     这些凭据将用于授权逻辑应用连接到你的 Dynamics 帐户，并访问该帐户中的数据。 
 4. 请注意，连接已创建。 现在，继续在逻辑应用中执行其他步骤：  

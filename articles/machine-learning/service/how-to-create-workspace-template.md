@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: abe497ed96515e8194fb2ddefd8e7f4cb9908758
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c5491bab9b45df11c2fe81aa933a1a34c49a41b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205128"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205940"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>使用 Azure 资源管理器模板来创建用于 Azure 机器学习服务的工作区
 
@@ -99,7 +99,7 @@ az group deployment create \
   --name exampledeployment \
   --resource-group examplegroup \
   --template-file azuredeploy.json \
-  --parameters workspaceName=exampleworkspace
+  --parameters workspaceName=exampleworkspace location=eastus
 ```
 
 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)和[使用 SAS 令牌和 Azure CLI 部署专用资源管理器模板](../../azure-resource-manager/resource-manager-cli-sas-token.md)。

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
 ms.openlocfilehash: 6b9577bcf8b527abb0cb7b8720ed83ec8321655b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64724479"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
@@ -59,7 +59,7 @@ ms.locfileid: "64724479"
 
 __脚本位置__：[https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
-__要求__：该脚本必须应用在__头节点__上。 无需将此脚本标记为“持久化”，因为它直接更新群集的 Ambari 配置。
+__要求__：该脚本必须应用在__头节点__上。 无需将此脚本标记为“持久化”  ，因为它直接更新群集的 Ambari 配置。
 
 ## <a name="to-use-the-script"></a>使用脚本
 
@@ -108,11 +108,11 @@ az hdinsight script-action execute ^
 
 ### <a name="storage-firewall"></a>存储防火墙
 
-如果您选择要保护使用存储帐户**防火墙和虚拟网络**限制**选定的网络**，请务必启用例外**允许受信任的 Microsoft服务...** ，以便 HDInsight 可以访问你的存储帐户。
+如果选择在“选定网络”上通过“防火墙和虚拟网络”限制来保护存储帐户的安全，   请务必启用例外“允许受信任的 Microsoft 服务...”，  这样 HDInsight 就能访问存储帐户。
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>存储帐户未显示在 Azure 门户或工具中
 
-在 Azure 门户中查看 HDInsight 群集时，选择“属性”下的“存储帐户”项，则不会显示通过此脚本操作添加的存储帐户。 Azure PowerShell 和 Azure CLI 也不会显示其他存储帐户。
+在 Azure 门户中查看 HDInsight 群集时，选择“属性”  下的“存储帐户”  项，则不会显示通过此脚本操作添加的存储帐户。 Azure PowerShell 和 Azure CLI 也不会显示其他存储帐户。
 
 存储信息未显示是因为该脚本只修改群集的 core-site.xml 配置。 使用 Azure 管理 API 检索群集信息时，不使用此信息。
 
@@ -201,9 +201,9 @@ jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNA
 
     出现提示时，请输入群集的 HTTP 登录用户和密码。
 
-2. 从页面左侧的服务列表中选择“HDFS”。 然后，在页面中心选择 __“配置”__ 选项卡。
+2. 从页面左侧的服务列表中选择“HDFS”  。 然后，在页面中心选择 __“配置”__ 选项卡。
 
-3. 在“筛选...”字段中，输入值 __fs.azure.account__。 这会返回已添加到群集的任何其他存储帐户的条目。 条目的类型为两种：__keyprovider__ 和 __key__。 这两种类型都包含存储帐户名称，作为密钥名称的一部分。
+3. 在“筛选...”  字段中，输入值 __fs.azure.account__。 这会返回已添加到群集的任何其他存储帐户的条目。 条目的类型为两种：__keyprovider__ 和 __key__。 这两种类型都包含存储帐户名称，作为密钥名称的一部分。
 
     以下是名为 __mystorage__ 的存储帐户的示例条目：
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: b61abee3382697d50b9a18de763c8a4d01e1ccba
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64701849"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中保存报表
@@ -106,9 +106,9 @@ ms.locfileid: "64701849"
 ```
 
 > [!IMPORTANT]
-> 只有在调用“另存为”之后，才能创建新报表。 保存后，画布仍显示处于编辑模式的旧报表，而不是新报表。 嵌入已创建的新报表。 嵌入新报表需要获取新的访问令牌，因为令牌是针对每个报表创建的。
+> 只有在调用“另存为”之后，才能创建新报表。  保存后，画布仍显示处于编辑模式的旧报表，而不是新报表。 嵌入已创建的新报表。 嵌入新报表需要获取新的访问令牌，因为令牌是针对每个报表创建的。
 
-然后，需要在执行“另存为”操作后加载新报表。 加载新报表类似于嵌入任何报表。
+然后，需要在执行“另存为”  操作后加载新报表。 加载新报表类似于嵌入任何报表。
 
 ```html
 <div id="reportContainer"></div>

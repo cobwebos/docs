@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
 ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152422"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
@@ -29,7 +29,7 @@ ms.locfileid: "66152422"
 
 - **Azure 数据工厂**:如果你没有帐户，遵循相应的步骤[创建数据工厂](quickstart-create-data-factory-portal.md#create-a-data-factory)。
 
-- **SAP BW 开放中心目标 (OHD) 与目标类型"数据库表"**:若要创建 OHD 或检查你 OHD 是否正确配置为数据工厂集成，请参阅[SAP BW Open Hub 目标配置](#sap-bw-open-hub-destination-configurations)本文的部分。
+- **SAP BW 开放中心目标 (OHD) 与目标类型"数据库表"** :若要创建 OHD 或检查你 OHD 是否正确配置为数据工厂集成，请参阅[SAP BW Open Hub 目标配置](#sap-bw-open-hub-destination-configurations)本文的部分。
 
 - **SAP BW 用户需要以下权限**:
 
@@ -76,7 +76,7 @@ ms.locfileid: "66152422"
 
 6. 如果你需要一个，指定筛选器。 如果你 OHD 仅包含与单个请求 ID，在单个数据传输进程 (DTP) 执行中的数据，或确保在 DTP 完成，并且你想要复制的数据，清除**排除上一次请求**复选框。
 
-   了解有关这些设置的详细信息[SAP BW Open Hub 目标配置](#sap-bw-open-hub-destination-configurations)本文的部分。 选择**验证**要仔细检查不会返回哪些数据。 然后，选择“下一步”。
+   了解有关这些设置的详细信息[SAP BW Open Hub 目标配置](#sap-bw-open-hub-destination-configurations)本文的部分。 选择**验证**要仔细检查不会返回哪些数据。 然后，选择“下一步”  。
 
    ![配置 SAP BW Open Hub 筛选器](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
@@ -87,9 +87,9 @@ ms.locfileid: "66152422"
    ![创建 ADLS 第 2 代链接的服务页](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. 选择从帐户的 Data Lake 存储支持第 2 代**名称**下拉列表。
-   2. 选择“完成”以创建连接。 然后，选择“下一步”。
+   2. 选择“完成”  以创建连接。 然后，选择“下一步”  。
 
-9. 上**选择输出文件或文件夹**页上，输入**copyfromopenhub**作为输出文件夹名称。 然后，选择“下一步”。
+9. 上**选择输出文件或文件夹**页上，输入**copyfromopenhub**作为输出文件夹名称。 然后，选择“下一步”  。
 
    ![选择文件夹输出页](media/load-sap-bw-data/choose-output-folder.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "66152422"
 
     ![指定接收器格式页](media/load-sap-bw-data/specify-sink-format.png)
 
-11. 上**设置**页上，展开**性能设置**。 输入一个值**复制度**例如 5 并行加载来自 SAP BW。 然后，选择“下一步”。
+11. 上**设置**页上，展开**性能设置**。 输入一个值**复制度**例如 5 并行加载来自 SAP BW。 然后，选择“下一步”  。
 
     ![配置复制设置](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. 上**摘要**页上，查看设置。 然后，选择“下一步”。
+12. 上**摘要**页上，查看设置。 然后，选择“下一步”  。
 
 13. 上**部署**页上，选择**监视器**来监视管道。
 
@@ -111,7 +111,7 @@ ms.locfileid: "66152422"
 
     ![监视视图的管道](media/load-sap-bw-data/pipeline-monitoring.png)
 
-15. 若要查看与管道运行相关联的活动运行，请选择**查看活动运行**中**操作**列。 该管道只包含一个活动（复制活动），因此只显示了一个条目。 若要切换回到管道运行视图，请选择**管道**顶部的链接。 选择“刷新”可刷新列表。
+15. 若要查看与管道运行相关联的活动运行，请选择**查看活动运行**中**操作**列。 该管道只包含一个活动（复制活动），因此只显示了一个条目。 若要切换回到管道运行视图，请选择**管道**顶部的链接。 选择“刷新”可刷新列表。 
 
     ![活动监视屏幕](media/load-sap-bw-data/activity-monitoring.png)
 
@@ -187,7 +187,7 @@ ms.locfileid: "66152422"
 
       3. 添加**创建的 blob**操作。 有关**文件夹路径**并**Blob 名称**，使用以前配置中的相同值**HighWatermarkBlobPath**和**HighWatermarkBlobName**.
 
-      4. 选择“保存”。 然后，将复制的值**HTTP POST URL**若要在数据工厂管道中使用。
+      4. 选择“保存”。  然后，将复制的值**HTTP POST URL**若要在数据工厂管道中使用。
 
 4. 提供数据工厂管道参数后，选择**调试** > **完成**调用运行验证配置。 或者，选择**全部发布**以发布所做的更改，然后选择**触发器**执行运行。
 

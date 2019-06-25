@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: b8585b62b0728d1ba6e010e42b44840903c46833
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66146912"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173418"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 **Azure 存储链接服务**可让你使用**帐户密钥**（为数据工厂提供 Azure 存储的全局访问权限）将 Azure 存储帐户链接到 Azure 数据工厂。 下表提供 Azure 存储链接服务专属 JSON 元素的描述。

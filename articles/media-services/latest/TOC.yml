@@ -19,29 +19,19 @@
         - name: 利用 Node.js
           href: stream-files-nodejs-quickstart.md
     - name: 对上传的文件和流视频进行编码
-      items:
-        - name: 使用 .NET
-          displayName: 'encode, encoding, job, transform'
-          href: stream-files-tutorial-with-api.md
+      displayName: 'encode, encoding, job, transform'
+      href: stream-files-tutorial-with-api.md
     - name: 实时流式处理
-      items:
-        - name: 使用 .NET
-          href: stream-live-tutorial-with-api.md
-          displayName: 'Live Events, Live Outputs, ingest'
+      href: stream-live-tutorial-with-api.md
+      displayName: 'Live Events, Live Outputs, ingest'
     - name: 分析视频
-      items:
-        - name: 使用 .NET
-          displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-          href: analyze-videos-tutorial-with-api.md
+      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
+      href: analyze-videos-tutorial-with-api.md
     - name: 通过 AES-128 进行动态加密
-      items:
-        - name: 使用 .NET
-          href: protect-with-aes128.md
+      href: protect-with-aes128.md
     - name: 通过 DRM 进行动态加密
-      items:
-        - name: 使用 .NET
-          displayName: 'PlayReady, Widevine, FairPlay'
-          href: protect-with-drm.md
+      displayName: 'PlayReady, Widevine, FairPlay'
+      href: protect-with-drm.md
 - name: 概念
   items:
     - name: 概述

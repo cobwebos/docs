@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-pawal
-ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4133cec401723ab103b0b3bfff62eee21b653e2b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387520"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331822"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -31,20 +31,20 @@ ms.locfileid: "66387520"
 
 ## <a name="base-urls"></a>基 URL
 
-Microsoft Translator 位于多个数据中心位置之外。 目前位于 6 个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions)中：
+Microsoft Translator 位于多个数据中心位置之外。 这些文件在当前位于 6 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/regions):
 
 * **美洲：** 美国西部 2 和美国中西部 
 * **亚太区：** 亚洲东南部和韩国南部
 * **欧洲：** 欧洲北部和欧洲西部
 
-在大多数情况下，对 Microsoft 文本翻译 API 的请求由距离请求的来源位置最近的数据中心处理。 如果数据中心发生故障，则可能会在该区域之外路由请求。
+在大多数情况下，对 Microsoft 文本翻译 API 的请求由距离请求的来源位置最近的数据中心处理。 如果出现数据中心故障，可能 Azure 地理位置外部路由请求。
 
-若要强制特定数据中心处理该请求，请将 API 请求中的全球终结点更改为所需的区域终结点：
+若要强制执行由特定 Azure 地理位置处理的请求，请更改为所需的区域的终结点的 API 请求中的全局终结点：
 
-|描述|区域|基 URL|
+|描述|Azure 地理位置|基 URL|
 |:--|:--|:--|
-|Azure|全局|  api.cognitive.microsofttranslator.com|
-|Azure|北美|   api-nam.cognitive.microsofttranslator.com|
+|Azure|全局 （非区域性）|   api.cognitive.microsofttranslator.com|
+|Azure|美国|   api-nam.cognitive.microsofttranslator.com|
 |Azure|欧洲|  api-eur.cognitive.microsofttranslator.com|
 |Azure|亚太区|    api-apc.cognitive.microsofttranslator.com|
 
@@ -144,7 +144,7 @@ Authorization: Bearer <Base64-access_token>
 | 400036| 目标语言（“To”字段）缺失或无效。|
 | 400042| 指定的某个选项（“Options”字段）无效。|
 | 400043| 客户端跟踪 ID（ClientTraceId 字段或 X-ClientTranceId 标头）缺失或无效。|
-| 400050| 输入文本过长。 视图[请求限制](../request-limits.md)。|
+| 400050| 输入文本过长。 查看[请求限制](../request-limits.md)。|
 | 400064| “translation”参数缺失或无效。|
 | 400070| 目标脚本（ToScript 参数）的数目与目标语言（To 参数）的数目不匹配。|
 | 400071| TextType 的值无效。|
@@ -152,17 +152,18 @@ Authorization: Bearer <Base64-access_token>
 | 400073| 脚本参数无效。|
 | 400074| 请求正文是无效的 JSON。|
 | 400075| 语言对和类别组合无效。|
-| 400077| 超过了最大请求大小。 视图[请求限制](../request-limits.md)。|
+| 400077| 超过了最大请求大小。 查看[请求限制](../request-limits.md)。|
 | 400079| 请求用于在源语言与目标语言之间进行翻译的自定义系统不存在。|
+| 400080| 音译不支持的语言或脚本。|
 | 401000| 由于凭据缺失或无效，请求未授权。|
 | 401015| “提供的凭据适用于语音 API。 此请求需要文本 API 的凭据。 请使用文本翻译 API 的订阅。”|
 | 403000| 不允许该操作。|
 | 403001| 由于订阅已超过其免费配额，因此不允许该操作。|
 | 405000| 请求的资源不支持该请求方法。|
-| 408001| 正在准备所需的翻译系统。 请在几分钟后重试。|
-| 408002| 请求已超时等待传入的流。 客户端没有已准备好服务器要等待的时间内生成请求。 客户端可以在任何更高版本时重复而无需修改请求。|
+| 408001| 正在准备所请求的翻译系统。 请在几分钟后重试。|
+| 408002| 等待传入流时请求超时。 客户端没有在服务器准备等待的时间内生成请求。 客户端可以在以后的任何时间重复该请求，而不做任何修改。|
 | 415000| Content-Type 标头缺失或无效。|
-| 429000、429001、429002| 服务器拒绝了请求，因为客户端已超出请求限制。|
+| 429000、429001、429002| 由于客户端已超出请求限制，服务器拒绝了请求。|
 | 500000| 发生了意外错误。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 | 503000| 服务暂时不可用。 请重试。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 

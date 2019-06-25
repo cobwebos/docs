@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 007b6c409dde248a4dde7a15fd16b543add234bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57e66d449b194662bfc03f7e130cf49c02a15793
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64870307"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275712"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>管理 AWS 成本和在 Azure 中的使用情况
 
@@ -129,6 +129,8 @@ _在开始之前_:如果已熟悉成本分析，请参阅[探索和分析使用�
 
 ### <a name="no-permission-to-aws-linked-accounts"></a>AWS 链接的帐户没有权限
 
+**错误代码：** _未经授权_
+
 有两种方法以获取权限来访问链接的 AWS 帐户费用：
 
 - 获取对具有 AWS 链接帐户的管理组的访问权限。
@@ -136,7 +138,11 @@ _在开始之前_:如果已熟悉成本分析，请参阅[探索和分析使用�
 
 默认情况下，AWS 连接器创建者是创建了连接器的所有对象的所有者。 包括 AWS 合并的帐户和 AWS 链接帐户。
 
+若要验证连接器设置将需要至少一个参与者角色，读取器无法验证连接器设置
+
 ### <a name="collection-failed-with-assumerole"></a>失败，出现 AssumeRole 集合
+
+**错误代码：** _FailedToAssumeRole_
 
 此错误意味着成本管理是无法调用 AWS AssumeRole API。 此问题可能是由角色定义的问题。 验证以下条件为真：
 
@@ -147,11 +153,23 @@ _在开始之前_:如果已熟悉成本分析，请参阅[探索和分析使用�
 
 ### <a name="collection-failed-with-access-denied"></a>失败，出现拒绝访问的集合
 
+- **错误代码：** _AccessDeniedReportDefinitions_ 
+- **错误代码：** _AccessDeniedListReports_ 
+- **错误代码：** _AccessDeniedDownloadReport_ 
+
 此错误消息意味着成本管理是无法访问存储在 Amazon S3 存储桶的当前文件。 请确保附加到角色的 AWS JSON 策略类似于在底部所示的示例[在 AWS 中创建角色和策略](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)部分。
 
-### <a name="connector-error-with-failedtofindreport"></a>使用 FailedToFindReport 连接器错误
+### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>集合失败，因为我们找不到的成本和使用情况报告
+
+**错误代码：** _FailedToFindReport_
 
 此错误意味着成本管理找不到连接器中定义的成本和使用情况报告。 请确保它不会被删除，附加到角色的 AWS JSON 策略类似于在底部所示的示例[在 AWS 中创建角色和策略](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)部分。
+
+### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>无法创建或验证由于成本和使用情况报表定义不匹配的连接器
+
+**错误代码：** _ReportIsNotValid_
+
+此错误与 AWS 成本和使用情况报表定义我们为此报表要求特定的设置，请参阅中的要求[在 AWS 中创建的成本和使用情况报表](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 资源的 Azure 存储 blob 和队列管理的标识的访问进行身份验证 |Microsoft Docs
-description: Azure Blob 和队列存储支持 Azure 资源管理的标识与 Azure Active Directory 身份验证。 可以使用 Azure 资源的托管标识在应用程序中验证对 Blob 和队列的访问权限，此类应用程序可以运行在 Azure 虚拟机、函数应用、虚拟机规模集等位置中。
+title: 授予对 Azure 资源-Azure 存储 blob 和队列与 Azure Active Directory 和管理的标识的访问权限
+description: Azure Blob 和队列存储支持授予对具有 Azure Active Directory 和管理的标识资源的 Azure 资源的访问权限。 可以使用 Azure 资源的管理的标识来授予对 blob 和队列从 Azure 虚拟机、 函数应用、 虚拟机规模集和其他人中运行的应用程序的访问权限。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,14 +9,14 @@ ms.date: 04/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f7525c3e125010bb4db9655bc214861e22dc8875
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23e1171a8757d021b8c6d38f90bdbf720014045f
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787966"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303422"
 ---
-# <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>对 blob 和队列与 Azure Active Directory 和管理的标识访问 Azure 资源进行身份验证
+# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure 资源的授权访问的 blob 和队列与 Azure Active Directory 和管理的标识
 
 Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 有关 Azure 资源可以授权访问 blob 和队列数据使用 Azure AD 凭据从 Azure 虚拟机 (Vm)、 函数应用、 虚拟机规模集和其他服务中运行的应用程序托管标识。 通过使用与 Azure AD 身份验证的 Azure 资源管理的标识，可以避免存储在云中运行应用程序使用的凭据。  
 

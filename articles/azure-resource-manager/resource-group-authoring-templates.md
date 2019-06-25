@@ -2,17 +2,16 @@
 title: Azure 资源管理器模板的结构和语法 | Microsoft Docs
 description: 使用声明性 JSON 语法描述 Azure 资源管理器模板的结构和属性。
 author: tfitzmac
-ms.assetid: 19694cb4-d9ed-499a-a2cc-bcfc4922d7f5
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: e3b8b6b969568fc15558002c268cdc4a16c2fadd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab8e4f5f6506f80b62c112298f73f95bc7fedeaf
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431240"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204362"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 
@@ -37,7 +36,7 @@ ms.locfileid: "66431240"
 }
 ```
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
 | $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。<br><br> 对于资源组部署，请使用：`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>对于订阅部署，请使用：`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |是 |模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用此值记录模板中的重要更改。 使用模板部署资源时，此值可用于确保使用正确的模板。 |
@@ -128,7 +127,7 @@ ms.locfileid: "66431240"
 }
 ```
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
 | parameterName |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
 | type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 |
@@ -500,7 +499,7 @@ ms.locfileid: "66431240"
 ]
 ```
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
 | 条件 | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 请参阅[条件](#condition)。 |
 | apiVersion |是 |用于创建资源的 REST API 版本。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
@@ -741,7 +740,7 @@ ms.locfileid: "66431240"
 }
 ```
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
 | outputName |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
 | condition |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |

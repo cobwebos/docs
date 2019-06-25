@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: tomfitz
 ms.openlocfilehash: e47a087e27b6a8ade947e36ded762ce2e518ca25
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65507997"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
@@ -116,7 +116,7 @@ Set-AzKeyVaultAccessPolicy `
 
     这些示例将自定义角色分配给资源组级别上的用户。  
 
-使用 Key Vault 部署[托管应用程序](../managed-applications/overview.md)的模板时，必须授予对设备资源提供程序服务主体的访问权限。 有关详细信息，请参阅[部署 Azure 托管应用程序时访问 Key Vault 机密](../managed-applications/key-vault-access.md)。
+使用 Key Vault 部署[托管应用程序](../managed-applications/overview.md)的模板时，必须授予对设备资源提供程序  服务主体的访问权限。 有关详细信息，请参阅[部署 Azure 托管应用程序时访问 Key Vault 机密](../managed-applications/key-vault-access.md)。
 
 ## <a name="reference-secrets-with-static-id"></a>通过静态 ID 引用机密
 

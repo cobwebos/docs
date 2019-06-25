@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 7571b8fa8e842adfa3d5a9f127d3ecbebc6c340f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170140"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172801"
 ---
 在 Azure 门户中，可通过导航到连接来查看 Resource Manager VPN 网关的连接状态。 以下步骤演示导航到连接并进行验证的一种方法。
 

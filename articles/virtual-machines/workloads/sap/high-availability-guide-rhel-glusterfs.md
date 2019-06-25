@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
 ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60711222"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
@@ -28,14 +28,14 @@ ms.locfileid: "60711222"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2009879]:https://launchpad.support.sap.com/#/notes/2009879
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2009879]: https://launchpad.support.sap.com/#/notes/2009879
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
@@ -44,7 +44,7 @@ ms.locfileid: "60711222"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
 本文介绍了如何部署虚拟机、配置虚拟机以及安装可用于存储高可用性 SAP 系统的共享数据的 GlusterFS 群集。
-本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的 GlusterFS。 示例中的资源名称（例如虚拟机、虚拟网络）假设你将 [SAP 文件服务器模板][template-file-server]与资源前缀 glust 配合使用。
+本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的 GlusterFS。 示例中的资源名称（例如虚拟机、虚拟网络）假设你将 [SAP 文件服务器模板][template-file-server]与资源前缀 glust 配合使用  。
 
 请先阅读以下 SAP 说明和文档
 
@@ -99,7 +99,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    4. 管理员用户名、管理员密码或 SSH 密钥  
       创建可用于登录计算机的新用户。
    5. 子网 ID  
-      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
+      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;    
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -119,9 +119,9 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
 
 ### <a name="configure-glusterfs"></a>配置 GlusterFS
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1、[2] - 仅适用于节点 2、[3] - 仅适用于节点 3。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1、[2] - 仅适用于节点 2、[3] - 仅适用于节点 3     。
 
-1. [A] 设置主机名称解析
+1. [A] 设置主机名称解析 
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
    请替换以下命令中的 IP 地址和主机名

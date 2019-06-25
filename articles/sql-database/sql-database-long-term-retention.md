@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/23/2019
-ms.openlocfilehash: 0f764ebbad53185f46c7166011e05493ed261d6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/18/2019
+ms.openlocfilehash: 6549892bfd04065bf83ab50fa5f5b439c35c4238
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696645"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190545"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>将 Azure SQL 数据库备份存储 10 年之久
 
@@ -59,8 +59,8 @@ W=12 周（84 天）、M=12 个月（365 天）、Y=10 年（3650 天）、WeekO
 
 如果修改以上策略并设置 W=0（无每周备份），则备份副本的节奏将更改，如上表中突出显示的日期所示。 保留这些备份所需的存储量将相应减少。 
 
-> [!NOTE]
-> 单个 LTR 备份的时间由 Azure SQL 数据库控制。 无法手动创建 LTR 备份，或控制备份创建时间。
+> [!IMPORTANT]
+> 单个 LTR 备份的时间由 Azure SQL 数据库控制。 无法手动创建 LTR 备份，或控制备份创建时间。 在配置后 LTR 策略，可能需要最多 7 天之前的可用备份列表上将显示第一个 LTR 备份。  
 > 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>异地复制和长期备份保留

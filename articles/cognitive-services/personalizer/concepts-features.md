@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
+ms.topic: concept
+ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: ebe7f9307fcfa39d6cb133203a4c17243ad390c5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: HT
+ms.openlocfilehash: 2353b8c735602aff0386f44cc29d2be5eb9f90c4
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025499"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340894"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>特征是指有关操作和上下文的信息
 
@@ -25,11 +25,11 @@ ms.locfileid: "65025499"
 
 例如，**特征**可能与以下对象相关：
 
-* 用户，例如 `UserID`。 
-* 内容，视频是 `Documentary`、`Movie` 还是 `TV Series`，或者某个零售商品在商店中是否有货。
-* 当前时间段，例如星期几。
+* 用户，例如 `UserID`。  
+* 内容，视频是 `Documentary`、`Movie` 还是 `TV Series`，或者某个零售商品在商店中是否有货。 
+* 当前时间段，例如星期几。 
 
-个性化体验创建服务不会规定、限制或固定可为操作和上下文发送的特征：
+Personalizer 并不指定，限制，或修复可以发送操作和上下文的哪些功能：
 
 * 可为某些操作发送某些特征；如果没有这些特征，可以不为某些操作发送这些特征。 例如，电视连续剧可能包含电影所不具备的某些属性。
 * 某些特征只在某些时间才会提供。 例如，移动应用程序提供的信息可能比网页更多。 
@@ -41,6 +41,12 @@ ms.locfileid: "65025499"
 
 个性化体验创建服务支持字符串、数字和布尔类型的特征。
 
+### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>选择的功能类型如何影响 Personalizer 中的机器学习
+
+* **字符串**:对于字符串类型的键和值的每个组合 Personalizer 机器学习模型中创建新的权重。 
+* **数值**:数量应按比例影响个性化设置结果时，应使用数字值。 这是非常依赖的方案。 在简化的示例如时个性化零售体验，NumberOfPetsOwned 可能是一项功能，您可能希望使用 2 或 3 个宠物的人来影响两次或三次达出现 1 宠物的个性化设置结果为数值。 基于数值的单位，但含义不是线性的年龄、 温度、 或人员高度-之类的功能最会编码为字符串和功能质量通常可以提高使用范围。 例如，年龄无法编码为"Age":"0-5"，"Age":"6-10"，等等。
+* **布尔**发送值为"false"act，如同它们根本没有已发送的值。
+
 应在请求中省略不存在的特征。 避免发送包含 null 值的特征，因为在训练模型时，此类特征将作为具有“null”值的现有特征进行处理。
 
 ## <a name="categorize-features-with-namespaces"></a>使用命名空间将特征分类
@@ -50,7 +56,7 @@ ms.locfileid: "65025499"
 下面是应用程序使用的特征命名空间示例：
 
 * User_Profile_from_CRM
-* 时间
+* Time
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
@@ -64,12 +70,15 @@ ms.locfileid: "65025499"
 
 在以下 JSON 中，`user`、`state` 和 `device` 是特征命名空间。
 
+JSON 对象可以包含嵌套的 JSON 对象和简单的属性值。 仅当数组项是数字，可以包含一个数组。 
+
 ```JSON
 {
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug"
+                "name":"Doug",
+                "latlong": [47.6, -122.1]
             }
         },
         {
@@ -96,7 +105,7 @@ ms.locfileid: "65025499"
 
 * 有足够的特征可以促成个性化。 针对内容的精度越高，所需的特征就越多。
 
-* 有足够的多样化密度特征。 如果将许多的项分组到少数几个桶中，则认为特征是密集的。 例如，可将数千个视频分类为“长”（时长超过 5 分钟）和“短”（时长短于 5 分钟）。 这是一个非常密集的特征。 另一方面，数千个项可能有一个名为“标题”的属性，而每个项的此属性几乎永远不会使用相同的值。 这是一个极不密集的特征，也称为稀疏特征。  
+* 有足够的多样化密度特征。  如果将许多的项分组到少数几个桶中，则认为特征是密集的。  例如，可将数千个视频分类为“长”（时长超过 5 分钟）和“短”（时长短于 5 分钟）。 这是一个非常密集的特征。  另一方面，数千个项可能有一个名为“标题”的属性，而每个项的此属性几乎永远不会使用相同的值。 这是一个极不密集的特征，也称为稀疏特征。   
 
 使用高密度特征可帮助个性化体验创建服务在不同的项之间进行推理学习。 但是，如果只存在少数几个特征，并且这些特征过于密集，则个性化体验创建服务只会使用少数几个可供选择的桶，来尝试精确针对内容。
 
@@ -115,7 +124,7 @@ ms.locfileid: "65025499"
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>使用推理出的信息扩展特征集
 
-评估可从已有信息派生的未探索属性也可以获得更多的特征。 例如，在科幻电影列表个性化中，用户的行为在周末与工作日是否不同？ 可将时间扩展为包含“周末”或“工作日”属性。 国家法定节假日是否会推动观众对某类电影的兴趣？ 例如，在相关的场合中，可以使用“万圣节”属性。 雨天是否会明显影响许多人选择观看电影？ 如果使用时间和地点，则天气服务可以提供此类信息，你可以将此信息添加为额外的特征。 
+评估可从已有信息派生的未探索属性也可以获得更多的特征。 例如，在虚构的电影列表个性化设置，很可能，周末与工作日会引起与用户不同的行为？ 可将时间扩展为包含“周末”或“工作日”属性。 国家法定节假日是否会推动观众对某类电影的兴趣？ 例如，在相关的场合中，可以使用“万圣节”属性。 雨天是否会明显影响许多人选择观看电影？ 如果使用时间和地点，则天气服务可以提供此类信息，你可以将此信息添加为额外的特征。 
 
 #### <a name="expand-feature-sets-with-artificial-intelligence-and-cognitive-services"></a>使用人工智能和认知服务扩展特征集
 
@@ -156,7 +165,7 @@ ms.locfileid: "65025499"
 
 发送到排名 API 的操作取决于尝试个性化的内容。
 
-下面是一些示例：
+下面是一些可能的恶意活动：
 
 |目的|操作|
 |--|--|
@@ -174,7 +183,7 @@ ms.locfileid: "65025499"
 
 * 包含操作特征的特征。 例如，这是一部电影还是电视连续剧？
 * 有关用户在过去如何与此操作交互的特征。 例如，人口统计特征 A 和 B 的人员基本上都看过这部电影，该电影往往上映过多次。
-* 有关用户如何查看操作的特征。 例如，缩略图中显示的电影海报是否包含人脸、汽车或布局？
+* 有关用户如何查看操作的特征。  例如，缩略图中显示的电影海报是否包含人脸、汽车或布局？
 
 ### <a name="load-actions-from-the-client-application"></a>从客户端应用程序加载操作
 
@@ -184,11 +193,13 @@ ms.locfileid: "65025499"
 
 在某些情况下，你不希望向用户显示某些操作。 防止将某个操作排名在最前面的最佳方法是不要将此操作包含在排名 API 操作列表中的第一个位置。
 
-在某些情况下，只能稍后在业务逻辑中确定是否要向用户显示排名 API 调用的最终操作。 对于这种情况，应使用非活动事件。
+在某些情况下，只能稍后在业务逻辑中确定是否要向用户显示排名 API 调用的最终操作。  对于这种情况，应使用非活动事件。 
 
 ## <a name="json-format-for-actions"></a>操作的 JSON 格式
 
 调用排名时，需要发送多个可供选择的操作：
+
+JSON 对象可以包含嵌套的 JSON 对象和简单的属性值。 仅当数组项是数字，可以包含一个数组。 
 
 ```json
 {
@@ -198,7 +209,8 @@ ms.locfileid: "65025499"
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "medium"
+          "spiceLevel": "medium",
+          "grams": [400,800]
         },
         {
           "nutritionLevel": 5,
@@ -211,7 +223,8 @@ ms.locfileid: "65025499"
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [150, 300, 450]
         },
         {
           "nutritionalLevel": 2
@@ -223,7 +236,8 @@ ms.locfileid: "65025499"
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [300, 600, 900]
         },
         {
           "nutritionLevel": 5
@@ -238,7 +252,8 @@ ms.locfileid: "65025499"
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "low"
+          "spiceLevel": "low",
+          "grams": [300, 600]
         },
         {
           "nutritionLevel": 8
@@ -251,7 +266,7 @@ ms.locfileid: "65025499"
 
 ## <a name="examples-of-context-information"></a>上下文信息示例
 
-上下文信息取决于每个应用程序和用例，但往往包括如下所述的信息：
+上下文信息取决于每个应用程序和用例，但往往包括如下所述的信息： 
 
 * 有关用户的人口统计和档案信息。
 * 从 HTTP 标头提取的信息（例如用户代理），或派生自 HTTP 信息的信息，例如基于 IP 地址的反向地理查找。
@@ -264,6 +279,8 @@ ms.locfileid: "65025499"
 ## <a name="json-format-for-context"></a>上下文的 JSON 格式 
 
 上下文表示为发送到排名 API 的 JSON 对象：
+
+JSON 对象可以包含嵌套的 JSON 对象和简单的属性值。 仅当数组项是数字，可以包含一个数组。 
 
 ```JSON
 {
@@ -282,7 +299,9 @@ ms.locfileid: "65025499"
         {
             "device": {
                 "mobile":true,
-                "Windows":true
+                "Windows":true,
+                "screensize": [1680,1050]
+                }
             }
         }
     ]

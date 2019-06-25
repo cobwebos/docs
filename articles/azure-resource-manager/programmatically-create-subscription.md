@@ -3,22 +3,16 @@ title: 以编程方式创建 Azure Enterprise 订阅 | Microsoft Docs
 description: 了解如何以编程方式创建其他 Azure Enterprise 或 Enterprise 开发/测试订阅。
 services: azure-resource-manager
 author: jureid
-manager: jureid
-editor: ''
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/10/2019
 ms.author: jureid
-ms.openlocfilehash: 7985451eb2bb5e9fd4fbcfb3d2fcf35149122c15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf325b93c626e0c7f9584449154e2d531995cdc5
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796064"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204345"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>以编程方式创建 Azure Enterprise 订阅（预览版）
 
@@ -152,7 +146,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 元素名称  | 需要 | Type   | 描述                                                                                               |
+| 元素名称  | 必选 | Type   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `offerType`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
@@ -191,7 +185,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| 元素名称  | 需要 | Type   | 描述                                                                                               |
+| 元素名称  | 必选 | Type   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `offer-type`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
@@ -202,7 +196,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 要查看所有参数的完整列表，请参阅 [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)。
 
-----
+---
 
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>对创建 Azure Enterprise 订阅的 API 限制
 

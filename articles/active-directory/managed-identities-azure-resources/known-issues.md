@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a6797c7bd0c6bd8ce8d3f51b42cb4c2b1338fd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1eb5600a9793963a722967e1bbe702cf3b2f670e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65950477"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147120"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -84,8 +84,8 @@ VM 扩展 Azure 资源管理的标识仍然可用，但是，我们不会再开�
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>哪些 Azure RBAC 权限所需的资源上托管的标识？ 
 
-- 系统分配的托管的标识：转移资源，需要写入权限。 例如：Microsoft.Compute/virtualMachines/write 或此操作包含在资源中特定的内置角色，如[虚拟机参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)。
-- 用户分配的托管的标识：转移资源，需要写入权限。 例如：Microsoft.Compute/virtualMachines/write。 除了[托管标识运算符](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)通过托管标识的角色分配。 
+- 系统分配的托管的标识：转移资源，需要写入权限。 对于 exampl，为虚拟机需要 Microsoft.Compute/virtualMachines/write。 此操作包含在资源特定的内置角色，如[虚拟机参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)。
+- 用户分配的托管的标识：转移资源，需要写入权限。 例如，对于虚拟机需要 Microsoft.Compute/virtualMachines/write。 除了[托管标识运算符](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)通过托管标识的角色分配。
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>如何重启 Azure 资源托管标识扩展？
 在 Windows 和某些 Linux 版本中，如果该扩展停止，可使用以下 cmdlet 手动重启该扩展：

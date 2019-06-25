@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/19/2019
+ms.date: 06/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d8a9b82e51c837af6343ddf851545d02299aa527
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 834484278bb597bba4a5e1821d0b6572913a761d
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473879"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147000"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>在 Azure 中部署 OpenShift 所要满足的一般先决条件
 
@@ -69,7 +69,7 @@ az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>创建 key vault
-使用 [az keyvault create](/cli/azure/keyvault) 命令创建一个 Key Vault 用于管理群集的 SSH 密钥。 Key Vault 名称必须全局唯一。
+使用 [az keyvault create](/cli/azure/keyvault) 命令创建一个 Key Vault 用于管理群集的 SSH 密钥。 密钥保管库名称必须全局唯一，必须为模板部署启用或部署失败，出现"KeyVaultParameterReferenceSecretRetrieveFailed"错误。
 
 以下示例在 *keyvaultrg* 资源组中创建一个名为 *keyvault* 的 Key Vault：
 

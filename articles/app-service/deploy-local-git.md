@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/14/2019
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e66c625c3f30580715762d2dd3f48eeaa6e548dc
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956053"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143950"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
 
@@ -52,47 +52,42 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
+> [!NOTE]
+> 而不是帐户级别的凭据，您还可以部署具有自动为每个应用程序生成的应用级凭据。
+>
+
 ### <a name="enable-local-git-with-kudu"></a>使用 Kudu 启用本地 Git
 
 若要使用 Kudu 生成服务器为应用启用本地 Git 部署，请在 Cloud Shell 中运行 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git)。
 
 ```azurecli-interactive
-az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
+az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
 
 要创建启用 Git 的应用，请使用 `--deployment-local-git` 参数在 Cloud Shell 中运行 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)。
 
 ```azurecli-interactive
-az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
-```
-
-`az webapp create` 命令的输出应如下所示：
-
-```json
-Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
+az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git
 ```
 
 ### <a name="deploy-your-project"></a>部署项目
 
-回到本地终端窗口  ，将 Azure 远程功能添加到本地 Git 存储库。 使用从[启用应用的 Git](#enable-local-git-with-kudu)中获取的 Git 远程 URL 替换 \<url>  。
+回到本地终端窗口  ，将 Azure 远程功能添加到本地 Git 存储库。 替换 _\<用户名 >_ 与从部署用户[配置部署用户](#configure-a-deployment-user)并 _\<应用名称 >_ 与应用程序名称从[为应用启用 Git](#enable-local-git-with-kudu)。
 
 ```bash
-git remote add azure <url>
+git remote add azure https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git
 ```
 
-使用以下命令推送到 Azure 远程功能以部署应用。 提示输入密码时，请确保输入在[配置部署用户](#configure-a-deployment-user)中创建的密码，而不是用于登录到 Azure 门户的密码。
+> [!NOTE]
+> 若要改为部署应用级凭据，获取凭据特定于您的应用程序通过在 Cloud Shell 中运行以下命令：
+>
+> ```azurecli-interactive
+> az webapp deployment list-publishing-credentials -n <app-name> -g <group-name> --query scmUri --output tsv
+> ```
+>
+> 然后，使用命令输出，以运行`git remote add azure <url>`类似上面的。
+
+使用以下命令推送到 Azure 远程功能以部署应用。 当系统提示输入密码，请确保输入中创建的密码[配置部署用户](#configure-a-deployment-user)，不是用来登录到 Azure 门户的密码。
 
 ```bash
 git push azure master

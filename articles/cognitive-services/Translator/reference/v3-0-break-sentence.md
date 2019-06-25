@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-pawal
 ms.openlocfilehash: 0ecb620757bc58b109747f69eb3b5afe0c56bac4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66387566"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>文本翻译 API 3.0：BreakSentence
@@ -45,7 +45,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
     <td>可选查询参数  。<br/>语言标记，标识输入文本的语言。 如果未指定代码，则将应用自动语言检测。</td>
   </tr>
   <tr>
-    <td>脚本</td>
+    <td>script</td>
     <td>可选查询参数  。<br/>脚本标记，标识输入文本使用的脚本。 如果未指定脚本，则将采用语言的默认脚本。</td>
   </tr>
 </table> 

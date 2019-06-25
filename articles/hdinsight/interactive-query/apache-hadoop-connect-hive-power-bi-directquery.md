@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/25/2018
-ms.openlocfilehash: fb4e16c8be5344c5b9947758b6a09845b470196d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/17/2019
+ms.openlocfilehash: 04af3f211674458c51bbb5cdbc6012833a790584
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800995"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190971"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Microsoft Power BI 通过直接查询直观显示交互式查询 Apache Hive 数据
 

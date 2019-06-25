@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 3e304df51133d53adad50e672249bde6c9960712
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: f2f798be85e9c3aeb8d4b54cba89d8be059427e0
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65539783"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147347"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure 应用服务诊断概述
 
-运行 Web 应用程序时，我们希望能够对出现的各种问题做好准备，例如，出现 500 错误，或者用户反映站点已关闭。 应用服务诊断是智能的交互式体验，以帮助您解决您的应用程序无需配置。 当您确实与您的应用程序出现问题时，应用服务诊断指出了问题所在，并引导您找到正确的信息，更轻松快速地排除故障并解决此问题。
+运行 Web 应用程序时，我们希望能够对出现的各种问题做好准备，例如，出现 500 错误，或者用户反映站点已关闭。 应用服务诊断是智能的交互式体验，可帮助你排查应用的问题，且无需配置。 如果应用确实出现问题，应用服务诊断会指出问题所在，并引导你获取适当的信息，以便更轻松快速地排查和解决问题。
 
-尽管这种体验是最有用的过去 24 小时内的应用程序有问题时，所有诊断图形始终是可供分析。
+尽管此体验在应用过去 24 小时内出现问题时可发挥最大的作用，但是，你始终可以使用所有诊断图形进行分析。
 
 应用服务诊断不但适用于 Windows 上的应用，也适用于 [Linux/容器](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)、[应用服务环境](https://docs.microsoft.com/azure/app-service/environment/intro)和 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 上的应用。
 
 ## <a name="open-app-service-diagnostics"></a>打开应用服务诊断
 
-若要访问应用服务诊断，请导航到你的应用服务 web 应用或应用服务环境[Azure 门户](https://portal.azure.com)。 在左侧导航栏中，单击“诊断并解决问题”。
+若要访问应用服务诊断，请导航到你的应用服务 web 应用或应用服务环境[Azure 门户](https://portal.azure.com)。 在左侧导航栏中，单击“诊断并解决问题”。 
 
 对于 Azure Functions 中，导航到 function app 中，然后在顶部导航栏中，单击**平台功能**，然后选择**诊断并解决问题**从**资源管理**部分。
 
@@ -103,12 +103,12 @@ ms.locfileid: "65539783"
 
 ![主动预防性自动修复](./media/app-service-diagnostics/proactive-auto-healing-10.png)
 
-## <a name="change-analysis"></a>更改分析
+## <a name="change-analysis-only-for-windows-app"></a>更改分析 （仅适用于 Windows 应用程序）
 
-在快节奏的开发环境中，有时可能会很难跟踪的对您的应用程序所做的所有更改，并允许单独 pinpoint 上导致不正常的行为的更改。 更改分析可帮助你缩小以便排除体验对你的应用所做的更改。 更改分析如诊断的报表中嵌入**应用程序崩溃**以便可以与其他指标同时使用它。
+在快节奏的开发环境中，有时可能会很难跟踪的对您的应用程序所做的所有更改，并允许单独 pinpoint 上导致不正常的行为的更改。 更改分析可帮助你缩小以便排除体验对你的应用所做的更改。 更改分析中找到**应用程序更改**并且还如嵌入在诊断报告**应用程序崩溃**以便可以与其他指标同时使用它。
+
+更改分析必须使用功能之前启用。 更改分析的详细信息，请访问[宣布推出应用服务诊断中的新更改分析体验](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html)。
 
 ![更改分析默认页](./media/app-service-diagnostics/change-analysis-default-page-11.png)
 
 ![差异视图](./media/app-service-diagnostics/diff-view-12.png)
-
-更改分析必须使用功能之前启用。 更改分析的详细信息，请访问[宣布推出应用服务诊断中的新更改分析体验](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html)。

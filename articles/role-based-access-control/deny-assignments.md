@@ -11,27 +11,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 497571a65510f806d7d7994c9dc37f9a00b65a5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f15d6fd81337aa4a859539e86f37a516848c9370
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60197130"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165989"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>了解 Azure 资源的拒绝分配
 
-*拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组或服务主体，以便拒绝访问。 即使角色分配向用户授予了访问权限，拒绝分配也会阻止用户执行特定的 Azure 资源操作。 Azure 中的某些资源提供程序现在包括了拒绝分配。
-
-在某些方面，拒绝分配不同于角色分配。 拒绝分配可以排除主体并阻止子范围进行继承。 拒绝分配也适用于[经典订阅管理员](rbac-and-directory-admin-roles.md)分配。
+*拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组或服务主体，以便拒绝访问。 即使角色分配向用户授予了访问权限，拒绝分配也会阻止用户执行特定的 Azure 资源操作。
 
 本文介绍如何定义拒绝分配。
 
-> [!NOTE]
-> 此时，可以添加自己的拒绝分配的唯一方法是使用 Azure 蓝图。 有关详细信息，请参阅[使用 Azure 蓝图资源锁保护新资源](../governance/blueprints/tutorials/protect-new-resources.md)。
+## <a name="how-deny-assignments-are-created"></a>如何拒绝创建分配时
+
+拒绝创建和管理由 Azure 保护的资源分配。 例如，Azure 蓝图和 Azure 托管应用程序使用拒绝分配，以保护系统管理资源。 有关详细信息，请参阅[使用 Azure 蓝图资源锁保护新资源](../governance/blueprints/tutorials/protect-new-resources.md)。
+
+## <a name="compare-role-assignments-and-deny-assignments"></a>比较角色分配，并拒绝分配
+
+拒绝分配为角色分配，遵循类似的模式，但也有一些差异。
+
+| 功能 | 角色分配 | 拒绝分配 |
+| --- | --- | --- |
+| 授予访问权限 | :heavy_check_mark: |  |
+| 拒绝访问 |  | :heavy_check_mark: |
+| 可以直接创建 | :heavy_check_mark: |  |
+| 在作用域应用 | :heavy_check_mark: | :heavy_check_mark: |
+| 排除主体 |  | :heavy_check_mark: |
+| 阻止到子范围继承 |  | :heavy_check_mark: |
+| 将应用于[经典订阅管理员](rbac-and-directory-admin-roles.md)分配 |  | :heavy_check_mark: |
 
 ## <a name="deny-assignment-properties"></a>拒绝分配属性
 
@@ -54,14 +67,24 @@ ms.locfileid: "60197130"
 > | `ExcludePrincipals[i].Type` | 否 | String[] | ExcludePrincipals[i].Id 所表示的对象类型的数组。 |
 > | `IsSystemProtected` | 否 | Boolean | 指定此拒绝分配是否由 Azure 创建，且无法编辑或删除。 当前，所有拒绝分配受系统保护。 |
 
-## <a name="system-defined-principal"></a>系统定义的主体
+## <a name="the-all-principals-principal"></a>所有主体主体
 
-为了支持拒绝分配，引入了**系统定义的主体**。 此主体表示 Azure AD 目录中的所有用户、组、服务主体和托管标识。 如果主体 ID 是零 GUID `00000000-0000-0000-0000-000000000000` 且主体类型是 `SystemDefined`，则此主体表示所有主体。 可以将 `SystemDefined` 与 `ExcludePrincipals` 组合使用来拒绝除了某些用户之外的所有主体。 `SystemDefined` 具有以下约束：
+为支持拒绝分配，名为的系统定义的主体*的所有主体*引入了。 此主体表示 Azure AD 目录中的所有用户、组、服务主体和托管标识。 如果主体 ID 是零 GUID `00000000-0000-0000-0000-000000000000` 且主体类型是 `SystemDefined`，则此主体表示所有主体。 Azure PowerShell 输出中的所有主体类似于下面所都示：
+
+```azurepowershell
+Principals              : {
+                          DisplayName:  All Principals
+                          ObjectType:   SystemDefined
+                          ObjectId:     00000000-0000-0000-0000-000000000000
+                          }
+```
+
+可与结合使用的所有主体`ExcludePrincipals`拒绝除某些用户的所有主体。 所有主体都具有以下限制：
 
 - 只能用于 `Principals`，不能用于 `ExcludePrincipals`。
 - `Principals[i].Type` 必须设置为 `SystemDefined`。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [视图拒绝使用 Azure 门户的 Azure 资源的分配](deny-assignments-portal.md)
+* [列表拒绝使用 Azure 门户的 Azure 资源的分配](deny-assignments-portal.md)
 * [了解 Azure 资源的角色定义](role-definitions.md)

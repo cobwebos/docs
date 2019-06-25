@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5f06ca04b0b6ea48ebb49952df71cb02946777fa
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145356"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67333365"
 ---
 ## <a name="authentication"></a>Authentication
 
@@ -17,17 +17,16 @@ ms.locfileid: "66145356"
 
 | 支持的授权标头 | 语音转文本 | 文本转语音 |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | “是” | “否” |
-| Authorization: Bearer | “是” | “是” |
+| Ocp-Apim-Subscription-Key | 是 | 否 |
+| Authorization:Bearer | 是 | 是 |
 
-使用 `Ocp-Apim-Subscription-Key` 标头时，只需提供订阅密钥。 例如:
+使用 `Ocp-Apim-Subscription-Key` 标头时，只需提供订阅密钥。 例如：
 
 ```
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-使用 `Authorization: Bearer` 标头时，需要向 `issueToken` 终结点发出请求。 在此请求中，交换有效期为 10 分钟的访问令牌的订阅密钥。 下面的几个部分将介绍如何获取令牌、使用令牌和刷新令牌。
-
+使用 `Authorization: Bearer` 标头时，需要向 `issueToken` 终结点发出请求。 在此请求中，交换有效期为 10 分钟的访问令牌的订阅密钥。 在下面几节中将了解如何获取的令牌，并使用令牌。
 
 ### <a name="how-to-get-an-access-token"></a>如何获取访问令牌
 

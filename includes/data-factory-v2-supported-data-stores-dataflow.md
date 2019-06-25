@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 3a7cc1ac3940104993e6643e92da923ad1c6a14a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5054b552f4ca019125671903134bb080e0c9db4e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66249106"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67277133"
 ---
 | 类别 | 数据存储 | 支持作为[复制活动](../articles/data-factory/copy-activity-overview.md)源 | 支持作为[复制活动](../articles/data-factory/copy-activity-overview.md)接收器 | 受 [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) 支持 | 受[自我托管 IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) 支持 | 支持的[数据流](../articles/data-factory/concepts-data-flow-overview.md)
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -24,7 +24,7 @@ ms.locfileid: "66249106"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure 文件存储](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL 数据库](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |✓  |
-| &nbsp; |[Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-insance.md) | |✓ |✓ |✓  ||
+| &nbsp; |[Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL 数据仓库](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |✓  |
 | &nbsp; |[Azure 搜索索引](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  ||
 | &nbsp; |[Azure 表存储](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  ||
@@ -48,7 +48,7 @@ ms.locfileid: "66249106"
 | &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  ||
 | &nbsp; |[通过 MDX 实现的 SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  ||
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |✓ |✓ | |✓  ||
-| &nbsp; |[SAP Table](../articles/data-factory/connector-sap-table.md) |✓ |✓ | |✓  ||
+| &nbsp; |[SAP Table](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  ||
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |✓ | |✓ |✓  ||
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |✓ | | |✓  ||

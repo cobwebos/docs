@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 357435b8a4ac396c1548c89206f269730e871f6b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ce4a57b8c266fe474fc2e6dd8f811fc7440e7ac6
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204497"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190444"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>将数据从 Azure Active Directory 连接
 
@@ -34,6 +34,8 @@ Azure Sentinel，可从中收集数据[Azure Active Directory](../active-directo
 - 如果你想要从 Active Directory 导出登录数据，必须具有 Azure AD P1 或 P2 许可证。
 
 - 具有你想要从日志流式传输的租户的全局管理员或安全管理权限的用户。
+
+- 若要能够查看连接状态，必须有权访问 Azure AD 的诊断日志。 
 
 
 ## <a name="connect-to-azure-ad"></a>连接到 Azure AD

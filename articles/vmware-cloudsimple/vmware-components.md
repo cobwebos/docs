@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5e6548a5a04e32b374a8a9c29d2ca5f89fd65c78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62511118edb4f8b5061f90138bac2aa2b5d3cfe3
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65160180"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165148"
 ---
 # <a name="private-cloud-vmware-components"></a>私有云 VMware 组件
 
@@ -37,7 +37,7 @@ ms.locfileid: "65160180"
 
 ## <a name="esxi"></a>ESXi
 
-创建私有云时，已购买 CloudSimple 节点上安装 VMware ESXi。  ESXi 提供工作负荷的虚拟机 (Vm) 部署的虚拟机监控程序。  节点在私有云上提供超聚合基础结构 （计算和存储）。  节点是私有云上的 vSphere 群集的一部分。  每个节点具有四个物理网络接口连接到是网络。  使用两个物理网络接口来创建**vSphere 分布式交换机 (VDS)** vCenter 和两个用于创建**NSX 托管虚拟分布式的交换机 (N VDS)** 。  在以实现高可用性的主动-主动模式下配置网络接口。
+创建私有云时，预配 CloudSimple 节点上安装 VMware ESXi。  ESXi 提供工作负荷的虚拟机 (Vm) 部署的虚拟机监控程序。  节点在私有云上提供超聚合基础结构 （计算和存储）。  节点是私有云上的 vSphere 群集的一部分。  每个节点具有四个物理网络接口连接到是网络。  使用两个物理网络接口来创建**vSphere 分布式交换机 (VDS)** vCenter 和两个用于创建**NSX 托管虚拟分布式的交换机 (N VDS)** 。  在以实现高可用性的主动-主动模式下配置网络接口。
 
 了解 VMware ESXi 上的详细信息
 

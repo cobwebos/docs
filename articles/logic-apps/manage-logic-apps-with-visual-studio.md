@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 6a36770ff623e35c56a972a482e24ebb24849051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ecf7f11074b447e9f093e4fd6677a3d09d213b1d
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467422"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295838"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
 
@@ -36,7 +36,8 @@ ms.locfileid: "65467422"
   本快速入门使用免费的 Visual Studio Community 2017。
 
     > [!IMPORTANT]
-    > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。  对于 Visual Studio 2019，Cloud Explorer 可在 Azure 门户中打开逻辑应用设计器，但目前无法打开嵌入式逻辑应用设计器。 有关详细信息，请参阅[在 Visual Studio Cloud Explorer 中管理与 Azure 帐户关联的资源](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view)。
+    > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。 
+    > 有关详细信息，请参阅[在 Visual Studio Cloud Explorer 中管理与 Azure 帐户关联的资源](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view)。
 
     若要安装 Cloud Explorer for Visual Studio 2015，请[从 Visual Studio Marketplace 下载 Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)。 
     有关详细信息，请参阅[在 Visual Studio Cloud Explorer (2015) 中管理与 Azure 帐户关联的资源](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015)。
@@ -90,6 +91,9 @@ ms.locfileid: "65467422"
 
 1. 在逻辑应用的快捷菜单中，选择“使用逻辑应用编辑器打开”  。
 
+   > [!TIP]
+   > 如果在 Visual Studio 2019 中没有此命令，检查你的 Visual Studio 具有最新的更新。
+
    此示例按资源类型演示逻辑应用，因此，你的逻辑应用会显示在“逻辑应用”部分下。 
 
    ![从 Azure 门户打开部署的逻辑应用](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
@@ -105,10 +109,10 @@ ms.locfileid: "65467422"
 
 1. 在 Visual Studio 中打开 Cloud Explorer，然后找到并选择要从 Azure 下载的逻辑应用。
 
-   > [!NOTE]
-   > 对于 Visual Studio 2019，云资源管理器可以在 Azure 门户中打开逻辑应用设计器，但尚无法打开下载逻辑应用嵌入式的逻辑应用设计器。
-
 2. 在该应用的快捷菜单中，选择“使用逻辑应用编辑器打开”  。
+
+   > [!TIP]
+   > 如果在 Visual Studio 2019 中没有此命令，检查你的 Visual Studio 具有最新的更新。
 
    逻辑应用设计器随即打开并显示该逻辑应用。 
    若要查看逻辑应用的基础定义和结构，请在设计器的底部选择“代码视图”。  

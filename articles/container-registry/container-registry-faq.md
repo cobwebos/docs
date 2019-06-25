@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: sajaya
-ms.openlocfilehash: 1400c023e43179a9c8490334e262711486c75a2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: beeb4986750e398071e3afb6c1f04663f858cec1
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417928"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303580"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表常见问题
 
@@ -440,6 +440,85 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [GitHub 操作](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
+## <a name="error-references-for-az-acr-check-health"></a>错误引用 `az acr check-health`
+
+### <a name="dockercommanderror"></a>DOCKER_COMMAND_ERROR
+
+此错误意味着该 docker 客户端的 CLI 未找到，它可以阻止查找 docker 版本、 评估 docker 守护程序状态和确保可以运行 docker pull 命令。
+
+*可能的解决方案*： 安装 docker 客户端; 添加 docker 路径的系统变量。
+
+### <a name="dockerdaemonerror"></a>DOCKER_DAEMON_ERROR
+
+此错误意味着 docker 守护程序状态为不可用，或者，它无法访问使用 CLI。 这意味着将无法通过 CLI docker 操作 （例如，登录名、 请求）。
+
+*可能的解决方案*:重新启动 docker 守护程序，或验证已正确安装。
+
+### <a name="dockerversionerror"></a>DOCKER_VERSION_ERROR
+
+此错误表示 CLI 程序无法运行该命令`docker --version`。
+
+*可能的解决方案*： 尝试手动运行命令，请确保使用最新的 CLI 版本，并调查的错误消息。
+
+### <a name="dockerpullerror"></a>DOCKER_PULL_ERROR
+
+此错误表示 CLI 不能对您的环境实现的示例图像。
+
+*可能的解决方案*： 验证拉取映像所需的所有组件都正常都运行。
+
+### <a name="helmcommanderror"></a>HELM_COMMAND_ERROR
+
+此错误意味着通过 CLI，它可以阻止其他 helm 操作找不到该 helm 客户端。
+
+*可能的解决方案*： 验证该 helm 安装客户端，并且其路径添加到系统环境变量。
+
+### <a name="helmversionerror"></a>HELM_VERSION_ERROR
+
+此错误意味着 CLI 不能确定安装的 Helm 版本。 如果发生这种情况的 Azure CLI 版本 (或者，如果 helm 版本) 正在使用已过时。
+
+*可能的解决方案*： 更新到最新的 Azure CLI 版本或建议的 helm 版本; 手动运行命令，并调查的错误消息。
+
+### <a name="connectivitydnserror"></a>CONNECTIVITY_DNS_ERROR
+
+此错误表示给定的注册表登录服务器的 DNS 其执行 ping 操作，但未响应，这意味着它是不可用。 这可以表示某些连接问题。 这还意味着，在注册表或不存在，用户在注册表中 （若要检索其登录服务器正确），没有权限，目标注册表中之外的另一个云中正在使用 Azure CLI。
+
+*可能的解决方案*： 验证连接; 验证注册表中，拼写和该注册表存在; 验证用户在其上具有适当的权限以及注册表的云是相同所使用的 Azure CLI。
+
+### <a name="connectivityforbiddenerror"></a>CONNECTIVITY_FORBIDDEN_ERROR
+
+这意味着在给定注册表的质询终结点响应 403 禁止访问 HTTP 状态。 这意味着，用户无权访问注册表中，很可能是因为 VNET 配置。
+
+*可能的解决方案*： 删除 VNET 规则或将当前的客户端 IP 添加到允许列表。
+
+### <a name="connectivitychallengeerror"></a>CONNECTIVITY_CHALLENGE_ERROR
+
+此错误表示目标注册表的质询终结点没有颁发一个挑战。
+
+*可能的解决方案*： 段时间后重试。 如果错误仍然存在，请打开在上午问题 https://aka.ms/acr/issues 。
+
+### <a name="connectivityaadloginerror"></a>CONNECTIVITY_AAD_LOGIN_ERROR
+
+此错误表示颁发目标注册表的质询终结点的一种挑战，但注册表不支持 AAD 登录名。
+
+*可能的解决方案*： 尝试在中，例如，管理员凭据的日志记录的另一种方法。 如果用户需要能够使用 AAD 支持进行登录，请打开在上午问题 https://aka.ms/acr/issues 。
+
+### <a name="connectivityrefreshtokenerror"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
+
+这意味着注册表登录服务器未响应使用刷新令牌，这意味着对目标注册表的访问权限被拒绝。 如果用户对注册表没有适当的权限或 Azure CLI 的用户凭据已过时，则可以发生这种情况。
+
+*可能的解决方案*： 验证用户是否对注册表有适当的权限; 运行`az login`刷新权限、 令牌和凭据。
+
+### <a name="connectivityaccesstokenerror"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
+
+这意味着注册表登录服务器未响应与访问令牌，这意味着对目标注册表的访问权限被拒绝。 如果用户对注册表没有适当的权限或 Azure CLI 的用户凭据已过时，则可以发生这种情况。
+
+*可能的解决方案*： 验证用户是否对注册表有适当的权限; 运行`az login`刷新权限、 令牌和凭据。
+
+### <a name="loginservererror"></a>LOGIN_SERVER_ERROR
+
+这意味着，CLI 找不到给定注册表登录服务器，没有默认后缀未找到当前的云。 这可能是如果注册表不存在，如果用户没有适当的权限在注册表中，如果注册表的云和当前的 Azure CLI 云不匹配，或 Azure CLI 版本已过时。
+
+*可能的解决方案*： 验证的拼写是否正确和注册表存在; 如果验证用户是否具有适当的权限在注册表中，并且，与匹配的注册表和 CLI 环境的云; 更新到最新版本的 Azure CLI。
 
 ## <a name="next-steps"></a>后续步骤
 

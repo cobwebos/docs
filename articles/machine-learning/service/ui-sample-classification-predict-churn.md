@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
 ms.openlocfilehash: 42724f5fcb3101015cef0d218a3d548f349646be
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65785827"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>示例 5-分类：预测流失情况、 亲和力，和向上销售 

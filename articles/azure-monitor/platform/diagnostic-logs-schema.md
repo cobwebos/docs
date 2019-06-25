@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: 21eec5ee2fef185a927f6a416732303765e02b1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 468bcdb6aa688157196bb9cba8added623a857d3
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789321"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155296"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 诊断日志支持的服务、架构和类别
 
@@ -55,7 +55,7 @@ ms.locfileid: "65789321"
 | Azure 批处理 |[Azure Batch 诊断日志记录](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL 诊断日志](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL 诊断日志](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| 认知服务 | 架构不可用。 |
+| 认知服务 | [Azure 认知服务的诊断日志记录](../../cognitive-services/diagnostic-logging.md) |
 | 内容分发网络 | [CDN 的 Azure 诊断日志](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB 日志记录](../../cosmos-db/logging.md) |
 | 数据工厂 | [使用 Azure Monitor 监视数据工厂](../../data-factory/monitor-using-azure-monitor.md) |
@@ -209,4 +209,3 @@ ms.locfileid: "65789321"
 * [将资源诊断日志流式传输到事件中心  ](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [使用 Azure Monitor REST API 更改资源诊断设置](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [使用 Log Analytics 分析 Azure 存储中的日志](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-

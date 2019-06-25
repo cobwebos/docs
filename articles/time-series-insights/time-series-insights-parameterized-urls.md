@@ -6,23 +6,23 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: dfc04397b1d7e9f3256810cbe469067ae52c99bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: df60429a8b3d6fbdc504a7605d1502b4e084d386
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66238971"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165298"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
 若要共享时间时序见解资源管理器中的自定义视图，可以以编程方式创建自定义视图的参数化的 URL。
 
-时间时序见解资源管理器支持 URL 查询参数来指定视图中直接从该 URL 的体验。 例如，只使用 URL 就可以指定目标环境、搜索谓词以及所需的时间跨度。 当用户单击自定义 URL 时，界面会提供一个链接，直接指向时序见解门户中的相应资产。 数据访问策略适用。
+时间时序见解资源管理器支持 URL 查询参数来指定视图中直接从该 URL 的体验。 例如，只使用 URL 就可以指定目标环境、搜索谓词以及所需的时间跨度。 当用户选择自定义的 URL 时，该接口直接与该资产在时序见解门户中提供的链接。 数据访问策略适用。
 
 > [!TIP]
 > * 查看可用[时序见解演示](https://insights.timeseries.azure.com/samples)。

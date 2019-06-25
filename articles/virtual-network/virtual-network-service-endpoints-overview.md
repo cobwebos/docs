@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 73621c3bbab7f0c49feacab29e1e5de1792b80e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: e621eeeca7a4f325efcfb242c204b2f727e55fc4
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61032565"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147765"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -61,7 +61,7 @@ ms.locfileid: "61032565"
 - 该功能仅适用于使用 Azure 资源管理器部署模型部署的虚拟网络。
 - 终结点在 Azure 虚拟网络中配置的子网上启用。 终结点不可用于从本地发往 Azure 服务的流量。 有关详细信息，请参阅[保护从本地进行的 Azure 服务访问](#securing-azure-services-to-virtual-networks)
 - 对于 Azure SQL，服务终结点仅适用于虚拟网络区域中的 Azure 服务流量。 对于 Azure 存储，为了支持 RA-GRS 和 GRS 流量，终结点还进行扩展以包括虚拟网络所部署到的配对区域。 详细了解 [Azure 配对区域](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)。
-- 就 ADLS Gen 1 来说，VNet 集成功能仅适用于同一区域中的虚拟网络。
+- 就 ADLS Gen 1 来说，VNet 集成功能仅适用于同一区域中的虚拟网络。 此外请注意，Azure 数据湖存储 Gen1 的虚拟网络集成，可以使用虚拟网络服务终结点之间的安全虚拟网络和 Azure Active Directory (Azure AD) 中的访问令牌生成额外的安全声明。 然后，系统会使用这些声明对 Data Lake Storage Gen1 帐户进行虚拟网络身份验证，然后允许访问。 列出服务支持服务终结点下的"Microsoft.AzureActiveDirectory"标记仅用于支持 ADLS 第 1 代的服务终结点。 Azure Active Directory (Azure AD) 并不本机支持服务终结点。 详细了解如何[Azure 数据湖存储 Gen 1 VNet 集成](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>在虚拟网络中保护 Azure 服务
 
@@ -120,7 +120,7 @@ ms.locfileid: "61032565"
 
 ## <a name="provisioning"></a>设置
 
-对虚拟网络拥有写入访问权限的用户可在虚拟网络上单独配置服务终结点。 若要在 VNet 中保护 Azure 服务资源，用户必须对所添加的子网拥有 *Microsoft.Network/JoinServicetoaSubnet* 权限。 此权限默认包含在内置的服务管理员角色中，可以通过创建自定义角色进行修改。
+对虚拟网络拥有写入访问权限的用户可在虚拟网络上单独配置服务终结点。 若要保护与 VNet 的 Azure 服务资源，用户必须有权*Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action*正在添加的子网。 此权限默认包含在内置的服务管理员角色中，可以通过创建自定义角色进行修改。
 
 详细了解[内置角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)以及将特定的权限分配到[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 

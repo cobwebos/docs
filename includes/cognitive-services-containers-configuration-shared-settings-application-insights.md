@@ -5,11 +5,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/02/2019
 ms.openlocfilehash: 2f5b03dd0170da9a9869183d7a412688509525ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66116701"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173218"
 ---
 此 `ApplicationInsights` 设置允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。 Application Insights 可深入监视容器。 可以轻松监视容器的可用性、性能和使用情况。 还可以快速识别和诊断容器中的错误。
 

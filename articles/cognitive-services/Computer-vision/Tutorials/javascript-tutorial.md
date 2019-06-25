@@ -12,10 +12,10 @@ ms.date: 04/30/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 91af70406590ab8e65a5d4a4b53835e9e4d4ed2a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65231661"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-javascript"></a>使用 REST API 和 JavaScript 使用计算机视觉功能
@@ -56,9 +56,9 @@ JavaScript 应用程序设置有 6 个 .html 文件（每个功能一个文件�
 
 #### <a name="add-the-event-handler-code-for-the-analyze-button"></a>添加分析按钮的事件处理程序代码
 
-在文本编辑器中打开 analyze.html 文件，找到文件底部附近的 analyzeButtonClick 函数。
+在文本编辑器中打开 analyze.html 文件，找到文件底部附近的 analyzeButtonClick 函数   。
 
-analyzeButtonClick 事件处理程序函数将表单清空、显示 URL 中指定的图像，然后调用 AnalyzeImage 函数来分析图像。 将以下代码复制粘贴到 analyzeButtonClick 函数中。
+analyzeButtonClick 事件处理程序函数将表单清空、显示 URL 中指定的图像，然后调用 AnalyzeImage 函数来分析图像   。 将以下代码复制粘贴到 analyzeButtonClick 函数中  。
 
 ```javascript
 function analyzeButtonClick() {
@@ -78,9 +78,9 @@ function analyzeButtonClick() {
 
 #### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
-AnalyzeImage 函数包装 REST API 调用以分析图像。 成功返回后，指定的文本区域将显示格式化的 JSON 分析结果，且指定的范围中将显示题注。
+AnalyzeImage 函数包装 REST API 调用以分析图像  。 成功返回后，指定的文本区域将显示格式化的 JSON 分析结果，且指定的范围中将显示题注。
 
-在紧接着 analyzeButtonClick 函数的后面复制粘贴 AnalyzeImage 函数。
+在紧接着 analyzeButtonClick 函数的后面复制粘贴 AnalyzeImage 函数   。
 
 ```javascript
 /* Analyze the image at the specified URL by using Microsoft Cognitive Services Analyze Image API.
@@ -152,7 +152,7 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
 
 #### <a name="run-the-analyze-function"></a>运行分析函数
 
-保存 analyze.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“分析图像”按钮以分析图像并查看结果。
+保存 analyze.html 文件并在 Web 浏览器中将其打开  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 输入图像 URL 进行分析，然后单击“分析图像”按钮以分析图像并查看结果  。
 
 ### <a name="recognize-a-landmark"></a>识别地标
 
@@ -162,9 +162,9 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
 
 #### <a name="add-the-event-handler-code-for-the-landmark-button"></a>添加地标按钮的事件处理程序代码
 
-在文本编辑器中打开 landmark.html 文件，找到文件底部附近的 landmarkButtonClick 函数。
+在文本编辑器中打开 landmark.html 文件，找到文件底部附近的 landmarkButtonClick 函数   。
 
-landmarkButtonClick 事件处理程序函数将表单清空、显示 URL 中指定的图像，然后调用 IdentifyLandmarks 函数来分析图像。 将以下代码复制粘贴到 landmarkButtonClick 函数中。
+landmarkButtonClick 事件处理程序函数将表单清空、显示 URL 中指定的图像，然后调用 IdentifyLandmarks 函数来分析图像   。 将以下代码复制粘贴到 landmarkButtonClick 函数中  。
 
 ```javascript
 function landmarkButtonClick() {
@@ -184,9 +184,9 @@ function landmarkButtonClick() {
 
 #### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
-dentifyLandmarks 函数包装 REST API 调用以分析图像。 成功返回后，指定的文本区域将显示格式化的 JSON 分析结果，且指定的范围中将显示题注。
+dentifyLandmarks 函数包装 REST API 调用以分析图像  。 成功返回后，指定的文本区域将显示格式化的 JSON 分析结果，且指定的范围中将显示题注。
 
-在紧接着 landmarkButtonClick 函数的后面复制粘贴 IdentifyLandmarks 函数。
+在紧接着 landmarkButtonClick 函数的后面复制粘贴 IdentifyLandmarks 函数   。
 
 ```javascript
 /* Identify landmarks in the image at the specified URL by using Microsoft Cognitive Services 
@@ -257,7 +257,7 @@ function IdentifyLandmarks(sourceImageUrl, responseTextArea, captionSpan) {
 
 #### <a name="run-the-landmark-function"></a>运行地标函数
 
-保存 landmark.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“分析”按钮以分析图像并查看结果。
+保存 landmark.html 文件并在 Web 浏览器中将其打开  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 输入图像 URL 进行分析，然后单击“分析”按钮以分析图像并查看结果  。
 
 ### <a name="recognize-celebrities"></a>识别名人
 
@@ -267,9 +267,9 @@ function IdentifyLandmarks(sourceImageUrl, responseTextArea, captionSpan) {
 
 #### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>添加名人按钮的事件处理程序代码
 
-在文本编辑器中打开 celebrities.html 文件，找到文件底部附近的 celebritiesButtonClick 函数。
+在文本编辑器中打开 celebrities.html 文件，找到文件底部附近的 celebritiesButtonClick 函数   。
 
-celebritiesButtonClick 事件处理程序函数将表单清空、显示 URL 中指定的图像，然后调用 IdentifyCelebrities 函数来分析图像。 将以下代码复制粘贴到 celebritiesButtonClick 函数中。
+celebritiesButtonClick 事件处理程序函数将表单清空、显示 URL 中指定的图像，然后调用 IdentifyCelebrities 函数来分析图像   。 将以下代码复制粘贴到 celebritiesButtonClick 函数中  。
 
 ```javascript
 function celebritiesButtonClick() {
@@ -358,19 +358,19 @@ function IdentifyCelebrities(sourceImageUrl, responseTextArea, captionSpan) {
 
 #### <a name="run-the-celebrities-function"></a>运行名人函数
 
-保存 celebrities.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“分析”按钮以分析图像并查看结果。
+保存 celebrities.html 文件并在 Web 浏览器中将其打开  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 输入图像 URL 进行分析，然后单击“分析”按钮以分析图像并查看结果  。
 
 ### <a name="intelligently-generate-a-thumbnail"></a>智能生成缩略图
 
-计算机视觉的缩略图功能可通过图像生成缩略图。 通过使用“智能裁剪”功能，缩略图功能将识别图像中的兴趣区域并集中于此区域创建缩略图，进而生成视觉上更美观的缩略图。
+计算机视觉的缩略图功能可通过图像生成缩略图。 通过使用“智能裁剪”功能，缩略图功能将识别图像中的兴趣区域并集中于此区域创建缩略图，进而生成视觉上更美观的缩略图  。
 
 若要完成的应用程序的缩略图功能，请执行以下步骤：
 
 #### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>添加缩略图按钮的事件处理程序代码
 
-在文本编辑器中打开 thumbnail.html 文件，找到文件底部附近的 thumbnailButtonClick 函数。
+在文本编辑器中打开 thumbnail.html 文件，找到文件底部附近的 thumbnailButtonClick 函数   。
 
-thumbnailButtonClick 事件处理程序将表单清空、显示 URL 中指定的图像，然后调用 getThumbnail 函数两次来创建两个缩略图（一个智能裁剪的缩略图，一个未智能裁剪的缩略图）。 将以下代码复制粘贴到 thumbnailButtonClick 函数中。
+thumbnailButtonClick 事件处理程序将表单清空、显示 URL 中指定的图像，然后调用 getThumbnail 函数两次来创建两个缩略图（一个智能裁剪的缩略图，一个未智能裁剪的缩略图）   。 将以下代码复制粘贴到 thumbnailButtonClick 函数中  。
 
 ```javascript
 function thumbnailButtonClick() {
@@ -398,9 +398,9 @@ function thumbnailButtonClick() {
 
 #### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
-getThumbnail 函数包装 REST API 调用以分析图像。 在成功返回后，指定的 img 元素中将显示缩略图。
+getThumbnail 函数包装 REST API 调用以分析图像  。 在成功返回后，指定的 img 元素中将显示缩略图。
 
-在紧接着 thumbnailButtonClick 函数的后面复制粘贴以下 getThumbnail 函数。
+在紧接着 thumbnailButtonClick 函数的后面复制粘贴以下 getThumbnail 函数   。
 
 ```javascript
 /* Get a thumbnail of the image at the specified URL by using Microsoft Cognitive Services
@@ -477,7 +477,7 @@ function getThumbnail (sourceImageUrl, smartCropping, imageElement, responseText
 
 #### <a name="run-the-thumbnail-function"></a>运行缩略图函数
 
-保存 thumbnail.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“生成缩略图”按钮以分析图像并查看结果。
+保存 thumbnail.html 文件并在 Web 浏览器中将其打开  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 输入图像 URL 进行分析，然后单击“生成缩略图”按钮以分析图像并查看结果  。
 
 ### <a name="read-printed-text-ocr"></a>读取打印文本 (OCR)
 
@@ -487,9 +487,9 @@ function getThumbnail (sourceImageUrl, smartCropping, imageElement, responseText
 
 ### <a name="add-the-event-handler-code-for-the-ocr-button"></a>添加 OCR 按钮的事件处理程序代码
 
-在文本编辑器中打开 ocr.html 文件，找到文件底部附近的 ocrButtonClick 函数。
+在文本编辑器中打开 ocr.html 文件，找到文件底部附近的 ocrButtonClick 函数   。
 
-ocrButtonClick 事件处理程序函数将表单清空、显示 URL 中指定的图像，然后调用 ReadOcrImage 函数来分析图像。 将以下代码复制粘贴到 ocrButtonClick 函数中。
+ocrButtonClick 事件处理程序函数将表单清空、显示 URL 中指定的图像，然后调用 ReadOcrImage 函数来分析图像   。 将以下代码复制粘贴到 ocrButtonClick 函数中  。
 
 ```javascript
 function ocrButtonClick() {
@@ -509,9 +509,9 @@ function ocrButtonClick() {
 
 #### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
-ReadOcrImage 函数包装 REST API 调用以分析图像。 成功返回后，指定的文本区域将显示描述文本和文本位置的格式化 JSON。
+ReadOcrImage 函数包装 REST API 调用以分析图像  。 成功返回后，指定的文本区域将显示描述文本和文本位置的格式化 JSON。
 
-在紧接着 ocrButtonClick 函数的后面复制粘贴以下 ReadOcrImage 函数。
+在紧接着 ocrButtonClick 函数的后面复制粘贴以下 ReadOcrImage 函数   。
 
 ```javascript
 /* Recognize and read printed text in an image at the specified URL by using Microsoft Cognitive 
@@ -570,7 +570,7 @@ function ReadOcrImage(sourceImageUrl, responseTextArea) {
 
 #### <a name="run-the-ocr-function"></a>运行 OCR 函数
 
-保存 ocr.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入要读取的文本图像的 URL，然后单击“读取”按钮以分析图像并查看结果。
+保存 ocr.html 文件并在 Web 浏览器中将其打开  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 输入要读取的文本图像的 URL，然后单击“读取”按钮以分析图像并查看结果  。
 
 ### <a name="read-handwritten-text-handwriting-recognition"></a>读取手写文本（识别手写体）
 
@@ -580,11 +580,11 @@ function ReadOcrImage(sourceImageUrl, responseTextArea) {
 
 #### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>添加手写按钮的事件处理程序代码
 
-在文本编辑器中打开 handwriting.html 文件，找到文件底部附近的 handwritingButtonClick 函数。
+在文本编辑器中打开 handwriting.html 文件，找到文件底部附近的 handwritingButtonClick 函数   。
 
-handwritingButtonClick 事件处理程序函数将表单清空、显示 URL 中指定的图像，然后调用 HandwritingImage 函数来分析图像。
+handwritingButtonClick 事件处理程序函数将表单清空、显示 URL 中指定的图像，然后调用 HandwritingImage 函数来分析图像   。
 
-将以下代码复制粘贴到 handwritingButtonClick 函数中。
+将以下代码复制粘贴到 handwritingButtonClick 函数中  。
 
 ```javascript
 function handwritingButtonClick() {
@@ -603,11 +603,11 @@ function handwritingButtonClick() {
 
 #### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
-ReadHandwrittenImage 函数包装分析图像时所需的两个 REST API 调用。 由于手写体识别非常耗时，因此分两步执行。 第一个调用提交图像进行分析；第二个调用检索完成处理时检测到的文本。
+ReadHandwrittenImage 函数包装分析图像时所需的两个 REST API 调用  。 由于手写体识别非常耗时，因此分两步执行。 第一个调用提交图像进行分析；第二个调用检索完成处理时检测到的文本。
 
 检索到文本后，指定的文本区域将显示描述文本和文本位置的格式化 JSON。
 
-在紧接着 handwritingButtonClick 函数的后面复制粘贴以下 ReadHandwrittenImage 函数。
+在紧接着 handwritingButtonClick 函数的后面复制粘贴以下 ReadHandwrittenImage 函数   。
 
 ```javascript
 /* Recognize and read text from an image of handwriting at the specified URL by using Microsoft 
@@ -729,7 +729,7 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
 
 #### <a name="run-the-handwriting-function"></a>运行手写函数
 
-保存 handwriting.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入要读取的文本图像的 URL，然后单击“读取”按钮以分析图像并查看结果。
+保存 handwriting.html 文件并在 Web 浏览器中将其打开  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 输入要读取的文本图像的 URL，然后单击“读取”按钮以分析图像并查看结果  。
 
 ## <a name="next-steps"></a>后续步骤
 

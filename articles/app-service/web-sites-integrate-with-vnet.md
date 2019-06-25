@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a5187ed299f77c11892c6e34c8dfd3f904c7e075
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b269c75be7fec55fb77afecc6d04b86266c74a6f
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067710"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147304"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure 应用服务虚拟网络集成功能以及如何将它设置为中的应用[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。  
@@ -102,6 +102,10 @@ VNet 集成不支持某些功能，其中包括：
 若要从 VNet 断开应用，请选择“断开连接”  。 该操作将重启 Web 应用。 
 
 通过新的 VNet 集成功能可以使用服务终结点。  若要将服务终结点和应用配合使用，请使用新的 VNet 集成连接至所选 VNet，然后在用于集成的子网上配置服务终结点。 
+
+#### <a name="web-app-for-containers"></a>容器的 Web 应用
+
+如果带内置映像，在 Linux 上使用应用服务，无需进行其他更改的工作区域的 VNet 集成功能。 如果容器中的使用 Web 应用，需要修改 docker 映像，以便使用 VNet 集成。 在 docker 映像，将端口环境变量用作主要 web 服务器的侦听端口，而不是使用硬编码端口号。 在容器启动时端口环境变量自动设置通过应用服务平台。
 
 ### <a name="how-vnet-integration-works"></a>VNet 集成的工作原理
 

@@ -1,25 +1,17 @@
 ---
 title: 设置 Azure 资源的部署顺序 | Microsoft Docs
 description: 介绍如何在部署期间将一个资源设置为依赖于另一个资源，以确保按正确的顺序部署资源。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: ''
-ms.assetid: 34ebaf1e-480c-4b4d-9bf6-251bd3f8f2cf
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 91325b7884eae4c6f4c85c142b1e81cf2121c039
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32b2b41e47fe089da70d82e6049d0139795df88a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62103778"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204221"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>定义 Azure 资源管理器模板中部署资源的顺序
 对于给定的资源，可能有部署资源之前必须存在的其他资源。 例如，SQL Server 必须存在，才能尝试部署 SQL 数据库。 可通过将一个资源标记为依赖于其他资源来定义此关系。 使用 **dependsOn** 元素或 **reference** 函数定义依赖项。 

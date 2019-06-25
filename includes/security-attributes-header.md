@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cd0ab47a46e452701307986d3fbfc7cdfe040c58
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114728"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172668"
 ---
 安全属性是促使 Azure 服务能够防范、检测和响应安全漏洞的一种服务质量或功能。
 

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 4022c95bfda8cbdaed75876793bfbba4254a5c54
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410249"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---hyperscale-citus-preview"></a>Azure Database for PostgreSQL-超大规模 (Citus) （预览版） 中的 PostgreSQL 扩展

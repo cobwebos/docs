@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 06/19/2019
 ms.author: juliako
-ms.openlocfilehash: 49ab52f031e24ac77a534c86061fe831bbec39ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: f26467a250314fa8a6fe401f4ec1d6a999b6bb4d
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67114674"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296208"
 ---
 # <a name="live-events-and-live-outputs"></a>实时事件和实时输出
 
@@ -27,20 +27,23 @@ ms.locfileid: "67114674"
 > [!TIP]
 > 从媒体服务 v2 Api 迁移的客户**Live 事件**实体替换**通道**v2 中并**Live 输出**替换**程序**.
 
-
 ## <a name="live-events"></a>实时事件
 
-[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 创建实时事件时，会创建一个输入终结点，可以使用它来从远程编码器发送实时信号。 远程实时编码器使用 [RTMP](https://www.adobe.com/devnet/rtmp.html) 或[平滑流式处理](https://msdn.microsoft.com/library/ff469518.aspx)（分段 MP4）协议将贡献源发送到该输入终结点。 对于平滑流式处理引入协议，支持的 URL 方案为 `http://` 或 `https://`。 对于 RTMP 引入协议，支持的 URL 方案为 `rtmp://` 或 `rtmps://`。 
+[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 当您创建实时事件时，可用于从远程编码器发送实时信号创建主要和次要的输入终结点。 远程实时编码器将发送的输入终结点使用贡献到源[RTMP](https://www.adobe.com/devnet/rtmp.html)或[平滑流式处理](https://msdn.microsoft.com/library/ff469518.aspx)(分片 MP4) 输入协议。 将内容 RTMP 引入协议，可以以明文形式发送 (`rtmp://`) 或在网络上安全地加密 (`rtmps://`)。 对于平滑流式处理引入协议，支持的 URL 方案为 `http://` 或 `https://`。  
 
 ## <a name="live-event-types"></a>实时事件类型
 
-[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)可以是下述两种类型之一：直通和实时编码。 
+[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)可以是下述两种类型之一：直通和实时编码。 在创建使用过程中设置类型[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
+
+* **LiveEventEncodingType.None** -的本地实时编码器将多个比特率流发送。 引入的流将通过无需任何进一步的处理实时事件。 
+* **LiveEventEncodingType.Standard** -的本地实时编码器发送单比特率流的实时事件和媒体服务创建多个比特率流。 如果贡献源为 720p 或更高分辨率**Default720p**预设将对一组 6 解析/比特率对进行编码。
+* **LiveEventEncodingType.Premium1080p** -的本地实时编码器发送单比特率流的实时事件和媒体服务创建多个比特率流。 Default1080p 预设指定输出组解析/比特率对。 
 
 ### <a name="pass-through"></a>直通
 
 ![直通](./media/live-streaming/pass-through.svg)
 
-使用直通**实时事件**，可以依赖本地实时编码器生成多比特率视频流，并将其作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 然后，实时事件会接受无需进一步处理的传入视频流。 此类直通 LiveEvent 已针对长时间运行的实时事件或 24x365 线性实时传送视频流进行优化。 创建此类实时事件时，请指定 None (LiveEventEncodingType.None)。
+使用直通**实时事件**，可以依赖本地实时编码器生成多比特率视频流，并将其作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 然后，实时事件会接受无需进一步处理的传入视频流。 此类传递实时事件适用于长时间运行的实时事件或 24x365 线性实时传送视频流。 创建此类实时事件时，请指定 None (LiveEventEncodingType.None)。
 
 发送的贡献源的最高分辨率可为 4K，帧速率可为 60 帧/秒，采用 H.264/AVC 或 H.265/HEVC 视频编解码器，以及 AAC（AAC-LC、HE-AACv1 或 HE-AACv2）音频编解码器。  有关详细信息，请参阅[实时事件类型比较](live-event-types-comparison.md)一文。
 
@@ -84,16 +87,18 @@ ms.locfileid: "67114674"
 
 * 非虚 URL
 
-    在 AMS v3 中，非虚 URL 是默认模式。 可以快速获取实时事件，但只有在实时事件启动后，才会知道引入 URL。 如果停止/启动实时事件，此 URL 会更改。 <br/>非虚 URL 适用于这样的情况：最终用户希望使用应用进行流式处理，而应用希望尽快获取实时事件，并且可以使用动态引入 URL。
+    非虚 URL 是媒体服务 v3 中的默认模式。 可以快速获取实时事件，但只有在实时事件启动后，才会知道引入 URL。 如果停止/启动实时事件，此 URL 会更改。 <br/>非虚 URL 适用于这样的情况：最终用户希望使用应用进行流式处理，而应用希望尽快获取实时事件，并且可以使用动态引入 URL。
+    
+    如果客户端应用程序不需要预生成 Live 事件之前引入 URL 创建，只是让媒体服务自动生成的实时事件的访问令牌。
 * 虚 URL
 
     对于使用硬件广播编码器且不希望在启动实时事件时重新配置其编码器的大型媒体广播者来说，虚模式是首选。 他们需要不随时间而改变的预测性引入 URL。
     
-    若要指定此模式下，您可以设置`vanityUrl`到`true`在创建时 (默认值是`false`)。 您还需要将你自己的访问令牌 (`LiveEventInput.accessToken`) 可以在创建时。 指定令牌值，以避免在 URL 中的随机令牌。 访问令牌必须是有效的 GUID 字符串 （带或不带短划线）。 不能更新模式设置。
+    若要指定此模式下，您可以设置`vanityUrl`到`true`在创建时 (默认值是`false`)。 您还需要将你自己的访问令牌 (`LiveEventInput.accessToken`) 可以在创建时。 指定令牌值，以避免在 URL 中的随机令牌。 访问令牌必须是有效的 GUID 字符串 （有或没有连字符）。 不能更新模式设置。
 
     访问令牌需要在数据中心保持唯一。 如果你的应用程序需要使用虚构的 URL，建议始终创建访问令牌 （而不是重复使用现有的任何 GUID） 的新 GUID 实例。 
 
-    使用以下 Api 来启用虚 URL 和访问令牌设置为有效的 GUID (例如`"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`):
+    使用以下 Api 来启用虚 URL 和访问令牌设置为有效的 GUID (例如`"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`)。  
     
     |语言|启用虚 URL|设置访问令牌|
     |---|---|---|
@@ -103,41 +108,41 @@ ms.locfileid: "67114674"
     
 ### <a name="live-ingest-url-naming-rules"></a>实时引入 URL 命名规则
 
-下面的随机  字符串是一个 128 位的十六进制数字（由 32 个 0-9 a-f 字符组成）。<br/>
-*访问令牌*是您需要指定固定的 url。 必须设置为有效长度 GUID 字符串的访问令牌字符串。 <br/>
-*流名称*指示特定连接的流名称。 流名称值通常由添加实时编码器使用。
+* 下面的随机  字符串是一个 128 位的十六进制数字（由 32 个 0-9 a-f 字符组成）。
+* *你的访问令牌*-使用虚模式时设置的有效 GUID 字符串。 例如，`"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`。
+* *流名称*-指示特定连接的流名称。 您使用的实时编码器通常添加流名称值。 可以配置实时编码器，以便使用任何名称来描述该连接，例如:"video1_audio1"，"video2_audio1"，"stream"。
 
 #### <a name="non-vanity-url"></a>非虚 URL
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/live/<access token>/<stream name>`<br/>
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/live/<access token>/<stream name>`<br/>
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/live/<access token>/<stream name>`<br/>
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/live/<access token>/<stream name>`<br/>
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/live/<auto-generated access token>/<stream name>`<br/>
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/live/<auto-generated access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/live/<auto-generated access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/live/<auto-generated access token>/<stream name>`<br/>
 
 ##### <a name="smooth-streaming"></a>平滑流
 
-`http://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
-`https://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
+`http://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
 #### <a name="vanity-url"></a>虚 URL
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/live/<access token>/<stream name>`<br/>
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/live/<access token>/<stream name>`<br/>
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/live/<access token>/<stream name>`<br/>
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/live/<access token>/<stream name>`<br/>
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/live/<your access token>/<stream name>`<br/>
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/live/<your access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/live/<your access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/live/<your access token>/<stream name>`<br/>
 
 ##### <a name="smooth-streaming"></a>平滑流
 
-`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
-`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
+`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
 
 ## <a name="live-event-preview-url"></a>实时事件预览 URL
 
-一旦**实时事件**开始接收贡献源，你就可以使用其预览终结点进行预览，并在进一步发布之前验证是否可以收到实时流。 确认预览流正常后，可以使用 LiveEvent 来确保可以通过一个或多个（预先创建的）**流式处理终结点**传送实时流。 为此，需针对**实时事件**创建新的[实时输出](https://docs.microsoft.com/rest/api/media/liveoutputs)。 
+一旦**实时事件**开始接收贡献源，你就可以使用其预览终结点进行预览，并在进一步发布之前验证是否可以收到实时流。 检查预览流是很好后，可以使用实时事件，使实时流可供通过一个或多个 （预先创建） 交付**流式处理终结点**。 为此，需针对**实时事件**创建新的[实时输出](https://docs.microsoft.com/rest/api/media/liveoutputs)。 
 
 > [!IMPORTANT]
 > 确保视频流向预览 URL，然后再继续操作！

@@ -14,10 +14,10 @@ ms.date: 02/27/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0975b23a8f96da6fc2dfcc8bd9ad046847a68aa9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104812"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
@@ -45,7 +45,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
 ## <a name="log-analytics-api-version"></a>Log Analytics API 版本
-资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion 属性，该属性将定义资源应使用的 API 版本。
+资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion  属性，该属性将定义资源应使用的 API 版本。
 
 下表列出了此示例中使用的资源的 API 版本。
 
@@ -55,7 +55,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 
 
 ## <a name="saved-searches"></a>保存的搜索
-将[保存的搜索](../../azure-monitor/log-query/log-query-overview.md)纳入解决方案后，用户可查询由解决方案收集的数据。 保存的搜索将在 Azure 门户的“保存的搜索”下显示。 每个警报也需要一个保存的搜索。
+将[保存的搜索](../../azure-monitor/log-query/log-query-overview.md)纳入解决方案后，用户可查询由解决方案收集的数据。 保存的搜索将在 Azure 门户的“保存的搜索”  下显示。 每个警报也需要一个保存的搜索。
 
 [Log Analytics 保存的搜索](../../azure-monitor/log-query/log-query-overview.md)资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches` 且具有以下结构。 这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。
 
@@ -83,7 +83,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 | query | 要运行的查询。 |
 
 > [!NOTE]
-> 如果查询中包含可解释为 JSON 的字符，则可能需要在查询中使用转义字符。 例如，如果查询为 AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"，应在解决方案文件中将它编写为 AzureActivity | OperationName:/\"Microsoft.Compute/virtualMachines/write\"。
+> 如果查询中包含可解释为 JSON 的字符，则可能需要在查询中使用转义字符。 例如，如果查询为 AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"  ，应在解决方案文件中将它编写为 AzureActivity | OperationName:/\"Microsoft.Compute/virtualMachines/write\"  。
 
 ## <a name="alerts"></a>警报
 [Azure 日志警报](../../azure-monitor/platform/alerts-unified-log.md)是由定期运行指定日志查询的 Azure 警报规则创建的。 如果查询结果与指定的条件相符，则会创建一个警报记录，并且会使用[操作组](../../azure-monitor/platform/action-groups.md)运行一个或多个操作。
@@ -94,10 +94,10 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 
 - **保存的搜索。** 定义运行的日志搜索。 多个警报规则可共享一个保存的搜索。
 - **计划。** 定义运行日志搜索的频率。 每个警报规则有且仅有一个计划。
-- **警报操作。** 每个警报规则都具有一个类型为“Alert”的操作组资源或操作资源（旧版），它可定义警报的详细信息，例如定义创建警报记录的时间和警报严重性等条件。 [操作组](../../azure-monitor/platform/action-groups.md)资源可提供列出触发警报时可采取的配置操作的列表，例如：语音呼叫、短信、电子邮件、Webhook、ITSM 工具、自动化 runbook、逻辑应用等。
+- **警报操作。** 每个警报规则都具有一个类型为“Alert”的操作组资源或操作资源（旧版），它可定义警报的详细信息，例如定义创建警报记录的时间和警报严重性等条件  。 [操作组](../../azure-monitor/platform/action-groups.md)资源可提供列出触发警报时可采取的配置操作的列表，例如：语音呼叫、短信、电子邮件、Webhook、ITSM 工具、自动化 runbook、逻辑应用等。
 
 操作资源（旧版）将选择性定义一个邮件和 runbook 响应。
-- **Webhook 操作（旧版）。** 如果警报规则调用 webhook，则需要一个类型为 webhook 的额外操作资源。
+- **Webhook 操作（旧版）。** 如果警报规则调用 webhook，则需要一个类型为 webhook  的额外操作资源。
 
 前面描述了保存的搜索资源。 下面会介绍其他资源。
 
@@ -123,7 +123,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 
 | 元素名称 | 需要 | 描述 |
 |:--|:--|:--|
-| 已启用       | 是 | 说明创建警报后该警报是否启用。 |
+| enabled       | 是 | 说明创建警报后该警报是否启用。 |
 | interval      | 是 | 查询运行的频率（以分钟为单位）。 |
 | queryTimeSpan | 是 | 用于评估结果的时长（以分钟为单位）。 |
 
@@ -136,7 +136,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 可使用 [操作组] 资源或操作资源定义操作。
 > [!NOTE]
 > 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将开始自动扩展到 Azure。 有关详细信息，请参阅[将警报扩展到 Azure](../../azure-monitor/platform/alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 - Azure 资源管理器模板](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)检索或添加操作。
-存在两类由 **Type** 属性指定的操作资源。 一个计划需要一个“Alert”操作，该操作可定义警报规则的详细信息并在创建警报时定义要采取的操作。 操作资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`。
+存在两类由 **Type** 属性指定的操作资源。 一个计划需要一个“Alert”操作，该操作可定义警报规则的详细信息并在创建警报时定义要采取的操作  。 操作资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`。
 
 警报操作具有以下结构。 这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。
 
@@ -174,12 +174,12 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 
 下表介绍了 Alert 操作资源的属性。
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 必选 | 描述 |
 |:--|:--|:--|
-| Type | 是 | 操作的类型。  警报操作的类型是 Alert。 |
+| Type | 是 | 操作的类型。  警报操作的类型是 Alert  。 |
 | 名称 | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
 | 描述 | 否 | 警报的可选说明。 |
-| 严重性 | 是 | 警报记录的严重等级包括以下值：<br><br> 严重<br>警告<br>信息性
+| 严重性 | 是 | 警报记录的严重等级包括以下值：<br><br>  严重<br> 警告<br> 信息性
 
 
 #### <a name="threshold"></a>阈值
@@ -196,7 +196,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 > [!NOTE]
 > 指标度量警报目前为公共预览版。
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 必选 | 描述 |
 |:--|:--|:--|
 | TriggerCondition | 是 | 以下值指定该阈值是总违规次数还是连续违规次数：<br><br>**总次数<br>连续次数** |
 | 运算符 | 是 | 比较运算符包括以下值：<br><br>**gt = 大于<br>lt = 小于** |
@@ -215,7 +215,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 
 对于已将其警报扩展到 Azure 中的用户- 一个计划现在应当将操作组详细信息与阈值一起传递，以便能够创建警报。 在创建警报前，需要先在操作组中定义电子邮件详细信息、Webhook URL、Runbook 自动化详细信息以及其他操作；可以在门户中[通过 Azure Monitor 创建操作组](../../azure-monitor/platform/action-groups.md)，也可以使用[操作组 - 资源模板](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)。
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 必选 | 描述 |
 |:--|:--|:--|
 | AzNsNotification | 是 | Azure 操作组的资源 ID 应与警报相关联，以在满足警报条件时执行必要操作。 |
 | CustomEmailSubject | 否 | 将邮件的自定义主题行发送到关联操作组中指定的所有地址。 |
@@ -223,7 +223,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 
 #### <a name="actions-for-oms-legacy"></a>OMS（旧版）的操作
 
-每个计划都有一个 Alert 操作。 这可定义警报的详细信息，并选择性定义通知和修正操作的详细信息。 通知将一封电子邮件发送到一个或多个地址。 修正在 Azure 自动化中启动 runbook，尝试修正检测到的问题。
+每个计划都有一个 Alert  操作。 这可定义警报的详细信息，并选择性定义通知和修正操作的详细信息。 通知将一封电子邮件发送到一个或多个地址。 修正在 Azure 自动化中启动 runbook，尝试修正检测到的问题。
 
 > [!NOTE]
 > 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将开始自动扩展到 Azure。 有关详细信息，请参阅[将警报扩展到 Azure](../../azure-monitor/platform/alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 - Azure 资源管理器模板](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)检索或添加操作。
@@ -235,12 +235,12 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 |:--|:--|:--|
 | Recipients | 是 | 由逗号分隔的电子邮件地址列表，创建警报后向这些地址发送通知，示例如下。<br><br>**[ "recipient1\@contoso.com", "recipient2\@contoso.com" ]** |
 | Subject | 是 | 邮件的主题行。 |
-| Attachment | 否 | 目前不支持附件。 如果包含此元素，则它应为“无”。 |
+| Attachment | 否 | 目前不支持附件。 如果包含此元素，则它应为“无”  。 |
 
 ##### <a name="remediation"></a>补救
 此部分为可选项。如果希望启动 runbook 以响应警报，请将此部分包含在内。 
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 必选 | 描述 |
 |:--|:--|:--|
 | RunbookName | 是 | 要启动的 runbook 的名称。 |
 | WebhookUri | 是 | 该 runbook 的 webhook 的 URI。 |
@@ -269,10 +269,10 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
     }
 下表介绍了 Webhook 操作资源的属性。
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 必选 | 描述 |
 |:--|:--|:--|
-| type | 是 | 操作的类型。 Webhook 操作的类型是 Webhook。 |
-| 名称 | 是 | 操作的显示名称。 控制台中不显示此名称。 |
+| 类型 | 是 | 操作的类型。 Webhook 操作的类型是 Webhook  。 |
+| name | 是 | 操作的显示名称。 控制台中不显示此名称。 |
 | webhookUri | 是 | Webhook 的 URI。 |
 | customPayload | 否 | 发送到 Webhook 的自定义负载。 格式取决于 Webhook 的期望。 |
 

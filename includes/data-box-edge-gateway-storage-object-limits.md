@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 02/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 563849d3875ed0156d81770f58340633d90d515b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161275"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173403"
 ---
 下面是可以写入的 Azure 对象的大小。 请确保上传的所有文件都符合这些限制。
 

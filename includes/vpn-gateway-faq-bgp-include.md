@@ -9,11 +9,11 @@ ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119516"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172768"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP 是否在所有 Azure VPN 网关 SKU 上受支持？
 否，BGP 在 Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、标准  VPN 网关和高性能  VPN 网关上受支持。 **基本** SKU。

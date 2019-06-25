@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: b29f3168b7ecc1ec8f783a7ce7a6dea83318fa14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba803c493fd85a7be7bc6c5922171678cc6e0df0
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66455710"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164448"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -247,8 +247,7 @@ datetime | String | String |  datetime | String
 | 帐户 ID | Azure Cosmos DB 帐户的名称或终结点 URI。 |
 | 帐户密钥 | Azure Cosmos DB 帐户的共享访问密钥。 |
 | 数据库 | Azure Cosmos DB 数据库名称。 |
-| 集合名称模式 | 要使用的集合的集合名称或其模式。 <br />可以使用可选的 {partition} 令牌（其中分区从 0 开始）构造集合名称格式。 两个示例：  <br /><ul><li> _MyCollection_：必须存在一个名为“MyCollection”的集合。</li>  <li> _MyCollection{partition}_ ：基于分区依据列。</li></ul> 分区依据列集合必须存在：“MyCollection0”、“MyCollection1”、“MyCollection2”等。 |
-| 分区键 | 可选。 仅当在集合名称模式中使用 partition 令牌时，才需要此项。<br /> 分区键是输出事件中字段的名称，该字段用于指定跨集合分区输出的键。<br /> 对于单个集合输出，可以使用任何任意输出列。 例如 PartitionId。 |
+| 集合名称 | 在 Azure Cosmos DB 集合的名称。 Azure Cosmos DB 自动为 Azure Cosmos DB 中分区数据，缩放基于工作负荷分区无限制的容器是建议的方法。 |
 | 文档 ID |可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。
 
 ## <a name="azure-functions"></a>Azure Functions

@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d705993c7cd3816e89da21625dc5b003435b9128
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22c12d3233d85a02f6eef8d63e5a4494b4f0cdfa
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822763"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273707"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>自动增加 Azure 事件中心吞吐量单位
-Azure 事件中心是高度可缩放的数据流式处理平台。 因此，开始使用该服务后事件中心使用量通常会增加。 这样的使用量需要增加预先确定的[吞吐量单位](event-hubs-features.md#throughput-units)，以扩展事件中心和处理更大的传输速率。 事件中心的自动膨胀功能通过增加吞吐量单位数进行自动纵向扩展，以便满足使用量需求  。 增加吞吐量单位数可防止出现限制情况，在这些情况下：
+Azure 事件中心是高度可缩放的数据流式处理平台。 因此，开始使用该服务后事件中心使用量通常会增加。 这样的使用量需要增加预先确定的[吞吐量单位](event-hubs-scalability.md#throughput-units)，以扩展事件中心和处理更大的传输速率。 事件中心的自动膨胀功能通过增加吞吐量单位数进行自动纵向扩展，以便满足使用量需求  。 增加吞吐量单位数可防止出现限制情况，在这些情况下：
 
 * 数据入口速率超过设置的吞吐量单位数。
 * 数据出口请求速率超过设置的吞吐量单位数。
@@ -32,7 +32,7 @@ Azure 事件中心是高度可缩放的数据流式处理平台。 因此，开�
 
 ## <a name="how-auto-inflate-works"></a>自动膨胀的工作原理
 
-事件中心流量由[吞吐量单位](event-hubs-features.md#throughput-units)控制。 单个吞吐量单位允许入口量为 1 MB/秒，出口量是其两倍。 标准事件中心可以配置 1-20 个吞吐量单位。 利用自动膨胀，可从选择的所需吞吐量单位最小值开始。 然后此功能会自动将所需吞吐量单位增加到最大值，具体取决于增加的流量。 自动膨胀具有以下优势：
+事件中心流量由[吞吐量单位](event-hubs-scalability.md#throughput-units)控制。 单个吞吐量单位允许入口量为 1 MB/秒，出口量是其两倍。 标准事件中心可以配置 1-20 个吞吐量单位。 利用自动膨胀，可从选择的所需吞吐量单位最小值开始。 然后此功能会自动将所需吞吐量单位增加到最大值，具体取决于增加的流量。 自动膨胀具有以下优势：
 
 - 高效的缩放机制，可从少量开始并随流量增长而增加。
 - 自动增加到指定上限，没有限制问题。

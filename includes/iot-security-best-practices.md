@@ -9,11 +9,11 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 2138eed9975abe804442c476d19b5b7229685362
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66146639"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173065"
 ---
 # <a name="security-best-practices-for-internet-of-things-iot"></a>物联网 (IoT) 安全最佳做法
 

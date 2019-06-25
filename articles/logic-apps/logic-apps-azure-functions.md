@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 06/04/2019
 ms.reviewer: klam, LADocs
 ms.openlocfilehash: 524b927ec0966199c51cdee93e920d7b847139ae
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66495116"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用 Azure 函数
@@ -118,7 +118,7 @@ function convertToDateString(request, response){
 
    ![找到“Azure Functions”](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. 从函数应用列表中选择自己的函数应用。 操作列表打开后，选择此操作：**Azure 函数-创建新的函数**
+1. 从函数应用列表中选择自己的函数应用。 在操作列表打开后，选择以下操作：**Azure Functions - 创建新的函数**
 
    ![选择函数应用](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 

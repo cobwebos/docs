@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/13/2019
-ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: 490131d1743b366b5ac51a5a0fdac4b89ffe08f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596947"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274177"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure 逻辑应用的工作流定义语言中的触发器和操作类型参考
 
@@ -52,21 +52,21 @@ ms.locfileid: "65596947"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <trigger-name  > | String | 触发器的名称 | 
-| <trigger-type  > | String | 触发器类型，例如“Http”或“ApiConnection” | 
-| <trigger-inputs  > | JSON 对象 | 定义触发器行为的输入 | 
-| <time-unit  > | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
-| <number-of-time-units  > | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| <trigger-name> | String | 触发器的名称 | 
+| <trigger-type> | String | 触发器类型，例如“Http”或“ApiConnection” | 
+| <trigger-inputs> | JSON 对象 | 定义触发器行为的输入 | 
+| <time-unit> | String | 用于描述触发器触发频率的时间单位："Second", "Minute", "Hour", "Day", "Week", "Month" | 
+| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
 
 可选 
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <array-with-conditions  > | Array | 数组，其中包含一个或多个决定是否运行工作流的[条件](#trigger-conditions)。 仅适用于触发器。 | 
-| <runtime-config-options  > | JSON 对象 | 通过设置 `runtimeConfiguration` 属性可更改触发器运行时行为。 有关详细信息，请参阅[运行时配置设置](#runtime-config-options)。 | 
-| <splitOn-expression  > | String | 对于返回数组的触发器，可指定一个将数组项[拆分或解除批处理*到多个工作流实例进行处理的表达式*](#split-on-debatch)。 | 
-| <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <array-with-conditions> | Array | 数组，其中包含一个或多个决定是否运行工作流的[条件](#trigger-conditions)。 仅适用于触发器。 | 
+| <runtime-config-options> | JSON 对象 | 通过设置 `runtimeConfiguration` 属性可更改触发器运行时行为。 有关详细信息，请参阅[运行时配置设置](#runtime-config-options)。 | 
+| <splitOn-expression> | String | 对于返回数组的触发器，可指定一个将数组项[拆分或解除批处理*到多个工作流实例进行处理的表达式*](#split-on-debatch)。 | 
+| <operation-option> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 ## <a name="trigger-types-list"></a>触发器类型列表
@@ -132,12 +132,12 @@ ms.locfileid: "65596947"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <APIConnection_trigger_name  > | String | 触发器的名称 | 
-| <connection-name  > | String | 工作流使用的托管 API 连接的名称 | 
-| <method-type  > | String | 与托管 API 通信的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” | 
-| <api-operation  > | String | 要调用的 API 操作 | 
-| <time-unit  > | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
-| <number-of-time-units  > | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| <APIConnection_trigger_name> | String | 触发器的名称 | 
+| <connection-name> | String | 工作流使用的托管 API 连接的名称 | 
+| <method-type> | String | 与托管 API 通信的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” | 
+| <api-operation> | String | 要调用的 API 操作 | 
+| <time-unit> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
+| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
 
 可选 
@@ -2624,7 +2624,7 @@ ID,Product_Name
 
 ### <a name="run-in-high-throughput-mode"></a>在高吞吐量模式下运行
 
-对于单个逻辑应用运行，每 5 分钟执行的操作数具有[默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 若要将此限制提高到可能的[最大值](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)，请将 `operationOptions` 属性设为 `OptimizedForHighThroughput`。 此设置将逻辑应用置于“高吞吐量”模式之中。 
+针对单个逻辑应用定义，每隔 5 分钟执行的操作的数目已[默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 若要将此限制提高到可能的[最大值](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)，请将 `operationOptions` 属性设为 `OptimizedForHighThroughput`。 此设置将逻辑应用置于“高吞吐量”模式之中。 
 
 > [!NOTE]
 > 高吞吐量模式处于预览状态。 此外，还可根据需要在多个逻辑应用之间分配工作负荷。

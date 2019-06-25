@@ -1,25 +1,17 @@
 ---
 title: 使用 SAS 令牌和 Azure CLI 部署 Azure 模板 | Microsoft Docs
 description: 使用 Azure 资源管理器和 Azure CLI 从使用 SAS 令牌保护的模板将资源部署到 Azure。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: azurecli
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: c869b76a0d1ba10bc27aefa60cbe4ed5b8d8201a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a71698831859e92300706ade8c2284cbfc7ee241
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61061350"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205412"
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>使用 SAS 令牌和 Azure CLI 部署专用 Resource Manager 模板
 

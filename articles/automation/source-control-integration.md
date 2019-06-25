@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce41ae73a0c55a2b5c27cbdce4d4c16853acf59e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574110"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273187"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
-通过源代码管理，可以使用 GitHub 或 Azure Repos 源代码管理存储库中的脚本使自动化帐户中的 Runbook 保持最新。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试或生产自动化帐户。 这样可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。 源代码管理与自动化的集成支持从源代码管理存储库进行单向同步。
+源代码管理，可使在自动化帐户中的 runbook 与您的脚本在 GitHub 或 Azure 存储库源控件存储库中保持最新。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试或生产自动化帐户。 这样可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。 源代码管理与自动化的集成支持从源代码管理存储库进行单向同步。
 
 Azure 自动化支持三种类型的源代码管理：
 

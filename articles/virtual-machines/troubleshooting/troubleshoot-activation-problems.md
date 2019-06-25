@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 18cd5a86cc2f52567c5f320719d1a9f21b377ed4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc058cb3f27545b9e4ad8ef1062ca4d2fa4c9fa8
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60921265"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155146"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -51,11 +51,9 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
 >
 >如果使用的是 ExpressRoute 且已发布默认路由，请参阅 [Azure VM 可能无法通过 ExpressRoute 激活](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)。
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>第 1 步：配置相应的 KMS 客户端安装密钥（对于 Windows Server 2016 和 Windows Server 2012 R2）
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>步骤 1 配置相应的 KMS 客户端安装密钥
 
-对于通过 Windows Server 2016 或 Windows Server 2012 R2 自定义映像创建的 VM，必须为 VM 配置相应的 KMS 客户端安装密钥。
-
-这一步不适用于 Windows 2012 或 Windows 2008 R2。 因为使用的自动虚拟机激活 (AVMA) 功能仅受 Windows Server 2016 和 Windows Server 2012 R2 支持。
+从自定义映像创建 vm，必须为 VM 配置相应的 KMS 客户端安装密钥。
 
 1. 在提升的命令提示符处，运行 slmgr.vbs /dlv  。 检查输出中的 Description 值，并确定是通过零售 (RETAIL channel) 还是通过卷 (VOLUME_KMSCLIENT) 许可证介质创建的：
   

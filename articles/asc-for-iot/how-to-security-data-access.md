@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 1ec6a174d05f8707bbffcc9fb013a98c2eb9196c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65200545"
 ---
 # <a name="access-your-security-data"></a>访问安全数据 
@@ -120,8 +120,8 @@ SecurityAlert
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | 高          | 成功的暴力破解攻击           | 第          |    
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | 中型        | 在设备上的本地登录尝试失败  | 第          | 
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | 高          | 成功在设备上的本地登录名      | 1          |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | 中型        | 加密硬币 Miner                     | 1          |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | 高          | 成功在设备上的本地登录名      | 第          |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | 中型        | 加密硬币 Miner                     | 第          |
 
 ## <a name="security-recommendations"></a>安全建议
 
@@ -151,8 +151,8 @@ SecurityRecommendation
     
 | TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | 描述 | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
-| 2019-03-22T10:21:06.060 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中型 | 活动 | 找到输入链中的宽松的防火墙规则 | 在防火墙中找到了包含适用于各种 IP 地址或端口的宽容模式的规则 | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
-| 2019-03-22T10:50:27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中型 | 活动 | 找到输入链中的宽松的防火墙规则 | 在防火墙中找到了包含适用于各种 IP 地址或端口的宽容模式的规则 | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:21:06.060 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中型 | 活动 | 找到输入链中的宽松的防火墙规则 | 已找到在防火墙中的规则，其中包含的 IP 地址或端口范围广泛的宽松模式 | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:50:27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中型 | 活动 | 找到输入链中的宽松的防火墙规则 | 已找到在防火墙中的规则，其中包含的 IP 地址或端口范围广泛的宽松模式 | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
 
 ### <a name="device-summary"></a>设备摘要
 

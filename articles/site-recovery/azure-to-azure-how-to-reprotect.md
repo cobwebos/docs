@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: eabb7d194a3ef65282befab1ae59e85ba56f2f5b
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472162"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保护已故障转移到主要区域的 Azure VM
@@ -29,11 +29,11 @@ ms.locfileid: "65472162"
 
 ## <a name="reprotect-a-vm"></a>重新保护 VM
 
-1. 在“保管库” > “复制的项”中，右键单击已故障转移的 VM，并选择“重新保护”。 重新保护方向应该显示为从次要区域到主要区域。
+1. 在“保管库” > “复制的项”中，右键单击已故障转移的 VM，并选择“重新保护”。    重新保护方向应该显示为从次要区域到主要区域。
 
    ![重新保护](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
-2. 查看资源组、网络、存储和可用性集。 然后单击“确定”。 如果有任何资源标记为“新”，则表示它们是在重新保护过程中创建的。
+2. 查看资源组、网络、存储和可用性集。 然后单击“确定”  。 如果有任何资源标记为“新”，则表示它们是在重新保护过程中创建的。
 3. 重新保护作业使用最新数据植入目标站点。 完成该过程后，将发生增量复制。 然后，可以故障转移回到主要站点。 可以使用自定义选项，选择要在重新保护期间使用的存储帐户或网络。
 
    ![自定义选项](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
@@ -84,7 +84,7 @@ ms.locfileid: "65472162"
 1.  如果源 VM 数据是已删除、 损坏或无法访问，因为某种原因等资源组更改/删除，然后在重新保护完成 IR 期间会因为没有要使用的源区域上没有可用数据。
 2.  将源 VM 是否可访问仅差异备份是计算通过比较两个磁盘，然后将其传输。 检查下表以获取估计的时间 
 
-|* * 示例情况 * * | * * 重新保护所花费的时间 * * |
+|\* * 示例情况 * * | \* * 重新保护所花费的时间 * * |
 |--- | --- |
 |源区域具有 1 个虚拟机使用 1 TB 的标准磁盘<br/>-使用仅 127 GB 的数据和磁盘的其余部分为空<br/>的是 60 MiB/秒吞吐量的标准端口磁盘类型<br/>的故障转移后不更改任何数据| 45 分钟 – 1.5 小时的近似时间<br/> -在重新保护期间 Site Recovery 将填充整个这需要 127 GB 的数据的校验和 / 45 MBs ~ 45 分钟<br/>-某些系统开销时间是所必需的 Site Recovery，以执行自动为 20-30 分钟的小数位数<br/>-产生流出费用 |
 |源区域具有 1 个虚拟机使用 1 TB 的标准磁盘<br/>-使用仅 127 GB 的数据和磁盘的其余部分为空<br/>的是 60 MiB/秒吞吐量的标准端口磁盘类型<br/>的故障转移后 45 GB 数据更改| 大概时间 1 小时-2 小时<br/>-在重新保护期间 Site Recovery 将填充整个这需要 127 GB 的数据的校验和 / 45 MBs ~ 45 分钟<br/>-传输时间，以应用更改为 45 GB 的 45 GB / 45 MBps ~ 17 分钟<br/>-仅为 45 GB 数据的校验和不是出口费用|

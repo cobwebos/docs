@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: c6fcb345b49ce6354a24408ebe163fb928990252
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925690"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>设置了应用程序开发人员控制分发 (ADCD) 在 IBM zD & T v1
@@ -165,7 +165,7 @@ ADCD 媒体访问权限是必需的。 以下步骤假设你是 IBM 客户，并
 
 7. 在下一个屏幕上，为 VM （即，不 ztadmin 凭据） 中提供你的凭据。
 
-8. 在属性窗格中，输入的数字**中央处理器 (CPs)**，量**系统内存 (GB)**，并**部署目录**正在运行的映像。 由于这是一个演示，保持较小。
+8. 在属性窗格中，输入的数字**中央处理器 (CPs)** ，量**系统内存 (GB)** ，并**部署目录**正在运行的映像。 由于这是一个演示，保持较小。
 
 9. 请确保为选中此框**问题 IPL 命令到 z/OS 后自动部署**。
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: b0474fa5f33277f5a63100a2e787cae04e88c7c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66172017"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172972"
 ---
 ## <a name="overview-of-azure-resource-manager-templates"></a>Azure 资源管理器模板概述
 Azure 资源管理器模板允许用户通过定义资源之间的依赖关系，使用 JSON 语言以声明方式指定 Azure IaaS 基础结构。

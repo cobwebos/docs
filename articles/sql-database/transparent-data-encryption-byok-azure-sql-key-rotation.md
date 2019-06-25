@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: jhubbard
 ms.date: 03/12/2019
-ms.openlocfilehash: 760b292e75b4cc64b85eaf51ffad0521b721dabf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3e982c0fc46ea72692d5fa7f27e14b88c6383df
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60330850"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274270"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 轮换透明数据加密 (TDE) 保护器
 
@@ -71,36 +71,7 @@ ms.locfileid: "60330850"
    -ResourceGroup <SQLDatabaseResourceGroupName>
    ```
 
-## <a name="option-2-manual-rotation"></a>选项 2：手动轮换
 
-此选项使用[添加 AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)，[添加 AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey)，并[集 AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet 来添加完全新密钥，可能是新的密钥名称或甚至另一个密钥保管库下。 
-
->[!NOTE]
->Key Vault 名称和密钥名称的总长度不能超过 94 个字符。
->
-
-   ```powershell
-   # Add a new key to Key Vault
-   Add-AzKeyVaultKey `
-   -VaultName <KeyVaultName> `
-   -Name <KeyVaultKeyName> `
-   -Destination <HardwareOrSoftware>
-
-   # Add the new key from Key Vault to the server
-   Add-AzSqlServerKeyVaultKey `
-   -KeyId <KeyVaultKeyId> `
-   -ServerName <LogicalServerName> `
-   -ResourceGroup <SQLDatabaseResourceGroupName>   
-  
-   <# Set the key as the TDE protector for all resources 
-   under the server #>
-   Set-AzSqlServerTransparentDataEncryptionProtector `
-   -Type AzureKeyVault `
-   -KeyId <KeyVaultKeyId> `
-   -ServerName <LogicalServerName> `
-   -ResourceGroup <SQLDatabaseResourceGroupName>
-   ```
-  
 ## <a name="other-useful-powershell-cmdlets"></a>其他有用的 PowerShell cmdlet
 
 - 若要将 TDE 保护器从 Microsoft 托管模式切换到 BYOK 模式，请使用 [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet。

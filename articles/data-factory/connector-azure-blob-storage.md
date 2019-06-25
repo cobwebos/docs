@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ff20322f1d4f6024d4f41037ca18c327a0cc21f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3be075b78d8388b7146a9a3180ca825fc6476108
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233199"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206029"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Blob 存储复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -60,7 +60,10 @@ Azure Blob 连接器支持以下身份验证类型，有关详细信息，请参
 - [Azure 资源的托管标识身份验证](#managed-identity)
 
 >[!NOTE]
->HDInsights、Azure 机器学习和 Azure SQL 数据仓库 PolyBase 负载仅支持 Azure Blob 存储帐户密钥身份验证。
+>使用 PolyBase 将数据载入 SQL 数据仓库中，如果您的源或暂存 Blob 存储配置虚拟网络终结点，必须使用托管的标识身份验证所需的 PolyBase，和使用自承载集成运行时版本3.18 或更高版本。 请参阅[托管的标识身份验证](#managed-identity)详细的配置先决条件部分。
+
+>[!NOTE]
+>HDInsights 和 Azure 机器学习活动仅支持 Azure Blob 存储帐户密钥身份验证。
 
 ### <a name="account-key-authentication"></a>帐户密钥身份验证
 
@@ -272,6 +275,9 @@ Azure Blob 存储链接服务支持以下属性：
 
     - **对于源**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据读取者”角色。 
     - **对于接收器**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据参与者”角色。 
+
+>[!IMPORTANT]
+>如果使用 PolyBase 将数据从 Blob 加载 （作为源或过渡） 到 SQL 数据仓库时，对 Blob 使用托管的标识身份验证时，请确保还遵循步骤 1 和 2 中的[本指南](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)为 1) 注册你的 SQL 数据库使用 Azure Active Directory (Azure AD) 的服务器和 2） 将存储 Blob 数据参与者角色分配给你的 SQL 数据库服务器;数据工厂处理其余部分。 如果在 Blob 存储与 Azure 虚拟网络终结点配置，要使用 PolyBase 将数据加载，您必须使用托管的标识身份验证所需的 PolyBase。
 
 Azure Blob 存储链接服务支持以下属性：
 

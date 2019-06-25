@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: b916cbf690544d5887569e052a0456ca952140c8
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3e1f64aa00ea0d78eca8a994814a91600b91239f
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409543"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190690"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序
 
@@ -26,7 +26,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 |应用程序 |群集类型 | 描述 |
 |---|---|---|
 |[AtScale 智能平台](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/atscale.atscale) |Hadoop |AtScale 将允许您查询几十亿行数据以交互方式使用 BI 工具已经知道，拥有，并喜爱 – 从 Microsoft Excel、 Power BI、 Tableau Software qlikview 到横向扩展 OLAP 服务器，在 HDInsight 群集。 |
-|[CDAP for HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cask.cdap-for-hdinsight) |Hbase |CDAP 是第一款用于处理大数据的统一集成平台，可以加速的 Hadoop 的价值实现，使 IT 人员能够提供自助服务数据。 CDAP 采用开源设计并且可扩展，消除了创新所面临的障碍。 要求：4 个区域节点，至少需要安装 D3 v2。 |
+|[CDAP for HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP 是第一款用于处理大数据的统一集成平台，可以加速的 Hadoop 的价值实现，使 IT 人员能够提供自助服务数据。 CDAP 采用开源设计并且可扩展，消除了创新所面临的障碍。 要求：4 个区域节点，至少需要安装 D3 v2。 |
 |[Datameer](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/datameer.datameer) |Hadoop |Datameer 是一个可缩放的自助服务平台，用于准备、浏览和管理要分析的数据，可以加速将复杂多源数据转变为随时可在业务中使用的宝贵信息，以企业规模提供更快、更智能的见解。 |
 |[在 HDInsight 上的 Dataiku DSS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/dataiku.dss-on-hdi) |Hadoop、Spark |企业数据科学平台中的 Dataiku DSS，可让数据科学家和数据分析师更有效地协作设计和运行新的数据产品与服务，将原始数据转变为有影响力的预测结果。 |
 |[WANdisco Fusion HDI App](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop、Spark、HBase、Storm、Kafka |在分布式环境中保持数据一致性是一个很大的数据操作难题。 企业级的软件平台 WANdisco Fusion 可在任一环境中实现非结构化数据的一致性，从而可以解决此问题。 |
@@ -53,12 +53,12 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 **安装 HDInsight 应用程序**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中，导航到“所有服务” > “分析” > “HDInsight 群集”。
+2. 在左侧菜单中，导航到“所有服务” > “分析” > “HDInsight 群集”。   
 3. 在列表中选择一个 HDInsight 群集。  如果没有群集，必须先创建一个。  请参阅 [创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
-4. 在“设置”类别下，选择“应用程序”。 主窗口中会显示已安装的应用程序列表。 
+4. 在“设置”类别下，选择“应用程序”。   主窗口中会显示已安装的应用程序列表。 
    
     ![HDInsight 应用程序门户菜单](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
-5. 在菜单中选择“+添加”。 此时会显示可用应用程序的列表。  如果“+添加”灰显，则表示没有任何应用程序适用于此版本的 HDInsight 群集。
+5. 在菜单中选择“+添加”。  此时会显示可用应用程序的列表。  如果“+添加”灰显，则表示没有任何应用程序适用于此版本的 HDInsight 群集。 
    
     ![HDInsight 应用程序可用应用程序](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
 6. 选择某个可用的应用程序，然后遵照说明接受法律条款。
@@ -74,9 +74,9 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 **列出 HDInsight 应用程序并显示属性**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中，导航到“所有服务” > “分析” > “HDInsight 群集”。
+2. 在左侧菜单中，导航到“所有服务” > “分析” > “HDInsight 群集”。   
 3. 在列表中选择一个 HDInsight 群集。
-4. 在“设置”类别下，选择“应用程序”。 主窗口中会显示已安装的应用程序列表。 
+4. 在“设置”类别下，选择“应用程序”。   主窗口中会显示已安装的应用程序列表。 
    
     ![HDInsight 应用程序已安装的应用](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. 选择某个已安装的应用程序以显示属性。 属性列表：
@@ -89,7 +89,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
     |SSH 终结点 |可以使用 SSH 连接到边缘节点。 SSH 凭据与针对群集配置的 SSH 用户凭据相同。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
     |描述 | 应用程序说明。 |
 
-6. 若要删除应用程序，请右键单击应用程序，并单击上下文菜单中的“删除”。
+6. 若要删除应用程序，请右键单击应用程序，并单击上下文菜单中的“删除”  。
 
 ## <a name="connect-to-the-edge-node"></a>连接到边缘节点
 可以使用 HTTP 和 SSH 连接到边缘节点。 可在 [门户](#list-installed-hdinsight-apps-and-properties)中找到终结点信息。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。

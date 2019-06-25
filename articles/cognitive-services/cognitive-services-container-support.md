@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 8faa524d7d88f09835d26439b772b8d57c84cc73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ebc3d9f3339e2f703a1f374363b72b86f63d903
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122242"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204037"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
 
@@ -106,6 +106,8 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 [!INCLUDE [Discoverability of more container information](../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
+了解如何[容器方案](/containers/container-reuse-recipe.md)可用于认知服务。
 
 安装和浏览 Azure 认知服务中的容器提供的功能：
 

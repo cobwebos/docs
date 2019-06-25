@@ -68,7 +68,7 @@ If Condition 活动可提供 if 语句在编程语言中提供相同的功能。
 -------- | ----------- | -------------- | --------
 name | if-condition 活动名称。 | String | 是
 type | 必须设置为“IfCondition”  | String | 是
-表达式 | 计算结果必须为 true 或 false 的表达式 | 具有结果类型布尔的表达式 | 是
+expression | 计算结果必须为 true 或 false 的表达式 | 具有结果类型布尔的表达式 | 是
 ifTrueActivities | 表达式计算结果为 `true` 时将执行的活动集。 | Array | 是
 ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。 | Array | 是
 

@@ -9,11 +9,11 @@ ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 49f48c2d0bf865cf8c8fde831e7a597f8701d213
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150046"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172778"
 ---
 可以验证连接是否成功，方法是使用“Get-AzVirtualNetworkGatewayConnection”cmdlet，带或不带“-Debug”。 
 

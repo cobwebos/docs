@@ -1,22 +1,22 @@
 ---
 title: 身份验证方法-Azure Active Directory
-description: Azure AD 中有哪些可用的 MFA 和 SSPR 身份验证方法
+description: 为 MFA 和 SSPR 在 Azure AD 中可用的身份验证方法
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 06/17/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1322c919906dc2d0dd23de538fa2c1992fbe5da0
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119366"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164830"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
@@ -180,7 +180,9 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 
 用户可能具有最多五个 OATH 硬件令牌或验证器应用程序，如配置为在任何时间使用的 Microsoft Authenticator 应用的组合。
 
-## <a name="mobile-phone"></a>移动电话
+## <a name="phone-options"></a>电话选项
+
+### <a name="mobile-phone"></a>移动电话
 
 在手机中为用户提供两个选项。
 
@@ -193,18 +195,18 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 >
 > 密码重置不支持电话分机。 即使采用“+1 4255551234X12345”格式，在拨出电话前也会删除分机。
 
-### <a name="text-message"></a>短信
+#### <a name="text-message"></a>短信
 
 将一条包含验证码的短信发送到手机号码。 在登录界面中输入提供的验证码可继续操作。
 
-### <a name="phone-call"></a>电话呼叫
+#### <a name="phone-call"></a>电话呼叫
 
 向提供的电话号码发起自动语音呼叫。 接听电话，并按电话键盘上的 # 进行身份验证
 
 > [!IMPORTANT]
 > 开始在 2019 年 3 月中的电话呼叫选项将不能向免费/试用 Azure AD 租户中用户的 MFA 和 SSPR 的用户。 此更改不会影响短信。 电话呼叫将继续可供用户在付费 Azure AD 租户。 此更改只会影响免费/试用 Azure AD 租户。
 
-## <a name="office-phone"></a>办公电话
+### <a name="office-phone"></a>办公电话
 
 向提供的电话号码发起自动语音呼叫。 接听电话，并按电话键盘上的 # 进行身份验证。
 
@@ -219,6 +221,25 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 > 在国家/地区代码和电话号码之间需要有一个空格。
 >
 > 密码重置不支持电话分机。 即使采用“+1 4255551234X12345”格式，在拨出电话前也会删除分机。
+
+### <a name="troubleshooting-phone-options"></a>电话的故障排除选项
+
+与通过电话号码的身份验证方法相关的常见问题：
+
+* 在一台设备上阻止呼叫方 ID
+   * 设备进行故障排除
+* 错误的电话号码、 不正确的国家/地区代码、 与工作电话号码的住宅电话号码
+   * 排查用户对象和配置身份验证方法。 确保注册正确的电话号码。
+* 错误输入的 PIN
+   * 确认用户已使用正确的 PIN 已在 Azure MFA 服务器中注册。
+* 调用转发到语音邮件
+   * 请确保用户拥有打开电话和服务是在其区域中或使用备用方法。
+* 用户被阻止
+   * 请让管理员解除阻止用户在 Azure 门户中。
+* 在设备上未订阅短信
+   * 让用户更改方法或在设备上激活短信。
+* 有故障的电信提供商 （无电话输入检测到缺少 DTMF 铃音问题，阻止调用方 ID 在多个设备上或在多个设备上阻止 SMS）
+   * Microsoft 使用多个电信提供商路由电话呼叫和短信进行身份验证。 如果看到任何上述问题有用户尝试使用 5 分钟内至少 5 次的方法，可联系 Microsoft 支持部门时有可用的该用户的信息。
 
 ## <a name="app-passwords"></a>应用密码
 

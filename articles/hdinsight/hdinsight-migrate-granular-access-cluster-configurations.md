@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 982c5dcc052f92afe381235db0bf066262fd82c6
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754538"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304283"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>迁移到群集配置的基于角色的细化访问权限
 
@@ -20,10 +20,10 @@ ms.locfileid: "66754538"
 
 ## <a name="what-is-changing"></a>有什么变化？
 
-以前，机密可以获得通过 HDInsight API 由群集用户拥有所有者、 参与者或读者[RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)，因为它们是可供任何人使用`*/read`权限是必需的。
+以前，机密可以获得通过 HDInsight API 由群集用户拥有所有者、 参与者或读者[RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)，因为它们是可供任何人使用`*/read`权限。
 今后，访问这些机密将需要`Microsoft.HDInsight/clusters/configurations/*`权限，这意味着它们不再可以访问具有读取者角色的用户。 机密定义为值，可用于获取比用户角色允许的访问权限更高的权限。 这些值包括群集网关 HTTP 凭据、存储帐户密钥和数据库凭据等值。
 
-我们还引入了一个新[HDInisght 群集运算符](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)将能够检索机密，而不被授予管理权限的参与者或所有者的角色。 总结：
+我们还引入了一个新[HDInsight 群集运算符](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)将能够检索机密，而不被授予管理权限的参与者或所有者的角色。 总结：
 
 | 角色                                  | 以前                                                                                       | 今后       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
@@ -148,14 +148,14 @@ ms.locfileid: "66754538"
 更新到[Az PowerShell 版本 2.0.0](https://www.powershellgallery.com/packages/Az)或更高版本以避免中断。  如果将这些更改影响的方法，则可能需要最少的代码修改。
 - `Grant-AzHDInsightHttpServicesAccess` 现已弃用，已替换为新`Set-AzHDInsightGatewayCredential`cmdlet。
 - `Get-AzHDInsightJobOutput` 已更新，以支持对存储密钥进行细致的基于角色的访问。
-    - 不会影响具有 HDInsight 群集运算符、 参与者或所有者角色的用户。
+    - 具有 HDInsight 群集的“操作员”、“参与者”或“所有者”角色的用户将不受影响。
     - 具有仅读取器角色的用户将需要指定`DefaultStorageAccountKey`参数显式。
 - `Revoke-AzHDInsightHttpServicesAccess` 现已弃用。 现在始终启用 HTTP，因此不再需要此 cmdlet。
  请参阅[az。HDInsight 迁移指南](https://github.com/Azure/azure-powershell/blob/master/documentation/migration-guides/Az.2.0.0-migration-guide.md#azhdinsight)的更多详细信息。
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>将 HDInsight 群集操作员角色分配添加到用户
 
-具有[参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)或[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)角色的用户可以向你希望他们对敏感的 HDInsight 群集配置值（例如群集网关凭据和存储帐户密钥）拥有读/写访问权限的用户分配 [HDInisght 群集操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)角色。
+具有的用户[参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)或[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)角色可以分配[HDInsight 群集运算符](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)到想要具有敏感的读/写访问权限的用户角色HDInsight 群集配置 （如群集网关凭据和存储帐户密钥） 的值。
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
 

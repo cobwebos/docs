@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
 ms.openlocfilehash: 47cd0621a601e3f1ef53572bc7bb8bc1c7ea76ab
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65992001"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>如何通过 Python 使用服务总线主题和订阅
@@ -85,7 +85,7 @@ bus_service.create_topic('mytopic', topic_options)
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
 
-如果在创建新订阅时未指定任何筛选器，则将使用默认的 MatchAll 筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为 `AllMessages` 的订阅，并使用默认的 **MatchAll** 筛选器。
+如果在创建新订阅时未指定任何筛选器，则将使用默认的 MatchAll  筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为 `AllMessages` 的订阅，并使用默认的 **MatchAll** 筛选器。
 
 ```python
 bus_service.create_subscription('mytopic', 'AllMessages')
@@ -100,11 +100,11 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 可使用 **ServiceBusService** 对象的 **create\_rule** 方法向订阅添加筛选器。 此方法允许向现有订阅中添加新筛选器。
 
 > [!NOTE]
-> 由于默认筛选器会自动应用到所有新订阅，因此，必须首先删除默认筛选器，否则 MatchAll 会替代可能指定的任何其他筛选器。 可以使用 ServiceBusService 对象的 `delete_rule` 方法删除默认规则。
+> 由于默认筛选器会自动应用到所有新订阅，因此，必须首先删除默认筛选器，否则 MatchAll 会替代可能指定的任何其他筛选器  。 可以使用 ServiceBusService 对象的 `delete_rule` 方法删除默认规则  。
 > 
 > 
 
-以下示例创建一个名为 `HighMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择自定义 `messagenumber` 属性大于 3 的消息：
+以下示例创建一个名为 `HighMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择自定义 `messagenumber` 属性大于 3 的消息  ：
 
 ```python
 bus_service.create_subscription('mytopic', 'HighMessages')
@@ -117,7 +117,7 @@ bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
 ```
 
-同样，以下示例创建一个名为 `LowMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择 `messagenumber` 属性小于或等于 3 的消息：
+同样，以下示例创建一个名为 `LowMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择 `messagenumber` 属性小于或等于 3 的消息  ：
 
 ```python
 bus_service.create_subscription('mytopic', 'LowMessages')
@@ -134,7 +134,7 @@ bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 
 ## <a name="send-messages-to-a-topic"></a>将消息发送到主题
 
-要将消息发送到服务总线主题，应用程序必须使用 ServiceBusService 对象的 `send_topic_message` 方法。
+要将消息发送到服务总线主题，应用程序必须使用 ServiceBusService 对象的 `send_topic_message` 方法  。
 
 以下示例演示如何向 `mytopic` 发送五条测试消息。 每条消息的 `messagenumber` 属性值因循环迭代而异（这会确定哪些订阅接收它）：
 
@@ -148,18 +148,18 @@ for i in range(5):
 
 ## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
 
-对 ServiceBusService 对象使用 `receive_subscription_message` 方法可从订阅接收消息：
+对 ServiceBusService 对象使用 `receive_subscription_message` 方法可从订阅接收消息  ：
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
 print(msg.body)
 ```
 
-参数 `peek_lock` 设置为“False”时，会在读取消息后将其从订阅删除。 通过将参数 `peek_lock` 设置为“True”，可读取（速览）并锁定消息而不会将其从队列中删除。
+参数 `peek_lock` 设置为“False”时，会在读取消息后将其从订阅删除  。 通过将参数 `peek_lock` 设置为“True”，可读取（速览）并锁定消息而不会将其从队列中删除  。
 
 在接收过程中读取并删除消息的行为是最简单的模式，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解此行为，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线已将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它就漏掉了在发生故障前使用的消息。
 
-如果将 `peek_lock` 参数设置为“True”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序处理完消息（或安全存储该消息以供将来处理）后，会通过对 Message 对象调用 `delete` 方法完成接收过程的第二个阶段。 `delete` 方法会将消息标记为已使用，并将其从订阅中删除。
+如果将 `peek_lock` 参数设置为“True”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序  。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序处理完消息（或安全存储该消息以供将来处理）后，会通过对 Message 对象调用 `delete` 方法完成接收过程的第二个阶段  。 `delete` 方法会将消息标记为已使用，并将其从订阅中删除。
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)
@@ -170,7 +170,7 @@ msg.delete()
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
 
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 Message 对象调用 `unlock` 方法。 此方法会导致服务总线解锁订阅中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 Message 对象调用 `unlock` 方法  。 此方法会导致服务总线解锁订阅中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
 
 另外，还存在与订阅中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线会自动解锁该消息并使其可再次被接收。
 
@@ -191,7 +191,7 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
 > [!NOTE]
-> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 

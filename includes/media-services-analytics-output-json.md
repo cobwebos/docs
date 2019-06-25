@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160958"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173364"
 ---
 作业将生成一个 JSON 输出文件，其中包含有关检测到的和跟踪的面部的元数据。 元数据包括指示面部位置的坐标，以及指示正在跟踪该人员的面部 ID 编号。 在正面面部长时间于帧中消失或重叠的情况下，面部 ID 编号很容易重置，导致某些人员被分配多个 ID。
 

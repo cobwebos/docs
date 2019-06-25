@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 242926c0821e4951d2a2bd2f858f63691baf1017
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: ae7c823b9aea262556081354a108ac9509a284ab
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307222"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110686"
 ---
 # <a name="deploy-a-secure-workstation"></a>部署工作站的安全
 
@@ -102,11 +102,11 @@ ms.locfileid: "66307222"
 
 从 Azure 门户中，浏览到**Azure Active Directory** > **移动性 （MDM 和 MAM）**  > **Microsoft Intune**。 更改该设置**MDM 用户作用域**到**所有**，然后选择**保存**因为我们将允许任何设备，若要在此方案中由 Intune 管理。 可一文中找到更多信息[Intune 快速入门：设置适用于 Windows 10 设备自动注册](https://docs.microsoft.com/Intune/quickstart-setup-auto-enrollment)。 我们将在以后的步骤中创建 Intune 配置和符合性策略。
 
-#### <a name="azure-ad-conditional-access"></a>Azure AD 条件性访问
+#### <a name="azure-ad-conditional-access"></a>Azure AD 条件访问
 
 Azure AD 条件访问可帮助在符合条件的设备上保留这些特权的管理任务。 我们已定义为成员用户**保护工作站用户**组将需要在登录到云的应用程序时执行多重身份验证。 我们将遵循的最佳实践指导原则，并从策略中排除了紧急访问帐户。 可以在文章中找到更多信息[在 Azure AD 中管理紧急访问帐户](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 
-若要配置条件性访问在 Azure 门户中，浏览到**Azure Active Directory** > **条件性访问** > **新策略**。
+若要从 Azure 门户中配置条件性访问，请浏览到**Azure Active Directory** > **条件性访问** > **新策略**。
 
 * **名称**-安全的设备所需的策略
 * 分配

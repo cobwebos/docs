@@ -1,25 +1,17 @@
 ---
 title: 使用 IoT 中心 C SDK 针对受限制设备进行 Azure IoT 中心开发 | Microsoft Docs
 description: 开发人员指南：指导如何使用 Azure IoT SDK 针对受限制设备进行开发。
-services: iot-hub
-documentationcenter: c
 author: yzhong94
-manager: timlt
-editor: ''
-ms.assetid: 979136db-c92d-4288-870c-f305e8777bdd
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 05/24/2018
-ms.date: 04/29/2019
-ms.author: v-yiso
+services: iot-hub
+ms.topic: conceptual
+ms.date: 05/24/2018
+ms.author: yizhon
 ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61320839"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>使用 Azure IoT C SDK 针对受限制设备进行开发
@@ -52,6 +44,7 @@ cmake -Duse_amqp=OFF -Duse_http=OFF <Path_to_cmake>
 ### <a name="remove-sdk-logging-capability"></a>删除 SDK 日志记录功能
 
 C SDK 提供各种日志记录功能来帮助进行调试。 可以使用以下 cmake 命令删除生产设备的日志记录功能：
+
 ```
 cmake -Dno_logging=OFF <Path_to_cmake>
 ```
@@ -87,15 +80,7 @@ C SDK 支持两种编程模型。 其中一组拥有具有 _LL_ 中缀的 API，
 另一组没有 _LL_ 索引的 API 称为便捷层，工作线程会在其中自动启动。 例如，设备客户端的便捷层 API 可以在此 [IoT 设备客户端头文件](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h)中找到。 对于每个额外的线程会占用大量系统资源的受限制设备，请考虑使用 _LL_ API。
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解 Azure IoT C SDK 体系结构，请参阅：
-- [Azure IoT C SDK 源代码](https://github.com/Azure/azure-iot-sdk-c/)
-- [适用于 C 语言的 Azure IoT 设备 SDK 简介](iot-hub-device-sdk-c-intro.md)
 
-------
-[lnk-cmake]: https://cmake.org/
-[lnk-devbox-setup]:  https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md
-[lnk-choosing-protocol]: iot-hub-devguide-protocols.md
-[lnk-hub-file-upload]: iot-hub-devguide-file-upload.md
-[lnk-strip]: https://en.wikipedia.org/wiki/Strip_(Unix)
-[lnk-serializer]: https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer
-[lnk-parson]: https://github.com/kgabis/parson
+若要详细了解 Azure IoT C SDK 体系结构，请参阅：
+-   [Azure IoT C SDK 源代码](https://github.com/Azure/azure-iot-sdk-c/)
+-   [适用于 C 语言的 Azure IoT 设备 SDK 简介](iot-hub-device-sdk-c-intro.md)

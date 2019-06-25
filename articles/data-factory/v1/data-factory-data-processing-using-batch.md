@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: e95f167cf6dcfe90fff1c2be174ca197cb2aa004
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65204026"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
@@ -103,25 +103,25 @@ ms.locfileid: "65204026"
 #### <a name="azure-batch-pool-of-virtual-machines"></a>虚拟机的 Batch 池
 创建至少有两个计算节点的 Batch 池。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择左侧菜单中的“浏览”，然后选择“Batch 帐户”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择左侧菜单中的“浏览”  ，然后选择“Batch 帐户”  。
 
-1. 选择 Batch 帐户，打开“Batch 帐户”边栏选项卡。
+1. 选择 Batch 帐户，打开“Batch 帐户”  边栏选项卡。
 
-1. 选择“池”磁贴。
+1. 选择“池”  磁贴。
 
-1. 在“池”边栏选项卡中，选择工具栏上的“添加”按钮以添加池。
+1. 在“池”  边栏选项卡中，选择工具栏上的“添加”  按钮以添加池。
 
-   a. 输入池的 ID（“池 ID”）。 记下池的 ID。 创建数据工厂解决方案时需要它。
+   a. 输入池的 ID（“池 ID”  ）。 记下池的 ID。 创建数据工厂解决方案时需要它。
 
-   b. 为“操作系统系列”设置指定“Windows Server 2012 R2”。
+   b. 为“操作系统系列”  设置指定“Windows Server 2012 R2”  。
 
    c. 选择**节点定价层**。
 
-   d. 输入 **2** 作为“目标专用”设置的值。
+   d. 输入 **2** 作为“目标专用”  设置的值。
 
-   e. 输入 **2** 作为“每个节点最大任务”设置的值。
+   e. 输入 **2** 作为“每个节点最大任务”  设置的值。
 
-   f. 选择“确定”以创建池。
+   f. 选择“确定”  以创建池。
 
 #### <a name="azure-storage-explorer"></a>Azure 存储资源管理器
 可使用 [Azure 存储资源管理器 6](https://azurestorageexplorer.codeplex.com/) 或 [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)（来自 ClumsyLeaf Software）检查并更改存储项目中的数据。 还可以检查和更改云托管应用程序日志中的数据。
@@ -142,7 +142,7 @@ ms.locfileid: "65204026"
 
    ![输入文件夹](./media/data-factory-data-processing-using-batch/image4.png)
 
-   如果使用存储资源管理器，请将 **file.txt** 文件上传到 **mycontainer**。 选择工具栏上的“复制”，创建 blob 副本。 在“复制 Blob”对话框中，将“目标 blob 名”更改为 `inputfolder/2015-11-16-00/file.txt`。 重复此步骤以创建 `inputfolder/2015-11-16-01/file.txt`、`inputfolder/2015-11-16-02/file.txt`、`inputfolder/2015-11-16-03/file.txt`、`inputfolder/2015-11-16-04/file.txt` 等。 此操作会自动创建文件夹。
+   如果使用存储资源管理器，请将 **file.txt** 文件上传到 **mycontainer**。 选择工具栏上的“复制”  ，创建 blob 副本。 在“复制 Blob”  对话框中，将“目标 blob 名”  更改为 `inputfolder/2015-11-16-00/file.txt`。 重复此步骤以创建 `inputfolder/2015-11-16-01/file.txt`、`inputfolder/2015-11-16-02/file.txt`、`inputfolder/2015-11-16-03/file.txt`、`inputfolder/2015-11-16-04/file.txt` 等。 此操作会自动创建文件夹。
 
 1. 创建另一个名为 `customactivitycontainer` 的容器。 将自定义活动 zip 文件上传到此容器。
 
@@ -182,19 +182,19 @@ public IDictionary<string, string> Execute(
 
    a. 启动 Visual Studio 2012/2013/2015。
 
-   b. 选择“文件” > “新建” > “项目”。
+   b. 选择“文件” > “新建” > “项目”    。
 
-   c. 展开“模板”，并选择“Visual C\#”。 在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
+   c. 展开“模板”  ，并选择“Visual C\#”  。 在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
 
-   d. 从右侧项目类型列表中选择“类库”。
+   d. 从右侧项目类型列表中选择“类库”  。
 
-   e. 对于“名称”，输入 **MyDotNetActivity**。
+   e. 对于“名称”  ，输入 **MyDotNetActivity**。
 
-   f. 对于“位置”，选择“C:\\ADFGetStarted”。 如果不存在，则创建 **ADF** 文件夹。
+   f. 对于“位置”  ，选择“C:\\ADFGetStarted”  。 如果不存在，则创建 **ADF** 文件夹。
 
-   g. 选择“确定”创建该项目。
+   g. 选择“确定”创建该项目。 
 
-1. 选择“工具” > “NuGet 包管理器” > “包管理器控制台”。
+1. 选择“工具”   > “NuGet 包管理器”   > “包管理器控制台”  。
 
 1. 在“包管理器控制台”中，执行以下命令导入 Microsoft.Azure.Management.DataFactories：
 
@@ -396,7 +396,7 @@ public IDictionary<string, string> Execute(
 
     Calculate 方法计算输入文件（文件夹中的 blob ）中关键字“Microsoft”的实例数。 搜索词“Microsoft”在代码中是硬编码。
 
-1. 编译该项目。 在菜单中选择“生成”，然后选择“生成解决方案”。
+1. 编译该项目。 在菜单中选择“生成”  ，然后选择“生成解决方案”  。
 
 1. 启动 Windows 资源管理器，然后转到 **bin\\debug** 或 **bin\\release** 文件夹。 文件夹选择取决于生成的类型。
 
@@ -528,23 +528,23 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="step-1-create-the-data-factory"></a>步骤 1：创建数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com/)之后，请执行以下步骤：
 
-   a. 选择左侧菜单上的“新建”。
+   a. 选择左侧菜单上的“新建”  。
 
-   b. 选择“新建”边栏选项卡中的“数据 + 分析”。
+   b. 选择“新建”  边栏选项卡中的“数据 + 分析”  。
 
-   c. 选择“数据分析”边栏选项卡中的“数据工厂”。
+   c. 选择“数据分析”  边栏选项卡中的“数据工厂”  。
 
-1. 在“新建数据工厂”边栏选项卡中，输入 **CustomActivityFactory** 作为名称。 数据工厂的名称必须全局唯一。 如果收到错误“数据工厂名称 CustomActivityFactory 不可用”，请更改数据工厂名称。 例如，使用 yournameCustomActivityFactory，然后再次创建数据工厂。
+1. 在“新建数据工厂”  边栏选项卡中，输入 **CustomActivityFactory** 作为名称。 数据工厂的名称必须全局唯一。 如果收到错误“数据工厂名称 CustomActivityFactory 不可用”，请更改数据工厂名称。 例如，使用 yournameCustomActivityFactory，然后再次创建数据工厂。
 
-1. 选择“资源组名称”，并选择现有资源组或创建资源组。
+1. 选择“资源组名称”  ，并选择现有资源组或创建资源组。
 
 1. 验证要在其中创建数据工厂的订阅和区域是否正确。
 
-1. 在“新建数据工厂”边栏选项卡中选择“创建”。
+1. 在“新建数据工厂”  边栏选项卡中选择“创建”  。
 
 1. 此时会在门户的仪表板中创建数据工厂。
 
-1. 成功创建数据工厂后，将看到“数据工厂”页，其中显示了数据工厂的内容。
+1. 成功创建数据工厂后，将看到“数据工厂”  页，其中显示了数据工厂的内容。
 
    ![“数据工厂”页](./media/data-factory-data-processing-using-batch/image6.png)
 
@@ -552,22 +552,22 @@ test custom activity Microsoft test custom activity Microsoft
 链接服务将数据存储或计算服务链接到数据工厂。 在此步骤中，将存储帐户和 Batch 帐户链接到数据工厂。
 
 #### <a name="create-an-azure-storage-linked-service"></a>创建 Azure 存储链接服务
-1. 在 **CustomActivityFactory** 的“数据工厂”边栏选项卡上，选择“作者和部署”磁贴。 “数据工厂编辑器”随即出现。
+1. 在 **CustomActivityFactory** 的“数据工厂”  边栏选项卡上，选择“作者和部署”  磁贴。 “数据工厂编辑器”随即出现。
 
-1. 选择命令栏上的“新建数据存储”，并选择“Azure 存储”。 用于在编辑器中创建存储链接服务的 JSON 脚本随即出现。
+1. 选择命令栏上的“新建数据存储”  ，并选择“Azure 存储”  。 用于在编辑器中创建存储链接服务的 JSON 脚本随即出现。
 
    ![新建数据存储](./media/data-factory-data-processing-using-batch/image7.png)
 
 1. 将**帐户名称**替换为存储帐户的名称。 将**帐户密钥**替换为存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[查看、复制和重新生成存储访问密钥](../../storage/common/storage-account-manage.md#access-keys)。
 
-1. 选择命令栏上的“部署”，部署链接服务。
+1. 选择命令栏上的“部署”  ，部署链接服务。
 
    ![部署](./media/data-factory-data-processing-using-batch/image8.png)
 
 #### <a name="create-an-azure-batch-linked-service"></a>创建 Azure Batch 链接服务
 在此步骤中，为 Batch 帐户创建链接服务，该帐户用于运行数据工厂自定义活动。
 
-1. 在命令栏上选择“新建计算”并选择“Azure Batch”。 用于在编辑器中创建 Batch 链接服务的 JSON 脚本随即出现。
+1. 在命令栏上选择“新建计算”  并选择“Azure Batch”  。 用于在编辑器中创建 Batch 链接服务的 JSON 脚本随即出现。
 
 1. 在 JSON 脚本中：
 
@@ -580,7 +580,7 @@ test custom activity Microsoft test custom activity Microsoft
    d. 对于 **batchUri** JSON 属性，输入 batch URI。
 
       > [!IMPORTANT]
-      > “Batch 帐户”边栏选项卡中的 URL 采用以下格式：\<accountname\>.\<region\>.batch.azure.com。 对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
+      > “Batch 帐户”  边栏选项卡中的 URL 采用以下格式：\<accountname\>.\<region\>.batch.azure.com。 对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
       >
       >
 
@@ -595,13 +595,13 @@ test custom activity Microsoft test custom activity Microsoft
    
    e. 对于 **linkedServiceName** 属性，指定 **StorageLinkedService**。 已在之前的步骤中创建此链接服务。 此存储用作文件和日志的暂存区域。
 
-1. 选择命令栏上的“部署”，部署链接服务。
+1. 选择命令栏上的“部署”  ，部署链接服务。
 
 #### <a name="step-3-create-datasets"></a>步骤 3：创建数据集
 在此步骤中，创建表示输入和输出数据的数据集。
 
 #### <a name="create-the-input-dataset"></a>创建输入数据集
-1. 在数据工厂编辑器中，选择工具栏上的“新建数据集”按钮。 从下拉列表中选择“Azure Blob 存储”。
+1. 在数据工厂编辑器中，选择工具栏上的“新建数据集”  按钮。 从下拉列表中选择“Azure Blob 存储”  。
 
 1. 将右窗格中的 JSON 脚本替换为以下 JSON 代码片段：
 
@@ -685,12 +685,12 @@ test custom activity Microsoft test custom activity Microsoft
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
 
-1. 选择工具栏上的“部署”，创建并部署 **InputDataset** 表。
+1. 选择工具栏上的“部署”  ，创建并部署 **InputDataset** 表。
 
 #### <a name="create-the-output-dataset"></a>创建输出数据集
 在此步骤中，创建 AzureBlob 类型的另一数据集，以表示输出数据。
 
-1. 在数据工厂编辑器中，选择工具栏上的“新建数据集”按钮。 从下拉列表中选择“Azure Blob 存储”。
+1. 在数据工厂编辑器中，选择工具栏上的“新建数据集”  按钮。 从下拉列表中选择“Azure Blob 存储”  。
 
 1. 将右窗格中的 JSON 脚本替换为以下 JSON 代码片段：
 
@@ -734,7 +734,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     请记住，输入文件夹（例如 2015-11-16-00）中的所有文件都是含有开始时间 2015-11-16-00 的切片的一部分。 处理此切片时，自定义活动将扫描每个文件，并在输出文件中生成具有搜索词“Microsoft”出现次数的行。 如果 2015-11-16-00 文件夹有三个文件，则 2015-11-16-00.txt 输出文件中存在三行。
 
-1. 选择工具栏上的“部署”，创建并部署 **OutputDataset**。
+1. 选择工具栏上的“部署”  ，创建并部署 **OutputDataset**。
 
 #### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>步骤 4：创建和运行含自定义活动的管道
 在此步骤中，创建含一个活动（之前创建的自定义活动）的管道。
@@ -744,7 +744,7 @@ test custom activity Microsoft test custom activity Microsoft
 >
 >
 
-1. 在数据工厂编辑器中，选择命令栏上的“新建管道”。 如果看不到该命令，则选择省略号符号以显示它。
+1. 在数据工厂编辑器中，选择命令栏上的“新建管道”  。 如果看不到该命令，则选择省略号符号以显示它。
 
 1. 将右窗格中的 JSON 脚本替换为以下 JSON 代码片段：
 
@@ -805,26 +805,26 @@ test custom activity Microsoft test custom activity Microsoft
      - **isPaused** 属性默认设置为 false。 在此示例中管道会立即运行，因为切片从过去启动。 可将此属性设置为 **true** 以暂停管道，然后将其设置回 **false** 以重新启动。
      -   **开始**和**结束**时间相差五小时。 切片会每小时生成，因此管道会生成五个切片。
 
-1. 选择命令栏中的“部署”来部署管道。
+1. 选择命令栏中的“部署”  来部署管道。
 
 #### <a name="step-5-test-the-pipeline"></a>步骤 5：测试管道
 在此步骤中，将文件拖放到输入文件夹以测试管道。 首先，通过每个输入文件夹对应一个文件的方式来测试管道。
 
-1. 在 Azure 门户的“数据工厂”边栏选项卡中，选择“图示”。
+1. 在 Azure 门户的“数据工厂”  边栏选项卡中，选择“图示”  。
 
    ![图表](./media/data-factory-data-processing-using-batch/image10.png)
 
-1. 在“图示”视图中，双击输入数据集“InputDataset”。
+1. 在“图示”  视图中，双击输入数据集“InputDataset”  。
 
    ![InputDataset](./media/data-factory-data-processing-using-batch/image11.png)
 
-1. 会出现已准备好所有五个切片的“InputDataset”边栏选项卡。 请注意每个切片的**切片开始时间**和**切片结束时间**。
+1. 会出现已准备好所有五个切片的“InputDataset”  边栏选项卡。 请注意每个切片的**切片开始时间**和**切片结束时间**。
 
    ![输入切片开始和结束时间](./media/data-factory-data-processing-using-batch/image12.png)
 
-1. 在“图示”视图中，选择“OutputDataset”。
+1. 在“图示”  视图中，选择“OutputDataset”  。
 
-1. 五个输出切片会显示为“就绪”状态（如果它们已生成）。
+1. 五个输出切片会显示为“就绪”  状态（如果它们已生成）。
 
    ![输出切片开始和结束时间](./media/data-factory-data-processing-using-batch/image13.png)
 
@@ -847,11 +847,11 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 在输出文件夹中，删除输出文件 **2015-11-16-01.txt**。
 
-1. 在“OutputDataset”边栏选项卡中，右键单击将“切片开始时间”设置为 **2015/11/16 01:00:00 AM** 的切片。 选择“运行”，重新运行/重新处理切片。 该切片现在有五个文件而非一个文件。
+1. 在“OutputDataset”  边栏选项卡中，右键单击将“切片开始时间”  设置为 **2015/11/16 01:00:00 AM** 的切片。 选择“运行”  ，重新运行/重新处理切片。 该切片现在有五个文件而非一个文件。
 
     ![运行](./media/data-factory-data-processing-using-batch/image17.png)
 
-1. 切片运行且其状态为“就绪”后，验证此切片的输出文件 (**2015-11-16-01.txt**) 中的内容。 输出文件会出现在 blob 存储中 `outputfolder` 中的 `mycontainer` 下。 该切片的每个文件都应有一个行。
+1. 切片运行且其状态为“就绪”  后，验证此切片的输出文件 (**2015-11-16-01.txt**) 中的内容。 输出文件会出现在 blob 存储中 `outputfolder` 中的 `mycontainer` 下。 该切片的每个文件都应有一个行。
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -882,19 +882,19 @@ test custom activity Microsoft test custom activity Microsoft
 ### <a name="debug-the-pipeline"></a>调试管道
 调试包括几种基本方法。
 
-1. 如果输入切片未设置为“就绪”，请确认输入文件夹结构正确，并且 file.txt 存在于输入文件夹中。
+1. 如果输入切片未设置为“就绪”  ，请确认输入文件夹结构正确，并且 file.txt 存在于输入文件夹中。
 
    ![输入文件夹结构](./media/data-factory-data-processing-using-batch/image3.png)
 
 1. 在自定义活动的 **Execute** 方法中，使用 **IActivityLogger** 对象记录可帮助解决问题的信息。 记录的消息在 user\_0.log 文件中显示。
 
-   在“OutputDataset”边栏选项卡中，选择切片以查看该切片的“数据切片”边栏选项卡。 在“活动运行”下，可看到该切片的一个活动运行。 如果在命令栏中选择“运行”，则可以启动同一切片的另一个活动运行。
+   在“OutputDataset”  边栏选项卡中，选择切片以查看该切片的“数据切片”  边栏选项卡。 在“活动运行”  下，可看到该切片的一个活动运行。 如果在命令栏中选择“运行”  ，则可以启动同一切片的另一个活动运行。
 
-   选择活动运行时，会显示具有日志文件列表的“活动运行详细信息”边栏选项卡。 在 user\_0.log 文件中会显示记录的消息。 发生错误后，会显示 3 个活动运行，因为管道/活动 JSON 中的重试计数设置为 3。 选择活动运行时，会显示日志文件，可查看文件解决该错误。
+   选择活动运行时，会显示具有日志文件列表的“活动运行详细信息”  边栏选项卡。 在 user\_0.log 文件中会显示记录的消息。 发生错误后，会显示 3 个活动运行，因为管道/活动 JSON 中的重试计数设置为 3。 选择活动运行时，会显示日志文件，可查看文件解决该错误。
 
    ![OutputDataset 和“数据切片”边栏选项卡](./media/data-factory-data-processing-using-batch/image18.png)
 
-   在日志文件列表中，选择“user-0.log”。 在右侧面板中会显示使用 **IActivityLogger.Write** 方法的结果。
+   在日志文件列表中，选择“user-0.log”  。 在右侧面板中会显示使用 **IActivityLogger.Write** 方法的结果。
 
    ![“活动运行详细信息”边栏选项卡](./media/data-factory-data-processing-using-batch/image19.png)
 
@@ -917,7 +917,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 确保 **assemblyName** (MyDotNetActivity.dll)、**entryPoint**(MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip) 和 **packageLinkedService**（应指向包含 zip 文件的 Blob 存储）已设置为正确的值。
 
-1. 如果解决了错误并想要重新处理切片，请在“OutputDataset”边栏选项卡中右键单击该切片，然后选择“运行”。
+1. 如果解决了错误并想要重新处理切片，请在“OutputDataset”  边栏选项卡中右键单击该切片，然后选择“运行”  。
 
    ![“OutputDataset”边栏选项卡“运行”选项](./media/data-factory-data-processing-using-batch/image21.png)
 
@@ -932,11 +932,11 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="extend-the-sample"></a>扩展该示例
 可扩展此示例，深入了解数据工厂和 Batch 功能。 例如，若要在不同时间范围处理切片，请执行以下步骤：
 
-1. 在 `inputfolder` 中添加以下子文件夹：2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08 和 2015-11-16-09。 将输入文件放置在这些文件夹中。 将管道结束时间从 `2015-11-16T05:00:00Z` 更改为 `2015-11-16T10:00:00Z`。 在“图示”视图中，双击“InputDataset”，并确认输入切片是否就绪。 双击“OutputDataset”，查看输出切片的状态。 如果其处于“就绪”状态，请检查输出文件夹中的输出文件。
+1. 在 `inputfolder` 中添加以下子文件夹：2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08 和 2015-11-16-09。 将输入文件放置在这些文件夹中。 将管道结束时间从 `2015-11-16T05:00:00Z` 更改为 `2015-11-16T10:00:00Z`。 在“图示”  视图中，双击“InputDataset”  ，并确认输入切片是否就绪。 双击“OutputDataset”  ，查看输出切片的状态。 如果其处于“就绪”  状态，请检查输出文件夹中的输出文件。
 
-1. 增加或减少**并发**设置，了解其对解决方案性能的影响，尤其是对 Batch 上进行的处理的影响。 有关“并发”设置的详细信息，请参阅“步骤 4：创建和运行含自定义活动的管道”。
+1. 增加或减少**并发**设置，了解其对解决方案性能的影响，尤其是对 Batch 上进行的处理的影响。 有关“并发”  设置的详细信息，请参阅“步骤 4：创建和运行含自定义活动的管道”。
 
-1. 创建含较高/较低的**每个 VM 的最大任务数**的池。 若要使用创建的新池，请更新数据工厂解决方案中的 Batch 链接服务。 有关“每个 VM 的最大任务数”设置的详细信息，请参阅“步骤 4：创建和运行含自定义活动的管道”。
+1. 创建含较高/较低的**每个 VM 的最大任务数**的池。 若要使用创建的新池，请更新数据工厂解决方案中的 Batch 链接服务。 有关“每个 VM 的最大任务数”  设置的详细信息，请参阅“步骤 4：创建和运行含自定义活动的管道”。
 
 1. 创建带有**自动缩放**功能的 Batch 池。 自动缩放 Batch 池中的计算节点是指动态调整应用程序使用的处理能力。 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ee9b70827c19236287f81f66f4b9c6e1004a54fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3cff54f49d40fb7da99dcafa9535349ccb70e09
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114494"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150480"
 ---
 下表介绍 Azure 常规用途 v1、v2 和 Blob 存储帐户的默认限制。 “传入”  限制是指请求中发送到存储帐户的所有数据。 “传出”  限制是指响应中从存储帐户接收的所有数据。
 
@@ -32,15 +32,15 @@ ms.locfileid: "66114494"
 <sup>1</sup> Azure 标准存储帐户根据请求支持更高的入口上限。 若要请求提高帐户入口上限，请与 [Azure 支持](https://azure.microsoft.com/support/faq/)联系。
 
 <sup>2</sup> [Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)选项包括：
-* **RA-GRS**：读取访问异地冗余存储。 如果已启用 RA-GRS，辅助位置的出口目标与主要位置的出口目标相同。
-* **GRS**：异地冗余存储。 
-* **ZRS**：区域冗余存储。
-* **LRS**：本地冗余存储。 
+- **RA-GRS**：读取访问异地冗余存储。 如果已启用 RA-GRS，辅助位置的出口目标与主要位置的出口目标相同。
+- **GRS**：异地冗余存储。
+- **ZRS**：区域冗余存储。
+- **LRS**：本地冗余存储。
 
 > [!NOTE]
 > 大多数情况下，建议使用常规用途 v2 存储帐户。 可以轻松将常规用途 v1 或 Azure Blob 存储帐户升级到常规用途 v2 帐户，无需停机且无需复制数据。
 >
-> 有关 Azure 存储帐户的详细信息，请参阅[存储帐户概述](../articles/storage/common/storage-account-overview.md)。 
+> 有关 Azure 存储帐户的详细信息，请参阅[存储帐户概述](../articles/storage/common/storage-account-overview.md)。
 
 如果应用程序的需求超过单个存储帐户的伸缩性目标，则可以构建使用多个存储帐户的应用程序。 然后，可以将数据对象分布到这些存储帐户中。 有关批量定价的信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 

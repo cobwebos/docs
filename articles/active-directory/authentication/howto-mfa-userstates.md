@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd26f7bdf928dcbd2cf841526857dc44623f133
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a2c036265049bf4b87435e96f779482da404caa
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057429"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164816"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
 
 可以采用两种方法之一要求进行双重验证，这两种方法都需要使用全局管理员帐户。 第一个选项是为每个用户启用 Azure 多重身份验证 (MFA)。 逐个为用户启用此功能后，他们每次登录时都会执行双重验证（有一些例外情况，例如，当他们从受信任的 IP 地址登录时，或者开启了“记忆的设备”  功能时）。 第二个选项是设置一个条件性访问策略，要求在某些情况下的双重验证。
 
 > [!TIP]
-> 可选择两个方法中的一个（而不是选择两者），以要求进行双重验证。 为用户启用 Azure 多重身份验证可以覆盖任何条件性访问策略。
+> 启用 Azure 多重身份验证使用条件性访问策略是推荐的方法。 不建议更改用户状态，除非你的许可证不包括条件性访问因为它将要求用户每次登录时执行 MFA。
 
 ## <a name="choose-how-to-enable"></a>选择启用方法
 

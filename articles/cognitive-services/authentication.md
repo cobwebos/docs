@@ -1,6 +1,6 @@
 ---
 title: Authentication
-titleSuffix: Cognitive Services - Azure
+titleSuffix: Azure Cognitive Services
 description: 有三种方法可以对 Azure 认知服务资源的请求进行身份验证：订阅密钥、持有者令牌或多服务订阅。 本文介绍每种方法以及如何发出请求。
 services: cognitive-services
 author: erhopf
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06cc5509598cb6227a64e2cf375a5686c89312eb
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60336758"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163676"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
@@ -29,7 +29,7 @@ ms.locfileid: "60336758"
 在发出请求之前，需要具有 Azure 帐户和 Azure 认知服务订阅。 如果已有帐户，请继续并跳到下一节。 如果还没有帐户，我们会提供指南，可在几分钟内完成设置：[创建 Azure 认知服务帐户](cognitive-services-apis-create-account.md)。
 
 可以获取订阅密钥从[Azure 门户](cognitive-services-apis-create-account.md#access-your-resource)创建你的帐户，或激活之后[免费试用版](https://azure.microsoft.com/try/cognitive-services/my-apis)。
- 
+
 ## <a name="authentication-headers"></a>身份验证标头
 
 让我们快速查看可用于 Azure 认知服务的身份验证标头。

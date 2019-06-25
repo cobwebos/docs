@@ -7,17 +7,17 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c945f39218f9099d5c304739ca9b567ab9b3325
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61480565"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164698"
 ---
-# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>使用 Azure 流分析和 Azure 机器学习执行情绪分析
-本文介绍了如何快速设置集成了 Azure 机器学习的简单 Azure 流分析作业。 你将使用 Cortana Intelligence 库中的机器学习情绪分析模型来实时分析流文本数据并确定情绪分数。 可以使用 Cortana Intelligence Suite 完成此任务，不必担心构建情绪分析模型的复杂性。
+# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>通过使用 Azure Stream Analytics 和 Azure 机器学习工作室 （预览版） 执行情绪分析
+本文介绍如何快速设置集成了 Azure 机器学习工作室的简单 Azure Stream Analytics 作业。 你将使用 Cortana Intelligence 库中的机器学习情绪分析模型来实时分析流文本数据并确定情绪分数。 可以使用 Cortana Intelligence Suite 完成此任务，不必担心构建情绪分析模型的复杂性。
 
 可以将从本文学习的知识应用于诸如下列方案：
 
@@ -45,7 +45,7 @@ ms.locfileid: "61480565"
 概括来说，若要完成本文展示的任务，需要执行以下操作：
 
 1. 创建一个 Azure 存储帐户和一个 blob 存储容器，并将一个 CSV 格式的输入文件上传到该容器。
-3. 将 Cortana Intelligence 库中的一个情绪分析模型添加到 Azure 机器学习工作区，并将该模型部署为机器学习工作区中的 Web 服务。
+3. 从 Cortana Intelligence 库中的情绪分析模型添加到 Azure 机器学习工作室工作区并将该模型部署为机器学习工作区中的 web 服务。
 5. 创建将此 Web 服务作为函数进行调用的流分析作业，以确定所输入文本的情绪。
 6. 启动流分析作业，并检查输出。
 

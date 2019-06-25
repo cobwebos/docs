@@ -8,10 +8,10 @@ ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: 5490149f199c2d7887716ceae3f035527ad33961
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66170037"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复
@@ -46,7 +46,7 @@ ms.locfileid: "66170037"
 ```azurepowershell
 Connect-AzAccount
 ```
-选择要将 VMware 虚拟机复制到的 Azure 订阅。 使用 Get AzSubscription cmdlet 有权访问的有 Azure 订阅的列表。 选择要与选择 AzSubscription cmdlet 配合使用的 Azure 订阅。
+选择要将 VMware 虚拟机复制到的 Azure 订阅。 使用 Get-AzSubscription cmdlet 获取你有权访问的 Azure 订阅的列表。 使用 Select-AzSubscription cmdlet 选择要使用的 Azure 订阅。
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionName "ASR Test Subscription"
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 使用 Set-ASRVaultContext cmdlet 设置保管库上下文。 设置后，PowerShell 会话中的后续 Azure Site Recovery 操作将在所选保管库的上下文中执行。
 
 > [!TIP]
-> Azure Site Recovery PowerShell 模块 （Az.RecoveryServices 模块） 附带了易于使用的大多数 cmdlet 的别名。 模块中的 cmdlet 采用 *\<操作 >-**AzRecoveryServicesAsr**\<对象 >* 并具有采用以下形式的等效别名  *\<操作 >-**ASR**\<对象 >* 。 本文使用 cmdlet 别名以便阅读。
+> Azure Site Recovery PowerShell 模块（Az.RecoveryServices 模块）附带了大多数 cmdlet 的易用别名。 模块中的 cmdlet 采用 *\<操作 >-**AzRecoveryServicesAsr**\<对象 >* 并具有采用以下形式的等效别名  *\<操作 >-**ASR**\<对象 >* 。 本文使用 cmdlet 别名以便阅读。
 
 在以下示例中，使用来自 $vault 变量的保管库详细信息指定 PowerShell 会话的保管库上下文。
 

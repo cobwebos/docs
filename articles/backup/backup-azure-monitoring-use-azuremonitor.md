@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1e85b633024b5a3e85874707ae9a1f068e7a328d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 7c53d8fe0ee5bbfdbe180aa4d18d8c7b7fab29c2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808520"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295298"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>大规模使用 Azure Monitor 监视
 
@@ -29,7 +29,7 @@ ms.locfileid: "66808520"
 ## <a name="using-log-analytics-workspace"></a>使用 Log Analytics 工作区
 
 > [!NOTE]
-> 从 Azure VM 备份，MAB 代理，System Center DPM (SC DPM)，在 Azure Vm 中 SQL 备份的数据是被抽取到 Log Analytics 工作区通过诊断设置。 支持 Azure 文件共享备份，Microsoft Azure 备份服务器 (MABS) 即将推出。
+> 从 Azure VM 备份、 MAB 代理、 System Center DPM (SC DPM) 中，在 Azure Vm 中的 SQL 备份和 Azure 文件共享备份的数据是被抽取到 Log Analytics 工作区通过诊断设置。 支持的 Microsoft Azure 备份服务器 (MABS) 即将推出。
 
 我们利用两个 Azure 服务的功能**诊断设置**（若要将数据从多个 Azure 资源管理器资源发送到另一个资源） 和**Log Analytics** (LA-生成您可以在其中定义使用操作组的其他通知通道的自定义警报） 用于监视在规模较大。 有关如何使用 LA 大规模监视 Azure 备份以下各节详细信息。
 
@@ -47,6 +47,9 @@ ms.locfileid: "66808520"
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>解决方案部署到 Log Analytics 工作区
 
 当数据在 LA 工作区中后,[部署 GitHub 模板](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/)到 LA 来可视化数据。 请确保你提供相同的资源组、 工作区名称和工作区的位置正确标识工作区并在其上安装此模板。
+
+> [!NOTE]
+> 在其 LA 工作区中不能具有警报或备份/还原作业的用户可能会在门户上看到的错误代码"BadArgumentError"。 用户可以忽略此错误，继续使用该解决方案。 一旦相关类型的数据开始流动到工作区，可视化效果将反映的相同对象和用户看不到此错误了。
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>查看 Azure 备份数据使用日志分析 (LA)
 

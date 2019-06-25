@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97b32fff931c1c0f5e19a269afec5094cae3d40e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 204e230f7ff0897d2ba97213ebc836aff9d0324b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111210"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204653"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>场景：用于调用 Web API 的 桌面应用
 
@@ -53,7 +53,7 @@ ms.locfileid: "67111210"
 
   ![桌面应用程序](media/scenarios/desktop-app.svg)
 
-- 如果您正在编写可移植的命令行工具-可能在 Linux 或 Mac 上运行的.NET Core 应用程序-你将无法使用任一的交互式身份验证 (如.NET Core 不提供[Web 浏览器](https://aka.ms/msal-net-uses-web-browser))，也不集成Windows 身份验证。 在这种情况下的最佳选项是使用设备代码流。 此流还可用于应用程序，而浏览器中，如 iOT 应用程序
+- 如果您正在编写可移植的命令行工具-可能在 Linux 或 Mac 上运行的.NET Core 应用程序-你将无法使用交互式身份验证 (如.NET Core 不提供[Web 浏览器](https://aka.ms/msal-net-uses-web-browser))，或集成Windows 身份验证。 在这种情况下的最佳选项是使用设备代码流。 此流还可用于应用程序，而浏览器中，如 IoT 应用程序
 
   ![Browserless 应用程序](media/scenarios/device-code-flow-app.svg)
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8dff2a54e5ac6626314a7b3faaedc8214a27680b
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 4605fd0296af6ac3c0d37c52c93d8a4a0903232b
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866392"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165207"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>CloudSimple 提供的 Azure VMware 解决方案
 
@@ -22,4 +22,4 @@ ms.locfileid: "64866392"
 - 查看[概述](cloudsimple-vmware-solutions-overview.md)，详细了解 CloudSimple 提供的 Azure VMware 解决方案。
 - 选择 [CloudSimple 私有云概述](cloudsimple-private-cloud.md)，详细了解 CloudSimple 私有云解决方案。
 - 选择[节点](cloudsimple-node.md)，详细了解 CloudSimple 节点。
-- 选择[初始化并购买容量](quickstart-create-cloudsimple-service.md)，开始使用 CloudSimple 提供的 Azure VMware 解决方案。
+- 选择 [初始化并预配容量](quickstart-create-cloudsimple-service.md)以开始使用 CloudSimple 提供的 Azure VMware 解决方案。

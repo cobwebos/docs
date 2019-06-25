@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 932d250d6685a1b905e4a03a0118d8c8f1f26418
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101459"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151246"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>存储帐户的 Azure 存储可伸缩性和性能目标
 
@@ -43,6 +43,12 @@ ms.locfileid: "62101459"
 
 有关 Azure 文件和 Azure 文件同步的缩放和性能目标的详细信息，请参阅 [Azure 文件可伸缩性和性能目标](../files/storage-files-scale-targets.md)。
 
+> [!IMPORTANT]
+> 存储帐户限制适用于所有共享。 最多缩放的存储帐户的最大值才可实现，如果只有一个共享每个存储帐户。
+>
+> 大于 5 TiB 的标准文件共享处于预览状态，存在一定的限制。
+> 有关列表的限制和要加入到的这些更大的文件共享大小的预览，请参阅[标准文件共享](../files/storage-files-planning.md#standard-file-shares)部分 Azure 文件规划的指导。
+
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 ### <a name="premium-files-scale-targets"></a>高级文件缩放目标
@@ -53,27 +59,7 @@ ms.locfileid: "62101459"
 
 #### <a name="premium-file-share-limits"></a>高级文件共享限制
 
-> [!IMPORTANT]
-> 存储帐户限制适用于所有共享。 最多缩放的存储帐户的最大值才可实现，如果只有一个共享每个存储帐户。
-
-|区域  |确定目标  |
-|---------|---------|
-|预配的最小大小                        |100 GiB      |
-|最大预配大小                        |100 TiB      |
-|最小大小增大/减少    |1 GiB      |
-|基线 IOPS    |每 GiB 多达 100,000 个 1 IOPS|
-|爆发的 IOPS    |3 个 x IOPS 每 GiB 多达 100,000 个|
-|出口率         |60 MiB/秒 + 0.06 * 预配 GiB        |
-|入口速率| 40 MiB/秒 + 0.04 * 预配 GiB |
-|最大快照数        |200       |
-
-#### <a name="premium-file-limits"></a>高级文件限制
-
-|区域  |确定目标  |
-|---------|---------|
-|大小                  |1 TiB         |
-|每个文件的最大 IOPS     |5,000         |
-|并发句柄    |2,000         |
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Azure 文件同步规模目标
 

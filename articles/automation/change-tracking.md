@@ -11,10 +11,10 @@ ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4f917c45030ad70a2ab76fed877bd822d1902f82
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64927277"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
@@ -73,9 +73,9 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 使用以下步骤，在 Linux 计算机上配置要跟踪的文件：
 
-1. 在自动化帐户中，选择“配置管理”下的“更改跟踪”。 单击“编辑设置”（齿轮符号）。
-2. 在“更改跟踪”页上，选择“Linux 文件”，然后单击“+ 添加”以添加要跟踪的新文件。
-3. 在“添加 Linux 文件以更改跟踪”中，输入要跟踪的文件或目录的信息，然后单击“保存”。
+1. 在自动化帐户中，选择“配置管理”下的“更改跟踪”   。 单击“编辑设置”（齿轮符号）  。
+2. 在“更改跟踪”页上，选择“Linux 文件”，然后单击“+ 添加”以添加要跟踪的新文件    。
+3. 在“添加 Linux 文件以更改跟踪”中，输入要跟踪的文件或目录的信息，然后单击“保存”   。
 
 |属性  |说明  |
 |---------|---------|
@@ -96,9 +96,9 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 使用以下步骤，在 Windows 计算机上配置要跟踪的文件：
 
-1. 在自动化帐户中，选择“配置管理”下的“更改跟踪”。 单击“编辑设置”（齿轮符号）。
-2. 在“更改跟踪”页上，选择“Windows 文件”，然后单击“+ 添加”以添加要跟踪的新文件。
-3. 在“添加用于更改跟踪的 Windows 文件”中，输入要求该文件进行跟踪的信息，然后单击“保存”。
+1. 在自动化帐户中，选择“配置管理”下的“更改跟踪”   。 单击“编辑设置”（齿轮符号）  。
+2. 在“更改跟踪”页上，选择“Windows 文件”，然后单击“+ 添加”以添加要跟踪的新文件    。
+3. 在“添加用于更改跟踪的 Windows 文件”中，输入要求该文件进行跟踪的信息，然后单击“保存”   。
 
 |属性  |说明  |
 |---------|---------|
@@ -128,9 +128,9 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 使用以下步骤，配置要在 Windows 计算机上跟踪的注册表项：
 
-1. 在自动化帐户中，选择“配置管理”下的“更改跟踪”。 单击“编辑设置”（齿轮符号）。
-2. 在“更改跟踪”页上，选择“Windows 注册表”，然后单击“+ 添加”以添加要跟踪的新注册表项。
-3. 在“添加用于更改跟踪的 Windows 注册表”中，输入要求该项进行跟踪的信息，然后单击“保存”。
+1. 在自动化帐户中，选择“配置管理”下的“更改跟踪”   。 单击“编辑设置”（齿轮符号）  。
+2. 在“更改跟踪”页上，选择“Windows 注册表”，然后单击“+ 添加”以添加要跟踪的新注册表项    。
+3. 在“添加用于更改跟踪的 Windows 注册表”中，输入要求该项进行跟踪的信息，然后单击“保存”   。
 
 |属性  |说明  |
 |---------|---------|
@@ -148,7 +148,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 其他限制：
 
-* 未在当前实现中使用“最大文件大小”列和值。
+* 未在当前实现中使用“最大文件大小”列和值  。
 * 如果在 30 分钟收集周期内收集 2500 多个文件，则解决方案性能可能会下降。
 * 当流量较高时，更改记录可能需要最多六个小时才能显示。
 * 如果在计算机关闭的情况下修改配置，计算机可能会发布属于以前配置的更改。
@@ -189,7 +189,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 ### <a name="windows-service-tracking"></a>Windows 服务跟踪
 
-Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请转到“更改跟踪”。 在“Windows 服务”选项卡上的“编辑设置”下，有一个滑块，可用于将 Windows 服务的收集频率从短短 10 秒更改为长达 30 分钟。 请将滑块移至所需的频率，它会自动进行保存。
+Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请转到“更改跟踪”  。 在“Windows 服务”选项卡上的“编辑设置”下，有一个滑块，可用于将 Windows 服务的收集频率从短短 10 秒更改为长达 30 分钟   。 请将滑块移至所需的频率，它会自动进行保存。
 
 ![Windows 服务滑块](./media/change-tracking/windowservices.png)
 
@@ -244,16 +244,16 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 更改跟踪特别需要以下地址。 与这些地址的通信通过端口 443 完成。
 
-|Azure Public  |Azure Government   |
+|Azure Public  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|* .azure-automation.net|*.azure-automation.us|
+|\* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|\* .azure-automation.net|*.azure-automation.us|
 
 ## <a name="use-change-tracking"></a>使用更改跟踪
 
-启用解决方案后，可通过在自动化帐户中的“配置管理”下选择“更改跟踪”来查看受监视计算机的更改摘要。
+启用解决方案后，可通过在自动化帐户中的“配置管理”下选择“更改跟踪”来查看受监视计算机的更改摘要   。
 
 可以查看对计算机所做的更改，然后深入了解每个事件的详细信息。 可在图表顶部找到下拉列表，根据更改类型和时间范围限制图表和详细信息。 还可以单击并拖动图表，选择自定义时间范围。 **更改类型**将是以下值之一**事件**，**守护程序**，**文件**，**注册表**， **软件**， **Windows 服务**。 类别显示的更改的类型，可以是**Added**， **Modified**，或**已删除**。
 
@@ -284,9 +284,9 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 ![一个图表，显示 hosts 文件的更改情况](./media/change-tracking/changes.png)
 
-若要进一步分析此更改，请单击“Log Analytics”，转到“日志搜索”。 进入“日志搜索”以后，使用查询 `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` 搜索对 Hosts 文件所做的内容更改。 此查询查找的更改包括对特定文件的文件内容的更改，该文件的完全限定路径包含“hosts”一词。 也可将路径部分更改为完全限定的形式（例如 `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`），以便请求特定的文件。
+若要进一步分析此更改，请单击“Log Analytics”，转到“日志搜索”。  进入“日志搜索”以后，使用查询 `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` 搜索对 Hosts 文件所做的内容更改。 此查询查找的更改包括对特定文件的文件内容的更改，该文件的完全限定路径包含“hosts”一词。 也可将路径部分更改为完全限定的形式（例如 `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`），以便请求特定的文件。
 
-在查询返回所需结果后，单击日志搜索体验中的“新建警报规则”按钮，打开警报创建页。 也可在 Azure 门户中通过 **Azure Monitor** 导航到该体验。 在警报创建体验中，再次检查我们的查询，然后修改警报逻辑。 在本示例中，你希望在检测到更改的情况下触发警报，即使只在环境中的所有计算机上检测到一个更改。
+在查询返回所需结果后，单击日志搜索体验中的“新建警报规则”按钮，打开警报创建页。  也可在 Azure 门户中通过 **Azure Monitor** 导航到该体验。 在警报创建体验中，再次检查我们的查询，然后修改警报逻辑。 在本示例中，你希望在检测到更改的情况下触发警报，即使只在环境中的所有计算机上检测到一个更改。
 
 ![一个显示更改查询（用于跟踪对 hosts 文件的更改）的图像](./media/change-tracking/change-query.png)
 

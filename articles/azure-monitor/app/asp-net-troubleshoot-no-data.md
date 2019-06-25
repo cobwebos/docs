@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 23d7b0626dba5a88c100868907ecf868a895fc9e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3820a5d7becef275ed3408f01cc53ad8590ba60e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059617"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272413"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
@@ -241,13 +241,13 @@ Application Insights SDK 日志，PerfView 可以捕获的 EventSource 自故障
 
 若要收集日志，请下载 PerfView 并运行以下命令：
 ```cmd
-PerfView.exe collect /onlyProviders=*Microsoft-ApplicationInsights-* -MaxCollectSec:300
+PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
 ```
 
-你可以根据需要修改这些参数。
-
+你可以根据需要修改这些参数：
 - **MaxCollectSec**。 设置此参数以防止 PerfView 从无限期地运行，并且会影响服务器的性能。
 - **OnlyProviders**。 设置此参数仅从 SDK 收集日志。 可以自定义基于特定调查此列表。 
+- **NoGui**。 设置此参数可收集不含 Gui 的日志。
 
 
 有关详细信息，

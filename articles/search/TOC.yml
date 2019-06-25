@@ -31,16 +31,26 @@
       href: search-get-started-python.md
 - name: 教程
   items:
+    - name: 创建第一个应用
+      items:
+        - name: 1 - 基本搜索页
+          href: tutorial-csharp-create-first-app.md
+        - name: 2 - 添加结果分页
+          href: tutorial-csharp-paging.md
+        - name: 3 - 添加提前键入
+          href: tutorial-csharp-type-ahead-and-suggestions.md
     - name: 编制 Azure SQL 数据库索引
       href: search-indexer-tutorial.md
     - name: 为 Azure JSON blob 编制索引
       href: search-semi-structured-data.md
     - name: 使用 AI（认知搜索）扩充
       items:
-        - name: REST
-          href: cognitive-search-tutorial-blob.md
         - name: 'C#'
           href: cognitive-search-tutorial-blob-dotnet.md
+        - name: REST
+          href: cognitive-search-tutorial-blob.md
+        - name: Python
+          href: cognitive-search-tutorial-blob-python.md
 - name: 示例
   items:
     - name: Azure 代码示例

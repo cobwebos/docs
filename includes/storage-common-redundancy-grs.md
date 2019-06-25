@@ -9,11 +9,11 @@ ms.date: 03/26/2018
 ms.author: jeking
 ms.custom: include file
 ms.openlocfilehash: efa593d0ff0043d81574b67192deed30933e1e40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114872"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173561"
 ---
 异地冗余存储 (GRS) 通过将数据复制到距主要区域数百英里以外的次要区域，用于在给定的一年内至少为对象提供 99.99999999999999%（16 个 9）的持久性。 如果存储帐户启用了 GRS，则即使遇到区域完全停电或导致主区域不可恢复的灾难，数据也能持久保存。
 

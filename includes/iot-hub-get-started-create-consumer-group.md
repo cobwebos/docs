@@ -5,15 +5,15 @@ ms.author: robinsh
 ms.topic: include
 ms.date: 05/20/2019
 ms.openlocfilehash: c164433efc6a34a3a06676a3145feb18d3de80b9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66248854"
 ---
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
 
-[使用者组](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers)到事件流，使应用和 Azure 服务单独使用同一个事件中心终结点中的数据提供独立的视图。 在本部分中，添加一个使用者组到更高版本中使用本教程将数据提取从终结点的 IoT 中心的内置终结点。
+[使用者组](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers)提供事件流的独立视图，可让应用和 Azure 服务单独使用同一事件中心终结点内的数据。 在本部分中，添加一个使用者组到更高版本中使用本教程将数据提取从终结点的 IoT 中心的内置终结点。
 
 要将使用者组添加到 IoT 中心，请执行以下步骤：
 

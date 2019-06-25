@@ -16,12 +16,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 312658bd653d94f3e1a32204b3c5ae4ae290558e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b5ff842d1645d2b47a436eca4fc8dc614a9fb63
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65832797"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190383"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 授权管理 （预览版） 中创建新的访问包
 
@@ -127,4 +127,5 @@ ms.locfileid: "65832797"
 ## <a name="next-steps"></a>后续步骤
 
 - [编辑和管理现有访问包](entitlement-management-access-package-edit.md)
+- [添加目录所有者或访问包管理器](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [创建和管理目录](entitlement-management-catalog-create.md)

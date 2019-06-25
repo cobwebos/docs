@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: c3fb1f430076b26f7b5dd83e167371ac6d957ac4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967233"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>企业协议从迁移到 Microsoft 客户协议 Api
@@ -172,63 +172,63 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 
 | 旧属性 | 新的属性 | 说明 |
 | --- | --- | --- |
-| 帐户 ID | 不适用 | 不会跟踪订阅创建者。 使用 invoiceSectionId （与 departmentId 相同）。 |
+| AccountId | 不适用 | 不会跟踪订阅创建者。 使用 invoiceSectionId （与 departmentId 相同）。 |
 | AccountNameAccountOwnerId 和 AccountOwnerEmail | 不适用 | 不会跟踪订阅创建者。 使用 invoiceSectionName （与 departmentName 相同）。 |
-| 其他信息 | additionalInfo | &nbsp;  |
+| AdditionalInfo | additionalInfo | &nbsp;  |
 | ChargesBilledSeparately | isAzureCreditEligible | 请注意，这些属性刚好相反。 如果 isAzureCreditEnabled 为 true，ChargesBilledSeparately 将为 false。 |
-| 已使用数量 | 数量 | &nbsp; |
-| 已使用的服务 | consumedService | 确切的字符串值可能不同。 |
-| 已使用的服务 ID | 无 | &nbsp; |
-| 成本中心 | costCenter | &nbsp; |
+| ConsumedQuantity | quantity | &nbsp; |
+| ConsumedService | consumedService | 确切的字符串值可能不同。 |
+| ConsumedServiceId | 无 | &nbsp; |
+| CostCenter | costCenter | &nbsp; |
 | 日期和 usageStartDate | date | &nbsp;  |
 | 日期 | 无 | 分析日期的一天。 |
-| 部门 ID | invoiceSectionId | 确切的值不同。 |
-| 部门名称 | invoiceSectionName | 确切的字符串值可能不同。 如果需要请配置发票部分以匹配部门。 |
+| DepartmentId | invoiceSectionId | 确切的值不同。 |
+| DepartmentName | invoiceSectionName | 确切的字符串值可能不同。 如果需要请配置发票部分以匹配部门。 |
 | ExtendedCost 和成本 | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
-| 为周期性费用 | 无 | &nbsp;  |
+| 重复执行费用 | 无 | &nbsp;  |
 | Location | 位置 | &nbsp;  |
-| 计量类别 | meterCategory | 确切的字符串值可能不同。 |
+| MeterCategory | meterCategory | 确切的字符串值可能不同。 |
 | 计量 ID | meterId | 确切的字符串值而有所不同。 |
-| 计量名称 | meterName | 确切的字符串值可能不同。 |
-| 计量区域 | meterRegion | 确切的字符串值可能不同。 |
-| 计量子类别 | meterSubCategory | 确切的字符串值可能不同。 |
+| MeterName | meterName | 确切的字符串值可能不同。 |
+| MeterRegion | meterRegion | 确切的字符串值可能不同。 |
+| MeterSubCategory | meterSubCategory | 确切的字符串值可能不同。 |
 | 月份 | 无 | 分析一个月中日期。 |
-| 产品/服务名称 | 无 | 使用 publisherName 和 productOrderName。 |
+| 产品名称 | 无 | 使用 publisherName 和 productOrderName。 |
 | OfferId | 无 | &nbsp;  |
-| 订单编号 | 无 | &nbsp;  |
+| 订单号 | 无 | &nbsp;  |
 | PartNumber | 无 | 使用 meterId 和 productOrderName 来唯一标识的价格。 |
 | 计划名称 | productOrderName | &nbsp;  |
 | 产品 | 产品 |   |
-| 产品 ID | productId | 确切的字符串值而有所不同。 |
+| ProductId | productId | 确切的字符串值而有所不同。 |
 | 发布者名称 | publisherName | &nbsp;  |
 | resourceGroup | resourceGroupName | &nbsp;  |
 | ResourceGuid | meterId | 确切的字符串值而有所不同。 |
-| 资源位置 | resourceLocation | &nbsp;  |
-| 资源位置 ID | 无 | &nbsp;  |
-| 资源费率 | effectivePrice | &nbsp;  |
-| 服务管理员 ID | 不适用 | &nbsp;  |
-| 服务信息 1 | serviceInfo1 | &nbsp;  |
-| 服务信息 2 | serviceInfo2 | &nbsp;  |
+| ResourceLocation | resourceLocation | &nbsp;  |
+| ResourceLocationId | 无 | &nbsp;  |
+| ResourceRate | effectivePrice | &nbsp;  |
+| ServiceAdministratorId | 不适用 | &nbsp;  |
+| ServiceInfo1 | serviceInfo1 | &nbsp;  |
+| ServiceInfo2 | serviceInfo2 | &nbsp;  |
 | ServiceName | meterCategory | 确切的字符串值可能不同。 |
 | ServiceTier | meterSubCategory | 确切的字符串值可能不同。 |
-| 存储服务标识符 | 不适用 | &nbsp;  |
-| 订阅 Guid | subscriptionId | &nbsp;  |
+| StoreServiceIdentifier | 不适用 | &nbsp;  |
+| SubscriptionGuid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
-| 订阅名称 | subscriptionName | &nbsp;  |
+| SubscriptionName | subscriptionName | &nbsp;  |
 | 标记 | 标记 | 标记属性适用于根对象，而不是嵌套的属性属性。 |
-| 度量单位 | unitOfMeasure | 确切的字符串值而有所不同。 |
+| UnitOfMeasure | unitOfMeasure | 确切的字符串值而有所不同。 |
 | usageEndDate | date | &nbsp;  |
 | 年龄 | 无 | 分析日期的年份。 |
-| (新建) | billingCurrency | 使用付费的货币。 |
-| (新建) | billingProfileId | 计费 （相同的注册） 的配置文件的唯一 ID。 |
-| (新建) | billingProfileName | 计费 （相同的注册） 的配置文件的名称。 |
-| (新建) | chargeType | 使用区分 Azure 服务使用情况、 Marketplace 使用情况和购买。 |
-| (新建) | invoiceId | 发票的唯一 ID。 当前，打开月为空。 |
-| (新建) | publisherType | 购买的发布服务器的类型。 使用情况的为空。 |
-| (新建) | serviceFamily | 购买的类型。 使用情况的为空。 |
-| (新建) | servicePeriodEndDate | 购买的服务的结束日期。 |
-| (新建) | servicePeriodStartDate | 开始日期为购买的服务。 |
+| （新） | billingCurrency | 使用付费的货币。 |
+| （新） | billingProfileId | 计费 （相同的注册） 的配置文件的唯一 ID。 |
+| （新） | billingProfileName | 计费 （相同的注册） 的配置文件的名称。 |
+| （新） | chargeType | 使用区分 Azure 服务使用情况、 Marketplace 使用情况和购买。 |
+| （新） | invoiceId | 发票的唯一 ID。 当前，打开月为空。 |
+| （新） | publisherType | 购买的发布服务器的类型。 使用情况的为空。 |
+| （新） | serviceFamily | 购买的类型。 使用情况的为空。 |
+| （新） | servicePeriodEndDate | 购买的服务的结束日期。 |
+| （新） | servicePeriodStartDate | 开始日期为购买的服务。 |
 
 ## <a name="billing-periods-api-replaced-by-invoices-api"></a>计费周期 API 替换为发票 API
 
@@ -263,13 +263,13 @@ MCA 计费帐户都不使用的计费周期。 相反，它们使用作用域成
 
 | 方法 | 请求 URI |
 | --- | --- |
-| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=csv` |
+| 发布 | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=csv` |
 
 使用价目表 API 以 JSON 格式查看所有 Azure 消耗 services 价目表数据：
 
 | 方法 | 请求 URI |
 | --- | --- |
-| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
+| 发布 | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
 
 使用 API 返回的整个帐户的价格表。 但是，还可以获取 PDF 格式的价目表的精简的版本。 摘要包括针对某一特定发票计费的 Azure 使用情况和 Marketplace 消费服务。 由 {invoiceId} 标识发票与相同**发票编号**发票摘要 PDF 文件中所示。 下面是一个示例。
 
@@ -279,13 +279,13 @@ MCA 计费帐户都不使用的计费周期。 相反，它们使用作用域成
 
 | 方法 | 请求 URI |
 | --- | --- |
-| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
+| 发布 | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
 若要查看使用价目表 API 的发票信息以 JSON 格式：
 
 | 方法 | 请求 URI |
 | --- | --- |
-| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
+| 发布 | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
 在当前打开的计费周期或服务期间，还可以查看 Azure 消耗或 Marketplace 消耗的任何服务的估计的价格。
 
@@ -293,13 +293,13 @@ MCA 计费帐户都不使用的计费周期。 相反，它们使用作用域成
 
 | 方法 | 请求 URI |
 | --- | --- |
-| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
+| 发布 | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
 若要查看估计使用价目表 API 以 JSON 格式的消费服务的价格：
 
 | 方法 | 请求 URI |
 | --- | --- |
-| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
+| 发布 | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
 Microsoft 客户协议价格表 api*异步 REST Api*。 从较旧的同步 Api 更改 Api 的响应。 API 响应的正文也发生更改。
 
@@ -430,18 +430,18 @@ Microsoft 客户协议下, 一节中使用的信息。 它提供了用于 Micros
 
 | 旧 Azure 资源管理器价格表 API 属性  | 新的 Microsoft 客户协议价目表 API 属性   | 描述 |
 | --- | --- | --- |
-| 计量 ID | _meterId_ | 测定仪的唯一标识符。 MeterId 相同。 |
+| 测定仪 ID | _meterId_ | 测定仪的唯一标识符。 MeterId 相同。 |
 | 计量名称 | meterName | 计量的名称。 指标表示 Azure 服务可部署资源。 |
 | 计量类别  | 服务 | 测定仪分类类别的名称。 与 Microsoft 客户协议价目表中的服务相同。 确切的字符串值而有所不同。 |
 | 计量子类别 | meterSubCategory | 计量子分类类别的名称。 基于在服务中的高级功能集差异的分类。 例如，基本 SQL DB 的 vs 标准 SQL 数据库。 |
 | 计量区域 | meterRegion | &nbsp;  |
 | 单位 | _不适用_ | 可以从 unitOfMeasure 分析。 |
-| 度量单位 | unitOfMeasure | &nbsp;  |
+| 计量单位 | unitOfMeasure | &nbsp;  |
 | 商品编号 | _不适用_ | 而不是 partNumber，使用 productOrderName 和 MeterId 来唯一标识的价格计费的配置文件。 将列出域，而不是在 MCA 发票 partNumber MCA 发票上。 |
 | 单位价格 | unitPrice | Microsoft 客户协议单价。 |
 | 货币代码 | pricingCurrency | Microsoft 客户协议表示中货币的定价和计费货币的价格。 货币代码是与 Microsoft 客户协议中 pricingCurrency 相同。 |
-| 已包含数量 | includedQuantity | 不适用于 Microsoft 客户协议中的服务。 显示的值为零。 |
-|  产品 ID  | productOrderName | 而不是 OfferId，使用 productOrderName。 与 OfferId，但是 productOrderName 和计量器决定了 Microsoft 客户协议中的定价。 与在旧注册 meterId 和 Offerid。 |
+| 包括的量 | includedQuantity | 不适用于 Microsoft 客户协议中的服务。 显示的值为零。 |
+|  产品/服务 Id  | productOrderName | 而不是 OfferId，使用 productOrderName。 与 OfferId，但是 productOrderName 和计量器决定了 Microsoft 客户协议中的定价。 与在旧注册 meterId 和 Offerid。 |
 
 Microsoft 客户协议的价格被定义的方式不同于企业协议。 企业许可登记表中的服务的价格是唯一的产品、 PartNumber、 测定仪和产品/服务。 PartNumber 不在 Microsoft 客户协议中使用。
 

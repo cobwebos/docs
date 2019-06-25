@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: yizhon
 ms.openlocfilehash: 8e36cee9857c00fcb618a8491595432fb0fd60fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60400097"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64571251"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>使用 Azure IoT SDK 针对 Android Things 平台进行开发
 

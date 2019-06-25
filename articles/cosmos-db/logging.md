@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 67a6eec938a4a18455e4063925e21e26fe362f76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0a5c9fc5cac441a6680f9f72e3223ace95399f3
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243469"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296547"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB 中的诊断日志记录 
 
@@ -54,7 +54,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 
 ### <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
-Azure 诊断日志由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异。 资源级诊断日志与来宾 OS 级诊断日志也不相同。 来宾 OS 级诊断日志由在虚拟机内部或其他受支持的资源类型中运行的代理收集。 资源级诊断日志不需要代理并从 Azure 平台本身捕获特定于资源的数据。 来宾 OS 级诊断日志从操作系统和在虚拟机上运行的应用程序捕获数据。
+Azure 诊断日志由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 这些日志会捕获每个请求。 这些日志的内容因资源类型而异。 资源级诊断日志与来宾 OS 级诊断日志也不相同。 来宾 OS 级诊断日志由在虚拟机内部或其他受支持的资源类型中运行的代理收集。 资源级诊断日志不需要代理并从 Azure 平台本身捕获特定于资源的数据。 来宾 OS 级诊断日志从操作系统和在虚拟机上运行的应用程序捕获数据。
 
 ![存储、事件中心或 Azure Monitor 日志的诊断日志记录](./media/logging/azure-cosmos-db-logging-overview.png)
 
@@ -68,26 +68,47 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
 <a id="#turn-on"></a>
 ## <a name="turn-on-logging-in-the-azure-portal"></a>在 Azure 门户中启用日志记录
 
-若要启用诊断日志记录，必须具有以下资源：
+使用以下步骤启用 Azure 门户中诊断日志记录：
 
-* 现有的 Azure Cosmos DB 帐户、数据库和容器。 有关创建这些资源的说明，请参阅[使用 Azure 门户创建数据库帐户](create-sql-api-dotnet.md#create-account)、[Azure CLI 示例](cli-samples.md)或 [PowerShell 示例](powershell-samples.md)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
-若要在 Azure 门户中启用诊断日志记录，请执行以下步骤：
-
-1. 在 [Azure 门户](https://portal.azure.com)的 Azure Cosmos DB 帐户中，选择左侧导航栏中的“诊断日志”，然后选择“启用诊断”   。
+1. 导航到 Azure Cosmos 帐户。 打开**诊断设置**窗格中，并选择**添加诊断设置**选项。
 
     ![在 Azure 门户中启用 Azure Cosmos DB 的诊断日志记录](./media/logging/turn-on-portal-logging.png)
 
-2. 在“诊断设置”页上，执行以下步骤  ： 
+1. 在中**诊断设置**页上，在窗体中填写以下详细信息： 
 
     * **名称**：为要创建的日志输入名称。
 
-    * **存档到存储帐户**：要使用此选项，需要一个可连接到的现有存储帐户。 要在门户中创建新的存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)，并按照说明创建 Azure 资源管理器（即通用帐户）。 然后在门户中返回到此页，选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
-    * **流式传输到事件中心**：要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 要创建事件中心命名空间，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
-    * **发送到 Log Analytics**：若要使用此选项，请使用现有的工作区，或遵循[创建新工作区](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)的步骤在门户中创建新的 Log Analytics 工作区。 有关 Azure Monitor 日志中查看日志的详细信息，请参阅在 Azure Monitor 日志中查看日志。
-    * **记录 DataPlaneRequests**：选择此选项可记录从底层 Azure Cosmos DB 分布式平台发出的针对 SQL、图形、MongoDB、Cassandra 和表 API 帐户的后端请求。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。
-    * **记录 MongoRequests**：选择此选项可记录来自 Azure Cosmos DB 前端的用户发起的请求，以便为使用 Azure Cosmos DB 的 API for MongoDB 配置的 Cosmos 帐户提供服务。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。
-    * **指标请求**：选择此选项可在 [Azure 指标](../azure-monitor/platform/metrics-supported.md)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。
+    * 您可以存储到以下服务的日志：
+
+      * **存档到存储帐户**：要使用此选项，需要一个可连接到的现有存储帐户。 若要在门户中创建新的存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)一文。 然后，返回到门户，选择存储帐户中的 Azure Cosmos Db 诊断设置窗格。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
+
+      * **流式传输到事件中心**：要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 要创建事件中心命名空间，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后，返回到此页在门户中选择事件中心命名空间和策略名称。
+
+      * **发送到 Log Analytics**：若要使用此选项，请使用现有的工作区，或遵循[创建新工作区](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)的步骤在门户中创建新的 Log Analytics 工作区。 
+
+   * 可以记录以下数据：
+
+      * **DataPlaneRequests**:选择此选项可记录到所有 Api 的后端请求的 Azure Cosmos DB 中包括 SQL、 图形、 MongoDB、 Cassandra 和表 API 帐户。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。 以下 JSON 数据是使用 DataPlaneRequests 记入日志的详细信息的示例输出。 需要注意的关键属性包括：Requestcharge、 statusCode、 clientIPaddress，和 partitionID:
+
+       ```
+       { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
+       ```
+
+      * **MongoRequests**:选择此选项可从前端来为请求提供服务对 Azure Cosmos DB API for MongoDB 中记录用户发起的请求。 MongoDB 请求将出现在 MongoRequests 以及 DataPlaneRequests。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。 以下 JSON 数据是使用 MongoRequests 记入日志的详细信息的示例输出。 需要注意的关键属性包括：Requestcharge，操作码：
+
+       ```
+       { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
+       ```
+
+      * **QueryRuntimeStatistics**:选择此选项可记录已执行的查询文本。  以下 JSON 数据是使用 QueryRuntimeStatistics 记入日志的详细信息的示例输出：
+
+       ```
+       { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
+       ```
+
+      * **指标请求**：选择此选项可在 [Azure 指标](../azure-monitor/platform/metrics-supported.md)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。
 
 3. 选择“保存”。 
 

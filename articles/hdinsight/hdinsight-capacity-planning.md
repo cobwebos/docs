@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
 ms.openlocfilehash: c910ed9f1160d30e1d4bda2e85b029eb2ad85b02
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66237159"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
@@ -105,8 +105,8 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 确定目标群集 VM 大小、规模和类型之后，请检查订阅的当前配额容量限制。 达到配额限制时，可能无法部署新群集，或通过添加更多工作节点来横向扩展现有群集。 唯一存在配额限制的是每个订阅的区域级别的 CPU 核心配额。 例如，订阅可能会在美国东部区域有 30 个核心的限制。 如果需要请求增加配额，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 选择**帮助 + 支持**左下侧的页面。
-1. 选择上**新建支持请求**。
+1. 选择页面左下方的“帮助 + 支持”  。
+1. 选择“新建支持请求”  。
 1. 在“新建支持请求”页面的“基本信息”选项卡下，选择以下选项   ：
    - “问题类型”  ：“服务和订阅限制(配额)” 
    - “订阅”  ：想要修改的订阅
@@ -114,10 +114,10 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
     
      ![创建支持请求来增加 HDInsight 核心配额](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
-1. 在完成时选择“下一步:**解决方案 >>** 。
-1. 上**详细信息**页上，输入问题的说明，选择的严重程度问题、 首选联系方法，以及其他必填的字段。
-1. 在完成时选择“下一步:**查看 + 创建 >>** 。
-1. 上**查看 + 创建**选项卡上，选择**创建**。
+1. 在完成时选择“下一步:  解决方案 >>”。
+1. 在“详细信息”页上，输入问题的说明，选择问题的严重性、首选联系方法和其他必需字段  。
+1. 在完成时选择“下一步:  查看 + 创建 >>”。
+1. 在“查看 + 创建”选项卡中，选择“创建”。  
 
 > [!NOTE]  
 > 如果需要增加专用区域中的 HDInsight 核心配额，请[提交允许列表请求](https://aka.ms/canaryintwhitelist)。

@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本-表 API 的 Azure Cosmos DB Update RU/秒
-description: Azure PowerShell 脚本-表 API 的 Azure Cosmos DB Update RU/秒
+title: Azure PowerShell 脚本 - Azure Cosmos DB 更新表 API 的 RU/秒
+description: Azure PowerShell 脚本 - Azure Cosmos DB 更新表 API 的 RU/秒
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: samples
 ms.date: 05/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: 21f17267954ed471024ff0e6e0c1893daee5f6dd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66247074"
 ---
-# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>适用于 Azure Cosmos DB-表 API 表更新 RU/秒
+# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>更新 Azure Cosmos DB 的表的 RU/秒 - 表 API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: a1bcab9816627b453ba8b20b7bcd9402c2dfd151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 08f9d794822dfd7879efc7c4813ecc46f92f6a45
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240534"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147902"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>潜在客户管理说明 Azure 表
 
@@ -97,7 +97,7 @@ DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey
 
      ![为 Azure 表名选择自定义值](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **筛选器查询**– 单击此字段并且**获取过去的时间**在弹出窗口中显示图标。 选择“过去时间”，将其用作时间戳以筛选查询  。 或者，可以粘贴到字段的以下函数：CreatedTime `gt datetime'@{body('Get_past_time')}'` 
+   - **筛选器查询**– 单击此字段并且**获取过去的时间**在弹出窗口中显示图标。 选择“过去时间”，将其用作时间戳以筛选查询  。 或者，可以粘贴到字段的以下函数：CreatedTime `Timestamp gt datetime'@{body('Get_past_time')}'` 
 
      ![设置筛选查询功能](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 

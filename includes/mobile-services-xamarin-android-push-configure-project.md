@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 69dc0e1c14bc88cdbf0aa48700f95058ba759cc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66140306"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173456"
 ---
 1. 在“解决方案”视图（或 Visual Studio 的“解决方案资源管理器”）中，右键单击“组件”文件夹，单击“获取更多组件...”，搜索“Google Cloud Messaging 客户端”组件，并将其添加到项目中     。
 2. 打开 ToDoActivity.cs 项目文件，将以下 using 语句添加到类：

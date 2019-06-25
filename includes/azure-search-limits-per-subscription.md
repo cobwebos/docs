@@ -9,11 +9,11 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: 1e147e8bd9260cd1ece60b70641968a229995ec1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160511"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173329"
 ---
 可以创建一个订阅中的多个服务。 每个可以在特定层预配。 限制是仅允许每个层的服务数。 例如，在同一订阅中，最多可以在基本层创建 12 个服务，在 S1 层也创建 12 个服务。 有关层的详细信息，请参阅[为 Azure 搜索选择 SKU 或层](../articles/search/search-sku-tier.md)。
 

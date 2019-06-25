@@ -9,11 +9,11 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b84b0a8e09bf739ce62dee167ff751b491765c66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154552"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173486"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>为事件处理程序主机创建存储帐户
 事件处理程序主机是一个智能代理，它通过管理持久性检查点和并行接收操作，来简化从事件中心接收事件的过程。 对于检查点，事件处理程序主机需要一个存储帐户。 以下示例演示如何创建存储帐户，以及如何获取其密钥以进行访问：

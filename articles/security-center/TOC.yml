@@ -45,7 +45,7 @@
       href: security-center-onboarding.md
     - name: 使用 Windows Defender ATP 进行服务器保护
       href: security-center-wdatp.md
-    - name: IaaS 高级数据安全
+    - name: Azure VM 上的 SQL 高级数据安全（公共预览版）
       href: security-center-iaas-advanced-data.md
     - name: 保护应用服务
       href: security-center-app-services.md
@@ -83,7 +83,7 @@
           href: security-center-virtual-machine-protection.md
         - name: 保护网络资源
           href: security-center-network-recommendations.md
-        - name: 保护 SQL 服务和数据
+        - name: 保护数据和存储服务
           href: security-center-sql-service-recommendations.md
         - name: 保护标识和访问权限
           href: security-center-identity-access.md

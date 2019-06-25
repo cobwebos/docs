@@ -11,6 +11,8 @@
       href: per-vm-quota-requests.md
     - name: 区域性总 vCPU 限制提高
       href: regional-quota-requests.md
+    - name: 网络限制提高
+      href: networking-quota-requests.md
 - name: 排查区域或 SKU 订阅问题
   href: sku-series-unavailable.md
 - name: 引用

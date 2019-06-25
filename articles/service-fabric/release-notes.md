@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: service-fabric
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 5610c6d31732144086812bb02b65cfaffa067eae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 78fb96cae3d3d128da608183f37771b2ecf66dcf
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062993"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165363"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric 版本
 
@@ -63,7 +63,7 @@ ms.locfileid: "67062993"
 
 | 发布日期 | 发行版本 | 更多信息 |
 |---|---|---|
-| 2018 年 11 月 30日日 | [Azure Service Fabric 6.4 ](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [发行说明](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
+| 2018 年 11 月 30日日 | [Azure Service Fabric 6.4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [发行说明](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
 | 2018 年 12 月 12 日 | [Azure Service Fabric 6.4 刷新版本的 Windows 群集](https://blogs.msdn.microsoft.com/azureservicefabric/2018/12/12/azure-service-fabric-6-4-refresh-for-windows-clusters/)  | [发行说明](https://msdnshared.blob.core.windows.net/media/2018/12/Links.pdf)  |
 | 2019 年 2 月 4日日 | [Azure Service Fabric 6.4 刷新版本](https://blogs.msdn.microsoft.com/azureservicefabric/2019/02/04/azure-service-fabric-6-4-refresh-release/) | [发行说明](https://msdnshared.blob.core.windows.net/media/2019/02/Service-Fabric-6.4CU3-Release-Notes.pdf) |
 | 2019 年 3 月 4日日 | [Azure Service Fabric 6.4 刷新版本](https://blogs.msdn.microsoft.com/azureservicefabric/2019/03/12/azure-service-fabric-6-4-refresh-release-2/) | [发行说明](https://msdnshared.blob.core.windows.net/media/2019/03/Service-Fabric-6.4CU4-Release-Notes.pdf)

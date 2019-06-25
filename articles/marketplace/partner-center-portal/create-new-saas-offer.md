@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 897634ac0c30b4a2cc496c225965f465a94fe4e9
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: f2787cd74525e7676befb133a6106ce83d9c2a20
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751897"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072629"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -72,19 +72,19 @@ ms.locfileid: "66751897"
 
 若要列出软件与服务 (SaaS) 提供使用合作伙伴中心上的商业应用商店，必须满足以下条件：
 
-- 产品/服务必须与 Azure 客户端兼容。 (通常 SaaS 应用也托管在 Azure 上的最佳性能和兼容性，但这不是一项要求。) 
 - 产品/服务必须使用[Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/)进行标识管理和身份验证。
 - 产品/服务必须使用[SaaS 履行 Api](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)将与 Azure Marketplace 进行集成。
+- 有关更广泛的要求，请参阅[SaaS 产品/服务发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
 
-#### <a name="billing-infrastructure-costs"></a>计费基础结构成本
-对于 SaaS 产品/服务，作为发布者，必须考虑 Azure 基础结构使用费和软件许可费用作为单个成本项。 此成本表示为对客户每月固定费用。 管理并直接付款给您的合作伙伴，azure 基础结构使用情况。 客户将无法看到实际的基础结构使用费。 发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。 
+#### <a name="saas-on-azure-billing-infrastructure-costs"></a>Azure 计费基础结构成本 SaaS
+如果在 Azure 中托管的 SaaS 产品/服务，，为发布服务器，必须考虑 Azure 基础结构使用费和软件许可费用为单个成本项。 此成本表示为对客户每月固定费用。 管理并直接付款给您的合作伙伴，azure 基础结构使用情况。 客户将无法看到实际的基础结构使用费。 发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。 
 
 软件许可费用显示为每月重复执行基于站点的订阅的统一费率付费，并不按流量计费或基于消耗。
 
 |**你的许可证费用**|**每月 100 美元**|
 |:---|:---|
 |Azure 使用费用（D1/1 核）|直接向发布者而不是客户收费|
-|Microsoft 向客户收取|100.00 美元 / 月 （发布服务器必须考虑中的许可证费用的任何引起的开销量或传递基础结构成本）|
+|Microsoft 向客户收取|100\.00 美元 / 月 （发布服务器必须考虑中的许可证费用的任何引起的开销量或传递基础结构成本）|
 
 - 在这种情况下，Microsoft 向你收取 100.00 美元的软件许可证费用，并向发布者支付 80.00 美元。
 - 具有限定为合作伙伴**减少 Marketplace 服务费用**将看到从年 6 月 2020年直到 2019 年 5 提供在 SaaS 降低的交易费。 在此方案中，Microsoft 对您的软件许可证 100.00 美元进行收费和到发布服务器的回报 90.00 美元。
@@ -94,7 +94,7 @@ ms.locfileid: "66751897"
 
 |**Microsoft 收费**|**每月 100 美元**|
 |:---|:---|
-|Microsoft 将许可证费用的 80% 支付给你 <br>**对于限定 SaaS 应用程序，Microsoft 支付许可证费用的 90%*|80.00 美元/月 <br>*$* 每个月 * 90.00|
+|Microsoft 将许可证费用的 80% 支付给你 <br>**对于限定 SaaS 应用程序，Microsoft 支付许可证费用的 90%*|80\.00 美元/月 <br>*$* 每个月 * 90.00|
 
 
 #### <a name="csp-program-opt-in"></a>CSP 程序参加
@@ -189,7 +189,7 @@ ms.locfileid: "66751897"
 
 而不是编写自定义条款和条件，Azure Marketplace 发布者可以选择提供标准的合同，客户只需以审查并接受一次软件。 
 
-标准协定可在此处找到： https://go.microsoft.com/fwlink/?linkid=2041178。
+标准协定可在此处找到： https://go.microsoft.com/fwlink/?linkid=2041178 。
 
 #### <a name="terms-of-use"></a>使用条款
 
@@ -400,9 +400,9 @@ Microsoft 可以消除托管和维护服务的预配和部署使用此类型的�
 
 - **体验版持续时间**（必需）：输入通过定义的小时数的测试驱动器将保持活动状态的时间的长度。 在数小时后该会话将结束并不能再使用一个许可证。 我们建议值为 2 到 24 个小时，具体取决于产品/服务的复杂性。 此持续时间可能仅打赌集小时数的整数部分 （例如"2"小时"1.5"不是有效）。  如果它们会时间不够，并且想要再次访问体验版，用户可以请求一个新的会话。
 
-- **实例 URL** （必需）：客户将在其中开始其体验版的 URL。 通常使用示例数据安装运行您的应用程序在 Dynamics 365 实例的 URL (例如 https://testdrive.crm.dynamics.com)。
+- **实例 URL** （必需）：客户将在其中开始其体验版的 URL。 通常使用示例数据安装运行您的应用程序在 Dynamics 365 实例的 URL (例如 https://testdrive.crm.dynamics.com) 。
 
-- **实例 Web API URL** （必需）：检索通过登录到你的 Microsoft 365 帐户并导航到 Dynamics 365 实例的 Web API URL**设置** \&g t;**自定义** \&g t;**开发人员资源** \&g t;**实例 Web API (服务根 URL)** ，复制以下网页中找到的 URL (例如 https://testdrive.crm.dynamics.com/api/data/v9.0)。
+- **实例 Web API URL** （必需）：检索通过登录到你的 Microsoft 365 帐户并导航到 Dynamics 365 实例的 Web API URL**设置** \&g t;**自定义** \&g t;**开发人员资源** \&g t;**实例 Web API (服务根 URL)** ，复制以下网页中找到的 URL (例如 https://testdrive.crm.dynamics.com/api/data/v9.0) 。
 
 - **角色名称**（必需）：提供自定义的 Dynamics 365 测试驱动器中定义的安全角色名称。 这将分配给该用户在其测试驱动器 （例如测试的汽车-角色）。
 

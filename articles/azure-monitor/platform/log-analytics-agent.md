@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 436685f3bba58ed7d06dfe834d808e7fe422176b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 081d65f60eab4e2412a5dd14c3a63a18598e3b8a
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751981"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146312"
 ---
-# <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>使用 Azure Log Analytics 代理收集日志数据
+# <a name="collect-log-data-with-the-log-analytics-agent"></a>收集日志数据与 Log Analytics 代理
 
 Azure Log Analytics 代理，前称为 Microsoft Monitoring Agent (MMA) 或 OMS Linux 代理，是为了对本地计算机、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) 监视的计算机和任何云中的虚拟机进行全面管理而开发的。 Windows 和 Linux 代理将附加到 Azure Monitor，并将从不同的源收集的日志数据存储在 Log Analytics 工作区，以及任何独特的日志或指标定义监视解决方案中。 
 
@@ -34,11 +34,11 @@ Azure Log Analytics 代理，前称为 Microsoft Monitoring Agent (MMA) 或 OMS 
 
 适用于 Linux 和 Windows 的代理通过 TCP 端口 443 与 Azure Monitor 服务进行出站通信；如果计算机通过防火墙或代理服务器连接以通过 Internet 进行通信，请查看以下要求来了解所需的网络配置。 如果 IT 安全策略不允许网络上的计算机连接到 Internet，则可以设置 [Log Analytics 网关](gateway.md)并将代理配置为通过该网关连接到 Azure Monitor 日志。 然后，代理可以接收配置信息，并发送根据已在工作区中启用的数据收集规则和监视解决方案收集的数据。 
 
-如果使用 System Center Operations Manager 2012 R2 或更高版本监视计算机，该计算机可以与 Azure Monitor 服务进行多宿主连接，以便收集数据并将数据转发到该服务，且仍受 [Operations Manager](../../azure-monitor/platform/om-agents.md) 监视。 对于 Linux 计算机，代理不像 Windows 代理那样包含运行状况服务组件，信息由管理服务器代表它收集和处理。 由于 Linux 计算机与 Operations Manager 的监视方式不同，因此它们不会直接接收配置或收集数据，而是像 Windows 代理管理的系统那样通过管理组转发。 因此，向 OperationsManager 报告的 Linux 计算机不支持此方案。  
+如果使用 System Center Operations Manager 2012 R2 或更高版本监视计算机，该计算机可以与 Azure Monitor 服务进行多宿主连接，以便收集数据并将数据转发到该服务，且仍受 [Operations Manager](../../azure-monitor/platform/om-agents.md) 监视。 对于 Linux 计算机，代理不像 Windows 代理那样包含运行状况服务组件，信息由管理服务器代表它收集和处理。 由于 Linux 计算机与 Operations Manager 的监视方式不同，因此它们不会直接接收配置或收集数据，而是像 Windows 代理管理的系统那样通过管理组转发。 因此，与向 Operations Manager 报告的 Linux 计算机不支持此方案，需要配置到 Linux 计算机[向 Operations Manager 管理组报告](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)和在两个 Log Analytics 工作区步骤。
 
 Windows 代理最多可以向四个 Log Analytics 工作区报告，而 Linux 代理只支持向单个工作区报告。  
 
-适用于 Linux 和 Windows 代理不是仅用于连接到 Azure Monitor，它还支持托管混合 Runbook 辅助角色和其他服务，如 Azure 自动化[更改跟踪](../../automation/change-tracking.md)和[的更新管理](../../automation/automation-update-management.md). 有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)。  
+适用于 Linux 和 Windows 代理不是仅用于连接到 Azure Monitor，它还支持托管混合 Runbook 辅助角色和其他服务，如 Azure 自动化[更改跟踪](../../automation/change-tracking.md)， [的更新管理](../../automation/automation-update-management.md)，并[Azure 安全中心](../../security-center/security-center-intro.md)。 有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)。  
 
 ## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
 Windows 代理官方支持以下版本的 Windows 操作系统：

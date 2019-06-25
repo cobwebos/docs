@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 74a9764187b15bddf1dc48fa2b7988217d31abce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66149590"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173150"
 ---
 ## <a name="troubleshooting-update-failures"></a>排查更新失败
 **出现升级前检查失败的通知时该怎么办？**

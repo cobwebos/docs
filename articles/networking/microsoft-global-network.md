@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/24/2019
+ms.date: 06/13/2019
 ms.author: ypitsch,kumud
-ms.openlocfilehash: 99650577b17874e61d1cede979d7ef2f4bfd491b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: ecce41878f7579862bba083f8cecf5db3cbde3e6
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247284"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144137"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全球网络
 
@@ -33,8 +33,10 @@ Microsoft 拥有并操作世界上最大的主干网络之一。 此全局和复
  
 选择[最佳的体验](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/)当你使用 Microsoft 云时很容易。 从客户流量进入全球网络通过我们具有战略意义的边缘节点时的那一刻起，你的数据经过优化的路由在附近的光线的速度。 这可确保获得最佳性能的最佳延迟。 这些边缘节点，所有与多个 3500 唯一 Internet 中的合作伙伴 （对等） 通过数千个连接超过 145 项的位置，互连提供我们相互连接的策略的基础。 
  
-是否从伦敦到东京，或从华盛顿特区到洛杉矶连接，网络性能是量化和受影响的操作，例如延迟、 抖动、 数据包丢失和吞吐量。  在 Microsoft，我们喜欢和直接使用互连而不是传输链接，这会使响应流量对称和有助于保持跃点，对等方和简短和简单的路径。 此高级方法时，通常称为[冷 potato 路由](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing)，可以确保客户网络流量保留在 Microsoft 网络尽可能长时间，我们将其提交之前。  
- 
+是否从伦敦到东京，或从华盛顿特区到洛杉矶连接，网络性能是量化和受影响的操作，例如延迟、 抖动、 数据包丢失和吞吐量。  在 Microsoft，我们喜欢和直接使用互连而不是传输链接，这会使响应流量对称和有助于保持跃点，对等方和简短和简单的路径。 
+
+例如，如果伦敦中的用户尝试访问服务在东京，然后在伦敦中的 Internet 流量进入我们边缘之一，介绍 Microsoft 法国，通过 WAN 之间欧洲和印度，再到托管的服务的日本我们 Trans 系统路径。 响应流量是对称的。 这有时称为[冷 potato 路由](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing)尽可能长时间，这意味着流量保留在 Microsoft 网络之前我们将其提交。  
+  
 因此，这是否意味着所有流量时使用的 Microsoft 服务？ 是的数据之间的任何流量中心，或者在 Microsoft Azure 虚拟机、 Office 365、 XBox、 SQL 数据库、 存储等 Microsoft 服务之间，并且在全球网络并永远不会通过公共 Internet，以确保最佳路由虚拟网络性能和完整性。  
  
 在纤程容量和多样性跨 metro，地面，和海底路径中的巨大投资即可保持一致和高的服务级别时增强云和联机服务的极大的增长至关重要。 我们的全球网络的最新新增功能是我们[MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea)海底电缆，行业的第一个打开行系统 (OLS) 通过 subsea 之间 Bilbao 西班牙和州政府海滩，弗吉尼亚，美国，并将[AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1)美国纽约州纽约市和都柏林，爱尔兰之间以及[新跨太平洋 (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system)东京，日本和波特兰，俄勒冈州，USA 之间。 

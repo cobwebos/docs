@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 3/29/2019
 ms.author: sujayt
 ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60789732"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
@@ -48,10 +48,10 @@ ms.locfileid: "60789732"
 
 **URL** | **详细信息**  
 --- | ---
-* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果您知道所有缓存存储帐户的 Vm，则可以加入允许列表的特定存储帐户 Url (例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 而不是 *。 blob.core.windows.net
+\* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果您知道所有缓存存储帐户的 Vm，则可以加入允许列表的特定存储帐户 Url (例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 而不是 *。 blob.core.windows.net
 login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行授权和身份验证。
-*.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果您的防火墙代理服务器支持的 Ip，可以使用相应的 Site Recovery IP。
-* .servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果您的防火墙代理服务器支持的 Ip，可以使用相应 Site Recovery 监视 IP。
+*.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery IP”。
+\* .servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery 监视 IP”。
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
@@ -170,4 +170,4 @@ Site Recovery IP 地址范围如下：
 ## <a name="next-steps"></a>后续步骤
 - [复制 Azure 虚拟机](site-recovery-azure-to-azure.md)，开始对工作负荷进行保护。
 - 详细了解为 Azure 虚拟机故障转移[保留 IP 地址](site-recovery-retain-ip-azure-vm-failover.md)。
-- 了解有关灾难恢复的详细信息[使用 ExpressRoute 的 Azure 虚拟机](azure-vm-disaster-recovery-with-expressroute.md)。
+- 详细了解[使用 ExpressRoute 的 Azure 虚拟机](azure-vm-disaster-recovery-with-expressroute.md)的灾难恢复。

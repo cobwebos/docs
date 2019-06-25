@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: da8d1000ebe2695dbc95d475027722962a3305d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9293dc8be4fb50a657093090b0e6d76de5b5d31
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65555880"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303515"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -80,7 +80,7 @@ ms.locfileid: "65555880"
 
 * [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) 和旧版[媒体分析处理器](../previous/media-services-analytics-overview.md)（Azure 媒体服务索引器 2 预览版、Face Redactor 等）不可通过 v3 访问。<br/>想要从媒体索引器 1 或 2 预览版迁移的客户可以立即使用 v3 API 中的 AudioAnalyzer 预设。  此新预设包含的功能比旧版媒体索引器 1 或 2 更多。 
 * 许多[Media Encoder Standard v2 中的高级功能](../previous/media-services-advanced-encoding-with-mes.md)Api 目前不可在 v3，如：
-    * 剪辑（适用于按需和实时方案）
+  
     * 资产拼接
     * 叠加
     * 裁剪

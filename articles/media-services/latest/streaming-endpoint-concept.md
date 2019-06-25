@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 3e1a5d8ba8b6d0ec8e3ec1ba9506a88ee87d8ed1
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: ab74b778757aefc22f66e8b52d1f1d922526f14a
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515730"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296137"
 ---
 # <a name="streaming-endpoints"></a>流式处理终结点 
 
@@ -27,7 +27,7 @@ ms.locfileid: "66515730"
 > [!NOTE]
 > 若要开始流式处理视频，需启动要从中流式处理视频的**流式处理终结点**。 
 >  
-> 仅当流式处理终结点处于运行状态时才进行计费。
+> 流式处理终结点处于运行状态时仅进行计费。
 
 ## <a name="naming-convention"></a>命名约定
 
@@ -37,7 +37,7 @@ ms.locfileid: "66515730"
 
 ## <a name="types"></a>类型  
 
-有两种类型的**流式处理终结点**：标准（预览版）和**高级**。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。 
+有两种类型的**流式处理终结点**：**标准**（预览版）和**高级**。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。 
 
 下表描述了类型：  
 
@@ -143,7 +143,7 @@ IP 筛选/G20/自定义主机<sup>2</sup>|是|是
 
 流式处理终结点都预配有启用 CDN 后使用媒体服务上定义的等待时间进行 DNS 更新流式处理终结点映射到 CDN 终结点之前。
 
-如果以后想要禁用/启用 CDN，流式处理终结点必须处于“已停止”  状态。 可能需要长达两小时才能启用 Azure CDN 集成并使更改在所有 CDN POP 中生效。 但是，可以启动流式处理终结点和流，而不会被流式处理终结点中断，集成完成后，将从 CDN 传送流。 在预配期间，流式处理终结点的状态为“正在启动”  ，可能会观测到性能降低。
+如果以后想要禁用/启用 CDN，流式处理终结点必须处于“已停止”  状态。 可能需要长达两小时才能启用 Azure CDN 集成并使更改在所有 CDN POP 中生效。 但是，可以启动流式处理终结点和流，而不会被流式处理终结点中断，集成完成后，将从 CDN 传送流。 在预配期间流式处理终结点将在**启动**状态，并且可能会发现性能下降。
 
 创建标准流式处理终结点时，它是默认情况下，与标准 Verizon 配置。 你可以配置使用 REST Api 的高级 Verizon 或 Akamai 标准提供程序。 
 
@@ -154,7 +154,7 @@ IP 筛选/G20/自定义主机<sup>2</sup>|是|是
 
 ### <a name="determine-if-dns-change-has-been-made"></a>确定是否已进行 DNS 更改
 
-可以通过确定是否已流式处理终结点 （流量将被定向到 Azure CDN） 上进行 DNS 更改 https://www.digwebinterface.com。 如果结果包含在结果中 azureedge.net 域名称，流量现在指向 CDN。
+可以通过确定是否已流式处理终结点 （流量将被定向到 Azure CDN） 上进行 DNS 更改 https://www.digwebinterface.com 。 如果结果包含在结果中 azureedge.net 域名称，流量现在指向 CDN。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

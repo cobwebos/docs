@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f935b1b2815501710444e3f921a157ba02e3215
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7814ff6b7575fedc19e63676ce3353c2a62a62b4
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544091"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154438"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>使用配置选项，使用 MSAL.NET 实例化机密客户端应用程序
 
@@ -62,12 +62,12 @@ MSAL.NET 中选项的属性的名称匹配的属性的名称`AzureADOptions`在 
 }
 ```
 
-从开始 MSAL.NET v3.x，可以配置从配置文件将机密客户端应用程序。 与应用程序配置相关的类都位于`Microsoft.Identity.Client.AppConfig`命名空间。
+从开始 MSAL.NET v3.x，可以配置从配置文件将机密客户端应用程序。
 
-在要配置和实例化您的应用程序的类，您需要声明`ConfidentialClientApplicationOptions`对象。  绑定到应用程序选项的实例 （包括 appconfig.json 文件） 从源中读取的配置：
+在要配置和实例化您的应用程序的类，您需要声明`ConfidentialClientApplicationOptions`对象。  绑定到的应用程序选项，请使用该实例的配置 （包括 appconfig.json 文件） 从源中读取`IConfigurationRoot.Bind()`方法从[Microsoft.Extensions.Configuration.Binder nuget 包](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
-using Microsoft.Identity.Client.AppConfig;
+using Microsoft.Identity.Client;
 
 private ConfidentialClientApplicationOptions _applicationOptions;
 _applicationOptions = new ConfidentialClientApplicationOptions();

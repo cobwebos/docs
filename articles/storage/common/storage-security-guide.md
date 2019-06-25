@@ -10,20 +10,20 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 3d5bfa2426d58fa5a09d2203272536eec7fa9c55
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65789956"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
 Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助开发人员构建安全的应用程序：
 
-- 使用自动加密所有数据 （包括元数据） 写入到 Azure 存储[存储服务加密 (SSE)](storage-service-encryption.md)。 有关详细信息，请参阅[宣布推出针对 Azure Blob、文件、表和队列存储的默认加密](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
+- 所有写入 Azure 存储的数据（包括元数据），都使用[存储服务加密 (SSE)](storage-service-encryption.md) 进行自动加密。 有关详细信息，请参阅[宣布推出针对 Azure Blob、文件、表和队列存储的默认加密](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
 - Azure 存储支持使用 Azure Active Directory (Azure AD) 和基于角色的访问控制 (RBAC) 进行资源管理操作和数据操作，如下所示：   
     - 可以将作用域为存储帐户的 RBAC 角色分配给安全主体，并使用 Azure AD 为密钥管理之类的资源管理操作授权。
-    - Azure AD 的集成支持的 blob 和队列数据操作。 可以将范围为订阅、资源组、存储帐户或单个容器或队列的 RBAC 角色分配给 Azure 资源的某个安全主体或托管标识。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。   
+    - 支持通过 Azure AD 集成执行 blob 和队列数据操作。 可以将范围为订阅、资源组、存储帐户或单个容器或队列的 RBAC 角色分配给 Azure 资源的某个安全主体或托管标识。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。   
 - 在应用程序和 Azure 之间传输数据时，可使用[客户端加密](../storage-client-side-encryption.md)、HTTPS 或 SMB 3.0 保护数据。  
 - Azure 虚拟机使用的 OS 和数据磁盘可使用 [Azure 磁盘加密](../../security/azure-security-disk-encryption.md)进行加密。 
 - 在 Azure 存储中，可以使用[共享访问签名](../storage-dotnet-shared-access-signature-part-1.md)授予数据对象的委派访问权限。
@@ -302,7 +302,7 @@ SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azur
   本文介绍了客户端加密，并通过示例解释了如何使用存储客户端库加密和解密 4 个存储服务中的资源。 此外介绍了 Azure 密钥保管库。
 
 ### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>使用 Azure 磁盘加密来加密虚拟机所用的磁盘
-Azure 磁盘加密可加密 OS 磁盘和 IaaS 虚拟机使用的数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这会与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。
+Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这会与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。
 
 在 Microsoft Azure 中启用 IaaS VM 时，该解决方案支持以下 IaaS VM 方案：
 

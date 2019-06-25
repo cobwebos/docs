@@ -1,6 +1,6 @@
 ---
 title: Azure 的 VMware 解决方案通过 CloudSimple 快速入门-创建服务
-description: 了解如何创建 CloudSimple 服务，购买节点，并保留节点数
+description: 了解如何创建 CloudSimple 服务预配节点，并保留节点数
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9b3b95db24f4b0f9a0cf8f5102dfeea5dc51e29f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5732ea726bdecc10d0757224870ee5d8be83a2b2
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64577565"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164218"
 ---
 # <a name="quickstart---create-service"></a>快速入门-创建服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "64577565"
 
 ## <a name="vmware-solution-by-cloudsimple---service-overview"></a>VMware 解决方案 CloudSimple-服务概述
 
-CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。  创建服务允许购买节点，保留节点，并创建私有云。  在提供 CloudSimple 服务的每个 Azure 区域中添加 CloudSimple 服务。  该服务定义 Azure VMware 解决方案通过 CloudSimple 边界网络。  此边界网络用于服务，包括私有云与 VPN、 ExpressRoute 和 Internet 连接。
+CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。  创建服务允许你设置节点保留节点，并创建私有云。  在提供 CloudSimple 服务的每个 Azure 区域中添加 CloudSimple 服务。  该服务定义 Azure VMware 解决方案通过 CloudSimple 边界网络。  此边界网络用于服务，包括私有云与 VPN、 ExpressRoute 和 Internet 连接。
 
 若要添加 CloudSimple 服务，必须创建网关子网。 网关子网创建边界网络时使用，并且需要/28 CIDR 块。 网关子网地址空间必须是唯一的。 它不能与任何本地网络地址空间或 Azure 虚拟网络地址空间重叠。
 
@@ -47,9 +47,6 @@ CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。  创建�
 
 ## <a name="create-the-service"></a>创建服务
 
->[!NOTE]
-> 必须在你的订阅上启用 CloudSimple 服务。 如果你的订阅未启用，你将收到错误，当你尝试创建服务时。  按照中的步骤[启用 CloudSimple 服务](https://docs.azure.cloudsimple.com/enable-cloudsimple-service)文章以启用该服务。
-
 1. 选择“所有服务”  。
 2. 搜索**CloudSimple 服务**。
 
@@ -71,7 +68,7 @@ CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。  创建�
 
 创建服务并将其添加到服务的列表。
 
-## <a name="purchase-nodes"></a>购买节点
+## <a name="provision-nodes"></a>预配节点
 
 若要将设置付款现转容量 CloudSimple 私有云环境中，在 Azure 门户中的第一个设置节点。
 
@@ -85,7 +82,7 @@ CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。  创建�
 
     ![添加 CloudSimple 节点](media/create-cloudsimple-node-add.png)
 
-5. 选择你想要购买 CloudSimple 节点的订阅。
+5. 选择你想要预配 CloudSimple 节点的订阅。
 6. 选择节点的资源组。 若要添加新的资源组，请单击**创建新**。
 7. 输入标识的节点的前缀。
 8. 选择节点资源的位置。

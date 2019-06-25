@@ -1,25 +1,17 @@
 ---
 title: Azure 资源管理器模板函数 - 数值 | Microsoft Docs
 description: 介绍可在 Azure 资源管理器模板中使用的用于处理数值的函数。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f63ce16369fd1ff58d5368b43c3c730008e63d9a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128645"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206417"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的数值函数
 
@@ -93,7 +85,7 @@ Resource Manager 提供以下用于处理整数的函数：
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
@@ -118,7 +110,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | loopName | 否 | 字符串 | 用于获取迭代的循环的名称。 |
 | offset |否 |int |要添加到从零开始的迭代值的数。 |
@@ -164,7 +156,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除数。 |
 | operand2 |是 |int |除数。 不能为 0。 |
@@ -269,7 +261,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 |string 或 int |要转换为整数的值。 |
 
@@ -329,7 +321,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -431,7 +423,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -502,7 +494,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | modResult | Int | 第 |
 
@@ -527,7 +519,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被乘数。 |
 | operand2 |是 |int |乘数。 |
@@ -573,7 +565,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | mulResult | Int | 15 |
 

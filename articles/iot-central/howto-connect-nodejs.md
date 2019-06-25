@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60888897"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>将泛型客户端应用程序连接到 Azure IoT Central 应用程序 (Node.js)
@@ -62,7 +62,7 @@ Azure IoT Central 应用程序中需要具有以下度量值、 设备属性、 
 
 添加下面的事件上**度量**页：
 
-| 显示名称 | 字段名称  | 严重性 |
+| 显示名称 | 字段名称  | Severity |
 | ------------ | ----------- | -------- |
 | 过热  | 过热    | 错误    |
 
@@ -75,8 +75,8 @@ Azure IoT Central 应用程序中需要具有以下度量值、 设备属性、 
 
 | 显示名称        | 字段名称        | 数据类型 |
 | ------------------- | ----------------- | --------- |
-| 序列号       | serialNumber      | Text      |
-| 设备制造商 | 制造商      | Text      |
+| 序列号       | serialNumber      | text      |
+| 设备制造商 | 制造商      | text      |
 
 将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配相应的设备代码中的属性名称，不能在应用程序中显示属性。
 
@@ -317,11 +317,11 @@ node connectedAirConditionerAdv.js
 
 作为 Azure IoT Central 应用程序中的操作员，你可以对真实设备执行以下操作：
 
-* 在“度量”页中查看遥测：
+* 在“度量”页中查看遥测： 
 
     ![查看遥测数据](media/howto-connect-nodejs/viewtelemetry.png)
 
-* 在“属性”页上查看从设备发送的设备属性值。 在设备连接的设备属性磁贴更新：
+* 在“属性”页上查看从设备发送的设备属性值。  在设备连接的设备属性磁贴更新：
 
     ![查看设备属性](media/howto-connect-nodejs/viewproperties.png)
 

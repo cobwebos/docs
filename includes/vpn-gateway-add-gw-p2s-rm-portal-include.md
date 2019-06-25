@@ -9,11 +9,11 @@ ms.date: 10/24/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 2d84a905cba503119f1b6e0f0a1a7cbbf91b3a1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157233"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172815"
 ---
 1. 在门户左侧单击“+ 创建资源”  ，然后在搜索框中键入“虚拟网关”。 在搜索返回结果中找到“虚拟网络网关”，并单击该条目  。 在“虚拟网络网关”  页上，单击页面底部的“创建”  。 这会打开“创建虚拟网关”页  。
 2. 在“创建虚拟网关”页中，填写虚拟网关的值。 

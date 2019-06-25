@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.openlocfilehash: 1f130f79b6b6924559e1693e1eef8ced2972b3d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60758683"
 ---
 # <a name="manage-cluster-scale-up-to-accommodate-changing-demand"></a>管理群集纵向扩展以适应不断变化的需求
@@ -21,7 +21,7 @@ ms.locfileid: "60758683"
 调整好群集的大小对于 Azure 数据资源管理器的性能至关重要。 但是，对群集的需求不能绝对准确地进行预测。 静态群集大小可能导致利用不充分或利用过度，二者都不理想。 更好的方法是对群集进行*缩放*，根据不断变化的需求来添加或删除容量和 CPU 资源。 
 
 ## <a name="steps-to-scale-up"></a>纵向扩展的步骤
-1. 转到你的群集。 在“设置”下选择“纵向扩展”。
+1. 转到你的群集。 在“设置”下选择“纵向扩展”。  
 
     此时会显示可用 SKU 的列表。 例如，在下图中，只有四个 SKU 可用。
 
@@ -29,7 +29,7 @@ ms.locfileid: "60758683"
 
     SKU 被禁用是因为它们是当前的 SKU，或者在群集所在区域不可用。
 
-1. 若要更改 SKU，请选择想要的 SKU，然后选择“选择”按钮。
+1. 若要更改 SKU，请选择想要的 SKU，然后选择“选择”按钮  。
 
 > [!NOTE]
 > 纵向扩展过程可能需要几分钟时间，在此期间群集将被挂起。 请注意，缩减可能会损害群集性能。

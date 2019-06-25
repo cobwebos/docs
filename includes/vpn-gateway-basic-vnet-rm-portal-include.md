@@ -9,11 +9,11 @@ ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 835f23f98ebe56e0b19081f07dc3302ef93b27b9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66171594"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172792"
 ---
 可以通过以下步骤使用资源管理器部署模型和 Azure 门户创建一个 VNet。 有关虚拟网络的详细信息，请参阅[虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
 
@@ -22,17 +22,17 @@ ms.locfileid: "66171594"
 >
 >
 
-1. 登录到 [Azure 门户](http://portal.azure.com)，然后选择“创建资源”。 此时会打开一个“新建”页面。
+1. 登录到 [Azure 门户](http://portal.azure.com)，然后选择“创建资源”  。 此时会打开一个“新建”页面  。
 
-2. 在“搜索市场”字段中，输入“虚拟网络”，然后从返回的列表中选择“虚拟网络”。 此时会打开“虚拟网络”页。
+2. 在“搜索市场”字段中，输入“虚拟网络”，然后从返回的列表中选择“虚拟网络”    。 此时会打开“虚拟网络”页  。
 
    ![查找虚拟网络资源页](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "查找虚拟网络资源页")
 
-3. 从页面底部附近的“选择部署模型”列表中，选择“资源管理器”，然后选择“创建”。 此时会打开“创建虚拟网络”页。
+3. 从页面底部附近的“选择部署模型”列表中，选择“资源管理器”，然后选择“创建”    。 此时会打开“创建虚拟网络”页  。
 
    ![创建虚拟网络页](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet.png "创建虚拟网络页")
 
-4. 在“创建虚拟网络”页上，配置 VNet 设置。 填写字段时，当你在字段中输入的字符通过验证时，红色感叹号标记会变成绿色对钩标记。 某些值是自动填写的，你可以将其替换为自己的值：
+4. 在“创建虚拟网络”  页上，配置 VNet 设置。 填写字段时，当你在字段中输入的字符通过验证时，红色感叹号标记会变成绿色对钩标记。 某些值是自动填写的，你可以将其替换为自己的值：
 
    - **名称**：输入虚拟网络的名称。
 
@@ -46,4 +46,4 @@ ms.locfileid: "66171594"
 
    - **子网**：添加子网**名称**和子网**地址范围**。 可在创建 VNet 后再添加其他子网。 
      
-5. 选择“创建”。
+5. 选择“创建”  。

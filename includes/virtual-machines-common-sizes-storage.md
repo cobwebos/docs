@@ -9,10 +9,10 @@ ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: de998265188b1482be22225bba3c6ab3d58e562b
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66755586"
 ---
 存储优化 VM 大小可提供较高的磁盘吞吐量和 IO，非常适合用于大数据、SQL 和 NoSQL 数据库、数据仓库和大型事务数据库。  示例包括 Cassandra、MongoDB、Cloudera 和 Redis。 本文介绍关于 vCPU、数据磁盘和 NIC 的数量以及每个优化大小的本地存储吞吐量和网络带宽的信息。

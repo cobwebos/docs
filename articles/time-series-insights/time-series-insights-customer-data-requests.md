@@ -10,10 +10,10 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
 ms.openlocfilehash: f99a54f5623100e057e0c02249f5886f46656a21
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66355929"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
@@ -54,7 +54,7 @@ Azure 时序见解将个人数据视为与时序见解的管理员和用户相�
 
 个人数据可能会进入时序见解存储，这种情况与用户和管理员数据有所不同。 如果认为存储在时序见解中的数据是个人数据，则可使用以下步骤导出和删除该数据：
 
-**查看和导出数据** 
+**查看和导出数据**
 
 若要查看和导出存储在时序见解中的数据，需要搜索该数据。 可使用时序见解资源管理器或时序见解查询 API 来查看和导出数据。 若要使用时序见解资源管理器查看和导出数据，请先进行搜索，找到有问题的用户数据。 搜索后，右键单击图表并选择“浏览事件”  。 事件网格显示并提供将数据导出为 CSV 和 JSON 的选项。
 

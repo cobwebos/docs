@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66145862"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172915"
 ---
 为了所运行的应用程序，请务必确保虚拟机 (VM) 安全。 保护 VM 可以添加一个或多个 Azure 服务和功能，这些服务和功能涵盖保护对 VM 的访问和保护数据存储。 按照本文提供的信息操作，可确保 VM 和应用程序安全。
 

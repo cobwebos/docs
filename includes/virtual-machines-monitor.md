@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 01/27/2019
 ms.author: cynthn
 ms.openlocfilehash: ac400c86af8236ff5d67b8b6fbf99f6f4b1d36c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158228"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172923"
 ---
 通过收集、查看和分析诊断与日志数据，可以利用很多机会来监视 VM。 若要执行简单的 VM [监视](../articles/azure-monitor/overview.md)，可以在 Azure 门户中使用 VM 的“概述”屏幕。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)配置 VM 的诊断以收集更多指标数据。 还可以使用更多高级监视选项，如 [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) 和 [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md)。
 

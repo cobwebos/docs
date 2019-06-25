@@ -16,10 +16,10 @@ ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5b6f0d79e773ac7b79c79e4be6206fe39928cd0a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127772"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序 
@@ -48,9 +48,9 @@ ms.locfileid: "62127772"
 
 若要查询 GPU 设备状态，请运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。
 
-1. 打开命令提示符，并更改为 C:\Program Files\NVIDIA Corporation\NVSMI 目录。
+1. 打开命令提示符，并更改为 C:\Program Files\NVIDIA Corporation\NVSMI  目录。
 
-2. 运行 `nvidia-smi`。 如果安装了驱动程序，将看到如下输出。 除非当前正在 VM 上运行 GPU 工作负荷，否则“GPU-Util”将显示“0%”。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
+2. 运行 `nvidia-smi`。 如果安装了驱动程序，将看到如下输出。 除非当前正在 VM 上运行 GPU 工作负荷，否则“GPU-Util”将显示“0%”   。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
 
 ![NVIDIA 设备状态](./media/n-series-driver-setup/smi.png)  
 

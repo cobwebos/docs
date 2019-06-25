@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 51645f4f0c6dcc70d76ed1a20bc40f95db9d9717
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e411182a26e370ef82a20e67ee18cedd5d96d86
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693359"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296105"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>在 Azure Monitor 中执行跨资源日志查询  
 
-以前，使用 Azure Monitor 只能分析来自当前工作区内的数据，这限制了跨订阅中定义的多个工作区查询数据的能力。  此外，之前只能直接在 Application Insights 中或从 Visual Studio 中使用 Application Insights 搜索通过基于 web 的应用程序收集的遥测数据项。 这还使得难以采用本机方式将操作数据和应用程序数据一起分析。   
+以前，使用 Azure Monitor 只能分析来自当前工作区内的数据，这限制了跨订阅中定义的多个工作区查询数据的能力。  此外，之前只能直接在 Application Insights 中或从 Visual Studio 中使用 Application Insights 搜索通过基于 web 的应用程序收集的遥测数据项。 这还使得难以采用本机方式将操作数据和应用程序数据一起分析。
 
 现在不但可以跨多个 Log Analytics 工作区进行查询，而且还可以查询同一资源组、另一资源组或另一订阅中特定 Application Insights 应用的数据。 这可以提供数据的系统级视图。 你只能在 [Log Analytics](portals.md) 中执行这些类型的查询。
 
 ## <a name="cross-resource-query-limits"></a>跨资源查询限制 
 
 * Application Insights 资源和 Log Analytics 工作区可包括在单个查询中的数被限制为 100。
-* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作一个查询，将其固定到 Azure 仪表板，并[将日志搜索可视化](../../azure-monitor/learn/tutorial-logs-dashboards.md#visualize-a-log-search)。 
-* 新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支持日志警报中的跨资源查询。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 ARM 模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)创建跨资源查询日志警报规则，而无需进行切换。但是，此警告规则可通过 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
+* 视图设计器不支持跨资源查询。 可以创作 Log Analytics 中的查询并将其固定到 Azure 仪表板[直观显示一个日志查询](../learn/tutorial-logs-dashboards.md)。 
+* 新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支持日志警报中的跨资源查询。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 而无需使用进行切换，可以在警报规则创建跨资源查询日志[scheduledQueryRules API 的 Azure 资源管理器模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)– 不过是可管理此警报规则，但[scheduledQueryRulesAPI](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)而不是从 Azure 门户。
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>跨 Log Analytics 工作区以及从 Application Insights 进行查询

@@ -13,15 +13,13 @@
       href: apache-spark-jupyter-spark-sql-use-powershell.md
     - name: 创建 Apache Spark 群集 - Azure CLI
       href: apache-spark-create-cluster-cli.md
-    - name: 创建 Apache Spark 群集 - 资源管理器模板
+    - name: 创建 Apache Spark 群集 - 模板
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-spark-jupyter-spark-sql.md
 - name: 教程
   items:
     - name: 在 Apache Spark 群集上运行查询
       href: apache-spark-load-data-run-query.md
-    - name: 使用 VSCode 运行 Apache Spark 查询
-      href: ../hdinsight-for-vscode.md
     - name: 使用 IntelliJ 运行 Apache Spark 查询
       href: apache-spark-intellij-tool-plugin.md
     - name: 使用 BI 工具分析数据
@@ -32,6 +30,8 @@
       href: apache-spark-ipython-notebook-machine-learning.md
     - name: 在 IntelliJ 中创建 Apache Spark 应用
       href: apache-spark-create-standalone-application.md
+    - name: 使用 VSCode 运行 Apache Spark 查询
+      href: ../hdinsight-for-vscode.md
     - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
       href: ../hdinsight-cluster-availability.md
 - name: 示例
@@ -44,6 +44,10 @@
       href: ../hdinsight-sdk-python-samples.md
 - name: 概念
   items:
+    - name: 使用 IntelliJ 运行 Apache Spark 查询
+      href: apache-spark-intellij-tool-plugin.md
+    - name: 使用 VSCode 运行 Apache Spark 查询
+      href: ../hdinsight-for-vscode.md
     - name: HDInsight 上的 Apache Hadoop 组件
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
@@ -58,74 +62,74 @@
           href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md
         - name: 使用 Azure Data Lake Storage Gen1
           href: ../hdinsight-hadoop-use-data-lake-store.md
-    - name: 开发
-      items:
-        - name: 使用交互式 Apache Spark Shell
-          href: apache-spark-shell.md
-        - name: 使用 Apache Livy 提交远程作业
-          href: apache-spark-livy-rest-interface.md
-        - name: 使用 Eclipse 创建应用
-          href: apache-spark-eclipse-tool-plugin.md
-        - name: 使用 IntelliJ 创建应用
-          href: apache-spark-intellij-tool-plugin.md
-        - name: 使用 IntelliJ 通过 SSH 远程调试 Apache Spark 作业
-          href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-        - name: 使用 IntelliJ 通过 VPN 远程调试 Apache Spark 作业
-          href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
-        - name: 创建非交互式身份验证 .NET HDInsight 应用程序
-          href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
-    - name: 使用 HDInsight 工具
-      items:
-        - name: 适用于 Visual Studio 的工具
-          href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md
-        - name: 适用于 VSCode 的工具
-          href: ../hdinsight-for-vscode.md
-        - name: 适用于 IntelliJ 的工具
-          href: apache-spark-intellij-tool-plugin.md
-        - name: 适用于 Eclipse 的工具
-          href: apache-spark-eclipse-tool-plugin.md
-        - name: 适用于 VSCode 的 PySpark
-          href: ../set-up-pyspark-interactive-environment.md
-        - name: 在 IntelliJ 中调试 Apache Spark
-          href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-    - name: 将笔记本与 Apache Spark 配合使用
-      items:
-        - name: 使用本地 Jupyter 笔记本
-          href: apache-spark-jupyter-notebook-install-locally.md
-        - name: Jupyter 笔记本内核
-          href: apache-spark-jupyter-notebook-kernels.md
-        - name: 通过单元 Magic 将外部包与 Jupyter 配合使用
-          href: apache-spark-jupyter-notebook-use-external-packages.md
-        - name: 通过脚本操作将外部包与 Jupyter 配合使用
-          href: apache-spark-python-package-installation.md
-        - name: 使用 Apache Zeppelin 笔记本
-          href: apache-spark-zeppelin-notebook.md
-    - name: 与其他 Azure 服务配合使用
-      items:
-        - name: 与 Data Lake Storage 配合使用
-          href: apache-spark-use-with-data-lake-store.md
-        - name: 连接到 Azure SQL 数据库
-          href: apache-spark-connect-to-sql-database.md
-        - name: 使用 Apache Spark 和 Cosmos DB 实现 lambda 体系结构
-          href: ../../cosmos-db/lambda-architecture.md
-        - name: 使用 AutoML 运行 Azure ML 工作负荷
-          href: apache-spark-run-machine-learning-automl.md
-    - name: Apache Spark 流式处理
-      items:
-        - name: 流式处理概述
-          href: apache-spark-streaming-overview.md
-        - name: 结构化流概述
-          href: apache-spark-structured-streaming-overview.md
-        - name: 在 Apache Hadoop YARN 中创建高度可用的 Apache Spark 流作业
-          href: apache-spark-streaming-high-availability.md
-        - name: 将结构化流与 Apache Kafka 配合使用
-          href: ../hdinsight-apache-kafka-spark-structured-streaming.md
-        - name: 从 Apache Kafka 到 CosmosDB 的结构化流
-          href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
-        - name: 将 Spark 流 (DStream) 与 Apache Kafka 配合使用
-          href: ../hdinsight-apache-spark-with-kafka.md
-        - name: 使用一次性事件处理创建 Apache Spark 流作业
-          href: apache-spark-streaming-exactly-once.md
+        - name: 开发
+          items:
+            - name: 使用交互式 Apache Spark Shell
+              href: apache-spark-shell.md
+            - name: 使用 Apache Livy 提交远程作业
+              href: apache-spark-livy-rest-interface.md
+            - name: 使用 Eclipse 创建应用
+              href: apache-spark-eclipse-tool-plugin.md
+            - name: 使用 IntelliJ 创建应用
+              href: apache-spark-intellij-tool-plugin.md
+            - name: 使用 IntelliJ 通过 SSH 远程调试 Apache Spark 作业
+              href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
+            - name: 使用 IntelliJ 通过 VPN 远程调试 Apache Spark 作业
+              href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
+            - name: 创建非交互式身份验证 .NET HDInsight 应用程序
+              href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
+        - name: 使用 HDInsight 工具
+          items:
+            - name: 适用于 Visual Studio 的工具
+              href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md
+            - name: 适用于 VSCode 的工具
+              href: ../hdinsight-for-vscode.md
+            - name: 适用于 IntelliJ 的工具
+              href: apache-spark-intellij-tool-plugin.md
+            - name: 适用于 Eclipse 的工具
+              href: apache-spark-eclipse-tool-plugin.md
+            - name: 适用于 VSCode 的 PySpark
+              href: ../set-up-pyspark-interactive-environment.md
+            - name: 在 IntelliJ 中调试 Apache Spark
+              href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
+        - name: 将笔记本与 Apache Spark 配合使用
+          items:
+            - name: 使用本地 Jupyter 笔记本
+              href: apache-spark-jupyter-notebook-install-locally.md
+            - name: Jupyter 笔记本内核
+              href: apache-spark-jupyter-notebook-kernels.md
+            - name: 通过单元 Magic 将外部包与 Jupyter 配合使用
+              href: apache-spark-jupyter-notebook-use-external-packages.md
+            - name: 通过脚本操作将外部包与 Jupyter 配合使用
+              href: apache-spark-python-package-installation.md
+            - name: 使用 Apache Zeppelin 笔记本
+              href: apache-spark-zeppelin-notebook.md
+        - name: 与其他 Azure 服务配合使用
+          items:
+            - name: 与 Data Lake Storage 配合使用
+              href: apache-spark-use-with-data-lake-store.md
+            - name: 连接到 Azure SQL 数据库
+              href: apache-spark-connect-to-sql-database.md
+            - name: 使用 Apache Spark 和 Cosmos DB 实现 lambda 体系结构
+              href: ../../cosmos-db/lambda-architecture.md
+            - name: 使用 AutoML 运行 Azure ML 工作负荷
+              href: apache-spark-run-machine-learning-automl.md
+        - name: Apache Spark 流式处理
+          items:
+            - name: 流式处理概述
+              href: apache-spark-streaming-overview.md
+            - name: 结构化流概述
+              href: apache-spark-structured-streaming-overview.md
+            - name: 在 Apache Hadoop YARN 中创建高度可用的 Apache Spark 流作业
+              href: apache-spark-streaming-high-availability.md
+            - name: 将结构化流与 Apache Kafka 配合使用
+              href: ../hdinsight-apache-kafka-spark-structured-streaming.md
+            - name: 从 Apache Kafka 到 CosmosDB 的结构化流
+              href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
+            - name: 将 Spark 流 (DStream) 与 Apache Kafka 配合使用
+              href: ../hdinsight-apache-spark-with-kafka.md
+            - name: 使用一次性事件处理创建 Apache Spark 流作业
+              href: apache-spark-streaming-exactly-once.md
     - name: Apache Spark 和机器学习
       items:
         - name: 预测食品检测结果
@@ -138,173 +142,173 @@
           href: apache-spark-microsoft-cognitive-toolkit.md
         - name: 创建 Apache Spark 机器学习管道
           href: apache-spark-creating-ml-pipelines.md
-    - name: 分析大数据
-      items:
-        - name: 将 Apache Hive 与 Apache Spark 配合使用
-          href: ../interactive-query/apache-hive-warehouse-connector.md
-        - name: 使用 Apache Spark 读取和写入 Apache HBase 数据
-          href: ../hdinsight-using-spark-query-hbase.md
-        - name: 分析 Application Insights 遥测日志
-          href: apache-spark-analyze-application-insight-logs.md
-    - name: 扩展群集
-      items:
-        - name: 使用 Bootstrap 自定义群集
-          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
-        - name: 使用脚本操作自定义群集
-          href: ../hdinsight-hadoop-customize-cluster-linux.md
-        - name: 开发脚本操作
-          href: ../hdinsight-hadoop-script-actions-linux.md
-        - name: 安装和使用 Presto
-          href: ../hdinsight-hadoop-install-presto.md
-        - name: 添加 Apache Hive 库
-          href: ../hdinsight-hadoop-add-hive-libraries.md
-        - name: 使用 Apache Giraph
-          href: ../hdinsight-hadoop-giraph-install-linux.md
-        - name: 使用 Hue
-          href: ../hdinsight-hadoop-hue-linux.md
-        - name: 使用空边缘节点
-          href: ../hdinsight-apps-use-edge-node.md
-        - name: 构建 HDInsight 应用程序
+        - name: 分析大数据
           items:
-            - name: 安装自定义应用
-              href: ../hdinsight-apps-install-custom-applications.md
-            - name: 使用 REST 安装应用
-              href: 'https://msdn.microsoft.com/library/mt706515.aspx'
-            - name: 将 HDInsight 应用发布到 Azure 市场
-              href: ../hdinsight-apps-publish-applications.md
-    - name: 安全
-      items:
-        - name: 将 SSH 与 HDInsight 配合使用
-          href: ../hdinsight-hadoop-linux-use-ssh-unix.md
-        - name: 使用 SSH 隧道
-          href: ../hdinsight-linux-ambari-ssh-tunnel.md
-        - name: 限制数据访问
-          href: ../hdinsight-storage-sharedaccesssignature-permissions.md
-        - name: 授权用户访问 Apache Ambari 视图
-          href: ../hdinsight-authorize-users-to-ambari.md
-    - name: 管理
-      items:
-        - name: 管理群集资源
-          href: apache-spark-resource-manager.md
-        - name: 使用扩展历史记录服务器管理 Apache Spark 应用程序
-          href: apache-azure-spark-history-server.md
-        - name: 配置 Apache Spark 设置
-          href: apache-spark-settings.md
-        - name: 优化 Apache Spark 作业
-          href: apache-spark-perf.md
-        - name: 使用 IO 缓存启用缓存
-          href: apache-spark-improve-performance-iocache.md
-        - name: 群集容量规划
-          href: ../hdinsight-capacity-planning.md
-        - name: 创建 HDInsight 群集
-          href: ../hdinsight-hadoop-provision-linux-clusters.md
+            - name: 将 Apache Hive 与 Apache Spark 配合使用
+              href: ../interactive-query/apache-hive-warehouse-connector.md
+            - name: 使用 Apache Spark 读取和写入 Apache HBase 数据
+              href: ../hdinsight-using-spark-query-hbase.md
+            - name: 分析 Application Insights 遥测日志
+              href: apache-spark-analyze-application-insight-logs.md
+        - name: 扩展群集
           items:
-            - name: 使用 Azure 门户
-              href: ../hdinsight-hadoop-create-linux-clusters-portal.md
-            - name: 使用 Azure 资源管理器模板
-              displayName: 'resource manager template, arm template, resource manager group'
-              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
-            - name: 使用用于 .NET 的 SDK
-              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
-            - name: 使用用于 Python 的 SDK
-              href: 'https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python#create-a-cluster'
-            - name: 使用用于 Java 的 SDK
-              href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster'
-            - name: 使用 Azure PowerShell
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
-            - name: 使用 cURL 和 Azure REST API
-              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
-            - name: 使用 Azure CLI
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
-            - name: 创建按需群集
-              href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-        - name: 管理 HDInsight 群集
-          href: ../hdinsight-administer-use-portal-linux.md
+            - name: 使用 Bootstrap 自定义群集
+              href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
+            - name: 使用脚本操作自定义群集
+              href: ../hdinsight-hadoop-customize-cluster-linux.md
+            - name: 开发脚本操作
+              href: ../hdinsight-hadoop-script-actions-linux.md
+            - name: 安装和使用 Presto
+              href: ../hdinsight-hadoop-install-presto.md
+            - name: 添加 Apache Hive 库
+              href: ../hdinsight-hadoop-add-hive-libraries.md
+            - name: 使用 Apache Giraph
+              href: ../hdinsight-hadoop-giraph-install-linux.md
+            - name: 使用 Hue
+              href: ../hdinsight-hadoop-hue-linux.md
+            - name: 使用空边缘节点
+              href: ../hdinsight-apps-use-edge-node.md
+            - name: 构建 HDInsight 应用程序
+              items:
+                - name: 安装自定义应用
+                  href: ../hdinsight-apps-install-custom-applications.md
+                - name: 使用 REST 安装应用
+                  href: 'https://msdn.microsoft.com/library/mt706515.aspx'
+                - name: 将 HDInsight 应用发布到 Azure 市场
+                  href: ../hdinsight-apps-publish-applications.md
+        - name: 安全
           items:
-            - name: 使用用于 .NET 的 SDK
-              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management'
-            - name: 使用用于 Python 的 SDK
-              href: 'https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python'
-            - name: 使用用于 Java 的 SDK
-              href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
-            - name: 使用用于 Go 的 SDK（预览版）
-              href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
-            - name: 使用 Azure PowerShell
-              href: ../hdinsight-administer-use-powershell.md
-            - name: 使用 Azure CLI
-              href: ../hdinsight-administer-use-command-line.md
-        - name: 使用 Apache Ambari Web UI 管理群集
-          href: ../hdinsight-hadoop-manage-ambari.md
+            - name: 将 SSH 与 HDInsight 配合使用
+              href: ../hdinsight-hadoop-linux-use-ssh-unix.md
+            - name: 使用 SSH 隧道
+              href: ../hdinsight-linux-ambari-ssh-tunnel.md
+            - name: 限制数据访问
+              href: ../hdinsight-storage-sharedaccesssignature-permissions.md
+            - name: 授权用户访问 Apache Ambari 视图
+              href: ../hdinsight-authorize-users-to-ambari.md
+        - name: 管理
           items:
-            - name: 使用 Apache Ambari Web UI 优化群集
-              href: ../hdinsight-changing-configs-via-ambari.md
-            - name: 使用 Apache Ambari REST API
-              href: ../hdinsight-hadoop-manage-ambari-rest-api.md
-        - name: 管理 HDInsight 群集的日志
-          href: ../hdinsight-log-management.md
-        - name: 添加存储帐户
-          href: ../hdinsight-hadoop-add-storage.md
-        - name: 上传 Apache Hadoop 作业的数据
-          href: ../hdinsight-upload-data.md
-        - name: 将多个 HDInsight 群集与 Data Lake Storage 配合使用
-          href: ../hdinsight-multiple-clusters-data-lake-store.md
-        - name: 使用 Apache Sqoop 导入和导出数据
-          href: ../hadoop/hdinsight-use-sqoop.md
+            - name: 管理群集资源
+              href: apache-spark-resource-manager.md
+            - name: 使用扩展历史记录服务器管理 Apache Spark 应用程序
+              href: apache-azure-spark-history-server.md
+            - name: 配置 Apache Spark 设置
+              href: apache-spark-settings.md
+            - name: 优化 Apache Spark 作业
+              href: apache-spark-perf.md
+            - name: 使用 IO 缓存启用缓存
+              href: apache-spark-improve-performance-iocache.md
+            - name: 群集容量规划
+              href: ../hdinsight-capacity-planning.md
+            - name: 创建 HDInsight 群集
+              href: ../hdinsight-hadoop-provision-linux-clusters.md
+              items:
+                - name: 使用 Azure 门户
+                  href: ../hdinsight-hadoop-create-linux-clusters-portal.md
+                - name: 使用 Azure 资源管理器模板
+                  displayName: 'resource manager template, arm template, resource manager group'
+                  href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+                - name: 使用用于 .NET 的 SDK
+                  href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
+                - name: 使用用于 Python 的 SDK
+                  href: 'https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python#create-a-cluster'
+                - name: 使用用于 Java 的 SDK
+                  href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster'
+                - name: 使用 Azure PowerShell
+                  href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+                - name: 使用 cURL 和 Azure REST API
+                  href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+                - name: 使用 Azure CLI
+                  href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+                - name: 创建按需群集
+                  href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+            - name: 管理 HDInsight 群集
+              href: ../hdinsight-administer-use-portal-linux.md
+              items:
+                - name: 使用用于 .NET 的 SDK
+                  href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management'
+                - name: 使用用于 Python 的 SDK
+                  href: 'https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python'
+                - name: 使用用于 Java 的 SDK
+                  href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
+                - name: 使用用于 Go 的 SDK（预览版）
+                  href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
+                - name: 使用 Azure PowerShell
+                  href: ../hdinsight-administer-use-powershell.md
+                - name: 使用 Azure CLI
+                  href: ../hdinsight-administer-use-command-line.md
+            - name: 使用 Apache Ambari Web UI 管理群集
+              href: ../hdinsight-hadoop-manage-ambari.md
+              items:
+                - name: 使用 Apache Ambari Web UI 优化群集
+                  href: ../hdinsight-changing-configs-via-ambari.md
+                - name: 使用 Apache Ambari REST API
+                  href: ../hdinsight-hadoop-manage-ambari-rest-api.md
+            - name: 管理 HDInsight 群集的日志
+              href: ../hdinsight-log-management.md
+            - name: 添加存储帐户
+              href: ../hdinsight-hadoop-add-storage.md
+            - name: 上传 Apache Hadoop 作业的数据
+              href: ../hdinsight-upload-data.md
+            - name: 将多个 HDInsight 群集与 Data Lake Storage 配合使用
+              href: ../hdinsight-multiple-clusters-data-lake-store.md
+            - name: 使用 Apache Sqoop 导入和导出数据
+              href: ../hadoop/hdinsight-use-sqoop.md
+              items:
+                - name: 使用 SSH 进行连接
+                  href: ../hadoop/apache-hadoop-use-sqoop-mac-linux.md
+                - name: 使用 cURL 运行
+                  href: ../hadoop/apache-hadoop-use-sqoop-curl.md
+                - name: 使用用于 .NET 的 SDK 运行
+                  href: ../hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md
+                - name: 使用 Azure PowerShell 运行
+                  href: ../hadoop/apache-hadoop-use-sqoop-powershell.md
+            - name: 为工作流使用 Apache Oozie
+              href: ../hdinsight-use-oozie-linux-mac.md
+            - name: 群集及服务端口和 URI
+              href: ../hdinsight-hadoop-port-settings-for-services.md
+            - name: 迁移到 Resource Manager 开发工具
+              href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
+            - name: 可用性和可靠性
+              href: ../hdinsight-high-availability-linux.md
+            - name: 将 HDInsight 群集升级到更新的版本
+              href: ../hdinsight-upgrade-cluster.md
+            - name: 为 HDInsight 群集修补 OS
+              href: ../hdinsight-os-patching.md
+        - name: 故障排除
           items:
-            - name: 使用 SSH 进行连接
-              href: ../hadoop/apache-hadoop-use-sqoop-mac-linux.md
-            - name: 使用 cURL 运行
-              href: ../hadoop/apache-hadoop-use-sqoop-curl.md
-            - name: 使用用于 .NET 的 SDK 运行
-              href: ../hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md
-            - name: 使用 Azure PowerShell 运行
-              href: ../hadoop/apache-hadoop-use-sqoop-powershell.md
-        - name: 为工作流使用 Apache Oozie
-          href: ../hdinsight-use-oozie-linux-mac.md
-        - name: 群集及服务端口和 URI
-          href: ../hdinsight-hadoop-port-settings-for-services.md
-        - name: 迁移到 Resource Manager 开发工具
-          href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
-        - name: 可用性和可靠性
-          href: ../hdinsight-high-availability-linux.md
-        - name: 将 HDInsight 群集升级到更新的版本
-          href: ../hdinsight-upgrade-cluster.md
-        - name: 为 HDInsight 群集修补 OS
-          href: ../hdinsight-os-patching.md
-    - name: 故障排除
-      items:
-        - name: 调试 Apache Spark 作业
-          href: apache-spark-job-debugging.md
-        - name: 通过作业图调试 Apache Spark 作业
-          href: apache-azure-spark-history-server.md
-        - name: 使用 IntelliJ 调试 Apache Spark 作业
-          href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-        - name: 排查 HDInsight 群集速度慢或故障问题
-          href: ../hdinsight-troubleshoot-failed-cluster.md
-        - name: Apache Spark 故障排除
-          href: apache-troubleshoot-spark.md
-        - name: Apache Hadoop HDFS 故障排除
-          href: ../hdinsight-troubleshoot-hdfs.md
-        - name: Apache Hadoop YARN 故障排除
-          href: ../hdinsight-troubleshoot-yarn.md
-        - name: 已知问题
-          href: apache-spark-known-issues.md
-        - name: 资源
-          items:
-            - name: 有关在 Linux 上使用 HDInsight 的信息
-              href: ../hdinsight-hadoop-linux-information.md
-            - name: Apache Hadoop 内存和性能
-              href: ../hdinsight-hadoop-stack-trace-error-messages.md
-            - name: 访问 Linux 上的 Apache Hadoop YARN 应用程序日志
-              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
-            - name: 为 Apache Hadoop 服务启用堆转储
-              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
-            - name: 了解和解决 WebHCat 错误
-              href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
-            - name: 通过 Apache Hive 设置解决内存不足错误
-              href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
-            - name: 优化 Apache Hive 查询
-              href: ../hdinsight-hadoop-optimize-hive-query.md
+            - name: 调试 Apache Spark 作业
+              href: apache-spark-job-debugging.md
+            - name: 通过作业图调试 Apache Spark 作业
+              href: apache-azure-spark-history-server.md
+            - name: 使用 IntelliJ 调试 Apache Spark 作业
+              href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
+            - name: 排查 HDInsight 群集速度慢或故障问题
+              href: ../hdinsight-troubleshoot-failed-cluster.md
+            - name: Apache Spark 故障排除
+              href: apache-troubleshoot-spark.md
+            - name: Apache Hadoop HDFS 故障排除
+              href: ../hdinsight-troubleshoot-hdfs.md
+            - name: Apache Hadoop YARN 故障排除
+              href: ../hdinsight-troubleshoot-yarn.md
+            - name: 已知问题
+              href: apache-spark-known-issues.md
+            - name: 资源
+              items:
+                - name: 有关在 Linux 上使用 HDInsight 的信息
+                  href: ../hdinsight-hadoop-linux-information.md
+                - name: Apache Hadoop 内存和性能
+                  href: ../hdinsight-hadoop-stack-trace-error-messages.md
+                - name: 访问 Linux 上的 Apache Hadoop YARN 应用程序日志
+                  href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
+                - name: 为 Apache Hadoop 服务启用堆转储
+                  href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
+                - name: 了解和解决 WebHCat 错误
+                  href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
+                - name: 通过 Apache Hive 设置解决内存不足错误
+                  href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
+                - name: 优化 Apache Hive 查询
+                  href: ../hdinsight-hadoop-optimize-hive-query.md
 - name: 引用
   items:
     - name: 代码示例

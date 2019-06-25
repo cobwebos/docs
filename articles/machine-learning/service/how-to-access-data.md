@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93fc9a4e9e44bd7e8db3d49fe390ebe273c45ce9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 638d7bfb0e396874415c1055c4b707a65caffa4e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66239048"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269297"
 ---
 # <a name="access-data-from-your-datastores"></a>访问你的数据存储中的数据
 
@@ -59,7 +59,19 @@ ds = ws.get_default_datastore()
 
 ### <a name="register-your-own-datastore-with-the-workspace"></a>向工作区中注册你自己的数据存储
 
-如果已有现有的 Azure 存储，可将其注册为工作区中的数据存储。   所有注册方法都是在[ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)类，并具有窗体 register_azure_ *。 
+如果已有现有的 Azure 存储，可将其注册为工作区中的数据存储。 
+
+<a name="store"></a>
+
+####  <a name="storage-guidance"></a>存储指导原则
+
+我们建议 blob 存储和 blob 数据存储。 标准和高级存储是适用于 blob。 尽管我们建议更昂贵，更快的吞吐量速度，从而改善您的培训的速度由于高级存储在运行，则 particlularly 是否针对大型数据集进行训练。 请参阅[Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service)成本信息的存储帐户。
+
+>[!NOTE]
+> Azure 机器学习服务支持其他类型的数据存储，这可能是适用于特定方案。 例如，如果需要定型使用存储在数据库中的数据，您可能会使用 AzureSQLDatabaseDatastore 或 AzurePostgreSqlDatastore。 请参阅[此表](#matrix)可用数据存储类型。
+
+#### <a name="register-your-datastore"></a>注册你的数据存储
+所有注册方法都是在[ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)类，并具有窗体 register_azure_ *。
 
 以下示例演示了将注册为一种数据存储的 Azure Blob 容器或 Azure 文件共享。
 
@@ -178,6 +190,7 @@ ds.path('./bar').as_download()
 > [!NOTE]
 > 任何`ds`或`ds.path`对象将解析为格式的环境变量名`"$AZUREML_DATAREFERENCE_XXXX"`其值表示在目标计算上的装入/下载路径。 在目标计算上的数据存储路径可能不可用于训练脚本的执行路径相同。
 
+<a name="matrix"></a>
 ### <a name="training-compute-and-datastore-matrix"></a>培训计算和数据存储矩阵
 
 以下矩阵将显示为不同的训练的计算目标和数据存储方案的可用数据访问功能。 详细了解如何[培训的 Azure 机器学习计算目标](how-to-set-up-training-targets.md#compute-targets-for-training)。
@@ -194,7 +207,7 @@ ds.path('./bar').as_download()
 | Azure DataLake Analytics       |不适用                                           |不适用                                           |[ML&nbsp;管道](concept-ml-pipelines.md)             |不适用                                                                         |
 
 > [!NOTE]
-> 可能有在其中具有高迭代性，大型数据的进程运行速度更快的使用的方案 [`as_download()`] 而不是 [`as_mount()`]; 这可以呈下降趋式验证。
+> 可能有在其中具有高迭代性，大型数据的进程运行速度更快的使用的方案`as_download()`而不是`as_mount()`; 这可以呈下降趋式验证。
 
 ### <a name="examples"></a>示例 
 

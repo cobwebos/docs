@@ -10,10 +10,10 @@ ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 ms.openlocfilehash: 900529d54a26729d9d0fb949d9217d5e2d618254
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66515293"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>使用 Azure Dev Space 时如何管理机密

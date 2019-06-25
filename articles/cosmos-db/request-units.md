@@ -4,14 +4,14 @@ description: 了解如何指定和评估 Azure Cosmos DB 中的请求单位要�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/14/2019
 ms.author: rimman
-ms.openlocfilehash: 9615aebd345c957c8e401581ff94735f39ba73c6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 12f91676ac50511bf3d2d33f7fed2029e152dc98
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953539"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165008"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
 
@@ -19,7 +19,7 @@ ms.locfileid: "65953539"
 
 Azure Cosmos DB 支持多种 API，例如 SQL、MongoDB、Cassandra、Gremlin 和表。 每个 API 具有自身的数据库操作集。 这些操作包括简单的点读取和写入，以及复杂的查询等等。 每个数据库操作根据其复杂性消耗系统资源。 
 
-所有数据库操作的成本将由 Azure Cosmos DB 规范化，并以“请求单位”（缩写为 RU）表示。 可将每秒 RU 数视为吞吐量的货币。 每秒 RU 数是基于费率的货币。 它抽象化了执行 Azure Cosmos DB 支持的数据库操作所需的系统资源，例如 CPU、IOPS 和内存。 
+所有数据库操作的成本将由 Azure Cosmos DB 规范化，并以“请求单位”（缩写为 RU）表示。  可将每秒 RU 数视为吞吐量的货币。 每秒 RU 数是基于费率的货币。 它抽象化了执行 Azure Cosmos DB 支持的数据库操作所需的系统资源，例如 CPU、IOPS 和内存。 
 
 读取 1 KB 项的成本为 1 个请求单位（1 个 RU）。 以类似方式为其他所有数据库操作分配 RU 成本。 不管使用哪个 API 来与 Azure Cosmos 容器和数据库操作交互，都始终以 RU 来计量成本。 无论数据库操作是写入、读取还是查询，都始终以 RU 来计量成本。
 
@@ -75,3 +75,4 @@ Azure Cosmos DB 支持多种 API，例如 SQL、MongoDB、Cassandra、Gremlin �
 * 了解如何[在 Azure Cosmos DB 中优化预配的吞吐量成本](optimize-cost-throughput.md)。
 * 了解如何[优化 Azure Cosmos DB 中的读取和写入成本](optimize-cost-reads-writes.md)。
 * 了解如何[优化 Azure Cosmos DB 中的查询成本](optimize-cost-queries.md)。
+* 了解如何[使用指标监视吞吐量](use-metrics.md)。

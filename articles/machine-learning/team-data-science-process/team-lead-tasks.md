@@ -11,10 +11,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 45be3d7f865c7b72ae62efbf99dbbb4594b1846f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60812450"
 ---
 # <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Team Data Science Process Team 中团队主管的任务
@@ -46,8 +46,8 @@ ms.locfileid: "60812450"
 本主题使用了存储库和目录的缩写名称。 使用这些名称，更易于跟踪存储库和目录之间的操作。 以下部分使用了此表示法（**R** 表示 Git 存储库，**D** 表示 DSVM 上的本地目录）：
 
 - **R1**：组管理员在 Git 上在 Azure DevOps 组服务器上设置的 **GroupProjectTemplate** 存储库。
-- **R3**：你在 Git 上设置的团队 ProjectTemplate 存储库。
-- **R4**：你在 Git 上设置的 TeamUtilities 存储库。
+- **R3**：你在 Git 上设置的团队 ProjectTemplate 存储库  。
+- **R4**：你在 Git 上设置的 TeamUtilities 存储库  。
 - **D1**：从 R1 克隆的并复制到 D3 的本地目录。
 - **D3**：从 R3 克隆的、进行了自定义并复制回 R3 的本地目录。
 - **D4**：从 R4 克隆的、进行了自定义并复制回 R4 的本地目录。
@@ -70,7 +70,7 @@ ms.locfileid: "60812450"
 - 组管理员已在计划使用的代码托管平台上你的组帐户下设置了 **GroupProjectTemplate 存储库** (R1)。
 - 已在你的组帐户中**授权**你为团队创建存储库。
 - 计算机上必须安装有 Git。 如果使用的是数据科学虚拟机 (DSVM)，则已预安装 Git，可以继续操作。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。  
-- 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后单击“最新安装程序”。 随后会转到最新安装程序页。 从此处下载 .exe 安装程序并运行它。 
+- 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”  部分，然后单击“最新安装程序”  。 随后会转到最新安装程序页。 从此处下载 .exe 安装程序并运行它。 
 - 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 Azure DevOps Services。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
     
 ## <a name="1-create-a-project-and-repositories"></a>1.创建项目和存储库
@@ -84,49 +84,49 @@ ms.locfileid: "60812450"
 ### <a name="create-the-myteam-project"></a>创建 MyTeam 项目
 
 - 通过 URL `https://<Azure DevOps Services Name\>.visualstudio.com` 转到组的 Azure DevOps Services 主页。 
-- 单击“新建”创建项目。 
+- 单击“新建”创建项目。  
 
     ![2](./media/team-lead-tasks/team-leads-2-create-new-team.png)
 
-- “创建项目”窗口会提示你输入项目名称（在本示例中为 **MyTeam**）。 确保选择“敏捷”作为“过程模板”，选择“Git”作为“版本控制”。 
+- “创建项目”窗口会提示你输入项目名称（在本示例中为 **MyTeam**）。 确保选择“敏捷”作为“过程模板”，选择“Git”作为“版本控制”。     
 
     ![3](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
 
-- 单击“创建项目”。 项目 **MyTeam** 将在 1 分钟内完成创建。 
+- 单击“创建项目”。  项目 **MyTeam** 将在 1 分钟内完成创建。 
 
-- 在创建项目 **MyTeam** 后，单击“导航到项目”按钮，以定向到项目的主页。 
+- 在创建项目 **MyTeam** 后，单击“导航到项目”按钮，以定向到项目的主页。  
 
     ![4](./media/team-lead-tasks/team-leads-4-create-new-team-3.png)
 
-- 如果看到“祝贺你！” 弹出窗口，请单击“添加代码” （红色框中的按钮）。 否则，请单击“代码”（在黄色框中）。 这会定向到项目的 Git 存储库页面。 
+- 如果看到“祝贺你！”  弹出窗口，请单击“添加代码”  （红色框中的按钮）。 否则，请单击“代码”  （在黄色框中）。 这会定向到项目的 Git 存储库页面。 
 
     ![5](./media/team-lead-tasks/team-leads-5-team-project-home.png)
 
 ### <a name="create-the-myprojecttemplate-repository-r3-on-git"></a>在 Git 上创建 MyProjectTemplate 存储库 (R3)
 
-- 在项目的 Git 存储库页面上，单击存储库名称“MyTeam”旁边的向下箭头，然后选择“管理存储库...”。
+- 在项目的 Git 存储库页面上，单击存储库名称“MyTeam”旁边的向下箭头，然后选择“管理存储库...”。  
 
     ![6](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
 
-- 在项目的控制面板的“版本控制”选项卡上，单击“MyTeam”，然后选择“重命名存储库...”。 
+- 在项目的控制面板的“版本控制”选项卡上，单击“MyTeam”，然后选择“重命名存储库...”。    
 
     ![7](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
 
-- 在“重命名 MyTeam 存储库”窗口中，为存储库输入一个新名称。 在本例中为 *MyTeamProjectTemplate*。 可以选择使用诸如 *<你的团队名称\>ProjectTemplate* 的名称。 单击“重命名”以继续操作。
+- 在“重命名 MyTeam 存储库”窗口中，为存储库输入一个新名称。  在本例中为 *MyTeamProjectTemplate*。 可以选择使用诸如 *<你的团队名称\>ProjectTemplate* 的名称。 单击“重命名”以继续操作。 
 
     ![8](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
 
 ### <a name="create-the-myteamutilities-repository-r4-on-git"></a>在 Git 上创建 MyTeamUtilities 存储库 (R4)
 
-- 若要在项目下创建新存储库 *<你的团队名称\>Utilities*，请在项目的控制面板的“版本控制”选项卡上单击“新建存储库...”。  
+- 若要在项目下创建新存储库 *<你的团队名称\>Utilities*，请在项目的控制面板的“版本控制”选项卡上单击“新建存储库...”。    
 
     ![9](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
 
-- 在弹出的“创建新的存储库”窗口中，为此存储库提供一个名称。 在本例中，我们将其命名为“MyTeamUtilities”，在我们的表示法中为“R4”。 可以选择使用诸如 *<你的团队名称\>Utilities* 的名称。 对于“类型”，请确保选择“Git”。 然后，单击“创建”以继续操作。
+- 在弹出的“创建新的存储库”窗口中，为此存储库提供一个名称。  在本例中，我们将其命名为“MyTeamUtilities”，在我们的表示法中为“R4”。   可以选择使用诸如 *<你的团队名称\>Utilities* 的名称。 对于“类型”，请确保选择“Git”。   然后，单击“创建”以继续操作。 
 
     ![10](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
 
-- 确认看到在项目“MyTeam”下创建了两个新的 Git 存储库。 在本示例中： 
+- 确认看到在项目“MyTeam”下创建了两个新的 Git 存储库。  在本示例中： 
 
 - **MyTeamProjectTemplate** (R3) 
 - **MyTeamUtilities** (R4)。
@@ -136,7 +136,7 @@ ms.locfileid: "60812450"
 
 ## <a name="2-seed-your-projecttemplate-and-teamutilities-repositories"></a>2.将 ProjectTemplate 和 TeamUtilities 存储库设为种子
 
-种子设定过程使用本地 DSVM 上的目录作为中间暂存站点。 如果需要自定义“ProjectTemplate”和“TeamUtilities”存储库以满足某些特定的团队需求，请在以下过程的倒数第二个步骤中进行自定义。 下面摘要列出了用来将数据科学团队的 **MyTeamProjectTemplate** 和 **MyTeamUtilities** 存储库内容设为种子的步骤。 各个步骤对应于种子设定过程中的各个小节：
+种子设定过程使用本地 DSVM 上的目录作为中间暂存站点。 如果需要自定义“ProjectTemplate”和“TeamUtilities”存储库以满足某些特定的团队需求，请在以下过程的倒数第二个步骤中进行自定义。   下面摘要列出了用来将数据科学团队的 **MyTeamProjectTemplate** 和 **MyTeamUtilities** 存储库内容设为种子的步骤。 各个步骤对应于种子设定过程中的各个小节：
 
 - 将组存储库克隆到本地目录中：团队 R1 - 克隆到 -> 本地 D1
 - 将团队存储库克隆到本地目录中：团队 R3 和 R4 - 克隆到 -> 本地 D3 和 D4
@@ -157,8 +157,8 @@ ms.locfileid: "60812450"
 开始此过程：
 
 - 在本地计算机上创建目录：
-    - 对于 **Windows**：C:\GitRepos\GroupCommon 和 C:\GitRepos\MyTeam
-    - 对于 **Linux**：在主目录中创建 GitRepos\GroupCommon 和 GitRepos\MyTeam 
+    - 对于 **Windows**：C:\GitRepos\GroupCommon 和 C:\GitRepos\MyTeam  
+    - 对于 **Linux**：在主目录中创建 GitRepos\GroupCommon 和 GitRepos\MyTeam   
 - 更改到 **GitRepos\GroupCommon** 目录。
 - 根据情况，在本地计算机的操作系统上运行以下命令。
 
@@ -386,7 +386,7 @@ ms.locfileid: "60812450"
 
 **如何手动输入 Azure 文件存储信息：** 如果没有包含 Azure 文件存储信息的文本文件，可以按照以下屏幕上的说明键入必需的订阅、存储帐户和 Azure 文件存储信息：
 
-- 输入 n。
+- 输入 n  。
 - 选择在上一步骤中在其中创建了 Azure 文件存储的订阅名称的索引：
 
     ![41](./media/team-lead-tasks/team-leads-41-attach-s5-linux.png)
@@ -402,7 +402,7 @@ ms.locfileid: "60812450"
 
 ## <a name="5-set-up-security-control-policy"></a>5.设置安全控制策略 
 
-在组 Azure DevOps Services 的主页上，单击右上角用户名旁边的**齿轮图标**，然后选择“安全性”选项卡。可以在此处向你的团队添加具有各种权限的成员。
+在组 Azure DevOps Services 的主页上，单击右上角用户名旁边的**齿轮图标**，然后选择“安全性”  选项卡。可以在此处向你的团队添加具有各种权限的成员。
 
 ![44](./media/team-lead-tasks/team-leads-44-add-team-members.png)
 

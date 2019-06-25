@@ -12,12 +12,12 @@ ms.date: 05/15/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b3066a529183d7a8a13e4673d7879136aa0d7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2576a33e62b370bc2fd91c5d155e9f8d6e52c0f8
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824163"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190270"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>单一登录到 Azure Active Directory 中的应用程序
 
@@ -95,7 +95,7 @@ ms.locfileid: "65824163"
 - Windows 7 或更高版本以及 MacOS X 或更高版本上的 Chrome
 - Windows XP SP2 或更高版本以及 Mac OS X 10.6 或更高版本上的 Firefox 26.0 或更高版本
 
-要将云应用程序配置为基于密码的单一登录，请参阅[将应用程序配置为密码单一登录](application-sign-in-problem-password-sso-gallery.md#configure-the-application-for-password-single-sign-on)。
+要将云应用程序配置为基于密码的单一登录，请参阅[将应用程序配置为密码单一登录](application-sign-in-problem-password-sso-gallery.md#configure-the-app-for-password-sso)。
 
 要使用应用程序代理将本地应用程序配置为单一登录，请参阅[使用应用程序代理通过密码存储进行单一登录](application-proxy-configure-single-sign-on-password-vaulting.md)
 

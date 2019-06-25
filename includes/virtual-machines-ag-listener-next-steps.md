@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 27b09ea9cc7ce3cf2559304a26d0c04f3ea30b54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165430"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172902"
 ---
 除了自动将客户端连接到主要副本外，侦听器还可用于将只读工作负荷重定向到辅助副本。 这样使用可以提高整个解决方案的性能和可伸缩性。 有关详细信息，请参阅 [Use ReadIntent Routing with Azure Always On availability group listener](https://go.microsoft.com/fwlink/?LinkId=522515)（将 ReadIntent 路由与 Azure AlwaysOn 可用性组侦听器配合使用）。
 

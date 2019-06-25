@@ -1,24 +1,24 @@
 ---
-title: 创建和使用 Azure Web 应用程序防火墙 (WAF) 自定义规则
-description: 本文介绍如何在 Azure 应用程序网关中创建 Web 应用程序防火墙 (WAF) 自定义规则。
+title: 创建和使用 Azure Web 应用程序防火墙 (WAF) v2 自定义规则
+description: 本文介绍如何在 Azure 应用程序网关中创建 Web 应用程序防火墙 (WAF) v2 自定义规则。
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: bb8c50664261814c7d994c9b879972b1e8b846e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86ddb0b608cd17814cbcbb902f0b2905fe61094a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66689026"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164674"
 ---
-# <a name="create-and-use-web-application-firewall-custom-rules"></a>创建和使用自定义 Web 应用程序防火墙规则
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>创建和使用 Web 应用程序防火墙 v2 自定义规则
 
-Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 通过打开 Web Application Security Project (OWASP) 核心规则集 (CRS) 提供此保护。 在某些情况下，可能需要创建自己的自定义规则以满足特定需求。 有关自定义 WAF 规则的详细信息，请参阅[自定义 web 应用程序防火墙规则概述](custom-waf-rules-overview.md)。
+Azure 应用程序网关 Web 应用程序防火墙 (WAF) v2 提供了 web 应用程序的保护。 通过打开 Web Application Security Project (OWASP) 核心规则集 (CRS) 提供此保护。 在某些情况下，可能需要创建自己的自定义规则以满足特定需求。 有关自定义 WAF 规则的详细信息，请参阅[自定义 web 应用程序防火墙规则概述](custom-waf-rules-overview.md)。
 
-本文介绍了一些示例自定义规则，可以创建和使用 WAF。 若要了解如何将 WAF 部署与使用 Azure PowerShell 的自定义规则，请参阅[使用 Azure PowerShell 配置 Web 应用程序防火墙自定义规则](configure-waf-custom-rules.md)。
+本文介绍了一些示例自定义规则，可以创建和使用 v2 WAF。 若要了解如何将 WAF 部署与使用 Azure PowerShell 的自定义规则，请参阅[使用 Azure PowerShell 配置 Web 应用程序防火墙自定义规则](configure-waf-custom-rules.md)。
 
 >[!NOTE]
 > 如果应用程序网关未使用 WAF 层，会在右侧窗格中显示“将应用程序网关升级到 WAF 层”选项。

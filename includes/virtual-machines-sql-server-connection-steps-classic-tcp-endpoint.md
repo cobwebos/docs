@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: d4e8d99cd7c67136f359772664eb017c6207e6e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165521"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172893"
 ---
 ### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a>为虚拟机创建 TCP 终结点
 要从 Internet 访问 SQL Server，虚拟机必须具有终结点以侦听传入的 TCP 通信。 此 Azure 配置步骤将传入 TCP 端口通信定向到虚拟机可以访问的 TCP 端口。

@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66111119"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173179"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>在 Azure 门户中创建命名空间
 若要开始在 Azure 中使用服务总线消息实体，必须先使用在 Azure 中唯一的名称创建一个命名空间。 命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。

@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 06/13/2019
-ms.openlocfilehash: 15f64c7087ea4d24f271af67b251030a2196fa10
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 89df33f453217585e8f0b8ff13d06ee223474fae
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070373"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272241"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例的资源限制
 
@@ -105,7 +105,7 @@ Azure SQL 数据库托管的实例可以部署在两个硬件代次：Gen4 和 G
 
 \* 当你计划你的部署时，请考虑： vCore 业务关键 (BC) （由于添加了冗余） 所消耗的 4 倍的容量多于常规用途 (GP) vCore。 因此，对于您的计算，1 个 GP vCore = 1 个 vCore 单元和 1 BC vCore = 4 个 vCore 单位。 若要简化与默认限制您使用的分析，托管的实例部署中，将使用你的订阅类型的实例单位限制结果进行比较的区域中的所有子网间汇总 vCore 单位。 **最大 vCore 单位数**限制适用于区域中的每个订阅。 没有任何限制每个单个子网，但部署跨多个子网的所有 vcore 数之和必须低于或等于**最大 vCore 数**。
 
-\* * 在以下区域中提供了更大的子网和 vCore 限制：澳大利亚东部、 美国东部、 美国东部 2、 北欧、 美国中南部、 东南亚、 英国南部、 欧洲西部、 美国西部 2。
+\*\* 在以下区域中提供了更大的子网和 vCore 限制：澳大利亚东部、 美国东部、 美国东部 2、 北欧、 美国中南部、 东南亚、 英国南部、 欧洲西部、 美国西部 2。
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>获取更大配额的 SQL 托管实例
 

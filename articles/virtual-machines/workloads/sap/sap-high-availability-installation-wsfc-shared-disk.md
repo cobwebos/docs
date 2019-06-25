@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1229b7f9e2a430a663a3e78bb457c03cf4a4a590
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60714349"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中，使用 Windows 故障转移群集和共享磁盘为 SAP ASCS/SCS 实例安装 SAP NetWeaver HA
@@ -196,7 +196,7 @@ ms.locfileid: "60714349"
 
    _**图 1：** 定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目_
 
-2. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” > “域”。
+2. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” > “域”   。
 
    ![图 2：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址][sap-ha-guide-figure-3047]
 
@@ -249,7 +249,7 @@ ms.locfileid: "60714349"
 
 添加探测端口：
 
-1. 运行以下 PowerShell 命令，检查当前的“ProbePort”值：
+1. 运行以下 PowerShell 命令，检查当前的“ProbePort”  值：
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>
@@ -326,7 +326,7 @@ ms.locfileid: "60714349"
    }
    ```
 
-   将 SAP \<SID\> 群集角色联机之后，验证“ProbePort”是否已设置为新值。
+   将 SAP \<SID\> 群集角色联机之后，验证“ProbePort”是否已设置为新值  。
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>
@@ -351,7 +351,7 @@ ms.locfileid: "60714349"
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-ProbePort 设置为 62000。 现在，可从其他主机（例如 ascsha-dbas）访问文件共享 \\\ascsha-clsap\sapmnt。
+ProbePort 设置为 62000   。 现在，可从其他主机（例如 ascsha-dbas）访问文件共享 \\\ascsha-clsap\sapmnt。
 
 ## <a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>安装数据库实例
 
@@ -363,7 +363,7 @@ ProbePort 设置为 62000。 现在，可从其他主机（例如 ascsha-dbas）
 
 ## <a name="094bc895-31d4-4471-91cc-1513b64e406a"></a>更改 SAP ERS Windows 服务实例的启动类型
 
-将两个群集节点上的 SAP 排队复制服务器 (ERS) Windows 服务的启动类型更改为“自动(延迟启动)”。
+将两个群集节点上的 SAP 排队复制服务器 (ERS) Windows 服务的启动类型更改为“自动(延迟启动)”。 
 
 ![图 5：将 SAP ERS 实例的服务类型更改为自动延迟][sap-ha-guide-figure-3050]
 

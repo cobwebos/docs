@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b33e993dbddc9c1567a1a6f7d3dca28af240a000
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b21c5f8630598a4b7117d23ad7c8da46de07d2fa
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381138"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204496"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数引用
 在 Azure AD Connect 中，函数用于在同步期间操作属性值。  
@@ -89,7 +89,7 @@ ms.locfileid: "60381138"
 | [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
 
-- - -
+---
 ### <a name="bitand"></a>BitAnd
 **说明：**  
 BitAnd 函数设置值的指定位。
@@ -111,7 +111,7 @@ BitAnd 函数设置值的指定位。
 `BitAnd(&HF, &HF7)`  
 返回 7，因为十六进制 "F" AND "F7" 的计算结果为此值。
 
-- - -
+---
 ### <a name="bitor"></a>BitOr
 **说明：**  
 BitOr 函数设置值的指定位。
@@ -124,7 +124,7 @@ BitOr 函数设置值的指定位。
 **备注：**  
 此函数将两个参数转换为二进制表示形式，当掩码和标志中相应位的其中一个或两个均为 1 时，将位设置为 1，当两个相应位均为 0 时，设置为 0。 换而言之，除了当两个参数的相应位均为 0 时之外，所有情况下均返回 1。
 
-- - -
+---
 ### <a name="cbool"></a>CBool
 **说明：**  
 CBool 函数基于计算的表达式返回布尔值
@@ -140,7 +140,7 @@ CBool 函数基于计算的表达式返回布尔值
 
 如果两个属性具有相同的值，则返回 True。
 
-- - -
+---
 ### <a name="cdate"></a>CDate
 **说明：**  
 CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原生属性类型，但被某些函数使用。
@@ -161,7 +161,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 返回表示“2013-01-11 12:00 AM”的 DateTime
 
 
-- - -
+---
 ### <a name="certextensionoids"></a>CertExtensionOids
 **说明：**  
 返回证书对象所有关键扩展的 Oid 值。
@@ -170,7 +170,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `mvstr CertExtensionOids(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certformat"></a>CertFormat
 **说明：**  
 返回此 X.509v3 证书的格式名称。
@@ -179,7 +179,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertFormat(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certfriendlyname"></a>CertFriendlyName
 **说明：**  
 返回证书的关联别名。
@@ -188,7 +188,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertFriendlyName(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certhashstring"></a>CertHashString
 **说明：**  
 以十六进制字符串的形式返回 X.509v3 证书的 SHA1 哈希值。
@@ -197,7 +197,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertHashString(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certissuer"></a>CertIssuer
 **说明：**  
 返回颁发此 X.509v3 证书的证书颁发机构名称。
@@ -206,7 +206,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertIssuer(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certissuerdn"></a>CertIssuerDN
 **说明：**  
 返回证书颁发者的可分辨名称。
@@ -215,7 +215,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertIssuerDN(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certissueroid"></a>CertIssuerOid
 **说明：**  
 返回证书颁发者的 Oid。
@@ -224,7 +224,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertIssuerOid(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
 **说明：**  
 以字符串形式返回此 X.509v3 证书的密钥算法信息。
@@ -233,7 +233,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
 **说明：**  
 以十六进制字符串的形式返回此 X.509v3 证书的密钥算法参数。
@@ -242,7 +242,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certnameinfo"></a>CertNameInfo
 **说明：**  
 返回证书中的使用者和颁发者名称。
@@ -253,7 +253,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 *   X509NameType：使用者的 X509NameType 值。
 *   includesIssuerName：包含颁发者名称则为 true；否则为 false。
 
-- - -
+---
 ### <a name="certnotafter"></a>CertNotAfter
 **说明：**  
 返回证书不再有效后的本地时间日期。
@@ -262,7 +262,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `dt CertNotAfter(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certnotbefore"></a>CertNotBefore
 **说明：**  
 返回证书开始生效的本地时间日期。
@@ -271,7 +271,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `dt CertNotBefore(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
 **说明：**  
 返回此 X.509v3 证书的公钥 Oid。
@@ -280,7 +280,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
 **说明：**  
 返回此 X.509v3 证书的公钥参数 Oid。
@@ -289,7 +289,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certserialnumber"></a>CertSerialNumber
 **说明：**  
 返回 X.509v3 证书的序列号。
@@ -298,7 +298,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertSerialNumber(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
 **说明：**  
 返回用于创建证书签名的算法 Oid。
@@ -307,7 +307,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certsubject"></a>CertSubject
 **说明：**  
 获取证书中使用者的可分辨名称。
@@ -316,7 +316,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertSubject(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
 **说明：**  
 返回证书中使用者的可分辨名称。
@@ -325,7 +325,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertSubjectNameDN(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
 **说明：**  
 返回证书中使用者名称的 Oid。
@@ -334,7 +334,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertSubjectNameOid(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certthumbprint"></a>CertThumbprint
 **说明：**  
 返回证书的指纹。
@@ -343,7 +343,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertThumbprint(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="certversion"></a>CertVersion
 **说明：**  
 返回证书的 X.509 格式版本。
@@ -352,7 +352,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 `str CertThumbprint(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
 
-- - -
+---
 ### <a name="cguid"></a>CGuid
 **说明：**  
 CGuid 函数将 GUID 的字符串表示转换为其二进制表示形式。
@@ -362,7 +362,7 @@ CGuid 函数将 GUID 的字符串表示转换为其二进制表示形式。
 
 * 采用这种模式设置格式的字符串：xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 或 {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
-- - -
+---
 ### <a name="contains"></a>Contains
 **说明：**  
 Contains 函数查找多值属性内的字符串
@@ -386,7 +386,7 @@ Contains 函数查找多值属性内的字符串
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
 如果 proxyAddresses 属性具有主电子邮件地址（由大写 "SMTP:" 表示），则返回 proxyAddress 属性，否则返回错误。
 
-- - -
+---
 ### <a name="convertfrombase64"></a>ConvertFromBase64
 **说明：**  
 ConvertFromBase64 函数将指定的 base64 编码值转换为规则的字符串。
@@ -404,7 +404,7 @@ ConvertFromBase64 函数将指定的 base64 编码值转换为规则的字符串
 
 这两个示例均返回 "*Hello world!* "
 
-- - -
+---
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 **说明：**  
 ConvertFromUTF8Hex 函数将指定的 UTF8 Hex 编码值转换为字符串。
@@ -422,7 +422,7 @@ ConvertFromUTF8Hex 函数将指定的 UTF8 Hex 编码值转换为字符串。
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
 返回 "*Hello world!* "
 
-- - -
+---
 ### <a name="converttobase64"></a>ConvertToBase64
 **说明：**  
 ConvertToBase64 函数将字符串转换为 Unicode base64 字符串。  
@@ -435,7 +435,7 @@ ConvertToBase64 函数将字符串转换为 Unicode base64 字符串。
 `ConvertToBase64("Hello world!")`  
 返回 "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
-- - -
+---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 **说明：**  
 ConvertToUTF8Hex 函数将字符串转换为 UTF8 Hex 编码的值。
@@ -450,7 +450,7 @@ ConvertToUTF8Hex 函数将字符串转换为 UTF8 Hex 编码的值。
 `ConvertToUTF8Hex("Hello world!")`  
 返回 48656C6C6F20776F726C6421
 
-- - -
+---
 ### <a name="count"></a>Count
 **说明：**  
 Count 函数返回多值属性中的元素数量
@@ -458,7 +458,7 @@ Count 函数返回多值属性中的元素数量
 **语法：**  
 `num Count(mvstr attribute)`
 
-- - -
+---
 ### <a name="cnum"></a>CNum
 **说明：**  
 CNum 函数使用字符串并返回数值数据类型。
@@ -466,7 +466,7 @@ CNum 函数使用字符串并返回数值数据类型。
 **语法：**  
 `num CNum(str value)`
 
-- - -
+---
 ### <a name="cref"></a>CRef
 **说明：**  
 将字符串转换为引用属性
@@ -477,7 +477,7 @@ CNum 函数使用字符串并返回数值数据类型。
 **示例：**  
 `CRef("CN=LC Services,CN=Microsoft,CN=lcspool01,CN=Pools,CN=RTC Service," & %Forest.LDAP%)`
 
-- - -
+---
 ### <a name="cstr"></a>CStr
 **说明：**  
 CStr 函数转换为字符串数据类型。
@@ -493,7 +493,7 @@ CStr 函数转换为字符串数据类型。
 `CStr([dn])`  
 可能返回 "cn=Joe,dc=contoso,dc=com"
 
-- - -
+---
 ### <a name="dateadd"></a>DateAdd
 **说明：**  
 返回日期，其中包含已添加制定时间间隔的日期。
@@ -519,7 +519,7 @@ CStr 函数转换为字符串数据类型。
 `DateAdd("m", 3, CDate("2001-01-01"))`  
 添加 3 个月，并返回表示“2001-04-01”的 DateTime。
 
-- - -
+---
 ### <a name="datefromnum"></a>DateFromNum
 **说明：**  
 DateFromNum 函数将 AD 的日期格式的值转换为 DateTime 类型。
@@ -532,7 +532,7 @@ DateFromNum 函数将 AD 的日期格式的值转换为 DateTime 类型。
 `DateFromNum(129699324000000000)`  
 返回表示 2012-01-01 23:00:00 的 DateTime
 
-- - -
+---
 ### <a name="dncomponent"></a>DNComponent
 **说明：**  
 DNComponent 函数返回从左边起的指定 DN 组件的值。
@@ -547,7 +547,7 @@ DNComponent 函数返回从左边起的指定 DN 组件的值。
 `DNComponent(CRef([dn]),1)`  
 如果 dn 为“cn=Joe,ou=…”，则返回 Joe
 
-- - -
+---
 ### <a name="dncomponentrev"></a>DNComponentRev
 **说明：**  
 DNComponentRev 函数返回从右边起（末尾）的指定 DN 组件的值。
@@ -566,7 +566,7 @@ DNComponentRev 函数返回从右边起（末尾）的指定 DN 组件的值。
 `DNComponentRev(CRef([dn]),1,"DC")`  
 两者都返回 US。
 
-- - -
+---
 ### <a name="error"></a>错误
 **说明：**  
 Error 函数用于返回自定义错误。
@@ -578,7 +578,7 @@ Error 函数用于返回自定义错误。
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 如果属性 accountName 不存在，则对象上引发错误。
 
-- - -
+---
 ### <a name="escapedncomponent"></a>EscapeDNComponent
 **说明：**  
 EscapeDNComponent 函数使用 DN 的一个组件，并对其进行转义，以便它可以在 LDAP 中表示。
@@ -590,7 +590,7 @@ EscapeDNComponent 函数使用 DN 的一个组件，并对其进行转义，以�
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
 即使 displayName 属性具有必须在 LDAP 中转义的字符，也请确保可以在 LDAP 目录中创建对象。
 
-- - -
+---
 ### <a name="formatdatetime"></a>FormatDateTime
 **说明：**  
 FormatDateTime 函数用于为具有指定格式的字符串设置 DateTime 格式
@@ -612,7 +612,7 @@ FormatDateTime 函数用于为具有指定格式的字符串设置 DateTime 格�
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
 结果可能是“20140905081453.0Z”
 
-- - -
+---
 ### <a name="guid"></a>Guid
 **说明：**  
 函数 GUID 生成新的随机 GUID
@@ -620,7 +620,7 @@ FormatDateTime 函数用于为具有指定格式的字符串设置 DateTime 格�
 **语法：**  
 `str Guid()`
 
-- - -
+---
 ### <a name="iif"></a>IIF
 **说明：**  
 IIF 函数基于指定的条件返回一组可能值中的其中一个值。
@@ -636,7 +636,7 @@ IIF 函数基于指定的条件返回一组可能值中的其中一个值。
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  如果用户是实习生，则返回用户的别名，同时将 "t-" 添加到其开头，否则按原样返回用户的别名。
 
-- - -
+---
 ### <a name="instr"></a>InStr
 **说明：**  
 InStr 函数查找字符串中第一次出现的子字符串
@@ -662,7 +662,7 @@ InStr 函数查找字符串中第一次出现的子字符串
 `InStr("repEated","e",3,vbBinaryCompare)`  
 计算结果为 7
 
-- - -
+---
 ### <a name="instrrev"></a>InStrRev
 **说明：**  
 InStrRev 函数查找字符串中最后一次出现的子字符串
@@ -684,7 +684,7 @@ InStrRev 函数查找字符串中最后一次出现的子字符串
 `InStrRev("abbcdbbbef","bb")`  
 返回 7
 
-- - -
+---
 ### <a name="isbitset"></a>IsBitSet
 **说明：**  
 函数 IsBitSet 测试是否设置了位
@@ -698,7 +698,7 @@ InStrRev 函数查找字符串中最后一次出现的子字符串
 `IsBitSet(&HF,4)`  
 返回 True，因为位“4”在十六进制值“F”中设置
 
-- - -
+---
 ### <a name="isdate"></a>IsDate
 **说明：**  
 如果表达式可以计算为 DateTime 类型，则 IsDate 函数计算结果为 True。
@@ -709,7 +709,7 @@ InStrRev 函数查找字符串中最后一次出现的子字符串
 **备注：**  
 用来确定 CDate() 是否成功。
 
-- - -
+---
 ### <a name="iscert"></a>IsCert
 **说明：**  
 如果原始数据可以序列化为 .NET X509Certificate2 证书对象，则返回 true。
@@ -717,7 +717,7 @@ InStrRev 函数查找字符串中最后一次出现的子字符串
 **语法：**  
 `bool CertThumbprint(binary certificateRawData)`  
 *   certificateRawData：X.509 证书的字节数组表示形式。 字节数组可以是编码的二进制文件 (DER) 或 Base64 编码的 X.509 数据。
-- - -
+---
 ### <a name="isempty"></a>IsEmpty
 **说明：**  
 如果属性出现在 CS 或 MV 中，但计算结果为空字符串，则 IsEmpty 函数计算结果为 True。
@@ -725,7 +725,7 @@ InStrRev 函数查找字符串中最后一次出现的子字符串
 **语法：**  
 `bool IsEmpty(var Expression)`
 
-- - -
+---
 ### <a name="isguid"></a>IsGuid
 **说明：**  
 如果字符串可以转换为 GUID，则 IsGuid 函数计算结果为 true。
@@ -742,7 +742,7 @@ GUID 定义为遵循以下其中一种模式的字符串：xxxxxxxx-xxxx-xxxx-xx
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
 如果 StrAttribute 具有 GUID 格式，则返回二进制表示形式，否则返回 Null。
 
-- - -
+---
 ### <a name="isnull"></a>IsNull
 **说明：**  
 如果表达式的计算结果为 Null，则 IsNull 函数返回 true。
@@ -757,7 +757,7 @@ GUID 定义为遵循以下其中一种模式的字符串：xxxxxxxx-xxxx-xxxx-xx
 `IsNull([displayName])`  
 如果属性没有在 CS 或 MV 中出现，则返回 True。
 
-- - -
+---
 ### <a name="isnullorempty"></a>IsNullOrEmpty
 **说明：**  
 如果表达式为 null 或空字符串，则 IsNullOrEmpty 函数返回 true。
@@ -773,7 +773,7 @@ GUID 定义为遵循以下其中一种模式的字符串：xxxxxxxx-xxxx-xxxx-xx
 `IsNullOrEmpty([displayName])`  
 如果属性在 CS 或 MV 中没有出现或为空字符串，则返回 True。
 
-- - -
+---
 ### <a name="isnumeric"></a>IsNumeric
 **说明：**  
 IsNumeric 函数返回布尔值，该值指示表达式是否可以计算为数字类型。
@@ -784,7 +784,7 @@ IsNumeric 函数返回布尔值，该值指示表达式是否可以计算为数�
 **备注：**  
 用来确定 CNum() 是否能成功分析表达式。
 
-- - -
+---
 ### <a name="isstring"></a>IsString
 **说明：**  
 如果表达式可以计算为字符串类型，则 IsString 函数计算结果为 True。
@@ -795,7 +795,7 @@ IsNumeric 函数返回布尔值，该值指示表达式是否可以计算为数�
 **备注：**  
 用来确定 CStr() 是否能成功分析表达式。
 
-- - -
+---
 ### <a name="ispresent"></a>IsPresent
 **说明：**  
 如果表达式的计算结果为字符串，该字符串不是 Null 且不为空，则 IsPresent 函数返回 true。
@@ -809,7 +809,7 @@ IsNumeric 函数返回布尔值，该值指示表达式是否可以计算为数�
 **示例：**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
-- - -
+---
 ### <a name="item"></a>Item
 **说明：**  
 Item 函数返回多值字符串/属性中的一个项。
@@ -829,7 +829,7 @@ Item 函数与 Contains 函数一起使用很有利，因为后一函数返回�
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 返回主电子邮件地址。
 
-- - -
+---
 ### <a name="itemornull"></a>ItemOrNull
 **说明：**  
 ItemOrNull 函数返回多值字符串/属性中的一个项。
@@ -845,7 +845,7 @@ ItemOrNull 函数与 Contains 函数一起使用很有利，因为后一函数�
 
 如果索引超出界限，则返回 Null 值。
 
-- - -
+---
 ### <a name="join"></a>Join
 **说明：**  
 Join 函数使用多值字符串，并返回每个项之间插入指定分隔符的单值字符串。
@@ -864,7 +864,7 @@ Join 和 Split 函数之间没有奇偶校验。 Join 函数使用字符串数�
 `Join([proxyAddresses],",")`  
 可能返回：“SMTP:john.doe@contoso.com、smtp:jd@contoso.com”
 
-- - -
+---
 ### <a name="lcase"></a>LCase
 **说明：**  
 LCase 函数将字符串中的所有字符都转换为小写。
@@ -876,7 +876,7 @@ LCase 函数将字符串中的所有字符都转换为小写。
 `LCase("TeSt")`  
 返回“Test”。
 
-- - -
+---
 ### <a name="left"></a>Left
 **说明：**  
 Left 函数从字符串左侧起返回指定的字符数。
@@ -900,7 +900,7 @@ Left 函数从字符串左侧起返回指定的字符数。
 `Left("John Doe", 3)`  
 返回“Joh”。
 
-- - -
+---
 ### <a name="len"></a>Len
 **说明：**  
 Len 函数返回字符串中的字符数。
@@ -912,7 +912,7 @@ Len 函数返回字符串中的字符数。
 `Len("John Doe")`  
 返回 8
 
-- - -
+---
 ### <a name="ltrim"></a>LTrim
 **说明：**  
 LTrim 函数从字符串中删除前导空格。
@@ -924,7 +924,7 @@ LTrim 函数从字符串中删除前导空格。
 `LTrim(" Test ")`  
 返回“Test”
 
-- - -
+---
 ### <a name="mid"></a>Mid
 **说明：**  
 Mid 函数从字符串指定位置起返回指定的字符数。
@@ -955,7 +955,7 @@ Mid 函数从字符串指定位置起返回指定的字符数。
 `Mid("John Doe", 6, 999)`  
 返回“Doe”
 
-- - -
+---
 ### <a name="now"></a>Now
 **说明：**  
 Now 函数根据计算机的系统日期和时间返回指定当前日期和时间的 DateTime。
@@ -963,7 +963,7 @@ Now 函数根据计算机的系统日期和时间返回指定当前日期和时�
 **语法：**  
 `dt Now()`
 
-- - -
+---
 ### <a name="numfromdate"></a>NumFromDate
 **说明：**  
 NumFromDate 函数返回 AD 的日期格式的日期。
@@ -975,7 +975,7 @@ NumFromDate 函数返回 AD 的日期格式的日期。
 `NumFromDate(CDate("2012-01-01 23:00:00"))`  
 返回 129699324000000000
 
-- - -
+---
 ### <a name="padleft"></a>PadLeft
 **说明：**  
 PadLeft 函数使用提供的填充字符将字符串从左侧填充到指定长度。
@@ -1000,7 +1000,7 @@ PadLeft 函数使用提供的填充字符将字符串从左侧填充到指定长
 `PadLeft("User", 10, "0")`  
 返回“000000User”。
 
-- - -
+---
 ### <a name="padright"></a>PadRight
 **说明：**  
 PadRight 函数使用提供的填充字符将字符串从右侧填充到指定长度。
@@ -1025,7 +1025,7 @@ PadRight 函数使用提供的填充字符将字符串从右侧填充到指定�
 `PadRight("User", 10, "0")`  
 返回“User000000”。
 
-- - -
+---
 ### <a name="pcase"></a>PCase
 **说明：**  
 PCase 函数将字符串中每个空格分隔词的第一个字符转换为大写形式，并将所有其他字符都转换为小写形式。
@@ -1044,7 +1044,7 @@ PCase 函数将字符串中每个空格分隔词的第一个字符转换为大�
 `PCase(LCase("TEST"))`  
 返回“Test”
 
-- - -
+---
 ### <a name="randomnum"></a>RandomNum
 **说明：**  
 RandomNum 函数返回指定间隔之间的随机数字。
@@ -1059,7 +1059,7 @@ RandomNum 函数返回指定间隔之间的随机数字。
 `Random(100,999)`  
 可能返回 734。
 
-- - -
+---
 ### <a name="removeduplicates"></a>RemoveDuplicates
 **说明：**  
 RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值。
@@ -1071,7 +1071,7 @@ RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值
 `RemoveDuplicates([proxyAddresses])`  
 返回净化的 proxyAddress 属性，其中所有重复值已被删除。
 
-- - -
+---
 ### <a name="replace"></a>Replace
 **说明：**  
 Replace 函数将所有出现的某一字符串替换为另一个字符串。
@@ -1094,7 +1094,7 @@ Replace 函数将所有出现的某一字符串替换为另一个字符串。
 `Replace([address],"\r\n",", ")`  
 将 CRLF 替换为逗号和空格，可能导致出现“One Microsoft Way, Redmond, WA, USA”
 
-- - -
+---
 ### <a name="replacechars"></a>ReplaceChars
 **说明：**  
 ReplaceChars 函数替换 ReplacePattern 字符串中找到的所有出现的字符。
@@ -1127,7 +1127,7 @@ ReplaceChars 函数替换 ReplacePattern 字符串中找到的所有出现的字
 `ReplaceChars("O’Neil",%ReplaceString%)`  
 返回“ONeil”，定义要删除单次勾选。
 
-- - -
+---
 ### <a name="right"></a>Right
 **说明：**  
 Right 函数从字符串右侧（末尾）起返回指定的字符数。
@@ -1153,7 +1153,7 @@ NumChars 字符从字符串的最后位置返回。
 `Right("John Doe", 3)`  
 返回“Doe”。
 
-- - -
+---
 ### <a name="rtrim"></a>RTrim
 **说明：**  
 RTrim 函数从字符串中删除尾随空格。
@@ -1165,7 +1165,7 @@ RTrim 函数从字符串中删除尾随空格。
 `RTrim(" Test ")`  
 返回“Test”。
 
-- - -
+---
 ### <a name="select"></a>选择
 **说明：**  
 根据指定函数处理多值属性（或表达式输出）中的所有值。
@@ -1183,7 +1183,7 @@ RTrim 函数从字符串中删除尾随空格。
 `Select($item,[otherPhone],Replace($item,"-",""))`  
 在删除连字符 (-) 后，返回多值属性 otherPhone 中的所有值。
 
-- - -
+---
 ### <a name="split"></a>拆分
 **说明：**  
 Split 函数使用采用分隔符分隔的字符串，并使其成为多值字符串。
@@ -1200,7 +1200,7 @@ Split 函数使用采用分隔符分隔的字符串，并使其成为多值字�
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
 返回多值字符串，其中 2 个元素对 proxyAddress 属性有用。
 
-- - -
+---
 ### <a name="stringfromguid"></a>StringFromGuid
 **说明：**  
 StringFromGuid 函数使用二进制 GUID，并将其转换为字符串
@@ -1208,7 +1208,7 @@ StringFromGuid 函数使用二进制 GUID，并将其转换为字符串
 **语法：**  
 `str StringFromGuid(bin GUID)`
 
-- - -
+---
 ### <a name="stringfromsid"></a>StringFromSid
 **说明：**  
 StringFromSid 函数包含安全标识符的字节数组转换为字符串。
@@ -1216,7 +1216,7 @@ StringFromSid 函数包含安全标识符的字节数组转换为字符串。
 **语法：**  
 `str StringFromSid(bin ObjectSID)`  
 
-- - -
+---
 ### <a name="switch"></a>Switch
 **说明：**  
 Switch 函数用于基于计算的条件返回单个值。
@@ -1245,7 +1245,7 @@ Switch 对所有表达式求值，即使它只返回其中一个结果。 为此
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
 返回某些主要城市所使用的语言，否则返回错误。
 
-- - -
+---
 ### <a name="trim"></a>Trim
 **说明：**  
 Trim 函数从字符串中删除前导空格和尾随空格。
@@ -1260,7 +1260,7 @@ Trim 函数从字符串中删除前导空格和尾随空格。
 `Trim([proxyAddresses])`  
 删除 proxyAddress 属性中每个值的前导空格和尾随空格。
 
-- - -
+---
 ### <a name="ucase"></a>UCase
 **说明：**  
 UCase 函数将字符串中的所有字符都转换为大写形式。
@@ -1272,7 +1272,7 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 `UCase("TeSt")`  
 返回“TEST”。
 
-- - -
+---
 ### <a name="where"></a>Where
 
 **说明：**  
@@ -1290,7 +1290,7 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
 返回多值属性 userCertificate 中未过期的证书值。
 
-- - -
+---
 ### <a name="with"></a>With
 **说明：**  
 通过使用变量来表示在复杂表达式中出现一次或多次的子表达式，With 函数提供了一种简化复杂表达式的方法。
@@ -1308,7 +1308,7 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 它在 userCertificate 属性中仅返回未过期的证书值。
 
 
-- - -
+---
 ### <a name="word"></a>Word
 **说明：**  
 基于描述要使用的分隔符与要返回的单词数的参数，Word 函数返回字符串中包含的单词。

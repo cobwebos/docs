@@ -1,10 +1,15 @@
 ---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
 ms.openlocfilehash: 845b27b8efd66de87ec08e0b5b81bcc332dffdfb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129962"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202727"
 ---
 ### <a name="prerequisites"></a>必备组件
 * 一个 Twilio 帐户
@@ -20,14 +25,14 @@ ms.locfileid: "62129962"
 
 下面介绍授权逻辑应用连接到 Twilio 帐户的步骤：
 
-1. 要创建与 Twilio 的连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“Twilio”。 选择要使用的触发器或操作：  
+1. 要创建与 Twilio 的连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”  ，并在搜索框中输入“Twilio”  。 选择要使用的触发器或操作：  
    ![](./media/connectors-create-api-twilio/twilio-0.png)
 2. 如果以前尚未创建任何与 Twilio 的连接，系统会提示提供 Twilio 凭据。 这些凭据用于授权逻辑应用连接到 Twilio 帐户，然后访问该帐户中的数据：  
    ![](./media/connectors-create-api-twilio/twilio-1.png)  
-3. 需要从 Twilio 的仪表板中获取 Twilio 帐户 ID 和 Twilio 访问令牌，因此现在登录到 Twilio 帐户即可获得这两条信息：  
+3. 需要从 Twilio 的仪表板中获取 Twilio 帐户 ID  和 Twilio 访问令牌  ，因此现在登录到 Twilio 帐户即可获得这两条信息：  
    ![](./media/connectors-create-api-twilio/twilio-2.png)  
 4. Twilio 和逻辑应用使用不同的名称来标识这两条信息。 下面介绍如何将它们映射到逻辑应用对话框：![](./media/connectors-create-api-twilio/twilio-3.png)  
-5. 选择“创建连接”按钮：  
+5. 选择“创建连接”  按钮：  
    ![](./media/connectors-create-api-twilio/twilio-4.png)
 6. 请注意，连接已创建，现在可以随时在逻辑应用中继续执行其他步骤：  
    ![](./media/connectors-create-api-twilio/twilio-5.png)

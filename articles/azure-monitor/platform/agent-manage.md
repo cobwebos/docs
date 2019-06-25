@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 1809cc50f3ad3c285e0b69bc6e383a2c7c398238
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 0c128aaf8102b3072b6a63c80ea860ceefbf5124
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65139253"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146295"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
 
@@ -300,4 +300,6 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在安装或管理代理时遇到问题，请查看 [Linux 代理疑难解答](agent-linux-troubleshoot.md)。
+- 审阅[Linux 代理疑难解答](agent-linux-troubleshoot.md)如果在安装或管理 Linux 代理时遇到问题。
+
+- 审阅[故障排除 Windows 代理](agent-windows-troubleshoot.md)如果在安装或管理 Windows 代理时遇到问题。

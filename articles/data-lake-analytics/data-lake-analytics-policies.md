@@ -10,10 +10,10 @@ ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 64095f6706bb978cd33b8fe7833fe4e65fc3b0f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813423"
 ---
 # <a name="manage-azure-data-lake-analytics-using-policies"></a>使用策略管理 Azure Data Lake Analytics
@@ -30,12 +30,12 @@ ms.locfileid: "60813423"
 更改 Data Lake Analytics 帐户的 AU 数：
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击“属性”。
-3. 在“最大 AU 数”下，移动滑块选择一个值，或在文本框中输入值。 
+2. 单击“属性”。 
+3. 在“最大 AU 数”下，移动滑块选择一个值，或在文本框中输入值。  
 4. 单击“ **保存**”。
 
 > [!NOTE]
-> 如果需要的数量大于默认 AU 数 (250)，在门户中单击“帮助 + 支持”提交支持请求。 可增加 Data Lake Analytics 帐户中可用的 AU 数。
+> 如果需要的数量大于默认 AU 数 (250)，在门户中单击“帮助 + 支持”  提交支持请求。 可增加 Data Lake Analytics 帐户中可用的 AU 数。
 >
 
 ### <a name="maximum-number-of-jobs-that-can-run-simultaneously"></a>可同时运行的最大作业数
@@ -44,12 +44,12 @@ ms.locfileid: "60813423"
 更改可同时运行的作业数：
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击“属性”。
+2. 单击“属性”。 
 3. 在 **“运行作业的最大数”** 下，移动滑块选择一个值，或在文本框中输入值。 
 4. 单击“ **保存**”。
 
 > [!NOTE]
-> 如果需运行的作业数大于默认作业数 (20)，请在门户中单击“帮助 + 支持”提交支持请求。 可增加 Data Lake Analytics 帐户中可同时运行的作业数。
+> 如果需运行的作业数大于默认作业数 (20)，请在门户中单击“帮助 + 支持”  提交支持请求。 可增加 Data Lake Analytics 帐户中可同时运行的作业数。
 >
 
 ### <a name="how-long-to-keep-job-metadata-and-resources"></a>保留作业元数据和资源的时长 
@@ -58,7 +58,7 @@ ms.locfileid: "60813423"
 更改保留作业元数据和资源的时长：
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击“属性”。
+2. 单击“属性”。 
 3. 在 **“保留作业查询的天数”** 下，移动滑块选择一个值，或在文本框中输入值。  
 4. 单击“ **保存**”。
 
@@ -80,23 +80,23 @@ Data Lake Analytics 有两个可在作业级别设置的策略：
 ### <a name="add-a-policy-for-a-specific-user-or-group"></a>添加用于特定用户或组的策略
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击“属性”。
-3. 在“作业提交限制”下，单击“添加策略”按钮。 然后选择或输入以下设置：
+2. 单击“属性”。 
+3. 在“作业提交限制”下，单击“添加策略”按钮。   然后选择或输入以下设置：
     1. **计算策略名称**:输入策略名称，以提醒你该策略的用途。
     2. **选择用户或组**:选择此策略应用到组的用户。
     3. **设置作业 AU 限制**:设置适用于所选的用户或组的 AU 限制。
     4. **设置优先级限制**:设置适用于所选的用户或组的优先级限制。
 
-4. 单击“确定” 。
+4. 单击“确定”  。
 
-5. 新策略在“默认”策略表的“作业提交限制”下列出。 
+5. 新策略在“默认”策略表的“作业提交限制”下列出。   
 
 ### <a name="delete-or-edit-an-existing-policy"></a>删除或编辑现有策略
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击“属性”。
-3. 在“作业提交限制”下找到要编辑的策略。
-4.  若要查看“删除”和“编辑”选项，请在表的最右侧的列中，单击“`...`”。
+2. 单击“属性”。 
+3. 在“作业提交限制”下找到要编辑的策略。 
+4.  若要查看“删除”和“编辑”选项，请在表的最右侧的列中，单击“`...`”。  
 
 ## <a name="additional-resources-for-job-policies"></a>有关作业策略的其他资源
 * [策略概述博客文章](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)

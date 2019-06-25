@@ -10,21 +10,21 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: f4828b59ffa43365f48c002262368d383dfcff05
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389370"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
-每个 IoT Edge 设备至少运行两个模块：$edgeAgent 和 $edgeHub，它们构成了 IoT Edge 运行时。 IoT Edge 设备可以运行多个其他模块的任意数量的进程。 使用部署清单，以告知你的设备安装哪些模块以及如何将它们配置为协同工作。 
+每个 IoT Edge 设备至少运行两个模块：$edgeAgent 和 $edgeHub，它们构成了 IoT Edge 运行时。 IoT Edge 设备可以为任意数量的进程运行多个附加模块。 使用部署清单告诉设备要安装哪些模块，以及如何将它们配置为协同工作。 
 
  部署清单是一个 JSON 文档，用于描述以下内容：
 
 * **IoT Edge 代理**模块孪生，其中包含三个组件。 
-  * 在设备运行的每个模块容器映像。
-  * 要访问包含模块映像的专用容器注册表的凭据。
+  * 在设备上运行的每个模块的容器映像。
+  * 用于访问包含模块映像的专用容器注册表的凭据。
   * 有关如何创建和管理每个模块的说明。
 * **IoT Edge 中心**模块孪生：描述消息如何在模块之间流动，并最终传送到 IoT 中心。
 * （可选）任何附加模块孪生的所需属性。
@@ -135,26 +135,26 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 每个路由需要源和接收器，但条件是可用于筛选消息的可选片断。 
 
 
-### <a name="source"></a>源
+### <a name="source"></a>source
 
-源指定消息来自何处。 IoT Edge 可以将来自模块的消息路由或叶设备。 
+源指定消息来自何处。 IoT Edge 可以路由来自模块或叶设备的消息。 
 
-使用的 IoT Sdk，则可以将模块声明使用 ModuleClient 类及其消息的特定的输出队列。 输出队列不是有必要，但对于管理多个路由非常有用。 叶设备可以使用 DeviceClient 类的 IoT Sdk 将消息发送到 IoT Edge 网关设备，同样会将消息发送到 IoT 中心。 有关详细信息，请参阅[了解和使用 Azure IoT 中心 Sdk](../iot-hub/iot-hub-devguide-sdks.md)。
+通过 IoT SDK，模块可以使用 ModuleClient 类为其消息声明特定的输出队列。 输出队列不是必需的，但对于管理多条路由很有帮助。 叶设备可以使用 IoT SDK 的 DeviceClient 类向 IoT Edge 网关设备发送消息，就像它们将消息发送到 IoT 中心一样。 有关详细信息，请参阅[了解和使用 Azure IoT 中心 SDK](../iot-hub/iot-hub-devguide-sdks.md)。
 
 源属性可采用以下任何值：
 
-| 源 | 描述 |
+| source | 描述 |
 | ------ | ----------- |
 | `/*` | 所有设备到云的消息，或者来自任何模块或叶设备的孪生更改通知 |
 | `/twinChangeNotifications` | 来自任何模块或叶设备的任何孪生更改（报告属性） |
-| `/messages/*` | 通过一些或任何输出，模块或叶设备发送的任何设备到云消息 |
+| `/messages/*` | 由模块或叶设备通过某种输出或不通过任何输出发送的任何设备到云的消息 |
 | `/messages/modules/*` | 由带部分输出或不带输出的模块发送的任何设备到云的消息 |
 | `/messages/modules/<moduleId>/*` | 由特定模块通过某种输出或不通过任何输出发送的任何设备到云的消息 |
 | `/messages/modules/<moduleId>/outputs/*` | 由特定模块通过某种输出发送的任何设备到云的消息 |
 | `/messages/modules/<moduleId>/outputs/<output>` | 由特定模块通过特定输出发送的任何设备到云的消息 |
 
 ### <a name="condition"></a>条件
-条件在路由声明中是可选的。 如果你想要将所有邮件从源都传递到接收器，只需省略**其中**子句完全。 或者，可以使用 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-routing-query-syntax.md)来筛选满足条件的特定消息或消息类型。 IoT Edge 路由不支持基于孪生标记或属性筛选消息。 
+条件在路由声明中是可选的。 若要将所有消息从源传递到接收器，完全省略 **WHERE** 子句即可。 或者，可以使用 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-routing-query-syntax.md)来筛选满足条件的特定消息或消息类型。 IoT Edge 路由不支持基于孪生标记或属性筛选消息。 
 
 在 IoT Edge 中的模块之间传递的消息与在设备和 Azure IoT 中心之间传递的消息的格式是一样的。 所有消息都是 JSON 格式的，并具备 systemProperties、appProperties 和 body 参数    。 
 

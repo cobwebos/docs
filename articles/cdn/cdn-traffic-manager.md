@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 956df17c821b86d95b1d87c3c8d8197bab7a95be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7de7fe1c677d54c0fa3e6d3ca4730ef1083bc81
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955260"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273270"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>使用 Azure 流量管理器跨多个 Azure CDN 终结点设置故障转移
 
@@ -81,7 +81,7 @@ ms.locfileid: "65955260"
 
     Azure CDN 使用 *cdnverify* 子域来验证 DNS 映射，以完成此注册过程。 有关详细信息，请参阅[创建 CNAME DNS 记录](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)。 此步骤使 Azure CDN 能够识别自定义域，以便对其请求做出响应。
     
- > [!NOTE]
+    > [!NOTE]
     > 若要在上启用 SSL**来自 Akamai 的 Azure CDN**配置文件，您必须直接 cname 自定义域到终结点。 尚不支持 cdnverify 启用 SSL。 
     >
 

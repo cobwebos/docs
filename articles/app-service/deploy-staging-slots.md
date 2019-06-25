@@ -13,21 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 06/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 1e09eec89c683d36df49110227488a6413ed371c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cbf287aef2c1792033a198070da605014a7b6281
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955938"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272854"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
-
-> [!NOTE]
-> 本操作指南介绍了如何使用新的预览管理页面管理槽。 习惯于现有管理页面的客户可以像以前一样继续使用现有的槽管理页面。 
->
 
 将 Web 应用、Linux 上的 Web 应用、移动后端和 API 应用部署到[应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)时，如果应用在“标准”  、“高级”  或“独立”  应用服务计划层中运行，则可以部署到单独的部署槽而不是默认的生产槽。 部署槽实际上是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 将应用程序部署到非生产槽具有以下优点：
 
@@ -35,7 +31,7 @@ ms.locfileid: "65955938"
 * 首先将应用部署到槽，然后将其交换到生产，这确保槽的所有实例都已准备好，然后交换到生产。 部署应用时，这样可避免停机。 流量重定向是无缝的，且不会因交换操作而删除任何请求。 当不需要预交换验证时，可以通过配置[自动交换](#Auto-Swap)来自动化这整个工作流。
 * 交换后，具有以前分阶段应用的槽现在具有以前的生产应用。 如果交换到生产槽的更改与预期不同，可以立即执行同一交换来收回“上一已知的良好站点”。
 
-每种应用服务计划层支持不同数量的部署槽。 若要了解应用层支持的槽数，请参阅[应用服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits)。 若要将应用缩放到其他层，目标层必须支持应用业已使用的槽数。 例如，如果应用有 5 个以上的槽位，则不能向下缩放到“标准”层，因为“标准”层只支持 5 个部署槽位   。
+每个应用服务计划层支持不同数量的部署槽，并且没有使用部署槽无任何额外费用。 若要了解应用层支持的槽数，请参阅[应用服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits)。 若要将应用缩放到其他层，目标层必须支持应用业已使用的槽数。 例如，如果应用有 5 个以上的槽位，则不能向下缩放到“标准”层，因为“标准”层只支持 5 个部署槽位   。 
 
 <a name="Add"></a>
 
@@ -44,7 +40,7 @@ ms.locfileid: "65955938"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，打开应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
 
-2. 在左侧导航栏中，选择“部署槽位(预览)”选项，然后单击“添加槽”   。
+2. 在左侧导航栏中，选择**部署槽位**选项，然后单击**添加槽**。
    
     ![添加新部署槽](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
@@ -58,7 +54,7 @@ ms.locfileid: "65955938"
    
     可以从任何现有槽克隆配置。 可以克隆的设置包括应用设置、连接字符串、语言框架版本、Web 套接字、HTTP 版本和平台位数。
 
-4. 添加槽后，单击“关闭”以关闭对话框  。 新槽现在显示在“部署槽位(预览)”页面中  。 默认情况下，新槽的“流量 %”设置为 0，所有客户流量都路由到生产槽  。
+4. 添加槽后，单击“关闭”以关闭对话框  。 新的槽现在中所示**部署槽位**页。 默认情况下，新槽的“流量 %”设置为 0，所有客户流量都路由到生产槽  。
 
 5. 单击新部署槽位打开该槽的资源页。
    
@@ -72,7 +68,36 @@ ms.locfileid: "65955938"
 
 <a name="AboutConfiguration"></a>
 
-## <a name="which-settings-are-swapped"></a>交换哪些设置？
+## <a name="what-happens-during-swap"></a>交换过程中发生
+
+[交换操作步骤](#swap-operation-steps)
+[交换哪些设置？](#which-settings-are-swapped)
+
+### <a name="swap-operation-steps"></a>交换操作步骤
+
+交换时 （通常从生产槽到过渡槽） 的两个槽，应用服务将执行以下操作以确保目标槽不会出现停机时间：
+
+1. 从目标槽 （例如生产槽） 将以下设置应用到源槽的所有实例： 
+    - [特定于槽的](#which-settings-are-swapped)应用设置和连接字符串，如果适用。
+    - [连续部署](deploy-continuous-deployment.md)设置，如果已启用。
+    - [应用服务身份验证](overview-authentication-authorization.md)设置，如果已启用。
+    任何上述情况下会触发重新启动源槽中的所有实例。 期间[带预览的交换](#Multi-Phase)，这表示第一阶段，其中交换操作会暂停，并且可以验证源槽与目标槽的设置一起正常运行的结尾。
+
+1. 等待要完成其重启的源槽中的每个实例。 如果任何实例无法重新启动，交换操作还原源槽的所有更改，并中止操作。
+
+1. 如果[本地缓存](overview-local-cache.md)是启用了，通过发出 HTTP 请求应用程序根目录 （"/"） 上的源槽每个实例，并等待，直到每个实例返回的任何 HTTP 响应触发本地缓存初始化。 本地缓存初始化每个实例上将导致另一个重新启动。
+
+1. 如果[自动交换](#Auto-Swap)启用了[自定义准备工作](#custom-warm-up)，触发器[应用程序启动](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)通过发出 HTTP 请求，应用程序根目录 （"/"） 上的源的每个实例槽。 如果实例返回任何 HTTP 响应，它被视为已准备好。
+
+    如果没有`applicationInitialization`是指定，触发源槽，每个实例上的应用程序根目录的 HTTP 请求。 如果实例返回任何 HTTP 响应，它被视为已准备好。
+
+1. 如果源槽上的所有实例都已都准备好成功，请通过交换在两个槽位的路由规则交换两个槽。 此步骤后，目标槽 （例如生产槽） 具有之前已预热源槽中的应用。
+
+1. 现在，源槽已预交换应用程序以前在目标槽中，通过将应用所有设置并重新启动实例执行相同的操作。
+
+交换操作任何时候，初始化已交换的应用的所有工作都在源槽上都完成。 源槽时，目标槽保持联机状态准备好并上做好准备的向上，而不考虑其中交换操作是成功还是失败。 若要交换过渡槽与生产槽，请确保生产槽始终是目标槽。 这样一来，交换操作不影响生产应用。
+
+### <a name="which-settings-are-swapped"></a>交换哪些设置？
 从另一个部署槽克隆配置时，可以编辑克隆的配置。 此外，某些配置元素在交换时遵循内容（不特定于槽位），而其他配置元素会在交换之后保留在同一个槽（特定于槽）。 以下列表显示交换槽时会更改的设置。
 
 **已交换的设置**：
@@ -106,25 +131,23 @@ ms.locfileid: "65955938"
 
 <!-- VNET and hybrid connections not yet sticky to slot -->
 
-要将应用设置或连接字符串配置为固定在某个特定槽中（不交换），请导航到该槽的“应用程序设置”页面，然后针对应固定在该槽中的配置元素选中“槽设置”框   。 将配置元素标记为特定于槽将告知应用服务其不可交换。 
+若要配置要坚持使用某个特定槽中 （不交换） 的应用程序设置或连接字符串，请导航到**配置**该槽的页上，添加或编辑设置，然后选择**部署槽设置**框。 选中此复选框告知应用服务设置不是可交换。 
 
 ![槽设置](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
 ## <a name="swap-two-slots"></a>交换两个槽 
-可以在应用的“部署槽位(预览)”页面中交换部署槽位  。 
-
-还可以从“概述”和“部署槽位”页面交换槽，但目前它仍提供旧体验   。 本指南向我们展示了如何在“部署槽位(预览)”页面中使用新用户界面  。
+可以在应用中交换部署槽**部署槽位**页并**概述**页。 槽交换的技术详细信息，请参阅[交换过程中发生](#what-happens-during-swap)
 
 > [!IMPORTANT]
-> 将应用从部署槽位交换到生产之前，请确保所有设置已完全根据希望它在交换目标中的位置明确地进行配置。
+> 应用程序从部署槽交换到生产环境之前，请确保生产目标槽且完全按照您想要让其在生产环境中配置源槽中的所有设置。
 > 
 > 
 
 若要交换部署槽位，请按照下列步骤进行操作：
 
-1. 导航到应用的“部署槽位(预览)”页面，然后单击“交换”   。
+1. 导航到你的应用**部署槽位**页上，单击**交换**。
    
     ![“交换”按钮](./media/web-sites-staged-publishing/SwapButtonBar.png)
 
@@ -138,6 +161,8 @@ ms.locfileid: "65955938"
 
 3. 完成后，单击“关闭”关闭对话框  。
 
+如果遇到任何问题，请参阅[进行故障排除交换](#troubleshoot-swaps)。
+
 <a name="Multi-Phase"></a>
 
 ### <a name="swap-with-preview-multi-phase-swap"></a>带预览的交换（多阶段交换）
@@ -147,13 +172,9 @@ ms.locfileid: "65955938"
 
 在作为目标槽交换到生产环境之前，请在交换发生之前用交换的设置验证应用的运行。 源槽在交换完成之前也已预热，这对于任务关键型应用程序也是可行的。
 
-使用预览执行交换时，应用服务会在开始交换时执行以下操作：
+当执行带预览的交换时，应用服务会执行相同[交换操作](#what-happens-during-swap)但暂停后的第一步。 然后，您就可以完成交换之前验证过渡槽上的结果。 
 
-- 目标槽保持不变，该槽上的现有工作负荷（如生产）不会受影响。
-- 将目标槽的配置元素应用到源槽，包括特定于槽的连接字符串和应用设置。
-- 使用这些配置元素，重启源槽上的工作进程。 可以浏览源槽并查看运行配置更改的应用。
-
-如果在单独的步骤中完成交换，应用服务会将预热的源槽移动到目标槽中，并将目标槽移动到源槽中。 如果取消交换，应用服务会重新将源槽的配置元素应用到源槽。
+如果取消交换，应用服务会重新将源槽的配置元素应用到源槽。
 
 若要与预览交换，请按照下列步骤进行操作。
 
@@ -173,6 +194,8 @@ ms.locfileid: "65955938"
 
 4. 完成后，单击“关闭”关闭对话框  。
 
+如果遇到任何问题，请参阅[进行故障排除交换](#troubleshoot-swaps)。
+
 若要自动执行多阶段交换，请参阅“使用 PowerShell 进行自动化操作”。
 
 <a name="Rollback"></a>
@@ -185,28 +208,30 @@ ms.locfileid: "65955938"
 ## <a name="configure-auto-swap"></a>配置自动交换
 
 > [!NOTE]
-> Linux 上的 Web 应用中不支持自动交换。
+> 在 Linux 上的 web 应用中不支持自动交换。
 
-自动交换简化了 DevOps 方案，在此方案中，可连续部署应用，无需冷启动且不会给应用的最终客户造成停机。 当槽自动交换到生产环境时，每次将代码更改推送到该槽时，应用服务会在源槽中预热后自动将应用交换到生产环境中。
+自动交换简化了 DevOps 方案，即为应用程序的最终客户部署持续使用无需冷启动和零停机时间对应用程序。 自动交换启用时从一个槽到生产环境，每次将代码更改推送到该槽，应用服务自动[交换到生产环境的应用程序](#swap-operation-steps)它在源槽预热后。
 
    > [!NOTE]
-   > 在为生产槽配置自动交换之前，请考虑首先在非生产目标槽上测试自动交换。
+   > 在配置之前的生产槽的自动交换，请考虑首先测试对非生产目标槽的自动交换。
    > 
 
-若要配置自动交换，请按照下列步骤进行操作：
+若要配置自动交换，请执行以下步骤：
 
-1. 导航到应用的资源页。 选择“部署槽位(预览)” > “\<所需的源槽>” > “应用设置”    。
+1. 导航到应用的资源页。 选择**部署槽位** >  *\<所需的源槽 >*  > **配置** >  **常规设置**。
    
-2. 在“自动交换”中，选择“打开”，在“自动交换槽”中选择所需的目标槽，并在命令栏中单击“保存”     。 
+2. 在**启用自动交换**，选择**上**，然后选择中的所需的目标槽**自动交换部署槽**，然后单击**保存**中命令栏。 
    
     ![](./media/web-sites-staged-publishing/AutoSwap02.png)
 
-3. 执行代码推送到源槽。 不久之后，自动交换就会发生，而更新将反映在目标槽的 URL 上。
+3. 执行代码推送到源槽。 一段时间之后会发生自动交换，更新会反映在目标槽的 URL。
+
+如果遇到任何问题，请参阅[进行故障排除交换](#troubleshoot-swaps)。
 
 <a name="Warm-up"></a>
 
 ## <a name="custom-warm-up"></a>自定义预热
-使用[自动交换](#Auto-Swap)时，某些应用可能需要在交换前自定义的预热操作。 web.config 中的 `applicationInitialization` 配置元素允许指定要执行的自定义初始化操作。 交换操作在与目标槽交换之前等待此自定义预热操作完成。 以下是 web.config 片段的示例。
+使用[自动交换](#Auto-Swap)时，某些应用可能需要在交换前自定义的预热操作。 web.config 中的 `applicationInitialization` 配置元素允许指定要执行的自定义初始化操作。 [交换操作](#what-happens-during-swap)等待此自定义的准备工作，然后将与目标槽交换完成。 以下是 web.config 片段的示例。
 
     <system.webServer>
         <applicationInitialization>
@@ -222,9 +247,11 @@ ms.locfileid: "65955938"
 - `WEBSITE_SWAP_WARMUP_PING_PATH`：用于对你的站点进行预热的 ping 路径。 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 例如，`/statuscheck`。 默认值为 `/`。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`：预热操作的有效 HTTP 响应代码。 使用以逗号分隔的 HTTP 代码列表添加此应用设置。 例如：`200,202`。 如果返回的状态代码不在列表中，则预热和交换操作会停止。 默认情况下，所有响应代码都是有效的。
 
+如果遇到任何问题，请参阅[进行故障排除交换](#troubleshoot-swaps)。
+
 ## <a name="monitor-swap"></a>监视器交换
 
-如果交换操作需要很长时间才能完成，则可以在[活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中获取有关交换操作的信息。
+如果[交换操作](#what-happens-during-swap)需要很长时间才能完成，可以获取有关在交换操作的信息[活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
 
 在门户的应用资源页的左侧导航中，选择“活动日志”  。
 
@@ -238,7 +265,7 @@ ms.locfileid: "65955938"
 
 若要自动路由生产流量，请按照下列步骤进行操作：
 
-1. 导航到应用的资源页，然后选择“部署槽位(预览)”  。
+1. 导航到你的应用的资源页并选择**部署槽位**。
 
 2. 在要路由到的槽的“流量 %”列中，指定一个百分比（介于 0 到 100 之间）以表示要路由的总流量  。 单击“ **保存**”。
 
@@ -272,7 +299,7 @@ ms.locfileid: "65955938"
 
 ## <a name="delete-slot"></a>删除槽
 
-导航到应用的资源页。 选择“部署槽位(预览)” > “\<删除槽>” > “概述”    。 在命令栏中，单击“删除”  。  
+导航到应用的资源页。 选择**部署槽位** >  *\<插槽中，以删除 >*  > **概述**。 在命令栏中，单击“删除”  。  
 
 ![删除部署槽](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -288,32 +315,32 @@ Azure PowerShell 是一个模块，可提供通过 Windows PowerShell 管理 Azu
 
 有关安装和配置 Azure PowerShell 的信息以及使用 Azure 订阅对 Azure PowerShell 进行身份验证的信息，请参阅[如何安装和配置 Microsoft Azure PowerShell](/powershell/azure/overview)。  
 
-- - -
+---
 ### <a name="create-web-app"></a>创建 Web 应用
 ```powershell
 New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
 
-- - -
+---
 ### <a name="create-slot"></a>创建槽
 ```powershell
 New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
-- - -
+---
 ### <a name="initiate-swap-with-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>启动带预览的交换（多阶段交换）并将目标槽配置应用到源槽
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
-- - -
+---
 ### <a name="cancel-pending-swap-swap-with-review-and-restore-source-slot-configuration"></a>取消挂起的交换（带预览的交换）并还原源槽配置
 ```powershell
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
-- - -
+---
 ### <a name="swap-deployment-slots"></a>交换部署槽
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
@@ -325,13 +352,13 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
-- - -
+---
 ### <a name="delete-slot"></a>删除槽
 ```powershell
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-- - -
+---
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
@@ -339,6 +366,35 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 ## <a name="automate-with-cli"></a>使用 CLI 进行自动化
 
 有关用于部署槽的 [Azure CLI](https://github.com/Azure/azure-cli) 命令，请参阅 [az webapp deployment slot](/cli/azure/webapp/deployment/slot)。
+
+## <a name="troubleshoot-swaps"></a>对交换进行故障排除
+
+如果过程中出现任何错误[槽交换](#what-happens-during-swap)，在中记录*D:\home\LogFiles\eventlog.xml*，以及特定于应用程序的错误日志。
+
+下面是一些常见的交换错误：
+
+- 对应用程序根目录的 HTTP 请求已超时。 交换操作会等待 90 秒内为每个 HTTP 请求和重试次数最多 5 次。 如果所有重试时超时，交换操作被中止。
+
+- 当应用程序内容超出了指定的本地缓存的本地磁盘配额时，本地缓存初始化可能会失败。 有关详细信息，请参阅[本地缓存概述](overview-local-cache.md)。
+
+- 期间[自定义准备工作](#custom-warm-up)、 HTTP 请求都在内部 （而无需通过外部 URL），并可以将失败，并特定 URL 重写中的规则*Web.config*。例如，用于将域名重定向或强制实施 HTTPS 规则可以阻止预热请求根本访问应用程序代码。 若要解决此问题，请通过添加以下两个条件来修改重写规则：
+
+    ```xml
+    <conditions>
+      <add input="{WARMUP_REQUEST}" pattern="1" negate="true" />
+      <add input="{REMOTE_ADDR}" pattern="^100?\." negate="true" />
+      ...
+    </conditions>
+    ```
+- 而无需自定义准备工作，HTTP 请求可以仍保留 URL 重写规则。 若要解决此问题，请通过添加以下条件来修改重写规则：
+
+    ```xml
+    <conditions>
+      <add input="{REMOTE_ADDR}" pattern="^100?\." negate="true" />
+      ...
+    </conditions>
+    ```
+- 某些[IP 限制规则](app-service-ip-restrictions.md)可能会阻止将 HTTP 请求发送到您的应用程序交换操作。 IPv4 地址范围以开头`10.`和`100.`内部的你的部署，并有权连接到您的应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 [阻止对非生产槽进行访问](app-service-ip-restrictions.md)

@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 764fca8d3cb4cd9c40d7880043637f89ef1a8578
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bf931b19b7490a94f30afde49038cdc7573fab3
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755375"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302241"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>如何计划 Azure 搜索索引器
 索引器在创建后立即正常运行一次。 您可以使用门户、 REST API 或.NET SDK 按需再次运行它。 此外可以配置索引器以按计划定期运行。
@@ -43,6 +43,9 @@ ms.locfileid: "66755375"
 * 第一次索引器执行启动或大约 2019 年 6 月 1 日上午 8:00 utc。 假设此执行需要 20 分钟（或小于 1 小时的任何时间）。
 * 第二次执行启动或大约上午 9:00 2019 年 6 月 1 日 UTC。 假设此执行需要 70 分钟-超过一小时 – 它将无法完成之前 UTC 时间上午 10:10。
 * 第三个执行计划在上午 10:00 UTC 开始，但在该时间上一次执行仍在运行。 此计划然后跳过执行。 之前 UTC 时间上午 11:00，不会开始的索引器的下一次执行。
+
+> [!NOTE]
+> 如果索引器设置为特定计划，但反复失败上相同文档反复地每次它运行，则索引器将开始运行在不太频繁地 （最多每 24 小时至少一次的最大值） 的时间间隔之前已成功使进度 aga在中。  如果你认为你解决任何要停留在某一时间点的索引器会导致了问题，则可以执行的索引器将按需运行，如果可成功地将进度，索引器将其设置计划间隔再次返回。
 
 <a name="portal"></a>
 

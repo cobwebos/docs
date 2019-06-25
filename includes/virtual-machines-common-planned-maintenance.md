@@ -9,11 +9,11 @@ ms.date: 4/30/2019
 ms.author: shants
 ms.custom: include file
 ms.openlocfilehash: c2931fa410cf92755a5df5b7129dcf93de900930
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155929"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172930"
 ---
 Azure 定期更新其平台以提高可靠性、 性能和安全的虚拟机的主机基础结构。 这些更新的用途范围修补到升级网络组件或解除硬件授权在托管环境中的软件组件。 
 
@@ -68,7 +68,7 @@ Vm 需要重新启动计划内维护的情况很少，则会通知您提前。 �
 
 有关管理需要重启的维护的详细信息，请参阅[处理计划内维护通知适用于 Linux](../articles/virtual-machines/linux/maintenance-notifications.md)或为相应的文章[Windows](../articles/virtual-machines/windows/maintenance-notifications.md)。 
 
-### <a name="availability-considerations-during-scheduled-maintenance"></a>计划的维护期间的可用性注意事项 
+### <a name="availability-considerations-during-scheduled-maintenance"></a>计划内维护期间的可用性注意事项 
 
 如果您决定要等到在计划性的维护阶段，有几件事，应考虑在保持 Vm 的最高的可用性。 
 

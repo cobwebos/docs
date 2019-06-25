@@ -9,11 +9,11 @@ ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 56545b02c35d68455497c93582073c73d6c75da5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114630"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172622"
 ---
 若要在 Azure 门户中创建常规用途 v2 存储帐户，请执行以下步骤：
 

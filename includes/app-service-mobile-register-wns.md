@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 75bcb9d27ee6f66a1d9c15093d9f933a3ad25881
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66140575"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173447"
 ---
 1. 在 Visual Studio 解决方案资源管理器中，右键单击 Windows 应用商店应用项目。 然后选择“应用商店” > “将应用与应用商店关联”。  
 

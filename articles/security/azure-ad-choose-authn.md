@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: cc41581232b331368b44fc7190eadb94516824c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35fb529be28fc985460421c185872c7e35603341
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67119311"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274279"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
 
@@ -101,7 +101,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 * **注意事项**。 目前，密码哈希同步不会即时强制本地帐户状态更改生效。 在此情况下，除非用户帐户状态已同步到 Azure AD，否则用户有权访问云应用。 组织可能希望在管理员对本地用户帐户状态执行批量更新后运行新的同步循环来克服此限制。 例如禁用帐户。
 
 > [!NOTE]
-> 密码过期和帐户锁定状态当前不会借助 Azure AD Connect 同步到 Azure AD。 
+> 密码过期和帐户锁定状态当前不会借助 Azure AD Connect 同步到 Azure AD。 当你更改用户的密码并设置*用户必须更改密码，下次登录时须*标志，密码哈希将不会同步到 Azure AD 与 Azure AD Connect，直到用户更改其密码。
 
 请参阅[实现密码哈希同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)了解相关部署步骤。
 

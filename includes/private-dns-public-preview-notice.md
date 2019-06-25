@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for Azure DNS Private Zone public preview notice
 ms.openlocfilehash: 0d8f484b32136d9057442d930ae96fa154a96849
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66149970"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173579"
 ---
 > [!IMPORTANT]
 > Azure DNS 专用区域功能目前为公共预览版。 

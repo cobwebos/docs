@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: d88fda62c59d01a3703fdb583e0881aa8478a6cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: acd873cd19cafb785f968fd3d8671640bcfafed8
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050761"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163700"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -113,7 +113,7 @@ public class Function {
 
 ## <a name="customize-jvm"></a>自定义 JVM
 
-Functions 可自定义 Java 虚拟机 (JVM) 用于运行 Java 函数。 [以下 JVM 选项](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7)默认情况下使用：
+Functions 可自定义 Java 虚拟机 (JVM) 用于运行 Java 函数。 默认情况下使用[以下 JVM 选项](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7)：
 
 * `-XX:+TieredCompilation`
 * `-XX:TieredStopAtLevel=1`
@@ -121,11 +121,11 @@ Functions 可自定义 Java 虚拟机 (JVM) 用于运行 Java 函数。 [以下 
 * `-Djava.net.preferIPv4Stack=true`
 * `-jar`
 
-您可以提供其他参数中的应用设置命名`JAVA_OPTS`。 可以将应用设置添加到函数应用在 Azure 门户或 Azure CLI 部署到 Azure。
+可以在名为 `JAVA_OPTS` 的应用设置中提供其他参数。 可以将应用设置添加到函数应用在 Azure 门户或 Azure CLI 部署到 Azure。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在中[Azure 门户](https://portal.azure.com)，使用[应用程序设置选项卡](functions-how-to-use-azure-function-app-settings.md#settings)若要添加`JAVA_OPTS`设置。
+在 [Azure 门户](https://portal.azure.com)中，使用[“应用程序设置”选项卡](functions-how-to-use-azure-function-app-settings.md#settings)添加 `JAVA_OPTS` 设置。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -136,11 +136,11 @@ az functionapp config appsettings set --name <APP_NAME> \
 --resource-group <RESOURCE_GROUP> \
 --settings "JAVA_OPTS=-Djava.awt.headless=true"
 ```
-此示例将启用无外设模式。 替换`<APP_NAME>`的 function app 中，名称和`<RESOURCE_GROUP> `与资源组。
+此示例将启用无外设模式。 替换`<APP_NAME>`的 function app 中，名称和`<RESOURCE_GROUP>`与资源组。
 
 > [!WARNING]  
 > 在[消耗计划](functions-scale.md#consumption-plan)，则必须添加`WEBSITE_USE_PLACEHOLDER`设置的值为`0`。  
-此设置也会增加 Java 函数的冷启动时间。
+此设置确实可增加 Java 函数的冷启动时间。
 
 ## <a name="third-party-libraries"></a>第三方库 
 
@@ -218,7 +218,7 @@ public class Function {
 - HTTP 请求有效负载传递作为`String`自变量`inputReq`。
 - 一个条目将检索从表存储，作为传递`TestInputData`的参数`inputData`。
 
-若要接收一批的输入，可以将绑定到`String[]`， `POJO[]`， `List<String>`，或`List<POJO>`。
+若要接收一批输入，可以绑定到 `String[]`、`POJO[]`、`List<String>` 或 `List<POJO>`。
 
 ```java
 @FunctionName("ProcessIotMessages")

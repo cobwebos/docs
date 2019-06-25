@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8ade695f1930c11f2d2d7ab7e0430910bd6f8705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ae821dc9ae0d739526b91bad76bca544cad2fb0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508640"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203711"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用自定义策略在 Azure Active Directory B2C 中设置 Azure Active Directory 帐户登录 
 
@@ -132,7 +132,7 @@ ms.locfileid: "66508640"
 5. 将 METADATA 的值设置为 `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`，其中 `your-AD-tenant-name` 为你的 Azure AD 租户名称  。 例如： `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
 6. 打开浏览器并转到刚刚更新的 METADATA URL，查找 issuer 对象，并将该值复制粘贴到 XML 文件中 ProviderName 值中    。
 8. 将 client_id 和 IdTokenAudience 设置为通过应用程序注册获得的应用程序 ID   。
-9. 在 CryptograhicKeys 下，将 StorageReferenceId 的值更新为你定义的策略密钥   。 例如，`ContosoAppSecret`。
+9. 下**CryptographicKeys**，更新的值**StorageReferenceId**你定义的策略键。 例如，`ContosoAppSecret`。
 
 ### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
 

@@ -12,18 +12,21 @@ ms.devlang: java
 ms.topic: conceptual
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
-ms.date: 01/04/2019
+ms.date: 06/19/2019
 ms.author: jowargo
-ms.openlocfilehash: c9aadb0dcd5adabed6a6490760282c5201a79000
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6a6bc9b1d4826796299d073e0edfbfcede948e7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61460562"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274904"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
+
+> [!IMPORTANT]
+> 本教程中已弃用。 
 
 百度云推送是一种中国云服务，可用于将推送通知发送到移动设备。
 

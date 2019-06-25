@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 0b158a1d713e0de8f3d1b2672aed442fce66e724
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: be07e0f3438ea93312d4eb440e7e63b8f98e11b8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65917155"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077377"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>什么是 Azure 机器学习服务的可视界面？ 
 
@@ -27,7 +27,7 @@ Azure 机器学习服务的可视界面 （预览版），可准备数据、 训
 + 编写的项目[试验](#experiment)运行到工作区。
 + 访问[数据集](#dataset)。
 + 使用[计算资源](#compute)要运行此试验的工作区中。 
-+ 注册[模型](concept-azure-machine-learning-architecture.md#model)。
++ 注册[模型](concept-azure-machine-learning-architecture.md#models)。
 + [部署](#deployment)模型作为 web 服务上的计算的工作区中的资源。
 
 ![可视化界面的概述](media/ui-concept-visual-interface/overview.png)

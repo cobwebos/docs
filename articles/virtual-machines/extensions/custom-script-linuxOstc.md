@@ -122,14 +122,14 @@ ms.locfileid: "60800299"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.OSTCExtensions | 字符串 |
-| type | CustomScriptForLinux | 字符串 |
+| publisher | Microsoft.OSTCExtensions | string |
+| type | CustomScriptForLinux | string |
 | typeHandlerVersion | 1.5 | int |
-| fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | 数组 |
-| commandToExecute（例如） | python MyPythonScript.py \<my-param1\> | 字符串 |
+| fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| commandToExecute（例如） | python MyPythonScript.py \<my-param1\> | string |
 | enableInternalDNSCheck | true | boolean |
-| storageAccountName（例如） | examplestorageacct | 字符串 |
-| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
+| storageAccountName（例如） | examplestorageacct | string |
+| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
 ### <a name="property-value-details"></a>属性值详细信息
 

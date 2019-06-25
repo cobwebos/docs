@@ -5,11 +5,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/24/2019
 ms.openlocfilehash: 4cdcec850f32d7e94f33eb28e5bf7839e511f347
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66124580"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173273"
 ---
 填写并提交[认知服务影像容器请求窗体](https://aka.ms/VisionContainersPreview)容器请求访问。 通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 在提交表单后，Azure 认知服务团队会检查，以确保满足的条件访问专用容器注册表的权限。
 

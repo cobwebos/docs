@@ -9,11 +9,11 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: e5acb8e0f8805da7f14bbce58b4bfd2acdc24f23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166318"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173606"
 ---
 # <a name="secure-your-internet-of-things-iot-deployment"></a>保护物联网 (IoT) 部署
 

@@ -9,10 +9,10 @@ ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: ebfe3db43de87e67ad05ed8cb9f5812b5ded04e0
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65965907"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute 直接
@@ -147,7 +147,7 @@ ms.locfileid: "65965907"
    ```
 
    > [!NOTE]
-   > 还可以将“封装”属性设置为“Dot1Q”。 
+   > 还可以将“封装”属性设置为“Dot1Q”   。 
    >
 
    **示例输出**
@@ -208,7 +208,7 @@ ms.locfileid: "65965907"
 
 使用此过程来执行第 1 层测试。 请确保每个交叉连接在主端口和辅助端口的每个路由器上都有正确的补丁。
 
-1. 将链接设置为“启用”。 重复此步骤以将每个链接设置为“启用”。
+1. 将链接设置为“启用”  。 重复此步骤以将每个链接设置为“启用”  。
 
    Links[0] 是主端口，Links[1] 是辅助端口。
 

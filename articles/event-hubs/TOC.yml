@@ -28,20 +28,8 @@
       items:
         - name: .NET Core
           href: event-hubs-dotnet-standard-getstarted-send.md
-        - name: .NET framework
-          href: event-hubs-dotnet-framework-getstarted-send.md
         - name: Java
           href: event-hubs-java-get-started-send.md
-        - name: Python
-          href: event-hubs-python-get-started-send.md
-        - name: Node.js
-          href: event-hubs-node-get-started-send.md
-        - name: Go
-          href: event-hubs-go-get-started-send.md
-        - name: C（仅发送）
-          href: event-hubs-c-getstarted-send.md
-        - name: Apache Storm（仅接收）
-          href: event-hubs-storm-getstarted-receive.md
     - name: 捕获事件
       items:
         - name: 使用 Azure 门户启用事件中心捕获
@@ -60,33 +48,21 @@
       href: event-hubs-tutorial-visualize-anomalies.md
     - name: 将捕获的数据存储在 SQL 数据仓库中
       href: store-captured-data-data-warehouse.md
+    - name: 使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件
+      href: event-hubs-kafka-stream-analytics.md
     - name: 使用事件中心将数据流式传输到 Azure Databricks
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
       maintainContext: true
-    - name: 在事件中心命名空间中启用虚拟网络集成和防火墙
-      href: event-hubs-tutorial-virtual-networks-firewalls.md
-    - name: 用于 Apache Kafka 的事件中心
-      items:
-        - name: 将 Kafka 代理镜像到已启用 Apache Kafka 的事件中心
-          href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: 将 Apache Spark 连接到已启用 Apache Kafka 的事件中心
-          href: event-hubs-kafka-spark-tutorial.md
-        - name: 将 Apache Flink 连接到已启用 Apache Kafka 的事件中心
-          href: event-hubs-kafka-flink-tutorial.md
-        - name: 将 Apache Kafka Connect 与已启用 Kafka 的事件中心集成（预览版）
-          href: event-hubs-kafka-connect-tutorial.md
-        - name: 将 Akka Streams 连接到已启用 Apache Kafka 的事件中心
-          href: event-hubs-kafka-akka-streams-tutorial.md
 - name: 示例
   href: event-hubs-samples.md
 - name: 概念
   items:
-    - name: 事件中心功能
+    - name: 事件中心术语
       href: event-hubs-features.md
-    - name: 事件处理器主机概述
-      href: event-hubs-event-processor-host.md
-    - name: 编程指南
-      href: event-hubs-programming-guide.md
+    - name: 可用性和一致性
+      href: event-hubs-availability-and-consistency.md
+    - name: 可伸缩性
+      href: event-hubs-scalability.md
     - name: 安全
       items:
         - name: Azure 资源的托管标识
@@ -99,54 +75,95 @@
           href: event-hubs-authentication-and-security-model-overview.md
         - name: 安全属性
           href: event-hubs-security-attributes.md
-    - name: 可用性和一致性
-      href: event-hubs-availability-and-consistency.md
     - name: AMQP 1.0 协议指南
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
 - name: 操作指南
   items:
-    - name: 使用 Python 发送、接收和捕获事件
-      href: event-hubs-python.md
-    - name: 设置诊断日志
-      href: event-hubs-diagnostic-logs.md
-    - name: 用于 Apache Kafka 的事件中心
+    - name: 开发
+      items:
+        - name: 获取事件中心连接字符串
+          href: event-hubs-get-connection-string.md
+        - name: 使用不同的协议在应用程序之间交换事件
+          href: event-hubs-exchange-events-different-protocols.md
+        - name: 编程指南
+          href: event-hubs-programming-guide.md
+        - name: 使用事件处理程序主机接收事件
+          href: event-hubs-event-processor-host.md
+    - name: 使用客户端库
+      items:
+        - name: .NET framework
+          items:
+            - name: 使用 .NET Framework 发送和接收事件
+              href: event-hubs-dotnet-framework-getstarted-send.md
+        - name: Java
+          items:
+            - name: 创建 Spring Cloud Stream Binder 应用
+              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+              maintainContext: true
+            - name: 使用适用于 Apache Kafka 的 Spring Boot Starter
+              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+              maintainContext: true
+        - name: Python
+          items:
+            - name: 使用 Python 发送和接收事件
+              href: event-hubs-python-get-started-send.md
+            - name: 使用 Python 发送、接收和捕获事件
+              href: event-hubs-python.md
+        - name: Node.js
+          items:
+            - name: 使用 Node.js 发送和接收事件
+              href: event-hubs-node-get-started-send.md
+        - name: Go
+          items:
+            - name: 使用 Go 发送和接收事件
+              href: event-hubs-go-get-started-send.md
+        - name: C（仅发送）
+          items:
+            - name: 使用 C 发送事件
+              href: event-hubs-c-getstarted-send.md
+        - name: Apache Storm（仅接收）
+          items:
+            - name: 使用 Apache Storm 接收事件
+              href: event-hubs-storm-getstarted-receive.md
+    - name: 与 Apache Kafka 集成
       items:
         - name: 创建启用了 Apache Kafka 的事件中心
           href: event-hubs-create-kafka-enabled.md
-        - name: 使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件
-          href: event-hubs-kafka-stream-analytics.md
-    - name: 管理
+        - name: 将 Kafka 代理镜像到已启用 Apache Kafka 的事件中心
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: 将 Apache Spark 连接到已启用 Apache Kafka 的事件中心
+          href: event-hubs-kafka-spark-tutorial.md
+        - name: 将 Apache Flink 连接到已启用 Apache Kafka 的事件中心
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: 将 Apache Kafka Connect 与已启用 Kafka 的事件中心集成（预览版）
+          href: event-hubs-kafka-connect-tutorial.md
+        - name: 将 Akka Streams 连接到已启用 Apache Kafka 的事件中心
+          href: event-hubs-kafka-akka-streams-tutorial.md
+    - name: 管理和监视
       items:
         - name: 使用 Azure 监视来监视事件中心
           href: event-hubs-metrics-azure-monitor.md
+        - name: 设置诊断日志
+          href: event-hubs-diagnostic-logs.md
+        - name: 使用事件中心流式传输 Azure 诊断数据
+          href: event-hubs-streaming-azure-diags-data.md
+        - name: 自动缩放吞吐量单位
+          href: event-hubs-auto-inflate.md
         - name: 事件中心管理库
           href: event-hubs-management-libraries.md
-    - name: 获取事件中心连接字符串
-      href: event-hubs-get-connection-string.md
-    - name: Java 开发
+    - name: 安全
       items:
-        - name: 创建 Spring Cloud Stream Binder 应用
-          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
-        - name: 使用适用于 Apache Kafka 的 Spring Boot Starter
-          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+        - name: 使用防火墙
+          href: event-hubs-ip-filtering.md
+        - name: 使用虚拟网络服务终结点
+          href: event-hubs-service-endpoints.md
+        - name: 在事件中心命名空间中启用虚拟网络集成和防火墙
+          href: event-hubs-tutorial-virtual-networks-firewalls.md
     - name: 故障排除
       items:
         - name: 例外
           href: event-hubs-messaging-exceptions.md
-    - name: 使用防火墙
-      href: event-hubs-ip-filtering.md
-    - name: 使用虚拟网络服务终结点
-      href: event-hubs-service-endpoints.md
-    - name: 自动缩放吞吐量单位
-      href: event-hubs-auto-inflate.md
-    - name: 使用事件中心流式传输 Azure 诊断数据
-      href: event-hubs-streaming-azure-diags-data.md
-    - name: 使用不同的协议在应用程序之间交换事件
-      href: event-hubs-exchange-events-different-protocols.md
-    - name: 创建 Spring Cloud Stream Binder 应用程序
-      href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub?view=azure-java-stable
-      maintainContext: true
 - name: 引用
   items:
     - name: Java

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148167"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172940"
 ---
 可以将多个数据磁盘附加到 Azure 虚拟机。 根据 VM 的数据磁盘的可伸缩性和性能目标，可以确定的数量和类型满足性能和容量要求所需的磁盘。
 

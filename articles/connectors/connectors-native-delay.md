@@ -11,10 +11,10 @@ tags: connectors
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 27475fb3f086dbc5166a473e9d657d2dab723938
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66297635"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>在 Azure 逻辑应用中运行下一步操作的延迟
@@ -79,7 +79,7 @@ ms.locfileid: "66297635"
 
    ![指定何时结束延迟的时间戳](./media/connectors-native-delay/delay-until-timestamp.png)
 
-   | 属性 | JSON 名称 | 需要 | Type | 描述 |
+   | 属性 | JSON 名称 | 必选 | Type | 描述 |
    |----------|-----------|----------|------|-------------|
    | Timestamp | timestamp | 是 | String | 结束日期和时间的恢复工作流使用此格式： <p>YYYY-MM-DDThh:mm:ssZ <p>因此，例如，如果想 2017 年 9 月 18 日下午 2:00，则指定"2017年-09-18T14:00:00Z"。 <p>**注意：** 此时间格式必须遵循[ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)中[UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)，但如果没有[UTC 偏移量](https://en.wikipedia.org/wiki/UTC_offset)。 没有时区，必须在不包含任何空格末尾添加字母"Z"。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 |
    ||||||

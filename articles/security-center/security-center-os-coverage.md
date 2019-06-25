@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: monhaber
-ms.openlocfilehash: c5b5b88ee1334ac6d7b39b8ad53bd020e6042454
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: e2d66db2ae3c379db86d40603d919489fdf15eed
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480538"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144266"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure 安全中心支持的平台和功能
 
@@ -78,7 +78,7 @@ ms.locfileid: "66480538"
 > [!div class="mx-tableFixed"]
 > 
 
-|服务器|Windows||Linux||||定价|
+|服务器|Windows|||Linux|||定价|
 |----|----|----|----|----|----|----|----|
 |**环境**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
 ||**虚拟机**|**虚拟机规模集**||**虚拟机**|**虚拟机规模集**|

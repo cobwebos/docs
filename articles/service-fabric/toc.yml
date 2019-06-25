@@ -73,10 +73,14 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 5 - 删除群集
           href: service-fabric-tutorial-delete-cluster.md
-    - name: 在 AWS 上创建独立群集
+    - name: 创建独立群集
       items:
-        - name: 1- 在 AWS 上创建基础结构
-          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 1- 创建基础结构
+          items:
+            - name: 使用 AWS
+              href: service-fabric-tutorial-standalone-create-infrastructure.md
+            - name: 使用 Azure
+              href: service-fabric-tutorial-standalone-azure-create-infrastructure.md
         - name: 2 - 设置 Service Fabric
           href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
         - name: 3- 将应用程序部署到群集
@@ -695,6 +699,8 @@
       items:
         - name: 诊断常见方案
           href: service-fabric-diagnostics-common-scenarios.md
+        - name: 诊断代码包错误
+          href: service-fabric-diagnostics-code-package-errors.md
         - name: 监视应用程序
           items:
             - name: 将日志记录添加到应用程序

@@ -1,25 +1,17 @@
 ---
 title: Azure 资源管理器模板函数 - 比较 | Microsoft Docs
 description: 介绍可在 Azure 资源管理器模板中使用的用于比较值的函数。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0eafadd4049baea58aa882b3421eaa6a684a3a38
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128686"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205498"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的比较函数
 
@@ -135,7 +127,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | True |
@@ -173,7 +165,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -324,7 +316,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
@@ -424,7 +416,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于小于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于或等于比较的第二个值。 |

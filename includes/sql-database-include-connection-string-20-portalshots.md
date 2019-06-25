@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66164278"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173030"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>从 Azure 门户获取连接字符串
 使用 [Azure 门户](https://portal.azure.com/)获取客户端程序与 Azure SQL 数据库进行交互所需的连接字符串。

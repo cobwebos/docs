@@ -7,15 +7,16 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 3ca166b287858b3e42aeda1421d1733fe24c81ab
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 1e46c935d298f2fe7ebfa4bce471288c9ab8a606
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479721"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271953"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用后续的提示操作以创建多个打开的会话
 
@@ -228,7 +229,7 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": [
+                "promptsToAdd": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
@@ -253,7 +254,8 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
                         "qna": null,
                         "displayText": "Create a Windows Account"
                     }
-                ]
+                ],
+                "promptsToDelete":[]
             }
         },
         {
@@ -267,14 +269,15 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": [
+                "promptsToAdd": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Turn off the device"
                     }
-                ]
+                ],
+                "promptsToDelete":[]
             }
         },
         {
@@ -288,14 +291,21 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": []
+                "promptsToAdd": [],
+                "promptsToDelete":[]
             }
         }
     ]
 }
 ```
 
-`prompts`阵列可提供中的文本`displayText`属性和`qnaId`值以便可以显示这些问题的答案为会话中的下一步显示选择流，然后发送到 QnA Maker 以下请求中的所选值。 
+`promptsToAdd`阵列可提供中的文本`displayText`属性和`qnaId`值以便可以显示这些问题的答案为会话中的下一步显示选择流，然后发送到 QnA Maker 以下请求中的所选值。 
+
+<!--
+
+The `promptsToDelete` array provides the ...
+
+-->
 
 ## <a name="json-request-to-return-non-initial-answer-and-follow-up-prompts"></a>JSON 请求返回非初始答案和后续提示
 
@@ -335,7 +345,8 @@ QnA Maker _GenerateAnswer_ JSON 响应包括中的后续提示`context`属性中
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": []
+                "promptsToAdd": [],
+                "promptsToDelete":[]
             }
         },
         {
@@ -349,14 +360,15 @@ QnA Maker _GenerateAnswer_ JSON 响应包括中的后续提示`context`属性中
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": [
+                "promptsToAdd": [
                     {
                         "displayOrder": 0,
                         "qnaId": 4,
                         "qna": null,
                         "displayText": "Ports and connectors"
                     }
-                ]
+                ],
+                "promptsToDelete":[]
             }
         },
         {
@@ -370,7 +382,8 @@ QnA Maker _GenerateAnswer_ JSON 响应包括中的后续提示`context`属性中
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": []
+                "promptsToAdd": [],
+                "promptsToDelete":[]
             }
         }
     ]

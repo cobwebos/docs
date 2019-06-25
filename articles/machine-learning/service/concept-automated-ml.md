@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dcdbbf0a2a71fa38b6eacd6a8d179cdad979937
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f00a530cb4e62ae83dea349c949e8f2ddc43c0c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059293"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203027"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -171,7 +171,7 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 |集成|描述|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|自动模型选择和定型使用 ML.NET 使用 Visual Studio 和 Visual Studio Code 的.NET 应用程序中实现自动化机器学习 （预览版）。|
-|[HDIsnight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|横向扩展自动化机器学习训练作业在 HDInsight 中的 Spark 群集中并行。|
+|[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|横向扩展自动化机器学习训练作业在 HDInsight 中的 Spark 群集中并行。|
 |[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|调用直接在 Power BI （预览版） 中的机器学习模型。|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|创建新的机器学习模型通过 SQL Server 2019 大数据群集中的数据。|
 

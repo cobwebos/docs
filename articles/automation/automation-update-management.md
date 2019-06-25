@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b28d590390cd1a1ef1c6651e6943ac2a7fa0af29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: f4fd47ae4f1ebc50de916b537b165eba1c5efb11
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075505"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205029"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -39,7 +39,7 @@ ms.locfileid: "67075505"
 
 更新管理可用于在同一租户的多个订阅中本机登记计算机。
 
-发布 CVE 后，Linux 计算机需要 2-3 小时才会显示修补程序以供评估。  对于 Windows 计算机，发布后，需要 12-15 小时才会显示修补程序以供评估。
+一旦发布包时，需要的修补程序才会显示用于评估的 Linux 计算机的 2-3 小时。 对于 Windows 计算机，发布后，需要 12-15 小时才会显示修补程序以供评估。
 
 计算机完成更新符合性扫描后，代理将转发到 Azure Monitor 日志的大容量中的信息。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。
 

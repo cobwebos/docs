@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9a3468d720cb04e73cb284abb20c7bcf6a392dd
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 4790dc7ebeeee3407e89bcf38d7e3f25699ed328
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65859525"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108410"
 ---
 # <a name="compare-remote-access-solutions"></a>比较远程访问解决方案
 
@@ -34,21 +34,21 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 
 | Feature | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
-| 证书身份验证 | “是” | “是” | - | - |
-| 有选择地发布浏览器应用 | “是” | 是 | 是 | “是” |
-| 预身份验证和单一登录 | “是” | 是 | 是 | “是” | 
-| 第 2/3 层防火墙 | “是” | “是” | - | - |
-| 正向代理功能 | “是” | - | - | - |
-| VPN 功能 | “是” | “是” | - | - |
-| 丰富的协议支持 | - | “是” | 是，如果通过 HTTP 运行 | 是，如果通过 HTTP 或远程桌面网关运行 |
-| 用作 ADFS 代理服务器 | - | “是” | “是” | - |
-| 一个用于访问应用程序的门户 | - | “是” | - | “是” |
-| 响应正文链接转换 | “是” | 是 | - | “是” | 
-| 使用标头进行身份验证 | - | “是” | - | 是，使用 PingAccess | 
-| 云级安全性 | - | - | - | “是” | 
-| 条件性访问 | - | “是” | - | “是” |
-| 外围安全区域 (DMZ) 中无组件 | - | - | - | “是” |
-| 无入站连接 | - | - | - | “是” |
+| 证书身份验证 | 是 | 是 | - | - |
+| 有选择地发布浏览器应用 | 是 | 是 | 是 | 是 |
+| 预身份验证和单一登录 | 是 | 是 | 是 | 是 | 
+| 第 2/3 层防火墙 | 是 | 是 | - | - |
+| 正向代理功能 | 是 | - | - | - |
+| VPN 功能 | 是 | 是 | - | - |
+| 丰富的协议支持 | - | 是 | 是，如果通过 HTTP 运行 | 是，如果通过 HTTP 或远程桌面网关运行 |
+| 用作 ADFS 代理服务器 | - | 是 | 是 | - |
+| 一个用于访问应用程序的门户 | - | 是 | - | 是 |
+| 响应正文链接转换 | 是 | 是 | - | 是 | 
+| 使用标头进行身份验证 | - | 是 | - | 是，使用 PingAccess | 
+| 云级安全性 | - | - | - | 是 | 
+| 条件性访问 | - | 是 | - | 是 |
+| 外围安全区域 (DMZ) 中无组件 | - | - | - | 是 |
+| 无入站连接 | - | - | - | 是 |
 
 大多数情况下，我们建议将 Azure AD 应用程序代理作为现代解决方案。 仅在需要为 AD FS 提供代理服务器以及无法使用 Azure Active Directory 中的自定义域时，才优先考虑 Web 应用程序代理。 
 
@@ -56,7 +56,7 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 
 - 将 Azure AD 扩展到本地资源
    - 云级安全性和保护
-   - 可轻松启用条件性访问和多重身份验证等功能
+   - 条件性访问和多重身份验证等功能可以很容易地启用
 - 外围安全区域中无组件
 - 不需要任何入站连接
 - 一个访问面板，用户可通过它访问自己的所有应用程序，包括 O365、集成了 Azure AD 的 SaaS 应用以及本地 Web 应用。 

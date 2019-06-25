@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: d1662d17f37e668e989103989df9de49036bab6a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a57681cc9f44593ceea6b2c1795274c1b16d3a94
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "64726213"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>创建和修改 ExpressRoute 线路的对等互连（经典）
@@ -125,7 +125,7 @@ Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRou
    * 辅助链路的 /30 子网。 它不能是保留给虚拟网络使用的任何地址空间的一部分。
    * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。 可以将专用 AS 编号用于此对等互连。 确认未使用 65515。
-   * MD5 哈希（如果选择使用）。 可选。
+   * MD5 哈希（如果选择使用）。 可选  。
      
    可使用以下示例为线路配置 Azure 专用对等互连：
 
@@ -232,7 +232,7 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
    * 辅助链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。
    * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
-   * MD5 哈希（如果选择使用）。 可选。
+   * MD5 哈希（如果选择使用）。 可选  。
 
    > [!IMPORTANT]
    > 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
@@ -337,7 +337,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
    * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
-   * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。 可选。
+   * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。 可选  。
    * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
    * MD5 哈希（如果选择使用）。 **可选。**
      

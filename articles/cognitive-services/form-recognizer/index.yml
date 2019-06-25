@@ -17,6 +17,15 @@ metadata:
 ms.custom: seodec18
 abstract:
   description: Azure 表单识别器是一个认知服务，它使用机器学习技术从表与表单中识别和提取键值对。 然后，它会输出包含原始文件中的关系的结构化数据。 非监督式学习可让模型了解字段与项之间的布局和关系，而无需手动标记数据，或者进行繁琐的编程和维护。
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: ../media/index/form-recognizer-landing-page-video.png
+      width: 250
+    title: '通过表单识别器实现 AI 支持的流程自动化 (2:15)'
+    href: 'https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer'
+    width: 250
 sections:
   - items:
       - type: list

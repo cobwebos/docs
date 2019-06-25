@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
 ms.openlocfilehash: e082afb212be46c40566eb643d01bc37eababfa6
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65992155"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
@@ -28,14 +28,14 @@ ms.locfileid: "65992155"
 [deployment-guide]:deployment-guide.md
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2009879]:https://launchpad.support.sap.com/#/notes/2009879
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2009879]: https://launchpad.support.sap.com/#/notes/2009879
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 
 [virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
@@ -73,7 +73,7 @@ ms.locfileid: "65992155"
 
 ![RHEL 上的 Pacemaker 概述](./media/high-availability-guide-rhel-pacemaker/pacemaker-rhel.png)
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2    。
 
 1. **[A]** 注册
 
@@ -102,7 +102,7 @@ ms.locfileid: "65992155"
    <pre><code>sudo yum install -y pcs pacemaker fence-agents-azure-arm nmap-ncat
    </code></pre>
 
-1. [A] 设置主机名称解析
+1. [A] 设置主机名称解析 
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
    请替换以下命令中的 IP 地址和主机名。 使用 /etc/hosts 的好处是群集会变为独立于也可能会成为单一故障点的 DNS。
@@ -118,7 +118,7 @@ ms.locfileid: "65992155"
    <b>10.0.0.7 prod-cl1-1</b>
    </code></pre>
 
-1. [A] 将 hacluster 密码更改为相同的密码
+1. [A] 将 hacluster 密码更改为相同的密码 
 
    <pre><code>sudo passwd hacluster
    </code></pre>
@@ -181,7 +181,7 @@ ms.locfileid: "65992155"
 STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步骤创建服务主体。
 
 1. 转到 <https://portal.azure.com>
-1. 打开 Azure Active Directory 边栏选项卡转到属性并记下目录 id。 这是“租户 ID”。
+1. 打开 Azure Active Directory 边栏选项卡转到属性并记下目录 id。 这是“租户 ID”  。
 1. 单击“应用注册”
 1. 单击“添加”
 1. 输入一个名称，选择应用程序类型"Web 应用 /API"，输入登录 URL (例如 http:\//localhost) 并单击创建
@@ -189,7 +189,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
 1. 记下值。 此值用作服务主体的**密码**
-1. 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
+1. 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”） 
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
 

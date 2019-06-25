@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: ea6d969ed6612f947e3c73c438738bd98ac2bb30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60362265"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64700462"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>将 VMM 脚本添加到还原计划
 
@@ -29,7 +29,7 @@ ms.locfileid: "60362265"
     - 如果发生错误，则不运行脚本的剩余部分。
     - 如果在运行未计划的故障转移时发生错误，将继续执行恢复计划。
     - 如果在运行计划的故障转移时发生错误，则将停止恢复计划。 请修复脚本，检查它是否按预期运行，然后重新运行还原计划。
-        - `Write-Host` 命令在还原计划脚本中不起作用。 如果在脚本中使用 `Write-Host`，则脚本将失败。 若要创建输出，请创建转而运行主脚本的代理脚本。 请使用 \>\> 命令来确保所有输出均已传输。
+        - `Write-Host` 命令在还原计划脚本中不起作用。 如果在脚本中使用 `Write-Host`，则脚本将失败。 若要创建输出，请创建转而运行主脚本的代理脚本。 请使用 \>\> 命令来确保所有输出均已传输  。
         - 如果脚本未在 600 秒内返回，则脚本超时。
         - 如果向 STDERR 写入了内容，则脚本归类为失败。 此信息显示在脚本执行详细信息中。
 
@@ -43,18 +43,18 @@ ms.locfileid: "60362265"
 
   如果库共享路径在远程位置（或在本地但不与 MSCVMMLibrary 共享），请按如下所示配置共享（例如使用 \\libserver2.contoso.com\share\）：
   
-  1. 打开注册表编辑器，然后转到HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration。
+  1. 打开注册表编辑器，然后转到HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration  。
 
-  1. 将 ScriptLibraryPath 的值更改为 \\\libserver2.contoso.com\share\\。 指定完整的 FQDN。 提供对共享位置的权限。 指共享的根节点。 要在 VMM 中查看根节点，请转到库中的根节点。 打开的路径就是路径的根。 必须在变量中使用此路径。
+  1. 将 ScriptLibraryPath 的值更改为 \\\libserver2.contoso.com\share\\   。 指定完整的 FQDN。 提供对共享位置的权限。 指共享的根节点。 要在 VMM 中查看根节点，请转到库中的根节点。 打开的路径就是路径的根。 必须在变量中使用此路径。
 
   1. 使用与 VMM 服务帐户处于同一用户权限级别的用户帐户测试脚本。 使用这些用户权限验证经过测试的独立脚本按在还原计划中运行的方式运行。 在 VMM 服务器上，将执行策略设置为绕过，如下所示：
 
-     a. 以管理员身份打开 64 位 Windows PowerShell 控制台。
+     a. 以管理员身份打开 64 位 Windows PowerShell 控制台  。
      
-     b. 输入 Set-executionpolicy bypass。 有关详细信息，请参阅[使用 Set-ExecutionPolicy cmdlet](https://technet.microsoft.com/library/ee176961.aspx)。
+     b. 输入 Set-executionpolicy bypass  。 有关详细信息，请参阅[使用 Set-ExecutionPolicy cmdlet](https://technet.microsoft.com/library/ee176961.aspx)。
 
      > [!IMPORTANT]
-     > 仅在 64 位 PowerShell 控制台中设置 Set-executionpolicy bypass。 若为 32 位 PowerShell 控制台设置此项，脚本不会运行。
+     > 仅在 64 位 PowerShell 控制台中设置 Set-executionpolicy bypass  。 若为 32 位 PowerShell 控制台设置此项，脚本不会运行。
 
 ## <a name="add-the-script-to-the-vmm-library"></a>将脚本添加到 VMM 库
 
@@ -69,9 +69,9 @@ ms.locfileid: "60362265"
 将 VM 或复制组添加到还原计划中并创建好计划后，可将脚本添加到该组。
 
 1. 打开恢复计划。
-1. 在“步骤”列表中，选择一个项。 然后，选择“脚本”或“手动操作”。
-1. 指定将脚本或操作添加到的位置（所选项的前面或后面）。 要将脚本上移或下移，请选择“上移”或“下移”按钮。
-1. 如果添加 VMM 脚本，请选择“故障转移到 VMM 脚本”。 在“脚本路径”中，输入共享的相对路径。 例如，输入 \RPScripts\RPScript.PS1。
+1. 在“步骤”列表中，选择一个项  。 然后，选择“脚本”或“手动操作”   。
+1. 指定将脚本或操作添加到的位置（所选项的前面或后面）。 要将脚本上移或下移，请选择“上移”或“下移”按钮   。
+1. 如果添加 VMM 脚本，请选择“故障转移到 VMM 脚本”  。 在“脚本路径”中，输入共享的相对路径  。 例如，输入 \RPScripts\RPScript.PS1  。
 1. 如果添加 Azure 自动化 Runbook，请指定包含 Runbook 的自动化帐户。 然后，选择想要使用的 Azure Runbook 脚本。
 1. 请执行还原计划的测试故障转移，确保脚本按预期运行。
 

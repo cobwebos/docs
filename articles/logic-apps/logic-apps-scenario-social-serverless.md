@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 5dd9d8eac7d65815d7c98a28b0d5af55f19cec47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d56e64f118fe36fb4905dca20d9fba2f210665
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65464432"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295915"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
 
@@ -99,8 +99,8 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 
 * 打开 Visual Studio Cloud Explorer。 找到自己的逻辑应用，打开该应用的快捷菜单。 选择“打开运行历史记录”。 
 
-  > [!NOTE]
-  > 有关 Visual Studio 2019，云资源管理器可以打开逻辑应用设计器在 Azure 门户中，但不能尚未打开嵌入的逻辑应用设计器或运行历史记录。
+  > [!TIP]
+  > 如果在 Visual Studio 2019 中没有此命令，检查你的 Visual Studio 具有最新的更新。
 
 * 在 Azure 门户中，找到自己的逻辑应用。 在逻辑应用的菜单中，选择“概述”  。 
 

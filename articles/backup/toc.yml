@@ -26,6 +26,8 @@
       href: tutorial-restore-files.md
     - name: 在 Azure VM 上备份 SQL Server
       href: tutorial-sql-backup.md
+    - name: 备份 Azure 文件存储文件共享
+      href: tutorial-backup-azure-files.md
     - name: 备份 Windows Server
       href: tutorial-backup-windows-server-to-azure.md
     - name: 将文件还原到 Windows Server

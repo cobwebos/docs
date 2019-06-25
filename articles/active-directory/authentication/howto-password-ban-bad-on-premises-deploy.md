@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c22c9c202e6de3b31b99803dce4a07d38287a92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 134ab2a5f0b1b1569cdf4747f5bbe3f895ba4e8f
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057280"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293020"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -145,7 +145,7 @@ ms.locfileid: "67057280"
    > 可能在完成第一次为特定的 Azure 租户中运行此 cmdlet 之前有明显的延迟。 除非将报告失败，不必担心这种延迟。
 
 1. 注册林。
-   * 必须初始化具有所需的凭据以使用与 Azure 通信的本地 Active Directory 林`Register-AzureADPasswordProtectionForest`PowerShell cmdlet。 该 cmdlet 还要求你的 Azure 租户的全局管理员凭据。 它还需要在目录林根域中的本地 Active Directory 域管理员权限。 针对每个林运行此步骤一次。
+   * 必须初始化具有所需的凭据以使用与 Azure 通信的本地 Active Directory 林`Register-AzureADPasswordProtectionForest`PowerShell cmdlet。 该 cmdlet 还要求你的 Azure 租户的全局管理员凭据。 它还需要在本地 Active Directory 企业管理员权限。 针对每个林运行此步骤一次。
 
       `Register-AzureADPasswordProtectionForest` Cmdlet 支持以下三种身份验证模式。
 
@@ -219,7 +219,7 @@ ms.locfileid: "67057280"
 
    在这两种情况下，将为`http://yourhttpproxy.com:8080`的地址和特定的 HTTP 代理服务器的端口。
 
-   如果您的 HTTP 代理服务器配置给我们一个授权策略，您必须授予访问权限的托管代理服务进行密码保护的计算机的 Active Directory 计算机帐户。
+   如果您的 HTTP 代理服务器配置为使用授权策略，必须授予对托管代理服务进行密码保护的计算机的 Active Directory 计算机帐户。
 
    我们建议你停止并重新启动代理服务，在创建或更新后*AzureADPasswordProtectionProxy.exe.config*文件。
 

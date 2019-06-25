@@ -16,12 +16,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviwer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d16efbd8ea2fa37ac9572e9dc1ba3ef67deaeaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10dfcf337dc75a202e781e931f38783291a72fe7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784401"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272745"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>访问面板中未显示已分配的应用程序
 
@@ -399,7 +399,7 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 稍等片刻，便可看到应用程序的配置窗格。
 
-#### <a name="configure-the-application-for-password-single-sign-on"></a>将应用程序配置为密码单一登录
+#### <a name="configure-the-application-for-password-single-sign-on-1"></a> 配置应用程序的密码单一登录
 
 若要为应用程序配置单一登录，请按照以下步骤操作：
 

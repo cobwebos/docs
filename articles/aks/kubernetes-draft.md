@@ -1,118 +1,208 @@
 ---
-title: 结合使用 Draft 与 AKS 和 Azure 容器注册表
+title: 在使用 Draft 的 Azure Kubernetes 服务 (AKS) 上进行开发
 description: 结合使用 Draft 与 AKS 和 Azure 容器注册表
 services: container-service
 author: zr-msft
 ms.service: container-service
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: 462cfd6ec0a6b25f85dda0245dd4f5feed7cb712
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd099b9d76e17eda36be1650ef5081e5aaa7e53a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60465134"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303548"
 ---
-# <a name="use-draft-with-azure-kubernetes-service-aks"></a>结合使用 Draft 与 Azure Kubernetes 服务 (AKS)
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>快速入门：在使用 Draft 的 Azure Kubernetes 服务 (AKS) 上进行开发
 
-Draft 是一种开源工具，有助于在 Kubernetes 群集中打包和部署应用程序容器，让你专注于开发周期 - 专注开发的“内部循环”。 在开发代码期间，但尚未将代码提交到版本控制之前，Draft 将会运行。 借助 Draft，可在代码发生更改时快速将应用程序重新部署到 Kubernetes。 有关 Draft 的详细信息，请参阅 [GitHub 上的 Draft 文档][draft-documentation]。
+Draft 是一种开放源代码工具，可帮助包并在 Kubernetes 群集中运行应用程序容器。 借助 Draft，您可以快速重新部署到 Kubernetes 应用程序而无需将更改提交到版本控制发生代码更改。 有关 Draft 的详细信息，请参阅[GitHub 上的 Draft 文档][draft-documentation]。
 
-本文介绍如何对 AKS 上的 Kubernetes 群集使用 Draft。
+本文介绍如何使用 Draft 包和 AKS 上运行的应用程序。
+
 
 ## <a name="prerequisites"></a>必备组件
 
-本文中详述的步骤假设已创建 AKS 群集并已与该群集建立 `kubectl` 连接。 如果需要这些项，请参阅 [AKS 快速入门][aks-quickstart]。
+* Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
+* [已安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 安装和配置 docker。 Docker 提供的包配置 Docker [Mac][docker-for-mac], [Windows][docker-for-windows]，或[Linux][docker 的 linux]系统。
+* [安装 helm](https://github.com/helm/helm/blob/master/docs/install.md)。
+* [安装 draft][draft-documentation]。
 
-Azure 容器注册表 (ACR) 中需有一个专用 Docker 注册表。 有关创建 ACR 实例的步骤，请参阅 [Azure 容器注册表快速入门][acr-quickstart]。
+## <a name="create-an-azure-kubernetes-service-cluster"></a>创建 Azure Kubernetes 服务群集
 
-Helm 也必须安装在 AKS 群集中。 有关如何安装和配置 Helm 的详细信息，请参阅[将 Helm 与 Azure Kubernetes 服务 (AKS) 配合使用][aks-helm]。
+创建 AKS 群集。 以下命令创建了名为 MyResourceGroup 调用 MyAKS AKS 群集的资源组。
 
-最后，必须安装 [Docker](https://www.docker.com)。
-
-## <a name="install-draft"></a>安装 Draft
-
-Draft CLI 是一个在开发系统上运行的客户端，可将代码部署到 Kubernetes 群集中。 若要在 Mac 上安装 Draft CLI，请使用 `brew`。 有关其他安装选项，请参阅 [Draft 安装指南][draft-documentation]。
-
-> [!NOTE]
-> 如果已安装低于 0.12 版本的 Draft，请使用 `helm delete --purge draft` 从群集中删除 Draft，然后运行 `rm -rf ~/.draft` 删除本地配置。 如果在 MacOS 上操作，请运行 `brew upgrade draft`。
-
-```console
-brew tap azure/draft
-brew install draft
+```azurecli
+az group create --name MyResourceGroup --location eastus
+az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --generate-ssh-keys
 ```
 
-现在，使用 `draft init` 命令初始化 Draft：
+## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
+若要结合使用 Draft 在 AKS 群集中运行应用程序，需要 Azure 容器注册表来存储容器映像。 下面的示例中使用[az acr 创建][az-acr-create]创建名为 ACR *MyDraftACR*中*MyResourceGroup*资源组与*基本*SKU。 应提供你自己唯一的注册表的名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 “基本”SKU 是一个针对成本优化的入口点，适用于可以对存储和吞吐量进行均衡考虑的开发目的。 
 
-```console
-draft init
+```azurecli
+az acr create --resource-group MyResourceGroup --name MyDraftACR --sku Basic
 ```
 
-## <a name="configure-draft"></a>配置 Draft
+输出类似于以下示例。 请记下的*loginServer*为 ACR 因为将在稍后的步骤中使用它的值。 在以下示例中， *mydraftacr.azurecr.io*是*loginServer*有关*MyDraftACR*。
 
-Draft 在本地生成容器映像，然后从本地注册表部署这些映像（例如使用 Minikube），或使用指定的映像注册表。 本文使用 Azure 容器注册表 (ACR)，因此，必须在 AKS 群集与 ACR 注册表之间建立信任关系，然后将 Draft 配置为向 ACR 推送容器映像。
+```console
+{
+  "adminUserEnabled": false,
+  "creationDate": "2019-06-11T13:35:17.998425+00:00",
+  "id": "/subscriptions/<ID>/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerRegistry/registries/MyDraftACR",
+  "location": "eastus",
+  "loginServer": "mydraftacr.azurecr.io",
+  "name": "MyDraftACR",
+  "networkRuleSet": null,
+  "provisioningState": "Succeeded",
+  "resourceGroup": "MyResourceGroup",
+  "sku": {
+    "name": "Basic",
+    "tier": "Basic"
+  },
+  "status": null,
+  "storageAccount": null,
+  "tags": {},
+  "type": "Microsoft.ContainerRegistry/registries"
+}
+```
 
-### <a name="create-trust-between-aks-cluster-and-acr"></a>在 AKS 群集与 ACR 之间创建信任
 
-若要在 AKS 群集与 ACR 注册表之间建立信任，请为 AKS 群集使用的 Azure Active Directory 服务主体授予 ACR 注册表的访问权限。 在以下命令中，请提供自己的 `<resourceGroupName>`，将 `<aksName>` 替换为 AKS 群集的名称，将 `<acrName>` 替换为 ACR 注册表的名称：
+对于要使用的 ACR 实例的草稿，您必须首先登录。 使用[az acr login][az-acr-login]命令进行登录。 下面的示例将登录到名为 ACR *MyDraftACR*。
+
+```azurecli
+az acr login --name MyDraftACR
+```
+
+完成后，该命令会返回“登录成功”  消息。
+
+## <a name="create-trust-between-aks-cluster-and-acr"></a>在 AKS 群集与 ACR 之间创建信任
+
+在 AKS 群集还需要访问 ACR 来提取容器映像并运行它们。 你允许访问 ACR 从 AKS 通过建立信任。 若要在 AKS 群集与 ACR 注册表之间建立信任，请为 AKS 群集使用的 Azure Active Directory 服务主体授予 ACR 注册表的访问权限。 以下命令授予权限的服务主体*MyAKS*中的群集*MyResourceGroup*到*MyDraftACR* ACR 中的*MyResourceGroup*。
 
 ```azurecli
 # Get the service principal ID of your AKS cluster
-AKS_SP_ID=$(az aks show --resource-group <resourceGroupName> --name <aksName> --query "servicePrincipalProfile.clientId" -o tsv)
+AKS_SP_ID=$(az aks show --resource-group MyResourceGroup --name MyAKS --query "servicePrincipalProfile.clientId" -o tsv)
 
 # Get the resource ID of your ACR instance
-ACR_RESOURCE_ID=$(az acr show --resource-group <resourceGroupName> --name <acrName> --query "id" -o tsv)
+ACR_RESOURCE_ID=$(az acr show --resource-group MyResourceGroup --name MyDraftACR --query "id" -o tsv)
 
 # Create a role assignment for your AKS cluster to access the ACR instance
 az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role contributor
 ```
 
-有关访问 ACR 的步骤的详细信息，请参阅[使用 ACR 进行身份验证](../container-registry/container-registry-auth-aks.md)。
+## <a name="connect-to-your-aks-cluster"></a>连接到 AKS 群集
 
-### <a name="configure-draft-to-push-to-and-deploy-from-acr"></a>将 Draft 配置为推送到 ACR 并从中部署
+若要从本地计算机连接到 Kubernetes 群集，请使用[kubectl][kubectl]，Kubernetes 命令行客户端。
 
-在 AKS 与 ACR 之间建立信任关系后，从 AKS 群集启用 ACR。
+如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 也可使用 [az aks install-cli][] 命令在本地安装它：
 
-1. 设置 Draft 配置注册表值。  在以下命令中，请将 `<acrName>` 替换为 ACR 注册表的名称：
+```azurecli
+az aks install-cli
+```
 
-    ```console
-    draft config set registry <acrName>.azurecr.io
-    ```
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][] 命令。 下面的示例获取名为 AKS 群集凭据*MyAKS*中*MyResourceGroup*:
 
-1. 使用 [az acr login][az-acr-login] 登录到 ACR 注册表：
+```azurecli
+az aks get-credentials --resource-group MyResourceGroup --name MyAKS
+```
 
-    ```azurecli
-    az acr login --name <acrName>
-    ```
+## <a name="create-a-service-account-for-helm"></a>Helm 为创建服务帐户
 
-由于已在 AKS 与 ACR 之间创建信任，因此，无需密码或机密即可在 ACR 注册表中推送或提取数据。 身份验证使用 Azure Active Directory 在 Azure 资源管理器级别发生。
+在已启用 RBAC 的 AKS 群集中部署 Helm 之前，需要 Tiller 服务的服务帐户和角色绑定。 有关保护 Helm 的详细信息 / RBAC 中的 Tiller 启用群集，请参阅[Tiller、 命名空间和 RBAC][tiller-rbac]。 如果你的 AKS 群集未启用 RBAC，跳过此步骤。
 
-## <a name="run-an-application"></a>运行应用程序
+创建名为 `helm-rbac.yaml` 的文件，并将其复制到以下 YAML 中：
 
-为了了解 Draft 的运作方式，让我们部署 [Draft 存储库][draft-repo]中的一个示例应用程序。 首先克隆存储库：
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tiller
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tiller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: tiller
+    namespace: kube-system
+```
+
+使用 `kubectl apply` 命令创建服务帐户和角色绑定：
+
+```console
+kubectl apply -f helm-rbac.yaml
+```
+
+## <a name="configure-helm"></a>配置 Helm
+若要将基本 Tiller 部署到 AKS 群集，请使用[helm init][helm-init]命令。 如果你的群集未启用 RBAC，删除`--service-account`参数和值。
+
+```console
+helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
+```
+
+## <a name="configure-draft"></a>配置 Draft
+
+如果尚未在本地计算机上配置 Draft，运行`draft init`:
+
+```console
+$ draft init
+Installing default plugins...
+Installation of default plugins complete
+Installing default pack repositories...
+...
+Happy Sailing!
+```
+
+此外需要将 Draft 配置为使用*loginServer*的 ACR。 下面的命令使用`draft config set`若要使用`mydraftacr.azurecr.io`为注册表。
+
+```console
+draft config set registry mydraftacr.azurecr.io
+```
+
+你已配置 Draft 来使用 ACR，并且草稿可将容器映像推送到 ACR。 当草稿在 AKS 群集中运行你的应用程序时，没有密码或机密都需要推送到或从 ACR 注册表拉取。 由于在 AKS 群集与 ACR 之间创建信任关系，在 Azure 资源管理器级别，使用 Azure Active Directory 执行身份验证。
+
+## <a name="download-the-sample-application"></a>下载示例应用程序
+
+本快速入门使用[草稿 GitHub 存储库中的示例 java 应用程序][example-java]。 克隆 GitHub 提供的应用程序并导航到`draft/examples/example-java/`目录。
 
 ```console
 git clone https://github.com/Azure/draft
-```
-
-切换到 Java 示例目录：
-
-```console
 cd draft/examples/example-java/
 ```
 
-使用 `draft create` 命令启动进程。 此命令创建可用于在 Kubernetes 群集中运行应用程序的项目。 这些项包括 Dockerfile、Helm 图表和 *draft.toml* 文件（Draft 配置文件）。
+## <a name="run-the-sample-application-with-draft"></a>使用 Draft 运行示例应用程序
 
+使用`draft create`命令准备应用程序。
+
+```console
+draft create
 ```
+
+此命令创建可用于在 Kubernetes 群集中运行应用程序的项目。 这些项包括 Dockerfile、Helm 图表和 *draft.toml* 文件（Draft 配置文件）。
+
+```console
 $ draft create
 
 --> Draft detected Java (92.205567%)
 --> Ready to sail
 ```
 
-若要在 AKS 群集中运行该示例应用程序，请使用 `draft up` 命令。 此命令生成 Dockerfile 以创建容器映像、将映像推送到 ACR，最后安装 Helm 图表以启动 AKS 中的应用程序。
+若要在 AKS 群集中运行该示例应用程序，请使用 `draft up` 命令。
 
-首次运行此命令时，推送和提取容器映像可能需要一段时间。 缓存基本层后，部署应用程序所需的时间会大大减少。
+```console
+draft up
+```
+
+此命令生成 Dockerfile 以创建容器映像、 将映像推送到 ACR，并安装 Helm 图表在 AKS 中启动应用程序。 推送和拉取容器映像第一次运行此命令时，可能需要一些时间。 缓存基本层后，部署应用程序所需的时间会大大减少。
 
 ```
 $ draft up
@@ -124,16 +214,17 @@ example-java: Releasing Application: SUCCESS ⚓  (4.6979s)
 Inspect the logs with `draft logs 01CMZAR1F4T1TJZ8SWJQ70HCNH`
 ```
 
-如果在推送 Docker 映像时遇到问题，请确保使用 [az acr login][az-acr-login] 成功登录到 ACR 注册表，然后重试 `draft up` 命令。
+## <a name="connect-to-the-running-sample-application-from-your-local-machine"></a>连接到运行示例应用程序从本地计算机
 
-## <a name="test-the-application-locally"></a>在本地测试应用程序
+若要测试应用程序，请使用 `draft connect` 命令。
 
-若要测试应用程序，请使用 `draft connect` 命令。 此命令将代理与 Kubernetes pod 之间的安全连接。 完成后，可在提供的 URL 上访问应用程序。
-
-> [!NOTE]
-> 下载容器映像并启动应用程序可能需要几分钟时间。 如果在访问应用程序时收到错误，请重试连接。
-
+```console
+draft connect
 ```
+
+此命令将代理与 Kubernetes pod 之间的安全连接。 完成后，可在提供的 URL 上访问应用程序。
+
+```console
 $ draft connect
 
 Connect to java:4567 on localhost:49804
@@ -144,38 +235,25 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-若要访问应用程序，请打开 Web 浏览器并访问 `draft connect` 输出中指定的地址和端口，例如 `http://localhost:49804`。 
-
-![使用 Draft 运行的示例 Java 应用](media/kubernetes-draft/sample-app.png)
-
-使用 `Control+C` 停止代理连接。
-
-> [!NOTE]
-> 还可以使用 `draft up --auto-connect` 命令来生成和部署应用程序，然后立即连接到第一个运行的容器。
+导航到在浏览器中使用应用程序`localhost`url 即可查看示例应用程序。 在上述示例中，url 是`http://localhost:49804`。 停止连接使用`Ctrl+c`。
 
 ## <a name="access-the-application-on-the-internet"></a>在 Internet 上访问应用程序
 
-上一步骤与 AKS 群集中的应用程序 pod 创建了代理连接。 开发和测试应用程序时，可能需要通过 Internet 访问应用程序。 若要在 Internet 上公开应用程序，请创建类型为 [LoadBalancer][kubernetes-service-loadbalancer] 的 Kubernetes 服务，或创建[入口控制器][kubernetes-ingress]。 让我们创建一个 *LoadBalancer* 服务。
+上一步骤与 AKS 群集中的应用程序 pod 创建了代理连接。 开发和测试应用程序时，可能需要通过 Internet 访问应用程序。 若要公开在 internet 上的应用程序，可以创建 Kubernetes 服务具有的类型[负载均衡器][kubernetes-service-loadbalancer]。
 
-首先，更新 *values.yaml* Draft 包，以指定应创建类型为 *LoadBalancer* 的服务：
-
-```console
-vi charts/java/values.yaml
-```
-
-找到 *service.type* 属性，并将值从 *ClusterIP* 更新为 *LoadBalancer*，如以下精简示例中所示：
+更新`charts/example-java/values.yaml`来创建*负载均衡器*服务。 更改的值*service.type*从*群集 Ip*到*负载均衡器*。
 
 ```yaml
-[...]
+...
 service:
   name: java
   type: LoadBalancer
   externalPort: 80
   internalPort: 4567
-[...]
+...
 ```
 
-保存并关闭该文件，然后使用 `draft up` 重新运行该应用程序：
+保存所做的更改，关闭该文件，并运行`draft up`重新运行该应用程序。
 
 ```console
 draft up
@@ -184,53 +262,26 @@ draft up
 服务可能需要几分钟才能返回公共 IP 地址。 若要监视进度，请结合 *watch* 参数使用 `kubectl get service` 命令：
 
 ```console
-kubectl get service --watch
-```
+$ kubectl get service --watch
 
-服务的 *EXTERNAL-IP* 最初显示为 *pending*：
-
-```
 NAME                TYPE          CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 example-java-java   LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
-```
-
-EXTERNAL-IP 地址从 *pending* 更改为为某个 IP 地址后，请使用 `Control+C` 停止 `kubectl` 监视进程：
-
-```
-NAME                TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
+...
 example-java-java   LoadBalancer   10.0.141.72   52.175.224.118  80:32150/TCP   7m
 ```
 
-若要查看应用程序，请使用 `curl` 浏览到负载均衡器的外部 IP 地址：
-
-```
-$ curl 52.175.224.118
-
-Hello World, I'm Java
-```
+导航到你的应用程序在浏览器中使用的负载均衡器*外部 IP*若要查看示例应用程序。 在上述示例中，因为 IP 是`52.175.224.118`。
 
 ## <a name="iterate-on-the-application"></a>循环访问应用程序
 
-已配置 Draft 并且应用程序正在 Kubernetes 中运行，现在应设置代码迭代。 每当要测试更新的代码时，请运行 `draft up` 命令来更新正在运行的应用程序。
+可通过在本地更改，重新运行循环访问你的应用程序`draft up`。
 
-此示例更新 Java 示例应用程序以更改显示文本。 打开 *Hello.java* 文件：
-
-```console
-vi src/main/java/helloworld/Hello.java
-```
-
-更新要显示的输出文本 *Hello World, I'm Java in AKS!* ：
+更新返回的消息[行 7 src/main/java/helloworld/Hello.java][example-java-hello-l7]
 
 ```java
-package helloworld;
-
-import static spark.Spark.*;
-
-public class Hello {
     public static void main(String[] args) {
         get("/", (req, res) -> "Hello World, I'm Java in AKS!");
     }
-}
 ```
 
 运行 `draft up` 命令以重新部署应用程序：
@@ -245,13 +296,18 @@ example-java: Releasing Application: SUCCESS ⚓  (3.5773s)
 Inspect the logs with `draft logs 01CMZC9RF0TZT7XPWGFCJE15X4`
 ```
 
-若要查看更新的应用程序，请再次 curl 负载均衡器的 IP 地址：
+若要查看更新的应用程序，请再次导航到你的负载均衡器的 IP 地址并验证显示了所做的更改。
 
-```
-$ curl 52.175.224.118
+## <a name="delete-the-cluster"></a>删除群集
 
-Hello World, I'm Java in AKS!
+当不再需要群集时，使用[az 组删除][az-group-delete]命令删除资源组，AKS 群集中，容器注册表、 容器映像存储在此处以及所有相关资源。
+
+```azurecli-interactive
+az group delete --name MyResourceGroup --yes --no-wait
 ```
+
+> [!NOTE]
+> 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅[AKS 服务主体的注意事项和删除][sp-delete]。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -260,14 +316,22 @@ Hello World, I'm Java in AKS!
 > [!div class="nextstepaction"]
 > [Draft 文档][draft-documentation]
 
-<!-- LINKS - external -->
-[draft-documentation]: https://github.com/Azure/draft/tree/master/docs
-[kubernetes-service-loadbalancer]: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
-[draft-repo]: https://github.com/Azure/draft
 
-<!-- LINKS - internal -->
-[acr-quickstart]: ../container-registry/container-registry-get-started-azure-cli.md
-[aks-helm]: ./kubernetes-helm.md
-[kubernetes-ingress]: ./ingress-basic.md
-[aks-quickstart]: ./kubernetes-walkthrough.md
 [az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-create]: /cli/azure/acr#az-acr-login
+[az-group-delete]: /cli/azure/group#az-group-delete
+[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
+[kubernetes-ingress]: ./ingress-basic.md
+
+[docker-for-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-for-mac]: https://docs.docker.com/docker-for-mac/
+[docker-for-windows]: https://docs.docker.com/docker-for-windows/
+[draft-documentation]: https://github.com/Azure/draft/tree/master/docs
+[example-java]: https://github.com/Azure/draft/tree/master/examples/example-java
+[example-java-hello-l7]: https://github.com/Azure/draft/blob/master/examples/example-java/src/main/java/helloworld/Hello.java#L7
+[kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubernetes-service-loadbalancer]: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
+[helm-init]: https://docs.helm.sh/helm/#helm-init
+[sp-delete]: kubernetes-service-principal.md#additional-considerations
+[tiller-rbac]: https://docs.helm.sh/using_helm/#tiller-namespaces-and-rbac

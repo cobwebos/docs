@@ -7,19 +7,19 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/11/2019
+ms.openlocfilehash: db14f8240dea95eb073a0a653c2798f02fbb7c35
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479099"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67162591"
 ---
-# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>使用 Azure 机器学习函数缩放流分析作业
+# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-functions"></a>缩放 Stream Analytics 作业使用 Azure 机器学习工作室函数
 设置流分析作业，并通过它运行某些示例数据，这通常很直接了当。 但当我们需要运行数据量更大的相同作业时，该怎么办？ 需要了解如何配置流分析作业，以便可以缩放它。 本文档关注使用机器学习函数缩放流分析作业的特殊方面。 有关在一般情况下如何缩放流分析作业的信息，请参阅文章[缩放作业](stream-analytics-scale-jobs.md)。
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>流分析中的 Azure 机器学习函数是什么？
-流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但是在后台，函数调数用实际上是 Azure 机器学习 Web 服务请求数。 机器学习 Web 服务支持在同一 Web 服务 API 调用中“批处理”多个行（这称为“微批处理”），从而提高整体吞吐量。 有关详细信息，请参阅[Azure 机器学习 Web 服务](../machine-learning/studio/consume-web-services.md)。
+流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但是，在后台，函数调用中是实际的 Azure 机器学习工作室 Web 服务请求。 机器学习 Web 服务支持在同一 Web 服务 API 调用中“批处理”多个行（这称为“微批处理”），从而提高整体吞吐量。 有关详细信息，请参阅[Azure 机器学习工作室 Web 服务](../machine-learning/studio/consume-web-services.md)。 Stream Analytics 中的 Azure 机器学习工作室的支持处于预览状态。
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>使用机器学习函数配置流分析作业
 在配置流分析作业的机器学习函数时，需要考虑两个参数：机器学习函数调用数的批大小和为流分析作业预配的流式处理单位 (SU)。 若要确定 SU 的相应值，请首先确定延迟和吞吐量，即流分析作业延迟和每个 SU 的吞吐量。 虽然额外的 SU 会增加运行作业的成本，但可能会始终将 SU 添加到某个作业，以增加分区良好的流分析查询吞吐量。

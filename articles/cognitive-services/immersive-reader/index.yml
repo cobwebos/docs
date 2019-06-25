@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: 沉浸式阅读器文档
+metadata:
+  title: 沉浸式阅读器文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
+  description: 了解如何在应用程序中使用沉浸式阅读器。
+  services: cognitive-services
+  author: metanMSFT
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/20/2019
+  ms.author: metanMSFT
+abstract:
+  description: 沉浸式阅读器是一种工具，它实现了可靠的技术来提高萌发期读者、语言学习者和具有学习差异的人士的阅读理解力。 通过使用沉浸式阅读器 SDK，可以在 Web 应用程序中使用沉浸式阅读器。
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/immersive-reader/overview
+            html: <p>了解沉浸式阅读器以及如何将其集成到应用程序中</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: 什么是沉浸式阅读器？
+          - href: /azure/cognitive-services/immersive-reader/reference
+            html: <p>了解沉浸式阅读器 Javascript SDK</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: 使用沉浸式阅读器 SDK
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 开始使用沉浸式阅读器：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            text: 'C&#35;'
+            alt: 'C# 徽标'
+            href: quickstart
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何使用沉浸式阅读器开发应用程序：
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial.md">使用 Node.js 启动沉浸式阅读器</a>
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: SDK
+            html: <p><a href="reference.md">Javascript</a></p>

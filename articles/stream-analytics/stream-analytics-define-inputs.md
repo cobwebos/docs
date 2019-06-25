@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 1822bfe9f2d6d337db74ba94d43644b0b3567c71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfdebacb4de205fa42fe96ceb9970d2d109536e8
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66455615"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296151"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -38,7 +38,7 @@ ms.locfileid: "66455615"
 
 Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件中心可收集数以百万计的每秒事件数，使你可以处理和分析海量数据连接的设备和应用程序所产生的。 事件中心和流分析一起提供进行实时分析所需的端到端解决方案。 可以通过事件中心将事件实时馈送到 Azure 中，以便流分析作业对这些事件进行实时处理。 例如，用户可以将 Web 点击操作、传感器读数或联机日志事件发送到事件中心。 然后可以创建流分析作业，将事件中心用作输入数据流，以便进行实时筛选、聚合和关联操作。
 
-`EventEnqueuedUtcTime` 是事件到达事件中心的时间戳，也是事件从事件中心发送到流分析的默认时间戳。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。
+`EventEnqueuedUtcTime` 是事件到达事件中心的时间戳，也是事件从事件中心发送到流分析的默认时间戳。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 关键字。
 
 ### <a name="event-hubs-consumer-groups"></a>事件中心使用者组
 
@@ -86,7 +86,7 @@ FROM Input
 
 Azure IoT 中心是高度可缩放的发布-订阅事件引入器已针对 IoT 进行优化。
 
-在流分析中，来自 IoT 中心的事件的默认时间戳是事件到达 IoT 中心的时间戳，即 `EventEnqueuedUtcTime`。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。
+在流分析中，来自 IoT 中心的事件的默认时间戳是事件到达 IoT 中心的时间戳，即 `EventEnqueuedUtcTime`。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 关键字。
 
 ### <a name="iot-hub-consumer-groups"></a>Iot 中心使用者组
 

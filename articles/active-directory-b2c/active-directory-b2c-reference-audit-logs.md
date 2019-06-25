@@ -10,12 +10,13 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 27c91185bacea839ec73a3f4bd06f5df43bd4edf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 2c1bfd9e2659127ab77e9db661b54fde18a8d25c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509655"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205367"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
@@ -23,6 +24,9 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 
 > [!IMPORTANT]
 > 审核日志仅保留七天。 如果需要保留更长时间，请使用下面所示的方法计划下载并存储日志。
+
+> [!NOTE]
+> 您不能看到用户登录为单个 Azure AD B2C 应用程序下**用户**一部分**Azure Active Directory**或**Azure AD B2C**边栏选项卡。 登录名存在将显示用户活动，但无法返回到该用户登录到 B2C 应用程序相关联。 作为这篇文章中所述，必须为此，请使用审核日志。
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>审核日志的 B2C 类别中提供的活动的概述
 审核日志中的“B2C”类别包含以下类型的活动  ：
@@ -41,6 +45,18 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 
 ## <a name="example-activity"></a>示例活动
 下面的示例显示了用户使用外部标识提供者登录时捕获的数据：![审核日志 - 示例](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+
+活动详细信息面板包含以下相关信息：
+
+|部分|字段|描述|
+|-------|-----|-----------|
+| activities | 名称 | 哪个活动发生。 例如，"颁发 id_token 到应用程序"（最后实际用户单一登录）。 |
+| 发起人(操作者) | ObjectId | **对象 ID**的用户登录到 B2C 应用程序 （此标识符不是在 Azure 门户中可见，但它是可通过图形 API 进行访问。 例如）。 |
+| 发起人(操作者) | Spn | **应用程序 ID**的用户登录到 B2C 应用程序。 |
+| 按目标划分 | ObjectId | **对象 ID**签名中的用户。 |
+| 更多详细信息 | TenantId | **租户 ID**的 Azure AD B2C 租户。 |
+| 更多详细信息 | PolicyId | **策略 ID**的用于将用户登录的用户流 （策略）。 |
+| 更多详细信息 | ApplicationId | **应用程序 ID**的用户登录到 B2C 应用程序。 |
 
 ## <a name="accessing-audit-logs-through-the-azure-portal"></a>通过 Azure 门户访问审核日志
 1. 转到 [Azure 门户](https://portal.azure.com)。 请确保位于 B2C 目录。
@@ -62,6 +78,9 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 - 使用“日期范围”下拉列表，筛选所示活动的日期范围 
 - 如果单击列表中的特定行，右侧的上下文框会显示与该活动关联的其他属性
 - 单击“下载”可将活动下载为 csv 文件 
+
+> [!NOTE]
+> 此外可以通过导航到查看审核日志**Azure AD B2C**而非**Azure Active Directory**在左侧的收藏夹栏中。 下**活动**，单击**审核日志**，您将找到类似的筛选功能使用相同的日志。
 
 ## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>通过 Azure AD 报告 API 访问审核日志
 审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)进行访问。
