@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 009f5fe7243b8ce597c2be9f9c6874cdb56d103c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60706035"
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Azure 安全中心的警报验证
@@ -31,7 +31,7 @@ ms.locfileid: "60706035"
 在计算机上安装安全中心代理以后，请在需要让其充当与警报相关的受攻击资源的计算机中执行以下步骤：
 
 1. 将一个可执行文件（例如 calc.exe）复制到计算机的桌面或方便操作的其他目录。
-2. 将该文件重命名为 ASC_AlertTest_662jfi039N.exe。
+2. 将该文件重命名为 ASC_AlertTest_662jfi039N.exe  。
 3. 打开命令提示符，使用一个参数（假参数名称即可）执行此文件，例如：*ASC_AlertTest_662jfi039N.exe -foo*
 4. 等待 5 到 10 分钟，然后打开安全中心警报。 其中会显示类似以下内容的警报：
 
@@ -39,7 +39,7 @@ ms.locfileid: "60706035"
 
 查看此警报时，请确保“启用参数审核”字段显示为 true。 如果显示 false，则需启用命令行参数审核。 可以使用以下命令行启用该选项：
 
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"
+ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"
 
 
 > [!NOTE]

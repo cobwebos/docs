@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.openlocfilehash: 9bc34110b85119c7b8b303774b585d03ce9d3a0f
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596647"
 ---
 # <a name="get-started-with-device-management-node"></a>设备管理入门 (Node)
@@ -51,7 +51,7 @@ ms.locfileid: "65596647"
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 
-在本部分中，将执行以下步骤：
+在本部分中，你将执行以下步骤：
 
 * 创建一个 Node.js 控制台应用，用于响应通过云调用的直接方法
 

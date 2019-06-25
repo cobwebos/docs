@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e655b442ba9290d4b4525108521f2d1a0c766b48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9df5eb9fa4493f82c6efd4a8e30eee324e4eac2a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869824"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273833"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>开始使用 Azure Maps Android SDK
 
@@ -201,7 +201,7 @@ Android Studio 中将需要几秒钟才能生成应用程序。 生成完成后�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要将内容添加到您的映射，请参阅：
+了解如何在地图上添加覆盖数据：
 
 > [!div class="nextstepaction"]
 > [将符号层添加到 Android 映射](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
@@ -211,5 +211,3 @@ Android Studio 中将需要几秒钟才能生成应用程序。 生成完成后�
 
 > [!div class="nextstepaction"]
 > [在 Android 映射中的更改地图样式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
-
-

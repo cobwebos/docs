@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/30/2019
+ms.date: 06/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c09c9df1b8af7adca5c0169cf31881121ba6cc99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: cd7c268008afbd87e855516d5834676423272646
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427479"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146716"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>如何在 Azure 自动化中更新 Azure PowerShell 模块
 
@@ -35,9 +35,7 @@ ms.locfileid: "66427479"
 
 使用此过程更新 Azure 模块时，需要注意以下一些事项：
 
-* 此 runbook 支持仅更新**Azure**并**AzureRm**当前模块。 [Azure PowerShell Az 模块](/powershell/azure/new-azureps-module-az)支持在自动化帐户中，但不能更新用于此 runbook。 您需要使用时需要考虑的重要因素`Az`模块在自动化帐户中，若要了解详细信息，请参阅[自动化帐户中的使用 Az 模块](az-modules.md)。
-
-* 请避免在包含 Az 模块的自动化帐户中启动此 Runbook。
+* 此 runbook 支持更新**Azure**并**AzureRm**默认情况下的模块。 此 runbook 支持更新**Az**模块。 审阅[更新 Azure 模块 runbook 自述文件](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md)有关详细信息更新`Az`模块用于此 runbook。 还有其他你需要使用时需要考虑的重要因素`Az`模块在自动化帐户中，若要了解详细信息，请参阅[自动化帐户中的使用 Az 模块](az-modules.md)。
 
 * 在启动此 Runbook 之前，请确保为自动化帐户创建了 [Azure 运行方式帐户凭据](manage-runas-account.md)。
 

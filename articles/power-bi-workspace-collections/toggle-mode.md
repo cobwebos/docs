@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: cab5d067387fcffe4f62b94e06960afe47d5f00c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64702688"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中在报表的查看和编辑模式之间切换
@@ -27,7 +27,7 @@ ms.locfileid: "64702688"
 需要创建一个访问令牌，令牌可授予你查看和编辑报表的能力。 要编辑并保存报表，需要 **Report.ReadWrite** 令牌权限。 有关详细信息，请参阅[在 Power BI 工作区集合中进行身份验证和授权](app-token-flow.md)。
 
 > [!NOTE]
-> 这可以让你编辑现有报表并保存更改。 如果还需要支持“另存为”的功能，则需要提供额外的权限。 有关详细信息，请参阅[作用域](app-token-flow.md#scopes)。
+> 这可以让你编辑现有报表并保存更改。 如果还需要支持“另存为”  的功能，则需要提供额外的权限。 有关详细信息，请参阅[作用域](app-token-flow.md#scopes)。
 
 ```csharp
 using Microsoft.PowerBI.Security;
@@ -77,7 +77,7 @@ var token = embedToken.Generate("{access key}");
     </script>
 ```
 
-这表示会根据设置为 models.ViewMode.View 的 viewMode 在查看模式下嵌入报表。
+这表示会根据设置为 models.ViewMode.View  的 viewMode  在查看模式下嵌入报表。
 
 ## <a name="view-mode"></a>查看模式
 

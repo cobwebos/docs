@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: 0d52e84ba027f902cebf543ae019b5e4b53400b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5dfc00b1193117c22ba1c763bb0e75d9c4712222
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059683"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275741"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS 别名记录概述
 
@@ -29,7 +29,7 @@ Azure DNS 区域中的以下记录类型支持别名记录集：
 
 ## <a name="capabilities"></a>功能
 
-- **从 DNS A/AAAA 记录集指向公共 IP 资源**。 可以创建一个 A/AAAA 记录集，并使其成为指向公共 IP 资源的别名记录集。 如果公共 IP 地址发生更改或者被删除，则会自动调整 DNS 记录集。 这可以避免出现指向不正确 IP 地址的无关联 DNS 记录。
+- **从 DNS A/AAAA 记录集指向公共 IP 资源**。 可以创建一个 A/AAAA 记录集，并使其成为指向公共 IP 资源的别名记录集。 DNS 记录集的更改自动如果公共 IP 地址发生更改或删除。 这可以避免出现指向不正确 IP 地址的无关联 DNS 记录。
 
 - **从 DNS A/AAAA/CNAME 记录集指向流量管理器配置文件**。 你可以创建 A/AAAA 或 CNAME 记录集并使用别名记录来将其指向流量管理器配置文件。 当您需要路由流量在区域顶点处，因为对于区域顶点处不支持传统的 CNAME 记录时，它是特别有用。 例如，假设流量管理器配置文件为 myprofile.trafficmanager.net 并且业务 DNS 区域为 contoso.com， 则可以为 contoso.com（区域顶点）创建一个 A/AAAA 类型的别名记录集，并使其指向 myprofile.trafficmanager.net。
 - **指向 Azure 内容交付网络 (CDN) 终结点**。 创建使用 Azure 存储和 Azure CDN 的静态网站时，这很有用。

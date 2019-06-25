@@ -10,10 +10,10 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
 ms.openlocfilehash: 12799a308157c3c0e19de1f82c0fe3df44fad37e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62106294"
 ---
 # <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>监视 B2B 消息与 Azure 逻辑应用中的 Azure Monitor 日志
@@ -39,19 +39,19 @@ ms.locfileid: "62106294"
 
 ### <a name="turn-on-logging-from-integration-account"></a>从集成帐户启用日志记录
 
-1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。 在“监视”下，选择“诊断设置”。
+1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。 在“监视”下，选择“诊断设置”   。
 
    ![查找并选择“集成帐户”，选择“诊断设置”](media/logic-apps-monitor-b2b-message/find-integration-account.png)
 
 1. 现可找到集成帐户并进行选择。 在筛选器列表中，选择应用到集成帐户的值。
-完成后，选择“添加诊断设置”。
+完成后，选择“添加诊断设置”  。
 
    | 属性 | 值 | 描述 | 
    |----------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | 与集成帐户关联的 Azure 订阅 | 
    | **资源组** | <*Azure-resource-group-name*> | 集成帐户的 Azure 资源组 | 
    | **资源类型** | **集成帐户** | 要在其中启用日志记录的 Azure 资源类型 | 
-   | **资源** | <integration-account-name> | 要在其中启用日志记录的 Azure 资源的名称 | 
+   | **资源** | <integration-account-name>  | 要在其中启用日志记录的 Azure 资源的名称 | 
    ||||  
 
    例如：
@@ -60,16 +60,16 @@ ms.locfileid: "62106294"
 
 1. 命名新的诊断设置并选择 Log Analytics 工作区和要记录的数据。
 
-   1. 选择“发送到 Log Analytics”。 
+   1. 选择“发送到 Log Analytics”  。 
 
-   1. 在“Log Analytics”下，选择“配置”。 
+   1. 在“Log Analytics”下，选择“配置”   。 
 
-   1. 在“OMS 工作区”下，选择要用于日志记录的 Log Analytics 工作区。 
+   1. 在“OMS 工作区”下，选择要用于日志记录的 Log Analytics 工作区  。 
 
       > [!NOTE]
       > OMS 工作区即将替换为 Log Analytics 工作区。 
 
-   1. 在“日志”下，选择“IntegrationAccountTrackingEvents”类别，然后选择“保存”。
+   1. 在“日志”下，选择“IntegrationAccountTrackingEvents”类别，然后选择“保存”    。
 
    例如： 
 
@@ -81,19 +81,19 @@ ms.locfileid: "62106294"
 
 ### <a name="turn-on-logging-through-azure-monitor"></a>通过 Azure Monitor 启用日志记录
 
-1. 在 [Azure 门户](https://portal.azure.com)中的 Azure 主菜单上，选择“监视”。 选择“设置”下的“诊断设置”。 
+1. 在 [Azure 门户](https://portal.azure.com)中的 Azure 主菜单上，选择“监视”  。 选择“设置”下的“诊断设置”   。 
 
    ![选择“监视”>“诊断设置”>“集成帐户”](media/logic-apps-monitor-b2b-message/monitor-diagnostics-settings.png)
 
 1. 现可找到集成帐户并进行选择。 在筛选器列表中，选择应用到集成帐户的值。
-完成后，选择“添加诊断设置”。
+完成后，选择“添加诊断设置”  。
 
    | 属性 | 值 | 描述 | 
    |----------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | 与集成帐户关联的 Azure 订阅 | 
    | **资源组** | <*Azure-resource-group-name*> | 集成帐户的 Azure 资源组 | 
    | **资源类型** | **集成帐户** | 要在其中启用日志记录的 Azure 资源类型 | 
-   | **资源** | <integration-account-name> | 要在其中启用日志记录的 Azure 资源的名称 | 
+   | **资源** | <integration-account-name>  | 要在其中启用日志记录的 Azure 资源的名称 | 
    ||||  
 
    例如：
@@ -102,16 +102,16 @@ ms.locfileid: "62106294"
 
 1. 命名新的诊断设置并选择 Log Analytics 工作区和要记录的数据。
 
-   1. 选择“发送到 Log Analytics”。 
+   1. 选择“发送到 Log Analytics”  。 
 
-   1. 在“Log Analytics”下，选择“配置”。 
+   1. 在“Log Analytics”下，选择“配置”   。 
 
-   1. 在“OMS 工作区”下，选择要用于日志记录的 Log Analytics 工作区。 
+   1. 在“OMS 工作区”下，选择要用于日志记录的 Log Analytics 工作区  。 
 
       > [!NOTE]
       > OMS 工作区即将替换为 Log Analytics 工作区。 
 
-   1. 在“日志”下，选择“IntegrationAccountTrackingEvents”类别，然后选择“保存”。
+   1. 在“日志”下，选择“IntegrationAccountTrackingEvents”类别，然后选择“保存”    。
 
    例如： 
 

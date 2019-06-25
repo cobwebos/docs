@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: f659ad2f75f9dad390c37f0e1736af5991a32dfc
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943240"
 ---
 # <a name="power-bi-app-contacts-tab"></a>Power BI 应用联系人选项卡
 
-使用“新建产品/服务”页的“联系人”选项卡为产品/服务提供技术和用户支持资源。 它划分为两个部分：“工程”和“客户支持”。
+使用“新建产品/服务”  页的“联系人”  选项卡为产品/服务提供技术和用户支持资源。 它划分为两个部分：  “工程”和“客户支持”  。
 
 ![“联系人”选项卡](media/contacts-tab.png)
 

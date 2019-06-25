@@ -1,6 +1,6 @@
 ---
 title: 基线策略阻止旧式身份验证 （预览版）-Azure Active Directory
-description: 条件性访问策略来阻止旧式身份验证协议
+description: 为块旧式身份验证协议的条件性访问策略
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7eebc68ae8a55d636f3bc85e179bd7d6813be8d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e55bf4a66dcd8c1c7cfbc881d6f93c3a12f5dc00
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235559"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112318"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>基准策略：块旧式身份验证 （预览版）
 
@@ -120,4 +120,4 @@ SharePoint Online 启用新式身份验证默认值。 对于 2017 年 8 月 1 �
 
 * [条件性访问基线保护策略](concept-baseline-protection.md)
 * [保护标识基础结构的五个步骤](../../security/azure-ad-secure-steps.md)
-* [什么是 Azure Active Directory 中的条件访问？](overview.md)
+* [什么是 Azure Active Directory 中条件性访问？](overview.md)

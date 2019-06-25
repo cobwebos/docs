@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8c7bb080b350742d0722cdb4e07b82a6881ba05b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d6f44005080bbd8583ae2e2fdad31ef2c823c7ca
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073668"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154519"
 ---
 # <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>通过从 Azure 门户的 CloudSimple 门户访问 VMware 解决方案
 

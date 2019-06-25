@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563ec5969a77dd01506270c3e864e00639a56eb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6515f60fb67e52a7924afec2effd0c2001935e5d
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110725"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190256"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>主刷新令牌是什么？
 
@@ -63,6 +63,9 @@ PRT 是从其内容未知的任何客户端组件的 Azure AD 发送的不透明
    * 添加从帐户**设置** > **帐户** > **访问工作或学校** > **连接**
 
 在这些情况下，Azure AD WAM 插件是 PRT 的主机构，因为与此 Azure AD 帐户未出现 Windows 登录。
+
+> [!NOTE]
+> 第三方标识提供程序必须支持要启用 Windows 10 设备上的 PRT 颁发的 WS 信任协议。 没有 WS 信任、 PRT 无法发出到混合 Azure AD 加入或 Azure AD 用户在已加入的设备
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT 生存期是什么？
 

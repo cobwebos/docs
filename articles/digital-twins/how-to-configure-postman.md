@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: v-adgera
-ms.openlocfilehash: 31944c08bad503c20832ea7e4e682c0063ab0f9f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: cd67f1065f47b758f2a7e0e5be3c60169c30273e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735038"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116565"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -41,7 +41,7 @@ ms.locfileid: "66735038"
 
     [![Azure Active Directory 应用注册添加 api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
-1. 单击“清单”以打开应用的应用程序清单  。 将“oauth2AllowImplicitFlow”设置为 `true`  。
+1. 选择**清单**打开您的应用程序的应用程序清单。 将“oauth2AllowImplicitFlow”设置为 `true`  。
 
     [![Azure Active Directory 隐式流](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
 
@@ -111,7 +111,7 @@ ms.locfileid: "66735038"
    > * 对于每个部分，不需要指定这些标头。
    > * 对于整个请求，必须选择 `multipart/mixed` 或其他相应的 **Content-Type**。
 
-1. 最后，单击“发送”  ，以提交你的多部分 HTTP POST 请求。
+1. 最后，选择**发送**提交多部分 HTTP POST 请求。
 
 ## <a name="next-steps"></a>后续步骤
 

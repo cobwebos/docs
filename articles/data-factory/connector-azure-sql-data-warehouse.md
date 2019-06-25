@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: bd02a95f485f45c223fce4c24a72251481c2aa7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 68d2f126ee32f61d13d170712bf58581101036e8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427894"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206068"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务版本："]
@@ -426,7 +426,7 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob、 Azure 数据湖存储 Gen1 
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | 帐户密钥身份验证, 托管标识身份验证 |
 
     >[!IMPORTANT]
-    >如果在 Azure 存储中配置了 VNet 服务终结点，必须使用托管标识身份验证。 请参阅[将 VNet 服务终结点与 Azure 存储配合使用的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
+    >如果你的 Azure 存储配置与 VNet 服务终结点，则必须使用托管的标识进行身份验证-请参阅[对 Azure 存储使用 VNet 服务终结点的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 了解从数据工厂中所需的配置[Azure Blob-托管的标识身份验证](connector-azure-blob-storage.md#managed-identity)并[Azure 数据湖存储第 2 代-托管的标识身份验证](connector-azure-data-lake-storage.md#managed-identity)分别部分。
 
 2. **源数据格式**为 **Parquet**、**ORC** 或“分隔文本”，  使用以下配置：
 
@@ -537,12 +537,12 @@ PolyBase 负载限制为小于 1 MB 的行。 不能用它加载到 VARCHR(MAX)�
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-解决方案是在复制活动接收器 -> PolyBase 设置中取消选中“使用类型默认值”选项（为 false）。  “[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
+解决方法是取消选择"**使用类型默认值**"（为 false) 在复制活动接收器中的选项-> PolyBase 设置。 “[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )”是 PolyBase 本机配置，用于指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。 
 
 **其他**
 
-若要了解更多已知的 PolyBase 问题，请参阅[排查 Azure SQL 数据仓库 PolyBase 加载问题](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase)。
+有关 PolyBase 的更多已知问题，请参阅[故障排除 Azure SQL 数据仓库 PolyBase 负载](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase)。
 
 ### <a name="sql-data-warehouse-resource-class"></a>SQL 数据仓库资源类
 

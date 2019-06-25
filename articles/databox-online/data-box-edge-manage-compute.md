@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65953119"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>在 Azure Data Box Edge 中管理计算
@@ -34,19 +34,19 @@ ms.locfileid: "65953119"
 - **Scheduled**：这些触发器可用于响应某个计划，对于该计划，可以定义开始日期、开始时间和重复间隔。
 
 
-### <a name="add-a-trigger"></a>添加一个触发器
+### <a name="add-a-trigger"></a>添加触发器
 
 在 Azure 门户中执行以下步骤可以创建触发器。
 
-1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“触发器”。 在命令栏上选择“+ 添加触发器”。
+1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“触发器”。  在命令栏上选择“+ 添加触发器”  。
 
     ![选择“添加触发器”](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-2. 在“添加触发器”边栏选项卡中，提供触发器的唯一名称。
+2. 在“添加触发器”边栏选项卡中，提供触发器的唯一名称。 
     
     <!--Trigger names can only contain numbers, lowercase letters, and hyphens. The share name must be between 3 and 63 characters long and begin with a letter or a number. Each hyphen must be preceded and followed by a non-hyphen character.-->
 
-3. 选择触发器的**类型**。 如果该触发器用于响应文件事件，请选择“文件”。 如果希望该触发器在定义的时间启动并按指定的重复间隔运行，请选择“计划”。 根据所做的选择，屏幕上会显示一组不同的选项。
+3. 选择触发器的**类型**。 如果该触发器用于响应文件事件，请选择“文件”。  如果希望该触发器在定义的时间启动并按指定的重复间隔运行，请选择“计划”。  根据所做的选择，屏幕上会显示一组不同的选项。
 
     - **文件触发器** - 从下拉列表中选择一个装载的共享。 当此共享中激发文件事件时，该触发器会调用某个 Azure 函数。
 
@@ -58,7 +58,7 @@ ms.locfileid: "65953119"
 
         ![添加 NFS 共享](media/data-box-edge-manage-compute/add-scheduled-trigger.png)
 
-4. 选择“添加”以创建该触发器。 此时会显示一条通知，指出正在创建触发器。 创建触发器后，边栏选项卡会更新以反映新的触发器。
+4. 选择“添加”  以创建该触发器。 此时会显示一条通知，指出正在创建触发器。 创建触发器后，边栏选项卡会更新以反映新的触发器。
  
     ![更新的触发器列表](media/data-box-edge-manage-compute/add-trigger-2.png)
 
@@ -70,11 +70,11 @@ ms.locfileid: "65953119"
 
     ![选择触发器](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-2. 单击右键并选择“删除”。
+2. 单击右键并选择“删除”  。
 
     ![选择“删除”](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-3. 出现确认提示时，单击“是”。
+3. 出现确认提示时，单击“是”  。
 
     ![确认删除](media/data-box-edge-manage-compute/add-trigger-1.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "65953119"
 
 在 Azure 门户中执行以下步骤可以查看设备的计算配置。
 
-1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“模块”。 在命令栏上选择“查看计算”。
+1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“模块”。  在命令栏上选择“查看计算”。 
 
     ![选择“查看计算”](media/data-box-edge-manage-compute/view-compute-1.png)
 
@@ -101,11 +101,11 @@ ms.locfileid: "65953119"
 
 在 Azure 门户中执行以下步骤可以删除设备的现有 Edge 计算配置。
 
-1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“开始”。 在命令栏上选择“删除计算”。
+1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“开始”。  在命令栏上选择“删除计算”。 
 
     ![选择“删除计算”](media/data-box-edge-manage-compute/remove-compute-1.png)
 
-2. 删除计算配置后，如果需要再次使用计算，则重新配置设备。 出现确认提示时，选择“是”。
+2. 删除计算配置后，如果需要再次使用计算，则重新配置设备。 出现确认提示时，选择“是”  。
 
     ![选择“删除计算”](media/data-box-edge-manage-compute/remove-compute-2.png)
 
@@ -119,11 +119,11 @@ ms.locfileid: "65953119"
 
 在 Azure 门户中执行以下步骤可以同步设备的访问密钥。
 
-1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“开始”。 在命令栏上选择“刷新配置”。
+1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“开始”。  在命令栏上选择“刷新配置”。 
 
     ![选择“刷新配置”](media/data-box-edge-manage-compute/refresh-configuration-1.png)
 
-2. 出现确认提示时，选择“是”。
+2. 出现确认提示时，选择“是”。 
 
      ![出现提示时选择“是”](media/data-box-edge-manage-compute/refresh-configuration-2.png)
 

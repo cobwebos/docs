@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: spelluru
 ms.openlocfilehash: fdd18b833794c25cb90188ba8bc418d4785492ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60824056"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>监视事件网格消息传送 
@@ -44,15 +44,15 @@ ms.locfileid: "60824056"
 
 若要查看事件订阅的指标，可以按订阅类型搜索或按特定资源的订阅搜索。
 
-若要按事件订阅类型搜索，请选择“所有服务”。
+若要按事件订阅类型搜索，请选择“所有服务”  。
 
 ![选择所有服务](./media/monitor-event-delivery/all-services.png)
 
-搜索事件网格，并从可用选项中选择“事件网格订阅”。
+搜索事件网格  ，并从可用选项中选择“事件网格订阅”  。
 
 ![搜索事件订阅](./media/monitor-event-delivery/search-and-select.png)
 
-按事件类型、订阅和位置进行筛选。 针对要查看的订阅选择“指标”。
+按事件类型、订阅和位置进行筛选。 针对要查看的订阅选择“指标”  。
 
 ![筛选事件订阅](./media/monitor-event-delivery/filter-events.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "60824056"
 
 ![查看事件指标](./media/monitor-event-delivery/subscription-metrics.png)
 
-若要查找特定资源的指标，请选择该资源。 然后，选择“事件”。
+若要查找特定资源的指标，请选择该资源。 然后，选择“事件”  。
 
 ![选择资源的事件](./media/monitor-event-delivery/select-events.png)
 

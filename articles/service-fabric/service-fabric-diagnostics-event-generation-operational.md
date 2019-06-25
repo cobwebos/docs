@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: cde0464985f756132c60453c4e79ffefd4a1dd2c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65788595"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric 事件列表 
@@ -40,7 +40,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 有关群集升级的详细信息，请参阅[此处](service-fabric-cluster-upgrade-windows-server.md)。
 
-| EventId | 名称 | Category | 描述 |源（任务） | 级别 | 
+| EventId | 名称 | 类别 | 描述 |源（任务） | 级别 | 
 | --- | --- | --- | --- | --- | --- | 
 | 29627 | ClusterUpgradeStarted | 升级 | 群集升级已启动 | CM | 信息性 |
 | 29628 | ClusterUpgradeCompleted | 升级 | 群集升级已完成 | CM | 信息性 | 
@@ -52,7 +52,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **节点生命周期事件** 
 
-| EventId | 名称 | Category | 描述 |源（任务） | 级别 |
+| EventId | Name | 类别 | 描述 |源（任务） | 级别 |
 | --- | --- | ---| --- | --- | --- | 
 | 18602 | NodeDeactivateCompleted | StateTransition | 节点停用已完成 | FM | 信息性 | 
 | 18603 | NodeUp | StateTransition | 群集检测到节点已启动 | FM | 信息性 | 
@@ -69,7 +69,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **应用程序生命周期事件**
 
-| EventId | 名称 | Category | 描述 |源（任务） | 级别 | 
+| EventId | Name | 类别 | 描述 |源（任务） | 级别 | 
 | --- | --- | --- | --- | --- | --- | 
 | 29620 | ApplicationCreated | LifeCycle | 新应用程序已创建 | CM | 信息性 | 
 | 29625 | ApplicationDeleted | LifeCycle | 一个现有的应用程序已删除 | CM | 信息性 | 
@@ -79,7 +79,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 有关应用程序升级的详细信息，请参阅[此处](service-fabric-application-upgrade.md)。
 
-| EventId | 名称 | Category | 描述 |源（任务） | 级别 | 
+| EventId | 名称 | 类别 | 描述 |源（任务） | 级别 | 
 | --- | --- | ---| --- | --- | --- | 
 | 29621 | ApplicationUpgradeStarted | 升级 | 应用程序升级已启动 | CM | 信息性 | 
 | 29622 | ApplicationUpgradeCompleted | 升级 | 应用程序升级已完成 | CM | 信息性 | 
@@ -91,7 +91,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **服务生命周期事件**
 
-| EventId | 名称 | Category | 描述 |源（任务） | 级别 | 
+| EventId | Name | 类别 | 描述 |源（任务） | 级别 | 
 | --- | --- | ---| --- | --- | --- |
 | 18657 | ServiceCreated | LifeCycle | 已创建新服务 | FM | 信息性 | 
 | 18658 | ServiceDeleted | LifeCycle | 已删除一个现有的服务 | FM | 信息性 | 
@@ -100,7 +100,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **分区移动事件**
 
-| EventId | 名称 | Category | 描述 |源（任务） | 级别 | 
+| EventId | 名称 | 类别 | 描述 |源（任务） | 级别 | 
 | --- | --- | ---| --- | --- | --- |
 | 18940 | PartitionReconfigured | LifeCycle | 分区重新配置已完成 | RA | 信息性 | 
 
@@ -108,7 +108,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **副本生命周期事件**
 
-| EventId | 名称 | Category | 描述 |源（任务） | 级别 |
+| EventId | 名称 | 类别 | 描述 |源（任务） | 级别 |
 | --- | --- | ---| --- | --- | --- |
 | 61701 | ReliableDictionaryOpened | LifeCycle | 可靠字典已打开 | DistributedDictionary | 信息性 |
 | 61702 | ReliableDictionaryClosed | LifeCycle | 可靠字典已关闭 | DistributedDictionary | 信息性 |
@@ -142,7 +142,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **容器生命周期事件** 
 
-| EventId | 名称 | 描述 |源（任务） | 级别 | Version |
+| EventId | Name | 描述 |源（任务） | 级别 | Version |
 | --- | --- | ---| --- | --- | --- |
 | 23074 | ContainerActivated | 容器已启动 | 宿主 | 信息性 | 第 |
 | 23075 | ContainerDeactivated | 容器已停止 | 宿主 | 信息性 | 第 |
@@ -158,7 +158,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **群集运行状况报告事件**
 
-| EventId | 名称 | 描述 |源（任务） | 级别 | Version |
+| EventId | Name | 描述 |源（任务） | 级别 | Version |
 | --- | --- | --- | --- | --- | --- |
 | 54428 | ClusterNewHealthReport | 新的群集运行状况报告可用 | HM | 信息性 | 第 |
 | 54437 | ClusterHealthReportExpired | 现有的群集运行状况报告已过期 | HM | 信息性 | 第 |
@@ -183,21 +183,21 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **服务运行状况报告事件**
 
-| EventId | 名称 | 描述 |源（任务） | 级别 | Version |
+| EventId | Name | 描述 |源（任务） | 级别 | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54424 | ServiceNewHealthReport | 新的服务运行状况报告已创建 | HM | 信息性 | 第 |
 | 54433 | ServiceHealthReportExpired | 现有的服务运行状况报告已过期 | HM | 信息性 | 第 |
 
 **分区运行状况报告事件**
 
-| EventId | 名称 | 描述 |源（任务） | 级别 | Version |
+| EventId | Name | 描述 |源（任务） | 级别 | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54422 | PartitionNewHealthReport | 新的分区运行状况报告已创建 | HM | 信息性 | 第 |
 | 54431 | PartitionHealthReportExpired | 现有的分区运行状况报告已过期 | HM | 信息性 | 第 |
 
 **副本运行状况报告事件**
 
-| EventId | 名称 | 描述 |源（任务） | 级别 | Version |
+| EventId | Name | 描述 |源（任务） | 级别 | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54429 | StatefulReplicaNewHealthReport | 有状态副本运行状况报告已创建 | HM | 信息性 | 第 |
 | 54430 | StatelessInstanceNewHealthReport | 新的无状态实例运行状况报告已创建 | HM | 信息性 | 第 |
@@ -208,14 +208,14 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **混沌会话事件**
 
-| EventId | 名称 | 描述 |源（任务） | 级别 | Version |
+| EventId | Name | 描述 |源（任务） | 级别 | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50021 | ChaosStarted | 混沌测试会话已启动 | Testability | 信息性 | 第 |
 | 50023 | ChaosStopped | 混沌测试会话已停止 | Testability | 信息性 | 第 |
 
 **混沌节点事件**
 
-| EventId | 名称 | 描述 |源（任务） | 级别 | Version |
+| EventId | Name | 描述 |源（任务） | 级别 | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50033 | ChaosNodeRestartScheduled | 节点已计划在混沌测试会话过程中重启 | Testability | 信息性 | 第 |
 | 50087 | ChaosNodeRestartCompleted | 节点已在混沌测试会话过程中完成重启 | Testability | 信息性 | 第 |
@@ -237,7 +237,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **混沌副本事件**
 
-| EventId | 名称 | 描述 |源（任务） | 级别 | Version |
+| EventId | Name | 描述 |源（任务） | 级别 | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50047 | ChaosReplicaRestartScheduled | 已计划在混沌测试会话过程中进行副本重启 | Testability | 信息性 | 第 |
 | 50051 | ChaosReplicaRemovalScheduled | 已计划在混沌测试会话过程中进行副本删除 | Testability | 信息性 | 第 |
@@ -247,15 +247,15 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 **相关事件**
 
-| EventId | 名称 | 描述 |源（任务） | 级别 | Version |
+| EventId | Name | 描述 |源（任务） | 级别 | Version |
 | --- | --- | ---| --- | --- | --- |
 | 65011 | CorrelationOperational | 已检测到相关性 | Testability | 信息性 | 第 |
 
-## <a name="events-prior-to-version-62"></a>6.2 版本之前的事件
+## <a name="events-prior-to-version-62"></a>6\.2 版本之前的事件
 
 以下是 6.2 版本之前的 Service Fabric 提供的事件综合列表。
 
-| EventId | 名称 | 源（任务） | 级别 |
+| EventId | Name | 源（任务） | 级别 |
 | --- | --- | --- | --- |
 | 25620 | NodeOpening | FabricNode | 信息性 |
 | 25621 | NodeOpenedSuccess | FabricNode | 信息性 |

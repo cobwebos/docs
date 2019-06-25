@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 5/19/2019
 ms.author: monhaber
 ms.openlocfilehash: 25ed9cb624474d5da56d385f4e9c155918ec8eab
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66428329"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>通过安全中心监视的 azure 安全策略
@@ -79,7 +79,7 @@ ms.locfileid: "66428329"
 |\[预览]:应从订阅中删除弃用的帐户拥有所有者权限|应从订阅中删除不推荐使用具有所有者权限的帐户。 不推荐使用的帐户已阻止登录。|
 |\[预览]:应从订阅中删除弃用的帐户|应从订阅中删除弃用的帐户。 不推荐使用的帐户已阻止登录。|
 |\[预览]:应从订阅中删除拥有所有者权限的外部帐户|应从你的订阅以防止权限访问删除具有所有者权限的外部帐户。|
-|\[预览]:外部帐户具有写入权限应从订阅中删除|外部帐户具有写入权限应该删除的订阅以防止未受监视的访问。|
+|\[预览]:应从订阅中删除具有写入权限的外部帐户|外部帐户具有写入权限应该删除的订阅以防止未受监视的访问。|
 |\[预览]:应从订阅中删除拥有读取权限的外部帐户|从你的订阅以防止未受监视的访问，应删除具有读取权限的外部帐户。|
 
 

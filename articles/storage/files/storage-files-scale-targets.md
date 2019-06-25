@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c4928050f945ac88dd1f86e2a13b5d26d385e55a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5e2f7b52ca3cb8a4d472b353e844bdad3aa1b0c1
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190014"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150447"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -42,16 +42,24 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 
 ### <a name="premium-filestorage-account-limits"></a>高级文件存储帐户限制
 
-高级文件共享中一个名为特殊的存储帐户预配**文件存储 （预览版）**。 此帐户具有比使用标准文件共享的存储帐户的略有不同的缩放目标。 有关存储帐户规模目标，请参阅中的表[Azure 存储帐户规模目标](#azure-storage-account-scale-targets)部分。
+高级文件共享中一个名为特殊的存储帐户预配**文件存储 （预览版）** 。 此帐户具有比使用标准文件共享的存储帐户的略有不同的缩放目标。 有关存储帐户规模目标，请参阅中的表[Azure 存储帐户规模目标](#azure-storage-account-scale-targets)部分。
 
 > [!IMPORTANT]
-> 存储帐户限制适用于所有共享。 最多缩放的存储帐户的最大值才可实现，如果只有一个共享每个存储帐户。
+> 存储帐户限制适用于所有共享。 最多缩放是只可实现，如果每个文件存储帐户只有一个共享的文件存储帐户的最大值。
+
+### <a name="file-share-and-file-scale-targets"></a>文件共享和文件规模目标
+
+> [!NOTE]
+> 大于 5 TiB 的标准文件共享处于预览状态，存在一定的限制。
+> 有关列表的限制和要加入到的这些更大的文件共享大小的预览，请参阅[标准文件共享](storage-files-planning.md#standard-file-shares)计划指南的部分。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
+
 ## <a name="azure-file-sync-scale-targets"></a>Azure 文件同步规模目标
 
-对于 Azure 文件同步，在设计时我们已尽最大努力来实现不受限的使用，但这并非始终可能。 下表指明了我们的测试边界以及哪些目标实际上是硬性限制：
+Azure 文件同步的设计目标是无限使用，但并非总是可以无限使用。 下表指示了 Microsoft 测试的边界，还指出了哪些目标是硬限制：
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 

@@ -1,8 +1,8 @@
 ---
-title: 如何使用 Azure Active Directory (Azure AD) 条件访问要求来自不受信任网络的访问进行多重身份验证 (MFA) | Microsoft Docs
-description: 了解如何在 Azure Active Directory 中针对来自不受信任网络的访问尝试配置条件访问策略。
+title: 如何使用 Azure Active Directory (Azure AD) 条件性访问不受信任的网络访问要求多重身份验证 (MFA) |Microsoft Docs
+description: 了解如何配置 Azure Active Directory (Azure AD) 中的条件性访问策略的访问尝试从到不受信任的网络。
 services: active-directory
-keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
+keywords: 条件访问应用，Azure AD 中，安全地访问公司资源，条件性访问策略的条件性访问
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,25 +18,25 @@ ms.date: 12/10/2018
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebf8cb1c3b49975356389c7c9444aff319326f74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa9760c44df13c33687c279478935600325dd085
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301088"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111869"
 ---
-# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>如何：使用条件访问要求来自不受信任网络的访问进行 MFA   
+# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>如何：使用条件性访问不受信任的网络访问要求进行 MFA   
 
 Azure Active Directory (Azure AD) 允许从任何位置以单一登录方式登录到设备、应用和服务。 用户不但可以从组织的网络访问云应用，而且可以从任何不受信任的 Internet 位置访问云应用。 对于来自不受信任网络的访问，常见的最佳做法是要求其进行多重身份验证 (MFA)。
 
-本文提供了在配置条件访问策略以要求来自不受信任网络的访问进行 MFA 时需要的信息。 
+本文提供了您需要配置一个条件性访问策略，要求使用 MFA 进行不受信任的网络访问的信息。 
 
 ## <a name="prerequisites"></a>必备组件
 
 本文假定你熟悉以下内容： 
 
-- Azure AD 条件访问的[基本概念](overview.md) 
-- 用于在 Azure 门户中配置条件访问策略的[最佳做法](best-practices.md)
+- [基本概念](overview.md)的 Azure AD 条件访问 
+- [最佳做法](best-practices.md)在 Azure 门户中配置条件性访问策略
 
 
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) 允许从任何位置以单一登录方式登�
 
 为掌控安全性与工作效率之间的平衡，对于你来说，对于来自你的组织网络的登录，只需要要求其提供密码可能就足够了。 但是，对于来自不受信任网络位置的访问，登录不是由合法用户执行的这一风险会增大。 要解决此顾虑，可以阻止来自不受信任网络的访问。 另外，还可以要求进行多重身份验证 (MFA) 来获得额外的保证，以确保访问尝试是由该帐户的合法所有者执行的。 
 
-使用 Azure AD 条件访问，可以通过进行授权的以下单个策略来解决此要求： 
+使用 Azure AD 条件性访问可以解决这一要求使用一个策略，授予访问权限： 
 
 - 授予对所选云应用的访问权限
 
@@ -59,7 +59,7 @@ Azure Active Directory (Azure AD) 允许从任何位置以单一登录方式登�
 
 ## <a name="implementation"></a>实现
 
-此场景的挑战在于将“来自不受信任网络位置的访问”转换为条件访问条件。 在条件访问策略中，可以配置[位置条件](location-condition.md)来应对与网络位置相关的场景。 使用位置条件，你可以选择已命名位置，这些位置是 IP 地址范围、国家和地区的逻辑分组。  
+此方案的挑战是如何转换*来自不受信任的网络位置访问*条件性访问条件。 在条件性访问策略中，可以配置[位置条件](location-condition.md)到与网络位置相关的地址方案。 使用位置条件，你可以选择已命名位置，这些位置是 IP 地址范围、国家和地区的逻辑分组。  
 
 通常，你的组织拥有一个或多个地址范围，例如 199.30.16.0 - 199.30.16.24。
 可以通过以下方式配置命名位置：
@@ -83,10 +83,10 @@ Azure Active Directory (Azure AD) 允许从任何位置以单一登录方式登�
 
 ## <a name="policy-deployment"></a>策略部署
 
-使用本文中概述的方法，你现在可以针对不受信任位置配置条件访问策略。 若要确保你的策略按预期工作，建议的最佳做法是在将其推广到生产环境之前对其进行测试。 理想情况下，使用一个测试租户来验证新策略是否按预期方式工作。 有关详细信息，请参阅[如何部署新策略](best-practices.md#how-should-you-deploy-a-new-policy)。 
+使用本文中所述方法时，现在可以配置不受信任位置的条件性访问策略。 若要确保你的策略按预期工作，建议的最佳做法是在将其推广到生产环境之前对其进行测试。 理想情况下，使用一个测试租户来验证新策略是否按预期方式工作。 有关详细信息，请参阅[如何部署新策略](best-practices.md#how-should-you-deploy-a-new-policy)。 
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关条件访问的详细信息，请参阅[什么是 Azure Active Directory 中的条件访问？](../active-directory-conditional-access-azure-portal.md)
+如果你想要了解有关条件性访问的详细信息，请参阅[什么是 Azure Active Directory 中条件访问？](../active-directory-conditional-access-azure-portal.md)

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: bd1278db43ba31ed78f13a826a330e16c3bc8d57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736218"
 ---
 # <a name="front-door-routing-methods"></a>Front Door 路由方法
@@ -24,7 +24,7 @@ Azure Front Door 服务支持使用多种流量路由方法来确定如何将 HT
 
 Front Door 提供四个主要的流量路由概念：
 
-* [延迟](#latency)：基于延迟的路由确保将请求发送到敏感范围内可接受的最低延迟后端。 简单而言，将在考虑到网络延迟的情况下，将用户请求发送到“最靠近的”后端集。
+*  [延迟](#latency)：基于延迟的路由确保将请求发送到敏感范围内可接受的最低延迟后端。 简单而言，将在考虑到网络延迟的情况下，将用户请求发送到“最靠近的”后端集。
 * **[优先级](#priority)：** 如果想要使用主服务后端来处理所有流量，并提供备份来防范主后端或备份后端不可用的情况，可为不同的后端分配优先级。
 * **[加权](#weighted)：** 如果想要在一组后端之间分布流量，可以为不同后端分配权重，可以平均分布，也可以根据权重系数分布。
 * **会话关联：** 如果希望用户的后续会话发送到相同的后端（前提是用户会话仍处于活动状态，并且后端实例仍可根据运行状况探测报告正常状态），则可为前端主机或域配置会话关联。 

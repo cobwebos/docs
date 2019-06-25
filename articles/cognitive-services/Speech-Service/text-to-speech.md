@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 06/24/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 84e8eedfb206e28f245128a4e30aba44e96277ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c5f7b0b739e9311e2527e63db7279d2075f0f1ff
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072420"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341287"
 ---
 # <a name="what-is-text-to-speech"></a>文本到语音转换是什么？
 
@@ -24,15 +23,18 @@ Azure 语音服务从文本到语音转换为一个服务，使你的应用程�
 
 文本到语音转换技术，使内容创建者可以以不同方式与他们的用户交互。 通过为用户提供用于呼叫与内容进行交互的选项，文本到语音转换可以提高可访问性。 无论用户有视觉障碍者，学习为残疾人士，还是需要导航信息，同时还能降低，文本到语音转换可以提高现有体验。 文本到语音转换也是有价值的语音机器人和虚拟助手外接程序。
 
+
+使用文本到语音转换服务的开发人员可以通过利用语音合成标记语言 (SSML) 一种基于 XML 的标记语言，指定如何输入的文本转换为合成语音。 使用 SSML，您可以调整间距，发音，谈到率、 卷和的详细信息。 有关详细信息，请参阅[SSML](#speech-synthesis-markup-language-ssml)。
+
 ### <a name="standard-voices"></a>标准语音
 
-使用统计参数合成和/或串联合成技术创建标准的语音。 这些语音是高度可识别，听起来很自然。 您可以轻松实现在多个 45 语言中，与范围广泛的语音选项说出您的应用程序。 这些语音提供高发音的准确性，包括对缩写、 首字母缩略词扩展、 日期/时间的解释、 polyphones，和的详细信息的支持。 使用标准的语音用户与你的内容时传递语音交互，从而提高应用程序和服务可访问性。
+使用统计参数合成和/或串联合成技术创建标准的语音。 这些语音是高度可识别和声音自然。 您可以轻松实现在多个 45 语言中，与范围广泛的语音选项说出您的应用程序。 这些语音提供高发音的准确性，包括对缩写、 首字母缩略词扩展、 日期/时间的解释、 polyphones，和的详细信息的支持。 使用标准的语音用户与你的内容时传递语音交互，从而提高应用程序和服务可访问性。
 
 ### <a name="neural-voices"></a>神经语音
 
-神经语音使用深层神经网络来克服中匹配模式的压力和声调和到计算机使用的语音合成语音的单位中口述语言的传统文本到语音转换系统的限制。 标准文本到语音转换将分解为单独的语言分析和由独立的模型管理的声学预测步骤诗体论。 这可以导致 muffled、 buzzy 语音合成。 我们神经功能执行诗体论预测和语音合成，这会导致更流畅和自然发音的语音。
+神经语音使用深层神经网络来克服中匹配模式的压力和声调和到计算机使用的语音合成语音的单位中口述语言的传统文本到语音转换系统的限制。 标准文本到语音转换将分解为单独的语言分析和受独立的模型，这可能会导致 muffled 的语音合成的声学预测步骤诗体论。 我们神经功能执行诗体论预测和语音合成，这会导致更流畅和自然发音的语音。
 
-可以使用神经语音使与聊天机器人和虚拟助手的交流更加自然和专注、可将数字文本（如电子书）转换为有声读物以及可增强车载导航系统。 使用类似于人类的自然诗体论和明确的单词，神经语音显著减少侦听疲劳与 AI 系统进行交互时。 
+可以使用神经语音使与聊天机器人和虚拟助手的交流更加自然和专注、可将数字文本（如电子书）转换为有声读物以及可增强车载导航系统。 使用类似于人类的自然诗体论和明确的单词，神经语音显著减少侦听疲劳与 AI 系统进行交互时。
 
 神经语音支持不同的样式，如非特定和令人高兴。 例如，Jessa (EN-US) 语音可以说出 cheerfully，热、 高兴会话进行了优化。 可以调整语音输出，如音，间距，并使用[语音合成标记语言](speech-synthesis-markup.md)。 有关可用的声音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
@@ -41,6 +43,26 @@ Azure 语音服务从文本到语音转换为一个服务，使你的应用程�
 ### <a name="custom-voices"></a>自定义语音
 
 语音自定义项，可以创建自己的品牌的可识别的、 独一无二的声音。 若要创建自定义语音字体，则请 studio 录制并上传与训练数据关联的脚本。 然后，此服务会根据你的录音创建唯一的语音模型。 可以使用此自定义语音字体合成语音。 有关详细信息，请参阅[自定义语音](how-to-customize-voice-font.md)。
+
+## <a name="speech-synthesis-markup-language-ssml"></a>语音合成标记语言 (SSML)
+
+语音合成标记语言 (SSML) 是一种基于 XML 的标记语言，可让开发人员指定如何输入的文本转换为合成语音使用文本到语音转换服务。 与纯文本相比，SSML 允许开发人员优化的语调、 发音，说到率、 卷和多个文本到语音转换输出。 自动处理正常标点，例如暂停一段时间后或用问号的句子结束时使用正确的声调。
+
+发送到文本到语音转换服务的所有文本输入必须都构建为 SSML。 有关详细信息，请参阅[语音合成标记语言](speech-synthesis-markup.md)。
+
+### <a name="pricing-note"></a>请注意定价
+
+使用文本到语音转换服务时，向你收费为每个字符转换为语音，包括标点。 尽管 SSML 文档本身不是可计费的可选元素，用于调整如何将文本转换为语音，如音素和音调、 计为可计费的字符。 下面是什么是可计费的列表：
+
+* 文本传递到请求的 SSML 正文中的文本到语音转换服务
+* 请求正文中的 SSML 格式的文本字段中的所有标记除外`<speak>`和`<voice>`标记
+* 字母、 标点、 空格、 制表符、 标记和所有空白字符
+* Unicode 中定义的每个码位
+
+有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+
+> [!IMPORTANT]
+> 每个中文、 日语和朝鲜语语言字符计为两个字符来进行计费。
 
 ## <a name="core-features"></a>核心功能
 
@@ -73,9 +95,9 @@ Azure 语音服务从文本到语音转换为一个服务，使你的应用程�
 
 | 快速入门 (REST) | 平台 | API 参考 |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows、 macOS、 Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | 窗口中，macOS、 Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | 窗口中，macOS、 Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Windows、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | Windows、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 
 ## <a name="sample-code"></a>代码示例
 

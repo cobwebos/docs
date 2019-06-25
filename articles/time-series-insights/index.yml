@@ -5,14 +5,14 @@ metadata:
   title: Azure 时序见解文档 - 快速入门、教程、API 参考 | Microsoft Docs
   description: 了解如何通过完全托管的事件处理在云中运行 Azure IoT 分析。 实时分析来自应用程序、传感器、设备等位置的数据。
   services: time-series-insights
-  author: anshan
+  author: deepakpalled
   manager: cshankar
   ms.service: time-series-insights
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 06/03/2019
-  ms.author: anshan
+  ms.author: dpalled
 abstract:
   description: 欢迎使用 Azure 时序见解。 Azure 时序见解提供功能强大的数据浏览和遥测工具，有助于改进运营分析。 本文档介绍了此服务、如何开始使用其多项功能、客户端 SDK 和功能强大的时序见解 API。 提供的信息适用于两个版本，一个是已经公开发行的版本（时序见解 GA），另一个是主要服务更新预览版（时序见解预览版）。
   aside:

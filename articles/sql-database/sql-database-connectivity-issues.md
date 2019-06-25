@@ -12,13 +12,13 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 56b4e948f4e1aab20de95a16f45ab790c7e591bb
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.date: 06/14/2019
+ms.openlocfilehash: adbe8dfd41725c11516f820656b0476ed1aa8881
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66019823"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144032"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>处理 SQL 数据库连接问题和暂时性错误
 
@@ -91,9 +91,9 @@ ms.locfileid: "66019823"
 可以测试重试逻辑的一种方法是在程序运行时断开客户端计算机与网络的连接。 错误为：
 
 - **SqlException.Number** = 11001
-- 消息:“此主机不存在”
+- 消息：“此主机不存在”
 
-在首次重试过程中，程序可以更正拼写错误，然后尝试连接。
+作为第一次重试尝试的一部分，可以重新连接到网络客户端计算机并尝试连接。
 
 要使此测试可行，请从网络中断开计算机的连接，再启动程序。 然后，程序将识别促使它执行以下操作的运行时参数：
 
@@ -109,7 +109,7 @@ ms.locfileid: "66019823"
 在首次连接尝试之前，程序可以故意拼错用户名。 错误为：
 
 - **SqlException.Number** = 18456
-- 消息:“用户 'WRONG_MyUserName' 的登录失败。”
+- 消息：“用户 'WRONG_MyUserName' 的登录失败。”
 
 在首次重试过程中，程序可以更正拼写错误，然后尝试连接。
 
@@ -150,7 +150,7 @@ ms.locfileid: "66019823"
 - mySqlConnection.Open 方法调用
 - mySqlConnection.Execute 方法调用
 
-有个很微妙的地方。 如果正在执行查询时发生暂时性错误，**SqlConnection** 对象不会重试连接操作。 肯定不会重试查询。 但是，**SqlConnection** 在发送要执行的查询前会非常快速地检查连接。 如果快速检查检测到连接问题，**SqlConnection** 会重试连接操作。 如果重试成功，则会发送查询以执行。
+有个很微妙的地方。 如果正在执行查询  时发生暂时性错误，**SqlConnection** 对象不会重试连接操作。 肯定不会重试查询。 但是，**SqlConnection** 在发送要执行的查询前会非常快速地检查连接。 如果快速检查检测到连接问题，**SqlConnection** 会重试连接操作。 如果重试成功，则会发送查询以执行。
 
 ### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>ConnectRetryCount 是否应结合应用程序重试逻辑？
 
@@ -188,7 +188,7 @@ ms.locfileid: "66019823"
 例如，当客户端程序托管在 Windows 计算机上时，则可以使用主机上的 Windows 防火墙打开端口 1433。
 
 1. 打开控制面板。
-2. 选择“所有控制面板项” > “Windows 防火墙” > “高级设置” > “出站规则” > “操作” > “新建规则”。
+2. 选择“所有控制面板项” > “Windows 防火墙” > “高级设置” > “出站规则” > “操作” > “新建规则”。      
 
 如果客户端程序托管在 Azure 虚拟机 (VM) 上，请阅读[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
 

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,ayolubek, jrasnick
+ms.reviewer: genemi, ayolubek, jrasnick
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 9704acee2ca8bad7437ae22ff5041e2253916dce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: d15e629343e015af5f83e1d185c6a46fc48fa3c4
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160809"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275202"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL 数据库的 DNS 别名
 
@@ -49,7 +49,7 @@ Azure SQL 数据库的 DNS 别名功能有助于实现以下方案：
 
 ### <a name="cross-region-support"></a>跨区域支持
 
-灾难恢复可将 SQL 数据库服务器转移到不同的地理区域。 对于使用 DNS 别名的系统，不需要查找并更新所有客户端的所有连接字符串。 可将别名更新为指向现在正在托管数据库的新 SQL 数据库服务器。
+灾难恢复可将 SQL 数据库服务器转移到不同的地理区域。 对于已使用 DNS 别名的系统，可以避免需要查找并更新所有客户端的所有连接字符串。 可将别名更新为指向现在正在托管数据库的新 SQL 数据库服务器。
 
 ## <a name="properties-of-a-dns-alias"></a>DNS 别名的属性
 
@@ -67,13 +67,6 @@ Azure SQL 数据库的 DNS 别名功能有助于实现以下方案：
 可以使用 REST API 和 PowerShell cmdlet 以编程方式管理 DNS 别名。
 
 ### <a name="rest-apis-for-managing-your-dns-aliases"></a>用于管理 DNS 别名的 REST API
-
-<!-- TODO
-??2 "soon" in the following live sentence, is not the best situation.
-TODO update this subsection very soon after REST API docu goes live.
-Dev = Magda Bojarska
-Comment as of:  2018-01-26
--->
 
 以下网页中提供了 REST API 的文档：
 
@@ -111,7 +104,7 @@ Comment as of:  2018-01-26
 - 延迟最长为 2 分钟：  最长需要 2 分钟才能更新或删除 DNS 别名。
   - 不管延迟时间有多短，别名都会使客户端连接立即停止引用旧服务器。
 - DNS 查找：  目前，检查给定 DNS 别名引用哪台服务器的唯一权威方法是执行 [DNS 查找](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup)。
-- [不支持表审核](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)：  在已对数据库上启用表审核的 Azure SQL 数据库服务器上，无法使用 DNS 别名  。
+- _不支持表审核：_ 在已对数据库上启用表审核的 Azure SQL 数据库服务器上，无法使用 DNS 别名  。
   - 表审核已弃用。
   - 我们建议改用 [Blob 审核](sql-database-auditing.md)。
 

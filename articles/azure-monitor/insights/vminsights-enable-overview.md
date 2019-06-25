@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/22/2019
+ms.date: 06/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 3f93318dedb8a4667d32bcc97eb6a697ccebfcc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d4e49b4f7c1aa244b59ef17716c90369a0d3339
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122578"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273380"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor 启用的 Vm （预览版） 概述
 
@@ -42,10 +42,10 @@ ms.locfileid: "67122578"
 - 美国中西部
 - 美国西部 2<sup>1</sup>
 - 美国东部
-- 加拿大中部<sup>1</sup>
-- 英国南部<sup>1</sup>
+- 加拿大中部
+- 英国南部
 - 西欧
-- 东南亚<sup>1</sup>
+- 东南亚
 
 <sup>1</sup> 此区域目前不支持用于 VM 的 Azure Monitor 的“运行状况”功能。
 
@@ -90,6 +90,10 @@ ms.locfileid: "67122578"
 |Debian 8、 9.4 | X<sup>1</sup> | | X |
 
 <sup>1</sup> 用于 VM 的 Azure Monitor 的“性能”功能仅在 Azure Monitor 中可用。 它不是可直接从 Azure VM 的左窗格。
+
+>[!NOTE]
+>适用于 Vm 的 Azure 监视器的运行状况功能不支持[嵌套虚拟化](../../virtual-machines/windows/nested-virtualization.md)Azure VM 中。
+>
 
 >[!NOTE]
 >在 Linux 操作系统：

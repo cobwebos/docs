@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/01/2019
 ms.author: banders
 ms.openlocfilehash: be20ad0583558949f65b9706f0a478669360bf3d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64571210"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解 Azure 企业协议计费
@@ -58,8 +58,8 @@ ms.locfileid: "64571210"
 比较你的企业门户中所示的组合的总量**报表** > **使用情况摘要**和 Azure 发票。 中的金额**使用情况摘要**不含税。
 
 1. 登录到[企业门户](https://ea.azure.com)。
-1. 选择“报告”。
-1. 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。  
+1. 选择“报告”。 
+1. 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。    
     ![显示 M 的屏幕截图 + C 选项中使用情况摘要。](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
 1. 总量**总体使用情况**并**Azure Marketplace**应匹配**总金额**发票上。
 1. 若要获取有关费用的更多详细信息，请转到**下载使用情况**。  
@@ -96,17 +96,17 @@ ms.locfileid: "64571210"
 
 ### <a name="review-service-overage-invoice"></a>查看服务超额发票
 
-比较你的企业门户中的总体使用情况量**报表** > **使用情况摘要**和服务超额发票。 服务超额发票包括超出组织信用额度的用量，和/或信用额度未涵盖的服务。 “使用情况摘要”中的金额不含税。
+比较你的企业门户中的总体使用情况量**报表** > **使用情况摘要**和服务超额发票。 服务超额发票包括超出组织信用额度的用量，和/或信用额度未涵盖的服务。 “使用情况摘要”中的金额不含税。 
 
 1. 登录到[企业门户](https://ea.azure.com)。
-1. 选择“报告”。
-1. 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。  
+1. 选择“报告”。 
+1. 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。    
     ![显示 M 的屏幕截图 + C 选项中使用情况摘要。](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
-1. “总用量”应与服务超额发票上的“总应收金额”相匹配。  
-1. 若要获取有关费用的其他信息，请转到“下载使用情况” > “高级报告下载”。 报告不包括的税费或保留项的费用或 marketplace 费用。  
+1. “总用量”应与服务超额发票上的“总应收金额”相匹配。    
+1. 若要获取有关费用的其他信息，请转到“下载使用情况” > “高级报告下载”。   报告不包括的税费或保留项的费用或 marketplace 费用。  
       ![屏幕快照，显示高级的报表下载下载使用情况选项卡上。](./media/billing-understand-your-bill-ea/ea-portal-download-usage-advanced.png)
 
-下表列出发票上显示的以及企业门户“使用情况摘要”中显示的款项和说明：
+下表列出发票上显示的以及企业门户“使用情况摘要”中显示的款项和说明： 
 
 |发票上的款项|“使用情况摘要”中的款项|描述|
 |---|---|---|
@@ -120,14 +120,14 @@ ms.locfileid: "64571210"
 
 如果你在澳大利亚、 日本或新加坡，本部分仅适用。
 
-将企业门户的“报告” > “使用情况摘要”中的 Azure 市场总额与市场发票进行比较。 市场发票仅适用于 Azure 市场采购和使用。 “使用情况摘要”中的金额不含税。
+将企业门户的“报告” > “使用情况摘要”中的 Azure 市场总额与市场发票进行比较。   市场发票仅适用于 Azure 市场采购和使用。 “使用情况摘要”中的金额不含税。 
 
 1. 登录到[企业门户](https://ea.azure.com)。
-1. 选择“报告”。
-1. 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。  
+1. 选择“报告”。 
+1. 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。    
      ![显示 M 的屏幕截图 + C 选项上使用情况摘要。](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
-1. “Azure 市场”总额应与市场发票上的“总销售额”相匹配。
-1. 若要获取有关基于用量的费用的其他信息，请转到“下载使用情况”。 在“市场费用”下，选择“下载”。 此报告不包括税额，也不显示一次性采购。  
+1. “Azure 市场”总额应与市场发票上的“总销售额”相匹配。  
+1. 若要获取有关基于用量的费用的其他信息，请转到“下载使用情况”。  在“市场费用”下，选择“下载”。   此报告不包括税额，也不显示一次性采购。  
      ![显示的屏幕截图下载选项下的 Marketplace 费用。](./media/billing-understand-your-bill-ea/ea-portal-download-usage-marketplace.png)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。

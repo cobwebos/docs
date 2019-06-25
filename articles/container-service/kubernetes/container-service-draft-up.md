@@ -10,10 +10,10 @@ ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.openlocfilehash: fb34be09ec08957621517c957b3570cdbcfc0468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60712664"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>（已弃用）结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
@@ -286,7 +286,7 @@ Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在有了 ACS Kubernetes 群集，可以使用 [Azure 容器注册表](../../container-registry/container-registry-intro.md)进行研究，创建此种方案的更多不同部署。 例如，可以创建 draft.basedomain.toplevel 域 DNS 记录集，控制特定 ACS 部署的更深子域中的内容。
+现在有了 ACS Kubernetes 群集，可以使用 [Azure 容器注册表](../../container-registry/container-registry-intro.md)进行研究，创建此种方案的更多不同部署。 例如，可以创建 draft.basedomain.toplevel  域 DNS 记录集，控制特定 ACS 部署的更深子域中的内容。
 
 
 

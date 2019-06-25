@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9144165a3ce593dce11b5e50ce5f0af9f0afa480
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0672f25b30bfb34a6ee99b0f4710d01cf0871300
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237660"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150324"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -76,8 +76,23 @@ Azure 文件提供可确保数据安全的几个内置选项：
 
 Azure 文件提供两个性能层： 标准和高级。
 
-* **标准文件共享**由可轮转的硬盘驱动器 (HDD) 提供支持，这些驱动器为对性能波动不太敏感的 IO 工作负荷（例如，常规用途文件共享和开发/测试环境）提供可靠的性能。 标准文件共享只能在即用即付计费模型下使用。
-* **高级文件共享（预览版）** 由固态磁盘 (SSD) 提供支持，对于大多数 IO 操作，对于大多数 IO 密集型工作负荷，这些磁盘可以提供稳定的高性能和低延迟，延迟为以个位数计的毫秒数。 这使得它们适合于各种各样的工作负荷，例如数据库、网站托管、开发环境，等等。高级文件共享只能在预配的计费模型下使用。 高级文件共享使用的一种部署模式不同于标准文件共享。
+### <a name="standard-file-shares"></a>标准文件共享
+
+硬盘驱动器 (Hdd) 受支持的标准文件共享。 标准文件共享提供可靠的对等通用文件共享和开发/测试环境的性能变化不太敏感的 IO 工作负荷的性能。 标准文件共享只能在即用即付计费模型下使用。
+
+最多 5 TiB 的大小的标准文件共享都可用作 GA 产品/服务。 虽然更大的是大于 5 TiB，最多 100 TiB 的任何共享的文件共享目前以预览版产品形式提供。
+
+> [!IMPORTANT]
+> - 需要创建新的常规用途存储帐户 （不能扩展现有存储帐户）。
+> - 仅适用于 LRS。
+> - 三个区域可用：美国西部 2、 西欧和东南亚区域。
+> - GRS 帐户转换为 LRS 将无法创建订阅接受到更大的文件共享预览后任何新存储帐户。
+
+如果你想要加入的这些更大的文件共享大小的预览，将其提交[窗体](https://aka.ms/azurefilesatscalesurvey)。 
+
+### <a name="premium-file-shares-preview"></a>高级文件共享（预览版）
+
+高级文件共享 （预览版） 受固态硬盘 (Ssd)。 高级文件共享提供一致的高性能和低延迟，在大多数的 IO 操作，适用于 IO 密集型工作负荷的个位数毫秒内。 这使得它们适合于各种各样的工作负荷，例如数据库、网站托管、开发环境，等等。高级文件共享只能在预配的计费模型下使用。 高级文件共享使用的一种部署模式不同于标准文件共享。
 
 Azure 备份是可用于高级文件共享和 Azure Kubernetes 服务中 1.13 版及更高版本支持高级文件共享。
 
@@ -180,7 +195,7 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 ## <a name="data-growth-pattern"></a>数据增长模式
 
-目前，Azure 文件共享的最大大小是 5 TiB (100 TiB 高级文件共享，处于公共预览状态)。 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。
+目前，Azure 文件共享的最大大小是 5 TiB (100 TiB 处于预览状态)。 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。
 
 可使用 Azure 文件同步将多个 Azure 文件共享同步到单个 Windows 文件服务器。这可确保本地的较旧、大型文件共享能够导入到 Azure 文件同步。有关详细信息，请参阅[规划 Azure 文件同步部署](storage-files-planning.md)。
 

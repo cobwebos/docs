@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: a418bb318654752eaf48ffbdd05b80cabb487ece
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65207553"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>从 Microsoft Cloud App Security 连接数据 
@@ -41,7 +41,7 @@ ms.locfileid: "65207553"
 
 1. 在 Azure Sentinel，选择**数据连接器**，然后单击**Cloud App Security**磁贴。
 
-2. 单击“连接”。
+2. 单击“连接”  。
 
 3. 若要使用 Log Analytics 中的 Cloud App Security 警报相关的架构，搜索**SecurityAlert**。
 

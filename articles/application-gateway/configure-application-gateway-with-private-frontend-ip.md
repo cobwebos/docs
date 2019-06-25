@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
 ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66134643"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用内部负载均衡器 (ILB) 终结点配置应用程序网关
@@ -36,24 +36,24 @@ ms.locfileid: "66134643"
 
 Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创建新的虚拟网络，也可以使用现有的虚拟网络。 本示例将创建新的虚拟网络。 可以在创建应用程序网关的同时创建虚拟网络。 在不同的子网中创建应用程序网关实例。 在本示例中创建两个子网：一个用于应用程序网关，另一个用于后端服务器。
 
-1. 单击 Azure 门户左上角的“新建”。
-2. 选择“网络”，然后在“特别推荐”列表中选择“应用程序网关”。
+1. 单击 Azure 门户左上角的“新建”。 
+2. 选择“网络”  ，然后在“特别推荐”列表中选择“应用程序网关”  。
 3. 输入 *myAppGateway* 作为应用程序网关的名称，输入 *myResourceGroupAG* 作为新资源组的名称。
-4. 接受其他设置的默认值，然后单击“确定”。
-5. 依次单击“选择虚拟网络”、“新建”，然后输入虚拟网络的以下值：
+4. 接受其他设置的默认值，然后单击“确定”  。
+5. 依次单击“选择虚拟网络”、“新建”，然后输入虚拟网络的以下值：  
    - myVNet* - 虚拟网络的名称。
    - 10.0.0.0/16* - 虚拟网络地址空间。
    - *myAGSubnet* - 子网名称。
    - *10.0.0.0/24* - 子网地址空间。  
      ![private-frontendip-1](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-1.png)
-6. 单击“确定”创建虚拟网络和子网。
+6. 单击“确定”  创建虚拟网络和子网。
 7. 选择“专用”作为“前端 IP 配置”（默认为动态 IP 地址分配）。 所选子网的第一个可用地址将分配为前端 IP 地址。
-8. 若要从子网地址范围中选择专用 IP（静态分配），请单击“选择特定的专用 IP 地址”框并指定 IP 地址。
+8. 若要从子网地址范围中选择专用 IP（静态分配），请单击“选择特定的专用 IP 地址”框并指定 IP 地址。 
    > [!NOTE]
    > IP 地址类型（静态或动态）一经分配，以后便不可更改。
 9. 选择协议和端口的侦听器配置以及 WAF 配置（如果需要），然后单击“确定”。
     ![private-frontendip-2](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-2.png)
-10. 检查摘要页上的设置，然后单击“确定”创建网络资源和应用程序网关。 创建应用程序网关可能需要几分钟时间，请等到部署成功完成，然后转到下一部分。
+10. 检查摘要页上的设置，然后单击“确定”  创建网络资源和应用程序网关。 创建应用程序网关可能需要几分钟时间，请等到部署成功完成，然后转到下一部分。
 
 ## <a name="add-backend-pool"></a>添加后端池
 
@@ -65,18 +65,18 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
-1. 单击“新建” 。
-2. 单击“计算”，然后在“特色”列表中选择“Windows Server 2016 Datacenter”。
+1. 单击“新建”  。
+2. 单击“计算”，然后在“特色”列表中选择“Windows Server 2016 Datacenter”。  
 3. 为虚拟机输入以下值：
    - *myVM* - 作为虚拟机的名称。
    - *azureuser* - 作为管理员用户名。
    - *Azure123456!* - 密码。
-   - 选择“使用现有资源组”，然后选择“myResourceGroupAG”。
-4. 单击“确定”。
-5. 选择“DS1_V2”作为虚拟机的大小，然后单击“选择”。
+   - 选择“使用现有资源组”，然后选择“myResourceGroupAG”   。
+4. 单击“确定”。 
+5. 选择“DS1_V2”作为虚拟机的大小，然后单击“选择”   。
 6. 请确保选择 **myVNet** 作为虚拟网络，子网是 **myBackendSubnet**。
-7. 单击“禁用”以禁用启动诊断。
-8. 创建“确定”，检查“摘要”页上的设置，然后单击“创建”。
+7. 单击“禁用”  以禁用启动诊断。
+8. 创建“确定”  ，检查“摘要”页上的设置，然后单击“创建”  。
 
 ### <a name="install-iis"></a>安装 IIS
 

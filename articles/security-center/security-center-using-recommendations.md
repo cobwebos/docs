@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 3/26/2019
 ms.author: v-mohabe
 ms.openlocfilehash: 60bb1c3b81ef990993a2ce659a2b189c9d8a0eba
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967969"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 安全中心建议增强安全性
@@ -56,15 +56,15 @@ Jeff 执行以下任务：
 
 1. Jeff 选择其工作负荷的订阅。
 
-2. Jeff 查看自己的安全功能分数，以全面了解订阅的安全状态，他看到分数是 548。
+2. Jeff 查看自己的安全功能分数，以全面了解订阅的安全状态，他看到分数是 548  。
 
 3. Jeff 必须决定要首先处理哪些建议。 因此，Jeff 单击安全功能分数并开始根据其提高[安全功能分数影响](security-center-secure-score.md)的程度来处理建议。
 
-4. 由于 Jeff 有大量连接的 VM 和服务器，因此他决定关注“计算和应用”。
+4. 由于 Jeff 有大量连接的 VM 和服务器，因此他决定关注“计算和应用”  。
 
-5. 当 Jeff 单击“计算和应用”时，他会看到建议列表，并根据安全功能分数影响处理这些建议。
+5. 当 Jeff 单击“计算和应用”时，他会看到建议列表，并根据安全功能分数影响处理这些建议  。
 
-6. Jeff 拥有许多面向 VM 的 Internet，并且由于其端口是公开的，所以他担心攻击者可能控制服务器。 因此 Jeff 选择使用（实时 VM 访问）[security-center-just-in-time.md]。
+6. Jeff 拥有许多面向 VM 的 Internet，并且由于其端口是公开的，所以他担心攻击者可能控制服务器。 因此 Jeff 选择使用（实时 VM 访问）[security-center-just-in-time.md]  。
 
 Jeff 继续浏览高优先级和中优先级建议，并进行有关实施的决策。 对于每项建议，Jeff 会查看安全中心提供的详细信息，以了解受影响的资源、安全功能分数的影响、每项建议的含义以及缓解每个问题的修正步骤。
 

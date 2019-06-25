@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/30/2019
+ms.date: 06/05/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbb4001e9496d31d9c2879721f8cf8e26b74ddf3
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66474065"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204555"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>什么是 Azure AD 授权管理？ （预览版）
 
@@ -129,41 +129,6 @@ Azure AD 授权管理可帮助解决这些难题。
 | 资源目录 | 具有一个或多个资源共享的目录。 |
 | 已分配的用户 | 向用户或组访问包的工作分配。 |
 | enable | 用户可以请求提供访问包的过程。 |
-
-## <a name="roles-and-permissions"></a>角色和权限
-
-授权管理具有不同的角色根据作业函数。
-
-| 角色 | 描述 |
-| --- | --- |
-| [用户管理员](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) | 管理授权管理的所有方面。<br/>创建用户和组。 |
-| 目录创建者 | 创建和管理目录。 通常的 IT 管理员或资源所有者。 自动创建一个目录的人员将成为目录的第一个目录所有者。 |
-| 目录所有者 | 编辑和管理现有目录。 通常的 IT 管理员或资源所有者。 |
-| 访问包管理器 | 编辑和管理目录中的所有现有访问包。 |
-| 审批者 | 批准请求，以访问包。 |
-| 请求者 | 请求访问包。 |
-
-下表列出了每个角色的权限。
-
-| 任务 | 用户管理员 | 目录创建者 | 目录所有者 | 访问包管理器 | 审批者 |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| [常规目录中创建新的访问包](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
-| [在目录中创建新的访问包](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |
-| [添加/删除从中访问包的资源角色](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [指定谁可以请求访问包](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [直接向用户分配访问包](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [查看具有访问包到赋值](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [查看访问包的请求](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [查看请求的传递错误](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [取消挂起的请求](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [隐藏访问包](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [删除访问包](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [批准访问请求](entitlement-management-request-approve.md) |  |  |  |  | :heavy_check_mark: |
-| [创建目录](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |  |
-| [添加/删除到/从常规目录资源](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  |  |  |  |
-| [添加/删除对目录资源](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [添加目录所有者或访问包管理器](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [编辑/删除目录](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 
 ## <a name="license-requirements"></a>许可要求
 

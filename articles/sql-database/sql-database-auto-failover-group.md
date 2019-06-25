@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 05/06/2019
-ms.openlocfilehash: e999e4d96dcb5a1042806c0905ce331dc0a4dc0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/18/2019
+ms.openlocfilehash: 11b3e7724f34a7929d9851dbc8034829f020868b
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522855"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190713"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
@@ -42,7 +42,10 @@ ms.locfileid: "65522855"
 
 - **故障转移组 (FOG)**
 
-  故障转移组是由一个 SQL 数据库服务器管理或位于一个托管实例中的一组数据库，当主要区域的服务中断导致所有或部分主要数据库不可用时，这组数据库可作为单元故障转移到另一区域。 故障转移组时创建的托管实例，包含的实例中的所有用户数据库，并因此可以在实例上配置一个故障转移组。
+  故障转移组是由单个 SQL 数据库服务器或可以作为故障转移到另一个区域一个单元在所有或某些主数据库因主要区域中的服务中断而不可用的情况下的单个托管实例中管理数据库的命名的组。 故障转移组时创建的托管实例，包含的实例中的所有用户数据库，并因此可以在实例上配置一个故障转移组。
+  
+  > [!IMPORTANT]
+  > 故障转移组的名称中必须是全局唯一`.database.windows.net`域。
 
 - **SQL 数据库服务器**
 

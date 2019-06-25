@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2019
+ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 002ebcbe8ba14b9f15ddea6deb21f0f2bc201ab0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: deb7864c9f59427d6da9d27ede349c7532bf40d5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160316"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074026"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限
 
@@ -223,15 +223,15 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 若要分配角色，需要标识对象（用户、组或应用程序）和范围。
 
-如果不知道订阅 ID，可以在 Azure 门户的“订阅”边栏选项卡中查找，或使用 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription)。
+如果不知道订阅 ID，可以在 Azure 门户的“订阅”边栏选项卡中查找，或使用 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription)  。
 
-若要获取 Azure AD 用户对象 ID，请使用[Get AzADUser](/powershell/module/az.resources/get-azaduser)。
+若要获取 Azure AD 用户的对象 ID，请使用 [Get-AzADUser](/powershell/module/az.resources/get-azaduser)。
 
 ```azurepowershell
 Get-AzADUser -StartsWith <string_in_quotes>
 ```
 
-若要获取 Azure AD 组对象 ID，请使用[Get AzADGroup](/powershell/module/az.resources/get-azadgroup)。
+若要获取 Azure AD 组的对象 ID，请使用 [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup)。
 
 ```azurepowershell
 Get-AzADGroup -SearchString <group_name_in_quotes>
@@ -267,26 +267,26 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-using-the-unique-role-id"></a>创建角色分配使用的唯一角色 ID
+### <a name="create-a-role-assignment-using-the-unique-role-id"></a>使用唯一角色 ID 创建角色分配
 
-有几次时的角色名称可能会更改，例如：
+很多时候角色名称可能会更改，例如：
 
-- 使用你自己的自定义角色，您决定要更改的名称。
-- 您使用的是预览版角色具有 **（预览版）** 名称中。 发布角色时，该角色已重命名。
+- 你使用的是自己的自定义角色，你决定更改名称。
+- 你使用的是预览版角色，其名称中有“(预览)”字样。  发布角色时重命名了角色。
 
 > [!IMPORTANT]
-> 没有附带服务级别协议，提供的预览版本并不建议用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-即使角色重命名，则不会更改角色 ID。 如果使用脚本或自动创建角色分配，则最好使用而不是角色名称的唯一角色 ID。 因此，如果重命名一个角色，你的脚本将更有可能起作用。
+即使重命名了角色，角色 ID 也不会更改。 如果使用脚本或自动化来创建角色分配，最佳做法是使用唯一的角色 ID 而非角色名称。 这样一来，即使角色重命名，脚本仍可以使用。
 
-若要创建角色分配，而不角色名称中使用的唯一角色 ID，请使用[新建 AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)。
+若要使用唯一的角色 ID 而非角色名称来创建角色分配，请使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)。
 
 ```azurepowershell
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-以下示例将分配[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色*alain@example.com*用户*医药销售*资源组范围。 若要获取的唯一角色 ID，可以使用[Get AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)或请参阅[Azure 资源的内置角色](built-in-roles.md)。
+以下示例将[“虚拟机参与者”角色](built-in-roles.md#virtual-machine-contributor)分配给 *pharma-sales* 资源组范围内的 *alain@example.com* 用户。 若要获取唯一的角色 ID，可以使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)，也可以参阅 [Azure 资源的内置角色](built-in-roles.md)。
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -355,7 +355,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-## <a name="remove-access"></a>撤消访问权限
+## <a name="remove-access"></a>删除访问权限
 
 在 RBAC 中，若要删除访问权限，请使用 [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) 删除角色分配。
 
@@ -366,6 +366,8 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
 ```
+
+如果你收到错误消息："提供的信息未映射到角色分配"，请确保您指定`-Scope`或`-ResourceGroupName`参数。 有关详细信息，请参阅[进行故障排除的 Azure 资源的 RBAC](troubleshooting.md#role-assignments-without-a-security-principal)。
 
 ## <a name="next-steps"></a>后续步骤
 

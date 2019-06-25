@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
 ms.openlocfilehash: 8ddb5d0566c57dd1d507d543ac53c0975a83dd43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723537"
 ---
 # <a name="configure-stateful-reliable-services"></a>配置有状态 Reliable Services
@@ -28,7 +28,7 @@ ms.locfileid: "60723537"
 全局可靠服务配置在群集的群集清单中的 KtlLogger 节下面指定。 它可配置共享日志位置和大小，以及记录器所使用的全局内存限制。 群集清单是单个 XML 文件，可保留适用于群集中所有节点和服务的设置与配置。 此文件通常称为 ClusterManifest.xml。 可以使用 Get-ServiceFabricClusterManifest powershell 命令查看群集的群集清单。
 
 ### <a name="configuration-names"></a>配置名称
-| 名称 | 单位 | 默认值 | 备注 |
+| Name | 单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |千字节 |8388608 |以内核模式分配给记录器写入缓冲区内存池的最小 KB 数。 此内存池用于在将状态信息写入磁盘之前缓存这些信息。 |
 | WriteBufferMemoryPoolMaximumInKB |千字节 |无限制 |记录器写入缓冲区内存池可以增长到的大小上限。 |
@@ -109,7 +109,7 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>配置名称
-| 名称 | 单位 | 默认值 | 备注 |
+| Name | 单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |秒 |0.015 |收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
 | ReplicatorEndpoint |不适用 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 若要了解有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |

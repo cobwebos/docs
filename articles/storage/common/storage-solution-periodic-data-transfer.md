@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 8f106674c1b1ec90477c7c030dc55085fcf10656
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60729913"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期数据传输解决方案
@@ -25,10 +25,10 @@ ms.locfileid: "60729913"
 
 推荐的定期数据传输选项根据传输性质（定期或持续）分为两类。
 
-- 脚本/编程工具 - 对于定期发生的数据传输，请使用 AzCopy 和 Azure 存储 REST API 等脚本及编程工具。 这些工具均面向 IT 专业人员和开发人员。
+- 脚本/编程工具  - 对于定期发生的数据传输，请使用 AzCopy 和 Azure 存储 REST API 等脚本及编程工具。 这些工具均面向 IT 专业人员和开发人员。
 
-    - AzCopy - 使用此命令行工具在保证最佳性能的同时轻松向/从 Azure Blob、文件和表存储复制数据。 AzCopy 支持并发度和并行度，并且可以在复制操作中断后进行恢复。
-    - Azure 存储 REST API/SDK - 生成应用程序时，可以对照着 Azure 存储 REST API 开发应用程序，并使用以多种语言提供的 Azure SDK。 REST API 还可以利用 Azure 存储数据移动库该库专为高性能设计，用于将数据复制到 Azure 和从 Azure 复制数据。
+    - AzCopy  - 使用此命令行工具在保证最佳性能的同时轻松向/从 Azure Blob、文件和表存储复制数据。 AzCopy 支持并发度和并行度，并且可以在复制操作中断后进行恢复。
+    - Azure 存储 REST API/SDK  - 生成应用程序时，可以对照着 Azure 存储 REST API 开发应用程序，并使用以多种语言提供的 Azure SDK。 REST API 还可以利用 Azure 存储数据移动库该库专为高性能设计，用于将数据复制到 Azure 和从 Azure 复制数据。
 
 - **连续数据引入工具** - 对于连续的持续数据引入，可以选择一个 Data Box 在线传输设备或 Azure 数据工厂。 这些工具是由 IT 专业人员设置的，能以透明的方式自动执行数据传输。
 

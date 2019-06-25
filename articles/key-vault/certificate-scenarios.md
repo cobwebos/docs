@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 805f11d57a635f4e73309d025e185049b511570b
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427837"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
@@ -39,7 +39,7 @@ ms.locfileid: "66427837"
 -   对于任何给定公司（例如 Contoso）来说，以 IT 管理员、PKI 管理员或任何可以使用 CA 来管理帐户的人员的身份加入 是使用 Key Vault 证书的先决条件。  
     以下 CA 是目前可以与 Key Vault 配合使用的提供者：  
     -   DigiCert - Key Vault 提供 DigiCert 的 OV SSL 证书。  
-    -   Globaltrust-Key Vault 提供时，可以选择 SSL 证书与 Globaltrust。  
+    -   Globaltrust - Key Vault 提供 Globaltrust 的 OV SSL 证书。  
 
 **步骤 2** - CA 提供者的帐户管理员创建可供 Key Vault 使用的凭据，以便通过 Key Vault 注册、续订和使用 SSL 证书。
 

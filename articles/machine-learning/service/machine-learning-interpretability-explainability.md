@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 05/30/2019
-ms.openlocfilehash: 4f1dd0bfc0637c6681b513860a63df2b8c35fe5e
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: b2e3b22672351b7e34c9ccccb37f0303b53a770f
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66430852"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67292830"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务的模型 interpretability
 
@@ -252,6 +252,23 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 
 [![可视化效果的仪表板本地](./media/machine-learning-interpretability-explainability/local-charts.png)](./media/machine-learning-interpretability-explainability/local-charts.png#lightbox)
 
+请注意需要能够在 Jupyter 内核启动之前启用可视化仪表板的小组件扩展。
+
+* Jupyter 笔记本
+
+    ```shell
+    jupyter nbextension install --py --sys-prefix azureml.contrib.explain.model.visualize
+    jupyter nbextension enable --py --sys-prefix azureml.contrib.explain.model.visualize
+    ```
+
+
+
+* Jupyter 实验室
+
+    ```shell
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager
+    jupyter labextension install microsoft-mli-widget
+    ```
 若要加载的可视化效果的仪表板，请使用以下代码：
 
 ```python

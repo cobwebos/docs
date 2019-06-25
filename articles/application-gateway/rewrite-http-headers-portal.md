@@ -9,10 +9,10 @@ ms.date: 04/10/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: e144214a58f9fe383cf4edd878554792d9d6a6f9
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64947168"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>重写 HTTP 请求和响应标头与 Azure 应用程序网关-Azure 门户
@@ -97,11 +97,11 @@ ms.locfileid: "64947168"
 
    - 下**区分大小写**，选择**否**。
 
-   - 在中**运算符**列表中，选择**等号 （=）**。
+   - 在中**运算符**列表中，选择**等号 （=）** 。
 
    - 输入正则表达式模式。 在此示例中，我们将使用该模式`(https?):\/\/.*azurewebsites\.net(.*)$`。
 
-   - 选择“确定”。
+   - 选择“确定”  。
 
      ![配置 If 条件](media/rewrite-http-headers-portal/condition.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "64947168"
 
    - 输入的标头值。 在此示例中，我们将使用`{http_resp_Location_1}://contoso.com{http_resp_Location_2}`作为标头值。 此值将替换*azurewebsites.net*与*contoso.com* location 标头中。
 
-   - 选择“确定”。
+   - 选择“确定”  。
 
      ![添加操作](media/rewrite-http-headers-portal/action.png)
 

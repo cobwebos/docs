@@ -1,0 +1,27 @@
+- name: 沉浸式阅读器文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是沉浸式阅读器？
+      href: Overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: '使用 C#'
+      href: Quickstart.md
+- name: 教程
+  items:
+    - name: 启动沉浸式阅读器 (Node.js)
+      href: tutorial.md
+- name: 引用
+  items:
+    - name: SDK 参考
+      href: reference.md
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+    - name: 语言支持
+      href: 'https://aka.ms/ltlangsupport'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=cognitive-services'

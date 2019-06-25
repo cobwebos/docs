@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: d3dfe51ce65aa24cf3d0a4d1fa4b6a9cd203b7e4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66127109"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173298"
 ---
 检查以确定是否有权访问计费帐户的 Microsoft 客户协议的协议类型。
 
 1. 登录到 [Azure 门户]( http://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 在“成本管理 + 计费”  中进行搜索。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-check-mca/billing-search-cost-management-billing.png)
 

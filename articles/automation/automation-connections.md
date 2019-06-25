@@ -10,17 +10,17 @@ ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e7dccc4a396d4cf8af1062057c4c3ce6efe978ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61074227"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
 自动化连接资产包含从 Runbook 或 DSC 配置连接到外部服务或应用程序所需的信息。 除 URL 和端口等连接信息外，还包括身份验证所需的信息，如用户名和密码。 使用连接的值用于连接一个特定应用程序的所有属性保留在一个资产中，而不是创建多个变量。 用户可以从一个位置编辑连接的值，并且可以在单个参数中将连接名称传递给 Runbook 或 DSC 配置。 可在 Runbook 或 DSC 配置中使用 **Get-AutomationConnection** 活动访问连接的属性。 
 
-创建连接时，必须指定“连接类型”。 连接类型是定义了一组属性的模板。 连接为其连接类型中定义的每个属性定义值。 连接类型通过集成模块添加到 Azure 自动化，或使用 [Azure 自动化 API](/previous-versions/azure/reference/mt163818(v=azure.100)) 进行创建，前提是集成模块包含连接类型，并且已导入到自动化帐户中。 否则，需创建指定自动化连接类型的元数据文件。  此方面的详细信息，请参阅[集成模块](automation-integration-modules.md)。  
+创建连接时，必须指定“连接类型”  。 连接类型是定义了一组属性的模板。 连接为其连接类型中定义的每个属性定义值。 连接类型通过集成模块添加到 Azure 自动化，或使用 [Azure 自动化 API](/previous-versions/azure/reference/mt163818(v=azure.100)) 进行创建，前提是集成模块包含连接类型，并且已导入到自动化帐户中。 否则，需创建指定自动化连接类型的元数据文件。  此方面的详细信息，请参阅[集成模块](automation-integration-modules.md)。  
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在系统托管的密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。 此过程由 Azure 自动化管理。
@@ -30,8 +30,8 @@ ms.locfileid: "61074227"
 Azure 自动化中有三种类型的内置连接：
 
 * **Azure** - 此连接可以用于管理经典资源。
-* **AzureClassicCertificate** - AzureClassicRunAs 帐户使用此连接。
-* **AzureServicePrincipal** - AzureRunAs 帐户使用此连接。
+* **AzureClassicCertificate** - AzureClassicRunAs 帐户使用此连接  。
+* **AzureServicePrincipal** - AzureRunAs 帐户使用此连接  。
 
 在大多数情况下不需要创建连接资源，因为在创建 [RunAs 帐户](manage-runas-account.md)时已经创建了该连接。
 
@@ -46,11 +46,11 @@ Azure 自动化中有三种类型的内置连接：
 |[Remove-AzureRmAutomationConnection](/powershell/module/azurerm.automation/remove-azurermautomationconnection)|删除现有连接。|
 |[Set-AzureRmAutomationConnectionFieldValue](/powershell/module/azurerm.automation/set-azurermautomationconnectionfieldvalue)|设置现有连接的一个特定字段的值。|
 
-## <a name="activities"></a>活动
+## <a name="activities"></a>activities
 
 下表中的活动用于在 Runbook 或 DSC 配置中访问连接。
 
-|活动|描述|
+|activities|描述|
 |---|---|
 |[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|获取要使用的连接。 返回包括该连接属性的哈希表。|
 
@@ -72,11 +72,11 @@ Azure 自动化中有三种类型的内置连接：
 
 ### <a name="to-create-a-new-connection-with-the-azure-portal"></a>使用 Azure 门户创建新连接
 
-1. 在自动化帐户中，单击“资产”部分以打开“资产”边栏选项卡。
-2. 单击“连接”部分以打开“连接”边栏选项卡。
-3. 单击边栏选项卡顶部的“添加连接”。
-4. 在“类型”下拉列表中，选择想要创建的连接类型。 表单会显示该特定类型的属性。
-5. 完成该表单，并单击“创建”以保存新连接。
+1. 在自动化帐户中，单击“资产”  部分以打开“资产”  边栏选项卡。
+2. 单击“连接”  部分以打开“连接”  边栏选项卡。
+3. 单击边栏选项卡顶部的“添加连接”  。
+4. 在“类型”  下拉列表中，选择想要创建的连接类型。 表单会显示该特定类型的属性。
+5. 完成该表单，并单击“创建”  以保存新连接。
 
 ### <a name="to-create-a-new-connection-with-windows-powershell"></a>使用 Windows PowerShell 创建新连接
 
@@ -106,11 +106,11 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $
 ```
 
 > [!IMPORTANT]
-> Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块。
+> Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名   。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块   。
 
 ### <a name="graphical-runbook-samples"></a>图形 Runbook 示例
 
-在图形编辑器的“库”窗格中，右键单击连接，并选择“添加到画布”将 **Get-AutomationConnection** 活动添加到图形 Runbook。
+在图形编辑器的“库”窗格中，右键单击连接，并选择“添加到画布”  将 **Get-AutomationConnection** 活动添加到图形 Runbook。
 
 ![添加到画布](media/automation-connections/connection-add-canvas.png)
 

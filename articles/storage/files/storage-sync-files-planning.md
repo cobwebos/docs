@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bb33e7d2bb80bcb19087dca6bc21bafc791af2a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597078"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303918"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -170,10 +170,19 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 
 ### <a name="data-deduplication"></a>重复数据删除
 **代理版本 5.0.2.0**   
-Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重复数据删除。 在启用了云分层的卷上启用重复数据删除后，即可在本地缓存更多文件，而无需预配更多存储。
+Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重复数据删除。 在启用了云分层的卷上启用重复数据删除后，即可在本地缓存更多文件，而无需预配更多存储。 请注意，这些卷节约仅用于在本地;Azure 文件中的数据将不会删除重复数据。 
 
 **Windows Server 2012 R2 或之前的代理版本**  
 对于未启用云分层的卷，Azure 文件同步支持在卷上启用 Windows Server 重复数据删除。
+
+**说明**
+- 如果在安装 Azure 文件同步代理之前安装重复数据删除，则需要重新启动以支持重复数据删除和云分层在同一个卷上。
+- 如果重复数据删除的卷上启用后云分层已启用，初始的重复数据删除优化作业将优化卷上的文件，它已不分层并将对云产生以下影响分层：
+    - 根据可用空间的卷上的层文件，可用空间策略将继续使用热度地图。
+    - 日期策略将跳过的文件可能已否则适合分层由于重复数据删除优化作业访问文件分层。
+- 对于正在进行重复数据删除优化作业，将获取云分层与日期策略延迟由重复数据删除[MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps)设置，如果没有已分层文件。 
+    - 示例：如果 MinimumFileAgeDays 设置为 7 天，云分层日期策略为 30 天，策略将文件分层 37 天后的日期。
+    - 请注意:一旦文件分层的 Azure 文件同步时，重复数据删除优化作业将跳过该文件。
 
 ### <a name="distributed-file-system-dfs"></a>分布式文件系统 (DFS)
 Azure 文件同步支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进行互操作。
@@ -200,9 +209,12 @@ Azure 文件同步支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进�
 如果在服务器终结点上启用了云分层功能，则已分层的文件将被跳过，并且不会由 Windows 搜索进行索引。 非分层文件会适当进行索引。
 
 ### <a name="antivirus-solutions"></a>防病毒解决方案
-由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件。 在 Azure 文件同步代理 4.0 及更高版本中，分层文件已设置安全 Windows 属性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS。 我们建议你咨询软件供应商，以了解如何配置其解决方案以跳过读取已设置此属性的文件（许多解决方案会自动执行此操作）。
+由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件。 在 Azure 文件同步代理 4.0 及更高版本中，分层文件已设置安全 Windows 属性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS。 我们建议你咨询软件供应商，以了解如何配置其解决方案以跳过读取已设置此属性的文件（许多解决方案会自动执行此操作）。 
 
 Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endpoint Protection (SCEP) 都会自动跳过读取设有此属性的文件。 我们已对这两个解决方案进行了测试并发现了一个小问题：向现有的同步组添加服务器时，在新服务器上会重新调用（下载）小于 800 字节的文件。 这些文件将保留在新服务器上并且不会分层，因为它们不符合分层大小要求 (> 64kb)。
+
+> [!Note]  
+> 防病毒供应商可以检查其产品和 Azure 文件同步使用 [Azure 文件同步防病毒软件兼容性测试套件] 之间的兼容性 (https://www.microsoft.com/download/details.aspx?id=58322) ，适用于 Microsoft 下载中心获得。
 
 ### <a name="backup-solutions"></a>备份解决方案
 与防病毒解决方案一样，备份解决方案可能导致重新调用分层文件。 建议使用云备份解决方案来备份 Azure文件共享，而不是使用本地备份产品。
@@ -256,18 +268,15 @@ Azure 文件同步仅在以下区域中可用：
 | 东南亚 | 新加坡 |
 | 英国南部 | 伦敦 |
 | 英国西部 | 加的夫 |
-| 美国亚利桑那州的政府 （预览版） | 亚利桑那 |
-| 美国德克萨斯州的政府 （预览版） | Texas |
-| 美国弗吉尼亚州政府 （预览版） | 弗吉尼亚州 |
+| 美国亚利桑那州政府 | 亚利桑那 |
+| 美国德克萨斯州政府 | Texas |
+| 美国政府弗吉尼亚州 | 弗吉尼亚州 |
 | 西欧 | 荷兰 |
 | 美国中西部 | 怀俄明 |
 | 美国西部 | California |
 | 美国西部 2 | Washington |
 
 Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件共享进行同步。
-
-> [!Note]  
-> Azure 文件同步目前仅在政府版区域的专用预览版中可用。 请参阅我们[发行说明](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#agent-version-5020)有关在预览程序中注册的说明。
 
 ### <a name="azure-disaster-recovery"></a>Azure 灾难恢复
 为了防止 Azure 区域丢失，Azure 文件同步集成了[异地冗余存储冗余](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) 选项。 GRS 存储的工作原理是在主要区域中的存储（你通常与之交互）和配对次要区域中的存储之间使用异步块复制。 发生导致 Azure 区域暂时或永久脱机的灾难时，Microsoft 会将存储故障转移到配对区域。 
@@ -302,7 +311,7 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 | 英国西部             | 英国南部           |
 | 美国亚利桑那州政府      | 美国德克萨斯州政府       |
 | US Gov 爱荷华州         | 美国政府弗吉尼亚州    |
-| 美国政府 Virgini      | 美国德克萨斯州政府       |
+| 美国政府弗吉尼亚州      | 美国德克萨斯州政府       |
 | 西欧         | 北欧       |
 | 美国中西部     | 美国西部 2          |
 | 美国西部             | 美国东部            |

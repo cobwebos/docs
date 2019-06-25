@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
 ms.openlocfilehash: ab1327b42a76a6e76183d84cb1750cce8b85228f
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604279"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
@@ -60,7 +60,7 @@ ms.locfileid: "65604279"
 
 ## <a name="how-much-is-it-costing"></a>花费是多少？
 
-* 在 Application Insights 资源中打开“使用情况和估算成本”页面。 此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
+* 在 Application Insights 资源中打开“使用情况和估算成本”页面。  此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
 * 打开 [Azure 计费边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)查看所有资源的帐单。
 
 ## <a name="q14"></a>Application Insights 在我的项目中修改哪些内容？
@@ -89,7 +89,7 @@ ms.locfileid: "65604279"
 请参阅[发行说明](release-notes.md)了解对应于应用程序类型的 SDK。
 
 ## <a name="update"></a>如何更改项目向哪个 Azure 资源发送数据？
-在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选中“更新全部”，否则它还将在网页中出现密钥的位置更改密钥。
+在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”  。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选中“更新全部”，否则它还将在网页中出现密钥的位置更改密钥。
 
 ## <a name="what-is-status-monitor"></a>什么是状态监视器？
 
@@ -132,7 +132,7 @@ ms.locfileid: "65604279"
 
 深入了解 [ASP.NET](api-filtering-sampling.md) 或 [Java](java-filter-telemetry.md)。
 
-## <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>如何城市、 国家/地区和其他地理位置数据计算？
+## <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>如何计算市/县/区、国家/地区和其他地理位置数据？
 
 使用 [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) 查找 Web 客户端的 IP 地址（IPv4 或 IPv6）。
 
@@ -153,7 +153,7 @@ ms.locfileid: "65604279"
 
 **所有**八进制数的客户端 web 地址始终设置为 0，查找异地位置属性。
 
-## <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>我的检测密钥在网页源中是可见的。 
+## <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>在网页源中可见我的检测密钥。 
 
 * 这是监视解决方案的常见做法。
 * 它不能用于窃取数据。
@@ -162,7 +162,7 @@ ms.locfileid: "65604279"
 
 可以：
 
-* （单独的 Application Insights 资源） 的两个的单独的检测密钥，用于客户端和服务器数据。 或
+* 将两个单独检测密钥（独立的 Application Insights 资源）分别用于客户端和服务器数据。 或
 * 编写一个在服务器中运行的代理，并使 Web 客户端通过该代理发送数据。
 
 ## <a name="post"></a>如何在诊断搜索中查看 POST 数据？
@@ -286,14 +286,14 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 </ApplicationInsights>
 ```
 
-注意，自 v2.6.0 开始具备 ApplicationIdProvider 功能
+注意，自 v2.6.0 开始具备 ApplicationIdProvider 功能 
 
-### <a name="proxy-passthrough"></a>代理传递
+### <a name="proxy-passthrough"></a>代理透传
 
-可以通过配置计算机级别或应用程序级别实现的代理传递代理。
-有关详细信息请参阅 》 上 dotnet 的文章[DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)。
+可以通过配置计算机级代理或应用程序级代理来实现代理透传。
+有关详细信息，请参阅 dotnet 关于 [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings) 的文章。
  
- 示例 Web.config:
+ 示例 Web.config：
  ```xml
 <system.net>
     <defaultProxy>

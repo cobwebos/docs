@@ -17,10 +17,10 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 02cb970b5c70064abbbc71e585fe3dd1540fda90
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64696713"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>如何从 Linux 虚拟机中分离数据磁盘
@@ -114,13 +114,13 @@ az vm disk detach \
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>使用门户分离数据磁盘
 
-1. 在左侧菜单中，选择“虚拟机”。
-2. 选择具有要分离的数据磁盘的虚拟机，并单击“停止”以解除分配 VM。
-3. 在虚拟机窗格中，选择“磁盘”。
-4. 在“磁盘”窗格的顶部，选择“编辑”。
-5. 在“磁盘”窗格中，转到要分离的数据磁盘最右侧，并单击![分离按钮图像](./media/detach-disk/detach.png)分离按钮。
+1. 在左侧菜单中，选择“虚拟机”  。
+2. 选择具有要分离的数据磁盘的虚拟机，并单击“停止”  以解除分配 VM。
+3. 在虚拟机窗格中，选择“磁盘”  。
+4. 在“磁盘”  窗格的顶部，选择“编辑”  。
+5. 在“磁盘”  窗格中，转到要分离的数据磁盘最右侧，并单击![分离按钮图像](./media/detach-disk/detach.png)分离按钮。
 5. 删除磁盘后，单击窗格顶部的“保存”。
-6. 在虚拟机窗格中，单击“概述”，并单击窗格顶部的“开始”按钮重启 VM。
+6. 在虚拟机窗格中，单击“概述”  ，并单击窗格顶部的“开始”  按钮重启 VM。
 
 磁盘保留在存储中，但不再附加到虚拟机。
 

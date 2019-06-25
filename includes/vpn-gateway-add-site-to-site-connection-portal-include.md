@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 19ad4e39ca4e402c37b2cfa69c7c306b6e5a2766
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170107"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172803"
 ---
 1. 导航到虚拟网络网关页面并将其打开。 可通过多种方法进行导航。 转到“TestVNet1”- >“概览”- >“连接的设备”- >“VNet1GW”  即可导航到网关“VNet1GW”。
 2. 在 VNet1GW 的页面上，单击“连接”  。 在“连接”页的顶部，单击“+添加”  打开“添加连接”  页。

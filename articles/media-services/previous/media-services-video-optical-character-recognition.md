@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60825602"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>使用 Azure 媒体分析将视频文件中的文本内容转换为数字文本  
@@ -119,7 +119,7 @@ OCR 媒体处理器的输出是一个 JSON 文件。
 | 语言 |区域中检测到的文本的语言 |
 | orientation |区域中检测到的文本的方向 |
 | lines |区域中检测到的文本的行数组 |
-| Text |实际文本 |
+| text |实际文本 |
 
 ### <a name="json-output-example"></a>JSON 输出示例
 以下输出示例包含常规视频信息和多个视频片段。 每个视频片段包含 OCR MP 检测到的每个区域及其语言和文本方向。 区域还包含此区域中的每个单词行，以及该行的文本、位置及其中每个单词的信息（单词内容、位置和置信度）。 下面是一个示例，我在其中嵌入了一些注释。

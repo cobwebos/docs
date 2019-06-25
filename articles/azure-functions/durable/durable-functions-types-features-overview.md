@@ -8,14 +8,13 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 12/07/2018
-ms.date: 03/19/2019
-ms.author: v-junlch
+ms.date: 12/07/2018
+ms.author: azfuncdf
 ms.openlocfilehash: 76b6f013333113d5a24b744bc962d36b1c0e21b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60731103"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions 类型和功能 (Azure Functions)
@@ -74,7 +73,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 ### <a name="durable-timers"></a>持久计时器
 
-[Durable Functions](durable-functions-overview.md) 提供持久计时器，在业务流程协调程序函数中使用这些计时器可以针对异步操作实现延迟或设置超时。 在业务流程协调程序函数中应使用持久计时器，而不要使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
+[Durable Functions](durable-functions-overview.md) 提供持久计时器，在业务流程协调程序函数中使用这些计时器可以针对异步操作实现延迟或设置超时。  在业务流程协调程序函数中应使用持久计时器，而不要使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
 
 有关详细信息和示例，请参阅[持久计时器](durable-functions-timers.md)。
 
@@ -132,7 +131,7 @@ public static async Task RunRemoteOrchestrator(
 public static async Task<string> StartRemoteOrchestration([ActivityTrigger] string orchestratorName)
 {
     using (var response = await HttpClient.PostAsync(
-        $"https://appB.chinacloudsites.cn/orchestrations/{orchestratorName}",
+        $"https://appB.azurewebsites.net/orchestrations/{orchestratorName}",
         new StringContent("")))
     {
         string statusUrl = await response.Content.ReadAsAsync<string>();
@@ -184,7 +183,7 @@ const request = require("request-promise-native");
 module.exports = async function(context, orchestratorName) {
     const options = {
         method: "POST",
-        uri: `https://appB.chinacloudsites.cn/orchestrations/${orchestratorName}`,
+        uri: `https://appB.azurewebsites.net/orchestrations/${orchestratorName}`,
         body: ""
     };
 
@@ -218,5 +217,3 @@ module.exports = async function(context, statusUrl) {
 
 <!-- Media references -->
 [1]: media/durable-functions-types-features-overview/durable-concepts.png
-
-<!-- Update_Description: wording update -->

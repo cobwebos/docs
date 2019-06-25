@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
 ms.openlocfilehash: 5421423441d03a7375feea2ca0dfe289993145ee
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873225"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-back-end-and-net-device"></a>使用 .NET 后端和 .NET 设备创建 IoT 中心模块标识和模块孪生入门
@@ -52,7 +52,7 @@ ms.locfileid: "65873225"
 
 在本节中，将在更新模块孪生报告属性的模拟设备上创建 .NET 控制台应用。
 
-1. **创建 Visual Studio 项目：** 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到现有解决方案。 确保 .NET Framework 版本为 4.6.1 或更高。 将项目命名为“UpdateModuleTwinReportedProperties”。
+1. **创建 Visual Studio 项目：** 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到现有解决方案  。 确保 .NET Framework 版本为 4.6.1 或更高。 将项目命名为“UpdateModuleTwinReportedProperties”  。
 
     ![创建 Visual Studio 项目](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "65873225"
 
 4. **创建 UpdateModuleTwinReportedProperties 控制台应用**
 
-    在 Program.cs 文件顶部添加以下 `using` 语句：
+    在 Program.cs  文件顶部添加以下 `using` 语句：
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -75,7 +75,7 @@ ms.locfileid: "65873225"
     using Newtonsoft.Json;
     ```
 
-    将以下字段添加到 Program 类。 将占位符值替换为模块连接字符串。
+    将以下字段添加到 Program 类  。 将占位符值替换为模块连接字符串。
 
     ```csharp
     private const string ModuleConnectionString = 
@@ -89,7 +89,7 @@ ms.locfileid: "65873225"
     }
     ```
 
-    将以下方法“OnDesiredPropertyChanged”添加到“Program”类：
+    将以下方法“OnDesiredPropertyChanged”添加到“Program”类   ：
 
     ```csharp
     private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, 
@@ -147,7 +147,7 @@ ms.locfileid: "65873225"
 
     此代码示例演示如何检索模块孪生和借助 AMQP 协议更新报告属性。 在公开预览版中，我们仅支持通过 AMQP 进行模块孪生操作。
 
-5. 除上述“Main”方法外，还可添加以下代码块将事件从模块发送到 IoT 中心：
+5. 除上述“Main”方法外，还可添加以下代码块将事件从模块发送到 IoT 中心  ：
 
     ```csharp
     Byte[] bytes = new Byte[2];
@@ -160,7 +160,7 @@ ms.locfileid: "65873225"
 
 ## <a name="run-the-apps"></a>运行应用
 
-现在可以运行应用了。 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目”。 选择“多个启动项目”，然后选择“启动”作为控制台应用的操作。 然后按 F5 启动应用。
+现在可以运行应用了。 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目”  。 选择“多个启动项目”，然后选择“启动”作为控制台应用的操作   。 然后按 F5 启动应用。
 
 ## <a name="next-steps"></a>后续步骤
 

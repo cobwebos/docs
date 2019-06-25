@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: b7d69e0fe16f96b0e3886c3736f8b91d4c06b446
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/19/2019
+ms.openlocfilehash: c69ffb30a37de8e6dc3e15aa1f7dcd6a9311d614
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063750"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274304"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>监视和优化 Azure Database for PostgreSQL（单一服务器）
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，帮助用户深入了解服务器的行为。
@@ -38,6 +38,8 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 |network_bytes_egress|网络传出|字节|跨活动连接数的网络传出。|
 |network_bytes_ingress|网络传入|字节|跨活动连接数的网络传入。|
 |backup_storage_used|使用的备份存储|字节|已使用的备份存储量。|
+|pg_replica_log_delay_in_bytes|副本的最大滞后时间|字节|以字节为单位在主机和大多数滞后复制副本之间延迟。 此指标仅适用于主服务器。|
+|pg_replica_log_delay_in_seconds|副本滞后时间|秒|自最后一个重播事务以来的时间。 此指标是可用于仅副本服务器。|
 
 ## <a name="server-logs"></a>服务器日志
 可以在服务器上启用日志记录。 这些日志也可通过 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)、事件中心和存储帐户中的 Azure 诊断日志获得。 若要了解有关日志记录的详细信息，请访问[服务器日志](concepts-server-logs.md)页。

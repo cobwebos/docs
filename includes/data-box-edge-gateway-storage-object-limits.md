@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 02/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 563849d3875ed0156d81770f58340633d90d515b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161275"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173403"
 ---
 下面是可以写入的 Azure 对象的大小。 请确保上传的所有文件都符合这些限制。
 
 | Azure 对象类型 | 上传限制                                             |
 |-------------------|-----------------------------------------------------------|
-| 块 Blob        | 约 4.75 TB                                                 |
-| 页 Blob         | 1 TB <br> 以页 Blob 格式上传的每个文件都必须是 512 字节对齐的（整数倍），否则上传将失败。 <br> VHD 和 VHDX 是 512 字节对齐的。 |
+| 块 blob        | 约 4.75 TB                                                 |
+| 页 blob         | 1 TB <br> 以页 Blob 格式上传的每个文件都必须是 512 字节对齐的（整数倍），否则上传将失败。 <br> VHD 和 VHDX 是 512 字节对齐的。 |
 | Azure 文件         | 1 TB <br> 以页 Blob 格式上传的每个文件都必须是 512 字节对齐的（整数倍），否则上传将失败。 <br> VHD 和 VHDX 是 512 字节对齐的。 |
 
 > [!IMPORTANT]

@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/25/2018
-ms.openlocfilehash: fb4e16c8be5344c5b9947758b6a09845b470196d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 06/17/2019
+ms.openlocfilehash: 04af3f211674458c51bbb5cdbc6012833a790584
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800995"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190971"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Microsoft Power BI 通过直接查询直观显示交互式查询 Apache Hive 数据
 
@@ -27,7 +27,7 @@ ms.locfileid: "65800995"
 在开始阅读本文前，必须具备以下项：
 
 * **HDInsight 群集**。 该群集可以是包含 Apache Hive 的 HDInsight 群集，也可以是新发布的交互式查询群集。 有关创建群集的信息，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
-* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)**。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=45331)下载副本。
+* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** 。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=45331)下载副本。
 
 ## <a name="load-data-from-hdinsight"></a>从 HDInsight 加载数据
 
@@ -35,31 +35,31 @@ ms.locfileid: "65800995"
 
 1. 启动 Power BI Desktop。
 
-2. 从菜单栏中，导航到**主页** > **获取数据** > **更多...**.
+2. 在菜单栏中，导航到“主页” > “获取数据” > “更多...”。   
 
     ![HDInsight Power BI 开放数据](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
-3. 从**获取数据**窗口中，输入**hdinsight**在搜索框中。  
+3. 在“获取数据”窗口的搜索框中输入 hdinsight   。  
 
-4. 从搜索结果中，选择**HDInsight 交互式查询**，然后选择**Connect**。  如果没有看到**HDInsight 交互式查询**，您需要将 Power BI Desktop 更新到最新版本。
+4. 从搜索结果中选择“HDInsight 交互式查询”，然后选择“连接”   。  如果看不到“HDInsight 交互式查询”，需要将 Power BI Desktop 更新到最新版本  。
 
-5. 选择**继续**以关闭**连接到第三方服务**对话框。
+5. 选择“继续”，关闭“连接到第三方服务”对话框。  
 
-6. 在中**HDInsight 交互式查询**窗口中，输入以下信息，然后选择**确定**:
+6. 在“HDInsight 交互式查询”窗口中输入以下信息，然后选择“确定”   ：
 
     |属性 | 值 |
     |---|---|
-    |服务器 |输入群集名称，例如*myiqcluster.azurehdinsight.net*。|
-    |数据库 |输入**默认**本文。|
-    |数据连接模式 |选择**DirectQuery**本文。|
+    |服务器 |输入群集名称，例如，*myiqcluster.azurehdinsight.net*。|
+    |数据库 |就本文来说，请输入“default”。 |
+    |数据连接模式 |就本文来说，请选择“DirectQuery”。 |
 
     ![HDInsight 交互式查询 Power BI DirectQuery 连接](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
-7. 输入 HTTP 凭据，然后选择**Connect**。 默认的用户名为 admin。
+7. 输入 HTTP 凭据，然后选择“连接”  。 默认的用户名为 admin  。
 
-8. 从**导航器**窗口的左窗格中，选择**hivesampletale**。
+8. 在左侧窗格的“导航器”窗口中，选择“hivesampletale”   。
 
-9. 选择**负载**从主窗口。
+9. 在主窗口中选择“加载”。 
 
     ![HDInsight 交互式查询 Power BI hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
 
@@ -67,11 +67,11 @@ ms.locfileid: "65800995"
 
 从上一过程继续进行。
 
-1. 从可视化效果窗格中，选择**映射**，地球图标。 泛型映射则会显示在主窗口中。
+1. 在“可视化”窗格中，选择“地图”（地球图标）  。 然后会在主窗口中显示常规地图。
 
     ![HDInsight Power BI 自定义报表](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
 
-2. 在“字段”窗格中，选择 **country** 和 **devicemake**。 几分钟后的主窗口中显示的数据点的世界地图。
+2. 在“字段”窗格中，选择 **country** 和 **devicemake**。 一会儿就会在主窗口中显示包含数据点的世界地图。
 
 3. 展开地图。
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7a802354f20998c87ac8c2ef1f2c1dbdf47f6930
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d01e8ce894bfb1ece3555eddc714d2d3a80e44b5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66733645"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164852"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>使用自定义策略在 Azure Active Directory B2C 中配置资源所有者密码凭据流
 
@@ -255,7 +255,7 @@ ROPC 流支持以下选项：
     ```
 
 5. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”   。
-6. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件  。
+6. 启用**覆盖该策略，如果存在**，然后浏览到并选择*ROPC_Auth.xml*文件。
 7. 单击“上传” 。 
 
 ## <a name="test-the-policy"></a>测试策略

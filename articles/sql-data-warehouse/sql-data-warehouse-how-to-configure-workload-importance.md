@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 7121d2f022f9c9a5bbc02f04955d2857f3ec986f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10a1fe2bff43b6799f47fc0245802ce578ef8f8f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241236"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165533"
 ---
 # <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中配置工作负荷重要性
 
@@ -53,4 +53,4 @@ CREATE WORKLOAD CLASSIFIER AdhocClassifier 
 - 重要性的详细信息，请参阅[工作负荷重要性](sql-data-warehouse-workload-importance.md)
 
 > [!div class="nextstepaction"]
-> [转到管理和监视工作负荷重要性 ](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
+> [转到管理和监视工作负荷重要性](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)

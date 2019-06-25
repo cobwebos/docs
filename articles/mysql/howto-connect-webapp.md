@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/21/2019
 ms.openlocfilehash: 3fbffc805afb540499e38f1c0853260968228b22
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002010"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>将现有的 Azure 应用服务连接到 Azure Database for MySQL 服务器
@@ -24,17 +24,17 @@ ms.locfileid: "66002010"
 ## <a name="solution-1---allow-azure-services"></a>解决方案 1 - 允许 Azure 服务
 Azure Database for MySQL 通过使用防火墙保护数据来确保访问安全。 从 Azure App Service 连接到 Azure Database for MySQL 服务器时，请记住应用服务的出站 IP 实际上为动态 IP。 选择“允许访问 Azure 服务”选项将允许应用服务连接到 MySQL 服务器。
 
-1. 在 MySQL 服务器边栏选项卡上的“设置”标题下，单击“连接安全性”，以打开 Azure Database for MySQL 的“连接安全性”边栏选项卡。
+1. 在 MySQL 服务器边栏选项卡上的“设置”标题下，单击“连接安全性”，以打开 Azure Database for MySQL 的“连接安全性”边栏选项卡  。
 
    ![Azure 门户 - 单击连接安全性](./media/howto-connect-webapp/1-connection-security.png)
 
-2. 在“允许访问 Azure 服务”中选择“开”，然后选择“保存”。
+2. 在“允许访问 Azure 服务”  中选择“开”  ，然后选择“保存”  。
    ![Azure 门户 - 允许 Azure 访问](./media/howto-connect-webapp/allow-azure.png)
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>解决方案 2 - 创建显式允许出站 IP 的防火墙规则
 可显式添加 Azure 应用服务的所有出站 IP。
 
-1. 在应用服务的“属性”边栏选项卡中，查看“出站 IP 地址” 。
+1. 在应用服务的“属性”边栏选项卡中，查看“出站 IP 地址”  。
 
    ![Azure 门户 - 查看出站 IP](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
 
@@ -42,7 +42,7 @@ Azure Database for MySQL 通过使用防火墙保护数据来确保访问安全�
 
    ![Azure 门户 - 添加显式 IP](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
 
-3. 请记住保存防火墙规则。
+3. 请记住保存  防火墙规则。
 
 尽管 Azure App Service 会尝试在一段时间内将 IP 地址保持不变，但也有 IP 地址可能发生变动的情况。 例如，当应用回收、出现缩放操作或在 Azure 区域数据中心添加新计算机以增加容量时，IP 地址可能发生变动。 IP 地址变动时，应用若无法再连接到 MySQL 服务器，则可能会停机。 选择上述任何一种解决方案时，请考虑此可能性。
 

@@ -7,20 +7,20 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 31d8c0fdf1b4df3ee00f3652c933b4b738384bea
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65068848"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>中 Azure Database for PostgreSQL-单个服务器的性能建议
 
-**适用于：** Azure Database for PostgreSQL-9.6 和 10 台服务器
+**适用于：** Azure Database for PostgreSQL - 单一服务器 9.6 和 10
 
 性能建议功能分析数据库以创建自定义的建议以提高性能。 若要生成的建议，分析探讨各种数据库特征包括架构。 启用[Query Store](concepts-query-store.md)以充分利用性能建议功能在服务器上。 实现任何性能建议之后, 您应该测试性能以评估这些更改的影响。 
 
 ## <a name="permissions"></a>权限
-使用性能建议功能运行分析所需的“所有者”或“参与者”权限。
+使用性能建议功能运行分析所需的  “所有者”或“参与者”  权限。
 
 ## <a name="performance-recommendations"></a>性能建议
 [性能建议](concepts-performance-recommendations.md)功能跨服务器分析工作负载以标识可能会提高性能的索引。

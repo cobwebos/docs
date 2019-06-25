@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 3345dd82a1de4f9144cdeb5acd5d3e506dc55de8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97fb4dc37f3c9f776e4abf433f916ceaf177a70b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937829"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202682"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure 市场列表准则
 
@@ -39,14 +39,14 @@ ms.locfileid: "64937829"
 | 11 | 解决方案支持和帮助 | 链接到下面至少一项： <br>o 电话号码 <br>o 电子邮件支持 <br>o 聊天代理 <br>o 社区论坛 |<br>• 列出所有支持方法：电话和电子邮件支持。 <br>• 在试用或体验期免费提供的付费支持 | 
 | 12 | 合法 | 通过公共 URL 提供政策或条款 |  | 
 
-----
+---
 ## <a name="trial-offer-requirements"></a>试用套餐要求
 
 |  | 列表元素 | 基本要求 | 最佳要求 | 
 |:--- |:--- |:--- |:--- |
 |  | 列表状态 | 链接必须指向客户导向型试用体验 | 也可以提供其他 CTA（例如“立即购买”） | 
 
-----
+---
 ## <a name="saas-apps-requirements"></a>SaaS 应用要求
 
 |  | 列表元素 | 基本要求 | 最佳要求 | 
@@ -63,7 +63,7 @@ ms.locfileid: "64937829"
 | 10 | 联系人：解决方案支持和帮助 | <br>•    工程联系人姓名：输入应用的工程联系人姓名。 此联系人将收到来自 Microsoft 的技术邮件。<br>•   工程联系人电子邮件：输入应用的工程联系人的电子邮件地址。<br>•   工程联系人电话：输入工程联系人的电话号码。 支持 ISO 电话号码表示法；有关详细信息，请参阅 https://en.wikipedia.org/wiki/E.123 。<br>• 支持联系人姓名：输入应用的支持联系人姓名。 此联系人将收到来自 Microsoft 的支持相关邮件。<br>• 支持联系人电子邮件：输入应用的支持联系人的电子邮件地址。 <br>•   支持联系人电话：输入支持联系人的电话号码。 支持 ISO 电话号码表示法；有关详细信息，请参阅 https://en.wikipedia.org/wiki/E.123 。 <br>• 支持 URL：输入支持页面的 URL。 | <br>• 列出所有支持方法：电话和电子邮件支持。 <br>• 在试用或体验期免费提供的付费支持 |
 | 11 | 合法 |<br>• 隐私政策 URL：在 CPP 的“隐私政策 URL”字段中输入应用隐私政策的 URL。 <br>•    使用条款：输入应用的使用条款。 客户必须接受这些条款才能试用应用。 |  通过公共 URL 站点提供政策或条款 |
 
-----
+---
 
 ## <a name="container-offer-requirements"></a>容器套餐要求
 
@@ -74,7 +74,7 @@ ms.locfileid: "64937829"
 | 3 | 市场项目 | 徽标正常显示 |<br>• 徽标包含“大图”（Azure 门户中的大格式图像） <br>• 徽标：要求提供小型 (48x48) 和大型 (216x216) 图像 <br>• 大图要求： https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• 屏幕截图（最多 5 个）：CPP 需要分辨率为 1280 x 720 的 .png 图像。|
 | 4 | 线索管理 |<br>•    潜在顾客管理：选择用于存储潜在顾客的系统。 <br>• 在[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)了解如何连接 CRM 系统 | |
 
-----
+---
 
 ## <a name="consulting-offer-requirements"></a>咨询套餐要求
 
@@ -97,6 +97,3 @@ ms.locfileid: "64937829"
 ## <a name="next-steps"></a>后续步骤
 * 了解市场中的不同产品/服务类型。 <br>[SaaS 应用](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[容器](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[咨询服务](https://docs.microsoft.com/azure/marketplace/consulting-services)
 *   [确定解决方案的列表类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
-
- 
----

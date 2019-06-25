@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: robinsh
 ms.openlocfilehash: 9d5d5bdc569fec1df20c7729285cc462d5af4ffb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873241"
 ---
 # <a name="get-started-with-device-twins-netnet"></a>设备孪生入门 (.NET/.NET)
@@ -21,11 +21,11 @@ ms.locfileid: "65873241"
 
 本教程结束时，将会创建以下 .NET 控制台应用：
 
-* CreateDeviceIdentity，一个 .NET 应用，用于创建连接模拟设备应用所需的设备标识和关联的安全密钥。
+* CreateDeviceIdentity，一个 .NET 应用，用于创建连接模拟设备应用所需的设备标识和关联的安全密钥  。
 
-* AddTagsAndQuery，一个 .NET 后端应用，用于添加标记并查询设备孪生。
+* AddTagsAndQuery，一个 .NET 后端应用，用于添加标记并查询设备孪生  。
 
-* ReportConnectivity，一个 .NET 设备应用，用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况。
+* ReportConnectivity，一个 .NET 设备应用，用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况  。
 
 > [!NOTE]
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文介绍了可用于构建设备和后端应用的 Azure IoT SDK。
@@ -56,19 +56,19 @@ ms.locfileid: "65873241"
    
     ![新的 Visual C# Windows 经典桌面项目](./media/iot-hub-csharp-csharp-twin-getstarted/createnetapp.png)
 
-2. 在“解决方案资源管理器”中，右键单击“AddTagsAndQuery”项目，并单击“管理 NuGet 包...”。
+2. 在“解决方案资源管理器”中，右键单击“AddTagsAndQuery”  项目，并单击“管理 NuGet 包...”  。
 
-3. 在“NuGet 包管理器”窗口中，选择“浏览”，并搜索“Microsoft.Azure.Devices”。 选择“安装”以安装“Microsoft.Azure.Devices”包，并接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 包及其依赖项并添加对其的引用。
+3. 在“NuGet 包管理器”  窗口中，选择“浏览”  ，并搜索“Microsoft.Azure.Devices”  。 选择“安装”  以安装“Microsoft.Azure.Devices”  包，并接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 包及其依赖项并添加对其的引用。
    
     ![“NuGet 包管理器”窗口](./media/iot-hub-csharp-csharp-twin-getstarted/servicesdknuget.png)
 
-4. 在 Program.cs 文件顶部添加以下 `using` 语句：
+4. 在 Program.cs  文件顶部添加以下 `using` 语句：
 
     ```csharp  
     using Microsoft.Azure.Devices;
     ```
 
-5. 将以下字段添加到 Program 类。 将占位符值替换为在上一部分为中心创建的 IoT 中心连接字符串。
+5. 将以下字段添加到 Program 类  。 将占位符值替换为在上一部分为中心创建的 IoT 中心连接字符串。
 
     ```csharp  
     static RegistryManager registryManager;
@@ -120,9 +120,9 @@ ms.locfileid: "65873241"
     Console.ReadLine();
     ```
 
-8. 在“解决方案资源管理器”中，打开“设置启动项目...”，并确保 **AddTagsAndQuery** 项目的“操作”为“启动”。 生成解决方案。
+8. 在“解决方案资源管理器”中，打开“设置启动项目...”  ，并确保 **AddTagsAndQuery** 项目的“操作”  为“启动”  。 生成解决方案。
 
-9. 右键单击 **AddTagsAndQuery** 项目并选择“调试”，选择“启动新实例”来运行此应用程序。 在查询位于 **Redmond43** 的所有设备的查询结果中，应该会看到一个设备，而在将结果限制为使用蜂窝网络的设备的查询结果中没有任何设备。
+9. 右键单击 **AddTagsAndQuery** 项目并选择“调试”  ，选择“启动新实例”  来运行此应用程序。 在查询位于 **Redmond43** 的所有设备的查询结果中，应该会看到一个设备，而在将结果限制为使用蜂窝网络的设备的查询结果中没有任何设备。
    
     ![在窗口中查询结果](./media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png)
 
@@ -130,15 +130,15 @@ ms.locfileid: "65873241"
 
 ## <a name="create-the-device-app"></a>创建设备应用
 
-本部分中会创建一个 .NET 控制台应用，该应用以 myDeviceId 连接到中心，然后更新其报告属性，使报告中包含它使用移动电话网络进行连接的信息。
+本部分中会创建一个 .NET 控制台应用，该应用以 myDeviceId 连接到中心，然后更新其报告属性，使报告中包含它使用移动电话网络进行连接的信息  。
 
-1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为“ReportConnectivity”。
+1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为“ReportConnectivity”  。
    
     ![新建 Visual C# Windows 经典设备应用](./media/iot-hub-csharp-csharp-twin-getstarted/createdeviceapp.png)
     
-2. 在“解决方案资源管理器”中，右键单击“ReportConnectivity”项目，然后单击“管理 NuGet 程序包...”。
+2. 在“解决方案资源管理器”中，右键单击“ReportConnectivity”项目，然后单击“管理 NuGet 程序包...”   。
 
-3. 在“NuGet 包管理器”窗口中，选择“浏览”，然后搜索“Microsoft.Azure.Devices.Client”。 选择“安装”以安装“Microsoft.Azure.Devices.Client”包，并接受使用条款。 该过程将下载、安装 [Azure IoT 设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 包及其依赖项并添加对其的引用。
+3. 在“NuGet 包管理器”窗口中，选择“浏览”，然后搜索“Microsoft.Azure.Devices.Client”    。 选择“安装”以安装“Microsoft.Azure.Devices.Client”包，并接受使用条款   。 该过程将下载、安装 [Azure IoT 设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 包及其依赖项并添加对其的引用。
    
     ![“NuGet 包管理器”窗口客户端应用](./media/iot-hub-csharp-csharp-twin-getstarted/clientsdknuget.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "65873241"
     using Newtonsoft.Json;
     ```
 
-5. 将以下字段添加到 Program 类。 将占位符值替换为上一部分中所述的设备连接字符串。
+5. 将以下字段添加到 Program 类  。 将占位符值替换为上一部分中所述的设备连接字符串。
 
     ```csharp  
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;
@@ -179,7 +179,7 @@ ms.locfileid: "65873241"
     }
     ```
 
-    **Client** 对象公开从该设备与设备孪生交互所需的所有方法。 代码如上所示，初始化 Client 对象，然后检索 myDeviceId 的设备孪生。
+    **Client** 对象公开从该设备与设备孪生交互所需的所有方法。 代码如上所示，初始化 Client 对象，然后检索 myDeviceId 的设备孪生   。
 
 7. 将以下方法添加到 **Program** 类：
 
@@ -205,7 +205,7 @@ ms.locfileid: "65873241"
     }
     ```
 
-   上面的代码使用连接信息更新了 myDeviceId 的报告属性。
+   上面的代码使用连接信息更新了 myDeviceId 的报告属性  。
 
 8. 最后，在 **Main** 方法中添加以下行：
 
@@ -224,9 +224,9 @@ ms.locfileid: "65873241"
     Console.ReadLine();
     ```
 
-9. 在“解决方案资源管理器”中，打开“设置启动项目...”，并确保 ReportConnectivity 项目的“操作”为“启动”。 生成解决方案。
+9. 在“解决方案资源管理器”中，打开“设置启动项目...”，并确保 ReportConnectivity 项目的“操作”为“启动”     。 生成解决方案。
 
-10. 右键单击 ReportConnectivity 项目并选择“调试”，然后选择“启动新实例”来运行此应用程序。 应该显示正在获取孪生信息，然后将连接性作为报告属性发送。
+10. 右键单击 ReportConnectivity 项目并选择“调试”，然后选择“启动新实例”来运行此应用程序    。 应该显示正在获取孪生信息，然后将连接性作为报告属性发送  。
    
     ![运行设备应用以报告连接性](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
        

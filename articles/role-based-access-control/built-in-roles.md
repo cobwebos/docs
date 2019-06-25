@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 427c4615fcbb036ffff56a8fc592f258fb98845e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0789ab981590ac1b7531c1f05d85d7ada3a9f56b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755122"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295267"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -76,7 +76,7 @@ ms.locfileid: "66755122"
 | [认知服务数据读者（预览）](#cognitive-services-data-reader-preview) | 可以读取认知服务数据。 |
 | [认知服务用户](#cognitive-services-user) | 允许读取和列出认知服务密钥。 |
 | [Cosmos DB 帐户读者角色](#cosmos-db-account-reader-role) | 可以读取 Azure Cosmos DB 帐户数据。 请参阅 [Cosmos DB 帐户参与者](#documentdb-account-contributor)，了解如何管理 Azure Cosmos DB 帐户。 |
-| [Cosmos DB 操作员](#cosmos-db-operator) | 允许你管理 Azure Cosmos DB 帐户，但不是访问它们中的数据。 可防止对帐户密钥和连接字符串的访问。 |
+| [Cosmos DB 操作员](#cosmos-db-operator) | 可以管理 Azure Cosmos DB 帐户，但不能访问其中的数据。 阻止访问帐户密钥和连接字符串。 |
 | [CosmosBackupOperator](#cosmosbackupoperator) | 可以为帐户提交 Cosmos DB 数据库或容器的还原请求 |
 | [成本管理参与者](#cost-management-contributor) | 可以查看成本和管理成本配置（例如预算、导出） |
 | [成本管理读者](#cost-management-reader) | 可以查看成本数据和配置（例如预算、导出） |
@@ -119,7 +119,7 @@ ms.locfileid: "66755122"
 | [安全管理员](#security-admin) | 仅在安全中心内：可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议 |
 | [安全管理器（旧版）](#security-manager-legacy) | 这是旧角色。 请改用安全管理员角色 |
 | [安全读取者](#security-reader) | 仅在安全中心内：可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改 |
-| [服务总线数据所有者](#service-bus-data-owner) | 允许对 Azure 服务总线资源的完全访问权限 |
+| [服务总线数据所有者](#service-bus-data-owner) | 允许完全访问 Azure 服务总线资源 |
 | [Site Recovery 参与者](#site-recovery-contributor) | 允许管理除保管库创建和角色分配外的 Site Recovery 服务 |
 | [Site Recovery 运算符](#site-recovery-operator) | 允许进行故障转移和故障回复，但不允许执行其他 Site Recovery 管理操作 |
 | [Site Recovery 读取器](#site-recovery-reader) | 允许查看 Site Recovery 状态，但不允许执行其他管理操作 |
@@ -1120,11 +1120,11 @@ ms.locfileid: "66755122"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="cosmos-db-operator"></a>Cosmos DB 运算符
+## <a name="cosmos-db-operator"></a>Cosmos DB 操作员
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理 Azure Cosmos DB 帐户，但不是访问它们中的数据。 可防止对帐户密钥和连接字符串的访问。 |
+> | **说明** | 可以管理 Azure Cosmos DB 帐户，但不能访问其中的数据。 阻止访问帐户密钥和连接字符串。 |
 > | **Id** | 230815da-be43-4aae-9cb4-875f7bd000aa |
 > | **操作** |  |
 > | Microsoft.DocumentDb/databaseAccounts/* |  |
@@ -2081,14 +2081,14 @@ ms.locfileid: "66755122"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许对 Azure 服务总线资源的完全访问权限。 |
+> | **说明** | 允许完全访问 Azure 服务总线资源。 |
 > | **Id** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
 > | **操作** |  |
-> | Microsoft.ServiceBus/* | 允许对服务总线命名空间的完整管理访问 |
+> | Microsoft.ServiceBus/* | 允许对服务总线命名空间进行完全管理访问 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | Microsoft.ServiceBus/* | 允许对服务总线命名空间的完全数据访问 |
+> | Microsoft.ServiceBus/* | 允许对服务总线命名空间进行完全数据访问 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -2494,7 +2494,7 @@ ms.locfileid: "66755122"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许管理存储帐户。 不提供对存储帐户中的数据的访问。 |
+> | **说明** | 允许管理存储帐户。 提供对帐户密钥，可用于访问通过共享密钥的授权数据的访问。 |
 > | **Id** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取所有授权 |

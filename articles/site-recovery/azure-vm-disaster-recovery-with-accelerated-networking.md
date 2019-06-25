@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: c7edc7979636ced8697aa5ad724f9c6600d840bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772458"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>将加速网络与 Azure 虚拟机灾难恢复配合使用
@@ -72,14 +72,14 @@ ms.locfileid: "60772458"
 
 为 Azure 虚拟机[启用复制](azure-to-azure-tutorial-enable-replication.md)时，Site Recovery 将自动检测虚拟机网络接口是否启用了加速网络。 如果已启用加速网络，则 Site Recovery 将自动在复制的虚拟机的网络接口上配置加速网络。
 
-可以在复制的虚拟机的“计算和网络”设置的“网络接口”部分下验证加速网络的状态。
+可以在复制的虚拟机的“计算和网络”设置的“网络接口”部分下验证加速网络的状态。  
 
 ![加速网络设置](./media/azure-vm-disaster-recovery-with-accelerated-networking/compute-network-accelerated-networking.png)
 
 如果在启用复制后在源虚拟机上启用了加速网络，则可以通过以下过程为复制的虚拟机的网络接口启用加速网络：
-1. 打开复制的虚拟机的“计算和网络”设置
-2. 在“网络接口”部分下单击网络接口的名称
-3. 在“目标”列下，从“加速网络”的下拉列表中选择“启用”。
+1. 打开复制的虚拟机的“计算和网络”  设置
+2. 在“网络接口”部分下单击网络接口的名称 
+3. 在“目标”列下，从“加速网络”的下拉列表中选择“启用”。  
 
 ![启用加速网络](./media/azure-vm-disaster-recovery-with-accelerated-networking/network-interface-accelerated-networking-enabled.png)
 

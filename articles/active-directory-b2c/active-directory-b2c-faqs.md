@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9198bd4f88533a8eb5817dcb6edb75931c40ec80
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: b8c649ad9bdc80f64b9c3a8ca33a544830d88d52
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66510060"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116224"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ) 
 此页面解答了有关 Azure Active Directory (Azure AD) B2C 的常见问题。 请随时返回查看更新信息。
@@ -27,7 +27,7 @@ ms.locfileid: "66510060"
 Azure AD 和 Azure AD B2C 是独立的产品/服务，不能在同一租户中共存。  Azure AD 租户表示组织。  Azure AD B2C 租户表示信赖方应用使用的标识集合。  通过自定义策略（在公共预览版中），Azure AD B2C 可以联合 Azure AD，允许对组织中的员工进行身份验证。
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>我可以使用 Azure AD B2C 提供 Office 365 的社交登录（Facebook 和 Google+）吗？
-Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。  Azure AD 是 Microsoft 针对管理员工对 SaaS 应用程序的访问权限的解决方案，它具有为此目的而设计的许可、条件访问等功能。  Azure AD B2C 提供用于生成 Web 和移动应用程序的标识和访问管理平台。  当 Azure AD B2C 配置为联合 Azure AD 租户时，Azure AD 租户将管理员工对依赖 Azure AD B2C 的应用程序的访问权限。
+Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。  Azure AD 是 Microsoft 针对管理员工对 SaaS 应用的访问的解决方案，它具有此用途，例如许可、 条件访问而设计的功能。  Azure AD B2C 提供用于生成 Web 和移动应用程序的标识和访问管理平台。  当 Azure AD B2C 配置为联合 Azure AD 租户时，Azure AD 租户将管理员工对依赖 Azure AD B2C 的应用程序的访问权限。
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>什么是 Azure AD B2C 中的本地帐户？ 它们与 Azure AD 中的工作或学校帐户有何不同？
 在 Azure AD 租户中，属于租户的用户使用 `<xyz>@<tenant domain>` 形式的电子邮件地址登录。  `<tenant domain>` 是租户中已验证域之一或初始的 `<...>.onmicrosoft.com` 域。 此类型的帐户是工作或学校帐户。

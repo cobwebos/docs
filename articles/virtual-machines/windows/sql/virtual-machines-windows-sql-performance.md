@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c1f40c62fce61ba16dfdf289d54cd19c3739ce21
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 3fda34e46ddb7ea17c98795ad6632841b79764eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393765"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076910"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的性能准则
 
@@ -55,7 +55,7 @@ ms.locfileid: "66393765"
 * **SQL Server Enterprise Edition**：DS3_v2 或更高
 * **SQL Server Standard 和 Web Edition**：DS2_v2 或更高
 
-[DSv2 系列](../sizes-general.md#dsv2-series) VM 支持高级存储，高级存储是能提供最佳性能的推荐选择。 这里推荐的大小是基线，实际选择的计算机大小取决于工作负载的需求。 DSv2 系列 VM 是常规用途的 VM，适用于各种工作负载，而其他计算机大小针对特定工作负载类型进行了优化。 例如，[M 系列](../sizes-memory.md#m-series)为最大型的 SQL Server 工作负载提供最高的 vCPU 数量和内存。 [GS 系列](../sizes-memory.md#gs-series)和 [DSv2 系列 11 到 15](../sizes-memory.md#dsv2-series-11-15) 经过优化，以满足较大的内存需求。 还可以在[受约束的核心大小](../../windows/constrained-vcpu.md)中选择这两种系列，这样能降低计算需求，从而节省工作负载的成本。 [Ls 系列](../sizes-storage.md)计算机是针对较高的磁盘吞吐量和 IO 进行优化的。 请务必在对 VM 系列和大小进行选择时考虑特定 SQL Server 工作负载的实际情况。
+[DSv2 系列](../sizes-general.md#dsv2-series) VM 支持高级存储，高级存储是能提供最佳性能的推荐选择。 这里推荐的大小是基线，实际选择的计算机大小取决于工作负载的需求。 DSv2 系列 VM 是常规用途的 VM，适用于各种工作负载，而其他计算机大小针对特定工作负载类型进行了优化。 例如，[M 系列](../sizes-memory.md#m-series)为最大型的 SQL Server 工作负载提供最高的 vCPU 数量和内存。 [GS 系列](../sizes-previous-gen.md#gs-series)和 [DSv2 系列 11 到 15](../sizes-memory.md#dsv2-series-11-15) 经过优化，以满足较大的内存需求。 还可以在[受约束的核心大小](../../windows/constrained-vcpu.md)中选择这两种系列，这样能降低计算需求，从而节省工作负载的成本。 [Ls 系列](../sizes-storage.md)计算机是针对较高的磁盘吞吐量和 IO 进行优化的。 请务必在对 VM 系列和大小进行选择时考虑特定 SQL Server 工作负载的实际情况。
 
 ## <a name="storage-guidance"></a>存储指导原则
 

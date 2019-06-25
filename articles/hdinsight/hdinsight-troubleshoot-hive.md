@@ -8,10 +8,10 @@ ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
 ms.openlocfilehash: 43886a132f2f3cf75f0ec7a0b2dc0680a0f69589
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64712482"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hive 进行故障排除
@@ -163,7 +163,7 @@ ms.locfileid: "64712482"
   1. 转到 Ambari。 
   2. 转到 Tez 视图（隐藏在右上角的磁贴图标下面）。 
   3. 选择想要查看的 DAG。
-  4. 选择“下载数据”。
+  4. 选择“下载数据”  。
 
 ### <a name="additional-reading-end"></a>其他阅读材料
 

@@ -17,11 +17,11 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
 ms.openlocfilehash: e40648ef47b108050486d43eefdb1564786c053e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62098110"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202876"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>创建包含多个子网的虚拟网络（经典）
 
@@ -47,7 +47,7 @@ ms.locfileid: "62098110"
 
     |设置|值|
     |---|---|
-    |Name|myVnet|
+    |名称|myVnet|
     |地址空间|10.0.0.0/16|
     |子网名称|公共|
     |子网地址范围|10.0.0.0/24|

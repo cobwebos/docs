@@ -8,31 +8,16 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cacd5510147ce997efec922f4b4656956a098d88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2553aa95d5028c510b4e1a1b7f51a9f410bcea51
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66676933"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154858"
 ---
 # <a name="register-the-microsoftvmwarecloudsimple-resource-provider-on-your-azure-subscription"></a>注册你的 Azure 订阅上的 Microsoft.VMwareCloudSimple 资源提供程序
 
-CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。 若要使用 CloudSimple 服务，它必须首先将上启用你的 Azure 订阅。 然后，可以将 Microsoft.VMwareCloudSimple 服务作为资源提供程序注册。
-
-## <a name="enable-the-cloudsimple-service"></a>启用 CloudSimple 服务
-
-若要启用你的 Azure 订阅上的 CloudSimple 服务，请打开包含的支持请求[Microsoft 支持部门](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。 提交请求时，请选择以下选项。
-
-* 问题类型：**技术**
-* 订阅：**你的订阅 ID**
-* 服务类型：**通过 CloudSimple VMware 解决方案**
-* 问题类型：**专用的节点配额**
-* 问题子类型：**增加专用节点的配额**
-* 使用者：**启用 CloudSimple 服务**
-
-你还可以联系 Microsoft 客户代表处[ azurevmwaresales@microsoft.com ](mailto:azurevmwaresales@microsoft.com)。 提供你的电子邮件中的 Azure 订阅 ID。  
-
-为你的订阅启用了 CloudSimple 服务后，可以启用订阅上的资源提供程序。
+CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。 可以将 Microsoft.VMwareCloudSimple 服务注册为资源提供程序。
 
 ## <a name="register-the-resource-provider"></a>注册资源提供程序
 

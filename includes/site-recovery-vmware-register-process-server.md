@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: cf39baf34096691144181332566cf567ebc02310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66169988"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173477"
 ---
 1. 与运行进程服务器的计算机建立远程桌面连接。 
 2. 运行 cspsconfigtool.exe 以启动 Azure Site Recovery 进程服务器配置工具。

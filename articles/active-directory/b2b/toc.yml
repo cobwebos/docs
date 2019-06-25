@@ -51,6 +51,8 @@
     - name: 操作指南
       expanded: true
       items:
+        - name: 管理 B2B 共享
+          href: delegate-invitations.md
         - name: 管理邀请
           items:
             - name: 管理员添加 B2B 用户
@@ -61,8 +63,6 @@
               href: google-federation.md
             - name: 一次性密码身份验证
               href: one-time-passcode.md
-            - name: B2B 共享策略
-              href: delegate-invitations.md
             - name: 允许或阻止邀请
               href: allow-deny-list.md
             - name: 在没有邀请的情况下添加 B2B 用户

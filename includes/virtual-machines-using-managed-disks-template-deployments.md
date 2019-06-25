@@ -9,11 +9,11 @@ ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
 ms.openlocfilehash: 904bd884bc09c1e2016f55ffc8e1e9f635974ac7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157697"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172885"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中使用托管磁盘
 
@@ -224,10 +224,10 @@ ms.locfileid: "66157697"
 
 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
 
-* Microsoft.Compute 的 apiVersion 必须设置为 `2018-04-01`（或更高）
-* 将 managedDisk.storageAccountType 指定为 `StandardSSD_LRS`
+* Microsoft.Compute 的 apiVersion  必须设置为 `2018-04-01`（或更高）
+* 将 managedDisk.storageAccountType 指定为 `StandardSSD_LRS` 
 
-以下示例显示了使用标准 SSD 盘的 VM 的 properties.storageProfile.osDisk 部分：
+以下示例显示了使用标准 SSD 盘的 VM 的 properties.storageProfile.osDisk 部分  ：
 
 ```json
 "osDisk": {

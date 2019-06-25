@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aff695307fc97e9f2acfd44f7434d5cbb26ef53e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 85f600c8bd46e699e80bf7b596574dc01467ef79
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109315"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
 蝻进在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。
@@ -80,7 +80,7 @@ Azure Active Directory 为数千种 SaaS 应用程序和本地 Web 应用程序�
 将本地目录与 Azure AD 集成可提供通用标识用于访问云和本地资源，从而提高用户的生产率。 通过这种集成，用户和组织可以享受到以下好处：
 
 * 组织可以利用 Windows Server Active Directory 并连接到 Azure Active Directory，向用户提供跨本地或云服务的通用混合标识。
-* 管理员可以根据应用程序资源、设备和用户标识、网络位置及 Multi-Factor Authentication，提供条件性访问。
+* 管理员可以提供基于应用程序资源、 设备和用户标识、 网络位置和多重身份验证的条件访问。
 * 用户可以通过 Azure AD 中的帐户，在 Office 365、Intune、SaaS 应用和第三方应用程序中利用其通用标识。
 * 开发人员可以将应用程序集成到 Active Directory 本地，或者将基于云的应用程序集成到 Azure，以利用通用标识模型构建应用程序
 

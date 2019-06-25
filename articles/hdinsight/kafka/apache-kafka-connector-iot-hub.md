@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 420800e718c8f98bfd3d5d7383829d5aa5472828
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64698165"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
@@ -169,9 +169,9 @@ ms.locfileid: "64698165"
 
    * __在 [Azure 门户](https://portal.azure.com/)中__使用以下步骤：
 
-     1. 导航到 IoT 中心并选择“终结点”。
-     2. 在“内置终结点”中，选择“事件”。
-     3. 在“属性”中，复制以下字段的值：
+     1. 导航到 IoT 中心并选择“终结点”。 
+     2. 在“内置终结点”中，选择“事件”。  
+     3. 在“属性”中，复制以下字段的值： 
 
          * __与事件中心兼容的名称__
          * __与事件中心兼容的终结点__
@@ -198,9 +198,9 @@ ms.locfileid: "64698165"
 
     * __在 [Azure 门户](https://portal.azure.com/)中__使用以下步骤：
 
-        1. 依次选择“共享访问策略”、“服务”。
-        2. 复制“主密钥”值。
-        3. 复制“连接字符串 - 主键”值。
+        1. 依次选择“共享访问策略”、“服务”。  
+        2. 复制“主密钥”值。 
+        3. 复制“连接字符串 - 主键”  值。
 
     * __在 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ 中使用以下命令：
 

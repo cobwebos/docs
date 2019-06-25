@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: jingwang
-ms.openlocfilehash: e68b522d5a0fe7c359d83fc436aa7a1fd2159198
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9208ceeb760bba97c12b23a1b6e5bdff7efc9020
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048587"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274823"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库托管实例复制数据
 
@@ -33,7 +33,11 @@ ms.locfileid: "67048587"
 - 作为源，使用 SQL 查询或存储过程检索数据。
 - 作为接收器，在复制期间将数据追加到目标表，或调用带有自定义逻辑的存储过程。
 
-目前不支持 SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)。 
+>[!NOTE]
+>Azure SQL 数据库托管实例 **[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current)** 目前不支持此连接器。 若要解决，可以使用[泛型 ODBC 连接器](connector-odbc.md)和通过自承载集成运行时的 SQL Server ODBC 驱动程序。 请按照[本指南](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current)使用 ODBC 驱动程序下载和连接字符串配置。
+
+>[!NOTE]
+>服务主体和托管标识身份验证目前不支持此连接器并在不久后启用的计划。 现在，解决此问题，可以选择 Azure SQL 数据库连接器和手动指定你的托管实例的服务器。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -57,7 +61,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 | connectionString |此属性指定使用 SQL 身份验证连接到托管实例所需的 connectionString 信息。 有关详细信息，请参阅以下示例。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以在 Azure 密钥保管库中输入密码，如果是 SQL 身份验证，则从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅下表的 JSON 示例和[在密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是的。 |
 | connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 （如果你的托管的实例具有公共终结点，并允许访问的 ADF），可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |是的。 |
 
-**示例 1：使用 SQL 身份验证**
+**示例 1：使用 SQL 身份验证**默认端口为 1433年。 如果使用 SQL 托管实例与公共终结点，显式指定端口 3342。
 
 ```json
 {
@@ -67,7 +71,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Data Source=<servername:port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
+                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
             }
         },
         "connectVia": {
@@ -78,7 +82,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 }
 ```
 
-**示例 2：将 SQL 身份验证与 Azure 密钥保管库中的密码结合使用**
+**示例 2：使用 SQL 身份验证使用 Azure 密钥保管库中的密码**默认端口为 1433年。 如果使用 SQL 托管实例与公共终结点，显式指定端口 3342。
 
 ```json
 {
@@ -88,7 +92,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
+                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
             },
             "password": { 
                 "type": "AzureKeyVaultSecret", 
@@ -255,7 +259,7 @@ GO
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动的 sink 的 type 属性必须设置为 SqlSink  。 | 是的。 |
-| writeBatchSize |插入 SQL 表的行数**每个批处理**。<br/>允许的值为表示行数的整数。 默认情况下，数据工厂动态确定基于行大小的合适的批大小。  |否 |
+| writeBatchSize |**每批**要插入到 SQL 表中的行数。<br/>允许的值为表示行数的整数。 默认情况下，数据工厂会根据行大小动态确定适当的批大小。  |否 |
 | writeBatchTimeout |此属性指定超时前等待批插入操作完成的时间。<br/>允许的值表示时间跨度。 例如，“00:30:00”表示 30 分钟。 |不。 |
 | preCopyScript |此属性指定将数据写入到托管实例中之前复制活动要执行的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |不。 |
 | sqlWriterStoredProcedureName |此名称所适用的存储过程定义如何将源数据应用于目标表。 <br/>此存储过程由每个批处理调用  。 若要执行仅运行一次且与源数据无关的操作（例如删除或截断），请使用 `preCopyScript` 属性。 |不。 |
@@ -399,7 +403,7 @@ END
 
 以下示例演示如何使用存储过程，在 SQL Server 数据库中的表内执行 upsert。 假设输入数据和接收器“Marketing”  表各具有三列：**ProfileID**、**State** 和 **Category**。 基于 ProfileID 列执行 upsert，并仅将其应用于特定类别  。
 
-**输出数据集：** "tableName"应为你的存储过程 （请参阅下面的存储的过程脚本） 中的同一个表类型参数名称。
+**输出数据集：** “tableName”应该是存储过程中相同的表类型参数名（请参见下面的存储过程脚本）。
 
 ```json
 {
@@ -418,7 +422,7 @@ END
 }
 ```
 
-定义**SQL 接收器**部分复制活动中，如下所示。
+在复制活动中定义“SQL 接收器”  部分，如下所示。
 
 ```json
 "sink": {

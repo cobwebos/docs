@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: acd70bacd23755cd764bc782a297d80db3622424
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66135249"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure 资源管理器的 PowerShell 创建 Azure 应用程序网关的自定义探测
@@ -65,7 +65,7 @@ ms.locfileid: "66135249"
 
 Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
-在上述示例中，我们创建了名为“appgw-RG”的资源组，位置为“美国西部”。
+在上述示例中，我们创建了名为“appgw-RG”  的资源组，位置为“美国西部”  。
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>创建虚拟网络和子网
 
@@ -94,14 +94,14 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 
 在创建应用程序网关之前设置所有配置项。 以下示例将创建应用程序网关资源所需的配置项。
 
-| 组件 | **说明** |
+| 组件  | **说明** |
 |---|---|
-| 网关 IP 配置 | 应用程序网关的 IP 配置。|
-| 后端池 | 由 IP 地址、FQDN 或 NIC 组成的池，这些池成员供托管 Web 应用程序的应用程序服务器使用|
-| 运行状况探测 | 用于监视后端池成员运行状况的自定义探测|
-| HTTP 设置 | 端口、协议、基于 cookie 的相关性、探测和超时等一系列设置。  这些设置决定将流量路由到后端池成员的方式|
-| 前端端口 | 应用程序网关在该端口上侦听流量|
-| 侦听器 | 协议、前端 IP 配置和前端端口的组合。 侦听器用于侦听传入请求。
+| 网关 IP 配置  | 应用程序网关的 IP 配置。|
+| 后端池  | 由 IP 地址、FQDN 或 NIC 组成的池，这些池成员供托管 Web 应用程序的应用程序服务器使用|
+| 运行状况探测  | 用于监视后端池成员运行状况的自定义探测|
+| HTTP 设置  | 端口、协议、基于 cookie 的相关性、探测和超时等一系列设置。  这些设置决定将流量路由到后端池成员的方式|
+| 前端端口  | 应用程序网关在该端口上侦听流量|
+| 侦听器  | 协议、前端 IP 配置和前端端口的组合。 侦听器用于侦听传入请求。
 |**规则**| 基于 HTTP 设置将流量路由到相应的后端。|
 
 ```powershell

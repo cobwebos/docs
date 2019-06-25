@@ -12,10 +12,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c417950e07ae3c6922aa260a3ef40d862870aa1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61042877"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>对 Azure HDInsight Hive 表中的数据进行采样
@@ -52,7 +52,7 @@ ms.locfileid: "61042877"
 此处，`<sample rate, 0-1>` 指定用户要采样的记录部分。
 
 ## <a name="group"></a>按组随机采样
-采样分类数据时，建议包括或排除分类变量的某些值的所有实例。 这一类采样称为“按组采样”。 例如，如果有一个分类变量“State”，其包含值例如 NY、MA、CA、NJ 和 PA，无论是否进行采样，都希望相同州的记录在一起。
+采样分类数据时，建议包括或排除分类变量的某些值的所有实例。 这一类采样称为“按组采样”。 例如，如果有一个分类变量“State”，其包含值例如 NY、MA、CA、NJ 和 PA，无论是否进行采样，都希望相同州的记录在一起  。
 
 下面是按组采样的示例查询：
 

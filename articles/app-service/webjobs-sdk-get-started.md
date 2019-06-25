@@ -14,31 +14,31 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 20bb8d5380f5a905a827dfb12dcc032e327267e0
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66418239"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
-本文介绍如何使用 Visual Studio 2019 来创建一个 Azure WebJobs SDK 项目，本地运行，然后将其部署到[Azure 应用服务](overview.md)。 版本 3.x.版的 WebJobs SDK 支持.NET Core 和.NET Framework 控制台应用程序。 若要详细了解如何使用 WebJobs SDK，请参阅[如何使用 Azure WebJobs SDK 进行事件驱动的后台处理](webjobs-sdk-how-to.md)。
+本文介绍如何使用 Visual Studio 2019 创建 Azure WebJobs SDK 项目、在本地运行它，然后将其部署到 [Azure 应用服务](overview.md)。 WebJobs SDK 的 3.x 版同时支持 .NET Core 和 .NET Framework 控制台应用。 若要详细了解如何使用 WebJobs SDK，请参阅[如何使用 Azure WebJobs SDK 进行事件驱动的后台处理](webjobs-sdk-how-to.md)。
 
-本文介绍如何部署.NET Core 控制台应用作为 web 作业。 若要部署的.NET Framework 控制台应用作为 web 作业，请参阅[WebJobs 作为.NET Framework 控制台应用程序](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps)。 如果您有兴趣 WebJobs SDK 版本 2.x 中，后者只支持.NET Framework，请参阅[开发和部署使用 Visual Studio 的 Azure 应用服务 WebJobs](webjobs-dotnet-deploy-vs.md)。
+本文介绍如何将 WebJobs 部署为 .NET Core 控制台应用。 若要将 WebJobs 部署为 .NET Framework 控制台应用，请参阅 [WebJobs 作为 .NET Framework 控制台应用](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps)。 如果你对仅支持 .NET Framework 的 WebJobs SDK 版本 2.x 感兴趣，请参阅[使用 Visual Studio 开发和部署 WebJob - Azure 应用服务](webjobs-dotnet-deploy-vs.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
-* [安装 Visual Studio 2019](/visualstudio/install/)与**Azure 开发**工作负荷。 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。 
+* [安装 Visual Studio 2019](/visualstudio/install/)（包含 **Azure 开发**工作负荷）。 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。 
 
 * 必须有一个 [Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)才能将 WebJobs SDK 项目发布到 Azure。
 
 ## <a name="create-a-project"></a>创建一个项目
 
-1. 在 Visual Studio 中，选择**创建一个新项目**。
+1. 在 Visual Studio 中，选择“新建项目”  。
 
-2. 选择**控制台应用 (.NET Core)** 。
+2. 选择“控制台应用(.NET Core)”  。
 
-3. 将项目命名*WebJobsSDKSample*，然后选择**创建**。
+3. 将项目命名为 *WebJobsSDKSample*，然后选择“创建”。 
 
    ![“新建项目”对话框](./media/webjobs-sdk-get-started/new-project.png)
 

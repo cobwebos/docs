@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91880e43382662b5d55f112455ee8f4c92ad01c5
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d206ea1afe43a91707a4bcd981a4158ff08fdc3a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66471596"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206148"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
 
@@ -116,7 +116,7 @@ ms.locfileid: "66471596"
 
 ### <a id="no-button"></a> 为什么我没有看到“转让订阅”按钮？
 
-遗憾的是，自助服务订阅转让不可用于产品/服务。 查看受支持产品/服务中的列表[支持产品/服务](#supported-offers)本文的部分。 此外，我们不会阻止任何国家/地区的订阅转移。 但是，跨国家/地区不支持传输。 若要转移你的订阅跨国家/地区[请联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
+遗憾的是，自助服务订阅转让不可用于产品/服务。 查看受支持产品/服务中的列表[支持产品/服务](#supported-offers)本文的部分。 此外，我们不会阻止任何国家/地区的订阅转移。 请参阅[国家/地区的完整列表](https://azure.microsoft.com/pricing/faq/)地区销售 Azure 的。 但是，自助服务订阅转让不支持跨国家/地区传输。 若要转移你的订阅跨国家/地区[请联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
 
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>可以将所有权转移到另一个国家/地区中的帐户？

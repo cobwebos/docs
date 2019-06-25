@@ -9,11 +9,11 @@ ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
 ms.openlocfilehash: 2bf9f75442ccf57aa28e6a12f415fb6e4ede78ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66238591"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173344"
 ---
 下表显示了 Azure Maps S0 定价层的使用情况限制。 使用限制取决于定价层。 
 

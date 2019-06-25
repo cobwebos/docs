@@ -2,23 +2,14 @@
   href: /azure/hdinsight
 - name: 概述
   items:
-    - name: 关于 Apache Hadoop on HDInsight
+    - name: 什么是 HDInsight 中的 Apache Hadoop？
       href: apache-hadoop-introduction.md
-      maintainContext: true
-    - name: HDInsight 中的 Apache Hadoop 体系结构
-      href: ../hdinsight-hadoop-architecture.md
-      maintainContext: true
-    - name: HDInsight 上的 Apache Hadoop 组件
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-    - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
       maintainContext: true
 - name: 快速入门
   items:
     - name: 创建 Apache Hadoop 群集 - 门户
       href: apache-hadoop-linux-create-cluster-get-started-portal.md
-    - name: 创建 Apache Hadoop 群集 - 资源管理器模板
+    - name: 创建 Apache Hadoop 群集 - 模板
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-hadoop-linux-tutorial-get-started.md
 - name: 教程
@@ -28,9 +19,6 @@
       maintainContext: true
     - name: 创建按需群集
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-      maintainContext: true
-    - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
-      href: ../hdinsight-cluster-availability.md
       maintainContext: true
 - name: 示例
   items:
@@ -45,6 +33,18 @@
       maintainContext: true
 - name: 概念
   items:
+    - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
+      href: ../hdinsight-cluster-availability.md
+      maintainContext: true
+    - name: HDInsight 4.0
+      href: ../hdinsight-version-release.md
+      maintainContext: true
+    - name: HDInsight 中的 Apache Hadoop 体系结构
+      href: ../hdinsight-hadoop-architecture.md
+      maintainContext: true
+    - name: HDInsight 中的 Apache Hadoop 组件
+      href: ../hdinsight-component-versioning.md
+      maintainContext: true
     - name: 群集容量规划
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -471,9 +471,6 @@
   items:
     - name: Windows 群集
       items:
-        - name: 将 Windows 群集迁移到 Linux 群集
-          href: ../hdinsight-migrate-from-windows-to-linux.md
-          maintainContext: true
         - name: 将 .NET 解决方案迁移到 Linux 群集
           href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
           maintainContext: true

@@ -11,10 +11,10 @@ ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.openlocfilehash: c7f4b6d8aa614a460772fb7af11f9b83dc3fc979
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65800816"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时间序列预测的模型
@@ -81,7 +81,7 @@ y_test = X_test.pop("sales_quantity").values
 
 `AutoMLConfig`对象定义的设置和自动的机器学习任务所需数据。 类似于回归问题，您定义标准的培训参数，如任务类型和数量的迭代，训练数据，交叉验证的次数。 对于预测任务，有其他必须设置影响实验的参数。 下表说明了每个参数和其使用情况。
 
-| Param | 描述 | 需要 |
+| Param | 描述 | 必选 |
 |-------|-------|-------|
 |`time_column_name`|用于指定用于生成时间序列和推断其频率的输入数据中的日期时间列。|✓|
 |`grain_column_names`|在输入数据中定义每个序列组的名称。 如果未定义粒度，数据集被假定为一个时间序列。||

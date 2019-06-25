@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/17/2019
 ms.author: tulasim
-ms.openlocfilehash: b18d47b4b09c6fa9c4d5f0ef87d7ebe73f151c60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1e7a29e4ca94405e2d6b2000309ef6e2c3a777c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693244"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164610"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>获取与 GenerateAnswer API 和元数据的答案
 
@@ -78,7 +78,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 JSON 正文具有多个设置：
 
-|JSON 正文属性|必选|Type|目的|
+|JSON 正文属性|需要|Type|目的|
 |--|--|--|--|
 |`question`|必填|字符串|若要发送到您的知识库用户提出的问题。|
 |`top`|可选|integer|要包含在输出中的排序结果数。 默认值为 1。|
@@ -144,6 +144,40 @@ JSON 正文具有多个设置：
     ]
 }
 ```
+
+## <a name="use-qna-maker-with-a-bot-in-c"></a>与智能机器人应用程序中使用 QnA MakerC#
+
+Bot framework 提供了访问 QnA Maker 属性：
+
+```csharp
+using Microsoft.Bot.Builder.AI.QnA;
+var metadata = new Microsoft.Bot.Builder.AI.QnA.Metadata();
+var qnaOptions = new QnAMakerOptions();
+
+qnaOptions.Top = Constants.DefaultTop;
+qnaOptions.ScoreThreshold = 0.3F;
+var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
+```
+
+支持智能机器人应用程序具有[示例](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418)，此代码。
+
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>在 Node.js 中的智能机器人中使用 QnA Maker
+
+Bot framework 提供了访问 QnA Maker 属性：
+
+```javascript
+const { QnAMaker } = require('botbuilder-ai');
+this.qnaMaker = new QnAMaker(endpoint);
+
+// Default QnAMakerOptions
+var qnaMakerOptions = {
+    ScoreThreshold: 0.03,
+    Top: 3
+};
+var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
+```
+
+支持智能机器人应用程序具有[示例](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36)，此代码。
 
 <a name="metadata-example"></a>
 

@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 90e43ab0448646650067dbf151702132f434c01e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec6177bb353602f20040f05215678e3a8a161ebc
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967960"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190839"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -44,7 +44,7 @@ ms.locfileid: "65967960"
 
     ```
 
-## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>使用 Azure 资源管理器模板在 Azure VM 上设置自承载 IR（自动化）
+## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板来设置 Azure VM 上自承载 IR 
 可以使用[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime)在 Azure 虚拟机上自动完成自承载 IR 设置。 使用此模板可以轻松地在 Azure 虚拟网络中设置一个完全正常运行的、具有高可用性和可伸缩性功能的自承载 IR（前提是能够将节点计数设置为 2 或以上）。
 
 ## <a name="command-flow-and-data-flow"></a>命令流和数据流
@@ -86,6 +86,7 @@ ms.locfileid: "65967960"
 
 - 在主机上为自承载集成运行时配置电源计划，从而让计算机不要休眠。 如果主机进入休眠状态，则自承载集成运行时将会脱机。
 - 定期备份与自承载集成运行时相关的凭据。
+- 用于自动执行的自承载的 IR 安装操作，请参阅[节下面](#automation-support-for-self-hosted-ir-function)。  
 
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>从下载中心安装并注册自承载 IR
 
@@ -109,6 +110,45 @@ ms.locfileid: "65967960"
     b. 或者选择“显示身份验证密钥”  ，以查看密钥文本。
 
     c. 选择“注册”  。
+
+## <a name="automation-support-for-self-hosted-ir-function"></a>对自动化支持自承载 IR 函数
+
+
+> [!NOTE]
+> 如果想要安装自承载的 IR Azure 虚拟机上并想要自动执行安装程序使用 Azure 资源管理器模板，请参阅[部分](#setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template)。
+
+您可以使用命令行设置或管理现有的自承载 ir。 这可用于自动化安装，注册的自承载 IR 节点。 
+
+**Dmgcmd.exe**包含在自承载的安装中，通常位于：C:\Program Files\Microsoft Integration Runtime\3.0\Shared\ 文件夹。 这支持各种参数，可以通过命令提示符下使用自动化的批处理脚本调用。 
+
+*用途：* 
+
+```powershell
+dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["password"] -Loglevel <logLevel> ] 
+```
+
+ *详细信息 (参数 / 属性):* 
+
+| 属性                                                    | 说明                                                  | 需要 |
+| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
+| RegisterNewNode "`<AuthenticationKey>`"                     | 使用指定的身份验证密钥注册 Integration Runtime （自承载） 节点 | 否       |
+| EnableRemoteAccess "`<port>`" ["`<thumbprint>`"]            | 为启用远程访问当前节点上设置高可用性群集和/或启用直接对自承载 IR （而无需通过 ADF 服务） 使用的凭据设置**新 AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 从远程计算机在同一网络中。 | 否       |
+| EnableRemoteAccessInContainer "`<port>`" ["`<thumbprint>`"] | 在容器中运行的节点时启用对当前节点的远程访问 | 否       |
+| DisableRemoteAccess                                         | 禁用对当前节点的远程访问。 多节点安装程序需要远程访问。 新建-**AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet 仍适用甚至远程访问禁用时，只要在自承载 IR 节点所在的同一计算机上执行。 | 否       |
+| 键"`<AuthenticationKey>`"                                 | 覆盖/更新以前的身份验证密钥。 请注意因为这可以导致新的集成运行时的密钥时将要脱机，在上一个自承载 IR 节点。 | 否       |
+| GenerateBackupFile "`<filePath>`" "`<password>`"            | 生成当前节点的备份文件，该备份文件包含的节点密钥和数据存储凭据 | 否       |
+| ImportBackupFile "`<filePath>`" "`<password>`"              | 从备份文件还原节点                          | 否       |
+| 重新启动                                                     | 重启 Integration Runtime （自承载） 主机服务   | 否       |
+| Start                                                       | 启动 Integration Runtime （自承载） 主机服务     | 否       |
+| 停止                                                        | 停止 Integration Runtime （自承载） 更新服务        | 否       |
+| StartUpgradeService                                         | 启动 Integration Runtime （自承载） 更新服务       | 否       |
+| StopUpgradeService                                          | 停止 Integration Runtime （自承载） 更新服务        | 否       |
+| TurnOnAutoUpdate                                            | 打开 Integration Runtime （自承载） 自动更新        | 否       |
+| TurnOffAutoUpdate                                           | 关闭 Integration Runtime （自承载） 自动更新       | 否       |
+| SwitchServiceAccount "<domain\user>" ["password"]           | 设置 DIAHostService 作为新帐户运行。 使用空密码 ("") 为系统帐户或虚拟帐户 | 否       |
+| 日志级别 `<logLevel>`                                       | 设置 ETW 日志级别 （关闭、 错误、 详细或全部）。 通常由 Microsoft 支持部门进行调试时使用。 | 否       |
+
+   
 
 
 ## <a name="high-availability-and-scalability"></a>高可用性和可伸缩性
@@ -341,7 +381,7 @@ download.microsoft.com | 443 | 用于下载更新
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
-``` 
+```
 
 如果选择不打开自承载集成运行时计算机上的端口 8060，请使用除“设置凭据”应用程序以外的机制来配置数据存储凭据。 例如，可以使用 **New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell cmdlet。
 

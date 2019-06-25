@@ -1,5 +1,5 @@
 ---
-title: 从 Office 365 使用 Azure 数据工厂复制数据 |Microsoft Docs
+title: 使用 Azure 数据工厂从 Office 365 复制数据 | Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Office 365 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: jingwang
 ms.openlocfilehash: 1a8d622aa280794d9a4d6fe7320ddcc21ac044f4
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66475668"
 ---
-# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>将数据从 Office 365 复制到 Azure 中使用 Azure 数据工厂
+# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Office 365 复制到 Azure
 
-与 azure 数据工厂集成[Microsoft Graph 数据连接](https://docs.microsoft.com/graph/data-connect-concept-overview)，使您能够将 Office 365 中的组织数据到 Azure 租户中可缩放的方式，并生成分析应用程序的丰富并提取见解基于这些有价值的数据资产。 与 Privileged Access Management 的集成为 Office 365 中组织有序的有价值的数据提供安全访问控制。  请参阅[此链接](https://docs.microsoft.com/graph/data-connect-concept-overview)有关 Microsoft Graph 数据的概述连接，并参考[此链接](https://docs.microsoft.com/graph/data-connect-policies#licensing)有关许可信息。
+Azure 数据工厂与 [Microsoft Graph 数据连接](https://docs.microsoft.com/graph/data-connect-concept-overview)相集成，允许你以可缩放的方式将 Office 365 租户中的丰富组织数据引入 Azure，并生成分析应用程序和基于这些有价值的数据资产提取见解。 与 Privileged Access Management 的集成为 Office 365 中组织有序的有价值的数据提供安全访问控制。  有关 Microsoft Graph 数据连接的概述，请参阅[此链接](https://docs.microsoft.com/graph/data-connect-concept-overview)，有关许可信息，请参阅[此链接](https://docs.microsoft.com/graph/data-connect-policies#licensing)。
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Office 365 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -121,11 +121,11 @@ Office 365 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**Office365Table** | 是 |
 | tableName | 要从 Office 365 中提取的数据集的名称。 有关支持提取的 Office 365 数据集列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets#datasets)。 | 是 |
-| allowedGroups | 组选择谓词。  使用此属性以选择将为其检索数据的最多 10 个用户组。  如果未不指定任何组，则将为整个组织返回的数据。 | 否 |
-| userScopeFilterUri | 当`allowedGroups`属性未指定，则可以使用应用于整个租户来筛选要从 Office 365 中提取的特定行的谓词表达式。 谓词的格式应与 Microsoft Graph Api，则查询格式例如匹配`https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`。 | 否 |
-| dateFilterColumn | 日期时间筛选器列的名称。 使用此属性来限制哪些 Office 365 的提取数据的时间范围。 | Yes，如果数据集有一个或多个日期时间列。 请参阅[此处](https://docs.microsoft.com/graph/data-connect-filtering#filtering)有关的数据集需要此日期时间筛选器的列表。 |
-| startTime | 启动要作为筛选依据的日期时间值。 | 是如果`dateFilterColumn`指定 |
-| endTime | 结束日期时间值进行筛选。 | 是如果`dateFilterColumn`指定 |
+| allowedGroups | 组选择谓词。  可以使用此属性选择最多 10 个将为其检索数据的用户组。  如果未指定任何组，则会为整个组织返回数据。 | 否 |
+| userScopeFilterUri | 未指定 `allowedGroups` 属性时，可以使用在整个租户上应用的谓词表达式来筛选要从 Office 365 中提取的特定行。 谓词格式应当与 Microsoft Graph API 的查询格式匹配，例如 `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`。 | 否 |
+| dateFilterColumn | 日期/时间筛选器列的名称。 可以使用此属性限制要提取 Office 365 数据的时间范围。 | 如果数据集有一个或多个日期/时间列，则为必需的。 有关需要此日期/时间筛选器的数据集的列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-filtering#filtering)。 |
+| startTime | 筛选时所依据的开始日期/时间值。 | 如果指定了 `dateFilterColumn`，则为必需的 |
+| endTime | 筛选时所依据的结束日期/时间值。 | 如果指定了 `dateFilterColumn`，则为必需的 |
 
 **示例**
 

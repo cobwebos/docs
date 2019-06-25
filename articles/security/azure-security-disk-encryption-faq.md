@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1583ccf04b68f81a71bd2f63779680427ce3362
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 98acc7f6dd5ec7cf3702bbcbe60e2739732512e2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068780"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294917"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -29,43 +29,6 @@ Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Azure 磁盘加密如何收费？
 
 使用 Azure 磁盘加密来加密 VM 磁盘是免费的，但使用与 Azure Key Vault 相关联的内容则会产生费用。 有关 Azure Key Vault 成本的详细信息，请参阅 [Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)页面。
-
-
-## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Azure 磁盘加密支持哪些虚拟机层？
-
-Azure 磁盘加密是可在其中包括标准层 Vm 上[A、 D、 DS、 E、 G、 GS 和 F](https://azure.microsoft.com/pricing/details/virtual-machines/)系列 IaaS Vm。 在具有高级存储的 VM 上也可用。 它在基本层 VM 上不可用。
-
-## <a name="bkmk_LinuxOSSupport"></a>Azure 磁盘加密支持哪些 Linux 分发版？
-
-子集上支持 azure 磁盘加密[Azure 认可的 Linux 分发版](../virtual-machines/linux/endorsed-distros.md)，这本身就是所有的 Linux 服务器可能分发的子集。
-
- ![支持 Azure 磁盘加密的维恩图的 Linux 服务器分发](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
-
-Azure 不认可的 Linux 服务器分发版不支持 Azure 磁盘加密，并且这些认可，只有以下分发版和版本支持 Azure 磁盘加密：
-
-| Linux 分发版 | Version | 支持加密的卷类型|
-| --- | --- |--- |
-| Ubuntu | 18.04| OS 和数据磁盘 |
-| Ubuntu | 16.04| OS 和数据磁盘 |
-| Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 和数据磁盘 |
-| RHEL | 7.6 | OS 和数据磁盘 （请参阅下面的备注） |
-| RHEL | 7.5 | OS 和数据磁盘 （请参阅下面的备注） |
-| RHEL | 7.4 | OS 和数据磁盘 （请参阅下面的备注） |
-| RHEL | 7.3 | OS 和数据磁盘 （请参阅下面的备注） |
-| RHEL | 7.2 | OS 和数据磁盘 （请参阅下面的备注） |
-| RHEL | 6.8 | 数据磁盘 （请参阅下面的备注） |
-| RHEL | 6.7 | 数据磁盘 （请参阅下面的备注） |
-| CentOS | 7.5 | OS 和数据磁盘 |
-| CentOS | 7.4 | OS 和数据磁盘 |
-| CentOS | 7.3 | OS 和数据磁盘 |
-| CentOS | 7.2n | OS 和数据磁盘 |
-| CentOS | 6.8 | 数据磁盘 |
-| openSUSE | 42.3 | 数据磁盘 |
-| SLES | 12-SP4 | 数据磁盘 |
-| SLES | 12-SP3 | 数据磁盘 |
-
-> [!NOTE]
-> 新的 ADE 实现支持 RHEL OS 和 RHEL7 即用即付映像的数据磁盘。 ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。 请参阅[适用于 Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)有关详细信息。
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>如何开始使用 Azure 磁盘加密？
 

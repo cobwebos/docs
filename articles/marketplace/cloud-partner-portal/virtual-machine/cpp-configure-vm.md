@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
 ms.openlocfilehash: 3d38efadfb8ad13d072056ef851be99d9540ad4b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938426"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>配置 Azure 托管的 VM
@@ -36,7 +36,7 @@ ms.locfileid: "64938426"
 
 操作系统 VM 的基础映像包含截至发布日期为止的最新更新。 在发布创建的操作系统 VHD 之前，请务必使用所有最新的安全和维护修补程序来更新 OS 和所有已安装的服务。
 
-对于 Windows Server 2016，请运行“检查更新”命令。  对于旧版 Windows，请参阅[如何通过 Windows 更新获取更新](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update)。  Windows 更新将自动安装最新的关键/重要安全更新。
+对于 Windows Server 2016，请运行“检查更新”命令。   对于旧版 Windows，请参阅[如何通过 Windows 更新获取更新](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update)。  Windows 更新将自动安装最新的关键/重要安全更新。
 
 对于 Linux 分发版，通常可以通过命令行工具或图形实用工具来下载和安装更新。  例如，Ubuntu Linux 提供 [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) 命令和[更新管理器](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html)工具用于更新 OS。
 
@@ -57,7 +57,7 @@ ms.locfileid: "64938426"
 
 ## <a name="generalize-the-image"></a>通用化映像
 
-Azure 市场中的所有映像必须可采用一般形式重复使用。 若要实现这种可重用性，必须将操作系统 VHD 通用化，此操作会从 VM 中删除所有特定于实例的标识符以及软件驱动程序。
+Azure 市场中的所有映像必须可采用一般形式重复使用。 若要实现这种可重用性，必须将操作系统 VHD 通用化，此操作会从 VM 中删除所有特定于实例的标识符以及软件驱动程序。 
 
 ### <a name="windows"></a>Windows
 

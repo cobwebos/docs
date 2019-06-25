@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65071348"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions 模式和技术概念 (Azure Functions)
@@ -374,15 +374,15 @@ module.exports = async function (context) {
 };
 ```
 
-## <a name="pattern-6-aggregator-preview"></a>模式 #6:聚合器 （预览版）
+## <a name="pattern-6-aggregator-preview"></a>模式 #6：聚合器（预览版）
 
-第六个模式是有关一段时间内的事件数据聚合到单个可寻址*实体*。 在此模式下，处于聚合过程中的数据可能来自多个源、 可能会发送批，或可能分散在长时间段内的时间。 聚合器可能需要事件数据执行操作，如到达，并且外部客户端可能需要进行查询的聚合的数据。
+第六种模式是关于将一段时间内的事件数据聚合到单个可寻址的实体  中。 在此模式下，聚合的数据可能来自多个源，可能分批传送，也可能分散在很长一段时间内。 聚合器可能需要在事件数据到达时对其执行操作，外部客户端可能需要查询聚合的数据。
 
 ![聚合器关系图](./media/durable-functions-concepts/aggregator.png)
 
-比较棘手的尝试来实现此模式处理普通问题，无状态函数是并发控制将成为一个巨大的挑战。 不仅需要担心多个线程同时修改相同的数据，还需要考虑如何确保聚合器仅在运行在单个 VM 上一次。
+尝试用普通的无状态函数实现这种模式的棘手之处在于并发控制成为一个巨大的难题。 你不仅需要担心多个线程同时修改相同的数据，还需要担心如何确保聚合器一次只在单个 VM 上运行。
 
-使用[持久实体函数](durable-functions-preview.md#entity-functions)，其中一个可以实现此模式轻松地作为单个函数。
+使用 [Durable Entity 函数](durable-functions-preview.md#entity-functions)，可以很容易地将此模式实现为单个函数。
 
 ```csharp
 public static async Task Counter(
@@ -409,7 +409,7 @@ public static async Task Counter(
 }
 ```
 
-客户端可以排入队列*operations* （也称为"信号"） 的实体函数使用`orchestrationClient`绑定。
+客户端可以使用 `orchestrationClient` 绑定将实体函数的*操作*排入队列（也称为“发信号”)。
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -426,10 +426,10 @@ public static async Task Run(
 }
 ```
 
-同样，客户端可以查询的使用方法的实体函数状态`orchestrationClient`绑定。
+同样，客户端可以使用 `orchestrationClient` 绑定上的方法查询实体函数的状态。
 
 > [!NOTE]
-> 实体函数目前仅在适用[Durable Functions 2.0 预览版](durable-functions-preview.md)。
+> 实体函数目前仅在 [Durable Functions 2.0 预览版](durable-functions-preview.md)中可用。
 
 ## <a name="the-technology"></a>技术
 
@@ -441,7 +441,7 @@ public static async Task Run(
 
 Durable Functions 以透明方式使用事件溯源。 在幕后，业务流程协调程序函数中的 `await` (C#) 或 `yield` (JavaScript) 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。 
 
-如果使用 Azure Functions 消耗计划会停止业务流程协调程序函数的计费。 当没有更多工作要做，函数会重新启动，并且其状态并重新构造。
+如果正在使用 Azure Functions 消耗计划，将停止对业务流程协调程序函数的计费。 如果需要完成其他工作，可重启该函数并重新构造其状态。
 
 如果业务流程函数需要执行其他工作（例如，收到响应消息或持久计时器过期），业务流程协调程序将唤醒并从头开始重新执行整个函数，以重新生成本地状态。 
 
@@ -469,7 +469,7 @@ Durable Functions 扩展可自动生成为结构化的跟踪数据[Application I
 
 Durable Functions 扩展使用 Azure 存储中的队列、表和 Blob 来持久保存执行历史记录状态和触发函数执行。 可以使用函数应用的默认存储帐户，也可以配置单独的存储帐户。 由于存储吞吐量存在限制，你可能需要配置单独的帐户。 编写的业务流程协调程序代码不会与这些存储帐户中的实体进行交互。 Durable Task Framework 直接将实体作为实现详细信息进行管理。
 
-业务流程协调程序函数通过内部队列消息计划活动函数和接收这些函数的响应。 当函数应用在 Azure Functions 消耗计划中，在运行时[Azure Functions 缩放控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)监视这些队列。 根据需要添加了新的计算实例。 横向扩展到多个 VM 后，业务流程协调程序函数可在一个 VM 上运行，它调用的活动函数可在多个不同的 VM 上运行。 有关 Durable Functions 的缩放行为的详细信息，请参阅[性能和缩放](durable-functions-perf-and-scale.md)。
+业务流程协调程序函数通过内部队列消息计划活动函数和接收这些函数的响应。 如果在 Azure Functions 消耗计划中运行函数应用，则 [Azure Functions 缩放控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)会监视这些队列。 将会根据需要添加新的计算实例。 横向扩展到多个 VM 后，业务流程协调程序函数可在一个 VM 上运行，它调用的活动函数可在多个不同的 VM 上运行。 有关 Durable Functions 的缩放行为的详细信息，请参阅[性能和缩放](durable-functions-perf-and-scale.md)。
 
 业务流程协调程序帐户的执行历史记录存储在表存储中。 每当某个实例在特定的 VM 上解冻时，业务流程协调程序会从表存储中获取该实例的执行历史记录，以便可以重新生成其本地状态。 在表存储中获取历史记录所带来的一项便利是，可以使用 [Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)等工具查看业务流程的历史记录。
 

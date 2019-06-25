@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: 0816e7a7add430a65af9b3948aa8626f9567053a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942625"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Power BI 应用店面详细信息选项卡
 
-上**新建产品/服务**页上，使用**店面详细信息**选项卡可以提供你的潜在客户的市场营销、 销售和法律信息。 此选项卡上，还可以设置的 Azure Marketplace 将生成的潜在客户管理。 这一长窗体分为六个部分：“产品/服务详细信息”、“应用一览详细信息”、“市场营销项目”、“法律”、“客户支持”和“潜在客户管理”。  星号 （*） 末尾的字段标签表示字段为必填项。
+上**新建产品/服务**页上，使用**店面详细信息**选项卡可以提供你的潜在客户的市场营销、 销售和法律信息。 此选项卡上，还可以设置的 Azure Marketplace 将生成的潜在客户管理。 这一长窗体分为六个部分：“产品/服务详细信息”  、“应用一览详细信息”  、“市场营销项目”  、“法律”  、“客户支持”  和“潜在客户管理”  。  星号 （*） 末尾的字段标签表示字段为必填项。
 
 
 ## <a name="offer-details-section"></a>“产品/服务详细信息”部分
@@ -54,7 +54,7 @@ ms.locfileid: "64942625"
 
 ## <a name="marketing-artifacts-section"></a>“营销项目”部分
 
-在中**营销项目**部分、 上传品牌和市场营销资料，以便显示在 AppSource 上。  本部分分为四个子节：“徽标”、“视频”、“文档”和“屏幕截图”。 徽标和屏幕截图是唯一需要营销项目。 但对于最佳的客户吸引力，我们建议将视频和文档也添加。
+在中**营销项目**部分、 上传品牌和市场营销资料，以便显示在 AppSource 上。  本部分分为四个子节：“徽标”  、“视频”  、“文档”  和“屏幕截图”  。 徽标和屏幕截图是唯一需要营销项目。 但对于最佳的客户吸引力，我们建议将视频和文档也添加。
 
 ![“店面详细信息”选项卡的“营销项目”部分](./media/marketing-artifacts-section.png)
 
@@ -69,12 +69,12 @@ ms.locfileid: "64942625"
 | **名称**                             | 输入应用的名称或标题。                                          |
 | **URL**                              | 输入托管在 YouTube 或 Vimeo 的视频的 URL。                              |
 | **缩略图**                        | 添加的应用的缩略图图像。  AppSource 支持仅 PNG 格式，但 1280 x 720 像素的分辨率。   |
-| 文档                          | 若要显示在 AppSource，在将最多三个文档添加**了解详细信息**标题。  |
+| 文档                           | 若要显示在 AppSource，在将最多三个文档添加**了解详细信息**标题。  |
 | **名称**                             | 输入名称或支持文档的标题。                              |
 | **文件**                             | 上传的 PDF 文件。                             |
 | *屏幕截图\**                      | 添加最多 5 张屏幕截图。                        |
 | **名称**                             | 输入名称或标题的屏幕截图。                                       |
-| **图像**                            | 上传 PNG 屏幕截图。 其解决结果必须为 1280 x 720 像素。  | 
+| **Image**                            | 上传 PNG 屏幕截图。 其解决结果必须为 1280 x 720 像素。  | 
 |   |   |
 
 将上传到徽标[云合作伙伴门户](https://cloudpartner.azure.com)应*不*:
@@ -109,7 +109,7 @@ ms.locfileid: "64942625"
 
 |    字段               |   潜在客户目标                               |
 |------------------------|--------------------------------------            |
-|  无              | 收集任何潜在客户。 这是默认选项。  |
+|  **无**              | 收集任何潜在客户。 这是默认选项。  |
 | **Azure Blob (已弃用)** | 指定[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)通过容器名称和连接字符串。  选择此选项已弃用。 使用**Azure 表**相反。  |
 | **Azure 表**        | 指定[Azure 表存储](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview)使用连接字符串。  |
 | **Dynamics CRM Online** | 指定[Dynamics 365](https://dynamics.microsoft.com/)使用的 URL 和身份验证凭据。 |

@@ -13,10 +13,10 @@ ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 80d2e995a18a2d6dafbb8d92fdd5996b10eab17c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60783718"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 模板和文件传输
@@ -67,7 +67,7 @@ az extension add --name azure-batch-cli-extensions
 
 Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模板。 它们是包含项属性名称和值的 JSON 文件，但添加了以下主要概念：
 
--   **参数**
+-   **Parameters**
 
     -   允许在正文部分中指定属性值，使用模板时，仅需提供参数值。 例如，池的完整定义应放入正文且仅定义池 id 的一个参数；因此仅需提供一个池 ID 字符串来创建池。
         
@@ -157,7 +157,7 @@ CLI 会提示你提供 `poolId` 和 `nodeCount` 参数的值。 也可以提供 
 }
 ```
 
-如果参数 JSON 文件名为 pool-parameters.json，请按以下所示调用该模板：
+如果参数 JSON 文件名为 pool-parameters.json，请按以下所示调用该模板  ：
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
@@ -261,11 +261,11 @@ CLI 同样会提示你提供参数的值。 也可以提供 JSON 文件中的参
 
 上传模板：
 
-1. 在 Batch Explorer 中，选择“库” > “本地模板”。
+1. 在 Batch Explorer 中，选择“库” > “本地模板”   。
 
 2. 选择或拖放本地池或作业模板。
 
-3. 选择“使用此模板”，并按照屏幕上的提示操作。
+3. 选择“使用此模板”，并按照屏幕上的提示操作  。
 
 ## <a name="file-groups-and-file-transfer"></a>文件组和文件传输
 
@@ -283,7 +283,7 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-通过池和作业模板，可将存储在文件组中的文件指定为复制到池节点或离开池节点返回到文件组。 例如，在之前指定的作业模板中，为任务工厂指定文件组 ffmpeg-input ，作为复制到节点以供转码的源视频文件的位置。 文件组 ffmpeg-output 是从运行每个任务的节点复制已转码输出文件的位置。
+通过池和作业模板，可将存储在文件组中的文件指定为复制到池节点或离开池节点返回到文件组。 例如，在之前指定的作业模板中，为任务工厂指定文件组 ffmpeg-input ，作为复制到节点以供转码的源视频文件的位置  。 文件组 ffmpeg-output 是从运行每个任务的节点复制已转码输出文件的位置  。
 
 ## <a name="summary"></a>摘要
 

@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
 ms.openlocfilehash: d9b259ba93be369658638d034f109a3a6ba4c4a4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938188"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>虚拟机“市场”选项卡
 
-在“新建套餐”页的“市场”选项卡中，可向潜在客户提供营销、销售和法律信息与协议，以及管理从市场生成的潜在顾客。 此长格式被划分为四个部分：**概述**，**市场营销项目**，**潜在客户管理**，并且**法律**。
+在“新建套餐”页的“市场”选项卡中，可向潜在客户提供营销、销售和法律信息与协议，以及管理从市场生成的潜在顾客。   此长格式被划分为四个部分：**概述**，**市场营销项目**，**潜在客户管理**，并且**法律**。
 
 
 ## <a name="overview-section"></a>“概述”部分
@@ -58,7 +58,7 @@ ms.locfileid: "64938188"
 | **主图**                  | 815x290 位图  此徽标是可选的，但是，一旦上传主图，就无法将其删除。 |
 | *屏幕截图*  | 屏幕截图是可选的，最多可为每个 SKU 上传 5 个屏幕快照。 |
 | **名称**                  | 名称或标题 <!-- TODO - max char length? none specified in UI -->                               |
-| **图像**                 | 屏幕截图图像，533x324 像素                                         |
+| **Image**                 | 屏幕截图图像，533x324 像素                                         |
 | *视频*  |  |
 | **名称**                  | 名称或标题  <!-- TODO - max char length? -->                              |
 | **链接**                  | 视频 URL，托管在 YouTube 或 Vimeo 中                                        |

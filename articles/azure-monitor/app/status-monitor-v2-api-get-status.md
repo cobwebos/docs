@@ -1,6 +1,6 @@
 ---
 title: Azure 状态监视器 v2 API 参考：获取状态 |Microsoft Docs
-description: 状态监视器 v2 API 引用。 Get-ApplicationInsightsMonitoringStatus. 监视网站性能，无需重新部署该网站。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
+description: 状态监视器 v2 API 引用。 Get-ApplicationInsightsMonitoringStatus. 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
 ms.openlocfilehash: 860226320fe1a546798cc462e4e5c06d4b9228cf
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66514307"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus-v022-alpha"></a>状态监视器 v2 API:Get ApplicationInsightsMonitoringStatus (v0.2.2-alpha)
+# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus-v022-alpha"></a>状态监视器 v2 API：Get-ApplicationInsightsMonitoringStatus (v0.2.2-alpha)
 
 本文介绍的 cmdlet 时的成员[Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
 
 > [!IMPORTANT]
-> 状态监视器 v2 目前处于公共预览状态。
+> 状态监视器 v2 目前为公共预览版。
 > 没有附带服务级别协议，提供此预览版本，我们不建议将其用于生产工作负荷。 可能不支持某些功能，以及一些可能会受约束的功能。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -121,7 +121,7 @@ listdlls64.exe -accepteula w3wp
 
 默认情况下，此 cmdlet 将报告的版本号和监视所需的 Dll 的路径。
 
-如果您需要确定的任何 DLL，包括 Application Insights SDK 的版本，请使用此选项。
+如果需要标识任何 DLL 的版本（包括 Application Insights SDK），请使用此选项。
 
 
 ### <a name="-inspectprocess"></a>-InspectProcess
@@ -130,10 +130,10 @@ listdlls64.exe -accepteula w3wp
 它将下载外部工具来确定如果所需的 Dll 加载到 IIS 运行时。
 
 
-如果出于任何原因，此过程失败，您可以手动运行以下命令：
+如果此过程因任何原因失败，你可以手动运行这些命令：
 - iisreset.exe /status
-- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr /I"InstrumentationEngine AI。 ApplicationInsights"
-- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I"InstrumentationEngine AI ApplicationInsights"
+- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
+- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngine AI ApplicationInsights"
 
 
 ### <a name="-force"></a>-Force
@@ -143,5 +143,5 @@ listdlls64.exe -accepteula w3wp
 
 ## <a name="next-steps"></a>后续步骤
 
- 用做更多状态监视器 v2:
+ 使用状态监视器 v2 执行更多操作：
  - 使用指南，了解如何[进行故障排除](status-monitor-v2-troubleshoot.md)状态监视器 v2。

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 数据工厂中执行数据流活动 |Microsoft Docs
-description: 如何执行数据从流中的数据工厂管道。
+title: Azure 数据工厂中的执行数据流活动 | Microsoft Docs
+description: 如何在数据工厂管道中执行数据流。
 services: data-factory
 documentationcenter: ''
 author: kromerm
@@ -10,15 +10,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: c33219eacb1d3bada5630a7792f98ba33dba824e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e75c6290474d876ca22b5888d06b1fc0e4c8cd05
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235863"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077323"
 ---
-# <a name="execute-data-flow-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行数据流活动
-使用 execute 数据流活动的管道调试 （沙盒） 运行和触发的管道运行中运行 ADF 数据的流。
+# <a name="execute-data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的执行数据流活动
+使用执行数据流活动，在管道调试（沙盒）运行和管道触发的运行中运行 ADF 数据流。
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -43,48 +43,48 @@ ms.locfileid: "66235863"
 
 ## <a name="type-properties"></a>Type 属性
 
-* ```dataflow``` 是你想要执行的数据流实体的名称
-* ```compute``` 描述了 Spark 执行环境
-* ```coreCount``` 是要分配给此活动执行的数据的核心数
+* ```dataflow``` 是要执行的数据流实体的名称
+* ```compute``` 描述 Spark 执行环境
+* ```coreCount``` 是要分配给此活动执行（执行数据流）的核心数
 
 ![执行数据流](media/data-flow/activity-data-flow.png "执行数据流")
 
-### <a name="debugging-pipelines-with-data-flows"></a>调试具有数据流管道
+### <a name="debugging-pipelines-with-data-flows"></a>调试具有数据流的管道
 
-![调试按钮](media/data-flow/debugbutton.png "调试按钮")
+![“调试”按钮](media/data-flow/debugbutton.png "“调试”按钮")
 
-使用数据流调试利用 warmed 的群集以供在运行管道调试中以交互方式测试你的数据的流。 使用管道调试选项来测试管道内你数据的流。
+使用“数据流调试”，利用预热的群集在管道调试运行中以交互方式测试数据流。 使用“管道调试”选项，在管道中测试数据流。
 
 ### <a name="run-on"></a>运行位置
 
-这是必填的字段，用于定义要用于您数据流的活动执行的集成运行时。 默认情况下，数据工厂将使用默认自动解决 Azure 集成运行时。 但是，可以创建自己的 Azure 集成运行时，定义特定的区域，请将数据流活动执行的计算类型、 内核计数和 TTL。
+这是一个必填字段，定义用于执行数据流活动的 Integration Runtime。 默认情况下，数据工厂将使用默认的自动解析 Azure Integration Runtime。 但是，你可以创建自己的 Azure Integration Runtime，用于定义执行数据流活动所需的具体区域、计算类型、核心计数和 TTL。
 
-数据流执行的默认设置是与 TTL 为 60 分钟的常规计算的 8 个核心。
+执行数据流所需的默认设置是采用 8 核心常规计算，TTL 为 60 分钟。
 
-选择此执行数据的流的计算环境。 默认值为 Azure 自动解决默认集成运行时。 选择此选项将在数据工厂所在的同一区域中的 Spark 环境上执行数据流。 计算类型将是作业群集，这意味着在计算环境将启动到需要几分钟时间。
+针对该数据流执行操作选择计算环境。 默认设置为 Azure 自动解析默认 Integration Runtime。 此选项会在数据工厂所在区域的 Spark 环境中执行数据流。 计算类型将是作业群集，这意味着计算环境需要数分钟才能启动。
 
-Data Flow 活动可以控制的 Spark 执行环境。 在中[Azure 集成运行时](concepts-integration-runtime.md)设置计算类型 （常规用途、 内存优化和计算优化），辅助内核数和到-生存时间以匹配使用数据流计算的执行引擎的设置系统要求。 此外，设置 TTL 将允许您维护的热群集，可立即用于作业执行。
+你可以控制数据流活动的 Spark 执行环境。 在 [Azure Integration Runtime](concepts-integration-runtime.md) 中存在设置，用于设置计算类型（常规用途、内存优化、计算优化）、辅助角色核心数以及生存时间，使执行引擎符合数据流计算要求。 另外，设置 TTL 可以让群集始终处于预热状态，可以立即执行作业。
 
-![Azure 集成运行时](media/data-flow/ir-new.png "Azure 集成运行时")
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
 > [!NOTE]
-> 中的数据流活动的集成运行时选择仅适用于*触发执行*管道。 使用调试调试你的流数据的管道将执行针对 8 核默认 Spark 群集。
+> 数据流活动中的 Integration Runtime 选择仅适用于管道的已触发执行。  使用“调试”来调试具有数据流的管道时，会针对 8 核的默认 Spark 群集执行操作。
 
-### <a name="staging-area"></a>临时区域
+### <a name="staging-area"></a>暂存区域
 
-如果到 Azure 数据仓库接收你的数据，则必须为 Polybase 批处理负载选择暂存位置。
+如果将数据接收到 Azure 数据仓库中，则必须为 Polybase 批负载选择一个暂存位置。 临时设置才适用于 Azure 数据仓库工作负荷。
 
 ## <a name="parameterized-datasets"></a>参数化数据集
 
-如果使用参数化数据集，请务必设置参数值。
+如果使用参数化数据集，请确保设置参数值。
 
-![执行数据流量参数](media/data-flow/params.png "参数")
+![执行数据流参数](media/data-flow/params.png "参数")
 
-### <a name="debugging-parameterized-data-flows"></a>调试参数化数据的流
+### <a name="debugging-parameterized-data-flows"></a>调试参数化数据流
 
-仅可以调试数据流管道 Debug 使用执行数据的流活动运行中的参数化数据集。 目前，在 ADF 数据流中的交互式调试会话不使用参数化数据集。 管道执行和调试运行将使用参数。
+只能通过执行数据流活动在管道调试运行中使用参数化数据集来调试数据流。 目前，ADF 数据流中的交互式调试会话不适用于参数化数据集。 管道执行和调试运行将可以使用参数。
 
-较好的做法是生成与静态数据集数据的流，以便在设计时具有可用的完整元数据列传播。 然后替换为静态数据集的动态参数化数据集时实施数据流管道。
+一种好的做法是使用静态数据集构建数据流，这样就可以在设计时使用完整的元数据列传播。 然后，在实现数据流管道的可操作化以后，将静态数据集替换为动态参数化数据集。
 
 ## <a name="next-steps"></a>后续步骤
 查看数据工厂支持的其他控制流活动： 

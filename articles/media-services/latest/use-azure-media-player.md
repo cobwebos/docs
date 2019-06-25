@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
 ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926517"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player 概述
@@ -32,9 +32,9 @@ Microsoft Azure 媒体服务允许播放使用 HLS、DASH、平滑流格式提�
 
 可以使用 [Azure Media Player 演示页](https://aka.ms/amp)播放 Azure 媒体服务示例或你自己的流。  
 
-若要播放新视频，请粘贴一个不同的 URL，然后按“更新”。
+若要播放新视频，请粘贴一个不同的 URL，然后按“更新”  。
 
-若要配置各种播放选项（例如技术、语言或加密），请按“高级选项”。
+若要配置各种播放选项（例如技术、语言或加密），请按“高级选项”  。
 
 ![Azure Media Player](./media/azure-media-player/home-page.png)
 

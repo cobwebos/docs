@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: glenga
 ms.openlocfilehash: c07a42349fbd81a46b1b7cd9bcad1978f891a6b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60733695"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
@@ -112,7 +112,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ### <a name="create-an-event-grid-trigger-function"></a>创建事件网格触发器函数
 
-创建用于接收生命周期事件的函数。 选择“自定义函数”。
+创建用于接收生命周期事件的函数。 选择“自定义函数”。 
 
 ![选择“创建自定义函数”。](./media/durable-functions-event-publishing/functions-portal.png)
 
@@ -142,7 +142,7 @@ public static void Run(JObject eventGridEvent, ILogger log)
 
 ![选择“事件网格触发器”链接。](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
-为“主题类型”选择 `Event Grid Topics`。 选择事件网格主题为创建的资源组。 然后选择事件网格主题的实例。 按 `Create`。
+为“主题类型”选择 `Event Grid Topics`。  选择事件网格主题为创建的资源组。 然后选择事件网格主题的实例。 按 `Create`。
 
 ![创建事件网格订阅。](./media/durable-functions-event-publishing/eventsubscription.png)
 
@@ -250,19 +250,19 @@ namespace LifeCycleEventSpike
 
 以下列表解释了生命周期事件架构：
 
-* **`id`**：事件网格事件的唯一标识符。
-* **`subject`**：事件主题的路径。 `durable/orchestrator/{orchestrationRuntimeStatus}`。 `{orchestrationRuntimeStatus}` 为 `Running`、`Completed`、`Failed` 和 `Terminated`。  
-* **`data`**：Durable Functions 特定的参数。
-  * **`hubName`**：任务中心](durable-functions-task-hubs.md)名称。
-  * **`functionName`**：业务流程协调程序函数名称。
-  * **`instanceId`**：Durable Functions instanceId。
-  * **`reason`**：与跟踪事件关联的其他数据。 有关详细信息，请参阅 [Durable Functions 中的诊断 (Azure Functions)](durable-functions-diagnostics.md)
-  * **`runtimeStatus`**：业务流程运行时状态。 值为 Running、Completed、Failed 和 Canceled。
-* **`eventType`**:"orchestratorEvent"
-* **`eventTime`**：事件时间 (UTC)。
-* **`dataVersion`**：生命周期事件架构的版本。
-* **`metadataVersion`**：元数据的版本。
-* **`topic`**：事件网格主题资源。
+* **`id`** ：事件网格事件的唯一标识符。
+* **`subject`** ：事件主题的路径。 `durable/orchestrator/{orchestrationRuntimeStatus}`。 `{orchestrationRuntimeStatus}` 为 `Running`、`Completed`、`Failed` 和 `Terminated`。  
+* **`data`** ：Durable Functions 特定的参数。
+  * **`hubName`** ：任务中心](durable-functions-task-hubs.md)名称。
+  * **`functionName`** ：业务流程协调程序函数名称。
+  * **`instanceId`** ：Durable Functions instanceId。
+  * **`reason`** ：与跟踪事件关联的其他数据。 有关详细信息，请参阅 [Durable Functions 中的诊断 (Azure Functions)](durable-functions-diagnostics.md)
+  * **`runtimeStatus`** ：业务流程运行时状态。 值为 Running、Completed、Failed 和 Canceled。
+* **`eventType`** :"orchestratorEvent"
+* **`eventTime`** ：事件时间 (UTC)。
+* **`dataVersion`** ：生命周期事件架构的版本。
+* **`metadataVersion`** ：元数据的版本。
+* **`topic`** ：事件网格主题资源。
 
 ## <a name="how-to-test-locally"></a>如何在本地测试
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 监视器应用程序更改分析-发现分析，更改可能会影响实时站点问题/中断与 Azure Monitor 应用程序的更改 |Microsoft Docs
-description: 对 Azure 应用服务上使用 Azure Monitor 应用程序更改分析的应用程序实时站点问题进行故障排除
+title: 使用 Azure Monitor 中的应用程序更改分析以查找 web 应用的问题 |Microsoft Docs
+description: 使用 Azure Monitor 中应用程序更改分析 Azure 应用服务上的实时站点上的应用程序问题进行疑难解答。
 services: application-insights
 author: cawams
 manager: carmonm
@@ -10,131 +10,134 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: 5bd3816e65398283de85b4551a137b3f97db4cc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2a31131b662d01f9841a3f1c5b0a6c459a117e77
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226328"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075369"
 ---
-# <a name="application-change-analysis-public-preview"></a>应用程序更改分析 （公共预览版）
+# <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure Monitor 中使用应用程序更改分析 （预览版）
 
-当实时站点问题/中断发生时，快速确定根本原因是关键。 标准监视解决方案可帮助您快速确定问题，并且通常，即使哪个组件发生故障。 但这始终不会导致立即发生失败的原因的理由。 你的站点过五分钟之前，现在它已损坏。 在过去 5 分钟内发生什么变化？ 这是新功能 Azure Monitor 应用程序更改分析旨在回答的问题。 通过基于的强大功能构建[Azure 资源 Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)应用程序更改分析提供了深入了解 Azure 应用程序更改来提高可观察性并减少 MTTR （平均时间修复）。
+实时站点问题或服务中断发生时，快速确定根本原因是关键。 标准的监视解决方案可能会发出警报的问题。 它们甚至可能指示哪个组件发生故障。 但此警报不会始终立即解释故障的原因。 您知道您的站点过五分钟之前，并且现在它已损坏。 那么，过去 5 分钟发生了什么？ 这才是问题所在的应用程序更改分析主要用于解答在 Azure 监视器中。 
+
+上的强大功能构建[Azure 资源 Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)，更改分析可深入了解 Azure 应用程序更改来提高可观察性并减少 MTTR （平均修复时间）。
 
 > [!IMPORTANT]
-> Azure 监视器应用程序更改分析当前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 更改分析当前处于预览状态。 此预览版提供，没有服务级别协议。 此版本不建议用于生产工作负荷。 某些功能可能不受支持，或可能功能受限。 有关详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="overview-of-change-analysis-service"></a>更改分析服务概述
-更改分析服务检测到各种类型的基础结构层从应用程序部署到的更改。 它是订阅级别的 Azure 资源提供程序，用于到订阅中资源更改看起来并提供各种诊断工具来帮助用户了解哪些更改的数据可能会导致问题。
+## <a name="overview"></a>概述
 
-下图说明了更改分析服务的体系结构：![有关如何更改分析服务获取的体系结构关系图更改数据，并向客户端工具提供数据](./media/change-analysis/overview.png)
+更改分析检测到各种类型的更改，从应用程序部署到的基础结构层。 它是检查在订阅中的资源更改的订阅级别的 Azure 资源提供程序。 更改分析提供了各种诊断工具可以帮助用户了解哪些更改的数据可能会导致问题。
 
-当前该工具已集成到应用服务 web 应用诊断并解决问题的体验。 请参阅*为应用服务 Web 应用程序更改 Analysis service*节介绍了如何启用和查看到 web 应用所做的更改。
+下图说明更改 Analysis 的体系结构：
+
+![如何更改分析获取更改数据并将其提供给客户端工具的体系结构示意图](./media/change-analysis/overview.png)
+
+当前更改分析集成到**诊断并解决问题**应用服务 web 应用中体验。 若要启用更改检测和 web 应用中查看更改，请参阅*Web 应用功能更改分析*本文后面的部分。
 
 ### <a name="azure-resource-manager-deployment-changes"></a>Azure 资源管理器部署更改
-利用[Azure 资源 Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)更改分析工具提供了如何随时间改变的 Azure 资源的托管应用程序的历史记录。 例如，如果 web 应用程序必须添加到其中一个标记，更改将反映在更改分析工具。
-此信息是始终可用，只要`Microsoft.ChangeAnalysis`资源提供程序是登记到 Azure 订阅。
 
-### <a name="web-application-deployment-and-configuration-changes"></a>Web 应用程序部署和配置更改
-更改分析工具捕获部署和配置状态的应用程序每隔 4 小时计算差异和显示所发生的更改。 此类更改的示例包括应用程序的环境变量更改、 IP 配置规则更改、 托管服务标识更改、 SSL 设置的更改等。
-与不同的资源管理器更改此类型的更改信息可能无法立即出现在该工具中。 若要查看最新更改，请在工具中使用现在更改扫描按钮。
+使用[Azure 资源 Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)，更改分析，提供了如何随时间改变的 Azure 资源的托管应用程序的历史记录。 更改分析可以检测到，例如，更改 IP 配置规则、 管理的标识和 SSL 设置。 因此如果一个标记添加到 web 应用，更改分析将反映的更改。 此信息才可用，只要`Microsoft.ChangeAnalysis`资源提供程序启用 Azure 订阅中。
 
-![更改扫描的屏幕截图现在按钮中诊断并解决问题的应用服务 web 应用的更改分析集成工具](./media/change-analysis/scan-changes.png)
+### <a name="changes-in-web-app-deployment-and-configuration"></a>Web 应用部署和配置中的更改
+
+更改分析捕获的应用程序每隔 4 小时的部署和配置状态。 它可以检测，例如，应用程序的环境变量中的更改。 该工具计算的差异，并显示所发生的更改。 与资源管理器更改不同代码部署更改信息可能不是立即出现在该工具中。 若要更改分析中查看最新更改，请选择**扫描更改现在**。
+
+!["现在更改扫描"按钮的屏幕截图](./media/change-analysis/scan-changes.png)
 
 ### <a name="dependency-changes"></a>依赖项发生更改
-依赖关系资源也可能是问题的原因。 例如，如果 web 应用连接到 Redis 缓存时，web 应用程序的性能可能会受到由 Redis 缓存的 SKU。 通过深入了解 web 应用 DNS 记录更改分析服务还提供了依赖项更改的信息来标识可能会导致问题的应用的所有组件中的更改。
 
+对资源的依赖项的更改也会导致问题的 web 应用中。 例如，如果 web 应用连接到 Redis 缓存时，Redis 缓存的 SKU 可能会影响 web 应用程序的性能。 若要检测的依赖项中的更改，更改分析，请检查 web 应用的 DNS 记录。 在这种方式，它标识可能会导致问题的所有应用组件中的更改。
 
-## <a name="change-analysis-service-for-app-services-web-app"></a>更改应用服务 Web 应用程序的分析服务
+## <a name="change-analysis-for-the-web-apps-feature"></a>更改分析 Web 应用功能
 
-Azure 监视器应用程序更改分析当前内置到自助服务**诊断并解决问题**体验，可以从访问哪一**概述**部分中的 Azure 应用服务应用程序：
+在 Azure 监视器中，更改分析当前生成到自助服务**诊断并解决问题**体验。 访问此体验**概述**在应用服务应用程序页。
 
-![Azure 应用服务的屏幕截图概述页上概述按钮周围的红框和诊断并解决问题按钮](./media/change-analysis/change-analysis.png)
+!["概述"按钮的屏幕截图和"诊断并解决问题"按钮](./media/change-analysis/change-analysis.png)
 
-### <a name="enable-change-analysis-in-diagnose-and-solve-problems-tool"></a>启用更改分析中诊断并解决问题的工具
+### <a name="enable-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>启用更改分析中诊断并解决问题的工具
 
-1. 选择**可用性和性能**
+1. 选择**可用性和性能**。
 
-    ![可用性和性能故障排除选项的屏幕截图](./media/change-analysis/availability-and-performance.png)
+    !["可用性和性能"故障排除选项的屏幕截图](./media/change-analysis/availability-and-performance.png)
 
-2. 单击**应用程序崩溃**磁贴。
+1. 选择**应用程序崩溃**。
 
-   ![与应用程序崩溃磁贴的屏幕截图](./media/change-analysis/application-crashes-tile.png)
+   !["应用程序崩溃"按钮的屏幕截图](./media/change-analysis/application-crashes-tile.png)
 
-3. 若要启用**更改 Analysis**选择**立即启用**。
+1. 若要启用更改分析，请选择**立即启用**。
 
-   ![可用性和性能故障排除选项的屏幕截图](./media/change-analysis/application-crashes.png)
+   !["应用程序崩溃"选项的屏幕截图](./media/change-analysis/application-crashes.png)
 
-4. 若要充分利用完整更改分析功能集**更改 Analysis**，**扫描检测代码改动**，并**始终打开**到**上**然后选择**保存**。
+1. 若要充分利用的全部更改分析功能，启用**更改 Analysis**，**扫描检测代码改动**，并**始终打开**。 再选择“保存”  。
 
-    ![Azure 应用服务启用更改分析用户界面的屏幕截图](./media/change-analysis/change-analysis-on.png)
+    !["启用更改分析"用户界面的屏幕截图](./media/change-analysis/change-analysis-on.png)
 
-    如果**更改分析**是启用，你将能够检测资源级别的更改。 如果**扫描代码更改**是启用，你将还请参阅部署文件和站点配置更改。 启用**始终打开**将优化更改扫描的性能，但可能会导致附加成本从计费角度来看。
+    - 启用**更改分析**来检测资源级别的更改。 
+    - 启用**扫描代码更改**若要查看部署文件和站点配置更改。 
+    - 启用**始终打开**优化更改扫描的性能。 但请记住，此设置可能会产生额外的计费费用。
 
-5.  启用的所有内容后，选择**诊断并解决问题** > **可用性和性能** > **应用程序崩溃**将允许你访问更改分析体验。 在关系图将汇总的这些更改随时间的详细信息以及发生的更改的类型：
+1. 若要访问更改分析，请选择**诊断并解决问题** > **可用性和性能** > **应用程序崩溃**。 你将看到一个图，以及这些更改的详细信息的时间内汇总的更改的类型：
 
      ![更改差异视图的屏幕截图](./media/change-analysis/change-view.png)
 
 
-### <a name="enable-change-analysis-service-at-scale"></a>启用在规模较大的更改分析服务
-如果订阅中有许多 web 应用，启用每个 web 应用程序级别上的服务将效率低下。 以下是一些备用的加入说明。
+### <a name="enable-change-analysis-at-scale"></a>启用在规模较大更改分析
 
-#### <a name="registering-change-analysis-resource-provider-for-your-subscription"></a>注册更改分析资源提供程序为你的订阅
+如果你的订阅包括多个 web 应用，启用 web 应用程序级别服务很低。 在这种情况下，请按照这些说明。
 
-1. 注册更改分析预览版功能标志
+### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>注册你的订阅更改分析资源提供程序
 
-    由于此功能处于预览状态，您需要首先注册到你的订阅可见的功能标志。
-    - 打开 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)。
+1. 注册更改分析功能标志 （预览版）。 功能标志处于预览状态，因为您需要进行注册，使其可见到你的订阅：
 
-    ![更改 Azure Cloud Shell 的屏幕截图](./media/change-analysis/cloud-shell.png)
+   1. 打开 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)。
 
-    - Shell 类型更改为 PowerShell:
+      ![更改 Cloud Shell 的屏幕截图](./media/change-analysis/cloud-shell.png)
 
-    ![更改 Azure Cloud Shell 的屏幕截图](./media/change-analysis/choose-powershell.png)
+   1. 命令行程序将类型更改为**PowerShell**。
 
-    - 运行以下 PowerShell 命令：
+      ![更改 Cloud Shell 的屏幕截图](./media/change-analysis/choose-powershell.png)
 
-    ``` PowerShell
+   1. 运行以下 PowerShell 命令：
 
-    Set-AzContext -Subscription <your_subscription_id> #set script execution context to the subscription you are trying to onboard
-    Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
-    Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
+        ``` PowerShell
+        Set-AzContext -Subscription <your_subscription_id> #set script execution context to the subscription you are trying to enable
+        Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
+        Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
+        ```
+    
+1. 注册订阅更改分析资源提供程序。
 
-    ```
+   - 转到**订阅**，并选择你想要更改服务中启用的订阅。 然后选择资源提供程序：
 
-2. 更改分析资源提供程序注册订阅
+        ![显示如何注册更改分析资源提供程序的屏幕截图](./media/change-analysis/register-rp.png)
 
-    - 导航到订阅，选择要登记更改服务的订阅，然后单击资源提供程序：
+       - 选择**Microsoft.ChangeAnalysis**。 然后在页面的顶部，选择**注册**。
 
-        ![从订阅边栏选项卡注册更改分析 RP 的屏幕快照](./media/change-analysis/register-rp.png)
+       - 启用资源提供程序后，你可以设置 web 应用来检测部署级别的更改隐藏的标记。 若要设置隐藏的标记，请执行下面的说明 **，无法提取更改分析信息**。
 
-    - 选择*Microsoft.ChangeAnalysis*然后单击*注册*页面顶部。
+   - 或者，可以使用 PowerShell 脚本注册资源提供程序：
 
-    - 上架资源提供程序后，请按照中的说明 *，无法提取更改分析信息*下面启用部署在 web 应用上设置隐藏的标记级别更改检测 web 应用上的。
+        ```PowerShell
+        Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
+    
+        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
+        ```
 
-3. 或者到上面的步骤 2 中，可以注册资源提供程序通过 PowerShell 脚本：
+        若要使用 PowerShell 设置隐藏的标记的 web 应用上，运行以下命令：
+    
+        ```powershell
+        $webapp=Get-AzWebApp -Name <name_of_your_webapp>
+        $tags = $webapp.Tags
+        $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
+        Set-AzResource -ResourceId <your_webapp_resourceid> -Tag $tag
+        ```
 
-    ```PowerShell
-    Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-
-    Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
-    ```
-
-4. 若要使用 PowerShell 的 web 应用上设置隐藏的标记，请运行以下命令：
-
-    ```powershell
-    $webapp=Get-AzWebApp -Name <name_of_your_webapp>
-    $tags = $webapp.Tags
-    $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
-    Set-AzResource -ResourceId <your_webapp_resourceid> -Tag $tag
-    ```
-
-> [!NOTE]
-> 隐藏的标记添加后，你可能仍需要最初等待最多 4 小时，以便能够在第一次查看更改。 这是因为 4 小时 freqeuncy 更改分析服务用来扫描 web 应用，又限制了扫描的性能影响。
+     > [!NOTE]
+     > 添加隐藏的标记后，仍可能需要等待最多 4 个小时才能开始看到更改。 结果被延迟，因为更改分析扫描你的 web 应用仅每隔 4 小时。 4 小时计划限制扫描的性能影响。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 提高 Azure 应用服务的监视[通过启用 Application Insights 功能](azure-web-apps.md)的 Azure Monitor。
-- 增强的对理解[Azure 资源 Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)从而可帮助 power Azure Monitor 应用程序更改分析。
+- 监视应用服务通过更有效地[启用 Application Insights 功能](azure-web-apps.md)Azure 监视器中。
+- 详细了解如何[Azure 资源 Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)，这可帮助 power 更改分析。

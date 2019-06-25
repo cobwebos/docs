@@ -9,11 +9,11 @@ ms.date: 11/09/2017
 ms.author: mandia
 ms.custom: include file
 ms.openlocfilehash: 58a97ddf46a611d9a70c6662e315379629ffbec1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108865"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202836"
 ---
 > [!IMPORTANT]
 > Microsoft Azure BizTalk 服务 (MABS) 即将停用，将被 Azure 逻辑应用替代。

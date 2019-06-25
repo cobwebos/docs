@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: srinathvasireddy
-ms.openlocfilehash: 8a94994d697784fb9dab8027e5a43f24c135b32c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9e5645fef952257580d74eb6e11911e2286bd79
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059745"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165120"
 ---
 # <a name="troubleshoot-system-state-backup"></a>解决系统状态备份问题
 
@@ -118,7 +118,7 @@ Microsoft 软件卷影副本 Provider(SWPRV) | 手动
 
   * 确保 WSB 备份正常运行，通过运行以下命令从提升的命令提示符：
 
-      ` wbadmin start systemstatebackup -backuptarget:X: -quiet `
+      `wbadmin start systemstatebackup -backuptarget:X: -quiet`
 
       > [!NOTE]
       >使用你想要存储系统状态的卷的驱动器号替换 X 备份映像。

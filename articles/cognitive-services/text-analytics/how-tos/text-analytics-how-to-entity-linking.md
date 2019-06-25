@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff4f9af82024e9d39ad89a39bcb2fe4130de9101
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231427"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304180"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -31,7 +31,7 @@ ms.locfileid: "65231427"
 ### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 命名实体识别 (NER) 是指识别文本中不同实体，并将它们分入预定义类别的能力。 下面列出了受支持的实体类型。
 
-文本分析[版本 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) 中同时提供了实体链接和命名实体识别 (NER)。
+在文本分析[版本 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)，实体链接和命名的实体识别 (NER) 都可用于多种语言。 请参阅[语言支持](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition)文章了解详细信息。 
 
 ### <a name="language-support"></a>语言支持
 
@@ -63,7 +63,7 @@ ms.locfileid: "65231427"
 | URL           | 暂无\*         | "https:\//www.bing.com"    |
 | Email         | 暂无\*         | "support@contoso.com" |
 
-\*一些实体可能会省略 `SubType`，具体视输入和已提取的实体而定。  列出的所有支持的实体类型都仅可用于英语、 简体中文、 法语、 德语和西班牙语语言。
+\*一些实体可能会省略 `SubType`，具体视输入和已提取的实体而定。  列出的所有受支持的实体类型仅适用于英文、简体中文、法文、德文和西班牙文。
 
 
 
@@ -105,7 +105,7 @@ ms.locfileid: "65231427"
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
-在收到请求时执行分析。 该服务每秒最多接受 100 个请求，每分钟最多接受 1000 个请求。 每个请求最大为 1 MB。
+在收到请求时执行分析。 请参阅[数据限制](../overview.md#data-limits)中信息的大小和数量的请求可以发送每分钟和秒的概述部分。
 
 记住，该服务是无状态服务。 帐户中未存储任何数据。 结果会立即在响应中返回。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 2dad1caeba8a0417b7ac16ebaa45f4f291f54495
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c28c87339bbfda7cc47e329c8fe6cebdee4a7843
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480646"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127189"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 本文介绍安全服务在 Azure 中的，以帮助您保护您的数据、 资源和云中的应用程序和满足您的业务安全需要。
@@ -52,7 +52,7 @@ Microsoft Azure 提供的服务，帮助您满足安全、 隐私和符合性需
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如多重身份验证和条件性访问策略。 通过高级安全报告、审核和警报来监视可疑活动，有助于减少潜在的安全问题。 [Azure Active Directory 高级版](https://docs.microsoft.com/azure/active-directory/active-directory-editions)提供单一登录方式登录到数千个云应用和 web 应用访问你在本地运行。
+Microsoft 标识和访问管理解决方案可帮助 IT 保护应用程序和资源对企业数据中心和访问到云，从而支持附加的验证，例如多重身份验证和条件性访问级别策略。 通过高级安全报告、审核和警报来监视可疑活动，有助于减少潜在的安全问题。 [Azure Active Directory 高级版](https://docs.microsoft.com/azure/active-directory/active-directory-editions)提供单一登录方式登录到数千个云应用和 web 应用访问你在本地运行。
 
 Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
@@ -124,9 +124,9 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 #### <a name="device-registration"></a>设备注册
 
-[Azure AD 设备注册](https://docs.microsoft.com/azure/active-directory/device-management-introduction)是基于设备的[条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup)方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，此标识用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
+[Azure AD 设备注册](https://docs.microsoft.com/azure/active-directory/device-management-introduction)是基础设备基于[条件性访问](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup)方案。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，此标识用于在用户登录时对设备进行身份验证。 经过身份验证的设备和设备的属性可以然后使用为强制执行条件性访问策略在云中和本地托管的应用程序。
 
-当与 Intune 之类的[移动设备管理 (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) 解决方案结合使用时，Azure Active Directory 中的设备属性会使用关于设备的更多信息进行更新。 这会允许创建条件性访问规则，用于从设备强制访问满足安全和合规性标准。
+当与 Intune 之类的[移动设备管理 (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) 解决方案结合使用时，Azure Active Directory 中的设备属性会使用关于设备的更多信息进行更新。 这样，您可以创建从设备以满足安全和符合性标准的强制访问的条件性访问规则。
 
 #### <a name="privileged-identity-management"></a>Privileged Identity Management
 

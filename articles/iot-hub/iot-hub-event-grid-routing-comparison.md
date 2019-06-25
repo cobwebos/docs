@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 0b17a87fa02c382ae19cca6e4abcfff2ec475450
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6d395d878d38ab48b95ca82d94d2a222428bae1
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252679"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274943"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>比较 IoT 中心的消息路由和事件网格
 
@@ -64,7 +64,7 @@ IoT 中心消息路由和 IoT 中心与事件网格的集成通过执行不同�
 
    IoT 中心消息路由支持有限数量的终结点和终结点类型，但可构建连接器以将数据和事件重新路由到其他终结点。 有关受支持终结点的完整列表，请参阅上节中的表。 
 
-   与事件网格的 IoT 中心集成支持每个 IoT 中心 500 个终结点和大量的终结点类型。 它本身集成了 Azure Functions、逻辑应用和服务总线队列，并且还与 Webhook 一起工作以在 Azure 服务生态系统外部发送数据以及发送到第三方业务应用程序中。
+   与事件网格的 IoT 中心集成支持每个 IoT 中心 500 个终结点和大量的终结点类型。 它使用 Azure Functions、 逻辑应用、 存储和服务总线队列进行本机集成，并还可与 webhook 一起扩展以外的 Azure 服务生态系统和第三方商业应用程序发送的数据。
 
 * **数据按顺序到达是否重要？**
 

@@ -43,6 +43,10 @@
       href: deploy-cli.md
     - name: 使用模板进行部署
       href: deploy-template.md
+    - name: 使用多个公共 IP 进行部署
+      href: deploy-multi-public-ip-powershell.md
+    - name: 使用可用性区域进行部署
+      href: deploy-availability-zone-powershell.md
     - name: 与负载均衡器集成
       href: integrate-lb.md
 - name: 引用

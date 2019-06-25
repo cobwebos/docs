@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: spelluru
 ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66307312"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure 事件网格中的服务器端异地灾难恢复
@@ -26,7 +26,7 @@ ms.locfileid: "66307312"
 
 ## <a name="recovery-point-objective-rpo"></a>恢复点目标 (RPO)
 - **元数据的 RPO**： 零分钟。 每当事件网格中创建一个资源，它立即将跨区域复制。 故障转移时，不不丢失任何元数据。
-- **数据 RPO**:如果您的系统运行状况良好上捕获现有的流量在区域故障转移时，事件的 RPO 为大约 5 分钟。
+- **数据 RPO**:如果系统运行正常并且在区域故障转移时遇上现有流量，则事件的 RPO 大约为 5 分钟。
 
 ## <a name="recovery-time-objective-rto"></a>恢复时间目标 (RTO)
 - **元数据的 RTO**:尽管通常它发生速度更快，在 60 分钟，事件网格将开始接受为主题和订阅的创建/更新/删除调用。

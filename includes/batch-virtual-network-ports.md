@@ -16,11 +16,11 @@ ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: 711b662c35b5f8fec96f1edee765696bc1028bf8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66127512"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173302"
 ---
 ### <a name="general-requirements"></a>一般要求
 
@@ -38,7 +38,7 @@ ms.locfileid: "66127512"
 
 **支持的 VNet** - 仅限基于 Azure 资源管理器的 VNet
 
-**子网 ID** - 通过 Batch API 指定子网时，请使用子网的资源标识符。 标识符的形式为：
+**子网 ID** - 通过 Batch API 指定子网时，请使用子网的资源标识符。  标识符的形式为：
 
   ```
   /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}
@@ -58,7 +58,7 @@ ms.locfileid: "66127512"
 * 任何端口上通往 Internet 的出站流量。
 
 > [!IMPORTANT]
-> 在 Batch 配置的 NSG 中修改或添加入站或出站规则时，请务必小心。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”。
+> 在 Batch 配置的 NSG 中修改或添加入站或出站规则时，请务必小心。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”  。
 
 不需在子网级别指定 NSG，因为 Batch 会配置其自己的 NSG。 但是，如果指定的子网具有关联的网络安全组 (NSG) 和/或防火墙，则配置入站和出站安全规则，如以下各表中所示。 仅当你需要从外部源允许池 Vm 的远程访问配置入站的流量在端口 3389 上 (Windows) 或 22 (Linux)。 不配置它也可使用池 VM。 请注意，你将需要启用适用于 Linux 端口 22 上的虚拟网络子网流量，如果使用的某些类型的多实例任务，例如 MPI。
 
@@ -71,7 +71,7 @@ ms.locfileid: "66127512"
 
 **出站安全规则**
 
-| 源 | 源端口 | 目标 | 目标服务标记 | Protocol | 操作 |
+| source | 源端口 | 目标 | 目标服务标记 | Protocol | 操作 |
 | --- | --- | --- | --- | --- | --- |
 | 任意 | 443 | [服务标记](../articles/virtual-network/security-overview.md#service-tags) | `Storage` （在与 Batch 帐户及 VNet 位于同一区域）  | 任意 | 允许 |
 
@@ -79,7 +79,7 @@ ms.locfileid: "66127512"
 
 **支持的 VNet** - 仅限经典 VNet
 
-**子网 ID** - 通过 Batch API 指定子网时，请使用子网的资源标识符。 标识符的形式为：
+**子网 ID** - 通过 Batch API 指定子网时，请使用子网的资源标识符。  标识符的形式为：
 
   ```
   /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicVirtualNetwork /virtualNetworks/{network}/subnets/{subnet}
@@ -91,7 +91,7 @@ ms.locfileid: "66127512"
 
 子网必须允许来自 Batch 服务的入站通信，才能在计算节点上计划任务，必须允许出站通信，才能与 Azure 存储或其他资源通信。
 
-不需指定 NSG，因为 Batch 将入站通信配置为只能从 Batch IP 地址到池节点。 但是，如果指定的子网具有关联的 NSG 和/或防火墙，则配置入站和出站安全规则，如以下各表中所示。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”。
+不需指定 NSG，因为 Batch 将入站通信配置为只能从 Batch IP 地址到池节点。 但是，如果指定的子网具有关联的 NSG 和/或防火墙，则配置入站和出站安全规则，如以下各表中所示。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”  。
 
 在端口 3389 上配置的 Windows 的入站的流量，如果你需要允许到池节点的 RDP 访问。 不配置它也可使用池节点。
 
@@ -104,6 +104,6 @@ ms.locfileid: "66127512"
 
 **出站安全规则**
 
-| 源 | 源端口 | 目标 | 目标端口 | Protocol | 操作 |
+| source | 源端口 | 目标 | 目标端口 | Protocol | 操作 |
 | --- | --- | --- | --- | --- | --- |
 | 任意 | * | 任意 | 443  | 任意 | 允许 |

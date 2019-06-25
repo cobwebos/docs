@@ -11,14 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 03/19/2018
-ms.date: 04/17/2019
-ms.author: v-junlch
+ms.date: 3/19/2018
+ms.author: amsriva
 ms.openlocfilehash: 8e88e0e11b3ccab7cc2c68b2617df2d588680780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60715788"
 ---
 # <a name="application-gateway-redirect-overview"></a>应用程序网关重定向概述
@@ -51,5 +50,3 @@ ms.locfileid: "60715788"
 ### <a name="next-steps"></a>后续步骤
 
 [在应用程序网关上配置 URL 重定向](tutorial-url-redirect-powershell.md)
-
-<!-- Update_Description: wording update -->

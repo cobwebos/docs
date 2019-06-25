@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.openlocfilehash: 9cd1be26f6832fffb86dfefd0d93d9dbb393c0f0
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65555944"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303873"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -22,7 +22,7 @@ ms.locfileid: "65555944"
 
 1. [Azure 存储论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
 2. [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。
-3. Microsoft 支持部门。 若要创建新的支持请求，请在 Azure 门户中的“帮助”选项卡上，选择“帮助和支持”按钮，然后选择“新建支持请求”。
+3. Microsoft 支持部门。 若要创建新的支持请求，请在 Azure 门户中的“帮助”  选项卡上，选择“帮助和支持”  按钮，然后选择“新建支持请求”  。
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>我在服务器上遇到 Azure 文件同步问题（同步、云分层等）。 是否应删除并重新创建服务器终结点？
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -43,7 +43,7 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 要解决此问题，请将 PDC 角色转移到另一运行 Windows Server 2012 R2 或更高版本的域控制器，然后安装同步。
 
 <a id="server-registration-missing"></a>**服务器未在 Azure 门户中的“已注册的服务器”下列出**  
-如果对于存储同步服务，服务器未在“已注册的服务器”下列出：
+如果对于存储同步服务，服务器未在“已注册的服务器”下列出： 
 1. 登录到要注册的服务器。
 2. 打开文件资源管理器，然后转到存储同步代理安装目录（默认位置为 C:\Program Files\Azure\StorageSyncAgent）。 
 3. 运行 ServerRegistration.exe 并完成向导中的操作，将服务器注册到存储同步服务。
@@ -54,7 +54,7 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 
 如果以前向存储同步服务注册了服务器，则会显示此消息。 若要从当前存储同步服务中注销服务器并向新存储同步服务进行注册，请完成[从 Azure 文件同步中注销服务器](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)中所述的步骤。
 
-如果存储同步服务中的“已注册服务器”下未列出该服务器，请在想要注销的服务器上运行以下 PowerShell 命令：
+如果存储同步服务中的“已注册服务器”下未列出该服务器，请在想要注销的服务器上运行以下 PowerShell 命令： 
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -65,7 +65,7 @@ Reset-StorageSyncServer
 > 如果该服务器是群集的一部分，可以使用可选的 *Reset-StorageSyncServer -CleanClusterRegistration* 参数来同时删除群集注册。
 
 <a id="web-site-not-trusted"></a>**注册服务器时，出现许多“网站不受信任”的响应。为什么？**  
-如果在服务器注册过程中启用了“Internet Explorer 增强的安全性”策略，则会出现此问题。 有关如何以正确的方式禁用“Internet Explorer 增强的安全性”策略的详细信息，请参阅[准备 Windows Server 以使用 Azure 文件同步](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync)，以及[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
+如果在服务器注册过程中启用了“Internet Explorer 增强的安全性”策略，则会出现此问题。  有关如何以正确的方式禁用“Internet Explorer 增强的安全性”  策略的详细信息，请参阅[准备 Windows Server 以使用 Azure 文件同步](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync)，以及[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 
 ## <a name="sync-group-management"></a>同步组管理
 <a id="cloud-endpoint-using-share"></a>**云终结点创建失败，并出现以下错误：“指定的 Azure 文件共享已被其他 CloudEndpoint 使用”**  
@@ -77,8 +77,8 @@ Reset-StorageSyncServer
 > 删除云终结点当前正在使用的 Azure 文件共享上的元数据会导致 Azure 文件同步操作失败。 
 
 1. 在 Azure 门户中，转到 Azure 文件共享。  
-2. 右键单击该 Azure 文件共享，并选择“编辑元数据”。
-3. 右键单击“SyncService”，并选择“删除”。
+2. 右键单击该 Azure 文件共享，并选择“编辑元数据”。 
+3. 右键单击“SyncService”，并选择“删除”   。
 
 <a id="cloud-endpoint-authfailed"></a>**云终结点创建失败，并出现以下错误：“AuthorizationFailed”**  
 当用户帐户缺少足够权限来创建云终结点时，将出现此问题。 
@@ -94,18 +94,18 @@ Reset-StorageSyncServer
 * 用户访问管理员
 
 若要确定自己的用户帐户角色否具有适当的权限，请执行以下操作：  
-1. 在 Azure 门户中，选择“资源组”。
-2. 选择存储帐户所在的资源组，再选择“访问控制(IAM)”。
-3. 选择“角色分配”选项卡。
+1. 在 Azure 门户中，选择“资源组”。 
+2. 选择存储帐户所在的资源组，再选择“访问控制(IAM)”。 
+3. 选择“角色分配”选项卡  。
 4. 为用户帐户选择**角色**（例如“所有者”或“参与者”）。
-5. 在“资源提供程序”列表中，选择“Microsoft 授权”。 
-    * “角色分配”应具有“读取”和“写入”权限。
-    * “角色定义”应具有“读取”和“写入”权限。
+5. 在“资源提供程序”列表中，选择“Microsoft 授权”。   
+    * “角色分配”应具有“读取”和“写入”权限。   
+    * “角色定义”应具有“读取”和“写入”权限。   
 
 <a id="server-endpoint-createjobfailed"></a>**服务器终结点创建失败，并出现以下错误：“MgmtServerJobFailed”（错误代码：-2134375898）**  
 如果服务器终结点路径位于系统卷上并启用了云分层，则会出现此问题。 系统卷上不支持云分层。 要在系统卷上创建服务器终结点，请在创建服务器终结点时禁用云分层。
 
-<a id="server-endpoint-deletejobexpired"></a>**服务器终结点删除失败，并出现以下错误：“MgmtServerJobExpired”**                
+<a id="server-endpoint-deletejobexpired"></a>**服务器终结点删除失败，并出现以下错误：“MgmtServerJobExpired”**                 
 如果服务器处于脱机状态或无网络连接，则会出现此问题。 如果服务器不再可用，请在门户中注销要删除服务器终结点的服务器。 要删除服务器终结点，请按照[使用 Azure 文件同步注销服务器](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)中所述的步骤操作。
 
 <a id="server-endpoint-provisioningfailed"></a>**无法打开服务器终结点属性页或更新云分层策略**  
@@ -136,7 +136,7 @@ Set-AzStorageSyncServerEndpoint `
     - 如果服务器位于防火墙后面，请验证端口 443 是否允许出站。 如果防火墙限制到特定域的流量，请确认可以访问防火墙[文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall)中列出的域。
     - 如果服务器位于代理后面，请按照代理[文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)中的步骤配置适用于整个计算机或特定于应用的代理设置。
 
-<a id="endpoint-noactivity-sync"></a>服务器终结点的运行状态为“无活动”，已注册服务器边栏选项卡上的服务器状态为“脱机”  
+<a id="endpoint-noactivity-sync"></a>服务器终结点的运行状态为“无活动”，已注册服务器边栏选项卡上的服务器状态为“脱机”   
 
 服务器终结点运行状态为“无活动”的意味着服务器终结点在过去两小时内未记录同步活动。
 
@@ -245,17 +245,16 @@ PerItemErrorCount: 1006.
 | HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 补救 |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 由于尚未同步某个相关的文件夹，无法同步文件或目录更改。 在同步相关的更改后，此项将会同步。 | 无需采取措施。 |
-| 0x7b | 123 | ERROR_INVALID_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
-| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
+| 0x8007007b | -2147024773 | ERROR_INVALID_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 Azure 文件同步每天在服务器上创建临时 VSS 快照一次，以同步包含开放句柄的文件。 |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | 文件已更改，但同步尚未检测到此项更改。检测到此项更改后，同步将会恢复。 | 无需采取措施。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | 无法同步该文件，因为已达到 Azure 文件共享限制。 | 要解决此问题，请参阅疑难解答指南中的[达到 Azure 文件共享存储限制](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)部分。 |
 | 0x80070005 | -2147024891 | E_ACCESSDENIED | 此错误可能由于以下原因： 文件已由不受支持解决方案 （如 NTFS EFS) 加密、 文件有挂起状态的删除或文件位于 DFS-R 只读复制文件夹 | 如果文件已加密不受支持的解决方案，解密文件，并使用支持的加密解决方案。 有关支持解决方案的列表，请参阅计划指南中的[加密解决方案](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)部分。 如果文件处于删除待定状态，一旦关闭所有打开的文件句柄，将删除该文件。 如果在 DFS-R 只读复制文件夹位于该文件，则 Azure 文件同步不支持服务器终结点上 DFS-R 只读复制文件夹。 请参阅[规划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)有关详细信息。
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 |
+| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同步期间更改了文件，因此需要重新同步。 | 无需采取措施。 |
 
 #### <a name="handling-unsupported-characters"></a>处理不受支持的字符
-如果 FileSyncErrorsReport.ps1 PowerShell 脚本显示不受支持的字符导致失败（错误代码 0x7b 和 0x8007007b），请从相关的文件名中删除或重命名错误的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-tool)可用于标识不受支持的字符。
+如果**FileSyncErrorsReport.ps1** PowerShell 脚本显示由于不支持的字符 （错误代码 0x8007007b） 导致的失败，应删除或重命名从各自的文件名称的错误上的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-tool)可用于标识不受支持的字符。
 
 下表包含 Azure 文件同步尚不支持的所有 Unicode 字符。
 
@@ -356,7 +355,7 @@ PerItemErrorCount: 1006.
 
 如果 Azure 文件同步使用的内部数据库出现问题，则会发生此错误。出现此问题时，请创建支持请求，到时我们将与你取得联系，并帮助解决此问题。
 
-<a id="-2134364053"></a>服务器上安装的 Azure 文件同步代理版本不受支持。  
+<a id="-2134364053"></a>服务器上安装的 Azure 文件同步代理版本不受支持  。  
 
 | | |
 |-|-|
@@ -385,9 +384,9 @@ PerItemErrorCount: 1006.
 
     ![显示云终结点详细信息窗格（包含存储帐户的链接）的屏幕截图。](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-5. 选择“文件”查看文件共享列表。
+5. 选择“文件”查看文件共享列表。 
 6. 单击云终结点引用的 Azure 文件共享所在行末尾的三点图标。
-7. 检查“用量”是否低于“配额”。 请注意，除非已指定备用配额，否则配额将与 [Azure 文件共享的最大大小](storage-files-scale-targets.md)匹配。
+7. 检查“用量”是否低于“配额”。   请注意，除非已指定备用配额，否则配额将与 [Azure 文件共享的最大大小](storage-files-scale-targets.md)匹配。
 
     ![Azure 文件共享属性的屏幕截图。](media/storage-sync-files-troubleshoot/file-share-limit-reached-1.png)
 
@@ -579,7 +578,7 @@ PerItemErrorCount: 1006.
 
 确保路径存在、位于本地 NTFS 卷上，且不是重新分析点或现有服务器终结点。
 
-<a id="-2134375817"></a>同步失败，因为筛选器驱动程序版本与代理版本不兼容  
+<a id="-2134375817"></a>同步失败，因为筛选器驱动程序版本与代理版本不兼容   
 
 | | |
 |-|-|
@@ -698,8 +697,8 @@ if ($storageAccount -eq $null) {
 
 <a id="troubleshoot-network-rules"></a>**检查并确保存储帐户不包含任何网络规则。**  
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
-1. 进入存储帐户后，在存储帐户的左侧选择“防火墙和虚拟网络”。
-2. 在存储帐户中，“允许来自所有网络的访问”单选按钮应已选中。
+1. 进入存储帐户后，在存储帐户的左侧选择“防火墙和虚拟网络”。 
+2. 在存储帐户中，“允许来自所有网络的访问”单选按钮应已选中。 
     ![显示已禁用存储帐户防火墙和网络规则的屏幕截图。](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -714,8 +713,8 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 
 <a id="troubleshoot-azure-file-share"></a>**确保 Azure 文件共享存在。**  
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
-1. 在左侧目录中单击“概述”，返回存储帐户主页。
-2. 选择“文件”查看文件共享列表。
+1. 在左侧目录中单击“概述”，返回存储帐户主页。 
+2. 选择“文件”查看文件共享列表。 
 3. 检查云终结点引用的文件共享是否显示在文件共享列表中（在上述步骤 1 中应已记下此共享名称）。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -733,17 +732,17 @@ if ($fileShare -eq $null) {
 
 <a id="troubleshoot-rbac"></a>**确保 Azure 文件同步有权访问存储帐户。**  
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
-1. 在左侧的目录上单击“访问控制(IAM)”。
-1. 单击“角色分配”选项卡以列出有权访问你的存储帐户的用户和应用程序（*服务主体*）。
-1. 检查“混合文件同步服务”是否与“读取器和数据访问”角色一起显示在列表中。 
+1. 在左侧的目录上单击“访问控制(IAM)”。 
+1. 单击“角色分配”  选项卡以列出有权访问你的存储帐户的用户和应用程序（*服务主体*）。
+1. 检查“混合文件同步服务”是否与“读取器和数据访问”角色一起显示在列表中。   
 
     ![存储帐户的访问控制选项卡中的混合文件同步服务服务主体的屏幕截图](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
-    如果“混合文件同步服务”没有出现在列表中，请执行以下步骤：
+    如果“混合文件同步服务”  没有出现在列表中，请执行以下步骤：
 
-    - 单击“添加”。
-    - 在“角色”字段中，选择“读者和数据访问”。
-    - 在“选择”字段中，键入“混合文件同步服务”，选择角色并单击“保存”。
+    - 单击“添加”  。
+    - 在“角色”  字段中，选择“读者和数据访问”  。
+    - 在“选择”  字段中，键入“混合文件同步服务”  ，选择角色并单击“保存”  。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
@@ -784,17 +783,17 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 通过任一故障路径可能发生两个主要故障类：
 
 - 云存储故障
-    - 暂时性存储服务可用性问题。 有关详细信息，请参阅 [Azure 存储的服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/storage/v1_2/)。
-    - Azure 文件共享不可访问。 删除仍属于同步组中的云终结点的 Azure 文件共享时，通常会发生此故障。
-    - 存储帐户不可访问。 删除仍包含 Azure 文件共享的存储帐户，且该文件共享属于同步组中的云终结点时，通常会发生此故障。 
+    - 暂时性存储服务可用性问题。  有关详细信息，请参阅 [Azure 存储的服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/storage/v1_2/)。
+    - Azure 文件共享不可访问。  删除仍属于同步组中的云终结点的 Azure 文件共享时，通常会发生此故障。
+    - 存储帐户不可访问。  删除仍包含 Azure 文件共享的存储帐户，且该文件共享属于同步组中的云终结点时，通常会发生此故障。 
 - 服务器故障 
-  - 未加载 Azure 文件同步文件系统筛选器 (StorageSync.sys)。 为了响应分层/撤回请求，必须加载 Azure 文件同步文件系统筛选器。 可能会出于多种原因而未能加载该筛选器，但最常见的原因是管理员已手动将其卸载。 要使 Azure 文件同步正常运行，始终必须加载 Azure 文件同步文件系统筛选器。
-  - 重分析点缺失、损坏或出现其他形式的中断。 重分析点是文件中的特殊数据结构，它由两个部分组成：
+  - 未加载 Azure 文件同步文件系统筛选器 (StorageSync.sys)。  为了响应分层/撤回请求，必须加载 Azure 文件同步文件系统筛选器。 可能会出于多种原因而未能加载该筛选器，但最常见的原因是管理员已手动将其卸载。 要使 Azure 文件同步正常运行，始终必须加载 Azure 文件同步文件系统筛选器。
+  - 重分析点缺失、损坏或出现其他形式的中断。  重分析点是文件中的特殊数据结构，它由两个部分组成：
     1. 一个重分析标记，向操作系统指示 Azure 文件同步文件系统筛选器 (StorageSync.sys) 可能需要针对文件的 IO 执行某项操作。 
     2. 重分析数据，向文件系统筛选器指示关联云终结点（Azure 文件共享）上的文件的 URI。 
         
        重分析点损坏的最常见原因是管理员尝试修改标记或其数据。 
-  - 网络连接问题。 若要分层或撤回文件，服务器必须已建立 Internet 连接。
+  - 网络连接问题。  若要分层或撤回文件，服务器必须已建立 Internet 连接。
 
 以下部分说明如何排查云分层问题，并确定问题是云存储问题还是服务器问题。
 
@@ -829,7 +828,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 > [!NOTE]
 > 如果文件无法分层，则每小时在“遥测”事件日志中记录事件 ID 9003 一次（为每个错误代码记录一个事件）。 如果需要其他信息才能诊断问题，请使用“操作”和“诊断”事件日志。
 
-<a id="files-fail-recall"></a>排查无法重新调用文件的问题  
+<a id="files-fail-recall"></a>排查无法重新调用文件的问题   
 如果无法重新调用文件：
 1. 在事件查看器中，查看位于 Applications and Services\Microsoft\FileSync\Agent 下的遥测、操作和诊断事件日志。
     1. 验证文件是否在 Azure 文件共享中存在。
@@ -863,6 +862,8 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 如果问题未得到解决，请运行 AFSDiag 工具：
 1. 创建用于保存 AFSDiag 输出的目录（例如，C:\Output）。
+    > [!NOTE]
+    >AFSDiag 将删除之前收集日志的输出目录中的所有内容。 指定输出位置未包含数据。
 2. 打开权限提升的 PowerShell 窗口并运行以下命令（在每条命令后面按 Enter）：
 
     ```powershell

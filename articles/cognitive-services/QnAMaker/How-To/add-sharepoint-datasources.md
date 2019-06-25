@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 06/20/2019
 ms.author: tulasim
-ms.openlocfilehash: e479cf1729b7dcd2ed2f2470f2a935bdf94af80b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1b0e3dfb81a9934b393428a946cf1440367985c
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954970"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311865"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>将受保护的 Sharepoint 数据源添加到您的知识库
 
@@ -35,6 +35,20 @@ ms.locfileid: "65954970"
     ![选择该文件的省略号菜单，然后复制该 URL 获取 Sharepoint 文件 URL。](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
 1. QnA Maker 门户中上**设置**页上，[将 URL 添加](edit-knowledge-base.md#add-datasource)到知识库。 
+
+### <a name="images-with-sharepoint-files"></a>使用 Sharepoint 文件的映像
+
+如果文件包含图像，那些不提取。 QnA 对提取文件后，可以从 QnA Maker 门户中添加图像。
+
+添加具有以下 markdown 语法的图像： 
+
+```markdown
+![Explanation or description of image](URL of public image)
+```
+
+在方括号中的文本`[]`，说明该映像。 在括号中的 URL `()`，是直接链接到映像。 
+
+在交互式测试面板中，QnA Maker 门户中测试的 QnA 对将显示图像，而不是 markdown 文本。 这将验证该映像可从客户端应用程序公开检索。
 
 ## <a name="permissions"></a>权限
 

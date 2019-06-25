@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: f48ad6ca74e6ce10148d66549fea16bc74015b2a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c1c4a0384342db82ee9c1f6b9e806188d5949681
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66171218"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67235250"
 ---
 下表列出了特定于 Azure 服务总线消息传送配额信息。 有关定价的信息和其他服务总线配额，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 | 配额名称 | 范围 | 说明 | 值 |
 | --- | --- | --- | --- |
 | 每个 Azure 订阅的基本或标准命名空间的最大数目 |命名空间 |通过 Azure 门户将拒绝更多基本或标准命名空间的后续请求。 |100|
-| 每个 Azure 订阅的高级命名空间的最大数目 |命名空间 |更多高级命名空间的后续请求会被门户拒绝。 |25 |
+| 每个 Azure 订阅的高级命名空间的最大数目 |命名空间 |更多高级命名空间的后续请求会被门户拒绝。 |50 |
 | 队列或主题大小 |实体 |创建队列或主题时定义。 <br/><br/> 将拒绝后续的传入消息，且调用代码会收到异常。 |1、2、3、4 GB 或 5 GB。<br /><br />在高级 SKU，并使用标准 SKU[分区](/azure/service-bus-messaging/service-bus-partitioning)启用，最大队列或主题大小是 80 GB。 |
 | 命名空间上的并发连接数 |命名空间 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 REST 操作不计入并发 TCP 连接。 |NetMessaging：1,000.<br /><br />AMQP：5,000. |
 | 并发接收队列、 主题或订阅实体上的请求数 |实体 |后续的接收请求被拒绝，并且调用代码会收到异常。 此配额适用于一个主题上所有订阅的并发接收操作总数。 |5,000 |
@@ -37,6 +37,6 @@ ms.locfileid: "66171218"
 | 每个主题的相关性筛选器数 |实体 |本主题的更多筛选器中创建的后续请求将拒绝，且调用代码会收到异常。 |100,000 |
 | SQL 筛选器或操作的大小 |命名空间 |将拒绝更多筛选器中创建的后续请求，且调用代码会收到异常。 |筛选器条件字符串的最大长度：1024 (1K)。<br /><br />规则操作字符串的最大长度：1024 (1K)。<br /><br />每个规则操作的最大表达式数：32. |
 | 每个命名空间、队列或主题的 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 规则数 |实体、命名空间 |将拒绝后续的创建附加规则请求，且调用代码会收到异常。 |最大规则数：12. <br /><br /> 在服务总线命名空间中配置的规则适用于该命名空间中的所有队列和主题。 |
-| 每个事务的消息数 | 事务 | 系统将拒绝其他传入消息，并收到如下异常消息"无法发送超过 100 个消息在单个事务中"时调用的代码。 | 100 <br /><br /> 适用于 Send() 和 SendAsync() 操作。 |
+| 每个事务的消息数 | 事务 | 系统将拒绝其他传入消息，并收到如下异常消息"无法发送超过 100 个消息在单个事务中"时调用的代码。 | 100 <br /><br /> 适用于 Send() 和 SendAsync() 操作   。 |
 
 [Azure portal]: https://portal.azure.com

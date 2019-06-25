@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 4ec9d5e605a2319a04dac4cb52dbe49c77354479
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 91f15f9c19b480d950b2c715e6d9290e01184cf7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510637"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272375"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -49,6 +49,12 @@ Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-
 * 新对象模型，使用顶级 CosmosClient 和方法拆分成相关的 CosmosDatabases、CosmosContainers 和 CosmosItems 类。
 * 支持流。
 * 对来自服务器的 CosmosResponseMessage 进行了更新以返回状态代码，并且仅在未返回响应时引发异常。
+
+### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+
+* 如果原始一个出现故障，则允许回退到不同的区域的写入请求
+* 添加用于写入请求的会话重试策略
+* 跟踪查询会导致空页的争用条件的修补程序
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
@@ -251,6 +257,7 @@ Azure Cosmos DB .NET Core 预览版 SDK 与最新版 [Azure Cosmos DB .NET SDK](
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.5.0](#2.5.0) |2019 年 6 月 18日日 |--- |
 | [2.4.0](#2.4.0) |2019 年 5 月 5， |--- |
 | [2.3.0](#2.3.0) |2019 年 4 月 4日日 |--- |
 | [2.2.3](#2.2.3) |2019 年 3 月 11日日 |--- |

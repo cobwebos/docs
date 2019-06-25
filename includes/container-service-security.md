@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: 39bb75a6f834789f91cb590ffebb72f45624eb25
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148863"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173503"
 ---
 # <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>（已弃用）保护 Azure 容器服务中的 Docker 容器
 
@@ -24,7 +24,7 @@ ms.locfileid: "66148863"
 ### <a name="public-and-private-images"></a>公共和专用映像
 一般情况下，与任何公开发布的软件包一样，公用容器映像不提供安全保证。 容器映像包括多个软件层，每个软件层可能有漏洞。 了解容器映像的来源至关重要，包括映像的所有者（确定源是否可靠）、映像包括的软件层和软件版本。 
 
-例如，在 Docker Hub 中心转到官方 [nginx 存储库](https://hub.docker.com/_/nginx/)并导航到“标记”选项卡后，可以看到每个映像中带有颜色编码的漏洞。 每种颜色描绘了映像某个软件层的漏洞。 有关在 Docker 中心扫描漏洞的详细信息，请参阅[在 Docker 中心了解官方存储库](https://blog.docker.com/2015/06/understanding-official-repos-docker-hub/)。
+例如，在 Docker Hub 中心转到官方 [nginx 存储库](https://hub.docker.com/_/nginx/)并导航到“标记”选项卡后，可以看到每个映像中带有颜色编码的漏洞。  每种颜色描绘了映像某个软件层的漏洞。 有关在 Docker 中心扫描漏洞的详细信息，请参阅[在 Docker 中心了解官方存储库](https://blog.docker.com/2015/06/understanding-official-repos-docker-hub/)。
 
 ![Docker 中心上的 Nginx 映像](./media/container-service-security/docker-hub-nginx.png)
 

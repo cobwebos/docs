@@ -10,10 +10,10 @@ ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 38bafdb4753b41a9c8acd599e6b7215e1777c6cd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65779465"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
@@ -45,11 +45,11 @@ API | 使用时机 | 说明
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>创建控制台应用程序，并获取程序集
 在 Visual Studio 中创建新的 Windows 控制台应用程序。 以下步骤演示如何在 Visual Studio 2017 中创建控制台应用程序，但是，其他 Visual Studio 版本中的步骤是类似的。
 
-1. 选择“文件” > “新建” > “项目”
-2. 选择“已安装” > “模板” > “Visual C#” > “Windows 经典桌面”
-3. 选择“控制台应用(.NET Framework)”
-4. 在“名称:”字段中输入应用程序的名称
-5. 选择“确定”
+1. 选择“文件” > “新建” > “项目”   
+2. 选择“已安装”   > “模板”   >   “Visual C#” >   “Windows 经典桌面”
+3. 选择“控制台应用(.NET Framework)” 
+4. 在“名称:”字段中输入应用程序的名称 
+5. 选择“确定” 
 
 本教程中的所有代码示例都可以添加到控制台应用程序的 `Program.cs` 文件的 `Main()` 方法。
 
@@ -64,9 +64,9 @@ API | 使用时机 | 说明
 
 可以使用 NuGet 获取这两个包。 执行以下步骤:
 
-1. 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包”。
+1. 在“解决方案资源管理器”  中，右键单击项目并选择“管理 NuGet 包”  。
 2. 在线搜索“WindowsAzure.Storage”，并单击“安装”  以安装存储客户端库和依赖项。
-3. 在线搜索“WindowsAzure.ConfigurationManager”，并单击“安装”以安装 Azure Configuration Manager。
+3. 在线搜索“WindowsAzure.ConfigurationManager”，并单击“安装”  以安装 Azure Configuration Manager。
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>将存储帐户凭据保存到 app.config 文件
 接下来，将凭据保存到项目的 app.config 文件中。 编辑 app.config 文件，使其看起来类似于下面的示例，将 `myaccount` 替换为存储帐户名称，并将 `mykey` 替换为存储帐户密钥。
@@ -233,7 +233,7 @@ if (share.Exists())
 > 
 > 
 
-将文件复制到另一文件：以下示例将一个文件复制到同一共享中的另一个文件。 因为此操作在同一存储帐户中的文件之间进行复制，可以使用共享密钥身份验证来进行复制。
+ 将文件复制到另一文件：以下示例将一个文件复制到同一共享中的另一个文件。 因为此操作在同一存储帐户中的文件之间进行复制，可以使用共享密钥身份验证来进行复制。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -277,7 +277,7 @@ if (share.Exists())
 }
 ```
 
-将文件复制到 Blob：以下示例创建一个文件并将其复制到同一存储帐户中的某个 Blob。 该示例为源文件创建一个 SAS，服务在复制操作期间使用该 SAS 授予对源文件的访问权限。
+ 将文件复制到 Blob：以下示例创建一个文件并将其复制到同一存储帐户中的某个 Blob。 该示例为源文件创建一个 SAS，服务在复制操作期间使用该 SAS 授予对源文件的访问权限。
 
 ```csharp
 // Parse the connection string for the storage account.

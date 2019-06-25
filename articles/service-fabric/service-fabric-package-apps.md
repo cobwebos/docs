@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: b8e66a9d5bba0c48f15b1ccd3f2d47e5405db792
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60718356"
 ---
 # <a name="package-an-application"></a>打包应用程序
@@ -73,7 +73,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ![使用 Visual Studio 打包应用程序][vs-package-command]
 
-打包完成后，该包的位置会显示在“输出”窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
+打包完成后，该包的位置会显示在“输出”  窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
 
 ### <a name="build-a-package-by-command-line"></a>通过命令行生成一个包
 

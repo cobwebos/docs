@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 4/29/2019
 ms.openlocfilehash: 219899c2e336f544ff6572589cc79f84f555490d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233837"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight 的 Apache HBase 加速写入
@@ -36,7 +36,7 @@ HBase 首先将数据更新写入为一种名为编写提前日志 (WAL) 的提�
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>如何为 HDInsight 中的 HBase 启用加速写入
 
-若要使用加速写入功能创建新的 HBase 群集，请按照中的步骤[在 HDInsight 中设置群集](../hdinsight-hadoop-provision-linux-clusters.md)直至到达**步骤 3 中，存储**。 下**元存储设置**，单击旁边的复选框**启用加速写入 （预览版）**。 然后，继续创建群集的剩余步骤。
+若要使用加速写入功能创建新的 HBase 群集，请按照中的步骤[在 HDInsight 中设置群集](../hdinsight-hadoop-provision-linux-clusters.md)直至到达**步骤 3 中，存储**。 下**元存储设置**，单击旁边的复选框**启用加速写入 （预览版）** 。 然后，继续创建群集的剩余步骤。
 
 ![启用 HDInsight Apache HBase 的加速的写入选项](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
 

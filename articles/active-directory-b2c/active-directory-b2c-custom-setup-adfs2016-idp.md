@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4510074619ff513b7284819d88fdb2532e4ce33a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c469b333c6896d33b440bfadf0ebbdbeece71a3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510432"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272133"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为 SAML 标识提供者
 
@@ -101,6 +101,10 @@ ms.locfileid: "66510432"
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”   。
 2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件  。
 3. 单击“上传” 。 
+
+> [!NOTE]
+> Visual Studio 代码 B2C 扩展使用"socialIdpUserId。" 社交策略，还需要为 ADFS。
+>
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
 

@@ -1,23 +1,17 @@
 ---
 title: Azure 资源管理器模板函数 - 逻辑 | Microsoft Docs
 description: 介绍 Azure 资源管理器模板中用于确定逻辑值的函数。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4684c38fe506ed912c6827f1e60b94b847024347
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: cf6874512557bc44efe978708c78e3d98db4110b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405664"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205460"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的逻辑函数
 
@@ -29,7 +23,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 * [not](#not)
 * [or](#or)
 
-## <a name="and"></a>与
+## <a name="and"></a>and
 
 `and(arg1, arg2, ...)`
 
@@ -37,15 +31,15 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |boolean |第一个值，需检查其是否为 true。 |
-| arg2 |“是” |boolean |第二个值，需检查其是否为 true。 |
-| 其他参数 |“否” |boolean |用于检查是否为 true 的其他参数。 |
+| arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
+| arg2 |是 |boolean |第二个值，需检查其是否为 true。 |
+| 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
 
 ### <a name="return-value"></a>返回值
 
-如果所有值均为 true，则返回 True；否则返回 False。
+如果所有值均为 true，则返回 True；否则返回 False   。
 
 ### <a name="examples"></a>示例
 
@@ -75,7 +69,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -91,7 +85,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |字符串或整数 |要转换为布尔值的值。 |
+| arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
 
 ### <a name="return-value"></a>返回值
 转换后的值的布尔值。
@@ -143,19 +137,19 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| condition |“是” |boolean |要检查它是否为 true 或 false 的值。 |
-| trueValue |“是” | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
-| falseValue |“是” | 字符串、int、对象或数组 |条件为 false 时返回的值。 |
+| condition |是 |boolean |要检查是为 true 还是为 false 的值。 |
+| trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
+| falseValue |是 | 字符串、int、对象或数组 |条件为 false 时返回的值。 |
 
 ### <a name="return-value"></a>返回值
 
-如果第一个参数为 True，则返回第二个参数；否则返回第三个参数。
+如果第一个参数为 True，则返回第二个参数；否则返回第三个参数  。
 
 ### <a name="remarks"></a>备注
 
-条件何时 **，则返回 True**，计算仅 true 值。 条件何时**False**，计算仅 false 值。 与**如果**函数，可以包含仅有条件地有效的表达式。 例如，可以引用一个的情况下，但在其他情况下，不存在的资源。 有条件地计算表达式的示例是下一节中所示。
+条件为 **True** 时，仅评估 true 值。 条件为 **False** 时，仅评估 false 值。 使用 **if** 函数时，可以包含仅在特定条件下有效的表达式。 例如，可以引用一个资源，该资源在某个条件下存在，在另一个条件下不存在。 以下部分显示了一个条件性评估表达式的示例。
 
 ### <a name="examples"></a>示例
 
@@ -192,11 +186,11 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 | noOutput | String | 否 |
 | objectOutput | Object | { "test": "value1" } |
 
-以下[示例模板](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)演示如何使用此函数仅有条件地有效的表达式。
+以下[示例模板](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)演示了如何将此函数与仅在特定条件下有效的表达式配合使用。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -248,13 +242,13 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |boolean |要转换的值。 |
+| arg1 |是 |boolean |要转换的值。 |
 
 ### <a name="return-value"></a>返回值
 
-参数为 False 时返回 True。 参数为 True 时返回 False。
+参数为 False 时返回 True   。 参数为 True 时返回 False   。
 
 ### <a name="examples"></a>示例
 
@@ -284,7 +278,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -320,15 +314,15 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |boolean |第一个值，需检查其是否为 true。 |
-| arg2 |“是” |boolean |第二个值，需检查其是否为 true。 |
-| 其他参数 |“否” |boolean |用于检查是否为 true 的其他参数。 |
+| arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
+| arg2 |是 |boolean |第二个值，需检查其是否为 true。 |
+| 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
 
 ### <a name="return-value"></a>返回值
 
-如果任何值为 true，则返回 True；否则返回 False。
+如果任何值为 true，则返回 True；否则返回 False   。
 
 ### <a name="examples"></a>示例
 
@@ -358,7 +352,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |

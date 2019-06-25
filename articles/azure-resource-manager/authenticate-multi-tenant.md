@@ -1,22 +1,17 @@
 ---
 title: 跨租户进行身份验证 - Azure 资源管理器
 description: 介绍了 Azure 资源管理器如何跨租户处理身份验证请求。
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6554c05f40f580a6d7ae086e1d09834298f86621
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5370b9b6d6a8bee82f8feca6dbcbcd78a4c12193
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550761"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205615"
 ---
 # <a name="authenticate-requests-across-tenants"></a>跨租户对请求进行身份验证
 

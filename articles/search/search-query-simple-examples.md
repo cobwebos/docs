@@ -1,5 +1,5 @@
 ---
-title: 使用"简单"的搜索语法的 Azure 搜索的查询示例
+title: 使用“简单”搜索语法的查询示例 - Azure 搜索
 description: 用于查询 Azure 搜索索引的全文搜索、筛选搜索、地理搜索、分面搜索和其他搜索字符串的简单查询示例。
 author: HeidiSteen
 manager: cgronlun
@@ -11,13 +11,13 @@ ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 0c47212e51725e7d4a173c441709dca739d4e357
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024528"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>在 Azure 搜索中使用"简单"的搜索语法的查询示例
+# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Azure 搜索中使用“简单”搜索语法的查询示例
 
 [简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)调用默认查询分析器，用于对 Azure 搜索索引执行全文搜索查询。 简单查询分析器速度很快，处理对象是 Azure 搜索中的全文搜索、筛选及分面搜索和地理搜索等常见方案。 本文逐步展示了一些示例，它们显示在使用简单语法时可用的查询操作。
 
@@ -31,11 +31,11 @@ ms.locfileid: "65024528"
 
 ### <a name="set-the-request-header"></a>设置请求标头
 
-1. 在请求标头中，将“Content-Type”设为 `application/json`。
+1. 在请求标头中，将“Content-Type”设为 `application/json`  。
 
-2. 添加 api-key，并将其设为此字符串：`252044BE3886FE4A8E3BAA4F595114BB`。 它是托管“纽约工作岗位”索引的沙盒搜索服务的查询密钥。
+2. 添加 api-key，并将其设为此字符串：`252044BE3886FE4A8E3BAA4F595114BB`  。 它是托管“纽约工作岗位”索引的沙盒搜索服务的查询密钥。
 
-指定请求标头后，只需更改“search=”字符串即可在本文中的各项查询中重复使用。 
+指定请求标头后，只需更改“search=”字符串即可在本文中的各项查询中重复使用  。 
 
   ![Postman 请求标头](media/search-query-lucene-examples/postman-header.png)
 
@@ -47,25 +47,25 @@ ms.locfileid: "65024528"
 
 URL 组合具备以下元素：
 
-+ `https://azs-playground.search.windows.net/` 是由 Azure 搜索开发团队维护的沙盒搜索服务。 
-+ `indexes/nycjobs/` 是该服务的索引集合中的“纽约工作岗位”索引。 请求中需同时具备服务名称和索引。
-+ `docs` 是包含所有可搜索内容的文档集合。 请求标头中提供的查询 api-key 仅适用于针对文档集合的读取操作。
-+ `api-version=2019-05-06` 设置了 api-version（每个请求都需具备此参数）。
-+ `search=*` 是查询字符串，此元素在初始查询中为 NULL，返回前 50 个结果（此为默认情况）。
++ `https://azs-playground.search.windows.net/` 是由 Azure 搜索开发团队维护的沙盒搜索服务  。 
++ `indexes/nycjobs/` 是该服务的索引集合中的“纽约工作岗位”索引  。 请求中需同时具备服务名称和索引。
++ `docs` 是包含所有可搜索内容的文档集合  。 请求标头中提供的查询 api-key 仅适用于针对文档集合的读取操作。
++ `api-version=2019-05-06` 设置了 api-version（每个请求都需具备此参数）  。
++ `search=*` 是查询字符串，此元素在初始查询中为 NULL，返回前 50 个结果（此为默认情况）  。
 
 ## <a name="send-your-first-query"></a>发送自己的第一个查询
 
-进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果以详细的 JSON 文档形式返回。 返回整个文档，其中可以查看所有字段并将所有值。
+进行验证，将以下请求粘贴至 GET 并单击“发送”  。 结果以详细的 JSON 文档形式返回。 将返回整个文档，这样就可以查看所有字段和所有值。
 
-作为验证步骤并查看文档结构，请将此 URL 粘贴到 REST 客户端。
+将此 URL 作为验证步骤粘贴到 REST 客户端中并查看文档结构。
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效。 它的用处不大，但却是你能执行的最简单的搜索。
+查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效  。 它的用处不大，但却是你能执行的最简单的搜索。
 
-可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数。 在空搜索字符串上，这就是索引中的所有文档（在“纽约工作岗位”例子中，数量约为 2800）。
+可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数  。 在空搜索字符串上，这就是索引中的所有文档（在“纽约工作岗位”例子中，数量约为 2800）。
 
 ## <a name="how-to-invoke-simple-query-parsing"></a>如何调用简单查询分析
 
@@ -75,7 +75,7 @@ URL 组合具备以下元素：
 
 第一个示例并未特定于分析器，但我们将先使用它来介绍第一个基本查询概念，即“包含”。 本示例显示查询执行情况以及对几个特定字段的响应。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
 
-出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 语法是 searchFields 和 select，前者将查询执行限制为只执行 business_title 字段，后者指定响应中包含哪些字段。
+出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位  。 语法是 searchFields 和 select，前者将查询执行限制为只执行 business_title 字段，后者指定响应中包含哪些字段   。
 
 ### <a name="partial-query-string"></a>部分查询字符串
 
@@ -83,13 +83,13 @@ URL 组合具备以下元素：
 searchFields=business_title&$select=business_title&search=*
 ```
 
-下面是使用以逗号分隔列表中的多个字段相同的查询。
+下面是同一查询，在逗号分隔列表中具有多个字段。
 
 ```http
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
 ```
 
-### <a name="full-url"></a>完整的 URL
+### <a name="full-url"></a>完整 URL
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=business_title&$select=business_title&search=*
@@ -141,7 +141,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
-另一种合并筛选器和搜索的有效方法是通过筛选表达式中的 **`search.ismatch*()`**，在其中可以使用筛选器中的搜索查询。 此筛选表达式使用计划中的通配符来选择包含字词 plan、planner、planning 等的 business_title。
+另一种合并筛选器和搜索的有效方法是通过筛选表达式中的 **`search.ismatch*()`** ，在其中可以使用筛选器中的搜索查询。 此筛选表达式使用计划中的通配符来选择包含字词 plan、planner、planning 等的 business_title。 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
@@ -211,7 +211,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
       "count": "true"
     }
 ```
-为更具可读性的结果，搜索结果中剪裁掉，以包括作业 ID、 职务和工作位置。 起始坐标是从索引中的随机文档（在本例中，为斯塔顿岛上的某个工位）获取的。
+为方便阅读结果，搜索结果已剪裁，只包含职位 ID、职务和工位。 起始坐标是从索引中的随机文档（在本例中，为斯塔顿岛上的某个工位）获取的。
 
 也可以使用 GET 在 Postman 中尝试此查询：
 
@@ -223,19 +223,19 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 字词查询是独立评估的单个字词（可能很多是这样）。 短语查询用引号括起来，作为逐字字符串进行评估。 匹配精度由运算符和 searchMode 控制。
 
-示例 1：`&search=fire` 返回 150 个结果，即整个文档中包含“fire”一词的所有匹配项。
+示例 1：`&search=fire` 返回 150 个结果，即整个文档中包含“fire”一词的所有匹配项  。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
 ```
 
-示例 2：`&search=fire department` 返回 2002 个结果。 针对此文档返回了包含“fire”或“department”的匹配项。
+示例 2：`&search=fire department` 返回 2002 个结果  。 针对此文档返回了包含“fire”或“department”的匹配项。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
-示例 3：`&search="fire department"` 返回 82 个结果。 将该字符串用引号引起来，构成对这两个词的逐字搜索，在索引中包含该组合词的已标记化的字词中查找匹配项。 这就解释了为何诸如 `search=+fire +department` 之类的搜索是不等效的。 需具备两个字词，但独立扫描它们。 
+示例 3：`&search="fire department"` 返回 82 个结果  。 将该字符串用引号引起来，构成对这两个词的逐字搜索，在索引中包含该组合词的已标记化的字词中查找匹配项。 这就解释了为何诸如 `search=+fire +department` 之类的搜索是不等效的  。 需具备两个字词，但独立扫描它们。 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
@@ -262,18 +262,18 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 ## <a name="example-8-structuring-results"></a>示例 8：构建结果
 
-有多个参数控制着搜索结果中包括哪些字段、每批返回多少文档以及排列顺序。 此示例重新设置了上述几个示例，使用 $select 语句和逐字搜索条件将结果限制为仅包含特定字段，返回了 82 个匹配项 
+有多个参数控制着搜索结果中包括哪些字段、每批返回多少文档以及排列顺序。 此示例重新设置了上述几个示例，使用 $select 语句和逐字搜索条件将结果限制为仅包含特定字段，返回了 82 个匹配项  
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
-将此改动追加到上一示例，即可按职位排序。 这种排序是可行的，因为在该索引中 civil_service_title 是可排序的。
+将此改动追加到上一示例，即可按职位排序。 这种排序是可行的，因为在该索引中 civil_service_title 是可排序的  。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
 ```
 
-使用 $top 参数可实现结果分页，本例中返回了前 5 个文档：
+使用 $top 参数可实现结果分页，本例中返回了前 5 个文档  ：
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0

@@ -16,10 +16,10 @@ ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 1fbe5b0a49960248133c35fb4a0401a31b95fb35
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700938"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
@@ -132,11 +132,11 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 - **虚拟机配置**，它指定池由 Azure 虚拟机组成。 可以从 Linux 或 Windows 映像创建这些 VM。 
 
-    基于虚拟机配置创建池时，不仅要指定节点大小和用于创建它们的映像源，还必须指定要安装在节点上的“虚拟机映像引用”和批处理“节点代理 SKU”。 有关指定这些池属性的详细信息，请参阅 [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md)（在 Azure Batch 池中预配 Linux 计算节点）。 可选选择性地将一个或多个空数据磁盘附加到从市场映像创建的池 VM，也可将数据磁盘包括在用于创建 VM 的自定义映像中。 包括数据磁盘，需要装载和使用它们在 VM 内的从磁盘进行格式化。
+    基于虚拟机配置创建池时，不仅要指定节点大小和用于创建它们的映像源，还必须指定要安装在节点上的“虚拟机映像引用”  和批处理“节点代理 SKU”  。 有关指定这些池属性的详细信息，请参阅 [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md)（在 Azure Batch 池中预配 Linux 计算节点）。 可选选择性地将一个或多个空数据磁盘附加到从市场映像创建的池 VM，也可将数据磁盘包括在用于创建 VM 的自定义映像中。 包括数据磁盘，需要装载和使用它们在 VM 内的从磁盘进行格式化。
 
-- **云服务配置**，它指定池由 Azure 云服务节点组成。 云服务只提供 Windows 计算节点。
+- **云服务配置**，它指定池由 Azure 云服务节点组成。 云服务只  提供 Windows 计算节点。
 
-    [Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md)（Azure 来宾 OS 版本和 SDK 兼容性对照表）中列出了适用于云服务配置池的操作系统。 创建包含云服务节点的池时，需要指定节点大小及其 OS 系列。 将云服务部署到 Azure 的速度比部署运行 Windows 的虚拟机更快。 如果需要 Windows 计算节点池，可能会发现云服务具有部署时间上的性能优势。
+    [Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md)（Azure 来宾 OS 版本和 SDK 兼容性对照表）中列出了适用于云服务配置池的操作系统。 创建包含云服务节点的池时，需要指定节点大小及其 OS 系列  。 将云服务部署到 Azure 的速度比部署运行 Windows 的虚拟机更快。 如果需要 Windows 计算节点池，可能会发现云服务具有部署时间上的性能优势。
 
     * *OS 系列* 还确定了要与操作系统一起安装哪些版本的 .NET。
     * 与云服务中的辅助角色一样，可以指定 *OS 版本*（有关辅助角色的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)）。
@@ -355,7 +355,7 @@ Batch 服务在节点上公开文件系统的一部分作为 *根目录*。 任�
 
 ![计算节点目录结构][1]
 
-* **共享**：此目录允许对节点上运行的“所有”任务进行读取/写入访问。 在节点上运行的任何任务都可以创建、读取、更新和删除此目录中的文件。 任务可通过引用 `AZ_BATCH_NODE_SHARED_DIR` 环境变量来访问此目录。
+* **共享**：此目录允许对节点上运行的“所有”任务进行读取/写入访问  。 在节点上运行的任何任务都可以创建、读取、更新和删除此目录中的文件。 任务可通过引用 `AZ_BATCH_NODE_SHARED_DIR` 环境变量来访问此目录。
 * **启动**：启动任务使用此目录作为它的工作目录。 由启动任务下载到的节点所有文件都存储在此处。 启动任务可以创建、读取、更新和删除此目录下的文件。 任务可通过引用 `AZ_BATCH_NODE_STARTUP_DIR` 环境变量来访问此目录。
 * **任务**：为节点上运行的每个任务创建一个目录。 可通过引用 `AZ_BATCH_TASK_DIR` 环境变量来访问该目录。
 
@@ -411,7 +411,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 * **时间度量值** 基于指定的时数内每隔五分钟收集的统计信息。
 * **资源度量值** 基于 CPU 使用率、带宽使用率、内存使用率和节点的数目。
-* **任务指标**基于任务状态，例如“活动”（已排队）、“正在运行”或“已完成”。
+* **任务指标**基于任务状态，例如“活动”（已排队）、“正在运行”或“已完成”。   
 
 如果自动缩放会减少池中的计算节点数，则必须考虑如何处理在执行减少操作时运行的任务。 为了满足这一点，Batch 提供可包含在公式中的 *节点解除分配选项* 。 例如，可以指定运行中的任务立即停止，然后重新排入队列，以便在另一个节点上运行，或允许先完成再从池中删除节点。
 
@@ -435,13 +435,13 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 ### <a name="task-failure-handling"></a>任务失败处理
 任务失败划分为以下类别：
 
-* 预处理失败
+*  预处理失败
 
     如果任务无法启动，则会为任务设置预处理错误。  
 
     如果任务的资源文件已移动、存储帐户不再可用，或者发生其他使文件无法成功复制到节点的问题，则可能会出现预处理错误。
 
-* 文件上传失败
+*  文件上传失败
 
     如果为任务指定的文件上传由于某种原因而失败，则会为该任务设置文件上传错误。
 

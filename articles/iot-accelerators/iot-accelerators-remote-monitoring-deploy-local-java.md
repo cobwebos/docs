@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2b55fea69fe1affb6cab5d360f1e8355c3bb720d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66015436"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>在本地部署远程监视解决方案加速器 - IntelliJ
@@ -106,7 +106,7 @@ git submodule foreach git pull origin master
 * **PCS_AAD_APPID** -AAD 应用程序 ID
 * **PCS_AAD_APPSECRET** -AAD 应用程序机密
 
-将此 Azure 密钥保管库资源中读取配置值。 这些环境变量可以保存在**\<主文件夹\>\\.pcs\\\<解决方案名称\>.env**从部署的文件。 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
+将此 Azure 密钥保管库资源中读取配置值。 这些环境变量可以保存在 **\<主文件夹\>\\.pcs\\\<解决方案名称\>.env** 从部署的文件。 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
 
 某些微服务所需的配置存储中的实例**Key Vault**创建初始部署。 根据需要应修改在密钥保管库中的相应变量。
 
@@ -147,15 +147,15 @@ git submodule foreach git pull origin master
 #### <a name="import-project"></a>导入项目
 
 1. 启动 IntelliJ IDE
-1. 选择“导入项目”，然后选择“azure-iot-pcs-remote-monitoring-java\services\build.sbt”
+1. 选择“导入项目”  ，然后选择“azure-iot-pcs-remote-monitoring-java\services\build.sbt” 
 
 #### <a name="create-run-configurations"></a>创建运行配置
 
-1. 选择“运行”>“编辑配置”
-1. 选择“添加新配置”>“sbt 任务” 
+1. 选择“运行”>“编辑配置” 
+1. 选择“添加新配置”>“sbt 任务”  
 1. 输入**名称**并将**任务**输入为“run” 
 1. 根据要运行的服务选择**工作目录**
-1. 单击“应用”>“确定”以保存你的选择。
+1. 单击“应用”>“确定”  以保存你的选择。
 1. 创建以下服务的运行配置：
     * WebService (services\config)
     * WebService (services\device-telemetry)
@@ -169,15 +169,15 @@ git submodule foreach git pull origin master
 
 #### <a name="create-compound-configuration"></a>创建复合配置
 
-1. 若要运行所有服务，请同时选择“添加新配置”>“复合”
+1. 若要运行所有服务，请同时选择“添加新配置”>“复合” 
 1. 输入**名称**并**添加 sbt 任务**
-1. 单击“应用”>“确定”以保存你的选择。
+1. 单击“应用”>“确定”  以保存你的选择。
 
 例如下, 图显示了将所有 sbt 任务都添加到单个配置：
 
 [![Add-All-Services](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
-单击“运行”，以在本地计算机上生成并运行 Web 服务。
+单击“运行”，以在本地计算机上生成并运行 Web 服务。 
 
 每个 Web 服务将打开一个命令提示符和 Web 浏览器窗口。 在命令提示符下，查看正在运行的服务的输出；在浏览器窗口中可以监视状态。 请不要关闭命令提示符或网页，此操作会停止 Web 服务。
 
@@ -195,8 +195,8 @@ git submodule foreach git pull origin master
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 1. 导航到为解决方案创建的**资源组**。 该资源组的名称是在运行 **start.cmd** 脚本时为解决方案选择的名称。
-1. 在资源列表中单击“流分析作业”。
-1. 在流分析作业的“概述”页上，单击“启动”按钮。 然后单击“启动”以立即启动该作业。
+1. 在资源列表中单击“流分析作业”。 
+1. 在流分析作业的“概述”页上，单击“启动”按钮。   然后单击“启动”以立即启动该作业  。
 
 ### <a name="run-the-web-ui"></a>运行 Web UI
 

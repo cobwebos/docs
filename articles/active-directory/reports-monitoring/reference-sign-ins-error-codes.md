@@ -17,12 +17,12 @@ ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3208afc7ec18013c6e70e148995d33114cf7e06c
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 760eb5a37a09687cd98ca7abbdcb0bc42667f830
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66513667"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107628"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 
@@ -44,7 +44,7 @@ ms.locfileid: "66513667"
 
 ![登录活动](./media/reference-sign-ins-error-codes/06.png "登录活动")
 
-从筛选的列表中选择某个项会打开“活动详细信息:登录”边栏选项卡。** 此视图提供有关失败的登录事件的其他信息，包括**登录错误代码**和**失败原因**。
+从筛选的列表中选择某个项会打开“活动详细信息:登录”边栏选项卡。** 此视图提供有关失败的登录事件的其他信息，包括 **登录错误代码** 和 **失败原因**。
 
 ![登录活动](./media/reference-sign-ins-error-codes/05.png "登录活动")
 
@@ -66,7 +66,7 @@ ms.locfileid: "66513667"
 |50001|在此租户中找不到服务主体名称。 如果在应用程序尚未由租户管理员安装，或者资源主体在目录中找不到或无效，则可能会发生这种情况。|
 |50002|由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题。|
 |50003|由于缺少签名密钥或证书，登录失败。 这可能是因为应用程序中未配置任何签名密钥。 请查看 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) 中所述的解决方法。 如果问题持续出现，请联系应用程序所有者或应用程序管理员。|
-|50005|用户尝试从条件访问策略目前不支持的平台登录到设备。|
+|50005|用户尝试从一个平台，目前不支持条件性访问策略通过登录到设备。|
 |50006| 由于签名无效，签名验证失败。 请查看 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery) 中所述的解决方法。 如果问题持续出现，请联系应用程序所有者或应用程序管理员。|
 |50007|找不到此应用程序的合作伙伴加密证书。 请向 Microsoft [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。|
 |50008|SAML 断言在令牌中缺失或配置错误。 请联系联合提供者。|
@@ -133,8 +133,8 @@ ms.locfileid: "66513667"
 |52004|用户尚未许可 LinkedIn 资源的访问权限。 |
 |53000|条件访问策略需要符合的设备，该设备不符合。 让用户使用已批准的 MDM 提供程序（例如 Intune）注册其设备。|
 |53001|条件访问策略需要已加入域的设备，而该设备未加入域。 让用户使用已加入域的设备。|
-|53002|使用的应用程序不是支持条件访问的获批准应用程序。 用户需使用可用的获批准应用程序列表中的某个应用才能获取访问权限。|
-|53003|访问因条件访问策略而被阻止。|
+|53002|使用应用程序不是用于条件性访问的已批准应用程序。 用户需使用可用的获批准应用程序列表中的某个应用才能获取访问权限。|
+|53003|由于条件性访问策略已被阻止访问。|
 |53004|在访问此内容之前，用户需要完成多重身份验证注册过程。 用户应注册多重身份验证。|
 |65001|应用程序 X 无权访问应用程序 Y，或者权限已被吊销。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请代表应用 Y向租户管理员发送针对资源 Z的授权请求。|
 |65004|用户拒绝许可该应用的访问权限。 让用户重试登录并许可应用|

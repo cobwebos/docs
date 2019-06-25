@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: pabutler
 ms.openlocfilehash: aaeb347c5b8ba6cd992054cd6ab5464f44b3a08c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942030"
 ---
 # <a name="update-a-power-bi-app-offer"></a>更新 Power BI 应用产品/服务
@@ -32,7 +32,7 @@ ms.locfileid: "64942030"
 Power BI 应用通常定期更新与新内容、 安全修补程序、 功能和等等。 应用更改时，通过执行以下步骤更新其安装 URL:
 
 1.  登录[云合作伙伴平台](https://cloudpartner.azure.com/)。
-2.  在“所有套餐”下，找到要更新的套餐。
+2.  在“所有套餐”下，找到要更新的套餐。 
 3.  上**技术信息**选项卡上，输入新的安装 URL。
 4.  选择**发布**启动工作流以将新的应用程序版本发布到 AppSource。
 
@@ -42,9 +42,9 @@ Power BI 应用通常定期更新与新内容、 安全修补程序、 功能和
 产品/服务的应用商店元数据包括你的公司名称、 徽标和其他信息。 若要更新的元数据，请按照下列步骤：
 
 1.  登录[云合作伙伴平台](https://cloudpartner.azure.com/)。
-2.  在“所有套餐”下，找到要更新的套餐。
+2.  在“所有套餐”下，找到要更新的套餐。 
 3.  上**店面详细信息**选项卡上，按照以下文章中的说明，更改元数据[Power BI 应用店面详细信息选项卡](./cpp-storefront-details-tab.md)。
-4.  选择“发布”，启动发布更改的工作流。
+4.  选择“发布”，启动发布更改的工作流。 
 
 
 ## <a name="the-compare-feature"></a>比较功能

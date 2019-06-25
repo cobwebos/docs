@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: jingwang
 ms.openlocfilehash: 481b19d0121e93c84d123579e91bcbfb9fb50815
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66356958"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
@@ -65,7 +65,7 @@ Dynamics 链接服务支持以下属性。
 | deploymentType | Dynamics 实例的部署类型。 Dynamics Online 必须为 **"Online"** 。 | 是 |
 | serviceUri | 你的 Dynamics 实例的服务 URL，例如 `https://adfdynamics.crm.dynamics.com`。 | 是 |
 | authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为 Dynamics Online 指定 **"Office365"** 。 | 是 |
-| userName | 指定用于连接到 Dynamics 的用户名。 | 是 |
+| username | 指定用于连接到 Dynamics 的用户名。 | 是 |
 | password | 指定为 username 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有集成运行时） |
 
@@ -110,7 +110,7 @@ Dynamics 链接服务支持以下属性。
 | port | 本地 Dynamics 服务器的端口。 | 否，默认端口为 443 |
 | organizationName | Dynamics 实例的组织名称。 | 是 |
 | authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为带有 IFD 的本地 Dynamics 指定“Ifd”  | 是 |
-| userName | 指定用于连接到 Dynamics 的用户名。 | 是 |
+| username | 指定用于连接到 Dynamics 的用户名。 | 是 |
 | password | 指定为 username 指定的用户帐户的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -154,8 +154,8 @@ Dynamics 链接服务支持以下属性。
 | entityName | 要检索的实体的逻辑名称。 | 源为“No”（如果指定了活动源中的“query”），接收器为“Yes” |
 
 > [!IMPORTANT]
->- 从 Dynamics 复制数据，"结构"部分时，可选的但高度 recommanded Dynamics 数据集中，以确保确定性复制结果。 该节定义要复制的 Dynamics 数据的列名和数据类型。 有关详细信息，请参阅[数据集结构](concepts-datasets-linked-services.md#dataset-structure-or-schema)和 [Dynamics 的数据类型映射](#data-type-mapping-for-dynamics)。
->- 在创作 UI 中导入架构时，ADF 通过对 Dynamics 查询结果中的前几行进行采样来初始化结构构造，将省略其中不含任何值的列。 相同的行为适用于复制执行，如果没有显式结构定义。 可以根据需要查看列并将更多列添加到 Dynamics 数据集架构/结构，这将在副本运行时起作用。
+>- 从 Dynamics 复制数据时，Dynamics 数据集中的“结构”部分是可选的但强烈建议使用，以确保确定性复制结果。 该节定义要复制的 Dynamics 数据的列名和数据类型。 有关详细信息，请参阅[数据集结构](concepts-datasets-linked-services.md#dataset-structure-or-schema)和 [Dynamics 的数据类型映射](#data-type-mapping-for-dynamics)。
+>- 在创作 UI 中导入架构时，ADF 通过对 Dynamics 查询结果中的前几行进行采样来初始化结构构造，将省略其中不含任何值的列。 如果没有明确的结构定义，则相同的行为也适用于复制执行。 可以根据需要查看列并将更多列添加到 Dynamics 数据集架构/结构，这将在副本运行时起作用。
 >- 向 Dynamics 复制数据时，Dynamics 数据集中的“structure”节是可选的。 要复制到哪些列由源数据架构确定。 如果源是不包含标头的 CSV 文件，请在输入数据集中指定包含列名称和数据类型的“结构”。 这些值将按顺序逐个映射到 CSV 文件中的字段。
 
 **示例：**
@@ -205,7 +205,7 @@ Dynamics 链接服务支持以下属性。
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **DynamicsSource**。 | 是 |
-| query | FetchXML 是在 Dynamics（联机和本地）中使用的专属查询语言。 请参阅以下示例。 若要了解详细信息，请参阅[生成使用 FetchXML 查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 否（如果指定了数据集中的“entityName”） |
+| query | FetchXML 是在 Dynamics（联机和本地）中使用的专属查询语言。 请参阅以下示例。 若要了解详细信息，请参阅[使用 FetchXML 生成查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 否（如果指定了数据集中的“entityName”） |
 
 >[!NOTE]
 >即使在 FetchXML 查询中配置的列投影不包含 PK 列，也将始终复制该列。

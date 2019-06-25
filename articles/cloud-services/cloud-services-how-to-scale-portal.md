@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: f5597773b3127852481d5e14844bed889c4d6f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61435195"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在门户中为云服务配置自动缩放
@@ -41,24 +41,24 @@ ms.locfileid: "61435195"
 
 * 若要使应用程序具有高可用性，应确保为其部署两个或更多角色实例。 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
 
-* 仅当所有角色都处于“就绪”状态时才能自动缩放。  
+* 仅当所有角色都处于“就绪”状态时才能自动缩放  。  
 
 
 ## <a name="where-scale-is-located"></a>缩放位置
 选择云服务之后，应会看到云服务边栏选项卡。
 
-1. 在云服务边栏选项卡上的“角色和实例”磁贴中，选择云服务的名称。   
+1. 在云服务边栏选项卡上的“角色和实例”  磁贴中，选择云服务的名称。   
    **重要说明**：请务必单击云服务角色，而不是以下角色的角色实例。
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
-2. 选择“缩放”磁贴。
+2. 选择“缩放”  磁贴。
 
     ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>自动缩放
 可以使用**手动**或**自动**模式来配置角色的缩放设置。 顾名思义，“手动”模式可以设置实例的绝对计数。 但是，“自动”模式可让你设置规则来控制缩放的方式和程度。
 
-将“缩放方式”选项设置为“计划和性能规则”。
+将“缩放方式”  选项设置为“计划和性能规则”  。
 
 ![包含配置文件和规则的云服务缩放设置](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
@@ -66,9 +66,9 @@ ms.locfileid: "61435195"
 2. 添加父配置文件的规则。
 3. 添加另一个配置文件。
 
-选择“添加配置文件”。 配置文件确定了用于缩放的模式：**始终**、**定期**和**固定日期**。
+选择“添加配置文件”  。 配置文件确定了用于缩放的模式：**始终**、**定期**和**固定日期**。
 
-配置了配置文件和规则之后，请选择顶部的“保存”图标。
+配置了配置文件和规则之后，请选择顶部的“保存”  图标。
 
 #### <a name="profile"></a>配置文件
 配置文件可设置缩放的实例数下限和上限，以及此缩放范围生效的时间。
@@ -89,7 +89,7 @@ ms.locfileid: "61435195"
 
     ![使用固定日期的云服务缩放](./media/cloud-services-how-to-scale-portal/select-fixed.png)
 
-配置了配置文件之后，请选择配置文件边栏选项卡底部的“确定”按钮。
+配置了配置文件之后，请选择配置文件边栏选项卡底部的“确定”  按钮。
 
 #### <a name="rule"></a>规则
 规则将添加到配置文件，代表触发缩放的条件。
@@ -98,7 +98,7 @@ ms.locfileid: "61435195"
 
 ![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
-配置规则之后，请选择规则边栏选项卡底部的“确定”按钮。
+配置规则之后，请选择规则边栏选项卡底部的“确定”  按钮。
 
 ## <a name="back-to-manual-scale"></a>返回到手动缩放
 导航到 [缩放设置](#where-scale-is-located)，并将 **缩放方式** 选项设置为 **手动输入的实例计数**。

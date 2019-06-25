@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: resources
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1f2b4d25b39e9b3ebc6659e736d47640964251dc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61335324"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693883"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>项目噪声方面的常见问题
 
@@ -27,7 +27,7 @@ ms.locfileid: "61335324"
 
 您可以下载[项目噪声 Unity 插件](https://www.microsoft.com/download/details.aspx?id=57346)或[项目噪声 Unreal 插件](https://www.microsoft.com/download/details.aspx?id=58090)。
 
-## <a name="does-project-acoustics-support-x-platform"></a>支持项目噪声<x>平台？
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>支持项目噪声&lt;x&gt;平台？
 
 项目的发展平台支持基于客户需求的噪声。 在上，请联系我们[项目噪声论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)就可以提出有关其他平台的支持。
 
@@ -61,7 +61,7 @@ ACE 文件包括是大量源和侦听器位置对，以及用于参数内插 vox
  
 ## <a name="does-project-acoustics-use-acoustic-materials"></a>项目噪声是否使用声学资料？
 
-可以。 材料从你所处级别的物理材料名称中选取，促进吸音能力。
+是的。 材料从你所处级别的物理材料名称中选取，促进吸音能力。
  
 ## <a name="what-do-the-probes-represent"></a>“探测”代表什么？
 

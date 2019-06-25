@@ -67,7 +67,7 @@ X-Microsoft-OutputFormat | **1.** ssml-16khz-16bit-mono-tts <br> **2.** raw-16kh
 X-Search-AppId | GUID（仅限十六进制，无短划线） | 唯一标识客户端应用程序的 ID。 它可以是应用的 Store ID。 如果 Store ID 不可用，也可以是用户为应用程序生成的 ID。
 X-Search-ClientID | GUID（仅限十六进制，无短划线） | 唯一标识每个安装的应用程序实例的 ID。
 User-Agent | 应用程序名称 | 应用程序名称必填，且长度不得超过 255 个字符。
-授权 | 授权令牌 |  请参阅<a href="#Subscription">授权令牌</a>部分。
+Authorization | 授权令牌 |  请参阅<a href="#Subscription">授权令牌</a>部分。
 
 ### <a name="InputParam"></a>输入参数
 

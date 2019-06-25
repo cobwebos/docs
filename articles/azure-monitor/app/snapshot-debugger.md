@@ -13,20 +13,20 @@ ms.reviewer: brahmnes
 ms.date: 03/07/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4157285e8af67acd1dc3627bebc12076d7fe072c
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595548"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](../../azure-monitor/app/asp-net-exceptions.md)区域中。
 
-可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 若要获取更强大的调试体验与源代码，Visual Studio 2019 Enterprise 中打开快照。 在 Visual Studio 中，还可以[将快照设置为以交互方式拍摄快照](https://aka.ms/snappoint)，而无需等待异常。
+可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 若要获取更强大的调试体验与源代码，请在 Visual Studio 2019 Enterprise 中打开快照。 在 Visual Studio 中，还可以[将快照设置为以交互方式拍摄快照](https://aka.ms/snappoint)，而无需等待异常。
 
 调试快照存储七天。 此保留策略基于每个应用程序进行设置。 如果需要，可以在 Azure 门户中打开支持案例，以请求增加此值。
 
-## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>为应用程序启用 Application Insights 快照调试器
+## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>为你的应用程序启用 Application Insights 快照调试器
 快照集合可用于：
 * 运行 .NET Framework 4.5 或更高版本的 .NET Framework 和 ASP.NET 应用程序。
 * 在 Windows 上运行的 .NET Core 2.0 和 ASP.NET Core 2.0 应用程序。
@@ -34,15 +34,15 @@ ms.locfileid: "65595548"
 支持以下环境：
 
 * [Azure 应用服务](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure 云服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)运行 OS 系列 4 或更高版本
-* [Azure Service Fabric 服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)运行 Windows Server 2012 R2 或更高版本
-* [Azure 虚拟机和虚拟机规模集](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)运行 Windows Server 2012 R2 或更高版本
-* [本地虚拟或物理机](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)运行 Windows Server 2012 R2 或更高版本
+* 运行 OS 系列 4 或更高版本的 [Azure 云服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* Windows Server 2012 R2 或更高版本上运行的 [Azure Service Fabric 服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* 运行 Windows Server 2012 R2 或更高版本的 [Azure 虚拟机和虚拟机规模集](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* 运行 Windows Server 2012 R2 或更高版本的[本地虚拟机或物理计算机](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
 > [!NOTE]
 > 不支持客户端应用程序（例如，WPF、Windows 窗体或 UWP）。
 
-如果启用了快照调试程序，但未看到快照，请我们[故障排除指南](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)。
+如果已启用快照调试器但未看到快照，请查看[故障排除指南](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)。
 
 ## <a name="grant-permissions"></a>授予权限
 
@@ -54,11 +54,11 @@ ms.locfileid: "65595548"
 订阅所有者应将 `Application Insights Snapshot Debugger` 角色分配给要检查快照的用户。 订阅所有者可将该角色分配给目标 Application Insights 资源或其资源组或订阅的各个用户或组。
 
 1. 在 Azure 门户中导航到 Application Insights 资源。
-1. 单击“访问控制(IAM)”。
-1. 单击“+添加角色分配”按钮。
-1. 从“角色”下拉列表中，选择“Application Insights 快照调试程序”。
+1. 单击“访问控制(IAM)”  。
+1. 单击“+添加角色分配”按钮  。
+1. 从“角色”下拉列表中，选择“Application Insights 快照调试程序”   。
 1. 搜索并输入要添加的用户的名称。
-1. 单击“保存”按钮将用户添加到角色。
+1. 单击“保存”按钮将用户添加到角色  。
 
 
 > [!IMPORTANT]
@@ -66,11 +66,11 @@ ms.locfileid: "65595548"
 
 ## <a name="view-snapshots-in-the-portal"></a>在门户中查看快照
 
-在应用程序中发生了异常，并创建快照后，应具有要查看的快照。 可能需要 5 到 10 分钟到快照准备就绪，并显示在门户中会发生异常。 若要查看快照，在**失败**窗格中，选择**Operations**按钮查看时**操作**选项卡上，或选择**异常**按钮查看时**异常**选项卡：
+在应用程序中发生异常并创建快照后，你应当会有可查看的快照。 从发生异常到快照准备就绪并可从门户查看可能需要花费 5 到 10 分钟时间。 若要查看快照，在“失败”  窗格中，在查看“操作”  选项卡时选择“操作”  按钮，或者在查看“异常”  选项卡时选择“异常”  按钮：
 
-![故障页](./media/snapshot-debugger/failures-page.png)
+![“失败”页面](./media/snapshot-debugger/failures-page.png)
 
-若要打开在右窗格中选择的操作或异常**端到端事务详细信息**窗格中，然后选择异常事件。 如果某个快照适用于给定异常**打开调试快照**按钮将出现在右窗格的详细信息[异常](../../azure-monitor/app/asp-net-exceptions.md)。
+在右侧窗格中选择一个操作或异常以打开“端到端事务详细信息”  窗格，然后选择异常事件。 如果有某个快照可用于给定的异常，则包含该[异常](../../azure-monitor/app/asp-net-exceptions.md)的详细信息的右窗格上会显示一个“打开调试快照”按钮  。
 
 ![异常区域中的“打开调试快照”按钮](./media/snapshot-debugger/e2e-transaction-page.png)
 
@@ -80,12 +80,12 @@ ms.locfileid: "65595548"
 
 快照可能包含敏感信息，默认情况下不可查看。 要查看快照，必须获取 `Application Insights Snapshot Debugger` 角色。
 
-## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>查看快照在 Visual Studio 2017 Enterprise 或更高版本
-1. 单击**下载快照**按钮以下载`.diagsession`文件，也可以打开 Visual Studio enterprise。
+## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>在 Visual Studio 2017 Enterprise 或更高版本中查看快照
+1. 单击“下载快照”  按钮以下载一个 `.diagsession` 文件，可在 Visual Studio 2017 Enterprise 中打开该文件。
 
-2. 若要打开`.diagsession`文件，您需要安装快照调试器 Visual Studio 组件。 快照调试程序组件是 Visual Studio 中的 ASP.net 工作负载的必需的组件，并可从 Visual Studio 安装程序中单独的组件列表中选择。 如果使用 Visual Studio 2017 版本 15.5 之前的 Visual Studio 版本，你需要安装中的扩展插件[Visual Studio Marketplace](https://aka.ms/snapshotdebugger)。
+2. 若要打开 `.diagsession` 文件，需要安装 Visual Studio Snapshot Debugger 组件。 Snapshot Debugger 组件是 Visual Studio 中 ASP.net 工作负载的必需组件，可以从 Visual Studio 安装程序中的单独组件列表中选择。 如果你使用的是 Visual Studio 2017 版本 15.5 之前的 Visual Studio 版本，则需要从 [Visual Studio Marketplace](https://aka.ms/snapshotdebugger) 安装扩展。
 
-3. 打开快照文件后，将出现 Visual Studio 中的“小型转储调试”页面。 单击“调试托管代码”开始调试快照。 快照将打开到引发异常的代码行，以便可以调试进程的当前状态。
+3. 打开快照文件后，将出现 Visual Studio 中的“小型转储调试”页面。 单击“调试托管代码”开始调试快照  。 快照将打开到引发异常的代码行，以便可以调试进程的当前状态。
 
     ![在 Visual Studio 中查看调试快照](./media/snapshot-debugger/open-snapshot-visualstudio.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "65595548"
 
 ## <a name="limitations"></a>限制
 
-默认数据保留期为 15 天。 对于每个 Application Insights 实例，每日允许最多 50 张快照。
+默认数据保留期为 15 天。 对于每个 Application Insights 实例，每天最多允许 50 个快照。
 
 ### <a name="publish-symbols"></a>发布符号
 快照调试程序要求符号文件位于生产服务器上，这样它才能在 Visual Studio 中解码变量并提供调试体验。
@@ -132,15 +132,15 @@ ms.locfileid: "65595548"
 > 在应用服务中安装 Application Insights 站点扩展可获得取消优化支持。
 
 ## <a name="next-steps"></a>后续步骤
-为你的应用程序启用 Application Insights 快照调试程序：
+为你的应用程序启用 Application Insights 快照调试器：
 
 * [Azure 应用服务](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 云服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric 服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虚拟机和虚拟机规模集](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [在本地虚拟机或物理计算机](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [本地虚拟机或物理计算机](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-除了 Application Insights 快照调试程序：
+Application Insights 快照调试器之外的功能：
  
 * [在代码中设置捕捉点](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications)，无需等待出现异常即可获取快照。
 * [诊断 Web 应用中的异常](../../azure-monitor/app/asp-net-exceptions.md)介绍了如何在 Application Insights 中显示更多的异常。

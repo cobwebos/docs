@@ -11,20 +11,20 @@ ms.date: 04/12/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: f80c1817d5c0ce79f2dc53f40a2cc4e00dd5c72b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61420960"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>监视 Azure SQL 数据仓库中的资源利用率和查询活动
-Azure SQL 数据仓库在 Azure 门户中提供丰富的监视体验用于洞察数据仓库工作负荷。 建议使用 Azure 门户来监视数据仓库，因为它提供可配置的保持期、警报、建议，并为指标和日志提供可自定义的图表与仪表板。 在门户还可以与 Operations Management Suite (OMS) 和 Azure Monitor （日志） 提供全面的监视体验为您的数据仓库不仅在整个 Azure 分析等其他 Azure 监视服务集成集成监视体验的平台。 本文档介绍可在 SQL 数据仓库中使用哪些监视功能来优化和管理分析平台。 
+Azure SQL 数据仓库在 Azure 门户中提供丰富的监视体验用于洞察数据仓库工作负荷。 建议使用 Azure 门户来监视数据仓库，因为它提供可配置的保持期、警报、建议，并为指标和日志提供可自定义的图表与仪表板。 在门户中，还可与 Operations Management Suite (OMS)、Azure Monitor（日志）等其他 Azure 监视服务集成。这样，不仅可以针对数据仓库，而且还能针对整个 Azure 分析平台提供一体式监视体验，构成一种集成式监视体验。 本文档介绍可在 SQL 数据仓库中使用哪些监视功能来优化和管理分析平台。 
 
 ## <a name="resource-utilization"></a>资源利用率 
 Azure 门户中提供了以下可用于 SQL 数据仓库的指标。 这些指标通过 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics) 显示。
 
 > [!NOTE]
-> 当前节点级别 CPU 和 IO 指标未正确反映数据仓库使用情况。 随着团队提高监视和故障排除 SQL 数据仓库的体验，这些度量值将在不久的将来删除。 
+> 目前，节点级 CPU 和 IO 指标并不能正确反映数据仓库使用情况。 在不久的将来，当团队改进 SQL 数据仓库的监视和故障排除体验时，会删除这些指标。 
 
 | 指标名称                           | 描述     | 聚合类型 |
 | --------------------------------------- | ---------------- | --------------------------------------- |

@@ -15,10 +15,10 @@ ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 5efbe874bbf3c1c4081eb7a2c76c1be5a3358ec8
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65518980"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>使用 Azure SQL VM CLI 为 Azure VM 上的 SQL Server 中配置 Always On 可用性组
@@ -35,7 +35,7 @@ ms.locfileid: "65518980"
 ## <a name="permissions"></a>权限
 以下帐户权限所需配置 Always On 可用性组使用 Azure SQL VM CLI。 
 
-- 现有的域用户帐户的域中有权创建计算机对象。  例如，域管理员帐户通常有足够的权限（如 account@domain.com）。 该帐户还应该属于每个 VM 上负责创建群集的本地管理员组。
+- 现有的域用户帐户的域中有权创建计算机对象。  例如，域管理员帐户通常有足够的权限（如 account@domain.com）。  该帐户还应该属于每个 VM 上负责创建群集的本地管理员组。
 - 域用户帐户控制 SQL Server 服务。 
  
 ## <a name="step-1---create-storage-account-as-a-cloud-witness"></a>步骤 1-创建云见证的存储帐户
@@ -115,7 +115,7 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
 ```
 
   >[!IMPORTANT]
-  > 每个 SQL Server VM 的公共 IP 资源应有一个与标准负载均衡器兼容的标准 SKU。 若要确定 VM 公共 IP 资源的 SKU，请导航到你的**资源组**，选择所需 SQL Server VM 的“公共 IP 地址”资源，并在“概述”窗格的“SKU”下面找到该值。  
+  > 每个 SQL Server VM 的公共 IP 资源应有一个与标准负载均衡器兼容的标准 SKU。 若要确定 VM 公共 IP 资源的 SKU，请导航到你的**资源组**，选择所需 SQL Server VM 的“公共 IP 地址”资源，并在“概述”窗格的“SKU”下面找到该值。     
 
 ## <a name="step-6---create-availability-group-listener"></a>步骤 6-创建可用性组侦听器
 一旦手动创建可用性组后，你可以使用创建侦听器[az sql vm ag 侦听器](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create)。 

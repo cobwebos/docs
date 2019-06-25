@@ -19,7 +19,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "60699298"
 ---
-# <a name="local-forwarder-preview"></a>本地转发器 （预览版）
+# <a name="local-forwarder-preview"></a>本地转发器（预览版）
 
 本地转发器是从各种框架中收集 Application Insights 或 [OpenCensus](https://opencensus.io/) 遥测数据并将其路由到 Application Insights 的代理。 它能够在 Windows 和 Linux 下运行。 也可以在 macOS 下运行，但目前并不正式支持这种运行方式。
 

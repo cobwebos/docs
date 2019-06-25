@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f8b7f281ad5ed8424110696544ffdb49e50ce59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2ffd2949c2540265539a743cb41d8070d7ba2a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112431"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204637"
 ---
 # <a name="baseline-policy-require-mfa-for-admins"></a>基准策略：要求管理员进行 MFA
 
@@ -71,6 +71,9 @@ ms.locfileid: "67112431"
 1. 设置**启用策略**到**立即使用策略**。
 1. 通过单击添加任何用户排除项**用户** > **选择排除的用户**，然后选择需要排除的用户。 单击**选择**然后**完成**。
 1. 单击 **保存**。
+
+> [!WARNING]
+> 有了一个选项**将来自动启用策略**时此策略处于预览状态。 我们删除了此选项可最大程度减少突然用户的影响。 如果你选择此选项时可用，**不使用策略**自动现在选择。 如果用户想要使用此基准策略，请参阅上述步骤来启用它。
 
 ## <a name="next-steps"></a>后续步骤
 

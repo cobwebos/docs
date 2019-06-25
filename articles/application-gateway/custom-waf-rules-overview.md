@@ -1,22 +1,22 @@
 ---
-title: Azure Web 应用程序防火墙 (WAF) 自定义规则
-description: 本文提供的 web 应用程序防火墙概述了 Azure 应用程序网关 (WAF) 自定义规则。
+title: Azure Web 应用程序防火墙 (WAF) v2 自定义规则
+description: 本文概述 Azure 应用程序网关的 Web 应用程序防火墙 (WAF) v2 自定义规则。
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: d35e1dc96f65e51ab14c4962d1824334cbdb1616
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6ea831771a8ffecfdd4c7c0d6374c16894e25ed
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752027"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164667"
 ---
-# <a name="custom-rules-for-web-application-firewall"></a>Web 应用程序防火墙的自定义规则
+# <a name="custom-rules-for-web-application-firewall-v2"></a>自定义规则为 Web 应用程序防火墙 v2 的
 
-Azure 应用程序网关 web 应用程序防火墙 (WAF) 附带了预配置、 平台托管规则集，可提供从许多不同类型的攻击的保护。 这些攻击包括跨站点脚本、 SQL 注入和其他人。 如果你是 WAF 管理员，你可能想要编写自己的规则，以增加核心规则集 (CRS) 规则。 你的规则可以阻止或允许根据匹配条件的请求的流量。
+Azure 应用程序网关 Web 应用程序防火墙 (WAF) v2 附带提供了从许多不同类型的攻击保护的预配置、 平台托管规则集。 这些攻击包括跨站点脚本、 SQL 注入和其他人。 如果你是 WAF 管理员，你可能想要编写自己的规则，以增加核心规则集 (CRS) 规则。 你的规则可以阻止或允许根据匹配条件的请求的流量。
 
 自定义规则，可创建您自己的规则，其计算结果为通过此 WAF 的每个请求。 这些规则中的托管规则集保存的优先级高于其他规则。 自定义规则包含一个规则名称、 规则优先级和匹配条件的数组。 如果满足这些条件，则不执行操作 （若要允许或阻止）。
 

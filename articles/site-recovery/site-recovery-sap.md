@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: 0848738b71a605d8baf049847daa3ae2428a7abe
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65793676"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>为多层 SAP NetWeaver 应用部署设置灾难恢复
@@ -116,7 +116,7 @@ Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负
 
 ## <a name="networking-configuration"></a>网络配置
 
-如果使用的是静态 IP，可以指定希望虚拟机采用的 IP 地址。 若要设置 IP 地址，请转到“计算和网络设置” > “网络接口卡”。
+如果使用的是静态 IP，可以指定希望虚拟机采用的 IP 地址。 若要设置 IP 地址，请转到“计算和网络设置”   >   “网络接口卡”。
 
 ![演示如何在 Site Recovery 的“网络接口卡”窗格中设置专用 IP 地址的屏幕截图](./media/site-recovery-sap/sap-static-ip.png)
 
@@ -149,10 +149,10 @@ Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负
 
 1.  在 Azure 门户中，选择恢复服务保管库。
 2.  选择针对 SAP 应用程序创建的恢复计划。
-3.  选择“测试故障转移”。
+3.  选择“测试故障转移”  。
 4.  若要启动测试故障转移过程，请选择恢复点和 Azure 虚拟网络。
 5.  当辅助环境启动时，执行验证。
-6.  完成验证后，选择“清理测试故障转移”清理测试故障转移环境。
+6.  完成验证后，选择“清理测试故障转移”清理测试故障转移环境。 
 
 有关详细信息，请参阅[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)。
 
@@ -160,7 +160,7 @@ Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负
 
 1.  在 Azure 门户中，选择恢复服务保管库。
 2.  选择针对 SAP 应用程序创建的恢复计划。
-3.  选择“故障转移”。
+3.  选择“故障转移”。 
 4.  若要启动故障转移过程，请选择恢复点。
 
 有关详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。

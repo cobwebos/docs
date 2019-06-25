@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: db396ad06bf46cbbaf486696b68393a6a4214c2f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65230828"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps 支持的地图样式
@@ -69,7 +69,7 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 
 
 ## <a name="night"></a>夜间
-夜间是包含彩色道路和符号的道路地图样式的深色版本。
+夜间  是包含彩色道路和符号的道路地图样式的深色版本。
 
 ![夜间](./media/supported-map-styles/night.png)
 
@@ -78,7 +78,7 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 * Android 地图控件
 
 ## <a name="roadshadedrelief"></a>road_shaded_relief
-道路地形阴影是 Azure Maps 主要样式，通过地球的轮廓完成。
+道路地形阴影是 Azure Maps 主要样式，通过地球的轮廓完成  。
 
 ![地形阴影](./media/supported-map-styles/shaded-relief.png)
 

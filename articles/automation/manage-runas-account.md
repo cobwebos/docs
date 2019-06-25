@@ -10,10 +10,10 @@ ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 140b1263047849e13a44441c368e6357078574d8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66240812"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
@@ -24,12 +24,12 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 有两种类型的运行方式帐户：
 
-* **Azure 运行方式帐户**-此帐户用于管理[Resource Manager 部署模型](../azure-resource-manager/resource-manager-deployment-model.md)资源。
+* **Azure 运行方式帐户** - 此帐户用于管理[资源管理器部署模型](../azure-resource-manager/resource-manager-deployment-model.md)资源。
   * 将创建使用自签名证书的 Azure AD 应用程序，在 Azure AD 中为此应用程序创建服务主体帐户，并在当前订阅中为此帐户分配“参与者”角色。 可将此项设置更改为“所有者”或其他任何角色。 有关详细信息，请参阅 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)。
   * 在指定的自动化帐户中创建名为 *AzureRunAsCertificate* 的自动化证书资产。 该证书资产保存 Azure AD 应用程序使用的证书私钥。
   * 在指定的自动化帐户中创建名为 *AzureRunAsConnection* 的自动化连接资产。 该连接资产保存 applicationId、tenantId、subscriptionId 和证书指纹。
 
-* **Azure 经典运行方式帐户**-此帐户用于管理[经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)资源。
+* **Azure 经典运行方式帐户** - 此帐户用于管理[经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)资源。
   * 在订阅中创建管理证书
   * 在指定的自动化帐户中创建名为 *AzureClassicRunAsCertificate* 的自动化证书资产。 该证书资产保存管理证书使用的证书私钥。
   * 在指定的自动化帐户中创建名为 *AzureClassicRunAsConnection* 的自动化连接资产。 该连接资产保存订阅名称、subscriptionId 和证书资产名称。
@@ -39,7 +39,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
   > Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 使用 CSP 订阅时，不会创建 Azure 经典运行方式帐户。 仍会创建 Azure 运行方式帐户。 若要了解有关 CSP 订阅的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)。
 
   > [!NOTE]
-  > 运行方式帐户的服务主体没有默认情况下读取 Azure Active Directory 的权限。 如果你想要添加读取或管理 Azure Active directory 的权限，你将需要授予该权限的服务主体下**API 权限**。 若要了解详细信息，请参阅[添加权限以访问 web Api](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
+  > 默认情况下，运行方式帐户的服务主体没有读取 Azure Active Directory 的权限。 如果希望添加读取或管理 Azure Active directory 的权限，需要在“API 权限”  下对服务主体授予该权限。 若要了解详细信息，请参阅[添加用于访问 Web API 的权限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
 
 ## <a name="permissions"></a>配置运行方式帐户时所需的权限
 
@@ -50,13 +50,13 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 |创建 Azure AD 应用程序|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | 应用程序开发人员角色<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>“主页”>“Azure Active Directory”>“应用注册” |
 |将凭据添加到应用程序。|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | 应用程序管理员或全局管理员<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>“主页”>“Azure Active Directory”>“应用注册”|
 |创建和获取 Azure AD 服务主体|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | 应用程序管理员或全局管理员<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>“主页”>“Azure Active Directory”>“应用注册”|
-|分配或获取指定主体的 RBAC 角色|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | 你必须具有以下权限：</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>或者是答：</br></br>用户访问管理员或所有者        | [订阅](../role-based-access-control/role-assignments-portal.md)</br>“主页”>“订阅”> \<订阅名称\> -“访问控制(IAM)”|
+|分配或获取指定主体的 RBAC 角色|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | 你必须具有以下权限：</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>或者是：</br></br>用户访问管理员或所有者        | [订阅](../role-based-access-control/role-assignments-portal.md)</br>“主页”>“订阅”> \<订阅名称\> -“访问控制(IAM)”|
 |创建或删除自动化证书|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | 资源组中的参与者         |自动化帐户资源组|
 |创建或删除自动化连接|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|资源组中的参与者 |自动化帐户资源组|
 
-<sup>1</sup> Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)，前提是 Azure AD 租户的“用户设置”页中的“用户可以注册应用程序”选项已设置为“是”。    如果应用注册设置设置为**否**，执行此操作的用户必须是上表中定义的内容。
+<sup>1</sup> Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)，前提是 Azure AD 租户的“用户设置”页中的“用户可以注册应用程序”选项已设置为“是”。    如果“应用注册设置”设置为“否”，则执行此操作的用户必须是上表中定义的用户  。
 
-如果要添加到之前不是订阅的 Active Directory 实例的成员**全局管理员**角色作为来宾要添加的订阅。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create…` 警告。  已添加到用户**全局管理员**角色第一次可以从订阅的 Active Directory 实例中删除和重新添加，使其在 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。     用户配置文件下的“用户类型”属性值不应等于“来宾”。  
+如果你在被添加到订阅的“全局管理员”  角色之前不是订阅的 Active Directory 实例的成员，则会将你添加为来宾。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create…` 警告。  已添加到用户**全局管理员**角色第一次可以从订阅的 Active Directory 实例中删除和重新添加，使其在 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。     用户配置文件下的“用户类型”属性值不应等于“来宾”。  
 
 ## <a name="permissions-classic"></a>配置经典运行方式帐户时所需的权限
 

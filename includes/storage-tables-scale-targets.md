@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 05/29/2019
+ms.date: 06/20/2019
 ms.author: tamram
-ms.openlocfilehash: 6bbd2a421122a05399d35be1b61e65f505253ed2
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 2319a7620b70547d186a4ef5cb96f5ca6684c62c
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420714"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67305257"
 ---
 | Resource | 确定目标 |
 |----------|---------------|
@@ -17,6 +17,7 @@ ms.locfileid: "66420714"
 | 表实体的最大大小 | 1 MiB |
 | 表实体中属性的最大数目 | 255，包含三个系统属性：PartitionKey、RowKey 和 Timestamp |
 | 中实体的属性值的最大总大小 | 1 MiB |
+| 在实体中的个别属性的最大总大小 | 因属性类型而异。 有关详细信息，请参阅**属性类型**中[了解表服务数据模型](/rest/api/storageservices/understanding-the-table-service-data-model)。 |
 | 每个表存储的访问策略的最大数目 | 5 |
 | 每个存储帐户的最大请求速率 | 20,000 事务/秒，假定实体大小为 1-KiB |
 | 单个表分区的目标吞吐量（1 KiB 实体） | 每秒最多 2,000 个实体 |

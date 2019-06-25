@@ -10,10 +10,10 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
 ms.openlocfilehash: 046afaa0e83fa572d6cd43a3717707892b25af69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66171082"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的应用程序生命周期管理
@@ -25,7 +25,7 @@ Azure 机器学习工作室是一个在 Azure 云平台中运行的工具，用�
 有两种用于控制实验版本的建议方法。 可以依赖内置的运行历史记录，或以 JSON 格式导出实验以在外部管理它。 每种方法各有利弊。
 
 ### <a name="experiment-snapshots-using-run-history"></a>使用运行历史记录的实验快照
-在 Azure 机器学习工作室学习实验的执行模型中，每次单击实验编辑器中的“运行”按钮时，都会将该实验的不可变快照提交到作业计划程序。 要查看此快照列表，单击实验编辑器视图中命令栏上的“运行历史记录”按钮。
+在 Azure 机器学习工作室学习实验的执行模型中，每次单击实验编辑器中的“运行”按钮时，都会将该实验的不可变快照提交到作业计划程序  。 要查看此快照列表，单击实验编辑器视图中命令栏上的“运行历史记录”按钮  。
 
 ![“运行历史记录”按钮](./media/version-control/runhistory.png)
 
@@ -51,7 +51,7 @@ Azure 机器学习工作室中的训练的模型序列化为称为 iLearner 文�
 4. 调用对 Web 服务训练的 BES 终结点，并指定所需的 iLearner 文件名以及将存储它的 Blob 存储帐户位置。
 5. BES 调用完成后，即可获得生成的 iLearner 文件。
 
-检索 iLearner 文件的另一种方法是通过 PowerShell commandlet [Download-AmlExperimentNodeOutput](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput)。 如果只想获取 iLearner 文件的副本，不需要以编程方式重新训练模型，此方法可能比较容易。
+检索 iLearner 文件的另一种方法是通过 PowerShell commandlet [Download-AmlExperimentNodeOutput](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput)  。 如果只想获取 iLearner 文件的副本，不需要以编程方式重新训练模型，此方法可能比较容易。
 
 有了 iLearner 文件（包含训练的模型）以后，即可采用自己的版本控制策略。 该策略就像将前缀/后缀作为命名约定应用一样简单，只需将 iLearner 文件保留在 Blob 存储中即可，也可将其复制/导入到版本控制系统中。
 

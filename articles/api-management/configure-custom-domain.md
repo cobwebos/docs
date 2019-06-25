@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: a8bfa7c5baa316b4019480bfc146b6cc61eff979
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d74552f2d4bea495c0278ef6ed4a408188752a7e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66141303"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274972"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名 
 
@@ -49,7 +49,7 @@ ms.locfileid: "66141303"
    + **SCM**（默认值为：`<apim-service-name>.scm.azure-api.net`）。
 
      >[!NOTE]
-     > 可以更新所有终结点或者更新其中的一部分。 通常情况下，客户会更新**代理**（此 URL 用来调用通过 API 管理公开的 API）和**门户**（开发人员门户 URL）。 **管理**和 **SCM** 终结点由 APIM 客户在内部使用，因此很少会为其分配自定义域名。
+     > 可以更新所有终结点或者更新其中的一部分。 通常情况下，客户会更新**代理**（此 URL 用来调用通过 API 管理公开的 API）和**门户**（开发人员门户 URL）。 **管理**和 **SCM** 终结点由 APIM 客户在内部使用，因此很少会为其分配自定义域名。 在大多数情况下仅单个自定义域名可以设置为给定的终结点。 但是， **Premium**层支持设置为多个主机名**代理**终结点。  
 
 1. 选择要更新的终结点。 
 1. 在右侧窗口中，单击“自定义”  。

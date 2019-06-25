@@ -14,11 +14,11 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f510a111a6c8846b300c09f368a3a2a05b2bb7ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306964"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64719895"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>排查在 Azure 中重新启动现有 Windows VM 或调整其大小时遇到的部署问题
 尝试启动已停止的 Azure 虚拟机 (VM)，或调整现有 Azure VM 的大小时，经常遇到的错误是分配失败。 当群集或区域没有可用的资源或无法支持所请求的 VM 大小时，将发生此错误。
@@ -41,7 +41,7 @@ ms.locfileid: "60306964"
 ### <a name="resolution"></a>解决方法
 * 停止可用性集中的所有 VM 并重新启动每个 VM。
   
-  1. 单击“资源组” > *资源组* > “资源” > *可用性集* > “虚拟机” > *虚拟机* > “停止”。
+  1. 单击“资源组” > *资源组* > “资源” > *可用性集* > “虚拟机” > *虚拟机* > “停止”。    
   2. 所有 VM 停止后，选择每个已停止的 VM 并单击“启动”。
 * 稍后重试重新启动请求。
 
@@ -57,9 +57,9 @@ ms.locfileid: "60306964"
   
   1. 停止可用性集中的所有 VM。
      
-     * 单击“资源组” > *资源组* > “资源” > *可用性集* > “虚拟机” > *虚拟机* > “停止”。
+     * 单击“资源组” > *资源组* > “资源” > *可用性集* > “虚拟机” > *虚拟机* > “停止”。    
   2. 所有 VM 停止后，将所需的 VM 调整到更大的大小。
-  3. 选择已调整大小的 VM，单击“启动”，并启动每个已停止的 VM。
+  3. 选择已调整大小的 VM，单击“启动”，并启动每个已停止的 VM。 
 
 ## <a name="next-steps"></a>后续步骤
 如果在 Azure 中创建新的 Windows VM 时遇到问题，请参阅[排查在 Azure 中新建 Windows 虚拟机时遇到的部署问题](../windows/troubleshoot-deployment-new-vm.md)。

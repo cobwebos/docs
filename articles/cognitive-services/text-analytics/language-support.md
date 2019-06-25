@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 69c14c6b98b572bc413f5a35696269e13344387e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 704a1193eb47f9346900c6c8a003122c30c8ab44
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417313"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203970"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文本分析 API 的语言和区域支持
 
@@ -23,7 +23,7 @@ ms.locfileid: "66417313"
 
 ## <a name="language-detection"></a>语言检测
 
-文本分析 API 可以检测到各种语言、 变体、 方言和某些区域和文化的语言。  语言检测返回一种语言的“脚本”。 例如，对于短语“I have a dog”，它将返回 `en` 而非 `en-US`。 唯一的特例是中文，对于中文，如果语言检测功能可以确定所提供的文本的脚本，则它将返回 `zh_CHS` 或 `zh_CHT`。 当无法识别中文文档的具体脚本时，它将简单地返回 `zh`。
+文本分析 API 可以检测多种语言、变体、方言和一些区域/文化语言。  语言检测返回一种语言的“脚本”。 例如，对于短语“I have a dog”，它将返回 `en` 而非 `en-US`。 唯一的特例是中文，对于中文，如果语言检测功能可以确定所提供的文本的脚本，则它将返回 `zh_CHS` 或 `zh_CHT`。 当无法识别中文文档的具体脚本时，它将简单地返回 `zh`。
 
 我们不会发布此功能的确切语言列表，但它可以检测各种语言、变体、方言和一些区域/文化语言。 
 
@@ -31,7 +31,14 @@ ms.locfileid: "66417313"
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>情绪分析、关键短语提取和命名的实体识别
 
-对于情绪分析、关键短语提取和实体识别，所支持语言的列表更具选择性，因为分析器已优化为适应更多语言的语言规则。
+对于情绪分析、关键短语提取和实体识别，所支持语言的列表更具选择性，因为分析器已优化为适应更多语言的语言规则。 支持的整套[实体类型](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition)当前限制为以下语言版本： 
+* 英语
+* 简体中文
+* 法语
+* 德语
+* 西班牙语
+
+仅`Person`，`Location`和`Organization`对于其他语言返回命名的实体。
 
 ## <a name="language-list-and-status"></a>语言列表和状态
 
@@ -64,7 +71,7 @@ ms.locfileid: "66417313"
 
 \* 语言支持为预览版
 
-\*\* 命名的实体识别和[实体链接](how-tos/text-analytics-how-to-entity-linking.md)均适用于此语言。    
+\*\* [命名实体识别](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner)并[实体链接](how-tos/text-analytics-how-to-entity-linking.md#entity-linking)都是可用于此语言。    
 
 ## <a name="see-also"></a>另请参阅
 

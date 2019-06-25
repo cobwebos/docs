@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161189"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173410"
 ---
 1. [连接到 PowerShell 界面](#connect-to-the-powershell-interface)。
 2. 使用`Get-HcsApplianceInfo`若要获取你的设备的信息。

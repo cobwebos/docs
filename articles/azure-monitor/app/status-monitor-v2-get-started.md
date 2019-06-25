@@ -1,6 +1,6 @@
 ---
 title: Azure 状态监视器 v2-入门 |Microsoft Docs
-description: 状态监视器 v2 的快速入门指南。 监视网站性能，无需重新部署该网站。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
+description: 状态监视器 v2 的快速入门指南。 无需重新部署网站即可监视网站性能。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -13,24 +13,24 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
 ms.openlocfilehash: 4da9d8e8efd5f70718f18b2e8e35ea6b5adf6757
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66734981"
 ---
 # <a name="get-started-with-status-monitor-v2"></a>开始使用状态监视器 v2
 
 本文包含应适用于大多数环境的快速启动命令。
 说明取决于 PowerShell 库分发更新。
-这些命令支持 PowerShell`-Proxy`参数。
+这些命令支持 PowerShell `-Proxy` 参数。
 
 有关这些命令、 自定义项的说明，以及有关故障排除信息的说明，请参阅[详细说明](status-monitor-v2-detailed-instructions.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!IMPORTANT]
-> 状态监视器 v2 目前处于公共预览状态。
+> 状态监视器 v2 目前为公共预览版。
 > 没有附带服务级别协议，提供此预览版本，我们不建议将其用于生产工作负荷。 可能不支持某些功能，以及一些可能会受约束的功能。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -46,7 +46,7 @@ Install-Module -Name PowerShellGet -Force
 ``` 
 关闭 PowerShell。
 
-### <a name="install-status-monitor-v2"></a>安装状态监视 v2
+### <a name="install-status-monitor-v2"></a>安装状态监视器 v2
 管理员身份运行 PowerShell
 ```powershell   
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
@@ -90,11 +90,11 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
  添加更多遥测：
 
-- [创建 web 测试](monitor-web-app-availability.md)以确保你的站点保持活动状态。
+- [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
 - [添加 web 客户端遥测](../../azure-monitor/app/javascript.md)，查看网页代码中的异常，并启用跟踪调用。
 - [将 Application Insights SDK 添加到你的代码](../../azure-monitor/app/asp-net.md)以便插入跟踪和记录调用。
 
-用做更多状态监视器 v2:
+使用状态监视器 v2 执行更多操作：
 
 - 审阅[详细说明](status-monitor-v2-detailed-instructions.md)有关以下网页中找到的命令的说明。
 - 使用指南，了解如何[进行故障排除](status-monitor-v2-troubleshoot.md)状态监视器 v2。

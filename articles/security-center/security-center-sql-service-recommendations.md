@@ -1,10 +1,10 @@
 ---
-title: 保护 Azure 安全中心的 Azure SQL 服务和数据 | Microsoft Docs
+title: 保护 Azure 安全中心中的 Azure 数据和存储服务 |Microsoft Docs
 description: 本文档介绍了 Azure 安全中心提供的建议，这些建议有助于保护数据和 Azure SQL 服务，并遵守安全策略。
 services: security-center
 documentationcenter: na
 author: monhaber
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
@@ -12,66 +12,76 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2019
+ms.date: 06/19/2019
 ms.author: monhaber
-ms.openlocfilehash: bbba5f380fddb4fdec43a7414e59778135c4e0ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ac0e4ebaafb8b0c9c79e885cecbefc5a65c1823
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428294"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275321"
 ---
-# <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>在 Azure 安全中心保护 Azure SQL 服务和数据
-Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。  适用于 Azure 资源类型的建议：虚拟机 (VM)、网络、SQL 和数据，以及应用程序。
+# <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>保护 Azure 安全中心中的 Azure 数据和存储服务
+本主题演示如何查看和实现针对数据和存储资源的安全建议。 分析 Azure 资源的安全状态时，azure 安全中心会发现这些建议。
+
+## <a name="view-your-data-security-information"></a>查看你的数据的安全信息
+
+1. 在中**资源安全净化**部分中，单击**数据和存储资源**。
+
+   ![数据和存储资源](./media/security-center-monitoring/click-data.png)
+
+    **数据安全性**页打开数据资源的建议。
+
+     ![数据资源](./media/security-center-monitoring/sql-overview.png)
+
+在此页上，你可以：
+
+* 单击**概述**选项卡列出了要对其进行修正的所有数据的资源建议。 
+* 单击每个选项卡，并查看按资源类型的建议。
+
+    > [!NOTE]
+    > 有关存储加密的详细信息，请阅读 [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md)（在 Azure 安全中心为 Azure 存储帐户启用加密）。
 
 
-### <a name="monitor-data-security"></a>监视数据安全性
+## <a name="remediate-a-recommendation-on-a-data-resource"></a>修正数据资源的建议
 
-单击“预防”部分中的“数据安全性”时，“数据资源”会打开，其中显示了有关 SQL 和存储的建议。    此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。 有关存储加密的详细信息，请阅读 [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md)（在 Azure 安全中心为 Azure 存储帐户启用加密）。
+1. 从任何资源选项卡中，单击资源。 信息页面打开列出的建议，若要对其进行修正。
 
-![数据资源](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
+    ![资源信息](./media/security-center-monitoring/sql-recommendations.png)
 
-在“SQL 建议”下面，可以单击任一建议，获取有关进一步操作的更多详细信息来解决问题。  以下示例显示了“SQL 数据库的数据库审核与威胁检测”建议的补充说明。 
+2. 单击一个建议。 建议页将打开并显示**修正步骤**实现该建议。
 
-![有关 SQL 建议的详细信息](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
+   ![修正步骤](./media/security-center-monitoring/remediate1.png)
 
-“对 SQL 数据库启用审核与威胁检测”包含以下信息： 
+3. 单击**采取的措施**。 资源设置页会显示。
 
-* SQL 数据库列表
-* 所在的服务器
-* 此设置是从服务器继承的，还是此数据库独有的
-* 当前状态
-* 问题的严重性
+    ![启用建议](./media/security-center-monitoring/remediate2.png)
 
-单击数据库处理建议时，会打开“审核和威胁检测”，如以下屏幕截图所示。 
-
-![审核和威胁检测](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
-
-若要启用审核，请在“审核”选项下选择“启用”。  
+4. 请按照**修正步骤**然后单击**保存**。
 
 ## <a name="data-and-storage-recommendations"></a>数据和存储建议
 
 |资源类型|安全功能分数|建议|描述|
 |----|----|----|----|
-|存储帐户|20|应启用安全传输到存储帐户|安全传输选项会强制存储帐户仅接受来自安全连接 (HTTPS) 的请求。 使用 HTTPS 可确保服务器和服务之间的身份验证并保护传输中的数据免受中间人攻击、窃听攻击和会话劫持等网络层攻击。|
+|存储帐户|20|应启用安全传输到存储帐户|安全传输选项会强制存储帐户仅接受来自安全连接 (HTTPS) 的请求。 HTTPS 可确保在服务器和服务之间的身份验证和窃听，和会话劫持人-中-干预，例如网络层攻击保护传输中的数据。|
 |Redis|20|应启用仅安全连接到你的 Redis 缓存|仅启用通过 SSL 来与 Azure Redis 缓存建立连接。 使用安全连接可确保服务器和服务之间的身份验证并保护传输中的数据免受中间人攻击、窃听攻击和会话劫持等网络层攻击。|
 |SQL|15|应启用对 SQL 数据库透明数据加密|启用透明数据加密以保护静态数据并满足合规性要求。|
 |SQL|15|应启用 SQL server 审核|启用 Azure SQL 服务器的审核。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。）|
 |Data Lake Analytics|5|应启用 Data Lake Analytics 中的诊断日志|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。 |
 |Data Lake Store|5|应启用了 Azure Data Lake Store 中的诊断日志|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。 |
-|SQL|30|在 SQL 数据库上的漏洞应采取修正措施|SQL 漏洞评估会扫描数据库中的安全漏洞，并显示与最佳实践之间的任何偏差，如配置错误、权限过多和敏感数据未受保护。 解决发现的漏洞可以极大地改善数据库安全态势。|
+|SQL|30|在 SQL 数据库上的漏洞应采取修正措施|SQL 漏洞评估扫描数据库中的安全漏洞，并公开任何偏离最佳做法，例如配置错误、 超越权限和未受保护的敏感数据。 解决发现的漏洞可以极大地改善数据库安全态势。|
 |SQL|20|预配 SQL Server 的 Azure AD 管理员|预配 SQL Server 的 Azure AD 管理员以启用 Azure AD 身份验证。 使用 Azure AD 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。|
 |存储帐户|15|使用防火墙和虚拟网络配置的存储帐户的访问权限应被限制|在存储帐户防火墙设置中审核无限制的网络访问权限。 应该配置网络规则，以便只有来自许可网络的应用程序才能访问存储帐户。 若要允许来自特定 Internet 或本地客户端连接，可以授予对来自特定 Azure 虚拟网络的流量或公共 Internet IP 地址范围访问。|
 |存储帐户|第|存储帐户应迁移到新的 Azure 资源管理器资源|使用新的 Azure 资源管理器 v2 为存储帐户提供的安全增强功能，例如： 更强的访问控制 (RBAC)、 更好地审核、 基于资源管理器的部署和管理，访问管理的标识，访问密钥保管库的权限机密和 Azure 基于 AD 的身份验证和对标记的支持和简化安全管理的资源组。|
 
 ## <a name="see-also"></a>另请参阅
-若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下内容：
+若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下主题：
 
 * [保护 Azure 安全中心中的虚拟机](security-center-virtual-machine-recommendations.md)
 * [保护 Azure 安全中心中的应用程序](security-center-application-recommendations.md)
 * [保护 Azure 安全中心中的网络](security-center-network-recommendations.md)
 
-若要了解有关安全中心的详细信息，请参阅以下文章：
+若要了解有关安全中心的详细信息，请参阅以下主题：
 
 * [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。

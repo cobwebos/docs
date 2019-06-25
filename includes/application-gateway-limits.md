@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 592e1973344b231693077f8286a41dfd67a8d188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 9a8d925e5d72500817028b913a80255a4339255c
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66689103"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67148398"
 ---
 | Resource | 默认值/最大限制 | 注意 |
 | --- | --- | --- |
@@ -23,7 +23,7 @@ ms.locfileid: "66689103"
 | 后端 HTTP 设置 |100<sup>1</sup> | |
 | 每个网关的实例数 |32 | |
 | SSL 证书数 |100<sup>1</sup> |每个 HTTP 侦听器 1 个 |
-| SSL 证书的最大大小 |V1 SKU-10 KB<br>V2 SKU-25 KB| |
+| SSL 证书的最大大小 |V1 SKU-10 KB<br>V2 SKU-16 KB| |
 | 身份验证证书 |100 | |
 | 受信任的根证书 |100 | |
 | 请求超时最小值 |1 秒 | |

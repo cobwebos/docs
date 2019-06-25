@@ -9,12 +9,12 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: f0ef421d7954aa33cf69e7de2f4902a86ed8b580
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 21ccd7b2919714610dbd51c62701c4bb32d330d6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306404"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808829"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>设置 Azure Red Hat OpenShift 开发环境
 
@@ -22,7 +22,7 @@ ms.locfileid: "66306404"
 
 * 购买 Azure 虚拟机保留实例。
 * 安装版本 2.0.65 （或更高版本） 的 Azure CLI （或使用 Azure Cloud Shell）。
-* 注册`openshiftmanagedcluster`功能和关联的资源提供程序。
+* 注册`AROGA`功能和关联的资源提供程序。
 * 创建一个 Azure Active Directory (Azure AD) 租户。
 * 创建 Azure AD 应用程序对象。
 * 创建 Azure AD 用户。
@@ -55,7 +55,7 @@ az --version
 
 ## <a name="register-providers-and-features"></a>注册提供程序和功能
 
-`Microsoft.ContainerService openshiftmanagedcluster`功能， `Microsoft.Solutions`，和`Microsoft.Network`必须到你的订阅部署第一个 Azure Red Hat OpenShift 群集之前手动注册提供程序。
+`Microsoft.ContainerService AROGA`功能， `Microsoft.Solutions`， `Microsoft.Compute`， `Microsoft.Storage`，`Microsoft.KeyVault`和`Microsoft.Network`必须到你的订阅部署第一个 Azure Red Hat OpenShift 群集之前手动注册提供程序。
 
 若要手动注册这些提供程序和功能，请在 Azure 门户中使用以下说明从 Bash shell 中，如果你已安装 CLI，或从 Azure Cloud Shell (Bash) 会话：
 
@@ -65,10 +65,10 @@ az --version
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-1. 注册 Microsoft.ContainerService openshiftmanagedcluster 功能：
+1. 注册 Microsoft.ContainerService AROGA 功能：
 
     ```bash
-    az feature register --namespace Microsoft.ContainerService -n openshiftmanagedcluster
+    az feature register --namespace Microsoft.ContainerService -n AROGA
     ```
 
 1. 注册的 Microsoft.Storage 提供程序：

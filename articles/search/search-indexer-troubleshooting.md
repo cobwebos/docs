@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 256a38320c9b3ca826ee9c12ac0a437957f988e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 4ed18b5f83bdb052f2db6847a320c26a8e49f83e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539294"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147548"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>排查 Azure 搜索中的常见索引器问题
 
@@ -35,14 +35,11 @@ Azure 存储提供可配置的防火墙。 默认情况下，防火墙处于禁�
 
 防火墙启用后，没有具体的错误消息。 通常情况下，防火墙错误类似于：`The remote server returned an error: (403) Forbidden`。
 
-可以在[门户](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)中验证防火墙是否已启用。 如果防火墙已启用，则可以通过两个选项来解决此问题：
+可以在[门户](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)中验证防火墙是否已启用。 唯一受支持的解决方法是通过选择允许从访问禁用防火墙[所有网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)。
 
-1. 禁用防火墙，方法是：选择允许从[“所有网络”](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)进行访问
-1. 针对搜索服务的 IP 地址[添加一个例外](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules)。 若要查找该 IP 地址，请使用以下命令：
+如果你的索引器不具有附加的技能组合，你_可能_尝试[添加一个例外，](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules)搜索服务的 IP 地址。 但是，这种情况下不支持，并且不能保证工作。
 
-`nslookup <service name>.search.windows.net`
-
-例外不适用于[认知搜索](cognitive-search-concept-intro.md)。 唯一解决方法是禁用防火墙。
+可以通过 ping 其 FQDN 来了解你的搜索服务的 IP 地址 (`<your-search-service-name>.search.windows.net`)。
 
 ### <a name="cosmos-db"></a>Cosmos DB
 

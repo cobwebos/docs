@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 634d1aedfaf868766e3c1bf97373b9c310885835
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65198388"
 ---
 # <a name="security-agent-authentication-methods"></a>安全代理身份验证方法 
@@ -64,7 +64,7 @@ AzureIoTSecurity 代理来执行身份验证这两种方法：
 |参数|描述|选项|
 |---------|---------------|---------------|
 |**identity**|身份验证模式| **模块**或**设备**|
-|type|身份验证类型|**SymmetricKey**或**SelfSignedCertificate**|
+|**type**|身份验证类型|**SymmetricKey**或**SelfSignedCertificate**|
 |**filePath**|包含的证书或对称密钥的文件的绝对完整路径| |
 |**gatewayHostname**|IoT 中心的 FQDN|示例：ContosoIotHub.azure-devices.net|
 |**deviceId**|设备 ID|示例：MyDevice1|

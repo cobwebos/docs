@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 3b170a214c7c3c464f7ea645fa1dc42cce0a0580
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951710"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施 
@@ -41,10 +41,10 @@ ms.locfileid: "65951710"
 
 ## <a id="standard-authn-web-app"></a>考虑使用标准身份验证机制向 Web 应用程序进行身份验证
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -52,10 +52,10 @@ ms.locfileid: "65951710"
 
 ## <a id="handle-failed-authn"></a>应用程序必须安全处理失败的身份验证方案
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -63,10 +63,10 @@ ms.locfileid: "65951710"
 
 ## <a id="step-up-adaptive-authn"></a>启用升级或自适应身份验证
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -74,10 +74,10 @@ ms.locfileid: "65951710"
 
 ## <a id="admin-interface-lockdown"></a>确保适当锁定管理界面
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -85,10 +85,10 @@ ms.locfileid: "65951710"
 
 ## <a id="forgot-pword-fxn"></a>安全实施忘记密码功能
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -96,10 +96,10 @@ ms.locfileid: "65951710"
 
 ## <a id="pword-account-policy"></a>确保实施密码和帐户策略
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -107,10 +107,10 @@ ms.locfileid: "65951710"
 
 ## <a id="controls-username-enum"></a>实施控制来防止用户名枚举
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -118,10 +118,10 @@ ms.locfileid: "65951710"
 
 ## <a id="win-authn-sql"></a>尽可能使用 Windows 身份验证连接到 SQL Server
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | OnPrem |
 | **属性**              | SQL 版本 - 所有 |
 | **参考**              | [SQL Server - 选择身份验证模式](https://msdn.microsoft.com/library/ms144284.aspx) |
@@ -129,10 +129,10 @@ ms.locfileid: "65951710"
 
 ## <a id="aad-authn-sql"></a>尽可能使用 Azure Active Directory 身份验证连接到 SQL 数据库
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | SQL Azure |
 | **属性**              | SQL 版本 - V12 |
 | **参考**              | [使用 Azure Active Directory 身份验证连接到 SQL 数据库](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
@@ -140,10 +140,10 @@ ms.locfileid: "65951710"
 
 ## <a id="authn-account-pword"></a>使用 SQL 身份验证模式时，确保对 SQL Server 实施帐户和密码策略
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [SQL Server 密码策略](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
@@ -151,10 +151,10 @@ ms.locfileid: "65951710"
 
 ## <a id="autn-contained-db"></a>不要在包含的数据库中使用 SQL 身份验证
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | OnPrem、SQL Azure |
 | **属性**              | SQL 版本 - MSSQL2012，SQL 版本 - V12 |
 | **参考**              | [包含的数据库的安全最佳做法](https://msdn.microsoft.com/library/ff929055.aspx) |
@@ -162,10 +162,10 @@ ms.locfileid: "65951710"
 
 ## <a id="authn-sas-tokens"></a>结合 SaS 令牌使用每个设备的身份验证凭据
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 事件中心 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Azure 事件中心 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [事件中心身份验证和安全模型概述](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -173,9 +173,9 @@ ms.locfileid: "65951710"
 
 ## <a id="multi-factor-azure-admin"></a>为 Azure 管理员启用 Azure 多重身份验证
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 信任边界 | 
+| 组件                | Azure 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -184,9 +184,9 @@ ms.locfileid: "65951710"
 
 ## <a id="anon-access-cluster"></a>限制对 Service Fabric 群集的匿名访问
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Service Fabric 信任边界 | 
+| 组件                | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure  |
@@ -195,9 +195,9 @@ ms.locfileid: "65951710"
 
 ## <a id="fabric-cn-nn"></a>确保 Service Fabric 的客户端到节点证书不同于节点到节点证书
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Service Fabric 信任边界 | 
+| 组件                | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure，环境 - 独立 |
@@ -206,9 +206,9 @@ ms.locfileid: "65951710"
 
 ## <a id="aad-client-fabric"></a>使用 AAD 向 Service Fabric 群集进行客户端身份验证
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Service Fabric 信任边界 | 
+| 组件                | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure |
@@ -217,9 +217,9 @@ ms.locfileid: "65951710"
 
 ## <a id="fabric-cert-ca"></a>确保从批准的证书颁发机构 (CA) 获取 Service Fabric 证书
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Service Fabric 信任边界 | 
+| 组件                | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure |
@@ -228,10 +228,10 @@ ms.locfileid: "65951710"
 
 ## <a id="standard-authn-id"></a>使用标识服务器支持的标准身份验证方案
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 标识服务器 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | 标识服务器 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [IdentityServer3 - 大图](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
@@ -239,9 +239,9 @@ ms.locfileid: "65951710"
 
 ## <a id="override-token"></a>使用可缩放的替代方案覆盖默认的标识服务器令牌缓存
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 标识服务器 | 
+| 组件                | 标识服务器 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -250,9 +250,9 @@ ms.locfileid: "65951710"
 
 ## <a id="binaries-signed"></a>确保部署的应用程序的二进制文件经过数字签名
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 计算机信任边界 | 
+| 组件                | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -261,10 +261,10 @@ ms.locfileid: "65951710"
 
 ## <a id="msmq-queues"></a>连接到 WCF 中的 MSMQ 队列时启用身份验证
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 不适用 |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
@@ -301,10 +301,10 @@ ms.locfileid: "65951710"
 
 ## <a id="message-none"></a>WCF - 不要将消息 clientCredentialType 设置为 none
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 客户端凭据类型 - None |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
@@ -317,10 +317,10 @@ ms.locfileid: "65951710"
 
 ## <a id="transport-none"></a>WCF - 不要将传输 clientCredentialType 设置为 none
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、.NET Framework 3 |
 | **属性**              | 客户端凭据类型 - None |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
@@ -333,10 +333,10 @@ ms.locfileid: "65951710"
 
 ## <a id="authn-secure-api"></a>确保使用标准身份验证技术保护 Web API
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [ASP.NET Web API 中的身份验证和授权](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api)、[使用 ASP.NET Web API 的外部身份验证服务 (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
@@ -344,10 +344,10 @@ ms.locfileid: "65951710"
 
 ## <a id="authn-aad"></a>使用 Azure Active Directory 支持的标准身份验证方案
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure AD | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Azure AD | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [Azure AD 的身份验证方案](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)、[Azure Active Directory 代码示例](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/)、[Azure Active Directory 开发人员指南](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
@@ -355,10 +355,10 @@ ms.locfileid: "65951710"
 
 ## <a id="adal-scalable"></a>使用可缩放的替代方案覆盖默认的 ADAL 令牌缓存
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure AD | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Azure AD | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [使用 Azure Active Directory 对 Web 应用程序执行新式身份验证](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/)、[使用 Redis 作为 ADAL 令牌缓存](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
@@ -366,10 +366,10 @@ ms.locfileid: "65951710"
 
 ## <a id="tokenreplaycache-adal"></a>确保使用 TokenReplayCache 防止 ADAL 身份验证令牌重放
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure AD | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Azure AD | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [使用 Azure Active Directory 对 Web 应用程序执行新式身份验证](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
@@ -427,10 +427,10 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 ## <a id="adal-oauth2"></a>使用 ADAL 库来管理从 OAuth2 客户端发往 AAD（或本地 AD）的令牌请求
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure AD | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Azure AD | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
@@ -438,10 +438,10 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 ## <a id="authn-devices-field"></a>对连接到现场网关的设备进行身份验证
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 现场网关 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | IoT 现场网关 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -449,10 +449,10 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 ## <a id="authn-devices-cloud"></a>确保对连接到云网关的设备进行身份验证
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 云网关 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | IoT 云网关 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、C#、Node.JS,  |
 | **属性**              | 不适用，网关选项 - Azure IoT 中心 |
 | **参考**              | 不适用，[使用.NET 的 Azure IoT 中心](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)，[开始使用 IoT 中心和 Node JS](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)，[使用 SAS 和证书保护 IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)， [Git 存储库](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
@@ -549,10 +549,10 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="authn-cred"></a>使用每个设备的身份验证凭据
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 云网关  | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | IoT 云网关  | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |
 | **参考**              | [Azure IoT 中心安全令牌](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
@@ -560,10 +560,10 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="req-containers-anon"></a>确保只对所需的容器和 Blob 授予匿名读取访问权限
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Azure 存储 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
 | **参考**              | [管理对容器和 Blob 的匿名读取访问](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/)、[共享访问签名，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
@@ -571,10 +571,10 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="limited-access-sas"></a>使用 SAS 或 SAP 授予对 Azure 存储中的对象的受限访问权限
 
-| 职务                   | 详细信息      |
+| 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
-| **SDL 阶段**               | 内部版本 |  
+| 组件                | Azure 存储 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用 |
 | **参考**              | [共享访问签名，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)，[共享访问签名，第 2 部分：通过 Blob 存储创建和使用 SAS](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)，[如何使用共享访问签名和存储访问策略来委派对帐户中对象的访问权限](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |

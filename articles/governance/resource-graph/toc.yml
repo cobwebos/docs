@@ -33,6 +33,9 @@
     - name: 处理大型数据集
       displayName: 'page, first, skip, token'
       href: ./concepts/work-with-data.md
+    - name: 针对受限制请求的指南
+      displayName: 'pagination, batching, throttling, parallel'
+      href: ./concepts/guidance-for-throttled-requests.md
 - name: 操作指南
   items:
     - name: 获取资源更改

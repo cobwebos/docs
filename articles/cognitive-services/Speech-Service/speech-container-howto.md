@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 93ae5dd00a7be929f7aa4ac8c35a30b856f0b3ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0fe30bc6bdd1bba03df349305d8846e78063bd26
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072469"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342213"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装并运行语音服务容器
 
@@ -249,13 +249,15 @@ var config = SpeechConfig.FromEndpoint(
 请从使用此 Azure 云初始化调用
 
 ```python
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+speech_config = speechsdk.SpeechConfig(
+    subscription=speech_key, region=service_region)
 ```
 
 更改为使用容器终结点发出此调用：
 
 ```python
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1")
+speech_config = speechsdk.SpeechConfig(
+    subscription=speech_key, endpoint="ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1")
 ```
 
 ### <a name="text-to-speech"></a>文本转语音

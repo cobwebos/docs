@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb4cf119195b3be23dc8f2cb98bd019769583473
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66123885"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341839"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>预览版：迁移到 LUIS 应用的 API 版本 3.x
 
@@ -54,11 +54,14 @@ V3 响应对象更改包括[预生成实体](luis-reference-prebuilt-entities.md
 
 V3 API 包含不同的查询字符串参数。
 
-|参数名称|Type|Version|目的|
-|--|--|--|--|
-|`query`|字符串|仅 V3|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
-|`show-all-intents`|boolean|仅 V3|在 **prediction.intents** 对象中返回包含相应评分的所有意向。 意向将在父 `intents` 对象中作为对象返回。 这样，便可以通过编程方式进行访问，而无需在数组中查找意向：`prediction.intents.give`。 在 V2 中，这些意向在数组中返回。 |
-|`verbose`|boolean|V2 和 V3|**在 V2 中**，如果设置为 true，则返回所有预测意向。 如果需要所有预测的意向，请使用 V3 参数 `show-all-intents`。<br><br>**在 V3 中**，此参数仅提供实体预测的实体元数据详细信息。  |
+|参数名称|Type|Version|默认|目的|
+|--|--|--|--|--|
+|`log`|boolean|V2 和 V3|false|存储日志文件中的查询。| 
+|`query`|string|仅 V3|没有默认值-它是必需的 GET 请求中|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
+|`show-all-intents`|boolean|仅 V3|false|在 **prediction.intents** 对象中返回包含相应评分的所有意向。 意向将在父 `intents` 对象中作为对象返回。 这样，便可以通过编程方式进行访问，而无需在数组中查找意向：`prediction.intents.give`。 在 V2 中，这些意向在数组中返回。 |
+|`verbose`|boolean|V2 和 V3|false|**在 V2 中**，如果设置为 true，则返回所有预测意向。 如果需要所有预测的意向，请使用 V3 参数 `show-all-intents`。<br><br>**在 V3 中**，此参数仅提供实体预测的实体元数据详细信息。  |
+
+
 
 <!--
 |`multiple-segments`|boolean|V3 only|Break utterance into segments and predict each segment for intents and entities.|
@@ -71,12 +74,23 @@ V3 API 包含不同的查询字符串参数。
 {
     "query":"your utterance here",
     "options":{
-        "timezoneOffset": "-8:00"
+        "datetimeReference": "2019-05-05T12:00:00",
+        "overridePredictions": true
     },
     "externalEntities":[],
     "dynamicLists":[]
 }
 ```
+
+|属性|Type|Version|默认|目的|
+|--|--|--|--|--|
+|`dynamicLists`|数组|仅 V3|非必需。|[动态列表](#dynamic-lists-passed-in-at-prediction-time)使你可以扩展现有的训练和已发布列表实体，已在 LUIS 应用。|
+|`externalEntities`|数组|仅 V3|非必需。|[外部实体](#external-entities-passed-in-at-prediction-time)使 LUIS 应用程序能够识别并在运行时，可用作针对现有实体的功能标记实体。 |
+|`options.datetimeReference`|string|仅 V3|无默认值|用于确定[datetimeV2 偏移量](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。|
+|`options.overridePredictions`|boolean|仅 V3|false|指定如果用户的[（使用与现有实体的相同名称） 的外部实体](#override-existing-model-predictions)使用或模型中的现有实体用于进行预测。 |
+|`query`|string|仅 V3|必需。|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
+
+
 
 ## <a name="response-changes"></a>响应更改
 
@@ -275,6 +289,67 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 预测响应包含该外部实体以及其他所有预测实体，因为该实体已在请求中定义。  
 
+### <a name="override-existing-model-predictions"></a>重写现有模型预测
+
+`overridePredictions`选项属性指定是否用户将发送具有相同名称的预测实体具有重叠的外部实体，LUIS 选择传入的实体或现有模型中的实体。 
+
+例如，请考虑查询`today I'm free`。 检测到 LUIS`today`作为 datetimeV2 与以下响应：
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+如果用户发送的外部实体：
+
+```JSON
+{
+    "entityName": "datetimeV2",
+    "startIndex": 0,
+    "entityLength": 5,
+    "resolution": {
+        "date": "2019-06-21"
+    }
+}
+```
+
+如果`overridePredictions`设置为`false`，LUIS 返回响应，因为如果未发送的外部实体。 
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+如果`overridePredictions`设置为`true`，LUIS 返回响应包括：
+
+```JSON
+"datetimeV2": [
+    {
+        "date": "2019-06-21"
+    }
+]
+```
+
+
+
 #### <a name="resolution"></a>解决方法
 
 可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。  
@@ -287,6 +362,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 * {"text": "value"}
 * 12345 
 * ["a", "b", "c"]
+
 
 
 ## <a name="dynamic-lists-passed-in-at-prediction-time"></a>预测时传入的动态列表

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 41cf5f8bcc69e181350a63d215fb0d78d43dcfdf
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870500"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272814"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop-preview"></a>在 Windows 虚拟桌面预览中的委托的访问
 
@@ -42,11 +42,11 @@ Windows 虚拟机委派访问支持的角色分配每个元素的以下值：
 
 ## <a name="powershell-cmdlets-for-role-assignments"></a>角色分配的 PowerShell cmdlet
 
-可以运行以下 cmdlet 以创建、 查看和编辑角色分配：
+可以运行以下 cmdlet 以创建、 查看和删除角色分配：
 
 * **Get RdsRoleAssignment**显示的角色分配列表。
 * **新 RdsRoleAssignment**创建新的角色分配。
-* **集 RdsRoleAssignment**编辑角色分配。
+* **删除 RdsRoleAssignment**删除角色分配。
 
 ### <a name="accepted-parameters"></a>已接受的参数
 

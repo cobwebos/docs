@@ -11,19 +11,19 @@
       href: apache-kafka-get-started.md
     - name: 创建 Apache Kafka 群集 - PowerShell
       href: apache-kafka-quickstart-powershell.md
-    - name: 创建 Apache Kafka 群集 - 资源管理器模板
+    - name: 创建 Apache Kafka 群集 - 模板
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-kafka-quickstart-resource-manager-template.md
 - name: 教程
   items:
-    - name: 使用 Apache Spark 结构化流
-      href: ../hdinsight-apache-kafka-spark-structured-streaming.md
-    - name: 使用 Apache Storm 从 Apache Kafka 写入/读取
-      href: ../hdinsight-apache-storm-with-kafka.md
     - name: 使用 Apache Kafka 生成者和使用者 API
       href: apache-kafka-producer-consumer-api.md
     - name: 使用 Apache Kafka 流 API 开发应用
       href: apache-kafka-streams-api.md
+    - name: 使用 Apache Spark 结构化流
+      href: ../hdinsight-apache-kafka-spark-structured-streaming.md
+    - name: 使用 Apache Storm 从 Apache Kafka 写入/读取
+      href: ../hdinsight-apache-storm-with-kafka.md
 - name: 概念
   items:
     - name: 容量计划

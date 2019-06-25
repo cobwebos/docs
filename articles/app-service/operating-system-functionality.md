@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8087afc541dba41d23eacd2dd0f50e8f0180af1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835492"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808404"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure 应用服务上的操作系统功能
 本文介绍了可供在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)上运行的所有 Windows 应用使用的常见基准操作系统功能。 这些功能包括文件、网络和注册表访问以及诊断日志和事件。 
@@ -32,7 +32,7 @@ ms.locfileid: "60835492"
 <a id="tiers"></a>
 
 ## <a name="app-service-plan-tiers"></a>应用服务计划层
-应用服务在多租户托管环境中运行客户应用。 部署在“免费”和“共享”层中的应用在共享虚拟机上的辅助进程中运行，而部署在“标准”和“高级”层中的应用在专用于与单个客户关联的应用的虚拟机上运行。
+应用服务在多租户托管环境中运行客户应用。 部署在“免费”和“共享”层中的应用在共享虚拟机上的辅助进程中运行，而部署在“标准”和“高级”层中的应用在专用于与单个客户关联的应用的虚拟机上运行。    
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -65,7 +65,7 @@ ms.locfileid: "60835492"
 
 - 应用可能会引发错误，指示磁盘上没有足够的空间。
 - 浏览到 Kudu 控制台时，可能会看到磁盘错误。
-- 从 VSTS 或 Visual Studio 进行部署可能会失败并显示 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`。
+- 从 Azure DevOps 或 Visual Studio 的部署可能会因`ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`。
 - 你的应用可能会出现性能下降。
 
 <a id="NetworkDrives"></a>
@@ -75,7 +75,7 @@ ms.locfileid: "60835492"
 
 在应用服务内，每个数据中心都创建了许多 UNC 共享。 在每个数据中心针对所有客户的某个百分比的用户内容将分配给各 UNC 共享。 此外，单个客户的订阅的所有文件内容将始终置于相同的 UNC 共享中。 
 
-由于 Azure 服务的工作方式，负责承载 UNC 共享的特定虚拟机将随着时间而更改。 应确保由不同虚拟机装入 UNC 共享，因为在正常 Azure 操作过程中它们会启动和关闭。 因此，应用应该永远不会作出这样的硬编码的假定，即 UNC 文件路径中的计算机信息会在一段时间后保持不变。 相反，它们应使用应用服务提供的方便的 faux 绝对路径 D:\home\site。 此 faux 绝对路径为引用自己的网站提供可移植的应用到用户未知方法。 通过使用 D:\home\site，可以在应用之间传输共享文件，而不必为每次传输都配置新的绝对路径。
+由于 Azure 服务的工作方式，负责承载 UNC 共享的特定虚拟机将随着时间而更改。 应确保由不同虚拟机装入 UNC 共享，因为在正常 Azure 操作过程中它们会启动和关闭。 因此，应用应该永远不会作出这样的硬编码的假定，即 UNC 文件路径中的计算机信息会在一段时间后保持不变。 相反，它们应使用应用服务提供的方便的 faux 绝对路径 D:\home\site   。 此 faux 绝对路径为引用自己的网站提供可移植的应用到用户未知方法。 通过使用 D:\home\site，可以在应用之间传输共享文件，而不必为每次传输都配置新的绝对路径  。
 
 <a id="TypesOfFileAccess"></a>
 

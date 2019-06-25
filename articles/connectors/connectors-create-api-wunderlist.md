@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105660"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Wunderlist
@@ -56,12 +56,12 @@ ms.locfileid: "62105660"
 
    * 对于现有逻辑应用： 
    
-     * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
+     * 在要添加操作的最后一个步骤下，选择“新建步骤”。  
 
        -或-
 
      * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-     选择出现的加号 (**+**)，然后选择“添加操作”。
+     选择出现的加号 ( **+** )，然后选择“添加操作”。 
      
        在搜索框中，输入“wunderlist”作为筛选器。 
        在操作列表下，选择所需的操作。

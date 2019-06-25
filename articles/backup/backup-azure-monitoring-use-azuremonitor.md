@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2d7c158b32c15fb8be153511136eafb73147afa6
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 7c53d8fe0ee5bbfdbe180aa4d18d8c7b7fab29c2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734859"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295298"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>大规模使用 Azure Monitor 监视
 
@@ -29,7 +29,7 @@ ms.locfileid: "66734859"
 ## <a name="using-log-analytics-workspace"></a>使用 Log Analytics 工作区
 
 > [!NOTE]
-> 从 Azure VM 备份，MAB 代理，System Center DPM (SC DPM)，在 Azure Vm 中 SQL 备份的数据是被抽取到 Log Analytics 工作区通过诊断设置。 支持 Azure 文件共享备份，Microsoft Azure 备份服务器 (MABS) 即将推出。
+> 从 Azure VM 备份、 MAB 代理、 System Center DPM (SC DPM) 中，在 Azure Vm 中的 SQL 备份和 Azure 文件共享备份的数据是被抽取到 Log Analytics 工作区通过诊断设置。 支持的 Microsoft Azure 备份服务器 (MABS) 即将推出。
 
 我们利用两个 Azure 服务的功能**诊断设置**（若要将数据从多个 Azure 资源管理器资源发送到另一个资源） 和**Log Analytics** (LA-生成您可以在其中定义使用操作组的其他通知通道的自定义警报） 用于监视在规模较大。 有关如何使用 LA 大规模监视 Azure 备份以下各节详细信息。
 
@@ -47,6 +47,9 @@ ms.locfileid: "66734859"
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>解决方案部署到 Log Analytics 工作区
 
 当数据在 LA 工作区中后,[部署 GitHub 模板](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/)到 LA 来可视化数据。 请确保你提供相同的资源组、 工作区名称和工作区的位置正确标识工作区并在其上安装此模板。
+
+> [!NOTE]
+> 在其 LA 工作区中不能具有警报或备份/还原作业的用户可能会在门户上看到的错误代码"BadArgumentError"。 用户可以忽略此错误，继续使用该解决方案。 一旦相关类型的数据开始流动到工作区，可视化效果将反映的相同对象和用户看不到此错误了。
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>查看 Azure 备份数据使用日志分析 (LA)
 
@@ -257,7 +260,7 @@ on BackupItemUniqueId_s
 尽管可以使用通知通过活动日志，但***Azure 备份服务强烈建议用于在规模和不活动日志监视由于以下原因 LA***。
 
 - **有限的情况：** 仅适用于 Azure VM 备份，并且应重复的每个 RS 保管库。
-- **定义适合：** 计划的备份活动不适合使用活动日志的最新定义，并符合[诊断日志](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-are-azure-monitor-diagnostic-logs)。 意外的影响，如下面所述更改通过活动日志通道发送的数据时此销售线索。
+- **定义适合：** 计划的备份活动不适合使用活动日志的最新定义，并符合[诊断日志](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs)。 意外的影响，如下面所述更改通过活动日志通道发送的数据时此销售线索。
 - **与活动日志通道相关的问题：** 我们已经转移到新的模型，即从恢复服务保管库上的 Azure 备份中抽取活动日志。 遗憾的是，在移动影响 Azure 主权云中的活动日志的生成。 如果 Azure 主权云用户创建或配置任何从通过 Azure Monitor 活动日志警报，它们不会触发。 此外，在所有 Azure 公共区域中，如果用户正在将恢复服务活动日志收集到[此处](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs)提到的 Log Analytics 工作区中，那么这些日志也不会显示。
 
 因此，强烈建议用于日志分析工作区进行监视和大规模警报针对所有 Azure 备份保护工作负荷。

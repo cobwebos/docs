@@ -16,12 +16,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce51f4df50de50cef06bba699ca7c6f76bc5d166
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73c1717249abac30847f96073ee6daf7d98112d7
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833373"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190339"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>编辑和管理 Azure AD 授权管理 （预览版） 中的现有访问包
 
@@ -194,7 +194,7 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
     ![访问包的编辑策略](./media/entitlement-management-access-package-edit/policy-edit.png)
 
-1. 完成后，单击**更新**。
+1. 完成后，单击“更新”。 
 
 ## <a name="directly-assign-a-user"></a>将用户直接分配
 
@@ -348,4 +348,5 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 ## <a name="next-steps"></a>后续步骤
 
+- [添加目录所有者或访问包管理器](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [请求过程和电子邮件通知](entitlement-management-process.md)

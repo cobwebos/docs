@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
 ms.openlocfilehash: 459de569916af14b0efea0ff08b92e5c93ed2369
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64718920"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>如何监视群集的 Ambari 和 Azure Monitor 日志可用性
@@ -83,7 +83,7 @@ Ambari 的完整列表警报可以找到群集的可用性监视的帮助[此处
 
 ![Ambari 管理通知操作](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-将打开一个对话框用于管理警报通知。 单击**+** 底部的对话框和必填字段，Ambari 提供电子邮件服务器从其发送电子邮件的详细信息，请填写。
+将打开一个对话框用于管理警报通知。 单击 **+** 底部的对话框和必填字段，Ambari 提供电子邮件服务器从其发送电子邮件的详细信息，请填写。
 
 > [!TIP]
 > 设置 Ambari 电子邮件通知可以是管理多个 HDInsight 群集时在一个位置接收警报的好方法。
@@ -168,7 +168,7 @@ Azure 监视器将记录生成的多个资源，例如 HDInsight 群集，以先
 > [!NOTE]
 > 有其他几个操作，除了电子邮件/短信/推送/语音，如 Azure 函数、 逻辑应用、 Webhook、 ITSM 和自动化 Runbook 可触发警报。 [了解更多信息。](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#action-specific-information)
 
-这将打开**电子邮件/短信/推送/语音**边栏选项卡。 选择**名称**收件人**检查****电子邮件**框，然后键入你希望将警报发送到的电子邮件地址。 单击**确定**中**电子邮件/短信/推送/语音**边栏选项卡，然后在**添加操作组**边栏选项卡中完成配置操作组。
+这将打开**电子邮件/短信/推送/语音**边栏选项卡。 选择**名称**收件人**检查** **电子邮件**框，然后键入你希望将警报发送到的电子邮件地址。 单击**确定**中**电子邮件/短信/推送/语音**边栏选项卡，然后在**添加操作组**边栏选项卡中完成配置操作组。
 
 ![警报规则添加操作组](media/hdinsight-cluster-availability/portal-add-action-group.png)
 

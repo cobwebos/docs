@@ -10,10 +10,10 @@ ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1cbf91af4e91f41fff30a7edfa869d07a21b881e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61226883"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
@@ -100,9 +100,9 @@ Workflow Test-Runbook
 }
  ```
 
-若要在图形或图形 PowerShell 工作流 Runbook 中声明输出类型，可选择“输入和输出”菜单选项，并键入输出类型的名称。 建议使用完整的 .NET 类名，以便从父 runbook 引用该类时可轻松识别它。 这会向 Runbook 中的数据总线公开该类的所有属性，并在将其用于条件逻辑、日志记录和作为 Runbook 中其他活动的值引用时提供很大灵活性。<br> ![Runbook 输入和输出选项](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
+若要在图形或图形 PowerShell 工作流 Runbook 中声明输出类型，可选择“输入和输出”菜单选项，并键入输出类型的名称  。 建议使用完整的 .NET 类名，以便从父 runbook 引用该类时可轻松识别它。 这会向 Runbook 中的数据总线公开该类的所有属性，并在将其用于条件逻辑、日志记录和作为 Runbook 中其他活动的值引用时提供很大灵活性。<br> ![Runbook 输入和输出选项](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
-以下示例使用两个图形 Runbook 来演示此功能。 如果应用模块式 Runbook 设计模型，则有一个 Runbook，它作为身份验证 Runbook 模板来管理使用运行方式帐户通过 Azure 进行的身份验证。 在此情况下，通常执行核心逻辑以自动实施给定方案的第二个 Runbook 将执行该身份验证 Runbook 模板，并在“测试”输出窗格中显示结果。 在正常情况下，会使用此 Runbook 针对利用子 Runbook 输出的资源执行某些操作。
+以下示例使用两个图形 Runbook 来演示此功能。 如果应用模块式 Runbook 设计模型，则有一个 Runbook，它作为身份验证 Runbook 模板  来管理使用运行方式帐户通过 Azure 进行的身份验证。 在此情况下，通常执行核心逻辑以自动实施给定方案的第二个 Runbook 将执行该身份验证 Runbook 模板  ，并在“测试”  输出窗格中显示结果。 在正常情况下，会使用此 Runbook 针对利用子 Runbook 输出的资源执行某些操作。
 
 下面是 **AuthenticateTo-Azure** Runbook 的基本逻辑。<br> ![身份验证 Runbook 模板示例](media/automation-runbook-output-and-messages/runbook-authentication-template.png)。  
 
@@ -112,7 +112,7 @@ Workflow Test-Runbook
 
 对于本示例中名为 *Test-ChildOutputType* 的第二个 Runbook，仅需提供两项活动。<br> ![示例子输出类型 Runbook](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png) 
 
-第一个活动调用 **AuthenticateTo Azure** Runbook，第二个活动运行包含**活动输出****数据源**的 **Write-Verbose** cmdlet，并且**字段路径**的值为 **Context.Subscription.SubscriptionName**，用于指定来自 **AuthenticateTo-Azure** Runbook 的上下文输出。<br> ![Write-Verbose cmdlet 参数数据源](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)    
+第一个活动调用 **AuthenticateTo Azure** Runbook，第二个活动运行包含**活动输出** **数据源**的 **Write-Verbose** cmdlet，并且**字段路径**的值为 **Context.Subscription.SubscriptionName**，用于指定来自 **AuthenticateTo-Azure** Runbook 的上下文输出。<br> ![Write-Verbose cmdlet 参数数据源](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)    
 
 生成的输出是订阅名称。<br> ![Test-ChildOutputType Runbook 结果](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
@@ -213,10 +213,10 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 **若要启用活动级别跟踪，请执行以下步骤：**
 
 1. 在 Azure 门户中，打开自动化帐户。
-2. 在“流程自动化”下选择“Runbook”，打开 Runbook 的列表。
+2. 在“流程自动化”下选择“Runbook”，打开 Runbook 的列表。  
 3. 在“Runbook”页上，单击以从 Runbook 列表中选择图形 Runbook。
-4. 在“设置”下，单击“日志记录和跟踪”。
-5. 在“日志记录和跟踪”页的“日志详细记录”下，单击“启用”以启用详细日志记录；在“活动级别跟踪”下，根据所需的跟踪级别，将跟踪级别更改为“基本”或“详细”。<br>
+4. 在“设置”  下，单击“日志记录和跟踪”  。
+5. 在“日志记录和跟踪”页的“日志详细记录”下，单击“启用”以启用详细日志记录；在“活动级别跟踪”下，根据所需的跟踪级别，将跟踪级别更改为“基本”或“详细”    。<br>
    
    ![“图形创作日志记录和跟踪”页面](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 

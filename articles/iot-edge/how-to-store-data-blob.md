@@ -1,63 +1,58 @@
 ---
 title: 将块 Blob 存储在设备上 - Azure IoT Edge |Microsoft Docs
 description: 了解分层和生存时间功能、查看支持的 Blob 存储操作，以及连接到 Blob 存储帐户。
-author: kgremban
-manager: philmea
-ms.author: kgremban
+author: arduppal
+manager: mchad
+ms.author: arduppal
 ms.reviewer: arduppal
-ms.date: 05/21/2019
+ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 396af2dfd9fc53c080163a27e376328c1369d5e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f70ca550f1688551abb94bb30ba4f76eb3c36404
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991470"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303961"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>通过 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据
 
 IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) 存储解决方案。 IoT Edge 设备上的 blob 存储模块的行为类似于 Azure 块 blob 服务，但块 blob 存储在本地 IoT Edge 设备上。 你可以使用相同的 Azure 存储 SDK 方法或已经习惯的块 blob API 调用来访问 blob。
 
+此模块附带**deviceToCloudUpload**并**deviceAutoDelete**功能。
 > [!NOTE]
 > IoT Edge 上的 Azure Blob 存储现为[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-此模块附带**分层**和**生存时间**功能。
+观看视频，快速了解
+> [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
 
-> [!NOTE]
-> 目前，分层和生存时间功能仅在 Linux AMD64 和 Linux ARM32 中可用。
+**deviceToCloudUpload**是可配置的功能，可用于自动上传到 Azure 的间歇性的 internet 连接支持从本地 blob 存储数据。 该功能允许：
 
-**分层**是可配置的功能，可用于将本地 Blob 存储中的数据自动上传到 Azure，并提供间歇性的 Internet 连接支持。 该功能允许：
-
-- 启用/禁用分层功能
-- 选择将数据复制到 Azure 的顺序，例如，选择 NewestFirst 或 OldestFirst
+- 打开 on/off deviceToCloudUpload 功能。
+- 选择在其中将数据复制到 Azure NewestFirst 或 OldestFirst 等的顺序。
 - 指定要将数据上传到的 Azure 存储帐户。
 - 指定要上传到 Azure 的容器。 此模块允许指定源和目标容器名称。
-- 执行完整 Blob 分层（使用 `Put Blob` 操作）和块级分层（使用 `Put Block` 和 `Put Block List` 操作）。
+- 选择能够完成上的传到云存储后立即删除 blob
+- 执行完整 blob 上传 (使用`Put Blob`操作) 和块级别上传 (使用`Put Block`和`Put Block List`操作)。
 
-如果 Blob 由块构成，则此模块使用块级分层。 下面是一些常见场景：
+此模块使用块级别上传，如果你的 blob 由块构成。 下面是一些常见场景：
 
 - 应用程序需要更新以前上传的 Blob 的某些块；此模块只上传更新的块，而不上传整个 Blob。
 - 当模块正在上传 Blob 时，Internet 连接断开；连接恢复后，该模块只上传剩余的块，而不上传整个 Blob。
 
 如果在 Blob 上传期间发生意外的进程终止（例如电源故障），当模块重新联机时，将再次上传需要上传的所有块。
 
-**生存时间** (TTL) 是可配置的功能，当本地存储中的 Blob 达到指定的持续时间（以分钟进行衡量）时，此模块会使用此功能自动删除这些 Blob。 可以通过 TTL 执行以下操作：
+**deviceAutoDelete**是可配置的功能，该模块会自动删除 blob 从本地存储时指定的持续时间 （以分钟计） 过期。 该功能允许：
 
-- 启用/禁用分层功能
-- 以分钟为单位指定 TTL
+- 打开 on/off deviceAutoDelete 功能。
+- 指定以分钟为单位 (deleteAfterMinutes) 的时间之后该 blob 将被自动删除。
+- 选择要保留 blob，它将上传如果 deleteAfterMinutes 值过期时的功能。
 
 对于需要在本地存储视频、图像、金融数据、医院数据或其他任何数据，以后在本地处理数据或将其传输到云的场合，都很适合使用此模块。
 
-本文提供有关在 IoT Edge 设备上运行 blob 服务的 IoT Edge 容器中部署 Azure Blob 存储的说明。
-
-> [!NOTE]
-> "自动终止"视频中所用的"自动分层"的条款已替换为"分层"和"--生存时间"。
-
-观看视频，快速了解
-> [!VIDEO https://www.youtube.com/embed/wkprcfVidyM]
+此文章介绍了 IoT Edge 在 IoT Edge 设备运行的 blob 服务的容器上的 Azure Blob 存储与相关的概念。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -71,8 +66,7 @@ Azure IoT Edge 设备：
   | ---------------- | ----- | ----- |
   | Ubuntu Server 16.04 | AMD64 |
   | Ubuntu Server 18.04 | AMD64 |
-  | Windows 10 IoT 核心版（10 月更新） | AMD64 |
-  | Windows 10 IoT 企业版（10 月更新） | AMD64 |
+  | Windows 10 IoT Enterprise | AMD64 |
   | Windows Server 2019 | AMD64 |
   | Raspbian-stretch | ARM32 |
 
@@ -80,29 +74,31 @@ Azure IoT Edge 设备：
 
 Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 
-## <a name="tiering-and-time-to-live-properties"></a>分层和生存时间属性
+## <a name="devicetocloudupload-and-deviceautodelete-properties"></a>deviceToCloudUpload 和 deviceAutoDelete 属性
 
-使用所需属性设置分层和生存时间属性。 可以在部署期间设置这些属性，或者，以后可以通过编辑模块孪生来更改这些属性，而无需重新部署。 我们建议检查“模块孪生”中的 `reported configuration` 和 `configurationValidation`，以确保正确传播值。
+使用所需的属性来设置 deviceToCloudUploadProperties 和 deviceAutoDeleteProperties。 可以在部署期间设置这些属性，或者，以后可以通过编辑模块孪生来更改这些属性，而无需重新部署。 我们建议检查“模块孪生”中的 `reported configuration` 和 `configurationValidation`，以确保正确传播值。
 
-### <a name="tiering-properties"></a>分层属性
+### <a name="devicetoclouduploadproperties"></a>deviceToCloudUploadProperties
 
-此设置的名称为 `tieringSettings`
-
-| 字段 | 可能的值 | 说明 |
-| ----- | ----- | ---- |
-| tieringOn | true、false | 默认设置为 `false`，若要启用它，可将它设置为 `true`|
-| backlogPolicy | NewestFirst、OldestFirst | 用于选择将数据复制到 Azure 的顺序。 默认设置为 `OldestFirst`。 顺序由 Blob 的上次修改时间确定 |
-| remoteStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` 是一个连接字符串，用于指定要将数据上传到的 Azure 存储帐户。 指定 `Azure Storage Account Name`、`Azure Storage Account Key` 或 `End point suffix`。 添加相应 EndpointSuffix 的 Azure 位置将上传数据，它对于各不相同全局 Azure，政府 Azure 和 Microsoft Azure Stack。 |
-| tieredContainers | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 用于指定要上传到 Azure 的容器名称。 此模块允许指定源和目标容器名称。 如果未指定目标容器名称，系统会自动分配 `<IoTHubName>-<IotEdgeDeviceName>-<ModuleName>-<ContainerName>` 作为容器名称。 您可以创建目标容器的名称的模板字符串，请查看可能的值列。 <br>* %h -> IoT 中心名称（3 到 50 个字符）。 <br>* %d-> IoT 设备 ID (1 到 129 个字符)。 <br>* %m -> 模块名称（1 到 64 个字符）。 <br>* %c -> 源容器名称（3 到 63 个字符）。 <br><br>容器名称的最大大小为 63 个字符。尽管系统会自动分配目标容器名称，但如果容器大小超过 63 个字符，系统会将每个部分（IoTHubName、IotEdgeDeviceName、ModuleName、ContainerName）修剪为 15 个字符。 |
-
-### <a name="time-to-live-properties"></a>生存时间属性
-
-此设置的名称为 `ttlSettings`
+此设置的名称为 `deviceToCloudUploadProperties`
 
 | 字段 | 可能的值 | 说明 |
 | ----- | ----- | ---- |
-| ttlOn | true、false | 默认设置为 `false`，若要启用它，可将它设置为 `true`|
-| timeToLiveInMinutes | `<minutes>` | 以分钟为单位指定 TTL。 当本地存储中的 Blob 达到 TTL 时，模块会自动删除这些 Blob |
+| uploadOn | true、false | 默认设置为 `false`，若要启用它，可将它设置为 `true`|
+| uploadOrder | NewestFirst、OldestFirst | 用于选择将数据复制到 Azure 的顺序。 默认设置为 `OldestFirst`。 顺序由 Blob 的上次修改时间确定 |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` 是一个连接字符串，用于指定要将数据上传到的 Azure 存储帐户。 指定 `Azure Storage Account Name`、`Azure Storage Account Key` 或 `End point suffix`。 添加相应 EndpointSuffix 的 Azure 位置将上传数据，它对于各不相同全局 Azure，政府 Azure 和 Microsoft Azure Stack。 |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 用于指定要上传到 Azure 的容器名称。 此模块允许指定源和目标容器名称。 如果未指定目标容器名称，系统会自动分配 `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` 作为容器名称。 您可以创建目标容器的名称的模板字符串，请查看可能的值列。 <br>* %h -> IoT 中心名称（3 到 50 个字符）。 <br>* %d-> IoT Edge 设备 ID (1 到 129 个字符)。 <br>* %m -> 模块名称（1 到 64 个字符）。 <br>* %c -> 源容器名称（3 到 63 个字符）。 <br><br>容器名称的最大大小为 63 个字符，自动分配时目标容器的名称如果容器的大小超过 63 个字符将修剪每个部分 （IoTHubName、 IotEdgeDeviceID、 模块名称、 SourceContainerName） 为 15字符。 |
+| deleteAfterUpload | true、false | 默认设置为 `false`。 如果设置为`true`，它将自动删除数据完成上的传到云存储 |
+
+### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
+
+此设置的名称为 `deviceAutoDeleteProperties`
+
+| 字段 | 可能的值 | 说明 |
+| ----- | ----- | ---- |
+| deleteOn | true、false | 默认设置为 `false`，若要启用它，可将它设置为 `true`|
+| deleteAfterMinutes | `<minutes>` | 指定以分钟为单位的时间。 该模块会自动删除 blob 从本地存储时此值过期 |
+| retainWhileUploading | true、false | 默认情况下它设置为`true`，并且它还保留 blob，而如果 deleteAfterMinutes 过期上载到云存储。 可以将其设置为`false`并 deleteAfterMinutes 过期时，就立即将删除数据。 请注意:对于此属性工作 uploadOn 应设置为 true|
 
 ## <a name="configure-log-files"></a>配置日志文件
 
@@ -115,16 +111,16 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 将你的 IoT Edge 设备指定为对其进行的任何存储请求的 blob 终结点。 你可以使用 IoT Edge 设备信息和配置的帐户名[为显式存储终结点创建连接字符串](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint)。
 
 - 对于部署在设备上的模块，如果该设备上运行 IoT Edge 上的 Azure Blob 存储模块，则 Blob 终结点为 `http://<module name>:11002/<account name>`。
-- 将模块部署在设备上时，如果该设备不运行 IoT Edge 上的 Azure Blob 存储模块，则根据你的设置，Blob 终结点为以下终结点之一：
+- 外部模块或应用程序上运行的设备上 IoT Edge 模块的 Azure Blob 存储为运行，则取决于您的网络设置，其中之外的不同设备，以便从外部模块或应用程序的数据流量可以访问设备IoT Edge 模块上运行 Azure Blob 存储，blob 终结点是之一：
   - `http://<device IP >:11002/<account name>`
   - `http://<IoT Edge device hostname>:11002/<account name>`
   - `http://<fully qualified domain name>:11002/<account name>`
 
 ## <a name="azure-blob-storage-quickstart-samples"></a>Azure Blob 存储快速入门示例
 
-Azure Blob 存储文档包括以多种语言提供示例代码的快速入门。 可以通过将 Blob 终结点更改为连接到 Blob 存储模块来运行这些示例，以测试 IoT Edge 上的 Azure Blob 存储。
+Azure Blob 存储空间文档包含多种语言快速入门示例代码。 你可以运行这些示例以测试通过更改要连接到本地 blob 存储模块的 blob 终结点的 IoT Edge 上的 Azure Blob 存储。
 
-以下快速入门使用 IoT Edge 也同样支持的语言，因此，你可以将它们作为 IoT Edge 模块与 blob 存储模块一起部署：
+以下快速入门示例使用也支持通过 IoT Edge，因此，无法将其作为 blob 存储模块和 IoT Edge 模块部署的语言：
 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [Java](../storage/blobs/storage-quickstart-blobs-java.md)
@@ -133,10 +129,7 @@ Azure Blob 存储文档包括以多种语言提供示例代码的快速入门。
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>通过 Azure 存储资源管理器连接到本地存储
 
-可以使用 **Azure 存储资源管理器**连接到本地存储帐户。 这仅适用于 [Azure 存储资源管理器 1.5.0 版](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0)。
-
-> [!NOTE]
-> 在执行以下步骤（例如向本地存储帐户添加连接，或者在本地存储帐户中创建容器）时，可能会遇到错误。 请忽略这些错误并进行刷新。
+可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)连接到本地存储帐户。
 
 1. 下载并安装 Azure 存储资源管理器
 
@@ -213,6 +206,10 @@ IoT Edge 上的 Blob 存储模块使用相同的 Azure 存储 SDK，并与适用
 不受支持：
 
 - 放置来自 URL 的块
+
+## <a name="release-notes"></a>发行说明
+
+以下是[发行说明中 docker 中心](https://hub.docker.com/_/microsoft-azure-blob-storage)此模块
 
 ## <a name="feedback"></a>反馈
 

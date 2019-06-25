@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
 ms.openlocfilehash: cdc0f189daebcda592338b463954efab4fc2db96
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65864432"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>通过 .NET 使用 IoT 中心将文件从设备上传到云
@@ -26,7 +26,7 @@ ms.locfileid: "65864432"
 
 - 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)和[使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)文章介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如:
+[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)和[使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)文章介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频
@@ -105,9 +105,9 @@ ms.locfileid: "65864432"
 
     ![Visual Studio 中的新项目](./media/iot-hub-csharp-csharp-file-upload/file-upload-project-csharp1.png)
 
-2. 在“解决方案资源管理器”中，右键单击 **ReadFileUploadNotification** 项目，并单击“管理 NuGet 包...”。
+2. 在“解决方案资源管理器”中，右键单击 **ReadFileUploadNotification** 项目，并单击“管理 NuGet 包...”。 
 
-3. 在“NuGet 包管理器”窗口中，搜索“Microsoft.Azure.Devices”，并单击“安装”并接受使用条款。
+3. 在“NuGet 包管理器”窗口中，搜索“Microsoft.Azure.Devices”，并单击“安装”并接受使用条款。   
 
     此操作会下载、安装 [Azure IoT 服务 SDK NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Devices/)，并在 **ReadFileUploadNotification** 项目中添加对它的引用。
 
@@ -117,7 +117,7 @@ ms.locfileid: "65864432"
     using Microsoft.Azure.Devices;
     ```
 
-5. 将以下字段添加到 Program 类。 将占位符值替换为[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)中的 IoT 中心连接字符串：
+5. 将以下字段添加到 Program 类  。 将占位符值替换为[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)中的 IoT 中心连接字符串：
 
     ```csharp
     static ServiceClient serviceClient;

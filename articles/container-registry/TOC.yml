@@ -89,12 +89,14 @@
               href: container-registry-auth-aks.md
         - name: 内容信任
           href: container-registry-content-trust.md
-    - name: 生成并修补
+    - name: ACR 任务
       items:
-        - name: ACR 任务
+        - name: ACR 任务概述
           href: container-registry-tasks-overview.md
         - name: 多步骤任务
           href: container-registry-tasks-multi-step.md
+        - name: 与托管标识配合使用
+          href: container-registry-tasks-authentication-managed-identity.md
     - name: 注册表和其他 Azure 服务
       items:
         - name: Azure 容器实例

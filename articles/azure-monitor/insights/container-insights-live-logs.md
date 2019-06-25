@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 06/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 8d4cc5e46066ad2f18d596d0484f62f478b4cc23
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 7fd9248fd38054b7f0e1fad2888d8b0d4cf2e60c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514325"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274226"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>如何在实时 （预览版） 中查看日志和事件
-用于容器的 azure 监视器包含一项功能，目前以预览版提供，而无需运行 kubectl 命令提供到您的 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderr) 和事件的实时视图。 选择任一选项，一个新窗格将显示下面的性能数据的表上**节点**，**控制器**，并**容器**视图。 它显示实时日志记录和生成容器引擎，为进一步协助解决在真实时间中的问题的事件。 
+用于容器的 azure 监视器包含一项功能，目前以预览版提供，而无需运行 kubectl 命令提供到您的 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderr) 和事件的实时视图。 选择任一选项，一个新窗格将显示下面的性能数据的表上**节点**，**控制器**，并**容器**视图。 它显示实时日志记录和生成容器引擎，为进一步协助解决在真实时间中的问题的事件。
 
 >[!NOTE]
 >**参与者**需要即可使用此功能的访问权限的群集资源。
@@ -29,9 +29,9 @@ ms.locfileid: "66514325"
 
 实时日志支持三种不同方法来控制对日志的访问：
 
-1. 没有启用 Kubernetes RBAC 授权的 AKS 
+1. 没有启用 Kubernetes RBAC 授权的 AKS
 2. 启用了 Kubernetes RBAC 授权的 AKS
-3. AKS 上启用与 Azure Active Directory (AD) 基于 SAML 的单一登录 
+3. AKS 上启用与 Azure Active Directory (AD) 基于 SAML 的单一登录
 
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>未启用 RBAC 的 Kubernetes 群集
  
@@ -66,21 +66,24 @@ ms.locfileid: "66514325"
          apiGroup: rbac.authorization.k8s.io
     ```
 
-2. 如果你首次配置此项，则创建群集规则绑定通过运行以下命令： `kubectl create -f LogReaderRBAC.yaml`。 如果您以前启用了支持的实时日志预览之前我们引入了实时事件日志，以更新你的配置，运行以下命令： `kubectl apply -f LogReaderRBAC.yml`。 
+2. 如果你首次配置此项，则创建群集规则绑定通过运行以下命令： `kubectl create -f LogReaderRBAC.yaml`。 如果您以前启用了支持的实时日志预览之前我们引入了实时事件日志，以更新你的配置，运行以下命令： `kubectl apply -f LogReaderRBAC.yml`。
 
 ## <a name="configure-aks-with-azure-active-directory"></a>为 AKS 配置 Azure Active Directory
-可将 AKS 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 如果你首次配置此项，请参阅[集成 Azure Active Directory 与 Azure Kubernetes 服务](../../aks/azure-ad-integration.md)。 在创建步骤期间[客户端应用程序](../../aks/azure-ad-integration.md#create-client-application)，则需要指定两个**重定向 URI**条目。 以下是两个 Uri:
 
-- https://ininprodeusuxbase.microsoft.com/*
-- https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html  
+可将 AKS 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 如果你首次配置此项，请参阅[集成 Azure Active Directory 与 Azure Kubernetes 服务](../../aks/azure-ad-integration.md)。 在创建步骤期间[客户端应用程序](../../aks/azure-ad-integration.md#create-the-client-application)，指定以下内容：
+
+- **重定向 URI （可选）** :这是**Web**应用程序类型和基 URL 值应为`https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`。
+- 注册应用程序，从后**概述**页上，选择**身份验证**从左侧窗格。 上**身份验证**页面上，在**高级设置**隐式授予**的访问令牌**并**ID 令牌**然后将保存在更改。
 
 >[!NOTE]
->通过 Azure Active Directory 配置身份验证以便实现单一登录的操作只能在初次部署新 AKS 群集过程中完成。 不能为已部署的 AKS 群集配置单一登录。 您必须配置从身份验证**应用注册 （旧版）** 为了在 URI 中支持通配符的使用和，而 Azure AD 中的选项将其添加到列表中，将其注册为**本机**应用。
-> 
+>对于单一登录配置与 Azure Active Directory 的身份验证只能在初始部署新的 AKS 群集的过程来完成。 不能为已部署的 AKS 群集配置单一登录。
+  
+>[!IMPORTANT]
+>如果重新配置 Azure AD 进行用户身份验证使用更新后的 URI，请清除浏览器的缓存，以确保下载和应用更新后的身份验证令牌。   
 
 ## <a name="view-live-logs-and-events"></a>查看实时日志和事件
 
-生成从容器引擎，可以查看实时日志事件**节点**，**控制器**，并**容器**视图。 从属性窗格中选择**查看实时数据 （预览版）** 选项和一个窗格，从中可以查看日志和事件持续流中的性能数据表格如下所示。 
+生成从容器引擎，可以查看实时日志事件**节点**，**控制器**，并**容器**视图。 从属性窗格中选择**查看实时数据 （预览版）** 选项和一个窗格，从中可以查看日志和事件持续流中的性能数据表格如下所示。
 
 ![节点属性窗格中查看实时日志选项](./media/container-insights-live-logs/node-properties-live-logs-01.png)  
 
@@ -100,9 +103,11 @@ ms.locfileid: "66514325"
     
   ![实时日志窗格检索的数据](./media/container-insights-live-logs/live-logs-pane-01.png)  
 
-在搜索栏中，您可以按关键字以突出显示该文本在日志或事件，并在最右侧的搜索栏中，它会显示出该筛选器匹配的结果数。   
+在搜索栏中，您可以按关键字以突出显示该文本在日志或事件，并在最右侧的搜索栏中，它会显示出该筛选器匹配的结果数。
 
   ![实时日志窗格筛选器示例](./media/container-insights-live-logs/live-logs-pane-filter-example-01.png)
+
+在查看事件时，您可以额外限制使用对结果**筛选器**药丸找到右侧的搜索栏。 具体取决于选择了哪些资源，药丸列出 pod、 命名空间或从选择的群集。  
 
 若要挂起自动滚动和控制窗格的行为并且使您能够读取新数据中手动滚动，单击**滚动**选项。 若要重新启用自动滚动，只需单击**滚动**试选项。 此外可以通过单击暂停日志或事件数据的检索**暂停**选项，并准备好继续时，只需单击**播放**。  
 

@@ -1,26 +1,26 @@
 ---
-title: 配置 Web 应用程序防火墙的自定义规则使用 Azure PowerShell
-description: 了解如何配置使用 Azure PowerShell 的自定义 WAF 规则
+title: 配置 Web 应用程序防火墙 v2 自定义规则使用 Azure PowerShell
+description: 了解如何配置 WAF v2 自定义规则使用 Azure PowerShell
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/7/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f7215c4f35d36486b8dda483f34bc487cc16fc69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4d2fd7342e0efe95a1bc69e0dba77692053cf14
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743062"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164753"
 ---
-# <a name="configure-web-application-firewall-with-a-custom-rule-using-azure-powershell"></a>自定义规则使用 Azure PowerShell 配置 Web 应用程序防火墙
+# <a name="configure-web-application-firewall-v2--with-a-custom-rule-using-azure-powershell"></a>自定义规则使用 Azure PowerShell 配置 Web 应用程序防火墙 v2
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-自定义规则，可创建您自己的规则评估的每个请求都将传递到 Web 应用程序防火墙 (WAF)。 这些规则中的托管规则集保存的优先级高于其他规则。 自定义规则具有操作 （若要允许或阻止）、 匹配条件和运算符以允许完全自定义。
+自定义规则，可创建您自己的规则评估为通过 Web 应用程序防火墙 (WAF) v2 的每个请求。 这些规则中的托管规则集保存的优先级高于其他规则。 自定义规则具有操作 （若要允许或阻止）、 匹配条件和运算符以允许完全自定义。
 
-本文创建使用自定义规则的应用程序网关 WAF。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
+本文创建应用程序网关 WAF v2 使用自定义规则。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
 
 若要查看更多自定义规则示例，请参阅[创建和使用自定义 web 应用程序防火墙规则](create-custom-waf-rules.md)
 

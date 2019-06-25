@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 9ac87bbf5089dd20b8c6eeec0b970a7767b3dcda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302564"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64723944"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务记录 StorSimple 虚拟阵列的支持请求
 
@@ -33,13 +33,13 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 #### <a name="to-log-a-new-request"></a>记录新请求
 
-1. 转到 StorSimple Device Manager 服务。 在服务摘要边栏选项卡设置中，转到“支持 + 疑难解答”，并单击“新建支持请求”。
+1. 转到 StorSimple Device Manager 服务。 在服务摘要边栏选项卡设置中，转到“支持 + 疑难解答”  ，并单击“新建支持请求”  。
    
     ![新建支持请求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
-2. 在“基本”边栏选项卡中执行以下操作：
+2. 在“基本”边栏选项卡中执行以下操作  ：
 
-    1. 从“颁发类型”下拉列表中，选择“技术”。 
+    1. 从“颁发类型”下拉列表中，选择“技术”   。 
     
     2. 将自动选择当前**订阅**、**服务**类型和**资源**（StorSimple Device Manager 服务）。 
 
@@ -47,11 +47,11 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
     4. 如果有多个计划与订阅相关联，请选择合适的**支持计划**。 需要付费的支持计划才能启用技术支持。
 
-3. 在“步骤 2”中，选择**严重性**并指定问题是否与阵列或 StorSimple Device Manager 服务相关。 此外，请选择此问题的**类别**，并提供有关此问题的更多**详细信息**。
+3. 在“步骤 2”  中，选择**严重性**并指定问题是否与阵列或 StorSimple Device Manager 服务相关。 此外，请选择此问题的**类别**，并提供有关此问题的更多**详细信息**。
    
     ![新建支持请求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
-4. 在“步骤 3”中，提供联系信息。 Microsoft 支持将使用此信息与你联系，以获得进一步信息、诊断和解决方法。
+4. 在“步骤 3”  中，提供联系信息。 Microsoft 支持将使用此信息与你联系，以获得进一步信息、诊断和解决方法。
    
     ![新建支持请求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
@@ -61,7 +61,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 #### <a name="to-manage-your-support-requests"></a>管理支持请求
 
-若要访问“帮助和支持”页，请导航到“浏览”>“帮助 + 支持”。
+若要访问“帮助和支持”页，请导航到“浏览”>“帮助 + 支持”  。
 
 ![管理支持请求](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 16a556264cda3ed4eb93e8fb738765ddcb379f69
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef40ce0987d44c968b120d7d4b142cc95d7eaf30
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068578"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294853"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure 磁盘加密先决条件
 
@@ -26,28 +26,79 @@ ms.locfileid: "67068578"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="bkmk_OSs"></a>支持的操作系统
-以下操作系统支持 Azure 磁盘加密：
+## <a name="supported-vm-sizes"></a>支持的 VM 大小
+
+Azure 磁盘加密是可满足这些最小内存要求的虚拟机：
+
+| 虚拟机 | 最低内存要求 |
+|--|--|
+| Windows VM | 2 GB |
+| Linux Vm 时仅加密数据卷| 2 GB |
+| Linux Vm 时加密数据和操作系统卷和其中的根 （/） 文件系统使用情况是 4 GB 或更少 | 8 GB |
+| Linux Vm 时加密数据和操作系统卷和根 （/） 文件系统使用情况大于 4 GB | 根文件系统使用情况 * 2。 例如，16 GB 的根文件系统使用情况要求至少 32 GB RAM |
+
+OS 磁盘加密过程在 Linux 虚拟机上完成后，可以配置 VM 以运行较少的内存。 
+
+> [!NOTE]
+> Linux OS 磁盘加密不是可用于[虚拟机规模集](../virtual-machine-scale-sets/index.yml)。
+
+Azure 磁盘加密也是适用于 Vm 使用高级存储。 
+
+## <a name="supported-operating-systems"></a>支持的操作系统
+
+### <a name="windows"></a>Windows
 
 - Windows Server 版本：Windows Server 2008 R2、 Windows Server 2012、 Windows Server 2012 R2、 Windows Server 2016、 Windows Server 2012 R2 Server Core 和 Windows Server 2016 Server core。
 对于 Windows Server 2008 R2，必须安装 .NET Framework 4.5 才能在 Azure 中启用加密。 从 Windows 更新的可选更新适用于 Windows Server 2008 R2 的基于 x64 的系统 (KB2901983) 的 Microsoft.NET Framework 4.5.2 中安装它。
 - Windows Server 2012 R2 Core 和 Windows Server 2016 Core 支持 Azure 磁盘加密后 bdehdcfg 组件安装在 VM 上。
 - Windows 客户端版本：Windows 8 客户端和 Windows 10 客户端。
-- 仅基于特定 Azure 库的 Linux 服务器分发和版本支持 Azure 磁盘加密。 有关当前受支持版本的列表，请参阅 [Azure 磁盘加密常见问题解答](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)。 请参阅[认可的 Azure 上的 Linux 分发版](../virtual-machines/linux/endorsed-distros.md)有关由 Microsoft 和所支持的映像列表[哪些 Linux 分发版 does Azure 磁盘加密支持？](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)中[Azure磁盘加密常见问题解答](azure-security-disk-encryption-faq.md)基于认可的映像分发版上的当前支持版本的列表。
+
+### <a name="linux"></a>Linux 
+
+子集上支持 azure 磁盘加密[Azure 认可的 Linux 分发版](../virtual-machines/linux/endorsed-distros.md)，这本身就是所有的 Linux 服务器可能分发的子集。
+
+![支持 Azure 磁盘加密的维恩图的 Linux 服务器分发](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
+
+Azure 不认可的 Linux 服务器分发版不支持 Azure 磁盘加密，并且这些认可，只有以下分发版和版本支持 Azure 磁盘加密：
+
+| Linux 分发版 | Version | 支持加密的卷类型|
+| --- | --- |--- |
+| Ubuntu | 18.04| OS 和数据磁盘 |
+| Ubuntu | 16.04| OS 和数据磁盘 |
+| Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 和数据磁盘 |
+| RHEL | 7.6 | OS 和数据磁盘 （请参阅下面的备注） |
+| RHEL | 7.5 | OS 和数据磁盘 （请参阅下面的备注） |
+| RHEL | 7.4 | OS 和数据磁盘 （请参阅下面的备注） |
+| RHEL | 7.3 | OS 和数据磁盘 （请参阅下面的备注） |
+| RHEL | 7.2 | OS 和数据磁盘 （请参阅下面的备注） |
+| RHEL | 6.8 | 数据磁盘 （请参阅下面的备注） |
+| RHEL | 6.7 | 数据磁盘 （请参阅下面的备注） |
+| CentOS | 7.6 | OS 和数据磁盘 |
+| CentOS | 7.5 | OS 和数据磁盘 |
+| CentOS | 7.4 | OS 和数据磁盘 |
+| CentOS | 7.3 | OS 和数据磁盘 |
+| CentOS | 7.2n | OS 和数据磁盘 |
+| CentOS | 6.8 | 数据磁盘 |
+| openSUSE | 42.3 | 数据磁盘 |
+| SLES | 12-SP4 | 数据磁盘 |
+| SLES | 12-SP3 | 数据磁盘 |
+
+> [!NOTE]
+> 新的 ADE 实现支持 RHEL OS 和 RHEL7 即用即付映像的数据磁盘。 ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。 请参阅[适用于 Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)有关详细信息。
+
 - Azure 磁盘加密要求 Key Vault 和 VM 位于同一 Azure 区域和订阅。 在不同区域中配置资源会导致启用 Azure 磁盘加密功能失败。
 
-## <a name="bkmk_LinuxPrereq"></a>适用于 Linux IaaS VM 的其他先决条件 
+#### <a name="additional-prerequisites-for-linux-iaas-vms"></a>针对 Linux IaaS Vm 的其他先决条件 
 
-- 要在[支持的映像](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)中启用 OS 磁盘加密，适用于 Linux 的 Azure 磁盘加密要求 VM 上有 7 GB RAM。 完成 OS 磁盘加密过程后，可将 VM 配置为以更少的内存运行。
 - Azure 磁盘加密要求 dm crypt 和 vfat 模块，使其显示在系统上。 删除或禁用的默认映像 vfat 将阻止从读取密钥的卷和获取密钥解锁的磁盘上后续的重新启动所需的系统。 从系统中删除 vfat 模块的系统强化步骤不使用 Azure 磁盘加密兼容。 
 - 在启用加密之前，要加密的数据磁盘需在 /etc/fstab 中正确列出。 为此条目使用永久性块设备名，因为每次重新启动后，不能依赖于使用“/dev/sdX”格式的设备名来与同一磁盘相关联，尤其是应用加密后。 有关此行为的更多详细信息，请参阅：[排查 Linux VM 设备名称更改问题](../virtual-machines/linux/troubleshoot-device-names-problems.md)
 - 确保正确配置用于装载的 /etc/fstab 设置。 若要配置这些设置，请运行 mount -a 命令，或重新启动 VM 并以这种方法触发重新装载。 装载完成后，检查 lsblk 命令的输出，以验证驱动器是否仍已装载。 
   - 如果在启用加密之前 /etc/fstab 文件未正确装载该驱动器，则 Azure 磁盘加密无法将其正确装载。
   - 在加密过程中，Azure 磁盘加密进程会将装载信息移出 /etc/fstab，并移入其自身的配置文件中。 数据驱动器加密完成后，如果看到 /etc/fstab 中缺少条目，请不要担心。
-  -  重新启动后，Azure 磁盘加密进程需要花费一段时间来装载新加密的磁盘。 重新启动后，这些磁盘并不是立即可用。 该进程需要一段时间来启动、解锁然后装载加密的驱动器，然后，这些驱动器才可供其他进程访问。 重新启动后，此进程可能需要一分钟以上的时间，具体时间取决于系统特征。
+  - 启动加密，请务必停止之前所有服务和进程可能会写入到装载的数据磁盘，并禁用它们，以便它们不重新启动自动重新启动后。 这些可能保持文件打开这些分区，阻止重新安装它们，从而导致失败的加密的加密过程。 
+  - 重新启动后，Azure 磁盘加密进程需要花费一段时间来装载新加密的磁盘。 重新启动后，这些磁盘并不是立即可用。 该进程需要一段时间来启动、解锁然后装载加密的驱动器，然后，这些驱动器才可供其他进程访问。 重新启动后，此进程可能需要一分钟以上的时间，具体时间取决于系统特征。
 
 在[此脚本文件的第 244-248 行](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248)可以找到用于装载数据磁盘和创建所需 /etc/fstab 条目的命令示例。 
-
 
 ## <a name="bkmk_GPO"></a>网络和组策略
 

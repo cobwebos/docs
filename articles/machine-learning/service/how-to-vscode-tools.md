@@ -11,10 +11,10 @@ author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 70f9c34957b977aff9fc6211bf79415ed9abe255
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66016514"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code 入门
@@ -84,7 +84,7 @@ ms.locfileid: "66016514"
    [![创建工作区](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
 
 
-1. 右键单击你的 Azure 订阅，然后选择“创建工作区”。 此时将显示一个列表。 在示例动画图像、 订阅名称是**免费试用版**，并在工作区是**TeamWorkspace**。 
+1. 右键单击你的 Azure 订阅，然后选择“创建工作区”。  此时将显示一个列表。 在示例动画图像、 订阅名称是**免费试用版**，并在工作区是**TeamWorkspace**。 
 
 1. 从列表中选择资源组或创建一个新的使用命令面板中的向导。
 
@@ -119,7 +119,7 @@ ms.locfileid: "66016514"
 
 2. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 在以下示例图中，订阅名称是**免费试用版**，并在工作区是**TeamWorkspace**。 
 
-3. 在工作区节点下，右键单击“计算”节点，再选择“创建计算”。
+3. 在工作区节点下，右键单击“计算”  节点，再选择“创建计算”  。
 
 4. 从列表中选择计算目标类型。 
 
@@ -151,7 +151,7 @@ Visual Studio Code 扩展会自动在本地计算机上创建本地计算目标�
 
 1. 在工作区节点中，展开**计算**节点并右击**运行配置**你想要使用的计算。 
 
-1. 选择“运行试验”。
+1. 选择“运行试验”  。
 
 1. 从文件资源管理器，选择你想要运行的脚本。 
 
@@ -226,7 +226,7 @@ dependencies:
 
 1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。
 
-1. 在工作区节点下，右键单击“模型”，再选择“注册模型”。
+1. 在工作区节点下，右键单击“模型”  ，再选择“注册模型”  。
 
 1. 在命令面板中，在字段中，输入模型名称。 
 
@@ -255,7 +255,7 @@ dependencies:
 
 1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。
 
-1. 在工作区节点下，展开“模型”节点。
+1. 在工作区节点下，展开“模型”  节点。
 
 1. 右键单击你想要部署，并选择的模型**从已注册的模型部署服务**从上下文菜单。
 

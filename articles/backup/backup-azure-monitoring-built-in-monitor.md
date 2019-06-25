@@ -11,10 +11,10 @@ ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
 ms.openlocfilehash: ab7d2c0af4bc71733a7995b7e781f0facbfbb29f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236439"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
@@ -49,7 +49,7 @@ Azure 备份提供内置监视和警报功能适用于由 Azure 备份保护的�
 以下方案被指由服务可报警的方案。
 
   - 备份/还原失败
-  - 备份已成功但出现警告的 Azure 备份代理 (MAB)
+  - 备份成功，但出现 Azure 备份代理 (MAB) 的警告
   - 停止保护并保留数据/停止保护并删除数据
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>不会引发警报时出现的异常
@@ -65,7 +65,7 @@ Azure 备份提供内置监视和警报功能适用于由 Azure 备份保护的�
 
   - Azure VM 备份
   - Azure 文件备份
-  - 例如，SQL azure 工作负荷备份
+  - Azure 工作负荷备份，例如 SQL
   - Azure 备份代理 (MAB)
 
 > [!NOTE]
@@ -75,7 +75,7 @@ Azure 备份提供内置监视和警报功能适用于由 Azure 备份保护的�
 根据警报的严重性，可以在三种类型中定义警报：
 
   - **严重**：在原则、 任何备份或恢复失败 （计划或用户触发） 将导致生成警报，并将显示为严重警报和破坏性操作，例如删除备份。
-  - 警告：如果备份操作成功，但有几个警告，它们会作为警告性警报中列出。
+  - 警告  ：如果备份操作成功，但有几个警告，它们会作为警告性警报中列出。
   - **信息性**:到目前为止，Azure 备份服务不生成任何信息性警报。
 
 ## <a name="notification-for-backup-alerts"></a>备份警报通知

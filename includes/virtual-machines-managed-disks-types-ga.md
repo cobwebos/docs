@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c7b73cad200666db9e926d8e808eaa4a8dccffb2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2bc5602011ed64b11b1b8c96b7e69a8d5ee9bf32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66248904"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133353"
 ---
 ## <a name="premium-ssd"></a>高级·SSD
 
@@ -45,7 +45,7 @@ Azure 标准 SSD 是经济高效的存储选项，已针对需要一致性能和
 
 ## <a name="standard-hdd"></a>标准 HDD
 
-Azure 标准 HDD 为运行不区分延迟的工作负荷提供可靠、低成本的磁盘支持。 使用标准存储，将数据存储在硬盘驱动器 (HDD)。 与基于 SSD 的磁盘相比，延迟、 IOPS 和吞吐量的标准 HDD 磁盘可能会更广泛地有所不同。 时使用的 Vm，可以使用标准 HDD 磁盘，用于开发/测试方案和更低的关键工作负荷。 标准 Hdd 可在所有 Azure 区域以及可用于所有 Azure Vm。
+Azure 标准 HDD 为运行不区分延迟的工作负荷提供可靠、低成本的磁盘支持。 使用标准存储，将数据存储在硬盘驱动器 (HDD)。 与基于 SSD 的磁盘相比，延迟、 IOPS 和吞吐量的标准 HDD 磁盘可能会更广泛地有所不同。 标准 HDD 磁盘旨在提供写下 10 毫秒的延迟和读取延迟在 20 毫秒，对于大多数 IO 操作，但是实际性能可能会有所不同，具体取决于 IO 大小和工作负荷模式。 时使用的 Vm，可以使用标准 HDD 磁盘，用于开发/测试方案和更低的关键工作负荷。 标准 Hdd 可在所有 Azure 区域以及可用于所有 Azure Vm。
 
 ### <a name="disk-size"></a>磁盘大小
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]

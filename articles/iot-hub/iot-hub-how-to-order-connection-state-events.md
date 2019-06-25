@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.openlocfilehash: f4baab6e0909144efc613572207e7f24c4b4fe1f
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66743289"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序
@@ -266,7 +266,7 @@ ms.locfileid: "66743289"
 
 4. 填写“事件订阅详细信息”：  提供一个说明性的名称，然后选择“事件网格架构”  。
 
-5. 填写“事件类型”字段。  在下拉列表中，选择仅**设备已连接**并**设备断开连接**菜单中。 单击屏幕关闭列表并保存所做选择的其他位置。
+5. 填写“事件类型”字段。  在下拉列表中，从菜单中仅选择“设备已连接”  和“设备已断开连接”  。 单击屏幕上的任何其他位置以关闭列表并保存选择。
 
    ![设置要查找的事件类型](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
@@ -338,7 +338,7 @@ ms.locfileid: "66743289"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本教程使用的资源会在 Azure 订阅中产生费用。 完成后学习完本教程并测试结果，禁用或删除不想要保留的资源。
+本教程使用的资源会在 Azure 订阅中产生费用。 试用完本教程并测试结果后，请禁用或删除不再想要保留的资源。
 
 如果不希望丢弃针对逻辑应用所执行的操作，可以禁用逻辑应用，但不要将其删除。
 

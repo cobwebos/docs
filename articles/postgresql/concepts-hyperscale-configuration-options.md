@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: e8c1c2e51ca14ae9b17f0d7efb20552cdd55139b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65077285"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-preview-performance-options"></a>Azure Database for PostgreSQL-超大规模 (Citus) （预览版） 性能选项
@@ -20,7 +20,7 @@ ms.locfileid: "65077285"
  
 超大规模 (Citus) 的服务器组中，可以选择单独的辅助角色节点的计算和存储设置和协调器节点。  计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 预配的存储大小是指供你超大规模 (Citus) 的服务器组中的处理协调器和辅助角色节点的容量。 存储包括数据库文件、 临时文件、 事务日志和 Postgres 服务器日志。 此外预配的存储总量为每个辅助角色和协调器节点定义可用的 I/O 容量。
  
-|                       | 工作节点           | 协调器节点      |
+|                       | 辅助角色节点           | 协调器节点      |
 |-----------------------|-----------------------|-----------------------|
 | 计算、 vcore 数       | 4, 8, 16, 32          | 4, 8, 16, 32          |
 | 每个 vCore，GiB 内存 | 8                     | 4                     |

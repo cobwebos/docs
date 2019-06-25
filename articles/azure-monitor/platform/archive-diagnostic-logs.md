@@ -1,39 +1,31 @@
 ---
 title: 存档 Azure 诊断日志
 description: 了解如何存档 Azure 诊断日志，将其长期保留在存储帐户中。
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: johnkem
+ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: bc1804e547bb1a29fc0dc680b948f1bb31af8307
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8ab8a0bcf0c2c00515e46f3e2bbdb55b42ff7a2a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244918"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071535"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>存档 Azure 诊断日志
 
 本文介绍如何使用 Azure 门户、PowerShell Cmdlet、CLI 或 REST API 将 [Azure 诊断日志](diagnostic-logs-overview.md)存档到存储帐户中。 如果要使用可选保留策略来保留诊断日志以便进行审核、静态分析或备份，那么此选项十分有用。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必位于发出日志的资源所在的订阅中。
 
-> [!WARNING]
-> 存储帐户中日志数据的格式将在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
->
-> 
-
 ## <a name="prerequisites"></a>必备组件
 
 在开始之前，需要[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)，以便将诊断日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将活动日志和到存储帐户的诊断指标存档，它很有用，若要使用该存储帐户用于诊断日志也将保留在一个中心位置的所有监视数据。
 
-> [!NOTE]
->  当前无法将数据存档到安全虚拟网络中的存储帐户。
-
 ## <a name="diagnostic-settings"></a>诊断设置
 
-若要使用下述任意方法存档诊断日志，可针对特定资源设置“诊断设置”  。 资源的诊断设置定义发送到目标的日志和指标数据类别（存储帐户、事件中心命名空间或 Log Analytics 工作区）。 此外，它还定义存储在存储帐户中的每个日志类别和指标数据的事件保留策略（需保留的天数）。 如果将保留策略设置为零，则会无限期（即永久）存储该日志类别的事件。 如果不需要无限期存储，可将保留策略设置为 1 到 2147483647 之间的任意天数。 [单击此处详细了解诊断设置](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从午夜 (UTC) 开始，但请注意，可能最多需要 24 小时才能将日志从存储帐户中删除。 
+若要使用下述任意方法存档诊断日志，可针对特定资源设置“诊断设置”  。 资源的诊断设置定义发送到目标的日志和指标数据类别（存储帐户、事件中心命名空间或 Log Analytics 工作区）。 此外，它还定义存储在存储帐户中的每个日志类别和指标数据的事件保留策略（需保留的天数）。 如果将保留策略设置为零，则会无限期（即永久）存储该日志类别的事件。 否则，保留策略可以是任意数量的 1 至 365 天之间。 [单击此处详细了解诊断设置](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从午夜 (UTC) 开始，但请注意，可能最多需要 24 小时才能将日志从存储帐户中删除。 
 
 > [!NOTE]
 > 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。
@@ -71,17 +63,17 @@ ms.locfileid: "66244918"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ```
-Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
+Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Category networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
 | properties | 需要 | 描述 |
 | --- | --- | --- |
 | resourceId |是 |要设置诊断设置的资源的资源 ID。 |
 | StorageAccountId |否 |诊断日志应保存到的存储帐户的资源 ID。 |
-| Categories |否 |要启用的日志类别的逗号分隔列表。 |
+| 类别 |否 |要启用的日志类别的逗号分隔列表。 |
 | Enabled |是 |一个布尔值，表示此资源是启用还是禁用了诊断。 |
 | RetentionEnabled |否 |一个布尔值，表示此资源是否启用了保留策略。 |
-| RetentionInDays |否 |事件的保留天数，介于 1 到 2147483647 之间。 值为零时，将无限期存储日志。 |
+| RetentionInDays |否 |天应介于 1 到 365 之间保留的事件数。 值为零时，将无限期存储日志。 |
 
 ## <a name="archive-diagnostic-logs-via-the-azure-cli"></a>通过 Azure CLI 存档诊断日志
 

@@ -14,14 +14,17 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ce3b7a29f6f57b2bc309c719dbbab6c4574f0a46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f1618260f6bfa0491e919e8aab1841e61603e5b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306494"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273265"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教程：使用 DRM 动态加密和许可证传送服务
+
+> [!NOTE]
+> 即使本教程使用也是如此[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)示例中，一般步骤是相同的[REST API](https://docs.microsoft.com/rest/api/media/liveevents)， [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)，或其他受支持[Sdk](media-services-apis-overview.md#sdks).
 
 可以使用 Azure 媒体服务来传送通过 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 许可证加密的流。 有关深入的说明，请参阅[内容使用动态加密的保护](content-protection-overview.md)。
 

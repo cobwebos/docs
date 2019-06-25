@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: 15aedaa7eedad4940945e9b1e7eff0e1780da796
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ca29bfdb381c5cab0625a320679331c82f63c887
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790389"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118075"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>使用基于 vCore 的购买模型的单一数据库的资源限制
 
@@ -129,16 +129,16 @@ ms.locfileid: "65790389"
 
 ### <a name="serverless-compute-tier"></a>无服务器计算层
 
-[无服务器计算层](sql-database-serverless.md)处于预览状态，仅对单一数据库使用 vCore 的购买模型。
+[无服务器计算层级](sql-database-serverless.md)为预览版，仅面向使用 vCore 购买模型的单一数据库。
 
 #### <a name="generation-5-compute-platform"></a>第 5 代计算平台
 
 |计算大小|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|
 |:--- | --: |--: |--: |
 |硬件代次|5|5|5|
-|最小最大 vcore 数|0.5-1|0.5-2|0.5-4|
-|最小最大内存 (GB)|2.02-3|2.05-6|2.10-12|
-|最小值自动暂停延迟 （小时）|6|6|6|
+|最小-最大 vCore 数|0.5-1|0.5-2|0.5-4|
+|最小-最大内存 (GB)|2.02-3|2.05-6|2.10-12|
+|最小自动暂停延迟（小时）|6|6|6|
 |列存储支持|是|是|是|
 |内存中 OLTP 存储 (GB)|不适用|不适用|不适用|
 |最大数据大小 (GB)|512|1024|1024|
@@ -146,7 +146,7 @@ ms.locfileid: "65790389"
 |TempDB 大小 (GB)|32|64|128|
 |存储类型|高级（远程）存储|高级（远程）存储|高级（远程）存储|
 |IO 延迟（近似）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|
-|目标 IOPS (64 KB)|250|500|1000|
+|目标 IOPS (64 KB)|500|1000|2000|
 |日志速率限制 (MBps)|2.5|5.6|10|
 |最大并发工作线程数（请求数）|75|150|300|
 |允许的最大会话数|30000|30000|30000|
@@ -155,7 +155,7 @@ ms.locfileid: "65790389"
 |读取横向扩展|不适用|不适用|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-## <a name="business-critical-service-tier-for-provisioned-compute-tier"></a>业务关键服务层中预配的计算层
+## <a name="business-critical-service-tier-for-provisioned-compute-tier"></a>适用于预配的计算层级的“业务关键”服务层级
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>“业务关键”服务层级：第 4 代计算平台（第 1 部分）
 

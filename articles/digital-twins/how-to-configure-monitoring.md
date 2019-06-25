@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9765af13a22a0ae9db8a45c396e7d5a32b71b79c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 5dc2587a0c127106d5afb41e20eca43919065f1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730324"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118782"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>如何在 Azure 数字孪生中配置监视
 
@@ -68,11 +68,11 @@ Azure 数字孪生的活动日志记录默认启用，可以通过以下方式�
 为实例启用诊断日志：
 
 1. 在 Azure 门户中打开资源。
-1. 单击“诊断设置”  ：
+1. 选择**诊断设置**:
 
     [![一个诊断设置](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. 单击“启用诊断”  收集数据（如果之前未启用）。
+1. 选择**启用诊断**收集数据 （如果之前未启用）。
 1. 填写请求的字段并选择保存数据的方式和位置：
 
     [![诊断设置两个](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
@@ -101,7 +101,7 @@ Azure 监视器包含强大的日志分析服务，这使日志记录源进行�
 
     [![日志分析](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
-1. 如果还没有**Log Analytics 工作区**实例，您可以通过单击创建一个工作区**添加**按钮：
+1. 如果还没有**Log Analytics 工作区**实例，您可以通过选择创建一个工作区**添加**按钮：
 
     [![创建 OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
@@ -114,7 +114,7 @@ Azure 监视器包含强大的日志分析服务，这使日志记录源进行�
 > [!NOTE]
 > 发送到事件时，可能会遇到 5 分钟的延迟**Log Analytics 工作区**第一次。
 
-Azure Monitor 日志还提供了功能强大的错误和警报通知服务，可通过单击查看**诊断并解决问题**:
+Azure Monitor 日志还提供了功能强大的错误和警报通知服务，可以通过选择查看**诊断并解决问题**:
 
    [![警报和错误通知](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 

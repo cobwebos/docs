@@ -10,10 +10,10 @@ ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: d3601fd8c32c70cf828cd08fada71258ec8fa5d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60812682"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>调整 Azure Data Lake Analytics 中的配额和限制
@@ -51,8 +51,8 @@ ms.locfileid: "60812682"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择一个现有的 ADLA 帐户。
-3. 单击“属性”。
-4. 调整“最大 AU 数”，“最大运行作业数”和“作业提交限制”的值以满足你的需求。
+3. 单击“属性”。 
+4. 调整“最大 AU 数”  ，“最大运行作业数”  和“作业提交限制”  的值以满足你的需求。
 
 ## <a name="increase-maximum-quota-limits"></a>增加最大配额限制
 
@@ -63,9 +63,9 @@ ms.locfileid: "60812682"
     ![Azure Data Lake Analytics 门户页](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
 
     ![Azure Data Lake Analytics 门户页](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
-2. 对问题类型选择“配额”。
-3. 选择“订阅”（确保不是“试用版”订阅）。
-4. 对配额类型选择“Data Lake Analytics”。
+2. 对问题类型选择“配额”  。
+3. 选择“订阅”  （确保不是“试用版”订阅）。
+4. 对配额类型选择“Data Lake Analytics”  。
 
     ![Azure Data Lake Analytics 门户页](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
 

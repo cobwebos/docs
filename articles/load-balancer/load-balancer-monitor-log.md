@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
 ms.openlocfilehash: 0d7c792c5230a5d82e97f4598a5dcfb864cead74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60861131"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>公共基本负载均衡器的 azure Monitor 日志
@@ -40,19 +40,19 @@ ms.locfileid: "60861131"
 
 登录到 [Azure 门户](https://portal.azure.com)。 如果还没有负载均衡器，请先[创建负载均衡器](load-balancer-get-started-internet-arm-ps.md)，再继续。
 
-1. 在门户中，单击“浏览”。
-2. 选择“负载均衡器”。
+1. 在门户中，单击“浏览”。 
+2. 选择“负载均衡器”。 
 
     ![门户 - 负载均衡器](./media/load-balancer-monitor-log/load-balancer-browse.png)
 
-3. 选择现有的负载均衡器，并单击“所有设置”。
-4. 在负载均衡器名称下的对话框右侧，滚动到“监视”，并单击“诊断”。
+3. 选择现有的负载均衡器，并单击“所有设置”。 
+4. 在负载均衡器名称下的对话框右侧，滚动到“监视”，并单击“诊断”。  
 
     ![门户 - 负载均衡器 - 设置](./media/load-balancer-monitor-log/load-balancer-settings.png)
 
-5. 在“诊断”窗格中，在“状态”下选择“开”。
-6. 单击“存储帐户”。
-7. 在“日志”下，选择现有存储帐户或创建新存储帐户。 使用滑块来确定事件数据值得在事件日志中存储的天数。 
+5. 在“诊断”窗格中，在“状态”下选择“开”。   
+6. 单击“存储帐户”。 
+7. 在“日志”下，选择现有存储帐户或创建新存储帐户。  使用滑块来确定事件数据值得在事件日志中存储的天数。 
 8. 单击“ **保存**”。
 
 诊断将保存在指定存储帐户的表存储中。 如果日志未保存，这是因为没有生成相关日志。

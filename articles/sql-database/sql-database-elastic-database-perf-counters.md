@@ -1,5 +1,5 @@
 ---
-title: 创建性能计数器来跟踪性能的分片映射管理器
+title: 创建性能计数器，以便跟踪分片映射管理器的性能
 description: ShardMapManager 类和数据相关的路由的性能计数器
 services: sql-database
 ms.service: sql-database
@@ -13,15 +13,15 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: 5c6c923c86ea0c5968079188c87ec3988ec30142
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475688"
 ---
-# <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>创建性能计数器来跟踪性能的分片映射管理器
+# <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>创建性能计数器，以便跟踪分片映射管理器的性能
 
-使用性能计数器跟踪的性能[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)操作。 可在“弹性数据库: 分片管理”类别下的“性能监视器”中访问这些计数器。
+性能计数器用于跟踪[数据相关路由](sql-database-elastic-scale-data-dependent-routing.md)操作的性能。 可在“弹性数据库: 分片管理”类别下的“性能监视器”中访问这些计数器。
 
 可以捕获[分片映射管理器](sql-database-elastic-scale-shard-map-management.md)的性能，尤其是在使用[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)时。 计数器是使用 Microsoft.Azure.SqlDatabase.ElasticScale.Client 类的方法创建的。  
 

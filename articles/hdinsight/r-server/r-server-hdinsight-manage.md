@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 607f85c10183366e88d597d84090f49fc30aff48
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64687967"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
@@ -32,8 +32,8 @@ ms.locfileid: "64687967"
 
 ![并发用户 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
 
-- 群集登录用户名：一个通过 HDInsight 网关进行身份验证的 HTTP 用户，该网关用于保护所创建的 HDInsight 群集。 此 HTTP 用户用于访问 Apache Ambari UI、Apache Hadoop YARN UI 以及其他 UI 组件。
-- 安全外壳 (SSH) 用户名：一个需通过安全外壳访问群集的 SSH 用户。 此用户是适用于所有头节点、辅助角色节点和边缘节点的 Linux 系统中的用户。 因此，可以使用安全外壳访问远程群集中的任何节点。
+-  群集登录用户名：一个通过 HDInsight 网关进行身份验证的 HTTP 用户，该网关用于保护所创建的 HDInsight 群集。 此 HTTP 用户用于访问 Apache Ambari UI、Apache Hadoop YARN UI 以及其他 UI 组件。
+-  安全外壳 (SSH) 用户名：一个需通过安全外壳访问群集的 SSH 用户。 此用户是适用于所有头节点、辅助角色节点和边缘节点的 Linux 系统中的用户。 因此，可以使用安全外壳访问远程群集中的任何节点。
 
 在 HDInsight 上的 ML Services 群集中使用的 R Studio Server Community 版本仅接受 Linux 用户名和密码作为登录机制， 而不支持传递令牌。 因此，首次尝试在 ML Services 群集上访问 R Studio 时，需要登录两次。
 
@@ -67,13 +67,13 @@ ms.locfileid: "64687967"
 
 ![并发用户 3](./media/r-server-hdinsight-manage/concurrent-users-2.png)
 
-当系统提示输入“当前 Kerberos 密码:”时，只需按 Enter 将其忽略即可。 `useradd` 命令中的 `-m` 选项指示系统会为用户创建主文件夹，该文件夹是 RStudio Community 版本所需的。
+当系统提示输入“当前 Kerberos 密码:”时，只需按 Enter  将其忽略即可。 `useradd` 命令中的 `-m` 选项指示系统会为用户创建主文件夹，该文件夹是 RStudio Community 版本所需的。
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>步骤 3：通过已创建的用户使用 RStudio Community 版本
 
 从 https://CLUSTERNAME.azurehdinsight.net/rstudio/ 访问 RStudio。 如果是在创建群集后首次登录，请输入群集管理员凭据后跟创建的 SSH 用户凭据。 如果不是首次登录，则仅输入所创建的 SSH 用户的凭据。
 
-也可同时使用原始凭据（默认为 sshuser）从其他浏览器窗口登录。
+也可同时使用原始凭据（默认为 sshuser）从其他浏览器窗口登录  。
 
 另请注意，在 Linux 系统中，新添加的用户没有根权限，但对远程 HDFS 和 WASB 存储中的所有文件具有相同的访问权限。
 
@@ -303,19 +303,19 @@ ms.locfileid: "64687967"
 
 1. 执行[使用脚本操作自定义群集](../hdinsight-hadoop-customize-cluster-linux.md)中的步骤。
 
-3. 对于“提交脚本操作”，提供以下信息：
+3. 对于“提交脚本操作”  ，提供以下信息：
 
-   * 对于“脚本类型”，选择“自定义”。
+   * 对于“脚本类型”，选择“自定义”。  
 
-   * 对于“名称”，为脚本操作提供一个名称。
+   * 对于“名称”  ，为脚本操作提供一个名称。
 
-     * 对于“Bash 脚本 URI”，输入 `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`。 此脚本会在工作节点上安装其他 R 包
+     * 对于“Bash 脚本 URI”  ，输入 `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`。 此脚本会在工作节点上安装其他 R 包
 
-   * 仅选中“辅助角色”所对应的复选框。
+   * 仅选中“辅助角色”所对应的复选框  。
 
    * **参数**：要安装的 R 包。 例如： `bitops stringr arules`
 
-   * 选中“持久保存此脚本操作”复选框。  
+   * 选中“持久保存此脚本操作”复选框  。  
 
    > [!NOTE]
    > 1. 默认情况下，将从与安装的 ML Server 版本一致的 Microsoft MRAN 存储库快照中安装所有 R 包。 若要安装较新版的包，则可能存在不兼容的风险。 不过，将 `useCRAN` 指定为包列表的第一个元素（例如 `useCRAN bitops, stringr, arules`）即可完成此类安装。  
@@ -326,7 +326,7 @@ ms.locfileid: "64687967"
 
    ![添加脚本操作](./media/r-server-hdinsight-manage/submitscriptaction.png)
 
-4. 选择“创建”运行脚本。 脚本完成后，可在所有辅助角色节点上使用 R 包。
+4. 选择“创建”  运行脚本。 脚本完成后，可在所有辅助角色节点上使用 R 包。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/27/2018
 ms.author: Ankit.Sud
 ms.openlocfilehash: 4a75d706d55512201786b2b74376047ff75380a7
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938121"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>更新 Azure 市场中的现有 VM 套餐
@@ -26,7 +26,7 @@ ms.locfileid: "64938121"
 -  更新套餐或单个 SKU 的市场元数据
 -  更新即用即付套餐的定价
 
-为了帮助你进行这些修改，门户中提供了“比较”和“历史记录”功能。  
+为了帮助你进行这些修改，门户中提供了“比较”和“历史记录”功能。    
 
 >[!Note]
 >云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
@@ -35,8 +35,8 @@ ms.locfileid: "64938121"
 
 套餐在 Azure 市场中上线后，无法修改 VM 套餐或 SKU 的某些属性，主要包括：
 
--  套餐的“套餐 ID”和“发布者 ID”
--  现有 SKU 的“SKU ID”
+-  套餐的“套餐 ID”和“发布者 ID”  
+-  现有 SKU 的“SKU ID” 
 -  现有 SKU 的数据磁盘计数
 -  对现有 SKU 的计费/许可证模型更改
 -  提高已发布 SKU 的价格
@@ -52,20 +52,20 @@ ms.locfileid: "64938121"
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
-2.  在“所有套餐”下，找到要更新的套餐。
+2.  在“所有套餐”下，找到要更新的套餐。 
 
-3.  在“SKU”选项卡中，单击与要更新的 VM 映像关联的 SKU。
+3.  在“SKU”选项卡中，单击与要更新的 VM 映像关联的 SKU。 
 
-4.  在“磁盘版本”下，单击“+新建磁盘版本”以添加新的 VM 映像。
+4.  在“磁盘版本”下，单击“+新建磁盘版本”以添加新的 VM 映像。  
 
 5.  提供新的 VM 映像**磁盘版本**。 此磁盘版本需遵循[语义版本](https://semver.org/)格式。 版本格式应为 X.Y.Z，X、Y 和 Z 是整数。 确认提供的新版本高于以往的所有版本；否则，重新发布后，新版本将不会在门户或 Azure 市场中显示。
 
-6.  对于“OS VHD URL”，请输入为操作系统 VHD 创建的[共享访问签名 (SAS) URI](./cpp-get-sas-uri.md)。 
+6.  对于“OS VHD URL”，请输入为操作系统 VHD 创建的[共享访问签名 (SAS) URI](./cpp-get-sas-uri.md)。  
 
     > [!WARNING] 
     > 无法在不同的 SKU 版本之间更改数据磁盘计数。 如果先前版本配置了数据磁盘，则此新版本也必须有相同数量的数据磁盘。
 
-7.  单击“发布”，启动将新 VM 版本发布到 Azure 市场的工作流。
+7.  单击“发布”，启动将新 VM 版本发布到 Azure 市场的工作流。 
 
 
 ### <a name="change-region-availability-of-a-sku"></a>更改 SKU 的可用区域
@@ -75,17 +75,17 @@ ms.locfileid: "64938121"
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
-2.  在“所有套餐”下，找到要更新的套餐。
+2.  在“所有套餐”下，找到要更新的套餐。 
 
-3.  在“SKU”选项卡中，单击要修改其可用性的 SKU。
+3.  在“SKU”选项卡中，单击要修改其可用性的 SKU。 
 
-4.  单击“国家/地区可用性”字段下的“选择国家/地区”按钮。
+4.  单击“国家/地区可用性”  字段下的“选择国家/地区”  按钮。
 
 5.  在可用区域弹出窗口中，添加或删除此 SKU 的可用区域。
 
-6.  单击“发布”，启动更新 SKU 可用区域的发布工作流。
+6.  单击“发布”，启动更新 SKU 可用区域的发布工作流。 
 
-如果要在新区域中提供 SKU，可通过“导出定价数据”功能对此特定区域指定定价。 如果加回以前的可用区域，则无法更新其定价，因为不允许更改定价。
+如果要在新区域中提供 SKU，可通过“导出定价数据”  功能对此特定区域指定定价。 如果加回以前的可用区域，则无法更新其定价，因为不允许更改定价。
 
 
 ### <a name="add-a-new-sku"></a>添加新 SKU
@@ -94,13 +94,13 @@ ms.locfileid: "64938121"
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
-2.  在“所有套餐”下，找到要更新的套餐。
+2.  在“所有套餐”下，找到要更新的套餐。 
 
-3.  在“SKU”选项卡下，单击“添加新 SKU”并在弹出窗口中提供一个 **SKU ID**。
+3.  在“SKU”选项卡下，单击“添加新 SKU”并在弹出窗口中提供一个 **SKU ID**。  
 
 4.  根据[将虚拟机发布到 Azure 市场](./cpp-publish-offer.md)中的详述重新发布 VM。
 
-5.  单击“发布”，启动发布新 SKU 的工作流。
+5.  单击“发布”，启动发布新 SKU 的工作流。 
 
 
 ### <a name="update-offer-marketplace-metadata"></a>更新套餐市场元数据
@@ -109,11 +109,11 @@ ms.locfileid: "64938121"
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
-2.  在“所有套餐”下，找到要更新的套餐。
+2.  在“所有套餐”下，找到要更新的套餐。 
 
-3.  转到“市场”选项卡，然后遵照[将虚拟机发布到 Azure 市场](./cpp-publish-offer.md)一文中的说明更改元数据。
+3.  转到“市场”选项卡，然后遵照[将虚拟机发布到 Azure 市场](./cpp-publish-offer.md)一文中的说明更改元数据。 
 
-4.  单击“发布”，启动发布更改的工作流。
+4.  单击“发布”，启动发布更改的工作流。 
 
 
 ### <a name="update-pricing-on-published-offers"></a>更新已发布套餐的定价
@@ -122,7 +122,7 @@ ms.locfileid: "64938121"
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
-2.  在“所有套餐”下，找到要更新的套餐。
+2.  在“所有套餐”下，找到要更新的套餐。 
 
 3.  单击要降低其定价的 SKU。
 
@@ -130,7 +130,7 @@ ms.locfileid: "64938121"
 
 3.  单击“ **保存**”。
 
-4.  单击“发布”，启动发布更改的工作流。
+4.  单击“发布”，启动发布更改的工作流。 
 
 套餐在网站中上线后，新客户会看到已降低的新价格。  此新价格会在以下方面影响客户：
 
@@ -142,7 +142,7 @@ ms.locfileid: "64938121"
 <!-- TD: This has been implemented, need to change the SKU Tab topic to reflect and move this section there. -->
 ### <a name="simplified-currency-pricing"></a>简化的货币定价
 
-从 2018 年 9 月 1 日开始，门户中将会添加一个名为“简化的货币定价”的新部分。 Microsoft 正在针对全球客户实现更多的可预测定价和托收方案，以简化 Azure 市场业务。 这种简化涉及到减少客户发票所采用的货币数量。
+从 2018 年 9 月 1 日开始，门户中将会添加一个名为“简化的货币定价”的新部分。  Microsoft 正在针对全球客户实现更多的可预测定价和托收方案，以简化 Azure 市场业务。 这种简化涉及到减少客户发票所采用的货币数量。
 
 新部分将以这些新货币定价。 将所有客户迁移到这些新的结算货币后，原始定价部分将会停用，只保留“简化的货币定价”部分。
 
@@ -156,9 +156,9 @@ ms.locfileid: "64938121"
 
 ## <a name="compare-feature"></a>“比较”功能
 
-对已发布的套餐进行更改时，可以利用“比较”功能来审核所做的更改。 若要使用此功能：
+对已发布的套餐进行更改时，可以利用“比较”功能来审核所做的更改。  若要使用此功能：
 
-1.  在编辑过程中的任意时间点，单击套餐旁边的“比较”按钮。
+1.  在编辑过程中的任意时间点，单击套餐旁边的“比较”按钮。 
 
     ![“比较”功能按钮](./media/publishvm_037.png)
 
@@ -168,6 +168,6 @@ ms.locfileid: "64938121"
 
 ## <a name="history-of-publishing-actions"></a>发布操作的历史记录
 
-若要查看任何历史发布活动，请单击云合作伙伴门户左侧导航菜单栏中的“历史记录”项。 在此处可以查看 Azure 市场套餐生存期内执行的带时间戳的操作。  
+若要查看任何历史发布活动，请单击云合作伙伴门户左侧导航菜单栏中的“历史记录”项。  在此处可以查看 Azure 市场套餐生存期内执行的带时间戳的操作。  
 <!-- TD: Add after section authored: For more information, see [History page](../portal-tour/cpp-history-page.md). -->
 

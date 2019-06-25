@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7bb07fa00babb00d1b2af03f89ae6857cb79f5f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fa7b5c82f0b057e2eb029b9cc632d8da02206678
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782871"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108398"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理远程访问应用时的安全注意事项
 
@@ -47,9 +47,9 @@ Azure AD 应用程序代理依赖于使用 Azure AD 安全令牌服务 (STS) 执
 
 在与网络建立连接之前应用更丰富的策略控制。
 
-使用[条件性访问](../conditional-access/overview.md)可以针对允许哪些流量访问后端应用程序来定义限制。 可以基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。
+与[条件性访问](../conditional-access/overview.md)，您可以允许哪些流量访问后端应用程序定义限制。 可以基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。
 
-还可以使用条件性访问配置多重身份验证策略，为用户身份验证再添一层安全保障。 此外，还可以通过 Azure AD 条件性访问将应用程序路由到 Microsoft Cloud App Security，以便通过[访问](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[会话](https://docs.microsoft.com/cloud-app-security/session-policy-aad)策略提供实时监视和控制
+条件性访问还可用于配置多重身份验证策略将另一个安全层添加到你的用户身份验证。 此外，您的应用程序可以也路由到 Azure AD 条件访问可通过提供实时监视和控制，通过 Microsoft Cloud App Security[访问](https://docs.microsoft.com/cloud-app-security/access-policy-aad)并[会话](https://docs.microsoft.com/cloud-app-security/session-policy-aad)策略
 
 ### <a name="traffic-termination"></a>流量终止
 
@@ -144,7 +144,7 @@ Azure AD 应用程序代理由两个部分组成：
 
 如果已将应用配置为使用 Azure AD 进行预身份验证，则会将用户重定向到 Azure AD STS 进行身份验证，并且发生以下步骤：
 
-1. 应用程序代理会检查特定应用程序的任何条件访问策略要求。 此步骤可确保将用户分配到该应用程序。 如果需要双重验证，身份验证序列会提示用户执行第二个身份验证方法。
+1. 应用程序代理会检查特定应用程序的任何条件性访问策略要求。 此步骤可确保将用户分配到该应用程序。 如果需要双重验证，身份验证序列会提示用户执行第二个身份验证方法。
 
 2. 所有检查都通过后，Azure AD STS 将为应用程序颁发已签名的令牌，并将用户重定向回应用程序代理服务。
 

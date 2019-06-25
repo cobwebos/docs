@@ -4,20 +4,22 @@ description: 使用 Azure 门户从你的订阅中的资源导出 Azure 资源�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: ea9499da3dac67635a48704f439f6592c6ed467e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e482bf99013b9bec9dfbf64c4e8ad5a8a43ff540
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65515379"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296307"
 ---
 # <a name="single-and-multi-resource-export-to-template-in-azure-portal"></a>单个和多资源导出到 Azure 门户中的模板
 
 若要帮助创建 Azure 资源管理器模板，可以从现有资源导出模板。 导出的模板可帮助您了解的 JSON 语法和部署资源的属性。 若要自动执行以后进行部署时，导出的模板开始，并修改为你的方案。
 
 资源管理器可以选择导出到模板的一个或多个资源。 你可以专注于完全在模板中所需的资源。
+
+本文介绍如何导出通过门户的模板。 此外可以使用[Azure CLI](manage-resource-groups-cli.md#export-resource-groups-to-templates)， [Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates)，或[REST API](/rest/api/resources/resourcegroups/exporttemplate)。
 
 ## <a name="choose-the-right-export-option"></a>选择正确的导出选项
 
@@ -114,7 +116,7 @@ ms.locfileid: "65515379"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解 Azure 资源管理器，请参阅 [Azure 资源管理器概述](./resource-group-overview.md)。
+- 了解如何使用导出模板[Azure CLI](manage-resource-groups-cli.md#export-resource-groups-to-templates)， [Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates)，或[REST API](/rest/api/resources/resourcegroups/exporttemplate)。
 - 若要了解资源管理器模板语法，请参阅[了解 Azure 资源管理器模板的结构和语法](./resource-group-authoring-templates.md)。
 - 若要了解如何开发模板，请参阅[分步教程](/azure/azure-resource-manager/)。
 - 若要查看 Azure 资源管理器模板架构，请参阅[模板参考](/azure/templates/)。

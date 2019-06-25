@@ -9,10 +9,10 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 265a1cf0a8a5e1e099a4ec7a9f0d674e0c474dd4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190102"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何创建高级 Azure 文件共享
@@ -34,32 +34,32 @@ ms.locfileid: "65190102"
 
 现在你已准备好创建你的存储帐户。
 
-每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 本文介绍如何创建新的资源组。
+每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 本文介绍如何创建新资源组。
 
 1. 在 Azure 门户中，选择**存储帐户**在左侧菜单中。
 
     ![Azure 门户的主页上选择的存储帐户](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
-1. 在显示的“存储帐户”窗口中，选择“添加”。
+1. 在显示的“存储帐户”窗口中，选择“添加”。  
 1. 选择要在其中创建存储帐户的订阅。
-1. 在“资源组”字段下，选择“新建”。 输入新资源组的名称，如下图中所示。
+1. 在“资源组”  字段下，选择“新建”  。 输入新资源组的名称，如下图中所示。
 
 1. 然后，输入存储帐户的名称。 所选名称在 Azure 中必须唯一。 该名称还必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 1. 选择存储帐户的位置或使用默认位置。
 1. 有关**性能**选择**高级**。
-1. 选择**帐户类型**，然后选择**文件存储 （预览版）**。
-1. 将保留**复制**设置为其默认值为**本地冗余存储 (LRS)**。
+1. 选择**帐户类型**，然后选择**文件存储 （预览版）** 。
+1. 将保留**复制**设置为其默认值为**本地冗余存储 (LRS)** 。
 
     ![如何创建高级文件共享的存储帐户](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
 
-1. 选择“查看+创建”可查看存储帐户设置并创建帐户。
-1. 选择“创建”。
+1. 选择“查看+创建”  可查看存储帐户设置并创建帐户。
+1. 选择“创建”  。
 
 一旦创建存储帐户资源后，导航到它。
 
 ### <a name="create-a-premium-file-share"></a>创建高级文件共享
 
-1. 在左侧菜单中的存储帐户，向下滚动到**文件服务**部分，然后选择**文件 （预览版）**。
+1. 在左侧菜单中的存储帐户，向下滚动到**文件服务**部分，然后选择**文件 （预览版）** 。
 1. 选择 **+ 文件共享**创建高级文件共享。
 1. 输入名称和所需的配额的文件共享，然后选择**创建**。
 

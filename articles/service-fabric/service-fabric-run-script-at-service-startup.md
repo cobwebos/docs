@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: 76be814e0dd4c054fc3a873716dbfe395eeeb2dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837772"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>以本地用户或系统帐户身份运行服务启动脚本
@@ -140,14 +140,14 @@ ms.locfileid: "60837772"
 ```
 
 > [!NOTE]
-> 对于 Linux 群集，若要以根身份运行服务或安装程序入口点，可以将 AccountType 指定为 LocalSystem。
+> 对于 Linux 群集，若要以根  身份运行服务或安装程序入口点，可以将 AccountType  指定为 LocalSystem  。
 
 ## <a name="run-a-script-from-the-setup-entry-point"></a>从安装程序入口点运行脚本
 现在将启动脚本添加到项目，以便在管理员特权下运行。 
 
 在 Visual Studio 中，右键单击服务项目，并添加名为 *MySetup.bat* 的新文件。
 
-接下来，请确保 *MySetup.bat* 文件已包含在服务包中。 默认情况下未包含该文件。 选择该文件，单击右键打开上下文菜单，然后选择“属性”。 在“属性”对话框中，确保已将“**复制到输出目录**”设置为“**有更新时才复制**”。 请参阅下面的屏幕截图。
+接下来，请确保 *MySetup.bat* 文件已包含在服务包中。 默认情况下未包含该文件。 选择该文件，单击右键打开上下文菜单，然后选择“属性”  。 在“属性”对话框中，确保已将“**复制到输出目录**”设置为“**有更新时才复制**”。 请参阅下面的屏幕截图。
 
 ![SetupEntryPoint 批处理文件的 Visual Studio CopyToOutput][image1]
 
@@ -177,7 +177,7 @@ C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
 ## <a name="run-powershell-commands-from-a-setup-entry-point"></a>从安装程序入口点运行 PowerShell 命令
-若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 **PowerShell.exe**。 首先，将 PowerShell 文件添加到服务项目（例如 **MySetup.ps1**）。 请记住设置“如果较新则复制”属性，以便文件还包括在服务包中。 下面的示例演示一个示例批处理文件，可启动名为 MySetup.ps1 的 PowerShell 文件，该文件用于设置系统环境变量 **TestVariable**。
+若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 **PowerShell.exe**。 首先，将 PowerShell 文件添加到服务项目（例如 **MySetup.ps1**）。 请记住设置“如果较新则复制”属性，以便文件还包括在服务包中  。 下面的示例演示一个示例批处理文件，可启动名为 MySetup.ps1 的 PowerShell 文件，该文件用于设置系统环境变量 **TestVariable**。
 
 MySetup.bat 可启动 PowerShell 文件：
 

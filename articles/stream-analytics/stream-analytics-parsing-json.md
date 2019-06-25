@@ -7,12 +7,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ad30d363c8e3ea0264ba79db5417e572614a6739
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 84d2d43074b149ed029b1f70323cf4fe896e530d
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66496838"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293594"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
 
@@ -135,4 +135,4 @@ FROM input
 ```
 
 ## <a name="see-also"></a>另请参阅
-[Azure 流分析中的数据类型](https://msdn.microsoft.com/azure/stream-analytics/reference/data-types-azure-stream-analytics)
+[Azure 流分析中的数据类型](https://docs.microsoft.com/en-us/stream-analytics-query/data-types-azure-stream-analytics)

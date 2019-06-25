@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235884"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
@@ -212,7 +212,7 @@ git clone https://github.com/Azure/iot-central-firmware
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | 设备状态   | 绿色  | 橙色  | 红色    | 
 
-#### <a name="events"></a>事件 
+#### <a name="events"></a>Events 
 | 名称             | Display name      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | 按钮 B 已按下  | 
@@ -245,7 +245,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 | Display name | 字段名 | 返回类型 | 输入的字段显示名称 | 输入的字段名称 | 输入的字段类型 |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| echo         | echo       | Text        | 若要显示的值         | displayedValue   | Text             |
+| echo         | echo       | text        | 若要显示的值         | displayedValue   | text             |
 | 倒计时    | 倒计时  | 数字      | 从计数               | countFrom        | 数字           |
 
 ## <a name="next-steps"></a>后续步骤

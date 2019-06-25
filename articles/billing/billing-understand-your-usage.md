@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 9ff9b6b5313026d2102b98659183fa97c6a5ef84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2eb9f8e19be2a7b6220bc34bf4ce0c72c4ac0b4f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683988"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275066"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 的使用情况和费用文件中的条款
 
@@ -72,6 +72,7 @@ InvoiceSection | MCA | 请参阅 InvoiceSectionName。
 InvoiceSectionId | EA, MCA | EA 部门或 MCA 发票部分的唯一标识符。
 InvoiceSectionName | EA, MCA | EA 部门或 MCA 发票部分的名称。
 IsAzureCreditEligible | EA, MCA | 指示是否可为使用 Azure 信用额度支付费用 (值：True、 False)。
+IsEstimated | 全部 | 指示是否关闭/完成计费周期。 使用情况数据可以更改整个计费周期之前生成发票。 这些记录将被标记为"估计"。
 Location | EA, MCA | 该资源正在其中运行的数据中心位置。
 MeterCategory | 全部 | 测定仪分类类别的名称。 例如，*云服务*并*网络*。
 计量 ID | 全部 | 计量的唯一标识符。

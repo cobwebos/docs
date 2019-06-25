@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29569302d20e23c95b6508a5b58c7ed96e005885
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: e5278d504c43688bf064b869982938db52b1b1bf
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66499244"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164951"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>规划单一登录部署
 
@@ -61,9 +61,9 @@ SSO 实现基于协议的联合身份验证提高了安全性、 可靠性和和
 
 使用 Azure AD 进行基于密码的 SSO 需要部署浏览器扩展插件将安全地检索凭据，并填写登录窗体。 定义一种机制来部署具有大规模扩展[支持的浏览器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。 选项包括：
 
-- [Internet Explorer 的组策略 ](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [Internet explorer 的 system Center Configuration Manager (SCCM) ](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
-- [用户驱动的下载和 Chrome、 Firefox、 Microsoft Edge 或 IE 的配置 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+- [Internet Explorer 的组策略](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
+- [Internet explorer 的 system Center Configuration Manager (SCCM)](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+- [用户驱动的下载和 Chrome、 Firefox、 Microsoft Edge 或 IE 的配置](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 若要了解详细信息，请参阅[如何配置密码单一登录](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery)。
 
@@ -146,7 +146,7 @@ MCAS 有关的信息，请参阅[Microsoft Cloud App Security 概述](https://do
 
 使用条件性访问，可以为你的云应用自动基于标准的访问控制决策。
 
-完成第一因素身份验证后将强制执行条件访问策略。 因此，不应条件性访问，如方案第一个行防御拒绝服务 (DoS) 攻击，但可以使用从这些事件的信号来确定访问权限。 有关示例的登录风险级别，可以使用位置为请求中，依次类推。 有关条件性访问的详细信息，请参阅[概述](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)并[部署计划](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
+第一个双因素身份验证完成后，会强制执行条件性访问策略。 因此，不应条件性访问，如方案第一个行防御拒绝服务 (DoS) 攻击，但可以使用从这些事件的信号来确定访问权限。 有关示例的登录风险级别，可以使用位置为请求中，依次类推。 有关条件性访问的详细信息，请参阅[概述](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)并[部署计划](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
 
 ## <a name="azure-sso-technical-requirements"></a>Azure 的 SSO 技术要求
 

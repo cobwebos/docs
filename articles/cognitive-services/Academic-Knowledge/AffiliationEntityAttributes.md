@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 82e6a5b66342e58e62da029d617cbd1d74c28149
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61340503"
 ---
 # <a name="affiliation-entity"></a>隶属关系实体
 
 <sub> *以下属性特定于隶属关系实体。(Ty = '5') </sub>
 
-名称    |描述                            |Type       | 操作
+Name    |描述                            |Type       | 操作
 ------- | ------------------------------------- | --------- | ----------------------------
-ID      |实体 ID                              |Int64      |等于
+Id      |实体 ID                              |Int64      |等于
 AfN     |隶属关系规范化名称        |String     |等于
 DAfN    |隶属关系显示名称       |String     |无
 CC      |隶属关系引文总计数           |Int32      |无  

@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 8cf9dc6cbfc96448462aac3a64807f8beb6036ad
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 016dcf32f2f846e43362f17bc9f4627113908352
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156907"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075152"
 ---
-# <a name="get-started-with-custom-voice"></a>开始使用自定义语音
+# <a name="get-started-with-custom-voice"></a>自定义语音入门
 
 自定义语音是一组的联机工具，您可以创建自己的品牌的可识别的、 独一无二的声音。 若要开始所需的全部是数个音频文件和关联的转录。 请按照以下链接，开始创建自定义文本到语音转换体验。
 
@@ -29,13 +29,13 @@ ms.locfileid: "65156907"
 
 ![自定义语音体系结构关系图](media/custom-voice/custom-voice-diagram.png)
 
-1.  [订阅并创建一个项目](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice?branch=release-build-cogserv-speech-services#set-up-your-azure-account)-创建 Azure 帐户并创建语音服务订阅。 此统一的订阅，您可以访问语音转文本、 文本到语音，语音翻译和自定义语音门户。 然后，使用的语音服务订阅，创建第一个自定义语音项目。
+1.  [订阅并创建一个项目](#set-up-your-azure-account)-创建 Azure 帐户并创建语音服务订阅。 此统一的订阅，您可以访问语音转文本、 文本到语音，语音翻译和自定义语音门户。 然后，使用的语音服务订阅，创建第一个自定义语音项目。
 
-2.  [将数据上传](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#upload-your-datasets)-上传数据 （音频和文本） 使用自定义语音门户或自定义语音 API。 在门户中，你可以调查并评估发音分数和干扰信号比率。 有关详细信息，请参阅[如何准备数据以自定义语音](how-to-custom-voice-prepare-data.md)。
+2.  [将数据上传](how-to-custom-voice-create-voice.md#upload-your-datasets)-上传数据 （音频和文本） 使用自定义语音门户或自定义语音 API。 在门户中，你可以调查并评估发音分数和干扰信号比率。 有关详细信息，请参阅[如何准备数据以自定义语音](how-to-custom-voice-prepare-data.md)。
 
-3.  [训练模型](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#build-your-voice-font)– 使用你的数据来创建自定义文本到语音转换语音模型。 可以在不同的语言中对模型进行定型。 完成定型后，测试您的模型，并且如果您对结果满意，可以将模型部署。
+3.  [训练模型](how-to-custom-voice-create-voice.md#build-your-custom-voice-model)– 使用你的数据来创建自定义文本到语音转换语音模型。 可以在不同的语言中对模型进行定型。 完成定型后，测试您的模型，并且如果您对结果满意，可以将模型部署。
 
-4.  [将模型部署](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#create-and-use-a-custom-endpoint)-创建自定义终结点为您的文本到语音转换语音模型，并将其用于产品、 工具和应用程序中的语音合成。
+4.  [将模型部署](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint)-创建自定义终结点为您的文本到语音转换语音模型，并将其用于产品、 工具和应用程序中的语音合成。
 
 ## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
 
@@ -55,7 +55,7 @@ ms.locfileid: "65156907"
 
 正如组织数据、 模型、 测试和终结点的内容**项目**自定义语音门户中。 每个项目是语音的特定于国家/地区/语言和想要创建的性别。 例如，可能会创建用于使用英文版在美国 (EN-US) 的呼叫中心的聊天机器人的女性声音的项目。
 
-若要创建第一个项目，选择**Text-到-Speech/自定义语音**选项卡，然后单击**新项目**。 按照向导提供的说明，创建你的项目。 已创建了项目后，您将看到四个选项卡：**数据**，**培训**，**测试**，并且**部署**。 使用中提供的链接[后续步骤](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice?branch=release-build-cogserv-speech-services#next-steps)若要了解如何使用每个选项卡。
+若要创建第一个项目，选择**Text-到-Speech/自定义语音**选项卡，然后单击**新项目**。 按照向导提供的说明，创建你的项目。 已创建了项目后，您将看到四个选项卡：**数据**，**培训**，**测试**，并且**部署**。 使用中提供的链接[后续步骤](#next-steps)若要了解如何使用每个选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 

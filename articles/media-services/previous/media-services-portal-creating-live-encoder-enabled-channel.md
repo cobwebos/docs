@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务以使用 Azure 门户创建多比特率流实时传送视频 |Microsoft Docs
+title: 使用 Azure 媒体服务实时传送视频流，通过 Azure 门户创建多比特率流 | Microsoft Docs
 description: 本教程会逐步指导用户使用 Azure 门户创建频道，该频道接收单比特率实时流，然后将其编码为多比特率流。
 services: media-services
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: daab3c3b2a5b756686a4867350478faaa1142279
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726856"
 ---
-# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务以使用 Azure 门户创建多比特率流实时传送视频  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务实时传送视频流，通过 Azure 门户创建多比特率流  
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -43,7 +43,7 @@ ms.locfileid: "64726856"
 
 1. 将视频摄像机连接到计算机。 <br/>有关设置建议，请查看[简单且可移植的事件视频设备设置]( https://link.medium.com/KNTtiN6IeT)。
 
-    如果您没有对相机的访问，这样的工具[Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm)可以使用从视频文件生成的实时源。
+    如果你无法访问摄像机，则可以使用 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 等工具从视频文件生成实时源。
 1. 启动并配置一个可通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>另外，请查看以下博客：[采用 OBS 的实时传送视频流生产](https://link.medium.com/ttuwHpaJeT)。
 
     此步骤也可以在创建频道后执行。
@@ -66,18 +66,18 @@ ms.locfileid: "64726856"
 以下是完成本教程所需具备的条件。
 
 * 要完成本教程，需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 
-  有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+  有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个媒体服务 帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
 * 可以发送单比特率实时流的摄像头和编码器。
 
 ## <a name="create-a-channel"></a>创建通道
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择“媒体服务”，并单击媒体服务帐户名。
-2. 选择“实时传送视频流” 。
-3. 选择“自定义创建” 。 选择此选项可以创建一个频道来进行实时编码。
+2. 选择“实时传送视频流”  。
+3. 选择“自定义创建”  。 选择此选项可以创建一个频道来进行实时编码。
 
     ![创建通道](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
-4. 单击“设置” 。
+4. 单击“设置”  。
 
    1. 选择“实时编码”  频道类型。 此类型指定要创建能够进行实时编码的频道。 这意味着传入单比特率流将发送到频道，并使用指定的实时编码器设置编码为多比特率流。 有关详细信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。 单击“确定”。
    2. 指定频道的名称。
@@ -100,7 +100,7 @@ ms.locfileid: "64726856"
 6. 在“预览”  选项卡上，对预览应用 IP 限制。
 7. 在“编码”  选项卡上，指定编码预设。 
 
-    目前，唯一可以选择的系统预设是 **“默认 720p”**。 要指定自定义预设，请打开 Microsoft 支持票证。 输入创建的预设名称。 
+    目前，唯一可以选择的系统预设是 **“默认 720p”** 。 要指定自定义预设，请打开 Microsoft 支持票证。 输入创建的预设名称。 
 
 > [!NOTE]
 > 目前，通道启动可能最多需要 30 分钟。 频道重置可能最多需要 5 分钟。
@@ -141,28 +141,28 @@ ms.locfileid: "64726856"
 将流传输到通道后，可以通过创建资产、节目和流定位符来启动流式传输事件。 这会存档流，并使观看者可通过流式处理终结点使用该流。 
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
 
 可通过两种方式启动该事件： 
 
-1. 在“通道”页上，按“实时事件”添加新事件。
+1. 在“通道”  页上，按“实时事件”  添加新事件。
 
     指定：事件名称、资产名称、存档时段和加密选项。
 
     ![创建程序](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
 
-    如果保持选中“立即发布此实时事件”，会创建事件的发布 URL。
+    如果保持选中“立即发布此实时事件”  ，会创建事件的发布 URL。
 
-    准备好流式传输事件时，可以按“启动” 。
+    准备好流式传输事件时，可以按“启动”  。
 
     启动事件后，可以按“观看”  开始播放内容。
-2. 或者，可使用快捷方式并按“通道”页上的“开始播放”按钮。 这会创建默认资产、节目和流式处理定位符。
+2. 或者，可使用快捷方式并按“通道”  页上的“开始播放”  按钮。 这会创建默认资产、节目和流式处理定位符。
 
     事件命名为 **default** ，存档时段设置为 8 小时。
 
 可以从“实时事件”  页上观看所发布的事件。 
 
-如果单击“停播” ，则所有实时事件停止。 
+如果单击“停播”  ，则所有实时事件停止。 
 
 ## <a name="watch-the-event"></a>观看事件
 要观看事件，请在 Azure 门户中单击“观看”  ，或者先复制流式处理 URL，并使用选择的播放器进行播放。 
@@ -181,13 +181,13 @@ ms.locfileid: "64726856"
 ## <a name="view-archived-content"></a>查看存档的内容
 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
 
-若要管理资产，请选择“设置”，再单击“资产”。
+若要管理资产，请选择“设置”  ，再单击“资产”  。
 
 ![资产](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ## <a name="considerations"></a>注意事项
 * 目前，实时事件的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amslived@microsoft.com。
-* 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。
+* 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。 
 
 ## <a name="next-step"></a>后续步骤
 查看媒体服务学习路径。

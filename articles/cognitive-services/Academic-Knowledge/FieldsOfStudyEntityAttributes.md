@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
 ms.openlocfilehash: e9d6badf76efd03c0520a728af7b3e47b25f200a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61339579"
 ---
 # <a name="field-of-study-entity"></a>研究领域实体
@@ -23,7 +23,7 @@ ms.locfileid: "61339579"
 
 名称    |描述                            |Type       | 操作
 ------- | ------------------------------------- | --------- | ----------------------------
-ID      |实体 ID                              |Int64      |等于
+Id      |实体 ID                              |Int64      |等于
 FN      |研究领域规范化名称         |String     |等于
 DFN     |研究领域显示名称            |String     |无
 CC      |研究领域总引文计数    |Int32      |无  

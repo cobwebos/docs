@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 98b316f8a9c1c8ceba91870af4ff67b1aa854a9b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 06/20/2019
+ms.openlocfilehash: 0b92fb9c9bf022adce4cc0dd3e58ce8e476ed5b7
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785337"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303503"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库中的数据库
 
@@ -30,12 +30,15 @@ ms.locfileid: "65785337"
 
 ## <a name="import-from-a-bacpac-file-in-the-azure-portal"></a>在 Azure 门户中从 BACPAC 文件导入
 
-[Azure 门户](https://portal.azure.com)仅支持在 Azure SQL 数据库中创建单个数据库，并且仅从存储在 Azure Blob 存储中的 BACPAC 文件中创建。
+[Azure 门户](https://portal.azure.com)仅支持在 Azure SQL 数据库中创建单个数据库，并且仅从存储在 Azure Blob 存储中的 BACPAC 文件中创建   。
 
 > [!NOTE]
 > [托管实例](sql-database-managed-instance.md)当前不支持使用 Azure 门户从 BACPAC 文件将数据库迁移到实例数据库。 若要导入托管实例，请使用 SQL Server Management Studio 或 SQLPackage。
 
-1. 若要使用 Azure 门户从 BACPAC 文件导入新的单个数据库，请打开相应的数据库服务器页面，然后在工具栏上选择“导入数据库”。  
+> [!NOTE]
+> 处理导入/导出请求通过门户或 Powershell 提交的机需要存储 bacpac 文件和数据层应用程序框架 (DacFX) 所生成的临时文件。 所需的磁盘空间之间的差异显著数据库使用相同的大小，可能需要最多 3 倍的数据库大小。 运行导入/导出请求只能机拥有 450 GB 本地磁盘空间。 因此，某些请求可能会因"没有足够空间的磁盘上"错误。 在这种情况下，解决方法是具有足够的本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出时大于 150 GB 的数据库，请使用[SqlPackage](#import-from-a-bacpac-file-using-sqlpackage)要避免此问题。
+ 
+1. 若要使用 Azure 门户从 BACPAC 文件导入新的单个数据库，请打开相应的数据库服务器页面，然后在工具栏上选择“导入数据库”  。  
 
    ![数据库 import1](./media/sql-database-import/import1.png)
 
@@ -44,13 +47,13 @@ ms.locfileid: "65785337"
 
    ![数据库 import2](./media/sql-database-import/import2.png)
 
-4. 单击“确定”。
+4. 单击“确定”。 
 
-5. 若要监视导入的进度，请打开数据库的服务器页，然后在“设置”下，选择“导入/导出历史记录”。 成功导入后，状态为“已完成”。
+5. 若要监视导入的进度，请打开数据库的服务器页，然后在“设置”  下，选择“导入/导出历史记录”  。 成功导入后，状态为“已完成”  。
 
    ![数据库导入状态](./media/sql-database-import/import-status.png)
 
-6. 若要验证数据库在数据库服务器上是否处于活动状态，请选择“SQL 数据库”并验证新数据库是否为“联机”。
+6. 若要验证数据库在数据库服务器上是否处于活动状态，请选择“SQL 数据库”  并验证新数据库是否为“联机”  。
 
 ## <a name="import-from-a-bacpac-file-using-sqlpackage"></a>使用 SqlPackage 从 BACPAC 文件导入
 
@@ -60,7 +63,7 @@ ms.locfileid: "65785337"
 
 在大多数生产环境中，建议使用 SqlPackage 来实现缩放和性能。 有关 SQL Server 客户咨询团队使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
 
-以下 SqlPackage 命令可将 AdventureWorks2008R2 数据库从本地存储导入到名为 mynewserver20170403 的 Azure SQL 数据库服务器。 它将创建名为 myMigratedDatabase 的新数据库，其中包含“高级”服务层级和 P6 服务目标。 根据你的环境更改这些值。
+以下 SqlPackage 命令可将 AdventureWorks2008R2  数据库从本地存储导入到名为 mynewserver20170403  的 Azure SQL 数据库服务器。 它将创建名为 myMigratedDatabase  的新数据库，其中包含  “高级”服务层级和 P6  服务目标。 根据你的环境更改这些值。
 
 ```cmd
 SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.net;Initial Catalog=myMigratedDatabase;User Id=<your_server_admin_account_user_id>;Password=<your_server_admin_account_password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -81,6 +84,8 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > [托管的实例](sql-database-managed-instance.md)目前不支持将数据库迁移到使用 Azure PowerShell 将 BACPAC 文件从实例数据库。 若要导入托管实例，请使用 SQL Server Management Studio 或 SQLPackage。
 
+> [!NOTE]
+> 处理导入/导出请求通过门户或 Powershell 提交的机需要存储 bacpac 文件和数据层应用程序框架 (DacFX) 所生成的临时文件。 所需的磁盘空间之间的差异显著数据库使用相同的大小，可能需要最多 3 倍的数据库大小。 运行导入/导出请求只能机拥有 450 GB 本地磁盘空间。 因此，某些请求可能会因"没有足够空间的磁盘上"错误。 在这种情况下，解决方法是具有足够的本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出时大于 150 GB 的数据库，请使用[SqlPackage](#import-from-a-bacpac-file-using-sqlpackage)要避免此问题。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -104,7 +109,7 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 
  ```
 
- 可以使用 [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet 检查导入的进度。 如果在提交请求后立即运行此 cmdlet，通常会返回“状态: 正在进行”。 显示“状态: 成功”时，表示导入完毕。
+ 可以使用 [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet 检查导入的进度。 如果在提交请求后立即运行此 cmdlet，通常会返回“状态: 正在进行”  。 显示“状态: 成功”  时，表示导入完毕。
 
 ```powershell
 $importStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink

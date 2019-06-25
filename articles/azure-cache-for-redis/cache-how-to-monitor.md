@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: 2cfd5a99144af1120afbf06fe6222228a9332bb6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65787429"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>如何监视用于 Redis 的 Azure 缓存
@@ -28,31 +28,31 @@ ms.locfileid: "65787429"
 
 <a name="view-cache-metrics"></a>
 
-若要查看缓存指标，请[浏览](cache-configure.md#configure-azure-cache-for-redis-settings)到 [Azure 门户](https://portal.azure.com)中的缓存实例。  用于 Redis 的 Azure 缓存在“概述”边栏选项卡和“Redis 指标”边栏选项卡上提供了一些内置图表。 通过添加或删除度量值以及更改报告间隔可以自定义每个图表。
+若要查看缓存指标，请[浏览](cache-configure.md#configure-azure-cache-for-redis-settings)到 [Azure 门户](https://portal.azure.com)中的缓存实例。  用于 Redis 的 Azure 缓存在“概述”  边栏选项卡和“Redis 指标”  边栏选项卡上提供了一些内置图表。 通过添加或删除度量值以及更改报告间隔可以自定义每个图表。
 
 ![Redis 指标](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
 
 ## <a name="view-pre-configured-metrics-charts"></a>查看预配置的指标图表
 
-“概述”边栏选项卡具有以下预配置的监视图表。
+“概述”  边栏选项卡具有以下预配置的监视图表。
 
 * [监视图表](#monitoring-charts)
 * [使用情况图表](#usage-charts)
 
 ### <a name="monitoring-charts"></a>监视图表
-“概述”边栏选项卡中的“监视”部分有“命中数和未命中数”、“获取数和设置数”、“连接数”以及“总命令数”图表。
+“概述”  边栏选项卡中的“监视”  部分有“命中数和未命中数”  、“获取数和设置数”  、“连接数”  以及“总命令数”  图表。
 
 ![监视图表](./media/cache-how-to-monitor/redis-cache-monitoring-part.png)
 
 ### <a name="usage-charts"></a>图表使用情况
-“概述”边栏选项卡中的“使用情况”部分有“Redis 服务器负载”、“内存使用情况”、“网络带宽”和“CPU 使用率”图表，并且还显示缓存实例的“定价层”。
+“概述”边栏选项卡中的“使用情况”部分有“Redis 服务器负载”、“内存使用情况”、“网络带宽”和“CPU 使用率”图表，并且还显示缓存实例的“定价层”        。
 
 ![图表使用情况](./media/cache-how-to-monitor/redis-cache-usage-part.png)
 
-“定价层”显示缓存定价层，并可用于将缓存[缩放](cache-how-to-scale.md)到不同的定价层。
+“定价层”显示缓存定价层，并可用于将缓存[缩放](cache-how-to-scale.md)到不同的定价层。 
 
 ## <a name="view-metrics-with-azure-monitor"></a>通过 Azure Monitor 查看指标
-若要使用 Azure Monitor 查看 Redis 指标和创建自定义图表，从“资源菜单”单击“指标”，并使用所需的指标、报告间隔、图表类型等对图表进行自定义。
+若要使用 Azure Monitor 查看 Redis 指标和创建自定义图表，从“资源菜单”  单击“指标”  ，并使用所需的指标、报告间隔、图表类型等对图表进行自定义。
 
 ![Redis 指标](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
@@ -61,15 +61,15 @@ ms.locfileid: "65787429"
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>导出缓存指标
-默认情况下，Azure Monitor 中的缓存指标将被[存储 30 天](../azure-monitor/platform/data-platform-metrics.md)，然后将被删除。 若要延长缓存指标的保存时间，使其超过 30 天，可以为缓存指标[指定存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md)，并指定“保留期（天）”策略。 
+默认情况下，Azure Monitor 中的缓存指标将被[存储 30 天](../azure-monitor/platform/data-platform-metrics.md)，然后将被删除。 若要延长缓存指标的保存时间，使其超过 30 天，可以为缓存指标[指定存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md)，并指定“保留期（天）”  策略。 
 
 若要配置缓存指标的存储帐户：
 
-1. 从“用于 Redis 的 Azure 缓存”边栏选项卡中的“资源菜单”单击“诊断”。
-2. 单击“打开”。
-3. 选中“存档到存储帐户”。
+1. 从“用于 Redis 的 Azure 缓存”  边栏选项卡中的“资源菜单”  单击“诊断”  。
+2. 单击“打开”  。
+3. 选中“存档到存储帐户”  。
 4. 选择要在其中存储缓存指标的存储帐户。
-5. 选中“1 分钟”复选框，并指定“保留期（天）”策略。 如果不想应用任何保留期策略也不想永久保留数据，可将“保留期（天）”设置为“0”。
+5. 选中“1 分钟”  复选框，并指定“保留期（天）”  策略。 如果不想应用任何保留期策略也不想永久保留数据，可将“保留期（天）”  设置为“0”  。
 6. 单击“ **保存**”。
 
 ![Redis 诊断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
@@ -87,7 +87,7 @@ ms.locfileid: "65787429"
 > 
 
 ## <a name="available-metrics-and-reporting-intervals"></a>可用度量值和报告间隔
-将使用多个报告间隔报告缓存指标，其中包括“前一小时”、“今天”、“前一周”和“自定义”。 每个指标图表的“指标”边栏选项卡会在图表中显示每个指标的平均值、最小值和最大值，并且一些指标会显示总报告间隔。 
+将使用多个报告间隔报告缓存指标，其中包括“前一小时”  、“今天”  、“前一周”  和“自定义”  。 每个指标图表的“指标”  边栏选项卡会在图表中显示每个指标的平均值、最小值和最大值，并且一些指标会显示总报告间隔。 
 
 每个度量值均包含两个版本。 一个指标测量整个缓存的性能以及使用[群集](cache-how-to-premium-clustering.md)的缓存的性能，名称中包含 `(Shard 0-9)` 的另一指标版本则测量缓存中单个分片的性能。 例如，如果缓存有 4 个分片，`Cache Hits` 就是整个缓存的命中总数，而 `Cache Hits (Shard 3)` 就只是该缓存分片的命中数。
 
@@ -126,7 +126,7 @@ ms.locfileid: "65787429"
 * 调用 Webhook
 * 调用 Azure 逻辑应用
 
-若要配置缓存的预警规则，从“资源菜单”单击“预警规则”。
+若要配置缓存的预警规则，从“资源菜单”  单击“预警规则”  。
 
 ![监视](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "65787429"
 >
 >
 
-若要查看缓存的活动日志，从“资源菜单”单击“活动日志”。
+若要查看缓存的活动日志，从“资源菜单”  单击“活动日志”  。
 
 有关活动日志的详细信息，请参阅 [Azure 活动日志概述](../azure-monitor/platform/activity-logs-overview.md)。
 

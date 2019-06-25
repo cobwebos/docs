@@ -23,7 +23,7 @@ abstract:
       height: 110
       src: ./media/index/video.png
       width: 246
-    title: 所述条件访问
+    title: 条件访问介绍
     href: 'https://www.youtube.com/watch?v=XruceejcCKQ'
     width: 246
 sections:

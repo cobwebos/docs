@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/02/2018
 ms.author: hascipio; v-divte; v-miclar
 ms.openlocfilehash: d8b532793282db18d6182237bb921bc118ea717b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938454"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>创建 VHD 期间出现的常见问题 (FAQ)
@@ -71,7 +71,7 @@ Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像�
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Azure 市场是否支持 32 位应用程序或服务？
 
-一般来说是不可以的。  Azure VM 支持的操作系统和标准服务均为 64 位。  但是，从技术角度看，为了向后兼容，大多数 64 位操作系统都支持运行 32 位版本的应用程序。  但是，不支持在 VM 解决方案中使用 32 位应用程序，因此，我们强烈建议不要使用 32 位版本。  请将应用程序重新编译为 64 位项目。
+一般来说是不可以的。  Azure VM 支持的操作系统和标准服务均为 64 位。  但是，从技术角度看，为了向后兼容，大多数 64 位操作系统都支持运行 32 位版本的应用程序。  但是，不支持在 VM 解决方案中使用 32 位应用程序，因此，我们强烈建议不要使用 32 位版本。   请将应用程序重新编译为 64 位项目。
 
 有关详细信息，请参阅以下文章：
 - [运行 32 位应用程序](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)

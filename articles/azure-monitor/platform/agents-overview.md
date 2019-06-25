@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
 ms.openlocfilehash: 12eea032c37c8d737ae004d622b72536195c4444
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65977574"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Azure 监视代理概述 
@@ -72,7 +72,7 @@ Microsoft Azure 提供多种方式用于从 Azure、数据中心或其他云提�
 ## <a name="dependency-agent"></a>依赖关系代理
 依赖关系代理是作为服务映射解决方案，最初并非由 Microsoft 开发的一部分开发的。 [服务映射](../insights/service-map.md)并[Vm 的 Azure Monitor](../insights/vminsights-overview.md)需要依赖关系代理在 Windows 和 Linux 上的虚拟机并进行了集成与 Log Analytics 代理来收集有关在虚拟运行的进程发现的数据计算机和外部进程依赖关系。 它将此数据存储在 Log Analytics 工作区中，并直观显示已发现的互连的组件。
 
-可能需要以某种形式组合使用这些代理才能监视 VM。 这些代理可与 Azure 扩展并列安装，但在 Linux 上，必须先安装 Log Analytics 代理，否则安装将会失败。 
+可能需要以某种形式组合使用这些代理才能监视 VM。 这些代理可与 Azure 扩展并列安装，但在 Linux 上，必须先安装 Log Analytics 代理，否则安装将会失败。  
 
 ## <a name="next-steps"></a>后续步骤
 

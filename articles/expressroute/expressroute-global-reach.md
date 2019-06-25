@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 28cfbc7183628b00c463f1c3a8a954ba4074409b
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65415962"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute 的全球性覆盖
@@ -36,7 +36,7 @@ ExpressRoute Global Reach 旨在补充服务提供商的 WAN 实施，并连接�
 * 加拿大
 * 法国
 * 德国
-* 香港特别行政区
+* 中国香港特别行政区
 * 爱尔兰
 * 日本
 * 韩国

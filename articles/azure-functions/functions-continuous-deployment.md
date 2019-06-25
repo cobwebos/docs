@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: d4d2f24a0a7b1f01627ed2cea4a5732ca0e001c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2dc5fab0966c2ead0276cd8b23ea764bd4f9ef59
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068386"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190478"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的连续部署
 
@@ -32,7 +32,7 @@ Azure functions 单位是部署的 function app。 这意味着函数应用中�
 
 ## <a name="requirements-for-continuous-deployment"></a>连续部署的要求
 
-为连续部署成功，你的目录结构必须是兼容的 Azure Functions 需要的以下基本文件夹结构：
+为连续部署成功，你的目录结构必须是兼容的 Azure Functions 需要的基本文件夹结构如下：
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
@@ -44,13 +44,15 @@ Azure functions 单位是部署的 function app。 这意味着函数应用中�
 
     ![打开部署中心](./media/functions-continuous-deployment/platform-features.png)
 
-2. 上**部署中心**，选择**GitHub**有关**源代码管理** > **Authorize**。
+2. 在中**部署中心**，选择**GitHub**，然后选择**Authorize**。 或者，如果您已经授权 GitHub，选择**继续**。 
 
     ![部署中心](./media/functions-continuous-deployment/github.png)
 
-3. 选择**授权 AzureAppService** > **继续**。
+3. 在 GitHub 中，选择**授权 AzureAppService**。 
 
     ![授权](./media/functions-continuous-deployment/authorize.png)
+    
+    在 Azure 门户中**部署中心**，选择**继续**。
 
 4. 选择以下生成提供程序之一：
 

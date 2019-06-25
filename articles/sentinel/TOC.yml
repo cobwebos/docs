@@ -40,6 +40,8 @@
               href: connect-azure-atp.md
             - name: 连接 Azure 安全中心
               href: connect-azure-security-center.md
+            - name: 连接域名服务器
+              href: connect-dns.md
             - name: 连接 Microsoft Web 应用程序防火墙
               href: connect-microsoft-waf.md
             - name: 连接 Windows 防火墙

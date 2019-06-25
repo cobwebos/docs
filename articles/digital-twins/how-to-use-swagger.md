@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 842c35a1575c7bcf6f547fb04d5680178b3bee78
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c402b82b91b02f8d9619c851d09c689fd103c9fe
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730351"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116437"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure 数字孪生 Swagger 参考文档
 
@@ -104,7 +104,7 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | 名称  | 替换为 | 示例 |
+    | Name  | 替换为 | 示例 |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | 你在门户中找到的管理 REST API 文档 URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
@@ -112,7 +112,7 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 
     ![Azure AD 应用注册添加 api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
 
-4. 配置为允许 OAuth 2.0 隐式流的应用程序清单。 单击“清单”以打开应用的应用程序清单  。 将“oauth2AllowImplicitFlow”设置为 `true`  。
+4. 配置为允许 OAuth 2.0 隐式流的应用程序清单。 选择**清单**打开您的应用程序的应用程序清单。 将“oauth2AllowImplicitFlow”设置为 `true`  。
 
     ![Azure AD 隐式流](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
 
@@ -120,9 +120,9 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 
 后完成的 Azure Active Directory 注册：
 
-6. 单击**Authorize** swagger 页上的按钮。
+6. 选择**Authorize** swagger 页上的按钮。
 
-    [![单击 Swagger 授权按钮](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![选择了在 Swagger 授权按钮](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
 7. 粘贴到的应用程序 ID **client_id**字段。
 

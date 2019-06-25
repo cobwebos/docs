@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 7d9c21b46f760055846194f52f1594f25b1ee989
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66494746"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>通过订阅事件网格通知将 Blob 引入 Azure 数据资源管理器
@@ -38,7 +38,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
     **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | Name | *test-grid-connection* | 要创建的事件网格的名称。|
+    | 名称 | *test-grid-connection* | 要创建的事件网格的名称。|
     | 事件架构 | *事件网格架构* | 事件网格要使用的架构。 |
     | 主题类型 | *存储帐户* | 事件网格主题的类型。 |
     | 主题资源 | *gridteststorage* | 你的存储帐户的名称。 |

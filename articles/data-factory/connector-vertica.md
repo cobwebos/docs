@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 857cae886dec2872c083771e4b1fd57a27d2991b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60935613"
 ---
 # <a name="copy-data-from-vertica-using-azure-data-factory"></a>使用 Azure 数据工厂从 Vertica 复制数据 
@@ -99,11 +99,11 @@ Vertica 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Vertica 数据集支持的属性列表。
 
-要从 Vertica 复制数据，请将数据集的 type 属性设置为“VerticaTable”。 支持以下属性：
+要从 Vertica 复制数据，请将数据集的 type 属性设置为“VerticaTable”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：VerticaTable | 是 |
+| type | 数据集的 type 属性必须设置为：VerticaTable  | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -128,11 +128,11 @@ Vertica 链接服务支持以下属性：
 
 ### <a name="vertica-as-source"></a>以 Vertica 作为源
 
-要从 Vertica 复制数据，请将复制活动中的源类型设置为“VerticaSource”。 复制活动源部分支持以下属性：
+要从 Vertica 复制数据，请将复制活动中的源类型设置为“VerticaSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：VerticaSource | 是 |
+| type | 复制活动源的 type 属性必须设置为：VerticaSource  | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

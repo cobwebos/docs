@@ -10,7 +10,7 @@
     - name: 快速入门
       expanded: true
       items:
-        - name: 初始化并购买容量
+        - name: 初始化和预配容量
           href: quickstart-create-cloudsimple-service.md
         - name: 配置私有云环境
           href: quickstart-create-private-cloud.md
@@ -62,7 +62,7 @@
           href: access-cloudsimple-portal.md
         - name: 管理节点
           items:
-            - name: 购买节点
+            - name: 预配节点
               href: create-nodes.md
         - name: 管理私有云资源
           items:

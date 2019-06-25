@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: a77cf20be30361abf6590dbd53bdb07c327eb9d8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205003"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
@@ -41,7 +41,7 @@ ms.locfileid: "65205003"
 
 ### <a name="logging-anonymous-requests"></a>记录匿名请求
 
- 记录以下类型的匿名请求：
+ 将记录以下类型的匿名请求：
 
 - 成功的请求
 - 服务器错误
@@ -52,12 +52,12 @@ ms.locfileid: "65205003"
 
 ## <a name="how-logs-are-stored"></a>如何存储日志
 
-所有日志以块 Blob 的形式存储在一个名为 `$logs` 的容器中，为存储帐户启用存储分析时自动创建该容器。 `$logs` 容器位于存储帐户的 Blob 命名空间中，例如：`http://<accountname>.blob.core.windows.net/$logs`。 启用存储分析后无法删除该容器，但可以删除其内容。 如果使用存储浏览工具直接导航到容器，则会看到包含日志记录数据的所有 Blob。
+所有日志以块 Blob 的形式存储在一个名为 `$logs` 的容器中，为存储帐户启用存储分析时自动创建该容器。 `$logs` 容器位于存储帐户的 Blob 命名空间中，例如：`http://<accountname>.blob.core.windows.net/$logs`。 在启用存储分析后，无法删除该容器，但可以删除其内容。 如果使用存储浏览工具直接导航到容器，则会看到包含日志记录数据的所有 Blob。
 
 > [!NOTE]
 >  执行容器列出操作（例如“列出容器”操作）时，不会显示 `$logs` 容器。 必须直接访问该容器。 例如，可以使用“列出 Blob”操作访问 `$logs` 容器中的 Blob。
 
-记录请求时，存储分析以块形式上传中间结果。 存储分析会定期提交这些块，并将其作为 Blob 提供。 最长可能需要在一小时后，日志才会显示在 **$logs** 容器中的 Blob 内，具体时间取决于存储服务刷新日志写入器的频率。 在同一小时内创建的日志中可能存在重复的记录。 可以通过检查 RequestId 和操作编号确定记录是否为重复记录。
+在记录请求时，存储分析将中间结果作为块进行上传。 存储分析定期提交这些块，并将其作为 Blob 提供。 最长可能需要在一小时后，日志才会显示在 **$logs** 容器中的 Blob 内，具体时间取决于存储服务刷新日志写入器的频率。 在同一小时内创建的日志中可能存在重复的记录。 可以通过检查 RequestId 和操作编号确定记录是否为重复记录。  
 
 如果每小时写入大量的日志数据和多个文件，则你可以使用 Blob 元数据并通过检查 Blob 元数据字段来确定日志包含哪些数据。 这种做法也很有效，因为将数据写入日志文件时，有时会出现延迟：与 Blob 名称相比，Blob 元数据能够更准确地指示 Blob 内容。
 
@@ -89,13 +89,13 @@ ms.locfileid: "65205003"
 
 |特性|描述|
 |---------------|-----------------|
-|`<service-name>`|存储服务的名称。 例如： `blob`， `table`，或 `queue`|
+|`<service-name>`|存储服务的名称 例如： `blob`， `table`，或 `queue`|
 |`YYYY`|用四位数表示的日志年份。 例如： `2011`|
 |`MM`|用两位数表示的日志月份。 例如： `07`|
 |`DD`|用两位数表示的日志日期。 例如： `31`|
 |`hh`|用两位数表示的日志起始小时，采用 24 小时 UTC 格式。 例如： `18`|
 |`mm`|用两位数表示的日志起始分钟。 **注意：** 最新版本的存储分析不支持此值，其值始终为 `00`。|
-|`<counter>`|从零开始的计数器，用六位数字表示 1 小时内为存储服务生成的日志 Blob 数。 此计数器从 `000000` 开始。 例如： `000001`|
+|`<counter>`|从零开始且具有六位数字的计数器，表示在 1 小时内为存储服务生成的日志 Blob 数。 此计数器从 `000000` 开始。 例如： `000001`|
 
  下面是合并了前述示例的完整示例日志名称：
 
@@ -105,7 +105,7 @@ ms.locfileid: "65205003"
 
  `https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log`
 
- 记录存储请求时，生成的日志名称与完成请求的操作时间（小时）关联。 例如，如果在 2011 年 7 月 31 日下午 6:30 完成 GetBlob 请求，将具有以下前缀写入的日志： `blob/2011/07/31/1800/`
+ 在记录存储请求时，生成的日志名称与完成请求的操作时间（小时）关联。 例如，如果在 2011 年 7 月 31 日下午 6:30 完成 GetBlob 请求，将具有以下前缀写入的日志： `blob/2011/07/31/1800/`
 
 ### <a name="log-metadata"></a>日志元数据
 
@@ -131,7 +131,7 @@ ms.locfileid: "65205003"
 
 ### <a name="enable-storage-logging-using-the-azure-portal"></a>使用 Azure 门户启用存储日志记录  
 
-在 Azure 门户中，使用“诊断设置(经典)”边栏选项卡控制存储日志记录。可以通过存储帐户的“菜单”边栏选项卡的“监视(经典)”部分访问该项设置。
+在 Azure 门户中，使用“诊断设置(经典)”边栏选项卡控制存储日志记录。可以通过存储帐户的“菜单”边栏选项卡的“监视(经典)”部分访问该项设置。   
 
 可以指定要记录的存储服务，以及记录数据的保留期（以天为单位）。  
 
@@ -189,7 +189,7 @@ queueClient.SetServiceProperties(serviceProperties);
 > [!NOTE]
 >  AzCopy 随附在 Azure SDK 中，但你始终可以从 [https://aka.ms/AzCopy](https://aka.ms/AzCopy) 下载最新版本。 默认情况下，AzCopy 安装在文件夹 **C:\Program Files (x86)\Microsoft SDKs\Windows Azure\AzCopy** 中。尝试在命令提示符或 PowerShell 窗口中运行该工具之前，应将此文件夹添加到自己的路径中。  
 
- 以下示例演示如何下载队列服务的日志数据，这些数据的起始时间为 2014 年 5 月 20 日上午 9 点、10 点和 11 点。 **/S** 参数导致 AzCopy 根据日志文件名中的日期和时间生成本地文件夹结构；**/V** 参数导致 AzCopy 生成详细输出；**/Y** 参数导致 AzCopy 覆盖所有本地文件。 请将 **<yourstorageaccount\>** 替换为你的存储帐户名称，将 **<yourstoragekey\>** 替换为你的存储帐户密钥。  
+ 以下示例演示如何下载队列服务的日志数据，这些数据的起始时间为 2014 年 5 月 20 日上午 9 点、10 点和 11 点。 **/S** 参数导致 AzCopy 根据日志文件名中的日期和时间生成本地文件夹结构； **/V** 参数导致 AzCopy 生成详细输出； **/Y** 参数导致 AzCopy 覆盖所有本地文件。 请将 **<yourstorageaccount\>** 替换为你的存储帐户名称，将 **<yourstoragekey\>** 替换为你的存储帐户密钥。  
 
 ```
 AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs\Storage' '2014/05/20/09' '2014/05/20/10' '2014/05/20/11' /sourceKey:<yourstoragekey> /S /V /Y  

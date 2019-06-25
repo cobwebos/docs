@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: fa2de14ada5d24531dfecc7f2f709a87f39ea6cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: bf2262d8a222cec6c5d0d7e53ded7b2994481656
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65826434"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205701"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp 文件网络规划指南
 
@@ -42,7 +42,7 @@ Azure 的 NetApp 文件卷用于包含在名为专用子网[委派子网](https:
 
 以下网络限制适用于 Azure 的 NetApp 文件：
 
-* 可以连接到的卷 （与 VNet 或跨对等互连的 Vnet） 的 Vm 数量不能超过 1000年。
+* 在 VNet 中使用 Azure NetApp 文件 （包括对等的 Vnet） 使用的 Ip 数不能超过 1000年。
 * 在每个 Azure 虚拟网络 (VNet) 中，只能将一个子网委派给 Azure NetApp 文件。
 
 
@@ -103,13 +103,13 @@ Azure 的 NetApp 文件卷用于包含在名为专用子网[委派子网](https:
 
 此外，请考虑了 VNet 1 VNet 2 建立对等互连和 VNet 2 在同一区域中的 VNet 3 与对等互连的方案。 可从 VNet 1 资源连接到 VNet 2 中的资源，但它无法连接到 VNet 3 中的资源，除非 VNet 1 和 VNet 3 对等互连。 
 
-在上图中，虽然 VM 3 可以连接到第 1 卷，但 VM 4 无法连接到第 2 卷中。  原因是，辐射 Vnet 不对等互连，并且_通过 VNet 对等互连不支持转换性路由_。
+在上图中，虽然 VM 3 可以连接到第 1 卷，但 VM 4 无法连接到第 2 卷中。  这样做的原因是，辐射 Vnet 不对等互连，并且_通过 VNet 对等互连不支持转换性路由_。
 
 ## <a name="hybrid-environments"></a>混合环境
 
 下图说明了混合环境： 
 
-![混合网络环境](../media/azure-netapp-files/azure-netapp-files-networ-hybrid-environment.png)
+![混合网络环境](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
 在混合方案中，从本地数据中心的应用程序需要在 Azure 中资源的访问权限。  这种情况，你想要将你的数据中心扩展到 Azure，还是想要使用 Azure 的本机服务或用于灾难恢复。 请参阅[VPN 网关规划选项](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)有关如何连接到通过站点到站点 VPN 或 ExpressRoute 的 Azure 中的资源的多个本地资源。
 
@@ -117,10 +117,10 @@ Azure 的 NetApp 文件卷用于包含在名为专用子网[委派子网](https:
 
 具体取决于配置。 可从内部部署的资源连接到中心和辐射中的资源。
 
-在如上所示的拓扑，在本地网络连接到中心 VNet 在 Azure 中，并有 2 个辐射 Vnet 与中心 VNet 对等互连。  在此方案中，对于 Azure NetApp 文件卷支持的连接选项如下所示：
+在如上所示的拓扑，在本地网络连接到中心 VNet 在 Azure 中，并有 2 个辐射 Vnet 位于同一区域中与中心 VNet 对等互连。  在此方案中，对于 Azure NetApp 文件卷支持的连接选项如下所示：
 
-* VM 1 和 VM 2 的本地资源可以通过连接到卷 1 在中心站点到站点 VPN 或 ExpressRoute。 
-* VM 1 和 VM 2 的本地资源可以连接到第 2 卷或卷 3。
+* VM 1 和 VM 2 的本地资源可以通过连接到卷 1 在中心站点到站点 VPN 或 Express Route。 
+* VM 1 和 VM 2 的本地资源可以通过站点到站点 VPN 和区域 Vnet 对等互连连接到第 2 卷或卷 3。
 * VM 3 在中心 VNet 可以连接到卷中辐射 VNet 1 2 和第三卷在辐射 VNet 2。
 * VM 4 从辐射 VNet 1 和辐射 VNet 2 中为 VM 5 在中心 VNet 中可以连接到卷 1。
 

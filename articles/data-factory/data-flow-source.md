@@ -3,16 +3,15 @@ title: 设置 Azure 数据工厂中映射 Data Flow 功能的源转换
 description: 了解如何设置映射数据流中的源转换。
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 5b53819c1d30f6cd62c5941d4b44d70a4996daad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86e30c465a605681519565261beec75d88ccd472
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67117882"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190803"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>源映射数据流转换 
 
@@ -124,6 +123,14 @@ ms.locfileid: "67117882"
 
 * **查询**：输入针对源的 SQL 查询。 此设置将覆盖你在数据集中选择任何表。 请注意， **Order By**子句不受支持，但可以设置一个完整的 SELECT FROM 语句。 此外可以使用用户定义表函数。 **选择 * 从 udfGetData()** 是返回一个表的 SQL 中的 UDF。 此查询将生成可以使用在数据流中的源表。
 * **批大小**：输入要分块读取到大型数据的批处理大小。
+* **隔离级别**:ADF 映射数据流中的 SQL 源的默认值为 Read Uncommitted。 可以更改此处的隔离级别为下列值之一：
+* 已提交读
+* 未提交读
+* 可重复的读取
+* 可序列化
+* 无 （忽略隔离级别）
+
+![隔离级别](media/data-flow/isolationlevel.png "隔离级别")
 
 > [!NOTE]
 > 文件操作仅当运行在管道中使用执行数据流活动的管道运行 （管道调试或执行运行） 从启动流的数据。 文件操作*不这样做*数据流调试模式运行。
