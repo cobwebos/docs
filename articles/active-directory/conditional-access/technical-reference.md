@@ -55,11 +55,11 @@ ms.locfileid: "67112103"
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- Microsoft Intune 注册
+- Microsoft Intune Enrollment
 - Microsoft Planner
 - Microsoft Power BI
 - Microsoft PowerApps
-- Microsoft 在必应中搜索
+- Microsoft Search in Bing
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
@@ -119,8 +119,8 @@ ms.locfileid: "67112103"
 | Windows 10             | Internet Explorer、Microsoft Edge、Chrome     |
 | Windows 8/8.1        | Internet Explorer、Chrome                     |
 | Windows 7              | Internet Explorer、Chrome                     |
-| iOS                    | Safari，Microsoft Edge Intune 托管浏览器 |
-| Android                | Chrome、 Microsoft Edge Intune 托管浏览器 |
+| iOS                    | Safari、 Microsoft Edge、 Intune Managed Browser |
+| Android                | Chrome、 Microsoft Edge、 Intune Managed Browser |
 | Windows Phone          | Internet Explorer、Microsoft Edge             |
 | Windows Server 2016    | Internet Explorer、Microsoft Edge             |
 | Windows Server 2016    | Chrome                                        |
@@ -140,19 +140,19 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 
 |    |    |
 | --- | --- |
-| 路径 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 第 |
+| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Name | 1 |
 | Type | REG_SZ (String) |
-| 数据 | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
+| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
 对于 Windows 8.1 和 7  中的 Chrome 支持，请创建以下注册表项：
 
 |    |    |
 | --- | --- |
-| 路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 第 |
+| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Name | 1 |
 | Type | REG_SZ (String) |
-| 数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。
 
