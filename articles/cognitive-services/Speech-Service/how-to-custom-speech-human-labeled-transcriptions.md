@@ -31,8 +31,8 @@ ms.locfileid: "67060849"
 
 | 要避免的字符 | 替换字符 | 说明 |
 |---------------------|--------------|-------|
-| "Hello world" | “Hello world” | 开始和结束引号都有相应的 ASCII 字符已替换。 |
-| John 的一天 | John 的一天 | 撇号已替换的相应 ASCII 字符。 |
+| “Hello world” | “Hello world” | 开始和结束引号都有相应的 ASCII 字符已替换。 |
+| John’s day | John's day | 撇号已替换的相应 ASCII 字符。 |
 | it was good—no, it was great! | it was good--no, it was great! | 长破折号已替换为两个连字符。 |
 
 ### <a name="text-normalization-for-us-english"></a>对于美国英语文本规范化
@@ -54,9 +54,9 @@ ms.locfileid: "67060849"
 | Ke$ha | Kesha |
 | How long is the 2x4 | How long is the two by four |
 | The meeting goes from 1-3pm | The meeting goes from one to three pm |
-| 我的血液类型是 O + | My blood type is O positive |
-| water 是 H20 | 使用复杂度为 O H 2 |
-| 播放通过 Van Halen OU812 | 播放 O U 通过 Van Halen 8 1 2 |
+| My blood type is O+ | My blood type is O positive |
+| Water is H20 | Water is H 2 O |
+| Play OU812 by Van Halen | Play O U 8 1 2 by Van Halen |
 | UTF-8 with BOM | U T F 8 with BOM |
 
 以下的规范化规则自动应用到转录：
