@@ -99,11 +99,11 @@ Azure 流分析 JavaScript 用户定义的函数支持标准的内置 JavaScript
 
 流分析 | JavaScript
 --- | ---
-bigint | 数字（JavaScript 只能精确呈现最大 2^53 的整数）
-DateTime | 日期（JavaScript 仅支持毫秒）
+bigint | Number（JavaScript 只能精确呈现最大 2^53 的整数）
+DateTime | Date（JavaScript 仅支持毫秒）
 double | Number
 nvarchar(MAX) | String
-记录 | 对象
+Record | Object
 Array | Array
 Null | Null
 
@@ -114,9 +114,9 @@ Null | Null
 JavaScript | 流分析
 --- | ---
 Number | 如果数字已舍入并介于 long.MinValue 和 long.MaxValue 之间，则为 Bigint；否则为 double
-日期 | DateTime
+Date | DateTime
 String | nvarchar(MAX)
-对象 | 记录
+Object | Record
 Array | Array
 Null、Undefined | Null
 其他任何类型（例如函数或错误） | 不支持（导致运行时错误）
