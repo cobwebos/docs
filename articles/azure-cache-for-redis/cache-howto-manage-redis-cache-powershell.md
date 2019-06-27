@@ -130,14 +130,14 @@ ms.locfileid: "62097923"
 | Name |缓存的名称 | |
 | Location |缓存的位置 | |
 | ResourceGroupName |将在其中创建缓存的资源组名称 | |
-| 大小 |缓存的大小。 有效值是：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
+| Size |缓存的大小。 有效值是：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |在启用群集的情况下创建高级缓存时要创建的分片数目。 有效值是：1、2、3、4、5、6、7、8、9、10 | |
 | SKU |指定缓存的 SKU。 有效值是：基本、标准、高级 |标准 |
 | RedisConfiguration |指定 Redis 配置设置。 有关每个设置的详细信息，请参阅以下 [RedisConfiguration 属性](#redisconfiguration-properties)表。 | |
 | EnableNonSslPort |指出是否启用非 SSL 端口。 |False |
 | MaxMemoryPolicy |此参数已弃用 - 请改用 RedisConfiguration。 | |
 | StaticIP |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中选择一个。 | |
-| 子网 |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 | |
+| Subnet |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 | |
 | VirtualNetwork |在 VNET 中托管缓存时，指定要在其中部署缓存的 VNET 的资源 ID。 | |
 | KeyType |指定续订访问密钥时要重新生成哪个访问密钥。 有效值是：Primary、Secondary | |
 
