@@ -85,12 +85,12 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 | 参数 | Type | 描述 |
 |:--- |:--- |:--- |
-| accountName |字符串 |Azure 自动化帐户名称。 |
-| pricingTier |字符串 |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
-| regionId |字符串 |Azure 自动化帐户的区域。 |
-| solutionName |字符串 |解决方案名称。  如果要通过快速入门模板部署解决方案，则应将 solutionName 定义为参数，以便能够定义字符串，而无需用户指定一个字符串。 |
-| workspaceName |字符串 |Log Analytics 工作区名称。 |
-| workspaceRegionId |字符串 |Log Analytics 工作区的区域。 |
+| accountName |string |Azure 自动化帐户名称。 |
+| pricingTier |string |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
+| regionId |string |Azure 自动化帐户的区域。 |
+| solutionName |string |解决方案名称。  如果要通过快速入门模板部署解决方案，则应将 solutionName 定义为参数，以便能够定义字符串，而无需用户指定一个字符串。 |
+| workspaceName |string |Log Analytics 工作区名称。 |
+| workspaceRegionId |string |Log Analytics 工作区的区域。 |
 
 
 以下是可以复制并粘贴到解决方案文件的标准参数的结构。  
@@ -225,9 +225,9 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 | 属性 | 描述 |
 |:--- |:--- |
 | name |解决方案名称。 |
-| 版本 |由作者确定的解决方案版本。 |
+| version |由作者确定的解决方案版本。 |
 | product |标识解决方案的唯一字符串。 |
-| 发布者 |解决方案发布者。 |
+| publisher |解决方案发布者。 |
 
 
 
