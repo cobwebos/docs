@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 92cb427149e6e6cbddfb96c6e4488017641e6482
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7dbb04a9d002fdcff49d28f69ee0975500bb7ed0
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761737"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340786"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 
@@ -90,6 +90,10 @@ ms.locfileid: "60761737"
 * 不能在主键或使用 ALTER INDEX 的唯一约束上设置 IGNORE_DUP_KEY，需删除并重新创建该索引。  
 * 可使用 ALTER INDEX 为唯一索引设置 IGNORE_DUP_KEY 选项，该索引不同于 PRIMARY KEY/UNIQUE 约束，它是使用 CREATE INDEX 或 INDEX 定义创建的。  
 * IGNORE_DUP_KEY 不能应用于列存储索引，因为不能对此类索引强制唯一性。  
+
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>列的名称是小写 Azure Stream analytics
+在使用原始兼容级别 (1.0)，Azure Stream Analytics 用于将列名称更改为小写形式。 此行为已在更高版本的兼容性级别中修复。 为了保留这种情况，我们建议客户将移到兼容性级别 1.1 及更高版本。 有关详细信息[Azure Stream Analytics 作业的兼容性级别](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)。
+
 
 ## <a name="get-help"></a>获取帮助
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: adigan
-ms.openlocfilehash: dd4dad2cc3e541d3b6866c02341161dc1d9e1e6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 801516ae2cfad891098c16f8cd6e9a4c7f157a93
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61234907"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342014"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 
@@ -50,7 +50,7 @@ ms.locfileid: "61234907"
 | OperationName |Text |当前操作的名称，例如 Alert |
 | 类别 |Text |诊断数据推送到 Azure Monitor 日志类别。 始终为 AzureBackupReport |
 | Resource |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
-| ProtectedServerUniqueId_s |Text |与警报关联的受保护服务器的唯一标识符 |
+| ProtectedContainerUniqueId_s |Text |受保护的服务器与警报 (在 V1 中的是 ProtectedServerUniqueId_s) 相关联的唯一标识符|
 | VaultUniqueId_s |Text |与警报关联的受保护保管库的唯一标识符 |
 | SourceSystem |Text |当前数据的源系统 - Azure |
 | ResourceId |Text |与收集的数据相关的资源的唯一标识符。 例如“恢复服务保管库资源 ID” |
@@ -67,10 +67,12 @@ ms.locfileid: "61234907"
 | --- | --- | --- |
 | EventName_s |Text |事件的名称。 始终为 AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Text |备份项的唯一标识符 |
-| BackupItemId_s |Text |备份项的标识符 |
+| BackupItemId_s |Text |（此字段是仅为 v1 架构） 的备份项的标识符 |
 | BackupItemName_s |Text |备份项的名称 |
 | BackupItemFriendlyName_s |Text |备份项的友好名称 |
 | BackupItemType_s |文本 |备份项的类型，例如 VM、FileFolder |
+| BackupItemProtectionState_s |Text |备份项的保护状态 |
+| BackupItemAppVersion_s |Text |备份项的应用程序版本 |
 | ProtectionState_s |Text |备份项的当前保护状态，例如 Protected、ProtectionStopped |
 | ProtectionGroupName_s |Text | 保护组备份项的名称中受保护，SC DPM 和 MABS，如果适用|
 | SecondaryBackupProtectionState_s |Text |是否为备份项启用辅助保护|
@@ -103,8 +105,7 @@ ms.locfileid: "61234907"
 | 类别 |Text |此字段表示推送到 Log Analytics 的诊断数据的类别，值为 AzureBackupReport |
 | OperationName |Text |此字段表示当前操作的名称 - BackupItemAssociation |
 | Resource |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
-| PolicyUniqueId_g |Text |与备份项关联的策略的唯一标识符 |
-| ProtectedServerUniqueId_s |Text |与备份项关联的受保护服务器的唯一标识符 |
+| ProtectedContainerUniqueId_s |Text |与备份项 (在 V1 中的是 ProtectedServerUniqueId_s) 关联的受保护服务器的唯一标识符 |
 | VaultUniqueId_s |Text |包含备份项的保管库的唯一标识符 |
 | SourceSystem |Text |当前数据的源系统 - Azure |
 | ResourceId |Text |正在收集其数据的资源标识符。 例如“恢复服务保管库资源 ID” |
@@ -249,13 +250,14 @@ ms.locfileid: "61234907"
 | ProtectedContainerOSType_s |Text |受保护的容器的 OS 类型 |
 | ProtectedContainerOSVersion_s |Text |OS 版本的受保护的容器 |
 | AgentVersion_s |Text |代理备份或保护代理 （对于 SC DPM 和 MABS） 的版本数 |
-| BackupManagementType_s |Text |执行备份的提供程序类型，例如 IaaSVM、FileFolder |
-| EntityState_s |Text |受保护的服务器对象的当前状态，例如“活动”、“已删除” |
+| BackupManagementType_s |Text |执行备份的提供程序类型。 对于 IaaSVM、 FileFolder |
+| EntityState_s |Text |受保护的服务器对象的当前状态。 例如，Active、 Deleted |
 | ProtectedContainerFriendlyName_s |Text |受保护的服务器的友好名称 |
 | ProtectedContainerName_s |Text |受保护的容器的名称 |
-| ProtectedContainerWorkloadType_s |Text |例如 IaaSVMContainer 备份受保护的容器的类型 |
+| ProtectedContainerWorkloadType_s |Text |备份受保护的容器的类型。 例如，IaaSVMContainer |
 | ProtectedContainerLocation_s |Text |受保护的容器是位于的本地还是在 Azure 中 |
 | ProtectedContainerType_s |Text |受保护的容器是否是一个服务器或一个容器 |
+| ProtectedContainerProtectionState_s’  |Text |受保护的容器的保护状态 |
 
 ### <a name="storage"></a>存储
 
@@ -263,7 +265,7 @@ ms.locfileid: "61234907"
 
 | 字段 | 数据类型 | 描述 |
 | --- | --- | --- |
-| CloudStorageInBytes_s |十进制数 |备份所用的云备份存储量，基于最新值进行计算 |
+| CloudStorageInBytes_s |十进制数 |云备份存储使用的备份，计算基于最新值 （此字段是仅为 v1 架构）|
 | ProtectedInstances_s |十进制数 |用于计算账单中前端存储量的受保护实例的数目，基于最新值进行计算 |
 | EventName_s |Text |此字段表示此事件的名称，始终为 AzureBackupCentralReport |
 | SchemaVersion_s |Text |此字段表示架构的当前版本，它是**V2** |
@@ -280,6 +282,10 @@ ms.locfileid: "61234907"
 | resourceGroup |Text |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
 | ResourceProvider |Text |正在收集其数据的资源提供程序。 例如 Microsoft.RecoveryServices |
 | ResourceType |Text |正在收集其数据的资源类型。 例如 Vaults |
+| StorageUniqueId_s |Text |用来标识存储实体的唯一 Id |
+| StorageType_s |Text |存储，例如云、 卷、 磁盘类型 |
+| StorageName_s |Text |存储实体，例如 E:\ 的名称 |
+| StorageTotalSizeInGBs_s |Text |存储空间，以 gb 为单位，使用存储实体的总大小|
 
 ### <a name="storageassociation"></a>StorageAssociation
 
@@ -342,7 +348,7 @@ ms.locfileid: "61234907"
 
 ### <a name="protectedinstance"></a>ProtectedInstance
 
-此表提供了基本的受保护的实例相关的字段。
+此表提供了基本的受保护的实例相关字段。
 
 | 字段 | 数据类型 |适用的版本 | 描述 |
 | --- | --- | --- | --- |

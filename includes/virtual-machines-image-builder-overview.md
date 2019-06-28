@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5884bb5dc389e6abfd4fa23d28dd71ecd16ff423
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172932"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67347107"
 ---
 标准化的虚拟机 (VM) 映像，组织可迁移到云，并确保在部署中的一致性。 映像通常包括预定义的安全和配置设置和必要的软件。 设置映像管道需要时间、 基础结构和安装过程中，但使用 Azure VM 映像生成器，只需提供简单的配置描述你的映像、 将其提交到服务，和生成，并分发映像。
  
@@ -65,9 +65,9 @@ Azure 映像生成器是完全托管的 Azure 服务访问的 Azure 资源提供
 ![Azure 映像生成器进程的概念图](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. 创建映像模板为.json 文件。 此.json 文件包含有关图像源、 自定义和分发的信息。 有多个示例中的[Azure 映像生成器 GitHub 存储库](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)。
-1. 将其提交到服务，这将指定的资源组中创建的映像模板项目。 在后台，映像生成器将下载源映像或 ISO，并根据需要的脚本。 它们存储在你的订阅，采用格式中自动创建单独的资源组：数据<DestinationResourceGroup>_<TemplateName>。 
-1. 创建映像模板后，你可以然后生成映像。 在后台图像生成器使用的模板和源代码文件以在数据中创建 VM、 网络和存储<DestinationResourceGroup>_<TemplateName>资源组。
-1. 映像生成器将映像分发作为映像创建的一部分，它根据模板，然后删除数据中的其他资源<DestinationResourceGroup>_<TemplateName>针对过程创建的资源组。
+1. 将其提交到服务，这将指定的资源组中创建的映像模板项目。 在后台，映像生成器将下载源映像或 ISO，并根据需要的脚本。 它们存储在你的订阅，采用格式中自动创建单独的资源组：数据\<DestinationResourceGroup > _\<模板名称 >。 
+1. 创建映像模板后，你可以然后生成映像。 在后台图像生成器使用的模板和源代码文件以在数据中创建 VM、 网络和存储\<DestinationResourceGroup > _\<TemplateName > 资源组。
+1. 映像生成器将映像分发作为映像创建的一部分，它根据模板，然后删除数据中的其他资源\<DestinationResourceGroup > _\<模板名称 > 为已创建的资源组过程。
 
 
 ## <a name="permissions"></a>权限

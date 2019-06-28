@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 02/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2410787c3307136f827ea7fc34df9a545a59cbf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e062fd73f2baeb4948430b13e0caa1f5c0b3f066
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850908"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341112"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问
 
@@ -49,13 +49,13 @@ Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一�
 如果已安装[Azure 机器学习 CLI](reference-azure-machine-learning-cli.md)，还可以使用 CLI 命令为用户分配角色。
 
 ```azurecli-interactive 
-az ml workspace share -n <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
+az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
 `user`字段是工作区父订阅所在的 Azure Active Directory 的实例中的现有用户的电子邮件地址。 下面是如何使用此命令的示例：
 
 ```azurecli-interactive 
-az ml workspace share -n my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
 
 ## <a name="create-custom-role"></a>创建自定义角色

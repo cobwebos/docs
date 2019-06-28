@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/05/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30ebfec88182684f8e852808e978a51854389898
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e57291292d8957fd323f9be03bb7df0492484ea8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073413"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341616"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>从进行身份验证与 Azure Active Directory 应用程序可访问 blob 和队列
 
@@ -121,7 +121,7 @@ ms.locfileid: "67073413"
 
 当你的应用程序访问 Azure 存储时，它 does 等代表该用户的这意味着，使用已登录用户的权限访问 blob 或队列资源。 若要尝试此代码示例，您需要的 web 应用程序会提示用户使用 Azure AD 标识进行登录。 您可以创建您自己，或使用由 Microsoft 提供的示例应用程序。
 
-已完成的示例 web 应用程序获取令牌，并使用它来创建在 Azure 存储中的 blob 已接入[GitHub](http://aka.ms/aadstorage)。 检查并运行已完成的示例可能有助于你了解的代码示例。 有关如何运行已完成的示例中，有关说明，请参阅一节[视图并运行已完成的示例](#view-and-run-the-completed-sample)。
+已完成的示例 web 应用程序获取令牌，并使用它来创建在 Azure 存储中的 blob 已接入[GitHub](https://aka.ms/aadstorage)。 检查并运行已完成的示例可能有助于你了解的代码示例。 有关如何运行已完成的示例中，有关说明，请参阅一节[视图并运行已完成的示例](#view-and-run-the-completed-sample)。
 
 #### <a name="add-references-and-using-statements"></a>添加引用和 using 语句  
 
@@ -235,7 +235,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ## <a name="view-and-run-the-completed-sample"></a>查看和运行已完成的示例
 
-若要运行示例应用程序，首先克隆或下载它从[GitHub](http://aka.ms/aadstorage)。 然后更新应用程序，如以下各节中所述。
+若要运行示例应用程序，首先克隆或下载它从[GitHub](https://aka.ms/aadstorage)。 然后更新应用程序，如以下各节中所述。
 
 ### <a name="provide-values-in-the-settings-file"></a>设置文件中提供值
 

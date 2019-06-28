@@ -31,8 +31,8 @@ ms.locfileid: "67060849"
 
 | 要避免的字符 | 替换字符 | 说明 |
 |---------------------|--------------|-------|
-| “Hello world” | “Hello world” | 开始和结束引号都有相应的 ASCII 字符已替换。 |
-| John’s day | John's day | 撇号已替换的相应 ASCII 字符。 |
+| "Hello world" | “Hello world” | 开始和结束引号都有相应的 ASCII 字符已替换。 |
+| John 的一天 | John 的一天 | 撇号已替换的相应 ASCII 字符。 |
 | it was good—no, it was great! | it was good--no, it was great! | 长破折号已替换为两个连字符。 |
 
 ### <a name="text-normalization-for-us-english"></a>对于美国英语文本规范化

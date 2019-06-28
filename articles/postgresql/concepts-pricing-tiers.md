@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 42f290109ca380464cb07ac9f684cdde25b8fdcd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a92017c462ef62cbfb1aa6c2613a502d1cc5ffc6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063772"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340743"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的定价层
 
@@ -67,7 +67,7 @@ ms.locfileid: "67063772"
 | IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS| 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
 
 > [!IMPORTANT]
-> 较大的存储当前处于公共预览版形式在以下区域：美国东部、 美国东部 2、 美国中部、 美国西部、 美国西部 2、 北欧、 西欧、 东南亚、 日本东部、 韩国中部、 澳大利亚东部。
+> 较大的存储当前处于公共预览版形式在以下区域：美国东部、 美国东部 2、 美国中部、 美国西部、 北欧、 西欧、 东南亚、 日本东部、 韩国中部、 澳大利亚东部。
 >
 >较大的存储预览版目前不支持：
 >

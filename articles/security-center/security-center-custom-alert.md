@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: a5deee4209001d8c2212033c2d547d7c4199bd25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab7165c3315e3a53f90900be8eaf1b9c614a2b07
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192626"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341126"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure 安全中心的自定义警报规则（预览版）
 本文档介绍了如何在 Azure 安全中心创建自定义警报规则。
@@ -29,17 +29,15 @@ ms.locfileid: "65192626"
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>停用 Azure 安全中心内的自定义警报规则
 
-自定义警报体验将在 2019 年 6 月 30 日停用，因为它所基于的底层基础结构已停用。 在弃用此体验之前的时段内，用户可以编辑现有的自定义警报规则，但无法添加新的自定义警报规则。
+自定义警报体验将在 2019 年 6 月 30 日停用，因为它所基于的底层基础结构已停用。 在弃用此体验之前的时段内，用户可以编辑现有的自定义警报规则，但无法添加新的自定义警报规则。 不推荐使用，定义的所有自定义警报将不会生效且不会生成基于这些自定义警报规则的安全警报。
 建议用户：
-- 使用一键式加入功能来启用 [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)，以自动迁移其现有警报和创建新的警报
+- 启用[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) ，并使用其内置[分析](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)功能，以重新创建其预警规则
 - 使用 Azure Monitor 日志警报重新创建警报
                                      
-若要保留现有的警报并将其迁移到 Azure Sentinel，请[启动 Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview)。 第一步是选择存储自定义警报的工作区，然后选择“分析”菜单项以自动迁移警报。
+若要保留现有的警报并将其迁移到 Azure Sentinel，请[启动 Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview)。 第一步，选择自定义警报的存储位置工作区，然后选择分析菜单项设置自定义警报规则。 请访问[文档](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)有关其他信息。
 
 > [!NOTE]
-> 将自定义警报迁移到 Azure Sentinel 会一次性迁移所选工作区中的所有自定义警报。 完成迁移后，无法通过 Azure 安全中心访问该所选工作区的自定义警报。
->
-> 使用 [Search](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) 或 [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) 语句查询的自定义警报在 Azure Sentinel 中不受支持，且不会迁移。 在执行迁移之前，请编辑这些警报。
+> 使用自定义警报[搜索](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries)或[Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) Azure Sentinel 中不支持语句的查询。 在执行迁移之前，请编辑这些警报。
 
 若要使用 Azure Monitor 日志警报重新创建警报，请参阅：[使用 Azure Monitor 创建、查看和管理日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)，获取有关如何创建日志警报的说明。 有关 Azure Monitor 中日志警报的一般概述，请单击[此处](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: cff1bbefc3c54f7f9c02c646bd9eef528fe28c73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73ef5cc00b5154dbdbc92911d17740c7d13038ec
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939571"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341982"
 ---
 # <a name="troubleshooting-metrics-charts"></a>度量值图表故障排除
 
@@ -73,7 +73,7 @@ ms.locfileid: "64939571"
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>在仪表板上的"检索数据时出错"消息
 
-创建你的仪表板的更高版本已弃用并从 Azure 中删除某个度量值时，此问题很常见。 若要验证它是这种情况，请打开**指标**资源和检查指标选取器中的可用指标的选项卡。 如果指标未显示，具有已从 Azure 中删除该度量值。 通常情况下，当某个指标已弃用，是更好地新的度量值，它提供类似的角度来看，资源运行状况。
+使用的更高版本已弃用并从 Azure 中删除某个度量值创建你的仪表板时，可能会发生此问题。 若要验证它是这种情况，请打开**指标**资源和检查指标选取器中的可用指标的选项卡。 如果指标未显示，具有已从 Azure 中删除该度量值。 通常情况下，当某个指标已弃用，是更好地新的度量值，它提供类似的角度来看，资源运行状况。
 
 **解决方案：** 通过选择仪表板上图表的度量指标更新故障磁贴。 你可以[查看的 Azure 服务的可用指标列表](metrics-supported.md)。
 
@@ -115,5 +115,5 @@ Azure 指标图表使用虚线样式以指示存在缺失值 （也称为"null �
 
 * [了解有关如何开始使用指标资源管理器](metrics-getting-started.md)
 * [了解有关指标资源管理器的高级功能](metrics-charts.md)
-* [请参阅 Azure 服务的可用指标的列表](metrics-supported.md)
+* [查看 Azure 服务的可用指标列表](metrics-supported.md)
 * [请参阅配置图表的示例](metric-chart-samples.md)

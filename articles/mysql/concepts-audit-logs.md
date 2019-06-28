@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 35cbe04380e2113f986d1e7adf3f7fdf89cb9326
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a82afe6f5299609fd6dd57a54f04f49fad5d2268
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078867"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357642"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>中的审核日志 Azure Database for MySQL
 
@@ -45,7 +45,7 @@ ms.locfileid: "67078867"
 
 与 Azure Monitor 诊断日志集成在审核日志。 在 MySQL 服务器上启用审核日志后，您可以将它们发出到 Azure Monitor 日志、 事件中心或 Azure 存储。 若要了解有关如何在 Azure 门户中启用诊断日志的详细信息，请参阅[审核日志的门户项目](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs)。
 
-## <a name="schemas"></a>架构
+## <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
 以下各节介绍什么是通过 MySQL 审核日志的事件类型的输出。 包括的字段以及它们的出现顺序可能有所不同，具体取决于输出方法。
 

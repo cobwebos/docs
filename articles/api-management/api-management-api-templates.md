@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 82c180d869801cd9cd91a3e2a3659644f4e263d9
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e8519bf436e1af19a22a840f48bf1bfccdae99b2
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273325"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341259"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
 
@@ -345,12 +345,12 @@ ms.locfileid: "67273325"
   
 |属性|Type|描述|  
 |--------------|----------|-----------------|  
-|`apiId`|字符串|当前 API 的 ID。|  
-|`apiName`|字符串|API 的名称。|  
-|`apiDescription`|字符串|API 的说明。|  
+|`apiId`|string|当前 API 的 ID。|  
+|`apiName`|string|API 的名称。|  
+|`apiDescription`|string|API 的说明。|  
 |`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体。|当前 API。|  
 |`operation`|[操作](api-management-template-data-model-reference.md#Operation)|当前显示的操作。|  
-|`sampleUrl`|字符串|当前操作的 URL。|  
+|`sampleUrl`|string|当前操作的 URL。|  
 |`operationMenu`|[操作菜单](api-management-template-data-model-reference.md#Menu)|此 API 的操作的菜单。|  
 |`consoleUrl`|URI|“试用”按钮的 URI。 |  
 |`samples`|[代码示例](api-management-template-data-model-reference.md#Sample)实体的集合。|当前操作的代码示例。|  
@@ -1363,7 +1363,7 @@ except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))  
   
 ####################################  
-```  
+```
   
 #### <a name="controls"></a>Controls  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  

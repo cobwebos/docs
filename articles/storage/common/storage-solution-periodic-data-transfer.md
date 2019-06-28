@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f106674c1b1ec90477c7c030dc55085fcf10656
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729913"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357042"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期数据传输解决方案
  
@@ -66,7 +66,7 @@ ms.locfileid: "60729913"
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 AzCopy 传输数据](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
-- [使用存储 REST API 传输数据的详细信息](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)。
+- [使用存储 REST API 传输数据的详细信息](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)。
 - 了解如何：
     - [使用 Data Box Gateway 传输数据](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)。
     - [在将数据发送到 Azure 之前使用 Data Box Edge 转换数据](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute)。

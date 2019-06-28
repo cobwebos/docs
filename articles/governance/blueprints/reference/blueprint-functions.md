@@ -113,7 +113,7 @@ Azure 蓝图提供了生成蓝图定义更动态的函数。 这些函数用于�
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "第一个" |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | String | "我的字符串值" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | { "myproperty": "my value", "anotherProperty": true } |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "我的值" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "my value" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat

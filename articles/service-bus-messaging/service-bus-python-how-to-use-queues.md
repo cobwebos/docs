@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 6d95e4a0a7aeedef2fc7e635d2e49ea68c3ba0ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b74238ee49fe0d96d218f1800a33a9d60badc6d5
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992053"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341708"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>如何通过 Python 使用服务总线队列
 
@@ -36,7 +36,7 @@ ms.locfileid: "65992053"
 
         > [!NOTE]
         > 在本教程中，需使用 Python 在服务总线命名空间中创建一个**队列**。 
-1. 若要安装 Python 或 [Python Azure 服务总线包][Python Azure Service Bus package]，请参阅 [Python 安装指南](../python-how-to-install.md)。 在[此处](/python/api/overview/azure/servicebus?view=azure-python)查看服务总线 Python SDK 的完整文档。
+1. 安装 Python 或[Python Azure 服务总线包][Python Azure Service Bus package]，请参阅[Python 安装指南](../python-how-to-install.md)。 在[此处](/python/api/overview/azure/servicebus?view=azure-python)查看服务总线 Python SDK 的完整文档。
 
 ## <a name="create-a-queue"></a>创建队列
 可以通过 **ServiceBusClient** 对象处理队列。 将以下代码添加到任何 Python 文件的顶部附近，你希望在其中以编程方式访问服务总线：
@@ -45,13 +45,13 @@ ms.locfileid: "65992053"
 from azure.servicebus import ServiceBusClient
 ```
 
-以下代码创建 **ServiceBusClient** 对象。 将 `mynamespace`、`sharedaccesskeyname` 和 `sharedaccesskey` 替换为命名空间、共享访问签名 (SAS) 密钥名称和值。
+以下代码创建 **ServiceBusClient** 对象。 替换为`<CONNECTION STRING>`与服务总线连接字符串。
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
 ```
 
-SAS 密钥名称和值可以在 [Azure 门户][Azure portal]连接信息中找到，也可以在服务器资源管理器中选择服务总线命名空间后，在 Visual Studio“属性”窗格中找到（如前一部分中所示）。 
+SAS 密钥名称和值的值可在[Azure 门户][Azure portal]连接信息，或在 Visual Studio**属性**窗格 （为服务器资源管理器中选择服务总线命名空间时显示上一节中）。
 
 ```python
 sb_client.create_queue("taskqueue")
@@ -81,7 +81,7 @@ msg = Message(b'Test Message')
 queue_client.send(msg)
 ```
 
-服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小是在创建时定义的，上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
+服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小在创建时定义，上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
 
 有关详细信息，请参阅[Azure 服务总线 Python 文档](/python/api/overview/azure/servicebus?view=azure-python)。
 
@@ -126,7 +126,7 @@ msg.delete()
 > 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
-现在，已了解有关服务总线队列的基础知识，请参阅以下文章了解详细信息。
+现在，已了解有关服务总线队列的基础知识，请参阅下面的文章了解更多信息。
 
 * [队列、主题和订阅][Queues, topics, and subscriptions]
 

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8b7e6d234984e84f5b238d657281dd8b1b9ec423
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4f1bc1415fbb875120d7b64128cae69e1e3f442c
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056888"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339838"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。 标记为的列**支持标记**指示资源类型是否具有标记的属性。 标记为的列**成本报表中的标记**指示是否该资源类型会将标记传递给成本报表。
@@ -864,8 +864,8 @@ ms.locfileid: "67056888"
 | dnszones/TXT | 否 |  否 |
 | expressRouteCircuits | 是  | 否 |
 | expressRouteServiceProviders | 否 |  否 |
-| frontdoors | 是 | 是 |
-| frontdoorWebApplicationFirewallPolicies | 是 | 是 |
+| frontdoors | 是的但限于 (请参阅[下面的备注](#frontdoor)) | 是 |
+| frontdoorWebApplicationFirewallPolicies | 是的但限于 (请参阅[下面的备注](#frontdoor)) | 是 |
 | getDnsResourceReference | 否 |  否 |
 | interfaceEndpoints | 是 | 是 |
 | internalNotify | 否 |  否 |
@@ -898,6 +898,10 @@ ms.locfileid: "67056888"
 | vpnGateways | 是 | 否 |
 | vpnSites | 是 | 是 |
 | webApplicationFirewallPolicies | 是 | 是 |
+
+<a id="frontdoor" />
+
+对于 Azure 第一道防线服务，可以将标记应用时创建资源，但更新或添加标记当前不支持。
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | 资源类型 | 支持标记 | 在成本报表中标记 |

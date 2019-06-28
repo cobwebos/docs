@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a19165f9ac15f7a40aea0501f960b06efbd63a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6446919c80e7e3fd379e6e39eb51712f9736ea7e
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304361"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341212"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
 本文讨论策略表达式语法 C# 7。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。
@@ -94,19 +94,19 @@ ms.locfileid: "66304361"
 |System.Byte|全部|
 |System.Char|全部|
 |System.Collections.Generic.Dictionary<TKey, TValue>|全部|
-|System.Collections.Generic.HashSet<T>|全部|
-|System.Collections.Generic.ICollection<T>|全部|
+|System.Collections.Generic.HashSet\<T>|全部|
+|System.Collections.Generic.ICollection\<T>|全部|
 |System.Collections.Generic.IDictionary<TKey, TValue>|全部|
-|System.Collections.Generic.IEnumerable<T>|全部|
-|System.Collections.Generic.IEnumerator<T>|全部|
-|System.Collections.Generic.IList<T>|全部|
-|System.Collections.Generic.IReadOnlyCollection<T>|全部|
+|System.Collections.Generic.IEnumerable\<T>|全部|
+|System.Collections.Generic.IEnumerator\<T>|全部|
+|System.Collections.Generic.IList\<T>|全部|
+|System.Collections.Generic.IReadOnlyCollection\<T>|全部|
 |System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|全部|
-|System.Collections.Generic.ISet<T>|全部|
+|System.Collections.Generic.ISet\<T>|全部|
 |System.Collections.Generic.KeyValuePair<TKey, TValue>|全部|
-|System.Collections.Generic.List<T>|全部|
-|System.Collections.Generic.Queue<T>|全部|
-|System.Collections.Generic.Stack<T>|全部|
+|System.Collections.Generic.List\<T>|全部|
+|System.Collections.Generic.Queue\<T>|全部|
+|System.Collections.Generic.Stack\<T>|全部|
 |System.Convert|全部|
 |System.DateTime|（构造函数）、Add、AddDays、AddHours、AddMilliseconds、AddMinutes、AddMonths、AddSeconds、AddTicks、AddYears、Date、Day、DayOfWeek、DayOfYear、DaysInMonth、Hour、IsDaylightSavingTime、IsLeapYear、MaxValue、Millisecond、Minute、MinValue、Month、Now、Parse、Second、Subtract、Ticks、TimeOfDay、Today、ToString、UtcNow、Year|
 |System.DateTimeKind|Utc|
@@ -156,7 +156,7 @@ ms.locfileid: "66304361"
 |System.Security.Cryptography.SymmetricAlgorithm|全部|
 |System.Security.Cryptography.X509Certificates.PublicKey|全部|
 |System.Security.Cryptography.X509Certificates.RSACertificateExtensions|全部|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|名称|
 |System.Security.Cryptography.X509Certificates.X509Certificate|全部|
 |System.Security.Cryptography.X509Certificates.X509Certificate2|全部|
 |System.Security.Cryptography.X509Certificates.X509ContentType|全部|

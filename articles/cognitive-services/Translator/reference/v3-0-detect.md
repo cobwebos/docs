@@ -3,19 +3,19 @@ title: 文本翻译 API 检测方法
 titlesuffix: Azure Cognitive Services
 description: 使用文本翻译 API 检测方法。
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-pawal
-ms.openlocfilehash: 275cf91eb3bf72a612882164c24e4773edcad0f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 6e90626759b3c78d98c8c0f6e32d37c1440385cd
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389800"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357746"
 ---
 # <a name="translator-text-api-30-detect"></a>文本翻译 API 3.0：Detect
 
@@ -158,7 +158,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>服务器拒绝了请求，因为客户端已超出请求限制。</td>
+    <td>由于客户端已超出请求限制，服务器拒绝了请求。</td>
   </tr>
   <tr>
     <td>500</td>

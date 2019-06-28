@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: 9b762f1b3f1c17e15b051e72f5d2cf98bef446bf
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 0ac50a5f52682c4315b8d08cf5632c4a6fa5242f
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137761"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357588"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>使用 Azure 数据科学虚拟机
 
@@ -51,9 +51,9 @@ ms.locfileid: "67137761"
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>从 DSVM 访问 Azure Notebook 文件
 
-若要保留的文件路径的奇偶校验**免费计算**层中，您将能够在 DSVM 上一次只能打开一个项目。 若要打开一个新的项目，则必须关闭打开的项目第一次。
+文件系统访问是受支持的 DSVM 版本 19.06.15 或更高版本。 若要检查版本，首先连接到你的 DSVM 通过 SSH （IP 地址是在 Azure 门户中提供）。 然后运行以下命令使用你`<ip_address>`: `curl -H Metadata:true "http://<ip_address>/metadata/instance?api-version=2018-10-01"`。 "版本"的输出中显示的版本号。
 
-![Azure Notebook 中的关闭按钮](media/shutdown.png)
+若要保留的文件路径的奇偶校验**免费计算**层中，您将能够在 DSVM 上一次只能打开一个项目。 若要打开一个新的项目，则必须关闭打开的项目第一次。
 
 当在 VM 上运行项目时，将文件装载到 Jupyter 服务器 （在 JupyterHub 中所示的目录） 的根目录上替换默认 Azure Notebook 文件。 当您关闭的情况下使用 VM**关闭**notebook 用户界面，Azure Notebooks 按钮还原默认的文件。
 
