@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: fca76b632e9bcc27ed762886eaea696a5696ad3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0a76ecd12143e0bbaa9997bfc6d7295df9c4ec7
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761862"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340864"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>使用样本数据测试流分析查询
 
-使用 Azure 流分析，可以在 Azure 门户中上传样本数据并测试查询，而不需要启动或停止作业。
+通过使用 Azure Stream Analytics，可以从输入数据采样或上传示例数据在 Azure 门户中测试查询，而无需启动或停止作业。
 
 ## <a name="upload-sample-data-and-test-the-query"></a>上传样本数据并测试查询
 
@@ -28,11 +28,15 @@ ms.locfileid: "60761862"
 
 3. 在“流分析作业”页上的“作业拓扑”  标题下，选择“查询”  以打开“查询编辑器”窗口。 
 
-4. 若要使用样本输入数据来测试查询，请右键单击任意输入，  并选择“上传文件中的样本数据”  。 此数据必须以 JSON、CSV 或 AVRO 进行序列化。 示例输入必须以 UTF-8 进行编码，并且不能进行压缩。 仅支持使用逗号 (,) 分隔符来测试门户上的 CSV 输入。
+4. 若要测试你的查询可以既采样实时输入或从文件上的传的数据。 此数据必须以 JSON、CSV 或 AVRO 进行序列化。 示例输入必须以 UTF-8 进行编码，并且不能进行压缩。 仅支持使用逗号 (,) 分隔符来测试门户上的 CSV 输入。
+
+    1. 使用实时输入： 右键单击任意输入。 然后选择**示例数据从输入**。 在下一屏幕中，可以设置示例的持续时间。
+
+    1. 使用文件： 右键单击任意输入。 并选择“上传文件中的样本数据”  。 
 
     ![流分析查询编辑器测试查询](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 
-5. 完成上传后，选择“测试”  ，以针对已提供的样本数据来测试此查询。
+5. 采样或上传完成后，选择**测试**要测试此查询针对具有提供的示例数据。
 
     ![流分析查询编辑器测试示例数据](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
 

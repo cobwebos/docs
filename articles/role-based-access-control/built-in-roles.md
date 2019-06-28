@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 0789ab981590ac1b7531c1f05d85d7ada3a9f56b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 5a63053cc7fa1c1c86669ce2cea56b68f1a7b4b6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295267"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341508"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -98,8 +98,8 @@ ms.locfileid: "67295267"
 | [实验室创建者](#lab-creator) | 允许在 Azure 实验室帐户下创建、管理、删除托管实验室。 |
 | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 |
 | [Log Analytics 读者](#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 |
-| [逻辑应用参与者](#logic-app-contributor) | 允许管理逻辑应用，但不允许对其进行访问。 |
-| [逻辑应用操作员](#logic-app-operator) | 允许读取、启用和禁用逻辑应用。 |
+| [逻辑应用参与者](#logic-app-contributor) | 允许管理逻辑应用，但这些更改的访问权限。 |
+| [逻辑应用操作员](#logic-app-operator) | 可以读取、 启用和禁用逻辑应用，但不是编辑或更新它们。 |
 | [托管应用程序操作员角色](#managed-application-operator-role) | 可让你在托管应用程序资源上读取和执行操作 |
 | [托管应用程序读者](#managed-applications-reader) | 允许读取托管应用中的资源和请求 JIT 访问。 |
 | [托管的标识参与者](#managed-identity-contributor) | 创建、读取、更新和删除用户分配的标识 |
@@ -1620,7 +1620,7 @@ ms.locfileid: "67295267"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许管理逻辑应用，但不允许对其进行访问。 |
+> | **说明** | 允许管理逻辑应用，但这些更改的访问权限。 |
 > | **Id** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -1654,7 +1654,7 @@ ms.locfileid: "67295267"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许读取、启用和禁用逻辑应用。 |
+> | **说明** | 可以读取、 启用和禁用逻辑应用，但不是编辑或更新它们。 |
 > | **Id** | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |

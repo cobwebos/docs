@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: a04dc76a110b1d126d5d826761e2e0c09c6aac47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 088dfdbfbadfa43dc2bd161f56f0e2a6dbb94bb7
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65520241"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311996"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -111,6 +111,7 @@ Amazon S3 链接的服务支持以下属性：
 | bucketName | S3 存储桶的名称。                                          | 是      |
 | folderPath | 给定存储桶下的文件夹路径。 如果要使用通配符筛选文件夹，请跳过此设置并在活动源设置中指定。 | 否       |
 | fileName   | 给定存储桶 + folderPath 下的文件名。 如果要使用通配符筛选文件，请跳过此设置并在活动源设置中指定。 | 否       |
+| version | 启用 S3 版本控制时 S3 对象的版本。 如果未指定，则将提取的最新版本。 |否 |
 
 > [!NOTE]
 > **AmazonS3Object**类型与下一节中所述的 Parquet/文本格式的数据集作为仍受支持的是用于复制/查找/GetMetadata 活动的向后兼容，但它不使用映射数据流。 建议你继续使用此新模型，并且 ADF 创作 UI 已切换为生成这些新类型。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: d25082c429c58c074726c75f7ff6f248daee4151
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 249e5ac33b1420ada2cda45ea729471351f21adf
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050616"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341994"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -28,7 +28,7 @@ ms.locfileid: "67050616"
 
 ## <a name="programming-model"></a>编程模型
 
-Azure 函数应是 Python 脚本中处理输入并生成输出的无状态方法。 默认情况下，运行时需要作为一个名为的全局方法实现的方法`main()`在`__init__.py`文件。
+Azure 函数应是 Python 脚本中处理输入并生成输出的无状态方法。 默认情况下，运行时期望此方法在 `__init__.py` 文件中作为名为 `main()` 的全局方法实现。
 
 可以通过指定更改默认配置`scriptFile`并`entryPoint`中的属性*function.json*文件。 例如， _function.json_下面指示运行时使用`customentry()`中的方法_main.py_文件中，作为 Azure 函数的入口点。
 
@@ -40,7 +40,7 @@ Azure 函数应是 Python 脚本中处理输入并生成输出的无状态方法
 }
 ```
 
-从触发器和绑定的数据绑定到该函数通过使用方法属性`name`中定义的属性*function.json*文件。 例如， _function.json_下面介绍由名为 HTTP 请求触发的简单函数`req`:
+从触发器和绑定的数据绑定到该函数通过使用方法属性`name`中定义的属性*function.json*文件。 例如，下面的 _function.json_ 描述一个由名为 `req` 的 HTTP 请求触发的简单函数：
 
 ```json
 {
@@ -73,10 +73,11 @@ def main(req):
 ```python
 import azure.functions
 
+
 def main(req: azure.functions.HttpRequest) -> str:
     user = req.params.get('user')
     return f'Hello, {user}!'
-```  
+```
 
 使用 [ azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) 包中附带的 Python 注释将输入和输出绑定到方法。
 
@@ -154,16 +155,17 @@ from __app__.SharedCode import myFirstHelperFunction
 import azure.functions as func
 import logging
 
+
 def main(req: func.HttpRequest,
          obj: func.InputStream):
 
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-调用函数时，HTTP 请求作为 `req` 传递给函数。 一个条目将从根据 Azure Blob 存储中检索_ID_中的路由 URL，并可作为`obj`函数体中。  此处指定存储帐户中找到连接字符串`AzureWebJobsStorage`这是由 function app 使用的同一存储帐户。
+调用函数时，HTTP 请求作为 `req` 传递给函数。 将基于路由 URL 中的 _ID_ 从 Azure Blob 存储检索一个条目，并在函数体中将其用作 `obj`。  在这里，指定的存储帐户是在 `AzureWebJobsStorage` 中找到的连接字符串，它与函数应用使用的存储帐户相同。
 
 
-## <a name="outputs"></a>Outputs
+## <a name="outputs"></a>outputs
 
 输出可以在返回值和输出参数中进行表示。 如果只有一个输出，则建议使用返回值。 对于多个输出，必须使用输出参数。
 
@@ -200,6 +202,7 @@ def main(req: func.HttpRequest,
 ```python
 import azure.functions as func
 
+
 def main(req: func.HttpRequest,
          msg: func.Out[func.QueueMessage]) -> str:
 
@@ -216,6 +219,7 @@ def main(req: func.HttpRequest,
 
 ```python
 import logging
+
 
 def main(req):
     logging.info('Python HTTP trigger function processed a request.')
@@ -237,6 +241,8 @@ def main(req):
 
 ```python
 # Will be run with asyncio directly
+
+
 async def main():
     await some_nonblocking_socket_io_op()
 ```
@@ -245,6 +251,8 @@ async def main():
 
 ```python
 # Would be run in an asyncio thread-pool
+
+
 def main():
     some_blocking_socket_io()
 ```
@@ -258,8 +266,9 @@ def main():
 ```python
 import azure.functions
 
+
 def main(req: azure.functions.HttpRequest,
-            context: azure.functions.Context) -> str:
+         context: azure.functions.Context) -> str:
     return f'{context.invocation_id}'
 ```
 
@@ -280,6 +289,7 @@ def main(req: azure.functions.HttpRequest,
 
 ```python
 CACHED_DATA = None
+
 
 def main(req):
     global CACHED_DATA
@@ -335,6 +345,7 @@ func azure functionapp publish <app name> --build-native-deps
 import azure.functions as func
 import logging
 
+
 def main(req: func.HttpRequest,
          obj: func.InputStream):
 
@@ -348,13 +359,14 @@ import unittest
 import azure.functions as func
 from . import my_function
 
+
 class TestFunction(unittest.TestCase):
     def test_my_function(self):
         # Construct a mock HTTP request.
         req = func.HttpRequest(
             method='GET',
             body=None,
-            url='/my_function', 
+            url='/my_function',
             params={'name': 'Test'})
 
         # Call the function.
@@ -362,7 +374,7 @@ class TestFunction(unittest.TestCase):
 
         # Check the output.
         self.assertEqual(
-            resp.get_body(), 
+            resp.get_body(),
             'Hello, Test!',
         )
 ```
@@ -372,6 +384,7 @@ class TestFunction(unittest.TestCase):
 ```python
 # myapp/__init__.py
 import azure.functions as func
+
 
 def my_function(msg: func.QueueMessage) -> str:
     return f'msg body: {msg.get_body().decode()}'
@@ -384,6 +397,7 @@ import unittest
 import azure.functions as func
 from . import my_function
 
+
 class TestFunction(unittest.TestCase):
     def test_my_function(self):
         # Construct a mock Queue message.
@@ -395,10 +409,10 @@ class TestFunction(unittest.TestCase):
 
         # Check the output.
         self.assertEqual(
-            resp, 
+            resp,
             'msg body: test',
         )
-``` 
+```
 
 ## <a name="known-issues-and-faq"></a>已知问题和常见问题解答
 

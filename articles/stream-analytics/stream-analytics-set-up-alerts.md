@@ -3,17 +3,17 @@ title: 为 Azure 流分析作业设置监视警报
 description: 本文介绍如何使用 Azure 门户为 Azure 流分析作业设置监视和警报。
 services: stream-analytics
 author: jseb225
-ms.author: jeanb
+ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 09a5c77c770f7709b90d4959da5be9134b0f0ad9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/21/2019
+ms.openlocfilehash: 26e8e004f917b1c138bc27389cac1cc52672f3d4
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077688"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329859"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>为 Azure 流分析作业设置警报
 
@@ -22,6 +22,7 @@ ms.locfileid: "67077688"
 你可以从门户中，通过操作日志数据的指标定义规则，以及[以编程方式](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)。
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>在 Azure 门户中设置警报
+### <a name="get-alerted-when-a-job-stops-unexpectedly"></a>当作业意外停止时发出警报
 
 以下示例演示如何针对作业进入失败状态设置警报。 建议对所有作业设置此警报。
 

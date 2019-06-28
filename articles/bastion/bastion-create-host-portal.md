@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: d8012fb75282d64f7d1858e02b842b1c770200f9
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 5fbd64d2f001a0fbe91de2d954889816a1819479
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191767"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339436"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>创建 Azure 堡垒主机 （预览）
 
@@ -41,7 +41,7 @@ ms.locfileid: "67191767"
 
 此部分帮助你从 Azure 门户创建新的 Azure 堡垒资源。
 
-1. 从主页中[Azure 门户-预览](http://aka.ms/BastionHost)，单击 **+ 创建资源**。 请确保使用提供的用于访问在门户中为此预览版中，而不是常规的 Azure 门户的链接。
+1. 从主页中[Azure 门户-预览](https://aka.ms/BastionHost)，单击 **+ 创建资源**。 请确保使用提供的用于访问在门户中为此预览版中，而不是常规的 Azure 门户的链接。
 
 1. 上**新建**页上，在*在 Marketplace 中搜索*字段中，键入**堡垒**，然后单击**Enter**若要获取对搜索结果。
 

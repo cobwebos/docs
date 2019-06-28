@@ -76,7 +76,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 
 下表介绍了保存的搜索的各个属性。
 
-| 属性 | 描述 |
+| 属性 | description |
 |:--- |:--- |
 | category | 保存的搜索的类别。  同一解决方案中所有保存的搜索常共享一个类别，因此他们在控制台中组合在一起。 |
 | displayName | 保存的搜索在门户中显示的名称。 |
@@ -121,7 +121,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
     }
 下表介绍了计划资源的属性。
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 需要 | description |
 |:--|:--|:--|
 | enabled       | 是 | 说明创建警报后该警报是否启用。 |
 | interval      | 是 | 查询运行的频率（以分钟为单位）。 |
@@ -174,18 +174,18 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 
 下表介绍了 Alert 操作资源的属性。
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 必选 | description |
 |:--|:--|:--|
 | type | 是 | 操作的类型。  警报操作的类型是 Alert  。 |
 | name | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
 | description | 否 | 警报的可选说明。 |
-| severity | 是 | 警报记录的严重等级包括以下值：<br><br>  严重<br> 警告<br> 信息性
+| 严重性 | 是 | 警报记录的严重等级包括以下值：<br><br>  严重<br> 警告<br> 信息性
 
 
 #### <a name="threshold"></a>阈值
 本部分是必需的。 它定义警报阈值的属性。
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 需要 | description |
 |:--|:--|:--|
 | 运算符 | 是 | 比较运算符包括以下值：<br><br>**gt = 大于<br>lt = 小于** |
 | 值 | 是 | 要比较结果的值。 |
@@ -196,7 +196,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 > [!NOTE]
 > 指标度量警报目前为公共预览版。
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 必选 | description |
 |:--|:--|:--|
 | TriggerCondition | 是 | 以下值指定该阈值是总违规次数还是连续违规次数：<br><br>**总次数<br>连续次数** |
 | 运算符 | 是 | 比较运算符包括以下值：<br><br>**gt = 大于<br>lt = 小于** |
@@ -206,7 +206,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 #### <a name="throttling"></a>限制
 本部分为可选。 创建警报后，若希望在一定时间内阻止通过同一规则创建的警报，请包含此部分。
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 需要 | description |
 |:--|:--|:--|
 | DurationInMinutes | 如果包含了限制元素，则为必需 | 从同一警报规则创建警报后，阻止警报的分钟数。 |
 
@@ -215,7 +215,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 
 对于已将其警报扩展到 Azure 中的用户- 一个计划现在应当将操作组详细信息与阈值一起传递，以便能够创建警报。 在创建警报前，需要先在操作组中定义电子邮件详细信息、Webhook URL、Runbook 自动化详细信息以及其他操作；可以在门户中[通过 Azure Monitor 创建操作组](../../azure-monitor/platform/action-groups.md)，也可以使用[操作组 - 资源模板](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)。
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 必选 | description |
 |:--|:--|:--|
 | AzNsNotification | 是 | Azure 操作组的资源 ID 应与警报相关联，以在满足警报条件时执行必要操作。 |
 | CustomEmailSubject | 否 | 将邮件的自定义主题行发送到关联操作组中指定的所有地址。 |
@@ -231,7 +231,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 ##### <a name="emailnotification"></a>EmailNotification
  此部分为可选项。如果希望警报将邮件发送给一个或多个收件人，请将此部分包含在内。
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 需要 | description |
 |:--|:--|:--|
 | Recipients | 是 | 由逗号分隔的电子邮件地址列表，创建警报后向这些地址发送通知，示例如下。<br><br>**[ "recipient1\@contoso.com", "recipient2\@contoso.com" ]** |
 | Subject | 是 | 邮件的主题行。 |
@@ -240,7 +240,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 ##### <a name="remediation"></a>补救
 此部分为可选项。如果希望启动 runbook 以响应警报，请将此部分包含在内。 
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 必选 | description |
 |:--|:--|:--|
 | RunbookName | 是 | 要启动的 runbook 的名称。 |
 | WebhookUri | 是 | 该 runbook 的 webhook 的 URI。 |
@@ -269,7 +269,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
     }
 下表介绍了 Webhook 操作资源的属性。
 
-| 元素名称 | 必选 | 描述 |
+| 元素名称 | 必选 | description |
 |:--|:--|:--|
 | 类型 | 是 | 操作的类型。 Webhook 操作的类型是 Webhook  。 |
 | name | 是 | 操作的显示名称。 控制台中不显示此名称。 |

@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d364da9506124a35c724209c68ff72db4243e80
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952136"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341572"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>停用的安全中心功能 (2019 年 7 月)
 
@@ -114,16 +114,18 @@ Log Analytics 仪表板在单个工作区上介绍了见解。 但是，安全�
 
 ## 自定义警报规则 （预览版）<a name="menu_customalerts"></a>
 
-我们[停用自定义警报体验](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)于 2019 年 6 月 30 日停用及其底层基础结构因为。 到那时，您可以编辑现有的自定义警报规则，但不能添加新的。 我们建议您启用[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)自动迁移现有警报并创建新的。 或者，您可以使用 Azure Monitor 日志警报创建警报。
+我们[停用自定义警报体验](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)于 2019 年 6 月 30 日停用及其底层基础结构因为。 到那时，您可以编辑现有的自定义警报规则，但不能添加新的。 停用日期定义任何自定义警报将不会生效且不会生成基于这些规则的安全警报。
+我们建议您启用[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)并重新创建自定义警报存在。 或者，您可以使用 Azure Monitor 日志警报创建警报。
 
-若要保留现有警报并将其迁移到 Azure Sentinel:
+若要保留现有警报并创建与 Azure Sentinel:
 
-1. 打开 Azure Sentinel 并选择自定义警报的存储位置工作区。
-1. 选择**Analytics**从菜单将自动迁移你的警报。
+1. [打开 Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview) ，然后选择自定义警报的存储位置工作区
+1. 选择**Analytics**从菜单
+1. 按照以下说明进行操作[教程](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)如何在 Azure Sentinel 中创建自定义警报
+
+如果您不使用 Azure Sentinel 感兴趣，可以使用 Azure Monitor 日志警报创建警报。 有关说明，请参阅 [创建、 查看和管理通过使用 Azure Monitor 的日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)并[Azure Monitor 中的日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)。
 
 ![自定义警报][13]
-
-如果您不感兴趣过渡到 Azure Sentinel，我们建议你使用 Azure Monitor 日志警报创建警报。 有关说明，请参阅 [创建、 查看和管理通过使用 Azure Monitor 的日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)并[Azure Monitor 中的日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)。
 
 自定义警报停用的详细信息，请参阅[Azure 安全中心 （预览版） 中的自定义警报规则](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)。
 
