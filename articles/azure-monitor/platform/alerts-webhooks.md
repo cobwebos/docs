@@ -72,7 +72,7 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 | 字段 | 必需 | 一组固定值 | 说明 |
 |:--- |:--- |:--- |:--- |
 | status |Y |Activated, Resolved |基于设置的条件的警报的状态。 |
-| 上下文 |Y | |警报上下文。 |
+| context |Y | |警报上下文。 |
 | timestamp |Y | |触发警报的时间。 |
 | id |Y | |每个警报规则都有一个唯一 ID。 |
 | name |Y | |警报名称。 |
@@ -82,7 +82,7 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 | metricName |用于指标警报 | |定义规则监视对象的指标的名称。 |
 | metricUnit |用于指标警报 |“Bytes”、“BytesPerSecond”、“Count”、“CountPerSecond”、“Percent”、“Seconds” |指标中允许使用的单位。 请参阅[允许的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx)。 |
 | metricValue |用于指标警报 | |导致警报的实际度量值。 |
-| 阈值 |用于指标警报 | |会激活警报的阈值。 |
+| threshold |用于指标警报 | |会激活警报的阈值。 |
 | windowSize |用于指标警报 | |用于根据阈值监视警报活动的时间段。 此值必须介于 5 分钟到 1 天之间。 此值必须采用 ISO 8601 持续时间格式。 |
 | timeAggregation |用于指标警报 |“Average”、“Last”、“Maximum”、“Minimum”、“None”、“Total” |随着时间推移，收集的数据应如何组合。 默认值为 Average。 请参阅[允许的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx)。 |
 | operator |用于指标警报 | |用于将当前指标数据与所设阈值进行比较的运算符。 |
