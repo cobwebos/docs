@@ -116,7 +116,7 @@ Stream 到事件中心通过活动日志[创建日志配置文件](#create-a-log
     | serviceBusRuleId |否 |服务总线命名空间（需在其中创建事件中心）的服务总线规则 ID。 这是一个字符串使用格式： `{service bus resource ID}/authorizationrules/{key name}`。 |
     | Location |是 |要为其收集活动日志事件的逗号分隔区域的列表。 |
     | RetentionInDays |是 |事件的保留在存储帐户中，介于 1 和 2147483647 之间天数。 值为零时，将无限期存储日志。 |
-    | 类别 |否 |应收集的事件类别的逗号分隔列表。 可能的值为_编写_，_删除_，并_操作_。 |
+    | Category |否 |应收集的事件类别的逗号分隔列表。 可能的值为_编写_，_删除_，并_操作_。 |
 
 ### <a name="example-script"></a>示例脚本
 下面是示例 PowerShell 脚本以创建将活动日志写入到存储帐户和事件中心的日志配置文件。
@@ -156,9 +156,9 @@ Stream 到事件中心通过活动日志[创建日志配置文件](#create-a-log
     | --- | --- | --- |
     | name |是 |日志配置文件的名称。 |
     | storage-account-id |是 |活动日志应保存到的存储帐户的资源 ID。 |
-    | 位置 |是 |要为其收集活动日志事件的空格分隔区域列表。 可以使用 `az account list-locations --query [].name` 查看订阅的所有区域列表。 |
+    | locations |是 |要为其收集活动日志事件的空格分隔区域列表。 可以使用 `az account list-locations --query [].name` 查看订阅的所有区域列表。 |
     | days |是 |事件的保留天数，介于 1 到 365 之间。 值为零时，将无限期（永久）存储日志。  如果为零，则启用的参数应设置为 true。 |
-    |已启用 | 是 |True 或 False。  用于启用或禁用保留策略。  如果为 True，则 days 参数必须为大于 0 的值。
+    |enabled | 是 |True 或 False。  用于启用或禁用保留策略。  如果为 True，则 days 参数必须为大于 0 的值。
     | categories |是 |应收集的事件类别的空格分隔列表。 可能值包括：Write、Delete 和 Action。 |
 
 
@@ -236,9 +236,9 @@ Stream 到事件中心通过活动日志[创建日志配置文件](#create-a-log
 | correlationId |通常为字符串格式的 GUID。 共享 correlationId 的事件属于同一 uber 操作。 |
 | identity |描述授权和声明的 JSON blob。 |
 | authorization |包含事件的 RBAC 属性的 Blob。 通常包括“action”、“role”和“scope”属性。 |
-| 级别 |事件的级别。 以下值之一：_关键_，_错误_，_警告_，_条信息性_，和_详细_ |
-| 位置 |位置所在的区域（或全局）。 |
-| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
+| level |事件的级别。 以下值之一：_关键_，_错误_，_警告_，_条信息性_，和_详细_ |
+| location |位置所在的区域（或全局）。 |
+| properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
 
 > [!NOTE]
 > 属性和使用情况的这些属性可以资源而异。
