@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 6/6/2019
 ms.author: tomfitz
-ms.openlocfilehash: 314b28edbd5770186d96fb2a2b203f26ff27bda0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ab8fbd8fa0453ca6c89f3e7ad91bea95b0b9096
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752353"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331986"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出了 Azure 资源类型是否支持移动操作。 尽管资源类型支持移动操作，但可能有阻止资源移动的情况。 有关影响移动操作的情况的详细信息，请参阅[将资源移动至新资源组或订阅](resource-group-move-resources.md)。
@@ -564,8 +564,8 @@ ms.locfileid: "66752353"
 | expressroutecrossconnections | 否 | 否 |
 | expressroutegateways | 否 | 否 |
 | expressrouteports | 否 | 否 |
-| frontdoors | 是 | 是 |
-| frontdoorwebapplicationfirewallpolicies | 是 | 是 |
+| frontdoors | 否 | 否 |
+| frontdoorwebapplicationfirewallpolicies | 否 | 否 |
 | loadbalancers | 是 | 是 |
 | localnetworkgateways | 是 | 是 |
 | natgateways | 是 | 是 |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 5102720242edd3ffc0a377bbddf0f7f3ade68b63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e90951f810c5101a46c29570af8ad71b42be637
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937224"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341022"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>适用于 Android 的脱机 Widevine 流式处理
 
@@ -38,6 +38,9 @@ ms.locfileid: "64937224"
 > * 在 Chrome 移动浏览器 v62 或更高版本中，使用加密媒体扩展 (EME) 和媒体源扩展 (MSE) 生成播放器
 
 本文还回答了与对受 Widevine 保护的内容进行脱机流式处理相关的一些常见问题。
+
+> [!NOTE]
+> 脱机 DRM 仅计费下载内容时发出单个请求许可证。 不计费的任何错误。
 
 ## <a name="prerequisites"></a>必备组件 
 

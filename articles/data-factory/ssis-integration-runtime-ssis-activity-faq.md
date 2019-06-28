@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 7789970b47f0e55adee5bbe9da9f303aee6cdb25
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: a018a383de855a05b14aa6e1f1c465f8868f672d
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190122"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312174"
 ---
 # <a name="troubleshooting-package-execution-in-ssis-integration-runtime"></a>SSIS 集成运行时中的包执行故障排除
 
@@ -110,6 +110,11 @@ ms.locfileid: "67190122"
   * 一个可能的原因是使用 MFA 启用该用户名/密码配置为使用 Azure Analysis Services 身份验证，尚不支持 SSIS 集成运行时中。 请尝试使用服务主体进行 Azure Analysis Service 身份验证：
     1. 为 AAS 准备服务主体 [https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)
     2. 连接管理器中配置"使用特定用户名和密码":"AppID"设置为用户名和密码"clientSecret"
+
+### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-managed-identity"></a>错误消息："ADONET 源未能获取连接 {GUID} 具有以下错误消息：用户 NT AUTHORITY\ANONYMOUS LOGON 登录失败"时使用托管的标识
+
+* 可能的原因和建议的操作：
+  * 请确保参数"ConnectUsingManagedIdentity"为 True 时，不为"Active Directory 密码身份验证"配置连接管理器的身份验证方法。 您可以将其配置为"SQL 身份验证"改为如果"ConnectUsingManagedIdentity"设置将被忽略的
 
 ### <a name="package-takes-unexpected-long-time-to-execute"></a>包需要意外的长时间才能执行
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sogup
-ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fdf8e6c19711f6ce38d430a9dffab185cad961b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966319"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296166"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -89,6 +89,9 @@ Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/ann
 Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排除。 但是，备份不会提供数据库一致性，因为未备份已启用 WA 的磁盘上的信息。 如果需要备份操作系统磁盘和备份未启用 WA 的磁盘，则可以使用此配置备份磁盘。
 
 我们正在与 15 分钟 RPO 运行 SAP HANA 备份的专用预览版。 它以与 SQL 数据库备份类似的方式构建，并将 backInt 接口用于 SAP HANA 认证的第三方解决方案。 如果您感兴趣，发送电子邮件至`AskAzureBackupTeam@microsoft.com`与该主题**注册的 Azure Vm 中的 SAP HANA 备份的专用预览版**。
+
+### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>什么是我可以从我已经在我的 VM 备份策略中设置的计划备份时间的备份开始时间在预期的最大延迟？
+在 2 小时内的计划的备份时间，将触发计划的备份。 有关示例。 如果 100 个 Vm 有备份开始时间安排在凌晨 2:00，然后按最大凌晨 4:00 点所有 100VMs 都必须备份作业正在进行中。 如果由于服务中断和恢复/重试已暂停计划的备份然后此计划的 2 小时的时段之外，可以开始备份。
 
 
 ## <a name="restore"></a>还原

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55db909f240756200d758fe89aabb217fb380d16
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478872"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329820"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 流分析中的查询并行化
 本文说明了如何利用 Azure 流分析中的并行化。 了解如何通过配置输入分区和调整分析查询定义来缩放流分析作业。
@@ -34,7 +34,7 @@ ms.locfileid: "61478872"
 -   IoT 中心（需要使用 PARTITION BY 关键字显式设置分区键）
 -   Blob 存储
 
-### <a name="outputs"></a>Outputs
+### <a name="outputs"></a>outputs
 
 处理流分析时，可利用输出中的分区：
 -   Azure Data Lake 存储
@@ -60,7 +60,7 @@ Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-
 
 1. 如果查询逻辑取决于同一个查询实例正在处理的相同键，则必须确保事件转到输入的同一个分区。 对于事件中心或 IoT 中心，这意味着事件数据必须已设置 **PartitionKey** 值。 或者，可以使用已分区的发件人。 对于 Blob 存储，这意味着事件将发送到相同的分区文件夹。 如果查询逻辑不需要由同一个查询实例处理相同的键，则可忽略此要求。 举例来说，简单的选择项目筛选器查询就体现了此逻辑。  
 
-2. 在输入端布置数据后，务必确保查询已进行分区。 这需要在所有步骤中使用 PARTITION BY  。 允许采用多个步骤，但必须使用相同的键对其进行分区。 目前，必须将分区键设置为“PartitionId”才能实现完全并行作业  。  
+2. 在输入端布置数据后，务必确保查询已进行分区。 这需要在所有步骤中使用 PARTITION BY  。 允许采用多个步骤，但必须使用相同的键对其进行分区。 1\.0 和 1.1 的兼容级别，分区键必须设置为**PartitionId**顺序来实现完全并行作业。 对于包含 1.2 或更高的兼容性级别的作业，可以将自定义列指定为分区键中的输入设置，而作业 paralellized automoatically 甚至不带 PARTITION BY 子句。
 
 3. 大多数输出都可以利用分区，但如果使用不支持分区的输出类型，作业将不会实现完全并行。 有关详细信息，请参阅[输出部分](#outputs)。
 
@@ -87,7 +87,7 @@ Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-
     WHERE TollBoothId > 100
 ```
 
-此查询是一个简单的筛选器。 因此，无需担心对发送到事件中心的输入进行分区。 请注意，该查询包含 PARTITION BY PartitionId  ，因此其满足上述要求 #2。 对于输出，需要在作业中配置事件中心输出，将分区键设置为“PartitionId”  。 最后一项检查是确保输入分区数等于输出分区数。
+此查询是一个简单的筛选器。 因此，无需担心对发送到事件中心的输入进行分区。 请注意，作业使用兼容级别之前必须包括 1.2, **PARTITION BY PartitionId**子句，因此其满足上述要求 #2。 对于输出，需要在作业中配置事件中心输出，将分区键设置为“PartitionId”  。 最后一项检查是确保输入分区数等于输出分区数。
 
 ### <a name="query-with-a-grouping-key"></a>带分组键的查询
 
@@ -141,6 +141,26 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 正如所见，第二步使用 **TollBoothId** 作为分区键。 此步骤与第一步不同，因此需要执行随机选择。 
 
 前述示例介绍了一些符合（或不符合）易并行拓扑的流分析作业。 如果符合易并行拓扑，则有可能达到最大规模。 对于不适合其中一个配置文件的作业，未来更新中将提供缩放指南。 现在，请使用以下各节中的常规指南。
+
+### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>兼容性级别 1.2-使用不同 PARTITION BY 值的多步骤查询 
+* 输入：具有 8 个分区的事件中心
+* 输出：具有 8 个分区的事件中心
+
+查询：
+
+```SQL
+    WITH Step1 AS (
+    SELECT COUNT(*) AS Count, TollBoothId
+    FROM Input1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
+    )
+
+    SELECT SUM(Count) AS Count, TollBoothId
+    FROM Step1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
+
+兼容性级别 1.2，则默认情况下并行查询的执行。 例如，从上一节的查询将 parttioned，只要"TollBoothId"列集作为输入分区键。 分区通过 ParttionId 子句不是必需的。
 
 ## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>计算作业的最大流式处理单位数
 流分析作业所能使用的流式处理单位总数取决于为作业定义的查询中的步骤数，以及每一步的分区数。

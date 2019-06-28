@@ -6,17 +6,17 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.openlocfilehash: b00eb12092838746f4bfe16f00eac55df9224b09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: ecc7077bf208adf1ac89adcce2f2e480ce34888e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65607223"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329601"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics 数据错误
 
-如果通过 Azure Stream Analytics 作业处理的数据存在差异，Stream Analytics 会将数据错误事件发送到诊断日志。 Stream Analytics 数据错误发生时其诊断日志中写入详细的信息和示例事件。 通过门户通知，了解一些错误也提供此信息的摘要。
+数据错误是处理的数据时出现的错误。  这些错误通常发生数据反序列化，序列化期间和写入操作。  当数据发生错误，Stream Analytics 写入诊断日志的详细的信息和示例的事件。  在某些情况下，通过门户通知还提供了此信息的摘要。
 
 本文概述了不同错误类型、 原因和诊断日志的输入和输出数据错误的详细信息。
 
@@ -45,6 +45,7 @@ ms.locfileid: "65607223"
 * 原因：选定的输入的压缩类型与数据不匹配。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：与任何反序列化错误包括无效的压缩类型的消息是从输入中删除。
 * 日志详细信息
    * 输入消息标识符。 事件中心的标识符是 PartitionId、 偏移量和序列号。
 
@@ -59,6 +60,7 @@ ms.locfileid: "65607223"
 * 原因：输入数据的标头无效。 例如，CSV 还包含具有重复名称的列。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：与任何反序列化错误包括无效的标头的消息是从输入中删除。
 * 日志详细信息
    * 输入消息标识符。 
    * 最多几个千字节为单位的实际负载。
@@ -74,6 +76,7 @@ ms.locfileid: "65607223"
 * 原因：使用 CREATE TABLE 或通过 TIMESTAMP BY 定义的输入的列不存在。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：从输入中删除具有缺少列的事件。
 * 日志详细信息
    * 输入消息标识符。 
    * 缺少的列的名称。 
@@ -94,6 +97,7 @@ ms.locfileid: "65607223"
 * 原因：无法将输入转换为 CREATE TABLE 语句中指定的类型。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：输入中将删除与类型转换错误的事件。
 * 日志详细信息
    * 输入消息标识符。 
    * 列和预期的类型的名称。
@@ -113,6 +117,7 @@ ms.locfileid: "65607223"
 * 原因：输入的数据不在正确的格式。 例如，输入不是有效的 JSON。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：从输入中删除后遇到无效的数据错误的消息中的所有事件。
 * 日志详细信息
    * 输入消息标识符。 
    * 最多几个千字节为单位的实际负载。
@@ -132,6 +137,7 @@ ms.locfileid: "65607223"
 * 原因：TIMESTAMP BY 表达式的值无法转换为日期时间。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：从输入中删除具有无效输入的时间戳的事件。
 * 日志详细信息
    * 输入消息标识符。 
    * 错误消息。 
@@ -148,6 +154,7 @@ ms.locfileid: "65607223"
 * 原因：TIMESTAMP BY OVER timestampColumn 的值为 NULL。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：从输入中删除具有无效输入的时间戳键事件。
 * 日志详细信息
    * 多达几千实际有效负载。
 
@@ -162,6 +169,7 @@ ms.locfileid: "65607223"
 * 原因：应用程序时间与到达时间之间的差异大于延迟到达容错时段。
 * 提供的门户通知：否
 * 诊断日志级别：信息
+* 影响：晚期输入的事件处理根据"处理其他事件"设置在事件排序作业配置的部分。 有关详细信息请参阅[时间处理策略](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 日志详细信息
    * 应用程序时间与到达时间。 
    * 最多几个千字节为单位的实际负载。
@@ -177,6 +185,7 @@ ms.locfileid: "65607223"
 * 原因：应用程序时间与到达时间之间的差异大于 5 分钟。
 * 提供的门户通知：否
 * 诊断日志级别：信息
+* 影响：早期输入的事件处理根据"处理其他事件"设置在事件排序作业配置的部分。 有关详细信息请参阅[时间处理策略](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 日志详细信息
    * 应用程序时间与到达时间。 
    * 最多几个千字节为单位的实际负载。
@@ -192,6 +201,7 @@ ms.locfileid: "65607223"
 * 原因：事件被视为无序容错时段定义根据无序。
 * 提供的门户通知：否
 * 诊断日志级别：信息
+* 影响：不按顺序处理根据"处理其他事件"事件设置在事件排序部分作业配置。 有关详细信息请参阅[时间处理策略](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 日志详细信息
    * 最多几个千字节为单位的实际负载。
 
@@ -208,6 +218,7 @@ ms.locfileid: "65607223"
 * 原因：所需的输出列不存在。 例如，列定义为 Azure 表 PartitionKey 不存在。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：根据处理包括缺少所需的列的所有输出数据转换错误[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置。
 * 日志详细信息
    * 列和记录标识符或记录的一部分的名称。
 
@@ -222,6 +233,7 @@ ms.locfileid: "65607223"
 * 原因：列的值不符合的输出。 例如，列名称不是有效的 Azure 表的列。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：根据处理包括无效的列名称的所有输出数据转换错误[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置。
 * 日志详细信息
    * 列和记录标识符或记录的一部分的名称。
 
@@ -236,6 +248,7 @@ ms.locfileid: "65607223"
 * 原因：列不能转换为输出中的有效类型。 例如，列的值是与约束或 SQL 表中定义的类型不兼容。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：根据处理包括类型转换错误的所有输出数据转换错误[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置。
 * 日志详细信息
    * 列的名称。
    * 记录标识符或记录的一部分。
@@ -251,6 +264,7 @@ ms.locfileid: "65607223"
 * 原因：消息的值大于支持的输出大小。 例如，一条记录是大于 1 MB 的事件中心输出。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：根据处理包括记录已超过的大小限制的所有输出数据转换错误[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置。
 * 日志详细信息
    * 记录标识符或记录的一部分。
 
@@ -265,6 +279,7 @@ ms.locfileid: "65607223"
 * 原因：一条记录已包含具有相同的名称的系统列的列。 例如，某列的 CosmosDB 输出名为 ID 为不同的列 ID 列时。
 * 提供的门户通知：是
 * 诊断日志级别：警告
+* 影响：根据处理包括重复的键的所有输出数据转换错误[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置。
 * 日志详细信息
    * 列的名称。
    * 记录标识符或记录的一部分。

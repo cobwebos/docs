@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: bb99a3c063f69aa5aeb00efdb51319a53d05b2d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aaab5ef4d8fc3d60a12f9e9f85f2846695fd1ab4
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067607"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329661"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务的请求实时数据
 
@@ -113,22 +113,23 @@ ms.locfileid: "67067607"
             }
         ]
     }
+    ```
 
 
-## Real-time data for bike docking station
+## <a name="real-time-data-for-bike-docking-station"></a>自行车扩展坞的实时数据
 
-The [Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) of the Azure Maps Mobility Service, allows to request static and real-time information such as availability and vacancy information for a given bike or scooter docking station. We will make a request to get real-time data for a docking station for bikes.
+[获取传输停靠信息 API](https://aka.ms/AzureMapsMobilityTransitDock) Azure Maps 移动服务，允许请求静态和实时信息，如可用性和给定的自行车或摩托车扩展坞的空缺信息。 我们将发出请求来获取扩展坞的自行车的实时数据。
 
-In order to make a request to the Get Transit Dock Info API, you will need the **dockId** for that station. You can get the dock ID by making a search request to the [Get Nearby Transit API](https://aka.ms/AzureMapsMobilityNearbyTransit) and setting the **objectType** parameter to "bikeDock". Follow the steps below to get real-time data of a docking station for bikes.
+若要获取传输停靠信息 API 向发出请求，需要**dockId**该工作站的。 可以通过在搜索请求获取停靠 ID[获取附近传输 API](https://aka.ms/AzureMapsMobilityNearbyTransit)并设置**objectType** "bikeDock"的参数。 请按照以下步骤来获取的自行车的扩展坞的实时数据。
 
 
-### Get dock ID
+### <a name="get-dock-id"></a>获取停靠 ID
 
-To get **dockID**, follow the steps below to make a request to the Get Nearby Transit API:
+若要获取**dockID**，请执行以下步骤来获取附近传输 api 发出请求：
 
-1. In Postman, click **New Request** | **GET request** and name it **Get dock ID**.
+1. 在 Postman 中，单击**新的请求** | **GET 请求**并将其命名**Get 停靠 ID**。
 
-2.  On the Builder tab, select the **GET** HTTP method, enter the following request URL, and click **Send**.
+2.  在生成器选项卡上选择**获取**的 HTTP 方法，输入以下请求 URL，然后单击**发送**。
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=121&query=40.7663753,-73.9627498&radius=100&objectType=bikeDock

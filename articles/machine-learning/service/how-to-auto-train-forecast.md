@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: c7f4b6d8aa614a460772fb7af11f9b83dc3fc979
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 4a3ab9094080ab257a885bb7a745fc83948327c2
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800816"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331684"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时间序列预测的模型
 
@@ -26,6 +26,14 @@ ms.locfileid: "65800816"
 * 运行时间序列数据预测
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
+
+可以使用自动化的 ML 合并技术和方法和获取建议、 高质量的时序预测。 自动化的时序试验视为多元回归问题。 在过去的时间序列值是"透视"以供其他预测值以及回归量的额外的维度。 
+
+此方法时，与传统时序方法，不同的自然地将合并多个上下文变量并在定型期间的关系的另一个优点。 中实际预测应用程序，多个因素会影响预测。 例如时预测销售额，交互的历史趋势、 汇率和价格所有共同推动销售结果。 更多的好处是回归模型的所有最新创新立即应用到预测。
+
+你可以[配置](#config)预测应以及延迟和的详细信息 （预测时间范围），扩展如何遥远的将来。 自动化机器学习研究单个，但通常在内部分支模型的数据集和预测视野中的所有项。 因此，更多的数据是可用来估计模型参数，而且不可见的系列的泛化成为可能。 
+
+从定型数据中提取的功能方面发挥关键作用。 并且，自动化机器学习执行标准预处理步骤，并生成附加的时序功能来捕获季节效应和最大程度提高预测准确性。 
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -69,6 +77,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > 在用于预测未来的值为模型定型，确保所有运行在预期范围的预测时，可以使用培训中使用的功能。 例如，在创建预测的需求，包括当前股价的功能可能大规模会增加训练准确性。 但是，如果你想要预测的长时间范围，您可能不能准确地预测未来与将来的时间序列点相对应的股票值和模型准确性可能会受到影响。
 
+<a name="config"></a>
 ## <a name="configure-and-run-experiment"></a>配置和运行试验
 
 预测任务，自动化的机器学习使用预处理和估计特定于时间序列数据的步骤。 将执行以下预处理步骤：
@@ -81,11 +90,11 @@ y_test = X_test.pop("sales_quantity").values
 
 `AutoMLConfig`对象定义的设置和自动的机器学习任务所需数据。 类似于回归问题，您定义标准的培训参数，如任务类型和数量的迭代，训练数据，交叉验证的次数。 对于预测任务，有其他必须设置影响实验的参数。 下表说明了每个参数和其使用情况。
 
-| Param | 描述 | 必选 |
+| Param | 描述 | 需要 |
 |-------|-------|-------|
 |`time_column_name`|用于指定用于生成时间序列和推断其频率的输入数据中的日期时间列。|✓|
 |`grain_column_names`|在输入数据中定义每个序列组的名称。 如果未定义粒度，数据集被假定为一个时间序列。||
-|`max_horizon`|最大所需的时间序列的频率单位的预测时间范围。|✓|
+|`max_horizon`|时间序列频率为单位定义最大所需预测时间范围。 单位基于定型数据，例如每月、 每周的时间间隔 forecaster 应预测出。|✓|
 |`target_lags`|*n*本期截止到正向滞后目标在模型定型之前的值。||
 |`target_rolling_window_size`|*n*历史期间要用于生成预测的值 < = 定型集大小。 如果省略， *n*完整的定型集大小。||
 

@@ -4,14 +4,14 @@ description: 使用 Azure 资源管理器将资源移到新的资源组或订阅
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/13/2019
+ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: bb7715a7eaa2cb499ed80b78130571f315ef0c95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb99bec74ae5444320b7098616d4bf2d81b90697
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083542"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332031"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -79,7 +79,6 @@ ms.locfileid: "67083542"
 * DNS
 * 事件网格
 * 事件中心
-* Front Door
 * HDInsight 群集 - 请参阅 [HDInsight 限制](#hdinsight-limitations)
 * IoT 中心
 * IoT 中心
@@ -89,14 +88,14 @@ ms.locfileid: "67083542"
 * 机器学习 - 机器学习工作室 Web 服务可以移动到同一订阅中的资源组，但不能移动到不同订阅中。 其他机器学习资源可以跨订阅进行移动。
 * 托管磁盘-托管磁盘的可用性区域不能移动到其他订阅
 * 媒体服务
-* 监视器 - 确保移动到新订阅时，不会超出[订阅配额](../azure-subscription-service-limits.md#monitor-limits)
+* 监视器 - 确保移动到新订阅时，不会超出[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)
 * 通知中心
 * 操作见解
 * 操作管理
 * 门户仪表板
 * Power BI - Power BI Embedded 和 Power BI 工作区集合
 * 公共 IP - 可以移动基本 SKU 公共 IP。 不能移动标准 SKU 公共 IP。
-* 恢复服务保管库 - 注册[预览版](#recovery-services-limitations)。
+* 恢复服务保管库-请参阅[限制](#recovery-services-limitations)。
 * Azure 上的 SAP HANA
 * 计划程序
 * 搜索 - 不能一次性移动不同区域中的多个搜索资源。 只能通过多个单独的操作移动它们。
@@ -104,7 +103,7 @@ ms.locfileid: "67083542"
 * Service Fabric
 * Service Fabric 网格
 * SignalR 服务
-* 存储 - 不同区域中的存储帐户不能在同一操作中移动。 相反，为每个区域使用单独的操作。
+* 存储
 * 存储（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 存储同步服务
 * 流分析 - 当流分析作业处于运行状态时，则无法进行移动。
@@ -138,6 +137,7 @@ ms.locfileid: "67083542"
 * Dev Spaces
 * Dynamics LCS
 * ExpressRoute
+* Front Door
 * 实验室服务-教室实验室不能移动到新的资源组或订阅。 开发测试实验室可以移动到新的资源组在同一订阅中，但不是能跨订阅。
 * 托管应用程序
 * 托管标识 - 用户分配

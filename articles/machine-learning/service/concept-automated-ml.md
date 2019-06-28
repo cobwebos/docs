@@ -1,5 +1,5 @@
 ---
-title: 自动 ML 算法选择和优化
+title: 什么是自动的机器学习 / automl
 titleSuffix: Azure Machine Learning service
 description: 了解 Azure 机器学习服务如何自动选取算法，以及如何通过它来生成模型，以便使用你提供的参数和条件为模型选择最佳算法，从而节省时间。
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
-ms.date: 06/10/2019
+ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f00a530cb4e62ae83dea349c949e8f2ddc43c0c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: b9fe8ff710cbfe7fbb4a4d8bd351028bb50efcb0
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203027"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331739"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
-自动化的机器学习，也称为自动化机器学习是机器的自动学习模型开发的较长时间、 迭代任务的过程。 它允许数据科学家、 分析人员和开发人员，同时维护模型质量构建具有高缩放性、 效率和工作效率的机器学习模型。
+自动化的机器学习，也称为 autoML，是机器的自动学习模型开发的较长时间、 迭代任务的过程。 它允许数据科学家、 分析人员和开发人员，同时维护模型质量构建具有高缩放性、 效率和工作效率的机器学习模型。
 
 传统的机器学习模型开发是占用大量资源，需要大量域知识和时间来生成和比较数十个模型。 应用自动的 ML 时希望 Azure 机器学习来训练和调整模型适用于您使用您指定目标度量值。 该服务然后循环访问机器学习算法与功能选择，其中每次迭代将生成具有培训评分的模型配对。 更高级评分，效果越佳模型被视为"fit"你的数据。
 
@@ -55,26 +55,13 @@ ms.locfileid: "67203027"
 
 在定型期间，Azure 机器学习服务中并行管道，请尝试不同的算法和参数创建的数。 它将停止后它会命中在试验中定义的退出条件。
 
-此外可以检查记录运行的信息，其中包含运行期间收集的指标。 训练运行生成 Python 序列化对象 (`.pkl`文件)，其中包含的模型和数据预处理。
+您还可以检查记录运行的信息，其中[包含度量值包含](how-to-understand-accuracy-metrics.md)运行期间收集。 训练运行生成 Python 序列化对象 (`.pkl`文件)，其中包含的模型和数据预处理。
 
 即使自动化模型构建，还可以[了解如何重要或相关的功能是](how-to-configure-auto-train.md#explain)到生成的模型。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 <a name="preprocess"></a>
-
-## <a name="time-series-forecasting"></a>时序预测
-构建预测是任何商业实体、 不可或缺的一部分，无论它是收入、 库存、 销售或客户的需求。 自动化机器学习使用数合并的技术和建议高质量时序预测的解决方法。 时间序列中自动机器学习的试验将被视为多元回归问题。 过去的时间序列的值是"透视"以供其他预测值以及回归量的额外的维度。 
-
-此方法时，与传统时序方法，不同的自然地将合并多个上下文变量并在定型期间的关系的另一个优点。 中实际预测应用程序，多个因素会影响预测。 例如时预测销售额，交互的历史趋势、 汇率和价格所有共同推动销售结果。 更多的好处是回归模型的所有最新创新立即应用到预测。
-
-预测应如何遥远的将来扩展 （预测时间范围） 是基本的预测规范的一部分。 设置所需的参数的`max_horizon`在试验中定义了多少个单位阶段 （根据训练数据，例如每月、 每周 forecaster 应预测出的时间间隔。 
-
-自动化机器学习研究单个，但通常在内部分支模型的数据集和预测视野中的所有项。 因此，更多的数据是可用来估计模型参数，而且不可见的系列的泛化成为可能。 
-
-从定型数据中提取的功能方面发挥关键作用。 自动化机器学习执行标准的预处理步骤，并生成其他时序功能 （例如年、 月、 日的周等） 来捕获季节效应和最大程度提高预测准确性。 
-
-如果适用于你的方案，您可以指示自动机器学习来创建滞后 (`target_lags`) 滚动窗口数据或聚合 (`target_rolling_window_size`) 从你的目标 (`y_value`) 过去的值。 
 
 ## <a name="preprocessing"></a>预处理
 
@@ -102,63 +89,17 @@ ms.locfileid: "67203027"
 
 + Python SDK:指定`"preprocess": True`有关[`AutoMLConfig`类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)。
 
+
+## <a name="time-series-forecasting"></a>时序预测
+构建预测是任何商业实体、 不可或缺的一部分，无论它是收入、 库存、 销售或客户的需求。 可以使用自动化的 ML 合并技术和方法和获取建议、 高质量的时序预测。 
+
+自动化的时序试验视为多元回归问题。 在过去的时间序列值是"透视"以供其他预测值以及回归量的额外的维度。 此方法时，与传统时序方法，不同的自然地将合并多个上下文变量并在定型期间的关系的另一个优点。 自动化机器学习研究单个，但通常在内部分支模型的数据集和预测视野中的所有项。 因此，更多的数据是可用来估计模型参数，而且不可见的系列的泛化成为可能。 
+
+详细了解并查看举例[自动为时序预测的机器学习](how-to-auto-train-forecast.md)。
+
 ## <a name="ensemble-models"></a>系综模型
 
 使用具有自动的机器学习的系综模型训练[Caruana 系综选择算法与已排序的系综初始化](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)。 系综学习的项而不是使用单个模型的多个模型，改进了机器学习结果和预测性能。 系综迭代将显示为您运行的最后一个迭代。
-
-## <a name="training-metric-output"></a>训练指标输出
-
-有多种方法可以查看每个运行迭代训练准确性指标。
-
-* 使用 Jupyter 小组件。
-* 使用`get_metrics()`函数对任何`Run`对象。
-* 在试验中在 Azure 门户中查看的指标。
-
-### <a name="classification-metrics"></a>分类指标
-
-以下度量值将保存在分类任务的每个运行迭代。
-
-|指标|描述|计算|其他参数
---|--|--|--|
-AUC_macro| AUC 是接收方操作特性曲线下面的区域。 Macro 是每个类的 AUC 算术平均值。  | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
-AUC_Micro| AUC 是接收方操作特性曲线下面的区域。 通过组合每个类中的真报率和误报率来全局计算 Micro| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
-AUC_Weighted  | AUC 是接收方操作特性曲线下面的区域。 Weighted 是每个类的评分算术平均值，按每个类中的真实实例数加权| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
-accuracy|Accuracy 是与真实标签完全匹配的预测标签百分比。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |无|
-average_precision_score_macro|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 Macro 是每个类的平均精度评分算术平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="macro"|
-average_precision_score_micro|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 通过组合每个交接中的真报率和误报率来全局计算 Micro|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="micro"|
-average_precision_score_weighted|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 Weighted 是每个类的平均精度评分算术平均值，按每个类中的真实实例数加权|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="weighted"|
-balanced_accuracy|平衡准确度是每个类的召回率算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
-f1_score_macro|F1 评分是精度和召回率的调和平均值。 Macro 是每个类的 F1 评分算术平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="macro"|
-f1_score_micro|F1 评分是精度和召回率的调和平均值。 通过统计真报率、漏报率和误报率总值来全局计算 Micro|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="micro"|
-f1_score_weighted|F1 评分是精度和召回率的调和平均值。 按每个类的 F1 评分类频率计算的加权平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
-log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 对于在 {0,1} 中包含真实标签 yt，且包含 yt=1 的估计概率 yp 的单个样本，对数损失为 -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp))|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
-norm_macro_recall|规范化宏召回率是已规范化的宏召回率，因此，随机性能的评分为 0，完美性能的评分为 1。 可以通过公式 norm_macro_recall := (recall_score_macro - R)/(1 - R) 来计算此值，其中，R 是随机预测的 recall_score_macro 预期值（例如，对于二元分类，R=0.5；对于 C 类分类问题，R=(1/C)）|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "macro"，(recall_score_macro - R)/(1 - R)，其中，R 是随机预测的 recall_score_macro 预期值（例如，对于二元分类，R=0.5；对于 C 类分类问题，R=(1/C)）|
-precision_score_macro|Precision 是标记为特定类的，实际位于该类中的元素百分比。 Macro 是每个类的精度算术平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
-precision_score_micro|Precision 是标记为特定类的，实际位于该类中的元素百分比。 通过统计真报率和误报率总值来全局计算 Micro|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
-precision_score_weighted|Precision 是标记为特定类的，实际位于该类中的元素百分比。 Weighted 是每个类的精度算术平均值，按每个类中的真实实例数加权|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="weighted"|
-recall_score_macro|Recall 是实际位于某个类中的已正确标记的元素百分比。 Macro 是每个类的召回率算术平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
-recall_score_micro|Recall 是实际位于某个类中的已正确标记的元素百分比。 通过统计真报率和漏报率总值来全局计算 Micro|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
-recall_score_weighted|Recall 是实际位于某个类中的已正确标记的元素百分比。 Weighted 是每个类的召回率算术平均值，按每个类中的真实实例数加权|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
-weighted_accuracy|加权准确度是当分配给每个示例的权重等于该示例的真实类中的真实实例比例时的准确度|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight 是等于目标中每个元素的该类比例的向量|
-
-### <a name="regression-and-forecasting-metrics"></a>回归和预测指标
-
-以下度量值将保存在每个运行迭代的回归或预测任务。
-
-|指标|描述|计算|其他参数
---|--|--|--|
-explained_variance|解释方差是数学模型计算给定数据集的方差时遵循的比例。 它是原始数据方差与误差方差之间的递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|无|
-r2_score|R2 是与输出平均值的基线模型相比，平方误差的确定系数或递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|无|
-spearman_correlation|斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，此参数在 -1 和 +1 之间变化，0 表示不相关。 -1 或 +1 相关表示确切的单一关系。 正相关表示 y 随着 x 的递增而递增。 负相关表示 y 随着 x 的递增而递减。|[计算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|无|
-mean_absolute_error|平均绝对误差是目标与预测之间的差的预期绝对值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|无|
-normalized_mean_absolute_error|规范化平均绝对误差是平均绝对误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|除以数据范围|
-median_absolute_error|平均绝对误差是目标与预测之间的所有绝对差的中间值。 此损失值可靠地反映离群值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|无|
-normalized_median_absolute_error|规范化中间绝对误差是中间绝对误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|除以数据范围|
-root_mean_squared_error|均方根误差是目标与预测之间的预期平方差的平方根|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|无|
-normalized_root_mean_squared_error|规范化均方根误差是均方根误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|除以数据范围|
-root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|无|
-normalized_root_mean_squared_log_error|规范化均方根对数误差指均方根对数误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|除以数据范围|
-
 
 ## <a name="use-with-onnx-in-c-apps"></a>与中的 ONNX 配合使用C#应用程序
 
@@ -177,7 +118,7 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看示例并了解如何使用自动化机器学习构建模型：
+查看示例并了解如何构建使用自动化的机器学习模型：
 
 + 请按照[教程：使用 Azure 自动机器学习自动训练分类模型](tutorial-auto-train-models.md)
 
@@ -187,4 +128,4 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 
 + 了解如何自动使用时序数据，训练[使用以下步骤](how-to-auto-train-forecast.md)。
 
-+ 试用[Jupyter 笔记本示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
++ 试用[自动化的机器学习的示例 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)

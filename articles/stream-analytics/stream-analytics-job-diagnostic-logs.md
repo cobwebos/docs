@@ -7,17 +7,19 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/15/2019
-ms.openlocfilehash: ff2930fbe0e53c4b3c1223f87919c0913296d07c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: a41c3f60d4b949f78c0755f97c9ef7e6302d78d8
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515922"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330003"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 
 有时，Azure 流分析作业会意外地停止处理。 因此，能够解决此类事件是很重要的。 故障可能由意外的查询结果、与设备的连接问题或意外的服务中断导致。 流分析中的诊断日志可以帮助用户在问题发生时确定原因并缩短恢复时间。
+
+强烈建议启用所有生产作业的诊断日志。
 
 ## <a name="log-types"></a>日志类型
 
@@ -62,7 +64,7 @@ ms.locfileid: "66515922"
 
     ![在边栏选项卡中导航到诊断日志](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  在“诊断设置”中创建“名称”，并选中“发送到 Log Analytics”旁边的复选框    。 然后添加现有的或创建新的“Log Analytics 工作区”  。 选中“日志”下“执行”和“创作”的复选框，以及“指标”下“AllMetrics”的复选框      。 单击“ **保存**”。
+2.  在“诊断设置”中创建“名称”，并选中“发送到 Log Analytics”旁边的复选框    。 然后添加现有的或创建新的“Log Analytics 工作区”  。 选中“日志”下“执行”和“创作”的复选框，以及“指标”下“AllMetrics”的复选框      。 单击“ **保存**”。 建议在 Stream Analytics 作业所在的同一 Azure 区域中使用 Log Analytics 工作区，以防止其他成本。
 
     ![诊断日志设置](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
@@ -113,7 +115,7 @@ status | 操作的状态。 例如，“失败”  或“成功”  。
 
 ### <a name="data-errors"></a>数据错误
 
-作业处理数据期间出现的任何错误都在此日志类别中。 这些日志通常创建于读取数据、序列化和写入操作期间。 这些日志不包括连接错误。 连接错误被视为泛型事件。
+作业处理数据期间出现的任何错误都在此日志类别中。 这些日志通常创建于读取数据、序列化和写入操作期间。 这些日志不包括连接错误。 连接错误被视为泛型事件。 您可以了解有关各种不同的原因的详细信息[输入和输出数据错误](https://docs.microsoft.com/azure/stream-analytics/data-errors)。
 
 名称 | 描述
 ------- | -------
@@ -149,4 +151,4 @@ Type | 消息类型。 映射到错误的内部分类。 例如，JobValidationE
 * [流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [扩展流分析作业](stream-analytics-scale-jobs.md)
 * [流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics 数据错误](https://docs.microsoft.com/azure/stream-analytics/data-errors)

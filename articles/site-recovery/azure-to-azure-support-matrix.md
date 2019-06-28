@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/09/2019
 ms.author: raynew
-ms.openlocfilehash: 6a6db30bfe6e4dc1eed04d11b53113c90210a5cf
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 2cf9aee498c649cdbf973652a60fb2d1f3feb371
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275223"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312150"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>用于将 Azure VM 从一个区域复制到另一个区域的支持矩阵
 
@@ -168,7 +168,7 @@ RBAC 策略 | 不支持 | VM 上的基于角色的访问控制 (RBAC) 策略不�
 **Action** | **详细信息**
 -- | ---
 调整复制的 VM 上的磁盘大小 | 支持
-将磁盘添加到复制的 VM | 不支持。<br/><br/> 需要为 VM 禁用复制，添加磁盘，然后再次启用复制。
+将磁盘添加到复制的 VM | 支持
 
 ## <a name="replicated-machines---storage"></a>复制的计算机 - 存储
 

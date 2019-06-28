@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 714283628e1b2ac445d36d0b07fe299b589a1cf0
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990144"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312815"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>创建和浏览自动化的机器学习试验 （预览版） 在 Azure 门户中
 
@@ -96,16 +96,16 @@ ms.locfileid: "65990144"
 
 1. 用于预测：
     1. 选择时间列：此列包含要使用的时间数据。
-    1. 选择预测时间范围：指示多少个时间单位 （分钟/小时/天/周/月/年） 将该模型能够预测到将来的发展。 随着模型需要不太准确它将成为未来的预测。 [详细了解预测和预测即将推出](https://docs.microsoft.com/azure/machine-learning/service/how-to-auto-train-forecast#configure-experiment)。
+    1. 选择预测时间范围：指示多少个时间单位 （分钟/小时/天/周/月/年） 将该模型能够预测到将来的发展。 随着模型需要不太准确它将成为未来的预测。 [详细了解预测和预测即将推出](how-to-auto-train-forecast.md)。
 
 1. （可选）高级设置： 可用于更好地控制训练作业的其他设置。
 
     高级设置|描述
     ------|------
-    主要指标| 用于进行评分模型的主要度量。 [详细了解模型度量](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics)。
+    主要指标| 用于进行评分模型的主要度量。 [详细了解模型度量](how-to-configure-auto-train.md#explore-model-metrics)。
     退出条件| 当满足以下任意条件时，训练作业结束之前完全完成。 <br> *训练作业时间 （分钟）* :允许运行训练作业的时间。  <br> *最大迭代数*:管道 （迭代） 中，以便测试在训练作业的最大数目。 该作业将不会运行多个指定的迭代次数。 <br> *指标分数阈值*:所有管道的最小指标分数。 这可确保，如果您想要达到定义的目标度量值，则执行不花更多时间比实际所需的培训作业。
     预处理| 选择此选项可以启用或禁用通过自动的机器学习的预处理。 预处理包括自动数据清理、 准备，和转换以生成综合的功能。 [了解有关预处理](#preprocess)。
-    验证| 选择一个要在训练作业中使用的交叉验证选项。 [详细了解交叉验证](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options)。
+    验证| 选择一个要在训练作业中使用的交叉验证选项。 [详细了解交叉验证](how-to-configure-auto-train.md)。
     并发| 选择你想要使用多核计算时使用的多核限制。
     已阻止的算法| 选择你想要从训练作业中排除的算法。
 
@@ -180,7 +180,7 @@ ms.locfileid: "65990144"
 
 ### <a name="view-training-run-details"></a>查看培训运行详细信息
 
-向下钻取的任何输出模型，以查看运行详细信息，如性能指标和分发图表的培训。 [了解有关图表的详细](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts)。
+向下钻取的任何输出模型，以查看运行详细信息，如性能指标和分发图表的培训。 [了解有关图表的详细](how-to-track-experiments.md#understanding-automated-ml-charts)。
 
 ![迭代详细信息](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -220,7 +220,7 @@ ms.locfileid: "65990144"
 
 1. 选择**浏览**"Conda 文件"框中，若要上传之前下载的环境文件 (condaEnv.yml) 旁边的按钮。
 
-    您可以使用自己的评分脚本和 conda 文件，以及上传其他文件。 [了解有关评分脚本的详细信息](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#script)。
+    您可以使用自己的评分脚本和 conda 文件，以及上传其他文件。 [了解有关评分脚本的详细信息](how-to-deploy-and-where.md#script)。
 
       >[!Important]
       > 文件的名称必须在 32 个字符和必须开始和结尾的字母数字。 可能包括短划线、 下划线、 圆点和之间的字母数字。 不允许有空格。
@@ -228,7 +228,7 @@ ms.locfileid: "65990144"
     ![创建映像](media/how-to-create-portal-experiments/create-image.png)
 
 1. 选择"创建"按钮以启动映像创建。 这将需要几分钟才能完成，完成后，将顶部栏上看到一条消息。
-1. 转到"映像"选项卡，选中你想要部署的映像旁边的复选框并选择"创建部署"。 [了解有关部署的详细](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)。
+1. 转到"映像"选项卡，选中你想要部署的映像旁边的复选框并选择"创建部署"。 [了解有关部署的详细](how-to-deploy-and-where.md)。
 
     有两个部署选项。
      + Azure 容器实例 (ACI)-这用于测试目的而不是在规模较大的操作部署更多使用。 请确保至少一个核心的值填充_CPU 保留容量_，并至少 1 千兆字节 (GB) 为_内存保留容量_

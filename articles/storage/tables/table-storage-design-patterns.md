@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63a81e390c113d10378973f928ffb58d71e8628e
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101419"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295121"
 ---
 # <a name="table-design-patterns"></a>表设计模式
 本文介绍适用于表服务解决方案的一些模式。 此外，还将了解如何实际解决其他表存储设计文章中提出的一些问题和权衡。 下图总结了不同模式之间的关系：  
@@ -574,7 +574,25 @@ if (retrieveResult.Result != null)
 请注意此示例如何将它检索的实体要求为 **EmployeeEntity** 类型。  
 
 ### <a name="retrieving-multiple-entities-using-linq"></a>使用 LINQ 检索多个实体
-可将 LINQ 和存储客户端库配合使用并为查询指定 **where** 子句，用以检索多个实体。 若要避免表扫描，应始终在 where 子句中包括 **PartitionKey** 值，如有可能也包括 **RowKey** 值以避免表和分区扫描。 表服务支持一组有限的比较运算符（大于、大于等于、小于、小于等于、等于和不等于）可用于 where 子句。 下面的 C# 代码片段在销售部门（假定 **PartitionKey** 存储部门名称）中查找姓氏以“B”开头（假定 **RowKey** 存储姓氏）的所有员工：  
+可以使用 LINQ 检索多个实体从表服务，使用 Microsoft Azure Cosmos 表标准库时。 
+
+```cli
+dotnet add package Microsoft.Azure.Cosmos.Table
+```
+
+若要使下面的示例工作，你将需要包含命名空间：
+
+```csharp
+using System.Linq;
+using Microsoft.Azure.Cosmos.Table;
+using Microsoft.Azure.Cosmos.Table.Queryable;
+```
+
+Employeetable 是一个 CloudTable 对象，实现 CreateQuery<ITableEntity>（） 方法，它将返回 TableQuery<ITableEntity>。 此类型的对象实现 IQueryable，并允许使用 LINQ 查询表达式和圆点表示法语法。
+
+检索多个实体，并通过为查询指定实现**其中**子句。 若要避免表扫描，应始终在 where 子句中包括 **PartitionKey** 值，如有可能也包括 **RowKey** 值以避免表和分区扫描。 表服务支持一组有限的比较运算符（大于、大于等于、小于、小于等于、等于和不等于）可用于 where 子句。 
+
+下面的 C# 代码片段在销售部门（假定 **PartitionKey** 存储部门名称）中查找姓氏以“B”开头（假定 **RowKey** 存储姓氏）的所有员工：  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();

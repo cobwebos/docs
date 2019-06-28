@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 666430a11fb95871eb601b2a38eb7b97ad16119f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 362f0b32ea99d0b888ea9f1efa0cd4ea74eb2fa1
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66498944"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338492"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -112,7 +112,7 @@ Azure 应用服务缩放单位在每个部署中支持很多客户。 免费和�
 ![服务终结点](media/networking-features/service-endpoints.png)
 
 * 设置你的应用与应用程序网关来锁定你的应用的入站流量
-* 制约访问到 VNet 中的资源应用。 这可能包括 Vm、 Ase 或使用 VNet 集成的甚至是其他应用 
+* 限制对你的应用到 VNet 中的资源的访问权限。 这可能包括 Vm、 Ase 或使用 VNet 集成的甚至是其他应用 
 
 ![应用程序网关的服务终结点](media/networking-features/service-endpoints-appgw.png)
 
@@ -136,7 +136,7 @@ Azure 应用服务缩放单位在每个部署中支持很多客户。 免费和�
 
 功能，而无需入站的防火墙孔的本地资源的访问权限，因为它是常用与开发人员。 其他出站应用服务网络功能是非常 Azure 虚拟网络相关。 混合连接不具有依赖于通过 VNet，可用于更广泛的网络需求。 请务必注意应用服务混合连接功能不会关心或知道你在其上执行的操作。 也就是说，可以使用它来访问数据库、 web 服务或在大型机上的任意 TCP 套接字。 该功能实质上是隧道 TCP 数据包。 
 
-常用于开发混合连接时，它还可在大量生产应用程序。 它非常适合用于访问 web 服务或数据库，但不是适用于以下情况涉及创建出色的多个连接。 
+常用于开发混合连接时，它还可在大量生产应用程序。 它非常适合用于访问 web 服务或数据库，但不是适用于以下情况涉及创建多个连接。 
 
 ### <a name="gateway-required-vnet-integration"></a>网关所需的 VNet 集成 
 

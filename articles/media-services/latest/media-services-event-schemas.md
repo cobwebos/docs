@@ -458,7 +458,7 @@ ms.locfileid: "60322227"
 | trackName | string | 轨道名称。 |
 | bitrate | integer | 轨道的比特率。 |
 | timestamp | string | 已删除的数据区块的时间戳。 |
-| timescale | string | 时间戳的时间刻度。 |
+| 时间刻度 | string | 时间戳的时间刻度。 |
 | resultCode | string | 删除数据区块的原因。 **FragmentDrop_OverlapTimestamp** 或 **FragmentDrop_NonIncreasingTimestamp**。 |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
@@ -501,7 +501,7 @@ ms.locfileid: "60322227"
 | encoderIp | string  | 编码器的 IP。 |
 | encoderPort | string | 此流的来源编码器的端口。 |
 | timestamp | string | 收到数据区块的第一个时间戳。 |
-| timescale | string | 用于表示时间戳的时间刻度。 |
+| 时间刻度 | string | 用于表示时间戳的时间刻度。 |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -573,7 +573,7 @@ ms.locfileid: "60322227"
 | firstDuration | string | 具有第一个时间戳的数据区块的持续时间。 |
 | secondTimestamp | string  | 收到视频类型的其他某个轨迹/质量级别的时间戳。 |
 | secondDuration | string | 具有第二个时间戳的数据区块的持续时间。 |
-| timescale | string | 时间戳和持续时间的时间刻度。|
+| 时间刻度 | string | 时间戳和持续时间的时间刻度。|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -616,7 +616,7 @@ ms.locfileid: "60322227"
 | bitrate | integer | 轨道的比特率。 |
 | incomingBitrate | integer | 基于来自编码器的数据区块计算出的比特率。 |
 | lastTimestamp | string | 在过去 20 秒收到的轨迹的最新时间戳。 |
-| timescale | string | 用于表示时间戳的时间刻度。 |
+| 时间刻度 | string | 用于表示时间戳的时间刻度。 |
 | overlapCount | integer | 在过去 20 秒数据区块数目包含重叠的时间戳。 |
 | discontinuityCount | integer | 在过去 20 秒观察到的不连续性数目。 |
 | nonIncreasingCount | integer | 在过去 20 秒收到的具有以往时间戳的数据区块数。 |
@@ -661,7 +661,7 @@ ms.locfileid: "60322227"
 | previousTimestamp | string | 前一个片段的时间戳。 |
 | newTimestamp | string | 当前片段的时间戳。 |
 | discontinuityGap | string | 上面两个时间戳之间的差距。 |
-| timescale | string | 用于表示时间戳和非连续性差距的时间刻度。 |
+| 时间刻度 | string | 用于表示时间戳和非连续性差距的时间刻度。 |
 
 ### <a name="common-event-properties"></a>自定义事件属性
 

@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 05/07/2019
-ms.openlocfilehash: 468e392cd2c45d79cbb24f8d737a6e83fbcd2725
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 0ee2dde5a941d069f5b745eafb35df780f657a47
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65079265"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312617"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>客户密码箱适用于 Microsoft Azure
 
@@ -97,7 +97,7 @@ ms.locfileid: "65079265"
 ### <a name="remote-desktop-access-to-virtual-machines"></a>对虚拟机的远程桌面访问
 
 客户密码箱当前可用于虚拟机的远程桌面访问请求。 支持以下工作负荷：
-- 平台即服务 (PaaS) 的版本 1
+- 平台即服务 (PaaS)-Azure 云服务 （web 角色和辅助角色）
 - 基础结构即服务 (IaaS) 的 Windows 和 Linux (仅 Azure Resource Manager)
 - 虚拟机规模集-Windows 和 Linux
 

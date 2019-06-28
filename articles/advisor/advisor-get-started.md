@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: a7e82fffdd9c865de6040c05ec28bc8bd2dced61
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f91e48a532a278c95d50775e135ac6379e8d8070
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60468234"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332052"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure 顾问入门
 
@@ -94,9 +94,9 @@ ms.locfileid: "60468234"
 
 此过程针对低使用率虚拟机建议，配置平均 CPU 使用率规则。
 
-顾问可监视虚拟机 14 天的使用情况，并识别出利用率较低的虚拟机。 如果在 4 天或 4 天以上，虚拟机的平均 CPU 使用率都小于或等于 5% 且网络使用率小于或等于 7 MB，则会被视为利用率较低的虚拟机。
+顾问可监视虚拟机 7 天的使用情况，并识别出利用率较低的虚拟机。 以下情况可以将虚拟机视为使用率低：其 CPU 使用率为 5% 或更低且其网络使用率低于 2%，或者更小的虚拟机大小可以容纳当前工作负荷。
 
-若要加强对低使用率虚拟机的标识，可在每个订阅的基础上调整平均 CPU 使用率。  可将平均 CPU 使用率规则设置为 5%、10%、15% 或 20%。
+若要加强对低使用率虚拟机的标识，可在每个订阅的基础上调整平均 CPU 使用率。  CPU 使用率规则可以设置为 5%、 10%、 15%或 20%。
 
 > [!NOTE]
 > 要调整用于标识低使用率虚拟机的平均 CPU 使用率规则，操作者必须是订阅所有者  。  如果缺少订阅或资源组所需的相关权限，则用户界面中的添加或排除选项是禁用的。 

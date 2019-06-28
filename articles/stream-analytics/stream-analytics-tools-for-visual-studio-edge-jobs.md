@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics tools for Visual Studio 中的 Stream Analytics 数据框 Edge 作业
-description: 本文介绍如何创作、 调试和 Stream Analytics 数据框 Edge 作业使用 Stream Analytics tools for Visual Studio。
+title: Azure Stream Analytics tools for Visual Studio 中的 Stream Analytics Edge 作业
+description: 本文介绍如何创作、 调试和创建 IoT Edge 上的 Stream Analytics 作业使用 Stream Analytics tools for Visual Studio。
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 242fb2daebfe9eb6e5a0c73c2c4c0e91a3131032
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1601bf6c73d9f3450959773c85385bc8ef907a66
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304164"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329961"
 ---
-# <a name="develop-stream-analytics-data-box-edge-jobs-using-visual-studio-tools"></a>开发使用 Visual Studio 工具的 Stream Analytics 数据框 Edge 作业
+# <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>使用 Visual Studio 工具开发流分析 Edge 作业
 
-在本教程中，您将学习如何使用用于 Visual Studio Stream 分析工具。 了解如何创作、 调试和 Stream Analytics 数据框 Edge 作业。 创建并测试作业后，可以转到 Azure 门户，将该作业部署到设备中。 
+在本教程中，您将学习如何使用用于 Visual Studio Stream 分析工具。 了解如何创作、 调试和 Stream Analytics Edge 作业。 创建并测试作业后，可以转到 Azure 门户，将该作业部署到设备中。 
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -28,15 +28,15 @@ ms.locfileid: "66304164"
 
 * 请按照[安装说明](stream-analytics-tools-for-visual-studio-edge-jobs.md)安装用于 Visual Studio 的流分析工具。
  
-## <a name="create-a-stream-analytics-data-box-edge-project"></a>创建 Stream Analytics 数据框 Edge 项目 
+## <a name="create-a-stream-analytics-edge-project"></a>创建流分析 Edge 项目 
 
 在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。 导航到左侧的“模板”列表，展开“Azure 流分析” > “流分析 Edge” > “Azure 流分析 Edge 应用程序”。     提供项目的名称、位置和解决方案名称，选择“确定”。 
 
-![在 Visual Studio 中的新 Stream Analytics 数据框 Edge 项目](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
+![在 Visual Studio 中的新 Stream Analytics Edge 项目](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
 创建项目后，导航到“解决方案资源管理器”查看文件夹层次结构。 
 
-![Stream Analytics 数据框边缘作业的解决方案资源管理器视图](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
+![流分析 Edge 作业的解决方案资源管理器视图](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
 
  
 ## <a name="choose-the-correct-subscription"></a>选择正确的订阅
@@ -63,15 +63,14 @@ ms.locfileid: "66304164"
  
 ## <a name="define-the-transformation-query"></a>定义转换查询
 
-Stream Analytics 作业在 Stream Analytics 数据框边缘环境中部署支持大部分[Stream Analytics 查询语言参考](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396)。 但是，Stream Analytics 数据框 Edge 作业尚不支持以下操作： 
+Stream Analytics 作业在 Stream Analytics IoT Edge 环境中部署支持大部分[Stream Analytics 查询语言参考](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396)。 但是，Stream Analytics Edge 作业尚不支持以下操作： 
 
 
 |**类别**  | **命令**  |
 |---------|---------|
-|地理空间运算符 |<ul><li>CreatePoint</li><li>CreatePolygon</li><li>CreateLineString</li><li>ST_DISTANCE</li><li>ST_WITHIN</li><li>ST_OVERLAPS</li><li>ST_INTERSECTS</li></ul> |
-|其他运算符 | <ul><li>分区依据</li><li>TIMESTAMP BY OVER</li><li>DISTINCT</li><li>COUNT 运算符中的表达式参数</li><li>DATE 和 TIME 函数中的微秒</li><li>JavaScript UDA（对于云中部署的作业，此功能仍以预览版提供）</li></ul>   |
+|其他运算符 | <ul><li>分区依据</li><li>TIMESTAMP BY OVER</li><li>JavaScript UDF</li><li>用户定义聚合 (UDA)</li><li>GetMetadataPropertyValue</li><li>在单个步骤中使用超过 14 个聚合</li></ul>   |
 
-在门户中创建一个 Stream Analytics 数据框边缘作业时，编译器会自动发出警告你如果不使用支持的运算符。
+在门户中创建 Stream Analytics Edge 作业时，编译器会自动发出警告你如果不使用支持的运算符。
 
 在 Visual Studio 的查询编辑器中定义以下转换查询（**script.asaql 文件**）
 
@@ -105,15 +104,15 @@ FROM EdgeInput
 
 2. 若要将作业提交到 Azure，请导航到查询编辑器并选择 **提交到 Azure**。  
 
-3. 此时将打开一个弹出窗口。 若要更新现有的 Stream Analytics 数据框边缘作业或创建一个新的选择。 更新现有作业时，它将替换所有作业配置，在此方案中，您将发布新的作业。 选择“创建新的 Azure 流分析作业”，为作业输入类似于 **MyASAEdgeJob** 的名称，选择所需的**订阅**、**资源组**和**位置**，然后选择“提交”。  
+3. 此时将打开一个弹出窗口。 若要更新现有的 Stream Analytics Edge 作业，或创建一个新的选择。 更新现有作业时，它将替换所有作业配置，在此方案中，您将发布新的作业。 选择“创建新的 Azure 流分析作业”，为作业输入类似于 **MyASAEdgeJob** 的名称，选择所需的**订阅**、**资源组**和**位置**，然后选择“提交”。  
 
    ![从 Visual Studio 将流分析作业提交到 Azure](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  
-   现在已创建 Stream Analytics 数据框边缘作业。 您可以参考[IoT Edge 教程上运行作业](stream-analytics-edge.md)若要了解如何将其部署到你的设备。 
+   现在已创建 Stream Analytics Edge 作业。 您可以参考[IoT Edge 教程上运行作业](stream-analytics-edge.md)若要了解如何将其部署到你的设备。 
 
 ## <a name="manage-the-job"></a>管理作业 
 
-可以通过服务器资源管理器查看作业和作业关系图。 从**Stream Analytics**中**服务器资源管理器**，展开订阅和资源组部署 Stream Analytics 数据框 Edge 作业的位置。 你可以查看状态为“已创建”的 MyASAEdgejob。  展开作业节点，并双击该节点打开作业视图。
+可以通过服务器资源管理器查看作业和作业关系图。 从**Stream Analytics**中**服务器资源管理器**，展开订阅和资源组部署 Stream Analytics Edge 作业的位置。 你可以查看状态为“已创建”的 MyASAEdgejob。  展开作业节点，并双击该节点打开作业视图。
 
 ![服务器资源管理器作业管理选项](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  

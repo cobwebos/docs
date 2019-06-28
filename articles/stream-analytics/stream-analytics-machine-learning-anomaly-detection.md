@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: fdf98a0c0c40010bb55955b54dc7b04db8e199f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 88c0aea851bcf70206b5f68d7865c487441905f6
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66493262"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329903"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常情况检测
 
@@ -21,7 +21,7 @@ Azure 流分析可在云和 Azure IoT Edge 中使用，它提供内置的机器�
 
 机器学习模型采用统一采样的时序。 如果时序不统一，你可以在调用异常情况检测之前使用翻转窗口插入一个聚合步骤。
 
-机器学习操作不支持季节性趋势或多变体关联。
+机器学习操作不支持季节性趋势或多重 variate 相关性这一次。
 
 ## <a name="model-accuracy-and-performance"></a>模型准确度和性能
 
@@ -29,9 +29,9 @@ Azure 流分析可在云和 Azure IoT Edge 中使用，它提供内置的机器�
 
 函数的工作方式是根据它们到目前为止所观测到的值建立特定的法线。 通过在置信度级别内根据建立的法线进行比较来识别离群值。 窗口大小应该基于训练正常行为模型所需的最小事件数，这样，在发生异常时，该模型才能识别它。
 
-请注意，模型的响应时间随着历史记录的大小增大而延长，因为它需要对更多的以往事件进行比较。 建议仅包含所需数量的事件，以提高性能。
+模型的响应时间随着历史记录的大小，因为它需要与更多的过去的事件进行比较。 建议仅包含所需数量的事件，以提高性能。
 
-时序中的间隙可能是模型在特定的时间点未接收事件而造成的。 流分析将使用插补来处理这种情况。 历史记录大小以及同一滑动窗口的持续时间用于计算事件预期抵达的平均速率。
+时序中的间隙可能是模型在特定的时间点未接收事件而造成的。 这种情况下处理通过 Stream Analytics 使用插补的逻辑。 历史记录大小以及同一滑动窗口的持续时间用于计算事件预期抵达的平均速率。
 
 ## <a name="spike-and-dip"></a>高峰和低谷
 
@@ -40,7 +40,7 @@ Azure 流分析可在云和 Azure IoT Edge 中使用，它提供内置的机器�
 
 ![高峰和低谷异常示例](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
-在同一滑动窗口中，如果第二个高峰小于第一个高峰，则相比于在指定的置信度级别内为第一个高峰计算的评分，较小高峰的计算评分可能不够明显。 可以尝试减小模型的置信度级别设置来捕获此类异常。 但是，如果开始收到过多的警报，则可以使用更高的置信度间隔。
+在同一滑动窗口中，如果第二个高峰小于第一个高峰，则相比于在指定的置信度级别内为第一个高峰计算的评分，较小高峰的计算评分可能不够明显。 你可以尝试减少模型的置信度级别，以检测此类异常。 但是，如果开始收到过多的警报，则可以使用更高的置信度间隔。
 
 以下示例查询假设在 2 分钟的滑动窗口中，以每秒 1 个事件的统一速率输入事件，历史记录中包含 120 个事件。 最终的 SELECT 语句将提取事件，并输出评分和置信度级别为 95% 的异常状态。
 

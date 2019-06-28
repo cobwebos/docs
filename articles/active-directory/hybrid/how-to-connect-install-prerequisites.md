@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d17823c4ef4917f9f312b8f2f327e2b0395cfa3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2916c9aba7d404ff4ad380d249bd507fadf71ea
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109438"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310079"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本主题介绍 Azure AD Connect 的先决条件和硬件要求。
@@ -52,7 +52,7 @@ ms.locfileid: "67109438"
 >Azure AD Connect 服务器包含关键标识数据，应被视为第 0 层组件中所述[Active Directory 管理层模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#ADATM_BM)
 
 * 不能在 Small Business Server 或 2019 版以前的 Windows Server Essentials（支持 Windows Server Essentials 2019）上安装 Azure AD Connect。 该服务器必须使用 Windows Server Standard 或更高版本。
-* 不建议在域控制器上安装 Azure AD Connect，因为安全措施和较严格的设置可能会阻碍正确安装 Azure AD Connect。
+* 由于安全方案和更严格的设置，可以使 Azure AD Connect 无法正确安装，不建议在域控制器上安装 Azure AD Connect。
 * 必须在 Azure AD Connect 服务器上安装完整的 GUI。 **不支持**在服务器核心上安装 GUI。
 >[!IMPORTANT]
 >不支持小型企业服务器、 server essentials 中或服务器核心上安装 Azure AD Connect。

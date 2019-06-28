@@ -6,27 +6,27 @@ ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 5929ff439bc31e16643e5c57868cd6b68f9cd99c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761981"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329578"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics 解决方案模式
 
 类似于在 Azure 中的许多其他服务，Stream Analytics 最适合用于与其他服务创建较大的端到端解决方案。 本文介绍 Azure Stream Analytics 的简单解决方案和各种体系结构模式。 您可以基于这些模式来开发更复杂的解决方案。 在本文中所述的模式可在各种方案。 特定于方案的模式的示例位于[Azure 解决方案体系结构](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics)。
 
-## <a name="create-a-stream-analytics-job-with-a-real-time-dashboard"></a>使用实时仪表板创建 Stream Analytics 作业
+## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>创建 power 实时仪表板处理体验的 Stream Analytics 作业
 
-使用 Azure Stream Analytics 方便使用，你可以快速构建实时仪表板和警报。 一个简单的解决方案引入事件从事件中心或 IoT 中心，并[馈送使用的流式处理数据集的 Power BI 仪表板](/power-bi/service-real-time-streaming)。 有关详细信息，请参阅详细的教程[分析使用 Stream Analytics 的电话呼叫数据并在 Power BI 仪表板中的将结果可视化](stream-analytics-manage-job.md)。
+使用 Azure Stream Analytics，你可以快速构建实时仪表板和警报。 一个简单的解决方案引入事件从事件中心或 IoT 中心，并[馈送使用的流式处理数据集的 Power BI 仪表板](/power-bi/service-real-time-streaming)。 有关详细信息，请参阅详细的教程[分析使用 Stream Analytics 的电话呼叫数据并在 Power BI 仪表板中的将结果可视化](stream-analytics-manage-job.md)。
 
 ![ASA Power BI 仪表板](media/stream-analytics-solution-patterns/pbidashboard.png)
 
 可以在从 Azure 门户在几分钟内构建此解决方案。 没有涉及任何大量的编码，并且使用 SQL 语言来表达业务逻辑。
 
-此实时仪表板解决方案模式从事件源到浏览器中的 Power BI 仪表板提供了最低的延迟。 Azure Stream Analytics 是唯一的 Azure 服务使用此内置功能。
+此解决方案模式从事件源到浏览器中的 Power BI 仪表板提供了最低的延迟。 Azure Stream Analytics 是唯一的 Azure 服务使用此内置功能。
 
 ## <a name="use-sql-for-dashboard"></a>使用 SQL 的仪表板
 
@@ -34,19 +34,19 @@ Power BI 仪表板提供低延迟，但它不能用于生成完全成熟的 Powe
 
 ![ASA SQL 仪表板](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-使用 SQL 数据库为您提供更多的灵活性，代价是增加延迟时间。 此解决方案是最适合于具有大于一秒的延迟要求的作业。 使用此方法，可以最大限度地进行进一步的切片的 Power BI 的实用程序和报表的切割数据。 您还可以使用其他仪表板解决方案，例如 Tableau 的灵活性。
+使用 SQL 数据库为您提供更大的灵活性，但代价是略有更高的延迟。 此解决方案是最适合于具有大于一秒的延迟要求的作业。 使用此方法，可以最大限度地进行进一步的切片的 Power BI 功能，并用于报告和更多可视化效果选项切割数据。 您还可以使用其他仪表板解决方案，例如 Tableau 的灵活性。
 
-SQL 不是高吞吐量数据存储，并从 Azure Stream Analytics 到 SQL 数据库的最大吞吐量为 24 MB/秒。 如果你的解决方案中的事件源生成数据的更高版本的增长，需要使用 Stream Analytics 中的处理逻辑来减少到 SQL 输出率。 技术，如筛选、 开窗聚合模式匹配与临时联接，可以使用分析函数。 到 SQL 输出率可以进一步优化使用中所述技术[到 Azure SQL 数据库的 Azure Stream Analytics 输出](stream-analytics-sql-output-perf.md)。
+SQL 不是高吞吐量数据存储区。 到 SQL 数据库的最大吞吐量从 Azure Stream Analytics 目前大约 24 MB/秒。 如果你的解决方案中的事件源生成数据的更高版本的增长，需要使用 Stream Analytics 中的处理逻辑来减少到 SQL 输出率。 技术，如筛选、 开窗聚合模式匹配与临时联接，可以使用分析函数。 到 SQL 输出率可以进一步优化使用中所述技术[到 Azure SQL 数据库的 Azure Stream Analytics 输出](stream-analytics-sql-output-perf.md)。
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>将合并到使用事件消息传送应用程序的实时见解
 
 第二个最受欢迎使用 Stream Analytics 是生成实时警报。 在此解决方案模式下，可以使用 Stream Analytics 中的业务逻辑来检测[临时和空间模式](stream-analytics-geospatial-functions.md)或[异常](stream-analytics-machine-learning-anomaly-detection.md)，则生成警报信号。 但是，不同于 Stream Analytics 其中作为首选的终结点使用 Power BI 仪表板解决方案，可以使用大量的中间数据接收器。 这些接收器包括事件中心、 服务总线和 Azure Functions。 作为应用程序生成器中，需要决定哪些数据接收器最适合于你的方案。
 
-必须实现下游事件使用者逻辑以在现有业务工作流中生成警报。 可以在 Azure Functions 中实现自定义逻辑，因为函数是可以执行此集成的最快方法。 Stream Analytics 作业的输出可在用于 Azure 函数的教程[从 Azure Stream Analytics 作业运行 Azure Functions](stream-analytics-with-azure-functions.md)。 Azure Functions 还支持各种类型的包括文本和电子邮件通知。 逻辑应用还可能用于与事件中心之间 Stream Analytics 和逻辑应用的此类集成。
+必须实现下游事件使用者逻辑以在现有业务工作流中生成警报。 可以在 Azure Functions 中实现自定义逻辑，因为 Azure Functions 是可以执行此集成的最快方法。 Stream Analytics 作业的输出可在用于 Azure 函数的教程[从 Azure Stream Analytics 作业运行 Azure Functions](stream-analytics-with-azure-functions.md)。 Azure Functions 还支持各种类型的包括文本和电子邮件通知。 逻辑应用还可能用于与事件中心之间 Stream Analytics 和逻辑应用的此类集成。
 
 ![ASA 事件消息传送应用程序](media/stream-analytics-solution-patterns/eventmessagingapp.png)
 
-事件中心，但是，提供最灵活的集成点。 很多其他服务，例如 Azure 数据资源管理器和时序见解，可以使用事件中心的事件。 从 Azure Stream Analytics，以完整的解决方案，可以直接向事件中心接收器连接服务。 事件中心也是最高吞吐量消息传递代理可在 Azure 上针对此类集成方案。
+事件中心，但是，提供最灵活的集成点。 很多其他服务，例如 Azure 数据资源管理器和时序见解可以使用事件中心的事件。 从 Azure Stream Analytics，以完整的解决方案，可以直接向事件中心接收器连接服务。 事件中心也是最高吞吐量消息传递代理可在 Azure 上针对此类集成方案。
 
 ## <a name="dynamic-applications-and-websites"></a>动态应用程序和网站
 
