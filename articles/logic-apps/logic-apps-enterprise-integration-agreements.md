@@ -8,16 +8,15 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
-ms.date: 04/05/2019
-ms.openlocfilehash: 26d653b873e959f0804e0456ed87ee68c39413e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/22/2019
+ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720670"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330302"
 ---
-# <a name="create-and-manage-trading-partner-agreements-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>创建和使用 Azure 逻辑应用和 Enterprise Integration Pack 中管理贸易合作伙伴协议
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>创建和管理 Azure 逻辑应用中的贸易合作伙伴协议
 
 一个[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md) 
 *协议*可帮助组织和企业无缝地相互通信通过定义要使用交换时的特定行业标准协议企业到企业 (B2B) 消息。 协议提供常见的优势，例如：
@@ -27,6 +26,8 @@ ms.locfileid: "64720670"
 * 可轻松地创建、 管理和使用用于生成企业集成解决方案。
 
 本文介绍如何创建 AS2、 EDIFACT 或 X12 协议时通过使用构建企业 B2B 方案的集成解决方案，可以使用[Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)和[Azure 逻辑应用](../logic-apps/logic-apps-overview.md). 创建协议后，你可以使用 AS2、 EDIFACT 或 X12 交换 B2B 消息的连接器。
+
+若要创建 RosettaNet 消息交换的协议，请参阅[Exchange RosettaNet 消息](../logic-apps/logic-apps-enterprise-integration-rosettanet.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -59,14 +60,14 @@ ms.locfileid: "64720670"
 
    | 属性 | 需要 | Value | 说明 |
    |----------|----------|-------|-------------|
-   | **名称** | 是 | <*agreement-name*> | 协议的名称 |
+   | **Name** | 是 | <*agreement-name*> | 协议的名称 |
    | **协议类型** | 是 | **AS2**， **X12**，或**EDIFACT** | 你的协议的协议类型。 在创建协议文件时，该文件中的内容必须与协议类型匹配。 | |  
    | **主机合作伙伴** | 是 | <*host-partner-name*> | 主机合作伙伴代表指定的协议的组织 |
    | **主机标识** | 是 | <*host-partner-identifier*> | 主机合作伙伴标识符 |
    | **来宾合作伙伴** | 是 | <*guest-partner-name*> | 托管方代表与管理方进行交易的组织 |
    | **来宾标识** | 是 | <*guest-partner-identifier*> | 来宾合作伙伴的标识符 |
-   | **接收设置** | 多种多样 | 多种多样 | 这些属性指定如何处理接收的协议的所有传入消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br>- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
-   | **发送设置** | 多种多样 | 多种多样 | 这些属性指定如何处理协议发送的所有传出消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br>- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
+   | **接收设置** | 多种多样 | 多种多样 | 这些属性指定的主机合作伙伴如何接收从来宾合作伙伴协议中的所有传入的消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br>- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
+   | **发送设置** | 多种多样 | 多种多样 | 这些属性指定主机合作伙伴如何将所有传出消息发送到来宾合作伙伴协议中。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br>- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
    |||||
 
 1. 完成后在创建你的协议**外**页上，选择**确定**，并返回到集成帐户。

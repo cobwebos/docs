@@ -11,12 +11,12 @@ ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: cdf4dba3996668b3c9fe31df10050ff2cbff6cb3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c493dbc99edc794dd5a261dfc004c2c8c1cb6d52
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387819"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312073"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -25,8 +25,6 @@ ms.locfileid: "60387819"
 
 数据工厂[管道](concepts-pipelines-activities.md)中的 Spark 活动在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Spark 程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 使用按需的 Spark 链接服务时，数据工厂会自动为你实时创建用于处理数据的 Spark 群集，然后在处理完成后删除群集。 
 
-> [!IMPORTANT]
-> Spark 活动不支持那些使用 Azure Data Lake Store 作为主存储的 HDInsight Spark 群集。
 
 ## <a name="spark-activity-properties"></a>Spark 活动属性
 下面是 Spark 活动的示例 JSON 定义：    
@@ -45,7 +43,7 @@ ms.locfileid: "60387819"
             "referenceName": "MyAzureStorageLinkedService",
             "type": "LinkedServiceReference"
         },
-        "rootPath": "adfspark\\pyFiles",
+        "rootPath": "adfspark",
         "entryFilePath": "test.py",
         "sparkConfig": {
             "ConfigItem1": "Value"

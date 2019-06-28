@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 435e5f2163270672ac5f1f5695ca2fe9be22ee6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f89105abc21f5ef6cce53ea55622a808f947e86
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388735"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357306"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>计划 Azure 时序见解预览版环境
 
@@ -88,5 +88,8 @@ Azure 时序见解采用了即用即付的业务模型。 有关费用和容量�
 
 ## <a name="next-steps"></a>后续步骤
 
+- 审阅[Azure 顾问](../advisor/advisor-overview.md)规划业务恢复配置选项。
+
 - 详细了解[存储和入口](./time-series-insights-update-storage-ingress.md)中时间系列 Insights 预览版。
+
 - 了解如何[数据建模](./time-series-insights-update-tsm.md)中时间系列 Insights 预览版。

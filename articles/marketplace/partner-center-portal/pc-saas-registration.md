@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: abe499c081c73d42e712d5872e121262a1a50197
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f644dca7a057667fb37f5a79a4683c592059e7a
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259159"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331599"
 ---
 # <a name="register-a-saas-application"></a>注册 SaaS 应用程序
 
@@ -68,7 +68,7 @@ Azure 不会对 SaaS 服务公开给其最终用户的身份验证施加任何�
 
 HTTP 方法
 
-`GET`
+`POST`
 
 *请求 URL*
 
@@ -103,7 +103,7 @@ HTTP 方法
 
 *响应*
 
-|  **名称**  | 类型        |  **说明**    |
+|  **Name**  | 类型        |  **说明**    |
 | ---------- | -------------  | ------------------- |
 | 200 正常    | TokenResponse  | 请求成功   |
 |  |  |  |

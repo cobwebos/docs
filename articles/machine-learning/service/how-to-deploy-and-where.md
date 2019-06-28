@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c4ab5fe4625bce1ed66258a5b9aab597dae17a1a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b5a08b9b998f8d0b30091af016af564e836d4651
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303999"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331650"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -39,7 +39,9 @@ ms.locfileid: "67303999"
 
 ## <a id="registermodel"></a> 注册您的模型
 
-注册机器学习模型在 Azure 机器学习工作区中。 该模型可以来自 Azure 机器学习或可来自于其他地方。 以下示例演示如何注册文件中的模型：
+一个或多个文件组成您的模型的已注册的模型逻辑容器。 例如，如果有多个文件中存储的模型，可以将它们注册为工作区中的单个模型。 注册后，你可以然后下载或部署已注册的模型并接收已注册的所有文件。
+
+在 Azure 机器学习工作区中注册机器学习模型。 该模型可以来自 Azure 机器学习或可来自于其他地方。 以下示例演示如何注册文件中的模型：
 
 ### <a name="register-a-model-from-an-experiment-run"></a>注册模型从试验运行
 
@@ -48,11 +50,18 @@ ms.locfileid: "67303999"
   model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
   print(model.name, model.id, model.version, sep='\t')
   ```
+
+  > [!TIP]
+  > 若要在模型注册中包含多个文件，设置`model_path`到包含文件的目录。
+
 + **使用 CLI**
+
   ```azurecli-interactive
   az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment
   ```
 
+  > [!TIP]
+  > 若要在模型注册中包含多个文件，设置`--asset-path`到包含文件的目录。
 
 + **使用 VS Code**
 
@@ -77,10 +86,16 @@ ms.locfileid: "67303999"
                          description = "MNIST image classification CNN from ONNX Model Zoo",)
   ```
 
+  > [!TIP]
+  > 若要在模型注册中包含多个文件，设置`model_path`到包含文件的目录。
+
 + **使用 CLI**
   ```azurecli-interactive
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
+
+  > [!TIP]
+  > 若要在模型注册中包含多个文件，设置`-p`到包含文件的目录。
 
 **时间估计**：大约 10 秒。
 
@@ -110,12 +125,14 @@ ms.locfileid: "67303999"
 * `run(input_data)`：此函数使用模型来基于输入数据预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 可以在将数据发送到模型之前或者返回给客户端之前转换数据。
 
 #### <a name="what-is-getmodelpath"></a>什么是 get_model_path？
-注册模型时，你提供用于管理在注册表中的模型的模型名称。 在 get_model_path API 返回的本地文件系统上的模型文件的路径中使用此名称。 如果你注册的文件夹或文件的集合，此 API 返回包含这些文件的目录的路径。
 
-时注册模型，需要授予它的名称对应的模型放置的位置，本地或在服务部署过程。
+注册模型时，你提供用于管理在注册表中的模型的模型名称。 使用此名称与[Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)来检索本地文件系统上的模型文件的路径。 如果你注册的文件夹或文件的集合，此 API 返回包含这些文件的目录的路径。
 
-下面的示例将返回路径到单个文件调用 sklearn_mnist_model.pkl （这使用名称 sklearn_mnist 注册）
-```
+注册模型时，您为其提供一个名称，它对应于该模型放置的位置，本地或在服务部署过程。
+
+下面的示例将返回路径到单个文件称为`sklearn_mnist_model.pkl`(这使用名称注册`sklearn_mnist`):
+
+```python
 model_path = Model.get_model_path('sklearn_mnist')
 ``` 
 
@@ -293,7 +310,8 @@ InferenceConfig 功能的信息，请参阅[InferenceConfig](https://docs.micros
 
 ### <a name="optional-profile-your-model"></a>可选：配置您的模型文件
 在部署之前您作为一项服务的模型，您可能想要分析它来确定最佳 CPU 和内存要求。
-可以通过 SDK 或 CLI 来执行此操作。
+
+您可以执行您的模型使用 SDK 或 CLI 配置文件。
 
 有关详细信息，您可以查看我们的 SDK 文档： https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
 
@@ -386,7 +404,7 @@ InferenceConfig 功能的信息，请参阅[InferenceConfig](https://docs.micros
 了解更多有关 AKS 部署和自动缩放[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice)引用。
 
 #### 创建新的 AKS 群集<a id="create-attach-aks"></a>
-**预计时间：** 大约需要 5 分钟。
+**时间估计**：大约 20 分钟。
 
 创建或附加 AKS 群集一次处理你的工作区。 可以将此群集重复用于多个部署。 如果你删除群集或包含该资源组，必须创建一个新的群集部署所需的下一个时间。 您可以附加到工作区的多个 AKS 群集。
 
@@ -425,10 +443,11 @@ aks_target.wait_for_completion(show_output = True)
 
 > [!IMPORTANT]
 > 对于 [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)，如果为 agent_count 和 vm_size 选择自定义值，则需要确保 agent_count 乘以 vm_size 的结果大于或等于 12 个虚拟 CPU。 例如，如果对 vm_size 使用“Standard_D3_v2”（有 4 个虚拟 CPU），则应该为 agent_count 选择 3 或更大的数字。
-
-**时间估计**：大约 20 分钟。
+>
+> Azure 机器学习 SDK 不支持缩放 AKS 群集。 若要缩放群集中的节点，请为 AKS 群集在 Azure 门户中使用 UI。 您只能更改节点计数，而不是群集的 VM 大小。
 
 #### <a name="attach-an-existing-aks-cluster"></a>附加现有的 AKS 群集
+**预计时间：** 大约需要 5 分钟。
 
 如果已在 Azure 订阅中有 AKS 群集并且它 1.12 版。 # #，可用来部署你的映像。
 

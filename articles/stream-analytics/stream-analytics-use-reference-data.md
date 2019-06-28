@@ -7,17 +7,17 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 99917fa01fcdb3faf731e9d0909d67ff41222f22
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/21/2019
+ms.openlocfilehash: e4a6d169b50eff1b0e166bea098e28e65bad8cab
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066767"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329303"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 
-参考数据（也称为查找表）是一个静态的或本质上缓慢变化的有限数据集，用于执行查找或与数据流相关联。 例如，在 IoT 方案中，可以将关于传感器的元数据（不经常更改）存储在参考数据中，并将其与实时 IoT 数据流相联接。 Azure 流分析在内存中加载参考数据以实现低延迟流处理。 为了在 Azure 流分析作业中利用参考数据，通常会在查询中使用[参考数据联接](https://msdn.microsoft.com/library/azure/dn949258.aspx)。 
+引用数据 （也称为查找表） 是有限的数据集的是静态或缓慢变化的本质上，用于执行查找或以增加你的数据的流。 例如，在 IoT 方案中，可以将关于传感器的元数据（不经常更改）存储在参考数据中，并将其与实时 IoT 数据流相联接。 Azure 流分析在内存中加载参考数据以实现低延迟流处理。 为了在 Azure 流分析作业中利用参考数据，通常会在查询中使用[参考数据联接](https://msdn.microsoft.com/library/azure/dn949258.aspx)。 
 
 流分析支持将 Azure Blob 存储和 Azure SQL 数据库用作参考数据的存储层。 你还可以通过 Azure 数据工厂对参考数据进行转换并/或将其复制到 Blob 存储，以使用[任意数量的基于云的数据存储和本地数据存储](../data-factory/copy-activity-overview.md)。
 

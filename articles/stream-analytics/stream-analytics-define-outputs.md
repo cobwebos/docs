@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: ba803c493fd85a7be7bc6c5922171678cc6e0df0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4e62ae47de95f95600faa3dc27f6867b065e117b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164448"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329975"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -30,7 +30,7 @@ ms.locfileid: "67164448"
 
 Stream Analytics 支持[Azure Data Lake 存储 Gen 1](../data-lake-store/data-lake-store-overview.md)。 Azure Data Lake Storage 是大数据分析工作负荷的企业范围的超大规模存储库。 可以使用 Data Lake 存储来存储任何大小、 类型和引入速度进行操作和探索性分析的数据。 Stream Analytics 必须要有权访问 Data Lake 存储。
 
-Stream Analytics 从 azure Data Lake 存储输出当前不是在 Azure 中国区 (21Vianet) 和 Azure 德国 (T-systems International) 区域中可用。
+Stream Analytics 从 azure Data Lake 存储输出当前不是在 Azure 中国 21Vianet 和 Azure 德国 (T-systems International) 区域中可用。
 
 下表列出了属性名称和配置数据湖存储第 1 代输出及其说明。   
 
@@ -50,7 +50,7 @@ Stream Analytics 从 azure Data Lake 存储输出当前不是在 Azure 中国区
 
 ## <a name="sql-database"></a>SQL 数据库
 
-可以使用[Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)作为输出的是在本质的数据或依赖关系数据库中托管的内容的应用程序。 Stream Analytics 作业写入到 SQL 数据库中的现有表。 表架构必须与字段和它们中作业的输出的类型完全匹配。 此外可以指定[Azure SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)作为输出通过 SQL 数据库输出选项。 若要了解有关如何提高写入吞吐量，请参阅[Stream Analytics 与 Azure SQL 数据库作为输出](stream-analytics-sql-output-perf.md)一文。 
+可以使用[Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)作为输出的是在本质的数据或依赖关系数据库中托管的内容的应用程序。 Stream Analytics 作业写入到 SQL 数据库中的现有表。 表架构必须与字段和它们中作业的输出的类型完全匹配。 此外可以指定[Azure SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)作为输出通过 SQL 数据库输出选项。 若要了解有关如何提高写入吞吐量，请参阅[Stream Analytics 与 Azure SQL 数据库作为输出](stream-analytics-sql-output-perf.md)一文。
 
 下表列出了属性名称和用于创建 SQL 数据库输出及其说明。
 
@@ -63,10 +63,10 @@ Stream Analytics 从 azure Data Lake 存储输出当前不是在 Azure 中国区
 | 密码 | 用于连接到数据库的密码。 |
 | 表 | 将写入输出的表名称。 表名称是区分大小写。 此表的架构应与字段数量以及作业输出生成其类型完全匹配。 |
 |继承分区方案| 用于继承前一查询步骤的分区方案，若要启用完全并行拓扑与多个编写器的表选项。 有关详细信息，请参阅从 [Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。|
-|匹配批数| 与每个批量发送的记录数的建议的限制插入事务。|
+|最大批数| 与每个批量发送的记录数的建议的上限插入事务。|
 
 > [!NOTE]
-> Azure SQL 数据库产品/服务适用于 Stream Analytics，但附加了数据库运行 SQL Server 不支持 Azure 虚拟机中的输出作业。
+> Azure SQL 数据库产品/服务适用于 Stream Analytics，但尚不支持附加了数据库或 SQL Azure 托管实例中运行的 SQL Server Azure 虚拟机中的作业输出。 这在将来的版本中可能会有所改变。
 
 ## <a name="blob-storage"></a>Blob 存储
 
@@ -108,7 +108,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 | 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 | 查询中使用的易记名称，用于将查询输出定向到此事件中心。 |
-| 事件中心命名空间 |一组消息处理实体的容器。 创建新的事件中心后，还创建了事件中心命名空间。 |
+| 事件中心命名空间 | 一组消息处理实体的容器。 创建新的事件中心后，还创建了事件中心命名空间。 |
 | 事件中心名称 | 事件中心输出的名称。 |
 | 事件中心策略名称 | 共享访问策略，可以在事件中心的“配置”选项卡上创建。  每个共享访问策略具有名称、所设权限以及访问密钥。 |
 | 事件中心策略密钥 | 用于对事件中心命名空间的访问权限进行身份验证的共享访问密钥。 |
@@ -123,7 +123,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 
 可以使用[Power BI](https://powerbi.microsoft.com/)作为 Stream Analytics 作业，以提供丰富的可视化体验的分析结果的输出。 用于操作仪表板、 生成报告以及进行指标驱动的报道，可以使用此功能。
 
-流分析中的 Power BI 输出当前不可在 Azure 中国（世纪互联）和 Azure 德国 (T-Systems International) 区域中使用。
+Power BI 输出从 Stream Analytics 目前不在 Azure 中国 21Vianet 和 Azure 德国 (T-systems International) 区域中可用。
 
 下表列出了属性名称和配置 Power BI 输出及其说明。
 
@@ -212,14 +212,14 @@ datetime | String | String |  datetime | String
 ## <a name="service-bus-topics"></a>服务总线主题
 服务总线队列提供的一对一通信方法从发送方到接收方。 [服务总线主题](https://msdn.microsoft.com/library/azure/hh367516.aspx)提供一个多形式的通信。
 
-下表列出了用于创建主题输出的属性名称及其说明。
+下表列出了属性名称和用于创建服务总线主题输出及其说明。
 
 | 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |在查询中用于将查询输出定向到此服务总线主题的友好名称。 |
 | 服务总线命名空间 |一组消息处理实体的容器。 创建新的事件中心后，还创建了 Service Bus 命名空间。 |
 | 主题名称 |主题是消息传送实体，类似于事件中心和队列。 它们旨在从设备和服务收集事件流。 创建主题时，它还具有提供特定的名称。 发送到主题的消息不可用，除非创建了订阅，因此请确保没有主题下的一个或多个订阅。 |
-| 主题策略名称 |时创建的主题，还可以在主题上创建共享的访问策略**配置**选项卡。每个共享访问策略具有名称、所设权限以及访问密钥。 |
+| 主题策略名称 |时创建的服务总线主题，还可以在主题上创建共享的访问策略**配置**选项卡。每个共享访问策略具有名称、所设权限以及访问密钥。 |
 | 主题策略密钥 |用于对服务总线命名空间的访问权限进行身份验证的共享访问密钥。 |
 | 事件序列化格式 |输出数据的序列化格式。 支持 JSON、CSV 和 Avro。 |
 | 编码 |如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。 |
@@ -231,7 +231,7 @@ datetime | String | String |  datetime | String
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)是一种全球分布式的数据库服务，提供不设限的弹性缩放全球范围内、 丰富查询和自动索引经由与架构无关的数据模型。 若要了解有关 Stream Analytics 的 Azure Cosmos DB 集合选项，请参阅[使用 Azure Cosmos DB 作为输出的 Stream Analytics](stream-analytics-documentdb-output.md)一文。
 
-流分析中的 Azure Cosmos DB 输出当前不可在 Azure 中国（世纪互联）和 Azure 德国 (T-Systems International) 区域中使用。
+Azure Cosmos DB 输出从 Stream Analytics 目前不在 Azure 中国 21Vianet 和 Azure 德国 (T-systems International) 区域中可用。
 
 > [!Note]
 > 在此期间，Azure Stream Analytics 仅支持连接到 Azure Cosmos DB 通过使用 SQL API。
@@ -253,7 +253,7 @@ datetime | String | String |  datetime | String
 ## <a name="azure-functions"></a>Azure Functions
 Azure Functions 是一种无服务器计算服务，可用于代码需运行，而无需显式预配或管理基础结构。 它允许实现由 Azure 或合作伙伴服务中发生的事件触发的代码。 Azure functions 响应触发此功能使其自然输出 Azure Stream Analytics。 此输出适配器可让用户将 Stream Analytics 连接到 Azure Functions 和运行脚本或一段代码以响应各种事件。
 
-流分析中的 Azure Functions 输出当前不可在 Azure 中国（世纪互联）和 Azure 德国 (T-Systems International) 区域中使用。
+Stream Analytics 从 azure Functions 输出当前不是在 Azure 中国 21Vianet 和 Azure 德国 (T-systems International) 区域中可用。
 
 Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions 输出适配器现做了以下可配置属性：
 
@@ -295,7 +295,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions �
 | 输出类型 | 分区支持 | 分区键  | 输出写入器数目 |
 | --- | --- | --- | --- |
 | Azure Data Lake Store | 是 | 使用 {date} 和 {time} 令牌在路径前缀模式。 选择日期格式，例如 YYYY/MM/DD、 DD/MM/YYYY 或 MM DD YYYY。 HH 用于时间格式。 | 按照[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
-| Azure SQL 数据库 | 是 | 根据在查询中的 PARTITION BY 子句。 | 按照[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 若要了解有关实现的详细信息更好地写入吞吐量性能时将数据加载到 Azure SQL 数据库，请参阅[到 Azure SQL 数据库的 Azure Stream Analytics 输出](stream-analytics-sql-output-perf.md)。 |
+| Azure SQL 数据库 | 是的需要启用。 | 根据在查询中的 PARTITION BY 子句。 | 启用继承分区选项后，后面输入分区[完全可并行化查询](stream-analytics-scale-jobs.md)。 若要了解有关实现的详细信息更好地写入吞吐量性能时将数据加载到 Azure SQL 数据库，请参阅[到 Azure SQL 数据库的 Azure Stream Analytics 输出](stream-analytics-sql-output-perf.md)。 |
 | Azure Blob 存储 | 是 | 使用 {date} 和 {time} 令牌在事件的字段中的路径模式。 选择日期格式，例如 YYYY/MM/DD、 DD/MM/YYYY 或 MM DD YYYY。 HH 用于时间格式。 可以通过单个自定义事件属性 {fieldname} 或 {datetime:\<specifier>} 对 blob 输出进行分区。 | 按照[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 | Azure 事件中心 | 是 | 是 | 按分区对齐方式变化。<br /> 当与上游 （上一个） 的查询步骤同样对齐事件中心输出的分区键时的编写器数是与事件中心输出中的分区数相同。 每个编写器使用[EventHubSender 类](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)将事件发送到特定分区。 <br /> 当事件中心输出的分区键与上游 （上一个） 的查询步骤不符时，编写器数是该前面的步骤中的分区数相同。 每个编写器使用[SendBatchAsync 类](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)中**EventHubClient**将事件发送到输出的所有分区。 |
 | Power BI | 否 | 无 | 不适用。 |
@@ -315,14 +315,14 @@ Azure Stream Analytics 使用可变大小的批处理来处理事件并将写入
 | 输出类型 | 最大消息大小 | 批大小优化 |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | 请参阅[Data Lake 存储限制](../azure-subscription-service-limits.md#data-lake-store-limits)。 | 使用每个写入操作最多为 4 MB。 |
-| Azure SQL 数据库 | 每个单个大容量插入的 10,000 最大行数。<br />100 最小行数进行单个大容量插入。 <br />请参阅[Azure SQL 限制](../sql-database/sql-database-resource-limits.md)。 |  每个批处理最初是大容量插入具有最大批处理大小。 可以拆分批处理中一半 （直到达到最小批大小） 基于从 SQL 重试的错误。 |
+| Azure SQL 数据库 | 使用最大批处理计数的可配置。 默认情况下，10,000 最大和最小行数单个大容量插入。<br />请参阅[Azure SQL 限制](../sql-database/sql-database-resource-limits.md)。 |  每个批处理最初是大容量插入，最大批处理计数。 批是拆分了一半 （直到最小的批数） 基于从 SQL 重试的错误。 |
 | Azure Blob 存储 | 请参阅[Azure 存储限制](../azure-subscription-service-limits.md#storage-limits)。 | 最大 blob 的块大小为 4 MB。<br />最大 blob bock 计数为 50,000。 |
-| Azure 事件中心  | 每个消息的 256 KB。 <br />请参阅[事件中心限制](../event-hubs/event-hubs-quotas.md)。 |  当输入/输出分区未对齐时，每个事件中单独打包**EventData** ，直到达到最大消息大小 (1 MB 的高级 SKU) 的批中发送。 <br /><br />  如果输入/输出分区为 aligned，多个事件会打包到单个**EventData**实例，直到达到最大消息的大小，并发送。  |
+| Azure 事件中心  | 256 KB 或 1 MB，每个消息。 <br />请参阅[事件中心限制](../event-hubs/event-hubs-quotas.md)。 |  当输入/输出分区未对齐时，每个事件中单独打包`EventData`，直到达到最大消息大小的批中发送。 这还会造成[自定义元数据属性](#custom-metadata-properties-for-output)使用。 <br /><br />  如果输入/输出分区为 aligned，多个事件会打包到单个`EventData`实例，直到达到最大消息的大小，并发送。 |
 | Power BI | 请参阅[Power BI Rest API 限制](https://msdn.microsoft.com/library/dn950053.aspx)。 |
 | Azure 表存储 | 请参阅[Azure 存储限制](../azure-subscription-service-limits.md#storage-limits)。 | 默认值为 100 个实体，每个单个事务。 可以将其配置为根据需要较小的值。 |
-| Azure 服务总线队列   | 每个消息的 256 KB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 使用每个消息的单个事件。 |
-| Azure 服务总线主题 | 每个消息的 256 KB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 使用每个消息的单个事件。 |
-| Azure Cosmos DB   | 请参阅[Azure Cosmos DB 限制](../azure-subscription-service-limits.md#azure-cosmos-db-limits)。 | 批大小和写入的频率进行动态调整基于 Azure Cosmos DB 的响应。 <br /> 没有从 Stream Analytics 任何预先确定的限制。 |
+| Azure 服务总线队列   | 每个标准层中，为高级级别的 1 MB 的消息的 256 KB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 使用每个消息的单个事件。 |
+| Azure 服务总线主题 | 每个标准层中，为高级级别的 1 MB 的消息的 256 KB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 使用每个消息的单个事件。 |
+| Azure Cosmos DB   | 请参阅[Azure Cosmos DB 限制](../azure-subscription-service-limits.md#azure-cosmos-db-limits)。 | 批大小和写入频率调整根据 Azure Cosmos DB 响应动态。 <br /> 没有从 Stream Analytics 任何预先确定的限制。 |
 | Azure Functions   | | 默认批大小为 262,144 字节 (256 KB)。 <br /> 每个批处理的默认事件计数为 100。 <br /> 批大小是可配置的，可在流分析[输出选项](#azure-functions)中增加或减少。
 
 ## <a name="next-steps"></a>后续步骤

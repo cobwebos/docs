@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b57ffbd3cb2b31da3fc2882e941f9788d83fea8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731007"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341679"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -88,7 +88,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
       ![profiler-webjob-log]
 
-如果你不明白 Profiler 为何不能正常工作，可以下载日志并将其发送给我们的团队以获取帮助。 
+如果您不明白为什么 Profiler 不适用于你，你可以下载日志并将其发送到我们的团队以获得帮助， serviceprofilerhelp@microsoft.com。 
     
 ### <a name="manual-installation"></a>手动安装
 

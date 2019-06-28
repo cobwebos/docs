@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 06/20/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 1c9855f982b888e8e1d68bfe5233983db8c826ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25be0629b2ef877d8757f515cb6ccd5942e58d5f
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61247986"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312793"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>通过 IoT Edge 设备网关连接 Modbus TCP 设备
 
@@ -35,7 +35,7 @@ ms.locfileid: "61247986"
 
 若要测试 Modbus 网关功能，可以使用 Microsoft 提供的示例模块。 可以通过 Azure 市场 [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview) 或映像 URI **mcr.microsoft.com/azureiotedge/modbus:1.0** 访问模块。
 
-如果需要创建自己的模块并根据环境对其自定义，可以使用 GitHub 上的开源 [Azure IoT Edge Modbus 模块](https://github.com/Azure/iot-edge-modbus)项目。 按照该项目中的指南创建自己的容器映像。 如果创建自己的容器映像，请参阅[在 Visual Studio 中开发 C# 模块](how-to-visual-studio-develop-csharp-module.md)或[在 Visual Studio Code 中开发模块](how-to-vs-code-develop-module.md)。 这些文章说明了如何创建新模块并将容器映像发布到注册表。
+如果需要创建自己的模块并根据环境对其自定义，可以使用 GitHub 上的开源 [Azure IoT Edge Modbus 模块](https://github.com/Azure/iot-edge-modbus)项目。 按照该项目中的指南创建自己的容器映像。 若要创建容器映像，请参阅[开发C#Visual Studio 中的模块](how-to-visual-studio-develop-csharp-module.md)或[开发 Visual Studio Code 中的模块](how-to-vs-code-develop-module.md)。 这些文章说明了如何创建新模块并将容器映像发布到注册表。
 
 ## <a name="try-the-solution"></a>试用此解决方案
 
@@ -85,12 +85,13 @@ ms.locfileid: "61247986"
 
 5. 返回到“添加模块”  步骤，选择“下一步”  。
 
-7. 在“指定路由”步骤中，将以下 JSON 复制到文本框中  。 此路由将 Modbus 模块收集的所有消息发送到 IoT 中心。 在此路由中，“modbusOutput”是 Modbus 模块用于输出数据的终结点，“upstream”则是一个特殊目标，告知 IoT Edge 中心将消息发送到 IoT 中心。
+7. 在“指定路由”步骤中，将以下 JSON 复制到文本框中  。 此路由将 Modbus 模块收集的所有消息发送到 IoT 中心。 在此路由中， **modbusOutput**是该 Modbus 模块用于输出数据的终结点并 **$upstream**是一个特殊目标，告知 IoT Edge 中心将消息发送到 IoT 中心。
+
    ```JSON
    {
-    "routes": {
-      "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
-    }
+     "routes": {
+       "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
+     }
    }
    ```
 

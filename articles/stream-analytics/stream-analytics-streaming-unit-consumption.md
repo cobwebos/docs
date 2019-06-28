@@ -8,17 +8,17 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.openlocfilehash: acafd6d8f37edd3e16561a4e588556bb771619f8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.date: 06/21/2019
+ms.openlocfilehash: 54296f0b4aed22457a5218154111a42ad01ec262
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206709"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329340"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
-流单元 (SU) 表示分配用于执行作业的计算资源。 SU 的数量越多，为作业分配的 CPU 和 内存资源就越多。 此容量使你能够专注于查询逻辑，并且无需管理及时运行流分析作业所需的硬件。
+流式处理单位 (Su) 表示的计算资源的分配来执行 Stream Analytics 作业。 SU 的数量越多，为作业分配的 CPU 和 内存资源就越多。 此容量使你能够专注于查询逻辑，并且无需管理及时运行流分析作业所需的硬件。
 
 为了实现低延迟流式处理，Azure 流分析作业将在内存中执行所有处理。 内存不足时，流式处理作业会失败。 因此，对于生产作业，请务必监视流式处理作业的资源使用情况，并确保分配有足够的资源来保持作业的全天候运行。
 
@@ -85,7 +85,7 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-若要解决前面查询中由高基数导致的问题，可以将事件发送到通过依据 `clusterid` 分区的事件中心，并通过允许系统使用 **PARTITION BY** 分别处理每个输入分区来横向扩展查询，如以下示例所示：
+若要缓解由高基数在前面的查询导致任何问题，可以将事件发送到事件中心通过分区`clusterid`，并向外扩展通过允许系统来处理每个输入的分区使用单独查询**分区通过**如下面的示例中所示：
 
    ```sql
    SELECT count(*) 

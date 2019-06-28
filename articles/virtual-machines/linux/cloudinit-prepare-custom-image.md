@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: da539a5bebc1613115f89a7b47c513ce486b5e3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a64fb40c905fbe98dc594ab3626666723d1628d0
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627922"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357266"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>准备与 cloud-init 配合使用的现有 Linux Azure VM 映像
 本文介绍如何选择一个现有的 Azure 虚拟机，使其准备好重新部署并可使用 cloud-init。 生成的映像可用于部署新的虚拟机或虚拟机规模集 - 然后，可以在部署时通过 cloud-init 进一步对其进行自定义。  Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -65,19 +65,14 @@ sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
 sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
 sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
-cp /lib/systemd/system/waagent.service /etc/systemd/system/waagent.service
-sed -i 's/After=network-online.target/WantedBy=cloud-init.service\\nAfter=network.service systemd-networkd-wait-online.service/g' /etc/systemd/system/waagent.service
-systemctl daemon-reload
 cloud-init clean
 ```
-使用所选的编辑器创建包含以下行的新文件 `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg`，以便只允许将 Azure 用作 Azure Linux 代理的数据源：
+
+允许仅 Azure 作为数据源的 Azure Linux 代理通过创建新文件`/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg`所选的编辑器中使用以下行：
 
 ```bash
 # Azure Data Source config
 datasource_list: [ Azure ]
-datasource:
-   Azure:
-     agent_command: [systemctl, start, waagent, --no-block]
 ```
 
 如果现有 Azure 映像中配置了交换文件，而你想要使用 cloud-init 更改新映像的交换文件配置，则需要删除现有的交换文件。

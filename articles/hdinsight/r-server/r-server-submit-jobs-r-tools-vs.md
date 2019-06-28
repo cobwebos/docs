@@ -2,22 +2,22 @@
 title: 从针对 Visual Studio 的 R 工具提交作业 - Azure HDInsight
 description: 从本地 Visual Studio 计算机将 R 作业提交到 HDInsight 群集。
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8f1ed582b7abf43afd38ca5c358aa7e179bfecb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: d977d5a25db0cbe641179bce860e9f67c60f29ab
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702273"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340803"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
 
-[针对 Visual Studio 的 R 工具](https://www.visualstudio.com/vs/rtvs/) (RTVS) 是一个免费的开源扩展，适用于 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更高版本的社区版（免费）、专业版和企业版。
+[针对 Visual Studio 的 R 工具](https://www.visualstudio.com/vs/rtvs/) (RTVS) 是一个免费的开源扩展，适用于 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更高版本的社区版（免费）、专业版和企业版。 不能用于 RTVS [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)。
 
 RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、Intellisense（代码完成）、通过 ggplot2 和 ggviz 等 R 库[绘制可视化效果](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data)、[R 代码调试](https://docs.microsoft.com/visualstudio/rtvs/debugging)等等。
 
@@ -48,7 +48,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
 ## <a name="execute-local-r-methods"></a>执行本地 R 方法
 
-1. 创建 [HDInsight ML Services 群集](r-server-get-started.md)。
+1. 创建 HDInsight 机器学习服务群集。
 2. 安装 [RTVS 扩展](https://docs.microsoft.com/visualstudio/rtvs/installation)。
 3. 下载[示例 zip 文件](https://github.com/Microsoft/RTVS-docs/archive/master.zip)。
 4. 打开 `examples/Examples.sln` 以在 Visual Studio 中启动解决方案。
@@ -65,15 +65,9 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
 通过从安装有 PuTTY 的 Windows 计算机使用 Microsoft ML Server/Microsoft R Client，可以创建计算上下文，用于从本地客户端针对 HDInsight 群集运行分布式 `RevoScaleR` 函数。 使用 `RxSpark` 创建计算上下文，并指定用户名、Apache Hadoop 群集的边缘节点、SSH 交换机等等。
 
-1. 若要查找边缘节点的主机名，请在 Azure 上打开 HDInsight ML Services 群集窗格，然后选择“概述”窗格顶部菜单中的“安全外壳(SSH)”  。
+1. 在 HDInsight 上的机器学习服务边缘节点地址是`CLUSTERNAME-ed-ssh.azurehdinsight.net`其中`CLUSTERNAME`是机器学习服务群集的名称。
 
-    ![安全外壳(SSH)](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
-
-2. 复制“边缘节点主机名”  值。
-
-    ![边缘节点主机名](./media/r-server-submit-jobs-r-tools-vs/edge-node.png)
-
-3. 将以下代码粘贴到 Visual Studio 中的 R 交互窗口，并更改设置变量的值以匹配用户环境。
+1. 将以下代码粘贴到 Visual Studio 中的 R 交互窗口，并更改设置变量的值以匹配用户环境。
 
     ```R
     # Setup variables that connect the compute context to your HDInsight cluster
@@ -103,7 +97,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
     
     ![设置 Spark 上下文](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
 
-4. 在 R 交互窗口中执行以下命令：
+1. 在 R 交互窗口中执行以下命令：
 
     ```R
     rxHadoopCommand("version") # should return version information
@@ -115,7 +109,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
     ![rx 命令成功执行](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
 
-5. 确保 `rxHadoopCopy` 已将 `people.json` 文件从示例数据文件夹成功复制到新创建的 `/user/RevoShare/newUser` 文件夹：
+1. 确保 `rxHadoopCopy` 已将 `people.json` 文件从示例数据文件夹成功复制到新创建的 `/user/RevoShare/newUser` 文件夹：
 
     1. 从 Azure 的 HDInsight ML Services 群集窗格中，选择左侧菜单中的“存储帐户”  。
 
@@ -131,7 +125,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
         ![复制的文件](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
 
-6. 用完当前 Apache Spark 上下文后，必须将其停止。 不能同时运行多个上下文。
+1. 用完当前 Apache Spark 上下文后，必须将其停止。 不能同时运行多个上下文。
 
     ```R
     rxStopEngine(mySparkCluster)
@@ -141,4 +135,4 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
 * [适用于 HDInsight 上的 ML Services 的计算上下文选项](r-server-compute-contexts.md)
 * [将 ScaleR 和 SparkR 合并](../hdinsight-hadoop-r-scaler-sparkr.md)提供了航班延迟预测示例。
-<!-- * You can also submit R jobs with the [R Studio Server](hdinsight-submit-jobs-from-r-studio-server.md) -->
+

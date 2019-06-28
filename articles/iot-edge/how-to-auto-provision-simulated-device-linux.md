@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9a549221a9e1864e1b7565f35139cb4c2a6ca65e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f75ad287b5f026dea7ba0152b009a60572929148
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248107"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329629"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>使用 Linux 虚拟机上的虚拟 TPM 创建和预配 IoT Edge 设备
 
@@ -106,6 +106,8 @@ ms.locfileid: "61248107"
    make
    sudo ./tpm_device_provision
    ```
+   >[!TIP]
+   >如果要使用 TPM 模拟器进行测试，你将需要放置一个额外的参数`-Duse_tpm_simulator:BOOL=ON`来启用它。 完整的命令将为`cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON .. `。
 
 5. 复制“注册 ID”和“认可密钥”的值。   稍后要使用这些值在 DPS 中为设备创建个人注册。 
 

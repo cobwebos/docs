@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 8df4f17c9afbf10c6507e505c6540c3f66a42309
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 51de1c4ac17360282877f05d52c3ea8fa2c6d712
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275628"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310774"
 ---
 # <a name="delete-a-recovery-services-vault"></a>删除恢复服务保管库
 
@@ -114,7 +114,7 @@ ms.locfileid: "67275628"
 1. 在保管库仪表板菜单中，单击“备份基础结构”  。
 2. 单击“备份管理服务器”以查看服务器。 
 
-    ![选择保管库，以打开它的仪表板](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+    ![选择保管库以打开其仪表板](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. 右键单击该项并选择“删除”。 
 4. 上**删除**菜单中，键入服务器的名称，然后单击**删除**。
@@ -124,7 +124,7 @@ ms.locfileid: "67275628"
 
 > [!NOTE]
 > 若要删除的项，在管理服务器控制台中或受保护服务器上在 MARS 控制台中，请停止保护并删除备份。 如果保留备份项，当你尝试删除并取消注册服务器时，将出现以下错误：
-> 
+>
 >![删除失败](./media/backup-azure-delete-vault/deletion-failed.png)
 
 6. 若要确认删除作业是否已完成，请检查 Azure 消息。 ![删除备份数据](./media/backup-azure-delete-vault/messages.png).
@@ -159,8 +159,8 @@ ms.locfileid: "67275628"
 
 > [!NOTE]
 > 删除这些服务器的注册之前，必须删除与备份管理服务器或 Azure 备份代理服务器关联的备份项。 若要删除备份项，导航到 SC DPM，MABS 或 MARS 管理控制台，在适用时服务器上的，并选择相关选项停止保护并删除备份。 如果任何备份项仍然相关联，您将看到以下错误：
-> 
-> 
+>
+>
 >![删除失败](./media/backup-azure-delete-vault/deletion-failed.png)
 
 8. 若要确认删除作业是否已完成，请检查 Azure 消息。 ![删除备份数据](./media/backup-azure-delete-vault/messages.png).

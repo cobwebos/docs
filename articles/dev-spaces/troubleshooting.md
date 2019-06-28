@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 53571fdd7c5a93fef4df0832253542a5a6dfbec5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0379bbc7f26ea30f65c5eac73633ca0371aa283
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058544"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331304"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -414,3 +414,12 @@ azds controller create --name my-controller --target-name MyAKS --resource-group
 
 ### <a name="try"></a>尝试
 [添加不](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)到 AKS 群集以确保 Linux pod 都不会安排 Windows 节点上运行。
+
+## <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>"发现错误没有起诉的 Linux 节点处于就绪状态在群集上。 需要那里至少一个未经修改的关键性的 Linux 节点处于就绪状态，以便部署 azds 命名空间中的 pod。"
+
+### <a name="reason"></a>原因
+
+Azure 开发人员空间无法创建控制器在 AKS 群集因为它找不到中的起诉的节点*准备*pod 安排上的状态。 Azure 开发人员空间要求中的至少一个 Linux 节点*准备*允许计划而无需指定 tolerations pod 的状态。
+
+### <a name="try"></a>尝试
+[将不配置更新](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)在 AKS 群集以确保至少一个 Linux 节点允许计划而无需指定 tolerations pod。 此外，确保至少一个 Linux 节点，允许计划 pod 数而无需指定 tolerations*准备*状态。 如果你的节点采用较长时间才能到达*准备*状态，则可以尝试重启你的节点。

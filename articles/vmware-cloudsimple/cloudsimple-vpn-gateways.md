@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c9689a468e8784eb4ec3590011e02a37d92d6b9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a91d0f75b7e27065bd2ee0ea430a859d265afacb
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083398"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332039"
 ---
 # <a name="vpn-gateways-overview"></a>VPN 网关概述
 
@@ -26,7 +26,7 @@ CloudSimple 提供了两种类型的 VPN 网关：
 
 ## <a name="site-to-site-vpn-gateway"></a>站点到站点 VPN 网关
 
-站点到站点 VPN 网关用于 CloudSimple 区域网络和本地数据中心之间发送加密的流量。 使用此连接定义的子网/CIDR 范围，你的本地网络和 CloudSimple 区域网络之间的网络流量。
+站点到站点 VPN 网关用于 CloudSimple 区域网络和本地数据中心之间发送加密的流量。 此连接用于定义子网/CIDR 范围，你的本地网络与 CloudSimple 区域网络之间的通信。
 
 VPN 网关，可使用从本地对私有云的服务和服务在私有云，从本地网络上。  CloudSimple 提供基于策略的 VPN 服务器建立从本地网络连接。
 
@@ -38,6 +38,9 @@ VPN 网关，可使用从本地对私有云的服务和服务在私有云，从�
 * 从你的本地网络在私有云上运行的工作负荷的可访问性。
 
 ![站点到站点 VPN 连接拓扑](media/cloudsimple-site-to-site-vpn-connection.png)
+
+> [!IMPORTANT]
+> 在 1078 字节或更低，还必须将 TCP MSS。 或者，如果 VPN 设备不支持 MSS 固定，您可以或者设置 MTU 为 1118 字节的隧道接口上而不是。 
 
 ### <a name="cryptographic-parameters"></a>加密的参数
 

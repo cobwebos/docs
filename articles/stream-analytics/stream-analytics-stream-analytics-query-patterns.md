@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: f6971038be7404850d958de67eb4755ae7d21a29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0f513462f1e09718dc18e9ce454b82e8978961f
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761975"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329615"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
 
@@ -437,7 +437,12 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 ```SQL
     SELECT
-        [user], feature, DATEDIFF(second, LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'), Time) as duration
+        [user],
+    feature,
+    DATEDIFF(
+        second,
+        LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'),
+        Time) as duration
     FROM input TIMESTAMP BY Time
     WHERE
         Event = 'end'
@@ -695,6 +700,15 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
 **说明**：[COUNT(DISTINCT Time)](/stream-analytics-query/count-azure-stream-analytics) 返回时间范围内的“时间”列的非重复值数目。 然后，你可以使用此步骤的输出按设备计算平均值，只需去掉重复值即可。
+
+## <a name="geofencing-and-geospatial-queries"></a>地理围栏和地理空间查询
+Azure Stream Analytics 提供内置的地理空间函数可用于实现方案，例如车队管理、 骑共享、 已连接的汽车和资产跟踪。 地理空间数据可以作为事件流的一部分引入 GeoJSON 或 WKT 格式，或引用数据。 有关详细信息，请参阅[地理围栏和地理空间的聚合方案中使用 Azure Stream Analytics](geospatial-scenarios.md)一文。
+
+## <a name="language-extensibility-through-javascript-and-c"></a>通过 JavaScript 语言的扩展性和C#
+可使用以 JavaScript 编写的自定义函数的扩展 azure Stream Ananlytics 查询 langugae 或C#语言。 有关详细信息，请参阅 foolowing 文章：
+* [Azure Stream Analytics JavaScript 用户定义的函数](stream-analytics-javascript-user-defined-functions.md)
+* [Azure Stream Analytics JavaScript 用户定义聚合](stream-analytics-javascript-user-defined-aggregates.md)
+* [开发 Azure Stream Analytics Edge 作业的.NET Standard 的用户定义函数](stream-analytics-edge-csharp-udf-methods.md)
 
 ## <a name="get-help"></a>获取帮助
 

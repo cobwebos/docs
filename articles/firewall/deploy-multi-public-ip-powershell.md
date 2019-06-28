@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/15/2019
+ms.date: 06/21/2019
 ms.author: victorh
-ms.openlocfilehash: a7dd35212a573fc3e94dadea4365f150122e1b5a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 9ec37197376c815c4fb9072164520a707b02be2b
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276738"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312719"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>具有多个公共 IP 地址，使用 Azure PowerShell 部署 Azure 防火墙
 
@@ -31,7 +31,7 @@ ms.locfileid: "67276738"
 以下 Azure PowerShell 示例显示如何添加、 删除和配置 Azure 防火墙的公共 IP 地址。
 
 > [!NOTE]
-> 如果添加或删除公共 IP 地址到正在运行的防火墙时，现有的入站的连接使用 DNAT 规则可能无法正常 40 120 秒。 这是此功能的公共预览版的限制。
+> 公共预览期间，如果添加或删除公共 IP 地址到正在运行的防火墙，现有的入站的连接使用 DNAT 规则可能无法正常 40 120 秒。 无法删除分配到防火墙，除非已解除分配或删除防火墙的第一个公共 IP 地址。
 
 ## <a name="add-a-public-ip-address-to-an-existing-firewall"></a>将公共 IP 地址添加到现有的防火墙
 

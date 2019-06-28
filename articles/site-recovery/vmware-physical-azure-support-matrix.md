@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 8fd9f56c262ce3a7110aa71bf72d01fe875212c0
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 3ff6a1a52048e805f9236349d4fc8d45a14b78ea
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275762"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341453"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -69,9 +69,9 @@ Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。
 计算机设置 | 复制到 Azure 的计算机必须满足 [Azure 要求](#azure-vm-requirements)。
 计算机工作负载 | Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。 [了解详细信息](https://aka.ms/asr_workload)。
 Windows | Windows Server 2019 (支持从[更新汇总 34](https://support.microsoft.com/help/4490016) （版本 9.22 的移动服务） 及更高版本。<br/> Windows Server 2016 （64 位服务器核心、 带桌面体验的服务器）<br/> - Windows Server 2012 R2, Windows Server 2012<br/> Windows Server 2008 R2 在最低 SP1。<br/> -Windows Server 2008 中，64 和 32 位与的最低版本为 SP2]。 仅适用于迁移的支持。 [了解详细信息](migrate-tutorial-windows-server-2008.md)。<br/> -Windows 10 中，Windows 8.1，Windows 8 中，Windows 7 64 位 (支持从[更新汇总 36](https://support.microsoft.com/help/4503156) （及更高版本的移动服务版本 9.22）。 不支持 Windows 7 RTM。 
-Linux | 仅支持 64 位系统。 不支持 32 位系统。<br/><br/> Site Recovery 会协调故障转移，以在 Azure 中运行 Linux 服务器。 但是，Linux 供应商可能会限制仅支持尚未达到使用寿命的分发版本。<br/><br/> 在 Linux 发行版中，仅支持属于分发次要版本/更新的原版内核。<br/><br/> 不支持跨主要 Linux 发行版升级受保护的计算机。 若要升级，请禁用复制，升级操作系统，然后再重新启用复制。<br/><br/> [了解详细信息](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)有关适用于 Linux 和开放源代码技术在 Azure 中的支持。
-Linux Red Hat Enterprise | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> 7.0 到 7.6<br/> <br/> 服务器运行 Red Hat Enterprise Linux 5.2-5.11 应有[Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)安装在 Azure 中启动的计算机。
-Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> 7.0 到 7.6<br/> <br/> 服务器运行 CentOS 5.2-5.11 应有[Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)安装在 Azure 中启动的计算机。
+Linux | 仅支持 64 位系统。 不支持 32 位系统。<br/><br/>每个 Linux 服务器都应有[Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)安装。 它是需要在 Azure 中测试故障转移/故障转移后启动服务器。 如果丢失了 LIS 组件，请确保安装[组件](https://www.microsoft.com/download/details.aspx?id=55106)之前启用复制以在 Azure 中启动的计算机。 <br/><br/> Site Recovery 会协调故障转移，以在 Azure 中运行 Linux 服务器。 但是，Linux 供应商可能会限制仅支持尚未达到使用寿命的分发版本。<br/><br/> 在 Linux 发行版中，仅支持属于分发次要版本/更新的原版内核。<br/><br/> 不支持跨主要 Linux 发行版升级受保护的计算机。 若要升级，请禁用复制，升级操作系统，然后再重新启用复制。<br/><br/> [了解详细信息](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)有关适用于 Linux 和开放源代码技术在 Azure 中的支持。
+Linux Red Hat Enterprise | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> 7.0 到 7.6<br/> <br/> 运行 Red Hat Enterprise Linux 5.2-5.11 和 6.1 6.10 服务器而没有[Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)预安装。 请确保安装[组件](https://www.microsoft.com/download/details.aspx?id=55106)之前启用复制以在 Azure 中启动的计算机。
+Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> 7.0 到 7.6<br/> <br/> 不具有服务器运行 CentOS 5.2-5.11 和 6.1 6.10 [Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)预安装。 请确保安装[组件](https://www.microsoft.com/download/details.aspx?id=55106)之前启用复制以在 Azure 中启动的计算机。
 Ubuntu | Ubuntu 14.04 LTS 服务器[（查看支持内核版本）](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS 服务器[（查看支持内核版本）](#ubuntu-kernel-versions)
 Debian | Debian 7/debian 8 [（查看支持内核版本）](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、 SP2、 SP3、 SP4 [（查看支持内核版本）](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4<br/> 不支持复制的计算机从 SUSE Linux Enterprise Server 11 SP3 升级到 SP4。 若要升级，请禁用复制，并在升级后重新启用。
@@ -145,7 +145,7 @@ BTRFS | 从支持 BTRFS[更新汇总 34](https://support.microsoft.com/help/4490
 主机网络 VLAN | 是的。
 主机网络 IPv4 | 是的。
 主机网络 IPv6 | 不。
-来宾/服务器网络 NIC 组合 | 不。
+来宾/服务器网络 NIC 组合 | 否。
 来宾/服务器网络 IPv4 | 是的。
 来宾/服务器网络 IPv6 | 不。
 来宾/服务器网络静态 IP (Windows) | 是的。
@@ -194,7 +194,7 @@ Docker 磁盘配置 | 否
 来宾/服务器 - 排除磁盘 | 是
 来宾/服务器多路径 (MPIO) | 否
 来宾/服务器 GPT 分区 | 从支持五个分区[更新汇总 37](https://support.microsoft.com/help/4508614/) （版本 9.25 的移动服务） 及更高版本。 以前四个受支持。
-来宾/服务器 EFI/UEFI 启动 | -支持 9.13 或更高版本运行移动服务版本时。<br/> -支持时迁移 VMware Vm 或物理服务器运行 Windows Server 2012 或更高版本到 Azure。<br/> -你仅可以将 Vm 复制进行迁移。 不支持故障回复到本地。<br/> -仅支持 NTFS。 <br/> 的磁盘扇区大小应为每个物理扇区的 512 字节。
+来宾/服务器 EFI/UEFI 启动 | -支持 9.13 或更高版本运行移动服务版本时。<br/> -支持时迁移 VMware Vm 或物理服务器运行 Windows Server 2012 或更高版本到 Azure。<br/> -你仅可以将 Vm 复制进行迁移。 不支持故障回复到本地。<br/> -仅支持 NTFS 和不支持安全 UEFI 启动类型。 <br/> 的磁盘扇区大小应为每个物理扇区的 512 字节。
 
 ## <a name="replication-channels"></a>复制通道
 
@@ -286,7 +286,7 @@ VM 上所有磁盘的峰值数据变动量 | 54 MB/秒
 
 ## <a name="obtain-latest-components"></a>获取最新的组件
 
-**名称** | **说明** | **详细信息**
+**Name** | **说明** | **详细信息**
 --- | --- | ---
 配置服务器 | 已安装在本地。<br/> 协调本地 VMware 服务器 / 物理机和 Azure 之间的通信。 | - [了解有关](vmware-physical-azure-config-process-server-overview.md)配置服务器。<br/> - [了解有关](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)升级到最新版本。<br/> - [了解有关](vmware-azure-deploy-configuration-server.md)设置配置服务器。 
 进程服务器 | 默认安装在配置服务器上。<br/> 接收复制数据，通过缓存、 压缩和加密，对它进行优化，并将其发送到 Azure。<br/> 随着部署扩大，您可以添加额外的进程服务器以处理更大的复制流量。 | - [了解有关](vmware-physical-azure-config-process-server-overview.md)进程服务器。<br/> - [了解有关](vmware-azure-manage-process-server.md#upgrade-a-process-server)升级到最新版本。<br/> - [了解有关](vmware-physical-large-deployment.md#set-up-a-process-server)设置横向扩展进程服务器。

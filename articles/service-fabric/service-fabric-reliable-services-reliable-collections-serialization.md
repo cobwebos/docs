@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: aljo
-ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2445b37e8152d8f55dad6eff057d273851dc2209
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723587"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340681"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric 中的 Reliable Collection 对象序列化
 Reliable Collections 通过复制和保留项目，确保这些项目在机器故障和电力中断时能够持久。
@@ -40,7 +40,7 @@ Reliable Collections 从可靠状态管理器获取与给定类型对应的串�
 - sbyte
 - byte[]
 - char
-- 字符串
+- string
 - decimal
 - double
 - float
@@ -55,7 +55,7 @@ Reliable Collections 从可靠状态管理器获取与给定类型对应的串�
 
 自定义串行化程序通常用于提高性能，或用于在网络传输时以及在磁盘上加密数据。 自定义串行化程序通常比通用序列化程序更高效，因为它们不需要串行化有关类型的信息。 
 
-[IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) 用于为给定类型 T 注册自定义串行化程序。此注册应在 StatefulServiceBase 构造内发生，以确保在开始恢复前，所有 Reliable Collections 都有权访问相关串行化程序来读取其保留的数据。
+[IReliableStateManager.TryAddStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer)用于注册的自定义序列化程序给定类型 t。此注册应在 StatefulServiceBase 构造内以确保开始恢复前，所有 Reliable Collections 有权访问相关串行化程序来读取其保留的数据。
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +73,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>如何实现自定义串行化程序
 
-自定义串行化程序需要实现 [IStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) 接口。
+自定义序列化程序需要实现[IStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1)接口。
 
 > [!NOTE]
-> IStateSerializer<T> 包含读取和写入重载，可接受名为基值的附加 T。 此 API 用于差分序列化。 当前未公开差分序列化功能。 因此，在公开和启用差分序列化前，不会调用这两个重载。
+> IStateSerializer\<T > 中名为基值的附加 T 包含采用的读取和写入重载。 此 API 用于差分序列化。 当前未公开差分序列化功能。 因此，在公开和启用差分序列化前，不会调用这两个重载。
 
 以下是名为 OrderKey 的自定义类型示例，它包含四个属性
 

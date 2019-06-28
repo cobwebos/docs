@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/02/2019
+ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 086161b73e2a3e07df835394dc26082e12fbd434
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a58d2b235757faf760539f514ea349e33e12b41
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963982"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310008"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 
@@ -190,46 +190,7 @@ Azure AD 功能预先集成了对许多常用 SaaS 应用和人力资源系统�
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>预配用户需要多长时间？
 
-性能取决于是否预配作业正在运行初始同步还是增量同步。
-
-有关**初始同步**，作业时间取决于许多因素，包括预配，范围内的用户和组的数量以及用户和组在源系统中的总数。 本部分中的下文中汇总了影响初始同步性能的因素的完整列表。
-
-对于**增量同步**，作业时间取决于在该同步周期中检测到的更改数量。 如果有少于 5000 个用户或组成员身份更改，则作业可以在单个增量同步周期内完成。 
-
-下表总结了常见的预配方案的同步时间。 在这些方案中，源系统是 Azure AD，目标系统是 SaaS 应用程序。 同步时间派生自 ServiceNow、 工作区、 Salesforce 和 G Suite 的 SaaS 应用程序的同步作业的统计分析。
-
-
-| 作用域配置 | 作用域中的用户、组和成员 | 初始同步时间 | 增量同步时间 |
-| -------- | -------- | -------- | -------- |
-| 仅同步已分配的用户和组 |  < 1,000 |  < 30 分钟 | < 30 分钟 |
-| 仅同步已分配的用户和组 |  1,000 - 10,000 | 142 - 708 分钟 | < 30 分钟 |
-| 仅同步已分配的用户和组 |   10,000 - 100,000 | 1,170 - 2,340 分钟 | < 30 分钟 |
-| 同步 Azure AD 中的所有用户和组 |  < 1,000 | < 30 分钟  | < 30 分钟 |
-| 同步 Azure AD 中的所有用户和组 |  1,000 - 10,000 | < 30 - 120 分钟 | < 30 分钟 |
-| 同步 Azure AD 中的所有用户和组 |  10,000 - 100,000  | 713 - 1,425 分钟 | < 30 分钟 |
-| 同步 Azure AD 中的所有用户|  < 1,000  | < 30 分钟 | < 30 分钟 |
-| 同步 Azure AD 中的所有用户 | 1,000 - 10,000  | 43 - 86 分钟 | < 30 分钟 |
-
-
-对于“仅同步已分配的用户和组”  配置，可以使用以下公式来确定大概的最小和最大预计**初始同步**时间：
-
-    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
-    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
-    
-影响**初始同步**的完成时间的因素汇总：
-
-- 预配范围内用户和组的总数。
-
-- 源系统 (Azure AD) 中存在的用户、组和组成员的总数。
-
-- 是否中预配范围内的用户与目标应用程序中的现有用户匹配，或者需要创建第一次。 为其所有用户都创建的第一次的同步作业需要在大约*两次长时间*作为同步的作业与现有用户为其匹配所有用户。
-
-- [审核日志](check-status-user-account-provisioning.md)中的错误数。 如果有许多错误，并且预配服务已进入“隔离”状态，则性能较低。    
-
-- 目标系统实现的请求速率限制。 某些目标系统实施请求速率限制和限制，这可能会影响在大规模同步操作期间的性能。 在这些情况下，太快地接收太多请求的应用可能会拖慢其响应速率或关闭连接。 为提高性能，连接器需要进行调整，以不高于应用可以应对的处理速率的速率来向应用发送请求。 Microsoft 构建的预配连接器进行此调整。 
-
-- 已分配的组的数量和大小。 同步已分配的组比同步用户花费的时间要长。 已分配的组的数量和大小都会影响性能。 如果应用程序[为组对象同步启用了映射](customize-application-attributes.md#editing-group-attribute-mappings)，则除了用户之外，还会同步组名称和成员身份等组属性。 这些额外的同步比仅同步用户对象需要花费更长的时间。
-
+性能取决于是否预配作业正在运行一个初始的预配周期或增量周期。 有关多长时间预配所需的详细信息和如何监视预配服务的状态，请参阅[检查的用户预配状态](application-provisioning-when-will-provisioning-finish-specific-user.md)。 
 
 ## <a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>如何判断用户预配是否正确？
 
@@ -255,7 +216,7 @@ Azure AD 功能预先集成了对许多常用 SaaS 应用和人力资源系统�
 
 是，可以使用 Azure AD 用户在 Azure AD 到 SaaS 应用程序中预配服务预配 B2B （或来宾） 用户。
 
-但是，若要登录到使用 Azure AD 的 SaaS 应用程序的 B2B 用户，SaaS 应用程序必须具有其基于 SAML 的单一登录功能特定的方式配置。 有关如何配置 SaaS 应用程序支持的详细信息从登录 B2B 用户，请参阅[B2B 协作配置 SaaS 应用]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps)。
+但是，若要登录到使用 Azure AD 的 SaaS 应用程序的 B2B 用户，SaaS 应用程序必须具有其基于 SAML 的单一登录功能特定的方式配置。 有关如何配置 SaaS 应用程序以支持 B2B 用户的登录的详细信息，请参阅[为 B2B 协作配置 SaaS 应用]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps)。
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>SaaS 应用的自动用户预配是否适用于 Azure AD 中的动态组？
 

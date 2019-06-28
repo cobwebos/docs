@@ -11,17 +11,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6285348aa8067f356635dfff9ecd4eb34c431f0b
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.date: 06/25/2019
+ms.openlocfilehash: d8949f63dfa9b409cc14fe9c3bbed70f23a73c86
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147699"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357136"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
-Azure SQL 数据库允许以最短的停机时间向数据库动态添加更多资源。
+Azure SQL 数据库，可动态将更多资源添加到你的数据库只需极少[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/); 但是，有一个开关，段短暂停留的时间，可以是所在丢失数据库连接缓解使用重试逻辑。
 
 ## <a name="overview"></a>概述
 

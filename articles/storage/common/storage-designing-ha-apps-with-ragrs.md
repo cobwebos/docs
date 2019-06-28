@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f38f6aae11f7bf806b7bad76db8f739fb2823d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951313"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357083"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>使用 RA-GRS 设计高度可用的应用程序
 
@@ -213,7 +213,34 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
 
 要识别它可能具有不一致的数据，客户端可以使用通过随时查询存储服务获取的 *上次同步时间* 的值。 借此可了解次要区域中的数据上一次一致的时间，以及服务在该时间点前应用所有事务的时间。 在上述示例中，服务在次要区域中插入**员工**实体后，上次同步时间将设置为 *T1*。 当服务更新次要区域中的**员工**实体前，它仍然保持为 *T1*，之后则设置为 *T6*。 如果客户端在其读取 *T5* 处的实体时检索上次同步时间，它会将其与实体上的时间戳进行对比。 如果实体上的时间戳晚于上次同步时间，则实体可能处于不一致状态，可对应用程序采取任何适当操作。 使用此字段要求了解到主要区域上次更新的时间。
 
-## <a name="testing"></a>测试
+## <a name="getting-the-last-sync-time"></a>获取上次同步时间
+
+可以使用 PowerShell 或 Azure CLI 来检索上次同步时间，以确定何时数据上次写入辅助数据库。
+
+### <a name="powershell"></a>PowerShell
+
+若要使用 PowerShell 获取存储帐户的上次同步时间，请检查存储帐户**GeoReplicationStats.LastSyncTime**属性。 请记住将占位符值替换为你自己的值：
+
+```powershell
+$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -Name <storage-account> `
+    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+若要使用 Azure CLI 获取存储帐户的上次同步时间，请检查存储帐户**geoReplicationStats.lastSyncTime**属性。 使用`--expand`参数来返回属性的值在嵌套**geoReplicationStats**。 请记住将占位符值替换为你自己的值：
+
+```azurecli
+$lastSyncTime=$(az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --expand geoReplicationStats \
+    --query geoReplicationStats.lastSyncTime \
+    --output tsv)
+```
+
+## <a name="testing"></a>正在测试
 
 当应用程序遇到可重试错误时，请务必测试应用程序的行为是否与预期一致。 例如，需要测试应用程序在检测到问题时会切换到辅助数据库和只读模式，并在主要区域可用时再次切换回去。 若要执行此操作，需以某种方式模拟可重试错误并控制其出现的频率。
 

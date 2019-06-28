@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: bf2262d8a222cec6c5d0d7e53ded7b2994481656
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 207fb003eb1fdaafe4f43f7cd41dd4b7662eddf9
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205701"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331983"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp 文件网络规划指南
 
@@ -81,7 +81,7 @@ Azure 的 NetApp 文件卷用于包含在名为专用子网[委派子网](https:
 
 ### <a name="udrs-and-nsgs"></a>Udr 和 Nsg
 
-使用下一跃点的网络安全组 (Nsg) 不能用作 Azure NetApp 文件委派子网。 同样，用户定义的路由 (Udr) 也不支持。 
+用户定义的路由 (Udr) 和网络安全组 (Nsg) 不支持委派子网上为 Azure NetApp 文件。
 
 解决此问题，可将 Nsg 应用到其他子网的允许或拒绝传入和从 Azure NetApp 文件委派子网的流量。  
 

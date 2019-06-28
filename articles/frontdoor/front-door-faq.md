@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 256435dfd016ebbd86dbbe49f4abbb346fb1cd19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b033f463722ddb3a0b7beabdf659900e7d7188df
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736660"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330871"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>有关 Azure 第一道防线服务常见问题
 
@@ -75,11 +75,11 @@ Azure 的第一道防线服务都有来自 Microsoft 的 Azure CDN 的 POP （�
 
 ### <a name="is-azure-front-door-service-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>是我的应用程序专门的部署的第一道防线的 Azure 服务或为其所有客户之间都共享？
 
-第一道防线的 azure 服务是全球分布的多租户服务。 因此，所有客户之间共享的基础结构的第一道防线。 但是，通过创建第一道防线定义你的应用程序所需的特定配置和 
+第一道防线的 azure 服务是全球分布的多租户服务。 因此，所有客户之间共享的基础结构的第一道防线。 但是，通过创建的第一道防线配置文件，你定义你的应用程序所需的特定配置，对您指定的地址进行任何更改会影响其他第一道防线配置。
 
 ### <a name="is-http-https-redirection-supported"></a>是否支持 HTTP 到 HTTPS 的重定向？
 
-第一道防线目前不支持 URL 重定向。
+是的。 事实上，Azure 第一道防线服务支持主机，将路径和查询字符串重定向，以及 URL 重定向的一部分。 详细了解如何[URL 重定向](front-door-url-redirect.md)。 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>在何种顺序的路由规则处理？
 
@@ -141,6 +141,11 @@ Azure 的第一道防线 (AFD) 需要公共 IP 或将流量路由到可公开解
 
 若要启用用于安全地交付内容在第一道防线自定义域的 HTTPS 协议，你可以选择使用由 Azure 第一道防线服务管理的证书或使用你自己的证书。
 第一道防线托管 Digicert 通过标准的 SSL 证书的选项预配并存储在 Front 门的密钥保管库。 如果您选择使用你自己的证书，则可以登记受支持的 ca 颁发的证书，可以为标准 SSL、 扩展的验证证书或甚至的通配符证书。 不支持自签名的证书。 了解[如何为自定义域启用 HTTPS](https://aka.ms/FrontDoorCustomDomainHTTPS)。
+
+### <a name="does-front-door-support-auto-rotation-of-certificates"></a>第一道防线是否支持自动轮换的证书？
+
+对于您自己的自定义 SSL 证书，不支持自动轮换。 类似于它的方式安装程序首次为给定的自定义域，你将需要正确的证书版本到点第一道防线，密钥保管库中并确保第一道防线的服务主体仍有权访问密钥保管库。 此更新的证书推出操作的第一道防线是完全原子和不会导致任何生产影响提供使用者名称或 SAN 证书不会更改。
+</br>第一道防线托管证书选项时，证书自动旋转第一道防线。
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Azure 第一道防线服务支持的当前密码套件是什么？
 

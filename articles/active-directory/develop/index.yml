@@ -1,6 +1,13 @@
 ### YamlMime:Landing
 title: Microsoft 标识平台（以前称为面向开发人员的 Azure Active Directory）
 summary: Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台演变而来。 开发人员可以通过它来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft Graph 等 Microsoft API 或开发人员生成的 API。 它是一个全功能的平台，包含 OAuth 2.0 以及符合 OpenID Connect 标准的身份验证服务、开源库、应用程序注册和配置、可靠的概念和参考文档、快速入门示例、代码示例、教程以及操作方法指南。
+metadata:
+  ms.topic: landing-page
+  ms.date: 06/22/2019
+  author: CelesteDG
+  ms.service: active-directory
+  ms.subservice: develop
+  ms.workload: identity
 landingContent:
   - title: 关于 Microsoft 标识平台
     linkLists:

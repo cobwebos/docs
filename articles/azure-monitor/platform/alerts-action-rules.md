@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 212e6b042caec5f24a620dc491dc674417816df7
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734925"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310376"
 ---
 # <a name="action-rules-preview"></a>操作规则 （预览版）
 
@@ -30,6 +30,8 @@ ms.locfileid: "66734925"
 
 尽管警报规则允许你定义时将生成此警报触发的操作组，但客户往往会在其操作的作用域都具有一组常见的操作。 例如，一个团队负责的资源组 ContosoRG 可能将定义的相同的操作组，为 ContosoRG 中定义的所有警报规则。 操作规则，可通过允许您定义操作在规模较大，可以为配置的作用域上生成任何警报触发的操作组，从而简化此过程。 回到前面的示例，团队现在可以定义一个操作规则在 ContosoRG，将触发相同的操作组为在其中生成的所有警报。
 
+> [!NOTE]
+> 操作规则目前不适用于服务运行状况警报。
 
 ## <a name="configuring-an-action-rule"></a>操作规则配置
 

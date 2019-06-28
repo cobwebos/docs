@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0623a7aff15184822ee8abde0b3c751f8a105b5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 335b5b87de0a625e357bdfaa7d5a4c0a7a9e4997
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65463583"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339399"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>有关 Linux 虚拟机的常见问题
 本文讨论有关在 Azure 中使用 Resource Manager 部署模型创建的 Linux 虚拟机的一些常见问题。 有关本主题的 Windows 版本，请参阅[有关 Windows 虚拟机的常见问题](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -74,6 +74,7 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 | `john`          | `owner`   | `root`             | `server` |
 | `sql`           | `support` | `support_388945a0` | `sys`    |
 | `test2`         | `test3`   | `user4`            | `user5`  |
+| `video`         |
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>创建 VM 时，密码有什么要求？
 

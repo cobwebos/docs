@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51ad6ea2abcc18b985e9c45fbfb1ffba98fb2c1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 674d055c40ff594f0e4e05ec512b9124b1d7ab77
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113083"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341336"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -34,7 +34,7 @@ ms.locfileid: "66113083"
 ### <a name="windows-server"></a>Windows Server
 你需要具有运行 Windows Server 2012 R2 或更高版本的服务器，可以在该服务器上安装应用程序代理连接器。 该服务器需要连接到 Azure 中的应用程序代理服务和你要发布的本地应用程序。
 
-在安装应用程序代理连接器之前，Windows Server 需要启用 TLS 1.2。 版本低于 1.5.612.0 的现有连接器继续使用早期版本的 TLS，直到另行通知。 若要启用 TLS 1.2，请执行以下操作：
+在安装应用程序代理连接器之前，Windows Server 需要启用 TLS 1.2。 若要在服务器上启用 TLS 1.2:
 
 1. 设置以下注册表项：
     

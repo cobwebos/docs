@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: 4be73554df0b6bddaafe3910c80c855e127d79f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac58bbbc252d66620ad410bffa805b75ec3042d4
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771645"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341757"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>从 Azure 流分析输出到 Azure SQL 数据库
 
@@ -39,7 +39,7 @@ Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 �
 
 - **分区表和索引** – 在包含与分区键（例如 PartitionId）相同的列的表中使用[分区](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL 表和分区索引可以在写入期间明显减少分区之间的争用。 对于分区表，需要在 PRIMARY 文件组中创建[分区函数](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017)和[分区方案](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017)。 这也可以在加载新数据时提高现有数据的可用性。 根据分区的数量，可能会达到日志 IO 限制；升级 SKU 可以提高限制。
 
-- **避免唯一键冲突** – 如果 Azure 流分析活动日志中出现[多个键冲突警告消息](stream-analytics-common-troubleshooting-issues.md#handle-duplicate-records-in-azure-sql-database-output)，请确保作业不受唯一约束冲突（在恢复期间可能会发生）的影响。 可以通过在索引中设置 [IGNORE\_DUP\_KEY](stream-analytics-common-troubleshooting-issues.md#handle-duplicate-records-in-azure-sql-database-output) 选项来避免此问题。
+- **避免唯一键冲突** – 如果 Azure 流分析活动日志中出现[多个键冲突警告消息](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)，请确保作业不受唯一约束冲突（在恢复期间可能会发生）的影响。 可以通过在索引中设置 [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) 选项来避免此问题。
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure 数据工厂和内存中表
 
