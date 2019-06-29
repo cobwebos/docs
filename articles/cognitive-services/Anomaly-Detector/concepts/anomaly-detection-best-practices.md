@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 766d009be3cd664d928a3c12f5fea38c26bbbdde
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ad4a67d7737733e4c910d3495be29860769f27e
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692200"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477816"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>使用异常检测器 API 的最佳实践
 
@@ -51,7 +51,7 @@ ms.locfileid: "64692200"
 
 ## <a name="data-preparation"></a>数据准备工作
 
-异常情况检测器 API 接受时间序列数据格式化为 JSON 请求对象。 时间序列可以是一段时间按先后顺序记录任何数值数据。 可以将时序数据的窗口发送到异常情况检测器 API 终结点，以提高 API 的性能。 可以发送的数据点的最小数目为 12，并最大值是 8640 点。 
+异常情况检测器 API 接受时间序列数据格式化为 JSON 请求对象。 时间序列可以是一段时间按先后顺序记录任何数值数据。 可以将时序数据的窗口发送到异常情况检测器 API 终结点，以提高 API 的性能。 可以发送的数据点的最小数目为 12，并最大值是 8640 点。 [粒度](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview)定义为你的数据采样的速率。 
 
 发送到异常情况检测程序 API 的数据点必须具有有效的协调世界时 (UTC) 时间戳和数字值。 
 
@@ -68,6 +68,15 @@ ms.locfileid: "64692200"
         "value": 29615278
       },
     ]
+}
+```
+
+如果你的数据进行采样以非标准时间间隔，则可以指定它通过添加`customInterval`在请求中的属性。 例如，如果序列为采样每隔 5 分钟，你可以添加以下 JSON 请求：
+
+```json
+{
+    "granularity" : "minutely", 
+    "customInterval" : 5
 }
 ```
 
