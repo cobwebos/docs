@@ -3,20 +3,20 @@ title: 部署的资源容量 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 在创建 QnA Maker 服务之前，应当决定上述服务的哪个层适合你。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a332d263526bb6507e7394c205caa1c4d1f9e3e6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3126613a9dca00d221610dc46116dd409c65d53d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60613270"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446623"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>选择 QnA Maker 部署的容量
 

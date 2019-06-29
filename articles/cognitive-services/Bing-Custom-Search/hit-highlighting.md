@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: bf87db232484a8ba4fa1e3b8e4de921f152e2345
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42b30b14e561fd3851a41701d2ecb8d98d5a02ed
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110112"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445564"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>使用修饰标记来突出显示文本
 
@@ -56,7 +56,7 @@ ms.locfileid: "62110112"
 |U+E018|\<sup>|表示上标内容的开头
 |U+E019|\</sup>|表示上标内容的结尾
 
-以下示例显示了一个 `Computation` 答案，其中包含 log(2) 查询词的下标标记。 仅当“textDecoration”为 **true** 时，`expression` 字段才包含这些标记。
+以下示例显示了一个 `Computation` 答案，其中包含 log(2) 查询词的下标标记。 仅当 `textDecoration` 为 true  时，`expression` 字段才包含这些标记。
 
 ![计算标记](./media/bing-markers-computation.PNG) 
 

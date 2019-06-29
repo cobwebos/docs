@@ -3,19 +3,19 @@ title: 请求限制 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 本文列出了文本翻译 API 的请求限制。 费用是根据字符数而不是请求频率产生的，每个请求限制为 5,000 个字符。 字符限制是基于订阅的，F0 限制为每小时 200 万个字符。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: d04677362e0ba3ace59d55ede9bd6241f17130e9
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.author: swmachan
+ms.openlocfilehash: a7621cc80a38d9a07872a94d8e5221dc04023b86
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269232"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435033"
 ---
 # <a name="request-limits-for-translator-text"></a>文本翻译的请求限制
 
@@ -38,7 +38,11 @@ ms.locfileid: "67269232"
 
 ## <a name="character-limits-per-hour"></a>每小时的字符限制
 
-每小时的字符限制取决于文本翻译订阅层。 每小时配额应在一小时内均匀使用。 如果你达到或超过这些限制，或在短时间内发送过大部分配额，则可能会收到超出配额响应。 并发请求中没有任何限制。
+每小时的字符限制取决于文本翻译订阅层。 
+
+每小时配额应在一小时内均匀使用。 例如，每小时 200 万个字符的 F0 层限制，字符应使用不比每分钟的滑动窗口 （使其除以 60 分钟的 2 百万个字符） 的大致 33,300 字符。
+
+如果你达到或超过这些限制，或在短时间内发送过大部分配额，则可能会收到超出配额响应。 并发请求中没有任何限制。
 
 | 层 | 字符限制 |
 |------|-----------------|

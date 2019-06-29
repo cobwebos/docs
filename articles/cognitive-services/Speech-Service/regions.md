@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 518f1048224a97943756c5b51b83cd509f82e11e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1ad618e9eb70fd75f433030584c0f6538532928f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072503"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466986"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -73,6 +73,20 @@ Speech SDK 仅在这些区域可用**语音识别**，**文本到语音转换**�
  南美洲 | 巴西南部 | `brazilsouth`
 
 这是[语言理解服务 (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) 支持的发布区域的子集。
+
+### <a name="voice-first-virtual-assistants"></a>语音优先虚拟助手
+
+[Speech SDK](speech-sdk.md)支持**语音第一个虚拟助手**中这些区域的功能：
+
+区域 | 语音 SDK 参数
+-------|---------------------
+美国西部 | `westus`
+美国西部 2 | `westus2`
+美国东部 | `eastus`
+美国东部 2 | `eastus2`
+西欧 | `westeurope`
+北欧 | `northeurope`
+东南亚 | `southeastasia`
 
 ## <a name="rest-apis"></a>REST API
 

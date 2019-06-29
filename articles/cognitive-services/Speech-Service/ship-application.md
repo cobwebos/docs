@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: d8330ff663a7adc2f1cae3ed6bdf1cec2fa972c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae075dbc922932a4eaffd9126560c159d33459d0
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808454"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466966"
 ---
 # <a name="ship-an-application"></a>交付应用程序
 
@@ -46,6 +46,9 @@ ms.locfileid: "66808454"
 
 >[!NOTE]
 > 从版本 1.3.0 开始，不再需要 `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` 文件（在以前的版本中提供）。 此功能现在集成到核心 SDK 中。
+
+>[!NOTE]
+> 为 Windows 窗体应用 (.NET Framework)C#项目，请确保这些库包含项目的部署设置。 你可以检查这下`Properties -> Publish Section`。 单击`Application Files`按钮并找到相应的库，从列表中向下滚动。 请确保值设置为`Included`。 发布/部署项目时，visual Studio 将包括该文件。
 
 ## <a name="linux"></a>Linux
 

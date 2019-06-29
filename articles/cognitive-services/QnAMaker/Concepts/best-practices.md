@@ -3,28 +3,36 @@ title: 最佳做法 - QnA Maker
 titlesuffix: Azure Cognitive Services
 description: 使用这些最佳做法来改进知识库，并向应用程序/聊天机器人的最终用户提供更好的结果。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/10/2019
-ms.author: tulasim
+ms.date: 06/25/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b8507bdbf66dc003b6f54317eb526c0e468b9f2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c796114d124c64ac1c373baacabe00c7dcd70aa7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064374"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447634"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的最佳做法
-[知识库开发生命周期](../Concepts/development-lifecycle-knowledge-base.md)介绍如何从头至尾地管理 KB。 使用这些最佳做法来改进知识库，并向应用程序/聊天机器人的最终用户提供更好的结果。
+
+[知识库开发生命周期](../Concepts/development-lifecycle-knowledge-base.md)介绍如何从头至尾地管理 KB。 使用以下最佳做法来提高您的知识库并提供到客户端应用程序更好的结果或聊天机器人的最终用户。
 
 ## <a name="extraction"></a>提取
+
 QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持的文件和 HTML 格式的列表。 按[指南](../Concepts/data-sources-supported.md)操作，根据文档类型进行数据提取。 
 
 一般情况下，常见问题解答页面应单独存在，且不会与其他信息合并。 产品手册应该具备明确的标题，并且最好有一个索引页。 
+
+### <a name="configuring-multi-turn"></a>配置多轮次
+
+创建包含启用多轮次提取您的知识库。 如果您的知识库不或应支持问题的层次结构，可以从文档中提取或提取该文档后，创建此层次结构。 
+
+<!--is this a global setting that can only be configured at kb creation time? -->
 
 ## <a name="creating-good-questions-and-answers"></a>创建有价值的问题和解答
 
@@ -34,9 +42,14 @@ QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持�
 
 根据需要添加尽可能多的备用问题，但变更要简单。 添加更多并非问题主要目标的单词或词组无助于 QnA Maker 查找匹配。 
 
+
+### <a name="add-relevant-alternative-questions"></a>添加相关的其他问题
+
+你的用户可能输入的文本，使用对话式风格问题`How do I add a toner cartridge to my printer?`或关键字搜索如`toner cartridge`。 知识库应具有两种风格的问题，才能正确返回最佳答案。 如果不确定哪些客户输入的关键字，使用 Application Insights 数据分析的查询。
+
 ### <a name="good-answers"></a>有价值的答案
 
-最佳答案都是简单的答案，但不要太简单，比如“是”和“否”。 如果答案可能会链接到其他来源，或者提供丰富的媒体和链接体验，请使用[标记](../how-to/metadata-generateanswer-usage.md)来区分所期望的答案类型，然后将该标记与查询一起提交，以便获得正确答案版本。
+最佳答案是简单的答案，但不是太简单。 如不使用答案`yes`和`no`。 如果您的答案应链接到其他源或与媒体和链接提供了丰富的体验，请使用[元数据标记](./knowledge-base.md#key-knowledge-base-concepts)来区分答案，然后[提交查询](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)中的元数据标记`strictFilters`属性获取正确的答案版本。
 
 ## <a name="chit-chat"></a>聊天内容
 向机器人中添加聊天内容可以轻松地使其更健谈而有趣。 可以轻松地从预定义的个性添加 chit 聊天数据集时创建知识库，并在任何时候更改其。 了解如何[向知识库添加聊天内容](../How-To/chit-chat-knowledge-base.md)。 
@@ -65,12 +78,26 @@ QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持�
 * 谁创建了你？
 * 你好
    
+### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>添加与元数据标记的自定义 chit 聊天
+
+如果添加你自己 chit 聊天 QnA 对，请确保添加元数据，因此将返回这些问题的答案。 元数据名称/值对是`editorial:chitchat`。
+
+## <a name="searching-for-answers"></a>搜索答复
+
+GenerateAnswer API 使用问题和答案来搜索的用户的查询的最佳答案。
+
+### <a name="searching-questions-only-when-answer-is-not-relevant"></a>仅当答案不相关时搜索问题
+
+使用[ `RankerType=QuestionOnly` ](#choosing-ranker-type)如果不想要搜索答案。 
+
+此示例是当知识库作为问题与答案为其完整形式的缩写词的目录。 若要搜索适当的答案并无帮助回答的值。
 
 ## <a name="rankingscoring"></a>排名/评分
 请确保自己充分利用了 QnA Maker 支持的排名功能。 这样可提高给定的用户查询获得适当响应的可能性。
 
 ### <a name="choosing-a-threshold"></a>选择一个阈值
-用作阈值的默认置信度分数为 50，但是，可以根据需要更改知识库的该分数。 由于知识库各不相同，因此应该进行测试，选择最适合知识库的阈值。 详细了解[置信度分数](../Concepts/confidence-score.md)。 
+
+默认值[置信度得分](confidence-score.md#)被用作阈值为 50，但是你可以[更改的阈值](confidence-score.md#set-threshold)为根据需要你 KB。 由于知识库各不相同，因此应该进行测试，选择最适合知识库的阈值。 
 
 ### <a name="choosing-ranker-type"></a>选择排名器类型
 默认情况下，QnA Maker 搜索问题和解答。 如果你想要通过问题仅搜索，若要生成答案，使用`RankerType=QuestionOnly`GenerateAnswer 请求的 POST 正文中。
@@ -87,14 +114,14 @@ QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持�
 
 ### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>使用元数据标记筛选问题和解答
 
-[元数据](../How-To/edit-knowledge-base.md)可添加根据元数据标记缩小用户查询结果的范围的能力。 即使查询相同，知识库的答案也可能因元数据标记而有所不同。 例如，如果餐馆分店的位置不同（即，元数据是“位置：西雅图”和“位置：雷德蒙德”），   则“停车位在哪里？”就会有不同的答案  。
+[元数据](../How-To/edit-knowledge-base.md)添加客户端应用程序知道它的功能不应采用所有答案而是以缩小基于元数据标记的用户查询的结果。 即使查询相同，知识库的答案也可能因元数据标记而有所不同。 例如，如果餐馆分店的位置不同（即，元数据是“位置：西雅图”和“位置：雷德蒙德”），   则“停车位在哪里？”就会有不同的答案  。
 
 ### <a name="use-synonyms"></a>使用同义词
-英语中对同义词提供一定程度的支持，可使用不区分大小写的 [word alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) 将同义词添加到具有不同形式的关键字中。 同义词应添加到 QnA Maker 服务级别并由服务中的所有知识库共享。
+虽然有一些支持英语语言中的同义词，使用通过不区分大小写的单词变更[变更 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace)若要将同义词添加到采用不同格式的关键字。 同义词添加在 QnA Maker 服务级别，并在服务中共享的所有知识库。
 
 |原始字|同义词|
 |--|--|
-|buy|purchase<br>netbanking<br>net banking|
+|buy|purchase<br>net-banking<br>net banking|
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>使用不同的词来区分问题
 如果每个问题都有不同需求，那么最好是使用 QnA Maker 的匹配排名算法，这些算法将用户查询与知识库中的问题相匹配。 如果问题间存在重复的相同词组，则会降低为含有这些词的给定用户查询选择正确答案的概率。 
@@ -110,6 +137,8 @@ QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持�
 
 ## <a name="collaborate"></a>协作
 QnA Maker 让用户可以在知识库上进行[协作](../How-to/collaborate-knowledge-base.md)。 用户需要具备对 Azure QnA Maker 资源组的访问权限，以便访问知识库。 某些组织可能想外包知识库的编辑工作和维护工作，但仍要能保护 Azure 资源的访问权限。 在不同订阅中设置两个完全相同的 [QnA maker 服务](../How-to/set-up-qnamaker-service-azure.md)并选择一个用于编辑测试循环，即可完成编辑者-审批者模型。 完成测试后，请使用[导入-导出](../Tutorials/migrate-knowledge-base.md)进程将知识库内容转移到审批者 QnA Maker 服务，由审批者进行最终的知识库发布和终结点更新。
+
+
 
 ## <a name="active-learning"></a>主动学习
 

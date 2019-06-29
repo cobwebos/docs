@@ -2,19 +2,19 @@
 title: 什么是字典？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 字典一个对齐的文档，其中指定了你始终希望 Microsoft Translator 以相同方式翻译的短语或句子（及其译文）的列表。 字典有时也称为词汇表或术语库。
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 4bf112974befd7063b3da8e2b1c1dcbb7ad55608
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c837399778723b0b084c26422b7bea762f0e7709
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385230"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447365"
 ---
 # <a name="what-is-a-dictionary"></a>什么是字典？
 

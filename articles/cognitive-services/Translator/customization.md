@@ -3,19 +3,19 @@ title: 翻译自定义 - 文本翻译 API
 titlesuffix: Azure Cognitive Services
 description: 通过 Microsoft Translator Hub 使用首选的术语和样式构建自己的机器翻译系统。
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: v-pawal
-ms.openlocfilehash: cb15ae375f412a66b9d7939b6a580ebb95f2f7a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 87c47fc970ccb96419818e3b3e39c939201708f0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515105"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447321"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
 

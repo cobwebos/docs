@@ -14,7 +14,7 @@ ms.date: 02/19/2019
 ms.author: magoedte
 ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424631"
@@ -129,7 +129,7 @@ applicationsScoping //this brings data from Application Insights resources
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
 | PageViewName | name | 
-| ParentOperationID | operation_Id | 
+| ParentOperationID | operation_id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
 | RequestID | id | 

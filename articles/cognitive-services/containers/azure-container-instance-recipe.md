@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: db73d4e30c960eb09e6b5fbc9411901c69c28b01
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 45a03a0912681b4fc33ef8df88fa00fd5458f720
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272966"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445822"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance-aci"></a>部署和运行在 Azure 容器实例 (ACI) 中的容器
 
@@ -35,46 +35,7 @@ ms.locfileid: "67272966"
 
 在尖括号内的所有变量`<>`，需要替换为你自己的值。 这种替换包含在尖括号。
 
-## <a name="step-2-launch-your-container-on-azure-container-instances-aci"></a>步骤 2：启动容器 Azure 容器实例 (ACI)
-
-**创建 Azure 容器实例 (ACI) 资源。**
-
-1. 转到[创建](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances)容器实例的页面。
-
-1. 上**基础知识**选项卡上，输入以下详细信息：
-
-    |页|设置|值|
-    |--|--|--|
-    |基础|订阅|选择订阅。|
-    |基础|资源组|选择可用的资源组或创建一个新如`cognitive-services`。|
-    |基础|容器名称|输入一个名称，例如`cognitive-container-instance`。 此名称必须是较低的大写。|
-    |基础|Location|选择用于部署的区域。|
-    |基础|映像类型|`Public`|
-    |基础|映像名称|输入的认知服务容器位置。 这可以是你在中使用的同一位置`docker pull`命令，_例如_: <br>`mcr.microsoft.com/azure-cognitive-services/sentiment`|
-    |基础|OS 类型|`Linux`|
-    |基础|大小|将大小更改为特定的认知服务容器的建议建议。:<br>2 个内核<br>4 GB
-    ||||
-  
-1. 上**网络**选项卡上，输入以下详细信息：
-
-    |页|设置|值|
-    |--|--|--|
-    |网络|端口|对于从 TCP 编辑现有的端口`80`到`5000`。 这意味着你将公开端口 5000 上的容器。|
-    ||||
-
-1. 上**高级**选项卡上，输入以下详细信息，以通过所需设置应用于容器实例资源计费的容器：
-
-    |高级页密钥|高级页值|
-    |--|--|
-    |`apikey`|从复制**密钥**资源页面。 需要两个键之一。 它是不包含空格或短划线的 32 字母数字字符字符串`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。|
-    |`billing`|从复制**概述**资源页面。 |
-    |`eula`|`accept`|
-
-    如果容器具有其他配置设置，例如输入的装载、 输出装载或日志记录，这些设置还需要添加。
-
-1. 选择**查看和创建**。
-1. 验证通过后，选择**创建**完成创建过程。
-1. 在顶部导航栏中选择钟形图标。 这是通知窗口。 它将显示一个蓝色**转到资源**按钮时创建该资源。 选择该按钮以转到新的资源。
+[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances (ACI)](./includes/create-aci-resource.md)]
 
 ## <a name="use-the-container-instance"></a>使用容器实例
 

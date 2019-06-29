@@ -3,19 +3,19 @@ title: 升级 QnA Maker 服务 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 共享或 QnA Maker 服务升级才能管理更好的资源。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: tulasim
-ms.openlocfilehash: cb38fdcfa8cbbfa0b90141c2de2280ff1ef08c3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: diberry
+ms.openlocfilehash: 2fdbb245f838d92e84d1247faa610a2f1a66c532
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61372183"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439751"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>共享或升级你 QnA Maker 服务
 共享或 QnA Maker 服务升级才能管理更好的资源。 

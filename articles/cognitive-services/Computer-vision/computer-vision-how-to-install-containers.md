@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.author: IEvangelist
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 7a85ac72dfa428bfeddd1fc1ce74ae0af7b4e9af
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 8a5a66c720c0a591fe9d6c9864286d80f68ba599
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275162"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449353"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>安装和运行识别文本容器
 
@@ -125,7 +125,7 @@ ApiKey={BILLING_KEY}
 
 容器提供了基于 REST 的查询预测终结点 API。 
 
-使用主机 `https://localhost:5000`，以获得容器 API。
+使用主机 `http://localhost:5000`，以获得容器 API。
 
 ### <a name="asynchronous-text-recognition"></a>异步文本识别
 

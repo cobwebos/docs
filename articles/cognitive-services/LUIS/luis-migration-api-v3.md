@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: fb4cf119195b3be23dc8f2cb98bd019769583473
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4c08c95a05d4f22e2338a7264409aec0f64a4755
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341839"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442516"
 ---
-# <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>预览版：迁移到 LUIS 应用的 API 版本 3.x
+# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>预览版：迁移到的 API 版本 3.x LUIS 应用
 
 查询预测终结点 API 已发生更改。 请使用本指南了解如何迁移到终结点 API 版本 3。 
 
@@ -43,6 +43,27 @@ V3 API **不支持**以下 LUIS 功能：
 * 必应拼写检查 V7
 
 为 V3 提供了[参考文档](https://aka.ms/luis-api-v3)。
+
+## <a name="endpoint-url-changes-by-slot-name"></a>槽名称由终结点 URL 更改
+
+V3 终结点 HTTP 调用的格式已更改。
+
+|方法|URL|
+|--|--|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0 预览版</b>/apps/<b>{应用 ID}</b>/slots/<b>{槽名称}</b>/ 预测？查询 =<b>{QUERY}</b>|
+|发布|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
+|||
+
+## <a name="endpoint-url-changes-by-version-id"></a>按版本 ID 的终结点 URL 更改
+
+如果你想要查询的版本，需首先[通过 API 发布](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)与`"directVersionPublish":true`。 查询引用而不是槽名称的版本 ID 的终结点。
+
+
+|方法|URL|
+|--|--|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0 预览版</b>/apps/<b>{应用 ID}</b>/versions/<b>{版本 ID}</b>/预测？ 查询 =<b>{QUERY}</b>|
+|发布|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0 预览版</b>/apps/<b>{应用 ID}</b>/versions/<b>{版本 ID}</b>/预测|
+|||
 
 ## <a name="prebuilt-entities-with-new-json"></a>使用新 JSON 的预生成实体
 

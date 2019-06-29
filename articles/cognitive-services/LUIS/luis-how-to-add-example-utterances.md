@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 8c7476a82df75d8ba653a2a8e6c0f9f557b53c42
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: dd8ed146c507d8d39ba99c6573321ee80bc891c9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341877"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442566"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>将实体添加到示例话语 
 
 示例表述是用户问题或命令的文本示例。 若要教授语言理解 (LUIS)，需将[示例表述](luis-concept-utterance.md)添加到[意向](luis-concept-intent.md)。
 
-通常，首先，将示例查询文本添加到意向，然后创建实体和意向页上的语音样本添加标签。 若要先创建实体，请参阅[添加实体](luis-how-to-add-entities.md)。
+通常情况下，将示例查询文本添加到意向的第一个，然后创建实体和语音样本添加标签上**意向**页。 若要先创建实体，请参阅[添加实体](luis-how-to-add-entities.md)。
 
 ## <a name="marking-entities-in-example-utterances"></a>在示例话语中标记实体
 
@@ -32,7 +32,7 @@ ms.locfileid: "67341877"
 
 ## <a name="add-a-simple-entity"></a>添加简单实体
 
-在以下过程中，请在意向页的以下话语中创建并标记自定义实体：
+在下面的过程中，创建和标记的以下查询文本中的自定义实体**意向**页：
 
 ```text
 Are there any SQL server jobs?
@@ -65,9 +65,9 @@ Are there any SQL server jobs?
 
     若要添加更多的列表项或项同义词，可以标记其他话语，也可以在左侧导航区域的“实体”中编辑实体。  [编辑](luis-how-to-add-entities.md#add-list-entities)实体时，可以选择输入其他具有相应同义词的项，也可以选择导入一个列表。 
 
-## <a name="add-composite-entity"></a>添加复合实体
+## <a name="add-a-composite-entity"></a>添加复合实体
 
-复合实体是在父实体中基于现有**实体**创建的。 
+复合实体创建从现有**实体**以形成父实体。 
 
 假设话语为 `Does John Smith work in Seattle?`，则复合话语可以在复合实体中返回员工姓名 `John Smith` 和位置 `Seattle` 的实体信息。 在创建复合实体之前，子实体必须已经存在于应用中，并在示例话语中标记。
 
@@ -131,15 +131,15 @@ Are there any SQL server jobs?
 
 ### <a name="remove-entity-labels-from-utterances"></a>从表述中删除实体标签
 
-可以在“意向”页的表述中删除机器学习的实体标签。 如果实体不是机器学习的，则不能将其从表述中删除。 如果需要从表述中删除非机器学习实体，则需从整个应用中删除实体。 
+从查询文本的意向页上，可以删除机器学习的内容实体标签。 如果实体不是机器学习的，则不能将其从表述中删除。 如果需要从表述中删除非机器学习实体，则需从整个应用中删除实体。 
 
 如果需要从表述中删除机器学习实体标签，请在表述中选择实体。 然后，在显示的实体下拉框中选择“删除标签”。 
 
-### <a name="add-prebuilt-entity-label"></a>添加预置实体标签
+### <a name="add-a-prebuilt-entity-label"></a>添加预建的实体标签
 
 向 LUIS 应用添加预生成实体时，无需通过这些实体来标记话语。 若要详细了解预置实体以及添加它们的方法，请参阅[添加实体](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app)。
 
-### <a name="add-regular-expression-entity-label"></a>添加正则表达式实体标签
+### <a name="add-a-regular-expression-entity-label"></a>添加一个正则表达式实体标签
 
 如果向 LUIS 应用添加正则表达式实体，则不需要通过这些实体来标记话语。 若要详细了解正则表达式实体以及添加它们的方法，请参阅[添加实体](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts)。
 
@@ -149,7 +149,7 @@ Are there any SQL server jobs?
 请参阅[在意向或实体页上通过现有表述添加模式](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page)。
 
 
-### <a name="add-patternany-entity"></a>添加 pattern.any 实体
+### <a name="add-a-patternany-entity"></a>添加 pattern.any 实体
 
 如果向 LUIS 应用添加 pattern.any 实体，则不能通过这些实体来标记表述。 它们只在模式中有效。 若要详细了解 pattern.any 实体以及添加它们的方法，请参阅[添加实体](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities)。
 
@@ -159,4 +159,4 @@ Are there any SQL server jobs?
 
 ## <a name="next-steps"></a>后续步骤
 
-在意向中标记表述后，就可以创建[复合实体](luis-how-to-add-entities.md)了。
+中的语音样本添加标签后你**意向**，现在可以创建[复合实体](luis-how-to-add-entities.md)。

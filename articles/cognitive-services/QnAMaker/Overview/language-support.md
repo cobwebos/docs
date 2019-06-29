@@ -3,20 +3,20 @@ title: 语言支持 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 知识库的语言影响 QnA Maker 从源自动提取问题和解答的能力，以及 QnA Maker 响应用户查询时提供的结果的相关性。 区域性列表（QnA Maker 支持的知识库的自然语言）。 请勿将多种语言混合在同一个知识库中。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 496f7c75e6633089d4ca88a9e3cd7c76ee415780
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a543b17633b99bea63d72f46ba856a8b4593d16a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922409"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439553"
 ---
 # <a name="language-support-for-qna-maker"></a>QnA Maker 的语言支持
 

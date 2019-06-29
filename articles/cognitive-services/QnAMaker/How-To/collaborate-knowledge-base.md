@@ -1,21 +1,21 @@
 ---
-title: 针对知识库展开协作 - Qna Maker
+title: 对知识库-QnA Maker 协作
 titleSuffix: Azure Cognitive Services
 description: 通过 QnA Maker，多名人员可针对知识库展开协作。 此功能通过 Azure 基于角色的访问控制提供。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/14/2019
-ms.author: tulasim
-ms.openlocfilehash: ca754f197a46fc41b6f1b432611a2177ec0afafa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: diberry
+ms.openlocfilehash: 757b791f632e6d7ecb15a0a40384061f0658a6ff
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61374762"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447521"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>针对知识库展开协作
 
@@ -23,7 +23,7 @@ ms.locfileid: "61374762"
 
 执行以下步骤，与他人共享 QnA Maker 服务：
 
-1. 登录 Azure 门户，然后转到 QnA Maker 资源。
+1. 登录到 Azure 门户中，并转到 QnA Maker 资源。
 
     ![QnA Maker 资源列表](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
 

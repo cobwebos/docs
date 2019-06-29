@@ -3,20 +3,20 @@ title: 语音翻译 API 参考
 titleSuffix: Azure Cognitive Services
 description: 语音翻译 API 参考文档。
 services: cognitive-services
-author: Jann-Skotdal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
-ms.author: v-jansko
+ms.author: swmachan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0f083a6ca3079128aad4aba3a53013df378a6106
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60539173"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446906"
 ---
 # <a name="translator-speech-api"></a>语音翻译 API
 
@@ -168,28 +168,28 @@ GET /speech/translate 建立用于语音翻译的会话
 
 |参数|值|描述|参数类型|数据类型|
 |:---|:---|:---|:---|:---|
-|api-version|1.0|客户端所请求的 API 的版本。 允许值包括：`1.0`。|query   |字符串|
-|from|(empty)   |指定传入语音的语言。 值为一种语言标识符，来自语言 API 的响应中的 `speech` 范围。|query|字符串|
-|至|(empty)|指定翻译转录文本时的目标语言。 值为一种语言标识符，来自语言 API 的响应中的 `text` 范围。|query|字符串|
-|features|(empty)   |客户端选择的以逗号分隔的功能集。 可用功能包括：<ul><li>`TextToSpeech`：指定服务必须返回最终翻译语句的转换音频。</li><li>`Partial`：指定在音频正流式传输到服务的情况下，服务必须返回中间识别结果。</li><li>`TimingInfo`：指定服务必须返回与每个识别相关联的计时信息。</li></ul>例如，若要接收部分结果和文本转语音内容但不接收计时信息，客户端可以指定 `features=partial,texttospeech`。 请注意，最终结果始终会流式传输到客户端。|query|字符串|
-|voice|(empty)|确保使用什么语音将已翻译文本从文本转换为语音。 值为一种语音标识符，来自语言 API 的响应中的 tts 范围。 如果未指定语音，则当文本转语音功能启用时，系统会自动选择一种语音。|query|字符串|
-|format|(empty)|指定服务返回的文本转语音音频流的格式。 可用选项包括：<ul><li>`audio/wav`：波形音频流。 客户端应使用 WAV 标头来正确解释音频格式。 文本转语音的 WAV 音频为 16 位单通道 PCM，采样频率为 24kHz 或 16kHz。</li><li>`audio/mp3`：MP3 音频流。</li></ul>默认为 `audio/wav`。|query|字符串|
-|ProfanityAction    |(empty)    |指定服务应如何处理在语音中识别出的不雅内容。 有效措施包括：<ul><li>`NoAction`：按原样保留不雅内容。</li><li>`Marked`：将不雅内容替换为某个标记。 参见 `ProfanityMarker` 参数。</li><li>`Deleted`：删除不雅内容。 例如，如果系统将 `"jackass"` 一词视为不雅内容，则短语 `"He is a jackass."` 会变为 `"He is a .".`</li></ul>默认为 Marked。|query|字符串|
-|ProfanityMarker|(empty)    |指定在将 `ProfanityAction` 设置为 `Marked` 时，如何处理检测到的不雅内容。 有效选项包括：<ul><li>`Asterisk`：将不雅内容替换为字符串 `***`。 例如，如果系统将 `"jackass"` 一词视为不雅内容，则短语 `"He is a jackass."` 会变为 `"He is a ***.".`</li><li>`Tag`：将不雅内容括在不雅内容 XML 标记中。 例如，如果系统将 `"jackass"` 一词视为不雅内容，则短语 `"He is a jackass."` 会变为 `"He is a <profanity>jackass</profanity>."`。</li></ul>默认为 `Asterisk`。|query|字符串|
-|授权|(empty)  |指定客户端的持有者令牌的值。 使用前缀 `Bearer`，后跟身份验证令牌服务返回的 `access_token` 值。|标头的值开始缓存响应   |字符串|
-|Ocp-Apim-Subscription-Key|(empty)|在 `Authorization` 标头未指定的情况下为必填项。|标头的值开始缓存响应|字符串|
-|access_token|(empty)   |一种传递有效 OAuth 访问令牌的替代方式。 持有者令牌在提供时通常带有标头 `Authorization`。 某些 websocket 库不允许客户端代码设置标头。 在这种情况下，客户端可以使用 `access_token` 查询参数来传递有效的令牌。 使用访问令牌进行身份验证时，如果 `Authorization` 标头未设置，则必须设置 `access_token`。 如果标头和查询参数都设置，则会忽略查询参数。 客户端应该只使用一种方法来传递令牌。|query|字符串|
-|subscription-key|(empty)   |一种传递订阅密钥的替代方式。 某些 websocket 库不允许客户端代码设置标头。 在这种情况下，客户端可以使用 `subscription-key` 查询参数来传递有效的订阅密钥。 使用订阅密钥进行身份验证时，如果 `Ocp-Apim-Subscription-Key` 标头未设置，则必须设置 subscription-key。 如果标头和查询参数都设置，则会忽略查询参数。 客户端应该只使用一种方法来传递 `subscription key`。|query|字符串|
-|X-ClientTraceId    |(empty)    |客户端生成的 GUID，用于跟踪请求。 为了正确排查问题，客户端应为每个请求提供新值并记录该值。<br/>该值应使用查询参数 `X-ClientTraceId` 而不是标头来传递。 如果标头和查询参数都设置，则会忽略查询参数。|标头的值开始缓存响应|字符串|
-|X-CorrelationId|(empty)    |一个客户端生成的标识符，用于将一个对话中的多个通道关联在一起。 可以创建多个语音翻译会话，以便在用户之间进行对话。 在这种情况下，所有语音翻译会话会使用同一相关 ID 将通道绑定在一起。 这样可以方便跟踪和诊断。 标识符应遵循的格式：`^[a-zA-Z0-9-_.]{1,64}$`<br/>该值应使用查询参数 `X-CorrelationId` 而不是标头来传递。 如果标头和查询参数都设置，则会忽略查询参数。|标头的值开始缓存响应|字符串|
-|X-ClientVersion|(empty)    |标识客户端应用程序的版本。 示例：“2.1.0.123”。<br/>该值应使用查询参数 `X-ClientVersion` 而不是标头来传递。 如果标头和查询参数都设置，则会忽略查询参数。|标头的值开始缓存响应|字符串|
-|X-OsPlatform|(empty)   |标识运行客户端应用程序的操作系统的名称和版本。 示例：“Android 5.0”、“iOs 8.1.3”、“Windows 8.1”。<br/>该值应使用查询参数 `X-OsPlatform` 而不是标头来传递。 如果标头和查询参数都设置，则会忽略查询参数。|标头的值开始缓存响应|字符串|
+|api-version|1.0|客户端所请求的 API 的版本。 允许值包括：`1.0`。|query   |string|
+|from|(empty)   |指定传入语音的语言。 值为一种语言标识符，来自语言 API 的响应中的 `speech` 范围。|query|string|
+|至|(empty)|指定翻译转录文本时的目标语言。 值为一种语言标识符，来自语言 API 的响应中的 `text` 范围。|query|string|
+|features|(empty)   |客户端选择的以逗号分隔的功能集。 可用功能包括：<ul><li>`TextToSpeech`：指定服务必须返回最终翻译语句的转换音频。</li><li>`Partial`：指定在音频正流式传输到服务的情况下，服务必须返回中间识别结果。</li><li>`TimingInfo`：指定服务必须返回与每个识别相关联的计时信息。</li></ul>例如，若要接收部分结果和文本转语音内容但不接收计时信息，客户端可以指定 `features=partial,texttospeech`。 请注意，最终结果始终会流式传输到客户端。|query|string|
+|voice|(empty)|确保使用什么语音将已翻译文本从文本转换为语音。 值为一种语音标识符，来自语言 API 的响应中的 tts 范围。 如果未指定语音，则当文本转语音功能启用时，系统会自动选择一种语音。|query|string|
+|format|(empty)|指定服务返回的文本转语音音频流的格式。 可用选项包括：<ul><li>`audio/wav`：波形音频流。 客户端应使用 WAV 标头来正确解释音频格式。 文本转语音的 WAV 音频为 16 位单通道 PCM，采样频率为 24kHz 或 16kHz。</li><li>`audio/mp3`：MP3 音频流。</li></ul>默认为 `audio/wav`。|query|string|
+|ProfanityAction    |(empty)    |指定服务应如何处理在语音中识别出的不雅内容。 有效措施包括：<ul><li>`NoAction`：按原样保留不雅内容。</li><li>`Marked`：将不雅内容替换为某个标记。 参见 `ProfanityMarker` 参数。</li><li>`Deleted`：删除不雅内容。 例如，如果系统将 `"jackass"` 一词视为不雅内容，则短语 `"He is a jackass."` 会变为 `"He is a .".`</li></ul>默认为 Marked。|query|string|
+|ProfanityMarker|(empty)    |指定在将 `ProfanityAction` 设置为 `Marked` 时，如何处理检测到的不雅内容。 有效选项包括：<ul><li>`Asterisk`：将不雅内容替换为字符串 `***`。 例如，如果系统将 `"jackass"` 一词视为不雅内容，则短语 `"He is a jackass."` 会变为 `"He is a ***.".`</li><li>`Tag`：将不雅内容括在不雅内容 XML 标记中。 例如，如果系统将 `"jackass"` 一词视为不雅内容，则短语 `"He is a jackass."` 会变为 `"He is a <profanity>jackass</profanity>."`。</li></ul>默认为 `Asterisk`。|query|string|
+|Authorization|(empty)  |指定客户端的持有者令牌的值。 使用前缀 `Bearer`，后跟身份验证令牌服务返回的 `access_token` 值。|标头的值开始缓存响应   |string|
+|Ocp-Apim-Subscription-Key|(empty)|在 `Authorization` 标头未指定的情况下为必填项。|标头的值开始缓存响应|string|
+|access_token|(empty)   |一种传递有效 OAuth 访问令牌的替代方式。 持有者令牌在提供时通常带有标头 `Authorization`。 某些 websocket 库不允许客户端代码设置标头。 在这种情况下，客户端可以使用 `access_token` 查询参数来传递有效的令牌。 使用访问令牌进行身份验证时，如果 `Authorization` 标头未设置，则必须设置 `access_token`。 如果标头和查询参数都设置，则会忽略查询参数。 客户端应该只使用一种方法来传递令牌。|query|string|
+|subscription-key|(empty)   |一种传递订阅密钥的替代方式。 某些 websocket 库不允许客户端代码设置标头。 在这种情况下，客户端可以使用 `subscription-key` 查询参数来传递有效的订阅密钥。 使用订阅密钥进行身份验证时，如果 `Ocp-Apim-Subscription-Key` 标头未设置，则必须设置 subscription-key。 如果标头和查询参数都设置，则会忽略查询参数。 客户端应该只使用一种方法来传递 `subscription key`。|query|string|
+|X-ClientTraceId    |(empty)    |客户端生成的 GUID，用于跟踪请求。 为了正确排查问题，客户端应为每个请求提供新值并记录该值。<br/>该值应使用查询参数 `X-ClientTraceId` 而不是标头来传递。 如果标头和查询参数都设置，则会忽略查询参数。|标头的值开始缓存响应|string|
+|X-CorrelationId|(empty)    |一个客户端生成的标识符，用于将一个对话中的多个通道关联在一起。 可以创建多个语音翻译会话，以便在用户之间进行对话。 在这种情况下，所有语音翻译会话会使用同一相关 ID 将通道绑定在一起。 这样可以方便跟踪和诊断。 标识符应遵循的格式：`^[a-zA-Z0-9-_.]{1,64}$`<br/>该值应使用查询参数 `X-CorrelationId` 而不是标头来传递。 如果标头和查询参数都设置，则会忽略查询参数。|标头的值开始缓存响应|string|
+|X-ClientVersion|(empty)    |标识客户端应用程序的版本。 示例：“2.1.0.123”。<br/>该值应使用查询参数 `X-ClientVersion` 而不是标头来传递。 如果标头和查询参数都设置，则会忽略查询参数。|标头的值开始缓存响应|string|
+|X-OsPlatform|(empty)   |标识运行客户端应用程序的操作系统的名称和版本。 示例：“Android 5.0”、“iOs 8.1.3”、“Windows 8.1”。<br/>该值应使用查询参数 `X-OsPlatform` 而不是标头来传递。 如果标头和查询参数都设置，则会忽略查询参数。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
 |HTTP 状态代码|原因|响应模型|标头|
 |:--|:--|:--|:--|
-|101    |WebSocket 升级。|模型示例值 <br/> Object {}|X-RequestId<br/>一个用于标识请求的值，目的是方便故障排除。<br/>字符串|
+|101    |WebSocket 升级。|模型示例值 <br/> Object {}|X-RequestId<br/>一个用于标识请求的值，目的是方便故障排除。<br/>string|
 |400    |请求错误。 请检查输入参数以确保它们有效。 响应对象包括错误的更详细描述。|||
 |401    |未授权。 确保凭据已设置并有效，同时你的 Azure 数据市场订阅处于正常状态并有余额可用。|||
 |500    |发生错误。 如果错误仍然存在，请使用客户端跟踪标识符 (X-ClientTraceId) 或请求标识符 (X-RequestId) 进行报告。|||

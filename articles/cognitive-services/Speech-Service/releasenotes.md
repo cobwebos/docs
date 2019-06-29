@@ -8,17 +8,42 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/26/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: f22b0fcac6099482addfcf56a20e0e828866326e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 09296585ab0ab61f39c18cae6c533c0bbd91926a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606346"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449245"
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="speech-sdk-160-2019-june-release"></a>语音 SDK 1.6.0:2019 年 6 月版本
+**示例**
+*   在 UWP 和 Unity 的文本到语音的快速入门示例
+*   用于 Swift iOS 上的快速入门示例
+*   语音意图识别和翻译的 unity 示例
+*   DialogServiceConnector 的已更新的快速入门示例
+
+**改进 / 更改**
+* 对话框命名空间：
+    * SpeechBotConnector 已更名为 DialogServiceConnector
+    * BotConfig 已更名为 DialogServiceConfig
+    * 已重新 BotConfig::FromChannelSecret() 映射到 DialogServiceConfig::FromBotSecret()
+    * 所有现有的直接行语音客户端继续支持重命名之后
+* 更新 TTS REST 适配器以支持持续性连接代理
+* 改进的错误消息时传递无效的区域
+
+**Bug 修复**
+*   修复 TTS： 其中 SpeakTextAsync 未来返回，而不等待，直到完成呈现音频。
+*   修复程序中的字符串的封送处理C#若要启用完整的语言支持
+*   修复了.NET core 应用的问题以加载与 net461 示例中的目标框架的核心库
+*   修复了偶尔要将本机库部署到的输出文件夹中示例的问题
+*   对于 web 套接字关闭可靠地修复
+*   打开在 Linux 上很重的负载下的一个连接时为可能的故障修复问题
+
 
 ## <a name="speech-sdk-151"></a>Speech SDK 1.5.1
 

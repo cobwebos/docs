@@ -97,13 +97,13 @@ ms.locfileid: "60787489"
 | properties | targetResourceUri | 缩放的资源的资源 ID。 针对每个资源，只能使用一项自动缩放设置。 |
 | properties | profiles | 自动缩放设置由一个或多个配置文件组成。 自动缩放引擎每次运行时，将会执行一个配置文件。 |
 | profile | name | 配置文件的名称。 可以选择有助于识别该配置文件的任何名称。 |
-| profile | capacity.maximum | 允许的最大容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源扩展到超过此数字。 |
-| profile | capacity.minimum | 允许的最小容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源缩减到低于此数字。 |
-| profile | capacity.default | 如果读取资源指标（在本例中，为“vmss1”的 CPU）时出现问题，且当前容量低于默认容量，则自动缩放将扩展到默认值。 这是为了确保资源可用性。 如果当前容量已大于默认容量，则自动缩放不会缩减。 |
-| profile | rules | 自动缩放使用配置文件中的规则在最大和最小容量之间自动缩放。 可以在一个配置文件中包含多个规则。 通常包含两个规则：一个用于确定何时扩展，另一个用于确定何时缩减。 |
+| profile | Capacity.maximum | 允许的最大容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源扩展到超过此数字。 |
+| profile | Capacity.minimum | 允许的最小容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源缩减到低于此数字。 |
+| profile | Capacity.default | 如果读取资源指标（在本例中，为“vmss1”的 CPU）时出现问题，且当前容量低于默认容量，则自动缩放将扩展到默认值。 这是为了确保资源可用性。 如果当前容量已大于默认容量，则自动缩放不会缩减。 |
+| profile | rule | 自动缩放使用配置文件中的规则在最大和最小容量之间自动缩放。 可以在一个配置文件中包含多个规则。 通常包含两个规则：一个用于确定何时扩展，另一个用于确定何时缩减。 |
 | rule | metricTrigger | 定义规则的指标条件。 |
 | metricTrigger | metricName | 指标的名称。 |
-| metricTrigger | metricResourceUri | 发出指标的资源的资源 ID。 在大多数情况下，它与缩放的资源相同。 在某些情况下，它可能不同。 例如，可以基于存储队列中的消息数缩放虚拟机规模集。 |
+| metricTrigger |  metricResourceUri | 发出指标的资源的资源 ID。 在大多数情况下，它与缩放的资源相同。 在某些情况下，它可能不同。 例如，可以基于存储队列中的消息数缩放虚拟机规模集。 |
 | metricTrigger | timeGrain | 指标采样持续时间。 例如，**TimeGrain = "PT1M"** 表示应使用 statistic 元素中指定的聚合方法每分钟聚合一次指标。 |
 | metricTrigger | statistic | timeGrain 时间段内的聚合方法。 例如，**statistic = "Average"** 且 **timeGrain = "PT1M"** 表示每分钟取平均值来聚合指标。 此属性规定指标的采样方式。 |
 | metricTrigger | timeWindow | 查找指标的时间范围。 例如，**timeWindow = "PT10M"** 表示自动缩放每次运行时，都会查询过去 10 分钟的指标。 使用该时间范围可将指标规范化，避免对暂时性的峰值作出反应。 |
