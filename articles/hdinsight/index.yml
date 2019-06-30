@@ -56,7 +56,7 @@ sections:
           - image:
               src: media/index/ml-server_r.svg
             text: ML Services
-            href: /azure/hdinsight/r-server/r-server-get-started
+            href: /azure/hdinsight/r-server/ml-services-quickstart-job-rstudio
   - title: 分步教程
     items:
       - type: paragraph
@@ -64,7 +64,6 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: Apache Hadoop：<a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">执行 ETL 操作</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">创建按需群集</a>
           - html: Apache Spark：<a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">运行交互式查询</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">将数据可视化</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">机器学习</a>
           - html: Apache Kafka：<a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">将结构化流与 Kafka 配合使用</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">与 Storm on HDInsight 配合使用</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">使用 Kafka 生成者和使用者 API</a>
           - html: Apache HBase：<a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">在 VNET 中创建 HBase 群集</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">使用 Apache Phoenix</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">连接到 Spark</a>

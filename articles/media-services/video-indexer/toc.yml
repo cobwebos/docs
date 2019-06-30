@@ -14,14 +14,17 @@
     - name: 使用视频索引器 API
       href: video-indexer-use-apis.md
 - name: 概念
-  href: video-indexer-concepts.md
   items:
+    - name: 概述
+      href: video-indexer-concepts.md
     - name: 比较视频索引器和媒体服务预设
       href: compare-video-indexer-with-media-services-presets.md
     - name: 管理多个租户
       href: manage-multiple-tenants.md
     - name: 自定义内容模型
       items:
+        - name: 概述
+          href: customize-content-models-overview.md
         - name: 品牌
           href: customize-brands-model-overview.md
         - name: 语言
@@ -86,3 +89,5 @@
       href: faq.md
     - name: 合规性
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
+    - name: 发行说明
+      href: release-notes.md

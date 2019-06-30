@@ -50,10 +50,6 @@
           href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
         - name: 向 iOS 设备推送本地化通知
           href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-    - name: Kindle
-      items:
-        - name: 使用 Amazon Device Messaging 推送通知
-          href: notification-hubs-kindle-amazon-adm-push-notification.md
     - name: Windows Phone
       items:
         - name: 向应用推送通知
@@ -129,8 +125,6 @@
           href: configure-windows-push-notification-service.md
         - name: 配置 Microsoft 推送通知服务
           href: configure-microsoft-push-notification-service.md
-        - name: 配置 Android Device Messaging
-          href: configure-android-device-messaging.md
         - name: 配置百度云推送
           href: configure-baidu-cloud-push.md
     - name: 使用应用程序后端注册

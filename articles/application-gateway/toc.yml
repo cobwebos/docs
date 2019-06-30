@@ -96,6 +96,7 @@
         - name: Azure CLI
           href: tutorial-manage-web-traffic-cli.md
         - name: 模板
+          displayName: 'ARM, Resource Manager, template'
           href: create-vmss-template.md
     - name: 配置内部负载均衡器
       items:
@@ -241,6 +242,8 @@
       href: /rest/api/applicationgateway
     - name: Azure 资源管理器
       href: ../azure-resource-manager/resource-group-overview.md
+    - name: 资源管理器模板
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/allversions'
 - name: 资源
   items:
     - name: 创作模板

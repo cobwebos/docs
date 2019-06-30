@@ -5,8 +5,8 @@ metadata:
   title: Azure AD 域服务文档
   description: 了解如何使用 Active Directory 域服务将 Azure 虚拟机加入域，而无需使用域控制器。 教程和其他文档介绍了如何使用组策略管理虚拟机。
   keywords: 'Azure AD, Azure, 域加入, 组策略, LDAP, Kerberos, 域控制器, DC, 直接迁移'
-  author: MikeStephens-MS
-  ms.author: mstephen
+  author: iainfoulds
+  ms.author: iainfou
   manager: daveba
   ms.date: 05/22/2019
   ms.topic: landing-page

@@ -36,7 +36,7 @@
     - name: 最佳实践
       items:
         - name: 用于 Redis 的 Azure 缓存的最佳做法
-          href: 'https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f'
+          href: cache-best-practices.md
         - name: 适用于缓存的 Azure 体系结构最佳做法
           href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: 操作指南

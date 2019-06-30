@@ -14,8 +14,6 @@
   items:
     - name: ESP 群集的计划
       href: apache-domain-joined-architecture.md
-    - name: 创建 ESP 群集并与本地同步
-      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
     - name: 使用 Azure AD DS 配置 ESP 群集
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: 将 Azure AD 用户同步到 HDInsight 群集
@@ -30,26 +28,30 @@
       href: ../spark/apache-spark-eclipse-tool-plugin.md
     - name: 在 ESP 群集中使用 Apache Oozie
       href: hdinsight-use-oozie-domain-joined-clusters.md
-- name: 保护数据
-  href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-- name: 网络访问
+    - name: 保护数据
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+    - name: 网络访问
+      items:
+        - name: Azure VNet 中的 HDInsight
+          href: ../hdinsight-extend-hadoop-virtual-network.md
+        - name: 将 HDInsight 与本地网络相连
+          href: ../connect-on-premises-network.md
+        - name: 在 Azure VNet 中创建 Apache HBase 群集
+          href: ../hbase/apache-hbase-provision-vnet.md
+        - name: Azure VNet 中的 Apache HBase 群集复制
+          href: ../hbase/apache-hbase-replication.md
+    - name: 使用 Azure Monitor 日志进行监视
+      items:
+        - name: 使用 Azure Monitor 日志
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+        - name: 将查询与 Azure Monitor 日志配合使用
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+        - name: 监视群集性能
+          href: ../hdinsight-key-scenarios-to-monitor.md
+- name: 如何
   items:
-    - name: Azure VNet 中的 HDInsight
-      href: ../hdinsight-extend-hadoop-virtual-network.md
-    - name: 将 HDInsight 与本地网络相连
-      href: ../connect-on-premises-network.md
-    - name: 在 Azure VNet 中创建 Apache HBase 群集
-      href: ../hbase/apache-hbase-provision-vnet.md
-    - name: Azure VNet 中的 Apache HBase 群集复制
-      href: ../hbase/apache-hbase-replication.md
-- name: 使用 Azure Monitor 日志进行监视
-  items:
-    - name: 使用 Azure Monitor 日志
-      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - name: 将查询与 Azure Monitor 日志配合使用
-      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-    - name: 监视群集性能
-      href: ../hdinsight-key-scenarios-to-monitor.md
+    - name: 创建 ESP 群集并与本地同步
+      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
 - name: 引用
   items:
     - name: 代码示例
