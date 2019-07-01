@@ -25,6 +25,8 @@
           href: howto-create-tenant.md
         - name: 创建 Azure AD 应用对象和用户
           href: howto-aad-app-configuration.md
+    - name: 在 Azure Red Hat OpenShift 群集中部署独立的 Prometheus
+      href: howto-deploy-prometheus.md
 - name: 引用
   items:
     - name: Azure Red Hat OpenShift CLI

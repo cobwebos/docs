@@ -447,6 +447,18 @@
                   href: app/proactive-arm-config.md
                 - name: 电子邮件通知
                   href: app/proactive-email-notification.md
+            - name: 可用性
+              items:
+                - name: URL 测试
+                  href: app/monitor-web-app-availability.md
+                - name: 多步骤测试
+                  href: app/availability-multistep.md
+                - name: 可用性警报
+                  href: app/availability-alerts.md
+                - name: 故障排除
+                  href: app/troubleshoot-availability.md
+            - name: 性能测试
+              href: app/performance-testing.md
             - name: 创建资源
               href: app/create-new-resource.md
             - name: 将应用程序数据流式传输到 Log Analytics
@@ -554,6 +566,8 @@
                       href: insights/container-insights-enable-existing-clusters.md
                 - name: 分析
                   href: insights/container-insights-analyze.md
+                - name: 配置代理收集设置
+                  href: insights/container-insights-agent-config.md
                 - name: 禁用监视
                   href: insights/container-insights-optout.md
                 - name: 查看实时日志
@@ -795,8 +809,6 @@
           items:
             - name: 应用程序警报规则
               items:
-                - name: 可用性
-                  href: app/monitor-web-app-availability.md
                 - name: 指标警报
                   href: app/alerts.md
             - name: 平台指标警报规则

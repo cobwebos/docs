@@ -88,7 +88,7 @@
           href: stream-analytics-test-query.md
         - name: 在仪表板上查看结果
           href: stream-analytics-power-bi-dashboard.md
-        - name: 清理作业
+        - name: 停止或删除作业
           href: stream-analytics-clean-up-your-job.md
         - name: 进行作业配对以确保可靠性
           href: stream-analytics-job-reliability.md

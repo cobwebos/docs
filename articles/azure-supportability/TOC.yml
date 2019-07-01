@@ -5,14 +5,17 @@
 - name: 用于创建和管理支持请求的访问权限
   href: create-manage-support-requests-using-access-control.md
 - name: 配额增加请求
-  href: resource-manager-core-quotas-request.md
   items:
-    - name: VM 系列 vCPU 限制提高
-      href: per-vm-quota-requests.md
-    - name: 区域性总 vCPU 限制提高
-      href: regional-quota-requests.md
-    - name: 网络限制提高
-      href: networking-quota-requests.md
+    - name: 资源管理器部署模型配额增加请求
+      items:
+        - name: VM 系列 vCPU 限制提高
+          href: per-vm-quota-requests.md
+        - name: 区域性总 vCPU 限制提高
+          href: regional-quota-requests.md
+        - name: 网络限制提高
+          href: networking-quota-requests.md
+    - name: 经典部署模型配额增加请求
+      href: classic-deployment-model-quota-increase-requests.md
 - name: 排查区域或 SKU 订阅问题
   href: sku-series-unavailable.md
 - name: 引用

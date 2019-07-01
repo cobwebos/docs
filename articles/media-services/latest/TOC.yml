@@ -223,6 +223,14 @@
             - name: 使用 REST
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+        - name: 对视频进行子剪辑
+          items:
+            - name: 使用 .NET
+              href: subclip-video-dotnet-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
+            - name: 使用 REST
+              href: subclip-video-rest-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
     - name: 使用事件网格
       items:
         - name: 监视事件 - 门户

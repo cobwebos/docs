@@ -45,24 +45,22 @@
           href: application-proxy-network-topology.md
         - name: 比较远程访问解决方案
           href: application-proxy-migration.md
+    - name: 单一登录
+      items:
+        - name: 什么是单一登录
+          href: what-is-single-sign-on.md
+        - name: 规划单一登录部署
+          href: plan-sso-deployment.md
+    - name: 一键式 SSO
+      items:
+        - name: 什么是一键式 SSO
+          href: one-click-sso-tutorial.md
     - name: 预配用户和组
       items:
         - name: 自动用户预配
-          href: configure-automatic-user-provisioning-portal.md
-        - name: SaaS 应用
           href: user-provisioning.md
-        - name: 启用 SCIM 的应用
+        - name: 对启用 SCIM 的应用自动执行预配
           href: use-scim-to-provision-users-and-groups.md
-        - name: 自定义应用程序属性
-          href: Customize-application-attributes.md
-        - name: 为属性映射编写表达式
-          href: functions-for-customizing-application-data.md
-        - name: 范围筛选器
-          href: define-conditional-rules-for-provisioning-user-accounts.md
-        - name: 针对自动用户预配进行报告
-          href: check-status-user-account-provisioning.md
-        - name: 排查用户预配问题
-          href: application-provisioning-config-problem.md
     - name: 应用程序安全性
       items:
         - name: 应用访问选项
@@ -75,18 +73,8 @@
           href: tenant-restrictions.md
         - name: 配置 SAML 令牌加密（预览版）
           href: howto-saml-token-encryption.md
-    - name: 单一登录
-      items:
-        - name: 什么是单一登录
-          href: what-is-single-sign-on.md
-        - name: 规划单一登录部署
-          href: plan-sso-deployment.md
     - name: 最终用户门户
       href: end-user-experiences.md
-    - name: 一键式 SSO
-      items:
-        - name: 什么是一键式 SSO
-          href: one-click-sso-tutorial.md
 - name: 操作指南
   items:
     - name: 添加云应用
@@ -157,12 +145,20 @@
               href: application-proxy-configure-single-sign-on-on-premises-apps.md
     - name: 配置用户设置
       items:
-        - name: 预配花费多长时间
-          href: application-provisioning-when-will-provisioning-finish-specific-user.md
-        - name: 配置用户预配 - 库应用
+        - name: 库应用的用户预配
           href: application-provisioning-config-how-to.md
-        - name: 同步属性以进行映射 - 库应用
-          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: 配置自动用户预配
+          href: configure-automatic-user-provisioning-portal.md
+        - name: 自定义应用程序属性
+          href: Customize-application-attributes.md
+        - name: 为属性映射编写表达式
+          href: functions-for-customizing-application-data.md
+        - name: 范围筛选器
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: 检查预配状态
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: 针对自动用户预配进行报告
+          href: check-status-user-account-provisioning.md
     - name: 分配用户和管理对应用的访问权限
       items:
         - name: 配置用户同意
@@ -235,10 +231,12 @@
               href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: 排查用户预配问题
           items:
+            - name: 排查用户预配问题
+              href: application-provisioning-config-problem.md
+            - name: 同步属性以进行映射 - 库应用
+              href: user-provisioning-sync-attributes-for-mapping.md
             - name: 花费数小时 - 库应用
               href: application-provisioning-when-will-provisioning-finish.md
-            - name: 配置用户预配时出现问题 - 库应用
-              href: application-provisioning-config-problem.md
             - name: 配置用户预配时保存管理员凭据出现问题 - 库应用
               href: application-provisioning-config-problem-storage-limit.md
             - name: 未预配用户 - 库应用

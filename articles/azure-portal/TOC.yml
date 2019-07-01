@@ -30,6 +30,8 @@
   items:
     - name: 键盘快捷方式
       href: azure-portal-keyboard-shortcuts.md
+    - name: 将 Azure 门户 URL 加入安全列表
+      href: azure-portal-safelist-urls.md
     - name: Azure 仪表板结构
       href: azure-portal-dashboards-structure.md
 - name: 资源
