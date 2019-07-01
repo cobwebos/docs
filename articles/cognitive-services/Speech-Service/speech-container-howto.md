@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 6df40909e2072ac2126344ba5b696c9e520e9955
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8f395788d4dd3c845155a52bd6b4666998838fcd
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434149"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490239"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装并运行语音服务容器
 
@@ -25,7 +25,7 @@ ms.locfileid: "67434149"
 
 |函数|功能|最新|
 |-|-|--|
-|语音转文本| <li>Transcribes 连续实时语音或批处理音频录制到具有中间结果的文本。|1.1.2|
+|语音转文本| <li>Transcribes 连续实时语音或批处理音频录制到具有中间结果的文本。|1.1.3|
 |文本到语音转换| <li>将文本转换为自然发音的语音。 使用纯文本输入或语音合成标记语言 (SSML)。 |1.1.0|
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -101,10 +101,10 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 以下标记是格式的示例：
 
 ```
-1.1.2-amd64-en-us-preview
+1.1.3-amd64-en-us-preview
 ```
 
-下表列出了支持的区域设置为**语音到文本**1.1.2 中的容器的版本：
+下表列出了支持的区域设置为**语音到文本**1.1.3 中的容器的版本：
 
 |语言区域设置|标记|
 |--|--|

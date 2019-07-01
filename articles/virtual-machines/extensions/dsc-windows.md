@@ -113,11 +113,11 @@ Windows Server 2019、 Windows Server 2016、 Windows Server 2012R2，Windows Se
 | settings.configuration.url | string | 指定要从中下载 DSC 配置 zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationUrlSasToken 属性设置为 SAS 令牌的值。 如果已定义 settings.configuration.script 和/或 settings.configuration.function，则需要此属性。
 | settings.configuration.script | string | 指定包含 DSC 配置定义的脚本的文件名。 此脚本必须位于从 configuration.url 属性所指定的 URL 下载的 zip 文件的根文件夹中。 如果已定义 settings.configuration.url 和/或 settings.configuration.script，则需要此属性。
 | settings.configuration.function | string | 指定 DSC 配置的名称。 命名的配置必须包含在 configuration.script 定义的脚本中。 如果已定义 settings.configuration.url 和/或 settings.configuration.function，则需要此属性。
-| settings.configurationArguments | 集合 | 定义想要传递到 DSC 配置的任何参数。 不会加密此属性。
+| settings.configurationArguments | Collection | 定义想要传递到 DSC 配置的任何参数。 不会加密此属性。
 | settings.configurationData.url | string | 指定 URL，将从中下载配置数据 (.pds1) 文件用作 DSC 配置的输入。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationDataUrlSasToken 属性设置为 SAS 令牌的值。
 | settings.privacy.dataEnabled | string | 启用或禁用遥测数据收集。 此属性的可能值只有“Enable”、“Disable”或“$null”。 将此属性留空，否则 null 将启用遥测
 | settings.advancedOptions.forcePullAndApply | Bool | 此设置旨在增强使用扩展将节点注册到 Azure Automation DSC 的体验。  如果值为 `$true`，则扩展会等待从服务拉取的配置完成第一次运行，然后返回成功/失败。  如果值设置为 $false，则扩展返回的状态仅指节点是否已成功注册到 Azure Automation State Configuration，而在注册过程中不会运行节点配置。
-| settings.advancedOptions.downloadMappings | 集合 | 定义用于下载依赖项（如 WMF 和 .NET）的备用位置
+| settings.advancedOptions.downloadMappings | Collection | 定义用于下载依赖项（如 WMF 和 .NET）的备用位置
 
 ### <a name="protected-settings-property-values"></a>受保护设置属性值
 

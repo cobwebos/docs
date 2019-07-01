@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: wolfma
-ms.openlocfilehash: b4092cfb11fc37b9a4d145c3a2994138e5ae6dbf
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 3a9a50d1809461791c968113a8237cf8670c521f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331914"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484949"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -33,7 +33,7 @@ ms.locfileid: "67331914"
 
 * C#（UWP 和 .NET）、C++：可以引用和使用语音 SDK NuGet 包的最新版本。 此包包括 32 位和 64 位客户端库，以及托管 (.NET) 库。 可以使用 NuGet 在 Visual Studio 中安装该 SDK。 搜索 Microsoft.CognitiveServices.Speech NuGet  。
 
-* Java:可以引用和使用语音 SDK Maven 包的最新版本，该包仅支持 Windows x64。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` 引用为一个依赖项。
+* Java:可以引用和使用语音 SDK Maven 包的最新版本，该包仅支持 Windows x64。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` 引用为一个依赖项。
 
 ### <a name="linux"></a>Linux
 
@@ -59,10 +59,10 @@ sudo apt-get install libssl1.0.2 libasound2
 * C#：可以引用和使用语音 SDK NuGet 包的最新版本。 若要引用该 SDK，请向你的项目中添加以下包引用：
 
   ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.5.1" />
+  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.6.0" />
   ```
 
-* Java:可以引用和使用语音 SDK Maven 包的最新版本。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` 引用为一个依赖项。
+* Java:可以引用和使用语音 SDK Maven 包的最新版本。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` 引用为一个依赖项。
 
 * C++：将 SDK 下载为 [.tar 包](https://aka.ms/csspeech/linuxbinary)，并将文件解压缩到所选的一个目录中。 下表显示了 SDK 文件夹结构：
 
@@ -78,7 +78,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
 ### <a name="android"></a>Android
 
-将适用于 Android 的 Java SDK 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及所需的 Android 权限。 它作为包 `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` 托管在 `https://csspeechstorage.blob.core.windows.net/maven/` 的 Maven 存储库中。
+将适用于 Android 的 Java SDK 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及所需的 Android 权限。 它作为包 `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` 托管在 `https://csspeechstorage.blob.core.windows.net/maven/` 的 Maven 存储库中。
 
 若要从你的 Android Studio 项目中使用该包，请进行以下更改：
 
@@ -91,7 +91,7 @@ sudo apt-get install libssl1.0.2 libasound2
 * 在模块级 build.gradle 文件中，向 `dependencies` 部分添加以下内容：
 
   ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.5.1'
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.6.0'
   ```
 
 Java SDK 也是[语音设备 SDK](speech-devices-sdk.md) 的一部分。

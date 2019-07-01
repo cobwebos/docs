@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: 99c076d7f26638833b568935e766cf319d21945e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b691d447f51165ea3cb56410da9cd2d4d00ce913
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443475"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490207"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>获取与 GenerateAnswer API 和元数据的答案
 
@@ -73,7 +73,7 @@ GenerateAnswer URL 采用以下格式：
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-请记住要设置的 HTTP 标头属性`Authorization`字符串的值与`EndpointKey `使用尾随空格则上找到的终结点密钥**设置**页。
+请记住要设置的 HTTP 标头属性`Authorization`字符串的值与`EndpointKey`使用尾随空格则上找到的终结点密钥**设置**页。
 
 一个 JSON 正文示例如下所示：
 

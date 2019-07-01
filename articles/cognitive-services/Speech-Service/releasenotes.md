@@ -11,16 +11,17 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 09296585ab0ab61f39c18cae6c533c0bbd91926a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 609443a4926fabd991846faee4a0a7dffe3a696b
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449245"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490174"
 ---
 # <a name="release-notes"></a>发行说明
 
 ## <a name="speech-sdk-160-2019-june-release"></a>语音 SDK 1.6.0:2019 年 6 月版本
+
 **示例**
 *   在 UWP 和 Unity 的文本到语音的快速入门示例
 *   用于 Swift iOS 上的快速入门示例
@@ -35,6 +36,9 @@ ms.locfileid: "67449245"
     * 所有现有的直接行语音客户端继续支持重命名之后
 * 更新 TTS REST 适配器以支持持续性连接代理
 * 改进的错误消息时传递无效的区域
+* C: Swift/目标
+    * 改进了的错误报告：可能会导致错误的方法现在都存在于两个版本：一个公开`NSError`错误处理和引发异常的一个对象。 向 Swift 公开前者。 此更改需要适应现有 Swift 代码。
+    * 改进的事件处理
 
 **Bug 修复**
 *   修复 TTS： 其中 SpeakTextAsync 未来返回，而不等待，直到完成呈现音频。
@@ -43,6 +47,8 @@ ms.locfileid: "67449245"
 *   修复了偶尔要将本机库部署到的输出文件夹中示例的问题
 *   对于 web 套接字关闭可靠地修复
 *   打开在 Linux 上很重的负载下的一个连接时为可能的故障修复问题
+*   修复 macOS 的 framework 捆绑中丢失的元数据
+*   对问题进行了修复`pip install --user`上 Windows
 
 
 ## <a name="speech-sdk-151"></a>Speech SDK 1.5.1

@@ -40,8 +40,6 @@
       href: ../hdinsight-sdk-python-samples.md
 - name: 概念
   items:
-    - name: 使用 IntelliJ 运行 Apache Spark 查询
-      href: apache-spark-intellij-tool-plugin.md
     - name: 使用 VSCode 运行 Apache Spark 查询
       href: ../hdinsight-for-vscode.md
     - name: HDInsight 上的 Apache Hadoop 组件

@@ -92,7 +92,7 @@ zh-CN | 中文(中国) | 女 | "Microsoft Server Speech Text to Speech Voice (zh
 
 区域设置 | 语言 | 性别 | 完整的服务名称映射 | 短语音名称
 -------|----------|---------|----------|----------
-ar-EG\* | 阿拉伯语(埃及) | 女 | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)" | "ar-例如-Hoda"
+ar-EG\* | 阿拉伯语(埃及) | 女 | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)" | "ar-EG-Hoda"
 ar-SA | 阿拉伯语(沙特阿拉伯) | 男 | "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)" | "ar-SA-Naayf"
 bg-BG | 保加利亚语 | 男 | "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)" | "bg-BG-Ivan"
 ca-ES | 加泰罗尼亚语(西班牙) | 女 | "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)" | "ca ES HerenaRUS"
@@ -116,8 +116,8 @@ en-IN | 英语(印度) | 女 | "Microsoft Server Speech Text to Speech Voice (en
 | | | 女 | "Microsoft Server Speech Text to Speech Voice (en-IN, PriyaRUS)" | "en-IN-PriyaRUS"
 | | | 男 | "Microsoft Server Speech Text to Speech Voice (en-IN, Ravi, Apollo)" | "en-IN-Ravi-Apollo"
 en-US | 英语(美国) | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)" | "en-US-ZiraRUS"
-| | | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)" | "英语-美国-JessaRUS"
-| | | 男 | "Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)" | "英语-美国-BenjaminRUS"
+| | | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)" | "en-US-JessaRUS"
+| | | 男 | "Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)" | "en-US-BenjaminRUS"
 | | | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)" | "en-US-Jessa24kRUS"
 | | | 男 | "Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)" | "英语-美国-Guy24kRUS"
 es-ES | 西班牙语(西班牙) |女 | "Microsoft Server Speech Text to Speech Voice (es-ES, Laura, Apollo)" | "es-ES-Laura-Apollo"
