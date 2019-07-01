@@ -1,162 +1,228 @@
 ---
 title: Application Insights，Node.js
 titleSuffix: Azure Cognitive Services
-description: 使用 Node.js 生成与 LUIS 应用程序和 Application Insights 集成的机器人。
+description: 本教程将机器人和语言理解信息添加到 Application Insights 遥测数据存储。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 06/11/2019
+ms.topic: tutorial
+ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5a5a7ee12d9e80c81329c825f4e795ccd8063526
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 5459fb5d8304a35b3f009354c446514a2831c513
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068527"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155277"
 ---
-# <a name="add-luis-results-to-application-insights-with-a-bot-in-nodejs"></a>将 LUIS 结果添加到包含 Node.js 中智能机器人应用程序的 Application Insights
-本教程将 LUIS 请求和响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 该数据后，您可以查询它与 Kusto 语言或 Power BI 进行分析，则聚合，和报告目的和实时查询文本的实体。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
-
-使用 Bot Framework 生成机器人 4.x 和 Azure Web app 机器人。 一个[Bot Framework 4.x LUIS 教程](luis-nodejs-tutorial-bf-v4.md)也是可用。
+# <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>将 LUIS 结果从以 Node.js 编写的机器人添加到 Application Insights
+本教程将机器人和语言理解信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 有了该数据后，可使用 Kusto 语言或 Power BI 对其进行查询，以便对话语的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 将 Application Insights 库添加到 Web 应用机器人
-> * 捕获 LUIS 查询结果并发送给 Application Insights
-> * 查询 Application Insights，获取首要意向、分数和表述
+> * 在 Application Insights 中捕获机器人和语言理解数据
+> * 查询 Application Insights 中的语言理解数据
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 从 LUIS web app 机器人 **[教程](luis-nodejs-tutorial-bf-v4.md)** 使用 Application Insights 开启。 
+* 一个 Azure 机器人服务机器人，在创建时已启用 Application Insights。
+* 从上一机器人 **[教程](luis-nodejs-tutorial-bf-v4.md)** 中下载的机器人代码。 
+* [机器人模拟器](https://aka.ms/abs/build/emulatordownload)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
 
-> [!Tip]
-> 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
+本教程中的所有代码都可在 [Azure-Samples 语言理解 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/v4/luis-nodejs-bot-johnsmith-src-telemetry)中找到。 
 
-本教程中的所有代码均可在 [Azure 示例 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)中找到，并且与本教程关联的每行均注释有 `//APPINSIGHT:`。 
+## <a name="add-application-insights-to-web-app-bot-project"></a>将 Application Insights 添加到 Web 应用机器人项目
+目前，此 Web 应用机器人中使用的 Application Insights 服务收集机器人的常规状态遥测数据。 它不收集 LUIS 信息。 
 
-## <a name="web-app-bot-with-luis"></a>Web 应用机器人与 LUIS
-本教程假定你有如下代码或已完成[其他教程](luis-nodejs-tutorial-bf-v4.md)： 
+若要捕获 LUIS 信息，需在 Web 应用机器人中安装并配置 **[Application Insights](https://www.npmjs.com/package/applicationinsights)** NPM 包。  
 
-   [!code-javascript[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/nodejs/app.js "Web app bot with LUIS")]
-
-## <a name="add-application-insights-library-to-web-app-bot"></a>将 Application Insights 库添加到 Web 应用机器人
-目前，此 Web 应用机器人中使用的 Application Insights 服务收集机器人的常规状态遥测数据。 它不会收集在检查和修复意向与实体时所需的 LUIS 请求和响应信息。 
-
-若要捕获 LUIS 请求和响应，需在 Web 应用机器人中安装 **[Application Insights](https://www.npmjs.com/package/applicationinsights)** NPM 包，并在 **app.js** 文件中配置该包。 然后，意向对话处理程序需将 LUIS 请求和响应信息发送到 Application Insights。 
-
-1. 在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。   
-
-    ![在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。](./media/luis-tutorial-appinsights/build.png)
-
-2. 此时会打开一个包含“应用服务编辑器”的新浏览器标签页。 在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。  
-
-    ![在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。](./media/luis-tutorial-appinsights/kudu-console.png)
-
-3. 在控制台中输入以下命令，安装 Application Insights 和 Underscore 包：
+1. 在 VSCode 集成终端的机器人项目的根目录中，使用所示命令添加以下 NPM 包： 
 
     ```console
-    cd site\wwwroot && npm install applicationinsights && npm install underscore
+    npm install applicationinsights && npm install underscore
     ```
-
-    ![使用 npm 命令安装 Application Insights 和 Underscore 包](./media/luis-tutorial-appinsights/npm-install.png)
-
-    等待这些包安装完成：
-
-    ```console
-    luisbot@1.0.0 D:\home\site\wwwroot
-    `-- applicationinsights@1.0.1 
-      +-- diagnostic-channel@0.2.0 
-      +-- diagnostic-channel-publishers@0.2.1 
-      `-- zone.js@0.7.6 
     
-    npm WARN luisbot@1.0.0 No repository field.
-    luisbot@1.0.0 D:\home\site\wwwroot
-    +-- botbuilder-azure@3.0.4
-    | `-- azure-storage@1.4.0
-    |   `-- underscore@1.4.4 
-    `-- underscore@1.8.3 
-    ```
+    **underscore** 包用于平展 LUIS JSON 结构，使之在 Application Insights 中更加易于查看和使用。
+    
 
-    Kudu 控制台浏览器标签页中的操作到此完成。
 
 ## <a name="capture-and-send-luis-query-results-to-application-insights"></a>捕获 LUIS 查询结果并发送给 Application Insights
-1. 在“应用服务编辑器”浏览器选项卡中，打开 **app.js** 文件。
 
-2. 在现有的 `requires` 行下添加以下 NPM 库：
+1. 在 VSCode 中创建新文件 **appInsightsLog.js** 并添加以下代码：
 
-   [!code-javascript[Add NPM packages to app.js](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=12-16 "Add NPM packages to app.js")]
+    ```javascript
+    const appInsights = require('applicationinsights');
+    const _ = require("underscore");
+    
+    // Log LUIS results to Application Insights
+    // must flatten as name/value pairs
+    var appInsightsLog = (botContext,luisResponse) => {
 
-3. 创建 Application Insights 对象，并使用 Web 应用机器人应用程序设置 **BotDevInsightsKey**： 
+        appInsights.setup(process.env.MicrosoftApplicationInsightsInstrumentationKey).start();
+        const appInsightsClient = appInsights.defaultClient;
 
-   [!code-javascript[Create the Application Insights object](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=68-80 "Create the Application Insights object")]
-
-4. 添加 **appInsightsLog** 函数：
-
-   [!code-javascript[Add the appInsightsLog function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=82-109 "Add the appInsightsLog function")]
-
-    该函数的最后一行用于将数据添加到 Application Insights。 事件的名称为 **LUIS-results**，这是不同于 Web 应用机器人收集的任何其他遥测数据的唯一名称。 
-
-5. 使用 **appInsightsLog** 函数。 在每个意向对话框中添加该函数：
-
-   [!code-javascript[Use the appInsightsLog function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=117-118 "Use the appInsightsLog function")]
-
-6. 要测试 Web 应用机器人，请使用“通过网上聊天执行测试”功能  。 由于所有工作在 Application Insights 中发生，而不是在机器人响应中发生，因此，不会出现任何差异。
-
-## <a name="view-luis-entries-in-application-insights"></a>在 Application Insights 中查看 LUIS 条目
-打开 Application Insights 以查看 LUIS 条目。 
-
-1. 在门户中，选择“所有资源”，然后按 Web 应用机器人的名称进行筛选  。 单击“Application Insights”类型的资源  。 Application Insights 的图标是灯泡。 
-
-    ![适用于在 Azure 门户中的 app insights 搜索](./media/luis-tutorial-appinsights/search-for-app-insights.png)
-
-2. 资源打开后，单击最右侧面板中的“搜索”图标（放大镜）  。 右侧将显示一个新面板。 该面板可能需要一秒钟才能显示出来，具体取决于找到的遥测数据量。 搜索 `LUIS-results` 并按 Enter 键。 该列表已缩减为仅限本教程添加的 LUIS 查询结果。
-
-    ![筛选依赖项](./media/luis-tutorial-appinsights/app-insights-filter.png)
-
-3. 选择最上面的条目。 一个新窗口将显示更详细的数据，包括在最右侧显示 LUIS 查询的自定义数据。 该数据包括首要意向及其评分。
-
-    ![依赖项详细信息](./media/luis-tutorial-appinsights/app-insights-detail.png)
-
-    完成后，选择最右上角的“X”，返回依赖项列表  。 
-
-
-> [!Tip]
-> 如果想要保存依赖项列表并稍后回查看，请依次单击“...更多”>“保存收藏”   。
-
-## <a name="query-application-insights-for-intent-score-and-utterance"></a>查询 Application Insights，获取意向、评分和陈述
-Application Insights 为您提供强大功能来查询数据[Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics)语言，以及导出到[Power BI](https://powerbi.microsoft.com)。 
-
-1. 在筛选框上方，单击依赖项列表顶部的“分析”  。 
-
-    ![“分析”按钮](./media/luis-tutorial-appinsights/analytics-button.png)
-
-2. 此时将打开一个新窗口，窗口顶部为一个查询窗口，查询窗口下方为一个数据表窗口。 如果之前使用过数据库，则会熟悉这种布局。 该查询包含过去 24 小时内以名称 `LUIS-results` 开头的所有项。 **CustomDimensions** 列以名称/值对的形式显示 LUIS 查询结果。
-
-    ![运行 Analytics 查询窗口](./media/luis-tutorial-appinsights/analytics-query-window.png)
-
-3. 若要拉取首要意向、评分和陈述，请在查询窗口的最后一行上方添加以下内容：
-
-    ```kusto
-    | extend topIntent = tostring(customDimensions.LUIS_intent_intent)
-    | extend score = todouble(customDimensions.LUIS_intent_score)
-    | extend utterance = tostring(customDimensions.LUIS_text)
+        // put bot context and LUIS results into single object
+        var data = Object.assign({}, {'botContext': botContext._activity}, {'luisResponse': luisResponse});
+    
+        // Flatten data into name/value pairs
+        flatten = (x, result, prefix) => {
+            if(_.isObject(x)) {
+                _.each(x, (v, k) => {
+                    flatten(v, result, prefix ? prefix + '_' + k : k)
+                })
+            } else {
+                result["LUIS_" + prefix] = x
+            }
+            return result;
+        }
+    
+        // call fn to flatten data
+        var flattenedData = flatten(data, {});
+    
+        // ApplicationInsights Trace 
+        console.log(JSON.stringify(flattenedData));
+    
+        // send data to Application Insights
+        appInsightsClient.trackTrace({message: "LUIS", severity: appInsights.Contracts.SeverityLevel.Information, properties: flattenedData});
+    }
+    
+    module.exports.appInsightsLog = appInsightsLog;
     ```
 
-4. 运行该查询。 滚动到数据表的最右侧。 此处显示新列“首要意向”、“评分”和“陈述”。 单击“首要意向”列进行排序。
+    此文件获取机器人上下文和 LUIS 响应，将两个对象平展后再将其插入 Application Insights 的“跟踪”事件中。  事件的名称为 **LUIS**。 
 
-    ![Analytics 首要意向](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
+1. 打开 **dialogs** 文件夹，然后打开 **luisHelper.js** 文件。 包括新的作为必需文件的 **appInsightsLog.js**，并捕获机器人上下文和 LUIS 响应。 此文件的完整代码如下： 
 
+    ```javascript
+    // Copyright (c) Microsoft Corporation. All rights reserved.
+    // Licensed under the MIT License.
+    
+    const { LuisRecognizer } = require('botbuilder-ai');
+    const { appInsightsLog } = require('../appInsightsLog');
+    
+    class LuisHelper {
+        /**
+         * Returns an object with preformatted LUIS results for the bot's dialogs to consume.
+         * @param {*} logger
+         * @param {TurnContext} context
+         */
+        static async executeLuisQuery(logger, context) {
+            const bookingDetails = {};
+    
+            try {
+                const recognizer = new LuisRecognizer({
+                    applicationId: process.env.LuisAppId,
+                    endpointKey: process.env.LuisAPIKey,
+                    endpoint: `https://${ process.env.LuisAPIHostName }`
+                }, {}, true);
+    
+                const recognizerResult = await recognizer.recognize(context);
+    
+                // APPINSIGHT: Log results to Application Insights
+                appInsightsLog(context,recognizerResult);
+    
+    
+                const intent = LuisRecognizer.topIntent(recognizerResult);
+    
+                bookingDetails.intent = intent;
+    
+                if (intent === 'Book_flight') {
+                    // We need to get the result from the LUIS JSON which at every level returns an array
+    
+                    bookingDetails.destination = LuisHelper.parseCompositeEntity(recognizerResult, 'To', 'Airport');
+                    bookingDetails.origin = LuisHelper.parseCompositeEntity(recognizerResult, 'From', 'Airport');
+    
+                    // This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop the Time part.
+                    // TIMEX is a format that represents DateTime expressions that include some ambiguity. e.g. missing a Year.
+                    bookingDetails.travelDate = LuisHelper.parseDatetimeEntity(recognizerResult);
+                }
+            } catch (err) {
+                logger.warn(`LUIS Exception: ${ err } Check your LUIS configuration`);
+            }
+            return bookingDetails;
+        }
+    
+        static parseCompositeEntity(result, compositeName, entityName) {
+            const compositeEntity = result.entities[compositeName];
+            if (!compositeEntity || !compositeEntity[0]) return undefined;
+    
+            const entity = compositeEntity[0][entityName];
+            if (!entity || !entity[0]) return undefined;
+    
+            const entityValue = entity[0][0];
+            return entityValue;
+        }
+    
+        static parseDatetimeEntity(result) {
+            const datetimeEntity = result.entities['datetime'];
+            if (!datetimeEntity || !datetimeEntity[0]) return undefined;
+    
+            const timex = datetimeEntity[0]['timex'];
+            if (!timex || !timex[0]) return undefined;
+    
+            const datetime = timex[0].split('T')[0];
+            return datetime;
+        }
+    }
+    
+    module.exports.LuisHelper = LuisHelper;
+    ```
 
-详细了解如何[Kusto 查询语言](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)或[将数据导出到 Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)。 
+## <a name="add-application-insights-instrumentation-key"></a>添加 Application Insights 检测密钥 
+
+若要将数据添加到 Application Insights，需提供检测密钥。
+
+1. 在浏览器的 [Azure 门户](https://portal.azure.com)中，找到机器人的 **Application Insights** 资源。 其名称将包含机器人名称的大部分，结尾是随机字符，例如 `luis-nodejs-bot-johnsmithxqowom`。 
+1. 在 Application Insights 资源的“概览”  页上复制“检测密钥”。 
+1. 在 VSCode 的机器人项目的根目录中打开 **.env** 文件。 此文件存储所有环境变量。  
+1. 添加新变量 `MicrosoftApplicationInsightsInstrumentationKey`，其中包含检测密钥的值。 请勿将值置于引号中。 
+
+## <a name="start-the-bot"></a>启动机器人
+
+1. 从 VSCode 集成终端启动机器人：
+    
+    ```console
+    npm start
+    ```
+
+1. 启动机器人模拟器并打开机器人。 此[步骤](luis-nodejs-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot)在上一教程中提供。
+
+1. 提问机器人一个问题。 此[步骤](luis-nodejs-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent)在上一教程中提供。
+
+## <a name="view-luis-entries-in-application-insights"></a>在 Application Insights 中查看 LUIS 条目
+
+打开 Application Insights 以查看 LUIS 条目。 数据显示在 Application Insights 中可能需要数分钟。
+
+1. 在 [Azure 门户](https://portal.azure.com)中，打开机器人的 Application Insights 资源。 
+1. 当资源打开以后，选择“搜索”，搜索过去 **30 分钟**内事件类型为“跟踪”的所有数据。   选择名为 **LUIS** 的跟踪。 
+1. 机器人和 LUIS 信息在“自定义属性”下提供。  
+
+    ![查看 Application Insights 中存储的 LUIS 自定义属性](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-nodejs.png)
+
+## <a name="query-application-insights-for-intent-score-and-utterance"></a>查询 Application Insights，获取意向、评分和陈述
+Application Insights 支持使用 [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) 语言来查询数据并将其导出到 [Power BI](https://powerbi.microsoft.com)。 
+
+1. 选择“Log Analytics”。  此时将打开一个新窗口，窗口顶部为一个查询窗口，查询窗口下方为一个数据表窗口。 如果之前使用过数据库，则会熟悉这种布局。 此查询代表以前筛选的数据。 **CustomDimensions** 列包含机器人和 LUIS 信息。
+1. 若要拉取首要意向、评分和话语，请在查询窗口的最后一行（`|top...` 行）上方添加以下内容：
+
+    ```kusto
+    | extend topIntent = tostring(customDimensions.LUIS_luisResponse_luisResult_topScoringIntent_intent)
+    | extend score = todouble(customDimensions.LUIS_luisResponse_luisResult_topScoringIntent_score)
+    | extend utterance = tostring(customDimensions.LUIS_luisResponse_text)
+    ```
+
+1. 运行该查询。 此处显示新列“首要意向”、“评分”和“陈述”。 选择“首要意向”列进行排序。
+
+详细了解 [Kusto 查询语言](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)或[将数据导出到 Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)。 
 
 ## <a name="next-steps"></a>后续步骤
 
-你可能还希望向 Application Insights 数据中添加其他信息，包括应用 ID、版本 ID、上次模型更改日期、上次训练日期和上次发布日期。 可从终结点 URL（应用 ID 和版本 ID ）或[创作 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) 调用中检索这些值，然后在 Web 应用机器人设置中对值进行设置并从该位置拉取值。  
+你可能还希望向 Application Insights 数据中添加其他信息，包括应用 ID、版本 ID、上次模型更改日期、上次训练日期和上次发布日期。 可从终结点 URL（应用 ID 和版本 ID ）或创作 API 调用中检索这些值，然后在 Web 应用机器人设置中对值进行设置并从该位置拉取值。  
 
 如果对多个 LUIS 应用使用同一个终结点订阅，则还应包含订阅 ID 和一个声明此为共享密钥的属性。 
 

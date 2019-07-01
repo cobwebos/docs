@@ -1,249 +1,193 @@
 ---
-title: 使用 C# 的应用程序见解
+title: Application Insights，C#
 titleSuffix: Azure Cognitive Services
-description: 使用 C# 构建一个集成有 LUIS 应用程序和 Application Insights 的机器人。
+description: 本教程将机器人和语言理解信息添加到 Application Insights 遥测数据存储。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 06/11/2019
+ms.topic: tutorial
+ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: 6dbaa24df8b2917dd3f68d3851ca4662554ad00a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: fa7147dd1b5f22ead17a60042c1c35c4b770cd18
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053265"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154915"
 ---
-# <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>通过 C# 中的机器人将 LUIS 结果添加到 Application Insights
+# <a name="add-luis-results-to-application-insights-from-a-bot-in-c"></a>将 LUIS 结果从以 C# 编写的机器人添加到 Application Insights
 
-本教程介绍如何将 LUIS 响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 该数据后，您可以查询它与 Kusto 语言或 Power BI 进行分析，则聚合，和报告目的和实时查询文本的实体。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
-
-使用 Bot Framework 生成机器人 4.x 和 Azure Web app 机器人。 一个[Bot Framework 4.x LUIS 教程](luis-csharp-tutorial-bf-v4.md)也是可用。
+本教程将机器人和语言理解信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 有了该数据后，可使用 Kusto 语言或 Power BI 对其进行查询，以便对话语的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 将 Application Insights 添加到 Web 应用机器人
-> * 捕获 LUIS 查询结果并发送给 Application Insights
-> * 查询 Application Insights，获取首要意向、分数和表述
-
-## <a name="prerequisites"></a>必备组件
-
-* 从 LUIS web app 机器人**tutorial](luis-csharp-tutorial-bf-v4.md)** 使用 Application Insights 开启。
-* 计算机上已本地安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
-
-> [!Tip]
-> 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
-
-本教程中的所有代码均可在 [Azure 示例 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp)中找到，并且与本教程关联的每行均注释有 `//LUIS Tutorial:`。
-
-## <a name="review-luis-web-app-bot"></a>检查 LUIS Web 应用机器人
-
-本教程假定你有如下代码或已完成[其他教程](luis-csharp-tutorial-bf-v4.md)：
-
-   [!code-csharp[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs "Web app bot with LUIS")]
-
-## <a name="application-insights-in-web-app-bot"></a>Web 应用机器人中的 Application Insights
-
-目前，Application Insights 服务被添加到此 Web 应用机器人服务中，可收集该机器人的常规状态遥测数据。 Application Insights 不收集 LUIS 响应信息。 若要分析和改进 LUIS，则需要 LUIS 响应信息。  
-
-若要捕获 LUIS 响应，需在 Web 应用机器人中安装并针对该项目配置 [Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/)  。
-
-## <a name="download-web-app-bot"></a>下载 Web 应用机器人
-
-使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 为 Web 应用机器人添加和配置 Application Insights。 若要在 Visual Studio 中使用 Web 应用机器人，请下载 Web 应用机器人代码。
-
-1. 在 Azure 门户中，对于 Web 应用机器人，选择“生成”  。
-
-    ![在门户中选择“生成”](./media/luis-tutorial-bot-csharp-appinsights/download-build-menu.png)
-
-2. 选择“下载 zip 文件”并等待，直到文件就绪  。
-
-    ![下载 zip 文件](./media/luis-tutorial-bot-csharp-appinsights/download-link.png)
-
-3. 在弹出窗口中选择“下载 zip 文件”  。 请记住文件在计算机上的位置，下一部分中需要使用该文件。
-
-    ![“下载 zip 文件”弹出窗口](./media/luis-tutorial-bot-csharp-appinsights/download-popup.png)
-
-## <a name="open-solution-in-visual-studio-2017"></a>在 Visual Studio 2017 中打开解决方案
-
-1. 将文件解压缩到文件夹中。
-
-2. 打开 Visual Studio 2017，然后打开解决方案文件 `Microsoft.Bot.Sample.LuisBot.sln`。 如果弹出安全警告，请选择“确定”。
-
-    ![在 Visual Studio 2017 中打开解决方案](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-security-warning.png)
-
-3. Visual Studio 需要向该解决方案添加依赖项。 在“解决方案资源管理器”中，右键单击“引用”，并选择“管理 NuGet 包...”    。
-
-    ![管理 NuGet 包](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-manage-nuget-packages.png)
-
-4. NuGet 包管理器随即显示已安装包的列表。 选择黄色栏中的“还原”  。 等待还原进程完成。
-
-    ![还原 NuGet 包](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-restore-packages.png)
-
-## <a name="add-application-insights-to-the-project"></a>将 Application Insights 添加到项目
-
-在 Visual Studio 中安装和配置 Application Insights。
-
-1. 在 Visual Studio 2017 的顶部菜单中，选择“项目”，然后选择“添加 Application Insights 遥测...”   。
-
-2. 在“Application Insights 配置”窗口中，选择“免费开始”  
-
-    ![开始配置 Application Insights](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configure-app-insights.png)
-
-3. 在 Application Insights 中注册应用。 可能需要输入 Azure 门户凭据。
-
-4. Visual Studio 会将 Application Insights 添加到项目，并在此过程中显示状态。
-
-    ![Application Insights 状态](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-adding-application-insights-to-project.png)
-
-    该进程完成后，“Application Insights 配置”将显示进度状态  。
-
-    ![Application Insights 进度状态](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configured-application-insights-to-project.png)
-
-    “启用跟踪收集”为红色，表示此功能未启用  。 本教程不使用此功能。
-
-## <a name="build-and-resolve-errors"></a>生成与解决错误
-
-1. 生成解决方案：选择“生成”菜单，然后选择“重新生成解决方案”   。 等待生成完成。
-
-2. 如果生成失败并出现 `CS0104` 错误，则需要进行修复。 在 `Controllers` 文件夹下的 `MessagesController.cs file` 中，对 Activity 类型添加 Connector 类型前缀，解决 `Activity` 类型用法不明确这一问题。 为此，请将 22 行和 36 行的 `Activity` 名称从 `Activity` 更改为 `Connector.Activity`。 再次生成解决方案。 应该不会再出现生成错误。
-
-    该文件的完整源为：
-
-    [!code-csharp[MessagesController.cs file](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/MessagesController.cs "MessagesController.cs file")]
-
-## <a name="publish-project-to-azure"></a>将项目发布到 Azure
-
-Application Insights 包现位于该项目中，并已针对 Azure 门户中的凭据进行正确配置  。 对该项目的更改需发布回 Azure。
-
-1. 在“解决方案资源管理器”中，右键单击项目名称，然后选择“发布”   。
-
-    ![将项目发布到门户](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish.png)
-
-2. 在“发布”窗口中，选择“新建配置文件”   。
-
-    ![在发布过程中，创建新的配置文件。](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-1.png)
-
-3. 选择“导入配置文件”，然后选择“确定”   。
-
-    ![在发布过程中，导入配置文件](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
-
-4. 在“导入发布设置文件”窗口，依次导航到你的项目文件夹和 `PostDeployScripts` 文件夹，选择以 `.PublishSettings` 结尾的文件，然后选择 `Open`  。 此项目的发布现已配置完成。
-
-5. 选择“发布”按钮，将本地源代码发布到机器人服务  。 “输出”窗口会显示状态  。 本教程的其余部分在 Azure 门户中完成。 关闭 Visual Studio 2017。
-
-## <a name="open-three-browser-tabs"></a>打开三个浏览器选项卡
-
-在 Azure 门户中，找到 Web 应用机器人并打开。 以下步骤使用 Web 应用机器人的三个不同视图。 在浏览器中打开三个单独的选项卡可能更易于操作：
-  
->  * 通过网页聊天执行测试
->  * 生成/打开联机代码编辑器 -> 应用服务编辑器
->  * 应用服务编辑器/打开 Kudu 控制台 -> 诊断控制台
-
-## <a name="modify-basicluisdialogcs-code"></a>修改 BasicLuisDialog.cs 代码
-
-1. 在“应用服务编辑器”浏览器选项卡中，打开 `BasicLuisDialog.cs` 文件  。
-
-2. 在现有 `using` 行下添加以下 NuGet 依赖项：
-
-   [!code-csharp[Add using statement](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/BasicLuisDialog.cs?range=11-12 "Add using statement")]
-
-3. 添加 `LogToApplicationInsights` 函数：
-
-   [!code-csharp[Add the LogToApplicationInsights function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/BasicLuisDialog.cs?range=61-92 "Add the LogToApplicationInsights function")]
-
-    Application Insights 检测密钥已在 Web 应用机器人的应用程序设置（名为 `BotDevInsightsKey`）中。
-
-    函数的最后一行会将数据添加到 Application Insights。 此跟踪的名称是 `LUIS`，该名称具有唯一性，与该 Web 应用机器人收集到的任何其他遥测数据均不同。 此外，所有属性具有前缀 `LUIS_`，以便你可以看出本教程在 Web 应用机器人给定信息的基础上添加了哪些数据。
-
-4. 在 `ShowLuisResult` 函数之上调用 `LogToApplicationInsights` 函数：
-
-   [!code-csharp[Use the LogToApplicationInsights function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/BasicLuisDialog.cs?range=114-115 "Use the LogToApplicationInsights function")]
-
-## <a name="build-web-app-bot"></a>生成 Web 应用机器人
-
-1. 可通过以下两种方法生成 Web 应用机器人。 第一种方法：右键单击“应用服务编辑器”中的 `build.cmd`，然后选择“从控制台运行”   。 控制台的输出将显示 `Finished successfully.`，表示已完成
-
-2. 如果未成功完成，则需要打开控制台，导航到此脚本，然后按照以下步骤运行脚本。 在“应用服务编辑器”顶部的蓝色栏中，选择你的机器人的名称，然后在下拉列表中选择“打开 Kudu 控制台”   。
-
-    ![打开 Kudu 控制台](./media/luis-tutorial-bot-csharp-appinsights/open-kudu-console.png)
-
-3. 在控制台窗口中，输入以下命令：
-
-    ```console
-    cd site\wwwroot && build.cmd
+> * 在 Application Insights 中捕获机器人和语言理解数据
+> * 查询 Application Insights 中的语言理解数据
+
+## <a name="prerequisites"></a>先决条件
+
+* 一个 Azure 机器人服务机器人，在创建时已启用 Application Insights。
+* 从上一机器人 **[教程](luis-csharp-tutorial-bf-v4.md)** 中下载的机器人代码。 
+* [机器人模拟器](https://aka.ms/abs/build/emulatordownload)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+
+本教程中的所有代码都可在 [Azure-Samples 语言理解 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/v4/luis-csharp-bot-johnsmith-src-telemetry)中找到。 
+
+## <a name="add-application-insights-to-web-app-bot-project"></a>将 Application Insights 添加到 Web 应用机器人项目
+
+目前，此 Web 应用机器人中使用的 Application Insights 服务收集机器人的常规状态遥测数据。 它不收集 LUIS 信息。 
+
+若要捕获 LUIS 信息，需在 Web 应用机器人中安装并配置 **[Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/)** NuGet 包。  
+
+1. 将依赖项从 Visual Studio 添加到解决方案。 在“解决方案资源管理器”中，右键单击项目名称，然后选择“管理 NuGet 包...”   。NuGet 包管理器随即显示已安装包的列表。 
+1. 选择“浏览”，然后搜索 **Microsoft.ApplicationInsights**。 
+1. 安装此包。 
+
+## <a name="capture-and-send-luis-query-results-to-application-insights"></a>捕获 LUIS 查询结果并发送给 Application Insights
+
+1. 打开 `LuisHelper.cs` 文件并将其内容替换为以下代码。 **LogToApplicationInsights** 方法捕获机器人和 LUIS 数据并将其作为名为 `LUIS` 的跟踪事件发送到 Application Insights。
+
+    ```csharp
+    // Copyright (c) Microsoft Corporation. All rights reserved.
+    // Licensed under the MIT License.
+    
+    using System;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Builder.AI.Luis;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.ApplicationInsights;
+    using System.Collections.Generic;
+    
+    namespace Microsoft.BotBuilderSamples
+    {
+        public static class LuisHelper
+        {
+            public static async Task<BookingDetails> ExecuteLuisQuery(IConfiguration configuration, ILogger logger, ITurnContext turnContext, CancellationToken cancellationToken)
+            {
+                var bookingDetails = new BookingDetails();
+    
+                try
+                {
+                    // Create the LUIS settings from configuration.
+                    var luisApplication = new LuisApplication(
+                        configuration["LuisAppId"],
+                        configuration["LuisAPIKey"],
+                        "https://" + configuration["LuisAPIHostName"]
+                    );
+    
+                    var recognizer = new LuisRecognizer(luisApplication);
+    
+                    // The actual call to LUIS
+                    var recognizerResult = await recognizer.RecognizeAsync(turnContext, cancellationToken);
+    
+                    LuisHelper.LogToApplicationInsights(configuration, turnContext, recognizerResult);
+    
+                    var (intent, score) = recognizerResult.GetTopScoringIntent();
+                    if (intent == "Book_flight")
+                    {
+                        // We need to get the result from the LUIS JSON which at every level returns an array.
+                        bookingDetails.Destination = recognizerResult.Entities["To"]?.FirstOrDefault()?["Airport"]?.FirstOrDefault()?.FirstOrDefault()?.ToString();
+                        bookingDetails.Origin = recognizerResult.Entities["From"]?.FirstOrDefault()?["Airport"]?.FirstOrDefault()?.FirstOrDefault()?.ToString();
+    
+                        // This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop the Time part.
+                        // TIMEX is a format that represents DateTime expressions that include some ambiguity. e.g. missing a Year.
+                        bookingDetails.TravelDate = recognizerResult.Entities["datetime"]?.FirstOrDefault()?["timex"]?.FirstOrDefault()?.ToString().Split('T')[0];
+                    }
+                }
+                catch (Exception e)
+                {
+                    logger.LogWarning($"LUIS Exception: {e.Message} Check your LUIS configuration.");
+                }
+    
+                return bookingDetails;
+            }
+            public static void LogToApplicationInsights(IConfiguration configuration, ITurnContext turnContext, RecognizerResult result)
+            {
+                // Create Application Insights object
+                TelemetryClient telemetry = new TelemetryClient();
+    
+                // Set Application Insights Instrumentation Key from App Settings
+                telemetry.InstrumentationKey = configuration["BotDevAppInsightsKey"];
+    
+                // Collect information to send to Application Insights
+                Dictionary<string, string> logProperties = new Dictionary<string, string>();
+    
+                logProperties.Add("BotConversation", turnContext.Activity.Conversation.Name);
+                logProperties.Add("Bot_userId", turnContext.Activity.Conversation.Id);
+    
+                logProperties.Add("LUIS_query", result.Text);
+                logProperties.Add("LUIS_topScoringIntent_Name", result.GetTopScoringIntent().intent);
+                logProperties.Add("LUIS_topScoringIntentScore", result.GetTopScoringIntent().score.ToString());
+    
+    
+                // Add entities to collected information
+                int i = 1;
+                if (result.Entities.Count > 0)
+                {
+                    foreach (var item in result.Entities)
+                    {
+                        logProperties.Add("LUIS_entities_" + i++ + "_" + item.Key, item.Value.ToString());
+                    }
+                }
+    
+                // Send to Application Insights
+                telemetry.TrackTrace("LUIS", ApplicationInsights.DataContracts.SeverityLevel.Information, logProperties);
+    
+            }
+        }
+    }
     ```
 
-    等待生成完成并出现 `Finished successfully.`
+## <a name="add-application-insights-instrumentation-key"></a>添加 Application Insights 检测密钥 
 
-## <a name="test-the-web-app-bot"></a>测试 Web 应用机器人
+若要将数据添加到 Application Insights，需提供检测密钥。
 
-1. 要测试 Web 应用机器人，请在门户中打开“通过网页聊天执行测试”功能  。
+1. 在浏览器的 [Azure 门户](https://portal.azure.com)中，找到机器人的 **Application Insights** 资源。 其名称将包含机器人名称的大部分，结尾是随机字符，例如 `luis-csharp-bot-johnsmithxqowom`。 
+1. 在 Application Insights 资源的“概览”  页上复制“检测密钥”。 
+1. 在 Visual Studio 的机器人项目的根目录中打开 **appsettings.json** 文件。 此文件存储所有环境变量。
+1. 添加新变量 `BotDevAppInsightsKey`，其中包含检测密钥的值。 值应当带引号。 
 
-2. 输入短语 `Coffee bar on please`。  
+## <a name="build-and-start-the-bot"></a>构建并启动机器人
 
-    ![通过聊天测试 Web 应用机器人](./media/luis-tutorial-bot-csharp-appinsights/test-in-web-chat.png)
+1. 在 Visual Studio 中构建并运行机器人。 
+1. 启动机器人模拟器并打开机器人。 此[步骤](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot)在上一教程中提供。
 
-3. 聊天机器人的响应应该没有区别。 此更改会将数据发送到 Application Insights，而不是包含在机器人响应中。 再输入几个表述，以便略微增加 Application Insights 中的数据：
-
-|陈述|
-|--|
-|请送一份披萨|
-|关闭所有照明设备|
-|打开大厅照明设备|
-
+1. 提问机器人一个问题。 此[步骤](luis-csharp-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent)在上一教程中提供。
 
 ## <a name="view-luis-entries-in-application-insights"></a>在 Application Insights 中查看 LUIS 条目
 
-打开 Application Insights 以查看 LUIS 条目。
+打开 Application Insights 以查看 LUIS 条目。 数据显示在 Application Insights 中可能需要数分钟。
 
-1. 在门户中，选择“所有资源”，然后按 Web 应用机器人的名称进行筛选  。 单击“Application Insights”类型的资源  。 Application Insights 的图标是灯泡。
+1. 在 [Azure 门户](https://portal.azure.com)中，打开机器人的 Application Insights 资源。 
+1. 当资源打开以后，选择“搜索”，搜索过去 **30 分钟**内事件类型为“跟踪”的所有数据。   选择名为 **LUIS** 的跟踪。 
+1. 机器人和 LUIS 信息在“自定义属性”下提供。  
 
-    ![适用于在 Azure 门户中的 app insights 搜索](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
-
-2. 资源打开后，单击最右侧面板中的“搜索”图标（放大镜）  。 右侧将显示一个新面板。 该面板可能需要一秒钟才能显示，具体取决于找到的遥测数据量。 搜索 `LUIS`。 该列表已缩减为仅限本教程添加的 LUIS 查询结果。
-
-    ![搜索跟踪](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-trace.png)
-
-3. 选择最上面的条目。 一个新窗口将显示更详细的数据，包括在最右侧显示 LUIS 查询的自定义数据。 该数据包括首要意图及其分数。
-
-    ![查看跟踪项](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-trace-item.png)
-
-    完成后，选择最右上角的“X”，返回依赖项列表  。
-
-> [!Tip]
-> 如果想要保存依赖项列表并稍后回查看，请依次单击“...更多”>“保存收藏”   。
+    ![查看 Application Insights 中存储的 LUIS 自定义属性](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-csharp.png)
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>查询 Application Insights，获取意向、评分和陈述
+Application Insights 支持使用 [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) 语言来查询数据并将其导出到 [Power BI](https://powerbi.microsoft.com)。 
 
-Application Insights 为您提供强大功能来查询数据[Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics)语言，以及导出到[Power BI](https://powerbi.microsoft.com)。
-
-1. 在筛选框上方，单击依赖项列表顶部的“分析”  。
-
-    ![“分析”按钮](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-analytics-button.png)
-
-2. 此时将打开一个新窗口，窗口顶部为一个查询窗口，查询窗口下方为一个数据表窗口。 如果之前使用过数据库，则会熟悉这种布局。 该查询包含过去 24 小时内以名称 `LUIS` 开头的所有项。 CustomDimensions 列包含以名称/值对形式显示的 LUIS 查询结果  。
-
-    ![默认分析报表](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-1.png)
-
-3. 若要拉取首要意向、评分和陈述，请在查询窗口的最后一行上方添加以下内容：
+1. 选择“Log Analytics”。  此时将打开一个新窗口，窗口顶部为一个查询窗口，查询窗口下方为一个数据表窗口。 如果之前使用过数据库，则会熟悉这种布局。 此查询代表以前筛选的数据。 **CustomDimensions** 列包含机器人和 LUIS 信息。
+1. 若要拉取首要意向、评分和话语，请在查询窗口的最后一行（`|top...` 行）上方添加以下内容：
 
     ```kusto
-    | extend topIntent = tostring(customDimensions.LUIS_topScoringIntent)
+    | extend topIntent = tostring(customDimensions.LUIS_topScoringIntent_Name)
     | extend score = todouble(customDimensions.LUIS_topScoringIntentScore)
     | extend utterance = tostring(customDimensions.LUIS_query)
     ```
 
-4. 运行该查询。 滚动到数据表的最右侧。 此处显示新列“首要意向”、“评分”和“陈述”。 单击“首要意向”列进行排序。
+1. 运行该查询。 此处显示新列“首要意向”、“评分”和“陈述”。 选择“首要意向”列进行排序。
 
-    ![自定义分析报表](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
+详细了解 [Kusto 查询语言](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)或[将数据导出到 Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)。 
 
-详细了解如何[Kusto 查询语言](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)或[将数据导出到 Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)。
 
 ## <a name="learn-more-about-bot-framework"></a>深入了解 Bot Framework
 
@@ -251,7 +195,7 @@ Application Insights 为您提供强大功能来查询数据[Kusto](https://docs
 
 ## <a name="next-steps"></a>后续步骤
 
-你可能还希望向 Application Insights 数据中添加其他信息，包括应用 ID、版本 ID、上次模型更改日期、上次训练日期和上次发布日期。 可从终结点 URL（应用 ID 和版本 ID ）或[创作 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) 调用中检索这些值，然后在 Web 应用机器人设置中对值进行设置并从该位置拉取值。  
+你可能还希望向 Application Insights 数据中添加其他信息，包括应用 ID、版本 ID、上次模型更改日期、上次训练日期和上次发布日期。 可从终结点 URL（应用 ID 和版本 ID ）或创作 API 调用中检索这些值，然后在 Web 应用机器人设置中对值进行设置并从该位置拉取值。  
 
 如果对多个 LUIS 应用使用同一个终结点订阅，则还应包含订阅 ID 和一个声明此为共享密钥的属性。
 

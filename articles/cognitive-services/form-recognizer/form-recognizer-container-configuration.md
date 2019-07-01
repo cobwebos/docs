@@ -2,40 +2,38 @@
 title: 配置容器 - 表单识别器
 titleSuffix: Azure Cognitive Services
 description: 了解如何将表单识别器容器配置为分析表单和表数据。
-author: PatrickFarley
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
-ms.topic: overview
-ms.date: 05/31/2019
-ms.author: pafarley
-ms.openlocfilehash: 28acc2d1eafacb9e53fac3e3cce092738401f838
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 06/19/2019
+ms.author: dapine
+ms.openlocfilehash: 7e8e7a13cd02a6f3b109a84829dba2a81fd36aaa
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475384"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296238"
 ---
 # <a name="configure-form-recognizer-containers"></a>配置表单识别器容器
 
-表单识别器容器使客户能够生成经过优化的应用程序体系结构，以利用强大的云功能和边缘位置。
+可以使用 Azure 表单识别器容器构建经过优化的应用程序体系结构，以利用强大的云功能和边缘位置。
 
-**表单识别器**容器运行时环境是使用 `docker run` 命令参数配置的。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。
+可以使用 `docker run` 命令参数配置表单识别器容器运行时环境。 此容器有多个必需设置和一些可选设置。 有关示例，请查看[“Docker 运行命令示例”](#example-docker-run-commands)部分。 容器专用设置是帐单设置。
 
 ## <a name="configuration-settings"></a>配置设置
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-setting) 设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](form-recognizer-container-howto.md#billing)。
+> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-setting) 设置一起使用。 必须为所有三项设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](form-recognizer-container-howto.md#billing)。
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，并且该值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的表单识别器资源的有效密钥。 
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 ApiKey 的值必须是表单识别器资源的有效密钥，该资源是在“Billing 配置设置”部分为 `Billing` 指定的。 
 
-可以在以下位置找到此设置：
-
-* Azure 门户：**表单识别器**“资源管理”部分的“密钥”下 
+可以在 Azure 门户的“表单识别器资源管理”的“密钥”下找到此设置。  
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,15 +41,13 @@ ms.locfileid: "66475384"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器的账单信息的表单识别器资源的终结点 URI。  必须为此配置设置指定值，并且该值必须是 Azure 上表单识别器资源的有效终结点 URI。  容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器账单信息的表单识别器资源的终结点 URI。  此配置设置的值必须是 Azure 上表单识别器资源的有效终结点 URI。  容器约每 10 到 15 分钟报告一次使用情况。
 
-可以在以下位置找到此设置：
-
-* Azure 门户：**表单识别器的**“概述”，带有 `Endpoint` 标签
+可以在 Azure 门户的“表单识别器概览”的“终结点”下找到此设置。  
 
 |必选| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
+|是| `Billing` | 字符串 | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -61,7 +57,7 @@ ms.locfileid: "66475384"
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Http 代理凭据设置
+## <a name="http-proxy-credentials-settings"></a>HTTP 代理凭据设置
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -72,35 +68,37 @@ ms.locfileid: "66475384"
 
 ## <a name="mount-settings"></a>装载设置
 
-使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 选项来指定输入装载或输出装载。
+使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [`docker run` 命令](https://docs.docker.com/engine/reference/commandline/run/)中指定 `--mount` 选项来指定输入装载或输出装载。
 
-表单识别器容器需要输入和输出装载。 输入装入点可以是只读的，需要使用它来访问用于训练和评分的数据。 输出装入点必须是可写的，用于存储模型和临时数据。
+表单识别器容器需要输入装载和输出装载。 输入装入点可以是只读的，需要使用它来访问用于训练和评分的数据。 输出装入点必须是可写的，用于存储模型和临时数据。
 
-主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](form-recognizer-container-howto.md#the-host-computer)的装载位置。
+主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](form-recognizer-container-howto.md#the-host-computer)的装载位置。
 
 |可选| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
-|必选| `Input` | String | 输入装入点的目标。 默认值为 `/input`。    <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
-|必选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。  <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|必选| `Input` | 字符串 | 输入装入点的目标。 默认值为 `/input`。    <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
+|必选| `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。  <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
-以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。  运行后，容器将继续运行，直到[停止](form-recognizer-container-howto.md#stop-the-container)它。
+以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。 运行后，容器将继续运行，直到[停止它](form-recognizer-container-howto.md#stop-the-container)。
 
-* **行继续符**：以下各部分中的 Docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。
-* **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
+* **行继续符**：以下各部分中的 Docker 命令使用反斜杠 (\\) 作为行继续符。 根据主机操作系统的要求替换或删除此字符。
+* **参数顺序**：除非熟悉 Docker 容器，否则不要更改参数顺序。
 
-将 {_argument_name_} 替换为为你自己的值：
+将下表中的 {_argument_name_} 替换为为你自己的值：
 
 | 占位符 | 值 |
 |-------------|-------|
-|{BILLING_KEY} | 此密钥用于启动容器，可以从 Azure 门户的表单识别器“密钥”页获取。  |
-|{BILLING_ENDPOINT_URI} | 可以从 Azure 门户的表单识别器“概述”页获取计费终结点 URI 值。|
-|{COMPUTER_VISION_API_KEY}| 可以从 Azure 门户的计算机视觉“API 密钥”页获取。|
-|{COMPUTER_VISION_ENDPOINT_URI}|计费终结点。 如果使用基于云的计算机视觉资源，则可以从 Azure 门户的计算机视觉“API 概述”页获取 URI 值。 如果使用 `cognitive-services-recognize-text` 容器，请使用在 `docker run` 命令中传递给容器的计费终结点 URL。|
+|{BILLING_KEY} | 用于启动容器的密钥。 可以从 Azure 门户的“表单识别器密钥”页获取它。  |
+|{BILLING_ENDPOINT_URI} | 可以从 Azure 门户的“表单识别器概览”页获取计费终结点 URI 值。|
+|{COMPUTER_VISION_API_KEY}| 可以从 Azure 门户的“计算机视觉 API 密钥”页获取此密钥。|
+|{COMPUTER_VISION_ENDPOINT_URI}|计费终结点。 如果使用基于云的计算机视觉资源，则可以从 Azure 门户的“计算机视觉 API 概览”页获取 URI 值。 如果使用 *cognitive-services-recognize-text* 容器，请使用在 `docker run` 命令中传递给容器的计费终结点 URL。|
 
 > [!IMPORTANT]
-> 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing-configuration-setting)。
+> 若要运行该容器，请指定 `Eula`、`Billing` 和 `ApiKey` 选项；否则，该容器不会启动。 有关详细信息，请参阅[计费](#billing-configuration-setting)。
+
+> [!NOTE] 
 > ApiKey 值是 Azure 表单识别器“资源密钥”页中提供的“密钥”  。
 
 ## <a name="form-recognizer-container-docker-examples"></a>表单识别器容器 Docker 示例
@@ -139,4 +137,4 @@ Logging:Console:LogLevel:Default=Information
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[如何安装和运行容器](form-recognizer-container-howto.md)
+* 查看[安装和运行容器](form-recognizer-container-howto.md)。
