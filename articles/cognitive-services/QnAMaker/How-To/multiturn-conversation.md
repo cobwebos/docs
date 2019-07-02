@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 1e46c935d298f2fe7ebfa4bce471288c9ab8a606
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: a126456159776254408df8325f97fcee967835e2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271953"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442725"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用后续的提示操作以创建多个打开的会话
 
@@ -229,33 +229,14 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Use the sign-in screen"
-                    },
-                    {
-                        "displayOrder": 1,
-                        "qnaId": 17,
-                        "qna": null,
-                        "displayText": "Use Windows Hello to sign in"
-                    },
-                    {
-                        "displayOrder": 2,
-                        "qnaId": 18,
-                        "qna": null,
-                        "displayText": "Sign out"
-                    },
-                    {
-                        "displayOrder": 0,
-                        "qnaId": 79,
-                        "qna": null,
-                        "displayText": "Create a Windows Account"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -269,15 +250,14 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Turn off the device"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -291,15 +271,14 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         }
     ]
 }
 ```
 
-`promptsToAdd`阵列可提供中的文本`displayText`属性和`qnaId`值以便可以显示这些问题的答案为会话中的下一步显示选择流，然后发送到 QnA Maker 以下请求中的所选值。 
+`prompts`阵列可提供中的文本`displayText`属性和`qnaId`值，因此可以显示这些问题的答案为会话中的下一步显示选择流，然后发送所选的`qnaId`回 QnA Maker 在下面的请求. 
 
 <!--
 
@@ -345,8 +324,7 @@ QnA Maker _GenerateAnswer_ JSON 响应包括中的后续提示`context`属性中
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         },
         {
@@ -360,15 +338,14 @@ QnA Maker _GenerateAnswer_ JSON 响应包括中的后续提示`context`属性中
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 4,
                         "qna": null,
                         "displayText": "Ports and connectors"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -382,8 +359,7 @@ QnA Maker _GenerateAnswer_ JSON 响应包括中的后续提示`context`属性中
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         }
     ]
@@ -407,6 +383,16 @@ QnA Maker _GenerateAnswer_ JSON 响应包括中的后续提示`context`属性中
 FIX - Need to go to parent, then answer column, then edit answer. 
 
 -->
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>创建具有多轮次提示的知识库，用于创建 API
+
+可以使用多轮提示创建知识用例[QnA Maker 创建 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)。 这在添加提示`context`属性的`prompts`数组。 
+
+
+## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>添加或删除多轮次出现提示时使用更新 API
+
+可以添加或删除多轮次提示使用[QnA Maker 更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)。  这在添加提示`context`属性的`promptsToAdd`数组和`promptsToDelete`数组。 
+
 
 ## <a name="next-steps"></a>后续步骤
 
