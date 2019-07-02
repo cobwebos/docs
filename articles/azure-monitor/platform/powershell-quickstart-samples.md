@@ -153,14 +153,14 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 | 参数 | value |
 | --- | --- |
 | 名称 |simpletestdiskwrite |
-| 此警报规则的位置 |美国东部 |
+| 此警报规则的位置 |East US |
 | resourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。有关如何检索精确指标名称的信息，请参阅 `Get-MetricDefinitions` cmdlet |
+| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
 | operator |GreaterThan |
 | 阈值（此指标的计数/秒） |1 |
 | WindowSize（hh:mm:ss 格式） |00:05:00 |
-| 聚合（在这种情况下使用平均计数的指标的统计信息） |平均值 |
+| 聚合（在这种情况下使用平均计数的指标的统计信息） |Average |
 | 自定义电子邮件（字符串数组） |'foo@example.com','bar@example.com' |
 | 向所有者、参与者和读者发送电子邮件 |-SendToServiceOwners |
 
