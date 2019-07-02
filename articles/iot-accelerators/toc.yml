@@ -137,6 +137,8 @@
           href: overview-opc-twin.md
         - name: 什么是 OPC 保管库
           href: overview-opc-vault.md
+        - name: 什么是 OPC 发布服务器
+          href: overview-opc-publisher.md
         - name: 什么是互联工厂
           href: iot-accelerators-connected-factory-features.md
     - name: 快速入门
@@ -153,8 +155,6 @@
           items:
             - name: 使用仪表板
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: 使用 OPC 发布服务器
-              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: 配置解决方案加速器
               href: iot-accelerators-connected-factory-configure.md
             - name: 自定义解决方案加速器
@@ -177,6 +177,12 @@
                   href: howto-opc-vault-deploy-existing-client-server-communication.md
             - name: 从头开始部署 OPC 保管库
               href: howto-opc-vault-deploy-scratch.md
+        - name: OPC 发布服务器
+          items:
+            - name: 配置 OPC 发布服务器
+              href: howto-opc-publisher-configure.md
+            - name: 运行 OPC 发布服务器
+              href: howto-opc-publisher-run.md
     - name: 资源
       items:
         - name: GitHub 存储库

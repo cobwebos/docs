@@ -106,6 +106,8 @@
       href: concept-accelerate-with-fpgas.md
     - name: ONNX 和 ONNX 运行时
       href: concept-onnx.md
+    - name: 数据偏差监视
+      href: concept-data-drift.md
     - name: 安全
       items:
         - name: 企业安全概述
@@ -151,12 +153,6 @@
         - name: 浏览数据
           displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
           href: how-to-explore-prepare-data.md
-        - name: 版本和管理数据定义
-          displayName: 'data, etl, dataset, data preparation, dataprep, version'
-          href: how-to-manage-dataset-definitions.md
-        - name: 创建数据快照
-          displayName: 'snapshots, profile, summary statistics, data copy'
-          href: how-to-create-dataset-snapshots.md
         - name: 从数据存储中获取数据
           displayName: blob get fileshare access storage
           href: how-to-access-data.md
@@ -178,12 +174,16 @@
           href: how-to-set-up-training-targets.md
         - name: 在训练期间创建估算器
           href: how-to-train-ml-models.md
+        - name: 使用 Scikit-learn
+          href: how-to-train-scikit-learn.md
         - name: 使用 TensorFlow
           href: how-to-train-tensorflow.md
         - name: 使用 Keras
           href: how-to-train-keras.md
         - name: 使用 PyTorch
           href: how-to-train-pytorch.md
+        - name: 使用 Chainer
+          href: how-to-train-chainer.md
         - name: 优化超参数
           displayName: parameter
           href: how-to-tune-hyperparameters.md
@@ -211,6 +211,8 @@
         - name: 自动训练预测模型
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: 查看准确性指标
+          href: how-to-understand-accuracy-metrics.md
     - name: 部署和提供模型
       items:
         - name: 在何处以及如何部署
@@ -224,6 +226,9 @@
           href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
         - name: 自定义 Docker 映像
           href: how-to-deploy-custom-docker-image.md
+        - name: 部署现有模型
+          displayName: publish existing model
+          href: how-to-deploy-existing-model.md
         - name: 故障排除
           href: how-to-troubleshoot-deployment.md
     - name: 使用 Web 服务
@@ -239,6 +244,8 @@
         - name: 收集和评估模型数据
           displayName: track production
           href: how-to-enable-data-collection.md
+        - name: 检测数据偏差
+          href: how-to-monitor-data-drift.md
         - name: 使用 Application Insights 进行监视
           href: how-to-enable-app-insights.md
     - name: 创建可重用的工作流

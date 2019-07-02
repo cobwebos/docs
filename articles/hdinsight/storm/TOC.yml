@@ -9,20 +9,20 @@
   items:
     - name: 在 HDInsight 中创建 Apache Storm 拓扑
       href: ./apache-storm-quickstart.md
-- name: 入门
+- name: 教程
   items:
-    - name: 创建 Apache Storm 群集
-      href: apache-storm-tutorial-get-started-linux.md
-    - name: 安装 HDInsight 应用
-      href: ../hdinsight-apps-install-applications.md
-    - name: 容量计划
-      href: ../hdinsight-capacity-planning.md
+    - name: 使用 Apache Storm 写入到存储
+      href: apache-storm-write-data-lake-store.md
 - name: 概念
   items:
     - name: HDInsight 上的 Apache Hadoop 组件
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+    - name: 安装 HDInsight 应用
+      href: ../hdinsight-apps-install-applications.md
+    - name: 容量计划
+      href: ../hdinsight-capacity-planning.md
 - name: 如何
   items:
     - name: 开发 Apache Storm 拓扑
@@ -47,10 +47,6 @@
           href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
         - name: '事件中心和 Apache Storm（C# 和 Java）'
           href: apache-storm-develop-csharp-event-hub-topology.md
-        - name: Azure 存储/Data Lake Storage (Java)
-          href: apache-storm-write-data-lake-store.md
-        - name: 事件中心、Apache HBase (Java)
-          href: apache-storm-sensor-data-analysis.md
     - name: 扩展群集
       items:
         - name: 使用 Bootstrap 自定义群集

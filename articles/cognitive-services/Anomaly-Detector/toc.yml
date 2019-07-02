@@ -58,6 +58,8 @@
       href: 'https://aka.ms/adpricing'
     - name: 区域可用性
       href: 'https://aka.ms/adregion'
+    - name: 用户生成的内容
+      href: user-generated-content.md
     - name: 加入 Microsoft Teams 中的异常检测器顾问组
       href: 'https://aka.ms/adadvisorsjoin'
     - name: 参考解决方案体系结构

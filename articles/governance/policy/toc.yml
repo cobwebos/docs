@@ -52,7 +52,7 @@
             - name: 需要标记匹配模式
               displayName: 'deny, all'
               href: samples/enforce-tag-match-pattern.md
-        - name: 标记
+        - name: Tags
           items:
             - name: 应用标记及其默认值
               displayName: 'append, builtin, concat'
@@ -260,6 +260,9 @@
     - name: 了解 Policy 效果
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: 适用于 Kubernetes 的 Azure Policy
+      displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
+      href: ./concepts/rego-for-aks.md
     - name: 使用来宾配置审核 VM
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

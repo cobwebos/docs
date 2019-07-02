@@ -26,6 +26,10 @@
       href: oracle-backup-recovery.md
     - name: Oracle 灾难恢复选项
       href: oracle-disaster-recovery.md
+- name: 操作指南
+  items:
+    - name: 将 Azure 和 OCI 互连 - 预览版
+      href: configure-azure-oci-networking.md
 - name: 资源
   items:
     - name: Azure 路线图

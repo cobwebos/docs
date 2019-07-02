@@ -22,6 +22,8 @@
       items:
         - name: 针对本地工作负荷的云治理管理
           href: cloud-governed-management-for-on-premises.md
+        - name: 构建坚实标识基础的四个步骤
+          href: four-steps.md
     - name: Azure AD Connect 和 Connect Health
       items:
         - name: 什么是 Azure AD Connect 和 Connect Health？
@@ -68,6 +70,8 @@
       items:
         - name: 什么是 Azure AD Connect Sync？
           href: how-to-connect-sync-whatis.md
+        - name: Azure ADSync 服务帐户
+          href: concept-adsync-service-account.md
         - name: Azure AD Connect 同步功能
           href: how-to-connect-syncservice-features.md
         - name: 什么是 Azure AD Connect 同步服务管理器？

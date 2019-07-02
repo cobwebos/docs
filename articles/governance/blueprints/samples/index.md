@@ -5,14 +5,14 @@ author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
 ms.topic: sample
-ms.date: 06/13/2019
+ms.date: 06/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 0345ba564ea244011a83f69e6c152d236b95a920
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 2cb5f08cfc6e6bbf0f2df4cef44e4ecd1aa3aadf
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272185"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428721"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -24,7 +24,9 @@ ms.locfileid: "67272185"
 |---------|---------|
 | [ISO 27001 共享服务](./iso27001-shared/index.md) | 提供了一组符合标准的基础结构模式和策略防护机制，以便帮助通过 ISO 27001 认证。 |
 | [ISO 27001 应用服务环境/SQL 数据库工作负荷](./iso27001-ase-sql-workload/index.md) | 为 [ISO 27001 共享服务](./iso27001-shared/index.md)蓝图示例提供了其他基础结构。 |
-| [英国官方监管](./ukofficial/control-mapping.md) | 提供了一组符合标准的基础结构模式和策略防护机制，以便帮助通过英国官方认证。 |
+| [NIST SP 800-53 R4](./nist-sp-800-53-rev4/control-mapping.md) | 提供用于符合 NIST SP 800-53 R4 的规范措施。 |
+| [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | 提供一组策略以帮助用户符合 PCI-DSS v3.2.1。 |
+| [英国官方和英国 NHS 监管](./ukofficial/index.md) | 提供了一组符合标准的基础结构模式和策略防护措施，以便帮助用户通过英国官方和英国 NHS 认证。 |
 
 ## <a name="next-steps"></a>后续步骤
 

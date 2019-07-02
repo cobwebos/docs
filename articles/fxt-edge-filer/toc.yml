@@ -1,0 +1,36 @@
+- name: Azure FXT Edge Filer 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure FXT Edge Filer？
+      href: fxt-overview.md
+- name: 教程
+  items:
+    - name: 1 - 安装硬件
+      href: fxt-install.md
+    - name: 2 - 连接网络端口电缆并供电
+      href: fxt-network-power.md
+    - name: 3 - 设置硬件密码
+      href: fxt-node-password.md
+    - name: 4 - 创建群集
+      href: fxt-cluster-create.md
+    - name: 5 - 添加群集节点
+      href: fxt-add-nodes.md
+    - name: 6 - 添加后端存储并配置虚拟命名空间
+      href: fxt-add-storage.md
+    - name: 7 - 配置群集的网络设置
+      href: fxt-configure-network.md
+- name: 操作指南
+  items:
+    - name: 装载客户端
+      href: fxt-mount-clients.md
+    - name: 监视 Azure FXT Edge Filer 硬件
+      href: fxt-monitor.md
+    - name: 安全关闭硬件节点的电源
+      href: fxt-power-off.md
+- name: 资源
+  items:
+    - name: 硬件规格
+      href: fxt-specs.md
+    - name: 其他文档
+      href: fxt-additional-doc.md

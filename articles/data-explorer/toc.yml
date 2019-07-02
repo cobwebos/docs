@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是数据资源管理器？
+    - name: 什么是 Azure 数据资源管理器？
       href: data-explorer-overview.md
 - name: 快速入门
   expanded: true
@@ -15,8 +15,6 @@
       items:
         - name: Web UI
           href: web-query-data.md
-        - name: Python
-          href: python-query-data.md
 - name: 教程
   items:
     - name: 引入数据而无需使用代码
@@ -68,12 +66,18 @@
       items:
         - name: 编写查询
           href: write-queries.md
-        - name: 时序分析
-          href: time-series-analysis.md
-        - name: 异常检测和预测
-          href: anomaly-detection.md
-        - name: 机器学习
-          href: machine-learning-clustering.md
+        - name: 在 Azure Data Lake 中查询数据
+          href: data-lake-query-data.md
+        - name: Python
+          href: python-query-data.md
+        - name: 时序分析和机器学习
+          items:
+            - name: 时序分析
+              href: time-series-analysis.md
+            - name: 异常检测和预测
+              href: anomaly-detection.md
+            - name: 机器学习
+              href: machine-learning-clustering.md
     - name: 可视化数据
       items:
         - name: Power BI

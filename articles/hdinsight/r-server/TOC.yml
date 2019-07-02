@@ -4,16 +4,23 @@
   items:
     - name: 什么是 HDInsight 中的 ML 服务？
       href: r-server-overview.md
-- name: 入门
+- name: 快速入门
+  expanded: true
   items:
-    - name: ML Services 入门
-      href: r-server-get-started.md
+    - name: 示例作业 - RStudio Server
+      href: ./machine-learning-services-quickstart-job-rstudio.md
+    - name: 示例作业 - R 控制台
+      href: ./machine-learning-services-quickstart-job-rconsole.md
+- name: 教程
+  items:
+    - name: HDInsight 中 Spark 计算上下文中的 R
+      href: ml-services-tutorial-spark-compute.md
+- name: 概念
+  items:
     - name: 安装 HDInsight 应用
       href: ../hdinsight-apps-install-applications.md
     - name: 群集容量规划
       href: ../hdinsight-capacity-planning.md
-- name: 概念
-  items:
     - name: HDInsight 上的 Apache Hadoop 组件
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
@@ -56,8 +63,6 @@
           href: ../hdinsight-hadoop-customize-cluster-linux.md
         - name: 开发脚本操作
           href: ../hdinsight-hadoop-script-actions-linux.md
-        - name: 安装和使用 Presto
-          href: ../hdinsight-hadoop-install-presto.md
         - name: 添加 Apache Hive 库
           href: ../hdinsight-hadoop-add-hive-libraries.md
         - name: 使用 Apache Giraph

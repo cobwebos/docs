@@ -6,10 +6,15 @@
       href: ./apache-interactive-query-get-started.md
       maintainContext: true
 - name: 快速入门
+  expanded: true
   items:
     - name: 执行 Apache Hive 查询 - Apache Zeppelin
       href: ./hdinsight-connect-hive-zeppelin.md
-- name: 入门
+- name: 教程
+  items:
+    - name: 使用交互式查询分析数据
+      href: ./interactive-query-tutorial-analyze-flight-data.md
+- name: 概念
   items:
     - name: 安装 HDInsight 应用
       href: ../hdinsight-apps-install-applications.md
@@ -104,9 +109,6 @@
           maintainContext: true
         - name: 分析存储的推文
           href: ../hdinsight-analyze-twitter-data-linux.md
-          maintainContext: true
-        - name: 分析航班延误数据
-          href: ../hdinsight-analyze-flight-delay-data-linux.md
           maintainContext: true
     - name: 扩展群集
       items:
@@ -246,9 +248,6 @@
         - name: 为 HDInsight 群集修补 OS
           href: ../hdinsight-os-patching.md
           maintainContext: true
-        - name: 将 Hive 工作负荷迁移到 HDInsight 4.0
-          href: apache-hive-migrate-workloads.md
-          maintainContext: true
     - name: 故障排除
       href: ../hdinsight-troubleshoot-guide.md
       maintainContext: true
@@ -334,6 +333,11 @@
         - name: 监视群集性能
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
+- name: 如何
+  items:
+    - name: 将 Hive 工作负荷迁移到 HDInsight 4.0
+      href: apache-hive-migrate-workloads.md
+      maintainContext: true
 - name: 引用
   items:
     - name: 代码示例

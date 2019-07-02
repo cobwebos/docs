@@ -25,6 +25,8 @@
       href: billing-understand-your-invoice.md
     - name: 发票术语介绍 - 仅限 Microsoft 客户协议
       href: billing-mca-understand-your-invoice.md
+    - name: 如何支付帐单 - 仅限 Microsoft 客户协议
+      href: billing-how-to-pay-bill.md
     - name: Microsoft 客户协议的计费帐户
       href: billing-mca-overview.md
 - name: 管理成本
@@ -79,7 +81,7 @@
               href: billing-understand-suse-reservation-charges.md
         - name: 未包括软件成本
           href: billing-reserved-instance-windows-software-costs.md
-        - name: 即用即付使用情况
+        - name: 单个订阅的使用情况
           href: billing-understand-reserved-instance-usage.md
         - name: Enterprise 使用情况
           href: billing-understand-reserved-instance-usage-ea.md

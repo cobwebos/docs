@@ -363,6 +363,8 @@
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: 网络论坛
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: 网络反馈
+      href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/virtual-network'
     - name: 定价计算器

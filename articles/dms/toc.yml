@@ -54,8 +54,10 @@
       href: pre-reqs.md
     - name: Azure SQL DB 托管实例迁移的网络拓扑
       href: resource-network-topologies.md
-    - name: 已知问题
+    - name: 故障排除和已知问题
       items:
+        - name: 排查源数据库连接问题
+          href: known-issues-troubleshooting-dms-source-connectivity.md
         - name: 排查常见问题和错误
           href: known-issues-troubleshooting-dms.md
         - name: 已知问题 - 联机迁移到 Azure SQL DB

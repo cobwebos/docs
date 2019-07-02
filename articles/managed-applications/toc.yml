@@ -29,10 +29,18 @@
       href: sample-projects.md
 - name: 概念
   items:
-    - name: 自定义提供程序
+    - name: Azure 自定义资源提供程序
       href: custom-providers-overview.md
+    - name: 视图定义项目
+      href: concepts-view-definition.md
 - name: 操作指南
   items:
+    - name: 自定义资源提供程序
+      items:
+        - name: 将自定义操作添加到 Azure
+          href: custom-providers-action-endpoint-how-to.md
+        - name: 将自定义资源添加到 Azure
+          href: custom-providers-resources-endpoint-how-to.md
     - name: 发布者
       items:
         - name: 创建门户界面
@@ -57,6 +65,12 @@
           href: approve-just-in-time-access.md
 - name: 引用
   items:
+    - name: 自定义资源提供程序
+      items:
+        - name: 自定义资源代理参考
+          href: custom-providers-proxy-resource-endpoint-reference.md
+        - name: 自定义资源缓存参考
+          href: custom-providers-proxy-cache-resource-endpoint-reference.md
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell

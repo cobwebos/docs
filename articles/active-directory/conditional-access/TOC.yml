@@ -19,6 +19,8 @@
 - name: 概念
   expanded: false
   items:
+    - name: 采用条件访问
+      href: howto-conditional-access-adoption-kit.md
     - name: 基线保护策略
       href: concept-baseline-protection.md
     - name: 条件

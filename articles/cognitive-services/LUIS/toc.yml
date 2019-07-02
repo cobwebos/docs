@@ -302,6 +302,8 @@
           href: luis-reference-prebuilt-number.md
         - name: 序号实体
           href: luis-reference-prebuilt-ordinal.md
+        - name: 序号 V2 实体
+          href: luis-reference-prebuilt-ordinal-v2.md
         - name: 百分比实体
           href: luis-reference-prebuilt-percentage.md
         - name: PersonName 实体

@@ -58,6 +58,12 @@
       href: cross-network-connectivity.md
     - name: Azure 的常见安全属性
       href: expressroute-security-attributes.md
+    - name: 针对高可用性进行设计
+      href: designing-for-high-availability-with-expressroute.md
+    - name: 针对灾难恢复进行设计
+      items:
+        - name: 专用对等互连
+          href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
 - name: 操作指南
   items:
     - name: 创建和修改线路

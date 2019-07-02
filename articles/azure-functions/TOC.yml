@@ -45,6 +45,8 @@
           href: functions-add-output-binding-storage-queue-python.md
         - name: 存储 - 门户
           href: functions-integrate-storage-queue-output-binding.md
+        - name: 存储 - Visual Studio Code
+          href: functions-add-output-binding-storage-queue-vs-code.md
 - name: 教程
   items:
     - name: Functions 与逻辑应用
@@ -136,6 +138,8 @@
           href: functions-test-a-function.md
         - name: 在本地开发和调试
           href: functions-develop-local.md
+        - name: Visual Studio Code 开发
+          href: functions-develop-vs-code.md
         - name: Visual Studio 开发
           href: functions-develop-vs.md
         - name: Core Tools 开发
@@ -282,13 +286,10 @@
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md
-    - name: host.json 引用
+    - name: host.json 2.x 参考
       href: functions-host-json.md
-      items:
-        - name: Functions 2.x
-          href: functions-host-json.md
-        - name: Functions 1.x
-          href: functions-host-json-v1.md
+    - name: host.json 1.x 参考
+      href: functions-host-json-v1.md
     - name: 网络常见问题解答
       href: functions-networking-faq.md
     - name: OpenAPI 参考

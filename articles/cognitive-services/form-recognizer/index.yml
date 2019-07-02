@@ -43,6 +43,11 @@ sections:
             image:
               src: ../media/index/i_get-started.svg
             title: 安装和运行容器
+          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
+            html: <p>生成已针对训练自定义模型而优化的数据集。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: 生成训练数据集
   - title: 5 分钟快速入门
     items:
       - type: paragraph

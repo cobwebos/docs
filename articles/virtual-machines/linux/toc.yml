@@ -274,13 +274,13 @@
           items:
             - name: 概述
               href: image-builder-overview.md
-            - name: 使用 CLI
+            - name: 使用 Azure CLI
               href: image-builder.md
             - name: 模板参考
               href: image-builder-json.md
-            - name: 与库配合使用
+            - name: 在映像库中生成映像
               href: image-builder-gallery.md
-            - name: 更新映像版本
+            - name: 更新现有映像
               href: image-builder-gallery-update-image-version.md
             - name: 故障排除
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'

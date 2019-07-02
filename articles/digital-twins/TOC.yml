@@ -66,6 +66,8 @@
           href: how-to-navigate-apis.md
         - name: 通用查询模式
           href: how-to-query-common-apis.md
+    - name: 将应用注册到旧式 AAD
+      href: how-to-use-legacy-aad.md
 - name: 引用
   items:
     - name: 用户定义函数客户端库

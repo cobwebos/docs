@@ -19,12 +19,20 @@
       href: azure-netapp-files-resource-limits.md
     - name: Azure NetApp 文件的指标
       href: azure-netapp-files-metrics.md
-    - name: Azure NetApp 文件的性能基准
-      href: azure-netapp-files-performance-benchmarks.md
+    - name: 性能
+      items:
+        - name: Azure NetApp 文件的性能基准
+          href: azure-netapp-files-performance-benchmarks.md
+        - name: Azure NetApp 文件的性能考虑因素
+          href: azure-netapp-files-performance-considerations.md
+        - name: 使用 Azure NetApp 文件时的卷性能和指标的基准测试
+          href: azure-netapp-files-performance-metrics-volumes.md
     - name: Azure NetApp 文件的成本模型
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp 文件网络规划指南
       href: azure-netapp-files-network-topologies.md
+    - name: 使用 Azure NetApp 文件的解决方案体系结构
+      href: azure-netapp-files-solution-architectures.md
     - name: 有关 Azure NetApp 文件的常见问题解答
       href: azure-netapp-files-faqs.md
 - name: 操作指南
