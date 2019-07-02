@@ -564,6 +564,8 @@
                       href: insights/container-insights-enable-new-cluster.md
                     - name: 针对现有群集启用
                       href: insights/container-insights-enable-existing-clusters.md
+                    - name: 区域映射
+                      href: insights/container-insights-region-mapping.md
                 - name: 分析
                   href: insights/container-insights-analyze.md
                 - name: 配置代理收集设置

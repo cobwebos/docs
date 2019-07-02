@@ -8,7 +8,7 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 检测数据中的异常
+    - name: REST API
       items:
         - name: '使用 C#'
           href: quickstarts/detect-data-anomalies-csharp.md
@@ -16,6 +16,12 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: 使用 Python
           href: quickstarts/detect-data-anomalies-python.md
+    - name: SDK 中 IsInRole 中的声明
+      items:
+        - name: '使用 C#'
+          href: quickstarts/detect-data-anomalies-csharp-sdk.md
+        - name: 使用 Python
+          href: quickstarts/detect-data-anomalies-python-sdk.md
 - name: 教程
   items:
     - name: 使用 Power BI 将异常成批可视化
