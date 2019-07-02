@@ -24,6 +24,9 @@
       maintainContext: true
 - name: 如何
   items:
+    - name: 将 Hive 工作负荷迁移到 HDInsight 4.0
+      href: apache-hive-migrate-workloads.md
+      maintainContext: true
     - name: 使用群集存储
       items:
         - name: 使用 Azure 存储
@@ -100,6 +103,9 @@
           href: ./apache-hadoop-connect-hive-power-bi-directquery.md
         - name: 将 Power BI 连接到 Apache Hadoop
           href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
+          maintainContext: true
+        - name: 使用 PowerShell 和 ODBC 查询 Hive
+          href: apache-hive-query-odbc-driver-powershell.md
           maintainContext: true
         - name: 将 Excel 连接到 Apache Hadoop
           href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
@@ -333,11 +339,6 @@
         - name: 监视群集性能
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: 如何
-  items:
-    - name: 将 Hive 工作负荷迁移到 HDInsight 4.0
-      href: apache-hive-migrate-workloads.md
-      maintainContext: true
 - name: 引用
   items:
     - name: 代码示例
