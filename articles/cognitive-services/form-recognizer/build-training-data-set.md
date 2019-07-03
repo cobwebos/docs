@@ -9,16 +9,16 @@ ms.subservice: form-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 611d5f7983c61fab12c55a46fedf35a3c420c4c8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ad9bba53390e3c4262f999ebcc57ab354f1e3d69
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454814"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537617"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>生成用于自定义模型的定型数据集
 
-使用窗体识别器自定义模型，以便于特定于行业的窗体可以训练该模型提供训练数据。 可以使用五个已填写的窗体或一个空窗体对模型进行定型 （包含单词"空"中的文件的名称） 以及两个已填写的窗体。 即使有足够已填写的窗体进行定型，将一个空窗体添加到你的训练数据集可以提高模型的准确性。
+使用窗体识别器自定义模型，以便于特定于行业的窗体可以训练该模型提供训练数据。 加两个已填写的窗体上，可以对使用五个已填写的窗体或一个空窗体 （必须在文件名中包含单词"空"） 对模型进行定型。 即使有足够已填写的窗体进行定型，将一个空窗体添加到你的训练数据集可以提高模型的准确性。
 
 ## <a name="training-data-tips"></a>定型数据提示
 
@@ -32,8 +32,35 @@ ms.locfileid: "67454814"
 
 ## <a name="general-input-requirements"></a>输入的一般要求
 
-请确保你的训练数据集还遵循窗体识别器的所有内容的输入的要求。
+请确保你的训练数据集还遵循窗体识别器的所有内容的输入的要求。 
+
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
+
+## <a name="upload-your-training-data"></a>将定型数据上传
+
+已放置在一起时的将用于定型的窗体文档集，您需要将其上载到 Azure blob 存储容器。 如果不知道如何创建用于容器的 Azure 存储帐户，遵循[Azure 存储快速入门： Azure 门户](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
+
+### <a name="organize-your-data-in-subfolders-optional"></a>（可选） 的子文件夹中将数据组织
+
+默认情况下[训练模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/TrainCustomModel)API 将仅使用窗体位于存储容器的根目录的文档。 但是，如果指定的 API 调用中，你可以使用子文件夹中的数据训练。 通常情况下，正文[训练模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/TrainCustomModel)调用具有以下形式，其中`<SAS URL>`是容器的共享访问签名 URL:
+
+```json
+{
+  "source":"<SAS URL>"
+}
+```
+
+如果将以下内容添加到请求正文中时，API 将定型的子文件夹中的文档。 `"prefix"`字段是可选的其路径以给定字符串开头的文件将训练数据集将限制。 因此值为`"Test"`，例如，将导致 API 来查看文件或单词"Test"开头的文件夹。
+
+```json
+{
+  "source": "<SAS URL>",
+  "sourceFilter": {
+    "prefix": "<prefix string>",
+    "includeSubFolders": true
+  }
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

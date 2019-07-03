@@ -98,7 +98,7 @@ Content-Length: 0
 
 客户端必须使用语音服务的适当终结点  。 终结点基于识别模式和语言。 下表展示了一些示例。
 
-| 模式 | 路径 | 服务 URI |
+| 模式 | Path | 服务 URI |
 | -----|-----|-----|
 | 交互 | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | 对话 | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
@@ -308,7 +308,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | Text |
-| 路径 | `telemetry` |
+| Path | `telemetry` |
 | X-Timestamp | 采用 ISO 8601 格式的客户端 UTC 时钟时间戳 |
 | Content-Type | `application/json` |
 | 正文 | 包含有关轮次的客户端信息的 JSON 结构 |
@@ -330,7 +330,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | Text |
-| 路径 | `speech.startDetected` |
+| Path | `speech.startDetected` |
 | Content-Type | application/json; charset=utf-8 |
 | 正文 | JSON 结构，包含检测到语音开始时的条件信息。 此结构中的 Offset 字段指定在音频流中检测到语音时的位置相对于流开始位置的偏移（以 100 纳秒为单位）  。 |
 
@@ -355,7 +355,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | Text |
-| 路径 | `speech.hypothesis` |
+| Path | `speech.hypothesis` |
 | X-RequestId | 采用“无连字符”格式的 UUID |
 | Content-Type | application/json |
 | 正文 | 语音假设 JSON 结构 |
@@ -387,7 +387,7 @@ Duration 元素指定该语音短语的持续时间（以 100 纳秒为单位）
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | Text |
-| 路径 | `speech.phrase` |
+| Path | `speech.phrase` |
 | Content-Type | application/json |
 | 正文 | 语音短语 JSON 结构 |
 
@@ -415,7 +415,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | Text |
-| 路径 | `speech.endDetected` |
+| Path | `speech.endDetected` |
 | 正文 | 包含检测到语音结束时的偏移的 JSON 结构。 偏移从用于识别的音频开始位置计算，以 100 纳秒为单位表示。 |
 | Content-Type | application/json; charset=utf-8 |
 
@@ -440,7 +440,7 @@ Offset 元素指定识别出短语时的位置相对于音频流开头位置的�
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | Text |
-| 路径 | `turn.start` |
+| Path | `turn.start` |
 | Content-Type | application/json; charset=utf-8 |
 | 正文 | JSON 结构 |
 
@@ -467,7 +467,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | Text |
-| 路径 | `turn.end` |
+| Path | `turn.end` |
 | 正文 | 无 |
 
 #### <a name="sample-message"></a>示例消息

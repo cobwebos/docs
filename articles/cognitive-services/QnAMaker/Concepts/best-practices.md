@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c796114d124c64ac1c373baacabe00c7dcd70aa7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dd4f85822a5e6615e7ea6e31b4231c04c9d4e88c
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447634"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542849"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的最佳做法
 
@@ -97,7 +97,7 @@ GenerateAnswer API 使用问题和答案来搜索的用户的查询的最佳答�
 
 ### <a name="choosing-a-threshold"></a>选择一个阈值
 
-默认值[置信度得分](confidence-score.md#)被用作阈值为 50，但是你可以[更改的阈值](confidence-score.md#set-threshold)为根据需要你 KB。 由于知识库各不相同，因此应该进行测试，选择最适合知识库的阈值。 
+默认值[置信度得分](confidence-score.md)被用作阈值为 50，但是你可以[更改的阈值](confidence-score.md#set-threshold)为根据需要你 KB。 由于知识库各不相同，因此应该进行测试，选择最适合知识库的阈值。 
 
 ### <a name="choosing-ranker-type"></a>选择排名器类型
 默认情况下，QnA Maker 搜索问题和解答。 如果你想要通过问题仅搜索，若要生成答案，使用`RankerType=QuestionOnly`GenerateAnswer 请求的 POST 正文中。

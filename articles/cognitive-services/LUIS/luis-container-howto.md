@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: fff876de41e0069573b73779a16ebf06a3dd58c8
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 86b23c5f69fd96fe5c5614d99483e1936895ad9e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295253"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537091"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -175,16 +175,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{AUTHORING_KEY} | 已发布 LUIS 应用的 LUIS 帐户的创作密钥。<br/>可以从 LUIS 门户的“用户设置”  页面中获取创作密钥。 |
 |{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>```westus``` - 美国西部<br/>```westeurope``` - 西欧<br/>```australiaeast``` - 澳大利亚东部 |
 
-使用以下 CURL 命令下载已发布的包，用你自己的值进行替换：
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/slot/{APPLICATION_ENVIRONMENT}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_{APPLICATION_ENVIRONMENT}.gz
-```
-
-如果成功，则响应是 LUIS 包文件。 将文件保存在为容器的输入装入点指定的存储位置中。 
+若要下载已发布的包，请参阅[API 文档][download-published-package]。 如果已成功下载，响应是 LUIS 包文件。 将文件保存在为容器的输入装入点指定的存储位置中。 
 
 ### <a name="export-trained-apps-package-from-api"></a>通过 API 导出已训练的应用包
 
@@ -203,16 +194,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{AUTHORING_KEY} | 已发布 LUIS 应用的 LUIS 帐户的创作密钥。<br/>可以从 LUIS 门户的“用户设置”  页面中获取创作密钥。  |
 |{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>```westus``` - 美国西部<br/>```westeurope``` - 西欧<br/>```australiaeast``` - 澳大利亚东部 |
 
-使用以下 CURL 命令下载已训练的包：
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/versions/{APPLICATION_VERSION}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_v{APPLICATION_VERSION}.gz
-```
-
-如果成功，则响应是 LUIS 包文件。 将文件保存在为容器的输入装入点指定的存储位置中。 
+若要下载已训练的包，请参阅[API 文档][download-trained-package]。 如果已成功下载，响应是 LUIS 包文件。 将文件保存在为容器的输入装入点指定的存储位置中。 
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
 
@@ -237,11 +219,9 @@ Billing={BILLING_ENDPOINT} ^
 ApiKey={ENDPOINT_KEY}
 ```
 
-* 此示例使用现成的 directory`c:`驱动器以避免在 Windows 上的任何权限冲突。 如果需要使用特定目录作为输入目录，则需要授予 docker 服务权限。 
+* 此示例使用现成的 directory`C:`驱动器以避免在 Windows 上的任何权限冲突。 如果需要使用特定目录作为输入目录，则需要授予 docker 服务权限。 
 * 除非非常熟悉 docker 容器，否则不要更改参数顺序。
 * 如果使用不同的操作系统，使用正确的控制台终端，文件夹语法进行装载和行继续符为您的系统。 这些示例假定具有行继续符的 Windows 控制台`^`。 由于容器是 Linux 操作系统，目标装入使用 Linux 样式文件夹语法。
-
-
 
 此命令：
 
@@ -324,7 +304,6 @@ curl -X GET \
 
 上传日志后，在 LUIS 门户中[查看终结点](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances)话语。
 
-
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -362,14 +341,13 @@ LUIS 容器使用 Azure 帐户中的认知服务  资源向 Azure 发送账单�
 
 不受支持的应用配置|详细信息|
 |--|--|
-|不受支持的容器区域性| 荷兰语 (nl-NL)<br>日语 (ja-JP)<br>仅 [1.0.1 tokenizer 或更高版本](luis-language-support.md#custom-tokenizer-versions)支持德语。|
+|不受支持的容器区域性| 荷兰语 (nl-NL)<br>日语 (ja-JP)<br>仅支持德语[1.0.2 标记器](luis-language-support.md#custom-tokenizer-versions)。|
 |所有区域性不支持的实体|所有区域性的 [KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) 预生成实体|
 |英语 (EN-US) 区域性不支持的实体|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) 预生成实体|
 |语音启动|容器中不支持外部依赖项。|
 |情绪分析|容器中不支持外部依赖项。|
 
-<!--blogs/samples/video coures -->
-
+<!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>摘要
@@ -390,3 +368,7 @@ LUIS 容器使用 Azure 帐户中的认知服务  资源向 Azure 发送账单�
 * 查看[配置容器](luis-container-configuration.md)了解配置设置
 * 若要解决与 LUIS 功能相关的问题，请参阅[故障排除](troubleshooting.md)。
 * 使用更多[认知服务容器](../cognitive-services-container-support.md)
+
+<!-- Links - external -->
+[download-published-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip
+[download-trained-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip

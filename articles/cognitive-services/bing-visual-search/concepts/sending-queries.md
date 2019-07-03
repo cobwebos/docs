@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 4/03/2019
+ms.date: 7/01/2019
 ms.author: aahi
-ms.openlocfilehash: 62d34b859a0cf71320c478b7cab4a2914e5ee308
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd5118b42f32a521df8e3acfffb68391d4021791
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60579858"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541528"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>向必应视觉搜索 API 发送搜索查询
 
-本文介绍了发送到必应视觉搜索 API 的请求的参数和属性，以及响应对象。
+本文介绍了发送到必应视觉搜索 API 的请求的参数和属性，以及响应对象。 
 
 可以通过三种方式获取关于图像的见解：
 
@@ -73,7 +73,7 @@ ms.locfileid: "60579858"
 
 以下是请求应指定的查询参数。 至少应包括`mkt`查询参数：
 
-| 名称 | 值 | Type | 必选 |
+| 名称 | 值 | Type | 需要 |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | 表示结果是从哪里来的双字符国家/地区代码。<br /><br /> 如果设置此参数，则还必须指定 [Accept-language](#acceptlanguage) 标头。 必应使用从语言列表中找到的第一个受支持语言，并将语言与指定的国家/地区代码相结合以确保从哪个市场返回结果。 如果语言列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场。 或者，可以将聚合或默认市场用于结果，而不是指定一个。<br /><br /> 仅当指定多个语言时，才可以使用此查询参数和 `Accept-Language` 查询参数；否则，应使用 `mkt` 和 `setLang` 查询参数。<br /><br /> 此参数和 [mkt](#mkt) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 否       |
 | <a name="mkt" />mkt   | 产生结果的市场。 <br /><br /> **注意：** 如果已知，应始终指定市场。 指定市场有助于必应路由请求，并返回适当的最佳响应。<br /><br /> 此参数和 [cc](#cc) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 是      |
@@ -104,7 +104,7 @@ ms.locfileid: "60579858"
 
 ### <a name="content-form-types"></a>内容表单类型
 
-每个请求必须包含`Content-Type`标头。 标头必须设置为： `multipart/form-data; boundary=\<boundary string\>`，其中\<边界字符串\>是唯一的不透明的字符串，用于标识窗体数据的边界。 例如，`boundary=boundary_1234-abcd`。
+每个请求必须包含`Content-Type`标头。 标头必须设置为： `multipart/form-data; boundary=\<boundary string\>`，其中\<边界字符串\>是唯一的不透明的字符串，用于标识窗体数据的边界。 例如，`boundary=boundary_1234-abcd` 。
 
 如果图像标记或 URL 发送视觉搜索，以下代码片段显示了窗体数据必须包括在 POST 的正文中。 窗体数据必须包括`Content-Disposition`标头，您必须设置其`name`"knowledgeRequest"的参数。 有关详细信息`imageInfo`对象，请参阅该请求。
 
@@ -192,6 +192,9 @@ Content-Disposition: form-data; name="knowledgeRequest"
 ```
 
 ## <a name="bing-visual-search-responses"></a>必应视觉搜索响应
+
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 如果存在适用于图像的见解，响应包含一个或多个 `tags`（包含见解）。 `image`字段包含输入图像的 insights 令牌：
 
