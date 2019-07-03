@@ -146,7 +146,7 @@ New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 | 参数 | 描述 | 需要 |
 |-----------|-------------|:--------:|
 | Name | 你想要检索有关其详细信息的区块链服务成员的名称。 输入一个名称，它将返回该成员的详细信息。 当省略名称时，它将返回所有联盟成员的列表。 | 否 |
-| 成员 | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
+| Members | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
 | Web3Client | 获取从新建 Web3Connection Web3Client 对象 | 是 |
 
 #### <a name="example"></a>示例
@@ -175,7 +175,7 @@ Role           : ADMIN
 | 参数 | 描述 | 必选 |
 |-----------|-------------|:--------:|
 | Name | 若要删除的成员名称 | 是 |
-| 成员 | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
+| Members | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
 | Web3Account | 获取从导入 Web3Account Web3Account 对象 | 是 |
 | Web3Client | 获取从新建 Web3Connection Web3Client 对象 | 是 |
 
@@ -199,7 +199,7 @@ $ContractConnection | Remove-BlockchainMember -Name <Member Name> -Web3Account $
 | Name | 区块链成员的名称 | 是 |
 | DisplayName | 新的显示名称 | 否 |
 | AccountAddress | 帐户地址 | 否 |
-| 成员 | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
+| Members | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
 | Web3Account | 获取从导入 Web3Account Web3Account 对象 | 是 |
 | Web3Client |  获取从新建 Web3Connection Web3Client 对象| 是 |
 
@@ -223,8 +223,8 @@ $ContractConnection | Set-BlockchainMember -Name <Member Name> -DisplayName <Dis
 | 参数 | 描述 | 必选 |
 |-----------|-------------|:--------:|
 | SubscriptionId | 要邀请的成员的 azure 订阅 ID | 是 |
-| 角色 | 联盟角色中。 值可以是管理员或用户。 管理员是联盟管理员角色。 用户是联盟成员角色。 | 是 |
-| 成员 | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
+| Role | 联盟角色中。 值可以是管理员或用户。 管理员是联盟管理员角色。 用户是联盟成员角色。 | 是 |
+| Members | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
 | Web3Account | 获取从导入 Web3Account Web3Account 对象 | 是 |
 | Web3Client | 获取从新建 Web3Connection Web3Client 对象 | 是 |
 
@@ -243,7 +243,7 @@ $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subs
 | 参数 | 描述 | 必选 |
 |-----------|-------------|:--------:|
 | SubscriptionId | 要邀请的成员的 Azure 订阅 ID。 如果所在的订阅 ID 提供，它将返回订阅 ID 邀请的详细信息。 如果省略的订阅 ID，则返回所有成员邀请的列表。 | 否 |
-| 成员 | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
+| Members | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
 | Web3Client | 获取从新建 Web3Connection Web3Client 对象 | 是 |
 
 #### <a name="example"></a>示例
@@ -270,7 +270,7 @@ SubscriptionId                       Role CorrelationId
 | 参数 | 描述 | 必选 |
 |-----------|-------------|:--------:|
 | SubscriptionId | 要撤消的成员的 azure 订阅 ID | 是 |
-| 成员 | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
+| Members | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
 | Web3Account | 获取从导入 Web3Account Web3Account 对象 | 是 |
 | Web3Client | 获取从新建 Web3Connection Web3Client 对象 | 是 |
 
@@ -290,8 +290,8 @@ $ContractConnection | Remove-BlockchainMemberInvitation -SubscriptionId <Subscri
 | 参数 | 描述 | 必选 |
 |-----------|-------------|:--------:|
 | SubscriptionId | 要邀请的成员的 azure 订阅 ID | 是 |
-| 角色 | 邀请新联盟的角色。 值可以是**用户**或**管理员**。 | 是 |
-| 成员 |  获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
+| Role | 邀请新联盟的角色。 值可以是**用户**或**管理员**。 | 是 |
+| Members |  获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
 | Web3Account | 获取从导入 Web3Account Web3Account 对象 | 是 |
 | Web3Client | 获取从新建 Web3Connection Web3Client 对象 | 是 |
 
