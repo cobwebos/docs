@@ -29,7 +29,7 @@ ms.locfileid: "66258181"
 * Azure 快速入门模板。<br> 有关详细信息，请参阅：
 
   * [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)。 使用社区提供的模板通过 Azure 资源管理器部署 Azure 资源以执行更多操作。 Azure 资源管理器可让你使用声明性模板预配应用程序。 在单个模板中，你可以部署多个服务及其依赖项。 在应用程序生命周期的每个阶段，可使用相同模板重复部署应用程序。
-  * [GitHub：Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates)。 此存储库包含由社区提供的所有当前可用的 Azure 资源管理器模板。 https://azure.microsoft.com/documentation/templates/ 中维护了一个可搜索的模板索引。
+  * [GitHub：Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates)。 此存储库包含由社区提供的所有当前可用的 Azure 资源管理器模板。 [https://azure.microsoft.com/documentation/templates/](https://azure.microsoft.com/documentation/templates/ ) 中维护了一个可搜索的模板索引。
 * 创建 UI 定义<br>
 有关详细信息，请参阅[为托管应用程序创建 Azure 门户用户界面](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)。 本文介绍了 createUiDefinition.json 文件的核心概念。 Azure 门户使用此文件生成用于创建托管应用程序的用户界面。
 
