@@ -152,7 +152,7 @@ Content-Length: 0
 
 | Header | 值 |
 |----|----|
-| 路径 | 本文档中指定的消息路径 |
+| Path | 本文档中指定的消息路径 |
 | X-RequestId | 采用“无连字符”格式的 UUID |
 | X-Timestamp | 采用 ISO 8601 格式的客户端 UTC 时钟时间戳 |
 
@@ -181,7 +181,7 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 
 | 标头名称 | 值 |
 |----|----|
-| 路径 | `speech.config` |
+| Path | `speech.config` |
 | X-Timestamp | 采用 ISO 8601 格式的客户端 UTC 时钟时间戳 |
 | Content-Type | application/json; charset=utf-8 |
 
@@ -252,7 +252,7 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 
 | Header         |  值     |
 | ------------- | ---------------- |
-| 路径 | `audio` |
+| Path | `audio` |
 | X-RequestId | 采用“无连字符”格式的 UUID |
 | X-Timestamp | 采用 ISO 8601 格式的客户端 UTC 时钟时间戳 |
 | Content-Type | 音频内容类型。 类型必须是 audio/x-wav (PCM) 或 audio/silk (SILK)   。 |
