@@ -43,9 +43,9 @@ Azure Blockchain Workbench 应用程序是由配置元数据和智能合同代�
 |-------|-------------|:--------:|
 | ApplicationName | 唯一的应用程序名称。 相应的智能合约必须对适用的合约类使用相同的 **ApplicationName**。  | 是 |
 | DisplayName | 应用程序的友好显示名称。 | 是 |
-| 描述 | 应用程序的说明。 | 否 |
+| Description | 应用程序的说明。 | 否 |
 | ApplicationRoles | [ApplicationRoles](#application-roles) 的集合。 可以操作或参与应用程序的用户角色。  | 是 |
-| 工作流 | [工作流](#workflows)的集合。 每个工作流充当用于控制业务逻辑流的状态机。 | 是 |
+| Workflows | [工作流](#workflows)的集合。 每个工作流充当用于控制业务逻辑流的状态机。 | 是 |
 
 有关示例，请参阅[配置文件示例](#configuration-file-example)。
 
