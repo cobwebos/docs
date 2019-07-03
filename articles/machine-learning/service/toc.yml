@@ -197,6 +197,9 @@
         - name: 使用 MLflow 对试验进行跟踪
           displayName: 'log, monitor, metrics'
           href: how-to-use-mlflow.md
+        - name: 使用 TensorBoard 将试验可视化
+          displayName: 'log, monitor, metrics'
+          href: how-to-monitor-tensorboard.md
     - name: 自动化机器学习
       displayName: 'automl, auto ml'
       items:
@@ -304,6 +307,8 @@
               href: ../algorithm-module-reference/add-rows.md
             - name: 删除重复的行
               href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: 联接数据
+              href: ../algorithm-module-reference/join-data.md
             - name: 拆分数据
               href: ../algorithm-module-reference/split-data.md
             - name: 规范化数据
@@ -352,12 +357,14 @@
               href: ../algorithm-module-reference/two-class-support-vector-machine.md
             - name: K 平均值聚类
               href: ../algorithm-module-reference/k-means-clustering.md
-        - name: Python 语言模块
+        - name: Python 和 R 语言模块
           items:
             - name: 执行 Python 脚本
               href: ../algorithm-module-reference/execute-python-script.md
             - name: 创建 Python 模型
               href: ../algorithm-module-reference/create-python-model.md
+            - name: 执行 R 脚本
+              href: ../algorithm-module-reference/execute-r-script.md
         - name: 错误消息和代码
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: 资源

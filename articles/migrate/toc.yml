@@ -42,6 +42,8 @@
   items:
     - name: 常见问题解答
       href: resources-faq.md
+    - name: 云采用框架中的迁移
+      href: 'https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/index'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/migrate/'
     - name: 资源管理器模板

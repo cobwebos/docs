@@ -36,6 +36,8 @@
   items:
     - name: 选择流分析技术
       href: streaming-technologies.md
+    - name: 选择作业开发工具
+      href: feature-comparison.md
     - name: 作业的输入类型
       items:
         - name: 输入概述

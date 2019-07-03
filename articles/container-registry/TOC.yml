@@ -93,6 +93,8 @@
       items:
         - name: ACR 任务概述
           href: container-registry-tasks-overview.md
+        - name: 计划的任务
+          href: container-registry-tasks-scheduled.md
         - name: 多步骤任务
           href: container-registry-tasks-multi-step.md
         - name: 与托管标识配合使用

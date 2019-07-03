@@ -62,7 +62,7 @@
         - name: 使用设备集
           href: howto-use-device-sets.md
         - name: 对设备模板进行版本控制
-          href: howto-version-devicetemplate.md
+          href: howto-version-device-template.md
     - name: 监视和分析
       items:
         - name: 创建遥测规则
@@ -105,6 +105,8 @@
           href: howto-prepare-images.md
         - name: 配置应用程序仪表板
           href: howto-configure-homepage.md
+        - name: 使用仪表板磁贴
+          href: howto-use-tiles.md
         - name: 自定义应用程序 UI
           href: howto-customize-ui.md
         - name: 使用应用程序模板
