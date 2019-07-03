@@ -49,7 +49,7 @@ ms.locfileid: "60599263"
 
 创作区域中的应用仅可发布到对应的发布区域。 如果应用目前位于错误的创作区域中，请导出应用，然后将其导入发布区域对应的正确创作区域。 
 
-https://www.luis.ai 上创建的 LUIS 应用可以发布到除[欧洲](#publishing-to-europe)和[澳大利亚](#publishing-to-australia)区域之外的所有终结点。 
+[https://www.luis.ai](https://www.luis.ai ) 上创建的 LUIS 应用可以发布到除[欧洲](#publishing-to-europe)和[澳大利亚](#publishing-to-australia)区域之外的所有终结点。 
 
 ## <a name="publishing-to-europe"></a>发布到欧洲
 

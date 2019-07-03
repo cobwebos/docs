@@ -72,6 +72,8 @@
               href: manage-private-cloud.md
             - name: 扩展私有云
               href: expand-private-cloud.md
+            - name: 收缩私有云
+              href: shrink-private-cloud.md
             - name: 映射 Azure 订阅
               href: azure-subscription-mapping.md
             - name: 提升特权

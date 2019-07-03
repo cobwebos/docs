@@ -8,7 +8,7 @@ metadata:
   author: cherylmc
   ms.service: Bastion
   ms.topic: landing-page
-  ms.date: 06/13/2019
+  ms.date: 07/02/2019
   ms.author: cherylmc
 abstract:
   description: 了解如何使用 Azure Bastion 来连接到虚拟机。 直接在 Azure 门户中配置与虚拟机之间通过 SSL 的安全、无缝 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。
@@ -33,11 +33,3 @@ sections:
           - html: <a href="/azure/bastion/bastion-connect-vm-ssh">连接到 Windows 虚拟机</a>
           - html: <a href="/azure/bastion/bastion-connect-vm-rdp">连接到 Linux 虚拟机</a>
           - html: <a href="/azure/bastion/bastion-faq">阅读 Azure Bastion 常见问题解答</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://msdn.microsoft.com/library/azure/mt586720">REST API 参考</a></p>'

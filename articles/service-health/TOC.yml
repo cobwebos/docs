@@ -7,7 +7,7 @@
 - name: 快速入门
   items:
     - name: 配置服务运行状况事件的警报
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
 - name: 概念
   items:
     - name: Azure 状态页
@@ -19,9 +19,9 @@
 - name: 如何
   items:
     - name: 配置服务运行状况事件的警报
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: alerts-activity-log-service-notifications.md
     - name: 使用 Azure 门户查看服务运行状况通知
-      href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: service-notifications.md
     - name: 通过 Webhook 将警报发送给外部系统
       href: service-health-alert-webhook-guide.md
     - name: 将警报发送给 ServiceNow

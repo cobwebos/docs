@@ -63,14 +63,16 @@
       href: event-hubs-availability-and-consistency.md
     - name: 可伸缩性
       href: event-hubs-scalability.md
+    - name: 异地灾难恢复
+      items:
+        - name: 异地灾难恢复和异地复制
+          href: event-hubs-geo-dr.md
     - name: 安全
       items:
         - name: Azure 资源的托管标识
           href: event-hubs-managed-service-identity.md
         - name: 基于角色的访问控制（预览）
           href: event-hubs-role-based-access-control.md
-        - name: 异地灾难恢复和异地复制
-          href: event-hubs-geo-dr.md
         - name: 身份验证和安全模型概述
           href: event-hubs-authentication-and-security-model-overview.md
         - name: 安全属性

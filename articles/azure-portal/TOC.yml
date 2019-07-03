@@ -8,8 +8,6 @@
       href: azure-portal-supported-browsers-devices.md
 - name: 概念
   items:
-    - name: 创建并共享 Azure 仪表板
-      href: azure-portal-dashboards.md
     - name: 使用基于角色的访问控制共享仪表板
       href: azure-portal-dashboard-share-access.md
     - name: 以编程方式创建 Azure 仪表板
@@ -20,6 +18,8 @@
       href: azure-portal-change-theme-high-contrast.md
     - name: 对收藏夹执行添加、删除和排序操作
       href: azure-portal-add-remove-sort-favorites.md
+    - name: 创建并共享 Azure 仪表板
+      href: azure-portal-dashboards.md
     - name: 使用自定义 markdown 磁贴
       href: azure-portal-markdown-tile.md
     - name: 导出或删除用户设置
