@@ -222,7 +222,7 @@ ms.locfileid: "66417483"
     | 值 | 说明
     |-------|-------------
     | \<alpha node public key\> | alpha 节点的公钥
-    | \<Ethereum 帐户地址\> | 在默认事务节点中创建的 Ethereum 帐户地址
+    | \<Ethereum account address\> | 在默认事务节点中创建的 Ethereum 帐户地址
 
     在此示例中，**storeData** 的初始值设置为 42。
 
@@ -393,7 +393,7 @@ Summary
     | 值 | 说明
     |-------|-------------
     | \<alpha node public key\> | alpha 节点的公钥
-    | \<Ethereum 帐户地址\> | 在默认事务节点中创建的 Ethereum 帐户地址。
+    | \<Ethereum account address\> | 在默认事务节点中创建的 Ethereum 帐户地址。
 
     **privateFor** 定义事务适用的节点。 在此示例中，默认事务节点的帐户可将私人事务投射到 **alpha** 节点。 需要添加所有私人事务参与者的公钥。
 
