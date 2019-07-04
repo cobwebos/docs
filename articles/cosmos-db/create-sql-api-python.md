@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: f6420d073b4fe348b8533eaaaa5209323f35a25f
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: cb1cdbbd525d60342a6b0f1f7dfbfc9f81bc33ce
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754275"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514598"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB：使用 Azure Cosmos DB SQL API 帐户生成 Python 应用程序
 
@@ -184,13 +184,13 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 4. 在集成的终端窗口中，确保位于 azure-cosmos-db-python-getting-started 文件夹中。 如果没有位于该文件夹中，请运行以下命令来切换到示例文件夹。 
 
-    ```
+    ```cmd
     cd "\git-samples\azure-cosmos-db-python-getting-started"`
     ```
 
 5. 运行以下命令来安装 azure-cosmos 程序包。 
 
-    ```
+    ```python
     pip3 install azure-cosmos
     ```
 
@@ -198,7 +198,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 6. 运行以下命令来运行示例并将新文档存储在 Azure Cosmos dB 中。
 
-    ```
+    ```python
     python CosmosGetStarted.py
     ```
 

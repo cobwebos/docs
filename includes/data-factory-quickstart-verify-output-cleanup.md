@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 309ef92b33d5bbdf8e8aed6b162ed9428a669c87
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119345"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173420"
 ---
 ## <a name="verify-the-output"></a>验证输出
 该管道自动在 adftutorial Blob 容器中创建 output 文件夹， 然后将 emp.txt 文件从 input 文件夹复制到 output 文件夹。 
 
-1. 在 Azure 门户的“adftutorial”容器页中单击“刷新”，查看输出文件夹。 
+1. 在 Azure 门户的“adftutorial”容器页中单击“刷新”，查看输出文件夹。   
     
     ![刷新](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
-2. 单击文件夹列表中的“output”。 
+2. 单击文件夹列表中的“output”。  
 2. 确认 **emp.txt** 已复制到 output 文件夹。 
 
     ![刷新](media/data-factory-quickstart-verify-output-cleanup/output-file.png)

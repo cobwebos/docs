@@ -10,12 +10,12 @@ ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.devlang: powershell
-ms.openlocfilehash: 24640c9013f7a5b81cd5b1b6f45de49c5baad0e6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 1fc541f1236d17e1c2ffbf64ddb0340dcf5c0b9a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473271"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063482"
 ---
 # <a name="create-your-first-powershell-function-in-azure-preview"></a>在 Azure 中创建第一个 PowerShell 函数（预览）
 
@@ -36,7 +36,7 @@ ms.locfileid: "65473271"
 
 完成本快速入门教程需要：
 
-* 安装 [PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core)
+* 安装 [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
 
 * 在某一[受支持的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上安装 [Visual Studio Code](https://code.visualstudio.com/)。 
 
@@ -56,23 +56,23 @@ ms.locfileid: "65473271"
 
 使用 Visual Studio Code 中的 Azure Functions 项目模板可创建一个项目，该项目可发布到 Azure 中的函数应用。 函数应用可将函数分组为一个逻辑单元，以用于管理、部署和共享资源。 
 
-1. 在 Visual Studio Code 中，选择 Azure 徽标以显示“Azure:Functions”区域，然后选择“创建新项目”图标。
+1. 在 Visual Studio Code 中，选择 Azure 徽标以显示“Azure:  Functions”区域，然后选择“创建新项目”图标。
 
     ![创建函数应用项目](./media/functions-create-first-function-powershell/create-function-app-project.png)
 
-1. 选择 Functions 项目工作区的位置，然后选择“选择”。
+1. 选择 Functions 项目工作区的位置，然后选择“选择”  。
 
     > [!NOTE]
     > 本文已设计为在工作区之外完成。 在这种情况下，请不要选择属于工作区内的项目文件夹。
 
-1. 选择“Powershell (预览版)”作为函数应用项目的语言，然后然后选择“Azure Functions v2”。
+1. 选择“Powershell (预览版)”作为函数应用项目的语言，然后然后选择“Azure Functions v2”。  
 
-1. 选择“HTTP 触发器”作为第一个函数的模板，使用 `HTTPTrigger` 作为函数名称，然后选择授权级别“函数”。
+1. 选择“HTTP 触发器”作为第一个函数的模板，使用 `HTTPTrigger` 作为函数名称，然后选择授权级别“函数”。  
 
     > [!NOTE]
-    > 在 Azure 中调用函数终结点时，“函数”授权级别需要“函数密钥”值。[](functions-bindings-http-webhook.md#authorization-keys) 这样可以增大任何人调用你的函数的难度。
+    > 在 Azure 中调用函数终结点时，[函数](functions-bindings-http-webhook.md#authorization-keys) 授权级别需要“函数密钥”值。  这样可以增大任何人调用你的函数的难度。
 
-1. 出现提示时，选择“添加到工作区”。
+1. 出现提示时，选择“添加到工作区”  。
 
 Visual Studio Code 将在新的工作区中创建 PowerShell 函数应用项目。 此项目包含 [host.json](functions-host-json.md) 和 [local.settings.json](functions-run-local.md#local-settings-file) 配置文件，这些文件将应用到项目中的所有函数。 此 [PowerShell 项目](functions-reference-powershell.md#folder-structure)与 Azure 中运行的函数应用相同。
 
@@ -80,9 +80,9 @@ Visual Studio Code 将在新的工作区中创建 PowerShell 函数应用项目�
 
 Azure Functions Core Tools 与 Visual Studio Code 相集成，可让在本地运行和调试 Azure Functions 项目。  
 
-1. 若要调试函数，请在函数代码中要附加调试器的位置前面插入对 [`Wait-Debugger`] cmdlet 的调用，然后按 F5 启动函数应用项目并附加调试器。 来自 Core Tools 的输出会显示在“终端”面板中。
+1. 若要调试函数，请在函数代码中要附加调试器的位置前面插入对 [`Wait-Debugger`] cmdlet 的调用，然后按 F5 启动函数应用项目并附加调试器。 来自 Core Tools 的输出会显示在“终端”  面板中。
 
-1. 在“终端”面板中，复制 HTTP 触发的函数的 URL 终结点。
+1. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
 
     ![Azure 本地输出](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
 

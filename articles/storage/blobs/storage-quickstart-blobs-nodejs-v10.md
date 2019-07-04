@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: f426ee10017533c21021d618d613dc0931767988
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e2deda6bc9a5d13a631e9917f3020cfa68ee1e10
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149431"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536157"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>快速入门：使用 Azure Storage v10 SDK for JavaScript 上载、下载、列出和删除 blob
 
-本快速入门介绍如何在 Node.js 中使用 [Azure Storage v10 SDK for JavaScript](https://github.com/Azure/azure-storage-js) 来上载、下载、列出和删除 blob 以及管理容器。
+本快速入门介绍如何在 Node.js 中使用 [Azure Storage v10 SDK for JavaScript](https://github.com/Azure/azure-sdk-for-js) 来上载、下载、列出和删除 blob 以及管理容器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -99,7 +99,7 @@ const {
 
 ```javascript
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').load();
+    require('dotenv').config();
 }
 ```
 

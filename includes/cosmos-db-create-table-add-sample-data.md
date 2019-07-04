@@ -9,19 +9,19 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 4341d06f09c60933bfc0512f54e024b35a19d8dd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151292"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173492"
 ---
 现在可以使用数据资源管理器将数据添加到新表。
 
-1. 在数据资源管理器中，展开 **sample-table**，单击“实体”，然后单击“添加实体”。
+1. 在数据资源管理器中，展开 **sample-table**，单击“实体”，然后单击“添加实体”。  
 
    ![在 Azure 门户的数据资源管理器中创建新实体](./media/cosmos-db-create-table-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
 
-2. 现在请将数据添加到 PartitionKey 值框和 RowKey 值框，然后单击“添加实体”。
+2. 现在请将数据添加到 PartitionKey 值框和 RowKey 值框，然后单击“添加实体”。 
 
    ![为新实体设置分区键和行键](./media/cosmos-db-create-table-add-sample-data/azure-cosmosdb-data-explorer-new-entity.png)
   
