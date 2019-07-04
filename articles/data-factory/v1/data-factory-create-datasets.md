@@ -196,7 +196,7 @@ structure:
 | name |列的名称。 |是 |
 | type |列的数据类型。  |否 |
 | culture |类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 |否 |
-| 格式 |类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 |否 |
+| format |类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 |否 |
 
 若要了解何时加入“结构”信息以及在结构  部分包含哪些信息，请遵循以下指南。
 
@@ -235,7 +235,7 @@ structure:
 
 | 属性 | 说明 | 需要 | 默认 |
 | --- | --- | --- | --- |
-| 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |NA |
+| frequency |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |NA |
 | interval |指定频率的乘数。<br/><br/>“频率 x 间隔”确定生成切片的频率。 例如，如果需要数据集每小时生成切片，请将“frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/>注意：如果将“frequency”  指定为“Minute”  ，则应将“interval”设置为小于 15 的值。 |是 |NA |
 | style |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>若将“frequency”  设置为“Month”  ，将“style”  设置为“EndOfInterval”  ，则会在每月的最后一天生成切片。 若将“style”  设置为“StartOfInterval”  ，则会在每月的第一天生成切片。<br/><br/>若将“frequency”  设置为“Day”  ，将“style”  设置为“EndOfInterval”  ，则会在一天的最后一小时生成切片。<br/><br/>若将 **frequency** 设置为 **Hour**，**style** 设置为 **EndOfInterval**，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
 | anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/>请注意，是否此属性的日期部分比指定的频率更精细，则忽略更精细部分。 例如，如果“间隔”  是“每小时”  （frequency：hour 且 interval：1），而 **anchorDateTime** 包含**分钟和秒**，则将忽略 **anchorDateTime** 的分钟和秒部分。 |否 |01/01/0001 |
