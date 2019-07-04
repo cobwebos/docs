@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3e951e44aeaa4ca8d3d06bae80a80bcb2eb1dd52
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924544"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075076"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>教程：连接、设置和激活 Azure Data Box Edge 
 
@@ -44,7 +44,7 @@ ms.locfileid: "64924544"
     ![已布线设备的背板](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
 
-3. 打开浏览器窗口并通过 https://192.168.100.10 访问设备的本地 Web UI。  
+3. 打开浏览器窗口并通过 `https://192.168.100.10` 访问设备的本地 Web UI。  
     打开设备后，此操作可能需要几分钟完成。 
 
     此时会出现一个错误或警告，指出网站的安全证书有问题。 

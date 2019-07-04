@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: f54cea75e6f7866f1be41d3b0f82393af2235a0a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 27439758c9e2b909bb7179b69c7aade81429f502
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949877"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070489"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>快速入门：创建 Azure SQL 数据库托管实例
 
@@ -36,13 +36,13 @@ ms.locfileid: "65949877"
 
 下列步骤展示了如何创建托管实例。
 
-1. 在 Azure 门户的左上角，选择“创建资源”。
-2. 找到“托管实例”，然后选择“Azure SQL 托管实例”。
-3. 选择“创建”。
+1. 在 Azure 门户的左上角，选择“创建资源”  。
+2. 找到“托管实例”，然后选择“Azure SQL 托管实例”   。
+3. 选择“创建”  。
 
    ![创建托管实例](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
 
-4. 根据下表中的信息，在“SQL 托管实例”窗体中填充要求的信息。
+4. 根据下表中的信息，在“SQL 托管实例”窗体中填充要求的信息  。
 
    | 设置| 建议的值 | Description |
    | ------ | --------------- | ----------- |
@@ -53,8 +53,8 @@ ms.locfileid: "65949877"
    |**时区**|托管实例要观察的时区。|有关详细信息，请参阅[时区](sql-database-managed-instance-timezone.md)。|
    |**排序规则**|要为托管实例使用的排序规则。|如果从 SQL Server 迁移数据库，请使用 `SELECT SERVERPROPERTY(N'Collation')` 检查源排序规则并使用该值。 有关排序规则的信息，请参阅[设置或更改服务器排序规则](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)。|
    |**位置**|要在其中创建托管实例的位置。|有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
-   |**虚拟网络**|选择“创建新的虚拟网络”或有效的虚拟网络和子网。| 如果网络或子网不可用，则必须先[对其进行修改以满足网络要求](sql-database-managed-instance-configure-vnet-subnet.md)，然后再选择它作为新托管实例的目标。 有关为托管实例配置网络环境所要满足的要求的信息，请参阅[为托管实例配置虚拟网络](sql-database-managed-instance-connectivity-architecture.md)。 |
-   |**启用公共终结点**   |选中此选项可启用公共终结点   |若要通过公共数据终结点访问托管实例，需要选中“启用公共终结点”。| 
+   |**虚拟网络**|选择“创建新的虚拟网络”或有效的虚拟网络和子网  。| 如果网络或子网不可用，则必须先[对其进行修改以满足网络要求](sql-database-managed-instance-configure-vnet-subnet.md)，然后再选择它作为新托管实例的目标。 有关为托管实例配置网络环境所要满足的要求的信息，请参阅[为托管实例配置虚拟网络](sql-database-managed-instance-connectivity-architecture.md)。 |
+   |**启用公共终结点**   |选中此选项可启用公共终结点   |若要通过公共数据终结点访问托管实例，需要选中“启用公共终结点”。 | 
    |**允许的访问来源**   |选择一个选项： <ul> <li>**Azure 服务**</li> <li>**Internet**</li> <li>**不允许访问**</li></ul>   |在门户体验中可以使用公共终结点配置安全组。 </br> </br> 根据具体的方案选择以下选项之一： </br> <ul> <li>Azure 服务 - 从 Power BI 或其他多租户服务连接时，建议使用此选项。 </li> <li> Internet - 用于测试，可让你快速运转托管实例。 不建议在生产环境中使用。 </li> <li> 不允许访问 - 此选项会创建一个“拒绝”安全规则。 需要修改此规则才能通过公共终结点访问托管实例。 </li> </ul> </br> 有关公共终结点安全性的详细信息，请参阅[通过公共终结点安全使用 Azure SQL 数据库托管实例](sql-database-managed-instance-public-endpoint-securely.md)。|
    |**连接类型**|选择“代理”或“重定向”连接类型。|有关连接类型的详细信息，请参阅 [Azure SQL 数据库连接策略](sql-database-connectivity-architecture.md#connection-policy)。|
    |**资源组**|新的或现有的资源组。|如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。|
@@ -62,18 +62,18 @@ ms.locfileid: "65949877"
    ![托管实例窗体](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
 5. 若要将托管实例用作实例故障转移组辅助实例，请选择“签出”并指定 DnsAzurePartner 托管实例。 此功能以预览版提供，未在以下屏幕截图中显示。
-6. 选择“定价层”，以设置计算和存储资源的大小并查看定价层选项。 默认值是具有 32 GB 内存和 16 个 vCore 的“常规用途”定价层。
+6. 选择“定价层”，以设置计算和存储资源的大小并查看定价层选项。  默认值是具有 32 GB 内存和 16 个 vCore 的“常规用途”定价层。
 7. 使用滑块或文本框指定存储量和虚拟核心数。
-8. 完成后，选择“应用”以保存所做的选择。 
-9. 选择“创建”，部署托管实例。
-10. 选择“通知”图标以查看部署状态。
+8. 完成后，选择“应用”以保存所做的选择。  
+9. 选择“创建”，部署托管实例  。
+10. 选择“通知”图标以查看部署状态。 
 
     ![托管实例部署进度](./media/sql-database-managed-instance-get-started/deployment-progress.png)
 
-11. 选择“正在进行的部署”以打开“托管实例”窗口，进一步监视部署进度。 
+11. 选择“正在进行的部署”以打开“托管实例”窗口，进一步监视部署进度  。 
 
 > [!IMPORTANT]
-> 子网中第一个实例的部署时间通常远超后续实例的部署时间。 请勿因持续时间超出预期而取消部署操作。 在子网中创建第二个托管实例仅需要花费数分钟时间。
+> 子网中第一个实例的部署时间通常远超后续实例的部署时间。 请勿因持续时间超出预期而取消部署操作。
 
 ## <a name="review-resources-and-retrieve-your-fully-qualified-server-name"></a>查看资源并检索你的完全限定的服务器名称
 
@@ -103,7 +103,7 @@ ms.locfileid: "65949877"
 
    ![托管实例](./media/sql-database-managed-instance-get-started/managed-instance.png)
 
-7. 在“概述”选项卡上，找到“主机”属性。 复制托管实例的完全限定主机地址，以在下一个快速入门中使用。
+7. 在“概述”选项卡上，找到“主机”属性。   复制托管实例的完全限定主机地址，以在下一个快速入门中使用。
 
    ![主机名](./media/sql-database-managed-instance-get-started/host-name.png)
 

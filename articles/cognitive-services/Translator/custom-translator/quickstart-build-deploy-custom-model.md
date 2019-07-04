@@ -2,19 +2,19 @@
 title: 快速入门：生成、部署和使用自定义模型 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用自定义翻译通过分步过程生成一个翻译系统。
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: aa38bbf211c9d62bcb9051a7ddc7f7d404add585
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 8f39abd41534ec470b5b4b6f232a556a8c8de5b9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389616"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449476"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>快速入门：生成、部署和使用翻译的自定义模型
 

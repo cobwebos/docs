@@ -16,24 +16,24 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: v-ant-msft
 ms.openlocfilehash: 13231fe75ff173999f3a7fa4728f583c6f04c54d
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "67049798"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>教程：为 Zscaler ZSCloud 配置自动用户预配
 
 本教程介绍如何将 Azure Active Directory (Azure AD) 配置为自动为 Zscaler ZSCloud 预配和取消设置用户和/或组。
 
 > [!NOTE]
-> 本教程介绍在 Azure AD 用户预配服务基础上构建的连接器。 有关此服务的功能、工作原理的重要详细信息以及常见问题解答，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消设置](../active-directory-saas-app-provisioning.md)。
+> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题解答的重要详细信息，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消预配](../active-directory-saas-app-provisioning.md)。
 >
-> 此连接器目前提供公开预览版。 要详细了解 Azure 预览功能的常规使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此连接器目前以公共预览版提供。 若要详细了解 Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程中概述的步骤需要具备以下各项：
+若要完成本教程中所述的步骤，需要准备好以下各项：
 
 * Azure AD 租户。
 * Zscaler ZSCloud 租户。
@@ -50,7 +50,7 @@ ms.locfileid: "59579166"
 
 ![选择“Azure Active Directory”](common/select-azuread.png)
 
-转到“企业应用程序”，并选择“所有应用程序”   ：
+转到“企业应用程序”，选择“所有应用程序”   ：
 
 ![企业应用程序](common/enterprise-applications.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "59579166"
 
 * 建议先将一个 Azure AD 用户分配到 Zscaler ZSCloud 以测试自动用户预配配置。 稍后再分配更多用户和组。
 
-* 将用户分配到 Zscaler ZSCloud 时，需要在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 具有“默认访问权限”  角色的用户排除在预配之外。
+* 如果将用户分配到 Zscaler ZSCloud，则需要在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="set-up-automatic-user-provisioning"></a>设置自动用户预配
 
