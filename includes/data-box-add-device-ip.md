@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: e4b366075cb16f62a0e16b5b06da6fb19ffefdb9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150743"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173615"
 ---
 1. 登录到 Data Box 设备。 请确保该设备已解锁。
 
     ![Data Box 仪表板](media/data-box-add-device-ip/data-box-connect-via-rest-1.png)
 
-2. 转到“设置网络接口”。 记下用来连接到客户端的网络接口的设备 IP 地址。
+2. 转到“设置网络接口”  。 记下用来连接到客户端的网络接口的设备 IP 地址。
 
     ![Data Box 仪表板](media/data-box-add-device-ip/data-box-connect-via-rest-2.png)
 
-3. 转到“连接和复制”，并单击“Rest”。
+3. 转到“连接和复制”  ，并单击“Rest”  。
 
     ![Data Box 仪表板](media/data-box-add-device-ip/data-box-connect-via-rest-3.png)
 
-4. 从“访问存储帐户和上传数据”对话框中，复制 **Blob 服务终结点**。
+4. 从“访问存储帐户和上传数据”  对话框中，复制 **Blob 服务终结点**。
 
     ![Data Box 仪表板](media/data-box-add-device-ip/data-box-connect-via-rest-4.png)
 

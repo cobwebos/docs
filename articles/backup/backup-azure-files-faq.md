@@ -2,23 +2,23 @@
 title: 备份 Azure 文件常见问题解答
 description: 本文详述如何保护 Azure 文件共享。
 services: backup
-author: rayne-wiselman
-ms.author: raynew
+author: dcurwin
+ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 139ce3fd81c14f9bf97e45c8aebb83d2fb1bbe10
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0c9e68a14aa18726a751709e99953d494c62308e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426607"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275536"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
 
-若要快速浏览本文的各个部分，请使用右侧“本文内容”下的链接。
+若要快速浏览本文的各个部分，请使用右侧“本文内容”  下的链接。
 
 ## <a name="configuring-the-backup-job-for-azure-files"></a>为 Azure 文件配置备份作业
 
@@ -90,7 +90,7 @@ Azure 文件共享的备份不支持启用了虚拟网络的存储帐户。 在�
 删除 Azure 文件共享时，系统会显示会被删除的备份的列表，并会要求你进行确认。 无法还原已删除的 Azure 文件共享。
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share-br"></a>在停止对 Azure 文件共享进行保护的情况下，是否能从备份还原？ <br/>
-是的。 如果在停止保护时选择了“保留备份数据”，则可从所有现有的还原点还原。
+是的。 如果在停止保护时选择了“保留备份数据”，则可从所有现有的还原点还原。 
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>如果取消正在进行的还原作业，会发生什么情况？
 如果取消正在进行的还原作业，则还原过程将停止，并且在取消之前还原的所有文件将保留在已配置的目标位置（原始位置或备用位置），而不进行任何回退。 

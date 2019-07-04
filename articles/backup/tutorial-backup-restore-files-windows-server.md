@@ -1,21 +1,19 @@
 ---
 title: 将文件从 Azure 恢复到 Windows Server
 description: 本教程详细介绍了如何将项目从 Azure 恢复到 Windows Server。
-services: backup
-author: saurabhsensharma
-manager: shivamg
-keywords: windows server 备份; 还原文件 windows server; 备份和灾难恢复
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: tutorial
 ms.date: 2/14/2018
-ms.author: saurse
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: b01811d9c933802263e975b23b5d40cd77303766
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 575ebfb62b3eed70f783bc68b7f06559e5632490
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60722853"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273966"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>将文件从 Azure 恢复到 Windows Server
 
@@ -32,27 +30,27 @@ ms.locfileid: "60722853"
 
 使用 Microsoft Azure 恢复服务 (MARS) 代理安装名为“Microsoft Azure 备份”的有用用户界面向导。 Microsoft Azure 备份向导与 Microsoft Azure 恢复服务 (MARS) 代理协同工作，从存储在 Azure 中的恢复点检索备份数据。 使用 Microsoft Azure 备份向导确定要还原到 Windows Server 的文件或文件夹。 
 
-1. 打开“Microsoft Azure 备份”管理单元。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。
+1. 打开“Microsoft Azure 备份”管理单元  。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。
 
     ![等待中的备份](./media/tutorial-backup-restore-files-windows-server/mars.png)
 
-2. 在向导中，单击代理控制台的“操作窗格”中的“恢复数据”，启动“恢复数据”向导。
+2. 在向导中，单击代理控制台的“操作窗格”  中的“恢复数据”  ，启动“恢复数据”  向导。
 
     ![等待中的备份](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
 
-3. 在“入门”页上，选择“此服务器(服务器名称)”，然后单击“下一步”。
+3. 在“入门”  页上，选择“此服务器(服务器名称)”  ，然后单击“下一步”  。
 
-4. 在“选择恢复模式”页上，选择“个别文件和文件夹”，然后单击“下一步”以开始恢复点选择过程。
+4. 在“选择恢复模式”  页上，选择“个别文件和文件夹”  ，然后单击“下一步”  以开始恢复点选择过程。
  
-5. 在“选择卷和日期”页上，选择包含想要还原的文件或文件夹的卷，然后单击“装载”。 选择日期，然后从下拉菜单中选择与恢复点相对应的时间。 以**粗体**显示的日期指示当天至少有一个可用的恢复点。
+5. 在“选择卷和日期”  页上，选择包含想要还原的文件或文件夹的卷，然后单击“装载”  。 选择日期，然后从下拉菜单中选择与恢复点相对应的时间。 以**粗体**显示的日期指示当天至少有一个可用的恢复点。
 
     ![等待中的备份](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
  
-    单击“装载”时，Azure 备份会将恢复点用作磁盘。 从磁盘浏览和恢复文件。
+    单击“装载”  时，Azure 备份会将恢复点用作磁盘。 从磁盘浏览和恢复文件。
 
 ## <a name="restore-items-from-a-recovery-point"></a>从恢复点还原项目
 
-1. 装载恢复卷后，单击“浏览”打开 Windows 资源管理器，并查找希望恢复的文件和文件夹。 
+1. 装载恢复卷后，单击“浏览”  打开 Windows 资源管理器，并查找希望恢复的文件和文件夹。 
 
     ![等待中的备份](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
 
@@ -62,13 +60,13 @@ ms.locfileid: "60722853"
 
     ![等待中的备份](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
 
-3. 完成还原文件和/或文件夹后，在“恢复数据”向导的“浏览和恢复文件”页上，单击“卸载”。 
+3. 完成还原文件和/或文件夹后，在“恢复数据”  向导的“浏览和恢复文件”  页上，单击“卸载”  。 
 
     ![等待中的备份](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
 
-4.  单击“是”，确认要卸载该卷。
+4.  单击“是”  ，确认要卸载该卷。
 
-    卸载快照后，代理控制台的“作业”窗格中将显示“作业已完成”。
+    卸载快照后，代理控制台的“作业”  窗格中将显示“作业已完成”  。
 
 ## <a name="next-steps"></a>后续步骤
 

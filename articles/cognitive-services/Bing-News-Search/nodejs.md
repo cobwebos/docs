@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 86c00242d2d7dbb9441b09dc327e4ee8cbbd729b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1fb2676fb1513ab4955ffa35c559b2ae36e0efd0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099961"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203320"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>快速入门：使用 Node.js 和必应新闻搜索 REST API 执行新闻搜索
 
@@ -64,14 +64,14 @@ ms.locfileid: "58099961"
         };
         ```
 
-    2. 在调用数据标志时存储响应的正文
+    2. 在调用数据  标志时存储响应的正文
         ```javascript
         response.on('data', function (d) {
             body += d;
         });
         ```
 
-    3. 当通过信号发出了 end 标志时，可以查看 JSON 和标头。
+    3. 当通过信号发出了 end 标志时，可以查看 JSON 和标头  。
 
         ```javascript
         response.on('end', function () {

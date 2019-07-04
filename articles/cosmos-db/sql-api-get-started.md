@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: 7574985dbcc502d03bc886c7651c859b22968c5f
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 60c7e6b32f60d6f42d706489c41dbeea4af0d15d
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596093"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342122"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
 
@@ -138,7 +138,7 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户：
       
       `private const string PrimaryKey = "19ZDNJAiYL26tmnRvoez6hmtIfBGwjun50PWRjNYMC2ig8Ob9hYk7Fq1RYSv8FcIYnh1TdBISvCh7s6yyb0000==";`
    
-1. 在 `Main` 方法之后，添加一个名为 `GetStartedDemo` 的新异步任务，用以实例化名为 `client` 的新 `DocumentClient`。
+1. 在 `Main` 方法之后，添加一个名为 `GetStartedDemo` 的新异步任务，用来实例化名为 `client` 的新 `DocumentClient`。
    
    ```csharp
       private async Task GetStartedDemo()
@@ -450,7 +450,7 @@ Azure Cosmos DB 支持对存储在集合中的 JSON 文档进行各种[查询](h
 
 ![说明 NoSQL 教程创建 C# 控制台应用程序所用查询的范围和意义的图表。](./media/sql-api-get-started/nosql-tutorial-collection-documents.png)
 
-SQL 查询中的 [FROM](how-to-sql-query.md#FromClause) 关键字是可选项，因为 Azure Cosmos DB 查询已限制为单个集合。 可将 `FROM Families f` 替换为 `FROM root r` 或所选的任何其他变量名称。 Azure Cosmos DB 将推断表示当前集合的所选 `Families`、`root` 或变量名。
+SQL 查询中的 [FROM](sql-query-from.md) 关键字是可选项，因为 Azure Cosmos DB 查询已限制为单个集合。 可将 `FROM Families f` 替换为 `FROM root r` 或所选的任何其他变量名称。 Azure Cosmos DB 将推断表示当前集合的所选 `Families`、`root` 或变量名。
 
 ## <a id="ReplaceDocument"></a>更新 JSON 文档
 
