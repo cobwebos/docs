@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: d7bd2555753df4c12404844c86be8f0339d88e23
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 06/28/2019
+ms.openlocfilehash: 96bfb80602efe8e63f814fc9bf6cff3ae52e5983
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415689"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461537"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>教程：使用 DMS 以联机方式将 PostgreSQL 迁移到 Azure Database for PostgreSQL
 
@@ -24,6 +24,7 @@ ms.locfileid: "65415689"
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
+>
 > * 使用 pg_dump 实用程序迁移示例架构。
 > * 创建 Azure 数据库迁移服务的实例。
 > * 使用 Azure 数据库迁移服务创建迁移项目。
@@ -65,11 +66,11 @@ ms.locfileid: "65415689"
 * 为 Azure Database for PostgreSQL 创建服务器级[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的 VNet 子网范围。
 * 可以通过两种方法来调用 CLI：
 
-    * 在 Azure 门户右上角选择“Cloud Shell”按钮：
+  * 在 Azure 门户右上角选择“Cloud Shell”按钮：
 
        ![Azure 门户中的“Cloud Shell”按钮](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
-    * 在本地安装并运行 CLI。 CLI 2.0 是用于管理 Azure 资源的命令行工具。
+  * 在本地安装并运行 CLI。 CLI 2.0 是用于管理 Azure 资源的命令行工具。
 
        若要下载 CLI，请按照[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 一文中的说明操作。 本文还列出了支持 CLI 2.0 的平台。
 
@@ -77,9 +78,9 @@ ms.locfileid: "65415689"
 
 * 在 postgresql.config 文件中启用逻辑复制，并设置以下参数：
 
-    * wal_level = **logical**
-    * max_replication_slots = [槽数]，建议设置为“5 个槽”
-    * max_wal_senders =[并发任务数] - max_wal_senders 参数设置可以运行的并发任务数，建议设置为“10 个任务”
+  * wal_level = **logical**
+  * max_replication_slots = [槽数]，建议设置为“5 个槽” 
+  * max_wal_senders =[并发任务数] - max_wal_senders 参数设置可以运行的并发任务数，建议设置为“10 个任务” 
 
 ## <a name="migrate-the-sample-schema"></a>迁移示例架构
 
@@ -115,8 +116,7 @@ ms.locfileid: "65415689"
     ```
 
 4. 如果架构中有外键，则迁移的初始加载和连续同步会失败。 请在 PgAdmin 或 psql 中执行以下脚本，以便在目标 (Azure Database for PostgreSQL) 中提取 drop foreign key 脚本和 add foreign key 脚本。
-
-    
+  
     ```
     SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
@@ -141,7 +141,7 @@ ms.locfileid: "65415689"
           AND ccu.table_schema = tc.table_schema
     WHERE constraint_type = 'FOREIGN KEY') Queries
       GROUP BY Queries.tablename;
-     ```
+    ```
 
     运行查询结果中的 drop foreign key（第二列）。
 

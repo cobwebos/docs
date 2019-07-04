@@ -2,19 +2,20 @@
 title: 道德和负责任的使用 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 这些指南旨在帮助你以特定方式实现个性化，而该方式有助于你培养他人对你的公司和服务的信任。 请务必抽些空出来，研究、了解并仔细考虑一下个性化对人们生活的影响。 如有疑问，请寻求指导。
+services: cognitive-services
 author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 06/12/2019
 ms.author: edjez
-ms.openlocfilehash: 437dc1fba2502602109483aa9d6f25b4265af26f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 783bfcd5ad9e114a5329892449f35f6ed8316948
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239892"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428431"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>有关如何以负责任的方式实现个性化体验创建服务的指南
 
@@ -196,7 +197,7 @@ Microsoft 始终致力于优化工具和文档，帮助你履行这些责任。 
 * [Ethics and Data Science](https://www.oreilly.com/library/view/ethics-and-data/9781492043898/)《道德和数据科学》，作者：DJ Patil、Hilary Mason、Mike Loukides
 * [ACM Code of Ethics](https://www.acm.org/code-of-ethics)（ACM 道德准则）
 * [Genetic Information Nondiscrimination Act - GINA](https://en.wikipedia.org/wiki/Genetic_Information_Nondiscrimination_Act)（反基因歧视法 - GINA）
-* [FATML Principles for Accountable Algorithms](http://www.fatml.org/resources/principles-for-accountable-algorithms)（FATML 算法问责原则）
+* [FATML Principles for Accountable Algorithms](https://www.fatml.org/resources/principles-for-accountable-algorithms)（FATML 算法问责原则）
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: b7228fdf1bb67ff8029412174a883a3a0b123cfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 266d6160562d5a97bde75597216338214f3d988d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67126200"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441432"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的企业安全性套餐
 
@@ -49,7 +49,7 @@ HDInsight 中的外围安全性通过虚拟网络和 Azure VPN 网关服务实�
 
 管理员可以查看和报告对 HDInsight 群集资源与数据的所有访问。 管理员还可以查看和报告对在 Apache Ranger 支持的终结点中创建的访问控制策略进行的所有更改。 
 
-ESP HDInsight 群集使用常见的 Apache Ranger UI 来搜索审核日志。 在后端，Ranger 使用 [Apache Solr](http://lucene.apache.org/solr/) 来存储和搜索日志。
+ESP HDInsight 群集使用常见的 Apache Ranger UI 来搜索审核日志。 在后端，Ranger 使用 [Apache Solr](https://lucene.apache.org/solr/) 来存储和搜索日志。
 
 ## <a name="encryption"></a>加密
 保护数据对于满足组织安全性和合规性要求具有重要意义。 除了限制未经授权的员工访问数据外，还应对数据加密。 

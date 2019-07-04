@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.openlocfilehash: 3dead1bdedb75a1b6fafb947da9c88094f0c4de9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/24/2019
+ms.openlocfilehash: 7a23d30e940417a6191cf14ad5d60159bd11c3da
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724151"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446398"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教程：使用 Apache Kafka 生成者和使用者 API
 
@@ -65,8 +65,7 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
     </dependency>
     ```
 
-    > [!NOTE]  
-    > `${kafka.version}` 条目在 `pom.xml` 的 `<properties>..</properties>` 部分进行声明，并配置为 HDInsight 群集的 Kafka 版本。
+    `${kafka.version}` 条目在 `pom.xml` 的 `<properties>..</properties>` 部分进行声明，并配置为 HDInsight 群集的 Kafka 版本。
 
 * 插件：Maven 插件提供各种功能。 此项目使用了以下插件：
 
@@ -211,19 +210,28 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 \; attach
 ```
 
-此命令使用 `tmux` 将终端拆分为两列。 每列中都会启动使用者，且具有相同的组 ID 值。 使用者完成读取后，请注意，每个使用者仅读取记录的一部分。 按 Ctrl+C 两次以退出 `tmux`。
+此命令使用 `tmux` 将终端拆分为两列。 每列中都会启动使用者，且具有相同的组 ID 值。 使用者完成读取后，请注意，每个使用者仅读取记录的一部分。 按 Ctrl+C  两次以退出 `tmux`。
 
 同一组中客户端的使用情况通过主题的分区进行处理。 在此代码示例中，之前创建的 `test` 主题有 8 个分区。 如果启动 8 个使用者，则每个使用者都从主题的单个分区读取记录。
 
 > [!IMPORTANT]  
 > 使用者组中存在的使用者实例不能比分区多。 此示例中，一个使用者组最多可包含八个使用者，因为这是本主题中的分区数。 也可拥有多个使用者组，每个组的使用者不能超过八个。
 
-存储在 Kafka 中的记录都按在分区中接收的顺序进行存储。 若要在分区内实现记录的有序交付，请创建一个使用者组，其中的使用者实例数与分区数匹配。 若要在主题内实现记录的有序交付，请创建仅含一个使用者实例的使用者组。
+存储在 Kafka 中的记录都按在分区中接收的顺序进行存储。 若要在分区内  实现记录的有序交付，请创建一个使用者组，其中的使用者实例数与分区数匹配。 若要在主题内  实现记录的有序交付，请创建仅含一个使用者实例的使用者组。
+
+## <a name="clean-up-resources"></a>清理资源
+
+若要清理本教程创建的资源，可以删除资源组。 删除资源组也会删除相关联的 HDInsight 群集，以及与资源组相关联的任何其他资源。
+
+若要使用 Azure 门户删除资源组，请执行以下操作：
+
+1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。 
+2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。 
+3. 选择“删除资源组”，然后进行确认。 
 
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何将 Apache Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。 使用以下内容，详细了解如何使用 Kafka：
 
-* [分析 Apache Kafka 日志](apache-kafka-log-analytics-operations-management.md)
-* [在 Apache Kafka 群集之间复制数据](apache-kafka-mirroring.md)
-* [将 Apache Kafka 流 API 与 HDInsight 配合使用](apache-kafka-streams-api.md)
+> [!div class="nextstepaction"]
+> [分析 Apache Kafka 日志](apache-kafka-log-analytics-operations-management.md)

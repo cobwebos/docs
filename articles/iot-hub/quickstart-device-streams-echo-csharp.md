@@ -1,21 +1,20 @@
 ---
 title: 通过 Azure IoT 中心设备流（预览版）使用 C# 与设备应用进行通信 | Microsoft Docs
 description: 在本快速入门中，我们将运行两个使用通过 IoT 中心建立的设备流通信的示例 C# 应用程序。
-author: rezasherafat
-manager: briz
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
-ms.author: rezas
-ms.openlocfilehash: 74a8fc40cff12070f7cea99981eb4e8321d7c1ef
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.author: robinsh
+ms.openlocfilehash: de581362371e28523c99f961dfdb5c2009901343
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735139"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446110"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流（预览版）使用 C# 与设备应用程序进行通信
 
