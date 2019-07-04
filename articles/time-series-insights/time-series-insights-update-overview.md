@@ -6,17 +6,17 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: anshan
+ms.reviewer: dpalled
 ms.workload: big-data
 ms.topic: overview
 ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6bcf0155be87a5b36c6b850fa889e23a340ac7ec
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b32ff070a1ffa9f83132ecc1d3e43bae398f509d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237513"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460749"
 ---
 # <a name="azure-time-series-insights-preview"></a>Azure 时序见解预览版
 
@@ -96,5 +96,5 @@ IoT 数据通常仅在第一方数据源（如 CRM 或 ERP）提供的其他数�
 > [Azure 时序见解预览版用例](./time-series-insights-update-use-cases.md)
 
 <!-- Images -->
-[1]: media/v2-update-overview/overview_one.png
-[2]: media/v2-update-overview/overview_two.png
+[1]: media/v2-update-overview/overview-one.png
+[2]: media/v2-update-overview/overview-two.png
