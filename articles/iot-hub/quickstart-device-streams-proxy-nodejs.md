@@ -1,21 +1,20 @@
 ---
 title: 适用于 SSH 和 RDP 的 Azure IoT 中心设备流 Node.js 快速入门（预览）| Microsoft Docs
 description: 在本快速入门中，我们将运行一个示例 Node.js 应用程序，该应用程序充当代理，可以通过 IoT 中心设备流实现 SSH 和 RDP 方案。
-author: rezasherafat
-manager: briz
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
-ms.author: rezas
-ms.openlocfilehash: 1d77f3a10e286246e23ae522e95aa23c487cca2f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.author: robinsh
+ms.openlocfilehash: 83339273d9161c3947df191d10e788980db39b28
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735114"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446035"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>快速入门：使用 Node.js 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 

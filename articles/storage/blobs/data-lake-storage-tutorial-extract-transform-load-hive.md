@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: be7ce4d96b7c1bd17853447448f06070637c7855
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: f28cae7ed56b694f4194adf78c288ffa87eb71d8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939195"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447731"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据
 
@@ -45,9 +45,6 @@ ms.locfileid: "64939195"
 
 * **安全外壳 (SSH) 客户端**：有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-> [!IMPORTANT]
-> 本文中的步骤需要一个使用 Linux 的 HDInsight 群集。 Linux 是 Azure HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../../hdinsight/hdinsight-component-versioning.md#hdinsight-windows-retirement)。
-
 ## <a name="download-the-flight-data"></a>下载航班数据
 
 1. 浏览到[美国研究与技术创新管理部门、运输统计局](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)。
@@ -62,7 +59,7 @@ ms.locfileid: "64939195"
    
    清除所有其他字段。
 
-3. 选择“下载”。 你将得到一个具有所选数据字段的 zip 文件。
+3. 选择“下载”  。 你将得到一个具有所选数据字段的 zip 文件。
 
 ## <a name="extract-and-upload-the-data"></a>提取并上传数据
 
@@ -124,9 +121,9 @@ ms.locfileid: "64939195"
 
 本部分使用 Beeline 运行 Apache Hive 作业。
 
-在 Apache Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“delays”的 Apache Hive 表中。
+在 Apache Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“delays”的 Apache Hive 表中  。
 
-1. 在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为 flightdelays.hql 的新文件：
+1. 在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为 flightdelays.hql 的新文件  ：
 
    ```bash
    nano flightdelays.hql
@@ -204,7 +201,7 @@ ms.locfileid: "64939195"
    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
    ```
 
-5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
+5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话  ：
 
    ```bash
    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -232,15 +229,15 @@ ms.locfileid: "64939195"
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-2. 选择“SQL 数据库”。
+2. 选择“SQL 数据库”  。
 
-3. 针对选择使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出。
+3. 针对选择使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出  。
 
-4. 针对要使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出。
+4. 针对要使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出  。
 
     ![获取 Azure SQL 服务器的详细信息](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "获取 Azure SQL 服务器的详细信息")
 
-    有多种方法可连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](http://www.freetds.org/)。
+    有多种方法可连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](https://www.freetds.org/)。
 
 5. 若要安装 FreeTDS，请使用以下命令从 SSH 连接到群集：
 
