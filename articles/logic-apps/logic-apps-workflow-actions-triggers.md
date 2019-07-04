@@ -52,21 +52,21 @@ ms.locfileid: "67274177"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <trigger-name> | String | 触发器的名称 | 
-| <trigger-type> | String | 触发器类型，例如“Http”或“ApiConnection” | 
-| <trigger-inputs> | JSON 对象 | 定义触发器行为的输入 | 
-| <time-unit> | String | 用于描述触发器触发频率的时间单位："Second", "Minute", "Hour", "Day", "Week", "Month" | 
-| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| <trigger-name  > | String | 触发器的名称 | 
+| <trigger-type  > | String | 触发器类型，例如“Http”或“ApiConnection” | 
+| <trigger-inputs  > | JSON 对象 | 定义触发器行为的输入 | 
+| <*time-unit*> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
+| <*number-of-time-units*> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
 
 可选 
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <array-with-conditions> | Array | 数组，其中包含一个或多个决定是否运行工作流的[条件](#trigger-conditions)。 仅适用于触发器。 | 
-| <runtime-config-options> | JSON 对象 | 通过设置 `runtimeConfiguration` 属性可更改触发器运行时行为。 有关详细信息，请参阅[运行时配置设置](#runtime-config-options)。 | 
-| <splitOn-expression> | String | 对于返回数组的触发器，可指定一个将数组项[拆分或解除批处理*到多个工作流实例进行处理的表达式*](#split-on-debatch)。 | 
-| <operation-option> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <array-with-conditions  > | Array | 数组，其中包含一个或多个决定是否运行工作流的[条件](#trigger-conditions)。 仅适用于触发器。 | 
+| <*runtime-config-options*> | JSON 对象 | 通过设置 `runtimeConfiguration` 属性可更改触发器运行时行为。 有关详细信息，请参阅[运行时配置设置](#runtime-config-options)。 | 
+| <*splitOn-expression*> | String | 对于返回数组的触发器，可指定一个将数组项[拆分或解除批处理*到多个工作流实例进行处理的表达式*](#split-on-debatch)。 | 
+| <*operation-option*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 ## <a name="trigger-types-list"></a>触发器类型列表
@@ -132,12 +132,12 @@ ms.locfileid: "67274177"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <APIConnection_trigger_name> | String | 触发器的名称 | 
-| <connection-name> | String | 工作流使用的托管 API 连接的名称 | 
-| <method-type> | String | 与托管 API 通信的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” | 
-| <api-operation> | String | 要调用的 API 操作 | 
-| <time-unit> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
-| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| <*APIConnection_trigger_name*> | String | 触发器的名称 | 
+| <*connection-name*> | String | 工作流使用的托管 API 连接的名称 | 
+| <*method-type*> | String | 与托管 API 通信的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” | 
+| <*api-operation*> | String | 要调用的 API 操作 | 
+| <*time-unit*> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
+| <*number-of-time-units*> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
 
 可选 
@@ -148,8 +148,8 @@ ms.locfileid: "67274177"
 | <query-parameters  > | JSON 对象 | 要包括在 API 调用中的任何查询参数。 例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 | 
 | <max-runs  > | Integer | 默认情况下，工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
-| <splitOn-expression  > | String | 对于返回数组的触发器，此表达式引用要使用的数组，从而可为每个数组项创建和运行一个工作流实例，而不是使用“for each”循环。 <p>例如，此表达式表示触发器正文内容中返回的数组中的某一项：`@triggerbody()?['value']` |
-| <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 |
+| <*splitOn-expression*> | String | 对于返回数组的触发器，此表达式引用要使用的数组，从而可为每个数组项创建和运行一个工作流实例，而不是使用“for each”循环。 <p>例如，此表达式表示触发器正文内容中返回的数组中的某一项：`@triggerbody()?['value']` |
+| <*operation-option*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 |
 ||||
 
 *输出*
@@ -226,7 +226,7 @@ ms.locfileid: "67274177"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <connection-name  > | String | 工作流使用的托管 API 连接的名称 | 
+| <*connection-name*> | String | 工作流使用的托管 API 连接的名称 | 
 | <body-content  > | JSON 对象 | 要作为有效负载发送到托管 API 的任何消息内容 | 
 |||| 
 
@@ -238,8 +238,8 @@ ms.locfileid: "67274177"
 | <query-parameters  > | JSON 对象 | 要包括在 API 调用中的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 | 
 | <max-runs  > | Integer | 默认情况下，工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
-| <splitOn-expression  > | String | 对于返回数组的触发器，此表达式引用要使用的数组，从而可为每个数组项创建和运行一个工作流实例，而不是使用“for each”循环。 <p>例如，此表达式表示触发器正文内容中返回的数组中的某一项：`@triggerbody()?['value']` |
-| <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <*splitOn-expression*> | String | 对于返回数组的触发器，此表达式引用要使用的数组，从而可为每个数组项创建和运行一个工作流实例，而不是使用“for each”循环。 <p>例如，此表达式表示触发器正文内容中返回的数组中的某一项：`@triggerbody()?['value']` |
+| <*operation-option*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 *示例*
@@ -305,10 +305,10 @@ ms.locfileid: "67274177"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <method-type  > | String | 用于轮询指定终结点的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” | 
+| <*method-type*> | String | 用于轮询指定终结点的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” | 
 | <endpoint-URL  > | String | 要轮询的终结点的 HTTP 或 HTTPS URL <p>最大字符串大小：2 KB | 
-| <time-unit  > | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
-| <number-of-time-units  > | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| <*time-unit*> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
+| <*number-of-time-units*> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
 
 可选 
@@ -322,7 +322,7 @@ ms.locfileid: "67274177"
  <query-parameters  > | JSON 对象 | 要包括在请求中的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到请求。 | 
 | <max-runs  > | Integer | 默认情况下，工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
-| <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <*operation-option*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 *输出*
@@ -402,7 +402,7 @@ ms.locfileid: "67274177"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <method-type  > | String | 用于订阅请求的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
+| <*method-type*> | String | 用于订阅请求的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
 | <endpoint-subscribe-URL  > | String | 要将订阅请求发送到的终结点 URL | 
 |||| 
 
@@ -410,14 +410,14 @@ ms.locfileid: "67274177"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <method-type  > | String | 用于取消请求的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
+| <*method-type*> | String | 用于取消请求的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
 | <endpoint-unsubscribe-URL  > | String | 要将取消请求发送到的终结点 URL | 
 | <body-content  > | String | 要在订阅请求或取消订阅请求中发送的任何消息内容 | 
 | <authentication-method  > | JSON 对象 | 请求用于身份验证的方法。 有关详细信息，请参阅[计划程序出站身份验证](../scheduler/scheduler-outbound-authentication.md)。 |
 | <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
 | <max-runs  > | Integer | 默认情况下，所有工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
-| <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <*operation-option*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 *输出* 
@@ -496,8 +496,8 @@ ms.locfileid: "67274177"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <time-unit  > | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
-| <number-of-time-units  > | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| <*time-unit*> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
+| <*number-of-time-units*> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
 
 可选 
@@ -511,7 +511,7 @@ ms.locfileid: "67274177"
 | 工作日 | 字符串或字符串数组 | 如果 `frequency` 指定为“周”，则可以指定一天或多天（用逗号分隔）作为运行工作流的时间：“星期一”、“星期二”、“星期三”、“星期四”、“星期五”、“星期六”和“星期日” | 
 | <max-runs  > | Integer | 默认情况下，所有工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
-| <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <*operation-option*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 *示例 1*
@@ -613,12 +613,12 @@ ms.locfileid: "67274177"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <method-type  > | String | 传入请求必须用以调用逻辑应用的方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” |
+| <*method-type*> | String | 传入请求必须用以调用逻辑应用的方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” |
 | <relative-path-for-accepted-parameter  > | String | 终结点的 URL 可接受的参数的相对路径 | 
 | <required-properties  > | Array | 需要值的一个或多个属性 | 
 | <max-runs  > | Integer | 默认情况下，所有工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
-| <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <*operation-option*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 *示例*
@@ -790,8 +790,8 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | 值 | Type | 描述 | 
 |-------|------|-------------|
 | <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅“重试策略”。 | 
-| <runtime-config-options  > | JSON 对象 | 对于某些操作，可通过设置 `runtimeConfiguration` 属性在运行时更改操作的行为。 有关详细信息，请参阅[运行时配置设置](#runtime-config-options)。 | 
-| <operation-option  > | String | 对于某些操作，可通过设置 `operationOptions` 属性更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <*runtime-config-options*> | JSON 对象 | 对于某些操作，可通过设置 `runtimeConfiguration` 属性在运行时更改操作的行为。 有关详细信息，请参阅[运行时配置设置](#runtime-config-options)。 | 
+| <*operation-option*> | String | 对于某些操作，可通过设置 `operationOptions` 属性更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 ## <a name="action-types-list"></a>操作类型列表
@@ -896,8 +896,8 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 |-------|------|-------------| 
 | <action-name  > | String | 连接器提供的操作的名称 | 
 | <api-name>  | String | 用于连接的 Microsoft 托管 API 的名称 | 
-| <method-type  > | String | 用于调用 API 的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
-| <api-operation  > | String | 要调用的 API 操作 | 
+| <*method-type*> | String | 用于调用 API 的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
+| <*api-operation*> | String | 要调用的 API 操作 | 
 |||| 
 
 可选 
@@ -975,7 +975,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
 | <action-name  > | String | 连接器提供的操作的名称 | 
-| <method-type  > | String | 用于从终结点订阅或取消订阅的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
+| <*method-type*> | String | 用于从终结点订阅或取消订阅的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
 | <api-subscribe-URL>  | String | 用于订阅 API 的 URI | 
 |||| 
 
@@ -1153,7 +1153,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | 值 | Type | 描述 | 
 |-------|------|-------------|  
 | <Azure-function-ID>  | String | 要调用的 Azure 函数的资源 ID。 下面是此值的格式：<p>“/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group>/providers/Microsoft.Web/sites/<Azure-function-app-name>/functions/<Azure-function-name>”     | 
-| <method-type  > | String | 用于调用函数的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” <p>如果未指定，则默认方法为“POST”。 | 
+| <*method-type*> | String | 用于调用函数的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” <p>如果未指定，则默认方法为“POST”。 | 
 ||||
 
 可选 
@@ -1223,7 +1223,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <method-type  > | String | 用于发送请求的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
+| <*method-type*> | String | 用于发送请求的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
 | <HTTP-or-HTTPS-endpoint-URL>  | String | 要调用的 HTTP 或 HTTPS 终结点。 最大字符串大小：2 KB | 
 |||| 
 
@@ -1977,7 +1977,7 @@ ID,Product_Name
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
 | <*count*> | Integer | 默认情况下，“for each”循环迭代同时或并行（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）运行。 若要通过设置新的 <count> 值更改此限制，请参阅[更改“for each”循环并发](#change-for-each-concurrency)  。 | 
-| <operation-option  > | String | 若要按顺序而不是并行运行“for each”循环，请将 <operation-option> 设为 `Sequential` 或将 <count> 设为 `1`（仅二者之一）   。 有关详细信息，请参阅[按顺序运行“for each”循环](#sequential-for-each)。 | 
+| <*operation-option*> | String | 若要按顺序而不是并行运行“for each”循环，请将 <operation-option> 设为 `Sequential` 或将 <count> 设为 `1`（仅二者之一）   。 有关详细信息，请参阅[按顺序运行“for each”循环](#sequential-for-each)。 | 
 |||| 
 
 *示例*
