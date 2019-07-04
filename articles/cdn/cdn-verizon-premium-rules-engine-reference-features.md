@@ -7,12 +7,12 @@ ms.service: cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 3dcce64d86574a3e898531b2e2587b81d04f098d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e75a6ffe28aa74ea2fad30bbe2728317712d86b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080773"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443496"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>来自 Verizon 的高级规则引擎功能的 azure CDN
 
@@ -24,7 +24,7 @@ ms.locfileid: "67080773"
 
 以下功能旨在控制对内容的访问。
 
-Name | 目的
+名称 | 目的
 -----|--------
 [拒绝访问 (403)](#deny-access-403) | 通过“403 禁止访问”响应确定是否拒绝了所有请求。
 [令牌身份验证](#token-auth) | 确定是否会向请求应用基于令牌的身份验证。
@@ -36,7 +36,7 @@ Name | 目的
 
 这些功能旨在自定义内容的缓存时间和方式。
 
-Name | 目的
+名称 | 目的
 -----|--------
 [带宽参数](#bandwidth-parameters) | 确定是否会启用带宽限制参数（例如 ec_rate 和 ec_prebuf）。
 [带宽限制](#bandwidth-throttling) | 限制接入点 (POP) 提供的响应的带宽。
@@ -74,7 +74,7 @@ Name | 目的
 
 以下功能旨在添加、修改或删除请求或响应中的标头。
 
-Name | 目的
+名称 | 目的
 -----|--------
 [Age 响应标头](#age-response-header) | 确定是否在发送给请求者的响应中包括 Age 响应标头。
 [调试缓存响应标头](#debug-cache-response-headers) | 确定是否在响应中包括 X-EC-Debug 响应标头，用于说明所请求资产的缓存策略。
@@ -149,7 +149,7 @@ Name | 目的
 
 以下功能为高级用户提供高级功能。
 
-Name | 目的
+名称 | 目的
 -----|--------
 [可缓存的 HTTP 方法](#cacheable-http-methods) | 确定一组可以在我们的网络上缓存的其他 HTTP 方法。
 [可缓存请求正文大小](#cacheable-request-body-size) | 定义的阈值用于确定 POST 响应是否可以缓存。
@@ -456,7 +456,7 @@ Enabled|还原默认行为。 默认行为是强制 POP 启动对源服务器中
 - 客户端 IP 地址
 - Cookie 参数
 - Cookie 参数正则表达式
-- 国家/地区
+- Country
 - 设备
 - Microsoft Edge Cname
 - 引用域
@@ -588,7 +588,7 @@ Enabled|请求调试缓存响应标头时，会返回包括 X-EC-Debug 标头的
 - 客户端 IP 地址
 - Cookie 参数
 - Cookie 参数正则表达式
-- 国家/地区
+- Country
 - 设备
 - 边缘 Cname
 - 引用域
@@ -715,7 +715,7 @@ Enabled|可以重定向请求。
 - 客户端 IP 地址
 - Cookie 参数
 - Cookie 参数正则表达式
-- 国家/地区
+- Country
 - 设备
 - 边缘 Cname
 - 引用域
@@ -799,7 +799,7 @@ Enabled|允许将 HTTP 客户端的 no-cache 请求转发给源服务器，然�
 - 客户端 IP 地址
 - Cookie 参数
 - Cookie 参数正则表达式
-- 国家/地区
+- Country
 - 设备
 - 边缘 Cname
 - 引用域
@@ -867,7 +867,7 @@ Enabled|防止 POP 使用“416 无法满足请求的范围”状态代码响应
 - 客户端 IP 地址
 - Cookie 参数
 - Cookie 参数正则表达式
-- 国家/地区
+- Country
 - 设备
 - 边缘 Cname
 - 引用域
@@ -1128,7 +1128,7 @@ Enabled|导致 POP 重新获取源服务器的资产。
 
 确保指定的标头名称与任何下述名称都不匹配：
 
-- 标准请求标头名称。 可以在 [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) 中找到标准标头名称的列表。
+- 标准请求标头名称。 可以在 [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) 中找到标准标头名称的列表。
 - 保留的标头名称：
     - forwarded-for
     - host

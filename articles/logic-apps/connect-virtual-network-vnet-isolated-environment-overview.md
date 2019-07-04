@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 1ef8c8eec3865f2a6e363e7da1dbda9504b81c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f981452b06ec06f2be1b8fe0319cd49a678ccfe0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546443"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441581"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -35,7 +35,7 @@ ms.locfileid: "65546443"
 本概述介绍有关 ISE 如何使逻辑应用的更多详细信息和集成帐户直接访问在 Azure 虚拟网络，并将 ISE 和全球的逻辑应用服务之间的差异进行比较。
 
 > [!NOTE]
-> 逻辑应用、 内置的触发器、 内置操作和连接器运行，在 ISE 使用定价计划不同于基于消费的定价计划。 有关详细信息，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
+> 逻辑应用、 内置的触发器、 内置操作和连接器运行，在 ISE 使用定价计划不同于基于消费的定价计划。 有关详细信息，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。 在 ISE 还增加了限制上运行持续时间、 存储保留期、 吞吐量、 HTTP 请求和响应超时、 消息大小和自定义连接器的请求。 有关详细信息，请参阅[限制和配置 Azure 逻辑应用的](logic-apps-limits-and-config.md)。
 
 <a name="difference"></a>
 
@@ -61,14 +61,14 @@ ISE 和非 ISE 连接器之间的区别在于触发器和操作运行的位置�
 
   ![选择 ISE 连接器](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
+ISE 还提供更高的限制了对于运行持续时间、 存储保留期、 吞吐量、 HTTP 请求和响应超时、 消息的大小，以及自定义连接器的请求。 有关详细信息，请参阅[限制和配置 Azure 逻辑应用的](logic-apps-limits-and-config.md)。
+
 ### <a name="access-to-on-premises-data-sources"></a>对在本地数据源的访问
 
 对于连接到 Azure 虚拟网络的本地系统，ISE 注入到该网络上，以便逻辑应用可以直接访问这些系统使用的任何一项：
 
 * 该系统，例如，SQL Server 的 ISE 版本连接器
-  
 * HTTP 操作
-  
 * 自定义连接器
 
   * 如果您已自定义连接器，需要在本地数据网关，并创建外部 ISE 这些连接器，在 ISE 中的逻辑应用还可以使用这些连接器。
