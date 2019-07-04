@@ -3,20 +3,20 @@ title: 快速入门：语音翻译 API Node.js
 titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，有助于快速开始使用语音翻译 API。
 services: cognitive-services
-author: v-jaswel
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
-ms.author: v-jaswel
+ms.author: swmachan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: b79ca4ed259b561fadc4b7fa644b5c136192bb7f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: c16b4ca0375376829c7617b488d16151363dc816
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671720"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442151"
 ---
 # <a name="quickstart-translator-speech-api-with-nodejs"></a>快速入门：将语音翻译 API 与 Node.js 配合使用
 <a name="HOLTop"></a>
@@ -33,7 +33,7 @@ ms.locfileid: "56671720"
 
 需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。 可使用[文本转语音 API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) 获取此类 .wav 文件。
 
-必须创建一个具有 Microsoft 语音翻译 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
+必须创建一个具有 Microsoft 语音翻译 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)  。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
 
 ## <a name="translate-speech"></a>翻译语音
 

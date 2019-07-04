@@ -15,11 +15,11 @@ ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
 ms.openlocfilehash: 8785f89a335f0ae7d983f267176da1656aee57a0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121790"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173556"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>使用 Microsoft 身份验证库 (MSAL) 登录用户
 
@@ -168,19 +168,19 @@ ms.locfileid: "66121790"
 <!--start-collapse-->
 ### <a name="more-information"></a>更多信息
 
-用户首次单击“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以登录用户。 此方法导致使用 Microsoft 标识平台终结点打开一个弹出窗口，以提示并验证用户的凭据。 登录成功后，用户被重定向回原始的 index.html 页面，并接收到一个由 `msal.js` 处理的令牌，令牌中包含的信息被缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
+用户首次单击“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以登录用户  。 此方法导致使用 Microsoft 标识平台终结点打开一个弹出窗口，以提示并验证用户的凭据  。 登录成功后，用户被重定向回原始的 index.html 页面，并接收到一个由 `msal.js` 处理的令牌，令牌中包含的信息被缓存  。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名  。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
 
-本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌。 如果需要验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序 - 该示例使用 ASP.NET Web API 进行令牌验证。
+本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌  。 如果需要验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序 - 该示例使用 ASP.NET Web API 进行令牌验证。
 
 #### <a name="getting-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-初次登录后，你不希望在用户每次需要请求令牌访问资源时都要求其重新认证，因此大部分时间都应使用 acquireTokenSilent 来获取令牌。 但有些情况下，需要强制用户与 Microsoft 标识平台终结点交互，部分示例包括：
+初次登录后，你不希望在用户每次需要请求令牌访问资源时都要求其重新认证，因此大部分时间都应使用 acquireTokenSilent  来获取令牌。 但有些情况下，需要强制用户与 Microsoft 标识平台终结点交互，部分示例包括：
 
 - 由于密码已过期，用户可能需要重新输入凭据
 - 应用程序正在请求访问用户需要同意的资源
 - 需要双重身份验证
 
-调用 acquireTokenPopup 会弹出窗口（或调用 acquireTokenRedirect 会将用户重定向到 Microsoft 标识平台终结点），在其中用户需要通过确认凭据、同意必需资源或完成双因素身份验证来与之交互。
+调用 acquireTokenPopup  会弹出窗口（或调用 acquireTokenRedirect  会将用户重定向到 Microsoft 标识平台终结点），在其中用户需要通过确认凭据、同意必需资源或完成双因素身份验证来与之交互。
 
 #### <a name="getting-a-user-token-silently"></a>以静默方式获取用户令牌
 
@@ -215,7 +215,7 @@ function callMSGraph(theUrl, accessToken, callback) {
 
 ### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>对受保护 API 进行 REST 调用的详细信息
 
-在本指南创建的示例应用程序中，使用 `callMSGraph()` 方法对需要令牌的受保护资源发出 HTTP `GET` 请求，然后将内容返回给调用方。 此方法可在 HTTP 授权标头中添加获取的令牌。 本指南创建的示例应用程序中的资源是 Microsoft Graph API me 终结点，它显示用户个人资料信息。
+在本指南创建的示例应用程序中，使用 `callMSGraph()` 方法对需要令牌的受保护资源发出 HTTP `GET` 请求，然后将内容返回给调用方。 此方法可在 HTTP 授权标头中添加获取的令牌  。 本指南创建的示例应用程序中的资源是 Microsoft Graph API me 终结点，它显示用户个人资料信息  。
 
 <!--end-collapse-->
 

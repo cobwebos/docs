@@ -11,25 +11,25 @@ ms.author: ghogen
 ms.custom: include file
 manager: douge
 ms.openlocfilehash: 892db95a3d8ebaf4d9d3339d4965ce96b1084537
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116663"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173217"
 ---
 ## <a name="install-the-cognitive-services-vsix-extension"></a>安装认知服务 VSIX 扩展
 
-1. 在 Visual Studio 中打开 Web 项目后，选择“连接的服务”选项卡。此选项卡位于打开新项目时显示的欢迎页面上。 如果没有看到此选项卡，请在解决方案资源管理器中选择你的项目中的“连接的服务”。
+1. 在 Visual Studio 中打开 Web 项目后，选择“连接的服务”  选项卡。此选项卡位于打开新项目时显示的欢迎页面上。 如果没有看到此选项卡，请在解决方案资源管理器中选择你的项目中的“连接的服务”  。
 
    ![“连接的服务”选项卡屏幕截图](./media/vs-install-cognitive-services-vsix/Connected-Services-Tab.PNG)
 
-1. 向下滚动到服务列表底部，然后选择“查找更多服务”。
+1. 向下滚动到服务列表底部，然后选择“查找更多服务”  。
 
     ![“查找更多服务”链接的屏幕截图](./media/vs-install-cognitive-services-vsix/Find-More-Services.PNG)
  
-    “扩展和更新”对话框随即出现。
+    “扩展和更新”  对话框随即出现。
 
-1. 在“扩展和更新”对话框中，搜索“认知服务”，然后下载并安装认知服务 VSIX 包。
+1. 在“扩展和更新”  对话框中，搜索“认知服务”  ，然后下载并安装认知服务 VSIX 包。
 
    ![“扩展和更新”对话框的屏幕截图](./media/vs-install-cognitive-services-vsix/install-cognitive-services-vsix.PNG)
 

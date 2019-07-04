@@ -8,12 +8,12 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
-ms.openlocfilehash: e6d153ff0e4f32c352694f51953c6955fae7f12f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: d27f89b5a6f6da0732b98fe7b15793e80d491038
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949674"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357498"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>快速入门：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的数据
 
@@ -38,7 +38,7 @@ ms.locfileid: "65949674"
   > [!IMPORTANT]
   > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
 
-  :heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用 ID 和密码值粘贴到文本文件中。 很快就会需要这些值。
+  :heavy_check_mark:执行本文中[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分中的步骤时，请将租户 ID、应用 ID 和密码值粘贴到文本文件中。 很快就会需要这些值。
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
@@ -156,7 +156,7 @@ ms.locfileid: "65949674"
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path  "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
+     path  "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json"
     )
     ```
 

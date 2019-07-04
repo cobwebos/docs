@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 06/27/2019
 ms.author: aahill
-ms.openlocfilehash: e9df2f9cf7a8ecabdce9b5bc877fdc82fd61d1f5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 93c2a5f9cd9fb3141e79559429ae69c0c42a96c1
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865924"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542675"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>向必应视频搜索 API 发送搜索请求
 
-本文介绍了发送到必应视频搜索 API 的请求的参数和属性，以及它返回的 JSON 响应对象。
+本文介绍了发送到必应视频搜索 API 的请求的参数和属性，以及它返回的 JSON 响应对象。 
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "55865924"
 
 如果提供供用户输入搜索词的搜索框，请使用[必应自动推荐 API](../../bing-autosuggest/get-suggested-search-terms.md) 来改进体验。 此 API 根据用户键入的部分搜索词返回建议的查询字符串。
 
-在用户输入搜索词以后，URL 会在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#query) 查询参数之前对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
+在用户输入搜索词以后，URL 会在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) 查询参数之前对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`  。
 
 ## <a name="sending-a-request"></a>发送请求
 
@@ -42,18 +42,18 @@ https://api.cognitive.microsoft.com/bing/v7.0/videos/search
 建议所有请求都源自服务器。 如果将密钥作为客户端应用的一部分进行分发，会让恶意第三方有更多机会来访问密钥。 另外，从服务器执行调用还会提供 API 的将来版本的单一升级点。
 
   
-请求必须指定包含用户搜索词的 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#query) 查询参数。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#mkt) 查询参数，该参数标识你希望结果来自的市场。 有关可选查询参数（例如 `pricing`）的列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#query-parameters)。 所有查询参数值都必须是 URL 编码。  
+请求必须指定包含用户搜索词的 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) 查询参数。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt) 查询参数，该参数标识你希望结果来自的市场。 有关可选查询参数（例如 `pricing`）的列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters)。 所有查询参数值都必须是 URL 编码。  
   
-请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#subscriptionkey) 标头。 尽管可视需要添加，但仍建议还指定以下请求头：  
+请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#subscriptionkey) 标头。 尽管可视需要添加，但仍建议还指定以下请求头：  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#clientid)  
--   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#location)  
+-   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#useragent)  
+-   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientid)  
+-   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientip)  
+-   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#location)  
 
 客户端 IP 和位置请求头对返回位置感知内容非常重要。  
 
-有关所有请求头和响应头的列表，请参阅[头](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#headers)。
+有关所有请求头和响应头的列表，请参阅[头](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers)。
 
 ## <a name="example-search-request"></a>示例搜索请求
 
@@ -73,7 +73,9 @@ Host: api.cognitive.microsoft.com
 
 下面的示例展示了对上一请求的响应。 此示例还展示了必应专用响应头。
 
-```
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
+
+```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
 X-MSEdge-ClientID: 1C3352B306E669780D58D607B96869
 BingAPIs-Market: en-US

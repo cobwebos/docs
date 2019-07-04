@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: e4b762d6f36f8682162160be6f42b8691e4b2ca3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b816f4b78921c4bace1d15dd408b3fd701a3d6c5
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870242"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339372"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>快速入门：创建一个用于检测和定格图像中人脸的 Python 脚本
 
@@ -39,17 +39,19 @@ pip install cognitive_face
 
 ## <a name="detect-faces-in-an-image"></a>在图像中检测人脸
 
-创建名为 FaceQuickstart.py 的新 Python 脚本并添加以下代码。 这是人脸检测的核心功能。 需将 `<Subscription Key>` 替换为密钥的值。 可能还需更改 `BASE_URL` 的值，以便使用密钥的正确区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 免费试用订阅密钥在 **westus** 区域中生成。 （可选）将 `img_url` 设置为要使用的图像的 URL。
+创建名为 FaceQuickstart.py 的新 Python 脚本并添加以下代码  。 这是人脸检测的核心功能。 需将 `<Subscription Key>` 替换为密钥的值。 可能还需更改 `BASE_URL` 的值，以便使用密钥的正确区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 免费试用订阅密钥在 **westus** 区域中生成。 （可选）将 `img_url` 设置为要使用的图像的 URL。
 
 此脚本会通过调用 **cognitive_face.face.detect** 方法来检测人脸，该方法可包装[检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API 并返回人脸的列表。
 
 ```python
 import cognitive_face as CF
 
-KEY = '<Subscription Key>'  # Replace with a valid subscription key (keeping the quotes in place).
+# Replace with a valid subscription key (keeping the quotes in place).
+KEY = '<Subscription Key>'
 CF.Key.set(KEY)
 
-BASE_URL = 'https://westus.api.cognitive.microsoft.com/face/v1.0/'  # Replace with your regional Base URL
+# Replace with your regional Base URL
+BASE_URL = 'https://westus.api.cognitive.microsoft.com/face/v1.0/'
 CF.BaseUrl.set(BASE_URL)
 
 # You can use this example JPG or replace the URL below with your own URL to a JPEG image.
@@ -84,7 +86,9 @@ from PIL import Image, ImageDraw
 然后，在脚本底部添加以下代码。 这样会创建一个用于分析矩形坐标的简单函数，并使用 Pillow 在原始图像上绘制矩形。 然后，它会在默认的图像查看器中显示图像。
 
 ```python
-#Convert width height to a point in a rectangle
+# Convert width height to a point in a rectangle
+
+
 def getRectangle(faceDictionary):
     rect = faceDictionary['faceRectangle']
     left = rect['left']
@@ -93,16 +97,17 @@ def getRectangle(faceDictionary):
     right = top + rect['width']
     return ((left, top), (bottom, right))
 
-#Download the image from the url
+
+# Download the image from the url
 response = requests.get(img_url)
 img = Image.open(BytesIO(response.content))
 
-#For each face returned use the face rectangle and draw a red box.
+# For each face returned use the face rectangle and draw a red box.
 draw = ImageDraw.Draw(img)
 for face in faces:
     draw.rectangle(getRectangle(face), outline='red')
 
-#Display the image in the users default image browser.
+# Display the image in the users default image browser.
 img.show()
 ```
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: e971fd160a43be088f6d3c4a9fb6fddc7dd769b0
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 09b90f4b53750b94c0ecee7290d6b5405c984ff9
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415675"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154869"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 将 RDS MySQL 联机迁移到 Azure Database for MySQL
 
@@ -66,7 +66,7 @@ ms.locfileid: "65415675"
 
 ### <a name="set-up-aws-rds-mysql-for-replication"></a>设置 AWS RDS MySQL 用于复制
 
-1. 若要创建新的参数组，请遵照 AWS 在 [MySQL 数据库日志文件](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.Concepts.MySQL.html)的“二进制日志格式”部分中提供的说明操作。
+1. 若要创建新的参数组，请遵照 AWS 在 [MySQL 数据库日志文件](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.Concepts.MySQL.html)的“二进制日志格式”部分中提供的说明操作。 
 2. 使用以下配置创建新的参数组：
     * binlog_format = row
     * binlog_checksum = NONE
@@ -116,13 +116,13 @@ ms.locfileid: "65415675"
         WHERE
           KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
           AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA
-      AND KCU.REFERENCED_TABLE_SCHEMA = ['SchemaName') Queries
+      AND KCU.REFERENCED_TABLE_SCHEMA = ('SchemaName') Queries
       GROUP BY SchemaName;
     ```
 
 4. 运行查询结果中的 drop foreign key（第二列），以删除外键。
 
-5. 如果数据中包含触发器（insert 或 update 触发器），该触发器会在从源复制数据之前在目标中强制实施数据完整性。 建议在迁移期间禁用目标的所有表中的触发器，然后在迁移完成后再启用这些触发器。
+5. 如果数据中包含触发器（insert 或 update 触发器），该触发器会在从源复制数据之前在目标中强制实施数据完整性。 建议在迁移期间禁用目标的所有表中的触发器，然后在迁移完成后再启用这些触发器  。
 
     在目标数据库中禁用触发器：
 
@@ -135,15 +135,15 @@ ms.locfileid: "65415675"
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
+1. 登录到 Azure 门户，选择“所有服务”  ，然后选择“订阅”  。
 
    ![显示门户订阅](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-subscription1.png)
 
-2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”。
+2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”  。
 
     ![显示资源提供程序](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-resource-provider.png)
 
-3. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册”。
+3. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册”   。
 
     ![注册资源提供程序](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-register-resource-provider.png)
 
@@ -153,11 +153,11 @@ ms.locfileid: "65415675"
 
     ![Azure 市场](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-marketplace.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”。
+2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”   。
 
     ![创建 Azure 数据库迁移服务实例](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-create1.png)
   
-3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称。
+3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称  。
 
 4. 选择要在其中创建 Azure 数据库迁移服务实例的位置。
 
@@ -171,76 +171,76 @@ ms.locfileid: "65415675"
 
     ![配置 Azure 数据库迁移服务实例设置](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-settings3.png)
 
-7. 选择“创建”来创建服务。
+7. 选择“创建”  来创建服务。
 
 ## <a name="create-a-migration-project"></a>创建迁移项目
 
 创建服务后，在 Azure 门户中找到并打开它，然后创建一个新的迁移项目。
 
-1. 在 Azure 门户中，选择“所有服务”，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”。
+1. 在 Azure 门户中，选择“所有服务”  ，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”  。
 
       ![查找 Azure 数据库迁移服务的所有实例](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-search.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，搜索你创建的 Azure 数据库迁移服务实例名称，然后选择该实例。
+2. 在“Azure 数据库迁移服务”屏幕上，搜索你创建的 Azure 数据库迁移服务实例名称，然后选择该实例  。
 
      ![查找 Azure 数据库迁移服务实例](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-instance-search.png)
 
-3. 选择“+ 新建迁移项目”。
-4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“MySQL”，在“目标服务器类型”文本框中选择“AzureDbForMySQL”。
-5. 在“选择活动类型”部分选择“联机数据迁移”。
+3. 选择“+ 新建迁移项目”  。
+4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“MySQL”，在“目标服务器类型”文本框中选择“AzureDbForMySQL”。     
+5. 在“选择活动类型”部分选择“联机数据迁移”。  
 
     > [!IMPORTANT]
-    > 请确保选择“联机数据迁移”；此方案不支持脱机迁移。
+    > 请确保选择“联机数据迁移”；此方案不支持脱机迁移  。
 
     ![创建数据库迁移服务项目](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-create-project6.png)
 
     > [!NOTE]
-    > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。
+    > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。 
 
-6. 选择“保存”。
+6. 选择“保存”。 
 
-7. 选择“创建并运行活动”，以便创建项目并运行迁移活动。
+7. 选择“创建并运行活动”，以便创建项目并运行迁移活动。 
 
     > [!NOTE]
     > 请在项目创建边栏选项卡中记下设置联机迁移所要满足的先决条件。
 
 ## <a name="specify-source-details"></a>指定源详细信息
 
-* 在“迁移源详细信息”屏幕上，指定源 MySQL 实例的连接详细信息。
+* 在“迁移源详细信息”  屏幕上，指定源 MySQL 实例的连接详细信息。
 
    ![源详细信息](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-source-details5.png)
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 
-1. 选择“保存”，然后在“目标详细信息”屏幕上指定目标 Azure Database for MySQL 服务器的连接详细信息，该服务器是提前预配的，具有使用 MySQLDump 部署的 **Employees** 架构。
+1. 选择“保存”，然后在“目标详细信息”屏幕上指定目标 Azure Database for MySQL 服务器的连接详细信息，该服务器是提前预配的，具有使用 MySQLDump 部署的 **Employees** 架构。  
 
     ![选择目标](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-select-target5.png)
 
-2. 选择“保存”，然后在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。
+2. 选择“保存”，然后在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。  
 
     如果目标数据库包含的数据库名称与源数据库的相同，则 Azure 数据库迁移服务默认会选择目标数据库。
 
     ![映射到目标数据库](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-map-targets-activity5.png)
 
-3. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符。
+3. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符    。
 
     ![迁移摘要](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-migration-summary2.png)
 
 ## <a name="run-the-migration"></a>运行迁移
 
-* 选择“运行迁移”。
+* 选择“运行迁移”  。
 
-    迁移活动窗口随即出现，活动的“状态”为“正在初始化”。
+    迁移活动窗口随即出现，活动的“状态”为“正在初始化”   。
 
 ## <a name="monitor-the-migration"></a>监视迁移
 
-1. 在迁移活动屏幕上选择“刷新”，以便更新显示，直到迁移的“状态”显示为“正在运行”。
+1. 在迁移活动屏幕上选择“刷新”  ，以便更新显示，直到迁移的“状态”  显示为“正在运行”  。
 
     ![活动状态 - 正在运行](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-activity-status4.png)
 
-2. 在“数据库名称”下选择特定数据库即可转到“完整数据加载”和“增量数据同步”操作的迁移状态。
+2. 在“数据库名称”下选择特定数据库即可转到“完整数据加载”和“增量数据同步”操作的迁移状态。   
 
-    “完整数据加载”会显示初始加载迁移状态，而“增量数据同步”则会显示变更数据捕获 (CDC) 状态。
+    “完整数据加载”会显示初始加载迁移状态，而“增量数据同步”则会显示变更数据捕获 (CDC) 状态。  
 
     ![库存屏幕 - 完整数据加载](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-inventory-full-load.png)
 
@@ -248,15 +248,15 @@ ms.locfileid: "65415675"
 
 ## <a name="perform-migration-cutover"></a>执行迁移直接转换
 
-完成初始的完整加载后，数据库会被标记为“准备好交接”。
+完成初始的完整加载后，数据库会被标记为“准备好交接”。 
 
-1. 如果准备完成数据库迁移，请选择“启动直接转换”。
+1. 如果准备完成数据库迁移，请选择“启动直接转换”。 
 
     ![开始交接](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-inventory-start-cutover.png)
 
-2. 确保停止传入源数据库的所有事务；等到“挂起的更改”计数器显示 **0**。
-3. 选择“确认”，然后选择“应用”。
-4. 当数据库迁移状态显示“已完成”后，请将应用程序连接到新的目标 Azure Database for MySQL 数据库。
+2. 确保停止传入源数据库的所有事务；等到“挂起的更改”计数器显示 **0**。 
+3. 选择“确认”  ，然后选择“应用”  。
+4. 当数据库迁移状态显示“已完成”后，请将应用程序连接到新的目标 Azure Database for MySQL 数据库。 
 
 将 MySQL 的本地实例联机迁移到 Azure Database for MySQL 的过程现已完成。
 

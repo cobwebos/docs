@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 2/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 8def6336dd35b8eac1ae357cb32df35d1b7baa2c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: e8257f04df038d3706fe2a5e66fc6cd96ec8cd7d
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383753"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550889"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>快速入门：使用必应图像搜索 REST API 和 PHP 来搜索图像
 
@@ -25,7 +25,7 @@ ms.locfileid: "66383753"
 
 虽然此应用程序是用 PHP 编写的，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。
 
-该示例的源代码可[在 GitHub 上]https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/php/Search/BingWebSearchv7.php)获得。
+该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/php/Search/BingWebSearchv7.php) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 

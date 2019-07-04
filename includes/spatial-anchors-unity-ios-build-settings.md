@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
 ms.openlocfilehash: f66a3653bc85925349dde84551310fd24f4c9336
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58633033"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172635"
 ---
-通过选择“文件” > “生成设置”，打开“生成设置”。
+通过选择“文件” > “生成设置”，打开“生成设置”    。
 
-在“平台”部分，选择“iOS”。
+在“平台”部分，选择“iOS”   。
 
-选择“切换平台”，以将平台更改为“iOS”。 Unity 可能会提示你安装 iOS 支持组件（若缺少这些组件）。
+选择“切换平台”，以将平台更改为“iOS”   。 Unity 可能会提示你安装 iOS 支持组件（若缺少这些组件）。
 
 ![Unity 生成设置窗口](./media/spatial-anchors-unity/unity-ios-build-settings.png)
 
-关闭“生成设置”窗口。
+关闭“生成设置”窗口  。
 
 ### <a name="download-and-import-the-unity-arkit-plugin"></a>下载并导入 Unity ARKit 插件
 

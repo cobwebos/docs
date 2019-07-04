@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 47e2f2a03c08ae1e44dcba35b440880ce06f6f95
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 2fbb80b3b9a288442e83a0d46fa04c37bde1d358
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484455"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341138"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>快速入门：使用自定义视觉 Python SDK 创建图像分类项目
 
-本文提供信息和示例代码，以帮助你开始通过 Python 使用自定义视觉 SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Python 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，请改为查看[基于浏览器的指南](getting-started-build-a-classifier.md)。
+本文提供信息和示例代码，以帮助你开始通过 Python 使用自定义视觉 SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Python 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，  请改为查看[基于浏览器的指南](getting-started-build-a-classifier.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -139,11 +139,13 @@ from azure.cognitiveservices.vision.customvision.prediction import CustomVisionP
 predictor = CustomVisionPredictionClient(prediction_key, endpoint=ENDPOINT)
 
 with open(base_image_url + "images/Test/test_image.jpg", "rb") as image_contents:
-    results = predictor.classify_image(project.id, publish_iteration_name, image_contents.read())
+    results = predictor.classify_image(
+        project.id, publish_iteration_name, image_contents.read())
 
     # Display the results.
     for prediction in results.predictions:
-        print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100))
+        print("\t" + prediction.tag_name +
+              ": {0:.2f}%".format(prediction.probability * 100))
 ```
 
 ## <a name="run-the-application"></a>运行应用程序

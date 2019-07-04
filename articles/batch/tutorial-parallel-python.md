@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 286bc73cb7226d95c1e46fc51ae5999ea27d44ad
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 364599c6eb555d1ec72e84c998ae0c4e9a43929b
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535660"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341602"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教程：使用 Python API 通过 Azure Batch 运行并行工作负荷
 
@@ -107,7 +107,7 @@ Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-转到 Azure 门户中的 Batch 帐户，监视池、计算节点、作业和任务。 例如，若要查看池中计算节点的热度地图，请单击“池” > “LinuxFFmpegPool”。
+转到 Azure 门户中的 Batch 帐户，监视池、计算节点、作业和任务。 例如，若要查看池中计算节点的热度地图，请单击“池”   >   “LinuxFFmpegPool”。
 
 任务正在运行时，热度地图如下所示：
 
@@ -135,7 +135,7 @@ blob_client = azureblob.BlockBlobService(
 
 ```python
 credentials = batchauth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
-    _BATCH_ACCOUNT_KEY)
+                                             _BATCH_ACCOUNT_KEY)
 
 batch_client = batch.BatchServiceClient(
     credentials,
@@ -150,13 +150,14 @@ batch_client = batch.BatchServiceClient(
 blob_client.create_container(input_container_name, fail_on_exist=False)
 blob_client.create_container(output_container_name, fail_on_exist=False)
 input_file_paths = []
-    
-for folder, subs, files in os.walk(os.path.join(sys.path[0],'./InputFiles/')):
+
+for folder, subs, files in os.walk(os.path.join(sys.path[0], './InputFiles/')):
     for filename in files:
         if filename.endswith(".mp4"):
-            input_file_paths.append(os.path.abspath(os.path.join(folder, filename)))
+            input_file_paths.append(os.path.abspath(
+                os.path.join(folder, filename)))
 
-# Upload the input files. This is the collection of files that are to be processed by the tasks. 
+# Upload the input files. This is the collection of files that are to be processed by the tasks.
 input_files = [
     upload_file_to_container(blob_client, input_container_name, file_path)
     for file_path in input_file_paths]
@@ -181,7 +182,7 @@ new_pool = batch.models.PoolAddParameter(
             offer="UbuntuServer",
             sku="18.04-LTS",
             version="latest"
-            ),
+        ),
         node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_DEDICATED_POOL_NODE_COUNT,
@@ -221,10 +222,11 @@ batch_service_client.job.add(job)
 ```python
 tasks = list()
 
-for idx, input_file in enumerate(input_files): 
-    input_file_path=input_file.file_path
-    output_file_path="".join((input_file_path).split('.')[:-1]) + '.mp3'
-    command = "/bin/bash -c \"ffmpeg -i {} {} \"".format(input_file_path, output_file_path)
+for idx, input_file in enumerate(input_files):
+    input_file_path = input_file.file_path
+    output_file_path = "".join((input_file_path).split('.')[:-1]) + '.mp3'
+    command = "/bin/bash -c \"ffmpeg -i {} {} \"".format(
+        input_file_path, output_file_path)
     tasks.append(batch.models.TaskAddParameter(
         id='Task{}'.format(idx),
         command_line=command,
@@ -236,10 +238,10 @@ for idx, input_file in enumerate(input_files):
                     container_url=output_container_sas_url)),
             upload_options=batchmodels.OutputFileUploadOptions(
                 upload_condition=batchmodels.OutputFileUploadCondition.task_success))]
-        )
+    )
     )
 batch_service_client.task.add_collection(job_id, tasks)
-```    
+```
 
 ### <a name="monitor-tasks"></a>监视任务
 
@@ -254,7 +256,7 @@ while datetime.datetime.now() < timeout_expiration:
     tasks = batch_service_client.task.list(job_id)
 
     incomplete_tasks = [task for task in tasks if
-                         task.state != batchmodels.TaskState.completed]
+                        task.state != batchmodels.TaskState.completed]
     if not incomplete_tasks:
         print()
         return True
@@ -267,7 +269,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 运行任务之后，应用自动删除所创建的输入存储容器，并允许你选择是否删除 Batch 池和作业。 BatchClient 的 [JobOperations](/python/api/azure.batch.operations.joboperations) 和 [PoolOperations](/python/api/azure.batch.operations.pooloperations) 类都有删除方法（在确认删除时调用）。 虽然作业和任务本身不收费，但计算节点收费。 因此，建议只在需要的时候分配池。 删除池时会删除节点上的所有任务输出。 但是，输入和输出文件保留在存储帐户中。
 
-若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。
+若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 

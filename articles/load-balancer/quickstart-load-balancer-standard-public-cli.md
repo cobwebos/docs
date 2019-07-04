@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: ebeb7e109584726dcd2505fbd9d4c1d7bfde7aba
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 30e1bcbd63a31a2b4e52ebbc2b2696e205e88cd5
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66387680"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466847"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建标准负载均衡器以对 VM 进行负载均衡
 
@@ -68,7 +68,7 @@ ms.locfileid: "66387680"
   az network lb create \
     --resource-group myResourceGroupSLB \
     --name myLoadBalancer \
-    --sku standard
+    --sku standard \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool       

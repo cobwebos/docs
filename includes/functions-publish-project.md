@@ -9,11 +9,11 @@ ms.date: 04/24/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 48bb91b3b2e9a31de63e515edb857bc2a170ea79
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132262"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172735"
 ---
 ## <a name="deploy-the-function-app-project-to-azure"></a>将函数应用项目部署到 Azure
 

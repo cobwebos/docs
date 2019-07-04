@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: b55b1fdf3b93d3865bdb115e43ff8583af61b45d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: b5333557355aa816245b5086836eac980d90540a
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326419"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341484"
 ---
 # <a name="tutorial-computer-vision-api-python"></a>教程：计算机视觉 API Python
 
@@ -32,22 +32,23 @@ ms.locfileid: "56326419"
 
 1. 转到[认知视觉 Python](https://github.com/Microsoft/Cognitive-Vision-Python) GitHub 存储库。 
 2. 单击绿色按钮以克隆或下载存储库。 
-3. 打开命令提示符并导航到文件夹 Cognitive-Vision-Python\Jupyter Notebook。
+3. 打开命令提示符并导航到文件夹 Cognitive-Vision-Python\Jupyter Notebook  。
 1. 通过从命令提示符运行命令 `pip install requests opencv-python numpy matplotlib`，确保已安装所有必需的库。
 1. 通过从命令提示符运行命令 `jupyter notebook` 启动 Jupyter。
-1. 在 Jupyter 窗口中，单击“计算机视觉 API Example.ipynb”以打开教程笔记本。
+1. 在 Jupyter 窗口中，单击“计算机视觉 API Example.ipynb”以打开教程笔记本  。
 
 ## <a name="run-the-tutorial"></a>运行教程
 
-若要使用此笔记本，将需要计算机视觉 API 的订阅密钥。 访问[订阅页面](https://azure.microsoft.com/try/cognitive-services/)进行注册。 在“登录”页面上，使用 Microsoft 帐户登录，便能够订阅并获取免费密钥。 完成注册过程后，将密钥粘贴到 Notebook 的 `Variables` 节（如下所示）。 主密钥或辅助密钥都将有效。 确保将密钥括在引号中以使其成为字符串。
+若要使用此笔记本，将需要计算机视觉 API 的订阅密钥。 访问[订阅页面](https://azure.microsoft.com/try/cognitive-services/)进行注册。 在“登录”  页面上，使用 Microsoft 帐户登录，便能够订阅并获取免费密钥。 完成注册过程后，将密钥粘贴到 Notebook 的 `Variables` 节（如下所示）。 主密钥或辅助密钥都将有效。 确保将密钥括在引号中以使其成为字符串。
 
 还需要确保 `_region` 字段与你的订阅对应的区域匹配。
 
 ```python
 # Variables
-_region = 'westcentralus' #Here you enter the region of your subscription
-_url = 'https://{}.api.cognitive.microsoft.com/vision/v2.0/analyze'.format(_region)
-_key = None #Here you have to paste your primary key
+_region = 'westcentralus'  # Here you enter the region of your subscription
+_url = 'https://{}.api.cognitive.microsoft.com/vision/v2.0/analyze'.format(
+    _region)
+_key = None  # Here you have to paste your primary key
 _maxNumRetries = 10
 ```
 
