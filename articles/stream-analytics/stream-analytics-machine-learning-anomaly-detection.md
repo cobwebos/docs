@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 88c0aea851bcf70206b5f68d7865c487441905f6
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 706311e2895f311c228b55db971eb88a859530f5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329903"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441681"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常情况检测
 
@@ -23,7 +23,7 @@ Azure 流分析可在云和 Azure IoT Edge 中使用，它提供内置的机器�
 
 机器学习操作不支持季节性趋势或多重 variate 相关性这一次。
 
-## <a name="model-accuracy-and-performance"></a>模型准确度和性能
+## <a name="model-behavior"></a>模型行为
 
 一般情况下，模型的准确度会随着滑动窗口中数据的增多而提升。 指定的滑动窗口中的数据被视为该时间范围内其正态值范围的一部分。 检查当前事件是否为异常事件时，模型只考虑滑动窗口中的事件历史记录。 当滑动窗口移动时，将从模型的训练中逐出旧值。
 
@@ -32,6 +32,8 @@ Azure 流分析可在云和 Azure IoT Edge 中使用，它提供内置的机器�
 模型的响应时间随着历史记录的大小，因为它需要与更多的过去的事件进行比较。 建议仅包含所需数量的事件，以提高性能。
 
 时序中的间隙可能是模型在特定的时间点未接收事件而造成的。 这种情况下处理通过 Stream Analytics 使用插补的逻辑。 历史记录大小以及同一滑动窗口的持续时间用于计算事件预期抵达的平均速率。
+
+可用的异常情况生成器[此处](https://aka.ms/asaanomalygenerator)可用于源和数据具有不同的异常模式的 Iot 中心。 可以使用这些异常情况检测函数来读取此 Iot 中心和检测异常设置 ASA 作业。
 
 ## <a name="spike-and-dip"></a>高峰和低谷
 
@@ -102,6 +104,50 @@ INTO output
 FROM AnomalyDetectionStep
 
 ```
+
+## <a name="performance-characteristics"></a>性能特征
+
+这些模型的性能取决于历史记录的大小、 窗口持续时间、 事件负载，以及是否使用分区函数级别。 本部分讨论这些配置，并提供如何维持 1k、 5 K 和每秒 10 个事件的引入速率的样本。
+
+* **历史记录的大小**-这些模型使用执行线性**历史记录大小**。 时间越长历史记录大小、 较长的模型采用要评分的新事件。 这是因为模型比较为过去的事件历史记录缓冲区中的每个新的事件。
+* **窗口持续时间**-**时段持续时间**应反映它所需的时间接收指定的历史记录大小的多个事件。 而无需在窗口中的许多事件，Azure Stream Analytics 会输入缺失值。 因此，CPU 占用率是历史记录大小的函数。
+* **事件负载**-越大**事件负载**，将更多工作的执行模型，这将影响 CPU 占用率。 作业可以通过使其易并行，假设适合业务逻辑以使用更多输入的分区向外扩展。
+* **函数级分区** - **函数级别分区**可通过使用```PARTITION BY```异常情况检测函数调用中。 这种类型的分区将添加一项开销，因为状态需要在同一时间维护多个模型。 设备级别分区这类情况下使用函数级别分区。
+
+### <a name="relationship"></a>关系
+按以下方式相关的历史记录的大小、 窗口持续时间和总事件负载：
+
+windowDuration （以毫秒为单位） = 1000年 * historySize / (总事件每秒输入 / 输入分区计数)
+
+按 deviceId 分区函数，将添加"按分区 deviceId"到异常情况检测函数调用。
+
+### <a name="observations"></a>观测值
+下表包含单个节点 (6 SU) 为非分区事例的吞吐量观测值：
+
+| 历史记录的大小 （事件） | 窗口持续时间 （毫秒） | 每秒的输入的事件总数 |
+| --------------------- | -------------------- | -------------------------- |
+| 60 | 55 | 2,200 |
+| 600 | 728 | 1,650 |
+| 6,000 | 10,910 | 1,100 |
+
+下表包含单个节点 (6 SU) 为分区的情况下的吞吐量观测值：
+
+| 历史记录的大小 （事件） | 窗口持续时间 （毫秒） | 每秒的输入的事件总数 | 设备计数 |
+| --------------------- | -------------------- | -------------------------- | ------------ |
+| 60 | 1,091 | 1,100 | 10 |
+| 600 | 10,910 | 1,100 | 10 |
+| 6,000 | 218,182 | <550 | 10 |
+| 60 | 21,819 | 550 | 100 |
+| 600 | 218,182 | 550 | 100 |
+| 6,000 | 2,181,819 | <550 | 100 |
+
+若要运行上面的非分区配置的示例代码位于[流式处理在规模存储库](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh)的 Azure 示例。 该代码创建流分析作业没有函数级别进行分区，它使用事件中心作为输入和输出。 输入的负载是使用测试客户端生成的。 每个输入的事件是一个为 1 KB json 文档。 事件模拟 IoT 设备发送 JSON 数据 （适用于最大为 1 万台设备）。 历史记录的大小、 窗口持续时间和总事件负载随通过 2 个输入分区而变化。
+
+> [!Note]
+> 一个更准确的估计，自定义以适合你方案的示例。
+
+### <a name="identifying-bottlenecks"></a>找出瓶颈问题
+使用 Azure Stream Analytics 作业中度量值窗格来确定在管道中的瓶颈。 审阅**输入/输出事件**吞吐量和["水印延迟"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)或**囤积的事件**以确定是否作业使用输入速率保持。 对于事件中心指标，寻找**中止请求**并相应地调整阈值单位。 有关 Cosmos DB 指标，查看**每个分区键范围的最大使用 RU/s**统一使用吞吐量，从而确保您的分区键范围下。 对于 Azure SQL DB，监视**日志 IO**并**CPU**。
 
 ## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>使用 Azure Stream Analytics 中的机器学习异常情况检测
 

@@ -4,18 +4,18 @@ description: 使用 Azure 门户将模块部署到 IoT Edge 设备
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/19/2019
+ms.date: 06/25/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9d7729dce5419c5813de3c4dfce55c40098f5988
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8337c8672eb886d79b38b2a38a74037f88604497
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595246"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448547"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>通过 Azure 门户部署 Azure IoT Edge 模块
 
@@ -43,9 +43,9 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 
 ### <a name="add-modules"></a>添加模块
 
-1. 在页面的“注册表设置”部分，提供用于任何访问包含模块映像的专用容器注册表的凭据  。
+1. 在中**容器注册表设置**部分中的页上，提供用于访问任何包含模块映像的专用容器注册表的凭据。
 
-1. 在页面的“部署模块”部分中，选择“添加”   。
+1. 在中**部署模块**部分中的页上，选择**添加**。
 
 1. 在下拉列表中找到模块类型：
 

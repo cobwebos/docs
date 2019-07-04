@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/30/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: f4f10191ea28f73732f81eb9dc25321f82683652
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 796ae0e3be3a2e43d7f27d5932cdba0cf660f36b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416964"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441904"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -56,6 +56,8 @@ ms.locfileid: "66416964"
     b. **操作类型**：选择电子邮件/短信/推送/语音、逻辑应用、Webhook、ITSM 或自动化 Runbook。
 
     c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”  和其他字段。
+    
+    d. **常见警报架构**:您可以选择启用[常见警报架构](https://aka.ms/commonAlertSchemaDocs)，它提供一个可扩展的优势和 Azure Monitor 中服务的所有警报的统一警报有效负载。
 
 1. 选择“确定”  创建操作组。
 

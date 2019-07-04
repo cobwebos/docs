@@ -4,7 +4,7 @@ description: 了解如何在 Azure Functions 中使用 Azure 事件中心绑定�
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.service: azure-functions
@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: 7ca3ab8e3becf884fdba460f1981430e0c66ef99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa808bf333b35ce46a40a2fc8da7a2c8e78ac1aa
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64511778"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480631"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
 

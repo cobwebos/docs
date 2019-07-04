@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 265a1cf0a8a5e1e099a4ec7a9f0d674e0c474dd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63caf9a08acb04bab3712891701d32c21c22e9fc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190102"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449901"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何创建高级 Azure 文件共享
-高级文件共享 （预览版） 使用提供的固态硬盘 (SSD) 存储媒体和适用于 IO 密集型工作负荷，包括承载数据库和高性能计算 (HPC)。 高级文件共享托管在专用存储帐户类型，名为文件存储帐户中。 高级文件共享专为高性能和企业规模的应用程序，提供一致的低延迟、 高 IOPS 和高吞吐量共享。
+高级文件共享使用提供的固态硬盘 (SSD) 存储媒体和适用于 IO 密集型工作负荷，包括承载数据库和高性能计算 (HPC)。 高级文件共享托管在专用存储帐户类型，名为文件存储帐户中。 高级文件共享专为高性能和企业规模的应用程序，提供一致的低延迟、 高 IOPS 和高吞吐量共享。
 
 本文介绍如何创建此新的帐户类型使用[Azure 门户](https://portal.azure.com/)，Azure PowerShell 和 Azure CLI。
 
@@ -30,7 +30,7 @@ ms.locfileid: "65190102"
 
 登录到 [Azure 门户](https://portal.azure.com/)。
 
-### <a name="create-a-filestorage-preview-storage-account"></a>创建文件存储 （预览版） 的存储帐户
+### <a name="create-a-filestorage-storage-account"></a>创建文件存储的存储帐户
 
 现在你已准备好创建你的存储帐户。
 
@@ -47,10 +47,10 @@ ms.locfileid: "65190102"
 1. 然后，输入存储帐户的名称。 所选名称在 Azure 中必须唯一。 该名称还必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 1. 选择存储帐户的位置或使用默认位置。
 1. 有关**性能**选择**高级**。
-1. 选择**帐户类型**，然后选择**文件存储 （预览版）** 。
+1. 选择**帐户类型**，然后选择**文件存储**。
 1. 将保留**复制**设置为其默认值为**本地冗余存储 (LRS)** 。
 
-    ![如何创建高级文件共享的存储帐户](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
+    ![如何创建高级文件共享的存储帐户](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. 选择“查看+创建”  可查看存储帐户设置并创建帐户。
 1. 选择“创建”  。
@@ -59,7 +59,7 @@ ms.locfileid: "65190102"
 
 ### <a name="create-a-premium-file-share"></a>创建高级文件共享
 
-1. 在左侧菜单中的存储帐户，向下滚动到**文件服务**部分，然后选择**文件 （预览版）** 。
+1. 在左侧菜单中的存储帐户，向下滚动到**文件服务**部分，然后选择**文件**。
 1. 选择 **+ 文件共享**创建高级文件共享。
 1. 输入名称和所需的配额的文件共享，然后选择**创建**。
 
@@ -82,14 +82,14 @@ ms.locfileid: "65190102"
 
 ### <a name="upgrade-your-powershell-module"></a>升级 PowerShell 模块
 
-若要使用高级的文件共享中使用 PowerShell 进行交互，您将需要安装最新的 Az.Storage 模块。
+若要交互使用高级的文件共享中使用 PowerShell，你需要安装 Az.Storage 模块版本 1.4.0 或最新的 Az.Storage 模块。
 
 首先使用提升的权限打开 PowerShell 会话。
 
 安装 Az.Storage 模块：
 
 ```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
+Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 ```
 
 ### <a name="sign-in-to-your-azure-subscription"></a>登录到 Azure 订阅
@@ -112,9 +112,9 @@ $location = "westus2"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-### <a name="create-a-filestorage-preview-storage-account"></a>创建文件存储 （预览版） 的存储帐户
+### <a name="create-a-filestorage-storage-account"></a>创建文件存储的存储帐户
 
-若要从 PowerShell 创建文件存储 （预览版） 存储帐户，请使用[新建 AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)命令：
+若要从 PowerShell 创建文件存储存储帐户，请使用[新建 AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)命令：
 
 ```powershell
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
@@ -145,15 +145,11 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 若要启动 Azure Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。
 
-若要登录到本地安装的 CLI，请运行登录命令：
+如果你想要登录到本地安装的 cli，首先请确保具有最新版本，然后运行登录命令：
 
 ```cli
 az login
 ```
-
-### <a name="add-the-preview-storage-cli-extension"></a>添加预览存储 CLI 扩展
-
-由于高级文件共享是一项预览功能，您必须将预览扩展添加到你的 shell。 为此，请使用 Cloud Shell 或本地 shell 输入以下命令：`az extension add --name storage-preview`
 
 ### <a name="create-a-resource-group"></a>创建资源组
 

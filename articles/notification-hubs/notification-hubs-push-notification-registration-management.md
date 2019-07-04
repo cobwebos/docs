@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 5a70eec15003a1f75a80740f269f6df3523012a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fffa6784702f239e0af0e9e88a4b9937d20b86ed
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685396"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488632"
 ---
 # <a name="registration-management"></a>注册管理
 
@@ -90,6 +90,9 @@ ms.locfileid: "64685396"
 > 默认情况下，注册和安装不会过期。
 
 注册与安装必须包含每个设备/通道的有效 PNS 句柄。 由于只能在设备上的客户端应用中获取 PNS 句柄，因此有一种模式是直接在该设备上使用客户端应用进行注册。 另一方面，与标记相关的安全性考虑和业务逻辑可能要求在应用后端管理设备注册。
+
+> [!NOTE]
+> 安装 API 不支持百度服务 （尽管注册 API 定义）。 
 
 ### <a name="templates"></a>模板
 

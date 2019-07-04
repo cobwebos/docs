@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 042277899ff22066cfa890e64f5c6c0f2e0134f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080477"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428319"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
 
@@ -29,7 +29,7 @@ ms.locfileid: "67080477"
 * 测试工作站
 * 打包工作站
 
-这些 OPC UA 服务器具有 OPC UA 节点，并且 [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)会将这些节点的值发送到连接的工厂。 这包括：
+这些 OPC UA 服务器具有 OPC UA 节点，并且 [OPC 发布服务器](overview-opc-publisher.md)会将这些节点的值发送到连接的工厂。 这包括：
 
 * 当前的操作状态，例如当前的功耗。
 * 生产信息，例如生产的产品数量。
@@ -264,7 +264,7 @@ ms.locfileid: "67080477"
 
 此类别中的属性定义连接的工厂仪表板的可视外观。 示例包括：
 
-* Name
+* 名称
 * 描述
 * Image
 * Location
@@ -307,7 +307,7 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 
   标识 OPC UA 服务器中的节点值。 此属性的格式必须在 OPC UA 规范中指定。 在引入的消息中，此属性作为 NodeId 发送  。
 
-查看[此](https://github.com/Azure/iot-edge-opc-publisher) GitHub 页面，详细了解如何使用 OPC 发布服务器将遥测数据引入连接的工厂。
+请参阅[什么是 OPC 发布服务器](overview-opc-publisher.md)有关如何将遥测数据引入到连接工厂的详细信息。
 
 ## <a name="example-how-kpi1-is-calculated"></a>示例：如何计算 KPI1
 

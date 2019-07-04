@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 63f59d59712d851f9bb7ace27335fe665a598f9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c91c1badaa4b1bc055859d700857cfd4d062babd
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66477915"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491500"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -33,6 +33,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 根据有效负载的 data.context.activityLog.eventSource 字段，POST 操作中包含的 JSON 有效负载会有所不同。
 
 ### <a name="common"></a>常见
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -59,7 +60,9 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
     }
 }
 ```
+
 ### <a name="administrative"></a>管理
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -84,9 +87,96 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
         "properties": {}
     }
 }
-
 ```
+
+### <a name="security"></a>安全
+
+```json
+{
+    "schemaId":"Microsoft.Insights/activityLogs",
+    "data":{"status":"Activated",
+        "context":{
+            "activityLog":{
+                "channels":"Operation",
+                "correlationId":"2518408115673929999",
+                "description":"Failed SSH brute force attack. Failed brute force attacks were detected from the following attackers: [\"IP Address: 01.02.03.04\"].  Attackers were trying to access the host with the following user names: [\"root\"].",
+                "eventSource":"Security",
+                "eventTimestamp":"2017-06-25T19:00:32.607+00:00",
+                "eventDataId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
+                "level":"Informational",
+                "operationName":"Microsoft.Security/locations/alerts/activate/action",
+                "operationId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
+                "properties":{
+                    "attackers":"[\"IP Address: 01.02.03.04\"]",
+                    "numberOfFailedAuthenticationAttemptsToHost":"456",
+                    "accountsUsedOnFailedSignInToHostAttempts":"[\"root\"]",
+                    "wasSSHSessionInitiated":"No","endTimeUTC":"06/25/2017 19:59:39",
+                    "actionTaken":"Detected",
+                    "resourceType":"Virtual Machine",
+                    "severity":"Medium",
+                    "compromisedEntity":"LinuxVM1",
+                    "remediationSteps":"[In case this is an Azure virtual machine, add the source IP to NSG block list for 24 hours (see https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/)]",
+                    "attackedResourceType":"Virtual Machine"
+                },
+                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/Microsoft.Security/locations/centralus/alerts/Sec-07f2-4d74-aaf0-03d2f53d5a33",
+                "resourceGroupName":"contoso",
+                "resourceProviderName":"Microsoft.Security",
+                "status":"Active",
+                "subscriptionId":"12345-5645-123a-9867-123b45a6789",
+                "submissionTimestamp":"2017-06-25T20:23:04.9743772+00:00",
+                "resourceType":"MICROSOFT.SECURITY/LOCATIONS/ALERTS"
+            }
+        },
+        "properties":{}
+    }
+}
+```
+
+### <a name="recommendation"></a>建议
+
+```json
+{
+    "schemaId":"Microsoft.Insights/activityLogs",
+    "data":{
+        "status":"Activated",
+        "context":{
+            "activityLog":{
+                "channels":"Operation",
+                "claims":"{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\":\"Microsoft.Advisor\"}",
+                "caller":"Microsoft.Advisor",
+                "correlationId":"123b4c54-11bb-3d65-89f1-0678da7891bd",
+                "description":"A new recommendation is available.",
+                "eventSource":"Recommendation",
+                "eventTimestamp":"2017-06-29T13:52:33.2742943+00:00",
+                "httpRequest":"{\"clientIpAddress\":\"0.0.0.0\"}",
+                "eventDataId":"1bf234ef-e45f-4567-8bba-fb9b0ee1dbcb",
+                "level":"Informational",
+                "operationName":"Microsoft.Advisor/recommendations/available/action",
+                "properties":{
+                    "recommendationSchemaVersion":"1.0",
+                    "recommendationCategory":"HighAvailability",
+                    "recommendationImpact":"Medium",
+                    "recommendationName":"Enable Soft Delete to protect your blob data",
+                    "recommendationResourceLink":"https://portal.azure.com/#blade/Microsoft_Azure_Expert/RecommendationListBlade/recommendationTypeId/12dbf883-5e4b-4f56-7da8-123b45c4b6e6",
+                    "recommendationType":"12dbf883-5e4b-4f56-7da8-123b45c4b6e6"
+                },
+                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/microsoft.storage/storageaccounts/contosoStore",
+                "resourceGroupName":"CONTOSO",
+                "resourceProviderName":"MICROSOFT.STORAGE",
+                "status":"Active",
+                "subStatus":"",
+                "subscriptionId":"12345-5645-123a-9867-123b45a6789",
+                "submissionTimestamp":"2017-06-29T13:52:33.2742943+00:00",
+                "resourceType":"MICROSOFT.STORAGE/STORAGEACCOUNTS"
+            }
+        },
+        "properties":{}
+    }
+}
+```
+
 ### <a name="servicehealth"></a>ServiceHealth
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -128,7 +218,10 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 }
 ```
 
+有关服务运行状况通知活动日志警报的特定架构详细信息，请参阅[服务运行状况通知](../../azure-monitor/platform/service-notifications.md)。 此外，请了解如何[使用现有的问题管理解决方案配置服务运行状况 Webhook 通知](../../service-health/service-health-alert-webhook-guide.md)。
+
 ### <a name="resourcehealth"></a>ResourceHealth
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -165,14 +258,10 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 }
 ```
 
-有关服务运行状况通知活动日志警报的特定架构详细信息，请参阅[服务运行状况通知](../../azure-monitor/platform/service-notifications.md)。 此外，请了解如何[使用现有的问题管理解决方案配置服务运行状况 Webhook 通知](../../service-health/service-health-alert-webhook-guide.md)。
-
-有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)。
-
 | 元素名称 | 描述 |
 | --- | --- |
 | status |用于度量值警报。 对于活动日志警报，始终设置为“已激活”。 |
-| 上下文 |事件的上下文。 |
+| context |事件的上下文。 |
 | resourceProviderName |受影响资源的资源提供程序。 |
 | conditionType |始终为“事件”。 |
 | name |警报规则的名称。 |
@@ -192,12 +281,14 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 | eventDataId |事件的唯一标识符。 |
 | eventSource |生成事件的 Azure 服务或基础结构的名称。 |
 | httpRequest |请求通常包括“clientRequestId”、“clientIpAddress”和“HTTP method”（例如 PUT）。 |
-| 级别 |以下值之一：Critical、Error、Warning 和 Informational。 |
+| level |以下值之一：Critical、Error、Warning 和 Informational。 |
 | operationId |通常是在与单个操作对应的事件之间共享的 GUID。 |
 | operationName |操作的名称。 |
 | properties |事件的属性。 |
 | status |字符串。 操作的状态。 常见值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
-| subStatus |通常包含对应 REST 调用的 HTTP 状态代码。 它还可能包含描述子状态的其他字符串。 常见子状态值包括“正常(HTTP 状态代码: 200)”、“已创建(HTTP 状态代码: 201)、已接受(HTTP 状态代码:202)、没有任何内容(HTTP 状态代码:204)、错误的请求(HTTP 状态代码:400)、找不到(HTTP 状态代码:404)、冲突(HTTP 状态代码:409)、内部服务器错误(HTTP 状态代码:500)”、“服务不可用(HTTP 状态代码: 503)”和“网关超时(HTTP 状态代码: 504)”。 |
+| subStatus |通常包含对应 REST 调用的 HTTP 状态代码。 它还可能包含描述子状态的其他字符串。 常见子状态值包括“正常(HTTP 状态代码: 200)”、“已创建(HTTP 状态代码: 201)、已接受(HTTP 状态代码:202)、没有任何内容(HTTP 状态代码:204)、错误的请求(HTTP 状态代码:400)、找不到(HTTP 状态代码:404)、冲突(HTTP 状态代码:409)、内部服务器错误(HTTP 状态代码:500)”、“服务不可用(HTTP 状态代码: 503)”和“网关超时(HTTP 状态代码: 504)。 |
+
+有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [了解有关活动日志的更多信息](../../azure-monitor/platform/activity-logs-overview.md)。

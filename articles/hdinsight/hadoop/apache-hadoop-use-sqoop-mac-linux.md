@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 6dcb6853daf34fede590011d165c0ba9001cbac6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02b4eb6c367510e8994aa7723fe3fdd3e43af0e6
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721634"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462177"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>使用 Apache Sqoop 在 Apache Hadoop on HDInsight 与 SQL 数据库之间导入和导出数据
 
@@ -98,5 +98,5 @@ ms.locfileid: "64721634"
 现在已经学习了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
 
 * [将 Apache Oozie 和 HDInsight 配合使用](../hdinsight-use-oozie-linux-mac.md)：在 Oozie 工作流中使用 Sqoop 操作。
-* [使用 HDInsight 分析航班延误数据](../hdinsight-analyze-flight-delay-data-linux.md)：使用 Apache Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库。
+* [使用 HDInsight 分析航班延误数据](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)：使用交互式查询来分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库。
 * [将数据上传到 HDInsight](../hdinsight-upload-data.md)：了解将数据上传到 HDInsight/Azure Blob 存储的其他方法。

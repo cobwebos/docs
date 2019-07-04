@@ -1,6 +1,6 @@
 ---
-title: Node.js 中的 Azure 搜索入门 - Azure 搜索
-description: 介绍使用 Node.js 作为编程语言，在 Azure 的托管云搜索服务上生成搜索应用程序的方法。
+title: Node.js 快速入门：创建、 加载和查询使用 Azure 搜索 REST Api-Azure 搜索索引
+description: 介绍如何创建索引、 加载数据，并使用 Node.js 和 Azure 搜索 REST Api 运行查询。
 author: jj09
 manager: jlembicz
 services: search
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: 1b37b3c52abd3750c3452a46bdf5b0c5954de4dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44b7f1f49d6764418dcc0e72cb667e17a2b920c6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289168"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450027"
 ---
-# <a name="get-started-with-azure-search-in-nodejs"></a>Node.js 中的 Azure 搜索入门
+# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>快速入门：在 Node.js 中创建 Azure 搜索索引
 > [!div class="op_single_selector"]
 > * [门户](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -32,7 +32,7 @@ ms.locfileid: "61289168"
 ## <a name="about-the-data"></a>关于数据
 此示例应用程序使用的数据来自 [美国地质调查局 (USGS)](https://geonames.usgs.gov/domestic/download_data.htm)，对罗得岛州进行了筛选以减小数据集大小。 使用此数据生成搜索应用程序，该应用程序返回医院、学校等地标性建筑，以及河流、湖泊和山峰等地质特征。
 
-在此应用程序中， **DataIndexer** 程序通过使用 [索引器](https://msdn.microsoft.com/library/azure/dn798918.aspx) 构造，并从公共 Azure SQL 数据库检索筛选的 USGS 数据集，生成并加载索引。 程序代码中提供了联机数据源的凭据和连接信息。 无需进一步配置。
+在此应用程序**DataIndexer**程序生成并加载索引[索引器](https://msdn.microsoft.com/library/azure/dn798918.aspx)构造，从 Azure SQL 数据库中检索筛选的 USGS 数据集。 程序代码中提供了联机数据源的凭据和连接信息。 无需进一步配置。
 
 > [!NOTE]
 > 此数据集应用了筛选器，使其保持在免费定价层限定的 10,000 个文档以下。 若使用标准层，则此限制不适用。 有关每个定价层容量的详细信息，请参阅 [搜索服务限制](search-limits-quotas-capacity.md)。

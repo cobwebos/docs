@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: magoedte
-ms.openlocfilehash: 0578b50952c12d4587f7a4751bc831d3134c64e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39dbb504603544a468907d87d236338cb95e39a3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66129426"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441637"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -158,7 +158,7 @@ ms.locfileid: "66129426"
     "workspaceName": {
       "type": "string",
       "metadata": {
-        "description": "workspaceName"
+        "description": "Workspace name"
       }
     },
     "serviceTier": {
@@ -169,8 +169,9 @@ ms.locfileid: "66129426"
         "PerNode",
         "PerGB2018"
       ],
+      "defaultValue": "PerGB2018",
       "metadata": {
-        "description": "Service Tier: Free, Standalone, PerNode, or PerGB2018"
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone or PerNode) which are not available to all customers"
     }
       },
     "dataRetention": {
@@ -179,7 +180,14 @@ ms.locfileid: "66129426"
       "minValue": 7,
       "maxValue": 730,
       "metadata": {
-        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and Log Analytics plans include 30 days for free"
+        "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
+      }
+    },
+    {
+    "immediatePurgeDataOn30Days": {
+      "type": "bool",
+      "metadata": {
+        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. This only applies when retention is being set to 30 days."
       }
     },
     "location": {
@@ -524,4 +532,3 @@ Azure 快速入门模板库包含 Log Analytics 的多个模板，其中包括�
 ## <a name="next-steps"></a>后续步骤
 * [使用资源管理器模板将 Windows 代理部署到 Azure VM](../../virtual-machines/extensions/oms-windows.md)。
 * [使用资源管理器模板将 Linux 代理部署到 Azure VM](../../virtual-machines/extensions/oms-linux.md)。
-

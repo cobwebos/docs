@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 86e30c465a605681519565261beec75d88ccd472
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 4f77eafd3309d7c1d679c126b1a5eb1ff0e9a28d
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190803"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490090"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>源映射数据流转换 
 
@@ -146,6 +146,12 @@ ms.locfileid: "67190803"
 可以修改在更高版本派生列转换中的列数据类型。 使用选择的转换来修改列名称。
 
 ![有关默认数据格式设置](media/data-flow/source2.png "默认格式")
+
+### <a name="add-dynamic-content"></a>添加动态内容
+
+在设置面板中的字段内单击时，你将看到"添加动态内容"的超链接。 当您单击此处时，将启动表达式生成器。 这是您可以使用表达式、 静态文本值或参数以动态方式设置的设置值。
+
+![参数](media/data-flow/params6.png "参数")
 
 ## <a name="next-steps"></a>后续步骤
 

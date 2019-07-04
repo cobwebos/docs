@@ -5,20 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 06/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: dc2beda1ae017b5e81fddf08d0c7e88c785bcdf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e29b8e23927ef2ff70416d1adc76e2b2b3f2d8a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153883"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443711"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>在 Azure CLI 中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限
 
-Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问 Blob 或队列数据的通用权限集。 
+Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问 Blob 或队列数据的通用权限集。
 
 将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可能是用户、 组、 应用程序服务主体，或[管理 Azure 资源的标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
@@ -52,9 +52,9 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-user"></a>向用户分配 RBAC 角色
+## <a name="assign-an-rbac-role-to-a-security-principal"></a>将 RBAC 角色分配给安全主体
 
-若要向用户分配 RBAC 角色，请使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 命令。 命令的格式因分配范围而异。 以下示例演示如何在不同的范围为用户分配角色。
+若要将 RBAC 角色分配给安全主体，请使用[az 角色分配创建](/cli/azure/role/assignment#az-role-assignment-create)命令。 命令的格式因分配范围而异。 以下示例演示如何将角色分配给不同的范围内的用户，但可以使用相同的命令以将角色分配给任何安全主体。
 
 ### <a name="container-scope"></a>容器范围
 

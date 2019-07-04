@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 5cd88eeb2016a90a95f0e54a334eb3c88cb75744
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: a24bba0786201f4ea1d1be431107f7bfe26a2a8f
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078737"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461724"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>有关使用查询存储的 MySQL 性能监视 Azure 数据库
 
 **适用于：**  Azure Database for MySQL 5.7
 
 > [!NOTE]
-> 查询存储处于预览状态。 对查询存储在 Azure 门户中的支持即将推出，并可能尚不可用你的区域中。
+> 查询存储处于预览状态。
 
 Azure Database for MySQL 中的查询存储功能提供了一种方法来跟踪一段时间内的查询性能。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 为所有用户、 数据库和查询数据存储在**mysql**架构数据库在 Azure Database for MySQL 实例。
 
@@ -29,10 +29,6 @@ Azure Database for MySQL 中的查询存储功能提供了一种方法来跟踪�
 - 检测回归的查询
 - 确定在给定时间范围内执行查询的次数
 - 比较跨时间范围查询的平均执行时间，以查看较大的增量
-- 标识过去 X 小时内运行时间最长的查询
-- 标识正在等待资源的前 N 个查询
-- 了解查询的等待性质
-- 了解资源等待和资源争用的存在的趋势
 
 ## <a name="enabling-query-store"></a>启用查询存储
 
@@ -120,7 +116,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 此视图返回查询存储中的所有数据。 每个不同的数据库 ID、用户 ID 和查询 ID 都有一行。
 
-| **名称** | 数据类型  | **IS_NULLABLE** | **说明** |
+| **Name** | 数据类型  | **IS_NULLABLE** | **说明** |
 |---|---|---|---|
 | `schema_name`| varchar(64) | 否 | 架构的名称 |
 | `query_id`| bigint(20) | 否| 将生成生成特定查询，如果在不同架构中，新的 ID 相同的查询执行的唯一 ID |
@@ -153,7 +149,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
 
-| **名称**| 数据类型  | **IS_NULLABLE** | **说明** |
+| **Name**| 数据类型  | **IS_NULLABLE** | **说明** |
 |---|---|---|---|
 | `interval_start` | timestamp | 否| 间隔 （15 分钟增量） 开始日期|
 | `interval_end` | timestamp | 否| 间隔 （15 分钟增量） 结束|
@@ -167,7 +163,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ### <a name="functions"></a>函数
 
-| **名称**| **说明** |
+| **Name**| **说明** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | 将给定的时间戳之前的所有查询存储数据中都清除 |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | 清除所有等待给定的时间戳之前的事件数据 |

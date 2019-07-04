@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0672f25b30bfb34a6ee99b0f4710d01cf0871300
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 6506a93914cfbc10f37980c4b916a93aa9aad75d
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150324"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67564397"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -83,29 +83,24 @@ Azure 文件提供两个性能层： 标准和高级。
 最多 5 TiB 的大小的标准文件共享都可用作 GA 产品/服务。 虽然更大的是大于 5 TiB，最多 100 TiB 的任何共享的文件共享目前以预览版产品形式提供。
 
 > [!IMPORTANT]
-> - 需要创建新的常规用途存储帐户 （不能扩展现有存储帐户）。
-> - 仅适用于 LRS。
-> - 三个区域可用：美国西部 2、 西欧和东南亚区域。
-> - GRS 帐户转换为 LRS 将无法创建订阅接受到更大的文件共享预览后任何新存储帐户。
+> 请参阅[载入到更大的文件共享 （标准层）](#onboard-to-larger-file-shares-standard-tier)部分步骤载入，以及作用域和预览版的限制。
 
-如果你想要加入的这些更大的文件共享大小的预览，将其提交[窗体](https://aka.ms/azurefilesatscalesurvey)。 
+### <a name="premium-file-shares"></a>高级文件共享
 
-### <a name="premium-file-shares-preview"></a>高级文件共享（预览版）
-
-高级文件共享 （预览版） 受固态硬盘 (Ssd)。 高级文件共享提供一致的高性能和低延迟，在大多数的 IO 操作，适用于 IO 密集型工作负荷的个位数毫秒内。 这使得它们适合于各种各样的工作负荷，例如数据库、网站托管、开发环境，等等。高级文件共享只能在预配的计费模型下使用。 高级文件共享使用的一种部署模式不同于标准文件共享。
+高级文件共享由固态驱动器 (Ssd) 支持。 高级文件共享提供一致的高性能和低延迟，在大多数的 IO 操作，适用于 IO 密集型工作负荷的个位数毫秒内。 这使它们适用于各种工作负载，如数据库、 web 站点托管，和开发环境。 高级文件共享只能在预配的计费模型下使用。 高级文件共享使用的一种部署模式不同于标准文件共享。
 
 Azure 备份是可用于高级文件共享和 Azure Kubernetes 服务中 1.13 版及更高版本支持高级文件共享。
 
 如果你想要了解如何创建高级文件共享，请参阅有关该主题的我们的文章:[如何创建 Azure 高级文件存储帐户](storage-how-to-create-premium-fileshare.md)。
 
-目前，你不能直接转换之间的标准文件共享和高级文件共享。 如果你想要切换到任一层，必须在该层中创建新的文件共享并手动将数据从原始共享复制到你创建的新共享。 您可以执行此操作使用任何支持的 Azure 文件复制工具，例如 AzCopy。
+目前，你不能直接转换之间的标准文件共享和高级文件共享。 如果你想要切换到任一层，必须在该层中创建新的文件共享并手动将数据从原始共享复制到你创建的新共享。 您可以执行此操作使用任何支持的 Azure 文件复制工具，例如 Robocopy 或 AzCopy。
 
 > [!IMPORTANT]
-> 高级文件共享仍处于预览状态，才可启用 LRS，并可提供存储帐户的大多数区域中。 若要查找在您所在地区是否当前可用高级文件共享，请参阅[区域的可用产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)适用于 Azure 的页。
+> 高级文件共享，才可启用 LRS，并可提供存储帐户的大多数区域中。 若要查找在您所在地区是否当前可用高级文件共享，请参阅[区域的可用产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)适用于 Azure 的页。
 
 ### <a name="provisioned-shares"></a>预配的共享
 
-高级文件共享 （预览版） 预配基于固定的 GiB/IOPS/吞吐量比率。 对于预配的每个 GiB，将向该共享分配 1 IOPS 和 0.1 MiB/秒的吞吐量，最多可达每个共享的最大限制。 允许的最小预配为 100 GiB 以及最小的 IOPS/吞吐量。
+高级文件共享是基于固定的 GiB/IOPS/吞吐量比率预配的。 对于预配的每个 GiB，将向该共享分配 1 IOPS 和 0.1 MiB/秒的吞吐量，最多可达每个共享的最大限制。 允许的最小预配为 100 GiB 以及最小的 IOPS/吞吐量。
 
 最大限度地提供服务时，对于预配的存储，所有共享都可以突增到每 GiB 3 IOPS，持续 60 分钟或更长时间，具体取决于共享大小。 新共享将根据预配的容量以完全突增额度开始。
 
@@ -136,6 +131,9 @@ Azure 备份是可用于高级文件共享和 Azure Kubernetes 服务中 1.13 �
 |33,792      | 33,792  | 最多 100,000 个 | 2,088 | 1,392   |
 |51,200      | 51,200  | 最多 100,000 个 | 3,132 | 2,088   |
 |102,400     | 100,000 | 最多 100,000 个 | 6,204 | 4,136   |
+
+> [!NOTE]
+> 文件共享性能受到的计算机网络限制、 可用网络带宽、 IO 大小、 并行度，还有许多其他因素。 若要实现最大性能缩放，可跨多个 Vm 的负载。 请参阅[故障排除指南](storage-troubleshooting-files-performance.md)的一些常见性能问题和解决方法。
 
 ### <a name="bursting"></a>爆发
 
@@ -192,6 +190,48 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 * 区域冗余存储 (ZRS) 提供了高可用性与同步复制，可能会在某些情况下比 GRS 相比更好的选择。 有关 ZRS 的详细信息，请参阅 [ZRS](../common/storage-redundancy-zrs.md)。
 * 对于异步复制，从数据写入到主要区域到数据复制到次要区域，这之间存在延迟。 发生区域性灾难时，如果无法从主要区域中恢复数据，则尚未复制到次要区域的更改可能会丢失。
 * 使用 GRS 时，副本不可用于读取或写入访问，除非 Microsoft 启动到次要区域的故障转移。 如果发生故障转移，则在故障转移完成后，你将具有对该数据的读取和写入访问权限。 有关详细信息，请参阅[灾难恢复指南](../common/storage-disaster-recovery-guidance.md)。
+
+## <a name="onboard-to-larger-file-shares-standard-tier"></a>载入到更大的文件共享 （标准层）
+
+本部分仅适用于标准文件共享。 高级版的所有文件共享 GA 产品/服务的都形式提供与 100 TiB。
+
+### <a name="restrictions"></a>限制
+
+- 需要创建新的常规用途存储帐户 （不能扩展现有存储帐户）。
+- GRS 帐户转换为 LRS 将无法创建订阅接受到更大的文件共享预览后任何新存储帐户。
+
+### <a name="regional-availability"></a>区域可用性
+
+在最多 5 TiB 的所有区域均提供标准文件共享。 在某些区域，便可使用 100 个 TiB 限制下, 表列出了这些区域：
+
+|区域  |支持的冗余  |支持现有的存储帐户  |
+|---------|---------|---------|
+|亚洲东南部     |LRS|否         |
+|西欧     |LRS|否         |
+|美国西部 2     |LRS、 ZRS|否         |
+
+
+### <a name="steps-to-onboard"></a>要登记的步骤
+
+若要注册到更大的文件共享预览你的订阅，请运行以下 PowerShell 命令：
+
+```powershell
+Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
+Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
+```
+这两个命令都运行后，你的订阅自动获得批准。
+
+若要验证您的注册状态，可以运行以下命令：
+
+```powershell
+Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
+```
+
+它可能需要为您的状态更新为最多 15 分钟**注册**。 您的状态后**注册**，可以使用该功能。
+
+### <a name="use-larger-file-shares"></a>使用更大的文件共享
+
+若要开始使用更大的文件共享，请创建新的常规用途 v2 存储帐户和新的文件共享。
 
 ## <a name="data-growth-pattern"></a>数据增长模式
 

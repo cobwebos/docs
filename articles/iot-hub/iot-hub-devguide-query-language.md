@@ -1,18 +1,18 @@
 ---
 title: 了解 Azure IoT 中心查询语言 | Microsoft Docs
 description: 开发人员指南 - 介绍了类似 SQL 的 IoT 中心查询语言，该语言用于在 IoT 中心检索设备/模块孪生和作业的相关信息。
-author: rezasherafat
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: rezas
-ms.openlocfilehash: 4fbb731d9908e791a6fce2b087d9b734b98a25cb
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.author: robinsh
+ms.openlocfilehash: 03d2ca0b7d6b53215c5293f84c8b22a2dc0d8297
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137733"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450059"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
@@ -328,8 +328,8 @@ SELECT <select_list>
 
 **从 < from_specification >** 子句可以假定只有三个值：**从设备**查询设备孪生**从 devices.modules**查询模块孪生，或**从 devices.jobs**查询作业每设备详细信息。
 
-
 ## <a name="where-clause"></a>WHERE 子句
+
 **WHERE <filter_condition>** 子句是可选的。 它指定要将 FROM 集合中的 JSON 文档内含在结果中时需满足的一项或多项条件。 任何 JSON 文档必须将指定的条件求值为“true”才能包含在结果中。
 
 [表达式和条件](iot-hub-devguide-query-language.md#expressions-and-conditions)部分介绍了允许的条件。
@@ -366,6 +366,7 @@ SELECT [TOP <max number>] <projection list>
 目前，仅支持在针对设备孪生执行的聚合查询中使用除 **SELECT*** 以外的选择子句。
 
 ## <a name="group-by-clause"></a>GROUP BY 子句
+
 **GROUP BY <group_specification>** 子句是可选步骤，可在 WHERE 子句中指定的筛选器后、在 SELECT 中指定的投影前执行该子句。 它根据属性值来分组文档。 这些组用于生成 SELECT 子句中指定的聚合值。
 
 下面是使用 GROUP BY 的查询示例：
@@ -393,9 +394,9 @@ GROUP BY <group_by_element>
 > [!IMPORTANT]
 > 术语 `group` 目前被视为查询中的特殊关键字。 如果你使用 `group` 作为属性名，请考虑使用双括号将其括起来以避免错误，例如 `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`。
 >
->
 
 ## <a name="expressions-and-conditions"></a>表达式和条件
+
 从较高层面讲，*表达式*可以：
 
 * 求值结果为 JSON 类型的实例（例如布尔值、数字、字符串、数组或对象）。
@@ -443,6 +444,7 @@ GROUP BY <group_by_element>
 | string_literal |字符串文本是以零个或多个 Unicode 字符序列或转义符序列表示的 Unicode 字符串。 字符串文本括在单引号或双引号中。 允许的转义符：`\'`、`\"`、`\\`、`\uXXXX`（由 4 个十六进制数字定义的 Unicode 字符）。 |
 
 ### <a name="operators"></a>运算符
+
 支持以下运算符：
 
 | 系列 | 运算符 |
@@ -452,6 +454,7 @@ GROUP BY <group_by_element>
 | 比较 |=、!=、<、>、<=、>=、<> |
 
 ### <a name="functions"></a>函数
+
 查询克隆和作业时唯一受支持的函数是：
 
 | 函数 | 描述 |

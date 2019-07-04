@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d78d8a689b860162a742e85c155205f072a3667c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254670"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446776"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>使用 Azure 顾问提高应用程序的可用性
 
@@ -93,6 +93,9 @@ Azure 顾问会标识 Azure Cosmos DB 帐户，使用的旧版本的 Java SDK �
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>将 Azure Cosmos DB Spark 连接器升级到 Maven 提供的最新版本
 
 Azure 顾问会标识 Azure Cosmos DB 帐户，正在使用旧版本的 Cosmos DB Spark 连接器并建议升级到最新版本从 Maven 为最新修补程序、 性能改进和新功能。 [了解有关 Cosmos DB Spark 连接器的详细信息](https://aka.ms/cosmosdb/spark-connector)
+
+## <a name="enable-virtual-machine-replication"></a>启用虚拟机复制
+没有启用到另一个区域复制的虚拟机不是能够弹性应对区域性故障。 将虚拟机复制的 Azure 区域服务中断期间减少任何不利的业务影响。 顾问将检测到不具有复制的 Vm 启用和建议，以便在发生中断，您可以快速打开你的虚拟机的远程 Azure 区域中启用复制。 [了解有关虚拟机复制的详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何访问顾问中的高可用性建议
 

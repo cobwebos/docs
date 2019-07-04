@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 06/13/2019
+ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: bb13ecb2d9014dbf56823734ac28703df9755b4b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 3e66bf61caf786473d89eab9a6567bb05aff0d19
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277134"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67457237"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>网络限制-Azure 资源管理器仅对网络资源通过管理，以下限制适用**Azure 资源管理器**每个区域每个订阅。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -75,7 +75,7 @@ ms.locfileid: "67277134"
 
 | Resource | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 虚拟网络 |50 |100 |
+| 虚拟网络 |100 |100 |
 | 本地网络站点 |20 |联系支持人员。 |
 | 每个虚拟网络的 DNS 服务器数 |20 |20 |
 | 每个虚拟网络的专用 IP 地址数 |4,096 |4,096 |
@@ -84,8 +84,8 @@ ms.locfileid: "67277134"
 | 每个 NSG 的 NSG 规则数 |1,000 |1,000 |
 | 用户定义路由表数 |200 |200 |
 | 每个路由表的用户定义的路由数 |400 |400 |
-| 公共 IP 地址 (动态) |5 |联系支持人员 |
-| 保留的公共 IP 地址 |20 |联系支持人员 |
+| 公共 IP 地址 (动态) |500 |500 |
+| 保留的公共 IP 地址 |500 |500 |
 | 每个部署的公共 VIP |5 |联系支持人员 |
 | 每个部署的专用 VIP（内部负载均衡） |第 |第 |
 | 终结点访问控制列表 (ACL) |50 |50 |

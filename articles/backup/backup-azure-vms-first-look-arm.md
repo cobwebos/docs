@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 906024ecb3e95c75c45efddafbbf76944c6aea29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80739fac8317014c74c6a86cef9aa23696cfb42e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058064"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443002"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>通过 VM 设置备份 Azure VM
 
@@ -66,13 +66,14 @@ ms.locfileid: "67058064"
 
    ![备份状态](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
-10. 启用备份后，运行初始备份。 可以立即启动初始备份，也可以等待它按备份计划启动。
+10. 启用备份后，会运行初始备份。 可以立即启动初始备份，也可以等待它按备份计划启动。
     - 在初始备份完成之前，“上次备份状态”  显示为“警告(初始备份挂起)”  。
     - 若要查看下一个计划的备份何时运行，请单击备份策略名称。
 
 
 > [!NOTE]
-> Azure 备份服务创建单独的资源组 （而不是 VM 资源组） 来存储快照，使用的命名格式**AzureBackupRG_geography_number** (示例：AzureBackupRG_northeurope_1）。 此资源组中的数据将以天为单位指定的持续时间内保留在"保留即时恢复快照"部分中的 Azure 虚拟机备份策略。 对此资源组应用锁可能会导致备份失败。
+> Azure 备份服务创建单独的资源组 （而不是 VM 资源组） 来存储快照，使用的命名格式**AzureBackupRG_geography_number** (示例：AzureBackupRG_northeurope_1）。 此资源组中的数据将以天为单位指定的持续时间内保留在"保留即时恢复快照"部分中的 Azure 虚拟机备份策略。 对此资源组应用锁可能会导致备份失败。<br>
+根据限制策略会阻止创建资源点集合中其再次导致备份失败，则还应从任何名称/标记限制排除此资源组。
 
 
 ## <a name="run-a-backup-immediately"></a>立即运行备份

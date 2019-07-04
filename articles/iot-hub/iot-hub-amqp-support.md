@@ -1,32 +1,32 @@
 ---
 title: 了解 Azure IoT 中心 AMQP 支持 | Microsoft Docs
 description: 开发人员指南-支持设备连接到 IoT 中心使用 AMQP 协议的面向设备和面向服务的终结点。 包含有关 Azure IoT 设备 SDK 中内置 AMQP 支持的信息。
-author: rezasherafat
-manager: ''
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.author: rezas
-ms.openlocfilehash: c304c9b7fe02e3396d49aee0b70576071d9fac92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: robinsh
+ms.openlocfilehash: e0c7b6aa9745beaf7a7d336e8308d12348bb274b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055378"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432617"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>使用 AMQP 协议来与 IoT 中心通信
 
-Azure IoT 中心支持[OASIS 高级消息队列协议 (AMQP) 1.0 版](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)提供各种功能通过面向设备和面向服务的终结点。 本文档介绍如何使用 AMQP 客户端连接到 IoT 中心使用 IoT 中心功能。
+Azure IoT 中心支持[OASIS 高级消息队列协议 (AMQP) 1.0 版](https://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)提供各种功能通过面向设备和面向服务的终结点。 本文档介绍如何使用 AMQP 客户端连接到 IoT 中心使用 IoT 中心功能。
 
 ## <a name="service-client"></a>服务客户端
 
 ### <a name="connect-and-authenticate-to-an-iot-hub-service-client"></a>连接并向 IoT 中心 （服务客户端） 进行身份验证
+
 若要使用 AMQP 连接到 IoT 中心，客户端可以使用[基于声明的安全 (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc)或[简单身份验证和安全层 (SASL) 身份验证](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer)。
 
 服务客户端需要以下信息：
 
-| 信息 | 值 | 
+| 信息 | 值 |
 |-------------|--------------|
 | IoT 中心主机名 | `<iot-hub-name>.azure-devices.net` |
 | 密钥名称 | `service` |
@@ -40,14 +40,15 @@ import uamqp
 import urllib
 import time
 
-# Use generate_sas_token implementation available here: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#security-token-structure
+# Use generate_sas_token implementation available here: 
+# https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#security-token-structure
 from helper import generate_sas_token
 
 iot_hub_name = '<iot-hub-name>'
 hostname = '{iot_hub_name}.azure-devices.net'.format(iot_hub_name=iot_hub_name)
 policy_name = 'service'
 access_key = '<primary-or-secondary-key>'
-operation = '<operation-link-name>' # e.g., '/messages/devicebound'
+operation = '<operation-link-name>' # example: '/messages/devicebound'
 
 username = '{policy_name}@sas.root.{iot_hub_name}'.format(iot_hub_name=iot_hub_name, policy_name=policy_name)
 sas_token = generate_sas_token(hostname, access_key, policy_name)
@@ -59,6 +60,7 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 ```
 
 ### <a name="invoke-cloud-to-device-messages-service-client"></a>调用云到设备消息 （服务客户端）
+
 若要了解有关服务和 IoT 中心之间以及设备与 IoT 中心之间的云到设备消息交换信息，请参阅[从 IoT 中心发送云到设备消息](iot-hub-devguide-messages-c2d.md)。 服务客户端使用两个链接来发送消息和以前接收的反馈将消息从发送设备，如下表中所述：
 
 | 创建者 | 链接类型 | 链接路径 | 描述 |
@@ -121,8 +123,11 @@ for msg in batch:
 ```
 
 云到设备反馈消息中前面的代码所示，有的一个内容类型*application/vnd.microsoft.iothub.feedback.json*。 可以使用消息的 JSON 正文中的属性推断原始消息的传递状态：
+
 * 密钥`statusCode`的反馈中正文具有以下值之一：*成功*，*过期*， *DeliveryCountExceeded*，*拒绝*，或*清除*。
+
 * 密钥`deviceId`正文的反馈中具有目标设备的 ID。
+
 * 密钥`originalMessageId`正文的反馈中具有原始服务发送的设备到云消息的 ID。 您可以使用此传递状态关联云到设备消息的反馈。
 
 ### <a name="receive-telemetry-messages-service-client"></a>接收遥测消息（服务客户端）
@@ -132,8 +137,11 @@ for msg in batch:
 为此，服务客户端首先需要连接到 IoT 中心终结点，并接收重定向到内置事件中心的地址。 服务客户端然后使用所提供的地址连接到内置事件中心。
 
 在每个步骤中，客户端都需要提供以下信息片段：
+
 * 有效的服务凭据 （服务共享的访问签名令牌）。
+
 * 它想要从中检索邮件的使用者组分区格式正确的路径。 对于给定的使用者组和分区 ID，该路径采用以下格式：`/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>`（默认的使用者组为 `$Default`）。
+
 * 若要指定分区中的起始点可选筛选器谓词。 序列号、 偏移量或排入队列的时间戳的形式可以是此谓词。
 
 下面的代码片段使用[uAMQP 库在 Python 中的](https://github.com/Azure/azure-uamqp-python)来演示上述步骤：
@@ -193,20 +201,19 @@ for msg in batch:
 
 对于一个给定的设备 ID 和 IoT 中心使用设备 ID 的哈希来确定哪些分区来存储其消息。 前面的代码段演示了如何从单个接收事件这类分区。 但是，请注意，典型的应用程序通常需要以检索存储在所有事件中心分区中的事件。
 
-
 ## <a name="device-client"></a>设备客户端
 
 ### <a name="connect-and-authenticate-to-an-iot-hub-device-client"></a>连接并向 IoT 中心 （设备客户端） 进行身份验证
+
 若要使用 AMQP 连接到 IoT 中心，设备可以使用[基于声明的安全 (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc)或[简单身份验证和安全层 (SASL)](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer)身份验证。
 
 设备客户端需要以下信息：
 
-| 信息 | 值 | 
+| 信息 | 值 |
 |-------------|--------------|
 | IoT 中心主机名 | `<iot-hub-name>.azure-devices.net` |
 | 访问密钥 | 与设备相关联的主密钥或辅助密钥 |
 | 共享访问签名 | 采用以下格式的生存期较短的共享的访问签名： `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要获取用于生成此签名的代码，请参阅[控制对 IoT 中心的访问](./iot-hub-devguide-security.md#security-token-structure)。
-
 
 下面的代码片段使用[uAMQP 库在 Python 中的](https://github.com/Azure/azure-uamqp-python)连接到 IoT 中心通过在发送方链接。
 
@@ -215,7 +222,8 @@ import uamqp
 import urllib
 import uuid
 
-# Use generate_sas_token implementation available here: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#security-token-structure
+# Use generate_sas_token implementation available here: 
+# https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#security-token-structure
 from helper import generate_sas_token
 
 iot_hub_name = '<iot-hub-name>'
@@ -240,14 +248,14 @@ send_client = uamqp.SendClient(uri, debug=True)
 | 设备 | 发送方链接 | `/devices/<deviceID>messages/events` | 通过此链接发送从设备发送设备到云消息。 |
 | 设备 | 发送方链接 | `/messages/serviceBound/feedback` | 通过设备通过此链接发送到服务的云到设备消息反馈。 |
 
-
 ### <a name="receive-cloud-to-device-commands-device-client"></a>接收云到设备命令 （设备客户端）
+
 发送到设备的云到设备命令到达`/devices/<deviceID>/messages/devicebound`链接。 设备可以分批接收这些消息，并根据需要在消息中使用消息数据有效负载、消息属性、批注或应用程序属性。
 
 下面的代码片段使用[uAMQP 库在 Python 中的](https://github.com/Azure/azure-uamqp-python)) 按设备接收设备到云消息。
 
 ```python
-# ... 
+# ...
 # Create a receive client for the cloud-to-device receive link on the device
 operation = '/devices/{device_id}/messages/devicebound'.format(device_id=device_id)
 uri = 'amqps://{}:{}@{}{}'.format(urllib.quote_plus(username), urllib.quote_plus(sas_token), hostname, operation)
@@ -283,13 +291,13 @@ while True:
 ```
 
 ### <a name="send-telemetry-messages-device-client"></a>发送遥测消息（设备客户端）
+
 此外可以通过使用 AMQP，从设备中发送的遥测消息数。 设备可以选择提供应用程序属性的字典或各种消息属性，例如消息 id。
 
 下面的代码片段使用[uAMQP 库在 Python 中的](https://github.com/Azure/azure-uamqp-python)若要从设备发送设备到云的消息。
 
-
 ```python
-# ... 
+# ...
 # Create a send client for the device-to-cloud send link on the device
 operation = '/devices/{device_id}/messages/events'.format(device_id=device_id)
 uri = 'amqps://{}:{}@{}{}'.format(urllib.quote_plus(username), urllib.quote_plus(sas_token), hostname, operation)
@@ -328,12 +336,14 @@ for result in results:
 ```
 
 ## <a name="additional-notes"></a>附加说明
+
 * AMQP 连接可能中断网络故障或由于过期的身份验证令牌 （在代码中生成）。 服务客户端必须处理这些情况下并重新建立连接和链接，如果需要。 如果身份验证令牌过期，客户端可以通过主动续订过期日期前的标记来避免连接下拉。
+
 * 偶尔，您的客户端必须能够正确地处理链接重定向。 若要了解此类操作，请参阅 AMQP 客户端文档。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 AMQP 协议的详细信息，请参阅[AMQP 1.0 版规范](http://www.amqp.org/sites/amqp.org/files/amqp.pdf)。
+若要了解有关 AMQP 协议的详细信息，请参阅[AMQP 1.0 版规范](https://www.amqp.org/sites/amqp.org/files/amqp.pdf)。
 
 若要详细了解 IoT 中心消息传递，请参阅：
 

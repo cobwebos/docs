@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/18/2019
+ms.date: 07/03/2019
 ms.author: jaredr80
-ms.openlocfilehash: 3a29940c4ef904d813fa7400928448a5c48334a4
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: bda5fb8a267fae3309c73678465693e1fef9b838
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205973"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565956"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -77,9 +77,9 @@ ms.locfileid: "67205973"
 | **位置** | **对等位置所有者** | **本地 Azure 区域** | **服务提供商** |
 | --- | --- | --- | --- |
 | **阿姆斯特丹** | Equinix | 西欧 | Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、IX Reach、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Telia Carrier、Verizon、Zayo |
-| **阿姆斯特丹 2** | Interxion | 西欧 | DE CIX、 Interxion、 Vodafone |
+| **阿姆斯特丹 2** | Interxion | 西欧 | CenturyLink Cloud Connect、 DE CIX、 Interxion、 Vodafone |
 | **亚特兰大** | Equinix | 不适用 | Equinix、Megaport |
-| **奥克兰** | Vocus | 不适用 | Devoli |
+| **奥克兰** | Vocus | 不适用 | Devoli、 Megaport |
 | **釜山** |LG CNS | 韩国南部 | LG CNS |
 | **堪培拉** | CDC | 澳大利亚中部 | CDC |
 | **堪培拉 2** | CDC | 澳大利亚中部 2| CDC |
@@ -100,7 +100,7 @@ ms.locfileid: "67205973"
 | **伦敦** | Equinix | 英国南部 | AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Telehouse - KDDI、Telenor、Telia Carrier、Verizon、Vodafone、Zayo |
 | **London2** | Telehouse | 英国南部 | IX 市场宣传 Equinix |
 | **洛杉矶** | CoreSite | 不适用 | CoreSite、Equinix、Megaport、Neutrona Networks、NTT、Zayo |
-| **马赛** |Interxion | 法国南部 | Interxion、 相机网络 |
+| **马赛** |Interxion | 法国南部 | DE CIX、 Interxion、 相机网络 |
 | **墨尔本** | NextDC | 澳大利亚东南部 | AARNet，Devoli，Equinix、 Megaport、 NEXTDC、 Optus、 Telstra Corporation，TPG 电信 |
 | **迈阿密** | Equinix | 不适用 | C3ntro+、Equinix、Megaport、Neutrona Networks |
 | **Montreal** | Cologix | 不适用 | Bell Canada、Cologix、Telus、Zayo |
@@ -109,7 +109,7 @@ ms.locfileid: "67205973"
 | **纽约** | Equinix | 不适用 | CenturyLink Cloud Connect、 Coresite、 Equinix、 InterCloud、 Megaport、 数据包、 Zayo |
 | **Newport(Wales)** | Next Generation Data | 英国西部 | British Telecom、 Colt、 Level 3 Communications、 下一代数据 |
 | **大阪** | Equinix | 日本西部 | Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT SmartConnect、Softbank |
-| **巴黎** | Interxion | 法国中部 | Colt、 Equinix、 Intercloud、 Interxion、 橙色、 Telia 运营商、 Zayo |
+| **巴黎** | Interxion | 法国中部 | CenturyLink Cloud Connect、 Colt、 Equinix、 Intercloud、 Interxion、 橙色、 Telia 运营商、 Zayo |
 | **珀斯** | NextDC | 不适用 | Megaport、 NextDC |
 | **魁北克市** | 4Degrees | 加拿大东部 | Bell Canada、Megaport |
 | **圣安东尼奥** | CyrusOne | 美国中南部 | CenturyLink Cloud Connect、Megaport |

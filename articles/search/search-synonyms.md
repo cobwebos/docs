@@ -10,12 +10,12 @@ ms.date: 05/02/2019
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 567124f50745080da12178a458957a0f6c8266b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99abcc70a81622e4efbe85722d457bd1846b6e15
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024318"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485218"
 ---
 # <a name="synonyms-in-azure-search"></a>Azure 搜索中的同义词功能
 
@@ -25,7 +25,7 @@ ms.locfileid: "65024318"
 
 ## <a name="create-synonyms"></a>创建同义词
 
-我们不提供创建同义词的门户支持，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议[使用 Postman](search-fiddler.md)，并使用此 API 来表述请求：[创建同义词映射](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 如果是 C# 开发人员，一开始可以[使用 C# 在 Azure 搜索中添加同义词](search-synonyms-tutorial-sdk.md)。
+我们不提供创建同义词的门户支持，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议[使用 Postman](search-get-started-postman.md)，并使用此 API 来表述请求：[创建同义词映射](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 如果是 C# 开发人员，一开始可以[使用 C# 在 Azure 搜索中添加同义词](search-synonyms-tutorial-sdk.md)。
 
 另外，如果使用[客户托管密钥](search-security-manage-encryption-keys.md)进行服务端静态加密，则可对同义词映射的内容应用该保护。
 

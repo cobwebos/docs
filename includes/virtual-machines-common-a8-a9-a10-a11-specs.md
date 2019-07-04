@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: azcspmt;jonbeck;cynthn;danlep;amverma
 ms.custom: include file
-ms.openlocfilehash: 5cbc19d5aade2bbcc8b8dca277352d1b17d1d35a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88d9491bae1fcc6acb7ab631514aa4f6244f593d
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755186"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538046"
 ---
 ## <a name="deployment-considerations"></a>部署注意事项
 * **Azure 订阅** - 若要部署不止一些计算密集型实例，请考虑使用即用即付订阅或其他购买选项。 如果使用的是 [Azure 免费帐户](https://azure.microsoft.com/free/)，则仅可以使用有限数量的 Azure 计算核心。
@@ -34,6 +34,6 @@ ms.locfileid: "66755186"
 此接口允许支持 RDMA 的实例，H16r、 H16mr、 和支持 RDMA 的 N 系列虚拟机的费率，对 A8 和 A9 虚拟机 QDR 速率运行 EDR 费率 HB、 混合连接、 以 FDR InfiniBand (IB) 网络上进行通信。 这些 RDMA 功能可以提高某些消息传递接口 (MPI) 应用程序的可伸缩性和性能。 速度的详细信息，请参阅此页上的表中的详细信息。
 
 > [!NOTE]
-> 在 Azure 中，基于 IB 的 IP 仅支持上启用 SR-IOV 的 Vm （当前 HB 和混合连接）。 所有支持 RDMA 的实例支持 RDMA over IB。
+> 在 Azure 中，基于 IB 的 IP 仅支持上启用 SR-IOV 的 Vm (SR-IOV InfiniBand、 当前 HB 和混合连接)。 所有支持 RDMA 的实例支持 RDMA over IB。
 >
 

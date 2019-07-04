@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9c2f8ce0dfb866826de549946bc3ee1acc2b677f
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238625"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460261"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型将文件还原到 Windows
 
@@ -97,7 +97,7 @@ ms.locfileid: "60238625"
 * *示例保管库* – 源计算机和目标计算机注册到的恢复服务保管库。 <br/>
 
 > [!NOTE]
-> 无法将备份还原到运行较低 操作系统版本的目标计算机。 例如，在 Windows 8（或更高版本）的计算机上，可以还原在 Windows 7 计算机中创建的备份。 但是，在 Windows 8 计算机上创建的备份无法还原到 Windows 7 计算机。
+> 无法将备份还原到运行较低 操作系统版本的目标计算机。 例如，可以在 Windows 7 （或更高版本） 计算机上还原执行从 Windows 7 计算机的备份。 但是，在 Windows 8 计算机上创建的备份无法还原到 Windows 7 计算机。
 >
 >
 

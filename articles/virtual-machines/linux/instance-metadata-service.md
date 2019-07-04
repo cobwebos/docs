@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 88de601caf984d2511229cd68190554086c3da38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e527d9c35ccc87f270755947cd969c7acee380b0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779557"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449189"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -41,7 +41,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 -----------------------------------------------|-----------------------------------------------|-----------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
-[Azure 中国：](https://www.azure.cn/)                                                     | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
+[Azure 中国：](https://azure.microsoft.com/global-infrastructure/china/)                  | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
 [美国中西部公开区域](https://azure.microsoft.com/regions/)                           | 正式版 | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01
 
@@ -62,7 +62,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 
 如果未指定版本，则会返回错误并列出受支持的最新版本。
 
-> [!NOTE] 
+> [!NOTE]
 > 响应为 JSON 字符串。 以下示例响应显示清晰，可供阅读。
 
 **请求**
@@ -205,7 +205,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
 ```json
 {
   "compute": {
-    "azEnvironment": "AZUREPUBLICCLOUD",
+    "azEnvironment": "AzurePublicCloud",
     "location": "centralus",
     "name": "negasonic",
     "offer": "lampstack",
@@ -283,7 +283,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ```json
 {
   "compute": {
-    "azEnvironment": "AZUREPUBLICCLOUD",
+    "azEnvironment": "AzurePublicCloud",
     "location": "centralus",
     "name": "negasonic",
     "offer": "lampstack",
@@ -357,7 +357,7 @@ scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 -----|-------------|-----------------------
 azEnvironment | VM 运行时所在的 Azure 环境 | 2018-10-01
 customData | 请参阅[自定义数据](#custom-data) | 2019-02-01
-位置 | 正在运行 VM 的 Azure 区域 | 2017-04-02
+location | 正在运行 VM 的 Azure 区域 | 2017-04-02
 name | VM 的名称 | 2017-04-02
 offer | 提供 VM 映像的信息并从 Azure 映像库部署时才存在的映像 | 2017-04-02
 osType | Linux 或 Windows | 2017-04-02
@@ -367,12 +367,12 @@ platformUpdateDomain |  正在运行 VM 的[更新域](manage-availability.md) |
 platformFaultDomain | 正在运行 VM 的[容错域](manage-availability.md) | 2017-04-02
 provider | VM 的提供商 | 2018-10-01
 publicKeys | [公钥的集合](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey)，已分配给 VM 和路径 | 2018-04-02
-publisher | VM 映像的发布者 | 2017-04-02
+发布者 | VM 映像的发布者 | 2017-04-02
 resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 sku | VM 映像的特定 SKU | 2017-04-02
 subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
 标记 | 虚拟机的[标记](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
-version | VM 映像的版本 | 2017-04-02
+版本 | VM 映像的版本 | 2017-04-02
 vmId | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 vmSize | [VM 大小](sizes.md) | 2017-04-02
@@ -537,8 +537,16 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 
 **响应**
 ```bash
-AZUREPUBLICCLOUD
+AzurePublicCloud
 ```
+下面列出了在云中以及在 Azure 环境的值。
+
+ 云   | Azure 环境
+---------|-----------------
+[全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | AzurePublicCloud
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
+[Azure 中国：](https://azure.microsoft.com/global-infrastructure/china/)                  | AzureChinaCloud
+[Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>获取 VM 的标记
 
@@ -619,11 +627,11 @@ vmId |  VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-u
 > [!NOTE]
 > 公有云和主权云的证书将有所不同。
 
- 区域 | 证书
+ 云 | 证书
 ---------|-----------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure 中国：](https://www.azure.cn/)                                                           | metadata.azure.cn
+[Azure 中国：](https://azure.microsoft.com/global-infrastructure/china/)                  | metadata.azure.cn
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
 
 ```bash

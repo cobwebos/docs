@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 21758d112cd7eaf45b8b279cf2a6f6060c44c9c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f070462dca6e835504a33014a7ed48e9949f874
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571050"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432630"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
 
@@ -50,13 +50,15 @@ ms.locfileid: "64571050"
 
 ![显示了添加共享访问策略的屏幕截图](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
 
-* “注册表读取”和“注册表写入”策略用于向标识注册表授予读取和写入访问权限。   选择写入选项会自动选择读取选项。
+* “注册表读取”和“注册表写入”策略用于向标识注册表授予读取和写入访问权限。   这些权限由后端云服务中用于管理设备标识。 选择写入选项会自动选择读取选项。
 
-* “服务连接”策略授予访问服务终结点的权限，例如“接收设备到云”。   
+* **服务连接**策略授予访问服务终结点的权限。 后端云服务使用此权限来发送和接收消息从设备以及更新和读取设备孪生和模块孪生数据。
 
-* “设备连接”策略授予使用 IoT 中心的设备端终结点发送和接收消息的权限。 
+* “设备连接”策略授予使用 IoT 中心的设备端终结点发送和接收消息的权限。  设备使用此权限将发送和接收来自 IoT 中心的消息、 更新和读取设备孪生和模块孪生数据，以及将文件上传。
 
 单击“**创建**”将此新建策略添加到现有列表。
+
+有关详细信息的特定权限授予的访问，请参阅[IoT 中心权限](./iot-hub-devguide-security.md#iot-hub-permissions)。
 
 ## <a name="message-routing-for-an-iot-hub"></a>IoT 中心的消息路由
 

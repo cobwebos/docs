@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: e0379bbc7f26ea30f65c5eac73633ca0371aa283
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 651ae9d9f9a622724e1ee606219ba940995aa555
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331304"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441748"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -423,3 +423,19 @@ Azure 开发人员空间无法创建控制器在 AKS 群集因为它找不到中
 
 ### <a name="try"></a>尝试
 [将不配置更新](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)在 AKS 群集以确保至少一个 Linux 节点允许计划而无需指定 tolerations pod。 此外，确保至少一个 Linux 节点，允许计划 pod 数而无需指定 tolerations*准备*状态。 如果你的节点采用较长时间才能到达*准备*状态，则可以尝试重启你的节点。
+
+## <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>错误"Azure 开发人员空间未正确安装的 CLI"运行时 `az aks use-dev-spaces`
+
+### <a name="reason"></a>原因
+对 Azure 开发人员空格 CLI 的更新更改其安装路径。 如果使用早于 2.0.63 的 Azure cli 版本，可能会看到此错误。 若要显示你的 Azure CLI 版本，请使用`az --version`。
+
+```bash
+$ az --version
+azure-cli                         2.0.60 *
+...
+```
+
+尽管运行时的错误消息`az aks use-dev-spaces`2.0.63 之前的 Azure cli 版本，安装未成功。 你可以继续使用`azds`未出现任何问题。
+
+### <a name="try"></a>尝试
+更新的安装[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)到 2.0.63 或更高版本。 这将解决在运行时收到错误消息`az aks use-dev-spaces`。 或者，你可以继续使用当前版本的 Azure CLI 和 Azure 开发人员空格 CLI。

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 06/24/2019
 ms.author: orspodek
-ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 438adcd70c1be308c2b5779de0442486b303cfdd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394500"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449636"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
 
@@ -140,6 +140,7 @@ Azure 数据资源管理器链接服务支持以下属性：
 | type | 复制活动源的 **type** 属性必须设置为：**AzureDataExplorerSource** | 是 |
 | query | 以 [KQL 格式](/azure/kusto/query/)指定的只读请求。 使用自定义 KQL 查询作为参考。 | 是 |
 | queryTimeout | 查询请求超时前的等待时间。默认值是 10 分钟 (00:10:00)；允许的最大值是 1 小时 (01:00:00)。 | 否 |
+| noTruncation | 指示是否要截断返回的结果集。 默认情况下，结果将截断后 500,000 条记录或 64 MB。 截断强烈建议对于活动的正确行为。 |否 |
 
 >[!NOTE]
 >默认情况下的 azure 资源管理器中的数据源有 500,000 记录或 64 MB 的大小限制。 若要检索而无需截断的所有记录，可以指定`set notruncation;`查询的开始处。 请参阅[查询限制](https://docs.microsoft.com/azure/kusto/concepts/querylimits)上更多详细信息。

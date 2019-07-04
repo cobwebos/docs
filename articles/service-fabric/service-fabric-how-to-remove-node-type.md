@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo
-ms.openlocfilehash: 193a24aebff8f7de60752e53bbc1b18dd5c54f33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 779051135a994574cb2bed7bfc4879270ec1d8fa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482192"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443034"
 ---
 # <a name="remove-a-service-fabric-node-type"></a>删除 Service Fabric 节点类型
 本文介绍如何通过删除群集的现有节点类型来缩放 Azure Service Fabric 群集。 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 虚拟机规模集是一种 Azure 计算资源，用于将一组 VM 作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后可以单独管理每个节点类型。 创建 Service Fabric 群集之后，可以通过删除节点类型（虚拟机规模集）及其所有节点来水平缩放群集。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
@@ -50,7 +50,7 @@ Service Fabric 会“协调”基础更改和更新，以便数据不会丢失�
 
 ## <a name="recommended-node-type-removal-process"></a>推荐的节点类型删除过程
 
-若要删除节点类型，请运行 [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) cmdlet。  该 cmdlet 需要一些时间才能完成操作。  然后在要删除的每个节点上运行 [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps)。
+若要删除节点类型，请运行 [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) cmdlet。  该 cmdlet 需要一些时间才能完成操作。  一旦所有 Vm 都都消失了 （表示为"已关闭"） 的 fabric: / System/InfrastructureService / [nodetype name] 将显示错误状态。
 
 ```powershell
 $groupname = "mynodetype"
@@ -64,7 +64,14 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mytestcluster.eastus.cloudapp.a
           -X509Credential -ServerCertThumbprint <thumbprint> `
           -FindType FindByThumbprint -FindValue <thumbprint> `
           -StoreLocation CurrentUser -StoreName My
+```
 
+然后，可以更新群集资源，若要删除的节点类型。 可以使用 ARM 模板部署，也可以编辑通过群集资源[Azure 资源管理器](https://resources.azure.com)。 这将开始将群集升级，这将删除 fabric: / System/InfrastructureService / [nodetype name] 服务处于错误状态。
+
+仍将看到的节点是"Down"Service Fabric Explorer 中。 在要删除的每个节点上运行 [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps)。
+
+
+```powershell
 $nodes = Get-ServiceFabricNode | Where-Object {$_.NodeType -eq $nodetype} | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending
 
 Foreach($node in $nodes)

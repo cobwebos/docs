@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 05/23/2019
-ms.openlocfilehash: 98bd70d9f6eb70cb7848dfa74e19c78e55a34991
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: 4e63e1e477ce82221e5121815b609326cc2c1112
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240343"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447172"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>使用基于 vCore 的购买模型限制的弹性池的资源限制
 
@@ -36,6 +36,9 @@ ms.locfileid: "66240343"
 > 弹性池中单个数据库的资源限制通常与池外部具有相同计算大小的单一数据库相同。 例如，GP_Gen4_1 数据库的最大并发工作进程数为 200 个。 因此，GP_Gen4_1 池中数据库的最大并发工作进程数也是 200 个。 请注意，GP_Gen4_1 池中的并发工作进程总数为 210 个。
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>“常规用途”服务层级：存储大小和计算大小
+
+> [!IMPORTANT]
+> AustraliaEast 区域中不再支持新 Gen4 数据库。
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>“常规用途”服务层级：第 4 代计算平台（第 1 部分）
 
@@ -149,6 +152,9 @@ ms.locfileid: "66240343"
 \*如需了解任何单个数据库的最大并发辅助角色数（请求数），请参阅[单一数据库资源限制](sql-database-vcore-resource-limits-single-databases.md)。 例如，如果弹性池使用 Gen5 且其每个数据库的最大 vCore 数为 2，则最大并发辅助角色数为 200。  如果每个数据库的最大 vCore 数为 0.5，则最大并发辅助角色数为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。  对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
 
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>“业务关键”服务层级：存储大小和计算大小
+
+> [!IMPORTANT]
+> AustraliaEast 区域中不再支持新 Gen4 数据库。
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>“业务关键”服务层级：第 4 代计算平台（第 1 部分）
 

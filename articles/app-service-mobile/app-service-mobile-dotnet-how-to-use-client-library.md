@@ -3,7 +3,7 @@ title: 使用应用服务移动应用托管的客户端库 | Microsoft Docs
 description: 了解如何在 Windows 和 Xamarin 应用中使用 Azure 应用服务移动应用的 .NET 客户端库。
 services: app-service\mobile
 documentationcenter: ''
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
@@ -12,24 +12,29 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: crdun
-ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: af0a4af2bec29e68175d2e15203a02507f08bfeb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119296"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446361"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-dotnet-how-to-use-client-library)今天。
+>
+
 ## <a name="overview"></a>概述
-本指南说明如何在 Windows 应用和 Xamarin 应用中使用 Azure 应用服务移动应用的托管客户端库执行常见方案。 如果是移动服务的新手，最好先完成 [Azure 移动应用快速入门][1]教程。 在本指南中，我们侧重于客户端托管的 SDK。 若要详细了解移动应用的服务器端 SDK，请参阅 [.NET 服务器 SDK][2] 或 [Node.js 服务器 SDK][3] 的文档。
+本指南说明如何在 Windows 应用和 Xamarin 应用中使用 Azure 应用服务移动应用的托管客户端库执行常见方案。 如果您不熟悉移动应用，则应考虑首先完成[Azure 移动应用快速入门][1]教程。 在本指南中，我们侧重于客户端托管的 SDK。 若要了解移动应用有关的服务器端 Sdk 的详细信息，请参阅的文档[.NET 服务器 SDK][2] or the
+[Node.js Server SDK][3]。
 
 ## <a name="reference-documentation"></a>参考文档
-客户端 SDK 的参考文档位于此处：[Azure 移动应用 .NET 客户端参考][4]。
-还可以在 [Azure-Samples GitHub 存储库][5]中找到多个客户端示例。
+客户端 SDK 的参考文档位于此处：[Azure 移动应用.NET 客户端参考][4]。
+此外可以查找中的多个客户端示例[Azure 示例 GitHub 存储库][5]。
 
 ## <a name="supported-platforms"></a>支持的平台
 .NET 平台支持以下平台：
@@ -43,7 +48,7 @@ ms.locfileid: "62119296"
 “服务器流”身份验证使用 WebView 显示 UI。  如果设备无法显示 WebView UI，则需要其他身份验证方法。  因此，此 SDK 不适用于手表类型或类似的受限设备。
 
 ## <a name="setup"></a>安装与先决条件
-假设已创建并发布移动应用后端项目（至少包含一个表）。  在本主题使用的代码中，表的名称为 `TodoItem`，其中包含以下列：`Id`、`Text` 和 `Complete`。 此表就是完成 [Azure 移动应用快速入门][1]时创建的表。
+假设已创建并发布移动应用后端项目（至少包含一个表）。  在本主题使用的代码中，表的名称为 `TodoItem`，其中包含以下列：`Id`、`Text` 和 `Complete`。 此表是同一个表创建完成后[Azure 移动应用快速入门][1]。
 
 相应的类型化客户端 C# 类型如下：
 
@@ -60,12 +65,13 @@ public class TodoItem
 }
 ```
 
-[JsonPropertyAttribute][6] 用于定义客户端字段与表字段之间的 PropertyName  映射。
+[JsonPropertyAttribute][6]用于定义*PropertyName*客户端字段与表字段之间的映射。
 
-若要了解如何在移动应用后端中创建表，请参阅 [.NET 服务器 SDK 主题][7]或 [Node.js 服务器 SDK 主题][8]。 如果已在 Azure 门户中使用快速入门项目创建移动应用后端，则也可以在 [Azure 门户]中使用“简易表”  设置。
+若要了解如何在移动应用后端中创建表，请参阅[.NET 服务器 SDK 主题][7]
+or the [Node.js Server SDK topic][8]。 如果已在 Azure 门户中使用快速入门项目创建移动应用后端，则也可以在 [Azure 门户]中使用“简易表”  设置。
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>如何：安装托管客户端 SDK 包
-使用下述某个方法从 [NuGet][9] 安装适用于移动应用的托管客户端 SDK 包：
+使用以下方法之一来安装移动应用的托管客户端 SDK 包[NuGet][9]:
 
 * **Visual Studio** 右键单击项目，单击“管理 NuGet 包”  ，搜索 `Microsoft.Azure.Mobile.Client` 包，并单击“安装”  。
 * **Xamarin Studio**右键单击你的项目，单击**添加** > **添加 NuGet 包**，搜索`Microsoft.Azure.Mobile.Client`包，然后依次**添加包**.
@@ -80,10 +86,11 @@ using Microsoft.WindowsAzure.MobileServices;
 > 请注意，在 Android 项目中引用的所有支持包必须都具有相同的版本。 对于 Android 平台，SDK 具有 `Xamarin.Android.Support.CustomTabs` 依赖项，因此，如果你的项目使用较新的支持包，请直接安装具有所需版本的此包以避免冲突。
 
 ### <a name="symbolsource"></a>如何：在 Visual Studio 中使用调试符号
-[SymbolSource][10] 上提供了 Microsoft.Azure.Mobile 命名空间的符号。  要将 SymbolSource 与 Visual Studio 集成，请参阅 [SymbolSource 说明][11]。
+上提供了 Microsoft.Azure.Mobile 命名空间符号[SymbolSource][10] .  Refer to the
+[SymbolSource instructions][11]若要将 SymbolSource 与 Visual Studio 集成。
 
 ## <a name="create-client"></a>创建移动应用客户端
-以下代码创建用于访问移动应用后端的 [MobileServiceClient][12] 对象。
+下面的代码创建[MobileServiceClient][12]用于访问移动应用后端的对象。
 
 ```csharp
 var client = new MobileServiceClient("MOBILE_APP_URL");
@@ -520,9 +527,9 @@ PullOptions pullOptions = new PullOptions
 1. 在 Visual Studio 中，右键单击解决方案 >“管理解决方案的 NuGet 包…”  ，并在解决方案的所有项目中搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
 2. （可选）若要支持 Windows 设备，请安装以下 SQLite 运行时包之一：
 
-   * **Windows 8.1 运行时：** 安装 [SQLite for Windows 8.1][3]。
-   * **Windows Phone 8.1：** 安装 [SQLite for Windows Phone 8.1][4]。
-   * **通用 Windows 平台** 安装[适用于通用 Windows 的 SQLite][5]。
+   * **Windows 8.1 运行时：** 安装[适用于 Windows 8.1 的 SQLite][3]。
+   * **Windows Phone 8.1：** 安装[适用于 Windows Phone 8.1 的 SQLite][4]。
+   * **通用 Windows 平台**安装[适用于通用 Windows 的 SQLite][5]。
 3. （可选）。 对于 Windows 设备，单击“引用”   > >“添加引用...”  ，展开 **Windows** 文件夹 >“扩展”  ，并启用相应的 **SQLite for Windows** SDK 和 **Visual C++ 2013 Runtime for Windows** SDK。
     每个 Windows 平台的 SQLite SDK 名称略有不同。
 

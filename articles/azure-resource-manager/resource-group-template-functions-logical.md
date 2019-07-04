@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf6874512557bc44efe978708c78e3d98db4110b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 2487cf928685423e4b60bb2923fc7e348eaff0c3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205460"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447971"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的逻辑函数
 
@@ -31,7 +31,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
 | arg2 |是 |boolean |第二个值，需检查其是否为 true。 |
@@ -69,7 +69,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -137,7 +137,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | condition |是 |boolean |要检查是为 true 还是为 false 的值。 |
 | trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
@@ -190,7 +190,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -242,7 +242,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要转换的值。 |
 
@@ -278,7 +278,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -302,7 +302,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -314,7 +314,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
 | arg2 |是 |boolean |第二个值，需检查其是否为 true。 |
@@ -352,7 +352,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |

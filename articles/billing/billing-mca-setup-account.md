@@ -1,8 +1,6 @@
 ---
-title: 为 Microsoft 客户协议的 Azure 设置计费帐户 |Microsoft Docs
+title: 为 Microsoft 客户协议的 Azure 设置计费帐户
 description: 了解如何为 Microsoft 客户协议设置计费帐户。
-services: ''
-documentationcenter: ''
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -12,23 +10,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 947bfe85d94a5d11eeb54bd6b24c4c515af024d4
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64919152"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490700"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>为 Microsoft 客户协议设置计费帐户
 
-如果你的企业协议注册已过期或即将过期，可以注册 Microsoft 客户协议续订你的注册。 续订包括以下步骤：
+如果你的企业协议注册已过期或即将过期，可以注册 Microsoft 客户协议续订你的注册。 本文介绍了安装后，现有计费更改，并将指导你完成设置新的计费帐户。 续订包括以下步骤：
 
 1. 接受新的 Microsoft 客户协议。 使用 Microsoft 字段代表联系以了解详细信息并接受新的协议。
 2. 设置为新的 Microsoft 客户协议创建新的计费帐户。
-
-本文介绍了安装后，现有计费更改，并将指导你完成设置新的计费帐户。
 
 若要设置计费帐户，必须转换 Azure 订阅的计费从你的企业协议注册到新帐户。 安装程序不会影响你的订阅中运行的 Azure 服务。 但是，它更改为你的订阅管理计费的方式。
 
@@ -45,7 +41,7 @@ ms.locfileid: "64919152"
 - **了解对你计费的层次结构的更改**
   - 您新帐务帐户组织方式与你的企业协议注册。 [了解计费层次结构中的新帐户将变为](#understand-changes-to-your-billing-hierarchy)。
 - **了解对计费管理员的访问权限的更改**
-  - 从你的企业协议注册管理员有权访问新帐户中的计费作用域。[了解到他们的访问权限更改](#understand-changes-to-your-billing-administrators-access)。
+  - 从你的企业协议注册管理员有权访问新帐户中的计费作用域。[了解到他们的访问权限更改](#changes-to-billing-administrator-access)。
 - **替换为新帐户的 view 企业协议功能**
   - 查看替换为新帐户中的功能的企业协议注册功能。
 - **视图最常见的问题的解答**
@@ -55,7 +51,7 @@ ms.locfileid: "64919152"
 
 若要完成的安装，需要以下访问权限：
 
-- Microsoft 客户协议进行签名时所创建的计费配置文件的所有者。 若要了解有关计费的配置文件的详细信息，请参阅[了解计费资料](billing-mca-overview.md#understand-billing-profiles)。
+- Microsoft 客户协议进行签名时所创建的计费配置文件的所有者。 若要了解有关计费的配置文件的详细信息，请参阅[了解计费资料](billing-mca-overview.md#billing-profiles)。
 
 - 在续订时注册的企业管理员。
 
@@ -87,12 +83,12 @@ ms.locfileid: "64919152"
 
 ![Ea-mca 开机自检-转换-层次结构的图像](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
 
-1. 计费帐户用于为 Microsoft 客户协议管理计费。 若要了解有关计费帐户的详细信息，请参阅[了解计费帐户](billing-mca-overview.md#understand-billing-account)。
-2. 计费的配置文件用于为你的组织，类似于你的企业协议注册管理计费。 企业管理员成为计费的配置文件的所有者。 若要了解有关计费的配置文件的详细信息，请参阅[了解计费资料](billing-mca-overview.md#understand-billing-profiles)。
-3. 发票部分用于组织您根据需要，类似于在企业协议注册中的部门的成本。 部门变为发票部分，部门管理员成为相应发票部分的所有者。 若要了解有关发票部分的详细信息，请参阅[了解发票部分](billing-mca-overview.md#understand-invoice-sections)。
+1. 计费帐户用于为 Microsoft 客户协议管理计费。 若要了解有关计费帐户的详细信息，请参阅[了解计费帐户](billing-mca-overview.md#your-billing-account)。
+2. 计费的配置文件用于为你的组织，类似于你的企业协议注册管理计费。 企业管理员成为计费的配置文件的所有者。 若要了解有关计费的配置文件的详细信息，请参阅[了解计费资料](billing-mca-overview.md#billing-profiles)。
+3. 发票部分用于组织您根据需要，类似于在企业协议注册中的部门的成本。 部门变为发票部分，部门管理员成为相应发票部分的所有者。 若要了解有关发票部分的详细信息，请参阅[了解发票部分](billing-mca-overview.md#invoice-sections)。
 4. 在你的企业协议中创建的帐户不支持在新的计费帐户中。 为其院系的相应发票部分属于帐户的订阅。 帐户所有者可以创建和管理其发票的部分的订阅。
 
-## <a name="understand-changes-to-your-billing-administrators-access"></a>了解对计费管理员的访问权限的更改
+## <a name="changes-to-billing-administrator-access"></a>对计费管理员访问权限的更改
 
 具体取决于其访问权限，在企业协议合约的帐务管理员有权访问新帐户上的计费作用域。 下表说明在安装过程中访问的更改：
 
@@ -110,7 +106,7 @@ ms.locfileid: "64919152"
 
 当您邀请的用户时，它们作为来宾用户添加到租户，并获取计费帐户的访问权限。 若要邀请的用户，则租户的来宾访问权限必须打开。 有关详细信息，请参阅[控制在 Azure Active Directory 中的来宾访问](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)。 如果来宾访问处于关闭状态，请联系你的租户以将其打开的全局管理员。 <!-- Todo - How can they find their global administrator -->
 
-## <a name="view-features-replaced-by-the-new-billing-account"></a>查看功能替换为新的计费帐户
+## <a name="view-replaced-features"></a>查看被替换的功能
 
 以下企业协议的功能替换为计费帐户中的新增功能 Microsoft 客户协议。
 
@@ -197,7 +193,7 @@ ms.locfileid: "64919152"
 
    ![显示转换状态的屏幕截图](./media/billing-mca-setup-account/ea-mca-set-up-status.png)
 
-## <a name="validate-the-billing-account-is-set-up-properly"></a>验证计费帐户已正确设置
+## <a name="validate-billing-account-set-up"></a>验证设置计费帐户
 
  验证以下内容，以确保正确设置了新的计费帐户：
 
@@ -205,7 +201,7 @@ ms.locfileid: "64919152"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”  中进行搜索。
+2. 搜索**成本管理 + 计费**。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -221,7 +217,7 @@ ms.locfileid: "64919152"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”  中进行搜索。
+2. 搜索**成本管理 + 计费**。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -231,7 +227,7 @@ ms.locfileid: "64919152"
 
 4. 选择**所有产品**从左侧和右侧。
 
-5. 搜索上**保留**。
+5. 搜索**保留**。
 
     ![显示的订阅文章转换列表的屏幕截图](./media/billing-mca-setup-account/billing-mca-azure-reservations-post-transition.png)
 
@@ -241,7 +237,7 @@ ms.locfileid: "64919152"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”  中进行搜索。
+2. 搜索**成本管理 + 计费**。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -257,7 +253,7 @@ ms.locfileid: "64919152"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”  中进行搜索。
+2. 搜索**成本管理 + 计费**。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png).
 

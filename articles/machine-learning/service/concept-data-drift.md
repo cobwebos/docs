@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cody-dkdc
 ms.author: copeters
 ms.date: 06/20/2019
-ms.openlocfilehash: 56761c32484d4f5b27800e56143c62d3731da852
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: a03e3124647869e7148f271810bb523986a851c6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333325"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442381"
 ---
 # <a name="what-is-data-drift-monitoring-preview"></a>什么是数据偏差监视 （预览）？
 
@@ -37,7 +37,7 @@ ms.locfileid: "67333325"
 
 ## <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>如何在 Azure 机器学习服务中监视数据偏差
 
-使用**Azure 机器学习服务**，通过数据集或部署监视数据偏差。 若要监视数据偏差，请指定基准数据集-通常为训练数据集的模型的。 针对基准数据集，第二个数据集-部署-从收集模型输入的数据通常是进行测试。 这两个数据集[分析](how-to-create-dataset-snapshots.md)和输入数据偏差监视服务。 机器学习模型进行训练，以检测两个数据集之间的差异。 模型的性能将转换为偏移系数，测量两个数据集之间的偏移量。 使用[模型 interpretability](machine-learning-interpretability-explainability.md)计算偏移系数参与的功能。 从数据集配置文件，跟踪每个功能有关的统计信息。 
+使用**Azure 机器学习服务**，通过数据集或部署监视数据偏差。 若要监视数据偏差，请指定基准数据集-通常为训练数据集的模型的。 针对基准数据集，第二个数据集-部署-从收集模型输入的数据通常是进行测试。 这两个数据集[分析](how-to-explore-prepare-data.md#explore-with-summary-statistics)和输入数据偏差监视服务。 机器学习模型进行训练，以检测两个数据集之间的差异。 模型的性能将转换为偏移系数，测量两个数据集之间的偏移量。 使用[模型 interpretability](machine-learning-interpretability-explainability.md)计算偏移系数参与的功能。 从数据集配置文件，跟踪每个功能有关的统计信息。 
 
 ## <a name="data-drift-metric-output"></a>数据偏差指标输出
 

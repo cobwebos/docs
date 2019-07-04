@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 786b5ed99cce29c7217bfa42446821848ca8e05f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1b9ca4862f129b2da23a1d1ad8bb0b1bd0a5078f
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288105"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476276"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>在 PIM 中发现要管理的 Azure 资源
 
@@ -37,15 +37,15 @@ ms.locfileid: "60288105"
 
     如果这是首次将 PIM 用于 Azure 资源，则会出现“发现”资源窗格。
 
-    ![发现资源 - 首次](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
+    ![发现资源窗格中列出的第一次体验无资源](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
 
     如果组织中的另一资源或目录管理员已在 PIM 中管理 Azure 资源，则会出现当前正在托管的资源列表。
 
-    ![“发现资源”窗格](./media/pim-resource-roles-discover-resources/discover-resources.png)
+    ![发现当前管理的资源窗格列出资源](./media/pim-resource-roles-discover-resources/discover-resources.png)
 
 1. 单击“发现资源”以启动发现之旅  。
 
-    ![“发现”窗格](./media/pim-resource-roles-discover-resources/discovery-pane.png)
+    ![列出可以如订阅和管理组管理的资源的发现窗格](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
 1. 在“发现”窗格上，使用“资源状态筛选器”和“选择资源类型”筛选你对其具有写入权限的管理组或订阅   。 最初从“所有”开始可能会最简单  。
 
@@ -58,11 +58,11 @@ ms.locfileid: "60288105"
     > [!NOTE]
     > 管理组或订阅设为托管后就无法取消托管。 这可防止其他资源管理员删除 PIM 设置。
 
-    ![发现 - 管理资源](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
+    ![发现与所选的资源和突出显示管理资源选项窗格](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
 1. 如果看到确认加入要管理的所选资源的消息，请单击“是”  。
 
-    ![发现 - 管理资源消息](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
+    ![条消息，确认到载入用于管理所选的资源](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
 ## <a name="next-steps"></a>后续步骤
 

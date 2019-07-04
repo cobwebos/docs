@@ -1,28 +1,22 @@
 ---
 title: 组策略和 MDM 设置 | Microsoft Docs
-description: 提供有关在公司自有设备上使用的组策略和移动设备管理 (MDM) 设置的信息。 这些策略适用于用户的整个设备。
+description: 提供有关在公司自有设备上使用的组策略和移动设备管理 (MDM) 设置的信息。
 services: active-directory
-keywords: 企业状态漫游的组策略和 MDM 设置, 企业状态漫游, Windows 云
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: 6471a9b3-8dd4-4237-89d1-bfbeca9f8252
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f1b23862edeabbf8e03d4589fa3f22a3fab9f72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3f2b1afa67ec36da4d4da57b296e696fd6c6910
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60353153"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481940"
 ---
 # <a name="group-policy-and-mdm-settings"></a>组策略和 MDM 设置
 仅在公司自有设备上使用这些组策略和移动设备管理 (MDM) 设置，因为这些策略将应用于用户的整个设备。 应用 MDM 策略禁用个人设备和用户自有设备的设置同步，这会对该设备的使用产生负面影响。 此外，设备上的其他用户帐户也将受到该策略的影响。
@@ -33,7 +27,7 @@ ms.locfileid: "60353153"
 ## <a name="mdm-settings"></a>MDM 设置
 MDM 策略设置适用于 Windows 10 和 Windows 10 移动版。  Windows 10 移动版支持仅适用于通过用户的 OneDrive 帐户进行的基于 Microsoft 帐户的漫游。  有关支持基于 Azure AD 的同步的设备的详细信息，请参阅[设备和终结点](enterprise-state-roaming-windows-settings-reference.md)。
 
-| Name | 描述 |
+| 名称 | 描述 |
 | --- | --- |
 | 允许 Microsoft 帐户连接 |允许用户使用设备上的 Microsoft 帐户进行身份验证 |
 | 允许同步我的设置 |允许用户漫游 Windows 设置和应用数据；停用此政策会停用移动设备上的同步和备份 |
@@ -43,7 +37,7 @@ MDM 策略设置适用于 Windows 10 和 Windows 10 移动版。  Windows 10 移
 
 这些设置位于以下位置：`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| Name | 描述 |
+| 名称 | 描述 |
 | --- | --- |
 | 帐户：阻止 Microsoft 帐户 |此策略设置阻止用户在此计算机上添加新的 Microsoft 帐户 |
 | 不同步 |防止用户漫游 Windows 设置和应用数据 |

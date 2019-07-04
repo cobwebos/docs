@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: 364d4a11772e6bb72e2e258503f3cce49dc61453
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173645"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476250"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>创建一个或多个访问评审
 
@@ -25,7 +25,7 @@ ms.locfileid: "67173645"
 
 1. 设置“开始日期”。  默认情况下，访问评审只进行一次，从创建的时候开始，在一个月内结束。 可以更改开始和结束日期，使访问评审在将来的时间开始，并持续所需的天数。
 
-    ![创建访问评审 - 开始和结束日期](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
+    ![开始日期、 频率、 持续时间、 结束、 的次数，日期和结束日期](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
 
 1. 若要使访问评审再次发生，请更改**频率**设置从**一次**到**每周**，**每月**， **每季度**，**每年一次**，或**半年一次**。 使用**持续时间**滑块或文本框中，可以定义多长时间内每段评论各定期系列的将是打开的审阅者的输入。 例如，每月评审的最长持续时间可以设置为 27 天，以免评审时间重叠。
 
@@ -33,22 +33,22 @@ ms.locfileid: "67173645"
 
 1. 在中**用户**部分中，选择您想要查看的成员身份的一个或多个角色。
 
-    ![创建访问评审的用户](./media/active-directory-privileged-identity-management-access-reviews/users.png)
+    ![若要查看角色成员身份的用户范围](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
     > 选择多个角色将创建多个访问评审。 例如，选择五个角色将创建五个单独的访问评审。
 
     如果要创建 Azure AD 角色的访问评审，以下显示了检查成员身份列表的示例。
 
-    ![创建访问评审的审阅角色成员身份](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
+    ![您可以选择查看成员资格窗格列出 Azure AD 角色](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
     如果要创建 Azure 资源角色的访问评审，以下显示了检查成员身份列表的示例。
 
-    ![创建访问评审的审阅角色成员身份](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
+    ![您可以选择审阅成员身份窗格列出 Azure 资源角色](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 
 1. 在中**审阅者**部分中，选择一个或多个人来评审所有用户。 也可以选择让成员评审自己的访问权限。
 
-    ![创建访问评审 - 评审者](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
+    ![审阅者列表的所选的用户或成员 （自我）](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
     - **所选用户**-如果不知道谁需要访问使用此选项。 使用此选项，可以将审阅分配给资源所有者或组管理员完成。
     - **成员 （自我）** -使用此选项可让用户评审其自己的角色分配。
@@ -57,7 +57,7 @@ ms.locfileid: "67173645"
 
 1. 若要指定评审完成后发生的情况，请展开“完成后的设置”部分。 
 
-    ![完成后的设置](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
+    ![完成后设置自动应用，并应查看未响应](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
 
 1. 若要自动删除被拒绝用户的访问权限，请将“将结果自动应用到资源”设置为“启用”。   若要在评审完成后手动应用结果，请将开关设置为“禁用”。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "67173645"
 
 1. 若要指定其他设置，请展开“高级设置”部分。 
 
-    ![高级设置](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
+    ![显示建议的高级的设置，需要批准、 邮件通知和提醒的原因](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
 
 1. 将“显示建议”设置为“启用”，以基于用户的访问权限信息向评审者显示系统建议。  
 

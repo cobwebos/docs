@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: a3806a7f64f30e5073182f96f552b8584cf1ce0c
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: b8f1626da730178d2cd9c2f31c4f9876102b3d46
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147259"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477848"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>配置 Azure VPN 网关 OpenVPN 客户端
 
@@ -67,9 +67,9 @@ ms.locfileid: "67147259"
 4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，你只需打开 .cer 文件并通过证书标头之间的 base64 密钥进行复制。 有关如何导出证书以获取已编码的公钥的详细信息，请参阅[导出公钥](vpn-gateway-certificates-point-to-site.md#cer)
 5. 使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 有关如何提取私钥的详细信息，请参阅[导出私钥](https://openvpn.net/community-resources/how-to/#pki)。
 6. 不要更改任何其他字段。 使用客户端输入中的已填充的配置连接到 VPN。
-7. 双击配置文件以在 tunnelblick 中创建配置文件。
-8. 启动应用程序文件夹中的 Tunnelblik。
-9. 单击系统托盘中的 Tunneblik 图标，然后单击“连接”。
+7. 双击要在 Tunnelblick 中创建配置文件的配置文件文件。
+8. 启动 Tunnelblick 从应用程序文件夹。
+9. 单击系统托盘中的 Tunnelblick 图标并选取连接。
 
 > [!IMPORTANT]
 >仅 iOS 11.0 及更高版本和 MacOS 10.13 及更高版本支持 OpenVPN 协议。

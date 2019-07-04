@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 06/27/2019
 ms.author: kgremban
-ms.openlocfilehash: 6c22680102c57fdfc3d25beb19e5bc9847995b28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7004edf2bab0e22d4d1e4c1200d6e8b8ef729b3
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65152735"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485952"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>在 Linux 上安装 Azure IoT Edge 运行时 (ARM32v7/armhf)
 
@@ -25,9 +25,13 @@ ms.locfileid: "65152735"
 本文列出了在 Linux ARM32v7/armhf IoT Edge 设备上安装 Azure IoT Edge 运行时的步骤。 例如，这些步骤适用于 Raspberry Pi 设备。 有关支持的 ARM32 操作系统的列表，请参阅 [Azure IoT Edge 支持的系统](support.md#operating-systems)。 
 
 >[!NOTE]
->Linux 软件存储库中的包受到每个包中的许可条款限制 (/usr/share/doc/*package-name*)。 使用程序包之前请阅读许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用程序包。
+>Linux 软件存储库中的包受到每个包中的许可条款限制 (/usr/share/doc/*package-name*)。 使用程序包之前请阅读许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用包。
 
-## <a name="install-the-container-runtime"></a>安装容器运行时
+## <a name="install-the-latest-version"></a>安装最新版本
+
+使用下列部分来安装到 Linux ARM 设备上的 Azure IoT Edge 服务的最新版本。 
+
+### <a name="install-the-container-runtime"></a>安装容器运行时
 
 Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器运行时。 对于生产方案，强烈建议使用下面提供的[基于 Moby](https://mobyproject.org/) 的引擎。 这是官方唯一支持用于 Azure IoT Edge 的容器引擎。 Docker CE/EE 容器映像与基于 Moby 的运行时兼容。
 
@@ -47,7 +51,7 @@ curl -L https://aka.ms/moby-cli-armhf-latest -o moby_cli.deb && sudo dpkg -i ./m
 sudo apt-get install -f
 ```
 
-## <a name="install-the-iot-edge-security-daemon"></a>安装 IoT Edge 安全守护程序
+### <a name="install-the-iot-edge-security-daemon"></a>安装 IoT Edge 安全守护程序
 
 **IoT Edge 安全守护程序**提供和维护 IoT Edge 设备上的安全标准。 守护程序在每次开机时启动，并通过启动 IoT Edge 运行时的其余部分来启动设备。 
 
@@ -66,7 +70,17 @@ curl -L https://aka.ms/iotedged-linux-armhf-latest -o iotedge.deb && sudo dpkg -
 sudo apt-get install -f
 ```
 
-## <a name="connect-your-device-to-an-iot-hub"></a>将设备连接到 IoT 中心 
+一旦成功安装 IoT Edge，输出将会提示你更新配置文件。 按照中的步骤[配置 Azure IoT Edge 安全守护程序](#configure-the-azure-iot-edge-security-daemon)部分，以完成预配你的设备。 
+
+## <a name="install-a-specific-version"></a>安装特定版本
+
+如果你想要安装特定版本的 Azure IoT Edge，你可以面向直接从 IoT Edge GitHub 存储库的组件文件。 使用相同`curl`前面各节中，若要获取所有 IoT Edge 到你的设备上的组件中列出的命令： 小鲸鱼引擎和 CLI、 libiothsm 和最后的 IoT Edge 安全守护程序。 唯一的区别是您替换**aka.ms** Url 直接指向你想要使用每个组件的版本的链接。
+
+导航到[Azure IoT Edge 释放](https://github.com/Azure/azure-iotedge/releases)，并找到想要面向的版本。 展开**资产**部分有关的版本，并选择的文件匹配 IoT Edge 设备的体系结构。 每个 IoT Edge 版本包含**iotedge**并**libiothsm**文件。 并非所有版本都包括**小鲸鱼引擎**或**小鲸鱼 cli**。 如果还没有安装的小鲸鱼容器引擎，查找通过较旧版本，直到找到一个包括小鲸鱼组件。 
+
+一旦成功安装 IoT Edge，输出将会提示你更新配置文件。 按照下一部分，以完成预配你的设备中的步骤。 
+
+## <a name="configure-the-azure-iot-edge-security-daemon"></a>配置 Azure IoT Edge 安全守护程序
 
 配置 IoT Edge 运行时以将物理设备与 Azure IoT 中心中存在的设备标识相链接。 
 

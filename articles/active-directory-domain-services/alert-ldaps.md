@@ -3,7 +3,7 @@ title: Azure Active Directory 域服务：安全 LDAP 配置故障排除 | Micro
 description: Azure AD 域服务的安全 LDAP 疑难解答
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: ''
 editor: ''
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: mstephen
-ms.openlocfilehash: dde4a02e5be32d5549ba499742d1ab650fa146c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 453018f486ca3fda91d8447208fe3d936722522e
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246579"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473956"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD 域服务 - 安全 LDAP 配置疑难解答
 

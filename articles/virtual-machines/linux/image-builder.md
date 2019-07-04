@@ -7,12 +7,12 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 854645af95d780053d94668921e41ac189bbbfb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 345b10a0d66456d795a63e3aacd941ade0e0159c
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65159505"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467006"
 ---
 # <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>预览版：使用 Azure 映像生成器创建 Linux VM
 
@@ -21,6 +21,7 @@ ms.locfileid: "65159505"
 - Shell (ScriptUri)-下载和运行[shell 脚本](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh)。
 - Shell （内联）-运行特定命令。 在此示例中，内联命令包括创建目录和更新操作系统。
 - 文件的副本[来自 GitHub 的文件](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html)到 VM 上的目录。
+
 
 我们将使用示例.json 模板要配置的映像。 下面是我们正在使用的.json 文件： [helloImageTemplateLinux.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json)。 
 
@@ -57,7 +58,7 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="create-a-resource-group"></a>创建资源组
+## <a name="setup-example-variables"></a>安装程序的示例变量
 
 我们将使用一些部分信息重复，因此我们将创建一些变量来存储该信息。
 
@@ -79,14 +80,17 @@ runOutputName=aibLinux
 subscriptionID=<Your subscription ID>
 ```
 
-创建资源组。
+## <a name="create-the-resource-group"></a>创建资源组。
+这用于存储映像配置模板项目和映像。
 
 ```azurecli-interactive
 az group create -n $imageResourceGroup -l $location
 ```
 
+## <a name="set-permissions-on-the-resource-group"></a>在资源组上设置权限
+为提供的资源组中创建的映像的映像生成器参与者权限。 如果没有适当的权限，该映像生成将失败。 
 
-授予该资源组中创建资源的映像生成器权限。 `--assignee`值是图像生成器服务的应用程序注册 ID。 
+`--assignee`值是图像生成器服务的应用程序注册 ID。 
 
 ```azurecli-interactive
 az role assignment create \
@@ -95,9 +99,9 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
 
-## <a name="download-the-json-example"></a>下载.json 示例
+## <a name="download-the-template-example"></a>下载模板示例
 
-下载示例.json 文件，并将其配置与你创建的变量。
+可以使用已创建参数化的示例映像配置模板。 下载示例.json 文件，并将其配置与你先前设置的变量。
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json -o helloImageTemplateLinux.json
@@ -109,7 +113,19 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-## <a name="create-the-image"></a>创建映像
+你可以根据需要修改此示例.json。 例如，可以增加的值`buildTimeoutInMinutes`以允许较长正在运行的生成。 您可以编辑在 Cloud Shell 中使用文件`vi`。
+
+```azurecli-interactive
+vi helloImageTemplateLinux.json
+```
+
+> [!NOTE]
+> 对于源映像，您必须始终[指定的版本](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)，不能使用`latest`。
+>
+> 如果您添加或更改将映像分发其中的资源组，则需要确保[资源组设置权限](#set-permissions-on-the-resource-group)。
+
+
+## <a name="submit-the-image-configuration"></a>提交映像配置
 映像的配置提交到的 VM 映像生成器服务
 
 ```azurecli-interactive
@@ -121,7 +137,26 @@ az resource create \
     -n helloImageTemplateLinux01
 ```
 
+如果成功完成，它将返回一条成功消息，并在 $imageResourceGroup 中创建图像生成器配置模板项目。 如果启用显示隐藏的类型，可以看到在门户中的资源组。
+
+此外，在后台，图像生成器将创建你的订阅中的临时资源组。 映像生成器使用为映像生成临时的资源组。 资源组的名称将按以下格式： `IT_<DestinationResourceGroup>_<TemplateName>`。
+
+> [!IMPORTANT]
+> 不要直接删除过渡的资源组。 如果删除映像模板项目时，它将自动删除临时的资源组。 有关详细信息，请参阅[清理](#clean-up)本文末尾部分。
+
+如果该服务配置中的映像模板提交期间报告的失败，请参阅[故障排除](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting)步骤。 此外需要重试提交生成之前删除该模板。 若要删除的模板：
+
+```azurecli-interactive
+az resource delete \
+    --resource-group $imageResourceGroup \
+    --resource-type Microsoft.VirtualMachineImages/imageTemplates \
+    -n helloImageTemplateLinux01
+```
+
+## <a name="start-the-image-build"></a>启动映像生成
+
 开始创建映像。
+
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -131,7 +166,9 @@ az resource invoke-action \
      --action Run 
 ```
 
-等待生成完成。 这可能需要大约 15 分钟。
+等待生成完成，对于此示例之前，可能需要 10-15 分钟。
+
+如果遇到任何错误，请查看这些[故障排除](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting)步骤。
 
 
 ## <a name="create-the-vm"></a>创建 VM
@@ -179,14 +216,20 @@ cat helloImageTemplateLinux.json
 
 ## <a name="clean-up"></a>清理
 
-完成后，删除的资源。
+完成后，可以删除的资源。
+
+删除映像生成器模板。
 
 ```azurecli-interactive
 az resource delete \
     --resource-group $imageResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
     -n helloImageTemplateLinux01
+```
 
+删除映像资源组。
+
+```bash
 az group delete -n $imageResourceGroup
 ```
 

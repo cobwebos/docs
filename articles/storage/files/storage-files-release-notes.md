@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 6/13/2019
+ms.date: 6/27/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: d9bbc76fe60a5d363cd05b75df33f6fce00d7e9a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 2399fcaa683e5807d2a5cd69d3dd3357d804fd28
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303405"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449958"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -26,7 +26,8 @@ ms.locfileid: "67303405"
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
 | V7 发布版- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19日日 | [外部测试](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
-| 2019 年 6 月更新汇总- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13日日 | 支持（建议的版本） |
+| 2019 年 6 月更新汇总- [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019 年 6 月 27日日 | 支持（建议的版本） |
+| 2019 年 6 月更新汇总- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13日日 | 支持 |
 | 2019 年 5 更新汇总- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日 | 支持 |
 | V6 发布版- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019 年 4 月 21日日 | 支持 |
 | 2019 年 4 月更新汇总- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019 年 4 月 4日日 | 支持 |
@@ -113,6 +114,14 @@ ms.locfileid: "67303405"
 ### <a name="cloud-tiering"></a>云分层
 - 如果使用 Robocopy 将分层的文件复制到另一位置，生成的文件不会分层。 可能会对脱机属性进行设置，因为 Robocopy 会在复制操作中错误地包括该属性。
 - 使用 robocopy 复制文件时，可使用 /MIR 选项保留文件时间戳。 这将确保较旧的文件比最近访问的文件更早分层。
+
+## <a name="agent-version-6300"></a>代理版本 6.3.0.0
+以下发行说明仅适用于 2019 年 6 月 27 日发布的 Azure 文件同步代理的版本 6.3.0.0。 这些说明是版本 6.0.0.0 列出的发行说明。
+
+此版本修复的问题列表：  
+- 访问或浏览基于 SMB 的服务器终结点位置是 Windows Server 2012 R2 上速度缓慢 
+- 安装 Azure 文件同步 v6 代理后增加的 CPU 使用率
+- 云分层遥测改进
 
 ## <a name="agent-version-6200"></a>代理版本 6.2.0.0
 以下发行说明仅适用于 2019 年 6 月 13 日发布的 Azure 文件同步代理的版本 6.2.0.0。 这些说明是版本 6.0.0.0 列出的发行说明。

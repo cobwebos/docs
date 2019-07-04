@@ -10,36 +10,44 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e0181eea2895dbc2b3db3367c850140e3fad21d4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 2196e375db582202997b838d05c902db95b3a3ad
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331723"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461464"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
 了解体系结构、 概念和 Azure 机器学习服务的工作流。 下图显示该服务的主要组件，以及使用该服务时的常规工作流：
 
-[![Azure 机器学习服务体系结构和工作流](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+![Azure 机器学习服务体系结构和工作流](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>工作流
 
-机器学习工作流通常采用以下顺序：
+机器学习模型工作流通常采用以下顺序：
 
-1. 开发训练脚本中的机器学习**Python**或可视界面。
-1. 创建和配置**计算目标**。
-1. **将脚本提交**到配置的计算目标以在该环境中运行。 在训练期间，脚本可以读取或写入**数据存储**。 并且执行记录在**工作区**中保存为**运行**，并在**试验**下分组。
-1. **查询试验**了解当前和过去的运行中已记录的指标。 如果指标未指示所需结果，请循环回到步骤 1 并循环访问脚本。
-1. 找到满意的运行后，在**模型注册表**中注册持久化模型。
-1. 开发使用模型评分脚本和**部署模型**作为**web 服务**在 Azure 中，或设置为**IoT Edge 设备**。
+1. **训练**
+    + 开发训练脚本中的机器学习**Python**或可视界面。
+    + 创建和配置**计算目标**。
+    + **将脚本提交**到配置的计算目标以在该环境中运行。 在训练期间，脚本可以读取或写入**数据存储**。 并且执行记录在**工作区**中保存为**运行**，并在**试验**下分组。
 
-执行以下任一这些步骤：
-+ [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-+ [Azure 机器学习 CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
-+ [Azure 机器学习 VS 代码扩展](how-to-vscode-tools.md)
-+  [Azure 机器学习服务的可视界面 （预览版）](ui-concept-visual-interface.md)
+1. **包**-后找到令人满意的运行，则注册中的持久化的模型**模型注册表**。
 
+1. **验证** - **查询实验**为从当前和过去运行记录的指标。 如果指标未指示所需结果，请循环回到步骤 1 并循环访问脚本。
+
+1. **部署**-开发使用模型评分脚本和**部署模型**作为**web 服务**在 Azure 中，或设置为**IoT Edge 设备**。
+
+1. **监视器**-监视**数据偏差**之间已部署的模型的定型数据集和推断数据。 如有必要，循环返回到步骤 1 重新训练新的训练数据模型。
+
+## <a name="tools-for-azure-machine-learning"></a>Azure 机器学习的工具 
+
+Azure 机器学习中使用这些工具：
+
++  与使用任何 Python 环境中的服务进行交互[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
++ 自动执行机器学习活动[Azure 机器学习 CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)。
++ 在使用的 Visual Studio Code 中编写代码[Azure 机器学习 VS Code 扩展](how-to-vscode-tools.md) 
++ 使用[可视界面 （预览版） 为 Azure 机器学习服务](ui-concept-visual-interface.md)而无需编写代码执行的工作流步骤。
 
 ## <a name="glossary-of-concepts"></a>术语表的概念
 

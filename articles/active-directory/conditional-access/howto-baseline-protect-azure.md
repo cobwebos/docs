@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24b54a3645fe97903219841dd148c0942dfcda76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 203b752f9da67ebf60e373fe7ce0893b4fd7fcb5
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112382"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560962"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>基准策略：服务管理 （预览版） 要求进行 MFA
 
@@ -31,8 +31,6 @@ ms.locfileid: "67112382"
 **服务管理需要 MFA**是[基准策略](concept-baseline-protection.md)，将要求对访问 Azure 门户、 Azure PowerShell 或 Azure CLI 的任何用户进行 MFA。 此策略适用于所有访问 Azure 资源管理器，而不考虑，如果他们作为管理员的用户。
 
 在租户中启用此策略后，登录到 Azure 管理资源的所有用户将都面临多重身份验证。 如果用户未注册 MFA，用户将需要注册才能继续使用 Microsoft Authenticator 应用。
-
-![需要 MFA 的 Azure 资源管理器](./media/howto-baseline-protect-azure/baseline-policy-require-mfa-for-service-management.png)
 
 若要执行交互式登录中使用[Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)，使用[Connect AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet。
 
@@ -54,17 +52,6 @@ az login
 
 因为**服务管理的要求使用 MFA**策略适用于所有 Azure 资源管理器用户，需要进行，以确保顺利完成部署几个注意事项。 这些注意事项包括识别用户并不能或不应执行 MFA，以及应用程序和由你的组织不支持新式身份验证的客户端的 Azure AD 中的服务主体。
 
-### <a name="user-exclusions"></a>用户排除项
-
-此基线策略提供选项来排除用户。 在启用之前该策略为你的租户，我们建议排除以下帐户：
-
-* **紧急访问**或**break glass**以防止租户范围内帐户锁定的帐户。 在所有管理员被都锁定在租户外部不太可能方案中，可以使用紧急访问管理帐户能够登录到租户采取步骤来恢复访问权限。
-   * 可在本文中，找到更多信息[在 Azure AD 中管理紧急访问帐户](../users-groups-roles/directory-emergency-access.md)。
-* **服务帐户**并**服务原则**，例如 Azure AD Connect 同步帐户。 服务帐户是不受限于任何特定用户的非交互式帐户。 它们通常由后端服务，并且允许以编程方式访问应用程序。 应排除服务帐户，因为不能以编程方式完成 MFA。
-   * 如果你的组织中的脚本或代码中使用这些帐户，请考虑将它们替换为 [托管标识](../managed-identities-azure-resources/overview.md)。 作为临时的解决方法，可以从基准策略中排除这些特定的帐户。
-* 不具有或不能使用智能手机的用户。
-   * 此策略要求用户使用 Microsoft Authenticator 应用的 mfa 注册。
-
 ## <a name="enable-the-baseline-policy"></a>启用基线策略
 
 策略**基准策略：服务管理 （预览） 需要 MFA**预配置，此时将显示在顶部导航到在 Azure 门户中的条件性访问边栏选项卡时。
@@ -75,7 +62,6 @@ az login
 1. 浏览到**Azure Active Directory** > **条件性访问**。
 1. 在策略列表中，选择**基准策略：服务管理 （预览） 需要 MFA**。
 1. 设置**启用策略**到**立即使用策略**。
-1. 通过单击添加任何用户排除项**用户** > **选择排除的用户**，然后选择需要排除的用户。 单击**选择**然后**完成**。
 1. 单击 **保存**。
 
 ## <a name="next-steps"></a>后续步骤

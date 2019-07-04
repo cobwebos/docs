@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f70ca550f1688551abb94bb30ba4f76eb3c36404
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: dabaa06e224c6498c0080c4546c04f40e3919bb6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303961"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448533"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>通过 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据
 
@@ -82,23 +82,24 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 
 此设置的名称为 `deviceToCloudUploadProperties`
 
-| 字段 | 可能的值 | 说明 |
-| ----- | ----- | ---- |
-| uploadOn | true、false | 默认设置为 `false`，若要启用它，可将它设置为 `true`|
-| uploadOrder | NewestFirst、OldestFirst | 用于选择将数据复制到 Azure 的顺序。 默认设置为 `OldestFirst`。 顺序由 Blob 的上次修改时间确定 |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` 是一个连接字符串，用于指定要将数据上传到的 Azure 存储帐户。 指定 `Azure Storage Account Name`、`Azure Storage Account Key` 或 `End point suffix`。 添加相应 EndpointSuffix 的 Azure 位置将上传数据，它对于各不相同全局 Azure，政府 Azure 和 Microsoft Azure Stack。 |
-| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 用于指定要上传到 Azure 的容器名称。 此模块允许指定源和目标容器名称。 如果未指定目标容器名称，系统会自动分配 `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` 作为容器名称。 您可以创建目标容器的名称的模板字符串，请查看可能的值列。 <br>* %h -> IoT 中心名称（3 到 50 个字符）。 <br>* %d-> IoT Edge 设备 ID (1 到 129 个字符)。 <br>* %m -> 模块名称（1 到 64 个字符）。 <br>* %c -> 源容器名称（3 到 63 个字符）。 <br><br>容器名称的最大大小为 63 个字符，自动分配时目标容器的名称如果容器的大小超过 63 个字符将修剪每个部分 （IoTHubName、 IotEdgeDeviceID、 模块名称、 SourceContainerName） 为 15字符。 |
-| deleteAfterUpload | true、false | 默认设置为 `false`。 如果设置为`true`，它将自动删除数据完成上的传到云存储 |
+| 字段 | 可能的值 | 说明 | 环境变量 |
+| ----- | ----- | ---- | ---- |
+| uploadOn | true、false | 默认设置为 `false`，若要启用它，可将它设置为 `true`| `deviceToCloudUploadProperties__uploadOn={false,true}` |
+| uploadOrder | NewestFirst、OldestFirst | 用于选择将数据复制到 Azure 的顺序。 默认设置为 `OldestFirst`。 顺序由 Blob 的上次修改时间确定 | `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` 是一个连接字符串，用于指定要将数据上传到的 Azure 存储帐户。 指定 `Azure Storage Account Name`、`Azure Storage Account Key` 或 `End point suffix`。 添加相应 EndpointSuffix 的 Azure 位置将上传数据，它对于各不相同全局 Azure，政府 Azure 和 Microsoft Azure Stack。 | `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 用于指定要上传到 Azure 的容器名称。 此模块允许指定源和目标容器名称。 如果未指定目标容器名称，系统会自动分配 `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` 作为容器名称。 您可以创建目标容器的名称的模板字符串，请查看可能的值列。 <br>* %h -> IoT 中心名称（3 到 50 个字符）。 <br>* %d-> IoT Edge 设备 ID (1 到 129 个字符)。 <br>* %m -> 模块名称（1 到 64 个字符）。 <br>* %c -> 源容器名称（3 到 63 个字符）。 <br><br>容器名称的最大大小为 63 个字符，自动分配时目标容器的名称如果容器的大小超过 63 个字符将修剪每个部分 （IoTHubName、 IotEdgeDeviceID、 模块名称、 SourceContainerName） 为 15字符。 | `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
+| deleteAfterUpload | true、false | 默认设置为 `false`。 如果设置为`true`，它将自动删除数据完成上的传到云存储 | `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
+
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
 此设置的名称为 `deviceAutoDeleteProperties`
 
-| 字段 | 可能的值 | 说明 |
-| ----- | ----- | ---- |
-| deleteOn | true、false | 默认设置为 `false`，若要启用它，可将它设置为 `true`|
-| deleteAfterMinutes | `<minutes>` | 指定以分钟为单位的时间。 该模块会自动删除 blob 从本地存储时此值过期 |
-| retainWhileUploading | true、false | 默认情况下它设置为`true`，并且它还保留 blob，而如果 deleteAfterMinutes 过期上载到云存储。 可以将其设置为`false`并 deleteAfterMinutes 过期时，就立即将删除数据。 请注意:对于此属性工作 uploadOn 应设置为 true|
+| 字段 | 可能的值 | 说明 | 环境变量 |
+| ----- | ----- | ---- | ---- |
+| deleteOn | true、false | 默认设置为 `false`，若要启用它，可将它设置为 `true`| `deviceAutoDeleteProperties__deleteOn={false,true}` |
+| deleteAfterMinutes | `<minutes>` | 指定以分钟为单位的时间。 该模块会自动删除 blob 从本地存储时此值过期 | `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| retainWhileUploading | true、false | 默认情况下它设置为`true`，并且它还保留 blob，而如果 deleteAfterMinutes 过期上载到云存储。 可以将其设置为`false`并 deleteAfterMinutes 过期时，就立即将删除数据。 请注意:对于此属性工作 uploadOn 应设置为 true| `deviceAutoDeleteProperties__retainWhileUploading={false,true}` |
 
 ## <a name="configure-log-files"></a>配置日志文件
 

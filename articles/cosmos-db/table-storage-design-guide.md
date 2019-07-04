@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: af155b5adb2e4b45412a8b84818852ed1b1c5e72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0812828f8d7c0be38fb03c06f4a10019e2ed153c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966092"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447299"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure 存储表设计指南：设计可伸缩的高性能表
 
@@ -255,7 +255,7 @@ EGT 还引入了潜在的权衡，以便在设计中进行评估：使用的分�
 表服务返回的查询结果按照 PartitionKey 的升序排序，然后按 RowKey 排序   。
 
 > [!NOTE]
-> Azure DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+> Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
 
 Azure 存储表中的键是字符串值，以确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 **RowKey** 的员工 ID 值是个整数值，则应将员工 ID **123** 转换为 **00000123**。 
 
@@ -723,7 +723,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 通过按日期时间倒序方式排序的 **RowKey** 值，检索最近添加到分区中的 *n* 个实体。  
 
 > [!NOTE]
-> Azure DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 因此，此模式适用于 Azure 表存储，而不适用于 Azure Cosmos DB。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+> Azure Cosmos DB 中的 Azure 表 API 返回的查询结果不被按分区键或行键。 因此，此模式适用于 Azure 表存储，而不适用于 Azure Cosmos DB。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
 
 #### <a name="context-and-problem"></a>上下文和问题
 一个常见的需求是能够检索最近创建的实体，例如某个员工提交的最近 10 个费用报销单。 表查询支持 **$top** 查询操作，可返回一个集中的前 n 个实体：没有可返回集中最后 *n* 个实体的等效查询操作。  

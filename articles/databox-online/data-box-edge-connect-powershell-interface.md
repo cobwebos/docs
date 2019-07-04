@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cd89b21e80662ec50746e0c7721a5544cfbce30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6af95b7f8bde6e77ba356fec9dde123e26a9a4a8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717504"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448630"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>管理通过 Windows PowerShell 的 Azure 数据框边缘设备
 
@@ -52,8 +52,9 @@ Azure 数据框边缘解决方案，可处理数据并将其通过网络发送�
 下面的示例显示了此 cmdlet 可安装 IoT Edge 的证书的使用情况：
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username/password"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
+运行此 cmdlet 时，将提示你为网络共享提供的密码。
 
 有关证书的详细信息，请转到[Azure IoT Edge 证书](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs)或[证书安装在网关上](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway)。
 
@@ -75,13 +76,12 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
     下面的示例显示了此 cmdlet 的用法：
 
     ```powershell
-    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
+    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
     下面是使用该 cmdlet 的参数的说明：
     - `Path`：提供你想要创建计算日志包的共享网络路径。
-    - `Credential`：为网络共享中提供的用户名和密码。
-    - `RoleInstanceName`：提供此字符串`IotRole`为此参数。
+    - `Credential`：网络共享提供用户名。 当您运行此 cmdlet 时，需要提供共享密码。
     - `FullLogCollection`：此参数可确保日志包将包含计算的所有日志。 默认情况下，日志包仅包含一部分的日志。
 
 ## <a name="monitor-and-troubleshoot-compute-modules"></a>监视和故障排除计算模块

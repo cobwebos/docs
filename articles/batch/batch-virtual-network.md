@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 2583e7e218e765e0d7745978582e19a5a4fe17ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea048c6adbb4e00ae8543810f1dc571376038c62
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550171"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436254"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
 
@@ -56,7 +56,7 @@ Azure Batch 池具有两个设置来允许计算节点彼此进行通信，例�
 
 若要确保 Azure Batch 池计算节点可以在启用了强制隧道的 VNet 中工作，必须为该子网添加以下[用户定义的路由](../virtual-network/virtual-networks-udr-overview.md)：
 
-* Batch 服务需要与池计算节点进行通信来计划任务。 若要启用此通信，请在你的 Batch 帐户所在的区域中为 Batch 服务使用的每个 IP 地址添加用户定义的路由。 若要获取 Batch 服务的 IP 地址列表，请联系 Azure Support。
+* Batch 服务需要与池计算节点进行通信来计划任务。 若要启用此通信，请在你的 Batch 帐户所在的区域中为 Batch 服务使用的每个 IP 地址添加用户定义的路由。 若要了解如何获取 Batch 服务的 IP 地址的列表，请参阅[服务在本地中的标记](../virtual-network/security-overview.md#service-tags-in-on-premises)
 
 * 确保经由本地网络设备发送到 Azure 存储（具体而言是采用 `<account>.table.core.windows.net`、`<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net` 格式的 URL）的出站流量没有被阻止。
 

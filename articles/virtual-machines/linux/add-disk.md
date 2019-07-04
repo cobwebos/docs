@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 6f4bd125847aa789f6f3ed06e808b40738e12260
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c8d4d2b26b356c524523d73d53fd641eef5f3cb
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304111"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465836"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 本文介绍了如何将持久性磁盘附加到 VM 以便持久保存数据 - 即使 VM 由于维护或调整大小而重新预配。
@@ -73,6 +73,9 @@ dmesg | grep SCSI
 [    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
+
+> [!NOTE]
+> 建议你使用最新版本的 fdisk 或 parted，可用的发行版。
 
 此处，*sdc* 是我们需要的磁盘。 使用 `parted` 对磁盘进行分区，如果磁盘大小为 2TiB 或更大，则必须使用 GPT 进行分区，如果小于 2TiB，则可以使用 MBR 或 GPT 进行分区。 如果使用 MBR 分区，则可以使用 `fdisk`。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
 

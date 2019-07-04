@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22d44b02b3cc25c855361cab17132c46fa04794
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d896a45931512b925491e05ff6e5eef8a856d83d
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783701"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481329"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
 
@@ -42,7 +42,7 @@ ms.locfileid: "65783701"
 1. 选择“Azure Active Directory”   > “企业应用程序”   > “应用程序代理”  。
 2. 选择“新建连接器组”  。 此时会显示“新建连接器组”边栏选项卡。
 
-   ![选择“新建连接器组”](./media/application-proxy-connector-groups/new-group.png)
+   ![显示屏幕，以选择新的连接器组](./media/application-proxy-connector-groups/new-group.png)
 
 3. 为新的连接器组提供一个名称，并使用下拉菜单选择哪些连接器属于此组。
 4. 选择“保存”  。
@@ -74,25 +74,25 @@ ms.locfileid: "65783701"
 
 例如，组织有许多虚拟机连接到其自己的 IaaS 托管虚拟网络。 为了允许员工使用这些应用程序，这些专用网络使用站点到站点 VPN 连接到公司网络。 这为位于本地的员工提供了良好的体验。 但是，这可能不适合远程员工，因为它需要额外的本地基础结构来路由访问权限，如下图所示：
 
-![AzureAD IaaS 网络](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![图演示了 Azure AD IaaS 网络](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 使用 Azure AD 应用程序代理连接器组，可以启用常见服务来保护对所有应用程序的访问，而不会对公司网络创建额外的依赖项：
 
-![AzureAD IaaS 的多个云供应商](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Azure AD IaaS 多个云供应商](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>多林 - 每个林使用不同连接器组
 
 已部署应用程序代理的大多数客户通过执行 Kerberos 约束委派 (KCD) 来使用其单一登录 (SSO) 功能。 为了实现此目的，需要将连接器的计算机加入到一个域中，该域可将用户委派给应用程序。 KCD 支持跨林功能。 但对于具有不同的多林环境并且林之间没有信任的公司，不能将单一连接器用于所有林。 
 
 在这种情况下，可为每个林部署特定连接器，并将其设置为服务已发布的应用程序，以仅为该特定林的用户提供服务。 每个连接器组表示不同的林。 虽然租户和大多数体验对所有林统一，但可使用 Azure AD 组将用户分配给他们自己的林应用程序。
- 
+
 ### <a name="disaster-recovery-sites"></a>灾难恢复站点
 
 根据灾难恢复 (DR) 站点的实现方式，可采取两种不同的方法：
 
 * 如果灾难恢复站点采用主动 - 主动模式构建，其与主站点完全相同，并具有相同的网络和 AD 设置，则可在与主站点相同的连接器组中的灾难恢复站点上创建连接器。 这使 Azure AD 能检测故障转移。
 * 如果灾难恢复站点与主站点分离，则可在灾难恢复站点中创建不同的连接器组，并且 1) 具有备份应用程序，或者 2) 根据需要将现有应用程序手动转移到灾难恢复连接器组。
- 
+
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>服务单个租户中的多个公司
 
 有多种方式来实现模型，其中单一服务提供程序为多个公司部署和维护 Azure AD 相关服务。 连接器组帮助管理员将连接器和应用程序分隔到不同的组中。 一种适合小公司的方法是使用单个 Azure AD 租户，不同的公司拥有其自己的域名和网络。 这同样适用于 M&A 情景以及单一 IT 部门出于监管或业务原因而服务几家公司的情况。 
@@ -100,32 +100,30 @@ ms.locfileid: "65783701"
 ## <a name="sample-configurations"></a>示例配置
 
 一些可实现的示例，包括以下连接器组。
- 
+
 ### <a name="default-configuration--no-use-for-connector-groups"></a>默认配置 - 不使用连接器组
 
 如果不使用连接器组，配置将如下所示：
 
-![AzureAD 无连接器组](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
- 
+![示例 Azure AD 无连接器组](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+
 此配置足以用于小型部署和测试。 如果组织具有平面网络拓扑，则此配置也非常适用。
- 
+
 ### <a name="default-configuration-and-an-isolated-network"></a>默认配置和隔离网络
 
-此配置是默认配置的演变，其中存在一个运行在隔离网络（如 IaaS 虚拟网络）的特定应用： 
+此配置是默认配置的演变，其中存在一个运行在隔离网络（如 IaaS 虚拟网络）的特定应用：
 
-![AzureAD 无连接器组](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
- 
+![示例 Azure AD 无连接器组](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>建议配置 - 几个特定组和一个用于空闲连接器的默认组
 
 对于大型和复杂组织的建议配置是，将默认连接器组设置为不服务任何应用程序且用于空闲或新安装连接器的组。 使用自定义连接器组服务所有应用程序。 这使得上述方案的所有复杂性成为可能。
 
-在下面的示例中，公司有两个数据中心，数据中心 A 和数据中心 B，每个站点有两个连接器。 每个站点都有不同的应用程序在其上运行。 
+在下面的示例中，公司有两个数据中心，数据中心 A 和数据中心 B，每个站点有两个连接器。 每个站点都有不同的应用程序在其上运行。
 
-![AzureAD 无连接器组](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
- 
+![公司有 2 个数据中心和 2 个连接器的示例](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)
 * [启用单一登录](what-is-single-sign-on.md)
-
-

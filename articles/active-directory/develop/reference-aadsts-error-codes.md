@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ac2f4ac83240acf644fc1529c9c14f5e9631a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d6ed5c80d5c3241a9a328a2427ed8b920790635
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111292"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482490"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>身份验证和授权错误代码
 
@@ -215,6 +215,7 @@ ms.locfileid: "67111292"
 | AADSTS90093 | GraphUserUnauthorized - Graph 返回了针对请求的禁止访问错误代码。 |
 | AADSTS90094 | AdminConsentRequired - 需要管理员许可。 |
 | AADSTS90100 | InvalidRequestParameter - 参数为空或无效。 |
+| AADSTS901002 | AADSTS901002:不支持资源请求参数。 |
 | AADSTS90101 | InvalidEmailAddress - 提供的数据不是有效的电子邮件地址。 电子邮件地址必须采用 `someone@example.com` 格式。 |
 | AADSTS90102 | InvalidUriParameter - 值必须是有效的绝对 URI。 |
 | AADSTS90107 | InvalidXml - 请求无效。 请确保数据不包含无效字符。|

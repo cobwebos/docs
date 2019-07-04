@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: be141e208016784b689262394798012c2212ba5b
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 9fb5f7a4a62c2d323059f7c0b879482e93feef2f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312236"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434866"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>使用托管标识的 azure 托管应用程序
 
@@ -323,7 +323,22 @@ ms.locfileid: "67312236"
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
+
+{
+    "authorizationAudience": "https://management.azure.com/",
+    "userAssignedIdentities": [
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{userAssignedIdentityName}"
+    ]
+}
 ```
+
+请求正文参数：
+
+参数 | 需要 | 描述
+---|---|---
+authorizationAudience | *no* | 目标资源应用 ID URI。 它也是`aud`（受众） 声明的颁发的令牌。 默认值是"https://management.azure.com/"
+userAssignedIdentities | *no* | 用户分配管理的标识要检索的令牌的列表。 如果未指定，`listTokens`将返回系统分配的托管标识的令牌。
+
 
 示例响应可能如下所示：
 
@@ -345,6 +360,18 @@ Content-Type: application/json
     ]
 }
 ```
+
+响应将包含在令牌的一组`value`属性：
+
+参数 | 描述
+---|---
+access_token | 请求的访问令牌。
+expires_in | 访问令牌将被有效的秒数。
+expires_on | 访问令牌过期的时间范围。 这是从 epoch 表示为秒数。
+not_before | 访问令牌生效时间范围。 这是从 epoch 表示为秒数。
+authorizationAudience | `aud` （受众） 的访问令牌已请求。 这是与中提供相同`listTokens`请求。
+resourceId | 已颁发令牌的 Azure 资源 ID。 这是托管应用程序 ID 或用户分配的标识 id。
+token_type | 令牌的类型。
 
 ## <a name="next-steps"></a>后续步骤
 

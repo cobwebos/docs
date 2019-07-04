@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: e75c6290474d876ca22b5888d06b1fc0e4c8cd05
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24b27c16573a35b1d8749d7ff381fbef970f4bd0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077323"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471662"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的执行数据流活动
 使用执行数据流活动，在管道调试（沙盒）运行和管道触发的运行中运行 ADF 数据流。
@@ -80,11 +80,17 @@ ms.locfileid: "67077323"
 
 ![执行数据流参数](media/data-flow/params.png "参数")
 
-### <a name="debugging-parameterized-data-flows"></a>调试参数化数据流
+## <a name="parameterized-data-flows"></a>参数化的数据的流
 
-只能通过执行数据流活动在管道调试运行中使用参数化数据集来调试数据流。 目前，ADF 数据流中的交互式调试会话不适用于参数化数据集。 管道执行和调试运行将可以使用参数。
+如果内部数据的流具有参数，您将执行数据流活动的 Parameters 节中设置动态数据流参数的值。 可以使用 ADF 管道表达式语言 （仅适用于字符串参数类型） 或数据流表达式语言来设置使用动态表达式的参数值或文本静态值。
 
-一种好的做法是使用静态数据集构建数据流，这样就可以在设计时使用完整的元数据列传播。 然后，在实现数据流管道的可操作化以后，将静态数据集替换为动态参数化数据集。
+![执行数据流参数示例](media/data-flow/parameter-example.png "参数示例")
+
+### <a name="debugging-data-flows-with-parameters"></a>使用参数的调试数据流
+
+在此当前时，仅可以调试数据流使用调试运行使用执行数据的流活动的管道中的参数。 在 ADF 数据流中的交互式调试会话即将推出。 管道执行和调试运行，但是，将会使用参数。
+
+较好的做法是构建具有静态内容数据的流，以便在设计时的一些具有可用的完整元数据列传播。 然后，在实现数据流管道的可操作化以后，将静态数据集替换为动态参数化数据集。
 
 ## <a name="next-steps"></a>后续步骤
 查看数据工厂支持的其他控制流活动： 

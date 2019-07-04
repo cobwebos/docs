@@ -1,20 +1,19 @@
 ---
 title: Azure IoT Edge 流分析
 description: 在 Azure 流分析中创建 edge 作业，并将其部署到运行 Azure IoT Edge 的设备。
-services: stream-analytics
+ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 4/2/2019
+ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17b9d11b75e2677e22fa2e38c21a69f018a4bee8
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803993"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508346"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 流分析
  
@@ -111,7 +110,7 @@ ASA 使用 IoT 中心将 Edge 作业部署到设备。 [可在此处查看有关
 
 > [!Note]
 > 在此步骤中，ASA 会在存储容器中创建一个名为“EdgeJobs”的文件夹（如果该文件夹尚不存在）。 对于每项部署，“EdgeJobs”文件夹中都将创建一个新的子文件夹。
-> 为了将你的作业部署到 Edge 设备，ASA 会为作业定义文件创建一个共享访问签名 (SAS)。 SAS 密钥使用设备孪生安全地传输到 IoT Edge 设备。 此密钥将在其创建之日后的三年过期。
+> 在你的作业部署到 IoT Edge 设备时，ASA 创建作业定义文件的共享的访问签名 (SAS)。 SAS 密钥使用设备孪生安全地传输到 IoT Edge 设备。 此密钥将在其创建之日后的三年过期。 IoT Edge 作业更新时，该 SAS 将发生更改，但不是会更改映像版本。 一次你**更新**，请按照部署工作流，并更新通知记录在设备上。
 
 
 有关 IoT Edge 部署的详细信息，请参阅[此页](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)。
@@ -203,9 +202,31 @@ IoT Edge 上的参考数据更新将由部署触发。 在触发后，ASA 模块
 * [IoT Edge 上的 Azure 流分析许可证](https://go.microsoft.com/fwlink/?linkid=862827)。 
 * [IoT Edge 上的 Azure 流分析的第三方通知](https://go.microsoft.com/fwlink/?linkid=862828)。
 
+## <a name="azure-stream-analytics-module-image-information"></a>Azure Stream Analytics 模块映像信息 
+
+此版本信息上次更新于 2019年-06-27:
+
+- 图像： `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
+   - 基本映像： microsoft/dotnet:2.1.6-runtime-alpine3.7
+   - 平台：
+      - 体系结构： amd64
+      - 操作系统： linux
+  
+- 图像： `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
+   - 基本映像： microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
+   - 平台：
+      - 体系结构： arm
+      - 操作系统： linux
+  
+- 图像： `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
+   - 基本映像： microsoft/dotnet:2.1.6-runtime-nanoserver-1809
+   - 平台：
+      - 体系结构： amd64
+      - 操作系统： windows
+      
+      
 ## <a name="get-help"></a>获取帮助
 如需进一步的帮助，请尝试参考 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

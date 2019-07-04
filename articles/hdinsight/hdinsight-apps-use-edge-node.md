@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: hrasheed
-ms.openlocfilehash: ee9b5b651f440bc7d179b1a06c7ddbd3f9137a0d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 41313c7d484df5568fbf729b683a0e9df5325abc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165906"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433733"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
 
@@ -108,7 +108,7 @@ ms.locfileid: "67165906"
    * **群集登录密码**：输入 Hadoop HTTP 用户密码。
    * **SSH 用户名**：输入 SSH 用户名。 默认名称为 **sshuser**。
    * **SSH 密码**：输入 SSH 用户密码。
-   * **安装脚本操作**：保存默认值，用于本教程的全过程。
+   * **安装脚本操作**：请开始阅读本文的默认值。
      
      某些属性已在模板中硬编码：集群类型、群集辅助角色节点计数、边缘节点大小和边缘节点名称。
 4. 选中“我同意上述条款和条件”  ，并单击“购买”  ，以创建包含该边缘节点的群集。

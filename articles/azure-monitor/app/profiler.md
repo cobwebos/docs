@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: b8f6a2d12e1a9920421e6491432b516520ae110b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71a8a0e268c1b264a0a1a7f955f310bfddc830d2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730125"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439941"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure 应用服务应用
 
@@ -58,6 +58,14 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
 
 可以使用 [Azure 资源管理器模板](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure Powershell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp)、[Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest) 设置这些值。
 
+### <a name="enabling-profiler-for-other-clouds-manually"></a>手动为其他云中启用 Profiler
+
+如果你想要启用探查器适用于其他云，则可以使用以下应用设置。
+
+|应用设置    | 美国政府值| 中国云 |   
+|---------------|---------------------|-------------|
+|ApplicationInsightsProfilerEndpoint         | https://agent.serviceprofiler.azure.us    | https://profiler.applicationinsights.azure.cn |
+|ApplicationInsightsEndpoint | https://dc.applicationinsights.us | https://dc.applicationinsights.azure.cn |
 
 ## <a name="disable-profiler"></a>禁用 Profiler
 

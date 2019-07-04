@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 9dac7aa19e428c964bd10c3ef62df949393e8d1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2c66c5c4f1abe535eb51dba9101757ce6d26157
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681770"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444344"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>适用于 HDInsight 上的 ML Services 的计算上下文选项
 
@@ -76,6 +76,5 @@ local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式    �
 本文概述了可跨边缘节点的核心或 HDInsight 群集中指定是否并行化或如何并行化执行的相关选项。 若要详细了解如何通过 HDInsight 群集使用 ML Services，请参阅以下主题：
 
 * [适用于 Apache Hadoop 的 ML Services 概述](r-server-overview.md)
-* [适用于 Apache Hadoop 的 ML Services 入门](r-server-get-started.md)
 * [适用于 HDInsight 上的 ML Services 的 Azure 存储选项](r-server-storage.md)
 

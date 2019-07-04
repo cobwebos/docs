@@ -10,16 +10,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: 2a31131b662d01f9841a3f1c5b0a6c459a117e77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 45df8f9e57223ea60a11c6af2187d362184cae2b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075369"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443354"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure Monitor 中使用应用程序更改分析 （预览版）
 
-实时站点问题或服务中断发生时，快速确定根本原因是关键。 标准的监视解决方案可能会发出警报的问题。 它们甚至可能指示哪个组件发生故障。 但此警报不会始终立即解释故障的原因。 您知道您的站点过五分钟之前，并且现在它已损坏。 那么，过去 5 分钟发生了什么？ 这才是问题所在的应用程序更改分析主要用于解答在 Azure 监视器中。 
+实时站点问题或服务中断发生时，快速确定根本原因是关键。 标准的监视解决方案可能会发出警报的问题。 它们甚至可能指示哪个组件发生故障。 但此警报不会始终立即解释故障的原因。 您知道您的站点过五分钟之前，并且现在它已损坏。 那么，过去 5 分钟发生了什么？ 这才是问题所在的应用程序更改分析主要用于解答在 Azure 监视器中。
 
 上的强大功能构建[Azure 资源 Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)，更改分析可深入了解 Azure 应用程序更改来提高可观察性并减少 MTTR （平均修复时间）。
 
@@ -62,21 +62,18 @@ ms.locfileid: "67075369"
 
     !["可用性和性能"故障排除选项的屏幕截图](./media/change-analysis/availability-and-performance.png)
 
-1. 选择**应用程序崩溃**。
+1. 选择**应用程序更改**。 不是该功能现也已推出**应用程序崩溃**。
 
-   !["应用程序崩溃"按钮的屏幕截图](./media/change-analysis/application-crashes-tile.png)
+   !["应用程序崩溃"按钮的屏幕截图](./media/change-analysis/application-changes.png)
 
 1. 若要启用更改分析，请选择**立即启用**。
 
-   !["应用程序崩溃"选项的屏幕截图](./media/change-analysis/application-crashes.png)
+   !["应用程序崩溃"选项的屏幕截图](./media/change-analysis/enable-changeanalysis.png)
 
-1. 若要充分利用的全部更改分析功能，启用**更改 Analysis**，**扫描检测代码改动**，并**始终打开**。 再选择“保存”  。
+1. 开启**更改 Analysis** ，然后选择**保存**。
 
     !["启用更改分析"用户界面的屏幕截图](./media/change-analysis/change-analysis-on.png)
 
-    - 启用**更改分析**来检测资源级别的更改。 
-    - 启用**扫描代码更改**若要查看部署文件和站点配置更改。 
-    - 启用**始终打开**优化更改扫描的性能。 但请记住，此设置可能会产生额外的计费费用。
 
 1. 若要访问更改分析，请选择**诊断并解决问题** > **可用性和性能** > **应用程序崩溃**。 你将看到一个图，以及这些更改的详细信息的时间内汇总的更改的类型：
 
@@ -106,7 +103,7 @@ ms.locfileid: "67075369"
         Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
         Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
         ```
-    
+
 1. 注册订阅更改分析资源提供程序。
 
    - 转到**订阅**，并选择你想要更改服务中启用的订阅。 然后选择资源提供程序：
@@ -121,12 +118,12 @@ ms.locfileid: "67075369"
 
         ```PowerShell
         Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-    
+
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
         ```
 
         若要使用 PowerShell 设置隐藏的标记的 web 应用上，运行以下命令：
-    
+
         ```powershell
         $webapp=Get-AzWebApp -Name <name_of_your_webapp>
         $tags = $webapp.Tags

@@ -3,7 +3,7 @@ title: Azure AD 域服务 - 检查托管域的运行状况 | Microsoft Docs
 description: 在 Azure 门户中使用运行状况页检查托管域的运行状况。
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: c3ff0b7daeaef077ea0d83782aeac6cda56fc659
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 38403efd72843e7cd6d1afff5ff65a15af39c107
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246474"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473975"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>检查 Azure AD 域服务托管域的运行状况
 

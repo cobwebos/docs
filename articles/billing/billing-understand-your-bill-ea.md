@@ -1,25 +1,22 @@
 ---
-title: 了解 Azure 企业帐单 |Microsoft Docs
-description: 了解如何阅读并理解 Azure 企业协议的使用情况和帐单
-services: ''
-documentationcenter: ''
+title: 了解 Azure 企业帐单
+description: 了解如何阅读并理解 Azure 企业协议的使用情况和帐单。
 author: adpick
 manager: dougeby
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: be20ad0583558949f65b9706f0a478669360bf3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571210"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490288"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解 Azure 企业协议计费
 
@@ -59,7 +56,7 @@ ms.locfileid: "64571210"
 
 1. 登录到[企业门户](https://ea.azure.com)。
 1. 选择“报告”。 
-1. 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。    
+1. 在选项卡的右上角，将视图从切换**M**到**C**和匹配发票上的期限。  
     ![显示 M 的屏幕截图 + C 选项中使用情况摘要。](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
 1. 总量**总体使用情况**并**Azure Marketplace**应匹配**总金额**发票上。
 1. 若要获取有关费用的更多详细信息，请转到**下载使用情况**。  
@@ -100,7 +97,7 @@ ms.locfileid: "64571210"
 
 1. 登录到[企业门户](https://ea.azure.com)。
 1. 选择“报告”。 
-1. 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。    
+1. 在选项卡的右上角，将视图从切换**M**到**C**和匹配发票上的期限。  
     ![显示 M 的屏幕截图 + C 选项中使用情况摘要。](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
 1. “总用量”应与服务超额发票上的“总应收金额”相匹配。    
 1. 若要获取有关费用的其他信息，请转到“下载使用情况” > “高级报告下载”。   报告不包括的税费或保留项的费用或 marketplace 费用。  
@@ -124,7 +121,7 @@ ms.locfileid: "64571210"
 
 1. 登录到[企业门户](https://ea.azure.com)。
 1. 选择“报告”。 
-1. 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。    
+1. 在选项卡的右上角，将视图从切换**M**到**C**和匹配发票上的期限。  
      ![显示 M 的屏幕截图 + C 选项上使用情况摘要。](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
 1. “Azure 市场”总额应与市场发票上的“总销售额”相匹配。  
 1. 若要获取有关基于用量的费用的其他信息，请转到“下载使用情况”。  在“市场费用”下，选择“下载”。   此报告不包括税额，也不显示一次性采购。  

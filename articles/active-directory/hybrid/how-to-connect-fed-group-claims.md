@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 19a8400a076825f17501fabdb3f38ea05915822e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e00e41a34bb28a2569d5922926a8f6c4fbe4bd57
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138728"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481421"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>使用 Azure Active Directory （公共预览版） 配置应用程序的组声明
 
@@ -137,7 +137,7 @@ Azure Active Directory 可以提供在应用程序中使用的令牌中的用户
 
 3. 设置组名称配置可选声明。
 
-   如果你想向令牌中的组要包含在本地 AD 组属性的可选声明部分中指定的标记类型的可选声明应应用于、 请求的可选声明和所需的任何其他属性的名称。  可以列出多个令牌类型：
+   如果您想在令牌中要包含在本地 AD 组属性的可选声明部分中指定的标记类型的可选声明应应用于、 请求的可选声明和所需的任何其他属性的名称的组。  可以列出多个令牌类型：
 
    - OIDC ID 令牌的 idToken
    - accessToken OAuth/OIDC 访问令牌

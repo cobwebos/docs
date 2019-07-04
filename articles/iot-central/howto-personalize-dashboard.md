@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a1641c4f3ae4eaa175657db8ff4064fa2202aea6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c048ae8c0daba0e467a9243f4dd83f8d95921e10
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053016"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502646"
 ---
 # <a name="create-and-manage-personal-dashboards"></a>创建和管理个人仪表板
 
@@ -38,6 +38,8 @@ ms.locfileid: "67053016"
 ![带有显示的磁贴设置和属性的“仪表板”选项卡](media/howto-personalize-dashboard/personaldashboard.png)
 
 你可以浏览库中其他磁贴类型，若要了解如何进一步自定义你的个人仪表板。
+
+若要了解有关如何在 Azure IoT Central 中使用磁贴的详细信息，请参阅[使用仪表板磁贴](howto-use-tiles.md)。
 
 ## <a name="manage-dashboards"></a>管理仪表板
 

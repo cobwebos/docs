@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 4e62ae47de95f95600faa3dc27f6867b065e117b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 17214bb4904cc540de0a7d6f753b7e70abfa564c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329975"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443645"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -229,7 +229,7 @@ datetime | String | String |  datetime | String
 分区数[基于服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)是一种全球分布式的数据库服务，提供不设限的弹性缩放全球范围内、 丰富查询和自动索引经由与架构无关的数据模型。 若要了解有关 Stream Analytics 的 Azure Cosmos DB 集合选项，请参阅[使用 Azure Cosmos DB 作为输出的 Stream Analytics](stream-analytics-documentdb-output.md)一文。
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)是一种全球分布式的数据库服务，提供不设限的弹性缩放全球范围内、 丰富查询和自动索引经由与架构无关的数据模型。 若要了解有关 Stream Analytics 的 Azure Cosmos DB 容器选项，请参阅[使用 Azure Cosmos DB 作为输出的 Stream Analytics](stream-analytics-documentdb-output.md)一文。
 
 Azure Cosmos DB 输出从 Stream Analytics 目前不在 Azure 中国 21Vianet 和 Azure 德国 (T-systems International) 区域中可用。
 
@@ -247,7 +247,7 @@ Azure Cosmos DB 输出从 Stream Analytics 目前不在 Azure 中国 21Vianet �
 | 帐户 ID | Azure Cosmos DB 帐户的名称或终结点 URI。 |
 | 帐户密钥 | Azure Cosmos DB 帐户的共享访问密钥。 |
 | 数据库 | Azure Cosmos DB 数据库名称。 |
-| 集合名称 | 在 Azure Cosmos DB 集合的名称。 Azure Cosmos DB 自动为 Azure Cosmos DB 中分区数据，缩放基于工作负荷分区无限制的容器是建议的方法。 |
+| 容器名称 | 容器名称，才能使用 Cosmos DB 中必须存在。 示例：  <br /><ul><li> _MyContainer_:必须存在名为"MyContainer"的容器。</li>|
 | 文档 ID |可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。
 
 ## <a name="azure-functions"></a>Azure Functions
@@ -302,10 +302,10 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions �
 | Azure 表存储 | 是 | 任何输出列。  | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 | Azure 服务总线主题 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出主题中的分区数量相同。  |
 | Azure 服务总线队列 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出队列中的分区数量相同。 |
-| Azure Cosmos DB | 是 | 集合名称模式中使用 {partition} 标记。 {Partition} 值基于在查询中的 PARTITION BY 子句。 | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
+| Azure Cosmos DB | 是 | 根据在查询中的 PARTITION BY 子句。 | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 | Azure Functions | 否 | 无 | 不适用。 |
 
-如果输出适配器未分区，则一个输入分区中缺少数据将导致延迟最多可达延迟到达的时间量。 在这种情况下，输出合并到单个写入者，可能会在管道中造成瓶颈。 若要了解有关晚到策略的详细信息，请参阅[Azure Stream Analytics 事件顺序注意事项](stream-analytics-out-of-order-and-late-events.md)。
+此外可以使用控制的输出编写器数`INTO <partition count>`(请参阅[INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) 在查询中，可以帮助实现所需的作业拓扑中的子句。 如果输出适配器未分区，则一个输入分区中缺少数据将导致延迟最多可达延迟到达的时间量。 在这种情况下，输出合并到单个写入者，可能会在管道中造成瓶颈。 若要了解有关晚到策略的详细信息，请参阅[Azure Stream Analytics 事件顺序注意事项](stream-analytics-out-of-order-and-late-events.md)。
 
 ## <a name="output-batch-size"></a>输出批大小
 Azure Stream Analytics 使用可变大小的批处理来处理事件并将写入到输出。 通常 Stream Analytics 引擎不会一次写入一条消息，并使用批处理以提高效率。 如果传入和传出事件的速率较高，Stream Analytics 将使用更大的批次。 输出速率低时，使用较小的批来保证低延迟。

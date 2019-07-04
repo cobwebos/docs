@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 7f9100686eaab8c4c75e3d862026b18b6c46ed09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50db9a588cd953bbd0e912ec942194a8deeffe4c
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203706"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484045"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 
@@ -133,9 +133,9 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 ![HDInsight Hadoop 自定义群集 Bootstrap Azure 资源管理器模板](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>另请参阅
-* [在 HDInsight 中创建 Apache Hadoop 群集][hdinsight-provision-cluster]提供了有关如何使用其他自定义选项创建 HDInsight 群集的说明。
+* [在 HDInsight 中创建 Apache Hadoop 群集][hdinsight-provision-cluster]说明了如何使用其他自定义选项创建 HDInsight 群集。
 * [为 HDInsight 开发脚本操作脚本][hdinsight-write-script]
-* [在 HDInsight 群集上安装并使用 Apache Spark][hdinsight-install-spark]
+* [安装并使用 HDInsight 群集上的 Apache Spark][hdinsight-install-spark]
 * [在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install.md)。
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
@@ -149,9 +149,6 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 ## <a name="appendix-powershell-sample"></a>附录：PowerShell 示例
 
 此 PowerShell 脚本创建一个 HDInsight 群集并自定义 Hive 设置。 请确保为 `$nameToken`、`$httpPassword` 和 `$sshPassword` 输入值。
-
-> [!IMPORTANT]  
-> 在存储帐户上启用了[安全传输](../storage/common/storage-require-secure-transfer.md)时，不会从 [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) 返回 `DefaultStorageAccount` 和 `DefaultStorageContainer` 的值。
 
 > [!WARNING]  
 > 存储帐户类型 `BlobStorage` 不能用于 HDInsight 群集。

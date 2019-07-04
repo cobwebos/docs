@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.openlocfilehash: 569ef6e9f91fdd728c5d230e2a6c46a7b01e5a62
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: af3c4482b1ce9e521d14a0e0c63de40625c25c73
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078815"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461794"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Azure 数据库中的 MySQL 的性能建议
 
 **适用于：** Azure Database for MySQL 5.7
 
 > [!NOTE]
-> 性能建议处于预览状态。 有关性能的建议在 Azure 门户中的支持即将推出，并可能尚不可用你的区域中。
+> 性能建议处于预览状态。
 
 性能建议功能分析数据库以创建自定义的建议以提高性能。 若要生成的建议，分析探讨各种数据库特征包括架构。 启用[Query Store](concepts-query-store.md)以充分利用性能建议功能在服务器上。 如果性能架构为 OFF，启用查询存储启用 performance_schema 和功能所需的性能架构 instruments 的子集。 实现任何性能建议之后, 您应该测试性能以评估这些更改的影响。
 

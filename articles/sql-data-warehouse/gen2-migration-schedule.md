@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 999c75d07ef7e24d4d75587b6b42a4ab1b2192cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3141f3a1d6a9f09261dee4113276af72168e35e8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596115"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444695"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>将数据仓库升级到 Gen2
 
@@ -39,11 +39,11 @@ Microsoft 帮助降低运行数据仓库的入门级的成本。  能够处理�
 | 加拿大东部 |\* |\* |
 | 美国中部 |可用 |2019 年 6 月 1日日 |
 | 中国东部 |\* |\* |
-| 中国东部 2 |\* |仅第 2 代 |
+| 中国东部 2 |\* |仅 Gen2 |
 | 中国北部 |\* |\* |
-| 中国北部 2 |可用 |仅第 2 代 |
+| 中国北部 2 |可用 |仅 Gen2 |
 | 东亚 |可用 |2019 年 6 月 1日日 |
-| 美国东部 |可用 |2019 年 6 月 1日日 |
+| East US |可用 |2019 年 6 月 1日日 |
 | 美国东部 2 |可用 |2019 年 6 月 1日日 |
 | 法国中部 |\* |2019 年 6 月 1日日 |
 | 德国中部 |\* |\* |
@@ -67,7 +67,7 @@ Microsoft 帮助降低运行数据仓库的入门级的成本。  能够处理�
 
 ## <a name="automatic-upgrade-process"></a>自动升级过程
 
-我们会根据上面的可用性图表，为你的 Gen1 实例安排自动升级。 为了避免数据仓库可用性发生任何意外中断，将在维护计划期间安排自动升级。 在正自动升级到 Gen2 的区域，将禁用新建 Gen1 实例的功能。 有关计划的详细信息，请参阅[查看维护计划](viewing-maintenance-schedule.md)
+我们会根据上面的可用性图表，为你的 Gen1 实例安排自动升级。 为了避免数据仓库可用性发生任何意外中断，将在维护计划期间安排自动升级。 在正自动升级到 Gen2 的区域，将禁用新建 Gen1 实例的功能。 自动升级完成后，将弃用 Gen1。 有关计划的详细信息，请参阅[查看维护计划](viewing-maintenance-schedule.md)
 
 重启数据仓库时，升级过程会导致连接性短暂下降（大约 5 分钟）。  重启数据仓库后，它将完全可用。 但是，升级过程继续在后台升级数据文件时，可能会出现性能下降的情况。 性能下降的总时间将根据数据文件的大小而有所不同。
 
@@ -143,7 +143,7 @@ Microsoft 帮助降低运行数据仓库的入门级的成本。  能够处理�
 
 **问：在我的区域升级后，我能够创建新的 Gen1 实例吗？**
 
-- 答：不。 区域升级后，将禁用新 Gen1 实例的创建。
+- 答：否。 区域升级后，将禁用新 Gen1 实例的创建。
 
 ## <a name="next-steps"></a>后续步骤
 

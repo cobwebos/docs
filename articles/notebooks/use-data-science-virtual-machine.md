@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: 0ac50a5f52682c4315b8d08cf5632c4a6fa5242f
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: fe9886429a5e894f40c04b1f65094e412c1dc9e2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357588"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441205"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>使用 Azure 数据科学虚拟机
 
@@ -51,7 +51,7 @@ ms.locfileid: "67357588"
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>从 DSVM 访问 Azure Notebook 文件
 
-文件系统访问是受支持的 DSVM 版本 19.06.15 或更高版本。 若要检查版本，首先连接到你的 DSVM 通过 SSH （IP 地址是在 Azure 门户中提供）。 然后运行以下命令使用你`<ip_address>`: `curl -H Metadata:true "http://<ip_address>/metadata/instance?api-version=2018-10-01"`。 "版本"的输出中显示的版本号。
+文件系统访问是受支持的 DSVM 版本 19.06.15 或更高版本。 若要检查版本，第一次连接到你的 DSVM 通过 ssh 连接，然后运行以下命令： `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` （您必须使用的确切的 IP 地址，如下所示）。 "版本"的输出中显示的版本号。
 
 若要保留的文件路径的奇偶校验**免费计算**层中，您将能够在 DSVM 上一次只能打开一个项目。 若要打开一个新的项目，则必须关闭打开的项目第一次。
 

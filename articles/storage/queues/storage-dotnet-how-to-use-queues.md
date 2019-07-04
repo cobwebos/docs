@@ -10,12 +10,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 44f1953d01f827db1cbb65f9029c62569425745e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59995715ab42b4682befa7d1512b14427740dea2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077046"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446856"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>通过 .NET 开始使用 Azure 队列存储
 
@@ -82,7 +82,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 > [!NOTE]
 > 存储客户端库包还包括在[Azure SDK for.NET](https://azure.microsoft.com/downloads/)。 但是，我们建议您还通过 NuGet 以确保始终获得最新版本安装存储客户端库。
 >
-> 用于.NET 的存储客户端库中的 ODataLib 依赖项通过 NuGet (不是从 WCF 数据服务） 上提供的 ODataLib 包解析。 ODataLib 库可直接下载或者通过 NuGet 由代码项目引用。 使用存储客户端库的特定的 ODataLib 包为[OData](http://nuget.org/packages/Microsoft.Data.OData/)， [Edm](http://nuget.org/packages/Microsoft.Data.Edm/)，并[空间](http://nuget.org/packages/System.Spatial/)。 尽管这些库由 Azure 表存储类，它们是必需的依赖项，使用存储客户端库进行编程。
+> 用于.NET 的存储客户端库中的 ODataLib 依赖项通过 NuGet (不是从 WCF 数据服务） 上提供的 ODataLib 包解析。 ODataLib 库可直接下载或者通过 NuGet 由代码项目引用。 使用存储客户端库的特定的 ODataLib 包为[OData](https://nuget.org/packages/Microsoft.Data.OData/)， [Edm](https://nuget.org/packages/Microsoft.Data.Edm/)，并[空间](https://nuget.org/packages/System.Spatial/)。 尽管这些库由 Azure 表存储类，它们是必需的依赖项，使用存储客户端库进行编程。
 
 ### <a name="determine-your-target-environment"></a>确定目标环境
 

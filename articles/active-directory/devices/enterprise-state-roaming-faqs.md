@@ -2,27 +2,21 @@
 title: 设置和数据漫游常见问题 | Microsoft Docs
 description: 就 IT 管理员可能会遇到的一些设置和应用数据同步问题提供解答。
 services: active-directory
-keywords: 企业状态漫游设置, Windows 云, 企业状态漫游的常见问题解答
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a77cf89b7697b7b6b08dead34339ae50dbba8518
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f9270aff6bc2aab7e210716ffe3e21efb07b8ed
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60296310"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481961"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 本文将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。

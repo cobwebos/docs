@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9bb33e7d2bb80bcb19087dca6bc21bafc791af2a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: a745fefa5ceb0f81cf8d66e7af9e308c0ecb40b9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303918"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449856"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -183,6 +183,12 @@ Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重
 - 对于正在进行重复数据删除优化作业，将获取云分层与日期策略延迟由重复数据删除[MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps)设置，如果没有已分层文件。 
     - 示例：如果 MinimumFileAgeDays 设置为 7 天，云分层日期策略为 30 天，策略将文件分层 37 天后的日期。
     - 请注意:一旦文件分层的 Azure 文件同步时，重复数据删除优化作业将跳过该文件。
+- 如果安装了 Azure 文件同步代理运行 Windows Server 2012 R2 的服务器升级到 Windows Server 2016 或 Windows Server 2019，必须执行以下步骤来支持重复数据删除和云分层在同一个卷上：  
+    - 卸载 Windows Server 2012 R2 的 Azure 文件同步代理并重新启动服务器。
+    - 下载适用于新的服务器操作系统版本 （Windows Server 2016 或 Windows Server 2019） 的 Azure 文件同步代理。
+    - 安装 Azure 文件同步代理并重新启动服务器。  
+    
+    请注意:卸载并重新安装代理时，将保留在服务器上的 Azure 文件同步配置设置。
 
 ### <a name="distributed-file-system-dfs"></a>分布式文件系统 (DFS)
 Azure 文件同步支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进行互操作。
@@ -255,7 +261,7 @@ Azure 文件同步仅在以下区域中可用：
 | 印度中部 | 浦那 |
 | 美国中部 | 爱荷华州 |
 | 东亚 | 中国香港特别行政区 |
-| 美国东部 | 弗吉尼亚州 |
+| East US | 弗吉尼亚州 |
 | 美国东部 2 | 弗吉尼亚州 |
 | 韩国中部| 首尔 |
 | 韩国南部| 釜山 |
@@ -296,7 +302,7 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 | 印度中部       | 印度南部        |
 | 美国中部          | 美国东部 2          |
 | 东亚           | 东南亚     |
-| 美国东部             | 美国西部            |
+| East US             | 美国西部            |
 | 美国东部 2           | 美国中部         |
 | 日本东部          | 日本西部         |
 | 日本西部          | 日本东部         |
@@ -314,7 +320,7 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 | 美国政府弗吉尼亚州      | 美国德克萨斯州政府       |
 | 西欧         | 北欧       |
 | 美国中西部     | 美国西部 2          |
-| 美国西部             | 美国东部            |
+| 美国西部             | East US            |
 | 美国西部 2           | 美国中西部    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略

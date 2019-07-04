@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 4501a343b406f07b4775f3ad0e84d71825412a4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2b44b89443b5e7e82d303e1447533546d27ec9a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752740"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445731"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 应用程序产品/服务发布指南
 
@@ -94,7 +94,7 @@ SaaS 应用程序的技术要求非常简单。 发布者只需与要发布的 A
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>使用 Azure Active Directory 启用试用  
 
-Microsoft 通过 Azure AD 对所有 市场用户进行身份验证，当已验证的用户单击市场中的试用商品并重定向到试用环境时，可将用户直接预配到一个试用版中，而无需执行其他登录步骤。 身份验证期间应用从 Azure AD 接收的令牌包含有用的客户信息，可使用这些信息在应用内创建用户帐户，这样可以自动获得预配体验并提高转换率。 有关令牌的详细信息，请参阅[示例令牌](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
+Microsoft 与 Azure AD 的所有 Marketplace 用户进行身份都验证以便当身份验证的用户单击 Marketplace 中试用产品，并将重定向到试用环境，您可以直接预配用户到试用而无需其他登录步骤。 身份验证期间应用从 Azure AD 接收的令牌包含有用的客户信息，可使用这些信息在应用内创建用户帐户，这样可以自动获得预配体验并提高转换率。 有关令牌的详细信息，请参阅[示例令牌](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
 
 使用 Azure AD 为应用或试用启用一键式身份验证具有以下影响：  
 * 简化从市场到试用的客户体验。  
@@ -104,7 +104,7 @@ Microsoft 通过 Azure AD 对所有 市场用户进行身份验证，当已验�
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>为市场认证 Azure AD 集成  
 
-可以采用多种其他的方式来认证 Azure AD 集成，具体取决于应用程序是单租户还是多租户，以及你是尚未使用过 Azure AD 联合单一登录 (SSO) 还是已经启用此功能。  
+多种不同的方式，具体取决于你的应用程序是单租户和多租户，以证明 Azure AD 集成，无论您是刚到 Azure AD 联合单一登录 (SSO)，或已支持它。  
 
 **对于多租户应用程序：**  
 

@@ -3,18 +3,18 @@ title: 了解如何在 Azure 自动化中载入更新管理、更改跟踪和清
 description: 了解如何载入包含属于 Azure 自动化的一部分的更新管理、更改跟踪和清单解决方案的 Azure 虚拟机
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: a1bb5534d2f98a4e5143038ab1d5fbbcc76184fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 114ddf8f545f3f8d1f6c1a80725668d7875774f8
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133188"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476642"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
@@ -65,7 +65,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 导航到你的自动化帐户并在“常规”下选择“保存的搜索”。   可以在下表中看到这些解决方案使用的两个已保存搜索：
 
-|Name     |类别  |别名  |
+|Name     |Category  |别名  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新        | Updates__MicrosoftDefaultComputerGroup         |

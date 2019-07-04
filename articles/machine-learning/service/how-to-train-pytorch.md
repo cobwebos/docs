@@ -11,16 +11,16 @@ author: mx-iao
 ms.reviewer: peterlu
 ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc80fcde8de3fb2d6dd6f59804f6019b76aa8727
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 8def58eb003fcc817c21151416744cf391b5f38f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295601"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443932"
 ---
 # <a name="train-and-register-pytorch-models-at-scale-with-azure-machine-learning-service"></a>训练和大规模 PyTorch 模型注册到 Azure 机器学习服务
 
-本文介绍如何训练和注册使用 Azure 机器学习服务的 PyTorch 模型。 它基于[PyTorch 的传输学习教程](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)生成深度神经网络 (DNN) 分类器 ants 和活跃蜂的图像。
+本文介绍如何训练和注册使用 Azure 机器学习服务的 PyTorch 模型。 它基于[PyTorch 的传输学习教程](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)生成深度神经网络 (DNN) 分类器 chickens 和 turkeys 的图像。
 
 [PyTorch](https://pytorch.org/)是一种开放源代码计算框架通常用于创建深度神经网络 (DNN)。 使用 Azure 机器学习服务时，你可以快速横向扩展使用灵活的云计算资源的开放源代码培训作业。 您还可以跟踪训练运行、 版本模型部署模型，以及更多。
 
@@ -75,19 +75,19 @@ ws = Workspace.from_config()
 
 ### <a name="create-an-experiment"></a>创建试验
 
-创建试验和用于保存训练脚本的文件夹。 在此示例中，创建名为"pytorch hymenoptera"的试验。
+创建试验和用于保存训练脚本的文件夹。 在此示例中，创建名为"pytorch 鸟"的试验。
 
 ```Python
-project_folder = './pytorch-hymenoptera'
+project_folder = './pytorch-birds'
 os.makedirs(project_folder, exist_ok=True)
 
-experiment_name = 'pytorch-hymenoptera'
+experiment_name = 'pytorch-birds'
 experiment = Experiment(ws, name=experiment_name)
 ```
 
 ### <a name="get-the-data"></a>获取数据
 
-此数据集包含 120 个训练图像每个 ants 和活跃蜂，与每个类 75 验证映像。 Hymenoptera 是包括 ants 和活跃蜂的虫顺序。 下载并提取数据集作为一部分我们训练脚本`pytorch_train.py`。
+此数据集包含 120 个训练图像每个 turkeys 和 chickens，与每个类的 100 个验证映像。 我们将下载并提取数据集作为一部分我们训练脚本`pytorch_train.py`。 映像是的子集[打开的图像 v5 数据集](https://storage.googleapis.com/openimages/web/index.html)。
 
 ### <a name="prepare-training-scripts"></a>准备训练脚本
 

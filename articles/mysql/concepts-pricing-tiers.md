@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 726da603b5f583c85f4b7c4262c6e97f565a3678
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.date: 06/27/2019
+ms.openlocfilehash: aab3aaafd410c4f85eba7a246d0922128908bf93
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339933"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445436"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 
@@ -62,12 +62,12 @@ ms.locfileid: "67339933"
 |              | **常规用途** | **内存优化** |
 |:-------------|:--------------------|:---------------------|
 | 存储类型 | Azure 高级存储 | Azure 高级存储 |
-| 存储大小 | 32 GB 到 16 TB| 32 到 16 TB |
+| 存储大小 | 32 GB 到 16 TB| 32 GB 到 16 TB |
 | 存储增量大小 | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS| 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
 
 > [!IMPORTANT]
-> 较大的存储当前处于公共预览版形式在以下区域：美国东部、 美国东部 2、 美国中部、 美国西部、 北欧、 西欧、 东南亚、 日本东部、 韩国中部、 澳大利亚东部。
+> 较大的存储当前处于公共预览版形式在以下区域：美国东部、 美国东部 2、 美国中部、 美国西部、 欧洲北部、 欧洲西部、 英国南部、 英国西部、 亚洲东南部、 东亚、 日本东部、 日本西部、 韩国中部、 韩国南部、 澳大利亚东部、 澳大利亚东南部。
 >
 > 较大的存储预览版目前不支持：
 >

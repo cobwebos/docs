@@ -4,18 +4,18 @@ description: 了解如何配置 Azure 函数绑定
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 8372becd614e35bead9e98e405e2694f3f16db4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bced6dc71063b6be68d739ef67fb5ec46c3d1be6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472330"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480439"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions 触发器和绑定示例
 

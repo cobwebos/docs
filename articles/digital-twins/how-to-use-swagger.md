@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/29/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: c402b82b91b02f8d9619c851d09c689fd103c9fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b8c2b50e00c8e9727b09a454504d214a3060fe4
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116437"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502690"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure 数字孪生 Swagger 参考文档
 
@@ -92,14 +92,12 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 
 ## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 授权
 
-若要详细了解如何以交互方式测试受 OAuth 2.0 保护的请求，请参阅[官方文档](https://swagger.io/docs/specification/authentication/oauth2/)。
-
 > [!NOTE]
-> 创建 Azure 数字孪生资源的用户主体将具有空间管理员角色分配，并将能够创建其他用户的其他角色分配。
+> * 创建 Azure 数字孪生资源的用户主体将具有空间管理员角色分配，并将能够创建其他用户的其他角色分配。 此类用户以及他们角色在有权调用 Api。
 
-1. 按照中的步骤[本快速入门](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)创建 Azure AD 应用程序类型的***Web 应用 / API***。 或者，可以重复使用现有的应用注册。
+1. 按照中的步骤[本快速入门](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)或[注册 Azure 数字孪生应用程序使用 Azure Active Directory 旧版](./how-to-use-legacy-aad.md)创建和配置 Azure AD 应用程序。 或者，可以重复使用现有的应用注册。
 
-2. 将以下回复 url 添加到应用程序注册：
+1. 将以下回复 url 添加到应用程序注册：
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
@@ -108,29 +106,23 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | 你在门户中找到的管理 REST API 文档 URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-3. 授予应用访问 Azure 数字孪生的权限。 在“所需权限”下，输入 `Azure Digital Twins` 并选择“委托的权限”   。 然后选择“授予权限”。 
-
-    ![Azure AD 应用注册添加 api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
-
-4. 配置为允许 OAuth 2.0 隐式流的应用程序清单。 选择**清单**打开您的应用程序的应用程序清单。 将“oauth2AllowImplicitFlow”设置为 `true`  。
-
-    ![Azure AD 隐式流](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
-
-5. 复制 Azure AD 应用的 ID。
+1. 复制 Azure AD 应用的 ID。
 
 后完成的 Azure Active Directory 注册：
 
-6. 选择**Authorize** swagger 页上的按钮。
+1. 选择**Authorize** swagger 页上的按钮。
 
     [![选择了在 Swagger 授权按钮](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-7. 粘贴到的应用程序 ID **client_id**字段。
+1. 粘贴到的应用程序 ID **client_id**字段。
 
     [![Swagger client_id 字段](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-8. 您然后将定向到以下成功模式。
+1. 您然后将定向到以下成功模式。
 
-    [![Swagger 重定向模式](media/how-to-use-swagger/swagger_auth_redirect.PNG)](media/how-to-use-swagger/swagger_auth_redirect.PNG#lightbox)
+    [![Swagger 重定向模式](media/how-to-use-swagger/swagger_auth_redirect.png)](media/how-to-use-swagger/swagger_auth_redirect.png#lightbox)
+
+若要详细了解如何以交互方式测试受 OAuth 2.0 保护的请求，请参阅[官方文档](https://swagger.io/docs/specification/authentication/oauth2/)。
 
 ## <a name="next-steps"></a>后续步骤
 

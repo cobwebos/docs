@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: b4c22caae86e20b8379db2b7feffb1ca82001239
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a879fa17244977277dab3e2e66c5888a44759764
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753151"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444032"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>创建和访问 Azure 机器学习中的数据集 （预览）
 
@@ -150,5 +150,4 @@ dataset = workspace.datasets['dataset_crime']
 ## <a name="next-steps"></a>后续步骤
 
 * [探索和准备数据集](how-to-explore-prepare-data.md)。
-* [管理数据集定义的生命周期](how-to-manage-dataset-definitions.md)。
 * 使用数据集的示例，请参阅[示例笔记本](https://aka.ms/dataset-tutorial)。

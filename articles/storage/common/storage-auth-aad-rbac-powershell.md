@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 06/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e850b915cd01b6bacd70d6df7752eeb83f7101d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf888b72cca806822ca7a37542e71a5be0c8d5c3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153855"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443726"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-powershell"></a>在 PowerShell 中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>确定资源范围 
+## <a name="determine-resource-scope"></a>确定资源范围
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
@@ -54,9 +54,9 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-user"></a>向用户分配 RBAC 角色
+## <a name="assign-an-rbac-role-to-a-security-principal"></a>将 RBAC 角色分配给安全主体
 
-若要将 RBAC 角色分配给用户，请使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 命令。 命令的格式因分配范围而异。 以下示例演示如何在不同的范围为用户分配角色。
+若要将 RBAC 角色分配给安全主体，请使用[新建 AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)命令。 命令的格式因分配范围而异。 以下示例演示如何将角色分配给不同的范围内的用户，但可以使用相同的命令以将角色分配给任何安全主体。
 
 ### <a name="container-scope"></a>容器范围
 

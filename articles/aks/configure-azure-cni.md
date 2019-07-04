@@ -7,20 +7,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 7fc634b064a2b5ac844e60341fedb94c14a62749
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e541834b31a762c65eabf07072d9b9f7333923e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061081"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441977"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
-默认情况下，AKS 群集使用 [kubenet][kubenet]，系统会为你创建 Azure 虚拟网络和子网。 使用 *kubenet*，节点从虚拟网络子网获取 IP 地址。 然后会在节点上配置网络地址转换 (NAT)，并且 Pod 将接收“隐藏”在节点 IP 背后的 IP 地址。 这种方法减少了需要在网络空间中保留供 Pod 使用的 IP 地址数量。
+默认情况下，AKS 群集使用[kubenet][kubenet]，并为您创建的虚拟网络和子网。 使用 *kubenet*，节点从虚拟网络子网获取 IP 地址。 然后会在节点上配置网络地址转换 (NAT)，并且 Pod 将接收“隐藏”在节点 IP 背后的 IP 地址。 这种方法减少了需要在网络空间中保留供 Pod 使用的 IP 地址数量。
 
-借助 [Azure 容器网络接口 (CNI)][cni-networking]，每个 Pod 都可以从子网获得 IP 地址，并且可供直接访问。 这些 IP 地址在网络空间中必须唯一，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 使用此方法需要经过更详细的规划，并且经常会耗尽 IP 地址，或者在应用程序需求增长时需要在更大的子网中重建群集。
+与[Azure 容器网络接口 (CNI)][cni-networking]，每个 pod 从子网获取 IP 地址，并且可以直接访问。 这些 IP 地址在网络空间中必须唯一，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 使用此方法需要经过更详细的规划，并且经常会耗尽 IP 地址，或者在应用程序需求增长时需要在更大的子网中重建群集。
 
-本文展示了如何使用 *Azure CNI* 网络来创建和使用 AKS 群集的虚拟网络子网。 有关网络选项和注意事项的详细信息，请参阅 [Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
+本文展示了如何使用 *Azure CNI* 网络来创建和使用 AKS 群集的虚拟网络子网。 网络选项及注意事项的详细信息，请参阅[Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -79,7 +79,7 @@ AKS 群集中每个节点的 pod 数最大为 250 个字符。 每个节点的�
 > [!NOTE]
 > AKS 服务严格强制执行上表中的最小值。 您可以设置 maxPods 值低于最小值显示为这样做可以防止群集启动。
 
-* **Azure CLI**：使用 [az aks create][az-aks-create] 命令部署群集时，指定 `--max-pods` 参数。 最大值为 250。
+* **Azure CLI**：指定`--max-pods`参数在部署使用的群集时[az aks 创建][az-aks-create]命令。 最大值为 250。
 * **资源管理器模板**：使用资源管理器模板部署群集时，在 [ManagedClusterAgentPoolProfile] 对象中指定 `maxPods` 属性。 最大值为 250。
 * **Azure 门户**：使用 Azure 门户部署群集时，不能更改每个节点的最大 Pod 数。 使用 Azure 门户部署时，Azure CNI 网络群集中每个节点的 Pod 数限制为 30 个。
 
@@ -95,14 +95,14 @@ AKS 群集中每个节点的 pod 数最大为 250 个字符。 每个节点的�
 
 **子网**：要将群集部署到的虚拟网络中的子网。 若要在虚拟网络中为群集创建新的子网，请选择“新建”，并按照“创建子网”部分中的步骤操作   。 对于混合连接，地址范围不应与环境中的其他任何虚拟网络重叠。
 
-**Kubernetes 服务地址范围**：这是 Kubernetes 分配给群集中的内部[服务][services]的虚拟 IP 的集合。 可以使用任何专用地址范围，只要其符合以下要求即可：
+**Kubernetes 服务地址范围**：这是 Kubernetes 将分配给内部的虚拟 Ip 套[services][services]群集中。 可以使用任何专用地址范围，只要其符合以下要求即可：
 
 * 不得在群集的虚拟网络 IP 地址范围内
 * 不得与群集虚拟网络对等互连的任何其他虚拟网络重叠
 * 不得与任何本地 IP 重叠
 * 不能在范围内`169.254.0.0/16`， `172.30.0.0/16`， `172.31.0.0/16`，或 `192.0.2.0/24`
 
-虽然从技术上来说可以在群集所在的虚拟网络中指定一个服务地址范围，但建议不要这样做。 如果使用重叠的 IP 范围，则可能导致不可预测的行为。 有关详细信息，请参阅本文中的[常见问题解答](#frequently-asked-questions)部分。 有关 Kubernetes 服务的详细信息，请参阅 Kubernetes 文档中的[服务][services]。
+虽然从技术上来说可以在群集所在的虚拟网络中指定一个服务地址范围，但建议不要这样做。 如果使用重叠的 IP 范围，则可能导致不可预测的行为。 有关详细信息，请参阅本文中的[常见问题解答](#frequently-asked-questions)部分。 Kubernetes 服务的详细信息，请参阅[Services][services] Kubernetes 文档中。
 
 **Kubernetes DNS 服务 IP 地址**：群集的 DNS 服务的 IP 地址。 此地址必须在 Kubernetes 服务地址范围内。  请勿使用地址范围内的第一个 IP 地址，例如 1。 子网范围内的第一个地址用于 kubernetes.default.svc.cluster.local 地址  。
 
@@ -123,7 +123,7 @@ $ az network vnet subnet list \
 /subscriptions/<guid>/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
 ```
 
-使用带有 `--network-plugin azure` 参数的 [az aks create][az-aks-create] 命令创建具有高级网络的群集。 使用上一步中收集的子网 ID 更新 `--vnet-subnet-id` 值：
+使用[az aks 创建][az-aks-create]命令与`--network-plugin azure`参数，以创建具有高级网络的群集。 使用上一步中收集的子网 ID 更新 `--vnet-subnet-id` 值：
 
 ```azurecli-interactive
 az aks create \
@@ -149,11 +149,11 @@ az aks create \
 
 * 是否可以在群集子网中部署 VM？ 
 
-  不。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一虚拟网络中，但必须部署在不同的子网中。
+  否。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一虚拟网络中，但必须部署在不同的子网中。
 
 * *是否可以配置基于 Pod 的网络策略？*
 
-  是的 Kubernetes 网络策略是在 AKS 中可用。 若要开始使用，请参阅[在 AKS 中使用网络策略保护 Pod 之间的流量][network-policy]。
+  是的 Kubernetes 网络策略是在 AKS 中可用。 若要开始，请参阅[保护在 AKS 中使用网络策略的 pod 之间的流量][network-policy]。
 
 * 可部署到节点的 Pod 数上限是否可配置？ 
 
@@ -176,17 +176,17 @@ az aks create \
 - [将静态 IP 地址用于 Azure Kubernetes 服务 (AKS) 负载均衡器](static-ip.md)
 - [使用包含 Azure 容器服务 (AKS) 的内部负载均衡器](internal-lb.md)
 
-- [使用外部网络连接创建基本入口控制器][aks-ingress-basic]
-- [启用 HTTP 应用程序路由附加产品][aks-http-app-routing]
-- [创建使用内部、专用网络和 IP 地址的入口控制器][aks-ingress-internal]
-- [使用动态公共 IP 创建入口控制器并配置 Let 's Encrypt 以自动生成 TLS 证书][aks-ingress-tls]
-- [使用静态公共 IP 创建入口控制器并配置 Let 's Encrypt 以自动生成 TLS 证书][aks-ingress-static-tls]
+- [创建使用外部网络连接的基本入口控制器][aks-ingress-basic]
+- [启用 HTTP 应用程序路由外接程序][aks-http-app-routing]
+- [创建入口控制器使用内部、 专用网络和 IP 地址][aks-ingress-internal]
+- [使用动态公共 IP 创建入口控制器和配置 let 's Encrypt 自动生成的 TLS 证书][aks-ingress-tls]
+- [具有静态公共 IP 创建入口控制器和配置 let 's Encrypt 自动生成的 TLS 证书][aks-ingress-static-tls]
 
 ### <a name="aks-engine"></a>AKS 引擎
 
-[Azure Kubernetes 服务引擎（AKS 引擎）][aks-engine]是一个开源项目，它能够生成 Azure 资源管理器模板用于在 Azure 上部署 Kubernetes 群集。
+[Azure Kubernetes 服务 （AKS 引擎） 引擎][aks-engine]是一个开放源代码项目，生成可用于部署 Azure 上的 Kubernetes 群集的 Azure 资源管理器模板。
 
-使用 AKS 引擎创建的 Kubernetes 群集支持 [kubenet][kubenet] 和 [Azure CNI][cni-networking] 插件。 因此，AKS 引擎同时支持这两种网络方案。
+使用 AKS 引擎创建的 Kubernetes 群集支持这两个[kubenet][kubenet] and [Azure CNI][cni-networking]插件。 因此，AKS 引擎同时支持这两种网络方案。
 
 <!-- IMAGES -->
 [advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png
@@ -211,3 +211,4 @@ az aks create \
 [aks-ingress-internal]: ingress-internal-ip.md
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[network-comparisons]: concepts-network.md#compare-network-models

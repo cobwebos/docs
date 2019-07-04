@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 06/13/2019
-ms.openlocfilehash: 2ea1d116de2c435e873c653bbfa0571377c4f5ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/01/2019
+ms.openlocfilehash: 5188862c50895c8e3f1bdecb4e08d39409bb5f9e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067059"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491655"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
 
@@ -143,6 +143,7 @@ ms.locfileid: "67067059"
 * 除了 nvarchar （max），外部表定义中不支持 LOB 类型 （包括空间类型）。 一种解决方法是，可以在远程数据库上创建将 LOB 类型强制转换为 nvarchar(max) 的视图，通过该视图（而不是基表）定义外部表，然后在查询中将其强制转换回原始 LOB 类型。
 * 结果集中的 nvarchar(max) 数据类型列禁用弹性查询实现中使用的高级批处理技术，并且在大量非聚合数据正在作为查询的结果进行传输的非规范用例中可能会影响一个数量级甚至两个数量级的查询性能。
 * 当前不支持外部表上的列统计信息。 支持表统计信息，但需要手动创建。
+* 弹性查询仅适用于 Azure SQL 数据库。 不能用于查询的本地 SQL Server 或在 VM 中的 SQL Server 使用它。
 
 ## <a name="feedback"></a>反馈
 

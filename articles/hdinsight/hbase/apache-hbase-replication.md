@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38d3c61acee9dca18ab1f863d878e02f7437a600
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707973"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433723"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -21,7 +21,7 @@ ms.locfileid: "64707973"
 
 群集复制使用源推送方法。 HBase 群集可以是一个源或一个目标，也可以同时充当这两个角色。 复制是异步的。 复制的目标是保持最终一致性。 在启用复制的情况下，当源接收到对列系列的编辑时，该编辑将传播到所有目标群集。 当数据从一个群集复制到另一个群集，会跟踪源群集和所有已使用数据的群集，防止复制循环。
 
-本教程介绍如何设置源-目标复制。 对于其他群集拓扑，请参阅 [Apache HBase 参考指南](https://hbase.apache.org/book.html#_cluster_replication)。
+在本文中，您将源-目标复制设置。 对于其他群集拓扑，请参阅 [Apache HBase 参考指南](https://hbase.apache.org/book.html#_cluster_replication)。
 
 下面是单个虚拟网络的 HBase 复制用例：
 
@@ -39,7 +39,7 @@ ms.locfileid: "64707973"
 可以使用 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) 中的[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)脚本复制群集。
 
 ## <a name="prerequisites"></a>必备组件
-在开始学习本教程之前，必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+开始阅读本文之前，必须具有 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="set-up-the-environments"></a>设置环境
 
@@ -85,7 +85,7 @@ ms.locfileid: "64707973"
 
 | 属性 | 值 |
 |----------|-------|
-| Location | 美国东部 |
+| Location | East US |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
 | 地址空间前缀 | 10.2.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -301,7 +301,7 @@ sudo service bind9 status
 
 必需参数：
 
-|Name|描述|
+|名称|描述|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -310,7 +310,7 @@ sudo service bind9 status
 
 可选参数：
 
-|Name|描述|
+|名称|描述|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
@@ -396,7 +396,7 @@ sudo service bind9 status
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何在一个虚拟网络内部或者在两个虚拟网络之间设置 Apache HBase 复制。 若要了解有关 HDInsight 和 Apache HBase 的详细信息，请参阅以下文章：
+在本文中，您学习了如何设置虚拟网络内部或者在两个虚拟网络之间的 Apache HBase 复制。 若要了解有关 HDInsight 和 Apache HBase 的详细信息，请参阅以下文章：
 
 * [HDInsight 中的 Apache HBase 入门](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight Apache HBase 概述](./apache-hbase-overview.md)

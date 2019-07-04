@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 1f808161087dff614ef83aacc606501bce96d3eb
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 039b1628571b786a4997c08f96cc9aa0f347c7f7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155129"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446699"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -147,7 +147,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 - 使用与虚拟机[加速网络](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)以提高网络性能。
 - 对于某些 Linux distrubutions，请考虑启用[TRIM/UNMAP 支持](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)。
 - 安装[Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html)上单独的虚拟机。
-- Linux 上，巨页未默认情况下启用。 请考虑启用巨页并设置`use_large_pages = ONLY `上 Oracle DB。 这可能有助于提高性能。 可在[此处](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到更多信息。
+- Linux 上，巨页未默认情况下启用。 请考虑启用巨页并设置`use_large_pages = ONLY`上 Oracle DB。 这可能有助于提高性能。 可在[此处](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到更多信息。
 
 ### <a name="disk-types-and-configurations"></a>磁盘类型和配置
 

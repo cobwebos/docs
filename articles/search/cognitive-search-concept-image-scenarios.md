@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ca9b3607041f75b1c866aa2813308312ad5d1017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bea47467d141869b1a668668bc57451a882a54b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023747"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448450"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>如何处理和提取认知搜索方案中的图像中的信息
 
@@ -30,7 +30,7 @@ ms.locfileid: "65023747"
 
 在文档破解过程中，可以使用新的一组索引器配置参数来处理图像文件或嵌入文件中的图像。 这些参数用于将图像规范化，以便进行进一步的下游处理。 规范化图像可以使图像更统一。 可以根据最大高度和宽度来重设大型图像的大小，使之可用。 对于提供方向元数据的图像，可以调整图像旋转，使之适合垂直加载。 元数据调整项在为每个图像创建的复杂类型中捕获。 
 
-无法关闭图像规范化功能。 循环访问图像的技术需要规范化的图像。
+无法关闭图像规范化功能。 循环访问图像的技术需要规范化的图像。 启用映像的索引器上的标准化要求方面的技能将附加到该索引器。
 
 | 配置参数 | 描述 |
 |--------------------|-------------|

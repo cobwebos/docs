@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: monhaber
-ms.openlocfilehash: d42b929807bf67b73d0587232608efc0cea6d717
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1737856067b2490db4a993b4383b320cb13a7774
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752573"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551774"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender 高级威胁防护与 Azure 安全中心
 
@@ -71,7 +71,7 @@ Azure 安全中心通过与 [Windows Defender 高级威胁防护](https://www.mi
 
 ## <a name="enable-windows-defender-atp-integration"></a>启用 Windows Defender ATP 集成
 
-若要查看是否启用了 Windows Defender ATP 集成，请选择“安全中心” > “安全策略” > “订阅” > “编辑设置”。    
+若要查看如果启用了 Windows Defender ATP 集成，请选择**安全中心** > **定价和设置**> 单击你的订阅。
 
   ![Azure 安全中心策略管理](media/security-center-wdatp/policy-management.png)
 

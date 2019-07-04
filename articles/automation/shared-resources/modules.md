@@ -4,17 +4,17 @@ description: 本文介绍如何在 Azure 自动化中管理模块。
 services: automation
 ms.service: automation
 ms.subservice: shared-resources
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 54ebe7df9523a863ae14bc55c6ae4c9635468755
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 69817d1412aa13d0e7983aa3ad27c15e59185432
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063470"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478176"
 ---
 # <a name="manage-modules-in-azure-automation"></a>在 Azure 自动化中管理模块
 
@@ -71,7 +71,7 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 
 下面是导入到每个自动化帐户的内部 `Orchestrator.AssetManagement.Cmdlets` 模块中的 cmdlet 列表。 可在 Runbook 和 DSC 配置中访问这些 cmdlet，使用它们可与自动化帐户中的资产进行交互。 此外，使用内部 cmdlet 还可以从加密的“变量”值、“凭据”和加密的“连接”字段中检索机密。    Azure PowerShell cmdlet 无法检索这些机密。 无需隐式连接到 Azure 即可使用这些 cmdlet。 如果需要使用某个连接（例如运行方式帐户）在 Azure 中进行身份验证，则这些内部 cmdlet 就非常有利。
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |

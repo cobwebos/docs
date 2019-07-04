@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 9ec48c8ed924293a5ffea903fe03a9830dcd1184
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: d425fc3e037b43321a278fb16781e86dfafef15c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329421"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441531"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>预览版-对 API 服务器使用的安全访问授权所需的 IP 地址范围中 Azure Kubernetes 服务 (AKS)
 
@@ -30,7 +30,7 @@ ms.locfileid: "67329421"
 
 API 服务器经过授权的 IP 范围只能用于新创建的 AKS 群集。 本文介绍如何创建 AKS 群集使用 Azure CLI。
 
-需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行  `az --version` 即可查找版本。 如果你需要安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
@@ -269,5 +269,5 @@ az aks update \
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[az-extension-list]: /cli/azure/extension#az-extension-list
+[az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update

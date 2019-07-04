@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5955b21ae405f15960974fcbc81b8383f3322509
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60308701"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485706"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>为 Azure 搜索中的查询和索引工作负荷缩放分区与副本
 [选择定价层](search-sku-tier.md)并[预配搜索服务](search-create-service-portal.md)后，下一步是有选择性地增加服务使用的副本或分区数目。 每一层提供固定数量的计费单位。 本文介绍如何通过分配这些单位来实现最佳配置，根据查询执行、索引和存储的要求做出平衡。
@@ -47,6 +47,7 @@ ms.locfileid: "60308701"
 一般而言，搜索应用程序所需的副本数多过分区数，尤其是在服务操作偏向于查询工作负荷的情况下。 [高可用性](#HA)部分将解释原因。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，并选择搜索服务。
+
 2. 在“设置”中，打开“规模”页以修改副本和分区。   
 
    以下屏幕截图显示了预配有一个副本和分区的标准服务。 底部的公式指示正在使用多少个搜索单位 (1)。 如果单位价格为 $100（非实际价格），则运行此服务的每月成本平均为 $100。
@@ -108,6 +109,7 @@ Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请�
 针对高可用性的一般建议是：
 
 * 对于只读工作负荷（查询），需要有两个副本才能实现高可用性
+
 * 对于读/写工作负荷（查询以及添加、更新或删除单个文档时的索引编制），需有三个或更多个副本才能实现高可用性
 
 Azure 搜索的服务级别协议 (SLA) 针对查询操作，以及由文档添加、更新或删除操作构成的索引更新。

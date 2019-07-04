@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: a82afe6f5299609fd6dd57a54f04f49fad5d2268
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.date: 06/26/2019
+ms.openlocfilehash: 86750cea5e7f0d4726f3e0e9a03795ef2a602d8b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357642"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443845"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>中的审核日志 Azure Database for MySQL
 
@@ -55,7 +55,7 @@ ms.locfileid: "67357642"
 |---|---|
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | 记录日志时的时间戳 (UTC) |
+| `TimeGenerated [UTC]` | 记录日志时的时间戳 (UTC) |
 | `Type` | 日志类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
@@ -65,13 +65,14 @@ ms.locfileid: "67357642"
 | `Resource` | 服务器的名称 |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `connection_log` |
-| `event_subclass` | `CONNECT``DISCONNECT`， `CHANGE USER` （仅适用于 MySQL 5.7） |
-| `connection_id` | MySQL 由生成的唯一连接 ID |
-| `host` | 空白 |
-| `ip` | 连接到 MySQL 的客户端 IP 地址 |
-| `user` | 执行查询的用户的名称 |
-| `db` | 连接到数据库的名称 |
+| `LogicalServerName_s` | 服务器的名称 |
+| `event_class_s` | `connection_log` |
+| `event_subclass_s` | `CONNECT``DISCONNECT`， `CHANGE USER` （仅适用于 MySQL 5.7） |
+| `connection_id_d` | MySQL 由生成的唯一连接 ID |
+| `host_s` | 空白 |
+| `ip_s` | 连接到 MySQL 的客户端 IP 地址 |
+| `user_s` | 执行查询的用户的名称 |
+| `db_s` | 连接到数据库的名称 |
 | `\_ResourceId` | 资源 URI |
 
 ### <a name="general"></a>常规
@@ -82,7 +83,7 @@ ms.locfileid: "67357642"
 |---|---|
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | 记录日志时的时间戳 (UTC) |
+| `TimeGenerated [UTC]` | 记录日志时的时间戳 (UTC) |
 | `Type` | 日志类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
@@ -92,15 +93,16 @@ ms.locfileid: "67357642"
 | `Resource` | 服务器的名称 |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `general_log` |
-| `event_subclass` | `LOG``ERROR`， `RESULT` （仅适用于 MySQL 5.6） |
+| `LogicalServerName_s` | 服务器的名称 |
+| `event_class_s` | `general_log` |
+| `event_subclass_s` | `LOG``ERROR`， `RESULT` （仅适用于 MySQL 5.6） |
 | `event_time` | 查询中的 UNIX 时间戳开始秒 |
-| `error_code` | 如果查询失败，错误代码。 `0` 意味着没有错误 |
-| `thread_id` | 执行查询的线程 ID |
-| `host` | 空白 |
-| `ip` | 连接到 MySQL 的客户端 IP 地址 |
-| `user` | 执行查询的用户的名称 |
-| `sql_text` | 完整的查询文本 |
+| `error_code_d` | 如果查询失败，错误代码。 `0` 意味着没有错误 |
+| `thread_id_d` | 执行查询的线程 ID |
+| `host_s` | 空白 |
+| `ip_s` | 连接到 MySQL 的客户端 IP 地址 |
+| `user_s` | 执行查询的用户的名称 |
+| `sql_text_s` | 完整的查询文本 |
 | `\_ResourceId` | 资源 URI |
 
 ### <a name="table-access"></a>表访问权限
@@ -109,7 +111,7 @@ ms.locfileid: "67357642"
 |---|---|
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | 记录日志时的时间戳 (UTC) |
+| `TimeGenerated [UTC]` | 记录日志时的时间戳 (UTC) |
 | `Type` | 日志类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
@@ -119,12 +121,13 @@ ms.locfileid: "67357642"
 | `Resource` | 服务器的名称 |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `table_access_log` |
-| `event_subclass` | `READ`、`INSERT`、`UPDATE` 或 `DELETE` |
-| `connection_id` | MySQL 由生成的唯一连接 ID |
-| `db` | 访问数据库的名称 |
-| `table` | 访问的表的名称 |
-| `sql_text` | 完整的查询文本 |
+| `LogicalServerName_s` | 服务器的名称 |
+| `event_class_s` | `table_access_log` |
+| `event_subclass_s` | `READ`、`INSERT`、`UPDATE` 或 `DELETE` |
+| `connection_id_d` | MySQL 由生成的唯一连接 ID |
+| `db_s` | 访问数据库的名称 |
+| `table_s` | 访问的表的名称 |
+| `sql_text_s` | 完整的查询文本 |
 | `\_ResourceId` | 资源 URI |
 
 ## <a name="next-steps"></a>后续步骤

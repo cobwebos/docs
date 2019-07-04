@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: aa4e37e3b360727feb998ef5e9ca9b776c4b0e53
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b3e772ebb05f79abb70e58e63a93c3336a413e38
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303954"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542545"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -84,7 +84,7 @@ ms.locfileid: "67303954"
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-动态打包现在支持 Dolby Atmos. 有关详细信息，请参阅[音频编解码器支持的动态打包](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)。
+动态打包现在支持 Dolby Atmos. 有关详细信息，请参阅[音频编解码器支持的动态打包](dynamic-packaging-overview.md#audio-codecs)。
 
 现在可以指定将适用于你的流式处理定位符的资产或帐户筛选器的列表。 有关详细信息，请参阅[流式处理定位符相关联的筛选器](filters-concept.md#associating-filters-with-streaming-locator)。
 

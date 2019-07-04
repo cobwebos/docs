@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: e96e462709ab0c715c831bd10c628869d5c617fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 722d77bf27e3cd7eb921b09e0a1d4732a5b5f874
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319061"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514413"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 发警报和监视数据工厂
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
@@ -387,7 +387,7 @@ ADFV2 发出以下指标
 
 | **指标**           | **指标显示名称**         | **单位** | **聚合类型** | **说明**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| PipelineSucceededRun | 成功的管道运行数指标 | Count    | 总计                | 在一分钟时段内成功的管道运行总数 |
+| PipelineSucceededRuns | 成功的管道运行数指标 | Count    | 总计                | 在一分钟时段内成功的管道运行总数 |
 | PipelineFailedRuns   | 失败的管道运行数指标    | Count    | 总计                | 在一分钟时段内失败的管道运行总数    |
 | ActivitySucceededRuns | 成功的活动运行数指标 | Count    | 总计                | 在一分钟时段内成功的活动运行总数  |
 | ActivityFailedRuns   | 失败的活动运行数指标    | Count    | 总计                | 在一分钟时段内失败的活动运行总数     |

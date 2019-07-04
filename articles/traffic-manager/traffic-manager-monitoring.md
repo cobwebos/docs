@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: allensu
-ms.openlocfilehash: 7aee68ef41b696549aa1db4386d467b55cd2d981
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8df1c29bc5230e925d05be9fd356de050a9b0f06
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071070"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550361"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>流量管理器终结点监视
 
@@ -102,7 +102,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 - 如果监视协议为 HTTP 或 HTTPS：
     - 收到非 200 响应，或者收到的响应不包括在“预期的状态代码范围”设置中指定的状态范围（包括其他 2xx 代码，或者 301/302 重定向）。 
 - 如果监视协议为 TCP： 
-    - 对于流量管理器为建立连接而发送的 SYNC 请求，收到的响应不是 ACK 或 SYN-ACK。
+    - 发送流量管理器尝试建立连接的 SYN 请求到响应中收到非 ACK 或 SYN-ACK 响应。
 - 超时。 
 - 导致终结点不可访问的任何其他连接问题。
 

@@ -2,7 +2,7 @@
 title: 启用与 iOS 移动应用进行脱机同步 | Microsoft 文档
 description: 了解如何使用 Azure 应用服务移动应用来缓存和同步 iOS 应用程序中的脱机数据。
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 services: app-service\mobile
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f7ae3e7a33ae7df70214ed171b00cc2accbaccb5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62112644"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446374"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用与 iOS 移动应用进行脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-offline-data)今天。
+>
 
 ## <a name="overview"></a>概述
 本教程介绍如何使用适用于 iOS 的 Azure 应用服务的“移动应用”功能进行脱机同步。 使用脱机同步，即使没有网络连接，最终用户也可与移动应用交互，以便查看、添加或修改数据。 更改存储在本地数据库中。 设备重新联机后，这些更改会与远程后端同步。
@@ -202,7 +206,7 @@ MS_TableOperationErrors
 | text |String |待办事项字段 |
 | createdAt | Date | （可选）映射到 **createdAt** 系统属性 |
 | updatedAt | Date | （可选）映射到 **updatedAt** 系统属性 |
-| version | String | （可选）用于检测冲突，映射到版本 |
+| 版本 | String | （可选）用于检测冲突，映射到版本 |
 
 ## <a name="setup-sync"></a>更改应用的同步行为
 在本部分，将修改应用，以便在应用启动时或插入和更新项时应用不会进行同步。 仅当按刷新手势按钮时，应用才会同步。

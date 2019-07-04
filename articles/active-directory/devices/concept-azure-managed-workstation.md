@@ -1,6 +1,6 @@
 ---
-title: 为什么安全工作站是重要的 Azure Active Directory
-description: 了解为什么组织应创建安全的 Azure 托管的工作站
+title: 了解安全的 Azure 托管的工作站的 Azure Active Directory
+description: 了解有关安全的 Azure 托管的工作站，并了解为什么它们很重要。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,96 +11,105 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05d21910d1b3601346fbd038cbc25f8f2be61f99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02a6ddef294c4872f2d7e50e8940ecbb4b4b7bc4
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110699"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491588"
 ---
-# <a name="building-secure-workstations"></a>构建安全的工作站
+# <a name="understand-secure-azure-managed-workstations"></a>了解安全的 Azure 托管的工作站
 
-受保护的独立的工作站是极为重要的安全敏感的角色，如管理员、 开发人员和运算符的关键服务。 许多其他安全控制和保证操作会失败或不不起任何作用，如果基础客户端工作站安全已遭到破坏。
+安全且隔离的工作站是极为重要的安全敏感的角色，如管理员、 开发人员和关键服务操作员。 如果客户端工作站的安全性受到威胁，很多安全控制和保证可以失败或无效。
 
-本文档介绍如何生成详细的分步说明，包括如何设置启动安全控制的安全客户端工作站。 此类型的工作站有时被称为特权的访问工作站 (PAW)，它使用，并基于此引用。 但是的指南为基于云的技术来管理服务，看起来和引入了安全功能引入了从 Windows 10RS5、 Microsoft Defender ATP、 Azure Active Directory 和 Intune。
+本文档介绍所需的构建安全的工作站，通常称为特权的访问工作站 (PAW)。 该文章还包含有关设置初始安全控制的详细的说明。 本指南介绍了如何基于云的技术可以管理服务。 它依赖于 Windows 10RS5、 Microsoft Defender 高级威胁防护 (ATP)、 Azure Active Directory 和 Intune 中引入的安全功能。
 
 > [!NOTE]
-> 此文章介绍了安全的工作站和其重要性的概念。 如果您已熟悉这一概念，并且想要跳过部署，请阅读[如何部署安全工作站](https://docs.microsoft.com/azure/active-directory/devices/howto-azure-managed-workstation)。
+> 此文章介绍了安全的工作站和其重要性的概念。 如果您已熟悉这一概念，并且想要跳过部署，请访问[部署安全工作站](https://docs.microsoft.com/azure/active-directory/devices/howto-azure-managed-workstation)。
 
-## <a name="why-securing-workstation-access-is-important"></a>保护工作站访问为何重要
+## <a name="why-secure-workstation-access-is-important"></a>安全的工作站访问为何重要
 
-快速采用云服务和能够从任何位置创建了利用此漏洞的新方法。 攻击者所利用薄弱的安全控件台设备的管理员工作，并能够访问特权资源。
+快速采用云服务和能够从任何位置创建了新的利用该方法。 通过利用其中管理员工作的设备上的薄弱的安全控件，攻击者可以访问特权资源。
 
-如中所述[Verizon 威胁报告](https://enterprise.verizon.com/resources/reports/dbir/)，并[安全研究报告](https://aka.ms/sir)特权误用，和供应链攻击是用来破坏的组织的前五个机制和第二个最常检测到策略报告在 2018 年的事件。
+特权滥用和供应链攻击是攻击者使用违反组织的前五个方法。 它们也是第二个最常检测到在 2018 年根据报告的事件策略[Verizon 威胁报告](https://enterprise.verizon.com/resources/reports/dbir/)，并[安全研究报告](https://aka.ms/sir)。
 
-大多数攻击者按照下面的路径：
+大多数攻击者执行以下步骤：
 
-* 侦测，通常特定于行业，若要找到一种方法中的使用启动
-* 分析收集的信息来标识获取访问权限 （渗透） 的感知低价值工作站的最佳方法
-* 持久性和查看方式移动[横向](https://en.wikipedia.org/wiki/Network_Lateral_Movement)
-* 盗取机密和敏感数据
+1. 若要找到一种方法中，通常特定于行业的侦测。
+1. 分析，以收集信息并确定最佳的方式来渗透的工作站，被视为较低的值。
+1. 暂留以寻找一种方法来移动[横向](https://en.wikipedia.org/wiki/Network_Lateral_Movement)。
+1. 数据泄露的机密和敏感。
 
-攻击者经常渗入看起来低风险或设备遭到轻视的侦测。 然后使用这些易受攻击的设备来找到横向移动的机会，查找管理用户和设备以及确定在高价值的数据，到成功盗取信息后他们获得这些权限的用户角色。
+期间的侦测，攻击者经常渗入看起来低风险或遭到轻视的设备。 若要找到横向移动的机会和查找管理用户和设备，他们会使用这些易受攻击的设备。 他们就可以访问特权的用户角色后，则攻击者确定高价值数据并成功盗取该数据。
 
 ![典型的破坏模式](./media/concept-azure-managed-workstation/typical-timeline.png)
 
-本文档提供了解决方案来帮助隔离管理和服务来帮助保护免受横向移动，从而保护你的计算设备或攻击不太有价值的工作效率设备。 设计可帮助减少成功通过中断之前使用用于管理或访问敏感的云资源的设备的渗透链执行违规行为的能力。 所述的解决方案将利用本机 Azure 服务属于 Microsoft 365 企业版堆栈包括：
+本文档介绍了解决方案，可帮助防止此类横向攻击计算设备。 管理和不太有价值的工作效率设备，有权访问敏感的云资源的设备可以渗透之前中断链中的服务，该解决方案将隔离开来。 该解决方案使用本机 Microsoft 365 企业版堆栈的一部分的 Azure 服务：
 
-* Intune 设备管理，包括应用程序和 URL 列入白名单
-* 有关设备安装和部署和刷新的 autopilot 
+* Intune 设备管理和安全的应用程序和 Url 列表
+* Autopilot 设备安装程序、 部署和刷新
 * Azure AD 进行用户管理、 条件性访问和多重身份验证
 * （当前版本） 适用于 Windows 10 设备运行状况证明和用户体验
-* Microsoft Defender 高级威胁防护 (ATP) 的终结点保护、 检测和响应通过云管理
-* 用于管理授权，包括实时 (JIT) 的 azure AD PIM 的特权资源的访问权限
+* Defender ATP 的云管理的终结点保护、 检测和响应
+* 用于管理授权和实时 (JIT) 的 azure AD PIM 的特权资源的访问权限
 
-## <a name="who-benefit-from-using-a-secure-workstation"></a>用户从使用安全工作站中受益
+## <a name="who-benefits-from-a-secure-workstation"></a>用户得益于工作站的安全？
 
-所有用户和运算符使用工作站的安全都受益。 如果攻击者入侵 PC 或设备可以执行多项操作，包括模拟所有缓存的帐户，并使用凭据，并选择他们登录时使用该设备上的标记。 这种风险，可以保护任何特权角色包括管理权限很重要，因为设备使用特权的帐户的位置是横向移动和特权提升攻击目标所使用的设备。 这些帐户可用于各种资源包括：
+所有用户和运算符中都获益时使用的是安全的工作站。 如果攻击者危及 PC 或设备可以模拟所有缓存的帐户。 当登录到设备，它们可能会使用凭据和令牌。 这种风险到用于特权角色，包括管理权限的安全设备使得很重要。 使用特权帐户的设备是横向移动和特权提升攻击的目标。 这些帐户可用于各种资源包括：
 
-* 在本地和基于云的系统的管理员
+* 在本地或基于云的系统的管理员
 * 关键系统的开发人员工作站
-* 具有高暴露程度的社交媒体帐户管理员
-* 如 SWIFT 付款终端高度敏感的工作站
-* 处理商业机密的工作站
+* 以高暴露风险的社交媒体帐户管理员
+* 高度敏感的工作站，如终端 SWIFT 付款
+* 工作站处理商业机密
 
-Microsoft 建议实施特权工作站使用这些帐户以降低风险的提升的安全控制。 可以中找到更多指导[Azure Active Directory 功能部署指南](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2)， [Office 365 路线图](https://aka.ms/o365secroadmap)，并[保护特权访问路线图](https://aka.ms/sparoadmap))。
+为了降低风险，应实现提升的安全控制特权的工作站，请使用这些帐户。 有关详细信息，请参阅[Azure Active Directory 功能部署指南](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2)， [Office 365 路线图](https://aka.ms/o365secroadmap)，并[保护特权访问路线图](https://aka.ms/sparoadmap))。
 
-## <a name="why-dedicated-workstations"></a>为什么专用工作站
+## <a name="why-use-dedicated-workstations"></a>为什么要使用专用的工作站？
 
-可以将安全添加到现有的设备时，是更好的做法开始使用安全的基础。 从已知良好的设备和一组已知的安全控件将你的组织中的最佳位置，若要维护的增加安全的级别。 与允许的临时电子邮件和 web 浏览的攻击媒介的数量的不断增长，很越来越难确保设备可以是受信任。 假设专用工作站下的本指南适用标准的工作效率，浏览，分离，并完成电子邮件任务。 删除的工作效率、 浏览 web，以及从设备的电子邮件可以产生负面影响工作效率，但这种保护措施是通常可以接受的情况下，作业任务不明确要求它并且安全事件的风险较高。
+可以将安全添加到现有的设备时，是更好的做法开始使用安全的基础。 若要将你的组织中维护一个高安全级别的最佳位置，开始与你知道是安全设备，并实现一组已知的安全控件。
+
+越来越多的通过电子邮件和 web 浏览的攻击媒介会越来越难以确保设备可以是受信任。 本指南假定专用的工作站都独立于标准的工作效率、 浏览和电子邮件。 删除的工作效率、 浏览 web，以及从设备的电子邮件可以对工作效率产生负面影响。 但是，这种保护措施是通常情况下，作业任务不明确要求它并且安全事件的风险较高的可接受的。
 
 > [!NOTE]
-> Web 浏览此处是指对任意网站，这是高风险使用 web 浏览器访问少量的服务，如 Azure、 Office 365、 其他云提供程序和 SaaS 的已知管理网站的截然不同的常规访问应用程序。
+> Web 浏览此处引用的常规访问权限可以是高风险活动的任意网站。 此类浏览是使用 web 浏览器访问少量的已知的服务，如 Azure、 Office 365、 其他云提供程序和 SaaS 应用程序的管理网站组完全不同。
 
-包含策略通过增加的数量和类型的攻击者必须克服才能访问敏感资产的控件提供增强的安全保证。 此处开发模型提供了包含使用分层的特权模型的特定设备的管理权限。
+包含策略通过增加的数量和类型从获取敏感资产的访问权限阻止攻击者的控件的增强的安全性。 在本文中所述的模型使用分层的特权设计，并将管理权限限制到特定设备。
 
 ## <a name="supply-chain-management"></a>供应链管理
 
-至关重要的受保护的工作站是供应链解决方案则使用的工作站是受信任，根的信任。 此解决方案所要解决使用信任的根[Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)技术。 对于受保护的工作站 Microsoft Autopilot 提供了能够充分利用 Microsoft OEM 优化 Windows 10 设备的制造商提供已知的良好状态。 而不是重置映像可能不受信任的设备，Microsoft Autopilot 可以转换为 Windows 设备的"业务就绪"状态，应用设置和策略，安装应用，以及甚至更改的 Windows 10 版本 （例如，从正在使用Windows 10 专业版到 Windows 10 企业版，以支持高级的功能)。
+至关重要的受保护的工作站是信任的使用名为根的受信任的工作站的其中一个供应链解决方案。 对于此解决方案，使用信任的根[Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)技术。 若要保护工作站，Autopilot 可以利用 Microsoft OEM 优化 Windows 10 设备。 这些设备制造商提供的有已知的良好状态。 而不是重置映像可能不安全的设备，Autopilot 可以将 Windows 设备转换为"业务就绪"状态。 它将应用设置和策略、 安装应用程序，并甚至更改的 Windows 10 版本。 例如，Autopilot 可能会更改设备的 Windows 安装从 Windows 10 专业版到 Windows 10 企业版，以便它可以使用高级的功能。
 
 ![保护工作站级别](./media/concept-azure-managed-workstation/supplychain.png)
 
 ## <a name="device-roles-and-profiles"></a>设备角色和配置文件
 
-在指南中，将解决多个安全配置文件和角色以实现更安全的解决方案为用户、 开发人员和 IT 操作人员。 这些配置文件具有已对齐以支持常见的用户在组织中，都可以受益于增强，或安全工作站上，同时平衡易用性和风险。 本指南将提供基于行业接受标准的设置的配置。 本指南用于说明在强化 Windows 10 和减少与使用策略和技术来帮助管理的安全功能和风险的设备或用户泄漏风险的方法。
+本指南引用多个安全配置文件，并可帮助你的角色创建的用户、 开发人员和 IT 人员更安全的解决方案。 这些配置文件权衡可用性和多都可以受益于增强或安全工作站的用户的风险。 此处提供的配置基于行业公认标准的设置。 本指南演示如何来强化 Windows 10 并减少与设备或用户泄漏风险。 它会通过使用策略和技术来帮助管理的安全功能和风险。
 ![保护工作站级别](./media/concept-azure-managed-workstation/seccon-levels.png)
 
-* **低安全**– 托管的标准工作站大多数家庭和小型企业用于提供很好的起点。 这些设备是已注册 Azure AD 和 Intune 托管。 该配置文件允许用户运行任何应用程序和浏览的任何网站。 反恶意软件解决方案喜欢[Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security)应启用。
-* **增强的安全性**– 是面向家庭用户、 小型企业用户，以及常规的开发人员很好的入门级保护解决方案。
-   * 增强型工作站提供了基于策略的方法以增强低安全配置文件的安全性。 此配置文件允许使用客户数据，并且能够使用的工作效率工具，如检查电子邮件和 web 浏览的安全方法。 增强型工作站可以用于通过启用审核策略，并记录到 Intune 审核用户行为和配置文件使用的工作站。 在此配置文件，工作站将启用安全控制和策略所述在内容中，并可部署在增强型工作站的 Windows10 (1809) 脚本。 部署还会利用的高级恶意软件保护使用[高级威胁防护 (ATP)](https://docs.microsoft.com/office365/securitycompliance/office-365-atp)
-* **高安全性**– 若要减少攻击面的工作站的最有效方法是删除上下工作站的功能。 删除本地管理权限是可以增强安全性，一个步骤，如果无法正确地实现可能会影响工作效率。 高安全配置文件为基础的增强的安全配置文件的一个相当大的更改，删除的本地管理员。此配置文件旨在帮助可能是高级管理人员如一个高配置文件用户或用户可能具有的与敏感数据，例如工资单、 或批准的服务和进程的用户。
-   * 高安全性用户配置文件要求的更高版本的控制的环境同时仍然能够执行其工作效率的活动，例如邮件和 web 浏览时维护一个简单的使用体验。 用户期望功能，例如 cookie、 收藏夹以及其他可用于操作的快捷方式。 但是这些用户可能不需要修改，或调试其设备的功能，并且不需要安装驱动程序。 使用高安全性-Windows10 (1809) 脚本来部署的高安全配置文件。
-* **专用化**– 开发人员和 IT 管理员是攻击者的目标，如这些角色可以更改与攻击者感兴趣的系统。 专用的工作站采用高安全性工作站和 ActiveX，如通过管理的本地应用程序、 限制 internet web 站点和限制较高的工作效率增强功能的安全风险的进一步 emphases 中部署的工作量Java、 浏览器插件的和 Windows 设备上的多个其他已知的高风险控件。 在此配置文件，工作站将启用安全控制和策略所述在内容中，并可部署在 DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline 脚本。
-* **保护**– 的攻击者可以破坏的管理帐户通常会导致数据被盗，数据更改类型或服务中断的重要业务损失。 在此强化状态下，工作站将使所有安全控制和限制的本地应用程序管理的直接控制的策略，并删除的工作效率工具。 因此，会影响设备进行难度作为电子邮件，社交媒体会阻止其反映网页仿冒攻击可能会成功的最常见方式。  可以使用安全工作站的 Windows10 (1809) SecurityBaseline 脚本部署受保护的工作站。
+* **低安全**– 托管的标准工作站大多数家庭和小型企业用于提供很好的起点。 在 Azure AD 中注册和使用 Intune 管理这些设备。 此配置文件允许用户运行任何应用程序和浏览的任何网站。 反恶意软件解决方案喜欢[Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security)应启用。
+
+* **增强的安全性**– 此入门级的受保护的解决方案是适用于家庭用户、 小型企业用户和常规开发人员。
+
+   增强的工作站是基于策略的方法，来提高较低的安全配置文件的安全性。 它提供了处理客户数据，同时也使用电子邮件和 web 浏览等高效工具的安全方法。 您可以使用审核策略和 Intune 来监视用户行为和配置文件使用情况的增强型的工作站。 部署的增强型的工作站配置文件的 Windows10 (1809) 脚本，并利用高级恶意软件保护使用的[高级威胁防护 (ATP)](https://docs.microsoft.com/office365/securitycompliance/office-365-atp)。
+
+* **高安全性**– 若要减少攻击面的工作站的最有效方法是删除上下工作站的功能。 删除本地管理权限的步骤，可以提高安全性，但如果未正确实现，它可能会影响工作效率。 高安全配置文件生成一个相当大的变化的增强的安全配置文件： 删除的本地管理员。此配置文件专用于高配置文件： 高级管理人员、 工资和用户的敏感数据、 服务和流程的审批者。
+
+   高安全性用户要求同时仍然能够执行活动，例如电子邮件和 web 浏览中使用简单的体验更容易控制的环境。 用户期望功能，例如 cookie、 收藏夹以及其他快捷方式工作。 但是，这些用户可能不需要修改或调试其设备的功能。 它们还不需要安装驱动程序。 使用高安全性-Windows10 (1809) 脚本来部署的高安全配置文件。
+
+* **专用化**– 攻击者以开发人员和 IT 管理员，因为它们可以改变系统的攻击者感兴趣。 专用的工作站上的高安全性工作站的策略扩展，通过管理本地应用程序并将网站限制。 它还会限制高风险的工作效率功能，例如 ActiveX、 Java、 浏览器插件和其他 Windows 控件。 部署此配置文件与 DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline 脚本。
+
+* **保护**– 的攻击者威胁管理帐户可能会导致数据被盗，数据更改类型或服务中断的重要业务损失。 在此强化状态下，工作站可以实现所有的安全控制和限制的本地应用程序管理的直接控制的策略。 受保护的工作站具有任何工作效率工具，因此更难以破坏的设备。 它将阻止网页仿冒攻击的最常见向量： 电子邮件和社交媒体。  可以使用安全工作站的 Windows10 (1809) SecurityBaseline 脚本部署受保护的工作站。
 
    ![受保护的工作站](./media/concept-azure-managed-workstation/secure-workstation.png)
 
-   工作站的安全提供管理员具有明确的应用程序控件和应用程序防护的强化的工作站。 工作站将使用凭据、 设备和攻击防护保护免受恶意行为的主机。 此外所有本地磁盘加密与 Bitlocker 加密。
+   工作站的安全提供了具有明确的应用程序控件和应用程序防护的强化工作站的管理员。 工作站使用凭据保护、 device guard 和攻击防护来保护主机的恶意行为。 所有本地磁盘还使用 BitLocker 加密。
 
-* **独立**– 此自定义的脱机情况下表示极端结束极端情况下 （这种情况下提供了任何安装脚本）。 组织可能需要管理的独立的业务关键函数如高价值生产订单行或生命周期支持系统需要不受支持/未修补的旧操作系统。 因为安全很关键，云服务都不可用，组织可能会手动管理/更新这些计算机或使用独立的 Active Directory 林体系结构 (如增强的安全管理环境 (ESAE)) 来管理它们。 在这些情况下，删除所有访问除基本 Intune 和 ATP 运行状况检查应考虑。
-   * [Intune 网络通信要求](https://docs.microsoft.com/intune/network-bandwidth-use)
-   * [ATP 网络通信要求](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+* **独立**– 这种情况下自定义的脱机表示极端极端情况下的结束。 这种情况下提供了没有安装脚本。 您可能需要管理需要不受支持或未安装修补程序的旧操作系统的关键业务函数。 例如，高价值生产订单行或生命-支持系统。 因为安全很关键，云服务都不可用，你可以管理和更新这些计算机手动或通过独立的 Active Directory 林体系结构如增强的安全管理环境 (ESAE)。 在这些情况下，请考虑删除除基本 Intune 和 ATP 运行状况检查的所有访问。
+
+  * [Intune 网络通信要求](https://docs.microsoft.com/intune/network-bandwidth-use)
+  * [ATP 网络通信要求](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署 Azure 托管工作站的安全](howto-azure-managed-workstation.md)
+[部署 Azure 托管的安全工作站](howto-azure-managed-workstation.md)。

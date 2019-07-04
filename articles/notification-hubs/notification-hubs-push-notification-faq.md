@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 579d50a95ad0e478f401b7db012e7c743ce58491
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a434101a806a810218927cbf0bc24fa0d22c5628
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730461"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488646"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
@@ -69,7 +69,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 ### <a name="which-client-platforms-do-you-support"></a>支持哪些客户端平台？
 
-有关支持推送通知[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)， [Android](notification-hubs-android-push-notification-google-fcm-get-started.md)， [Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)， [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)， [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)， [android China （通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)，Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和 Android，和[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)。 有关详细信息，请转到[通知中心入门教程]页。
+有关支持推送通知[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)， [Android](notification-hubs-android-push-notification-google-fcm-get-started.md)， [Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)， [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)， [Android China (通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)，Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和 Android，和[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)。 有关详细信息，请转到[通知中心入门教程]页。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>是否支持短信、电子邮件或 Web 通知？
 
@@ -85,7 +85,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 有关支持的设备数目的详细信息，请参阅[通知中心定价]页。
 
-如果需要支持 1000 万台以上的已注册设备，请直接[与我们联系](https://azure.microsoft.com/overview/contact-us/)，我们将帮你扩展解决方案。
+如果你需要支持超过 1000 万台已注册的设备，你必须将设备分区跨多个中心。
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>我可以发送多少推送通知？
 

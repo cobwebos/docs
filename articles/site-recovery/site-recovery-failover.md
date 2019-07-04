@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/30/2019
 ms.author: raynew
-ms.openlocfilehash: a02a2be7fb3ed942b1359949e18ba7d3dee824ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d1471188999182623a57db50d3205a859c160a2
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399968"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491794"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>对 VM 和物理服务器进行故障转移 
 
@@ -70,9 +70,9 @@ ms.locfileid: "66399968"
 
 > [!NOTE]
 > 在不同的本地站点之间故障转移 Hyper-V 虚拟机时，要返回到主要本地站点，必须先将虚拟机**反向复制**回到主站点，然后再触发故障转移。 如果主虚拟机不可用，则在开始**反向复制**之前，必须从备份还原虚拟机。   
-> 
-> 
-> ## <a name="failover-job"></a>故障转移作业
+ 
+ 
+## <a name="failover-job"></a>故障转移作业
 
 ![故障转移](./media/site-recovery-failover/FailoverJob.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "66399968"
 ## <a name="post-failover-considerations"></a>故障转移后注意事项
 故障转移后，可能需要考虑以下建议：
 ### <a name="retaining-drive-letter-after-failover"></a>在故障转移后保留驱动器号
-若要在故障转移后保留虚拟机上的驱动器号，可将虚拟机的“SAN 策略”  设置为 **OnlineAll**。 [了解详细信息](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure)。
+Azure Site Recovery 处理的驱动器号的保留期。 [阅读更多](vmware-azure-exclude-disk.md#example-1-exclude-the-sql-server-tempdb-disk)上选择要排除某些磁盘时的操作方式。
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>准备在故障转移后连接到 Azure VM
 

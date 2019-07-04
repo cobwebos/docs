@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8d5d1b3c3f505b66e07f7aa226cfa001af94af8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60588014"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449329"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS 防护：最佳做法和参考体系结构
 
@@ -224,6 +224,8 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 - 规划的某个病毒事件导致网络流量显著增加。
 
 - 某个行动者威胁针对你的资源发起 DDoS 攻击。
+
+- 如果您需要加入允许列表 IP 或 IP 范围从 Azure DDoS 保护标准。 一种常见方案是白名单 IP，如果流量从一个外部云 WAF 路由到 Azure。 
 
 对于影响关键业务的攻击，请创建严重性为 A 的[支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

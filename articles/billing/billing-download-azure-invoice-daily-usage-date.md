@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: b78fb7d697f8a72b3c2f99c4509ea6ac5c5e5566
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 16b2eaef74a7aa0e3e28bfcbb6dbd9da568db6cf
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60616280"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491403"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下载或查看 Azure 帐单发票和每日使用数据
 
@@ -56,9 +56,9 @@ ms.locfileid: "60616280"
 
 ### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Microsoft 客户协议下载发票
 
-每个生成发票[计费配置文件](billing-mca-overview.md#understand-billing-profiles)Microsoft 客户协议中。 您必须是一个计费配置文件所有者、 参与者、 读取器，或发票管理器从 Azure 门户下载发票。
+每个生成发票[计费配置文件](billing-mca-overview.md#billing-profiles)Microsoft 客户协议中。 您必须是一个计费配置文件所有者、 参与者、 读取器，或发票管理器从 Azure 门户下载发票。
 
-1. 在“成本管理 + 计费”  中进行搜索。
+1. 搜索**成本管理 + 计费**。
 2. 选择计费的配置文件。
 3. 选择“发票”  。
 4. 在发票网格中，找到你想要下载的发票的行。
@@ -108,7 +108,7 @@ ms.locfileid: "60616280"
 
 如果你有 Microsoft 客户协议，你可以选择通过电子邮件获取发票。 所有计费配置文件所有者、 参与者、 读者和发票管理器将通过电子邮件获取发票。 读取器不能更新电子邮件发票首选项。
 
-1. 在“成本管理 + 计费”  中进行搜索。
+1. 搜索**成本管理 + 计费**。
 1. 选择计费的配置文件。
 1. 在“设置”下，选择“属性”   。
 1. 下**电子邮件发送发票**，选择**更新电子邮件发票首选项**。
@@ -169,7 +169,7 @@ ms.locfileid: "60616280"
 
 #### <a name="download-usage-for-billed-charges"></a>下载使用情况的计费费用
 
-1. 在“成本管理 + 计费”  中进行搜索。
+1. 搜索**成本管理 + 计费**。
 2. 选择计费的配置文件。
 3. 选择“发票”  。
 4. 在发票网格中，查找对应于你想要下载的使用情况的发票。
@@ -180,7 +180,7 @@ ms.locfileid: "60616280"
 
 您还可以下载月-日使用情况当前计费期间，这意味着不尚未计费费用。
 
-1. 在“成本管理 + 计费”  中进行搜索。
+1. 搜索**成本管理 + 计费**。
 2. 选择计费的配置文件。
 3. 在中**概述**边栏选项卡中，单击**下载 Azure 使用情况和费用**。
 

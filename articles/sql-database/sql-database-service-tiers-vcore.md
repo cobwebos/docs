@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 05/06/2019
-ms.openlocfilehash: 520dba611e6791fca990e21173424a914c3d8e14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: e9d1ce3bcd3bf958be0a7837e8416300af03f5a2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693334"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449738"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>在 vCore 的服务层之间进行选择，并将从服务层的 DTU 迁移
 
@@ -28,6 +28,8 @@ ms.locfileid: "66693334"
 
 第 4 代为每个 vCore 提供的内存要大得多。 但是，第 5 代硬件允许以高得多的力度纵向扩展计算资源。
 
+> [!IMPORTANT]
+> AustraliaEast 区域中不再支持新 Gen4 数据库。
 > [!NOTE]
 > 有关基于 DTU 的服务层的信息，请参阅[服务层对于基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)。 有关基于 DTU 的服务层和基于 vCore 的购买模型之间的差异的信息，请参阅[购买模型的 Azure SQL 数据库](sql-database-purchase-models.md)。
 

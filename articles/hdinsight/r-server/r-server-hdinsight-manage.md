@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 607f85c10183366e88d597d84090f49fc30aff48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: fa838f371607f3c0b0f76f81d6755c842a5901f7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687967"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448965"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
 
@@ -21,9 +21,10 @@ ms.locfileid: "64687967"
 
 ## <a name="prerequisites"></a>必备组件
 
-* **HDInsight 上的 ML 服务群集**：有关说明，请参阅 [HDInsight 上的 ML 服务入门](r-server-get-started.md)。
+* HDInsight 上的机器学习服务群集。 请参阅[使用 Azure 门户中创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然后选择**机器学习服务**有关**群集类型**。
 
-* **安全外壳 (SSH) 客户端**：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（将 SSH 与 HDInsight 配合使用）。
+
+* 安全外壳 (SSH) 客户端：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（将 SSH 与 HDInsight 配合使用）。
 
 
 ## <a name="enable-multiple-concurrent-users"></a>允许多个并发用户
@@ -107,123 +108,7 @@ ms.locfileid: "64687967"
 
 ## <a name="use-a-compute-context"></a>使用计算上下文
 
-借助计算上下文，用户可控制是在边缘节点上本地执行计算，还是将计算分布到 HDInsight 群集的节点之间。
-
-1. 在 RStudio Server 或 R 控制台（在 SSH 会话中）中，使用以下代码将示例数据加载到 HDInsight 的默认存储：
-
-        # Set the HDFS (WASB) location of example data
-        bigDataDirRoot <- "/example/data"
-
-        # create a local folder for storaging data temporarily
-        source <- "/tmp/AirOnTimeCSV2012"
-        dir.create(source)
-
-        # Download data to the tmp folder
-        remoteDir <- "https://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012"
-        download.file(file.path(remoteDir, "airOT201201.csv"), file.path(source, "airOT201201.csv"))
-        download.file(file.path(remoteDir, "airOT201202.csv"), file.path(source, "airOT201202.csv"))
-        download.file(file.path(remoteDir, "airOT201203.csv"), file.path(source, "airOT201203.csv"))
-        download.file(file.path(remoteDir, "airOT201204.csv"), file.path(source, "airOT201204.csv"))
-        download.file(file.path(remoteDir, "airOT201205.csv"), file.path(source, "airOT201205.csv"))
-        download.file(file.path(remoteDir, "airOT201206.csv"), file.path(source, "airOT201206.csv"))
-        download.file(file.path(remoteDir, "airOT201207.csv"), file.path(source, "airOT201207.csv"))
-        download.file(file.path(remoteDir, "airOT201208.csv"), file.path(source, "airOT201208.csv"))
-        download.file(file.path(remoteDir, "airOT201209.csv"), file.path(source, "airOT201209.csv"))
-        download.file(file.path(remoteDir, "airOT201210.csv"), file.path(source, "airOT201210.csv"))
-        download.file(file.path(remoteDir, "airOT201211.csv"), file.path(source, "airOT201211.csv"))
-        download.file(file.path(remoteDir, "airOT201212.csv"), file.path(source, "airOT201212.csv"))
-
-        # Set directory in bigDataDirRoot to load the data into
-        inputDir <- file.path(bigDataDirRoot,"AirOnTimeCSV2012")
-
-        # Make the directory
-        rxHadoopMakeDir(inputDir)
-
-        # Copy the data from source to input
-        rxHadoopCopyFromLocal(source, bigDataDirRoot)
-
-2. 接下来，创建一些数据信息并定义两个数据源。
-
-        # Define the HDFS (WASB) file system
-        hdfsFS <- RxHdfsFileSystem()
-
-        # Create info list for the airline data
-        airlineColInfo <- list(
-             DAY_OF_WEEK = list(type = "factor"),
-             ORIGIN = list(type = "factor"),
-             DEST = list(type = "factor"),
-             DEP_TIME = list(type = "integer"),
-             ARR_DEL15 = list(type = "logical"))
-
-        # get all the column names
-        varNames <- names(airlineColInfo)
-
-        # Define the text data source in hdfs
-        airOnTimeData <- RxTextData(inputDir, colInfo = airlineColInfo, varsToKeep = varNames, fileSystem = hdfsFS)
-
-        # Define the text data source in local system
-        airOnTimeDataLocal <- RxTextData(source, colInfo = airlineColInfo, varsToKeep = varNames)
-
-        # formula to use
-        formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
-
-3. 使用本地计算上下文对数据运行逻辑回归。
-
-        # Set a local compute context
-        rxSetComputeContext("local")
-
-        # Run a logistic regression
-        system.time(
-           modelLocal <- rxLogit(formula, data = airOnTimeDataLocal)
-        )
-
-        # Display a summary
-        summary(modelLocal)
-
-    应会看到以类似于以下代码段的行结尾的输出：
-
-        Data: airOnTimeDataLocal (RxTextData Data Source)
-        File name: /tmp/AirOnTimeCSV2012
-        Dependent variable(s): ARR_DEL15
-        Total independent variables: 634 (Including number dropped: 3)
-        Number of valid observations: 6005381
-        Number of missing observations: 91381
-        -2*LogLikelihood: 5143814.1504 (Residual deviance on 6004750 degrees of freedom)
-
-        Coefficients:
-                         Estimate Std. Error z value Pr(>|z|)
-         (Intercept)   -3.370e+00  1.051e+00  -3.208  0.00134 **
-         ORIGIN=JFK     4.549e-01  7.915e-01   0.575  0.56548
-         ORIGIN=LAX     5.265e-01  7.915e-01   0.665  0.50590
-         ......
-         DEST=SHD       5.975e-01  9.371e-01   0.638  0.52377
-         DEST=TTN       4.563e-01  9.520e-01   0.479  0.63172
-         DEST=LAR      -1.270e+00  7.575e-01  -1.676  0.09364 .
-         DEST=BPT         Dropped    Dropped Dropped  Dropped
-
-         ---
-
-         Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-         Condition number of final variance-covariance matrix: 11904202
-         Number of iterations: 7
-
-4. 使用 Spark 上下文运行相同的逻辑回归。 Spark 上下文将处理进程分布到 HDInsight 群集的所有辅助角色节点上。
-
-        # Define the Spark compute context
-        mySparkCluster <- RxSpark()
-
-        # Set the compute context
-        rxSetComputeContext(mySparkCluster)
-
-        # Run a logistic regression
-        system.time(  
-           modelSpark <- rxLogit(formula, data = airOnTimeData)
-        )
-
-        # Display a summary
-        summary(modelSpark)
-
+借助计算上下文，用户可控制是在边缘节点上本地执行计算，还是将计算分布到 HDInsight 群集的节点之间。  有关使用 RStudio Server 计算上下文设置的示例，请参阅[机器学习服务中使用 RStudio Server 的 Azure HDInsight 群集上执行 R 脚本](machine-learning-services-quickstart-job-rstudio.md)。
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>将 R 代码分布到多个节点
 

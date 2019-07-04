@@ -8,39 +8,39 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3e9885466d422a0428311ed3013e2ab34341cd25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24c2bfa4aae94642d3ed66f2cfa6e31ba1e6b19a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391447"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67457235"
 ---
-临时 OS 磁盘是本地的虚拟机 (VM) 存储上创建并不会保留到远程 Azure 存储。 临时 OS 磁盘适用于无状态工作负载，其中应用程序容错的单个 VM 失败，但更为关注大规模部署所需的时间或时间进行映像重置单个 VM 实例。 也很适合使用经典部署模型转移到 Resource Manager 部署模型部署的应用程序。 使用 Ephemeral OS 磁盘，你会发现对 OS 磁盘的读/写延迟较低，并且 VM 重置映像速度较快。 此外，临时 OS 磁盘是免费的则会产生的 OS 磁盘存储免费。 
+临时 OS 磁盘在本地虚拟机 (VM) 存储中创建，不保存到远程 Azure 存储。 临时 OS 磁盘适用于无状态工作负荷，在此类工作负荷中，应用程序可以容忍单个 VM 故障，但更加关注进行大规模部署所需的时间或者重置单个 VM 实例所需的时间。 它还适合将通过经典部署模型部署的应用程序移到资源管理器部署模型。 使用临时 OS 磁盘时，会观察到通过 OS 磁盘进行读取/写入时的延迟更低，VM 重置映像速度会更快。 另外，临时 OS 磁盘免费，因此不需为 OS 磁盘支付存储费用。 
  
-临时磁盘的关键功能包括： 
-- 它们可以用于 Marketplace 映像和自定义映像。
-- 可以将 VM 映像部署到虚拟机缓存的大小。
-- 能够快速重置或重置到原始的启动状态其虚拟机的映像。  
-- 较低的运行时延迟类似于临时磁盘。 
-- OS 磁盘不收费。 
+临时磁盘 (ephemeral disk) 的重要功能包括： 
+- 可以与市场映像和自定义映像配合使用。
+- 部署 VM 映像时，其大小上限取决于 VM 缓存的大小。
+- 能够将其 VM 或 VM 映像快速重置为原始启动状态。  
+- 与临时磁盘 (temporary disk) 一样降低运行时延迟。 
+- OS 磁盘免费。 
  
  
-持久性和临时 OS 磁盘之间的主要差异：
+持久 OS 磁盘和临时 OS 磁盘的主要区别：
 
-|                             | 持久性 OS 磁盘                          | 临时 OS 磁盘                              |    |
+|                             | 持久 OS 磁盘                          | 临时 OS 磁盘                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| OS 磁盘的大小限制      | 2 个 TiB                                                                                        | 缓存大小的 VM 大小或 2TiB，两者中较小- [DS](../articles/virtual-machines/linux/sizes-general.md)， [ES](../articles/virtual-machines/linux/sizes-memory.md)， [M](../articles/virtual-machines/linux/sizes-memory.md)， [FS](../articles/virtual-machines/linux/sizes-compute.md)，和[GS](../articles/virtual-machines/linux/sizes-memory.md)              |
-| 支持的 VM 大小          | 全部                                                                                          | DSv1、 DSv2、 DSv3、 esv3 系列、 Fs、 FsV2、 GS、 M                                               |
-| 磁盘类型支持           | 托管和非托管 OS 磁盘                                                                | 托管的 OS 磁盘                                                               |
+| OS 磁盘的大小限制      | 2 TiB                                                                                        | 与 VM 大小相对应的缓存大小或 2TiB，具体取决于哪一个更小 - [DS](../articles/virtual-machines/linux/sizes-general.md)、[ES](../articles/virtual-machines/linux/sizes-memory.md)、[M](../articles/virtual-machines/linux/sizes-memory.md)、[FS](../articles/virtual-machines/linux/sizes-compute.md) 和 [GS](../articles/virtual-machines/linux/sizes-memory.md)              |
+| 支持的 VM 大小          | 全部                                                                                          | DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
+| 磁盘类型支持           | 托管和非托管 OS 磁盘                                                                | 仅托管 OS 磁盘                                                               |
 | 区域支持              | 所有区域                                                                                  | 所有区域                              |
-| 数据暂留            | 写入到 OS 磁盘的 OS 磁盘数据存储在 Azure 存储                                  | 写入到 OS 磁盘的数据存储到的本地 VM 存储并不会保留到 Azure 存储。 |
-| 停止解除分配状态      | 可以停止解除分配，并从已停止解除分配状态重新启动 Vm 和规模集实例 | Vm 和规模集实例不能为已停止解除分配                                  |
-| 专用的 OS 磁盘支持 | 是                                                                                          | 否                                                                                 |
-| OS 磁盘重设大小              | 支持的 VM 创建期间和之后 VM 处于停止解除分配                                | 仅在创建 VM 期间支持                                                  |
-| 为新的 VM 大小重设大小   | OS 磁盘数据保留                                                                    | OS 磁盘上的数据之后，操作系统是重新预配                                      |
+| 数据暂留            | 写入 OS 磁盘的 OS 磁盘数据存储在 Azure 存储中                                  | 写入 OS 磁盘的数据存储到本地 VM 存储，不保存到 Azure 存储。 |
+| “已停止-解除分配”状态      | 可以先将 VM 和规模集实例停止-解除分配，然后再将其从“已停止-解除分配”状态重启 | 不能将 VM 和规模集实例停止-解除分配                                  |
+| 专用 OS 磁盘支持 | 是                                                                                          | 否                                                                                 |
+| OS 磁盘重设大小              | 在 VM 创建期间以及将 VM 停止-解除分配后均受支持                                | 仅在 VM 创建期间受支持                                                  |
+| 将大小重设为新的 VM 大小   | 保留 OS 磁盘数据                                                                    | 删除 OS 磁盘上的数据并重新预配 OS                                      |
 
 ## <a name="scale-set-deployment"></a>规模集部署  
-创建使用临时 OS 磁盘的规模集的过程是将添加`diffDiskSettings`属性设置为`Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile`模板中的资源类型。 此外，缓存策略必须设置为`ReadOnly`临时 OS 磁盘。 
+创建一个使用临时 OS 磁盘的规模集时，其过程很简单，就是将 `diffDiskSettings` 属性添加到模板中的 `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` 资源类型。 另外，对于临时 OS 磁盘，必须将缓存策略设置为 `ReadOnly`。 
 
 
 ```json
@@ -84,7 +84,7 @@ ms.locfileid: "66391447"
 ```
 
 ## <a name="vm-deployment"></a>VM 部署 
-可以使用临时 OS 磁盘使用模板部署 VM。 若要创建使用临时 OS 磁盘的 VM 的过程是添加`diffDiskSettings`模板中的 microsoft.compute/virtualmachines 资源类型的属性。 此外，缓存策略必须设置为`ReadOnly`临时 OS 磁盘。 
+可以通过模板部署使用临时 OS 磁盘的 VM。 创建一个使用临时 OS 磁盘的 VM 时，其过程很简单，就是将 `diffDiskSettings` 属性添加到模板中的 Microsoft.Compute/virtualMachines 资源类型。 另外，对于临时 OS 磁盘，必须将缓存策略设置为 `ReadOnly`。 
 
 ```json
 { 
@@ -121,8 +121,8 @@ ms.locfileid: "66391447"
 ```
 
 
-## <a name="reimage-a-vm-using-rest"></a>重置映像虚拟机使用 REST
-目前，若要重置映像使用临时 OS 磁盘的虚拟机实例的唯一方法是通过使用 REST API。 对于规模集，正在重置映像已可通过 Powershell、 CLI 和门户。
+## <a name="reimage-a-vm-using-rest"></a>使用 REST 重置 VM 映像
+目前，若要重置使用临时 OS 磁盘的虚拟机实例的映像，唯一方法是使用 REST API。 对于规模集，已经可以通过 Powershell、CLI 和门户来重置映像。
 
 ```
 POST https://management.azure.com/subscriptions/{sub-
@@ -131,37 +131,37 @@ id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}
  
 ## <a name="frequently-asked-questions"></a>常见问题
 
-**问：本地 OS 磁盘大小是多少？**
+**问：本地 OS 磁盘的大小是多少？**
 
-答：对于预览版，我们将支持的平台和/或最大 VM 缓存大小，将在其中放置虚拟机作为在同一节点上本地所有读/写到 OS 磁盘映像。 
+答：对于预览版，我们支持的平台和/或映像的大小上限取决于 VM 缓存大小，其中的 OS 磁盘的所有读取/写入操作都将在本地进行，使用与虚拟机相同的节点。 
 
-**问：可以调整大小临时 OS 磁盘？**
+**问：可以重设临时 OS 磁盘的大小吗？**
 
-答：否，临时 OS 磁盘预配后，不能调整 OS 磁盘。 
+答：不可以。预配临时 OS 磁盘以后，就不能重设其大小。 
 
-**问：可以将托管磁盘附加到临时 VM？**
+**问：是否可以将托管磁盘附加到临时 VM？**
 
-答：是的可以将托管的数据磁盘附加到使用临时 OS 磁盘的 VM。 
+答：是的，可以将托管数据磁盘附加到使用临时 OS 磁盘的 VM。 
 
-**问：将所有 VM 大小都支持临时 OS 磁盘？**
+**问：临时 OS 磁盘是否支持所有 VM 大小？**
 
-答：不能，所有高级存储 VM 大小支持 （DS、 ES、 FS、 GS 和 M） 除外 B 系列、 N 系列和 H 系列大小。  
+答：否。支持除 B 系列、N 系列和 H 系列大小之外的所有高级存储 VM 大小（DS、ES、FS、GS 和 M）。  
  
-**问：可以临时 OS 磁盘应用到现有的 Vm 和规模集？**
+**问：是否可以对现有的 VM 和规模集应用临时 OS 磁盘？**
 
-答：不会，临时 OS 磁盘只能使用 vm 和规模集创建。 
+答：否。只能在 VM 和规模集创建期间使用临时 OS 磁盘。 
 
-**问：可以混合使用临时并处于正常状态在规模集中的 OS 磁盘？**
+**问：是否可以在规模集中混合使用临时 OS 磁盘和常规 OS 磁盘？**
 
-答：否，不能具有相同的规模集内的临时和永久 OS 磁盘实例的组合。 
+答：否。不能在同一规模集中混合使用临时 OS 磁盘实例和持久 OS 磁盘实例。 
 
-**问：可以使用 Powershell 或 CLI 创建临时 OS 磁盘？**
+**问：是否可以通过 Powershell 或 CLI 创建临时 OS 磁盘？**
 
-答：是的您可以使用临时 OS 磁盘使用 REST、 模板、 PowerShell 和 CLI 创建 Vm。
+答：是的，可以通过 REST、模板、PowerShell 或 CLI 创建使用临时 OS 磁盘的 VM。
 
-**问：使用临时 OS 磁盘不支持哪些功能？**
+**问：临时 OS 磁盘不支持哪些功能？**
 
-答：不支持临时磁盘：
+答：临时磁盘不支持：
 - 捕获 VM 映像
 - 磁盘快照 
 - Azure 磁盘加密 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 35ef708cdcedc2d7bafedb8bf3686e4b468177df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc2c3e557f295bd3125c09d9b839716159dcf50b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723686"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446461"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>将 Azure Kubernetes 服务与 Apache Kafka on HDInsight 配合使用
 
@@ -35,7 +35,7 @@ ms.locfileid: "64723686"
 * Azure Kubernetes 服务
 * Azure 虚拟网络
 
-此外，本文档还假设读者已学完了 [Azure Kubernetes 服务教程](../../aks/tutorial-kubernetes-prepare-app.md)。 本教程将创建一个容器服务、Kubernetes 群集和容器注册表，并配置 `kubectl` 实用工具。
+此外，本文档还假设读者已学完了 [Azure Kubernetes 服务教程](../../aks/tutorial-kubernetes-prepare-app.md)。 本文将创建一个容器服务下创建 Kubernetes 群集，容器注册表，并配置`kubectl`实用程序。
 
 ## <a name="architecture"></a>体系结构
 

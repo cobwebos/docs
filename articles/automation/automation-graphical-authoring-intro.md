@@ -4,17 +4,17 @@ description: 图形创作可以让你在不使用代码的情况下，为 Azure 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d7626706951cc522dce9c6d70251455e64300bc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60740542"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476695"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作
 
@@ -44,7 +44,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 库控件是你选择要添加到 Runbook 的[活动](#activities)的地方。 可以将活动添加到画布，再将它们连接到其他活动。 它包括下表中描述的四个部分：
 
-| 部分 | Description |
+| 部分 | 描述 |
 |:--- |:--- |
 | Cmdlet |包括可以在 Runbook 中使用的所有 cmdlet。 Cmdlet 按模块组织。 所有安装在自动化帐户中的模块都可用。 |
 | runbook |包括你自动化帐户中的 Runbook。 这些 Runbook 可以添加到画布中用作子 Runbook。 仅显示核心类型与所编辑 Runbook 相同的 Runbook；对于图形 Runbook，仅显示基于 PowerShell 的 Runbook，而对于图形 PowerShell 工作流 Runbook，则仅显示基于 PowerShell 工作流的 Runbook。 |
@@ -109,7 +109,7 @@ Azure 自动化中的每个 Runbook 都有草稿版和已发布版。 只有已�
 
 指定某个参数的值时，可以选择一个数据源，以便确定如何指定该值。 可用于特定参数的数据源将取决于该参数的有效值。 例如，对于不允许 Null 值的参数，Null 不会是可用选项。
 
-| 数据源 | Description |
+| 数据源 | 描述 |
 |:--- |:--- |
 | 常量值 |键入参数的值。 此参数仅适用于以下数据类型：Int32、Int64、String、Boolean、DateTime、Switch。 |
 | 活动输出 |工作流中某个位于当前活动前面的活动的输出。 将列出所有有效的活动。 只选择要将其输出用于参数值的活动。 如果该活动输出的对象具有多个属性，可以在选择活动之后键入属性的名称。 |
@@ -139,7 +139,7 @@ Azure 自动化中的每个 Runbook 都有草稿版和已发布版。 只有已�
 
 重试条件可以使用名为 $RetryData 的变量提供活动重试相关信息的访问权限。 此变量具有下表中的属性。
 
-| 属性 | Description |
+| 属性 | 描述 |
 |:--- |:--- |
 | NumberOfAttempts |活动已运行的次数。 |
 | Output |活动上次运行的输出。 |
@@ -325,10 +325,10 @@ Runbook 可能会要求用户提供输入（如果该用户是通过 Azure 门�
 | 属性 | Description |
 |:--- |:--- |
 | Name |参数的唯一名称。 此项只能包含字母数字字符，不能包含空格。 |
-| Description |针对输入参数的可选说明。 |
+| 描述 |针对输入参数的可选说明。 |
 | Type |参数值应有的数据类型。 提示输入时，Azure 门户将针对每个参数的数据类型提供相应的控件。 |
-| Mandatory |指定是否必须为该参数提供值。 如果没有为每个没有定义默认值的必需参数提供值，则无法启动 Runbook。 |
-| Default Value |指定在未提供值的情况下，对参数使用什么值。 此项可以为 Null 或特定值。 |
+| 必需 |指定是否必须为该参数提供值。 如果没有为每个没有定义默认值的必需参数提供值，则无法启动 Runbook。 |
+| 默认值 |指定在未提供值的情况下，对参数使用什么值。 此项可以为 Null 或特定值。 |
 
 ### <a name="runbook-output"></a>Runbook 输出
 

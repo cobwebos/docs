@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 43ba7593336372bbbd7a3a4bb9821665a42bbf29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52a9ba20b60e8ef6cdb743546cd842e4ee24b3fd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752176"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441920"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>预览版-有关群集节点和控制对所需的端口和服务在 Azure Kubernetes 服务 (AKS) 的访问限制传出流量
 
@@ -30,19 +30,22 @@ ms.locfileid: "66752176"
 
 你需要 Azure CLI 版本 2.0.66 或更高版本安装和配置。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
-若要创建的 AKS 群集，可以限制传出流量，请先启用你的订阅上的一个功能标志。 此功能注册配置任何 AKS 群集中创建要使用的基础系统从 MCR 或 ACR 的容器映像。 若要注册*AKSLockingDownEgressPreview*功能标志，请使用[az 功能注册][ az-feature-register]命令，在下面的示例所示：
+若要创建的 AKS 群集，可以限制传出流量，请先启用你的订阅上的一个功能标志。 此功能注册配置任何 AKS 群集中创建要使用的基础系统从 MCR 或 ACR 的容器映像。 若要注册*AKSLockingDownEgressPreview*功能标志，请使用[az 功能注册][az-feature-register]命令，在下面的示例所示：
+
+> [!CAUTION]
+> 注册时对某一订阅功能，目前你无法取消注册该功能。 启用某些预览功能后，可能会对所有 AKS 群集，然后在订阅中创建使用默认值。 不要启用预览功能在生产订阅。 使用单独的订阅来测试预览功能和收集反馈。
 
 ```azurecli-interactive
 az feature register --name AKSLockingDownEgressPreview --namespace Microsoft.ContainerService
 ```
 
-状态显示为“已注册”需要几分钟时间  。 可以使用在注册状态检查[az 功能列表][ az-feature-list]命令：
+状态显示为“已注册”需要几分钟时间  。 可以使用在注册状态检查[az 功能列表][az-feature-list]命令：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSLockingDownEgressPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，刷新的注册*Microsoft.ContainerService*使用的资源提供程序[az provider register] [ az-provider-register]命令：
+准备就绪后，刷新的注册*Microsoft.ContainerService*使用的资源提供程序[az provider register][az-provider-register]命令：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -54,7 +57,7 @@ az provider register --namespace Microsoft.ContainerService
 
 若要增加 AKS 群集的安全，您可能希望限制传出流量。 群集配置为提取从 MCR 或 ACR 的容器映像的基础系统。 如果你锁定以这种方式的传出流量，必须定义特定的端口和以便正确地与所需的外部服务进行通信的 AKS 节点的 Fqdn。 如果没有这些授权的端口和 Fqdn，AKS 节点不能与 API 服务器进行通信或安装核心组件。
 
-可以使用[Azure 防火墙][ azure-firewall]或第三方防火墙设备来保护你的出口流量并定义这些所需端口和地址。 AKS 不为您自动创建这些规则。 以下端口和地址是用于引用在网络防火墙中创建合适的规则。
+可以使用[Azure 防火墙][azure-firewall]或第三方防火墙设备来保护你的出口流量并定义这些所需端口和地址。 AKS 不为您自动创建这些规则。 以下端口和地址是用于引用在网络防火墙中创建合适的规则。
 
 在 AKS，有两个集的端口和地址：
 
@@ -62,7 +65,7 @@ az provider register --namespace Microsoft.ContainerService
 * [地址和端口的 AKS 群集中的可选建议](#optional-recommended-addresses-and-ports-for-aks-clusters)不需要的所有方案中，但与其他服务集成，例如 Azure Monitor 不会正常工作。 查看此列表的可选端口和 Fqdn，并授权的任何服务和在 AKS 群集中使用的组件。
 
 > [!NOTE]
-> 限制传出流量仅适用于新的 AKS 群集创建后启用功能标志注册。 对于现有群集，[执行群集升级操作][ aks-upgrade]使用`az aks upgrade`命令之前将限制传出流量。
+> 限制传出流量仅适用于新的 AKS 群集创建后启用功能标志注册。 对于现有群集，[执行群集升级操作][aks-upgrade]使用`az aks upgrade`命令之前将限制传出流量。
 
 ## <a name="required-ports-and-addresses-for-aks-clusters"></a>所需的端口和地址为 AKS 群集
 

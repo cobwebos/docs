@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: fa82725174645a0e5f1d957d8423c97547682542
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 489c94f37b6c88db001dee437cc6ed89383e6053
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065483"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442178"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -58,7 +58,7 @@ PSFunctionApp
 
 在项目的根目录，一开始是共享[ `host.json` ](functions-host-json.md)可用于配置函数应用的文件。 每个函数有具有其自己的代码文件 (.ps1) 和绑定配置文件的文件夹 (`function.json`)。 Function.json 文件父目录的名称始终是函数的名称。
 
-某些绑定需要存在`extensions.csproj`文件。 绑定中时所需的扩展[版本 2.x](functions-versions.md) Functions 运行时，定义在`extensions.csproj`文件，并且在实际的库文件`bin`文件夹。 本地开发时，必须[注册绑定扩展](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+某些绑定需要存在`extensions.csproj`文件。 绑定中时所需的扩展[版本 2.x](functions-versions.md) Functions 运行时，定义在`extensions.csproj`文件，并且在实际的库文件`bin`文件夹。 本地开发时，必须[注册绑定扩展](functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
 在 PowerShell 函数应用中，您可以选择可能`profile.ps1`用于运行函数应用开始运行时 (也称为 *[冷启动](#cold-start)* 。 有关详细信息，请参阅[PowerShell 配置文件](#powershell-profile)。
 
@@ -84,8 +84,8 @@ $TriggerMetadata.sys
 | 属性   | 说明                                     | Type     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | Utc 格式，触发该函数是时，        | DateTime |
-| MethodName | 已触发的函数的名称     | 字符串   |
-| RandGuid   | 将唯一 guid 传递给此函数的执行 | 字符串   |
+| MethodName | 已触发的函数的名称     | string   |
+| RandGuid   | 将唯一 guid 传递给此函数的执行 | string   |
 
 每个触发器类型具有一组不同的元数据。 例如，`$TriggerMetadata`有关`QueueTrigger`包含`InsertionTime`， `Id`， `DequeueCount`，等等。 队列触发器的元数据的详细信息，请转到[的队列触发器的官方文档](functions-bindings-storage-queue.md#trigger---message-metadata)。 在查看文档[触发器](functions-triggers-bindings.md)您正在使用以查看即将出现的内部触发器元数据。
 
@@ -133,7 +133,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 以下是有效的参数以调用`Push-OutputBinding`:
 
-| Name | Type | 位置 | 描述 |
+| 名称 | Type | 位置 | 描述 |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | String | 第 | 要设置的输出绑定的名称。 |
 | **`-Value`** | Object | 2 | 输出绑定的值你想要设置，这通过管道 ByValue 接受的。 |
@@ -283,7 +283,7 @@ Azure Functions，可定义的阈值级别，以使其很容易地控制方式�
 所有触发器和绑定为几个真实的数据类型都表示在代码中：
 
 * Hashtable
-* 字符串
+* string
 * byte[]
 * int
 * double
@@ -304,12 +304,12 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 | 属性  | 说明                                                    | Type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | 一个包含请求正文的对象。 `Body` 序列化为基于数据的最佳类型。 例如，如果数据为 JSON 时，它在作为传递哈希表。 如果数据是一个字符串，它是在作为字符串传递。 | 对象 |
+| **`Body`**    | 一个包含请求正文的对象。 `Body` 序列化为基于数据的最佳类型。 例如，如果数据为 JSON 时，它在作为传递哈希表。 如果数据是一个字符串，它是在作为字符串传递。 | object |
 | **`Headers`** | 一个包含请求标头的字典。                | Dictionary<string,string><sup>*</sup> |
-| **`Method`** | 请求的 HTTP 方法。                                | 字符串                    |
+| **`Method`** | 请求的 HTTP 方法。                                | string                    |
 | **`Params`**  | 一个包含请求的路由参数的对象。 | Dictionary<string,string><sup>*</sup> |
 | **`Query`** | 一个包含查询参数的对象。                  | Dictionary<string,string><sup>*</sup> |
-| **`Url`** | 请求的 URL。                                        | 字符串                    |
+| **`Url`** | 请求的 URL。                                        | string                    |
 
 <sup>*</sup> 所有`Dictionary<string,string>`密钥不区分大小写。
 
@@ -319,8 +319,8 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 | 属性      | 说明                                                 | Type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | 一个包含响应正文的对象。           | 对象                    |
-| **`ContentType`** | 设置响应的内容类型的简称。 | 字符串                    |
+| **`Body`**  | 一个包含响应正文的对象。           | object                    |
+| **`ContentType`** | 设置响应的内容类型的简称。 | string                    |
 | **`Headers`** | 一个包含响应标头的对象。               | 字典或哈希表   |
 | **`StatusCode`**  | 响应的 HTTP 状态代码。                       | 字符串或整数             |
 

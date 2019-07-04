@@ -4,17 +4,17 @@ description: VM 管理解决方案启动和停止 Azure 资源管理器虚拟机
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d4e1ad106b928c41bd6940d7c3713b5fb34afe3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39ba577580424bf8283d64198bb3068b82869c51
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389107"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476878"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -140,7 +140,7 @@ ms.locfileid: "66389107"
    在此处，系统会提示：
    - 指定“目标资源组名称”。  这些值是包含此解决方案要管理的 VM 的资源组名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 如果想要针对订阅中的所有资源组内的 VM，可以使用通配符。 此值存储在 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 变量中。
    - 指定“VM 排除列表(字符串)”。  该值是目标资源组中的一个或多个虚拟机的名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 支持使用通配符。 此值存储在 **External_ExcludeVMNames** 变量中。
-   - 选择“计划”。  该值是启动和停止目标资源组中 VM 的周期性日期和时间。 默认情况下，该计划配置为从现在起 30 分钟后。 无法选择其他区域。 若要在配置解决方案后将计划配置为特定时区，请参阅[修改启动和关闭计划](#modify-the-startup-and-shutdown-schedules)。
+   - 选择“计划”。  选择日期和时间为您的计划。 从所选的时间开始，将创建每日计划重复。 无法选择其他区域。 若要在配置解决方案后将计划配置为特定时区，请参阅[修改启动和关闭计划](#modify-the-startup-and-shutdown-schedules)。
    - 要从操作组接收“电子邮件通知”，请接受默认值“是”，并提供有效的电子邮件地址   。 如果选择了“否”，但后来想要接收电子邮件通知，则可以使用有效的电子邮件地址（以逗号分隔）更新创建的[操作组](../azure-monitor/platform/action-groups.md)  。 还需要启用以下警报规则：
 
      - AutoStop_VM_Child

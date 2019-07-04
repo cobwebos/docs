@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: cccfb749af07d1deeeda6e94de9c2cd5ce5396f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ebe41ba61ac5136900328db9c35acb8551dcd5b2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079660"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428664"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-search"></a>Azure 搜索的 OData 表达式语法参考
 
-Azure 搜索使用[OData 表达式](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)作为在整个 API 的参数。 OData 表达式用于最常`$orderby`和`$filter`参数。 这些表达式可能很复杂，包含多个子句、 函数和运算符。 但是，即使简单的 OData 表达式，如 Azure 搜索 REST API 的很多部分使用路径的属性。 例如，使用路径表达式来指代的复杂字段中的 API，如列表时子字段中的所有位置的子字段[建议器](index-add-suggesters.md)即[计分函数](index-add-scoring-profiles.md)，则`$select`参数或甚至[现场的搜索中 Lucene 查询](query-lucene-syntax.md)。
+Azure 搜索使用[OData 表达式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)作为在整个 API 的参数。 OData 表达式用于最常`$orderby`和`$filter`参数。 这些表达式可能很复杂，包含多个子句、 函数和运算符。 但是，即使简单的 OData 表达式，如 Azure 搜索 REST API 的很多部分使用路径的属性。 例如，使用路径表达式来指代的复杂字段中的 API，如列表时子字段中的所有位置的子字段[建议器](index-add-suggesters.md)即[计分函数](index-add-scoring-profiles.md)，则`$select`参数或甚至[现场的搜索中 Lucene 查询](query-lucene-syntax.md)。
 
 本文介绍了所有这些形式的 OData 表达式使用形式语法。 此外，还有[交互图](#syntax-diagram)帮助直观地浏览语法。
 

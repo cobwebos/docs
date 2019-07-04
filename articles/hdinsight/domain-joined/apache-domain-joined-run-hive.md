@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d485799547644ccb3c34a8841e8b20d8a45444bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ffe2cfc19a7ce94e47046839f6973793b73c118
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707355"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441411"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 了解如何为 Apache Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置这些策略后，可以使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
@@ -37,7 +37,7 @@ ms.locfileid: "64707355"
     目前，Ranger 只能处理 Yarn 和 Hive。
 
 ## <a name="create-domain-users"></a>创建域用户
-请参阅[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)，了解如何创建 hiveruser1 和 hiveuser2。 本教程会使用这两个用户帐户。
+请参阅[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)，了解如何创建 hiveruser1 和 hiveuser2。 在本文中使用的两个用户帐户。
 
 ## <a name="create-ranger-policies"></a>创建 Ranger 策略
 本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)的教程中创建的。 在下一部分，会在 Excel 中测试两个策略。

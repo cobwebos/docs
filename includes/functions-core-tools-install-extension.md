@@ -2,48 +2,42 @@
 title: include 文件
 description: include 文件
 services: functions
-author: craigshoemaker
+author: ggailey777
 ms.service: functions
 ms.topic: include
-ms.date: 09/25/2018
-ms.author: cshoe
+ms.date: 05/25/2019
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: fc5b43dcdee394fea023124171fb42c1a18224dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d62da82b4a4dd35532dd8776a9111689db469201
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172716"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448369"
 ---
-扩展捆绑包进行发布的 Azure Functions 团队可通过中的设置的所有绑定*host.json*文件。 进行本地开发，请确保具有最新版本[Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#install-the-azure-functions-core-tools)。
+## <a name="register-extensions"></a>注册扩展
 
-若要使用扩展捆绑包，更新*host.json*文件以包括以下条目`extensionBundle`:
+除了 HTTP 和计时器触发器，Functions 绑定在运行时版本 2.x 实现为扩展包。 在版本 2.x 的 Azure Functions 运行时，您必须显式注册在函数中使用的绑定类型的扩展。 此例外情况是 HTTP 绑定和计时器触发器，不需要扩展。
 
-```json
-{
-    "version": "2.0",
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[1.*, 2.0.0)"
-    }
-}
+您可以选择单独安装绑定扩展，或者可以添加对 host.json 项目文件的扩展名捆绑包引用。 扩展捆绑包中删除拥有包兼容性问题时使用多个绑定类型的机会。 它是注册绑定扩展的推荐的方法。 扩展捆绑包也就不再需要安装.NET Core 2.x SDK。 
+
+### <a name="extension-bundles"></a>扩展捆绑包
+
+[!INCLUDE [Register extensions](functions-extension-bundles.md)]
+
+若要了解详细信息，请参阅[注册 Azure Functions 绑定扩展](../articles/azure-functions/functions-bindings-register.md#extension-bundles)。 将绑定添加到 functions.json 文件之前，您应将扩展捆绑包添加到 host.json。
+
+### <a name="register-individual-extensions"></a>注册单独的扩展
+
+如果你需要安装未在绑定中的扩展，可以手动注册特定绑定的单个扩展的包。 
+
+> [!NOTE]
+> 若要手动注册扩展，通过使用`func extensions install`，必须具有.NET Core 2.x SDK 安装。
+
+更新 function.json 文件以包含函数所需的所有绑定后，请在项目文件夹中运行以下命令  。
+
+```bash
+func extensions install
 ```
 
-- `id`属性引用的命名空间的 Microsoft Azure Functions 扩展捆绑包。
-- `version`引用的包的版本。
-
-作为捆绑包更改中的包捆绑在版本增量。 主版本的更改会发生仅移动时在绑定中的包的主版本。 `version`属性使用[间隔表示法，用于指定版本范围](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards)。 Functions 运行时总是选择接口定义的版本范围或间隔的最高允许版本。
-
-后在项目中引用的扩展捆绑包，然后所有默认绑定都可供你的函数。 中提供的绑定[扩展包](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)是：
-
-|package  |Version  |
-|---------|---------|
-|Microsoft.Azure.WebJobs.Extensions.CosmosDB|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.DurableTask|1.8.0|
-|Microsoft.Azure.WebJobs.Extensions.EventGrid|2.0.0|
-|Microsoft.Azure.WebJobs.Extensions.EventHubs|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SendGrid|3.0.0|
-|Microsoft.Azure.WebJobs.Extensions.ServiceBus|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SignalRService|1.0.0|
-|Microsoft.Azure.WebJobs.Extensions.Storage|3.0.4|
-|Microsoft.Azure.WebJobs.Extensions.Twilio|3.0.0|
+该命令读取 function.json  文件以了解所需的程序包，安装这些包并重新生成扩展项目。 它在当前版本中添加任何新绑定，但不更新现有绑定。 使用 `--force` 选项可在安装新版本时将现有绑定更新为最新版本。

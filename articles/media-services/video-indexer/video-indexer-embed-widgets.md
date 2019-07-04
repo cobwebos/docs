@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/30/2019
 ms.author: juliako
-ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 937dc6eefbbfc37aaeee0801f410f9f99cb0c787
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735074"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488684"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
 
@@ -29,22 +29,24 @@ ms.locfileid: "66735074"
 
 **认知见解**小组件包括从视频索引过程中提取的所有视觉见解。 见解小组件支持以下可选的 URL 参数：
 
-|Name|定义|描述|
+|名称|定义|描述|
 |---|---|---|
 |widgets|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只呈现人物和品牌 UI 的见解<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>使用版本 2 时不支持在 URL 中提供<br/><br/>**注意：** 在版本 2 中不支持小组件 URL 参数。 |
+|区域设置|简短的语言代码|控制 insights 语言。 默认为 `en`。 例如：`language=de`。|
+|Tab|默认选择的选项卡|控制默认情况下呈现 insights 选项卡。 `tab=timeline` 选择时间线选项卡中呈现见解。|
 
 ### <a name="player-widget"></a>播放器小组件
 
 **播放器**小组件用于通过自适应比特率来流式传输视频。 播放器小组件支持以下可选的 URL 参数：
 
-|Name|定义|描述|
+|名称|定义|描述|
 |---|---|---|
-|t|距离开始的秒数|让播放器从给定时间点开始播放。<br/>示例：t=60|
-|captions|语言代码|在小组件加载过程中提取给定语言的字幕，使之在字幕菜单中可用。<br/>示例：captions=en-US|
-|showCaptions|布尔值|使播放器与已启用的字幕一起加载。<br/>示例：showCaptions=true|
-|type||激活音频播放器外观（视频部件已删除）。<br/>示例：type=audio|
-|autoplay|布尔值|确定播放器是否会在加载后开始播放视频（默认值为 true）。<br/>示例：autoplay=false|
-|language|语言代码|控制播放器语言（默认值为 en-US）<br/>示例：language=de-DE|
+|t|数秒内从开始|让播放器从给定时间点开始播放。<br/>示例：`t=60`。|
+|captions|语言代码|在小组件加载过程中提取给定语言的字幕，使之在字幕菜单中可用。<br/>示例：`captions=en-US`。|
+|showCaptions|布尔值|使播放器与已启用的字幕一起加载。<br/>示例：`showCaptions=true`。|
+|type||激活音频播放器外观（视频部件已删除）。<br/>示例：`type=audio`。|
+|autoplay|布尔值|确定播放器是否会在加载后开始播放视频（默认值为 true）。<br/>示例：`autoplay=false`。|
+|language|语言代码|控制播放器语言（默认值为 en-US）<br/>示例：`language=de-DE`。|
 
 ## <a name="embedding-public-content"></a>嵌入公共内容
 
@@ -63,7 +65,7 @@ ms.locfileid: "66735074"
     ![小组件](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
 > [!NOTE]
-> 如果必须共享视频 Url 的问题，请尝试将 location 参数添加到该链接。 参数应设置为[存在视频索引器的 Azure 区域](regions.md)。 例如，`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
+> 如果必须共享视频 Url 的问题，请尝试将 location 参数添加到该链接。 参数应设置为[存在视频索引器的 Azure 区域](regions.md)。 例如，`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 。
 
 ## <a name="embedding-private-content"></a>嵌入专用内容
 

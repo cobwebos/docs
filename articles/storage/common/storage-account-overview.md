@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 00b94174debf915fac3ae5fb37f382c0dc46abfb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 157a421ce2cb4442597bfb0f75ae042a10a8ee03
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755003"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443761"
 ---
 # <a name="azure-storage-account-overview"></a>Azure 存储帐户概述
 
@@ -68,7 +68,7 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 块 blob 存储帐户当前不支持分层热、 冷或存档访问层。
 
-### <a name="filestorage-preview-storage-accounts"></a>文件存储 （预览版） 存储帐户
+### <a name="filestorage-storage-accounts"></a>文件存储存储帐户
 
 文件存储存储帐户是用来存储和创建高级文件共享的专用的存储帐户。 文件存储存储帐户提供唯一专用的性能特征，如 IOPS 爆发。 这些特征的详细信息，请参阅[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)规划指南 》 的文件部分。
 
@@ -88,7 +88,7 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 块 blob 存储帐户提供高级性能层用于存储块 blob 和追加 blob。
 
-文件存储 （预览版） 存储帐户提供 Azure 文件共享的高级性能层。
+文件存储存储帐户提供 Azure 文件共享的高级性能层。
 
 ## <a name="access-tiers-for-block-blob-data"></a>块 Blob 数据的访问层
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 03fcbb0216d85e337b4161aa24ceeb7d3a2bdebe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41a57d1ad5d216797fc60ea13acff346734fdef8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479460"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433631"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
@@ -51,6 +51,9 @@ Azure HDInsight 提供一个称为“脚本操作”的配置方法，该方法�
       * ADLS Gen1:用于访问 Data Lake Storage 的服务主体 HDInsight 必须具有对脚本的读取访问权限。 存储在 Data Lake Storage Gen1 中的脚本的 URI 格式为 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`。
       
       * Azure 存储帐户中的一个 Blob，该存储帐户可以是 HDInsight 群集的主存储帐户，也可以是其附加存储帐户。 在创建群集期间，已将这两种存储帐户的访问权限都授予 HDInsight。
+
+        > [!IMPORTANT]  
+        > 因为它会导致后续脚本操作脚本存储在此处失败不会旋转此 Azure 存储帐户，在存储密钥。
 
       * 公共文件共享服务可通过 http:// 路径访问。 示例包括 Azure Blob、 GitHub、 OneDrive。
 
@@ -147,7 +150,6 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 | --- | --- |
 | 添加 Azure 存储帐户 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`。 请参阅[将其他存储帐户添加到 HDInsight](hdinsight-hadoop-add-storage.md)。 |
 | 安装 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`。 请参阅[在 HDInsight Hadoop 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
-| 安装 Presto |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`。 请参阅 [在基于 Hadoop 的 HDInsight 群集上安装并使用 Presto](hdinsight-hadoop-install-presto.md). |
 | 安装 Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`。 请参阅[在 HDInsight Hadoop 群集上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)。 |
 | 预加载 Hive 库 |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`。 请参阅[创建 HDInsight 群集时添加自定义 Apache Hive 库](hdinsight-hadoop-add-hive-libraries.md)。 |
 

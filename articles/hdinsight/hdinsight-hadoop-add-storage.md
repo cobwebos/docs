@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6b9577bcf8b527abb0cb7b8720ed83ec8321655b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a844465f7ba2222acd7efaf100c7b682c15adb2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724479"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433520"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
@@ -24,7 +24,7 @@ ms.locfileid: "64724479"
 ## <a name="prerequisites"></a>必备组件
 
 * 在 HDInsight Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./hadoop/apache-hadoop-linux-tutorial-get-started.md)。
-* 存储帐户名称和密钥。 请参阅[管理在 Azure 门户中的存储帐户设置](../storage/common/storage-account-manage.md)。
+* 存储帐户名和密钥。 请参阅[在 Azure 门户中管理存储帐户设置](../storage/common/storage-account-manage.md)。
 * [正确大小写格式的群集名称](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name)。
 * 如果使用 PowerShell，你将需要 AZ 模块。  请参阅[Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/overview)。
 * 如果你尚未安装 Azure CLI，请参阅[Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
@@ -196,6 +196,9 @@ jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNA
 重新运行脚本操作__不会__更新密钥，因为该脚本会检查存储帐户的某个条目是否已存在。 如果已存在条目，则不进行任何更改。
 
 若要解决此问题，必须删除存储帐户的现有条目。 按以下步骤删除现有条目：
+
+> [!IMPORTANT]  
+> 不支持旋转附加到群集的主存储帐户的存储密钥。
 
 1. 在 Web 浏览器中，打开 HDInsight 群集的 Ambari Web UI。 该 URI 为 `https://CLUSTERNAME.azurehdinsight.net`。 将 `CLUSTERNAME` 替换为群集的名称。
 

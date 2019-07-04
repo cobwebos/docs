@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: a95baeb60ddff38e2aa1e36e7728c012d9d44930
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1227871f2003ded7b9cb92eaf32bd9a984958f9f
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540702"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537809"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -27,16 +27,18 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 ## <a name="core-concepts"></a>核心概念
 此处介绍基础知识，有关详细概念和介绍，可参阅 [Service Fabric 术语](service-fabric-technical-overview.md)、[应用程序模型](service-fabric-application-model.md)和[支持的编程模型](service-fabric-choose-framework.md)。
 
-### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>设计时：应用程序类型、服务类型，应用程序包和清单、服务包和清单
-应用程序类型是分配给服务类型集合的名称/版本。 这在 ApplicationManifest.xml  文件中定义，该文件嵌入到应用程序包目录中。 然后将应用程序包复制到 Service Fabric 群集的映像存储。 然后，可基于此应用程序类型，创建在群集内运行的命名应用程序。 
+### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>设计时： 服务类型、 服务包和清单、 应用程序类型、 应用程序包和清单
+服务类型是分配给服务的代码包、数据包、配置包的名称/版本。 这在 ServiceManifest.xml 文件中定义。 服务类型组成的可执行代码和服务配置设置，在运行时加载，并供该服务的静态数据。
 
-服务类型是分配给服务的代码包、数据包、配置包的名称/版本。 这在 ServiceManifest.xml 文件中定义，该文件嵌入到服务包目录中。 然后，服务包目录由应用程序包的 *ApplicationManifest.xml* 文件引用。 在群集中创建命名应用程序后，可以从应用程序类型的服务类型之一创建命名服务。 服务类型由其 ServiceManifest.xml  文件描述。 服务类型组成的可执行代码和服务配置设置，在运行时加载，并供该服务的静态数据。
+服务包是一个磁盘目录，其中包含服务类型的 ServiceManifest.xml 文件，该文件引用服务类型的代码、静态数据和配置包。 例如，服务包可能引用构成数据库服务的代码、静态数据和配置包。
+
+应用程序类型是分配给服务类型集合的名称/版本。 这在 ApplicationManifest.xml 文件中定义。
 
 ![Service Fabric 应用程序类型和服务类型][cluster-imagestore-apptypes]
 
-应用程序包是一个磁盘目录，其中包含应用程序类型的 ApplicationManifest.xml  文件，该文件引用构成应用程序类型的每种服务类型的服务包。 例如，电子邮件应用程序类型的应用程序包可能包含对队列服务包、前端服务包和数据库服务包的引用。 应用程序包目录中的文件会复制到 Service Fabric 群集的映像存储中。 
+应用程序包是一个磁盘目录，其中包含应用程序类型的 ApplicationManifest.xml 文件引用构成应用程序类型的每个服务类型的服务包。 例如，电子邮件应用程序类型的应用程序包可能包含对队列服务包、前端服务包和数据库服务包的引用。  
 
-服务包是一个磁盘目录，其中包含服务类型的 ServiceManifest.xml  文件，该文件引用服务类型的代码、静态数据和配置包。 应用程序类型的 ApplicationManifest.xml  文件引用服务包目录中的文件。 例如，服务包可能引用构成数据库服务的代码、静态数据和配置包。
+应用程序包目录中的文件将复制到 Service Fabric 群集的映像存储。 然后，可基于此应用程序类型，创建在群集内运行的命名应用程序。 创建命名的程序后，可以从一个应用程序类型的服务类型创建命名的服务。 
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>运行时：群集和节点、命名的应用程序、命名的服务、分区和副本
 [Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 群集可以扩展到成千上万台计算机。

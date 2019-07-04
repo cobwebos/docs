@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d9b7296a116ebd06542a53087afbd083dbd3a7eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdbbea2d32762d2d4030ec3a10826595dadd371c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696748"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449833"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -111,20 +111,31 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 | 云  | 区域 | 主终结点 URL | 配对区域 | 发现 URL |
 |--------|--------|----------------------|---------------|---------------|
-| 公共 |澳大利亚东部 | https://kailani-aue.one.microsoft.com | 澳大利亚东南部 | https://kailani-aue.one.microsoft.com |
+| 公共 |澳大利亚东部 | https://kailani-aue.one.microsoft.com | 澳大利亚东南部 | https://tm-kailani-aue.one.microsoft.com |
 | 公共 |澳大利亚东南部 | https://kailani-aus.one.microsoft.com | 澳大利亚东部 | https://tm-kailani-aus.one.microsoft.com |
+| 公共 | 巴西南部 | https://brazilsouth01.afs.azure.net | 美国中南部 | https://tm-brazilsouth01.afs.azure.net |
 | 公共 | 加拿大中部 | https://kailani-cac.one.microsoft.com | 加拿大东部 | https://tm-kailani-cac.one.microsoft.com |
 | 公共 | 加拿大东部 | https://kailani-cae.one.microsoft.com | 加拿大中部 | https://tm-kailani.cae.one.microsoft.com |
+| 公共 | 印度中部 | https://kailani-cin.one.microsoft.com | 印度南部 | https://tm-kailani-cin.one.microsoft.com |
 | 公共 | 美国中部 | https://kailani-cus.one.microsoft.com | 美国东部 2 | https://tm-kailani-cus.one.microsoft.com |
 | 公共 | 东亚 | https://kailani11.one.microsoft.com | 东南亚 | https://tm-kailani11.one.microsoft.com |
-| 公共 | 美国东部 | https://kailani1.one.microsoft.com | 美国西部 | https://tm-kailani1.one.microsoft.com |
+| 公共 | East US | https://kailani1.one.microsoft.com | 美国西部 | https://tm-kailani1.one.microsoft.com |
 | 公共 | 美国东部 2 | https://kailani-ess.one.microsoft.com | 美国中部 | https://tm-kailani-ess.one.microsoft.com |
+| 公共 | 日本东部 | https://japaneast01.afs.azure.net | 日本西部 | https://tm-japaneast01.afs.azure.net |
+| 公共 | 日本西部 | https://japanwest01.afs.azure.net | 日本东部 | https://tm-japanwest01.afs.azure.net |
+| 公共 | 韩国中部 | https://koreacentral01.afs.azure.net/ | 韩国南部 | https://tm-koreacentral01.afs.azure.net/ |
+| 公共 | 韩国南部 | https://koreasouth01.afs.azure.net/ | 韩国中部 | https://tm-koreasouth01.afs.azure.net/ |
+| 公共 | 美国中北部 | https://northcentralus01.afs.azure.net | 美国中南部 | https://tm-northcentralus01.afs.azure.net |
 | 公共 | 北欧 | https://kailani7.one.microsoft.com | 西欧 | https://tm-kailani7.one.microsoft.com |
+| 公共 | 美国中南部 | https://southcentralus01.afs.azure.net | 美国中北部 | https://tm-southcentralus01.afs.azure.net |
+| 公共 | 印度南部 | https://kailani-sin.one.microsoft.com | 印度中部 | https://tm-kailani-sin.one.microsoft.com |
 | 公共 | 东南亚 | https://kailani10.one.microsoft.com | 东亚 | https://tm-kailani10.one.microsoft.com |
 | 公共 | 英国南部 | https://kailani-uks.one.microsoft.com | 英国西部 | https://tm-kailani-uks.one.microsoft.com |
 | 公共 | 英国西部 | https://kailani-ukw.one.microsoft.com | 英国南部 | https://tm-kailani-ukw.one.microsoft.com |
+| 公共 | 美国中西部 | https://westcentralus01.afs.azure.net | 美国西部 2 | https://tm-westcentralus01.afs.azure.net |
 | 公共 | 西欧 | https://kailani6.one.microsoft.com | 北欧 | https://tm-kailani6.one.microsoft.com |
-| 公共 | 美国西部 | https://kailani.one.microsoft.com | 美国东部 | https://tm-kailani.one.microsoft.com |
+| 公共 | 美国西部 | https://kailani.one.microsoft.com | East US | https://tm-kailani.one.microsoft.com |
+| 公共 | 美国西部 2 | https://westus201.afs.azure.net | 美国中西部 | https://tm-westus201.afs.azure.net |
 | Government | 美国亚利桑那州政府 | https://usgovarizona01.afs.azure.us | 美国德克萨斯州政府 | https://tm-usgovarizona01.afs.azure.us |
 | Government | 美国德克萨斯州政府 | https://usgovtexas01.afs.azure.us | 美国亚利桑那州政府 | https://tm-usgovtexas01.afs.azure.us |
 

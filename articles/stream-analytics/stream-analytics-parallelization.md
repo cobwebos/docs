@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 55db909f240756200d758fe89aabb217fb380d16
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 4fd862c2442d2637d799a1f690d5f0a091c80562
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329820"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449200"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 流分析中的查询并行化
 本文说明了如何利用 Azure 流分析中的并行化。 了解如何通过配置输入分区和调整分析查询定义来缩放流分析作业。
 作为先决条件，建议先熟悉[了解并调整流式处理单位](stream-analytics-streaming-unit-consumption.md)中所述的流式处理单位的概念。
 
 ## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>流分析作业的组成部分有哪些？
-流分析作业定义包括输入、查询和输出。 输入是作业读取数据流的地方。 查询是用于转换数据输入流的一种方式，而输出则是作业将作业结果发送到的地方。  
+流分析作业定义包括输入、查询和输出。 输入是作业读取数据流的地方。 查询是用于转换数据输入流的一种方式，而输出则是作业将作业结果发送到的地方。
 
 若要对数据进行流式处理，作业需要至少一个输入源。 可将数据流输入源存储在 Azure 事件中心或 Azure Blob 存储中。 有关详细信息，请参阅 [Azure 流分析简介](stream-analytics-introduction.md)和[开始使用 Azure 流分析](stream-analytics-real-time-fraud-detection.md)。
 
@@ -248,11 +248,65 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 > 
 > 
 
+## <a name="achieving-higher-throughputs-at-scale"></a>在规模较大可实现更高的吞吐量
 
+[易并行](#embarrassingly-parallel-jobs)作业是必需的但不是足够，可承受更高的吞吐量规模。 每个存储系统和其对应的 Stream Analytics 输出包含有关如何实现最可能的写入吞吐量变体。 作为任何在缩放方案中，有一些难题就可解决使用正确的配置。 本部分中讨论的一些常见的输出配置，并提供示例以保持每秒 1 K、 5 K 和 10k 事件的引入速率。
 
+以下观察值与无状态 （直通） 查询中，基本 JavaScript UDF 将写入到事件中心、 Azure SQL DB 或 Cosmos DB 使用 Stream Analytics 作业。
 
+#### <a name="event-hub"></a>事件中心
+
+|引入速率 （每秒事件数） | 流式处理单位数 | 输出资源  |
+|--------|---------|---------|
+| 1K     |    第    |  2 个 TU   |
+| 5K     |    6    |  6 TU   |
+| 10K    |    12   |  10 个 TU  |
+
+[事件中心](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs)解决方案的可进行线性伸缩方面流式处理单元 (SU) 数和吞吐量、 进行最有效和高效地进行分析和流式传输超出 Stream Analytics 的数据。 作业可以扩展到 192 个 SU，这大约会转换为最多 200 MB/秒或每日 19 万亿个事件的处理。
+
+#### <a name="azure-sql"></a>Azure SQL
+|引入速率 （每秒事件数） | 流式处理单位数 | 输出资源  |
+|---------|------|-------|
+|    1K   |   3  |  S3   |
+|    5K   |   18 |  P4   |
+|    10K  |   36 |  P6   |
+
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql)编写并行的支持，分区继承被调用，但它默认不启用。 但是，完全并行查询，以及启用继承分区可能不足以实现更高的吞吐量。 SQL 写入吞吐量显著取决于您的 SQL Azure 数据库配置和表架构。 [SQL 输出性能](./stream-analytics-sql-output-perf.md)项目的更多详细信息，可以最大程度提高写入吞吐量的参数。 如中所述[到 Azure SQL 数据库的 Azure Stream Analytics 输出](./stream-analytics-sql-output-perf.md#azure-stream-analytics)文章中，此解决方案不会超过 8 个分区的完全并行管道线性缩放，可能需要重新分区之前 SQL 输出 (请参阅[到](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count))。 高级 Sku 所需承受高 IO 率，以及从日志备份每隔几个开销分钟。
+
+#### <a name="cosmos-db"></a>Cosmos DB
+|引入速率 （每秒事件数） | 流式处理单位数 | 输出资源  |
+|-------|-------|---------|
+|  1K   |  3    | 20K RU  |
+|  5K   |  24   | 60K RU  |
+|  10K  |  48   | 120K RU |
+
+[Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)输出从 Stream Analytics 具有已更新为使用在本机集成[兼容性级别 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)。 兼容性级别 1.2 可以非常高的吞吐量并降低 RU 消耗与 1.1，它是新的作业的默认兼容级别。 该解决方案使用 CosmosDB 容器进行分区 /deviceId 和解决方案的其余部分相同配置。
+
+所有[流式处理在扩展 azure 示例](https://github.com/Azure-Samples/streaming-at-scale)使用负载测试客户端模拟作为输入通过填充事件中心。 每个输入的事件是一个为 1 KB JSON 文档，轻松地转换到吞吐率 （1 MB/秒、 5 MB/秒和 10 MB/秒） 的已配置的引入速率。 事件的最大为 1 万台设备模拟 IoT 设备发送的以下 JSON 数据 （在一种简短格式）：
+
+```
+{
+    "eventId": "b81d241f-5187-40b0-ab2a-940faf9757c0",
+    "complexData": {
+        "moreData0": 51.3068118685458,
+        "moreData22": 45.34076957651598
+    },
+    "value": 49.02278128887753,
+    "deviceId": "contoso://device-id-1554",
+    "type": "CO2",
+    "createdAt": "2019-05-16T17:16:40.000003Z"
+}
+```
+
+> [!NOTE]
+> 配置会有变动情况下，由于解决方案中使用的各种组件。 一个更准确的估计，自定义以适合你方案的示例。
+
+### <a name="identifying-bottlenecks"></a>找出瓶颈问题
+
+使用 Azure Stream Analytics 作业中度量值窗格来确定在管道中的瓶颈。 审阅**输入/输出事件**吞吐量和["水印延迟"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)或**囤积的事件**以确定是否作业使用输入速率保持。 对于事件中心指标，寻找**中止请求**并相应地调整阈值单位。 有关 Cosmos DB 指标，查看**每个分区键范围的最大使用 RU/s**统一使用吞吐量，从而确保您的分区键范围下。 对于 Azure SQL DB，监视**日志 IO**并**CPU**。
 
 ## <a name="get-help"></a>获取帮助
+
 如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤

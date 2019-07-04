@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 06/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5a63053cc7fa1c1c86669ce2cea56b68f1a7b4b6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b92bc0a6c5d51ad26e069a363619edbdf0daa7c0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341508"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442869"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -54,11 +54,17 @@ ms.locfileid: "67341508"
 | [自动化 Runbook 操作员](#automation-runbook-operator) | 读取 Runbook 属性 - 以能够创建 runbook 的作业。 |
 | [Avere 参与者](#avere-contributor) | 可以创建和管理 Avere vFXT 群集。 |
 | [Avere 操作员](#avere-operator) | 由 Avere vFXT 群集用来管理群集 |
+| [Azure 事件中心数据所有者 （预览）](#azure-event-hubs-data-owner-preview) | 允许到 Azure 事件中心资源的完全访问权限。 |
+| [Azure 事件中心数据接收方 （预览版）](#azure-event-hubs-data-receiver-preview) | 允许接收 Azure 事件中心资源的访问权限。 |
+| [Azure 事件中心数据发件人 （预览版）](#azure-event-hubs-data-sender-preview) | 允许发送到 Azure 事件中心资源的访问。 |
 | [Azure Kubernetes 服务群集管理员角色](#azure-kubernetes-service-cluster-admin-role) | 列出群集管理员凭据操作。 |
 | [Azure Kubernetes 服务群集用户角色](#azure-kubernetes-service-cluster-user-role) | 列出群集用户凭据操作。 |
 | [Azure Maps 数据读取器 （预览版）](#azure-maps-data-reader-preview) | 授予访问权限以读取映射 Azure maps 帐户的相关的数据。 |
+| [Azure 服务总线数据所有者 （预览）](#azure-service-bus-data-owner-preview) | 允许完全访问 Azure 服务总线资源。 |
+| [Azure 服务总线数据接收方 （预览版）](#azure-service-bus-data-receiver-preview) | 允许接收 Azure 服务总线资源的访问权限。 |
+| [Azure 服务总线数据发件人 （预览版）](#azure-service-bus-data-sender-preview) | 允许发送到 Azure 服务总线资源的访问权限。 |
 | [Azure Stack 注册所有者](#azure-stack-registration-owner) | 允许管理 Azure Stack 注册。 |
-| [备份参与者](#backup-contributor) | 允许管理备份服务，但不允许创建保管库以及授予其他人访问权限 |
+| [备份参与者](#backup-contributor) | 可以让你管理备份服务，但不能创建保管库和授予对其他人访问权限 |
 | [备份操作员](#backup-operator) | 允许管理备份服务，但删除备份、创建保管库以及授予其他人访问权限除外 |
 | [备份读取器](#backup-reader) | 可以查看备份服务，但是不能进行更改 |
 | [计费读者](#billing-reader) | 允许对帐单数据进行读取访问 |
@@ -88,7 +94,6 @@ ms.locfileid: "67341508"
 | [实验室用户](#devtest-labs-user) | 允许连接、启动、重启和关闭 Azure 开发测试实验室中的虚拟机。 |
 | [DNS 区域参与者](#dns-zone-contributor) | 允许管理 Azure DNS 中的 DNS 区域和记录集，但不允许控制对其访问的人员。 |
 | [DocumentDB 帐户参与者](#documentdb-account-contributor) | 可管理 Azure Cosmos DB 帐户。 Azure Cosmos DB 以前称为 DocumentDB。 |
-| [事件中心数据所有者](#event-hubs-data-owner) | 允许到 Azure 事件中心资源的完全访问权限 | 
 | [EventGrid EventSubscription 参与者](#eventgrid-eventsubscription-contributor) | 可以管理 EventGrid 事件订阅操作。 |
 | [EventGrid EventSubscription 读者](#eventgrid-eventsubscription-reader) | 可以读取 EventGrid 事件订阅。 |
 | [HDInsight 群集操作员](#hdinsight-cluster-operator) | 允许你读取和修改 HDInsight 群集配置。 |
@@ -119,7 +124,6 @@ ms.locfileid: "67341508"
 | [安全管理员](#security-admin) | 仅在安全中心内：可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议 |
 | [安全管理器（旧版）](#security-manager-legacy) | 这是旧角色。 请改用安全管理员角色 |
 | [安全读取者](#security-reader) | 仅在安全中心内：可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改 |
-| [服务总线数据所有者](#service-bus-data-owner) | 允许完全访问 Azure 服务总线资源 |
 | [Site Recovery 参与者](#site-recovery-contributor) | 允许管理除保管库创建和角色分配外的 Site Recovery 服务 |
 | [Site Recovery 运算符](#site-recovery-operator) | 允许进行故障转移和故障回复，但不允许执行其他 Site Recovery 管理操作 |
 | [Site Recovery 读取器](#site-recovery-reader) | 允许查看 Site Recovery 状态，但不允许执行其他管理操作 |
@@ -130,15 +134,15 @@ ms.locfileid: "67341508"
 | [SQL 托管实例参与者](#sql-managed-instance-contributor) | 允许你管理 SQL 托管实例和所需的网络配置，但无法向其他人授予访问权限。 |
 | [SQL 安全管理器](#sql-security-manager) | 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 |
 | [SQL Server 参与者](#sql-server-contributor) | 允许管理 SQL 服务器和数据库，但不允许访问它们及其安全相关的策略。 |
-| [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户，但不允许对其进行访问。 |
-| [存储帐户密钥操作员服务角色](#storage-account-key-operator-service-role) | 允许存储帐户密钥操作员在存储帐户上列出和重新生成密钥 |
-| [存储 Blob 数据参与者](#storage-blob-data-contributor) | 授予对 Azure 存储 blob 容器和数据的读取、写入和删除权限 |
-| [存储 Blob 数据所有者](#storage-blob-data-owner) | 授予对 Azure 存储 blob 容器和数据的完全访问权，包括分配 POSIX 访问控制。 |
-| [存储 Blob 数据读者](#storage-blob-data-reader) | 授予对 Azure 存储 blob 容器和数据的读取权限 |
-| [存储队列数据参与者](#storage-queue-data-contributor) | 授予对 Azure 存储队列和队列消息的读取、写入和删除权限 |
-| [存储队列数据消息处理者](#storage-queue-data-message-processor) | 允许授予对 Azure 存储队列消息的速览、接收和删除权限 |
-| [存储队列数据消息发送者](#storage-queue-data-message-sender) | 允许发送 Azure 存储队列消息 |
-| [存储队列数据读取者](#storage-queue-data-reader) | 授予对 Azure 存储队列和队列消息的读取权限 |
+| [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户。 不提供对存储帐户中的数据的访问。 |
+| [存储帐户密钥操作员服务角色](#storage-account-key-operator-service-role) | 允许列出和重新生成存储帐户访问密钥。 |
+| [存储 Blob 数据参与者](#storage-blob-data-contributor) | 读取、写入和删除 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
+| [存储 Blob 数据所有者](#storage-blob-data-owner) | 提供对 Azure 存储 blob 容器和数据的完全访问权限，包括分配 POSIX 访问控制。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
+| [存储 Blob 数据读者](#storage-blob-data-reader) | 读取和列出 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
+| [存储队列数据参与者](#storage-queue-data-contributor) | 读取、写入和删除 Azure 存储队列与队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
+| [存储队列数据消息处理者](#storage-queue-data-message-processor) | 查看、 检索和从 Azure 存储队列中删除一条消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
+| [存储队列数据消息发送者](#storage-queue-data-message-sender) | 向 Azure 存储队列添加消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
+| [存储队列数据读取者](#storage-queue-data-reader) | 读取和列出 Azure 存储队列与队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [支持请求参与者](#support-request-contributor) | 允许创建和管理支持请求 |
 | [流量管理器参与者](#traffic-manager-contributor) | 允许管理流量管理器配置文件，但不允许控制谁可以访问它们。 |
 | [用户访问管理员](#user-access-administrator) | 允许管理用户对 Azure 资源的访问权限。 |
@@ -548,6 +552,51 @@ ms.locfileid: "67341508"
 > | **NotDataActions** |  |
 > | *无* |  |
 
+## <a name="azure-event-hubs-data-owner-preview"></a>Azure 事件中心数据所有者 （预览）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 允许到 Azure 事件中心资源的完全访问权限。 |
+> | **Id** | f526a384-b230-433a-b45c-95f59c4a2dec |
+> | **操作** |  |
+> | Microsoft.EventHub/* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="azure-event-hubs-data-receiver-preview"></a>Azure 事件中心数据接收方 （预览版）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 允许接收 Azure 事件中心资源的访问权限。 |
+> | **Id** | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
+> | **操作** |  |
+> | Microsoft.EventHub/*/eventhubs/consumergroups/read |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/*/receive/action |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="azure-event-hubs-data-sender-preview"></a>Azure 事件中心数据发件人 （预览版）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 允许发送到 Azure 事件中心资源的访问。 |
+> | **Id** | 2b629674-e913-4c01-ae53-ef4638d8f975 |
+> | **操作** |  |
+> | Microsoft.EventHub/*/eventhubs/read |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/*/send/action |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
 ## <a name="azure-kubernetes-service-cluster-admin-role"></a>Azure Kubernetes 服务群集管理员角色
 > [!div class="mx-tableFixed"]
 > | | |
@@ -593,6 +642,55 @@ ms.locfileid: "67341508"
 > | **NotDataActions** |  |
 > | *无* |  |
 
+## <a name="azure-service-bus-data-owner-preview"></a>Azure 服务总线数据所有者 （预览）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 允许完全访问 Azure 服务总线资源。 |
+> | **Id** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
+> | **操作** |  |
+> | Microsoft.ServiceBus/* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="azure-service-bus-data-receiver-preview"></a>Azure 服务总线数据接收方 （预览版）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 允许接收 Azure 服务总线资源的访问权限。 |
+> | **Id** | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
+> | **操作** |  |
+> | Microsoft.ServiceBus/*/queues/read |  |
+> | Microsoft.ServiceBus/*/topics/read |  |
+> | Microsoft.ServiceBus/*/topics/subscriptions/read |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/*/receive/action |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="azure-service-bus-data-sender-preview"></a>Azure 服务总线数据发件人 （预览版）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 允许发送到 Azure 服务总线资源的访问权限。 |
+> | **Id** | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
+> | **操作** |  |
+> | Microsoft.ServiceBus/*/queues/read |  |
+> | Microsoft.ServiceBus/*/topics/read |  |
+> | Microsoft.ServiceBus/*/topics/subscriptions/read |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/*/send/action |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
 ## <a name="azure-stack-registration-owner"></a>Azure Stack 注册所有者
 > [!div class="mx-tableFixed"]
 > | | |
@@ -625,7 +723,6 @@ ms.locfileid: "67341508"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | 刷新容器列表 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | 创建和管理备份作业 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 导出作业 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | 创建和管理与备份管理相关的元数据 |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | 创建和管理备份管理操作的结果 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | 创建和管理备份策略 |
@@ -691,7 +788,6 @@ ms.locfileid: "67341508"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | 刷新容器列表 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | 创建和管理备份作业 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 导出作业 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | 创建和管理备份管理操作的结果 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
@@ -758,7 +854,6 @@ ms.locfileid: "67341508"
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | 返回作业操作的结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | 返回所有作业对象 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 导出作业 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | 返回恢复服务保管库的备份操作结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
@@ -1409,22 +1504,6 @@ ms.locfileid: "67341508"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="event-hubs-data-owner"></a>事件中心数据所有者
-
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **说明** | 允许到 Azure 事件中心资源的完全访问权限。 |
-> | **Id** | f526a384-b230-433a-b45c-95f59c4a2dec |
-> | **操作** |  |
-> | Microsoft.EventHubs/* | 允许事件中心命名空间对完整管理访问权限 |
-> | **不操作** |  |
-> | *无* |  |
-> | **DataActions** |  |
-> | Microsoft.EventHubs/* | 允许到事件中心命名空间的完全数据访问 |
-> | **NotDataActions** |  |
-> | *无* |  |
-
 ## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription 参与者
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1721,9 +1800,9 @@ ms.locfileid: "67341508"
 > | **说明** | 创建、读取、更新和删除用户分配的标识 |
 > | **Id** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | **操作** |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/write |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/delete |  |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/read | 获取现有用户分配标识 |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/write | 创建新的用户分配标识或更新与现有用户分配标识关联的标记 |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/delete | 删除现有用户分配标识 |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
@@ -2073,22 +2152,6 @@ ms.locfileid: "67341508"
 > | *无* |  |
 > | **DataActions** |  |
 > | *无* |  |
-> | **NotDataActions** |  |
-> | *无* |  |
-
-## <a name="service-bus-data-owner"></a>服务总线数据所有者
-
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **说明** | 允许完全访问 Azure 服务总线资源。 |
-> | **Id** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
-> | **操作** |  |
-> | Microsoft.ServiceBus/* | 允许对服务总线命名空间进行完全管理访问 |
-> | **不操作** |  |
-> | *无* |  |
-> | **DataActions** |  |
-> | Microsoft.ServiceBus/* | 允许对服务总线命名空间进行完全数据访问 |
 > | **NotDataActions** |  |
 > | *无* |  |
 

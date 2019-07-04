@@ -2,18 +2,18 @@
 title: 在 Azure Site Recovery 中配置 Azure 磁盘加密启用 Vm 复制 |Microsoft Docs
 description: 本文介绍如何使用 Site Recovery 对启用了 Azure 磁盘加密的 VM 配置从一个 Azure 区域到另一个区域的 Azure VM 复制。
 services: site-recovery
-author: sujayt
+author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4943b730bb46ee00200d84faf95a7ccb069d3aa8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2e9bf7fbe7d5940b517d97dcc15d21c30835001
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790971"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449216"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>将启用了 Azure 磁盘加密的虚拟机复制到另一个 Azure 区域
 
@@ -22,23 +22,23 @@ ms.locfileid: "60790971"
 >[!NOTE]
 >目前，Azure Site Recovery 仅支持运行 Windows OS 且已[使用 Azure Active Directory (Azure AD) 启用加密](https://aka.ms/ade-aad-app)的 Azure VM。
 
-## <a name="required-user-permissions"></a>所需的用户权限
+## <a id="required-user-permissions"></a> 所需的用户权限
 Site Recovery 要求用户拥有在目标区域创建 Key Vault 以及将密钥复制到该区域的权限。
 
 若要通过 Azure 门户为启用了磁盘加密的 VM 启用复制，用户需要以下权限：
 
 - 密钥保管库权限
-    - 列出
+    - List
     - 创建
     - 获取
 
 -   密钥保管库机密权限
-    - 列出
+    - List
     - 创建
     - 获取
 
 - Key Vault 密钥权限（只有当 VM 使用“密钥加密密钥”来加密磁盘加密密钥时才需要）
-    - 列出
+    - List
     - 获取
     - 创建
     - 加密
@@ -139,18 +139,25 @@ Site Recovery 要求用户拥有在目标区域创建 Key Vault 以及将密钥�
 
 ## <a id="trusted-root-certificates-error-code-151066"></a>Azure 到 Azure VM 复制期间对密钥保管库权限问题进行故障排除
 
-**原因 1：** 你可能已从目标区域中选择了一个已创建的、但没有所需权限的 Key Vault，而不是让 Site Recovery 创建一个 Key Vault。 确保该 Key Vault 拥有前面所述的所需权限。
+Azure Site Recovery 需要源区域的密钥保管库上的至少读取的权限和目标区域的 key vault 读取机密并将其复制到目标区域密钥保管库上的写入权限。 
+
+**原因 1：** 对没有"GET"权限**源区域密钥保管库**读取密钥。 </br>
+**如何修复：** 无论你是订阅管理员或不，很重要的密钥保管库具有 get 权限。
+
+1. 转到源区域密钥保管库在此示例中是"ContososourceKeyvault">**访问策略** 
+2. 下**选择主体**添加你的用户名，例如:"dradmin@contoso.com"
+3. 下**密钥权限**选择获取 
+4. 下**机密权限**选择获取 
+5. 保存访问策略
+
+**原因 2：** 你没有所需的权限**目标区域密钥保管库**要写入的键。 </br>
 
  例如：你尝试复制源区域中包含 Key Vault *ContososourceKeyvault* 的 VM。
 你对源区域中的 Key Vault 拥有所有权限。 但在保护期间，你选择了已创建的、但没有权限的 Key Vault ContosotargetKeyvault。 发生错误。
 
-**如何修复：** 转到“主页” > “Keyvaults” > “ContososourceKeyvault” > “访问策略”并添加相应的权限。    
+在所需的权限[目标密钥保管库](#required-user-permissions)
 
-**原因 2：** 你可能已从目标区域中选择了一个已创建的、但没有解密-加密权限的 Key Vault，而不是让 Site Recovery 创建一个 Key Vault。 如果你同时要加密源区域中的密钥，请确保拥有解密-加密权限。</br>
-
- 例如：你尝试复制源区域中包含 Key Vault *ContososourceKeyvault* 的 VM。 你对源区域中的 Key Vault 拥有全部所需的权限。 但在保护期间，你选择了已创建的、但没有权限的 Key Vault ContosotargetKeyvault 进行解密和加密。 发生错误。</br>
-
-**如何修复：** 转到“主页” > “Keyvaults” > “ContososourceKeyvault” > “访问策略”。     在“密钥权限” > “加密操作”下添加权限。  
+**如何修复：** 转到**主页** > **key Vault** > **ContosotargetKeyvault** > **访问策略**并添加适当的权限。
 
 ## <a name="next-steps"></a>后续步骤
 

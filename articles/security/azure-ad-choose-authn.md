@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 35fb529be28fc985460421c185872c7e35603341
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 26fca12060363f4ad05baaeceb6fb800a0d76216
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274279"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449271"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
 
@@ -81,7 +81,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
    * 多站点本地身份验证解决方案。
 5. 无论你选择了哪种登录方法，Azure AD Identity Protection 都需要使用“密码哈希同步”来提供“凭据泄漏的用户”  报告。 如果组织的主要登录方法失败，并且该方法是在发生故障事件之前配置的，则组织可以故障转移到“密码哈希同步”。
 
->[!NOTE]
+> [!NOTE]
 > Azure AD Identity Protection 需要 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 许可证。
 
 ## <a name="detailed-considerations"></a>详细的注意事项
@@ -94,7 +94,10 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 * **高级方案**。 如果组织选择，可以将来自标识的见解与 Azure AD Premium P2 的 Azure AD Identity Protection 报告配合使用。 例如已泄漏凭据报告。 Windows hello 企业版具有[时使用密码哈希同步的特定要求](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification)。 [Azure AD 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync)要求来设置用户使用其公司凭据在托管域中的密码哈希同步。
 
-    需要将密码哈希同步与多重身份验证配合使用的组织必须使用 Azure AD 多重身份验证。 这些组织不能使用第三方或本地多重身份验证方法。
+    需要密码哈希同步的多重身份验证必须使用 Azure AD 多重身份验证的组织或[条件性访问自定义控件](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls)。 这些组织不能使用依赖于联合身份验证的第三方或本地多重身份验证方法。
+
+> [!NOTE]
+> Azure AD 条件性访问需要[Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/)许可证。
 
 * **业务连续性**。 密码哈希同步与云身份验证结合在一起完全可以作为云服务使用，适合所有 Microsoft 数据中心。 若要确保密码哈希同步不会在长时间内无法工作，请在备用配置中部署另一个处于暂存模式的 Azure AD Connect 服务器。
 
@@ -115,7 +118,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 * **高级方案**。 直通身份验证在登录时强制实施本地帐户策略。 例如，如果本地用户的帐户状态为禁用、锁定或[密码过期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)，或者超出用户被允许登录的小时数，访问会被拒绝。 
 
-    需要将多重身份验证与直通身份验证配合使用的组织必须使用 Azure 多重身份验证 (MFA)。 这些组织不能使用第三方或本地多重身份验证方法。 高级功能都需要密码哈希同步已部署，无论你是否选择直通身份验证。 例如 Identity Protection 的已泄漏凭据报表。
+    需要借助传递身份验证的多重身份验证必须使用 Azure 多重身份验证 (MFA) 的组织或[条件性访问自定义控件](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls)。 这些组织不能使用依赖于联合身份验证的第三方或本地多重身份验证方法。 高级功能都需要密码哈希同步已部署，无论你是否选择直通身份验证。 例如 Identity Protection 的已泄漏凭据报表。
 
 * **业务连续性**。 我们建议部署两个额外的直通身份验证代理。 这些额外的代理是 Azure AD Connect 服务器上第一个代理之外的代理。 此额外部署将确保身份验证请求的高可用性。 如果部署了三个代理，关闭一个代理进行维护时另一个仍然可能失败。 
 
@@ -136,7 +139,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 * **高级方案**。 客户有 Azure AD 本身不支持的身份验证要求时通常需要联合身份验证解决方案。 请参阅详细信息以帮助你[选择正确的登录选项](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/)。 请考虑以下常见要求：
 
   * 需要智能卡或证书的身份验证。
-  * 本地 MFA 服务器或第三方多重提供程序。
+  * 本地 MFA 服务器或第三方多重提供程序需要联合身份标识提供程序。
   * 使用第三方身份验证解决方案的身份验证。 请参阅[Azure AD 联合身份验证兼容性列表](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility)。
   * 需要 sAMAccountName（例如 DOMAIN\username）而不是用户主体名称 (UPN)（例如 user@domain.com）的登录。
 

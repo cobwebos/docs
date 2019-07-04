@@ -4,14 +4,14 @@ description: 如何连接到 vFXT 群集和基于浏览器的 Avere 控制面板
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 06/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 830be92d37f304598cca05c3ac80973158c38a59
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60794293"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439970"
 ---
 # <a name="access-the-vfxt-cluster"></a>访问 vFXT 群集
 
@@ -27,9 +27,11 @@ ms.locfileid: "60794293"
 
 在连接之前，请确保在本地计算机上安装了创建群集控制器时所用的 SSH 公钥/私钥对。 如需帮助，请阅读有关适用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) 或适用于 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) 的 SSH 密钥文档。 （如果使用了密码而不是公钥，则在连接时将提示你输入密码。） 
 
-## <a name="ssh-tunnel-with-a-linux-host"></a>在 Linux 主机上使用 SSH 隧道
+## <a name="create-an-ssh-tunnel"></a>创建 SSH 隧道 
 
-如果使用基于 Linux 的客户端，请通过以下形式使用 SSH 隧道： 
+可以创建 SSH 隧道从基于 Linux 的命令行或 Windows 10 客户端系统。 
+
+使用 SSH 隧道与此窗体的命令： 
 
    ssh -L local_port:cluster_mgmt_ip:443 controller_username\@controller_public_IP 
 
@@ -40,28 +42,6 @@ ms.locfileid: "60794293"
 ```sh
 ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 ```
-
-如果使用 SSH 公钥创建群集，并且在客户端系统上安装了匹配的密钥，则身份验证会自动执行。 如果使用了密码，系统将提示你输入密码。
-
-## <a name="ssh-tunnel-with-a-windows-host"></a>在 Windows 主机上使用 SSH 隧道
-
-此示例使用常见的基于 Windows 的终端实用工具 PuTTY。
-
-使用群集控制器用户名及其 IP 地址填写 PuTTY **主机名**字段：*your_username*\@*controller_public_IP*。
-
-示例： ``azureuser@203.0.113.51``
-
-在“配置”  面板中：
-
-1. 展开左侧的“连接” > “SSH”   。 
-1. 单击“隧道”  。 
-1. 输入源端口，如 8443。 
-1. 对于目标，请输入 vFXT 群集的管理 IP 地址和端口 443。 
-   示例： ``203.0.113.51:443``
-1. 单击“添加”  。
-1. 单击“打开”  。
-
-![Putty 应用程序的屏幕截图，显示了单击以添加隧道的位置](media/avere-vfxt-ptty-numbered.png)
 
 如果使用 SSH 公钥创建群集，并且在客户端系统上安装了匹配的密钥，则身份验证会自动执行。 如果使用了密码，系统将提示你输入密码。
 

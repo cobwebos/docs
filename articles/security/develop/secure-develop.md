@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: bcd66d1a8077b4cc87c184f34b43cc5846a83f2f
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: f68f6c366571b8f0f04f8507606c1a4008ab0405
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144420"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443243"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 在本文中，我们介绍的安全活动和用于开发云应用程序时，请考虑控件。 安全问题和概念，可在 Microsoft 的实现和验证阶段过程中考虑[安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)介绍。 旨在帮助您定义活动和可用于开发更安全的应用程序的 Azure 服务。
@@ -139,7 +139,7 @@ DAST 与静态的应用程序安全测试 (SAST) 不同。 SAST 工具分析源�
 
 查看受攻击面之后代码补全功能可帮助确保任何设计或实现更改为应用程序或已被视为系统。 它有助于确保已查看并缓解由于更改，包括威胁模型，创建任何新攻击手段。
 
-可以通过扫描应用程序生成受攻击面的图片。 Microsoft 提供了攻击面分析工具，称为[Attack Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=24487)。 您可以从许多商业动态测试和漏洞扫描工具或服务，包括[OWASP Zed 攻击代理项目](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)， [Arachni](http://arachni-scanner.com/)， [Skipfish](http://code.google.com/p/skipfish/)，并[w3af](http://w3af.sourceforge.net/)。 这些扫描工具爬网，您的应用程序，并将映射应用程序通过 web 访问的部分。 您还可以搜索 Azure Marketplace 进行类似[开发人员工具](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1)。
+可以通过扫描应用程序生成受攻击面的图片。 Microsoft 提供了攻击面分析工具，称为[Attack Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=24487)。 您可以从许多商业动态测试和漏洞扫描工具或服务，包括[OWASP Zed 攻击代理项目](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)， [Arachni](http://arachni-scanner.com/)， [Skipfish](https://code.google.com/p/skipfish/)，并[w3af](http://w3af.sourceforge.net/)。 这些扫描工具爬网，您的应用程序，并将映射应用程序通过 web 访问的部分。 您还可以搜索 Azure Marketplace 进行类似[开发人员工具](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1)。
 
 ### <a name="perform-security-penetration-testing"></a>执行安全渗透测试
 
