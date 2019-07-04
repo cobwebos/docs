@@ -172,7 +172,7 @@ ms.locfileid: "61258874"
 
 上图中显示了输入和输出数据集的每小时数据切片。 图中还显示已准备好进行处理的三个输入切片。 “上午 10-11 点”活动正在进行，生成“上午 10-11 点”输出切片。 
 
-可通过变量 SliceStart 和 SliceEnd 访问与正在数据集 JSON 中生成的当前切片关联的时间间隔。 同样，可以使用 WindowStart 和 WindowEnd 访问与活动窗口关联的时间间隔。 活动的计划必须匹配活动的输出数据集的计划。 因此，SliceStart 和 SliceEnd 值分别与 WindowStart 和 WindowEnd 值相同。 有关这些变量的详细信息，请参阅[数据工厂函数和系统变量](data-factory-functions-variables.md#data-factory-system-variables)一文。  
+您可以访问使用变量与数据集 JSON 中的当前切片关联的时间间隔：[SliceStart](data-factory-functions-variables.md#data-factory-system-variables)并[SliceEnd](data-factory-functions-variables.md#data-factory-system-variables)。 同样，可以使用 WindowStart 和 WindowEnd 访问与活动窗口关联的时间间隔。 活动的计划必须匹配活动的输出数据集的计划。 因此，SliceStart 和 SliceEnd 值分别与 WindowStart 和 WindowEnd 值相同。 有关这些变量的详细信息，请参阅[数据工厂函数和系统变量](data-factory-functions-variables.md#data-factory-system-variables)一文。  
 
 可在活动 JSON 中将这些变量用于不同目的。 例如，可用于从表示时序数据的输入和输出数据集中选择数据（例如：上午 8-9 点）。 此示例还使用 **WindowStart** 和 **WindowEnd** 选择活动运行的相关数据，并使用相应 **folderPath** 将其复制到 blob。 **FolderPath** 参数化为每小时具有一个单独文件夹。  
 

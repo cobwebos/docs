@@ -144,6 +144,8 @@
               href: active-directory-certificate-based-authentication-ios.md
     - name: 报告
       items:
+        - name: 使用情况和见解
+          href: howto-authentication-methods-usage-insights.md
         - name: SSPR 报告
           href: howto-sspr-reporting.md
         - name: MFA 报告

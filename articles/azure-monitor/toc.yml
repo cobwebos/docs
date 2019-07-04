@@ -122,8 +122,6 @@
       href: visualizations.md
     - name: 合作伙伴集成
       href: platform/partners.md
-    - name: OMS 门户弃用
-      href: platform/oms-portal-transition.md
     - name: 常见问题解答
       items:
         - name: Log Analytics
@@ -837,10 +835,12 @@
               items:
                 - name: 基于活动日志事件的警报
                   href: platform/alerts-activity-log.md
-                - name: 将管理事件迁移到活动日志警报
-                  href: platform/migrate-management-alerts.md
-                - name: 基于服务运行状况通知的警报
-                  href: platform/alerts-activity-log-service-notifications.md
+            - name: 活动日志中的服务运行状况通知
+              items:
+                - name: 查看服务运行状况通知
+                  href: ../service-health/service-notifications.md?toc=%2fazure%2fazure-monitor%2ftoc.json
+                - name: 配置服务运行状况警报规则
+                  href: ../service-health/alerts-activity-log-service-notifications.md?toc=%2fazure%2fazure-monitor%2ftoc.json
             - name: 使用操作组
               items:
                 - name: 创建操作组
@@ -885,12 +885,6 @@
                   href: platform/alerts-enable-template.md
                 - name: 调用 Webhook 的经典指标警报
                   href: platform/alerts-webhooks.md
-        - name: 活动日志中的服务运行状况通知
-          items:
-            - name: 查看通知
-              href: platform/service-notifications.md
-            - name: 配置基于通知事件的警报
-              href: platform/alerts-activity-log-service-notifications.md
         - name: 自动缩放
           items:
             - name: 演练
@@ -1076,12 +1070,10 @@
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: 经典的警报和监视
           href: platform/monitoring-classic-retirement.md
-        - name: 将警报从 Log Analytics 扩展到 Azure
-          href: platform/alerts-extend.md
-        - name: 将警报从 OMS 门户复制到 Azure 门户
-          href: platform/alerts-extend-tool.md
         - name: 切换日志警报 API 首选项
           href: platform/alerts-log-api-switch.md
+        - name: OMS 门户弃用
+          href: platform/oms-portal-transition.md
 - name: 资源
   items:
     - name: Azure 路线图

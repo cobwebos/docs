@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 0c40d0985b0d6c967a55b1954a1cb54feeb15361
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0ae47a7898e380a25618a8d6ae6a1e0251fe466c
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149388"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514589"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>快速入门：使用 Python 上传、下载和列出 Blob
 
@@ -54,11 +54,13 @@ block_blob_service = BlockBlobService(account_name = 'accountname', account_key 
 
 首先，通过运行 `pip install` 安装依赖项：
 
+```python
     pip install azure-storage-blob
+```
 
 接下来，运行示例。 此时会看到类似于以下输出的消息：
   
-```
+```output
 Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
 
 Uploading to Blob storage as blobQuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
@@ -81,16 +83,16 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 ### <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
 首先，请创建对用于访问和管理 Blob 存储的对象的引用。 这些对象相互关联，并且每个对象被列表中的下一个对象使用。
 
-* 实例化 BlockBlobService 对象，该对象指向存储帐户中的 Blob 服务。 
+* 实例化 BlockBlobService 对象，该对象指向存储帐户中的 Blob 服务  。 
 
-* 实例化 CloudBlobContainer 对象，该对象代表你正在访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
+* 实例化 CloudBlobContainer 对象，该对象代表你正在访问的容器  。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
 
-有了云 Blob 容器后，请实例化 CloudBlockBlob 对象（该对象指向你感兴趣的特定 Blob）。 然后即可根据需要上传、下载和复制 Blob。
+有了云 Blob 容器后，请实例化 CloudBlockBlob 对象（该对象指向你感兴趣的特定 Blob）  。 然后即可根据需要上传、下载和复制 Blob。
 
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关容器名称和 Blob 名称的详细信息，请参阅 [Naming and referencing Containers, Blobs, and Metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 和元数据）。
 
-此部分将实例化对象，新建容器，然后设置容器的权限，以便 blob 成为公共 blob。 容器名称为 quickstartblobs。 
+此部分将实例化对象，新建容器，然后设置容器的权限，以便 blob 成为公共 blob。 容器名称为 quickstartblobs  。 
 
 ```python 
 # Create the BlockBlockService that is used to call the Blob service for the storage account.
@@ -109,7 +111,7 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 最常用，此�
 
 若要将文件上传到 Blob，请通过将本地驱动器上的目录名称和文件名称联接在一起来获取完整的文件路径。 然后可以使用 `create_blob_from_path` 方法将文件上传到指定的路径。 
 
-示例代码将创建一个本地文件，以供上传和下载，并将要上传的此文件存储为 full_path_to_file，将 blob 的名称存储为 local_file_name。 以下示例将文件上传到名为“quickstartblobs”的容器。
+示例代码将创建一个本地文件，以供上传和下载，并将要上传的此文件存储为 full_path_to_file  ，将 blob 的名称存储为 local_file_name  。 以下示例将文件上传到名为“quickstartblobs”的容器  。
 
 ```python
 # Create a file in Documents to test the upload and download.

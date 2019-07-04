@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
 ms.openlocfilehash: e8daaaf5b6b15eb3095f11e94c707a33b4b18e28
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305335"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172637"
 ---
-选择“生成”。 在打开的对话框中，选择要将 Xcode 项目导出到的文件夹。
+选择“生成”  。 在打开的对话框中，选择要将 Xcode 项目导出到的文件夹。
 
 导出完成后，将显示包含所导出 Xcode 项目的文件夹。
 
 > [!NOTE]
-> 如果出现询问是否要替换或追加的窗口，建议选择“追加​​”，因为它速度更快。 如果要更改场景中的资产，则只需选择“替换”。 （例如，如果要添加、删除或更改父级/子级关系，或者要添加、删除或更改属性。）如果仅更改源代码，“追加​​”就足够了。
+> 如果出现询问是否要替换或追加的窗口，建议选择“追加​​”，因为它速度更快  。 如果要更改场景中的资产，则只需选择“替换”  。 （例如，如果要添加、删除或更改父级/子级关系，或者要添加、删除或更改属性。）如果仅更改源代码，“追加​​”就足够了  。
 
 ### <a name="open-the-xcode-project"></a>打开 XCode 项目
 
@@ -35,18 +35,18 @@ open ./Unity-iPhone.xcworkspace
 > [!NOTE]
 > 如果看到 `library not found for -lPods-Unity-iPhone` 错误，则可能是打开了 `.xcodeproj` 文件，而没有打开 `.xcworkspace` 文件。 
 
-选择根“Unity-iPhone”节点以查看项目设置，然后选择“常规”选项卡。
+选择根“Unity-iPhone”节点以查看项目设置，然后选择“常规”选项卡   。
 
-在“签名”下，确保已启用“自动管理签名”。 如果未启用，请启用，然后在出现的对话框中选择“启用自动”，以重置生成设置。
+在“签名”下，确保已启用“自动管理签名”   。 如果未启用，请启用，然后在出现的对话框中选择“启用自动”，以重置生成设置  。
 
-在“部署信息”下，确保“部署目标”设置为 `11.0`。
+在“部署信息”下，确保“部署目标”设置为 `11.0`   。
 
 ### <a name="deploy-the-app-to-your-ios-device"></a>将应用部署到 iOS 设备
 
-将 iOS 设备连接到 Mac 并将“活动方案”设置为 iOS 设备。
+将 iOS 设备连接到 Mac 并将“活动方案”设置为 iOS 设备  。
 
 ![选择设备](./media/spatial-anchors-unity/select-device.png)
 
-选择“生成并运行当前方案”。
+选择“生成并运行当前方案”  。
 
 ![部署和运行](./media/spatial-anchors-unity/deploy-run.png)

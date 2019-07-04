@@ -8,6 +8,8 @@
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: 发行说明
       href: sql-database-release-notes.md
+    - name: 网关 IP 迁移更新
+      href: sql-database-gateway-migration.md
 - name: 快速入门
   expanded: true
   items:

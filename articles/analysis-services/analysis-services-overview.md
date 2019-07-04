@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 04/01/2019
+ms.date: 07/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 443d6ca86f8ac40bd2df186fd189a333cb7b7425
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: ac27f3b1ea777e7a88a44a16edf8867f97381297
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416014"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509000"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -35,11 +35,11 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ## <a name="the-right-tier-when-you-need-it"></a>符合需要的层级
 
-可在“开发人员”层、“基本”层和“标准”层使用 Azure Analysis Services。 每个层中的计划成本因处理能力、QPU 数和内存大小而异。 创建服务器时，将在层内选择计划。 可以在同一层内上下更改计划，或者升级到更高的层，但不能从较高的层降级到较低的层。
+可在“开发人员”层、“基本”层和“标准”层使用 Azure Analysis Services。    每个层中的计划成本因处理能力、QPU 数和内存大小而异。 创建服务器时，将在层内选择计划。 可以在同一层内上下更改计划，或者升级到更高的层，但不能从较高的层降级到较低的层。
 
 ### <a name="developer-tier"></a>开发人员层
 
-对于评估、开发和测试方案，建议使用此层。 单个计划包含标准层的相同功能，但处理能力、QPU 和内存大小有限制。 查询副本横向扩展不适用于此层。 此层不提供 SLA。
+对于评估、开发和测试方案，建议使用此层。 单个计划包含标准层的相同功能，但处理能力、QPU 和内存大小有限制。 查询副本横向扩展不适用于此层。  此层不提供 SLA。
 
 |计划  |QPU  |内存 (GB)  |
 |---------|---------|---------|
@@ -48,7 +48,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ### <a name="basic-tier"></a>基本层
 
-建议在具有小型表格模型的生产解决方案、限制用户并发性和要求简单数据刷新的场合下使用该层。 查询副本横向扩展不适用于此层。 此层不支持透视图、多个分区和 DirectQuery 表格模型功能。  
+建议在具有小型表格模型的生产解决方案、限制用户并发性和要求简单数据刷新的场合下使用该层。 查询副本横向扩展不适用于此层。  此层不支持透视图、多个分区和 DirectQuery 表格模型功能。   
 
 |计划  |QPU  |内存 (GB)  |
 |---------|---------|---------|
@@ -120,7 +120,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ### <a name="scale-out-resources-for-fast-query-responses"></a>进行快速查询响应的横向扩展资源
 
-启用横向扩展后，客户端查询就会分布在查询池中的多个查询副本中。 查询副本已同步表格模型的副本。 可以通过分散查询工作负荷，缩短查询工作负荷高峰期间的响应时间。 可以将模型处理操作与查询池分开，确保客户端查询不受处理操作的负面影响。 
+启用横向扩展后，客户端查询就会分布在查询池中的多个查询副本中。  查询副本已同步表格模型的副本。 可以通过分散查询工作负荷，缩短查询工作负荷高峰期间的响应时间。 可以将模型处理操作与查询池分开，确保客户端查询不受处理操作的负面影响。 
 
 创建查询池时，最多可以有七个其他的查询副本（总共为八个，包括你自己的服务器在内）。 可以在池中创建的查询副本数取决于所选的计划和区域。 查询副本不能分散到服务器区域的外部。 查询副本的计费方式与服务器相同。
 
@@ -132,7 +132,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ## <a name="built-on-sql-server-analysis-services"></a>基于 SQL Server Analysis Services
 
-Azure Analysis Services 兼容 SQL Server Analysis Services Enterprise Edition 中已有的多个强大功能。 Azure Analysis Services 支持 1200 和更高[兼容级别](analysis-services-compat-level.md)的表格模型。 表格模型属于关系建模构造（模型、表、列），在表格元数据对象定义中以表格模型脚本语言 (TMSL) 和表格对象模型 (TOM) 代码阐述。 支持分区、透视图、行级安全性、双向关系和转换\*。 Azure Analysis Services 不支持多维模型和 PowerPivot for SharePoint。
+Azure Analysis Services 兼容 SQL Server Analysis Services Enterprise Edition 中已有的多个强大功能。 Azure Analysis Services 支持 1200 和更高[兼容级别](analysis-services-compat-level.md)的表格模型。 表格模型属于关系建模构造（模型、表、列），在表格元数据对象定义中以表格模型脚本语言 (TMSL) 和表格对象模型 (TOM) 代码阐述。 支持分区、透视图、行级安全性、双向关系和转换\*。 Azure Analysis Services 不支持多维模型和 PowerPivot for SharePoint。 
 
 支持内存中模式和 DirectQuery 模式的表格模型。 内存中模式（默认）表格模型支持多个数据源。 由于模型数据经过高度压缩并缓存在内存中，因此，此模式可针对大量数据提供最快的查询响应。 此外，它还针对复杂数据集和查询提供最高的灵活性。 分区可以实现增量加载、提高并行度，并减少内存消耗。 其他高级数据建模功能（例如计算表）和所有 DAX 函数均受支持。 必须刷新（处理）内存中模型才能更新数据源中的缓存数据。 借助 Azure 服务主体支持，使用 PowerShell、TOM、TMSL 和 REST 的无人参与刷新操作可灵活确保模型数据始终保持最新。 
 
@@ -151,7 +151,7 @@ Azure Analysis Services 中的表格模型支持各种数据源：从简单的�
 
 ## <a name="your-data-is-secure"></a>你的数据是安全的
 
-Azure Analysis Services 为多个级别的敏感数据提供安全性。 作为一种 Azure 服务，Analysis Services 提供“基本”级别的分布式拒绝服务 (DDoS) 攻击保护，该保护已在 Azure 平台中自动启用。 若要了解详细信息，请参阅 [Azure DDoS 保护标准概述](../virtual-network/ddos-protection-overview.md)。 
+Azure Analysis Services 为多个级别的敏感数据提供安全性。 作为一种 Azure 服务，Analysis Services 提供“基本”级别的  分布式拒绝服务 (DDoS) 攻击保护，该保护已在 Azure 平台中自动启用。 若要了解详细信息，请参阅 [Azure DDoS 保护标准概述](../virtual-network/ddos-protection-overview.md)。 
 
 在服务器级别：Analysis Services 提供防火墙、Azure 身份验证、服务器管理员角色和服务器端加密。 在数据模型级别，用户角色、行级和对象级安全性可确保数据的安全，只有有权的用户才能查看你的数据。
 
@@ -242,7 +242,7 @@ Azure Analysis Services 还支持使用[动态管理视图 (DMV)](https://docs.m
 
 文档团队会审查你的供稿，如果获得批准，你的 GitHub 帐户名会显示为供稿人。 有关详细信息，请参阅[文档供稿人指南](https://docs.microsoft.com/contribute/)。
 
-Azure Analysis Services 文档还包含 [GitHub 问题](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)。 可以提供有关产品或文档的反馈， 使用文章底部的“反馈”即可。 SQL Server Analysis Services 文档尚未启用“GitHub 问题”。 
+Azure Analysis Services 文档还包含 [GitHub 问题](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)。 可以提供有关产品或文档的反馈， 使用文章底部的“反馈”即可。  SQL Server Analysis Services 文档尚未启用“GitHub 问题”。 
 
 ## <a name="blogs"></a>博客
 

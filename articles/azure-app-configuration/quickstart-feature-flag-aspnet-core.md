@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: f83283dbf2a78b3717ba719f21dd9249a8a09d1f
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: bd812ad1194f88b14d88f067583ca6eee4bb0c74
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393301"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274208"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入门：将功能标志添加到 ASP.NET Core 应用
 
@@ -87,9 +87,9 @@ ms.locfileid: "66393301"
 1. 运行以下命令添加对 `Microsoft.Extensions.Configuration.AzureAppConfiguration` 和 `Microsoft.FeatureManagement` NuGet 包的引用：
 
     ```
-    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
+    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008920001-990
 
-    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-008560001-910
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
     ```
 
 1. 运行以下命令，还原项目包：
@@ -165,7 +165,8 @@ ms.locfileid: "66393301"
 
     ```csharp
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.FeatureManagement.AspNetCore;
+    using Microsoft.FeatureManagement;
+    using Microsoft.FeatureManagement.Mvc;
 
     namespace TestFeatureFlags.Controllers
     {
@@ -178,7 +179,7 @@ ms.locfileid: "66393301"
                 _featureManager = featureManager;
             }
 
-            [Feature(MyFeatureFlags.Beta)]
+            [FeatureGate(MyFeatureFlags.Beta)]
             public IActionResult Index()
             {
                 return View();

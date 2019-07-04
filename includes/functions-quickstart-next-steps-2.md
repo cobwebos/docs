@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 01/23/2019
 ms.author: glenga
 ms.openlocfilehash: a02eadcacddc91ae9d17c50efd5e573718c41a21
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131659"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173622"
 ---
 * [Azure Functions 触发器和绑定概念](../articles/azure-functions/functions-triggers-bindings.md)  
   了解 Functions 如何与其他服务集成。  

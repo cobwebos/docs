@@ -15,11 +15,11 @@ ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 2b9d696ca896d0c8f0801f055000b9763d65d7ff
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121695"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173562"
 ---
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>添加控制器来处理登录和注销请求
 
@@ -27,9 +27,9 @@ ms.locfileid: "66121695"
 
 1.  右键单击 `Controllers` 文件夹，并选择`Add` > `Controller`
 2.  选择 `MVC (.NET version) Controller – Empty`。
-3.  单击“添加”
-4.  将其命名为 `HomeController`，然后单击“添加”
-5.  向该类添加 OWIN 引用：
+3.  单击“添加” 
+4.  将其命名为 `HomeController`，然后单击“添加” 
+5.  向该类添加 OWIN 引用  ：
 
     ```csharp
     using Microsoft.Owin.Security;
@@ -121,7 +121,7 @@ ms.locfileid: "66121695"
 
 1.  右键单击 `Controllers` 文件夹，并选择`Add` > `Controller`
 2.  选择 `MVC {version} Controller – Empty`。
-3.  单击“添加”
+3.  单击“添加” 
 4.  将其命名为 `ClaimsController`
 5.  将控制器类的代码替换为下面的代码，这将 `[Authorize]` 属性添加到类：
 
@@ -156,7 +156,7 @@ ms.locfileid: "66121695"
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>更多信息
-> 因为使用 `[Authorize]` 属性，仅当用户通过身份验证后，才执行此控制器的所有方法。 如果用户未通过身份验证，并尝试访问控制器，OWIN 将启动身份验证质询，并强制用户进行身份验证。 上面的代码查看用户的 ID 令牌中包含的特定用户属性的声明列表。 这些属性包括用户的完整姓名和用户名，以及全局用户标识符使用者。 它还包含租户 ID，表示用户的组织的 ID。 
+> 因为使用 `[Authorize]` 属性，仅当用户通过身份验证后，才执行此控制器的所有方法。 如果用户未通过身份验证，并尝试访问控制器，OWIN 将启动身份验证质询，并强制用户进行身份验证。 上面的代码查看用户的 ID 令牌中包含的特定用户属性的声明列表。 这些属性包括用户的完整姓名和用户名，以及全局用户标识符使用者。 它还包含租户 ID，表示用户的组织的 ID  。 
 <!--end-collapse-->
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>创建视图来显示用户的声明

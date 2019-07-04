@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: wolfma
-ms.openlocfilehash: 498246292b3cf591433a709139621b039ac3af33
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 7f8822a34b0f87beaf522656a91e8d40c724a7a9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002174"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485018"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 C++ 识别语音
 
@@ -31,7 +31,7 @@ ms.locfileid: "66002174"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 `1.5.1`。
+认知服务语音 SDK 的当前版本是 `1.6.0`。
 
 适用于 macOS 的语音 SDK 可以作为压缩框架包从 https://aka.ms/csspeech/macosbinary 下载。
 
@@ -77,7 +77,7 @@ ms.locfileid: "66002174"
 ## <a name="build-the-app"></a>生成应用
 
 > [!NOTE]
-> 请确保将以下命令输入在单个命令行上。 执行该操作的最简单方法是使用每个命令旁边的“复制按钮”来复制命令，然后将其粘贴到 shell 提示符下。
+> 请确保将以下命令输入在单个命令行上。  执行该操作的最简单方法是使用每个命令旁边的“复制按钮”来复制命令，然后将其粘贴到 shell 提示符下。 
 
 * 运行以下命令以生成应用程序。
 

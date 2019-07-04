@@ -8,14 +8,14 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 12/17/2018
+ms.date: 06/26/2019
 ms.author: alinast
-ms.openlocfilehash: 4c41fbaa00dc3460df3f94433428c448a7b41250
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f88eccf1e488d52fbbbd064cc5d7f54c2eec32b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089688"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459076"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>快速入门：通过 Azure 数字孪生查找可用房间
 
@@ -132,7 +132,7 @@ ms.locfileid: "58089688"
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name | 替换为 |
+| 名称 | 替换为 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | 数字孪生实例的名称 |
 | YOUR_LOCATION | 托管实例的服务器区域 |
@@ -149,7 +149,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 若要继续学习这些教程，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请删除通过本快速入门创建的所有资源。
 
 1. 删除下载示例存储库时创建的文件夹。
-1. 在 [Azure 门户](https://portal.azure.com)左侧的菜单中，选择“所有资源”。 然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”。
+1. 在 [Azure 门户](https://portal.azure.com)左侧的菜单中，选择“所有资源”。  然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”   。
 
     > [!TIP]
     > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。

@@ -63,6 +63,10 @@
               href: google-federation.md
             - name: 一次性密码身份验证
               href: one-time-passcode.md
+            - name: 直接联合身份验证
+              href: direct-federation.md
+            - name: 使用 AD FS 进行直接联合身份验证的示例
+              href: direct-federation-adfs.md
             - name: 允许或阻止邀请
               href: allow-deny-list.md
             - name: 在没有邀请的情况下添加 B2B 用户

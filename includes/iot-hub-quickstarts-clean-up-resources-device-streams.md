@@ -2,22 +2,22 @@
 title: include 文件（设备流）
 description: include 文件
 services: iot-hub
-author: rezas
+author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 01/15/2019
-ms.author: rezas
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 155e36bf4198eb18f5505483ea13a287f88a5022
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 46ab75f161692dd048c19698af7027d0e0622b37
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733267"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446024"
 ---
 如果你打算继续学习下一篇建议的文章，可以保留并重复使用已创建的资源。
 
-否则，可以删除本文中创建的 Azure 资源，以避免产生费用。 
+否则，可以删除本文中创建的 Azure 资源，以避免产生费用。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不要意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，请只删除 IoT 中心资源本身，而不要删除资源组。
@@ -27,7 +27,7 @@ ms.locfileid: "66733267"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
-1. 在“按名称筛选”框中，输入包含你的 IoT 中心的资源组的名称。  
+1. 在“按名称筛选”框中，输入包含你的 IoT 中心的资源组的名称。 
 
 1. 在结果列表中你的资源组的右侧，选择 ( **...** )，然后选择“删除资源组”  。
 

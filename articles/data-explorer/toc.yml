@@ -11,10 +11,8 @@
       href: create-cluster-database-portal.md
     - name: 引入示例数据
       href: ingest-sample-data.md
-    - name: 查询数据
-      items:
-        - name: Web UI
-          href: web-query-data.md
+    - name: 使用 Web UI 查询数据
+      href: web-query-data.md
 - name: 教程
   items:
     - name: 引入数据而无需使用代码
@@ -88,14 +86,14 @@
               href: power-bi-imported-query.md
             - name: SQL 查询
               href: power-bi-sql-query.md
-        - name: ODBC 连接器
-          href: connect-odbc.md
-        - name: Sisense
-          href: sisense.md
         - name: Grafana
           href: grafana.md
+        - name: ODBC 连接器
+          href: connect-odbc.md
         - name: Tableau
           href: tableau.md
+        - name: Sisense
+          href: sisense.md
     - name: 管理
       items:
         - name: 管理数据库权限

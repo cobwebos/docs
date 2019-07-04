@@ -6,14 +6,14 @@ author: dcurwin
 manager: ''
 ms.service: backup
 ms.topic: tutorial
-ms.date: 05/22/2019
+ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: bfe48fb1bf6a361ce79d0ddc5281a6380a5367e4
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 5fbbd2cf999ab8ba3183879bd9b417353aa5edd0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016112"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203483"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -33,7 +33,7 @@ ms.locfileid: "66016112"
 在备份 SQL Server 数据库之前，请检查以下条件：
 
 1. 在托管 SQL Server 实例的 VM 所在的区域或位置标识或[创建](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)一个恢复服务保管库。
-2. 检查备份 SQL 数据库所需的 [VM 权限](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)。
+2. 检查备份 SQL 数据库所需的 [VM 权限](backup-azure-sql-database.md#set-vm-permissions)。
 3. 验证 VM 是否已建立[网络连接](backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
 4. 检查是否根据 Azure 备份的[命名准则](#verify-database-naming-guidelines-for-azure-backup)命名了 SQL Server 数据库。
 5. 验证是否未为该数据库启用了其他任何备份解决方案。 在设置此方案之前，请禁用其他所有 SQL Server 备份。 可以同时针对某个 Azure VM 以及该 VM 上运行的 SQL Server 数据库启用 Azure 备份，而不会发生任何冲突。
@@ -61,7 +61,7 @@ ms.locfileid: "66016112"
 - 为了发现虚拟机上的数据库，Azure 备份会创建帐户 NT SERVICE\AzureWLBackupPluginSvc  。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。
 - Azure 备份利用 **NT AUTHORITY\SYSTEM** 帐户进行数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。
 
-如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)予以解决。
+如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](backup-azure-sql-database.md#set-vm-permissions)予以解决。
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>验证 Azure 备份的数据库命名准则
 
@@ -114,7 +114,7 @@ ms.locfileid: "66016112"
     - Azure 备份在 VM 上创建服务帐户 **NT Service\AzureWLBackupPluginSvc**。
       - 所有备份和还原操作使用该服务帐户。
       - **NT Service\AzureWLBackupPluginSvc** 需要 SQL sysadmin 权限。 在 Azure 市场中创建的所有 SQL Server VM 已预装 **SqlIaaSExtension**。 **AzureBackupWindowsWorkload** 扩展使用 **SQLIaaSExtension** 自动获取所需的权限。
-    - 如果 VM 不是从市场创建的，则该 VM 上未安装 **SqlIaaSExtension**，并且发现操作将会失败并出现错误消息 **UserErrorSQLNoSysAdminMembership**。 请按照[说明](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)解决此问题。
+    - 如果 VM 不是从市场创建的，则该 VM 上未安装 **SqlIaaSExtension**，并且发现操作将会失败并出现错误消息 **UserErrorSQLNoSysAdminMembership**。 请按照[说明](backup-azure-sql-database.md#set-vm-permissions)解决此问题。
 
         ![选择 VM 和数据库](./media/backup-azure-sql-database/registration-errors.png)
 

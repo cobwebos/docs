@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b8ee1bdfece35d774cdc79595a495b0b3719a836
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 56360238db8632e74a95c057a7fe643b5cea3151
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996639"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206838"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>快速入门：使用 Azure 空间定位点在 Swift 或 Objective-C 中创建 iOS 应用
 
@@ -62,7 +62,7 @@ cd ./iOS/Swift/
 cd ./iOS/Objective-C/
 ```
 
-***
+---
 
 运行 `pod install --repo-update` 以安装项目的 CocoaPods。
 
@@ -80,7 +80,7 @@ open ./SampleSwift.xcworkspace
 open ./SampleObjC.xcworkspace
 ```
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>配置帐户标识符和密钥
 
@@ -102,22 +102,22 @@ open ./SampleObjC.xcworkspace
 
 找到 `SpatialAnchorsAccountId` 字段并将 `Set me` 替换为帐户标识符。
 
-***
+---
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>将应用部署到 iOS 设备
 
-将 iOS 设备连接到 Mac 并将“活动方案”设置为 iOS 设备。
+将 iOS 设备连接到 Mac 并将“活动方案”设置为 iOS 设备  。
 
 ![选择设备](./media/get-started-ios/select-device.png)
 
-选择“生成并运行当前方案”。
+选择“生成并运行当前方案”  。
 
 ![部署和运行](./media/get-started-ios/deploy-run.png)
 
 > [!NOTE]
 > 如果看到 `library not found for -lPods-SampleObjC` 错误，则可能是打开了 `.xcodeproj` 文件而不是 `.xcworkspace`。 请打开 `.xcworkspace` 然后重试。
 
-在 Xcode 中，按“停止”来停止应用。
+在 Xcode 中，按“停止”来停止应用  。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

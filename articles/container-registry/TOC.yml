@@ -47,8 +47,6 @@
       href: container-registry-image-formats.md
     - name: 异地复制
       href: container-registry-geo-replication.md
-    - name: 角色和权限
-      href: container-registry-roles.md
     - name: 注册最佳做法
       href: container-registry-best-practices.md
 - name: 操作指南
@@ -87,6 +85,8 @@
               href: container-registry-auth-aci.md
             - name: 从 Azure Kubernetes 服务 (AKS) 进行身份验证
               href: container-registry-auth-aks.md
+        - name: 角色和权限
+          href: container-registry-roles.md
         - name: 内容信任
           href: container-registry-content-trust.md
     - name: ACR 任务
@@ -107,6 +107,10 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
         - name: Service Fabric
           href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+    - name: 故障排除
+      items:
+        - name: 诊断常见问题
+          href: container-registry-check-health.md
 - name: 引用
   items:
     - name: Azure CLI
@@ -131,6 +135,8 @@
       href: container-registry-webhook-reference.md
     - name: 事件网格架构
       href: ../event-grid/event-schema-container-registry.md
+    - name: 运行状况检查错误
+      href: container-registry-health-error-reference.md
       maintainContext: true
 - name: 资源
   items:

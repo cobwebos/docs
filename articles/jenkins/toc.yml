@@ -31,6 +31,8 @@
               maintainContext: true
             - name: 使用蓝/绿模式部署到 AKS
               href: jenkins-aks-blue-green-deployment.md
+            - name: 将 CI/CD 与 Azure Dev Spaces 配合使用
+              href: tutorial-jenkins-dev-spaces.md
         - name: 应用服务
           items:
             - name: 在管道作业中创建 Azure 资源

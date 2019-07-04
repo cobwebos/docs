@@ -15,11 +15,11 @@ ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: dcfc341b89a3cfebcb5538f88481fd2fbb2936a7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121809"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173557"
 ---
 ## <a name="set-up-your-project"></a>设置项目
 
@@ -31,7 +31,7 @@ ms.locfileid: "66121809"
 
 1. 在 Visual Studio 中：`File` > `New` > `Project`
 2. 在 *Visual C#\Web* 下，选择 `ASP.NET Web Application (.NET Framework)`。
-3. 命名应用程序，并单击“确定”
+3. 命名应用程序，并单击“确定” 
 4. 选择 `Empty` 并选中复选框，添加 `MVC` 引用
 
 ## <a name="add-authentication-components"></a>添加身份验证组件

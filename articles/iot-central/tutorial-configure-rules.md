@@ -3,18 +3,18 @@ title: 在 Azure IoT Central 中配置规则和操作 | Microsoft Docs
 description: 本教程演示，作为构建者，如何在 Azure IoT Central 应用程序中配置基于遥测的规则和操作。
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 01/28/2019
+ms.date: 06/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2bd22dec13e2dba63c512276a0b36d4fc50e05f8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 56ced4f5e2fd0fbf829f72cff2413998398a7a09
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681550"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066016"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>教程：在 Azure IoT Central 中配置用于设备的规则和操作
 
@@ -30,19 +30,19 @@ ms.locfileid: "59681550"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，应完成[在应用程序中定义新的设备类型](tutorial-define-device-type.md)教程，以创建要使用的“已连接空调”设备模板。
+在开始之前，应完成[在应用程序中定义新的设备类型](tutorial-define-device-type.md)教程，以创建要使用的“已连接空调”  设备模板。
 
 ## <a name="create-a-telemetry-based-rule"></a>创建基于遥测的规则
 
-1. 若要为应用程序添加新的基于遥测的规则，请在左侧导航菜单中选择“设备模板”：
+1. 若要为应用程序添加新的基于遥测的规则，请在左侧导航菜单中选择“设备模板”  ：
 
     ![“设备模板”页](media/tutorial-configure-rules/templatespage1.png)
 
-    可以看到在上一教程中创建的“已连接空调 (1.0.0)”设备模板。
+    可以看到在上一教程中创建的“已连接空调 (1.0.0)”  设备模板。
 
-2. 若要自定义设备模板，请选择在上一教程中创建的“已连接空调”模板。
+2. 若要自定义设备模板，请选择在上一教程中创建的“已连接空调”  模板。
 
-3. 若要在“规则”视图中添加基于遥测的规则，请依次选择“规则”、“+ 新建规则”和“遥测”：
+3. 若要在“规则”  视图中添加基于遥测的规则，请依次选择“规则”  、“+ 新建规则”  和“遥测”  ：
 
     ![“规则”视图](media/tutorial-configure-rules/newrule.png)
 
@@ -57,13 +57,13 @@ ms.locfileid: "59681550"
 
     ![温度规则条件](media/tutorial-configure-rules/temperaturerule.png)
 
-    再选择“保存”。
+    再选择“保存”  。
 
 ## <a name="add-an-action"></a>添加操作
 
 定义规则时，还需要定义在符合规则条件时要运行的操作。 在本教程中，你将创建一个规则，使其包含用于发送电子邮件通知的操作。
 
-1. 若要添加操作，请首先保存规则，然后在“配置遥测规则”面板中向下滚动。 选择“操作”旁边的 **+**，然后选择“电子邮件”：
+1. 若要添加操作，请首先保存规则，然后在“配置遥测规则”面板中向下滚动。    选择“操作”  旁边的 **+** ，然后选择“电子邮件”  ：
 
     ![温度规则操作](media/tutorial-configure-rules/addaction.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "59681550"
 
     ![温度操作](media/tutorial-configure-rules/temperatureaction.png)
 
-3. 选择“保存”。 你的规则将列在“规则”页上。
+3. 选择“保存”。  你的规则将列在“规则”  页上。
 
 ## <a name="test-the-rule"></a>测试规则
 

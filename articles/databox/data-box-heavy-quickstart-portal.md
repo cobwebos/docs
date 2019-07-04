@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 930da7367b3f5d7e20617afedef007efea97c51a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515936"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446737"
 ---
 # <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Data Box Heavy
 
@@ -57,7 +57,7 @@ ms.locfileid: "66515936"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-在 [http://portal.azure.com](http://portal.azure.com) 中登录 Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="order"></a>顺序
 
@@ -95,7 +95,7 @@ ms.locfileid: "66515936"
 
 此步骤大约需要 5-7 分钟才能完成。
 
-1. 若要获取设备密码，请在 [Azure 门户](http://portal.azure.com)中转到“常规”>“设备详细信息”。  在设备的两个节点中使用的密码相同。
+1. 若要获取设备密码，请在 [Azure 门户](https://portal.azure.com)中转到“常规”>“设备详细信息”。  在设备的两个节点中使用的密码相同。
 2. 在用于连接到 Data Box Heavy 的计算机上，将静态 IP 地址 192.168.100.5 和子网 255.255.255.0 分配给以太网适配器。 通过 `https://192.168.100.10` 访问设备的本地 Web UI。 打开设备后，进行连接可能需要长达 5 分钟的时间。
 3. 从 Azure 门户使用密码登录。 此时会出现一个错误，指出网站的安全证书有问题。 按照特定于浏览器的说明转到该网页。
 4. 默认情况下，接口（不包括 MGMT）的网络设置配置为 DHCP。 如果需要，可将这些接口配置为静态，并提供一个 IP 地址。

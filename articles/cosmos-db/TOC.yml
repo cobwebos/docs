@@ -460,14 +460,16 @@
               href: tutorial-query-graph.md
         - name: 操作指南
           items:
-            - name: 图形数据建模
+            - name: 图数据建模
               href: graph-modeling.md
-            - name: 关系图数据分区
+            - name: 图数据分区
               href: graph-partitioning.md
-            - name: 导入关系图数据
+            - name: 导入图数据
               href: bulk-executor-graph-dotnet.md
             - name: 优化 Gremlin 查询
               href: graph-execution-profile.md
+            - name: 将图数据可视化
+              href: graph-visualization.md
             - name: 存储和管理 Spring Data
               href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
               maintainContext: true

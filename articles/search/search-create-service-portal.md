@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 650dfa7284b41407e9b128a2096548d7acfc1567
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: fd81115f4e811366b6b115d1c73a9be7ca26698b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393795"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485626"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>在门户中创建 Azure 搜索服务
 
@@ -94,7 +94,7 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 
 ## <a name="get-a-key-and-url-endpoint"></a>获取密钥和 URL 终结点。
 
-使用新服务时，必须提供 URL 终结点和授权 API 密钥，只有少数几个例外。 快速入门、教程（例如[探索 Azure 搜索 REST API (Postman)](search-fiddler.md) 和[如何在 .NET 中使用 Azure 搜索](search-howto-dotnet-sdk.md)）、示例、自定义代码都需要终结点和密钥才能在特定资源上运行。
+使用新服务时，必须提供 URL 终结点和授权 API 密钥，只有少数几个例外。 快速入门、教程（例如[探索 Azure 搜索 REST API (Postman)](search-get-started-postman.md) 和[如何在 .NET 中使用 Azure 搜索](search-howto-dotnet-sdk.md)）、示例、自定义代码都需要终结点和密钥才能在特定资源上运行。
 
 1. 在服务概览页的右侧找到并复制 URL 终结点。
 
