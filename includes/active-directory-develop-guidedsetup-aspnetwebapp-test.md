@@ -15,15 +15,15 @@ ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 8795c9ab0a4dbb76327d0ead48ed33fb0cff9e86
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121787"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173559"
 ---
 ## <a name="test-your-code"></a>测试代码
 
-要在 Visual Studio 中测试应用程序，请按 F5 运行项目。 浏览器随即打开到 http://<span></span>localhost:{port} 位置，然后显示“使用 Microsoft 登录”按钮。 选择该按钮，启动登录过程。
+要在 Visual Studio 中测试应用程序，请按 F5 运行项目  。 浏览器随即打开到 http://<span></span>localhost:{port} 位置，然后显示“使用 Microsoft 登录”按钮  。 选择该按钮，启动登录过程。
 
 准备好运行测试后，使用 Microsoft Azure Active Directory (Azure AD) 帐户（工作或学校帐户）或个人 Microsoft 帐户（live.com、outlook.com）进行登录<span></span><span></span>。
 
@@ -33,7 +33,7 @@ ms.locfileid: "66121787"
 
 #### <a name="view-application-results"></a>查看应用程序结果
 
-登录后，用户将重定向到网站主页。 该主页是 Microsoft 应用程序注册门户上应用程序注册信息中指定的 HTTPS URL。 主页包括欢迎消息“Hello \<User>”、一个注销链接和一个用于查看用户声明的链接。 用户声明链接浏览到你之前创建的“声明”控制器。
+登录后，用户将重定向到网站主页。 该主页是 Microsoft 应用程序注册门户上应用程序注册信息中指定的 HTTPS URL。 主页包括欢迎消息“Hello \<User>”、一个注销链接和一个用于查看用户声明的链接。  用户声明链接浏览到你之前创建的“声明”控制器  。
 
 ### <a name="browse-to-see-the-users-claims"></a>浏览查看用户声明
 
@@ -48,7 +48,7 @@ ms.locfileid: "66121787"
 |**名称** |用户全名 | 用户的名字和姓氏。
 |**用户名** |user<span>@domain.com</span> | 用于标识用户的用户名。
 |**主题** |主题 |唯一标识 Web 上用户的字符串。|
-|**租户 ID** |Guid | 唯一表示用户的 Azure AD 组织的 guid。|
+|**租户 ID** |Guid | 唯一表示用户的 Azure AD 组织的 guid  。|
 
 此外，还应当显示包含身份验证请求中所有声明的表格。 有关详细信息，请参阅 [Azure AD ID 令牌中的声明列表](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
 
@@ -82,7 +82,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 #### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>选项 1：限制某个组织的 Active Directory 实例的用户登录应用程序（单租户）
 
-此选项是 LOB 应用程序的常见方案：如果希望应用程序仅接受属于特定 Azure Active Directory 实例的帐户（包括该示例的来宾帐户）进行登录，请执行以下操作：
+此选项是 LOB 应用程序的常见方案：  如果希望应用程序仅接受属于特定 Azure Active Directory 实例的帐户（包括该示例的来宾帐户）进行登录，请执行以下操作： 
 
 1. 在 **web.config** 文件中，将 `Tenant` 参数的值从 `Common` 更改为组织的租户名称，例如 `contoso.onmicrosoft.com`。
 2. 在 [OWIN Startup 类](#configure-the-authentication-pipeline)中，将 `ValidateIssuer` 参数设置为 `true`。
@@ -95,4 +95,4 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>选项 3：使用自定义方法来验证颁发者
 
-可通过 IssuerValidator 参数实现自定义方法来验证颁发者。 有关如何使用此参数的详细信息，请阅读 [TokenValidationParameters 类](/previous-versions/visualstudio/dn464192(v=vs.114))。
+可通过 IssuerValidator 参数实现自定义方法来验证颁发者  。 有关如何使用此参数的详细信息，请阅读 [TokenValidationParameters 类](/previous-versions/visualstudio/dn464192(v=vs.114))。

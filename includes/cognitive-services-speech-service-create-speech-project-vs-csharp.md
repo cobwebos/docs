@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/13/2018
 ms.author: wolfma
 ms.openlocfilehash: afe6f1493c7fa8272c67f23d6708ad6e4eea9381
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145505"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173243"
 ---
 1. 启动 Visual Studio 2017。
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 83a1026cd9426e1b1651e0ec4f556b8babccb107
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7362bd5b4e15df516478ef4bef20d76fc46b326f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236247"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275361"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中心 — 大数据流式处理平台和事件引入服务
 Azure 事件中心是大数据流式处理平台和事件引入服务。 它可以每秒接收和处理数百万个事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。
@@ -35,7 +35,7 @@ Azure 事件中心是大数据流式处理平台和事件引入服务。 它可�
 
 仅当能够轻松处理并且能够从数据源获取即时见解时，数据才有价值。 事件中心提供低延迟、可无缝集成的分布式流处理平台，并在 Azure 的内部和外部提供数据和分析服务，用于构建完整的大数据管道。
 
-事件中心充当事件管道的“前门”，在解决方案体系结构中通常称作“事件引入器”。 事件引入器是位于事件发布者与事件使用者之间的组件或服务，可以将事件流的生成与这些事件的使用分离开来。 事件中心提供统一的流式处理平台和时间保留缓冲区，将事件生成者与事件使用者分离开来。 
+事件中心充当事件管道的“前门”，在解决方案体系结构中通常称作“事件引入器”  。 事件引入器是位于事件发布者与事件使用者之间的组件或服务，可以将事件流的生成与这些事件的使用分离开来。 事件中心提供统一的流式处理平台和时间保留缓冲区，将事件生成者与事件使用者分离开来。 
 
 以下部分介绍 Azure 事件中心服务的重要功能： 
 
@@ -45,9 +45,9 @@ Azure 事件中心是大数据流式处理平台和事件引入服务。 它可�
 
 ## <a name="support-for-real-time-and-batch-processing"></a>支持实时处理和批处理
 
-实时引入、缓冲、存储和处理流，以获取可行的见解。 事件中心使用[分区的使用者模型](event-hubs-features.md#partitions)，可让多个应用程序同时处理流，并允许控制处理速度。
+实时引入、缓冲、存储和处理流，以获取可行的见解。 事件中心使用[分区的使用者模型](event-hubs-scalability.md#partitions)，可让多个应用程序同时处理流，并允许控制处理速度。
 
-在 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  中近乎实时地[捕获](event-hubs-capture-overview.md)数据，以进行长期保留或微批处理。 可以基于用于派生实时分析的同一个流实现此行为。 设置捕获极其简单。 无需管理费用即可运行它，并且可以使用事件中心 [吞吐量单位](event-hubs-features.md#throughput-units)自动进行缩放。 使用事件中心可以专注于数据处理而不是数据捕获。
+在 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  中近乎实时地[捕获](event-hubs-capture-overview.md)数据，以进行长期保留或微批处理。 可以基于用于派生实时分析的同一个流实现此行为。 设置捕获极其简单。 无需管理费用即可运行它，并且可以使用事件中心 [吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 使用事件中心可以专注于数据处理而不是数据捕获。
 
 Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，以构成无服务器体系结构。
 
@@ -77,7 +77,7 @@ Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，
 
 ## <a name="next-steps"></a>后续步骤
 
-要开始使用事件中心，请参阅“发送和接收事件”教程： 
+要开始使用事件中心，请参阅“发送和接收事件”教程  ： 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)

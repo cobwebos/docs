@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 03589745e6e9b40b937c49162e99035ce6c81423
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9046af82388f99cfdd82c8cb816d4cda1e5f8237
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800049"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206864"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Android 应用
 
@@ -51,13 +51,13 @@ ms.locfileid: "65800049"
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-选择“打开现有 Android Studio 项目”，然后选择位于 `Android/Java/` 的项目。
+选择“打开现有 Android Studio 项目”，然后选择位于 `Android/Java/` 的项目  。
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
-选择“打开现有 Android Studio 项目”，然后选择位于 `Android/NDK/` 的项目。
+选择“打开现有 Android Studio 项目”，然后选择位于 `Android/NDK/` 的项目  。
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>配置帐户标识符和密钥
 
@@ -65,7 +65,7 @@ ms.locfileid: "65800049"
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-打开 `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsActivity.java`。
+打开 `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`。
 
 找到 `SpatialAnchorsAccountKey` 字段并将 `Set me` 替换为帐户密钥。
 
@@ -79,21 +79,21 @@ ms.locfileid: "65800049"
 
 找到 `SpatialAnchorsAccountId` 字段并将 `Set me` 替换为帐户标识符。
 
-***
+---
 
 ## <a name="deploy-the-app-to-your-android-device"></a>将应用部署到 Android 设备
 
 打开 Android 设备，登录并使用 USB 电缆将其连接到电脑。
 
-从 Android Studio 工具栏中选择“运行”。
+从 Android Studio 工具栏中选择“运行”  。
 
 ![Android Studio 部署和运行](./media/get-started-android/android-studio-deploy-run.png)
 
-在“选择部署目标”对话框中选择 Android 设备，然后选择“确定”以在 Android 设备上运行应用。
+在“选择部署目标”对话框中选择 Android 设备，然后选择“确定”以在 Android 设备上运行应用   。
 
 按照应用中的说明，放置并重新调用定位点。
 
-通过在 Android Studio 工具栏中选择“停止”，从而停止应用。
+通过在 Android Studio 工具栏中选择“停止”，从而停止应用  。
 
 ![停止 Android Studio](./media/get-started-android/android-studio-stop.png)
 

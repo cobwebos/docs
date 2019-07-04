@@ -15,11 +15,11 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: include file
 ms.openlocfilehash: 8c2dc41fde9387da291b6e4a6c8a6220ae62b514
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121822"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173555"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
@@ -46,7 +46,7 @@ ms.locfileid: "66121822"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|适用于 JavaScript 的 Microsoft 身份验证库预览|
 
 > [!NOTE]
-> msal.js 面向 Microsoft 标识平台终结点，个人、学校和工作帐户可通过该终结点登录并获取令牌。 Microsoft 标识平台终结点有[一些限制](../articles/active-directory/develop/active-directory-v2-limitations.md)。
+> msal.js 面向 Microsoft 标识平台终结点，个人、学校和工作帐户可通过该终结点登录并获取令牌   。 Microsoft 标识平台终结点有[一些限制](../articles/active-directory/develop/active-directory-v2-limitations.md)  。
 > 若要了解 v1.0 和 v2.0 终结点之间的差异，请参阅[终结点比较指南](../articles/active-directory/develop/azure-ad-endpoint-comparison.md)。
 
 <!--end-collapse-->

@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 3cedfaf1ae16c17026314fc24dbdc7bb11494caf
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: dd8e760e658715b89bf45718ac571ccaeb5ade96
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020957"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465571"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>快速入门：使用适用于 Unity 的语音 SDK (Beta) 识别语音
+
+针对[文本转语音](quickstart-text-to-speech-csharp-unity.md)也提供了快速入门。
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -41,9 +43,9 @@ ms.locfileid: "65020957"
 
 ## <a name="create-a-unity-project"></a>创建 Unity 项目
 
-* 启动 Unity，并在“项目”选项卡下选择“新建”。
-* 指定 **csharp-unity** 作为“项目名称”，指定“3D”作为“模板”，然后选择一个位置。
-  选择“创建项目”。
+* 启动 Unity，并在“项目”选项卡下选择“新建”。  
+* 指定 **csharp-unity** 作为“项目名称”，指定“3D”作为“模板”，然后选择一个位置。   
+  选择“创建项目”。 
 * 片刻之后，Unity 编辑器窗口应会弹出。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
@@ -52,10 +54,10 @@ ms.locfileid: "65020957"
 
 * 适用于 Unity 的语音 SDK (Beta) 打包为 Unity 资产包 (.unitypackage)。
   从[此处](https://aka.ms/csspeech/unitypackage)下载它。
-* 选择“资产” > “导入包” > “自定义包”导入 Speech SDK。
+* 选择“资产” > “导入包” > “自定义包”导入 Speech SDK。   
   有关详细信息，请查看 [Unity 文档](https://docs.unity3d.com/Manual/AssetPackages.html)。
 * 在文件选取器中，选择前面下载的语音 SDK .unitypackage 文件。
-* 确保选择所有文件，然后单击“导入”：
+* 确保选择所有文件，然后单击“导入”： 
 
   ![导入语音 SDK Unity 资产包时的 Unity 编辑器屏幕截图](media/sdk/qs-csharp-unity-01-import.png)
 
@@ -64,14 +66,14 @@ ms.locfileid: "65020957"
 我们将在场景中添加少量的 UI，其中包括一个用于触发语音识别的按钮，以及一个用于显示结果的文本字段。
 
 * 在[层次结构窗口](https://docs.unity3d.com/Manual/Hierarchy.html)（默认位于左侧）中，显示了 Unity 创建的、包含新项目的示例场景。
-* 单击“层次结构窗口”顶部的“创建”按钮，然后选择“UI” > “按钮”。
-* 这会创建三个显示在“层次结构窗口”中的游戏对象：一个嵌套在“画布”对象中的“按钮”对象，以及一个“事件系统”对象。
+* 单击“层次结构窗口”顶部的“创建”按钮，然后选择“UI” > “按钮”。   
+* 这会创建三个显示在“层次结构窗口”中的游戏对象：一个嵌套在“画布”对象中的“按钮”对象，以及一个“事件系统”对象。   
 * [浏览场景视图](https://docs.unity3d.com/Manual/SceneViewNavigation.html)，以全面查看[场景视图](https://docs.unity3d.com/Manual/UsingTheSceneView.html)中的画布和按钮。
-* 在“层次结构窗口”中单击“按钮”对象，以便在[检查器窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中显示其设置。
-* 将“位置 X”和“位置 Y”属性设置为 **0**，使按钮在画布上居中。
-* 再次单击“层次结构窗口”顶部的“创建”按钮，然后选择“UI” > “文本”以创建文本字段。
-* 在“层次结构窗口”中单击“文本”对象，以便在[检查器窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中显示其设置。
-* 将“位置 X”和“位置 Y”属性分别设置为 **0** 和 **120**，将“宽度”和“高度”属性分别设置为 **240** 和 **120**，以确保文本字段和按钮不会重叠。
+* 在“层次结构窗口”中单击“按钮”对象，以便在[检查器窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中显示其设置。 
+* 将“位置 X”和“位置 Y”属性设置为 **0**，使按钮在画布上居中。  
+* 再次单击“层次结构窗口”顶部的“创建”按钮，然后选择“UI” > “文本”以创建文本字段。   
+* 在“层次结构窗口”中单击“文本”对象，以便在[检查器窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中显示其设置。 
+* 将“位置 X”和“位置 Y”属性分别设置为 **0** 和 **120**，将“宽度”和“高度”属性分别设置为 **240** 和 **120**，以确保文本字段和按钮不会重叠。    
 
 完成后，UI 应如以下屏幕截图所示：
 
@@ -79,12 +81,12 @@ ms.locfileid: "65020957"
 
 ## <a name="add-the-sample-code"></a>添加示例代码
 
-1. 在[项目窗口](https://docs.unity3d.com/Manual/ProjectView.html)（默认位于左下角）中，单击“创建”按钮并选择“C# 脚本”。 将脚本命名为 `HelloWorld`。
+1. 在[项目窗口](https://docs.unity3d.com/Manual/ProjectView.html)（默认位于左下角）中，单击“创建”按钮并选择“C# 脚本”。   将脚本命名为 `HelloWorld`。
 
 1. 双击脚本对其进行编辑。
 
    > [!NOTE]
-   > 可以在“编辑” > “首选项”下配置要启动的代码编辑器，详情请参阅 [Unity 用户手册](https://docs.unity3d.com/Manual/Preferences.html)。
+   > 可以在“编辑” > “首选项”下配置要启动的代码编辑器，详情请参阅 [Unity 用户手册](https://docs.unity3d.com/Manual/Preferences.html)。  
 
 1. 将所有代码替换为以下内容：
 
@@ -98,9 +100,9 @@ ms.locfileid: "65020957"
 
 1. 返回到 Unity 编辑器。需要将脚本作为组件添加到游戏对象之一。
 
-   * 单击“层次结构窗口”中的“画布”对象。 这会在[检查器窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中打开设置。
-   * 单击“检查器窗口”中的“添加组件”按钮，然后搜索并添加前面创建的 HelloWorld 脚本。
-   * 请注意，Hello World 组件包含两个未初始化的属性：“输出文本”和“开始识别按钮”，它们与 `HelloWorld` 类的公共属性相匹配。
+   * 单击“层次结构窗口”中的“画布”对象。  这会在[检查器窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中打开设置。
+   * 单击“检查器窗口”中的“添加组件”按钮，然后搜索并添加前面创建的 HelloWorld 脚本。 
+   * 请注意，Hello World 组件包含两个未初始化的属性：“输出文本”和“开始识别按钮”，它们与 `HelloWorld` 类的公共属性相匹配。  
      若要连接它们，请单击对象选取器（属性右侧的小圆圈图标），并选择前面创建的文本和按钮对象。
 
      > [!NOTE]
@@ -108,7 +110,7 @@ ms.locfileid: "65020957"
 
 ## <a name="run-the-application-in-the-unity-editor"></a>在 Unity 编辑器中运行应用程序
 
-* 在 Unity 编辑器工具栏（菜单栏下方）中按下“播放”按钮。
+* 在 Unity 编辑器工具栏（菜单栏下方）中按下“播放”按钮。 
 
 * 启动应用后，请单击创建的按钮，对着计算机的麦克风讲出英语短语或句子。 你的语音将传输到语音服务并转录为文本，该文本将显示在窗口中。
 
@@ -116,7 +118,7 @@ ms.locfileid: "65020957"
 
 * 在[控制台窗口](https://docs.unity3d.com/Manual/Console.html)中检查调试消息。
 
-* 完成语音识别后，在 Unity 编辑器工具栏中单击“播放”按钮以停止应用。
+* 完成语音识别后，在 Unity 编辑器工具栏中单击“播放”按钮以停止应用。 
 
 ## <a name="additional-options-to-run-this-application"></a>用于运行此应用程序的其他选项
 

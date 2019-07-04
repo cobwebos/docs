@@ -15,15 +15,15 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: ae6d590cdada24638ec2d24c83609b8e6addfaf0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121634"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173125"
 ---
 ## <a name="set-up-your-project"></a>设置项目
 
-本部分将创建新项目，用于演示如何将 Windows 桌面 .NET 应用程序 (XAML) 与“使用 Microsoft 登录”集成，使该应用程序能查询需要令牌的 Web API。
+本部分将创建新项目，用于演示如何将 Windows 桌面 .NET 应用程序 (XAML) 与“使用 Microsoft 登录”集成，使该应用程序能查询需要令牌的 Web API  。
 
 使用本指南创建的应用程序将显示一个用于调用图的按钮、一个用于在屏幕上显示结果的区域和一个注销按钮。
 
@@ -33,13 +33,13 @@ ms.locfileid: "66121634"
 
 若要创建应用程序，请执行以下操作：
 
-1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。
-2. 在“模板”下，选择“Visual C#”。
-3. 选择“WPF 应用(.NET Framework)”，具体取决于所使用的 Visual Studio 版本。
+1. 在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。
+2. 在“模板”下，选择“Visual C#”   。
+3. 选择“WPF 应用(.NET Framework)”  ，具体取决于所使用的 Visual Studio 版本。
 
 ## <a name="add-msal-to-your-project"></a>将 MSAL 添加到项目
 
-1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器”> “包管理器控制台”。
+1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器”> “包管理器控制台”    。
 2. 在“包管理器控制台”窗口中，粘贴以下 Azure PowerShell 命令：
 
     ```powershell

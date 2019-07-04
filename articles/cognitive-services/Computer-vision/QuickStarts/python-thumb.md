@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9962874600e259a639c70b7b180e5fc2a940461f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: cf60e298782d7bdcf15b53474b2d002a3fd62bba
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999546"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341897"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-python-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Python 生成缩略图
 
@@ -26,7 +26,7 @@ ms.locfileid: "59999546"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
+- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
 - 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
@@ -36,7 +36,7 @@ ms.locfileid: "59999546"
 ```python
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
-#%matplotlib inline
+# %matplotlib inline
 import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
@@ -60,9 +60,10 @@ thumbnail_url = vision_base_url + "generateThumbnail"
 image_url = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
 
 headers = {'Ocp-Apim-Subscription-Key': subscription_key}
-params  = {'width': '50', 'height': '50', 'smartCropping': 'true'}
-data    = {'url': image_url}
-response = requests.post(thumbnail_url, headers=headers, params=params, json=data)
+params = {'width': '50', 'height': '50', 'smartCropping': 'true'}
+data = {'url': image_url}
+response = requests.post(thumbnail_url, headers=headers,
+                         params=params, json=data)
 response.raise_for_status()
 
 thumbnail = Image.open(BytesIO(response.content))
@@ -81,7 +82,7 @@ print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 1. （可选）将 `image_url` 的值替换为你要为其生成缩略图的另一图像的 URL。
 1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`get-thumbnail.py`。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `python` 命令运行示例。 例如，`python get-thumbnail.py`。
+1. 在提示符处，使用 `python` 命令运行示例。 例如，`python get-thumbnail.py` 。
 
 ## <a name="examine-the-response"></a>检查响应
 

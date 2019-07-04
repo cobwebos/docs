@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
 ms.openlocfilehash: ef8dae8219eaf1a85a5c112705517b992e25a50f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124062"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173261"
 ---
 通过终结点密钥提供对预测终结点的访问权限。 出于本快速入门的目的，请使用与 LUIS 帐户关联的免费初学者密钥。 
  
@@ -23,7 +23,7 @@ ms.locfileid: "66124062"
 
     [![语言理解 (LUIS) 应用列表的屏幕截图](media/cognitive-services-luis/app-list.png "语言理解 (LUIS) 应用列表的屏幕截图")](media/cognitive-services-luis/app-list.png)
 
-2. 在右上方菜单中选择你的名称，然后选择“设置”。
+2. 在右上方菜单中选择你的名称，然后选择“设置”  。
 
     ![LUIS 用户设置菜单访问](media/cognitive-services-luis/get-user-settings-in-luis.png)
 

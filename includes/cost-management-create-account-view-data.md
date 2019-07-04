@@ -10,11 +10,11 @@ ms.author: banders
 manager: dougeby
 ms.custom: include file
 ms.openlocfilehash: 1ffa56caebf16b588dffaba249a844915f9f44c7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120609"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172692"
 ---
 ## <a name="view-cost-data"></a>查看成本数据
 
@@ -26,19 +26,19 @@ ms.locfileid: "66120609"
 
 如果不确定仪表板中报表的用途，将鼠标悬停在 **i** 符号上即可查看说明。 单击仪表板中的任一报表可查看完整报表。
 
-也可以使用门户顶部的报表菜单查看报表。 让我们看看 Contoso 在过去 30 天的 Azure 资源开支。 依次单击“成本” > “成本分析” > “实际成本分析”。 如果在报表中为标记、组或筛选器设置了任何组，请清除这些值。
+也可以使用门户顶部的报表菜单查看报表。 让我们看看 Contoso 在过去 30 天的 Azure 资源开支。 依次单击“成本”   > “成本分析”   > “实际成本分析”  。 如果在报表中为标记、组或筛选器设置了任何组，请清除这些值。
 
 ![实际成本分析](./media/cost-management-create-account-view-data/actual-cost-01.png)
 
 在本示例中，总成本为 $122,273，预算为 $290,000。
 
-现在，让我们修改报表格式，并设置组和筛选器来缩小 Azure 成本的结果范围。 将“日期范围”设置为过去 30 天。 在右上角，单击列符号以设置条形图格式，并在“组”下面选择“提供程序”。 然后，将“提供程序”的某个筛选器设置为“Azure”。
+现在，让我们修改报表格式，并设置组和筛选器来缩小 Azure 成本的结果范围。 将“日期范围”设置为过去 30 天。  在右上角，单击列符号以设置条形图格式，并在“组”下面选择“提供程序”。  然后，将“提供程序”的某个筛选器设置为“Azure”。  
 
 ![实际成本分析已筛选](./media/cost-management-create-account-view-data/actual-cost-02.png)
 
 在本示例中，过去 30 天的 Azure 资源总成本为 $3,309。
 
-右键单击“提供程序(Azure)”栏并向下钻取到“资源类型”。
+右键单击“提供程序(Azure)”栏并向下钻取到“资源类型”。 
 
 ![向下钻取](./media/cost-management-create-account-view-data/actual-cost-03.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "66120609"
 
 ![资源类型](./media/cost-management-create-account-view-data/actual-cost-04.png)
 
-右键单击某个资源类型并选择“成本实体”，查看消耗了资源的成本实体和服务。 在下面的示例图中，“本地冗余存储”设置为“资源”类型。 “Contoso|Azure/存储”使用了 $15.65。 “工程|Azure/存储”使用了 $164.25。 “共享基础结构|Azure/存储”使用了 $116.58。 服务总成本为 $296。
+右键单击某个资源类型并选择“成本实体”，查看消耗了资源的成本实体和服务。  在下面的示例图中，“本地冗余存储”设置为“资源”类型。 “Contoso|Azure/存储”使用了 $15.65。 “工程|Azure/存储”使用了 $164.25。 “共享基础结构|Azure/存储”使用了 $116.58。 服务总成本为 $296。
 
 ![成本实体和服务](./media/cost-management-create-account-view-data/actual-cost-05.png)
 

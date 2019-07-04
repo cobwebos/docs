@@ -9,11 +9,11 @@ ms.date: 07/18/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 99f8edd816688324058d80d92a5f97f6fa8b8263
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117465"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173380"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,4 +25,4 @@ ms.locfileid: "66117465"
 
 若要在浏览器中查看远程监视解决方案仪表板，请首先导航到 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators#dashboard)。 可能会要求使用 Azure 订阅凭据登录。
 
-然后，单击你在[快速入门](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)中部署的远程监视解决方案加速器的磁贴上的“启动”。
+然后，单击你在[快速入门](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)中部署的远程监视解决方案加速器的磁贴上的“启动”  。

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: bd7db1dd5d5fd6e19584e66a9af1523567d593bf
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58631144"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172650"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -19,7 +19,7 @@ ms.locfileid: "58631144"
 * 完成 [5 分钟快速入门](../articles/spatial-anchors/index.yml)之一。
 * 对 C# 和 Unity 有一个基本的了解。
 * 对 <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a>（若要使用 Android）或 <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a>（若要使用 iOS）有一个基本的了解。
-* 使用“ASP.NET 和 Web 开发”工作负载安装 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> 或更高版本的 Windows 计算机。
+* 使用“ASP.NET 和 Web 开发”工作负载安装 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> 或更高版本的 Windows 计算机  。
 * [.NET Core 2.2 SDK](https://dotnet.microsoft.com/download)。
 * 一个或多个要部署和运行应用的设备（iOS 或 Android）。
   * 如果使用的是 Android，则需要：
