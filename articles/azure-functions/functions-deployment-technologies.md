@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 10976c9cf16dfab4c31d0d77c519dc3277204a51
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 118daf02ab59646f2926071763aa4d7e97846e04
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293050"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508232"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>在 Azure Functions 中的部署技术
 
@@ -50,16 +50,18 @@ ms.locfileid: "67293050"
 在触发器的任何更改时，函数基础结构必须是了解这些更改。 此同步操作自动进行部署的许多技术。 但是，在某些情况下您必须手动同步你的触发器。 使用外部包 URL、 本地 Git、 云同步或 FTP 将更新部署时，您必须确保手动同步你的触发器。 你可以同步中有以下三种触发器：
 
 * 在 Azure 门户中重新启动 function app
-* 发送到 HTTP POST 请求`https://www.{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>`使用[主密钥](functions-bindings-http-webhook.md#authorization-keys)。
+* 发送到 HTTP POST 请求`https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>`使用[主密钥](functions-bindings-http-webhook.md#authorization-keys)。
 * 发送到 HTTP POST 请求`https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`。 将占位符替换为你的订阅 ID、 资源组名称和函数应用的名称。
 
 ## <a name="deployment-technology-details"></a>部署技术详细信息  
+
+Azure Functions 支持这些下列部署方法。
 
 ### <a name="external-package-url"></a>外部包 URL
 
 可以引用包含函数应用的远程包 (.zip) 文件。 从提供的 URL 下载文件和应用程序中运行[运行从包](run-functions-from-deployment-package.md)模式。
 
->__如何使用它：__ 添加`WEBSITE_RUN_FROM_PACKAGE`到应用程序设置。 此设置的值应为 URL-你想要运行特定的包文件的位置。 你可以将设置添加任一[门户中](functions-how-to-use-azure-function-app-settings.md#settings)或[使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)。 如果使用 Azure blob 存储，则应使用具有专用容器[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-a-storage-account-by-using-a-shared-access-signature-sas)使函数能够访问包。 随时在应用程序重新启动它将提取的内容，这意味着，你的引用必须是有效的应用程序生存期内的副本。
+>__如何使用它：__ 添加`WEBSITE_RUN_FROM_PACKAGE`到应用程序设置。 此设置的值应为 URL-你想要运行特定的包文件的位置。 你可以将设置添加任一[门户中](functions-how-to-use-azure-function-app-settings.md#settings)或[使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)。 如果使用 Azure blob 存储，则应使用具有专用容器[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer)使函数能够访问包。 随时在应用程序重新启动它将提取的内容，这意味着，你的引用必须是有效的应用程序生存期内的副本。
 
 >__何时使用它：__ 这是支持的 Azure Functions 消耗计划 （预览版） 中的 Linux 上运行的仅限的部署方法。 在更新函数应用所引用的包文件时，您必须[手动同步触发器](#trigger-syncing)告诉 Azure 你的应用程序已更改。
 
@@ -88,11 +90,11 @@ ms.locfileid: "67293050"
 
 ### <a name="web-deploy-msdeploy"></a>Web 部署 (MSDeploy)
 
-打包并部署到任何 IIS 服务器，包括在 Windows 上运行的 Azure 函数应用在 Windows 应用程序。
+打包并部署到任何 IIS 服务器，包括你在 Azure 中的 Windows 上运行的函数应用在 Windows 应用程序。
 
->__如何使用它：__ 使用[Azure Functions 的 Visual Studio 工具](functions-create-your-first-function-visual-studio.md)，并没有刻度线`Run from package file (recommended)`复选框。
+>__如何使用它：__ 使用[Azure Functions 的 Visual Studio 工具](functions-create-your-first-function-visual-studio.md)，并取消选中`Run from package file (recommended)`框。
 >
->或者，调用`MSDeploy.exe`下载后直接[Web 部署 3.6](https://www.iis.net/downloads/microsoft/web-deploy)。
+> 此外可以下载[Web 部署 3.6](https://www.iis.net/downloads/microsoft/web-deploy) ，并调用`MSDeploy.exe`直接。
 
 >__何时使用它：__ 此部署技术支持并且没有问题，但首选的机制是现在[Zip 运行从随包一起部署启用](#zip-deploy)。 若要了解详细信息，请访问[Visual Studio 开发指南](functions-develop-vs.md#publish-to-azure)。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 398efd36e6c8d82a5090b7446c95abb2d1bfbca1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979553"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428755"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -72,6 +72,10 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 ## <a name="mode"></a>模式
 
+**模式**是配置具体取决于如果该策略所面向的 Azure 资源管理器属性或资源提供程序属性。
+
+### <a name="resource-manager-modes"></a>资源管理器模式
+
 **模式**确定将对策略评估哪些资源类型。 支持的模式包括：
 
 - `all`：评估资源组和所有资源类型
@@ -80,6 +84,13 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 大多数情况下，建议将“mode”设置为  `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 
 在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外  。 在资源组上强制执行位置或标记的策略应将“mode”  设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 如需支持标记的资源的列表，请参阅 [Azure 资源的标记支持](../../../azure-resource-manager/tag-support.md)。
+
+### <a name="resource-provider-modes"></a>资源提供程序模式
+
+当前支持的唯一资源提供程序模式是`Microsoft.ContainerService.Data`用于在管理许可控制器规则[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)。
+
+> [!NOTE]
+> [适用于 Kubernetes 的 azure 策略](rego-for-aks.md)处于公共预览状态，只支持内置策略定义。
 
 ## <a name="parameters"></a>parameters
 
@@ -389,6 +400,7 @@ Azure Policy 支持以下类型的效果：
 - **AuditIfNotExists**：如果资源不存在，则启用审核
 - **DeployIfNotExists**：如果资源不存在，则部署一个资源
 - **Disabled**：不评估资源是否符合策略规则
+- **EnforceRegoPolicy**： 配置 Azure Kubernetes 服务 （预览版） 中打开策略代理病人入院控制器
 
 对于 **append**，必须提供以下详细信息：
 

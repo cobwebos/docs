@@ -4,19 +4,19 @@ description: 了解如何在 Azure Functions 中使用 Azure 表存储绑定。
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 0c9cd513f4d5842d14077bb7470ebd18c7a46340
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 002ea00364056f0780146b79936a6bc04e289973
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64511868"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480082"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -532,7 +532,7 @@ public int run(
 
   设置 `filter` 和 `take` 属性。 不要设置 `partitionKey` 或 `rowKey`。 使用 `context.bindings.<name>` 访问输入一个或多个输入表实体。 反序列化的对象具有 `RowKey` 和 `PartitionKey` 属性。
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 使用 Azure 表存储输出绑定读取将实体写入 Azure 存储帐户中的表。
 

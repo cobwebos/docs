@@ -1,6 +1,6 @@
 ---
-title: Java 中的 Azure 搜索入门 - Azure 搜索
-description: 如何使用 Java 作为编程语言在 Azure 上生成托管云搜索应用程序。
+title: Java 快速入门：创建、 加载和查询使用 Azure 搜索 REST Api-Azure 搜索索引
+description: 介绍如何创建索引，加载数据，并运行使用 Java 和 Azure 搜索 REST Api 的查询。
 services: search
 author: jj09
 manager: jlembicz
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83f41f248d99ce55daef40e168e5f7b175e08107
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289718"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450100"
 ---
-# <a name="get-started-with-azure-search-in-java"></a>Java 中的 Azure 搜索入门
+# <a name="quickstart-create-an-azure-search-index-in-java"></a>快速入门：在 Java 中创建 Azure 搜索索引
 > [!div class="op_single_selector"]
 > * [门户](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -36,7 +36,7 @@ ms.locfileid: "61289718"
 ## <a name="about-the-data"></a>关于数据
 此示例应用程序使用的数据来自 [美国地质调查局 (USGS)](https://geonames.usgs.gov/domestic/download_data.htm)，对罗得岛州进行了筛选以减小数据集大小。 使用此数据生成搜索应用程序，该应用程序返回医院、学校等地标性建筑，以及河流、湖泊和山峰等地质特征。
 
-在该应用程序中，**SearchServlet.java** 程序通过使用 [索引器](https://msdn.microsoft.com/library/azure/dn798918.aspx) 构造，并从公共 Azure SQL 数据库检索筛选的 USGS 数据集，生成并加载索引。 程序代码中提供了联机数据源的预定义凭据和连接信息。 在数据访问方面，无需进一步配置。
+在此应用程序**SearchServlet.java**程序生成并加载索引[索引器](https://msdn.microsoft.com/library/azure/dn798918.aspx)构造，从 Azure SQL 数据库中检索筛选的 USGS 数据集。 程序代码中提供了联机数据源的预定义凭据和连接信息。 在数据访问方面，无需进一步配置。
 
 > [!NOTE]
 > 此数据集应用了筛选器，使其保持在免费定价层限定的 10,000 个文档以下。 如果使用标准层，此限制不适用，可以修改此代码以使用更大的数据集。 有关每个定价层容量的详细信息，请参阅 [限制和约束](search-limits-quotas-capacity.md)。
@@ -51,13 +51,13 @@ ms.locfileid: "61289718"
 * SearchServiceClient.java：处理 HTTP 请求
 * SearchServiceHelper.java：一个提供静态方法的帮助器类
 * Document.java：提供数据模型
-* config.properties：设置搜索服务 URL 和 API 密钥
+* config.properties：设置搜索服务 URL 和 `api-key`
 * pom.xml：Maven 依赖项
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>查找 Azure 搜索服务的服务名称和 API 密钥
-对 Azure 搜索的所有 REST API 调用都需要提供服务 URL 和 API 密钥。 
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>查找服务名称和`api-key`的 Azure 搜索服务
+所有 REST API 调用到 Azure 搜索都要求您提供的服务 URL 和一个`api-key`。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在跳转栏中，单击“搜索服务”  ，列出为订阅预配的所有 Azure 搜索服务。
@@ -84,10 +84,10 @@ ms.locfileid: "61289718"
 3. 单击 **“完成”** 。
 4. 使用 **项目资源管理器** 查看和编辑文件。 如果它尚未打开，请单击“窗口” > “显示视图” > “项目资源管理器”或使用快捷方式将其打开。   
 
-## <a name="configure-the-service-url-and-api-key"></a>配置服务 URL 和 API 密钥
-1. 在“项目资源管理器”  中，双击 **config.properties** 编辑包含服务器名称和 API 密钥的配置设置。
-2. 请参考本文中前面的步骤，在 [Azure 门户](https://portal.azure.com)中找到服务 URL 和 API 密钥，获取现在会在 **config.properties**中输入的值。
-3. 在 **config.properties**中，将“Api Key”替换为服务的 API 密钥。 接下来，使用服务名称（URL https://servicename.search.windows.net) 的第一部分）替换同一文件中的“service name”。
+## <a name="configure-the-service-url-and-api-key"></a>配置服务 URL 和 `api-key`
+1. 在中**项目资源管理器**，双击**config.properties**若要编辑包含服务器名称的配置设置和`api-key`。
+2. 请参阅本文前面部分，在其中找到服务 URL 的步骤并`api-key`中[Azure 门户](https://portal.azure.com)，以获取的值现在将进入**config.properties**。
+3. 在中**config.properties**，将"API Key"替换为`api-key`为你的服务。 接下来，使用服务名称（URL https://servicename.search.windows.net) 的第一部分）替换同一文件中的“service name”。
    
     ![][5]
 

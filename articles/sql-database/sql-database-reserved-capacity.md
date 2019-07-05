@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: 74a52df4eab8a3e471e541889cde74846af00fb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/01/2019
+ms.openlocfilehash: 8c4fd3d49b4df3b3d18802e49d51aa54c0b58333
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574182"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566153"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用
 
@@ -28,7 +28,7 @@ ms.locfileid: "64574182"
 
 可在 [Azure 门户](https://portal.azure.com)中购买 Azure SQL 数据库预留容量。 购买 SQL 数据库预留容量：
 
-- 你必须是至少一个企业或即用即付订阅的“所有者”角色。
+- 您必须至少一个企业或即用即付费率使用单独的订阅的所有者角色。
 - 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 SQL 数据库预留容量。
 
@@ -44,26 +44,25 @@ ms.locfileid: "64574182"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“所有服务”   > “预订”  。
-3. 选择“添加”，然后在“选择产品类型”窗格中，选择“SQL 数据库”以购买 SQL 数据库的新预留容量。  
-4. 填写必填字段。 与所选属性匹配的现有或新的单一数据库、弹性池或托管实例符合享受预留容量折扣的条件。 获得折扣的 SQL 数据库实例的实际数目取决于所选范围和数量。
+3. 选择**外**，然后在购买预订窗格中，选择**SQL 数据库**以购买新的保留的 SQL 数据库。
+4. 填写必填的字段。 与所选属性匹配的现有或新的单一数据库、弹性池或托管实例符合享受预留容量折扣的条件。 获得折扣的 SQL 数据库实例的实际数目取决于所选范围和数量。
+    ![提交 SQL 数据库之前的屏幕快照保留的容量购买](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
 
-   ![提交 SQL 数据库预留容量订单之前的屏幕截图](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
+下表介绍必填的字段。
 
-    | 字段      | 描述|
-    |:------------|:--------------|
-    |名称        |此预订的名称。|
-    |订阅|用于支付 SQL 数据库预留容量预订费用的订阅。 订阅付款方式是收取 SQL 数据库预留容量的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P），或即用即付（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。|
-    |范围       |vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： <br/><br/>**单个订阅** - vCore 预留折扣将应用到此订阅中的 SQL 数据库实例。 <br/><br/>**共享订阅** - vCore 预留折扣将应用到计费上下文中任何订阅中运行的 SQL 数据库实例。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。|
-    |区域      |预订的 SQL 数据库预留容量涵盖的 Azure 区域。|
-    |部署类型|要为其购买预留容量的 SQL 资源类型。|
-    |性能层|SQL 数据库实例的服务层级。
-    |术语        |一年或三年。|
-    |数量    |在 SQL 数据库预留容量预订中购买的实例数。 该数量是可以获得计费折扣的运行中 SQL 数据库实例数。 例如，如果在美国东部运行 10 个 SQL 数据库实例，则将数量指定为 10，以将所有正在运行的虚拟机的权益最大化。 |
-    |||
+| 字段      | 描述|
+|------------|--------------|
+|订阅|用于支付 SQL 数据库预留容量预订费用的订阅。 订阅付款方式是收取 SQL 数据库预留容量的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-条-0148 P) 或与即用即付定价的单个协议 (产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于个人订阅即用即付定价，费用将信用卡或发票付款方式的订阅计费。|
+|范围       |vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： <br/><br/>**共享**，vCore 预订折扣应用到任何订阅计费上下文中运行的 SQL 数据库实例。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。<br/><br/>**单一订阅**，vCore 预订折扣应用于此订阅中的 SQL 数据库实例。 <br/><br/>**单个资源组**，预订折扣应用于所选的订阅和该订阅中的所选的资源组中的 SQL 数据库实例。|
+|区域      |预订的 SQL 数据库预留容量涵盖的 Azure 区域。|
+|部署类型|要为其购买预留容量的 SQL 资源类型。|
+|性能层|SQL 数据库实例的服务层级。
+|术语        |一年或三年。|
+|数量    |在 SQL 数据库预留容量预订中购买的实例数。 该数量是可以获得计费折扣的运行中 SQL 数据库实例数。 例如，如果在美国东部运行 10 个 SQL 数据库实例，则将数量指定为 10，以将所有正在运行的虚拟机的权益最大化。 |
 
-5. 在**费用**部分查看 SQL 数据库预留容量的预订费用。
-6. 选择“购买”。 
-7. 选择“查看此预订”  以查看购买的状态。
+1. 在**费用**部分查看 SQL 数据库预留容量的预订费用。
+1. 选择“购买”。 
+1. 选择“查看此预订”  以查看购买的状态。
 
 ## <a name="cancellations-and-exchanges"></a>取消和更换
 
@@ -76,6 +75,10 @@ ms.locfileid: "64574182"
 ## <a name="vcore-size-flexibility"></a>vCore 大小灵活性
 
 vCore 大小灵活性有助于在同一性能层和区域内纵向扩展或收缩，且不会丢失预留容量权益。 SQL 数据库预留容量还提供了灵活性，使用户可以在正常操作过程中临时在池和单一数据库之间移动正在使用的数据库（在同一区域和性能层内），而不会失去预留容量权益。 通过在预订中保留一个未应用的缓冲区，你可以在不超出预算的情况下有效地管理性能峰值。
+
+## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
+
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -91,7 +94,3 @@ vCore 预留折扣自动应用到与 SQL 数据库预留容量预订范围和属
 - [了解即用即付订阅的预留使用情况](../billing/billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](https://docs.microsoft.com/partner-center/azure-reservations)
-
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
-
-如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

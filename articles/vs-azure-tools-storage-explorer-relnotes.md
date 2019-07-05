@@ -14,26 +14,119 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: b753b565b7dae6cdc244d05d051df964eda3c6f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a051f3a0c55e207e6a53955d1cb4b9ea7e54a4d
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65620490"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544147"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
-本文包含 Azure 存储资源管理器 1.8.1 版的发行说明以及以前版本的发行说明。
+本文包含 Azure 存储资源管理器 1.9.0 版本的发行说明以及以前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
 
+## <a name="version-190"></a>版本 1.9.0
+7/1/2019
+
+### <a name="download-azure-storage-explorer-190"></a>下载 Azure 存储资源管理器 1.9.0
+- [有关 Windows azure 存储资源管理 1.9.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure 存储资源管理器 1.9.0 for Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 azure 存储资源管理 1.9.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新建
+
+* 现在可以将附加 Blob 容器通过 Azure AD （RBAC 或 ACL 权限）。 此功能旨在帮助用户有权访问容器，但不是存储帐户中的容器。 有关此功能，请参阅我们的入门指南的详细信息。
+* 获取和中断租约现在支持使用 RBAC。 [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
+* 管理访问策略和设置公共访问级别，现可用于 RBAC。 [#1355](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1355)
+* 正在删除 blob 文件夹现在使用 RBAC。 [#1450](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1450)
+* 更改现在适用于 RBAC 的 blob 访问层。 [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
+* 你现在可以快速重置快速访问通过"帮助"→"重置"。 [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
+
+### <a name="preview-features"></a>预览功能
+
+* 设备代码流登录现在可供预览。 若要启用此功能，请转到“预览”→“使用设备代码流登录”。 我们鼓励所有在空白登录窗口中遇到问题的用户试用此功能，因为经过证实，它是一种更可靠的登录方式。
+* 与 AzCopy 集成的存储资源管理器目前可供预览。 若要启用此功能，请转到“预览”→“使用 AzCopy 来改善 Blob 上传和下载”。 使用 AzCopy 应该可以更快且更有效地完成 Blob 传输。
+
+### <a name="fixes"></a>修复项
+
+* 修复了无法加载 50 多个订阅一个帐户。 [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
+* 修复了无效的直接链接失败时出现信息栏的"登录"按钮。 [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
+* 修复了不是在 macOS 上的.app 文件上传。 [#1119](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1119)
+* 修复了"全部重试"的失败的 blob 重命名不起作用。 [#992](https://www.github.com/Microsoft/AzureStorageExplorer/issues/992)
+* 修复了"取消"打开 blob 时不起作用。 [#1464](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1464)
+* 修复了在整个产品的多个拼写和工具提示问题。 非常感谢的所有用户报告这些问题 ！ [#1303](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1303), [#1328](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1328), [#1329](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1329), [#1331](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1331), [#1336](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1336), [#1352](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1352), [#1368](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1368), [#1395](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1395)
+
+### <a name="known-issues"></a>已知问题
+
+* 在执行非 AzCopy Blob 下载时，不会验证大型文件的 MD5。 这是由存储 SDK 中的一个 bug 导致的。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
+* 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
+* 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
+* Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
+* 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
+* 由于 NodeJS 中的 bug，从 OneDrive 文件夹上传不正常工作。 该 bug 已修复，但尚未集成到 Electron 中。 若要在向/从 Blob 容器上传或下载时解决此问题，可以使用试验性的 AzCopy 功能。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是此处介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* Azure Stack 不支持以下功能。 在处理 Azure Stack 资源时尝试使用这些功能可能会导致意外错误。
+   * 文件共享
+   * 访问层级
+   * 软删除
+   * ADLS 第 2 代
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+
+## <a name="previous-releases"></a>以前的版本
+
+* [1.8.1 版](#version-181)
+* [版本为 1.8.0](#version-180)
+* [版本 1.7.0](#version-170)
+* [版本 1.6.2](#version-162)
+* [版本 1.6.1](#version-161)
+* [版本 1.6.0](#version-160)
+* [版本 1.5.0](#version-150)
+* [版本 1.4.4](#version-144)
+* [版本 1.4.3](#version-143)
+* [版本 1.4.2](#version-142)
+* [版本 1.4.1](#version-141)
+* [版本 1.3.0](#version-130)
+* [版本 1.2.0](#version-120)
+* [版本 1.1.0](#version-110)
+* [版本 1.0.0](#version-100)
+* [版本 0.9.6](#version-096)
+* [版本 0.9.5](#version-095)
+* [版本 0.9.4 和 0.9.3](#version-094-and-093)
+* [版本 0.9.2](#version-092)
+* [版本 0.9.1 和 0.9.0](#version-091-and-090)
+* [版本 0.8.16](#version-0816)
+* [版本 0.8.14](#version-0814)
+* [版本 0.8.13](#version-0813)
+* [版本 0.8.12、0.8.11 和 0.8.10](#version-0812-and-0811-and-0810)
+* [版本 0.8.9 和 0.8.8](#version-089-and-088)
+* [版本 0.8.7](#version-087)
+* [版本 0.8.6](#version-086)
+* [版本 0.8.5](#version-085)
+* [版本 0.8.4](#version-084)
+* [版本 0.8.3](#version-083)
+* [版本 0.8.2](#version-082)
+* [版本 0.8.0](#version-080)
+* [版本 0.7.20160509.0](#version-07201605090)
+* [版本 0.7.20160325.0](#version-07201603250)
+* [版本 0.7.20160129.1](#version-07201601291)
+* [版本 0.7.20160105.0](#version-07201601050)
+* [版本 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-181"></a>1\.8.1 版
 5/13/2019
-
-### <a name="download-azure-storage-explorer-181"></a>下载 Azure 存储资源管理器 1.8.1
-- [有关 Windows azure 存储资源管理 1.8.1](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure 存储资源管理器 1.8.1 for Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 azure 存储资源管理 1.8.1](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>修补程序
 * 在某些情况下，单击"加载更多"在资源级别将不返回资源的下一页面。 此问题已解决。 [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
@@ -89,52 +182,8 @@ ms.locfileid: "65620490"
 
 * 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
 
-## <a name="previous-releases"></a>以前的版本
-
-* [版本为 1.8.0](#version-180)
-* [版本 1.7.0](#version-170)
-* [版本 1.6.2](#version-162)
-* [版本 1.6.1](#version-161)
-* [版本 1.6.0](#version-160)
-* [版本 1.5.0](#version-150)
-* [版本 1.4.4](#version-144)
-* [版本 1.4.3](#version-143)
-* [版本 1.4.2](#version-142)
-* [版本 1.4.1](#version-141)
-* [版本 1.3.0](#version-130)
-* [版本 1.2.0](#version-120)
-* [版本 1.1.0](#version-110)
-* [版本 1.0.0](#version-100)
-* [版本 0.9.6](#version-096)
-* [版本 0.9.5](#version-095)
-* [版本 0.9.4 和 0.9.3](#version-094-and-093)
-* [版本 0.9.2](#version-092)
-* [版本 0.9.1 和 0.9.0](#version-091-and-090)
-* [版本 0.8.16](#version-0816)
-* [版本 0.8.14](#version-0814)
-* [版本 0.8.13](#version-0813)
-* [版本 0.8.12、0.8.11 和 0.8.10](#version-0812-and-0811-and-0810)
-* [版本 0.8.9 和 0.8.8](#version-089-and-088)
-* [版本 0.8.7](#version-087)
-* [版本 0.8.6](#version-086)
-* [版本 0.8.5](#version-085)
-* [版本 0.8.4](#version-084)
-* [版本 0.8.3](#version-083)
-* [版本 0.8.2](#version-082)
-* [版本 0.8.0](#version-080)
-* [版本 0.7.20160509.0](#version-07201605090)
-* [版本 0.7.20160325.0](#version-07201603250)
-* [版本 0.7.20160129.1](#version-07201601291)
-* [版本 0.7.20160105.0](#version-07201601050)
-* [版本 0.7.20151116.0](#version-07201511160)
-
 ## <a name="version-180"></a>版本 1.8.0
 2019 年 5 月 1 日
-
-### <a name="download-azure-storage-explorer-180"></a>下载 Azure 存储资源管理器 1.8.0
-- [适用于 Windows 的 Azure 存储资源管理器 1.8.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 1.8.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 1.8.0](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>新建
 
@@ -1276,8 +1325,8 @@ ms.locfileid: "65620490"
 
 * 已将 Electron 版本更新为 1.7.2，以便利用若干关键安全更新
 * 现可从帮助菜单快速访问联机疑难解答指南
-* 存储资源管理器疑难解答[指南][2]
-* 连接到 Azure Stack 订阅相关[说明][3]
+* 存储资源管理器故障排除[指南][2]
+* [说明][3]上连接到 Azure Stack 订阅
 
 ### <a name="known-issues"></a>已知问题
 
@@ -1301,8 +1350,8 @@ ms.locfileid: "65620490"
 
 #### <a name="new"></a>新建
 
-* 存储资源管理器疑难解答[指南][2]
-* 连接到 Azure Stack 订阅相关[说明][3]
+* 存储资源管理器故障排除[指南][2]
+* [说明][3]上连接到 Azure Stack 订阅
 
 #### <a name="fixes"></a>修复项
 

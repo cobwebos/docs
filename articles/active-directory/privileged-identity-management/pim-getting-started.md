@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 651dc4efa653e7a4eb77f153280579ffd87fe8f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 408991ffc3922986234f7d40e1cd589b1d126ba1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289909"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476485"
 ---
 # <a name="start-using-pim"></a>开始使用 PIM
 
@@ -56,25 +56,25 @@ ms.locfileid: "60289909"
 
 1. 在列表中单击“许可 PIM”。 
 
-    ![许可 PIM](./media/pim-getting-started/consent-pim.png)
+    ![许可 PIM 来启用 PIM](./media/pim-getting-started/consent-pim.png)
 
 1. 单击“验证我的身份”，以便通过  Azure MFA 来验证身份。 系统会要求你选取一个帐户。
 
-    ![选取帐户](./media/pim-getting-started/pick-account.png)
+    ![选择身份验证的帐户窗口](./media/pim-getting-started/pick-account.png)
 
 1. 如果需要更多信息才能进行验证，系统会引导你完成相关过程。 有关详细信息，请参阅[获取有关双重验证的帮助](https://go.microsoft.com/fwlink/p/?LinkId=708614)。
 
-    ![需要更多信息](./media/pim-getting-started/more-information-required.png)
+    ![详细信息所需窗口，如果你的组织需要的详细信息](./media/pim-getting-started/more-information-required.png)
 
     例如，系统可能会要求你提供电话验证。
 
-    ![其他安全验证](./media/pim-getting-started/additional-security-verification.png)
+    ![其他安全验证页面，要求如何与您联系](./media/pim-getting-started/additional-security-verification.png)
 
 1. 完成验证过程以后，请单击“许可”按钮。 
 
 1. 在出现的消息中单击“是”，对 PIM 服务表示许可。 
 
-    ![许可 PIM 消息](./media/pim-getting-started/consent-pim-message.png)
+    ![许可 PIM 消息完成同意过程](./media/pim-getting-started/consent-pim-message.png)
 
 ## <a name="sign-up-pim-for-azure-ad-roles"></a>为 Azure AD 角色注册 PIM
 
@@ -100,7 +100,7 @@ ms.locfileid: "60289909"
 
 设置 PIM 后，即可执行标识管理任务。
 
-![PIM 的顶级任务 - 屏幕快照](./media/pim-getting-started/pim-quickstart-tasks.png)
+![在 PIM 显示导航窗口任务和管理选项](./media/pim-getting-started/pim-quickstart-tasks.png)
 
 | 任务 + 管理 | 描述 |
 | --- | --- |
@@ -125,11 +125,11 @@ ms.locfileid: "60289909"
 
 1. 选中“将边栏选项卡固定到仪表板”  可将“PIM 快速入门”边栏选项卡固定到仪表板。
 
-    ![将边栏选项卡固定到仪表板](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![到 PIM 边栏选项卡固定到仪表板的图钉图标](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     在 Azure 仪表板上，你将看到如下所示的一个磁贴：
 
-    ![“PIM 快速入门”磁贴](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![快速入门 PIM 仪表板上的磁贴](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>后续步骤
 

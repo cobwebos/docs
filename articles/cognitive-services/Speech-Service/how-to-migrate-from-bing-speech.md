@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 6324da55c8af4934185fa39a106939844788adba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 33907437ab330278bdf7b023f6a93bd96e78cbad
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653710"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561342"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
 
@@ -69,7 +69,7 @@ Websocket 协议 | :heavy_check_mark: | :heavy_check_mark: | 语音服务 Websoc
 
 如果使用特定编程语言的必应语音客户端库，则迁移到[语音 SDK](speech-sdk.md) 需要更改应用程序，因为 API 不同。 语音 SDK 可以简化代码，同时使你可以访问新功能。
 
-目前，语音 SDK 支持 C#（Windows 10、UWP、.NET Standard）、Java（Android 和自定义设备）、Objective C (iOS)、C++（Windows 和 Linux）以及 JavaScript。 所有平台上的 API 均类似，从而简化了多平台开发。
+目前，支持语音 SDK C# ([此处详细介绍](https://aka.ms/csspeech))，Java （Android 和自定义设备）、 Objective C (iOS)、 C++ （Windows 和 Linux） 和 JavaScript。 所有平台上的 API 均类似，从而简化了多平台开发。
 
 语音服务不提供全局终结点。 确定应用程序在使用一个区域终结点处理其所有流量的情况下，能否高效运行。 如果不能，则使用地理位置来确定最高效的终结点。 你需要一个单独的语音服务订阅，则使用每个区域中。
 

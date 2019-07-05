@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d2be76072866da2b21718f60fd0c9a5923b15b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da111311de7b873be6453862ffcbd56fe546ea7f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545112"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482380"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
@@ -39,7 +39,7 @@ Microsoft 标识平台支持[资源所有者密码凭据 (ROPC) 授予](https://
 
 下图显示了 ROPC 流。
 
-![ROPC 流](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![显示资源所有者密码凭据流的示意图](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>授权请求
 
@@ -47,7 +47,7 @@ ROPC 流是单一请求&mdash;它将客户端标识和用户的凭据发送到 I
 
 > [!TIP]
 > 尝试在 Postman 中执行此请求！
-> [![在 Postman 中运行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> [![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```
@@ -67,7 +67,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 参数 | 条件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 需要 | 一个目录租户，用户需登录到其中。 这可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
-| `grant_type` | 必选 | 必须设置为 `password`。 |
+| `grant_type` | 需要 | 必须设置为 `password`。 |
 | `username` | 需要 | 用户的电子邮件地址。 |
 | `password` | 需要 | 用户的密码。 |
 | `scope` | 建议 | 以空格分隔的[范围](v2-permissions-and-consent.md)或权限的列表，这是应用需要的。 在交互式流中，管理员或用户必须提前同意这些范围。 |

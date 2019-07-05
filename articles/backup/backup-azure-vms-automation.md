@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 4df65819256e6a81a07927d463d130fbfdf9317a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85e7b40778305395bb0f4a9403b4aeafc4607654
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255012"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565704"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -447,7 +447,7 @@ $restorejob
 >
 >
 
-提供了附加参数 TargetResourceGroupName  来指定托管磁盘要还原到的 RG。 
+提供了附加参数 TargetResourceGroupName  来指定托管磁盘要还原到的 RG。
 
 > [!NOTE]
 > 强烈建议使用 **TargetResourceGroupName** 参数来还原托管磁盘，因为它可以显著提高性能。 此外，从 Azure Powershell Az 模块 1.0 开始，在使用托管磁盘进行还原时，此参数是必需的
@@ -483,6 +483,15 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob
 ```
 
 还原磁盘以后，转到下一部分来了解如何创建 VM。
+
+## <a name="replace-disks-in-azure-vm"></a>替换为 Azure VM 中的磁盘
+
+若要替换的磁盘和配置信息，请执行以下步骤：
+
+- 步骤 1：[还原磁盘](backup-azure-vms-automation.md#restore-the-disks)
+- 步骤 2：[分离数据磁盘使用 PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+- 步骤 3：[将数据磁盘附加到 Windows VM 使用 PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
+
 
 ## <a name="create-a-vm-from-restored-disks"></a>从还原的磁盘创建 VM
 
@@ -718,6 +727,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>从 Azure VM 备份还原文件
 

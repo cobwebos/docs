@@ -8,25 +8,26 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2bf19a2599d59b9ff2b3d189b26134f1528a878
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66116208"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448567"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
 Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在评估匹配的策略规则时发生的情况。 如果这些效果适用于新资源、更新的资源或现有资源，则它们的行为会有所不同。
 
-目前在策略定义中支持六种效果：
+策略定义中当前支持这些效果：
 
-- 附加
-- 审核
-- AuditIfNotExists
-- 拒绝
-- DeployIfNotExists
-- 已禁用
+- [Append](#append)
+- [审核](#audit)
+- [AuditIfNotExists](#auditifnotexists)
+- [拒绝](#deny)
+- [DeployIfNotExists](#deployifnotexists)
+- [已禁用](#disabled)
+- [EnforceRegoPolicy](#enforceregopolicy) （预览版）
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
@@ -38,6 +39,8 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 - 然后在请求传输到资源提供程序之前评估**审核**。
 
 资源提供程序返回成功代码后，将会评估 **AuditIfNotExists** 和 **DeployIfNotExists** 以确定是否需要其他合规性日志记录或操作。
+
+当前没有任何对的计算顺序**EnforceRegoPolicy**效果。
 
 ## <a name="disabled"></a>已禁用
 
@@ -332,6 +335,58 @@ DeployIfNotExists 效果的  “details”属性具有可定义要匹配的相�
                     }
                 }
             }
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+这种效果用于策略定义*模式下*的`Microsoft.ContainerService.Data`。 它用于通过许可控制规则定义与[Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)到[打开策略代理](https://www.openpolicyagent.org/)(OPA) 上[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)。
+
+> [!NOTE]
+> [适用于 Kubernetes 的 azure 策略](rego-for-aks.md)处于公共预览状态，只支持内置策略定义。
+
+### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy 评估
+
+打开策略代理许可控制器的计算结果在实时群集上的任何新请求。
+每隔 5 分钟完成群集的完全扫描，并将结果报告给 Azure 策略。
+
+### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy 属性
+
+**详细信息**EnforceRegoPolicy 效果的属性具有描述 Rego 许可控制规则的子属性。
+
+- **policyId** [必需]
+  - 唯一的名称作为参数传递给 Rego 许可控制规则。
+- **策略**[必需]
+  - 指定的 URI Rego 许可控制规则。
+- **policyParameters** [optional]
+  - 定义任何参数和值要传递给 rego 策略。
+
+### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy 示例
+
+示例：Rego 许可控制规则，以便只有指定的容器映像在 AKS 中。
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "equals": "Microsoft.ContainerService/managedClusters"
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "EnforceRegoPolicy",
+    "details": {
+        "policyId": "ContainerAllowedImages",
+        "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/container-allowed-images/limited-preview/gatekeeperpolicy.rego",
+        "policyParameters": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]"
         }
     }
 }

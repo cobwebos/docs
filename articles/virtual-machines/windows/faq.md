@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 61f24b3c13a53b23538327cd1458a54756b7caa5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7961656e0f295b3e1a9264d839da94de25a224a8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65466350"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550314"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>有关 Windows 虚拟机的常见问题
 本文讨论了在 Azure 中使用 Resource Manager 部署模型创建的 Windows 虚拟机的一些常见问题。 本主题的 Linux 版本，请参阅[常问问题有关 Linux 虚拟机](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
@@ -31,7 +31,7 @@ ms.locfileid: "65466350"
 MSDN Azure 权益订户以及 MSDN 开发和测试即用即付订户可使用某些版本的 Windows 7、Windows 8.1 和 Windows 10 执行开发和测试任务。 有关详细信息（包括说明和限制），请参阅[适用于 MSDN 订户的 Windows 客户端映像](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。 
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>使用虚拟机时，我可以使用多少存储？
-每个数据磁盘的容量高达 4 TB (4,095 GB)。 可以使用的数据磁盘的数目取决于虚拟机的大小。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+每个数据磁盘可以最多 32,767 GiB。 可以使用的数据磁盘的数目取决于虚拟机的大小。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 Azure 托管磁盘是推荐用于 Azure 虚拟机的磁盘存储产品，方便永久存储数据。 可对每个虚拟机使用多个托管磁盘。 托管磁盘提供两种类型的持久存储选项：高级和标准托管磁盘。 有关定价信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
 
@@ -54,7 +54,7 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 可以通过移动页面文件和重新分配驱动器号来更改驱动器号，但需确保按特定顺序执行这些步骤。 有关说明，请参阅[更改 Windows 临时磁盘的驱动器号](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>我是否可以将现有 VM 添加到可用性集？
-不。 不可以。如果希望 VM 成为可用性集的一部分，需要在该集内创建 VM。 目前不支持在创建 VM 之后再将其添加到可用性集。
+否。 不可以。如果希望 VM 成为可用性集的一部分，需要在该集内创建 VM。 目前不支持在创建 VM 之后再将其添加到可用性集。
 
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>我是否可以将虚拟机上传到 Azure？
 是的。 相关说明，请参阅[将本地 VM 迁移到Azure](on-prem-to-azure.md)。

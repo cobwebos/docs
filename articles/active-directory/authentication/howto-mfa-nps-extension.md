@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97bad4d9cd599890dd5e26cbc77f81156c0f1070
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4dbe3039845b1c9160e4f4fa3007cad1f588f71e
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204662"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560763"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -76,14 +76,14 @@ Windows Server 2008 R2 SP1 或更高版本。
 
 NPS 服务器必须能够通过端口 80 和 443 与以下 URL 通信。
 
-* https:\//adnotifications.windowsazure.com  
-* https:\//login.microsoftonline.com
+- [https://adnotifications.windowsazure.com](https://adnotifications.windowsazure.com)
+- [https://login.microsoftonline.com](https://login.microsoftonline.com)
 
 此外，需要连接到以下 Url 来完成[适配器使用提供的 PowerShell 脚本的安装程序](#run-the-powershell-script)
 
-- https:\//login.microsoftonline.com
-- https:\//provisioningapi.microsoftonline.com
-- https:\//aadcdn.msauth.net
+- [https://login.microsoftonline.com](https://login.microsoftonline.com)
+- [https://provisioningapi.microsoftonline.com](https://provisioningapi.microsoftonline.com)
+- [https://aadcdn.msauth.net](https://aadcdn.msauth.net)
 
 ## <a name="prepare-your-environment"></a>准备环境
 
@@ -121,9 +121,14 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 1. 在 RADIUS 客户端（VPN、Netscaler 服务器或其他客户端）与 NPS 服务器之间使用的密码加密算法。
    - PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码  。
    - **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。
-2. 客户端应用程序（VPN、Netscaler 服务器或其他客户端）可以处理的输入方法。 例如，VPN 客户端是否有一些手段允许用户键入通过文本或移动应用收到的验证码？
 
-部署 NPS 扩展时，请根据这些因素评估你的用户可使用哪些方法。 如果你的 RADIUS 客户端支持 PAP，但客户端 UX 没有可用于输入验证码的输入字段，则电话呼叫和移动应用通知是两种受支持的选项。
+      > [!NOTE]
+      > 部署 NPS 扩展时，请根据这些因素评估你的用户可使用哪些方法。 如果你的 RADIUS 客户端支持 PAP，但客户端 UX 没有可用于输入验证码的输入字段，则电话呼叫和移动应用通知是两种受支持的选项。
+      >
+      > 此外，如果 VPN 客户端用户体验支持输入字段，并进行了配置网络访问策略的身份验证可能成功，但是在网络策略中配置的 RADIUS 属性均不将应用到任一网络访问设备，如 RRAS 服务器和 VPN 客户端。 因此，VPN 客户端可能比所需的或不能访问到更少的更多访问权限。
+      >
+
+2. 客户端应用程序（VPN、Netscaler 服务器或其他客户端）可以处理的输入方法。 例如，VPN 客户端是否有一些手段允许用户键入通过文本或移动应用收到的验证码？
 
 可以在 Azure 中[禁用不受支持的身份验证方法](howto-mfa-mfasettings.md#verification-methods)。
 
@@ -132,11 +137,10 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 部署和使用 NPS 扩展前，需要先向 MFA 注册必须执行双重验证的用户。 更直接的是，若要在部署扩展时测试扩展，则至少需要一个已针对多重身份验证进行完全注册的测试帐户。
 
 使用以下步骤以启动一个测试帐户：
-1. 通过测试帐户登录 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 
-2. 按照提示设置验证方法。
-3. 创建条件性访问策略或[更改用户状态](howto-mfa-userstates.md)来测试帐户要求进行双重验证。 
 
-用户还需要按照以下步骤注册，然后才能使用 NPS 扩展进行身份验证。
+1. 通过测试帐户登录 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。
+2. 按照提示设置验证方法。
+3. [创建条件性访问策略](howto-mfa-getstarted.md#create-conditional-access-policy)需要多重身份验证的测试帐户。
 
 ## <a name="install-the-nps-extension"></a>安装 NPS 扩展
 
@@ -188,6 +192,14 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 > [!NOTE]
 > 如果使用自己的证书，而不是使用 PowerShell 脚本生成的证书，请确保它们符合 NPS 命名约定。 使用者名称必须为“CN=\<TenantID\>”，“OU=Microsoft NPS Extension”  。 
+
+### <a name="certificate-rollover"></a>证书滚动更新
+
+版本现在支持 1.0.1.32 NPS 扩展，读取多个证书。 此功能将有助于简化在其到期前的滚动证书更新。 如果你的组织正在运行以前版本的 NPS 扩展，您应升级到版本 1.0.1.32 或更高版本。
+
+创建的证书`AzureMfaNpsExtnConfigSetup.ps1`脚本的有效期为 2 年。 IT 组织应监视过期的证书。 NPS 扩展的证书放置在个人下的本地计算机证书存储中并颁发给租户 ID 提供给脚本。
+
+证书接近到期日期时，应创建一个新证书来替换它。  通过运行完成此过程`AzureMfaNpsExtnConfigSetup.ps1`再次并保留相同的租户 ID 出现提示时。 应在你的环境中每个 NPS 服务器上重复此过程。
 
 ## <a name="configure-your-nps-extension"></a>配置 NPS 扩展
 
@@ -291,6 +303,10 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>管理 TLS/SSL 协议和密码套件
 
 建议禁用或删除较旧和较弱的密码套件，除非组织需要这些套件。 若要了解如何完成此任务，可以参阅[为 AD FS 管理 SSL/TLS 协议和密码套件](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)一文。
+
+### <a name="additional-troubleshooting"></a>其他故障排除
+
+可以在文章中找到其他故障排除指南和可能的解决方案[解决的 Azure 多重身份验证的 NPS 扩展的错误消息](howto-mfa-nps-extension-errors.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

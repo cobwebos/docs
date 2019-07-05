@@ -3,7 +3,7 @@ title: 如何使用适用于 Azure 移动应用的 Apache Cordova 插件
 description: 如何使用适用于 Azure 移动应用的 Apache Cordova 插件
 services: app-service\mobile
 documentationcenter: javascript
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
@@ -12,18 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: 3c22aab20a9260bfd21869f0b327211e2f3d8894
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 327cb3a3667c63454549ec694790769c9ea1fd58
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62109570"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446418"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 Apache Cordova 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-how-to-use-client-library)今天。
+>
+
+## <a name="overview"></a>概述
 本指南介绍了如何使用最新的[适用于 Azure 移动应用的 Apache Cordova 插件]执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure 移动应用快速入门]，创建后端、创建表并下载预先生成的 Apache Cordova 项目。 本指南侧重于客户端 Apache Cordova 插件。
 
 ## <a name="supported-platforms"></a>支持的平台

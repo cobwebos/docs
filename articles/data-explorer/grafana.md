@@ -6,17 +6,23 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.openlocfilehash: 135f8f1c9c352f9d2307a8bf9ad1bec892aac179
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 6/30/2019
+ms.openlocfilehash: 0f148a97b25afb9135223ff92afb898d4734c586
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399913"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537799"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>在 Grafana 中可视化 Azure 数据资源管理器中的数据
 
 Grafana 是一个分析平台，可用于查询和可视化数据，然后根据可视化结果创建和共享仪表板。 Grafana 提供一个 Azure 数据资源管理器插件，通过该插件可连接到 Azure 数据资源管理器并可视化数据  。 本文介绍如何将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将来自示例群集的数据可视化。
+
+使用下面的视频，您可以了解如何使用 Grafana 的 Azure 数据资源管理器插件、 作为数据源为 Grafana，设置 Azure 数据资源管理器，然后实现数据可视化效果。 
+
+> [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
+
+或者，可以[配置数据源](#configure-the-data-source)并[实现数据可视化效果](#visualize-data)以下文章中所述。
 
 ## <a name="prerequisites"></a>必备组件
 

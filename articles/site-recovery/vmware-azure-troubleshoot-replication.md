@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 06/27/2019
 ms.author: mayg
-ms.openlocfilehash: 3221b2bd18b8b0756f280d88fffc6016d0498b8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c005dcee78e2a9338dc7a816e06d9a78a2f355b6
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924825"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491676"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -77,6 +77,13 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
         - VSS 服务
         - Azure Site Recovery VSS 提供程序
         - VDS 服务
+
+- 如果你正在运行 SQL 或 Exchange 工作负荷，检查失败的这些应用程序编写器的日志。 在以下文章中捕获经常出现的错误和其解决方法：
+    -  [SQL Server 数据库的自动关闭选项设置为 TRUE](https://support.microsoft.com/help/4504104)
+    - [SQL Server 2008 R2 引发不可重试错误](https://support.microsoft.com/help/4504103)
+    - [在 SQL Server 2016 和 2017年中的已知的问题](https://support.microsoft.com/help/4493364)
+    - [与 Exchange 服务器 2013年和 2016年的常见问题](https://support.microsoft.com/help/4037535)
+
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>源计算机的变动率较高 [错误 78188]
 

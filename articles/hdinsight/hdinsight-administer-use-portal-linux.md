@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 44de565b8c94369c5751938b5df939f0af6e7f36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c745fceca5efa66b1b23661001d93ddb287fe37b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068914"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460627"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -152,7 +152,7 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 可以通过许多方式对此过程进行程序性处理：
 
 * 用户 Azure 数据工厂。 有关创建按需 HDInsight 链接服务的信息，请参阅[在 HDInsight 中使用 Azure 数据工厂创建基于 Linux 的按需 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md)。
-* 使用 Azure PowerShell。  请参阅[分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)。
+* 使用 Azure PowerShell。  请参阅[分析航班延误数据](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)。
 * 使用 Azure CLI。 请参阅[使用 Azure CLI 管理 Azure HDInsight 群集](hdinsight-administer-use-command-line.md)。
 * 使用 HDInsight .NET SDK。 请参阅[提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
 
@@ -214,7 +214,7 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HT
    | 字段 | 值 |
    | --- | --- |
    | 脚本类型 | 从下拉列表中选择“- 自定义”。 |
-   | Name |“更改 ssh 密码” |
+   | 名称 |“更改 ssh 密码” |
    | Bash 脚本 URI |changepassword.sh 文件的 URI |
    | 节点类型：（头节点、辅助角色节点、Nimbus、监督程序、Zookeeper，等等。） |✓ 适用于所有列出的节点类型 |
    | parameters |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 |

@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd84b44c89c856036640757b7760d7c10bd36173
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4951984d05e75b0271cf6592c77c54ad13678994
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824848"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476559"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>配置最终用户对 Azure Active Directory 中应用程序的许可方式
 了解如何配置用户许可应用程序权限的方式。 可以通过授予管理员许可来来简化用户体验。 本文提供配置用户许可的不同方式。 这些方法适用于 Azure Active Directory (Azure AD) 租户中的所有最终用户。 
@@ -38,9 +38,10 @@ ms.locfileid: "65824848"
 2. 在左侧导航菜单的顶部单击“所有服务”。  此时会打开“Azure Active Directory 扩展”。 
 3. 在筛选器搜索框中键入“Azure Active Directory”  ，然后选择“Azure Active Directory”  项。
 4. 在导航菜单中，单击“企业应用程序”  。
-5. 单击“授予管理员许可”。  系统将提示你登录以管理应用程序。
-6. 使用有权授予对应用程序的管理员许可的帐户登录。 
-7. 许可应用程序权限。
+5. 选择许可的应用。
+6. 选择**权限**，然后单击**授予管理员同意**。 系统将提示你登录以管理应用程序。
+7. 使用有权授予对应用程序的管理员许可的帐户登录。 
+8. 许可应用程序权限。
 
 仅当应用程序符合以下条件时，此选项才起作用： 
 
@@ -54,8 +55,8 @@ ms.locfileid: "65824848"
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到“应用注册”边栏选项卡。 
 3. 选择要许可的应用程序。
-4. 选择“所需的权限”。 
-5. 单击边栏选项卡顶部的“授予权限”。 
+4. 选择“API 权限”  。
+5. 单击**授予管理员同意**。
 
 
 ## <a name="grant-admin-consent-through-a-url-request"></a>通过 URL 请求授予管理员许可

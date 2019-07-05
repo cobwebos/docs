@@ -16,12 +16,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47e9033b33c70a72a1685696f75a442e88eed033
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f83cb38567feb51ba7959ada7730d66ded677bf9
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289673"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476537"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>批准或拒绝在 PIM 中的 Azure AD 角色的请求
 
@@ -41,7 +41,7 @@ ms.locfileid: "60289673"
 
 1. 单击“审批请求”  。
 
-    ![PIM Azure AD 角色的角色](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
+    ![Azure AD 角色的审批请求](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
     将看到待审批的请求列表。
 
@@ -49,27 +49,27 @@ ms.locfileid: "60289673"
 
 1. 选中要审批的请求，然后单击“审批”以打开审批所选请求窗格  。
 
-    ![PIM 审批请求列表](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
+    ![批准请求列表，其中突出显示的批准选项](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
 1. 在“审批原因”框中，键入原因  。
 
-    ![PIM 审批所选请求](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+    ![批准所选的请求窗格中，批准原因](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
 1. 单击“批准”  。
 
     状态符号将随审批操作更新。
 
-    ![PIM 审批所选请求](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+    ![单击批准按钮后批准所选的请求窗格](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
 
 ## <a name="deny-requests"></a>拒绝请求
 
 1. 选中要拒绝的请求，然后单击“拒绝”以打开拒绝所选请求窗格  。
 
-    ![PIM 审批请求列表](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+    ![批准请求列表，其中突出显示的拒绝选项](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 
 1. 在“拒绝原因”框中，键入原因  。
 
-    ![PIM 拒绝所选请求](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+    ![拒绝所选的请求窗格中，拒绝原因](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
 1. 单击“拒绝”  。
 

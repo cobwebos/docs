@@ -5,18 +5,18 @@ keywords: 自动化安全性, 安全的自动化; 自动化身份验证
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
 ROBOTS: NOINDEX
-ms.openlocfilehash: 60175a5b9309c08d5fdab997469a9d0526afaefe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88f1826191934ee76c565bd73de907a26d368c88
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60737017"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476842"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure 自动化中的身份验证简介  
 Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (AWS)）针对 Azure、本地中的资源来自动执行任务。  为了使 Runbook 执行所需操作，Runbook 必须有权使用订阅中所需的最小权限来安全地访问资源。

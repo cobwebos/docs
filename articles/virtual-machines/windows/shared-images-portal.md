@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: f63b705f7967eeddaf522941d6db9be5d9f2719d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93734045cd06f279f37d7725aa573a59c4ec0be9
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244990"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465716"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>创建共享的映像库使用 Azure 门户
 
@@ -53,6 +53,9 @@ ms.locfileid: "66244990"
 ## <a name="create-vms-from-an-image"></a>根据映像创建 VM
 
 映像版本完成后，可以创建一个或多个新的 VM。 
+
+> [!IMPORTANT]
+> 在门户不能用于从另一个 azure 租户中的映像部署 VM。 若要从在租户间共享的映像创建 VM，必须使用[Azure CLI](../linux/shared-images.md#create-a-vm)或[Powershell](shared-images.md#create-vms-from-an-image)。
 
 本示例在美国东部数据中心的“myResourceGroup”中创建名为“myVMfromImage”的 VM    。
 

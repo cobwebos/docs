@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/18/2019
+ms.date: 07/03/2019
 ms.author: jaredr80
-ms.openlocfilehash: 017c11e98077d867d2fca68aaa036b2a2655582e
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: cf336adecf871743a62933d8a5e14caa4f32489a
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203204"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565936"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -85,14 +85,14 @@ ms.locfileid: "67203204"
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/bt-compute-for-microsoft-azure)** |支持 |支持 |阿姆斯特丹、 中国香港特别行政区、 约翰内斯堡、 伦敦、 纽波特 （威尔士）、 圣保罗、 硅谷、 新加坡、 悉尼、 东京、 华盛顿特区 |
 | **C3ntro** |即将支持 |即将支持 |迈阿密 |
 | **CDC** | 支持 | 支持 | 堪培拉、堪培拉 2 |
-| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支持 |支持 |芝加哥、 中国香港特别行政区、 拉斯维加斯、 纽约、 圣安东尼奥、 硅谷、 东京、 多伦多、 华盛顿特区 |
+| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支持 |支持 |Amsterdam2、 芝加哥、 中国香港特别行政区、 拉斯维加斯、 纽约、 巴黎、 圣安东尼奥、 硅谷、 东京、 多伦多、 华盛顿特区 |
 | **Chief Telecom** |支持 |支持 |中国香港特别行政区、 台北 |
 | **China Telecom Global** |支持 |不支持 |中国香港特别行政区 |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |支持 |支持 |芝加哥、达拉斯、蒙特利尔、多伦多、华盛顿特区 |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |支持 |支持 |阿姆斯特丹、 都柏林、 伦敦、 纽波特、 巴黎、 新加坡 2、 东京 |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |支持 |支持 |芝加哥、硅谷、华盛顿特区 |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |支持 |支持 |芝加哥、 丹佛、 洛杉矶、 纽约、 硅谷、 硅 Valley2 华盛顿 DC，华盛顿 DC2 |
-| **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/directcloud/find-a-cloud-service/detail/microsoft-azure)** | 支持 |支持 |Amsterdam2、 法兰克福|
+| **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/directcloud/find-a-cloud-service/detail/microsoft-azure)** | 支持 |支持 |Amsterdam2、 法兰克福、 马赛|
 | **[Devoli](https://devoli.com/expressroute)** | 支持 |支持 | 奥克兰，墨尔本悉尼 |
 | **du datamena** |支持 |支持 | Dubai2 |
 | **eir** |支持 |支持 |都柏林|
@@ -117,9 +117,9 @@ ms.locfileid: "67203204"
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、伦敦、新港（威尔士）、圣保罗、西雅图、硅谷、新加坡、华盛顿特区 |
 | **LG CNS** |支持 |支持 |釜山、首尔 |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |支持 |支持 |开普敦、约翰内斯堡 |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、 亚特兰大、 芝加哥、 达拉斯、 丹佛、 都柏林、 中国香港特别行政区、 拉斯维加斯、 伦敦、 洛杉矶、 墨尔本、 迈阿密、 纽约、 珀斯、 魁北克市、 圣安东尼奥、 西雅图、 硅谷、 新加坡、 新加坡 2、 悉尼、 多伦多、 华盛顿特区 |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、 亚特兰大、 奥克兰、 芝加哥、 达拉斯、 丹佛、 都柏林、 中国香港特别行政区、 拉斯维加斯、 伦敦、 洛杉矶、 墨尔本、 迈阿密、 纽约、 珀斯、 魁北克市、 圣安东尼奥、 西雅图、 硅谷、 新加坡、 新加坡 2、 悉尼、 多伦多、 华盛顿特区 |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |支持 |支持 |伦敦 |
-| **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |支持 |支持 |达拉斯、 洛杉矶、 迈阿密、 圣保罗、 华盛顿特区 |
+| **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |支持 |支持 |达拉斯、 洛杉矶、 迈阿密、 圣保罗、 华盛顿特区 |
 | **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |支持 |支持 |Newport(Wales) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |支持 |支持 |墨尔本、珀斯、悉尼 |
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |支持 |支持 |阿姆斯特丹、 中国香港特别行政区、 伦敦、 洛杉矶、 大阪、 新加坡、 悉尼、 东京、 华盛顿特区 |

@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd5bbba681acaa0c32e681f7cb4809142fe11f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6f73d3bf5e502a758dd46561059c15a2970d9b6
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113240"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471832"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>查看对组的访问或 Azure AD 中的应用程序访问评审
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组
 
 1. 查找从会要求你评审访问权限的 Microsoft 的电子邮件。 下面是示例电子邮件以查看组的访问权限。
 
-    ![评审访问权限电子邮件](./media/perform-access-review/access-review-email.png)
+    ![从 Microsoft 评审对一组访问权限的示例电子邮件](./media/perform-access-review/access-review-email.png)
 
 1. 单击**启动评审**链接以打开访问评审。
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组
 
 1. 登录到 MyApps 门户[ https://myapps.microsoft.com ](https://myapps.microsoft.com)。
 
-    ![MyApps 门户](./media/perform-access-review/myapps-access-panel.png)
+    ![列出应用程序有权 MyApps 门户](./media/perform-access-review/myapps-access-panel.png)
 
 1. 在页面右上角，单击用户符号，其中显示了你的姓名和默认组织。 如果列出多个组织，请选择已请求访问评审的组织。
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组
 
     如果该磁贴不可见，则该组织没有要执行的访问评审，此时不需要执行任何操作。
 
-    ![访问评审列表](./media/perform-access-review/access-reviews-list.png)
+    ![应用程序和组的挂起的访问评审列表](./media/perform-access-review/access-reviews-list.png)
 
 1. 单击**开始评审**你想要执行访问评审的链接。
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组
 
 如果请求是要评审你自己的访问权限，页上将看起来不同。 有关详细信息，请参阅[评审自己的访问权限，对组或应用程序](review-your-access.md)。
 
-![执行访问评审](./media/perform-access-review/perform-access-review.png)
+![列出需要审阅的用户打开访问评审](./media/perform-access-review/perform-access-review.png)
 
 有两种方法可以批准或拒绝访问：
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组
 
 1. 单击**批准**或**拒绝**。 如果您不确定，则可以单击**不知道**。 执行此操作将导致用户维护其访问权限，但所选内容将反映在审核日志。
 
-    ![执行访问评审](./media/perform-access-review/approve-deny.png)
+    ![操作窗口，其中包括批准，拒绝，并不知道选项](./media/perform-access-review/approve-deny.png)
 
 1. 如有必要，输入在原因**原因**框。
 
@@ -102,11 +102,11 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组
 
 1. 在页面底部的蓝色条形，单击**接受建议**。
 
-    ![接受建议](./media/perform-access-review/accept-recommendations.png)
+    ![列表显示接受建议按钮打开访问评审](./media/perform-access-review/accept-recommendations.png)
 
     请参阅建议的操作的摘要。
 
-    ![接受建议摘要](./media/perform-access-review/accept-recommendations-summary.png)
+    ![显示建议的操作的摘要窗口](./media/perform-access-review/accept-recommendations-summary.png)
 
 1. 单击**确定**以接受这些建议。
 

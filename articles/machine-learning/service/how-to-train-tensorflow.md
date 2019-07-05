@@ -10,12 +10,12 @@ ms.author: minxia
 author: mx-iao
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1f587785b06f10bab42a425b0910d4f25fddf9f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a13afe56e007e2371b3193003ee95266b0750569
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165540"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543780"
 ---
 # <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>训练和 TensorFlow 模型大规模注册 Azure 机器学习服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "67165540"
 
 TensorFlow 是常用于创建深度神经网络 (DNN) 的开放源代码计算框架。 使用 Azure 机器学习服务时，你可以快速横向扩展使用灵活的云计算资源的开放源代码培训作业。 您还可以跟踪训练运行、 版本模型部署模型，以及更多。
 
-无论要开发从从头 TensorFlow 模型还是正在将现有模型到云中，Azure 机器学习服务可以帮助你生成生产的模型。
+是否要开发从从头 TensorFlow 模型或使[现有模型](how-to-deploy-existing-model.md)到云，Azure 机器学习服务可帮助您构建生产模型。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -290,7 +290,7 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，将训练和注册 Azure 机器学习服务的 TensorFlow 模型。 若要了解如何部署模型，可以继续学习我们的模型部署文章。
+在本文中，将训练和注册 TensorFlow 模型。 若要了解如何将模型部署到启用了 GPU 的群集，继续我们 GPU 模型部署的文章。
 
-> [!div class="nextstepaction"]
-> [如何以及在何处部署模型](how-to-deploy-and-where.md)
+[如何部署用于推断使用 Gpu](how-to-deploy-inferencing-gpus.md)
+[如何使用 Tensorboard 监视](how-to-monitor-tensorboard.md)

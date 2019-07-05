@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 717607de6d9d193a7373637d0d0fcd879b54fed0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544866"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482145"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -124,7 +124,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 > [!NOTE]
 > 在此期间，`offline_access`（“维持对已授予访问权限的数据的访问”）和 `user.read`（“登录并读取配置文件”）权限将自动包含在对应用程序的初始许可中。  这些权限通常是应用功能正常所必需 - `offline_access` 授予应用对刷新令牌（对本机和 Web 应用十分重要）的访问权限，而 `user.read` 授予对 `sub` 声明的访问权限，允许客户端或应用随时间推移正确标识用户并访问基本用户信息。  
 
-![工作帐户同意](./media/v2-permissions-and-consent/work_account_consent.png)
+![示例屏幕截图，显示工作帐户许可](./media/v2-permissions-and-consent/work_account_consent.png)
 
 当用户批准权限请求时，会记录许可，使用户在后续登录到应用程序时无需再次许可。
 
@@ -199,9 +199,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | 参数 | 条件 | 描述 |
 | --- | --- | --- |
-| `tenant` | 必选 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `common` 以一般方式引用，如示例所示。 |
-| `client_id` | 必选 | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。 |
-| `redirect_uri` | 必选 |要向其发送响应以供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
+| `tenant` | 需要 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `common` 以一般方式引用，如示例所示。 |
+| `client_id` | 需要 | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。 |
+| `redirect_uri` | 需要 |要向其发送响应以供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 在发出身份验证请求出现之前，使用该状态对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
 
 此时，Azure AD 会要求租户管理员进行登录来完成请求。 系统会要求管理员批准在应用注册门户中针对应用请求的所有权限。

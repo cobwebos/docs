@@ -5,22 +5,34 @@ author: ajlam
 ms.author: andrela
 ms.service: MySQL
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 1243ae8ae20d08ea643661606639abedbc56ab9c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: fe6dce58714f8221625d13af1f8458662a19eaf6
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078776"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461756"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的查询性能见解
 
 **适用于：**  Azure Database for MySQL 5.7
 
 > [!NOTE]
-> 查询性能见解处于预览状态。 Query Performance Insight 支持在 Azure 门户中即将推出，并可能尚不可用你的区域中。
+> 查询性能见解处于预览状态。
 
 Query Performance Insight 可帮助你快速确定运行时间最长的查询、它们如何随时间的推移而变化，以及哪些等待因素会影响它们。
+
+## <a name="common-scenarios"></a>常见方案
+
+### <a name="long-running-queries"></a>长时间运行查询
+
+- 标识过去 X 小时内运行时间最长的查询
+- 标识正在等待资源的前 N 个查询
+ 
+### <a name="wait-statistics"></a>等待统计信息
+
+- 了解查询的等待性质
+- 了解资源等待和资源争用的存在的趋势
 
 ## <a name="permissions"></a>权限
 
@@ -36,11 +48,20 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 在 Azure Database for MySQL 服务器的门户页上，选择 **Query Performance Insight** 下 **智能性能** 菜单条形的一部分。
 
-![Query Performance Insight 长时间运行的查询](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
+### <a name="long-running-queries"></a>长时间运行查询
 
  **长时间运行的查询** 选项卡按每次执行，平均持续时间显示前 5 个查询在 15 分钟的时间间隔中聚合。 可以通过从选择查看更多的查询 **数的查询** 下拉列表。 执行此操作时，特定查询 ID 的图表颜色可能会更改。
 
 可以在图表中单击并拖动以缩小到特定的时间窗口。 或者，使用放大和缩小图标分别查看的较小或更大的时间段。
+
+![Query Performance Insight 长时间运行的查询](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
+
+### <a name="wait-statistics"></a>等待统计信息
+
+> [!NOTE]
+> 等待统计信息是为了进行故障排除查询性能问题。 建议仅用于故障排除目的开启。
+
+等待统计信息提供特定查询的执行过程中发生的等待事件的视图。 了解有关中的等待事件类型的详细信息[MySQL 引擎文档](https://go.microsoft.com/fwlink/?linkid=2098206)。
 
 选择 **Wait Statistics**选项卡以查看相应的可视化效果上等待的服务器中。
 

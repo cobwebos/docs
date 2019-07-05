@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 680c141e32333c4747ee69919229bd9381f536a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393660"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537765"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 开发 C# Service Fabric 应用程序
 
@@ -77,6 +77,17 @@ sudo code . --user-data-dir='.'
 4. 你已验证应用程序运行后，启动浏览器并打开此页： http:\//localhost:31002。 这是应用程序的 Web 前端。 刷新页面，查看递增的当前计数器值。
 
    ![浏览器中的计数器服务应用程序](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
+
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>应用程序发布到 Azure Service Fabric 群集
+并将其部署到本地群集应用程序，还可以发布到远程 Azure Service Fabric 群集应用程序。 
+
+1. 请确保你已经构建了应用程序中使用上面的说明。 更新生成的配置文件`Cloud.json`与你想要将发布到远程群集的详细信息。
+
+2. 从**命令面板**中，选择“Service Fabric: **发布应用程序命令**。 安装过程的输出将发送到集成式终端。
+
+   ![在 VS Code 中发布应用程序命令](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+
+3. 部署完成后，启动浏览器并打开 Service Fabric Explorer： `https:<clusterurl>:19080/Explorer` 。 应会看到应用程序正在运行。 此过程可能需要一段时间，请耐心等待。 
 
 ## <a name="debug-the-application"></a>调试应用程序
 在 VS Code 中调试应用程序时，该应用程序必须在本地群集上运行。 然后，可将断点添加到代码中。

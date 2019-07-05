@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 886dea0e53519870aaa27dea721a9eb78515cf86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80cba5e1b5e38e31dea2272cc4e33b4a95940e41
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706330"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565614"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>使用自定义映像创建虚拟机池 
 
@@ -49,7 +49,7 @@ ms.locfileid: "64706330"
 
 ### <a name="prepare-a-vm"></a>准备 VM
 
-若要为映像创建新 VM，请使用 Batch 支持的第一方 Azure 市场映像作为托管映像的基础映像。 仅第一方映像可以用作基础映像。 若要获取 Azure Batch 支持的 Azure 市场映像参考的完整列表，请参阅[列出节点代理 SKU](/rest/api/batchservice/account/listnodeagentskus) 操作。
+若要为映像创建新 VM，请使用 Batch 支持的第一方 Azure 市场映像作为托管映像的基础映像。 仅第一方映像可以用作基础映像。 若要获取 Azure Batch 支持的 Azure 市场映像参考的完整列表，请参阅[列出节点代理 SKU](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) 操作。
 
 > [!NOTE]
 > 不能使用具有附加许可和购买条款的第三方映像作为基础映像。 有关这些市场映像的信息，请参阅 [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms

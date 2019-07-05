@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: fea9e79986e45127ad4918ed62bd8bf8dc782133
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f95af348eb11abee5a46a89e08da5bf4eb873c42
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67125808"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566133"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
@@ -149,7 +149,7 @@ AzCopy 是一个命令行实用工具，可用于将数据复制到，或存储�
 可以使用 AzCopy 将 blob 复制到其他存储帐户。 复制操作是同步的因此时该命令将返回，则表示已复制的所有文件。
 
 > [!NOTE]
-> 目前，只能用于帐户没有分层命名空间支持此方案。
+> 目前，只能用于帐户没有分层命名空间支持此方案。 
 
 AzCopy 将使用[放置块从 URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API，因此直接存储服务器之间复制数据。 这些复制操作不使用您的计算机的网络带宽。
 
@@ -161,33 +161,36 @@ AzCopy 将使用[放置块从 URL](https://docs.microsoft.com/rest/api/storagese
 > * 将容器复制到另一个存储帐户
 > * 将所有容器、 目录和文件都复制到另一个存储帐户
 
+> [!NOTE]
+> 在当前版本中，您需要将 SAS 令牌附加到每个源 URL。 如果使用 Azure Active Directory (AD) 提供授权凭据，则可以省略只能从目标 URL 的 SAS 令牌。 
+
 ### <a name="copy-a-blob-to-another-storage-account"></a>将 blob 复制到另一个存储帐户
 
 |    |     |
 |--------|-----------|
-| **语法** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>"` |
-| **示例** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt"` |
+| **语法** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>"` |
+| **示例** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt"` |
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>将目录复制到另一个存储帐户
 
 |    |     |
 |--------|-----------|
-| **语法** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>" --recursive` |
-| **示例** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myBlobDirectory" --recursive` |
+| **语法** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>" --recursive` |
+| **示例** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myBlobDirectory" --recursive` |
 
 ### <a name="copy-a-containers-to-another-storage-account"></a>将容器复制到另一个存储帐户
 
 |    |     |
 |--------|-----------|
-| **语法** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>" --recursive` |
-| **示例** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer" "https://mydestinationaccount.blob.core.windows.net/mycontainer" --recursive` |
+| **语法** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>" --recursive` |
+| **示例** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net/mycontainer" --recursive` |
 
 ### <a name="copy-all-containers-directories-and-files-to-another-storage-account"></a>将所有容器、 目录和文件都复制到另一个存储帐户
 
 |    |     |
 |--------|-----------|
-| **语法** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/" "https://<destination-storage-account-name>.blob.core.windows.net/" --recursive"` |
-| **示例** | `azcopy cp "https://mysourceaccount.blob.core.windows.net" "https://mydestinationaccount.blob.core.windows.net" --recursive` |
+| **语法** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/" --recursive"` |
+| **示例** | `azcopy cp "https://mysourceaccount.blob.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net" --recursive` |
 
 ## <a name="synchronize-files"></a>同步的文件
 

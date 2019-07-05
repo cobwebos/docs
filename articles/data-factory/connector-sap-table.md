@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/10/2018
+ms.date: 06/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 49f07b4aaadfd45e9743bde58dc715230e5bc983
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e54a69b6c2b48e50c089f8b6b7458cf91133dd85
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074061"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443302"
 ---
 # <a name="copy-data-from-sap-table-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
@@ -206,16 +206,16 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 | 属性                         | 说明                                                  | 必选 |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| type                             | type 属性必须设置为 **SapTableSource**。       | 是      |
+| type                             | type 属性必须设置为 **SapTableSource**。         | 是      |
 | rowCount                         | 要检索的行数。                              | 否       |
-| rfcTableFields                   | 要从 SAP 表中复制的字段。 例如，`column0, column1`。 | 否       |
-| rfcTableOptions                  | 用于筛选 SAP 表中的行的选项。 例如，`COLUMN0 EQ 'SOMEVALUE'`。 请参阅此表下面的详细说明。 | 否       |
-| customRfcReadTableFunctionModule | 可用于从 SAP 表读取数据的自定义 RFC 函数模块。 | 否       |
+| rfcTableFields                   | 要从 SAP 表中复制的字段。 例如，`column0, column1` 。 | 否       |
+| rfcTableOptions                  | 用于筛选 SAP 表中的行的选项。 例如，`COLUMN0 EQ 'SOMEVALUE'` 。 请参阅此表下面的详细说明。 | 否       |
+| customRfcReadTableFunctionModule | 可用于从 SAP 表读取数据的自定义 RFC 函数模块。<br>您可以使用自定义的 RFC 函数模块来定义如何从 SAP 系统中检索数据，并返回到 ADF。 时，请注意自定义函数模块需要具有类似实现接口 （导入、 导出表），作为/SAPDS/这是默认情况下使用 adf RFC_READ_TABLE2 类似。 | 否       |
 | partitionOption                  | 要从 SAP 表中读取的分区机制。 支持的选项包括： <br/>- **None**<br/>- **PartitionOnInt**（在左侧用零填充正常整数或整数值，例如 0000012345）<br/>- **PartitionOnCalendarYear**（采用“YYYY”格式的 4 位数）<br/>- **PartitionOnCalendarMonth**（采用“YYYYMM”格式的 6 位数）<br/>- **PartitionOnCalendarDate**（采用“YYYYMMDD”格式的 8 位数） | 否       |
-| partitionColumnName              | 要将其中的数据分区的列的名称。 | 否       |
+| partitionColumnName              | 要将其中的数据分区的列的名称。                | 否       |
 | partitionUpperBound              | `partitionColumnName` 中指定的最大列值，用于继续处理分区。 | 否       |
 | partitionLowerBound              | `partitionColumnName` 中指定的最小列值，用于继续处理分区。 | 否       |
-| maxPartitionsNumber              | 要将数据拆分成的最大分区数。 | 否       |
+| maxPartitionsNumber              | 要将数据拆分成的最大分区数。     | 否       |
 
 >[!TIP]
 >- 如果 SAP 表包含大量数据（例如几十亿行），请使用 `partitionOption` 和 `partitionSetting` 将数据拆分成小分区，在这种情况下，将按分区读取数据，并通过单个 RFC 调用从 SAP 服务器检索每个数据分区。<br/>

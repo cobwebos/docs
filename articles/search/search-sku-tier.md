@@ -7,31 +7,31 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 00422209302bbcc2139be4f6b490f0bb2816c051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 892a79f898e2448096ad4b252a18e0713bb32e52
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539293"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485296"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
-创建 Azure 搜索服务时，[资源是在某个定价层或 SKU 中创建的](search-create-service-portal.md)，该定价层或 SKU 在该服务的整个生存期内是固定的。 层包括“免费”、“基本”、“标准”和“存储优化”。 “标准”和“存储优化”提供多种配置和容量。
+当你将创建 Azure 搜索服务[创建资源](search-create-service-portal.md)在定价层 （或 SKU），固定的服务的生命周期。 层包括“免费”、“基本”、“标准”和“存储优化”。 “标准”和“存储优化”提供多种配置和容量。
 
-大多数客户从“免费”层着手，以便能够评估该服务。 然后升级到某个更高的层，以进行开发和生产部署。 可以使用“免费”层完成所有快速入门和教程，包括资源密集型认知搜索的教程。
+大多数客户从“免费”层着手，以便能够评估该服务。 后评估很常见，若要创建第二个服务在一个更高级别，开发和生产部署。 可以使用“免费”层完成所有快速入门和教程，包括资源密集型认知搜索的教程。
 
 > [!NOTE]
-> Microsoft 目前以折扣价提供预览版“存储优化”服务层用于测试和试验，目的是收集反馈。 这些层推出正式版后，我们将公布最终定价。 不建议对生产应用程序使用这些层。
+> 截至 7 月 1 日，所有层都是正式上市，包括存储优化层。 上可以找到所有定价[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页。
 
 层反映托管服务（而不是功能）的硬件的特征，并按以下标准进行区分：
 
 + 可以创建的索引数。
 + 分区（物理存储）的大小和速度。
 
-尽管所有层（包括“免费”层）通常会提供功能奇偶一致性，但较大的工作负荷可以要求使用较高的层。 例如，[使用认知服务的 AI 索引](cognitive-search-concept-intro.md)包含长时间运行的技能，除非数据集很小，否则这些技能会在免费服务中超时。
+尽管所有层（包括“免费”层）通常会提供功能奇偶一致性，但较大的工作负荷可以要求使用较高的层。 例如，[使用认知服务的 AI 扩充](cognitive-search-concept-intro.md)只有在运行时间较长的技能时超时上一项免费服务的数据集很小。
 
 > [!NOTE] 
 > 功能奇偶一致性的例外情况是[索引器](search-indexer-overview.md)，它们不可用于 S3 HD。
@@ -60,7 +60,11 @@ ms.locfileid: "65539293"
 
 ## <a name="how-billing-works"></a>计费原理
 
-在 Azure 搜索中，有三个方面会产生费用，并且存在固定和可变的计费部分。 本部分介绍三个计费部分：核心服务费用、数据传出费用和 AI 扩充索引。
+有三种方法产生 Azure 搜索中的费用。 本部分介绍了三个计费组件： 
+
++ 核心服务成本
++ 数据出口 （或带宽） 费用
++ AI 到
 
 ### <a name="core-service-costs-fixed-and-variable"></a>核心服务费用（固定和可变）
 
@@ -98,9 +102,9 @@ SU 是服务使用的副本数和分区数的乘积：   **(R x P = SU)** 。
 
 如果服务在不同的区域中，则会针对出站数据收费。 这些费用实际上不是 Azure 搜索帐单的一部分。 此处之所以提到这些费用，是因为如果你使用数据或 AI 扩充索引器从不同的区域提取数据，将会在总体帐单中看到这些费用。
 
-### <a name="ai-enriched-indexing-with-cognitive-services"></a>使用认知服务的 AI 扩充索引
+### <a name="ai-enrichments-with-cognitive-services"></a>AI 正使用认知服务
 
-对于[使用认知服务的 AI 索引](cognitive-search-concept-intro.md)，应该计划在 S0 定价层上的 Azure 搜索所在的同一区域中附加一个可计费的 认知服务资源，用于即用即付处理。 附加认知服务不会产生固定的费用。 只需支付所需的处理费。
+有关[使用认知服务的 AI 扩充](cognitive-search-concept-intro.md)，您应计划要附加 Azure 搜索中，与即用即付处理的 S0 定价层位于同一区域中的可计费的 Azure 认知服务资源。 附加认知服务不会产生固定的费用。 只需支付所需的处理费。
 
 文档破解期间的图像提取属于 Azure 搜索费用。 该费用根据从文档中提取的图像数计收。 文本提取目前是免费的。
 

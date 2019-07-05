@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 42429f0e8e541d0481f991761ead63e4751fcc3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be804ac1aea76daf5f17e62dd97b8b57b8fdf1fb
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719721"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67458812"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中访问 Grafana
 
@@ -66,7 +66,7 @@ ms.locfileid: "64719721"
     
 
 > [!NOTE]  
-> 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。 
+> 对于其他群集创建方法，以及了解本文中使用的属性，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 
 
 ## <a name="access-the-grafana-dashboard"></a>访问 Grafana 仪表板
 
@@ -78,7 +78,7 @@ ms.locfileid: "64719721"
 
     ![HDInsight 群集仪表板门户](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "门户上的 HDInsight 群集仪表板")
 
-4. 从仪表板中，单击 **Grafana** 磁贴。 或者，浏览到群集 URL 的 `/grafana/` 路径。 例如，`https://<clustername>.azurehdinsight.net/grafana/`。
+4. 从仪表板中，单击 **Grafana** 磁贴。 或者，浏览到群集 URL 的 `/grafana/` 路径。 例如，`https://<clustername>.azurehdinsight.net/grafana/` 。
 
 5. 输入 Hadoop 群集用户凭据。
 
@@ -108,7 +108,7 @@ ms.locfileid: "64719721"
 本教程已介绍如何使用资源管理器模板创建基于 Linux 的 HDInsight 群集，以及如何执行基本 Apache Hive 查询。 下一篇文章将介绍如何使用 Hadoop on HDInsight 执行提取、转换和加载 (ETL) 操作。
 
 > [!div class="nextstepaction"]
->[使用 Apache Hive on HDInsight 提取、转换和加载数据](../hdinsight-analyze-flight-delay-data-linux.md)
+>[提取、 转换和加载数据对 HDInsight 使用交互式查询](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 
 如果已准备好开始处理自己的数据，并需要进一步了解 HDInsight 存储数据的方式或如何将数据导入 HDInsight，请参阅以下文章：
 

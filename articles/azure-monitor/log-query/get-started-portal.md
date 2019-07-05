@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 17b5c0b459e70909d9f305beb8bf87b83f1cf65c
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 2e2d13e6923535a8993a6477cbbfb921f6092d66
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296517"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565588"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>开始使用 Azure Monitor 中的 Log Analytics
 
@@ -55,7 +55,7 @@ Event | search "error"
 
 此查询搜索_事件_表的记录，其中包含一词_错误_中的任何属性。
 
-查询可以从表名或 [search](/kusto/query/searchoperator) 命令开始。 上面的示例中的表名称开头_事件_，则事件表中检索所有记录。 竖线 (|) 分隔命令，因此第一个输出用作输入以下命令。 可在单个查询中添加任意数目的命令。
+查询可以从表名或 [search](/azure/kusto/query/searchoperator) 命令开始。 上面的示例中的表名称开头_事件_，则事件表中检索所有记录。 竖线 (|) 分隔命令，因此第一个输出用作输入以下命令。 可在单个查询中添加任意数目的命令。
 
 编写同一查询的另一种方法是：
 

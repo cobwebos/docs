@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/19/2019
-ms.openlocfilehash: efa4cc070f47174634c8dc67b37f10bc3d112d08
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.date: 06/26/2019
+ms.openlocfilehash: 412ce3c5245f3f22bfb03740a0451670dc6a90a7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293206"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448112"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展允许在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载之后，扩展可以如同内置功能一样运行。 有关 PostgreSQL 扩展的详细信息，请参阅  [Packaging Related Objects into an Extension](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)（将相关对象打包到扩展中）。
@@ -48,7 +48,7 @@ Azure Database for PostgreSQL 目前支持部分关键扩展（已在下面列�
 > | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 按时间或 ID 管理已分区表。 |
 > | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | 提供函数和运算符，用于基于三元匹配确定字母数字文本的相似性。 |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | 提供可操作整个表（包括交叉表）的函数。 |
-> | [uuid ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | 生成全局唯一标识符 (UUID)。 |
+> | [uuid ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | 生成全局唯一标识符 (UUID)。 （请参阅下文了解此扩展的说明）。 |
 > | [orafce](https://github.com/orafce/orafce) | 提供部分通过商业数据库模拟的函数和包。 |
 
 ### <a name="full-text-search-extensions"></a>全文搜索扩展
@@ -118,6 +118,10 @@ Azure Database for PostgreSQL 目前支持部分关键扩展（已在下面列�
 dblink 和 postgres_fdw 允许从一台 PostgreSQL 服务器连接到另一台服务器，或者连接到同一服务器中的另一个数据库。 接收服务器需要允许来自发送服务器的连接通过其防火墙。 当使用这些扩展在 Azure Database for PostgreSQL 服务器之间进行连接时，可以通过将“允许访问 Azure 服务”设置为“开启”来实现此目的。 如果希望使用扩展来环回到同一服务器，也需要进行此设置。 可以在 Postgres 服务器的 Azure 门户页面中的“连接安全性”下找到“允许访问 Azure 服务”设置。 开启“允许访问 Azure 服务”会将所有 Azure IP 加入允许列表。
 
 目前不支持从 Azure Database for PostgreSQL 进行出站连接，连接到其他 Azure Database for PostgreSQL 服务器的情况除外。
+
+## <a name="uuid"></a>uuid
+如果你打算使用`uuid_generate_v4()`从 uuid ossp 扩展中，请考虑使用比较`gen_random_uuid()`从 pgcrypto 扩展的性能优势。
+
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 TimescaleDB 提供以时间为导向的分析功能、优化，并根据时序工作负荷来缩放 Postgres。

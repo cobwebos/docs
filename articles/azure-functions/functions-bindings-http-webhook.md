@@ -4,19 +4,19 @@ description: 了解如何在 Azure Functions 中使用 HTTP 触发器和绑定�
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构, HTTP, API, REST
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: f9f43720ff36b6dfac51a1626413ff7c2e590cd0
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 53626c1d8fe0b9301883280a9f0925eb38ad1d99
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342261"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480453"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 

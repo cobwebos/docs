@@ -3,7 +3,7 @@ title: 适用于 Xamarin.Android 应用的 Azure 移动应用入门
 description: 按照本教程进行操作，开始使用 Azure 移动应用进行 Xamarin Android 开发
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.author: crdun
-ms.openlocfilehash: f3e8ca4f9736dffe4928fc8920b0890dff87367b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: eed900ee54f62056eceeb35a43a4ba6526b049ca
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236023"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447087"
 ---
 # <a name="create-a-xamarinandroid-app"></a>创建 Xamarin.Android 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
+
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-android-get-started)今天。
+>
 
 ## <a name="overview"></a>概述
 本教程说明如何向 Xamarin.Android 应用添加基于云的后端服务。 有关详细信息，请参阅 [什么是移动应用](app-service-mobile-value-prop.md)。

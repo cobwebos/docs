@@ -6,14 +6,14 @@ manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 06/28/2019
 ms.author: chrisgre
-ms.openlocfilehash: 598bf82e375f472b2f723c3462ba7ba7b4d25fbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff4e236569cc728b7011ffa26554277f281397fd
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61333629"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485843"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-portal"></a>使用 Azure 门户进行大规模自动 IoT 设备管理
 
@@ -29,7 +29,9 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 * **目标内容**定义要在目标设备孪生中添加或更新的所需属性。 内容包括要更改的所需属性节的路径。
 
-* **指标**定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。    自定义指标指定为设备孪生报告的属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的设备孪生数，以及已成功更新的孪生数。 
+* **指标**定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。    自定义指标指定为设备孪生报告的属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的设备孪生数，以及已成功更新的孪生数。
+
+自动设备配置运行首次创建的配置后不久和，然后在五分钟的时间间隔。 指标查询运行每次设备自动配置运行的时。
 
 ## <a name="implement-device-twins-to-configure-devices"></a>实施设备孪生以配置设备
 

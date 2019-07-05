@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: e44beed592e013a089011c2a774b7300f2b3f854
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25c50d400a68cdbfb9110a9e8e9d66477ad4710a
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133752"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513361"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持内部重定向的应用程序网关
 
@@ -213,11 +213,11 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-在浏览器的地址栏中输入域名。 例如 http://www.contoso.com 。
+在浏览器的地址栏中输入域名。 例如，http:\//www.contoso.com。
 
 ![在应用程序网关中测试 contoso 站点](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-将地址更改为其他域（例如 http://www.contoso.org ），应会看到流量已被重定向回 www\. contoso.com 的侦听器。
+将地址更改为其他域，例如 http:\/www.contoso.org 并且你应看到流量已被重定向回 www 的侦听器\.contoso.com。
 
 ## <a name="next-steps"></a>后续步骤
 

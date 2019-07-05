@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 150ecbdfcc21ee7ec0bf54fd5b824bc93e0c76ce
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358104"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483304"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
 
@@ -41,7 +41,9 @@ ms.locfileid: "60358104"
 使用[直通身份验证](../hybrid/how-to-connect-pta.md)时，需要确保：
 
 * Azure AD 的锁定阈值小于  Active Directory 的帐户锁定阈值。 请设置此值，以便使 Active Directory 的帐户锁定阈值至少长于 Azure AD 锁定阈值的二倍或三倍。 
-* Azure AD 的锁定持续时间（以秒计）长于 Active Directory 的“在...后重置帐户锁定计数器”的持续时间（以分钟计）    。
+* Azure AD 的锁定持续时间必须长于 Active Directory 的时间后重置帐户锁定计数器设置。 请注意，Azure AD 持续时间设置以秒为单位，同时该广告持续时间设置以分钟为单位。 
+
+例如，如果你想要高于 AD 在 Azure AD 计数器，则 Azure AD 将为 120 秒 （2 分钟），同时你在本地 AD 设置为 1 分钟 （60 秒）。
 
 > [!IMPORTANT]
 > 目前，如果用户的云帐户已被智能锁定功能锁定，管理员将无法为其解锁。 管理员必须等到锁定持续时间到期。

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b48257cc8e10deb1ec922806f62a6c435069f66f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65961445"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467092"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -64,7 +64,7 @@ ms.locfileid: "65961445"
 
 与虚拟网络中使用的集成服务环境 (ISE) 时，常见的安装程序问题时遇到一个或多个端口被阻止。 用于创建在 ISE 与目标系统之间的连接的连接器也可能有其自己的端口要求。 例如，如果使用 FTP 连接器来与 FTP 系统通信，请确保在该 FTP 系统上使用的端口（例如用于发送命令的端口 21）可用。
 
-若要跨虚拟网络的子网，你将部署 ISE 控制的流量，您可以设置[网络安全组](../virtual-network/security-overview.md)通过[筛选网络流量跨子网](../virtual-network/tutorial-filter-network-traffic.md)。 但是，在 ISE 必须打开使用网络安全组的虚拟网络上的特定端口。 这样一来，在 ISE 保持可访问，可以正常工作，以便在不失去访问权限在 ISE。 否则，如果任何所需的端口不可用，在 ISE 停止工作。
+若要跨虚拟网络的子网，你将部署在 ISE 控制的流量，则可以选择性地设置[网络安全组 (Nsg)](../virtual-network/security-overview.md)通过虚拟网络中[跨子网筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md). 如果选择此路由，请确保在 ISE 会打开特定端口，如下表中所述使用 Nsg 的虚拟网络上。 如果在虚拟网络中有现有的 Nsg 或防火墙，请确保它们打开这些端口。 这样一来，在 ISE 保持可访问，可以正常工作，以便在不失去访问权限在 ISE。 否则，如果任何所需的端口不可用，在 ISE 停止工作。
 
 下列表格描述了 ISE 在虚拟网络中使用的端口，以及这些端口的使用位置。 [资源管理器服务标记](../virtual-network/security-overview.md#service-tags)表示一组 IP 地址前缀，可帮助创建安全规则时最小化复杂性。
 

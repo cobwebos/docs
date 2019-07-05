@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: twhitney
-ms.openlocfilehash: a9887e923358b5658a365b5cfc88759eca2501e0
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b753d643b4651cd6665b5b85dcb8b7c5f0b3583d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303553"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444132"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 的 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
@@ -41,15 +41,16 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 > * [Azure 支持常见问题][aks-faq]
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
-    
-CLI 命令来创建和管理多个节点池均位于*aks 预览版*CLI 扩展。 安装*aks 预览版*Azure CLI 扩展使用[az 扩展添加][az-extension-add]命令，如下面的示例中所示：
+
+若要使用 Windows Server 容器，需要*aks 预览版*CLI 扩展版本 0.4.1 或更高版本。 安装*aks 预览版*Azure CLI 扩展使用[az 扩展添加][az-extension-add]command, then check for any available updates using the [az extension update][az-extension-update]命令::
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> 如果您先前安装了*aks 预览版*扩展，安装任何可用更新使用`az extension update --name aks-preview`命令。
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-windows-preview-feature"></a>注册 Windows 预览功能
 
@@ -222,10 +223,10 @@ spec:
         resources:
           limits:
             cpu: 1
-            memory: 800m
+            memory: 800M
           requests:
             cpu: .1
-            memory: 300m
+            memory: 300M
         ports:
           - containerPort: 80
   selector:
@@ -338,3 +339,5 @@ az group delete --name myResourceGroup --yes --no-wait
 [use-advanced-networking]: configure-advanced-networking.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update

@@ -15,12 +15,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e4de5bbc56f95c0e903b1dac4e8481373716f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0067bd6dc2f47c5460220295d486910d9195782d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143522"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476264"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>在 PIM 中创建 Azure 资源角色的访问评审
 
@@ -44,7 +44,7 @@ ms.locfileid: "65143522"
 
 1. 管理下，单击**访问评审**。
 
-    ![Azure 资源的访问评审](./media/pim-resource-roles-start-access-review/access-reviews.png)
+    ![Azure 资源的访问评审显示的所有审阅状态的列表](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
@@ -54,7 +54,7 @@ ms.locfileid: "65143522"
 
 指定访问评审的设置后，单击“启动”。  访问评审会在其状态指示符列表中显示。
 
-![访问评审列表](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
+![访问评审显示开始评审的状态的列表](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
 
 默认情况下，在评审开始后不久，Azure AD 会向评审者发送一封电子邮件。 如果选择不让 Azure AD 发送电子邮件，请务必通知评审者有一个访问评审任务等待他们完成。 说明如何显示[查看对 Azure 资源角色的访问](pim-resource-roles-perform-access-review.md)。
 
@@ -62,7 +62,7 @@ ms.locfileid: "65143522"
 
 你可以跟踪进度，当评审者在完成其审阅**概述**访问评审页。 没有访问权限更改之前，目录中[评审完成](pim-resource-roles-complete-access-review.md)。
 
-![访问评审进度](./media/pim-resource-roles-start-access-review/access-review-overview.png)
+![访问评审概述页显示此评审的详细信息](./media/pim-resource-roles-start-access-review/access-review-overview.png)
 
 如果这是一次性的评审，然后访问评审期限结束后，或者管理员停止访问评审后请按照中的步骤[完成 Azure 资源角色的访问评审](pim-resource-roles-complete-access-review.md)查看并应用结果。  
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0acac29ee49bc94c195d0e13e55fff3a735ad36b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fbee86f09246684a0e553114e367907ddabfa16
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859813"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445505"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装自定义 Apache Hadoop 应用程序
 
@@ -107,7 +107,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中单击“HDInsight 群集”  。  如果未看到，请单击“浏览”，并单击“HDInsight 群集”。  
 3. 单击已安装应用程序的群集。
-4. 在“设置”边栏选项卡中，单击“常规”类别下的“应用程序”。    会看到已安装的应用程序列表。 在本教程中，“hue”列在“已安装的应用”边栏选项卡中。  
+4. 在“设置”边栏选项卡中，单击“常规”类别下的“应用程序”。    会看到已安装的应用程序列表。 有关本文中， **hue**中列出**已安装的应用**边栏选项卡。
 5. 右键单击想要删除的应用程序，并单击“删除”  。
 6. 单击“是”  确认。
 

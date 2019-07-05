@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: c585b300a65091bee3320a21b7bce7ba94d269ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 766b004217d6679dcba00c581ade4fe911b5f8b9
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258805"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491869"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复
 
@@ -600,6 +600,14 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 ```
 
 重新保护完成后，可以启动反方向 （到美国东部的美国西部） 和故障回复到源区域中的故障转移。
+
+## <a name="disable-replication"></a>禁用复制
+
+可以使用删除 ASRReplicationProtectedItem cmdlet 来禁用复制。
+
+```azurepowershell
+Remove-ASRReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
+```
 
 ## <a name="next-steps"></a>后续步骤
 查看 [Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/az.RecoveryServices)来了解如何通过 PowerShell 执行其他任务，例如创建恢复计划，以及对恢复计划执行测试性故障转移。

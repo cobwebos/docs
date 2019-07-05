@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1102aee9d7fa5fe3df0e048398cdc8bd71ff0a3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a0ba48acf6ec3d221d9c4b5e95b380a2154171f
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512298"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537055"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,7 +38,7 @@ ms.locfileid: "66512298"
 
 **TrustFrameworkPolicy** 元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| 特性 | 需要 | 描述 |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | 是 | 用于执行策略的架构版本。 值必须是 `0.3.0.0` |
 | TenantObjectId | 否 | Azure Active Directory (Azure AD) B2C 租户的唯一对象标识符。 |
@@ -132,7 +132,7 @@ B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 
 ```XML
 <UserJourneys>
-  <UserJourney Id="SignOrSignIn">
+  <UserJourney Id="SignUpOrSignIn">
   ...
 ```
 

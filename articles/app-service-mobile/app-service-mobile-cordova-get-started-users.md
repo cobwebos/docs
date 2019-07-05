@@ -3,7 +3,7 @@ title: 使用移动应用在 Apache Cordova 中添加身份验证 | Microsoft Do
 description: 了解如何使用 Azure 应用服务中的移动应用通过各种标识提供者（包括 Google、Facebook、Twitter 和 Microsoft）对 Apache Cordova 应用用户进行身份验证。
 services: app-service\mobile
 documentationcenter: javascript
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
@@ -12,17 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: 23b5967782cf237ed5af2b802aabbbf9c2f781e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: b0634038dbf5771ac1aa0bc00d007e758171b238
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62114204"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443505"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>将身份验证添加到 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-users)今天。
+>
 
 ## <a name="summary"></a>摘要
 本教程介绍如何使用支持的标识提供者将身份验证添加到 Apache Cordova 上的待办事项列表快速入门项目。 本教程基于[移动应用入门]教程，必须先完成该教程。

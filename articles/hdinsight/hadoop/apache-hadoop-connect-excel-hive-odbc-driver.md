@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: fcb9171d2285efab0f65e6ab424908bc42c0ea2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01e7ca184f2be755f23cd402e0694ea282e3b85e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391891"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441398"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Azure HDInsight 中的 Apache Hadoop
 
@@ -32,7 +32,7 @@ Microsoft 的大数据解决方案可将 Microsoft 商业智能 (BI) 组件与�
 * 具有 Office 2010 Professional Plus 或更高版本，或 Excel 2010 或更高版本的工作站。
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>安装 Microsoft Hive ODBC 驱动程序
-下载并安装[Microsoft Hive ODBC 驱动程序](https://go.microsoft.com/fwlink/?LinkID=286698)版本匹配的应用程序将在其中使用 ODBC 驱动程序版本。  在本教程中，驱动程序用于 Office Excel。
+下载并安装[Microsoft Hive ODBC 驱动程序](https://go.microsoft.com/fwlink/?LinkID=286698)版本匹配的应用程序将在其中使用 ODBC 驱动程序版本。  对于本文中，驱动程序使用 Office excel。
 
 ## <a name="create-apache-hive-odbc-data-source"></a>创建 Apache Hive ODBC 数据源
 下列步骤演示如何创建 Hive ODBC 数据源。
@@ -53,9 +53,9 @@ Microsoft 的大数据解决方案可将 Microsoft 商业智能 (BI) 组件与�
    |  主机 |输入 `HDInsightClusterName.azurehdinsight.net` 。 例如： `myHDICluster.azurehdinsight.net` |
    |  Port |使用 **443**。 （此端口已从 563 更改为 443。） |
    |  数据库 |使用“默认”  。 |
-   |  机制 |选择**Windows Azure HDInsight 服务** |
+   |  机制 |选择“Windows Azure HDInsight 服务”  |
    |  用户名 |输入 HDInsight 群集 HTTP 用户的用户名。 默认的用户名为 **admin**。 |
-   |  密码 |输入 HDInsight 群集用户的密码。 选中该复选框**保存密码 （加密）** 。|
+   |  密码 |输入 HDInsight 群集用户的密码。 选中复选框“保存密码(加密)”  。|
 
 1. 可选：选择“高级选项...”   
 
@@ -87,7 +87,7 @@ Microsoft 的大数据解决方案可将 Microsoft 商业智能 (BI) 组件与�
 
 3. 从下拉列表中，选择在上一部分中创建的数据源名称，然后选择**确定**。
 
-4. 第一个用于**ODBC 驱动程序**对话框将打开。 选择**Windows**从左侧菜单中。 然后选择**Connect**以打开**导航器**窗口。
+4. 第一次使用时，将打开“ODBC 驱动程序”  对话框。 从左侧菜单中选择 **Windows**。 然后选择“连接”  以打开“导航器”  窗口。
 
 5. 在“导航器”中，导航到“HIVE” > “默认” > “hivesampletable”，然后选择“加载”      。 需要一段时间才能将数据导入到 Excel 中。
 

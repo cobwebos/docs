@@ -4,17 +4,17 @@ description: 本文介绍如何在 Azure 自动化中管理 Runbook。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5bb52e0547ed9bc18d67370ffb9db35942212aab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4519991f8ce3c8b4f99e1d7fb62295f3c0ece3a2
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61300257"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478274"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 

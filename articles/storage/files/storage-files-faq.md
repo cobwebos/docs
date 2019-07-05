@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c32d9954b3c90a5f7e9c5475acdb141f7154cf76
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190071"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540356"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -73,10 +73,10 @@ ms.locfileid: "65190071"
 
 * <a id="tier-options"></a>
   **Azure 文件支持哪些存储层？**  
-    Azure 文件目前仅支持标准存储层。 当前我们暂无有关高级存储和冷存储支持的日程表可供分享。 
+    Azure 文件支持两个存储层： 高级和标准。 标准文件共享创建在一般情况下用途 （GPv1 或 GPv2） 存储帐户和文件存储存储帐户中创建高级文件共享。 了解有关如何创建详细信息[标准文件共享](storage-how-to-create-file-share.md)并[高级文件共享](storage-how-to-create-premium-fileshare.md)。 
     
     > [!NOTE]
-    > 你无法使用仅限 Blob 存储帐户或高级存储帐户创建 Azure 文件共享。
+    > 不能从 Blob 存储帐户中创建 Azure 文件共享或*高级*常规用途 （GPv1 或 GPv2） 存储帐户。 标准 Azure 文件共享中创建的必须*标准*唯一和高级版的 Azure 文件共享必须在文件存储存储帐户中创建常规用途帐户。 *高级*常规用途 （GPv1 和 GPv2） 存储帐户适用于高级页 blob。 
 
 * <a id="give-us-feedback"></a>
   **我非常希望可以将某项特定功能添加到 Azure 文件。你们会添加它吗？**  
@@ -108,7 +108,7 @@ ms.locfileid: "65190071"
     是的，Azure 文件支持本地冗余存储 (LRS) 和异地冗余存储 (GRS)。 如果通过为 GRS 配置的帐户发起配对区域之间的存储帐户故障转移，Microsoft 建议仅将新区域视为数据的备份。 Azure 文件同步不会自动开始与新的主区域进行同步。 
 
 * <a id="sizeondisk-versus-size"></a>
-  **使用 Azure 文件共享后，为什么文件的占用空间属性与大小属性不一致？   **  
+  **使用 Azure 文件共享后，为什么文件的占用空间属性与大小属性不一致？  **  
   请参阅[了解云分层](storage-sync-cloud-tiering.md#sizeondisk-versus-size)。
 
 * <a id="is-my-file-tiered"></a>
@@ -123,7 +123,7 @@ ms.locfileid: "65190071"
   请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-force-tiering)。
 
 * <a id="afs-effective-vfs"></a>
-  **当卷上有多个服务器终结点时，如何解释卷可用空间？  **  
+  **当卷上有多个服务器终结点时，如何解释卷可用空间？ **  
   请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-effective-vfs)。
 
 * <a id="afs-files-excluded"></a>
@@ -356,8 +356,8 @@ ms.locfileid: "65190071"
     有关 Azure 文件的可伸缩性和性能目标的信息，请参阅 [Azure 文件可伸缩性和性能目标](storage-files-scale-targets.md)。
 
 * <a id="need-larger-share"></a>
-**我需要大于 Azure 文件目前提供的文件共享的文件共享。我是否可以增加 Azure 文件共享的大小？**  
-    不。 Azure 文件共享的上限是 5 TiB。 当前，这是硬限制，无法调整。 我们正致力于寻找将共享大小提升至 100 TiB 的解决方案，但当前尚无可供分享的时间表。
+**何种大小都可用于 Azure 文件共享？**  
+    Azure 文件共享大小 （高级和标准） 可以扩展最多 100 个 TiB。 最多 100 TiB 的高级文件共享大小都可用作 GA 产品/服务。 最多 5 TiB 的标准文件共享大小都可用作一 GA 产品/服务，虽然大小高达 100 TiB 处于预览状态。 请参阅[载入到更大的文件共享 （标准层）](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier)部分规划指南 》 的加入说明到更大的文件共享的标准层的预览。
 
 * <a id="open-handles-quota"></a>
 **多少个客户端可以同时访问同一文件？**    
@@ -373,7 +373,7 @@ ms.locfileid: "65190071"
 
 ## <a name="features-and-interoperability-with-other-services"></a>功能以及与其他服务的互操作性
 * <a id="cluster-witness"></a>
-**是否可以将 Azure 文件共享作为 Windows 服务器故障转移群集的文件共享见证？  **  
+**是否可以将 Azure 文件共享作为 Windows 服务器故障转移群集的文件共享见证？ **  
     Azure 文件共享目前不支持此配置。 有关如何为 Azure Blob 存储设置此服务的详细信息，请参阅[部署故障转移群集的云见证](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)。
 
 * <a id="containers"></a>

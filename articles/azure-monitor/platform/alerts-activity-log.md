@@ -5,14 +5,14 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 06/25/2019
 ms.author: vinagara
-ms.openlocfilehash: f25321fa5a13ed5a39a62a4115bb0bc10306d36f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8183c7070b5d42e1c7a96fc0d64974658b2ec7d0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244961"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448928"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -24,16 +24,17 @@ ms.locfileid: "66244961"
 > [!IMPORTANT]
 > 无法通过活动日志警报创建界面创建服务运行状况警报通知。 若要了解有关创建和使用服务运行状况通知的详细信息，请参阅[接收有关服务运行状况通知的活动日志警报](alerts-activity-log-service-notifications.md)。
 
+创建警报规则时，请确保：
+
+- 范围中的订阅不同于创建警报的订阅。
+- 条件必须是配置警报所依据的级别/状态/调用方/资源组/资源 ID/资源类型/事件类别。
+- 警报配置 JSON 中没有“anyOf”条件或嵌套的条件（简单而言，只允许一个 allOf，而不允许更多的 allOf/anyOf）。
+- 当类别是“管理”时， 必须在警报中至少指定上述条件之一。 不能创建每次在活动日志中创建事件时激活的警报。
+
+
 ## <a name="azure-portal"></a>Azure 门户
 
-> [!NOTE]
-> 
->  创建警报规则时，请确保：
-> 
-> - 范围中的订阅不同于创建警报的订阅。
-> - 条件必须是配置警报所依据的级别/状态/调用方/资源组/资源 ID/资源类型/事件类别。
-> - 警报配置 JSON 中没有“anyOf”条件或嵌套的条件（简单而言，只允许一个 allOf，而不允许更多的 allOf/anyOf）。
-> - 当类别是“管理”时， 必须在警报中至少指定上述条件之一。 不能创建每次在活动日志中创建事件时激活的警报。
+使用 Azure 门户，用户可以创建和修改活动日志警报规则。 并且与 Azure 活动日志-以确保无缝的警报创建的特定事件感兴趣的集成体验。
 
 ### <a name="create-with-azure-portal"></a>使用 Azure 门户进行创建
 
@@ -220,11 +221,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActi
 
 活动日志警报具有专用的 PowerShell cmdlet 可用：
 
-- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0)：新建或更新现有活动日志警报。
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0)：获取一个或多个活动日志警报资源。
-- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0)：启用现有活动日志警报并设置其标记。
-- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0)：禁用现有活动日志警报并设置其标记。
-- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0)    :删除活动日志警报。
+- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert)：新建或更新现有活动日志警报。
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert)：获取一个或多个活动日志警报资源。
+- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert)：启用现有活动日志警报并设置其标记。
+- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert)：禁用现有活动日志警报并设置其标记。
+- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert)    :删除活动日志警报。
 
 ## <a name="cli"></a>CLI
 

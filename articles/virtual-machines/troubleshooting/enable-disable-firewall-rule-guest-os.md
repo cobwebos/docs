@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7a547efb7af69c58f8e04615d24dd7c230f0c8b0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505531"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444654"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>在 Azure VM 来宾 OS 中启用或禁用防火墙规则
 
@@ -99,7 +99,7 @@ ms.locfileid: "60505531"
 
 1.  在故障排除 VM 上启动注册表编辑器 (regedit.exe)，然后选择“文件” > “连接网络注册表”   。
 
-2.  打开  *TARGET MACHINE*\SYSTEM 分支，然后指定以下值：
+2.  打开 *TARGET MACHINE*\SYSTEM 分支，然后指定以下值：
 
     * 若要启用规则，请打开以下注册表值：
     
@@ -123,30 +123,30 @@ ms.locfileid: "60505531"
 
 如果无法通过任何方法访问该 VM，则无法使用自定义脚本扩展，此时，必须直接通过系统磁盘在脱机模式下工作。
 
-在执行这些步骤之前，请创建受影响 VM 的系统磁盘的快照作为备份。 有关详细信息，请参阅 [创建磁盘快照](../windows/snapshot-copy-managed-disk.md)。
+在执行这些步骤之前，请创建受影响 VM 的系统磁盘快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
 
 1.  [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  确保磁盘在磁盘管理控制台中标记为“联机”。  ****   请注意分配给附加的系统磁盘的驱动器号。
+3.  确保磁盘在磁盘管理控制台中标记为“联机”。  请注意分配给附加的系统磁盘的驱动器号。
 
-4.  在进行任何更改之前，请创建 \windows\system32\config 文件夹的副本，以防需要回滚更改。
+4.  在进行任何更改之前，请创建 \windows\system32\config 文件夹的副本，以防需要回退更改。
 
 5.  在故障排除 VM 上，启动注册表编辑器 (regedit.exe)。
 
-6.  突出显示“HKEY_LOCAL_MACHINE”项，然后从菜单中选择“文件” > “加载配置单元”。    ****   
+6.  突出显示 **HKEY_LOCAL_MACHINE** 项，然后从菜单中选择“文件” > “加载配置单元”。  
 
     ![Regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
 7.  找到并打开 \windows\system32\config\SYSTEM 文件。 
 
     > [!Note]
-    > 系统会提示输入名称。 输入  **BROKENSYSTEM**，然后展开“HKEY_LOCAL_MACHINE”。  **** 现在，可以看到名为  **BROKENSYSTEM** 的附加项。 为了进行故障排除，我们将这些有问题的配置单元装载为  **BROKENSYSTEM**。
+    > 系统会提示输入名称。 输入 **BROKENSYSTEM**，然后展开 **HKEY_LOCAL_MACHINE**。 现在，您将看到名为其他键**BROKENSYSTEM**。 为了进行故障排除，我们将这些有问题的配置单元装载为 **BROKENSYSTEM**。
 
 8.  对 BROKENSYSTEM 分支进行以下更改：
 
-    1.  检查 VM 是从哪个 **ControlSet** 注册表项启动的。 将在 HKLM\BROKENSYSTEM\Select\Current 中看到该项的数值。
+    1.  检查 VM 是从哪个 **ControlSet** 注册表项启动的。 会在 HKLM\BROKENSYSTEM\Select\Current 中看到该项的数值。
 
     2.  若要启用规则，请打开以下注册表值：
     
@@ -164,7 +164,7 @@ ms.locfileid: "60505531"
         
         **v2.22 |操作 = 允许 |Active = FALSE |Dir = In |协议 = 6 |配置文件 = Domain |配置文件 = 专用 |配置文件 = 公用 |LPort = 3389 |App=%SystemRoot%\system32\svchost.exe|Svc = termservice |名称 =\@用 FirewallAPI.dll-28775 |Desc =\@用 FirewallAPI.dll-28756 |EmbedCtxt =\@用 FirewallAPI.dll-28752 |**
 
-9.  突出显示“BROKENSYSTEM”，然后从菜单中选择“文件” > “卸载配置单元”。  ****  ****   
+9.  突出显示 BROKENSYSTEM，然后选择菜单中的“文件” > “卸载配置单元”    。
 
 10. [拆离系统磁盘并重新创建 VM](troubleshoot-recovery-disks-portal-windows.md)。
 

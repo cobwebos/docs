@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: dfa57b3f597ba1c01dc78421cc04074f7b6a858e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/24/2019
+ms.openlocfilehash: a2f44b52c6d34adb1bebf666ff8453b17f7778a5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063045"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448491"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>配置和访问 Azure 门户中的审核日志
 
@@ -40,7 +40,7 @@ ms.locfileid: "67063045"
 1. 更新**audit_log_enabled**参数为 ON。
     ![启用审核日志](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
-1. 选择要记录的更新的事件**audit_log_events**参数。
+1. 选择[事件类型](concepts-audit-logs.md#configure-audit-logging)若要记录的更新**audit_log_events**参数。
     ![审核日志事件](./media/howto-configure-audit-logs-portal/audit-log-events.png)
 
 1. 添加要从日志记录通过更新中排除的所有 MySQL 用户**audit_log_exclude_users**参数。 指定用户通过提供其 MySQL 用户名称。

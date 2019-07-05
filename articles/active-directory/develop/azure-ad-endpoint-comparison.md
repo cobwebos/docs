@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ccac719c78ce2844a8dd37a80445e11baa4a488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22f3e4cde892a70ec331523524508a50008a4073
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962880"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483001"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>更新到 Microsoft 标识平台 (v2.0) 的原因？
 
@@ -46,7 +46,7 @@ Microsoft 标识平台终结点，可编写的应用程序接受从个人 Micros
 
 使用 Azure AD v1.0 终结点的应用需要提前指定所需的 OAuth 2.0 权限，例如：
 
-![权限注册 UI](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
+![显示权限注册 UI 示例](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
 
 直接在应用程序注册中设置的权限是**静态的**。 尽管在 Azure 门户中定义应用的静态权限能保持代码的简洁性，但可能会给开发人员带来几个问题：
 

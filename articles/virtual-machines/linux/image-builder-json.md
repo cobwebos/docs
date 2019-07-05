@@ -7,12 +7,12 @@ ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: cf8264cbad3c5c88c58cff3b95cb5c68adf0686c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a577a2a2a3b21cb027ba699450631a627f4f7a39
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65538297"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501873"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -55,7 +55,7 @@ Azure 映像生成器使用的.json 文件以将信息传递到映像生成器�
 
 位置是在其中创建自定义映像的区域。 映像生成器预览版支持以下区域：
 
-- 美国东部
+- East US
 - 美国东部 2
 - 美国中西部
 - 美国西部
@@ -331,6 +331,8 @@ OS 支持：Linux 和 Windows
  
  
 如果没有错误尝试下载文件，或将其放在指定目录中，自定义步骤将失败，并且这将在 customization.log。
+
+>> 请注意 ！ 文件自定义是仅适用于小型文件下载，< 20 MB。 对于较大文件下载，使用脚本或内联命令，使用代码来下载文件，例如，Linux`wget`或`curl`，Windows， `Invoke-WebRequest`。
 
 可以从 Azure 存储下载文件自定义中的文件使用[MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)。
 

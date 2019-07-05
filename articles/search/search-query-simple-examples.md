@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0c47212e51725e7d4a173c441709dca739d4e357
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4658de97bc8b8a175934286a5be3f074968ff7bd
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024528"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485361"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Azure 搜索中使用“简单”搜索语法的查询示例
 
@@ -27,7 +27,7 @@ ms.locfileid: "65024528"
 
 下面的示例使用“纽约工作岗位”搜索索引，它包含基于[纽约市开放数据](https://nycopendata.socrata.com/)计划提供的数据集得出的岗位。 此数据不应认为是最新或完整数据。 该索引位于 Microsoft 提供的一项沙盒服务上，也就是说无需 Azure 订阅或 Azure 搜索即可试用这些查询。
 
-要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[使用 REST 客户端进行浏览](search-fiddler.md)。
+要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[使用 REST 客户端进行浏览](search-get-started-postman.md)。
 
 ### <a name="set-the-request-header"></a>设置请求标头
 

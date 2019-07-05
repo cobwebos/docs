@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e87bfad11eee5b86d35e6b4f2846b094c467e0ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0d5363e253e89b32b5eca14366504f0ace39043
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734167"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479643"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v021-alpha"></a>状态监视器 v2 API：Enable-ApplicationInsightsMonitoring (v0.2.1-alpha)
+# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v031-alpha"></a>状态监视器 v2 API：启用 ApplicationInsightsMonitoring (v0.3.1-alpha)
 
 本文介绍的 cmdlet 时的成员[Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
 
@@ -68,9 +68,9 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
     @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
-      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'},
-      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'},
-      @{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'})
+      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'}},
+      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'}},
+      @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 
 ```
 
@@ -88,7 +88,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 > 应用程序将根据规则中提供规则的顺序匹配。 因此应首先指定的最具体的规则和最后一个最一般的规则。
 
 #### <a name="schema"></a>架构
-`@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
+`@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
 - **MachineFilter**需要C#的计算机或 VM 名称的正则表达式。
     - “.*”将匹配所有项
@@ -108,13 +108,19 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ### <a name="-acceptlicense"></a>-AcceptLicense
 **可选。** 使用此开关可在无外设安装中接受许可条款和隐私声明。
 
+### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
+Web 服务器的群集后，你可能使用[共享的配置](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)。
+HttpModule 不能注入到此共享的配置。
+此脚本将失败并出现额外的安装步骤所需的消息。
+使用此开关可忽略此检查并继续安装系统必备组件。 有关详细信息，请参阅[已知冲突优先使用 iis 的共享的配置](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
+
 ### <a name="-verbose"></a>-Verbose
 **通用参数。** 使用此开关以显示详细的日志。
 
 ### <a name="-whatif"></a>-WhatIf 
 **通用参数。** 使用此开关可以测试和验证输入参数，而无需真正启用监视。
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 
 #### <a name="example-output-from-a-successful-enablement"></a>成功启用后的示例输出

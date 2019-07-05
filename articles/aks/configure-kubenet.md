@@ -5,15 +5,15 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/26/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: f57c1af4c497b51f5289559737fad5ce4cf2e85b
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 269dd670ed82234b77e06c389ae1c9a5c294010c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67358033"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441957"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -28,7 +28,7 @@ ms.locfileid: "67358033"
 
 ## <a name="before-you-begin"></a>开始之前
 
-你需要 Azure CLI 版本 2.0.65 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果你需要安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+你需要 Azure CLI 版本 2.0.65 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>使用自有子网的 kubenet 网络概述
 
@@ -48,7 +48,7 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 
 作为一种折衷方案，可以创建使用 *kubenet* 的 AKS 群集并连接到现有虚拟网络子网。 这种方法可让节点接收定义的 IP 地址，而无需提前为群集中可能运行的所有潜在 Pod 节点预留大量的 IP 地址。
 
-使用 *kubenet* 时，可以大幅减小要使用的 IP 地址范围，并且可以支持大型群集和应用程序的需求。 例如，即使使用 */27* IP 地址范围，也能运行包括 20-25 节点个的群集，并且可以提供足够的空间用于扩展或升级。 此群集大小最多支持 *2,200-2,750* 个 Pod（每个节点的最大 Pod 数默认为 110 个）。 每个可以使用配置的节点的 pod 的最大数目*kubenet*在 AKS 中为 250 个字符。
+使用 *kubenet* 时，可以大幅减小要使用的 IP 地址范围，并且可以支持大型群集和应用程序的需求。 例如，即使使用 */27* IP 地址范围，也能运行包括 20-25 节点个的群集，并且可以提供足够的空间用于扩展或升级。 此群集大小最多支持 *2,200-2,750* 个 Pod（每个节点的最大 Pod 数默认为 110 个）。 每个可以使用配置的节点的 pod 的最大数目*kubenet*在 AKS 中为 110。
 
 以下基本计算方法对网络模型的差异做了比较：
 

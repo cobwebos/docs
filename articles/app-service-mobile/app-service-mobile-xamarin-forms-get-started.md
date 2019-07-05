@@ -3,7 +3,7 @@ title: 移动应用入门（使用 Xamarin.Forms）
 description: 按本教程操作，开始使用移动应用进行 Xamarin.Forms 开发
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
 ms.service: app-service-mobile
@@ -11,19 +11,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: crdun
-ms.openlocfilehash: b47e498754bad6917efca5b7f19f8ebce9cf0330
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: bca0f0de7de321060635459c4435525f650c7467
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062225"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446321"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>使用 Azure 创建 Xamarin.Forms 应用
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started)今天。
+>
+
+## <a name="overview"></a>概述
 本教程说明如何使用作为后端的 Azure 应用服务的移动应用功能，向 Xamarin.Forms 移动应用添加基于云的后端服务。 请创建一个新的移动应用后端和一个简单的待办事项列表 Xamarin.Forms 应用，此应用将应用数据存储在 Azure 中。
 
 只有在完成本教程后，才可以学习有关 Xamarin.Forms 的所有其他移动应用教程。
@@ -34,7 +39,7 @@ ms.locfileid: "67062225"
 
 * 有效的 Azure 帐户。 如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。 有关详细信息，请参阅 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-* 用于 Xamarin 的 Visual Studio Tools，包含在 Visual Studio 2017 或更高版本或 Visual Studio for Mac 中。 有关说明，请参阅 [Xamarin 安装页][Install Xamarin]。
+* 用于 Xamarin 的 Visual Studio Tools，包含在 Visual Studio 2017 或更高版本或 Visual Studio for Mac 中。 请参阅[Xamarin 安装页][Install Xamarin]有关的说明。
 
 * （可选）若要生成 iOS 应用，必须使用装有 Xcode 9.0 或更高版本的 Mac。 可以使用 Visual Studio for Mac 来开发 iOS 应用，也可以使用 Visual Studio 2017 或更高版本（前提是 Mac 在网络上可用）。
 
@@ -46,9 +51,9 @@ ms.locfileid: "67062225"
 
 ## <a name="run-the-xamarinforms-solution"></a>运行 Xamarin.Forms 解决方案
 
-必须使用用于 Xamarin 的 Visual Studio Tools 来打开解决方案，详见 [Xamarin 安装说明][Install Xamarin]。 如果该工具已安装，请按以下步骤来下载并打开解决方案：
+Visual Studio Tools 有关 Xamarin 所需打开解决方案，请参阅[Xamarin 安装说明][Install Xamarin]。 如果该工具已安装，请按以下步骤来下载并打开解决方案：
 
-### <a name="visual-studio-windows-and-mac"></a>Visual Studio （Windows 和 Mac）
+### <a name="visual-studio-windows-and-mac"></a>Visual Studio（Windows 和 Mac）
 
 1. 转到 [Azure 门户](https://portal.azure.com/)，并导航到已创建的移动应用。 在 `Overview` 边栏选项卡上，查找作为移动应用公共终结点的 URL。 示例 - 我的应用名称“test123”的站点名将为 https://test123.azurewebsites.net 。
 

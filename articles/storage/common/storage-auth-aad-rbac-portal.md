@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ebb67ff295a934b4e125e298018c27a095adc590
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 959d96a9bc1dd9f28e62d904248cd1f18d73c27d
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153870"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67563925"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限
 
@@ -42,6 +42,11 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 以下各部分更详细地说明了其中的每个步骤。
 
+> [!NOTE]
+> 作为 Azure 存储帐户的所有者，系统不会自动向你分配数据访问权限。 你必须为自己显式分配一个用于 Azure 存储的 RBAC 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
+> 
+> 如果存储帐户启用了分层命名空间，则不能分配限定于容器或队列的角色。
+
 ### <a name="assign-a-built-in-rbac-role"></a>分配内置的 RBAC 角色
 
 在将角色分配到安全主体之前，请务必考虑所要授予的权限的范围。 查看[确定资源范围](#determine-resource-scope)部分以确定适当的范围。
@@ -65,11 +70,6 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
     ![显示已分配到某个角色的用户列表的屏幕截图](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
 可以遵循类似的步骤来分配限定为存储帐户、资源组或订阅范围的角色。
-
-> [!NOTE]
-> 作为 Azure 存储帐户的所有者，系统不会自动向你分配数据访问权限。 你必须为自己显式分配一个用于 Azure 存储的 RBAC 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
-> 
-> 如果存储帐户启用了分层命名空间，则不能分配限定于容器或队列的角色。
 
 ### <a name="assign-the-reader-role-for-portal-access"></a>分配“读取者”角色以访问门户
 

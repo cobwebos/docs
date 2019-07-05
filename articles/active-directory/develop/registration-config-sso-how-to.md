@@ -1,5 +1,5 @@
 ---
-title: 如何配置新的多租户应用程序 | Microsoft Docs
+title: 如何配置单一登录 |Microsoft Docs
 description: 如何为正在使用 Azure AD 开发和注册的自定义应用程序配置单一登录。
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83fae56dd0cf7157575b7c5a07e33ca1888d8560
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d151d4d7f32c479f2cfb4d71a8ed667f42e03b49
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545454"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465677"
 ---
-# <a name="how-to-configure-a-new-multi-tenant-application"></a>如何配置新的多租户应用程序
+# <a name="how-to-configure-single-sign-on-for-an-application"></a>如何配置单一登录的应用程序
 
-通过用于 OpenID Connect、SAML 2.0 或 WS-Fed 的 Azure AD 进行联合身份验证时，可以在应用中自动启用联合单一登录 (SSO)。 如果与 Azure AD 已有一个现有会话，但是最终用户仍然需要登录，这有可能是应用配置错误。
+通过适用于 OpenID Connect 的 Azure AD、SAML 2.0 或 WS-Fed 联合时，会自动启用应用中的联合单一登录 (SSO)。 如果与 Azure AD 已有一个现有会话，但是最终用户仍然需要登录，这有可能是应用配置错误。
 
 * 如果使用 ADAL/MSAL，请确保将 **PromptBehavior** 设置为“自动”  而不是“始终”  。
 

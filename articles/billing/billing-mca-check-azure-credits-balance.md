@@ -1,47 +1,42 @@
 ---
-title: 跟踪的 Microsoft 客户协议的 Azure 信用额度余额 |Microsoft Docs
+title: 跟踪的 Microsoft 客户协议的 Azure 信用额度余额
 description: 了解如何检查 Microsoft 客户协议的 Azure 信用额度余额。
-services: ''
-documentationcenter: ''
-author: amberbhargava
+author: bandersmsft
 manager: amberb
-editor: banders
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
-ms.author: amberb
-ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/01/2019
+ms.author: banders
+ms.openlocfilehash: 352737b3ea61a51a39e066d4211c8f4ceae74184
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372209"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490969"
 ---
-# <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>跟踪的 Microsoft 客户协议的 Azure 信用额度余额
+# <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>跟踪 Microsoft 客户协议的 Azure 信用额度余额
 
-您可以在 Azure 门户来检查 Microsoft 客户协议的 Azure 信用额度余额。 使用信用额度支付涵盖的信用额度的产品。
+您可以在 Azure 门户来检查 Microsoft 客户协议的 Azure 信用额度余额。 使用信用额度支付涵盖的信用额度的费用。
 
-使用未涵盖的信用额度的产品或使用量超出你的信用余额时，则要收费。 有关详细信息，请参阅[未涵盖的 Azure 信用额度的产品。](#products-that-arent-covered-by-azure-credits)
+使用未涵盖的信用额度的产品或使用量超出你的信用余额时，则要收费。 有关详细信息，请参阅 [未涵盖的 Azure 信用额度的产品。 (#products-that-aren't-covered-by-azure-credits)。
 
 本文适用于 Microsoft 客户协议向计费帐户。 [检查是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
 
-## <a name="check-credit-balance-in-the-azure-portal"></a>检查 Azure 门户中的信用额度余额
+## <a name="check-your-credit-balance"></a>检查你的信用余额
 
 1. 登录到 [Azure 门户]( https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”  中进行搜索。
+2. 搜索**成本管理 + 计费**。
 
-   ![有关成本管理 + 计费门户中显示搜索的屏幕截图](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![有关成本管理 + 计费门户中显示搜索的屏幕截图](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. 转到计费配置文件。 根据你拥有的访问权限，可能需要选择一个计费帐户。 从计费帐户，选择**计费配置文件**，然后计费配置文件。
+3.  选择**Azure 额度**从左上方。 根据您的访问权限，可能需要选择计费帐户或帐单的配置文件，然后选择**Azure 额度**。
 
-4. 选择**Azure 额度**。
-
-5. Azure 额度页显示以下信息：
+4. Azure 额度页显示以下信息：
 
    ![信用额度余额和计费配置文件的事务的屏幕截图](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
 
@@ -57,16 +52,18 @@ ms.locfileid: "60372209"
 
    ![信用额度的屏幕截图列出了为计费配置文件](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
 
-   | 术语                 | 定义                           |
-   |----------------------|--------------------------------------------------------|
-   | source               | 获取源的信用额度 |
-   | 开始日期           | 获取信用额度时的日期 |
-   | 到期日期      | 信用额度的到期日期 |
-   | Balance              | 自上张发票起余额 |
-   | 原始金额      | 原始信用额度量 |
-   | 状态               | 信用额度的当前状态。 状态可以是处于活动状态，使用、 已过期，或即将到期 |
+   | 术语 | 定义 |
+   |---|---|
+   | 估计的余额 | 未出单信用额度符合条件的费用从当前余额中减去之后具有的 Azure 信用额度量|
+   | 当前余额 | 在考虑未出单信用额度符合条件的费用之前具有 Azure 信用额度量。 通过在最后一张发票时将收到新的 Azure 额度添加到的信用额度余额计算|
+   | source | 获取源的信用额度 |
+   | 开始日期 | 获取信用额度时的日期 |
+   | 到期日期 | 信用额度的到期日期 |
+   | Balance | 自上张发票起余额 |
+   | 原始金额 | 原始信用额度量 |
+   | 状态 | 信用额度的当前状态。 状态可以是处于活动状态，使用、 已过期，或即将到期 |
 
-## <a name="how-credits-are-used-in-microsoft-customer-agreement"></a>如何在 Microsoft 客户协议中使用的信用额度
+## <a name="how-credits-are-used"></a>如何使用信用额度
 
 中的 Microsoft 客户协议的计费帐户，你可以使用计费的配置文件来管理你的发票和付款方法。 为每个计费的配置文件生成一个每月的发票和付款方法用于向发票付款。
 
@@ -78,7 +75,7 @@ Azure 额度是一种付款方式。 促销信用额度和服务级别的信用�
 
 - Canonical
 - Citrix XenApp Essentials
-- Citrix XenDesktop 
+- Citrix XenDesktop
 - 已注册的用户
 - Openlogic
 - 远程访问权限 XenApp Essentials 已注册的用户
@@ -93,7 +90,7 @@ Azure 额度是一种付款方式。 促销信用额度和服务级别的信用�
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
 如果需要帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
 

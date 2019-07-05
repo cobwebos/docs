@@ -3,17 +3,17 @@ title: 将泛型 Node.js 客户端应用程序连接到 Azure IoT Central | Micr
 description: 作为设备开发人员，如何将通用的 Node.js 设备连接到 Azure IoT Central 应用程序。
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/05/2019
+ms.date: 06/14/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 90e4a061e38fdd3a13a640363069fae3a18e0b49
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888897"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444220"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>将泛型客户端应用程序连接到 Azure IoT Central 应用程序 (Node.js)
 
@@ -62,12 +62,24 @@ Azure IoT Central 应用程序中需要具有以下度量值、 设备属性、 
 
 添加下面的事件上**度量**页：
 
-| 显示名称 | 字段名称  | Severity |
+| 显示名称 | 字段名称  | 严重性 |
 | ------------ | ----------- | -------- |
 | 过热  | 过热    | 错误    |
 
 > [!NOTE]
 > 事件度量的数据类型为字符串。
+
+### <a name="location-measurements"></a>位置度量
+
+上添加以下位置度量**度量**页：
+
+| 显示名称 | 字段名称  |
+| ------------ | ----------- |
+| Location     | location    |
+
+位置度量值数据类型由两个浮点数字的经度和纬度和一个可选的浮点数的海拔高度。
+
+将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配相应的设备代码中的属性名称，不能在应用程序中显示的位置。
 
 ### <a name="device-properties"></a>设备属性
 
@@ -144,12 +156,14 @@ Azure IoT Central 应用程序中将添加到在上一节中创建的设备模�
     ```javascript
     var connectionString = '{your device connection string}';
     var targetTemperature = 0;
+    var locLong = -122.1215;
+    var locLat = 47.6740;
     var client = clientFromConnectionString(connectionString);
     ```
 
     更新占位符`{your device connection string}`与[设备连接字符串](tutorial-add-device.md#generate-connection-string)。 在此示例中，您初始化`targetTemperature`为零，您可以使用当前读取从设备或设备孪生中的值。
 
-1. 若要发送到 Azure IoT Central 应用程序的遥测数据、 状态和事件度量，请向文件添加以下函数：
+1. 若要发送到 Azure IoT Central 应用程序的遥测数据、 状态、 事件和位置度量，请向文件添加以下函数：
 
     ```javascript
     // Send device measurements.
@@ -158,12 +172,18 @@ Azure IoT Central 应用程序中将添加到在上一节中创建的设备模�
       var humidity = 70 + (Math.random() * 10);
       var pressure = 90 + (Math.random() * 5);
       var fanmode = 0;
+      var locationLong = locLong - (Math.random() / 100);
+      var locationLat = locLat - (Math.random() / 100);
       var data = JSON.stringify({
         temperature: temperature,
         humidity: humidity,
         pressure: pressure,
         fanmode: (temperature > 25) ? "1" : "0",
-        overheat: (temperature > 35) ? "ER123" : undefined });
+        overheat: (temperature > 35) ? "ER123" : undefined,
+        location: {
+            lon: locationLong,
+            lat: locationLat }
+        });
       var message = new Message(data);
       client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
@@ -320,6 +340,10 @@ node connectedAirConditionerAdv.js
 * 在“度量”页中查看遥测： 
 
     ![查看遥测数据](media/howto-connect-nodejs/viewtelemetry.png)
+
+* 在查看的位置**度量**页：
+
+    ![视图位置度量](media/howto-connect-nodejs/viewlocation.png)
 
 * 在“属性”页上查看从设备发送的设备属性值。  在设备连接的设备属性磁贴更新：
 

@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 05/14/2019
-ms.openlocfilehash: c7ff7ab0800449c2a3aa9d58bd036981caccaa1c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.date: 07/01/2019
+ms.openlocfilehash: 9e0caa8b98133dad3af083e8910d0603bbd2563b
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172918"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67489908"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>预付 Azure 保留的 VM 实例 (RI) 的虚拟机
 
@@ -17,7 +17,7 @@ ms.locfileid: "67172918"
 
 可在 [Azure 门户](https://portal.azure.com)中购买虚拟机预留实例。 若要购买实例：
 
-- 你必须至少具有一个企业或即用即付订阅的所有者角色。
+- 您必须至少一个企业订阅或现用现付费率的订阅的所有者角色。
 - 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理才能购买预留。
 
@@ -68,13 +68,13 @@ ms.locfileid: "67172918"
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“所有服务”   > “预订”  。
 3. 选择“添加”  购买新的预订。
-4. 填写必填字段。 与所选属性匹配的正在运行的 VM 实例有资格获得预订折扣。 实际获得折扣的 VM 实例数取决于所选范围和数量。
+4. 输入必填的字段。 与所选属性匹配的正在运行的 VM 实例有资格获得预订折扣。 实际获得折扣的 VM 实例数取决于所选范围和数量。
 
     | 字段      | 描述|
     |------------|--------------|
     |名称        |此预订的名称。|
-    |订阅|用于支付预订费用的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P），或即用即付（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。|    
-    |范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>单个订阅 - 预订折扣将应用到此订阅中的 VM。 </li><li>共享 - 预订折扣将应用到计费上下文中任何订阅中运行的 VM。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</li></ul>|
+    |订阅|用于支付预订费用的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-条-0148 P) 或单个订阅中的通过即用即付费率 (产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于现用现付费率使用的订阅，费用将信用卡或发票付款方式的订阅计费。|    
+    |范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>单个订阅 - 预订折扣将应用到此订阅中的 VM。 </li><li>共享 - 预订折扣将应用到计费上下文中任何订阅中运行的 VM。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于使用具有现用现付费率的订阅的客户，共享作用域是由帐户管理员创建的即用即付费率使用的所有订阅。</li></ul>|
     |区域    |预订涵盖的 Azure 区域。|    
     |VM 大小     |VM 实例的大小。|
     |优化对象     |VM 实例大小可以灵活调整，因此可将预留折扣应用到同一 [VM 大小组](https://aka.ms/RIVMGroups)中的其他 VM。 容量优先级可以对部署优先使用数据中心容量。 使你在需要时能够更加有把握地启动 VM 实例。 仅当预留范围为单个订阅时，容量优先级才可用。 |
@@ -121,7 +121,7 @@ ms.locfileid: "67172918"
     - [什么是 Azure 预订？](../articles/billing/billing-save-compute-costs-reservations.md)
     - [管理 Azure 中的预留](../articles/billing/billing-manage-reserved-vm-instance.md)
     - [了解预留折扣的应用方式](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [了解即用即付订阅的预留使用情况](../articles/billing/billing-understand-reserved-instance-usage.md)
+    - [了解即用即付费率使用订阅的预订使用情况](../articles/billing/billing-understand-reserved-instance-usage.md)
     - [了解企业合约的预留使用情况](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
     - [预留未包含的 Windows 软件成本](../articles/billing/billing-reserved-instance-windows-software-costs.md)
     - [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](https://docs.microsoft.com/partner-center/azure-reservations)

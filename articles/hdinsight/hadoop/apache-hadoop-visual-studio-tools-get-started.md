@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 42ef03d604caacf5ba18773b88e892237b5f0eae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 485f3a4b6a5fde532229873fe1f3feaa30ece523
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688535"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450194"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询
 
@@ -29,7 +29,7 @@ ms.locfileid: "66688535"
 
 ## <a name="prerequisites"></a>必备组件
 
-若要完成本教程并使用用于 Visual Studio 的 Data Lake 工具，需要准备以下项目：
+若要完成这篇文章，并使用用于 Visual Studio 的 Data Lake 工具，需备齐以下项目：
 
 * 一个 Azure HDInsight 群集。 若要创建 HDInsight 群集，请参阅[在 Azure HDInsight 中使用 Apache Hadoop 入门](apache-hadoop-linux-tutorial-get-started.md)。 若要运行交互式 Apache Hive 查询，需使用 [HDInsight 交互式查询](../interactive-query/apache-interactive-query-get-started.md)群集。  
 

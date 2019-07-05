@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0534613a9df3177290e9b4b57e9830fe62f9741a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f891642761a2f692158efbd9111ff96444c4269d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112129"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476191"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用条款
 
@@ -74,11 +74,11 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 Azure。
 1. 在 [https://aka.ms/catou](https://aka.ms/catou) 导航到“使用条款”。 
 
-   ![“使用条款”边栏选项卡](./media/terms-of-use/tou-blade.png)
+   ![条件性访问-使用边栏选项卡中的条款](./media/terms-of-use/tou-blade.png)
 
 1. 单击“新建条款”。 
 
-   ![添加 TOU](./media/terms-of-use/new-tou.png)
+   ![使用窗格来指定你的使用条款的使用设置的新术语](./media/terms-of-use/new-tou.png)
 
 1. 在中**名称**框中，在 Azure 门户中输入将使用使用条款的名称。
 1. 在“显示名称”框中，输入用户登录时看到的标题。 
@@ -88,7 +88,7 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 1. 若要要求最终用户接受你的使用条款的从访问每个设备上，设置**要求用户在每个设备上的同意**到**上**。 有关详细信息，请参阅[的每个设备使用条款](#per-device-terms-of-use)。
 1. 如果你想要过期的按计划使用同意条款，设置**过期的许可：** 到**上**。 设置为“打开”时，会显示另外两项计划设置。
 
-   ![使同意状态过期](./media/terms-of-use/expire-consents.png)
+   ![过期的许可： 设置，以设置开始日期、 频率和持续时间](./media/terms-of-use/expire-consents.png)
 
 1. 使用**上启动的过期**并**频率**设置以指定的计划的条款，请使用过期时间。 下表显示了几项示例设置的结果：
 
@@ -115,7 +115,7 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 
 1. 下**条件访问**，使用**强制实施条件性访问策略模板与**列表可以选择模板以强制实施的使用条款。
 
-   ![条件性访问模板](./media/terms-of-use/conditional-access-templates.png)
+   ![条件性访问下拉列表选择策略模板](./media/terms-of-use/conditional-access-templates.png)
 
    | 模板 | 描述 |
    | --- | --- |
@@ -133,11 +133,11 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 
    如果选择自定义的条件性访问模板，然后将显示新屏幕，可用于创建自定义的条件性访问策略。
 
-   ![自定义策略](./media/terms-of-use/custom-policy.png)
+   ![如果选择了自定义的条件性访问策略模板的新条件性访问窗格](./media/terms-of-use/custom-policy.png)
 
    现在应看到新使用条款。
 
-   ![添加 TOU](./media/terms-of-use/create-tou.png)
+   ![使用边栏选项卡中的条款中列出的新使用条款](./media/terms-of-use/create-tou.png)
 
 ## <a name="view-report-of-who-has-accepted-and-declined"></a>查看接受用户和拒绝用户的报告
 
@@ -145,19 +145,19 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 
 1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。 
 
-   ![“使用条款”边栏选项卡](./media/terms-of-use/view-tou.png)
+   ![接受用户和拒绝条款使用边栏选项卡中列出的用户显示数](./media/terms-of-use/view-tou.png)
 
 1. 有关使用的术语，请单击下的数字**已接受**或**已拒绝**若要查看用户的当前状态。
 
-   ![使用条款的同意](./media/terms-of-use/accepted-tou.png)
+   ![用于许可： 窗格列出的用户已接受的条款](./media/terms-of-use/accepted-tou.png)
 
 1. 若要查看单个用户的历史记录，请依次单击省略号 ( **...** )、“查看历史记录”。 
 
-   ![“查看历史记录”菜单](./media/terms-of-use/view-history-menu.png)
+   ![查看用户的历史记录上下文菜单](./media/terms-of-use/view-history-menu.png)
 
    在“查看历史记录”窗格中，可以看到所有接受、拒绝和过期操作状态的历史记录。
 
-   ![“查看历史记录”窗格](./media/terms-of-use/view-history-pane.png)
+   ![查看历史记录窗格将列出历史记录接受、 拒绝、 和用户的过期时间](./media/terms-of-use/view-history-pane.png)
 
 ## <a name="view-azure-ad-audit-logs"></a>查看 Azure AD 审核日志
 
@@ -169,31 +169,31 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 1. 选择的使用条款。
 1. 单击“查看审核日志”。 
 
-   ![“使用条款”边栏选项卡](./media/terms-of-use/audit-tou.png)
+   ![使用边栏选项卡查看的条款审核突出显示的日志选项](./media/terms-of-use/audit-tou.png)
 
 1. 在 Azure AD 审核日志屏幕上，可以使用提供的列表筛选信息，将特定审核日志信息作为目标。
 
    还可以单击“下载”，将信息下载到可以在本地使用的 .csv 文件中。 
 
-   ![审核日志](./media/terms-of-use/audit-logs-tou.png)
+   ![Azure AD 审核日志窗口，其中列出日期、 目标策略，由，启动和活动](./media/terms-of-use/audit-logs-tou.png)
 
    如果单击某项日志，窗格中会显示更多活动详细信息。
 
-   ![活动详细信息](./media/terms-of-use/audit-log-activity-details.png)
+   ![显示活动，活动状态，启动的日志的活动详细信息为目标策略](./media/terms-of-use/audit-log-activity-details.png)
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>哪些使用条款的用户如下所示
 
 一旦创建并强制实施的使用条款，处于范围内的用户将在登录期间看到以下屏幕。
 
-![用户 Web 登录](./media/terms-of-use/user-tou.png)
+![当用户登录时显示的示例使用条款](./media/terms-of-use/user-tou.png)
 
 用户可以查看的使用条款和，如有必要，使用按钮放大和缩小。
 
-![查看使用条款的缩放按钮](./media/terms-of-use/zoom-buttons.png)
+![使用缩放按钮的使用条款的视图](./media/terms-of-use/zoom-buttons.png)
 
 以下屏幕显示的使用条款的移动设备上的外观。
 
-![用户移动登录](./media/terms-of-use/mobile-tou.png)
+![当用户在移动设备上登录时显示的示例使用条款](./media/terms-of-use/mobile-tou.png)
 
 用户只需接受一次的使用条款，他们将看不使用条款再次在后续登录。
 
@@ -204,11 +204,11 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
 1. 在右上角单击自己的姓名，然后选择“个人资料”。 
 
-   ![配置文件](./media/terms-of-use/tou14.png)
+   ![与用户的窗格中打开 MyApps 网站](./media/terms-of-use/tou14.png)
 
 1. 在“个人资料”页中单击“查看使用条款”。 
 
-   ![个人资料 - 查看使用条款](./media/terms-of-use/tou13a.png)
+   ![显示使用链接查看使用条款的用户的个人资料页](./media/terms-of-use/tou13a.png)
 
 1. 可以在其中查看已接受的使用条款。
 
@@ -223,7 +223,7 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 
    如果你想要更改，如 PDF 文档的其他设置要求用户在每个设备上的同意，则失效同意、 持续时间之前 reacceptance 或条件性访问策略，您必须创建的新使用条款。
 
-   ![编辑使用条款](./media/terms-of-use/edit-tou.png)
+   ![编辑使用条款使用窗格中显示 name 和 expand 选项](./media/terms-of-use/edit-tou.png)
 
 1. 单击“保存”  以保存更改。
 
@@ -237,12 +237,12 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 1. 选择你想要编辑的使用条款。
 1. 在详细信息窗格中，单击“语言”选项卡。 
 
-   ![添加 TOU](./media/terms-of-use/languages-tou.png)
+   ![所选的使用和的详细信息窗格中显示语言选项卡中的条款](./media/terms-of-use/languages-tou.png)
 
 1. 单击“添加语言”。 
 1. 在“添加使用条款语言”窗格中，上传已本地化的 PDF 并选择语言。
 
-   ![添加 TOU](./media/terms-of-use/language-add-tou.png)
+   ![添加用于上传本地化的 Pdf 的选项使用语言窗格中的条款](./media/terms-of-use/language-add-tou.png)
 
 1. 单击“添加”以添加该语言。 
 
@@ -273,7 +273,7 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 
 如果用户使用 Windows 10 和 Microsoft Edge，将会收到如下所示的，指出需要[加入其设备](../user-help/user-help-join-device-on-network.md#to-join-an-already-configured-windows-10-device)的消息。
 
-![Windows 10 和 Microsoft Edge - 加入设备提示](./media/terms-of-use/per-device-win10-edge.png)
+![必须注册 Windows 10 和 Microsoft Edge 的消息，指示你的设备](./media/terms-of-use/per-device-win10-edge.png)
 
 如果用户使用 Chrome，系统会提示他们安装 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。
 
@@ -281,7 +281,7 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 
 如果用户使用不受支持的浏览器，系统会要求他们使用其他浏览器。
 
-![不支持的浏览器](./media/terms-of-use/per-device-browser-unsupported.png)
+![条消息，指示必须注册你的设备，但不是支持浏览器](./media/terms-of-use/per-device-browser-unsupported.png)
 
 ## <a name="delete-terms-of-use"></a>删除使用条款
 
@@ -292,7 +292,7 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 1. 单击“删除条款”。 
 1. 在出现的询问是否需要继续的消息中，单击“是”。 
 
-   ![删除使用条款](./media/terms-of-use/delete-tou.png)
+   ![条消息，询问确定要删除的使用条款](./media/terms-of-use/delete-tou.png)
 
    您应该不会再看到你的使用条款。
 
@@ -316,7 +316,7 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 
 仅当用户在 Azure AD 中具有来宾帐户时，才显示使用条款。 SharePoint Online 当前具有[即席外部共享收件人体验](/sharepoint/what-s-new-in-sharing-in-targeted-release)共享文档或不需要用户具有来宾帐户的文件夹。 在这种情况下，不显示的使用条款。
 
-![所有来宾用户](./media/terms-of-use/b2b-guests.png)
+![用户和组窗格-包括所有来宾用户选项与选项卡上检查](./media/terms-of-use/b2b-guests.png)
 
 ## <a name="support-for-cloud-apps-preview"></a>云应用支持（预览版）
 
@@ -326,13 +326,13 @@ Azure AD 使用条款使用 PDF 格式呈现内容。 此 PDF 文件可以是任
 
 你可以配置 Azure 信息保护应用的条件性访问策略，并且用户访问受保护的文档时需要的使用条款。 这会触发使用条款之前对用户首次访问受保护的文档。
 
-![Azure 信息保护云应用](./media/terms-of-use/cloud-app-info-protection.png)
+![选择 Microsoft Azure 信息保护应用程序使用的云应用程序窗格](./media/terms-of-use/cloud-app-info-protection.png)
 
-### <a name="microsoft-intune-enrollment"></a>Microsoft Intune 注册
+### <a name="microsoft-intune-enrollment"></a>Microsoft Intune Enrollment
 
 你可以配置 Microsoft Intune 注册应用的条件性访问策略，并且需要在 Intune 中设备的注册之前的使用条款。 有关详细信息，请阅读[为组织博客文章选择合适的条款解决方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)。
 
-![Microsoft Intune 云应用](./media/terms-of-use/cloud-app-intune.png)
+![使用 Microsoft Intune 应用所选云应用程序窗格](./media/terms-of-use/cloud-app-intune.png)
 
 > [!NOTE]
 > 不支持 Intune 注册应用[的每个设备使用条款](#per-device-terms-of-use)。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: aschhab
-ms.openlocfilehash: e4571a8918b7877b728b54129e47ffcf4af9b46a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f5390162ce56a0e77ef41740d7e88f3546c5530
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979630"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444737"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory 基于角色的访问控制（预览版）
 
@@ -33,12 +33,12 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 Azure 提供了用于授予对服务总线命名空间的访问权限的内置 RBAC 角色如下：
 
-* [服务总线数据所有者 （预览）](../role-based-access-control/built-in-roles.md#service-bus-data-owner):启用数据访问服务总线命名空间和其实体 （队列、 主题、 订阅和筛选器）
+* [Azure 服务总线数据所有者 （预览）](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner-preview):启用数据访问服务总线命名空间和其实体 （队列、 主题、 订阅和筛选器）
 
 >[!IMPORTANT]
 > 更早版本支持添加到托管的标识 **"所有者"** 或 **"参与者"** 角色。
 >
-> 但是，数据访问权限 **"所有者"** 并 **"参与者"** 角色将不再起作用。 如果已使用 **"所有者"** 或 **"参与者"** 角色，则那些需要进行修改才能利用 **"服务总线数据所有者"** 角色。
+> 但是，数据访问权限 **"所有者"** 并 **"参与者"** 角色将不再起作用。 如果已使用 **"所有者"** 或 **"参与者"** 角色，则那些需要进行修改才能利用 **"Azure 服务总线数据所有者 （预览）"** 角色。
 
 ## <a name="use-service-bus-with-an-azure-ad-domain-user-account"></a>将服务总线与 Azure AD 域用户帐户一起使用
 

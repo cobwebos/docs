@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 83ca0c11ab0065929d939b7345cbd15869740bb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b56a31a58937ddbea08ff22c3d1c0c71942f47f1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024344"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445399"
 ---
 # <a name="data-import-overview---azure-search"></a>数据导入概述 - Azure 搜索
 
@@ -36,7 +36,7 @@ ms.locfileid: "65024344"
 
 目前尚没有支持通过门户推送数据的工具。
 
-有关每种方法的简介，请参阅[快速入门：使用 PowerShell 和 REST API 创建 Azure 搜索索引](search-create-index-rest-api.md)或[快速入门：使用 C# 创建 Azure 搜索索引](search-import-data-dotnet.md)。
+有关每种方法的简介，请参阅[快速入门：创建使用 PowerShell 的 Azure 搜索索引](search-create-index-rest-api.md)或[C#快速入门：创建使用.NET SDK 的 Azure 搜索索引](search-get-started-dotnet.md)。
 
 <a name="indexing-actions"></a>
 
@@ -44,9 +44,9 @@ ms.locfileid: "65024344"
 
 可以按文档控制索引操作的类型，指定是应该完整地上传文档、与现有文档内容合并还是将其删除。
 
-在 REST API 中，向 Azure 搜索索引的终结点 URL 发出具有 JSON 请求正文的 HTTP POST 请求。 “value”数组中的每个 JSON 对象都包含文档的密钥，并指定用于添加、更新或删除文档内容的索引操作。 有关代码示例，请参阅[加载文档](search-create-index-rest-api.md#load-documents)。
+在 REST API 中，向 Azure 搜索索引的终结点 URL 发出具有 JSON 请求正文的 HTTP POST 请求。 "Value"数组中的每个 JSON 对象包含文档密钥，并指定的索引操作将添加、 更新或删除文档内容。 有关代码示例，请参阅[加载文档](search-get-started-dotnet.md#load-documents)。
 
-在 .NET SDK 中，请将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象均包含一个文档和一个属性，用于指示 Azure 搜索对该文档执行什么操作。 有关代码示例，请参阅[构造 IndexBatch](search-import-data-dotnet.md#construct-indexbatch)。
+在 .NET SDK 中，请将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象均包含一个文档和一个属性，用于指示 Azure 搜索对该文档执行什么操作。 有关代码示例，请参阅[C#快速入门](search-get-started-dotnet.md)。
 
 
 | @search.action | 描述 | 每个文档必需的字段 | 说明 |

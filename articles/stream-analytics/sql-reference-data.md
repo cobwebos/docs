@@ -1,5 +1,5 @@
 ---
-title: 对 Azure 流分析作业使用 SQL 数据库中的参考数据（预览）
+title: 为 Azure Stream Analytics 作业使用从 SQL 数据库的引用数据
 description: 本文介绍如何在 Azure 门户和 Visual Studio 中对 Azure 流分析作业使用 SQL 数据库作为参考数据输入。
 services: stream-analytics
 author: mamccrea
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f0e62c27885e2f6d5097194e1b9d869e167c4a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae1954b99e268e8bc44c4ba29bbc79d7734fda6e
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304978"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461739"
 ---
-# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>对 Azure 流分析作业使用 SQL 数据库中的参考数据（预览）
+# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>为 Azure Stream Analytics 作业使用从 SQL 数据库的引用数据
 
 Azure 流分析支持将 Azure SQL 数据库用作参考数据的输入源。 可以在 Azure 门户和 Visual Studio 中配合流分析工具将 SQL 数据库用作流分析作业的参考数据。 本文演示如何使用这两种方法。
 
@@ -132,7 +132,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 使用增量查询时，建议使用 [Azure SQL 数据库中的时态表](../sql-database/sql-database-temporal-tables.md)。
 
-1. 在 Azure SQL 数据库中创建的临时表。
+1. 在 Azure SQL 数据库中创建时态表。
    
    ```SQL 
       CREATE TABLE DeviceTemporal 
@@ -148,7 +148,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
    ```
 2. 创作快照查询。 
 
-   使用 **\@snapshotTime**参数指示要从 SQL 数据库临时表的系统时间有效获取参考数据集的 Stream Analytics 运行时。 如果不提供此参数，可能会出于时钟偏差的原因获取不准确的基本参考数据集。 完整的快照查询示例如下所示：
+   使用 **\@snapshotTime** 参数指示流分析运行时从在当前系统时间有效的 SQL 数据库时态表中获取参考数据集。 如果不提供此参数，可能会出于时钟偏差的原因获取不准确的基本参考数据集。 完整的快照查询示例如下所示：
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -157,7 +157,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
  
 2. 创作增量查询。 
    
-   此查询检索所有已插入，或在开始时间内删除的 SQL 数据库中的行 **\@deltaStartTime**，和结束时间 **\@deltaEndTime**。 增量查询必须返回与快照查询以及列**操作**相同的列。  此列定义如果行是插入或删除之间 **\@deltaStartTime**并 **\@deltaEndTime**。 如果插入了记录，则生成的行将标记为 **1**；如果删除了记录，则标记为 **2**。 
+   此查询检索从开始时间 **\@deltaStartTime** 到结束时间 **\@deltaEndTime** 范围内，在 SQL 数据库中插入或删除的所有行。 增量查询必须返回与快照查询以及列**操作**相同的列。  此列定义在 **\@deltaStartTime** 到 **\@deltaEndTime** 时间范围内是否插入或删除了行。 如果插入了记录，则生成的行将标记为 **1**；如果删除了记录，则标记为 **2**。 
 
    对于更新的记录，时态表将通过捕获插入和删除操作来执行簿记。 然后，流分析运行时将增量查询的结果应用到前一快照，以保持参考数据的最新状态。 下面显示了增量查询的示例：
 
@@ -184,7 +184,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 **如何知道参考数据快照是从 SQL DB 查询的并在 Azure 流分析作业中使用？**
 
-有两个指标筛选可用于监视 SQL 数据库引用数据输入的运行状况的逻辑名称 （在指标 Azure 门户）。
+可以使用两个按“逻辑名称”筛选的指标（在指标 Azure 门户中）来监视 SQL 数据库参考数据输入的运行状况。
 
    * InputEvents：此指标度量从 SQL 数据库参考数据集载入的记录数。
    * InputEventBytes：此指标度量流分析作业内存中载入的参考数据快照大小。 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: ca29bfdb381c5cab0625a320679331c82f63c887
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c89aa3b4ecf0c07cfbb579cdc18fac6e822bc047
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118075"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536234"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>使用基于 vCore 的购买模型的单一数据库的资源限制
 
@@ -34,6 +34,9 @@ ms.locfileid: "67118075"
 > 有关缩放指南和注意事项，请参阅[缩放单一数据库](sql-database-single-database-scale.md)。
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>“常规用途”服务层级：存储大小和计算大小
+
+> [!IMPORTANT]
+> AustraliaEast 区域中不再支持新 Gen4 数据库。
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>“常规用途”服务层级：第 4 代计算平台（第 1 部分）
 
@@ -157,6 +160,9 @@ ms.locfileid: "67118075"
 
 ## <a name="business-critical-service-tier-for-provisioned-compute-tier"></a>适用于预配的计算层级的“业务关键”服务层级
 
+> [!IMPORTANT]
+> AustraliaEast 区域中不再支持新 Gen4 数据库。
+
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>“业务关键”服务层级：第 4 代计算平台（第 1 部分）
 
 |计算大小|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
@@ -268,7 +274,7 @@ ms.locfileid: "67118075"
 |最大日志大小 (TB)|第 |1 |1 |1 |1 |1 |1 |第 |
 |TempDB 大小 (GB)|64|128|256|384|384|384|384|384|
 |存储类型|本地 SSD|本地 SSD|本地 SSD|本地 SSD|本地 SSD|本地 SSD|本地 SSD|本地 SSD|
-|目标 IOPS (64 KB)|待定|待定|待定|待定|待定|待定|待定|待定|
+|目标 IOPS (64 KB)| [注释 1](#note-1) |[注释 1](#note-1)|[注释 1](#note-1) |[注释 1](#note-1) |[注释 1](#note-1) |[注释 1](#note-1) |[注释 1](#note-1) | [注释 1](#note-1) |
 |IO 延迟（近似）|待定|待定|待定|待定|待定|待定|待定|待定|
 |最大并发工作线程数（请求数）|200|400|800|1600|2400|3200|4000|8000|
 |允许的最大会话数|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -278,7 +284,11 @@ ms.locfileid: "67118075"
 |随附的备份存储 |7|7|7|7|7|7|7|7|
 |||
 
-## <a name="next-steps"></a>后续步骤
+### <a name="note-1"></a>注释 1
+
+超大规模是使用缓存在多个级别的多层体系结构。 有效的 IOPS 将取决于工作负荷。
+
+### <a name="next-steps"></a>后续步骤
 
 - 有关单一数据库的 DTU 资源限制，请参阅[使用基于 DTU 的购买模型的单一数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
 - 有关弹性池的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的弹性池的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 06/28/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04e8615cc5534255308c35fa1f675ef3a85aa84e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bdce060006f65f2b0fb08023066ee504578bc552
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60438367"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501663"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>在 PIM 中激活 Azure 资源角色
 
@@ -38,37 +38,37 @@ ms.locfileid: "60438367"
 
 1. 单击“我的角色”。 
 
-    ![Azure AD 角色和 Azure 资源角色-我的角色](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+    ![显示的角色可以激活我角色页](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
 1. 单击**Azure 资源角色**若要查看符合条件的 Azure 资源角色的列表。
 
-   ![Azure 资源角色](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
+   ![我的角色-Azure 资源角色页](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
 1. 在“Azure 资源角色”列表中，找到要激活的角色。 
 
-    ![Azure 资源角色 - 我的角色列表](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
+    ![Azure 资源角色-我的符合条件的角色列表](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
 
 1. 单击“激活”打开“激活”窗格。 
 
 1. 如果角色需要多重身份验证 (MFA)，请单击“验证你的身份，然后继续”。  只需在每个会话中执行身份验证一次。
 
-    ![在激活角色之前先执行 MFA 身份验证](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
+    ![验证我的身份使用 MFA 前激活角色](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
 
 1. 单击“验证我的身份”，并遵照说明提供其他安全验证。 
 
-    ![其他安全验证](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
+    ![屏幕来提供如 PIN 代码安全验证](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
 
 1. 如果要指定缩小的范围，请单击“范围”  以打开“资源筛选器”窗格。
 
     它是仅请求访问所需资源的最佳做法。 在“资源筛选器”窗格中，可以指定需要访问的资源组或资源。
 
-    ![激活 - 资源筛选器](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
+    ![激活-资源筛选器窗格来指定作用域](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
 
 1. 根据需要指定自定义的激活开始时间。 成员将在选定时间后激活。
 
 1. 在“原因”框中，输入该激活请求的原因。 
 
-    ![完成操作后的“激活”窗格](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
+    ![已完成的激活窗格，其中显示作用域、 开始时间、 持续时间和原因](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
 
 1. 单击“激活”  。
 
@@ -76,7 +76,7 @@ ms.locfileid: "60438367"
 
     如果[角色需要审批](pim-resource-roles-approval-workflow.md)才能激活，则浏览器右上角会显示一条通知，告知你请求正在等待审批。
 
-    ![请求等待审批通知](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
+    ![激活请求正在挂起审批通知](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
 ## <a name="use-a-role-immediately-after-activation"></a>激活后立即使用角色
 
@@ -102,7 +102,7 @@ ms.locfileid: "60438367"
 
 1. 单击**我的请求**，列出你的 Azure AD 角色和 Azure 资源角色的请求。
 
-    ![Azure AD 角色和 Azure 资源角色-我的请求](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+    ![我的请求-显示挂起的请求的 Azure 资源页](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
 1. 向右滚动以查看“请求状态”  列。
 
@@ -118,22 +118,19 @@ ms.locfileid: "60438367"
 
     当您单击取消时，将取消该请求。 若要再次激活该角色，必须提交新的激活请求。
 
-   ![取消等待中的请求](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
+   ![我使用突出显示的取消操作的请求列表](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
 ## <a name="troubleshoot"></a>故障排除
 
-### <a name="permissions-not-granted-after-activating-a-role"></a>激活角色后未授予权限
+### <a name="permissions-are-not-granted-after-activating-a-role"></a>激活角色后未授予权限
 
-在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 激活完成后，Azure 门户中注销并重新登录以开始使用新激活的角色。
+在 PIM 中的角色激活时，激活可能不立即传播到需要特权的角色的所有门户。 有时，即使传播更改，web 门户中缓存可能会导致不并且立即生效的更改。 如果您的激活延迟，下面是你应执行的操作。
 
-有关其他故障排除步骤，请参阅[排查提升的权限问题](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx)。
+1. Azure 门户中注销并重新登录。
 
-### <a name="cannot-activate-a-role-due-to-a-resource-lock"></a>由于资源锁而无法激活角色
+    Azure 资源角色激活时，你将看到您的激活的阶段。 所有阶段完成后，您将看到**注销**链接。 可以使用此链接进行注销。这将解决大多数的情况下，激活延迟。
 
-如果尝试激活某个角色时收到一条消息，指出 Azure 资源被锁定，则可能是因为角色分配作用域内的某个资源具有资源锁。 锁可以防止资源被意外删除或意外更改。 锁还可以防止 PIM 在激活期间结束时从资源上删除角色分配。 由于 PIM 在应用了锁时无法正常工作，因此，PIM 会禁止用户在资源上激活角色。 有两种方法可以解决此问题：
-
-- 如[锁定资源以防止意外更改](../../azure-resource-manager/resource-group-lock-resources.md)中所述删除锁。
-- 如果你希望保留锁，请使角色分配成为永久的或者使用“不受限”帐户。
+1. 在 PIM 中，验证列出为角色的成员。
 
 ## <a name="next-steps"></a>后续步骤
 

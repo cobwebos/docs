@@ -3,7 +3,7 @@ title: 管理 DNS 的 Azure AD 域服务 |Microsoft Docs
 description: 管理 Azure AD 域服务的 DNS
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.author: mstephen
-ms.openlocfilehash: 3c844b6ede63b2e036f05b5b7f6cb3803eb4b47c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 6753c26a99bb38e92613a6bad753e7dd101ba68e
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245874"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473128"
 ---
 # <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>管理 Azure AD 域服务托管域上的 DNS
 Azure Active Directory 域服务包括一个 DNS（域名解析）服务器，用于为托管域提供 DNS 解析。 用户偶尔需在托管域上配置 DNS。 用户可能需要为未加入域的计算机创建 DNS 记录、为负载均衡器配置虚拟 IP 地址，或者设置外部 DNS 转发器。 因此，需向属于“AAD DC 管理员”组的用户授予对托管域的“DNS 管理”权限。

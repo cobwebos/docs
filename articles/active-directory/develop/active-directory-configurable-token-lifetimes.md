@@ -12,24 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 07/04/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b1c68d9254b0da2e5296c83d8dd4c95091fde1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd9ff2360fce26b77ba0f5be4d5f70103504ec05
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111803"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67564440"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 
 可以指定 Azure Active Directory (Azure AD) 颁发的令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。
 
 > [!IMPORTANT]
-> 后听力不好的客户在使用预览版期间，我们已替换为具有可配置令牌生存期功能[身份验证会话管理功能](https://go.microsoft.com/fwlink/?linkid=2083106)Azure AD 条件访问中。 此功能将于 2019 年 11 月 1 日弃用。 如果您使用的可配置令牌生存期策略，切换到新的条件性访问功能。 
+> 在预览期间从客户听力之后, 我们已实现[身份验证会话管理功能](https://go.microsoft.com/fwlink/?linkid=2083106)Azure AD 条件访问中。 这一新功能可用于配置通过在频率设置登录的刷新令牌生存期。 2019 年 11 月 1 日之后您将不能使用可配置令牌生存期策略来配置刷新令牌，但您仍可以使用它来配置访问令牌。
 
 在 Azure AD 中，策略对象表示针对组织中的单个应用程序或所有应用程序强制实施的一组规则。 每种策略类型都有一个唯一的结构，其中的一组属性将应用于它们所分配到的对象。
 

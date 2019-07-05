@@ -1,34 +1,30 @@
 ---
-title: 了解 Microsoft 的客户协议的 Azure 价格表中的条款 |Microsoft Docs
-description: 了解如何阅读并理解 Azure 订阅的使用情况和帐单
-services: ''
-documentationcenter: ''
-author: jureid
+title: 了解 Microsoft 的客户协议的 Azure 价格表中的条款
+description: 了解如何阅读并理解 Microsoft 客户协议的使用情况和帐单。
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: eb6184e10d38cdcfad7070663e36f6610d009cdb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4d83228fbec395d604e5ce3f988d2a6157f21eed
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371353"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490661"
 ---
-# <a name="understand-the-terms-in-your-price-sheet-for-a-microsoft-customer-agreement"></a>了解 Microsoft 客户协议的价格表中的条款
+# <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>在你的 Microsoft 客户协议价格表中的条款
 
-本文适用于 Microsoft 客户协议向计费帐户。 [检查是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
+本文适用于 Azure 的计费帐户 Microsoft 客户协议。 [检查是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
 
 如果您是所有者、 参与者、 读取器或发票管理器的计费配置文件可以从 Azure 门户中下载你组织的价目表。 请参阅[视图和下载你的组织的定价](billing-ea-pricing.md)。
 
-## <a name="detailed-terms-and-descriptions-in-your-microsoft-customer-agreement-price-sheet"></a>详细的条款和说明在你的 Microsoft 客户协议价格表中
+## <a name="terms-and-descriptions-in-your-price-sheet"></a>条款和价格表中的说明
 
 以下部分介绍了在你的 Microsoft 客户协议价格表中显示的重要条款。
 
@@ -61,7 +57,7 @@ ms.locfileid: "60371353"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
 

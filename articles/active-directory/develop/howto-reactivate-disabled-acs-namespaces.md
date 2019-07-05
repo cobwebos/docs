@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fe1517cce8a1f9b1024085340ffb927b282f0fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1cb17109d53c6e08c8607959207e367086032f6d
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540285"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482711"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>如何：重新激活禁用的访问控制服务命名空间
 
@@ -90,7 +90,7 @@ ms.locfileid: "65540285"
 
 ### <a name="to-request-an-extension"></a>若要请求延期
 
-1. 请登录到 Azure 门户，并创建[新的支持请求](https://portal.azure.com/#create/Microsoft.Support)。
+1. 登录到 Azure 门户并创建[新的支持请求](https://portal.azure.com/#create/Microsoft.Support)。
 1. 如下面的示例所示，填写新的支持请求表单。
 
     | 支持请求字段 | 值 |
@@ -102,7 +102,7 @@ ms.locfileid: "65540285"
     | **问题类型** | `ACS to SAS Migration` |
     | **主题** | 描述问题 |
 
-   ![新的技术支持请求](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![显示新的技术支持请求的示例](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 

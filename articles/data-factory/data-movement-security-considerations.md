@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dab2da2d54efe73b7b782800b190ea8aac2b5cd
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153211"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460689"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -119,7 +119,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>在自承载集成运行时中加密链接服务时使用的端口
-默认情况下，PowerShell 在装有自承载集成运行时的计算机上使用端口 8050 来确保通信安全。 如有必要，可以更改此端口。  
+默认情况下，PowerShell 在装有自承载的集成运行时进行安全通信的计算机上使用端口 8060。 如有必要，可以更改此端口。  
 
 ![网关的 HTTPS 端口](media/data-movement-security-considerations/https-port-for-gateway.png)
 
@@ -197,7 +197,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 **需要满足哪些端口要求才能让自承载集成运行时正常工作？**
 
-自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of-gateway)部分。 
+自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 打开入站的端口 8060 仅在计算机级别 （而不是企业防火墙级别） 为凭据管理器应用程序。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of-gateway)部分。 
 
 
 ## <a name="next-steps"></a>后续步骤

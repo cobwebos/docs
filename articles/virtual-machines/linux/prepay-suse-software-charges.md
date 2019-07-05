@@ -1,23 +1,21 @@
 ---
-title: 预付款购买的软件计划-Azure 预订 |Microsoft Docs
+title: 预付款购买的软件计划-Azure 保留项
 description: 了解如何可以预付款购买的软件计划可节省即用即付成本。
-documentationcenter: ''
-author: yashesvi
+author: bandersmsft
 manager: yashesvi
-editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: e15dcdbbcaed32d836bb751ef93ce17e90bd6905
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8e9d07bf01536d7865bd79f667a937037d96837
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771237"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67489886"
 ---
 # <a name="prepay-for-azure-software-plans"></a>为 Azure 软件计划预付
 
@@ -25,7 +23,7 @@ ms.locfileid: "60771237"
 
 您可以购买在 Azure 门户中的 SUSE 和 RedHat 软件计划。 若要购买计划：
 
-- 必须具有至少一个企业或即用即付订阅的所有者角色。
+- 必须具有至少一个企业或即用即付定价的单个订阅的所有者角色。
 - 对于企业订阅**添加保留实例**必须在启用选项[EA 门户](https://ea.azure.com/)。 如果禁用此设置，则您必须是 EA 管理员的订阅。
 - 对于云解决方案提供商 (CSP) 程序中，管理代理或销售代理可以购买的软件计划。
 
@@ -35,12 +33,12 @@ ms.locfileid: "60771237"
 2. 单击**添加**，然后选择你想要购买的软件计划。
 填写必填字段。 所有 SUSE Linux VM 或与您购买的特性相匹配的 RedHat VM 都获取该折扣。 实际获得折扣的部署数取决于所选范围和数量。
 3. 选择一个订阅。 它用于购买计划。
-订阅付款方式收取预订的预付费用。 订阅类型必须为企业协议 (产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P），或即用即付（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。
+订阅付款方式收取预订的预付费用。 订阅类型必须为企业协议 (产品/服务编号：MS-AZR-0017P 或 MS-条-0148 P) 或使用即用即付定价的单个协议 (产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。
     - 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。
-    - 对于即用即付订阅，订阅的信用卡或发票付款方式计费费用。
+    - 对具有即用即付定价的单个订阅，订阅的信用卡或发票付款方式计费费用。
 4. 选择作用域。 范围可以包含一个订阅或多个订阅（共享范围）。
     - 单个订阅的计划折扣应用到匹配的订阅中的使用情况。
-    - （共享）-计划折扣将应用到匹配的任何订阅中计费上下文实例中。 适用于企业客户计费上下文注册并在注册中包含的所有订阅。 对于即用即付客户计费上下文是由帐户管理员创建的所有即用即付订阅。
+    - （共享）-计划折扣将应用到匹配的任何订阅中计费上下文实例中。 适用于企业客户计费上下文注册并在注册中包含的所有订阅。 与即用即付定价的客户的单个计划，计费上下文是由帐户管理员创建的即用即付定价订阅的所有单个计划。
 5. 选择要选择 VM 大小和图像类型的产品。 折扣适用于所选 VM 大小。
 6. 选择 1 年或三年的术语。
 7. 选择数量，即可以获得计费折扣的预付 VM 实例数。

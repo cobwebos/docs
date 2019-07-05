@@ -3,7 +3,7 @@ title: 使用安全 LDAP (LDAPS) 绑定到 Azure AD 域服务托管域 | Microso
 description: 使用安全 LDAP (LDAPS) 绑定到 Azure AD 域服务托管域
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 47c9553b4191fe6dbae8d92d75dfae83f191a063
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/28/2019
+ms.author: iainfou
+ms.openlocfilehash: df0b3d27eec478280a33be831a2431eccdf05a74
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234854"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483385"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>使用安全 LDAP (LDAPS) 绑定到 Azure AD 域服务托管域
 
@@ -35,6 +35,11 @@ ms.locfileid: "66234854"
 
 接下来，绑定到托管域。 单击“连接”  ，再单击菜单中的“绑定...”  。 提供属于“AAD DC 管理员”组的用户帐户的凭据。
 
+> [!IMPORTANT]
+> 如果已在 Azure AD 域服务实例上禁用 NTLM 密码哈希同步用户 （和服务帐户） 无法执行 LDAP 简单绑定。  禁用 NTLM 密码哈希同步的详细信息，请阅读[确保 Azure AD 域服务托管的域的安全](secure-your-domain.md)。
+>
+>
+
 选择“视图”  ，然后选择菜单中的“树”  。 将“基 DN”字段留空，再单击“确定”。 导航到想要搜索的容器，右键单击该容器，再选择“搜索”。
 
 > [!TIP]
@@ -43,7 +48,7 @@ ms.locfileid: "66234854"
 >
 >
 
-更多信息 - [ LDAP 查询基础知识](https://technet.microsoft.com/library/aa996205.aspx)
+更多信息 - [ LDAP 查询基础知识](https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter)
 
 
 ## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>任务 6：通过 Internet 锁定对托管域的安全 LDAP 访问
@@ -66,7 +71,7 @@ ms.locfileid: "66234854"
 ## <a name="related-content"></a>相关内容
 * [Azure AD 域服务 - 入门指南](create-instance.md)
 * [管理 Azure AD 域服务域](manage-domain.md)
-* [LDAP 查询基础知识](https://technet.microsoft.com/library/aa996205.aspx)
+* [LDAP 查询基础知识](https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter)
 * [Azure AD 域服务的管理组策略](manage-group-policy.md)
 * [网络安全组](../virtual-network/security-overview.md)
 * [创建网络安全组](../virtual-network/tutorial-filter-network-traffic.md)

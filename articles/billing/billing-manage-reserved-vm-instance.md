@@ -1,23 +1,21 @@
 ---
-title: 管理 Azure 预留 | Microsoft Docs
+title: 管理 Azure 保留项
 description: 了解如何为 Azure 预留更改订阅范围以及管理访问权限。
 ms.service: billing
-documentationcenter: ''
-author: yashesvi
+author: bandersmsft
 manager: yashesvi
-editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89279387b3630ea654070eef671f131ec757d55f
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66127145"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491180"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -54,7 +52,7 @@ ms.locfileid: "66127145"
 
 如果要从“共享”更改为单个范围，只能选择自己是其所有者的订阅。 只能选择与该预订相同的计费上下文中的订阅。
 
-范围仅适用于即用即付套餐 MS-AZR-0003P 或 MS-AZR-0023P，Enterprise 套餐 MS-AZR-0017P 或 MS-AZR-0148P，或 CSP 订阅类型。
+企业产品/服务 MS-条-0017 P 或 MS-条-0148 P 或 CSP 订阅类型，作用域仅适用于现用现付费率 （优惠 MS-条-0003 P 或 MS-条-0023 P），使用单独的订阅。
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>添加或更改可以管理预订的用户
 

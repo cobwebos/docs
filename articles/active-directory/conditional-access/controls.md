@@ -2,28 +2,21 @@
 title: 什么是 Azure Active Directory 条件访问中的访问控制？ | Microsoft Docs
 description: 了解如何访问控制在 Azure Active Directory 条件性访问工作中。
 services: active-directory
-keywords: 条件访问应用，Azure AD 中，安全地访问公司资源，条件性访问策略的条件性访问
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 06/15/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206b5fef3e4e686bd237fe0f45cfb91dccd4626f
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: a5fc672898a56d8b3e1486b1d8d84cf532fa2b6d
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67136493"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509400"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>什么是 Azure Active Directory 条件访问中的访问控制？
 
@@ -34,7 +27,6 @@ ms.locfileid: "67136493"
 条件性访问的上下文中
 
 - “出现这种情况时”称为条件  
-
 - “则执行此操作”称为访问控制  
 
 条件语句与控制的组合表示条件性访问策略。
@@ -46,7 +38,6 @@ ms.locfileid: "67136493"
 访问控制分为两种类型：
 
 - **授权控制** - 旨在限制访问
-
 - **会话控制** - 旨在限制可以在会话中执行的操作
 
 本主题介绍 Azure AD 条件访问中可用的各种控件。 
@@ -65,7 +56,6 @@ ms.locfileid: "67136493"
 此控制可用于要求必须通过多重身份验证，才能访问指定的云应用程序。 此控制支持以下多重身份验证提供程序：
 
 - Azure 多重身份验证
-
 - 本地多重身份验证提供程序，与 Active Directory 联合身份验证服务 (AD FS) 结合使用。
 
 使用多重身份验证有助于保护资源，使其免遭可能已有权访问有效用户的主要凭据的未授权用户访问。
@@ -76,9 +66,11 @@ ms.locfileid: "67136493"
 
 你的设备需要先注册到 Azure AD，然后才能将其标记为合规。 若要注册设备，你有三种选择： 
 
-- [Azure AD 注册设备](../devices/overview.md#azure-ad-registered-devices)
-- [已加入 Azure AD 的设备](../devices/overview.md#azure-ad-joined-devices)  
-- [已加入混合 Azure AD 的设备](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- Azure AD 注册设备
+- Azure AD 加入设备  
+- 混合 Azure AD 加入设备
+
+在本文中讨论了这三个选项[设备标识是什么？](../devices/overview.md)
 
 有关详细信息，请参阅[如何要求使用条件性访问的云应用访问权限的被管理的设备](require-managed-devices.md)。
 
@@ -106,16 +98,11 @@ ms.locfileid: "67136493"
 
 受保护的客户端应用，请参阅有关受支持的策略的列表[应用保护策略要求](technical-reference.md#app-protection-policy-requirement)。
 
-
 ### <a name="terms-of-use"></a>使用条款
 
 在向某个资源授予访问权限之前，可以要求租户中的用户同意相关使用条款。 作为管理员，可以通过上传 PDF 文档配置和自定义使用条款。 如果用户属于此控制范围，则仅在同意使用条款的情况下才授予某个应用程序的访问权限。
 
-### <a name="custom-controls-preview"></a>自定义控件（预览版）
-
-将用户重定向至兼容服务，以满足其他要求 Azure Active Directory 之外的条件访问中，可以添加自定义控件。 这样，可以使用某些外部的多重身份验证和验证提供程序来强制实施条件性访问要求。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。 
-
-## <a name="custom-controls"></a>自定义控件
+## <a name="custom-controls-preview"></a>自定义控件（预览版）
 
 自定义控件是 Azure Active Directory Premium P1 版的一项功能。 使用自定义控件时，用户将被重定向至兼容服务，以满足 Azure Active Directory 之外的其他要求。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 Azure Active Directory 验证响应，而且，如果用户成功通过身份验证或验证，用户将继续留在条件访问流。
 
@@ -157,10 +144,8 @@ ms.locfileid: "67136493"
 若要删除自定义控件，必须首先确保在任何条件访问策略上未被使用。 完成后：
 
 1. 转到“自定义控件”列表
-
-2. 单击...  
-
-3. 选择“删除”。 
+1. 单击...  
+1. 选择“删除”。 
 
 ### <a name="editing-custom-controls"></a>编辑自定义控件
 
@@ -179,11 +164,9 @@ ms.locfileid: "67136493"
 若要了解更多信息，请参阅以下文章：
 
 - [使用 SharePoint Online 启用受限访问](https://aka.ms/spolimitedaccessdocs)
-
 - [使用 Exchange Online 启用受限访问](https://aka.ms/owalimitedaccess)
 
 ## <a name="next-steps"></a>后续步骤
 
 - 如果你想要了解如何配置条件性访问策略，请参阅[需要 MFA 的特定应用的 Azure Active Directory 条件性访问](app-based-mfa.md)。
-
 - 如果你已准备好配置你的环境的条件性访问策略，请参阅[的 Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。

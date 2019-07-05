@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 8825f1dc3b66a5c4981ba25a90813aec63975b1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e73d4ebd3eb05f7cf217573d8112e3dbbe6d3a37
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65145139"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514076"
 ---
 # <a name="algorithm--module-reference-overview"></a>算法和模块参考概述
 
@@ -33,8 +33,8 @@ ms.locfileid: "65145139"
 | --- |--- | ---- |
 | 数据格式转换 | 将数据在机器学习中使用的各种文件格式之间转换 | [转换为 CSV](convert-to-csv.md) |
 | 数据输入和输出 | 将数据从云源移动到试验中。 结果或中间数据写入到 Azure 存储、 SQL 数据库或配置单元时，运行试验时，或使用云存储来试验之间交换数据。  | [导入数据](import-data.md)<br/>[导出数据](export-data.md)<br/>[手动输入数据](enter-data-manually.md) |
-| 数据转换 | 对都是唯一的机器学习，例如规范化或装箱数据、 功能选择和维数约简的数据的操作。| [在数据集中选择列](select-columns-in-dataset.md) <br/> [编辑元数据](edit-metadata.md) <br/> [清理缺失数据](clean-missing-data.md) <br/> [添加列](add-columns.md) <br/> [Add Rows](add-rows.md) <br/> [删除重复行](remove-duplicate-rows.md) <br/> [拆分数据](split-data.md) <br/> [规范化数据](normalize-data.md) <br/> [分区和采样](partition-and-sample.md) |
-| Python 模块 | 编写代码并将其嵌入在一个模块中将 Python 与实验进行集成。 | [执行 Python 脚本](execute-python-script.md)   <br/> [创建 Python 模型](create-python-model.md)
+| 数据转换 | 对都是唯一的机器学习，例如规范化或装箱数据、 功能选择和维数约简的数据的操作。| [在数据集中选择列](select-columns-in-dataset.md) <br/> [编辑元数据](edit-metadata.md) <br/> [清理缺失数据](clean-missing-data.md) <br/> [添加列](add-columns.md) <br/> [Add Rows](add-rows.md) <br/> [删除重复行](remove-duplicate-rows.md) <br/> [联接数据](join-data.md) <br/> [拆分数据](split-data.md) <br/> [规范化数据](normalize-data.md) <br/> [分区和采样](partition-and-sample.md) |
+| Python 和 R 模块 | 编写代码并将其嵌入在你对实验将 Python 和 R 进行集成的模块中。 | [执行 Python 脚本](execute-python-script.md)   <br/> [创建 Python 模型](create-python-model.md) <br/> [执行 R 脚本](execute-r-script.md)
 |  | **机器学习算法**: | |
 | 分类 | 预测类。  选择从二进制文件 （两个类） 或多类算法。| [多类决策林](multiclass-decision-forest.md) <br/> [多类逻辑回归](multiclass-logistic-regression.md)  <br/> [多类神经网络](multiclass-neural-network.md)  <br/>  [双类逻辑回归](two-class-logistic-regression.md)  <br/>[双类平均感知器](two-class-averaged-perceptron.md) <br/> [双类&nbsp;提升&nbsp;决策&nbsp;树](two-class-boosted-decision-tree.md)  <br/> [双类决策林](two-class-decision-forest.md)  <br/> [双类神经网络](two-class-neural-network.md)  <br/> [两个&#8209;类&nbsp;支持&nbsp;向量&nbsp;机](two-class-support-vector-machine.md) 
 | 群集功能 | 数据组合在一起。| [K 平均值聚类分析](k-means-clustering.md)

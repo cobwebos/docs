@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 190b7f15a8ae0a5b9472188129f7116050fc831f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61424631"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466841"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>统一多个 Azure Monitor Application Insights 资源 
 本文介绍如何在一个位置查询和查看所有 Application Insights 应用程序日志数据（即使这些数据位于不同 Azure 订阅），可作为弃用 Application Insights 连接器的替换方式。 可以在单个查询中包含的资源（Application Insights 资源）数量限制为 100。  
@@ -125,7 +125,7 @@ applicationsScoping //this brings data from Application Insights resources
 | ExceptionType | type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
-| OS | client_OS | 
+| 操作系统 | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
 | PageViewName | name | 
@@ -141,7 +141,7 @@ applicationsScoping //this brings data from Application Insights resources
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryTYpe | type |
-| URL | _url |
+| URL | url |
 | UserAccountId | user_AccountId |
 
 ## <a name="next-steps"></a>后续步骤

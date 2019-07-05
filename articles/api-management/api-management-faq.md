@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: edc3c2ddcddaa8a51ae634a7abcd3a61aab530e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7e93dc12b9932fed90c7f9fa3145e56a3488b32
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357253"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448021"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -65,7 +65,7 @@ ms.locfileid: "66357253"
 
 * 使用 HTTP 基本身份验证。 有关详细信息，请参阅[导入并发布第一个 API](import-and-publish.md)。
 * 使用[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全](api-management-howto-mutual-certificates.md)中所述的 SSL 相互身份验证。
-* 在后端服务上使用 IP 允许列表。 在 API 管理的所有层中，网关的 IP 地址保持不变，但有几个[注意事项](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)。 可设置允许列表以允许此 IP 地址。 可在 Azure 门户中的仪表板上获取 API 管理实例的 IP 地址。
+* 在后端服务上使用 IP 允许列表。 除了消耗层的 API 管理的所有层，在网关的 IP 地址保持不变，但有几个[注意事项](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)。 可设置允许列表以允许此 IP 地址。 可在 Azure 门户中的仪表板上获取 API 管理实例的 IP 地址。
 * 将 API 管理实例连接到 Azure 虚拟网络。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何将 API 管理服务实例复制到新实例？

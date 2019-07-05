@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: geg
-ms.openlocfilehash: 19b249a76a339ce870609fbcdceaf70bf79a6ea2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62e10f382882e70d488f9814cb00c2b86b8b9691
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65906510"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460218"
 ---
 # <a name="restore-azure-vms"></a>还原 Azure VM
 
@@ -185,7 +185,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 - 将安装备份配置期间存在的扩展，但不会启用这些扩展。 如果出现问题，请重新安装这些扩展。
 - 如果备份的 VM 使用了静态 IP 地址，则还原的 VM 将使用动态 IP 地址，以避免冲突。 可[将静态 IP 地址添加到还原的 VM](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)。
-- 还原的 VM 没有可用性集。 如果使用了还原磁盘选项，则从磁盘创建 VM 时，可以使用提供的模板或 PowerShell [指定可用性集](../virtual-machines/windows/tutorial-availability-sets.md)。
+- 还原的 VM 没有可用性集。 如果使用还原磁盘选项，则你可以[指定可用性集](../virtual-machines/windows/tutorial-availability-sets.md)从提供的模板或 PowerShell 在该磁盘创建 VM 时。
 - 如果使用基于 cloud-init 的 Linux 分发版（例如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](../virtual-machines/linux/reset-password.md)。 我们建议在这些分发版中使用 SSH 密钥，这样，在还原后就无需重置密码。
 
 

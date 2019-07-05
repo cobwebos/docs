@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 4f6776a5f15cf391f3a65aceb6e9e783d87a2078
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0fb3551b14a2239f26c54f639b90400277fab25
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148930"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501937"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>为 Azure 存储帐户配置自定义域名
 
@@ -34,10 +34,10 @@ ms.locfileid: "65148930"
 
 | 资源类型 | 默认 URL | 自定义域 URL |
 | --- | --- | --- |
-| 存储帐户 | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
-| Blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
-| 根容器 | http://mystorageaccount.blob.core.windows.net/myblob 或 http://mystorageaccount.blob.core.windows.net/ $root/myblob| http://www.contoso.com/myblob 或 http://www.contoso.com/ $root/myblob |
-| Web |  http://mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] 或 http://mystorageaccount.[zone].web.core.windows.net/[indexdoc] 或 http://mystorageaccount.[zone].web.core.windows.net/$web 或 http://mystorageaccount.[zone].web.core.windows.net/ | http://www.contoso.com/ $web 或 http://www.contoso.com/ 或 http://www.contoso.com/ $web/[indexdoc] 或 http://www.contoso.com/ [indexdoc] |
+| 存储帐户 | http:\//mystorageaccount.blob.core.windows.net | http:\//www.contoso.com |
+| Blob |http:\//mystorageaccount.blob.core.windows.net/mycontainer/myblob | http:\//www.contoso.com/mycontainer/myblob |
+| 根容器 | http:\//mystorageaccount.blob.core.windows.net/myblob 或 http:\//mystorageaccount.blob.core.windows.net/$root/myblob | http:\//www.contoso.com/myblob 或 http:\//www.contoso.com/$ 根/myblob |
+| Web |  http:\//mystorageaccount。 [zone].web.core.windows.net/$web/[indexdoc] 或 http:\//mystorageaccount。 [zone].web.core.windows.net/[indexdoc] 或 http:\//mystorageaccount。 [zone].web.core.windows.net/$web 或 http:\//mystorageaccount。 [zone].web.core.windows.net/ | http:\//www.contoso.com/$ web 或 http:\//www.contoso.com/ 或 http:\//www.contoso.com/$ web / [indexdoc] 或 http:\//www.contoso.com/ [indexdoc] |
 
 > [!NOTE]  
 > 如以下部分中所示，Blob 服务终结点的所有示例同样适用于 Web 服务终结点。

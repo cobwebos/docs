@@ -2,19 +2,19 @@
 title: 对 Azure 备份失败进行故障排除：来宾部署状态不可用
 description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、原因及解决方法。
 services: backup
-author: genlin
-manager: cshepard
+author: saurabhsensharma
+manager: saurabhsensharma
 keywords: Azure 备份；VM 代理；网络连接；
 ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
-ms.author: genli
-ms.openlocfilehash: 826a38dd80db7cd0e6e500949d2c259c3808c0a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: saurabhsensharma
+ms.openlocfilehash: 5abaa040b22000a300fba22590866846f6dbbd4a
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64914957"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565674"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 

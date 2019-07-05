@@ -4,18 +4,18 @@ description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器
 services: functions
 author: craigshoemaker
 ms.author: cshoe
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0421ec62d25bbfaba2909d16498cac5afd038a53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e6782c48543723438ee332313de268117dee3e9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60737272"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480720"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定
 
@@ -1179,7 +1179,7 @@ F# 代码如下所示：
 
 在 JavaScript 函数中，函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 [JavaScript 示例](#input---javascript-examples)。
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos DB 数据库。
 

@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bb89eec0b4905e101bed87d3d3fc617dec589e0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61461555"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477864"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Application Insights 智能检测规则
 
@@ -29,12 +29,14 @@ ms.locfileid: "61461555"
 
 可以配置智能检测规则的以下设置：
 - 是否已启用该规则（默认值为 **true**。）
-- 找到检测项时，是否将电子邮件发送到订阅所有者、参与者或读取者（默认值为 **true**。）
+- 电子邮件是否应发送到与订阅的关联用户[监视查阅者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)并[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)找到检测时，角色 (默认值是**true**.)
 - 找到检测项时，应收到通知的其他任何电子邮件收件人。
-- * 电子邮件配置不适用于标记为“预览”的智能检测规则  。
+    -  电子邮件配置的智能检测规则标记为不可用_预览版_。
 
 为了让用户通过 Azure 资源管理器配置规则设置，智能检测规则配置现已在 Application Insights 资源中提供一个名为 **ProactiveDetectionConfigs** 的内部资源。
 为了提供最大的灵活性，可为每个智能检测规则配置独特的通知设置。
+
+## 
 
 ## <a name="examples"></a>示例
 
@@ -136,12 +138,46 @@ ms.locfileid: "61461555"
 
 ```
 
+### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>失败异常 v2 （非经典） 的警报规则
+
+此 Azure 资源管理器模板演示如何配置失败异常 v2 警报规则在严重级别为 2。 此新版本的失败异常警报规则是新的 Azure 警报平台的一部分，将替代被淘汰作为的一部分的经典版本[经典警报停用过程](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "microsoft.alertsmanagement/smartdetectoralertrules",
+            "apiVersion": "2019-03-01",
+            "name": "Failure Anomalies - my-app",
+            "properties": {
+                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "state": "Enabled",
+                  "severity": "2",
+                  "frequency": "PT1M",
+                  "detector": {
+                  "id": "FailureAnomaliesDetector"
+                  },
+                  "scope": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/microsoft.insights/components/my-app"],
+                  "actionGroups": {
+                        "groupIds": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/MyResourceGroup/providers/microsoft.insights/actiongroups/MyActionGroup"]
+                  }
+            }
+        }
+    ]
+}
+```
+
+> [!NOTE]
+> 此 Azure 资源管理器模板是唯一的失败异常 v2 警报规则，并且是不同于其他经典智能检测规则本文中所述。   
+
 ## <a name="smart-detection-rule-names"></a>智能检测规则名称
 
 下表列出了门户中显示的智能检测规则名称，以及应在 Azure 资源管理器模板中为这些规则使用的内部名称。
 
 > [!NOTE]
-> 标记为“预览”的智能检测规则不支持电子邮件通知。 因此，只能为这些规则设置已启用的属性。 
+> 智能检测规则标记为_预览版_不支持电子邮件通知。 因此，您可以只设置_启用_这些规则的属性。 
 
 | Azure 门户规则名称 | 内部名称
 |:---|:---|
@@ -154,18 +190,7 @@ ms.locfileid: "61461555"
 | 异常卷的异常增加（预览） | extension_exceptionchangeextension |
 | 检测到潜在的内存泄漏（预览） | extension_memoryleakextension |
 | 检测到潜在的安全问题（预览） | extension_securityextensionspackage |
-| 检测到资源利用率问题（预览） | extension_resourceutilizationextensionspackage |
-
-## <a name="who-receives-the-classic-alert-notifications"></a>谁会收到（经典）警报通知？
-
-本节仅适用于智能检测经典警报，并将帮助优化警报通知以确保只有预期的接收人能收到通知。 若要详细了解[经典警报](../platform/alerts-classic.overview.md)与新的警报体验之间的区别，请参阅[警报概述文章](../platform/alerts-overview.md)。 当前智能检测警报仅支持经典警报体验。 有一个例外情况，是 [Azure 云服务上的智能检测警报](./proactive-cloud-services.md)。 若要控制 Azure 云服务上智能检测警报的警报通知，可使用[操作组](../platform/action-groups.md)。
-
-* 建议将智能检测/经典警报通知应用于特定收件人。
-
-* 对于智能检测警报，“批/组”复选框选项（如果已启用）将发送给订阅中具有所有者、参与者或读者角色的用户  。 实际上，可以访问订阅 Application Insights 资源的_所有_用户均会接收到通知。 
-
-> [!NOTE]
-> 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改  。
+| 中的每日数据量 （预览版） 异常升高 | extension_billingdatavolumedailyspikeextension |
 
 ## <a name="next-steps"></a>后续步骤
 

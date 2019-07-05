@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 61477767c59dd521e3f46db4445238a5a1ea759e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ab24a99b22fae172b5308ba7477953f27ecfd44
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071436"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435956"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>托管在 Azure 存储中的静态网站
 
@@ -44,13 +44,7 @@ ms.locfileid: "67071436"
 
 1. 首先，打开[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)，或如果你已[安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI 在本地，打开 Windows PowerShell 等命令控制台应用程序。
 
-2. 从命令窗口中打开过，安装存储预览扩展。
-
-   ```azurecli-interactive
-   az extension add --name storage-preview
-   ```
-
-3. 如果你的身份与多个订阅相关联，则您的活动设置订阅的存储帐户来托管静态网站。
+2. 如果你的身份与多个订阅相关联，则您的活动设置订阅的存储帐户来托管静态网站。
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
@@ -58,7 +52,7 @@ ms.locfileid: "67071436"
 
    替换为`<subscription-id>`占位符值替换你的订阅的 ID。
 
-4. 启用静态网站托管。
+3. 启用静态网站托管。
 
    ```azurecli-interactive
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
@@ -70,7 +64,7 @@ ms.locfileid: "67071436"
 
    * 替换为`<index-document-name>`索引文档名称的占位符。 本文档通常是"index.html"。
 
-5. 将对象从源目录上传到 $web 容器  。
+4. 将对象从源目录上传到 $web 容器  。
 
    > [!NOTE]
    > 如果使用 Azure Cloud Shell，请务必添加`\`引用时转义符`$web`容器 (例如： `\$web`)。 如果你使用 Azure CLI 的本地安装，然后您无需使用转义符。

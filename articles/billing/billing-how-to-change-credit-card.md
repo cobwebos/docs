@@ -1,51 +1,47 @@
 ---
-title: 更改用于 Azure 的信用卡 | Microsoft Docs
-description: 介绍如何更改用于支付 Azure 订阅的信用卡
-services: ''
-documentationcenter: ''
-author: genlin
+title: 适用于 Azure 中更改你的信用卡
+description: 介绍如何更改用于支付 Azure 订阅的信用卡。
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 15252ced-1841-4a66-ae79-2e58af1d3370
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/13/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: b910cb3061b1451ea80b9843e2aa4047a784548f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c04e33d6199d3930be28ce84458e9c3a743eb8a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60918517"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491338"
 ---
-# <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>添加、更新或删除用于 Azure 的信用卡或借记卡
+# <a name="add-update-or-remove-a-credit-card-for-azure"></a>添加、 更新或删除针对 Azure 的信用卡
 
 在 Azure 门户中，可以添加新信用卡、 更新现有信用卡，或删除不使用的信用卡。 只有[帐户管理员](billing-subscription-transfer.md#whoisaa)才能进行这种更改。
 
-<!-- If your Angola, Belize, Algeria, Vietnam, or Virgin Islands. -->
+如果有[Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)，您的付款方法与计费配置文件相关联。 了解如何[计费的配置文件的默认付款方法更改](#change-payment-method-for-a-billing-profile)。 只有注册了 Azure 的用户可以更新付款方式。
 
-**要切换到用发票付款？** 请参阅[用发票为 Azure 订阅付款](billing-how-to-pay-by-invoice.md)。
+**要切换到用发票付款 （检查/网络传输）？** 请参阅[用发票为 Azure 订阅付款](billing-how-to-pay-by-invoice.md)。
 
 <a id="addcard"></a>
 
-## <a name="add-a-new-credit-or-debit-card-to-an-azure-subscription"></a>向 Azure 订阅中添加新信用卡或借记卡
+## <a name="add-a-new-credit-card-to-an-azure-subscription"></a>将一张新信用卡添加到 Azure 订阅
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“成本管理 + 计费”  中进行搜索。
+1. 搜索**成本管理 + 计费**。
 
     ![显示搜索的屏幕截图](./media/billing-how-to-change-credit-card/search.png)
 
-1. 选择你想要添加到信用卡或借记卡的订阅。
+1. 选择你想要添加到信用卡的订阅。
 1. 选择“付款方式”。 
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
 1. 在左上角选择“+”，以便添加卡。 信用卡窗体将显示在右侧。
-1. 输入信用卡或借记卡的详细信息。
+1. 输入信用卡的详细信息。
 
     ![说明如何添加新卡的屏幕截图。](./media/billing-how-to-change-credit-card/sub-add-new-x.png)
 
@@ -55,12 +51,12 @@ ms.locfileid: "60918517"
 
 如果添加信用卡后发生错误，请参阅[注册 Azure 时信用卡遭拒](billing-credit-card-fails-during-azure-sign-up.md)。
 
-## <a name="update-existing-credit-or-debit-card"></a>更新现有信用卡或借记卡
+## <a name="update-existing-credit-card"></a>更新现有信用卡
 
 如果数保持不变，但你的信用卡，更新现有信用卡的过期日期等的详细信息。 如果信用卡号码由于卡丢失、失窃或过期而更改，则需要按照[将信用卡添加为支付方式](#addcard)中的步骤操作。 无需更新 CVV。
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“成本管理 + 计费”  中进行搜索。
+1. 搜索**成本管理 + 计费**。
 
     ![显示搜索的屏幕截图](./media/billing-how-to-change-credit-card/search.png)
 
@@ -68,32 +64,32 @@ ms.locfileid: "60918517"
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
-1. 单击要编辑的信用卡或借记卡。 信用卡窗体将显示在右侧。
+1. 单击你想要编辑的信用卡。 信用卡窗体将显示在右侧。
 
-    ![显示所选的信用卡或借记卡的屏幕截图。](./media/billing-how-to-change-credit-card/edit-card-x.png)
+    ![显示所选的信用卡卡的屏幕截图。](./media/billing-how-to-change-credit-card/edit-card-x.png)
 
-1. 更新信用卡或借记卡的详细信息。
+1. 更新信用卡详细信息。
 1. 选择“保存”。 
 
-## <a name="use-a-different-credit-card-for-the-azure-subscription"></a>使用另外一张信用卡支付 Azure 订阅
+## <a name="use-a-different-credit-card"></a>使用其他信用卡
 
 如果多个订阅具有同一个可用的付款方式，然后更改任何这些订阅上可用的付款方式还会更新对其他可用的付款方式。
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“成本管理 + 计费”  中进行搜索。
+1. 搜索**成本管理 + 计费**。
 
     ![显示搜索的屏幕截图](./media/billing-how-to-change-credit-card/search.png)
 
-1. 选择你想要添加到信用卡或借记卡的订阅。
+1. 选择你想要添加到信用卡的订阅。
 1. 选择“付款方式”。 
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
-1. 选中你想要使可用的付款方式的信用卡旁边的框。
+1. 选择你想要使可用的付款方式的信用卡旁边的框。
 1. 单击**设置活动**。
-    ![显示所选的信用卡或借记卡和组活动的屏幕截图。](./media/billing-how-to-change-credit-card/sub-change-active-x.png)
+    ![显示所选和设置活动的信用卡的屏幕截图。](./media/billing-how-to-change-credit-card/sub-change-active-x.png)
 
-## <a name="remove-a-credit-or-debit-card-from-the-account"></a>从帐户中删除信用卡或借记卡
+## <a name="remove-a-credit-card-from-the-account"></a>从帐户中删除信用卡
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 1. 选择**成本管理 + 计费**在页面的左侧。
@@ -104,16 +100,16 @@ ms.locfileid: "60918517"
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
-1. 勾选要删除的卡旁边的框。
+1. 选择你想要删除的卡旁边的框。
 1. 单击“删除”  。
 
-如果你的信用卡的任何 Microsoft 订阅可用的付款方式，无法从你的 Azure 帐户中将其删除。 更改链接到此信用卡或借记卡的所有订阅可用的付款方式，然后重试
-<!-- # Add, update, or remove a credit or debit card for Azure
+如果你的信用卡的任何 Microsoft 订阅可用的付款方式，无法从你的 Azure 帐户中将其删除。 更改与此信用卡关联的所有订阅可用的付款方式，然后重试
+<!-- # Add, update, or remove a credit card for Azure
 
 In the Account Center, you can add a new credit card, update an existing credit card, or delete a credit card that you don't use. You must be an [Account Administrator](billing-subscription-transfer.md#whoisaa) to make these changes.
 
 **Want to switch to pay by invoice?** See [Pay for Azure subscriptions by invoice](billing-how-to-pay-by-invoice.md).
- 
+
 <a id="addcard"></a>
 
 ## Add a new credit or debit card
@@ -127,7 +123,7 @@ In the Account Center, you can add a new credit card, update an existing credit 
 
     ![Screenshot that shows the edit option next to the payment method.](./media/billing-how-to-change-credit-card/editcard_new.png)
 1. Enter credit or debit card details.
-1. Select **Save**. 
+1. Select **Save**.
 
 If you get an error after you add the credit card, see [Credit card declined at Azure sign-up](billing-credit-card-fails-during-azure-sign-up.md).
 
@@ -147,7 +143,7 @@ If your credit card gets renewed and the number remains the same, update the exi
 1. Sign in to the [Azure Account Center](https://account.windowsazure.com/Subscriptions) as the [Account Administrator](billing-subscription-transfer.md#whoisaa).
 1. Select the subscription that's linked to the card.
 1. On the right side of the page, select **Manage payment methods**.
-1. Click **Use Instead** next to the card that you want to use. This also updates any other subscriptions currently associated with this card. 
+1. Click **Use Instead** next to the card that you want to use. This also updates any other subscriptions currently associated with this card.
 
 ## Remove a credit or debit card from the account
 
@@ -157,13 +153,38 @@ If your credit card gets renewed and the number remains the same, update the exi
 4. Click **Delete** for the credit card that you want to delete.
 
 If your credit card is associated with other active Microsoft subscriptions, you can't remove it from your Azure account. Remove the credit card from all active subscriptions that you have with Microsoft and try again. -->
+
+## <a name="change-payment-method-for-a-billing-profile"></a>更改付款方式的帐单的配置文件
+
+若要更改付款方式的帐单的配置文件，您必须注册了 Azure 的人员。
+
+如果你想要切换默认付款方式以检查/在线传输，了解如何[切换计费的配置文件，以检查/网络传输](billing-how-to-pay-by-invoice.md)。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在“成本管理 + 计费”  中进行搜索。
+1. 在左侧菜单中，单击**计费配置文件**。
+
+    ![在菜单中显示计费的配置文件的屏幕截图](./media/billing-how-to-change-credit-card/billing-profile.png)
+
+1. 选择计费的配置文件。
+1. 在左侧菜单中，选择**付款方式**。
+
+   ![在菜单中显示支付方法的屏幕截图](./media/billing-how-to-change-credit-card/billing-profile-payment-methods.png)
+
+1. 上面的默认付款方法中，单击**更改**。
+
+    ![显示的屏幕截图更改按钮](./media/billing-how-to-change-credit-card/customer-led-switch-credit-card.png)
+
+1. 选择的现有卡片或添加新帐户。
+
 ## <a name="frequently-asked-questions"></a>常见问题
+以下各节解答有关更改您的信用卡或借卡信息的常见问题。
 
 ### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>我的订阅已禁用。 为何我无法立即删除我的信用卡？
 
 订阅禁用或取消后，我们将在 90 天后永久删除该订阅。 你的付款方式将保留至保留期结束，以便你能够随时根据需要重新激活订阅。 之后，将永久删除该订阅。
 
-如果需要在 90 天的保留期结束前删除信用卡或借记卡，请[重新激活订阅](billing-subscription-become-disable.md)。 如果不能重新激活，请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+如果你需要在 90 天的保留期结束前, 删除你的信用卡[重新激活订阅](billing-subscription-become-disable.md)。 如果不能重新激活，请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>为何我总是看到“登录会话已过期。 请单击此处以重新登录”？
 
@@ -175,18 +196,20 @@ If your credit card is associated with other active Microsoft subscriptions, you
 
 ### <a name="how-do-i-make-payments"></a>如何付款？
 
-如果已将信用卡或借记卡设置为付款方式，则会在计费周期后自动在卡中扣款。 无需执行任何操作。
+如果您设置了信用卡作为付款方式，我们会自动在每个计费周期后收费，您的卡。 无需执行任何操作。
 
 如果[用发票付款](billing-how-to-pay-by-invoice.md)，可将付款寄送到发票底部列出的地点。
 
-### <a name="how-do-i-make-a-one-time-payment"></a>如何一次性付款？
-
-很遗憾，Azure 当前不支持信用卡或借记卡一次性付款。 
-
 ### <a name="how-do-i-change-the-tax-id"></a>如何更改税务 ID？
 
-若要添加或更新税务 ID，请访问 [Azure 帐户中心中的“配置文件”](https://account.azure.com/Profile)，然后选择“税收记录”   。 此税务 ID 用于免税计算，并且会显示在发票上。
+若要添加或更新税务 ID，请更新你的配置文件中[Azure 帐户中心](https://account.azure.com/Profile)，然后选择**税收记录**。 此税务 ID 用于免税计算，并且会显示在发票上。
+
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
+[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+
+## <a name="next-steps"></a>后续步骤
+- 了解如何[Azure 预订](billing-save-compute-costs-reservations.md)若要查看是否它们可以节省资金。

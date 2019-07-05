@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5fbd64d2f001a0fbe91de2d954889816a1819479
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4a52383e6ab24c6ae1e2be0b67293d65dfa04466
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339436"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477886"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>创建 Azure 堡垒主机 （预览）
 
@@ -33,15 +33,11 @@ ms.locfileid: "67339436"
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-若要参与此预览版，你需要注册。 使用以下步骤来注册预览版：
-
-[!INCLUDE [register](../../includes/bastion-preview-register-include.md)]
-
 ## <a name="createhost"></a>创建守护主机
 
 此部分帮助你从 Azure 门户创建新的 Azure 堡垒资源。
 
-1. 从主页中[Azure 门户-预览](https://aka.ms/BastionHost)，单击 **+ 创建资源**。 请确保使用提供的用于访问在门户中为此预览版中，而不是常规的 Azure 门户的链接。
+1. 从主页中[Azure 门户-堡垒预览版](https://aka.ms/BastionHost)，单击 **+ 创建资源**。 请确保使用提供的用于访问在门户中为此预览版中，而不是常规的 Azure 门户的链接。
 
 1. 上**新建**页上，在*在 Marketplace 中搜索*字段中，键入**堡垒**，然后单击**Enter**若要获取对搜索结果。
 
@@ -72,7 +68,7 @@ ms.locfileid: "67339436"
 
 如果在门户中创建的堡垒主机，通过使用现有的 VM，各种设置将自动默认对应于虚拟机和/或虚拟网络。
 
-1. 在中[预览门户](https://aka.ms/BastionHost)，导航到你的虚拟机，然后单击**Connect**。
+1. 在中[Azure 门户-堡垒预览版](https://aka.ms/BastionHost)，导航到你的虚拟机，然后单击**Connect**。
 
     ![VM 连接](./media/bastion-create-host-portal/vmsettings.png)
 

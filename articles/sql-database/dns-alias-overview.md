@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, ayolubek, jrasnick
 manager: craigg
-ms.date: 06/19/2019
-ms.openlocfilehash: d15e629343e015af5f83e1d185c6a46fc48fa3c4
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 06/26/2019
+ms.openlocfilehash: bb38f73308fb1eb67be310120cb589cb9412e737
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275202"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461832"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL 数据库的 DNS 别名
 
@@ -30,6 +30,7 @@ DNS 别名的常见用途包括：
 - 为 Azure SQL Server 创建易记的名称。
 - 在初始开发期间，别名可以指向测试 SQL 数据库服务器。 应用程序上线后，你可以修改别名以引用生产服务器。 从测试到生产的转换不需要对连接到数据库服务器的多个客户端的配置进行任何修改。
 - 假设只将应用程序中的唯一数据库移到了另一个 SQL 数据库服务器。 此时，可以修改别名，而无需修改多个客户端的配置。
+- 在区域性服务中断期间使用异地还原恢复数据库不同的服务器和区域中。 您可以修改你的现有别名以指向新的服务器，以便现有客户端应用程序无法重新连接到它。 
 
 ## <a name="domain-name-system-dns-of-the-internet"></a>Internet 的域名系统 (DNS)
 

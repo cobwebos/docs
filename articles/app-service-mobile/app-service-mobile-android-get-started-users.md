@@ -3,7 +3,7 @@ title: 使用移动应用在 Android 中添加身份验证 | Microsoft Docs
 description: 了解如何使用 Azure 应用服务中的移动应用功能通过各种标识提供者（包括 Google、Facebook、Twitter 和 Microsoft）对 Android 应用的用户进行身份验证。
 services: app-service\mobile
 documentationcenter: android
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 11/16/2017
-ms.author: crdun
-ms.openlocfilehash: 7b80c1148cf2716e71308d953ac445c4bb50cbc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f138911510db4e6839ff96317fa6004e449e58be
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119755"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443586"
 ---
 # <a name="add-authentication-to-your-android-app"></a>将身份验证添加到 Android 应用
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-users)今天。
+>
 
 ## <a name="summary"></a>摘要
 本教程介绍如何使用支持的标识提供者将身份验证添加到 Android 上的待办事项列表快速入门项目。 本教程基于 [Get started with Mobile Apps] （移动应用入门）教程，必须先完成该教程。

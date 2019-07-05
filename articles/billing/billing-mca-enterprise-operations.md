@@ -1,8 +1,6 @@
 ---
-title: 完成 Microsoft 客户协议-Azure 中的企业协议任务 |Microsoft Docs
+title: 完成 Microsoft 客户协议-Azure 中的企业协议任务
 description: 了解如何完成新的计费帐户中的企业协议任务。
-services: ''
-documentationcenter: ''
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -12,20 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/24/2018
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 9b76fa935263904957c87cd062c84d0607771369
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9404908b7c486801480474c5a2c9ff7688e1de48
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371321"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490715"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 客户协议完成您的计费帐户中的企业协议任务
 
 如果你的组织已签名 Microsoft 客户协议续订你的企业协议注册，协议创建一个新的计费帐户。 新帐户中的计费方式不同于你的企业协议的组织。 本文介绍如何使用新的计费帐户以执行在你的企业协议中执行的任务。
 
-## <a name="how-billing-is-organized-in-the-new-account"></a>计费中的新帐户的组织方式
+## <a name="billing-organization-in-the-new-account"></a>计费的组织中的新帐户
 
 下图描述计费中新的计费帐户的组织方式。
 
@@ -33,16 +31,16 @@ ms.locfileid: "60371321"
 
 | 企业协议   | Microsoft 客户协议    |
 |------------------------|--------------------------------------------------------|
-| 注册            | 计费的配置文件用于为你的组织，类似于你的企业协议注册管理计费。 企业管理员成为计费的配置文件的所有者。 若要了解有关计费的配置文件的详细信息，请参阅[了解计费资料](billing-mca-overview.md#understand-billing-profiles)。
-| 系            | 发票部分用于组织你的成本，类似于在企业协议注册中的部门。 部门变为发票部分，部门管理员成为相应发票部分的所有者。 若要了解有关发票部分的详细信息，请参阅[了解发票部分](billing-mca-overview.md#understand-invoice-sections)。 |
+| 注册            | 计费的配置文件用于为你的组织，类似于你的企业协议注册管理计费。 企业管理员成为计费的配置文件的所有者。 若要了解有关计费的配置文件的详细信息，请参阅[了解计费资料](billing-mca-overview.md#billing-profiles)。
+| 系            | 发票部分用于组织你的成本，类似于在企业协议注册中的部门。 部门变为发票部分，部门管理员成为相应发票部分的所有者。 若要了解有关发票部分的详细信息，请参阅[了解发票部分](billing-mca-overview.md#invoice-sections)。 |
 | 帐户               | 在你的企业协议中创建的帐户不支持在新的计费帐户中。 为其院系的相应发票部分属于帐户的订阅。 帐户所有者可以创建和管理其发票的部分的订阅。 |
 
-## <a name="changes-for-enterprise-administrators-in-the-new-billing-account"></a>在新的计费帐户中的企业管理员的更改
+## <a name="changes-for-enterprise-administrators"></a>企业管理员的更改
 
 以下更改适用于根据企业协议获得续订 Microsoft 客户协议的企业管理员。
 
-- 你的注册创建计费的配置文件。 计费的配置文件将用于与你的企业协议注册相同的管理为你的组织，计费。 若要了解有关计费的配置文件的详细信息[了解计费资料](billing-mca-overview.md#understand-billing-profiles)。
-- 为在企业协议注册中的每个部门创建发票部分。 将使用发票部分来管理你的部门。 您可以创建新发票部分来设置其他部门。 若要了解有关发票部分的详细信息，请参阅[了解发票部分](billing-mca-overview.md#understand-invoice-sections)。
+- 你的注册创建计费的配置文件。 计费的配置文件将用于与你的企业协议注册相同的管理为你的组织，计费。 若要了解有关计费的配置文件的详细信息[了解计费资料](billing-mca-overview.md#billing-profiles)。
+- 为在企业协议注册中的每个部门创建发票部分。 将使用发票部分来管理你的部门。 您可以创建新发票部分来设置其他部门。 若要了解有关发票部分的详细信息，请参阅[了解发票部分](billing-mca-overview.md#invoice-sections)。
 - 发票部分中，将使用 Azure 订阅创建者角色来授予其他人创建 Azure 订阅，例如在企业协议注册期间创建的帐户的权限。
 - 将使用[Azure 门户](https://portal.azure.com)管理为你的组织，而不是 Azure EA 门户的帐单。
 
@@ -76,7 +74,7 @@ ms.locfileid: "60371321"
 
 若要了解如何下载 Azure 使用情况和费用 csv 文件，请参阅[下载使用情况适用于你的 Microsoft 客户协议](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement)。
 
-若要了解如何下载价目表，请参阅[下载了 Microsoft 客户协议的定价](billing-ea-pricing.md#view-and-download-pricing-for-your-microsoft-customer-agreement)。
+若要了解如何下载价目表，请参阅[下载了 Microsoft 客户协议的定价](billing-ea-pricing.md#microsoft-customer-agreement-pricing)。
 
 若要了解如何下载税务文档，请参阅[为 Microsoft 客户协议查看税务文档](billing-mca-download-tax-document.md#view-and-download-tax-documents)。
 
@@ -92,13 +90,13 @@ ms.locfileid: "60371321"
 
 ### <a name="create-a-new-account"></a>创建新帐户
 
-将用户分配发票部分来为他们提供权限来创建 Azure 订阅，例如在企业协议注册中创建的帐户上的 Azure 订阅创建者角色。 有关详细信息，请参阅[创建 Azure 订阅的权限授予其他人](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions)。
+将用户分配发票部分来为他们提供权限来创建 Azure 订阅，例如在企业协议注册中创建的帐户上的 Azure 订阅创建者角色。 有关详细信息，请参阅[创建 Azure 订阅的权限授予其他人](billing-mca-create-subscription.md#give-others-permission)。
 
-## <a name="changes-for-department-administrators-in-the-new-billing-account"></a>部门管理员在新的计费帐户中的更改
+## <a name="changes-for-department-administrators"></a>部门管理员的更改
 
 以下更改适用于部门管理员根据企业协议获得对 Microsoft 客户协议续订。
 
-- 为在企业协议注册中的每个部门创建发票部分。 发票区域将用于管理你的部门。 若要了解有关发票部分的详细信息，请参阅[了解发票部分](billing-mca-overview.md#understand-invoice-sections)。
+- 为在企业协议注册中的每个部门创建发票部分。 发票区域将用于管理你的部门。 若要了解有关发票部分的详细信息，请参阅[了解发票部分](billing-mca-overview.md#invoice-sections)。
 - 上的发票部分中，将使用 Azure 订阅创建者角色来授予其他人创建 Azure 订阅，例如在企业协议注册中创建的帐户的权限。
 - 将使用 Azure 门户为你的组织，而不是 Azure EA 门户中管理帐单。
 
@@ -118,7 +116,7 @@ ms.locfileid: "60371321"
 
 ### <a name="create-a-new-account-in-your-department"></a>在您的部门创建新的帐户
 
-将用户分配为你的部门创建发票部分上的 Azure 订阅创建者角色。 有关详细信息，请参阅[创建 Azure 订阅的权限授予其他人](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions)。
+将用户分配为你的部门创建发票部分上的 Azure 订阅创建者角色。 有关详细信息，请参阅[创建 Azure 订阅的权限授予其他人](billing-mca-create-subscription.md#give-others-permission)。
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>查看你部门中的帐户的费用
 
@@ -126,7 +124,7 @@ ms.locfileid: "60371321"
 
 若要查看聚合成本属于你的部门中的帐户的订阅，必须设置每个订阅的成本中心。 然后，可以使用 Azure 使用情况和费用文件进行筛选的成本中心的订阅。
 
-## <a name="changes-for-account-owners-in-the-new-billing-account"></a>在新的计费帐户中的帐户所有者的更改
+## <a name="changes-for-account-owners"></a>帐户所有者的更改
 
 帐户所有者的企业协议获取 Azure 订阅创建新的计费帐户上的权限。 为你的部门创建发票部分属于现有的 Azure 订阅。 如果你的帐户不属于一个部门，你的订阅属于名为默认发票部分发票部分。
 

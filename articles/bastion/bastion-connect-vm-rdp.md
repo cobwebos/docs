@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: c8a4b09a27325f31e548d1b345b2932c6ab6315c
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 376b7042a513dd50647dc8f88bf1de70f65bb21c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191884"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478407"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion-preview"></a>连接到使用 Azure 堡垒 （预览版） 的 Windows 虚拟机
 
@@ -26,15 +26,15 @@ ms.locfileid: "67191884"
 
 请确保已设置 VM 所驻留的虚拟网络的 Azure 堡垒主机。 有关详细信息，请参阅[创建 Azure 堡垒主机](bastion-create-host-portal.md)。 一旦堡垒服务预配和部署在虚拟网络，可用于连接到此虚拟网络中的任何 VM。 在此预览版中，堡垒假定您使用 RDP 连接到 Windows VM 和 SSH 连接到 Linux Vm。 有关连接到 Linux VM 的信息，请参阅[连接到 VM-Linux](bastion-connect-vm-ssh.md)。
 
-若要进行连接时，以下角色是必需的：
+需要使用以下角色进行连接：
 
-* 在虚拟机上的读取者角色
-* 使用虚拟机的专用 IP 的 NIC 上的读取者角色
-* Azure 堡垒资源上的读取者角色
+* 虚拟机上的读者角色
+* NIC 上的读者角色（使用虚拟机的专用 IP）
+* Azure Bastion 资源上的读者角色
 
 ## <a name="rdp"></a>使用 RDP 进行连接
 
-1. 在中[Azure 门户](https://aka.ms/BastionHost)堡垒预览版中，导航到你想要连接到虚拟机，然后单击**Connect**。 使用 RDP 连接时，应将 VM Windows 虚拟机。
+1. 使用[此链接](https://aka.ms/BastionHost)，打开 Azure 堡垒预览门户页。 导航到你想要连接到虚拟机，然后单击**Connect**。 使用 RDP 连接时，应将 VM Windows 虚拟机。
 
     ![VM 连接](./media/bastion-connect-vm-rdp/connect.png)
 

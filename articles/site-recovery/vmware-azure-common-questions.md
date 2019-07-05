@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 05/30/2019
+ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 59be8e0585f0bedcafc868ee42f5113509c9c4ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79118fb053c7064fa29730680feb0434f45f031a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417774"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491692"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关常见问题 VMware 到 Azure 的复制
 
@@ -86,6 +86,10 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 
 托管的磁盘收费从存储帐户的方式略有不同。 [了解详细信息](https://azure.microsoft.com/pricing/details/managed-disks/)有关托管磁盘定价。
 
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>将复制到常规用途 v2 存储帐户时有成本的任何差异吗？
+
+通常会产生在 GPv2 存储帐户，由于 Azure Site Recovery 是大量的事务的事务成本的增加。 [阅读更多](../storage/common/storage-account-upgrade.md#pricing-and-billing)来估计此更改。
+
 ## <a name="mobility-service"></a>移动服务
 
 ### <a name="where-can-i-find-the-mobility-service-installers"></a>在哪里可以找到移动服务安装程序？
@@ -113,7 +117,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-replicate-new-machines-to-storage-accounts"></a>是否可将新计算机复制到存储帐户？
 
-不。 在 Azure 门户中，从开始年 3 月 2019年可以复制仅对 Azure 托管磁盘。
+否。 在 Azure 门户中，从开始年 3 月 2019年可以复制仅对 Azure 托管磁盘。
 
 新 Vm 复制到存储帐户是只能通过使用 PowerShell 或 REST API （版本 2018年-01-10 或 2016年-08-10） 可用。
 
@@ -177,7 +181,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>是否可以在不影响进行中复制的情况下将本地计算机迁移到新的 vCenter Server？
 
-不。 VMware Vcenter 或迁移的更改会影响正在进行的复制。 与新的 vCenter 服务器设置 Site Recovery 并再次启用复制的计算机。
+否。 VMware Vcenter 或迁移的更改会影响正在进行的复制。 与新的 vCenter 服务器设置 Site Recovery 并再次启用复制的计算机。
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>可以复制到包含其上配置一个虚拟网络 （具有 Azure 防火墙） 的缓存或目标存储帐户？
 
@@ -231,7 +235,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>是否可将配置服务器复制到多个区域？
 
-不。 若要将复制到多个区域，需要每个区域中的配置服务器。
+否。 若要将复制到多个区域，需要每个区域中的配置服务器。
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>是否可以在 Azure 中托管配置服务器？
 
@@ -293,7 +297,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ### <a name="how-do-i-update-the-process-server-to-version-924-or-later-for-accurate-health-information"></a>如何更新到版本 9.24 或更高版本的准确运行状况信息的进程服务器？
 
-开头[版本 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups)，已添加更多警报以指示进程服务器的运行状况。 [更新到版本 9.24 或更高版本的 Site Recovery 组件](service-updates-how-to.md#links-to-currently-supported-update-rollups)，以便在生成的所有警报。
+开头[版本 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups)，已添加更多警报以指示进程服务器的运行状况。 [Site Recovery 组件更新为使用 9.24 或更高版本](service-updates-how-to.md#links-to-currently-supported-update-rollups)，以便在生成的所有警报。
 
 ## <a name="failover-and-failback"></a>故障转移和故障回复
 

@@ -4,17 +4,17 @@ description: 一个可供客户端通过 HTTP 调用在 Azure 自动化中启动
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e0e0cdfd5bdda125ed38173df56e0fb7a84f71a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61304535"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477930"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>通过 Webhook 启动 Azure 自动化 Runbook
 
@@ -30,9 +30,9 @@ Webhook  可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特�
 
 下表介绍了必须为 webhook 配置的属性。
 
-| 属性 | 描述 |
+| 属性 | Description |
 |:--- |:--- |
-| Name |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 <br> 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
+| 名称 |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 <br> 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
 | URL |Webhook 的 URL 是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应将其视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
 | 到期日期 |与证书一样，每个 Webhook 都有一个过期日期，到了过期日期 Webhook 不再可用。 创建 Webhook 后，只要它没有到期，就可以修改此到期日期。 |
 | Enabled |Webhook 在创建后默认启用。 如果将它设置为“已禁用”，则没有客户端可以使用它。 可以在创建 Webhook 时设置“已启用”  属性，也可以在创建后随时设置它。 |

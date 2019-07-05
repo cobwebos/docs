@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cbasoglu
-ms.openlocfilehash: d844b171ff99dc97e5d1107bcb745f9e8d5b3e9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7aa2c72a01f1887ea9680f8d5706b825a49039a1
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519830"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561287"
 ---
 # <a name="scenario-availability"></a>方案可用性
 
@@ -25,7 +25,7 @@ ms.locfileid: "65519830"
   - 所有编程语言/环境没有箭头链接 <img src="media/index/link.jpg" height="15" width="15"></img> 快速入门表中[此处](https://aka.ms/csspeech)。
 - **Text-to-Speech (TTS)**
   - C++/ Windows 和 Linux
-  - C#/Windows
+  - C#/ Windows UWP & Unity
   - 可以在每个其他情况下使用 TTS REST API。
 - **唤醒文字 (关键字 Spotter/KWS)**
   - C++/ Windows 和 Linux

@@ -1,28 +1,22 @@
 ---
 title: 在 Azure Active Directory 中启用企业状态漫游 | Microsoft Docs
-description: 有关 Windows 设备中的企业状态漫游设置的常见问题。 企业状态漫游可跨 Windows 设备为用户提供统一体验，并减少配置新设备所需的时间。
+description: 有关 Windows 设备中的企业状态漫游设置的常见问题。
 services: active-directory
-keywords: 企业状态漫游, Windows 云, 如何启用企业状态漫游
-documentationcenter: ''
-author: tanning
-manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
+ms.subservice: devices
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88e825ebc08b4bfbd65f81b7b2480ead9be314b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45c1fc6340df6a5400864b2e1222a2c65e586232
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954949"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482032"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 企业状态漫游可供任何拥有Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证的组织使用。 有关如何获取 Azure AD 订阅的详细信息，请参阅 [Azure AD 产品页](https://azure.microsoft.com/services/active-directory)。
@@ -32,9 +26,7 @@ ms.locfileid: "65954949"
 ## <a name="to-enable-enterprise-state-roaming"></a>启用企业状态漫游
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
-
 1. 选择“Azure Active Directory”  &gt;“设备”  &gt;“企业状态漫游”  。
-
 1. 选择“用户可以跨设备同步设置和应用数据”。  有关详细信息，请参阅[如何配置设备设置](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)。
   
    ![标有“用户可以跨设备同步设置和应用数据”的设备设置的图像](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -44,12 +36,12 @@ ms.locfileid: "65954949"
 ## <a name="data-storage"></a>数据存储
 企业状态漫游数据托管在一个或多个 [Azure 区域](https://azure.microsoft.com/regions/)中，这些区域与 Azure Active Directory 实例中设置的国家/地区值最为匹配。 企业状态漫游数据基于三个主要地理区域进行分区：北美、EMEA 和 APAC。 租户的企业状态漫游数据位于本地所在的地理区域，不会跨区域复制。  例如：
 
-国家/地区值 | 数据托管位置
----------------------|-------------------------
-例如，法国或赞比亚 EMEA 国家/地区 | 欧洲的一个或多个 Azure 区域 
-例如，美国或加拿大北美国家/地区 | 美国的一个或多个 Azure 区域
-澳大利亚或新西兰等 APAC 国家/地区 | 亚洲的一个或多个 Azure 区域
-南美国家/地区和南极洲区域 | 美国的一个或多个 Azure 区域
+| 国家/地区值 | 数据托管位置 |
+| -------------------- | ------------------------ |
+| 例如，法国或赞比亚 EMEA 国家/地区 | 欧洲的一个或多个 Azure 区域 |
+| 例如，美国或加拿大北美国家/地区 | 美国的一个或多个 Azure 区域 |
+| 澳大利亚或新西兰等 APAC 国家/地区 | 亚洲的一个或多个 Azure 区域 |
+| 南美国家/地区和南极洲区域 | 美国的一个或多个 Azure 区域 |
 
 国家/地区值在 Azure AD 目录创建过程中设置，无法进行后续修改。 如需有关数据存储位置的更多详细信息，请向 [Azure 支持](https://azure.microsoft.com/support/options/)提交票证。
 
@@ -57,11 +49,8 @@ ms.locfileid: "65954949"
 遵循以下步骤查看每个用户的设备同步状态报告。
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
-
 1. 选择“Azure Active Directory”&gt;“用户”&gt;“所有用户”    。
-
 1. 选择用户，再选择“设备”。 
-
 1. 在“显示”下，选择“同步设置和应用数据的设备”显示同步状态。  
   
    ![设备同步数据设置图像](./media/enterprise-state-roaming-enable/sync-status.png)

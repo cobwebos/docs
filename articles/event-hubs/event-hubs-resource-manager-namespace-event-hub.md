@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/14/2019
+ms.date: 07/02/2019
 ms.author: shvija
-ms.openlocfilehash: 007e016672f8548956b37b961805183a504d6bf0
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 29e494b23176f9e936816a371a09e1c4ffeceae0
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154077"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537999"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建事件中心
 
@@ -31,7 +31,11 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 ## <a name="create-an-event-hub"></a>创建事件中心
 
-在本快速入门中，使用[现有的资源管理器模板](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json)。 若要查找更多模板示例，请参阅[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)。
+在本快速入门中，使用[现有的快速入门模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json):
+
+[!code-json[create-azure-event-hub-namespace](~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json)]
+
+若要查找更多模板示例，请参阅[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)。
 
 若要部署模板：
 
@@ -41,7 +45,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
    $resourceGroupName = "${projectName}rg"
-   $templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json"
+   $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json"
 
    New-AzResourceGroup -Name $resourceGroupName -Location $location
    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName

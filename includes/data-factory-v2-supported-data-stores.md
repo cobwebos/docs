@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 06/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 2ee59fa6f938d0bb4ff4ef51678263a6f8901ac3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c938d0badfdd23e78e7cf042b719d924aa4d3857
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277132"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509813"
 ---
-| 类别 | 数据存储 | 支持用作源 | 支持用作接收器 | 受 [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) 支持 | 受[自我托管 IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) 支持 |
+| Category | 数据存储 | 支持用作源 | 支持用作接收器 | 受 [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) 支持 | 受[自我托管 IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) 支持 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob 存储](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |✓ |✓ |✓ |✓  |
@@ -56,7 +56,7 @@ ms.locfileid: "67277132"
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |✓ | |✓ |✓  |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |✓ | | |✓  |
-| &nbsp; |[Teradata](../articles/data-factory/connector-teradata.md) |✓ | | |✓  |
+| &nbsp; |[Teradata](../articles/data-factory/connector-teradata.md) |✓ | |✓ |✓  |
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |✓ | |✓ |✓  |
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |✓ | |✓ |✓  |
 | &nbsp; |[Couchbase（预览）](../articles/data-factory/connector-couchbase.md) |✓ | |✓ |✓  |

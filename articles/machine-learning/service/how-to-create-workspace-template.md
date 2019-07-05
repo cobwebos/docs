@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2c5491bab9b45df11c2fe81aa933a1a34c49a41b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4e0af3b395ec640fd037a1e76365408c10613340
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205940"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477017"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>使用 Azure 资源管理器模板来创建用于 Azure 机器学习服务的工作区
 
@@ -103,6 +103,19 @@ az group deployment create \
 ```
 
 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)和[使用 SAS 令牌和 Azure CLI 部署专用资源管理器模板](../../azure-resource-manager/resource-manager-cli-sas-token.md)。
+
+## <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure 密钥保管库访问策略和 Azure 资源管理器模板
+
+当使用 Azure 资源管理器模板创建工作区和关联的资源 （包括 Azure 密钥保管库），多个时间。 例如，使用模板多次使用相同的参数作为持续集成和部署管道的一部分。
+
+通过模板的大多数资源创建操作是幂等的但密钥保管库中清除的访问策略每次使用模板。 清除策略中断到密钥保管库的访问任何现有的工作区与正在使用它。 例如，停止/创建的 Notebook Azure VM 的功能可能会失败。  
+
+若要避免此问题，我们建议以下方法之一：
+
+*  不会部署该模板不止一次为相同的参数。 或使用模板来重新创建它们之前删除现有的资源。
+  
+* 检查密钥保管库访问策略，然后使用这些策略设置的模板的 accessPolicies 属性。
+* 检查是否已存在的密钥保管库资源。 如果是这样，不重新创建它通过模板。 例如，添加一个参数，可用于禁用创建密钥保管库资源，如果它已存在。
 
 ## <a name="next-steps"></a>后续步骤
 

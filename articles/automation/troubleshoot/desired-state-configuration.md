@@ -4,17 +4,17 @@ description: 本文提供有关 Desired State Configuration (DSC) 疑难解答�
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7cb0d77a266dbe8afd331782965e7e9a44663671
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53fef426c927c690a3b697055f467f6cd35c532c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514466"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477522"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 疑难解答
 
@@ -164,6 +164,24 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 * 请确保将具有该名称在服务中的完全匹配的节点配置名称的节点。
 * 您可以选择不包含节点配置名称，这将导致载入节点但不是分配节点配置
+
+### <a name="failure-linux-temp-noexec"></a>场景：应用在 Linux 中的配置，并出现常规错误发生故障
+
+#### <a name="issue"></a>问题
+
+当应用在 Linux 中的配置，发生故障，包含错误：
+
+```error
+This event indicates that failure happens when LCM is processing the configuration. ErrorId is 1. ErrorDetail is The SendConfigurationApply function did not succeed.. ResourceId is [resource]name and SourceInfo is ::nnn::n::resource. ErrorMessage is A general error occurred, not covered by a more specific error code..
+```
+
+#### <a name="cause"></a>原因
+
+客户已确定，如果 /tmp 位置设置为 noexec，当前版本的 DSC 将无法应用配置。
+
+#### <a name="resolution"></a>解决方法
+
+* 从 /tmp 位置删除 noexec 选项。
 
 ## <a name="next-steps"></a>后续步骤
 

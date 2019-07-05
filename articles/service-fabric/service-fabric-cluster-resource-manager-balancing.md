@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 74fe4f7c4c231f80c7555f39f840a85baae310e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ea95405f68938906ba010836753cd74ab0f775e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809438"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446751"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>均衡 Service Fabric 群集
 Service Fabric 群集资源管理器支持动态负载更改、对添加或删除节点或服务做出反应。 还会自动更正约束冲突和主动重新均衡群集。 但这些操作的执行频率是多少，又是什么触发了这些操作？
@@ -36,9 +36,9 @@ Service Fabric 群集资源管理器支持动态负载更改、对添加或删�
 群集 Resource Manager 可进行的这些不同类型的修正由管理其频率的不同计时器控制。 激发每个计时器时，会计划任务。 默认情况下，Resource Manager 将：
 
 * 每 1/10 秒扫描其状态并应用更新（如记录某节点处于关闭状态）
-* 设置放置检查标志 
+* 每秒设置放置检查标志
 * 每秒设置约束检查标志
-* 每五秒设置均衡标志。
+* 每隔 5 秒设置均衡标记
 
 下面是用于管理这些计时器的配置示例：
 

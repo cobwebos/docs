@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a6a5b0e3957141b9ea17a378a7cbeff33a0124e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024430"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485207"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>在 Azure 搜索中创建基本索引
 
@@ -36,7 +36,7 @@ ms.locfileid: "65024430"
   
    单击“创建”时，将在搜索服务中创建支持你的索引的所有物理结构。 
 
-3. 使用[获取索引 REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) 和 [Postman](search-fiddler.md) 等 Web 测试工具下载索引架构。 现在，门户中会显示所创建的索引的 JSON 表示形式。 
+3. 使用[获取索引 REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) 和 [Postman](search-get-started-postman.md) 等 Web 测试工具下载索引架构。 现在，门户中会显示所创建的索引的 JSON 表示形式。 
 
    接下来，你将切换到基于代码的方法。 门户并不十分适合用于迭代，因为在其中无法编辑已创建的索引。 但是，可以使用 Postman 和 REST 完成剩余的任务。
 
@@ -48,7 +48,7 @@ ms.locfileid: "65024430"
 
 由于物理结构是在服务中创建的，每当对现有的字段定义进行重大更改后，都必须[删除并重新创建索引](search-howto-reindex.md)。 这意味着，在开发期间，应该对频繁的重新生成做好规划。 可以考虑使用一部分数据来加快重新生成的速度。 
 
-迭代设计的建议方法是使用代码而不是门户。 如果依赖于使用门户创建索引定义，则每次重新生成都必须填充索引定义。 如果开发项目仍处于早期阶段，[Postman 和 REST API](search-fiddler.md) 等备选工具也有助于完成概念证明测试。 可对请求正文中的索引定义进行增量更改，然后将请求发送到服务，以使用更新的架构重新创建索引。
+迭代设计的建议方法是使用代码而不是门户。 如果依赖于使用门户创建索引定义，则每次重新生成都必须填充索引定义。 如果开发项目仍处于早期阶段，[Postman 和 REST API](search-get-started-postman.md) 等备选工具也有助于完成概念证明测试。 可对请求正文中的索引定义进行增量更改，然后将请求发送到服务，以使用更新的架构重新创建索引。
 
 ## <a name="components-of-an-index"></a>索引的组成部分
 
@@ -160,16 +160,22 @@ ms.locfileid: "65024430"
 若要深入了解 Azure 搜索支持的数据类型，请参阅[此处](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)。
 
 ### <a name="index-attributes"></a>索引属性
+
+在索引中的一个字段必须是与指定**密钥**唯一标识每个文档的字段。
+
+其他属性确定如何在应用程序中使用字段。 例如，**可搜索**属性分配给每个字段应包括在全文搜索。 
+
+用于生成索引 Api 都具有不同的默认行为。 有关[REST Api](https://docs.microsoft.com/rest/api/searchservice/Create-Index)，默认情况下启用的大多数属性 (例如，**可搜索**和**可检索**适用于字符串字段)，通常只需要将它们设置如果你想要将其关闭。 对于.NET SDK，反过来也成立。 在未显式设置的任何属性，默认值是禁用相应的搜索行为，除非用户专门启用它。
+
 | 特性 | 描述 |
 | --- | --- |
-| *键* |为每个文档提供唯一 ID 以便查找文档的字符串。 每个索引必须有一个 key。 只有一个字段可以是 key，并且此字段类型必须设置为 Edm.String。 |
-| *Retrievable* |指定是否可以在搜索结果中返回字段。 |
-| *Filterable* |允许在筛选查询中使用字段。 |
-| *Sortable* |允许查询使用此字段对搜索结果排序。 |
-| *Facetable* |允许在 [分面导航](search-faceted-navigation.md) 结构中使用字段进行用户自主筛选。 通常，包含重复值的字段更适合分面导航，这些重复值可用于将多个文档（例如，同属一个品牌或服务类别的多个文档）组合在一起。 |
-| *Searchable* |将字段标记为可全文搜索。 |
+| `key` |为每个文档提供唯一 ID 以便查找文档的字符串。 每个索引必须有一个 key。 只有一个字段可以是 key，并且此字段类型必须设置为 Edm.String。 |
+| `retrievable` |指定是否可以在搜索结果中返回字段。 |
+| `filterable` |允许在筛选查询中使用字段。 |
+| `Sortable` |允许查询使用此字段对搜索结果排序。 |
+| `facetable` |允许在 [分面导航](search-faceted-navigation.md) 结构中使用字段进行用户自主筛选。 通常，包含重复值的字段更适合分面导航，这些重复值可用于将多个文档（例如，同属一个品牌或服务类别的多个文档）组合在一起。 |
+| `searchable` |将字段标记为可全文搜索。 |
 
-若要深入了解 Azure 搜索的索引属性，请参阅[此处](https://docs.microsoft.com/rest/api/searchservice/Create-Index)。
 
 ## <a name="storage-implications"></a>存储影响
 

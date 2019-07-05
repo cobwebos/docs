@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e07a3fee2cc6c588dee608a68415b554e6fc77f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08aebf698a7a00729a0e37b57cb15938853e4185
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507590"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501629"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 
@@ -355,7 +355,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
 
 * 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)用于参考。
-* 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)下载完整代码。
+* 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)下载完整代码。
 
 ## <a name="next-steps"></a>后续步骤
 

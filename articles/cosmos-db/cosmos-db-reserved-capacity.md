@@ -1,18 +1,18 @@
 ---
 title: 使用保留容量优化 Azure Cosmos DB 资源的成本
 description: 了解如何购买 Azure Cosmos DB 预留容量以节省计算成本。
-author: rimman
+author: bandersmsft
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 7944980ec1806d2c8c4ab908c71efd971ee0d7aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b74fcc2e08f02be7adeeab4cfee5f36d5194392c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65968949"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508647"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 预留容量优化成本
 
@@ -24,7 +24,7 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
 
 可从 [Azure 门户](https://portal.azure.com)购买 Azure Cosmos DB 预留容量。 购买预留容量：
 
-* 必须至少是一个企业或即用即付订阅的“所有者”角色。  
+* 您必须至少一个企业或即用即付费率使用单独的订阅的所有者角色。  
 * 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 * 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 Azure Cosmos DB 预留容量。
 
@@ -44,26 +44,29 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
 
 2. 选择“所有服务” > “预留” > “添加”    。  
 
-3. 从“选择产品类型”窗格中依次选择“Azure Cosmos DB” > “选择”，以购买新预留    。  
+3. 从**购买的预订**窗格中，选择**Azure Cosmos DB**购买新的保留。  
 
 4. 填写必填字段，如下表所示：
 
-   ![填写预留容量表](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png)
+   ![填写预留容量表](./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png)
 
    |字段  |描述  |
    |---------|---------|
-   |名称   |    预留的名称。 该字段自动填充 `CosmosDB_Reservation_<timeStamp>`。 创建预留时，可以提供不同的名称。 或者，可以在创建预留后对其重命名。      |
-   |订阅  |   用于支付 Azure Cosmos DB 预留容量费用的订阅。 将向所选订阅的付款方式收取预付费用。 订阅类型必须是以下类型之一： <br/><br/>  企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P）：对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 <br/><br/> 即用即付（套餐编号：MS-AZR-0003P 或 MS-AZR-0023P）：对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。    |
-   |范围   |   控制有多少订阅可以使用与预留关联的计费权益的选项。 它还控制将预留应用于特定订阅的方式。   <br/><br/>  如果选择“单个订阅”，预留折扣将应用到所选订阅中的 Azure Cosmos DB 实例  。 <br/><br/>  如果选择“共享”，预留折扣将应用到计费上下文内任何订阅中运行的 Azure Cosmos DB 实例  。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。  <br/><br/> 购买预留容量后，可以更改预留范围。  |
-   |预留容量类型   |  预配为请求单位的吞吐量。 您可以购买这两种设置中的预配的吞吐量的保留单区域写入以及多个区域写入。|
-   |预留容量单位  |      想预留的吞吐量的量。 可以通过确定每个区域的所有 Cosmos DB 资源（例如，数据库或容器）所需的吞吐量来计算此值。 然后，将它乘以将与 Cosmos DB 数据库关联的区域数。  <br/><br/> 例如：如果有五个区域，每个区域 1 百万 RU/秒，则购买预留容量时应选 5 百万 RU/秒。    |
+   |范围   |   控制有多少订阅可以使用与预留关联的计费权益的选项。 它还控制将预留应用于特定订阅的方式。 <br/><br/>  如果选择“共享”，预留折扣将应用到计费上下文内任何订阅中运行的 Azure Cosmos DB 实例  。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享作用域是由帐户管理员创建的即用即付费率使用所有单独的订阅。  <br/><br/>  如果选择“单个订阅”，预留折扣将应用到所选订阅中的 Azure Cosmos DB 实例  。 <br/><br/> 如果选择**单个资源组**，预订折扣应用到所选的订阅和该订阅中的所选的资源组中的 Azure Cosmos DB 实例。 <br/><br/> 购买预留容量后，可以更改预留范围。  |
+   |订阅  |   用于支付 Azure Cosmos DB 预留容量费用的订阅。 将向所选订阅的付款方式收取预付费用。 订阅类型必须是以下类型之一： <br/><br/>  企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P）：对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 <br/><br/> 与现用现付费率单独的订阅 (产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）：对于个人订阅与即用即付费率，费用将信用卡或发票付款方式的订阅计费。    |
+   | 资源组 | 保留的容量折扣应用到资源组。 |
    |术语  |   一年或三年。   |
+   |吞吐量类型   |  预配吞吐量为请求单位。 您可以购买这两种设置中的预配的吞吐量的保留单区域写入以及多个区域写入。 吞吐量类型有两个值可供选择：每小时和 100 个 100 RU/秒每小时的多主机 RU/秒。|
+   | 保留的容量单位| 想预留的吞吐量的量。 可以通过确定每个区域的所有 Cosmos DB 资源（例如，数据库或容器）所需的吞吐量来计算此值。 然后，将它乘以将与 Cosmos DB 数据库关联的区域数。 例如：如果有五个区域，每个区域 1 百万 RU/秒，则购买预留容量时应选 5 百万 RU/秒。 |
+ 
 
-5. 在“费用”部分查看预留的折扣或价格  。 此预留价格适用于使用跨所有区域预配的吞吐量的 Azure Cosmos DB 资源。  
+5. 填充窗体后，购买保留的容量所需的价格被计算。 该输出还显示所选的选项，你获得的折扣百分比。 接下来单击**选择**
 
-6. 选择“购买”。  购买成功后，会看到如下页面所示内容：
+6. 在中**购买的预订**窗格中，查看该折扣和保留的价格。 此预留价格适用于使用跨所有区域预配的吞吐量的 Azure Cosmos DB 资源。  
 
-   ![填写预留容量表](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png)
+   ![保留的容量摘要](./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png)
+
+7. 选择**评审 + 购买**，然后**立即购买**。 购买成功后，会看到如下页面所示内容：
 
 购买预留后，它立即应用到与预留期相符的所有现有 Azure Cosmos DB 资源。 如果还没有 Azure Cosmos DB 资源，则将在你部署符合预留期的新 Cosmos DB 实例时应用预留。 这两种情况的预留期均于成功购买后立即开始。
 

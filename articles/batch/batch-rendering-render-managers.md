@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: bcc66a73e3d7986b177b13eb309ad664a006b960
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6878d3b4fc8648db540d016389747eceb45d936a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118580"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436162"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>将 Azure Batch 与渲染器场管理器配合使用
 
@@ -23,7 +23,7 @@ Azure 为常用的渲染器管理器提供内置支持或加载项。 然后，�
 支持以下渲染器管理器：
 
 * [PipelineFX Qube!](https://www.pipelinefx.com/)
-* [Royal Render](http://www.royalrender.de/)
+* [Royal Render](https://www.royalrender.de/)
 * [Thinkbox Deadline](https://deadline.thinkboxsoftware.com/)
 
 ## <a name="using-azure-with-pipelinefx-qube"></a>将 Azure 与 PipelineFX Qube 配合使用
@@ -32,7 +32,7 @@ Azure 为常用的渲染器管理器提供内置支持或加载项。 然后，�
 
 ## <a name="using-azure-with-royal-render"></a>将 Azure 与 Royal Render 配合使用
 
-Royal Render 内置了 Azure 和 Azure Batch 集成，可以通过基于 Azure 的 VM 来扩展渲染器场。 有关摘要，请查看[帮助文件](http://www.royalrender.de/help8/index.html?Cloudrendering.html)。
+Royal Render 内置了 Azure 和 Azure Batch 集成，可以通过基于 Azure 的 VM 来扩展渲染器场。 有关摘要，请查看[帮助文件](https://www.royalrender.de/help8/index.html?Cloudrendering.html)。
 
 有关 Royal Render 客户使用 Azure 集成的示例，请参阅 [Jellyfish Pictures 客户案例](https://customers.microsoft.com/story/jellyfishpictures)。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8937f4c47f0fa84d4ec371e951cff8a2fdaa8481
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2426ecd9c480b0cc236295384ae04c60051f37ce
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476901"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442956"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>在 Azure 数据框 edge 管理访问、 电源和连接模式
 
@@ -66,7 +66,7 @@ ms.locfileid: "66476901"
 -  创建具有关联的存储帐户的共享。
 -  创建用户有权访问设备上的共享。
 
-您应该`User`因为您需要能够访问 Active Directory 租户上`Read all directory objects`。 不能为来宾用户，因为没有权限`Read all directory objects`。 如果你是来宾，如生成的激活密钥，创建共享数据框边缘设备上的操作创建的用户将所有失败。
+您应该`User`因为您需要能够访问 Active Directory 租户上`Read all directory objects`。 不能为来宾用户，因为没有权限`Read all directory objects`。 如果你是来宾，如生成的操作的激活密钥、 创建的数据框边缘设备、 用户创建、 配置的边缘上的共享计算角色、 重置设备密码将所有失败。
 
 有关如何向 Azure Active Directory 图形 API 的用户提供访问权限的详细信息，请参阅[管理员、 用户和来宾用户的默认访问](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 
@@ -74,7 +74,7 @@ ms.locfileid: "66476901"
 
 若要预配 Azure 中的资源 （在 Azure 资源管理器模型中），您需要支持该资源的创建的资源提供程序。 例如，若要预配虚拟机，应具有 Microsoft.Compute 资源提供程序订阅中可用。
  
-资源提供程序的订阅级别上注册。 默认情况下，任何新的 Azure 订阅是预注册的常用的资源提供程序的列表。 此列表中不包含 Microsoft.DataBoxEdge 的资源提供程序。
+资源提供程序在订阅级别注册。 默认情况下，任何新的 Azure 订阅都预注册到一组常用的资源提供程序中。 此列表中不包含 Microsoft.DataBoxEdge 的资源提供程序。
 
 无需授予用户能够创建 Microsoft.DataBoxEdge 等他们拥有所有者权限，其资源组中的资源，只要这些资源的资源提供程序已对订阅级别访问权限注册。
 

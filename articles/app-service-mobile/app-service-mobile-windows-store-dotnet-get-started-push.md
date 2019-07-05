@@ -3,7 +3,7 @@ title: 向通用 Windows 平台 (UWP) 应用添加推送通知 | Microsoft Docs
 description: 了解如何使用 Azure 应用服务移动应用和 Azure 通知中心将推送通知发送到通用 Windows 平台 (UWP) 应用。
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
@@ -12,18 +12,22 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/12/2016
-ms.author: crdun
-ms.openlocfilehash: 7efd853e7b66933cac811625d7510139864f41f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 3ea2b336f647d9a27baaeeb489895b8f67d2e2d9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128026"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445615"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>向 Windows 应用添加推送通知
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
+
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-push)今天。
+>
 
 ## <a name="overview"></a>概述
 

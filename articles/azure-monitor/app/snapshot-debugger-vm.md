@@ -1,6 +1,6 @@
 ---
 title: 启用 Azure Service Fabric、 云服务和虚拟机中的.NET 应用的快照调试器 |Microsoft Docs
-description: 启用快照调试程序，以便在 Azure Service Fabric、 云服务和虚拟机中的.NET 应用程序
+description: 在 Azure Service Fabric、云服务和虚拟机中为 .NET 应用启用快照调试器
 services: application-insights
 documentationcenter: ''
 author: brahmnes
@@ -12,16 +12,18 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
-ms.openlocfilehash: ac937ddb1bcaed6813a0de4d631f820eff01e26f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c6ff8696775c0631a173bc44f7d8c67174ad19e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783494"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444488"
 ---
-# <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>启用快照调试程序，以便在 Azure Service Fabric、 云服务和虚拟机中的.NET 应用程序
+# <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>在 Azure Service Fabric、云服务和虚拟机中为 .NET 应用启用快照调试器
 
-如果您的 ASP.NET 或 ASP.NET core 应用程序运行 Azure 应用服务中的，还可以使用下面的说明。 除非您的应用程序需要的自定义的快照调试程序配置，强烈建议对[通过 Application Insights 门户页启用 Snapshot Debugger](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。 如果你的应用程序在 Azure Service Fabric、 云服务、 虚拟机中运行或本地计算机，则应使用以下说明。 
+如果您的 ASP.NET 或 ASP.NET core 应用程序运行 Azure 应用服务中的，强烈建议对[通过 Application Insights 门户页启用 Snapshot Debugger](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。 但是，如果你的应用程序需要自定义的快照调试程序配置或.NET core 的预览版本，然后此指令应后接***此外***有关的说明的[通过启用Application Insights 门户页](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。
+
+如果应用程序在 Azure Service Fabric、云服务、虚拟机或本地计算机中运行，则应使用以下说明。 
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>为 ASP.NET 应用程序配置快照集合
 
@@ -29,7 +31,7 @@ ms.locfileid: "60783494"
 
 2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
-3. 如果需要自定义添加到的快照调试程序配置[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)。默认快照调试程序配置主要是为空，所有的设置是可选的。 下面是一个示例，演示配置等效于默认配置：
+3. 如果需要，可自定义添加到 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 的快照调试器配置。默认快照调试器配置大多为空，并且所有设置都是可选的。 以下示例显示与默认配置等效的配置：
 
     ```xml
     <TelemetryProcessors>
@@ -66,7 +68,7 @@ ms.locfileid: "60783494"
 4. 仅当向 Application Insights 报告了异常时，才收集快照。 在某些情况下（例如，.NET 平台为较早版本时），可能需要[配置异常收集](../../azure-monitor/app/asp-net-exceptions.md#exceptions)，才能在门户的查看附带快照的异常。
 
 
-## <a name="configure-snapshot-collection-for-aspnet-core-20-applications"></a>为 ASP.NET Core 2.0 应用程序配置快照集合
+## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>配置快照收集应用程序使用 ASP.NET Core 2.0 或更高版本
 
 1. 如果尚未启用，请[在 ASP.NET Core Web 应用中启用 Application Insights](../../azure-monitor/app/asp-net-core.md)。
 
@@ -76,54 +78,72 @@ ms.locfileid: "60783494"
 2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
 3. 修改应用程序的 `Startup` 类，添加并配置快照收集器的遥测处理器。
+    1. 如果[Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包的版本 1.3.5 或更高版本，则添加以下 using 语句`Startup.cs`。
 
-    将以下 using 语句添加到 `Startup.cs`
+       ```csharp
+            using Microsoft.ApplicationInsights.SnapshotCollector;
+       ```
 
-   ```csharp
-   using Microsoft.ApplicationInsights.SnapshotCollector;
-   using Microsoft.Extensions.Options;
-   using Microsoft.ApplicationInsights.AspNetCore;
-   using Microsoft.ApplicationInsights.Extensibility;
-   ```
+       中的 ConfigureServices 方法的末尾添加以下`Startup`类中`Startup.cs`。
 
-   将以下 `SnapshotCollectorTelemetryProcessorFactory` 类添加到 `Startup` 类。
+       ```csharp
+            services.AddSnapshotCollector((configuration) =>
+            {
+                IConfigurationSection section = Configuration.GetSection(nameof(SnapshotCollectorConfiguration));
+                if (section.Value != null)
+                {
+                    section.Bind(configuration);
+                }
+            });
 
-   ```csharp
-   class Startup
-   {
-       private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
+       ```
+    2. 如果[Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包的版本为 1.3.4 或以下，则添加以下 using 语句`Startup.cs`。
+
+       ```csharp
+       using Microsoft.ApplicationInsights.SnapshotCollector;
+       using Microsoft.Extensions.Options;
+       using Microsoft.ApplicationInsights.AspNetCore;
+       using Microsoft.ApplicationInsights.Extensibility;
+       ```
+    
+       将以下 `SnapshotCollectorTelemetryProcessorFactory` 类添加到 `Startup` 类。
+    
+       ```csharp
+       class Startup
        {
-           private readonly IServiceProvider _serviceProvider;
-
-           public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
-               _serviceProvider = serviceProvider;
-
-           public ITelemetryProcessor Create(ITelemetryProcessor next)
+           private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
            {
-               var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
-               return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
+               private readonly IServiceProvider _serviceProvider;
+    
+               public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
+                   _serviceProvider = serviceProvider;
+    
+               public ITelemetryProcessor Create(ITelemetryProcessor next)
+               {
+                   var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
+                   return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
+               }
+           }
+           ...
+        ```
+        将 `SnapshotCollectorConfiguration` 和 `SnapshotCollectorTelemetryProcessorFactory` 服务添加到启动管道：
+    
+        ```csharp
+           // This method gets called by the runtime. Use this method to add services to the container.
+           public void ConfigureServices(IServiceCollection services)
+           {
+               // Configure SnapshotCollector from application settings
+               services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
+    
+               // Add SnapshotCollector telemetry processor.
+               services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
+    
+               // TODO: Add other services your application needs here.
            }
        }
-       ...
-    ```
-    将 `SnapshotCollectorConfiguration` 和 `SnapshotCollectorTelemetryProcessorFactory` 服务添加到启动管道：
+       ```
 
-    ```csharp
-       // This method gets called by the runtime. Use this method to add services to the container.
-       public void ConfigureServices(IServiceCollection services)
-       {
-           // Configure SnapshotCollector from application settings
-           services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
-
-           // Add SnapshotCollector telemetry processor.
-           services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
-
-           // TODO: Add other services your application needs here.
-       }
-   }
-   ```
-
-4. 如果需要自通过将 SnapshotCollectorConfiguration 节添加到 appsettings.json 中定义的快照调试程序配置。 快照调试程序配置中的所有设置都是可选的。 下面是一个示例，演示配置等效于默认配置：
+4. 如果需要，可通过在 appsetings.json 中添加 SnapshotCollectorConfiguration 节来自定义快照调试器配置。 快照调试器配置中的所有设置都是可选的。 以下示例显示与默认配置等效的配置：
 
    ```json
    {
@@ -171,6 +191,6 @@ ms.locfileid: "60783494"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 生成到的应用程序，都会触发异常的流量。 然后，等待 10 到 15 分钟以便快照发送到 Application Insights 实例。
-- 请参阅[快照](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json)在 Azure 门户中。
-- 有关排查 Profiler 问题的帮助，请参阅[快照调试程序故障排除](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)。
+- 为应用程序生成可触发异常的流量。 然后等待 10 到 15 分钟，这样快照就会发送到 Application Insights 实例。
+- 请参见 Azure 门户中的[快照](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal)。
+- 快照调试程序问题疑难解答的帮助，请参阅[快照调试程序故障排除](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)。

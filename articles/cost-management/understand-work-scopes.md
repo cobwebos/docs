@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 699707953ae06afa9cbf3cc7286f94917ba0efca
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991384"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490112"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -100,19 +100,19 @@ Azure 订阅将嵌套在注册帐户下。 计费用户有权访问的订阅和�
 
 计费用户没有对管理组的访问，因为它们不属于显式特定计费帐户。 必须显式到管理组授予访问权限。 管理组所有嵌套的订阅中的汇总成本。 但是，它们仅包括基于使用情况的购买。 它们不包括如保留项和第三方 Marketplace 产品/服务购买。 若要查看这些成本，请使用 EA 计费帐户。
 
-## <a name="individual-agreement-pay-as-you-go-scopes"></a>单独的协议 （即用即付） 作用域
+## <a name="individual-agreement-scopes"></a>单独的协议作用域
 
-即用即付 (PAYG) 订阅，包括相关的类型如免费/试用版和开发/测试产品/服务，没有显式的计费帐户作用域。 相反，每个订阅具有的帐户所有者或帐户管理员，如 EA 帐户所有者。
+创建从单个产品/服务的 azure 订阅例如即用即付和相关类型，如免费试用版和开发/测试产品/服务，没有显式的计费帐户作用域。 相反，每个订阅具有的帐户所有者或帐户管理员，如 EA 帐户所有者。
 
 - [**计费帐户**](../billing/billing-view-all-accounts.md) -表示为一个或多个 Azure 订阅的单个帐户所有者。 它当前不支持多个人员或对聚合的成本视图访问权限授予访问权限。
 
     资源类型：不适用
 
-PAYG 订阅帐户管理员可以查看和管理计费数据，如发票和付款、 从[Azure 帐户中心](https://account.azure.com/subscriptions)。 但是，它们不能查看成本数据或管理在 Azure 门户中的资源。 若要授予访问权限的帐户管理员，使用前面提到的成本管理角色。
+单个 Azure 订阅帐户管理员可以查看和管理计费数据，如发票和付款、 从[Azure 帐户中心](https://account.azure.com/subscriptions)。 但是，它们不能查看成本数据或管理在 Azure 门户中的资源。 若要授予访问权限的帐户管理员，使用前面提到的成本管理角色。
 
-与 EA，不同 PAYG 订阅帐户管理员可以看到其在 Azure 门户中的发票。 请记住，成本管理读取者和成本管理参与者角色不提供发票的访问权限。 有关详细信息，请参阅[如何授予访问 PAYG 发票](../billing/billing-manage-access.md#give-access-to-billing)。
+与 EA，不同的个人 Azure 订阅帐户管理员可以看到其在 Azure 门户中的发票。 请记住，成本管理读取者和成本管理参与者角色不提供发票的访问权限。 有关详细信息，请参阅[如何授予访问发票](../billing/billing-manage-access.md##give-read-only-access-to-billing)。
 
-## <a name="customer-agreement-scopes"></a>客户协议作用域
+## <a name="microsoft-customer-agreement-scopes"></a>Microsoft 客户协议作用域
 
 Microsoft 客户协议计费帐户具有以下作用域：
 
@@ -148,7 +148,7 @@ Azure 订阅都嵌套在发票节，就像它们正在 EA 注册帐户下。 计
 
 ## <a name="switch-between-scopes-in-cost-management"></a>切换在成本管理中的作用域
 
-在 Azure 门户中的所有成本管理视图都包括**作用域**药丸在左上方的视图。 使用它来快速更改作用域。 单击**作用域**药丸来打开范围选择器。 它显示计费帐户，根管理组，并不嵌套在根管理组下的任何订阅。 若要选择一个作用域，单击背景来突出显示它，然后单击**选择**底部。 要向下钻入到嵌套作用域，例如资源组在订阅中，单击作用域名称链接。 若要选择任何嵌套级别的父作用域，请单击**选择此选项&lt;作用域&gt;** 范围选取器的顶部。
+在 Azure 门户中的所有成本管理视图都包括**作用域**选择药丸在左上方的视图。 使用它来快速更改作用域。 单击**作用域**药丸来打开范围选择器。 它显示计费帐户，根管理组，并不嵌套在根管理组下的任何订阅。 若要选择一个作用域，单击背景来突出显示它，然后单击**选择**底部。 要向下钻入到嵌套作用域，例如资源组在订阅中，单击作用域名称链接。 若要选择任何嵌套级别的父作用域，请单击**选择此选项&lt;作用域&gt;** 范围选取器的顶部。
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>标识作用域的资源 ID
 

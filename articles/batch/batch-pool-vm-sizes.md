@@ -12,15 +12,15 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 07/01/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 033e0865f23034b94e3133e0ba5890eca4e746ea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1848891a0a37235c9769b3cee18262239e19df5a
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080890"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502665"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
 
@@ -51,8 +51,8 @@ ms.locfileid: "67080890"
 | [内存优化大小](../virtual-machines/linux/sizes-memory.md) | 无 | 不可用 |
 | Fsv2 系列 | 所有大小 | 任意 |
 | H 系列 | 所有大小 | 任意 |
-| Hb 系列 | 所有大小 | “用户订阅”模式 |
-| Hc 系列 | 所有大小 | “用户订阅”模式 |
+| Hb 系列<sup>2</sup> | 所有大小 | 任意 |
+| Hc 系列<sup>2</sup> | 所有大小 | 任意 |
 | Ls 系列 | 所有大小 | 任意 |
 | Lsv2 系列 | 无 | 不可用 |
 | M 系列 | Standard_M64ms （低优先级仅），Standard_M128s （仅低优先级） | 任意 |  

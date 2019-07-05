@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/05/2019
-ms.openlocfilehash: bd0e8099be5422d561541aeb8911c9a1610befcb
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 29fdb200075a5b5843944a7a890cc2f8ad61f1ee
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272761"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543855"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>部署模型使用自定义 Docker 映像
 
@@ -55,14 +55,14 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
 
     当使用映像存储在__工作区的容器注册表__，不需要对注册表进行身份验证。 身份验证处理由工作区。
 
-    > [!TIP]
-    > 你的工作区的容器注册表创建第一次训练或部署模型使用的工作区。 如果已创建新的工作区中，但不是受过培训或创建某一模型，无 Azure 容器注册表将存在的工作区。
+    > [!WARNING]
+    > 是你的工作区 Azure 容器 Rzegistry__训练或部署一个模型，首次创建__使用的工作区。 如果已创建新的工作区中，但不是受过培训或创建某一模型，无 Azure 容器注册表将存在的工作区。
 
     检索工作区的 Azure 容器注册表名称的信息，请参阅[获取容器注册表名称](#getname)本文的部分。
 
     当使用映像存储在__独立容器注册表__，将需要配置至少具有读取访问权限的服务主体。 然后向从注册表使用映像的任何人提供的服务主体 ID （用户名） 和密码。 例外情况是如果您使容器注册表可公开访问。
 
-    创建专用 Azure 容器注册表的信息，请参阅[创建专用容器注册表](/azure/container-registry/container-registery-get-started-azure-cli)。
+    创建专用 Azure 容器注册表的信息，请参阅[创建专用容器注册表](/azure/container-registry/container-registry-get-started-azure-cli)。
 
     有关使用服务主体的 Azure 容器注册表的信息，请参阅[使用服务主体的 Azure 容器注册表身份验证](/azure/container-registry/container-registry-auth-service-principal)。
 
@@ -80,8 +80,8 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
 
 在本部分中，了解如何获取 Azure 机器学习服务工作区的 Azure 容器注册表的名称。
 
-> [!TIP]
-> 你的工作区的容器注册表创建第一次训练或部署模型使用的工作区。 如果已创建新的工作区中，但不是受过培训或创建某一模型，无 Azure 容器注册表将存在的工作区。
+> [!WARNING]
+> 你的工作区的 Azure 容器注册表是__训练或部署一个模型，首次创建__使用的工作区。 如果已创建新的工作区中，但不是受过培训或创建某一模型，无 Azure 容器注册表将存在的工作区。
 
 如果已训练或部署使用 Azure 机器学习服务模型，已为你的工作区创建容器注册表。 若要查找此容器注册表的名称，请使用以下步骤：
 
@@ -153,9 +153,9 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
     Run ID: cda was successful after 2m56s
     ```
 
-构建使用 Azure 容器注册表的映像的详细信息，请参阅[生成并运行使用 Azure 容器注册表任务的容器映像](/docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli.md)
+构建使用 Azure 容器注册表的映像的详细信息，请参阅[生成并运行使用 Azure 容器注册表任务的容器映像](https://docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli)
 
-将现有的映像上传到 Azure 容器注册表的详细信息，请参阅[将第一个映像推送到专用 Docker 容器注册表](/azure/container-registry/container-registry-get-started-docker-cli.md)。
+将现有的映像上传到 Azure 容器注册表的详细信息，请参阅[将第一个映像推送到专用 Docker 容器注册表](/azure/container-registry/container-registry-get-started-docker-cli)。
 
 ## <a name="use-a-custom-image"></a>使用自定义映像
 
@@ -164,7 +164,7 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
 * __映像名称__。 例如，`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda`是 Microsoft 提供的一个基本 Docker 映像的路径。
 * 如果图像位于__专用存储库__，需要以下信息：
 
-    * 注册表__地址__。 例如，`myregistry.azureecr.io`。
+    * 注册表__地址__。 例如，`myregistry.azureecr.io` 。
     * 服务主体__用户名__并__密码__对注册表具有读取访问权限。
 
     如果没有此信息，Azure 容器注册表包含映像需求助管理员。

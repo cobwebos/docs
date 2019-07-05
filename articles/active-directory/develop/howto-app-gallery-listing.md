@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 005e5c92a16760d8eec5dc37526f4b1f2dbd751c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41b407b4343db4f594049c4b1027fe4279dab840
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540536"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482952"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>如何：在 Azure Active Directory 应用程序库中列出你的应用程序
 
@@ -117,21 +117,21 @@ ms.locfileid: "65540536"
 
 客户可以提交的通过单击列出的应用程序请求**应用程序请求的客户** -> **提交新请求**。
 
-![客户请求的应用磁贴](./media/howto-app-gallery-listing/customer-submit-request.png)
+![显示请求的客户应用程序磁贴](./media/howto-app-gallery-listing/customer-submit-request.png)
 
 下面是客户的流请求的应用程序-
 
-![客户要求的应用程序流](./media/howto-app-gallery-listing/customer-request.png)
+![向客户显示请求的应用程序流](./media/howto-app-gallery-listing/customer-request.png)
 
 ## <a name="timelines"></a>时间线
 
 在库中列出 SAML 2.0 或 WS-Fed 应用程序这一过程的时间线是 7-10 个工作日。
 
-   ![将 SAML 应用程序列到库中的时间线](./media/howto-app-gallery-listing/timeline.png)
+   ![列出到库的 SAML 应用程序时间线](./media/howto-app-gallery-listing/timeline.png)
 
 在库中列出 OpenID Connect 应用程序这一过程的时间线是 2-5 个工作日。
 
-   ![将 SAML 应用程序列到库中的时间线](./media/howto-app-gallery-listing/timeline2.png)
+   ![列出到库的 SAML 应用程序时间线](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>升级
 

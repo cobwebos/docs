@@ -3,7 +3,7 @@ title: Azure Active Directory 域服务：排查警报问题 | Microsoft Docs
 description: 排查 Azure AD 域服务的警报问题
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: ''
 editor: ''
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2019
-ms.author: mstephen
-ms.openlocfilehash: ed0ff8cde39f2660c2149e43399d937184620773
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 63f2e12b9b769e806f8bd052af5bc78aed6a1fe0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246699"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67472311"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD 域服务 - 排查警报问题
 本文提供有关排查托管域中可能出现的任何警报问题的指南。

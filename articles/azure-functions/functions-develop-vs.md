@@ -1,6 +1,6 @@
 ---
 title: 使用 Visual Studio 开发 Azure Functions | Microsoft Docs
-description: 了解如何开发和测试 Azure Functions 使用 Azure Functions Tools for Visual Studio 2019。
+description: 了解如何使用用于 Visual Studio 2019 的 Azure Functions 工具开发和测试 Azure Functions。
 services: functions
 documentationcenter: .net
 author: ggailey777
@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: c6104a977a02211dcab17a5f232991d0d9cbb852
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ed3b42c61456f110925e34473dbb326dafc1b80
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050718"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447713"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
-Azure Functions Tools for Visual Studio 2019 是 Visual Studio，可用于开发、 测试和部署的扩展C#到 Azure 的函数。 如果这是你第一次体验 Azure Functions，可以在 [Azure Functions 简介](functions-overview.md)中了解详细信息。
+Azure Functions 工具是 Visual Studio，可用于开发、 测试和部署的扩展C#到 Azure 的函数。 如果这是你第一次体验 Azure Functions，可以在 [Azure Functions 简介](functions-overview.md)中了解详细信息。
 
 Azure Functions 工具提供以下优势： 
 
@@ -29,26 +29,24 @@ Azure Functions 工具提供以下优势：
 * 开发和部署预先编译的 C# 函数。 与基于 C# 脚本的函数相比，预先编译的函数的冷启动性能更好。 
 * 可以在 C# 中编写函数的代码，同时利用 Visual Studio 开发环境的所有优势。 
 
-本文提供有关如何使用 Azure Functions Tools for Visual Studio 2019 开发的详细信息C#函数并将其发布到 Azure。 在阅读本文之前，应先完成 [Visual Studio 的函数快速入门](functions-create-your-first-function-visual-studio.md)。 
+本文详细介绍了如何使用用于 Visual Studio 2019 的 Azure Functions 工具开发 C# 函数并将其发布到 Azure。 在阅读本文之前，应先完成 [Visual Studio 的函数快速入门](functions-create-your-first-function-visual-studio.md)。 
 
 > [!IMPORTANT]
 > 不要将本地开发和门户开发混合在同一函数应用中。 从本地项目发布到函数应用时，部署过程会覆盖在门户中开发的任何函数。
 
 ## <a name="prerequisites"></a>必备组件
 
-Azure Functions 工具包含的 Azure 开发工作负荷[Visual Studio 2017](https://www.visualstudio.com/vs/)，或更高版本。 请确保您包括**Azure 开发**在 Visual Studio 2019 安装中的工作负荷：
+Azure Functions 工具包含在 [Visual Studio 2017](https://www.visualstudio.com/vs/) 或更高版本的 Azure 开发工作负荷中。 请确保你在安装 Visual Studio 2019 时随附了Azure 开发工作负荷  ：
 
-![使用 Azure 开发工作负载安装 Visual Studio 2019](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+![安装包含 Azure 开发工作负荷的 Visual Studio 2019](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 请确保 Visual Studio 为最新版本，并且使用的是[最新版本](#check-your-tools-version)的 Azure Functions 工具。
 
-### <a name="other-requirements"></a>其他要求
+### <a name="azure-resources"></a>Azure 资源
 
-若要创建和部署函数，还需要：
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-* 一个有效的 Azure 订阅。 如果没有 Azure 订阅，可以使用[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-* 一个 Azure 存储帐户。 若要创建存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
+在发布过程在订阅中创建需要一个 Azure 存储帐户，如其他资源。
 
 ### <a name="check-your-tools-version"></a>检查工具版本
 
@@ -80,12 +78,20 @@ Azure Functions 工具包含的 Azure 开发工作负荷[Visual Studio 2017](htt
 
 * **host.json**：用于配置 Functions 主机。 在本地和 Azure 中运行时，都会应用这些设置。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
 
-* **local.settings.json**：维护本地运行函数时使用的设置。 Azure 不使用这些设置，它们由 [Azure Functions 核心工具](functions-run-local.md)使用。 使用此文件指定的环境变量所需的函数应用设置。 针对项目中的函数绑定所需的每个连接，将新项添加到 **Values** 数组。 有关详细信息，请参阅“Azure Functions 核心工具”一文中的[本地设置文件](functions-run-local.md#local-settings-file)。
+* **local.settings.json**：维护本地运行函数时使用的设置。 在 Azure 中运行时，不使用这些设置。 有关详细信息，请参阅[本地设置文件](#local-settings-file)。
 
     >[!IMPORTANT]
     >由于 local.settings.json 文件可能包含机密，因此必须将其从项目源代码管理中排除。 此文件的“复制到输出目录”设置应始终为“如果较新则复制”   。 
 
 有关详细信息，请参阅 [Functions 类库项目](functions-dotnet-class-library.md#functions-class-library-project)。
+
+[!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
+
+当你发布项目时，不会自动上载在 local.settings.json 中的设置。 若要确保这些设置也位于 Azure 中的函数应用，您必须在发布你的项目之后上载它们。 若要了解详细信息，请参阅[Function app 设置](#function-app-settings)。
+
+**ConnectionStrings** 中的值永远不会发布。
+
+还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅[环境变量](functions-dotnet-class-library.md#environment-variables)。
 
 ## <a name="configure-the-project-for-local-development"></a>为本地开发配置项目
 
@@ -133,8 +139,9 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
         }
     }
     ```
+
     已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上例中，第一个参数具应用了 QueueTrigger 属性，表示触发了队列的函数  。 队列名称和连接字符串设置名称作为参数传递到“QueueTrigger”属性。  有关详细信息，请参阅 [Azure Functions 的 Azure 队列存储绑定](functions-bindings-storage-queue.md#trigger---c-example)。
-    
+
 可以使用上述过程向函数应用项目添加更多的函数。 项目中的每个函数可以有不同的触发器，但每个函数的触发器必须刚好一个。 有关详细信息，请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)。
 
 ## <a name="add-bindings"></a>添加绑定
@@ -183,11 +190,14 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 ## <a name="publish-to-azure"></a>发布到 Azure
 
+在从 Visual Studio 发布时，会使用两种部署方法之一：
+
+* [Web 部署](functions-deployment-technologies.md#web-deploy-msdeploy)： 包，并将 Windows 应用程序部署到任何 IIS 服务器。
+* [Zip 部署与运行中的包启用](functions-deployment-technologies.md#zip-deploy)： 对于 Azure Functions 部署，建议。
+
+使用以下步骤将你的项目发布到 Azure 中的函数应用。
+
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
-
-### <a name="deployment-technology"></a>部署技术
-
-在从 Visual Studio 发布时，两种技术之一用于执行部署：[Web 部署](functions-deployment-technologies.md#web-deploy-msdeploy)并[Zip 运行-从-随包一起部署已启用 （推荐）](functions-deployment-technologies.md#zip-deploy)。
 
 ## <a name="function-app-settings"></a>函数应用设置
 

@@ -4,17 +4,17 @@ description: 介绍从 Azure 自动化中的一个 Runbook 启动另一个 Runbo
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 84f17b76f03c01d0b1441a50b9bcbddc1dfe2ef3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64d9246284be58c8378ab102db25ab7e5220c9eb
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61081572"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477965"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook
 
@@ -116,7 +116,7 @@ Start-AzureRmAutomationRunbook `
 |:--- |:--- |:--- |
 | 作业 |子 Runbook 在父级所在的同一个作业中运行。 |为子 Runbook 创建单独的作业。 |
 | 执行 |父 Runbook 等待子 Runbook 完成，然后再继续。 |父 Runbook 会在子 Runbook 启动后立刻继续运行，或  父 Runbook 会等待子作业完成。 |
-| 输出 |父 Runbook 可以直接从子 Runbook 获取输出。 |父 Runbook 必须检索子 Runbook 作业的输出，或  父 Runbook 可以直接从子 Runbook 获取输出。 |
+| Output |父 Runbook 可以直接从子 Runbook 获取输出。 |父 Runbook 必须检索子 Runbook 作业的输出，或  父 Runbook 可以直接从子 Runbook 获取输出。 |
 | parameters |子 Runbook 参数的值需单独指定，并且可以使用任意数据类型。 |子 Runbook 参数的值必须组合成单个哈希表。 此哈希表只能包含简单数据类型、数组和利用 JSON 序列化的对象数据类型。 |
 | 自动化帐户 |父 Runbook 只能使用同一自动化帐户中的子 Runbook。 |父 Runbook 可以使用同一 Azure 订阅甚至（已连接的）不同订阅中的任何自动化帐户内的子 Runbook。 |
 | 发布 |在发布父 Runbook 之前必须先发布子 Runbook。 |必须在启动父 Runbook 前的任意时间发布子 Runbook。 |

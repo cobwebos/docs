@@ -2,18 +2,18 @@
 title: 有助于保护使用 Azure 备份的混合备份的安全功能
 description: 了解如何在 Azure 备份中使用安全功能，使备份更加安全
 services: backup
-author: trinadhk
+author: utraghuv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.author: trinadhk
-ms.openlocfilehash: 2ba94963238cd5ee96df5c178a072addc5ddd75e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: utraghuv
+ms.openlocfilehash: eaa0c0dc45b37491cd55033b49e2f78d219d416b
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60620622"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565719"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>有助于保护使用 Azure 备份的混合备份的安全功能
 对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防止此类攻击，Azure 备份现提供可保护混合备份的安全功能。 本文介绍如何通过 Azure 恢复服务代理和 Azure 备份服务器来启用和使用这些功能。 这些功能包括：

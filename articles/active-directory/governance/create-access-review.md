@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ef72f1649c3f3e0af7fba53b2e8dbcee49d4b59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c83a38b68fcc2e70b4e17bd62e11ac429dd32950
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734567"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471906"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>创建访问评审的组或 Azure AD 中的应用程序访问评审
 
@@ -43,7 +43,7 @@ ms.locfileid: "66734567"
 
 1. 单击“新建访问评审”创建新的访问评审。 
 
-    ![访问评审 - 控制](./media/create-access-review/access-reviews.png)
+    ![访问评审中标识管理窗格](./media/create-access-review/access-reviews.png)
 
 1. 命名访问评审。 可选择为评审提供说明。 名称和说明向评审者显示。
 
@@ -91,7 +91,7 @@ ms.locfileid: "66734567"
 
 1. 若要指定评审完成后发生的情况，请展开“完成后的设置”部分。 
 
-    ![完成后的设置](./media/create-access-review/upon-completion-settings.png)
+    ![创建访问评审-完成设置后](./media/create-access-review/upon-completion-settings.png)
 
 1. 若要自动删除被拒绝用户的访问权限，请将“将结果自动应用到资源”设置为“启用”。   若要在评审完成后手动应用结果，请将开关设置为“禁用”。 
 
@@ -106,7 +106,7 @@ ms.locfileid: "66734567"
 
 1. 若要指定其他设置，请展开“高级设置”部分。 
 
-    ![高级设置](./media/create-access-review/advanced-settings.png)
+    ![创建访问评审的高级设置](./media/create-access-review/advanced-settings.png)
 
 1. 将“显示建议”设置为“启用”，以基于用户的访问权限信息向评审者显示系统建议。  
 
@@ -122,7 +122,7 @@ ms.locfileid: "66734567"
 
 指定访问评审的设置后，单击“启动”。  访问评审会在其状态指示符列表中显示。
 
-![访问评审列表](./media/create-access-review/access-reviews-list.png)
+![访问评审的列表，以及它们的状态](./media/create-access-review/access-reviews-list.png)
 
 默认情况下，在评审开始后不久，Azure AD 会向评审者发送一封电子邮件。 如果选择不让 Azure AD 发送电子邮件，请务必通知评审者有一个访问评审任务等待他们完成。 说明如何显示[评审为组或应用程序的访问权限](perform-access-review.md)。 如果评审工作是让来宾评审他们自己的访问权限，显示它们如何的说明[评审自己的访问权限，对组或应用程序](review-your-access.md)。
 

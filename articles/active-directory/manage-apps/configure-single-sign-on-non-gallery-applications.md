@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e34e6257b4800387470cdc1b7d624bf3ebd1d3e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95b7cbcf4e485dc93d49b9559dcb7d0d4f597ebe
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65989284"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550352"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>在 Microsoft 标识平台中配置单一登录方式登录到非库应用程序
 
@@ -186,7 +186,7 @@ Microsoft 标识平台提供了两种机制来注册应用程序。
 3. 选择**用户和组 (\<数 > 所选)** 。 **用户和组**页出现后，显示可用的用户和组的列表。
 4. 若要查找的用户或组您想要从列表中分配的类型或滚动。
 5. 选择每个用户或组你想要添加，并选择**选择**按钮。 **用户和组**页将消失。
-6. 在中**添加分配**页上，选择**分配**。 **<application name> -用户和组**页将显示在列表中的其他用户显示。
+6. 在中**添加分配**页上，选择**分配**。 **\<应用程序名称 >-用户和组**页将显示在列表中的其他用户显示。
 
    ![应用程序用户和组](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 

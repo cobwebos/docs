@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: sogup
-ms.openlocfilehash: aa953440f03137f3359276bc9e06cb0c73f0ab4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: add2c72535b5be0edcbc00c077dfe20a6deaa3e0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61219031"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434186"
 ---
 # <a name="manage-azure-vm-backups"></a>管理 Azure VM 备份
 
@@ -103,25 +103,36 @@ ms.locfileid: "61219031"
 
 可通过两种方法来停止保护 VM：
 
-- 停止所有将来的备份作业并删除所有恢复点。 在这种情况下将无法还原 VM。
-- 停止所有将来的备份作业，并保留恢复点。 虽然将恢复点保留在保管库中需要付款，但你将能够根据需要还原 VM。 有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
+* **停止保护并保留备份数据**。 此选项将停止所有将来的备份作业从保护 VM;但是，Azure 备份服务将保留已备份的恢复点。  你将需要支付在保管库中保留恢复点 (请参阅[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)有关详细信息)。 您可以根据需要还原 VM。 如果你决定恢复 VM 的保护，则可以使用*恢复备份*选项。
+* **停止保护并删除备份数据**。 此选项将停止所有将来的备份作业从保护 VM，并删除所有恢复点。 你将无法还原的 VM，也不使用*恢复备份*选项。
 
 >[!NOTE]
 >如果在不停止备份的情况下删除数据源，则新备份将会失败。 旧恢复点将根据策略过期，但始终会保留一个最后的恢复点，直至你显式停止备份并删除数据。
 >
 
-若要停止保护 VM，请执行以下操作：
+### <a name="stop-protection-and-retain-backup-data"></a>停止保护并保留备份数据
+
+若要停止保护并保留 VM 的数据：
 
 1. 在[保管库项的仪表板](#view-vms-on-the-dashboard)上，选择“停止备份”。 
-2. 选择是保留还是删除备份数据，并根据需要确认你的选择。 如果需要，添加注释。 如果不确定项名称，将鼠标悬停在感叹号上面即可查看该名称。
+2. 选择**保留备份数据**，并根据需要确认你的选择。 如果需要，添加注释。 如果不确定项名称，将鼠标悬停在感叹号上面即可查看该名称。
 
-    ![停止保护](./media/backup-azure-manage-vms/retain-or-delete-option.png)
+    ![保留备份数据](./media/backup-azure-manage-vms/retain-backup-data.png)
 
-     一条通知将让你获悉备份作业已停止。
+一条通知将让你获悉备份作业已停止。
+
+### <a name="stop-protection-and-delete-backup-data"></a>停止保护并删除备份数据
+
+若要停止保护并删除 VM 的数据：
+
+1. 在[保管库项的仪表板](#view-vms-on-the-dashboard)上，选择“停止备份”。 
+2. 选择**删除备份数据**，并根据需要确认你的选择。 输入备份项的名称，然后根据需要添加注释。
+
+    ![删除备份数据](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
 ## <a name="resume-protection-of-a-vm"></a>恢复对 VM 的保护
 
-如果你在停止 VM 时保留了备份数据，则以后可以恢复保护。 如果删除了备份数据，则无法恢复保护。
+如果你选择了[停止保护并保留备份数据](#stop-protection-and-retain-backup-data)期间停止 VM 保护选项，则可以使用**恢复备份**。 选择此选项不可[停止保护并删除备份数据](#stop-protection-and-delete-backup-data)选项或[删除备份数据](#delete-backup-data)。
 
 若要恢复 VM 保护，请执行以下操作：
 
@@ -134,23 +145,25 @@ ms.locfileid: "61219031"
 
 ## <a name="delete-backup-data"></a>删除备份数据
 
-你可以在“停止备份”  作业期间或者在备份作业完成后删除 VM 的备份数据。 在删除备份数据之前，请记住以下详细信息：
+有两种方法来删除虚拟机的备份数据：
 
-- 在删除恢复点之前等待数天或数周可能是一个不错的主意。
-- 与还原恢复点的过程不同，在删除备份数据时，不能选择要删除的具体恢复点。 如果删除备份数据，则会删除所有关联的恢复点。
+- 从保管库项仪表板中，选择停止备份并按照说明[停止保护并删除备份数据](#stop-protection-and-delete-backup-data)选项。
 
-停止或禁用 VM 的备份作业后，可以删除备份数据：
+  ![选择“停止备份”](./media/backup-azure-manage-vms/stop-backup-buttom.png)
 
+- 从保管库项仪表板中，选择删除备份数据。 如果你选择了为启用此选项[停止保护并保留备份数据](#stop-protection-and-retain-backup-data)期间停止 VM 保护选项
 
-1. 在[保管库项仪表板](#view-vms-on-the-dashboard)中，选择“删除备份数据”。 
+  ![选择“删除备份”](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-    ![选择“删除备份”](./media/backup-azure-manage-vms/delete-backup-buttom.png)
+  - 在[保管库项仪表板](#view-vms-on-the-dashboard)中，选择“删除备份数据”。 
+  - 键入备份项的名称以确认你要删除恢复点。
 
-1. 键入备份项的名称以确认你要删除恢复点。
+    ![删除备份数据](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
-    ![确认你要删除恢复点](./media/backup-azure-manage-vms/item-verification-box.png)
+  - 若要删除项的备份数据，请选择“删除”  。 一条通知消息将让你获悉备份数据已删除。
 
-1. 若要删除项的备份数据，请选择“删除”  。 一条通知消息将让你获悉备份数据已删除。
+  > [!NOTE]
+  > 删除备份数据时将删除所有关联的恢复点。 不能选择要删除的特定恢复点。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[通过 VM 的设置备份 Azure VM](backup-azure-vms-first-look-arm.md)。

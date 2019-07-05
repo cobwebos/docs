@@ -3,15 +3,15 @@ title: 启用 VMware Vm 复制到 Azure 中使用 Azure Site Recovery 的灾难�
 description: 本文介绍如何使用 Azure Site Recovery 将 VMware VM 复制到 Azure，以实现灾难恢复。
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 05/10/2019
+ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: add0f8252bdae6857b28deeb7de4c1d09973e452
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f4e4afb4d94a7b2e2a6b246a371cf6234577463
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540768"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491736"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -37,11 +37,13 @@ ms.locfileid: "65540768"
 ## <a name="enable-replication"></a>启用复制
 
 在遵循本部分中的步骤之前，请注意以下信息：
-* Azure Site Recovery 现在会将所有新复制项直接复制到托管磁盘。 进程服务器将复制日志写入到目标区域中的缓存存储帐户。 这些日志用于在副本托管磁盘中创建恢复点。
+* Azure Site Recovery 现在会将所有新复制项直接复制到托管磁盘。 进程服务器将复制日志写入到目标区域中的缓存存储帐户。 这些日志用于在具有 asrseeddisk 的命名约定的副本托管磁盘中创建恢复点。
+* 将复制到托管磁盘的 Powershell 支持，但可从[Az.RecoveryServices 模块 2.0.0 版及更高版本](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 
 * 故障转移时，所选的恢复点将用于创建目标托管磁盘。
 * 以前配置为复制到目标存储帐户的 VM 不受影响。
 * 只能通过表述性状态转移 (REST) API 或 Powershell 复制到新虚拟机的存储帐户。 使用 Azure REST API 版本 2016-08-10 或 2018-01-10 复制到存储帐户。
 
+请按以下步骤启用复制：
 1. 转到“步骤 2：  复制应用程序” >   “源”。 首次启用复制后，请在保管库中选择“+复制”，对其他虚拟机启用复制  。
 2. 在“源”  页 >“源”  中，选择配置服务器。
 3. 对于“计算机类型”，请选择“虚拟机”或“物理机”。   

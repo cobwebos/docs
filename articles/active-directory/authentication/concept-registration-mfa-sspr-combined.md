@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2d1a5a342bfe4527c15a0721a8f852a269bef67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc0e80ec7a378d44000565034ce47d95c78b777e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113519"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537019"
 ---
 # <a name="combined-security-information-registration-preview"></a>组合的安全信息注册 （预览版）
 
@@ -136,6 +136,8 @@ SSPR 策略要求用户定期查看其安全信息，如果用户是在登录期
 ## <a name="next-steps"></a>后续步骤
 
 [启用你的租户中的组合的注册](howto-registration-mfa-sspr-combined.md)
+
+[SSPR 和 MFA 使用情况和见解报告](howto-authentication-methods-usage-insights.md)
 
 [多重身份验证和 SSPR 的可用方法](concept-authentication-methods.md)
 

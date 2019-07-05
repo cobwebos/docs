@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 42c3f0ce70467c6a90bcc4e2e6b8a21d7570edc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d560c61339bd608ab9385f99583613526156ca41
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606180"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508054"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集
 
@@ -393,7 +393,6 @@ static void Main(string[] args)
 
 ### <a name="run-jobs"></a>运行作业
 * [使用 .NET SDK 在 HDInsight 中运行 Apache Hive 作业](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
-* [使用 .NET SDK 在 HDInsight 中运行 Apache Pig 作业](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)
 * [使用 .NET SDK 在 HDInsight 中运行 Apache Sqoop 作业](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
 * [在 HDInsight 中运行 Apache Oozie 作业](hdinsight-use-oozie-linux-mac.md)
 

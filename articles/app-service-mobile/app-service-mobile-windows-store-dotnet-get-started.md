@@ -3,7 +3,7 @@ title: 创建使用 Azure 移动应用的通用 Windows 平台 (UWP) | Microsoft
 description: 按照本教程进行操作，开始使用 C#、Visual Basic 或 JavaScript 通过 Azure 移动应用后端进行通用 Windows 平台 (UWP) 应用开发。
 services: app-service\mobile
 documentationcenter: windows
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 47124296-2908-4d92-85e0-05c4aa6db916
@@ -12,18 +12,22 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: crdun
-ms.openlocfilehash: be579b631fd910c56f2c360d6aace5b8d35c22e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 2b718a000bb5805cc615a59aebb2d5dcca6906a4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236000"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440207"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>通过 Azure 后端创建 Windows 应用
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
+
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started)今天。
+>
 
 ## <a name="overview"></a>概述
 

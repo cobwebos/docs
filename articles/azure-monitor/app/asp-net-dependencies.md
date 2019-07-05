@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 479b810c5a66917bde5754d32991fb489ea26c9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8ba5b19ad5d8f03203e9a028fbc5aec84e5ec06
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299276"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565375"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
@@ -104,7 +104,7 @@ ms.locfileid: "66299276"
 | --- | --- |
 | Azure Web 应用 |在 web 应用控件面板中，[打开 Application Insights 边栏选项卡](../../azure-monitor/app/azure-web-apps.md)并启用在.NET 下的 SQL 命令 |
 | IIS 服务器 （Azure VM、 在本地，依次类推。） | [在应用程序正在运行的服务器上安装状态监视器](../../azure-monitor/app/monitor-performance-live-website-now.md)并重新启动 IIS。
-| Azure 云服务 |[使用启动任务](../../azure-monitor/app/cloudservices.md)到[安装状态监视器](monitor-performance-live-website-now.md#download) |
+| Azure 云服务 | 添加[启动任务来安装 StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> 您的应用程序应要加入到 ApplicationInsights SDK 在生成时通过安装的 NuGet 包[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)或[ASP.NET Core 应用程序](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
 | IIS Express | 不支持
 
 在上述情况下，验证该检测引擎的正确方式是正确安装了它是通过验证的 SDK 版本收集`DependencyTelemetry`是 rddp。 rdddsd 或 rddf 指示依赖项收集通过 DiagnosticSource 或 EventSource 回调，并因此不会捕获完整 SQL 查询。
@@ -113,47 +113,25 @@ ms.locfileid: "66299276"
 
 * [应用程序地图](app-map.md)直观显示应用与相邻组件之间的依赖关系。
 * [事务诊断](transaction-diagnostics.md)显示统一、 相关服务器数据。
-* [浏览器边栏选项卡](javascript.md#ajax-performance)显示从用户浏览器发出的 AJAX 调用。
+* [浏览器选项卡](javascript.md#ajax-performance)显示来自用户的浏览器的 AJAX 调用。
 * 单击缓慢或失败的请求可以检查其依赖性调用。
-* [Analytics](#analytics) 可用于查询依赖性数据。
+* [Analytics](#logs-analytics) 可用于查询依赖性数据。
 
 ## <a name="diagnosis"></a>诊断慢速请求
 
-每个请求事件是应用处理请求时跟踪到的依赖项调用、异常和其他事件相关联。 因此如果某些请求格式不执行操作，您可以找出是否是由于某个依赖项的响应速度慢。
-
-让我们演练一个相关的示例。
+每个请求事件都与应用处理请求时跟踪的依赖项调用、异常和其他事件相关联。 因此如果某些请求格式不执行操作，您可以找出是否是由于某个依赖项的响应速度慢。
 
 ### <a name="tracing-from-requests-to-dependencies"></a>从发往依赖项的请求开始跟踪
 
-打开“性能”边栏选项卡，并查看请求网格：
+打开**性能**选项卡上，并导航到**依赖项**顶部旁边操作选项卡。
 
-![包含平均值和计数的请求列表](./media/asp-net-dependencies/02-reqs.png)
+单击**依赖项名称**整体下。 选择一个依赖项后该依赖项持续时间的分布图会显示在右侧。
 
-上面的那个时间长。 让我们看看是否可以查明花费时间的部分。
+![然后在图表中的依赖项名称顶部的依赖关系选项卡上的选项卡上单击性能](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-单击该行，查看单独的请求事件：
+单击蓝色**示例**按钮右下方，然后单击以查看端到端事务详细信息的示例。
 
-![请求事件的列表](./media/asp-net-dependencies/03-instances.png)
-
-单击任何一个长时间运行的实例以做进一步调查，并向下滚动到与此请求相关的远程依赖项调用：
-
-![查找对远程依赖项的调用，标识异常持续时间](./media/asp-net-dependencies/04-dependencies.png)
-
-似乎处理此请求的大部分时间都花在对本地服务的调用上。
-
-选择该行，获取详细信息：
-
-![单击该远程依赖项，标识原因](./media/asp-net-dependencies/05-detail.png)
-
-看起来此依赖项是问题所在。 我们已经查明了问题，现在只需调查该调用为何花费了这么长时间。
-
-### <a name="request-timeline"></a>请求时间线
-
-在不同的情况下，依赖项调用的持续时间都不是很长。 但切换到时间线视图后，可以发现内部进程中发生的延迟：
-
-![查找对远程依赖项的调用，标识异常持续时间](./media/asp-net-dependencies/04-1.png)
-
-似乎在第一次依赖项调用后经过了一个较长的时间间隔，我们应在代码中调查原因是什么。
+![单击以查看端到端事务详细信息的示例](./media/asp-net-dependencies/3-end-to-end.png)
 
 ### <a name="profile-your-live-site"></a>分析实时站点
 
@@ -161,35 +139,35 @@ ms.locfileid: "66299276"
 
 ## <a name="failed-requests"></a>失败的请求
 
-失败的请求还可能与依赖项的失败调用相关联。 同样，我们可以单击相应的项来跟踪问题。
+失败的请求还可能与依赖项的失败调用相关联。
 
-![单击失败的请求图表](./media/asp-net-dependencies/06-fail.png)
+我们可以前往**故障**在左侧选项卡，然后单击**依赖项**顶部选项卡。
 
-单击某个失败的请求，并查看其关联的事件。
+![单击失败的请求图表](./media/asp-net-dependencies/4-fail.png)
 
-![单击请求类型、单击实例以访问同一实例的不同视图、单击它以获取异常详细信息。](./media/asp-net-dependencies/07-faildetail.png)
+此处将能够查看失败的依赖项计数。 若要获取有关失败的匹配项，尝试单击下表中的依赖项名称的更多详细信息。 可以单击蓝色**依赖项**按钮右下角以获取端到端事务详细信息。
 
-## <a name="analytics"></a>分析
+## <a name="logs-analytics"></a>日志 （分析）
 
 可以跟踪 [Kusto 查询语言](/azure/kusto/query/)中的依赖项。 下面是一些示例。
 
 * 查找所有失败的依赖项调用：
 
-```
+``` Kusto
 
     dependencies | where success != "True" | take 10
 ```
 
 * 查找 AJAX 调用：
 
-```
+``` Kusto
 
     dependencies | where client_Type == "Browser" | take 10
 ```
 
 * 查找与请求关联的依赖项调用：
 
-```
+``` Kusto
 
     dependencies
     | where timestamp > ago(1d) and  client_Type != "Browser"
@@ -200,17 +178,13 @@ ms.locfileid: "66299276"
 
 * 查找与页面视图关联的 AJAX 调用：
 
-```
+``` Kusto 
 
     dependencies
     | where timestamp > ago(1d) and  client_Type == "Browser"
     | join (browserTimings | where timestamp > ago(1d))
       on operation_Id
 ```
-
-## <a name="video"></a>视频
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -220,7 +194,6 @@ ms.locfileid: "66299276"
 
 ## <a name="open-source-sdk"></a>开源 SDK
 每个 Application Insights SDK，如依赖项集合模块也是开源的。 阅读和参与代码，或报告问题[官方 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet-server)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

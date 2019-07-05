@@ -1,5 +1,5 @@
 ---
-title: 媒体服务中的资产 - Azure | Microsoft Docs
+title: Azure 媒体服务中的资产 |Microsoft Docs
 description: 本文介绍何为资产以及 Azure 媒体服务如何使用这些资产。
 services: media-services
 documentationcenter: ''
@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 07/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2afcf2066238414cd08e32901ffccf2a44718b6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bd9774cf045d9ed7f16a637fcb2eb1378b48686
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551762"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565813"
 ---
 # <a name="assets"></a>资产
 
@@ -87,9 +87,22 @@ curl -X PUT \
 
 有关完整示例，请参阅[从本地文件创建作业输入](job-input-from-local-file-how-to.md)。 在媒体服务 v3 中，还可以从 HTTPS URL 创建作业的输入（请参阅[从 HTTPS URL 创建作业输入](job-input-from-http-how-to.md)）。
 
-## <a name="filtering-ordering-paging"></a>筛选、排序、分页
+## <a name="map-v3-asset-properties-to-v2"></a>V3 资产属性映射到 v2
 
-请参阅[媒体服务实体的筛选、排序、分页](entities-overview.md)。
+下表显示如何[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)的 v3 中的属性将映射到 v2 中的资产的属性。
+
+|v3 属性|v2 属性|
+|---|---|
+|id-（唯一） 的完整 Azure 资源管理器路径中，请参阅示例[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
+|名称-（唯一） 请参阅[命名约定](media-services-apis-overview.md#naming-conventions) ||
+|alternateId|AlternateId|
+|assetId|（唯一） 值以开始 id-`nb:cid:UUID:`前缀。|
+|created|已创建|
+|description|名称|
+|lastModified|LastModified|
+|storageAccountName|StorageAccountName|
+|storageEncryptionFormat| 选项-创建选项|
+|type||
 
 ## <a name="storage-side-encryption"></a>存储端加密
 
@@ -104,6 +117,10 @@ curl -X PUT \
 <sup>1</sup> 虽然媒体服务确实支持处理明文形式（未经过任何形式的加密）的内容，但不建议这样做。
 
 <sup>2</sup> 在媒体服务 v3 中，仅当资产是使用媒体服务 v2 创建的时才支持存储加密（AES-256 加密）以实现向后兼容性。 这意味着 v3 会处理现有的存储加密资产，但不会允许创建新资产。
+
+## <a name="filtering-ordering-paging"></a>筛选、排序、分页
+
+请参阅[媒体服务实体的筛选、排序、分页](entities-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

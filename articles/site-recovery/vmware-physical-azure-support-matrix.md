@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 06/27/2019
 ms.author: raynew
-ms.openlocfilehash: 3ff6a1a52048e805f9236349d4fc8d45a14b78ea
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5dc98048099264942552862498b5137b4954c200
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341453"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491645"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -145,7 +145,7 @@ BTRFS | 从支持 BTRFS[更新汇总 34](https://support.microsoft.com/help/4490
 主机网络 VLAN | 是的。
 主机网络 IPv4 | 是的。
 主机网络 IPv6 | 不。
-来宾/服务器网络 NIC 组合 | 否。
+来宾/服务器网络 NIC 组合 | 不。
 来宾/服务器网络 IPv4 | 是的。
 来宾/服务器网络 IPv6 | 不。
 来宾/服务器网络静态 IP (Windows) | 是的。
@@ -186,8 +186,8 @@ Docker 磁盘配置 | 否
 来宾/服务器 SMB 3.0 | 否
 来宾/服务器 RDM | 是<br/><br/> 不适用于物理服务器
 > 1 TB 的来宾/服务器磁盘 | 是<br/><br/>最大 4,095 GB<br/><br/> 磁盘必须大于 1024 MB。
-逻辑和物理扇区大小均为 4K 的来宾/服务器磁盘 | 是
-来宾/服务器磁盘使用 4k 逻辑和 512 字节物理扇区大小 | 是
+逻辑和物理扇区大小均为 4K 的来宾/服务器磁盘 | 否
+来宾/服务器磁盘使用 4k 逻辑和 512 字节物理扇区大小 | 否
 包含 > 4 TB 的条带化磁盘的来宾/服务器卷 <br/><br/>逻辑卷管理 (LVM)| 是
 来宾/服务器 - 存储空间 | 否
 来宾/服务器热添加/删除磁盘 | 否
@@ -218,7 +218,7 @@ Docker 磁盘配置 | 否
 高级存储 | 是
 导入/导出服务 | 否
 适用于 Vnet 的 azure 存储防火墙 | 是的。<br/> 目标存储/缓存存储帐户 （用来存储复制数据） 上配置。
-常规用途 v2 存储帐户 （热和冷层） | 否
+常规用途 v2 存储帐户 （热和冷层） | 是 （事务成本是 v2 与 V1 相比要高得多）
 
 ## <a name="azure-compute"></a>Azure 计算
 
