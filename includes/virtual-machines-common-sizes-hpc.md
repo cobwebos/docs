@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn;amverma
 ms.custom: include file
-ms.openlocfilehash: 9b4bdee19c883252e7de140ac7b19babd43d1df8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0383fd2ca348cd69f07ed61a7935e4fec7999b9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755167"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538051"
 ---
 Azure H 系列虚拟机 (Vm) 旨在提供领导类性能，MPI 可伸缩性和成本效率的真实 HPC 工作负荷有多种。
 
@@ -33,7 +33,7 @@ ACU：199-216
 
 高级存储缓存：支持
 
-| 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率 （g h z，峰值） | 单核频率 （g h z，峰值） | RDMA 性能 (GB/s) | MPI 支持 | 临时存储 (GB) | 最大数据磁盘数 | 最大以太网 Nic |
+| Size | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率 （g h z，峰值） | 单核频率 （g h z，峰值） | RDMA 性能 (Gb/s) | MPI 支持 | 临时存储 (GB) | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | 全部 | 700 | 4 | 第 |
 
@@ -48,7 +48,7 @@ ACU：297-315
 高级存储缓存：支持
 
 
-| 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率 （g h z，峰值） | 单核频率 （g h z，峰值） | RDMA 性能 (GB/s) | MPI 支持 | 临时存储 (GB) | 最大数据磁盘数 | 最大以太网 Nic |
+| Size | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率 （g h z，峰值） | 单核频率 （g h z，峰值） | RDMA 性能 (Gb/s) | MPI 支持 | 临时存储 (GB) | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | 全部 | 700 | 4 | 第 |
 
@@ -63,7 +63,7 @@ ACU：290-300
 
 高级存储缓存：不支持
 
-| 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率 （g h z，峰值） | 单核频率 （g h z，峰值） | RDMA 性能 (GB/s) | MPI 支持 | 临时存储 (GB) | 最大数据磁盘数 | 最大以太网 Nic |
+| Size | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率 （g h z，峰值） | 单核频率 （g h z，峰值） | RDMA 性能 (Gb/s) | MPI 支持 | 临时存储 (GB) | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8 | 8 | Intel Xeon E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x，MS MPI | 1000 | 32 | 2 |
 | Standard_H16 | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  - | Intel 5.x，MS MPI | 2000 | 64 | 4 |

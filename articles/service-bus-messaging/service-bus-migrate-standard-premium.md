@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991421"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566066"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>将现有 Azure 服务总线标准命名空间迁移到高级层
 以前，Azure 服务总线提供仅在标准层命名空间。 命名空间是适用于低吞吐量和开发人员环境的多租户设置。 高级级别提供的每个可预测的延迟和更高的吞吐量，以固定价格的命名空间的专用的资源。 高级层适用于高吞吐量和生产环境需要额外的企业级功能。
@@ -117,6 +117,28 @@ ms.locfileid: "65991421"
 1. 查看摘要页上的更改。 选择**完成迁移**要切换的命名空间，以完成迁移。
     ![命名空间的切换菜单切换][]迁移完成时，会显示确认页。
     ![开关命名空间-成功][]
+
+## <a name="caveats"></a>注意事项
+
+某些 Azure 服务总线标准级别提供的功能不受 Azure 服务总线高级层。 这些是设计由于高级级别提供可预测的吞吐量和延迟的专用的资源。
+
+下面是高级和及其缓解方法-不支持的功能的列表 
+
+### <a name="express-entities"></a>快速实体
+
+   在高级版中不支持不提交到存储的任何消息数据的快速实体。 同时确保数据已永久，按预期从任何企业消息传送系统的重要的吞吐量改进提供了专用的资源。
+   
+   在迁移期间，任何标准命名空间中你快速实体将在上创建高级命名空间作为非快速实体。
+   
+   如果使用 Azure 资源管理器 (ARM) 模板，请确保你从部署配置中删除 enableExpress 标志，以便能够正确执行自动化工作流。
+
+### <a name="partitioned-entities"></a>分区的实体
+
+   标准层，以提供更好的可用性，在多租户安装程序中支持已分区的实体。 与每个命名空间在高级层中可用的专用资源的预配，这是不再需要的。
+   
+   在迁移期间，对标准命名空间中的任何已分区的实体上创建高级命名空间作为未分区的实体。
+   
+   如果你的 ARM 模板设置为特定的队列或主题 enablePartitioning' 为 'true'，然后它将被忽略的中转站。
 
 ## <a name="faqs"></a>常见问题解答
 

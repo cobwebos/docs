@@ -9,18 +9,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0a76ecd12143e0bbaa9997bfc6d7295df9c4ec7
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1a9caf83c6f4cd4ed15290afc872043c11234552
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340864"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508701"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>使用样本数据测试流分析查询
 
 通过使用 Azure Stream Analytics，可以从输入数据采样或上传示例数据在 Azure 门户中测试查询，而无需启动或停止作业。
 
-## <a name="upload-sample-data-and-test-the-query"></a>上传样本数据并测试查询
+## <a name="upload-or-sample-data-from-a-live-source-to-test-the-query"></a>上传或从实时源测试查询的示例数据
 
 1. 登录到 Azure 门户。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "67340864"
 
 4. 若要测试你的查询可以既采样实时输入或从文件上的传的数据。 此数据必须以 JSON、CSV 或 AVRO 进行序列化。 示例输入必须以 UTF-8 进行编码，并且不能进行压缩。 仅支持使用逗号 (,) 分隔符来测试门户上的 CSV 输入。
 
-    1. 使用实时输入： 右键单击任意输入。 然后选择**示例数据从输入**。 在下一屏幕中，可以设置示例的持续时间。
+    1. 使用实时输入： 右键单击任意输入。 然后选择**示例数据从输入**。 在下一屏幕中，可以设置示例的持续时间。 采样来自实时源的事件将检索最多 1000 个事件或 1 MB （具体取决于第一个），因此采样的数据可能无法表示指定的完全时间间隔。
 
     1. 使用文件： 右键单击任意输入。 并选择“上传文件中的样本数据”  。 
 

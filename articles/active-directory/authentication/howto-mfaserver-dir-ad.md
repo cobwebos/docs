@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82aa566c5bcd6347a6f62b2f693a7ad796347438
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eac6cff0f0f12daaf772549f547aafd670600d61
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055995"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536973"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
 
@@ -31,6 +31,9 @@ ms.locfileid: "67055995"
 默认情况下，Azure 多重身份验证 (MFA) 服务器配置为从 Active Directory 导入或同步用户。  使用“目录集成”选项卡可覆盖默认行为，以及绑定到其他 LDAP 目录、ADAM 目录或特定的 Active Directory 域控制器。  它还允许将 LDAP 身份验证用于代理 LDAP 或将 LDAP 绑定用作 RADIUS 目标、将预身份验证用于 IIS 身份验证，或者将主要身份验证用于用户门户。  下表描述了各项设置。
 
 ![编辑 LDAP 配置在 MFA 服务器](./media/howto-mfaserver-dir-ad/dirint.png)
+
+> [!NOTE]
+> 目录集成不保证能够使用 Active Directory 域服务以外的目录。
 
 | Feature | 描述 |
 | --- | --- |

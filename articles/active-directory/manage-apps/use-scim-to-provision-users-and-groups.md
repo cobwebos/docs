@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a62f44783d63131812794a4b55f0e9f9f3b45f27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a51401bcb8d282fef10b0b06e646b652bf5f8e8
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742482"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513393"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -259,10 +259,10 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 
 #### <a name="get-user"></a>获取用户
 
-###### <a name="request"></a>请求
+###### <a name="request-1"></a>请求
 *GET /Users/5d48a0a8e9f04aa38008* 
 
-###### <a name="response"></a>响应
+###### <a name="response-1"></a>响应
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -290,10 +290,10 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ```
 #### <a name="get-user-by-query"></a>通过查询获取用户
 
-##### <a name="request"></a>请求
+##### <a name="request-2"></a>请求
 *GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
-##### <a name="response"></a>响应
+##### <a name="response-2"></a>响应
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -329,10 +329,10 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 
 #### <a name="get-user-by-query---zero-results"></a>获取用户查询的零个结果
 
-##### <a name="request"></a>请求
+##### <a name="request-3"></a>请求
 *GET/用户？ 筛选器 = 用户名 eq"不存在用户"*
 
-##### <a name="response"></a>响应
+##### <a name="response-3"></a>响应
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -347,7 +347,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 
 #### <a name="update-user-multi-valued-properties"></a>更新用户多值属性
 
-##### <a name="request"></a>请求
+##### <a name="request-4"></a>请求
 *修补程序/用户/6764549bef60420686bc HTTP/1.1*
 ```json
 {
@@ -367,7 +367,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 }
 ```
 
-##### <a name="response"></a>响应
+##### <a name="response-4"></a>响应
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -396,7 +396,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 
 #### <a name="update-user-single-valued-properties"></a>更新用户单值属性
 
-##### <a name="request"></a>请求
+##### <a name="request-5"></a>请求
 *修补程序/用户/5171a35d82074e068ce2 HTTP/1.1*
 ```json
 {
@@ -409,7 +409,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 }
 ```
 
-##### <a name="response"></a>响应
+##### <a name="response-5"></a>响应
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -439,10 +439,10 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 
 #### <a name="delete-user"></a>删除用户
 
-##### <a name="request"></a>请求
+##### <a name="request-6"></a>请求
 *DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
 
-##### <a name="response"></a>响应
+##### <a name="response-6"></a>响应
 *HTTP/1.1 204 无内容*
 
 ### <a name="group-operations"></a>组操作
@@ -454,7 +454,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 
 #### <a name="create-group"></a>创建组
 
-##### <a name="request"></a>请求
+##### <a name="request-7"></a>请求
 *POST /Groups HTTP/1.1*
 ```json
 {
@@ -468,7 +468,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 }
 ```
 
-##### <a name="response"></a>响应
+##### <a name="response-7"></a>响应
 *HTTP/1.1 201 已创建*
 ```json
 {
@@ -488,10 +488,10 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 
 #### <a name="get-group"></a>获取组
 
-##### <a name="request"></a>请求
+##### <a name="request-8"></a>请求
 *GET/组/40734ae655284ad3abcc？ excludedAttributes = 成员 HTTP/1.1*
 
-##### <a name="response"></a>响应
+##### <a name="response-8"></a>响应
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -509,10 +509,10 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 
 #### <a name="get-group-by-displayname"></a>获取组的显示名称
 
-##### <a name="request"></a>请求
+##### <a name="request-9"></a>请求
 *GET /Groups？ excludedAttributes = 成员筛选器 = displayName eq"displayName"HTTP/1.1*
 
-##### <a name="response"></a>响应
+##### <a name="response-9"></a>响应
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -536,7 +536,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ```
 #### <a name="update-group-non-member-attributes"></a>更新组 [非成员属性]
 
-##### <a name="request"></a>请求
+##### <a name="request-10"></a>请求
 *PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
 {
@@ -549,12 +549,12 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 }
 ```
 
-##### <a name="response"></a>响应
+##### <a name="response-10"></a>响应
 *HTTP/1.1 204 无内容*
 
 ### <a name="update-group-add-members"></a>更新组 [添加成员。
 
-##### <a name="request"></a>请求
+##### <a name="request-11"></a>请求
 *修补/组/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -570,12 +570,12 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 }
 ```
 
-##### <a name="response"></a>响应
+##### <a name="response-11"></a>响应
 *HTTP/1.1 204 无内容*
 
 #### <a name="update-group-remove-members"></a>更新组 [删除成员]
 
-##### <a name="request"></a>请求
+##### <a name="request-12"></a>请求
 *修补/组/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -591,15 +591,15 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 }
 ```
 
-##### <a name="response"></a>响应
+##### <a name="response-12"></a>响应
 *HTTP/1.1 204 无内容*
 
 #### <a name="delete-group"></a>删除组
 
-##### <a name="request"></a>请求
+##### <a name="request-13"></a>请求
 *DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
-##### <a name="response"></a>响应
+##### <a name="response-13"></a>响应
 *HTTP/1.1 204 无内容*
 
 
@@ -1331,7 +1331,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 | mailNickname |externalId |
 | manager |manager |
 | mobile |phoneNumbers[type eq "mobile"].value |
-| objectId |ID |
+| objectId |id |
 | postalCode |addresses[type eq "work"].postalCode |
 | proxy-Addresses |emails[type eq "other"].Value |
 | physical-Delivery-OfficeName |addresses[type eq "other"].Formatted |
@@ -1348,7 +1348,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 | mail |emails[type eq "work"].value |
 | mailNickname |displayName |
 | members |members |
-| objectId |ID |
+| objectId |id |
 | proxyAddresses |emails[type eq "other"].Value |
 
 ## <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>允许 IP 地址由 Azure AD 预配服务以便 SCIM 请求

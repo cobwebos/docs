@@ -12,52 +12,54 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 07/03/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c0e5035331cbe4f54926f0ae60ae0c5c31f6a9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60eeb420c723e22b771b4b86b55c2ce7d6a23659
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119723"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536823"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：提供向 Azure AD 应用程序的可选声明
+# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：向 Azure AD 应用提供可选声明
 
-应用程序开发人员可以使用此功能来指定要在发送到其应用程序的令牌中添加哪些声明。 使用可选声明可以：
+应用程序开发人员可以使用其 Azure AD 应用程序中的可选声明来指定哪些声明他们希望在发送到其应用程序的令牌。 
+
+使用可选声明可以：
 
 - 选择要包含在应用程序令牌中的附加声明。
 - 更改 Azure AD 在令牌中返回的某些声明的行为。
 - 添加和访问应用程序的自定义声明。
 
-有关标准声明的列表，请参阅[访问令牌](access-tokens.md)并[id_token](id-tokens.md)声明文档。 
+如需标准声明的列表，请参阅[访问令牌](access-tokens.md)和 [id_token](id-tokens.md) 声明文档。 
 
-尽管可选声明支持同时 v1.0 和 v2.0 格式标记，以及 SAML 令牌中，但它们提供大部分其值从 1.0 版到 2.0 版移动时。 [v2.0 Azure AD 终结点](active-directory-appmodel-v2-overview.md)的目标之一是缩小令牌大小，以确保客户端获得最佳性能。 因此，以前包含在访问令牌和 ID 令牌中的多个声明不再在 v2.0 令牌中提供，必须根据应用程序专门请求这些声明。
+虽然可选声明在 v1.0 和 v2.0 格式的令牌以及 SAML 令牌中均受支持，但在从 v1.0 迁移到 v2.0 时，可以充分发挥其价值。 目标之一[v2.0 Microsoft 标识平台终结点](active-directory-appmodel-v2-overview.md)是缩小令牌大小，以确保获得最佳性能的客户端。 因此，以前包含在访问令牌和 ID 令牌中的多个声明不再在 v2.0 令牌中提供，必须根据应用程序专门请求这些声明。
 
 **表 1：适用性**
 
-| 帐户类型 | V1.0 令牌 | V2.0 令牌  |
+| 帐户类型 | v1.0 令牌 | v2.0 令牌  |
 |--------------|---------------|----------------|
-| Microsoft 个人帐户  | 不适用  | 支持|
+| Microsoft 个人帐户  | 不适用  | 支持 |
 | Azure AD 帐户      | 支持 | 支持 |
 
-## <a name="v10-and-v20-optional-claims-set"></a>V1.0 和 V2.0 可选声明集
+## <a name="v10-and-v20-optional-claims-set"></a>v1.0 和 v2.0 的可选声明集
 
-下面列出了默认可对应用程序使用的可选声明集。 若要为应用程序添加自定义可选声明，请参阅下面的[目录扩展](#configuring-directory-extension-optional-claims)。 时将声明添加到**访问令牌**，这将应用于请求的访问令牌*有关*的应用程序 (web API)，不是那些*通过*应用程序。 这可确保无论哪个客户端访问你的 API，正确的数据都存在于用于对你的 API 进行身份验证的访问令牌中。
+下面列出了默认可对应用程序使用的可选声明集。 若要为应用程序添加自定义可选声明，请参阅下面的[目录扩展](#configuring-directory-extension-optional-claims)。 在向**访问令牌**添加声明时，这将适用于应用程序 (Web API) 请求的访问令牌  ，而不是应用程序发出的  访问令牌。 这可确保无论哪个客户端访问你的 API，正确的数据都存在于用于对你的 API 进行身份验证的访问令牌中。
 
 > [!NOTE]
-> 其中的大多数声明可包含在 v1.0 和 v2.0 令牌的 JWT 中，但不可包含在 SAML 令牌中，“令牌类型”列中指明的声明除外。 使用者帐户支持这些声明，在"用户类型"列中标记的一个子集。  许多所列声明不适用于使用者用户 (它们有没有租户，因此`tenant_ctry`没有值)。  
+> 其中的大多数声明可包含在 v1.0 和 v2.0 令牌的 JWT 中，但不可包含在 SAML 令牌中，“令牌类型”列中指明的声明除外。 使用者帐户支持部分在“用户类型”列中标记的此类声明。  许多列出的声明不适用于使用者用户（他们没有租户，因此 `tenant_ctry` 没有值）。  
 
-**表 2：V1.0 和 V2.0 可选声明集**
+**表 2: v1.0 和 v2.0 可选声明集**
 
 | 名称                       |  描述   | 令牌类型 | 用户类型 | 说明  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
 | `home_oid`                 | 对于来宾用户，表示该用户在用户主租户中的对象 ID。| JWT        |           | |
-| `sid`                      | 用于每个会话用户注销的会话 ID。 | JWT        |  个人和 Azure AD 帐户。   |         |
+| `sid`                      | 会话 ID，用于基于会话的用户注销。 | JWT        |  个人和 Azure AD 帐户。   |         |
 | `platf`                    | 设备平台    | JWT        |           | 限制为可以验证设备类型的托管设备。|
 | `verified_primary_email`   | 源自用户的 PrimaryAuthoritativeEmail      | JWT        |           |         |
 | `verified_secondary_email` | 源自用户的 SecondaryAuthoritativeEmail   | JWT        |           |        |
@@ -66,31 +68,31 @@ ms.locfileid: "66119723"
 | `fwd`                      | IP 地址。| JWT    |   | 添加请求方客户端（如果位于 VNET 中）的原始 IPv4 地址 |
 | `ctry`                     | 用户所在的国家/地区 | JWT |  | Azure AD 返回 `ctry` 可选声明（如果存在）且声明的值是标准的双字母国家/地区代码，例如 FR、JP、SZ 等。 |
 | `tenant_ctry`              | 资源租户所在的国家/地区 | JWT | | |
-| `xms_pdl`          | 首选数据位置   | JWT | | 对于多地域的租户，这是显示该用户所在的地理区域的 3 个字母代码。 有关详细信息，请参阅[首选的数据位置有关的 Azure AD Connect 文档](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation)。<br/>例如：`APC` 表示“亚太”。 |
+| `xms_pdl`          | 首选数据位置   | JWT | | 对于多地区租户，这是显示用户所在地理区域的 3 字母代码。 有关详细信息，请参阅[首选的数据位置有关的 Azure AD Connect 文档](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation)。<br/>例如：`APC` 表示“亚太”。 |
 | `xms_pl`                   | 用户首选语言  | JWT ||用户的首选语言（如果已设置）。 在来宾访问方案中，源自其主租户。 已格式化 LL-CC（“en-us”）。 |
 | `xms_tpl`                  | 租户首选语言| JWT | | 资源租户的首选语言（如果已设置）。 已格式化 LL（“en”）。 |
 | `ztdid`                    | 零接触部署 ID | JWT | | 用于 [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 的设备标识 |
-| `email`                    | 此用户的可寻址电子邮件（如果此用户有）。  | JWT、SAML | MSA, AAD | 如果用户是租户中的来宾，则默认包含此值。  对于托管用户（租户内部的用户），必须通过此可选声明进行请求，或者仅在 v2.0 上使用 OpenID 范围进行请求。  对于托管用户，必须在 [Office 管理门户](https://portal.office.com/adminportal/home#/users)中设置电子邮件地址。| 
+| `email`                    | 此用户的可寻址电子邮件（如果此用户有）。  | JWT、SAML | MSA, Azure AD | 如果用户是租户中的来宾，则默认包含此值。  对于托管用户（租户内部的用户），必须通过此可选声明进行请求，或者仅在 v2.0 上使用 OpenID 范围进行请求。  对于托管用户，必须在 [Office 管理门户](https://portal.office.com/adminportal/home#/users)中设置电子邮件地址。| 
 | `groups`| 可选的组声明格式设置 |JWT、SAML| |与中的 GroupMembershipClaims 设置结合使用[应用程序清单](reference-app-manifest.md)，其必须也设置。 有关详细信息，请参阅[组声明](#Configuring-group-optional claims)下面。 组声明的详细信息请参阅[如何配置组声明](../hybrid/how-to-connect-fed-group-claims.md)
 | `acct`             | 租户中的用户帐户状态。 | JWT、SAML | | 如果用户是租户的成员，则该值为 `0`。 如果他们是来宾，则该值为 `1`。 |
 | `upn`                      | UserPrincipalName 声明。 | JWT、SAML  |           | 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。  |
 
 ### <a name="v20-optional-claims"></a>v2.0 可选声明
 
-始终包括在 1.0 版 Azure AD 令牌中，但不是包含在 v2.0 令牌中，除非请求这些声明。 这些声明是仅适用于 Jwt （ID 令牌和访问令牌）。 
+这些声明始终包含在 v1.0 Azure AD 令牌中，但除非提出请求，否则不会包含在 v2.0 令牌中。 这些声明仅适用于 JWT（ID 令牌和访问令牌）。 
 
-**表 3：仅限 V2.0 的可选声明**
+**表 3： 仅限 v2.0 的可选声明**
 
-| JWT 声明     | Name                            | 描述                                | 说明 |
+| JWT 声明     | 名称                            | 描述                                | 说明 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。   |       |
 | `onprem_sid`  | 本地安全标识符 |                                             |       |
 | `pwd_exp`     | 密码过期时间        | 密码过期的日期时间。 |       |
 | `pwd_url`     | 更改密码 URL             | 用户更改密码时可以访问的 URL。   |   |
-| `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果它们不声明不包括。   |  以 MFA 中的[可信 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 设置为基础。    |
+| `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果不是，则不包括该声明。   |  以 MFA 中的[可信 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 设置为基础。    |
 | `nickname`    | 别名                        | 用户的附加名称，不同于名字或姓氏。 | 
-| `family_name` | 姓氏                       | 提供了最后一个名称、 姓氏或家族名称的用户的用户对象中定义。 <br>"family_name":"Miller" | MSA 和 AAD 中受支持   |
-| `given_name`  | 名字                      | 提供了第一个或用户对象上设置为"给定"的用户的名称。<br>"given_name":"Frank"                   | MSA 和 AAD 中受支持  |
+| `family_name` | 姓氏                       | 根据用户对象中的定义提供用户的姓氏。 <br>"family_name":"Miller" | MSA 和 Azure AD 中受支持   |
+| `given_name`  | 名字                      | 根据用户对象中的设置提供用户的名字和“姓氏”。<br>"given_name":"Frank"                   | MSA 和 Azure AD 中受支持  |
 | `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于关键数据。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 |
 
 ### <a name="additional-properties-of-optional-claims"></a>可选声明的附加属性
@@ -124,10 +126,10 @@ ms.locfileid: "66119723"
 
 ## <a name="configuring-optional-claims"></a>配置可选声明
 
-可以通过修改应用程序清单来配置应用程序的可选声明 （请参阅下面的示例）。 有关详细信息，请参阅[了解 Azure AD 应用程序清单文章](reference-app-manifest.md)。
+可以通过修改应用程序清单来配置应用程序的可选声明 （请参阅下面的示例）。 有关详细信息，请参阅[了解 Azure AD 应用程序清单](reference-app-manifest.md)一文。
 
 > [!IMPORTANT]
-> 访问令牌**始终**生成使用的资源，而不是客户端清单。  因此，在请求`...scope=https://graph.microsoft.com/user.read...`资源是关系图。  因此，使用图形清单，不在客户端清单创建访问令牌。  更改你的应用程序的清单将永远不会导致图形看起来不同的令牌。  用于验证你`accessToken`更改都生效，请求您的应用程序、 不是另一个应用程序的令牌。  
+> 访问令牌**始终**使用资源而非客户端的清单生成。  而在请求 `...scope=https://graph.microsoft.com/user.read...` 中，资源为 Graph。  因此，访问令牌是使用 Graph 清单而不是客户端的清单创建的。  更改应用程序的清单绝不会导致 Graph 的令牌看起来有何不同。  若要验证 `accessToken` 更改是否生效，需请求你的应用程序的令牌，而不是另一应用的令牌。  
 
 **示例架构：**
 
@@ -179,22 +181,23 @@ ms.locfileid: "66119723"
 
 **表 6：OptionalClaim 类型属性**
 
-| 名称                 | 类型                    | 描述                                                                                                                                                                                                                                                                                                   |
+| Name                 | 类型                    | 描述                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |
 | `essential`            | Edm.Boolean             | 如果值为 true，则必须使用客户端指定的声明，以确保为最终用户请求的特定任务提供顺利的授权体验。 默认值为 false。                                                                                                             |
 | `additionalProperties` | 集合 (Edm.String) | 声明的附加属性。 如果此集合中存在某个属性，该属性将修改 name 属性中指定的可选声明的行为。                                                                                                                                               |
-## <a name="configuring-directory-extension-optional-claims"></a>配置目录扩展的可选声明
+## <a name="configuring-directory-extension-optional-claims"></a>配置目录扩展可选声明
 
-除了标准的可选声明集之外，还可以配置标记以包含目录架构扩展。 有关详细信息，请参阅[目录架构扩展](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)。 使用此功能可以附加应用可以使用的附加用户信息 – 例如，用户设置的附加标识符或重要配置选项。 
+除了标准的可选声明集以外，还可将令牌配置为包含目录架构扩展。 有关详细信息，请参阅[目录架构扩展](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)。 使用此功能可以附加应用可以使用的附加用户信息 – 例如，用户设置的附加标识符或重要配置选项。 
 
 > [!Note]
-> 目录架构扩展功能只能在 AAD 中使用，因此，如果应用程序清单请求自定义扩展，而 MSA 用户登录到你的应用，则不会返回这些扩展。
+> - 目录架构扩展是 Azure 的仅限 AD 功能，因此如果你的应用程序清单请求自定义扩展插件，而 MSA 用户登录到您的应用程序，将不返回这些扩展。
+> - Azure AD 的可选声明仅适用于 Azure AD 扩展和不起作用的使用 Microsoft Graph 目录扩展。 这两个 Api 需要`Directory.ReadWriteAll`仅可以由管理员同意的权限。
 
 ### <a name="directory-extension-formatting"></a>目录扩展格式设置
 
-对于扩展属性，请在应用程序清单中使用扩展的完整名称（格式：`extension_<appid>_<attributename>`）。 `<appid>`必须匹配请求声明的应用程序的 ID。 
+对于扩展属性，请在应用程序清单中使用扩展的完整名称（格式：`extension_<appid>_<attributename>`）。 `<appid>` 必须与请求该声明的应用程序的 ID 相匹配。 
 
 在 JWT 中，将使用以下命名格式发出这些声明：`extn.<attributename>`。
 
@@ -203,11 +206,12 @@ ms.locfileid: "66119723"
 ## <a name="configuring-group-optional-claims"></a>配置组的可选声明
 
    > [!NOTE]
-   > 若要发出的用户和组从本地同步的组名称的能力是公共预览版
+   > 若要发出的用户和组从本地同步的组名称的能力是公共预览版。
 
-本部分介绍了用于更改从默认组 objectID 属性从本地 Windows Active Directory 同步的组声明中使用的组属性的可选声明下的配置选项
+本部分介绍用于更改从默认组 objectID 属性从本地 Windows Active Directory 同步的组声明中使用的组属性的可选声明下的配置选项。
+
 > [!IMPORTANT]
-> 请参阅[使用 Azure Active Directory 中配置应用程序的组声明](../hybrid/how-to-connect-fed-group-claims.md)了解更多详细信息，包括从在本地属性的组声明的公共预览版的重要注意事项。
+> 请参阅[配置与 Azure AD 应用程序的组声明](../hybrid/how-to-connect-fed-group-claims.md)了解更多详细信息，包括从在本地属性的组声明的公共预览版的重要注意事项。
 
 1. 在门户中-> Azure Active Directory-> 应用程序注册-> 选择应用程序-> 清单
 
@@ -296,7 +300,7 @@ ms.locfileid: "66119723"
 
 本部分通过一个场景来演练如何对应用程序使用可选声明功能。
 可以使用多个选项来更新应用程序标识配置中的属性，以启用和配置可选声明：
--   可以修改应用程序清单。 下面的示例将使用此方法执行配置。 请先阅读[了解 Azure AD 应用程序清单文档](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)中的清单简介。
+-   可以修改应用程序清单。 以下示例将使用此方法进行配置。 请先阅读[了解 Azure AD 应用程序清单文档](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)中的清单简介。
 -   也可以编写使用[图形 API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) 的应用程序来更新应用程序。 图形 API 参考指南中的[实体和复杂类型参考](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type)可帮助你配置可选声明。
 
 **示例：** 在以下示例中，我们将修改某个应用程序的清单，以便将声明添加到用于该应用程序的访问令牌、ID 令牌和 SAML 令牌。

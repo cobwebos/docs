@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: d34da8928e06f04756e24f5cc3e4c430c2892f79
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4f502984a09f81b5aaf0568c84b75832f8164151
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341588"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541052"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>适用于 SQL API 的 Azure Cosmos DB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -48,13 +48,18 @@ ms.locfileid: "67341588"
 * 支持流。 
 * 对来自服务器的 CosmosResponseMessage 进行了更新以返回状态代码，并且仅在未返回响应时引发异常。 
 
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* SDK 的 System.Net.Http 版本现在与匹配的 NuGet 包中定义的内容。
+* 如果原始一个出现故障，则允许回退到不同的区域的写入请求。
+* 添加用于写入请求的会话重试策略。
+
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
 * 跟踪查询会导致空页的争用条件的修补程序
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* SDK 的 System.Net.Http 版本匹配的 NuGet 包中定义的内容
 * 增加小数精度为 LINQ 查询的大小。
 * 添加新的类 CompositePath、 CompositePathSortOrder、 SpatialSpec、 SpatialType 和 PartitionKeyDefinitionVersion
 * 已添加到 DocumentCollection TimeToLivePropertyPath
@@ -379,6 +384,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月  发出通知，以便顺�
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |2019 年 7 月 2日日 |--- |
 | [2.4.1](#2.4.1) |2019 年 6 月 20日日 |--- |
 | [2.4.0](#2.4.0) |2019 年 5 月 5， |--- |
 | [2.3.0](#2.3.0) |2019 年 4 月 4日日 |--- |

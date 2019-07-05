@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7ffb9684045031c5bca7a79a15db7cb16fc99e9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af7896ec4afaeefda7261542bf593a89a7bb9ae8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332361"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551786"
 ---
 # <a name="ueba-for-azure-resources-and-users"></a>用于 Azure 资源和用户的 UEBA 
 
@@ -55,8 +55,8 @@ Azure 安全中心与 Microsoft Cloud App Security 合作，可根据 Azure 资�
 
 这些警报默认已启用，但可将其禁用：
 
-1. 在“安全中心”边栏选项卡中，选择“安全策略”。  针对要更改的订阅，单击“编辑设置”。 
-2.  单击“威胁检测”。 
+1. 在安全中心边栏选项卡，选择**定价和设置**并选择适用的订阅。
+2. 单击“威胁检测”。 
 3. 在“启用集成”下，取消选中“允许 Microsoft Cloud App Security 访问我的数据”，然后单击“保存”。   
 
    ![威胁检测警报](./media/security-center-ueba-mcas/security-center-mcas-optout.png)

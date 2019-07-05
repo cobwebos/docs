@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: dd5f01c915c658903e87a91992753065c59dfa63
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6c475ab0a2e47cf654d1299a4c5638b34fb5e4b6
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054269"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508536"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -210,6 +210,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 > 
 > 
 
+### <a name="service-to-bgp-community-value"></a>服务与 BGP 社区值
 除了上述各项，Microsoft 还会根据其所属的服务加上标记及前缀。 这只适用于 Microsoft 对等互连。 下表提供了服务与 BGP 社区值之间的映射。
 
 | **服务** | **BGP 社区值** |

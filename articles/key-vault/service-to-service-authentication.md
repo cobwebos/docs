@@ -6,27 +6,23 @@ author: msmbaldwin
 manager: barbkess
 services: key-vault
 ms.author: mbaldwin
-ms.date: 03/05/2019
+ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: defb67c7e100a50a81d55afee03aa84be8e1e8e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79d4254de40ef787b30eb4f483c86383a928ee1f
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722465"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566220"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
-若要向 Azure Key Vault 进行身份验证，需提供 Azure Active Directory (AD) 凭据（共享机密或证书）。 管理此类凭据可能很困难，因此可以考虑将凭据绑定到应用中，方法是将其包括到源或配置文件中。
+若要向 Azure 密钥保管库进行身份验证需要一个 Azure Active Directory (AD) 凭据，一个共享的机密或证书。 
 
-用于 .NET 库的 `Microsoft.Azure.Services.AppAuthentication` 简化了此问题。 它使用开发人员的凭据在本地开发期间进行身份验证。 随后将解决方案部署到 Azure 时，该库会自动切换到应用程序凭据。  
+管理此类凭据可能很困难，因此可以考虑将凭据绑定到应用中，方法是将其包括到源或配置文件中。  用于 .NET 库的 `Microsoft.Azure.Services.AppAuthentication` 简化了此问题。 它使用开发人员的凭据在本地开发期间进行身份验证。 随后将解决方案部署到 Azure 时，该库会自动切换到应用程序凭据。    在本地开发期间使用开发人员凭据更安全，因为不需创建 Azure AD 凭据，或者不需在开发人员之间共享凭据。
 
-在本地开发期间使用开发人员凭据更安全，因为不需创建 Azure AD 凭据，或者不需在开发人员之间共享凭据。
-
-`Microsoft.Azure.Services.AppAuthentication` 库自动管理身份验证，这样你就可以专注于自己的解决方案而非凭据。
-
-`Microsoft.Azure.Services.AppAuthentication` 库支持使用 Microsoft Visual Studio、Azure CLI 或 Azure AD 集成身份验证进行本地开发。 部署到支持托管标识的 Azure 资源时，该库会自动使用 [Azure 资源的托管标识](../active-directory/msi-overview.md)。 不需代码或配置更改。 当托管标识不可用时，或者当开发人员的安全上下文不能在本地开发期间确定时，该库还支持直接使用 Azure AD [客户端凭据](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
+`Microsoft.Azure.Services.AppAuthentication` 库自动管理身份验证，这样你就可以专注于自己的解决方案而非凭据。  它支持本地开发和 Microsoft Visual Studio、 Azure CLI 或 Azure AD 集成身份验证。 部署到支持托管标识的 Azure 资源时，该库会自动使用 [Azure 资源的托管标识](../active-directory/msi-overview.md)。 不需代码或配置更改。 当托管标识不可用时，或者当开发人员的安全上下文不能在本地开发期间确定时，该库还支持直接使用 Azure AD [客户端凭据](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
 
 ## <a name="using-the-library"></a>使用库
 
@@ -53,22 +49,9 @@ ms.locfileid: "64722465"
 
 `GetAccessTokenAsync` 方法需要资源标识符。 若要了解详细信息，请参阅[哪些 Azure 服务支持 Azure 资源托管标识](../active-directory/msi-overview.md)。
 
-## <a name="samples"></a>示例
-
-以下示例显示操作中的 `Microsoft.Azure.Services.AppAuthentication` 库：
-
-1. [Use a managed identity to retrieve a secret from Azure Key Vault at runtime](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)（在运行时使用托管标识从 Azure Key Vault 检索机密）
-
-2. [Programmatically deploy an Azure Resource Manager template from an Azure VM with a managed identity](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet)（使用托管标识以编程方式从 Azure VM 部署 Azure 资源管理器模板）。
-
-3. [Use .NET Core sample and a managed identity to call Azure services from an Azure Linux VM](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/)（使用 .NET Core 示例和托管标识从 Azure Linux VM 调用 Azure 服务）。
-
 ## <a name="local-development-authentication"></a>本地开发身份验证
 
-对于本地开发，有两种主要的身份验证方案：
-
-- [向 Azure 服务进行身份验证](#authenticating-to-azure-services)
-- [向自定义服务进行身份验证](#authenticating-to-custom-services)
+对于本地开发，有两种主要身份验证方案：[向 Azure 服务进行身份验证](#authenticating-to-azure-services)，并[对自定义服务进行身份验证](#authenticating-to-custom-services)。
 
 ### <a name="authenticating-to-azure-services"></a>向 Azure 服务进行身份验证
 
@@ -114,7 +97,7 @@ az account set --subscription <subscription-id>
 az account list
 ```
 
-### <a name="authenticating-with-azure-ad-integrate-authentication"></a>使用 Azure AD 集成身份验证进行身份验证
+### <a name="authenticating-with-azure-ad-authentication"></a>使用 Azure AD 身份验证进行身份验证
 
 若要使用 Azure AD 身份验证，请验证：
 
@@ -135,9 +118,8 @@ az account list
 
     2.  使用 Azure CLI 登录：
 
-        ```
-        az login --service-principal -u <principal-id> --password <password>
-           --tenant <tenant-id> --allow-no-subscriptions
+        ```azurecli
+        az login --service-principal -u <principal-id> --password <password> --tenant <tenant-id> --allow-no-subscriptions
         ```
 
         由于服务主体可能没有订阅访问权限，因此请使用 `--allow-no-subscriptions` 参数。
@@ -150,27 +132,36 @@ az account list
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>使用托管标识或用户分配标识运行应用程序 
 
-在启用托管标识的 Azure 应用服务或 Azure VM 上运行代码时，库自动使用托管标识。 不需更改代码。 
+在启用托管标识的 Azure 应用服务或 Azure VM 上运行代码时，库自动使用托管标识。 
 
-或者，您可能会进行身份验证的用户分配的标识。 用户分配的标识的详细信息，请参阅[有关 Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。 中指定的连接字符串[连接字符串支持](#connection-string-support)下面一节。
+或者，您可能会进行身份验证的用户分配的标识。 用户分配的标识的详细信息，请参阅[有关 Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。 若要使用用户分配的标识进行身份验证，需要在连接字符串中指定的用户分配标识客户端 ID。 中指定的连接字符串[连接字符串支持](#connection-string-support)下面一节。
 
 ## <a name="running-the-application-using-a-service-principal"></a>使用服务主体运行应用程序 
 
 可能需要创建一个用于身份验证的 Azure AD 客户端凭据。 常见示例包括：
 
-1. 代码运行在本地开发环境中，但没有使用开发人员的标识。  例如，Service Fabric 使用 [NetworkService 帐户](../service-fabric/service-fabric-application-secret-management.md)进行本地开发。
+- 代码运行在本地开发环境中，但没有使用开发人员的标识。  例如，Service Fabric 使用 [NetworkService 帐户](../service-fabric/service-fabric-application-secret-management.md)进行本地开发。
  
-2. 代码在本地开发环境中运行，而身份验证则通过自定义服务进行，因此不能使用开发人员标识。 
+- 代码在本地开发环境中运行，而身份验证则通过自定义服务进行，因此不能使用开发人员标识。 
  
-3. 代码在尚不支持 Azure 资源托管标识的 Azure 计算资源（例如 Azure Batch）上运行。
+- 代码在尚不支持 Azure 资源托管标识的 Azure 计算资源（例如 Azure Batch）上运行。
 
-若要使用证书登录到 Azure AD，请执行以下操作：
+有三种主要方法使用服务主体运行应用程序。 若要使用其中任何一个，您必须首先[创建服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。
 
-1. 创建[服务主体证书](../azure-resource-manager/resource-group-authenticate-service-principal.md)。 
+### <a name="use-a-certificate-in-local-keystore-to-sign-into-azure-ad"></a>在本地密钥存储中使用证书登录到 Azure AD
 
-2. 将证书部署到  LocalMachine 或  CurrentUser 存储。 
+1. 创建服务主体证书使用 Azure CLI [az ad sp 创建-对于-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令。 
 
-3. 将名为 **AzureServicesAuthConnectionString** 的环境变量设置为：
+    ```azurecli
+    az ad sp create-for-rbac --create-cert
+    ```
+
+    这将创建将存储在主目录中的.pem 文件 （私钥）。 将此证书部署到任一*LocalMachine*或*CurrentUser*存储。 
+
+    > [!Important]
+    > CLI 命令生成的.pem 文件，但 Windows 只提供本机支持的 PFX 证书。 若要改为生成的 PFX 证书，请使用如下所示的 PowerShell 命令：[使用自签名证书创建服务主体](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)。 这些命令将该证书也会自动部署。
+
+1. 将名为 **AzureServicesAuthConnectionString** 的环境变量设置为：
 
     ```
     RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};
@@ -179,11 +170,11 @@ az account list
  
     将  {AppId}、  {TenantId} 和  {Thumbprint} 替换为步骤 1 中生成的值。 根据部署计划，将 *{CertificateStore}* 替换为 `LocalMachine` 或 `CurrentUser`。
 
-4. 运行应用程序。 
+1. 运行应用程序。 
 
-若要使用 Azure AD 共享机密凭据登录，请执行以下操作：
+### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>使用共享机密凭据登录到 Azure AD
 
-1. 创建[使用密码的服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md)，授予其 Key Vault 访问权限。 
+1. 使用密码使用创建服务主体证书[az ad sp 创建-对于-rbac-密码](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)。 
 
 2. 将名为 **AzureServicesAuthConnectionString** 的环境变量设置为：
 
@@ -197,6 +188,33 @@ az account list
 
 一切正确设置以后，不需进一步更改代码。  `AzureServiceTokenProvider` 使用环境变量和证书向 Azure AD 进行身份验证。 
 
+### <a name="use-a-certificate-in-key-vault-to-sign-into-azure-ad"></a>在密钥保管库中使用证书登录到 Azure AD
+
+此选项，可将服务主体的客户端证书存储在密钥保管库并将其用于服务主体身份验证。 可以在下列情况下使用：
+
+* 本地身份验证，如果想要使用显式的服务主体进行身份验证并且想要将服务主体凭据安全地保存在密钥保管库。 开发人员帐户必须具有访问密钥保管库。 
+* 如果想要使用显式凭据 （例如适用于跨租户方案），并且想要将服务主体凭据安全地保存在密钥保管库的 azure 身份验证。 托管的标识必须具有访问密钥保管库。 
+
+托管的标识或开发人员标识必须有权从密钥保管库中检索客户端证书。 AppAuthentication 库作为服务主体的客户端凭据使用检索到的证书。
+
+若要使用的服务主体身份验证的客户端证书
+
+1. 创建服务主体证书并自动将其存储在 key vault 使用 Azure CLI [az ad sp 为 rbac 创建-keyvault <keyvaultname> -cert <certificatename> -创建-证书-跳过分配](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令：
+
+    ```azurecli
+    az ad sp create-for-rbac --keyvault <keyvaultname> --cert <certificatename> --create-cert --skip-assignment
+    ```
+    
+    证书标识符将格式中的 URL `https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
+
+1. 替换为`{KeyVaultCertificateSecretIdentifier}`证书标识符与此连接字符串中：
+
+```
+RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
+```
+
+如果密钥保管库实例调用"myKeyVault"并创建名为 myCert 的证书，证书标识符应`https://myKeyVault.vault.azure.net/secrets/myCert`，并连接字符串将为`RunAs=App;AppId={TestAppId};TenantId={TenantId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert`。
+
 ## <a name="connection-string-support"></a>连接字符串支持
 
 默认情况下，`AzureServiceTokenProvider` 使用多种方法来检索令牌。 
@@ -205,18 +223,27 @@ az account list
 
 可以使用以下选项：
 
-| 连接&nbsp;字符串&nbsp;选项 | 场景 | 注释|
+| 连接字符串选项 | 场景 | 注释|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本地开发 | AzureServiceTokenProvider 使用 AzureCli 来获取令牌。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本地开发 | AzureServiceTokenProvider 使用 Visual Studio 来获取令牌。 |
 | `RunAs=CurrentUser` | 本地开发 | AzureServiceTokenProvider 使用 Azure AD 集成身份验证来获取令牌。 |
 | `RunAs=App` | [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/index.yml) | AzureServiceTokenProvider 使用托管标识来获取令牌。 |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Azure 资源的用户分配标识](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | AzureServiceTokenProvider 使用用户分配标识来获取令牌。 |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`   | 服务主体 | `AzureServiceTokenProvider` 使用证书从 Azure AD 获取令牌。 |
+| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | 自定义服务身份验证 | KeyVaultCertificateSecretIdentifier = 证书的机密标识符。 |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| 服务主体 | `AzureServiceTokenProvider` 使用证书从 Azure AD 获取令牌。 |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | 服务主体 | `AzureServiceTokenProvider` 使用证书从 Azure AD 获取令牌|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | 服务主体 |`AzureServiceTokenProvider` 使用机密从 Azure AD 获取令牌。 |
 
+## <a name="samples"></a>示例
 
+若要查看`Microsoft.Azure.Services.AppAuthentication`库在操作中，请参阅下面的代码示例。
+
+1. [Use a managed identity to retrieve a secret from Azure Key Vault at runtime](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)（在运行时使用托管标识从 Azure Key Vault 检索机密）
+
+2. [Programmatically deploy an Azure Resource Manager template from an Azure VM with a managed identity](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet)（使用托管标识以编程方式从 Azure VM 部署 Azure 资源管理器模板）。
+
+3. [Use .NET Core sample and a managed identity to call Azure services from an Azure Linux VM](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/)（使用 .NET Core 示例和托管标识从 Azure Linux VM 调用 Azure 服务）。
 
 ## <a name="next-steps"></a>后续步骤
 

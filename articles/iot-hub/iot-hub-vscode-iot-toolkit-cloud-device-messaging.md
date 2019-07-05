@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 5b74524a05317cf22160561a4a001e88f9215953
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8799fcb06235474bb33cdaf0406300065208024
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61440059"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543817"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具在设备和 IoT 中心之间发送和接收消息
 
@@ -62,11 +62,11 @@ ms.locfileid: "61440059"
 
 若要监视设备发送到 IoT 中心的消息，请执行以下步骤：
 
-1. 右键单击设备，然后选择“开始监视 D2C 消息”  。
+1. 右键单击你的设备，然后选择**启动监视的内置事件终结点**。
 
 2. 受监视的消息将显示在“输出”   > “Azure IoT 中心工具包”  视图中。
 
-3. 若要停止监视，请右键单击“输出”  视图，然后选择“停止监视 D2C 消息”  。
+3. 若要停止监视，请右键单击**输出**视图，然后选择**停止监视的内置事件终结点**。
 
 ## <a name="send-cloud-to-device-messages"></a>发送“云到设备”消息
 

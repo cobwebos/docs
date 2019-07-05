@@ -7,12 +7,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 5ffbee1b4fdfc08b111e199e73baae19341b1022
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85753e788284396262053aad8cf567ad5cd71fee
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65775664"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509282"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 数据目录中支持的数据源
 
@@ -152,7 +152,7 @@ ms.locfileid: "65775664"
       <td></td>
     </tr>
     <tr>
-      <td>SQL 数据仓库视图</td>
+      <td>Azure SQL 数据仓库视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -165,7 +165,7 @@ ms.locfileid: "65775664"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 和更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services KPI</td>
@@ -173,7 +173,7 @@ ms.locfileid: "65775664"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 和更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services 度量</td>
@@ -181,7 +181,7 @@ ms.locfileid: "65775664"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 和更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services 表</td>
@@ -189,7 +189,7 @@ ms.locfileid: "65775664"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 和更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services 报表</td>
@@ -197,7 +197,7 @@ ms.locfileid: "65775664"
       <td>✓</td>
       <td>✓</td>
       <td>浏览器</td>
-      <td>仅本机模式服务器。 不支持 SharePoint 模式。</td>
+      <td>仅本机模式服务器。 不支持 SharePoint 模式。 SQL Server 2008 和更高版本</td>
     </tr>
     <tr>
       <td>SQL Server 表</td>
@@ -205,7 +205,7 @@ ms.locfileid: "65775664"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server Data Tools</td>
-      <td></td>
+      <td>SQL Server 2008 和更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server 视图</td>
@@ -213,7 +213,7 @@ ms.locfileid: "65775664"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server Data Tools</td>
-      <td></td>
+      <td>SQL Server 2008 和更高版本。</td>
     </tr>
     <tr>
       <td>Teradata 表</td>

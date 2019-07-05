@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: rimman
-ms.openlocfilehash: 61f8e93fd82f7da632e0ab7e16ad6fbf4ca25646
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: adf0891203321ca02c47494f1865ca78a833e301
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165036"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561378"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
 
@@ -71,7 +71,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 可以合并两个模型。 同时对数据库和容器预配吞吐量。 以下示例演示如何对 Azure Cosmos 数据库和容器预配吞吐量：
 
 * 可以创建预配吞吐量为“K”RU 的名为“Z”的 Azure Cosmos 数据库。   
-* 接下来，在该数据库中创建名为 A、B、C、D、E 的五个容器。      创建容器 B 时，请确保启用**为此容器的预配专用的吞吐量**选项，并显式配置 *"P"* 此容器上预配吞吐量的 ru 数。 请注意，只有在创建数据库和容器时，您可以配置共享和专用吞吐量。 
+* 接下来，在该数据库中创建名为 A、B、C、D、E 的五个容器。      创建容器 B 时，请确保启用“为此容器预配专用吞吐量”  选项，并在此容器上显式配置“P”  个 RU 的预配吞吐量。 请注意，只有在创建数据库和容器时，才能配置共享吞吐量和专用吞吐量。 
 
    ![在容器级别设置吞吐量](./media/set-throughput/coll-level-throughput.png)
 
@@ -98,7 +98,6 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 |---------|---------|---------|
 |最小 RU 数 |400（前四个容器之后的每个容器均需要至少每秒 100 RU 的吞吐量。） |400|
 |每个容器的最小 RU 数|100|400|
-|使用 1 GB 存储所需的最小 RU 数|40|40|
 |最大 RU 数|对于数据库无限。|对于容器无限。|
 |分配或提供给特定容器的 RU 数|无保证。 为给定容器分配的 RU 数取决于多种属性。 属性可以是为共享吞吐量的容器选择的分区键、工作负荷的分布，以及容器的数量。 |对容器配置的所有 RU 专门保留给该容器使用。|
 |容器的最大存储|不受限制。|不受限制。|

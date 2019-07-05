@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9b8e12220f220bd8183675d13e25bdcab02707fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3596f230ace2d19df28d0b43af45c74aaa87836
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65020841"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561299"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>语音服务的语言和区域支持
 
@@ -24,7 +24,7 @@ ms.locfileid: "65020841"
 
 ## <a name="speech-to-text"></a>语音转文本
 
-Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别的自定义。
+Microsoft 语音识别 SDK 和 REST API 支持以下语言版本 （区域设置）。 每种语言都有不同级别的自定义。
 
   代码 | 语言 | [声学适应](how-to-customize-acoustic-models.md) | [语言适应](how-to-customize-language-model.md) | [发音适应](how-to-customize-pronunciation.md)
  ------|----------|---------------------|---------------------|-------------------------
@@ -139,7 +139,7 @@ hi-IN | 印地语(印度) | 女 | "Microsoft Server Speech Text to Speech Voice 
 hr-HR | 克罗地亚语 | 男 | "Microsoft Server Speech Text to Speech Voice (hr-HR, Matej)" | "hr HR Matej"
 hu-HU | 匈牙利语 | 男 | "Microsoft Server Speech Text to Speech Voice (hu-HU, Szabolcs)" | "hu-HU-Szabolcs"
 id-ID | 印度尼西亚语| 男 | "Microsoft Server Speech Text to Speech Voice (id-ID, Andika)" | "id-ID-Andika"
-it-IT | 意大利语 | 男 | "Microsoft Server Speech Text to Speech Voice (it-IT, Cosimo, Apollo)" | "it-IT-Cosimo-Apollo"
+it-IT | 意大利语 | 男 | “Microsoft 服务器语音的文本转语音（it-IT，Cosimo，Apollo）” | "it-IT-Cosimo-Apollo"
 | | | 女 | "Microsoft Server Speech Text to Speech Voice (it-IT, LuciaRUS)" | "it-IT-LuciaRUS"
 ja-JP | 日语 | 女 | "Microsoft Server Speech Text to Speech Voice (ja-JP, Ayumi, Apollo)" | "ja-JP-Ayumi-Apollo"
 | | | 男 | "Microsoft Server Speech Text to Speech Voice (ja-JP, Ichiro, Apollo)" | "ja-JP-Ichiro-Apollo"

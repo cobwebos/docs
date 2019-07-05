@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 07/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 1cc03cbcffc5253e8b357b6702cd21c45740ff81
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4fa365e1ed055fa8ddeb8fd475e152af84a3b71
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514487"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560447"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -25,29 +25,31 @@ ms.locfileid: "66514487"
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS 是否支持节点自动缩放？
 
-是的是可通过自动缩放[Kubernetes autoscaler] [ auto-scaler]截至 Kubernetes 1.10。 有关如何手动配置和使用群集自动缩放程序的信息，请参阅[AKS 群集自动缩放][aks-cluster-autoscale]。
-
-您还可用于内置群集自动缩放程序 （目前以在 AKS 中的预览版） 管理的节点的缩放。 有关详细信息，请参阅[自动缩放以满足在 AKS 中的应用程序需求的群集][aks-cluster-autoscaler]。
-
-## <a name="does-aks-support-kubernetes-rbac"></a>AKS 是否支持 Kubernetes RBAC？
-
-是的 Kubernetes 基于角色的访问控制 (RBAC) 启用默认情况下使用 Azure CLI 创建群集时。 对于使用 Azure 门户或模板创建的群集，可以启用 RBAC。
+是的在预览版中当前可用的功能可自动在 AKS 中进行水平缩放代理节点。 请参阅[自动缩放以满足在 AKS 中的应用程序需求的群集][aks-cluster-autoscaler] for instructions. AKS autoscaling is based on the [Kubernetes autoscaler][auto-scaler]。
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>是否可以将 AKS 部署到现有虚拟网络？
 
 是的可以通过使用部署到现有虚拟网络的 AKS 群集[高级网络功能][aks-advanced-networking]。
 
+## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>可以限制谁有权访问 Kubernetes API 服务器？
+
+是的可以限制对 Kubernetes API 服务器使用的访问[API 服务器授权 IP 范围][api-server-authorized-ip-ranges]，其中当前处于预览状态。
+
 ## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>可以使 Kubernetes API 服务器可访问仅在我的虚拟网络中？
 
-现在不行。 Kubernetes API 服务器公开为公共完全限定的域名 (FQDN)。 通过控制对你的群集访问权限[Kubernetes RBAC 和 Azure Active Directory (Azure AD)][aks-rbac-aad]。
+不是在这一次，但计划这一功能。 可以上跟踪进度[AKS GitHub 存储库][private-clusters-github-issue]。
+
+## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>可以在单个群集中有不同的 VM 大小？
+
+是的通过创建，在 AKS 群集中使用不同的虚拟机大小[多个节点池][multi-node-pools]，其中当前处于预览状态。
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>安全更新是否可应用于 AKS 代理节点？
 
 Azure 会自动适用于按夜间计划在群集中的 Linux 节点的安全修补程序。 但是，您有责任确保重新启动节点作为这些 Linux 所需。 必须重新启动节点的多个选项：
 
 - 通过 Azure 门户或 Azure CLI 手动执行。
-- 通过升级 AKS 群集。 群集升级[cordon 和 drain 节点][ cordon-drain]自动，然后将新节点联机使用的最新的 Ubuntu 映像和新的修补程序版本或次的 Kubernetes 版本。 有关详细信息，请参阅[升级 AKS 群集][aks-upgrade]。
-- 通过使用[Kured](https://github.com/weaveworks/kured)，一个适用于 Kubernetes 的开放源代码重启守护程序。 Kured 作为运行[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)并监视每个节点的指示重新启动是必需的文件是否存在。 在群集范围内操作系统重新启动管理的相同[cordon 和 drain 过程][ cordon-drain]作为群集升级。
+- 通过升级 AKS 群集。 群集升级[cordon 和 drain 节点][cordon-drain] automatically and then bring a new node online with the latest Ubuntu image and a new patch version or a minor Kubernetes version. For more information, see [Upgrade an AKS cluster][aks-upgrade]。
+- 通过使用[Kured](https://github.com/weaveworks/kured)，一个适用于 Kubernetes 的开放源代码重启守护程序。 Kured 作为运行[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)并监视每个节点的指示重新启动是必需的文件是否存在。 在群集范围内操作系统重新启动管理的相同[cordon 和 drain 过程][cordon-drain]作为群集升级。
 
 有关使用 kured 的详细信息，请参阅[将安全性和内核更新应用于 AKS 中的节点][node-updates-kured]。
 
@@ -68,7 +70,7 @@ Windows Server 中的节点 （当前在 AKS 中的预览版），Windows 更新
 
 是的。 默认情况下，AKS 资源提供程序会自动创建的辅助资源组 (如*于 MC_myResourceGroup_myAKSCluster_eastus*) 在部署过程。 为了符合企业策略，你可以为此托管群集 (*MC_* ) 资源组提供自己的名称。
 
-若要指定资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 *0.3.2* 或更高版本。 当使用创建 AKS 群集[az aks 创建][ az-aks-create]命令，使用 *-节点资源组*参数并指定资源组的名称。 如果您[使用 Azure 资源管理器模板][ aks-rm-template]若要部署 AKS 群集，可以定义的资源组名称使用*nodeResourceGroup*属性。
+若要指定自己的资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 *0.3.2* 或更高版本。 当使用创建 AKS 群集[az aks 创建][az-aks-create]命令，使用 *-节点资源组*参数并指定资源组的名称。 如果您[使用 Azure 资源管理器模板][aks-rm-template]若要部署 AKS 群集，可以定义的资源组名称使用*nodeResourceGroup*属性。
 
 * 在自己的订阅中的 Azure 资源提供程序会自动创建的辅助资源组。
 * 仅当要创建群集时，可以指定自定义资源组名称。
@@ -104,7 +106,7 @@ AKS 支持以下[许可控制器][admission-controllers]：
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>不是，它没有与 Azure Key Vault 集成。
 
-AKS 没有当前以本机方式集成到 Azure 密钥保管库。 但是， [Kubernetes 项目的 Azure 密钥保管库 FlexVolume] [ keyvault-flexvolume]使你能够直接从 Kubernetes pod 到密钥保管库机密的集成。
+AKS 没有当前以本机方式集成到 Azure 密钥保管库。 但是， [Kubernetes 项目的 Azure 密钥保管库 FlexVolume][keyvault-flexvolume]使你能够直接从 Kubernetes pod 到密钥保管库机密的集成。
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>是否可以在 AKS 上运行 Windows Server 容器？
 
@@ -131,7 +133,7 @@ AKS 没有当前以本机方式集成到 Azure 密钥保管库。 但是， [Kub
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>可以将 Azure 预订折扣应用于我 AKS 代理节点？
 
-AKS 代理节点收费作为标准 Azure 虚拟机，因此，如果已购买[Azure 预订][ reservation-discounts]在 AKS 中使用的 VM 大小，会自动应用这些折扣。
+AKS 代理节点收费作为标准 Azure 虚拟机，因此，如果已购买[Azure 预订][reservation-discounts]在 AKS 中使用的 VM 大小，会自动应用这些折扣。
 
 <!-- LINKS - internal -->
 
@@ -144,12 +146,14 @@ AKS 代理节点收费作为标准 Azure 虚拟机，因此，如果已购买[Az
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create
-[aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
+[aks-rm-template]: /azure/templates/microsoft.containerservice/2019-06-01/managedclusters
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [aks-windows-cli]: windows-container-cli.md
 [aks-windows-limitations]: windows-node-limitations.md
 [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
+[api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
+[multi-node-pools]: ./use-multiple-node-pools.md
 
 <!-- LINKS - external -->
 
@@ -158,3 +162,4 @@ AKS 代理节点收费作为标准 Azure 虚拟机，因此，如果已购买[Az
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
+[private-clusters-github-issue]: https://github.com/Azure/AKS/issues/948

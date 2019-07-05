@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 214462977c160685a943cb64c517da37d96d8e47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc67fb216451bd19fe8cfb327c101aa989228b01
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057364"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536919"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 身份验证和 Azure 多重身份验证服务器
 
@@ -49,6 +49,9 @@ ms.locfileid: "67057364"
 ### <a name="configure-the-ldap-directory-connection"></a>配置 LDAP 目录连接
 
 当 Azure 多重身份验证配置为接收 LDAP 身份验证时，它必须将这些身份验证通过代理发送到 LDAP 目录。 因此，“目标”选项卡只显示一个使用 LDAP 目标的灰显选项。
+
+> [!NOTE]
+> 目录集成不保证能够使用 Active Directory 域服务以外的目录。
 
 1. 若要配置 LDAP 目录连接，请单击“目录集成”图标。 
 2. 在“设置”选项卡上，选择“使用特定 LDAP 配置”  单选按钮。
