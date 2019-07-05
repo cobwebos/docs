@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/17/2019
+ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 2f86b74299b5d47a87ed0b8e89a992f0f91a84be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4017a3be5e03e1a9b85b4002b8069a1adc3a6b83
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924629"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551567"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 
@@ -30,6 +30,8 @@ ms.locfileid: "64924629"
 * 如何准备开发环境并为 IoT DevKit 开发应用程序。
 
 还没有 DevKit？ 请尝试 [DevKit 模拟器](https://azure-samples.github.io/iot-devkit-web-simulator/)或[购买 DevKit](https://aka.ms/iot-devkit-purchase)。
+
+您可以找到源代码上的所有 DevKit 教程[IoTDevEnvExamples](https://github.com/IoTDevEnvExamples)存储库。
 
 ## <a name="what-you-need"></a>所需条件
 
@@ -132,6 +134,11 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
     ![WiFi IP](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
 
     ![发送数据](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/sending-data.jpg)
+
+1. 若要验证的遥测数据发送到 Azure，Azure Cloud Shell 中运行以下命令：
+    ```bash
+    az iot hub monitor-events --hub-name YourIoTHubName --output table
+    ```
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 
@@ -301,7 +308,7 @@ DevKit 将重新启动并开始运行代码。
 1. 在 VS Code 中，单击 `F1`，键入并选择“Azure IoT 中心:  设置 IoT 中心连接字符串”。 将连接字符串复制到其中。
     ![设置 Azure IoT 中心连接字符串](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
-1. 展开右侧的“Azure IoT 中心设备”窗格，右键单击创建的设备名称，然后选择“开始监视 D2C 消息”。  
+1. 展开**AZURE IOT 中心设备**在右侧窗格中右键单击设备名称创建，然后选择**启动监视的内置事件终结点**。
     ![监视 D2C 消息](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
 
 1. 在“输出”窗格中，可以看到传入 IoT 中心的 D2C 消息。 

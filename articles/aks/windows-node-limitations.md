@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: twhitney
-ms.openlocfilehash: 4b72b6e33ad59ffceebf58aed7b315a4833b02f9
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 457a908a70fccd9f4209121d9b99e5e53905500b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203676"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444104"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Windows Server 节点池和应用程序工作负荷在 Azure Kubernetes 服务 (AKS) 的当前限制
 
@@ -28,7 +28,7 @@ ms.locfileid: "67203676"
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>在 Kubernetes 中的 Windows Server 的限制
 
-Windows Server 容器必须在基于 Windows 的容器主机上运行。 若要在 AKS 中运行 Windows Server 容器，你可以[创建运行 Windows Server 的节点池][ windows-node-cli]作为来宾 OS。 窗口服务器节点池支持包括属于上游 Kubernetes 项目中的 Windows 服务器的一些限制。 这些限制不是特定于 AKS 的。 在 Kubernetes 中的 Windows Server 的此上游支持的详细信息，请参阅[Kubernetes 限制中的 Windows Server 容器](https://docs.microsoft.com/azure/aks/windows-node-limitations)。
+Windows Server 容器必须在基于 Windows 的容器主机上运行。 若要在 AKS 中运行 Windows Server 容器，你可以[创建运行 Windows Server 的节点池][windows-node-cli]作为来宾 OS。 窗口服务器节点池支持包括属于上游 Kubernetes 项目中的 Windows 服务器的一些限制。 这些限制不是特定于 AKS 的。 在 Kubernetes 中的 Windows Server 的此上游支持的详细信息，请参阅[Kubernetes 限制中的 Windows Server 容器](https://docs.microsoft.com/azure/aks/windows-node-limitations)。
 
 在 Kubernetes 中的 Windows Server 容器有关的以下上游限制是与 AKS 相关：
 
@@ -45,10 +45,9 @@ Windows Server 容器必须在基于 Windows 的容器主机上运行。 若要�
 以下的其他限制适用于 Windows Server 在 AKS 中的节点池支持：
 
 - AKS 群集始终作为第一个节点池包含 Linux 节点池。 不能删除此第一个基于 Linux 的节点池，除非删除 AKS 群集本身。
-- 目前，AKS 仅支持基本负载均衡器，这样只允许一个后端池，默认 Linux 节点池。 因此，将始终为出站流量从 Windows pod[转换为 Azure 托管的公共 IP 地址][azure-outbound-traffic]。 由于此 IP 地址不是可配置的它不是当前可能来自 Windows pod 的白名单通信。 
 - AKS 群集必须使用 Azure CNI （高级） 网络模型。
     - 不支持 Kubenet （基本） 网络。 无法创建使用 kubenet 的 AKS 群集。 有关网络模型中存在差异的详细信息，请参阅[网络 AKS 中的应用程序的概念][azure-network-models]。
-    - Azure CNI 网络模型需要额外的规划和 IP 地址管理的注意事项。 有关如何规划和实施 Azure CNI 的详细信息，请参阅[在 AKS 中的配置 Azure CNI 联网][configure-azure-cni]。
+    - Azure CNI 网络模型需要额外的规划和 IP 地址管理的注意事项。 有关如何规划和实施 Azure CNI 的详细信息，请参阅[在 AKS 中的配置 Azure CNI 网络][configure-azure-cni]。
 - 在 AKS 中的 Windows Server 节点都必须是*升级*到最新的 Windows Server 2019 版本保持最新修补程序修复和更新。 在 AKS 中基节点镜像中未启用 Windows 更新。 有关在 Windows 更新发布周期和验证过程按定期计划，应在 AKS 群集中执行 Windows Server 节点池上的升级。 升级 Windows Server 节点池的详细信息，请参阅[升级在 AKS 中的节点池][nodepool-upgrade]。
     - 这些 Windows Server 节点升级暂时使用虚拟网络子网中的其他 IP 地址，因为部署一个新的节点，然后删除旧节点。
     - vCPU 配额也会暂时使用订阅中部署一个新的节点，然后删除旧节点。
@@ -60,11 +59,11 @@ Windows Server 容器必须在基于 Windows 的容器主机上运行。 若要�
 - 只应使用 NodeSelector Linux 节点上计划入口控制器。
 - Azure 开发人员空间目前仅适用于基于 Linux 的节点池。
 - 组托管的服务帐户 (gMSA) 支持 Windows Server 节点不加入到 Active Directory 域时不是在 AKS 中当前可用。
-    - 开放源代码，上游[aks 引擎][ aks-engine]项目如果您需要使用此功能目前提供 gMSA 支持。
+    - 开放源代码，上游[aks 引擎][aks-engine]项目如果您需要使用此功能目前提供 gMSA 支持。
 
 ## <a name="os-concepts-that-are-different"></a>不同的 OS 概念
 
-Kubernetes 是从历史上看面向 Linux 的。 在上游中使用的许多示例[Kubernetes.io] [ kubernetes]网站专门用于在 Linux 节点上。 当您创建使用 Windows Server 容器，以下注意事项在 OS 级别应用的部署：
+Kubernetes 是从历史上看面向 Linux 的。 在上游中使用的许多示例[Kubernetes.io][kubernetes]网站专门用于在 Linux 节点上。 当您创建使用 Windows Server 容器，以下注意事项在 OS 级别应用的部署：
 
 - **标识**-Linux 使用用户 Id (UID) 和 groupID (GID)，表示为整数类型。 用户和组名称不规范-它们是只需在别名 */组*或 */passwd*回 UID + GID。
     - Windows Server 使用较大的二进制安全标识符 (SID) 存储在 Windows 安全访问管理器 (SAM) 数据库。 之间的主机和容器，或容器之间不共享此数据库。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a6b5b6e247bd7c105286b86257a6ae11c1d1c60
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966816"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551859"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>使用 Azure 安全中心保护应用服务
 本文帮助你使用 Azure 安全中心来监视和保护在应用服务上运行的应用程序。
@@ -47,9 +47,8 @@ Azure 安全中心保护运行应用服务的 VM 实例以及管理接口。 此
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>启用应用服务的监视和保护
 
 1. 在 Azure 中，选择“安全中心”。
-2. 转到“安全策略”并选择一个订阅。 
-3. 在订阅行的末尾，单击“编辑设置”。 
-4. 在“定价层”下面的“应用服务”行中，将计划切换为“已启用”。   
+2. 转到**定价和设置**和选择的订阅。
+3. 在“定价层”下面的“应用服务”行中，将计划切换为“已启用”。   
 
 ![应用服务切换](./media/security-center-app-services/app-services-toggle.png)
 
