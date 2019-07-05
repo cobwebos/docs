@@ -38,10 +38,10 @@ ms.locfileid: "66430806"
 ## <a name="authority"></a>颁发机构
 颁发机构是指示 MSAL 可以请求从令牌的目录的 URL。 常见的颁发机构是：
 
-- https://login.microsoftonline.com/&lt 租户&gt; /，其中&lt; 租户&gt; 是 Azure Active Directory (Azure AD) 租户或域与此 Azure AD 租户相关联的租户 ID。 仅用于特定组织的用户登录。
-- https://login.microsoftonline.com/common/ 。 用于在用户的工作和学校帐户或个人 Microsoft 帐户登录。
-- https://login.microsoftonline.com/organizations/ 。 用于在使用用户的工作和学校帐户登录。
-- https://login.microsoftonline.com/consumers/ 。 用于使用仅个人 Microsoft 帐户 （以前称为 Windows Live ID 帐户） 登录用户。
+- [https://login.microsoftonline.com/&amp;lt](https://login.microsoftonline.com/&lt )租户&gt; /，其中&lt; 租户&gt; 是 Azure Active Directory (Azure AD) 租户或域与此 Azure AD 租户相关联的租户 ID。 仅用于特定组织的用户登录。
+- [https://login.microsoftonline.com/common/](https://login.microsoftonline.com/common/ )。 用于在用户的工作和学校帐户或个人 Microsoft 帐户登录。
+- [https://login.microsoftonline.com/organizations/](https://login.microsoftonline.com/organizations/ )。 用于在使用用户的工作和学校帐户登录。
+- [https://login.microsoftonline.com/consumers/](https://login.microsoftonline.com/consumers/ )。 用于使用仅个人 Microsoft 帐户 （以前称为 Windows Live ID 帐户） 登录用户。
 
 授权机构设置必须与在应用程序注册门户中声明的内容一致。
 

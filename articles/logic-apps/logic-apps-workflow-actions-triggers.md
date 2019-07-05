@@ -52,9 +52,9 @@ ms.locfileid: "67274177"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <trigger-name  > | String | 触发器的名称 | 
-| <trigger-type  > | String | 触发器类型，例如“Http”或“ApiConnection” | 
-| <trigger-inputs  > | JSON 对象 | 定义触发器行为的输入 | 
+| <*trigger-name*> | String | 触发器的名称 | 
+| <*trigger-type*> | String | 触发器类型，例如“Http”或“ApiConnection” | 
+| <*trigger-inputs*> | JSON 对象 | 定义触发器行为的输入 | 
 | <*time-unit*> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
 | <*number-of-time-units*> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
@@ -63,7 +63,7 @@ ms.locfileid: "67274177"
 
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
-| <array-with-conditions  > | Array | 数组，其中包含一个或多个决定是否运行工作流的[条件](#trigger-conditions)。 仅适用于触发器。 | 
+| <*array-with-conditions*> | Array | 数组，其中包含一个或多个决定是否运行工作流的[条件](#trigger-conditions)。 仅适用于触发器。 | 
 | <*runtime-config-options*> | JSON 对象 | 通过设置 `runtimeConfiguration` 属性可更改触发器运行时行为。 有关详细信息，请参阅[运行时配置设置](#runtime-config-options)。 | 
 | <*splitOn-expression*> | String | 对于返回数组的触发器，可指定一个将数组项[拆分或解除批处理*到多个工作流实例进行处理的表达式*](#split-on-debatch)。 | 
 | <*operation-option*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
@@ -1891,7 +1891,7 @@ ID,Product_Name
 | 值 | Type | 描述 | 
 |-------|------|-------------| 
 | <nested-logic-app-name>  | String | 要调用的逻辑应用的名称 | 
-| <trigger-name  > | String | 要调用的嵌套逻辑应用中的触发器的名称 | 
+| <*trigger-name*> | String | 要调用的嵌套逻辑应用中的触发器的名称 | 
 | <Azure-subscription-ID>  | String | 嵌套逻辑应用的 Azure 订阅 ID |
 | <Azure-resource-group>  | String | 嵌套逻辑应用的 Azure 资源组名称 |
 | <nested-logic-app-name>  | String | 要调用的逻辑应用的名称 |
