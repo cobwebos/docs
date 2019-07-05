@@ -143,6 +143,14 @@
               items:
                 - name: 通过 SMB
                   href: data-box-heavy-deploy-copy-data.md
+                - name: 通过 NFS
+                  href: data-box-heavy-deploy-copy-data-via-nfs.md
+                - name: 通过 REST
+                  href: data-box-heavy-deploy-copy-data-via-rest.md
+                - name: 通过数据复制服务
+                  href: data-box-heavy-deploy-copy-data-via-copy-service.md
+                - name: 到托管磁盘
+                  href: data-box-heavy-deploy-copy-data-from-vhds.md
             - name: 4 - 返回、上传、验证
               href: data-box-heavy-deploy-picked-up.md
         - name: 概念

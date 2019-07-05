@@ -12,6 +12,6 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 03/19/2018
-  ms.author: 'rosh, v-gedod'
+  ms.author: rosh
 abstract:
   description: 必应 URL 预览 API 获取有关目标 URL 的简要信息，包括说明、isFamilyFriendly 标志、有代表性的图像和指向页面的链接。

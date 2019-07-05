@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 82b2f5ca70927856aeac889675b5ec4a54ae034f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rosh
+ms.openlocfilehash: e96b1959d9e03273a9ca4c549c0f8b0bda6a708b
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796749"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592790"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>必应当地企业搜索 API v7 参考
 
@@ -107,7 +107,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="errorresponse"></a>ErrorResponse  
 请求失败时响应包含的顶级对象。  
   
-|Name|值|Type|  
+|名称|值|Type|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
 |<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[Error](#error)[]|  
@@ -140,7 +140,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 注意，发布者可能提供其名称和/或网站。  
   
-|Name|值|Type|  
+|名称|值|Type|  
 |----------|-----------|----------|  
 |name|发布者名称。|String|  
 |url|发布者网站的 URL。<br /><br /> 请注意，发布者可能未提供网站。|String|  
@@ -150,7 +150,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="place"></a>位置  
 定义有关餐厅或酒店等当地企业的信息。  
   
-|Name|值|Type|  
+|名称|值|Type|  
 |----------|-----------|----------|  
 |_type|类型提示，可设置为以下值之一：<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>餐厅</ul><li>|String|  
 |地址|实体所在位置的邮政地址。|PostalAddress|  
@@ -188,7 +188,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="rankingitem"></a>RankingItem
 定义要显示的搜索结果项。
 
-|Name|值|Type|  
+|名称|值|Type|  
 |-------------|-----------------|----------|
 |resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|Integer|
 |answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|String|
@@ -209,7 +209,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 请注意，如果该服务怀疑存在拒绝服务攻击，则请求会成功（HTTP 状态代码为“200 正常”），但响应正文将为空。  
   
-|Name|值|Type|  
+|名称|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 SearchResponse。|String|  
 |places|与搜索查询相关的实体列表。|JSON 对象|  

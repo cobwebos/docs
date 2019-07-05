@@ -5,16 +5,16 @@ description: 了解如何将表单识别器容器配置为分析表单和表数�
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
+ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 7e8e7a13cd02a6f3b109a84829dba2a81fd36aaa
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: e4b6a852ece3060ecf866d66d32f213355d99950
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296238"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592666"
 ---
 # <a name="configure-form-recognizer-containers"></a>配置表单识别器容器
 
@@ -45,9 +45,9 @@ ms.locfileid: "67296238"
 
 可以在 Azure 门户的“表单识别器概览”的“终结点”下找到此设置。  
 
-|必选| 名称 | 数据类型 | 说明 |
+|需要| Name | 数据类型 | 描述 |
 |--|------|-----------|-------------|
-|是| `Billing` | 字符串 | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
+|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -74,10 +74,10 @@ ms.locfileid: "67296238"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](form-recognizer-container-howto.md#the-host-computer)的装载位置。
 
-|可选| 名称 | 数据类型 | 说明 |
+|可选| 名称 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
-|必选| `Input` | 字符串 | 输入装入点的目标。 默认值为 `/input`。    <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
-|必选| `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。  <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|需要| `Input` | String | 输入装入点的目标。 默认值为 `/input`。    <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
+|需要| `Output` | String | 输出装入点的目标。 默认值为 `/output`。  <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 

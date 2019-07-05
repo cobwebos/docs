@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rosh
+ms.openlocfilehash: 4384bf658024f89664c5202ba10d793d7ad734e0
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721005"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592911"
 ---
 # <a name="project-answer-search-v7-reference"></a>项目答案搜索 v7 参考
 
@@ -83,7 +83,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。  
   
   
-|Name|值|Type|必选|  
+|名称|值|Type|需要|  
 |----------|-----------|----------|--------------|  
 |<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** URL 预览 API 目前仅支持 en-us（美国英语）市场和语言。<br /><br />|String|是|  
 |<a name="query" />q|要预览的 URL|String|是|  
@@ -138,7 +138,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="licenseattribution"></a>LicenseAttribution  
 定义许可证属性的协定规则。  
   
-|Name|值|Type|  
+|名称|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 LicenseAttribution。|String|  
 |license|内容使用许可证。|[许可证](#license)|  
@@ -150,7 +150,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="link"></a>链接  
 定义超链接的组件。  
   
-|Name|值|Type|  
+|名称|值|Type|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
 |text|显示文本。|String|  
@@ -160,7 +160,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="linkattribution"></a>LinkAttribution  
 定义链接属性的协定规则。  
   
-|Name|值|Type|  
+|名称|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 LinkAttribution。|String|  
 |mustBeCloseToContent|一个布尔值，确定是否必须将规则的内容置于规则所应用到的字段的附近。 如果为 **true**，则必须将内容置于附近。 如果为 **false**，或者此字段不存在，则内容可由调用方随意放置。|Boolean|  
@@ -172,7 +172,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="mediaattribution"></a>MediaAttribution  
 定义媒体属性的协定规则。  
   
-|Name|值|Type|  
+|名称|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 MediaAttribution。|String|  
 |mustBeCloseToContent|一个布尔值，确定是否必须将规则的内容置于规则所应用到的字段的附近。 如果为 **true**，则必须将内容置于附近。 如果为 **false**，或者此字段不存在，则内容可由调用方随意放置。|Boolean|  
@@ -186,7 +186,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
   
 注意，发布者可能提供其名称和/或网站。  
   
-|Name|值|Type|  
+|名称|值|Type|  
 |----------|-----------|----------|  
 |name|发布者名称。|String|  
 |url|发布者网站的 URL。<br /><br /> 请注意，发布者可能未提供网站。|String|  
@@ -196,7 +196,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="webpage"></a>WebPage  
 定义预览版网页的信息。  
   
-|Name|值|Type|  
+|名称|值|Type|  
 |----------|-----------|----------|
 |name|页面标题，不一定是 HTML 标题|String|
 |url|进行了实际爬网的 URL（请求可能已随之进行了重定向）|String|  
@@ -232,7 +232,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="rankingitem"></a>RankingItem
 定义要显示的搜索结果项。
 
-|Name|值|Type|  
+|名称|值|Type|  
 |-------------|-----------------|----------|
 |resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|Integer|
 |answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|String|
@@ -257,13 +257,13 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 |Name|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 SearchResponse。|String|  
-|WebPage|一个 JSON 对象，用于定义预览版|字符串|  
+|WebPage|一个 JSON 对象，用于定义预览版|string|  
   
   
 ### <a name="textattribution"></a>TextAttribution  
 定义纯文本属性的协定规则。  
   
-|Name|值|Type|  
+|名称|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 TextAttribution。|String|  
 |text|属性文本。<br /><br /> 文本属性适用于整个实体，会在实体呈现后立即显示。 如果有多个文本或链接属性规则未指定目标，则应将它们连接起来，并使用“数据来自: ”标签来显示它们。|String| 

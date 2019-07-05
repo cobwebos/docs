@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 1393d0bd1c31a2c9c24652e260ef7f3182d91367
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e990ebe89f4446a0226aa0e0f73ffd900e5b021a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476490"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592942"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>何时使用枚举的实体和设置实体操作
 
@@ -85,7 +85,7 @@ ms.locfileid: "66476490"
 
 ### <a name="set-entity-actions"></a>设置实体的操作
 
-如上所述，"设置实体"操作只需设置实体为已知的枚举值。 通过创建 API 回调操作并使用内存管理器来将实体设置为一个值，可获得相同的结果。 例如 `memory.Set(entityName, entityValue)`。 无需编写此代码和创建这些操作会变得枯燥乏味且难以管理-因此对话学习器具有特殊操作来促进这项工作，并自动生成这些操作中使用时。 将这些功能作为独立操作保留的功能来编写这些而无需进行耦合与其他操作或在机器人中的代码。
+如上所述，"设置实体"操作只需设置实体为已知的枚举值。 通过创建 API 回调操作并使用内存管理器来将实体设置为一个值，可获得相同的结果。 例如 [https://login.microsoftonline.com/consumers/](`memory.Set(entityName, entityValue)`)。 无需编写此代码和创建这些操作会变得枯燥乏味且难以管理-因此对话学习器具有特殊操作来促进这项工作，并自动生成这些操作中使用时。 将这些功能作为独立操作保留的功能来编写这些而无需进行耦合与其他操作或在机器人中的代码。
 
 - 因此，必须首先创建枚举实体引用的枚举实体值时，只能创建设置实体的操作。
 - 设置实体的操作是还"非 await"由于任何可见输出，并且需要跟在用户可以看到"等待"操作。

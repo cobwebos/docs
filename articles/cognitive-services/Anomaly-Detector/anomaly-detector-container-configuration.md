@@ -5,16 +5,16 @@ description: 使用配置的异常情况检测程序容器运行时环境`docker
 services: cognitive-services
 author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: anomaly-detection
+ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: e6b5bcefb2a8df136d37dad062fbca651c312dc4
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 50f62fa20ea9b52db79160d9d2f3a6fa463079b7
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275499"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593105"
 ---
 # <a name="configure-anomaly-detector-containers"></a>配置异常情况检测程序容器
 
@@ -24,7 +24,7 @@ ms.locfileid: "67275499"
 
 此容器具有以下配置设置：
 
-|必选|设置|目的|
+|需要|设置|目的|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|用于跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
@@ -58,7 +58,7 @@ ms.locfileid: "67275499"
 
 * Azure 门户：**异常情况检测器**概述，标记为 `Endpoint`
 
-|必选| Name | 数据类型 | 描述 |
+|需要| Name | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
 
@@ -87,7 +87,7 @@ ms.locfileid: "67275499"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](anomaly-detector-container-howto.md#the-host-computer)的装载位置。 
 
-|可选| 名称 | 数据类型 | 描述 |
+|可选| Name | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | 异常情况检测器容器请勿使用此功能。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|

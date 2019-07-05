@@ -100,10 +100,10 @@
           href: manage-database-permissions.md
         - name: 检查群集运行状况
           href: check-cluster-health.md
-        - name: 管理群集横向扩展
-          href: manage-cluster-scale-out.md
-        - name: 管理群集纵向扩展
-          href: manage-cluster-scale-up.md
+        - name: 管理群集横向缩放
+          href: manage-cluster-horizontal-scaling.md
+        - name: 管理群集纵向缩放
+          href: manage-cluster-vertical-scaling.md
         - name: 删除数据
           href: delete-data.md
         - name: 处理重复数据

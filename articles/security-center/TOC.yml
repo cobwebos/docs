@@ -35,6 +35,12 @@
       href: security-center-data-security.md
     - name: 使用建议增强安全性
       href: security-center-using-recommendations.md
+    - name: 检测威胁
+      href: security-center-detection-capabilities.md
+    - name: 管理安全警报
+      href: security-center-managing-and-responding-alerts.md
+    - name: 安全事件
+      href: security-center-incident.md
     - name: 事件响应
       href: security-center-incident-response.md
 - name: 操作指南
@@ -97,19 +103,24 @@
           href: security-center-file-integrity-monitoring.md
         - name: 自适应网络强化
           href: security-center-adaptive-network-hardening.md
-    - name: 检测威胁
-      href: security-center-detection-capabilities.md
+    - name: 威胁检测警报
       items:
-        - name: 安全警报
-          href: security-center-managing-and-responding-alerts.md
-        - name: 安全事件
-          href: security-center-incident.md
-        - name: 了解安全警报
-          href: security-center-alerts-type.md
-        - name: 警报验证
+        - name: 安全警报概述
+          href: security-center-alerts-overview.md
+        - name: VM 和服务器的威胁检测
+          href: security-center-alerts-iaas.md
+        - name: 云原生计算的威胁检测
+          href: security-center-alerts-compute.md
+        - name: 数据服务的威胁检测
+          href: security-center-alerts-data-services.md
+        - name: Azure 服务层的威胁检测
+          href: security-center-alerts-service-layer.md
+        - name: 与 Azure 安全产品集成
+          href: security-center-alerts-integration.md
+        - name: 云智能警报关联（事件）
+          href: security-center-alerts-cloud-smart.md
+        - name: 警报验证（EICAR 测试文件）
           href: security-center-alert-validation.md
-        - name: 用于 Azure 资源和用户的 UEBA
-          href: security-center-ueba-mcas.md
     - name: 存档
       items:
         - name: 应用磁盘加密
@@ -168,6 +179,10 @@
           href: security-center-search.md
         - name: 规划和操作
           href: security-center-planning-and-operations-guide.md
+        - name: 了解安全警报
+          href: security-center-alerts-type.md
+        - name: 用于 Azure 资源和用户的 UEBA
+          href: security-center-ueba-mcas.md
 - name: 引用
   items:
     - name: REST API
