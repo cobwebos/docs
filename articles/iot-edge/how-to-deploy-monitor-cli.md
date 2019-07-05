@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 55b18246861e452a4ac170094ee902bd6954fe89
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 39edbc77215d3a4f6477beae3be9d7d47cbba4f0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190408"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540918"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
 
-创建**IoT Edge 自动部署**使用 Azure 命令行接口来同时管理很多设备正在进行部署。 自动部署为 IoT Edge 属于[自动设备管理](/iot-hub/iot-hub-automatic-device-management.md)IoT 中心的功能。 部署是动态过程，您可以将多个模块部署到多个设备，跟踪的状态和运行状况的模块，并进行更改时需要。 
+创建**IoT Edge 自动部署**使用 Azure 命令行接口来同时管理很多设备正在进行部署。 自动部署为 IoT Edge 属于[自动设备管理](/azure/iot-hub/iot-hub-automatic-device-management)IoT 中心的功能。 部署是动态过程，您可以将多个模块部署到多个设备，跟踪的状态和运行状况的模块，并进行更改时需要。 
 
 有关详细信息，请参阅[了解 IoT Edge 自动部署为单个设备或大规模](module-deployment-monitoring.md)。
 
@@ -145,7 +145,7 @@ az iot edge deployment create --deployment-id [deployment id] --hub-name [hub na
 * **--hub-name** - 将在其中创建部署的 IoT 中心的名称。 此中心必须在当前订阅中。 更改当前订阅使用`az account set -s [subscription name]`命令。
 * **--content** - 部署清单 JSON 的文件路径。 
 * **--labels** - 添加用于跟踪部署的标签。 标签是描述部署的“名称, 值”对。 标签对名称和值采用 JSON 格式设置。 例如： `{"HostPlatform":"Linux", "Version:"3.0.1"}`
-* **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。 该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。 例如，`tags.environment='test' and properties.reported.devicemodel='4000x'`。 
+* **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。 该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。 例如，`tags.environment='test' and properties.reported.devicemodel='4000x'` 。 
 * **--priority** - 一个正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。
 
 ## <a name="monitor-a-deployment"></a>监视部署

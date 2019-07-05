@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 765db8461465b74ac068782c1b91d3c68b73f7d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/26/2019
+ms.openlocfilehash: 13ea60c62283db35ce4bf9fde6c3b36ba7f88013
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079517"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439216"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>中的审核日志 Azure Database for MariaDB
 
@@ -44,7 +44,7 @@ ms.locfileid: "67079517"
 
 与 Azure Monitor 诊断日志集成在审核日志。 MariaDB 服务器上启用审核日志后，您可以将它们发出到 Azure Monitor 日志、 事件中心或 Azure 存储。 若要了解有关如何在 Azure 门户中启用诊断日志的详细信息，请参阅[审核日志的门户项目](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs)。
 
-## <a name="schemas"></a>架构
+## <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
 以下各节介绍什么是通过 MariaDB 审核日志的事件类型的输出。 包括的字段以及它们的出现顺序可能有所不同，具体取决于输出方法。
 
@@ -54,7 +54,7 @@ ms.locfileid: "67079517"
 |---|---|
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | 记录日志时的时间戳 (UTC) |
+| `TimeGenerated [UTC]` | 记录日志时的时间戳 (UTC) |
 | `Type` | 日志类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
@@ -64,13 +64,13 @@ ms.locfileid: "67079517"
 | `Resource` | 服务器的名称 |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `connection_log` |
-| `event_subclass` | `CONNECT`， `DISCONNECT` |
-| `connection_id` | MariaDB 生成的唯一连接 ID |
-| `host` | 空白 |
-| `ip` | 连接到 MariaDB 的客户端 IP 地址 |
-| `user` | 执行查询的用户的名称 |
-| `db` | 连接到数据库的名称 |
+| `event_class_s` | `connection_log` |
+| `event_subclass_s` | `CONNECT`， `DISCONNECT` |
+| `connection_id_d` | MariaDB 生成的唯一连接 ID |
+| `host_s` | 空白 |
+| `ip_s` | 连接到 MariaDB 的客户端 IP 地址 |
+| `user_s` | 执行查询的用户的名称 |
+| `db_s` | 连接到数据库的名称 |
 | `\_ResourceId` | 资源 URI |
 
 ### <a name="general"></a>常规
@@ -81,7 +81,7 @@ ms.locfileid: "67079517"
 |---|---|
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Utc 格式记录卸下日志时的时间戳 |
+| `TimeGenerated [UTC]` | 记录日志时的时间戳 (UTC) |
 | `Type` | 日志类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
@@ -91,15 +91,16 @@ ms.locfileid: "67079517"
 | `Resource` | 服务器的名称 |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `general_log` |
-| `event_subclass` | `LOG`、`ERROR`、`RESULT` |
+| `LogicalServerName_s` | 服务器的名称 |
+| `event_class_s` | `general_log` |
+| `event_subclass_s` | `LOG`、`ERROR`、`RESULT` |
 | `event_time` | 查询中的 UNIX 时间戳开始秒 |
-| `error_code` | 如果查询失败，错误代码。 `0` 意味着没有错误 |
-| `thread_id` | 执行查询的线程 ID |
-| `host` | 空白 |
-| `ip` | 连接到 MariaDB 的客户端 IP 地址 |
-| `user` | 执行查询的用户的名称 |
-| `sql_text` | 完整的查询文本 |
+| `error_code_d` | 如果查询失败，错误代码。 `0` 意味着没有错误 |
+| `thread_id_d` | 执行查询的线程 ID |
+| `host_s` | 空白 |
+| `ip_s` | 连接到 MariaDB 的客户端 IP 地址 |
+| `user_s` | 执行查询的用户的名称 |
+| `sql_text_s` | 完整的查询文本 |
 | `\_ResourceId` | 资源 URI |
 
 ### <a name="table-access"></a>表访问权限
@@ -108,7 +109,7 @@ ms.locfileid: "67079517"
 |---|---|
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | 记录日志时的时间戳 (UTC) |
+| `TimeGenerated [UTC]` | 记录日志时的时间戳 (UTC) |
 | `Type` | 日志类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
@@ -118,12 +119,13 @@ ms.locfileid: "67079517"
 | `Resource` | 服务器的名称 |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `table_access_log` |
-| `event_subclass` | `READ`、`INSERT`、`UPDATE` 或 `DELETE` |
-| `connection_id` | MariaDB 生成的唯一连接 ID |
-| `db` | 访问数据库的名称 |
-| `table` | 访问的表的名称 |
-| `sql_text` | 完整的查询文本 |
+| `LogicalServerName_s` | 服务器的名称 |
+| `event_class_s` | `table_access_log` |
+| `event_subclass_s` | `READ`、`INSERT`、`UPDATE` 或 `DELETE` |
+| `connection_id_d` | MariaDB 生成的唯一连接 ID |
+| `db_s` | 访问数据库的名称 |
+| `table_s` | 访问的表的名称 |
+| `sql_text_s` | 完整的查询文本 |
 | `\_ResourceId` | 资源 URI |
 
 ## <a name="next-steps"></a>后续步骤

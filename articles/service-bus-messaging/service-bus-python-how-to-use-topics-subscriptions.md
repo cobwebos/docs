@@ -14,18 +14,18 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 47cd0621a601e3f1ef53572bc7bb8bc1c7ea76ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd75ba9d407399703a382596019d5f370808b20a
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992001"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543661"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>如何通过 Python 使用服务总线主题和订阅
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-本文介绍了如何使用服务总线主题和订阅。 相关示例采用 Python 编写，并使用了 [Azure Python SDK 包][Azure Python package]。 涉及的方案包括：
+本文介绍了如何使用服务总线主题和订阅。 这些示例用 Python 编写并使用[Azure Python SDK 包][Azure Python package]。 涉及的方案包括：
 
 - 创建主题和订阅 
 - 创建订阅筛选器 
@@ -39,7 +39,7 @@ ms.locfileid: "65992001"
 
     > [!NOTE]
     > 在本快速入门中，你将使用 **Python** 创建一个**主题**和对此主题的**订阅**。 
-3. 安装 [Azure Python 包][Azure Python package]。 请参阅 [Python 安装指南](../python-how-to-install.md)。
+3. 安装[Azure Python 包][Azure Python package]。 请参阅 [Python 安装指南](../python-how-to-install.md)。
 
 ## <a name="create-a-topic"></a>创建主题
 
@@ -58,7 +58,7 @@ bus_service = ServiceBusService(
     shared_access_key_value='sharedaccesskey')
 ```
 
-可从 [Azure 门户][Azure portal]获取 SAS 密钥名称和密钥值。
+可从 [Azure 门户][Azure portal]获取 SAS 密钥名称值和其值。
 
 ```python
 bus_service.create_topic('mytopic')
@@ -79,9 +79,9 @@ bus_service.create_topic('mytopic', topic_options)
 主题订阅也是使用 **ServiceBusService** 对象创建的。 为订阅命名，并且订阅可以具有可选筛选器，以限制传送到订阅的虚拟队列的消息集。
 
 > [!NOTE]
-> 订阅具有永久性，除非将其或其订阅的主题删除，否则订阅将一直存在。
+> 默认情况下，订阅是永久性的并且将一直存在直到它们，或向其他们已订阅，会删除的主题。
 > 
-> 
+> 你可以通过设置自动删除的订阅[auto_delete_on_idle 属性](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python)。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
 
@@ -178,7 +178,7 @@ msg.delete()
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
 
-主题和订阅具有持久性，必须通过 [Azure 门户][Azure portal]或以编程方式显式删除。 以下示例说明如何删除名为 `mytopic` 的主题：
+主题和订阅具有持久性除非[auto_delete_on_idle 属性](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python)设置。 也可以删除通过[Azure 门户][Azure portal]或以编程方式。 以下示例说明如何删除名为 `mytopic` 的主题：
 
 ```python
 bus_service.delete_topic('mytopic')

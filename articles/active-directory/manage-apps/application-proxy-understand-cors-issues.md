@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 2b6adcf4231aa44a4f28d277e963efa16de8af81
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afc0bb990f69521efb2557a6a086c0de5126f82c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399346"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440421"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>了解并解决 Azure Active Directory 应用程序代理 CORS 问题
 
-[跨域资源共享 (CORS)](http://www.w3.org/TR/cors/) 有时可以提供有关应用和 Api 通过 Azure Active Directory 应用程序代理发布的问题。 本文介绍 Azure AD 应用程序代理 CORS 问题和解决方案。
+[跨域资源共享 (CORS)](https://www.w3.org/TR/cors/) 有时可以提供有关应用和 Api 通过 Azure Active Directory 应用程序代理发布的问题。 本文介绍 Azure AD 应用程序代理 CORS 问题和解决方案。
 
 浏览器安全性通常可防止 web 页面到另一个域发出 AJAX 请求。 此限制称为“同源策略”  ，可防止恶意站点读取另一个站点中的敏感数据。 但是，有时你可能想要让调用 web API 的其他站点。 CORS 是一项 W3C 标准，可让服务器放宽同域策略，并允许同时拒绝另一些跨域请求。
 

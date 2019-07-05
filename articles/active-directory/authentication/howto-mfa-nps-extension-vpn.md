@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e94b307d562c4317a87713612a62e6da007f9703
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4afe5c89a83f251ee354c955b6dc28b0bccc9e6c
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64570640"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561126"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -246,7 +246,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
     b. 对于“共享密钥”，选择“更改”，然后输入之前创建和记录的共享密钥密码。  
 
-    c. 在“超时(秒)”框中，选择一个介于 30 到 60 之间的值。     
+    c. 在中**超时 （秒）** 框中，输入的值为**30**。  
     需要超时值以提供足够的时间来完成二次身份验证因素。
 
     ![添加 RADIUS 服务器窗口配置超时](./media/howto-mfa-nps-extension-vpn/image16.png)
@@ -304,7 +304,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 ## <a name="configure-multi-factor-authentication"></a>配置多重身份验证
 
-如需针对多重身份验证配置用户的帮助，请参阅文章[如何对用户或组要求双重验证](howto-mfa-userstates.md)和[为双重验证设置帐户](../user-help/multi-factor-authentication-end-user-first-time.md)
+配置多重身份验证的用户的帮助，请参阅文章[规划基于云的 Azure 多重身份验证部署](howto-mfa-getstarted.md#create-conditional-access-policy)和[设置我的帐户进行双重验证](../user-help/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>安装和配置 NPS 扩展
 

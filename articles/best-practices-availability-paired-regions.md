@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 04/28/2019
+ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 5ed9dc595c537d8a923d3eb056dcb002cf225f7c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81ba993e6cbe55b45d34325545754bec561ce479
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427116"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514458"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -42,7 +42,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 印度 |印度西部 |印度南部 |
 | 日本 |日本东部 |日本西部 |
 | 韩国 |韩国中部 |韩国南部 |
-| 北美 |美国东部 |美国西部 |
+| 北美 |East US |美国西部 |
 | 北美 |美国东部 2 |美国中部 |
 | 北美 |美国中北部 |美国中南部 |
 | 北美 |美国西部 2 |美国中西部 
@@ -77,7 +77,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 
 ![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure 计算 (IaaS)** - 必须提前预配附加的计算资源，以确保在发生灾难期间另一个区域可以提供资源。 有关详细信息，请参阅 [Azure resiliency technical guidance](resiliency/resiliency-technical-guidance.md)（Azure 复原技术指南）。
 
-![存储](./media/best-practices-availability-paired-regions/2Green.png)Azure 存储 - 创建 Azure 存储帐户时，将默认配置异地冗余存储 (GRS)  。 使用 GRS 时，数据会在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
+![存储](./media/best-practices-availability-paired-regions/2Green.png) **Azure 存储**-如果你使用的托管的磁盘，了解有关[跨区域备份](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)使用 Azure 备份并[复制 Vm](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)从一个区域到另一个使用 Azure Site Recovery。 如果使用的存储帐户，然后异地冗余存储 (GRS) 是默认配置时创建一个 Azure 存储帐户。 使用 GRS 时，数据会在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
 
 ![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL 数据库** – 使用 Azure SQL 数据库异地复制，可以将事务的异步复制配置到全球任何区域；但是，我们建议在配对区域中为大多数灾难恢复方案部署这些资源。 有关详细信息，请参阅 [Azure SQL 数据库中的异地复制](sql-database/sql-database-geo-replication-overview.md)。
 

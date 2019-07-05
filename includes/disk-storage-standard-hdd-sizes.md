@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 621d7b01a20748b0ef9349ff192c68988db49a04
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 55ef7a2ef06d29e653516a3915af76a2fcc24e50
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172933"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67471260"
 ---
 | 标准磁盘类型 | S4 | S6 | S10 | S15 | S20 | S30 | S40 | S50 | S60 | S70 | S80 |
 |--------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| 磁盘大小 (GiB) | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,095 | 8,192 | 16,384 | 32,767 |
+| 磁盘大小 (GiB) | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,096 | 8,192 | 16,384 | 32,767 |
 | 每个磁盘的 IOPS | 最多 500 | 最多 500 | 最多 500 | 最多 500 | 最多 500 | 最多 500 | 最多 500 | 最多 500 | 最多 1,300 | 最多 2,000 | 最多 2,000 |
 | 每个磁盘的吞吐量 | 最多 60 MiB/秒 | 最多 60 MiB/秒 | 最多 60 MiB/秒 | 最多 60 MiB/秒 | 最多 60 MiB/秒 | 最多 60 MiB/秒 | 最多 60 MiB/秒 | 最多 60 MiB/秒| 最多 300 MiB/秒 | 最多 500 MiB/秒 | 最多 500 MiB/秒 |

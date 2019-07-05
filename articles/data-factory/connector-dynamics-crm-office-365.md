@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 07/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 481b19d0121e93c84d123579e91bcbfb9fb50815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f7bf3ce8c01e82fa69b3b041b573b4b31a719d2
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356958"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514089"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 
@@ -27,7 +27,13 @@ ms.locfileid: "66356958"
 
 可以将数据从 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Dynamics 365 (Common Data Service) 或 Dynamics CRM。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-此 Dynamics 连接器支持以下 Dynamics 版本和身份验证类型。 IFD 是“Internet Facing Deployment”（面向 Internet 的部署）的缩写。
+此 Dynamics 连接器支持 Dynamics 版本 7.x 到两个 9.x 联机或本地。 更具体地说，
+
+- 版本 7.x 映射到 Dynamics CRM 2015
+- 版本 8.x 映射到 Dynamics CRM 2016 和早期版本的 Dynamics 365
+- 版本 9.x 映射到更高版本的 Dynamics 365
+
+请参阅下表上的支持的身份验证类型和相应的 Dynamics 版本/产品的配置。 IFD 是“Internet Facing Deployment”（面向 Internet 的部署）的缩写。
 
 | Dynamics 版本 | 身份验证类型 | 链接的服务示例 |
 |:--- |:--- |:--- |
@@ -43,6 +49,8 @@ ms.locfileid: "66356958"
 - Dynamics 365 for Marketing
 
 此连接器不支持其他应用程序类型，如 Finance and Operations、Talent 等。
+
+此 Dynamics 连接器构建的[Dynamics XRM 工具](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)。
 
 >[!TIP]
 >若要从 **Dynamics 365 Finance and Operations** 复制数据，可以使用 [Dynamics AX 连接器](connector-dynamics-ax.md)。
@@ -156,7 +164,7 @@ Dynamics 链接服务支持以下属性。
 > [!IMPORTANT]
 >- 从 Dynamics 复制数据时，Dynamics 数据集中的“结构”部分是可选的但强烈建议使用，以确保确定性复制结果。 该节定义要复制的 Dynamics 数据的列名和数据类型。 有关详细信息，请参阅[数据集结构](concepts-datasets-linked-services.md#dataset-structure-or-schema)和 [Dynamics 的数据类型映射](#data-type-mapping-for-dynamics)。
 >- 在创作 UI 中导入架构时，ADF 通过对 Dynamics 查询结果中的前几行进行采样来初始化结构构造，将省略其中不含任何值的列。 如果没有明确的结构定义，则相同的行为也适用于复制执行。 可以根据需要查看列并将更多列添加到 Dynamics 数据集架构/结构，这将在副本运行时起作用。
->- 向 Dynamics 复制数据时，Dynamics 数据集中的“structure”节是可选的。 要复制到哪些列由源数据架构确定。 如果源是不包含标头的 CSV 文件，请在输入数据集中指定包含列名称和数据类型的“结构”。 这些值将按顺序逐个映射到 CSV 文件中的字段。
+>- 向 Dynamics 复制数据时，Dynamics 数据集中的“structure”节是可选的。 若要将复制到哪些列由源数据架构确定。 如果源是不包含标头的 CSV 文件，请在输入数据集中指定包含列名称和数据类型的“结构”。 这些值将按顺序逐个映射到 CSV 文件中的字段。
 
 **示例：**
 
@@ -341,9 +349,8 @@ Dynamics 链接服务支持以下属性。
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
-
 > [!NOTE]
-> Dynamics 数据类型 AttributeType.CalendarRules 和 AttributeType.PartyList 不受支持。
+> Dynamics 数据类型 AttributeType.CalendarRules、 AttributeType.MultiSelectPicklist 和 AttributeType.PartyList 不受支持。
 
 ## <a name="next-steps"></a>后续步骤
 有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

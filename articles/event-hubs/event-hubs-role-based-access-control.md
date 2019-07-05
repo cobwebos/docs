@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: ae970b9612154a6463c4bf44a65da71a20c81635
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfdeee9591b5d6ccbadadaef83c6598dd0e850d8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978314"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448142"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory 基于角色的访问控制（预览版）
 
@@ -29,10 +29,10 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 ## <a name="event-hubs-roles-and-permissions"></a>事件中心角色和权限
 Azure 授权访问的事件中心命名空间提供了以下内置 RBAC 角色：
 
-[事件中心数据所有者 （预览）](../role-based-access-control/built-in-roles.md#service-bus-data-owner)角色可让数据访问的事件中心命名空间和其实体 （队列、 主题、 订阅和筛选器）
+[Azure 事件中心数据所有者 （预览）](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview)角色可让数据访问的事件中心命名空间和其实体 （队列、 主题、 订阅和筛选器）
 
 >[!IMPORTANT]
-> 我们之前已支持向“所有者”  或“参与者”  角色添加托管标识。 但是，不再授予“所有者”  和“参与者”  角色的数据访问权限。 如果使用是“所有者”  或“参与者”  角色，请切换到使用“事件中心数据所有者”  角色。
+> 我们之前已支持向“所有者”  或“参与者”  角色添加托管标识。 但是，不再授予“所有者”  和“参与者”  角色的数据访问权限。 如果使用的**所有者**或**参与者**角色，切换到使用**Azure 事件中心数据所有者 （预览）** 角色。
 
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>将事件中心与 Azure AD 域用户帐户一起使用

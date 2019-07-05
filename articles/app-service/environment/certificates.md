@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 35193380cc890a93d93c68bf5fc405572b5aa409
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: ba34638bbdb838adc6f1e61b1f8b07a6915815c0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339897"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540784"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>证书和应用服务环境 
 
@@ -55,7 +55,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
     $fileName = "exportedcert.pfx"
     Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
-
+当创建自签名证书时，将需要确保使用者名称格式为 CN = {ASE_NAME_HERE} _InternalLoadBalancingASE。
 
 ## <a name="application-certificates"></a>应用程序证书 
 

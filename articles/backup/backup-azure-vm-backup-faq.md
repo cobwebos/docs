@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/28/2019
 ms.author: sogup
-ms.openlocfilehash: 5fdf8e6c19711f6ce38d430a9dffab185cad961b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 0248e169f5d502cce8723f594f438b87ab088f3a
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296166"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551598"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -46,12 +46,8 @@ ms.locfileid: "67296166"
 如果恢复服务保管库和 VM 的资源组不同，请确保具有恢复服务保管库资源组的写入权限。  
 
 
-### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>可以使用 Azure 备份对哪些 Azure VM 进行备份？
-
-审阅[支持矩阵](backup-support-matrix-iaas.md)支持详细信息和限制。
-
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>按需备份作业是否使用与计划备份相同的保留计划？
-不。 为按需备份作业指定保留期。 默认情况下，从门户触发时，该作业会保留 30 天。
+否。 为按需备份作业指定保留期。 默认情况下，从门户触发时，该作业会保留 30 天。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我最近在一些 VM 上启用了 Azure 磁盘加密。 我的备份是否继续有效？
 提供 Azure 备份访问 Key Vault 所需的权限。 按照 [Azure 备份 PowerShell](backup-azure-vms-automation.md) 文档中的“启用备份”部分所述，在 PowerShell 中指定权限  。
@@ -73,17 +69,12 @@ ms.locfileid: "67296166"
 
 用户需要删除锁，然后清除该资源组中的还原点集合以使将来的备份成功，[请按照下列步骤](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)删除还原点集合。
 
-### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>备份策略是否考虑夏令时 (DST)？
-不。 本地计算机上的日期和时间是本地的，当前已应用夏令时。 由于 DST，为计划备份设置的时间可能与本地时间不同。
-
-### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>可将多少个数据磁盘附加到 VM 以供 Azure 备份执行备份？
-Azure 备份可使用最多 16 个磁盘备份 VM。 [即时还原](backup-instant-restore-capability.md)中提供了对 16 个磁盘的支持。
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Azure 备份是否支持标准 SSD 托管磁盘？
 Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。 SSD 托管磁盘的 Azure Vm 提供一种新型的持久存储。 [即时还原](backup-instant-restore-capability.md)中提供了对 SSD 托管磁盘的支持。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>可使用支持写入加速器 (WA) 的磁盘备份 VM 吗？
-无法在已启用 WA 的磁盘上拍摄快照。 但是，Azure 备份服务可以从备份中排除已启用 WA 的磁盘。 仅对升级到即时还原的订阅支持已启用 WA 的磁盘的 VM 磁盘排除。
+无法在已启用 WA 的磁盘上拍摄快照。 但是，Azure 备份服务可以从备份中排除已启用 WA 的磁盘。
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>我有一个安装了写入加速器 (WA) 磁盘和 SAP HANA 的 VM。 我该如何备份？
 Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排除。 但是，备份不会提供数据库一致性，因为未备份已启用 WA 的磁盘上的信息。 如果需要备份操作系统磁盘和备份未启用 WA 的磁盘，则可以使用此配置备份磁盘。
@@ -93,6 +84,8 @@ Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排�
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>什么是我可以从我已经在我的 VM 备份策略中设置的计划备份时间的备份开始时间在预期的最大延迟？
 在 2 小时内的计划的备份时间，将触发计划的备份。 有关示例。 如果 100 个 Vm 有备份开始时间安排在凌晨 2:00，然后按最大凌晨 4:00 点所有 100VMs 都必须备份作业正在进行中。 如果由于服务中断和恢复/重试已暂停计划的备份然后此计划的 2 小时的时段之外，可以开始备份。
 
+### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>每日备份点的最小的允许保留期范围是什么？
+Azure 虚拟机备份策略到 9999 天支持启动的最小保持期为 7 天。 向现有 VM 备份策略与 7 天内的任何修改都要求更新以满足最小保持期为 7 天。
 
 ## <a name="restore"></a>还原
 

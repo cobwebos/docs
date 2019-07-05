@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: c9ee106972cc78a08709d2ce55d2dfddc96edbf7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/24/2019
+ms.openlocfilehash: 8fadcc8cb418063662df45d4134bef0578ffccda
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079231"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444820"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>配置和访问 Azure 门户中的审核日志
 
@@ -40,7 +40,7 @@ ms.locfileid: "67079231"
 1. 更新**audit_log_enabled**参数为 ON。
     ![启用审核日志](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
-1. 选择要记录的更新的事件**audit_log_events**参数。
+1. 选择[事件类型](concepts-audit-logs.md#configure-audit-logging)若要记录的更新**audit_log_events**参数。
     ![审核日志事件](./media/howto-configure-audit-logs-portal/audit-log-events.png)
 
 1. 添加要从日志记录通过更新中排除任何 MariaDB 用户**audit_log_exclude_users**参数。 指定用户通过提供其 MariaDB 用户名称。

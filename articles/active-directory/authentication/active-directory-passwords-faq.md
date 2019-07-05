@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77154ef35242c55724becb77595dbd5ecf8a4da9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f98b72d9b5e59155bb7215181fd1ecd336126ee6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60359052"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440968"
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -114,7 +114,7 @@ ms.locfileid: "60359052"
   >
 * **问：如何告知用户可在何处重置密码？**
 
-  > **答:** 请尝试 [SSPR 部署](howto-sspr-deployment.md#sample-communication)一文中的一些建议。
+  > **答:** 请尝试 [SSPR 部署](howto-sspr-deployment.md#communications-plan)一文中的一些建议。
   >
   >
 * **问：能否在移动设备上使用此页面？**
@@ -159,7 +159,7 @@ ms.locfileid: "60359052"
   >
 * **问：用户是否可以注册多个相同的安全问题？**
 
-  > **答:** 不。 一旦用户注册了某个特定问题，他们就不能再次注册该问题。
+  > **答:** 否。 一旦用户注册了某个特定问题，他们就不能再次注册该问题。
   >
   >
 * **问：是否可以针对注册和重置设置安全问题下限？**

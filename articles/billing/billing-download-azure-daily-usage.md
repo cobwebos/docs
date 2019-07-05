@@ -1,26 +1,23 @@
 ---
-title: 查看和下载 Azure 使用情况和费用 |Microsoft Docs
+title: 查看和下载 Azure 使用情况和费用
 description: 介绍如何下载或查看 Azure 的每日使用情况和费用。
 keywords: 计费使用情况，使用费用，使用情况下载，请查看使用情况，azure 发票，azure 使用情况
-services: billing
-documentationcenter: ''
-author: genlin
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 520d3f6a45b44ba2023dee34642f796689f48221
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d2d7be562eaaa7dd21e63735f5697ffe5a62f8a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60918964"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491443"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>查看和下载 Azure 使用情况和费用
 
@@ -77,7 +74,7 @@ ms.locfileid: "60918964"
 ### <a name="download-usage-for-billed-charges"></a>下载使用情况的计费费用
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“成本管理 + 计费”  中进行搜索。
+2. 搜索*成本管理 + 计费*。
 3. 选择计费的配置文件。 具体取决于您的访问权限，可能需要首先选择计费帐户。
 4. 选择“发票”  。
 5. 在发票网格中，查找对应于你想要下载的使用情况的发票。
@@ -94,9 +91,9 @@ ms.locfileid: "60918964"
 当前计费期间，还可以下载月-日使用情况。 尚不计费有这些使用费。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“成本管理 + 计费”  中进行搜索。
+2. 搜索*成本管理 + 计费*。
 3. 选择计费的配置文件。 具体取决于您的访问权限，可能需要首先选择计费帐户。
-4. 在中**概述**边栏选项卡中找到的月-日费用下方的下载链接。
+4. 在中**概述**区域中，找到下月-日费用的下载链接。
 5. 选择**Azure 使用情况和费用**。
 
     ![从概述显示下载的屏幕截图](./media/billing-download-azure-usage/open-usage.png)
@@ -104,9 +101,9 @@ ms.locfileid: "60918964"
 ## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>检查你对 Microsoft 客户协议的访问
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
 

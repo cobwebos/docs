@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 16d1739e01061a90d673e4bd79bba7bfe7ec3a90
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 97f737c8d1228bd03baf59f2ebe830f715241299
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295069"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449843"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
@@ -103,7 +103,7 @@ ms.locfileid: "67295069"
     - 使用 [AZCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 在两个文件共享之间传输任何内容。
     - 通过并行使用 cp 可以提高复制速度，线程数取决于你的用例和工作负荷。 此示例使用六个： `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`。
     - 打开源第三方工具，如：
-        - [GNU 并行](http://www.gnu.org/software/parallel/)。
+        - [GNU 并行](https://www.gnu.org/software/parallel/)。
         - [Fpart](https://github.com/martymac/fpart) -对文件进行排序，并将其打包到分区。
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -使用 Fpart 和复制工具来生成多个实例，若要将数据从 src_dir 迁移到 dst_url。
         - [多](https://github.com/pkolano/mutil)-根据 GNU coreutils 多线程的 cp 和 md5sum。

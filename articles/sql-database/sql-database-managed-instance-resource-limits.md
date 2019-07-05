@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
-ms.date: 06/13/2019
-ms.openlocfilehash: 89df33f453217585e8f0b8ff13d06ee223474fae
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 06/26/2019
+ms.openlocfilehash: a0846a7d03cc2f63af6747c8b8514b563c1d4a5d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272241"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447801"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例的资源限制
 
@@ -42,6 +42,9 @@ Azure SQL 数据库托管的实例可以部署在两个硬件代次：Gen4 和 G
 | 最大内存中 OLTP 内存 | 实例的限制：每个 vCore 3 GB<br/>数据库限制：<br/> -8 核：每个数据库的 8 GB<br/> -16 核心：每个数据库为 20 GB<br/> -24 核心：每个数据库的 36 GB | 实例的限制：每个 vCore 2.5 GB<br/>数据库限制：<br/> -8 核：每个数据库的 13 GB<br/> -16 核心：每个数据库的 32 GB |
 | 最大实例存储（常规用途） |  8 TB | 8 TB |
 | 最大实例存储（业务关键） | 1 TB | 1 TB、2 TB 或 4 TB，具体取决于核心数 |
+
+> [!IMPORTANT]
+> AustraliaEast 区域中不再支持新 Gen4 数据库。
 
 ### <a name="service-tier-characteristics"></a>服务层特征
 

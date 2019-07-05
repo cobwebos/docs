@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f2574cc64e157ff0f8a6cb875a832db88cf13dd6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395719"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479800"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -62,7 +62,9 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 3. 在“OMS 工作区”部分，选择要在其中安装解决方案的 Azure Log Analytics 工作区。 
    >[!NOTE]
-   >作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现工作区在称为 Log Analytics 工作区。
+   > * 作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现工作区在称为 Log Analytics 工作区。
+   > * ITSM 连接器只能安装在以下区域中的 Log Analytics 工作区中：美国东部、 欧洲西部、 亚洲东南部，东南部澳大利亚西部美国中部、 日本东部、 英国南部、 印度中部、 加拿大中部。
+
 4. 在“OMS 工作区设置”部分，选择要在其中创建解决方案资源的资源组。 
 
    ![ITSMC 工作区](media/itsmc-overview/itsmc-solution-workspace.png)
@@ -192,7 +194,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 关闭者
 - source
 - 分配给
-- 类别
+- Category
 - 标题
 - 描述
 - 创建日期
@@ -215,7 +217,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 分配给
 - 标题
 - Type
-- 类别
+- Category
 - 状态
 - 升级
 - 冲突状态
@@ -249,7 +251,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s  | 关闭者 |
 | Source_s| 联系类型 |
 | AssignedTo_s | 已分配到  |
-| Category_s | 类别 |
+| Category_s | Category |
 | Title_s|  简短说明 |
 | Description_s|  说明 |
 | CreatedDate_t|  已打开 |
@@ -267,7 +269,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | 已分配到  |
 | Title_s|  简短说明 |
 | Type_s|  Type |
-| Category_s|  类别 |
+| Category_s|  Category |
 | CRState_s|  状态|
 | Urgency_s|  紧急性 |
 | Priority_s| 优先度|

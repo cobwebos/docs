@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7413fcf7992195753cba86a50b7d53a144b36023
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60440585"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476426"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -143,7 +143,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 1. 列出组织中有特权角色的人员。 可以使用 [PIM 向导](pim-security-wizard.md#run-the-wizard)来转到类似以下的页。
 
-    ![发现特权角色](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![发现特权的角色窗格，其中显示谁具有特权角色](./media/pim-deployment-plan/discover-privileged-roles-users.png)
 
 1. 对于组织中的所有全局管理员，找出他们需要该角色的原因。 基于之前的文档，如果一个人员的工作可由一个或多个权限更为细化的管理员角色来执行，则应删除该人员的全局管理员角色，并在 Azure Active Directory 中实施相应更为细化的角色分配（参考信息：Microsoft 目前只有 10 个管理员拥有全局管理员角色。 通过 [Microsoft 如何使用 PIM](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)，了解详细信息）。
 
@@ -151,7 +151,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 若要自动执行步骤 3 和 4，可以利用 PIM 中的访问评审函数。 按照[为 PIM 中的 Azure AD 启动访问评审](pim-how-to-start-security-review.md)中的步骤操作，可以为每一个拥有一个或多个成员的 Azure AD 角色设置访问评审。
 
-![创建访问评审](./media/pim-deployment-plan/create-access-review.png)
+![创建 Azure AD 角色的访问评审窗格](./media/pim-deployment-plan/create-access-review.png)
 
 应将审阅者设置为“成员(自我)”  。 执行此操作后，系统会向该角色中的所有成员发送一封电子邮件，确认其是否需要相关访问权限。 还应在高级设置中启用“需提供批准理由”，以便用户可以描述其需要该角色的原因  。 基于此信息，可将用户从不必要的角色中删除，如果该角色是全局管理员，则可以委派更细化的管理员角色。
 

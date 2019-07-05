@@ -6,14 +6,14 @@ manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 06/28/2019
 ms.author: chrisgre
-ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d57dbbdd7614d09d52fef0f613c43d4ca1d08136
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61320070"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485869"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>使用 Azure CLI 进行大规模自动 IoT 设备管理
 
@@ -29,7 +29,9 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 * **目标内容**定义要在目标设备孪生中添加或更新的所需属性。 内容包括要更改的所需属性节的路径。
 
-* **指标**定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。    自定义指标指定为设备孪生报告的属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的设备孪生数，以及已成功更新的孪生数。 
+* **指标**定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。    自定义指标指定为设备孪生报告的属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的设备孪生数，以及已成功更新的孪生数。
+
+自动设备配置运行首次创建的配置后不久和，然后在五分钟的时间间隔。 指标查询运行每次设备自动配置运行的时。
 
 ## <a name="cli-prerequisites"></a>CLI 先决条件
 
@@ -56,7 +58,7 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 ## <a name="define-the-target-content-and-metrics"></a>定义目标内容和指标
 
-目标内容和指标查询是作为 JSON 文档指定的，这些文档描述了要设置的设备孪生所需属性和要度量的报告属性。  若要使用 Azure CLI 创建自动设备配置，请将目标内容和指标在本地保存为 .txt 文件。 在后面的部分中通过运行命令将配置应用到设备时，会用到这些文件路径。 
+目标内容和指标查询是作为 JSON 文档指定的，这些文档描述了要设置的设备孪生所需属性和要度量的报告属性。  若要使用 Azure CLI 创建自动设备配置，请将目标内容和指标在本地保存为 .txt 文件。 在后面的部分中通过运行命令将配置应用到设备时，会用到这些文件路径。
 
 下面是一个基本的目标内容示例：
 

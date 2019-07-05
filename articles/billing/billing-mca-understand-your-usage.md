@@ -1,42 +1,38 @@
 ---
-title: 了解 Microsoft 客户协议的条款 Azure 使用情况和费用 CSV |Microsoft Docs
-description: 了解如何阅读并理解 Azure 使用情况和费用 CSV 计费配置文件的部分
-services: ''
-documentationcenter: ''
+title: Microsoft 客户协议的 Azure 使用情况和费用文件中的条款
+description: 了解如何阅读并理解 Azure 使用情况和费用 CSV 计费配置文件的部分。
 author: bandersmsft
-manager: alherz
-editor: ''
+manager: jureid
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 8f71f42386ce49d4d7178cb03d28d74edacd7e39
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d11e31366ea5aa15cf7a790eaee800fa2ea6dabe
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371302"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490627"
 ---
-# <a name="understand-terms-on-your-azure-usage-and-charges-csv-for-a-microsoft-customer-agreement"></a>了解 Microsoft 客户协议的条款 Azure 使用情况和费用 CSV
+# <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 客户协议的 Azure 使用情况和费用文件中的条款
 
 本文适用于 Microsoft 客户协议向计费帐户。 [检查是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
 
 Azure 使用情况和费用 CSV 文件包含当前计费期间的每日和测定仪级使用费。
 
-若要获取 Azure 的使用量和费用文件，请参阅[查看和下载 Azure 使用情况和你的 Microsoft 客户协议的费用](billing-download-azure-daily-usage.md)。
-它以逗号分隔值 (.csv) 文件格式提供，可以在电子表格应用程序中打开它。
+若要获取 Azure 的使用量和费用文件，请参阅[查看和下载 Azure 使用情况和你的 Microsoft 客户协议的费用](billing-download-azure-daily-usage.md)。 它以逗号分隔值 (.csv) 文件格式提供，可以在电子表格应用程序中打开它。
 
 使用费是订阅的总“月度”  费用。 使用费不考虑任何信用额度或折扣。
 
-## <a name="changes-in-the-enterprise-agreement-azure-usage-and-charges-csv"></a>企业协议 Azure 使用情况和费用 CSV 中的更改
+## <a name="changes-from-azure-ea-usage-and-charges"></a>从 Azure EA 使用情况和费用的更改
 
-如果 EA 客户，你将注意到，Azure 使用情况 CSV 文件的计费配置文件中的条款不同条款 EA Azure 使用情况 CSV 文件中。 此处是 EA 使用情况与计费配置文件使用情况的条款的条款的映射：
+如果 EA 客户，你会注意到，Azure 计费配置文件使用情况 CSV 文件中的条款不同条款从 Azure EA 使用情况 CSV 文件中。 此处是 EA 使用情况与计费配置文件使用情况的条款的条款的映射：
 
-| EA Azure 使用情况 CSV | Microsoft 客户协议 Azure 使用情况和费用 CSV |
+| Azure EA 使用情况 CSV | Microsoft 客户协议 Azure 使用情况和费用 CSV |
 | --- | --- |
 | Date | date |
 | 月份| date |
@@ -49,7 +45,7 @@ Azure 使用情况和费用 CSV 文件包含当前计费期间的每日和测定
 | MeterRegion | meterRegion |
 | MeterName | meterName |
 | ConsumedQuantity | quantity |
-| ResourceRate | effectivePrice | <!-- this was highlighted -->
+| ResourceRate | effectivePrice |
 | ExtendedCost | cost |
 | ResourceLocation | resourceLocation |
 | ConsumedService | consumedService |
@@ -59,17 +55,15 @@ Azure 使用情况和费用 CSV 文件包含当前计费期间的每日和测定
 | AdditionalInfo | additionalInfo |
 | 标记 | 标记 |
 | StoreServiceIdentifier | 不适用 |
-| DepartmentName | invoiceSection | <!-- this was highlighted -->
+| DepartmentName | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
 | resourceGroup | resourceGroup |
-| ChargesBilledSeparately | isAzureCreditEligible | <!-- this was highlighted -->
+| ChargesBilledSeparately | isAzureCreditEligible |
 
-<!-- TO DO: Marketplace CSV? -->
+## <a name="detailed-terms-and-descriptions"></a>详细的条款和说明
 
-## <a name="detailed-terms-and-descriptions-in-your-azure-usage-and-charges-file"></a>详细的条款和 Azure 使用情况和费用文件中的说明
-
-以下部分介绍了 Azure 使用情况和费用文件中所示的重要条款。
+以下术语 Azure 使用情况和费用文件所示。
 
 术语 | 描述
 --- | ---
@@ -110,7 +104,7 @@ resourceGroupName | 与资源相关联的资源组的名称
 resourceId | 资源实例的唯一标识符
 resourceType | 资源实例的类型
 resourceLocation | 标识资源正在其中运行的数据中心位置。
-位置 | 如果为相同的区域配置了不同的资源位置的资源的标准化的位置
+location | 如果为相同的区域配置了不同的资源位置的资源的标准化的位置
 quantity | 购买或使用的单位数
 unitOfMeasure | 对服务计费的度量单位。 例如，计算每小时对服务进行计费。
 chargeType | 费用的类型。 值： <ul><li>AsCharged 用法：根据使用情况的一项 Azure 服务所产生的费用。 这包括针对由于保留实例，无需付费的 Vm 的使用情况。</li><li>AsCharged PurchaseMarketplace:从 Marketplace 购买内容的一次性或固定周期性费用</li><li>AsCharged UsageMarketplace:基于消耗量的单位收取的 Marketplace 服务费用</li></ul>
@@ -120,16 +114,16 @@ serviceInfo2 | 旧字段，用于捕获可选的服务特定元数据
 additionalInfo | 其他特定于服务的元数据。
 标记 | 分配给资源标记
 
-### <a name="how-do-i-make-sure-that-the-charges-in-my-azure-usage-and-charges-file-are-correct"></a>如何确保我的 Azure 使用情况和费用文件中的费用是正确？
+### <a name="make-sure-that-charges-are-correct"></a>请确保费用是正确
 
-如果你希望更多详细信息的使用情况明细的文件上的费用，请参阅[了解计费配置文件的发票费用](billing-mca-understand-your-bill.md)
+如果你想要确保使用情况明细的文件中的费用是正确，则可以验证它们。 请参阅[了解计费配置文件的发票费用](billing-mca-understand-your-bill.md)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
 

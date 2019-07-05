@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: spelluru
-ms.openlocfilehash: d8892b2d00008c9d67f8bc28d1abb7d562dfd95c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ffc8ed3f84284ff69e9515cba0982790b823a37
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079881"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543773"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Azure 开发测试实验室资源的分布式和协作开发的最佳做法
 分布式协作开发，不同的团队或开发和维护基本代码的人。 若要成功，在开发过程取决于创建、 共享和将信息集成的功能。 在 Azure 开发测试实验室，可以使用此密钥的开发原则。 有几种类型的实验室中通常分布之间在企业中的不同实验室的资源。 不同类型的资源将焦点放到两个方面：
@@ -37,7 +37,7 @@ ms.locfileid: "67079881"
 [公式](devtest-lab-manage-formulas.md)是特定于实验室的但没有分发机制。 实验室成员执行操作公式的所有的开发。 
 
 ## <a name="code-repository-based-resources"></a>代码存储库基于资源
-有两个不同的功能根据代码存储库、 项目和环境。 这篇文章都要通过功能以及如何最有效地设置存储库和工作流以允许自定义的可用项目和环境在组织级别或团队级别的功能。  此工作流基于标准[源代码控制分支策略](/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops)。 
+有两个不同的功能根据代码存储库、 项目和环境。 这篇文章都要通过功能以及如何最有效地设置存储库和工作流以允许自定义的可用项目和环境在组织级别或团队级别的功能。  此工作流基于标准[源代码控制分支策略](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops)。 
 
 ### <a name="key-concepts"></a>关键概念
 项目的源信息包括元数据，脚本。 环境的源信息包括元数据和资源管理器模板与 PowerShell 脚本、 DSC 脚本、 Zip 文件等任何支持文件。  
@@ -49,7 +49,7 @@ ms.locfileid: "67079881"
 - 业务单位/部门范围的资源
 - 特定于团队的资源。
 
-链接到不同的存储库，其中主分支必须投入实际生产运行的是两个级别。 [分支](/devops/repos/git/git-branching-guidance?view=azure-devops)在每个存储库中的目的是，这些特定资源 （项目或模板） 的开发。 你可以轻松连接多个存储库和多个分支在同一时间对组织的实验室时，此结构将开发测试实验室更好地与对齐。 存储库名称包含在用户界面 (UI) 以避免混淆，如果有相同的名称、 说明和发布服务器。
+链接到不同的存储库，其中主分支必须投入实际生产运行的是两个级别。 [分支](/azure/devops/repos/git/git-branching-guidance?view=azure-devops)在每个存储库中的目的是，这些特定资源 （项目或模板） 的开发。 你可以轻松连接多个存储库和多个分支在同一时间对组织的实验室时，此结构将开发测试实验室更好地与对齐。 存储库名称包含在用户界面 (UI) 以避免混淆，如果有相同的名称、 说明和发布服务器。
      
 下图显示了两个存储库： 由 IT 部门，维护一个公司存储库和维护的研发部门的部门存储库。
 

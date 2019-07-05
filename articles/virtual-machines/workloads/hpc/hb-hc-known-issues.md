@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: ff65f3937069be87e922dad9287ba22380632329
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a41155b90257f7eaec85c3adbd975a0a37e24d91
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66810032"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560417"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>HB 系列和 HC 系列 VM 的已知问题
 
@@ -31,13 +31,13 @@ HB 系列 Vm 可以在此时间仅公开 228 GB 的 RAM 为来宾虚拟机。 �
 
 在此期间，不启用 azure 加速网络，但将我们在预览期间通过。 支持此功能时，我们会通知客户。
 
+## <a name="qp0-access-restriction"></a>qp0 访问限制
+
+若要防止可能会导致安全漏洞，队列对的低级别的硬件访问 0 不可访问来宾 Vm。 这应该只会影响操作通常与管理 ConnectX 5 NIC 相关联，并运行类似于 ibdiagnet，但不是最终用户应用程序本身某些 InfiniBand 诊断。
+
 ## <a name="ud-transport"></a>UD 传输
 
-启动时，HB 系列不支持动态连接传输 (DCT)。 随着时间的推移，将实现对 DCT 的支持。 支持可靠的连接 (RC) 和不可靠数据报 (UD) 传输。
-
-## <a name="azure-batch"></a>Azure 批处理
-
-虽然 HB 系列 Vm 处于预览状态，请在用户订阅模式下不在服务模式下使用 Batch 帐户。
+启动时，HB 和 HC 系列不支持动态连接传输 (DCT)。 随着时间的推移，将实现对 DCT 的支持。 支持可靠的连接 (RC) 和不可靠数据报 (UD) 传输。
 
 ## <a name="gss-proxy"></a>GSS 代理
 

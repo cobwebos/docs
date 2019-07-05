@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 4f3fb624f5e6137c9edb0be97adc16d8c808ebd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f60a41c48b3e78b860dca0e93d399420900dbd46
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523077"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485440"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>如何使用 Azure 搜索 Blob 索引器为 JSON Blob 编制索引
 本文介绍如何配置 Azure 搜索 Blob [索引器](search-indexer-overview.md)，以从 Azure Blob 存储中的 JSON 文档提取结构化内容，并使其在 Azure 搜索中可供搜索。 此工作流将创建一个 Azure 搜索索引，然后连同从 JSON Blob 中提取的现有文本一起加载该索引。 
@@ -118,7 +118,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 实体集�
 
 可以查看本部分末尾的 [REST 示例代码](#rest-example)，其中演示了如何创建所有三个对象。 本部分还包含有关 [JSON 分析模式](#parsing-modes)、[单一 Blob](#parsing-single-blobs)、[JSON 数组](#parsing-arrays)和[嵌套数组](#nested-json-arrays)的详细信息。
 
-对于基于代码的 JSON 索引编制，请使用 [Postman](search-fiddler.md) 和 REST API 创建这些对象：
+对于基于代码的 JSON 索引编制，请使用 [Postman](search-get-started-postman.md) 和 REST API 创建这些对象：
 
 + [索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
@@ -136,7 +136,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON“数组�
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - 汇编请求的输入
 
-对于每个请求，必须提供 Azure 搜索的服务名称和管理密钥（在 POST 标头中），以及 Blob 存储的存储帐户名称和密钥。 可以使用 [Postman](search-fiddler.md) 将 HTTP 请求发送到 Azure 搜索。
+对于每个请求，必须提供 Azure 搜索的服务名称和管理密钥（在 POST 标头中），以及 Blob 存储的存储帐户名称和密钥。 可以使用 [Postman](search-get-started-postman.md) 将 HTTP 请求发送到 Azure 搜索。
 
 将以下四个值复制到记事本中，以便将其粘贴到请求：
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b1edd4777839c947cf8f60bb6857f939553e2603
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6947a4f15797028274d49069d9e2787b143860d
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467607"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503228"
 ---
 # <a name="configure-the-application-dashboard"></a>配置应用程序仪表板
 
@@ -41,6 +41,8 @@ ms.locfileid: "65467607"
 ![带有显示的磁贴设置和属性的“仪表板”选项卡](media/howto-configure-homepage/image4a.png)
 
 你可以浏览库中的其他磁贴类型，若要了解如何进一步自定义默认应用程序仪表板。
+
+若要了解有关如何在 Azure IoT Central 中使用磁贴的详细信息，请参阅[使用仪表板磁贴](howto-use-tiles.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

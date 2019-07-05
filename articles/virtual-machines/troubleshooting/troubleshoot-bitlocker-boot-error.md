@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 116748d7887ebf2ad821e3159c7c1bdcc2428121
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: e60188496e060eeea14fc7b7f1cc9a662551b286
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64684763"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485162"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 
@@ -48,7 +48,7 @@ ms.locfileid: "64684763"
 如果此方法未能解决此问题，请执行以下步骤，手动还原 BEK 文件：
 
 1. 拍摄受影响的 VM 的系统磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将系统磁盘附加到由 BitLocker 加密的恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 如果要运行仅可在 BitLocker 加密的 VM 上使用的 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，这是必需的。
+2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要运行[管理 bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde)命令，在步骤 7， **BitLocker 驱动器加密**必须在恢复 VM 中启用功能。
 
     附加托管磁盘时，可能会收到“包含加密设置，因此不能用作数据磁盘”错误消息。 在此情况下，运行以下脚本，重试附加磁盘：
 
@@ -106,7 +106,7 @@ ms.locfileid: "64684763"
 
     如果“内容类型”  值为“包装的 BEK”  ，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
 
-    获取驱动器的 BEK 文件名称后，须创建 secret-file-name.BEK 文件以解锁驱动器。 
+    获取驱动器的 BEK 文件名称后，须创建 secret-file-name.BEK 文件以解锁驱动器。
 
 6.  将 BEK 文件下载到恢复磁盘。 以下示例将 BEK 文件保存到 C:\BEK 文件夹。 运行脚本前，请确保 `C:\BEK\` 路径存在。
 
@@ -120,14 +120,14 @@ ms.locfileid: "64684763"
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  若要使用 BEK 文件解锁附加磁盘，请运行以下命令：
+7.  若要通过使用 BEK 文件解锁附加的磁盘，请运行以下命令。
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
     在此示例中，附加的 OS 磁盘为驱动器 F。请确保使用正确的驱动器号。 
 
-    - 如果使用 BEK 密钥成功解锁了磁盘。 可以认为 BItLocker 问题已解决。 
+    - 如果使用 BEK 密钥成功解锁了磁盘。 我们可以考虑 BitLocker 问题会得到解决。 
 
     - 如果使用 BEK 密钥未能解锁磁盘，则可以使用暂停保护，通过运行以下命令暂时关闭 BitLocker
     
@@ -254,7 +254,7 @@ ms.locfileid: "64684763"
     ```
     在此示例中，附加的 OS 磁盘为驱动器 F。请确保使用正确的驱动器号。 
 
-    - 如果使用 BEK 密钥成功解锁了磁盘。 可以认为 BItLocker 问题已解决。 
+    - 如果使用 BEK 密钥成功解锁了磁盘。 我们可以考虑 BitLocker 问题会得到解决。 
 
     - 如果使用 BEK 密钥未能解锁磁盘，则可以使用暂停保护，通过运行以下命令暂时关闭 BitLocker
     

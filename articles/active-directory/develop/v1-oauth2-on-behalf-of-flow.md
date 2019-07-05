@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc352c6867779fd8f4487acdb1d11c0fabe4b9f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51fd5c8f406ea54c7fc8e81c674e41b30d7ad406
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110996"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482416"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委托用户标识的服务到服务调用
 
@@ -38,7 +38,7 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 
 在使用 [OAuth 2.0 授权代码授权流](v1-protocols-oauth-code.md)的应用程序上对用户进行身份验证后，启动 OBO 流。 此时，应用程序将访问令牌（令牌 A）发送到包含用户声明并同意访问 API A 的中间层 Web API (API A)。然后，API A 向下游 Web API (API B) 发出经过身份验证的请求。
 
-这些步骤构成了代理流：![OAuth2.0 代理流](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+这些步骤构成了代理流：![OAuth2.0 上的代理流中显示的步骤](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. 客户端应用程序使用令牌 A 向 API A 发出请求。
 1. API A 向 Azure AD 令牌颁发终结点进行身份验证并请求访问 API B 的令牌。
@@ -282,7 +282,7 @@ SAML 断言的服务到服务请求包含以下参数：
 | access_token |返回 SAML 断言的参数。 |
 | refresh_token |刷新令牌。 当前 SAML 断言过期后，调用方服务可以使用此令牌请求另一个访问令牌。 |
 
-- token_type：持有者
+- token_type：Bearer
 - expires_in：3296
 - ext_expires_in：0
 - expires_on：1529627844

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/07/2019
+ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: d0974b98975b8f7d09760be964024f92e9690a4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60f3bedb86304bf7d407710b07d9732afb6e8b05
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596380"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566087"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -212,7 +212,7 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>适合 PaaS 客户的静态加密
 
-平台即服务 (PaaS) 客户的数据通常驻留在应用程序执行环境中，以及用于存储客户数据的任何 Azure 资源提供程序中。 若要查看适用的静态加密选项，请检查下表中是否存在所用的存储和应用程序平台。 在支持的情况下，为每个资源提供程序提供了说明如何启用静态加密的链接。
+平台即服务 (PaaS) 客户的数据通常驻留在 Blob 存储之类的存储服务，但可能还会缓存或存储在应用程序执行环境，例如虚拟机。 若要查看适用的静态加密选项，请检查下表中是否存在所用的存储和应用程序平台。
 
 ### <a name="encryption-at-rest-for-iaas-customers"></a>适合 IaaS 客户的静态加密
 
@@ -220,11 +220,11 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 
 #### <a name="encrypted-storage"></a>加密的存储
 
-与 PaaS 一样，IaaS 解决方案可以利用其他存储静态加密数据的 Azure 服务。 在此类情况下，可以启用每个所用 Azure 服务提供的静态加密支持。 下表枚举了主要的存储、服务和应用程序平台以及所支持的静态加密模型。 在支持的情况下，提供了说明如何启用静态加密的链接。
+与 PaaS 一样，IaaS 解决方案可以利用其他存储静态加密数据的 Azure 服务。 在此类情况下，可以启用每个所用 Azure 服务提供的静态加密支持。 下表枚举了主要的存储、服务和应用程序平台以及所支持的静态加密模型。 
 
 #### <a name="encrypted-compute"></a>加密的计算
 
-完整的静态加密解决方案要求数据不得以未加密形式持久保存。 在正将数据加载到内存中的服务器上，可以在本地将正在使用的数据以各种方式进行持久保存，其中包括 Windows 页面文件、故障转储，以及应用程序可能会执行的任何日志记录。 为了确保对该数据进行静态加密，IaaS 应用程序可以在 Azure IaaS 虚拟机（Windows 或 Linux）和虚拟磁盘上使用 Azure 磁盘加密。
+所有托管磁盘、 快照和映像是使用存储服务加密使用服务托管密钥加密。 更完整静态加密解决方案可确保永远不会使用未加密形式持久保存数据。 在处理虚拟机上的数据时，Windows 页面文件或 Linux 交换文件，故障转储，或应用程序日志，可保留数据。 为了确保对该数据进行静态加密，IaaS 应用程序可以在 Azure IaaS 虚拟机（Windows 或 Linux）和虚拟磁盘上使用 Azure 磁盘加密。
 
 #### <a name="custom-encryption-at-rest"></a>自定义静态加密
 
@@ -240,7 +240,7 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 
 #### <a name="azure-storage"></a>Azure 存储
 
-所有 Azure 存储服务（Blob 存储、队列存储、表存储和 Azure 文件）均支持静态服务器端加密，其中某些服务支持客户托管的密钥和客户端加密。  
+所有 Azure 存储服务 （Blob 存储、 队列存储、 表存储和 Azure 文件） 都支持静态; 的服务器端加密此外，某些服务支持客户托管密钥和客户端加密。 
 
 - 服务器端：默认情况下，所有 Azure 存储服务都使用服务托管的密钥来启用服务器端加密（对应用程序而言是透明的）。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。 Azure Blob 存储和 Azure 文件也支持 Azure Key Vault 中客户托管的 RSA 2048 位密钥。 有关详细信息，请参阅 [Azure Key Vault 中使用客户托管密钥的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)。
 - 客户端：Azure Blob、表和队列支持客户端加密。 使用客户端加密时，客户会加密数据并将数据作为加密的 blob 上传。 密钥管理由客户执行。 有关详细信息，请参阅 [Microsoft Azure 存储的客户端加密和 Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)。
@@ -255,12 +255,12 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 
 |                                  |                    | **加密模型和密钥管理** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **使用服务托管密钥的服务器端**     | **使用 Key Vault 中的客户管理密钥的服务器端**             | **使用客户端托管密钥的客户端**      |
+|                                  | **使用服务托管密钥的服务器端**     | **服务器端使用客户托管密钥**             | **使用客户端托管密钥的客户端**      |
 | **AI 和机器学习**      |                    |                    |                    |
 | Azure 搜索                     | 是                | -                  | -                  |
 | Azure 机器学习服务   | 是                | -                  | -                  |
 | Azure 机器学习工作室    | 是                | 预览，RSA 2048 位 | -               |
-| Power BI                         | 是                | -                  | -                  |
+| Power BI                         | 是                | 预览，RSA 2048 位 | -                  |
 | **分析**                    |                    |                    |                    |
 | Azure 流分析           | 是                | -                  | -                  |
 | 事件中心                       | 是                | -                  | -                  |
@@ -269,12 +269,19 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | HDInsight                        | 是                | 适用于所有 RSA 长度的 Apache Kafka 预览版 | -                  |
 | Azure 数据工厂               | 是                | -                  | -                  |
 | Azure Data Lake Store            | 是                | 是，RSA 2048 位  | -                  |
+| **容器**                   |                    |                    |                    |
+| Azure Kubernetes 服务         | 是                | -                  | -                  |
+| 容器注册表               | 是                | -                  | -                  |
 | **计算**                      |                    |                    |                    |
-| 虚拟机                 | -                  | 是，RSA 2048 位  | -                  |
-| 虚拟机规模集        | -                  | 是，RSA 2048 位  | -                  |
+| 虚拟机                 | 是                | 是，RSA 2048 位  | -                  |
+| 虚拟机规模集        | 是                | 是，RSA 2048 位  | -                  |
+| SAP HANA                         | 是                | 是，RSA 2048 位  | -                  |
 | **数据库**                    |                    |                    |                    |
 | 虚拟机上的 SQL Server   | 是                | 是，RSA 2048 位  | 是                |
 | Azure SQL 数据库               | 是                | 是，RSA 2048 位  | 是                |
+| MariaDB 的 azure SQL 数据库   | 是                | -                  | -                  |
+| 用于 MySQL 的 azure SQL 数据库     | 是                | -                  | -                  |
+| 用于 PostgreSQL 的 azure SQL 数据库 | 是                | -                  | -                  |
 | Azure SQL 数据仓库         | 是                | 是，RSA 2048 位  | 是                |
 | SQL Server Stretch Database      | 是                | 是，RSA 2048 位  | 是                |
 | 表存储                    | 是                | -                  | 是                |
@@ -302,8 +309,9 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | 文件存储                     | 是                | 是，RSA 2048 位  | -                  |
 | 队列存储                    | 是                | -                  | 是                |
 | Avere vFXT                       | 是                | -                  | -                  |
+| Azure NetApp 文件               | 是                | -                  | -                  |
 | 存档存储                  | 是                | 是，RSA 2048 位  | -                  |
-| StorSimple                       | 是                | -                  | 是                |
+| StorSimple                       | 是                | 是，RSA 2048 位  | 是                |
 | Azure 备份                     | 是                | -                  | 是                |
 | Data Box                         | 是                | -                  | 是                |
 

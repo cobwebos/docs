@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e80fb136220330ddc53d513b22ebcfa19a35117b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2aafa195fa463a405e2132cd41fada8d6903961
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252797"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450077"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -55,7 +55,7 @@ IoT 中心消息由以下部分组成：
 | sequence-number |IoT 中心分配给每条云到设备消息的编号（对每个设备队列是唯一的）。 | 对于 C2D 消息为否；对于其他情况则为是。 |
 | 至 |[从云到设备](iot-hub-devguide-c2d-guidance.md)的消息中指定的目标。 | 对于 C2D 消息为否；对于其他情况则为是。 |
 | absolute-expiry-time |消息过期的日期和时间。 | 是 |
-| iothub-enqueuedtime |IoT 中心收到[云到设备](iot-hub-devguide-c2d-guidance.md)消息的日期和时间。 | 对于 C2D 消息为否；对于其他情况则为是。 |
+| iothub-enqueuedtime |日期和时间[设备到云](iot-hub-devguide-d2c-guidance.md)IoT 中心收到消息。 | 对于 D2C 消息为否；对于其他情况则为是。 |
 | correlation-id |响应消息中的字符串属性，通常包含采用“请求-答复”模式的请求的 MessageId。 | 是 |
 | user-id |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 | 否 |
 | iothub-ack |反馈消息生成器。 此属性在云到设备的消息中用于请求 IoT 中心因为设备使用消息而生成反馈消息。 可能的值：**none**（默认值）：不生成任何反馈消息；**positive**：如果消息已完成，则接收反馈消息；**negative**：如果消息未由设备完成就过期（或已达到最大传送计数），则收到反馈消息；**full**：positive 和 negative。 <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | 是 |

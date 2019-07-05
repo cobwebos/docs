@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: d80ad5abecc968a9fe3c82d62ddd8577856a3c54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afb554307fd255d1863fc1508cef3703d4dc9f9e
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65835186"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561169"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成
 
@@ -20,7 +20,7 @@ ms.locfileid: "65835186"
 
 本文介绍如何创建所需的 Azure AD 组件，然后部署支持 Azure AD 的群集并在 AKS 群集中创建一个基本的 RBAC 角色。 也可以[使用 Azure 门户完成这些步骤][azure-ad-portal]。
 
-有关本文中使用的完整示例脚本，请参阅 [Azure CLI 示例 - Azure AD 与 AKS 集成][complete-script]。
+有关本文中使用的完整示例脚本，请参阅 [Azure CLI 示例 - AKS 与 Azure AD 集成][complete-script]。
 
 以下限制适用：
 
@@ -43,13 +43,13 @@ aksname="myakscluster"
 在 Kubernetes 群集内部，使用 Webhook 令牌身份验证来验证身份验证令牌。 Webhook 令牌身份验证作为 AKS 群集的一部分进行配置和管理。 有关 Webhook 令牌身份验证的详细信息，请参阅 [Webhook 身份验证文档][kubernetes-webhook]。
 
 > [!NOTE]
-> 将 Azure AD 配置用于 AKS 身份验证时，会配置两个 Azure AD 应用程序。 此操作必须由 Azure 租户管理员完成。
+> 若要配置 Azure AD 以进行 AKS 身份验证，需配置两个 Azure AD 应用程序。 此操作必须由 Azure 租户管理员完成。
 
 ## <a name="create-azure-ad-server-component"></a>创建 Azure AD 服务器组件
 
 若要与 AKS 集成，请创建并使用充当标识请求终结点的 Azure AD 应用程序。 所需的第一个 Azure AD 应用程序获取用户的 Azure AD 组成员身份。
 
-使用 [az ad app create][az-ad-app-create] 命令创建服务器应用程序组件，然后使用 [az ad app update][az-ad-app-update] 命令更新组成员身份声明。 以下示例使用[开始之前](#before-you-begin)部分中定义的 *aksname* 变量，并创建一个变量
+使用 [az ad app create][az-ad-app-create]command, then update the group membership claims using the [az ad app update][az-ad-app-update] 命令创建服务器应用程序组件。 以下示例使用[开始之前](#before-you-begin)部分中定义的 *aksname* 变量，并创建一个变量
 
 ```azurecli-interactive
 # Create the Azure AD application
@@ -62,7 +62,7 @@ serverApplicationId=$(az ad app create \
 az ad app update --id $serverApplicationId --set groupMembershipClaims=All
 ```
 
-现在，使用 [az ad sp create][az-ad-sp-create] 命令创建服务器应用的服务主体。 此服务主体用于在 Azure 平台中对自身进行身份验证。 然后，使用 [az ad sp credential reset][az-ad-sp-credential-reset] 命令获取服务主体机密，并将其分配到名为 *serverApplicationSecret* 的变量，以便在以下步骤之一中使用：
+现在，使用 [az ad sp create][az-ad-sp-create]command. This service principal is used to authenticate itself within the Azure platform. Then, get the service principal secret using the [az ad sp credential reset][az-ad-sp-credential-reset] 命令为服务器应用创建服务主体，并将其分配给名为“serverApplicationSecret”  的变量，以便在以下步骤之一中使用：
 
 ```azurecli-interactive
 # Create a service principal for the Azure AD application
@@ -89,7 +89,7 @@ az ad app permission add \
     --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role
 ```
 
-最后，使用 [az ad app permission grant][az-ad-app-permission-grant] 命令授予在上一步骤中为服务器应用程序分配的权限。 如果当前帐户不是租户管理员，此步骤将会失败。还需要添加对 Azure AD 应用程序的权限来请求信息，否则可能需要使用 [az ad app permission admin-consent][az-ad-app-permission-admin-consent] 来请求管理许可：
+最后，使用 [az ad app permission grant][az-ad-app-permission-grant]command. This step fails if the current account is not a tenant admin. You also need to add permissions for Azure AD application to request information that may otherwise require administrative consent using the [az ad app permission admin-consent][az-ad-app-permission-admin-consent] 授予在上一步骤中为服务器应用程序分配的权限：
 
 ```azurecli-interactive
 az ad app permission grant --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000
@@ -120,7 +120,7 @@ az ad sp create --id $clientApplicationId
 oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Permissions[0].id" -o tsv)
 ```
 
-使用 [az ad app permission add][az-ad-app-permission-add] 命令添加对客户端应用程序和服务器应用程序组件的权限，以使用 oAuth2 通信流。 然后，使用 [az ad app permission grant][az-ad-app-permission-grant] 命令授予客户端应用程序与服务器应用程序通信的权限：
+使用 [az ad app permission add][az-ad-app-permission-add]command. Then, grant permissions for the client application to communication with the server application using the [az ad app permission grant][az-ad-app-permission-grant] 命令添加对客户端应用程序和服务器应用程序组件的权限，以使用 oAuth2 通信流：
 
 ```azurecli-interactive
 az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
@@ -137,7 +137,7 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 az group create --name myResourceGroup --location EastUS
 ```
 
-使用 [az account show][az-account-show] 命令获取 Azure 订阅的租户 ID。 然后使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 用于创建 AKS 群集的命令可提供服务器和客户端应用程序 ID、服务器应用程序服务主体机密和租户 ID：
+使用 [az account show][az-account-show]command. Then, create the AKS cluster using the [az aks create][az-aks-create] 命令获取 Azure 订阅的租户 ID。 用于创建 AKS 群集的命令可提供服务器和客户端应用程序 ID、服务器应用程序服务主体机密和租户 ID：
 
 ```azurecli-interactive
 tenantId=$(az account show --query tenantId -o tsv)
@@ -203,7 +203,7 @@ kubectl apply -f basic-azure-ad-binding.yaml
 az aks get-credentials --resource-group myResourceGroup --name $aksname --overwrite-existing
 ```
 
-现在，使用 [kubectl get pods][kubectl-get] 命令查看所有命名空间中的 pod。
+现在，使用 [kubectl get pods][kubectl-get] 命令查看所有命名空间中的 pod：
 
 ```console
 kubectl get pods --all-namespaces
@@ -236,9 +236,9 @@ kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0       
 error: You must be logged in to the server (Unauthorized)
 ```
 
-* 您定义了相应的对象 ID 或 UPN，具体取决于用户帐户是否相同的 Azure AD 租户中。
+* 你定义了适当的对象 ID 或 UPN，具体取决于用户帐户是否在同一 Azure AD 租户中。
 * 用户不是 200 多个组的成员。
-* 在服务器的应用程序注册中定义的机密与使用配置的值匹配 `--aad-server-app-secret`
+* 服务器应用程序注册中定义的机密与使用 `--aad-server-app-secret` 配置的值相匹配
 
 ## <a name="next-steps"></a>后续步骤
 

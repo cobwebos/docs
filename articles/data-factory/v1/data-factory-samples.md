@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 03127dc777588f669ef07af52c8f73d986bfe0ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7ebc57e09691af1583815ae9672e1afb820145b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61260013"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462064"
 ---
 # <a name="azure-data-factory---samples"></a>Azure 数据工厂 - 示例
 > [!NOTE]
@@ -30,20 +30,20 @@ ms.locfileid: "61260013"
 
 | 示例 | 描述 |
 |:--- |:--- |
-| [ADF 演练](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |此示例提供端到端演练，以使用 Azure 数据工厂处理日志文件，从而将日志文件中的数据转换为见解。 <br/><br/>在本演练中，数据工厂管道收集示例日志、处理和扩充日志中的数据（包含参考数据）并转换数据，以评估最近启动的市场营销活动的有效性。 |
-| [JSON 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |此示例提供常见方案的 JSON 示例。 |
-| [Http 数据下载程序示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) |此示例展示如何使用自定义 .NET 活动将数据从 HTTP 终结点下载到 Azure Blob 存储。 |
-| [跨 AppDomain Dot Net 活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |借助此示例，可创建自定义 .NET 活动，该活动不受 ADF 启动器使用的程序集版本限制（例如，WindowsAzure.Storage v4.3.0、 Newtonsoft.Json v6.0.x 等）。 |
-| [运行 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) |此示例包括可用来调用 RScript.exe 的数据工厂自定义活动。 此示例仅适用于已安装有 R 的用户自己（非按需）的 HDInsight 群集。 |
-| [调用 HDInsight Hadoop 群集上的 Spark 作业](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) |此示例演示如何使用 MapReduce 活动调用 Spark 程序。 Spark 程序只是将数据从一个 Azure Blob 容器复制到其他的 Azure Blob容器。 |
-| [使用 Azure 机器学习批处理评分活动的 Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-AzureMLBatchScoringActivity) |此示例演示如何使用 AzureMLBatchScoringActivity 调用执行 Twitter 情绪分析、评分、预测等的 Azure 机器学习模型。 |
-| [使用自定义活动的 Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |此示例演示如何使用自定义 .NET 活动调用执行 Twitter 情绪分析、评分、预测等的 Azure 机器学习模型。 |
-| [Azure 机器学习的参数化管道](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ParameterizedPipelinesForAzureML/) |此示例提供端到端 C# 代码来部署 N 个管道进行评分和重新训练，每个管道都具有不同的区域参数，其中区域列表来自 parameters.txt 文件，该文件包含在此示例中。 |
-| [Azure 流分析作业的引用数据刷新](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs) |此示例演示如何将 Azure 数据工厂和 Azure 流分析配合使用以运行引用数据的查询并将引用数据设置为定期刷新。 |
-| [本地 Hortonworks Hadoop 的混合管道](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HybridPipelineWithOnPremisesHortonworksHadoop) |此示例将本地 Hadoop 群集用作在数据工厂中运行作业的计算目标，就好像要在云中添加基于 HDInsight 的 Hadoop 群集等其他计算目标一样。 |
-| [JSON 转换工具](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSONConversionTool) |借助此工具，可将 JSON 从 2015-07-01-preview 之前的版本转换到最新版本或 2015-07-01-preview 版本（默认）。 |
-| [U-SQL 示例输入文件](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) |此文件是 U-SQL 活动使用的示例文件。 |
-| [删除 blob 文件](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity) | 此示例展示可用作 ADF 自定义 .net 活动的一部分的 C# 文件，该文件用于在复制文件后从源 Azure Blob 位置中删除文件。|
+| [ADF 演练](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |此示例提供端到端演练，以使用 Azure 数据工厂处理日志文件，从而将日志文件中的数据转换为见解。 <br/><br/>在本演练中，数据工厂管道收集示例日志、处理和扩充日志中的数据（包含参考数据）并转换数据，以评估最近启动的市场营销活动的有效性。 |
+| [JSON 示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |此示例提供常见方案的 JSON 示例。 |
+| [Http 数据下载程序示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |此示例展示如何使用自定义 .NET 活动将数据从 HTTP 终结点下载到 Azure Blob 存储。 |
+| [跨 AppDomain Dot Net 活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |借助此示例，可创建自定义 .NET 活动，该活动不受 ADF 启动器使用的程序集版本限制（例如，WindowsAzure.Storage v4.3.0、 Newtonsoft.Json v6.0.x 等）。 |
+| [运行 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |此示例包括可用来调用 RScript.exe 的数据工厂自定义活动。 此示例仅适用于已安装有 R 的用户自己（非按需）的 HDInsight 群集。 |
+| [调用 HDInsight Hadoop 群集上的 Spark 作业](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |此示例演示如何使用 MapReduce 活动调用 Spark 程序。 Spark 程序只是将数据从一个 Azure Blob 容器复制到其他的 Azure Blob容器。 |
+| [使用 Azure 机器学习批处理评分活动的 Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |此示例演示如何使用 AzureMLBatchScoringActivity 调用执行 Twitter 情绪分析、评分、预测等的 Azure 机器学习模型。 |
+| [使用自定义活动的 Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |此示例演示如何使用自定义 .NET 活动调用执行 Twitter 情绪分析、评分、预测等的 Azure 机器学习模型。 |
+| [Azure 机器学习的参数化管道](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |此示例提供端到端 C# 代码来部署 N 个管道进行评分和重新训练，每个管道都具有不同的区域参数，其中区域列表来自 parameters.txt 文件，该文件包含在此示例中。 |
+| [Azure 流分析作业的引用数据刷新](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |此示例演示如何将 Azure 数据工厂和 Azure 流分析配合使用以运行引用数据的查询并将引用数据设置为定期刷新。 |
+| [本地 Hortonworks Hadoop 的混合管道](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |此示例将本地 Hadoop 群集用作在数据工厂中运行作业的计算目标，就好像要在云中添加基于 HDInsight 的 Hadoop 群集等其他计算目标一样。 |
+| [JSON 转换工具](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |借助此工具，可将 JSON 从 2015-07-01-preview 之前的版本转换到最新版本或 2015-07-01-preview 版本（默认）。 |
+| [U-SQL 示例输入文件](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/U-SQL%20Sample%20Input%20File) |此文件是 U-SQL 活动使用的示例文件。 |
+| [删除 blob 文件](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) | 此示例展示可用作 ADF 自定义 .net 活动的一部分的 C# 文件，该文件用于在复制文件后从源 Azure Blob 位置中删除文件。|
 
 ## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 可在 GitHub 上找到数据工厂的以下 Azure 资源管理器模板。

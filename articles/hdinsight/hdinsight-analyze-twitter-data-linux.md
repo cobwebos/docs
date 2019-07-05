@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 77bbb333157f5c8cec9fa87e5f76fa4ae2678058
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8c7f6695880cfdb0a350edc37d61e771d03b92df
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070611"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543721"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Apache Hive 和 Apache Hadoop 分析 Twitter 数据
 
@@ -36,7 +36,7 @@ Twitter 允许通过 REST API 检索每个推文的数据作为 JavaScript 对�
 
    | 字段 | 值 |
    |:--- |:--- |
-   | Name |MyHDInsightApp |
+   | 名称 |MyHDInsightApp |
    | 描述 |MyHDInsightApp |
    | 网站 |https:\//www.myhdinsightapp.com |
 
@@ -322,7 +322,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 你已了解如何将非结构化 JSON 数据集转换为结构化 [Apache Hive](https://hive.apache.org/) 表。 若要了解有关 HDInsight 上的 Hive 的详细信息，请参阅以下文档：
 
 * [开始使用 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [使用 HDInsight 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)
+* [使用 HDInsight 分析航班延误数据](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
 
 [curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html

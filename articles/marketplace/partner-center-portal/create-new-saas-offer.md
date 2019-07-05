@@ -6,13 +6,13 @@ manager: evansma
 ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f2787cd74525e7676befb133a6106ce83d9c2a20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: dc086bc1252c084b717807213b5ba4c7f9d7bb97
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072629"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514052"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -42,7 +42,9 @@ ms.locfileid: "67072629"
 
 选择“创建”  。  **产品/服务概述**页创建此产品/服务。  
 
-![在合作伙伴中心上的产品/服务概述](./media/commercial-marketplace-offer-overview.png)
+<!---
+![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
+-->
 
 ## <a name="offer-overview"></a>产品/服务概述
 
@@ -84,7 +86,7 @@ ms.locfileid: "67072629"
 |**你的许可证费用**|**每月 100 美元**|
 |:---|:---|
 |Azure 使用费用（D1/1 核）|直接向发布者而不是客户收费|
-|Microsoft 向客户收取|100\.00 美元 / 月 （发布服务器必须考虑中的许可证费用的任何引起的开销量或传递基础结构成本）|
+|Microsoft 向客户收取|100.00 美元 / 月 （发布服务器必须考虑中的许可证费用的任何引起的开销量或传递基础结构成本）|
 
 - 在这种情况下，Microsoft 向你收取 100.00 美元的软件许可证费用，并向发布者支付 80.00 美元。
 - 具有限定为合作伙伴**减少 Marketplace 服务费用**将看到从年 6 月 2020年直到 2019 年 5 提供在 SaaS 降低的交易费。 在此方案中，Microsoft 对您的软件许可证 100.00 美元进行收费和到发布服务器的回报 90.00 美元。
@@ -94,7 +96,7 @@ ms.locfileid: "67072629"
 
 |**Microsoft 收费**|**每月 100 美元**|
 |:---|:---|
-|Microsoft 将许可证费用的 80% 支付给你 <br>**对于限定 SaaS 应用程序，Microsoft 支付许可证费用的 90%*|80\.00 美元/月 <br>*$* 每个月 * 90.00|
+|Microsoft 将许可证费用的 80% 支付给你 <br>**对于限定 SaaS 应用程序，Microsoft 支付许可证费用的 90%*|80.00 美元/月 <br>*$* 每个月 * 90.00|
 
 
 #### <a name="csp-program-opt-in"></a>CSP 程序参加
@@ -172,7 +174,7 @@ ms.locfileid: "67072629"
 
 选择**保存**之后完成这些字段。 
 
-### <a name="category"></a>类别
+### <a name="category"></a>Category
 选择最少的一 （1） 和最多三 （3） 用于分组到相应的 marketplace 搜索领域的产品/服务的类别。 请指出产品/服务如何支持这些类别的产品/服务说明中。 
 
 ### <a name="industry"></a>行业
@@ -260,11 +262,11 @@ ms.locfileid: "67072629"
 
 ## <a name="technical-configuration"></a>技术配置
 
-**技术配置**选项卡将定义用于连接到你的产品/服务的技术细节 （URL 路径、 webhook、 租户 ID 和应用程序 ID）。 此连接使我们能够为客户的 Azure 订阅中的资源设置产品/服务，如果用户选择获取它。
+**技术配置**选项卡将定义用于连接到你的产品/服务的技术细节 （URL 路径、 webhook、 租户 ID 和应用程序 ID）。 此连接使我们能够预配最终客户的产品/服务，如果用户选择获取它。 关系图来描述收集字段的使用情况是文档中提供[SaaS 履行 Api](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)。
 
-- **登录页 URL** （必需）：定义 URL 将客户定向以登录后获取从 marketplace 产品/服务的站点。 此 URL 也是接收连接 API 以方便与 Microsoft 开展商务活动的终结点。
+- **登录页 URL** （必需）：定义客户将登录后获取从 marketplace 产品/服务的站点 URL。 此 URL 将客户路由到页时将收到一个令牌的终结点。 该令牌可用于预配在履行 Api 中使用解析的详细信息交换。 这些详细信息和您收集任何其他可以用作构建您的体验中的客户交互 web 页面的一部分来完成注册并激活其购买的产品。
 
-- **连接 webhook** （必需）：对于 Microsoft 需要代表客户向你发送的所有异步事件（示例：Azure 订阅已无效），我们要求你提供连接 webhook。 如果还没有就地 webhook 系统，最简单的配置是将 HTTP 终结点逻辑应用，它将侦听的任何事件发布到其并适当地处理它们 (例如 https:\//prod-1westus.logic.azure.com:443/work)。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
+- **连接 webhook** （必需）：对于 Microsoft 需要代表客户向你发送的所有异步事件（示例：SaaS 订阅已无效），我们要求你提供连接 webhook。 如果还没有就地 webhook 系统，最简单的配置是将 HTTP 终结点逻辑应用，它将侦听的任何事件发布到其并适当地处理它们 (例如 https:\//prod-1westus.logic.azure.com:443/work)。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
 
 - **Azure AD 租户 ID** （必需）：在 Azure 门户中，我们要求您[创建 Azure Active Directory (AD) 应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)位于经过身份验证的通信，以便我们可以验证我们的两个服务之间的连接。 若要查找[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id)，转到 Azure Active Directory，然后选择**属性**，然后查找**Directory ID**数列出 （例如50c464d3-4930-494c-963c-1e951d15360e)。
 
@@ -438,7 +440,7 @@ Microsoft 可以消除托管和维护服务的预配和部署使用此类型的�
 
 - **Azure AD 应用 ID** （必需）：输入在 Azure Active Directory (AD)[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 Active Directory 选项卡，选择**应用注册**，然后查找**应用程序 ID**数列出 (例如 50c464d3-4930-494c-963c-1e951d15360e)。
 
-- **Azure AD 应用密钥**（必需）：输入在 Azure Active Directory (AD)[应用程序密钥](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 Active Directory 选项卡，选择**应用注册**，然后选择**设置** > **密钥**。
+- **Azure AD 应用客户端机密**（必需）：输入 Azure AD 应用程序[客户端机密](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key)。 若要查找此值，请登录到[Azure 门户](https://portal.azure.com/)。 选择**Azure Active Directory**选项卡中左侧菜单中，选择**应用注册**，然后选择你的测试版应用。 接下来，选择**证书和机密**，选择**新的客户端机密**，输入描述，选择**从不**下**Expires**，然后选择**添加**。 请务必复制密钥值。 （不要导航离开页面之前执行此操作，否则不会有权访问值。）
 
 请记住**保存**才能转到下一部分 ！
 

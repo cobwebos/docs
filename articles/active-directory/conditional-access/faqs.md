@@ -2,26 +2,21 @@
 title: Azure Active Directory 条件性访问常见问题解答 |Microsoft Docs
 description: 获取 Azure Active Directory 中条件性访问有关常见问题的解答。
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 111daef3448533cd863d45197d45c87d8d21264b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad0494868c494b488a238a81e504c58552813907
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112392"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508971"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 条件性访问常见问题解答
 
@@ -33,12 +28,9 @@ ms.locfileid: "67112392"
 
 对企业到企业 (B2B) 协作用户执行策略。 但在某些情况下，用户可能无法满足策略要求。 例如，来宾用户的组织可能不支持多重身份验证。 
 
-
-
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>SharePoint Online 策略是否也适用于 OneDrive for Business？
 
 是的。 SharePoint Online 策略也适用于 OneDrive for Business。
-
 
 ## <a name="why-cant-i-set-a-policy-on-client-apps-like-word-or-outlook"></a>为何无法对诸如 Word 或 Outlook 等客户端应用设置策略？
 
@@ -56,7 +48,6 @@ ms.locfileid: "67112392"
 
 目前，iOS 和 Android 设备的用户会有选择地强制实施条件性访问策略。 其他设备平台上的应用程序，默认情况下，不受针对 iOS 和 Android 设备的条件性访问策略。 租户管理员可选择替代全局策略，禁止不受支持平台上的用户进行访问。
 
-
 ## <a name="how-do-conditional-access-policies-work-for-microsoft-teams"></a>条件性访问策略用于 Microsoft Teams？
 
 Microsoft Teams 的核心工作效率方案严重依赖 Exchange Online 和 SharePoint Online，例如会议、日历和文件共享。 为这些云应用设置的条件性访问策略适用于 Microsoft Teams 当用户登录时直接在 Microsoft Teams。
@@ -64,3 +55,7 @@ Microsoft Teams 的核心工作效率方案严重依赖 Exchange Online 和 Shar
 Microsoft Teams 还支持单独为 Azure Active Directory 条件性访问策略中的云应用。 当用户登录时，为云应用程序设置的条件性访问策略适用于 Microsoft Teams。 然而，在没有对其他应用（如 Exchange Online 和 SharePoint Online）实施正确策略的情况下，用户仍可能能够直接访问这些资源。
 
 适用于 Windows 和 Mac 的 Microsoft Teams 桌面客户端支持新式身份验证。 新式身份验证将基于 Azure Active Directory 身份验证库 (ADAL) 的登录引入 Microsoft Office 客户端应用程序。
+
+## <a name="next-steps"></a>后续步骤
+
+- 若要配置你的环境的条件性访问策略，请参阅[的 Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。 

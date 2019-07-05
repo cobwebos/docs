@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a92017c462ef62cbfb1aa6c2613a502d1cc5ffc6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5f60a2786a87f4bd9be1f4a9e2a7a222e097b2e1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340743"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448077"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的定价层
 
@@ -64,16 +64,16 @@ ms.locfileid: "67340743"
 | 存储类型 | Azure 高级存储 | Azure 高级存储 |
 | 存储大小 | 32 GB 到 16 TB| 32 到 16 TB |
 | 存储增量大小 | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS| 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
+| IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
 
 > [!IMPORTANT]
-> 较大的存储当前处于公共预览版形式在以下区域：美国东部、 美国东部 2、 美国中部、 美国西部、 北欧、 西欧、 东南亚、 日本东部、 韩国中部、 澳大利亚东部。
+> 较大的存储当前处于公共预览版形式在以下区域：美国东部、 美国东部 2、 美国中部、 美国西部、 欧洲北部、 欧洲西部、 英国南部、 英国西部、 亚洲东南部、 东亚、 日本东部、 日本西部、 韩国中部、 韩国南部、 澳大利亚东部、 澳大利亚东南部。
 >
->较大的存储预览版目前不支持：
+> 较大的存储预览版目前不支持：
 >
 > * 通过虚拟网络服务终结点的传入连接
 > * 异地冗余备份
-> * 跨区域复制
+> * 只读副本
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 

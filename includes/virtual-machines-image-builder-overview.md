@@ -5,16 +5,16 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 5884bb5dc389e6abfd4fa23d28dd71ecd16ff423
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 6eedc095f155a77cddf48211dbc4a677bf188112
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67347107"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509809"
 ---
 标准化的虚拟机 (VM) 映像，组织可迁移到云，并确保在部署中的一致性。 映像通常包括预定义的安全和配置设置和必要的软件。 设置映像管道需要时间、 基础结构和安装过程中，但使用 Azure VM 映像生成器，只需提供简单的配置描述你的映像、 将其提交到服务，和生成，并分发映像。
  
-Azure VM 映像生成器 （Azure 映像生成器），可以使用 Windows 或基于 Linux 的 Azure Marketplace 映像，现有的自定义映像或 Red Hat Enterprise Linux (RHEL) ISO 启动并开始添加自己的自定义。 由于基于映像生成器[HashiCorp Packer](https://packer.io/)，还可以导入现有的 Packer shell 预配程序脚本。 此外可以指定你希望你托管在 Azure 共享映像库 (virtual-machines-common-shared-image-galleries.md) 作为托管映像或 VHD 的映像。
+Azure VM 映像生成器 （Azure 映像生成器），可以使用 Windows 或基于 Linux 的 Azure Marketplace 映像，现有的自定义映像或 Red Hat Enterprise Linux (RHEL) ISO 启动并开始添加自己的自定义。 由于基于映像生成器[HashiCorp Packer](https://packer.io/)，还可以导入现有的 Packer shell 预配程序脚本。 此外可以指定你想托管，在你的映像[Azure 共享映像库](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)、 用作托管的映像或 VHD。
 
 > [!IMPORTANT]
 > Azure 映像生成器目前处于公共预览状态。
@@ -35,7 +35,7 @@ Azure VM 映像生成器 （Azure 映像生成器），可以使用 Windows 或�
 
 ## <a name="regions"></a>区域
 Azure 映像生成器服务将可供在这些区域中预览。 映像可以分发这些区域之外。
-- 美国东部
+- East US
 - 美国东部 2
 - 美国中西部
 - 美国西部
@@ -50,6 +50,12 @@ AIB 将支持 Azure Marketplace 基础操作系统映像：
 - Windows 2016
 - Windows 2019
 
+AIB 将支持 RHEL ISO 的为源：
+- RHEL 7.3
+- RHEL 7.4
+- RHEL 7.5
+
+RHEL 7.6 不支持，但所测试的。
 
 ## <a name="how-it-works"></a>工作原理
 

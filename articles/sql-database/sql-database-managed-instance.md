@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 04/16/2019
-ms.openlocfilehash: c09dd990bb377672cb34ebd73a5aa9e59bbc067f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/26/2019
+ms.openlocfilehash: b03f546b992bd9de6092dc0da8ef72aa69aa1da2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070394"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447792"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>使用具有虚拟网络和近 100% 兼容性的 SQL 数据库高级数据安全性
 
@@ -81,6 +81,9 @@ ms.locfileid: "67070394"
 - **Gen5**逻辑 Cpu 基于 Intel E5 2673 v4 (Broadwell) 2.3 GHz 处理器、 快速 NVMe SSD，超线程的逻辑内核，并计算 4 到 80 个内核之间的大小。
 
 若要详细了解两代硬件之间的区别，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)。
+
+> [!IMPORTANT]
+> AustraliaEast 区域中不再支持新 Gen4 数据库。
 
 ## <a name="managed-instance-service-tiers"></a>“托管实例”服务层级
 

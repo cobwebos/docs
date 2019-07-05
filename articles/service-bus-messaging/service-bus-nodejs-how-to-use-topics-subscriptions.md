@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dbec81237edd7cbf51e4812e83da068b9a366e0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992099"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540996"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>如何使用服务总线主题和订阅使用 Node.js 和 azure sb 包
 > [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]
@@ -148,9 +148,9 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 主题订阅也是使用 **ServiceBusService** 对象创建的。 订阅已命名，并可具有可选筛选器，用于限制传送到订阅的虚拟队列的消息集。
 
 > [!NOTE]
-> 除非删除它或与之相关的主题，否则订阅是永久性的。 如果应用程序包含创建订阅的逻辑，则它应首先使用 `getSubscription` 方法检查该订阅是否存在。
+> 默认情况下，订阅具有持久性，直到或它们所关联主题删除与之。 如果应用程序包含创建订阅的逻辑，则它应首先使用 `getSubscription` 方法检查该订阅是否存在。
 >
->
+> 你可以通过设置自动删除的订阅[AutoDeleteOnIdle 属性](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle)。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
 MatchAll 筛选器是创建订阅时使用的默认筛选器  。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为“AllMessages”的订阅，并使用默认的 MatchAll 筛选器  。
@@ -166,7 +166,7 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 ### <a name="create-subscriptions-with-filters"></a>创建具有筛选器的订阅
 还可以创建筛选器，以确定发送到主题的哪些消息应该在特定主题订阅中显示。
 
-订阅支持的最灵活的一种筛选器类型是 **SqlFilter**，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关可用于 SQL 筛选器的表达式的更多详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
+订阅支持的最灵活的一种筛选器类型是 **SqlFilter**，它实现了一部分 SQL92 功能。 SQL 筛选器对发布到主题的消息的属性进行操作。 有关可用于 SQL 筛选器的表达式的更多详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
 
 可以使用 ServiceBusService 对象的 `createRule` 方法向订阅中添加筛选器  。 此方法允许向现有订阅中添加新筛选器。
 
@@ -314,7 +314,7 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 如果应用程序在处理消息之后，但在调用 `deleteMessage` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”  。 也就是说，每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案不允许重复处理，则应该向应用程序添加逻辑来处理重复消息传送。 可以使用消息的 MessageId 属性，该属性在各次传送尝试中保持不变  。
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
-主题和订阅具有持久性，必须通过 [Azure 门户][Azure portal]或以编程方式显式删除。
+主题和订阅具有持久性除非[autoDeleteOnIdle 属性](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle)设置，并且必须显式删除通过[Azure 门户][Azure portal]或以编程方式。
 下面的示例演示如何删除名为 `MyTopic` 的主题：
 
 ```javascript
@@ -342,7 +342,7 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 现在，已了解有关 Service Bus 主题的基础知识，单击下面的链接可了解更多信息。
 
 * 请参阅[队列、主题和订阅][Queues, topics, and subscriptions]。
-* [SqlFilter][SqlFilter] 的 API 参考。
+* [SqlFilter][SqlFilter]的 API 参考。
 * 访问 GitHub 上的 [Azure SDK for Node][Azure SDK for Node] 存储库。
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node

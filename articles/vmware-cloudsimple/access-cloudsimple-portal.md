@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6f44005080bbd8583ae2e2fdad31ef2c823c7ca
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 61c3d37f365034984231c780199e181872c010c6
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154519"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544129"
 ---
 # <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>通过从 Azure 门户的 CloudSimple 门户访问 VMware 解决方案
 
@@ -21,7 +21,16 @@ ms.locfileid: "67154519"
 
 ## <a name="before-you-begin"></a>开始之前
 
-只有具有内置的用户**所有者**并**参与者**角色可以访问 CloudSimple 门户。  必须在订阅上配置角色。  检查你的角色的详细信息，请参阅[查看角色分配](https://docs.microsoft.com/azure/role-based-access-control/check-access)一文。
+具有内置的用户**所有者**并**参与者**角色可以访问 CloudSimple 门户。  必须在其中部署 CloudSimple 服务的资源组上配置角色。  此外可以 CloudSimple 服务对象上配置角色。  检查你的角色的详细信息，请参阅[查看角色分配](https://docs.microsoft.com/azure/role-based-access-control/check-access)一文。
+
+如果使用自定义角色，该角色应具有任何以下操作下```Actions```。  自定义角色的详细信息，请参阅[Azure 资源的自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。  如果任何操作的一部分```NotActions```，用户将无法访问 CloudSimple 门户。 
+
+```
+Microsoft.VMwareCloudSimple/*
+Microsoft.VMwareCloudSimple/*/write
+Microsoft.VMwareCloudSimple/dedicatedCloudServices/*
+Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
+```
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

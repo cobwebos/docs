@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b38422b22885ad96c6681abe58b897155809521
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22f12255bf14ca424a8a79107e7ca8e403552b62
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113192"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471742"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>评审自己的访问权限，向组或 Azure AD 中的应用程序访问评审
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理对组或
 
 1. 查找从会要求你评审访问权限的 Microsoft 的电子邮件。 下面是示例电子邮件来评审访问权限给组。
 
-    ![评审访问权限电子邮件](./media/review-your-access/access-review-email.png)
+    ![Microsoft 为评审访问权限给组的示例电子邮件](./media/review-your-access/access-review-email.png)
 
 1. 单击**评审访问权限**链接以打开访问评审。
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理对组或
 
 1. 登录到 MyApps 门户[ https://myapps.microsoft.com ](https://myapps.microsoft.com)。
 
-    ![MyApps 门户](./media/review-your-access/myapps-access-panel.png)
+    ![列出应用程序有权 MyApps 门户](./media/review-your-access/myapps-access-panel.png)
 
 1. 在页面右上角，单击用户符号，其中显示了你的姓名和默认组织。 如果列出多个组织，请选择已请求访问评审的组织。
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理对组或
 
     如果该磁贴不可见，则该组织没有要执行的访问评审，此时不需要执行任何操作。
 
-    ![访问评审列表](./media/review-your-access/access-reviews-list.png)
+    ![挂起的访问权限审查应用和组的列表](./media/review-your-access/access-reviews-list.png)
 
 1. 单击**开始评审**你想要执行访问评审的链接。
 
@@ -68,13 +68,13 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理对组或
 
     如果请求是要为其他人评审访问权限，页上将看起来不同。 有关详细信息，请参阅[评审为组或应用程序的访问权限](perform-access-review.md)。
 
-    ![执行访问评审](./media/review-your-access/perform-access-review.png)
+    ![打开访问评审询问是否仍需要访问组](./media/review-your-access/perform-access-review.png)
 
 1. 单击**是**以保留你的访问权限，或单击**否**删除你的访问权限。
 
 1. 如果单击**是**，可能需要指定在理由**原因**框。
 
-    ![执行访问评审](./media/review-your-access/perform-access-review-submit.png)
+    ![完成访问评审询问是否仍需要访问组](./media/review-your-access/perform-access-review-submit.png)
 
 1. 单击“提交”  。
 

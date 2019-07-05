@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b9fe8ff710cbfe7fbb4a4d8bd351028bb50efcb0
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 137ef1ad78548053f3c5b8f30b7d83f2370f62da
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331739"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442438"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -120,7 +120,7 @@ ms.locfileid: "67331739"
 
 查看示例并了解如何构建使用自动化的机器学习模型：
 
-+ 请按照[教程：使用 Azure 自动机器学习自动训练分类模型](tutorial-auto-train-models.md)
++ 请按照[教程：自动训练回归模型使用 Azure 自动化的机器学习](tutorial-auto-train-models.md)
 
 + 配置自动训练实验的设置：
   + 在 Azure 门户界面[使用以下步骤](how-to-create-portal-experiments.md)。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 58c50eac60f1a8a47aac9a88125bc3e0132ec3db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ba4763e8d4835911d33d21c0f5bb431851a649b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059160"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444717"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>容量规划和缩放 Azure Service fabric
 
@@ -78,6 +78,8 @@ ms.locfileid: "67059160"
 2. 运行 `Get-ServiceFabricNode` 以确保该节点已转换为禁用状态。 如果没有，请等到节点已禁用。 这可能需要几个小时的每个节点。 在节点转换为禁用状态之前，请不要继续操作。
 3. 减少由一个节点类型的 Vm 数。 现在，将会删除编号最大的 VM 实例。
 4. 根据需要重复步骤 1 到 3，但切勿将主节点类型的实例数目缩减到少于可靠性层所需的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
+5. 一旦所有 Vm 都都消失了 （表示为"已关闭"） 的 fabric: / System/InfrastructureService / [节点名称] 将显示错误状态。 然后，可以更新群集资源，若要删除的节点类型。 可以使用 ARM 模板部署，也可以编辑通过群集资源[Azure 资源管理器](https://resources.azure.com)。 这将开始将群集升级，这将删除 fabric: / System/InfrastructureService / [节点类型] 服务处于错误状态。
+ 6. 之后，还可以选择删除 VMScaleSet，"向下"从 Service Fabric Explorer 查看不过，仍将看到的节点。 最后一步是清理包含的`Remove-ServiceFabricNodeState`命令。
 
 ### <a name="example-scenario"></a>示例方案
 有关何时执行垂直缩放操作受支持的方案是： 你想要将你的 Service Fabric 群集和应用程序从非托管磁盘迁移到托管磁盘，而无需应用程序停机。 

@@ -1,7 +1,6 @@
 ---
-title: 用发票为 Azure 订阅付款 | Microsoft Docs
-description: 说明如何用发票为 Azure 订阅付款
-documentationcenter: ''
+title: 通过发票支付 Azure 订阅
+description: 介绍如何通过发票支付 Azure 订阅。
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -10,23 +9,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 7af8789d61069f37d34d07653177e839caf35304
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ca726ef737ce4750018d2461bc4bcd6c7ebb5f5
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076510"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491213"
 ---
-# <a name="pay-azure-subscription-by-invoice"></a>通过发票支付 Azure 订阅
+# <a name="pay-for-your-azure-subscription-by-invoice"></a>通过发票支付 Azure 订阅
 
-如果切换到用发票付款，这意味着在发票日期的 30 天内支付帐单。 若要成为可通过发票支付 Azure 订阅，提交给 Azure 支持请求。 你的请求经过审批后，可以切换为转账付款的订阅中[Azure 门户](https://portal.azure.com)。
+如果切换到用发票付款，这意味着通过检查/电子转账在发票日期的 30 天内支付帐单。 若要成为可通过发票支付 Azure 订阅，提交给 Azure 支持请求。 你的请求经过审批后，您可以切换为转账付款 （检查/电子转账） 中[Azure 门户](https://portal.azure.com)。
 
 > [!IMPORTANT]
-> * 转账付款仅适用于公司帐户。
+> * 转账付款 （检查/网络传输） 是仅适用于公司帐户。
 > * 切换为转账付款之前，必须支付所有未付费用。
-> * 切换为转账付款后，无法切换回信用卡或借记卡付款。
 
 ## <a name="request-to-pay-by-invoice"></a>请求通过发票付款
 
@@ -70,12 +68,18 @@ ms.locfileid: "67076510"
 
 如果我们需要以运行信用检查，因为的所需的信用额度，我们会将你信用检查应用程序。
 
-## <a name="switch-to-invoice-pay"></a>切换为转账付款
+## <a name="switch-to-invoice-pay-checkwire-transfer"></a>切换为转账付款 （检查/网络传输）
 
-一旦获得批准通过发票付款时，可以将 Azure 订阅切换中的发票付款方式[Azure 门户](https://portal.azure.com)。
+一旦获得批准通过发票付款时，可以切换为转账付款 （检查/电子转账） 在 Azure 门户中。
 
-1. 登录到[Azure 门户](https://portal.azure.com)以帐户管理员身份。
-1. 在“成本管理 + 计费”  中进行搜索。
+如果你有 Microsoft Online Services 计划帐户，则可以切换 Azure 订阅，检查/网络传输。 如果你有 Microsoft 客户协议，则可以切换计费配置文件以检查/网络传输。 [了解如何查看你的帐户类型](#check-access-to-a-microsoft-customer-agreement)。
+
+### <a name="switch-azure-subscription-to-checkwire-transfer"></a>若要检查/网络传输的 Azure 订阅切换
+
+请按照以下步骤来切换为转账付款 （检查/电子转账） 在 Azure 订阅。 **一旦切换为转账付款 （检查/电子转账） 就无法切换回信用卡**。
+
+1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 搜索**成本管理 + 计费**。
 
     ![显示搜索的屏幕截图](./media/billing-how-to-pay-by-invoice/search.png)
 
@@ -85,9 +89,32 @@ ms.locfileid: "67076510"
 
     ![按发票按钮显示的屏幕截图](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
+### <a name="switch-billing-profile-to-checkwire-transfer"></a>切换计费要检查/网络传输的配置文件
 
-如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+请按照以下步骤来切换计费要检查/网络传输的配置文件。 请注意，仅注册了 Azure 的人员可以更改计费的配置文件的默认付款方式。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在“成本管理 + 计费”  中进行搜索。
+1. 在左侧菜单中，单击**计费配置文件**。
+
+    ![在菜单中显示计费的配置文件的屏幕截图](./media/billing-how-to-pay-by-invoice/billing-profile.png)
+
+1. 选择计费的配置文件。
+1. 在左侧菜单中，选择**付款方式**。
+
+   ![在菜单中显示支付方法的屏幕截图](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
+
+1. 单击蓝色横幅，指出你有资格通过检查/电子转账付款。
+
+    ![显示蓝色横幅以切换到检查/网络的屏幕截图](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
+
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
+[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
+
 - 如果需要更新在你计费的联系信息[Azure 帐户中心](https://account.azure.com/Profile)。

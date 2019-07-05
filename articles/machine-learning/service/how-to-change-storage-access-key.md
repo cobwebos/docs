@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/17/2019
-ms.openlocfilehash: 11abbb0494a9771676dcf2436b5e808346c16368
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 488a032e177897caf2897ba6335f4e7f64dc0e4d
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078555"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543828"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 
@@ -72,7 +72,7 @@ for name, ds in datastores.items():
 > [!IMPORTANT]
 > 执行所有步骤，使用 CLI，并使用 Python 的数据存储在工作区对二者进行更新。 同时更新之前，只有一个或其他更新可能会导致错误。
 
-1. 重新生成密钥。 正在重新生成访问密钥的信息，请参阅[管理存储帐户](/azure/storage/common/storage-account-manage.md#access-keys)一文。 保存新密钥。
+1. 重新生成密钥。 正在重新生成访问密钥的信息，请参阅[管理存储帐户](/azure/storage/common/storage-account-manage#access-keys)一文。 保存新密钥。
 
 1. 若要更新工作区以使用新密钥，请使用以下步骤：
 

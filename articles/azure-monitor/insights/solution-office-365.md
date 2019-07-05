@@ -10,14 +10,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/01/2019
 ms.author: bwren
-ms.openlocfilehash: 4c7e1225a8da1e20bc90986d1530b781f7f2c11a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34c7ecbf235bed838af9ed2f848ca492916583f6
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357582"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514219"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -25,7 +25,7 @@ ms.locfileid: "66357582"
 
 
 > [!NOTE]
-> 若要安装和配置 Office 365 解决方案的建议的方法让[Office 365 连接器](../../sentinel/connect-office-365.md)中[Azure Sentinel](../../sentinel/overview.md)而不是使用本文中的步骤。 这是将 Office 365 解决方案和改进的配置体验的更新的版本。 若要连接 Azure AD 日志，请使用 [Azure Sentinel Azure AD 连接器](../../sentinel/connect-azure-active-directory.md)，该连接器提供比 Office 365 管理日志更丰富的日志数据。 
+> 若要安装和配置 Office 365 解决方案的建议的方法让[Office 365 连接器](../../sentinel/connect-office-365.md)中[Azure Sentinel](../../sentinel/overview.md)而不是使用本文中的步骤。 这是将 Office 365 解决方案和改进的配置体验的更新的版本。 若要连接 Azure AD 日志，可以使用任一[Azure Sentinel Azure AD 连接器](../../sentinel/connect-azure-active-directory.md)或[配置 Azure AD 的诊断设置](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)，它提供更丰富的日志数据与 Office 365 管理日志。 
 >
 > 当您[载入 Azure Sentinel](../../sentinel/quickstart-onboard.md)，指定你想安装中的 Office 365 解决方案的 Log Analytics 工作区。 后启用连接器，解决方案将会出现在工作区，并作为任何其他已安装的监视解决方案使用完全相同。
 >

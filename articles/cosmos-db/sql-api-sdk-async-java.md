@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 3/5/2019
+ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 356838f16f7f13506657326bae5dbe994d54bdd5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3cafa4d5aecaa4c8f3863c3269ec02793340e3e6
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "57570090"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509262"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Async Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -43,6 +43,16 @@ SQL API Async Java SDK 与 SQL API Java SDK 的区别在于，前者通过支持
 | 受支持的最小运行时 |[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+* TCP 模式现在在默认情况下
+* 现在，跨分区查询中的度量值将返回所有分区
+* 全局强现在可正常
+* 对于多主机未正确重试故障转移的查询
+* 依赖项 bumps 安全修补程序
+
+### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
+* 哈希 V2 支持的 bug 修复
 
 ### <a name="a-name243243"></a><a name="2.4.3"/>2.4.3
 * 资源泄漏 client#close() 上的 bug 修复 ([github #88](https://github.com/Azure/azure-cosmosdb-java/issues/88))。

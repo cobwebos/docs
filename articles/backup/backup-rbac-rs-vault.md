@@ -2,18 +2,18 @@
 title: 使用 Azure 基于角色的访问控制管理备份
 description: 使用基于角色的访问控制来管理对恢复服务保管库中的备份管理操作的访问。
 services: backup
-author: trinadhk
+author: utraghuv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/17/2019
-ms.author: trinadhk
-ms.openlocfilehash: ed3797183e13a00d2c5381fa6449c111c3bc9ab9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/24/2019
+ms.author: utraghuv
+ms.openlocfilehash: 3b4585422a36992241fb4839238b1f6aa46c659f
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253724"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565638"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用基于角色的访问控制管理 Azure 备份恢复点
 Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。
@@ -23,7 +23,7 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访�
 
 Azure 备份提供了三个用于控制备份管理操作的内置角色。 详细了解 [Azure RBAC 内置角色](../role-based-access-control/built-in-roles.md)
 
-* [备份参与者](../role-based-access-control/built-in-roles.md#backup-contributor) - 此角色具有创建和管理备份方面的所有权限，除了创建恢复服务保管库和授予他人访问权限。 可以把该角色想象成可执行每个备份管理操作的备份管理的管理员。
+* [备份参与者](../role-based-access-control/built-in-roles.md#backup-contributor)-此角色具有所有权限来创建和管理备份删除恢复服务保管库和授予他人访问权限除外。 可以把该角色想象成可执行每个备份管理操作的备份管理的管理员。
 * [备份操作员](../role-based-access-control/built-in-roles.md#backup-operator) - 此角色具有除删除备份和管理备份策略之外的针对参与者操作的所有权限。 此角色等效于参与者，但它不能执行破坏性操作，例如通过删除数据或删除本地资源的注册来停止备份。
 * [备份读取器](../role-based-access-control/built-in-roles.md#backup-reader) - 此角色具有查看所有备份管理操作的权限。 可以把该角色想象成一位监视者。
 
@@ -36,7 +36,7 @@ Azure 备份提供了三个用于控制备份管理操作的内置角色。 详�
 
 | 管理操作 | 所需的最低 RBAC 角色 | 所需的范围 |
 | --- | --- | --- |
-| 创建恢复服务保管库 | 参与者 | 包含保管库的资源组 |
+| 创建恢复服务保管库 | 备份参与者 | 包含保管库的资源组 |
 | 启用 Azure VM 备份 | 备份操作员 | 包含保管库的资源组 |
 | | 虚拟机参与者 | VM 资源 |
 | 按需 VM 备份 | 备份操作员 | 恢复保管库资源 |

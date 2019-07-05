@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 05/20/2019
-ms.openlocfilehash: 3e56244f074e31672cf77bc74998096e215a4db7
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.date: 06/27/2019
+ms.openlocfilehash: 1eeb37ce74b3e2f57588197d6bb88f59944c61cf
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357344"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460660"
 ---
 # <a name="automated-backups"></a>自动备份
 
-SQL 数据库自动创建在 7 到 35 天内保留的数据库备份，并使用 Azure[读取访问异地冗余存储 (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)以确保它们保留即使数据中心都不可用。 可以自动创建这些备份且不收取额外费用。 不需要执行任何操作就能进行这样的备份。 数据库备份是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库备份可以保护数据免遭意外损坏或删除。 如果你的安全规则需要备份是长时间的时间 （最多 10 年），则可以配置[长期保留](sql-database-long-term-retention.md)上单一数据库和弹性池。
+SQL 数据库自动创建在 7 到 35 天内保留的数据库备份，并使用 Azure[读取访问异地冗余存储 (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)以确保它们保留即使数据中心都不可用。 这些备份将自动创建。 数据库备份是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库备份可以保护数据免遭意外损坏或删除。 如果你的安全规则需要备份是长时间的时间 （最多 10 年），则可以配置[长期保留](sql-database-long-term-retention.md)上单一数据库和弹性池。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 

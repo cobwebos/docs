@@ -3,22 +3,22 @@ title: 配置 Linux Java 应用程序-Azure 应用服务 |Microsoft Docs
 description: 了解如何配置在 Linux 上的 Azure 应用服务中运行的 Java 应用。
 keywords: azure 应用服务、 web 应用、 linux、 os、 java 和 java ee jee，javaee
 services: app-service
-author: rloutlaw
-manager: angerobe
+author: bmitchell287
+manager: douge
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 03/28/2019
-ms.author: routlaw
+ms.date: 06/26/2019
+ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 91368ac3b1d7948257fa9e55debc862567593425
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 51ca597208b582e95fd305886dcf163744825eee
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341386"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509646"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure 应用服务中配置 Linux Java 应用
 
@@ -53,7 +53,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 ### <a name="app-logging"></a>应用日志记录
 
-通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 Java 和 Tomcat 应用程序日志可在`/home/LogFiles/Application/`目录。
+通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 可在 Java 和 Tomcat 应用程序日志 */home/LogFiles/应用程序/* 目录。
 
 如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](/azure/application-insights/app-insights-java-trace-logs)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
 
@@ -76,7 +76,7 @@ Picked up JAVA_TOOL_OPTIONS: -Djava.net.preferIPv4Stack=true
 116 /home/site/wwwroot/app.jar
 ```
 
-执行以下命令以启动 JVM 的 30 秒录制。 这将 JVM 配置文件，并创建一个名为 JFR 文件`jfr_example.jfr`主目录中。 （116 将替换为你的 Java 应用的 pid。）
+执行以下命令以启动 JVM 的 30 秒录制。 这将 JVM 配置文件，并创建一个名为 JFR 文件*jfr_example.jfr*主目录中。 （116 将替换为你的 Java 应用的 pid。）
 
 ```shell
 jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/home/jfr_example.jfr"
@@ -96,7 +96,7 @@ az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --s
 
 ### <a name="analyzing-recordings"></a>分析录制
 
-使用[FTPS](../deploy-ftp.md) JFR 文件下载到本地计算机。 若要分析 JFR 文件，下载并安装[Zulu 的任务控制](https://www.azul.com/products/zulu-mission-control/)。 Zulu 的任务控制的说明，请参阅[Azul 文档](https://docs.azul.com/zmc/)并[安装说明](https://docs.microsoft.com/en-us/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)。
+使用[FTPS](../deploy-ftp.md) JFR 文件下载到本地计算机。 若要分析 JFR 文件，下载并安装[Zulu 的任务控制](https://www.azul.com/products/zulu-mission-control/)。 Zulu 的任务控制的说明，请参阅[Azul 文档](https://docs.azul.com/zmc/)并[安装说明](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)。
 
 ## <a name="customization-and-tuning"></a>自定义和优化
 
@@ -133,7 +133,7 @@ az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --s
 
 优化应用程序堆设置时，请查看应用服务计划详细信息，并考虑多个应用程序和部署槽位方面的需求，以得出最佳内存分配。
 
-如果要部署的 JAR 应用程序，它应被命名为`app.jar`以便内置映像可以正确地标识您的应用程序。 （的 Maven 插件情况执行此重命名自动）。如果不希望重命名为 JAR `app.jar`，可以上传包含要运行 JAR 的命令的 shell 脚本。 然后粘贴到此脚本中的完整路径[启动文件](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file)在门户的配置部分中的文本框。
+如果要部署的 JAR 应用程序，它应命名*app.jar*以便内置映像可以正确地标识您的应用程序。 （的 Maven 插件情况执行此重命名自动）。如果不希望重命名为 JAR *app.jar*，可以上传包含要运行 JAR 的命令的 shell 脚本。 然后粘贴到此脚本中的完整路径[启动文件](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file)在门户的配置部分中的文本框。
 
 ### <a name="turn-on-web-sockets"></a>启用 Web 套接字
 
@@ -173,7 +173,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ## <a name="secure-applications"></a>安全应用程序
 
-在适用于 Linux 应用服务中运行的 Java 应用程序实施与其他应用程序相同的一套[安全最佳做法](/azure/security/security-paas-applications-using-app-services)。 
+在适用于 Linux 应用服务中运行的 Java 应用程序实施与其他应用程序相同的一套[安全最佳做法](/azure/security/security-paas-applications-using-app-services)。
 
 ### <a name="authenticate-users"></a>对用户进行身份验证
 
@@ -215,7 +215,7 @@ public int getServerPort()
 
 #### <a name="spring-boot"></a>Spring Boot
 
-Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) 通过熟悉的 Spring Security 注释和 API 来保护应用程序。 请务必增加 `application.properties` 文件中的最大标头大小。 我们建议值为 `16384`。
+Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) 通过熟悉的 Spring Security 注释和 API 来保护应用程序。 增加最大标头大小，以确保你*application.properties*文件。 我们建议值为 `16384`。
 
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
@@ -239,11 +239,11 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 ### <a name="configure-new-relic"></a>配置 NewRelic
 
 1. 在 [NewRelic.com](https://newrelic.com/signup) 上创建一个 NewRelic 帐户
-2. 从 NewRelic 下载 Java 代理，它将具有类似于 `newrelic-java-x.x.x.zip` 的文件名。
+2. 从 NewRelic 下载 Java 代理，它将拥有的文件名称类似于*newrelic java x.x.x.zip*。
 3. 复制你的许可证密钥，稍后需要使用它来配置代理。
-4. [通过 ssh 登录到应用服务实例](app-service-linux-ssh-support.md)并创建一个新目录`/home/site/wwwroot/apm`。
-5. 将解压缩的 NewRelic Java 代理文件上传到 `/home/site/wwwroot/apm` 下的一个目录中。 你的代理的文件应当位于 `/home/site/wwwroot/apm/newrelic` 中。
-6. 修改位于 `/home/site/wwwroot/apm/newrelic/newrelic.yml` 处的 YAML 文件并将占位符许可证值替换为你自己的许可证密钥。
+4. [通过 ssh 登录到应用服务实例](app-service-linux-ssh-support.md)并创建一个新目录 */home/site/wwwroot/apm*。
+5. 将解压缩的 NewRelic Java 代理文件上传到下的目录 */home/site/wwwroot/apm*。 你的代理的文件应采用 */home/site/wwwroot/apm/newrelic*。
+6. 修改在 YAML 文件 */home/site/wwwroot/apm/newrelic/newrelic.yml*并将占位符许可证值替换为你自己的许可证密钥。
 7. 在 Azure 门户中，浏览到你在应用服务中的应用程序并创建一个新的应用程序设置。
     - 如果你的应用使用的是 **Java SE**，请创建一个名为 `JAVA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 的环境变量。
     - 如果你使用的是 **Tomcat**，请创建一个名为 `CATALINA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 的环境变量。
@@ -253,25 +253,25 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 ### <a name="configure-appdynamics"></a>配置 AppDynamics
 
 1. 在 [AppDynamics.com](https://www.appdynamics.com/community/register/) 上创建一个 AppDynamics 帐户
-1. 从 AppDynamics 网站下载 Java 代理，文件名将类似于 `AppServerAgent-x.x.x.xxxxx.zip`
-1. [通过 ssh 登录到应用服务实例](app-service-linux-ssh-support.md)并创建一个新目录`/home/site/wwwroot/apm`。
-1. 将 Java 代理文件上传到 `/home/site/wwwroot/apm` 下的一个目录中。 你的代理的文件应当位于 `/home/site/wwwroot/apm/appdynamics` 中。
-1. 在 Azure 门户中，浏览到你在应用服务中的应用程序并创建一个新的应用程序设置。
+2. 从 AppDynamics 网站下载 Java 代理、 文件名称将类似于*AppServerAgent x.x.x.xxxxx.zip*
+3. [通过 ssh 登录到应用服务实例](app-service-linux-ssh-support.md)并创建一个新目录 */home/site/wwwroot/apm*。
+4. 将 Java 代理文件上传到下的目录 */home/site/wwwroot/apm*。 你的代理的文件应采用 */home/site/wwwroot/apm/appdynamics*。
+5. 在 Azure 门户中，浏览到你在应用服务中的应用程序并创建一个新的应用程序设置。
     - 如果你使用的是 **Java SE**，请创建一个名为 `JAVA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 的环境变量，其中，`<app-name>` 是你的应用服务名称。
     - 如果你使用的是 **Tomcat**，请创建一个名为 `CATALINA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 的环境变量，其中，`<app-name>` 是你的应用服务名称。
     - 如果您使用的**WildFly**，请参阅 AppDynamics 文档[此处](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings)有关安装 Java 代理和 JBoss 配置的指南。
-    
+
 ## <a name="configure-jar-applications"></a>配置应用程序 JAR
 
 ### <a name="starting-jar-apps"></a>启动 JAR 应用
 
-默认情况下，应用服务需要你 JAR 的应用程序命名为`app.jar`。 如果它具有此名称，将自动运行。 对于 Maven 用户中，您可以设置的 JAR 名称通过包括`<finalName>app</finalName>`中`<build>`一部分您`pom.xml`。 [您可以在 Gradle 这样做](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName)通过设置`archiveFileName`属性。
+默认情况下，应用服务需要你 JAR 的应用程序命名为*app.jar*。 如果它具有此名称，将自动运行。 对于 Maven 用户中，您可以设置的 JAR 名称通过包括`<finalName>app</finalName>`中`<build>`一部分您*pom.xml*。 [您可以在 Gradle 这样做](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName)通过设置`archiveFileName`属性。
 
-如果你想要使用不同的 JAR 名称，还必须提供[启动命令](app-service-linux-faq.md#built-in-images)执行 JAR 文件。 例如，`java -jar my-jar-app.jar`。 可以为您在门户中，在配置下的启动命令设置值 > 常规设置，或使用名为应用程序设置`STARTUP_COMMAND`。
+如果你想要使用不同的 JAR 名称，还必须提供[启动命令](app-service-linux-faq.md#built-in-images)执行 JAR 文件。 例如，`java -jar my-jar-app.jar` 。 可以为您在门户中，在配置下的启动命令设置值 > 常规设置，或使用名为应用程序设置`STARTUP_COMMAND`。
 
 ### <a name="server-port"></a>服务器端口
 
-Linux 版应用服务将传入请求路由到端口 80，以便你的应用程序应侦听端口 80 也。 您可以执行此操作在应用程序配置 (如 Spring 的`application.properties`文件)，或在启动命令 (例如， `java -jar spring-app.jar --server.port=80`)。 请参阅以下文档为常见的 Java 框架：
+Linux 版应用服务将传入请求路由到端口 80，以便你的应用程序应侦听端口 80 也。 您可以执行此操作在应用程序配置 (如 Spring 的*application.properties*文件)，或在启动命令 (例如， `java -jar spring-app.jar --server.port=80`)。 请参阅以下文档为常见的 Java 框架：
 
 - [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html#howto-use-short-command-line-arguments)
 - [SparkJava](http://sparkjava.com/documentation#embedded-web-server)
@@ -309,24 +309,24 @@ Linux 版应用服务将传入请求路由到端口 80，以便你的应用程�
 
 #### <a name="application-level-data-sources"></a>应用程序级别的数据源
 
-1. 在项目的 `META-INF/` 目录中创建 `context.xml` 文件。 如果 `META-INF/` 目录不存在，则创建它。
+1. 创建*context.xml*中的文件*元 INF /* 项目的目录。 创建*META INF /* 目录，如果不存在。
 
-2. 在 `context.xml` 中，添加一个 `Context` 元素以将数据源链接到 JNDI 地址。 将 `driverClassName` 占位符替换为上表中你的驱动程序的类名称。
+2. 在中*context.xml*，添加`Context`元素的数据源链接到 JNDI 地址。 将 `driverClassName` 占位符替换为上表中你的驱动程序的类名称。
 
     ```xml
     <Context>
         <Resource
-            name="jdbc/dbconnection" 
+            name="jdbc/dbconnection"
             type="javax.sql.DataSource"
             url="${dbuser}"
             driverClassName="<insert your driver class name>"
-            username="${dbpassword}" 
+            username="${dbpassword}"
             password="${connURL}"
         />
     </Context>
     ```
 
-3. 更新应用程序的 `web.xml`，以便在应用程序中使用该数据源。
+3. 更新应用程序*web.xml*使用你的应用程序中的数据源。
 
     ```xml
     <resource-env-ref>
@@ -337,24 +337,25 @@ Linux 版应用服务将传入请求路由到端口 80，以便你的应用程�
 
 #### <a name="shared-server-level-resources"></a>服务器级别的共享的资源
 
-1. 如果尚未进行相关的配置，请使用 SSH 将 `/usr/local/tomcat/conf` 的内容复制到应用服务 Linux 实例上的 `/home/tomcat/conf` 中。
-    ```
+1. 将复制的内容 */usr/local/tomcat/conf*成 */home/tomcat/conf*实例在应用服务 Linux 上的如果您没有配置那里已使用 SSH。
+
+    ```bash
     mkdir -p /home/tomcat
     cp -a /usr/local/tomcat/conf /home/tomcat/conf
     ```
 
-2. 在 `server.xml` 中的 `<Server>` 元素内添加一个 Context 元素。
+2. 将上下文元素中的添加你*server.xml*内`<Server>`元素。
 
     ```xml
     <Server>
     ...
     <Context>
         <Resource
-            name="jdbc/dbconnection" 
+            name="jdbc/dbconnection"
             type="javax.sql.DataSource"
             url="${dbuser}"
             driverClassName="<insert your driver class name>"
-            username="${dbpassword}" 
+            username="${dbpassword}"
             password="${connURL}"
         />
     </Context>
@@ -362,7 +363,7 @@ Linux 版应用服务将传入请求路由到端口 80，以便你的应用程�
     </Server>
     ```
 
-3. 更新应用程序的 `web.xml`，以便在应用程序中使用该数据源。
+3. 更新应用程序*web.xml*使用你的应用程序中的数据源。
 
     ```xml
     <resource-env-ref>
@@ -375,7 +376,8 @@ Linux 版应用服务将传入请求路由到端口 80，以便你的应用程�
 
 最后，将驱动程序 jar 文件放在 Tomcat classpath 并重新启动你的应用服务。
 
-1. 将 JDBC 驱动程序文件放入 `/home/tomcat/lib` 目录，确保它们可供 Tomcat 类加载器使用。 （如果此目录尚未存在，请创建它。）若要将这些文件上传到应用服务实例，请执行以下步骤：
+1. 确保 JDBC 驱动程序文件，从而将它们中都可用于 Tomcat 引发的 classloader */home/tomcat/lib*目录。 （如果此目录尚未存在，请创建它。）若要将这些文件上传到应用服务实例，请执行以下步骤：
+
     1. 在中[Cloud Shell](https://shell.azure.com)，安装 web 应用扩展：
 
       ```azurecli-interactive
@@ -388,7 +390,7 @@ Linux 版应用服务将传入请求路由到端口 80，以便你的应用程�
       az webapp remote-connection create --resource-group <resource-group-name> --name <app-name> --port <port-on-local-machine>
       ```
 
-    3. 使用 SFTP 客户端连接到本地隧道端口，并将文件上传到 `/home/tomcat/lib` 文件夹。
+    3. 连接到使用 SFTP 客户端的本地隧道端口并将文件上载到 */home/tomcat/lib*文件夹。
 
     另外，也可以使用某个 FTP 客户端上传 JDBC 驱动程序。 请遵循这些[用于获取 FTP 凭据的说明](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)。
 
@@ -396,13 +398,13 @@ Linux 版应用服务将传入请求路由到端口 80，以便你的应用程�
 
 ### <a name="spring-boot"></a>Spring Boot
 
-若要连接到 Spring Boot 应用程序中的数据源，我们建议创建的连接字符串并将其注入您`application.properties`文件。
+若要连接到 Spring Boot 应用程序中的数据源，我们建议创建的连接字符串并将其注入您*application.properties*文件。
 
 1. 在应用服务页的"配置"部分，设置字符串的名称将 JDBC 连接字符串粘贴到值字段中，而设置为"Custom"的类型。 槽设置为，可以选择性地设置此连接字符串。
 
     此连接字符串都可以访问我们的应用程序为环境变量名为`CUSTOMCONNSTR_<your-string-name>`。 例如，我们在上面创建的连接字符串将被命名为`CUSTOMCONNSTR_exampledb`。
 
-2. 在你`application.properties`文件中，引用环境变量名称与此连接字符串。 对于我们的示例，我们将使用以下命令。
+2. 在你*application.properties*文件中，引用环境变量名称与此连接字符串。 对于我们的示例，我们将使用以下命令。
 
     ```yml
     app.datasource.url=${CUSTOMCONNSTR_exampledb}
@@ -415,47 +417,49 @@ Linux 版应用服务将传入请求路由到端口 80，以便你的应用程�
 > [!NOTE]
 > 应用服务 Linux 上的 Java 企业版目前处于预览状态。 此堆栈**不**建议用于面向生产的工作。 我们 Java SE 和 Tomcat 在堆栈上的信息。
 
-Linux 上的 azure 应用服务允许 Java 开发人员能够生成、 部署和缩放 Java 企业 (Java EE) 应用程序上完全托管的基于 Linux 的服务。  基础 Java 企业运行时环境是开源 [Wildfly](https://wildfly.org/) 应用程序服务器。
+Linux 上的 azure 应用服务允许 Java 开发人员能够生成、 部署和缩放 Java 企业 (Java EE) 应用程序上完全托管的基于 Linux 的服务。  基础 Java 企业运行时环境是一个开放源代码[WildFly](https://wildfly.org/)应用程序服务器。
 
-[使用应用服务进行缩放](#scale-with-app-service)
-[自定义应用程序服务器配置](#customize-application-server-configuration)
-[模块和依赖项](#modules-and-dependencies)
-[数据源](#data-sources)
-[启用消息传递提供程序](#enable-messaging-providers)
-[配置会话管理缓存](#configure-session-management-caching)
+本部分包含以下小节：
+
+- [使用应用服务进行缩放](#scale-with-app-service)
+- [自定义应用程序服务器配置](#customize-application-server-configuration)
+- [安装模块依赖项](#install-modules-and-dependencies)
+- [配置数据源](#configure-data-sources)
+- [启用消息传递提供程序](#enable-messaging-providers)
+- [配置会话管理缓存](#configure-session-management-caching)
 
 ### <a name="scale-with-app-service"></a>应用服务缩放
 
 在 Linux 上的应用服务中运行的 WildFly 应用程序服务器以独立模式运行，而不是在域配置中运行。 横向扩展应用服务计划时，每个 WildFly 实例都被配置为独立的服务器。
 
- 使用[缩放规则](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md)和[增加实例数](../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，纵向或横向缩放应用程序。
+使用[缩放规则](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md)和[增加实例数](../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，纵向或横向缩放应用程序。
 
 ### <a name="customize-application-server-configuration"></a>自定义应用程序服务器配置
 
-Web 应用实例是无状态的，因此必须在启动时配置启动的每个新实例，以支持应用程序所需的 Wildfly 配置。
+Web 应用程序实例是无状态，，因此在启动时以支持应用程序所需的 WildFly 配置，必须配置每个新的实例已启动。
 你可以编写一个用于调用 WildFly CLI 的启动 Bash 脚本，以便执行以下操作：
 
 - 设置数据源
 - 配置消息提供程序
-- 将其他模块和依赖项添加到 Wildfly 服务器配置中。
+- 将其他模块和依赖项添加到 WildFly 服务器配置。
 
- 脚本会在启动并运行 Wildfly 时（但需在应用程序启动前）运行。 该脚本应使用从 `/opt/jboss/wildfly/bin/jboss-cli.sh` 调用的 [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) 来配置应用程序服务器，其中包含服务器启动后所需的任何配置或更改。
+该脚本运行时 WildFly 已启动并运行，但应用程序启动之前。 该脚本应使用[JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface)从调用 */opt/jboss/wildfly/bin/jboss-cli.sh*若要配置的任何配置或需要在服务器启动后更改应用程序服务器。
 
-请勿使用 CLI 的交互模式配置 Wildfly。 相反，可使用 `--file` 命令向 JBoss CLI 提供命令脚本，例如：
+不使用 CLI 交互模式下配置 WildFly。 相反，可使用 `--file` 命令向 JBoss CLI 提供命令脚本，例如：
 
 ```bash
 /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
 ```
 
-将启动脚本上传到应用服务实例中的 `/home/site/deployments/tools`。 有关获取 FTP 凭据的说明，请参阅[本文档](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#userscope)。
+使用 FTP 将启动脚本上传到在应用服务实例中的某个位置你 */home*目录，如 */home/site/deployments/tools*。 有关详细信息，请参阅[将应用部署到 Azure 应用服务中使用 FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp)。
 
-将 Azure 门户中的“启动脚本”字段设置为启动 shell 脚本的位置，例如 `/home/site/deployments/tools/your-startup-script.sh`  。
+设置**启动脚本**在 Azure 门户中的位置启动 shell 脚本，例如字段 */home/site/deployments/tools/your-startup-script.sh*。
 
 提供[应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)中要将环境变量用于传递脚本中的应用程序配置。 应用程序设置将连接字符串和配置应用程序所需的其他机密置于版本控制之外。
 
-### <a name="modules-and-dependencies"></a>模块和依赖项
+### <a name="install-modules-and-dependencies"></a>安装模块依赖项
 
-要通过 JBoss CLI 将模块及其依赖项安装到 Wildfly 类路径中，需要在其自己的目录中创建以下文件。 某些模块和依赖项可能需要其他配置，例如 JNDI 命名或其他特定于 API 的配置，因此此列表是在大多数情况下配置依赖项所需的最小集。
+若要到通过 JBoss CLI WildFly 类路径中安装模块及其依赖项，将需要在其自己的目录中创建以下文件。 某些模块和依赖项可能需要其他配置，例如 JNDI 命名或其他特定于 API 的配置，因此此列表是在大多数情况下配置依赖项所需的最小集。
 
 - [XML 模块描述符](https://jboss-modules.github.io/jboss-modules/manual/#descriptors)。 此 XML 文件定义模块的名称、属性和依赖项。 此[示例 module.xml 文件](https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource)定义了 Postgres 模块、其 JAR 文件 JDBC 依赖项以及所需的其他模块依赖项。
 - 模块的任何必要 JAR 文件依赖项。
@@ -463,23 +467,170 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 - 用于调用 JBoss CLI 和执行上一步中脚本的 Bash 启动脚本。 重启应用服务实例或在横向扩展期间配置新实例时，将执行此文件。当 JBoss 命令传递给 JBoss CLI 时，可在此启动脚本中为应用程序执行任何其他配置。 此文件可以是将 JBoss CLI 命令脚本传递给 JBoss CLI 的最小单个命令：
 
 ```bash
-`/opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli`
+/opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
 ```
 
-获得模块的文件和内容后，请按照以下步骤将模块添加到 Wildfly 应用程序服务器。
+后的文件和内容为模块，请执行以下步骤来将模块添加到 WildFly 应用程序服务器。
 
-1. 将文件 FTP 到应用服务实例中的 `/home/site/deployments/tools`。 有关获取 FTP 凭据的说明，请参阅本文档。
-2. 在中**配置** > **常规设置**的 Azure 门户，请将"启动脚本"页会字段到的位置启动 shell 脚本，例如`/home/site/deployments/tools/your-startup-script.sh`。
+1. 使用 FTP 将文件上传到在应用服务实例中的位置在 */home*目录，如 */home/site/deployments/tools*。 有关详细信息，请参阅[将应用部署到 Azure 应用服务中使用 FTP/S](../deploy-ftp.md)。
+2. 在**配置** > **常规设置**页上的 Azure 门户中，设置**启动脚本**到启动 shell 脚本，位置字段示例 */home/site/deployments/tools/startup.sh*。
 3. 按下重新启动您的应用服务实例**重新启动**按钮**概述**门户或使用 Azure CLI 的部分。
 
-### <a name="configure-data-source-connections"></a>配置数据源连接
+### <a name="configure-data-sources"></a>配置数据源
 
-要为数据源连接配置 Wildfly，请按照上面“安装模块和依赖项”部分中概述的相同过程进行操作。 可对任何 Azure 数据库服务执行相同的步骤。
+若要配置 WildFly/JBoss，若要访问的数据源，您可以使用上述的"安装模块和依赖项"部分中的一般过程。 以下部分提供此过程对于 PostgreSQL、 MySQL 和 SQL Server 数据源的特定详细信息。
 
-1. 下载适用于数据库风格的 JDBC 驱动程序。 为方便起见，以下是 [Postgres](https://jdbc.postgresql.org/download.html) 和 [MySQL](https://dev.mysql.com/downloads/connector/j/) 的驱动程序。 解压缩下载项以获取 .jar 文件。
-2. 按照“模块和依赖项”中概述的步骤创建和上传 XML 模块描述符、JBoss CLI 脚本、启动脚本和 JDBC .jar 依赖项。
+本部分假设你已有一个应用、 应用服务实例和 Azure 数据库服务实例。 下面的说明，请参阅你的应用服务名称、 其资源组，和你的数据库连接信息。 您可以找到此信息在 Azure 门户上。
 
-有关使用 [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7)、[MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource) 和 [SQL 数据库](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898)配置 Wildfly 的详细信息已可供参阅。 可使用这些自定义说明以及上述通用方法将数据源定义添加到服务器。
+如果想要从开始使用示例应用会经历整个过程，请参阅[教程：构建在 Azure 中的 web 应用 Java EE 和 Postgres](tutorial-java-enterprise-postgresql-app.md)。
+
+以下步骤介绍连接现有的应用服务和数据库的要求。
+
+1. 下载的 JDBC driver for [PostgreSQL](https://jdbc.postgresql.org/download.html)， [MySQL](https://dev.mysql.com/downloads/connector/j/)，或[SQL Server](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)。 解压缩已下载的存档以获取.jar 文件的驱动程序。
+
+2. 创建文件名称类似于*module.xml*并添加以下标记。 替换`<module name>`占位符 （包括在尖括号内） 替换`org.postgres`PostgreSQL，对于`com.mysql`MySQL 的或`com.microsoft`适用于 SQL Server。 替换为`<JDBC .jar file path>`与上一步的.jar 文件的名称，包括位置的完整路径将将文件放在应用服务实例中。 这可以是下的任何位置 */home*目录。
+
+    ```xml
+    <?xml version="1.0" ?>
+    <module xmlns="urn:jboss:module:1.1" name="<module name>">
+        <resources>
+           <resource-root path="<JDBC .jar file path>" />
+        </resources>
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="javax.transaction.api"/>
+        </dependencies>
+    </module>
+    ```
+
+3. 创建文件名称类似于*数据源 commands.cli*并添加以下代码。 替换为`<JDBC .jar file path>`与上一步中使用的值。 替换`<module file path>`使用的文件名称和从上一步骤中，例如应用服务路径 */home/module.xml*。
+
+    **PostgreSQL**
+
+    ```console
+    module add --name=org.postgres --resources=<JDBC .jar file path> --module-xml=<module file path>
+
+    /subsystem=datasources/jdbc-driver=postgres:add(driver-name=postgres,driver-module-name=org.postgres,driver-class-name=org.postgresql.Driver,driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)
+
+    data-source add --name=postgresDS --driver-name=postgres --jndi-name=java:jboss/datasources/postgresDS --connection-url=$DATABASE_CONNECTION_URL --user-name=$DATABASE_SERVER_ADMIN_FULL_NAME --password=$DATABASE_SERVER_ADMIN_PASSWORD --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=org.postgresql.Driver --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter --jta=true --use-java-context=true --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker
+
+    reload --use-current-server-config=true
+    ```
+
+    **MySQL**
+
+    ```console
+    module add --name=com.mysql --resources=<JDBC .jar file path> --module-xml=<module file path>
+
+    /subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql,driver-class-name=com.mysql.cj.jdbc.Driver)
+
+    data-source add --name=mysqlDS --jndi-name=java:jboss/datasources/mysqlDS --connection-url=$DATABASE_CONNECTION_URL --driver-name=mysql --user-name=$DATABASE_SERVER_ADMIN_FULL_NAME --password=$DATABASE_SERVER_ADMIN_PASSWORD --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=com.mysql.cj.jdbc.Driver --jta=true --use-java-context=true --exception-sorter-class-name=com.mysql.cj.jdbc.integration.jboss.ExtendedMysqlExceptionSorter
+
+    reload --use-current-server-config=true
+    ```
+
+    **SQL Server**
+
+    ```console
+    module add --name=com.microsoft --resources=<JDBC .jar file path> --module-xml=<module file path>
+
+    /subsystem=datasources/jdbc-driver=sqlserver:add(driver-name=sqlserver,driver-module-name=com.microsoft,driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver,driver-datasource-class-name=com.microsoft.sqlserver.jdbc.SQLServerDataSource)
+
+    data-source add --name=sqlDS --jndi-name=java:jboss/datasources/sqlDS --driver-name=sqlserver --connection-url=$DATABASE_CONNECTION_URL --validate-on-match=true --background-validation=false --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLExceptionSorter
+
+    reload --use-current-server-config=true
+    ```
+
+    运行此文件，则通过在下一步中所述的启动脚本。 它将作为 WildFly 模块安装 JDBC 驱动程序、 创建相应的 WildFly 数据源，然后重新加载服务器以确保所做的更改将生效。
+
+4. 创建文件名称类似于*startup.sh*并添加以下代码。 替换为`<JBoss CLI script>`与上一步中创建的文件的名称。 请务必包括完整路径到的位置，将文件置于您的应用服务实例，例如 */home/datasource-commands.cli*。
+
+    ```bash
+    #!/usr/bin/env bash
+    /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=<JBoss CLI script>
+    ```
+
+5. 使用 FTP 将 JDBC.jar 文件、 模块 XML 文件、 JBoss CLI 脚本和启动脚本上传到应用服务实例。 将这些文件放入在上一步骤中，如指定的位置 */home*。 有关 FTP 的详细信息，请参阅[将应用部署到 Azure 应用服务中使用 FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp)。
+
+6. 使用 Azure CLI 将设置添加到你保存你的数据库连接信息的应用服务。 替换`<resource group>`和`<webapp name>`你的应用服务使用的值。 替换`<database server name>`， `<database name>`， `<admin name>`，和`<admin password>`与你的数据库连接信息。 可以从 Azure 门户来获取你的应用服务和数据库信息。
+
+    **PostgreSQL:**
+
+    ```bash
+    az webapp config appsettings set \
+        --resource-group <resource group> \
+        --name <webapp name> \
+        --settings \
+            DATABASE_CONNECTION_URL=jdbc:postgresql://<database server name>:5432/<database name>?ssl=true \
+            DATABASE_SERVER_ADMIN_FULL_NAME=<admin name> \
+            DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
+    ```
+
+    **MySQL:**
+
+    ```bash
+    az webapp config appsettings set \
+        --resource-group <resource group> \
+        --name <webapp name> \
+        --settings \
+            DATABASE_CONNECTION_URL=jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT \
+            DATABASE_SERVER_ADMIN_FULL_NAME=<admin name> \
+            DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
+    ```
+
+    **SQL Server:**
+
+    ```bash
+    az webapp config appsettings set \
+        --resource-group <resource group> \
+        --name <webapp name> \
+        --settings \
+            DATABASE_CONNECTION_URL=jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    ```
+
+    DATABASE_CONNECTION_URL 值为不同的每个数据库服务器和不同于在 Azure 门户中的值。 所示 （在此处以及上面的代码段） 的 URL 格式所需的使用由 WildFly:
+
+    * **PostgreSQL:** `jdbc:postgresql://<database server name>:5432/<database name>?ssl=true`
+    * **MySQL:** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`
+    * **SQL Server:** `jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;`
+
+7. 在 Azure 门户中，导航到你的应用服务，并查找**配置** > **常规设置**页。 设置**启动脚本**字段的名称和位置的启动脚本，例如 */home/startup.sh*。
+
+下一次重新启动你的应用服务，它将运行启动脚本，并执行必要的配置步骤。 若要测试此配置中正确进行，你可以访问使用 SSH 对应用服务，然后运行启动脚本自己从在 Bash 提示符处。 您还可以检查应用服务日志。 有关这些选项的详细信息，请参阅[日志记录和调试应用](#logging-and-debugging-apps)。
+
+接下来，需要更新您的应用程序的 WildFly 配置和重新部署它。 请执行以下步骤：
+
+1. 打开*src/main/resources/META-INF/persistence.xml*适用于应用和查找文件`<jta-data-source>`元素。 将其内容为如下所示：
+
+    **PostgreSQL**
+
+    ```xml
+    <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
+    ```
+
+    **MySQL**
+
+    ```xml
+    <jta-data-source>java:jboss/datasources/mysqlDS</jta-data-source>
+    ```
+
+    **SQL Server**
+
+    ```xml
+    <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
+    ```
+
+2. 重新生成并重新部署应用程序在 Bash 提示符处使用以下命令：
+
+    ```bash
+    mvn package -DskipTests azure-webapp:deploy
+    ```
+
+3. 按下重新启动您的应用服务实例**重新启动**按钮**概述**部分在 Azure 门户或通过使用 Azure CLI。
+
+现在，您的应用服务实例已配置为访问您的数据库。
+
+有关使用 WildFly 配置数据库连接的详细信息，请参阅[PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7)， [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource)，或[SQL Server](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898)。
 
 ### <a name="enable-messaging-providers"></a>启用消息传递提供程序
 
@@ -500,7 +651,7 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 - 如果重启或减少应用程序实例，应用程序服务器中的用户会话状态将会丢失。
 - 如果应用程序具有较长的会话超时设置或固定数量的用户，则自动调整的新实例可能需要一些时间才能接收负载，因为只有新会话将路由到新启动的实例。
 
-可将 Wildfly 配置为使用外部会话存储，例如 [Azure Redis 缓存](/azure/azure-cache-for-redis/)。 需要[禁用现有 ARR 实例相关性](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)配置，才能关闭基于会话的 cookie 路由，以及允许配置的 Wildfly 会话存储运行不受干扰。
+你可以配置 WildFly 若要使用如下所示的外部会话存储[适用于 Redis 的 Azure 缓存](/azure/azure-cache-for-redis/)。 你将需要[禁用现有 ARR 实例关联](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)配置，以关闭会话基于 cookie 的路由，并允许已配置的 WildFly 会话存储不受干扰地运行。
 
 ## <a name="docker-containers"></a>Docker 容器
 
@@ -534,4 +685,3 @@ Azul Zulu Enterprise 内部版 OpenJDK 是适用于 Azure 和 Azure Stack 的 Op
 请访问[面向 Java 开发人员的 Azure](/java/azure/) 中心查找 Azure 快速入门、教程和 Java 参考文档。
 
 [应用服务 Linux 常见问题解答](app-service-linux-faq.md)中解答了并不特定于 Java 开发的、适用于 Linux 的应用服务的一般用法问题。
-

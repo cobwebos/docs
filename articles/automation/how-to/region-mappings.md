@@ -4,17 +4,17 @@ description: 本指南介绍了支持解决方案允许自动化帐户和 Log An
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8afe8fed8912dd365071f1c4c5560c9f5578dcd8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9faa261f4b6293d778c5da685f630a21fd88f600
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133102"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478576"
 ---
 # <a name="workspace-mappings"></a>工作区映射
 

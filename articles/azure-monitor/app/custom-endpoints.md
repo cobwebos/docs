@@ -9,14 +9,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6e49fc96a9664b9f37b7b02fc0183f94a05db263
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d086815373b84c0f2a70144a505108875fc04981
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078438"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443325"
 ---
  # <a name="application-insights-overriding-default-endpoints"></a>重写默认终结点的应用程序见解
 
@@ -24,7 +24,10 @@ ms.locfileid: "67078438"
 
 ## <a name="sdk-code-changes"></a>SDK 代码更改
 
-### <a name="net-with-applicationinsightsconfig"></a>.NET 中使用 applicationinsights.config
+### <a name="net-with-applicationinsightsconfig"></a>使用 applicationinsights.config 的 .NET
+
+> [!NOTE]
+> 只要执行 SDK 升级，applicationinsights.config 文件会自动被覆盖。 在执行 SDK 升级后务必重新输入区域特定的终结点值。
 
 ```xml
 <ApplicationInsights>
@@ -48,7 +51,7 @@ ms.locfileid: "67078438"
 
 ### <a name="net-core"></a>.NET Core
 
-修改 appsettings.json 文件到项目中，如下所示来调整主终结点：
+按如下所示修改项目中的 appsettings.json 文件以调整主终结点：
 
 ```json
 "ApplicationInsights": {
@@ -59,7 +62,7 @@ ms.locfileid: "67078438"
   }
 ```
 
-实时指标和配置文件查询终结点的值仅可以通过代码设置。 若要重写通过代码的所有终结点值的默认值，请发生了以下变化`ConfigureServices`方法的`Startup.cs`文件：
+实时指标和配置文件查询终结点的值只能通过代码设置。 若要通过代码替代所有终结点值的默认值，请在 `Startup.cs` 文件的 `ConfigureServices` 方法中进行以下更改：
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -123,8 +126,8 @@ appInsights.Configuration.start();
 此外可通过环境变量配置终结点：
 
 ```
-Instrumentation Key: “APPINSIGHTS_INSTRUMENTATIONKEY”
-Profile Endpoint: “Profile_Query_Endpoint_address”
+Instrumentation Key: "APPINSIGHTS_INSTRUMENTATIONKEY"
+Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
@@ -132,22 +135,34 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 ```javascript
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/next/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
-(
-    {
-    instrumentationKey:"INSTRUMENTATION_KEY",
-    endpointUrl: "TelemetryChannel_Endpoint_Address"
-  }
-);
-window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
-</script>
+   var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){
+      function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/next/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t
+   }({
+      instrumentationKey:"INSTRUMENTATION_KEY"
+      endpointUrl: "TelemetryChannel_Endpoint_Address"
+   });
 
+   window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+</script>
 ```
 
 ## <a name="regions-that-require-endpoint-modification"></a>需要修改终结点的区域
 
-需要终结点进行修改的唯一区域目前[Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)。
+需要修改终结点的唯一区域目前[Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)并[Azure 中国区](https://docs.microsoft.com/azure/china/resources-developer-guide)。
 
-## <a name="next-step"></a>后续步骤
+|区域 |  终结点名称 | 值 |
+|-----------------|:------------|:-------------|
+| Azure 中国 | 遥测通道 | `https://dc.applicationinsights.azure.cn/v2/track` |
+| Azure 中国 | QuickPulse （实时度量值） |`https://quickpulse.applicationinsights.azure.cn/QuickPulseService.svc` |
+| Azure 中国 | 配置文件查询 |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
+| Azure Government | 遥测通道 |`https://dc.applicationinsights.us/v2/track` |
+| Azure Government | QuickPulse （实时度量值） |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
+| Azure Government | 配置文件查询 |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+
+> [!NOTE]
+> 监视 Azure 应用服务无代码的代理扩展基于**目前不支持**在这些区域中。 此功能变得可用时，就立即将更新这篇文章。
+
+## <a name="next-steps"></a>后续步骤
 
 - 若要了解有关 Azure 政府版的自定义修改的详细信息，请查阅有关的详细的指南[Azure 监视和管理](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)。
+- 若要了解有关 Azure 中国区的详细信息，请查阅[Azure 中国操作手册](https://docs.microsoft.com/azure/china/)。

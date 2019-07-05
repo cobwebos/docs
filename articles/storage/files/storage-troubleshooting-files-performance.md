@@ -1,6 +1,6 @@
 ---
 title: Azure 文件性能故障排除指南
-description: 已知 Azure 高级文件共享 （预览版） 和关联的解决方法的性能问题。
+description: 已知 Azure 文件共享和关联的解决方法的性能问题。
 services: storage
 author: gunjanj
 ms.service: storage
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5ae0bb736a7cc0bbc38df5905abc5d8a71f60eb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c35501f3afbeed519fb5304229f25be1cbd5f9b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190054"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445677"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>排查 Azure 文件性能问题
 
-本文列出了与高级版 Azure 文件共享 （预览版） 相关的一些常见问题。 它提供了可能的原因和解决方法时可能遇到这些问题。
+本文列出了与 Azure 文件共享相关的一些常见问题。 它提供了可能的原因和解决方法时可能遇到这些问题。
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>高延迟、 低吞吐量，以及常规的性能问题
 
 ### <a name="cause-1-share-experiencing-throttling"></a>原因 1：共享遇到限制
 
-在共享上的默认配额为 100 GiB，后者提供 100 基线 IOPS （可能会最多 300 迸发到一小时）。 预配和 IOPS 的关系的详细信息，请参阅[预配共享](storage-files-planning.md#provisioned-shares)计划指南的部分。
+高级共享上的默认配额为 100 GiB，后者提供 100 基线 IOPS （可能会最多 300 迸发到一小时）。 预配和 IOPS 的关系的详细信息，请参阅[预配共享](storage-files-planning.md#provisioned-shares)计划指南的部分。
 
 若要确认你的共享被阻止，您可以在门户中利用 Azure 度量值。
 
@@ -39,7 +39,7 @@ ms.locfileid: "65190054"
 
 1. 选择**事务**作为该度量值。
 
-1. 添加的筛选器**ResponseType**并进行检查以查看任何请求是否具有响应代码**SuccessWithThrottling**。
+1. 添加的筛选器**ResponseType**并进行检查以查看任何请求是否具有响应代码**SuccessWithThrottling** （适用于 SMB) 或**ClientThrottlingError** （适用于 REST)。
 
 ![高级文件共享的指标选项](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -72,11 +72,11 @@ ms.locfileid: "65190054"
 
 ### <a name="cause"></a>原因
 
-客户端 VM 可以位于不同于高级文件共享的区域。
+客户端 VM 可以位于不同于文件共享的区域。
 
 ### <a name="solution"></a>解决方案
 
-- 从高级文件共享所在的同一区域中的 VM 中运行应用程序。
+- 从文件共享所在的同一区域中的 VM 中运行应用程序。
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>客户端无法实现由网络提供支持的最大吞吐量
 
@@ -121,6 +121,10 @@ CentOS/RHEL 上不支持 IO 深度大于 1。
 
 - 升级到 CentOS 8 / RHEL 8。
 - 更改到 Ubuntu。
+
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>在 Linux 中将文件复制到 Azure 文件以及从中复制文件时速度缓慢
+
+如果您遇到缓慢的文件复制到和从 Azure 文件，看一看[文件复制到和从 Linux 中的 Azure 文件时速度缓慢](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux)部分中的 Linux 故障排除指导。
 
 ## <a name="jitterysaw-tooth-pattern-for-iops"></a>IOPS 的抖动/锯齿模式
 

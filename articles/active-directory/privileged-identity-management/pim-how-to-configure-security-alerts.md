@@ -14,18 +14,18 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6875ab8f184c67b02c91d1a8e312959f3ba9553b
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288492"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476417"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>在 PIM 中配置 Azure AD 角色的安全警报
 
 你的环境中存在可疑活动或不安全活动时，azure Active Directory (Azure AD) Privileged Identity Management (PIM) 将生成警报。 触发警报时，它显示在 PIM 仪表板上。 选择警报以查看列出了已触发该警报的用户或角色的报告。
 
-![PIM 安全警报 - 屏幕截图](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Azure AD 角色-警报窗格列出警报和严重级别](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>安全警报
 
@@ -122,11 +122,11 @@ ms.locfileid: "60288492"
 
 1. 依次单击“设置”、“警报”   。
 
-    ![导航到安全警报设置](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+    ![Azure AD 角色的设置与所选的警报](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
 
 1. 单击警报名称以配置该警报的设置。
 
-    ![安全警报设置](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
+    ![所选的警报，安全警报设置窗格](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 ## <a name="next-steps"></a>后续步骤
 

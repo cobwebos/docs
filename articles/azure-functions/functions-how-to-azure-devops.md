@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
 ms.custom: ''
-ms.openlocfilehash: ce57aae1119261c0545b59a037226fdc12ec115f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9806a982982971b1b3ac9c28454e17813b2ad2a5
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050659"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479871"
 ---
 # <a name="continuous-delivery-using-azure-devops"></a>使用 Azure DevOps 实现持续交付
 
@@ -158,6 +158,10 @@ steps:
     azureSubscription: '<Azure service connection>'
     appType: functionApp
     appName: '<Name of function app>'
+    #Uncomment the next lines to deploy to a deployment slot
+    #deployToSlotOrASE: true
+    #resourceGroupName: '<Resource Group Name>'
+    #slotName: '<Slot name>'
 ```
 
 #### <a name="linux-function-app"></a>Linux 函数应用
@@ -171,6 +175,11 @@ steps:
     azureSubscription: '<Azure service connection>'
     appType: functionAppLinux
     appName: '<Name of function app>'
+    #Uncomment the next lines to deploy to a deployment slot
+    #Note that deployment slots is not supported for Linux Dynamic SKU
+    #deployToSlotOrASE: true
+    #resourceGroupName: '<Resource Group Name>'
+    #slotName: '<Slot name>'
 ```
 
 ## <a name="template-based-pipeline"></a>基于模板的管道
@@ -206,9 +215,11 @@ Azure DevOps 中的模板是预定义的生成或部署应用程序的任务组�
 
 ![](media/functions-how-to-azure-devops/release-template.png)
 
+发布模板中不支持部署到的部署槽。
+
 ## <a name="creating-an-azure-pipeline-using-the-azure-cli"></a>创建使用 Azure CLI Azure 管道
 
-使用`az functionapp devops-pipeline create`[命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)，会创建一个 Azure 管道以生成和发布你的存储库中的任何代码更改。 该命令将生成新的 YAML 文件，用于定义生成和发布管道，并将其提交到存储库。
+使用`az functionapp devops-pipeline create`[命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)，会创建一个 Azure 管道以生成和发布你的存储库中的任何代码更改。 该命令将生成新的 YAML 文件，用于定义生成和发布管道，并将其提交到存储库。 Azure CLI 命令不支持部署到部署槽。
 此命令的必备组件取决于你的代码的位置：
 
 - 如果你的代码是在 GitHub 中：

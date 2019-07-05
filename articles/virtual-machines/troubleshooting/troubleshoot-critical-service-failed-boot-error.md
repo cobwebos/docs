@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: e828a8fc4211a0f0c4b53a9e18fa1c2fb6f6916b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca3fe83d7072ba774c8124c5108652ab7223041d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593226"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449813"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝屏上显示“关键服务失败”
 本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的“关键服务失败”错误。 它提供了故障排除步骤来帮助解决问题。 
@@ -30,7 +30,7 @@ ms.locfileid: "60593226"
 
 Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动屏幕截图时，在蓝色屏幕中看到以下错误消息之一：
 
-- “你的电脑遇到问题，需要重启。 你可以重启。 有关此问题和可能的修复项的详细信息，请访问 http://windows.com/stopcode 。 如果调用支持人员，请为他们提供这些信息：终止代码：关键服务失败” 
+- “你的电脑遇到问题，需要重启。 你可以重启。 有关此问题和可能的修复项的详细信息，请访问 https://windows.com/stopcode 。 如果调用支持人员，请为他们提供这些信息：终止代码：关键服务失败” 
 - “你的电脑遇到问题，需要重启。 我们将收集一些错误信息，然后我们将为你重启。 如果想了解更多信息，稍后可以联机搜索此错误：CRITICAL_SERVICE_FAILED”
 
 ## <a name="cause"></a>原因

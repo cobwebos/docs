@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/06/2019
+ms.date: 07/03/2019
 ms.author: Kumud
-ms.openlocfilehash: ec68038a5b0fe7edca095e0d9b190d5da09c8e82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08670c8aa6d5c9830ab84bc848bac38063bd41c0
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754695"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550919"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>标准负载均衡器的指标和运行状况诊断
 
@@ -85,7 +85,7 @@ VIP 可用性指标描述区域中用于计算 VM 所在主机的数据路径的
 将会根据活动的带内度量值生成该指标。 区域中的探测服务根据此测量值发起流量， 使用公共前端创建部署后，此服务会立即激活，并一直运行到删除了前端为止。 
 
 >[!NOTE]
->目前不支持内部前端。 
+>数据路径可用性 （VIP 可用性） 不适用于内部负载均衡器前端。 
 
 会定期生成与部署前端和规则匹配的数据包。 该服务在区域中从源遍历到后端池中 VM 所在的主机。 负载均衡器基础结构执行的负载均衡和转换运算与针对其他所有流量执行的操作一样。 此探测在负载均衡终结点上的带内执行。 探测抵达后端池中正常 VM 所在的计算主机后，计算主机会针对探测服务生成响应。 VM 看不到此流量。
 
@@ -208,6 +208,10 @@ VIP 可用性目前仅适用于公共前端。
 | 可用 | 公共标准负载均衡器资源正常且可用。 |
 | 不可用 | 公共标准负载均衡器资源不正常。 选择“Azure Monitor” > “指标”来诊断运行状况。  <br>（状态为“不可用”可能还意味着资源没有与公共标准负载均衡器连接。）  |
 | Unknown | 尚未更新公共标准负载均衡器资源的资源运行状况。<br>（状态为“未知”可能还意味着资源没有与公共标准负载均衡器连接。）   |
+
+## <a name="limitations"></a>限制 
+
+- 数据路径可用性 （VIP 可用性） 不适用于内部负载均衡器前端。
 
 ## <a name="next-steps"></a>后续步骤
 

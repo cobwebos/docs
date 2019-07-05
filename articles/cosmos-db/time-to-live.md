@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 692e0ec575904ff0a70b8c73268d2df62e776bb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b32665b09eb02c337a12ac3cfc2b474fa82711a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978777"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447240"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB 中的生存时间 (TTL) 
 
@@ -45,6 +45,42 @@ ms.locfileid: "65978777"
 * 如果某个容器的 TTL 设置为 -1，则此容器中生存时间设置为 n 的项将在 n 秒后过期，剩余的项不会过期。 
 
 基于 TTL 删除项是免费的。 TTL 过期后删除项不会产生额外的费用（即，不会消耗额外的 RU）。
+
+## <a name="examples"></a>示例
+
+本部分介绍一些与生存分配给容器和项值的不同时间的示例：
+
+### <a name="example-1"></a>示例 1
+
+在容器上的 TTL 设置为 null (DefaultTimeToLive = null)
+
+|在项上的 TTL| 结果|
+|---|---|
+|ttl = null|    禁用 TTL。 该项将永不过期 （默认值）。|
+|ttl = -1   |禁用 TTL。 该项将永远不会过期。|
+|ttl = 2000年 |禁用 TTL。 该项将永远不会过期。|
+
+
+### <a name="example-2"></a>示例 2
+
+在容器上的 TTL 设置为-1 (DefaultTimeToLive =-1)
+
+|在项上的 TTL| 结果|
+|---|---|
+|ttl = null |启用 TTL。 该项将永不过期 （默认值）。|
+|ttl = -1   |启用 TTL。 该项将永远不会过期。|
+|ttl = 2000年 |启用 TTL。 2000 秒后，该项将过期。|
+
+
+### <a name="example-3"></a>示例 3
+
+在容器上的 TTL 设置为 1000年 (DefaultTimeToLive = 1000年)
+
+|在项上的 TTL| 结果|
+|---|---|
+|ttl = null|    启用 TTL。 该项将在 1000 秒 （默认值） 后过期。|
+|ttl = -1   |启用 TTL。 该项将永远不会过期。|
+|ttl = 2000年 |启用 TTL。 2000 秒后，该项将过期。|
 
 ## <a name="next-steps"></a>后续步骤
 

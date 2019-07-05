@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 85d6ed80da93f90e6dc0feaee7081ee3f36f1bf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f46a35d971c008b61d4899e30101ea562d3cefea
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242687"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483407"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>选择实时分析和流式处理 Azure 上的处理技术
 
@@ -44,7 +44,7 @@ Azure Stream Analytics 具有丰富的开箱体验。 您可以立即利用以�
 
 ### <a name="you-need-to-input-from-or-output-to-kafka"></a>你需要输入或输出到 Kafka
 
-Azure Stream Analytics 不会具有 Apache Kafka 的输入或输出适配器。 如果你有登录中的事件或需要将发送到 Kafka，并且没有要求运行 Kafka 群集，可以继续使用 Stream Analytics 通过将事件发送到事件中心使用事件中心 Kafka API 而无需更改事件发送方。 如果需要运行 Kafka 群集，则可以使用 Spark 结构化流式处理，而完全支持[Azure Databricks](../azure-databricks/index.yml)，或在 Storm [Azure HDInsight](../hdinsight/storm/apache-storm-tutorial-get-started-linux.md)。
+Azure Stream Analytics 不会具有 Apache Kafka 的输入或输出适配器。 如果你有登录中的事件或需要将发送到 Kafka，并且没有要求运行 Kafka 群集，可以继续使用 Stream Analytics 通过将事件发送到事件中心使用事件中心 Kafka API 而无需更改事件发送方。 如果需要运行 Kafka 群集，则可以使用 Spark 结构化流式处理，而完全支持[Azure Databricks](../azure-databricks/index.yml)，或在 Storm [Azure HDInsight](../hdinsight/storm/apache-storm-overview.md)。
 
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>你想要在非 JavaScript 语言编写 Udf、 Uda 和自定义反序列化程序或C#
 

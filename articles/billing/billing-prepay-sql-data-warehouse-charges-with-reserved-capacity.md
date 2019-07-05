@@ -1,19 +1,19 @@
 ---
-title: SQL 数据仓库费用的预付款购买具有 Azure 预留容量 |Microsoft Docs
+title: SQL 数据仓库费用预付 Azure 保留容量
 description: 了解如何可以为 SQL 数据仓库费用预付款具有预留容量以节省资金。
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 07/03/2019
 ms.author: banders
-ms.openlocfilehash: 3d56ee99f8056139a234477b6eed93d9fcbe2bbb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cea2c8e6d476c3ea2799337ab2da1f9406731814
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371183"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565359"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>为 SQL 数据仓库费用预付款具有预留容量
 
@@ -49,8 +49,9 @@ SQL 数据仓库预留大小应基于总数计算所使用的数据仓库单位 
   - 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。
   - 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。
 4. 选择作用域。 使用作用域列表选择订阅范围。
-  - 与**单个**选项，将预订折扣应用于所选订阅中部署的 SQL 数据仓库。
-  - 与**共享**选项，将预订折扣应用到任何订阅计费上下文中运行的实例。
+  - **单一资源组范围**— 将预订折扣应用于在所选的资源组中匹配的资源。
+  - **单一订阅范围内**— 将预订折扣应用于所选订阅中匹配的资源。
+  - **共享范围**-预订折扣适用于匹配符合条件的订阅中计费上下文中的资源。 对于企业协议客户，计费上下文是注册。 对于现用现付费率使用单独的订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
     - 适用于企业客户的计费上下文是 EA 注册。
     - 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。
 5. 选择要选择 Azure 区域所涵盖的预留容量的区域。

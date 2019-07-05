@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f012d3e228a2730423c0d5a6f2cea7a8f2f9eab4
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 83e2490821f59adeb37958c6c31403121a40274e
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190429"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540898"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署和监视 IoT Edge 模块
 
-创建**IoT Edge 自动部署**来同时管理多个设备的持续部署在 Azure 门户中。 自动部署为 IoT Edge 属于[自动设备管理](/iot-hub/iot-hub-automatic-device-management.md)IoT 中心的功能。 部署是动态过程，您可以将多个模块部署到多个设备，跟踪的状态和运行状况的模块，并进行更改时需要。 
+创建**IoT Edge 自动部署**来同时管理多个设备的持续部署在 Azure 门户中。 自动部署为 IoT Edge 属于[自动设备管理](/azure/iot-hub/iot-hub-automatic-device-management)IoT 中心的功能。 部署是动态过程，您可以将多个模块部署到多个设备，跟踪的状态和运行状况的模块，并进行更改时需要。 
 
 有关详细信息，请参阅[了解 IoT Edge 自动部署为单个设备或大规模](module-deployment-monitoring.md)。
 

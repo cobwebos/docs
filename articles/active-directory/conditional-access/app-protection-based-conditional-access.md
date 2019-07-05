@@ -2,28 +2,21 @@
 title: 使用 Azure Active Directory 中条件性访问的云应用访问需要应用保护策略 |Microsoft Docs
 description: 了解如何使用 Azure Active Directory 中条件性访问的云应用访问需要应用保护策略。
 services: active-directory
-keywords: 条件访问应用，Azure AD 中，安全地访问公司资源，条件性访问策略的条件性访问
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 4/4/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51d209eceec2c7172cf34dc689079e669760149e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e2e43f13352c56f947f5e560049ab0acf871599
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112741"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509472"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>使用条件性访问 （预览版） 的云应用访问需要应用保护策略
 
@@ -55,7 +48,6 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 - 不能接收 Intune 应用保护策略的用户。
 - Intune 应用保护策略的应用未配置为接收策略。
 
-
 ## <a name="before-you-begin"></a>开始之前
 
 本文假定你熟悉以下内容：
@@ -64,7 +56,6 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 - [核准客户端应用程序要求](technical-reference.md#approved-client-app-requirement)技术参考。
 - 基本概念[Azure Active Directory 中条件性访问](overview.md)。
 - 如何[配置条件性访问策略](app-based-mfa.md)。
-
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -87,7 +78,7 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 - 会收到电子邮件，以指示访问可用只能通过使用 Outlook 应用。
 - 下载与链接的应用程序。
 - 打开 Outlook 应用程序并使用 Azure AD 凭据登录。
-- 系统会提示安装是用于 iOS 的 Microsoft Authenticator 或 Intune 公司门户，用于 Android 以继续。
+- 系统提示您安装任一**Microsoft Authenticator 应用**或**Intune 公司门户**以继续。
 - 安装应用程序，并返回到 Outlook 应用以继续操作。
 - 系统会提示注册的设备。
 - 可以接收 Intune 应用保护策略。
@@ -104,27 +95,23 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 ![条件性访问](./media/app-protection-based-conditional-access/01.png)
 
 1. 输入你的条件性访问策略的名称。
+1. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+1. 在中**云应用**，选择**Office 365 Exchange Online**。
 
-2. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+   ![条件性访问](./media/app-protection-based-conditional-access/07.png)
 
-3. 在中**云应用**，选择**Office 365 Exchange Online**。
+1. 在中**条件**，配置**设备平台**并**客户端应用 （预览版）** :
+   1. 在中**设备平台**，选择**Android**并**iOS**。
 
-    ![条件性访问](./media/app-protection-based-conditional-access/07.png)
+      ![条件性访问](./media/app-protection-based-conditional-access/03.png)
 
-4. 在中**条件**，配置**设备平台**并**客户端应用 （预览版）** :
+   1. 在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**新式身份验证客户端**。
 
-    a. 在中**设备平台**，选择**Android**并**iOS**。
+      ![条件性访问](./media/app-protection-based-conditional-access/91.png)
 
-    ![条件性访问](./media/app-protection-based-conditional-access/03.png)
+1. 下**的访问控制**，选择**需要应用保护策略 （预览版）** 。
 
-    b. 在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**新式身份验证客户端**。
-
-    ![条件性访问](./media/app-protection-based-conditional-access/91.png)
-
-5. 下**的访问控制**，选择**需要应用保护策略 （预览版）** 。
-
-    ![条件性访问](./media/app-protection-based-conditional-access/05.png)
- 
+   ![条件性访问](./media/app-protection-based-conditional-access/05.png)
 
 **步骤 2：为 Exchange Online 使用 ActiveSync (EAS) 配置 Azure AD 条件访问策略**
 
@@ -133,38 +120,30 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 ![条件性访问](./media/app-protection-based-conditional-access/06.png)
 
 1. 输入你的条件性访问策略的名称。
+1. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+1. 在中**云应用**，选择**Office 365 Exchange Online**。
 
-2. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+   ![条件性访问](./media/app-protection-based-conditional-access/07.png)
 
+1. 在中**条件**，配置**客户端应用 （预览版）** 。 
 
-3. 在中**云应用**，选择**Office 365 Exchange Online**。
+   1. 在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**Exchange ActiveSync 客户端**。
 
-    ![条件性访问](./media/app-protection-based-conditional-access/07.png)
+      ![条件性访问](./media/app-protection-based-conditional-access/92.png)
 
-4. 在中**条件**，配置**客户端应用 （预览版）** 。 
+   1. 下**的访问控制**，选择**需要应用保护策略 （预览版）** 。
 
-    a. 在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**Exchange ActiveSync 客户端**。
-
-    ![条件性访问](./media/app-protection-based-conditional-access/92.png)
-
-    b. 下**的访问控制**，选择**需要应用保护策略 （预览版）** 。
-
-    ![条件性访问](./media/app-protection-based-conditional-access/05.png)
-
+      ![条件性访问](./media/app-protection-based-conditional-access/05.png)
 
 **步骤 3：配置适用于 iOS 和 Android 客户端应用程序的 Intune 应用保护策略**
-
 
 ![条件性访问](./media/app-protection-based-conditional-access/09.png)
 
 有关详细信息，请参阅[使用 Microsoft Intune 保护应用和数据](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)。
 
-
-
 ## <a name="app-protection-based-or-compliant-device-policy-for-exchange-online"></a>为 Exchange Online 的应用保护基于或相容设备策略
 
 此方案包括为应用保护基于或相容设备条件访问策略对 Exchange Online 的访问。
-
 
 ### <a name="scenario-playbook"></a>方案演练
 
@@ -177,7 +156,6 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 - 如果未注册，则用户可以访问电子邮件与 Outlook 和 Intune 应用保护策略。
 - 如果注册了设备，用户可以访问包含 Outlook 电子邮件。
 
-
 ### <a name="configuration"></a>配置
 
 **步骤 1：为 Exchange Online 配置 Azure AD 条件访问策略**
@@ -187,34 +165,27 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 ![条件性访问](./media/app-protection-based-conditional-access/62.png)
 
 1. 输入你的条件性访问策略的名称。
+1. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+1. 在中**云应用**，选择**Office 365 Exchange Online**。 
 
-2. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+   ![条件性访问](./media/app-protection-based-conditional-access/07.png)
 
-3. 在中**云应用**，选择**Office 365 Exchange Online**。 
-
-     ![条件性访问](./media/app-protection-based-conditional-access/07.png)
-
-4. 在中**条件**，配置**设备平台**并**客户端应用 （预览版）** 。 
+1. 在中**条件**，配置**设备平台**并**客户端应用 （预览版）** 。 
  
-    a. 在中**设备平台**，选择**Android**并**iOS**。
+   1. 在中**设备平台**，选择**Android**并**iOS**。
 
-    ![条件性访问](./media/app-protection-based-conditional-access/03.png)
+      ![条件性访问](./media/app-protection-based-conditional-access/03.png)
 
-    b. 在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**新式身份验证客户端**。
+   1. 在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**新式身份验证客户端**。
 
-    ![条件性访问](./media/app-protection-based-conditional-access/91.png)
+      ![条件性访问](./media/app-protection-based-conditional-access/91.png)
 
 5. 下**的访问控制**，选择以下选项：
-
    - “要求将设备标记为合规” 
-
    - **需要应用保护策略 （预览版）**
-
    - “需要某一已选控件”    
  
-     ![条件性访问](./media/app-protection-based-conditional-access/11.png)
-
-
+      ![条件性访问](./media/app-protection-based-conditional-access/11.png)
 
 **步骤 2：使用 ActiveSync 为 Exchange Online 配置 Azure AD 条件性访问策略**
 
@@ -223,62 +194,48 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 ![条件性访问](./media/app-protection-based-conditional-access/06.png)
 
 1. 输入你的条件性访问策略的名称。
+1. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+1. 在中**云应用**，选择**Office 365 Exchange Online**。 
 
-2. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+   ![条件性访问](./media/app-protection-based-conditional-access/07.png)
 
-3. 在中**云应用**，选择**Office 365 Exchange Online**。 
+1. 在中**条件**，配置**客户端应用 （预览版）** 。 
 
-    ![条件性访问](./media/app-protection-based-conditional-access/07.png)
+   在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**Exchange ActiveSync 客户端**。
 
-4. 在中**条件**，配置**客户端应用 （预览版）** 。 
+   ![条件性访问](./media/app-protection-based-conditional-access/92.png)
 
-    在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**Exchange ActiveSync 客户端**。
-
-    ![条件性访问](./media/app-protection-based-conditional-access/92.png)
-
-5. 下**的访问控制**，选择以下选项：
-
+1. 下**的访问控制**，选择以下选项：
    - “要求将设备标记为合规” 
-
    - **需要应用保护策略 （预览版）**
-
    - “需要某一已选控件” 
 
-     ![条件性访问](./media/app-protection-based-conditional-access/11.png)
-
-
+      ![条件性访问](./media/app-protection-based-conditional-access/11.png)
 
 **步骤 3：配置适用于 iOS 和 Android 客户端应用程序的 Intune 应用保护策略**
-
 
 ![条件性访问](./media/app-protection-based-conditional-access/09.png)
 
 有关详细信息，请参阅[使用 Microsoft Intune 保护应用和数据](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)。
 
-
-
-
-
 ## <a name="app-protection-based-and-compliant-device-policy-for-exchange-online"></a>为 Exchange Online 应用基于保护和相容设备策略
 
 此方案包含的基于应用的保护和相容设备条件访问策略访问 Exchange Online。
-
 
 ### <a name="scenario-playbook"></a>方案演练
 
 此方案假定用户：
  
--   通过使用 iOS 或 Android 上的本机邮件应用程序连接到 Exchange 中配置电子邮件。
--   收到指示访问需要注册其设备的电子邮件。
--   下载 Intune 公司门户并登录到门户。
--   检查邮件，并且需要使用 Outlook 应用。
--   下载 Outlook 应用。
--   打开 Outlook 应用，并输入注册时使用的凭据。
--   可以接收 Intune 应用保护策略。
--   可以访问电子邮件，Outlook 以及 Intune 应用保护策略。
+- 通过使用 iOS 或 Android 上的本机邮件应用程序连接到 Exchange 中配置电子邮件。
+- 收到指示访问需要注册其设备的电子邮件。
+- 下载 Intune 公司门户并登录到门户。
+- 检查邮件，并且需要使用 Outlook 应用。
+- 下载 Outlook 应用。
+- 打开 Outlook 应用，并输入注册时使用的凭据。
+- 可以接收 Intune 应用保护策略。
+- 可以访问电子邮件，Outlook 以及 Intune 应用保护策略。
 
 允许访问公司数据之前，将激活任何 Intune 应用保护策略。 策略可能会提示用户重新启动该应用程序或使用其他的 PIN。 如果为应用程序和平台配置策略，这是这种情况。
-
 
 ### <a name="configuration"></a>配置
 
@@ -289,34 +246,26 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 ![条件性访问](./media/app-protection-based-conditional-access/01.png)
 
 1. 输入你的条件性访问策略的名称。
+1. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+1. 在中**云应用**，选择**Office 365 Exchange Online**。 
 
-2. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+   ![条件性访问](./media/app-protection-based-conditional-access/07.png)
 
-3. 在中**云应用**，选择**Office 365 Exchange Online**。 
+1. 在中**条件**，配置**设备平台**并**客户端应用 （预览版）** 。 
+   1. 在中**设备平台**，选择**Android**并**iOS**。
 
-     ![条件性访问](./media/app-protection-based-conditional-access/07.png)
+      ![条件性访问](./media/app-protection-based-conditional-access/03.png)
 
-4. 在中**条件**，配置**设备平台**并**客户端应用 （预览版）** 。 
- 
-    a. 在中**设备平台**，选择**Android**并**iOS**。
+   1. 在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**新式身份验证客户端**。
 
-    ![条件性访问](./media/app-protection-based-conditional-access/03.png)
+      ![条件性访问](./media/app-protection-based-conditional-access/91.png)
 
-    b. 在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**新式身份验证客户端**。
-
-    ![条件性访问](./media/app-protection-based-conditional-access/91.png)
-
-5. 下**的访问控制**，选择以下选项：
-
+1. 下**的访问控制**，选择以下选项：
    - “要求将设备标记为合规” 
-
    - **需要应用保护策略 （预览版）**
-
    - ”需要所有已选控件“    
  
-     ![条件性访问](./media/app-protection-based-conditional-access/13.png)
-
-
+      ![条件性访问](./media/app-protection-based-conditional-access/13.png)
 
 **步骤 2：使用 ActiveSync 为 Exchange Online 配置 Azure AD 条件性访问策略**
 
@@ -325,44 +274,33 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 ![条件性访问](./media/app-protection-based-conditional-access/06.png)
 
 1. 输入你的条件性访问策略的名称。
+1. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+1. 在中**云应用**，选择**Office 365 Exchange Online**。 
 
-2. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+   ![条件性访问](./media/app-protection-based-conditional-access/07.png)
 
-3. 在中**云应用**，选择**Office 365 Exchange Online**。 
+1. 在中**条件**，配置**客户端应用 （预览版）** 。 
 
-    ![条件性访问](./media/app-protection-based-conditional-access/07.png)
+   在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**Exchange ActiveSync 客户端**。
 
-4. 在中**条件**，配置**客户端应用 （预览版）** 。 
+   ![条件性访问](./media/app-protection-based-conditional-access/92.png)
 
-    在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**Exchange ActiveSync 客户端**。
-
-    ![条件性访问](./media/app-protection-based-conditional-access/92.png)
-
-5. 下**的访问控制**，选择以下选项：
-
+1. 下**的访问控制**，选择以下选项：
    - “要求将设备标记为合规” 
-
    - **需要应用保护策略 （预览版）**
-
    - ”需要所有已选控件“    
  
-     ![条件性访问](./media/app-protection-based-conditional-access/13.png)
-
-
-
+      ![条件性访问](./media/app-protection-based-conditional-access/13.png)
 
 **步骤 3：配置适用于 iOS 和 Android 客户端应用程序的 Intune 应用保护策略**
-
 
 ![条件性访问](./media/app-protection-based-conditional-access/09.png)
 
 有关详细信息，请参阅[使用 Microsoft Intune 保护应用和数据](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)。
 
-
 ## <a name="app-protection-based-or-app-based-policy-for-exchange-online-and-sharepoint-online"></a>为 Exchange Online 和 SharePoint Online 应用基于保护的或基于应用的策略
 
 此方案包括对 Exchange Online 和 SharePoint Online 的访问权限的应用保护基于或已批准应用策略。
-
 
 ### <a name="scenario-playbook"></a>方案演练
 
@@ -396,45 +334,34 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 ![条件性访问](./media/app-protection-based-conditional-access/62.png)
 
 1. 输入你的条件性访问策略的名称。
+1. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+1. 在中**云应用**，选择**Office 365 Exchange Online**。 
 
-2. 下**分配**，在**用户和组**，选择至少一个用户或组的每个条件性访问策略。
+   ![条件性访问](./media/app-protection-based-conditional-access/02.png)
 
-3. 在中**云应用**，选择**Office 365 Exchange Online**。 
+1. 在中**条件**，配置**设备平台**并**客户端应用 （预览版）** 。 
+   1. 在中**设备平台**，选择**Android**并**iOS**。
 
-     ![条件性访问](./media/app-protection-based-conditional-access/02.png)
+      ![条件性访问](./media/app-protection-based-conditional-access/03.png)
 
-4. 在中**条件**，配置**设备平台**并**客户端应用 （预览版）** 。 
- 
-    a. 在中**设备平台**，选择**Android**并**iOS**。
+   1. 在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**新式身份验证客户端**。
 
-    ![条件性访问](./media/app-protection-based-conditional-access/03.png)
+      ![条件性访问](./media/app-protection-based-conditional-access/91.png)
 
-    b. 在中**客户端应用 （预览版）** ，选择**移动应用和桌面客户端**并**新式身份验证客户端**。
-
-    ![条件性访问](./media/app-protection-based-conditional-access/91.png)
-
-5. 下**的访问控制**，选择以下选项：
-
+1. 下**的访问控制**，选择以下选项：
    - **需要批准的客户端应用**
-
    - **需要应用保护策略 （预览版）**
-
    - “需要某一已选控件” 
  
-     ![条件性访问](./media/app-protection-based-conditional-access/12.png)
-
+      ![条件性访问](./media/app-protection-based-conditional-access/12.png)
 
 **步骤 2：配置适用于 iOS 和 Android 客户端应用程序的 Intune 应用保护策略**
-
 
 ![条件性访问](./media/app-protection-based-conditional-access/09.png)
 
 有关详细信息，请参阅[使用 Microsoft Intune 保护应用和数据](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)。
 
-
-
-
 ## <a name="next-steps"></a>后续步骤
 
 - 如果你想要了解如何配置条件性访问策略，请参阅[需要 MFA 的特定应用的 Azure Active Directory 条件性访问](app-based-mfa.md)。
-- 如果已准备好配置你的环境的条件性访问策略，请参阅[的 Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。 
+- 如果已准备好配置你的环境的条件性访问策略，请参阅[的 Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。

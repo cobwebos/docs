@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c6da92ccd50707e676a1f5d583fe22ae8b3d8b73
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288326"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476321"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>在 PIM 中配置 Azure 资源角色设置
 
@@ -38,19 +38,19 @@ ms.locfileid: "60288326"
 
 1. 单击要管理的资源，如订阅或管理组。
 
-    ![要管理的 Azure 资源的列表](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![列出可管理的资源的 azure 资源页](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
 1. 单击“角色设置”  。
 
-    ![角色设置](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![列出 Azure 资源角色的角色设置页](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
 1. 单击要配置其设置的角色。
 
-    ![角色设置详细信息](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![列出多个分配和激活设置的角色设置详细信息页](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
 1. 单击“编辑”  以打开“角色设置”窗格。
 
-    ![编辑角色设置](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![编辑角色设置页面中的并且可以选择更新分配和激活设置](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
     在每个角色的“角色设置”窗格上，有多个可以配置的设置。
 
@@ -109,7 +109,7 @@ PIM 针对两种不同的方案提供了可选的 Azure 多重身份验证 (MFA)
 
 1. 单击“选择审批者”打开“选择成员或组”窗格  。
 
-    ![选择成员或组](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![选择成员或组窗格来选择审批者](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
 1. 至少选择一个成员或组，然后单击“选择”  。 可以添加任何成员和组的组合。 必须至少选择 1 个审批者。 没有默认的审批者。
 

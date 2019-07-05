@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 8827feaf1d541edc7c0b54d8af951ddab79c5aaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a60e41d3195c0f7d88fd3ba14336d693d2f528e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808621"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446682"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>集成 Microsoft Azure 和 Oracle 云基础结构 （预览版） 的 oracle 应用程序解决方案
 
@@ -74,5 +74,7 @@ Microsoft 和 Oracle 合作提供低延迟、 高吞吐量跨云连接，让您�
 目前，这种集成，可在一个中心位置，这是 Azure Active Directory 中管理。 Azure AD 与相应的 Oracle directory 同步目录中的任何更改，并用于实现单一登录以跨云的 Oracle 解决方案。
 
 ## <a name="next-steps"></a>后续步骤
+
+开始使用[跨云网络](configure-azure-oci-networking.md)Azure 与 OCI 之间。 
 
 有关详细信息和有关 OCI 白皮书，请参阅[Oracle 云](https://docs.cloud.oracle.com/iaas/Content/home.htm)文档。

@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/30/2019
+ms.openlocfilehash: 882f44683bbdc7f4eb49ff4912ca7a33187afbf8
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758634"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537892"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>根据不断变化的需求管理群集横向扩展
 
@@ -76,10 +76,10 @@ ms.locfileid: "60758634"
 
 现在已为 Azure 数据资源管理器群集配置了横向扩展操作。 添加另一条适用于横向缩减操作的规则。 有了此配置，群集就可以根据指定的指标动态地进行缩放。
 
-还可以[管理群集纵向扩展](manage-cluster-scale-up.md)，以便适当地调整群集的大小。
-
 如果在解决群集缩放问题时需要帮助，请在 Azure 门户中[提交支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[通过指标监视 Azure 数据资源管理器的性能、运行状况和使用情况](using-metrics.md)
+* [通过指标监视 Azure 数据资源管理器的性能、运行状况和使用情况](using-metrics.md)
+
+* [管理群集向上扩展](manage-cluster-scale-up.md)适当调整大小的群集。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: d9dc9f3a4ab964b66e3a2cb03f4aad442c5665e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7095992253fbbe5aafce1eab889965250f5d59a8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573610"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551361"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>在 Azure 安全中心自定义 OS 安全配置（预览）
 
@@ -56,13 +56,11 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
 1.  打开“安全中心”  仪表板。
 
-2.  在左窗格中，选择“安全策略”。       
+2.  在左窗格中，选择**定价和设置**。
 
     ![安全策略列表](media/security-center-customize-os-security-config/manual-provision.png)
 
-3.  在要自定义的订阅对应的行中，单击“编辑设置”。 
-
-4. 选择“编辑安全配置”。   
+4. 选择适用的订阅，然后选择**编辑安全配置**。  
 
     ![“编辑安全配置”窗口](media/security-center-customize-os-security-config/blade.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 将 Operations Manager 连接到 Azure Monitor |Microsoft Docs
+title: 将 Operations Manager 连接到 Azure Monitor | Microsoft Docs
 description: 若要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与工作区集成。
 services: log-analytics
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 19ae3322d26447cf7c7dd94d06f073ccf013738e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 336a9d9c76114920e92de2000152e500f7dce46f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60255110"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445308"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -40,7 +40,7 @@ ms.locfileid: "60255110"
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Operations Manager 管理组配置为通过 Log Analytics 网关与 Azure Monitor 通信的详细信息和步骤，请参阅[使用 Log Analytics 网关将计算机连接到 Azure Monitor](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，请查看以下要求。
 
@@ -48,7 +48,19 @@ ms.locfileid: "60255110"
 * 将 System Center Operations Manager 2016 与美国政府云集成需要使用更新汇总 2 或更高版本随附的更新顾问管理包。 System Center Operations Manager 2012 R2 需要更新汇总 3 或更高版本随附的更新顾问管理包。
 * 所有 Operations Manager 代理必须满足最低支持要求。 确保代理中安装了最起码的更新，否则 Windows 代理通信可能失败，并在 Operations Manager 事件日志中生成错误。
 * Log Analytics 工作区。 有关详细信息，请查看 [Log Analytics 工作区概述](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json)。   
-* 使用 [Log Analytics 参与者角色](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users)成员帐户在 Azure 中进行身份验证。  
+* 使用 [Log Analytics 参与者角色](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users)成员帐户在 Azure 中进行身份验证。
+
+* 支持的区域-仅在以下 Azure 区域支持 System Center Operations Manager 连接到 Log Analytics 工作区：
+    - 美国中西部
+    - 澳大利亚东南部
+    - 西欧
+    - East US
+    - 东南亚
+    - 日本东部
+    - 英国南部
+    - 印度中部
+    - 加拿大中部
+    - 美国西部 2
 
 >[!NOTE]
 >最近对 Azure API 所做的最新会阻止客户在其管理组与 Azure Monitor 之间成功配置首次集成。 对于已将其管理组与该服务进行集成的客户，除非需要重新配置现有连接，否则他们不受影响。  
@@ -90,7 +102,7 @@ ms.locfileid: "60255110"
 
 ### <a name="tls-12-protocol"></a>TLS 1.2 协议
 
-为了确保传输到 Azure Monitor 的数据的安全性，强烈建议将代理和管理组配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。 有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)。 
+为了确保传输到 Azure Monitor 的数据的安全性，强烈建议将代理和管理组配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。 有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)。
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -105,7 +117,7 @@ ms.locfileid: "60255110"
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-完成与 Azure Monitor 集成所需的以下步骤后，可运行 `netsh winhttp reset proxy` 来删除配置，然后使用操作控制台中的“配置代理服务器”  选项来指定代理或 Log Analytics 网关服务器。 
+完成与 Azure Monitor 集成所需的以下步骤后，可运行 `netsh winhttp reset proxy` 来删除配置，然后使用操作控制台中的“配置代理服务器”  选项来指定代理或 Log Analytics 网关服务器。
 
 1. 在 Operations Manager 控制台中，选择“**管理**”工作区。
 1. 展开 Operations Management Suite 节点，并单击“**连接**”。
@@ -113,14 +125,14 @@ ms.locfileid: "60255110"
 1. 在“Operations Management Suite 载入向导:  身份验证”页上，输入与 OMS 订阅相关联的管理员帐户的电子邮件地址或电话号码和密码，然后单击“登录”  。
 
    >[!NOTE]
-   >Operations Management Suite 名称已弃用。 
-   
+   >Operations Management Suite 名称已弃用。
+
 1. 成功进行身份验证后，在“Operations Management Suite 载入向导:  选择工作区”页上，系统会提示你选择 Azure 租户、订阅和 Log Analytics 工作区。 如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，并单击“**下一步**”。
-   
+
    > [!NOTE]
    > Operations Manager 一次仅支持一个 Log Analytics 工作区。 连接以及通过上一个工作区注册到 Azure Monitor 的计算机将从 Azure Monitor 中删除。
-   > 
-   > 
+   >
+   >
 1. 在“Operations Management Suite 载入向导:  摘要”页上，确认设置，如果它们正确无误，请单击“创建”  。
 1. 在“Operations Management Suite 载入向导:  完成”页上，单击“关闭”  。
 
@@ -180,11 +192,11 @@ ms.locfileid: "60255110"
 1. 展开 Log Analytics，然后选择“连接”  。
 1. 在窗格中间选择“**重新配置 Operation Management Suite**”链接。
 1. 按照  “Log Analytics 载入向导”操作，输入与新 Log Analytics 工作区关联的管理员帐户的电子邮件地址（或电话号码）和密码。
-   
+
    > [!NOTE]
    > “Operations Management Suite 载入向导:  选择工作区”页会显示正在使用的现有工作区。
-   > 
-   > 
+   >
+   >
 
 ## <a name="validate-operations-manager-integration-with-azure-monitor"></a>验证 Operations Manager 与 Azure Monitor 的集成
 
@@ -194,9 +206,9 @@ ms.locfileid: "60255110"
 
 1. 在 Azure 门户中，单击左下角的“更多服务”  。 在资源列表中，键入“Log Analytics”  。 开始键入时，会根据输入筛选该列表。
 1. 在 Log Analytics 工作区列表中，选择相应的工作区。  
-1. 依次选择“高级设置”、  “连接的源”  、“System Center”。  
+1. 依次选择“高级设置”、  “连接的源”  、“System Center”。 
 1. 在 System Center Operations Manager 部分下的表中，应该可看到列出管理组的名称，以及代理数量和最后一次收到数据的状态。
-   
+
    ![oms-settings-connectedsources](./media/om-agents/oms-settings-connectedsources.png)
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>通过 Operations 控制台确认集成
@@ -205,7 +217,7 @@ ms.locfileid: "60255110"
 1. 选择“**管理包**”，并在“**查找:** ”文本框中键入 “**Advisor**”或“**Intelligence**”。
 1. 相应的管理包会在搜索结果中列出，具体取决于已启用的解决方案。  例如，如果已启用警报管理解决方案，管理包 Microsoft System Center Advisor 警报管理会在表中列出。
 1. 从“**监视**”视图导航到“**Operations Management Suite\Health State**”视图。  选择“管理服务器状态”窗格下的一个管理服务器，并在“详细信息视图”窗格中确认“身份验证服务 URI”属性值与 Log Analytics 工作区 ID 匹配。   
-   
+
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-azure-monitor"></a>删除与 Azure Monitor 的集成
@@ -215,34 +227,34 @@ ms.locfileid: "60255110"
 无法轻松从管理组中删除用于已启用的与 Operations Manager 集成的解决方案的管理包以及支持与 Azure Monitor 集成所需的管理包。 这是因为某些 Azure Monitor 管理包依赖于其他相关的管理包。 若要删除与其他管理包具有依赖关系的管理包，请从 TechNet 脚本中心下载脚本 [remove a management pack with dependencies](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e)（删除具有依赖关系的管理包）。  
 
 1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 命令外壳。
-   
+
     > [!WARNING]
     > 继续操作之前，确认所有自定义管理包的名称中均没有 Advisor 或 IntelligencePack 字样，否则，以下步骤会将它们从管理组中删除。
-    > 
+    >
 
 1. 在命令外壳提示下，键入 `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 1. 接着键入 `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 1. 若要删除与其他 System Center Advisor 管理包具有依赖关系的剩余管理包，请使用之前从 TechNet 脚本中心下载的脚本  *RecursiveRemove.ps1*。  
- 
+
     > [!NOTE]
     > 使用 PowerShell 删除顾问管理包的步骤不会自动删除 Microsoft System Center Advisor 或 Microsoft System Center Advisor Internal 管理包。  不要尝试将其删除。  
     >  
 
 1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager Operations 控制台。
 1. 在“**管理**”下面选择“**管理包**”节点，并在“**查找:** ”框中键入“**Advisor**”并确认以下管理包仍导入到管理组中：
-   
+
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
 
 1. 在 Azure 门户中，单击“设置”磁贴。 
 1. 选择“**相连的源**”。
 1. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。 在“**最后的数据**”列下，单击“**移除**”。  
-   
+
     > [!NOTE]
     > 如果没有从连接的管理组中检测到活动，“移除”链接在 14 天后才可用。   
-    > 
+    >
 
-1. 将出现一个窗口，要求确认是否继续进行移除。  单击“**是**”继续。 
+1. 将出现一个窗口，要求确认是否继续进行移除。  单击“**是**”继续。
 
 要删除两个连接器 - Microsoft.SystemCenter.Advisor.DataConnector 和 Advisor Connector，请将以下 PowerShell 脚本保存到计算机，并使用以下示例执行删除：
 
@@ -253,8 +265,8 @@ ms.locfileid: "60255110"
 
 > [!NOTE]
 > 运行此脚本的计算机如果不是管理服务器，应根据管理组的版本安装 Operations Manager 命令外壳。
-> 
-> 
+>
+>
 
 ```powershell
     param(
@@ -345,7 +357,7 @@ ms.locfileid: "60255110"
 以后如果打算将管理组重新连接到 Log Analytics 工作区，需重新导入 `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` 管理包文件。 可在以下位置找到此文件，具体取决于部署在环境中的 System Center Operations Manager 的版本：
 
 * System Center 2016 的 `\ManagementPacks` 文件夹下的源媒体 - Operations Manager 及更高版本。
-* 适用于管理组的最新更新汇总。 对于 Operations Manager 2012 的源文件夹是`%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`和 2012 R2 中，为该文件位于`System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`。
+* 适用于管理组的最新更新汇总。 Operations Manager 2012 的源文件夹为 `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`，而 2012 R2 的源文件夹则位于 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` 中。
 
 ## <a name="next-steps"></a>后续步骤
 

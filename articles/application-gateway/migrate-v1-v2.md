@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f55beca65a19ee9e47708000976dd42a6f252e2e
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 0fd605d7d502970dccd37da1f3f70fdadb1094a1
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154154"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550454"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>迁移 Azure 应用程序网关和 Web 应用程序防火墙从 v1 到 v2
 
@@ -76,7 +76,8 @@ ms.locfileid: "67154154"
 
 1. 运行`Get-Help AzureAppGWMigration.ps1`检查所需的参数：
 
-   `AzureAppGwMigration.ps1
+   ```
+   AzureAppGwMigration.ps1
     -resourceId <v1 application gateway Resource ID>
     -subnetAddressRange <subnet space you want to use>
     -appgwName <string to use to append>
@@ -84,7 +85,8 @@ ms.locfileid: "67154154"
     -trustedRootCertificates <comma-separated Trusted Root Cert objects as above>
     -privateIpAddress <private IP string>
     -publicIpResourceName <public IP name string>
-    -validateMigration -enableAutoScale`
+    -validateMigration -enableAutoScale
+   ```
 
    脚本的参数：
    * **资源 Id: [字符串]:所需**-这是你的现有标准 v1 或 WAF v1 网关的 Azure 资源 ID。 若要查找此字符串值，导航到 Azure 门户中，选择你的应用程序网关或 WAF 的资源，并单击**属性**网关的链接。 资源 ID 位于该页面上。
@@ -172,7 +174,7 @@ ms.locfileid: "67154154"
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Azure PowerShell 脚本不会还切换到新创建的第 2 版网关我 v1 的网关的流量通过？
 
-不。 Azure PowerShell 脚本只会迁移配置。 实际流量迁移是您有责任在您的控件。
+否。 Azure PowerShell 脚本只会迁移配置。 实际流量迁移是您有责任在您的控件。
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>是通过 Azure PowerShell 脚本创建的新 v2 网关大小进行适当调整以处理所有当前由我 v1 的网关的流量？
 

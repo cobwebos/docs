@@ -1,19 +1,17 @@
 ---
 title: Azure 数据目录常见问题
 description: 有关 Azure 数据目录的常见问题，包括为数据源发现功能、批注功能和管理功能。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/01/2019
+ms.openlocfilehash: 6ab5c67129b16cde5ca74e72effdf56ec0a22711
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61004035"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508887"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 数据目录常见问题
 本文将解答有关 Azure 数据目录服务的常见问题。
@@ -36,7 +34,7 @@ ms.locfileid: "61004035"
 数据目录服务当前在以下数据中心可用：
 
 * 美国西部
-* 美国东部
+* East US
 * 西欧
 * 北欧
 * 澳大利亚东部
@@ -103,9 +101,6 @@ ms.locfileid: "61004035"
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>该目录是否与我感兴趣的另一个数据源配合使用？
 我们当前正努力将更多数据源添加到数据目录中。 如果想查看支持的具体数据源，请通过转到 [Azure 反馈论坛的数据目录](https://feedback.azure.com/forums/906052-data-catalog)提出建议（如果已有人建议则可表达你的支持）。
-
-## <a name="how-is-azure-data-catalog-related-to-the-data-catalog-in-power-bi-for-office-365"></a>Azure 数据目录与 Power BI for Office 365 中的数据目录有什么关系？
-可将 Azure 数据目录看做 Power BI 中的数据目录的演进。 自 2017 年春季开始，Azure 数据目录用于在 Excel 2016 和 Power Query for Excel 中启用查询的共享和发现功能。 Excel 中的数据目录功能适用于具有 Power BI Pro 许可证的用户。
 
 ## <a name="what-permissions-do-i-need-to-register-assets-with-data-catalog"></a>在数据目录中注册资产时需要什么权限？
 若要运行数据目录注册工具，需要具有对数据源的权限，允许从数据源读取元数据。 若要上传预览，必须具有允许从正在注册的对象读取数据的权限。

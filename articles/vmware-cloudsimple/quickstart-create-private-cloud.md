@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8a67cd2f82eb069555bda68e4cb04a6634e3b31d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 85a8840ccf6f6fe6390b5eeaccd715d87169f157
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164360"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476026"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门-配置私有云环境
 
@@ -187,7 +187,10 @@ CloudSimple 建议您在第一次登录到 vCenter 更改密码。
 
     ![查找 NSX Manager FQDN](media/private-cloud-nsx-manager-fqdn.png)
 
-若要更改的密码，请按照中的说明[NSX 管理器安装](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html)。
+若要更改的密码，请按照中的说明[管理用户的密码](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-DB31B304-66A5-4516-9E55-2712D12B4F27.html)。
+
+> [!WARNING]
+> 默认情况下，NSX 管理员密码在 90 天后过期。
 
 ## <a name="create-a-port-group"></a>创建端口组
 

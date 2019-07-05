@@ -2,28 +2,21 @@
 title: Azure Active Directory 中条件性访问的最佳实践 |Microsoft Docs
 description: 了解用户须知以及它是配置条件性访问策略时，应避免这样做。
 services: active-directory
-keywords: 条件访问应用，Azure AD 中，安全地访问公司资源，条件性访问策略的条件性访问
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 01/25/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e7b77376989031dc1697d155cccf59954233a85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79a27fb5e243d2590e3fae85c6c820c4a43af0d5
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112656"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509416"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件性访问的最佳做法
 
@@ -34,17 +27,13 @@ ms.locfileid: "67112656"
 
 本文假定，您熟悉的概念和术语中所述[什么是 Azure Active Directory 中条件访问？](../active-directory-conditional-access-azure-portal.md)
 
-
-
 ## <a name="whats-required-to-make-a-policy-work"></a>使策略发挥作用需要什么？
 
 新建策略时，未选择任何用户、组、应用或访问控制。
 
 ![云应用](./media/best-practices/02.png)
 
-
 若要使策略发挥作用，必须进行下列配置：
-
 
 | 对象           | 方式                                  | Why |
 | :--            | :--                                  | :-- |
@@ -52,12 +41,7 @@ ms.locfileid: "67112656"
 | 用户和组  | 至少选择一个已经授权的用户或组来访问所选云应用。 | 永远不会触发任何用户和组分配，一个条件性访问策略。 |
 | 访问控制  | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。 |
 
-
-
-
 ## <a name="what-you-should-know"></a>要点
-
-
 
 ### <a name="how-are-conditional-access-policies-applied"></a>如何应用条件性访问策略？
 
@@ -66,14 +50,11 @@ ms.locfileid: "67112656"
 所有策略都是在两个阶段中强制实施的：
 
 - 在**第一个**阶段中，将对所有策略进行评估并收集不满足的所有访问控制。 
+- 在**第二个**阶段中，将提示你去满足尚未满足的要求。 如果任一策略阻止访问，请将阻止，并且不提示满足其他策略控件。 如果策略阻止你，系统会提示以满足其他策略控件按以下顺序：
 
-- 在**第二个**阶段中，将提示你去满足尚未满足的要求。 如果其中一个策略阻止访问，则会阻止你并且不会提示你去满足其他策略控制。 如果没有策略阻止你，则会提示你按以下顺序满足其他策略控制：
-
-    ![顺序](./media/best-practices/06.png)
+   ![顺序](./media/best-practices/06.png)
     
-    接下来要外部 MFA 提供程序和使用条款。
-
-
+   接下来要外部 MFA 提供程序和使用条款。
 
 ### <a name="how-are-assignments-evaluated"></a>如何计算分配？
 
@@ -84,15 +65,12 @@ ms.locfileid: "67112656"
 - 包括**所有位置**
 - 排除**所有受信任的 IP**
 
-
 ### <a name="what-to-do-if-you-are-locked-out-of-the-azure-ad-admin-portal"></a>如果你被锁定在 Azure AD 管理门户之外，该怎么办？
 
 如果你被锁定在 Azure AD 门户之外由于条件性访问策略中设置不正确：
 
 - 检查组织中是否有其他管理员尚未被阻止。 具有 Azure 门户访问权限的管理员可以禁用影响你登录的策略。 
-
 - 如果组织中没有管理员可以更新策略，则需提交支持请求。 Microsoft 支持部门可以查看并更新妨碍访问的条件性访问策略。
-
 
 ### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>如果在 Azure 经典门户和 Azure 门户中配置了策略，会发生什么情况？  
 
@@ -106,10 +84,9 @@ ms.locfileid: "67112656"
 
 每次登录时，Azure Active Directory 都会评估所有策略，确保只有满足所有要求，才向该用户授予访问权限。 阻止访问优先于所有其他配置设置。 
 
-
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件性访问是否适用于 Exchange ActiveSync？
 
-是的可以在某些条件性访问策略中使用 Exchange ActiveSync[限制](https://docs.microsoft.com/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo)。 
+是的可以在某些条件性访问策略中使用 Exchange ActiveSync[限制](block-legacy-authentication.md)。 
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>要如何与 Office 365 应用配置条件性访问？
 
@@ -119,31 +96,22 @@ ms.locfileid: "67112656"
 
 非常重要的策略的访问控制会话或任务的开始处时需要用户交互，如多重身份验证。 如果不这样做，用户将无法完成应用程序的一些任务。 例如，如果您需要多重身份验证在非托管的设备访问 SharePoint 上，但不适用于电子邮件，用户使用其电子邮件将无法将 SharePoint 文件附加到一条消息。 可在本文中，找到更多信息[什么是 Azure Active Directory 条件访问中的服务依赖项？](service-dependencies.md)。
 
-
-
-
-
 ## <a name="what-you-should-avoid-doing"></a>应避免的操作
 
 条件性访问框架提供了极大的配置灵活性。 不过，极大的灵活性也意味着应先仔细检查每个配置策略，然后才能发布，以免产生不良结果。 在这种情况下，应该特别注意影响完整集的任务，例如**所有用户/组/云应用**。
 
 在环境中，应避免以下配置：
 
-
 **对于所有用户、所有云应用：**
 
 - **阻止访问** - 此配置将阻止整个组织（这绝对不是一个好的选项）。
-
 - **需要符合的设备** - 对于尚未注册其设备的用户，此策略将阻止所有访问权限（包括对 Intune 门户的访问权限）。 如果是不具有注册设备的管理员，则此策略会阻止你回到 Azure 门户更改策略。
-
 - **需要加入域** - 如果不具有加入域的设备，此阻止访问权限的策略还可能会阻止组织中所有用户的访问权限。
-
 - **需要应用保护策略**-此策略阻止访问也有可能阻止你的组织中的所有用户的访问权限，如果你没有 Intune 策略。 如果你是管理员不具有 Intune 应用保护策略的客户端应用程序的情况下，此策略会阻止你回到如 Intune 和 Azure 门户。
 
 **对于所有用户、所有云应用、所有设备平台：**
 
 - **阻止访问** - 此配置将阻止整个组织（这绝对不是一个好的选项）。
-
 
 ## <a name="how-should-you-deploy-a-new-policy"></a>应如何部署新的策略？
 
@@ -152,32 +120,24 @@ ms.locfileid: "67112656"
 当新策略针对你的环境准备就绪后，分阶段部署它们：
 
 1. 对一小组用户应用策略，验证策略的表现是否符合预期。 
-
-2.  当扩展策略以包括更多用户时， 继续从策略中排除所有管理员，以确保在需要进行更改时他们仍然具有访问权限且可以更新策略。
-
-3. 仅当必要时，才将策略应用于所有用户。 
+1. 当扩展策略以包括更多用户时， 继续从策略中排除所有管理员，以确保在需要进行更改时他们仍然具有访问权限且可以更新策略。
+1. 仅当必要时，才将策略应用于所有用户。 
 
 最佳做法是创建一个符合以下条件的用户帐户：
 
 - 专用于策略管理 
 - 已从所有策略中排除
 
-
 ## <a name="policy-migration"></a>策略迁移
 
 考虑迁移未在 Azure 门户中创建的策略，因为：
 
 - 现在可以解决以前无法处理的方案。
-
 - 可以通过合并来减少需要管理的策略数。   
-
 - 你可以管理在一个中心位置的所有条件性访问策略。
-
 - Azure 经典门户已停用。   
 
-
 有关详细信息，请参阅[在 Azure 门户中迁移经典策略](policy-migration.md)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

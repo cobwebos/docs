@@ -1,6 +1,6 @@
 ---
-title: 快速入门：Python 和 REST API - Azure 搜索
-description: 使用 Python、Jupyter Notebooks 和 Azure 搜索 REST API 创建、加载和查询索引。
+title: Python 快速入门：创建、 加载和查询使用 Azure 搜索 REST Api-Azure 搜索索引
+description: 介绍如何创建索引、 加载数据，并使用 Python、 Jupyter Notebook 和 Azure 搜索 REST API 运行查询。
 ms.date: 06/20/2019
 author: heidisteen
 manager: cgronlun
@@ -10,23 +10,23 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 227da2739216961dcd1f2fb8c643703a1b62e51a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 613879abd4c5c09450b690b793500a99428cff29
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302281"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485477"
 ---
-# <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>快速入门：使用 Jupyter Python 笔记本创建 Azure 搜索索引
+# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在使用 Jupyter 笔记本的 Python 中创建 Azure 搜索索引
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
-> * [Postman (REST)](search-fiddler.md)
+> * [Postman (REST)](search-get-started-postman.md)
 > * [门户](search-create-index-portal.md)
 > 
 
-生成的创建、 加载和查询 Azure 搜索索引中使用 Python 的 Jupyter 笔记本并[Azure 搜索 REST Api](https://docs.microsoft.com/rest/api/searchservice/)。 本文介绍如何生成步骤的步骤中，从零开始的笔记本。 或者，可以运行已完成的笔记本。 若要下载副本，请转到[azure aearch python 示例存储库](https://github.com/Azure-Samples/azure-search-python-samples)。
+生成的创建、 加载和查询 Azure 搜索索引中使用 Python 的 Jupyter 笔记本并[Azure 搜索 REST Api](https://docs.microsoft.com/rest/api/searchservice/)。 本文介绍如何生成步骤的步骤中，从零开始的笔记本。 或者，可以运行已完成的笔记本。 若要下载副本，请转到[azure 搜索-python 示例存储库](https://github.com/Azure-Samples/azure-search-python-samples)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -46,7 +46,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "Get an HTTP endpoint and access key")
+![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
@@ -275,7 +275,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
     ![搜索索引](media/search-get-started-python/search-index.png "搜索索引")
 
-1. 请尝试其他几个查询示例，以大致了解语法。 您可以 searchstring 替换为下面的示例，然后重新运行搜索请求。 
+1. 请尝试其他几个查询示例，以大致了解语法。 您可以替换`searchstring`与下面的示例，然后重新运行搜索请求。 
 
    应用筛选器： 
 

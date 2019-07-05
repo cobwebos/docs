@@ -1,32 +1,26 @@
 ---
-title: 了解您的 Microsoft 客户协议的发票-Azure 上的费用 |Microsoft Docs
-description: 了解如何阅读并了解发票上的费用
-services: ''
-documentationcenter: ''
+title: 了解您的 Microsoft 客户协议的发票-Azure 上的费用
+description: 了解如何阅读并了解发票上的费用。
 author: jureid
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: f93152ae3db926fb989c219d1e515abaf0281bf4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee250589133abb1944ff17e39dc650cbae4279c6
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372051"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490673"
 ---
-# <a name="understand-the-charges-on-your-microsoft-customer-agreements-invoice"></a>了解您的 Microsoft 客户协议的发票费用
+# <a name="understand-charges-on-your-microsoft-customer-agreement-invoice"></a>了解 Microsoft 客户协议发票上的费用
 
-通过分析各个事务，可以了解发票上产生的费用。
-
-在 Microsoft 客户协议的计费帐户，每个计费的配置文件中每个月生成发票。 发票包括在前一个月的所有费用。 在 Azure 门户中，可以查看您的发票。 有关详细信息，请参阅[下载发票的 Microsoft 客户协议](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement)。
+通过分析各个事务，可以了解发票上产生的费用。 在 Microsoft 客户协议的计费帐户，每个计费的配置文件每月生成发票。 发票包括在前一个月的所有费用。 在 Azure 门户中，可以查看您的发票。 有关详细信息，请参阅[下载发票的 Microsoft 客户协议](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement)。
 
 本文适用于 Microsoft 客户协议向计费帐户。 [检查是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
 
@@ -34,11 +28,11 @@ ms.locfileid: "60372051"
 
 1. 登录到 [Azure 门户](https://www.azure.com)。
 
-2. 搜索上**成本管理 + 计费**。
+2. 搜索**成本管理 + 计费**。
 
     ![显示有关成本管理 + 计费的 Azure 门户搜索的屏幕截图](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
-3. 选择**所有事务**从屏幕的左侧。 根据您可能需要选择计费帐户或帐单的配置文件的访问权限，然后选择**所有事务**。
+3. 选择**所有事务**从页的左侧。 根据您的访问权限，可能需要选择计费帐户、 账单资料或发票部分，然后选择**所有事务**。
 
 4. 所有事务页显示以下信息：
 
@@ -55,31 +49,31 @@ ms.locfileid: "60372051"
     |发票部分     | 事务显示在此部分中的计费配置文件的发票上 |
     |计费配置文件     | 在此计费配置文件的发票上显示事务 |
 
-5. 根据要筛选的事务发票的发票 ID 进行搜索。
+5. 搜索要筛选的事务发票的发票 ID。
 
 ### <a name="view-transactions-by-invoice-sections"></a>查看事务通过发票部分
 
-发票部分，可以将组织计费配置文件的发票上的成本。 有关详细信息，请参阅[了解发票部分](billing-mca-overview.md#understand-invoice-sections)。 生成发票后，计费的配置文件中的所有部分的费用将反映在发票上。
+发票部分可帮助您组织的帐单的配置文件的发票费用。 有关详细信息，请参阅[了解发票部分](billing-mca-overview.md#invoice-sections)。 生成发票，发票上显示计费的配置文件中的所有部分的费用。
 
-下图显示上一个示例发票会计部门发票部分的费用。
+下图显示上一个示例发票的会计部门发票部分的费用。
 
 ![示例图中显示的发票部分信息的详细信息](./media/billing-understand-your-bill-mca/invoicesection-details.png)
 
-一旦确定发票部分的费用，您可以了解费用在 Azure 门户中查看事务。
+当你已确定发票部分的费用时，您可以了解费用在 Azure 门户中查看事务。
 
 1. 转到 Azure 门户以查看发票的事务中的所有事务页。 有关详细信息，请参阅[在 Azure 门户中查看的发票事务](#view-transactions-for-an-invoice-in-the-azure-portal)。
 
-2. 按发票部分名称，若要查看的发票部分事务筛选。
+2. 通过查看事务的发票节名称进行筛选。
 
-## <a name="understand-pending-charges-to-estimate-your-next-invoice"></a>了解挂起的费用来估计在下一步发票
+## <a name="review-pending-charges-to-estimate-your-next-invoice"></a>查看挂起的费用来估计在下一步发票
 
-在 Microsoft 客户协议的计费帐户，直到开具发票费用，它们是估计值，被视为挂起。 你可以查看挂起的在 Azure 门户来估计下次的账单费用。 挂起的费用是估计值，并因此下次的账单上的实际费用将各不相同的挂起的费用不含税。
+在 Microsoft 客户协议的计费帐户，费用进行估计，并视为挂起，直到它们开具发票。 你可以查看挂起的在 Azure 门户来估计下次的账单费用。 挂起的费用估计，它们不含税。 下一步发票上的实际费用将因挂起的费用。
 
 ### <a name="view-summary-of-pending-charges"></a>查看挂起的费用的摘要
 
-1. 登录到 [Azure 门户](https://www.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索上**成本管理 + 计费**。
+2. 搜索**成本管理 + 计费**。
 
    ![显示有关成本管理 + 计费的 Azure 门户搜索的屏幕截图](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
@@ -91,45 +85,45 @@ ms.locfileid: "60372051"
 
    ![显示有关成本管理 + 计费的 Azure 门户搜索的屏幕截图](./media/billing-understand-your-bill-mca/mca-billing-profile-summary.png)
 
-月-日费用为当月是挂起的费用，并按月生成发票计费。 如果仍未生成上个月的发票，则上个月的费用也会挂起，并将反映在下次的账单上。
+月-日费用为当月是挂起的费用，并按月生成发票计费。 如果仍未生成上个月的发票，则上个月的费用也会挂起，并将在下次的账单上。
 
 ### <a name="view-pending-transactions"></a>查看挂起的事务
 
-一旦您认定了挂起的费用，你可以通过分析的费用提供的各个事务理解产生的费用。 此时，挂起的使用情况的费用不会显示的所有事务上。 在 Azure 订阅页上，可以查看挂起的使用费。 有关详细信息，请参阅[查看挂起的使用费用](#view-pending-usage-charges)
+如果确定挂起的费用，可以通过分析的费用提供的各个事务了解产生的费用。 此时，挂起的使用情况的费用不是所有的事务页上显示。 在 Azure 订阅页上，可以查看挂起的使用费。 有关详细信息，请参阅[查看挂起的使用费用](#view-pending-usage-charges)
 
-1. 登录到 [Azure 门户](https://www.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索上**成本管理 + 计费**。
+2. 搜索**成本管理 + 计费**。
 
    ![显示有关成本管理 + 计费的 Azure 门户搜索的屏幕截图](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
 3. 选择计费的配置文件。 具体取决于您的访问权限，可能需要选择计费帐户。 从计费帐户，选择**计费配置文件**然后选择计费的配置文件。
 
-4. 选择**所有事务**从屏幕的左侧。
+4. 选择**所有事务**从页的左侧。
 
-5. 搜索**挂起**。 使用**Timespan**筛选器来查看挂起的当前或上个月的费用。
+5. 搜索*挂起*。 使用**Timespan**筛选器来查看挂起的当前或上个月的费用。
 
    ![显示挂起的事务列表的屏幕截图](./media/billing-understand-your-bill-mca/mca-pending-transactions-list.png)
 
 ### <a name="view-pending-usage-charges"></a>查看挂起的使用费用
 
-1. 登录到 [Azure 门户](https://www.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索上**成本管理 + 计费**。
+2. 搜索*成本管理 + 计费*。
 
    ![显示有关成本管理 + 计费的 Azure 门户搜索的屏幕截图](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
 3. 选择计费的配置文件。 具体取决于您的访问权限，可能需要选择计费帐户。 从计费帐户，选择**计费配置文件**然后选择计费的配置文件。
 
-4. 选择**的所有订阅**从屏幕的左侧。
+4. 选择**的所有订阅**一页的左侧。
 
-5. Azure 订阅页显示当前和上个月的费用为每个订阅计费的配置文件中。 月-日费用为当月是挂起的费用，并按月生成发票计费。 如果仍未生成上个月的发票，则上个月的费用也是挂起。
+5. Azure 订阅页显示的当前版本和上个月的费用为每个订阅计费的配置文件中。 月-日费用为当月是挂起的费用，并按月生成发票计费。 如果仍未生成上个月的发票，则上个月的费用也是挂起。
 
     ![显示计费的配置文件的 Azure 订阅列表的屏幕截图](./media/billing-understand-your-bill-mca/mca-billing-profile-subscriptions-list.png)
 
 ## <a name="analyze-your-azure-usage-charges"></a>分析您的 Azure 使用费用
 
-使用 Azure 使用情况和费用 csv 文件来分析你的基于使用情况的费用。 可以下载该文件用于发票或挂起的费用。 有关详细信息，请参阅[获取 Azure 帐单发票和每日使用情况数据](billing-download-azure-invoice-daily-usage-date.md)。
+使用 Azure 使用情况和费用 CSV 文件来分析你的基于使用情况的费用。 可以下载该文件为发票或挂起的费用。 有关详细信息，请参阅[获取 Azure 帐单发票和每日使用情况数据](billing-download-azure-invoice-daily-usage-date.md)。
 
 ### <a name="view-detailed-usage-by-invoice-section"></a>查看发票部分的详细使用情况
 
@@ -151,15 +145,14 @@ ms.locfileid: "60372051"
 
 ![显示的使用情况和费用发票一部分筛选的文件的屏幕截图](./media/billing-understand-your-bill-mca/billing-usage-file-filtered-by-invoice-section.png)
 
-<!--Todo Add screenshot of usage file -->
 
 ### <a name="view-detailed-usage-by-subscription"></a>按订阅查看详细使用情况
 
-您可以筛选的 Azure 使用情况和费用 csv 文件来协调你的订阅的使用费用。 若要查看所有订阅计费的配置文件中，请参阅[都查看挂起的使用费用](#view-pending-usage-charges)。
+您可以筛选的 Azure 使用情况和费用 CSV 文件来协调你的订阅的使用费用。 若要查看所有订阅计费的配置文件中，请参阅[都查看挂起的使用费用](#view-pending-usage-charges)。
 
-一旦识别出订阅的费用，使用 Azure 使用情况和费用 csv 文件分析产生的费用。
+如果确定订阅的费用，使用 Azure 使用情况和费用 CSV 文件分析产生的费用。
 
-下面的屏幕截图显示在 Azure 门户中的订阅列表。
+下图显示在 Azure 门户中的订阅列表。
 
 ![显示计费的配置文件的 Azure 订阅列表的屏幕截图](./media/billing-understand-your-bill-mca/mca-billing-profile-subscriptions-list-highlighted.png)
 
@@ -176,7 +169,7 @@ ms.locfileid: "60372051"
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

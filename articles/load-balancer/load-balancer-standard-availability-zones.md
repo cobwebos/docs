@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: kumud
-ms.openlocfilehash: 6f33be6e418366f57d243f578035b5c87079c99e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0820285555110e8e85bff814f4774d6da6443f69
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734450"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491981"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>标准负载均衡器和可用性区域
 
@@ -186,7 +186,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
 
 使用负载均衡器可以轻松地将一个 IP 用作区域冗余的前端。 区域冗余的 IP 地址能够安全地为任何区域中的局域性资源提供服务，并且可以承受一个或多个区域的故障，前提是区域中有一个局部区域保持正常。 相反，局域性前端是在单个区域中部署服务的简化设计，其命运与相应的区域相同。
 
-区域冗余并不意味着数据路径或控制平面不可访问；它是明确的数据平面。 区域冗余流可以使用任何局部区域，客户流使用区域中所有正常的局部区域。 出现区域故障时，在该时间点使用正常区域的流量流不受影响。  发生区域故障时使用区域的流量可能会受影响，但应用程序可以恢复，并且在 Azure 从区域故障中恢复，且重新传输数据或重新建立连接后，这些流可在区域中剩余的正常局部区域中继续。
+区域冗余并不意味着数据路径或控制平面不可访问；它是明确的数据平面。 区域冗余流可以使用任何局部区域，客户流使用区域中所有正常的局部区域。 出现区域故障时，在该时间点使用正常区域的流量流不受影响。  在发生区域故障时使用区域的流量流可能会受到影响，但应用程序可以恢复。 Azure 局部区域故障后，这些流可以继续重新传输数据或重新建立，在区域中剩余的正常区域中。
 
 ### <a name="xzonedesign"></a>跨区域边界
 

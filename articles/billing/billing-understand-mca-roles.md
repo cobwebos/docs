@@ -1,24 +1,21 @@
 ---
 title: 了解计费管理角色的 Microsoft 客户协议-Azure
 description: 了解如何为 Microsoft 客户协议的计费在 Azure 中的帐户的计费角色。
-services: billing
-documentationcenter: ''
 author: amberbhargava
 manager: amberbhargava
-editor: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 780870cc71e95507a52ba6a9338026f895a96ac1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12e492fee95192d0af49ff7b6a5be3144398fef8
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370842"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490441"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>了解 Microsoft 客户协议在 Azure 中的管理角色
 
@@ -30,7 +27,7 @@ ms.locfileid: "60370842"
 
 下表描述用于管理您的计费帐户，计费配置文件，和发票部分计费的角色。
 
-|角色|描述|
+|Role|描述|
 |---|---|
 |计费帐户所有者|管理所有内容的计费帐户|
 |计费帐户参与者|管理计费帐户上的权限之外的所有内容|
@@ -46,7 +43,7 @@ ms.locfileid: "60370842"
 
 ## <a name="billing-account-roles-and-tasks"></a>计费帐户角色和任务
 
-计费帐户允许你管理为你的组织计费。 使用的计费帐户组织成本、 监视费和发票和计费的访问控制为你的组织。 有关详细信息，请参阅[了解计费帐户](billing-mca-overview.md#understand-billing-account)。
+计费帐户允许你管理为你的组织计费。 使用的计费帐户组织成本、 监视费和发票和计费的访问控制为你的组织。 有关详细信息，请参阅[了解计费帐户](billing-mca-overview.md#your-billing-account)。
 
 下表显示为计费帐户的上下文中完成任务需要何种角色。
 
@@ -92,7 +89,7 @@ ms.locfileid: "60370842"
 
 ## <a name="billing-profile-roles-and-tasks"></a>计费的配置文件角色和任务
 
-计费的配置文件允许你管理你的发票和付款方法。 每月发票为 Azure 订阅和计费配置文件使用购买其他产品生成。 使用的付款方法按发票。 有关详细信息，请参阅[了解计费资料](billing-mca-overview.md#understand-billing-profiles)。
+计费的配置文件允许你管理你的发票和付款方法。 每月发票为 Azure 订阅和计费配置文件使用购买其他产品生成。 使用的付款方法按发票。 有关详细信息，请参阅[了解计费资料](billing-mca-overview.md#billing-profiles)。
 
 下表显示了需要在计费的配置文件的上下文中完成任务的作用。
 
@@ -142,7 +139,7 @@ ms.locfileid: "60370842"
 
 ## <a name="invoice-section-roles-and-tasks"></a>发票部分角色和任务
 
-发票部分，可将组织发票上的成本。 您可以创建一个部分来组织你的成本按部门，开发环境中，或根据组织的需求。 授予其他人创建的部分 Azure 订阅的权限。 任何使用费用和购买订阅则显示发票的部分。 有关详细信息，请参阅[了解发票部分](billing-mca-overview.md#understand-invoice-sections)。
+发票部分，可将组织发票上的成本。 您可以创建一个部分来组织你的成本按部门，开发环境中，或根据组织的需求。 授予其他人创建的部分 Azure 订阅的权限。 任何使用费用和购买订阅则显示发票的部分。 有关详细信息，请参阅[了解发票部分](billing-mca-overview.md#invoice-sections)。
 
 下表显示了所需要的发票部分上下文中完成任务的角色。
 
@@ -185,7 +182,7 @@ ms.locfileid: "60370842"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”  中进行搜索。
+2. 搜索**成本管理 + 计费**。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-understand-mca-roles/billing-search-cost-management-billing.png)
 

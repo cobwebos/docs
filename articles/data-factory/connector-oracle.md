@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 06/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 3fa7612b9e4cd8a714e60879229bd0d39349494f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 04f623a889a87c325b1f53e3b39656ca4b703961
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405918"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509231"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -30,13 +30,16 @@ ms.locfileid: "60405918"
 
 可以将数据从 Oracle 数据库复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Oracle 数据库。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 Oracle 连接器支持以下版本的 Oracle 数据库。 它还支持基本或 OID 身份验证：
+具体而言，此 Oracle 连接器支持：
 
-- Oracle 12c R1 (12.1)
-- Oracle 11g R1, R2 (11.1, 11.2)
-- Oracle 10g R1, R2 (10.1, 10.2)
-- Oracle 9i R1, R2 (9.0.1, 9.2)
-- Oracle 8i R3 (8.1.7)
+- 以下版本的 Oracle 数据库：
+  - Oracle 12c R1 (12.1)
+  - Oracle 11g R1, R2 (11.1, 11.2)
+  - Oracle 10g R1, R2 (10.1, 10.2)
+  - Oracle 9i R1, R2 (9.0.1, 9.2)
+  - Oracle 8i R3 (8.1.7)
+- 使用来复制数据**基本**或**OID**身份验证。
+- 从 Oracle 源的并行副本。 请参阅[并行复制从 Oracle](#parallel-copy-from-oracle)部分的详细信息。
 
 > [!Note]
 > 不支持 Oracle 代理服务器。
@@ -190,16 +193,24 @@ Oracle 链接服务支持以下属性。
 
 ### <a name="oracle-as-a-source-type"></a>以 Oracle 作为源类型
 
+> [!TIP]
+>
+> 了解详细信息[并行复制从 Oracle](#parallel-copy-from-oracle)部分，了解如何从 Oracle 有效地使用数据分区加载数据。
+
 要从 Oracle 复制数据，请将复制活动中的源类型设置为“OracleSource”  。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 OracleSource  。 | 是 |
-| oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 否 |
+| oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区的负载，需要在查询中挂钩相应内置分区个参数。 请参阅中的示例[并行复制从 Oracle](#parallel-copy-from-oracle)部分。 | 否 |
+| partitionOptions | 指定分区选项用于将数据加载从 Oracle 的数据。 <br>允许的值为：**无**（默认值）， **PhysicalPartitionsOfTable**并**DynamicRange**。<br>当启用分区选项 (不 None)，请配置 **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** 设置复制活动，例如，4，用于确定并行度以并发方式将数据加载从 Oracle数据库。 | 否 |
+| partitionSettings | 指定的数据分区的设置的组。 <br>当分区选项不位于应用`None`。 | 否 |
+| partitionNames | 需要复制的物理分区的列表。 <br>将应用分区选项时`PhysicalPartitionsOfTable`。 如果使用查询来检索源数据，挂钩`?AdfTabularPartitionName`WHERE 子句中。 中的示例，请参阅[并行复制从 Oracle](#parallel-copy-from-oracle)部分。 | 否 |
+| partitionColumnName | 指定源列的名称**整数类型中**，将使用的并行复制分区范围。 如果未指定，表的主键将自动检测到并用作分区列。 <br>将应用分区选项时`DynamicRange`。 如果使用查询来检索源数据，挂钩`?AdfRangePartitionColumnName`WHERE 子句中。 中的示例，请参阅[并行复制从 Oracle](#parallel-copy-from-oracle)部分。 | 否 |
+| partitionUpperBound | 要将数据复制的分区列的最大值。 <br>将应用分区选项时`DynamicRange`。 如果使用查询来检索源数据，挂钩`?AdfRangePartitionUpbound`WHERE 子句中。 中的示例，请参阅[并行复制从 Oracle](#parallel-copy-from-oracle)部分。 | 否 |
+| PartitionLowerBound | 要将数据复制的分区列的最小值。 <br>将应用分区选项时`DynamicRange`。 如果使用查询来检索源数据，挂钩`?AdfRangePartitionLowbound`WHERE 子句中。 中的示例，请参阅[并行复制从 Oracle](#parallel-copy-from-oracle)部分。 | 否 |
 
-如果未指定“oracleReaderQuery”，则将使用在数据集的“structure”节中定义的列，构建针对 Oracle 数据库运行的查询 (`select column1, column2 from mytable`)。 如果数据集定义没有“structure”，则将从表中选择所有列。
-
-**示例：**
+**使用没有分区的基本查询的示例： 复制数据**
 
 ```json
 "activities":[
@@ -230,6 +241,8 @@ Oracle 链接服务支持以下属性。
     }
 ]
 ```
+
+请参阅中的更多示例[并行复制从 Oracle](#parallel-copy-from-oracle)部分。
 
 ### <a name="oracle-as-a-sink-type"></a>以 Oracle 作为接收器类型
 
@@ -271,6 +284,54 @@ Oracle 链接服务支持以下属性。
         }
     }
 ]
+```
+
+## <a name="parallel-copy-from-oracle"></a>从 Oracle 并行复制
+
+数据工厂的 Oracle 连接器提供了内置的数据分区，以将数据从 Oracle 复制优异的性能与并行。 您可以找到复制活动的数据分区选项-> Oracle 源：
+
+![分区选项](./media/connector-oracle/connector-oracle-partition-options.png)
+
+启用分区的副本时，数据工厂对 Oracle 源将数据加载分区运行并行查询。 配置并通过控制并行度 **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** 上复制活动设置。 例如，如果您设置`parallelCopies`为 4，数据工厂同时生成，并根据指定的分区选项和设置，Oracle 数据库中的数据的每个检索部分运行四个查询。
+
+建议以启用并行复制数据分区，尤其是当从 Oracle 数据库加载大量数据时使用。 以下是针对不同方案的建议的配置：
+
+| 场景                                                     | 建议的设置                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 从具有物理分区的大型表的完全加载          | **分区选项**:物理分区的表。 <br><br/>在执行期间，数据工厂自动检测物理分区，并通过分区将数据复制。 |
+| 从大型表，而无需使用整数列的数据分区的物理分区完全加载 | **分区选项**:动态范围分区。<br>**分区列**:指定用于对数据进行分区的列。 如果未使用指定主键列。 |
+| 加载大量的自定义查询，其下方使用物理分区的数据 | **分区选项**:物理分区的表。<br>**查询**: `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`。<br>**分区名称**:指定从中复制数据的分区名称。 如果未指定，ADF 将自动检测中 Oracle 数据集指定的表上的物理分区。<br><br>在执行期间，数据工厂替换`?AdfTabularPartitionName`与实际分区名称并发送给 Oracle。 |
+| 加载大量数据使用自定义查询，其下方，而无需物理分区，而应用于整数列的数据分区 | **分区选项**:动态范围分区。<br>**查询**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**:指定用于对数据进行分区的列。 可以针对列分区使用整数数据类型。<br>**分区上界**并**分区下限**:指定你想要对分区列，以便只检索范围下限和上限之间的数据进行筛选。<br><br>在执行期间，数据工厂替换`?AdfRangePartitionColumnName`， `?AdfRangePartitionUpbound`，和`?AdfRangePartitionLowbound`使用实际的列名称和值范围为每个分区，并将发送到 Oracle。 <br>例如，如果分区列"ID"设置为 1，上限为 80，为 4，并行复制设置的下限 ADF 检索数据的 4 个分区之间 [1，20]，id 为 [21，40] [41，60] 和 [61，80]。 |
+
+**示例： 使用物理分区进行查询**
+
+```json
+"source": {
+    "type": "OracleSource",
+    "query": "SELECT * FROM <TABLENAME> PARTITION(\"?AdfTabularPartitionName\") WHERE <your_additional_where_clause>",
+    "partitionOption": "PhysicalPartitionsOfTable",
+    "partitionSettings": {
+        "partitionNames": [
+            "<partitionA_name>",
+            "<partitionB_name>"
+        ]
+    }
+}
+```
+
+**示例： 查询与动态范围分区**
+
+```json
+"source": {
+    "type": "OracleSource",
+    "query": "SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>",
+    "partitionOption": "DynamicRange",
+    "partitionSettings": {
+        "partitionColumnName": "<partition_column_name>",
+        "partitionUpperBound": "<upper_value_of_partition_column>",
+        "partitionLowerBound": "<lower_value_of_partition_column>"
+    }
+}
 ```
 
 ## <a name="data-type-mapping-for-oracle"></a>Oracle 的数据类型映射

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 535ae91abc04b2fdcebb6a2083db95ec50f61798
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 49d1e171d4d4b2210a98c59332f4842e23a2f2b9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275585"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537851"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL“超大规模”数据库的常见问题解答
 
@@ -38,7 +38,7 @@ ms.locfileid: "67275585"
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>“超大规模”服务层与“常规用途”和“业务关键”服务层有何区别
 
-主要根据可用性、存储类型和 IOP 区分基于 vCore 的服务层。
+基于 vCore 的服务层的区别主要在于取决于可用性、 存储类型和 IOPs。
 
 - 常规用途服务层提供一组均衡的计算和存储选项（其中 IO 延迟或故障转移时间无需优先考虑），适用于大多数业务工作负荷。
 - “超大规模”服务层级针对非常大的数据库工作负荷进行了优化。
@@ -53,7 +53,7 @@ ms.locfileid: "67275585"
 | **存储类型** | 全部 |高级远程存储（每个实例） | 具有本地 SSD 缓存的分离的存储（每个实例） | 超快的本地 SSD 存储（每个实例） |
 | **存储大小** | 单一数据库/弹性池 | 5 GB – 4 TB | 最多 100 TB | 5 GB – 4 TB |
 | | 托管实例  | 32 GB – 8 TB | 不适用 | 32 GB – 4 TB |
-| **IO 吞吐量** | 单一数据库** | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 未知 | 5000 IOPS，最大 200,000 IOPS|
+| **IO 吞吐量** | 单一数据库** | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 超大规模是使用缓存在多个级别的多层体系结构。 有效的 IOPs 将取决于工作负荷。 | 5000 IOPS，最大 200,000 IOPS|
 | | 托管实例 | 取决于文件大小 | 不适用 | 托管实例：取决于文件大小|
 |**可用性**|全部|1 个副本，无读取扩展副本，无本地缓存 | 多个副本，最多 15 个读取扩展副本，部分本地缓存 | 3 个副本，1 个读取扩展副本，区域冗余 HA，完整的本地缓存 |
 |**备份**|全部|RA-GRS，7-35 天（默认为 7 天）| RA-GRS，7-35 天（默认为 7 天），恒定的时间时点恢复 (PITR) | RA-GRS，7-35 天（默认为 7 天） |
@@ -92,7 +92,7 @@ SQL 数据库“超大规模”服务层级根据工作负荷需求，提供快�
   使用“超大规模”数据库，可以纵向扩展 CPU、内存等资源的主要计算大小，然后在恒定的时间内将其减少。 因为是共享存储，所以纵向扩展和缩减不是数据大小操作。  
 - **缩小/扩大**
 
-  借助“超大规模”数据库，还能够预配一个或多个额外的计算节点，用于为读取请求提供服务。 这意味着，可以将这些额外的计算节点用作只读节点，从主计算卸载读取工作负荷。 除用作只读节点外，在主计算发生故障转移时，它们还充当热备用节点。
+  借助“超大规模”数据库，还能够预配一个或多个额外的计算节点，用于为读取请求提供服务。 这意味着，可以将这些额外的计算节点用作只读节点，从主计算卸载读取工作负荷。 除了到只读的这些节点还提供为热备用的发生故障转移时从主数据库。
 
   对每个额外的计算节点的预配可在恒定时间内完成，并且是联机操作。 将连接字符串的 `ApplicationIntent` 参数设置为 `readonly`，即可连接到这些额外的只读计算节点。 任何标记为 `readonly` 的连接均自动路由到某个额外的只读计算节点。
 
@@ -120,7 +120,7 @@ SQL 数据库“超大规模”服务层级支持所有 SQL Server 工作负荷�
 
 ### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-sql-database-hyperscale"></a>如何在 Azure SQL 数据仓库和 SQL 数据库“超大规模”服务层级之间做出选择
 
-如果目前运行的是使用 SQL Server 作为数据仓库的交互式分析查询，SQL 数据库“超大规模”服务层级是很好的选择，因为能以较低费用托管相对较小的数据仓库（例如几 TB 到数十 TB），并且可以在不更改 T-SQL 代码的情况下，将数据仓库工作负荷迁移到 SQL 数据库“超大规模”服务层级。
+如果当前正在使用 SQL Server 作为数据仓库的交互式分析查询，SQL 数据库的超大规模较低的成本因为可以承载相对较小的数据仓库 （如多达数十 TB 的几个 TB) 是很好的选择，您可以迁移数据 warehouse 工作负荷到 SQL 数据库的超大规模无需更改的 T-SQL 代码。
 
 如果大规模运行包含复杂查询的数据分析并且使用并行数据仓库 (PDW)、Teradata 或其他大规模并行处理器 (MPP) 数据仓库，则 SQL 数据仓库可能是最佳选择。
   
@@ -349,7 +349,7 @@ IOPS 和 IO 延迟根据工作负荷模式而异。  如果需要访问的数据
 
 可以。 临时数据库会随着计算自动纵向扩展。  
 
-### <a name="can-i-provision-multiple-primary-computes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>能不能预配多个主计算节点（例如多主数据库系统，其中多个主要计算节点可促进更高的并发级别）
+### <a name="can-i-provision-multiple-primary-compute-nodes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>可以设置多个主要的计算节点，如多个主计算头有助于较高的并发级别的多主系统
 
 不。 只有主计算节点接受读/写请求。 次要计算节点只接受只读请求。
 
@@ -369,11 +369,11 @@ IOPS 和 IO 延迟根据工作负荷模式而异。  如果需要访问的数据
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>系统是否对读取工作负荷进行智能负载均衡
 
-不。 只读工作负荷重定向到随机读取扩展副本。
+否。 只读工作负荷重定向到的随机读取缩放副本。
 
 ### <a name="can-i-scale-updown-the-secondary-compute-nodes-independently-of-the-primary-compute"></a>能否独立于主计算纵向扩展/缩减次要计算节点
 
-不。 辅助计算节点也用于高可用性，因此在故障转移时，它们的配置需要与主节点相同。
+不。 辅助计算节点还用于高可用性，因此它们需要的主副本在故障转移的情况下与相同的配置。
 
 ### <a name="do-i-get-different-temp-db-sizing-for-my-primary-compute-and-my-additional-secondary-compute-nodes"></a>对于我的主要计算节点和额外的次要计算节点，能否获得不同的临时数据库大小
 

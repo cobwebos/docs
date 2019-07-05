@@ -5,29 +5,29 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: f4c296aeefacc9516303ad75dd8b7d67325e38ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c1c987befe928d316b11c6ecd379be76f8f80d4
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969054"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490153"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
-本文帮助你更好地了解 Azure 成本管理中包含的数据。 此外，介绍这些数据的处理频率以及收集、显示和关闭方式。 你需要按月支付 Azure 使用费。 但是，月底的账单由 Azure 订阅类型决定。 成本管理接收用量数据的频率根据不同的因素而异。 此类因素包括处理数据所花费的时间，以及 Azure 服务向计费系统发出用量数据的频率。
+本文可帮助您更好地了解 Azure 成本管理中包含的 Azure 成本和用量数据。 它还说明了频率处理的数据收集，所示，和已关闭。 你需要按月支付 Azure 使用费。 虽然计费周期每月期间，周期的开始和结束日期因订阅类型。 成本管理接收用量数据的频率根据不同的因素而异。 此类因素包括处理数据所花费的时间，以及 Azure 服务向计费系统发出用量数据的频率。
 
-成本的管理包括所有使用情况和购买，包括保留项和第三方产品/服务的企业协议 (EA) 帐户。 Microsoft 客户协议 (MCA) 帐户和即用即付订阅仅包含从 Azure 和 Marketplace 服务的使用情况。 支持和其他成本不包括。 直到生成发票估计成本未纳入的信用额度和。
+成本的管理包括所有使用情况和购买，包括保留项和第三方产品/服务的企业协议 (EA) 帐户。 Microsoft 客户协议 (MCA) 帐户和即用即付费率使用单独的订阅仅包含从 Azure 和 Marketplace 服务的使用情况。 支持和其他成本不包括。 直到生成发票估计成本未纳入的信用额度和。
 
-## <a name="supported-microsoft-offers"></a>支持的 Microsoft 套餐
+## <a name="supported-microsoft-azure-offers"></a>受支持的 Microsoft Azure 产品/服务
 
-以下信息说明了 Azure 成本管理中目前支持的 [Microsoft Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。  Azure 套餐是客户拥有的 Azure 订阅类型。
+下列信息演示了当前支持[Microsoft Azure 提供了](https://azure.microsoft.com/support/legal/offer-details/)的 Azure 成本管理。 Azure 产品/服务在已签名的协议确定你有 Azure 订阅的类型。
 
-| 类别  | **产品/服务名称** | **Quota ID** | **套餐编号** |
+| Category  | **产品/服务名称** | **Quota ID** | **套餐编号** |
 | --- | --- | --- | --- |
 | **Azure 德国** | [Azure 德国即用即付](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
@@ -49,9 +49,9 @@ ms.locfileid: "65969054"
 | **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)            | MSDN_2014-09-01 | MS-AZR-0063P |
 | **Visual Studio** | [Visual Studio Enterprise：BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)  | MSDN_2014-09-01 | MS-AZR-0064P |
 
-下表显示了不支持的套餐。
+下表显示了 Azure 成本管理不支持的产品/服务。
 
-| 类别  | **产品/服务名称** | **Quota ID** | **套餐编号** |
+| Category  | **产品/服务名称** | **Quota ID** | **套餐编号** |
 | --- | --- | --- | --- |
 | **云解决方案提供商 (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **云解决方案提供商 (CSP)** | Azure 政府版 CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
@@ -66,7 +66,7 @@ ms.locfileid: "65969054"
 | **支持计划** | Azure 政府版专业直接支持 | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **支持计划** | Azure 政府版开发人员支持  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-对于使用即用即付、MSDN 和 Visual Studio 产品/服务类别的客户，从 2018 年 2 月 10 日起可在“成本管理”中使用数据。 若要访问的数据，你在 2018 年 10 月 02 日之前的订阅，可以使用[Azure 帐户中心](https://account.azure.com/subscriptions)若要下载你的使用情况详细信息的 CSV 文件中也可以使用[使用情况详细信息 API](/rest/api/consumption/usagedetails)。
+对于即用即付客户，MSDN 和 Visual Studio 产品/服务类别，数据是在成本管理从 2018 年 10 月 02 中可用。 若要访问的数据，你在 2018 年 10 月 02 日之前的订阅，可以使用[Azure 帐户中心](https://account.azure.com/subscriptions)若要下载你的使用情况详细信息的 CSV 文件中也可以使用[使用情况详细信息 API](/rest/api/consumption/usagedetails)。
 
 ## <a name="determine-your-offer-type"></a>确定你的产品/服务类型
 如果未看到订阅数据并想要确定你的订阅是否属于受支持的套餐，可以验证你的订阅是否受支持。 若要验证 Azure 订阅是否受支持，请登录到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“所有服务”  。 在服务列表中选择“订阅”。  在订阅列表菜单中，单击要验证的订阅。 该订阅将显示在“概述”选项卡上，在其中可以看到“套餐”和“套餐 ID”。   下图显示了一个示例。
@@ -116,7 +116,7 @@ ms.locfileid: "65969054"
 
 ### <a name="rerated-data"></a>重新计费数据
 
-无论是使用[成本管理 Api](https://aka.ms/costmgmt/docs)，Power BI 或 Azure 门户来检索数据，希望重新获取已分级，并因此更改，直到关闭发票的当前计费周期的费用。
+无论是使用[成本管理 Api](index.yml)，Power BI 或 Azure 门户来检索数据，希望重新获取已分级，并因此更改，直到关闭发票的当前计费周期的费用。
 
 ## <a name="usage-data-update-frequency-varies"></a>用量数据的更新频率存在变化
 
@@ -129,7 +129,7 @@ ms.locfileid: "65969054"
 
 ## <a name="historical-data-might-not-match-invoice"></a>历史数据可能与发票不匹配
 
-对于基于信用额度和提前支付产品/服务的历史数据可能与你的发票。 某些 Azure 即用即付、 MSDN 以及 Visual Studio 产品/服务可以具有的 Azure 额度和高级应用于发票的付款。 但是，在成本管理中所示的历史数据基于您估计耗用量费用。 成本的管理历史数据不包括付款和信用额度。 结果是，针对以下产品/服务显示的历史数据可能不与你的发票完全匹配。
+对于基于信用额度和提前支付产品/服务的历史数据可能与你的发票。 某些 Azure 即用即付、 MSDN 以及 Visual Studio 提供了可以具有的 Azure 额度和高级的付款应用于该发票。 但是，在成本管理中所示的历史数据基于您估计耗用量费用。 成本的管理历史数据不包括付款和信用额度。 结果是，针对以下产品/服务显示的历史数据可能不与你的发票完全匹配。
 
 -   MS-AZR-0029P
 -   MS-AZR-0064P

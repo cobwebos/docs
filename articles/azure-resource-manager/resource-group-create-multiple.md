@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 99fd4215de4dd118558acc008fcfa6490ea0093d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22317372a7d954286ebcb0b59aea293c746b2a58
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807378"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508170"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>资源、 属性或 Azure 资源管理器模板中的变量迭代
 
@@ -50,6 +50,8 @@ ms.locfileid: "66807378"
 若要指定迭代次数，请为计数属性提供值。 计数不能超过 800。
 
 计数不能为负数。 如果部署具有 REST API 版本的模板**2019年-05-10**或更高版本，可以将计数设置为零。 REST API 的早期版本不支持用于计数为零。 目前，Azure CLI 或 PowerShell 不支持零计数，但这将在未来的版本中添加支持。
+
+小心使用[完成模式下部署](deployment-modes.md)副本。 如果重新部署到资源组的完整模式下，会删除解决复制循环之后，在模板中未指定任何资源。
 
 是否与资源、 变量或属性一起使用，用于计数限制都是相同的。
 

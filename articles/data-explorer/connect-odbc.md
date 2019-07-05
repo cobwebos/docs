@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 02ae9673f1dc402ee1500b466d7e259263ef3262
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/30/2019
+ms.openlocfilehash: 65795b5b4dea8d2cdeecf5f78f9de751f275dac0
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494850"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537596"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>使用 ODBC 连接到 Azure 数据资源管理器
 
@@ -20,7 +20,13 @@ ms.locfileid: "66494850"
 
 在后台，应用程序会在 ODBC 接口中调用函数，这些函数在特定于数据库的模块（称为“驱动程序”）中实现。  Azure 数据资源管理器支持 SQL Server 通信协议的一个子集 ([MS TDS](/azure/kusto/api/tds/))，因此它可以使用 SQL Server 的 ODBC 驱动程序。
 
-本文介绍如何使用 SQL Server ODBC 驱动程序，目的是让你能够从任何支持 ODBC 的应用程序连接到 Azure 数据资源管理器。
+使用下面的视频，您可以了解如何创建 ODBC 连接。 
+
+> [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
+
+此外，也可以[ODBC 数据源配置](#configure-the-odbc-data-source)详情如下。 
+
+在文章中，您将了解如何使用 SQL Server ODBC 驱动程序，因此你可以从支持 ODBC 的任何应用程序连接到 Azure 数据资源管理器。 
 
 ## <a name="prerequisites"></a>必备组件
 

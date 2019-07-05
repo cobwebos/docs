@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 68d2f126ee32f61d13d170712bf58581101036e8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 24ee419e5c6eb4b8c148c61c232d2ab7ab07c74b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206068"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449594"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务版本："]
@@ -472,7 +472,10 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob、 Azure 数据湖存储 Gen1 
 
 源数据不满足上一部分所述的条件时，请通过暂存 Azure Blob 存储实例启用数据复制。 该实例不能是 Azure 高级存储。 在这种情况下，Azure 数据工厂会自动针对数据运行转换，以满足 PolyBase 的数据格式要求。 然后，它使用 PolyBase 将数据加载到 SQL 数据仓库。 最后，它会从 Blob 存储中清理临时数据。 有关通过暂存 Azure Blob 存储实例复制数据的详细信息，请参阅[暂存复制](copy-activity-performance.md#staged-copy)。
 
-若要使用此功能，请创建引用 Azure 存储帐户的、使用暂存 Blob 存储的 [Azure 存储链接服务](connector-azure-blob-storage.md#linked-service-properties)。 然后如以下代码中所示，为复制活动指定 `enableStaging` 和 `stagingSettings` 属性：
+若要使用此功能，创建[Azure Blob 存储链接服务](connector-azure-blob-storage.md#linked-service-properties)，是指具有临时 blob 存储的 Azure 存储帐户。 然后指定`enableStaging`和`stagingSettings`对于复制活动中的以下代码所示的属性。
+
+>[!IMPORTANT]
+>如果暂存的 Azure 存储配置与 VNet 服务终结点，则必须使用托管的标识进行身份验证-请参阅[对 Azure 存储使用 VNet 服务终结点的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 了解从数据工厂中所需的配置[Azure Blob-托管的标识身份验证](connector-azure-blob-storage.md#managed-identity)。
 
 ```json
 "activities":[

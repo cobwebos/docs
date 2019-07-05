@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 58552914f369c49eed33ccefbb7736cf8dbf1fc6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4fe05c96b1006a7d110caa019619ce8be396fe8
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475642"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491554"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>预览-自动缩放以满足应用程序的需求在 Azure Kubernetes 服务 (AKS) 群集
 
@@ -32,30 +32,34 @@ ms.locfileid: "66475642"
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-支持群集自动缩放程序的 AKS 群集必须使用虚拟机规模集并运行 Kubernetes 版本*1.12.7*或更高版本。 此规模集支持处于预览状态。 若要选择加入并创建使用规模集的群集，请先使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，如下面的示例中所示  ：
+若要使用群集自动缩放程序，需要*aks 预览版*CLI 扩展版本 0.4.1 或更高版本。 安装*aks 预览版*Azure CLI 扩展使用[az 扩展添加][az-extension-add]command, then check for any available updates using the [az extension update][az-extension-update]命令::
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> 如果你以前已安装*aks 预览版*扩展，安装任何可用更新使用`az extension update --name aks-preview`命令。
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-scale-set-feature-provider"></a>注册规模集功能提供程序
 
-要创建使用规模集的 AKS，还必须在订阅上启用功能标志。 若要注册 VMSSPreview 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示  ：
+要创建使用规模集的 AKS，还必须在订阅上启用功能标志。 若要注册*VMSSPreview*功能标志，请使用[az 功能注册][az-feature-register]命令，在下面的示例所示：
+
+> [!CAUTION]
+> 注册时对某一订阅功能，目前你无法取消注册该功能。 启用某些预览功能后，可能会对所有 AKS 群集，然后在订阅中创建使用默认值。 不要启用预览功能在生产订阅。 使用单独的订阅来测试预览功能和收集反馈。
 
 ```azurecli-interactive
 az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
-状态显示为“已注册”需要几分钟时间  。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+状态显示为“已注册”需要几分钟时间  。 您可以检查注册状态使用[az 功能列表][az-feature-list]命令：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态  ：
+准备就绪后，刷新的注册*Microsoft.ContainerService*使用的资源提供程序[az provider register][az-provider-register]命令：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -66,7 +70,6 @@ az provider register --namespace Microsoft.ContainerService
 创建和管理 AKS 群集中使用群集自动缩放程序时，应考虑以下限制：
 
 * 不能使用 HTTP 应用程序路由外接程序。
-* 当前不能使用多个节点池 （目前以预览版在 AKS 中）。
 
 ## <a name="about-the-cluster-autoscaler"></a>关于群集自动缩放程序
 
@@ -83,9 +86,9 @@ az provider register --namespace Microsoft.ContainerService
 * Pod 中断预算 (PDB) 限制太多，不允许 Pod 数低于特定阈值。
 * Pod 使用在不同节点上进行计划时无法遵循的节点选择器或反相关性。
 
-有关群集自动缩放程序如何可能无法减少的详细信息，请参阅[哪些类型的 Pod 可能会阻止群集自动缩放程序删除节点？][autoscaler-scaledown]
+有关如何群集自动缩放程序可能无法向下缩放的详细信息，请参阅[哪些类型的 pod 可以阻止群集自动缩放程序中删除节点？][autoscaler-scaledown]
 
-群集自动缩放程序对诸如缩放事件与资源阈值之间的时间间隔等内容使用启动参数。 这些参数由 Azure 平台订阅，当前并未公开以供你调整。 有关群集自动缩放程序使用的参数的详细信息，请参阅[群集自动缩放程序参数是什么？][autoscaler-parameters]。
+群集自动缩放程序对诸如缩放事件与资源阈值之间的时间间隔等内容使用启动参数。 这些参数由 Azure 平台订阅，当前并未公开以供你调整。 群集自动缩放程序使用的参数的详细信息，请参阅[群集自动缩放程序参数是什么？][autoscaler-parameters]。
 
 两个自动缩放程序可以协同工作，通常部署在一个群集中。 结合使用时，水平 Pod 自动缩放程序侧重于运行满足应用程序需求所需的 Pod 数。 群集自动缩放程序侧重于运行支持计划 Pod 所需的节点数。
 
@@ -94,7 +97,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>创建 AKS 群集并启用群集自动缩放程序
 
-如果需要创建 AKS 群集，请使用 [az aks create][az-aks-create] 命令。 指定的 --kubernetes-version  应满足或超过在前面[开始之前](#before-you-begin)部分中概述最低版本号。 若要启用和配置群集自动缩放程序，请使用 --enable-cluster-autoscaler  参数，并指定节点 --min-count  和 --max-count  。
+如果需要创建 AKS 群集，使用[az aks 创建][az-aks-create]命令。 指定的 --kubernetes-version  应满足或超过在前面[开始之前](#before-you-begin)部分中概述最低版本号。 若要启用和配置群集自动缩放程序，请使用 --enable-cluster-autoscaler  参数，并指定节点 --min-count  和 --max-count  。
 
 > [!IMPORTANT]
 > 群集自动缩放程序是 Kubernetes 组件。 虽然 AKS 群集对节点使用虚拟机规模集，但请勿在 Azure 门户中或使用 Azure CLI 手动启用或编辑规模集自动缩放设置。 让 Kubernetes 群集自动缩放程序管理所需的规模设置。 有关详细信息，请参阅[我可以修改 MC_ 资源组中的 AKS 资源吗？](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc_-resource-group)
@@ -120,7 +123,7 @@ az aks create \
 
 ### <a name="enable-the-cluster-autoscaler-on-an-existing-aks-cluster"></a>在现有 AKS 群集上启用群集自动缩放程序
 
-可以在满足前面[开始之前](#before-you-begin)部分中所概述要求的现有 AKS 群集上启用群集自动缩放程序。 使用 [az aks update][az-aks-update] 命令并选择 --enable-cluster-autoscaler  ，然后指定节点 --min-count  和 --max-count  。 下面的示例在使用最少 1  个且最多 3  个节点的现有群集上启用群集自动缩放程序：
+可以在满足前面[开始之前](#before-you-begin)部分中所概述要求的现有 AKS 群集上启用群集自动缩放程序。 使用[更新 az aks][az-aks-update]命令，然后选择 *-自动缩放群集启用程序*，然后指定一个节点 *-最小计数*并 *-最大计数*. 下面的示例在使用最少 1  个且最多 3  个节点的现有群集上启用群集自动缩放程序：
 
 ```azurecli-interactive
 az aks update \
@@ -137,7 +140,7 @@ az aks update \
 
 在创建或更新现有 AKS 群集的上一步中，群集自动缩放程序最小节点计数设置为 1  ，且最大节点计数设置为 3  。 随着应用程序需求发生变化，可能需要调整群集自动缩放程序节点计数。
 
-若要更改节点计数，请使用 [az aks update][az-aks-update] 命令并指定最小值和最大值。 下面的示例将 --min-count  设置为 1  ，并将 --max-count  设置为 5  ：
+若要更改的节点计数，请使用[az aks 更新][az-aks-update]命令并指定最小值和最大值。 下面的示例将 --min-count  设置为 1  ，并将 --max-count  设置为 5  ：
 
 ```azurecli-interactive
 az aks update \
@@ -155,7 +158,7 @@ az aks update \
 
 ## <a name="disable-the-cluster-autoscaler"></a>禁用群集自动缩放程序
 
-如果不再希望使用群集自动缩放程序，则可以使用 [az aks update][az-aks-update] 命令禁用它。 群集自动缩放程序处于禁用状态时，不会删除节点。
+如果不再想要使用群集自动缩放程序，则可以禁用它使用[az aks 更新][az-aks-update]命令。 群集自动缩放程序处于禁用状态时，不会删除节点。
 
 若要删除群集自动缩放程序，请指定 --disable-cluster-autoscaler  参数，如下面的示例所示：
 
@@ -166,11 +169,11 @@ az aks update \
   --disable-cluster-autoscaler
 ```
 
-可以使用 [az aks scale][az-aks-scale] 命令手动缩放群集。 如果使用水平 Pod 自动缩放程序，则该功能会在群集自动缩放程序禁用的情况下继续运行，但 Pod 可能会在节点资源全部已使用时最终无法进行计划。
+你可以手动缩放群集使用[az aks 规模][az-aks-scale]命令。 如果使用水平 Pod 自动缩放程序，则该功能会在群集自动缩放程序禁用的情况下继续运行，但 Pod 可能会在节点资源全部已使用时最终无法进行计划。
 
 ## <a name="next-steps"></a>后续步骤
 
-本文演示了如何自动缩放 AKS 节点数。 还可以使用水平 Pod 自动缩放程序自动调整运行应用程序的 Pod 数。 有关使用水平 Pod 自动缩放程序的步骤，请参阅[在 AKS 中缩放应用程序][aks-scale-apps]。
+本文演示了如何自动缩放 AKS 节点数。 还可以使用水平 Pod 自动缩放程序自动调整运行应用程序的 Pod 数。 有关使用水平 pod 自动缩放程序的步骤，请参阅[缩放应用程序在 AKS 中][aks-scale-apps]。
 
 <!-- LINKS - internal -->
 [aks-upgrade]: upgrade-cluster.md
@@ -185,9 +188,10 @@ az aks update \
 [az-provider-register]: /cli/azure/provider#az-provider-register
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [autoscaler-scaledown]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node
 [autoscaler-parameters]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-the-parameters-to-ca

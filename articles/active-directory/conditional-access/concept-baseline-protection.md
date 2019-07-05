@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39a591a335d022ef7b2b99fdec930ddf0496cd47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 970fdaba1870097e253b51c70e523e399bc88dfc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112586"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440773"
 ---
 # <a name="what-are-baseline-policies"></a>什么是基线策略？
 
@@ -30,18 +30,18 @@ ms.locfileid: "67112586"
 
 有四个可以让组织的基线策略：
 
-* [适用于管理员要求 MFA](howto-baseline-protect-administrators.md)
+* [有关管理员 （预览版） 要求进行 MFA](howto-baseline-protect-administrators.md)
 * [最终用户保护 （预览版）](howto-baseline-protect-end-users.md)
 * [块旧式身份验证 （预览版）](howto-baseline-protect-legacy-auth.md)
 * [服务管理 （预览版） 要求进行 MFA](howto-baseline-protect-azure.md)
 
 这些策略的所有四个会影响 POP、 IMAP 和较旧的 Office 桌面客户端等传统的身份验证流。
 
-### <a name="require-mfa-for-admins"></a>要求管理员进行 MFA
+### <a name="require-mfa-for-admins-preview"></a>有关管理员 （预览版） 要求进行 MFA
 
 由于的功能和管理员帐户的访问权限，应将它们视为特殊谨慎。 改进的保护特权帐户的一种常见方法是使用登录时需要更强的帐户验证形式。 在 Azure Active Directory 中，可以通过要求管理员可以注册并使用 Azure 多重身份验证来获取更强的帐户验证。
 
-[适用于管理员要求使用 MFA](howto-baseline-protect-administrators.md) 要求多重身份验证 (MFA) 的基准策略为以下目录角色，被视为最高特权的 Azure AD 角色：
+[有关管理员 （预览版） 要求使用 MFA](howto-baseline-protect-administrators.md) 要求多重身份验证 (MFA) 的基准策略为以下目录角色，被视为最高特权的 Azure AD 角色：
 
 * 全局管理员
 * SharePoint 管理员
@@ -52,7 +52,7 @@ ms.locfileid: "67112586"
 * 计费管理员
 * 用户管理员
 
-如果你的组织中的脚本或代码中使用这些帐户，请考虑将它们替换为 [托管标识](../managed-identities-azure-resources/overview.md)。 作为临时解决方法，可以从基线策略中排除特定的用户帐户。
+如果你的组织中的脚本或代码中使用这些帐户，请考虑将它们替换为 [托管标识](../managed-identities-azure-resources/overview.md)。
 
 ### <a name="end-user-protection-preview"></a>最终用户保护 （预览版）
 
@@ -96,7 +96,7 @@ ms.locfileid: "67112586"
 
 * [保护标识基础结构的五个步骤](../../security/azure-ad-secure-steps.md)
 * [什么是 Azure Active Directory 中条件性访问？](overview.md)
-* [适用于管理员要求 MFA](howto-baseline-protect-administrators.md)
+* [有关管理员 （预览版） 要求进行 MFA](howto-baseline-protect-administrators.md)
 * [最终用户保护 （预览版）](howto-baseline-protect-end-users.md)
 * [块旧式身份验证 （预览版）](howto-baseline-protect-legacy-auth.md)
 * [服务管理 （预览版） 要求进行 MFA](howto-baseline-protect-azure.md)

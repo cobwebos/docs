@@ -1,6 +1,6 @@
 ---
 title: Azure Application Insights 快照调试程序的疑难解答 |Microsoft Docs
-description: 本文提供了故障排除步骤和信息来帮助开发人员很难启用或使用 Application Insights 快照调试程序。
+description: 本文提供故障排除步骤和信息，帮助开发人员解决在启用或使用 Application Insights 快照调试器时遇到的难题。
 services: application-insights
 documentationcenter: ''
 author: brahmnes
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf19d4f5ce60411413c21fce12f9fe9d2f391bf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25ccf20fc78a9ec00d4dfe23a60e824e96d12945
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783933"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444549"
 ---
 # <a id="troubleshooting"></a> 启用 Application Insights 快照调试程序或查看快照相关的问题进行故障排除
-如果启用 Application Insights 快照调试器应用程序，但未看到异常的快照，可以使用这些说明进行故障排除。 可以有多种原因不生成快照的原因。 可以运行快照运行状况检查来标识可能的常见原因。
+如果为应用程序启用了 Application Insights 快照调试器，但未看到出现异常的快照，则可以使用以下说明进行故障排除。 可能有许多不同的原因导致未生成快照。 可以运行快照运行状况检查以确定一些可能的常见原因。
 
 ## <a name="use-the-snapshot-health-check"></a>使用快照运行状况检查
 几个常见问题会导致不显示“打开调试快照”。 例如，使用过时的快照收集器；达到每日上传限制；或者可能快照只是需要很长时间上传。 使用“快照运行状况检查”解决常见问题。
@@ -39,9 +39,13 @@ ms.locfileid: "60783933"
 
 请确保在发布的应用程序中使用正确的检测密钥。 通常，从 ApplicationInsights.config 文件中读取检测密钥。 请验证该值是否与在门户中看到的 Application Insights 资源的检测密钥相同。
 
+## <a name="preview-versions-of-net-core"></a>预览版本的.NET Core
+如果应用程序使用.NET Core 的预览版本，并且通过已启用 Snapshot Debugger [Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)在门户中，然后快照调试程序可能无法启动。 按照的说明[为其他环境中启用快照调试器](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)首先以包括[Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包与应用程序***此外***到通过启用[Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。
+
+
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>升级到最新版本的 NuGet 包
 
-如果通过启用了 Snapshot Debugger [Application Insights 门户中的窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)，则你的应用程序已在运行最新的 NuGet 包。 如果通过包括启用了 Snapshot Debugger [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包，使用 Visual Studio 的 NuGet 包管理器，以确保你正在使用的最新版本Microsoft.ApplicationInsights.SnapshotCollector。 可以在 https://github.com/Microsoft/ApplicationInsights-Home/issues/167 中找到发行说明
+如果已通过[门户中的 Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用了快照调试器，那么应用程序应该已经在运行最新的 NuGet 包。 如果通过包含 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包启用了快照调试器，请使用 Visual Studio 的 NuGet 包管理器确保使用的是最新版本的 Microsoft.ApplicationInsights.SnapshotCollector。 可以在 https://github.com/Microsoft/ApplicationInsights-Home/issues/167 中找到发行说明
 
 ## <a name="check-the-uploader-logs"></a>检查上传程序日志
 

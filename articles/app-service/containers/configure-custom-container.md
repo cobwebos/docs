@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 9bfd6c34d81e193fe31610f840474f1e4c91170d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02231f86d4ceddd6cde53fd242c2c91158d744a9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430924"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480754"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义 Linux 容器
 
@@ -50,10 +50,10 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 永久性存储时处于禁用状态，然后将写入`/home`目录不会持久保存在应用重启后或跨多个实例。 唯一的例外是`/home/LogFiles`目录，用于存储 Docker 和容器日志。 启用持久存储时，所有写入到`/home`目录会保留，并且可以通过向外扩展应用的所有实例访问。
 
-持久存储是默认情况下*禁用*。 若要启用或禁用它，请设置`WEBSITES_ENABLE_APP_SERVICE_STORAGE`通过运行的应用设置[ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令在 Cloud Shell 中。 例如：
+持久存储是默认情况下*启用*和应用程序设置中未公开的设置。 若要禁用它，请设置`WEBSITES_ENABLE_APP_SERVICE_STORAGE`通过运行的应用设置[ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令在 Cloud Shell 中。 例如：
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
+az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
 ```
 
 > [!NOTE]

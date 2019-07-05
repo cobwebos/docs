@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5e2f7b52ca3cb8a4d472b353e844bdad3aa1b0c1
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 91ec65e17b77ccb3864fce45e30729ff420a48b6
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150447"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542649"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -34,15 +34,17 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 
 ## <a name="azure-files-scale-targets"></a>Azure 文件规模目标
 
-### <a name="premium-scale-targets"></a>高级缩放目标
+有三个类别的要考虑的 Azure 文件的限制： 存储帐户、 共享和文件。
 
-有三个类别的限制要考虑的高级文件共享： 存储帐户、 共享和文件。
+例如：高级文件共享，请使用单个共享可以实现 100,000 IOPS 和单个文件可以扩展最多 5,000 个 IOPS。 因此，如果您有一个共享中的三个文件，就可以从该共享的最大 IOPS 为 15000。
 
-例如：单个共享可以实现 100,000 IOPS 和单个文件可以扩展最多 5,000 个 IOPS。 因此，例如，如果您有一个共享中的三个文件，就可以从该共享的最大 IOPS 是 15000。
+### <a name="standard-storage-account-limits"></a>标准存储帐户限制
+
+请参阅[Azure 存储帐户规模目标](#azure-storage-account-scale-targets)部分，了解这些限制。
 
 ### <a name="premium-filestorage-account-limits"></a>高级文件存储帐户限制
 
-高级文件共享中一个名为特殊的存储帐户预配**文件存储 （预览版）** 。 此帐户具有比使用标准文件共享的存储帐户的略有不同的缩放目标。 有关存储帐户规模目标，请参阅中的表[Azure 存储帐户规模目标](#azure-storage-account-scale-targets)部分。
+[!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
 > 存储帐户限制适用于所有共享。 最多缩放是只可实现，如果每个文件存储帐户只有一个共享的文件存储帐户的最大值。

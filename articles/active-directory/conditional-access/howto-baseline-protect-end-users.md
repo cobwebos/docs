@@ -11,20 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b72be0dbe35cf95eed404c7c1407c53f5f2ecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2644e0e35139ac470b89f6af1b95cf510f60a0a
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112352"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561007"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>基准策略：最终用户保护 （预览版）
 
 我们往往认为管理员帐户都需要使用多重身份验证 (MFA) 保护的唯一帐户。 管理员具有对敏感信息的广泛访问，并且可以对订阅范围的设置进行更改。 但是，不良参与方倾向于目标的最终用户。 后获得的访问权限，这些不良参与方可以请求对代表原始帐户持有者的特权信息的访问或下载整个目录，以执行在整个组织的网络钓鱼攻击。 改善的所有用户保护的一种常见方法是要求更强的帐户验证，如多重身份验证 (MFA) 形式。
 
 若要实现合理的平衡的安全性和可用性，不应提示用户每次登录。 身份验证请求，以反映普通用户的行为，如从同一位置，从同一个设备登录有低遭到破坏的机会。 应该使用 MFA 质询提示仅登录被认为是有风险和显示恶意参与者的特征。
-
-![要求对用户进行 MFA](./media/howto-baseline-protect-end-users/baseline-policy-end-user-protection.png)
 
 最终用户保护是基于风险的 MFA[基准策略](concept-baseline-protection.md)，它保护的目录，包括所有管理员角色中的所有用户。 如果启用此策略要求所有用户注册 MFA 使用身份验证器应用。 14 天，此后它们将无法登录，直到在注册 MFA，用户可以忽略 MFA 注册提示。 一旦注册 MFA，用户将会提示进行 MFA 仅在有风险的登录尝试。 重置其密码和已关闭风险事件之前，将阻止用户帐户泄露。
 
@@ -60,17 +58,6 @@ ms.locfileid: "67112352"
 > [!WARNING]
 > 启用此策略之前，请确保你的用户不使用传统的身份验证协议。 请参阅文章[如何：阻止到 Azure AD 条件性访问与传统的身份验证](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use)有关详细信息。
 
-### <a name="user-exclusions"></a>用户排除项
-
-此基线策略提供选项来排除用户。 在启用之前该策略为你的租户，我们建议排除以下帐户：
-
-* **紧急访问**或**break glass**以防止租户范围内帐户锁定的帐户。 在所有管理员被都锁定在租户外部不太可能方案中，可以使用紧急访问管理帐户能够登录到租户采取步骤来恢复访问权限。
-   * 可在本文中，找到更多信息[在 Azure AD 中管理紧急访问帐户](../users-groups-roles/directory-emergency-access.md)。
-* **服务帐户**并**服务原则**，例如 Azure AD Connect 同步帐户。 服务帐户是不受限于任何特定用户的非交互式帐户。 它们通常由后端服务，并且允许以编程方式访问应用程序。 应排除服务帐户，因为不能以编程方式完成 MFA。
-   * 如果你的组织中的脚本或代码中使用这些帐户，请考虑将它们替换为 [托管标识](../managed-identities-azure-resources/overview.md)。 作为临时的解决方法，可以从基准策略中排除这些特定的帐户。
-* 不具有或不能使用智能手机的用户。
-   * 此策略要求用户使用 Microsoft Authenticator 应用的 mfa 注册。
-
 ## <a name="enable-the-baseline-policy"></a>启用基线策略
 
 策略**基准策略：最终用户保护 （预览版）** 预配置，此时将显示在顶部导航到在 Azure 门户中的条件性访问边栏选项卡时。
@@ -81,7 +68,6 @@ ms.locfileid: "67112352"
 1. 浏览到**Azure Active Directory** > **条件性访问**。
 1. 在策略列表中，选择**基准策略：最终用户保护 （预览版）** 。
 1. 设置**启用策略**到**立即使用策略**。
-1. 通过单击添加任何用户排除项**用户** > **选择排除的用户**，然后选择需要排除的用户。 单击**选择**然后**完成**。
 1. 单击 **保存**。
 
 ## <a name="next-steps"></a>后续步骤

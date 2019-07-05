@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 21bf96866c14615009a17279ff2fdd04bf4116ad
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60369118"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490266"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>在 Azure 门户中查看 Azure 保留项
 
@@ -32,7 +32,7 @@ ms.locfileid: "60369118"
 若要以所有者或读者身份查看预留，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“预留”中进行搜索。 
+2. 搜索**预订**。
     ![显示 Azure 门户的搜索的屏幕截图](./media/billing-view-reservation/portal-reservation-search.png)  
 3. 此列表显示所有保留了所有者或读取器角色。 每个保留项显示的最后一个已知的使用率百分比。  
     ![显示的预订列表示例](./media/billing-view-reservation/view-reservations.png)
@@ -49,7 +49,7 @@ ms.locfileid: "60369118"
 若要在 Azure 门户中查看预留交易，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“成本管理 + 计费”  中进行搜索。
+1. 搜索**成本管理 + 计费**。
 
     ![显示了 Azure 门户搜索的屏幕截图](./media/billing-view-reservation/portal-cm-billing-search.png)
 

@@ -2,7 +2,7 @@
 title: 为 Azure 移动应用启用脱机同步 (Xamarin.Forms) | Microsoft Docs
 description: 了解如何在 Xamarin.Forms 应用程序中使用应用服务移动应用缓存和同步脱机数据
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: yochayk
 editor: ''
 services: app-service\mobile
@@ -12,24 +12,28 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/04/2016
-ms.author: crdun
-ms.openlocfilehash: 506c59ca24aeafbac59b1508bb78142051302765
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 53f339d5450965c992f6528ff294e0d37ec2f7f6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127873"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446282"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>为 Xamarin.Forms 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-offline-data)今天。
+>
+
 ## <a name="overview"></a>概述
 本教程介绍适用于 Xamarin.Forms 的 Azure 移动应用的脱机同步功能。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。 更改存储在本地数据库中。 设备重新联机后，这些更改会与远程服务同步。
 
-本教程基于在完成 [创建 Xamarin iOS 应用] 教程时创建的移动应用的 Xamarin.Forms 快速入门解决方案。 Xamarin.Forms 的快速入门解决方案包含用于支持脱机同步的代码，只需启用即可使用。 在本教程中，需更新快速入门解决方案，以打开 Azure 移动应用的脱机功能。 还将重点介绍该应用中的脱机特定代码。 如果不使用下载的快速入门解决方案，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅 [Work with the .NET backend server SDK for Azure Mobile Apps][1]（使用适用于 Azure 移动应用的 .NET 后端服务器 SDK）。
+本教程基于在完成 [创建 Xamarin iOS 应用] 教程时创建的移动应用的 Xamarin.Forms 快速入门解决方案。 Xamarin.Forms 的快速入门解决方案包含用于支持脱机同步的代码，只需启用即可使用。 在本教程中，需更新快速入门解决方案，以打开 Azure 移动应用的脱机功能。 还将重点介绍该应用中的脱机特定代码。 如果不使用下载的快速入门解决方案，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][1]。
 
-若要了解有关脱机同步功能的详细信息，请参阅[Azure 移动应用中的脱机数据同步]主题[2]。
+若要了解有关脱机同步功能的详细信息，请参阅主题 [Azure 移动应用中的脱机数据同步][2]。
 
 ## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>启用快速入门解决方案中的脱机同步功能
 脱机同步代码使用 C# 预处理器指令，包含在项目中。 定义 **OFFLINE\_SYNC\_ENABLED** 符号时，这些代码路径包含在生成中。 对于 Windows 应用，还必须安装 SQLite 平台。
@@ -40,9 +44,9 @@ ms.locfileid: "62127873"
         #define OFFLINE_SYNC_ENABLED
 3. （可选）若要支持 Windows 设备，请安装以下 SQLite 运行时包之一：
 
-   * **Windows 8.1 运行时：** 安装 [SQLite for Windows 8.1][3]。
-   * **Windows Phone 8.1：** 安装 [SQLite for Windows Phone 8.1][4]。
-   * **通用 Windows 平台**安装[适用于通用 Windows 平台的 SQLite][5]。
+   * **Windows 8.1 运行时：** 安装[适用于 Windows 8.1 的 SQLite][3]。
+   * **Windows Phone 8.1：** 安装[适用于 Windows Phone 8.1 的 SQLite][4]。
+   * **通用 Windows 平台**安装[适用于通用 Windows 世界的 SQLite][5]。
 
      尽管快速入门中不包含通用 Windows 项目，但通用 Windows 平台支持 Xamarin Forms。
 4. （可选）在每个 Windows 应用项目中，右键单击“引用”   > “添加引用...”  ，展开 **Windows** 文件夹 >“扩展”  。
@@ -118,7 +122,7 @@ ms.locfileid: "62127873"
 
 对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作会自动触发在前面执行的上下文推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **PushAsync** 调用。
 
-在所提供的代码中，查询远程 TodoItem 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 **PushAsync** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分[2]  。
+在所提供的代码中，查询远程 TodoItem 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 **PushAsync** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步][2]中的增量同步  部分。
 
 ## <a name="run-the-client-app"></a>运行客户端应用
 现已启用脱机同步，可在每个平台上至少运行一次客户端应用程序，以填充本地存储数据库。 然后模拟脱机情况，并在应用处于脱机状态时修改本地存储中的数据。
@@ -146,13 +150,13 @@ ms.locfileid: "62127873"
 
 1. 重新打开 Constants.cs。 更正 `applicationURL`，使其指向正确的 URL。
 2. 重新生成并运行客户端应用。 该应用在启动后将尝试与移动应用后端进行同步。 验证调试控制台中是否未记录任何异常。
-3. （可选）使用 SQL Server 对象资源管理器或 REST 工具（如 Fiddler 或 [Postman]）查看更新后的数据[6]。 请注意，数据已在后端数据库和本地存储之间进行同步。
+3. （可选）查看更新后的数据使用 SQL Server 对象资源管理器或 Fiddler 之类的 REST 工具或[Postman][6]。 请注意，数据已在后端数据库和本地存储之间进行同步。
 
     请注意，数据已在数据库和本地存储之间进行同步，并包含在应用断开连接时添加的项目。
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure 移动应用中的脱机数据同步][2]
-* [Azure 移动应用 .NET SDK 操作方法][8]
+* [Azure 移动应用.NET SDK 操作方法][8]
 
 <!-- URLs. -->
 [1]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

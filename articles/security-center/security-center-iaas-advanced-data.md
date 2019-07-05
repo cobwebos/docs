@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: monhaber
-ms.openlocfilehash: 76e691df0a026802682b57ff78496f6b66d7ff79
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: ed94b92a34e2989c9f2226c344ac4d34a279eeac
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154829"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551839"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>SQL 服务器在 Azure 虚拟机 （公共预览版） 的高级的数据安全性
 为 SQL Server Azure 虚拟机上的高级的数据安全是高级 SQL 安全功能的统一的包。 它目前 （处于公共预览状态） 包括用于呈现和缓解潜在的数据库漏洞和检测异常活动，可能指示威胁到你的数据库的功能。 
@@ -95,7 +95,7 @@ ms.locfileid: "67154829"
 
 你可以设置生成 ASC 警报时接收电子邮件通知的收件人列表。 电子邮件包含指向所有相关的详细信息在 Azure 安全中心警报的直接链接。 
 
-1. 转到**安全中心** > **安全策略**和相关订阅单击的行中**编辑设置 >** 。
+1. 转到**安全中心** > **定价和设置**，然后单击相关的订阅
 
     ![订阅设置](./media/security-center-advanced-iaas-data/subscription-settings.png)
 

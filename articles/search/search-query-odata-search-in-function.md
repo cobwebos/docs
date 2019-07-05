@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f72a59aac448796cf15220e15a3c8a4f12803bb5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a61291e547021077341a5f1b3db7422afa5b9440
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079725"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449986"
 ---
 # <a name="odata-searchin-function-in-azure-search"></a>OData `search.in` Azure 搜索中的函数
 
@@ -40,7 +40,7 @@ ms.locfileid: "67079725"
 > 除了更短且更易于使用的读取`search.in`还提供了[性能优势](#bkmk_performance)，并避免某些[大小限制的筛选器](search-query-odata-filter.md#bkmk_limits)时有数百或数千台值若要包括在筛选器中。 出于此原因，我们强烈建议使用`search.in`而不是更复杂析取相等表达式。
 
 > [!NOTE]
-> 最近引入的 OData 标准的版本 4.01 [ `in`运算符](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)，其中包含类似的行为`search.in`Azure 搜索中的函数。 但是，Azure 搜索不支持此运算符，因此必须使用`search.in`函数。
+> 最近引入的 OData 标准的版本 4.01 [ `in`运算符](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)，其中包含类似的行为`search.in`Azure 搜索中的函数。 但是，Azure 搜索不支持此运算符，因此必须使用`search.in`函数。
 
 ## <a name="syntax"></a>语法
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b2c153646021aeb8ee0dbb787cfce41af19568d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60201480"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443676"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 
@@ -138,6 +138,7 @@ ms.locfileid: "60201480"
 10. 片刻之后，将会显示一条通知来确认**部署成功**。
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>查看 Azure 流分析 TollApp 资源
+
 1. 登录到 Azure 门户
 
 2. 找到在上一部分命名的资源组。
@@ -171,7 +172,7 @@ ms.locfileid: "60201480"
    - **Registration** 输入是一个 Azure Blob 存储连接，指向按需用于查找的静态 registration.json 文件。 此参考数据输入在稍后的查询语法变体中使用。
 
 4. 检查 TollApp 示例作业的输出。
-   - **Cosmos DB** 输出是接收输出接收器事件的 Cosmos 数据库集合。 请注意，此输出在流式处理查询的 INTO 子句中使用。
+   - **Cosmos DB**输出是接收输出接收器事件的 Cosmos 数据库容器。 请注意，此输出在流式处理查询的 INTO 子句中使用。
 
 ## <a name="start-the-tollapp-streaming-job"></a>启动 TollApp 流式处理作业
 遵循以下步骤启动流式处理作业：

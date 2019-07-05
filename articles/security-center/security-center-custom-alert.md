@@ -14,27 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: ab7165c3315e3a53f90900be8eaf1b9c614a2b07
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 984bd4d5db210679884655721be0cbcdac8c1705
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341126"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485284"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure 安全中心的自定义警报规则（预览版）
 本文档介绍了如何在 Azure 安全中心创建自定义警报规则。
 
 > [!NOTE]
-> 自定义警报将在 2019 年 6 月 30 日停用。
+> 从安全中心已停用自定义警报。 
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>停用 Azure 安全中心内的自定义警报规则
 
-自定义警报体验将在 2019 年 6 月 30 日停用，因为它所基于的底层基础结构已停用。 在弃用此体验之前的时段内，用户可以编辑现有的自定义警报规则，但无法添加新的自定义警报规则。 不推荐使用，定义的所有自定义警报将不会生效且不会生成基于这些自定义警报规则的安全警报。
+自定义警报体验已停用在 2019 年 6 月 30 日，因为它依赖于底层基础结构的停用。 在 retriement 之前定义的所有自定义警报不能发挥作用，未生成基于这些自定义警报规则的安全警报。 你仍然可以在安全中心查看自定义警报规则的查询，以便重新创建它们中下面所述的替代方法中：
+
 建议用户：
 - 启用[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) ，并使用其内置[分析](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)功能，以重新创建其预警规则
 - 使用 Azure Monitor 日志警报重新创建警报
                                      
-若要保留现有的警报并将其迁移到 Azure Sentinel，请[启动 Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview)。 第一步，选择自定义警报的存储位置工作区，然后选择分析菜单项设置自定义警报规则。 请访问[文档](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)有关其他信息。
+若要保留的现有警报和 Azure Sentinel 中重新创建它们，请[启动 Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview)。 第一步，选择自定义警报的存储位置工作区，然后选择分析菜单项设置自定义警报规则。 请访问[文档](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)有关其他信息。
 
 > [!NOTE]
 > 使用自定义警报[搜索](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries)或[Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) Azure Sentinel 中不支持语句的查询。 在执行迁移之前，请编辑这些警报。

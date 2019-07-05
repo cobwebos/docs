@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: b0a5c9fc5cac441a6680f9f72e3223ace95399f3
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 41fa5a859e738c2bb70e4885aa856f247e922492
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296547"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448996"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB 中的诊断日志记录 
 
@@ -251,7 +251,7 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 ```
 
 ### <a id="access"></a>访问日志
-**DataPlaneRequests** 类别的 Azure Cosmos DB 日志存储在所提供的存储帐户的 **insights-logs-data-plane-requests** 容器中。 
+Azure Cosmos DB 日志**DataPlaneRequests**类别存储在**insights 日志 dataplanerequests**你提供的存储帐户中的容器。 
 
 首先，请为容器名称创建一个变量。 该变量将在整个演练中使用。
 

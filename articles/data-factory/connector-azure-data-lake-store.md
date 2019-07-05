@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: aedfa381f6520a5295467821097b38dd28dcd60c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: df88c3e2e07165182c917eaf30a5f37451fbd073
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057912"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509584"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>将数据复制到或从 Azure 数据湖存储 Gen1 使用 Azure 数据工厂
 > [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本："]
@@ -81,7 +81,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 >若要列出从根目录开始的文件夹，必须设置要**在根级别使用“执行”权限**授予的服务主体权限。 对于以下情况需要这样做：
 >- **复制数据工具**创作复制管道。
 >- 在创作期间使用**数据工厂 UI** 测试连接和浏览文件夹。
->如果你担心授予根级别的权限，则跳过连接测试，在创作过程中手动输入的路径。 复制活动的工作，只要服务主体授予与要复制文件的正确权限。
+>如果你担心在创作时，在根级别权限授予跳过测试连接，以及指定路径的输入 paraent 路径使用授予的权限，然后选择要从浏览。 只要通过复制文件的适当权限授予服务主体，将复制活动的工作原理。
 
 支持以下属性：
 
@@ -135,7 +135,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 >若要列出从根目录开始的文件夹，必须设置**在根级别使用“执行”权限**授予的托管标识权限。 对于以下情况需要这样做：
 >- **复制数据工具**创作复制管道。
 >- 在创作期间使用**数据工厂 UI** 测试连接和浏览文件夹。
->如果你担心授予根级别的权限，则跳过连接测试，在创作过程中手动输入的路径。 复制活动的工作，只要具有文件要复制的适当权限授予托管的标识。
+>如果你担心在创作时，在根级别权限授予跳过测试连接，并授予权限的父路径然后选择要浏览从指定路径的输入。 只要通过复制文件的适当权限授予服务主体，将复制活动的工作原理。
 
 在 Azure 数据工厂中，除了链接服务中的常规 Data Lake Store 信息以外，不需要指定任何属性。
 

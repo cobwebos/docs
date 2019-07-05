@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2019
-ms.openlocfilehash: 0086327661df637dc0ae60208ed9424b4610ef0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28eb7c6a11f71fa87835bcfe78e635753965bac3
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969487"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561230"
 ---
 # <a name="limits-in-azure-cosmos-db"></a>Azure Cosmos DB 中的限制
 
@@ -37,7 +37,6 @@ ms.locfileid: "65969487"
 
 Cosmos 容器（或共享吞吐量数据库）的吞吐量必须至少为 400 RU。 随着容器的不断扩大，支持的最小吞吐量还取决于以下因素：
 
-* 容器中消耗的最大存储量以 40 RU 为增量，按消耗的每 GB 存储计量。 例如，如果某个容器包含 100 GB 数据，则吞吐量必须至少为 4000 RU
 * 曾经为容器预配的最大吞吐量。 服务支持将容器吞吐量降低至最大预配量的 10%。 例如，如果吞吐量已提高至 10000 RU，则最低可能的预配吞吐量将是 1000 RU
 * 曾经在共享吞吐量数据库中创建的容器总数，按每个容器 100 RU 计量。 例如，如果你在共享吞吐量数据库中创建了 5 个容器，则吞吐量必须至少为 500 RU
 
@@ -48,7 +47,6 @@ Cosmos 容器（或共享吞吐量数据库）的吞吐量必须至少为 400 RU
 | 每个容器的最小 RU 数（[专用吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 400 |
 | 每个数据库的最小 RU 数（[共享吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 400 |
 | 共享吞吐量数据库中每个容器的最小 RU 数 | 100 |
-| 消耗的每 GB 存储的最小 RU 数 | 40 |
 
 Cosmos DB 支持通过 SDK 或门户弹性缩放每个容器或数据库的吞吐量 (RU)。 可以同步方式或立即缩放每个容器，缩放范围为最小值和最大值之间的 10 到 100 倍。 如果请求的吞吐量值超出范围，将以异步方式执行缩放。 完成异步缩放所需的时间为数分钟到数小时不等，具体取决于请求的吞吐量和容器中的数据存储大小。  
 

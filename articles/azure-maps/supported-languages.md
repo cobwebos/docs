@@ -3,17 +3,17 @@ title: Azure Maps 中的本地化支持 |Microsoft Docs
 description: 了解 Azure Maps 中的服务支持的语言
 author: walsehgal
 ms.author: v-musehg
-ms.date: 04/25/2019
+ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
-ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: philmea
+ms.openlocfilehash: a9446301cc4bb46c989223ad020c7a8e8b353ad3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686783"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446190"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps 中的本地化支持
 
@@ -25,7 +25,7 @@ Azure Maps 支持各种语言和国家/地区所基于的视图。 本文提供�
 Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供了每项服务支持的语言代码。  
   
 
-| ID         | Name                   |  地图 | 搜索 | 路由 | 交通事故 | JS 地图控件 | 时区 |
+| id         | Name                   |  地图 | 搜索 | 路由 | 交通事故 | JS 地图控件 | 时区 |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
 | af-ZA      | 南非荷兰语              |       |    ✓   |    ✓    |                   |                |     ✓     |
 | ar-SA      | 阿拉伯语                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -85,7 +85,51 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 
 ## <a name="azure-maps-supported-views"></a>Azure Maps 支持视图
 
-Azure （也称为"用户区域参数"） 的映射视图参数是指定的地缘政治集该国家/地区的正确映射争议边框将显示两字母 ISO 3166 国家/地区代码并在地图上显示标签。  默认情况下查看参数设置为 **"统一"** 。  不在视图列表的国家/地区/区域将默认为"Unified"视图。 它由你负责确定你的用户的位置，然后设置该位置正确的视图参数。 Azure Maps 中的视图参数必须采用符合适用的法律，包括那些其中地图、 图像和其他数据和第三方内容，您有权访问通过 Azure Maps 的国家/地区的相关映射将可用。
+> [!Note]
+> 我们将在 2019 年 8 月 1 日在以下国家/地区中发布 Azure Maps:
+>  * 阿根廷
+>  * 印度
+>  * 摩洛哥
+>  * 巴基斯坦
+>
+> 2019 年 8 月 1 日之后,**视图**参数的设置将定义新的区域/国家/地区上面列出的返回的映射内容。 我们鼓励您要确保你已设置所需的视图参数适用于 REST Api 和使用你的服务的 Sdk。
+>  
+>
+>  **Rest Api:**
+>  
+>  请确保已设置为所需的视图参数。 View 参数指定通过 Azure Maps 服务返回的地缘政治有争议的内容的集。 
+>
+>  受影响 Azure 地图 REST 服务：
+>    
+>    * 获取地图图块
+>    * 获取地图图像 
+>    * 获取模糊搜索
+>    * 获取搜索 POI
+>    * 获取搜索 POI 类别
+>    * 获取搜索附近
+>    * 获取搜索地址
+>    * 获取结构化搜索地址
+>    * 获取搜索地址反向
+>    * 获取搜索地址反向十字路口
+>    * 在几何图形 post 搜索
+>    * 开机自检搜索地址批处理预览版
+>    * 开机自检搜索地址反向批处理预览版
+>    * 沿路由的文章搜索
+>    * 开机自检搜索模糊批处理预览版
+>
+>    
+>  **Sdk:**
+>
+>  确保已设置 View 参数为必需的并且具有 Web SDK 和 Android SDK 的最新版本。 受影响的 Sdk:
+>
+>    * Azure Maps Web SDK
+>    * Azure Maps Android SDK
+
+
+Azure Maps**视图**参数 （也称为"用户区域参数"） 是为该国家/地区指定的地缘政治集争议内容将显示正确映射的 ISO 3166 国家/地区代码是一个两个字母返回通过 Azure Maps 服务，包括边框和地图上显示的标签。 
+
+默认情况下查看参数设置为**统一**，即使在请求中未定义它。 它由你负责确定你的用户的位置，然后设置该位置正确的视图参数。 或者，您可以选择设置视图 = Auto，这将返回基于请求的 IP 地址的映射数据。  Azure Maps 中的视图参数必须采用符合适用的法律，包括那些其中地图、 图像和其他数据和第三方内容，您有权访问通过 Azure Maps 的国家/地区的相关映射将可用。
+
 
 下表提供了支持的视图。
 
@@ -107,4 +151,5 @@ Azure （也称为"用户区域参数"） 的映射视图参数是指定的地�
 | SA           | 沙特阿拉伯 （阿拉伯语视图）            |   ✓   |        |     ✓          |
 | SY           | 叙利亚 （阿拉伯语视图）                   |   ✓   |        |     ✓          |
 | YE           | 也门 （阿拉伯语视图）                   |   ✓   |        |     ✓          |
+| 自动         | 返回基于请求的 IP 地址的映射数据。|   ✓   |    ✓   |     ✓          |
 | 统一      | （其他） 的统一的视图                  |   ✓   |   ✓     |     ✓          |

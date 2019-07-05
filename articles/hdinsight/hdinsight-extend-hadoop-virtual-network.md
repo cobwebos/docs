@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 0dbcc99850d0a8b3b7306fac2bd8f89e6c941e4c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 61a208f3e84125acc2a3cb22d3abccf16587e581
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163665"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543677"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -67,9 +67,7 @@ ms.locfileid: "67163665"
 
     加入后，资源管理器网络中安装的 HDInsight 就可以与经典网络中的资源进行交互了。
 
-2. 你是否使用强制隧道？ 强制隧道是一种子网设置，将出站 Internet 流量强制定向到设备以进行检查和记录。 HDInsight 不支持强制隧道。 请在将 HDInsight 部署到现有子网之前删除强制隧道，或者为 HDInsight 创建没有强制隧道的新子网。
-
-3. 是否使用网络安全组、用户定义路由或虚拟网络设备来限制流量进出虚拟网络？
+2. 是否使用网络安全组、用户定义路由或虚拟网络设备来限制流量进出虚拟网络？
 
     作为托管服务，HDInsight 需要无限制访问 Azure 数据中心中的若干个 IP 地址。 若要允许与这些 IP 地址进行通信，请更新任何现有网络安全组或用户定义的路由。
     
@@ -108,7 +106,7 @@ ms.locfileid: "67163665"
 
         有关详细信息，请参阅[排查路由问题](../virtual-network/diagnose-network-routing-problem.md)文档。
 
-4. 创建一个 HDInsight 群集，并在配置过程中选择 Azure 虚拟网络。 使用以下文档中的步骤了解群集创建过程：
+3. 创建一个 HDInsight 群集，并在配置过程中选择 Azure 虚拟网络。 使用以下文档中的步骤了解群集创建过程：
 
     * [Create HDInsight using the Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md)（使用 Azure 门户创建 HDInsight）
     * [Create HDInsight using Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)（使用 Azure PowerShell 创建 HDInsight）
@@ -247,14 +245,14 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 ## <a id="hdinsight-ip"></a>需要的 IP 地址
 
-> [!IMPORTANT]  
-> Azure 运行状况和管理服务必须能够与 HDInsight 通信。 如果使用网络安全组或用户定义路由，则允许来自这些服务的 IP 地址的流量访问 HDInsight。
->
+如果使用网络安全组或用户定义的路由来控制流量，必须允许来自 Azure 的运行状况和管理服务的 IP 地址的流量，以便它们可以与你的 HDInsight 群集进行通信。 IP 地址的一些区域而异，而另一些它们适用于所有 Azure 区域。 您可能还需要允许来自 Azure DNS 服务的流量，如果不使用自定义 DNS。 还必须允许在子网内的 VM 之间传输流量。 使用以下步骤来查找必须允许的 IP 地址：
+
+> [!Note]  
 > 如果不使用网络安全组或用户定义的路由来控制流量，则可以忽略本部分。
 
-如果使用网络安全组，则必须允许来自 Azure 运行状况和管理服务的流量在端口 443 上到达 HDInsight 群集。 还必须允许在子网内的 VM 之间传输流量。 使用以下步骤来查找必须允许的 IP 地址：
+1. 如果使用 Azure 提供的 DNS 服务，允许从访问__168.63.129.16__端口 53 上。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。 如果使用自定义 DNS，请跳过此步骤。
 
-1. 必须始终允许来自以下 IP 地址的流量：
+2. 允许来自 Azure 的运行状况和管理服务，可应用于所有 Azure 区域的以下 IP 地址的流量：
 
     | 源 IP 地址 | 目标  | Direction |
     | ---- | ----- | ----- |
@@ -263,12 +261,12 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
     | 168.61.48.131 | \*:443 | 入站 |
     | 138.91.141.162 | \*:443 | 入站 |
 
-2. 如果 HDInsight 群集位于以下区域之一，则必须允许针对该区域列出的 IP 地址发出的流量：
+3. 允许来自列出你的资源的位置的特定区域中的 Azure 运行状况和管理服务的 IP 地址的流量：
 
     > [!IMPORTANT]  
     > 如果未列出所用的 Azure 区域，则仅使用步骤 1 中所列的四个 IP 地址。
 
-    | 国家/地区 | 区域 | 允许的源 IP 地址 | 允许的目标 | Direction |
+    | Country | 区域 | 允许的源 IP 地址 | 允许的目标 | Direction |
     | ---- | ---- | ---- | ---- | ----- |
     | 亚洲 | 东亚 | 23.102.235.122</br>52.175.38.134 | \*:443 | 入站 |
     | &nbsp; | 东南亚 | 13.76.245.160</br>13.76.136.249 | \*:443 | 入站 |
@@ -296,15 +294,13 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
     | 英国 | 英国西部 | 51.141.13.110</br>51.141.7.20 | \*:443 | 入站 |
     | &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | \*:443 | 入站 |
     | 美国 | 美国中部 | 13.89.171.122</br>13.89.171.124 | \*:443 | 入站 |
-    | &nbsp; | 美国东部 | 13.82.225.233</br>40.71.175.99 | \*:443 | 入站 |
+    | &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | 入站 |
     | &nbsp; | 美国中北部 | 157.56.8.38</br>157.55.213.99 | \*:443 | 入站 |
     | &nbsp; | 美国中西部 | 52.161.23.15</br>52.161.10.167 | \*:443 | 入站 |
     | &nbsp; | 美国西部 | 13.64.254.98</br>23.101.196.19 | \*:443 | 入站 |
     | &nbsp; | 美国西部 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | 入站 |
 
     若要获取用于 Azure 政府版的 IP 地址的信息，请参阅 [Azure 政府智能 + 分析](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)文档。
-
-3. 还必须允许从 168.63.129.16  访问。 此地址是 Azure 的递归解析程序。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。
 
 有关详细信息，请参阅[控制网络流量](#networktraffic)一节。
 
@@ -573,7 +569,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     
     * 将值 `192.168.0.1` 替换为本地 DNS 服务器的 IP 地址。 此条目可将所有其他 DNS 请求路由到本地 DNS 服务器。
 
-3. 若要使用配置，请重新启动 Bind。 例如，`sudo service bind9 restart`。
+3. 若要使用配置，请重新启动 Bind。 例如，`sudo service bind9 restart` 。
 
 4. 将一个条件转发器添加到本地 DNS 服务器。 配置条件转发器，以便将步骤 1 中 DNS 后缀的请求发送到自定义 DNS 服务器。
 
