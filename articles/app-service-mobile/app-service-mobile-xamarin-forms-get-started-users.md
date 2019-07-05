@@ -3,7 +3,7 @@ title: Xamarin.Forms 应用中的移动应用身份验证入门 | Microsoft Docs
 description: 了解如何使用移动应用通过各种标识提供者（包括 AAD、Google、Facebook、Twitter 和 Microsoft）对 Xamarin Forms 应用的用户进行身份验证。
 services: app-service\mobile
 documentationcenter: xamarin
-author: panarasi
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
@@ -12,23 +12,27 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: panarasi
-ms.openlocfilehash: 2945cefc18a378b31700104049f1a14a1f320136
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66019791"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446303"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>向 Xamarin Forms 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users)今天。
+>
 
 ## <a name="overview"></a>概述
 本主题演示如何从客户端应用程序对应用服务移动应用的用户进行身份验证。 在本教程中，使用应用服务支持的标识提供者向 Xamarin Forms 快速入门项目添加身份验证。 移动应用成功进行身份验证和授权后，会显示用户 ID 值，该用户能够访问受限制的表数据。
 
 ## <a name="prerequisites"></a>必备组件
-为了使本教程达到最佳效果，建议用户先完成[创建 Xamarin.Forms 应用][1]教程。 完成此教程后，用户会获得一个 Xamarin Forms 项目，它是一个多平台 TodoList 应用。
+对于本教程达到最佳效果，我们建议你先完成[创建 Xamarin Forms 应用][1]教程。 完成此教程后，用户会获得一个 Xamarin Forms 项目，它是一个多平台 TodoList 应用。
 
 如果不使用下载的快速入门服务器项目，必须将身份验证扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][2]。
 
@@ -39,7 +43,7 @@ ms.locfileid: "66019791"
 
 安全身份验证要求为应用定义新的 URL 方案。 此方案允许在完成身份验证过程后，身份验证系统重定向到应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
-1. 在 [Azure 门户][8]中，选择应用服务。
+1. 在 [Azure 门户][8]中，选择“应用服务”。
 
 2. 单击“身份验证/授权”  菜单选项。
 
@@ -53,7 +57,8 @@ ms.locfileid: "66019791"
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>向可移植类库添加身份验证
-移动应用使用 [MobileServiceClient][4] 的 [LoginAsync][3] 扩展方法通过应用服务身份验证登录用户。 此示例使用服务器托管的身份验证流，在应用中显示提供程序的登录界面。 有关详细信息，请参阅[服务器托管的身份验证][5]。 若要在生产应用中提供更好的用户体验，应考虑改用[客户端托管的身份验证][6]。
+移动应用使用[LoginAsync][3] extension method on the [MobileServiceClient][4] to sign in a user with App Service authentication. This sample
+uses a server-managed authentication flow that displays the provider's sign-in interface in the app. For more information, see [Server-managed authentication][5]。 若要在生产应用中提供更好的用户体验，应考虑改用[客户端托管的身份验证][6]。
 
 若要使用 Xamarin Forms 项目进行身份验证，请在可移植类库中为应用定义 **IAuthenticate** 接口。 然后将“登录”按钮添加到可移植类库中定义的用户界面，单击该按钮可开始身份验证。  身份验证成功后，将从移动应用后端加载数据。
 

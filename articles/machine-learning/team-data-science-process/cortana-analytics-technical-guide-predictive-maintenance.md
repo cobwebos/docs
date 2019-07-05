@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: feccaea0451ae36d841aae95ed0baf54f90c2700
+ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715449"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568264"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>在航天工业中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
@@ -88,7 +88,7 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 
 本文档不会介绍如何引入数据，但可以使用事件中心 API，轻松将事件或数据发送到 Azure 事件中心。
 
-### <a name="azure-stream-analytics"></a>Azure 流分析
+### <a name="azure-stream-analytics-1"></a>Azure Stream Analytics
 可以使用 Azure 流分析服务从数据流读取数据并将数据输出到任意数量的源，从而提供近实时分析。
 
 对于航天工业预测性维护的解决方案模板，Azure 流分析查询包含四个子查询，每个查询均从 Azure 事件中心服务使用事件，并且输出到四个不同的位置。 这些输出包括三个 Power BI 数据集和一个 Azure 存储位置。

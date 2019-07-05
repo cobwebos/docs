@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 09a2b616e2bba93be86241c64d37daec7d6dea3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ce3d86d37940f66065debce30b348371b7aa6af
+ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029755"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568246"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>异常和错误代码，这些算法和模块参考
 
@@ -251,15 +251,16 @@ ms.locfileid: "65029755"
 |----|----|----|
 |任何分类器|[训练模型](train-model.md) |[评分模型](score-model.md)|
 |任何回归模型|[训练模型](train-model.md) |[评分模型](score-model.md)|
-<!--| 聚类分析模型| [训练聚类分析模型](train-clustering-model.md)或[扫描聚类分析](sweep-clustering.md)| [将数据分配到群集](assign-data-to-clusters.md)|
-| 异常情况检测-单类 SVM | [训练异常检测模型](train-anomaly-detection-model.md) |[评分模型](score-model.md)|
-| -PCA 的异常情况检测 |[训练模型](train-model.md) |[评分模型](score-model.md) </br> 需要执行一些其他步骤来评估模型。 |
-| 异常情况检测-时间序列|  [Time Series Anomaly Detection](time-series-anomaly-detection.md)（时序异常情况检测） |模型训练数据，并生成分数。 该模块不会创建一个经过训练的学习器中，需要其他评分。 |
-| 建议的模型| [训练 Matchbox 推荐器](train-matchbox-recommender.md) | [评分 Matchbox 推荐器](score-matchbox-recommender.md) |
-| 图像分类 | [预先训练的级联图像分类](pretrained-cascade-image-classification.md) | [评分模型](score-model.md) |
-|Vowpal Wabbit 模型| [训练 Vowpal Wabbit 版本 7 4 模型](train-vowpal-wabbit-version-7-4-model.md) | [7-4 模型评分 Vowpal Wabbit 版本](score-vowpal-wabbit-version-7-4-model.md) |   
-|Vowpal Wabbit 模型| [训练 Vowpal Wabbit 版本 7 至 10 模型](train-vowpal-wabbit-version-7-10-model.md) | [7 到 10 模型评分 Vowpal Wabbit 版本](score-vowpal-wabbit-version-7-10-model.md) |
-|Vowpal Wabbit 模型| [训练 Vowpal Wabbit 版本 8 模型](score-vowpal-wabbit-version-8-model.md) | [评分 Vowpal Wabbit 版本 8 模型](score-vowpal-wabbit-version-8-model.md) |-->
+
+<!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
+| anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|
+| anomaly detection - PCA |[Train Model](train-model.md) |[Score Model](score-model.md) </br> Some additional steps are required to evaluate the model. |
+| anomaly detection - time series|  [Time Series Anomaly Detection](time-series-anomaly-detection.md) |Model trains from data and generates scores. The module does not create a trained learner and no additional scoring is required. |
+| recommendation model| [Train Matchbox Recommender](train-matchbox-recommender.md) | [Score Matchbox Recommender](score-matchbox-recommender.md) |
+| image classification | [Pretrained Cascade Image Classification](pretrained-cascade-image-classification.md) | [Score Model](score-model.md) |
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 7-4 Model](train-vowpal-wabbit-version-7-4-model.md) | [Score Vowpal Wabbit Version 7-4 Model](score-vowpal-wabbit-version-7-4-model.md) |   
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 7-10 Model](train-vowpal-wabbit-version-7-10-model.md) | [Score Vowpal Wabbit Version 7-10 Model](score-vowpal-wabbit-version-7-10-model.md) |
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) | [Score Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) |-->
   
 |异常消息|  
 |------------------------|  
@@ -1680,7 +1681,7 @@ Hive 中的错误消息是正常情况下报告回错误日志中，以便您可
 |------------------------|  
 |模块定义文件包含错误。|  
 |模块定义文件{0}包含错误。|  
-|模块定义文件{0}包含错误。 {1}|  
+|模块定义文件{0}包含错误。 [https://doi.org/10.13012/J8PN93H8]({1})|  
   
 
 ## <a name="error-0114"></a>错误 0114  
@@ -2081,7 +2082,7 @@ Hive 中的错误消息是正常情况下报告回错误日志中，以便您可
 |异常消息|  
 |------------------------|  
 |GitHub 访问错误。|  
-|GitHub 访问错误。 {0}|  
+|GitHub 访问错误。 [https://doi.org/10.13012/J8PN93H8]({0})|  
   
 
 ## <a name="error-0148"></a>错误 0148  

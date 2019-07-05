@@ -3,7 +3,7 @@ title: 向通用 Windows 平台 (UWP) 应用添加身份验证 | Microsoft Docs
 description: 了解如何使用 Azure 应用服务移动应用通过各种标识提供者（包括 AAD、 Google、 Facebook、 Twitter 和 Microsoft。
 services: app-service\mobile
 documentationcenter: windows
-author: conceptdev
+author: elamalani
 manager: panarasi
 editor: ''
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
@@ -12,18 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
-ms.author: panarasi
-ms.openlocfilehash: 7caaa1ca4cdaf7290b7ce05d17c07e565e7b51d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 9a3a6a8d063836094c1285a5ab4c17ee403fc347
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127992"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440233"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>向 Windows 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-users)今天。
+>
+
+## <a name="overview"></a>概述
 本主题演示如何向移动应用添加基于云的身份验证。 在本教程中，使用 Azure 应用服务支持的标识提供者向移动应用的通用 Windows 平台 (UWP) 快速入门项目添加身份验证。 在移动应用后端成功进行身份验证和授权后，显示用户 ID 值。
 
 本教程基于移动应用快速入门。 必须先完成[移动应用入门](app-service-mobile-windows-store-dotnet-get-started.md)教程。
