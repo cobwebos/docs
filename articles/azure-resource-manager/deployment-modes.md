@@ -4,14 +4,14 @@ description: 介绍如何使用 Azure 资源管理器指定是使用完整部署
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ff098bf329979d0702c41f83d8e5f8ee7cceca1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8a53ed1eea66c976c46a21378a9c48a1ad5ce902
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206545"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508203"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -22,6 +22,8 @@ ms.locfileid: "67206545"
 ## <a name="complete-mode"></a>完整模式
 
 在完整模式下，资源管理器删除资源组中已存在但尚未在模板中指定的资源  。 由于[条件](resource-group-authoring-templates.md#condition)的计算结果为 false，因此不会删除模板中指定但未部署的资源。
+
+使用具有完整模式时要小心[复制循环](resource-group-create-multiple.md)。 解决复制循环之后，在模板中未指定任何资源被删除。
 
 资源类型处理完整模式删除的方式有所不同。 当父资源不在以完整模式部署的模板中时，将自动删除该资源。 而某些子资源不在模板中时，不会将其自动删除。 但是，如果删除父资源，则会删除这些子资源。 
 

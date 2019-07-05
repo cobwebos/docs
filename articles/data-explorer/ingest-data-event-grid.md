@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 7d9c21b46f760055846194f52f1594f25b1ee989
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5854a8974a4d2a9dbc1aa690dc2340fd806f4219
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494746"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490139"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>通过订阅事件网格通知将 Blob 引入 Azure 数据资源管理器
 
@@ -112,10 +112,10 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 表 | TestTable  | 在“TestDatabase”  中创建的表。 |
-    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV 和 TXT。 |
+    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV 和 TXT。 支持的压缩选项：Zip 和 GZip |
     | 列映射 | TestMapping  | 在 **TestDatabase** 中创建的映射将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。|
     | | |
-
+    
 ## <a name="generate-sample-data"></a>生成示例数据
 
 连接 Azure 数据资源管理器和存储帐户后，可以创建示例数据并将其上传到 Blob 存储。

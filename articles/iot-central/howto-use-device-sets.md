@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 68599a539b3d79b759142d2178aa753f895ea37f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1e7b91e0808b9e23e653acd43b95f24a46c7d27
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052943"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503205"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中使用设备集
 
 本文介绍如何以操作员的身份在 Azure IoT Central 应用程序中使用设备集。
 
-设备集是由于与某个指定的条件匹配，而全部分组到一起的一系列设备。 设备集通过将设备分组到较小的逻辑组，来帮助大规模管理、可视化和分析设备。 例如，可以针对西雅图的所有空调设备创建一个列表，使西雅图的技术人员能够找到他所负责的所有设备。 本文介绍如何创建和配置设备集。
+设备集是组合在一起，因为它们符合某种特定的条件的设备的列表。 设备集通过将设备分组到较小的逻辑组，来帮助大规模管理、可视化和分析设备。 例如，可以创建设备设置为在西雅图，若要启用技术人员以查找设备，他们要负责所有的空调设备列表。 本文介绍如何创建和配置设备集。
 
 ## <a name="create-a-device-set"></a>创建设备集
 
@@ -42,9 +42,9 @@ ms.locfileid: "67052943"
 
 1. 选择“保存”  。
 
-## <a name="configure-the-dashboard-for-your-device-set"></a>配置设备集的仪表板
+## <a name="configure-the-dashboard-for-your-device-set"></a>配置设备组的仪表板
 
-创建设备集后，可以配置其**仪表板**。 **仪表板**是一个主页，可在其中放置图像和链接。 还可以添加网格，用于列出设备集中的设备。
+创建设备集后，可以配置其**仪表板**。 **仪表板**是主页放置图像和链接。 还可以添加网格，用于列出设备集中的设备。
 
 1. 在左侧导航菜单中选择“设备集”  。
 
@@ -85,19 +85,20 @@ ms.locfileid: "67052943"
   
     1. 选择“完成”  。
 
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>在设备集仪表板中配置位置地图
+若要了解有关如何在 Azure IoT Central 中使用磁贴的详细信息，请参阅[使用仪表板磁贴](howto-use-tiles.md)。
 
-可以添加位置地图，在地图中直观呈现设备集的位置。
+### <a name="configure-a-location-map-in-your-device-sets-dashboard"></a>配置设备设置仪表板中的位置地图
 
-若要向设备集仪表板添加位置地图，必须在设备模板中配置位置属性（请参阅[创建由 Azure Maps 提供技术支持的位置属性](howto-set-up-template.md)）。
+可以添加一个映射来可视化设备组中的设备的位置。
 
-1. 在设备集仪表板中，选择库中的“地图”。
-2. 指定标题，并选择之前已配置为设备属性的一部分的位置属性。
-3. 保存设置，此时会看到显示设备集中设备的位置的地图图块。
-4. 现在，当操作者查看设备集仪表板时，他可以看到你已配置的所有磁贴（包括位置地图），所有设备位置一目了然！
+若要添加映射到你的设备设置仪表板，必须有位置度量或位置属性中配置设备模板。 若要了解详细信息，请参阅[创建位置度量](howto-set-up-template.md)或[创建位置属性](howto-set-up-template.md)。
 
-> [!NOTE]
-> 可以根据需要重设地图大小。 在映射中选择一个 pin 将显示的设备信息、 名称和位置。 您可以选择弹出窗口，转到设备属性页。
+1. 在你的设备上设置**仪表板**，选择**映射**库中。
+2. 添加标题并选择位置度量或以前配置的属性。
+3. 选择**保存**和地图图块显示中设备集的设备的最后一个已知的位置。
+4. 当操作员查看设备设置仪表板时，该运算符会看到已配置，包括位置地图的所有磁贴。
+
+您可以调整仪表板上的映射磁贴的大小。 选择固定在地图上的显示设备信息、 名称和位置。 选择弹出窗口，转到设备属性页。
 
 ## <a name="configure-the-list-for-your-device-set"></a>配置设备集的列表
 

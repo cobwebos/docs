@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: 572043598c71a400e154c5c2e9e6c2f1e9b4ab49
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 69548541d16db95f633400808f72aebaf59cff08
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191793"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477784"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion-preview"></a>为 Linux 虚拟机使用 Azure 堡垒 （预览版） 使用 ssh 建立连接
 
@@ -33,16 +33,16 @@ SSH 私钥必须是开头的格式`"-----BEGIN RSA PRIVATE KEY-----"`结尾`"---
 
 请确保已设置 VM 所驻留的虚拟网络的 Azure 堡垒主机。 有关详细信息，请参阅[创建 Azure 堡垒主机](bastion-create-host-portal.md)。 一旦堡垒服务预配和部署在虚拟网络，可用于连接到此虚拟网络中的任何 VM。 在此预览版中，当您使用堡垒连接，假定你使用 RDP 连接到 Windows VM 和 SSH 连接到 Linux Vm。
 
-若要进行连接时，以下角色是必需的：
+需要使用以下角色进行连接：
 
-* 在虚拟机上的读取者角色
-* 使用虚拟机的专用 IP 的 NIC 上的读取者角色
-* Azure 堡垒资源上的读取者角色
+* 虚拟机上的读者角色
+* NIC 上的读者角色（使用虚拟机的专用 IP）
+* Azure Bastion 资源上的读者角色
 
 ## <a name="username"></a>连接：使用用户名和密码
 
 
-1. 在中[Azure 门户](https://aka.ms/BastionHost)堡垒预览版中，导航到你想要连接到虚拟机，然后单击**Connect**。 使用 SSH 连接时，应将 VM Linux 虚拟机。
+1.  使用[此链接](https://aka.ms/BastionHost)，打开 Azure 堡垒预览门户页。 导航到你想要连接到虚拟机，然后单击**Connect**。 使用 SSH 连接时，应将 VM Linux 虚拟机。
 1. 单击连接后，侧栏会显示具有三个选项卡-RDP、 SSH，并堡垒。 如果堡垒已预配为虚拟网络，则堡垒选项卡处于活动状态默认情况下。 如果你未为虚拟网络进行预配堡垒，请参阅[配置堡垒](bastion-create-host-portal.md)。 如果没有看到**堡垒**列出，则表示尚未打开在预览门户。 打开门户使用[此链接](https://aka.ms/BastionHost)。
 
       ![VM 连接](./media/bastion-connect-vm-ssh/bastion.png)
@@ -52,7 +52,7 @@ SSH 私钥必须是开头的格式`"-----BEGIN RSA PRIVATE KEY-----"`结尾`"---
 
 ## <a name="privatekey"></a>连接：手动输入私钥
 
-1. 在中[Azure 门户](https://aka.ms/BastionHost)堡垒预览版中，导航到你想要连接到虚拟机，然后单击**Connect**。 使用 SSH 连接时，应将 VM Linux 虚拟机。
+1.  使用[此链接](https://aka.ms/BastionHost)，打开 Azure 堡垒预览门户页。 导航到你想要连接到虚拟机，然后单击**Connect**。 使用 SSH 连接时，应将 VM Linux 虚拟机。
 1. 单击连接后，侧栏会显示具有三个选项卡-RDP、 SSH，并堡垒。 如果堡垒已预配为虚拟网络，则堡垒选项卡处于活动状态默认情况下。 如果你未为虚拟网络进行预配堡垒，请参阅[配置堡垒](bastion-create-host-portal.md)。 如果没有看到**堡垒**列出，则表示尚未打开在预览门户。 打开门户使用[此链接](https://aka.ms/BastionHost)。
 
       ![VM 连接](./media/bastion-connect-vm-ssh/bastion.png)
@@ -63,7 +63,7 @@ SSH 私钥必须是开头的格式`"-----BEGIN RSA PRIVATE KEY-----"`结尾`"---
 
 ## <a name="ssh"></a>连接：使用私钥文件
 
-1. 在中[Azure 门户](https://aka.ms/BastionHost)堡垒预览版中，导航到你想要连接到虚拟机，然后单击**Connect**。 使用 SSH 连接时，应将 VM Linux 虚拟机。
+1.  使用[此链接](https://aka.ms/BastionHost)，打开 Azure 堡垒预览门户页。 导航到你想要连接到虚拟机，然后单击**Connect**。 使用 SSH 连接时，应将 VM Linux 虚拟机。
 
     ![VM 连接](./media/bastion-connect-vm-ssh/connect.png)
 

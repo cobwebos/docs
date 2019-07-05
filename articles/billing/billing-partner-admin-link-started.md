@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64694222"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502678"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
-作为合作伙伴，可以在客户互动中跟踪影响。 可以将合作伙伴 ID 链接到用于管理客户资源的帐户。
+Microsoft 合作伙伴提供的服务，帮助客户实现业务和使用 Microsoft 产品的关键任务目标。 当代表客户管理操作，配置和支持 Azure 服务，合作伙伴用户将需要对客户的环境的访问。 使用合作伙伴管理员链接，合作伙伴可以将其合作伙伴网络 ID 关联的服务交付使用的凭据。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -141,11 +141,11 @@ C:\ az managementpartner delete --partner-id 12345
 
 **如果我的公司有多个应使用哪个 MPN ID？**
 
-可以使用任何有效的 MPN ID 除外虚拟 organization(v-org) MPN id。 大多数合作伙伴选择地理位置基于客户或服务的交付使用 MPN ID。
+合作伙伴位置帐户关联的 MPN Id 应在用于链接合作伙伴 id。  详细了解[合作伙伴帐户](https://docs.microsoft.com/partner-center/account-structure)
 
 **在哪里可以找到受影响的收入报告的链接的合作伙伴 ID？**
 
-您可以找到影响收入的报告[我见解仪表板](https://partner.microsoft.com/membership/reports/myinsights)。 您需要选择合作伙伴管理员链接作为合作伙伴关联类型。
+云产品性能报告可供在合作伙伴中心中的合作伙伴[我见解仪表板](https://partner.microsoft.com/membership/reports/myinsights)。 您需要选择合作伙伴管理员链接作为合作伙伴关联类型。
 
 **为何看不到我在报告中的客户？**
 

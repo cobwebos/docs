@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: e2b6cbabc9a0c727c9eb0232bd55048493b29128
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97bc2e585ccce250dd83dc855c3eda5f958186a7
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696928"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484056"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight 中的大规模流式处理
 
@@ -64,7 +64,7 @@ Apache Spark 根据应用程序的要求使用三个关键参数来配置其环�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [HDInsight 上的 Apache Storm 入门](storm/apache-storm-tutorial-get-started-linux.md)
+* [创建和监视 Azure HDInsight 中的 Apache Storm 拓扑](storm/apache-storm-quickstart.md)
 * [HDInsight 上的 Apache Storm 的示例拓扑](storm/apache-storm-example-topology.md)
 * [HDInsight 上的 Apache Spark 简介](spark/apache-spark-overview.md)
 * [HDInsight 上的 Apache Kafka 入门](kafka/apache-kafka-get-started.md)

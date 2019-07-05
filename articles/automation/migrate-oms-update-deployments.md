@@ -4,17 +4,17 @@ description: 本文介绍如何将现有的 OMS 更新部署迁移到 Azure
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d11dfcb66a545cbecc80b6bdad558ca6d328ed2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2cc05dc0970211b066d9e431cc7aba06cbd126eb
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60499160"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478308"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>将 OMS 更新部署迁移到 Azure
 
@@ -57,7 +57,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 对于要更新的计算机，请选择现有 OMS 部署所用的保存的搜索结果。
 
-| 属性 | 描述 |
+| 属性 | Description |
 | --- | --- |
 |Name |用于标识更新部署的唯一名称。 |
 |操作系统| 选择 **Linux** 或 **Windows**。|

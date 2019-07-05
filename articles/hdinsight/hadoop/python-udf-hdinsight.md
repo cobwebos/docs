@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 6f3140f412f9d36ca36cef440bd4e60f1a9197d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d74c40264e8ed535d250e938487885a848ba6b47
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702224"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484199"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)
 
@@ -99,7 +99,7 @@ while True:
 1. 从 STDIN 读取一行数据。
 2. 可以使用 `string.strip(line, "\n ")` 删除尾随的换行符。
 3. 执行流式处理时，一个行就包含了所有值，每两个值之间有一个制表符。 因此，`string.split(line, "\t")` 可用于在每个制表符处拆分输入，并只返回字段。
-4. 在处理完成后，必须将输出以单行形式写入到 STDOUT，并在每两个字段之间提供一个制表符。 例如，`print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`。
+4. 在处理完成后，必须将输出以单行形式写入到 STDOUT，并在每两个字段之间提供一个制表符。 例如，`print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])` 。
 5. `while` 循环会一直重复到无法读取 `line`。
 
 脚本输出是 `devicemake` 和 `devicemodel` 的输入值的连接，并且是连接值的哈希。
@@ -161,9 +161,6 @@ while True:
     ```
 
 ### <a name="upload-file-powershell"></a>上传文件 (PowerShell)
-
-> [!IMPORTANT]  
-> 如果启用了[安全传输](../../storage/common/storage-require-secure-transfer.md)，则这些 PowerShell 脚本将无法运行。  请使用 shell 命令或禁用安全传输。
 
 也可以使用 PowerShell 远程运行 Hive 查询。 确保工作目录是 `hiveudf.py` 所在的位置。  使用以下 PowerShell 脚本来运行使用 `hiveudf.py` 脚本的 Hive 查询：
 
@@ -433,9 +430,6 @@ def create_structure(input):
 
 
 ### <a name="upload-file-powershell"></a>上传文件 (PowerShell)
-
-> [!IMPORTANT]  
-> 如果启用了[安全传输](../../storage/common/storage-require-secure-transfer.md)，则这些 PowerShell 脚本将无法运行。  请使用 shell 命令或禁用安全传输。
 
 也可以使用 PowerShell 远程运行 Hive 查询。 确保工作目录是 `pigudf.py` 所在的位置。  使用以下 PowerShell 脚本来运行使用 `pigudf.py` 脚本的 Hive 查询：
 

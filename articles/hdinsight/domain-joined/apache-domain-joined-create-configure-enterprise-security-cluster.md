@@ -8,18 +8,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/09/2019
-ms.openlocfilehash: 7457c06f9f151cb310704a985c79572c7b770859
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e9cb9a902cf60fbd3b297a72a7dfa836ee18c835
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166232"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484586"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>创建并在 Azure HDInsight 中配置企业安全性套餐群集
 
 Azure HDInsight Enterprise Security 包，您可以访问你在 Azure 中的 Apache Hadoop 群集的基于 Active Directory 的身份验证、 多用户支持和基于角色的访问控制。 HDInsight ESP 群集启用遵守严格的企业安全策略来安全地处理敏感数据的组织。
 
-本指南的目标已正确配置所需的资源，因此，在本地用户可以登录到 ESP 启用 HDInsight 群集。 本文将指导完成创建企业安全数据包启用 Azure HDInsight 群集所需的步骤。 这些步骤将包括使用 Active Directory 和域名服务 (DNS) 启用创建的 Windows IaaS VM。 此服务器将充当替换为你**实际**的本地环境，以便可以继续完成安装和配置步骤，以便可以重复这些更高版本中您自己的环境。 本指南还将帮助您创建使用密码哈希同步与 Azure Active Directory 混合标识环境。
+本指南的目标是要正确配置所需的资源，以便在本地用户可以登录到 ESP 启用 HDInsight 群集。 本文将指导完成创建企业安全数据包启用 Azure HDInsight 群集所需的步骤。 这些步骤将包括使用 Active Directory 和域名服务 (DNS) 启用创建的 Windows IaaS VM。 此服务器将充当替换为你**实际**的本地环境，以便可以继续完成安装和配置步骤，以便可以重复这些更高版本中您自己的环境。 本指南还将帮助您创建使用密码哈希同步与 Azure Active Directory 混合标识环境。
 
 本指南旨在补充[在 HDInsight 中使用 Enterprise Security 包](apache-domain-joined-architecture.md)
 
@@ -208,7 +208,7 @@ Azure HDInsight Enterprise Security 包，您可以访问你在 Azure 中的 Apa
 1. 登录到 Azure 门户。
 1. 单击**创建资源**，输入**域服务**，然后选择**Azure AD 域服务**。
 1. 上**基础知识**屏幕完成以下步骤：
-    1. 下**目录名**选择为本教程中，创建的 Azure Active Directory **HDIFabrikam**。
+    1. 下**目录名**选择为本文中，创建的 Azure Active Directory **HDIFabrikam**。
     1. 输入**DNS 域名**的**HDIFabrikam.com**。
     1. 选择订阅。
     1. 指定资源组**HDIFabrikam CentralUS**并**位置**的**美国**。
@@ -219,7 +219,7 @@ Azure HDInsight Enterprise Security 包，您可以访问你在 Azure 中的 Apa
 
     ![选择网络](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image086.png)
 
-1. 上**管理员组**屏幕上，你应看到一条通知，一个组名为**AAD DC 管理员**已创建用于管理此组。 您可以根据需要修改此组的成员身份，但不需要为本教程的步骤。 单击“确定”。 
+1. 上**管理员组**屏幕上，你应看到一条通知，一个组名为**AAD DC 管理员**已创建用于管理此组。 您可以根据需要修改此组的成员身份，但这不是必需的这篇文章的步骤。 单击“确定”。 
 
     ![查看管理员组](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image088.png)
 
@@ -311,7 +311,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         | Protocol | 任意 |
         | 操作 | 允许 |
         | 优先度 | <Desired Number> |
-        | Name | Port_LDAP_636 |
+        | 名称 | Port_LDAP_636 |
 
     ![入站的安全规则](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 

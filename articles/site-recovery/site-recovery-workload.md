@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 6/27/2019
 ms.author: raynew
-ms.openlocfilehash: 8f4e78f7e16f775a852b4c8172d1fa9fd70ec341
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417850"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491739"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>可以通过 Azure Site Recovery 保护哪些工作负荷？
 
@@ -35,7 +35,7 @@ Site Recovery 可帮助实现应用程序级的保护和恢复，如下所示：
 * 不区分应用，为受支持计算机上运行的任何工作负荷提供复制。
 * 几乎同步的复制，RPO 低至 30 秒，满足大多数关键业务应用的需要。
 * 针对单层或多层应用程序的应用一致性快照。
-* 集成 SQL Server AlwaysOn，纳入了其他应用程序级复制技术，其中包括 AD 复制、SQL AlwaysOn、Exchange 数据库可用性组 (DAG) 和 Oracle 数据防护。
+* 与 SQL Server AlwaysOn 和合作关系与其他应用程序级复制技术，包括 AD 复制，SQL AlwaysOn，Exchange 数据库可用性分组 (Dag) 集成。
 * 灵活的恢复计划，一次单击即可恢复整个应用程序堆栈，包括在计划中使用外部脚本和手动操作。
 * 站点恢复和 Azure 中的高级网络管理可以简化应用的网络要求，包括保留 IP 地址、配置负载均衡器或集成 Azure 流量管理器以降低 RTO 网络切换数。
 * 丰富的自动化库，提供特定于应用程序的生产就绪型脚本，可以下载并与恢复计划集成。

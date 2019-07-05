@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: ef97f17bf159511ce94f90cd00623e05489acb92
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0a7140f70db78c8511f3c4da00b2f9c11c368163
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274734"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477697"
 ---
 # <a name="mapping-data-flow-parameters"></a>映射数据流参数
 
@@ -37,6 +37,12 @@ ms.locfileid: "67274734"
 参数可以利用任何数据流表达式中。 参数以 $ 开头，并且是固定不变。 您将发现内部表达式生成器参数选项卡下的可用参数的列表。
 
 ![数据流参数表达式](media/data-flow/parameter-expression.png "数据流参数表达式")
+
+## <a name="use-parameters-in-your-data-flow"></a>在数据流中使用参数
+
+* 可以在转换表达式内使用参数值。 表达式生成器中，您会发现参数选项卡下的参数列表。 ![使用数据流参数](media/data-flow/params9.png "使用数据流参数")
+
+* 此外可以使用参数动态值配置为源和接收器转换设置。 在可配置字段内单击时，您将看到显示的"添加动态内容"链接。 单击存在将转到一个表达式生成器，您可以使用参数的位置以使用动态值。 ![数据流动态内容](media/data-flow/params6.png "数据流动态内容")
 
 ## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>从管道设置映射数据流参数
 
