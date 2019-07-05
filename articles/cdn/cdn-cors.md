@@ -30,7 +30,7 @@ CORS 请求有两种类型：简单请求  和复杂请求  。
 
 ### <a name="for-simple-requests"></a>简单请求：
 
-1. 浏览器发送带有附加**源** HTTP 请求标头的 CORS 请求。 此标头的值是为父页面提供服务的源，它被定义为协议  、域  和端口  的组合。  从 https 的页面时\:/ / www.contoso.com 尝试访问 fabrikam.com 源中的用户的数据，以下请求标头将发送到 fabrikam.com:
+1. 浏览器发送带有附加**源** HTTP 请求标头的 CORS 请求。 此标头的值是为父页面提供服务的源，它被定义为协议  、域  和端口  的组合。  从 https 的页面时\://www.contoso.com 尝试访问 fabrikam.com 源中的用户的数据，以下请求标头将发送到 fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
