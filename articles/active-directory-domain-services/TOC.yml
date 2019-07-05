@@ -37,10 +37,12 @@
       items:
         - name: 方案
           href: scenarios.md
-        - name: 选择虚拟网络
+        - name: 规划虚拟网络
           href: network-considerations.md
     - name: 管理 Azure AD DS
       items:
+        - name: 启用安全审核事件（预览版）
+          href: security-audit-events.md
         - name: 检查托管域的运行状况
           href: check-health.md
         - name: 配置从 Azure AD 到托管域的作用域内同步
