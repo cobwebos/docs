@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 07/05/2019
 ms.author: wellsi
-ms.openlocfilehash: 1c91cde45a6a420376af36f70487adf7fe0ee83a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93272520434ea43a94af9441a947239e983c216f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751808"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606683"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>认知服务语音设备 SDK 发行说明
 以下部分列出了最新版本中的更改。
@@ -37,17 +37,17 @@ ms.locfileid: "66751808"
 *   由于新的唤醒 word 技术必须重新创建在我们改进了的唤醒 word 门户唤醒的所有单词。 若要完全删除旧关键字从设备卸载旧应用。
     - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
 
-## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>认知服务语音设备 SDK 1.4.0:2019 年 4 月版本 
+## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>认知服务语音设备 SDK 1.4.0:2019 年 4 月版本
 
-* 更新[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 1.4.0 版组件。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。 
+* 更新[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 1.4.0 版组件。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。
 
-## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>认知服务语音设备 SDK 1.3.1:2019 年 3 月版本 
+## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>认知服务语音设备 SDK 1.3.1:2019 年 3 月版本
 
-* 更新[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 1.3.1 版的组件。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。 
+* 更新[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 1.3.1 版的组件。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。
 *   更新的唤醒文字处理，请参阅的重大更改。
 *   示例应用程序添加语音识别和翻译的语言的选择。
 
-**重大更改** 
+**重大更改**
 
 *   [安装唤醒文字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)已简化，现在是应用程序的一部分并且不需要单独安装在设备上的。
 *   唤醒单词标识已更改，并支持两个事件。
@@ -55,22 +55,22 @@ ms.locfileid: "66751808"
     - RecognizedKeyword，指示完成该关键字识别识别给定的关键字。
 
 
-## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>认知服务语音设备 SDK 1.1.0：2018 年 11 月版本 
+## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>认知服务语音设备 SDK 1.1.0：2018 年 11 月版本
 
-* 已将[语音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 组件更新到 1.1.0 版。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。 
+* 已将[语音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 组件更新到 1.1.0 版。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。
 * 远场语音识别准确性已通过我们增强的音频处理算法得到提高。
 * 示例应用程序添加了中文语音识别支持。
 
-## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>认知服务语音设备 SDK 1.0.1：2018 年 10 月版本 
+## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>认知服务语音设备 SDK 1.0.1：2018 年 10 月版本
 
-* 将[语音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 组件更新到了 1.0.1 版。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。 
+* 将[语音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 组件更新到了 1.0.1 版。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。
 * 我们改进的音频处理算法将提高语音识别的准确性  
 * 修复了一个连续识别音频会话 bug。
 
-**重大更改** 
+**重大更改**
 
-* 该版本中推出了大量重大更改。 有关 API 的详细信息，请查看[此页](https://aka.ms/csspeech/breakingchanges_1_0_0)。 
-* KWS 模型文件与语音设备 SDK 1.0.1 不兼容。 将新的唤醒词文件写入设备后，将删除现有的唤醒词文件。 
+* 该版本中推出了大量重大更改。 有关 API 的详细信息，请查看[此页](https://aka.ms/csspeech/breakingchanges_1_0_0)。
+* KWS 模型文件与语音设备 SDK 1.0.1 不兼容。 将新的唤醒词文件写入设备后，将删除现有的唤醒词文件。
 
 ## <a name="cognitive-services-speech-devices-sdk-050-2018-aug-release"></a>认知服务语音设备 SDK 0.5.0：2018 年 8 月版本
 

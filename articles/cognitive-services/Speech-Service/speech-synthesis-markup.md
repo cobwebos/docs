@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 488cbf1874e023cf3a665bc9f2087900b30b3d3d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8285a76f8cd07863874f9c8e8eebe96f1cb968dd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204928"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604821"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>语音合成标记语言 (SSML)
 
@@ -54,9 +53,9 @@ ms.locfileid: "67204928"
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| version | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为 1.0。 | 必选 |
+| 版本 | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为 1.0。 | 需要 |
 | Xml: lang | 指定根文档的语言。 值可能包含一个小写字符、 两个字母语言代码 (例如， **en**)，或语言代码和大写的国家/地区 (例如， **EN-US**)。 | 需要 |
-| xmlns | 指定文档，用于定义 SSML 文档的标记词汇 （元素类型和属性名称） 的 URI。 在当前的 URI 是 https://www.w3.org/2001/10/synthesis 。 | 必选 |
+| xmlns | 指定文档，用于定义 SSML 文档的标记词汇 （元素类型和属性名称） 的 URI。 在当前的 URI 是 https://www.w3.org/2001/10/synthesis 。 | 需要 |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>选择文本到语音转换的声音
 
@@ -74,7 +73,7 @@ ms.locfileid: "67204928"
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| name | 标识用于文本到语音转换输出的语音。 有关受支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必选 |
+| name | 标识用于文本到语音转换输出的语音。 有关受支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 需要 |
 
 **示例**
 
@@ -97,7 +96,7 @@ ms.locfileid: "67204928"
 
 | 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| name | 标识用于文本到语音转换输出的语音。 有关受支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必选 |
+| name | 标识用于文本到语音转换输出的语音。 有关受支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 需要 |
 
 **示例**
 

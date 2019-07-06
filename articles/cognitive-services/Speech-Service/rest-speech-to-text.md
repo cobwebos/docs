@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 4d5bceff004d1cc6ddac4046a2ddcd0b5f0b5e73
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9d967fa4d5ba54e4470dadc5e797067454e1769a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072513"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606354"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -54,7 +53,7 @@ ms.locfileid: "67072513"
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 你的语音服务的订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
-| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必选 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 需要 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
 | `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务确认初始请求并等待其他数据。| 如果发送分块的音频数据，则是必需的。 |
 | `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务提供 JSON 中的结果。 如果未指定默认值，则某些 Web 请求框架会提供不兼容的默认值，因此，最佳做法是始终包含 `Accept`。 | 可选，但建议提供。 |

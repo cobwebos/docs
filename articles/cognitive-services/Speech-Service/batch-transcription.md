@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 45ed0167f5a83fa843a224ada35e96672a6752a1
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: b71400c3ae3c1cc6737d9194b4d94bf0b9c7efa9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311847"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606744"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
@@ -56,7 +55,7 @@ Batch 听录 API 支持以下格式：
 | MP3 | PCM | 16 位 | 8 或 16 kHz、单声道、立体声 |
 | OGG | OPUS | 16 位 | 8 或 16 kHz、单声道、立体声 |
 
-对于立体声音频流，Batch 听录 API 将在听录期间分离左右声道。 根据单个通道创建两个带有结果的 JSON 文件。 开发人员可利用每个话语的时间戳创建有序的最终脚本。 此示例请求包括用于不雅内容筛选、标点符号和字级时间戳的属性。 
+对于立体声音频流，Batch 听录 API 将在听录期间分离左右声道。 根据单个通道创建两个带有结果的 JSON 文件。 开发人员可利用每个话语的时间戳创建有序的最终脚本。 此示例请求包括用于不雅内容筛选、标点符号和字级时间戳的属性。
 
 ### <a name="configuration"></a>配置
 
@@ -97,7 +96,7 @@ Batch 听录 API 支持以下格式：
 
 批处理脚本支持[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)音频和编写转录到存储中读取。
 
-## <a name="webhooks"></a>Webhook 
+## <a name="webhooks"></a>Webhook
 
 轮询听录状态不能性能最好，或提供最佳用户体验。 若要轮询状态，可以注册将在长时间运行的脚本任务已完成时通知客户端的回调。
 
@@ -123,7 +122,7 @@ Diarization 是音频的分离扬声器段中的过程。 我们批处理的管�
 }
 ```
 
-Word 级别时间戳还必须为开启为更高版本的请求中的参数，表示。 
+Word 级别时间戳还必须为开启为更高版本的请求中的参数，表示。
 
 对应的音频将包含由一个编号标识发言人 (目前我们支持只有两个语音，因此演讲者将被标识为演讲者 1 和"演讲者 2") 后跟脚本输出。
 
@@ -134,7 +133,7 @@ Word 级别时间戳还必须为开启为更高版本的请求中的参数，表
 
 ## <a name="sentiment"></a>情绪
 
-情绪是批处理脚本 API 中的新功能和是调用 center 域中的重要功能。 客户可以使用`AddSentiment`为其请求的参数 
+情绪是批处理脚本 API 中的新功能和是调用 center 域中的重要功能。 客户可以使用`AddSentiment`为其请求的参数
 
 1.  深入了解客户满意度
 2.  获取有关代理 （团队采用调用） 的性能的见解
@@ -187,7 +186,7 @@ JSON 输出示例类似于下面：
 
 完整示例位于[GitHub 示例存储库](https://aka.ms/csspeech/samples)内`samples/batch`子目录。
 
-如要使用自定义声学或语言模型，必须使用订阅信息、服务区域、指向要转录的音频文件的 SAS URI 和模型 ID 来自定义示例代码。 
+如要使用自定义声学或语言模型，必须使用订阅信息、服务区域、指向要转录的音频文件的 SAS URI 和模型 ID 来自定义示例代码。
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 

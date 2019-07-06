@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: a4a8212906f384494a9e2e005eee8c4dbdfa14a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad2a3cd73fe97415f0d6835d70e15bf90349696c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954638"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604912"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>录制语音样本用于创建自定义语音
 
@@ -33,7 +32,7 @@ ms.locfileid: "65954638"
 
 自定义语音录制项目有 4 个基本角色：
 
-角色|目的
+Role|目的
 -|-
 配音员        |其语音将构成自定义语音的基础。
 录音工程师  |监督录音的技术方面并操作录音设备。

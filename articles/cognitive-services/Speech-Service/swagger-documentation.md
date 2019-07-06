@@ -7,19 +7,19 @@ author: PanosPeriorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: overview
-ms.date: 04/12/2019
+ms.topic: reference
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6cf3ab6480900aa763598120e6ff7e308f5044e1
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
-ms.translationtype: HT
+ms.openlocfilehash: f6420ea8918816f7356e567ec48cb0f7456065e0
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743204"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604773"
 ---
 # <a name="swagger-documentation"></a>Swagger 文档
 
-语音服务提供了一个 Swagger 规范，用于与少量 REST API 交互，这些 REST API 用于导入数据、创建模型、测试模型准确性、创建自定义终结点、排列批量听录以及管理订阅。 可使用这些 API 以编程方式完成通过自定义语音门户提供的大部分操作。 
+语音服务提供了一个 Swagger 规范，用于与少量 REST API 交互，这些 REST API 用于导入数据、创建模型、测试模型准确性、创建自定义终结点、排列批量听录以及管理订阅。 可使用这些 API 以编程方式完成通过自定义语音门户提供的大部分操作。
 
 > [!NOTE]
 > 支持将语音转文本和文本转语音操作作为 REST API，而后者记录在 Swagger 规范中。

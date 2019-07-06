@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: fbe6fe25b5ff0cd5148e3bba22dec4648399510d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a100049ddfc9d4859e303546c1b10e814cf96ebb
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072308"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606207"
 ---
 # <a name="webhooks-for-speech-services"></a>语音服务的 Webhook
 
@@ -24,7 +23,7 @@ Webhook 就像允许应用程序接受语音服务中的数据变为可用时的
 
 ## <a name="supported-operations"></a>支持的操作
 
-语音服务支持 webhook 的长时间运行的所有操作。 下面列出的操作的每个可以触发的 HTTP 回调完成后。 
+语音服务支持 webhook 的长时间运行的所有操作。 下面列出的操作的每个可以触发的 HTTP 回调完成后。
 
 * DataImportCompletion
 * ModelAdaptationCompletion
@@ -37,7 +36,7 @@ Webhook 就像允许应用程序接受语音服务中的数据变为可用时的
 
 ## <a name="create-a-webhook"></a>创建 Webhook
 
-让我们创建脱机的脚本的 webhook。 方案： 用户已是他们想要使用 Batch 脚本 API 以异步方式转录的长时间运行音频文件。 
+让我们创建脱机的脚本的 webhook。 方案： 用户已是他们想要使用 Batch 脚本 API 以异步方式转录的长时间运行音频文件。
 
 可以通过 https:// 在 POST 请求创建 Webhook\<区域\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks。
 
@@ -65,7 +64,7 @@ Webhook 就像允许应用程序接受语音服务中的数据变为可用时的
 
 `Active`属性用于切换调用返回到你的 URL 打开和关闭而无需删除并重新创建 webhook 注册。 如果您只需要调用返回一次后过程已完成，然后删除 webhook 和交换机`Active`属性设置为 false。
 
-事件类型`TranscriptionCompletion`提供事件数组中。 它将返回到你的终结点时调用脚本进入终止状态 (`Succeeded`或`Failed`)。 在调用返回的注册 URL，将包含请求`X-MicrosoftSpeechServices-Event`标头包含已注册的事件类型之一。 没有每个已注册的事件类型的一个请求。 
+事件类型`TranscriptionCompletion`提供事件数组中。 它将返回到你的终结点时调用脚本进入终止状态 (`Succeeded`或`Failed`)。 在调用返回的注册 URL，将包含请求`X-MicrosoftSpeechServices-Event`标头包含已注册的事件类型之一。 没有每个已注册的事件类型的一个请求。
 
 没有一种不能订阅的事件类型。 它是`Ping`事件类型。 包含此类型的请求发送到在完成后使用 ping URL （见下文） 时创建 webhook 的 URL。  
 
@@ -94,7 +93,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
             var validated = contentHash.SequenceEqual(storedHash);
         }
     }
- 
+
     switch (eventTypeHeader)
     {
         case WebHookEventType.Ping:
@@ -106,7 +105,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
         default:
             break;
     }
- 
+
     return this.Ok();
 }
 
@@ -121,12 +120,12 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
 
 若要删除一个特定的 webhook:DELETE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
-> [!Note] 
+> [!Note]
 > 在上面的示例中，区域是 'westus'。 这应替换为已在 Azure 门户中创建您的语音服务资源的区域。
 
 开机自检 https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping 正文： 空
 
-将 POST 请求发送到已注册的 URL。 该请求包含`X-MicrosoftSpeechServices-Event`标头值 ping。 如果使用密钥注册 webhook，它将包含`X-MicrosoftSpeechServices-Signature`标头与使用 HMAC 密钥作为机密的有效负载的 SHA256 哈希。 哈希值是 Base64 编码。 
+将 POST 请求发送到已注册的 URL。 该请求包含`X-MicrosoftSpeechServices-Event`标头值 ping。 如果使用密钥注册 webhook，它将包含`X-MicrosoftSpeechServices-Signature`标头与使用 HMAC 密钥作为机密的有效负载的 SHA256 哈希。 哈希值是 Base64 编码。
 
 开机自检 https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test 正文： 空
 

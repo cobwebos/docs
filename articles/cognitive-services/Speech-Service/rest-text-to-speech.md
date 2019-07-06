@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 08bf1363f3c6c9b68243cc10ffb2785f53e02107
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 684ddcd49d3cd3c3d4f0a8d6f4675e1e27bdb7b9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342188"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604889"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -49,7 +48,7 @@ ms.locfileid: "67342188"
 | 加拿大中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 东亚 | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 美国东部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国东部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 法国中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 印度中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -225,7 +224,7 @@ Authorization: Bearer [Base64 access_token]
 | 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
 | 401 | 未授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 |
 | 413 | 请求实体太大 | SSML 输入超过了 1024 个字符。 |
-| 415 | 不支持的媒体类型 | 可能的错误`Content-Type`提供。 `Content-Type` 应设置为`application/ssml+xml`。 | 
+| 415 | 不支持的媒体类型 | 可能的错误`Content-Type`提供。 `Content-Type` 应设置为`application/ssml+xml`。 |
 | 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
 | 502 | 错误的网关 | 网络或服务器端问题。 也可能表示标头无效。 |
 

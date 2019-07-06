@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: travisw
-ms.custom: ''
-ms.openlocfilehash: 1c5712fa8bbdb158992127f8f48d810a0a9b6f79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4055b474938e38f653021b46f18200f8e39dd69d
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65603479"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604743"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>有关自定义语音第一个虚拟助手预览
 
@@ -30,7 +29,7 @@ ms.locfileid: "65603479"
 
 ## <a name="core-features"></a>核心功能
 
-| 类别 | 功能 |
+| Category | 功能 |
 |----------|----------|
 |[自定义唤醒文字](speech-devices-sdk-create-kws.md) | 可以让用户使用智能机器人使用自定义的关键字，如"您好 Contoso"。 开始会话 使用语音 SDK，可以使用自定义唤醒文字配置中的自定义唤醒 word 引擎完成此任务[可以在此处生成](speech-devices-sdk-create-kws.md)。 直接行语音通道包括提高与单独的设备的唤醒 word 激活准确性的服务端唤醒 word 验证。
 |[语音转文本](speech-to-text.md) | 直接行语音通道包括为识别的文本，并使用实时听录音频[语音到文本](speech-to-text.md)从 Azure 语音服务。 此文本是可用于智能机器人和客户端应用程序，如转录。

@@ -8,21 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: fcb09720d188150736dbe7da0c925f5762ff6a10
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: afe69d396c42023df8fcf5e4a6772771afc75c76
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072322"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606251"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音到文本？
 
 从 Azure 语音服务，也称为语音到文本，使实时听录的音频流到应用程序、 工具或设备便可以使用，文本的语音到文本显示，并作为命令的输入对其执行操作。 此服务是由相同的识别技术，Microsoft 使用 Cortana 和 Office 产品，并无缝配合，翻译和文本到语音转换提供支持。  有关可用的语音到文本语言的完整列表，请参阅[支持的语言](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text)。
 
-默认情况下，语音转文本服务使用的通用语言模型。 此模型使用 Microsoft 拥有的数据训练和部署到云中。 其最适合于交谈和听写方案。 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 
+默认情况下，语音转文本服务使用的通用语言模型。 此模型使用 Microsoft 拥有的数据训练和部署到云中。 其最适合于交谈和听写方案。 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。
 
 可以轻松地捕获来自麦克风的音频、 从流中读取或从存储使用语音 SDK 和 REST Api 访问音频文件。 语音 SDK 支持 WAV PCM/16 位、 16 kHz/8 kHz、 语音识别的单声道音频。 使用支持其他音频格式[语音到文本 REST 终结点](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)或[批处理脚本服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)。
 
