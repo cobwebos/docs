@@ -190,6 +190,8 @@
       href: 'https://msdn.microsoft.com/library/azure/mt586720'
     - name: REST（经典）
       href: 'https://msdn.microsoft.com/library/azure/dn606310'
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.network/expressroutecircuits
 - name: 资源
   items:
     - name: ExpressRoute 常见问题
