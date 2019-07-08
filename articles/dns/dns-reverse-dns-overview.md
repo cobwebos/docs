@@ -25,7 +25,7 @@ ms.locfileid: "60192976"
 
 ## <a name="what-is-reverse-dns"></a>什么是反向 DNS？
 
-传统的 DNS 记录可将 DNS 名称（例如“www.contoso.com”）映射为 IP 地址（例如 64.4.6.100）。  反向 DNS 可将 IP 地址 (64.4.6.100) 转换回名称 (www.contoso.com)。
+传统的 DNS 记录可将 DNS 名称（例如“www.contoso.com”）映射为 IP 地址（例如 64.4.6.100）。  反向 DNS 可将 IP 地址 (64.4.6.100) 转换回名称 (“www.contoso.com“)。
 
 反向 DNS 记录可在多种场合下使用。 例如，反向 DNS 记录可以验证电子邮件的发件人，因此广泛用于防御垃圾电子邮件。  接收邮件服务器会检索发送服务器 IP 地址的反向 DNS 记录，验证该主机是否有权从来源域发送电子邮件。 
 

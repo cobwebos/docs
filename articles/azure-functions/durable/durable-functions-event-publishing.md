@@ -253,7 +253,7 @@ namespace LifeCycleEventSpike
 * **`id`** ：事件网格事件的唯一标识符。
 * **`subject`** ：事件主题的路径。 `durable/orchestrator/{orchestrationRuntimeStatus}`。 `{orchestrationRuntimeStatus}` 为 `Running`、`Completed`、`Failed` 和 `Terminated`。  
 * **`data`** ：Durable Functions 特定的参数。
-  * **`hubName`** ：任务中心](durable-functions-task-hubs.md)名称。
+  * **`hubName`** ：[任务中心](durable-functions-task-hubs.md)名称。
   * **`functionName`** ：业务流程协调程序函数名称。
   * **`instanceId`** ：Durable Functions instanceId。
   * **`reason`** ：与跟踪事件关联的其他数据。 有关详细信息，请参阅 [Durable Functions 中的诊断 (Azure Functions)](durable-functions-diagnostics.md)

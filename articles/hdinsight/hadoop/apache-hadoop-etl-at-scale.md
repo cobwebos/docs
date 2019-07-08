@@ -57,7 +57,7 @@ Azure 数据工厂以平台即服务的形式提供业务流程功能。 它是�
 
 [Azure 存储](https://azure.microsoft.com/services/storage/blobs/)具有[特定的可伸缩性目标](../../storage/common/storage-scalability-targets.md)。  对于大多数分析节点而言，在处理许多较小的文件时，Azure 存储的可伸缩性最佳。  Azure 存储可以保证无论有多少文件或文件有多大（只要在限制范围内），都能提供相同的性能。  这意味着，可以存储 TB 量级的数据，同时获得一致的性能，无论使用的是一部分数据还是全部数据。
 
-Azure 存储包含多种不同类型的 Blob。  “追加 Blob”是存储 Web 日志或传感器数据的极佳选项。   
+Azure 存储包含多种不同类型的 Blob。  “追加 Blob”是存储 Web 日志或传感器数据的极佳选项。  
 
 尽管可以在众多服务器之间分布多个 Blob 以便扩大对其的访问权限，但只能由单个服务器为单个 Blob 提供服务。 虽然 Blob 可在 Blob 容器中进行逻辑分组，但这种分组不会对分区产生影响。
 
@@ -127,7 +127,7 @@ Sqoop 使用 MapReduce 导入和导出数据，可提供并行操作和容错。
 
 Apache Flume 是分布式、可靠且高度可用的服务，能够有效地收集、聚合与移动大量日志数据。 Flume 采用基于流式传输数据流的简单弹性体系结构。 Flume 既可靠又能容错，提供可优化的可靠性机制和许多故障转移与恢复机制。 Flume 使用一个允许联机分析应用程序的简单可扩展数据模型。
 
-Apache Flume 无法与 Azure HDInsight 配合使用。  本地 Hadoop 安装可以使用 Flume 将数据发送到 Azure 存储 Blob 或 Azure Data Lake Storage。  有关详细信息，请参阅[将 Apache Flume 与 HDInsight 配合使用](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)。
+Apache Flume 无法与 Azure HDInsight 配合使用。  本地 Hadoop 安装可以使用 Flume 将数据发送到 Azure 存储 Blob 或 Azure Data Lake Storage。  有关详细信息，请参阅[将 Apache Flume 与 HDInsight 配合使用](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)。
 
 ## <a name="transform"></a>转换
 
