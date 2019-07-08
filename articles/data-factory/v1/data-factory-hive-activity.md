@@ -82,8 +82,8 @@ ms.locfileid: "60236156"
 | outputs |Hive 活动生成的输出 |是 |
 | linkedServiceName |参考在数据工厂中注册为链接服务的 HDInsight 群集 |是 |
 | script |指定 Hive 脚本内联 |否 |
-| 脚本路径 |将 Hive 脚本存储在 Azure blob 存储中，并提供该文件的路径。 使用“script”或“scriptPath”属性。 两者不能一起使用。 文件名称需区分大小写。 |否 |
-| 定义 |使用“hiveconf”在 Hive 脚本中指定参数作为密钥/值对，以便参考 |否 |
+| scriptPath |将 Hive 脚本存储在 Azure blob 存储中，并提供该文件的路径。 使用“script”或“scriptPath”属性。 两者不能一起使用。 文件名称需区分大小写。 |否 |
+| defines |使用“hiveconf”在 Hive 脚本中指定参数作为密钥/值对，以便参考 |否 |
 
 ## <a name="example"></a>示例
 请考虑游戏日志分析的示例，在此示例中，你想要确定用户用于玩公司发行的游戏的时间。 
