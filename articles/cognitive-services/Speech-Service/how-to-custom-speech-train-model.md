@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 7bc1f2adf3d8c38845218681a55e3942aa809db5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 49195efa54c8e6eca9186a9e2fc33da84ff34413
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603205"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625389"
 ---
 # <a name="train-a-model-for-custom-speech"></a>为自定义语音训练模型
 
@@ -25,12 +25,11 @@ ms.locfileid: "67603205"
 
 如果遇到识别问题与您的模型，使用用户标记的学习记录和相关的数据的额外的培训有助于提高准确性。 使用此表来确定要使用来解决您问题的数据集：
 
-| 使用案例 | 数据类型 | 数据数量 |
-|----------|-----------|---------------|
-| 专有名词是错误识别 | 相关的文本 （句子语音样本） | 10 MB 到 500 MB |
-| 单词将由于强调文字颜色 | 相关的文本 （发音） | 提供 misrecognized 的单词 |
-| 常见的单词被删除或错误识别 | 音频 + 标记人为的学习记录 | 10 到 1,000 个转录小时 |
-
+| 使用案例 | 数据类型 |
+|----------|-----------|
+| 提高识别精确度上特定于行业的词汇和语法，如医疗术语或 IT 专业术语 | 相关的文本 （句子语音样本） |
+| 定义拼音和显示窗体的字词或字词都使用了非标准的发音，如产品名称或首字母缩写词。 | 相关的文本 （发音） |
+| 提高识别精确度上讲样式、 音符或特定背景噪音 | 音频 + 标记人为的学习记录 |
 > [!IMPORTANT]
 > 如果你尚未上传数据集，请参阅[准备和测试数据](how-to-custom-speech-test-data.md)。 本文档提供有关上传数据，以及用于创建高质量数据集的指导原则的说明。
 

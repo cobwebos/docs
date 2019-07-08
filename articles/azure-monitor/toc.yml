@@ -435,8 +435,6 @@
                   href: app/proactive-exception-volume.md
                 - name: 内存泄漏
                   href: app/proactive-potential-memory-leak.md
-                - name: 资源利用率
-                  href: app/proactive-low-utilization-cloud-resources.md
                 - name: 安全检测
                   href: app/proactive-application-security-detection-pack.md
                 - name: Azure 云服务

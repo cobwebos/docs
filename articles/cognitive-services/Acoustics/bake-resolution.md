@@ -7,15 +7,15 @@ author: KyleStorck
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: KyleStorck
-ms.openlocfilehash: 7dbf63ba39c5dcdebb363cfc37a45f0216a07497
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8684cf16e41c763db01c064242cc5466b1c83f01
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61335427"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621409"
 ---
 # <a name="project-acoustics-bake-resolution"></a>项目噪声制作解决方法
 此概念概述介绍粗和没问题的解决办法，同时烤噪声之间的差异。 选择此设置面点工作流在探测步骤。

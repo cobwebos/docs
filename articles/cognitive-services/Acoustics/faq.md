@@ -7,15 +7,15 @@ author: kegodin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: resources
+ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1f2b4d25b39e9b3ebc6659e736d47640964251dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e979db29f4a223b61580c48101c0d242fdbebbf
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693883"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616331"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>项目噪声方面的常见问题
 
@@ -57,7 +57,7 @@ ACE 文件包括是大量源和侦听器位置对，以及用于参数内插 vox
  
 ## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>项目噪声可以处理动态 geometry？ 关门？ 墙壁被吹走了？
 
-不。 声学参数是根据静态的游戏级别预先计算出来的。 我们建议保留从噪声，门几何图形，然后将应用其他封闭根据易损坏的状态，并且使用可移动的游戏对象建立技术。
+否。 声学参数是根据静态的游戏级别预先计算出来的。 我们建议保留从噪声，门几何图形，然后将应用其他封闭根据易损坏的状态，并且使用可移动的游戏对象建立技术。
  
 ## <a name="does-project-acoustics-use-acoustic-materials"></a>项目噪声是否使用声学资料？
 

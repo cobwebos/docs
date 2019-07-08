@@ -4,17 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 通过使用联机控制台中的文本审查 API 体验文本审查。
 services: cognitive-services
 author: sanjeev3
+ms.author: sajagtap
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 21209548d1cfe7b6eebb1757e817a12c797e78a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a3eb134d655f2a25acb45e0d249aa421667d1520
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688836"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621390"
 ---
 # <a name="moderate-text-from-the-api-console"></a>从 API 控制台审查文本
 
@@ -171,8 +172,8 @@ Also, 999-99-9999 looks like a social security number (SSN).
 }
 ```
 
-有关 JSON 响应中的所有部分的详细说明，请参阅[文本审查](text-moderation-api.md)概念指南。
+有关 JSON 响应中各部分的详细说明，请参阅[文本审查](text-moderation-api.md)概念指南。
 
 ## <a name="next-steps"></a>后续步骤
 
-在代码中使用 REST API 或开始[文本审查.NET 快速入门](text-moderation-quickstart-dotnet.md)与你的应用程序集成。
+在代码中使用 REST API，或者从[文本审查 .NET 快速入门](text-moderation-quickstart-dotnet.md)开始，与你的应用程序集成。
