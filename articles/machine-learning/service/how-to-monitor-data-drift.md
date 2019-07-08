@@ -1,5 +1,5 @@
 ---
-title: 如何检测 AKS 部署数据偏差 （预览版）
+title: 检测到 AKS 部署数据偏差 （预览版）
 titleSuffix: Azure Machine Learning service
 description: 了解如何检测数据偏差 Azure Kubernetes 服务上的部署 Azure 机器学习服务中的模型。
 services: machine-learning
@@ -10,21 +10,24 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 06/20/2019
-ms.openlocfilehash: e4deeab28fb643ff32624ba9dd16574e621f508c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: c446c8236ca64948f0bb6a8354a83579cc6ff24c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332811"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443945"
 ---
-# <a name="how-to-detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service"></a>如何检测数据偏差 （预览版） 部署到 Azure Kubernetes 服务的模型
-在本文中，您将学习如何监视[数据偏差](concept-data-drift.md)之间已部署的模型的定型数据集和推断数据。 
+# <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service"></a>检测数据偏差 （预览版） 部署到 Azure Kubernetes 服务的模型
+在本文中，您将学习如何监视的数据训练数据集和推理之间的偏差的已部署的模型的数据。 
 
-数据偏差是主要理由之一，随着时间的推移会降低模型准确性。 它发生在提供给在生产环境中的模型的数据不同于用来训练该模型的数据。 Azure 机器学习服务可以监视数据偏差使用数据偏差检测程序。 如果检测到偏差时，该服务可以向你发送警报。  
+## <a name="what-is-data-drift"></a>数据偏差是什么？
+
+数据偏差，也称为概念偏差是主要理由之一，随着时间的推移会降低模型准确性。 它发生在提供给在生产环境中的模型的数据不同于用来训练该模型的数据。 Azure 机器学习服务可以监视数据偏差，并检测到偏差时，该服务可以向您发送电子邮件警报。  
 
 > [!Note]
 > 此服务为 （预览版） 和配置选项的限制。 请参阅我们[API 文档](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py)并[发行说明](azure-machine-learning-release-notes.md)有关详细信息和更新。 
 
+## <a name="what-can-i-monitor"></a>我可以监视什么？
 使用 Azure 机器学习服务时，可以监视在 AKS 上部署的模型的输入和此数据与模型的定型数据集进行比较。 推断数据是按固定间隔[快照和分析](how-to-explore-prepare-data.md)，然后对要生成的数据偏移分析的基准数据集计算的： 
 
 + 测量数据偏差，称为决定系数偏移量。
@@ -60,7 +63,7 @@ ms.locfileid: "67332811"
     print(model_name, image_name, service_name, model)
     ```
 
-- 设置[模型数据收集器](how-to-enable-data-collection.md)从 AKS 部署模型中收集数据并确认数据要收集在`modeldata`blob 容器。
+- [启用模型数据收集](how-to-enable-data-collection.md)从 AKS 部署模型中收集数据并确认数据要收集在`modeldata`blob 容器。
 
 ## <a name="import-dependencies"></a>导入依赖项 
 本指南中使用的导入依赖项：
@@ -85,11 +88,11 @@ datadrift = DataDriftDetector.create(ws, model.name, model.version, services, fr
 print('Details of Datadrift Object:\n{}'.format(datadrift))
 ```
 
-有关详细信息，请参阅[DataDrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py)引用。
+有关详细信息，请参阅`[DataDrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py)`类参考文档。
 
 ## <a name="submit-a-datadriftdetector-run"></a>提交 DataDriftDetector 运行
 
-使用配置 DataDriftDetector，可以将提交[运行的数据偏移](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-)在给定日期的模型。 
+与`DataDriftDetector`配置的对象，您可以提交[运行的数据偏移](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-)在给定日期的模型。 
 
 ```python
 # adhoc run today
@@ -107,7 +110,7 @@ dd_run = Run(experiment=exp, run_id=run)
 RunDetails(dd_run).show()
 ```
 
-## <a name="get-data-drift-analysis-results"></a>获取分析结果的数据偏移
+## <a name="visualize-drift-metrics"></a>可视化偏差指标
 
 下面的 Python 示例演示了如何绘制相关数据偏差度量值。 返回度量值可用于生成自定义可视化效果：
 
@@ -120,13 +123,13 @@ drift_metrics = datadrift.get_output(start_time=start, end_time=end)
 drift_figures = datadrift.show(with_details=True)
 ```
 
-![数据偏差 Show](media/how-to-monitor-data-drift/drift_show.png)
+![请参阅 Azure 机器学习检测到的数据偏差](media/how-to-monitor-data-drift/drift_show.png)
 
 计算的指标的详细信息，请参阅[数据偏差概念](concept-data-drift.md)一文。
 
-## <a name="schedule-data-drift-detection"></a>计划数据偏差检测 
+## <a name="schedule-data-drift-scans"></a>计划数据偏差扫描 
 
-启用数据偏差计划执行指定的频率运行 DataDriftDetector。 如果偏差系数大于给定的阈值，将发送一封电子邮件。 
+启用数据偏差检测，DataDriftDetector 运行指定的计划的频率。 如果偏差系数大于给定的阈值，将发送一封电子邮件。 
 
 ```python
 datadrift.enable_schedule()
@@ -143,9 +146,9 @@ datadrift.disable_schedule()
 
 ![Azure 门户数据偏差](media/how-to-monitor-data-drift/drift_ui.png)
 
-## <a name="setting-up-alerts"></a>设置警报 
+## <a name="receiving-drift-alerts"></a>接收偏移警报
 
-设置警报阈值和电子邮件地址，为提供的偏差系数[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)如果偏差系数高于阈值，则发送电子邮件警报。 所有数据偏差指标都存储在 app insights 资源与 Azure 机器学习服务工作区，以便设置针对自定义警报或操作相关联。 你可以遵循 app insights 查询中的电子邮件警报的链接。
+设置警报阈值和提供电子邮件地址的偏移系数[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)偏差系数值高于阈值时，自动发送电子邮件警报。 为了使你能够设置自定义警报和操作，所有数据偏差指标都存储在 Azure 机器学习服务工作区以及已创建的 Application Insights 资源。 你可以遵循 Application Insights 查询中的电子邮件警报的链接。
 
 ![数据偏差电子邮件警报](media/how-to-monitor-data-drift/drift_email.png)
 
