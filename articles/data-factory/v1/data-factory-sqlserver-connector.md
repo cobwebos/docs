@@ -79,7 +79,7 @@ ms.locfileid: "66156493"
 | type |类型属性应设置为：**OnPremisesSqlServer**。 |是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到本地 SQL Server 数据库时所需的 connectionString 信息。 |是 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 SQL Server 数据库。 |是 |
-| username |如果使用的是 Windows 身份验证，请指定用户名。 示例：域名\\用户名  。 |否 |
+| username |如果使用的是 Windows 身份验证，请指定用户名。 示例： domainname\\username 。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
 
 您可以加密使用的凭据**新建 AzDataFactoryEncryptValue** cmdlet，并使用它们在连接字符串中，如下面的示例中所示 (**EncryptedCredential**属性):
