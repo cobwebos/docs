@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8c82170cf9cff1870739bb13db9ac0e348a46c07
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150496"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443069"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
 
@@ -171,16 +171,16 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 1. 在自动化帐户中，依次单击“变量”  &gt;“添加变量”  ，再添加以下变量。 可以选择将这些资产加密。 这些变量为恢复计划专属。 如果恢复计划（将在下一步中创建）名为 TestPlan，变量应为 TestPlan-StorSimRegKey、TestPlan-AzureSubscriptionName 等。
 
    - **BaseUrl**：Azure 云的资源管理器 URL。 使用获取**Get AzEnvironment |-Select-object Name，ResourceManagerUrl** cmdlet。
-   - *RecoveryPlanName* **-ResourceGroupName**：包含 StorSimple 资源的资源管理器组。
-   - *RecoveryPlanName* **-ManagerName**：包含 StorSimple 设备的 StorSimple 资源。
-   - *RecoveryPlanName* **-DeviceName**：必须进行故障转移的 StorSimple 设备。
-   - *RecoveryPlanName* **-DeviceIpAddress**：设备的 IP 地址（可在“StorSimple 设备管理器”部分下的“设备”选项卡 &gt;“设置”&gt;“网络”&gt;“DNS 设置”组中找到）     。
-   - *RecoveryPlanName* **-VolumeContainers**：需要进行故障转移的设备上卷容器的逗号分隔字符串；例如，volcon1, volcon2, volcon3。
-   - *RecoveryPlanName* **-TargetDeviceName**：容器故障转移之后所在的 StorSimple 云设备。
-   - *RecoveryPlanName* **-TargetDeviceIpAddress**：目标设备的 IP 地址（可在“虚拟机”部分 &gt;“设置”组 &gt;“网络”选项卡中找到）    。
-   - *RecoveryPlanName* **-StorageAccountName**：存储脚本（必须在已故障转移的 VM 上运行）的存储帐户名称。 可以是具有一些空间暂时存储脚本的任何存储帐户。
-   - *RecoveryPlanName* **-StorageAccountKey**：上述存储帐户的访问密钥。
-   - *RecoveryPlanName* **-VMGUIDS**：保护 VM 时，Azure Site Recovery 将为每台 VM 分配唯一 ID，此 ID 可提供已故障转移的 VM 的详细信息。 若要获取 VMGUID，请选择“恢复服务”  选项卡，然后依次单击“受保护的项”  &gt;“保护组”  &gt;“计算机”  &gt;“属性”  。 如果有多个 VM，请以逗号分隔字符串的形式添加 GUID。
+   - _RecoveryPlanName_ **-ResourceGroupName**:包含 StorSimple 资源的资源管理器组。
+   - _RecoveryPlanName_ **-ManagerName**:包含 StorSimple 设备的 StorSimple 资源。
+   - _RecoveryPlanName_ **-DeviceName**:必须进行故障转移的 StorSimple 设备。
+   - _RecoveryPlanName_ **-DeviceIpAddress**:设备的 IP 地址（可在“StorSimple 设备管理器”部分下的“设备”选项卡 **“设置” **“网络” **“DNS 设置”组中找到）** &gt;** &gt;  。
+   - _RecoveryPlanName_ **-VolumeContainers**:需要进行故障转移的设备上卷容器的逗号分隔字符串；例如，volcon1, volcon2, volcon3。
+   - _RecoveryPlanName_ **-TargetDeviceName**:容器故障转移之后所在的 StorSimple 云设备。
+   - _RecoveryPlanName_ **-TargetDeviceIpAddress**:目标设备的 IP 地址（可在“虚拟机”部分 **“设置”组 **“网络”选项卡中找到）** &gt;  。
+   - _RecoveryPlanName_ **-StorageAccountName**:存储脚本（必须在已故障转移的 VM 上运行）的存储帐户名称。 可以是具有一些空间暂时存储脚本的任何存储帐户。
+   - _RecoveryPlanName_ **-StorageAccountKey**:上述存储帐户的访问密钥。
+   - _RecoveryPlanName_ **-VMGUIDS**:保护 VM 时，Azure Site Recovery 将为每台 VM 分配唯一 ID，此 ID 可提供已故障转移的 VM 的详细信息。 若要获取 VMGUID，请选择“恢复服务”  选项卡，然后依次单击“受保护的项”  &gt;“保护组”  &gt;“计算机”  &gt;“属性”  。 如果有多个 VM，请以逗号分隔字符串的形式添加 GUID。
 
      例如，如果恢复计划名为 fileServerpredayRP，“变量”  、“连接”  和“证书”  选项卡在添加完所有资产后应如下所示。
 
