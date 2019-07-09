@@ -189,9 +189,9 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     |属性  |值  |
     |---------|---------|
-    |名称 | 输入数据工厂的名称。 该名称必须全局唯一。|
-    |订阅 | 选择 Azure 订阅。 |
-    |资源组 | 选择“使用现有项”，然后选择使用 PowerShell 脚本创建的资源组。  |
+    |Name | 输入数据工厂的名称。 该名称必须全局唯一。|
+    |Subscription | 选择 Azure 订阅。 |
+    |Resource group | 选择“使用现有项”，然后选择使用 PowerShell 脚本创建的资源组。  |
     |Version | 将保留**V2**。 |
     |Location | 位置会自动设置为先前在创建资源组时指定的位置。 在本教程中，位置设置为“美国东部”  。 |
 
