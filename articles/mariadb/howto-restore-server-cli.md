@@ -116,7 +116,7 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 |resource-group| myresourcegroup | 新服务器将属于的资源组的名称。|
 |name | mydemoserver-georestored | 新服务器的名称。 |
 |source-server | mydemoserver | 将使用其异地冗余备份的现有服务器的名称。 |
-|位置 | eastus | 新服务器的位置。 |
+|location | eastus | 新服务器的位置。 |
 |sku-name| GP_Gen5_8 | 此参数设置新服务器的定价层、计算层代和 vCore 数。 GP_Gen5_8 映射为一台第 5 代常规用途服务器，具有 8 个 vCore。|
 
 >[!Important]
