@@ -64,6 +64,8 @@
           href: faq-backup-sql-server.md
         - name: 常见问题解答 - Azure 备份服务器和 DPM
           href: backup-azure-dpm-azure-server-faq.md
+        - name: 常见问题解答 - Azure 备份监视警报
+          href: backup-azure-monitor-alert-faq.md
     - name: 备份体系结构
       href: backup-architecture.md
     - name: 基于角色的访问控制

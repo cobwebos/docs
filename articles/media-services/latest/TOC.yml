@@ -36,11 +36,16 @@
   items:
     - name: 概述
       href: concepts-overview.md
-    - name: 云上传和存储
+    - name: 帐户
       items:
-        - name: 存储
+        - name: 媒体服务帐户
+          displayName: subscription
+          href: media-services-account-concept.md
+        - name: 存储帐户
           href: storage-account-concept.md
           displayName: Storage side encryption
+    - name: 上传
+      items:
         - name: 资产
           href: assets-concept.md
     - name: 编码
