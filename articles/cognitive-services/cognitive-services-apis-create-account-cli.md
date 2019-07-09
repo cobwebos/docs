@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 26f7f3ab60347d9ec5f2a144410ad3de436f5b5c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: acafc2c42c2946632496b646d001c58d6b48c2a6
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454891"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657710"
 ---
 # <a name="create-a-cognitive-services-account-using-the-azure-command-line-interfacecli"></a>创建认知服务帐户使用 Azure 命令行 Interface(CLI)
 
@@ -39,11 +39,11 @@ az login
  
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>创建新的 Azure 认知服务资源组
 
-你的订阅到认知服务由 Azure 资源表示。 每个认知服务帐户 （和其关联的 Azure 资源） 必须属于 Azure 资源组。
+你的订阅到认知服务由 Azure 资源表示。 每个认知服务帐户（及其关联的 Azure 资源）都必须属于某个 Azure 资源组。
 
 ### <a name="choose-your-resource-group-location"></a>选择你的资源组位置
 
-若要创建资源时，将为你的订阅需要一个可用的 Azure 位置。 您可以检索与可用位置的列表[az 帐户列出位置](/cli/azure/account#az_account_list)命令。 可以从多个位置访问大多数认知服务。 选择最靠近你，或查看哪些位置可用的服务。
+若要创建资源时，将为你的订阅需要一个可用的 Azure 位置。 您可以检索与可用位置的列表[az 帐户列出位置](/cli/azure/account#az-account-list-locations)命令。 可以从多个位置访问大多数认知服务。 选择最靠近你，或查看哪些位置可用的服务。
 
 > [!IMPORTANT]
 > * 请记住你的 Azure 位置，因为调用 Azure 认知服务时，将需要它。
@@ -55,7 +55,7 @@ az account list-locations \
     --out table
 ```
 
-你的 azure 位置后，使用在 Azure CLI 中创建新的资源组[az 组创建](/cli/azure/group#az_group_create)命令。
+你的 azure 位置后，使用在 Azure CLI 中创建新的资源组[az 组创建](/cli/azure/group#az-group-create)命令。
 
 在以下示例中，将替换为 azure 位置`westus2`适用于你的订阅的 Azure 位置之一。
 

@@ -146,7 +146,7 @@ Azure HDInsight 提供一个称为“脚本操作”的配置方法，该方法�
 
 HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
-| 名称 | 脚本 |
+| Name | 脚本 |
 | --- | --- |
 | 添加 Azure 存储帐户 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`。 请参阅[将其他存储帐户添加到 HDInsight](hdinsight-hadoop-add-storage.md)。 |
 | 安装 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`。 请参阅[在 HDInsight Hadoop 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
@@ -178,7 +178,7 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
     | 选择脚本 | 要使用自己的脚本，请选择“自定义”  。 否则，请从提供的脚本中选择一个。 |
     | Name |指定脚本操作的名称。 |
     | Bash 脚本 URI |指定脚本的 URI。 |
-    | Head/Worker/ZooKeeper 节点 |指定运行脚本的节点：“Head”、“Worker”或“ZooKeeper”。    |
+    | 头节点/辅助节点/Zookeeper 节点 |指定运行脚本的节点：“头节点”、“工作节点”或“ZooKeeper 节点”。    |
     | Parameters |根据脚本的需要，指定参数。 |
 
     使用“持久保存此脚本操作”条目，确保在执行缩放操作期间应用该脚本  。
@@ -258,10 +258,10 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
     | 属性 | 值 |
     | --- | --- |
     | 选择脚本 | 要使用自己的脚本，请选择“自定义”  。 否则，请选择提供的脚本。 |
-    | 名称 |指定脚本操作的名称。 |
+    | Name |指定脚本操作的名称。 |
     | Bash 脚本 URI |指定脚本的 URI。 |
     | 头节点/辅助节点/Zookeeper 节点 |指定运行脚本的节点：“头节点”、“工作节点”或“ZooKeeper 节点”。    |
-    | parameters |根据脚本的需要，指定参数。 |
+    | Parameters |根据脚本的需要，指定参数。 |
 
     使用“持久保存此脚本操作”条目，确保在缩放操作中应用了脚本  。
 

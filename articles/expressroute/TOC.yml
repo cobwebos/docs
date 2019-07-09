@@ -74,6 +74,9 @@
           href: expressroute-howto-circuit-arm.md
         - name: Azure CLI
           href: howto-circuit-cli.md
+        - name: Azure 资源管理器模板
+          displayName: 'ARM,resource manager template'
+          href: expressroute-howto-circuit-resource-manager-template.md
     - name: 创建和修改对等配置
       items:
         - name: Azure 门户
@@ -191,6 +194,7 @@
     - name: REST（经典）
       href: 'https://msdn.microsoft.com/library/azure/dn606310'
     - name: 资源管理器模板
+      displayName: 'ARM,resource manager template'
       href: /azure/templates/microsoft.network/expressroutecircuits
 - name: 资源
   items:

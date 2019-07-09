@@ -164,8 +164,6 @@
       href: common-parameters-and-headers.md
     - name: 客户数据
       href: key-vault-customer-data.md
-    - name: 发行说明
-      href: key-vault-versions.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: 上市区域

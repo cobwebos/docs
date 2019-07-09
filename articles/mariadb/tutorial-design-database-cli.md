@@ -85,7 +85,7 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 az mariadb server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-结果采用 JSON 格式。 记下 fullyQualifiedDomainName 和 administratorLogin。
+结果采用 JSON 格式。 记下 fullyQualifiedDomainName  和 administratorLogin  。
 ```json
 {
   "administratorLogin": "myadmin",

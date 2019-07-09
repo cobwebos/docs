@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: e1a6a44d7ff9d5786388fc47245ef5c79cb9be82
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 3be912f053bf206999546678e1e407548af181bf
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155727"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657679"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>启用 Azure 认知服务的诊断日志记录
 
@@ -28,14 +28,14 @@ ms.locfileid: "67155727"
 * [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) -可以分析的生成的一种 Azure 资源的原始日志数据的灵活的日志搜索和分析工具。
 
 > [!NOTE]
-> 提供了其他配置选项。 若要了解详细信息，请参阅[收集和使用日志数据从 Azure 资源](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)。
+> 提供了其他配置选项。 若要了解详细信息，请参阅[收集和使用日志数据从 Azure 资源](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)。
 
 ## <a name="enable-diagnostic-log-collection"></a>启用诊断日志收集  
 
 让我们先启用诊断日志记录使用 Azure 门户。
 
 > [!NOTE]
-> 若要启用此功能使用 PowerShell 或 Azure CLI，请使用中提供的说明[收集和使用日志数据从 Azure 资源](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs)。
+> 若要启用此功能使用 PowerShell 或 Azure CLI，请使用中提供的说明[收集和使用日志数据从 Azure 资源](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#diagnostic-settings)。
 
 1. 导航到 Azure 门户。 然后找到并选择认知服务资源。 例如，你订阅了必应 Web 搜索。   
 2. 接下来，从左侧导航菜单中，找到**监视**，然后选择**诊断设置**。 该屏幕包含此资源的所有以前创建的诊断设置。
