@@ -127,6 +127,14 @@
           href: sql-data-warehouse-overview-develop.md
         - name: 最佳做法
           href: sql-data-warehouse-best-practices-development.md
+        - name: 具体化视图
+          items:
+            - name: Create materialized view as select (Transact-SQL)
+              href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
+            - name: Alter materialized view as select (Transact-SQL)
+              href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: 结果集缓存
+          href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: 表
           items:
             - name: 概述

@@ -78,6 +78,9 @@
         - name: 预测变动率
           displayName: 'Basic Sample, training, classification, sample 5'
           href: ui-sample-classification-predict-churn.md
+        - name: 预测航班延误
+          displayName: 'Basic Sample, training, classification, sample 6'
+          href: ui-sample-classification-predict-flight-delay.md
     - name: Azure 开放数据集
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念

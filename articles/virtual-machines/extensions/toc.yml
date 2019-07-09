@@ -28,6 +28,10 @@
           href: azure-disk-enc-linux.md
         - name: Windows
           href: azure-disk-enc-windows.md
+    - name: 适用于 SQL Server 的 Azure 备份
+      items:
+        - name: 适用于 SQL Server 的 Azure 备份
+          href: backup-azure-sql-server-running-azure-vm.md
     - name: 自定义脚本
       items:
         - name: Linux - 版本 2
