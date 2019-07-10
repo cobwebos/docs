@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 04/12/2019
+ms.date: 06/28/2019
 ms.author: alkohli
-ms.openlocfilehash: cd4d84d6698ddeda2fb00a8452fbe8cd02771e4b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 3972f9f93cc6323601102f1a54bb067a8995d9e4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544562"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484757"
 ---
 # <a name="what-is-azure-data-box-edge"></a>什么是 Azure Data Box Edge？ 
 
@@ -34,7 +34,7 @@ Azure Data Box Edge 是具有网络数据传输功能的支持 AI 的边缘计�
     - 划分和传输在云中进行更深入分析所需的数据。
     - 分析和应对 IoT 事件。 
 
-- **推理 Azure 机器学习** - 使用 Data Box Edge 可以运行机器学习 (ML) 模型，以快速获取可处理的数据，然后将数据发送到云中。 将传输整个数据集，以继续重新训练和改善机器学习模型。
+- **推理 Azure 机器学习** - 使用 Data Box Edge 可以运行机器学习 (ML) 模型，以快速获取可处理的数据，然后将数据发送到云中。 可以传输整个数据集，以继续重新训练和改进机器学习模型。 有关如何在 Databox Edge 设备上使用 Azure ML 硬件加速模型的详细信息，请参阅[在 Databox Edge 上部署 Azure ML 硬件加速模型](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)。
 
 - **通过网络将数据传输到 Azure** - 使用 Data Box Edge 可以快速轻松地将数据传输到 Azure，以实现其他计算和分析或存档目的。 
 
@@ -55,7 +55,7 @@ Data Box Edge 具有以下功能：
 |功能 |说明  |
 |---------|---------|
 |高性能     | 完全自动化，高度优化的数据传输和带宽。|
-|支持的协议     | 支持用于数据引入的标准 SMB 和 NFS 协议。 <br> 有关支持的版本的详细信息，请转到 [Data Box Edge 系统要求](https://aka.ms/dbe-docs)。|
+|支持的协议     | 支持用于数据引入的标准 SMB 和 NFS 协议。 <br> 有关支持的版本的详细信息，请转到 [Data Box Edge 系统要求](data-box-edge-system-requirements.md)。|
 |计算       |允许分析、处理、筛选数据。|
 |数据访问     | 使用云 API 从 Azure 存储 Blob 和 Azure 文件中直接访问数据，以便在云中进行其他数据处理。|
 |快速访问     | 设备带有本地缓存，以便快速访问最近使用的文件。|
@@ -75,13 +75,13 @@ Data Box Edge 解决方案包括 Data Box Edge 资源、Data Box Edge 物理设�
 
     <!--![The Data Box Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    有关详细信息，请转到[使用 Data Box Edge 服务管理 Data Box Edge 设备](https://aka.ms/dbe-docs)。
+    有关详细信息，请转到[为 Data Box Edge 设备创建订单](data-box-edge-deploy-prep.md#create-a-new-resource)。
 
 * **Data Box 本地 Web UI** - 使用本地 Web UI 可以运行诊断、关闭和重启 Data Box Edge 设备、查看复制日志，并联系 Microsoft 支持部门来提出服务请求。
 
     <!--![The Data Box Edge local web UI](media/data-box-Edge-overview/data-box-Edge-local-web-ui.png)-->
 
-    有关使用基于 Web 的 UI 的详细信息，请转到[使用基于 Web 的 UI 管理 Data Box](https://aka.ms/dbe-docs)。
+    有关使用基于 Web 的 UI 的详细信息，请转到[使用基于 Web 的 UI 管理 Data Box](data-box-edge-manage-access-power-connectivity-mode.md)。
 
 
 ## <a name="region-availability"></a>上市区域

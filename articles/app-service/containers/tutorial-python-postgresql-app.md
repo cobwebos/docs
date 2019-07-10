@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b3d262a33ecbc35ada278019ee0998486bc92efe
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4b2304e170f9ddc14a5c1fa71a8822d083955106
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678915"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341518"
 ---
 # <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>在 Azure 应用服务中生成 Python 和 PostgreSQL 应用
 
@@ -65,7 +65,7 @@ psql postgres
 
 如果连接成功，则表示 PostgreSQL 数据库已在运行。 否则，请确保按照[下载 - PostgreSQL Core Distribution](https://www.postgresql.org/download/) 中针对操作系统的说明启动本地 PostgresQL 数据库。
 
-创建一个名为 pollsdb 的数据库，并设置一个名为 manager 的单独数据库用户，将其密码设置为supersecretpass。
+创建一个名为 pollsdb 的数据库，并设置一个名为 manager 的单独数据库用户，将其密码设置为supersecretpass    。
 
 ```sql
 CREATE DATABASE pollsdb;
@@ -142,7 +142,7 @@ Quit the server with CONTROL-C.
 
 在浏览器中导航至 `http://localhost:8000` 。 应该看到消息 `No polls are available.`。 
 
-导航到 `http://localhost:8000/admin`，使用在上一步创建的管理员用户登录。 单击“问题”旁边的“添加”，创建一个包含一些选项的轮询问题。
+导航到 `http://localhost:8000/admin`，使用在上一步创建的管理员用户登录。 单击“问题”旁边的“添加”，创建一个包含一些选项的轮询问题。  
 
 ![在本地运行的 Python Django 应用程序](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
@@ -236,7 +236,7 @@ GRANT ALL PRIVILEGES ON DATABASE pollsdb TO manager;
 键入 `\q` 退出 PostgreSQL 客户端。
 
 > [!NOTE]
-> 最佳做法是使用特定应用程序的受限权限而不是管理员用户来创建数据库用户。 在此示例中，`manager` 用户只具有 `pollsdb` 数据库的完整权限。
+> 最佳做法是使用特定应用程序的受限权限而不是管理员用户来创建数据库用户。 在此示例中，`manager` 用户只具有 `pollsdb` 数据库的完整权限。 
 
 ### <a name="test-app-connectivity-to-production-database"></a>测试从应用到生产数据库的连接
 
@@ -286,7 +286,8 @@ python manage.py runserver
 Django 会验证传入请求中的 `HTTP_HOST` 标头。 若要在应用服务中运行 Django 应用，需要将应用的完全限定域名添加到允许的主机中。 打开 _azuresite/settings.py_，找到 `ALLOWED_HOSTS` 设置。 将行更改为：
 
 ```python
-ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
+ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net',
+                 '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
 接下来，由于 Django 不支持[在生产环境中处理静态文件](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/)，因此需手动完成相关的启用操作。 在本教程中，请使用 [WhiteNoise](https://whitenoise.evans.io/en/stable/)。 WhiteNoise 包已经包括在 _requirements.txt_ 中。 只需将 Django 配置为使用它即可。 
@@ -336,7 +337,7 @@ git commit -am "configure for App Service"
 
 在本教程的前面部分，你已定义用于连接到 PostgreSQL 数据库的环境变量。
 
-在应用服务的 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置。
+在应用服务的 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置  。
 
 以下示例将数据库连接详细信息指定为应用设置。 
 
@@ -398,13 +399,13 @@ http://<app-name>.azurewebsites.net
 
 ## <a name="manage-your-app-in-the-azure-portal"></a>在 Azure 门户中管理应用
 
-转到 [Azure 门户](https://portal.azure.com)查看已创建的应用。
+转到 [Azure 门户](https://portal.azure.com)查看创建的应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。 
 
 ![在门户中导航到 Azure 应用](./media/tutorial-python-postgresql-app/app-resource.png)
 
-默认情况下，门户将显示应用的“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示应用的  “概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/tutorial-python-postgresql-app/app-mgmt.png)
 

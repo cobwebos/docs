@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 453827b42d12333fd4f27761e7f73484fb749532
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 730ff5ff12f18d1f85b3ca53adb42fee41e19fb4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865792"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>教程：Azure Active Directory 与 Trello 集成
 
@@ -39,7 +39,7 @@ ms.locfileid: "65865792"
 若要配置 Azure AD 与 Trello 的集成，需要以下项：
 
 * 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 已启用单一登录的 Trello 订阅。
+* 已启用 Trello 单一登录的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -77,7 +77,7 @@ ms.locfileid: "65865792"
 
 在本部分，我们基于名为 **Britta Simon** 的测试用户来配置并测试 Trello 的 Azure AD 单一登录。
 
-若要正常使用单一登录，需要在 Azure AD 用户与 Trello 中的相关用户之间建立关联。
+若要正常使用单一登录，需要在 Azure AD 用户与 Trello 相关用户之间建立链接关系。
 
 若要配置和测试 Trello 的 Azure AD 单一登录，需要完成以下构建基块：
 
@@ -109,7 +109,7 @@ ms.locfileid: "65865792"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 若要将应用程序配置为 IDP 发起的模式，请在“基本 SAML 配置部分”中执行以下步骤： 
+4. 若要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置部分”中执行以下步骤： 
 
     ![Trello 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "65865792"
 
     b. 在“回复 URL”框中，使用以下模式输入 URL：`https://trello.com/auth/saml/consume/<enterprise>` 
 
-5. 若要将应用程序配置为 SP 发起的模式，请选择“设置其他 URL”并执行以下步骤： 
+5. 若要在 SP 发起的模式下配置应用程序，请选择“设置其他 URL”并执行以下步骤： 
 
     ![Trello 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -156,11 +156,11 @@ ms.locfileid: "65865792"
 
     g. 选择“保存”。 
 
-8. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以根据自己的需要从给定的选项中下载“证书(Base64)”。     然后将证书保存在计算机上。
+8. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以根据要求从给定的选项中下载“证书(Base64)”。     然后将证书保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-9. 在“设置 Trello”部分中，根据自己的需要复制相应的 URL。 
+9. 在“设置 Trello”部分中，根据要求复制相应的 URL。 
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 

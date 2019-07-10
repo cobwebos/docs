@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51437a99217316ead50d4075be52f089225e618
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 16b11636068c2b5fc8d7591fd7e10a686037d9a4
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190871"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509315"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 
@@ -41,7 +41,7 @@ ms.locfileid: "65190871"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
 > 1. 访问 [Azure 门户 - 应用注册](https://aka.ms/aspnetcore2-1-aad-quickstart-v2)。
-> 1. 输入应用程序的名称并选择“注册”。
+> 1. 输入应用程序的名称并选择“注册”  。
 > 1. 遵照说明下载内容，并一键式自动配置新应用程序。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
@@ -52,15 +52,15 @@ ms.locfileid: "65190871"
 > 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 > 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
-> 1. 选择“新注册”。
-> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
->    - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `AspNetCore-Quickstart`。
->    - 在“重定向 URI”中添加 `https://localhost:44321/`，然后选择“注册”。
-> 1. 选择“身份验证”菜单，然后添加以下信息：
->    - 在“重定向 URI”中添加 `https://localhost:44321/signin-oidc`，然后选择“保存”。
->    - 在“高级设置”部分，将“注销 URL”设置为 `https://localhost:44321/signout-oidc`。
->    - 在“隐式授权”下，勾选“ID 令牌”。
->    - 选择“保存”。
+> 1. 选择“新注册”。 
+> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
+>    - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `AspNetCore-Quickstart`。
+>    - 在“重定向 URI”中添加 `https://localhost:44321/`，然后选择“注册”。  
+> 1. 选择“身份验证”菜单，然后添加以下信息  ：
+>    - 在“重定向 URI”中添加 `https://localhost:44321/signin-oidc`，然后选择“保存”。  
+>    - 在“高级设置”  部分，将“注销 URL”设置为 `https://localhost:44321/signout-oidc`。 
+>    - 在“隐式授权”下，勾选“ID 令牌”。  
+>    - 选择“保存”。 
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -79,23 +79,27 @@ ms.locfileid: "65190871"
 
 1. 将 zip 文件提取到根文件夹中的本地文件夹（例如，**C:\Azure-Samples**）
 1. 如果使用 Visual Studio 2019，请在 Visual Studio 中打开该解决方案（可选）。
-1. 编辑 **appsettings.json** 文件。 查找 `ClientId` 并使用你注册的应用程序的“应用程序 (客户端) ID”值更新 `ClientId` 的值。 
+1. 编辑 **appsettings.json** 文件。 查找 `ClientId` 并使用你注册的应用程序的“应用程序 (客户端) ID”  值更新 `ClientId` 的值。 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
     "TenantId": "Enter_the_Tenant_Info_Here"
     ```
 
+> [!div renderon="portal"]
+> > [!NOTE]
+> > 本快速入门支持 Enter_the_Supported_Account_Info_Here。
+
 > [!div renderon="docs"]
 > 其中：
-> - `Enter_the_Application_Id_here` - 在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在应用的“概览”页中找到“应用程序(客户端) ID”。
+> - `Enter_the_Application_Id_here` - 在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在应用的“概览”页中找到“应用程序(客户端) ID”。  
 > - `Enter_the_Tenant_Info_Here` - 以下选项之一：
->   - 如果应用程序支持“仅限此组织目录中的帐户”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
->   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为 `organizations`
->   - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值替换为 `common`
+>   - 如果应用程序支持“仅限此组织目录中的帐户”  ，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
+>   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为  `organizations`
+>   - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值替换为  `common`
 >
 > > [!TIP]
-> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。
+> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。    
 
 ## <a name="more-information"></a>详细信息
 
@@ -103,7 +107,7 @@ ms.locfileid: "65190871"
 
 ### <a name="startup-class"></a>Startup 类
 
-Microsoft.AspNetCore.Authentication 中间件使用主机进程初始化时执行的 Startup 类：
+Microsoft.AspNetCore.Authentication 中间件使用主机进程初始化时执行的 Startup 类  ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -143,7 +147,7 @@ public void ConfigureServices(IServiceCollection services)
 > |其中  |  |
 > |---------|---------|
 > | ClientId  | Azure 门户中注册的应用程序的应用程序（客户端）ID。 |
-> | 颁发机构 | 用户要进行身份验证的 STS 终结点。 对于公有云，此项通常为 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 是租户名称、租户 ID 或者引用常用终结点（用于多租户应用程序）的 common |
+> | 颁发机构 | 用户要进行身份验证的 STS 终结点。 对于公有云，此项通常为 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 是租户名称、租户 ID 或者引用常用终结点（用于多租户应用程序）的 common  |
 > | TokenValidationParameters | 用于令牌验证的参数列表。 在这种情况下，`ValidateIssuer` 设置为 `false`，以指示它可以接受来自任何个人或工作或学校帐户的登录。 |
 
 

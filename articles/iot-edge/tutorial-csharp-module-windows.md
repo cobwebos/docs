@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 122028217a78463fa2ceaed63248a74257206345
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: d7ccce1f21b1caa2268317b7239617a80ddce10b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808767"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485938"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教程：开发适用于 Windows 设备的 C# IoT Edge 模块
 
@@ -54,7 +54,7 @@ ms.locfileid: "66808767"
 * 配置为运行 Windows 容器的 [Docker CE](https://docs.docker.com/install/)。
 
 > [!TIP]
-> 如果使用的是 Visual Studio 2017（15.7 或更高版本），请从 Visual Studio 市场下载并安装适用于 VS 2017 的 [Azure IoT Edge Tools（预览版）](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)
+> 如果使用的是 Visual Studio 2017（版本 15.7 或更高版本），请从 Visual Studio 市场下载并安装适用于 VS 2017 的 [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)
 
 ## <a name="create-a-module-project"></a>创建模块项目
 

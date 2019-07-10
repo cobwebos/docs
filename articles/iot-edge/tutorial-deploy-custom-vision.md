@@ -5,26 +5,27 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a0530739428e18d01209f94345ae53dfb743d80b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 12b141f9aa75231adae9f64c57709f290883b420
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239683"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433944"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
-Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更高效。 此功能非常适用于处理大量数据的服务，例如计算机视觉模型。 [自定义视觉服务](../cognitive-services/custom-vision-service/home.md)用于生成自定义图像分类器并将其作为容器部署到设备。 将这两项服务一起使用可以对图像或视频流进行分析，不需先将所有数据从站点转移出来。 自定义视觉提供一个可以将图像与训练的模型进行比较的分类器，以便生成见解。 
+Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更高效。 此功能非常适用于处理大量数据的服务，例如计算机视觉模型。 [自定义视觉服务](../cognitive-services/custom-vision-service/home.md)用于生成自定义图像分类器并将其作为容器部署到设备。 将这两项服务一起使用可以对图像或视频流进行分析，不需先将所有数据从站点转移出来。 自定义视觉提供一个可以将图像与训练的模型进行比较的分类器，以便生成见解。
 
-例如，IoT Edge 设备上的自定义视觉可以确定某条高速公路的交通流量是高于还是低于正常，或者某个室内停车场是否有连续的停车位。 这些见解可以与其他服务共享，方便采取行动。 
+例如，IoT Edge 设备上的自定义视觉可以确定某条高速公路的交通流量是高于还是低于正常，或者某个室内停车场是否有连续的停车位。 这些见解可以与其他服务共享，方便采取行动。
 
-本教程介绍如何执行下列操作： 
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
+>
 > * 使用自定义视觉生成图像分类器。
 > * 开发用于在设备上查询自定义视觉 Web 服务器的 IoT Edge 模块。
 > * 将图像分类器的结果发送到 IoT 中心。
@@ -72,10 +73,11 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
    | ----- | ----- |
    | 名称 | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
    | 说明 | 可选项目说明。 |
-   | 资源组 | 接受默认的“有限试用版”。  |
+   | 资源组 | 选择一个包含自定义视觉服务资源的 Azure 资源组，或者如果尚未添加 Azure 资源组，则选择“新建”  。 |
    | 项目类型 | **分类** |
-   | 分类类型 | **多类(一个图像一个标记)** | 
+   | 分类类型 | **多类(一个图像一个标记)** |
    | 域 | **常规(精简)** |
+   | 导出功能 | **基本平台（Tensorflow、CoreML、ONNX 等）** |
 
 5. 选择“创建项目”。 
 

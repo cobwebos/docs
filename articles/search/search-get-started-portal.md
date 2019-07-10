@@ -1,6 +1,6 @@
 ---
-title: 快速入门：在 Azure 门户中创建、加载和查询索引 - Azure 搜索
-description: 使用 Azure 门户中的内置示例数据和导入数据向导在 Azure 搜索中构建和查询第一个索引。
+title: 快速入门：使用 Azure 门户创建、加载和查询索引 - Azure 搜索
+description: 使用 Azure 门户中的“导入数据”向导在 Azure 搜索中创建、加载和查询第一个索引。
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e5baa0876dc976553e8e541cef6b481329500bf6
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 4a1944c5c5f169274cf45bd3ebfb6df47942dd5a
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606459"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485635"
 ---
-# <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>快速入门：使用内置门户工具在 Azure 搜索中进行导入、索引编制和查询
+# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 搜索索引
 > [!div class="op_single_selector"]
 > * [门户](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
-> * [Postman](search-fiddler.md)
+> * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
 >*
 
@@ -34,7 +34,7 @@ ms.locfileid: "65606459"
 > * 查看现有索引和修改索引的选项
 > * 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索 
 
-如果这些工具限制过多，则可考虑参阅[在 .NET 中进行基于代码的 Azure 搜索编程简介](search-howto-dotnet-sdk.md)，或使用[进行 REST API 调用的 Postman 或 Fiddler](search-fiddler.md)。
+如果这些工具限制过多，则可考虑参阅[在 .NET 中进行基于代码的 Azure 搜索编程简介](search-howto-dotnet-sdk.md)，或使用[进行 REST API 调用的 Postman 或 Fiddler](search-get-started-postman.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 也可以花费 3 分钟时间观看这部 [Azure 搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)，其中对本教程所述的步骤做了 6 分钟的演示。
 
@@ -274,4 +274,4 @@ ms.locfileid: "65606459"
 
 * [使用 .NET SDK 创建索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [使用 REST API 创建索引](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [使用 Postman/Fiddler 和 Azure 搜索 REST Api 创建索引](search-fiddler.md)
+* [使用 Postman/Fiddler 和 Azure 搜索 REST Api 创建索引](search-get-started-postman.md)

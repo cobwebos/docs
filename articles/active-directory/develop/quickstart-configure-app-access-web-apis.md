@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b434e5b0c4524af642eb1255597cd3e7674571c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7e8b0e17248dff3c53b96fd240a7566f09b22fae
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545802"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482685"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：将客户端应用程序配置为访问 Web API
 
@@ -56,8 +56,8 @@ ms.locfileid: "65545802"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务，然后选择“应用注册”。
-1. 找到并选择要配置的应用程序。 选择应用以后，会看到应用程序的“概览”页或主注册页。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  ，然后选择“应用注册”。 
+1. 找到并选择要配置的应用程序。 选择应用以后，会看到应用程序的“概览”页或主注册页。 
 1. 按步骤将应用程序配置为访问 Web API： 
     * [将重定向 URL 添加到应用程序](#add-redirect-uris-to-your-application)
     * [将凭据添加到 Web 应用程序](#add-credentials-to-your-web-application)
@@ -69,19 +69,19 @@ ms.locfileid: "65545802"
 
 若要将重定向 URI 添加到应用程序，请执行以下步骤：
 
-1. 在应用的“概览”页中，选择“身份验证”部分。
+1. 在应用的“概览”页中，选择“身份验证”部分。  
 
 1. 若要为 Web 和公共客户端应用程序添加自定义重定向 URI，请执行以下步骤：
 
-   1. 找到“重定向 URI”部分。
-   1. 选择要生成的应用程序的类型：“Web”或“公共客户端(移动和桌面)”。
+   1. 找到“重定向 URI”  部分。
+   1. 选择要生成的应用程序的类型：“Web”或“公共客户端(移动和桌面)”。  
    1. 输入应用程序的重定向 URI。
       * 对于 Web 应用程序，请提供应用程序的基 URL。 例如，`http://localhost:31544` 可以是本地计算机上运行的 Web 应用程序的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。
-      * 对于公共应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 https://MyFirstApp。
+      * 对于公共应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 https://MyFirstApp 。
 
 1. 若要从建议用于公共客户端（移动、桌面）的重定向 URI 中进行选择，请执行以下步骤：
 
-    1. 找到“建议用于公共客户端(移动、桌面)的重定向 URI”部分。
+    1. 找到“建议用于公共客户端(移动、桌面)的重定向 URI”部分。 
     1. 通过复选框选择适用于应用程序的重定向 URI。
 
 ## <a name="add-credentials-to-your-web-application"></a>将凭据添加到 Web 应用程序
@@ -90,17 +90,17 @@ ms.locfileid: "65545802"
 
 若要向 Web 应用程序添加凭据，请执行以下操作：
 
-1. 在应用的“概览”页中，选择“证书和机密”部分。
+1. 在应用的“概览”页中，选择“证书和机密”部分。  
 
 1. 若要添加证书，请执行以下步骤：
 
-    1. 选择“上传证书”。
+    1. 选择“上传证书”。 
     1. 选择要上传的文件。 它必须是以下文件类型之一：.cer、.pem、.crt。
     1. 选择 **添加** 。
 
 1. 若要添加客户端机密，请执行以下步骤：
 
-    1. 选择“新建客户端机密”。
+    1. 选择“新建客户端机密”。 
     1. 添加客户端机密的说明。
     1. 选择持续时间。
     1. 选择 **添加** 。
@@ -110,18 +110,18 @@ ms.locfileid: "65545802"
 
 ## <a name="add-permissions-to-access-web-apis"></a>添加用于访问 Web API 的权限
 
-[![添加 API 权限](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
+[![显示可以添加 API 权限的屏幕](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
 
 若要添加从客户端访问资源 API 的权限，请执行以下操作：
 
-1. 在应用的“概览”页中，选择“API 权限”部分。
-1. 选择“添加权限”按钮。
-1. 默认情况下，此视图允许从“Microsoft API”进行选择。 选择感兴趣的 API 部分。
+1. 在应用的“概览”页中，选择“API 权限”部分。  
+1. 选择“添加权限”  按钮。
+1. 默认情况下，此视图允许从“Microsoft API”进行选择。  选择感兴趣的 API 部分。
     * **Microsoft API** - 用于选择 Microsoft API（例如 Microsoft Graph）的权限。
     * **组织使用的 API** - 用于选择由组织公开的 API 或组织已与之集成的 API 的权限。
     * **我的 API** - 用于选择你已经公开的 API 的权限。
-1. 选择 API 后，会看到“请求 API 权限”页。 如果 API 公开托管的权限和应用程序权限，请选择应用程序需要哪种类型的权限。
-1. 完成后，请选择“添加权限”。 此时会返回到“API 权限”页，其中的权限已保存并添加到表。
+1. 选择 API 后，会看到“请求 API 权限”页。  如果 API 公开托管的权限和应用程序权限，请选择应用程序需要哪种类型的权限。
+1. 完成后，请选择“添加权限”  。 此时会返回到“API 权限”页，其中的权限已保存并添加到表。 
 
 ## <a name="next-steps"></a>后续步骤
 

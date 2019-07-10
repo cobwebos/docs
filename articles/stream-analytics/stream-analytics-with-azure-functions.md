@@ -7,17 +7,17 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.workload: data-services
-ms.date: 04/09/2018
+ms.date: 06/05/2019
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 80977c13aa9851ea5df9a15f5b9580dd1a931259
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 5aa2616bfbfd4b31d3e5e5aeee71da8fd511faed
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569189"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066714"
 ---
-# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>从 Azure 流分析作业运行 Azure Functions 
+# <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教程：从 Azure 流分析作业运行 Azure Functions 
 
 可将 Functions 配置为流分析作业的输出接收器之一，以便通过 Azure 流分析运行 Azure Functions。 Functions 是事件驱动的按需计算体验，它允许实现由 Azure 或第三方服务中出现的事件所触发的代码。 Functions 响应触发的这一功能使其成为流分析作业的自然输出。
 
@@ -26,9 +26,10 @@ ms.locfileid: "57569189"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 创建流分析作业
+> * 创建和运行流分析作业
+> * 创建用于 Redis 的 Azure 缓存实例
 > * 创建 Azure 函数
-> * 将 Azure 函数配置为作业的输出
+> * 在用于 Redis 的 Azure 缓存中检查结果
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -38,22 +39,15 @@ ms.locfileid: "57569189"
 
 ![显示各项 Azure 服务间关系的图表](./media/stream-analytics-with-azure-functions/image1.png)
 
-需要执行以下步骤来完成此任务：
-* [创建以事件中心为输入的流分析作业](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* 创建用于 Redis 的 Azure 缓存实例  
-* 在 Azure Functions 中创建可将数据写入到用于 Redis 的 Azure 缓存的函数    
-* [更新流分析作业，以函数作为输出](#update-the-stream-analytics-job-with-the-function-as-output)  
-* 在用于 Redis 的 Azure 缓存中检查结果  
-
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>创建以事件中心为输入的流分析作业
 
-按照[实时欺诈检测](stream-analytics-real-time-fraud-detection.md)教程以创建事件中心，启动事件生成器应用程序，并创建流分析作业。 （跳过创建查询和输出的步骤。 改为按以下各节所述设置 Functions 输出。）
+按照[实时欺诈检测](stream-analytics-real-time-fraud-detection.md)教程以创建事件中心，启动事件生成器应用程序，并创建流分析作业。 跳过创建查询和输出的步骤。 改为按以下各节所述设置 Azure Functions 输出。
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>创建用于 Redis 的 Azure 缓存实例
 
 1. 使用[创建缓存](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)中所述的步骤，在用于 Redis 的 Azure 缓存中创建缓存。  
 
-2. 创建缓存后，在“设置”下方选择“访问密钥”。 记下主要连接字符串。
+2. 创建缓存后，在“设置”  下方选择“访问密钥”  。 记下主要连接字符串  。
 
    ![用于 Redis 的 Azure 缓存连接字符串的屏幕截图](./media/stream-analytics-with-azure-functions/image2.png)
 
@@ -61,7 +55,7 @@ ms.locfileid: "57569189"
 
 1. 请参阅 Functions 文档的[创建函数应用](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)一节。 该小节演示了如何通过使用 CSharp 语言，[在 Azure Functions 中创建函数应用和 HTTP 触发的函数](../azure-functions/functions-create-first-azure-function.md#create-function)。  
 
-2. 浏览到 run.csx 函数。 将其更新为以下代码。 （请务必将“\<在此处放置用于 Redis 的 Azure 缓存连接字符串\>”替换为上一节中检索到的用于 Redis 的 Azure 缓存主连接字符串。）  
+2. 浏览到 run.csx  函数。 将其更新为以下代码。 将“\<在此处放置用于 Redis 的 Azure 缓存连接字符串\>”  替换为上一节中检索到的用于 Redis 的 Azure 缓存主连接字符串。 
 
     ```csharp
     using System;
@@ -112,7 +106,7 @@ ms.locfileid: "57569189"
 
    ```
 
-   当流分析从函数收到“HTTP 请求实体过大”异常时，将减小发送到 Azure Functions 的批次的大小。 在函数中，使用下面的代码检查流分析，确保其不会发送过大的批次。 确保函数中使用的最大批次数和最大批次大小值与在流分析门户中输入的值一致。
+   当流分析从函数收到“HTTP 请求实体过大”异常时，将减小发送到 Azure Functions 的批次的大小。 下面的代码确保流分析不会发送过大的批。 确保函数中使用的最大批次数和最大批次大小值与在流分析门户中输入的值一致。
 
     ```csharp
     if (dataArray.ToString().Length > 262144)
@@ -121,7 +115,7 @@ ms.locfileid: "57569189"
         }
    ```
 
-3. 在所选的文本编辑器中，创建名为 project.json 的 JSON 文件。 使用下面的代码，将其保存在本地计算机上。 此文件包含 C# 函数所需的 NuGet 包依赖项。  
+3. 在所选的文本编辑器中，创建名为 project.json  的 JSON 文件。 粘贴下面的代码，并将其保存在本地计算机上。 此文件包含 C# 函数所需的 NuGet 包依赖项。  
    
     ```json
     {
@@ -137,21 +131,19 @@ ms.locfileid: "57569189"
 
    ```
  
-4. 返回到 Azure 门户。 从“平台功能”选项卡，浏览到你的函数。 在“开发工具”下方，选择“应用服务编辑器”。 
+4. 返回到 Azure 门户。 从“平台功能”  选项卡，浏览到你的函数。 在“开发工具”  下方，选择“应用服务编辑器”  。 
  
    ![应用服务编辑器的屏幕截图](./media/stream-analytics-with-azure-functions/image3.png)
 
-5. 在应用服务编辑器中，右键单击根目录，并上传 project.json 文件。 上传成功后，刷新页面。 现在，应可看到名为 project.lock.json 的自动生成文件。 该自动生成文件包含对 project.json 文件中指定 .dll 文件的引用。  
+5. 在应用服务编辑器中，右键单击根目录，并上传 project.json  文件。 上传成功后，刷新页面。 现在，应可看到名为 project.lock.json  的自动生成文件。 该自动生成文件包含对 project.json 文件中指定 .dll 文件的引用。  
 
    ![应用服务编辑器的屏幕截图](./media/stream-analytics-with-azure-functions/image4.png)
-
- 
 
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>更新流分析作业，以函数作为输出
 
 1. 在 Azure 门户中打开流分析作业。  
 
-2. 浏览到你的函数，并选择“概述” > “输出” > “添加”。 若要添加新的输出，请选择“Azure 函数”接收器选项。 Functions 输出适配器具有以下属性：  
+2. 浏览到你的函数，并选择“概述”   > “输出”   > “添加”  。 若要添加新的输出，请选择“Azure 函数”  接收器选项。 Functions 输出适配器具有以下属性：  
 
    |**属性名称**|**说明**|
    |---|---|
@@ -163,9 +155,9 @@ ms.locfileid: "57569189"
    |最大批数|指定发送给函数的每个批次中的最大事件数。 默认值为 100。 此属性是可选的。|
    |密钥|可以使用其他订阅中的函数。 提供用于访问你的函数的键值。 此属性是可选的。|
 
-3. 命名输出别名。 在本教程中，我们将其命名为 saop1（可以使用你选择的任何名称）。 填写其他详细信息。  
+3. 命名输出别名。 在本教程中，我们将其命名为 saop1  ，但你可以使用所选的任何名称。 填写其他详细信息。
 
-4. 打开流分析作业，将查询更新为以下内容。 （如果已将输出接收器命名为其他名称，请务必替换“saop1”文本。）  
+4. 打开流分析作业，将查询更新为以下内容。 如果没有将输出接收器命名为 **saop1**，请记住在查询中更改它。  
 
    ```sql
     SELECT
@@ -178,15 +170,17 @@ ms.locfileid: "57569189"
         WHERE CS1.SwitchNum != CS2.SwitchNum
    ```
 
-5. 在命令行运行以下命令，启动 telcodatagen.exe 应用程序（使用格式 `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`）：  
+5. 在命令行中运行以下命令，启动 telcodatagen.exe 应用程序。 该命令使用格式 `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`。  
    
-   **telcodatagen.exe 1000 .2 2**
+   ```cmd
+   telcodatagen.exe 1000 0.2 2
+   ```
     
 6.  启动流分析作业。
 
 ## <a name="check-azure-cache-for-redis-for-results"></a>在用于 Redis 的 Azure 缓存中检查结果
 
-1. 浏览到 Azure 门户，并查找你的用于 Redis 的 Azure 缓存。 选择“控制台”。  
+1. 浏览到 Azure 门户，并查找你的用于 Redis 的 Azure 缓存。 选择“控制台”  。  
 
 2. 使用[用于 Redis 的 Azure 缓存命令](https://redis.io/commands)验证你的数据是否在用于 Redis 的 Azure 缓存中。 （该命令采用 Get {key} 格式。）例如：
 
@@ -213,8 +207,8 @@ ms.locfileid: "57569189"
 
 若不再需要资源组、流式处理作业以及所有相关资源，请将其删除。 删除作业可避免对作业使用的流单元进行计费。 如果计划在将来使用该作业，可以先停止该作业，以后在需要时再重启该作业。 如果不打算继续使用该作业，请按照以下步骤删除本快速入门创建的所有资源：
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。  
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，并单击已创建资源的名称。  
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。  
 
 ## <a name="next-steps"></a>后续步骤
 

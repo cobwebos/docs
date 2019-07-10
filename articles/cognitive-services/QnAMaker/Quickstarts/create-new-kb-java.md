@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 85d5fa1cc036737497e276413985e0828e3b51f6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c6fddec80da1baa852a2f3712a94b785d775919e
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788721"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151040"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：在 QnA Maker 中使用 Java 创建知识库
 
@@ -100,7 +100,7 @@ ms.locfileid: "65788721"
 ```
 
 ## <a name="add-a-main-method"></a>添加 main 方法
-main 方法创建知识库，然后轮询状态。 _create_ **Operation ID** 在 POST 响应标头字段 **Location** 中返回，然后在 GET 请求中用作路由的一部分。 **`while` 循环重试获取状态（如果该操作未完成）。
+main 方法创建知识库，然后轮询状态。 操作 ID 在 POST 响应标头字段 **Location** 中返回，然后在 GET 请求中用作路由的一部分。 `while` 循环重试获取状态（如果该操作未完成）。
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

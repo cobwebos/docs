@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: ebed76c82b647d11e34a17ae94edf208929f8c56
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b9985bfa15cf300f82a0d24400ed1167a2d3f135
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475256"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537566"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据
 
@@ -30,30 +30,18 @@ ms.locfileid: "66475256"
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
-获得使用表单识别器所需的访问权限时，你会收到一封欢迎电子邮件，其中包含多个链接和资源。 使用该邮件中的“Azure 门户”链接打开 Azure 门户并创建表单识别器资源。 在“创建”窗格中提供以下信息： 
-
-|    |    |
-|--|--|
-| **名称** | 资源的描述性名称。 建议使用描述性名称，例如“MyNameFormRecognizer”  。 |
-| **订阅** | 选择已被授予访问权限的 Azure 订阅。 |
-| **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 |
-| **定价层** | 资源的费用取决于所选的定价层和使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
-| **资源组** | 将包含资源的 [Azure 资源组](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group)。 可以创建新组或将其添加到预先存在的组。 |
-
-> [!IMPORTANT]
-> 通常情况下，在 Azure 门户中创建认知服务资源时，可以选择创建多服务订阅密钥（跨多个认知服务使用）或单服务订阅密钥（仅与单个具体的认知服务配合使用）。 但是，由于表单识别器为预览版，因此未将其包括在多服务订阅中。除非使用欢迎电子邮件中提供的链接，否则你不能创建单一服务订阅。
-
-表单识别器资源完成部署以后，请在门户的“所有资源”列表中找到并选中它。  然后，选择“密钥”选项卡以查看订阅密钥。  任一密钥都会为应用提供资源访问权限。 复制**密钥 1** 的值。 在接下来的部分中将使用它。
+[!INCLUDE [create resource](../includes/create-resource.md)]
 
 ## <a name="train-a-form-recognizer-model"></a>训练表单识别器模型
 
-首先，你需要 Azure 存储 blob 中的一组训练数据。 应至少有五个类型/结构与主要输入数据相同的示例表单（PDF 文档和/或图像）。 或者，可以使用一个空表单和两个已填充表单。 空表单的文件名需要包括单词“empty”。
+首先，需要 Azure 存储 blob 容器中的一组训练数据。 应至少有五个类型/结构与主要输入数据相同的已填写表单（PDF 文档和/或图像）。 或者，可以使用一个空表单和两个已填充表单。 空表单的文件名需要包括单词“empty”。 有关整理训练数据的提示和选项，请参阅[为自定义模型生成训练数据集](../build-training-data-set.md)。
 
 若要使用 Azure Blob 容器中的文档训练表单识别器模型，请通过运行下面的 python 代码来调用“训练”API。  运行该代码之前，请进行以下更改：
 
 1. 将 `<Endpoint>` 替换为获取的订阅密钥所在的 Azure 区域中的表单识别器资源的终结点 URL。
-1. 将 `<SAS URL>` 替换为训练数据所在位置的 Azure Blob 存储容器共享访问签名 (SAS) URL。  
 1. 将 `<Subscription key>` 替换为从上一步复制的订阅密钥。
+1. 将 `<SAS URL>` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索此信息，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”  。 确保选中“读取”  和“列表”  权限，然后单击“创建”  。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
+
     ```python
     ########### Python Form Recognizer Train #############
     from requests import post as http_post
@@ -77,7 +65,7 @@ ms.locfileid: "66475256"
     ```
 1. 将代码保存在以 .py 为扩展名的文件中。 例如，*form-recognize-train.py*。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognize-train.py`。
+1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognize-train.py` 。
 
 你会收到包含以下 JSON 输出的 `200 (Success)` 响应：
 
@@ -127,9 +115,9 @@ ms.locfileid: "66475256"
 接下来，分析某个文档并从中提取键值对和表。 请运行以下 Python 脚本，调用“模型 - 分析”API。  运行该命令之前，请进行以下更改：
 
 1. 将 `<Endpoint>` 替换为从表单识别器订阅密钥中获得的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
-1. 将 `<File Path>` 替换为要从中提取数据的表单所在位置的文件路径或 URL。
+1. 将 `<path to your form>` 替换为表单的文件路径（例如，C:\temp\file.pdf）。
 1. 将 `<modelID>` 替换为在上一部分收到的模型 ID。
-1. 将 `<file type>` 替换为文件类型。 支持的类型：pdf、image/jpeg、image/png。
+1. 将 `<file type>` 替换为文件类型。 支持的类型：`application/pdf`、`image/jpeg`、`image/png`。
 1. 将 `<subscription key>` 替换为订阅密钥。
 
     ```python
@@ -138,11 +126,11 @@ ms.locfileid: "66475256"
     
     # Endpoint URL
     base_url = r"<Endpoint>" + "/formrecognizer/v1.0-preview/custom"
-    file_path = r"<File Path>"
+    file_path = r"<path to your form>"
     model_id = "<modelID>"
     headers = {
         # Request headers
-        'Content-Type': 'application/<file type>',
+        'Content-Type': '<file type>',
         'Ocp-Apim-Subscription-Key': '<subscription key>',
     }
 
@@ -159,7 +147,7 @@ ms.locfileid: "66475256"
 
 1. 将代码保存在以 .py 为扩展名的文件中。 例如，*form-recognize-analyze.py*。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognize-analyze.py`。
+1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognize-analyze.py` 。
 
 ### <a name="examine-the-response"></a>检查响应
 

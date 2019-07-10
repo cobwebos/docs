@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 8d108e1683be03a79e87990b983f2eda3eadba90
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 08ef140eb860637cc0c09619abe7051cc007e99f
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797538"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540296"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>教程：使用 Azure 存储队列
 
@@ -227,6 +227,14 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
    ```
 
 2. 保存文件。
+
+消息必须采用可包含在 XML 请求中的 UTF-8 编码格式，大小不能超过 64 KB。 如果消息包含二进制数据，则我们建议对消息进行 Base64 编码。
+
+消息的最大生存时间默认设置为 7 天。 可以为消息生存时间指定任何正数。 若要添加未过期的消息，请在对 **AddMessageAsync** 的调用中使用 `Timespan.FromSeconds(-1)`。
+
+```csharp
+await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
+```
 
 ## <a name="dequeue-messages"></a>取消消息的排队
 

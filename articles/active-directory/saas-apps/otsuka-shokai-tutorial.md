@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bec4cb17f2d25cd00ef115a78736c95eaf26d95f
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: bd06eafca2c508bc73fa2b327235621797be417c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752460"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274194"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>教程：将 Otsuka Shokai 与 Azure Active Directory 集成
 
@@ -29,7 +29,6 @@ ms.locfileid: "66752460"
 
 * 在 Azure AD 中控制谁有权访问 Otsuka Shokai。
 * 让用户使用其 Azure AD 帐户自动登录到 Otsuka Shokai。
-* 在一个中心位置（Azure 门户）管理帐户。
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
@@ -112,17 +111,15 @@ ms.locfileid: "66752460"
 
     g. 单击“ **保存**”。
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分，单击复制按钮以复制“应用联合元数据 URL”  ，并将它保存在记事本上。
-
-   ![证书下载链接](common/copy-metadataurl.png)
-
-1. 在“设置 Otsuka Shokai”部分，根据要求复制相应的 URL  。
-
-   ![复制配置 URL](common/copy-configuration-urls.png)
-
 ### <a name="configure-otsuka-shokai"></a>配置 Otsuka Shokai
 
-若要在 Otsuka Shokai  端配置单一登录，需要将“应用联合元数据 URL”发送给 [Otsuka Shokai 支持团队](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 从 SSO 应用连接到客户的“我的页面”时，SSO 设置向导将启动。
+
+2. 如果未注册 Otsuka ID，请继续执行 Otsuka-ID 新注册。   如果已注册 Otsuka-ID，请转到链接设置。
+
+3. 继续到最后，当登录到客户的“我的页面”后显示顶部屏幕时，SSO 设置就完成了。
+
+4. 下次从 SSO 应用连接到客户的“我的页面”时，在指导屏幕打开后，登录到客户的“我的页面”后会显示顶部屏幕。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -132,7 +129,7 @@ ms.locfileid: "66752460"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `B. Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
@@ -156,7 +153,7 @@ ms.locfileid: "66752460"
 
 ### <a name="create-otsuka-shokai-test-user"></a>创建 Otsuka Shokai 测试用户
 
-在本部分，我们将在 Otsuka Shokai 中创建名为 B.Simon 的用户。 请求助  [Otsuka Shokai 支持团队](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp)，将用户添加到 Otsuka Shokai 平台中。 使用单一登录前，必须先创建并激活用户。
+首次访问 Otsuka Shokai 时将执行 SaaS 帐户的新注册。 此外，我们还将在新创建时关联 Azure AD 帐户和 SaaS 帐户。
 
 ### <a name="test-sso"></a>测试 SSO
 

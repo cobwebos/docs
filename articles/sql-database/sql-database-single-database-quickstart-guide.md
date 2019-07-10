@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 0dc9d18ea4dae6ea0f45d1a91392eb1994e6e80e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7b52453bab661531461a2bec2f15f7659ec15a1c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757175"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441718"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>开始使用 Azure SQL 数据库中的单一数据库
 
@@ -51,3 +51,4 @@ ms.locfileid: "55757175"
 - 在[如何在 Azure SQL 数据库中使用单一数据库](sql-database-howto-single-database.md)中查看更深入的操作指南。
 - 查找在 [PowerShell](sql-database-powershell-samples.md) 和 [Azure CLI](sql-database-cli-samples.md) 中编写的其他示例脚本。
 - 详细了解可用于配置数据库的[管理 API](sql-database-single-databases-manage.md)。
+- [确定适合本地数据库的 Azure SQL 数据库/托管实例 SKU](/sql/dma/dma-sku-recommend-sql-db/)。

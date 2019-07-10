@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 97083142066e59acbefe60181743e5aa32541bac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00c536120ed9507d5ecc6fe930429d12514945b3
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67115824"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483821"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
@@ -44,7 +44,7 @@ Storm on HDInsight 提供以下功能：
 
 有关在实时分析解决方案中使用 Apache Storm 的公司的列表，请参阅[使用 Apache Storm 的公司](https://storm.apache.org/documentation/Powered-By.html)。
 
-若要开始使用 Storm，请参阅[开始使用 Apache Storm on HDInsight](apache-storm-tutorial-get-started-linux.md)。
+若要开始使用 Storm，请参阅[在 Azure HDInsight 中创建和监视 Apache Storm 拓扑](apache-storm-quickstart.md)。
 
 ## <a name="how-does-apache-storm-work"></a>Apache Storm 如何工作
 
@@ -68,7 +68,7 @@ Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 
 
 ## <a name="ease-of-creation"></a>容易创建
 
-只需数分钟即可在 HDInsight 上创建新的 Storm 群集。 有关创建 Storm 群集的信息，请参阅 [Storm on HDInsight 入门](apache-storm-tutorial-get-started-linux.md)。
+只需数分钟即可在 HDInsight 上创建新的 Storm 群集。 有关创建 Storm 群集的详细信息，请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="ease-of-use"></a>易于使用
 
@@ -82,7 +82,7 @@ Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 
 
 * __Azure PowerShell 和 Azure 经典 CLI__：PowerShell 和经典 CLI 都提供命令行实用工具，可在客户端系统中使用这些工具来操作 HDInsight 和其他 Azure 服务。
 
-* __Visual Studio 集成__：用于 Visual Studio 的 azure Data Lake 工具包含用于创建项目模板C#使用 SCP.NET 框架 Storm 拓扑。 Data Lake 工具还提供用于通过 Storm on HDInsight 部署、监视和管理解决方案的工具。
+* __Visual Studio 集成__：针对 Visual Studio 的 Azure Data Lake 工具包含用于通过 SCP.NET Framework 创建 C# Storm 拓扑的项目模板。 Data Lake 工具还提供用于通过 Storm on HDInsight 部署、监视和管理解决方案的工具。
 
   有关详细信息，请参阅 [Develop C# Storm topologies with the HDInsight Tools for Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)（使用用于 Visual Studio 的 HDInsight 工具开发 C# Storm 拓扑）。
 
@@ -138,7 +138,7 @@ Apache Storm 可以提供不同级别的有保证的消息处理。 例如，基
 
 ### <a name="ibasicbolt"></a>IBasicBolt
 
-读取输入元组，发出零个或多个元组，并在执行方法结束时立即确认输入元组，这种模式非常普通。 Storm 提供 [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) 接口来自动执行这种模式。
+读取输入元组，发出零个或更多元组，并在执行方法结束时立即确认输入元组，这种模式很普通。 Storm 提供 [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) 接口来自动执行这种模式。
 
 ### <a name="joins"></a>联接
 
@@ -176,5 +176,5 @@ Storm 使用 [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 来记录�
 
 了解有关使用 Apache Storm on HDInsight 构建实时分析解决方案的详细信息：
 
-* [HDInsight 上的 Apache Storm 入门](apache-storm-tutorial-get-started-linux.md)
+* [在 Azure HDInsight 中创建和监视 Apache Storm 拓扑](apache-storm-quickstart.md)
 * [HDInsight 上的 Apache Storm 的示例拓扑](apache-storm-example-topology.md)

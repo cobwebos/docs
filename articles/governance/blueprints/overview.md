@@ -7,12 +7,12 @@ ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5f403ee7d2bf4a0730ceaa9b5a95b3e7b11f3695
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60876233"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428770"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Azure 蓝图服务概述
 
@@ -109,7 +109,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 上述所有权限都包含在“所有者”角色中  。 “参与者”角色创建了蓝图并删除了蓝图权限，但并没有蓝图分配权限  。 若这些内置角色不适合安全需求，请考虑创建[自定义角色](../../role-based-access-control/custom-roles.md)。
 
 > [!NOTE]
-> Azure 蓝图的服务主体在分配订阅上需要所有者角色以启用部署  。 若使用门户，则会自动为部署授予和撤消此角色。 若使用 REST API，则必须手动授予此角色，但在部署完成后仍会自动撤消此角色。
+> 如果使用系统分配的托管标识，则 Azure 蓝图的服务主体需要在分配的订阅上具有**所有者**角色才能启用部署。 若使用门户，则会自动为部署授予和撤消此角色。 若使用 REST API，则必须手动授予此角色，但在部署完成后仍会自动撤消此角色。 如果使用用户分配的托管标识，则只有创建蓝图分配的用户才需要“所有者”  权限。
 
 ## <a name="video-overview"></a>视频概述
 

@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35039dc05103ac6528f668fd76e1372ed7cc0708
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 17cea353df0337b062b89cd440f79f7869450f8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370544"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113209"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>教程：使用风险事件触发多重身份验证和密码更改
 
 本教程需启用 Azure Active Directory (Azure AD) Identity Protection，这是一项 Azure AD Premium P2 功能，不仅仅是一项监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，以便自动响应风险行为。 这些策略可以进行自动阻止，也可以启动修正，包括要求进行密码更改和强制进行多重身份验证。
 
-Azure AD Identity Protection 策略可以在现有的条件访问策略基础上使用，充当另一层保护。 用户也许从来不会触发某项需要这其中的某个策略的风险行为，但作为管理员，你知道他们是受到保护的。
+Azure AD 标识保护策略可以在现有的条件访问策略基础上使用，充当另一层保护。 用户也许从来不会触发某项需要这其中的某个策略的风险行为，但作为管理员，你知道他们是受到保护的。
 
 可能会触发风险事件的项目包括：
 
@@ -55,9 +55,9 @@ Azure AD Identity Protection 策略可以在现有的条件访问策略基础上
 Azure AD Identity Protection 包括一个默认策略，该策略可以让用户注册多重身份验证并轻松地标识当前注册状态。 启用此策略不会一开始就要求用户执行多重身份验证，而是会要求他们预先注册。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 单击“所有服务”，然后浏览到“Azure AD Identity Protection”。
-1. 单击“MFA 注册”。
-1. 将“强制实施策略”设置为“打开”。
+1. 单击“所有服务”，然后浏览到“Azure AD Identity Protection”。  
+1. 单击“MFA 注册”。 
+1. 将“强制实施策略”  设置为“打开”。
    1. 设置此策略会要求所有用户注册那些准备供多重身份验证使用的方法。
 1. 单击“ **保存**”。
 
@@ -68,25 +68,25 @@ Azure AD Identity Protection 包括一个默认策略，该策略可以让用户
 Microsoft 会与研究人员、执法机构、Microsoft 安全团队以及其他受信任的源合作，以查找用户名和密码对。 当这些对中的某一对与你环境中的某个帐户匹配时，则可通过以下策略触发基于风险的密码更改。
 
 1. 单击“用户风险策略”。
-1. 在“条件”下选择“用户风险”，然后选择“中等及以上”。
+1. 在“条件”下选择“用户风险”，然后选择“中等及以上”。   
 1. 单击“选择”，然后单击“完成”。
-1. 在“访问权限”下选择“允许访问”，然后选择“需要密码更改”。
+1. 在“访问权限”下选择“允许访问”，然后选择“需要密码更改”。   
 1. 单击“选择”
-1. 将“强制实施策略”设置为“打开”。
-1. 单击“保存”
+1. 将“强制实施策略”  设置为“打开”。
+1. 单击“保存” 
 
 ### <a name="enable-risk-based-multi-factor-authentication"></a>启用基于风险的多重身份验证
 
 大多数用户的正常行为是可以跟踪的，如果其行为超出规范，则允许他们登录可能很危险。 你可能需要阻止该用户，或者直接要求他们执行多重身份验证，证明自己真的是所宣称的用户。 若要启用一项在检测到风险登录时会要求用户执行 MFA 的策略，请启用以下策略。
 
 1. 单击“登录风险策略”
-1. 在“条件”下选择“用户风险”，然后选择“中等及以上”。
+1. 在“条件”下选择“用户风险”，然后选择“中等及以上”。   
 1. 单击“选择”，然后单击“完成”。
-1. 在“访问权限”下选择“允许访问”，然后选择“需要多重身份验证”。
+1. 在“访问权限”下选择“允许访问”，然后选择“需要多重身份验证”。   
 1. 单击“选择”
-1. 将“强制实施策略”设置为“打开”。
-1. 单击“保存”
+1. 将“强制实施策略”  设置为“打开”。
+1. 单击“保存” 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果已完成测试，不再需要启用基于风险的策略，请返回到需禁用的每项策略，然后将“强制实施策略”设置为“关闭”。
+如果已完成测试，不再需要启用基于风险的策略，请返回到需禁用的每项策略，然后将“强制实施策略”设置为“关闭”。  

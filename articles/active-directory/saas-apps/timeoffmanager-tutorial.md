@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: a297c9db22d81ee3c32be4732198ba25b8f5a8f8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0d57b3ce4e378a366148b5c3eef6bc4d5d9eb96d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280190"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088551"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>教程：Azure Active Directory 与 TimeOffManager 的集成
 
@@ -55,19 +55,19 @@ ms.locfileid: "59280190"
 
 **若要从库中添加 TimeOffManager，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **TimeOffManager**，在结果面板中选择“TimeOffManager”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入 **TimeOffManager**，在结果面板中选择“TimeOffManager”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“TimeOffManager”](common/search-new-app.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "59280190"
 
 若要配置 TimeOffManager 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“TimeOffManager”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“TimeOffManager”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -99,24 +99,24 @@ ms.locfileid: "59280190"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![TimeOffManager 域和 URL 单一登录信息](common/idp-reply.png)
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>`
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>` 
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际回复 URL 更新此值。 可以从教程后面介绍的“单一登录设置页面”中获取此值，也可以联系 [TimeOffManager 支持团队](https://www.purelyhr.com/contact-us)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 可以从教程后面介绍的“单一登录设置页面”中获取此值，也可以联系 [TimeOffManager 支持团队](https://www.purelyhr.com/contact-us)。  还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. TimeOffManager 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****  **** 。
+5. TimeOffManager 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****   ****  。
 
     ![image](common/edit-attribute.png)
 
-6. 除上述属性以外，TimeOffManager 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示： 
+6. 除上述属性以外，TimeOffManager 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示： 
 
     | 名称 | 源属性|
     | --- | --- |
@@ -124,29 +124,29 @@ ms.locfileid: "59280190"
     | Lastname |User.surname |
     | 电子邮件 |User.mail |
 
-    a. 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
     ![图像](common/new-save-attribute.png)
 
     ![图像](common/new-attribute-details.png)
 
-    b. 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
-    c. 将“命名空间”留空。
+    c. 将“命名空间”留空  。
 
-    d. 选择“源”作为“属性”。
+    d. 选择“源”作为“属性”  。
 
-    e. 在“源属性”列表中，键入为该行显示的属性值。
+    e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定”
+    f. 单击“确定” 
 
     g. 单击“ **保存**”。
 
-7. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+7. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-8. 在“设置 TimeOffManager”部分，根据要求复制相应的 URL。
+8. 在“设置 TimeOffManager”部分，根据要求复制相应的 URL。 
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -160,29 +160,29 @@ ms.locfileid: "59280190"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 TimeOffManager 公司站点。
 
-2. 转到“帐户”\>“帐户选项”\>“单一登录设置”。
+2. 转到“帐户”\>“帐户选项”\>“单一登录设置”  。
    
     ![单一登录设置](./media/timeoffmanager-tutorial/ic795917.png "Single Sign-On Settings")
 
-3. 在“单一登录设置”部分中，执行以下步骤：
+3. 在“单一登录设置”  部分中，执行以下步骤：
    
     ![单一登录设置](./media/timeoffmanager-tutorial/ic795918.png "Single Sign-On Settings")
    
-    a. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将整个证书粘贴到“X.509 证书”文本框中。
+    a. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将整个证书粘贴到“X.509 证书”文本框中。 
    
-    b. 在“IdP 颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
+    b. 在“IdP 颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
    
-    c. 在“IdP 终结点 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+    c. 在“IdP 终结点 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。  
    
-    d. 对于“强制实施 SAML”，选择“否”。
+    d. 对于“强制实施 SAML”  ，选择“否”  。
    
-    e. 对于“自动创建用户”，选择“是”。
+    e. 对于“自动创建用户”  ，选择“是”  。
    
-    f. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+    f. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
    
-    g. 单击“保存更改”。
+    g. 单击“保存更改”。 
 
-4. 在“单一登录设置”页中，复制“断言使用者服务 URL”的值，并将其粘贴到 Azure 门户中“基本 SAML 配置”部分下的“回复 URL”文本框中。 
+4. 在“单一登录设置”页中，复制“断言使用者服务 URL”的值，并将其粘贴到 Azure 门户中“基本 SAML 配置”部分下的“回复 URL”文本框中。     
 
       ![单一登录设置](./media/timeoffmanager-tutorial/ic795915.png "Single Sign-On Settings")
 
@@ -190,11 +190,11 @@ ms.locfileid: "59280190"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -202,39 +202,39 @@ ms.locfileid: "59280190"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 TimeOffManager 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“TimeOffManager”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“TimeOffManager”。   
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“TimeOffManager”。
+2. 在应用程序列表中，选择“TimeOffManager”。 
 
     ![“应用程序”列表中的“TimeOffManager”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-timeoffmanager-test-user"></a>创建 TimeOffManager 测试用户
 

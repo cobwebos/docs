@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e83f4a1aea04bbaea12181419de6c5c06034f2
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d47c742e4f6d2ba8a96e9897f43231e509e8aa63
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287071"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476071"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>使用 Azure Active Directory 创建基本组并添成员
 使用 Azure Active Directory (Azure AD) 门户可以创建基本组。 为了更好地阐述本文，资源所有者（管理员）将基本组添加到单个资源，基本组中包含了需要访问该资源的特定成员（员工）。 有关更复杂的方案（包括动态成员身份和规则创建），请参阅 [Azure Active Directory 用户管理文档](../users-groups-roles/index.yml)。
@@ -29,11 +29,11 @@ ms.locfileid: "58287071"
 ### <a name="to-create-a-basic-group-and-add-members"></a>创建基本组并添加成员
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 依次选择“Azure Active Directory”、“组”、“新建组”。
+2. 依次选择“Azure Active Directory”、“组”、“新建组”    。
 
     ![显示组的 Azure AD 页](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
-3. 在“组”页面中，填写必填信息。
+3. 在“组”页面中，填写必填信息  。
 
     ![已填写示例信息的“新建组”页](media/active-directory-groups-create-azure-portal/new-group-blade.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "58287071"
         
        - **Office 365**。 通过向成员赋予对共享邮箱、日历、文件、SharePoint 站点等的访问权限，提供协作机会。 你也可以通过此选项向组织外部的人员赋予对组的访问权限。 有关 Office 365 组的详细信息，请参阅[了解 Office 365 组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)。
 
-   - **组名称（必填）。** 添加组名称，可以使用容易记住以及具有某种意义的名称作为组名称。
+   - **组名称（必填）。** 添加组名称，可以使用容易记住以及具有某种意义的名称作为组名称。 将执行检查以确定该名称是否已用于另一个组。 如果该名称已在使用中，为避免重复命名，系统将要求你修改组的名称。
 
    - **组描述。** 向组添加说明（可选操作）。
 
@@ -58,17 +58,17 @@ ms.locfileid: "58287071"
        >[!Important]
        >可以分别创建设备或用户的动态组，不能同时创建。 也不能根据设备所有者的属性创建设备组。 设备成员资格只能引用设备属性。 有关为用户和设备创建动态组的详细信息，请参阅[创建动态组并检查状态](../users-groups-roles/groups-create-rule.md)。
 
-4. 选择“创建”。
+4. 选择“创建”  。
 
     随即将创建组，该组已准备就绪，可供添加成员。
 
-5. 从“组”页面选择“成员”区域，然后从“选择成员”页面中开始搜索要添加到组的成员。
+5. 从“组”页面选择“成员”区域，然后从“选择成员”页面中开始搜索要添加到组的成员    。
 
     ![在组创建过程中选择你的组成员](media/active-directory-groups-create-azure-portal/select-members-create-group.png)
 
-6. 完成添加成员后，选择“选择”。
+6. 完成添加成员后，选择“选择”  。
 
-    “组概述”页已更新，可显示当前添加到组的成员数。
+    “组概述”页已更新，可显示当前添加到组的成员数  。
 
     ![突出显示成员数的“组概述”页](media/active-directory-groups-create-azure-portal/group-overview-blade-number-highlight.png)
 

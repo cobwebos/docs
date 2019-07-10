@@ -9,37 +9,31 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ec0425ff2188ecf1816d5f5841394c8e32f301d2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4f3d31fa25ea5781bc3af7297719b77723597e17
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132229"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444601"
 ---
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 
 使用 Visual Studio Code 可以将函数项目直接发布到 Azure。 在此过程中，将在 Azure 订阅中创建函数应用和相关的资源。 函数应用为函数提供了执行上下文。 该项目将打包并部署到 Azure 订阅中的新函数应用。
 
-本文假定你要创建新的函数应用。 
+默认情况下，Visual Studio 会创建函数应用创建所需的所有 Azure 资源。 这些资源的名称基于所选的函数应用名称。 如果需要完全控制已创建的资源，则可以改为[使用高级选项发布](../articles/azure-functions/functions-develop-vs-code.md#enabled-publishing-with-advanced-create-options)。
+
+本部分假设你正在 Azure 中创建新的函数应用。
 
 > [!IMPORTANT]
 > 发布到现有函数应用将覆盖该应用在 Azure 中的内容。
 
-1. 在“Azure：函数”  区域中，选择“部署到函数应用”图标。
-
-    ![函数应用设置](./media/functions-publish-project-vscode/function-app-publish-project.png)
+1. 在 Visual Studio Code 中，按 F1 键打开命令面板。 在命令面板中，搜索并选择 `Azure Functions: Deploy to function app...`。
 
 1. 如果未登录，则系统会提示你**登录到 Azure**。 还可以**创建免费 Azure 帐户**。 在成功从浏览器登录后，返回到 Visual Studio Code。 
 
 1. 如果你有多个订阅，请为函数应用**选择一个订阅**，然后选择“+ 在 Azure 中创建新的函数应用”  。
 
 1. 键入用于标识函数应用的全局唯一名称，然后按 Enter。 函数应用名称的有效字符包括 `a-z`、`0-9` 和 `-`。
-
-1. 选择“+ 创建新的资源组”  ，键入资源组名称（如 `myResourceGroup`），然后按 Enter。 也可以使用现有资源组。
-
-1. 选择“+ 新建存储帐户”  ，键入函数应用使用的新存储帐户的全局唯一名称，然后按 Enter。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可以使用现有帐户。
-
-1. 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)中的位置。
 
     按 Enter 时，将在你的订阅中创建以下 Azure 资源：
 

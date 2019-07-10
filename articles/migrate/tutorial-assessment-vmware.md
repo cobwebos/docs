@@ -4,15 +4,15 @@ description: 介绍如何发现和评估要使用 Azure Migrate 迁移到 Azure 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 01/31/2019
+ms.date: 06/10/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: ac5bed1f21640a40fe32bedac8b28d0a9fda0ffd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490306"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074445"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 
@@ -50,15 +50,15 @@ Azure Migrate 需要访问 VMware 服务器才能自动发现用于评估的 VM�
 
 ## <a name="create-a-project"></a>创建一个项目
 
-1. 在 Azure 门户中，单击“创建资源”。
-2. 搜索 Azure Migrate，然后在搜索结果中选择服务“Azure Migrate”。 然后单击“创建”。
+1. 在 Azure 门户中，单击“创建资源”  。
+2. 搜索 Azure Migrate，然后在搜索结果中选择服务“Azure Migrate”。   然后单击“创建”  。
 3. 指定项目名称和项目的 Azure 订阅。
 4. 创建新的资源组。
-5. 指定需要在其中创建项目的地理位置，然后单击“创建”。 只能在以下地域创建 Azure Migrate 项目。 但是，仍可以计划任意目标 Azure 位置的迁移。 为项目指定的地理位置仅用于存储从本地 VM 中收集的元数据。
+5. 指定需要在其中创建项目的地理位置，然后单击“创建”  。 只能在以下地域创建 Azure Migrate 项目。 但是，仍可以计划任意目标 Azure 位置的迁移。 为项目指定的地理位置仅用于存储从本地 VM 中收集的元数据。
 
-**地理位置** | **存储位置**
+**地域** | **存储位置**
 --- | ---
-Azure Government  | 美国政府弗吉尼亚州
+Azure Government | 美国政府弗吉尼亚州
 亚洲 | 东南亚
 欧洲 | 欧洲北部或欧洲西部
 美国 | 美国东部或美国中西部
@@ -70,15 +70,15 @@ Azure Government  | 美国政府弗吉尼亚州
 
 Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发现本地 VMware VM，并将其相关元数据发送到 Azure Migrate 服务。 若要设置收集器设备，请下载一个 .OVA 文件，并将其导入到本地 vCenter 服务器以创建 VM。
 
-1. 在 Azure Migrate 项目中，单击“开始” > “发现和评估” > “发现计算机”。
-2. 在“发现计算机”中，单击“下载”以下载设备。
+1. 在 Azure Migrate 项目中，单击“开始”   > “发现和评估”   > “发现计算机”  。
+2. 在“发现计算机”  中，单击“下载”  以下载设备。
 
     Azure Migrate 设备与 vCenter Server 进行通信，持续分析本地环境，以收集每个 VM 的实时利用率数据。 它会针对每个指标（CPU 利用率、内存利用率等）收集峰值计数器。 进行性能数据收集时，此模型不依赖于 vCenter Server 的统计信息设置。 可以随时停止设备提供的持续分析。
 
     > [!NOTE]
     > 一次性发现设备现在已弃用，因为此方法依赖于 vCenter Server 针对性能数据点可用性的统计信息设置并且收集平均性能计数器，这导致用于迁移到 Azure 的 VM 大小不足。
 
-    **快速评估：** 使用持续发现设备，发现完成后（需花费几个小时，具体取决于 VM 数量），可立即创建评估。 由于性能数据收集在你启动发现时开始，如果你希望进行快速评估，则应当将评估中的大小调整条件选择为“按本地”。 对于基于性能的评估，建议在启动发现后等待至少一天，以便获得可靠的大小建议。
+    **快速评估：** 使用持续发现设备，发现完成后（需花费几个小时，具体取决于 VM 数量），可立即创建评估。 由于性能数据收集在你启动发现时开始，如果你希望进行快速评估，则应当将评估中的大小调整条件选择为“按本地”。  对于基于性能的评估，建议在启动发现后等待至少一天，以便获得可靠的大小建议。
 
     该设备仅连续收集性能数据，它不会检测本地环境中的任何配置更改（即 VM 添加、删除、磁盘添加等）。 如果本地环境中存在配置更改，可以执行以下操作以在门户中反映更改：
 
@@ -87,7 +87,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     - 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映出 VM 已删除这一更改。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
 
 
-3. 在“复制项目凭据”中，复制项目 ID 和密钥。 在配置收集器时要使用这些信息。
+3. 在“复制项目凭据”  中，复制项目 ID 和密钥。 在配置收集器时要使用这些信息。
 
     ![下载 .ova 文件](./media/tutorial-assessment-vmware/download-ova.png)
 
@@ -98,10 +98,18 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 OVA 的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 用法示例： ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. 生成的哈希应匹配这些设置。
 
 #### <a name="continuous-discovery"></a>持续发现
+
+  对于 OVA 版本 1.0.10.15
+
+  **算法** | **哈希值**
+    --- | ---
+    MD5 | dfa1838b1e64f7cde51915927220cf48
+    SHA1 | 24bdbd9c37c7366567ff252db3a37a13dda9de42
+    SHA256 | e9f8f16ceb970c27dd068f5a5f7a4b2fd336f2820e9d6247d510ba6824e3f06c
 
   对于 OVA 版本 1.0.10.11
 
@@ -160,29 +168,29 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 将下载的文件导入 vCenter Server。
 
-1. 在 vSphere 客户端控制台中，单击“文件” > “部署 OVF 模板”。
+1. 在 vSphere 客户端控制台中，单击“文件”   > “部署 OVF 模板”  。
 
     ![部署 OVF](./media/tutorial-assessment-vmware/vcenter-wizard.png)
 
-2. 在“部署 OVF 模板向导”>“源”中，指定 .ova 文件的位置。
-3. 在“名称”和“位置”中，为收集器 VM 指定一个友好名称，以及要托管 VM 的库存对象。
-5. 在“主机/群集”中，指定要在其上运行收集器 VM 的主机或群集。
+2. 在“部署 OVF 模板向导”>“源”  中，指定 .ova 文件的位置。
+3. 在“名称”  和“位置”  中，为收集器 VM 指定一个友好名称，以及要托管 VM 的库存对象。
+5. 在“主机/群集”  中，指定要在其上运行收集器 VM 的主机或群集。
 7. 在存储中，指定收集器 VM 的存储目标。
-8. 在“磁盘格式”中，指定磁盘类型和大小。
-9. 在“网络映射”中，指定收集器 VM 要连接到的网络。 网络需要与 Internet 建立连接才能向 Azure 发送元数据。
-10. 检查并确认设置，然后单击“完成”。
+8. 在“磁盘格式”  中，指定磁盘类型和大小。
+9. 在“网络映射”  中，指定收集器 VM 要连接到的网络。 网络需要与 Internet 建立连接才能向 Azure 发送元数据。
+10. 检查并确认设置，然后单击“完成”  。
 
 ## <a name="run-the-collector-to-discover-vms"></a>运行收集器以发现 VM。
 
-1. 在 vSphere 客户端控制台中，右键单击“VM”>“打开控制台”。
+1. 在 vSphere 客户端控制台中，右键单击“VM”>“打开控制台”  。
 2. 提供设备的语言、时区和密码首选项。
-3. 在桌面上，单击“运行收集器”快捷方式。
-4. 在收集器 UI 的顶部栏中单击“检查更新”，并确认收集器正在最新版本上运行。 如果不是，可以选择从链接下载最新的升级包并更新收集器。
-5. 在 Azure Migrate 收集器中，打开“设置必备组件”。
+3. 在桌面上，单击“运行收集器”  快捷方式。
+4. 在收集器 UI 的顶部栏中单击“检查更新”  ，并确认收集器正在最新版本上运行。 如果不是，可以选择从链接下载最新的升级包并更新收集器。
+5. 在 Azure Migrate 收集器中，打开“设置必备组件”  。
    - 选择打算迁移到的 Azure 云（Azure 全局或 Azure 政府）。
    - 接受许可条款，并阅读第三方信息。
    - 收集器将会检查 VM 是否可访问 Internet。
-   - 如果 VM 通过代理访问 Internet，请单击“代理设置”，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) Internet 连接要求和收集器访问的 [URL 列表](https://docs.microsoft.com/azure/migrate/concepts-collector)。
+   - 如果 VM 通过代理访问 Internet，请单击“代理设置”  ，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) Internet 连接要求和收集器访问的 [URL 列表](https://docs.microsoft.com/azure/migrate/concepts-collector)。
 
      > [!NOTE]
      > 需以 http:\//ProxyIPAddress 或 http:\//ProxyFQDN 的形式输入代理地址。 仅支持 HTTP 代理。 如果有拦截代理，则如果没有导入代理证书，Internet 连接一开始可能会失败；[详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector)如何在收集器 VM 上将代理证书作为受信任的证书导入，以便修复此问题。
@@ -190,27 +198,27 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
    - 收集器将检查 collectorservice 是否正在运行。 该服务默认安装在收集器 VM 上。
    - 下载并安装 VMware PowerCLI。
 
-6. 在“指定 vCenter Server 详细信息”中，执行以下操作：
+6. 在“指定 vCenter Server 详细信息”  中，执行以下操作：
     - 指定 vCenter 服务器的名称 (FQDN) 或 IP 地址。
-    - 在“用户名称”和“密码”中，指定收集器用来发现 vCenter 服务器上的 VM 的只读帐户凭据。
-    - 在“收集范围”中，选择 VM 发现的范围。 收集器只能发现指定范围内的 VM。 可将范围设置为特定文件夹、数据中心或群集。 它不应包含超过 1500 台 VM。 [详细了解](how-to-scale-assessment.md)如何发现更大的环境。
+    - 在“用户名称”  和“密码”  中，指定收集器用来发现 vCenter 服务器上的 VM 的只读帐户凭据。
+    - 在“收集范围”  中，选择 VM 发现的范围。 收集器只能发现指定范围内的 VM。 可将范围设置为特定文件夹、数据中心或群集。 它不应包含超过 1500 台 VM。 [详细了解](how-to-scale-assessment.md)如何发现更大的环境。
 
        > [!NOTE]
-       > “集合范围”仅列出主机和群集的文件夹。 不能直接将 VM 的文件夹作为集合范围选择。 不过，可以使用能够访问单个 VM 的 vCenter 帐户来发现。 [详细了解](https://docs.microsoft.com/azure/migrate/how-to-scale-assessment#set-up-permissions)如何将范围局限于 VM 的文件夹。
+       > “集合范围”仅列出主机和群集的文件夹。  不能直接将 VM 的文件夹作为集合范围选择。 不过，可以使用能够访问单个 VM 的 vCenter 帐户来发现。 [详细了解](https://docs.microsoft.com/azure/migrate/how-to-scale-assessment#set-up-permissions)如何将范围局限于 VM 的文件夹。
 
-7. 在“指定迁移项目”中，指定从门户复制的 Azure Migrate 项目 ID 和密钥。 如果未复制这些信息，请从收集器 VM 中打开 Azure 门户。 在项目“概述”页中，单击“发现计算机”，然后复制结果。  
-8. 在“查看收集进度”中，监视发现状态。 [详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector) Azure Migrate 收集器收集哪些数据。
+7. 在“指定迁移项目”  中，指定从门户复制的 Azure Migrate 项目 ID 和密钥。 如果未复制这些信息，请从收集器 VM 中打开 Azure 门户。 在项目“概述”  页中，单击“发现计算机”  ，然后复制结果。  
+8. 在“查看收集进度”中，监视发现状态。  [详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector) Azure Migrate 收集器收集哪些数据。
 
 > [!NOTE]
 > 收集器仅支持使用“英语(美国)”作为操作系统语言和收集器界面语言。
-> 如果在要评估的计算机上更改设置，则在运行评估之前，触发器会再次发现所做的更改。 在收集器中，使用“再次启动收集”选项来执行此操作。 收集完成以后，请在门户中选择用于评估的“重新计算”选项，以便获取更新的评估结果。
+> 如果在要评估的计算机上更改设置，则在运行评估之前，触发器会再次发现所做的更改。 在收集器中，使用“再次启动收集”选项来执行此操作。  收集完成以后，请在门户中选择用于评估的“重新计算”选项，以便获取更新的评估结果。 
 
 
 ### <a name="verify-vms-in-the-portal"></a>在门户中验证 VM
 
 收集器设备会持续分析本地环境，并且始终会每隔一小时发送一次性能数据。 启动发现操作一小时后，即可在门户中查看计算机的情况。
 
-1. 在迁移项目中，单击“管理” > “计算机”。
+1. 在迁移项目中，单击“管理”   > “计算机”  。
 2. 检查想要发现的 VM 是否出现在门户中。
 
 
@@ -218,16 +226,16 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 在门户中发现 VM 后，可将其进行分组并创建评估。 在门户中发现 VM 后，可以立即创建本地评估。 在创建基于性能的评估之前，建议等待至少一天，以获得可靠的大小建议。
 
-1. 在项目的“概述”页中，单击“+ 创建评估”。
-2. 单击“全部查看”查看评估属性。
+1. 在项目的“概述”页中，单击“+ 创建评估”。  
+2. 单击“全部查看”查看评估属性  。
 3. 创建组并指定组名称。
 4. 选择要添加到该组的计算机。
-5. 单击“创建评估”，以创建该组和评估。
-6. 创建评估后，在“概述” > “仪表板”中查看该评估。
-7. 单击“导出评估”，将评估下载为 Excel 文件。
+5. 单击“创建评估”，以创建该组和评估。 
+6. 创建评估后，在“概述” > “仪表板”中查看该评估。  
+7. 单击“导出评估”，将评估下载为 Excel 文件。 
 
 > [!NOTE]
-> 在启动发现之后，强烈建议等待至少一天，然后再创建评估。 若要使用最新的性能数据更新现有的评估，可以对评估使用“重新计算”命令来更新它。
+> 在启动发现之后，强烈建议等待至少一天，然后再创建评估。 若要使用最新的性能数据更新现有的评估，可以对评估使用“重新计算”命令来更新它。 
 
 ### <a name="assessment-details"></a>评估详细信息
 
@@ -287,7 +295,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 - 在进行评估计算期间创建了一些 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 则在这种情况下，新建 VM 的性能历史记录并非在整个期间都有。
 
 > [!NOTE]
-> 如果任何评估的置信度评级低于五星，请等待至少一天以便设备对环境进行分析，然后重新计算评估。 如果前述操作无法完成，则基于性能的大小调整可能不可靠，建议通过更改评估属性切换到“按本地大小调整”。
+> 如果任何评估的置信度评级低于五星，请等待至少一天以便设备对环境进行分析，然后重新计算  评估。 如果前述操作无法完成，则基于性能的大小调整可能不可靠，建议通过更改评估属性切换到“按本地大小调整”。 
 
 ## <a name="next-steps"></a>后续步骤
 

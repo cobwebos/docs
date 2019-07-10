@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 06/11/2019
 ms.author: edjez
-ms.openlocfilehash: a7f6c6fe25bf9dff2f102080f93fc1e0024ac660
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 2f2e3d01b02f7c06d69a09374528475301952179
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478621"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055510"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>快速入门：使用 C# 个性化内容 
 
@@ -54,6 +54,7 @@ Get the latest code as a Visual Studio solution from [GitHub] (add link).
 
 1. 在 Visual Studio 中创建一个新的 Visual C# 控制台应用。
 1. 安装个性化体验创建服务客户端库 NuGet 包。 在菜单中，依次选择“工具”、“NuGet 包管理器”、“管理解决方案的 NuGet 包”    。
+1. 选中“包括预发行版”  。
 1. 选择“浏览”选项卡，在“搜索”框中键入 `Microsoft.Azure.CognitiveServices.Personalizer`。  
 1. 当 **Microsoft.Azure.CognitiveServices.Personalizer** 显示时，将其选中。
 1. 选中项目名称旁边的复选框，然后选择“安装”。 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c24cbf8ad21c7dd5875a71532a5278e313774e66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 232742c9ca3f090e2900566c1e80f9720e284135
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883961"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104060"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>教程：Azure Active Directory 与 dmarcian 集成
 
@@ -53,25 +53,25 @@ ms.locfileid: "57883961"
 
 **若要从库中添加 dmarcian，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“dmarcian”，在结果面板中选择“dmarcian”，然后单击“添加”按钮添加应用程序。
+4. 在搜索框中，键入“dmarcian”，在结果面板中选择“dmarcian”，然后单击“添加”按钮添加应用程序。   
 
      ![结果列表中的 dmarcian](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为“Britta Simon”的测试用户使用 dmarcian 配置和测试 Azure AD 单一登录。
+在本部分中，基于一个名为“Britta Simon”的测试用户使用 dmarcian 配置和测试 Azure AD 单一登录。 
 若要使单一登录有效，需要在 Azure AD 用户与 dmarcian 相关用户之间建立链接关系。
 
 若要配置并测试 dmarcian 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -89,7 +89,7 @@ ms.locfileid: "57883961"
 
 若要配置 dmarcian 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **dmarcian** 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **dmarcian** 应用程序集成页上，选择“单一登录”。 
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,15 +97,15 @@ ms.locfileid: "57883961"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
 
     ![dmarcian 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：
+    a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
     | |
     | -- |
@@ -113,7 +113,7 @@ ms.locfileid: "57883961"
     | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
     | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
     | |
     |--|
@@ -121,11 +121,11 @@ ms.locfileid: "57883961"
     | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
     | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![dmarcian 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：
+    在“登录 URL”文本框中，使用以下模式键入 URL： 
     
     | |
     |--|
@@ -136,7 +136,7 @@ ms.locfileid: "57883961"
     > [!NOTE] 
     > 这些不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新这些值。 
 
-6. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+6. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -144,30 +144,30 @@ ms.locfileid: "57883961"
 
 1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录 dmarcian。
 
-2. 单击右上角的“配置文件”，并导航到“首选项”。
+2. 单击右上角的“配置文件”，并导航到“首选项”。  
 
     ![首选项](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
 
-3. 向下滚动并单击“单一登录”部分，然后单击“配置”。
+3. 向下滚动并单击“单一登录”部分，然后单击“配置”。  
 
     ![单人](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
 
-4. 在“SAML 单一登录”页上，将“状态”设置为“已启用”并执行以下步骤：
+4. 在“SAML 单一登录”页上，将“状态”设置为“已启用”并执行以下步骤：   
 
     ![身份验证](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
-    * 在“将 dmarcian 添加到标识提供者”部分，单击“复制”以复制实例的“断言使用者服务 URL”，并将其粘贴到 Azure 门户上“基本的 SAML 配置”部分的“回复 URL”文本框中。
+    * 在“将 dmarcian 添加到标识提供者”部分，单击“复制”以复制实例的“断言使用者服务 URL”，并将其粘贴到 Azure 门户上“基本的 SAML 配置”部分的“回复 URL”文本框中。     
 
-    * 在“将 dmarcian 添加到标识提供者”部分，单击“复制”以复制实例的“实体 ID”，并将其粘贴到 Azure 门户上“基本的 SAML 配置”部分的“标识符”文本框中。
+    * 在“将 dmarcian 添加到标识提供者”部分，单击“复制”以复制实例的“实体 ID”，并将其粘贴到 Azure 门户上“基本的 SAML 配置”部分的“标识符”文本框中。     
 
-    * 在“设置身份验证”部分的“标识提供者元数据”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”。
+    * 在“设置身份验证”部分的“标识提供者元数据”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”。   
 
-    * 在“设置身份验证”部分的“属性语句”文本框中，粘贴 URL `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    * 在“设置身份验证”部分的“属性语句”文本框中，粘贴 URL `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`  
 
-    * 在“设置登录 URL”部分，复制实例的“登录 URL”，并将其粘贴到 Azure 门户上“基本的 SAML 配置”部分的“登录 URL”文本框中。
+    * 在“设置登录 URL”部分，复制实例的“登录 URL”，并将其粘贴到 Azure 门户上“基本的 SAML 配置”部分的“登录 URL”文本框中。    
 
         > [!Note]
-        > 可以根据组织的情况修改“登录 URL”。
+        > 可以根据组织的情况修改“登录 URL”。 
 
     * 单击“ **保存**”。
 
@@ -175,11 +175,11 @@ ms.locfileid: "57883961"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -187,40 +187,40 @@ ms.locfileid: "57883961"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过向 Britta Simon 授予 dmarcian 的访问权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“dmarcian”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“dmarcian”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“dmarcian”。
+2. 在应用程序列表中，选择“dmarcian”  。
 
     ![应用程序列表中的 dmarcian 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。   
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-dmarcian-test-user"></a>创建 dmarcian 测试用户
 
@@ -230,23 +230,23 @@ ms.locfileid: "57883961"
 
 1. 以安全管理员身份登录到 dmarcian。
 
-2. 单击右上角的“配置文件”，并导航到“管理用户”。
+2. 单击右上角的“配置文件”，并导航到“管理用户”。  
 
     ![用户](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
 
-3. 在“SSO 用户”部分的右侧，单击“添加新用户”。
+3. 在“SSO 用户”部分的右侧，单击“添加新用户”。  
 
     ![添加用户](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
 
-4. 在“添加新用户”弹出窗口中执行以下步骤：
+4. 在“添加新用户”弹出窗口中执行以下步骤： 
 
     ![新用户](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a. 在“新建用户电子邮件”文本框中，输入用户的电子邮件，例如 brittasimon\@contoso.com。
+    a. 在“新建用户电子邮件”文本框中，输入用户的电子邮件，例如 brittasimon\@contoso.com   。
 
-    b. 若要向该用户授予管理员权限，请选择“将用户设为管理员”。
+    b. 若要向该用户授予管理员权限，请选择“将用户设为管理员”。 
 
-    c. 单击“添加用户”。
+    c. 单击“添加用户”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

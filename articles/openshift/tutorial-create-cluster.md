@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
 ms.date: 05/14/2019
-ms.openlocfilehash: 651236c25ed912ebd7399d351677a67e3826278c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 9094fa441ff5ffdd5f579fd072ffaa303961314d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306181"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304276"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>教程：创建 Azure Red Hat OpenShift 群集
 
@@ -106,6 +106,10 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 ### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>可选：将群集的虚拟网络连接到现有的虚拟网络
 
 如果不需要通过对等互连将所创建的群集的虚拟网络 (VNET) 连接到现有 VNET，请跳过此步骤。
+
+如果与默认订阅之外的网络对等互连，则在该订阅中，还需要注册提供程序 Microsoft.ContainerService。 为此，请在该订阅中运行以下命令。 否则，如果对等互连的 VNET 位于同一订阅中，则可以跳过注册步骤。 
+
+`az provider register -n Microsoft.ContainerService --wait`
 
 首先获取现有 VNET 的标识符。 该标识符采用以下格式：`/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`。
 

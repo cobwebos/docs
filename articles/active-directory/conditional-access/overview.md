@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 中的条件访问是什么？ | Microsoft Docs
+title: 什么是 Azure Active Directory 中的条件访问？ | Microsoft Docs
 description: 了解如何通过 Azure Active Directory 中的条件访问来实现自动访问决策，此类决策不仅取决于尝试访问资源的人，也取决于访问资源的方式。
 services: active-directory
 ms.service: active-directory
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32ad8c12834ee538e231b38f9098c741fdc17954
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: a5ef72f1db329d04809a1069c1916d1ffcfffe65
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65997250"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509383"
 ---
-# <a name="what-is-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件访问是什么？
+# <a name="what-is-conditional-access"></a>什么是条件访问？
 
-安全是使用云的组织关心的头等大事。 云安全在管理云资源方面的一个重要方面是标识和访问。 在移动优先、云优先的世界，用户可以从任意位置使用各种设备和应用访问组织的资源。 因此，仅关注谁可以访问资源不再能满足需求。 为了掌握安全与效率之间的平衡，还需将资源的访问方式作为访问控制决策的考虑因素。 使用 Azure Active Directory (Azure AD) 条件访问便可处理该需求。 条件访问是 Azure Active Directory 的一项功能。 使用条件访问时，可以根据条件就云应用的访问实施自动化的访问控制决策。
+安全是使用云的组织关心的头等大事。 云安全在管理云资源方面的一个重要方面是标识和访问。 在移动优先、云优先的世界，用户可以从任意位置使用各种设备和应用访问组织的资源。 因此，仅关注谁可以访问资源不再能满足需求。 为了掌握安全与效率之间的平衡，还需将资源的访问方式作为访问控制决策的考虑因素。 使用 Azure Active Directory (Azure AD) 条件访问，可以解决此需求。 条件访问是 Azure Active Directory 的一项功能。 使用条件访问，可以实现基于条件访问云应用的自动访问控制决策。
 
-完成第一因素身份验证后将强制执行条件访问策略。 因此，条件访问不是针对拒绝服务 (DoS) 攻击等场景的第一道防线，而是可以利用来自这些事件的信号（例如，登录风险级别、请求的位置等）来确定访问权限。  
+完成第一因素身份验证后将强制执行条件访问策略。 因此，条件访问并不是针对拒绝服务 (DoS) 攻击等情况的第一道防线，而是可以利用来自这些事件的信号（例如，登录风险级别、请求的位置等）来确定访问权限。  
 
 ![控制](./media/overview/81.png)
 
@@ -35,20 +35,17 @@ ms.locfileid: "65997250"
 - 使用户能够随时随地保持高效的工作
 - 随时保持企业资产
 
-通过使用条件访问策略，用户可以根据所需的条件应用适当的访问控制。 Azure AD 条件访问可为你在需要时提供增强的安全性，并在不需要时毫不阻碍用户。
+通过使用条件访问策略，你可以根据所需的条件应用适当的访问控制。 Azure AD 条件访问可在需要时为你提供增强的安全性，并在不需要时毫不阻碍用户。
 
 以下是条件访问可帮助你的部分常见访问问题：
 
-- **[登录风险](conditions.md#sign-in-risk)**：Azure AD Identity Protection 可检测登录风险。 如果检测到的登录风险指示可疑操作者，如何限制访问？ 如果想要获取更有力的证据，证明登录是由合法用户执行的，该怎么办？ 如果你十分怀疑特定的用户，以至于想要阻止其访问某个应用，该怎么办？  
-
-- **[网络位置](location-condition.md)**：Azure AD 可从任意位置进行访问。 如果试图从不在 IT 部门控制范围内的网络位置访问，应怎么办？ 用户名和密码的组合可能足以作为从公司网络进行访问尝试的身份证据。 如果从其他意外的国家或地区发起的访问尝试要求更有力的身份证据，应怎么办？ 如果想要阻止从某些位置发起的访问尝试，应怎么办？  
-
-- **[设备管理](conditions.md#device-platforms)**：在 Azure AD 中，用户可以从大量设备（包括移动设备和个人设备）访问云应用。 如果要求只能使用 IT 部门管理的设备执行访问尝试，应怎么办？ 如果要阻止特定设备类型访问环境中的云应用，应怎么办？
-
-- **[客户端应用程序](conditions.md#client-apps)**：现在可以使用各种应用（例如基于 Web 的应用、移动应用或桌面应用）访问许多云应用。 如果使用导致已知问题的客户端应用类型执行访问尝试，应怎么办？ 如果需要由 IT 部门管理的特定应用类型的设备，应怎么办？
+- **[登录风险](conditions.md#sign-in-risk)** ：Azure AD Identity Protection 可检测登录风险。 如果检测到的登录风险指示可疑操作者，如何限制访问？ 如果想要获取更有力的证据，证明登录是由合法用户执行的，该怎么办？ 如果你十分怀疑特定的用户，以至于想要阻止其访问某个应用，该怎么办？  
+- **[网络位置](location-condition.md)** ：Azure AD 可从任意位置进行访问。 如果试图从不在 IT 部门控制范围内的网络位置访问，应怎么办？ 用户名和密码的组合可能足以作为从公司网络进行访问尝试的身份证据。 如果从其他意外的国家或地区发起的访问尝试要求更有力的身份证据，应怎么办？ 如果想要阻止从某些位置发起的访问尝试，应怎么办？  
+- **[设备管理](conditions.md#device-platforms)** ：在 Azure AD 中，用户可以从大量设备（包括移动设备和个人设备）访问云应用。 如果要求只能使用 IT 部门管理的设备执行访问尝试，应怎么办？ 如果要阻止特定设备类型访问环境中的云应用，应怎么办？
+- **[客户端应用程序](conditions.md#client-apps)** ：现在可以使用各种应用（例如基于 Web 的应用、移动应用或桌面应用）访问许多云应用。 如果使用导致已知问题的客户端应用类型执行访问尝试，应怎么办？ 如果需要由 IT 部门管理的特定应用类型的设备，应怎么办？
 
 这些问题和相关答案表示 Azure AD 条件访问的常见访问方案。
-条件访问是 Azure Active Directory 的一项功能，可使你使用基于策略的方法处理访问方案。
+条件访问是 Azure Active Directory 的一项功能，使你可以使用基于策略的方法处理访问方案。
 
 > [!VIDEO https://www.youtube.com/embed/eLAYBwjCGoA]
 
@@ -58,13 +55,11 @@ ms.locfileid: "65997250"
 
 ![控制](./media/overview/10.png)
 
-**然后执行此操作**指定策略的响应。 请务必注意，条件访问策略的目标不是向云应用授予访问权限。 在 Azure AD 中，向云应用授予访问权限是用户指定的主题。 使用条件访问策略，你可以控制授权用户（已获得访问云应用权限的用户）在特定条件下访问云应用的方式。 在响应中，你将强制执行其他要求，如多重身份验证、托管设备等。 在 Azure AD 条件访问上下文中，策略强制执行的要求称为访问控制。 在限制性最强的窗体中，策略可阻止访问。 有关详细信息，请参阅 [Azure Active Directory 条件访问中的访问控制](controls.md)。
 
 **发生这种情况时**定义触发策略的原因。 此原因以已满足的一组条件为特征。 在 Azure AD 条件访问中，这两个指定条件扮演了特殊的角色：
 
-- **[用户](conditions.md#users-and-groups)**：执行访问尝试的用户（人物）。
-
-- **[云应用](conditions.md#cloud-apps-and-actions)**：访问尝试的目标（事件）。
+- **[用户](conditions.md#users-and-groups)** ：执行访问尝试的用户（人物）  。
+- **[云应用](conditions.md#cloud-apps-and-actions)** ：访问尝试的目标（事件）  。
 
 这两个条件在条件访问策略中是必需的。 除这两个必需的条件外，还可加入介绍访问尝试执行方式的其他条件。 常见示例是使用公司网络外的移动设备或位置。 有关详细信息，请参阅 [Azure Active Directory 条件访问中的条件](conditions.md)。
 
@@ -72,7 +67,7 @@ ms.locfileid: "65997250"
 
 ![控制](./media/overview/51.png)
 
-使用 Azure AD 条件访问，可以控制授权用户访问云应用的方式。 条件访问的目标是对某种云应用的访问尝试强制执行其他访问控制，该云应用基于访问尝试的执行方式。
+使用 Azure AD 条件访问，可以控制授权用户访问云应用的方式。 条件访问策略的目标是根据访问尝试的执行方式对云应用的访问尝试实施附加访问控制。
 
 使用基于策略的方法保护对云应用的访问时，可使用本文中概述的结构起草环境的策略要求，而无需担心技术实现。
 
@@ -89,6 +84,8 @@ ms.locfileid: "65997250"
 ## <a name="license-requirements"></a>许可要求
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
+
+拥有 [Microsoft 365 商业版许可证](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。 
 
 ## <a name="next-steps"></a>后续步骤
 

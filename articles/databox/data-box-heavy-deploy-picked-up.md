@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 07/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 31185900ede0fae74a04f98eaecee7379fb1c4fe
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3903e14e8923f6d29f2a88c61aead0cfc605b5b5
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427809"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508672"
 ---
 # <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure-preview"></a>教程：退回 Azure Data Box Heavy 并验证上传到 Azure（预览版）的数据
 
@@ -43,11 +43,11 @@ ms.locfileid: "66427809"
 ## <a name="ship-data-box-heavy-back"></a>寄回 Data Box Heavy
 
 1. 确保设备已关闭电源且已拔下所有电缆。 将 4 根电源线卷在线轴上安全地放入可从设备背面访问的托盘中。
-2. 如果该设备是在美国或欧洲发运，则货运公司是联邦快递 (FedEx)。
+2. 设备通过美国的联邦快递 (FedEx) 和欧盟的 DHL 运送 LTL 货物
 
-    1. 拨打货运公司的本地号码以安排取件。
-    2. 联系 [Data Box Operations](mailto:DataBoxOps@microsoft.com)，通知收件相关事宜并获取退回发货标签。
-    3. 确保发货标签显示在设备前面的清晰屏幕上。
+    1. 联系 [Data Box Operations](mailto:DataBoxOps@microsoft.com)，通知收件相关事宜并获取退件发货标签。
+    2. 拨打货运公司的本地号码以安排取件。
+    3. 请确保发货标签显眼地显示在货件的外部。
     4. 确保已从设备中删除上次发货的旧发货标签。
 3. 承运人提取 Data Box Heavy 并进行扫描后，门户中的订单状态将更新为“已提货”。  此外还会显示一个跟踪 ID。
 

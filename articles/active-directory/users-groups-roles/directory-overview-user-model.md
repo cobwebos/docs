@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 775a03a82c1fc432e65ce45309a5af3febb448a9
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d2053ad07e555cc04cea714524141068f1404796
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428215"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083896"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大型组织的用户、组、许可和角色
 
@@ -62,13 +62,13 @@ ms.locfileid: "56428215"
 
 可以使用 Azure AD 为组分配对 [Azure AD 租户中部署的企业应用](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)的访问权限。 如果在应用中结合使用动态组和组分配，则可以在组织不断发展的过程中，来自动分配用户对应用的访问权限。 需要一个 Azure Active Directory Premium P1 或 Premium P2 许可证才能分配对企业应用的访问权限。
 
-在 Azure AD 中，还可以精细控制你有权访问的应用和组之间流动的数据。 在[企业应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)中打开一个应用，并选择“预配”以执行以下操作：
+在 Azure AD 中，还可以精细控制你有权访问的应用和组之间流动的数据。 在[企业应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)中打开一个应用，并选择“预配”以执行以下操作： 
 
 * 为支持自动预配的应用设置自动预配
 * 提供凭据以连接到应用的用户管理 API
 * 设置映射，用于在预配或更新用户帐户时，控制对 Azure AD 与应用之间的流产生影响的用户
 * 启动和停止应用的 Azure AD 预配服务、清除预配缓存，或重启服务
-* 查看“预配活动报告”，其中提供了在 Azure AD 与应用之间创建、更新和删除的所有用户与组的日志；以及查看“预配错误报告”，其中提供了更详细的错误消息
+* 查看“预配活动报告”，其中提供了在 Azure AD 与应用之间创建、更新和删除的所有用户与组的日志；以及查看“预配错误报告”，其中提供了更详细的错误消息  
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 79e9952aefc44b7c490bb9fe375487c1a3335fc8
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 457ab3a0d5e816becbd2b32d858d5172951f27ad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901506"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094126"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>教程：Azure Active Directory 与 Predictix Ordering 集成
 
@@ -92,11 +92,11 @@ ms.locfileid: "65901506"
 
     ![选择“单一登录”](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择“SAML/WS-Fed”模式以启用单一登录   ：
+2. 在“选择单一登录方法”对话框中，选择“SAML/WS-Fed”模式以启用单一登录：  
 
     ![选择单一登录方法](common/select-saml-option.png)
 
-3. 在“设置 SAML 单一登录”页上，选择“编辑”图标打开“基本 SAML 配置”对话框    ：
+3. 在“设置 SAML 单一登录”页上，选择“编辑”图标打开“基本 SAML 配置”对话框：   
 
     ![“编辑”图标](common/edit-urls.png)
 
@@ -141,11 +141,11 @@ ms.locfileid: "65901506"
 
 在本部分，我们将在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”    ：
+1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”：   
 
     ![选择“所有用户”](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  ：
+2. 选择屏幕顶部的“新建用户”： 
 
     ![选择“新建用户”](common/new-user.png)
 
@@ -173,7 +173,7 @@ ms.locfileid: "65901506"
 
     ![应用程序列表](common/all-applications.png)
 
-3. 在左窗格中选择“用户和组”  ：
+3. 在左窗格中选择“用户和组”： 
 
     ![选择“用户和组”](common/users-groups-blade.png)
 
@@ -181,9 +181,9 @@ ms.locfileid: "65901506"
 
     ![选择“添加用户”](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
+5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。   
 
-6. 如果希望在 SAML 断言中使用角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色  。 单击屏幕底部的“选择”按钮  。
+6. 如果希望在 SAML 断言中使用角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。  单击屏幕底部的“选择”按钮  。
 
 7. 在“添加分配”对话框中选择“分配”。  
 

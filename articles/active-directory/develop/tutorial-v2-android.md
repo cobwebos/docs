@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6112facfc0c10d7a0a0495cd778fa6c3cb6130a7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d8f8c8e98a7a99fc1b94bd5ae84062843ebabbc1
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962155"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550593"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>从 Android 应用将用户登录并调用 Microsoft Graph
 
@@ -64,10 +64,10 @@ ms.locfileid: "65962155"
 
 ### <a name="create-a-new-project"></a>创建新项目
 
-1. 打开 Android Studio，然后选择“启动新的 Android Studio 项目”。
-    - 如果已打开 Android Studio，请选择“文件” > “新建” > “新建项目”。
-2. 将“空活动”保留原样，选择“下一步”。
-3. 命名应用，将 `Minimum API level` 设置为“API 19 或更高版本”，点击“完成”。
+1. 打开 Android Studio，然后选择“启动新的 Android Studio 项目”  。
+    - 如果已打开 Android Studio，请选择“文件” > “新建” > “新建项目”    。
+2. 将“空活动”  保留原样，选择“下一步”  。
+3. 命名应用，将 `Minimum API level` 设置为“API 19 或更高版本”  ，点击“完成”  。
 5. 在 `app/build.gradle` 中，将 `targetedSdkVersion` 设置为 27。 
 
 ## <a name="register-your-application"></a>注册应用程序
@@ -77,7 +77,7 @@ ms.locfileid: "65962155"
 ### <a name="register-your-app"></a>注册应用
 
 1. 转到 [Azure 门户](https://aka.ms/MobileAppReg)，然后选择 `New registration`。 
-2. 为你的应用输入名称，然后选择 `Register`。 在此阶段不设置重定向 URI。 
+2. 为你的应用输入名称  ，然后选择 `Register`。 在此阶段不设置重定向 URI  。 
 3. 在 `Manage` 部分，转到 `Authentication` > `Add a platform` > `Android`
     - 输入项目的包名称。 如果下载了代码，则该值为 `com.azuresamples.msalandroidapp`。 
     - 输入调试/开发签名哈希。 使用门户中的 KeyTool 命令生成签名哈希。 
@@ -87,10 +87,10 @@ ms.locfileid: "65962155"
 
 ### <a name="configure-your-android-app"></a>配置 Android 应用
 
-1. 右键单击“res” > “新建” > “文件夹” > “原始资源文件夹”
-2. 在“应用” > res” > “原始”中，创建名为 `auth_config.json` 的新 JSON 文件并粘贴“MSAL 配置”。 有关详细信息，请参阅 [MSAL 配置](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)。
+1. 右键单击“res” > “新建” > “文件夹” > “原始资源文件夹”    
+2. 在“应用” > res” > “原始”中，创建名为 `auth_config.json` 的新 JSON 文件并粘贴“MSAL 配置”    。 有关详细信息，请参阅 [MSAL 配置](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)。
    <!-- Workaround for Docs conversion bug -->
-3. 在“应用” > “清单” > “AndroidManifest.xml”的下方添加 `BrowserTabActivity` 活动。 该条目允许 Microsoft 在完成身份验证后回调应用程序：
+3. 在“应用” > “清单” > “AndroidManifest.xml”的下方添加 `BrowserTabActivity` 活动    。 该条目允许 Microsoft 在完成身份验证后回调应用程序：
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -107,9 +107,9 @@ ms.locfileid: "65962155"
     </activity>
     ```
 
-    请注意，使用的签名哈希不应在 AndroidManifest.xml 中进行 URL 编码。 
+    请注意，使用的签名哈希不应在 AndroidManifest.xml 中进行 URL 编码  。 
 
-4. 在 AndroidManifest.xml 内的 `<application>` 标记上方，添加以下权限：
+4. 在 AndroidManifest.xml  内的 `<application>` 标记上方，添加以下权限：
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -120,7 +120,7 @@ ms.locfileid: "65962155"
 
 ### <a name="create-the-apps-ui"></a>创建应用的 UI
 
-1. 转到“资源” > “布局”，然后打开 **activity_main.xml**。
+1. 转到“资源” > “布局”，然后打开 **activity_main.xml**。  
 2. 将活动布局从 `android.support.constraint.ConstraintLayout` 或其他布局更改为 `LinearLayout`。
 3. 将 `android:orientation="vertical"` 属性添加到 `LinearLayout` 节点。
 4. 将以下代码粘贴到 `LinearLayout` 节点，替换当前内容：
@@ -178,8 +178,8 @@ ms.locfileid: "65962155"
 
 ### <a name="add-msal-to-your-project"></a>将 MSAL 添加到项目
 
-1. 在 Android Studio 中，选择“Gradle 脚本” > “build.gradle (模块: 应用)”。
-2. 在“依存关系”下，粘贴以下代码：
+1. 在 Android Studio 中，选择“Gradle 脚本” > “build.gradle (模块: 应用)”。  
+2. 在“依存关系”  下，粘贴以下代码：
 
     ```gradle  
     implementation 'com.android.volley:volley:1.1.1'
@@ -281,7 +281,7 @@ sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
 
 MSAL 公开了获取令牌的两种主要方法：`acquireTokenSilentAsync` 和 `acquireToken`。  
 
-如果有帐户，`acquireTokenSilentAsync` 将登录用户并获取令牌，而无需任何用户交互。 如果成功，MSAL 会将令牌切换到你的应用，如果失败，将生成 `MsalUiRequiredException`。  如果生成此异常或你希望用户具有交互式登录体验（可能需要或可能不需要凭据、mfa 或其他条件访问策略），则可以使用 `acquireToken`。  
+如果有帐户，`acquireTokenSilentAsync` 将登录用户并获取令牌，而无需任何用户交互。 如果成功，MSAL 会将令牌切换到你的应用，如果失败，将生成 `MsalUiRequiredException`。  如果生成此异常或你希望用户具有交互式登录体验（不一定需要凭据、mfa 或其他条件访问策略），则可以使用 `acquireToken`。  
 
 `acquireToken` 在尝试登录用户并获取令牌时将始终显示用户界面；但是，它可能会使用浏览器中的会话 cookie 或 Microsoft Authenticator 中的帐户来提供交互式 SSO 体验。 
 
@@ -465,7 +465,7 @@ private void onSignOutClicked() {
 
 | 标头密钥    | 值                 |
 | ------------- | --------------------- |
-| 授权 | 持有者 <access-token> |
+| 授权 | 持有者 \<access-token> |
 
 要在代码中执行此操作，请将以下两种方法添加到应用以调用图形并更新 UI： 
 

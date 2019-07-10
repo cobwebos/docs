@@ -1,5 +1,5 @@
 ---
-title: 教程：创建单页 Web 应用 - 必应新闻搜索 API
+title: 教程：使用必应新闻搜索 API 创建单页 Web 应用
 titlesuffix: Azure Cognitive Services
 description: 使用本教程构建可向必应新闻 API 发送搜索查询并在网页内显示结果的单页 Web 应用程序。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 01/10/2019
+ms.date: 06/19/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 78a985180fb2b665aed75b39acfc4d39ccd04132
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 144ad8761b4d462012963e040b7699e38587831b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798565"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272792"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>教程：创建单页 Web 应用
 
@@ -267,7 +267,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> 成功的 HTTP 请求不一定意味着搜索本身成功。 如果搜索操作中出现错误，必应新闻搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
+> 成功的 HTTP 请求不  一定意味着搜索本身成功。 如果搜索操作中出现错误，必应新闻搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
 
 上面两个函数中的很多代码专用于错误处理。 以下阶段可能会出现错误：
 

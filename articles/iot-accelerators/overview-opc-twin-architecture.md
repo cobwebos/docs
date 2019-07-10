@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d1c10e056de1bc61b5365550bf2543d2cdf61229
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 002e2e06201688638df98e16c45282187f593a3a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783896"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444309"
 ---
 # <a name="opc-twin-architecture"></a>OPC 孪生体系结构
 
@@ -35,6 +35,6 @@ ms.locfileid: "59783896"
 
    ![OPC 孪生的工作原理](media/overview-opc-twin-architecture/opc-twin3.png)
 
-1. 还可以使用孪生服务 REST 接口在 OPC 发布服务器中创建受监视的项和订阅。 OPC 发布服务器允许将遥测数据从 OPC UA 服务器系统发送到 IoT 中心。 有关 OPC 发布服务器的详细信息，请参阅 GitHub 上的 [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)存储库。
+1. 还可以使用孪生服务 REST 接口在 OPC 发布服务器中创建受监视的项和订阅。 OPC 发布服务器允许将遥测数据从 OPC UA 服务器系统发送到 IoT 中心。 有关 OPC 发布服务器的详细信息，请参阅[什么是 OPC 发布服务器](overview-opc-publisher.md)。
 
    ![OPC 孪生的工作原理](media/overview-opc-twin-architecture/opc-twin4.png)

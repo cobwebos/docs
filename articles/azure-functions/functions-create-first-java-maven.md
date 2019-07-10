@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ab705b6131bd43a7ab70bab16cef81d33f07c055
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 66a7caddc499d32a4d836dcb60bc940c1ebc8a9e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827408"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444554"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>使用 Java 和 Maven 创建你的第一个函数
 
@@ -62,8 +62,8 @@ mvn archetype:generate `
 
 ```cmd
 mvn archetype:generate ^
-    -DarchetypeGroupId=com.microsoft.azure ^
-    -DarchetypeArtifactId=azure-functions-archetype
+    "-DarchetypeGroupId=com.microsoft.azure" ^
+    "-DarchetypeArtifactId=azure-functions-archetype"
 ```
 
 Maven 会请求你提供所需的值以完成项目的生成。 有关 groupId  、artifactId  和 version  值，请参阅 [Maven 命名约定](https://maven.apache.org/guides/mini/guide-naming-conventions.html)参考。 AppName  值在 Azure 中必须唯一，以便 Maven 基于以前输入的 artifactId  生成默认应用名称。 PackageName  值确定所生成函数代码的 Java 包。
@@ -79,7 +79,7 @@ Define value for property 'appName' fabrikam-functions-20170927220323382:
 Confirm properties configuration: Y
 ```
 
-在此示例 `fabrikam-functions` 中，Maven 在新文件夹中创建名为 artifactId  的项目文件 项目中生成的可以运行的代码是一个简单的回显请求正文的 [HTTP 触发](/azure/azure-functions/functions-bindings-http-webhook)函数：
+在此示例 `fabrikam-functions` 中，Maven 在新文件夹中创建名为 artifactId  的项目文件 项目中生成的准备运行代码是一个 [HTTP 触发的](/azure/azure-functions/functions-bindings-http-webhook)函数，该函数回显请求正文：
 
 ```java
 public class Function {
@@ -108,7 +108,7 @@ public class Function {
 
 ```
 
-## <a name="reference-bindings"></a>引用绑定
+## <a name="enable-extension-bundles"></a>启用扩展捆绑包
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -156,7 +156,7 @@ Hello LocalFunction!
 az login
 ```
 
-使用 `azure-functions:deploy` Maven 目标将代码部署到新的函数应用。
+使用 `azure-functions:deploy` Maven 目标将代码部署到新的函数应用。 这将执行一个启用了[“从包运行”模式的 Zip 部署](functions-deployment-technologies.md#zip-deploy)。
 
 > [!NOTE]
 > 使用 Visual Studio Code 来部署函数应用时，请记住选择非免费的订阅，否则会出现错误。 可以在 IDE 的左侧观察订阅。

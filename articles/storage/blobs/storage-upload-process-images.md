@@ -10,25 +10,25 @@ ms.date: 11/26/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: mvc
-ms.openlocfilehash: e5be86f9f7fbaedeb8fbb10b89926644dcf8aac2
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 612c0b48faac365623fe36d6d2435c1c79566d9b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835142"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071330"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
 本教程是一个系列中的第一部分。 在本教程中，你将了解如何部署一个 Web 应用，它使用 Azure 存储客户端库将图像上传到存储帐户。 完成后，你将具有一个通过 Azure 存储来存储和显示图像的 Web 应用。
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![图像容器视图](media/storage-upload-process-images/figure2.png)
+![.NET 中的图像调整器应用](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![图像容器视图](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Node.js V2 中的图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![图像容器视图](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Node.js V10 中的图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -211,7 +211,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
 
 选择“上传照片”  区域以选择并上传文件，或者将文件拖放到该区域上。 如果成功上传，图像会消失。 “生成的缩略图”  部分将保持为空，直到我们稍后在本主题中对其进行测试为止。
 
-![ImageResizer 应用](media/storage-upload-process-images/figure1.png)
+![在 .NET 中上传照片](media/storage-upload-process-images/figure1.png)
 
 在示例代码中，*Storagehelper.cs* 文件中的 `UploadFiletoStorage` 任务用于通过 [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) 方法将图像上传到存储帐户中的 *images* 容器。 下面的代码示例包含 `UploadFiletoStorage` 任务。
 
@@ -254,7 +254,7 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 选择“选择文件”  以选择文件，然后单击“上传图像”  。 “生成的缩略图”  部分将保持为空，直到我们稍后在本主题中对其进行测试为止。 
 
-![图像上传应用](media/storage-upload-process-images/upload-app-nodejs.png)
+![在 Node.js V2 中上传照片](media/storage-upload-process-images/upload-app-nodejs.png)
 
 在示例代码中，`post` 路由负责将图像上传到 Blob 容器中。 此路由使用模块来帮助处理上传：
 
@@ -318,7 +318,7 @@ router.post('/', uploadStrategy, (req, res) => {
 
 选择“选择文件”  以选择文件，然后单击“上传图像”  。 “生成的缩略图”  部分将保持为空，直到我们稍后在本主题中对其进行测试为止。 
 
-![图像上传应用](media/storage-upload-process-images/upload-app-nodejs.png)
+![在 Node.js V10 中上传照片](media/storage-upload-process-images/upload-app-nodejs.png)
 
 在示例代码中，`post` 路由负责将图像上传到 Blob 容器中。 此路由使用模块来帮助处理上传：
 
@@ -400,7 +400,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 验证图像是否显示在该容器中。
 
-![图像容器视图](media/storage-upload-process-images/figure13.png)
+![Azure 门户图像容器列表](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>测试缩略图查看
 
@@ -413,13 +413,13 @@ router.post('/', uploadStrategy, async (req, res) => {
 导航回到应用，以验证上传到 **thumbnails** 容器的图像是否可见。
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![图像容器视图](media/storage-upload-process-images/figure2.png)
+![显示新图像的 .NET 图像调整器应用](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![图像容器视图](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![显示新图像的 Node.js V2 图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![图像容器视图](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![显示新图像的 Node.js V10 图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 

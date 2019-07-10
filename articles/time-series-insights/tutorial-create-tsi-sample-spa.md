@@ -4,20 +4,20 @@ description: 了解如何创建可以查询和呈现 Azure 时序见解环境中
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 2f25267b95e9ed5f7d5f6e6373fb9e3807927a7f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: e415c681ae5a35de6e8ff76e09cfef8cc8cc98f8
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735354"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544066"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>教程：创建 Azure 时序见解单页 Web 应用
 
-本教程引导你完成创建自己的单页 Web 应用程序 (SPA) 以访问 Azure 时序见解数据的过程。 
+本教程引导你完成创建自己的单页 Web 应用程序 (SPA) 以访问 Azure 时序见解数据的过程。
 
 本教程介绍：
 
@@ -50,55 +50,14 @@ ms.locfileid: "66735354"
 
 ## <a name="register-the-application-with-azure-ad"></a>将应用程序注册到 Azure AD
 
-生成应用程序之前，必须将它注册到 Azure AD。 注册可提供标识配置，以便应用程序可以使用 OAuth 支持进行单一登录。 OAuth 需要 SPA 才能使用隐式授权授予类型。 在应用程序清单中更新授权。 应用程序清单是以 JSON 格式表示应用程序的标识配置。
-
-1. 使用 Azure 订阅帐户登录到 [Azure 门户](https://portal.azure.com)。  
-1. 选择“Azure Active Directory” > “应用注册” > “新建应用程序注册”    。
-
-   [![Azure 门户 - 开始 Azure AD 应用程序注册](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png#lightbox)
-
-1. 在“创建”窗格中，填写必需的参数。 
-
-   参数|说明
-   ---|---
-   **名称** | 输入有意义的注册名称。  
-   **应用程序类型** | 保留为“Web 应用/API”  。
-   **登录 URL** | 输入应用程序登录页（主页）的 URL。 由于应用程序会在以后托管在 Azure 应用服务中，因此必须使用 https:\//azurewebsites.net 域中的 URL。 在本示例中，名称基于注册名称。
-
-   选择“创建”  以创建新的应用程序注册。
-
-   [![Azure 门户 - Azure AD 应用程序注册窗格中的“创建”选项](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png#lightbox)
-
-1. 资源应用程序提供其他应用程序可以使用的 REST API。 API 也会注册到 Azure AD。 API 通过公开作用域  提供对客户端应用程序的精细安全访问。 因为应用程序会调用 Azure 时序见解 API，所有必须指定 API 和作用域。 会在运行时为 API 和作用域授予权限。 选择“设置”   > “所需权限”   > “添加”  。
-
-   [![Azure 门户 - 用于添加 Azure AD 权限的“添加”选项](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png#lightbox)
-
-1. 在“添加 API 访问权限”  窗格中，选择“1 选择 API”  以指定 Azure 时序见解 API。 在“选择 API”窗格的搜索框中，输入“azure 时”。   然后在结果列表中选择“Azure 时序见解”  。 选择“选择”。 
-
-   [![Azure 门户 - 用于添加 Azure AD 权限的搜索选项](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png#lightbox)
-
-1. 若要为 API 选择作用域，请在“添加 API 访问权限”  窗格中，选择“2 Select 权限”  。 在“启用访问权限”窗格中，选择“访问 Azure 时序见解服务”作用域。   选择“选择”。  会返回到“添加 API 访问权限”  窗格。 选择“完成”  。
-
-   [![Azure 门户 - 设置作用域以便添加 Azure AD 权限](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png#lightbox)
-
-1. 在“所需权限”  窗格中，现在会显示 Azure 时序见解 API。 还需要对所有用户提供预许可权限，以便应用程序可访问 API 和作用域。 选择“授予权限”，然后选择“是”   。
-
-   [![Azure 门户 - 用于添加 Azure AD 所需权限的“授予权限”选项](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png#lightbox)
-
-1. 如前所述，还必须更新应用程序清单。 在窗格顶部的水平菜单（“痕迹导航”）中，选择应用程序名称以返回到“已注册的应用”  窗格。 选择“清单”，将 `oauth2AllowImplicitFlow` 属性更改为 `true`，然后选择“保存”。  
-
-   [![Azure 门户 - 更新 Azure AD 清单](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png#lightbox)
-
-1. 在痕迹导航中，选择应用程序名称以返回到“已注册的应用”窗格。  复制应用程序的“主页”  和“应用程序 ID”  值。 本教程后面会用到这些属性。
-
-   [![Azure 门户 - 复制应用程序的主页 URL 和应用程序 ID 值](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png#lightbox)
+[!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
 ## <a name="build-and-publish-the-web-application"></a>生成并发布 Web 应用程序
 
 1. 创建一个存储应用程序项目文件的目录。 然后访问以下每个 URL。 右键单击页面右上角的“原始”  链接，然后选择“另存为”  以将文件保存在项目目录中。
 
-   - [index.html  ](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html)：页面的 HTML 和 JavaScript
-   - [sampleStyles.css  ]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css)：CSS 样式表
+   - [index.html  ](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html)：用于页面的 HTML 和 JavaScript
+   - [sampleStyles.css]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css)：CSS 样式表 
 
    > [!NOTE]
    > 根据浏览器，可能需要在保存文件之前将文件扩展名更改为 .html 或 .css。
@@ -142,7 +101,7 @@ ms.locfileid: "66735354"
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. 若要配置应用以使用 Azure AD 应用注册 ID，请更改 `clientID` 和 `postLogoutRedirectUri` 值以使用在[将应用程序注册到 Azure AD](#register-the-application-with-azure-ad) 的步骤 9 中复制的“应用程序 ID”  和“主页”  值。
+   1. 若要配置应用以使用 Azure AD 应用注册 ID，请更改 `clientID` 值以使用[注册应用程序以使用 Azure AD](#register-the-application-with-azure-ad) 时在**步骤 3** 中复制的**应用程序 ID**。 如果已在 Azure AD 中创建了**注销 URL**，请将该值设置为 `postLogoutRedirectUri` 值。
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
@@ -182,9 +141,9 @@ ms.locfileid: "66735354"
 
 错误代码/条件 | 说明
 ---------------------| -----------
-AADSTS50011：  未为应用程序注册回复地址。 | Azure AD 注册缺少“回复 URL”  属性。 转到 Azure AD 应用程序注册的“设置”   >   “回复 URL”。 验证在[将应用程序注册到 Azure AD](#register-the-application-with-azure-ad) 的步骤 3 中指定的登录  URL 是否存在。
-AADSTS50011：*在请求中指定的回复 URL 与为以下应用程序配置的回复 URL 不匹配：'\<Application ID GUID>'。* | 在[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 6 中指定的 `postLogoutRedirectUri` 必须与 Azure AD 应用程序注册中“设置”   >   “回复 URL”下指定的值匹配。 务必还要更改“目标 URL”  的值，以按照[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 5 使用 https  。
-Web 应用程序会加载，但登录页是未设置样式的纯文本页面，背景为白色。 | 验证在[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 4 中论述的路径是否正确。 如果 Web 应用程序找不到 .css 文件，则页面无法正确设置样式。
+AADSTS50011：  未为应用程序注册回复地址。 | Azure AD 注册缺少“回复 URL”  属性。 转到 Azure AD 应用程序注册的“设置”   >   “回复 URL”。 验证[注册应用程序以使用 Azure AD](#register-the-application-with-azure-ad) 时，可以选择在**步骤 2** 中指定的**重定向 URI** 是否存在。
+AADSTS50011：*在请求中指定的回复 URL 与为以下应用程序配置的回复 URL 不匹配：'\<Application ID GUID>'。* | 在[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的**步骤 6** 中指定的 `postLogoutRedirectUri` 必须与 Azure AD 应用程序注册中“设置”   > “回复 URL”  下指定的值匹配。 务必还要更改“目标 URL”  的值，以按照[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的**步骤 5** 使用 https  。
+Web 应用程序会加载，但登录页是未设置样式的纯文本页面，背景为白色。 | 验证在[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的**步骤 4** 中论述的路径是否正确。 如果 Web 应用程序找不到 .css 文件，则页面无法正确设置样式。
 
 ## <a name="clean-up-resources"></a>清理资源
 

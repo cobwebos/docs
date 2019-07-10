@@ -4,21 +4,16 @@ description: 配合使用资源管理器模板与 Azure 部署管理器来部署
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d43a0e7c48db9dd42c7cf3b52e5d4072a4827898
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 0e8a9fefdf92f568001cc3352fe83a85157acf9a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479178"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442579"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>教程：在 Azure 部署管理器（公共预览版）中使用运行状况检查
 
@@ -41,7 +36,10 @@ ms.locfileid: "66479178"
 > * 验证实施部署
 > * 清理资源
 
-可以在[此处](https://docs.microsoft.com/rest/api/deploymentmanager/)找到 Azure 部署管理器 REST API 参考。
+其他资源：
+
+- [Azure 部署管理器 REST API 参考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+- [Azure 部署管理器示例](https://github.com/Azure-Samples/adm-quickstart)。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -59,7 +57,7 @@ ms.locfileid: "66479178"
 以下两个文件用于部署 Azure 函数。 无需下载这些文件即可完成本教程。
 
 * 资源管理器模板位于 [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json)。 你将部署此模板以创建 Azure 函数。
-* Azure 函数源代码的 zip 文件 [http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip)。 资源管理器模板将调用此 zip 文件。
+* Azure 函数源代码的 zip 文件 [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip)。 资源管理器模板将调用此 zip 文件。
 
 若要部署 Azure 函数，请选择“尝试”打开 Azure Cloud shell，然后在 shell 窗口中粘贴以下脚本。   若要粘贴代码，请右键单击 shell 窗口并选择“粘贴”  。
 

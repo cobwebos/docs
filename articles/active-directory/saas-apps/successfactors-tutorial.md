@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2281fb046ca9b96aa5800150d630b9086236c5c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9526cde92fe2f504207de188fa8f0567ffa580d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866593"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089823"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>教程：Azure Active Directory 与 SuccessFactors 集成
 
@@ -53,19 +53,19 @@ ms.locfileid: "65866593"
 
 **若要从库中添加 SuccessFactors，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“SuccessFactors”，在结果面板中选择“SuccessFactors”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入“SuccessFactors”，在结果面板中选择“SuccessFactors”，然后单击“添加”按钮添加该应用程序    。
 
      ![结果列表中的 SuccessFactors](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "65866593"
 
 若要配置 SuccessFactors 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **SuccessFactors** 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **SuccessFactors** 应用程序集成页上，选择“单一登录”  。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,15 +97,15 @@ ms.locfileid: "65866593"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![SuccessFactors 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
 
     | |
     |--|
@@ -114,7 +114,7 @@ ms.locfileid: "65866593"
     | `https://<companyname>.successfactors.eu/<companyname>`|
     | `https://<companyname>.sapsf.eu`|
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：
+    b. 在“标识符”文本框中，使用以下模式键入 URL  ：
 
     | |
     |--|
@@ -128,7 +128,7 @@ ms.locfileid: "65866593"
     | `https://www.successfactors.cn`|
     | `https://www.successfactors.cn/<companyname>`|
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：
+    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：
 
     | |
     |--|
@@ -146,11 +146,11 @@ ms.locfileid: "65866593"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [SuccessFactors 客户端支持团队](https://www.successfactors.com/content/ssf-site/en/support.html)获取这些值。
 
-5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 SuccessFactors”部分，根据要求复制相应 URL。
+6. 在“设置 SuccessFactors”部分，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -164,9 +164,9 @@ ms.locfileid: "65866593"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 **SuccessFactors 管理门户**。
 
-2. 请访问“应用程序安全性”并从本机转到“单一登录功能”。
+2. 请访问“应用程序安全性”  并从本机转到“单一登录功能”  。
 
-3. 将任何值放在“重置令牌”中，然后单击“保存令牌”以启用 SAML SSO。
+3. 将任何值放在“重置令牌”  中，然后单击“保存令牌”  以启用 SAML SSO。
 
     ![在应用端配置单一登录][11]
 
@@ -177,23 +177,23 @@ ms.locfileid: "65866593"
 
     ![在应用端配置单一登录][12]
   
-    a. 选择“SAML v2 SSO”单选按钮
+    a. 选择“SAML v2 SSO”  单选按钮
   
-    b. 设置“SAML 声明方名称”（例如，SAML 颁发者+公司名称）。
+    b. 设置“SAML 声明方名称”  （例如，SAML 颁发者+公司名称）。
 
-    c. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
+    c. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
 
-    d. 对于“需要强制签名”，选择“断言”。
+    d. 对于“需要强制签名”  ，选择“断言”  。
 
-    e. 对于“启用 SAML 标志”选择“启用”。
+    e. 对于“启用 SAML 标志”  选择“启用”  。
 
-    f. 对于“登录请求签名（SF 生成/SP/RP）”选择“否”。
+    f. 对于“登录请求签名（SF 生成/SP/RP）”  选择“否”  。
 
-    g. 对于“SAML 配置文件”，选择“浏览器/Post 配置文件”。
+    g. 对于“SAML 配置文件”  ，选择“浏览器/Post 配置文件”  。
 
-    h. 对于“强制证书有效期限”，选择“否”。
+    h. 对于“强制证书有效期限”  ，选择“否”  。
 
-    i. 复制从 Azure 门户下载的证书文件的内容，然后将其粘贴到“SAML 验证证书”文本框。
+    i. 复制从 Azure 门户下载的证书文件的内容，然后将其粘贴到“SAML 验证证书”  文本框。
 
     > [!NOTE] 
     > 证书内容必须具有开始证书和结束证书标记。
@@ -202,25 +202,25 @@ ms.locfileid: "65866593"
 
     ![在应用端配置单一登录][13]
 
-    a. 对于“支持 SP 启动的全局注销”，选择“是”。
+    a. 对于“支持 SP 启动的全局注销”  ，选择“是”  。
 
-    b. 在“全局注销服务URL (LogoutRequest 目标)”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+    b. 在“全局注销服务URL (LogoutRequest 目标)”  文本框中，粘贴从 Azure 门户复制的“注销 URL”  值。
 
-    c. 对于“要求 sp 必须加密所有 NameID 元素”选择“否”。
+    c. 对于“要求 sp 必须加密所有 NameID 元素”  选择“否”  。
 
-    d. 对于“NameID 格式”，选择“未指定”。
+    d. 对于“NameID 格式”  ，选择“未指定”  。
 
-    e. 对于“启用 sp 启动的登录 (AuthnRequest)”选择“是”。
+    e. 对于“启用 sp 启动的登录 (AuthnRequest)”  选择“是”  。
 
-    f. 在“以公司范围颁发者身份发送请求”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+    f. 在“以公司范围颁发者身份发送请求”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
 6. 如果希望登录用户名不区分大小写，请执行这些步骤。
 
     ![配置单一登录][29]
 
-    a. 请访问“公司设置”（靠近底部）。
+    a. 请访问“公司设置”  （靠近底部）。
 
-    b. 选中“启用不区分大小写的用户名”旁边的复选框。
+    b. 选中“启用不区分大小写的用户名”  旁边的复选框。
 
     c. 单击“ **保存**”。
 
@@ -231,11 +231,11 @@ ms.locfileid: "65866593"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -243,40 +243,40 @@ ms.locfileid: "65866593"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 SuccessFactors 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SuccessFactors”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SuccessFactors”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“SuccessFactors”。
+2. 在应用程序列表中，选择“SuccessFactors”  。
 
     ![应用程序列表中的 SuccessFactors 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-successfactors-test-user"></a>创建 SuccessFactors 测试用户
 

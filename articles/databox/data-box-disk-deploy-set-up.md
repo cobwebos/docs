@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 10/31/2018
+ms.date: 06/13/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 34d62df989da80c84bad92a90fc2253c416a4924
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 688c33a098bb34a6b39937579e2e25591786c531
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939652"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147486"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>教程：打开包装、连接和解锁 Azure Data Box Disk
 
@@ -123,7 +123,9 @@ ms.locfileid: "64939652"
     ```  
 8. 解锁磁盘后，可以查看磁盘的内容。    
 
-    ![Data Box 磁盘内容](media/data-box-disk-deploy-set-up/data-box-disk-content.png) 
+    ![Data Box 磁盘内容](media/data-box-disk-deploy-set-up/data-box-disk-content.png)
+
+如果解锁磁盘时遇到任何问题，请参阅如何[排查解锁问题](data-box-disk-troubleshoot-unlock.md)。 
 
 ## <a name="unlock-disks-on-linux-client"></a>在 Linux 客户端上解锁磁盘
 
@@ -253,6 +255,9 @@ ms.locfileid: "64939652"
 8. 解锁磁盘后，可以转到装入点并查看磁盘的内容。 现在，可将数据复制到 *BlockBlob* 或 *PageBlob* 文件夹。 
 
     ![Data Box 磁盘内容](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
+
+
+如果解锁磁盘时遇到任何问题，请参阅如何[排查解锁问题](data-box-disk-troubleshoot-unlock.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

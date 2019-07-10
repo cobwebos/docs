@@ -3,28 +3,29 @@ title: 快速入门：翻译文本，C# - 文本翻译
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用文本翻译 API 和 C# 将文本从一种语言翻译成另一种语言。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: e59e634b04a55a0c7a0fd555b09404545bd26c60
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.date: 06/13/2019
+ms.author: swmachan
+ms.openlocfilehash: 242c16fd0ec1d32c889d511aee78924a296e191d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514934"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449428"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-c"></a>快速入门：使用 C# 通过文本翻译 API 来翻译字符串
 
-本快速入门介绍如何使用 .NET Core 和文本翻译 REST API 将文本字符串从英文翻译为意大利文和德文。
+本快速入门介绍如何使用 .NET Core、C# 7.1 或更高版本以及文本翻译 REST API 将英语文本字符串翻译为德语、意大利语、日语和泰语。
 
 此快速入门需要包含文本翻译资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
 
 ## <a name="prerequisites"></a>先决条件
 
+* C# 7.1 或更高版本
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet 包](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
@@ -47,6 +48,18 @@ cd translate-sample
 dotnet add package Newtonsoft.Json --version 11.0.2
 ```
 
+## <a name="select-the-c-language-version"></a>选择 C# 语言版本
+
+本快速入门需要 C# 7.1 或更高版本。 可以通过多种方式来更改项目的 C# 版本。 本指南将介绍如何调整 `translate-sample.csproj` 文件。 如需所有可用选项，例如在 Visual Studio 中更改语言的选项，请参阅[选择 C# 语言版本](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version)。
+
+打开项目，然后打开 `translate-sample.csproj`。 确保将 `LangVersion` 设置为 7.1 或更高版本。 如果没有用于语言版本的属性组，请添加以下行：
+
+```xml
+<PropertyGroup>
+   <LangVersion>7.1</LangVersion>
+</PropertyGroup>
+```
+
 ## <a name="add-required-namespaces-to-your-project"></a>将所需命名空间添加到项目
 
 此前运行的 `dotnet new console` 命令创建了一个项目（包括 `Program.cs`）。 此文件是需放置应用程序代码的位置。 打开 `Program.cs`，替换现有的 using 语句。 这些语句可确保你有权访问生成并运行示例应用所需的所有类型。
@@ -55,15 +68,67 @@ dotnet add package Newtonsoft.Json --version 11.0.2
 using System;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+// Install Newtonsoft.Json with NuGet
 using Newtonsoft.Json;
+```
+
+## <a name="create-classes-for-the-json-response"></a>为 JSON 响应创建类
+
+接下来，我们将创建一组在反序列化由文本翻译 API 返回的 JSON 响应时使用的类。
+
+```csharp
+/// <summary>
+/// The C# classes that represents the JSON returned by the Translator Text API.
+/// </summary>
+public class TranslationResult
+{
+    public DetectedLanguage DetectedLanguage { get; set; }
+    public TextResult SourceText { get; set; }
+    public Translation[] Translations { get; set; }
+}
+
+public class DetectedLanguage
+{
+    public string Language { get; set; }
+    public float Score { get; set; }
+}
+
+public class TextResult
+{
+    public string Text { get; set; }
+    public string Script { get; set; }
+}
+
+public class Translation
+{
+    public string Text { get; set; }
+    public TextResult Transliteration { get; set; }
+    public string To { get; set; }
+    public Alignment Alignment { get; set; }
+    public SentenceLength SentLen { get; set; }
+}
+
+public class Alignment
+{
+    public string Proj { get; set; }
+}
+
+public class SentenceLength
+{
+    public int[] SrcSentLen { get; set; }
+    public int[] TransSentLen { get; set; }
+}
 ```
 
 ## <a name="create-a-function-to-translate-text"></a>创建文本翻译函数
 
-在 `Program` 类中创建名为 `TranslateText` 的函数。 该类封装用于调用 Translate 资源的代码，并将结果输出到控制台。
+在 `Program` 类中，创建一个名为 `TranslateTextRequest()` 的异步函数。 此函数采用四个参数：`subscriptionKey`、`host`、`route` 和 `inputText`。
 
 ```csharp
-static void TranslateText()
+// This sample requires C# 7.1 or later for async/await.
+// Async call to the Translator Text API
+static public async Task TranslateTextRequest(string subscriptionKey, string host, string route, string inputText)
 {
   /*
    * The code for your call to the translation service will be added to this
@@ -72,20 +137,12 @@ static void TranslateText()
 }
 ```
 
-## <a name="set-the-subscription-key-host-name-and-path"></a>设置订阅密钥、主机名称和路径
+## <a name="serialize-the-translation-request"></a>序列化翻译请求
 
-将以下行添加到 `TranslateText` 函数。 你会注意到，除了 `api-version`，还有两个参数已追加到 `route`。 这些参数用于设置翻译输出。 在此示例中，它设置为德语 (`de`) 和意大利语 (`it`)。 确保更新订阅密钥值。
-
-```csharp
-string host = "https://api.cognitive.microsofttranslator.com";
-string route = "/translate?api-version=3.0&to=de&to=it";
-string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-```
-
-接下来需创建 JSON 对象并将其序列化，其中包含要翻译的文本。 请记住，可以在 `body` 数组中传递多个对象。
+接下来需创建 JSON 对象并将其序列化，其中包含要翻译的文本。 请记住，可以在 `body` 中传递多个对象。
 
 ```csharp
-System.Object[] body = new System.Object[] { new { Text = @"Hello world!" } };
+object[] body = new object[] { new { Text = inputText } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
 
@@ -110,40 +167,63 @@ using (var request = new HttpRequestMessage())
 * 插入请求正文（序列化的 JSON 对象）
 * 添加必需的标头
 * 发出异步请求
-* 输出响应
+* 使用之前创建的类输出响应
 
 向 `HttpRequestMessage` 添加以下代码：
 
 ```csharp
-// Set the method to POST
+// Build the request.
+// Set the method to Post.
 request.Method = HttpMethod.Post;
-
-// Construct the full URI
+// Construct the URI and add headers.
 request.RequestUri = new Uri(host + route);
-
-// Add the serialized JSON object to your request
 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-
-// Add the authorization header
 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
-// Send request, get response
-var response = client.SendAsync(request).Result;
-var jsonResponse = response.Content.ReadAsStringAsync().Result;
-
-// Print the response
-Console.WriteLine(jsonResponse);
-Console.WriteLine("Press any key to continue.");
+// Send the request and get response.
+HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
+// Read response as a string.
+string result = await response.Content.ReadAsStringAsync();
+// Deserialize the response using the classes created earlier.
+TranslationResult[] deserializedOutput = JsonConvert.DeserializeObject<TranslationResult[]>(result);
+// Iterate over the deserialized results.
+foreach (TranslationResult o in deserializedOutput)
+{
+    // Print the detected input language and confidence score.
+    Console.WriteLine("Detected input language: {0}\nConfidence score: {1}\n", o.DetectedLanguage.Language, o.DetectedLanguage.Score);
+    // Iterate over the results and print each translation.
+    foreach (Translation t in o.Translations)
+    {
+        Console.WriteLine("Translated to {0}: {1}", t.To, t.Text);
+    }
+}
 ```
+
+如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。 
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `Main` 函数中调用 `TranslateText()`。 找到 `static void Main(string[] args)` 并添加以下行：
+最后一步是在 `Main` 函数中调用 `TranslateTextRequest()`。 在此示例中，我们将翻译为德语 (`de`)、意大利语 (`it`)、日语 (`ja`) 和泰语 (`th`)。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
 
 ```csharp
-TranslateText();
-Console.ReadLine();
+static async Task Main(string[] args)
+{
+    // This is our main function.
+    // Output languages are defined in the route.
+    // For a complete list of options, see API reference.
+    // https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate
+    string host = "https://api.cognitive.microsofttranslator.com";
+    string route = "/translate?api-version=3.0&to=de&to=it&to=ja&to=th";
+    string subscriptionKey = "YOUR_TRANSLATOR_TEXT_KEY_GOES_HERE";
+    // Prompts you for text to translate. If you'd prefer, you can
+    // provide a string as textToTranslate.
+    Console.Write("Type the phrase you'd like to translate? ");
+    string textToTranslate = Console.ReadLine();
+    await TranslateTextRequest(subscriptionKey, host, route, textToTranslate);
+}
 ```
+
+你会注意到，在 `Main` 中声明了 `subscriptionKey`、`host` 和 `route`。 此外，你将使用 `Console.Readline()` 提示用户输入并将值分配给 `textToTranslate`。
 
 ## <a name="run-the-sample-app"></a>运行示例应用
 
@@ -155,7 +235,19 @@ dotnet run
 
 ## <a name="sample-response"></a>示例响应
 
-请在此[语言列表](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)中查找国家/地区缩写。
+运行示例后，应当会看到输出到终端的以下内容：
+
+```bash
+Detected input language: en
+Confidence score: 1
+
+Translated to de: Hallo Welt!
+Translated to it: Salve, mondo!
+Translated to ja: ハローワールド！
+Translated to th: หวัดดีชาวโลก!
+```
+
+此消息是从原始 JSON 构建的，如下所示：
 
 ```json
 [
@@ -172,6 +264,14 @@ dotnet run
       {
         "text": "Salve, mondo!",
         "to": "it"
+      },
+      {
+        "text": "ハローワールド！",
+        "to": "ja"
+      },
+      {
+        "text": "หวัดดีชาวโลก!",
+        "to": "th"
       }
     ]
   }

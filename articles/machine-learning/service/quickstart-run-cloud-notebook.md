@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3e360b019a0c275c5ce0f9986fabd5dfc847f130
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 68f24d4d019af873a0ca45792a3cbcc3dd3c3c3f
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015277"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476045"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>快速入门：通过基于云的 Notebook 服务器开始使用 Azure 机器学习
 
@@ -74,15 +74,20 @@ ms.locfileid: "66015277"
 
 1. 在 Jupyter 笔记本网页上，顶部文件夹名称为用户名。  选择该文件夹。
 
+    > [!TIP]
+    > 此文件夹位于工作区中的[存储容器](concept-workspace.md#resources)上，而不是位于笔记本 VM 本身上。  可以删除笔记本 VM，但仍保留所有工作。  稍后创建新的笔记本 VM 时，它将加载此同一文件夹。
+
 1. samples 文件夹名称包含版本号，例如 **samples-1.0.33.1**。  选择 samples 文件夹。
 
-1. 选择**快速入门**笔记本。
+1. 选择 **quickstart** 文件夹。
 
 ## <a name="run-the-notebook"></a>运行笔记本
 
 运行一个笔记本，估算 pi 并将错误记录到工作区。
 
 1. 选择 **01.run-experiment.ipynb** 以打开笔记本。
+
+1. 如果看到“未找到内核”警报，请选择内核“Python 3.6 - AzureML”  （大约位于列表的中间位置）并设置内核。
 
 1. 单击第一个代码单元，然后选择“运行”。 
 
@@ -113,11 +118,11 @@ ms.locfileid: "66015277"
 
 1. 单击“链接到 Azure 门户”，查看在工作区中的运行的相关信息。   此链接打开 Azure 门户中的工作区。
 
-1. 你看到的已记录值的绘图已自动在工作区中创建。 只要使用相同的名称参数记录了多个值，系统就会自动为你生成绘图。
+1. 你看到的已记录值的绘图已自动在工作区中创建。 只要使用相同的名称参数记录了多个值，系统就会自动为你生成绘图。 下面是一个示例：
 
    ![查看历史记录](./media/quickstart-run-cloud-notebook/web-results.png)
 
-由于估算 pi 的代码使用随机值，因此绘图会显示不同的值。  
+由于估算 pi 的代码使用随机值，因此你的绘图可能看起来不同。  
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -152,7 +157,9 @@ ms.locfileid: "66015277"
 * 运行笔记本。
 * 在工作区中查看所记录的错误值。  该示例介绍如何通过工作区跟踪脚本中生成的信息。 
 
-在 Jupyter Notebook 网页上浏览 samples 文件夹中的其他笔记本，详细了解 Azure 机器学习服务。
+在 Jupyter Notebook 网页的 **quickstart** 文件夹中，打开并运行 **02.deploy-web-service.ipynb** 笔记本，以了解如何部署 Web 服务。
+
+同样在 Jupyter Notebook 网页上浏览 samples 文件夹中的其他笔记本，以详细了解 Azure 机器学习服务。
 
 若要深入体验工作流，请按照机器学习教程来训练和部署模型：  
 

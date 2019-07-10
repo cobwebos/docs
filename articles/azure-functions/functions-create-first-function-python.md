@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: ea890a49fc7b6a153ece183b153f5bc2a49760b5
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5ef30fbf647492f79c64508d8306868aa1f6b278
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496566"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444581"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>在 Azure 中创建 HTTP 触发的函数
 
@@ -32,7 +32,7 @@ ms.locfileid: "66496566"
 
 + 安装 [Python 3.6](https://www.python.org/downloads/)。
 
-+ 安装 [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.666 或更高版本。
++ 安装 [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.1071 或更高版本。
 
 + 安装 [Azure CLI](/cli/azure/install-azure-cli) 版本 2.x 或更高版本。
 
@@ -44,18 +44,18 @@ ms.locfileid: "66496566"
 
 要本地开发和测试 Python 函数，必须在 Python 3.6 环境中工作。 运行以下命令来创建并激活一个名为 `.env` 的虚拟环境。
 
-### <a name="bash-or-a-terminal-window"></a>Bash 或终端窗口：
+### <a name="bash"></a>Bash：
 
 ```bash
-python3.6 -m venv .env
-source .env/bin/activate
+python3.6 -m venv .venv
+source .venv/bin/activate
 ```
 
 ### <a name="powershell-or-a-windows-command-prompt"></a>PowerShell 或 Windows 命令提示符：
 
 ```powershell
-py -3.6 -m venv .env
-.env\scripts\activate
+py -3.6 -m venv .venv
+.venv\scripts\activate
 ```
 
 剩下的命令在虚拟环境内运行。
@@ -66,7 +66,7 @@ Functions 项目等效于 Azure 中的函数应用。 它可能具有多个函�
 
 在虚拟环境中，运行以下命令，选择“python”作为工作器运行时  。
 
-```command
+```console
 func init MyFunctionProj
 ```
 
@@ -78,25 +78,17 @@ func init MyFunctionProj
 
 导航到新的 MyFunctionProj 文件夹：
 
-```command
+```console
 cd MyFunctionProj
 ```
 
 接下来，请更新 host.json 文件以启用扩展捆绑包。  
 
-## <a name="reference-bindings"></a>引用绑定
-
-扩展捆绑包可以更轻松地在以后添加绑定扩展。 它无需安装 .NET Core 2.x SDK。 扩展捆绑包需要使用 Core Tools 的 2.6.1071 版或更高版本。 
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
-现在，可以将函数添加到项目。
-
 ## <a name="create-a-function"></a>创建函数
 
 若要将函数添加到项目中，请运行以下命令：
 
-```command
+```console
 func new
 ```
 

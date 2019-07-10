@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/23/2019
+ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 2bb50f985b99a3fb62e7b8a61bb0f9ce2dd402e1
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 569b33d299f52f0da50d8a8992420754aa85b533
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522008"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062171"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -59,15 +59,15 @@ LUIS 模型从称为 **[意向](luis-concept-intent.md)** 的用户意向的类�
 
 |示例用户话语|意向|实体|
 |-----------|-----------|-----------|
-|“预订到西雅图的航班？”|BookFlight|西雅图|
-|“你的店铺何时开门？”|店铺营业时间和位置|开门|
-|“安排下午 1 点与分销部的何石谈话”|安排谈话|下午 1 点，何石|
+|“预订到西雅图的航班？” |BookFlight|西雅图|
+|“你的店铺何时开门？” |店铺营业时间和位置|开门|
+|“安排下午 1 点与分销部的何石谈话”  |安排谈话|下午 1 点，何石|
 
 ## <a name="query-prediction-endpoint"></a>查询预测终结点
 
 在生成模型并将其发布到终结点以后，客户端应用程序会将话语发送到已发布的预测[终结点](https://go.microsoft.com/fwlink/?linkid=2092356) API。 API 将模型应用于要分析的文本。 API 使用 JSON 格式的预测结果进行响应。  
 
-JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如下面的“联系人类型”实体。 
+JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如下面的“联系人类型”实体。  
 
 ```JSON
 {
@@ -101,7 +101,7 @@ LUIS 提供工具、版本控制以及与其他 LUIS 创建者的协作，以便
 作为 REST API，LUIS 可以与任何发送 HTTP 请求的产品、服务或框架配合使用。 以下列表包含与 LUIS 配合使用的顶级 Microsoft 产品和服务。
 
 LUIS 的顶级客户端应用程序是：
-* [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0)可以快速创建支持 LUIS 的聊天机器人，该机器人可以通过文本输入与用户交谈。 使用 [Bot Framework][bot-framework] [3.x](https://github.com/Microsoft/BotBuilder) 或 [4.x](https://github.com/Microsoft/botbuilder-dotnet) 版以获取完整的机器人体验。
+* [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)可以快速创建支持 LUIS 的聊天机器人，该机器人可以通过文本输入与用户交谈。 使用 [Bot Framework][bot-framework] [4.x](https://github.com/Microsoft/botbuilder-dotnet) 版以获取完整的机器人体验。
 
 通过机器人快速轻松地使用 LUIS 的工具：
 * [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS)：NPM 包以独立命令行工具或导入的形式提供创作和预测。 

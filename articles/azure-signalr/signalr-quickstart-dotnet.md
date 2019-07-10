@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: cda1eddc5fa40e97038274cf9b4c3c2cb9552871
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2020ee02d236ca13431adb736d9f48171d33b4f3
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154503"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147418"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>快速入门：使用 ASP.NET 和 SignalR 服务创建聊天室
 
@@ -36,7 +36,7 @@ Azure SignalR 服务基于[适用于 ASP.NET Core 2.0 的 SignalR](https://docs.
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-ASP.NET SignalR 应用程序不支持无服务器模式。 对于 Azure SignalR 服务实例，请始终使用“默认”或“经典”。
+ASP.NET SignalR 应用程序不支持无服务器模式。  对于 Azure SignalR 服务实例，请始终使用“默认”或“经典”。  
 
 也可根据[创建 SignalR 服务脚本](scripts/signalr-cli-create-service.md)中的说明，创建在本快速入门中使用的 Azure 资源。
 
@@ -58,7 +58,7 @@ ASP.NET SignalR 应用程序不支持无服务器模式。 对于 Azure SignalR 
 
 1. 在打开了 Azure 门户的浏览器中，查找并选择所创建的实例。
 
-1. 选择“密钥”以查看 SignalR 服务实例的连接字符串。
+1. 选择“密钥”  以查看 SignalR 服务实例的连接字符串。
 
 1. 选择并复制主连接字符串。
 
@@ -83,7 +83,7 @@ ASP.NET SignalR 应用程序不支持无服务器模式。 对于 Azure SignalR 
     }
     ```
 
-    此外还需在使用这些 API 之前参考服务 SDK。 打开“工具”|“NuGet 包管理器”|“包管理器控制台”，然后运行以下命令：
+    此外还需在使用这些 API 之前参考服务 SDK。 打开“工具”|“NuGet 包管理器”|“包管理器控制台”，然后运行以下命令： 
 
     ```powershell
     Install-Package Microsoft.Azure.SignalR.AspNet
@@ -105,9 +105,9 @@ ASP.NET SignalR 应用程序不支持无服务器模式。 对于 Azure SignalR 
 > 
 > 
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。 
 
-在“按名称筛选...”文本框中键入资源组的名称。 本快速入门的说明使用了名为“SignalRTestResources”的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”。
+在“按名称筛选...”文本框中键入资源组的名称  。 本快速入门的说明使用了名为“SignalRTestResources”的资源组  。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”   。
 
    
 ![删除](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)

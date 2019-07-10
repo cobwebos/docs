@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b849e63b758dca777df2be682b28bc4e10e58330
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7c09542013dff3a18965d1070216a938c26a144e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481893"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102844"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>教程：将 ExpenseIn 与 Azure Active Directory 集成
 
@@ -57,15 +57,15 @@ ms.locfileid: "66481893"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-使用名为 B. Simon 的测试用户配置和测试 ExpenseIn 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 ExpenseIn 相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置和测试 ExpenseIn 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 ExpenseIn 相关用户之间建立链接关系。
 
 若要配置和测试 ExpenseIn 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
 2. **[配置 ExpenseIn](#configure-expensein)** ，以在应用程序端配置 SSO 设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B. Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，以使 B. Simon 能够使用 Azure AD 单一登录。
-5. [创建 ExpenseIn 测试用户](#create-expensein-test-user)，以便在 ExpenseIn 中创建 B. Simon 的对应用户，将其链接到用户的 Azure AD 表示形式  。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B.Simon 测试 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，以使 B.Simon 能够使用 Azure AD 单一登录。
+5. **[创建 ExpenseIn 测试用户](#create-expensein-test-user)** ，以便在 ExpenseIn 中创建 B.Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 6. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -101,41 +101,51 @@ ms.locfileid: "66481893"
 
 ### <a name="configure-expensein"></a>配置 ExpenseIn
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录 ExpenseIn。
+1. 若要在 ExpenseIn 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”   。
 
-2. 单击页面顶部的“管理员”并导航到“单一登录”，然后单击“添加提供程序”    。
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“安装 ExpenseIn”  会将你定向到 ExpenseIn 应用程序。 在此处，请提供管理员凭据以登录到 ExpenseIn。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-5。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 ExpenseIn，请打开新的 Web 浏览器窗口，以管理员身份登录 ExpenseIn 公司站点，并执行以下步骤：
+
+4. 单击页面顶部的“管理员”并导航到“单一登录”，然后单击“添加提供程序”    。
 
      ![ExpenseIn 配置](./media/expenseIn-tutorial/config01.png)
 
-3. 在“新建标识提供者”  弹出窗口中，执行以下步骤：
+5. 在“新建标识提供者”  弹出窗口中，执行以下步骤：
 
     ![ExpenseIn 配置](./media/expenseIn-tutorial/config02.png)
 
     a. 在“提供者名称”  文本框中键入名称，例如“ex:Azure”。
 
-    b. 在“目标 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    b. 对于“允许提供商发起的登录”  选择“是”  。
 
-    c. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
+    c. 在“目标 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    d. 在记事本中打开“证书(Base64)”文件，复制其内容并将其粘贴到“证书”文本框中  。
+    d. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
 
-    e. 单击“创建”。 
+    e. 在记事本中打开“证书(Base64)”文件，复制其内容并将其粘贴到“证书”文本框中  。
+
+    f. 单击“创建”。 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-在本部分中，将在 Azure 门户中创建一个名为 B. Simon 的测试用户。
+在本部分中，将在 Azure 门户中创建一个名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B. Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com`。
+   1. 在“名称”  字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 B. Simon 访问 ExpenseIn 的权限，允许她使用 Azure 单一登录。
+在本部分中，通过授予 B.Simon 访问 ExpenseIn 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“ExpenseIn”。 
@@ -147,7 +157,7 @@ ms.locfileid: "66481893"
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮    。
+1. 在“用户和组”对话框中，选择“用户”列表中的“B.Simon”，然后单击屏幕底部的“选择”按钮    。
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
@@ -171,7 +181,7 @@ ms.locfileid: "66481893"
 
     b. 在“姓氏”文本框中，输入用户的名字，如 Simon   。
 
-    c. 在“电子邮件”文本框中，输入用户的电子邮件，如 `B. Simon@contoso.com`。 
+    c. 在“电子邮件”文本框中，输入用户的电子邮件，如 `B.Simon@contoso.com`。 
 
     d. 单击“创建”。 
 

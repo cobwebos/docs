@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 77b7b90b63ffebc14498183fc179b9c8ae76a722
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 824d24b97f192583a42192b3bb90eb1818e1aa18
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237844"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272980"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>教程：设置 Azure 时序见解预览环境
 
@@ -29,9 +29,12 @@ ms.locfileid: "66237844"
 * 对数据进行基本的分析。
 * 定义时序模型类型和层次结构，并将其与实例相关联。
 
+>[!TIP]
+> [IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators)提供企业级的预配置解决方案，可用于加速开发自定义 IoT 解决方案。
+
 ## <a name="create-a-device-simulation"></a>创建设备模拟
 
-在本部分，我们将创建三个模拟设备，用于将数据发送到 Azure IoT 中心的实例。
+在本部分中，将创建三个模拟设备，用于将数据发送到 Azure IoT 中心实例。
 
 1. 转到 [Azure IoT 解决方案加速器页](https://www.azureiotsolutions.com/Accelerators)。 该页显示了多个预生成的示例。 使用 Azure 帐户登录。 然后，选择“设备模拟”  。
 
@@ -43,58 +46,18 @@ ms.locfileid: "66237844"
 
     | 参数 | 操作 |
     | --- | --- |
-    | **解决方案名称** | 输入用于新资源组的唯一值。 将会创建列出的 Azure 资源并将其分配到资源组。 |
-    | **订阅** | 选择曾经用于创建时序见解环境的订阅。 |
-    | **区域** | 选择曾经用于创建时序见解环境的区域。 |
-    | **部署可选 Azure 资源** | 让“IoT 中心”复选框保持选中状态。  模拟设备使用 IoT 中心来建立连接和流式传输数据。 |
+    | **部署名称** | 输入用于新资源组的唯一值。 将会创建列出的 Azure 资源并将其分配到资源组。 |
+    | **Azure 订阅** | 选择曾经用于创建时序见解环境的订阅。 |
+    | **Azure 位置** | 选择曾经用于创建时序见解环境的区域。 |
+    | **部署选项** | 选择“预配新的 IoT 中心”  。 |
  
-    选择“创建解决方案”  。 等待 10-15 分钟，让解决方案部署完成。
+    选择“创建解决方案”  。 解决方案可能需要长达 20 分钟的时间才能完成部署。
 
     [![“创建设备模拟解决方案”页](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-1. 在解决方案加速器仪表板中，选择“启动”  ：
-
-    [![启动设备模拟解决方案](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
-
-1. 随后你将重定向到“Microsoft Azure IoT 设备模拟”页  。 在页面右上角选择“新建模拟”。 
-
-    [![Azure IoT 模拟页](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
-
-1. 在“模拟设置”  窗格中，设置以下参数：
-
-    | 参数 | 操作 |
-    | --- | --- |
-    | **名称** | 为模拟器输入唯一名称。 |
-    | **说明** | 输入定义。 |
-    | **模拟持续时间** | 设置为“无限期运行”。  |
-    | **设备型号** | **名称**：输入“冷却器”。  <br />**数量**：输入 **3**。 |
-    | **目标 IoT 中心** | 设置为“使用预配的 IoT 中心”。  |
-
-    [![要设置的参数](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
-
-    选择“开始模拟”  。
-
-    在设备模拟仪表板中，注意针对“活动设备”和“每秒消息数”显示的信息   。
-
-    [![Azure IoT 模拟仪表板](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
-
-## <a name="list-device-simulation-properties"></a>列出设备模拟属性
-
-在创建 Azure 时序见解环境之前，需要获取 IoT 中心、订阅和资源组的名称。
-
-1. 转到解决方案加速器仪表板。 使用相同的 Azure 订阅帐户登录。 找到在上一部分创建的设备模拟。
-
-1. 选择设备模拟器，然后选择“启动”  。 在右侧的设备模拟器解决方案加速器窗格中，选择“Azure 管理门户”选项。 
-
-    [![模拟器列表](media/v2-update-provision/device-six-listings.png)](media/v2-update-provision/device-six-listings.png#lightbox)
-
-1. 记下 IoT 中心、订阅和资源组的名称。
-
-    [![Azure 门户设备模拟器仪表板详细信息](media/v2-update-provision/device-eight-portal.png)](media/v2-update-provision/device-eight-portal.png#lightbox)
-
 ## <a name="create-a-time-series-insights-preview-payg-environment"></a>创建时序见解预览 PAYG 环境
 
-此部分介绍如何使用 [Azure 门户](https://portal.azure.com/)创建 Azure 时序见解预览环境。
+本部分介绍如何创建 Azure 时序见解预览版环境，并使用 [Azure 门户](https://portal.azure.com/)将其连接到由 IoT 解决方案加速器创建的 IoT 中心。
 
 1. 使用 Azure 订阅帐户登录到 Azure 门户。
 
@@ -109,7 +72,7 @@ ms.locfileid: "66237844"
     | **环境名称** | 输入 Azure 时序见解预览版环境的唯一名称。 |
     | **订阅** | 输入想要在其中创建 Azure 时序见解预览版环境的订阅。 最佳做法是使用与设备模拟器创建的其他 IoT 资源相同的订阅。 |
     | **资源组** | 为 Azure 时序见解预览版环境资源选择现有的资源组或创建新的资源组。 资源组是 Azure 资源的容器。 最佳做法是使用与设备模拟器创建的其他 IoT 资源相同的资源组。 |
-    | **位置** | 为 Azure 时序见解预览版环境选择数据中心区域。 为了避免带宽成本和延迟的提高，最好是在其他 IoT 资源所在的区域创建 Azure 时序见解预览版环境。 |
+    | **位置** | 为 Azure 时序见解预览版环境选择数据中心区域。 为了避免额外的延迟，最好是在其他 IoT 资源所在的区域中创建 Azure 时序见解预览版环境。 |
     | **层** |  选择“PAYG”（即用即付）。   这是 Azure 时序见解预览版产品的 SKU。 |
     | **属性 ID** | 输入一个用于唯一标识时序实例的值。 在“属性 ID”框中输入的值  是固定不变的。 之后不能更改它。 在本教程中，请输入 **iothub-connection-device-id**。若要详细了解时序 ID，请参阅[选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。 |
     | **存储帐户名称** | 为要创建的新存储帐户输入全局唯一名称。 |
@@ -159,6 +122,34 @@ ms.locfileid: "66237844"
       [![列出的凭据](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
 
    如果未列出你的凭据，则必须授予自己访问该环境的权限。 若要详细了解如何设置权限，请参阅[授予数据访问权限](./time-series-insights-data-access.md)。
+
+## <a name="stream-data-into-your-environment"></a>将数据流式传输到你的环境中
+
+1. 导航回 [Azure IoT 解决方案加速器页](https://www.azureiotsolutions.com/Accelerators)。 在解决方案加速器仪表板中找到你的解决方案。 然后选择“启动”： 
+
+    [![启动设备模拟解决方案](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+
+1. 随后你将重定向到“Microsoft Azure IoT 设备模拟”页  。 在页面右上角选择“新建模拟”。 
+
+    [![Azure IoT 模拟页](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
+
+1. 在“模拟设置”  窗格中，设置以下参数：
+
+    | 参数 | 操作 |
+    | --- | --- |
+    | **名称** | 为模拟器输入唯一名称。 |
+    | **说明** | 输入定义。 |
+    | **模拟持续时间** | 设置为“无限期运行”。  |
+    | **设备型号** | **名称**：输入“冷却器”。  <br />**数量**：输入 **3**。 |
+    | **目标 IoT 中心** | 设置为“使用预配的 IoT 中心”。  |
+
+    [![要设置的参数](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
+
+    选择“开始模拟”  。
+
+    在设备模拟仪表板中，注意针对“活动设备”和“每秒消息数”显示的信息   。
+
+    [![Azure IoT 模拟仪表板](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
 ## <a name="analyze-data-in-your-environment"></a>在环境中分析数据
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/24/2019
+ms.date: 06/19/2019
 ms.author: alkohli
-ms.openlocfilehash: f2f6b544b56977b3f1bfb6a4fb46a9f1e3bcc294
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: d4cdc9b6c31c62080fed5a8528577fef72c01c3f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427947"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271712"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy-preview"></a>教程：为 Azure Data Box Heavy 布线并与它建立连接（预览）
 
@@ -79,7 +79,7 @@ ms.locfileid: "66427947"
 在设备的某个节点上，执行以下步骤进行网络布线。
 
 1. 使用 CAT 6 RJ-45 网线（图中的蓝色线缆）将主机连接到 1-Gbps 管理端口。
-2. 使用 Twinax QSFP+ 铜缆（图中的红色线缆）连接至少一个 40-Gbps（比 1-Gbps 更好）数据网络接口。 如果使用 10-Gbps 交换机，请使用 Twinax SFP+ 铜缆和 QSFP+ 转 SFP+ 适配器（QSA 适配器）连接 40-Gbps 数据网络接口。
+2. 使用 QSFP+ 电缆（光纤或铜）连接至少一个 40-Gbps（首选超过 1 Gbps）的网络接口进行数据传输。 如果使用 10-Gbps 交换机，请使用 SFP+ 电缆和 QSFP+ 转 SFP+ 适配器（QSA 适配器）连接 40 Gbps 网络接口进行数据传输。
 
     ![Data Box Heavy 端口已布线](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
 

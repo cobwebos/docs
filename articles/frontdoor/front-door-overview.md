@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/29/2018
+ms.date: 04/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 2d4c93b7ef707f5b09bc2f5f93d56c50c1bb3458
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 20cfcea4a8b58c1c01a7c710163b7320ff96d65c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736320"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330834"
 ---
 # <a name="what-is-azure-front-door-service"></a>什么是 Azure Front Door 服务？
 在 Azure Front Door 服务中可以进行优化以实现最佳性能以及进行即时全球故障转移以实现高可用性，并以此定义、管理和监视 Web 流量的全局路由。 使用 Front Door，可将全球（多区域）消费型和企业应用程序转化成可靠、高性能、个性化的现代应用程序、API 和内容，供 Azure 全球受众访问。
@@ -60,6 +60,13 @@ Front Door 支持对自定义域名使用 HTTPS。 可以通过为流量选择 F
 Azure Front Door 允许编写自定义 Web 应用程序防火墙 (WAF) 规则进行访问控制，以基于客户端 IP 地址、国家/地区代码和 http 参数来防范 HTTP/HTTPS 工作负荷遭到恶意利用。 此外，Front Door 还允许创建速率限制规则来阻止恶意机器人流量。 
 
 Front Door 平台本身受 [Azure DDoS 防护](../virtual-network/ddos-protection-overview.md)基本版的保护。 若要进一步提供保护，可在 VNET 中启用 Azure DDoS 防护标准版，并通过自动优化和缓解措施来防范资源遭到网络层 (TCP/UDP) 攻击。 Front Door 是第 7 层反向代理，它仅允许 Web 流量通过后端，默认会阻止其他类型的流量。
+
+## <a name="url-redirection"></a>URL 重定向
+随着业界对仅支持安全通信的大力推动，Web 应用程序将需要自动将任何 HTTP 流量重定向到 HTTPS。 这可确保用户和应用程序之间的所有通信都通过加密路径进行。 
+
+传统上，应用程序所有者通过创建专用服务来处理此需求，该服务的唯一目的是将在 HTTP 上收到的请求重定向到 HTTPS。 Azure Front Door 服务支持将流量从 HTTP 重定向到 HTTPS。 这样可以简化应用程序配置、优化资源使用情况，并支持全局重定向和基于路径的重定向等新的重定向方案。 Azure Front Door 服务的 URL 重定向不仅限于 HTTP 到 HTTPS 重定向，还包括重定向到其他主机名、重定向到其他路径，甚至重定向到 URL 中的新查询字符串。
+
+有关详细信息，请参阅“使用 Azure Front Door 服务[重定向流量](front-door-url-redirect.md)”。
 
 ## <a name="url-rewrite"></a>URL 重写
 Front Door 支持 [URL 重写](front-door-url-rewrite.md)，允许配置可选的自定义转发路径，以便在构建要转发到后端的请求时使用。 此外，Front Door 还允许配置在将请求转发到后端时要发送的主机标头。

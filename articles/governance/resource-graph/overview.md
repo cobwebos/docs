@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 9d3385b688208065e5854b6358819b5afad8fe65
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4724789dd1a0893c5ef4ab112306c185f0e87da7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66162080"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274385"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph 服务概述
 
@@ -71,7 +71,7 @@ Resource Graph 在用户级别对查询进行限制。 服务响应包含以下 
 - `x-ms-user-quota-remaining` (int)：用户的剩余资源配额。 此值映射到查询计数。
 - `x-ms-user-quota-resets-after` (hh:mm:ss)：在用户的配额消耗量重置之前的持续时间
 
-有关详细信息，请参阅[限制资源管理器请求](../../azure-resource-manager/resource-manager-request-limits.md)。
+有关详细信息，请参阅[针对受限制请求的指南](./concepts/guidance-for-throttled-requests.md)。
 
 ## <a name="running-your-first-query"></a>运行自己的第一个查询
 

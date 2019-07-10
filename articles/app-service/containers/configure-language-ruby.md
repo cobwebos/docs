@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 412efac3742acf7ad1cdc3d08f9d90c4d39bad3e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 8a2eaf50a35b25463be3e323d4362b52e2339bf6
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956115"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550293"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Ruby 应用
 
@@ -61,11 +61,11 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > ```
 > rbenv: version `2.3.1' is not installed
 > ```
-> 这意味着项目中配置的 Ruby 版本与正在运行的容器中安装的版本不同（在上面的示例中为 `2.3.3`）。 在上面的示例中，检查 Gemfile 和 .ruby-version 并验证是否未设置 Ruby 版本，或者是否设置为正在运行的容器中安装的版本（在上面的示例中为 `2.3.3`）。
+> 这意味着项目中配置的 Ruby 版本与正在运行的容器中安装的版本不同（在上面的示例中为 `2.3.3`）。 在上面的示例中，检查 Gemfile 和 .ruby-version 并验证是否未设置 Ruby 版本，或者是否设置为正在运行的容器中安装的版本（在上面的示例中为 `2.3.3`）   。
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
-在应用服务中，可以在应用代码外部[设置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然后，可以使用标准的 [ENV['<path-name>']](https://ruby-doc.org/core-2.3.3/ENV.html) 模式访问这些设置。 例如，若要访问名为 `WEBSITE_SITE_NAME` 的应用设置，请使用以下代码：
+在应用服务中，可以在应用代码外部[设置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然后，可以使用标准的 [ENV['\<path-name>']](https://ruby-doc.org/core-2.3.3/ENV.html) 模式访问这些设置。 例如，若要访问名为 `WEBSITE_SITE_NAME` 的应用设置，请使用以下代码：
 
 ```ruby
 ENV['WEBSITE_SITE_NAME']
@@ -75,7 +75,7 @@ ENV['WEBSITE_SITE_NAME']
 
 部署 [Git 存储库](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)或者部署启用了生成过程的 [Zip 包](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)时，部署引擎 (Kudu) 会默认运行以下后期部署步骤：
 
-1. 检查 Gemfile 是否存在。
+1. 检查 Gemfile 是否存在  。
 1. 运行 `bundle clean`。 
 1. 运行 `bundle install --path "vendor/bundle"`。
 1. 运行 `bundle package`，将 gems 打包到 vendor/cache 文件夹中。
@@ -106,8 +106,8 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 1. 生成 [secret_key_base](https://edgeguides.rubyonrails.org/security.html#environmental-security) 值（如果尚不存在）。 应用在生产模式下运行时需要此值。
 1. 将 `RAILS_ENV` 环境变量设置为 `production`。
-1. 在 tmp / pids 目录中，删除先前运行 Rails 服务器留下的任何 .pid 文件。
-1. 检查是否安装了所有依赖项。 如果没有，请尝试从本地 vendor/cache 目录安装 gems。
+1. 在 tmp / pids 目录中，删除先前运行 Rails 服务器留下的任何 .pid 文件   。
+1. 检查是否安装了所有依赖项。 如果没有，请尝试从本地 vendor/cache 目录安装 gems  。
 1. 运行 `rails server -e $RAILS_ENV`。
 
 可按以下方式自定义启动进程：
@@ -141,7 +141,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
 ```
 
-### <a name="set-secretkeybase-manually"></a>手动设置 secret_key_base
+### <a name="set-secret_key_base-manually"></a> 手动设置 secret_key_base
 
 要使用自己的 `secret_key_base` 值而不是让应用服务生成一个值，请使用想要的值设置 `SECRET_KEY_BASE` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 例如：
 

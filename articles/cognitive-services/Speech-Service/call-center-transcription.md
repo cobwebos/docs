@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7d844f4d2ad77f5b7cc53275a24167e5f2e71b78
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 055d141cab8ece3fcb462573f6ed4d8941c19751
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025379"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064150"
 ---
 # <a name="speech-services-for-telephony-data"></a>用于处理电话数据的语音服务
 
@@ -34,7 +34,7 @@ ms.locfileid: "65025379"
 
 ## <a name="azure-technology-for-call-centers"></a>适用于呼叫中心的 Azure 技术
 
-此外，在功能方面，应用于呼叫中心的语音服务的主要用途是改善客户体验。 在此方面存在三个明确的应用领域 
+除了语音服务的功能方面，当应用到呼叫中心时，它们的主要用途是改善客户体验。 在此方面存在三个明确的应用领域：
 
 * 呼叫后分析，即，对通话录音进行批处理 
 * 在通话过程中，对音频信号进行实时的分析处理，以提取各种见解（最常见的用例是情绪分析）
@@ -54,7 +54,7 @@ ms.locfileid: "65025379"
 衡量客户是否获得了良好的体验是在呼叫中心领域应用的语音分析服务的最重要功能之一。 我们的[批量听录 API](batch-transcription.md) 基于每段言语提供情绪分析。 可以聚合在听录通话过程中获取的值集，以确定座席和客户在通话时的情绪。
 
 ### <a name="silence-non-talk"></a>静默（无对话）
-在呼叫支持的过程中，有 35% 的时间双方无对话也是常用的事。 出现无对话的情况包括：座席正在查阅以往与客户之间展开的案例历史记录、座席正在使用工具访问客户的桌面和执行功能、客户正在等待转接电话，等等。 衡量通话中出现静默的时间极其重要，因为在此类场景中，及时对重要客户灵敏做出回复以及何时可以出现静默都是有绩效分数的。
+在支持通话中，有 35% 的时间双方无对话也是常用的事。 出现无对话的情况包括：座席正在查阅以往与客户之间展开的案例历史记录、座席正在使用工具访问客户的桌面和执行功能、客户正在等待转接电话，等等。 衡量通话中出现静默的时间极其重要，因为在此类场景中，及时对重要客户灵敏做出回复以及何时可以出现静默都是有绩效分数的。
 
 ### <a name="translation"></a>翻译
 某些公司正在试验提供从外语支持呼叫翻译的听录内容，使交付经理能够了解其客户的全球体验。 我们的[翻译](translation.md)功能非常优秀。 我们可以将大量区域中的音频翻译成音频，或者将音频翻译成文本。
@@ -62,7 +62,7 @@ ms.locfileid: "65025379"
 ### <a name="text-to-speech"></a>文本到语音转换
 在实现可与客户交互的机器人时，[文本转语音](text-to-speech.md)是另一个重要的方面。 典型的流程是客户讲话、将客户的语音转录为文本、分析文本中的意向、基于识别的意向合成响应，然后向客户呈现一个资产，或者生成合成的语音响应。 当然，所有这些步骤必须快速完成 – 因此，这些系统的成功与否与延迟密切相关。 
 
-考虑到涉及的[语音转文本](speech-to-text.md)、[Luis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)、[Bot Framework](https://dev.botframework.com/)、[文本转语音](text-to-speech.md)等各种技术，我们的端到端延迟非常低。 
+考虑到涉及的[语音转文本](speech-to-text.md)、[LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)、[Bot Framework](https://dev.botframework.com/)、[文本转语音](text-to-speech.md)等各种技术，我们的端到端延迟非常低。 
 
 我们的新语音与人类语音没有区别。 我们的语音可让机器人获得独特的个性。
 
@@ -79,10 +79,10 @@ ms.locfileid: "65025379"
 为了批量听录音频，我们开发了[批量听录 API](batch-transcription.md)。 批量听录 API 旨在以异步方式听录大量的音频数据。 在听录呼叫中心数据方面，我们的解决方案基于以下支柱：
 
 * **准确度**：我们通过第四代统一模型提供无可比拟的听录质量。
-* **延迟**：我们知道，在执行批量听录时，需要保证听录的速度。 通过[批量听录 API](batch-transcription.md) 启动的听录作业将立即排入队列，一旦执行该作业，其执行速度比实时听录更快。
+* **延迟**：我们知道，在执行批量听录时，需要保证听录的速度。 通过[批量听录 API](batch-transcription.md) 启动的听录作业将立即排入队列，一旦开始运行该作业，其执行速度比实时听录更快。
 * **安全性**：我们知道，通话中可能包含敏感数据。 请放心，保证安全是我们的最高优先事务之一。 我们的服务已通过 ISO、SOC、HIPAA 和 PCI 认证。
 
-呼叫中心每天生成大量的音频数据。 如果你的企业将电话数据存储在某个中心位置（例如 Azure 存储），则你可以使用 [批量听录 API]((batch-transcription.md) 以异步方式请求和接收听录内容。
+呼叫中心每天生成大量的音频数据。 如果你的企业将电话数据存储在某个中心位置（例如 Azure 存储），则你可以使用[批量听录 API](batch-transcription.md) 以异步方式请求和接收听录内容。
 
 典型的解决方案使用以下服务：
 
@@ -98,7 +98,7 @@ ms.locfileid: "65025379"
 
 某些企业需要实时听录对话。 实时听录可用于识别关键字、针对对话相关的内容和资源触发搜索、监视情绪、改善可访问性，或者为听不懂本地语言的客户和座席提供翻译。
 
-对于需要实时听录的场景，我们建议使用[语音 SDK](speech-sdk.md)。 目前，语音转文本支持 [20 多种语言](language-support.md)，该 SDK 适用于 C++、C#、Java、Python、Node.js 和 Javascript。 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) 上提供了适用于每种语言的示例。 有关最新消息和更新，请参阅[发行说明](releasenotes.md)。
+对于需要实时听录的场景，我们建议使用[语音 SDK](speech-sdk.md)。 目前，语音转文本支持 [20 多种语言](language-support.md)，该 SDK 适用于 C++、C#、Java、Python、Node.js、Objective-C 和 JavaScript。 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) 上提供了适用于每种语言的示例。 有关最新消息和更新，请参阅[发行说明](releasenotes.md)。
 
 在内部，我们使用上述技术来分析实时发生的 Microsoft 客户呼叫。
 
@@ -110,7 +110,7 @@ ms.locfileid: "65025379"
 
 有多种 IVR 或电话服务产品（例如 Genesys 或 AudioCodes）可以提供集成功能，利用这些功能可与 Azure 服务建立入站和出站音频直通连接。 简单而言，自定义的 Azure 服务可以提供一个特定的接口用于定义电话呼叫会话（例如“呼叫开始”或“呼叫结束”），并公开一个 WebSocket API 用于接收与语音服务一起使用的入站流音频。 出站响应（例如对话听录或者与 Bot Framework 的连接）可与 Microsoft 文本转语音服务合成，并返回到 IVR 进行播放。
 
-另一种方案是直接 SIP 集成。 Azure 服务连接到 SIP 服务器，因此可以获取要在语音转文本和文本转语音阶段使用的入站流和出站流。 若要连接到 SIP 服务器，可以使用市售的软件产品/服务，例如 Ozieki SDK，或[团队呼叫和会议 API](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta)（目前为 Beta 版），它们都旨在支持此类音频呼叫方案。
+另一种方案是直接 SIP 集成。 Azure 服务连接到 SIP 服务器，因此可以获取要在语音转文本和文本转语音阶段使用的入站流和出站流。 若要连接到 SIP 服务器，可以使用市售的软件产品/服务，例如 Ozeki SDK，或[团队呼叫和会议 API](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta)（目前为 Beta 版），它们都旨在支持此类音频呼叫方案。
 
 ## <a name="customize-existing-experiences"></a>自定义现有体验
 

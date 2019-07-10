@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2265c4227601c5273f093af9768864a8c7e07b89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b46b8644b9ba4f0dc6b0b97215a4a96b60d69c3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865018"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Internet Access Administrator 的集成
 
@@ -53,19 +53,19 @@ ms.locfileid: "65865018"
 
 **若要从库中添加 Zscaler Internet Access Administrator，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Zscaler Internet Access Administrator**，从结果面板中选择“Zscaler Internet Access Administrator”，然后单击“添加”按钮以添加该应用程序。
+4. 在搜索框中键入 **Zscaler Internet Access Administrator**，从结果面板中选择“Zscaler Internet Access Administrator”，然后单击“添加”按钮以添加该应用程序。  
 
      ![结果列表中的 Zscaler Internet Access Administrator](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "65865018"
 
 若要配置 Zscaler Internet Access Administrator 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Zscaler Internet Access Administrator”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Zscaler Internet Access Administrator”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,15 +97,15 @@ ms.locfileid: "65865018"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
+4. 在“设置 SAML 单一登录”  页上，单击“编辑”  按钮，以打开“基本 SAML 配置”  对话框。
 
     ![Zscaler Internet Access Administrator 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，根据要求键入 URL：
+    a. 在“标识符”文本框中，根据要求键入 URL： 
 
     | |
     |--|
@@ -116,7 +116,7 @@ ms.locfileid: "65865018"
     | `https://admin.zscloud.net` |
     | `https://admin.zscalerbeta.net` |
 
-    b. 在“回复 URL”文本框中，根据要求键入 URL：
+    b. 在“回复 URL”文本框中，根据要求键入 URL： 
 
     | |
     |--|
@@ -127,36 +127,36 @@ ms.locfileid: "65865018"
     | `https://admin.zscloud.net/adminsso.do` |
     | `https://admin.zscalerbeta.net/adminsso.do` |
 
-5. Zscaler Internet Access Administrator 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性和声明”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮打开“用户属性和声明”对话框。
+5. Zscaler Internet Access Administrator 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性和声明”部分管理这些属性的值  。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮打开“用户属性和声明”对话框    。
 
     ![“属性”链接](./media/zscaler-internet-access-administrator-tutorial/tutorial_zscaler-internet_attribute.png)
 
-6. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+6. 在“用户属性”  对话框的“用户声明”  部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
     | 名称  | 源属性  |
     | ---------| ------------ |
     | 角色     | user.assignedroles |
 
-    a. 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
     ![图像](./common/new-save-attribute.png)
     
     ![图像](./common/new-attribute-details.png)
 
-    b. 在“源属性”列表中，选择属性值。
+    b. 在“源属性”  列表中，选择属性值。
 
-    c. 单击“确定” 。
+    c. 单击“确定”  。
 
     d. 单击“ **保存**”。
 
     > [!NOTE]
     > 若要了解如何在 Azure AD 中配置角色，请单击[此处](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)
 
-7. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+7. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-8. 在“设置 Zscaler Internet Access Administrator”部分，根据要求复制相应的 URL。
+8. 在“设置 Zscaler Internet Access Administrator”部分，根据要求复制相应的 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -170,13 +170,13 @@ ms.locfileid: "65865018"
 
 1. 在另一个 Web 浏览器窗口中，登录到 Zscaler Internet Access 管理员 UI。
 
-2. 转到“管理”>“管理员管理”执行以下步骤，然后单击“保存”：
+2. 转到“管理”>“管理员管理”  执行以下步骤，然后单击“保存”：
 
     ![管理](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "Administration")
 
-    a. 选中“启用 SAML 身份验证”。
+    a. 选中“启用 SAML 身份验证”  。
 
-    b. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。
+    b. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。  
 
     c. （可选）为了提高安全性，请添加**颁发者**详细信息以验证 SAML 响应的颁发者。
 
@@ -184,19 +184,19 @@ ms.locfileid: "65865018"
 
     ![管理](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
 
-    a. 将鼠标悬停在左下角附近的“激活”菜单上。
+    a. 将鼠标悬停在左下角附近的“激活”菜单上。 
 
-    b. 单击“激活”。
+    b. 单击“激活”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -204,20 +204,20 @@ ms.locfileid: "65865018"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 Britta Simon 访问 Zscaler Internet Access Administrator 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Zscaler Internet Access Administrator”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Zscaler Internet Access Administrator”。   
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -225,19 +225,19 @@ ms.locfileid: "65865018"
 
     ![应用程序列表中的“Zscaler Internet Access Administrator”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-zscaler-internet-access-administrator-test-user"></a>创建 Zscaler Internet Access Administrator 测试用户
 

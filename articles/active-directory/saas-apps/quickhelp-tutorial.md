@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 45ffcaa1d5bccb0746ce86ec0f98342ce5e9bcc9
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f4b41098a3b374506e655bf90f972b57195e0958
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903970"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093377"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>教程：Azure Active Directory 与 QuickHelp 的集成
 
@@ -55,19 +55,19 @@ ms.locfileid: "65903970"
 
 **若要从库中添加 QuickHelp，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **QuickHelp**，在结果面板中选择“QuickHelp”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入 **QuickHelp**，在结果面板中选择“QuickHelp”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“QuickHelp”](common/search-new-app.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "65903970"
 
 若要配置 QuickHelp 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“QuickHelp”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“QuickHelp”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -99,26 +99,26 @@ ms.locfileid: "65903970"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![QuickHelp 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://quickhelp.com/<ROUTEURL>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://quickhelp.com/<ROUTEURL>` 
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://auth.quickhelp.com`
+    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://auth.quickhelp.com` 
 
     > [!NOTE]
-    > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 联系组织的 QuickHelp 管理员或 BrainStorm 客户成功经理以获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 联系组织的 QuickHelp 管理员或 BrainStorm 客户成功经理以获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 QuickHelp”部分，根据要求复制相应的 URL。
+6. 在“设置 QuickHelp”部分，根据要求复制相应的 URL。 
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -132,41 +132,41 @@ ms.locfileid: "65903970"
 
 1. 以管理员身份登录到 QuickHelp 公司站点。
 
-2. 在顶部菜单中，单击“管理员”。
+2. 在顶部菜单中，单击“管理员”。 
    
     ![配置单一登录][21]
 
-3. 在“QuickHelp 管理员”菜单上，单击“设置”。
+3. 在“QuickHelp 管理员”  菜单上，单击“设置”  。
    
     ![配置单一登录][22]
 
-4. 单击“身份验证设置”。
+4. 单击“身份验证设置”  。
 
-5. 在“身份验证设置”页上，执行以下步骤
+5. 在“身份验证设置”  页上，执行以下步骤
    
     ![配置单一登录][23]
    
-    a. 对于“SSO 类型”，选择“WSFederation”。
+    a. 对于“SSO 类型”，选择“WSFederation”   。
    
-    b. 要上载已下载的 Azure 元数据文件，请单击“浏览”，导航到该文件，并单击“上载元数据”。
+    b. 要上载已下载的 Azure 元数据文件，请单击“浏览”  ，导航到该文件，并单击“上载元数据”  。
    
-    c. 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
+    c. 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`  。
    
-    d. 在“名字”文本框中，`type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
+    d. 在“名字”文本框中，`type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`  。
    
-    e. 在“姓氏”文本框中，`type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。
+    e. 在“姓氏”文本框中，`type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`  。
    
-    f. 在“操作栏”中，单击“保存”。
+    f. 在“操作栏”  中，单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -174,39 +174,39 @@ ms.locfileid: "65903970"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 QuickHelp 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“QuickHelp”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“QuickHelp”。   
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“QuickHelp”。
+2. 在应用程序列表中，选择“QuickHelp”  。
 
     ![“应用程序”列表中的“QuickHelp”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-quickhelp-test-user"></a>创建 QuickHelp 测试用户
 

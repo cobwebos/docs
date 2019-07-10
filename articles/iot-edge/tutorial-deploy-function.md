@@ -4,23 +4,24 @@ description: 在本教程中，你将一个 Azure 函数开发为 IoT Edge模块
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5b7d903c8be74e4c0561bb4a857619c9c62f95a9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2c2a2659b6b9c77b36001af1602c904e7d200b56
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239660"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433057"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure Functions 作为 IoT Edge 模块进行部署
 
-可以使用 Azure Functions 部署代码，以直接将业务逻辑实现到 Azure IoT Edge 设备。 本教程将引导你在模拟的 IoT Edge 设备上创建和部署用于筛选传感器数据的 Azure 函数。 使用的模拟 IoT Edge 设备是在 [Windows](quickstart.md) 或 [Linux](quickstart-linux.md) 快速入门的“在模拟设备上部署 Azure IoT Edge”中创建的。 本教程介绍如何执行下列操作：     
+可以使用 Azure Functions 部署代码，以直接将业务逻辑实现到 Azure IoT Edge 设备。 本教程将引导你在模拟的 IoT Edge 设备上创建和部署用于筛选传感器数据的 Azure 函数。 使用的模拟 IoT Edge 设备是在 [Windows](quickstart.md) 或 [Linux](quickstart-linux.md) 快速入门的“在模拟设备上部署 Azure IoT Edge”中创建的。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
+>
 > * 使用 Visual Studio Code 创建 Azure 函数。
 > * 使用 VS Code 和 Docker 创建 Docker 映像并将其发布到容器注册表。
 > * 将模块从容器注册表部署到 IoT Edge 设备。
@@ -136,14 +137,14 @@ ms.locfileid: "66239660"
 
                    if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
                    {
-                       // Send the message to the output as the temperature value is greater than the threashold.
+                       // Send the message to the output as the temperature value is greater than the threshold.
                        var filteredMessage = new Message(messageBytes);
                        // Copy the properties of the original message into the new Message object.
                        foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
                        {filteredMessage.Properties.Add(prop.Key, prop.Value);}
                        // Add a new property to the message to indicate it is an alert.
                        filteredMessage.Properties.Add("MessageType", "Alert");
-                       // Send the message.       
+                       // Send the message.
                        await output.AddAsync(filteredMessage);
                        logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
                    }
@@ -160,12 +161,12 @@ ms.locfileid: "66239660"
        class Machine
        {
            public double temperature {get; set;}
-           public double pressure {get; set;}         
+           public double pressure {get; set;}
        }
        class Ambient
        {
            public double temperature {get; set;}
-           public int humidity {get; set;}         
+           public int humidity {get; set;}
        }
    }
    ```
@@ -176,17 +177,17 @@ ms.locfileid: "66239660"
 
 在上一部分，你已经创建了一个 IoT Edge 解决方案并将代码添加到了 **CSharpFunction**，该函数会筛选出其中报告的计算机温度低于可接受阈值的消息。 现在需将解决方案生成为容器映像并将其推送到容器注册表。
 
-在此部分，你为容器注册表提供凭据两次。 第一次是从开发计算机进行本地登录，这样 Visual Studio Code 就能将映像推送到注册表。 第二次是在 IoT Edge 解决方案的 **.env** 文件中，目的是为 IoT Edge 设备提供从注册表拉取映像的权限。 
+在本部分中，你将第二次提供容器注册表的凭据（第一次是在 IoT Edge 解决方案的 **.env** 文件中），方法是从开发计算机本地登录，以便 Visual Studio Code 可以将映像推送到注册表。
 
 1. 打开 VS Code 集成终端，方法是选择“视图” > “终端”   。 
 
 2. 在集成终端输入以下命令，登录到容器注册表。 使用用户名以及此前从 Azure 容器注册表复制的登录服务器。
-     
+
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
     ```
 
-    当系统提示输入密码时，请粘贴容器注册表的密码，然后按 **Enter**。
+    当系统提示输入密码时，请粘贴容器注册表的密码（它在终端窗口中不可见），然后按 **Enter**。
 
     ```csh/sh
     Password: <paste in the ACR password and press enter>

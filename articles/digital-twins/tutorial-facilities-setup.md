@@ -2,22 +2,22 @@
 title: 教程：部署 Azure 数字孪生 | Microsoft Docs
 description: 了解如何使用本教程中的步骤部署 Azure 数字孪生的实例并配置空间资源。
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/17/2018
-ms.author: dkshir
-ms.openlocfilehash: 096df62305af91ac85ce9ddbcff5b0160aaa4e8a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 06/26/2019
+ms.author: alinast
+ms.openlocfilehash: 15a152d6941a8c77cae2ef7771be93db4ddceae4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537450"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484691"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>教程：部署 Azure 数字孪生并配置空间图
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>教程：部署 Azure 数字孪生预览版并配置空间图
 
-可以使用 Azure 数字孪生服务将人员、地点和设备规整到一个一致的空间系统中。 本系列教程演示如何使用 Azure 数字孪生来检测温度和空气质量达到理想化条件时的房间占用情况。 
+可以使用 Azure 数字孪生预览服务将人员、地点和设备规整到一个一致的空间系统中。 本系列教程演示如何使用 Azure 数字孪生来检测温度和空气质量达到理想化条件时的房间占用情况。 
 
 这些教程演示如何通过 .NET 控制台应用程序生成一个涉及一栋办公大楼的方案， 该楼有多个楼层，每个楼层有多个房间。 房间包含设备，通过附加的传感器来检测移动、环境温度和空气质量。 
 
@@ -103,7 +103,7 @@ ms.locfileid: "57537450"
 1. 在 Visual Studio Code 中打开 **occupancy-quickstart** 项目中的 [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) 文件。 更新以下值：
    * **ClientId**：输入 Azure AD 应用注册的应用程序 ID。 已在[设置应用权限](#permissions)的部分记下此 ID。
    * **租户**：输入 [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)的目录 ID。 也已在[设置应用权限](#permissions)的部分记下此 ID。
-   * **BaseUrl**：输入数字孪生实例的 URL。 若要获取此 URL，请将其中的占位符替换为适用于你的实例的值：`https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`。 也可通过修改[部署部分](#deploy)的管理 API URL 来获取此 URL。 将 **swagger/** 替换为 **api/v1.0/**。
+   * **BaseUrl**：输入数字孪生实例的 URL。 若要获取此 URL，请将其中的占位符替换为适用于你的实例的值：`https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`。 也可通过修改[部署部分](#deploy)的管理 API URL 来获取此 URL。 将 **swagger/** 替换为 **api/v1.0/** 。
 
 1. 查看数字孪生功能的列表，这些功能可以通过示例来探索。 运行以下命令：
 
@@ -137,7 +137,7 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 ```
 
-此函数使用同一文件夹中的 [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)。 打开此文件，注意办公大楼的层次结构：地点、楼层、区域和房间。 任何一个这样的物理空间都可能包含设备和传感器。 每个条目都有预定义的 `type`&mdash;例如楼层和房间。
+此函数使用同一文件夹中的 [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)。 打开此文件，注意办公大楼的层次结构：地点  、楼层  、区域  和房间  。 任何一个这样的物理空间都可能包含设备和传感器。   每个条目都有预定义的 `type`&mdash;例如楼层和房间。
 
 示例 **yaml** 文件显示一个使用 `Default` 数字孪生对象模型的空间图。 该模型提供适用于大多数类型的通用名称。 通用名称对于大楼来说已足够。 例如，使用“温度”作为 SensorDataType，使用“地图”作为 SpaceBlobType。 例如，子类型为 FocusRoom、ConferenceRoom 等的房间为空间类型。 
 
@@ -153,9 +153,9 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 - **spaces**：在数字孪生对象模型中，`spaces` 表示物理位置。 每个空间都有一个 `Type`（例如区域、地点或客户），以及一个友好 `Name`。 一些空间可能属于另一些空间，形成一个层次结构。 provisionSample.yaml 文件有一个虚构大楼的空间图。 注意 `Venue` 中有 `Floor` 类型，楼层中有 `Area`，区域中有 `Room` 节点，这样就形成了空间的逻辑嵌套。 
 
-- **devices**：空间可能包含 `devices`，这是物理或虚拟实体，用于管理大量传感器。 例如，设备可能是用户的手机、Raspberry Pi 传感器 Pod 或网关。 在示例的虚构大楼中，注意名为“专注室”的房间包含一个 **Raspberry Pi 3 A1** 设备。 每个设备节点均由已硬编码到示例中的唯一 `hardwareId` 进行标识。 若要针对实际生产来配置此示例，请将这些项替换为你设置中的值。  
+- **devices**：空间可能包含 `devices`，这是物理或虚拟实体，用于管理大量传感器。 例如，设备可能是用户的手机、Raspberry Pi 传感器 Pod 或网关。 在示例的虚构大楼中，注意名为“专注室”的房间包含一个 **Raspberry Pi 3 A1** 设备。  每个设备节点均由已硬编码到示例中的唯一 `hardwareId` 进行标识。 若要针对实际生产来配置此示例，请将这些项替换为你设置中的值。  
 
-- **sensors**：一个设备可能包含多个 `sensors`， 用于检测和记录物理变化，例如温度、移动和电池剩余电量的变化。 每个传感器节点都通过此处硬编码的 `hardwareId` 进行唯一标识。 对于实际的应用程序，请将这些项替换为设置中传感器的唯一标识符。 provisionSample.yaml 文件有两个传感器，用于记录移动和二氧化碳情况。 请添加另一传感器来记录温度，方法是将以下行添加到二氧化碳传感器对应的行下面。 请注意，这些都是在 provisionSample.yaml 中作为注释掉的行提供的。 可以取消注释这些行，方法是删除每一行前面的 `#` 字符。 
+- **sensors**：一个设备可能包含多个 `sensors`， 用于检测和记录物理变化，例如温度、移动和电池剩余电量的变化。 每个传感器节点都通过此处硬编码的 `hardwareId` 进行唯一标识。 对于实际的应用程序，请将这些项替换为设置中传感器的唯一标识符。 provisionSample.yaml 文件有两个传感器，用于记录移动和二氧化碳情况。   请添加另一传感器来记录温度，方法是将以下行添加到二氧化碳传感器对应的行下面。  请注意，这些都是在 provisionSample.yaml 中作为注释掉的行提供的。 可以取消注释这些行，方法是删除每一行前面的 `#` 字符。 
 
     ```yaml
             - dataType: Temperature
@@ -173,7 +173,7 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 如果不希望继续探索 Azure 数字孪生，可以删除本教程中创建的资源：
 
-1. 在 [Azure 门户](https://portal.azure.com)的左菜单中依次选择“所有资源”、数字孪生资源组、“删除”。
+1. 在 [Azure 门户](https://portal.azure.com)的左菜单中依次选择“所有资源”、  数字孪生资源组、“删除”。 
 
     > [!TIP]
     > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。

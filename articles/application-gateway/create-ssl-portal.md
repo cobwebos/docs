@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 4/17/2019
 ms.author: victorh
-ms.openlocfilehash: f3ba3eb12dc85a72c4e49c374e62209b83400d33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed4230969e81eee0d77b7e4b69eac3a264068388
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66134542"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449168"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>教程：通过 Azure 门户使用 SSL 终端配置应用程序网关
 
@@ -54,9 +54,9 @@ PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\my
 Thumbprint                                Subject
 ----------                                -------
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
-
-Use [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) with the Thumbprint that was returned to export a pfx file from the certificate:
 ```
+
+结合返回的指纹使用 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate)，从证书导出 pfx 文件：
 
 ```powershell
 $pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
@@ -70,11 +70,11 @@ Export-PfxCertificate \
 
 若要在创建的资源之间实现通信，需要设置虚拟网络。 在本示例中创建了两个子网：一个用于应用程序网关，另一个用于后端服务器。 可以在创建应用程序网关的同时创建虚拟网络。
 
-1. 选择 Azure 门户左上角的“新建”。
-2. 选择“网络”，然后在“特色”列表中选择“应用程序网关”。
+1. 选择 Azure 门户左上角的“新建”。 
+2. 选择“网络”  ，然后在“特色”列表中选择“应用程序网关”  。
 3. 输入 *myAppGateway* 作为应用程序网关的名称，输入 *myResourceGroupAG* 作为新资源组的名称。
-4. 接受其他设置的默认值，然后选择“确定”。
-5. 依次选择“选择虚拟网络”、“新建”，然后为虚拟网络输入以下值：
+4. 接受其他设置的默认值，然后选择“确定”  。
+5. 依次选择“选择虚拟网络”  、“新建”  ，然后为虚拟网络输入以下值：
 
    - *myVNet* - 虚拟网络的名称。
    - *10.0.0.0/16* - 虚拟网络地址空间。
@@ -83,24 +83,24 @@ Export-PfxCertificate \
 
      ![创建虚拟网络](./media/create-ssl-portal/application-gateway-vnet.png)
 
-6. 选择“确定”以创建虚拟网络和子网。
-7. 依次选择“选择公共 IP 地址”、“新建”，然后输入公共 IP 地址的名称。 在本示例中，公共 IP 地址名为 *myAGPublicIPAddress*。 接受其他设置的默认值，然后选择“确定”。
+6. 选择“确定”  以创建虚拟网络和子网。
+7. 依次选择“选择公共 IP 地址”、“新建”，然后输入公共 IP 地址的名称。   在本示例中，公共 IP 地址名为 *myAGPublicIPAddress*。 接受其他设置的默认值，然后选择“确定”  。
 8. 选择 **HTTPS** 作为侦听器的协议，并确保将端口定义为 **443**。
 9. 选择文件夹图标，然后浏览到以前创建的 *appgwcert.pfx* 证书，以便将其上传。
-10. 输入 *mycert1* 作为证书的名称，输入 *Azure123456!*  作为密码，并选择“确定”。
+10. 输入 *mycert1* 作为证书的名称，输入 *Azure123456!* 作为密码，并选择“确定”  。
 
     ![新建应用程序网关](./media/create-ssl-portal/application-gateway-create.png)
 
-11. 检查摘要页上的设置，然后选择“确定”创建网络资源和应用程序网关。 创建应用程序网关可能需要几分钟时间，请等到部署成功完成，然后转到下一部分。
+11. 检查摘要页上的设置，然后选择“确定”  创建网络资源和应用程序网关。 创建应用程序网关可能需要几分钟时间，请等到部署成功完成，然后转到下一部分。
 
 ### <a name="add-a-subnet"></a>添加子网
 
-1. 选择左侧菜单中的“所有资源”，然后从资源列表中选择“myVNet”。
-2. 依次选择“子网”、“子网”。
+1. 选择左侧菜单中的“所有资源”  ，然后从资源列表中选择“myVNet”  。
+2. 依次选择“子网”、“子网”   。
 
     ![创建子网](./media/create-ssl-portal/application-gateway-subnet.png)
 
-3. 输入 *myBackendSubnet* 作为子网的名称，然后选择“确定”。
+3. 输入 *myBackendSubnet* 作为子网的名称，然后选择“确定”  。
 
 ## <a name="create-backend-servers"></a>创建后端服务器
 
@@ -108,20 +108,20 @@ Export-PfxCertificate \
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
-1. 选择“新建”。
-2. 选择“计算”，然后在“特色”列表中选择“Windows Server 2016 Datacenter”。
+1. 选择“新建”  。
+2. 选择“计算”，然后在“特色”列表中选择“Windows Server 2016 Datacenter”。  
 3. 输入虚拟机的以下值：
 
     - *myVM* - 作为虚拟机的名称。
     - *azureuser* - 作为管理员用户名。
     - *Azure123456!* - 密码。
-    - 选择“使用现有资源组”，然后选择“myResourceGroupAG”。
+    - 选择“使用现有资源组”，然后选择“myResourceGroupAG”   。
 
-4. 选择“确定”。
-5. 选择“DS1_V2”作为虚拟机的大小，然后选择“选择”。
+4. 选择“确定”  。
+5. 选择“DS1_V2”作为虚拟机的大小，然后选择“选择”   。
 6. 请确保选择 **myVNet** 作为虚拟网络，子网是 **myBackendSubnet**。 
-7. 选择“禁用”以禁用启动诊断。
-8. 选择“确定”，检查摘要页上的设置，然后选择“创建”。
+7. 选择“禁用”以禁用启动诊断。 
+8. 选择“确定”，检查摘要页上的设置，然后选择“创建”。  
 
 ### <a name="install-iis"></a>安装 IIS
 
@@ -147,17 +147,17 @@ Export-PfxCertificate \
 
 ### <a name="add-backend-servers"></a>添加后端服务器
 
-1. 选择“所有资源”，然后选择“myAppGateway”。
-1. 选择“后端池”。 默认池已随应用程序网关自动创建。 选择“appGatewayBackendPool”。
-1. 选择“添加目标”将所创建的每个虚拟机添加到后端池。
+1. 选择“所有资源”，然后选择“myAppGateway”。  
+1. 选择“后端池”  。 默认池已随应用程序网关自动创建。 选择“appGatewayBackendPool”  。
+1. 选择“添加目标”  将所创建的每个虚拟机添加到后端池。
 
     ![添加后端服务器](./media/create-ssl-portal/application-gateway-backend.png)
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-1. 依次选择“所有资源”、“myAGPublicIPAddress”。
+1. 依次选择“所有资源”、“myAGPublicIPAddress”。  
 
     ![记下应用程序网关的公共 IP 地址](./media/create-ssl-portal/application-gateway-ag-address.png)
 
@@ -172,4 +172,4 @@ Export-PfxCertificate \
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解有关如何使用 Azure 应用程序网关的详细信息](application-gateway-introduction.md)
+> [详细了解 Azure 应用程序网关的作用](application-gateway-introduction.md)

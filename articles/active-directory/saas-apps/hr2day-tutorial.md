@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 491f1704cf08bd31a1b089d178afb3c281d636e6
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898290"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教程：Azure Active Directory 与 HR2day by Merces 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "65898290"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [HR2day by Merces 客户端支持团队](mailto:servicedesk@merces.nl)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. HR2day by Merces 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****   ****  。
+5. HR2day by Merces 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
     ![image](common/edit-attribute.png)
 
@@ -218,7 +218,7 @@ ms.locfileid: "65898290"
 
 ### <a name="create-hr2day-by-merces-test-user"></a>创建 HR2day by Merces 测试用户
 
-在本部分中，将在 HR2day by Merces 中创建一个名为 Britta Simon 的用户。 请与  [HR2day by Merces 支持团队](mailto:servicedesk@merces.nl)协作，将用户添加到 HR2day by Merces 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 HR2day by Merces 中创建一个名为 Britta Simon 的用户。 请与 [HR2day by Merces 支持团队](mailto:servicedesk@merces.nl)协作，将用户添加到 HR2day by Merces 平台中。 使用单一登录前，必须先创建并激活用户。
 
 > [!NOTE]
 > 如果需要手动创建用户，请联系 [HR2day by Merces 客户端支持团队](mailto:servicedesk@merces.nl)。

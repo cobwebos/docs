@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd4b6dd31d620603b765fd33494f399f97915af3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7702fd220c2100b8e03ac0491e4b3365525a7de5
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784919"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540741"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -40,7 +40,7 @@ ms.locfileid: "65784919"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
 > 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs)窗格。
-> 1. 输入应用程序的名称，然后单击“注册”。
+> 1. 输入应用程序的名称，然后单击“注册”。 
 > 1. 遵照说明下载内容，并一键式自动配置新应用程序。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
@@ -50,17 +50,17 @@ ms.locfileid: "65784919"
 > 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 > 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://aka.ms/MobileAppReg)页。
-> 1. 选择“新注册”。
-> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
->      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `UWP-App-calling-MsGraph`。
->      - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。
->      - 选择“注册”以创建应用程序。
-> 1. 在应用的页面列表中，选择“身份验证”。
-> 1. 展开“桌面 + 设备”部分。  （如果“桌面 + 设备”不可见，首先请单击顶部的横幅，以便查看预览版身份验证体验）
-> 1. 在“重定向 URI”部分下选择“添加 URI”。  键入 **urn:ietf:wg:oauth:2.0:oob**。
-> 1. 选择“保存”。
+> 1. 选择“新注册”。 
+> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
+>      - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `UWP-App-calling-MsGraph`。
+>      - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。  
+>      - 选择“注册”  以创建应用程序。
+> 1. 在应用的页面列表中，选择“身份验证”。 
+> 1. 展开“桌面 + 设备”部分。   （如果“桌面 + 设备”不可见，首先请单击顶部的横幅，以便查看预览版身份验证体验） 
+> 1. 在“重定向 URI”部分下选择“添加 URI”。    键入 **urn:ietf:wg:oauth:2.0:oob**。
+> 1. 选择“保存”。 
 
-> [!div renderon="portal" class="sxs-lookup alert alert-info"]
+> [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>步骤 1：配置应用程序
 > 为使此快速入门中的代码示例正常运行，需要将重定向 URI 添加为 **urn:ietf:wg:oauth:2.0:oob**。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -82,21 +82,24 @@ ms.locfileid: "65784919"
     ```csharp
     private const string ClientId = "Enter_the_Application_Id_here";
     ```
+> [!div renderon="portal"]
+> > [!NOTE]
+> > 本快速入门支持 Enter_the_Supported_Account_Info_Here。    
 
 > [!div renderon="docs"]
 > 其中：
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
 >
 > > [!TIP]
-> > 若要查找“应用程序 ID”的值，请转到门户中的“概览”部分
+> > 若要查找“应用程序 ID”的值  ，请转到门户中的“概览”  部分
 
 #### <a name="step-4-run-your-application"></a>步骤 4：运行应用程序
 
 若要在 Windows 计算机上尝试快速入门，请执行以下操作：
 
 1. 在 Visual Studio 工具栏中，选择适当的平台（可能为 **x64** 或 **x86**，不是 ARM）。
-   > 可以看到目标设备从“设备”更改为“本地计算机”。
-1. 选择“调试”|“在不调试的情况下启动”
+   > 可以看到目标设备从“设备”更改为“本地计算机”。  
+1. 选择“调试”|  “在不调试的情况下启动”
 
 ## <a name="more-information"></a>详细信息
 
@@ -104,7 +107,7 @@ ms.locfileid: "65784919"
 
 ### <a name="msalnet"></a>MSAL.NET
 
-MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 是一个库，用于用户登录和请求安全令牌。 安全令牌用于访问受面向开发人员的 Microsoft 标识平台保护的 API。 可在 Visual Studio 的包管理器控制台中运行以下命令，以便安装 MSAL：
+MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 是一个库，用于用户登录和请求安全令牌。 安全令牌用于访问受面向开发人员的 Microsoft 标识平台保护的 API。 可在 Visual Studio 的包管理器控制台中运行以下命令，以便安装 MSAL  ：
 
 ```powershell
 Install-Package Microsoft.Identity.Client -IncludePrerelease
@@ -128,7 +131,7 @@ PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
 
 > |其中： ||
 > |---------|---------|
-> | `ClientId` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
+> | `ClientId` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”  页中找到此值。 |
 
 ### <a name="requesting-tokens"></a>请求令牌
 

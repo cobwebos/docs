@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ab73b501fc9dbe6209a92fff6f6e19de03fcdc1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5c5c133fe728126ea07834c8ff5b02b1203ec326
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768084"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112691"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
@@ -46,12 +46,12 @@ ms.locfileid: "65768084"
 ![显示“查看权限”页的屏幕截图](media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>使用策略安全地共享你的应用和服务
-可以使用授权策略保护企业内容。 可通过以下级别强制执行多重身份验证等条件访问策略：
+可以使用授权策略保护企业内容。 可按以下级别强制执行多重身份验证等条件访问策略：
 - 租户级别。
 - 应用程序级别。
 - 针对特定来宾用户，保护企业应用和数据。
 
-![显示“条件性访问”选项的屏幕截图](media/what-is-b2b/tutorial-mfa-policy-2.png)
+![显示“条件访问”选项的屏幕截图](media/what-is-b2b/tutorial-mfa-policy-2.png)
 
 
 ## <a name="easily-add-guest-users-in-the-azure-ad-portal"></a>在 Azure AD 门户中轻松添加来宾用户

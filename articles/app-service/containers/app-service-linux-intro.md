@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 1/11/2019
-ms.author: msangapu;yili
+ms.author: msangapu;
 ms.custom: seodec18
-ms.openlocfilehash: 8d40b28103e24214ef00864b032266cc95889eff
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8180ddeceb0dcace61b5c3de7e5a45ab75042419
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780337"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448405"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -33,12 +33,12 @@ Linux 应用服务支持大量内置映像，以便提高开发人员工作效�
 
 | 语言 | 支持的版本 |
 |---|---|
-| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、9.4、10.1、10.10、10.14 |
+| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、8.12、9.4、10.1、10.10、10.14 |
 | Java * | Tomcat 8.5、9.0，Java SE，WildFly 14（全都运行 JRE 8） |
-| PHP | 5.6, 7.0, 7.2 |
+| PHP | 5.6、7.0、7.2、7.3 |
 | Python | 2.7、3.6、3.7 |
 | .NET Core | 1.0、1.1、2.0、2.1、2.2 |
-| Ruby | 2.3、2.4 |
+| Ruby | 2.3、2.4、2.5、2.6 |
 
 ## <a name="deployments"></a>部署
 
@@ -77,12 +77,7 @@ Linux 上的应用服务仅支持[免费、基本、标准和高级](https://azu
 
 ## <a name="troubleshooting"></a>故障排除
 
-如果未能启动应用程序或希望检查应用中的日志记录，请查看 LogFiles 目录中的 Docker 日志。 可通过 SCM 站点或 FTP 访问此目录。
-若要从容器记录 `stdout` 和 `stderr`，需要在“诊断日志”下启用“Docker 容器日志记录”。  
-
-![启用日志记录][2]
-
-设置立即生效。 应用服务会检测设置更改，并为你自动重启容器。
+如果未能启动应用程序或希望检查应用中的日志记录，请查看 LogFiles 目录中的 Docker 日志。 可通过 SCM 站点或 FTP 访问此目录。 若要从容器记录 `stdout` 和 `stderr`，需要在“应用服务日志”下启用“Docker 容器日志记录”。   设置立即生效。 应用服务会检测更改，并自动重启容器。
 
 可从“开发工具”  菜单中的“高级工具”  访问 SCM 站点。
 

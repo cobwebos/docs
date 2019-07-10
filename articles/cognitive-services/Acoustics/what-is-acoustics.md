@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1fc125322b83a0eb51095fac21dee05c7ffb39c1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 73b8980b0ea2d1adbd814026f026358e25dcbb55
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313611"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502951"
 ---
 # <a name="what-is-project-acoustics"></a>什么是项目音响效果？
 项目音响效果是 3D 交互式体验的波形音效引擎。 它可对复杂场景中的衍射、传送门和混响效果进行建模而无需手动区域标记。 它还包括游戏引擎和音频中间件集成。 项目音响效果的原理类似于静态照明：脱机烘焙出具体的物理数据以提供物理基线，并将轻型运行时与表达式设计控件结合使用来满足艺术需要。
@@ -51,7 +51,7 @@ ms.locfileid: "58313611"
   * 如需 Xbox 二进制文件和相关支持，请通过下面的注册表单与我们联系
 
 ## <a name="contact-us"></a>联系我们
-* [项目音响效果论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)
+* [项目音响效果讨论和问题报告](https://github.com/microsoft/ProjectAcoustics/issues)
 * [注册以接收项目音响效果更新](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>后续步骤

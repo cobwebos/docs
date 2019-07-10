@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 611867cf5606d5a1078706e1c0f67f673a7fa500
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: aa3548a71e403728cbec4b8df2b0dce1cf6abde7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254605"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164481"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>教程：Azure Active Directory 与 Mitel MiCloud Connect 的集成
 
@@ -165,7 +165,7 @@ ms.locfileid: "66254605"
     a. 在“姓名”  字段中，键入输入“BrittaSimon”  。
   
     b. 在“用户名”字段中，键入 brittasimon@\<yourcompanydomain\>.\<extension\>。   
-例如，BrittaSimon@contoso.com。
+例如，BrittaSimon@contoso.com 。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 
@@ -210,7 +210,7 @@ ms.locfileid: "66254605"
 * **业务电子邮件地址：** `brittasimon@<yourcompanydomain>.<extension>`   
 （示例：[brittasimon@contoso.com](mailto:brittasimon@contoso.com)）
 
-* **用户名：** `brittasimon@<yourcompanydomain>.<extension> `  
+* **用户名：** `brittasimon@<yourcompanydomain>.<extension>`  
 （示例：[brittasimon@contoso.com](mailto:brittasimon@contoso.com)；用户的用户名通常就是用户的业务电子邮件地址）
 
 **注意：** 用户的 MiCloud Connect 用户名必须与用户在 Azure 中的电子邮件地址相同。

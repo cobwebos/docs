@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: fc4db12f722d1330f0642e155c02a1936373e256
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 48733a8c2a554fc62c7731b6c0fb4ef5b8d45159
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65520493"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450177"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -63,7 +63,7 @@ ms.locfileid: "65520493"
 
 2. 在前端主机列表中，选择要启用 HTTPS 的自定义域，以包含自己的自定义域。
 
-3. 在“自定义域 HTTPS”部分单击“已启用”，然后选择“托管的 Front Door”作为证书源。
+3. 在“自定义域 HTTPS”部分单击“已启用”，然后选择“托管的 Front Door”作为证书源。   
 
 4. 单击“保存”。
 
@@ -77,12 +77,11 @@ ms.locfileid: "65520493"
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
 1. Azure Key Vault：在要启用自定义 HTTPS 的 Front Door 所在的同一订阅下，必须具有正在运行的 Azure Key Vault 帐户。 创建 Azure Key Vault 帐户（如果还没有帐户）。
- 
-2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。
 
 > [!WARNING]
-> </br> - Azure Front Door 服务目前仅支持 Front Door 配置所在的同一订阅中的 Key Vault 帐户。 选择不包含你的 Front Door 的订阅中的 Key Vault 会导致失败。
-> </br> - Azure Front Door 服务目前仅支持使用**不带**密码的 PFX 上传证书。
+> Azure Front Door 服务目前仅支持 Front Door 配置所在的同一订阅中的 Key Vault 帐户。 选择不包含你的 Front Door 的订阅中的 Key Vault 会导致失败。
+
+2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。
 
 #### <a name="register-azure-front-door-service"></a>注册 Azure Front Door 服务
 
@@ -98,14 +97,14 @@ ms.locfileid: "65520493"
  
 在 Azure Key Vault 帐户中为 Azure Front Door 服务授予对“机密”下的证书的访问权限。
 
-1. 在 Key Vault 帐户的“设置”下，选择“访问策略”，然后选择“添加新策略”以创建新策略。
+1. 在 Key Vault 帐户的“设置”下，选择“访问策略”，然后选择“添加新策略”以创建新策略   。
 
-2. 在“选择主体”中搜索 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**，然后选择“Microsoft.Azure.Frontdoor”。 单击“选择”。
+2. 在“选择主体”中搜索 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**，然后选择“Microsoft.Azure.Frontdoor”。   单击“选择”  。
 
 
-3. 在“机密权限”中，选择“获取”以允许 Front Door 执行这些权限来获取并列出证书。 
+3. 在“机密权限”中，选择“获取”以允许 Front Door 执行这些权限来获取并列出证书   。 
 
-4. 选择“确定”。 
+4. 选择“确定”  。 
 
     Azure Front Door 服务现在可以访问此 Key Vault 和存储在其中的证书（机密）。
  
@@ -115,9 +114,9 @@ ms.locfileid: "65520493"
 
 2. 在自定义域列表中，选择要为其启用 HTTPS 的自定义域。
 
-    此时将显示“自定义域”页。
+    此时将显示“自定义域”页。 
 
-3. 在证书管理类型下，选择“使用我自己的证书”。 
+3. 在证书管理类型下，选择“使用我自己的证书”  。 
 
 4. Azure Front Door 服务要求 Key Vault 帐户的订阅与 Front Door 的订阅相同。 选择 Key Vault，证书（机密）和证书版本。
 
@@ -170,7 +169,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;your-domain-name.com&gt;  
 
-应会在几分钟内收到如以下所示的电子邮件，要求你批准请求。 如果使用垃圾邮件筛选，请将 admin@digicert.com 添加到允许列表。 如果未在 24 小时内收到电子邮件，请与 Microsoft 支持部门联系。
+应会在几分钟内收到如以下所示的电子邮件，要求你批准请求。 如果使用垃圾邮件筛选器，请将 admin@digicert.com 添加到其允许列表。 如果未在 24 小时内收到电子邮件，请与 Microsoft 支持部门联系。
 
 单击批准链接时，会定向到在线审批表单。 按表中的说明操作；有两种验证选项：
 
@@ -182,7 +181,7 @@ postmaster@&lt;your-domain-name.com&gt;
 
 ## <a name="wait-for-propagation"></a>等待传播
 
-验证域名后，将需要长达 6-8 小时才能使自定义域 HTTPS 功能激活。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已启用”，且自定义域对话框中的四个操作步骤会标记为完成。 自定义域现可使用 HTTPS。
+验证域名后，将需要长达 6-8 小时才能使自定义域 HTTPS 功能激活。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已启用”  ，且自定义域对话框中的四个操作步骤会标记为完成。 自定义域现可使用 HTTPS。
 
 ### <a name="operation-progress"></a>操作进度
 
@@ -222,11 +221,11 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 2. 在前端主机列表中，单击要禁用 HTTPS 的自定义域。
 
-3. 单击“已禁用”以禁用 HTTPS，然后单击“保存”。
+3. 单击“已禁用”以禁用 HTTPS，然后单击“保存”。  
 
 ### <a name="wait-for-propagation"></a>等待传播
 
-禁用自定义域 HTTPS 功能后，最多可能需要 6-8 小时才会生效。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已禁用”，且自定义域对话框中的三个操作步骤会标记为完成。 自定义域不再能够使用 HTTPS。
+禁用自定义域 HTTPS 功能后，最多可能需要 6-8 小时才会生效。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已禁用”  ，且自定义域对话框中的三个操作步骤会标记为完成。 自定义域不再能够使用 HTTPS。
 
 #### <a name="operation-progress"></a>操作进度
 
@@ -240,23 +239,23 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-1. 谁是证书提供者？使用哪种类型的证书？
+1. 谁是证书提供者？使用哪种类型的证书？ 
 
     Digicert 提供的专用/单一证书用于自定义域。 
 
-2. 使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？
+2. 使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？ 
 
     Azure Front Door 服务使用 SNI TLS/SSL。
 
-3. 如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？
+3. 如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？ 
 
     如果自定义域的 CNAME 条目直接指向终结点主机名（并且你未使用 afdverify 子域名称），则你不会收到域验证电子邮件。 验证会自动进行。 否则，如果你没有 CNAME 条目，并且在 24 小时内未收到电子邮件，请联系 Microsoft 支持部门。
 
-4. 使用 SAN 证书是否没有使用专用证书安全？
+4. 使用 SAN 证书是否没有使用专用证书安全？ 
     
     SAN 证书遵循与专用证书相同的加密和安全标准。 所有颁发的 SSL 证书都使用 SHA-256 来增强服务器安全性。
 
-5. 我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？
+5. 我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？ 
 
     否，当前不需要证书颁发机构授权记录。 但是，如果你确实有一个，则必须包含 DigiCert 作为一个有效的 CA。
 

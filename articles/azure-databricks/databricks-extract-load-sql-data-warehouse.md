@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: bc038c863e1afb9313964a6b11365d766e0e8691
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 4e28da9ab9502e2dac4fc08452a46841c4e50b66
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310617"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466776"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -40,8 +40,8 @@ ms.locfileid: "67310617"
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!Note]
-> 不能使用 **Azure 免费试用订阅**完成本教程。
-> 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
+> 不能使用 Azure 免费试用订阅完成本教程  。
+> 如果你有免费帐户，请转到个人资料并将订阅更改为“即用即付”  。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。 然后，[移除支出限制](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)，并为你所在区域的 vCPU [请求增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。 创建 Azure Databricks 工作区时，可以选择“试用版(高级 - 14天免费 DBU)”  定价层，让工作区访问免费的高级 Azure Databricks DBU 14 天。
      
 ## <a name="prerequisites"></a>先决条件
 
@@ -340,7 +340,7 @@ ms.locfileid: "67310617"
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. 提供连接到 Azure SQL 数据仓库实例所需的值。 必须已经将 SQL 数据仓库作为先决条件创建。 为 dwServer 使用完全限定的服务器名称  。 例如，`<servername>.database.windows.net`。
+4. 提供连接到 Azure SQL 数据仓库实例所需的值。 必须已经将 SQL 数据仓库作为先决条件创建。 为 dwServer 使用完全限定的服务器名称  。 例如，`<servername>.database.windows.net` 。
 
    ```scala
    //SQL Data Warehouse related settings

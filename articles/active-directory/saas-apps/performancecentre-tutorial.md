@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0ce92abda9652351712f086ab24aff8575d84c8d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 08f0f1c1e9bbfcd27f97cd58fa6c6e40f448f9f5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65904522"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>教程：Azure Active Directory 与 PerformanceCentre 的集成
 
@@ -53,25 +53,25 @@ ms.locfileid: "65904522"
 
 **若要从库添加 PerformanceCentre，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“PerformanceCentre”，在结果面板中选择“PerformanceCentre”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“PerformanceCentre”，在结果面板中选择“PerformanceCentre”，然后单击“添加”按钮添加该应用程序。   
 
      ![结果列表中的 PerformanceCentre](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于一个名为“Britta Simon”的测试用户配置和测试 PerformanceCentre 的 Azure AD 单一登录。
+在本部分中，将基于一个名为“Britta Simon”的测试用户配置和测试 PerformanceCentre 的 Azure AD 单一登录。 
 若要运行单一登录，需要在 Azure AD 用户与 PerformanceCentre 相关用户之间建立链接关系。
 
 若要使用 PerformanceCentre 配置和测试 Azure AD 单一登录，需完成以下构建基块：
@@ -80,7 +80,7 @@ ms.locfileid: "65904522"
 2. **[配置 PerformanceCentree 单一登录](#configure-performancecentre-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 PerformanceCentre 测试用户](#create-performancecentre-test-user) - 在 PerformanceCentre 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+5. [创建 PerformanceCentre 测试用户](#create-performancecentre-test-user) - 在 PerformanceCentre 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户  。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -89,7 +89,7 @@ ms.locfileid: "65904522"
 
 若要通过 PerformanceCentre 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“PerformanceCentre”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“PerformanceCentre”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,26 +97,26 @@ ms.locfileid: "65904522"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![PerformanceCentre 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`http://<companyname>.performancecentre.com/saml/SSO`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`http://<companyname>.performancecentre.com/saml/SSO` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<companyname>.performancecentre.com`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<companyname>.performancecentre.com` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [PerformanceCentre 客户端支持团队](https://www.performancecentre.com/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [PerformanceCentre 客户端支持团队](https://www.performancecentre.com/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 PerformanceCentre”部分中，根据要求复制相应的 URL。
+6. 在“设置 PerformanceCentre”  部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -130,23 +130,23 @@ ms.locfileid: "65904522"
 
 1. 以管理员身份登录 **PerformanceCentre** 公司站点。
 
-2. 在左侧选项卡中，单击“配置”。
+2. 在左侧选项卡中，单击“配置”。 
    
     ![Azure AD 单一登录][10]
 
-3. 在左侧选项卡中，单击“杂项”，并单击“单一登录”。
+3. 在左侧选项卡中，单击“杂项”，并单击“单一登录”。  
    
     ![Azure AD 单一登录][11]
 
-4. 选择“SAML”作为“协议”。
+4. 选择“SAML”作为“协议”。  
    
     ![Azure AD 单一登录][12]
 
-5. 在记事本中打开下载的元数据文件，将其内容复制并粘贴到“标识提供者元数据”文本框中，然后单击“保存”。
+5. 在记事本中打开下载的元数据文件，将其内容复制并粘贴到“标识提供者元数据”文本框中，然后单击“保存”。  
    
     ![Azure AD 单一登录][13]
 
-6. 确保“实体基 URL”和“实体 ID URL”的值正确。
+6. 确保“实体基 URL”和“实体 ID URL”的值正确。  
     
      ![Azure AD 单一登录][14]
 
@@ -154,11 +154,11 @@ ms.locfileid: "65904522"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -166,40 +166,40 @@ ms.locfileid: "65904522"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 PerformanceCentre 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“PerformanceCentre”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“PerformanceCentre”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“PerformanceCentre”。
+2. 在应用程序列表中，选择“PerformanceCentre”。 
 
     ![应用程序列表中的 PerformanceCentre 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-performancecentre-test-user"></a>创建 PerformanceCentre 测试用户
 
@@ -209,11 +209,11 @@ ms.locfileid: "65904522"
 
 1. 以管理员身份登录 PerformanceCentre 公司站点。
 
-2. 在左侧菜单中，单击“相互关联”，并单击“创建参与者”。
+2. 在左侧菜单中，单击“相互关联”，并单击“创建参与者”。  
    
     ![创建用户][400]
 
-3. 在“相互关联 - 创建参与者”对话框中，执行以下步骤：
+3. 在“相互关联 - 创建参与者”对话框中，执行以下步骤： 
    
     ![创建用户][401]
     
@@ -222,7 +222,7 @@ ms.locfileid: "65904522"
     >[!IMPORTANT]
     >Britta 在 PerformanceCentre 中的“用户名”属性必须与 Azure AD 中的“用户名”相同。
     
-    b. 对于“选择角色”选项，请选择“客户端管理员”。
+    b. 对于“选择角色”选项，请选择“客户端管理员”。  
     
     c. 单击“ **保存**”。 
 

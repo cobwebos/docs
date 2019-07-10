@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: f79fbc46104eb886a758802aff79a46feb4f5a3b
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 857646bb1b9b317f1e51218d258616e775056b43
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866634"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442282"
 ---
 # <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>使用 Core Tools 和 Azure CLI（预览版）创建第一个托管在 Linux 上的函数
 
@@ -67,7 +67,7 @@ Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
 cd MyFunctionProj
 ```
 
-## <a name="reference-bindings"></a>引用绑定
+## <a name="enable-extension-bundles"></a>启用扩展捆绑包
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 

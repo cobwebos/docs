@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fdf88ed6cedaa38676a56536ff1eda7ee6bca66
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a229eef3d49964e71becf066d67f60b18da6fc18
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204791"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113242"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>教程：完成 Azure 多重身份验证试验试点推广
 
@@ -36,29 +36,29 @@ ms.locfileid: "56204791"
 ## <a name="enable-azure-multi-factor-authentication"></a>启用 Azure 多重身份验证
 
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到“Azure Active Directory”、“条件访问”。
-1. 选择“新建策略”
-1. 将策略命名为“MFA 试点”
-1. 在“用户和组”下，选择“选择用户和组”单选按钮
+1. 浏览到“Azure Active Directory”、“条件访问”  
+1. 选择“新建策略” 
+1. 将策略命名为“MFA 试点” 
+1. 在“用户和组”  下，选择“选择用户和组”  单选按钮
     * 选择在本文的先决条件部分中创建的试点组
     * 单击“完成” 
-1. 在“云应用”下，选择“选择应用”单选按钮
+1. 在“云应用”  下，选择“选择应用”  单选按钮
     * Azure 门户的云应用是 **Microsoft Azure 管理**
-    * 单击“选择”
+    * 单击“选择” 
     * 单击“完成” 
-1. 跳过“条件”部分
-1. 在“授予”下，确保选择“授权访问”单选按钮
-    * 选中“要求多重身份验证”复选框
-    * 单击“选择”
-1. 跳过“会话”部分
-1. 将“启用策略”开关设置为“开”
+1. 跳过“条件”  部分
+1. 在“授予”  下，确保选择“授权访问”  单选按钮
+    * 选中“要求多重身份验证”复选框 
+    * 单击“选择” 
+1. 跳过“会话”  部分
+1. 将“启用策略”  开关设置为“开” 
 1. 单击“创建” 
 
 ## <a name="test-azure-multi-factor-authentication"></a>测试 Azure 多重身份验证
 
-为了证明条件访问策略正常工作，通过以下方式进行测试：登录到不要求 MFA 的某个资源，然后登录到要求 MFA 的 Azure 门户。
+为了证明条件访问策略正常工作，请通过以下方式进行测试：登录到不要求 MFA 的某个资源，然后登录到要求 MFA 的 Azure 门户。
 
-1. 在 InPrivate 或 incognito 模式下打开一个新的浏览器窗口并浏览到 [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)。
+1. 在 InPrivate 或 incognito 模式下打开新的浏览器窗口并浏览到 [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)。
    * 使用在本文的先决条件部分中创建的测试用户进行登录，注意，应当不会要求你完成 MFA。
    * 关闭浏览器窗口。
 2. 在 InPrivate 或 incognito 模式下打开一个新的浏览器窗口并浏览到 [https://portal.azure.com](https://portal.azure.com)。
@@ -70,9 +70,9 @@ ms.locfileid: "56204791"
 如果你决定不再使用作为本教程的一部分配置的功能，请进行以下更改。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到“Azure Active Directory”、“条件访问”。
+1. 浏览到“Azure Active Directory”、“条件访问”。  
 1. 选择你创建的条件访问策略。
-1. 单击“删除” 。
+1. 单击“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

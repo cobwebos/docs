@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1692032b093cd6189cac3ea3f63c563d9accd8ed
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784670"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477827"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>项目音响效果 Unreal/Wwise 设计教程
 本教程介绍了在 Unreal 和 Wwise 中项目音响效果的设计设置和工作流。
@@ -122,6 +122,11 @@ Wwise 声笼曲线会影响隔离的干声电平，但项目音响效果使用�
 必须先设置磁贴大小，才能调用“强制加载”磁贴。 例如，可以执行以下操作来加载 ACE 文件、设置磁贴大小以及在区域中流式传输：
 
 ![Unreal 中流式处理设置选项的屏幕截图](media/streaming-setup.png)
+
+本例中使用的加载声学数据蓝图函数具有以下参数：
+
+* **目标：** AcousticsSpace 执行组件。
+* **新建烘培：** 要加载的声学数据资产。 将此项留空/将其设置为 NULL 将卸载当前烘焙，而不是加载新烘焙。
 
 ### <a name="optionally-query-for-surface-proximity"></a>（可选）查询曲面接近度
 如果要查看围绕侦听器的特定方向上的曲面的接近程度，可以使用“查询距离”功能。 此功能可用于驱动定向延迟反射，或用于由曲面接近度驱动的其他游戏逻辑。 查询比光线投射更经济实惠，因为结果是从音响效果查找表中提取的。

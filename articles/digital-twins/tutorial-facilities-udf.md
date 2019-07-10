@@ -2,22 +2,22 @@
 title: 教程：通过 Azure 数字孪生对空间进行监视 | Microsoft Docs
 description: 了解如何使用 Azure 数字孪生根据本教程中的步骤来预配空间资源并监视工作条件。
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/27/2018
-ms.author: dkshir
-ms.openlocfilehash: ad6c2625dc56dc3a3155183a04b712122a3b10f1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 06/26/2019
+ms.author: alinast
+ms.openlocfilehash: 3ebfa9b54007d0b409780e6a549bdd2411b94810
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535376"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484671"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>教程：使用 Azure 数字孪生预配大楼并监视工作条件
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>教程：使用 Azure 数字孪生预览版预配大楼并监视工作条件
 
-本教程演示如何使用 Azure 数字孪生来监视空间是否达到理想的温度条件和舒适度。 [配置示例大楼](tutorial-facilities-setup.md)以后，即可根据本教程中的步骤预配大楼并针对传感器数据运行自定义函数。
+本教程演示如何使用 Azure 数字孪生预览版来监视空间是否达到理想的温度条件和舒适度。 [配置示例大楼](tutorial-facilities-setup.md)以后，即可根据本教程中的步骤预配大楼并针对传感器数据运行自定义函数。
 
 本教程介绍如何执行下列操作：
 
@@ -39,18 +39,18 @@ ms.locfileid: "57535376"
 
 ## <a name="define-conditions-to-monitor"></a>定义要监视的条件
 
-可以定义一组需要在设备或传感器数据中监视的具体条件，称为“匹配程序”。 然后可以定义名为“用户定义函数”的函数。 用户定义函数用于在匹配程序所指定的条件符合的时候对来自空间和设备的数据执行自定义逻辑。 有关详细信息，请阅读[数据处理和用户定义的函数](concepts-user-defined-functions.md)。 
+可以定义一组需要在设备或传感器数据中监视的具体条件，称为“匹配程序”。  然后可以定义名为“用户定义函数”的函数。  用户定义函数用于在匹配程序所指定的条件符合的时候对来自空间和设备的数据执行自定义逻辑。 有关详细信息，请阅读[数据处理和用户定义的函数](concepts-user-defined-functions.md)。 
 
-在 **occupancy-quickstart** 示例项目中，通过 Visual Studio Code 打开 **src\actions\provisionSample.yaml** 文件。 请注意以类型 **matchers** 开头的节。 此类型下的每个条目使用指定的**名称**创建一个匹配程序。 该匹配程序用于监视类型为 **dataTypeValue** 的传感器。 请注意它与名为“专注室 A1”的空间的关系，该专注室有一个“设备”节点，，节点中包含一些传感器。 若要预配一个匹配程序，用于跟踪这其中的一个传感器，则请确保其 **dataTypeValue** 与该传感器的 **dataType** 匹配。 
+在 **occupancy-quickstart** 示例项目中，通过 Visual Studio Code 打开 **src\actions\provisionSample.yaml** 文件。 请注意以类型 **matchers** 开头的节。 此类型下的每个条目使用指定的**名称**创建一个匹配程序。 该匹配程序用于监视类型为 **dataTypeValue** 的传感器。 请注意它与名为“专注室 A1”的空间的关系，该专注室有一个“设备”节点，   ，节点中包含一些传感器。 若要预配一个匹配程序，用于跟踪这其中的一个传感器，则请确保其 **dataTypeValue** 与该传感器的 **dataType** 匹配。 
 
-在现有匹配程序下面添加以下匹配程序。 确保各个键对齐且空格不被制表符替换。
+在现有匹配程序下面添加以下匹配程序。 确保各个键对齐且空格不被制表符替换。 这些行也存在 *provisionSample.yaml* 文件中，属于已注释掉的行。 可以取消注释这些行，方法是删除每一行前面的 `#` 字符。
 
 ```yaml
       - name: Matcher Temperature
         dataTypeValue: Temperature
 ```
 
-此匹配程序会跟踪已在[第一个教程](tutorial-facilities-setup.md)中添加的 SAMPLE_SENSOR_TEMPERATURE 传感器。 这些行也存在 *provisionSample.yaml* 文件中，属于已注释掉的行。 可以取消注释这些行，方法是删除每一行前面的 `#` 字符。
+此匹配程序会跟踪已在[第一个教程](tutorial-facilities-setup.md)中添加的 SAMPLE_SENSOR_TEMPERATURE 传感器。 
 
 <a id="udf"></a>
 
@@ -257,7 +257,7 @@ ms.locfileid: "57535376"
 
 如果不希望继续探索 Azure 数字孪生，可以删除本教程中创建的资源：
 
-1. 在 [Azure 门户](https://portal.azure.com)的左菜单中依次选择“所有资源”、数字孪生资源组、“删除”。
+1. 在 [Azure 门户](https://portal.azure.com)的左菜单中依次选择“所有资源”、  数字孪生资源组、“删除”。 
 
     > [!TIP]
     > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。

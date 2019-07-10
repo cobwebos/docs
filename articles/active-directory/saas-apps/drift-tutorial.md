@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e645dd40071416a28ced475e02c47688a5759eb4
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 88940b40eb309a5fb6ff73c04a47813ec3a47669
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304052"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103864"
 ---
 # <a name="tutorial-integrate-drift-with-azure-active-directory"></a>教程：将 Drift 与 Azure Active Directory 集成
 
@@ -154,7 +154,7 @@ ms.locfileid: "66304052"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `B. Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B. Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B. Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 

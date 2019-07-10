@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 02/27/2019
+ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1d25ea2ce6e365e0d04fab325f9c13bb37382758
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 39d39b313cd2e65989989080d4cb0729b0be1e65
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603166"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561453"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>教程：订购 Azure Data Box Disk
 
@@ -49,7 +49,12 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
 ## <a name="order-data-box-disk"></a>订购 Data Box 磁盘
 
-在 [Azure 门户](https://aka.ms/azuredataboxfromdiskdocs)中执行以下步骤订购 Data Box 磁盘。
+登录到：
+
+- 位于此 URL 的 Azure 门户： https://portal.azure.com 以订购 Data Box Disk。
+- 或者，通过此 URL https://portal.azure.us 登录到 Azure 政府版门户。 有关更多详细信息，请参阅[使用门户连接到 Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)。
+
+按照以下步骤订购 Data Box Disk。
 
 1. 在门户的左上角单击“+ 创建资源”，然后搜索“Azure Data Box”。   单击“Azure Data Box”。 
     
@@ -82,7 +87,7 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
     |目标 Azure 区域| 选择存储帐户的区域。<br> 目前，支持美国、西欧和北欧、加拿大和澳大利亚的所有区域的存储帐户。 |
     |估计数据大小(TB)| 输入估计值，以 TB 为单位。 <br>根据数据大小，Microsoft 会寄送适当数量的 8 TB SSD（7 TB 可用容量）。 <br>5 个磁盘的最大可用容量高达 35 TB。 |
     |磁盘密钥| 如果选中“使用自定义密钥而不是 Azure 生成的密钥”  ，请提供磁盘密钥。 <br> 提供一个 12 到 32 个字符的字母数字密钥，其中至少包含一个数字和一个特殊字符。 允许使用的特殊字符是 `@?_+`。 <br> 可以选择跳过此选项并使用 Azure 生成的密钥来解锁磁盘。|
-    |存储目标     | 从存储帐户和/或托管磁盘中进行选择。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个存储帐户。 Data Box 可以与最多 10 个存储帐户链接。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br>无法使用已配置了规则的存储帐户。 存储帐户必须在防火墙和虚拟网络部分中**允许来自所有网络的访问**。|
+    |存储目标     | 从存储帐户和/或托管磁盘中进行选择。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个存储帐户。 Data Box Disk 只能与 1 个存储帐户链接。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br>支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请了解如何[将 Azure Data Box 添加为受信任的服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。|
 
     如果使用存储帐户作为存储目标，则会看到以下屏幕截图：
 

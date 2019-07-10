@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/18/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: ddbb535d386fb90ccb2042e0908e66146e854f00
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: cd2a776988ba27add54c69b0feccbc3fce8337aa
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603457"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551523"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 
@@ -116,6 +116,9 @@ Data Box 可以根据部署服务的区域、设备的发货国家/地区以及�
     - 欧盟 - 西欧和北欧。
     - 英国 - 英国南部和英国西部。
     - 法国 - 法国中部和法国南部。
+    - 日本 - 日本东部和日本西部。
+    - 澳大利亚 - 澳大利亚东部和澳大利亚东南部。
+    - 加拿大 - 加拿大东部和加拿大中部。
 
 - **目标存储帐户** - 存储数据的存储帐户可在服务可用的所有 Azure 区域中获得。  
 

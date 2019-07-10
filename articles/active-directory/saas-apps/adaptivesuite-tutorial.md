@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b2c7ca8699274b96f7f382dfe1958bf5babbbe99
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c217663c5752907e0b3d6372d4522f6aba982b3d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720174"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107410"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>教程：Azure Active Directory 与 Adaptive Insights 集成
 
@@ -183,7 +183,7 @@ ms.locfileid: "64720174"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon@yourcompanydomain.extension  。 例如，BrittaSimon@contoso.com。
+    b. 在“用户名”字段中，键入 brittasimon@yourcompanydomain.extension  。 例如，BrittaSimon@contoso.com 。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 

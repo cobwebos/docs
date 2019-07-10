@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 780da9359aaf645abc9b685fa9d90bbea9199759
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: b7d68f6f7079872b81b750ba71997117aaa27d33
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962156"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550564"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-app"></a>从 iOS 应用将用户登录并调用 Microsoft Graph
 
@@ -56,10 +56,10 @@ ms.locfileid: "65962156"
 
 ### <a name="create-a-new-project"></a>创建新项目
 
-1. 打开 Xcode，并选择“新建 Xcode 项目”。
-2. 选择“iOS”>“单一视图应用程序”，并选择“下一步”。
-3. 提供产品名称并选择“下一步”。
-4. 选择一个文件夹以创建应用，然后单击“创建”。
+1. 打开 Xcode，并选择“新建 Xcode 项目”  。
+2. 选择“iOS”>“单一视图应用程序”，并选择“下一步”。  
+3. 提供产品名称并选择“下一步”  。
+4. 选择一个文件夹以创建应用，然后单击“创建”  。
 
 ## <a name="register-your-application"></a>注册应用程序 
 
@@ -68,7 +68,7 @@ ms.locfileid: "65962156"
 ### <a name="register-your-app"></a>注册应用
 
 1. 转到 [Azure 门户](https://aka.ms/MobileAppReg)，然后选择 `New registration`。 
-2. 为你的应用输入名称，然后选择 `Register`。 在此阶段不设置重定向 URI。 
+2. 为你的应用输入名称  ，然后选择 `Register`。 在此阶段不设置重定向 URI  。 
 3. 在 `Manage` 部分，转到 `Authentication` > `Add a platform` > `iOS`
     - 输入项目的捆绑 ID。 如果下载了代码，则为 `com.microsoft.identitysample.MSALiOS`。
 4. 点击 `Configure` 并存储 `MSAL Configuration` 以备稍后使用。 
@@ -382,7 +382,7 @@ MSAL 公开了获取令牌的两种主要方法：`acquireTokenSilently` 和 `ac
 
 | 标头密钥    | 值                 |
 | ------------- | --------------------- |
-| 授权 | 持有者 <access-token> |
+| 授权 | 持有者 \<access-token> |
 
 将下列内容添加到 `ViewController.swift`：
 
@@ -454,7 +454,7 @@ MSAL 公开了获取令牌的两种主要方法：`acquireTokenSilently` 和 `ac
 
 默认情况下，MSAL 会在 iOS 密钥链中缓存你的应用令牌。 
 
-要启用令牌缓存，请转到 Xcode 项目设置 > `Capabilities tab` > `Enable Keychain Sharing` > 单击 `Plus` > 输入“com.microsoft.adalcache”。
+要启用令牌缓存，请转到 Xcode 项目设置 > `Capabilities tab` > `Enable Keychain Sharing` > 单击 `Plus` > 输入“com.microsoft.adalcache”  。
 
 ### <a name="add-helper-methods"></a>添加帮助程序方法
 

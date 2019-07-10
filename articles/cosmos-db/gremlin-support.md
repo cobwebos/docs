@@ -5,68 +5,34 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 05/21/2019
+ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: b36c041c24a07f89701e78aea4d08270342b8d22
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: db263c1c7f0a8b87b315c5aa6da31336229c9643
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978938"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502729"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
 Azure Cosmos DB 支持 [Apache Tinkerpop](https://tinkerpop.apache.org) 的图形遍历语言（称为 [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)）。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
 
-Azure Cosmos DB 为图形数据库提供企业级的功能。 这些功能包括全局分布、存储和吞吐量独立缩放、低至个位数的可预测延迟、自动编制索引、SLA、跨越两个或更多 Azure 区域的数据库帐户的读取可用性。 由于 Azure Cosmos DB 支持 TinkerPop/Gremlin，因此可以轻松迁移使用其他兼容图形数据库编写的应用程序。 此外，由于具有 Gremlin 支持，Azure Cosmos DB 可与支持 TinkerPop 的分析框架（例如 [Apache Spark GraphX](https://spark.apache.org/graphx/)）无缝集成。 
-
 本文提供 Gremlin 的快速演练，并列举 Gremlin API 支持的 Gremlin 功能。
 
-## <a name="gremlin-by-example"></a>举例介绍 Gremlin
-我们使用一个示例图形来了解如何在 Gremlin 中表示查询。 下图显示了一个商业应用程序，该应用程序管理以图形形式呈现的有关用户、兴趣和设备的数据。  
+## <a name="compatible-client-libraries"></a>兼容的客户端库
 
-![显示人员、设备和兴趣的示例数据库](./media/gremlin-support/sample-graph.png) 
+下表显示可以对 Azure Cosmos DB 使用的常用 Gremlin 驱动程序：
 
-此图形使用以下顶点类型（在 Gremlin 中称为“标签”）：
+| 下载 | 源 | 入门 | 支持的连接器版本 |
+| --- | --- | --- | --- |
+| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [GitHub 上的 Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [使用 .NET 创建图形](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [使用 Java 创建图形](create-graph-java.md) | 3.2.0+ |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [GitHub 上的 Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) | [使用 Node.js 创建图形](create-graph-nodejs.md) | 3.3.4+ |
+| [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [GitHub 上的 Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [使用 Python 创建图形](create-graph-python.md) | 3.2.7 |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [GitHub 上的 Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [使用 PHP 创建图形](create-graph-php.md) | 3.1.0 |
+| [Gremlin 控制台](https://tinkerpop.apache.org/downloads.html) | [TinkerPop 文档](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [使用 Gremlin 控制台创建图形](create-graph-gremlin-console.md) | 3.2.0 + |
 
-- 人员：图形中包含三名人员：Robin、Thomas 和 Ben
-- 兴趣：在此示例中，人员的兴趣为足球比赛
-- 设备：人员使用的设备
-- 操作系统：设备在其上运行的操作系统
-
-我们通过以下边缘类型/标签表示这些实体之间的关系：
-
-- 认识：例如，“Thomas 认识 Robin”
-- 感兴趣的内容：在图形中表示人员的兴趣，例如，“Ben 对足球感兴趣”
-- RunsOS：运行 Windows OS 的笔记本电脑
-- 使用：表示人员使用哪种设备。 例如，Robin uses a Motorola phone with serial number 77
-
-让我们使用 [Gremlin 控制台](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console)对此图形运行一些操作。 也可以所选的平台（Java、Node.js、Python 或 .NET）中使用 Gremlin 驱动程序执行这些操作。  在了解 Azure Cosmos DB 支持的功能之前，我们先通过几个示例来熟悉语法。
-
-首先，让我们了解 CRUD。 以下 Gremlin 语句在图形中插入“Thomas”顶点：
-
-```java
-:> g.addV('person').property('id', 'thomas.1').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44)
-```
-
-接下来，以下 Gremlin 语句在 Thomas 与 Robin 之间插入“knows”边缘。
-
-```java
-:> g.V('thomas.1').addE('knows').to(g.V('robin.1'))
-```
-
-以下查询按人员名字的降序返回“person”顶点：
-```java
-:> g.V().hasLabel('person').order().by('firstName', decr)
-```
-
-如果需要回答类似于“Thomas 的朋友使用哪些操作系统？”的问题，图形可以提供很大的方便。 可以运行此 Gremlin 遍历从图形中获取该信息：
-
-```java
-:> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
-```
-现在，让我们看看 Azure Cosmos DB 为 Gremlin 开发人员提供哪些信息。
-
-## <a name="gremlin-features"></a>Gremlin 的功能
+## <a name="supported-graph-objects"></a>支持的图对象
 TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术语来描述图形提供程序提供的功能。 Azure Cosmos DB 提供一个可跨多个服务器或群集分区的持久性、高并发性、可写的图形数据库。 
 
 下表列出了 Azure Cosmos DB 实现的 TinkerPop 功能： 
@@ -184,12 +150,12 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 | `sample` | 用于对遍历返回的结果采样 | [sample 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#sample-step) |
 | `select` | 用于投影遍历返回的结果 |  [select 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
 | `store` | 用于遍历返回的非阻塞聚合 | [store 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
-| `TextP.startingWith(string)` | 字符串筛选函数。 此函数用作 `has()` 步骤的谓词来将某个属性与给定字符串的开头进行匹配 | [TextP 谓词](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.endingWith(string)` |  字符串筛选函数。 此函数用作 `has()` 步骤的谓词来将某个属性与给定字符串的结尾进行匹配 | [TextP 谓词](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.containing(string)` | 字符串筛选函数。 此函数用作 `has()` 步骤的谓词来将某个属性与给定字符串的内容进行匹配 | [TextP 谓词](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notStartingWith(string)` | 字符串筛选函数。 此函数用作 `has()` 步骤的谓词来匹配不以给定字符串开头的属性 | [TextP 谓词](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notEndingWith(string)` | 字符串筛选函数。 此函数用作 `has()` 步骤的谓词来匹配不以给定字符串结尾的属性 | [TextP 谓词](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notContaining(string)` | 字符串筛选函数。 此函数用作 `has()` 步骤的谓词来匹配不包含给定字符串的属性 | [TextP 谓词](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.startingWith(string)` | 字符串筛选函数。 此函数用作 `has()` 步骤的谓词来将某个属性与给定字符串的开头进行匹配 | [TextP 谓词](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.endingWith(string)` |  字符串筛选函数。 此函数用作 `has()` 步骤的谓词来将某个属性与给定字符串的结尾进行匹配 | [TextP 谓词](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.containing(string)` | 字符串筛选函数。 此函数用作 `has()` 步骤的谓词来将某个属性与给定字符串的内容进行匹配 | [TextP 谓词](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notStartingWith(string)` | 字符串筛选函数。 此函数用作 `has()` 步骤的谓词来匹配不以给定字符串开头的属性 | [TextP 谓词](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notEndingWith(string)` | 字符串筛选函数。 此函数用作 `has()` 步骤的谓词来匹配不以给定字符串结尾的属性 | [TextP 谓词](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notContaining(string)` | 字符串筛选函数。 此函数用作 `has()` 步骤的谓词来匹配不包含给定字符串的属性 | [TextP 谓词](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `tree` | 将顶点中的路径聚合到树中 | [tree 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#tree-step) |
 | `unfold` | 将迭代器作为步骤展开| [unfold 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#unfold-step) |
 | `union` | 合并多个遍历返回的结果| [union 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#union-step) |
