@@ -62,6 +62,19 @@
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
         - name: 关于 Windows 容器
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/about/index'
+    - name: Azure Red Hat OpenShift
+      href: 'https://docs.microsoft.com/azure/openshift/'
+      items:
+        - name: 什么是 Azure Red Hat Openshift？
+          href: ../openshift/intro-openshift.md
+        - name: 教程 - 创建和管理 Azure Red Hat OpenShift 群集
+          items:
+            - name: 1 - 创建 Azure Red Hat OpenShift 群集
+              href: ../openshift/tutorial-create-cluster.md
+            - name: 2 - 缩放 Azure Red Hat OpenShift 群集
+              href: ../openshift/tutorial-scale-cluster.md
+            - name: 3 - 删除 Azure Red Hat OpenShift 群集
+              href: ../openshift/tutorial-delete-cluster.md
     - name: 引用
       items:
         - name: Azure 容器实例 (az container)

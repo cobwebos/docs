@@ -140,6 +140,8 @@
               href: vpn-gateway-howto-openvpn-clients.md
         - name: 为 P2S 转换到公共 CA 网关证书
           href: vpn-gateway-point-to-site-gateway-public-ca.md
+        - name: 配置 Always On VPN 设备隧道
+          href: vpn-gateway-howto-always-on-device-tunnel.md
     - name: 在 Azure 可用性区域创建区域冗余的 VNet 网关
       href: create-zone-redundant-vnet-gateway.md
     - name: 在连接上配置 IPsec/IKE 策略

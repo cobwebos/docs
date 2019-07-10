@@ -209,6 +209,8 @@
           href: sql-database-managed-instance-index.yml
         - name: 托管实例功能
           href: sql-database-managed-instance.md
+        - name: 托管实例常见问题解答
+          href: sql-database-managed-instance-faq.md
         - name: 管理 API 参考
           href: sql-database-managed-instance-create-manage.md
         - name: 资源限制

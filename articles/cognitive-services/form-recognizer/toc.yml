@@ -35,6 +35,8 @@
         - name: 配置容器
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
+        - name: 使用容器实例
+          href: deploy-form-recognizer-on-container-instances.md
 - name: 引用
   items:
     - name: 表单识别器 API

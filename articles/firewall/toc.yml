@@ -49,6 +49,8 @@
       href: deploy-availability-zone-powershell.md
     - name: 与负载均衡器集成
       href: integrate-lb.md
+    - name: 带有 SQL FQDN 的应用程序规则
+      href: sql-fqdn-filtering.md
 - name: 引用
   items:
     - name: Azure CLI

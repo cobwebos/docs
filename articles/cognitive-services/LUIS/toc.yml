@@ -266,6 +266,8 @@
           href: luis-container-howto.md
         - name: 配置容器
           href: luis-container-configuration.md
+        - name: 使用容器实例
+          href: deploy-luis-on-container-instances.md
 - name: 引用
   items:
     - name: 用户隐私

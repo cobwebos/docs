@@ -52,6 +52,8 @@
           items:
             - name: 连接通用 CEF
               href: connect-common-event-format.md
+            - name: 连接 AWS
+              href: connect-aws.md
             - name: 连接 Barracuda
               href: connect-barracuda.md
             - name: 连接检查点

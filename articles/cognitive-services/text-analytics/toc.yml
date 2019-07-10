@@ -70,10 +70,10 @@
           href: how-tos/text-analytics-how-to-install-containers.md
         - name: 配置容器
           href: text-analytics-resource-container-config.md
-        - name: 使用容器实例 (ACI)
+        - name: 使用容器实例
           items:
             - name: 情绪分析
-              href: how-tos/use-sentiment-analysis-on-aci.md
+              href: how-tos/deploy-sentiment-analysis-on-container-instances.md
         - name: 使用 Kubernetes 服务 (AKS)
           items:
             - name: 语言检测

@@ -147,6 +147,8 @@
           href: computer-vision-how-to-install-containers.md
         - name: 配置容器
           href: computer-vision-resource-container-config.md
+        - name: 使用容器实例
+          href: deploy-computer-vision-on-container-instances.md
     - name: 使用计算机视觉连接服务
       href: vs-computer-vision-connected-service.md
     - name: 分析实时视频

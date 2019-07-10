@@ -222,6 +222,8 @@
           href: web-application-firewall-troubleshoot.md
         - name: 资源运行状况
           href: resource-health-overview.md
+        - name: 使用 Log Analytics
+          href: log-analytics.md
     - name: 从 v1 迁移到 v2
       href: migrate-v1-v2.md
 - name: 引用
