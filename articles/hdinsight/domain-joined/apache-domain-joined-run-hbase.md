@@ -1,17 +1,18 @@
 ---
-title: 使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略 - Azure
-description: 了解如何使用企业安全性套餐为 Azure HDInsight 中的 HBase 配置 Apache Ranger 策略。
+title: 教程 - 使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略 - Azure
+description: 教程 - 了解如何使用企业安全性套餐为 Azure HDInsight 中的 HBase 配置 Apache Ranger 策略。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 02/01/2019
-ms.openlocfilehash: d1f2a2b24e6f1856d021911e6f2e9c107bd38b72
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 06/18/2019
+ms.openlocfilehash: 04592ba307cd696c20778d4a79f03be2eb0ac987
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926098"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274394"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>教程：使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略
 
@@ -159,7 +160,7 @@ ms.locfileid: "64926098"
    kinit sales_user1
    ```
 
-2. 打开 hbase shell，并扫描表 `Customers`。
+2. 打开 HBase shell，并扫描表 `Customers`。
 
    ```hbaseshell
    hbase shell
@@ -201,7 +202,7 @@ ms.locfileid: "64926098"
    kinit marketing_user1
    ```
 
-2. 打开 hbase shell，并扫描表 `Customers`：
+2. 打开 HBase shell，并扫描表 `Customers`：
 
     ```hbaseshell
     hbase shell

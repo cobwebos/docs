@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 8e85f390ee5ff74f02cb95fa4dcf1dfc1a35dad1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 21c10e142802914bcf3292ef7f25066675e6cdd1
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699859"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143927"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>教程：Azure Active Directory 与本地 SharePoint 的集成
 
@@ -56,6 +56,9 @@ ms.locfileid: "64699859"
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
+
+    > [!NOTE]   
+    > 如果元素应不可用，也可以通过左侧导航面板顶部的固定“所有服务”  链接将其打开。 在以下概述中，“Azure Active Directory”  链接位于“标识”  部分中，或者可以使用筛选器文本框搜索它。
 
 2. 转到“企业应用”，并选择“所有应用”选项   。
 

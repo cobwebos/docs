@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: e0c2dc6c370e697f896e24e7d56c6eb8900601a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: faaa5dcc435452d6ed9e0f2c5b481df1e352dfd2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867150"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090433"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>教程：Azure Active Directory 与 SkyDesk Email 集成
 
@@ -53,25 +53,25 @@ ms.locfileid: "65867150"
 
 **若要从库中添加 SkyDesk Email，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“SkyDesk Email”，在结果面板中选择“SkyDesk Email”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“SkyDesk Email”，在结果面板中选择“SkyDesk Email”，然后单击“添加”按钮添加该应用程序    。
 
      ![结果列表中的 SkyDesk Email](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于一个名为“Britta Simon”的测试用户配置并测试 SkyDesk Email 的 Azure AD 单一登录。
+在本部分中，将基于一个名为“Britta Simon”  的测试用户配置并测试 SkyDesk Email 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 SkyDesk Email 相关用户之间建立链接关系。
 
 若要配置和测试 SkyDesk Email 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -80,7 +80,7 @@ ms.locfileid: "65867150"
 2. **[配置 SkyDesk Email 单一登录](#configure-skydesk-email-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 SkyDesk Email 测试用户](#create-skydesk-email-test-user) - 在 SkyDesk Email 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+5. [创建 SkyDesk Email 测试用户](#create-skydesk-email-test-user) - 在 SkyDesk Email 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户  。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -89,7 +89,7 @@ ms.locfileid: "65867150"
 
 若要配置 SkyDesk Email 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 SkyDesk Email 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 SkyDesk Email 应用程序集成页上，选择“单一登录”   。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,24 +97,24 @@ ms.locfileid: "65867150"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![SkyDesk Email 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://mail.skydesk.jp/portal/<companyname>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://mail.skydesk.jp/portal/<companyname>`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [SkyDesk Email 客户端支持团队](https://www.skydesk.jp/apps/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [SkyDesk Email 客户端支持团队](https://www.skydesk.jp/apps/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 SkyDesk Email”部分中，根据要求复制相应的 URL。
+6. 在“设置 SkyDesk Email”  部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -128,15 +128,15 @@ ms.locfileid: "65867150"
 
 1. 在另一个不同的 web 浏览器中，以管理员身份登录 SkyDesk Email 帐户。
 
-1. 在顶部菜单中，单击“设置”，并选择“组织”。
+1. 在顶部菜单中，单击“设置”，并选择“组织”   。
 
     ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
-1. 在左侧面板中，单击“域”。
+1. 在左侧面板中，单击“域”  。
 
     ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
-1. 单击“添加域”。
+1. 单击“添加域”  。
 
     ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
@@ -144,11 +144,11 @@ ms.locfileid: "65867150"
 
     ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
-1. 在左侧面板中，单击“SAML 身份验证”。
+1. 在左侧面板中，单击“SAML 身份验证”  。
 
     ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
-1. 在“SAML 身份验证”对话框页上，执行以下步骤：
+1. 在“SAML 身份验证”  对话框页上，执行以下步骤：
 
     ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
@@ -157,27 +157,27 @@ ms.locfileid: "65867150"
 
     ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
-    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+    b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
 
     c. **更改密码 URL** 是可选项，因此将其留空。
 
-    d. 单击“从文件获取密钥”，从 Azure 门户选择已下载的证书，并单击“打开”上传证书。
+    d. 单击“从文件获取密钥”，从 Azure 门户选择已下载的证书，并单击“打开”上传证书   。
 
-    e. 选择“RSA”，作为**算法**。
+    e. 选择“RSA”  ，作为**算法**。
 
-    f. 单击“确定”以保存更改。
+    f. 单击“确定”以保存更改  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -185,46 +185,46 @@ ms.locfileid: "65867150"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 SkyDesk Email 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SkyDesk Email”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SkyDesk Email”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“SkyDesk Email”。
+2. 在应用程序列表中，选择“SkyDesk Email”  。
 
     ![应用程序列表中的 SkyDesk Email 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-skydesk-email-test-user"></a>创建 SkyDesk Email 测试用户
 
 在本部分中，会在 SkyDesk Email 中创建一个名为“Britta Simon”的用户。
 
-在 SkyDesk Email 的左侧面板中，单击“用户访问”，并输入用户名。
+在 SkyDesk Email 的左侧面板中，单击“用户访问”  ，并输入用户名。
 
 ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 

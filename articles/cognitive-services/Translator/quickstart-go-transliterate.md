@@ -3,19 +3,19 @@ title: 快速入门：转换文本脚本，Go - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 Go 将一种语言的文本从一个脚本转换为另一个脚本。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 748754bdeec34d864efd05297664b935a06f1a06
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 65a873744a55539be220560d8d8d062a4d5adaa7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515216"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445172"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-go"></a>快速入门：使用 Go 通过文本翻译 API 对文本进行直译
 
@@ -139,6 +139,8 @@ if err != nil {
     log.Fatal(err)
 }
 ```
+
+如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。 
 
 ## <a name="handle-and-print-the-response"></a>处理并输出响应
 

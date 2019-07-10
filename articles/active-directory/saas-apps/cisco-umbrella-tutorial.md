@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a1b0763e33607367939476ca155040295de864c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 255af92dfecdf891568d7d57c17512bb178a51e5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837977"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105562"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>教程：Azure Active Directory 与 Cisco Umbrella 的集成
 
@@ -53,19 +53,19 @@ ms.locfileid: "57837977"
 
 **若要从库中添加 Cisco Umbrella，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Cisco Umbrella”，在结果面板中选择“Cisco Umbrella”，然后单击“添加”按钮以添加该应用程序。
+4. 在搜索框中，键入“Cisco Umbrella”，在结果面板中选择“Cisco Umbrella”，然后单击“添加”按钮以添加该应用程序。   
 
      ![结果列表中的 Cisco Umbrella](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "57837977"
 
 若要配置 [应用程序名称] 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Cisco Umbrella”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Cisco Umbrella”应用程序集成页上，选择“单一登录”  。 
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,25 +97,25 @@ ms.locfileid: "57837977"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
+4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
 
     ![Cisco Umbrella 域和 URL 单一登录信息](common/both-preintegrated-signon.png)
 
     a. 如果要在 **SP** 发起的模式下配置应用程序，请执行以下步骤：
 
-    b. 单击“设置其他 URL”。
+    b. 单击“设置其他 URL”  。
 
-    c. 在“登录 URL”文本框中，键入 URL `https://login.umbrella.com/sso`
+    c. 在“登录 URL”  文本框中，键入 URL `https://login.umbrella.com/sso`
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的元数据 XML 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分，单击“下载”  以根据要求下载从给定选项提供的元数据 XML 并将其保存在计算机上。 
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Cisco Umbrella”部分，根据要求复制相应 URL。
+6. 在“设置 Cisco Umbrella”部分，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -129,41 +129,41 @@ ms.locfileid: "57837977"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Cisco Umbrella 公司站点。
 
-2. 在菜单左侧单击“管理”，导航到“身份验证”，然后单击“SAML”。
+2. 在菜单左侧单击“管理”，导航到“身份验证”，然后单击“SAML”。   
 
     ![管理](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_admin.png)
 
-3. 选择“其他”，然后单击“下一步”。
+3. 选择“其他”，然后单击“下一步”。  
 
     ![其他](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_other.png)
 
-4. 在“Cisco Umbrella 元数据”页上，单击“下一步”。
+4. 在“Cisco Umbrella 元数据”页上，单击“下一步”。  
 
     ![元数据](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_metadata.png)
 
-5. 在“上传元数据”选项卡上，如果已预先配置了 SAML，请选择“单击此处更改它们”选项，然后按以下步骤操作。
+5. 在“上传元数据”选项卡上，如果已预先配置了 SAML，请选择“单击此处更改它们”选项，然后按以下步骤操作。  
 
     ![下一步](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-6. 在“选项 A:上传 XML 文件”中，上传从 Azure 门户下载的**联合元数据 XML** 文件。在上传元数据后，系统会自动填充以下值，此时请单击“下一步”。
+6. 在“选项 A:  上传 XML 文件”中，上传从 Azure 门户下载的**联合元数据 XML** 文件。在上传元数据后，系统会自动填充以下值，此时请单击“下一步”。 
 
     ![choosefile](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
-7. 在“验证 SAML 配置”部分，单击“测试 SAML 配置”。
+7. 在“验证 SAML 配置”部分，单击“测试 SAML 配置”   。
 
     ![测试](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_test.png)
 
-8. 单击“保存”。
+8. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -171,40 +171,40 @@ ms.locfileid: "57837977"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，通过向 Britta Simon 授予对 Cisco Umbrella 的访问权限使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Cisco Umbrella”。
+1. 在 Azure 门户中，依次选择“企业应用程序”  、“所有应用程序”  和“Cisco Umbrella”  。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，键入并选择“Cisco Umbrella”。
+2. 在应用程序列表中，键入并选择“Cisco Umbrella”。 
 
     ![“应用程序”列表中的 Cisco Umbrella 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-cisco-umbrella-test-user"></a>创建 Cisco Umbrella 测试用户
 
@@ -215,27 +215,27 @@ ms.locfileid: "57837977"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Cisco Umbrella 公司站点。
 
-2. 在菜单左侧单击“管理”，导航到“帐户”。
+2. 在菜单左侧单击“管理”，导航到“帐户”。  
 
     ![帐户](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_account.png)
 
-3. 在“帐户”页的右上部单击“添加”，执行以下步骤。
+3. 在“帐户”页的右上部单击“添加”，执行以下步骤。  
 
     ![用户](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_createuser.png)
 
-    a. 在“名字”字段中输入名字，例如 **Britta**。
+    a. 在“名字”字段中输入名字，例如 **Britta**。 
 
-    b. 在“姓氏”字段中输入姓，例如 **simon**。
+    b. 在“姓氏”字段中输入姓，例如 **simon**。 
 
-    c. 在“选择委派的管理员角色”中选择角色。
+    c. 在“选择委派的管理员角色”中选择角色。 
   
-    d. 在“电子邮件地址”字段中，输入用户的电子邮件地址（例如 **brittasimon\@contoso.com**）。
+    d. 在“电子邮件地址”字段中，输入用户的电子邮件地址（例如 **brittasimon\@contoso.com**）。 
 
-    e. 在“密码”字段中输入自己的密码。
+    e. 在“密码”字段中输入自己的密码。 
 
-    f. 在“确认密码”字段中再次输入自己的密码。
+    f. 在“确认密码”字段中再次输入自己的密码。 
 
-    g. 单击“创建”。
+    g. 单击“创建”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

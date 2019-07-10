@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b060c971218561f285dbd2292529e01a0069d357
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359978"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147745"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 SQL Server Management Studio 连接和查询 Azure SQL 数据库
 
@@ -26,7 +26,7 @@ ms.locfileid: "59359978"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
   || 单一数据库 | 托管实例 |
   |:--- |:--- |:---|
@@ -37,7 +37,6 @@ ms.locfileid: "59359978"
   |||[从现场进行连接](sql-database-managed-instance-configure-p2s.md)
   |加载数据|根据快速入门加载的 Adventure Works|[还原 Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 所提供的 [BACPAC](sql-database-import.md) 文件还原或导入 Adventure Works|
-  |||
 
   > [!IMPORTANT]
   > 本文中脚本的编写目的是使用 Adventure Works 数据库。 使用托管实例时，必须将 Adventure Works 数据库导入一个实例数据库，或者修改本文中的脚本，以便使用 Wide World Importers 数据库。
@@ -52,9 +51,9 @@ ms.locfileid: "59359978"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 导航到“SQL 数据库”或“SQL 托管实例”页。
+2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 
-3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标。
+3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称    。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标  。
 
 ## <a name="connect-to-your-database"></a>连接到数据库
 
@@ -64,14 +63,14 @@ ms.locfileid: "59359978"
 > Azure SQL 数据库服务器在端口 1433 上进行侦听。 若要从公司防火墙后连接到 SQL 数据库服务器，该防火墙必须打开此端口。
 >
 
-1. 打开 SSMS。 此时会显示“连接到服务器”对话框。
+1. 打开 SSMS。 此时会显示“连接到服务器”  对话框。
 
 2. 输入以下信息：
 
    | 设置      | 建议的值    | 说明 |
    | ------------ | ------------------ | ----------- |
    | **服务器类型** | 数据库引擎 | 所需的值。 |
-   | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net。 |
+   | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net  。 |
    | **身份验证** | SQL Server 身份验证 | 本教程使用 SQL 身份验证。 |
    | **登录名** | 服务器管理员帐户用户 ID | 用于创建服务器的服务器管理员帐户的用户 ID。 |
    | **密码** | 服务器管理员帐户密码 | 用于创建服务器的服务器管理员帐户的密码。 |
@@ -79,21 +78,21 @@ ms.locfileid: "59359978"
 
    ![连接到服务器](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. 选择“连接到服务器”对话框中的“选项”。 在“连接到数据库”下拉菜单中，选择“mySampleDatabase”。
+3. 选择“连接到服务器”对话框中的“选项”   。 在“连接到数据库”下拉菜单中，选择“mySampleDatabase”   。
 
    ![连接到服务器上的 DB](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. 选择“连接”。 此时会打开“对象资源管理器”窗口。
+4. 选择“连接”  。 此时会打开“对象资源管理器”窗口。
 
-5. 要查看数据库的对象，请展开“数据库”，然后展开“mySampleDatabase”。
+5. 要查看数据库的对象，请展开“数据库”，然后展开“mySampleDatabase”   。
 
-   ![查看数据库对象](./media/sql-database-connect-query-ssms/connected.png)  
+   ![mySampleDatabase 对象](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>查询数据
 
 运行此 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 代码，按类别查询前 20 个产品。
 
-1. 在对象资源管理器中，右键单击“mySampleDatabase”，并选择“新建查询”。 此时会打开一个连接到数据库的新查询窗口。
+1. 在对象资源管理器中，右键单击“mySampleDatabase”，并选择“新建查询”   。 此时会打开一个连接到数据库的新查询窗口。
 
 2. 在查询窗口中，粘贴此 SQL 查询。
 
@@ -104,9 +103,9 @@ ms.locfileid: "59359978"
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-3. 在工具栏上，选择“执行”，以便从 `Product` 和 `ProductCategory` 表检索数据。
+3. 在工具栏上，选择“执行”，以便从 `Product` 和 `ProductCategory` 表检索数据  。
 
-    ![从两个表中检索数据的查询](./media/sql-database-connect-query-ssms/query2.png)
+    ![从表 Product 和 ProductCategory 中检索数据的查询](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>插入数据
 
@@ -133,7 +132,7 @@ ms.locfileid: "59359978"
            ,GETDATE() );
    ```
 
-2. 选择“执行”在 `Product` 表中插入新行。 “消息”面板显示“(受影响的 1 行)”。
+2. 选择“执行”在 `Product` 表中插入新行  。 “消息”面板显示“(受影响的 1 行)”   。
 
 ## <a name="view-the-result"></a>查看结果
 
@@ -144,9 +143,9 @@ ms.locfileid: "59359978"
    WHERE Name='myNewProduct'
    ```
 
-2. 选择“执行”。 将显示以下结果。
+2. 选择“执行”  。 将显示以下结果。
 
-   ![结果](./media/sql-database-connect-query-ssms/result.png)
+   ![Product 表查询的结果](./media/sql-database-connect-query-ssms/result.png)
 
 ## <a name="update-data"></a>更新数据
 
@@ -160,7 +159,7 @@ ms.locfileid: "59359978"
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“执行”更新 `Product` 表中的指定行。 “消息”面板显示“(受影响的 1 行)”。
+2. 选择“执行”更新 `Product` 表中的指定行  。 “消息”面板显示“(受影响的 1 行)”   。
 
 ## <a name="delete-data"></a>删除数据
 
@@ -173,7 +172,7 @@ ms.locfileid: "59359978"
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“执行”删除 `Product` 表中的指定行。 “消息”面板显示“(受影响的 1 行)”。
+2. 选择“执行”删除 `Product` 表中的指定行  。 “消息”面板显示“(受影响的 1 行)”   。
 
 ## <a name="next-steps"></a>后续步骤
 

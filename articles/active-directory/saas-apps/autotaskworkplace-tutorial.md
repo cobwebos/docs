@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00e838dd3df417bd0b26167d5f316225520e7263
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7be7d8b9fc9aa8b6c9c1d888744c25d710ca79a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65859004"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106500"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>教程：Azure Active Directory 与 Autotask Workplace 的集成
 
@@ -57,19 +57,19 @@ ms.locfileid: "65859004"
 
 **若要从库中添加 Autotask Workplace，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Autotask Workplace**，在结果面板中选择“Autotask Workplace”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入 **Autotask Workplace**，在结果面板中选择“Autotask Workplace”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的 Autotask Workplace](common/search-new-app.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "65859004"
 
 若要配置 Autotask Workplace 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Autotask Workplace”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Autotask Workplace”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -101,32 +101,32 @@ ms.locfileid: "65859004"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
 
     ![Autotask Workplace 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO`
+    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![Autotask Workplace 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.awp.autotask.net/loginsso`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.awp.autotask.net/loginsso`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请与 [Autotask Workplace 客户端支持团队](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请与 [Autotask Workplace 客户端支持团队](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 在“设置 Autotask Workplace”部分中，根据要求复制相应的 URL。
+7. 在“设置 Autotask Workplace”部分中，根据要求复制相应的 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -143,19 +143,19 @@ ms.locfileid: "65859004"
     > [!Note]
     > 配置 IdP 时，需要指定子域。 若要确认正确的子域，请登录到 Workplace Online。 登录后，请记下 URL 中的子域。 子域是 “https://” 和 “.awp.autotask.net/” 之间的部分，应为 us、eu、ca 或 au。
 
-2. 转到“配置” > “单一登录”并执行以下步骤：
+2. 转到“配置”   > “单一登录”  并执行以下步骤：
 
     ![Autotask 单一登录配置](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig1.png)
 
-    a. 选择“XML 元数据文件”选项，然后上传从 Azure 门户下载的“联合元数据 XML”。
+    a. 选择“XML 元数据文件”选项，然后上传从 Azure 门户下载的“联合元数据 XML”。  
 
-    b. 单击“启用 SSO”。
+    b. 单击“启用 SSO”  。
 
     ![Autotask 单一登录批准配置](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig2.png)
 
-    c. 选中“我确认此信息正确，并且我信任此 IdP”复选框。
+    c. 选中“我确认此信息正确，并且我信任此 IdP”  复选框。
 
-    d. 单击“批准”。
+    d. 单击“批准”  。
 
 > [!Note]
 > 如果需要有关配置 Autotask Workplace 的帮助，请参阅[此页](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)获取与 Workplace 帐户相关的帮助。
@@ -164,11 +164,11 @@ ms.locfileid: "65859004"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -176,40 +176,40 @@ ms.locfileid: "65859004"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Autotask Workplace 的权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Autotask Workplace”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Autotask Workplace”。   
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Autotask Workplace”。
+2. 在应用程序列表中，选择“Autotask Workplace”  。
 
     ![应用程序列表中的“Autotask Workplace”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-autotask-workplace-test-user"></a>创建 Autotask Workplace 测试用户
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d2d41af8fa04b03ab8d18277d377f3700575cd1
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 37b7fe05f306f08d83de0832c5b1dd814f5560ed
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898154"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100544"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>教程：Azure Active Directory 与 Image Relay 集成
 
@@ -45,7 +45,7 @@ ms.locfileid: "65898154"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Image Relay支持 SP 发起的 SSO
+* Image Relay支持 SP 发起的 SSO 
 
 ## <a name="adding-image-relay-from-the-gallery"></a>从库中添加 Image Relay
 
@@ -53,25 +53,25 @@ ms.locfileid: "65898154"
 
 **若要从库添加 Image Relay，请按以下步骤操作：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 Image Relay，从结果窗格中选择 Image Relay，然后单击“添加”按钮以添加应用程序。
+4. 在搜索框中键入 Image Relay，从结果窗格中选择 Image Relay，然后单击“添加”按钮以添加应用程序    。
 
     ![结果列表中的 Image Relay](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Image Relay 的 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Image Relay 的 Azure AD 单一登录  。
 若要运行单一登录，需要在 Azure AD 用户与 Image Relay 中的相关用户之间建立链接关系。
 
 若要配置和测试 Image Relay 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -89,7 +89,7 @@ ms.locfileid: "65898154"
 
 若要配置 Image Relay 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 Image Relay 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 Image Relay 应用程序集成页上，选择“单一登录”   。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,26 +97,26 @@ ms.locfileid: "65898154"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![Image Relay 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.imagerelay.com/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.imagerelay.com/` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.imagerelay.com/sso/metadata`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.imagerelay.com/sso/metadata` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Image Relay 客户端支持团队](http://support.imagerelay.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Image Relay 客户端支持团队](http://support.imagerelay.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-4. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+4. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Image Relay”部分，根据要求复制相应的 URL。
+6. 在“设置 Image Relay”部分，根据要求复制相应的 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -130,47 +130,47 @@ ms.locfileid: "65898154"
 
 1. 在另一个浏览器窗口中，以管理员身份登录到 Image Relay 公司站点。
 
-2. 在顶部工具栏中，单击“用户和权限”工作负荷。
+2. 在顶部工具栏中，单击“用户和权限”  工作负荷。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
-3. 单击“创建新权限”。
+3. 单击“创建新权限”  。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
-4. 在“单一登录设置”工作负荷中，选中“此组只能通过单一登录进行登录”复选框，并单击“保存”。
+4. 在“单一登录设置”  工作负荷中，选中“此组只能通过单一登录进行登录”  复选框，并单击“保存”  。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
-5. 转到“帐户设置”。
+5. 转到“帐户设置”  。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
-6. 转到“单一登录设置”工作负荷。
+6. 转到“单一登录设置”  工作负荷。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
-7. 在“SAML 设置”对话框中，执行以下步骤：
+7. 在“SAML 设置”  对话框中，执行以下步骤：
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
 
-    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+    b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
 
-    c. 对于“名称 ID 格式”，选择“urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress”。
+    c. 对于“名称 ID 格式”  ，选择“urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress”  。
 
-    d. 对于“来自服务提供商(Image Relay)的请求的绑定选项”，选择“POST 绑定”。
+    d. 对于“来自服务提供商(Image Relay)的请求的绑定选项”  ，选择“POST 绑定”  。
 
-    e. 在“x.509 证书”下，单击“更新证书”。
+    e. 在“x.509 证书”下  ，单击“更新证书”  。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
-    f. 在记事本中打开下载的证书，复制其内容，然后将其粘贴到“x.509 证书”文本框中。
+    f. 在记事本中打开下载的证书，复制其内容，然后将其粘贴到“x.509 证书”文本框中  。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
-    g. 在“实时用户预配”部分中，选择“启用实时用户预配”。
+    g. 在“实时用户预配”  部分中，选择“启用实时用户预配”  。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
@@ -184,11 +184,11 @@ ms.locfileid: "65898154"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -196,40 +196,40 @@ ms.locfileid: "65898154"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Image Relay 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Image Relay”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Image Relay”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Image Relay”。
+2. 在应用程序列表中，选择“Image Relay”  。
 
     ![应用程序列表中的 Image Relay 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-image-relay-test-user"></a>创建 Image Relay 测试用户
 
@@ -239,15 +239,15 @@ ms.locfileid: "65898154"
 
 1. 以管理员身份登录 Image Relay 公司站点。
 
-2. 转到“用户和权限”，并选择“创建 SSO 用户”。
+2. 转到“用户和权限”  ，并选择“创建 SSO 用户”  。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
-3. 输入要预配的用户的“电子邮件”、“名字”、“姓氏”和“公司”，并选择只能通过单一登录进行登录的权限组（例如，SSO 基本）。
+3. 输入要预配的用户的“电子邮件”  、“名字”  、“姓氏”  和“公司”  ，并选择只能通过单一登录进行登录的权限组（例如，SSO 基本）。
 
     ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
-4. 单击“创建”。
+4. 单击“创建”。 
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

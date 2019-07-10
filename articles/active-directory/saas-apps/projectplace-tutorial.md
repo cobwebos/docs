@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aae6de49a3df3f1e648b99aa9936d6af85fc020f
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 179721075484c35c5ebbb3d936b83bc407b75a8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497287"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093528"
 ---
 # <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>教程：将 Projectplace 与 Azure Active Directory 集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "66497287"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `B. Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 

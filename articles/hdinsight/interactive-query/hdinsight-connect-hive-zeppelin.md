@@ -1,6 +1,6 @@
 ---
 title: 快速入门：在 Azure HDInsight 中执行 Apache Hive 查询 - Apache Zeppelin
-description: 了解如何使用 Apache Zeppelin 运行 Apache Hive 查询。
+description: 本快速入门介绍如何使用 Apache Zeppelin 运行 Apache Hive 查询。
 keywords: hdinsight,hadoop,hive,交互式查询,LLAP
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: f4b8495646e83005dc48e8a729a0e5987b832721
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1642c64b0b14c2e290aad689399b59d896660a28
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801043"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056698"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>快速入门：使用 Apache Zeppelin 在 Azure HDInsight 中执行 Apache Hive 查询
 
@@ -24,7 +24,7 @@ ms.locfileid: "65801043"
 
 ## <a name="prerequisites"></a>先决条件
 
-一个 HDInsight 交互式查询群集。 若要创建 HDInsight 群集，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。  请确保选择“交互式查询”群集类型。
+一个 HDInsight 交互式查询群集。 若要创建 HDInsight 群集，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。  请确保选择“交互式查询”群集类型。 
 
 ## <a name="create-an-apache-zeppelin-note"></a>创建 Apache Zeppelin 笔记
 
@@ -34,14 +34,14 @@ ms.locfileid: "65801043"
 
     ![HDInsight 交互式查询 zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
 
-3. 选择“创建新笔记”。
+3. 选择“创建新笔记”。 
 
-4. 在“创建新笔记”对话框中，键入或选择以下值：
+4. 在“创建新笔记”对话框中，键入或选择以下值： 
 
     - 笔记名称：输入笔记的名称。
-    - 默认解释器：从下拉列表中选择“jdbc”。
+    - 默认解释器：从下拉列表中选择“jdbc”。 
 
-5. 选择“创建笔记”。
+5. 选择“创建笔记”  。
 
 6. 在代码部分输入以下 Hive 查询，然后按 **Shift + Enter**：
 
@@ -83,12 +83,3 @@ ms.locfileid: "65801043"
 
 > [!div class="nextstepaction"]
 > [使用适用于 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
-
-## <a name="see-also"></a>另请参阅
-
-* [在 Azure HDInsight 中使用 Microsoft Power BI 直观显示 Apache Hive 数据](../hadoop/apache-hadoop-connect-hive-power-bi.md)。
-* [在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Apache Hive 数据](./apache-hadoop-connect-hive-power-bi-directquery.md)。
-* [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。
-* [使用 Power Query 将 Excel 连接到 Apache Hadoop](../hadoop/apache-hadoop-connect-excel-power-query.md)。
-* [使用用于 Visual Studio Code 的 Azure HDInsight 工具](../hdinsight-for-vscode.md)。
-* [将数据上传到 HDInsight](../hdinsight-upload-data.md)。

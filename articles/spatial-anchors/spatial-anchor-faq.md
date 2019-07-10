@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: cd004e1eb6a40648c52dd3b5aee0ec38bff8f9b3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 73979ec3bd1d667453a186ea1f20bbeddc12db8f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304199"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273312"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>有关 Azure 空间定位点的常见问题解答
 
@@ -78,7 +78,7 @@ Azure 空间定位点遵守 [Azure 服务协议条款](https://go.microsoft.com/
 公开上市 (GA) 日期即将宣布。
 
 **问：是否实施了任何限制？**
- 
+
 **答**：是的，我们实施了限制。  我们预计你不会在典型应用程序开发和测试中达到这些限制。 对于生产部署，我们已准备好支持客户的大规模要求。 请[联系我们](mailto:azuremrs@microsoft.com)以进行讨论。 在此预览版阶段，我们尚未发布分层和定价结构，但我们预计会很快发布。
 
 **问：Azure 空间定位点在哪些区域可用？**
@@ -125,3 +125,7 @@ Azure 空间定位点将 6DoF 跟踪器作为构造块，使你可以将真实�
 **问：它是否适用于 Xamarin？**
 
 **答:** 是的。 虽然我们不提供 Xamarin SDK，但是预计开发人员可以通过与 Azure 空间定位点 API 集成，在其 Xamarin 应用中使用 Azure 空间定位点。
+
+**问：Azure 空间定位点使用哪些端口和协议？**
+
+**答:** Azure 空间定位点使用加密协议通过 TCP 端口 443 进行通信。 对于身份验证，它使用 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)，后者使用 HTTPS 通过端口 443 进行通信。

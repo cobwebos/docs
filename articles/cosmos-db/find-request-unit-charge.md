@@ -4,14 +4,14 @@ description: 了解如何查找针对 Azure Cosmos 容器执行的任何操作�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 0671556a1ad049782090ffede509072adbac4c6a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 07ca6278da6dd1f50f017f389c2c1389a42196f4
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416037"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163839"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中查找请求单位费用
 
@@ -302,3 +302,4 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 * [全局缩放预配的吞吐量](scaling-throughput.md)
 * [在容器和数据库上预配吞吐量](set-throughput.md)
 * [为容器预配吞吐量](how-to-provision-container-throughput.md)
+* [使用 Azure Cosmos DB 中的指标进行监视和调试](use-metrics.md)

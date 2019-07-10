@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: afa539bc3369e4f9d9ecf27340436e0be70a03ad
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a8857d62b3078d78bdd0a339ebadf766ddb2fb43
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190554"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295824"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建自动化任务、流程和工作流 - Visual Studio
 
@@ -40,7 +40,7 @@ ms.locfileid: "65190554"
   本快速入门使用 Visual Studio Community 2017。
 
     > [!IMPORTANT]
-    > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。
+    > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。 
 
   * [用于 .NET 的 Microsoft Azure SDK（2.9.1 或更高版本）](https://azure.microsoft.com/downloads/)。 
   详细了解[用于 .NET 的 Azure SDK](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet)。
@@ -71,24 +71,24 @@ ms.locfileid: "65190554"
 
 1. 启动 Visual Studio。 使用 Azure 帐户登录。
 
-1. 在“文件”菜单中，选择“新建” > “项目”。 （键盘：Ctrl+Shift+N）
+1. 在“文件”  菜单中，选择“新建” > “项目”  。  （键盘：Ctrl+Shift+N）
 
    ![在“文件”菜单中，选择“新建”>“项目”。](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
-1. 在“已安装”下，选择“Visual C#”或“Visual Basic”。 选择“云” > “Azure 资源组”。 为项目命名，例如：
+1. 在“已安装”下，选择“Visual C#”或“Visual Basic”    。 选择“云”   >   “Azure 资源组”。 为项目命名，例如：
 
    ![创建 Azure 资源组项目](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
-   > 如果“云”或“Azure 资源组”未显示，请确保安装 Azure SDK for Visual Studio。
+   > 如果“云”或“Azure 资源组”未显示，请确保安装 Azure SDK for Visual Studio。  
 
    如果使用 Visual Studio 2019，请执行以下步骤：
 
-   1. 在“创建新项目”框中，选择适用于 Visual C# 或 Visual Basic 的“Azure 资源组”项目。 选择“下一步”。
+   1. 在“创建新项目”框中，选择适用于 Visual C# 或 Visual Basic 的“Azure 资源组”项目。   选择“下一步”。 
 
-   1. 提供要使用的 Azure 资源组的名称和其他项目信息。 选择“创建”。
+   1. 提供要使用的 Azure 资源组的名称和其他项目信息。 选择“创建”。 
 
-1. 在模板列表中，选择“逻辑应用”模板。 选择“确定”。
+1. 在模板列表中，选择“逻辑应用”模板。  选择“确定”。 
 
    ![选择逻辑应用模板](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
@@ -101,13 +101,16 @@ ms.locfileid: "65190554"
 
 在创建 Azure 资源组项目后，使用**空白逻辑应用**模板创建你的逻辑应用。
 
-1. 在解决方案资源管理器中，打开 **LogicApp.json** 文件的快捷菜单。 选择“使用逻辑应用设计器打开”。 （键盘：Ctrl+L）
+1. 在解决方案资源管理器中，打开 **LogicApp.json** 文件的快捷菜单。 选择“使用逻辑应用设计器打开”  。 （键盘：Ctrl+L）
 
    ![使用逻辑应用设计器打开 LogicApp.json 文件](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
+   > [!TIP]
+   > 如果你的 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 的最新更新。
+
    Visual Studio 会提示你提供用于为你的逻辑应用和连接创建并部署资源的 Azure 订阅和 Azure 资源组。
 
-1. 对于“订阅”，请选择你的 Azure 订阅。 对于“资源组”，请选择“新建”以创建新的 Azure 资源组。
+1. 对于“订阅”  ，请选择你的 Azure 订阅。 对于“资源组”  ，请选择“新建”  以创建新的 Azure 资源组。
 
    ![选择 Azure 订阅、资源组和资源位置](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
@@ -119,7 +122,7 @@ ms.locfileid: "65190554"
    | **位置** | MyLogicApp-RG2 <br> （美国西部） | 在不希望使用资源组位置的情况下可以使用的其他位置 |
    ||||
 
-1. 逻辑应用设计器会打开一个页面，其中显示了介绍视频和常用的触发器。 向下滚动，越过视频和触发器，找到“模板”，然后选择“空白逻辑应用”。
+1. 逻辑应用设计器会打开一个页面，其中显示了介绍视频和常用的触发器。 向下滚动，越过视频和触发器，找到“模板”  ，然后选择“空白逻辑应用”  。
 
    ![选择“空白逻辑应用”](./media/quickstart-create-logic-apps-with-visual-studio/choose-blank-logic-app-template.png)
 
@@ -127,7 +130,7 @@ ms.locfileid: "65190554"
 
 接下来，添加一个 RSS [触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)，该触发器在出现新的源项时触发。 每个逻辑应用都以触发器开头，该触发器在特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例来运行工作流。
 
-1. 在逻辑应用设计器的搜索框下，选择“全部”。
+1. 在逻辑应用设计器的搜索框下，选择“全部”  。
 在搜索框中输入“rss”。 从触发器列表中选择此触发器：**当有源项发布时 - RSS**
 
    ![通过添加触发器和操作来生成逻辑应用](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
@@ -142,19 +145,19 @@ ms.locfileid: "65190554"
 
 必须先将逻辑应用从 Visual Studio 部署到 Azure，然后才能运行并测试逻辑应用。
 
-1. 在解决方案资源管理器的项目快捷菜单中，选择“部署” > “新建”。 如果出现系统提示，请使用 Azure 帐户登录。
+1. 在解决方案资源管理器的项目快捷菜单中，选择“部署”   >   “新建”。 如果出现系统提示，请使用 Azure 帐户登录。
 
    ![创建逻辑应用部署](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
 
-1. 就此部署来说，请保留默认的 Azure 订阅、资源组和其他设置。 选择“部署”。
+1. 就此部署来说，请保留默认的 Azure 订阅、资源组和其他设置。 选择“部署”。 
 
    ![将逻辑应用部署到 Azure 资源组](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-deployment.png)
 
-1. 如果“编辑参数”框出现，请为你的逻辑应用提供一个资源名称。 保存设置。
+1. 如果“编辑参数”  框出现，请为你的逻辑应用提供一个资源名称。 保存设置。
 
    ![提供逻辑应用的部署名称](./media/quickstart-create-logic-apps-with-visual-studio/edit-parameters-deployment.png)
 
-   部署开始时，应用的部署状态显示在 Visual Studio 的“输出”窗口中。 如果状态不显示，请打开“显示输出来源”列表，然后选择 Azure 资源组。
+   部署开始时，应用的部署状态显示在 Visual Studio 的“输出”  窗口中。 如果状态不显示，请打开“显示输出来源”  列表，然后选择 Azure 资源组。
 
    ![部署状态输出](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
 
@@ -177,10 +180,10 @@ ms.locfileid: "65190554"
 
 1. 使用创建逻辑应用时所使用的帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 主菜单上选择“资源组”。
-选择你的逻辑应用的资源组，然后选择“概述”。
+1. 在 Azure 主菜单上选择“资源组”  。
+选择你的逻辑应用的资源组，然后选择“概述”  。
 
-1. 在“概述”页面上，选择“删除资源组”。 输入资源组名称作为确认，然后选择“删除”。
+1. 在“概述”  页面上，选择“删除资源组”。  输入资源组名称作为确认，然后选择“删除”。 
 
    ![“资源组”>“概览”>“删除资源组”](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
 

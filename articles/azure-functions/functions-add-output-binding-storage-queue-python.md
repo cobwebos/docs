@@ -11,16 +11,16 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: aaeee4238110faa7a842073af8431b30b885db3c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: c2565a5549cbca08b987883e5905f09070b5ab2c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870018"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443207"
 ---
-# <a name="add-an-azure-storage-queue-binding-to-your-function"></a>将 Azure 存储队列绑定添加到函数
+# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>将 Azure 存储队列绑定添加到 Python 函数
 
-无需编写自己的集成代码，即可使用 Azure Functions 将 Azure 服务和其他资源连接到函数。 这些绑定表示输入和输出，在函数定义中声明。 绑定中的数据作为参数提供给函数。 触发器是一种特殊类型的输入绑定。 尽管一个函数只有一个触发器，但它可以有多个输入和输出绑定。 有关详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
+无需编写自己的集成代码，即可使用 Azure Functions 将 Azure 服务和其他资源连接到函数。 这些绑定表示输入和输出，在函数定义中声明。  绑定中的数据作为参数提供给函数。 触发器是一种特殊类型的输入绑定。 尽管一个函数只有一个触发器，但它可以有多个输入和输出绑定。 有关详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
 
 本文介绍如何将[前一篇快速入门文章](functions-create-first-function-python.md)中创建的函数与 Azure 存储队列相集成。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到队列中的消息。 
 
@@ -32,7 +32,7 @@ ms.locfileid: "64870018"
 
 ## <a name="download-the-function-app-settings"></a>下载函数应用设置
 
-在前一篇快速入门文章中，你已在 Azure 中创建了一个函数应用，并创建了一个存储帐户。 此帐户的连接字符串安全存储在 Azure 中的应用设置内。 在本文中，你要将消息写入到同一帐户中的存储队列。 若要在本地运行函数时连接到该存储帐户，必须将应用设置下载到 local.settings.json 文件。 运行以下 Azure Functions Core Tools 命令，将设置下载到 local.settings.json（请将 `<APP_NAME>` 替换为前一篇文章中的函数应用名称）：
+在前一篇快速入门文章中，你已在 Azure 中创建了一个函数应用以及所需的存储帐户。 此帐户的连接字符串安全存储在 Azure 中的应用设置内。 在本文中，你要将消息写入到同一帐户中的存储队列。 若要在本地运行函数时连接到该存储帐户，必须将应用设置下载到 local.settings.json 文件。 运行以下 Azure Functions Core Tools 命令，将设置下载到 local.settings.json（请将 `<APP_NAME>` 替换为前一篇文章中的函数应用名称）：
 
 ```bash
 func azure functionapp fetch-app-settings <APP_NAME>
@@ -44,6 +44,12 @@ func azure functionapp fetch-app-settings <APP_NAME>
 > 由于 local.settings.json 文件包含机密，因此永远不会发布它，应将其从源代码管理中排除。
 
 需要 `AzureWebJobsStorage` 值，即存储帐户连接字符串。 你将使用此连接来验证输出绑定是否按预期方式工作。
+
+## <a name="enable-extension-bundles"></a>启用扩展捆绑包
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+现在，你可以将存储输出绑定添加到项目。
 
 ## <a name="add-an-output-binding"></a>添加输出绑定
 
@@ -117,8 +123,8 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
         return func.HttpResponse(f"Hello {name}!")
     else:
         return func.HttpResponse(
-             "Please pass a name on the query string or in the request body",
-             status_code=400
+            "Please pass a name on the query string or in the request body",
+            status_code=400
         )
 ```
 
@@ -133,7 +139,7 @@ func host start
 ```
 
 > [!NOTE]  
-> 由于前一篇文章已在 host.json 中启用扩展捆绑，因此在启动期间已下载并安装[存储绑定扩展](functions-bindings-storage-blob.md#packages---functions-2x)。
+> 由于前一篇文章已在 host.json 中启用扩展捆绑包，因此在启动期间已下载并安装[存储绑定扩展](functions-bindings-storage-blob.md#packages---functions-2x)以及其他 Microsoft 绑定扩展。
 
 从运行时输出中复制 `HttpTrigger` 函数的 URL，将其粘贴到浏览器的地址栏中。 将查询字符串 `?name=<yourname>` 追加到此 URL 并执行请求。 与在前一篇文章中一样，浏览器中应会显示相同的响应。
 

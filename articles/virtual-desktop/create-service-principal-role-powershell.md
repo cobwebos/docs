@@ -7,26 +7,26 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 1e53f76f564c0970ac1f291d2125807441500de6
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 44c823653ecbad1c4dd1fd35b676c8a6d8bd1620
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523317"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206659"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>教程：使用 PowerShell 创建服务主体和角色分配
+# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>教程：通过使用 PowerShell 创建服务主体和角色分配
 
-服务主体是可以在 Azure Active Directory 中创建的、用于根据具体目的分配角色和权限的标识。 在 Windows 虚拟桌面预览版中，可以创建服务主体来实现以下目的：
+服务主体是可以在 Azure Active Directory 中创建的、用于根据特定目的分配角色和权限的标识。 在 Windows 虚拟桌面预览版中，可以创建服务主体来实现以下目的：
 
-- 自动执行特定的 Windows 虚拟桌面管理任务
-- 运行任何 Windows 虚拟桌面 Azure 资源管理器模板时，将服务主体用作凭据，而无需让用户执行 MFA
+- 自动执行特定的 Windows 虚拟桌面管理任务。
+- 运行任何 Windows 虚拟桌面的 Azure 资源管理器模板时，将服务主体用作凭据，而无需让用户执行 MFA。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 在 Azure Active Directory 中创建服务主体
-> * 在 Windows 虚拟桌面中创建角色分配
-> * 使用服务主体登录到 Windows 虚拟桌面
+> * 在 Azure Active Directory 中创建服务主体。
+> * 在 Windows 虚拟桌面中创建角色分配。
+> * 使用服务主体登录到 Windows 虚拟桌面。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -72,18 +72,18 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincip
 
 ## <a name="sign-in-with-the-service-principal"></a>使用服务主体登录
 
-为服务主体创建角色分配后，现在应通过运行以下 cmdlet，确保该服务主体可以登录到 Windows 虚拟桌面：
+为服务主体创建角色分配后，请通过运行以下 cmdlet，确保该服务主体可以登录到 Windows 虚拟桌面：
 
 ```powershell
 $creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
 ```
 
-登录后，请使用该服务主体测试几个 Windows 虚拟桌面 PowerShell cmdlet，以确保一切正常。
+登录后，请使用该服务主体测试几个 Windows 虚拟桌面 PowerShell cmdlet，以确保一切正常工作。
 
 ## <a name="view-your-credentials-in-powershell"></a>在 PowerShell 中查看凭据
 
-在结束 PowerShell 会话之前，应查看凭据并将记下，以备将来参考。 请务必记下密码，因为一旦关闭此 PowerShell 会话，就无法检索密码。
+在结束 PowerShell 会话之前，请查看凭据并将其记下，以备将来参考。 请务必记下密码，因为关闭此 PowerShell 会话后，便无法检索密码。
 
 下面是应该记下的三个凭据，以及用于获取这些凭据的 cmdlet：
 

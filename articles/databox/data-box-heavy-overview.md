@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 06/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f71d9b4400041db50cb3e24940e922acde55edc
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991691"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271739"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>什么是 Azure Data Box Heavy？ （预览版）
 
@@ -62,14 +62,14 @@ Data Box Heavy 用于在几乎不影响网络的情况下将大量数据移到 A
 
 | 规范                                          | 说明              |
 |---------------------------------------------------------|--------------------------|
-| 重量                                                  | 约 500 磅。                |
+| 重量                                                  | 约 500 磅。 <br>用于运输的锁定轮上的装置|
 | 维度                                              | 宽度：26 英寸 高度：28 英寸 长度：48 英寸 |
 | 机架空间                                              | 无法进行机架安装|
-| 所需的电缆                                         | 提供 4 X 接地 120 V/10 A 电源线 (NEMA 5-15) <br> 设备支持最高 240 V 电源，提供 C-13 电源插座 <br> 使用兼容 [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) 的网络电缆  |
-|幂                                                    | 4 个内置电源 (PSU)，在两个设备节点之间共享|
+| 所需的电缆                                         | 包括 4 根接地的120 V/10 A 电源线 (NEMA 5-15) <br> 设备支持最高 240 V 电源，提供 C-13 电源插座 <br> 使用兼容 [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) 的网络电缆  |
+| 幂                                                    | 4 个内置电源 (PSU)，在两个设备节点之间共享 <br> 1,200 瓦特典型功耗|
 | 存储容量                                        | 约 1-PB（原始），每个包含 70 个 14 TB 的磁盘 <br> 770 TB 可用容量|
-|节点数                                          | 每个设备 2 个独立节点（每个 500 TB） |
-| 每个节点的网络接口数                             | 每个节点 4 个网络接口 <br> MGMT、DATA3 <ul><li> 2 X 1-GbE 接口 </li><li> MGMT 适用于管理，用户不可配置，用于初始设置 </li><li> DATA3 是允许用户进行配置的数据接口，默认为动态主机配置协议 (DHCP)</li><li>1-GbE 网络接口也可配置为 10-GbE 接口</li></ul>DATA1、DATA2 数据接口 <ul><li>2 X 40-GbE 接口 </li><li> 默认设置或静态设置为 DHCP，允许用户进行配置的数据接口</li>|
+| 节点数                                          | 每个设备 2 个独立节点（每个 500 TB） |
+| 每个节点的网络接口数                             | 每个节点 4 个网络接口 <br><br> MGMT、DATA3 <ul><li> 2 X 1-GbE 接口 </li><li> MGMT 用于管理和初始设置，用户不可配置 </li><li> 默认情况下，DATA3 是用户可配置的动态主机配置协议 (DHCP)</li><li>1-GbE 网络接口也可配置为 10-GbE 接口</li></ul>DATA1、DATA2 数据接口 <ul><li>2 X 40-GbE 接口 </li><li> 用户可配置为 DHCP（默认）或静态</li></ul>|
 
 
 ## <a name="components"></a>组件
@@ -117,7 +117,7 @@ Data Box Heavy 可以根据部署服务的区域、设备的发货国家/地区�
 
 Data Box Heavy 以预览版提供，需要进行注册。 按照以下步骤注册 Data Box Heavy：
 
-1. 登录到 Azure 门户： https://aka.ms/azuredatabox。
+1. 登录到 Azure 门户： https://aka.ms/azuredatabox 。
 2. 单击“+ 创建资源”，创建新的资源  。 搜索“Azure Data Box”  。 选择“Azure Data Box”服务  。
 
     <!--![The Data Box Heavy sign up 1]()-->

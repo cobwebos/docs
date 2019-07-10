@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: bidishac
-ms.openlocfilehash: 83149a8422db25106a97b1711c0ae9ce3c6603eb
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: f2cf65f9ee920b50af6242cee6b53cd07e53f0bc
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465667"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467024"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>快速入门：使用语音 SDK 创建语音优先虚拟助手 (Java)
 
@@ -30,14 +30,11 @@ ms.locfileid: "65465667"
 * 操作系统：Windows（64 位）、Ubuntu Linux 16.04/18.04（64 位）或 MacOS 10.13 或更高版本
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
+* 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或在 [Azure 门户](https://portal.azure.com)上创建它。
 * 使用 Bot Framework 4.2 或更高版本创建的且预先配置的机器人。 该机器人需要订阅新的“Direct Line 语音”通道，以接收语音输入。
 
     > [!NOTE]
-    > 在预览版中，Direct Line 语音通道目前仅支持 **westus2** 区域。
-
-    > [!NOTE]
-    > [免费试用语音服务](get-started.md)中所述的适用于标准定价层的 30 天试用版仅限 **westus**（不是 **westus2**）区域，因此与 Direct Line 语音不兼容。 免费和标准层 **westus2** 订阅与此兼容。
+    > Direct Line 语音（预览版）目前在一部分语音服务区域中可用。 请参阅[语音优先虚拟助手支持的区域列表](regions.md#Voice-first virtual assistants)，并确保你的资源部署在其中一个区域中。
 
 如果运行 Ubuntu 16.04/18.04，请确保在启动 Eclipse 之前安装这些依赖项：
 
@@ -69,9 +66,9 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 
 ## <a name="add-sample-code"></a>添加示例代码
 
-1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。
+1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。   
 
-1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。
+1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。   
 
    ![“新建 Java 类”窗口的屏幕截图](media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -82,8 +79,8 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 
     import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
     import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
-    import com.microsoft.cognitiveservices.speech.dialog.BotConnectorConfig;
-    import com.microsoft.cognitiveservices.speech.dialog.SpeechBotConnector;
+    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConfig;
+    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConnector;
     import org.slf4j.Logger;
     import org.slf4j.LoggerFactory;
 
@@ -142,62 +139,59 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
     }
     ```
 
-1. 在 **main** 方法中，首先配置 `BotConnectorConfig` 并使用它来创建 `SpeechBotConnector` 实例。 这会连接到 Direct Line 语音通道以便与机器人交互。 `AudioConfig` 实例还用于指定音频输入的源。 在此示例中，对 `AudioConfig.fromDefaultMicrophoneInput()` 使用了默认麦克风。
+1. 在 **main** 方法中，首先配置 `DialogServiceConfig` 并使用它来创建 `DialogServiceConnector` 实例。 这会连接到 Direct Line 语音通道以便与机器人交互。 `AudioConfig` 实例还用于指定音频输入的源。 在此示例中，对 `AudioConfig.fromDefaultMicrophoneInput()` 使用了默认麦克风。
 
     * 将字符串 `YourSubscriptionKey` 替换为可从[此处](get-started.md)获取的订阅密钥。
     * 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)。
     * 将字符串 `YourChannelSecret` 替换为 Direct Line 语音通道机密。
 
     > [!NOTE]
-    > 在预览版中，Direct Line 语音通道目前仅支持 **westus2** 区域。
-
-    > [!NOTE]
-    > [免费试用语音服务](get-started.md)中所述的适用于标准定价层的 30 天试用版仅限 **westus**（不是 **westus2**）区域，因此与 Direct Line 语音不兼容。 免费和标准层 **westus2** 订阅与此兼容。
+    > Direct Line 语音（预览版）目前在一部分语音服务区域中可用。 请参阅[语音优先虚拟助手支持的区域列表](regions.md#voice-first-virtual-assistants)，并确保你的资源部署在其中一个区域中。
 
     ```java
     final String channelSecret = "YourChannelSecret"; // Your channel secret
-    final String subscriptionKey = "YourSubscriptionKey"; // your subscription key
-    final String region = "YourServiceRegion"; // Your service region. Currently assumed to be westus2
-    final BotConnectorConfig botConnectorConfig = BotConnectorConfig.fromSecretKey(channelSecret, subscriptionKey, region);
+    final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
+    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: only a subset of regions are currently supported
+    final DialogServiceConfig botConfig = DialogServiceConfig.fromBotSecret(channelSecret, subscriptionKey, region);
 
     // Configure audio input from microphone.
     final AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 
-    // Create a SpeechjBotConnector instance
-    final SpeechBotConnector botConnector = new SpeechBotConnector(botConnectorConfig, audioConfig);
+    // Create a DialogServiceConnector instance
+    final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
     ```
 
-1. `SpeechBotConnector` 依赖于多个事件来传达其机器人活动、语音识别结果和其他信息。 接下来请添加这些事件侦听器。
+1. `DialogServiceConnector` 依赖于多个事件来传达其机器人活动、语音识别结果和其他信息。 接下来请添加这些事件侦听器。
 
     ```java
     // Recognizing will provide the intermediate recognized text while an audio stream is being processed
-    botConnector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
+    connector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognizing speech event text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
     // Recognized will provide the final recognized text once audio capture is completed
-    botConnector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
+    connector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognized speech event reason text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
     // SessionStarted will notify when audio begins flowing to the service for a turn
-    botConnector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
+    connector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
         log.info("Session Started event id: {} ", sessionEventArgs.getSessionId());
     });
 
     // SessionStopped will notify when a turn is complete and it's safe to begin listening again
-    botConnector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
+    connector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
         log.info("Session stopped event id: {}", sessionEventArgs.getSessionId());
     });
 
     // Canceled will be signaled when a turn is aborted or experiences an error condition
-    botConnector.canceled.addEventListener((o, canceledEventArgs) -> {
+    connector.canceled.addEventListener((o, canceledEventArgs) -> {
         log.info("Canceled event details: {}", canceledEventArgs.getErrorDetails());
-        botConnector.disconnectAsync();
+        connector.disconnectAsync();
     });
 
     // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities.
-    botConnector.activityReceived.addEventListener((o, activityEventArgs) -> {
+    connector.activityReceived.addEventListener((o, activityEventArgs) -> {
         final String act = activityEventArgs.getActivity().serialize();
             log.info("Received activity {} audio", activityEventArgs.hasAudio() ? "with" : "without");
             if (activityEventArgs.hasAudio()) {
@@ -206,22 +200,22 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
         });
     ```
 
-1. 调用 `connectAsync()` 方法将 `SpeechBotConnector` 连接到 Direct Line 语音。 若要测试机器人，可以调用 `listenOnceAsync` 方法以从麦克风发送音频输入。 此外，还可以使用 `sendActivityAsync` 方法以序列化字符串的形式发送自定义活动。 这些自定义活动可以提供机器人在聊天中使用的其他数据。
+1. 调用 `connectAsync()` 方法将 `DialogServiceConnector` 连接到 Direct Line 语音。 若要测试机器人，可以调用 `listenOnceAsync` 方法以从麦克风发送音频输入。 此外，还可以使用 `sendActivityAsync` 方法以序列化字符串的形式发送自定义活动。 这些自定义活动可以提供机器人在聊天中使用的其他数据。
 
     ```java
-    botConnector.connectAsync();
+    connector.connectAsync();
     // Start listening.
     System.out.println("Say something ...");
-    botConnector.listenOnceAsync();
+    connector.listenOnceAsync();
 
-    // botConnector.sendActivityAsync(...)
+    // connector.sendActivityAsync(...)
     ```
 
 1. 保存对 `Main` 文件的更改。
 
-1. 为支持响应播放，你将添加一个额外的类，该类用于将从 getAudio() API 返回的 PullAudioOutputStream 对象转换为一个 java InputStream 以方便处理。 此 ActivityAudioStream 是一个专用类，用于处理来自“Direct Line 语音通道”的音频响应。 它将提供访问器来提取处理播放所需的音频格式信息：为此，请选择“文件” > “新建” > “类”。
+1. 为支持响应播放，你将添加一个额外的类，该类用于将从 getAudio() API 返回的 PullAudioOutputStream 对象转换为一个 java InputStream 以方便处理。 此 ActivityAudioStream 是一个专用类，用于处理来自“Direct Line 语音通道”的音频响应。 它将提供访问器来提取处理播放所需的音频格式信息：为此，请选择“文件” > “新建” > “类”。   
 
-1. 在“新建 Java 类”窗口中，在“包”字段中输入 **speechsdk.quickstart**，在“名称”字段中输入 **ActivityAudioStream**。
+1. 在“新建 Java 类”窗口中，在“包”字段中输入 **speechsdk.quickstart**，在“名称”字段中输入 **ActivityAudioStream**。   
 
 1. 打开新建的 **ActivityAudioStream** 类并替换为下面提供的代码。
 
@@ -469,7 +463,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-按 F11，或选择“运行” > “调试”。
+按 F11，或选择“运行” > “调试”。  
 控制台会显示消息“请讲话”。此时，请讲出机器人理解的英语短语或句子。 你的语音将通过 Direct Line 语音通道传送到机器人，机器人将识别并处理你的语言，然后返回活动形式的响应。 如果机器人返回了语音作为响应，则会使用 `AudioPlayer` 类播放音频。
 
 ![成功识别后的控制台输出的屏幕截图](media/sdk/qs-java-jre-08-console-output.png)
@@ -479,10 +473,12 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 GitHub 上提供了其他示例，例如如何从音频文件中读取语音。
 
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的 Java 示例](https://aka.ms/csspeech/samples)
+> [创建和部署基本机器人](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>另请参阅
 
-- [快速入门：翻译语音，Java（Windows、Linux）](quickstart-translate-speech-java-jre.md)
-- [自定义声学模型](how-to-customize-acoustic-models.md)
-- [自定义语言模型](how-to-customize-language-model.md)
+- [关于语音优先虚拟助手](voice-first-virtual-assistants.md)
+- [免费获取语音服务订阅密钥](get-started.md)
+- [自定义唤醒词](speech-devices-sdk-create-kws.md)
+- [将 Direct Line 语音连接到机器人](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [浏览 GitHub 上的 Java 示例](https://aka.ms/csspeech/samples)

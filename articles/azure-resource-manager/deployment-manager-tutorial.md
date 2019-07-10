@@ -4,25 +4,22 @@ description: 配合使用资源管理器模板与 Azure 部署管理器来部署
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: aa58d0405176a63ff9d1cc25b572f3f3754dbbdc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a42ccb1c0e60f5bf1568ccea13392186577f2875
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238852"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205718"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>教程：将 Azure 部署管理器与资源管理器模板配合使用（公共预览版）
 
-了解如何使用 [Azure 部署管理器](./deployment-manager-overview.md)跨多个区域部署应用程序。 若要使用部署管理器，需要创建两个模板：
+了解如何使用 [Azure 部署管理器](./deployment-manager-overview.md)跨多个区域部署应用程序。 如果你喜欢更快的方法，[Azure 部署管理器快速入门](https://github.com/Azure-Samples/adm-quickstart)将在订阅中创建所需的配置，并自定义项目，以便跨多个区域部署应用程序。 该快速入门执行与本教程中相同的任务。
+
+若要使用部署管理器，需要创建两个模板：
 
 * **拓扑模板**：描述构成应用程序的 Azure 资源以及这些资源的部署位置。
 * **实施模板**：描述部署应用程序时要执行的步骤。
@@ -44,7 +41,10 @@ ms.locfileid: "66238852"
 > * 部署较新的版本
 > * 清理资源
 
-可以在[此处](https://docs.microsoft.com/rest/api/deploymentmanager/)找到 Azure 部署管理器 REST API 参考。
+其他资源：
+
+* [Azure 部署管理器 REST API 参考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+* [教程：在 Azure 部署管理器中使用运行状况检查](./deployment-manager-tutorial-health-check.md)。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -130,7 +130,7 @@ ms.locfileid: "66238852"
     </html>
     ```
 
-    html 显示位置和版本信息。 1.0.0.1 文件夹中的二进制文件显示“Version 1.0.0.1”。 部署服务后，可以浏览到这些页面。
+    html 显示位置和版本信息。 1\.0.0.1 文件夹中的二进制文件显示“Version 1.0.0.1”。 部署服务后，可以浏览到这些页面。
 5. 签出其他项目文件。 这有助于更好地了解方案。
 
 模板项目由服务拓扑模板使用，二进制项目由实施模板使用。 拓扑模板和实施模板都定义一个项目源 Azure 资源，该资源用于将资源管理器指向部署中使用的模板和二进制项目。 为了简化本教程，将使用一个存储帐户来存储模板项目和二进制项目。 这两个项目源指向同一个存储帐户。

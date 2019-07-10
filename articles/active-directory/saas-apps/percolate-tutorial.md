@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 83027e9fbc1826de727f123afe4507c2858c49ff
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560568"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094602"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>教程：Azure Active Directory 与 Percolate 的集成
 
@@ -196,7 +196,7 @@ ms.locfileid: "65560568"
 
 5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。   
 
-6. 如果希望在 SAML 断言中使用角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。  单击屏幕底部的“选择”按钮。 
+6. 如果希望在 SAML 断言中使用角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。  单击屏幕底部的“选择”按钮  。
 
 7. 在“添加分配”对话框中选择“分配”。  
 
@@ -216,7 +216,7 @@ ms.locfileid: "65560568"
 
     ![“创建用户”页](./media/percolate-tutorial/configure04.png)
 
-    1. 在“电子邮件”  框中，输入用户的电子邮件地址。 例如，brittasimon@contoso.com。
+    1. 在“电子邮件”  框中，输入用户的电子邮件地址。 例如，brittasimon@contoso.com 。
 
     1. 在“全名”  框中，输入用户的姓名。 例如，Brittasimon  。
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: d7a0c29ad3386fcdf85292b6e2852842a971c076
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 6949824f598194456837544526223b823dcfc3e5
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56231903"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273348"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>快速入门：创建首个必应自定义搜索实例
 
@@ -33,20 +33,20 @@ ms.locfileid: "56231903"
 
 要创建必应自定义搜索实例：
 
-1. 在[必应自定义搜索门户](https://customsearch.ai)网页上单击“开始”，然后使用 Microsoft 帐户登录。
+1. 在[必应自定义搜索门户](https://customsearch.ai)网页上单击“开始”，然后使用 Microsoft 帐户登录。 
 
-2. 单击“新建实例”并输入描述性的名称。 随时可以更改实例的名称。
+2. 单击“新建实例”并输入描述性的名称。  随时可以更改实例的名称。
  
-3. 在“搜索体验”下的“活动”选项卡上，输入要纳入搜索范围的一个或多个网站的 URL。 
+3. 在“搜索体验”  下的“活动”  选项卡上，输入要纳入搜索范围的一个或多个网站的 URL。 
 
     > [!NOTE]
     > 必应自定义搜索实例只会返回已由必应编制索引的公共域和网页的结果。
 
 4. 可以在必应自定义搜索门户的右侧输入查询和检查搜索实例返回的搜索结果。 如果未返回任何结果，请尝试输入不同的 URL。  
 
-5. 单击“发布”将更改发布到生产环境，并更新实例的终结点。
+5. 单击“发布”将更改发布到生产环境，并更新实例的终结点。 
 
-6.  单击“生产”选项卡，在“终结点”下复制“自定义配置 ID”。 调用自定义搜索 API 时，需将此 ID 追加到调用中的 `customconfig=` 查询参数。
+6.  单击“终结点”  下的“生产”  选项卡，并复制**自定义配置 ID**。 调用自定义搜索 API 时，需将此 ID 追加到调用中的 `customconfig=` 查询参数。
 
 
 ## <a name="next-steps"></a>后续步骤

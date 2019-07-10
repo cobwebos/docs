@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf359f38bd7032b4de48a17b91ba1c10b165c91
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 3f034a206ca114b484bd29c72d8e53f9ae5aa498
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66807772"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103688"
 ---
 # <a name="tutorial-integrate-druva-with-azure-active-directory"></a>教程：将 Druva 与 Azure Active Directory 集成
 
@@ -155,7 +155,7 @@ ms.locfileid: "66807772"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `Britta Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
