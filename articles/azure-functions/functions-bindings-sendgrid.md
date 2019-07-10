@@ -255,14 +255,14 @@ public static void Run(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type || 必需 - 必须设置为 `sendGrid`。|
-|direction || 必需 - 必须设置为 `out`。|
+|**type** || 必需 - 必须设置为 `sendGrid`。|
+|**direction** || 必需 - 必须设置为 `out`。|
 |**name**|| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
 |**apiKey**|**ApiKey**| 包含 API 密钥的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsSendGridApiKey”。|
-|**to**|**收件人**| 收件人的电子邮件地址。 |
+|**to**|**To**| 收件人的电子邮件地址。 |
 |**from**|**From**| 发件人的电子邮件地址。 |
-|**subject**|**主题**| 电子邮件主题。 |
-|**text**|**文本**| 电子邮件内容。 |
+|**subject**|**Subject**| 电子邮件主题。 |
+|**text**|**Text**| 电子邮件内容。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
