@@ -155,7 +155,7 @@ ms.locfileid: "62097923"
 | set-max-intset-entries |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准版和高级版 |
 | zset-max-ziplist-entries |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准版和高级版 |
 | zset-max-ziplist-value |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准版和高级版 |
-| 数据库 |配置数据库的数目。 该属性只能在创建缓存时配置。 |标准版和高级版 |
+| databses |配置数据库的数目。 该属性只能在创建缓存时配置。 |标准版和高级版 |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>创建 Azure Redis 缓存
 可以使用 [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) cmdlet 创建新的 Azure Redis 缓存实例。
