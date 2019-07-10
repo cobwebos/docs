@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: overview
-ms.date: 05/02/2019
+ms.topic: conceptual
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 055d141cab8ece3fcb462573f6ed4d8941c19751
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 37d68a4d2b7658542ebcfdb5d22a10676a8e4d52
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064150"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603312"
 ---
 # <a name="speech-services-for-telephony-data"></a>用于处理电话数据的语音服务
 
@@ -36,7 +36,7 @@ ms.locfileid: "67064150"
 
 除了语音服务的功能方面，当应用到呼叫中心时，它们的主要用途是改善客户体验。 在此方面存在三个明确的应用领域：
 
-* 呼叫后分析，即，对通话录音进行批处理 
+* 呼叫后分析，即，对通话录音进行批处理
 * 在通话过程中，对音频信号进行实时的分析处理，以提取各种见解（最常见的用例是情绪分析）
 * 使用虚拟助手（机器人）推动客户与机器人之间的对话，以尝试在无需座席干预的情况下解决客户的问题，或者应用 AI 协议来为座席提供辅助。
 
@@ -44,9 +44,9 @@ ms.locfileid: "67064150"
 
 ## <a name="speech-analytics-technology-components"></a>语音分析技术组件
 
-无论应用领域是呼叫后处理还是实时处理，Azure 都能提供一组成熟的新潮技术来改善客户体验。 
+无论应用领域是呼叫后处理还是实时处理，Azure 都能提供一组成熟的新潮技术来改善客户体验。
 
-### <a name="speech-to-text-stt"></a>语音转文本 (STT) 
+### <a name="speech-to-text-stt"></a>语音转文本 (STT)
 
 在任何呼叫中心解决方案中，[语音转文本](speech-to-text.md)都是最受欢迎的功能。 由于许多下游分析流程都依赖于听录的文本，因此误字率 (WER) 至关重要。 呼叫中心听录的主要难题之一是呼叫中心普遍存在的噪音（例如，其他座席在幕后讲话）、各种不同的语言区域性和方言，以及低质量的实际电话信号。 WER 与针对给定区域性训练声音和语言模型的效果密切相关，因此，能够根据区域性自定义模型非常重要。 我们的最新 4.x 版统一模型是可以改善听录准确度和延迟的解决方案。 统一模型已使用数万小时的声音数据和几十亿段词法信息进行训练，是市场中可听录呼叫中心数据的最准确模型之一。
 
@@ -56,13 +56,13 @@ ms.locfileid: "67064150"
 ### <a name="silence-non-talk"></a>静默（无对话）
 在支持通话中，有 35% 的时间双方无对话也是常用的事。 出现无对话的情况包括：座席正在查阅以往与客户之间展开的案例历史记录、座席正在使用工具访问客户的桌面和执行功能、客户正在等待转接电话，等等。 衡量通话中出现静默的时间极其重要，因为在此类场景中，及时对重要客户灵敏做出回复以及何时可以出现静默都是有绩效分数的。
 
-### <a name="translation"></a>翻译
+### <a name="translation"></a>转换
 某些公司正在试验提供从外语支持呼叫翻译的听录内容，使交付经理能够了解其客户的全球体验。 我们的[翻译](translation.md)功能非常优秀。 我们可以将大量区域中的音频翻译成音频，或者将音频翻译成文本。
 
 ### <a name="text-to-speech"></a>文本到语音转换
-在实现可与客户交互的机器人时，[文本转语音](text-to-speech.md)是另一个重要的方面。 典型的流程是客户讲话、将客户的语音转录为文本、分析文本中的意向、基于识别的意向合成响应，然后向客户呈现一个资产，或者生成合成的语音响应。 当然，所有这些步骤必须快速完成 – 因此，这些系统的成功与否与延迟密切相关。 
+在实现可与客户交互的机器人时，[文本转语音](text-to-speech.md)是另一个重要的方面。 典型的流程是客户讲话、将客户的语音转录为文本、分析文本中的意向、基于识别的意向合成响应，然后向客户呈现一个资产，或者生成合成的语音响应。 当然，所有这些步骤必须快速完成 – 因此，这些系统的成功与否与延迟密切相关。
 
-考虑到涉及的[语音转文本](speech-to-text.md)、[LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)、[Bot Framework](https://dev.botframework.com/)、[文本转语音](text-to-speech.md)等各种技术，我们的端到端延迟非常低。 
+考虑到涉及的[语音转文本](speech-to-text.md)、[LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)、[Bot Framework](https://dev.botframework.com/)、[文本转语音](text-to-speech.md)等各种技术，我们的端到端延迟非常低。
 
 我们的新语音与人类语音没有区别。 我们的语音可让机器人获得独特的个性。
 
@@ -116,7 +116,7 @@ ms.locfileid: "67064150"
 
 Azure 语音服务能够很好地与内置模型配合工作，但是，你可能想要根据自己的产品或环境，进一步自定义和优化体验。 自定义选项的范围从声学模型优化，到专属于自有品牌的语音字体。 生成自定义模型后，可将其与实时或批量模式下的任何 Azure 语音服务配合使用。
 
-| 语音服务 | 模型 | 说明 |
+| 语音服务 | 模型 | 描述 |
 |----------------|-------|-------------|
 | 语音转文本 | [声学模型](how-to-customize-acoustic-models.md) | 为特定环境（例如汽车或工厂车间）中使用的应用程序、工具或设备创建自定义声学模型，每个模型具有特定的录制条件。 示例包括带有口音的讲话、特定的背景噪音，或使用特定的麦克风录制音频。 |
 | | [语言模型](how-to-customize-language-model.md) | 创建自定义语言模型来改善行业特定的词汇和语法的听录，例如医疗术语中或 IT 行话。 |

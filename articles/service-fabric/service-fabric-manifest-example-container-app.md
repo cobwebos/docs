@@ -351,7 +351,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
  有关详细信息，请参阅 [ContainerHost 元素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName 元素
-https://hub.docker.com 或 Azure 容器注册表上的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+[https://hub.docker.com](https://hub.docker.com ) 或 Azure 容器注册表上的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables 元素
 将环境变量传递给容器或 exe。  有关详细信息，请参阅 [EnvironmentVariables 元素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -395,7 +395,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
 有关详细信息，请参阅 [ContainerHost 元素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName 元素
-https://hub.docker.com 或 Azure 容器注册表上的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+[https://hub.docker.com](https://hub.docker.com ) 或 Azure 容器注册表上的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Commands 元素
 将以逗号分隔的命令列表传递给容器。 有关详细信息，请参阅 [Commands 元素](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
