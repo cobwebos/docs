@@ -167,9 +167,9 @@ MS_TableOperations
 | --- | --- |
 | id | Integer 64 |
 | itemId | String |
-| properties | 二进制数据 |
+| properties |Binary Data |
 | table | String |
-| tableKind | 16 位整数 |
+| tableKind | Integer 16 |
 
 
 MS_TableOperationErrors 
@@ -179,9 +179,9 @@ MS_TableOperationErrors
 | 特性 | Type |
 | --- | --- |
 | id |String |
-| operationId |64 位整数 |
-| properties |二进制数据 |
-| tableKind |16 位整数 |
+| operationId |Integer 64 |
+| properties |Binary Data |
+| tableKind |Integer 16 |
 
  **MS_TableConfig**
 
@@ -192,8 +192,8 @@ MS_TableOperationErrors
 | id |String |
 | key |String |
 | keyType |Integer 64 |
-| 表 |String |
-| value |字符串 |
+| table |String |
+| value |String |
 
 ### <a name="data-table"></a>数据表
 
