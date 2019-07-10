@@ -9,14 +9,15 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: a3c7de8f5e86df749ec3b6d9e73e6f6299e94faf
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f88cfb1d74897abddeaea6aaec9d7f7b1960be6e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592679"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704228"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>安装和运行表单识别器容器
+
 Azure 表单识别器应用机器学习技术从表单中识别和提取键值对和表。 它将值和表项与键值对相关联，然后输出包含原始文件中的关系的结构化数据。 
 
 若要降低复杂性并轻松地将自定义表单识别器模型集成到工作流自动化过程或其他应用程序中，可以使用简单的 REST API 来调用该模型。 只有五个窗体文档 （或一个空窗体和两个已填写的窗体） 是需要因此您可以快速、 准确地说，获得的结果，并且适用于特定内容。 而无需进行繁琐的手动干预，也不需要具备丰富的数据科学专业知识。 它不要求标记或标注数据。

@@ -10,24 +10,24 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: c3aaf7537d233b9652f10ee240ebbe4fc4ec995c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: d9f226213215f66b53eb1ef248fd47f7b6dfee5a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592765"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705381"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
 
 Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可用的 API 一样丰富的 API，并能够灵活地选择部署和托管随附 [Docker 容器](https://www.docker.com/what-container)的服务的位置。 目前已在 Azure 认知服务的子集中发布容器支持预览版，这些服务包括：
 
-* [异常情况检测程序](Anomaly-Detector/overview.md)
-* [计算机视觉](Computer-vision/Home.md)
-* [人脸](Face/Overview.md)
-* [表单识别器](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
-* [语言理解](LUIS/luis-container-howto.md) (LUIS)
-* [语音服务 API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
-* [文本分析](text-analytics/overview.md)
+* [异常情况检测程序][ad-containers]
+* [计算机视觉][cv-containers]
+* [人脸][fa-containers]
+* [表单识别器][fr-containers]
+* [语言理解 (LUIS)][lu-containers]
+* [语音服务 API][sp-containers]
+* [文本分析][ta-containers]
 
 <!--
 * [Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
@@ -48,23 +48,22 @@ Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可�
 - **可移植的体系结构**：支持创建可在 Azure、本地和边缘部署的可移植应用程序体系结构。 可直接将容器部署到 [Azure Kubernetes 服务](../aks/index.yml)、[Azure 容器实例](../container-instances/index.yml)，或部署到 [Azure Stack](/azure-stack/operator) 的 [Kubernetes](https://kubernetes.io/) 集群。 有关详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
 - **高吞吐量/低延迟**：通过使以物理方式运行的认知服务更深入了解其应用程序逻辑和数据，为客户提供缩放功能，以满足高吞吐量和低延迟扩展要求。 容器不限制每秒综合事务数 (TPS)，如果提供了必要的硬件资源，它还可进行纵向或横向扩展，来应对需求。 
 
-
 ## <a name="containers-in-azure-cognitive-services"></a>Azure 认知服务中的容器
 
 Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都包含 Azure 认知服务中的服务的功能子集：
 
 | 服务 | 支持的定价层 | 容器 | 描述 |
 |---------|----------|----------|-------------|
-|[异常检测器](https://go.microsoft.com/fwlink/?linkid=2083925&clcid=0x409) |F0、S0|**异常检测器** |通过异常检测器 API，可使用机器学习监视和检测时序数据中的异常。<br>[请求访问权限](https://aka.ms/adcontainer)|
-|[计算机视觉](Computer-vision/computer-vision-how-to-install-containers.md) |F0、S1|**识别文本** |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。<br/><br/>**重要提示：** 识别文本容器目前仅适用于英语。<br>[请求访问权限](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
-|[人脸](Face/face-how-to-install-containers.md) |F0、S0|**人脸** |检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。<br>[请求访问权限](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
-|[表单识别器](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) |F0、S0|**表单识别器** |表单理解应用机器学习技术从表单中识别和提取键值对和表。<br>[请求访问权限](https://aka.ms/FormRecognizerContainerRequestAccess)|
-|[LUIS](LUIS/luis-container-howto.md) |F0、S0|**LUIS**（[映像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)）|可将已训练或已发布的语言理解模型（也称为 LUIS 应用）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 [LUIS 门户](https://www.luis.ai)以提高应用的预测准确性。|
-|[语音服务 API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0、S0|**语音转文本** |将连续的实时语音转换为文本。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
-|[语音服务 API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0、S0|**文本转语音** |将文本转换为自然发音的语音。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
-|[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0、S|关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)）  |提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
-|[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)）  |针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 |
-|[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|情绪分析（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)）  |分析原始文本，获取正面或负面情绪的线索。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](./text-analytics/language-support.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 |
+|[异常检测器][ad-containers] |F0、S0|**异常检测器** |通过异常检测器 API，可使用机器学习监视和检测时序数据中的异常。<br>[请求访问权限](https://aka.ms/adcontainer)|
+|[计算机视觉][cv-containers] |F0、S1|**识别文本** |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。<br/><br/>**重要提示：** 识别文本容器目前仅适用于英语。<br>[请求访问权限](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[人脸][fa-containers] |F0、S0|**人脸** |检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。<br>[请求访问权限](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
+|[表单识别器][fr-containers] |F0、S0|**表单识别器** |表单理解应用机器学习技术从表单中识别和提取键值对和表。<br>[请求访问权限](https://aka.ms/FormRecognizerContainerRequestAccess)|
+|[LUIS][lu-containers] |F0、S0|**LUIS**（[映像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)）|可将已训练或已发布的语言理解模型（也称为 LUIS 应用）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 [LUIS 门户](https://www.luis.ai)以提高应用的预测准确性。|
+|[语音服务 API][sp-containers] |F0、S0|**语音转文本** |将连续的实时语音转换为文本。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
+|[语音服务 API][sp-containers] |F0、S0|**文本转语音** |将文本转换为自然发音的语音。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
+|[文本分析][ta-containers] |F0、S|关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)）  |提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
+|[文本分析][ta-containers]|F0、S|语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)）  |针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 |
+|[文本分析][ta-containers]|F0、S|情绪分析（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)）  |分析原始文本，获取正面或负面情绪的线索。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](./text-analytics/language-support.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -83,11 +82,13 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 
 > [!IMPORTANT]
 > 目前，必须完成注册过程来访问以下容器，在其中填写并提交调查表与你的公司，以及你想要实现容器的用例方面的问题。 要授予访问权限，并提供凭据，您可以从专用容器注册表托管的 Azure 容器注册表中提取容器映像。
-> * [异常情况 dectector](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
+> * [异常检测器](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
 > * [人脸](Face/face-how-to-install-containers.md)
 > * [表单识别器](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
 > * [识别文本](Computer-vision/computer-vision-how-to-install-containers.md)
 > * [语音转文本和文本到语音转换](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
+
+[!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -111,13 +112,22 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 
 安装和浏览 Azure 认知服务中的容器提供的功能：
 
-* [异常情况检测程序容器](Anomaly-Detector/anomaly-detector-container-howto.md)
-* [计算机视觉容器](Computer-vision/computer-vision-how-to-install-containers.md)
-* [人脸容器](Face/face-how-to-install-containers.md)
-* [表单识别器容器](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
-* [语言理解 (LUIS) 容器](LUIS/luis-container-howto.md)
-* [语音服务 API 容器](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
-* [文本分析容器](text-analytics/how-tos/text-analytics-how-to-install-containers.md)
+* [异常情况检测程序容器][ad-containers]
+* [计算机视觉容器][cv-containers]
+* [人脸容器][fa-containers]
+* [表单识别器容器][fr-containers]
+* [语言理解 (LUIS) 容器][lu-containers]
+* [语音服务 API 容器][sp-containers]
+* [文本分析容器][ta-containers]
 
 <!--* [Personalizer containers](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 -->
+
+
+[ad-containers]: anomaly-Detector/anomaly-detector-container-howto.md
+[cv-containers]: computer-vision/computer-vision-how-to-install-containers.md
+[fa-containers]: face/face-how-to-install-containers.md
+[fr-containers]: form-recognizer/form-recognizer-container-howto.md
+[lu-containers]: luis/luis-container-howto.md
+[sp-containers]: speech-service/speech-container-howto.md
+[ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md

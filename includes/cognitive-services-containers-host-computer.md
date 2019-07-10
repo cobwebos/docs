@@ -1,15 +1,15 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/22/2019
-ms.openlocfilehash: eda4395b46abdfdccb76c0960984b3f6d7614a48
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: HT
+ms.openlocfilehash: 5b464ed4eaf576bc77c2c1eda17ae68b598dc2a4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173228"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704210"
 ---
 主机是运行 Docker 容器且基于 x64 的计算机。 它可以是本地计算机或 Azure 中的 Docker 托管服务，例如：
 

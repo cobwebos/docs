@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: beb9818be05fbb9a9e9c958dccb2e375f7685bd0
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 84960e82e25f4b6cc59324f17ce46de7f9f7ac23
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272804"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704661"
 ---
 # <a name="install-and-run-face-containers"></a>安装并运行人脸容器
 
@@ -28,11 +28,11 @@ Azure 认知服务人脸检测的人脸在图像中的 docker 提供标准化的
 
 在使用人脸 API 容器之前，必须满足以下先决条件。
 
-|必选|目的|
+|需要|目的|
 |--|--|
 |Docker 引擎| 必须在上安装 Docker 引擎[主机计算机](#the-host-computer)。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 中，Docker 还必须配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 需要基本了解 Docker 概念，例如注册表、 存储库、 容器和容器映像。 您还需的基本知识`docker`命令。| 
-|Azure`Cognitive Services`资源 |若要使用容器，必须具有：<br><br>Azure 认知服务资源和关联的帐单密钥和计费的终结点 URI。 这两个值位于**概述**并**密钥**资源页。 它们需要启动该容器。 添加`face/v1.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示： <br><br>**{BILLING_KEY}** ：资源密钥<br><br>**{BILLING_ENDPOINT_URI}** ： 终结点的 URI 示例是 `https://westus.api.cognitive.microsoft.com/face/v1.0`|
+|Azure`Cognitive Services`资源 |若要使用容器，必须具有：<br><br>Azure 认知服务资源和关联的帐单密钥和计费的终结点 URI。 这两个值位于**概述**并**密钥**资源页。 它们需要启动该容器。 添加`face/v1.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示： <br><br>**{BILLING_KEY}** ：资源密钥<br><br>**{BILLING_ENDPOINT_URI}** ：`https://westus.api.cognitive.microsoft.com/face/v1.0` 是终结点 URI 示例|
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
@@ -41,7 +41,6 @@ Azure 认知服务人脸检测的人脸在图像中的 docker 提供标准化的
 ### <a name="the-host-computer"></a>主计算机
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
-
 
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
@@ -74,7 +73,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 ## <a name="use-the-container"></a>使用容器
 
-在容器上后[主机计算机](#the-host-computer)，使用以下过程来使用该容器。
+当容器位于[主计算机](#the-host-computer)上以后，请通过以下过程使用容器。
 
 1. [运行容器](#run-the-container-with-docker-run)必选计费设置。 提供 `docker run` 命令的多个[示例](./face-resource-container-config.md#example-docker-run-commands)。 
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。 

@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 02d63897cffa2ceca46b992e7d07b917dd73bc72
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 6207808efb9bee327afd2de21ffa59535acf4e55
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621568"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704795"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>项目噪声 Unreal 和 Wwise 集成
 本指南提供了现有的 Unreal 和 Wwise 游戏项目到项目噪声插件包的详细的集成步骤。 
@@ -26,7 +26,7 @@ ms.locfileid: "67621568"
 * [Unreal 的 Wwise 插件](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * 如果使用的 Wwise SDK 的直接集成而不使用 Wwise Unreal 插件，请查阅项目噪声 Unreal 插件并调整 Wwise API 调用。
 
-如果你想要用于音频引擎而不是 Wwise 项目噪声，请联系我们上[项目噪声论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)。 项目噪声 Unreal 插件可用于查询噪声数据，然后进行到引擎的 API 调用。
+如果你想要用于音频引擎而不是 Wwise 项目噪声上, 进行的增强功能请求[项目噪声论坛](https://github.com/microsoft/ProjectAcoustics/issues)。 项目噪声 Unreal 插件可用于查询噪声数据，然后进行到引擎的 API 调用。
 
 ## <a name="download-project-acoustics"></a>下载项目噪声
 如果你尚未下载[Unreal 项目噪声和 Wwise 插件包](https://www.microsoft.com/download/details.aspx?id=58090))。 
