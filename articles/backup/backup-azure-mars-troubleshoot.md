@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure 备份代理问题
-description: 排查 Azure 备份代理的安装和注册问题
+title: 排查 Azure 备份代理
+description: 安装和注册 Azure 备份代理进行故障排除
 services: backup
 author: saurabhsensharma
 manager: shivamg
@@ -8,36 +8,36 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: saurse
-ms.openlocfilehash: 2c2ed46ed6e4a5d6663387777d3425d18b50500e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 1c4c2ed6265bdb3c29986fb0b90c3d85d32aadca
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060216"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434012"
 ---
-# <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
+# <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排除 Microsoft Azure 恢复服务 (MARS) 代理的问题
 
-下面介绍如何解决在配置、注册、备份和还原期间出现的错误。
+本文介绍如何解决的错误可能会看到在配置、 注册、 备份、 期间和还原。
 
 ## <a name="basic-troubleshooting"></a>基本故障排除
 
-我们建议你执行以下验证，在开始操作之前进行故障排除 Microsoft Azure 恢复服务 (MARS) 代理：
+我们建议在开始解决 Microsoft Azure 恢复服务 (MARS) 代理之前检查以下：
 
-- [请确保是最新的 Microsoft Azure 恢复服务 (MARS) 代理](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [确保在 MARS 代理和 Azure 之间存在网络连接](https://aka.ms/AB-A4dp50)
-- 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 根据需要重启，然后重试此操作
-- [确保在暂存文件夹位置有 5-10% 的可用卷空间](https://aka.ms/AB-AA4dwtt)
-- [检查其他进程或防病毒软件是否正在干扰 Azure 备份](https://aka.ms/AB-AA4dwtk)
-- [计划的备份失败，但手动备份成功](https://aka.ms/ScheduledBackupFailManualWorks)
-- 确保 OS 有最新更新
-- [确保不受支持的驱动器，并具有不受支持的属性的文件从备份中排除](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
-- 请确保受保护系统上的系统时钟配置为正确时区  <br>
-- [确保服务器至少具有 .Net Framework 版本 4.5.2 和更高版本](https://www.microsoft.com/download/details.aspx?id=30653)<br>
-- 如果尝试**将服务器重新注册**到保管库，则请执行以下操作： <br>
-  - 确保在服务器上卸载代理并将其从门户中删除 <br>
-  - 使用的密码正是一开始用于注册服务器的 <br>
-- 如果脱机备份出现，请确保在开始脱机备份操作之前，源和副本计算机上安装 Azure PowerShell 版本 3.7.0
-- [Azure 虚拟机上运行备份代理时的考虑事项](https://aka.ms/AB-AA4dwtr)
+- [请确保是最新的 MARS 代理](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)。
+- [请确保具有 MARS 代理和 Azure 之间的网络连接](https://aka.ms/AB-A4dp50)。
+- 请确保 MARS 运行 （在服务控制台中）。 如果需要重新启动，然后重试该操作。
+- [请确保 5%到 10%可用卷空间中可用的暂存文件夹位置](https://aka.ms/AB-AA4dwtt)。
+- [检查是否另一个进程或防病毒软件正在干扰 Azure 备份](https://aka.ms/AB-AA4dwtk)。
+- 如果计划备份失败，但手动备份的工作原理，请参阅[不按照计划运行备份](https://aka.ms/ScheduledBackupFailManualWorks)。
+- 请确保您的操作系统具有最新的更新。
+- [确保不受支持的驱动器，并具有不受支持的属性的文件从备份中排除](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)。
+- 请确保受保护的系统上的时钟配置为正确的时区。
+- [确保.NET Framework 4.5.2 或更高版本安装在服务器上](https://www.microsoft.com/download/details.aspx?id=30653)。
+- 如果想要重新注册到保管库服务器：
+  - 请确保在服务器上卸载代理，并且它从门户中删除。
+  - 使用第一次用于注册服务器的相同通行短语。
+- 对于脱机备份，请确保在开始备份之前，源服务器和副本计算机上安装 Azure PowerShell 3.7.0。
+- 如果 Azure 虚拟机上运行备份代理，请参阅[这篇文章](https://aka.ms/AB-AA4dwtr)。
 
 ## <a name="invalid-vault-credentials-provided"></a>提供的保管库凭据无效
 
@@ -45,128 +45,129 @@ ms.locfileid: "67060216"
 
 | 原因 | 建议的操作 |
 | ---     | ---    |
-| **保管库凭据是无效** <br/> <br/> 保管库凭据文件可能已损坏或可能已过期 （即下载之前注册的时间超过 48 小时）| 从恢复服务保管库从 Azure 门户下载新的凭据 (请参阅*第 6 步*下[**下载 MARS 代理**](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent)部分)，并执行如下： <ul><li> 如果已安装并注册 Microsoft Azure 备份代理，然后打开 Microsoft Azure 备份代理 MMC 控制台，并选择**注册服务器**从操作窗格，可以向新下载完成注册凭据 <br/> <li> 如果新的安装失败，然后尝试重新安装使用新凭据</ul> **注意**：如果以前下载多个保管库凭据文件，在 48 小时内仅最新下载的文件是有效。 因此建议全新新保管库凭据文件下载。
-| **代理服务器/防火墙阻止<br/>或<br/>无 Internet 连接** <br/><br/> 如果您的计算机或代理服务器具有有限的 Internet 访问则而不列出所必需的 Url 注册将失败。| 若要解决此问题，请执行如下：<br/> <ul><li> 使用你的 IT 团队，以确保系统已建立 Internet 连接<li> 如果没有代理服务器，然后确保未选择代理选项，注册代理时，验证是否列出代理服务器设置步骤[此处](#verifying-proxy-settings-for-windows)<li> 如果您具有防火墙/代理服务器与网络团队以确保以下 Url 和 IP 实现工作具有访问权限<br/> <br> **URLs**<br> - *www.msftncsi.com* <br>-  *.Microsoft.com* <br> -  *.WindowsAzure.com* <br>-  *.microsoftonline.com* <br>-  *.windows.net* <br>IP 地址 <br> - *20.190.128.0/18* <br> - *40.126.0.0/18* <br/></ul></ul>请尝试重新注册后完成上述疑难解答步骤
-| **防病毒软件正在阻止** | 如果必须在服务器上安装的防病毒软件，然后添加需要排除规则的以下文件从防病毒软件扫描： <br/><ui> <li> *CBengine.exe* <li> *CSC.exe*<li> Scratch 文件夹的默认位置是*C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch* <li> 在 bin 文件夹*C:\Program Files\Microsoft Azure Recovery Services Agent\Bin*
+| **保管库凭据无效** <br/> <br/> 保管库的凭据文件可能已损坏或可能已过期。 （例如，它们可能已下载超过 48 小时之前注册的时间。）| 从 Azure 门户上的恢复服务保管库下载新的凭据。 (请参阅中的步骤 6[下载 MARS 代理](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent)部分。)然后执行以下步骤，根据需要： <ul><li> 如果你已安装并注册 MARS，打开 Microsoft Azure 备份代理 MMC 控制台，然后选择**注册服务器**中**操作**窗格来完成与新的注册凭据。 <br/> <li> 如果新安装将失败，请尝试重新安装使用新的凭据。</ul> **注意**：如果已经下载了多个保管库凭据文件，只有最新的文件的有效期为接下来的 48 小时。 我们建议您下载新的保管库凭据文件。
+| **代理服务器/防火墙阻止注册** <br/>或 <br/>**没有 internet 连接** <br/><br/> 如果您的计算机或代理服务器具有有限的 internet 连接，并且您不确保所必需的 Url 的访问，则注册将失败。| 执行以下步骤：<br/> <ul><li> 使用你的 IT 团队，以确保系统已建立 internet 连接。<li> 如果没有代理服务器，请确保注册代理时，不选择代理选项。 [检查你的代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你有防火墙/代理服务器，使用网络团队协作，确保这些 Url 和 IP 地址具有访问权限：<br/> <br> **URLs**<br> www.msftncsi.com <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>请尝试在完成上述故障排除步骤后再次注册。
+| **防病毒软件正在阻止注册** | 如果必须在服务器上安装的防病毒软件，将需要排除规则添加到这些文件和文件夹的防病毒扫描： <br/><ui> <li> CBengine.exe <li> CSC.exe<li> Scratch 文件夹中。 其默认位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <li> 位于 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin 的 bin 文件夹。
 
 ### <a name="additional-recommendations"></a>其他建议
-- 转到*c: / Windows/Temp*并检查是否存在超过 60,000 或 65,000 个扩展名为.tmp 的文件。 如果有，请删除这些文件
-- 确保计算机的日期和时间使用本地时区匹配
-- 请确保[以下](backup-configure-vault.md#verify-internet-access)站点添加到 IE 受信任的站点
+- 转到 C:/Windows/Temp，检查是否存在超过 60,000 或 65,000 个扩展名为 .tmp 的文件。 如果存在，请删除这些文件。
+- 确保计算机的日期和时间匹配的本地时区。
+- 请确保[这些站点](backup-configure-vault.md#verify-internet-access)添加到受信任网站 Internet Explorer 中。
 
 ### <a name="verifying-proxy-settings-for-windows"></a>验证 Windows 代理设置
 
-- 下载**psexec**从[此处](https://docs.microsoft.com/sysinternals/downloads/psexec)
-- 运行此`psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"`命令从提升的提示符：
-- 这将启动*Internet Explorer*窗口
-- 转到*工具* -> *Internet 选项* -> *连接* -> *LAN 设置*
-- 验证代理设置*系统*帐户
-- 如果未配置代理则提供了代理服务器详细信息，然后删除详细信息
--   如果配置代理和代理的详细信息不正确，则请确保*代理 IP*并*端口*详细信息的准确性
-- 关闭*Internet 资源管理器*
+1. 下载从 PsExec [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec)页。
+1. 运行`psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"`从提升的命令提示符。
+
+   此命令将打开 Internet Explorer。
+1. 转到**工具** > **Internet 选项** > **连接** > **LAN 设置**。
+1. 检查系统帐户的代理设置。
+1. 如果未配置代理则提供了代理服务器详细信息，请删除详细信息。
+1. 如果配置了代理和代理的详细信息不正确，请确保**代理 IP**并**端口**详细信息正确无误。
+1. 关闭 Internet Explorer。
 
 ## <a name="unable-to-download-vault-credential-file"></a>无法下载保管库凭据文件
 
-| 错误详细信息 | 建议的操作 |
+| 错误   | 建议的操作 |
 | ---     | ---    |
-|未能下载保管库凭据文件。 (ID:403) | <ul><li> 尝试使用其他浏览器下载保管库凭据，或执行以下步骤： <ul><li> 启动 IE，按 F12 键。 </li><li> 转到“网络”选项卡，清除 IE 缓存和 cookie  </li> <li> 刷新页面<br>（或者）</li></ul> <li> 检查订阅是否被禁用/已过期<br>（或者）</li> <li> 检查是否有任何防火墙规则阻止下载保管库凭据文件 <br>（或者）</li> <li> 确保未用完保管库的限额（每个保管库 50 台计算机）<br>（或者）</li>  <li> 确保用户具有下载保管库凭据所需的 Azure 备份权限并向保管库注册了服务器，请参阅[此文](backup-rbac-rs-vault.md)</li></ul> |
+|未能下载保管库凭据文件。 (ID:403) | <ul><li> 请尝试使用不同的浏览器，下载保管库凭据或执行以下步骤： <ul><li> 启动 Internet Explorer。 选择按 F12。 </li><li> 转到**网络**选项卡并清除缓存和 cookie。 </li> <li> 刷新页面。<br></li></ul> <li> 检查是否已禁用或已过期订阅。<br></li> <li> 检查任何防火墙规则是否阻止下载。 <br></li> <li> 请确保你未用完保管库 （每个保管库的 50 个机） 上的限制。<br></li>  <li> 请确保用户具有下载保管库凭据和服务器注册到保管库所需的 Azure 备份权限。 请参阅[使用基于角色的访问控制管理 Azure 备份恢复点](backup-rbac-rs-vault.md)。</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份
 
-| 错误详细信息 | 可能的原因 | 建议的操作 |
+| 错误  | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
-| **错误** <br /><ol><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。 *(ID:100050)请检查网络设置，并确保能够连接到 Internet*<li>*(407) 需要代理身份验证* |代理正在阻止连接。 |  <ul><li>启动“IE” > “设置” > “Internet 选项” > “安全” > “Internet”      。 然后选择“自定义级别”，并滚动直至看到“文件下载”部分。  选择“启用”  。<li>可能还需要将这些站点添加到 IE 的[受信任的站点](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins)中。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。<li> 如果你的计算机具有有限的 internet 访问权限，请确保代理在计算机上的防火墙设置允许这些[Url](backup-configure-vault.md#verify-internet-access)并[IP 地址](backup-configure-vault.md#verify-internet-access)。 <li>如果服务器中安装了防病毒软件，请从防病毒软件扫描中排除以下文件。 <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 服务器上安装的每个 .NET 版本都有一个 CSC.exe。 请排除受影响服务器上的所有 .NET Framework 版本绑定的 CSC.exe 文件。 <li>Scratch 文件夹或缓存位置。 <br>scratch 文件夹的默认位置或缓存位置路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <li>bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
-
+| <br /><ul><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。 (ID:100050) 检查网络设置，并确保你能够连接到 internet。<li>(407) 代理需要身份验证。 |代理正在阻止连接。 |  <ul><li>在 Internet Explorer 中，转到**工具** > **Internet 选项** > **安全** > **Internet**. 选择**自定义级别**向下滚动到**文件下载**部分。 选择“启用”  。<p>您可能还需要添加[Url 和 IP 地址](backup-configure-vault.md#verify-internet-access)到在 Internet Explorer 中受信任的站点。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。<li> 如果你的计算机具有有限的 internet 访问权限，请确保代理在计算机上的防火墙设置允许这些[Url 和 IP 地址](backup-configure-vault.md#verify-internet-access)。 <li>如果必须在服务器上安装的防病毒软件，请从防病毒扫描中排除这些文件： <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 没有为每个服务器上安装的.NET Framework 版本 CSC.exe。 排除受影响的服务器上所有版本的.NET Framework 的 CSC.exe 文件。 <li>Scratch 文件夹或缓存位置。 <br>Scratch 文件夹或缓存路径的默认位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。<li>位于 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin 的 bin 文件夹。
 
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>未能设置安全备份的加密密钥
 
-| 错误详细信息 | 可能的原因 | 建议的操作 |
+| 错误 | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
-| **错误** <br />未能设置安全备份的加密密钥。  激活未完全成功，但是加密通行短语已保存到以下文件中。 |<li>服务器已注册到另一个保管库。<li>在配置期间，通行短语已损坏。| 从该保管库中取消注册服务器，然后使用新通行短语重新注册。
+| <br />未能设置安全备份的加密密钥。 激活未完全成功，但加密密码已保存到以下文件。 |<li>服务器已注册到另一个保管库。<li>在配置期间，通行短语已损坏。| 服务器从保管库取消注册并使用新的通行短语重新注册它。
 
 ## <a name="the-activation-did-not-complete-successfully"></a>激活未成功完成
 
-| 错误详细信息 | 可能的原因 | 建议的操作 |
+| 错误  | 可能的原因 | 建议的操作 |
 |---------|---------|---------|
-|**错误** <br />*激活未成功完成。由于内部服务错误 [0x1FC07]，当前操作失败。稍后重试操作。如果该问题仍然存在，请联系 Microsoft 支持部门*     | <li> Scratch 文件夹位于空间不足的卷上。 <li> 已错误地将 Scratch 文件夹移到另一位置。 <li> 缺少 OnlineBackup.KEK 文件。         | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5-10% 的卷。 若要正确地移动缓存位置，请参阅[有关 Azure 备份代理的问题](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>scratch 文件夹的默认位置或缓存位置路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。         |
+|<br />激活未成功完成。 由于内部服务错误 [0x1FC07]，当前操作失败。 请过些时间后重试此操作。 如果问题仍然存在，请联系 Microsoft 支持部门。     | <li> Scratch 文件夹位于不具有足够的空间的卷上。 <li> Scratch 文件夹已被错误地移动。 <li> 缺少 OnlineBackup.KEK 文件。         | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移动到具有介于 5%到 10%的备份数据的总大小之间的可用空间的卷。 若要正确移动缓存位置，请参阅中的步骤[备份文件和文件夹有关的常见问题](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)。<li> 确保 OnlineBackup.KEK 文件存在。 <br>*Scratch 文件夹或缓存路径的默认位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>未正确配置加密通行短语
 
-| 错误详细信息 | 可能的原因 | 建议的操作 |
+| 错误  | 可能的原因 | 建议的操作 |
 |---------|---------|---------|
-|**错误** <br />错误 34506。  未在此计算机上正确配置存储的加密通行短语。    | <li> Scratch 文件夹位于空间不足的卷上。 <li> 已错误地将 Scratch 文件夹移到另一位置。 <li> 缺少 OnlineBackup.KEK 文件。        | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5-10% 的卷。 若要正确地移动缓存位置，请参阅[有关 Azure 备份代理的问题](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>scratch 文件夹的默认位置或缓存位置路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。          |
+| <br />错误 34506。 未正确配置此计算机上存储的加密密码。    | <li> Scratch 文件夹位于不具有足够的空间的卷上。 <li> Scratch 文件夹已被错误地移动。 <li> 缺少 OnlineBackup.KEK 文件。        | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移动到具有介于 5%到 10%的备份数据的总大小之间的可用空间的卷。 若要正确移动缓存位置，请参阅中的步骤[备份文件和文件夹有关的常见问题](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)。<li> 确保 OnlineBackup.KEK 文件存在。 <br>*Scratch 文件夹或缓存路径的默认位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。         |
 
 
-## <a name="backups-dont-run-according-to-the-schedule"></a>备份未按计划运行
-如果计划的备份未自动触发，而手动备份却能正常进行，请尝试以下操作：
+## <a name="backups-dont-run-according-to-schedule"></a>不按照计划运行备份
+如果计划的备份不会自动触发，但手动备份正常工作，请尝试以下操作：
 
-- 确保 Windows Server 备份计划与 Azure 文件和文件夹备份计划不冲突。
+- 请确保 Windows Server 备份计划不与 Azure 文件和文件夹备份计划冲突。
 
-- 请确保联机备份状态设置为**启用**。 若要验证状态执行如下：
+- 请确保联机备份状态设置为**启用**。 若要验证的状态，请执行以下步骤：
 
-  - 打开**任务计划程序**展开**Microsoft**，然后选择**联机备份**。
-  - 双击“Microsoft-OnlineBackup”，然后转到“触发器”选项卡。  
-  - 验证状态是否设置为**已启用**。 如果不可用，然后选择**编辑** > **已启用**复选框，然后单击**确定**。
+  1. 在任务计划程序中，展开**Microsoft** ，然后选择**联机备份**。
+  1. 双击**Microsoft onlinebackup**并转到**触发器**选项卡。
+  1. 检查状态是否设置为**已启用**。 如果不可用，则选择**编辑**，选择**已启用**，然后选择**确定**。
 
 - 确保选择用于运行任务的用户帐户为**系统**或**本地管理员组**在服务器上。 若要验证的用户帐户，请转到**常规**选项卡并选中**安全**选项。
 
-- 请确保在服务器上安装 PowerShell 3.0 或更高版本。 若要检查 PowerShell 版本，请运行以下命令，并确认 *Major* 版本号是等于或大于 3。
+- 请确保在服务器上安装 PowerShell 3.0 或更高版本。 若要检查的 PowerShell 版本，运行以下命令并确认`Major`的版本编号是 3 个或更高版本：
 
   `$PSVersionTable.PSVersion`
 
-- 请确保以下路径的一部分*PSMODULEPATH*环境变量
+- 请确保此路径的一部分`PSMODULEPATH`环境变量：
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- 如果 *LocalMachine* 的 PowerShell 执行策略设置为 restricted，则触发备份任务的 PowerShell cmdlet 可能失败。 在提升模式下，若要检查和设置执行策略为运行以下命令*Unrestricted*或*RemoteSigned*
+- 如果 PowerShell 执行策略为`LocalMachine`是设置为受限制，将触发备份任务的 PowerShell cmdlet 可能会失败。 在提升模式下检查，并将执行策略设置为运行以下命令`Unrestricted`或`RemoteSigned`:
 
   `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
 
   `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
 
-- 确保没有缺失或已损坏**PowerShell**模块**MSonlineBackup**。 如果有任何缺失或损坏的文件，若要解决此问题，请执行如下：
+- 请确保没有任何缺失或损坏 PowerShell 模块 MSOnlineBackup 文件。 如果有任何缺失或损坏的文件，执行以下步骤：
 
-  - 从任何计算机具有是否正常工作的 MARS 代理复制 MSOnlineBackup 文件夹从 *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* 路径。
-  - 中的有问题计算机的相同路径粘贴这 *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* 。
-  - 如果 **MSOnlineBackup** 文件夹已经存在于计算机中，粘贴或替换其内部的内容文件。
+  1. 从任何具有正常工作的 MARS 代理的计算机，将从 C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules 复制 MSOnlineBackup 文件夹。
+  1. 有问题的计算机上将粘贴复制的文件在相同的文件夹位置 (C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)。
+
+     如果在计算机上已存在 MSOnlineBackup 文件夹，将文件粘贴到其中或替换任何现有文件。
 
 
 > [!TIP]
-> 为确保一致地应用所做的更改，请在执行上述步骤后重新启动服务器。
+> 若要确保更改一致应用，可以执行上述步骤后重新启动服务器。
 
 
-## <a name="troubleshoot-restore-issues"></a>排查还原问题
+## <a name="troubleshoot-restore-problems"></a>还原的疑难解答
 
-即使等待几分钟，Azure 备份也可能不会成功装载恢复卷。 在此过程中，还可能出现错误消息。 若要开始正常恢复，请执行以下步骤：
+即使等待几分钟，Azure 备份也可能不会成功装载恢复卷。 和在过程中可能会收到错误消息。 若要开始正常恢复，请执行以下步骤：
 
-1.  取消正在进行的安装过程（如果它已运行了几分钟）。
+1.  如果它已运行几分钟内，取消的安装过程。
 
-2.  查看是否使用了最新版本的备份代理。 若要查看版本，请在 MARS 控制台的“操作”窗格中，选择“关于 Microsoft Azure 恢复服务代理”。   确认“版本号”等于或高于[此文](https://go.microsoft.com/fwlink/?linkid=229525)中所述的版本。  可在[此处](https://go.microsoft.com/fwLink/?LinkID=288905)下载最新版本。
+2.  检查您是否具有备份代理的最新版本。 若要查看版本中，在**操作**MARS 控制台中，选择窗格**有关 Microsoft Azure 恢复服务代理**。 确认“版本号”等于或高于[此文](https://go.microsoft.com/fwlink/?linkid=229525)中所述的版本。  选择此链接[下载最新版本](https://go.microsoft.com/fwLink/?LinkID=288905)。
 
-3.  转到“设备管理器” > “存储控制器”，并找到“Microsoft iSCSI 发起程序”    。 如果可以找到它，请直接转到步骤 7。
+3.  转到**设备管理器** > **存储控制器**并找到**Microsoft iSCSI 发起程序**。 如果你找到它，直接转到步骤 7。
 
-4.  如果找不到 Microsoft iSCSI 发起程序服务，请尝试在“设备管理器” > “存储控制器”下找到硬件 ID 为“ROOT\ISCSIPRT”的“未知设备”条目     。
+4.  如果找不到 Microsoft iSCSI 发起程序服务，尝试查找下的一个条目**设备管理器** > **存储控制器**名为**未知设备**使用硬件 ID **ROOT\ISCSIPRT**。
 
-5.  右键单击“未知设备”并选择“更新驱动程序软件”   。
+5.  右键单击**未知的设备**，然后选择**更新驱动程序软件**。
 
-6.  选择“自动搜索更新的驱动程序软件”选项，更新驱动程序  。 完成更新后，“未知设备”应更改为“Microsoft iSCSI 发起程序”，如下所示   。
+6.  选择“自动搜索更新的驱动程序软件”选项，更新驱动程序  。 此更新应更改**未知的设备**到**Microsoft iSCSI 发起程序**:
 
     ![Azure 备份设备管理器的屏幕截图，其中突出显示了“存储控制器”](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7.  转到“任务管理器” > “服务(本地)” > “Microsoft iSCSI 发起程序服务”    。
+7.  转到**任务管理器** > **服务 （本地）**  > **Microsoft iSCSI 发起程序服务**:
 
     ![Azure 备份任务管理器的屏幕截图，其中突出显示了“服务(本地)”](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 
-8.  重启 Microsoft iSCSI 发起程序服务。 为此，请右键单击该服务，选择“停止”，再次右键单击，然后选择“启动”。  
+8.  重启 Microsoft iSCSI 发起程序服务。 若要执行此操作，右键单击该服务，并选择**停止**。 然后再次右键单击并选择**启动**。
 
-9.  使用[**即时还原**](backup-instant-restore-capability.md)重试恢复。
+9.  使用[即时还原](backup-instant-restore-capability.md)重试恢复。
 
-如果恢复仍然失败，请重新启动服务器或客户端。 如果不想要重新启动，或者即使重新启动服务器，恢复也仍然失败，请尝试从另一台计算机恢复。 遵循[此文](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)中的步骤。
+如果恢复仍失败，重新启动服务器或客户端。 如果不想要重新启动，或者如果恢复仍失败即使重新启动服务器，请尝试[从另一台计算机恢复](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
-如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解[如何使用 Azure 备份代理备份 Windows Server](tutorial-backup-windows-server-to-azure.md)。
-* 如果需要还原备份，请参阅[将文件还原到 Windows 计算机](backup-azure-restore-windows-server.md)一文。
+* 获取有关详细信息[如何使用 Azure 备份代理备份 Windows Server](tutorial-backup-windows-server-to-azure.md)。
+* 如果需要还原的备份，请参阅[将文件还原到 Windows 计算机](backup-azure-restore-windows-server.md)。
