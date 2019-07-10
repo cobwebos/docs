@@ -167,7 +167,7 @@ MS_TableOperations
 | --- | --- |
 | id | Integer 64 |
 | itemId | String |
-| properties |Binary Data |
+| properties | Binary Data |
 | table | String |
 | tableKind | Integer 16 |
 
