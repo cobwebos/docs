@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: edjez
-ms.openlocfilehash: d758e8fc7952a414003746d39df9368f3274b08b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: HT
+ms.openlocfilehash: c44afc81a7ec9d05cdc04cc8bc46c77cd51ceaf8
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482057"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722528"
 ---
 # <a name="active-learning-and-learning-policies"></a>主动学习和学习策略 
 

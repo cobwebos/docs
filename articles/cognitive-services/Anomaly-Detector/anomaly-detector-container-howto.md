@@ -1,20 +1,21 @@
 ---
-title: 安装和运行容器的异常情况检测程序
+title: 如何安装和使用异常检测器 API 运行的容器
 titleSuffix: Azure Cognitive Services
 description: 使用异常检测器 API 的高级的算法来标识时序数据中的异常。
 services: cognitive-services
 author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 254173df33bdc82b7de87328a715954c1a6993d7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f84f1bab048630d6dd45085b3d082004d10bb6a8
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593115"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721705"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>安装和运行异常情况检测程序容器
 
@@ -29,11 +30,11 @@ ms.locfileid: "67593115"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 使用异常检测器容器之前，必须满足以下先决条件：
 
-|需要|目的|
+|必填|用途|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br>  在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
@@ -57,7 +58,7 @@ ms.locfileid: "67593115"
 
 下表描述的最低和推荐 CPU 内核和内存来分配为异常情况检测程序容器。
 
-| QPS （每秒查询） | 最小值 | 建议 |
+| QPS （每秒查询） | 最低要求 | 建议 |
 |-----------|---------|-------------|
 | 10 QPS | 4 核，1 GB 内存 | 8 核 2 GB 内存 |
 | 20 QPS | 8 核，2 GB 内存 | 16 核 4 GB 内存 |
@@ -97,7 +98,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-det
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 该命令使用以下参数：
 
-| 占位符 | 值 |
+| 占位符 | ReplTest1 |
 |-------------|-------|
 |{BILLING_KEY} | 此密钥用于启动此容器，并可在 Azure 门户的异常情况检测程序密钥页上。  |
 |{BILLING_ENDPOINT_URI} | 计费终结点 URI 值是可在 Azure 门户的异常情况检测程序概述页上。|
@@ -165,7 +166,7 @@ ApiKey={BILLING_KEY}
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果运行启用了输出[装入点](anomaly-detector-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。 
 
@@ -181,7 +182,7 @@ ApiKey={BILLING_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 在本文中，你学习概念以及用于下载、 安装和运行异常情况检测程序的容器的工作流。 综上所述：
 

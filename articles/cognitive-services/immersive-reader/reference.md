@@ -1,20 +1,21 @@
 ---
 title: 令人着迷的读取器 SDK 参考
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 令人着迷的读取器 SDK 的参考
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: c128608b3c4a8e1155c3ac962bcfd07f589fbf23
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 485e8626af4266492e02d4f9fbe4af486e10c082
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311784"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718390"
 ---
 # <a name="immersive-reader-sdk-reference"></a>令人着迷的读取器 SDK 参考
 
@@ -32,7 +33,7 @@ SDK 公开一个单一的函数， `ImmersiveReader.launchAsync(token, resourceN
 launchAsync(token: string, resourceName: string, content: Content, options?: Options): Promise<HTMLDivElement>;
 ```
 
-#### <a name="parameters"></a>parameters
+#### <a name="parameters"></a>Parameters
 
 | 名称 | 类型 | 描述 |
 | ---- | ---- |------------ |
@@ -45,7 +46,7 @@ launchAsync(token: string, resourceName: string, content: Content, options?: Opt
 
 返回`Promise<HTMLDivElement>`它解析沉浸式读取器加载时。 `Promise`解析为`div`元素的唯一子级是`iframe`元素，其中包含令人着迷的读取器页。
 
-#### <a name="exceptions"></a>例外
+#### <a name="exceptions"></a>Exceptions
 
 返回`Promise`将被拒绝，并[ `Error` ](#error)对象沉浸式读取器无法加载。 有关详细信息，请参阅[错误代码](#error-codes)。
 
@@ -86,7 +87,7 @@ launchAsync(token: string, resourceName: string, content: Content, options?: Opt
 }
 ```
 
-### <a name="error"></a>错误
+### <a name="error"></a>Error
 
 包含有关错误的信息。
 
@@ -135,5 +136,5 @@ launchAsync(token: string, resourceName: string, content: Content, options?: Opt
 
 ## <a name="next-steps"></a>后续步骤
 
-* 探索[沉浸式读取器在 GitHub 上的 SDK](https://github.com/Microsoft/immersive-reader-sdk)
+* 探索 [GitHub 上的沉浸式阅读器 SDK](https://github.com/Microsoft/immersive-reader-sdk)
 * [快速入门：创建 web 应用，它启动了令人着迷的读取器 (C#)](./quickstart.md)

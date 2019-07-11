@@ -1,38 +1,37 @@
 ---
 title: 使用 Kubernetes 部署
 titleSuffix: Azure Cognitive Services
-description: 使用 Kubernetes (K8s) 和 Helm 定义语音转文本和文本到语音转换的容器映像，我们将创建 Kubernetes 包。 此包将部署到 Kubernetes 群集的本地。
+description: 使用 Kubernetes 和 Helm 定义语音转文本和文本到语音转换的容器映像，我们将创建 Kubernetes 包。 此包将部署到 Kubernetes 群集的本地。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 7/10/2019
 ms.author: dapine
-ms.openlocfilehash: 1e3afc80abad5f5c1f9b4d57c52ca75449eeb755
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 33d9de956a6d43145fc68f4ec46b09b8e8bf0188
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711479"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786243"
 ---
 # <a name="use-kubernetes-on-premises"></a>使用 Kubernetes 部署
 
-使用 Kubernetes (K8s) 和 Helm 定义语音转文本和文本到语音转换的容器映像，我们将创建 Kubernetes 包。 此包将部署到 Kubernetes 群集的本地。 最后，我们将探讨如何测试已部署的服务和各种配置选项。
+使用 Kubernetes 和 Helm 定义语音转文本和文本到语音转换的容器映像，我们将创建 Kubernetes 包。 此包将部署到 Kubernetes 群集的本地。 最后，我们将探讨如何测试已部署的服务和各种配置选项。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-此过程要求必须在本地安装和运行多个工具。
+使用语音容器本地之前，必须满足以下先决条件：
 
-* 使用 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][free-azure-account]。
-* 安装[Azure CLI][azure-cli] (az)。
-* 安装[Kubernetes CLI][kubernetes-cli] (kubectl)。
-* 安装[Helm][helm-install]客户端、 Kubernetes 包管理器。
-    * 安装 Helm 服务器时， [Tiller][tiller-install]。
-* 具有适当定价层的 Azure 资源。 并非所有定价层使用这些容器映像：
-    * **语音**仅资源使用 F0 或标准定价层。
-    * 具有 S0 定价层的认知服务资源  。
+|需要|用途|
+|--|--|
+| Azure 帐户 | 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][free-azure-account]。 |
+| 容器注册表访问权限 | 为了使 Kubernetes 拉取到群集的 docker 映像，它将需要对容器注册表的访问。 你需要[请求对容器注册表][speech-preview-access]第一个。 |
+| Kubernetes CLI | [Kubernetes CLI][kubernetes-cli]需要从容器注册表管理共享的凭据。 Helm 是 Kubernetes 包管理器之前，也需要 Kubernetes。 |
+| Helm CLI | 作为的一部分[Helm CLI][helm-install] install, you'll also need to initialize Helm which will install [Tiller][tiller-install]。 |
+|语音资源 |若要使用这些容器，必须具有：<br><br>一个_语音_Azure 资源以获取对关联的帐单密钥和计费终结点 URI。 这两个值都出现在 Azure 门户**语音**概述和密钥页和是否需要启动该容器。<br><br>**{API_KEY}** ： 资源键<br><br>**{ENDPOINT_URI}** ： 终结点的 URI 示例是： `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>建议的主机计算机配置
 
@@ -43,19 +42,13 @@ ms.locfileid: "67711479"
 | **语音转文本** | 1,150 millicores 至少需要一个解码器。 如果`optimizedForAudioFile`启用，则需 1,950 millicores。 (默认： 两个解码器) | 需要的功能:2 GB<br>限制：4 GB |
 | **文本转语音** | 500 millicores 至少需要一个并发请求。 如果`optimizeForTurboMode`启用，则需 1,000 millicores。 (默认： 两个并发请求) | 需要的功能:1 GB<br> 限制：2 GB |
 
-## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
-
-提交[认知服务语音容器请求窗体][speech-preview-access]容器请求访问。 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
 ## <a name="connect-to-the-kubernetes-cluster"></a>连接到 Kubernetes 群集
 
 在主计算机都必须具有一个可用的 Kubernetes 群集。 查看此教程[部署 Kubernetes 群集](../../aks/tutorial-kubernetes-deploy-cluster.md)概念理解如何将 Kubernetes 群集部署到主机计算机。
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>与 Kubernetes 群集共享 Docker 凭据
 
-若要允许到 Kubernetes 群集`docker pull`从已配置的映像包`containerpreview.azurecr.io`容器注册表，你需要将 docker 凭据传输到群集。 执行[ `kubectl create` ][kubectl-create]以下命令以创建*docker 注册表机密*基于从容器提供的凭据[注册表访问](#request-access-to-the-container-registry)部分。
+若要允许到 Kubernetes 群集`docker pull`从已配置的映像包`containerpreview.azurecr.io`容器注册表，你需要将 docker 凭据传输到群集。 执行[ `kubectl create` ][kubectl-create]以下命令以创建*docker 注册表机密*基于从容器注册表访问系统必备组件提供的凭据。
 
 从所选的命令行界面，运行以下命令。 确保替换`<username>`， `<password>`，和`<email-address>`使用容器注册表凭据。
 

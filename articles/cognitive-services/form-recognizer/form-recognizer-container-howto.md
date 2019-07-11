@@ -1,5 +1,5 @@
 ---
-title: 安装和运行容器 - 表单识别器
+title: 如何安装和运行的容器窗体识别器
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用表单识别器容器来分析表单和表数据。
 author: IEvangelist
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: f88cfb1d74897abddeaea6aaec9d7f7b1960be6e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a251e97d671c4aad0aebb1d6c3349cdc09444308
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704228"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718485"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>安装和运行表单识别器容器
 
@@ -28,11 +28,11 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 使用表单识别器容器之前，必须满足以下先决条件：
 
-|需要|目的|
+|需要|用途|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念（例如注册表、存储库、容器和容器映像）有一个基本的理解，并了解基本的 `docker` 命令。|
@@ -56,7 +56,7 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 
 下表描述了为每个表单识别器容器分配的最小的和建议的 CPU 核心数和内存：
 
-| 容器 | 最小值 | 建议 |
+| 容器 | 最低要求 | 建议 |
 |-----------|---------|-------------|
 |cognitive-services-form-recognizer | 2 核心，4 GB 内存 | 4 核心，8 GB 内存 |
 
@@ -104,7 +104,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recogn
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 该命令使用以下参数：
 
-| 占位符 | 值 |
+| 占位符 | ReplTest1 |
 |-------------|-------|
 |{BILLING_KEY} | 此密钥用于启动容器。 可以从 Azure 门户的“表单识别器密钥”页获取它。   |
 |{BILLING_ENDPOINT_URI} | 可以从 Azure 门户的“表单识别器概览”页获取计费终结点 URI 值。 |
@@ -276,7 +276,7 @@ formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=form
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 运行该容器时，该容器将使用 **stdout** 和 **stderr** 来输出信息，这些信息有助于排查启动或运行容器时发生的问题。
 
@@ -292,7 +292,7 @@ formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=form
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文介绍了与下载、安装和运行表单识别器容器相关的概念与工作流。 综上所述：
 

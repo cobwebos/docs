@@ -1,5 +1,5 @@
 ---
-title: 强化学习 - 个性化体验创建服务
+title: 可伸缩性和性能-Personalizer
 titleSuffix: Azure Cognitive Services
 description: 对于高性能和高流量的网站和应用程序，个性化体验创建服务在可伸缩性和性能方面需要考虑两个主要因素：延迟和训练吞吐量。
 services: cognitive-services
@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: edjez
-ms.openlocfilehash: 242cc1b96c08cd79dc3e2ef5efbbe96a934b8ad3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 06c2e65c723e18acc515dd7effc61aae0564f411
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068299"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722414"
 ---
 # <a name="scalability-and-performance"></a>可伸缩性和性能
 

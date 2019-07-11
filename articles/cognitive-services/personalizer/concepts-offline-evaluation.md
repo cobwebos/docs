@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 29caea481b1999086440db2021b86d949ce6cbc6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: HT
+ms.openlocfilehash: 3fdedd1af9b683b221dfa4aebad7a30559b7abff
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025611"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722484"
 ---
 # <a name="offline-evaluation"></a>脱机评估
 
@@ -52,11 +52,11 @@ ms.locfileid: "65025611"
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>了解脱机评估结果的相关性
 
-运行脱机评估时，分析结果的置信边界极其重要。 如果边界较宽，则表示应用程序未收到足够的数据，因此无法进行精确或有意义的奖励评估。 随着系统累积的数据越来越多且运行脱机评估的时间越来越长，置信间隔会变得更窄。
+运行脱机评估时，分析结果的置信边界极其重要。  如果边界较宽，则表示应用程序未收到足够的数据，因此无法进行精确或有意义的奖励评估。 随着系统累积的数据越来越多且运行脱机评估的时间越来越长，置信间隔会变得更窄。
 
 ## <a name="how-offline-evaluations-are-done"></a>如何执行脱机评估
 
-脱机评估是使用一种称作“反事实评估”的方法执行的。 
+脱机评估是使用一种称作“反事实评估”的方法执行的。  
 
 个性化体验创建服务基于这种假设：用户行为（即奖励）无法以回溯方式预测（如果用户反映的事物不同于他们看到的事物，则个性化体验创建服务不知道发生了什么情况），而只能从测得的奖励中学习。 
 
@@ -91,7 +91,7 @@ ms.locfileid: "65025611"
 我们建议查看特征评估并提出以下问题：
 
 * 应用程序或系统可以连同更有效的特征线一起提供其他哪些附加特征？
-* 可以删除哪些低效的特征？ 低效特征会增大机器学习中的干扰。
+* 可以删除哪些低效的特征？ 低效特征会增大机器学习中的干扰。 
 * 是否意外包含了任何特征？ 示例包括：个人身份信息 (PII)、重复的 ID，等等。
 * 出于法规或负责使用方面的考量，是否不应使用任何不需要的特征进行个性化？ 是否有特征可以代理（即，紧密镜像或关联）不需要的特征？
 

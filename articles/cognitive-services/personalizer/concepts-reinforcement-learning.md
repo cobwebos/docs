@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: b65073c0646db0cd0c27a71005bb4f74b091ae09
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
-ms.translationtype: HT
+ms.openlocfilehash: 26f8348bc2de9cb56110c1cc7ce896934bb46ef7
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506882"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722454"
 ---
 # <a name="what-is-reinforcement-learning"></a>什么是强化学习？
 
@@ -31,7 +31,7 @@ ms.locfileid: "65506882"
 
 * 应用程序提供从备选项列表中显示一段内容的机会。
 * 应用程序提供有关每个备选项和用户上下文的信息。
-* 应用程序计算奖励评分。
+* 应用程序计算奖励评分。 
 
 与某些强化学习方法不同，个性化体验创建服务不需要模拟即可正常运行。 其学习算法旨对外界做出反应（而不是控制它），并使用理解功能从每个数据点学习信息，这是一种权衡创建时间与成本的独特机会，即使性能欠佳，也不会带来遗憾（可能奖励的丢失）。
 
@@ -39,7 +39,7 @@ ms.locfileid: "65506882"
 
 最新版本的个性化体验创建服务使用**上下文赌博机**，该强化学习方法限定为在给定上下文中的离散操作之间做出决策或选择。
 
-决策内存（在给定上下文后，训练的模型将捕获可能最佳的决策）使用一组线性模型。 这些方法反复展示了业务成果并且是经过证实的方法，一部分原因是它们可以极快地从真实世界中学习信息，而无需多次通过训练，另一部分原因是它们可为监督式学习模型和深度神经网络模型提供补充。
+决策内存（在给定上下文后，训练的模型将捕获可能最佳的决策）使用一组线性模型。  这些方法反复展示了业务成果并且是经过证实的方法，一部分原因是它们可以极快地从真实世界中学习信息，而无需多次通过训练，另一部分原因是它们可为监督式学习模型和深度神经网络模型提供补充。
 
 探索/利用流量分配是遵循针对探索设置的百分比随机发生的，用于探索的默认算法是 Epsilon-Greedy。
 
@@ -59,7 +59,7 @@ John 还曾经编写了几篇教程来阐述联合预测 (ICML 2015)、上下文
 
 个性化体验创建服务目前使用 [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) 作为机器学习的基础。 使用所有事件做出个性化排名和训练模型时，此框架可以实现最大的吞吐量和最低的延迟。
 
-## <a name="references"></a>参考
+## <a name="references"></a>参考资料
 
 * [Making Contextual Decisions with Low Technical Debt](https://arxiv.org/abs/1606.03966)（做出上下文决策并降低技术债务）
 * [A Reductions Approach to Fair Classification](https://arxiv.org/abs/1803.02453)（公平分类的化简方法）

@@ -1,5 +1,5 @@
 ---
-title: 配置容器 - 表单识别器
+title: 如何为窗体识别器配置容器
 titleSuffix: Azure Cognitive Services
 description: 了解如何将表单识别器容器配置为分析表单和表数据。
 author: IEvangelist
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: e4b6a852ece3060ecf866d66d32f213355d99950
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7752b09dd1bf20d796b19d03e62426b098486c39
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592666"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718453"
 ---
 # <a name="configure-form-recognizer-containers"></a>配置表单识别器容器
 
@@ -45,9 +45,9 @@ ms.locfileid: "67592666"
 
 可以在 Azure 门户的“表单识别器概览”的“终结点”下找到此设置。  
 
-|需要| Name | 数据类型 | 描述 |
+|必填| 名称 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
+|是| `Billing` | String | 账单终结点 URI<br><br>例如：<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -76,8 +76,8 @@ ms.locfileid: "67592666"
 
 |可选| 名称 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
-|需要| `Input` | String | 输入装入点的目标。 默认值为 `/input`。    <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
-|需要| `Output` | String | 输出装入点的目标。 默认值为 `/output`。  <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|必填| `Input` | String | 输入装入点的目标。 默认值为 `/input`。    <br><br>例如：<br>`--mount type=bind,src=c:\input,target=/input`|
+|必填| `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。  <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
@@ -88,7 +88,7 @@ ms.locfileid: "67592666"
 
 将下表中的 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | 值 |
+| 占位符 | ReplTest1 |
 |-------------|-------|
 |{BILLING_KEY} | 用于启动容器的密钥。 可以从 Azure 门户的“表单识别器密钥”页获取它。  |
 |{BILLING_ENDPOINT_URI} | 可以从 Azure 门户的“表单识别器概览”页获取计费终结点 URI 值。|

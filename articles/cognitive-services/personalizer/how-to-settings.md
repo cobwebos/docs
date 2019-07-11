@@ -1,5 +1,5 @@
 ---
-title: 配置设置
+title: 配置设置-Personalizer
 titleSuffix: Azure Cognitive Services
 description: 服务配置包括服务处理奖励的方式、服务的探索频率、重新训练模型的频率，以及存储的数据量。
 services: cognitive-services
@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 976830232453eee0993e64ac445c2e6a2f7e20ef
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: HT
+ms.openlocfilehash: 6f5028f093a9fd8c17928c2167039599d4db897c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478573"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722334"
 ---
 # <a name="personalizer-settings"></a>个性化体验创建服务设置
 
@@ -35,7 +35,7 @@ ms.locfileid: "66478573"
 1. 找到你的个性化体验创建服务资源。 
 1. 在“资源管理”部分选择“设置”。  
 
-    在离开 Azure 门户之前，请从“密钥”页复制某个资源密钥。  需要该密钥才能使用[个性化体验创建服务 SDK](https://go.microsoft.com/fwlink/?linkid=2092353)。
+    在离开 Azure 门户之前，请从“密钥”页复制某个资源密钥。  需要该密钥才能使用[个性化体验创建服务 SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer)。
 
 ### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>根据用例配置反馈循环的奖励设置
 
@@ -43,7 +43,7 @@ ms.locfileid: "66478573"
 
 ![配置反馈循环的奖励设置](media/settings/configure-model-reward-settings.png)
 
-|设置|目的|
+|设置|用途|
 |--|--|
 |奖励等待时间|设置个性化体验创建服务收集排名调用奖励值的时间长短，从发生排名调用的那一刻开始算起。 此值是通过提出以下问题设置的：“个性化体验创建服务要等待奖励调用多长时间？” 在此时间范围后抵达的任何奖励将被记录，但不用于学习。|
 |默认奖励|如果个性化体验创建服务在“奖励等待时间”范围内未收到与排名调用关联的奖励调用，则个性化体验创建服务会分配默认奖励。 默认情况下（并且是大多数情况下），默认奖励为零。|

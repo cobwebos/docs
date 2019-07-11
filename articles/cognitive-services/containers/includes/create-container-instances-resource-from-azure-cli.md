@@ -13,8 +13,8 @@ ms.openlocfilehash: 5e7a3d849f726ae4dbbd559d541464404e427775
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711732"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717070"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>从 Azure CLI 创建 Azure 容器实例资源
 

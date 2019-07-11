@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 05/06/2019
+ms.date: 06/25/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 8df9c2a5e45cf222debc733b3e051c3f707715c5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 7e7a1f119a2f2b0e60645cb776b26c124910cacb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603086"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448218"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>教程：退回 Azure Data Box Disk 并验证到 Azure 的数据上传
 
@@ -88,7 +88,7 @@ ms.locfileid: "65603086"
 
 ### <a name="pick-up-in-asia-pacific-region"></a>在亚太区域取件
 
-此区域会提供有关在日本、韩国和澳大利亚取件的说明。
+此区域会提供有关在日本、韩国、澳大利亚和新加坡取件的说明。
 
 #### <a name="pick-up-in-australia"></a>在澳大利亚取件
 
@@ -103,43 +103,64 @@ ms.locfileid: "65603086"
 
 #### <a name="pick-up-in-japan"></a>在日本取件
 
-1. 请务必包含 Japan Post Chakubarai 的退货单。
-2. 在退货单上填写公司名称和地址信息作为发货人信息。
-3. 拨打日本邮政取件请求号码 0800-0800-111（免费电话）。 拨打取件地址的 7 位数邮政编码，然后前往最近的邮局寄件。
-    - 取件时间由相应的邮局决定。
-    - 告知由 Japan Post Chakubarai Yu-Pack 发货。
-    - 使用随附的 Chakubarai 退货单。
-4. 如果未随附 Japan Post Chakubarai 退货单，请通过 `Customerservice.JP@quantiumsolutions.com` 向 *Quantium Solutions* 发送电子邮件。 *Quantium Solutions* 会请求日本邮政取件，并要求他们在取件时带上退货单。
-    - 在日本邮政带来的 Chakubarai 退货单备注栏中填写参考号。
-    - 按如下所示输入交付地址：   
-        ```
-        3F N7 Prologis Park Tokyo Ohta, 1-3-6 Tokai Ohta-ku, Tokyo 143-0001
-        Microsoft Service Center c/o Quantium Solutions Japan
-        TEL: 03-5755-0150
-        ```
+1. 在托运单上写下公司名称和地址信息作为发件人信息。
+2. 使用以下电子邮件模板将电子邮件发送给 Quantium Solution。
 
-如果遗失了 Chakubarai 退货单，可以通过电子邮件请求取件。 使用以下电子邮件模板请求取件。
+    - 如果日本邮政货到付款托运单未包含在内或缺失，请在这封电子邮件中注明。 Quantium Solutions Japan 将请求日本邮政在取件时带上托运单。
+    - 如果你有多个订单，请分别发送电子邮件以确保单独取件。
 
-```
-To: Customerservice.JP@quantiumsolutions.com
-Subject: Pickup request for Azure Data Box Disk｜Job Name： 
-Body: 
-- Azure Data Box Disk job name：
-- Reference number:  
-- Requested pickup date：mmdd (Select a requested time slot from below).
-    a. 08：00-13：00 
-    b. 13：00-15：00 
-    c. 15：00-17：00 
-    d. 17：00-19：00 
-```
+    ```
+    To: Customerservice.JP@quantiumsolutions.com
+    Subject: Pickup request for Azure Data Box Disk｜Job Name： 
+    Body: 
+    - Japan Post Yu-Pack tracking number (reference number)：
+    - Requested pickup date：mmdd (Select a requested time slot from below).
+        a. 08：00-13：00 
+        b. 13：00-15：00 
+        c. 15：00-17：00 
+        d. 17：00-19：00 
+    ```
+
+3. 在预订完取件后，将会收到 Quantium Solutions 发来的电子邮件确认函。 该电子邮件确认函还包含与货到付款托运单相关的信息。
+
+如果需要，可通过以下信息联系 Quantium Solution 支持（日语）： 
+
+- 电子邮件：Customerservice.JP@quantiumsolutions.com 
+- 电话：03-5755-0150 
 
 #### <a name="pick-up-in-korea"></a>在韩国取件
 
-1. 请务必包含退货单。
-2. 请求取件：
-    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 注明“Microsoft pickup”和退货单号，以安排收件。   
-    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并在电子邮件主题中包含“Microsoft Pickup”和退货单号作为参考。 
+1. 请务必附上退还托运单。
+2. 若要在提供有托运单的情况下请求取件，请执行以下操作：
+    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”  和服务请求编号，以便安排收件。  
+    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”  和服务请求编号作为参考。
     3. 如果快递公司未前来收件，请拨打 *Quantium Solutions International* 热线安排其他快递公司。 
+    4. 你将会收到取件安排的电子邮件确认函。
+3. 仅当托运单未提供时，才执行此步骤。 请求取件：
+    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”  和服务请求编号，以便安排收件。 指明你需要新的托运单，以便安排收件。 请提供发件人（客户）、收件人信息（Azure 数据中心）以及参考编号（服务请求编号）。 
+    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”  和服务请求编号作为参考。
+    3. 如果快递公司未前来收件，请拨打 *Quantium Solutions International* 热线安排其他快递公司。 
+    4. 如果请求是通过电话进行的，你会收到口头确认。
+
+### <a name="pick-up-in-singapore"></a>在新加坡取件
+
+1. 打印发货标签并将其贴在盒子上。 如果标签受损或丢失：
+    - 转到“概况”>“下载发货标签”。 
+
+        ![下载发货标签](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+
+        此操作会下载如下所示的退件发货标签。
+
+        ![示例发货标签](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - 将标签粘贴在设备上。 请确保该标签是可见的。
+
+2. 请求取件：
+    - 请在办公时间（周一至周五，上午 9 点到下午 5 点）拨打 **SingPost** 热线，电话为 **6845 6485**。  
+    - 请注明“Microsoft Azure 取件”  和服务请求编号（退还发货标签上的跟踪编号），以便安排收件。 
+    - 你将会收到有关该取件安排的口头确认。 
+    - 如果快递员未前来收件，请致电 **SingPost**（电话为 **6845 6485**），要求另作安排。 
+3. 转交给快递员。 
+
 
 ## <a name="verify-data-upload-to-azure"></a>验证 Azure 中的数据上传
 
@@ -156,6 +177,8 @@ Body:
 复制完成后，订单状态将更新为“已完成”。 
 
 ![数据复制完成](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
+
+如果复制完成但出现错误，请参阅[排查上传错误](data-box-disk-troubleshoot-upload.md)。
 
 从源中删除数据之前，请确认数据已存储在存储帐户中。 你的数据可位于：
 

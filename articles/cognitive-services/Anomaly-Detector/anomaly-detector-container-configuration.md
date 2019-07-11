@@ -1,20 +1,21 @@
 ---
-title: 配置容器-异常情况检测程序
+title: 如何为异常情况检测器 API 配置容器
 titleSuffix: Azure Cognitive Services
-description: 使用配置的异常情况检测程序容器运行时环境`docker run`命令参数。 此容器有多个必需设置，以及一些可选设置。
+description: 使用配置的异常情况检测器 API 容器运行时环境`docker run`命令参数。 此容器有多个必需设置，以及一些可选设置。
 services: cognitive-services
 author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 50f62fa20ea9b52db79160d9d2f3a6fa463079b7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: cb0a12df6696e76050d4c53bd75e07134b3dc27c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593105"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721733"
 ---
 # <a name="configure-anomaly-detector-containers"></a>配置异常情况检测程序容器
 
@@ -24,7 +25,7 @@ ms.locfileid: "67593105"
 
 此容器具有以下配置设置：
 
-|需要|设置|目的|
+|必填|设置|用途|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|用于跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
@@ -58,9 +59,9 @@ ms.locfileid: "67593105"
 
 * Azure 门户：**异常情况检测器**概述，标记为 `Endpoint`
 
-|需要| Name | 数据类型 | 描述 |
+|必填| 名称 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
+|是| `Billing` | 字符串 | 账单终结点 URI<br><br>例如：<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -87,10 +88,10 @@ ms.locfileid: "67593105"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](anomaly-detector-container-howto.md#the-host-computer)的装载位置。 
 
-|可选| Name | 数据类型 | 描述 |
+|可选| 名称 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
-|不允许| `Input` | String | 异常情况检测器容器请勿使用此功能。|
-|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|不允许| `Input` | 字符串 | 异常情况检测器容器请勿使用此功能。|
+|可选| `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例 
 
@@ -101,7 +102,7 @@ ms.locfileid: "67593105"
 
 将在方括号中，值为`{}`，使用你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | ReplTest1 | 格式或示例 |
 |-------------|-------|---|
 |{BILLING_KEY} | 异常情况检测程序资源的终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 |{BILLING_ENDPOINT_URI} | 包括区域的账单终结点值。|`https://westus2.api.cognitive.microsoft.com`|

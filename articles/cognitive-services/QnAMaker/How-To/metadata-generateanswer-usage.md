@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: b691d447f51165ea3cb56410da9cd2d4d00ce913
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 6bfcb531d0e4e8073a5553f7bc84a25e4f8a92a9
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490207"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785679"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>获取与 GenerateAnswer API 和元数据的答案
 
@@ -96,7 +96,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 ## <a name="generateanswer-response-properties"></a>GenerateAnswer 响应属性
 
-[响应](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful_query)是包括所有在对话中，打开显示答案和下一步所需的信息，如果可用的 JSON 对象。
+[响应](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query)是包括所有在对话中，打开显示答案和下一步所需的信息，如果可用的 JSON 对象。
 
 ```json
 {

@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: 1d68c08f6dfca74c38973af1686d614f3f10cc28
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eb2d609c3a7dfd769c6a19854366ac5e45fddb7d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67455125"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712479"
 ---
 ## <a name="create-an-azure-kubernetes-service-aks-cluster-resource"></a>创建 Azure Kubernetes 服务 (AKS) 群集资源
 
@@ -22,7 +22,7 @@ ms.locfileid: "67455125"
 
 1. 上**基础知识**选项卡上，输入以下详细信息：
 
-    |设置|值|
+    |设置|ReplTest1|
     |--|--|
     |订阅|选择相应的订阅|
     |资源组|选择可用的资源组|
