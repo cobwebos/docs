@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602811"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594223"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教程：向 Azure 应用服务 Web 应用添加 Azure CDN
 
@@ -49,38 +49,38 @@ ms.locfileid: "53602811"
 
 ## <a name="create-the-web-app"></a>创建 Web 应用
 
-若要创建将使用的 Web 应用，通过“浏览到应用”步骤，按照[静态 HTML 快速入门](../app-service/app-service-web-get-started-html.md)的说明操作。
+若要创建将使用的 Web 应用，通过“浏览到应用”  步骤，按照[静态 HTML 快速入门](../app-service/app-service-web-get-started-html.md)的说明操作。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 打开浏览器并导航到 [Azure 门户](https://portal.azure.com)。
 
 ### <a name="dynamic-site-acceleration-optimization"></a>动态站点加速优化
-如果想要针对动态站点加速 (DSA) 优化 CDN 终结点，则应使用 [CDN 门户](cdn-create-new-endpoint.md)创建配置文件和终结点。 通过 [DSA 优化](cdn-dynamic-site-acceleration.md)，显著改进了包含动态内容的网页性能。 有关如何从 CDN 门户针对 DSA 优化 CDN 终结点的说明，请参阅[用于加速传送动态文件的 CDN 终结点配置](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files)。 否则，如果不想优化新的终结点，则可以按照下一节中的步骤使用 Web 应用门户来创建它。 请注意，对于“来自 Verizon 的 Azure CDN”配置文件，无法在创建 CDN 终结点后更改其优化设置。
+如果想要针对动态站点加速 (DSA) 优化 CDN 终结点，则应使用 [CDN 门户](cdn-create-new-endpoint.md)创建配置文件和终结点。 通过 [DSA 优化](cdn-dynamic-site-acceleration.md)，显著改进了包含动态内容的网页性能。 有关如何从 CDN 门户针对 DSA 优化 CDN 终结点的说明，请参阅[用于加速传送动态文件的 CDN 终结点配置](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files)。 否则，如果不想优化新的终结点，则可以按照下一节中的步骤使用 Web 应用门户来创建它。 请注意，对于“来自 Verizon 的 Azure CDN”  配置文件，无法在创建 CDN 终结点后更改其优化设置。
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>创建 CDN 配置文件和终结点
 
-在左侧导航窗格中，选择“应用服务”，并选择在[静态 HTML 快速入门](../app-service/app-service-web-get-started-html.md)中创建的应用。
+在左侧导航窗格中，选择“应用服务”  ，并选择在[静态 HTML 快速入门](../app-service/app-service-web-get-started-html.md)中创建的应用。
 
 ![在门户中选择应用服务应用](media/cdn-add-to-web-app/portal-select-app-services.png)
 
-在“应用服务”页的“设置”部分，选择“网络”>“为应用配置 Azure CDN”。
+在“应用服务”页的“设置”部分，选择“网络”>“为应用配置 Azure CDN”。   
 
 ![在门户中选择 CDN](media/cdn-add-to-web-app/portal-select-cdn.png)
 
-在“Azure 内容分发网络”页中，按表中的指定提供“新建终结点”设置。
+在“Azure 内容分发网络”页中，按表中的指定提供“新建终结点”设置。  
 
 ![在门户中创建配置文件和终结点](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
-| 设置 | 建议的值 | Description |
+| 设置 | 建议的值 | 说明 |
 | ------- | --------------- | ----------- |
 | **CDN 配置文件** | myCDNProfile | CDN 配置文件是具有同一定价层的 CDN 终结点的集合。 |
-| **定价层** | 标准 Akamai | [定价层](cdn-features.md)指定提供商和可用功能。 本教程使用标准 Akamai。 |
-| **CDN 终结点名称** | azureedge.net 域中的任何唯一名称 | 可在 *&lt;endpointname&gt;*.azureedge.net 域中访问缓存的资源。
+| **定价层** | 标准 Akamai | [定价层](cdn-features.md)指定提供商和可用功能。 本教程使用标准 Akamai  。 |
+| **CDN 终结点名称** | azureedge.net 域中的任何唯一名称 | 可在 *&lt;endpointname&gt;* .azureedge.net 域中访问缓存的资源。
 
-选择“创建”创建 CDN 配置文件。
+选择“创建”  创建 CDN 配置文件。
 
-Azure 将创建配置文件和终结点。 新的终结点显示在“终结点”列表中，预配后其状态为“正在运行”。
+Azure 将创建配置文件和终结点。 新的终结点显示在“终结点”列表中，预配后其状态为“正在运行”   。
 
 ![列表中的新建终结点](media/cdn-add-to-web-app/portal-new-endpoint-in-list.png)
 
@@ -89,9 +89,9 @@ Azure 将创建配置文件和终结点。 新的终结点显示在“终结点�
  终结点不会立即可供使用，因为注册传播需花时间： 
    - 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
    - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
-   - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成。 
+   - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成   。 
 
-示例应用有一个 index.html 文件，此外还有 css、img 和 js 文件夹，其中包含其他静态资产。 在 CDN 终结点上，所有这些文件的内容路径是相同的。 例如，以下两个 URL 都可以访问 css 文件夹中的 bootstrap.css 文件：
+示例应用有一个 index.html 文件，此外还有 css、img 和 js 文件夹，其中包含其他静态资产     。 在 CDN 终结点上，所有这些文件的内容路径是相同的。 例如，以下两个 URL 都可以访问 css 文件夹中的 bootstrap.css 文件：  
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -125,7 +125,7 @@ CDN 定期根据生存时间 (TTL) 配置刷新其在源 Web 应用中的资源�
 
 ### <a name="deploy-a-change-to-the-web-app"></a>将更改部署到 Web 应用
 
-打开 index.html 文件，将“- V2”添加到 H1 标题，如以下示例所示： 
+打开 index.html 文件，将“- V2”添加到 H1 标题，如以下示例所示   ： 
 
 ```
 <h1>Azure App Service - Sample Static HTML Site - V2</h1>
@@ -158,7 +158,7 @@ http://<endpointname>.azureedge.net/index.html
 
 若要触发 CDN 更新其缓存的版本，请清除该 CDN。
 
-在门户的左侧导航窗格中选择“资源组”，并选择为 Web 应用创建的资源组 (myResourceGroup)。
+在门户的左侧导航窗格中选择“资源组”，并选择为 Web 应用创建的资源组 (myResourceGroup)。 
 
 ![选择资源组](media/cdn-add-to-web-app/portal-select-group.png)
 
@@ -166,13 +166,13 @@ http://<endpointname>.azureedge.net/index.html
 
 ![选择终结点](media/cdn-add-to-web-app/portal-select-endpoint.png)
 
-在“终结点”页顶部，选择“清除”。
+在“终结点”页顶部，选择“清除”   。
 
 ![选择“清除”](media/cdn-add-to-web-app/portal-select-purge.png)
 
-输入要清除的内容路径。 可以传递一个完整的文件路径来清除单个文件，也可以传递一个路径片段来清除和刷新文件夹中的所有内容。 由于更改了 index.html，因此请确保它位于其中一个路径中。
+输入要清除的内容路径。 可以传递一个完整的文件路径来清除单个文件，也可以传递一个路径片段来清除和刷新文件夹中的所有内容。 由于更改了 index.html，因此请确保它位于其中一个路径中  。
 
-在页面底部，选择“清除”。
+在页面底部，选择“清除”。 
 
 ![“清除”页](media/cdn-add-to-web-app/app-service-web-purge-cdn.png)
 
@@ -182,7 +182,7 @@ http://<endpointname>.azureedge.net/index.html
 
 ![清除通知](media/cdn-add-to-web-app/portal-purge-notification.png)
 
-浏览到 index.html 的 CDN 终结点 URL 时，可以看到之前向主页标题添加的 V2，这表示 CDN 缓存已刷新。
+浏览到 index.html 的 CDN 终结点 URL 时，可以看到之前向主页标题添加的 V2，这表示 CDN 缓存已刷新   。
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -206,11 +206,11 @@ Azure CDN 提供以下缓存行为选项：
 
 ### <a name="change-the-cache-behavior"></a>更改缓存行为
 
-在 Azure 门户的“CDN 终结点”页上，选择“缓存”。
+在 Azure 门户的“CDN 终结点”页上，选择“缓存”。  
 
-从“查询字符串缓存行为”下拉列表中选择“缓存每个唯一的 URL”。
+从“查询字符串缓存行为”下拉列表中选择“缓存每个唯一的 URL”。  
 
-选择“保存”。
+选择“保存”。 
 
 ![选择查询字符串缓存行为](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 
@@ -222,18 +222,18 @@ Azure CDN 提供以下缓存行为选项：
 http://<endpointname>.azureedge.net/index.html?q=1
 ```
 
-Azure CDN 返回当前的 Web 应用内容，其在标题中包含“V2”。 
+Azure CDN 返回当前的 Web 应用内容，其在标题中包含“V2”  。 
 
 若要确保此页缓存在 CDN 中，请刷新页面。 
 
-打开“index.html”，将“V2”更改为“V3”，然后部署该更改。 
+打开“index.html”，将“V2”更改为“V3”，然后部署该更改    。 
 
 ```bash
 git commit -am "version 3"
 git push azure master
 ```
 
-在浏览器中，转到包含新的查询字符串（例如 `q=2`）的 CDN 终结点 URL。 Azure CDN 获取当前的 index.html 文件并显示“V3”。 但是，如果使用 `q=1` 查询字符串导航到 CDN 终结点，则会显示“V2”。
+在浏览器中，转到包含新的查询字符串（例如 `q=2`）的 CDN 终结点 URL。 Azure CDN 获取当前的 index.html 文件并显示“V3”   。 但是，如果使用 `q=1` 查询字符串导航到 CDN 终结点，则会显示“V2”  。
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=2
