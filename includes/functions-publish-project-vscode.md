@@ -4,17 +4,17 @@ description: include 文件
 services: functions
 author: ggailey777
 manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 4f3d31fa25ea5781bc3af7297719b77723597e17
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3cfa36331f8f4ad45f3bf8ff32eee7d89c7d8852
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444601"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608093"
 ---
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 
@@ -44,6 +44,6 @@ ms.locfileid: "67444601"
 
     创建函数应用并应用了部署包之后，会显示一个通知。 在此通知中选择“查看输出”  以查看创建和部署结果，其中包括你创建的 Azure 资源。
 
-1. 返回到“Azure：函数”  区域，在你的订阅下展开新的函数应用。 展开“函数”  ，右键单击“HttpTrigger”  ，然后选择“复制函数 URL”  。
+1. 返回到“Azure：函数”** 区域，在你的订阅下展开新的函数应用。 展开“函数”  ，右键单击“HttpTrigger”  ，然后选择“复制函数 URL”  。
 
     ![复制新的 HTTP 触发器的函数 URL](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)
