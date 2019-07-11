@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: 故障排除, 更新, bug, kinect, 反馈, 恢复, 日志记录, 提示
-ms.openlocfilehash: 32047775628c940392019abbe2e4d5270bd67f47
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 355ae1c591603171e8c8fe3f1599ebae5054a6bd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452496"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703905"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect 已知问题和故障排除
 
@@ -129,14 +129,7 @@ Windows 上的 Azure Kinect DK 仅支持 **Intel**、**Texas Instruments (TI)** 
 
 若要更好地了解电脑上已连接哪个 USB 端口，请在将 Azure Kinect DK 连接到电脑上的不同 USB 端口时重复上述步骤。
 
-## <a name="multi-device-synchronization"></a>多设备同步
-
-### <a name="stabilization"></a>稳定化
-
-使用多设备同步功能启动设备时，我们强烈建议使用固定的曝光设置。
-如果设置手动曝光，最多可能需要在设备上拍摄 8 次，图像和帧速率就会才能稳定。 如果使用自动曝光，最多可能需要拍摄 20 次，图像和帧速率才能稳定。
-
-### <a name="depth-camera-auto-powers-down"></a>深度相机自动关机
+## <a name="depth-camera-auto-powers-down"></a>深度相机自动关机
 
 深度相机用来计算图像深度数据的激光的寿命有限。 为了最大限度地提高激光寿命，深度相机会检测何时不会使用深度数据。 如果设备流式传输了数据几分钟，但主机电脑并未读取数据，则深度相机将会关机。 这也会影响多设备同步。此时，附属设备启动时所处的状态是深度相机正在流式传输数据，而深度帧已有效挂起，正在等待主设备开始同步捕获内容。 为避免在多设备捕获方案中出现此问题，请确保主设备在第一个附属设备启动后的一分钟内启动。 
 

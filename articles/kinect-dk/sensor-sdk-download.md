@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装
-ms.openlocfilehash: abf0d5b4fb49813e930024b49f0448b39f28629c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c3271ffdce011c2731842fe52800f637c975e030
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452847"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606120"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect 传感器 SDK 下载
 
@@ -48,7 +48,7 @@ ms.locfileid: "67452847"
 
  基本教程需要 `libk4a<major>.<minor>-dev` 包。 若要安装该包，请运行
 
- `sudo apt install libk4a1.1-dev`。
+ `sudo apt install libk4a1.1-dev`
 
 如果该命令成功，则表示 SDK 可供使用。
 

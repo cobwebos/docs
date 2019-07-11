@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 检索, 传感器, 相机, sdk, 深度, rgb, 图像, 颜色, 捕获, 分辨率, 缓冲区
-ms.openlocfilehash: 8f57dfa35e04e60bd433ca5775f5bd9f11903d66
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8ef3043c911316ec6c2d9462cffe2f835cffb81a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452860"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707081"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>检索 Azure Kinect 图像数据
 
@@ -52,6 +52,11 @@ if (K4A_RESULT_SUCCEEDED != k4a_device_start_cameras(device, &config))
 ```
 
 相机启动后，它们将不断捕获数据，直到已调用 [`k4a_device_stop_cameras()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga4fa0e0a011a7105309ad97f081a5d6b8.html#ga4fa0e0a011a7105309ad97f081a5d6b8) 或设备关闭。
+
+## <a name="stabilization"></a>稳定化
+
+使用多设备同步功能启动设备时，我们强烈建议使用固定的曝光设置。
+如果设置手动曝光，最多可能需要在设备上拍摄 8 次，图像和帧速率就会才能稳定。 如果使用自动曝光，最多可能需要拍摄 20 次，图像和帧速率才能稳定。
 
 ## <a name="get-a-capture-from-the-device"></a>从设备获取捕获
 

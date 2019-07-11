@@ -2,17 +2,17 @@
 title: 使用 Azure Kinect 传感器 SDK 图像转换
 description: 如何使用 Azure Kinect 传感器 SDK 图像转换函数。
 author: cdedmonds
-ms.author: cdedmonds
+ms.author: cedmonds
 ms.prod: kinect-dk
 ms.topic: conceptual
 ms.date: 06/26/2019
 keywords: kinect, azure, 传感器, sdk, 坐标系, 校准, 投影, 取消投影, 转换, rgb-d, 点云
-ms.openlocfilehash: e818addee08254885bac77b40f8f92ecda0e1aad
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 951541f1652f885d47b289378644d1a3098320ce
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452795"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612042"
 ---
 # <a name="use-azure-kinect-sensor-sdk-image-transformations"></a>使用 Azure Kinect 传感器 SDK 图像转换
 

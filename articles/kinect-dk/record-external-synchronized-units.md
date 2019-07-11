@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, 传感器, 查看器, 外部同步, 相位延迟, 深度, RGB, 相机, 音频线, 录制器
-ms.openlocfilehash: 449a1b73ce4919a4aa5b872f61bb57b84788e4f8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dedcde0d90882ff1e8bc19ce60fce8de6dedfa51
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452899"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796056"
 ---
 # <a name="use-azure-kinect-recorder-with-external-synchronized-units"></a>将 Azure Kinect 录制器与外部同步单元配合使用
 
@@ -20,7 +20,7 @@ ms.locfileid: "67452899"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [设置多个 Azure Kinect DK 单元进行外部同步](https://aka.ms/AzureKinectAPIDocs/external-sync-setup.md)。
+- [设置多个 Azure Kinect DK 单元进行外部同步](https://support.microsoft.com/help/4494429)。
 
 ## <a name="external-synchronization-constraints"></a>外部同步约束
 
@@ -105,6 +105,8 @@ ms.locfileid: "67452899"
 
 可以使用 [Azure Kinect 查看器](azure-kinect-viewer.md)播放录制内容。
 
+
+
 ## <a name="tips"></a>提示
 
 - 使用手动曝光在同步相机上进行录制。 RGB 相机自动曝光可能会影响时间同步。
@@ -113,11 +115,11 @@ ms.locfileid: "67452899"
 - 将多个单元连接到单个电脑很容易使 USB 带宽达到饱和，请考虑为每个设备使用单独的主机电脑。 另请注意 CPU/GPU 算力。
 - 如果不需要使用麦克风和 IMU 来提高可靠性，请将其禁用。
 
-如有任何问题，请参阅[故障排除](https://aka.ms/AzureKinectAPIDocs/troubleshooting.md)
+如有任何问题，请参阅[故障排除](troubleshooting.md)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>另请参阅
 
-- [设置外部同步](https://support.microsoft.com/en-us/help/4494429/sync-multiple-devices)
+- [设置外部同步](https://support.microsoft.com/help/4494429/sync-multiple-devices)
 - [Azure Kinect 录制器](azure-kinect-recorder.md)的设置及其他信息。
 - 使用 [Azure Kinect 查看器](azure-kinect-viewer.md)播放录制内容，或者设置无法通过录制器使用的 RGB 相机属性。
 - 使用 [Azure Kinect 固件工具](azure-kinect-firmware-tool.md)更新设备固件。

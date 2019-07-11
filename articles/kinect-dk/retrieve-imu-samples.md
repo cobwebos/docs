@@ -1,5 +1,5 @@
 ---
-ms.title: Retrieve Azure Kinect IMU samples
+title: 检索 Azure Kinect IMU 样本
 description: 使用 Azure Kinect 检索 IMU 样本
 author: qm13
 ms.author: cedmonds
@@ -7,12 +7,12 @@ ms.date: 06/26/2019
 ms.prod: kinect-dk
 ms.topic: conceptual
 keywords: kinect, azure, 配置, 深度, 彩色, RBG, 相机, 传感器, sdk, IMU, 运动传感器, 运动, 陀螺仪, 加速度传感器, FPS
-ms.openlocfilehash: f0dd0d45e7c45125d2c8fb040872f16bbc5f2e43
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8866e4aaef608aaf9e7bf7d451b758cf9b10c8ed
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452535"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621379"
 ---
 # <a name="retrieve-azure-kinect-imu-samples"></a>检索 Azure Kinect IMU 样本
 

@@ -2,17 +2,17 @@
 title: 使用 Azure Kinect 校准函数
 description: Azure Kinect DK 的校准函数
 author: cdedmonds
-ms.author: cdedmonds
+ms.author: cedmonds
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 坐标系, 校准, 函数, 内部, 外部, 相机, 投影, 取消投影, 转换, rgb-d, 点云
-ms.openlocfilehash: 6817ce8aa5c97cf6382371d35c42789dc4d496d0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d96d70db6128e18c1560211d3e76a441dd40da4f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452574"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621431"
 ---
 # <a name="use-azure-kinect-calibration-functions"></a>使用 Azure Kinect 校准函数
 
