@@ -4,7 +4,7 @@ description: Azure CLI Script 示例 - 加密 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8f3e032d6723faf149faad039e3c3faff3e6d83a
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 16bbd4031c851a950af0f3c0fe98ebdd24b183df
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731489"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709442"
 ---
 # <a name="encrypt-a-linux-virtual-machine-in-azure"></a>加密 Azure 中的 Linux 虚拟机
 

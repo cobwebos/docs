@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b3c9a0152144ac0d705c7d3f12c18cbc38398f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 817eecce6c2c1be273b47494e8ecc14180394796
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090150"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>教程：Azure Active Directory 与 Spotinst 集成
 
@@ -114,7 +114,7 @@ Spotinst 与 Azure AD 的集成提供以下优势：
 
     ![Spotinst 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，键入 URL：  `https://console.spotinst.com`
+    在“登录 URL”文本框中，键入 URL：  `https://console.spotinst.com/auth/saml`
 
     > [!NOTE]
     > “中继状态”值不是实际值。 用户将使用实际的中继状态值更新该值（详见本教程的稍后部分）。

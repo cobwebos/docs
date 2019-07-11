@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: dbef7c2cb8de5a1b4bbb3073f694b8f77c9f441b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: eae23806ee1b4e2dac1d3410e32c3242e89d4be8
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231295"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719822"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>教程：使用 Ansible 在 Azure Kubernetes 服务 (AKS) 中配置基于角色的访问控制 (RBAC) 角色
 
@@ -39,7 +39,7 @@ ms.locfileid: "65231295"
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>配置 Azure AD 以进行 AKS 身份验证
 
-若要配置 Azure AD 以进行 AKS 身份验证，需配置两个 Azure AD 应用程序。 此操作必须由 Azure 租户管理员完成。 有关详细信息，请参阅[将 Azure Active Directory 与 AKS 集成](/azure/aks/aad-integration#create-server-application)。 
+若要配置 Azure AD 以进行 AKS 身份验证，需配置两个 Azure AD 应用程序。 此操作必须由 Azure 租户管理员完成。 有关详细信息，请参阅[将 Azure Active Directory 与 AKS 集成](/azure/aks/aad-integration#create-the-server-application)。 
 
 通过 Azure 租户管理员获取以下内容：
 
@@ -73,7 +73,7 @@ ms.locfileid: "65231295"
       location: "{{ location }}"
 
 - name: List supported kubernetes version from Azure
-  azure_rm_aks_version:
+  azure_rm_aksversion_facts:
       location: "{{ location }}"
   register: versions
 
@@ -129,13 +129,13 @@ ms.locfileid: "65231295"
 
 1. 单击`Enter`。
 
-1. 在“管理”菜单中选择“用户”。
+1. 在“管理”菜单中选择“用户”   。
 
 1. 在名称字段中，搜索帐户。
 
-1. 在“名称”列中，选择帐户链接。
+1. 在“名称”列中，选择帐户链接  。
 
-1. 在“标识”部分，复制“对象 ID”。
+1. 在“标识”部分，复制“对象 ID”   。
 
     ![复制 Azure AD 对象 ID。](./media/ansible-aks-configure-rbac/ansible-aad-object-id.png)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec8c2fc2c2dbbfd2c98184215f696aaf18a87193
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 498650ce8a22f4804773bb66db3d640cd63bab8c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105555"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>教程：Azure Active Directory 与 Cisco Webex Meetings 的集成
 
@@ -122,7 +122,7 @@ ms.locfileid: "67105555"
 
     在“登录 URL”文本框中，粘贴上传 SP 元数据文件后自动填充的“回复 URL”值。  
 
-5. Cisco Webex Meetings 应用程序需要特定格式的 SAML 断言，因此，我们需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑” 图标添加属性。 ****
+5. Cisco Webex Meetings 应用程序需要特定格式的 SAML 断言，因此，我们需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标添加属性。 
 
     ![image](common/edit-attribute.png)
 

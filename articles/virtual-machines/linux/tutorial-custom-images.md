@@ -4,7 +4,7 @@ description: 本教程介绍如何使用 Azure CLI 在 Azure 中创建自定义�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c2be140e4d7156a1e23e1064436dda959c9cd14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 080d1d68c2f2fb757bb51471b91a807b2f00fa2d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165994"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709523"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
 
@@ -50,7 +50,7 @@ ms.locfileid: "66165994"
 
 ### <a name="deprovision-the-vm"></a>取消设置 VM 
 
-取消设置可通过删除特定于计算机的信息通用化 VM。 通过此通用化，可从单个映像中部署多个 VM。 在取消预配期间，主机名将重置为“localhost.localdomain”。 还会删除 SSH 主机密钥、名称服务器配置、根密码和缓存的 DHCP 租约。
+取消设置可通过删除特定于计算机的信息通用化 VM。 通过此通用化，可从单个映像中部署多个 VM。 在取消预配期间，主机名将重置为“localhost.localdomain”  。 还会删除 SSH 主机密钥、名称服务器配置、根密码和缓存的 DHCP 租约。
 
 若要取消设置 VM，请使用 Azure VM 代理 (waagent)。 Azure VM 代理安装在 VM 上，并管理预配及其与 Azure 结构控制器的交互。 有关详细信息，请参阅 [Azure Linux 代理用户指南](../extensions/agent-linux.md)。
 
@@ -87,7 +87,7 @@ az vm generalize --resource-group myResourceGroup --name myVM
 
 ### <a name="create-the-image"></a>创建映像
 
-现在，可使用 [az image create](/cli//azure/image) 创建 VM 的映像。 以下示例从名为“myVM”的 VM 创建名为“myImage”的映像。
+现在，可使用 [az image create](/cli//azure/image) 创建 VM 的映像。 以下示例从名为“myVM”  的 VM 创建名为“myImage”  的映像。
    
 ```azurecli-interactive 
 az image create \
@@ -98,7 +98,7 @@ az image create \
  
 ## <a name="create-vms-from-the-image"></a>从映像创建 VM
 
-在具有映像后，便可以使用 [az vm create](/cli/azure/vm) 从映像创建一个或多个新 VM。 以下示例从名为“myImage”的映像创建名为“myVMfromImage”的映像。
+在具有映像后，便可以使用 [az vm create](/cli/azure/vm) 从映像创建一个或多个新 VM。 以下示例从名为“myImage”  的映像创建名为“myVMfromImage”  的映像。
 
 ```azurecli-interactive 
 az vm create \
