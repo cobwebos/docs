@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.reviewer: sgilley
 author: sdgilley
 ms.author: sgilley
-ms.date: 03/21/2019
+ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: c814f4bb0cc24350e45400d141c97d1b2eb4998d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 406797203a99df7e805e08ee7589148599eeffce
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237794"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670720"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>快速入门：通过自己的 Notebook 服务器开始使用 Azure 机器学习
 
@@ -25,7 +25,7 @@ ms.locfileid: "66237794"
 
 观看本快速入门的视频版本：
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2G9N6]
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 

@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: astay;cephalin;kraigb
+ms.author: cephalin
+ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: ad2ea32749c6556d17460b2a16ed41bbaa2ec62e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: fb90122f7277687886a6579fdb729b7f91660ed6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956154"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617276"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
@@ -119,7 +120,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 app:app
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-例如，如果 Flask 应用的主模块是 hello.py，而该文件中的 Flask 应用对象名为 `myapp`，则 \<custom-command> 如下所示：
+例如，如果 Flask 应用的主模块是 hello.py，而该文件中的 Flask 应用对象名为 `myapp`，则 \<custom-command> 如下所示   ：
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -131,9 +132,9 @@ gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-还可以将 Gunicorn 的任何附加参数添加到 \<custom-command>，例如 `--workers=4`。 有关详细信息，请参阅[运行 Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
+还可以将 Gunicorn 的任何附加参数添加到 \<custom-command>，例如 `--workers=4`  。 有关详细信息，请参阅[运行 Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
 
-要使用非 Gunicorn 服务器（例如 [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)），则可以使用以下内容替换 \<custom-command>：
+要使用非 Gunicorn 服务器（例如 [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)），则可以使用以下内容替换 \<custom-command>  ：
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func

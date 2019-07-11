@@ -2,18 +2,18 @@
 title: 快速入门 - 创建 Azure Kubernetes 服务 (AKS) 群集
 description: 了解如何使用 Azure CLI 快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 05/20/2019
-ms.author: iainfou
+ms.author: mlearned
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: a7558308d668fc153b5ac9561efbdf68777ae09f
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 2079144cf6cb36870645d3182aabdecccfcbadd0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514384"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615075"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务 (AKS) 群集
 

@@ -2,24 +2,25 @@
 title: 配置适用于 IoT 解决方案的 Azure 安全中心（预览版）| Microsoft Docs
 description: 了解如何使用适用于 IoT 的 Azure 安全中心配置端到端 IoT 解决方案。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: ae2207e8-ac5b-4793-8efc-0517f4661222
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: c60b421e9b60c6a2191fe2be189d1abd1c328f24
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7f90dba899651b677740e9ceb88bdd579ebb073c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200791"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616644"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>快速入门：配置 IoT 解决方案
 
@@ -47,10 +48,10 @@ ASC for IoT 为基于 Azure 的 IoT 解决方案提供全面的端到端安全�
 若要将新资源添加到 IoT 解决方案，请执行以下操作： 
 
 1. 在 Azure 门户中打开你的 **IoT 中心**。 
-2. 在左侧菜单中，选择并打开“安全性”下的“资源”。 
-3. 选择“添加资源”。
+2. 在左侧菜单中，选择并打开“安全性”下的“资源”。   
+3. 选择“添加资源”。 
 4. 选择属于该 IoT 解决方案的资源。
-5. 单击“添加”。 
+5. 单击“添加”  。 
 
 祝贺你！ 现已将新资源添加到 IoT 解决方案。
 

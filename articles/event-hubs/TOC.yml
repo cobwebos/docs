@@ -92,6 +92,10 @@
           href: event-hubs-programming-guide.md
         - name: 使用事件处理程序主机接收事件
           href: event-hubs-event-processor-host.md
+    - name: 处理数据
+      items:
+        - name: 使用 Azure 流分析处理数据
+          href: process-data-azure-stream-analytics.md
     - name: 使用客户端库
       items:
         - name: .NET framework

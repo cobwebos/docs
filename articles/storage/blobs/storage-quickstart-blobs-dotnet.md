@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: mhopkins
 ms.subservice: blobs
-ms.openlocfilehash: c5e9981c6854ff778775631f1d671189830e564b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 70afb39be696b660d3f85ae0c4b2c108bceb318c
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435759"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625677"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库
 
@@ -179,7 +179,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 * [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount)：**CloudStorageAccount** 类表示你的 Azure 存储帐户。 借助此类，可使用帐户访问密钥授予对 Blob 存储的访问权限。
 * [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)：**CloudBlobClient** 类提供对代码中 Blob 服务的访问点。
 * [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)：**CloudBlobContainer** 类表示代码中的 blob 容器。
-* [CloudBlockBlob](//dotnet/api/microsoft.azure.storage.blob.cloudblockblob)：**CloudBlockBlob** 对象表示代码中的块 blob。 块 Blob 由可以分别管理的数据块构成。
+* [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob)：**CloudBlockBlob** 对象表示代码中的块 blob。 块 Blob 由可以分别管理的数据块构成。
 
 ## <a name="code-examples"></a>代码示例
 

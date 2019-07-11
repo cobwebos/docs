@@ -7,7 +7,8 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 5a4ae93c-d648-41fb-8fb8-96a025d2f73e
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 07839c6372e0048048b62fbfedd58bfa9b9942f5
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 75bfdce02313ab7e799f6535f247407c239653b8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65207518"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619811"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel-preview"></a>快速入门：Azure Sentinel 预览版入门
 
@@ -54,7 +55,7 @@ ms.locfileid: "65207518"
 
 - **最近的案例**：查看最近的案例、其严重性及其关联的警报数。 如果特定类型的警报出现突发性的高峰，可能意味着某种攻击正在活跃地进行。 例如，如果 Azure ATP 中突然引发了多达 20 个传递哈希事件，可能意味着某人正在试图攻击你。
 
-- **数据源异常**：Microsoft 的数据分析师创建了模型用于不间断地搜索数据源中数据的异常。 如果未出现任何异常，则不会显示任何信息。 如果检测到异常，则你应该进行深入调查，以确定发生了什么情况。 例如，单击“Azure 活动”中的高峰。 可以单击“图表”了解高峰是何时发生的，然后筛选在该时间段发生的活动，以确定哪些因素造成了高峰。
+- **数据源异常**：Microsoft 的数据分析师创建了模型用于不间断地搜索数据源中数据的异常。 如果未出现任何异常，则不会显示任何信息。 如果检测到异常，则你应该进行深入调查，以确定发生了什么情况。 例如，单击“Azure 活动”中的高峰。 可以单击“图表”了解高峰是何时发生的，然后筛选在该时间段发生的活动，以确定哪些因素造成了高峰。 
 
    ![Azure Sentinel 地图](./media/qs-get-visibility/anomolies.png)
 
@@ -62,19 +63,19 @@ ms.locfileid: "65207518"
 
 内置仪表板提供连接的数据源中的集成数据，让你深入调查这些服务中生成的事件。 内置仪表板包括 Azure ID、Azure 活动事件和本地信息，这些数据可能来自 Windows 服务器事件、第一方警报或任何第三方，其中包括防火墙流量日志、Office 365 和基于 Windows 的不安全协议。
 
-1. 在“设置”下选择“仪表板”。 在“已安装”下，可以看到所有已安装的仪表板。 在“全部”下，可以看到可供安装的整个内置仪表板库。 
+1. 在“设置”下选择“仪表板”。   在“已安装”下，可以看到所有已安装的仪表板。  在“全部”下，可以看到可供安装的整个内置仪表板库。  
 2. 搜索特定的仪表板以查看整个列表，以及每个仪表板的功能说明。 
 3. 假设你使用 Azure AD，若要正常运行 Azure Sentinel，我们建议至少安装以下仪表板：
    - **Azure AD**：使用以下两项中的一个或两个：
-       - “Azure AD 登录”可分析不同时间的登录活动，以确定是否存在异常。 此仪表板按应用程序、设备和位置列出失败的登录，使你能够即时注意到有异常情况发生。 请注意是否出现了多个失败的登录活动。 
-       - “Azure AD 审核日志”可分析管理活动，例如用户更改（添加、删除等）、组创建和修改。  
+       - “Azure AD 登录”可分析不同时间的登录活动，以确定是否存在异常。  此仪表板按应用程序、设备和位置列出失败的登录，使你能够即时注意到有异常情况发生。 请注意是否出现了多个失败的登录活动。 
+       - “Azure AD 审核日志”可分析管理活动，例如用户更改（添加、删除等）、组创建和修改。   
 
    - 添加防火墙仪表板。 例如，添加 Palo Alto 仪表板。 仪表板可分析防火墙流量，在防火墙数据与威胁事件之间提供关联，并突出显示各个实体的可疑事件。 仪表板提供有关流量趋势的信息，并允许向下钻取和筛选结果。 
 
       ![Pal Alto 仪表板](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-可以通过编辑主要查询 ![按钮](./media/qs-get-visibility/edit-query-button.png) 来自定义仪表板。 可以单击按钮 ![按钮](./media/qs-get-visibility/go-to-la-button.png) 转到 [Log Analytics 以编辑查询](../azure-monitor/log-query/get-started-portal.md)；可以选择省略号 (...) 并选择“自定义磁贴数据”，以编辑主要时间筛选器，或者从仪表板中删除特定的磁贴。
+可以通过编辑主要查询 ![按钮](./media/qs-get-visibility/edit-query-button.png) 来自定义仪表板。 可以单击按钮 ![按钮](./media/qs-get-visibility/go-to-la-button.png) 转到 [Log Analytics 以编辑查询](../azure-monitor/log-query/get-started-portal.md)；可以选择省略号 (...) 并选择“自定义磁贴数据”，以编辑主要时间筛选器，或者从仪表板中删除特定的磁贴。 
 
 有关使用查询的详细信息，请参阅[教程：Log Analytics 中的视觉数据](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -82,16 +83,16 @@ ms.locfileid: "65207518"
 
 若要添加新磁贴，可将其添加到现有仪表板 - 你创建的仪表板，或 Azure Sentinel 的内置仪表板。 
 1. 在 Log Analytics 中，遵照以下教程中的说明创建磁贴：[教程：Log Analytics 中的视觉数据](../azure-monitor/learn/tutorial-logs-dashboards.md)。 
-2. 创建磁贴后，在“固定”下，选择要在其中显示该磁贴的仪表板。
+2. 创建磁贴后，在“固定”下，选择要在其中显示该磁贴的仪表板。 
 
 ## <a name="create-new-dashboards"></a>创建新仪表板
 可以从头开始创建新仪表板，或者基于某个内置仪表板创建新仪表板。
 
-1. 若要从头开始创建新仪表板，请依次选择“仪表板”、“+新建仪表板”。
+1. 若要从头开始创建新仪表板，请依次选择“仪表板”、“+新建仪表板”。  
 2. 选择要在其中创建该仪表板的订阅，并为其指定一个描述性的名称。 与其他任何元素一样，每个仪表板都是一个 Azure 资源，可为其分配角色 (RBAC) 以定义和限制哪些用户可以访问它。 
-3. 若要使其显示在要将可视化效果固定到的仪表板中，必须将其共享。 依次单击“共享”、“管理用户”。 
+3. 若要使其显示在要将可视化效果固定到的仪表板中，必须将其共享。 依次单击“共享”、“管理用户”。   
  
-1. 像设置其他任何 Azure 资源一样，使用“检查访问权限”和“角色分配”。 有关详细信息，请参阅[使用 RBAC 共享 Azure 仪表板](../azure-portal/azure-portal-dashboard-share-access.md)。
+1. 像设置其他任何 Azure 资源一样，使用“检查访问权限”和“角色分配”。   有关详细信息，请参阅[使用 RBAC 共享 Azure 仪表板](../azure-portal/azure-portal-dashboard-share-access.md)。
 
 
 ## <a name="new-dashboard-examples"></a>新仪表板示例
@@ -124,13 +125,13 @@ ms.locfileid: "65207518"
 
 创建新的检测时，请利用 Microsoft 安全研究人员为你连接的数据源量身定制的内置检测。
 
-1. [在 GitHub 社区中](https://github.com/Azure/Azure-Sentinel/tree/master/Detections)，转到“检测”文件夹并选择相关文件夹。
+1. [在 GitHub 社区中](https://github.com/Azure/Azure-Sentinel/tree/master/Detections)，转到“检测”  文件夹并选择相关文件夹。
    ![相关文件夹](./media/qs-get-visibility/detection-folders.png)
  
-3.  转到“Analytics”选项卡并选择“添加”。
+3.  转到“Analytics”  选项卡并选择“添加”  。
    ![在 Log Analytics 中创建规则](./media/qs-get-visibility/query-params.png)
 
-3.  将所有参数复制到规则，然后单击“创建”。
+3.  将所有参数复制到规则，然后单击“创建”  。
    ![创建警报规则](./media/qs-get-visibility/create-alert-rule.png)
 
  

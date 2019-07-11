@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e2eca253bc5d1495d26506e0e6f8a83762e8bc5
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 83f5b08e5fee17c0ea5577d4d56d4d3208a818e3
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001106"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625293"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>快速入门：生成一个与 Azure AD 集成以进行身份验证和授权的 .NET Web API
 
@@ -79,7 +79,7 @@ ms.locfileid: "66001106"
 
 2. 将名为 `Startup.cs` 的 OWIN 启动类添加到 TodoListService 项目。  右键单击项目，选择“添加”>“新建项”，然后搜索“OWIN”   。 当应用程序启动时，该 OWIN 中间件将调用 `Configuration(…)` 方法。
 
-3. 将类声明更改为 `public partial class Startup`。 我们已在另一个文件中实现了此类的一部分。 在 `Configuration(…)` 方法中，调用 `ConfgureAuth(…)` 以设置 Web 应用的身份验证。
+3. 将类声明更改为 `public partial class Startup`。 我们已在另一个文件中实现了此类的一部分。 在 `Configuration(…)` 方法中，调用 `ConfigureAuth(…)` 以设置 Web 应用的身份验证。
 
     ```csharp
     public partial class Startup

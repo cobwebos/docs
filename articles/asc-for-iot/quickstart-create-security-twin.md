@@ -2,24 +2,25 @@
 title: 为适用于 IoT 的 Azure 安全中心预览版创建安全模块孪生 | Microsoft Docs
 description: 了解如何创建与“适用于 IoT 的 Azure 安全中心”(ASC for IoT) 配合使用的模块孪生。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: c782692e-1284-4c54-9d76-567bc13787cc
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: af952b59a2f4924be79c0ac7dc728f1d9bd0d641
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 0e042942be63fdcd97c7cda6003e6d55376ca1a1
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200719"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616654"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>快速入门：创建 azureiotsecurity 模块孪生
 
@@ -56,8 +57,8 @@ ASC for IoT 利用模块孪生机制，并为每个设备维护一个名为 _azu
 若要手动为设备创建新的 _azureiotsecurity_ 模块孪生，请遵照以下说明操作： 
 
 1. 在 IoT 中心，找到并选择要为其创建安全模块孪生的设备。
-1. 单击设备，然后单击“添加模块标识”。
-1. 在“模块标识名称”字段中输入 **azureiotsecurity**。
+1. 单击设备，然后单击“添加模块标识”。 
+1. 在“模块标识名称”字段中输入 **azureiotsecurity**。 
 
 1. 单击“ **保存**”。 
 
@@ -65,11 +66,11 @@ ASC for IoT 利用模块孪生机制，并为每个设备维护一个名为 _azu
 
 验证特定的设备是否存在安全模块孪生：
 
-1. 在 Azure IoT 中心，从“资源管理器”菜单中选择“IoT 设备”。    
-1. 输入设备 ID，或者在“查询设备字段”中选择一个选项，然后单击“查询设备”。 
+1. 在 Azure IoT 中心，从“资源管理器”菜单中选择“IoT 设备”。      
+1. 输入设备 ID，或者在“查询设备字段”中选择一个选项，然后单击“查询设备”。   
     ![查询设备](./media/quickstart/verify-security-module-twin.png)
 1. 选择该设备或双击它，以打开“设备详细信息”页。 
-1. 选择“模块标识”菜单，在与设备关联的模块标识列表中，确认是否存在 **azureiotsecurity** 模块。 
+1. 选择“模块标识”菜单，在与设备关联的模块标识列表中，确认是否存在 **azureiotsecurity** 模块。  
     ![与设备关联的模块](./media/quickstart/verify-security-module-twin-3.png)
 
 

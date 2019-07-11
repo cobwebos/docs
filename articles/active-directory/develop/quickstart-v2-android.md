@@ -14,15 +14,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/26/2019
-ms.author: dadobali
+ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45252cc4d45e96c2bde4a4600630ea578a8d3009
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 547eafac8cc1acf2b60416f93804e819a1c549b0
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946730"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702759"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -48,7 +48,7 @@ ms.locfileid: "64946730"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要注册应用，请执行以下操作：
 > 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs)窗格。
-> 1. 输入应用程序的名称并选择“注册”。
+> 1. 输入应用程序的名称并选择“注册”  。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
@@ -57,9 +57,9 @@ ms.locfileid: "64946730"
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
 > 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://aka.ms/MobileAppReg)页。
-> 1. 选择“新注册”。
-> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
->      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `AndroidQuickstart`。
+> 1. 选择“新注册”。 
+> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
+>      - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `AndroidQuickstart`。
 >      - 可以跳过此页上的其他配置。 
 >      - 点击“`Register`”按钮。
 > 1. 单击新应用，然后转到`Authentication` > `Add Platform` > `Android`。    
@@ -124,13 +124,13 @@ ms.locfileid: "64946730"
 
 > [!div renderon="docs"]
 > 1. 解压缩该项目并将其在 Android Studio 中打开。
-> 1. 在“应用” > “资源” > “原始”中，打开 **auth_config.json**。
+> 1. 在“应用”   > “资源”   >   “原始”中，打开 **auth_config.json**。
 > 1. 编辑 **auth_config.json**，将其替换为 Azure 门户中的 JSON。 若要手动进行操作，请进行以下更改：
 >    ```javascript
 >    "client_id" : "ENTER_YOUR_APPLICATION_ID",
 >    "redirect_uri": "ENTER_YOUR_REDIRECT_URI", 
 >     ```
-> 1. 在“应用” > “清单”中，打开 **AndroidManifest.xml**。
+> 1. 在“应用”   >   “清单”中，打开 **AndroidManifest.xml**。
 > 1. 将下面的活动添加到 **manifest\application** 节点。 此代码片段将注册一个 **BrowserTabActivity**，以允许 OS 在完成身份验证后继续运行应用程序：
 >    ```xml
 >    <!--Intent filter to catch Microsoft's callback after Sign In-->
@@ -155,7 +155,7 @@ ms.locfileid: "64946730"
 
 ### <a name="getting-msal"></a>获取 MSAL
 
-MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 可以如下所述使用 Gradle 3.0+ 来安装它：在“依赖项”下的“Gradle 脚本” > “build.gradle (Module: app)”中添加以下内容：
+MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 可以如下所述使用 Gradle 3.0+ 来安装它：在“依赖项”  下的“Gradle 脚本”   > “build.gradle (Module: app)”  中添加以下内容：
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'

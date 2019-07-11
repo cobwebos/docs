@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5ef72f1db329d04809a1069c1916d1ffcfffe65
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 370771d44e2fbbf0fca7af453f7425ebc1b1bdcd
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509383"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612613"
 ---
 # <a name="what-is-conditional-access"></a>什么是条件访问？
 
@@ -85,7 +85,7 @@ ms.locfileid: "67509383"
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-拥有 [Microsoft 365 商业版许可证](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。 
+拥有 [Microsoft 365 商业版许可证](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。 
 
 ## <a name="next-steps"></a>后续步骤
 

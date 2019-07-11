@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: dd1644ad9b7fcee951b31997ab549f117530f635
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: fc47b00bb266bb57ecffbb522667ca67ac7c8c97
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808382"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656743"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>开始监视 Java Web 应用程序
 
@@ -57,7 +57,6 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
     | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
-   | **应用程序类型** | Java Web 应用程序 | 所监视的应用的类型 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ec1d5fb13d7fb191bfee6194e69a217bcaddbb9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 541253cf3a8f2628ea0e76f1115ddc4a290daf62
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482576"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655476"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
@@ -50,7 +50,7 @@ ms.locfileid: "67482576"
        - 对于 Web 应用程序，请提供应用的基 URL。 例如，`http://localhost:31544` 可以是本地计算机上运行的 Web 应用的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。
        - 对于公共客户端应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 `myapp://auth`。
 
-     若要查看 Web 应用程序或本机应用程序的特定示例，请参阅[快速入门](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts)。
+     若要查看 Web 应用程序或本机应用程序的特定示例，请参阅[快速入门](https://docs.microsoft.com/azure/active-directory/develop)。
 
 1. 完成后，选择“注册”  。
 
@@ -67,6 +67,6 @@ Azure AD 会将唯一的应用程序（客户端）ID 分配给应用，同时�
     - [将客户端应用程序配置为访问 Web API](quickstart-configure-app-access-web-apis.md)
     - [将应用程序配置为公开 Web API](quickstart-configure-app-expose-web-apis.md)
     - [修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)
-- 选择一个[快速入门](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts)，了解如何快速生成应用并添加功能，例如获取令牌、刷新令牌、进行用户登录、显示某些用户信息，等等。
+- 选择一个[快速入门](https://docs.microsoft.com/azure/active-directory/develop)，了解如何快速生成应用并添加功能，例如获取令牌、刷新令牌、进行用户登录、显示某些用户信息，等等。
 - 如需深入了解表示已注册应用程序和它们之间的关系的两个 Azure AD 对象，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 - 如需深入了解开发应用时应使用的品牌准则，请参阅[应用程序的品牌准则](howto-add-branding-in-azure-ad-apps.md)。
