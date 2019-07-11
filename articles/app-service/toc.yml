@@ -105,6 +105,10 @@
           href: web-sites-php-configure.md
         - name: 配置 Java
           href: configure-language-java.md
+        - name: 连接到本地资源
+          href: web-sites-integrate-with-vnet.md
+        - name: 配置 Azure 存储（容器）
+          href: configure-connect-to-azure-storage.md
     - name: “部署到 Azure”
       items:
         - name: 部署应用

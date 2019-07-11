@@ -1,0 +1,95 @@
+- name: Azure Kinect DK 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure Kinect DK
+      href: about-azure-kinect-dk.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 设置 Azure Kinect DK
+      href: set-up-azure-kinect-dk.md
+    - name: 将传感器流录制到文件中
+      href: record-sensor-streams-file.md
+    - name: 生成你的第一个应用程序
+      href: build-first-app.md
+    - name: 设置人体跟踪 SDK
+      href: body-sdk-setup.md
+    - name: 生成第一个人体跟踪应用程序
+      href: build-first-body-app.md
+- name: 概念
+  items:
+    - name: 深度相机
+      href: depth-camera.md
+    - name: 坐标系
+      href: coordinate-systems.md
+    - name: 人体跟踪关节
+      href: body-joints.md
+    - name: 人体跟踪索引映射
+      href: body-index-map.md
+- name: 操作指南
+  items:
+    - name: 使用传感器 SDK
+      items:
+        - name: 找到并打开设备
+          href: find-then-open-device.md
+        - name: 检索图像
+          href: retrieve-images.md
+        - name: 检索 IMU 样本
+          href: retrieve-imu-samples.md
+        - name: 访问麦克风
+          href: access-mics.md
+        - name: 使用图像转换
+          href: use-image-transformation.md
+        - name: 使用校准函数
+          href: use-calibration-functions.md
+        - name: 捕获设备同步
+          href: capture-device-synchronization.md
+        - name: 录制和播放
+          href: record-playback-api.md
+    - name: 使用人体跟踪 SDK
+      items:
+        - name: 获取人体跟踪结果
+          href: get-body-tracking-results.md
+        - name: 访问人体帧中的数据
+          href: access-data-body-frame.md
+    - name: 将 Azure Kinect 库添加到项目
+      href: add-library-to-project.md
+    - name: 更新 Azure Kinect 固件
+      href: update-device-firmware.md
+    - name: 将录制器与外部同步单元配合使用
+      href: record-external-synchronized-units.md
+- name: 工具
+  items:
+    - name: Azure Kinect 传感器 SDK
+      href: about-sensor-sdk.md
+    - name: Azure Kinect 查看器
+      href: azure-kinect-viewer.md
+    - name: Azure Kinect 录制器
+      href: azure-kinect-recorder.md
+    - name: Azure Kinect 固件工具
+      href: azure-kinect-firmware-tool.md
+- name: 资源
+  items:
+    - name: 下载传感器 SDK
+      href: sensor-sdk-download.md
+    - name: 下载人体跟踪 SDK
+      href: body-sdk-download.md
+    - name: 系统要求
+      href: system-requirements.md
+    - name: 硬件规格
+      href: hardware-specification.md
+    - name: 与 Kinect for Windows 的比较
+      href: windows-comparison.md
+    - name: Azure Kinect 支持
+      href: support.md
+    - name: Azure Kinect 故障排除
+      href: troubleshooting.md
+- name: 参考
+  items:
+    - name: 传感器 API
+      href: 'https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html'
+    - name: 人体跟踪 API
+      href: 'https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/index.html'
+    - name: 录制文件格式
+      href: record-file-format.md

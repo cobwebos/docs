@@ -460,11 +460,11 @@
               href: tutorial-query-graph.md
         - name: 操作指南
           items:
-            - name: 图数据建模
+            - name: 图形数据建模
               href: graph-modeling.md
-            - name: 图数据分区
+            - name: 关系图数据分区
               href: graph-partitioning.md
-            - name: 导入图数据
+            - name: 导入关系图数据
               href: bulk-executor-graph-dotnet.md
             - name: 优化 Gremlin 查询
               href: graph-execution-profile.md
@@ -797,6 +797,8 @@
       href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
+    - name: 多主数据库权益
+      href: multi-master-benefits.md
     - name: 用例
       items:
         - name: 常见用例
