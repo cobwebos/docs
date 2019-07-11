@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: larryfr
-ms.openlocfilehash: ceb45048d160603a3ee619e3ea0e69a0c188a9ad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ee8115a29911d0c3d1ccf87366f939b4184e1ba2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725783"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606897"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>教程：结合使用自定义视觉服务 ONNX 模型和 Windows ML（预览版）
 
@@ -35,7 +35,7 @@ ms.locfileid: "64725783"
 
 * 适用于内部版本 17738 或更高版本的 Windows SDK
 
-* 启用了“通用 Windows 平台开发”工作负载的 Visual Studio 2017 版本 15.7 或更高版本。
+* 启用了“通用 Windows 平台开发”工作负载的 Visual Studio 2017 版本 15.7 或更高版本  。
 
 * 已启用的“开发人员模式”。 有关详细信息，请参阅[启用设备以用于开发](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)文档。
 
@@ -57,13 +57,13 @@ ms.locfileid: "64725783"
 
 要使用自己的模型，请按照以下步骤操作：
 
-1. 使用自定义视觉服务[创建和训练](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)一个分类器。 若要导出模型，请选择一个“压缩”域，例如“常规(压缩)”。 若要导出现有的分类器，请选择右上角的齿轮图标，将域转换为压缩域。 在“设置”中，选择一个压缩模型，进行保存，然后训练项目。  
+1. 使用自定义视觉服务[创建和训练](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)一个分类器。 若要导出模型，请选择一个“压缩”域，例如“常规(压缩)”。   若要导出现有的分类器，请选择右上角的齿轮图标，将域转换为压缩域。 在“设置”中，选择一个压缩模型，进行保存，然后训练项目。   
 
-1. 转到“性能”选项卡即可[导出模型](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)。选择一个使用压缩域训练的迭代，此时会显示“导出”按钮。 选择“导出”、“ONNX”、“ONNX1.2”，然后选择“导出”。 文件就绪以后，请选择“下载”按钮。
+1. 转到“性能”选项卡即可[导出模型](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)。选择一个使用压缩域训练的迭代，此时会显示“导出”按钮。 选择“导出”、“ONNX”、“ONNX1.2”，然后选择“导出”。     文件就绪以后，请选择“下载”按钮  。
 
 1. 将 ONNX 文件拖到项目的 __Assets__ 文件夹中。 
 
-1. 在解决方案资源管理器中，右键单击 Assets 文件夹，然后选择“添加现有项”。 选择 ONNX 文件。
+1. 在解决方案资源管理器中，右键单击 Assets 文件夹，然后选择“添加现有项”。  选择 ONNX 文件。
 
 1. 在解决方案资源管理器中，从 Assets 文件夹选择 ONNX 文件。 更改文件的以下属性：
 

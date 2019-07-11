@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: d297addbeffcc530ba676e4132f9f0ebdceac3c9
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d8738357a3bad6626ef6d79248aef1c4d2cb1ead
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466994"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603089"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>快速入门：使用适用于 .NET Framework 的语音 SDK (Windows) 识别语音
 
@@ -56,11 +56,11 @@ ms.locfileid: "65466994"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-1. 从菜单栏中，选择“构建” > “构建解决方案”。 现在，编译代码时应不会提示错误。
+1. 从菜单栏中，选择“构建” > “构建解决方案”   。 现在，编译代码时应不会提示错误。
 
     ![Visual Studio 应用程序的屏幕截图，其中突出显示了“生成解决方案”选项](media/sdk/qs-csharp-dotnet-windows-08-build.png "成功生成")
 
-1. 在菜单栏中，选择“调试” > “开始调试”，或按 F5 以启动应用程序。
+1. 在菜单栏中，选择“调试” > “开始调试”，或按 F5 以启动应用程序    。
 
     ![Visual Studio 应用程序的屏幕截图，其中突出显示了“启动调试”选项](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "启动应用进入调试")
 

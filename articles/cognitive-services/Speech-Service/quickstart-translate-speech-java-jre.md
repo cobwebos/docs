@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 69cb48df4e765250247605fb5c4e1f421554fd20
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 68567e673cf6fb53b8d9b6f7b9ef96aee691ac3a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467021"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604958"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>快速入门：使用适用于 Java 的语音 SDK 转换语音
 
@@ -59,9 +59,9 @@ ms.locfileid: "65467021"
 
 ## <a name="add-sample-code"></a>添加示例代码
 
-1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。
+1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。   
 
-1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。
+1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。   
 
    ![“新建 Java 类”窗口的屏幕截图](media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "65467021"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-按 F11，或选择“运行” > “调试”。
+按 F11，或选择“运行” > “调试”。  
 
 通过麦克风提供的语音输入将转译为德语，并记录到控制台窗口中。 按“Enter”停止捕获语音。
 

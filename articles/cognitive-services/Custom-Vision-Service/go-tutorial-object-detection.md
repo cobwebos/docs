@@ -6,16 +6,16 @@ services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: daauld
-ms.openlocfilehash: 77ba3144afcc48d68466341c154bc1d8eef54d3b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 017fdf45da6da29e3b571e5eb03549e5e13feda8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479200"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593021"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>快速入门：使用自定义视觉 Go SDK 创建对象检测项目
 
@@ -44,7 +44,7 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ## <a name="add-the-code"></a>添加代码
 
-在首选项目目录中创建名为 sample.go 的新文件。
+在首选项目目录中创建名为 sample.go  的新文件。
 
 ### <a name="create-the-custom-vision-service-project"></a>创建自定义视觉服务项目
 
@@ -96,7 +96,7 @@ func main() {
 
 ### <a name="create-tags-in-the-project"></a>在项目中创建标记
 
-若要在项目中创建分类标记，请将以下代码添加到 sample.go 末尾：
+若要在项目中创建分类标记，请将以下代码添加到 sample.go  末尾：
 
 ```Go
     # Make two tags in the new project
@@ -267,7 +267,7 @@ func main() {
 
 ## <a name="run-the-application"></a>运行应用程序
 
-运行 sample.go。
+运行 sample.go  。
 
 ```powershell
 go run sample.go

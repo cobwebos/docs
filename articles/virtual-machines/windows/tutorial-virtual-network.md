@@ -4,7 +4,7 @@ description: 本教程介绍如何使用 Azure PowerShell 为 Windows 虚拟机�
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 568631705b590bb2ee312b9519164be17c8443ab
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d283a18d0ec2391b05210b785351dda0ca0ad416
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984233"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707909"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
 
@@ -58,14 +58,14 @@ Azure 虚拟网络在虚拟机、Internet 与其他 Azure 服务（例如 Azure 
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
 
 
 ## <a name="create-subnet"></a>创建子网 
 
 本教程会创建包含两个子网的单个虚拟网络。 一个前端子网用于托管 Web 应用程序，一个后端子网用于托管数据库服务器。
 
-创建虚拟网络之前，需使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“EastUS”位置创建名为 *myRGNetwork* 的资源组：
+创建虚拟网络之前，需使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“EastUS”  位置创建名为 *myRGNetwork* 的资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
@@ -89,7 +89,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>创建虚拟网络
 
-通过 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 使用 *myFrontendSubnet* 和 *myBackendSubnet* 创建名为“myVNet”的 VNET：
+通过 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 使用 *myFrontendSubnet* 和 *myBackendSubnet* 创建名为“myVNet”  的 VNET：
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -184,7 +184,7 @@ $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-可通过为后端子网创建 NSG，将内部流量限制为仅从 myFrontendVM 流向 myBackendVM。 以下示例创建名为“myBackendNSGRule”的 NSG 规则：
+可通过为后端子网创建 NSG，将内部流量限制为仅从 myFrontendVM  流向 myBackendVM  。 以下示例创建名为“myBackendNSGRule”  的 NSG 规则：
 
 ```azurepowershell-interactive
 $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
@@ -244,7 +244,7 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 创建本教程的后端 VM 的最简单方法是使用 SQL Server 映像。 本教程仅使用数据库服务器创建 VM，但不提供有关访问数据库的信息。
 
-创建 myBackendNic：
+创建 myBackendNic  ：
 
 ```azurepowershell-interactive
 $backendNic = New-AzNetworkInterface `
@@ -260,7 +260,7 @@ $backendNic = New-AzNetworkInterface `
 $cred = Get-Credential
 ```
 
-创建 myBackendVM。
+创建 myBackendVM  。
 
 ```azurepowershell-interactive
 New-AzVM `

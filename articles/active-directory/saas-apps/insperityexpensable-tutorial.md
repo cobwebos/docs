@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: dd0c35d23541512e1ed021a57526ac50f7a68e26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43b24bec557d1cc879be9568bea451f1a8b0b310
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100148"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625317"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>教程：Azure Active Directory 与 Insperity ExpensAble 的集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "67100148"
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://server.expensable.com/esapp/Authenticate?companyId=<company ID>`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Insperity ExpensAble 客户端支持团队](http://expensable.com/support/support-overview)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Insperity ExpensAble 客户端支持团队](https://www.insperity.com/products/expense-management/support/express/)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -126,7 +126,7 @@ ms.locfileid: "67100148"
 
 ### <a name="configure-insperity-expensable-single-sign-on"></a>配置 Insperity ExpensAble 单一登录
 
-若要在 **Insperity ExpensAble** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Insperity ExpensAble 支持团队](http://expensable.com/support/support-overview)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Insperity ExpensAble** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Insperity ExpensAble 支持团队](https://www.insperity.com/products/expense-management/support/express/)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -181,7 +181,7 @@ ms.locfileid: "67100148"
 
 ### <a name="create-insperity-expensable-test-user"></a>创建 Insperity ExpensAble 测试用户
 
-在本部分，我们将在 Insperity ExpensAble 中创建名为 Britta Simon 的用户。 在  [Insperity ExpensAble 支持团队](http://expensable.com/support/support-overview)的配合下，将用户添加到 Insperity ExpensAble 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 Insperity ExpensAble 中创建名为 Britta Simon 的用户。 在  [Insperity ExpensAble 支持团队](https://www.insperity.com/products/expense-management/support/express/)的配合下，将用户添加到 Insperity ExpensAble 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

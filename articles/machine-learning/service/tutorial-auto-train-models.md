@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 907383c057c0c1eebee6550a0d1e9c75dd88513c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8cedf7abf71a772a0b770dd2f82d9a5508f5dd75
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417305"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622373"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>教程：通过自动化机器学习来构建回归模型
 
@@ -1127,6 +1127,8 @@ print(y_predict[:10])
 创建散点图来可视化与实际成本值相比的预测成本值。 以下代码使用 `distance` 特征作为 x 轴，使用行程 `cost` 作为 y 轴。 若要比较每个行程距离值处的预测成本的差异，前 100 个预测的和实际的成本值需创建为单独的系列。 观察绘图，其中显示的距离/成本关系几乎为线性的，并且大多数情况下，对于同样的行程距离，预测的成本值非常接近于实际成本值。
 
 ```python
+%matplotlib inline
+
 import matplotlib.pyplot as plt
 
 fig = plt.figure(figsize=(14, 10))

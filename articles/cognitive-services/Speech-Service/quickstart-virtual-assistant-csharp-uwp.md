@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: travisw
-ms.custom: ''
-ms.openlocfilehash: 4044f8d48efae4e8423f780c85e0f3ccfde12461
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 22c18b573e7107163f858c79956ca6f5380f6834
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467053"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604978"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>快速入门：使用语音 SDK 创建语音优先虚拟助手 (UWP)
 
@@ -81,7 +80,7 @@ ms.locfileid: "67467053"
     </Page>
     ```
 
-1. 打开代码隐藏源文件 `MainPage.xaml.cs`。 你会发现它分组到 `MainPage.xaml` 下。 将内容替换为以下代码。 下面是此示例包含的内容： 
+1. 打开代码隐藏源文件 `MainPage.xaml.cs`。 你会发现它分组到 `MainPage.xaml` 下。 将内容替换为以下代码。 下面是此示例包含的内容：
 
     * 针对 Speech 和 Speech.Dialog 命名空间的 Using 语句
     * 一个绑定到按钮处理程序的简单实现，用于确保麦克风访问

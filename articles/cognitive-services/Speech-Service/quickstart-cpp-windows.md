@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 672a691cdad5c83583ea840907fa7dd193c7ae3a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d63d1c96077642e660e2272cbd8c2ee1250b1471
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466967"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606494"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Windows 上的 C++ 中识别语音
 
@@ -48,11 +48,11 @@ ms.locfileid: "65466967"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-1. 构建应用程序。 从菜单栏中，选择“构建” > “构建解决方案”。 编译代码时应不会出错。
+1. 构建应用程序。 从菜单栏中，选择“构建” > “构建解决方案”   。 编译代码时应不会出错。
 
    ![Visual Studio 应用程序的屏幕截图，其中突出显示了“生成解决方案”选项](media/sdk/qs-cpp-windows-06-build.png)
 
-1. 启动应用程序。 在菜单栏中，选择“调试” > “开始调试”，或按 F5。
+1. 启动应用程序。 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
 
    ![Visual Studio 应用程序的屏幕截图，其中突出显示了“启动调试”选项](media/sdk/qs-cpp-windows-07-start-debugging.png)
 

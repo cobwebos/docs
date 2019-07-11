@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: dd8e760e658715b89bf45718ac571ccaeb5ade96
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: b55c6535184a905790f575b98c1b5a60a83f5daf
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465571"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606384"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>快速入门：使用适用于 Unity 的语音 SDK (Beta) 识别语音
 
@@ -37,7 +37,7 @@ ms.locfileid: "67465571"
 
 * [Unity 2018.3 或更高版本](https://store.unity.com/)，以及[支持 UWP ARM64 的 Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-     * 为了支持 ARM64，请安装[适用于 ARM64 的可选版本，以及适用于 ARM64 的 Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) 
+     * 为了支持 ARM64，请安装[适用于 ARM64 的可选版本，以及适用于 ARM64 的 Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/)
 * 语音服务的订阅密钥。 [免费获得一个](get-started.md)。
 * 能够访问计算机的麦克风。
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/22/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6e28665dfcdaec55ba4f1fa671e9439a9cf4aa7d
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 46595cdf665158d019c9b6def19ff6609db803bc
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67338647"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602984"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>快速入门：使用 Python 获取“文本转语音”语音的列表
 

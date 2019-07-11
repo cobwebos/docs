@@ -4,18 +4,17 @@ titleSuffix: Azure Open Datasets
 description: 了解如何利用便捷的 Azure 开放数据集和功能强大的 Azure 机器学习服务来创建回归模型，以预测纽约出租车车费价格。
 services: open-datasets
 ms.service: open-datasets
-ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: e753793b5da59d09a21991831046a43899c62ef2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a1df79c59ede8cd9ad72a2ebb2edb4bdb64b802a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027513"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588972"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>教程：使用自动化机器学习和开放数据集生成回归模型
 
@@ -44,7 +43,7 @@ ms.locfileid: "65027513"
 
 虽然本示例结合使用 Anaconda 环境和 Jupyter 笔记本，但你可以在任意 3.6.x 环境中使用任何文本编辑器或 IDE 来运行此代码。 若要新建开发环境，请按照以下步骤操作。
 
-1. [下载](https://www.anaconda.com/distribution/)并安装 Anaconda（若尚未安装的话），再选择“Python 3.7 版本”。
+1. [下载](https://www.anaconda.com/distribution/)并安装 Anaconda（若尚未安装的话），再选择“Python 3.7 版本”  。
 1. 打开 Anaconda 提示符，并新建环境。 下载组件和包时，创建环境需要花费几分钟。
     ```
     conda create -n tutorialenv python=3.6.5
@@ -70,7 +69,7 @@ ms.locfileid: "65027513"
     jupyter notebook
     ```
 
-完成上面这些步骤后，克隆[开放数据集笔记本存储库](https://github.com/Azure/OpenDatasetsNotebooks)，再打开并运行“tutorials/taxi-automl/01-tutorial-opendatasets-automl.ipynb”笔记本。
+完成上面这些步骤后，克隆[开放数据集笔记本存储库](https://github.com/Azure/OpenDatasetsNotebooks)，再打开并运行“tutorials/taxi-automl/01-tutorial-opendatasets-automl.ipynb”  笔记本。
 
 ## <a name="download-and-prepare-data"></a>下载并准备数据
 
@@ -1926,10 +1925,10 @@ print(1 - mean_abs_percent_error)
 
 如果不打算使用已创建的资源，请删除它们，以免产生任何费用。
 
-1. 在 Azure 门户中，选择最左侧的“资源组”。
+1. 在 Azure 门户中，选择最左侧的“资源组”  。
 1. 从列表中选择已创建的资源组。
-1. 选择“删除资源组”。
-1. 输入资源组名称。 然后选择“删除”。
+1. 选择“删除资源组”  。
+1. 输入资源组名称。 然后选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

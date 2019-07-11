@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/30/2019
 ms.author: jowargo
-ms.openlocfilehash: c21b1e38077575fc49221150a61693a23aa408a3
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: f2efa9b7e1e534f93e4ea01ba52740c8c5ac7b02
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509095"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653854"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>教程：使用 Azure 通知中心和 Google Firebase Cloud Messaging 将通知推送到 Android 设备
 
@@ -88,7 +88,26 @@ ms.locfileid: "67509095"
 
 ### <a name="add-google-play-services-to-the-project"></a>将 Google Play 服务添加到项目
 
-[!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
+1. 在 Android Studio 中，在菜单上选择“工具”  ，然后选择“SDK 管理器”  。 
+2. 选择项目中使用的 Android SDK 的目标版本。 然后选择“显示包详细信息”  。 
+
+    ![Android SDK 管理器 - 选择目标版本](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. 选择“Google API”  （如果尚未安装）。
+
+    ![Android SDK 管理器 - 选择了“Google API”](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. 切换到“SDK 工具”选项卡。  如果尚未安装 Google Play Services，请选择“Google Play Services”，如下图所示。  然后，选择“应用”  以进行安装。 记下 SDK 路径，因为后面的步骤将要用到。
+
+    ![Android SDK 管理器 - 选择了“Google Play 服务”](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. 如果看到了“确认更改”  对话框，请选择“确定”  。 组件安装程序将安装所请求的组件。 在安装组件后，选择“完成”  。
+4. 选择“确定”  以关闭“新项目的设置”  对话框。  
+5. 选择工具栏中的“立即同步”  图标。
+1. 打开 AndroidManifest.xml 文件，然后将以下标记添加到应用程序  标记。
+
+    ```xml
+    <meta-data android:name="com.google.android.gms.version"
+         android:value="@integer/google_play_services_version" />
+    ```
+
 
 ### <a name="add-azure-notification-hubs-libraries"></a>添加 Azure 通知中心库
 
@@ -354,7 +373,6 @@ ms.locfileid: "67509095"
 
         mainActivity = this;
         registerWithNotificationHubs();
-        MyHandler.createChannelAndHandleNotifications(getApplicationContext());
     }
     ```
 
@@ -526,7 +544,7 @@ ms.locfileid: "67509095"
 在本教程中，你已使用 Firebase Cloud Messaging 将通知广播到在该服务中注册的所有 Android 设备。 若要了解如何向特定的设备推送通知，请转到以下教程：
 
 > [!div class="nextstepaction"]
->[教程：向特定 Android 设备推送通知](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
+>[教程：向特定 Android 设备推送通知](push-notifications-android-specific-devices-firebase-cloud-messaging.md)
 
 <!-- Images. -->
 

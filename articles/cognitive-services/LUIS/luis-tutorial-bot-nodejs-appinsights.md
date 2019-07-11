@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5459fb5d8304a35b3f009354c446514a2831c513
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: cfed5477df75350f24e77786117e85b9c728c49a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155277"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657756"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>将 LUIS 结果从以 Node.js 编写的机器人添加到 Application Insights
 本教程将机器人和语言理解信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 有了该数据后，可使用 Kusto 语言或 Power BI 对其进行查询，以便对话语的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
@@ -205,7 +205,7 @@ ms.locfileid: "67155277"
     ![查看 Application Insights 中存储的 LUIS 自定义属性](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-nodejs.png)
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>查询 Application Insights，获取意向、评分和陈述
-Application Insights 支持使用 [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) 语言来查询数据并将其导出到 [Power BI](https://powerbi.microsoft.com)。 
+Application Insights 支持使用 [Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) 语言来查询数据并将其导出到 [Power BI](https://powerbi.microsoft.com)。 
 
 1. 选择“Log Analytics”。  此时将打开一个新窗口，窗口顶部为一个查询窗口，查询窗口下方为一个数据表窗口。 如果之前使用过数据库，则会熟悉这种布局。 此查询代表以前筛选的数据。 **CustomDimensions** 列包含机器人和 LUIS 信息。
 1. 若要拉取首要意向、评分和话语，请在查询窗口的最后一行（`|top...` 行）上方添加以下内容：

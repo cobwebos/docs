@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 20920a04c5b85c9eede7d7b249dd6e0548308240
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0fef3bffd30c19d0313e5fce7eb610ae7f6349f5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883400"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606997"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>快速入门：使用 Python 分析文本内容中是否存在令人反感的材料
 
@@ -32,13 +32,13 @@ ms.locfileid: "55883400"
 
 打开命令提示符并运行以下命令以安装内容审查器 Python SDK：
 
-```
+```bash
 pip install azure-cognitiveservices-vision-contentmoderator
 ```
 
 ## <a name="import-modules"></a>导入模块
 
-创建名为 ContentModeratorQS.py 的新 Python 脚本，并添加以下代码来导入 SDK 的必要部分。
+创建名为 ContentModeratorQS.py 的新 Python 脚本，并添加以下代码来导入 SDK 的必要部分  。
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=1-10)]
 
@@ -61,13 +61,13 @@ pip install azure-cognitiveservices-vision-contentmoderator
 
 ## <a name="query-the-moderator-service"></a>查询审查器服务
 
-使用订阅密钥和终结点 URL 创建 ContentModeratorClient 实例。 然后，使用其成员 TextModerationOperations 实例调用审查 API。 有关如何调用的详细信息，请参阅 **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** 参考文档。
+使用订阅密钥和终结点 URL 创建 ContentModeratorClient 实例  。 然后，使用其成员 TextModerationOperations 实例调用审查 API  。 有关如何调用的详细信息，请参阅 **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** 参考文档。
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
 
 ## <a name="print-the-response"></a>输出响应
 
-最后，检查调用是否成功完成并返回“屏幕”实例。 然后将返回的数据输出到控制台。
+最后，检查调用是否成功完成并返回“屏幕”实例  。 然后将返回的数据输出到控制台。
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=38-39)]
 

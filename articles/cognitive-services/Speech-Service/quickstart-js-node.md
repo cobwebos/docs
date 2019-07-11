@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 1/16/2019
+ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 5fa0b6d2a361fdbf372ba73fed9d8e2c48cb3630
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9d233de8a9cdd4b9a3637edcd1c6196b4ad16fd2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871211"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605129"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>快速入门：使用适用于 Node.js 的语音 SDK 识别语音
 
@@ -54,7 +54,7 @@ npm install microsoft-cognitiveservices-speech-sdk
 在文件夹中创建名为 `index.js` 的新文件，使用文本编辑器打开此文件。
 
 > [!NOTE]
-> 在 Node.js 中，语音 SDK 不支持麦克风或“文件”数据类型。 两者仅受浏览器支持。 请改用语音 SDK 的**流**接口，可通过 `AudioInputStream.createPushStream()` 或 `AudioInputStream.createPullStream()` 来实现。
+> 在 Node.js 中，语音 SDK 不支持麦克风或“文件”数据类型。  两者仅受浏览器支持。 请改用语音 SDK 的**流**接口，可通过 `AudioInputStream.createPushStream()` 或 `AudioInputStream.createPullStream()` 来实现。
 
 本示例使用 `PushAudioInputStream` 接口。
 
@@ -96,7 +96,7 @@ SpeechRecognitionResult {
 
 也可以通过 Visual Studio Code 运行示例。 遵循以下步骤安装、打开并运行快速入门项目：
 
-1. 启动 Visual Studio Code。 选择“打开文件夹”。 然后浏览到 quickstart 文件夹。
+1. 启动 Visual Studio Code。 选择“打开文件夹”。  然后浏览到 quickstart 文件夹。
 
    ![打开文件夹](media/sdk/qs-js-node-01-open_project.png)
 
@@ -112,7 +112,7 @@ SpeechRecognitionResult {
 
    ![在第 16 行包含断点的 index.js](media/sdk/qs-js-node-04-setup_breakpoint.png)
 
-1. 若要开始调试，请按 F5 或从菜单中选择“调试/开始调试”。
+1. 若要开始调试，请按 F5 或从菜单中选择“调试/开始调试”。 
 
    ![调试菜单](media/sdk/qs-js-node-05-start_debugging.png)
 

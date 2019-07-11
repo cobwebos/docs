@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c90d0d2596eb6b8650e2d9809b23bb0e184d97c0
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4837867188721b13b3f4cb64245ae85a1e32fe50
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547821"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656626"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用
 
@@ -78,7 +78,7 @@ dotnet ef database update
 dotnet run
 ```
 
-在浏览器中导航至 `http://localhost:5000` 。 选择“新建”链接，创建几个待办事项。
+在浏览器中导航至 `http://localhost:5000` 。 选择“新建”  链接，创建几个待办事项  。
 
 ![已成功连接到 SQL 数据库](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
@@ -100,7 +100,7 @@ dotnet run
 
 在 Cloud Shell 中，使用 [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) 命令创建 SQL 数据库逻辑服务器。
 
-将 \<server-name> 占位符替换为唯一的 SQL 数据库名称。 此名称用作 SQL 数据库终结点 `<server-name>.database.windows.net` 的一部分，因此必须在 Azure 的所有逻辑服务器中具有唯一性。 它只能包含小写字母、数字及连字符(-)，长度必须为 3 到 50 个字符。 此外，将 \<db-username> 和 \< 分别替换为所选用户名和密码。 
+将 \<server-name> 占位符替换为唯一的 SQL 数据库名称  。 此名称用作 SQL 数据库终结点 `<server-name>.database.windows.net` 的一部分，因此必须在 Azure 的所有逻辑服务器中具有唯一性。 它只能包含小写字母、数字及连字符(-)，长度必须为 3 到 50 个字符。 此外，将 \<db-username> 和 \< 分别替换为所选用户名和密码   。 
 
 
 ```azurecli-interactive
@@ -145,7 +145,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>创建连接字符串
 
-将下列字符串替换为先前所使用的 \<server-name>、\<db-username> 和 \<db-password>。
+将下列字符串替换为先前所使用的 \<server-name>、\<db-username> 和 \<db-password>    。
 
 ```
 Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
@@ -171,7 +171,7 @@ Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-u
 
 ### <a name="configure-an-environment-variable"></a>配置环境变量
 
-若要为 Azure 应用设置连接字符串，请使用 Cloud Shell 中的 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 在下列命令中，将 \<app-name> 和 \<connection-string> 参数替换为先前创建的连接字符串。
+若要为 Azure 应用设置连接字符串，请使用 Cloud Shell 中的 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 在下列命令中，将 \<app-name> 和 \<connection-string> 参数替换为先前创建的连接字符串   。
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
@@ -179,7 +179,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 接下来，将 `ASPNETCORE_ENVIRONMENT` 应用设置设置为_生产_。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
 
-以下示例在 Azure 应用中配置 `ASPNETCORE_ENVIRONMENT` 应用设置。 替换 \<app-name> 占位符。
+以下示例在 Azure 应用中配置 `ASPNETCORE_ENVIRONMENT` 应用设置。 替换 \<app-name> 占位符  。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
@@ -262,7 +262,7 @@ http://<app-name>.azurewebsites.net
 
 ![在 Azure 应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-祝贺你！ 正在 Linux 应用服务中运行数据驱动的 .NET Core 应用。
+祝贺你！  正在 Linux 应用服务中运行数据驱动的 .NET Core 应用。
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 
@@ -362,7 +362,7 @@ git push azure master
 
 ## <a name="stream-diagnostic-logs"></a>流式传输诊断日志
 
-示例项目已遵循了 [Azure 中的 ASP.NET Core 日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure)中的指南，并且进行了两个配置更改：
+示例项目已遵循了 [Azure 中的 ASP.NET Core 日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider)中的指南，并且进行了两个配置更改：
 
 - 在 *DotNetCoreSqlDb.csproj* 中包括了对 `Microsoft.Extensions.Logging.AzureAppServices` 的引用。
 - 在 *Startup.cs* 中调用了 `loggerFactory.AddAzureWebAppDiagnostics()`。
@@ -379,11 +379,11 @@ git push azure master
 
 转到 [Azure 门户](https://portal.azure.com)查看创建的应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。 
 
 ![在门户中导航到 Azure 应用](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
 
-默认情况下，门户将显示应用的“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示应用的  “概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
 

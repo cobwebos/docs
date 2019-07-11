@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: f78555b37cc82c1e97a6f51ec504bc47937ee8c4
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: d09ed0585250d078f728aa4e7272cca147a40c38
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493415"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612367"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
@@ -191,7 +191,7 @@ ms.locfileid: "66493415"
 
 ## <a name="define-a-query-to-analyze-input-data"></a>定义用于分析输入数据的查询
 
-下一步是创建一个分析实时数据的转换。 请使用[流分析查询语言](https://msdn.microsoft.com/library/dn834998.aspx)来定义转换查询。 在本教程中使用的查询可检测电话数据中的欺诈性呼叫。
+下一步是创建一个分析实时数据的转换。 请使用[流分析查询语言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)来定义转换查询。 在本教程中使用的查询可检测电话数据中的欺诈性呼叫。
 
 在此示例中，同一用户在五秒钟内在不同的位置发起了欺诈性呼叫。 例如，同一用户不能合法地同时从美国和澳大利亚发起呼叫。 若要定义流分析作业的转换查询，请执行以下操作：
 
@@ -212,7 +212,7 @@ ms.locfileid: "66493415"
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   若要检查欺诈性呼叫，可根据 `CallRecTime` 值来自联接流数据。 然后，可以查找 `CallingIMSI` 值（始发号码）相同，但 `SwitchNum` 值（来源国家/地区）不同的呼叫记录。 当对流数据使用 JOIN 操作时，该联接必须对可以及时分隔匹配行的程度施加一定限制。 由于流数据是无限的，因此请使用 [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) 函数在联接的 **ON** 子句中指定关系的时间限制。
+   若要检查欺诈性呼叫，可根据 `CallRecTime` 值来自联接流数据。 然后，可以查找 `CallingIMSI` 值（始发号码）相同，但 `SwitchNum` 值（来源国家/地区）不同的呼叫记录。 当对流数据使用 JOIN 操作时，该联接必须对可以及时分隔匹配行的程度施加一定限制。 由于流数据是无限的，因此请使用 [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics) 函数在联接的 **ON** 子句中指定关系的时间限制。
 
    除 **DATEDIFF** 函数以外，此查询就像正常的 SQL 联接一样。 此查询中使用的 **DATEDIFF** 函数是特定于流分析的，必须显示在 `ON...BETWEEN` 子句中。
 

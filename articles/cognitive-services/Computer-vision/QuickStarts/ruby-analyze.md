@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2018
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 92793a583fc8681d610db3549891dff13529806d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c69db15f4db16dcbeadc4a21ff7a6b7bfcdb4424
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995092"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604227"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-ruby-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Ruby 分析远程图像
 
@@ -41,7 +41,7 @@ ms.locfileid: "59995092"
     1. （可选）将 `http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\` 替换为要分析的其他图像的 URL。
 1. 将代码保存为以 `.rb` 为扩展名的文件。 例如，`analyze-image.rb`。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `ruby` 命令运行示例。 例如，`ruby analyze-image.rb`。
+1. 在提示符处，使用 `ruby` 命令运行示例。 例如，`ruby analyze-image.rb` 。
 
 ```ruby
 require 'net/http'

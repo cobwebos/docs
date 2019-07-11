@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e76b36d03f9d1d08e506be4e09933cbe56b8199
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: ac9647bf6a9e2e763bcfb6e3d840cdccd2b6c305
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544608"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595012"
 ---
 # <a name="tutorial-integrate-clever-nelly-with-azure-active-directory"></a>教程：将 Clever Nelly 与 Azure Active Directory 集成
 
@@ -120,7 +120,7 @@ ms.locfileid: "67544608"
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-在本部分中，你将在 Azure 门户中创建一个名为 B.Simon 的测试用户。
+在本部分中，将在 Azure 门户中创建一个名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
 1. 选择屏幕顶部的“新建用户”  。
@@ -162,6 +162,6 @@ ms.locfileid: "67544608"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

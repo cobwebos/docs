@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6c4636fe370a4046b1c5020aee249529f1498639
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 16c32fc14805ac8ae1412671b2bb400456b4ab7d
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155517"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603649"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
 
@@ -245,7 +245,7 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
 3. 接下来，将 rulClassifier 模块消息的路由添加到 turbofanRouter 模块：
 
    ```json
-   "classifierToRouter": "FROM /messages/modules/classifier/outputs/amloutput INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/rulInput\")"
+   "classifierToRouter": "FROM /messages/modules/turbofanRulClassifier/outputs/amloutput INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/rulInput\")"
    ```
 
 #### <a name="outputs"></a>Outputs
@@ -255,7 +255,7 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
 1. Program.cs 定义了 SendMessageToClassifier() 方法，后者使用模块客户端通过路由将消息发送到 RUL 分类器：
 
    ```json
-   "routerToClassifier": "FROM /messages/modules/turbofanRouter/outputs/classOutput INTO BrokeredEndpoint(\"/modules/classifier/inputs/amlInput\")"
+   "routerToClassifier": "FROM /messages/modules/turbofanRouter/outputs/classOutput INTO BrokeredEndpoint(\"/modules/turbofanRulClassifier/inputs/amlInput\")"
    ```
 
 2. SendRulMessageToIotHub() 使用模块客户端通过路由仅将设备的 RUL 数据发送到 IoT 中心：
@@ -314,7 +314,7 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
 ### <a name="create-module-and-copy-files"></a>创建模块和复制文件
 
-1. 在命令面板中，搜索并选择“Python:  选择解释器”。
+1. 在命令面板中，搜索并选择“Python:**Select Interpreter**。
 
 1. 选择在 C:\\Python37 中找到的解释器。
 

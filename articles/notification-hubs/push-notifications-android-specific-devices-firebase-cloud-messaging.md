@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/30/2019
 ms.author: jowargo
-ms.openlocfilehash: f4a0da5d3ef0dd2d5ae04a2cc1b07ddb0a649bef
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dd11696ea4a90e61408a03400fa3315ee7eaff5f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205395"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653511"
 ---
 # <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>教程：使用 Azure 通知中心和 Google Firebase Cloud Messaging (FCM) 将通知推送到特定的 Android 设备
 
@@ -329,7 +329,7 @@ ms.locfileid: "65205395"
 在本教程中，已向注册类别的特定 Android 设备发送了广播通知。 若要了解如何向特定的用户推送通知，请转到以下教程：
 
 > [!div class="nextstepaction"]
->[向特定用户推送通知](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md)
+>[向特定用户推送通知](push-notifications-android-specific-users-firebase-cloud-messaging.md)
 
 <!-- Images. -->
 [A1]: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG

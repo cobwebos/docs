@@ -4,7 +4,7 @@ description: 本教程介绍如何通过 Azure CLI 使用虚拟机规模集在 L
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2f2ebf5eb52c3e99e98fa5078182491a394cc6f0
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: afbb3ed022f0a4d0e59e7c3eca4da24737c4d0a6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882340"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695417"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>教程：使用 Azure CLI 在 Linux 上创建虚拟机规模集和部署高度可用的应用
 
@@ -52,7 +52,7 @@ ms.locfileid: "54882340"
 
 上一篇教程已介绍[如何使用 cloud-init 在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)。 可使用同一个 cloud-init 配置文件安装 NGINX 并运行简单的“Hello World”Node.js 应用。
 
-在当前 shell 中，创建名为“cloud-init.txt”的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 输入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 请确保已正确复制整个 cloud-init 文件，尤其是第一行：
+在当前 shell 中，创建名为“cloud-init.txt”  的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 输入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 请确保已正确复制整个 cloud-init 文件，尤其是第一行：
 
 ```yaml
 #cloud-config
@@ -98,13 +98,13 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](/cli/azure/group#az-group-create) 创建资源组，才能创建规模集。 以下示例在“eastus”位置创建名为“myResourceGroupScaleSet”的资源组：
+使用 [az group create](/cli/azure/group#az-group-create) 创建资源组，才能创建规模集。 以下示例在“eastus”  位置创建名为“myResourceGroupScaleSet”  的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroupScaleSet --location eastus
 ```
 
-现在，使用 [az vmss create](/cli/azure/vmss#az-vmss-create) 创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，使用 cloud-int 文件自定义 VM，并生成 SSH 密钥（如果不存在）：
+现在，使用 [az vmss create](/cli/azure/vmss#az-vmss-create) 创建虚拟机规模集。 以下示例创建名为“myScaleSet”  的规模集，使用 cloud-int 文件自定义 VM，并生成 SSH 密钥（如果不存在）：
 
 ```azurecli-interactive
 az vmss create \
@@ -123,7 +123,7 @@ az vmss create \
 ## <a name="allow-web-traffic"></a>允许 Web 流量
 已自动创建一个负载均衡器，作为虚拟机规模集的一部分。 负载均衡器使用负载均衡器规则将流量分配到一组定义的 VM。 可以在下一篇教程[如何对 Azure 中的虚拟机进行负载均衡](tutorial-load-balancer.md)中详细了解负载均衡器的概念和配置。
 
-若要允许通信流到达 Web 应用，请使用 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) 创建一个规则。 以下示例创建名为“myLoadBalancerRuleWeb”的规则：
+若要允许通信流到达 Web 应用，请使用 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) 创建一个规则。 以下示例创建名为“myLoadBalancerRuleWeb”  的规则：
 
 ```azurecli-interactive
 az network lb rule create \
@@ -138,7 +138,7 @@ az network lb rule create \
 ```
 
 ## <a name="test-your-app"></a>测试应用
-若要在 Web 上查看 Node.js 应用，请使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) 获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的“myScaleSetLBPublicIP”的 IP 地址：
+若要在 Web 上查看 Node.js 应用，请使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) 获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的“myScaleSetLBPublicIP”  的 IP 地址：
 
 ```azurecli-interactive
 az network public-ip show \
@@ -179,7 +179,7 @@ az vmss list-instances \
 
 
 ### <a name="manually-increase-or-decrease-vm-instances"></a>手动增加或减少 VM 实例
-若要查看规模集中当前包含的实例数，请使用 [az vmss show](/cli/azure/vmss#az-vmss-show) 并查询 sku.capacity：
+若要查看规模集中当前包含的实例数，请使用 [az vmss show](/cli/azure/vmss#az-vmss-show) 并查询 sku.capacity  ：
 
 ```azurecli-interactive
 az vmss show \
@@ -212,7 +212,7 @@ az vmss list-instance-connection-info \
 可以创建数据磁盘并与规模集配合使用。 前面的教程介绍了如何[管理 Azure 磁盘](tutorial-manage-disks.md)，其中概述了在数据磁盘而非 OS 磁盘上生成应用的最佳做法和性能改进。
 
 ### <a name="create-scale-set-with-data-disks"></a>创建具有数据磁盘的规模集
-要创建规模集并附加数据磁盘，请将 `--data-disk-sizes-gb` 参数添加到 [az vmss create](/cli/azure/vmss#az-vmss-create) 命令中。 以下示例创建具有附加到每个实例的 50 GB 数据磁盘的规模集：
+要创建规模集并附加数据磁盘，请将 `--data-disk-sizes-gb` 参数添加到 [az vmss create](/cli/azure/vmss#az-vmss-create) 命令中。 以下示例创建具有附加到每个实例的 50  GB 数据磁盘的规模集：
 
 ```azurecli-interactive
 az vmss create \
@@ -229,7 +229,7 @@ az vmss create \
 删除规模集中的实例时，也会删除所有附加的数据磁盘。
 
 ### <a name="add-data-disks"></a>添加数据磁盘
-若要向规模集中的实例添加数据磁盘，请使用 [az vmss disk attach](/cli/azure/vmss/disk#az-vmss-disk-attach)。 以下示例向每个实例添加一个 50 GB 的磁盘：
+若要向规模集中的实例添加数据磁盘，请使用 [az vmss disk attach](/cli/azure/vmss/disk#az-vmss-disk-attach)。 以下示例向每个实例添加一个 50  GB 的磁盘：
 
 ```azurecli-interactive
 az vmss disk attach \
@@ -240,7 +240,7 @@ az vmss disk attach \
 ```
 
 ### <a name="detach-data-disks"></a>分离数据磁盘
-若要删除附加到规模集中实例的数据磁盘，请使用 [az vmss disk detach](/cli/azure/vmss/disk#az-vmss-disk-detach)。 以下示例在 LUN 2 删除每个实例中的数据磁盘：
+若要删除附加到规模集中实例的数据磁盘，请使用 [az vmss disk detach](/cli/azure/vmss/disk#az-vmss-disk-detach)。 以下示例在 LUN 2  删除每个实例中的数据磁盘：
 
 ```azurecli-interactive
 az vmss disk detach \

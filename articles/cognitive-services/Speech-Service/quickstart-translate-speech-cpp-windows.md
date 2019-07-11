@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: bf07e6a2daac7889e11df2cb5d689daef44266f9
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: ff577bc0fe7db05c71aab04f0aaa5525f30b255c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465657"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602898"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>快速入门：使用适用于 C++ 的语音 SDK 翻译语音
 
@@ -50,11 +50,11 @@ ms.locfileid: "65465657"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-1. 构建应用程序。 从菜单栏中，选择“构建” > “构建解决方案”。 编译代码时应不会出错。
+1. 构建应用程序。 从菜单栏中，选择“构建” > “构建解决方案”   。 编译代码时应不会出错。
 
    ![Visual Studio 应用程序的屏幕截图，其中突出显示了“生成解决方案”选项](media/sdk/qs-cpp-windows-06-build.png)
 
-1. 启动应用程序。 在菜单栏中，选择“调试” > “开始调试”，或按 F5。
+1. 启动应用程序。 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
 
    ![Visual Studio 应用程序的屏幕截图，其中突出显示了“启动调试”选项](media/sdk/qs-cpp-windows-07-start-debugging.png)
 
