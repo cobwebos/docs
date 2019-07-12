@@ -4,7 +4,7 @@ description: 使用 Azure 经典 CLI 在 Azure 上创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: 569e90c7908ce435689a80f7917b20275703f537
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a757e156d48eb27a9e4d9b38cb08d5417f1e35b6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473733"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671076"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 创建 Linux VM
 
@@ -52,12 +52,12 @@ azure vm quick-create -M ~/.ssh/id_rsa.pub -Q CoreOS
 
 | 别名 | 发布者 | 产品/服务 | SKU | Version |
 |:--- |:--- |:--- |:--- |:--- |
-| CentOS |OpenLogic |CentOS |7.2 |最新 |
-| CoreOS |CoreOS |CoreOS |Stable |最新 |
-| Debian |credativ |Debian |8 |最新 |
-| openSUSE |SUSE |openSUSE |13.2 |最新 |
-| RHEL |Red Hat |RHEL |7.2 |最新 |
-| UbuntuLTS |Canonical |Ubuntu Server |14.04.4-LTS |最新 |
+| CentOS |OpenLogic |CentOS |7.2 |latest |
+| CoreOS |CoreOS |CoreOS |Stable |latest |
+| Debian |credativ |Debian |8 |latest |
+| openSUSE |SUSE |openSUSE |13.2 |latest |
+| RHEL |Red Hat |RHEL |7.2 |latest |
+| UbuntuLTS |Canonical |Ubuntu Server |14.04.4-LTS |latest |
 
 以下各节对 **ImageURN** 选项 (`-Q`) 使用 `UbuntuLTS` 别名来部署 Ubuntu 14.04.4 LTS Server。
 

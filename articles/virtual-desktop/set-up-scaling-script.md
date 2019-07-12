@@ -4,15 +4,15 @@ description: 介绍如何为 Windows 虚拟桌面预览会话主机设置自动�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: e9f500e3ab965b9dbfc5e395a6572497c85f6f8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b98db361a8ec888eb8bf9e1bf3658a7e38111c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755130"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620419"
 ---
 # <a name="automatically-scale-session-hosts"></a>自动缩放会话主机
 
@@ -20,7 +20,7 @@ ms.locfileid: "66755130"
 
 本文使用一个简单的缩放脚本来自动缩放 Windows 虚拟桌面环境中的会话主机虚拟机。 若要了解有关缩放的脚本的工作原理的详细信息，请参阅[缩放脚本的工作方式](#how-the-scaling-script-works)部分。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 运行脚本的环境必须具有以下操作：
 
@@ -75,7 +75,7 @@ ms.locfileid: "66755130"
     例如， **Set-variable-名称 KeyPath-全局作用域的值"c:\\缩放 HostPool1"**
 5. 运行**新建 StoredCredential KeyPath \$KeyPath** cmdlet。 出现提示时，输入有权查询主机池虚拟桌面 Windows 凭据 (在指定主机池**config.xml**)。
     - 如果使用不同的服务主体或标准帐户，请运行**新建 StoredCredential KeyPath \$KeyPath** cmdlet 后对于每个帐户创建本地存储的凭据。
-6. 运行**Get StoredCredentials-列表**以确认已成功创建凭据。
+6. 运行**Get StoredCredential-列表**以确认已成功创建凭据。
 
 ### <a name="configure-the-configxml-file"></a>配置 config.xml 文件
 

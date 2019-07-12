@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: be38f5d3bbf4fe3d90fc78feab8774595b5338f2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.subservice: alerts
+ms.openlocfilehash: 91ec5aa42367f6caaa93aaf808fde504e92fbc04
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447669"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594321"
 ---
 # <a name="common-alert-schema"></a>常见警报架构
 
@@ -35,7 +35,7 @@ ms.locfileid: "67447669"
 
 常见警报架构将主要表现在警报通知。 下面列出了你将看到的增强功能：
 
-| 操作 | 增强功能|
+| Action | 增强功能|
 |:---|:---|
 | SMS | 用于所有警报类型的一致的 SMS 模板。 |
 | Email | 一致且详细的电子邮件模板，从而可以轻松地诊断问题一目了然。 嵌入的深度链接到门户和受影响的资源上的警报实例确保，你可以快速跳转到修正过程。 |

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 3f19668cc4fb4f4f4a900c157aa79de83ad1b79b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 791779bfc2262bb13dc2c3a192d9c74ae69cb30e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163728"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722536"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
@@ -73,6 +73,8 @@ Azure Cosmos DB 支持两种索引模式：
 - 排除根路径可以选择性地包含需要编制索引的路径。
 
 - 有关路径替换为包含的常规字符： 字母数字字符和 _ （下划线），无需转义围绕双引号括起来 （例如，"/ 路径 /？"） 的路径字符串。 对于包含其他特殊字符的路径，需要在双引号中转义路径字符串（例如 "/\"path-abc\"/?"）。 如果预期路径中会出现特殊字符，出于安全考虑，可以转义每个路径。 功能上，如果转义 Vs 不仅仅具有特殊字符的每个路径，它不起作用。
+
+- 除非 etag 添加到索引的包含路径，将从默认情况下，索引中排除的系统属性"etag"。
 
 请参阅[此部分](how-to-manage-indexing-policy.md#indexing-policy-examples)中的索引策略示例。
 

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0db301109da657083d121cc8b986372adcb54171
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 885fb18e6f582caba2e90bbe3f535b9c763aff85
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389050"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839344"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从 ODBC 数据存储移动数据
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-odbc-connector.md)
 > * [版本 2（当前版本）](../connector-odbc.md)
 
@@ -50,7 +50,7 @@ ms.locfileid: "66389050"
 
 创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-还可以使用以下工具来创建管道：Azure 门户  、Visual Studio  、Azure PowerShell  、Azure 资源管理器模板  、.NET API  和 REST API  。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+还可以使用以下工具来创建管道：**Visual Studio**， **Azure PowerShell**， **Azure Resource Manager 模板**， **.NET API**，并且**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -67,13 +67,13 @@ ms.locfileid: "66389050"
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| type |type 属性必须设置为：**OnPremisesOdbc** |“是” |
-| connectionString |连接字符串的非访问凭据部分和可选的加密凭据。 请参阅以下部分中的示例。 <br/><br/>可以使用类似 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在网关计算机上使用 `"DSN=<name of the DSN>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。 |“是” |
-| credential |连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 示例：`"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`。 |“否” |
+| type |type 属性必须设置为：**OnPremisesOdbc** |是 |
+| connectionString |连接字符串的非访问凭据部分和可选的加密凭据。 请参阅以下部分中的示例。 <br/><br/>可以使用类似 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在网关计算机上使用 `"DSN=<name of the DSN>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。 |是 |
+| credential |连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 示例：`"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`。 |否 |
 | authenticationType |用于连接 ODBC 数据存储的身份验证类型。 可能的值包括：Anonymous 和 Basic。 |是 |
 | userName |如果使用基本身份验证，指定的用户名。 |否 |
 | password |指定为 userName 指定的用户帐户的密码。 |否 |
-| gatewayName |数据工厂服务应用于连接到 ODBC 数据存储的网关的名称。 |“是” |
+| gatewayName |数据工厂服务应用于连接到 ODBC 数据存储的网关的名称。 |是 |
 
 ### <a name="using-basic-authentication"></a>使用基本身份验证
 
@@ -139,7 +139,7 @@ ms.locfileid: "66389050"
 
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
-| tableName |ODBC 数据存储中表的名称。 |“是” |
+| tableName |ODBC 数据存储中表的名称。 |是 |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
@@ -154,7 +154,7 @@ ms.locfileid: "66389050"
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON 示例：将数据从 ODBC 数据存储复制到 Azure Blob
-此示例提供 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它演示了如何将数据从 ODBC 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+此示例提供 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 它演示了如何将数据从 ODBC 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 此示例具有以下数据工厂实体：
 

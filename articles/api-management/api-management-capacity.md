@@ -11,20 +11,20 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c39c585d9947422260868734ec89814d8a510089
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658282"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836952"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API 管理实例的容量
 
-**容量**是最重要的单一 [Azure Monitor 指标](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis)，在是否扩展 API 管理实例以容纳更多负载方面，它可以帮助做出明智的决策。 容量的构造比较复杂，并且会施加特定的行为。
+**容量**是最重要[Azure Monitor 指标](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis)进行明智的决定是否要缩放的 API 管理实例，以容纳更多负载。 容量的构造比较复杂，并且会施加特定的行为。
 
 本文介绍**容量**的定义及其行为。 其中介绍了如何在 Azure 门户中访问**容量**指标，并建议何时应考虑扩展或升级 API 管理实例。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要遵循本文中的步骤，必须准备好：
 
@@ -40,12 +40,14 @@ ms.locfileid: "60658282"
 
 ![容量指标](./media/api-management-capacity/capacity-ingredients.png)
 
-**容量**是 APIM 实例中负载的指标。 它反映资源用量（CPU、内存）和网络队列的长度。 CPU 和内存用量反映以下对象的资源消耗量：
+**容量**是 API 管理实例上的负载的指示器。 它反映资源用量（CPU、内存）和网络队列的长度。 CPU 和内存用量反映以下对象的资源消耗量：
 
-+ APIM 服务，例如管理操作或请求处理，可能包括转发请求或运行策略
++ API 管理服务，例如管理操作或请求处理，可以包括转发请求或运行某个策略
 + 选定的操作系统进程，包括在新连接上造成 SSL 握手开销的进程。
 
 总**容量**是 API 管理实例的每个单元中容量自有值的平均值。
+
+尽管**容量指标**是设计面问题的 API 管理实例，在情况下，问题不会反映在中的更改**容量指标**。
 
 ## <a name="capacity-metric-behavior"></a>容量指标行为
 
@@ -63,6 +65,8 @@ ms.locfileid: "60658282"
 ![容量指标高峰](./media/api-management-capacity/capacity-spikes.png)
 
 **容量**还可能会出现间歇性的高峰或大于零，即使未处理任何请求。 之所以发生这种情况，是因为存在系统或平台特定的操作。在决定是否缩放实例时，不应考虑这些因素。
+
+低**容量指标**并不一定意味着 API 管理实例未遇到任何问题。
   
 ## <a name="use-the-azure-portal-to-examine-capacity"></a>使用 Azure 门户检查容量
   

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03df2ceb2df4d857e48f1790703a1d87647e43d0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f5697e0b51e8349de62e71be1471beb76aa48765
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60401164"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838719"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具进行 Azure IoT 中心设备管理
 
@@ -63,7 +63,7 @@ ms.locfileid: "60401164"
 5. 几秒钟后，设备列表将显示在“Azure IoT 中心设备”  选项卡中。
 
    > [!Note]
-   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。  在弹出窗口中输入 IoT 设备连接到的 IoT 中心的连接字符串。
+   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。  输入**iothubowner**策略在弹出窗口中，IoT 设备连接到 IoT 中心连接字符串。
 
 ## <a name="direct-methods"></a>直接方法
 

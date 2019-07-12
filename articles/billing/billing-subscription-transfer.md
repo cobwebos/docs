@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cff3c57c31526119ab81225a1c70b163173be937
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 7d41e32065e3de37eb8f01ab1b836040e7f57b12
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514437"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657869"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure 订阅的记帐所有权转让给其他帐户
 
@@ -38,7 +38,7 @@ ms.locfileid: "67514437"
 
 1. 选择**订阅**从左侧窗格。 根据您的访问权限，可能需要选择计费的作用域，然后选择**订阅**或**Azure 订阅**。
 
-1. 选择**传输到其他帐户**你想要传输的订阅。 
+1. 选择**转移计费所有权**你想要传输的订阅。 
 
    ![选择要传输的订阅](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
 
@@ -195,7 +195,7 @@ Visual Studio 和 Microsoft 合作伙伴网络订阅具有与其关联的每月�
 
 是的。 时接受转移请求，可以选择现有的链接到你的帐户或添加新的付款方式付款方法。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a id="no-button"></a> 为什么我没有看到“转让订阅”按钮？
 

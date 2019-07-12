@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 562ce8a4267370be9b049e3b56f213f82deb89c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e63d935b3c11766c4981ffb035dd45ad4019797c
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734989"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807073"
 ---
-# <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig-v021-alpha"></a>状态监视器 v2 API：Set-ApplicationInsightsMonitoringConfig (v0.2.1-alpha)
+# <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig-v040-alpha"></a>状态监视器 v2 API：Set-ApplicationInsightsMonitoringConfig (v0.4.0-alpha)
 
 本文档介绍了一个 cmdlet，是的成员[Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
 
@@ -65,7 +65,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ```
 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 
 ### <a name="-instrumentationkey"></a>-InstrumentationKey
 **必需。** 使用此参数由目标计算机上的所有应用程序提供单个检测密钥以供使用。
@@ -94,7 +94,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 **通用参数。** 使用此开关以显示详细的日志。
 
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 默认情况下，没有输出。
 

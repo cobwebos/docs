@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da96c09026baff3965e0a90d1f461fd948a3a50
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59f716ccd7b2e02c9064f13cf1ffd6e8180858c9
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60440917"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827914"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
@@ -41,7 +41,7 @@ ms.locfileid: "60440917"
  
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 
-* 具有**安全管理员**、**安全读取者**、**报表读取者**或**全局管理员**角色的用户
+* 中的用户**安全管理员**，**安全读者**，**报表读取器**或者**全局管理员**角色
 * 此外，所有用户（非管理员）都可以都查看其自己的审核活动
 
 ## <a name="audit-logs"></a>审核日志
@@ -82,7 +82,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 - 类别
 - activities
 - 状态
-- 确定目标
+- 目标
 - 发起者（参与者/执行组件）
 - 日期范围
 
@@ -90,7 +90,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 可以通过“服务”筛选器从包含以下服务的下拉列表中进行选择： 
 
-- 全部
+- All
 - 访问评审
 - 帐户预配 
 - 应用程序 SSO
@@ -108,11 +108,11 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 “类别”筛选器用于选择下述筛选器之一： 
 
-- 全部
+- All
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
-- 授权
+- 身份验证
+- Authorization
 - 联系人
 - 设备
 - DeviceConfiguration
@@ -131,7 +131,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 可以使用“状态”筛选器根据审核操作的状态进行筛选。  状态可以是下列其中一项：
 
-- 全部
+- All
 - Success
 - 失败
 

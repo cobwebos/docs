@@ -4,7 +4,7 @@ description: Windows 故障转移群集上的 SAP NetWeaver 高可用性安装�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 95cde28bc4789346aabd58b5f7b543e1bbc989c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0efb1ec30430a69563c61de667ad2568f2679a1b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357694"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708974"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享
 
@@ -200,13 +200,13 @@ ms.locfileid: "66357694"
 
 本文介绍如何在 Azure 上安装和配置高可用 SAP 系统，使用 Windows Server 故障转移群集 (WSFC) 和横向扩展文件服务器作为一个选项来群集化 SAP ASCS/SCS 实例。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始安装之前，请查看以下文章：
 
 * [体系结构指南：使用文件共享在 Windows 故障转移群集上群集 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-file-share]
 
-* [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 Azure 基础结构以实现 SAP 高可用性][sap-high-availability-infrastructure-wsfc-file-share]
+* [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 Azure 基础结构的 SAP 高可用性][sap-high-availability-infrastructure-wsfc-file-share]
 
 * [在 Azure Vm 上的 SAP NetWeaver 的高可用性][high-availability-guide]
 
@@ -291,7 +291,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>为群集 SAP ASCS/SCS 实例创建虚拟主机名
 
-创建 SAP ASCS/SCS 群集网络名称（例如，**pr1-ascs [10.0.6.7]** ），如[为群集化 SAP ASCS/SCS 实例创建虚拟主机名][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]中所述。
+创建 SAP ASCS/SCS 群集网络名称 (例如， **pr1-ascs [10.0.6.7]** )，如中所述[创建为群集 SAP ASCS/SCS 实例虚拟主机名][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]。
 
 
 ## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>在群集中安装 ASCS/SCS 和 ERS 实例
@@ -304,7 +304,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ### <a name="add-a-probe-port"></a>添加探测端口
 
-使用 PowerShell 配置 SAP 群集资源：SAP-SID-IP 探测端口。 在其中一个 SAP ASCS/SCS 群集节点上执行此配置，如[此文][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]所述。
+使用 PowerShell 配置 SAP 群集资源：SAP-SID-IP 探测端口。 在一个 SAP ASCS/SCS 群集节点上执行此配置，如所述[这篇文章中][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]。
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>第二个 ASCS/SCS 群集节点上安装 ASCS/SCS 实例
 
@@ -335,10 +335,10 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="next-steps"></a>后续步骤
 
-* [不使用共享磁盘在故障转移群集上安装 ASCS/SCS 实例 - 高可用性文件共享的官方 SAP 指南][sap-official-ha-file-share-document]
+* [不使用共享磁盘的高可用性文件共享的官方 SAP 指南在故障转移群集上安装 ASCS/SCS 实例][sap-official-ha-file-share-document]
 
 * [Windows Server 2016 中的存储空间直通][s2d-in-win-2016]
 
-* [应用程序数据的横向扩展文件服务器概述][sofs-overview]
+* [横向扩展文件服务器应用程序数据概述][sofs-overview]
 
-* [Windows Server 2016 中存储方面的新增功能][new-in-win-2016-storage]
+* [什么是 Windows Server 2016 中的存储中的新增功能][new-in-win-2016-storage]

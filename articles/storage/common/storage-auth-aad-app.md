@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/05/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e57291292d8957fd323f9be03bb7df0492484ea8
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: da10b70b85e284173abbd1779fb1d39f477ca0cd
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341616"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723204"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>从进行身份验证与 Azure Active Directory 应用程序可访问 blob 和队列
 
@@ -31,7 +31,7 @@ ms.locfileid: "67341616"
 
 使用 Azure AD 来授予对存储资源的访问权限的第一步向 Azure AD 租户中注册客户端应用程序[Azure 门户](https://portal.azure.com)。 注册客户端应用程序时，您将提供到 Azure AD 应用程序的信息。 Azure AD 随后会提供客户端 ID（也称为*应用程序 ID*）。在运行时，可以使用该 ID 将应用程序与 Azure AD 关联。 若要详细了解客户端 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../../active-directory/develop/app-objects-and-service-principals.md)。
 
-若要注册你的 Azure 存储应用程序，请按照中所示的步骤[快速入门：注册一个应用程序的 Microsoft 标识平台](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)。 下图显示用于注册的 web 应用程序常用的设置：
+若要注册你的 Azure 存储应用程序，请按照中所示的步骤[快速入门：将应用程序注册到 Microsoft 标识平台](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)。 下图显示用于注册的 web 应用程序常用的设置：
 
 ![显示如何使用 Azure AD 注册应用程序的屏幕截图](./media/storage-auth-aad-app/app-registration.png)
 
@@ -49,16 +49,16 @@ ms.locfileid: "67341616"
 接下来，授予应用程序的权限来调用 Azure 存储 Api。 此步骤中使应用程序与 Azure AD 的 Azure 存储的请求进行授权。
 
 1. 上**概述**已注册应用程序页，选择**查看 API 权限**。
-1. 在中**API 的权限**部分中，选择**添加权限**，然后选择**我的组织使用的 Api**。
-1. 下**我的组织使用的 Api**部分中，搜索"Azure 存储"，并选择**Azure 存储**从列表中要显示的结果**请求 API 权限**窗格。
+1. 在中**API 的权限**部分中，选择**添加权限**，然后选择**Microsoft Api**。
+1. 选择**Azure 存储**从显示的结果列表**请求 API 权限**窗格。
+1. 下**应用程序需要哪种类型的权限？** ，注意可用权限类型**委派权限**。 默认情况下，为你选择此选项。
+1. 在**选择权限**一部分**请求 API 权限**窗格中，选中的复选框旁边**user_impersonation**，然后单击**添加权限**。
 
     ![存储的屏幕截图显示权限](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-1. 下**应用程序需要哪种类型的权限？** ，注意可用权限类型**委派权限**。 默认情况下，为你选择此选项。
-1. 在**选择权限**一部分**请求 API 权限**窗格中，选中的复选框旁边**user_impersonation**，然后单击**添加权限**。
-1. **API 权限**窗格现在显示 Azure AD 应用程序有权访问 Microsoft Graph 和 Azure 存储。 自动授予权限向 Microsoft Graph 时首先向 Azure AD 注册您的应用程序。
+**API 权限**窗格现在显示在已注册 Azure AD 应用程序有权访问 Microsoft Graph 和 Azure 存储。 自动授予权限向 Microsoft Graph 时首先向 Azure AD 注册您的应用程序。
 
-    ![显示的屏幕截图注册应用权限](media/storage-auth-aad-app/registered-app-permissions-2.png)
+![显示的屏幕截图注册应用权限](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
 ## <a name="create-a-client-secret"></a>创建客户端机密
 
@@ -275,7 +275,7 @@ CloudBlockBlob blob = new CloudBlockBlob(
 
 ### <a name="enable-implicit-grant-flow"></a>启用隐式授权流
 
-若要运行示例，可能需要配置你的应用程序注册的隐式授权流。 执行以下步骤:
+若要运行示例，可能需要配置你的应用程序注册的隐式授权流。 请执行以下步骤：
 
 1. 导航到在 Azure 门户中的应用注册。
 1. 在管理部分中，选择**身份验证**设置。

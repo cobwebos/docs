@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bfb15e717e3cb726aba782d9a9506330d7ea39fe
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486906"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839320"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-data-movement-activities.md)
 > * [版本 2（当前版本）](../copy-activity-overview.md)
 
@@ -95,7 +95,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 
 | 目标数据存储的地域 | 目标数据存储的区域 | 用于数据移动的区域 |
 |:--- |:--- |:--- |
-| 美国 | 美国东部 | 美国东部 |
+| 美国 | East US | East US |
 | &nbsp; | 美国东部 2 | 美国东部 2 |
 | &nbsp; | 美国中部 | 美国中部 |
 | &nbsp; | 美国中北部 | 美国中北部 |
@@ -138,7 +138,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 数据工厂复制向导有助于创建包含复制活动的管道。 使用此管道，无需对链接服务、数据集和管道编写 JSON 定义  ，即可将数据从支持的源复制到目标源。 有关此向导的详细信息，请参阅[数据工厂复制向导](data-factory-copy-wizard.md)。  
 
 ### <a name="by-using-json-scripts"></a>使用 JSON 脚本
-可在 Azure 门户、Visual Studio 或 Azure PowerShell 中使用数据工厂编辑器（通过使用复制活动）为管道创建 JSON 定义。 然后，可对其进行部署以在数据工厂中创建管道。 有关分步说明，请参阅[教程：在 Azure 数据工厂管道中使用复制活动](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。    
+可以使用 Visual Studio 或 Azure PowerShell 中的数据工厂编辑器创建管道的 JSON 定义 （通过使用复制活动）。 然后，可对其进行部署以在数据工厂中创建管道。 有关分步说明，请参阅[教程：在 Azure 数据工厂管道中使用复制活动](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。    
 
 JSON 属性（例如名称、说明、输入和输出表，以及策略）可用于所有类型的活动。 可用于此活动的 `typeProperties` 节的属性因每个活动类型而异。
 

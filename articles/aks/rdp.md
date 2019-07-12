@@ -2,21 +2,21 @@
 title: 通过 rdp 连接到 Azure Kubernetes 服务 (AKS) 群集 Windows Server 节点
 description: 了解如何使用 Azure Kubernetes 服务 (AKS) 群集进行故障排除和维护任务的 Windows 服务器节点创建的 RDP 连接。
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.author: twhitney
-ms.openlocfilehash: 11f6869d4d5a2ee0ef2e986ee8268c7a001ea015
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 0238278b81255d735f8a950ca307d0e05100cfec
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688629"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614566"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>通过 RDP 连接到 Azure Kubernetes 服务 (AKS) 群集 Windows Server 节点以进行维护或故障排除
 
-在 Azure Kubernetes 服务 (AKS) 群集的整个生命周期，可能需要访问 AKS Windows Server 节点。 进行这种访问的原因包括维护、日志收集或其他故障排除操作。 您可以访问使用 RDP AKS Windows 服务器节点。 此外，如果你想要使用 SSH 访问 AKS Windows 服务器节点，并且你有权创建群集期间使用同一密钥对，您可以按照中的步骤[通过 ssh 登录到 Azure Kubernetes 服务 (AKS) 群集节点][ssh-steps]. 出于安全考虑，AKS 节点不会在 Internet 中公开。
+在 Azure Kubernetes 服务 (AKS) 群集的整个生命周期，可能需要访问 AKS Windows Server 节点。 进行这种访问的原因包括维护、日志收集或其他故障排除操作。 您可以访问使用 RDP AKS Windows 服务器节点。 此外，如果你想要使用 SSH 访问 AKS Windows 服务器节点，并且你有权创建群集期间使用同一密钥对，您可以按照中的步骤[通过 ssh 登录到 Azure Kubernetes 服务 (AKS) 群集节点][ssh-steps]。 出于安全考虑，AKS 节点不会在 Internet 中公开。
 
 Windows Server 节点支持目前处于预览状态，在 AKS 中。
 
@@ -24,7 +24,7 @@ Windows Server 节点支持目前处于预览状态，在 AKS 中。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文假定你拥有现有的 AKS 群集与 Windows 的服务器节点。 如果需要 AKS 群集，请参阅文章[使用 Windows 容器使用 Azure CLI 创建 AKS 群集][aks-windows-cli]。 为你想要进行故障排除在 Windows Server 节点需要 Windows 管理员用户名和密码。 您还需要 RDP 客户端，如[Microsoft 远程桌面][rdp-mac]。
+本文假定你拥有现有的 AKS 群集与 Windows 的服务器节点。 如果需要 AKS 群集，请参阅文章[使用 Windows 容器使用 Azure CLI 创建 AKS 群集][aks-windows-cli]. You need the Windows administrator username and password for the Windows Server node you want to troubleshoot. You also need an RDP client such as [Microsoft Remote Desktop][rdp-mac]。
 
 您还需要 Azure CLI 版本 2.0.61 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -78,7 +78,7 @@ az aks install-cli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-列出使用的 Windows Server 节点的内部 IP 地址[kubectl get] [ kubectl-get]命令：
+列出使用的 Windows Server 节点的内部 IP 地址[kubectl 获取][kubectl-get]命令：
 
 ```console
 kubectl get nodes -o wide
@@ -113,7 +113,7 @@ aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67
 
 ## <a name="remove-rdp-access"></a>删除 RDP 访问权限
 
-完成后，退出 RDP 连接到的 Windows 服务器节点，然后退出虚拟机的 RDP 会话。 退出这两个 RDP 会话后，删除与该虚拟机[az vm 删除][ az-vm-delete]命令：
+完成后，退出 RDP 连接到的 Windows 服务器节点，然后退出虚拟机的 RDP 会话。 退出这两个 RDP 会话后，删除与该虚拟机[az vm 删除][az-vm-delete]命令：
 
 ```azurecli-interactive
 az vm delete --resource-group myResourceGroup --name myVM
@@ -121,7 +121,7 @@ az vm delete --resource-group myResourceGroup --name myVM
 
 ## <a name="next-steps"></a>后续步骤
 
-如果您需要其他故障排除数据，则可以[查看 Kubernetes 主节点日志][ view-master-logs]或[Azure Monitor][azure-monitor-containers]。
+如果您需要其他故障排除数据，则可以[查看 Kubernetes 主节点日志][view-master-logs] or [Azure Monitor][azure-monitor-containers]。
 
 <!-- EXTERNAL LINKS -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/

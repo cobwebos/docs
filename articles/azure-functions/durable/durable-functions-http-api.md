@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7aef7eb2e3d88bef7d2700d9945b9ff343c17536
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787290"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812819"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions 中的 HTTP API (Azure Functions)
 
@@ -45,12 +45,13 @@ Durable Task 扩展公开了一组 HTTP API，可用于执行以下任务：
 这些示例函数生成以下 JSON 响应数据。 所有字段的数据类型均为 `string`。
 
 | 字段                   |描述                           |
-|-------------------------|--------------------------------------|
-| **`id`**                |业务流程实例的 ID。 |
-| **`statusQueryGetUri`** |业务流程实例的状态 URL。 |
-| **`sendEventPostUri`**  |业务流程实例的“引发事件”URL。 |
-| **`terminatePostUri`**  |业务流程实例的“终止”URL。 |
-| **`rewindPostUri`**     |业务流程实例的“回退”URL。 |
+|-----------------------------|--------------------------------------|
+| **`id`**                    |业务流程实例的 ID。 |
+| **`statusQueryGetUri`**     |业务流程实例的状态 URL。 |
+| **`sendEventPostUri`**      |业务流程实例的“引发事件”URL。 |
+| **`terminatePostUri`**      |业务流程实例的“终止”URL。 |
+| **`purgeHistoryDeleteUri`** |"清除历史记录"业务流程实例的 URL。 |
+| **`rewindPostUri`**         |（预览版）"后退"业务流程实例的 URL。 |
 
 下面是示例响应：
 
@@ -65,6 +66,7 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
     "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
     "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
     "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "purgeHistoryDeleteUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
     "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
@@ -156,12 +158,12 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 | 字段                 | 数据类型 | 描述 |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | 字符串    | 实例的运行时状态。 相关的值为：正在运行、挂起、失败、已取消、已终止和已完成       。 |
+| **`runtimeStatus`**   | string    | 实例的运行时状态。 相关的值为：正在运行、挂起、失败、已取消、已终止和已完成       。 |
 | **`input`**           | JSON      | 用于初始化实例的 JSON 数据。 如果 `showInput` 查询字符串参数设置为 `false`，则此字段为 `null`。|
 | **`customStatus`**    | JSON      | 用于自定义业务流程状态的 JSON 数据。 如果未设置，此字段为 `null`。 |
 | **`output`**          | JSON      | 实例的 JSON 输出。 如果实例不是已完成状态，则该字段为 `null`。 |
-| **`createdTime`**     | 字符串    | 创建实例的时间。 使用 ISO 8601 扩展表示法。 |
-| **`lastUpdatedTime`** | 字符串    | 实例持续的时间。 使用 ISO 8601 扩展表示法。 |
+| **`createdTime`**     | string    | 创建实例的时间。 使用 ISO 8601 扩展表示法。 |
+| **`lastUpdatedTime`** | string    | 实例持续的时间。 使用 ISO 8601 扩展表示法。 |
 | **`historyEvents`**   | JSON      | 包含业务流程执行历史记录的 JSON 数组。 除非 `showHistory` 查询字符串参数设置为 `true`，否则此字段为 `null`。 |
 
 下面是包括业务流程执行历史记录和活动输出的示例响应有效负载（为提高可读性已设置格式）：
@@ -547,11 +549,11 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 此 API 的响应不包含任何内容。
 
-## <a name="rewind-instance-preview"></a>回退实例（预览版）
+### <a name="rewind-instance-preview"></a>回退实例（预览版）
 
 通过重播最近的失败操作，将失败的业务流程实例还原为运行状态。
 
-### <a name="request"></a>请求
+#### <a name="request"></a>请求
 
 对于 1.x 版 Functions 运行时，请求格式如下（为简洁起见，已分多行显示）：
 
@@ -580,7 +582,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 | **`instanceId`**  | URL             | 业务流程实例的 ID。 |
 | **`reason`**      | 查询字符串    | 可选。 回退业务流程实例的原因。 |
 
-### <a name="response"></a>响应
+#### <a name="response"></a>响应
 
 可返回若干可能的状态代码值。
 
@@ -595,6 +597,89 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 ```
 
 此 API 的响应不包含任何内容。
+
+### <a name="signal-entity-preview"></a>信号实体 （预览版）
+
+单向操作将消息发送到[持久实体](durable-functions-types-features-overview.md#entity-functions)。 如果实体不存在，将自动创建。
+
+#### <a name="request"></a>请求
+
+HTTP 请求的格式，如下所示 （为清楚起见显示多行）：
+
+```http
+POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &op={operationName}
+```
+
+此 API 的请求参数包括前面提及的默认集及以下唯一参数：
+
+| 字段             | 参数类型  | 描述 |
+|-------------------|-----------------|-------------|
+| **`entityType`**  | URL             | 实体的类型。 |
+| **`entityKey`**   | URL             | 实体的唯一名称。 |
+| **`op`**          | 查询字符串    | 可选。 要调用的用户定义的操作的名称。 |
+| **`{content}`**   | 请求内容 | JSON 格式的事件负载。 |
+
+下面是发送到用户定义的"添加"消息的示例请求`Counter`名为实体`steps`。 消息的内容是值`5`。 如果实体不存在，此请求将创建该：
+
+```http
+POST /runtime/webhooks/durabletask/entities/Counter/steps?op=Add
+Content-Type: application/json
+
+5
+```
+
+#### <a name="response"></a>响应
+
+此操作具有多个可能的响应：
+
+* **HTTP 202 (已接受)** ：信号操作已接受异步处理。
+* **HTTP 400 (错误请求)** ：请求内容不是类型`application/json`、 不是有效的 JSON，或具有无效`entityKey`值。
+* **HTTP 404 (找不到)** ：指定`entityType`找不到。
+
+成功的 HTTP 请求不包含在响应中的任何内容。 失败的 HTTP 请求可能包含 JSON 格式的错误响应内容中的信息。
+
+### <a name="query-entity-preview"></a>查询实体 （预览版）
+
+获取指定实体的状态。
+
+#### <a name="request"></a>请求
+
+HTTP 请求的格式，如下所示 （为清楚起见显示多行）：
+
+```http
+GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+```
+
+#### <a name="response"></a>响应
+
+此操作具有两个可能的响应：
+
+* **HTTP 200 (正常)** ：指定的实体存在。
+* **HTTP 404 (找不到)** ：找不到指定的实体。
+
+成功的响应包含该实体的 JSON 序列化状态作为其内容。
+
+#### <a name="example"></a>示例
+以下是获取对现有的状态的 HTTP 请求的示例`Counter`名为实体`steps`:
+
+```http
+GET /runtime/webhooks/durabletask/entities/Counter/steps
+```
+
+如果`Counter`实体只包含一系列步骤中保存`currentValue`字段中，响应内容可能如下所示 （格式化以增加可读性）：
+
+```json
+{
+    "currentValue": 5
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB 中的限制
-description: 本文介绍 Azure Cosmos DB 中的限制。
+title: Azure Cosmos DB 服务配额
+description: Azure Cosmos DB 服务的配额和不同的资源类型上的默认限制。
 author: arramac
 ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2019
-ms.openlocfilehash: 28eb7c6a11f71fa87835bcfe78e635753965bac3
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.date: 07/10/2019
+ms.openlocfilehash: 74df0038676e8459028084890da569ed3b75a682
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561230"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797289"
 ---
-# <a name="limits-in-azure-cosmos-db"></a>Azure Cosmos DB 中的限制
+# <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
-本文概述 Azure Cosmos DB 服务中的限制。
+本文概述了提供给 Azure Cosmos DB 中的不同资源的默认配额。
 
 ## <a name="storage-and-throughput"></a>存储和吞吐量
 
@@ -154,7 +154,7 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 | Resource | 默认限制 |
 | --- | --- |
 | 试用版的持续时间 | 30 天 (可以续订任意次数) |
-| 每个订阅 (SQL、 Gremlin，表 API) 的最大容器 | 第 |
+| 每个订阅 (SQL、 Gremlin，表 API) 的最大容器 | 1 |
 | 每个订阅 (MongoDB API) 的最大容器 | 3 |
 | 每个容器的最大吞吐量 | 5000 |
 | 每个共享吞吐量数据库的最大吞吐量 | 20000 |

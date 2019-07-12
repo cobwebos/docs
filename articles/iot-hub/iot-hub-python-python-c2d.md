@@ -9,37 +9,38 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 7ac668bdbc3698be3ed2aa50a428cef84e68369a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00f639ec57f3d29dff1993bbc664477b8648ce9a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61441355"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612563"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中心发送云到设备消息 (Python)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>简介
-Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [IoT 中心入门](quickstart-send-telemetry-python.md)快速入门介绍如何创建 IoT 中心、 预配设备标识，以及编写模拟的设备应用发送设备到云消息。
+
+Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [向 IoT 中心从设备发送遥测数据](quickstart-send-telemetry-python.md)快速入门介绍如何创建 IoT 中心、 预配设备标识，以及编写模拟的设备应用发送设备到云消息。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-本教程是在 [IoT 中心入门](quickstart-send-telemetry-python.md)的基础上制作的。 其中了说明了如何：
+本教程基于[向 IoT 中心从设备发送遥测数据](quickstart-send-telemetry-python.md)。 其中了说明了如何：
 
 * 通过 IoT 中心，将云到设备的消息从解决方案后端发送到单个设备。
 
 * 在设备上接收云到设备的消息。
 
-* 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈  ）。
+* 从解决方案后端，请求传递确认 (*反馈*) 从 IoT 中心发送到设备的消息。
 
 你可以找到有关云到设备的消息的详细信息[IoT 中心开发人员指南](iot-hub-devguide-messaging.md)。
 
 在本教程末尾，你将运行两个 Python 控制台应用：
 
-* **SimulatedDevice.py**，这是在 [IoT 中心入门](quickstart-send-telemetry-python.md)中创建的应用的修改版本，它连接到 IoT 中心并接收云到设备消息。
+* **SimulatedDevice.py**，在中创建的应用的修改的版本[向 IoT 中心从设备发送遥测数据](quickstart-send-telemetry-python.md)，它连接到 IoT 中心并接收云到设备的消息。
 
-* **SendCloudToDeviceMessage.py**，它将云到设备消息通过 IoT 中心发送到模拟设备应用，然后接收其传送确认。
+* **SendCloudToDeviceMessage.py**，它将云到设备消息发送到模拟的设备应用通过 IoT 中心，然后接收其传送确认。
 
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程的代码以及通常如何连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](https://www.azure.com/develop/iot)。
@@ -78,7 +79,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     RECEIVE_CALLBACKS = 0
     ```
 
-3. 将以下代码添加到 **SimulatedDevice.py** 文件。 "{DeviceConnectionString}"占位符值替换为在创建的设备的设备连接字符串[IoT 中心入门](quickstart-send-telemetry-python.md)快速入门：
+3. 将以下代码添加到 **SimulatedDevice.py** 文件。 "{DeviceConnectionString}"占位符值替换为在创建的设备的设备连接字符串[向 IoT 中心从设备发送遥测数据](quickstart-send-telemetry-python.md)快速入门：
 
     ```python
     # choose AMQP or AMQP_WS as transport protocol
@@ -170,7 +171,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 ## <a name="send-a-cloud-to-device-message"></a>发送云到设备的消息
 
-在本部分中，将创建一个 Python 控制台应用，用于向模拟设备应用发送云到设备消息。 需要在添加的设备的设备 ID [IoT 中心入门](quickstart-send-telemetry-python.md)快速入门。 还需要中心的 IoT 中心连接字符串（位于 [Azure 门户](https://portal.azure.com)）。
+在本部分中，将创建一个 Python 控制台应用，用于向模拟设备应用发送云到设备消息。 需要在添加的设备的设备 ID[向 IoT 中心从设备发送遥测数据](quickstart-send-telemetry-python.md)快速入门。 还需要中心的 IoT 中心连接字符串（位于 [Azure 门户](https://portal.azure.com)）。
 
 1. 使用文本编辑器，创建一个 **SendCloudToDeviceMessage.py** 文件。
 
@@ -189,7 +190,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-3. 将以下代码添加到 **SendCloudToDeviceMessage.py** 文件。 "{IoTHubConnectionString}"占位符值替换为中创建的中心的 IoT 中心连接字符串[IoT 中心入门](quickstart-send-telemetry-python.md)快速入门。 "{DeviceId}"占位符替换为在添加的设备的设备 ID [IoT 中心入门](quickstart-send-telemetry-python.md)快速入门：
+3. 将以下代码添加到 **SendCloudToDeviceMessage.py** 文件。 "{IoTHubConnectionString}"占位符值替换为中创建的中心的 IoT 中心连接字符串[向 IoT 中心从设备发送遥测数据](quickstart-send-telemetry-python.md)快速入门。 "{DeviceId}"占位符替换为在添加的设备的设备 ID[向 IoT 中心从设备发送遥测数据](quickstart-send-telemetry-python.md)快速入门：
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -268,7 +269,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 1. 打开命令提示符，并安装**用于 Python 的 Azure IoT 中心设备 SDK**。
 
-    ```
+    ```shell
     pip install azure-iothub-device-client
     ```
 
@@ -282,7 +283,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 3. 打开一个新的命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。
 
-    ```
+    ```shell
     pip install azure-iothub-service-client
     ```
 

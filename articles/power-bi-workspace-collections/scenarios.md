@@ -2,18 +2,18 @@
 title: 常见 Microsoft Power BI 工作区集合方案
 description: 常见 Microsoft Power BI Embedded 方案
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: cc298eb8757ec4b3aa968c0790b72e24cc3d1143
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8339e35af80d6c5a7af34e270704b100ffcad98b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699521"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672397"
 ---
 # <a name="common-power-bi-workspace-collection-scenarios"></a>常见 Power BI 工作区集合方案
 
@@ -28,7 +28,7 @@ Power BI 工作区集合侧重于在 Azure 服务中提供大多数现有 Power 
 * 如果独立软件供应商和客户生成面向客户的应用，可以使用 Power BI 工作区集合  服务和 Power BI SDK，嵌入交互式报表。 若要了解具体操作，请参阅 [Microsoft Power BI 工作区集合入门](get-started.md)。
 * 开发人员可以使用 Power BI 可视化框架来创建自定义可视化元素，可以将这些可视化元素用于自己的应用中。 请参阅[使用自定义视觉对象扩展 Power BI](https://powerbi.microsoft.com/custom-visuals/)。
 
-### <a name="see-also"></a>另请参阅
+### <a name="see-also"></a>请参阅
 
 * [Microsoft Power BI 工作区集合入门](get-started.md)
 * [示例入门](get-started-sample.md)

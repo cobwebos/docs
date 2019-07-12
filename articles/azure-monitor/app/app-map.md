@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d69825b947af69a86525a996ed8709472846d9fe
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964041"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795677"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -119,7 +119,7 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**加载到活动的 TelemetryConfiguration 初始值设定项**
+**ASP.NET 应用程序：加载到活动的 TelemetryConfiguration 初始值设定项**
 
 在 ApplicationInsights.config 中：
 
@@ -132,9 +132,6 @@ namespace CustomInitializer.Telemetry
       </TelemetryInitializers>
     </ApplicationInsights>
 ```
-
-> [!NOTE]
-> 添加初始值设定项使用`ApplicationInsights.config`不能用于 ASP.NET Core 应用程序。
 
 ASP.NET Web 应用的另一种方法是实例化代码，例如在 Global.aspx.cs 中的初始值设定项：
 
@@ -149,15 +146,20 @@ ASP.NET Web 应用的另一种方法是实例化代码，例如在 Global.aspx.c
     }
 ```
 
+> [!NOTE]
+> 使用添加初始值设定项`ApplicationInsights.config`或使用`TelemetryConfiguration.Active`不能用于 ASP.NET Core 应用程序。 
+
+**ASP.NET Core 应用：加载到 TelemetryConfiguration 初始值设定项**
+
 有关[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)添加一个新的应用程序`TelemetryInitializer`可通过将其添加到依赖关系注入容器，如下所示。 这是在`ConfigureServices`方法在`Startup.cs`类。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
  using CustomInitializer.Telemetry;
  public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
-    }
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
 ```
 
 ### <a name="nodejs"></a>Node.js
@@ -230,7 +232,7 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 
 有关如何使用遥测数据初始化表达式替代云角色名称属性的详细信息，请参阅[添加属性：ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果无法让应用程序映射按预期方式工作，请尝试以下步骤：
 

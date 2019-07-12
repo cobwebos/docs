@@ -4,7 +4,7 @@ description: 第 2 代 vm 的 Azure 支持概述
 services: virtual-machines-windows
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: d8991a6e3137953aae18b91f9cc19e81f0440c75
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 7abc1b7cd3be775af03aeaf558f631060cc6f81c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151215"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722726"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>支持生成 2 个 Vm （预览版） 上的 Azure
 
@@ -41,7 +41,7 @@ ms.locfileid: "67151215"
 * [Dsv2 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series)和[Dsv3 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
-* [GS-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#gs-series)
+* [GS-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [Ls-系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)和[Lsv2 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
 * [Mv2-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
 
@@ -70,7 +70,7 @@ Azure 当前不支持的一些功能，在本地 HYPER-V 支持第 2 代 vm。
 
 ### <a name="generation-1-vs-generation-2-features"></a>第 1 代和第 2 代功能
 
-| Feature | 第 1 代 | 第 2 代 |
+| 功能 | 第 1 代 | 第 2 代 |
 |---------|--------------|--------------|
 | 引导             | PCAT                      | UEFI                               |
 | 磁盘控制器 | IDE                       | SCSI                               |
@@ -118,7 +118,7 @@ Azure 当前不支持的一些功能，在本地 HYPER-V 支持第 2 代 vm。
     是的。 而不是全部[第 2 代 VM 大小](#generation-2-vm-sizes)每个区域中都可用。 2 个 VM 的 VM 大小可用性取决于的生成的可用性。
 
 * **是否有第 1 代和生成之间的价差的 2 个 Vm？**  
-   不。
+   否。
 
 * **如何增加 OS 磁盘大小？**  
   OS 磁盘大于 2 TB 不熟悉第 2 代 Vm。 默认情况下，OS 磁盘是小于第 2 代 vm 的 2 TB。 可以增加磁盘大小最大为 4 TB 的建议最大值。 使用 Azure CLI 或 Azure 门户中，增加的 OS 磁盘大小。 有关如何以编程方式扩展磁盘的信息，请参阅[调整磁盘大小](expand-os-disk.md)。

@@ -2,24 +2,25 @@
 title: 了解 Azure 安全中心，iot 成本预览 |Microsoft Docs
 description: 了解如何使用 Azure 安全中心的 IoT，以及如何控制它们相关的成本。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: ef839708-4574-4a40-bc45-07005f8e9daf
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 40963e0d81ccff21cc625b799833b996547a13b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd041cdb1608eab60fa2a5fa756f381656a13a46
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65198318"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618439"
 ---
 # <a name="pricing-and-associated-costs"></a>定价和关联的成本
 
@@ -62,7 +63,7 @@ ASC 为 IoT 定价模型包含两个部件，并后 IoT 中心是计费[启用](
 
 下表提供了相关联的成本的摘要和意义的每个选项。
 
-|     | 使用情况 | 注释 |
+|     | 用法 | 注释 |
 | --- | --- | --- |
 | **IoT 中心配额使用情况** |  |
 | [导出设备](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices)作业 （孪生导出） | 每天 1 次 | 禁用_孪生元数据集合_ |
@@ -82,7 +83,7 @@ ASC 为 IoT 定价模型包含两个部件，并后 IoT 中心是计费[启用](
 | | 详细信息[警报](concept-security-alerts.md)并[建议](concept-recommendations.md)调查不可用 |
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - 访问你[原始安全数据](how-to-security-data-access.md)
 - [调查设备](how-to-investigate-device.md)

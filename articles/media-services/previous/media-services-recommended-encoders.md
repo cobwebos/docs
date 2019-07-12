@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 373ce1d10af87603b1bdd6339c94891187c35d8c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ec881d190de719c2a7dbedcbf28b0b3ea57140d8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332646"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840115"
 ---
 # <a name="recommended-on-premises-encoders"></a>推荐的本地编码器
 使用 Azure 媒体服务实时传送视频流时，可以指定通道接收输入流的方式。 如果选择将本地编码器与实时编码通道结合使用，则编码器应推送高质量单比特率流作为输出。 如果选择将本地编码器与直通通道结合使用，则编码器应推送具备所有所需输出质量的多比特率流作为输出。 有关详细信息，请参阅[使用本地编码器实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)。
@@ -54,7 +54,7 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 4. 创建已发布的实时事件
 5. 运行实时编码器大约 10 分钟
 6. 停止实时事件
-7. 创建、启动流式处理终结点，使用诸如 [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) 之类的播放器来观看已存档的资产，以确保播放没有所有质量级别的明显问题（或者，在第 6 步之前的实时会话中，通过预览 URL 进行观看和验证）
+7. 创建、启动流式处理终结点，使用诸如 [Azure Media Player](http://aka.ms/azuremediaplayer) 之类的播放器来观看已存档的资产，以确保播放没有所有质量级别的明显问题（或者，在第 6 步之前的实时会话中，通过预览 URL 进行观看和验证）
 8. 记录资产 ID、为实时存档发布的流式处理 URL，以及实时编码器所使用的设置和版本
 9. 在创建每个示例后重置通道状态
 10. 为编码器所支持的所有配置重复（具有或无广告信号/字幕/不同编码速度）步骤 3-9
@@ -66,7 +66,7 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 4. 创建已发布的实时事件
 5. 运行实时编码器大约 10 分钟
 6. 停止实时事件
-7. 创建、启动流式处理终结点，使用诸如 [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) 之类的播放器来观看已存档的资产，以确保播放没有所有质量级别的明显问题（或者，在第 6 步之前的实时会话中，通过预览 URL 进行观看和验证）
+7. 创建、启动流式处理终结点，使用诸如 [Azure Media Player](http://aka.ms/azuremediaplayer) 之类的播放器来观看已存档的资产，以确保播放没有所有质量级别的明显问题（或者，在第 6 步之前的实时会话中，通过预览 URL 进行观看和验证）
 8. 记录资产 ID、为实时存档发布的流式处理 URL，以及实时编码器所使用的设置和版本
 9. 在创建每个示例后重置通道状态
 10. 为编码器所支持的所有配置（具有和无广告信号/字幕/不同编码速度）重复步骤 3-9
@@ -77,7 +77,7 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 3. 配置编码器推送多比特率实时流。
 4. 创建已发布的实时事件
 5. 运行实时编码器持续一周或更长时间
-6. 使用 [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) 等播放器不时观看实时传送视频流（或存档资产），以确保播放没有明显问题
+6. 使用 [Azure Media Player](http://aka.ms/azuremediaplayer) 等播放器不时观看实时传送视频流（或存档资产），以确保播放没有明显问题
 7. 停止实时事件
 8. 记录资产 ID、为实时存档发布的流式处理 URL，以及实时编码器所使用的设置和版本
 

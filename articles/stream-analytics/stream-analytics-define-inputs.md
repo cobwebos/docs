@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: bfdebacb4de205fa42fe96ceb9970d2d109536e8
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 1f03f9e68640edd73d2f6bb55cf205a609450658
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296151"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620497"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -79,7 +79,7 @@ FROM Input
 ```
 
 > [!NOTE]
-> 当使用事件中心作为 IoT 中心路由的终结点时，可通过 [GetMetadataPropertyValue 函数](https://msdn.microsoft.com/library/azure/mt793845.aspx)访问 IoT 中心元数据。
+> 当使用事件中心作为 IoT 中心路由的终结点时，可通过 [GetMetadataPropertyValue 函数](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue)访问 IoT 中心元数据。
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>从 IoT 中心流式传输数据
@@ -129,7 +129,7 @@ Azure IoT 中心是高度可缩放的发布-订阅事件引入器已针对 IoT �
 
 通过流分析来使用 Blob 存储输入时，日志处理是一种常用方案。 在此方案中，首先从某个系统捕获遥测数据文件，然后根据需要对这些数据进行分析和处理以提取有意义的数据。
 
-流分析中 Blob 存储事件的默认时间戳是上次修改 Blob 的时间戳，即 `BlobLastModifiedUtcTime`。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。 如果 blob 文件可用，流分析作业将每秒从 Azure Blob 存储输入中拉取数据。 如果 blob 文件不可用，则存在指数回退，且最长时间延迟为 90 秒。
+流分析中 Blob 存储事件的默认时间戳是上次修改 Blob 的时间戳，即 `BlobLastModifiedUtcTime`。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) 关键字。 如果 blob 文件可用，流分析作业将每秒从 Azure Blob 存储输入中拉取数据。 如果 blob 文件不可用，则存在指数回退，且最长时间延迟为 90 秒。
 
 CSV 格式的输入需要标头行用于为数据集，定义字段和所有标头行字段必须是唯一的。
 

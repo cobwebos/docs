@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f33a59105d1be94ccd4fb24ae3d962b36c2efbdd
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486820"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839357"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 数据工厂 - 常见问题解答
 > [!NOTE]
@@ -35,7 +35,7 @@ ms.locfileid: "60486820"
 有关详细信息，请参阅[概述和关键概念](data-factory-introduction.md)。
 
 ### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>在哪里可以找到 Azure 数据工厂的定价详细信息？
-有关 Azure 数据工厂的定价详细信息，请参阅[数据工厂定价详细信息页][adf-pricing-details]。  
+请参阅[数据工厂定价详细信息页][adf-pricing-details]的 Azure 数据工厂的定价详细信息。  
 
 ### <a name="how-do-i-get-started-with-azure-data-factory"></a>如何使用 Azure 数据工厂？
 * 有关 Azure 数据工厂的概述，请参阅 [Azure 数据工厂简介](data-factory-introduction.md)。
@@ -51,15 +51,14 @@ ms.locfileid: "60486820"
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Azure 数据工厂服务的创作/开发人员体验是什么？
 可以使用下列工具/SDK 之一创作/创建数据工厂：
 
-* **Azure 门户**：Azure 门户中的“数据工厂”边栏选项卡提供丰富的用户界面体验，可方便用户创建数据工厂和链接服务。 “数据工厂编辑器”  也是该门户的一部分，可用于创建链接服务、表、数据集和管道并且操作简单，通过指定这些项目的 JSON 定义即可实现。 有关使用门户/编辑器创建和部署数据工厂的示例，请参阅[使用 Azure 门户构建第一个数据管道](data-factory-build-your-first-pipeline-using-editor.md)。
 * **Visual Studio**：可以使用 Visual Studio 创建 Azure 数据工厂。 有关详细信息，请参阅[使用 Visual Studio 构建第一个数据管道](data-factory-build-your-first-pipeline-using-vs.md)。
-* **Azure PowerShell**：有关使用 PowerShell 创建数据工厂的教程/演练，请参阅[使用 Azure PowerShell 创建和监视 Azure 数据工厂](data-factory-build-your-first-pipeline-using-powershell.md)。 有关数据工厂 cmdlet 的综合文档，请参阅 MSDN 库上的[数据工厂 Cmdlet 参考][adf-powershell-reference]内容。
-* **.NET 类库**：可以使用数据工厂 .NET SDK 以编程方式创建数据工厂。 有关使用 .NET SDK 创建数据工厂的演练，请参阅[使用 .NET SDK 创建、监视和管理数据工厂](data-factory-create-data-factories-programmatically.md)。 有关数据工厂 .NET SDK 的综合文档，请参阅[数据工厂类库参考][msdn-class-library-reference]。
-* **REST API**：还可以使用 Azure 数据工厂服务公开的 REST API 创建和部署数据工厂。 有关数据工厂 REST API 的综合文档，请参阅[数据工厂 REST API 参考][msdn-rest-api-reference]。
+* **Azure PowerShell**：有关使用 PowerShell 创建数据工厂的教程/演练，请参阅[使用 Azure PowerShell 创建和监视 Azure 数据工厂](data-factory-build-your-first-pipeline-using-powershell.md)。 请参阅[数据工厂 Cmdlet 参考][adf-powershell-reference]MSDN 库上的数据工厂 cmdlet 的综合文档内容。
+* **.NET 类库**：可以使用数据工厂 .NET SDK 以编程方式创建数据工厂。 有关使用 .NET SDK 创建数据工厂的演练，请参阅[使用 .NET SDK 创建、监视和管理数据工厂](data-factory-create-data-factories-programmatically.md)。 请参阅[数据工厂类库参考][msdn-class-library-reference]数据工厂.NET SDK 的综合文档。
+* **REST API**：还可以使用 Azure 数据工厂服务公开的 REST API 创建和部署数据工厂。 请参阅[数据工厂 REST API 参考][msdn-rest-api-reference]数据工厂 REST API 的综合文档。
 * **Azure 资源管理器模板** 有关详细信息，请参阅[教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂](data-factory-build-your-first-pipeline-using-arm.md)。
 
 ### <a name="can-i-rename-a-data-factory"></a>是否可以重命名数据工厂？
-不。 和其他 Azure 资源一样，不可以更改 Azure 数据工厂的名称。
+否。 和其他 Azure 资源一样，不可以更改 Azure 数据工厂的名称。
 
 ### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>是否可以将数据工厂从一个 Azure 订阅移动到另一个？
 是的。 使用数据工厂边栏选项卡上的“移动”  按钮，如下面的关系图所示：
@@ -108,7 +107,7 @@ ms.locfileid: "60486820"
 
 ## <a name="hdinsight-activity---faq"></a>HDInsight 活动 - 常见问题解答
 ### <a name="what-regions-are-supported-by-hdinsight"></a>HDInsight 支持哪些区域？
-请参阅以下文章中的“上市地区”部分：或 [HDInsight 定价详细信息][hdinsight-supported-regions]。
+请参阅以下文章中的地域可用性部分： 或[HDInsight 定价详细信息][hdinsight-supported-regions]。
 
 ### <a name="what-region-is-used-by-an-on-demand-hdinsight-cluster"></a>按需 HDInsight 群集使用哪个区域？
 按需 HDInsight 群集的创建位置与你指定用于群集的存储位于同一区域。    
@@ -116,8 +115,8 @@ ms.locfileid: "60486820"
 ### <a name="how-to-associate-additional-storage-accounts-to-your-hdinsight-cluster"></a>如何将其他存储帐户关联到 HDInsight 群集？
 如果使用的是自己的 HDInsight 群集（BYOC - 自带群集），请参阅以下主题：
 
-* [将 HDInsight 群集与备用存储帐户和元存储配合使用][hdinsight-alternate-storage]
-* [将其他存储帐户与 HDInsight Hive 配合使用][hdinsight-alternate-storage-2]
+* [将 HDInsight 群集与备用存储帐户和元存储][hdinsight-alternate-storage]
+* [使用具有 HDInsight Hive 的其他存储帐户][hdinsight-alternate-storage-2]
 
 如果使用的是由数据工厂服务创建的按需群集，请为 HDInsight 链接服务指定其他存储帐户，以便数据工厂服务可以代表你注册它们。 在按需链接服务的 JSON 定义中，请使用 **additionalLinkedServiceNames** 属性指定备用存储帐户，如以下 JSON 代码段所示：
 
@@ -178,7 +177,7 @@ Pipeline 1: dataset4->activity4->dataset5
     ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-  请参阅[集 AzDataFactorySliceStatus] [ set-azure-datafactory-slice-status]有关该 cmdlet 的详细信息。
+  请参阅[集 AzDataFactorySliceStatus][set-azure-datafactory-slice-status]有关该 cmdlet 的详细信息。
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>处理一个切片需要多长时间？
 请使用“监视和管理应用”中的活动窗口资源管理器来了解处理数据切片所花费的时间。 有关详细信息，请参阅[活动窗口资源管理器](data-factory-monitor-manage-app.md#activity-window-explorer)。

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b50f98c4abaeda3ac1805b73aa18fe6c29596426
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52a0bc1b07ebf1aed55551e37ecc122ff393c0f7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708689"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703918"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 
@@ -198,7 +198,7 @@ Key Vault 不支持“导出”操作。 在系统中设置密钥后，便无法
 
 Key Vault 托管的密钥的访问控制是在充当密钥容器的 Key Vault 级别提供的。 在同一 Key Vault 中，密钥的访问控制策略不同于机密的访问控制策略。 用户可以创建一个或多个保管库来保存密钥，并且需要维护方案相应的密钥分段和管理。 密钥的访问控制与机密的访问控制无关。  
 
-在保管库上的密钥访问控制条目中可以按用户/服务主体授予以下权限。 这些权限对密钥对象上允许的操作采取严密的镜像操作：  
+在保管库上的密钥访问控制条目中可以按用户/服务主体授予以下权限。 这些权限严密镜像对密钥对象允许的操作。  授予对服务主体密钥保管库中的访问是一次性操作，并且它将保持为所有 Azure 订阅相同。 可用于部署所需的任意数目的证书。 
 
 - 针对密钥管理操作的权限
   - *get*：读取密钥的公共部分及其属性
@@ -312,7 +312,7 @@ Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault
 
 除了证书元数据、可寻址密钥和可寻址机密外，Key Vault 证书还包含属性和标记。  
 
-#### <a name="attributes"></a>属性
+#### <a name="attributes"></a>特性
 
 证书属性将镜像到创建 KV 证书时创建的可寻址密钥和机密的属性。  
 
@@ -330,7 +330,7 @@ Key Vault 证书具有以下属性：
 > [!Note] 
 > 如果 Key Vault 证书过期，则它是可寻址密钥，机密会无法操作。  
 
-#### <a name="tags"></a>标记
+#### <a name="tags"></a>Tags
 
  客户端指定的键值对字典，类似于密钥和机密中的标记。  
 
@@ -363,14 +363,14 @@ Key Vault 证书具有以下属性：
 
 |X.509 密钥使用情况标记 |Key Vault 密钥的操作 |默认行为 |
 |----------|--------|--------|
-|DataEncipherment|加密、解密| 不适用 |
-|DecipherOnly|解密| 不适用  |
+|DataEncipherment|加密、解密| 不可用 |
+|DecipherOnly|解密| 不可用  |
 |DigitalSignature|签名、验证| Key Vault 在创建证书时默认为无使用规范 | 
-|EncipherOnly|encrypt| 不适用 |
-|KeyCertSign|签名、验证|不适用|
+|EncipherOnly|encrypt| 不可用 |
+|KeyCertSign|签名、验证|不可用|
 |KeyEncipherment|包装密钥、解包密钥| Key Vault 在创建证书时默认为无使用规范 | 
-|NonRepudiation|签名、验证| 不适用 |
-|crlsign|签名、验证| 不适用 |
+|NonRepudiation|签名、验证| 不可用 |
+|crlsign|签名、验证| 不可用 |
 
 ### <a name="certificate-issuer"></a>证书颁发者
 
@@ -473,8 +473,7 @@ Key Vault 可以管理 Azure 存储帐户密钥：
 
 有关详细信息，请参阅 [Key Vault REST API 中的存储帐户操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [身份验证、请求和响应](authentication-requests-and-responses.md)
-- [Key Vault 版本](key-vault-versions.md)
 - [Key Vault 开发人员指南](/azure/key-vault/key-vault-developers-guide)

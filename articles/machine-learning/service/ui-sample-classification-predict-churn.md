@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 42724f5fcb3101015cef0d218a3d548f349646be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d10d996febd0e31c9085bf5cb82324cce101c80
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785827"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606141"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>示例 5-分类：预测流失情况、 亲和力，和向上销售 
 
@@ -29,7 +29,7 @@ ms.locfileid: "65785827"
 
 ![试验图](./media/ui-sample-classification-predict-churn/experiment-graph.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
@@ -37,7 +37,7 @@ ms.locfileid: "65785827"
 
     ![打开试验](media/ui-sample-classification-predict-churn/open-sample5.png)
 
-## <a name="data"></a>数据
+## <a name="data"></a>Data
 
 对于此试验，我们使用的数据是来自 KDD Cup 2009。 数据集具有 50000 行和 230 特征列。 该任务是预测流失情况、 亲和力，和向上销售的客户使用这些功能。 有关数据和任务的详细信息，请参阅[KDD 网站](https://www.kdd.org/kdd-cup/view/kdd-cup-2009)。
 
@@ -79,3 +79,4 @@ ms.locfileid: "65785827"
 - [示例 2-回归：比较进行汽车价格预测算法](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [示例 3-分类：预测信用风险](ui-sample-classification-predict-credit-risk-basic.md)
 - [示例 4-分类：预测信用风险 （成本敏感）](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [示例 6-分类：预测航班延误](ui-sample-classification-predict-flight-delay.md)

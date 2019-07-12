@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 3bce5dd1dd34c53276c5486cc255c4cd93bb6080
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242174"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839751"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box 系统要求
 
@@ -52,6 +52,13 @@ ms.locfileid: "66242174"
 ## <a name="networking-requirements"></a>网络要求
 
 数据中心需要有高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，则可使用 1-GbE 数据链路复制数据，但复制速度会受影响。
+
+### <a name="port-requirements"></a>端口要求
+
+下表列出了需要在防火墙以允许 SMB 或 NFS 流量打开端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *Out*或*出站*表示在其中你 Data Box 设备外部发送数据的在部署范畴以外的方向： 例如，出站到 Internet。
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
+
 
 ## <a name="next-steps"></a>后续步骤
 
