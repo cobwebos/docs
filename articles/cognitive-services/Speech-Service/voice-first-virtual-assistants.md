@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 4055b474938e38f653021b46f18200f8e39dd69d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9b85895e701ff74e025d6f7895bc32513bc29a1
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604743"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806902"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>有关自定义语音第一个虚拟助手预览
 
@@ -29,7 +29,7 @@ ms.locfileid: "67604743"
 
 ## <a name="core-features"></a>核心功能
 
-| Category | 功能 |
+| 类别 | 功能 |
 |----------|----------|
 |[自定义唤醒文字](speech-devices-sdk-create-kws.md) | 可以让用户使用智能机器人使用自定义的关键字，如"您好 Contoso"。 开始会话 使用语音 SDK，可以使用自定义唤醒文字配置中的自定义唤醒 word 引擎完成此任务[可以在此处生成](speech-devices-sdk-create-kws.md)。 直接行语音通道包括提高与单独的设备的唤醒 word 激活准确性的服务端唤醒 word 验证。
 |[语音转文本](speech-to-text.md) | 直接行语音通道包括为识别的文本，并使用实时听录音频[语音到文本](speech-to-text.md)从 Azure 语音服务。 此文本是可用于智能机器人和客户端应用程序，如转录。
@@ -43,6 +43,7 @@ GitHub 上提供了用于创建语音第一个虚拟助手的示例代码。 这
 * [虚拟助手语音第一个示例 (SDK)](https://aka.ms/csspeech/samples)
 * [快速入门： 语音的第一个虚拟助手 (C#)](quickstart-virtual-assistant-csharp-uwp.md)
 * [快速入门： 语音第一个虚拟助手 (Java)](quickstart-virtual-assistant-java-jre.md)
+* [指示行语音客户端 (C#，WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
 
 ## <a name="customization"></a>自定义
 

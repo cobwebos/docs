@@ -2,17 +2,17 @@
 title: 概念 - Azure Kubernetes 服务 (AKS) 中的存储
 description: 了解 Azure Kubernetes 服务 (AKS) 中的存储，其中包括卷、永久性卷、存储类和声明
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: cce38eb12d803c0640d9ee774dbc6c98ab5db219
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: eb9141d363bdb09b5773f80dfc5a1c4b9b92728f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60466782"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615814"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序存储选项
 
@@ -121,22 +121,22 @@ spec:
 
 ## <a name="next-steps"></a>后续步骤
 
-如需相关的最佳做法，请参阅[在 AKS 中存储和备份的最佳做法][operator-best-practices-storage]。
+如需相关的最佳做法，请参阅 [AKS 中的存储和备份最佳做法][operator-best-practices-storage]。
 
 若要了解如何创建使用 Azure 磁盘或 Azure 文件的动态和静态卷，请参阅以下操作指南：
 
-- [使用 Azure 磁盘创建静态卷][aks-static-disks]
-- [使用 Azure 文件创建静态卷][aks-static-files]
-- [使用 Azure 磁盘创建动态卷][aks-dynamic-disks]
-- [使用 Azure 文件创建动态卷][aks-dynamic-files]
+- [创建静态卷使用 Azure 磁盘][aks-static-disks]
+- [创建静态卷使用 Azure 文件][aks-static-files]
+- [创建动态卷使用 Azure 磁盘][aks-dynamic-disks]
+- [创建动态卷使用 Azure 文件][aks-dynamic-files]
 
 有关核心 Kubernetes 和 AKS 概念的详细信息，请参阅以下文章：
 
 - [Kubernetes/AKS 群集和工作负荷][aks-concepts-clusters-workloads]
-- [Kubernetes/AKS 标识][aks-concepts-identity]
+- [Kubernetes / AKS 标识][aks-concepts-identity]
 - [Kubernetes/AKS 安全性][aks-concepts-security]
 - [Kubernetes/AKS 虚拟网络][aks-concepts-network]
-- [Kubernetes/AKS 规模][aks-concepts-scale]
+- [Kubernetes / AKS 缩放][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
 

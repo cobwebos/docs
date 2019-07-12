@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4dadc68e78fbaa979751d5bcd04ef481c3ab886
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 1bc3c1325e8379082134e2cbec1586f7d338ee61
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544343"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797941"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>使用 AD FS 和来宾用户 （预览） 的第三方提供程序的直接联合身份验证
 |     |
@@ -62,7 +62,7 @@ ms.locfileid: "67544343"
 ### <a name="signing-certificate-renewal"></a>签名证书续订
 如果标识提供程序设置中指定的元数据 URL，Azure AD 将自动续订签名证书过期后。 但是，如果证书出于任何原因旋转早于过期时间，或如果未提供元数据 URL，Azure AD 将不能续订它。 在这种情况下，你将需要手动更新签名证书。
 ## <a name="frequently-asked-questions"></a>常见问题
-### <a name="can-i-set-up-direct-federation-with-an-unmanaged-email-verified-tenant"></a>可以设置与非托管 （电子邮件验证） 租户的直接联合身份验证？ 
+### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>可以设置与域存在 （电子邮件验证） 的非托管的租户的直接联合身份验证？ 
 是的。 如果尚未验证域和租户尚未经过[管理员接管](../users-groups-roles/domains-admin-takeover.md)，可以设置直接联合身份验证。 在用户兑换 B2B 邀请或执行使用当前不存在的域的 Azure AD 中的自助注册时，会创建受管理，或电子邮件验证的租户。 您可以将直接与这些域的联合身份验证设置。 如果尝试建立直接联合身份验证与 DNS 验证域，在 Azure 门户中或通过 PowerShell，您将看到一个错误。
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>如果同时启用直接联合身份验证和电子邮件的一次性密码身份验证，哪种方法将优先？
 与合作伙伴组织建立直接联合身份验证后，它将优先于该组织的新来宾用户的电子邮件的一次性密码身份验证。 如果来宾用户兑换邀请之前设置直接联合身份验证使用一次性密码身份验证，它们将继续使用一次性密码身份验证。 
@@ -87,7 +87,7 @@ ms.locfileid: "67544343"
 
 从 IdP 的 SAML 2.0 响应所需的属性：
 
-|特性  |值  |
+|特性  |ReplTest1  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |目标受众     |`urn:federation:MicrosoftOnline`         |
@@ -153,12 +153,12 @@ ms.locfileid: "67544343"
    > [!NOTE]
    > 但是，我们强烈建议，是可选的元数据 URL。 如果提供的元数据 URL，Azure AD 可以自动续订签名证书过期后。 如果在到期时间之前证书旋转出于任何原因或未提供元数据 URL，Azure AD 将不能续订它。 在这种情况下，你将需要手动更新签名证书。
 
-7. 选择“保存”。  
+7. 选择**保存**。 
 
 ### <a name="to-configure-direct-federation-in-azure-ad-using-powershell"></a>若要使用 PowerShell 的 Azure AD 中配置直接联合身份验证
 
 1. 安装最新版本的 Azure AD PowerShell for Graph 模块 ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。 (如果需要详细的步骤，添加来宾用户快速入门教程包括的部分[安装最新的 AzureADPreview 模块](b2b-quickstart-invite-powershell.md#install-the-latest-azureadpreview-module)。) 
-2. 运行以下命令： 
+2. 运行下面的命令： 
    ```powershell
    Connect-AzureAD
    ```
@@ -187,7 +187,7 @@ ms.locfileid: "67544343"
 3. 选择**标识提供者**
 4. 下**SAML/Ws-fed 标识提供者**，选择的提供程序。
 5. 在标识提供程序的详细信息窗格中，更新的值。
-6. 选择“保存”。 
+6. 选择**保存**。
 
 
 ## <a name="how-do-i-remove-direct-federation"></a>如何删除直接联合身份验证？
@@ -201,7 +201,7 @@ ms.locfileid: "67544343"
 
 若要使用 PowerShell 删除直接联合身份验证的标识提供者：
 1. 安装最新版本的 Azure AD PowerShell for Graph 模块 ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。
-2. 运行以下命令： 
+2. 运行下面的命令： 
    ```powershell
    Connect-AzureAD
    ```

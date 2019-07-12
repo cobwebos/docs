@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.openlocfilehash: 61a208f3e84125acc2a3cb22d3abccf16587e581
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.date: 07/10/2019
+ms.openlocfilehash: dab4262e5412c8ef3cd1e0d2ef8203d7f289693f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543677"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839193"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -25,7 +25,9 @@ ms.locfileid: "67543677"
 * 直接访问无法通过 Internet 公开访问的 [Apache Hadoop](https://hadoop.apache.org/) 服务。 例如，[Apache Kafka](https://kafka.apache.org/) API 或 [Apache HBase](https://hbase.apache.org/) Java API。
 
 > [!IMPORTANT]  
-> 2019 年 2 月 28 日以后，在 VNET 中创建的新群集的网络资源（例如 NIC、LB 等）会在同一 HDInsight 群集资源组中进行预配。 以前，这些资源在 VNET 资源组中预配。 当前运行的群集以及那些在没有 VNET 的情况下创建的群集没有任何更改。
+> 在 VNET 中创建的 HDInsight 群集将创建多个网络资源，例如 Nic 和负载均衡器。 不要**不**删除这些网络资源，因为它们需要对正常运行 VNET 群集。
+>
+> 后 2019 年 2 月 28 日，在 VNET 中创建的新群集的这些网络资源 （例如 Nic、 LBs，等等），将配置相同的 HDInsight 群集资源组中。 以前，这些资源在 VNET 资源组中预配。 当前运行的群集以及那些在没有 VNET 的情况下创建的群集没有任何更改。
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>代码示例和示例的先决条件
 
@@ -270,8 +272,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
     | ---- | ---- | ---- | ---- | ----- |
     | 亚洲 | 东亚 | 23.102.235.122</br>52.175.38.134 | \*:443 | 入站 |
     | &nbsp; | 东南亚 | 13.76.245.160</br>13.76.136.249 | \*:443 | 入站 |
-    | 澳大利亚 | 澳大利亚中部 | 20.36.36.33</br>20.36.36.196 | \*:443 | 入站 |
-    | &nbsp; | 澳大利亚东部 | 104.210.84.115</br>13.75.152.195 | \*:443 | 入站 |
+    | 澳大利亚 | 澳大利亚东部 | 104.210.84.115</br>13.75.152.195 | \*:443 | 入站 |
     | &nbsp; | 澳大利亚东南部 | 13.77.2.56</br>13.77.2.94 | \*:443 | 入站 |
     | 巴西 | 巴西南部 | 191.235.84.104</br>191.235.87.113 | \*:443 | 入站 |
     | 加拿大 | 加拿大东部 | 52.229.127.96</br>52.229.123.172 | \*:443 | 入站 |
@@ -569,7 +570,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     
     * 将值 `192.168.0.1` 替换为本地 DNS 服务器的 IP 地址。 此条目可将所有其他 DNS 请求路由到本地 DNS 服务器。
 
-3. 若要使用配置，请重新启动 Bind。 例如，`sudo service bind9 restart` 。
+3. 若要使用配置，请重新启动 Bind。 例如， `sudo service bind9 restart` 。
 
 4. 将一个条件转发器添加到本地 DNS 服务器。 配置条件转发器，以便将步骤 1 中 DNS 后缀的请求发送到自定义 DNS 服务器。
 

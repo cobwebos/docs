@@ -4,15 +4,15 @@ description: 如何使用 Azure 资源管理器模板在 Windows 虚拟桌面预
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 4df8b854a94374346eec6f77d761e65a04ef78a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdc61aede6e650bce62768b7a97f8640affd594f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523981"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620491"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建主机池
 
@@ -20,7 +20,7 @@ ms.locfileid: "65523981"
 
 按照本部分的说明为 Windows 虚拟桌面租户使用 Microsoft 提供的 Azure 资源管理器模板创建主机池。 本文将告诉您如何在 Windows 虚拟桌面中创建主机池、 Azure 订阅中的 Vm 创建资源组、 加入 AD 域中，这些 Vm 和 Vm 注册到 Windows 虚拟桌面。
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>您需要运行 Azure 资源管理器模板
+## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>运行 Azure 资源管理器模板所要做好的准备
 
 请确保运行 Azure 资源管理器模板之前了解以下操作：
 
@@ -40,11 +40,11 @@ ms.locfileid: "65523981"
 
 如果你在部署云解决方案提供商订阅中，执行以下步骤将部署到 Azure:
 
-1. 向下滚动并右键单击**部署到 Azure**，然后选择**复制链接位置**。
-2. 打开记事本之类的文本编辑器并粘贴存在的链接。
+1. 向下滚动并右键单击“部署到 Azure”，然后选择“复制链接位置”。  
+2. 打开一个文本编辑器（例如记事本）并在其中粘贴该链接。
 3. 之后"https://portal.azure.com/ "并输入之前井号标签 （#） at 符号 (@) 后面是租户域名。 下面是应使用的格式示例： https://portal.azure.com/@Contoso.onmicrosoft.com#create/ 。
-4. 具有到云解决方案提供商订阅的管理员/参与者权限的用户登录到 Azure 门户。
-5. 粘贴到文本编辑器复制到的地址栏的链接。
+4. 以对“云解决方案提供商”订阅拥有“管理员/参与者”权限的用户身份登录到 Azure 门户。
+5. 将已复制到文本编辑器的链接粘贴到地址栏中。
 
 有关哪些参数应为输入你的方案的指南，请参阅 Windows 虚拟桌面[自述文件](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md)。 自述文件始终使用最新更改进行更新。
 

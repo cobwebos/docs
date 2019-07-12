@@ -4,15 +4,15 @@ description: 如何自定义 Windows 虚拟桌面用户使用 PowerShell cmdlet 
 services: virtual-desktop
 author: v-hevem
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: v-hevem
-ms.openlocfilehash: 869760a12089ed7453199ad8a3fa18a6cca87511
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 5fe2a8b8ee5870ff7986ca2d91739f82a5128882
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67157085"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618990"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>为 Windows 虚拟桌面用户自定义源
 
