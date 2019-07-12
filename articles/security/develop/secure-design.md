@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b637f547de06d9347a1c74ad7da560be97f16881
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 12b9793cabb261368c437bd2ae2dbb39cf078bef
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144433"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653284"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上设计安全的应用程序
 在本文中，我们介绍的安全活动和设计的云应用程序时要考虑的控件。 培训资源以及安全问题和概念，可在要求考虑和设计阶段的 Microsoft[安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)介绍。 旨在帮助您定义活动和可用于设计更安全的应用程序的 Azure 服务。
@@ -39,7 +39,7 @@ ms.locfileid: "67144433"
 
   - [Sdk 和工具](https://docs.microsoft.com/azure/index#pivot=sdkstools)介绍了 Azure 提供的工具。
 
-  - [Azure DevOps 服务](https://docs.microsoft.com/azure/devops/?view=vsts#pivot=index&panel=indexA)提供协作工具的开发。 这些工具包括高性能管道、 免费 Git 存储库、 可配置看板和广泛的自动化和基于云的负载测试。
+  - [Azure DevOps 服务](https://docs.microsoft.com/azure/devops/)提供协作工具的开发。 这些工具包括高性能管道、 免费 Git 存储库、 可配置看板和广泛的自动化和基于云的负载测试。
     [DevOps 资源中心](https://docs.microsoft.com/azure/devops/learn/)结合了我们了解 DevOps 做法、 Git 版本控制、 敏捷方法、 如何使用 microsoft 的 DevOps 和如何可以评估你自己的 DevOps 进度的资源。
 
   - [前 5 个安全项目推送到生产环境之前，请考虑](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca)演示如何帮助保护 Azure 上的 web 应用程序和保护您的应用程序针对最常见和最危险的 web 应用程序攻击。
@@ -152,12 +152,12 @@ Azure 提供托管网站和 web 应用程序可以使用其他服务。 大多�
 
 | 威胁 | 安全属性 | 潜在的 Azure 平台缓解措施 |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 欺骗               | Authentication        | [需要 HTTPS 连接](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)。 |
+| 欺骗               | 身份验证        | [需要 HTTPS 连接](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)。 |
 | 篡改              | 完整性             | 验证 SSL/TLS 证书。 使用 SSL/TLS 的应用程序必须全面验证它们连接到的实体的 X.509 证书。 使用 Azure 密钥保管库证书对[管理 x509 证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)。 |
 | 否认性            | 不可否认性       | 启用 Azure [监视和诊断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。|
 | 信息泄露 | 保密性       | 加密敏感数据[静态](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)并[在传输过程中](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit)。 |
 | 拒绝服务      | 可用性          | 监视性能指标的潜在拒绝服务状况。 实现连接筛选器。 [Azure DDoS 防护](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps)，与应用程序设计最佳做法相结合，提供对 DDoS 攻击的防御。|
-| 特权提升 | 授权         | 使用 Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)。|
+| 特权提升 | Authorization         | 使用 Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)。|
 
 ### <a name="reduce-your-attack-surface"></a>减少攻击面
 

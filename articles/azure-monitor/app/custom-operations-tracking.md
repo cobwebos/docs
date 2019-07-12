@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c33c481d96a9edecc6360a9a91c095c2bca220b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900883"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798351"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -51,7 +51,10 @@ Application Insights Web SDK 自动收集 ASP.NET 应用程序（在 IIS 管道�
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
 {
-    private readonly TelemetryClient telemetryClient = new TelemetryClient(TelemetryConfiguration.Active);
+    // you may create a new TelemetryConfiguration instance, reuse one you already have
+    // or fetch the instance created by Application Insights SDK.
+    private readonly TelemetryConfiguration telemetryConfiguration = TelemetryConfiguration.CreateDefault();
+    private readonly TelemetryClient telemetryClient = new TelemetryClient(telemetryConfiguration);
     
     public ApplicationInsightsMiddleware(OwinMiddleware next) : base(next) {}
 
@@ -207,27 +210,14 @@ public async Task Process(BrokeredMessage message)
 以下示例显示如何跟踪 [Azure 存储队列](../../storage/queues/storage-dotnet-how-to-use-queues.md)操作，并将生成者、使用者和 Azure 存储之间的遥测相关联。 
 
 存储队列具有一个 HTTP API。 用于 HTTP 请求的 Application Insights Dependency Collector 会跟踪对该队列的所有调用。
-请确保在 `applicationInsights.config` 中有 `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer`。 如果没有，则按 [Azure Application Insights SDK 中的筛选和预处理](../../azure-monitor/app/api-filtering-sampling.md)中所述以编程方式添加。
-
-如果手动配置 Application Insights，请确保创建并初始化 `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`，如下所示：
- 
-```csharp
-DependencyTrackingTelemetryModule module = new DependencyTrackingTelemetryModule();
-
-// You can prevent correlation header injection to some domains by adding it to the excluded list.
-// Make sure you add a Storage endpoint. Otherwise, you might experience request signature validation issues on the Storage service side.
-module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
-module.Initialize(TelemetryConfiguration.Active);
-
-// Do not forget to dispose of the module during application shutdown.
-```
+配置 ASP.NET 和 ASP.NET Core 应用程序，使用其他类型的应用程序上的默认情况下，您可以参考[控制台应用程序文档](../../azure-monitor/app/console.md)
 
 用户可能还想将 Application Insights 操作 ID 与存储请求 ID 相关联。 有关如何设置与获取存储请求客户端和服务器请求 ID 的信息，请参阅[对 Azure 存储进行监视、诊断和故障排除](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)。
 
 #### <a name="enqueue"></a>排队
 由于存储队列支持 HTTP API，因此 Application Insights 会自动跟踪队列的所有操作。 在多数情况下，此检测已足够。 但是，为了将使用者跟踪与生成者跟踪相关联，必须传递某些关联上下文，方法类似于 HTTP 关联协议中所执行的操作。 
 
-此示例演示如何跟踪 `Enqueue` 操作。 可以：
+此示例演示如何跟踪 `Enqueue` 操作。 你可以：
 
  - **关联重试（如果有）** ：它们都有一个共同的父级，即 `Enqueue` 操作。 否则，它们都作为传入请求的子级进行跟踪。 如果有多个对队列的逻辑请求，可能很难发现导致重试的调用。
  - **关联存储日志（如果需要）** ：它们与 Application Insights 遥测相关联。

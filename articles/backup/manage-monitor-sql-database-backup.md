@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: d850cb222b0028f862cdba302140ce12af8576db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 913140a51603429e003f04f860bca9b4ddb1c214
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66492742"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704882"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
 
@@ -145,7 +145,7 @@ Azure 备份显示中的所有手动触发的作业**备份作业**门户。 请
 
 有时，在 VM 上的工作负荷扩展可能会受到影响的原因之一或其他。 在这种情况下，在 VM 上触发的所有操作将都开始失败。 然后，您可能需要重新注册该扩展在 VM 上。 **重新注册**操作操作继续在 VM 上重新安装工作负荷备份扩展。  <br>
 
-建议使用此选项时要注意;具有已正常扩展的 VM 上触发，此操作将导致要获取重新启动的扩展。 这可能会导致所有正在进行中作业失败。 请检查为一个或多个[症状](backup-sql-server-azure-troubleshoot.md#symptoms)之前触发重新注册操作。
+建议使用此选项时要注意;具有已正常扩展的 VM 上触发，此操作将导致要获取重新启动的扩展。 这可能会导致所有正在进行中作业失败。 请检查为一个或多个[症状](backup-sql-server-azure-troubleshoot.md#re-registration-failures)之前触发重新注册操作。
 
 ## <a name="next-steps"></a>后续步骤
 

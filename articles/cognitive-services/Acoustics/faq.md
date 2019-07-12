@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 6e979db29f4a223b61580c48101c0d242fdbebbf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a18f6b57e203c40c0f667f07e8371348cb738c9b
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616331"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827569"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>项目噪声方面的常见问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "67616331"
 
 ## <a name="does-project-acoustics-support-ltxgt-platform"></a>支持项目噪声&lt;x&gt;平台？
 
-项目的发展平台支持基于客户需求的噪声。 在上，请联系我们[项目噪声论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)就可以提出有关其他平台的支持。
+项目的发展平台支持基于客户需求的噪声。 在上，请联系我们[项目噪声问题论坛](https://github.com/microsoft/ProjectAcoustics/issues)就可以提出有关其他平台的支持。
 
 ## <a name="is-azure-used-at-runtime"></a>是否在运行时使用 Azure？
 
@@ -45,7 +45,7 @@ ms.locfileid: "67616331"
  
 ## <a name="do-i-need-to-simplify-the-level-geometry-control-triangle-count-make-meshes-watertight"></a>是否需要简化水平几何体？ 控制三角形计数？ 使网格严密？
 
-不。 系统将直接引入详细的水平几何体。 它将体素化，以便进行内部处理。
+否。 系统将直接引入详细的水平几何体。 它将体素化，以便进行内部处理。
  
 ## <a name="whats-in-the-runtime-lookup-table"></a>运行时查找表中是什么？
 

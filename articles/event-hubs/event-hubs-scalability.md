@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
-ms.openlocfilehash: 3eb20013a6b3afaddce10f2e4652add0edf22a9a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c46b333f2cc304cc12ddf78670b60940c7bc0db3
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276777"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827673"
 ---
 # <a name="scaling-with-event-hubs"></a>通过事件中心进行缩放
 
@@ -48,14 +48,14 @@ ms.locfileid: "67276777"
 有关详细信息自动膨胀功能，请参阅[自动缩放吞吐量单位](event-hubs-auto-inflate.md)。
 
 ## <a name="partitions"></a>分区
+[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-可以通过分区进行缩放，方便下游处理。 由于事件中心为分区使用者模型提供分区，因此你可以在并发处理事件时横向扩展。 一个事件中心最多可以有 32 个分区。
+### <a name="partition-key"></a>分区键
 
-建议以 1:1 的比例来平衡吞吐量单位和分区数目，实现最佳缩放。 一个分区最多只能保证一个吞吐量单位的入口和出口。 虽然你也许可以在一个分区实现更高的吞吐量，但性能无法得到保证。 这就是我们强烈建议一个事件中心的分区数大于或等于吞吐量单位数的原因。
+可以使用[分区键](event-hubs-programming-guide.md#partition-key)将传入事件数据映射到特定分区，以便进行数据组织。 分区键是发送者提供的、要传递给事件中心的值。 该键通过静态哈希函数进行处理，以便分配分区。 如果在发布事件时未指定分区键，则会使用循环分配。
 
-如果已确定所需总吞吐量，则可以知道所需吞吐量单位数和最小分区数，但应该有多少分区呢？ 选择的分区数取决于要实现的下游并行度以及未来的吞吐量需求。 我们不根据事件中心的分区数收费。
+事件发布者只知道其分区密钥，而不知道事件要发布到的分区。 键与分区的这种分离使发送者无需了解有关下游处理的过多信息。 每个设备或用户的唯一标识就可以充当一个适当的分区键，但是，也可以使用其他属性（例如地理位置），以便将相关的事件分组到单个分区中。
 
-如需事件中心的详细定价信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 ## <a name="next-steps"></a>后续步骤
 访问以下链接可以了解有关事件中心的详细信息：

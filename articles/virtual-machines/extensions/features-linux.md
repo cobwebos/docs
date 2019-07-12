@@ -4,7 +4,7 @@ description: 了解可为 Azure 虚拟机提供哪些扩展，这些虚拟机扩
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: c83eb1f6525c54bc44386f84498789b50bf19043
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f22da9eabc6f539ef37009f565f073b9de89319
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721134"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706745"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>适用于 Linux 的虚拟机扩展和功能
 
@@ -38,7 +38,7 @@ Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部�
 
 除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Linux 的“自定义脚本”扩展允许在 VM 上运行任何 Bash 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Linux VM Custom Script extension](custom-script-linux.md)（Linux VM“自定义脚本”扩展）。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要处理 VM 上的扩展，需要安装 Azure Linux 代理。 有些单独的扩展附带先决条件，例如，有权访问资源或依赖项。
 
@@ -222,7 +222,7 @@ VM 扩展可添加到 Azure 资源管理器模板，并在部署模板的过程�
 如果有更新可用，仅当发生了扩展更改或其他 VM 模型更改时，才会在 VM 上安装该项更新：
 
 - 数据磁盘数
-- 扩展
+- Extensions
 - 启动诊断容器
 - 来宾 OS 机密
 - VM 大小

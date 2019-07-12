@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 940306f79aa48567e3da943fe752a6acdf206c27
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3d9826e3eae2a60b217df1406d26d83c78fbdefb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172814"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673252"
 ---
 若要使用 Azure 门户在 Resource Manager 部署模型中创建 VNet，请执行以下步骤。 这些屏幕截图作为示例提供。 请务必替换成自己的值。 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
 
@@ -22,7 +22,7 @@ ms.locfileid: "67172814"
 >
 >
 
-1. 从浏览器导航到 [Azure 门户](http://portal.azure.com)，并在必要时用 Azure 帐户登录。
+1. 从浏览器导航到 [Azure 门户](https://portal.azure.com)，并在必要时用 Azure 帐户登录。
 2. 单击“+”。  在“在市场中搜索”  字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”  ，单击打开“虚拟网络”  页。
 
    ![查找虚拟网络资源页](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/newvnetportal700.png "查找虚拟网络资源页")

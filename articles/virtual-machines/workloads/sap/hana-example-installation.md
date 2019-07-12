@@ -4,7 +4,7 @@ description: 如何在 Azure SAP HANA（大型实例）上安装 HANA。
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4629894933507bda7359fb034c4079d38100029
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: ce82a2972d9cc349e527811e32c974996327e70b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203891"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709748"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>在 Azure SAP HANA（大型实例）上安装 HANA
 

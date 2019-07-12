@@ -137,6 +137,8 @@
           href: infrastructure-example.md
         - name: vCPU 配额
           href: quotas.md
+    - name: 安全属性
+      href: virtual-machines-linux-security-attributes.md
 - name: 操作指南
   items:
     - name: 创建 VM

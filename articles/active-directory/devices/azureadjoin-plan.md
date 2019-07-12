@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36429feed99c421984ed55d4e506954aa30f0040
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 4332c921af770cb47e9a9a779d0bd148153fcd31
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482133"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666141"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：计划 Azure AD 加入实现
 
@@ -24,7 +24,7 @@ ms.locfileid: "67482133"
 
 本文介绍计划 Azure AD 联接实现所需信息。
  
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本文假设读者已阅读 [Azure Active Directory 中的设备管理简介](../device-management-introduction.md)。
 
@@ -70,7 +70,7 @@ Azure AD 联接适用于托管环境和联合环境。
 - **WS-Fed：** 将设备联接到 Azure AD 时需要此协议。
 - **WS-Trust：** 登录到 Azure AD 联接设备时需要此协议。 
 
-如果标识提供者不支持这些协议，则 Azure AD 联接无法本机运行。 从 Windows 10 1809 开始，你的用户可使用基于 SAML 的标识提供者通过 [Windows 10 上的 Web 登录](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)登录到 Azure AD 联接设备。 目前，Web 登录是仅限预览版的功能。
+如果标识提供者不支持这些协议，则 Azure AD 联接无法本机运行。 从 Windows 10 1809 开始，你的用户可使用基于 SAML 的标识提供者通过 [Windows 10 上的 Web 登录](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)登录到 Azure AD 联接设备。 目前，web 登录是一项预览功能，不建议用于生产部署。
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>智能卡和基于证书的身份验证
 

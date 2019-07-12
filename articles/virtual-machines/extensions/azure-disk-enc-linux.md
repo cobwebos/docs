@@ -4,7 +4,7 @@ description: 使用虚拟机扩展将适用于 Linux 的 Azure 磁盘加密部�
 services: virtual-machines-linux
 documentationcenter: ''
 author: ejarvi
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 05d20e75cf8f0c84936ff4e5dfa42d60678f6ffc
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: d544aae33faf60be00a2b4ea0a45f405efcedb39
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295336"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706144"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>适用于 Linux 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -27,7 +27,7 @@ ms.locfileid: "67295336"
 
 Azure 磁盘加密利用 Linux 中的 dm-crypt 子系统在[选择 Azure Linux 发行版](https://aka.ms/adelinux)上提供完整磁盘加密。  此解决方案与 Azure Key Vault 集成，用于管理磁盘加密密钥和机密。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 有关先决条件的完整列表，请参阅 [Azure 磁盘加密先决条件](
 ../../security/azure-security-disk-encryption-prerequisites.md)。
@@ -147,11 +147,11 @@ V1.1 架构建议，并且不需要 Azure Active Directory 属性。
 | (0.1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (0.1 schema) AADClientSecret | password | string |
 | (0.1 schema) AADClientCertificate | thumbprint | string |
-| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON dictionary |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
-| (可选) KeyVaultURL | url | string |
+| （可选）KeyVaultURL | url | string |
 | Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | OS, Data, All | string |

@@ -4,19 +4,19 @@ description: 如何在 Azure 虚拟机中启用嵌套虚拟化
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.author: cynthn
 ms.date: 10/09/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: acb44a34eae84d8a5718ebcc0003d3cf50b9d43a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 843dfa64cdf0af3ad6cfd3a9f83c16f0ce85fcd0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510044"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720211"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -119,6 +119,10 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 
 ## <a name="create-the-guest-virtual-machine"></a>创建来宾虚拟机
+
+>[!IMPORTANT] 
+>
+>Azure 来宾代理不支持嵌套在 Vm 上，并可能导致上的主机和嵌套的 Vm 问题。 不要在嵌套 Vm 上安装 Azure 代理和不使用映像创建的嵌套的 Vm 已安装了 Azure 来宾代理。
 
 1. 打开 Hyper-V 管理器并创建新的虚拟机。 配置虚拟机以使用你创建的新内部网络。
     

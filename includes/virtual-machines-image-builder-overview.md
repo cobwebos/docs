@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 6eedc095f155a77cddf48211dbc4a677bf188112
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 55d73b2602a9a862375ca3e72dee4597c1d6f1d6
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509809"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659755"
 ---
 标准化的虚拟机 (VM) 映像，组织可迁移到云，并确保在部署中的一致性。 映像通常包括预定义的安全和配置设置和必要的软件。 设置映像管道需要时间、 基础结构和安装过程中，但使用 Azure VM 映像生成器，只需提供简单的配置描述你的映像、 将其提交到服务，和生成，并分发映像。
  
@@ -33,7 +33,7 @@ Azure VM 映像生成器 （Azure 映像生成器），可以使用 Windows 或�
 - 创建的 VHD 格式的图像。
  
 
-## <a name="regions"></a>区域
+## <a name="regions"></a>Regions
 Azure 映像生成器服务将可供在这些区域中预览。 映像可以分发这些区域之外。
 - East US
 - 美国东部 2
@@ -55,7 +55,7 @@ AIB 将支持 RHEL ISO 的为源：
 - RHEL 7.4
 - RHEL 7.5
 
-RHEL 7.6 不支持，但所测试的。
+RHEL 7.6 加载 iso 文件不受支持，但正在测试。
 
 ## <a name="how-it-works"></a>工作原理
 

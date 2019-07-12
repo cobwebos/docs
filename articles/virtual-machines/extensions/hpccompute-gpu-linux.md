@@ -4,7 +4,7 @@ description: 用于在运行 Linux 的 N 系列计算 VM 上安装 NVIDIA GPU �
 services: virtual-machines-linux
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: 5a184c72da8af0d451902a164c8b71a94a01883f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c15948fd9e9acc1e1efeb536939002f179402d5a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683175"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706700"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
@@ -27,9 +27,11 @@ ms.locfileid: "64683175"
 
 此扩展在 Linux N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 [NVIDIA 最终用户许可协议](https://go.microsoft.com/fwlink/?linkid=874330)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
 
+提供了有关手动安装的驱动程序和当前支持的版本说明[此处](
+https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)。
 此扩展也可用于在 [Windows N 系列 VM](hpccompute-gpu-windows.md) 上安装 NVIDIA GPU 驱动程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -82,10 +84,10 @@ ms.locfileid: "64683175"
 
 所有设置都是可选的。 默认行为是，如果安装驱动程序时不要求更新内核，则不进行更新，请安装最新的受支持驱动程序和 CUDA 工具包（根据情况）。
 
-| Name | 描述 | 默认值 | 有效值 | 数据类型 |
+| 名称 | 描述 | Default Value | 有效值 | 数据类型 |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | boolean |
-| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | latest | GRID："418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | string |
+| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | latest | GRID："430.30", "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | string |
 | installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | true | true、false | boolean |
 
 

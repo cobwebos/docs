@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 225ac86efba8a32b085a5fb7fc41bed48c499eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41637fae5592ac292da22303071d51b43116c78b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65022165"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671908"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>认知搜索工作负载的文档资源
 
@@ -27,7 +27,7 @@ ms.locfileid: "65022165"
 + [什么是认知搜索？](cognitive-search-concept-intro.md)
 + [快速入门：在门户中尝试认知搜索](cognitive-search-quickstart-blob.md)
 + [教程：了解认知搜索 API](cognitive-search-tutorial-blob.md)
-+ [示例：创建自定义技能](cognitive-search-create-custom-skill-example.md)
++ 示例：[创建认知搜索的自定义技能](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>操作说明指南
 + [如何定义技能集](cognitive-search-defining-skillset.md)
@@ -55,7 +55,7 @@ ms.locfileid: "65022165"
   + [创建技能集 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
   + [创建索引器 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)
 + [Azure 搜索中的索引器](search-indexer-overview.md)

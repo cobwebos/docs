@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: c50271e28db104522c0e8811508fa882dc316eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8bc8b8d4e3585ea4c0505f2e36abc6d1da7f8eb
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235805"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797711"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>在 Microsoft Flow 中使用 IoT Central 连接器生成工作流
 
@@ -28,10 +28,11 @@ ms.locfileid: "66235805"
 
 请检查[这些 Microsoft Flow 模板](https://aka.ms/iotcentralflowtemplates)，此类模板可以将 IoT Central 连接到其他服务，例如移动通知和 Microsoft Teams。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - 即用即付应用程序
-- 用于登录 Flow 的 Microsoft 个人、工作或学校帐户（[了解有关 Microsoft Flow 的详细信息](https://aka.ms/microsoftflowplans)）
+- 若要使用 Microsoft Flow 的 Microsoft 个人或工作或学校帐户 ([深入了解 Microsoft Flow 计划](https://aka.ms/microsoftflowplans))
+- 要使用 Azure IoT Central 连接器的工作或学校帐户
 
 ## <a name="trigger-a-workflow"></a>触发工作流
 
@@ -45,7 +46,12 @@ ms.locfileid: "66235805"
 
     ![可用的 Microsoft Flow 模板](media/howto-add-microsoft-flow/flowtemplates1.png)
 
-1. 系统将提示您登录到您选择的模板中的连接器。 连接器登录后，将进入设计器来生成工作流。 工作流有一个 IoT Central 触发器，其中已填充应用程序和规则。
+1. 系统将提示您登录到您选择的模板中的连接器。 
+
+    > [!NOTE]
+    > 若要使用 Azure IoT Central 连接器，你必须使用 Azure Active Directory 帐户 （工作或学校帐户） 登录。 如个人帐户abc@outlook.com或abc@live.com不支持的 Azure IoT Central 连接器。
+
+    一旦你已登录到连接器，将进入设计器来生成工作流。 工作流有一个 IoT Central 触发器，其中已填充应用程序和规则。
 
 1. 通过自定义传递给此操作和添加新操作的信息，可以自定义工作流。 在此示例中，该操作是**通知-向我发送移动通知**。 可以包括  IoT Central 规则提供的动态内容，将设备名称和时间戳等重要信息传递给通知。
 
@@ -149,7 +155,7 @@ ms.locfileid: "66235805"
 
    ![Flow 的删除设备工作流](./media/howto-add-microsoft-flow/flowdeletedevice.png)
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果无法创建到 Azure IoT Central 连接器的连接，请参考以下提示。
 

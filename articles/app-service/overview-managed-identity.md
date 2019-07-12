@@ -10,13 +10,13 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
-ms.author: mahender
-ms.openlocfilehash: 0942d5ba7b31ddb2c0dec5fe979f1331d1bf3bfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mahender, yevbronsh
+ms.openlocfilehash: b18d5ba303d1cf7ab637638043f9e0727437c232
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66136985"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827857"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -46,7 +46,7 @@ ms.locfileid: "66136985"
 
 3. 选择“托管标识”  。
 
-4. 在“系统分配的”选项卡中，将“状态”切换为“启用”    。 单击“ **保存**”。
+4. 在“系统分配的”选项卡中，将“状态”切换为“启用”    。 单击“保存”  。
 
 ![应用服务中的托管标识](media/app-service-managed-service-identity/msi-blade-system.png)
 
@@ -275,6 +275,34 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServi
 ```
 
 若要了解有关 Microsoft.Azure.Services.AppAuthentication 及其公开的操作的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]以及[将应用服务和 KeyVault 与 MSI.NET 配合使用示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+
+
+### <a name="using-the-azure-sdk-for-java"></a>使用 Azure SDK for Java
+
+对于 Java 应用程序和功能，使用托管标识的最简单方法是通过[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)。 本部分演示如何开始在代码中使用此库。
+
+1. 添加对的引用[Azure SDK 库](https://mvnrepository.com/artifact/com.microsoft.azure/azure)。 对于 Maven 项目，可能会添加到此代码片段`dependencies`项目的 POM 文件的部分：
+
+```xml
+<dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>azure</artifactId>
+    <version>1.23.0</version>
+</dependency>
+```
+
+2. 使用`AppServiceMSICredentials`进行身份验证的对象。 此示例演示如何使用 Azure 密钥保管库的可用此机制：
+
+```java
+import com.microsoft.azure.AzureEnvironment;
+import com.microsoft.azure.management.Azure;
+import com.microsoft.azure.management.keyvault.Vault
+//...
+Azure azure = Azure.authenticate(new AppServiceMSICredentials(AzureEnvironment.AZURE))
+        .withSubscription(subscriptionId);
+Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName);
+
+```
 
 ### <a name="using-the-rest-protocol"></a>使用 REST 协议
 

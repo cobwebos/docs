@@ -4,15 +4,15 @@ description: 如何排除故障并解决租户和主机的池的问题在 Window
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
-ms.date: 04/08/2019
+ms.topic: troubleshooting
+ms.date: 07/10/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 88e843c410a750387ecf58497dec79586e2a59d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ec4e0ffd87c0ef73a551416d8a8cc672f095483
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523331"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786733"
 ---
 # <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
 
@@ -118,6 +118,17 @@ Windows 虚拟桌面 – 预配主机池模板是可从 Azure Marketplace。
 **原因 2：** 未解析的域名。
 
 **修复 2:** Vm 未加入到域中，请参见"域名不能解决"错误[会话主机 VM 配置](troubleshoot-vm-configuration.md)。
+
+
+### <a name="error-your-deployment-failedunauthorized"></a>错误：部署 failed...\Unauthorized
+
+```Error
+{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
+```
+
+原因：  要使用的订阅是一种类型，不能访问所需的功能，其中客户尝试部署的区域中。 例如，MSDN，免费或教育版订阅可以显示此错误。
+
+**解决方法：** 将你的订阅类型或区域更改为一个可以访问所需的功能。
 
 ### <a name="error-vmextensionprovisioningerror"></a>错误：VMExtensionProvisioningError
 

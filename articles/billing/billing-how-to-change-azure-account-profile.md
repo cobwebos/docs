@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f61396d8fb0f02fe77f5ee35560f45a0c4698a10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87de721f596eb4148939c00bc4b4db270a87c24e
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850767"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724103"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>更改你的 Azure 帐户的配置文件信息
 
@@ -87,10 +87,16 @@ Microsoft 帐户用户不是帐户管理员，才能发送与服务相关的通�
 1. 转到[请求窗体](https://account.microsoft.com/profile/permissions-link-request)提交请求，通过使用你配置文件的电子邮件地址。 通过电子邮件来更新您的首选项，将收到一个链接。
 2. 选择该链接以打开**管理通信权限**页。 此页显示的电子邮件地址选择加入的市场营销宣传资料的类型。 清除你想要选择退出的然后选择任何主题**保存**。
 
-
 ![用于管理通信权限页的示例](./media/billing-how-to-change-azure-account-profile/manage-communication-permissions.png)
 
 当您选择退出市场营销宣传资料时，您仍会接收基于你的帐户的服务通知。
+
+## <a name="change-the-subscription-name"></a>更改订阅名称
+
+1. 登录到[Azure 门户](https://portal.azure.com)，选择**订阅**从左窗格中，然后选择你想要重命名该订阅。
+1. 选择**概述**，然后选择**重命名**从命令栏中。
+    ![重命名 Azure 订阅的示例](./media/billing-how-to-change-azure-account-profile/rename-sub.png)
+1. 已更改名称后，选择**保存**。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

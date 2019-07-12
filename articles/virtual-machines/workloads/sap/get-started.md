@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/10/2019
+ms.date: 07/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b4ed11b5a0f463afee0dae149820bb546db0c53
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27e12b5f33f2e3c0024d5caa6a9bee5e9576a45a
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058716"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805835"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 来托管和运行 SAP 工作负荷方案
 
@@ -36,10 +36,12 @@ Azure 的 SAP HANA 的唯一性是分开设置 Azure 的产品/服务。 若要�
 
 ## <a name="latest-changes"></a>最新的更改
 
+- 版本的新指南实现[Red Hat Enterprise Server 中的 IBM Db2 HADR](high-availability-guide-rhel-ibm-db2-luw.md)
+- 新版[Red Hat Enterprise Linux 使用 Azure NetApp 文件的 SAP 应用程序上的 SAP NetWeaver 的高可用性](high-availability-guide-rhel-netapp-files.md)
 - 中的 HANA 大型实例 ExpressRoute 快速路径和全局访问的介绍[SAP HANA （大型实例） 网络体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)和相关文档
 - 新版[Azure HANA 大型实例控制通过 Azure 门户](hana-li-portal.md)
 - 新版[使用 Azure NetApp 文件的 SAP 应用程序的 SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 的高可用性](high-availability-guide-suse-netapp-files.md)
-- Clarification on 澄清**Linux OS 参数 net.ipv4.tcp_timestamps**设置与 Azure 结合使用负载均衡器
+
 
 
 

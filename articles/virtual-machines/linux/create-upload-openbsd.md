@@ -4,7 +4,7 @@ description: 了解如何通过 Azure CLI 创建和上传包含 OpenBSD 操作�
 services: virtual-machines-linux
 documentationcenter: ''
 author: thomas1206
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 1ef30f32-61c1-4ba8-9542-801d7b18e9bf
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 2e580a94e568f201587c06efa827006386cd6bd9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea91b53b80b91e35ff7e2ffd36d02e6d478e8ebe
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60327674"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667966"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>创建 OpenBSD 磁盘映像并上传到 Azure
 本文说明如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)。 将其上传后，可以通过 Azure CLI 使用它作为你自己的映像在 Azure 中创建虚拟机 (VM)。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 本文假设拥有以下项目：
 
 * **Azure 订阅** - 如果没有帐户，只需几分钟即可创建一个。 如果有 MSDN 订阅，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 否则，请了解如何[创建一个免费试用帐户](https://azure.microsoft.com/pricing/free-trial/)。  
@@ -96,7 +96,7 @@ ms.locfileid: "60327674"
 
 
 ## <a name="prepare-the-vhd"></a>准备 VHD
-Azure 不支持 VHDX 格式，仅支持 **固定大小的 VHD**。 可使用 Hyper-V 管理器或 Powershell [convert-vhd](https://technet.microsoft.com/itpro/powershell/windows/hyper-v/convert-vhd) cmdlet 将磁盘转换为固定 VHD 格式。 下面是一个示例。
+Azure 不支持 VHDX 格式，仅支持**固定大小的 VHD**。 可使用 Hyper-V 管理器或 Powershell [convert-vhd](https://technet.microsoft.com/itpro/powershell/windows/hyper-v/convert-vhd) cmdlet 将磁盘转换为固定 VHD 格式。 下面是一个示例。
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed

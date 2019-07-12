@@ -4,7 +4,7 @@ description: Azure 平台上 SAP 的当前配置和认证的更新列表。
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: a38d5b44aaca0aa28e7ecd32543d2b0563964b3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e64e2386611060b1393a330695a4729fe9490e54
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65797446"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709982"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>在 Microsoft Azure 上运行的 SAP 认证和配置
 
@@ -55,7 +55,7 @@ SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴�
 | --- | --- | --- | --- |
 | SAP 业务套件软件 | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、 D11 到 D14、 至 DS14 DS11、 到 DS15_v2 DS11_v2、 GS5 到 GS1、 D2s_v3 到 D64s_v3、 与 E64s_v3、 M64s、 M64ms、 M128s、 M128ms、 M64ls、 M32ls、 M32ts、 M208s_v2、 M208ms_v2 E2s_v3 |
 | 多合一 SAP 业务软件 | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、 D11 到 D14、 至 DS14 DS11、 到 DS15_v2 DS11_v2、 GS5 到 GS1、 D2s_v3 到 D64s_v3、 与 E64s_v3、 M64s、 M64ms、 M128s、 M128ms、 M64ls、 M32ls、 M32ts、 M208s_v2、 M208ms_v2 E2s_v3 |
-| SAP BusinessObjects BI | Windows |不适用 |A5 到 A11、 D11 到 D14、 至 DS14 DS11、 到 DS15_v2 DS11_v2、 GS5 到 GS1、 D2s_v3 到 D64s_v3、 与 E64s_v3、 M64s、 M64ms、 M128s、 M128ms、 M64ls、 M32ls、 M32ts、 M208s_v2、 M208ms_v2 E2s_v3 |
+| SAP BusinessObjects BI | Windows |不可用 |A5 到 A11、 D11 到 D14、 至 DS14 DS11、 到 DS15_v2 DS11_v2、 GS5 到 GS1、 D2s_v3 到 D64s_v3、 与 E64s_v3、 M64s、 M64ms、 M128s、 M128ms、 M64ls、 M32ls、 M32ts、 M208s_v2、 M208ms_v2 E2s_v3 |
 | SAP NetWeaver | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、 D11 到 D14、 至 DS14 DS11、 到 DS15_v2 DS11_v2、 GS5 到 GS1、 D2s_v3 到 D64s_v3、 与 E64s_v3、 M64s、 M64ms、 M128s、 M128ms、 M64ls、 M32ls、 M32ts、 M208s_v2、 M208ms_v2 E2s_v3 |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>在 Azure 上支持的其他 SAP 工作负荷

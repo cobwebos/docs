@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: 5f351dd7fddb4c15b28954eccf8ada3bfc14dbca
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.subservice: alerts
+ms.openlocfilehash: c37ecfbadd7345fea347ff488895f16ba505c818
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447650"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594382"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
@@ -80,7 +80,7 @@ ms.locfileid: "67447650"
 |:---|:---|
 | alertId | 唯一标识警报实例的 GUID。 |
 | alertRule | 警报规则生成警报实例的名称。 |
-| 严重性 | 警报的严重性。 可能的值：Sev0、 Sev1、 Sev2、 Sev3、 Sev4 |
+| Severity | 警报的严重性。 可能的值：Sev0、 Sev1、 Sev2、 Sev3、 Sev4 |
 | signalType | 标识在其定义警报规则的信号。 可能的值：度量值，日志，活动日志 |
 | monitorCondition | 当警报触发时，警报的监视器条件设置为已触发。 如果清除导致触发该警报的基础条件，监视器条件设置为已解决。   |
 | monitoringService | 监视服务或生成警报的解决方案。 监视服务规定有关警报的上下文字段。 |

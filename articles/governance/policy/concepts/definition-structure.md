@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 398efd36e6c8d82a5090b7446c95abb2d1bfbca1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 03c7be9112ed22bb43e259fa72581d382a276163
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428755"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718187"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -92,7 +92,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 > [!NOTE]
 > [适用于 Kubernetes 的 azure 策略](rego-for-aks.md)处于公共预览状态，只支持内置策略定义。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 
 参数可减少策略定义的数量，有助于简化策略管理。 使用类似窗体中字段的参数 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
 构建策略时，参数同样适用。 如果在策略定义中包括参数，就可以通过使用不同的值重新使用策略以执行不同方案。
@@ -105,7 +105,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 参数有下述可以在策略定义中使用的属性：
 
 - **名称**：参数的名称。 由策略规则中的 `parameters` 部署函数使用。 有关详细信息，请参阅[使用参数值](#using-a-parameter-value)。
-- `type`：确定参数是**字符串**还是**数组**。
+- `type`：确定参数是否**字符串**，**数组**，**对象**，**布尔**，**整数**， **float**，或**datetime**。
 - `metadata`：定义主要由 Azure 门户用来显示用户友好信息的子属性：
   - `description`：说明参数的用途。 可以用来提供可接受值的示例。
   - `displayName`：在门户中显示的用于参数的友好名称。

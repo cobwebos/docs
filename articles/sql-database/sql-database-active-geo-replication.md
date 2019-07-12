@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 06/18/2019
-ms.openlocfilehash: 826944fd3713f5cc3e99f20cb140055bfdb11a14
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.date: 07/09/2019
+ms.openlocfilehash: 4b525c3cbea600859106062ed34dc6df9622dec5
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341428"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807314"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>创建并使用活动异地复制
 
@@ -43,7 +43,6 @@ ms.locfileid: "67341428"
 - [Transact-SQL：单一数据库或弹性池](/sql/t-sql/statements/alter-database-azure-sql-database)
 - [REST API：单一数据库](https://docs.microsoft.com/rest/api/sql/replicationlinks)
 
-故障转移后，请确保在新的主机上配置服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
 
 活动异地复制利用 SQL Server 的 [Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) 技术，使用快照隔离以异步方式将主数据库上已提交的事务复制到辅助数据库。 自动故障转移组提供基于活动异地复制的组语义，但使用相同的异步复制机制。 尽管在任意给定时间，辅助数据库可能略微滞后于主数据库，但系统可以保证辅助数据永不包含部分事务。 跨区域冗余使应用程序能够在自然灾害、灾难性人为失误或恶意行为导致整个或部分数据中心永久性数据丢失后得以快速恢复。 [业务连续性概述](sql-database-business-continuity.md)中提供了具体的 RPO 数据。
 
@@ -83,12 +82,12 @@ ms.locfileid: "67341428"
 
 - **计划内故障转移**
 
-  将辅助角色切换为主要角色之前，计划内故障转移在主要数据库与辅助数据库之间执行完全同步。 这可以保证数据不会丢失。 计划内故障转移用于以下方案：(a) 在数据丢失是可以接受的情况下，在生产环境中进行 DR 演练；(b) 将数据库重新定位到另一区域；(c) 缓解服务中断（故障回复）后将数据库恢复到主要区域。
+  完全同步完成后，计划内故障转移切换主要和辅助数据库的角色。 它是一个联机操作，不会导致数据丢失。 操作的时间取决于需要先进行同步的主服务器上的事务日志的大小。 计划的故障转移专为以下方案: (a) 若要执行 DR 演练在生产环境中时数据丢失不可接受的;(b)，以便将数据库重新定位到不同的区域;从而减少了和 (c) 将数据库返回到主要区域服务中断后 （故障回复）。
 
 - **计划外故障转移**
 
-  计划外故障转移或强制故障转移立即将辅助角色切换为主要角色，而不与主要节点进行任何同步。 此操作会导致数据丢失。 在服务中断期间当主要节点不可访问时，计划外故障转移将用作恢复方法。 原始主要节点重新联机后，将在不进行同步的情况下自动重新连接，并成为新的辅助节点。
-
+  计划外故障转移或强制故障转移立即将辅助角色切换为主要角色，而不与主要节点进行任何同步。 提交到主数据库但不是会复制到辅助数据库的任何事务都将丢失。 此操作旨在作为一种恢复方法在中断期间时主数据库不可访问，但其必须快速还原数据库的可用性。 原始的主要副本重新联机时它将自动重新连接并成为新的辅助数据库。 在故障转移之前的所有未同步的事务将会保留备份文件中，但不是会与新的主副本，以避免冲突同步。 这些事务将必须手动合并与主数据库的最新版本。
+ 
 - **多个可读的辅助数据库**
 
   可以为每个主要数据库创建最多 4 个辅助数据库。 如果只有一个辅助数据库，一旦它发生故障，应用程序就会遭受更高的风险，直到创建了新的辅助数据库。 如果存在多个辅助数据库，即使其中一个辅助数据库发生故障，应用程序仍会受到保护。 也可使用其他辅助数据库来横向扩展只读工作负荷。
@@ -105,21 +104,26 @@ ms.locfileid: "67341428"
 
   应用程序或用户可随时会辅助数据库显式切换到主角色。 在实际服务中断期间，应使用“计划外”选项，这会立即将辅助数据库升级为主数据库。 当出现故障的主数据库恢复并再次可用时，系统会自动将恢复的主数据库标记为辅助数据库并使其与新的主数据库保持最新状态。 由于复制的异步特性，在未计划的故障转移期间，如果主数据库在将最新的更改复制到辅助数据库之前出现故障，则可能会丢失少量数据。 当具有多个辅助数据库的主数据库进行故障转移时，系统会自动重新配置复制关系，并将剩余辅助数据库链接到新升级的主数据库，无需任何用户的干预。 导致了故障转移的服务中断得到缓解后，可能需要将应用程序返回到主要区域。 为此，应使用“计划内”选项调用故障转移命令。
 
-- **保持凭据和防火墙规则同步**
+## <a name="preparing-secondary-database-for-failover"></a>为故障转移准备辅助数据库
 
-建议对异地复制数据库使用[数据库级 IP 防火墙规则](sql-database-firewall-configure.md)，以便这些规则可与数据库一起复制，确保所有辅助数据库具有与主数据库相同的 IP 防火墙规则。 此方法不再需要客户手动配置和维护承载主数据库和辅助数据库的服务器上的防火墙规则。 同样，将[包含的数据库用户](sql-database-manage-logins.md)用于数据访问可确保主数据库和辅助数据库始终具有相同的用户凭据，以便在故障转移期间，不会因登录名和密码不匹配而产生中断。 通过添加 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)，客户可以管理主数据库和辅助数据库的用户访问权限，且不再需要同时管理数据库中的凭据。
+若要确保你的应用程序故障转移后可以立即访问新的主数据库，请确保正确配置了你的辅助服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。 若要保证合规性故障转移后的，请确保辅助数据库上的备份保留策略与主数据库匹配。 这些设置不是数据库的一部分，将不会复制。 默认情况下，将使用的默认 PITR 保留期为七天配置辅助数据库。 有关详细信息，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
 
 ## <a name="configuring-secondary-database"></a>配置辅助数据库
 
-主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到大量写入工作负荷，较低的计算大小的辅助副本可能无法及时了解它。 它将导致重做延隔上辅助，可能不可用，并因此在故障转移后大量数据丢失的风险。 因此，发布的 RPO = 5 秒无法保证。 它还可能会导致故障或停止在主计算机上的其他工作负荷。 
-
-不均衡的辅助配置的其他结果是，故障转移后应用程序的性能将受到损害，因为没有足够计算能力的新的主副本。 将需要升级到更高的计算机，到将不能进行缓解服务中断之前的必要级别。 
-
-> [!NOTE]
-> 目前，主数据库的升级不能如果辅助数据库处于脱机状态。 
+主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到大量写入工作负荷，较低的计算大小的辅助副本可能无法及时了解它。 它将导致重做延隔上辅助和潜在不可用。 如果要求强制故障转移，则落后于主数据库的辅助数据库还存在比较大的数据丢失风险。 若要降低这些风险，有效的活动异地复制会在主日志速率限制以允许其辅助数据库以保持同步。 不均衡的辅助配置的其他结果是，故障转移后应用程序的性能将受到损害，因为没有足够计算能力的新的主副本。 将需要升级到更高的计算机，到将不能进行缓解服务中断之前的必要级别。 
 
 
-如果决定创建具有较低计算大小的辅助数据库，Azure 门户上的日志 IO 百分比图表提供了一种评估维持复制负荷所需的辅助数据库的最小计算大小的好办法。 例如，如果主数据库是 P6 (1000 DTU)，其日志 IO 百分比为 50%，则辅助数据库需要至少为 P4 (500 DTU)。 还可以使用 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 或 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 数据库视图检索日志 IO 数据。  有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层级](sql-database-purchase-models.md)。
+> [!IMPORTANT]
+> 已发布的 RPO = 除非辅助数据库配置的主数据库相同的计算大小不能保证 5 秒。 
+
+
+如果决定创建具有较低计算大小的辅助数据库，Azure 门户上的日志 IO 百分比图表提供了一种评估维持复制负荷所需的辅助数据库的最小计算大小的好办法。 例如，如果主数据库是 P6 (1000 DTU)，其日志 IO 百分比为 50%，则辅助数据库需要至少为 P4 (500 DTU)。 还可以使用 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 或 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 数据库视图检索日志 IO 数据。  限制将被报告为 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等待状态中[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)并[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)数据库视图。 
+
+有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层级](sql-database-purchase-models.md)。
+
+## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>保持凭据和防火墙规则同步
+
+建议对异地复制数据库使用[数据库级 IP 防火墙规则](sql-database-firewall-configure.md)，以便这些规则可与数据库一起复制，确保所有辅助数据库具有与主数据库相同的 IP 防火墙规则。 此方法不再需要客户手动配置和维护承载主数据库和辅助数据库的服务器上的防火墙规则。 同样，将[包含的数据库用户](sql-database-manage-logins.md)用于数据访问可确保主数据库和辅助数据库始终具有相同的用户凭据，以便在故障转移期间，不会因登录名和密码不匹配而产生中断。 通过添加 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)，客户可以管理主数据库和辅助数据库的用户访问权限，且不再需要同时管理数据库中的凭据。
 
 ## <a name="upgrading-or-downgrading-primary-database"></a>升级或降级主数据库
 
@@ -160,7 +164,7 @@ ms.locfileid: "67341428"
 > [!IMPORTANT]
 > 这些 Transact-SQL 命令仅适用于活动异地复制，不适用于故障转移组。 因此，它们也不适用于托管实例，因为它们仅支持故障转移组。
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 ADD SECONDARY ON SERVER 参数为现有数据库创建辅助数据库，并开始数据复制 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS 将辅助数据库切换为主数据库，启动故障转移 |
@@ -206,7 +210,7 @@ ms.locfileid: "67341428"
 
 - 示例脚本请参阅：
   - [配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-  - [配置入池数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+  - [配置共用数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
 - SQL 数据库还支持自动故障转移组。 有关详细信息，请参阅[自动故障转移组](sql-database-auto-failover-group.md)。
 - 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
 - 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。

@@ -254,7 +254,7 @@
         - name: 处理长时间运行的操作
           href: media-services-dotnet-long-operations.md
         - name: 碎片化 MP4 实时引入规范
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: 入门
           href: media-services-azure-media-clipper-getting-started.md
         - name: 加载视频
@@ -458,11 +458,11 @@
     - name: 规范
       items:
         - name: 实时引入 - 碎片化的 MP4 实时引入规范
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: 实时引入 - 在实时传送视频流中发出超时元数据信号
-          href: media-services-specifications-live-timed-metadata.md
+          href: ../media-services-specifications-live-timed-metadata.md
         - name: 平滑流式处理 HEVC
-          href: media-services-specifications-ms-sstr-amendment-hevc.md
+          href: ../media-services-specifications-ms-sstr-amendment-hevc.md
 - name: 资源
   items:
     - name: Azure 媒体服务社区

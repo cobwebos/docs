@@ -4,7 +4,7 @@ description: 在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 9a23f13947c4c7a77460ff389861e1dcc1de3c7f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46044c061cca24714d1a951e28cf01ca29f14a7e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992111"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707205"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -448,7 +448,7 @@ o- / ...........................................................................
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   如果值不存在或不同，请将以下粗体显示的内容添加到文件。 请确保将令牌更改为 30000，以允许内存保留维护。 有关详细信息，请参阅这篇适用于 [Linux][virtual-machines-linux-maintenance] 或 [Windows][virtual-machines-windows-maintenance] 的文章。 此外，请务必删除参数 mcastaddr。
+   如果值不存在或不同，请将以下粗体显示的内容添加到文件。 请确保将令牌更改为 30000，以允许内存保留维护。 有关详细信息，请参阅[适用于 Linux 的此文][virtual-machines-linux-maintenance] or [Windows][virtual-machines-windows-maintenance]。 此外，请务必删除参数 mcastaddr。
 
    <pre><code>[...]
      <b>token:          30000
@@ -608,9 +608,9 @@ sudo crm configure property maintenance-mode=false
 
 ## <a name="next-steps"></a>后续步骤
 
-* [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
-* [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
-* [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
-* [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性][sles-nfs-guide]
+* [Azure 虚拟机规划和实施适用于 SAP][planning-guide]
+* [适用于 SAP 的 azure 虚拟机部署][deployment-guide]
+* [适用于 SAP 的 azure 虚拟机 DBMS 部署][dbms-guide]
+* [SUSE Linux Enterprise Server 上的 Azure Vm 上的 NFS 的高可用性][sles-nfs-guide]
 * [SUSE Linux Enterprise Server for SAP Applications 上 Azure VM 中的 SAP NetWeaver 的高可用性][sles-guide]
-* 若要了解如何在 Azure VM 上建立 SAP HANA 高可用性以及规划灾难恢复，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性以及 Azure Vm 上的 SAP HANA 的灾难恢复计划，请参阅[SAP HANA 的高可用性在 Azure 虚拟机 (Vm)][sap-hana-ha]

@@ -4,7 +4,7 @@ description: 了解如何在 Microsoft Azure 中的 Linux 虚拟机 (VM) 上使�
 services: virtual-machines-linux,virtual-network,storage
 documentationcenter: saponazure
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
-ms.openlocfilehash: e4c4afefe7a4746f2d8138bde7fea152f228a8bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aba060680871fb727103efd6068ca2fb4d84432e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648868"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709966"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>在 Azure 中的 Linux 虚拟机上使用 SAP
 云计算是一个广泛使用的术语，它在 IT 行业（从小公司到大型跨国企业）中受到越来越多的重视。 Microsoft Azure 是 Microsoft 提供的一个云服务平台，它提供了各种新的可能性。 现在客户能够快速将应用程序预配为云服务并可取消预配，因此他们不会受到技术或预算方面的限制。 公司不用在硬件基础结构中投入时间和预算，而是可以重点关注应用程序、业务流程以及它为客户和用户带来的好处。

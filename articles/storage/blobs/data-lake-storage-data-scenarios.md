@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: c5b6287757f6b71cfd60687f463673f142db04d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd3875c5c78a02efab1251166ec7113902be3e08
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939296"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723233"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
 
@@ -39,8 +39,8 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 |Tool | 指南 |
 |---|--|
-|Azure 存储资源管理器 | [使用存储资源管理器创建文件系统](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-filesystem) |
-|AzCopy | [使用 AzCopyV10 创建 Blob 容器或文件共享](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-blob-container-or-file-share)|
+|Azure 存储资源管理器 | [使用存储资源管理器创建文件系统](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
+|AzCopy | [使用 AzCopyV10 创建 Blob 容器或文件共享](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
 |将 Hadoop 文件系统 (HDFS) 命令行界面 (CLI) 与 HDInsight 配合使用 |[通过将 HDFS 与 HDInsight 配合使用来创建文件系统](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
 |Azure Databricks Notebook 中的代码|[创建存储帐户文件系统 (Scala)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [创建并装载文件系统 (Python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
 
@@ -54,11 +54,11 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 * 将下述角色之一分配给用户、组、用户托管标识或服务主体：
 
-  [存储 Blob 数据读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
+  [存储 Blob 数据读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)
 
-  [存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
+  [存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 
-  [存储 Blob 数据所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview)
+  [存储 Blob 数据所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 * 使用共享访问签名 (SAS) 令牌。
 
@@ -196,4 +196,4 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 |Tool | 指南 |
 |---|--|
 |Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
-|Apache DistCop | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
+|Apache DistCp | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

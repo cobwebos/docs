@@ -2,18 +2,18 @@
 title: 在 Power BI 工作区集合中基于数据集创建新报表 | Microsoft Docs
 description: 现在，可以基于自有应用程序中的数据集创建 Power BI 工作区集合报表。
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: e7499345f03e3deedb8972b0d51e8e676cb6c982
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2034c62a17b71b92b43a7afd794c2c172288d58c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683443"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672444"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中基于数据集创建新报表
 
@@ -196,7 +196,7 @@ var embedCreateConfiguration = {
 </script>
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [示例入门](get-started-sample.md)  
 [保存报表](save-reports.md)  
@@ -207,4 +207,4 @@ var embedCreateConfiguration = {
 [Power BI Core NuGut 包](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
 [Power BI JavaScript 包](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

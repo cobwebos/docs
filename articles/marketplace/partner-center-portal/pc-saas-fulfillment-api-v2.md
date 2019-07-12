@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: ecee1669c29d7b298741f9e5521de03da6dd7e3b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 476aaacbe6f1bf6d1920df0f12599976bfcc27b7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331634"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701138"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS 履行 Api，版本 2 
 
@@ -57,7 +57,7 @@ Azure SaaS 管理整个生命周期的 SaaS 订阅购买。 它使用履行 Api 
 
 ![API 调用更新从 SaaS 服务启动时](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
 
-#### <a name="suspended"></a>已挂起
+#### <a name="suspended"></a>Suspended
 
 此状态表明尚未收到的客户的付款。 通过策略，我们将提供一个宽限期之前取消订阅的客户。 当订阅处于此状态： 
 
@@ -87,7 +87,7 @@ Azure SaaS 管理整个生命周期的 SaaS 订阅购买。 它使用履行 Api 
 | `offerId`                | 每个产品/服务的唯一字符串标识符 (例如:"offer1")。  |
 | `planId`                 | 每个计划和 SKU 的唯一字符串标识符 (例如:"silver")。 |
 | `operationId`            | 特定操作的 GUID 标识符。  |
-|  `action`                | 在资源上，可以执行的操作`subscribe`， `unsubscribe`， `suspend`， `reinstate`，或`changePlan`， `changeQuantity`， `transfer`。  |
+|  `action`                | 在资源上，可以执行的操作`unsubscribe`， `suspend`， `reinstate`，或`changePlan`， `changeQuantity`， `transfer`。  |
 |   |   |
 
 全局唯一标识符 ([Guid](https://en.wikipedia.org/wiki/Universally_unique_identifier)) 通常会自动生成的 128 位 （32-十六进制） 号。 
@@ -199,10 +199,16 @@ Azure SaaS 管理整个生命周期的 SaaS 订阅购买。 它使用履行 Api 
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
               "tenantId": "<guid>"
           },
+            "term": {
+                "startDate": "2019-05-31",
+                "endDate": "2019-06-29",
+                "termUnit": "P1M"
+          },
           "allowedCustomerOperations": [
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
+          "isFreeTrial": "true", // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
@@ -271,7 +277,13 @@ Response Body:
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
+        "isFreeTrial": "true", // true – customer subscription is currently in free trial, false – customer subscription is not currently in free trial.
         "status": "Subscribed", // Indicates the status of the operation.
+          "term": { //This gives the free trial term start and end date
+            "startDate": "2019-05-31",
+            "endDate": "2019-06-29",
+            "termUnit": "P1M"
+        },
 }
 ```
 
@@ -794,7 +806,6 @@ Response body:
 }
 ```
 其中可以将下列任一操作： 
-- `subscribe` （当该资源已激活）
 - `unsubscribe` （当该资源已被删除）
 - `changePlan` （当更改计划操作已完成）
 - `changeQuantity` （当更改数量操作已完成）

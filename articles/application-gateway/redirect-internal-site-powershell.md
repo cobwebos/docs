@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/13/2018
 ms.author: victorh
-ms.openlocfilehash: c887c5ea72a64828749bfc62756e59a8a22ea9df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e29966473a467ddf9d7e683a9d198ca692eab338
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729638"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785744"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>使用 Azure PowerShell 创建支持内部重定向的应用程序网关
 
@@ -296,11 +296,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-在浏览器的地址栏中输入域名。 例如 http://www.contoso.com 。
+在浏览器的地址栏中输入域名。 例如，http\:/ / www.contoso.com。
 
 ![在应用程序网关中测试 contoso 站点](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-将地址更改为其他域（例如 http://www.contoso.org ），应会看到流量已被重定向回 www\. contoso.com 的侦听器。
+将地址更改为其他域，例如 http\:/ www.contoso.org 并且你应看到流量已被重定向回 www 的侦听器\.contoso.com。
 
 ## <a name="next-steps"></a>后续步骤
 

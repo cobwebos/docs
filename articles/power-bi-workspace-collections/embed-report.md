@@ -2,18 +2,18 @@
 title: 嵌入 Azure Power BI 工作区集合中的报表 | Microsoft Docs
 description: 了解如何将 Azure Power BI 工作区集合中的报表嵌入到应用程序中。
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: a7d6ccc2360d63b888dc46badc742f2618a08dac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e125e57c290688d5a65f6d70143100cbd3462cb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724615"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669053"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>嵌入 Power BI 工作区集合中的报表
 
@@ -143,7 +143,7 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 
 报表会根据其容器大小自动嵌入。 若要重写默认的嵌入项大小，只需添加 CSS 类属性，或者宽度和高度的内联样式。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [示例入门](get-started-sample.md)  
 [在 Power BI 工作区集合中进行身份验证和授权](app-token-flow.md)  
@@ -155,4 +155,4 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 [PowerBI-CSharp Git 存储库](https://github.com/Microsoft/PowerBI-CSharp)  
 [PowerBI-Node Git 存储库](https://github.com/Microsoft/PowerBI-Node)  
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

@@ -4,7 +4,7 @@ description: 了解怎样在 Azure 环境中备份和恢复 Oracle Database 12c 
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c41f13a6437f69121d3bbb387c96d8e13f2be0b3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 461f6127111e745fe4a81958aaa225ed1dc4392a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60566678"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707719"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库
 
@@ -30,7 +30,7 @@ ms.locfileid: "60566678"
 
 ## <a name="prepare-the-environment"></a>准备环境
 
-### <a name="step-1-prerequisites"></a>步骤 1：必备组件
+### <a name="step-1-prerequisites"></a>步骤 1：先决条件
 
 *   要执行备份和恢复过程，首先必须创建已安装 Oracle Database 12c 实例的 Linux VM。 用来创建 VM 的市场映像是“Oracle:Oracle-Database-Ee:12.1.0.2:latest”  。
 
@@ -284,11 +284,11 @@ ms.locfileid: "60566678"
 
     ![恢复服务保管库“备份”页](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  在“备份目标”边栏选项卡上，使用默认值“Azure”和“虚拟机”    。 单击“确定”。 
+5.  在“备份目标”边栏选项卡上，使用默认值“Azure”和“虚拟机”    。 单击 **“确定”** 。
 
     ![恢复服务保管库“详细信息”页](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  对于“备份策略”，使用“DefaultPolicy”或选择“创建新策略”    。 单击“确定”。 
+6.  对于“备份策略”，使用“DefaultPolicy”或选择“创建新策略”    。 单击 **“确定”** 。
 
     ![恢复服务保管库“备份策略详细信息”页](./media/oracle-backup-recovery/recovery_service_06.png)
 

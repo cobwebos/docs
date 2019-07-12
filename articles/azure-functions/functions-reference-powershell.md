@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha, glenga
-ms.openlocfilehash: 489c94f37b6c88db001dee437cc6ed89383e6053
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: tyleonha
+ms.reviewer: glenga
+ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442178"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706401"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -81,7 +82,7 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| 属性   | 说明                                     | Type     |
+| 属性   | 说明                                     | type     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | Utc 格式，触发该函数是时，        | DateTime |
 | MethodName | 已触发的函数的名称     | string   |
@@ -133,9 +134,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 以下是有效的参数以调用`Push-OutputBinding`:
 
-| 名称 | Type | 位置 | 描述 |
+| 名称 | 类型 | 位置 | 描述 |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | String | 第 | 要设置的输出绑定的名称。 |
+| **`-Name`** | String | 1 | 要设置的输出绑定的名称。 |
 | **`-Value`** | Object | 2 | 输出绑定的值你想要设置，这通过管道 ByValue 接受的。 |
 | **`-Clobber`** | SwitchParameter | 名为 | （可选）如果指定，会强制要设置为指定的输出绑定的值。 | 
 
@@ -240,7 +241,7 @@ PowerShell 函数中的日志记录的工作方式类似常规 PowerShell 日志
 
 | 日志记录级别的函数 | 日志记录 cmdlet |
 | ------------- | -------------- |
-| 错误 | **`Write-Error`** |
+| Error | **`Write-Error`** |
 | 警告 | **`Write-Warning`**  | 
 | 信息 | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | 信息 | 将写入到_信息_级别日志记录。 |
 | 调试 | **`Write-Debug`** |
@@ -302,7 +303,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 传递到该脚本的请求对象的类型是`HttpRequestContext`，其中包含以下属性：
 
-| 属性  | 说明                                                    | Type                      |
+| 属性  | 说明                                                    | 类型                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | 一个包含请求正文的对象。 `Body` 序列化为基于数据的最佳类型。 例如，如果数据为 JSON 时，它在作为传递哈希表。 如果数据是一个字符串，它是在作为字符串传递。 | object |
 | **`Headers`** | 一个包含请求标头的字典。                | Dictionary<string,string><sup>*</sup> |
@@ -317,7 +318,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 您应发回的响应对象的类型是`HttpResponseContext`，其中包含以下属性：
 
-| 属性      | 说明                                                 | Type                      |
+| 属性      | 说明                                                 | 类型                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | 一个包含响应正文的对象。           | object                    |
 | **`ContentType`** | 设置响应的内容类型的简称。 | string                    |

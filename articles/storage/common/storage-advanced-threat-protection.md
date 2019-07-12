@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: ed263fec271801ac9c46bbc3125c71ca15b9a330
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153977"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621960"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Azure 存储的高级威胁防护
 
@@ -111,7 +111,7 @@ Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删�
 
 ### <a name="anomalous-access-pattern-alerts"></a>异常访问模式的警报
 
-* **从异常位置访问**:在存储帐户的访问模式中的更改时，会触发此警报。 例如，当用户从异常地理位置访问存储帐户时。
+* **从异常位置访问**:当有人已从异常的地理位置访问存储帐户时，会触发此警报。
 可能的原因：
    * 攻击者已访问你的存储帐户
    * 合法用户已从新位置访问你的存储帐户
@@ -120,10 +120,16 @@ Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删�
    * 攻击者已访问使用新的应用程序在存储帐户。
    * 合法用户已使用新的应用程序/浏览器访问你的存储帐户。
 
-* **匿名访问**:此警报表示存储帐户的访问模式中的更改。 例如，此帐户已被以匿名方式访问 （即，没有任何身份验证），这是意外相比对此帐户的最新的访问模式。
+* **匿名访问**:此警报表明此帐户已被以匿名方式访问 （即，没有任何身份验证），这是意外相比对此帐户的最新的访问模式。
 可能的原因：
    * 攻击者已利用了对容器的公共读取访问。
    * 合法用户或应用程序已使用到的容器的公共读取访问权限。
+
+* **Tor 异常**:此警报表明从名为 Tor （匿名代理） 的活动退出节点的 IP 地址的成功访问了此帐户。 此警报的严重性会考虑使用 （如果有），身份验证类型和是否是第一个这样的此类访问。
+可能的原因：
+   * 攻击者已访问使用 Tor 在存储帐户。
+   * 合法用户访问使用 Tor 在存储帐户。
+
 
 ### <a name="anomalous-extractupload-alerts"></a>异常的提取/上传警报
 

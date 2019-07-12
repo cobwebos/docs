@@ -1,7 +1,7 @@
 ---
 title: 部署故障排除指南
 titleSuffix: Azure Machine Learning service
-description: 了解如何解决和解决，并进行故障排除与 AKS 和 ACI 使用 Azure 机器学习服务的常见 Docker 部署错误。
+description: 了解如何解决和解决，并对使用 Azure Kubernetes 服务和 Azure 容器实例使用 Azure 机器学习服务的常见 Docker 部署错误进行故障排除。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: chris-lauren
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 05/02/2018
+ms.date: 07/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0fba7c2f5a46e0c5d0e3c5fdd65a03bb77f148d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0f4b024d717c08df3514df057abf89d55be1dc9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074994"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707038"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Azure 机器学习服务 AKS 和 ACI 部署故障排除
+# <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure 机器学习服务的 Azure Kubernetes 服务和 Azure 容器实例部署故障排除
 
 了解如何解决或解决使用 Azure 容器实例 (ACI) 和 Azure Kubernetes 服务 (AKS) 使用 Azure 机器学习服务的常见 Docker 部署错误。
 
@@ -314,6 +314,214 @@ Azure Kubernetes 服务部署支持自动缩放，允许的副本，以添加以
 
 有关详细信息设置`autoscale_target_utilization`， `autoscale_max_replicas`，并`autoscale_min_replicas`有关，请参阅[AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py)模块引用。
 
+
+## <a name="advanced-debugging"></a>高级调试
+
+在某些情况下，您可能需要以交互方式调试您的模型部署中包含的 Python 代码。 例如，如果该条目脚本失败，并且不能通过附加的日志记录确定的原因。 通过使用 Visual Studio Code 和 Python 工具的 Visual Studio (PTVSD)，你可以附加到 Docker 容器内部运行的代码。
+
+> [!IMPORTANT]
+> 使用时的调试此方法不起作用`Model.deploy()`和`LocalWebservice.deploy_configuration`部署本地模型。 相反，必须创建映像使用[ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)类。 
+>
+> 本地 web 服务部署需要一个有效的本地系统上安装 Docker。 部署本地 web 服务之前，必须运行 docker。 有关安装和使用 Docker 的信息，请参阅[ https://www.docker.com/ ](https://www.docker.com/)。
+
+### <a name="configure-development-environment"></a>配置开发环境
+
+1. 若要在本地的 VS Code 开发环境中安装 Python 工具的 Visual Studio (PTVSD)，使用以下命令：
+
+    ```
+    python -m pip install --upgrade ptvsd
+    ```
+
+    在 VS Code 中使用 PTVSD 的详细信息，请参阅[远程调试](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)。
+
+1. 若要配置 VS Code 与 Docker 映像进行通信，请创建新的调试配置：
+
+    1. 从 VS Code 中，选择__调试__菜单，然后选择__打开配置__。 名为的文件__launch.json__随即打开。
+
+    1. 在中__launch.json__文件中，找到包含行`"configurations": [`，并在其后插入以下文本：
+
+        ```json
+        {
+            "name": "Azure Machine Learning service: Docker Debug",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "localhost",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/var/azureml-app"
+                }
+            ]
+        }
+        ```
+
+        > [!IMPORTANT]
+        > 如果已有的其他条目的配置部分中，您插入的代码后面添加逗号 （，）。
+
+        本部分将附加到使用端口 5678 的 Docker 容器。
+
+    1. 保存__launch.json__文件。
+
+### <a name="create-an-image-that-includes-ptvsd"></a>创建包含 PTVSD 的映像
+
+1. 修改你的部署的 conda 环境，使其包括 PTVSD。 下面的示例演示如何添加使用`pip_packages`参数：
+
+    ```python
+    from azureml.core.conda_dependencies import CondaDependencies 
+    
+    # Usually a good idea to choose specific version numbers
+    # so training is made on same packages as scoring
+    myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
+                                'scikit-learn==0.19.1', 'pandas==0.23.4'],
+                                 pip_packages = ['azureml-defaults==1.0.17', 'ptvsd'])
+    
+    with open("myenv.yml","w") as f:
+        f.write(myenv.serialize_to_string())
+    ```
+
+1. 若要启动 PTVSD 并等待连接，在服务启动时，将以下代码添加到顶部你`score.py`文件：
+
+    ```python
+    import ptvsd
+    # Allows other computers to attach to ptvsd on this IP address and port.
+    ptvsd.enable_attach(address=('0.0.0.0', 5678), redirect_output = True)
+    # Wait 30 seconds for a debugger to attach. If none attaches, the script continues as normal.
+    ptvsd.wait_for_attach(timeout = 30)
+    print("Debugger attached...")
+    ```
+
+1. 在调试期间，可能想要在图像中的文件进行更改，而无需重新创建它。 若要安装 Docker 映像中的文本编辑器 (vim)，创建一个名为的新文本文件`Dockerfile.steps`并使用以下代码作为该文件的内容：
+
+    ```text
+    RUN apt-get update && apt-get -y install vim
+    ```
+
+    文本编辑器，可修改文件内容要测试更改，而无需创建新的映像的 docker 映像。
+
+1. 若要创建使用的映像`Dockerfile.steps`文件，请使用`docker_file`参数创建的图像时。 下面的示例演示如何执行此操作：
+
+    > [!NOTE]
+    > 此示例假定`ws`指向在 Azure 机器学习工作区中，并且`model`是要部署的模型。 `myenv.yml`文件包含在步骤 1 中创建的 conda 依赖项。
+
+    ```python
+    from azureml.core.image import Image, ContainerImage
+    image_config = ContainerImage.image_configuration(runtime= "python",
+                                 execution_script="score.py",
+                                 conda_file="myenv.yml",
+                                 docker_file="Dockerfile.steps")
+
+    image = Image.create(name = "myimage",
+                     models = [model],
+                     image_config = image_config, 
+                     workspace = ws)
+    # Print the location of the image in the repository
+    print(image.image_location)
+    ```
+
+一旦创建映像后，显示在注册表中的映像位置。 位置是类似于以下文本：
+
+```text
+myregistry.azurecr.io/myimage:1
+```
+
+在此文本的示例中，注册表名称是`myregistry`，并将映像命名为`myimage`。 映像版本是`1`。
+
+### <a name="download-the-image"></a>下载映像
+
+1. 打开命令提示符、 终端或其他命令行程序，并使用以下[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)命令向包含你的 Azure 机器学习工作区的 Azure 订阅进行身份验证：
+
+    ```azurecli
+    az login
+    ```
+
+1. 若要进行身份验证到 Azure 容器注册表 (ACR)，其中包含你的映像，使用以下命令。 替换为`myregistry`与其中一个时，返回已注册映像：
+
+    ```azurecli
+    az acr login --name myregistry
+    ```
+
+1. 若要下载到本地 Docker 映像，请使用以下命令。 替换为`myimagepath`时返回的位置中注册该映像：
+
+    ```bash
+    docker pull myimagepath
+    ```
+
+    映像路径应类似于`myregistry.azurecr.io/myimage:1`。 其中`myregistry`是你的注册表`myimage`是你的映像，和`1`是映像版本。
+
+    > [!TIP]
+    > 来自上一步的身份验证不会永远持续存在。 如果等待足够长的时间之间的身份验证命令和拉取命令，将收到身份验证失败。 如果发生这种情况，重新进行身份验证。
+
+    完成下载所需的时间取决于你的 internet 连接速度。 下载状态显示在过程中。 下载完成后，可以使用`docker images`命令来验证是否已下载它。
+
+1. 若要使其更轻松地使用该映像，使用以下命令以添加标记。 替换为`myimagepath`与步骤 2 中的位置值。
+
+    ```bash
+    docker tag myimagepath debug:1
+    ```
+
+    有关步骤的其余部分，可以访问本地映像作为`debug:1`而不是完整的映像路径值。
+
+### <a name="debug-the-service"></a>调试服务
+
+> [!TIP]
+> 如果设置中的 PTVSD 连接超时`score.py`文件，必须连接 VS Code 调试会话之前超时时间已到。 启动 VS Code 中，打开的本地副本`score.py`、 设置断点，并将其准备就绪之前使用本部分中的步骤。
+>
+> 调试并设置断点的详细信息，请参阅[调试](https://code.visualstudio.com/Docs/editor/debugging)。
+
+1. 若要开始使用的映像的 Docker 容器，请使用以下命令：
+
+    ```bash
+    docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
+    ```
+
+1. 若要在容器内附加到 PTVSD 的 VS Code，打开 VS Code，并使用 F5 键或选择__调试__。 出现提示时，选择__Azure 机器学习服务：Docker 调试__配置。 此外可以从侧栏中，选择调试图标__Azure 机器学习服务：Docker 调试__中调试下拉列表菜单，然后使用绿色箭头，可将调试器附加的条目。
+
+    ![调试图标、 开始调试按钮，并配置选择器](media/how-to-troubleshoot-deployment/start-debugging.png)
+
+在此情况下，VS Code 连接到 PTVSD 在 Docker 容器，并在以前设置的断点处停止。 你现在可以逐句通过代码在其运行时，查看变量，等等。
+
+使用 VS Code 调试 Python 的详细信息，请参阅[调试 Python 代码](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019)。
+
+<a id="editfiles"></a>
+### <a name="modify-the-container-files"></a>修改容器文件
+
+若要在图像中的文件进行更改，可以将附加到正在运行的容器，并执行 bash shell。 在这里，您可以使用 vim 编辑文件：
+
+1. 若要连接到正在运行的容器，并启动容器中的 bash shell，请使用以下命令：
+
+    ```bash
+    docker exec -it debug /bin/bash
+    ```
+
+1. 若要查找该服务使用的文件，请使用以下命令从容器中的 bash shell:
+
+    ```bash
+    cd /var/azureml-app
+    ```
+
+    在这里，可以使用 vim 编辑`score.py`文件。 使用 vim 的详细信息，请参阅[使用 Vim 编辑器](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html)。
+
+1. 通常情况下不保存到容器的更改。 若要保存的任何更改，使用以下命令，然后退出 shell 启动在前面步骤中 (也就是说，在另一个外壳程序中):
+
+    ```bash
+    docker commit debug debug:2
+    ```
+
+    此命令创建名为的新映像`debug:2`，其中包含你的编辑。
+
+    > [!TIP]
+    > 你将需要停止当前的容器，并开始使用新版本，才能使更改生效。
+
+1. 请务必保留所做的更改到容器中的文件同步使用 VS 代码使用的本地文件。 否则，调试器体验将不会按预期工作。
+
+### <a name="stop-the-container"></a>停止容器
+
+若要停止容器，请使用以下命令：
+
+```bash
+docker stop debug
+```
 
 ## <a name="next-steps"></a>后续步骤
 

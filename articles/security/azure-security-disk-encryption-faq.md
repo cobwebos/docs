@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98acc7f6dd5ec7cf3702bbcbe60e2739732512e2
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c28cf4326593897dcbc90902737fc4846356078d
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294917"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653384"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -33,6 +33,10 @@ Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>如何开始使用 Azure 磁盘加密？
 
 若要开始，请参阅 [Azure 磁盘加密概述](azure-security-disk-encryption-overview.md)。
+
+## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Azure 磁盘加密支持哪些 VM 大小和操作系统？
+
+[Azure 磁盘加密先决条件](azure-security-disk-encryption-prerequisites.md)一文列表[VM 大小](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes)并[VM 操作系统](azure-security-disk-encryption-prerequisites.md#supported-operating-systems)支持 Azure 磁盘加密。
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>是否可以使用 Azure 磁盘加密来加密引导卷和数据卷？
 

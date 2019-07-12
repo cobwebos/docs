@@ -4,7 +4,7 @@ description: 详细了解如何在 Azure 资源管理器模板中定义虚拟机
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: f4a69fd57bf2e9535fdb1664365b074927e27585
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd4fad40ef4809c756321493854f38fd813569ca
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707284"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710289"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure 资源管理器模板中的虚拟机
 
@@ -375,7 +375,7 @@ ms.locfileid: "64707284"
 ],
 ```
 
-## <a name="extensions"></a>扩展
+## <a name="extensions"></a>Extensions
 
 尽管[扩展](extensions-features.md)是独立的资源，但它们与 VM 密切相关。 可将扩展添加为 VM 的子资源，或添加为独立的资源。 本示例显示要将[诊断扩展](extensions-diagnostics-template.md)添加到 VM：
 

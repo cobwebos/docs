@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7515c061467419412608bb8103136791845ae093
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 742e0028b1f92beb8300cc97f09d8292259fbc0a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133495"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712499"
 ---
 # <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>启用并部署 Azure 超高 Ssd （预览版）
 
@@ -33,7 +33,7 @@ CLI：`az vm list-skus --resource-type disks --query "[?name=='UltraSSD_LRS'].lo
 
 保留**区域**值，它表示可用性区域，并将它将部署所需的超高 SSD。
 
-|ResourceType  |Name  |Location  |区域  |限制  |功能  |值  |
+|ResourceType  |名称  |Location  |区域  |限制  |功能  |ReplTest1  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -63,7 +63,7 @@ CLI：`az vm list-skus --resource-type disks --query "[?name=='UltraSSD_LRS'].lo
 替换或设置 **$vmname**， **$rgname**， **$diskname**， **$location**， **$password**， **$user**具有自己的值的变量。 设置 **$zone**的值时所获取的在可用性区域[这篇文章的开始](#determine-your-availability-zone)。 然后运行以下 CLI 命令创建的超高的已启用的 VM:
 
 ```azurecli-interactive
-az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled --zone $zone --authentication-type password --admin-password $password --admin-username $user --attach-data-disks $diskname --size Standard_D4s_v3 --location $location
+az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --attach-data-disks $diskname --size Standard_D4s_v3 --location $location
 ```
 
 ### <a name="create-an-ultra-ssd-using-cli"></a>创建使用 CLI 的超高 SSD

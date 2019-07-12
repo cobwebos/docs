@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/10/2019
-ms.openlocfilehash: e9002b96467d6fa3a5c4fb03fb20bde4e1bf87a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/10/2019
+ms.openlocfilehash: 8682baa961ca3270e76614702b51ac50f197e847
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059340"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795492"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Azure 机器学习服务的企业安全性
 
@@ -23,7 +23,7 @@ ms.locfileid: "67059340"
 
 使用云服务时，它是最佳做法来限制仅对需要它的用户访问。 这将启动通过了解服务使用的身份验证和授权模型。 可能还想要限制的网络访问或安全地将资源加入与云中的本地网络中。 数据加密非常重要，同时处于静态时和数据的移动服务之间。 最后，您需要能够监视服务和生成的所有活动的审核日志。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 如果 Azure Active Directory (Azure AD) 配置为相同，则支持多因素身份验证。
 * 客户端登录到 Azure AD，并获取 Azure 资源管理器令牌。  完全支持用户和服务主体。
 * 客户端提供的令牌向 Azure 资源管理器和所有 Azure 机器学习服务
@@ -51,7 +51,7 @@ print(primary)
 > 如果你需要重新生成密钥，使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
 
-## <a name="authorization"></a>授权
+## <a name="authorization"></a>Authorization
 
 你可以创建多个工作区，并且每个工作区可由多个用户共享。 共享工作区时，通过向用户分配以下角色来控制对该工作区的访问：
 * 所有者

@@ -5,19 +5,19 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 02/25/2019
+ms.date: 07/09/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: ab74c331bdc8b72612aa848688e1de080314337a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e6eb449f4e7a8dcd6c4547162a575d21f303f83
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133122"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712590"
 ---
 ### <a name="what-is-expressroute-direct"></a>什么是 ExpressRoute Direct？
 
-借助 ExpressRoute Direct，用户可直接连接到巧妙分布在全球对等互连位置的 Microsoft 的全球网络。 ExpressRoute Direct 提供双 100 Gbps 连接，支持大规模的主动/主动连接。 
+借助 ExpressRoute Direct，用户可直接连接到巧妙分布在全球对等互连位置的 Microsoft 的全球网络。 ExpressRoute 直接提供了双 100 或 10 Gbps 连接，支持大规模的主动/主动连接。 
 
 ### <a name="how-do-customers-connect-to-expressroute-direct"></a>客户如何连接到 ExpressRoute Direct？ 
 
@@ -28,22 +28,28 @@ ms.locfileid: "67133122"
 可用端口将为动态端口，并且将由 PowerShell 用于查看容量。 位置包括以下区域并且将基于可用性而有所更改  ：
 
 * 阿姆斯特丹
+* 阿姆斯特丹 2
+* 奥克兰 
 * 芝加哥
-* 华盛顿特区
-* 达拉斯 
+* 达拉斯
+* 都柏林
 * 中国香港特别行政区
 * 伦敦
 * 洛杉矶
+* 墨尔本
 * New York City
-* 巴黎
 * 珀斯
-* 多伦多
 * San Antonio
 * 西雅图
 * 首尔
 * 硅谷
-* 新加坡 
+* 新加坡 2 
 * 悉尼
+* 中国台北
+* 东京
+* 多伦多
+* 华盛顿特区
+* 华盛顿特区 2
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>ExpressRoute Direct 的 SLA 是什么？
 
@@ -51,7 +57,7 @@ ExpressRoute Direct 将使用与 [ExpressRoute 企业级](https://azure.microsof
 
 ### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>在哪些方案中客户应考虑使用 ExpressRoute Direct？  
 
-ExpressRoute Direct 为客户提供到 Microsoft 全球主干线中的直接 100 Gbps 端口对。 将为客户带来最大效益的方案包括：大量数据引入、受管制市场的物理隔离和适用于突发方案（例如呈现）的专用容量。 
+ExpressRoute 直接为 100 或 10 Gbps 端口直接对客户提供到 Microsoft 全球主干。 将为客户带来最大效益的方案包括：大量数据引入、受管制市场的物理隔离和适用于突发方案（例如呈现）的专用容量。 
 
 ### <a name="what-is-the-billing-model-for-expressroute-direct"></a>ExpressRoute Direct 的计费模型是什么？ 
 

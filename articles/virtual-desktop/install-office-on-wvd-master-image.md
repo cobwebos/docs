@@ -4,15 +4,15 @@ description: 如何安装和到 Azure 的 Windows 虚拟桌面预览主映像上
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 6d2bb7efdd5567da377e1e15fec4935b7d4a3a6f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0e89d37011ccdfc3acdace5b45faa8e9a64e4d3e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444114"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620465"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>在主 VHD 映像中安装 Office
 
@@ -23,7 +23,7 @@ ms.locfileid: "67444114"
 本文还假定您拥有提升访问权限的 VM 上，无论它在 Azure 或 Hyper-v 管理器预配。 如果没有，请参阅[提升访问权限来管理所有 Azure 订阅和管理组](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)。
 
 >[!NOTE]
->这些说明适用于可以与组织的现有进程使用的特定于 Windows 的虚拟桌面预览版的配置。
+>这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面预览版的配置。
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>在共享的计算机激活模式下安装 Office
 

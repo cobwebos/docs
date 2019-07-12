@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 8699533cd64e6b1778c5e78b8c51eb1efe518c75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81f14fa54303911a34b334f41b5f7f6b0f9f394b
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67126221"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720624"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集
 
@@ -34,6 +34,8 @@ ms.locfileid: "67126221"
 要想能够创建具有 ESP 的 HDInsight 群集，必须先启用 Azure AD-DS。 有关详细信息，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/create-instance.md)。 
 
 默认情况下，启用 Azure AD-DS 后，所有用户和对象就开始从 Azure Active Directory (AAD) 同步到 Azure AD-DS。 同步操作的时长取决于 Azure AD 中对象的数目。 如果对象数以十万记，则同步可能需要数天。 
+
+使用与 Azure AD DS 的域名必须是 39 个字符或更少，以使用 HDInsight。
 
 您可以选择要同步仅需要访问 HDInsight 群集的组。 这种仅同步特定组的选项称为“范围有限的同步”。  有关说明，请参阅 [Configure Scoped Synchronization from Azure AD to your managed domain](../../active-directory-domain-services/scoped-synchronization.md)（配置从 Azure AD 到托管域的范围有限的同步）。
 

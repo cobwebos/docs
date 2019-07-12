@@ -58,6 +58,8 @@
       href: host-pool-load-balancing.md
     - name: FSLogix 配置文件容器和 Azure 文件
       href: fslogix-containers-azure-files.md
+    - name: 合作伙伴集成
+      href: partners.md
 - name: 故障排除
   items:
     - name: 故障排除概述、反馈和支持
