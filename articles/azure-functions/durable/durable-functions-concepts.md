@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a244883f470f4906879725daf0d37bd1759e65c4
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071348"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812894"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions 模式和技术概念 (Azure Functions)
 
@@ -374,7 +374,7 @@ module.exports = async function (context) {
 };
 ```
 
-## <a name="pattern-6-aggregator-preview"></a>模式 #6：聚合器（预览版）
+### <a name="aggregator"></a>模式 #6:聚合器（预览版）
 
 第六种模式是关于将一段时间内的事件数据聚合到单个可寻址的实体  中。 在此模式下，聚合的数据可能来自多个源，可能分批传送，也可能分散在很长一段时间内。 聚合器可能需要在事件数据到达时对其执行操作，外部客户端可能需要查询聚合的数据。
 
@@ -385,27 +385,46 @@ module.exports = async function (context) {
 使用 [Durable Entity 函数](durable-functions-preview.md#entity-functions)，可以很容易地将此模式实现为单个函数。
 
 ```csharp
-public static async Task Counter(
-    [EntityTrigger(EntityClassName = "Counter")] IDurableEntityContext ctx)
+[FunctionName("Counter")]
+public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-    int operand = ctx.GetInput<int>();
 
-    switch (ctx.OperationName)
+    switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
+            int amount = ctx.GetInput<int>();
             currentValue += operand;
             break;
-        case "subtract":
-            currentValue -= operand;
-            break;
         case "reset":
-            await SendResetNotificationAsync();
             currentValue = 0;
+            break;
+        case "get":
+            ctx.Return(currentValue);
             break;
     }
 
     ctx.SetState(currentValue);
+}
+```
+
+此外可以作为.NET 类建模持久实体。 如果操作的列表变得大并当其大部分静态，这很有用。 下面的示例是等效的实现`Counter`实体使用.NET 类和方法。
+
+```csharp
+public class Counter
+{
+    [JsonProperty("value")]
+    public int CurrentValue { get; set; }
+
+    public void Add(int amount) => this.CurrentValue += amount;
+    
+    public void Reset() => this.CurrentValue = 0;
+    
+    public int Get() => this.CurrentValue;
+
+    [FunctionName(nameof(Counter))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<Counter>();
 }
 ```
 
@@ -426,7 +445,7 @@ public static async Task Run(
 }
 ```
 
-同样，客户端可以使用 `orchestrationClient` 绑定上的方法查询实体函数的状态。
+动态生成的代理，还提供了以类型安全的方式中的信号的实体。 除了发出信号，客户端还可以查询实体函数上使用方法的状态和`orchestrationClient`绑定。
 
 > [!NOTE]
 > 实体函数目前仅在 [Durable Functions 2.0 预览版](durable-functions-preview.md)中可用。

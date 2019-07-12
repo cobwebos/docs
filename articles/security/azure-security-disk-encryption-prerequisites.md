@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ef40ce0987d44c968b120d7d4b142cc95d7eaf30
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 8e01815cee0d6e39f6f773e9838b2a8b60638ab1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294853"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672298"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure 磁盘加密先决条件
 
@@ -48,10 +48,14 @@ Azure 磁盘加密也是适用于 Vm 使用高级存储。
 
 ### <a name="windows"></a>Windows
 
-- Windows Server 版本：Windows Server 2008 R2、 Windows Server 2012、 Windows Server 2012 R2、 Windows Server 2016、 Windows Server 2012 R2 Server Core 和 Windows Server 2016 Server core。
-对于 Windows Server 2008 R2，必须安装 .NET Framework 4.5 才能在 Azure 中启用加密。 从 Windows 更新的可选更新适用于 Windows Server 2008 R2 的基于 x64 的系统 (KB2901983) 的 Microsoft.NET Framework 4.5.2 中安装它。
-- Windows Server 2012 R2 Core 和 Windows Server 2016 Core 支持 Azure 磁盘加密后 bdehdcfg 组件安装在 VM 上。
-- Windows 客户端版本：Windows 8 客户端和 Windows 10 客户端。
+- Windows 客户端：Windows 8 及更高版本。
+- Windows Server：Windows Server 2008 R2 和更高版本。  
+ 
+> [!NOTE]
+> Windows Server 2008 R2 需要.NET Framework 4.5 安装进行加密;安装来自 Windows 更新的可选更新适用于 Windows Server 2008 R2 的基于 x64 的系统的 Microsoft.NET Framework 4.5.2 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983))。  
+>  
+> Windows Server 2012 R2 Core 和 Windows Server 2016 Core 要求要加密的 VM 上安装的 bdehdcfg 组件。
+
 
 ### <a name="linux"></a>Linux 
 
@@ -110,7 +114,7 @@ Azure 不认可的 Linux 服务器分发版不支持 Azure 磁盘加密，并且
 
 
 **组策略：**
- - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关“在没有兼容 TPM 的情况下允许 BitLocker”的组策略信息，请参阅 [BitLocker 组策略参考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#a-href-idbkmk-unlockpol1arequire-additional-authentication-at-startup)。
+ - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关“在没有兼容 TPM 的情况下允许 BitLocker”的组策略信息，请参阅 [BitLocker 组策略参考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
 
 -  具有自定义组策略的已加入域虚拟机上的 BitLocker 策略必须包含以下设置：[配置用户存储的 BitLocker 恢复信息-> 允许 256 位恢复密钥](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，应用新策略，强制更新新策略 (gpupdate.exe /force)，然后可能需要重启。
 
@@ -292,7 +296,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 1. 选择 Key Vault，转到“访问策略”，然后选择“单击此处可显示高级访问策略”。  
 2. 选中标有“启用对 Azure 磁盘加密的访问以进行卷加密”的框。 
 3. 根据需要选择“启用对 Azure 虚拟机的访问以进行部署”和/或“启用对 Azure 资源管理器的访问以进行模板部署”。   
-4. 单击“ **保存**”。
+4. 单击“保存”  。
 
     ![Azure Key Vault 高级访问策略](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)
 

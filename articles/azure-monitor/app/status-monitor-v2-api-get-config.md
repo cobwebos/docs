@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 1f7061c9823ddc8ff7f8f42976041f1c9ff68fc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7eaaaa2dd7b22d138ea2f0a52d0bf0a1b2eab026
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514387"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807087"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringconfig-v021-alpha"></a>状态监视器 v2 API：Get-ApplicationInsightsMonitoringConfig (v0.2.1-alpha)
+# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringconfig-v040-alpha"></a>状态监视器 v2 API：Get-ApplicationInsightsMonitoringConfig (v0.4.0-alpha)
 
 本文介绍的 cmdlet 时的成员[Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
 
@@ -41,11 +41,11 @@ ms.locfileid: "66514387"
 PS C:\> Get-ApplicationInsightsMonitoringConfig
 ```
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 
 没有所需的参数。
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 
 #### <a name="example-output-from-reading-the-config-file"></a>读取配置文件的示例输出

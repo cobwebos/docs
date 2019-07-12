@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c15d315d186af5622d9fa988945750d93e8eb11f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae6d55180785c9407662776a95fcba31f8ba5275
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507558"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835208"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入
 
@@ -23,7 +23,7 @@ ms.locfileid: "66507558"
 
 本文介绍如何在 Azure Active Directory (Azure AD) B2C 中向注册用户旅程添加新的用户提供的条目（声明）。  该条目配置为一个下拉列表和定义这是否是必需。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。 测试注册或登录用户旅程，以便注册新的本地帐户，然后再继续操作。
 
@@ -79,7 +79,7 @@ ms.locfileid: "66507558"
 
 #### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-![下拉列表选项的屏幕截图](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![单项选择显示多个选项的下拉列表控件](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -96,7 +96,7 @@ ms.locfileid: "66507558"
 
 #### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-![多项选择选项的屏幕截图](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![显示多个选项的多选复选框控件](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -235,7 +235,7 @@ ms.locfileid: "66507558"
       <IncludeTechnicalProfile ReferenceId="AAD-Common" />
     </TechnicalProfile>
     ```
-   
+
 4. 将 `<OutputClaim ClaimTypeReferenceId="city" />` 声明添加到 SignUporSignIn.xml 文件，以便在用户旅程成功完成后，在令牌中将此声明发送到应用程序。
 
     ```xml

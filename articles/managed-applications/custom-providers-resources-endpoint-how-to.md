@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: b94d59b55a62797e142768dc84ec499d714bd067
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a3cd1fe69a0d99f9faf3a451f76a3a420d713711
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67479013"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795216"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>将自定义资源添加到 Azure REST API
 
@@ -104,7 +104,7 @@ az resource create --is-full-object \
                     }'
 ```
 
-参数 | 需要 | 描述
+参数 | 必填 | 描述
 ---|---|---
 is-full-object | *yes* | 指示属性对象包含其他选项，例如位置、 标记、 sku 和/或计划。
 id | *yes* | 自定义资源的资源 ID。 这应存在的中断**ResourceProvider**
@@ -126,7 +126,7 @@ id | *yes* | 自定义资源的资源 ID。 这应存在的中断**ResourceProvi
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
 ```
 
-参数 | 需要 | 描述
+参数 | 必填 | 描述
 ---|---|---
 id | *yes* | 自定义资源的资源 ID。 这应存在的中断**ResourceProvider**
 
@@ -176,7 +176,7 @@ Azure 资源管理器模板需要`id`， `name`，和`type`已正确返回从下
 }
 ```
 
-参数 | 需要 | 描述
+参数 | 必填 | 描述
 ---|---|---
 resourceTypeName | *yes* | **名称**的**resourceType**自定义提供程序中定义。
 resourceProviderName | *yes* | 自定义资源提供程序实例名称。
@@ -185,7 +185,8 @@ customResourceName | *yes* | 自定义资源名称。
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 自定义资源提供程序的概述](./custom-providers-overview.md)
-- [教程：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
+- [快速入门：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
+- [教程：在 Azure 中创建自定义操作和资源](./tutorial-custom-providers-101.md)
 - [如何：向 Azure REST API 添加自定义操作](./custom-providers-action-endpoint-how-to.md)
 - [参考：自定义资源代理引用](./custom-providers-proxy-resource-endpoint-reference.md)
 - [参考：自定义资源缓存参考](./custom-providers-proxy-cache-resource-endpoint-reference.md)

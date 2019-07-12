@@ -11,14 +11,24 @@
       href: publish-managed-app-definition-quickstart.md
     - name: 部署服务目录应用
       href: deploy-service-catalog-quickstart.md
+    - name: 创建自定义资源提供程序
+      href: create-custom-provider.md
 - name: 教程
   items:
+    - name: 自定义提供程序
+      items:
+        - name: 自定义提供程序入门
+          href: tutorial-custom-providers-101.md
+        - name: 设置 Azure Functions
+          href: tutorial-custom-providers-function-setup.md
+        - name: 创建 RESTful 终结点
+          href: tutorial-custom-providers-function-authoring.md
+        - name: 创建和利用自定义提供程序
+          href: tutorial-custom-providers-create.md
     - name: 创建定义文件
       href: publish-service-catalog-app.md
     - name: 发布市场应用程序
       href: publish-marketplace-app.md
-    - name: 创建自定义资源提供程序
-      href: create-custom-provider.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -29,13 +39,13 @@
       href: sample-projects.md
 - name: 概念
   items:
-    - name: Azure 自定义资源提供程序
+    - name: Azure 自定义提供程序
       href: custom-providers-overview.md
     - name: 视图定义项目
       href: concepts-view-definition.md
 - name: 操作指南
   items:
-    - name: 自定义资源提供程序
+    - name: 自定义提供程序
       items:
         - name: 将自定义操作添加到 Azure
           href: custom-providers-action-endpoint-how-to.md
@@ -65,12 +75,14 @@
           href: approve-just-in-time-access.md
 - name: 引用
   items:
-    - name: 自定义资源提供程序
+    - name: 自定义提供程序
       items:
         - name: 自定义资源代理参考
           href: custom-providers-proxy-resource-endpoint-reference.md
         - name: 自定义资源缓存参考
           href: custom-providers-proxy-cache-resource-endpoint-reference.md
+        - name: 自定义提供程序 RESTful 终结点参考
+          href: reference-custom-providers-csharp-endpoint.md
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell

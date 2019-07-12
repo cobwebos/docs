@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c945f39218f9099d5c304739ca9b567ab9b3325
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2d74488f60f21e3644a7a04579bfab7e70882b01
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164698"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621546"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>通过使用 Azure Stream Analytics 和 Azure 机器学习工作室 （预览版） 执行情绪分析
 本文介绍如何快速设置集成了 Azure 机器学习工作室的简单 Azure Stream Analytics 作业。 你将使用 Cortana Intelligence 库中的机器学习情绪分析模型来实时分析流文本数据并确定情绪分数。 可以使用 Cortana Intelligence Suite 完成此任务，不必担心构建情绪分析模型的复杂性。
@@ -36,7 +36,7 @@ ms.locfileid: "67164698"
 
 ![流分析机器学习集成概述](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在开始之前，请确保具有以下各项：
 
 * 一个有效的 Azure 订阅。
@@ -136,7 +136,7 @@ ms.locfileid: "67164698"
 3. 使用以下值填写“Blob 存储”边栏选项卡  ：
 
    
-   |字段  |值  |
+   |字段  |ReplTest1  |
    |---------|---------|
    |**输入别名** | 使用名称 `datainput` 并选择“从订阅选择 Blob 存储”        |
    |**存储帐户**  |  选择前面创建的存储帐户。  |
@@ -145,7 +145,7 @@ ms.locfileid: "67164698"
 
    ![新的流分析作业输入的设置](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
-1. 单击“ **保存**”。
+1. 单击“保存”  。
 
 ### <a name="configure-the-job-output"></a>配置作业输出
 作业将结果发送到它从中获取输入的同一 blob 存储。 
@@ -165,7 +165,7 @@ ms.locfileid: "67164698"
 
    ![新的流分析作业输出的设置](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
 
-4. 单击“ **保存**”。   
+4. 单击“保存”  。   
 
 
 ### <a name="add-the-machine-learning-function"></a>添加机器学习函数 
@@ -187,7 +187,7 @@ ms.locfileid: "67164698"
   
    ![用于向流分析作业添加机器学习函数的设置](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
-4. 单击“ **保存**”。
+4. 单击“保存”  。
 
 ### <a name="create-a-query-to-transform-the-data"></a>创建查询来转换数据
 
@@ -252,7 +252,7 @@ ms.locfileid: "67164698"
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [集成 REST API 和机器学习](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

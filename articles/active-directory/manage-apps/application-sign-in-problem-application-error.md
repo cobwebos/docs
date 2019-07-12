@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d41ec1f510b028a2ffe2554bfcbd77bc439c4e79
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 23e6a3d0b533dccc3c3111382b014907d5c026ab
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272951"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612668"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>用户登录后，应用页面会显示一条错误消息
 
@@ -62,7 +62,7 @@ ms.locfileid: "67272951"
 
    1. 选择“添加属性”。  输入**名称**，然后选择**值**从下拉列表。
 
-   1.  选择“保存”。  你将看到表中的新属性。
+   1.  选择**保存**。 你将看到表中的新属性。
 
 9. 保存配置。
 
@@ -99,7 +99,7 @@ ms.locfileid: "67272951"
 
 ## <a name="change-the-nameid-format"></a>NameID 格式更改
 
-如果应用程序需要其他格式**NameID** （用户标识符） 属性，请参阅[编辑 nameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization.md#editing-nameid) NameID 格式更改。
+如果应用程序需要其他格式**NameID** （用户标识符） 属性，请参阅[编辑 nameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) NameID 格式更改。
 
 Azure AD 中选择的格式**NameID**属性 （用户标识符） 基于选择的值或 SAML AuthRequest 中应用请求的格式。 有关详细信息，请参阅的"NameIDPolicy"部分[单一登录 SAML 协议](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy)。
 

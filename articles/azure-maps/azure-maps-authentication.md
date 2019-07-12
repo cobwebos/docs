@@ -3,18 +3,18 @@ title: Azure Maps 身份验证 | Microsoft Docs
 description: 使用 Azure Maps 服务时进行身份验证。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 22aba19e16e4349a5b495b307c9906f7ded5a636
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4608d0631c9a590fdde583e399883a023275c30
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393673"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838040"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
@@ -31,7 +31,7 @@ Azure Maps 支持通过两种方式对请求进行身份验证：共享密钥和
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>使用 Azure Active Directory 进行身份验证（预览）
 
-Azure Maps 现在提供 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 集成用于对 Azure Maps 服务的请求进行身份验证。 Azure AD 提供基于标识的身份验证（包括[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)），以授予对 Azure Maps 资源的用户级或应用程序级访问权限。 后续部分可以帮助你了解与 Azure AD 集成的 Azure Maps 的概念和组件。
+Azure Maps 现在提供 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 集成用于对 Azure Maps 服务的请求进行身份验证。 Azure AD 提供的基于身份的身份验证，包括[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)，以授予对 Azure Maps 资源的用户级别、 组级别和应用程序级访问权限。 后续部分可以帮助你了解与 Azure AD 集成的 Azure Maps 的概念和组件。
 
 ## <a name="authentication-with-oauth-access-tokens"></a>使用 OAuth 访问令牌进行身份验证
 
@@ -54,10 +54,10 @@ https://login.microsoftonline.com
 
 从 Azure AD 收到令牌后，可以使用以下两个必需的请求标头集将请求发送到 Azure Maps：
 
-| 请求标头    |    值    |
+| 请求标头    |    ReplTest1    |
 |:------------------|:------------|
 | x-ms-client-id    | 30d7cc….9f55|
-| 授权     | Bearer eyJ0e….HNIVN |
+| Authorization     | Bearer eyJ0e….HNIVN |
 
 > [!Note]
 > `x-ms-client-id` 是 Azure Maps 身份验证页上显示的基于 Azure Maps 帐户的 GUID。
@@ -75,9 +75,9 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="control-access-with-rbac"></a>使用 RBAC 控制访问
 
-Azure AD 允许使用 RBAC 控制对受保护资源的访问。 创建 Azure Maps 帐户并在 Azure AD 租户中注册 Azure Maps Azure AD 应用程序后，可在 Azure Maps 帐户门户页中针对用户、应用程序或 Azure 资源设置 RBAC。
+Azure AD 允许使用 RBAC 控制对受保护资源的访问。 创建 Azure Maps 帐户，并在你的 Azure AD 租户中注册 Azure Maps Azure AD 应用程序后，可以为用户、 组、 应用程序或在 Azure Maps 帐户门户页上的 Azure 资源来设置 RBAC。
 
-Azure Maps 支持通过 Azure 资源的托管标识针对单个 Azure AD 用户、应用程序以及 Azure 服务进行读取访问控制。
+Azure Maps 为个别支持读取访问权限控制 Azure AD 用户、 组、 应用程序和 Azure 服务管理的标识通过 Azure 资源。
 
 ![Azure Maps 数据读取器(预览版)](./media/azure-maps-authentication/concept.png)
 

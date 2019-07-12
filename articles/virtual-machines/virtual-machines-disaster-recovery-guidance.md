@@ -4,7 +4,7 @@ description: 了解发生影响 Azure 虚拟机的 Azure 服务中断事件时�
 services: virtual-machines
 documentationcenter: ''
 author: kmouss
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 65272148-ff06-4bce-91f1-851d706d4d40
 ms.service: virtual-machines
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: kmouss;aglick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc71e8564b35f4fdd4153a04c66a3d8c5df88c30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f071e1ae97228a16799d391e226ba44b99f6096e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478838"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721188"
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>发生影响 Azure VM 的 Azure 服务中断事件时该怎么办
 Microsoft 的同仁兢兢业业，只为确保在任何时候都能提供需要的服务。 但有时候会因为不可抗力的影响，造成服务意外中断。
@@ -44,7 +44,7 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 
 
 > [!NOTE]
-> 注意，对此过程无任何控制权，并且此过程仅适用于区域范围的服务中断。 因此，还必须依靠应用程序特有的其他备份方法才能达到最高级别的可用性。 有关详细信息，请参阅 [Data strategies for disaster recovery](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications#data-strategies-for-disaster-recovery)（灾难恢复的数据策略）部分。
+> 注意，对此过程无任何控制权，并且此过程仅适用于区域范围的服务中断。 因此，还必须依靠应用程序特有的其他备份方法才能达到最高级别的可用性。 有关详细信息，请参阅 [Data strategies for disaster recovery](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)（灾难恢复的数据策略）部分。
 >
 >
 

@@ -4,7 +4,7 @@ description: Azure 虚拟机 PowerShell 示例
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 53784c3d74f9e6af5f1e84cc098194113e81333b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d954bc068693a34ef1d69e4296e972979d4f61b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771254"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671018"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 虚拟机 PowerShell 示例
 
@@ -45,4 +45,5 @@ ms.locfileid: "60771254"
 |**监视虚拟机**||
 | [使用 Azure Monitor 日志监视 VM](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建一个虚拟机，安装 Log Analytics 代理，并在 Log Analytics 工作区中注册该 VM。  |
 | [将托管磁盘复制到相同或不同的订阅](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将托管磁盘复制到父托管磁盘所在区域中的相同或不同订阅。
+| [收集有关使用 PowerShell 订阅中的所有 Vm 的详细信息](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建包含 VM 名称、 资源组名称、 区域、 虚拟网络、 子网、 专用 IP 地址、 操作系统类型和提供的订阅中的 vm 的公共 IP 地址的 csv。
 | | |

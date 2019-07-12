@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: e63670504dedf426829778e154b2d5c2b69d98a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2b08ddb4241a9af7aee31bb51d75dd82ff8255d2
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435072"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839619"
 ---
 # <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：Translate
 
@@ -42,10 +42,10 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>from</td>
-    <td>可选参数。<br/>指定输入文本的语言。 可以使用 <code>translation</code> 范围来查找<a href="./v3-0-languages.md">支持的语言</a>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。</td>
+    <td>可选参数。<br/>指定输入文本的语言。 可以使用 <code>translation</code> 范围来查找<a href="./v3-0-languages.md">支持的语言</a>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。 <br/><br/>必须使用<code>from</code>参数而不使用时自动检测<a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">动态字典</a>功能。</td>
   </tr>
   <tr>
-    <td>至</td>
+    <td>to</td>
     <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 <code>translation</code> 范围中包含的<a href="./v3-0-languages.md">支持的语言</a>之一。 例如，若要翻译为德语，请使用 <code>to=de</code>。<br/>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 <code>to=de&to=it</code>。</td>
   </tr>
   <tr>
@@ -374,7 +374,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>操作</th>
+  <th>Action</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>此选项为默认行为。 不雅内容会从源传递到目标。<br/><br/>

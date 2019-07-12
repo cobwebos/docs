@@ -4,7 +4,7 @@ description: 用于在 Resource Manager 部署模型中管理资源的 Azure 命
 services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
 documentationcenter: ''
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: ac1a6136eae79700c427b27c8869bc9241c62abc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a155159759a4b817842087bff7d4167ed8ed0c5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717779"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722825"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager 模式下的 Azure CLI 命令
 本文提供常用于在 Azure 资源管理器部署模型中创建和管理 Azure 资源的 Azure 命令行接口 (CLI) 命令的语法和选项。 通过在 Resource Manager (arm) 模式下运行 CLI 可以访问这些命令。 本参考内容并不完整，CLI 版本可能会显示略微不同的命令或参数。 有关 Azure 资源和资源组的一般概述，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。  
@@ -196,7 +196,7 @@ ms.locfileid: "64717779"
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
 
-示例：创建一个配置文件，其中包含创建群集时要运行的脚本操作。
+例如：创建一个配置文件，其中包含创建群集时要运行的脚本操作。
 
     hdinsight config create "C:\myFiles\configFile.config"
     hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
@@ -205,7 +205,7 @@ ms.locfileid: "64717779"
 
     hdinsight cluster create [options] <clusterName>
 
-示例：在 Linux 群集上创建 Storm
+例如：在 Linux 群集上创建 Storm
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
 
@@ -213,7 +213,7 @@ ms.locfileid: "64717779"
     + Submitting the request to create cluster...
     info:    hdinsight cluster create command OK
 
-示例：使用脚本操作创建群集
+例如：使用脚本操作创建群集
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
 

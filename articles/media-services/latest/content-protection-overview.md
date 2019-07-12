@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 140e6c338d12732d1e41ccd9dabef1de7d5cf8d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee65aa5753d9967022ca91a66433b11761b73a32
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068849"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835798"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>使用动态加密内容保护
 
@@ -73,7 +73,7 @@ ms.locfileid: "67068849"
   
      可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) 创建播放器。 通过 [Azure 媒体播放器的 ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) 指定要在不同的 DRM 平台上使用哪种 DRM 技术。
 
-     若要测试 AES 或 CENC (Widevine 和/或 PlayReady) 加密内容，可以使用 [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html)。 请务必单击“高级选项”，并选择加密选项。
+     若要测试 AES 或 CENC (Widevine 和/或 PlayReady) 加密内容，可以使用 [Azure Media Player](http://aka.ms/azuremediaplayer)。 请务必单击“高级选项”，并选择加密选项。
 
      若要测试 FairPlay 加密内容，请使用[此测试播放器](https://aka.ms/amtest)。 该播放器支持 Widevine、PlayReady 和 FairPlay DRM，以及 AES-128 明文密钥加密。 
     
@@ -101,7 +101,7 @@ HLS 协议支持以下容器格式和加密方案。
 
 |容器格式|加密方案|URL 示例|
 |---|---|---|
-|全部|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|All|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
 |MPG2-TS |CBC (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
 |CMAF(fmp4) |CBC (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
 |MPG2-TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
@@ -119,7 +119,7 @@ MPEG DASH 协议支持以下容器格式和加密方案。
 
 |容器格式|加密方案|URL 示例
 |---|---|---|
-|全部|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|All|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
 |CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
 |CMAF(fmp4)|CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
@@ -136,7 +136,7 @@ MPEG DASH 协议支持以下容器格式和加密方案。
 
 常见的浏览器支持以下 DRM 客户端：
 
-|浏览器|加密|
+|浏览者|加密|
 |---|---|
 |Chrome|Widevine|
 |Edge, IE 11|PlayReady|
@@ -203,7 +203,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 如果收到`MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY`错误，请确保指定适当的流式处理策略。
 
-如果出现错误结尾`_NOT_SPECIFIED_IN_URL`，请确保在 URL 中指定的加密格式。 例如，`…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)。
+如果出现错误结尾`_NOT_SPECIFIED_IN_URL`，请确保在 URL 中指定的加密格式。 例如， `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)` 。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

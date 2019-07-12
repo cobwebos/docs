@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/10/2019
 abstract:
-  description: <p>Azure Data Share 预览版是一种安全、可靠的服务，用于与第三方组织共享数据。 选择想要共享的数据集，添加收件人，并开始使用管理、监视和控制数据共享关系的功能来共享数据。 </p><p>了解如何通过我们的教程使用 Azure Data Share。</p>
+  description: <p>Azure Data Share 预览版是一种安全、可靠的服务，用于与第三方组织共享数据。 选择想要共享的数据集，添加收件人，并开始使用管理、监视和控制数据共享关系的功能来共享数据。 </p><p>了解如何通过我们的教程和操作指南使用 Azure Data Share。</p>
   aside:
     image:
       alt: null

@@ -128,6 +128,8 @@
           href: dbms_guide_ibm.md
         - name: SUSE Linux Enterprise Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
           href: dbms-guide-ha-ibm.md
+        - name: Red Hat Enterprise Linux Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
+          href: high-availability-guide-rhel-ibm-db2-luw.md
         - name: 适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
           href: dbms_guide_sapase.md
         - name: Azure 上的 SAP MaxDB、liveCache 和内容服务器部署

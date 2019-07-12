@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 76b6f013333113d5a24b744bc962d36b1c0e21b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de5019e0f91c92829082aed962bb9633da52b4a9
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731103"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812846"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions 类型和功能 (Azure Functions)
 
@@ -27,7 +27,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 ## <a name="types-of-durable-functions"></a>Durable Functions 的类型
 
-可在 Azure Functions 中使用三种持久函数类型：活动、业务流程协调程序和客户端。
+您可以在 Azure Functions 中使用四个持久函数类型： 活动、 业务流程协调程序、 实体和客户端。
 
 ### <a name="activity-functions"></a>活动函数
 
@@ -43,7 +43,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 ### <a name="orchestrator-functions"></a>业务流程协调程序函数
 
-业务流程协调程序函数描述操作的执行方式和操作的执行顺序。 业务流程协调程序函数描述代码（C# 或 JavaScript）中的业务流程，如 [Durable Functions 模式和技术概念](durable-functions-concepts.md)中所述。 业务流程可以包含许多不同类型的操作，包括[活动函数](#activity-functions)、[子业务流程](#sub-orchestrations)、[等待外部事件](#external-events)和[计时器](#durable-timers)。 
+业务流程协调程序函数描述操作的执行方式和操作的执行顺序。 业务流程协调程序函数描述代码（C# 或 JavaScript）中的业务流程，如 [Durable Functions 模式和技术概念](durable-functions-concepts.md)中所述。 业务流程可以包含许多不同类型的操作，包括[活动函数](#activity-functions)、[子业务流程](#sub-orchestrations)、[等待外部事件](#external-events)和[计时器](#durable-timers)。 业务流程协调程序函数还可以与进行交互[实体函数](#entity-functions)。
 
 必须由[业务流程触发器](durable-functions-bindings.md#orchestration-triggers)触发业务流程协调程序函数。
 
@@ -51,11 +51,18 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 有关详细信息和示例，请参阅[业务流程触发器](durable-functions-bindings.md#orchestration-triggers)。
 
+###  <a name="entity-functions"></a>实体函数 （预览版）
+
+实体函数定义用于读取和更新较小状态片段（称为“持久实体”）的操作。  与业务流程协调程序函数类似，实体函数是具有特殊触发器类型“实体触发器”的函数。  与业务流程协调程序函数不同，实体函数没有任何特定的代码约束。 实体函数还会显式管理状态，而不是通过控制流隐式表示状态。
+
+> [!NOTE]
+> 实体函数及其相关的功能才可用在 Durable Functions 2.0 及更高版本。
+
+有关实体函数的详细信息，请参阅[实体函数](durable-functions-preview.md#entity-functions)预览功能文档。
+
 ### <a name="client-functions"></a>客户端函数
 
-客户端函数是触发的函数，可以创建业务流程的新实例。 客户端函数是用于创建 Durable Functions 业务流程实例的入口点。 可以从任何源（HTTP、队列、事件流）触发客户端函数。 可以使用应用支持的任何语言编写客户端函数。 
-
-客户端函数还具有[业务流程客户端](durable-functions-bindings.md#orchestration-client)绑定。 客户端函数可以使用业务流程客户端绑定来创建和管理持久业务流程。 
+客户端函数是触发的函数的创建和管理业务流程和实体的实例。 它们实际上是 Durable Functions 与交互的入口点。 可以触发一个客户端函数中的任何源 (HTTP、 队列、 事件流，等等)。 客户端函数使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)来创建和管理持久业务流程和实体。
 
 客户端函数的最基本示例是 HTTP 触发的函数，该函数启动业务流程协调程序函数，然后返回检查状态响应。 有关示例，请参阅 [HTTP API URL 发现](durable-functions-http-api.md#http-api-url-discovery)。
 

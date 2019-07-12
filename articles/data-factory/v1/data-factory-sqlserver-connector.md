@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: be36f9ab881f2375b14ba0ea36038f9e840d199f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e70611d438678ded1260dd00a04960c798fdde5
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156493"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836230"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出本地或 IaaS (Azure VM) 中的 SQL Server
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-sqlserver-connector.md)
 > * [版本 2（当前版本）](../connector-sql-server.md)
 
@@ -56,7 +56,7 @@ ms.locfileid: "66156493"
 
 创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-还可以使用以下工具来创建管道：Azure 门户  、Visual Studio  、Azure PowerShell  、Azure 资源管理器模板  、.NET API  和 REST API  。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+还可以使用以下工具来创建管道：**Visual Studio**， **Azure PowerShell**， **Azure Resource Manager 模板**， **.NET API**，并且**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -79,7 +79,7 @@ ms.locfileid: "66156493"
 | type |类型属性应设置为：**OnPremisesSqlServer**。 |是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到本地 SQL Server 数据库时所需的 connectionString 信息。 |是 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 SQL Server 数据库。 |是 |
-| username |如果使用的是 Windows 身份验证，请指定用户名。 示例： domainname\\username 。 |否 |
+| username |如果使用的是 Windows 身份验证，请指定用户名。 示例：域名\\用户名  。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
 
 您可以加密使用的凭据**新建 AzDataFactoryEncryptValue** cmdlet，并使用它们在连接字符串中，如下面的示例中所示 (**EncryptedCredential**属性):
@@ -131,9 +131,9 @@ ms.locfileid: "66156493"
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **SqlServerTable** 类型的数据集的 **typeProperties** 部分具有以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| tableName |链接服务所引用的 SQL Server 数据库实例中的表或视图的名称。 |“是” |
+| tableName |链接服务所引用的 SQL Server 数据库实例中的表或视图的名称。 |是 |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 要从 SQL Server 数据库移动数据，请在复制活动中将源类型设置为 **SqlSource**。 同样，要将数据移动到 SQL Server 数据库，请在复制活动中将接收器类型设置为 **SqlSink**。 本部分提供 SqlSource 和 SqlSink 支持的属性列表。
@@ -148,7 +148,7 @@ ms.locfileid: "66156493"
 ### <a name="sqlsource"></a>SqlSource
 复制活动中源的类型为 **SqlSource**时，则可在 **typeProperties** 节中使用以下属性：
 
-| 属性 | 说明 | 允许的值 | 需要 |
+| 属性 | 说明 | 允许的值 | 必填 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：从 MyTable 中选择 *。 可引用输入数据集所引用的数据库中的多个表。 如果未指定，执行的 SQL 语句为：select from MyTable。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 存储过程中的最后一条 SQL 语句必须是 SELECT 语句。 |否 |
@@ -166,21 +166,21 @@ ms.locfileid: "66156493"
 ### <a name="sqlsink"></a>SqlSink
 **SqlSink** 支持以下属性：
 
-| 属性 | 说明 | 允许的值 | 需要 |
+| 属性 | 说明 | 允许的值 | 必填 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
+| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 例如：“00:30:00”（30 分钟）。 |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。 |整数（行数） |否（默认值：10000） |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[可重复复制](#repeatable-copy)。 |查询语句。 |否 |
 | sliceIdentifierColumnName |指定复制活动要使用自动生成的切片标识符进行填充的列名，该标识符用于重新运行时清除特定切片的数据。 有关详细信息，请参阅[可重复复制](#repeatable-copy)。 |数据类型为 binary(32) 的列的列名。 |否 |
 | sqlWriterStoredProcedureName |存储过程的名称，该存储过程定义如何将源数据应用到目标表，例如使用你自己的业务逻辑执行更新插入或转换。 <br/><br/>请注意，此存储过程将由每个批处理调用  。 如果要执行仅运行一次且与源数据无关的操作（例如删除/截断），请使用 `sqlWriterCleanupScript` 属性。 |存储过程的名称。 |否 |
 | storedProcedureParameters |存储过程的参数。 |名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
-| sqlWriterTableType |指定要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |表类型名称。 |“否” |
+| sqlWriterTableType |指定要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |表类型名称。 |否 |
 
 
 ## <a name="json-examples-for-copying-data-from-and-to-sql-server"></a>从/向 SQL Server 复制数据的 JSON 示例
-以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 以下示例演示如何将数据复制到 SQL Server 和 Azure Blob 存储，以及如何从 SQL Server 和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+以下示例提供示例 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 以下示例演示如何将数据复制到 SQL Server 和 Azure Blob 存储，以及如何从 SQL Server 和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
-## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>示例：将数据从 SQL Server 复制到 Azure Blob
+## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>例如：将数据从 SQL Server 复制到 Azure Blob
 以下示例显示：
 
 1. [OnPremisesSqlServer](#linked-service-properties) 类型的链接服务。
@@ -364,7 +364,7 @@ ms.locfileid: "66156493"
 
 有关 SqlSource 和 BlobSink 支持的属性列表，请参阅 [Sql Source](#sqlsource) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 部分。
 
-## <a name="example-copy-data-from-azure-blob-to-sql-server"></a>示例：将数据从 Azure Blob 复制到 SQL Server
+## <a name="example-copy-data-from-azure-blob-to-sql-server"></a>例如：将数据从 Azure Blob 复制到 SQL Server
 以下示例显示：
 
 1. [OnPremisesSqlServer](#linked-service-properties) 类型的链接服务。

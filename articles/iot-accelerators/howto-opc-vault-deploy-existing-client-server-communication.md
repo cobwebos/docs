@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f170d05c513e7f0cc638c5a35e2264f9e043cbcd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61450658"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603672"
 ---
 # <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>保护 OPC UA 客户端和 OPC UA 服务器应用程序 
 OPC 保管库是可以配置、注册和管理云中 OPC UA 服务器与客户端应用程序的证书生命周期的微服务。 本文介绍如何保护 OPC UA 客户端和 OPC UA 服务器使用新的密钥对和证书使用 OPC 保管库的应用程序。

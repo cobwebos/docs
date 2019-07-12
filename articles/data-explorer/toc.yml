@@ -66,6 +66,8 @@
           href: write-queries.md
         - name: 在 Azure Data Lake 中查询数据
           href: data-lake-query-data.md
+        - name: 在 Azure Monitor 中查询数据
+          href: query-monitor-data.md
         - name: Python
           href: python-query-data.md
         - name: 时序分析和机器学习

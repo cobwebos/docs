@@ -45,3 +45,9 @@
     - name: 5 - 部署到 Azure Service Fabric
       href: azure-devops-project-service-fabric.md
       maintainContext: true
+    - name: 6 - 部署到 Azure Cosmos DB
+      href: azure-devops-project-cosmos-db.md
+      maintainContext: true
+    - name: 7 - 部署到 Azure Functions
+      href: azure-devops-project-functions.md
+      maintainContext: true

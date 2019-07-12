@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: juliako
-ms.openlocfilehash: e72085d3ac9815b3ec5fd89c678860bd75761f73
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
-ms.translationtype: HT
+ms.openlocfilehash: c599bc2bba27a3b3603d8d67e2c6049dc2a8b08b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798103"
+ms.locfileid: "67840160"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player 概述
 
@@ -30,7 +30,7 @@ Microsoft Azure 媒体服务允许播放使用 HLS、DASH、平滑流格式提�
 
 ### <a name="start-using"></a>开始使用
 
-可以使用 [Azure Media Player 演示页](https://ampdemo.azureedge.net/azuremediaplayer.html)播放 Azure 媒体服务示例或你自己的流。  
+可以使用 [Azure Media Player 演示页](http://aka.ms/azuremediaplayer)播放 Azure 媒体服务示例或你自己的流。  
 
 若要播放新视频，请粘贴一个不同的 URL，然后按“更新”  。
 
@@ -40,7 +40,7 @@ Microsoft Azure 媒体服务允许播放使用 HLS、DASH、平滑流格式提�
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>监视视频流的诊断
 
-可以使用 [Azure Media Player 演示页](https://ampdemo.azureedge.net/azuremediaplayer.html)监视视频流的诊断。 
+可以使用 [Azure Media Player 演示页](http://aka.ms/azuremediaplayer)监视视频流的诊断。 
 
 ![Azure Media Player 诊断](./media/azure-media-player/diagnostics.png)
 

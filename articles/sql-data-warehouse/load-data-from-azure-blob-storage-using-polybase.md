@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2e7e2048c70cab48ca81b3ebd6bd06779a7bdaeb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
-ms.translationtype: HT
+ms.openlocfilehash: 5f2830b524c554a6988bfc873cd0f6c54e5c56a4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595677"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839678"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>教程：将纽约出租车数据加载到 Azure SQL 数据仓库
 
@@ -603,7 +603,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
         
    1. 使用[外部表](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)进行正常查询。
 
-请参阅以下 [文档] (https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview ) 如果你想要为 SQL 数据仓库设置虚拟网络服务终结点。 
+请参阅以下[文档](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)如果想要为 SQL 数据仓库设置虚拟网络服务终结点。 
 
 ## <a name="clean-up-resources"></a>清理资源
 

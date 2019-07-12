@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 1e30490dbd51f541afd0b7036769cfc638a75877
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79446e6676a35a1b51e5e0839eb539d730b499da
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514367"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807119"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine-v021-alpha"></a>状态监视器 v2 API：Enable-InstrumentationEngine (v0.2.1-alpha)
+# <a name="status-monitor-v2-api-enable-instrumentationengine-v040-alpha"></a>状态监视器 v2 API：启用 InstrumentationEngine (v0.4.0-alpha)
 
 本文介绍的 cmdlet 时的成员[Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "66514367"
 PS C:\> Enable-InstrumentationEngine
 ```
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
 **可选。** 使用此开关可在无外设安装中接受许可条款和隐私声明。
@@ -61,7 +61,7 @@ PS C:\> Enable-InstrumentationEngine
 ### <a name="-verbose"></a>-Verbose
 **通用参数。** 使用此开关可输出详细日志。
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 
 #### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>成功启用检测引擎的示例输出

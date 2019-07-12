@@ -224,9 +224,9 @@
         - name: 在何处以及如何部署
           displayName: publish azure kubernetes azure container instances
           href: how-to-deploy-and-where.md
-        - name: GPU
+        - name: GPU 推理
           href: how-to-deploy-inferencing-gpus.md
-        - name: FPGA
+        - name: FPGA 推理
           href: how-to-deploy-fpga-web-service.md
         - name: IoT Edge
           href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
@@ -235,7 +235,7 @@
         - name: 部署现有模型
           displayName: publish existing model
           href: how-to-deploy-existing-model.md
-        - name: 故障排除
+        - name: 排查问题和调试
           href: how-to-troubleshoot-deployment.md
     - name: 使用 Web 服务
       items:

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 032cc0edaa140d82124a7369232cb82bf6c00c10
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482145"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702709"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -53,7 +53,7 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 通过定义这些类型的权限，资源可以更精细地控制其数据以及 API 功能的公开方式。 第三方应用可以从用户和管理员请求这些权限，只有在用户或管理员批准该请求之后，应用才能代表用户访问或处理数据。 将资源的功能切割成较小的权限集，即可将第三方应用构建为只请求执行其功能所需的特定权限。 用户和管理员可以确切地知道应用有权访问哪些数据，并且他们可以更加确信应用不会怀有恶意的企图。 开发人员应始终遵守“最低特权”的概念，仅请求分配正常运行应用程序所需的权限。
 
-在 OAuth 2.0 中，这些类型的权限称为“范围”  。 它们通常也称为“权限”。  权限在 Microsoft 标识平台中以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的字符串值为：
+在 OAuth 2.0 中，这些类型的权限称为“范围”  。 它们通常也称为*权限*。 权限在 Microsoft 标识平台中以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的字符串值为：
 
 * 使用 `Calendars.Read` 读取用户的日历
 * 使用 `Calendars.ReadWrite` 写入用户的日历
@@ -167,7 +167,8 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>配置应用程序的静态请求权限列表
 
 1. 转到你的应用程序中[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验，或[创建应用](quickstart-register-app.md)如果尚未准备好。
-2. 找到“Microsoft Graph 权限”  部分并添加应用所需的权限。
+2. 找到**API 权限**部分，然后单击添加权限中的 API 权限。
+3. 选择**Microsoft Graph**从可用 Api 的列表以及如何将应用所需的权限。
 3. **保存**应用注册。
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到应用
@@ -199,9 +200,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | 参数 | 条件 | 描述 |
 | --- | --- | --- |
-| `tenant` | 需要 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `common` 以一般方式引用，如示例所示。 |
-| `client_id` | 需要 | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。 |
-| `redirect_uri` | 需要 |要向其发送响应以供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
+| `tenant` | 必填 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `common` 以一般方式引用，如示例所示。 |
+| `client_id` | 必填 | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。 |
+| `redirect_uri` | 必填 |要向其发送响应以供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 在发出身份验证请求出现之前，使用该状态对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
 
 此时，Azure AD 会要求租户管理员进行登录来完成请求。 系统会要求管理员批准在应用注册门户中针对应用请求的所有权限。

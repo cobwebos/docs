@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462375"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839930"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Oracle 本地复制或粘贴数据
 
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-onprem-oracle-connector.md)
 > * [版本 2（当前版本）](../connector-oracle.md)
 
@@ -42,7 +42,7 @@ ms.locfileid: "61462375"
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 数据工厂支持通过数据管理网关连接到本地 Oracle 源。 若要详细了解数据管理网关，请参阅[数据管理网关](data-factory-data-management-gateway.md)。 有关如何在数据管道中设置网关以便移动数据的分步说明，请参阅[将数据从本地移到云](data-factory-move-data-between-onprem-and-cloud.md)。
 
@@ -77,18 +77,18 @@ Oracle 连接器支持两个版本的驱动程序：
 
 如果使用复制向导来创作复制管道，则会自动确定驱动程序类型。 除非网关版本低于 2.7 版或选择 Oracle 作为接收器，否则默认使用 Microsoft 驱动程序。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 可以创建包含复制活动的管道。 该管道使用各种工具或 API 将数据移入或移出本地 Oracle 数据库。
 
 创建管道最简单的方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)来快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具之一创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、 **.NET API** 或 **REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+此外可以使用以下工具之一创建的管道：**Visual Studio**， **Azure PowerShell**、 一个**Azure Resource Manager 模板**，则 **.NET API**，则**REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，完成以下步骤都可创建将数据从源数据存储移至接收器数据存储的管道：
 
 1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。
-2. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Oracle 数据库复制到 Azure Blob 存储，可创建两个链接服务，将 Oracle 数据库和 Azure 存储帐户链接到数据工厂。 有关特定于 Oracle 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)。
+2. 创建链接服务可将输入和输出数据存储链接到数据工厂  。 例如，如果要将数据从 Oracle 数据库复制到 Azure Blob 存储，可创建两个链接服务，将 Oracle 数据库和 Azure 存储帐户链接到数据工厂。 有关特定于 Oracle 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)。
 3. 创建数据集以表示复制操作的输入和输出数据  。 在上一步的示例中，创建了一个数据集来指定 Oracle 数据库中包含输入数据的表。 创建了另一个数据集来指定 blob 容器和用于保存从 Oracle 数据库复制的数据的文件夹。 有关特定于 Oracle 的数据集属性，请参阅[数据集属性](#dataset-properties)。
 4. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在上一个示例中，对复制活动使用 **OracleSource** 作为源，**BlobSink** 作为接收器。 同样，如果要从 Azure Blob 存储复制到 Oracle 数据库，则在复制活动中使用 **BlobSource** 和 **OracleSink**。 有关特定于 Oracle 数据库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)。 有关如何将数据存储用作源或接收器的详细信息，请选择上一部分中的相应数据存储链接。
 
@@ -151,7 +151,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息  。 **OracleTable** 类型的数据集的 **typeProperties** 节具有以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Oracle 数据库中表的名称。 |否（如果指定了 **oracleReaderQuery** 或 **OracleSource**） |
 
@@ -180,14 +180,14 @@ Oracle 连接器支持两个版本的驱动程序：
 
 | 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |超时前等待批插入操作完成的时间。 |**timespan**<br/><br/> 示例：00:30:00（30 分钟） |否 |
+| writeBatchTimeout |超时前等待批插入操作完成的时间。 |**timespan**<br/><br/> 例如：00:30:00（30 分钟） |否 |
 | writeBatchSize |当缓冲区大小达到 **writeBatchSize** 值时，向 SQL 表插入数据。 |整数（行数） |否（默认值：100） |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 |查询语句。 |否 |
 | sliceIdentifierColumnName |指定要使用自动生成的切片标识符填充的复制活动列名称。 **sliceIdentifierColumnName** 的值用于在重新运行时清除特定切片的数据。 |数据类型为 **binary(32)** 的列的列名称。 |否 |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>在 Oracle 数据库中复制和粘贴数据的 JSON 示例
 
-以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 这些示例展示如何在 Oracle 数据库和 Azure Blob 存储之间复制数据。 但是，使用 Azure 数据工厂中的复制活动，可以将数据复制到[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任何接收器。
+以下示例提供示例 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 这些示例展示如何在 Oracle 数据库和 Azure Blob 存储之间复制数据。 但是，使用 Azure 数据工厂中的复制活动，可以将数据复制到[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任何接收器。
 
 示例：**将数据从 Oracle 复制到 Azure Blob 存储**
 
@@ -608,12 +608,12 @@ Oracle 连接器支持两个版本的驱动程序：
 | INTERVAL DAY TO SECOND |TimeSpan |
 | LONG |String |
 | LONG RAW |Byte[] |
-| NCHAR |String |
+| NCHAR |字符串 |
 | NCLOB |String |
 | NUMBER |Decimal, String（如果精度 > 28） |
-| NVARCHAR2 |String |
+| NVARCHAR2 |字符串 |
 | RAW |Byte[] |
-| ROWID |String |
+| ROWID |字符串 |
 | TIMESTAMP |DateTime |
 | TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
 | TIMESTAMP WITH TIME ZONE |DateTime |

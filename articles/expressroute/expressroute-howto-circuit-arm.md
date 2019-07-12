@@ -8,18 +8,19 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 7594261fc8af4e7b392e2f229b28cfee36a52115
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06f49dc00b83ee2190f6361ebb8e6f052384402a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366311"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657306"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager 模板](expressroute-howto-circuit-resource-manager-template.md)
 > * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
 >
@@ -78,8 +79,8 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 > [!IMPORTANT]
 > 从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。 确保连接服务提供商准备好预配线路后就执行此操作。
-> 
-> 
+>
+>
 
 响应将包含服务密钥。 可以通过运行以下命令获取所有这些参数的详细说明：
 
@@ -208,8 +209,8 @@ Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 > [!IMPORTANT]
 > 这些说明仅适用于由提供第 2 层连接服务的服务提供商创建的线路。 如果服务提供商提供第 3 层托管服务（通常是 IP VPN，如 MPLS），则连接服务提供商会配置和管理路由。
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8.将虚拟网络链接到 ExpressRoute 线路
 接下来，将虚拟网络链接到 ExpressRoute 线路。 使用资源管理器部署模式时，请参阅[将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)一文。
@@ -291,7 +292,7 @@ get-help get-azurededicatedcircuit -detailed
 可以在不停机的情况下执行以下任务：
 
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。
-* 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 不支持对线路的带宽进行降级。 
+* 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 不支持对线路的带宽进行降级。
 * 将计量套餐从数据流量套餐更改为无限制流量套餐。 不支持将计量套餐从无限制流量套餐更改为数据流量套餐。
 * 可以启用和禁用允许经典操作  。
 
@@ -314,8 +315,8 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ### <a name="to-disable-the-expressroute-premium-add-on"></a>禁用 ExpressRoute 高级版外接程序
 > [!IMPORTANT]
 > 如果使用的资源超出了标准线路允许的范围，此操作可能会失败。
-> 
-> 
+>
+>
 
 请注意以下信息：
 
@@ -341,7 +342,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 > 如果现有端口上的容量不足，可能需要重新创建 ExpressRoute 线路。 如果该位置没有额外的可用容量，则不能升级线路。
 >
 > 但是，无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，并重新预配新的 ExpressRoute 线路。
-> 
+>
 
 确定所需的大小后，可以使用以下命令调整线路的大小。
 
@@ -369,7 +370,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>控制对经典环境和资源管理器环境的访问
-查看[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-howto-move-arm.md)中的说明。  
+查看[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-howto-move-arm.md)中的说明。
 
 ## <a name="delete"></a>取消设置和删除 ExpressRoute 线路
 请注意以下信息：

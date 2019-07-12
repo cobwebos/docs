@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: c910ed9f1160d30e1d4bda2e85b029eb2ad85b02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd2284211c2fdc5a346c6ffb113f89fe311a358c
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237159"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786498"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -82,7 +82,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 根据群集类型，增加工作节点数目可以添加更多的计算容量（例如更多的核心），但同时也可能会增大整个群集为所处理数据的内存中存储提供支持所需的内存总量。 在 VM 大小和类型的选择上，适当的群集规模通常是使用模拟工作负荷或 canary 查询凭经验选择出来的。
 
-可以扩展群集来满足峰值负载需求，然后在不再需要这些额外的节点时缩减群集。 有关详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)。
+可以扩展群集来满足峰值负载需求，然后在不再需要这些额外的节点时缩减群集。 [自动缩放功能](hdinsight-autoscale-clusters.md)可以自动缩放你的群集根据预先确定的度量值和计时。 有关手动缩放群集的详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)。
 
 ### <a name="cluster-lifecycle"></a>群集生命周期
 

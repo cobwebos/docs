@@ -7,7 +7,7 @@ metadata:
   author: ekpgh
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  ms.date: 06/20/2019
+  ms.date: 07/10/2019
   ms.author: v-erkell
 abstract:
   description: Azure FXT Edge Filer 混合存储缓存是一个硬件/软件混合系统，它为基于文件的、需要进行大量读取操作的高性能计算 (HPC) 工作流加快了数据访问速度。 包含三个或更多 Azure FXT Edge Filer 设备的群集可以提高本地 NAS 系统（NetApp 或 Dell EMC Isilon）、云存储或解决方案组合的存储性能。
@@ -39,3 +39,4 @@ sections:
         items:
           - html: <a href="fxt-specs">硬件规格</a>
           - html: <a href="fxt-additional-doc">其他文档</a>
+          - html: <a href="fxt-support-ticket">开具支持票证</a>

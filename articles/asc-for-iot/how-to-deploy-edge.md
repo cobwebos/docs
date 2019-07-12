@@ -2,24 +2,25 @@
 title: 将 Azure 安全中心部署为 IoT Edge 模块 |Microsoft Docs
 description: 了解有关如何部署 Azure 安全中心的 IoT Edge 上的 IoT 安全代理。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 32a9564d-16fd-4b0d-9618-7d78d614ce76
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 85e342f08e5402e50e5b0dfd1fe2df90337f29ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49ed4c6515f8fb63c3331b05e1bb29b13985e6b3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254298"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618327"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>部署 IoT Edge 设备上的安全模块
 
@@ -37,7 +38,7 @@ ms.locfileid: "66254298"
 
 使用以下步骤来为 IoT Edge 部署 IoT 安全模块 ASC。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 - 在 IoT 中心，请确保你的设备[注册为 IoT Edge 设备](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)。
 
@@ -103,7 +104,7 @@ ms.locfileid: "66254298"
       }
       ```
 
-1. 单击“ **保存**”。
+1. 单击“保存”  。
 1. 滚动到选项卡，然后选择底部**配置高级 Edge 运行时设置**。
    
    >[!Note]
@@ -130,9 +131,9 @@ ms.locfileid: "66254298"
     }
     ```
       
-1. 单击“ **保存**”。
+1. 单击“保存”  。
    
-1. 单击“下一步”。 
+1. 单击“下一步”  。
 
 #### <a name="step-2-specify-routes"></a>步骤 2：指定路由 
 
@@ -156,7 +157,7 @@ ms.locfileid: "66254298"
    
 1. 验证以下容器正在运行：
    
-   | Name | IMAGE |
+   | 名称 | IMAGE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
    | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |

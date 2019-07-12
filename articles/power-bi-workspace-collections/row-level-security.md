@@ -2,18 +2,18 @@
 title: 将行级别安全性用于 Power BI 工作区集合
 description: 有关将行级别安全性用于 Power BI 工作区集合的详细信息
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 2d0c8629e4abf9e27cd204b9a13b79808b177501
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a26cc7573abb970dc58c6f7c327dfbc659cb646
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715199"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672482"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>将行级别安全性用于 Power BI 工作区集合
 
@@ -47,7 +47,7 @@ RLS 是在 Power BI Desktop 中编写的。 打开数据集和报表时，可以
 下面是此架构的一些注意事项：
 
 * 所有度量值，例如“总销售额”  ，存储在“销售”  事实表中。
-* 有四个附加的相关维度表：“项”  、“时间”  、“商店”  和“区域”  。
+* 有四个附加的相关维度表：“项”、“时间”、“商店”和“区域”     。
 * 关系线的箭头表示筛选器可以从一个表流向另一个表的方向。 例如，如果筛选器位于 **Time[Date]** 中，则在当前架构中，它只向下筛选“销售”  表中的值。 其他表不受此筛选器的影响，因为关系线的所有箭头都指向销售表，未指向其他方向。
 * “区域”  表指明谁是每个区域的经理：
   
@@ -95,11 +95,11 @@ RLS 是在 Power BI Desktop 中编写的。 打开数据集和报表时，可以
 
 使用 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) 方法创建令牌。 如果提供 username 属性，则也必须在角色中至少传递一个值。
 
-例如，可更改 EmbedSample。 DashboardController 第 55 行无法执行以下更新：从
+例如，可以更改 EmbedSample。 DashboardController 第 55 行无法执行以下更新：从
 
     var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id);
 
-至
+to
 
     var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id, "Andrew Ma", ["Manager"]);'
 
@@ -111,11 +111,11 @@ RLS 是在 Power BI Desktop 中编写的。 打开数据集和报表时，可以
 
 ![应用程序中显示的报表](media/row-level-security/dashboard-13.png)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [Power BI 行级别安全性 (RLS)](https://powerbi.microsoft.com/documentation/powerbi-admin-rls/)  
 [在 Power BI 工作区集合中进行身份验证和授权](app-token-flow.md)  
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

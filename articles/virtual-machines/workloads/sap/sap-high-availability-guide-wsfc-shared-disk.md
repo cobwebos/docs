@@ -4,7 +4,7 @@ description: 了解如何使用群集共享磁盘在 Windows 故障转移群集�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 987cd1e5860b0fe340ba8a5163d844bec29b541c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aef5c67786726790c5841c1ce4ddff8b67bdf21b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205104"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709045"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -192,10 +192,10 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 故障转移群集是一组 1+n 个独立服务器（节点），这些服务器相互配合，共同提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集会计算可能发生的故障数并保留正常运行的群集以提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 在开始本文中的任务之前，请先查看以下文章：
 
-* [适用于 SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案][sap-high-availability-architecture-scenarios]
+* [Azure 虚拟机高可用性体系结构和方案适用于 SAP NetWeaver][sap-high-availability-architecture-scenarios]
 
 
 ## <a name="windows-server-failover-clustering-in-azure"></a>Azure 中的 Windows Server 故障转移群集
@@ -276,6 +276,6 @@ _**图 5：** Windows 故障转移群集使用 SIOS DataKeeper 在 Azure 中的�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
+* [通过针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享的磁盘准备 SAP ha 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* [对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘安装 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]
+* [在 Windows 故障转移群集和共享的磁盘为 SAP ASCS/SCS 实例安装 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]

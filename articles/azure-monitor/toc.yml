@@ -358,6 +358,8 @@
                       href: app/status-monitor-v2-api-get-status.md
                     - name: API Set-ApplicationInsightsMonitoringConfig
                       href: app/status-monitor-v2-api-set-config.md
+                    - name: API Start-ApplicationInsightsMonitoringTrace
+                      href: app/status-monitor-v2-api-start-trace.md
                 - name: Windows 桌面
                   href: app/windows-desktop.md
                 - name: 控制台
@@ -460,6 +462,19 @@
             - name: 将应用程序数据流式传输到 Log Analytics
               href: platform/app-insights-connector.md
             - name: 导出应用程序数据
+              items:
+                - name: 连续导出
+                  href: app/export-telemetry.md
+                  items:
+                    - name: 代码示例
+                      items:
+                        - name: 使用流分析导出到 SQL
+                          href: app/code-sample-export-sql-stream-analytics.md
+                        - name: 导出到流分析
+                          href: app/export-stream-analytics.md
+                - name: 导出数据模型
+                  href: app/export-data-model.md
+            - name: 故障排除
               items:
                 - name: 没有用于 .NET 的数据
                   href: app/asp-net-troubleshoot-no-data.md

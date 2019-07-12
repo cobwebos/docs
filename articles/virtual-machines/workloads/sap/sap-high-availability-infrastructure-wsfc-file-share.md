@@ -4,7 +4,7 @@ description: 针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3577128e66112bda5a5e3e08097d14604043cbd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409601"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708999"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
 
@@ -251,7 +251,7 @@ ms.locfileid: "65409601"
 
 若要准备 Azure 基础结构，请完成以下操作：
 
-* [准备体系结构模板 1、2 和 3 的基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]。
+* [准备体系结构模板 1、 2 和 3 的基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]。
 
 * [创建 Azure 虚拟网络][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]。
 
@@ -259,22 +259,22 @@ ms.locfileid: "65409601"
 
 * [设置 SAP 虚拟机的静态 IP 地址][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]。
 
-* [为 Azure 内部负载均衡器设置静态 IP 地址][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]。
+* [Azure 内部负载均衡器设置静态 IP 地址][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]。
 
-* [为 Azure 内部负载均衡器设置默认 ASCS/SCS 负载均衡规则][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。
+* [Azure 内部负载均衡器规则集默认 ASCS/SCS 负载均衡][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。
 
-* [更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]。
+* [更改 ASCS/SCS 默认负载均衡的 Azure 内部负载均衡器规则][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]。
 
 * [将 Windows 虚拟机添加到域][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
 
-* [在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
+* [SAP ASCS/SCS 实例的两个群集节点上添加注册表项][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
 
-* 使用 Windows Server 2016 时，我们建议配置 [Azure 云见证][deploy-cloud-witness]。
+* 使用 Windows Server 2016 时，我们建议你配置[Azure 云见证][deploy-cloud-witness]。
 
 
 ## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>手动部署横向扩展文件服务器群集 
 
-可以按博客 [Azure 中的存储空间直通][ms-blog-s2d-in-azure]中所述，通过执行以下代码手动部署 Microsoft 横向扩展文件服务器群集：  
+你可以按博客中所述手动部署 Microsoft 横向扩展文件服务器群集[中的存储空间直通 Azure][ms-blog-s2d-in-azure]，通过执行以下代码：  
 
 
 ```powershell
@@ -319,7 +319,7 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 
 ### <a name="use-managed-disks"></a>使用托管磁盘
 
-[GitHub][arm-sofs-s2d-managed-disks] 上提供了用于部署使用存储空间直通和 Azure 托管磁盘的横向扩展文件服务器的 Azure 资源管理器模板。
+上提供了用于部署使用存储空间直通和 Azure 托管磁盘的横向扩展文件服务器的 Azure 资源管理器模板[GitHub][arm-sofs-s2d-managed-disks]。
 
 我们建议使用托管磁盘。
 
@@ -335,7 +335,7 @@ _**图 1**:使用托管磁盘的横向扩展文件服务器资源管理器模板
 
 ### <a name="use-unmanaged-disks"></a>使用非托管磁盘
 
-[GitHub][arm-sofs-s2d-non-managed-disks] 上提供了用于部署使用存储空间直通和 Azure 非托管磁盘的横向扩展文件服务器的 Azure 资源管理器模板。
+上提供了用于部署使用存储空间直通和 Azure 非托管磁盘的横向扩展文件服务器的 Azure 资源管理器模板[GitHub][arm-sofs-s2d-non-managed-disks]。
 
 ![图 2：不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8011]
 
@@ -345,7 +345,7 @@ _**图 2**:不带托管磁盘的横向扩展文件服务器 Azure 资源管理�
 
 ## <a name="adjust-cluster-timeout-settings"></a>调整群集超时设置
 
-已成功安装 Windows 横向扩展文件服务器群集后，调整故障转移到 Azure 中的情况的检测的超时阈值。 博客文章 [Tuning failover cluster network thresholds][tuning-failover-cluster-network-thresholds]（调整故障转移群集网络阈值）中阐述了要更改的参数。 假定您的群集的 Vm 位于同一子网，请对这些值更改以下参数：
+已成功安装 Windows 横向扩展文件服务器群集后，调整故障转移到 Azure 中的情况的检测的超时阈值。 若要更改的参数记录在[调整故障转移群集网络阈值][tuning-failover-cluster-network-thresholds]。 假定您的群集的 Vm 位于同一子网，请对这些值更改以下参数：
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
@@ -355,4 +355,4 @@ _**图 2**:不带托管磁盘的横向扩展文件服务器 Azure 资源管理�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Windows 故障转移群集和文件共享上为 SAP ASCS/SCS 实例安装 SAP NetWeaver 高可用性][sap-high-availability-installation-wsfc-file-share]
+* [在 SAP ASCS/SCS 实例的 Windows 故障转移群集和文件共享上安装 SAP NetWeaver 高可用性][sap-high-availability-installation-wsfc-file-share]

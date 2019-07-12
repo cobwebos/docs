@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4b41af691bb864dd11b001a6217a7b1e0318d6e0
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
-ms.translationtype: HT
+ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592325"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839783"
 ---
 # <a name="azure-data-box-heavy-system-requirements"></a>Azure 数据框大量的系统要求
 
@@ -51,6 +51,12 @@ ms.locfileid: "67592325"
 ## <a name="networking-requirements"></a>网络要求
 
 数据中心需要有高速网络。 为获得最快的复制速度，可以同时利用两个 40-GbE 连接（在每个节点上使用一个）。 如果没有可用的 40-GbE，我们建议至少开通两个 10-GbE 连接（在每个节点上使用一个）。
+
+### <a name="port-requirements"></a>端口要求
+
+下表列出了需要在防火墙以允许 SMB 或 NFS 流量打开端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *Out*或*出站*表示在其中的数据框大量设备发送数据的外部，部署的方向： 例如，出站到 Internet。
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,0 +1,63 @@
+- name: Azure Lighthouse 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure Lighthouse？
+      displayName: 'management at scale, service providers'
+      href: overview.md
+- name: 示例
+  items:
+    - name: 索引
+      displayName: 'template, sample'
+      href: ./samples/index.md
+- name: 概念
+  items:
+    - name: Azure 委派资源管理
+      displayName: delegation
+      href: ./concepts/azure-delegated-resource-management.md
+    - name: 跨租户管理体验
+      displayName: scenarios
+      href: ./concepts/cross-tenant-management-experience.md
+    - name: Azure 市场中的托管服务产品
+      displayName: 'managed services offer, azure marketplace'
+      href: ./concepts/managed-services-offers.md
+    - name: 建议的安全做法
+      displayName: 'mfa, authentication, secure, group'
+      href: ./concepts/recommended-security-practices.md
+    - name: 云解决方案提供商计划注意事项
+      displayName: 'csp, aobo, partner'
+      href: ./concepts/cloud-solution-provider.md
+- name: 操作指南
+  items:
+    - name: 将客户载入到 Azure 委派资源管理
+      displayName: resource management
+      href: ./how-to/onboard-customer.md
+    - name: 将托管服务产品发布到 Azure 市场
+      displayName: 'managed services offer, azure marketplace, publish'
+      href: ./how-to/publish-managed-services-offers.md
+    - name: 查看和管理客户
+      displayName: 'managed services offer, azure marketplace, publish'
+      href: ./how-to/view-manage-customers.md
+    - name: 查看和管理服务提供商
+      displayName: 'managed services offer, azure marketplace, publish'
+      href: ./how-to/view-manage-service-providers.md
+- name: 引用
+  items:
+    - name: 用于 .NET 的 Azure SDK
+      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.Management.ManagedServices?view=azure-dotnet'
+    - name: 用于 .NET 的 Azure SDK (NuGet)
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/'
+    - name: 用于 Python 的 Azure SDK
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-managedservices'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/managedservices/'
+    - name: OpenAPI
+      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2018-06-01-preview'
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: UserVoice
+      href: 'https://feedback.azure.com/forums/922753'

@@ -41,10 +41,14 @@
   items:
     - name: 容器注册表 SKU
       href: container-registry-skus.md
-    - name: 图像存储
+    - name: 注册表、存储库和映像
+      href: container-registry-concepts.md
+    - name: 映像存储
       href: container-registry-storage.md
     - name: 内容格式
       href: container-registry-image-formats.md
+    - name: 标记和版本映像
+      href: container-registry-image-tag-version.md
     - name: 异地复制
       href: container-registry-geo-replication.md
     - name: 注册最佳做法

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1823c2ec28b342d41371eb6677e0330d7f885087
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c928ad1fc9a8d6206c1b7e47591b17b6ae05ee4b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61258652"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839879"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 移动数据
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-sap-business-warehouse-connector.md)
 > * [版本 2（当前版本）](../connector-sap-business-warehouse.md)
 
@@ -47,7 +47,7 @@ ms.locfileid: "61258652"
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
 - 创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 还可以使用以下工具来创建管道：Azure 门户  、Visual Studio  、Azure PowerShell  、Azure 资源管理器模板  、.NET API  和 REST API  。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 还可以使用以下工具来创建管道：**Visual Studio**， **Azure PowerShell**， **Azure Resource Manager 模板**， **.NET API**，并且**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -64,13 +64,13 @@ ms.locfileid: "61258652"
 
 属性 | 说明 | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
-server | SAP BW 实例所驻留的服务器的名称。 | 字符串 | 是
+server | SAP BW 实例所驻留的服务器的名称。 | string | 是
 systemNumber | SAP BW 系统的系统编号。 | 用字符串表示的两位十进制数。 | 是
 clientId | SAP W 系统中的客户端的客户端 ID。 | 用字符串表示的三位十进制数。 | 是
-username | 有权访问 SAP 服务器的用户名 | 字符串 | 是
-password | 用户密码。 | 字符串 | 是
-gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP BW 实例。 | 字符串 | 是
-encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
+userName | 有权访问 SAP 服务器的用户名 | string | 是
+password | 用户密码。 | string | 是
+gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP BW 实例。 | string | 是
+encryptedCredential | 加密的凭据字符串。 | string | 否
 
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
@@ -91,7 +91,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON 示例：将数据从 SAP Business Warehouse 复制到 Azure Blob
-以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 此示例演示如何将数据从本地 SAP Business Warehouse 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接**将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。  
+下面的示例提供示例 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 此示例演示如何将数据从本地 SAP Business Warehouse 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接**将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。  
 
 > [!IMPORTANT]
 > 此示例提供 JSON 代码段。 它不包括创建数据工厂的分步说明。 请参阅文章[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)以获取分步说明。
@@ -309,7 +309,7 @@ QUAN | Decimal
 RAW | Byte[]
 RAWSTRING | Byte[]
 STRING | String
-UNIT | String
+UNIT | 字符串
 DATS | String
 NUMC | String
 TIMS | String

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: zhiweiw
+ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c64f9f835393c5ad2bf6022e4a274e8e2eeb1830
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7d080c4ffe25f480689832ee8c32ecc89cc16a69
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60349855"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702619"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health 警报目录 
 
@@ -91,7 +91,7 @@ Azure AD Connect Health 服务发送警报指示标识基础结构运行不正�
 | Netlogon 服务未运行 | 无法在此 DC 上执行登录请求、注册、身份验证和查找域控制器。 | 在受影响的域控制器上，运行“net start netlogon”<b></b> | 
 | W32Time 服务未运行 | 如果停止 Windows 时间服务，日期和时间同步将不可用。 如果禁用此服务，则显式依赖于它的任何服务都将无法启动。 | 在受影响的域控制器上，运行“net start win32Time”<b></b> | 
 | ADWS 服务未运行 | 如果已停止或禁用 Active Directory Web Services 服务，Active Directory PowerShell 等客户端应用程序将无法访问或管理在此服务器上本地运行的任何目录服务实例。 | 在受影响的域控制器上，运行“net start adws”<b></b> | 
-| 根 PDC 当前未通过 NTP 服务器同步 | 如果未将 PDC 配置为与外部或内部时间源同步时间，PDC 仿真器使用其内部时钟，并且自身就是林的可靠时间源。 如果 PDC 自身的时间不准确，所有计算机的时间设置都不正确。 | 在受影响的域控制器上，打开命令提示符。 停止时间服务：net stop w32time</li> <li>配置外部时间源： <br> w32tm \/config \/manualpeerlist: time.windows.com \/syncfromflags:manual \/reliable:yes<i></i></br><br>注意：请将 time.windows.com 替换为所需外部时间源的地址。 启动时间服务： <br> net start w32time<i></i></br> | 
+| 根 PDC 当前未通过 NTP 服务器同步 | 如果未将 PDC 配置为与外部或内部时间源同步时间，PDC 仿真器使用其内部时钟，并且自身就是林的可靠时间源。 如果 PDC 自身的时间不准确，所有计算机的时间设置都不正确。 | 在受影响的域控制器上，打开命令提示符。 停止时间服务：net stop w32time</li> <li>配置外部时间源： <br> w32tm \/config \/manualpeerlist: time.windows.com \/syncfromflags:manual \/reliable:yes<i></i></br><br>注意:请将 time.windows.com 替换为所需外部时间源的地址。 启动时间服务： <br> net start w32time<i></i></br> | 
 | 域控制器已隔离 | 此域控制器未连接到其他任何正在运行的域控制器。 这可能是由于配置错误所致。 因此，该 DC 不会被使用，将不会从任何域控制器进行复制，也不会复制到任何域控制器。 | 启用入站和出站复制：在受影响的域控制器上，运行“repadmin /options ServerName -DISABLE_INBOUND_REPL”。<b></b> 在受影响的域控制器上，运行“repadmin /options ServerName -DISABLE_OUTBOUND_REPL”<b></b>。 创建与其他域控制器的新复制连接：<ol type="1"><li>打开“Active Directory 站点和服务”：单击“开始”菜单，指向“管理工具”，然后单击“Active Directory 站点和服务”。 </li><li>在控制台树中，依次展开“站点”和此 DC 所属的站点。 </li><li>展开“服务器”容器以显示服务器列表。 </li><li>展开此 DC 的服务器对象。 </li><li>右键单击“NTDS 设置”对象，然后单击“新建 Active Directory 域服务连接...” </li><li>从列表中选择一个服务器，然后单击“确定”。</li></ol><a href="https://support.microsoft.com/kb/230306 ">How to remove orphaned domains from Active Directory</a>（如何从 Active Directory 删除孤立域）。 |
 | 已禁用出站复制 | 禁用出站复制的 DC 将无法分发任何源于其内部的更改。 | 若要在受影响的域控制器上启用出站复制，请按以下步骤操作：依次单击“开始”和“运行”，键入 cmd，然后单击“确定”。 键入以下文本，然后按 Enter：<br>repadmin /options -DISABLE_OUTBOUND_REPL<i></i> | 
 | 已禁用入站复制 | 禁用入站复制的 DC 将不具有最新信息。 此状态可能会导致登录失败。 | 若要在受影响的域控制器上启用入站复制，请按以下步骤操作：依次单击“开始”和“运行”，键入 cmd，然后单击“确定”。 键入以下文本，然后按 Enter：<br>repadmin /options -DISABLE_INBOUND_REPL<i></i> </br> | 

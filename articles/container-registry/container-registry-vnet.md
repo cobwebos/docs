@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 06e45127f940e01de5f3ceeefc354014a88014db
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: e6e0cdd73a5a2999f78599a06cc7ee397ecc3b4b
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514397"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806593"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>限制对 Azure 容器注册表使用 Azure 虚拟网络或防火墙规则的访问
 
@@ -34,11 +34,19 @@ ms.locfileid: "67514397"
 
 * 每个注册表支持最多为 100 的虚拟网络规则。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 * 若要使用 Azure CLI 在本文中，Azure CLI 版本 2.0.58 中执行步骤或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 * 如果还没有容器注册表，创建一个 (所需的高级 SKU)，并如推送的示例图像`hello-world`从 Docker 中心。 例如，使用[Azure 门户][quickstart-portal]or the [Azure CLI][quickstart-cli]创建注册表。 
+
+* 如果你想要限制的注册表访问不同的 Azure 订阅中使用虚拟网络，需要在该订阅中注册用于 Azure 容器注册表的资源提供程序。 例如：
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of virtual network>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 ## <a name="about-network-rules-for-a-container-registry"></a>有关容器注册表的网络规则
 
@@ -196,7 +204,7 @@ az acr network-rule add --name mycontainerregistry --subnet <subnet-resource-id>
 1. 下**设置**，选择**子网**。
 1. 选择你的虚拟机部署的位置，如子网*myDockerVMSubnet*。
 1. 下**服务终结点**，选择**Microsoft.ContainerRegistry**。
-1. 选择“保存”。 
+1. 选择**保存**。
 
 ![将服务终结点添加到子网][acr-subnet-service-endpoint] 
 
@@ -208,7 +216,7 @@ az acr network-rule add --name mycontainerregistry --subnet <subnet-resource-id>
 1. 下**设置**，选择**防火墙和虚拟网络**。
 1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问  。 
 1. 选择**将现有虚拟网络添加**，并选择虚拟网络和子网配置的服务终结点。 选择 **添加** 。
-1. 选择“保存”。 
+1. 选择**保存**。
 
 ![配置容器注册表的虚拟网络][acr-vnet-portal]
 
@@ -268,14 +276,14 @@ az acr network-rule add --name mycontainerregistry --ip-address <public-IP-addre
   1. 下**设置**，选择**子网**。
   1. 选择在其中部署你的虚拟机的子网。
   1. 下**服务终结点**，删除的复选框**Microsoft.ContainerRegistry**。 
-  1. 选择“保存”。 
+  1. 选择**保存**。
 
 * 删除允许访问注册表的子网的网络规则。
 
   1. 在门户中，导航到容器注册表。
   1. 下**设置**，选择**防火墙和虚拟网络**。
   1. 下**虚拟网络**，选择虚拟网络的名称，然后选择**删除**。
-  1. 选择“保存”。 
+  1. 选择**保存**。
 
 #### <a name="add-network-rule-to-registry"></a>将网络规则添加到注册表
 
@@ -284,7 +292,7 @@ az acr network-rule add --name mycontainerregistry --ip-address <public-IP-addre
 1. 如果尚未执行此操作，选择允许从访问**选定的网络**。 
 1. 下**虚拟网络**，确保已选中任何网络。
 1. 下**防火墙**，输入 VM 的公共 IP 地址。 或者，在包含 VM 的 IP 地址的 CIDR 表示法输入的地址范围。
-1. 选择“保存”。 
+1. 选择**保存**。
 
 ![配置容器注册表的防火墙规则][acr-vnet-firewall-portal]
 
@@ -357,7 +365,7 @@ az acr update --name myContainerRegistry --default-action Allow
 1. 下**虚拟网络**，选择每个虚拟网络，然后选择**删除**。
 1. 下**防火墙**，选择每个地址范围，并选择删除图标。
 1. 下**允许从访问**，选择**的所有网络**。 
-1. 选择“保存”。 
+1. 选择**保存**。
 
 ## <a name="clean-up-resources"></a>清理资源
 

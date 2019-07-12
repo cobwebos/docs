@@ -7,18 +7,18 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: cafceb0c7ee6b165ee03727e1dff76db00d2863b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f38f1c313be17457c28c5b30fa743f7a0eae2cc0
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077338"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67621979"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中，创建事件中心，从 Azure 数据资源管理器和整个系统，请参阅数据流连接到它。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -187,7 +187,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     ![消息结果集](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 该策略配置为 5 分钟，因此你可能会遇到延迟。
+    > Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 策略配置为 5 分钟，默认情况下，因此可能会出现延迟。 请参阅[批处理策略](/azure/kusto/concepts/batchingpolicy)聚合选项。 请参阅[流式处理策略](/azure/kusto/concepts/streamingingestionpolicy)用于引入与聚合函数。
 
 ## <a name="clean-up-resources"></a>清理资源
 

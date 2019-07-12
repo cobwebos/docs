@@ -285,7 +285,7 @@
           href: online-backup-and-restore.md
         - name: 合规性
           href: compliance.md
-    - name: 资源限制
+    - name: 服务配额
       href: concepts-limits.md
 - name: Cassandra、MongoDB 和其他 API
   expanded: true
@@ -632,6 +632,8 @@
           href: key-value-store-cost.md
     - name: 故障排除
       items:
+        - name: 查询性能故障排除
+          href: troubleshoot-query-performance.md
         - name: 排查 Java Async SDK 问题
           href: troubleshoot-java-async-sdk.md
         - name: 排查 .NET SDK 问题

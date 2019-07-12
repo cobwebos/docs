@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 79d4254de40ef787b30eb4f483c86383a928ee1f
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 6a748031f9d35e26eeb544f154477ea3449903f5
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566220"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796104"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -170,7 +170,7 @@ az account list
  
     将  {AppId}、  {TenantId} 和  {Thumbprint} 替换为步骤 1 中生成的值。 根据部署计划，将 *{CertificateStore}* 替换为 `LocalMachine` 或 `CurrentUser`。
 
-1. 运行应用程序。 
+1. 运行该应用程序。 
 
 ### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>使用共享机密凭据登录到 Azure AD
 
@@ -184,7 +184,7 @@ az account list
 
     将 _{AppId}_ 、 _{TenantId}_ 和 _{ClientSecret}_ 替换为步骤 1 中生成的值。
 
-3. 运行应用程序。 
+3. 运行该应用程序。 
 
 一切正确设置以后，不需进一步更改代码。  `AzureServiceTokenProvider` 使用环境变量和证书向 Azure AD 进行身份验证。 
 
@@ -209,11 +209,16 @@ az account list
 
 1. 替换为`{KeyVaultCertificateSecretIdentifier}`证书标识符与此连接字符串中：
 
-```
-RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
-```
+    ```
+    RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
+    ```
 
-如果密钥保管库实例调用"myKeyVault"并创建名为 myCert 的证书，证书标识符应`https://myKeyVault.vault.azure.net/secrets/myCert`，并连接字符串将为`RunAs=App;AppId={TestAppId};TenantId={TenantId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert`。
+    如果密钥保管库实例调用"myKeyVault"并创建名为 myCert 的证书，为证书标识符：
+
+    ```
+    RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert
+    ```
+
 
 ## <a name="connection-string-support"></a>连接字符串支持
 
@@ -223,7 +228,7 @@ RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertifi
 
 可以使用以下选项：
 
-| 连接字符串选项 | 场景 | 注释|
+| 连接字符串选项 | 应用场景 | 注释|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本地开发 | AzureServiceTokenProvider 使用 AzureCli 来获取令牌。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本地开发 | AzureServiceTokenProvider 使用 Visual Studio 来获取令牌。 |

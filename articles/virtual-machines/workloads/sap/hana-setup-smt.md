@@ -4,7 +4,7 @@ description: 如何为 Azure 上的 SAP HANA（大型实例）安装 SMT 服务�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 690f41e941f2d1db8fc92d225a54d07570299222
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 879bea079a5de6558b20edfc05ba432c98254c9b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60477945"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707376"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>为 SUSE Linux 安装 SMT 服务器
 SAP HANA 的大型实例不直接连接到 Internet。 无法直接向操作系统提供程序注册此类单元，也无法直接下载并应用更新。 SUSE Linux 的解决方案是在 Azure 虚拟机中安装 SMT 服务器。 在 Azure 虚拟网络中托管虚拟机，该虚拟网络连接到 HANA 大型实例。 通过此类 SMT 服务器，HANA 大型实例单元可以注册并下载更新。 

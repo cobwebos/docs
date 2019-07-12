@@ -3,16 +3,16 @@ title: 重写 HTTP 行为使用 Azure CDN from Verizon Premium 规则引擎 |Mic
 description: 规则引擎允许你自定义 HTTP 请求例如，阻止交付某些类型的内容的处理通过 Azure CDN from Verizon Premium、 定义缓存策略以及修改 HTTP 标头。
 services: cdn
 author: mdgattuso
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 81af3073d64e4379972568a57907a7fb2f82356d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa08f59f3b69395d548649bb131e04c5071c053d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481724"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593193"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>重写 HTTP 行为使用 Azure CDN from Verizon Premium 规则引擎
 
@@ -22,7 +22,7 @@ ms.locfileid: "66481724"
 
 Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，阻止传送某些内容类型、定义缓存策略或修改 HTTP 标头。 本教程演示如何创建一个用于更改 CDN 资产缓存行为的规则。 有关规则引擎语法的详细信息，请参阅 [Azure CDN 规则引擎参考](cdn-verizon-premium-rules-engine-reference.md)。
 
-## <a name="access"></a>访问
+## <a name="access"></a>Access
 
 若要访问规则引擎，必须先从“CDN 配置文件”  页顶部选择“管理”  以访问 Azure CDN 管理页。 然后根据是否终结点已针对动态站点加速 (DSA) 进行优化，使用适用于终结点类型的规则集访问规则引擎：
 
@@ -93,7 +93,7 @@ Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，
    >
    >
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [Azure CDN 概述](cdn-overview.md)
 - [规则引擎参考](cdn-verizon-premium-rules-engine-reference.md)

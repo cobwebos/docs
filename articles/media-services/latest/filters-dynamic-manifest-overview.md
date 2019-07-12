@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 95315007186b209a618337749662a1921f5a05e1
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
-ms.translationtype: HT
+ms.openlocfilehash: ee0200f7c007b437a27b8e9d0f36becc13b8f611
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827626"
+ms.locfileid: "67835820"
 ---
 # <a name="pre-filtering-manifests-by-using-dynamic-packager"></a>通过使用动态打包程序的预筛选清单
 
@@ -48,7 +48,7 @@ Azure 媒体服务支持 HLS、 MPEG DASH 和平滑流式处理协议。 作为�
 
 ### <a name="monitor-the-bitrate-of-a-video-stream"></a>监视视频流的比特率
 
-可以使用 [Azure Media Player 演示页](https://ampdemo.azureedge.net/azuremediaplayer.html)监视视频流的比特率。 演示页上显示诊断信息**诊断**选项卡：
+可以使用 [Azure Media Player 演示页](http://aka.ms/azuremediaplayer)监视视频流的比特率。 演示页上显示诊断信息**诊断**选项卡：
 
 ![Azure Media Player 诊断][amp_diagnostics]
  

@@ -1,7 +1,7 @@
 ---
 title: PowerShell 快速入门：创建、 加载和查询使用 Azure 搜索 REST Api-Azure 搜索索引
 description: 介绍如何创建索引、 加载数据，并使用 PowerShell 的运行查询 Invoke-restmethod 和 Azure 搜索 REST API。
-ms.date: 06/10/2019
+ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: afd73ee3461fff11019be887dbf3078963644c5b
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c8a49fe5d334b5752b9272e480fb2502a980b0a4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485487"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840175"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>快速入门：在 PowerShell 中使用 REST Api 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -26,11 +26,11 @@ ms.locfileid: "67485487"
 > * [门户](search-create-index-portal.md)
 > 
 
-本文将指导你完成创建、 加载和查询使用 PowerShell 的 Azure 搜索索引的过程并[Azure 搜索 REST Api](https://docs.microsoft.com/rest/api/searchservice/)。 本文介绍如何以交互方式运行 PowerShell 命令。 或者，可以运行已完成的脚本。 若要下载副本，请转到[azure 搜索的 powershell 示例](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)存储库。
+本文将指导你完成创建、 加载和查询使用 PowerShell 的 Azure 搜索索引的过程并[Azure 搜索 REST Api](https://docs.microsoft.com/rest/api/searchservice/)。 本文介绍如何以交互方式运行 PowerShell 命令。 此外，也可以[下载并运行 Powershell 脚本](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)执行相同的操作。
 
-如果还没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，然后[注册 Azure 搜索](search-create-service-portal.md)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 本快速入门使用以下服务和工具。 
 
@@ -64,7 +64,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 2. 创建一个 **$url** 对象，用于指定服务的索引集合。 将服务名称 (YOUR-SEARCH-SERVICE-NAME) 替换为有效的搜索服务。
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name"
     ```
 
 3. 运行 **Invoke-RestMethod** 将 GET 请求发送到服务，并验证连接。 添加 **ConvertTo-Json**，以便可以查看服务发回的响应。
@@ -394,15 +394,11 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 ```
 ## <a name="clean-up"></a>清理 
 
-应该删除不再需要的索引。 在免费服务中最多只能创建三个索引。 建议删除所有未真正使用的索引，以便能够顺利完成其他教程中的每个步骤。
+当您正在自己的订阅中时，它是建议项目的末尾来识别是否仍需要的资源创建。 持续运行资源可能会产生费用。 您可以逐个删除资源或删除要删除整个资源集的资源组。
 
-```powershell
-# Set the URI to the hotel index
-$url = 'https://mydemo.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06'
+可以查找和管理资源在门户中，使用**的所有资源**或**资源组**在左侧导航窗格中的链接。
 
-# Delete the index
-Invoke-RestMethod -Uri $url -Headers $headers -Method Delete
-```
+如果使用的一项免费服务，请记住，你被限制为三个索引、 索引器和数据源。 您可以删除使其保持在限制在门户中的各个项。 
 
 ## <a name="next-steps"></a>后续步骤
 

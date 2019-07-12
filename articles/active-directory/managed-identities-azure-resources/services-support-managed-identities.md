@@ -3,19 +3,19 @@ title: 支持 Azure 资源托管标识的 Azure 服务
 description: 支持 Azure 资源托管标识和 Azure AD 身份验证的服务列表
 services: active-directory
 author: MarkusVi
-ms.author: priyamo
+ms.author: markvi
 ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22c67f1dad55d5d8710a997394e247793943cd21
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: ca461f3be740c3b0bac18795991bb721a5305240
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293501"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611534"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -70,7 +70,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure 门户](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure 资源管理器模板](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure Resource Manager 模板](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
 ### <a name="azure-blueprints"></a>Azure 蓝图
 
@@ -96,7 +96,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure 门户](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure 资源管理器模板](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure Resource Manager 模板](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
 ### <a name="azure-logic-apps"></a>Azure 逻辑应用
 
@@ -108,7 +108,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 请参阅以下列表来配置 Azure 逻辑应用的托管标识（在可用的区域中）：
 
 - [Azure 门户](/azure/logic-apps/create-managed-service-identity#azure-portal)
-- [Azure 资源管理器模板](/azure/app-service/overview-managed-identity)
+- [Azure Resource Manager 模板](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure 数据工厂 V2
 
@@ -133,7 +133,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 请参阅以下列表来配置 Azure API 管理的托管标识（在可用的区域中）：
 
-- [Azure 资源管理器模板](/azure/api-management/api-management-howto-use-managed-service-identity)
+- [Azure Resource Manager 模板](/azure/api-management/api-management-howto-use-managed-service-identity)
 
 ### <a name="azure-container-instances"></a>Azure 容器实例
 
@@ -145,7 +145,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 请参阅以下列表来配置 Azure 容器实例的托管标识（在可用的区域中）：
 
 - [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
-- [Azure 资源管理器模板](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [Azure Resource Manager 模板](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
 - [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 ### <a name="azure-container-registry-tasks"></a>Azure 容器注册表任务
