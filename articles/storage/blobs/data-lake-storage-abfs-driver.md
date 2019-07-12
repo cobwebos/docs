@@ -9,12 +9,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 57cda4d07315c6c37c2ce51f530fb081949b628c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abe3f67141011c765f9de93bcf51998ddae002cb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939505"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696144"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure Blob FileSystem 驱动程序 (ABFS)：用于 Hadoop 的专用 Azure 存储驱动程序
 
@@ -43,9 +43,9 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 ABFS 驱动程序在内部将 URI 中指定的资源转换为文件和目录，并使用这些引用调用 Azure Data Lake Storage REST API。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
-ABFS 驱动程序支持两种形式的身份验证，以便 Hadoop 应用程序可以安全地访问支持 Data Lake Storage Gen2 的帐户中包含的资源。 [Azure 存储安全指南](../common/storage-security-guide.md)中提供了可用身份验证方案的完整详细信息。 它们是：
+ABFS 驱动程序支持两种形式的身份验证，以便 Hadoop 应用程序可以安全地访问支持 Data Lake Storage Gen2 的帐户中包含的资源。 [Azure 存储安全指南](../common/storage-security-guide.md)中提供了可用身份验证方案的完整详细信息。 它们分别是：
 
 - **共享密钥**：这允许用户访问帐户中的所有资源。 密钥被加密并存储在 Hadoop 配置中。
 
@@ -59,7 +59,7 @@ ABFS 驱动程序的所有配置均存储在 <code>core-site.xml</code> 配置�
 
 ### <a name="hadoop-documentation"></a>Hadoop 文档
 
-要完整了解 ABFS 驱动程序，请参阅[官方 Hadoop 文档](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)
+要完整了解 ABFS 驱动程序，请参阅[官方 Hadoop 文档](https://github.com/apache/hadoop/blob/trunk/hadoop-tools/hadoop-azure/src/site/markdown/abfs.md)
 
 ## <a name="next-steps"></a>后续步骤
 

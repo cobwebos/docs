@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.date: 06/20/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: d1983f0842f8c04d627e66727ddddf618969992d
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 548271e888344eeb0d111c074153ef7492af5b33
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303304"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595541"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据仓库中的资源类管理工作负荷
 
@@ -91,7 +91,7 @@ ms.locfileid: "67303304"
 | smallrc        | 3%                | 32                     |
 | mediumrc       | 10%               | 10                     |
 | largerc        | 22%               | 4                      |
-| xlargerc       | 70%               | 第                      |
+| xlargerc       | 70%               | 1                      |
 
 ### <a name="default-resource-class"></a>默认资源类
 
@@ -248,7 +248,7 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 >
 >例如，在 DW100 级别，可用的最高内存授予是 400 MB。如果表架构很宽，则就会超过 400 MB 的要求。
 
-### <a name="usage-example"></a>用法示例
+### <a name="usage-example"></a>用例
 
 语法：  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`

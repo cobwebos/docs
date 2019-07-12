@@ -4,7 +4,7 @@ description: 列出支持约束 vCPU 计数的 Vm 大小。
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
-ms.openlocfilehash: ba772ddfa0d3c29e2d4631d1c4a23555cba36556
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e05346e16315dfdeca926e6db87e6d5f2252e227
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729829"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668104"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>支持约束 vCPU 的 VM 大小
 

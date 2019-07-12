@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 0a8f4a58-e96a-4883-adf3-6b8b49208e6a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: ce4a57b8c266fe474fc2e6dd8f811fc7440e7ac6
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 5784101c9f2e0dc238ac48c5d0f6fbe4c0dc596f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190444"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620680"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>将数据从 Azure Active Directory 连接
 
@@ -29,7 +30,7 @@ ms.locfileid: "67190444"
 
 Azure Sentinel，可从中收集数据[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)和其流式处理到 Azure Sentinel。 你可以选择流[登录日志](../active-directory/reports-monitoring/concept-sign-ins.md)并[审核日志](../active-directory/reports-monitoring/concept-audit-logs.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - 如果你想要从 Active Directory 导出登录数据，必须具有 Azure AD P1 或 P2 许可证。
 

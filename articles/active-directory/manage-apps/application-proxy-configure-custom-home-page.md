@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f4e71bd7fd7e0ed9a220619995ba108fdccabe4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51596e4db8999de5089748e40f9b24bd46c84e56
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66233749"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807834"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理为发布的应用设置自定义主页
 
@@ -36,8 +36,8 @@ ms.locfileid: "66233749"
 - 默认外部 URL 是`https://ExpenseApp-contoso.msappproxy.net`，不会将外部用户到登录页。
 - 你想要设置`https://ExpenseApp-contoso.msappproxy.net/login/login.aspx`为主页 URL 相反，因此外部用户会看到登录页第一次。
 
->[!NOTE]
->向用户提供对已发布应用的访问权限时，会在 [Azure AD 访问面板](../user-help/my-apps-portal-end-user-access.md)和 [Office 365 应用启动器](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)中显示这些应用。
+> [!NOTE]
+> 向用户提供对已发布应用的访问权限时，会在 [Azure AD 访问面板](../user-help/my-apps-portal-end-user-access.md)和 [Office 365 应用启动器](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)中显示这些应用。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -56,22 +56,22 @@ ms.locfileid: "66233749"
 若要更改你的应用通过 Azure AD 门户的主页 URL，请按照下列步骤：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
-2. 选择**Azure Active Directory**，然后**应用注册**。 显示已注册应用的列表。
-3. 从列表中选择您的应用程序。 将显示一个页面，显示已注册的应用的详细信息。
-4. 下**管理**，选择**品牌**。
-5. 更新**主页 URL**使用新路径。
+1. 选择**Azure Active Directory**，然后**应用注册**。 显示已注册应用的列表。
+1. 从列表中选择您的应用程序。 将显示一个页面，显示已注册的应用的详细信息。
+1. 下**管理**，选择**品牌**。
+1. 更新**主页 URL**使用新路径。
 
    ![显示主页 URL 字段的已注册应用程序的品牌页](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
- 
-6. 选择“保存”。 
+
+1. 选择**保存**。
 
 ## <a name="change-the-home-page-with-powershell"></a>使用 PowerShell 更改主页
 
 若要配置的应用程序使用 PowerShell 主页上，需要：
 
 1. 安装 Azure AD PowerShell 模块。
-2. 查找应用的 ObjectId 值。
-3. 更新应用程序的主页 URL 使用 PowerShell 命令。
+1. 查找应用的 ObjectId 值。
+1. 更新应用程序的主页 URL 使用 PowerShell 命令。
 
 ### <a name="install-the-azure-ad-powershell-module"></a>安装 Azure AD PowerShell 模块
 
@@ -87,7 +87,7 @@ ms.locfileid: "66233749"
 
     如果以非管理员身份运行该命令，请使用 `-scope currentuser` 选项。
 
-2. 在安装期间，请选择“Y”安装来自 Nuget.org 的两个包。  这两个包是必需的。
+1. 在安装期间，请选择“Y”安装来自 Nuget.org 的两个包。  这两个包是必需的。
 
 ### <a name="find-the-objectid-of-the-app"></a>查找应用的 ObjectId
 
@@ -99,13 +99,13 @@ ms.locfileid: "66233749"
    Import-Module AzureAD
    ```
 
-2. 以租户管理员身份登录到 Azure AD 模块。
+1. 以租户管理员身份登录到 Azure AD 模块。
 
    ```powershell
    Connect-AzureAD
    ```
 
-3. 查找应用。 此示例使用 PowerShell 通过使用显示名称的应用的搜索查找 ObjectId `SharePoint`。
+1. 查找应用。 此示例使用 PowerShell 通过使用显示名称的应用的搜索查找 ObjectId `SharePoint`。
 
    ```powershell
    Get-AzureADApplication | Where-Object { $_.DisplayName -eq "SharePoint" } | Format-List DisplayName, Homepage, ObjectId
@@ -135,31 +135,31 @@ ms.locfileid: "66233749"
    $objguid = "8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4"
    ```
 
-2. 确认你有正确的应用程序通过运行以下命令。 输出应该与在上一节中看到的输出完全一致 ([查找应用的 ObjectId](#find-the-objectid-of-the-app))。
+1. 确认你有正确的应用程序通过运行以下命令。 输出应该与在上一节中看到的输出完全一致 ([查找应用的 ObjectId](#find-the-objectid-of-the-app))。
 
    ```powershell
    Get-AzureADApplication -ObjectId $objguid | Format-List DisplayName, Homepage, ObjectId
    ```
 
-3. 创建一个空白应用程序对象用于保存想要做出的更改。
+1. 创建一个空白应用程序对象用于保存想要做出的更改。
 
    ```powershell
    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
    ```
 
-4. 将主页 URL 设置为所需的值。 该值必须是已发布应用的子域路径。 例如，如果将主页 URL 从 `https://sharepoint-iddemo.msappproxy.net/` 更改为 `https://sharepoint-iddemo.msappproxy.net/hybrid/`，则应用用户将直接转到自定义主页。
+1. 将主页 URL 设置为所需的值。 该值必须是已发布应用的子域路径。 例如，如果将主页 URL 从 `https://sharepoint-iddemo.msappproxy.net/` 更改为 `https://sharepoint-iddemo.msappproxy.net/hybrid/`，则应用用户将直接转到自定义主页。
 
    ```powershell
    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
    ```
 
-5. 请在主页的更新。
+1. 请在主页的更新。
 
    ```powershell
    Set-AzureADApplication -ObjectId $objguid -Homepage $homepage
    ```
 
-6. 若要确认更改成功，再次请从步骤 2 中运行以下命令。
+1. 若要确认更改成功，再次请从步骤 2 中运行以下命令。
 
    ```powershell
    Get-AzureADApplication -ObjectId $objguid | Format-List DisplayName, Homepage, ObjectId
@@ -173,10 +173,10 @@ ms.locfileid: "66233749"
    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
-7. 重新启动应用以确认主页上显示为第一个屏幕上，按预期方式。
+1. 重新启动应用以确认主页上显示为第一个屏幕上，按预期方式。
 
->[!NOTE]
->对应用进行任何更改都可能会重置主页 URL。 如果主页网址重置，请重复执行此部分中的步骤，重置主页网址。
+> [!NOTE]
+> 对应用进行任何更改都可能会重置主页 URL。 如果主页网址重置，请重复执行此部分中的步骤，重置主页网址。
 
 ## <a name="next-steps"></a>后续步骤
 

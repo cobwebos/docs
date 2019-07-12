@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 03/13/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: b97e27b86ecad1f7f87a6de4d43b09d69c167c6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab6efb858cc86495c687055ce3049cfc0cca7433
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075308"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807896"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用维护计划管理服务更新和维护
 
@@ -34,6 +34,9 @@ ms.locfileid: "61075308"
 与服务运行状况通知和资源运行状况检查监视器的集成可让客户随时了解即将发生的维护活动。 新的自动化利用 Azure Monitor。 你可以决定如何接收有关即将进行的维护事件的通知。 此外，请确定哪些自动化流可以帮助你管理停机时间，以及尽量减少对操作的影响。
 
 24 小时高级通知之前具有 DW400c 和较低层的当前异常的所有维护事件。 若要尽量减少实例停机时间，请确保数据仓库在选定的维护时限之前没有任何长时间运行的事务。 维护开始时，将取消所有活动会话。 未提交的事务将会回退，数据仓库将遇到短暂的连接断开。 针对数据仓库的维护完成后，你会立即收到通知。
+
+> [!NOTE]
+> 如果我们所需部署时间关键更新，高级的通知时间可能会显著降低。
 
 如果提前收到了维护通知，但 SQL 数据仓库无法在此期间执行维护，则你会收到取消通知。 随即会在下一个计划的维护期间继续进行维护。
 

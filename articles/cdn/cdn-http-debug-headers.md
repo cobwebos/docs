@@ -7,24 +7,24 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
-ms.openlocfilehash: e5693e0e191b36aa8d4552824c649a38d2f17b5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dec753d7c891d226aa2e6d3efa993d8d24adfbaa
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475289"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593838"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 X-EC-Debug HTTP 标头
 调试缓存请求标头 `X-EC-Debug` 提供有关应用到所请求资产的缓存策略的附加信息。 这些标头特定于 **Verizon 的 Azure CDN Premium** 产品。
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 仅当满足以下条件时，从 POP 服务器发送给用户的响应才包含 `X-EC-Debug` 标头：
 
 - 已针对指定的请求的规则引擎启用[调试缓存响应标头功能](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)。
@@ -103,7 +103,7 @@ X-EC-Debug 标头采用以下格式报告缓存状态代码信息：
 
 上述响应标头语法中使用的元素定义如下：
 
-值  | 描述
+ReplTest1  | 描述
 -------| --------
 是    | 指示请求的内容是否符合缓存的条件。
 否     | 指示请求的内容是否不符合缓存的条件。 此状态可能是以下原因之一造成的： <br /> -客户特定的配置：特定于你的帐户的配置可能阻止 pop 服务器缓存资产。 例如，规则引擎可能会通过对符合条件的请求启用“绕过缓存”功能，来阻止缓存资产。<br /> -缓存响应标头：所请求的资产的 Cache-control 和 Expires 标头可能阻止 POP 服务器缓存它。

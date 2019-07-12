@@ -4,7 +4,7 @@ description: 了解如何通过使用 Azure 门户将 OS 磁盘连接到恢复 V
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/13/2018
 ms.author: genli
-ms.openlocfilehash: ec2da7d9f659f32c40f7a2685ab08be4eec27ed5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0569878d61ce83c4847867378d8e68fe0faa59b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320642"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709399"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 Windows VM 进行故障排除
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Windows VM 来修复所有错误，然后重新创建原始 VM。
@@ -37,7 +37,7 @@ ms.locfileid: "60320642"
 ## <a name="determine-boot-issues"></a>确定启动问题
 若要确定 VM 不能正常启动的原因，请检查启动诊断 VM 屏幕截图。 一个常见示例是应用程序更新失败，或底层虚拟硬盘已删除或移动。
 
-在门户中选择 VM，然后向下滚动到“支持 + 故障排除”部分。  单击“启动诊断”  查看屏幕截图。 记下任何特定的错误消息或错误代码，帮助确定 VM 遇到问题的原因。 
+在门户中选择 VM，并向下滚动到“支持 + 故障排除”部分。  单击“启动诊断”  查看屏幕截图。 记下任何特定的错误消息或错误代码，帮助确定 VM 遇到问题的原因。 
 
 ![查看 VM 启动诊断控制台日志](./media/troubleshoot-recovery-disks-portal-windows/screenshot-error.png)
 

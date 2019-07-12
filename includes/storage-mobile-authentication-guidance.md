@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 6911e06dc023027ab32b99387b9f7d3f5e708f86
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fe4ecc237b56575f99844d3ec074225fadb69d3c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172629"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673242"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>创建用于访问 Azure 存储的应用程序
 有两种方法可以对要访问存储服务的应用程序进行身份验证：
@@ -38,11 +38,11 @@ ms.locfileid: "67172629"
 
 ### <a name="shared-access-signatures-sas"></a>共享访问签名 (SAS)
 对于移动应用程序，针对 Azure 存储服务对客户端请求进行身份验证的建议方法是使用共享访问签名 (SAS)。 SAS 允许使用指定的权限集向客户端授予在指定的时间内对资源的访问权限。
-作为存储帐户所有者，需要为移动客户端生成要使用的 SAS。 要生成 SAS，可能需要编写单独的服务，该服务生成要分发给客户端的 SAS。 出于测试目的，可以使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com)或 [Azure 门户](https://portal.azure.com)来生成 SAS。 创建 SAS 时，可以指定 SAS 有效的时间间隔，以及 SAS 授予客户端的权限。
+作为存储帐户所有者，需要为移动客户端生成要使用的 SAS。 要生成 SAS，可能需要编写单独的服务，该服务生成要分发给客户端的 SAS。 出于测试目的，可以使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)或 [Azure 门户](https://portal.azure.com)来生成 SAS。 创建 SAS 时，可以指定 SAS 有效的时间间隔，以及 SAS 授予客户端的权限。
 
 以下示例演示如何使用 Microsoft Azure 存储资源管理器来生成 SAS。
 
-1. [安装 Microsoft Azure 存储资源管理器](http://storageexplorer.com)（如果尚未安装）
+1. [安装 Microsoft Azure 存储资源管理器](https://storageexplorer.com)（如果尚未安装）
 2. 连接到订阅
 3. 单击用户的存储帐户，并单击左下方的“操作”选项卡。 单击“获取共享访问签名”，生成 SAS 的连接字符串。
 4. 下面是 SAS 连接字符串的示例，该字符串为存储帐户的 Blob 服务授予对服务、容器和对象级别的读取与写入权限。

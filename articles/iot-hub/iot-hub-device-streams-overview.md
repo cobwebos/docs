@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: 6c0fa0a3166dce5aa6adc71a46555a24d899c96b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 86f8c6e527f58a7c4cfca6233165f0ab05426409
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441356"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672574"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中心设备流（预览版）
 
@@ -82,7 +82,7 @@ IoT 中心设备流具有以下优点：
 
 !["设备流终结点"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-或者，可以使用中心“属性”部分下的 Azure CLI 检索终结点信息，具体而言是 `property.hostname` 和 `property.deviceStreams` 键。
+或者，终结点检索的信息可以在中心的属性部分，具体而言，使用 Azure CLI`property.hostname`和`property.deviceStreams`密钥。
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>

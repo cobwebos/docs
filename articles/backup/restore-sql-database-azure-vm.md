@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: raynew
-ms.openlocfilehash: d8ade598e4f1b6331367e8bd04ad59951ef5de8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 856f45f448aa843e9dc04ec3b6a60841cfe33227
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242366"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704866"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -29,7 +29,7 @@ Azure 备份可以还原 SQL Server 数据库上运行的 Azure Vm，如下所�
 - 还原某个特定的完整或差异备份，以便还原到特定恢复点。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在还原数据库之前，请注意以下各项：
 
@@ -156,7 +156,7 @@ Azure 备份可以还原 SQL Server 数据库上运行的 Azure Vm，如下所�
 
 ### <a name="restore-databases-with-large-number-of-files"></a>使用大量的文件还原数据库
 
-如果在数据库中的文件的总字符串大小大于[特定限制](backup-sql-server-azure-troubleshoot.md#files-size-limit-beyond-which-restore-happens-to-default-path)，Azure 备份将数据库文件的列表存储在不同时间点组件，以便你将不能在还原过程中设置目标还原路径操作。 文件将改为还原到的 SQL 默认路径。
+如果在数据库中的文件的总字符串大小大于[特定限制](backup-sql-server-azure-troubleshoot.md#size-limit-for-files)，Azure 备份将数据库文件的列表存储在不同时间点组件，以便你将不能在还原过程中设置目标还原路径操作。 文件将改为还原到的 SQL 默认路径。
 
   ![使用大型文件还原数据库](./media/backup-azure-sql-database/restore-large-files.jpg)
 

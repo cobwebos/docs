@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a91d0f75b7e27065bd2ee0ea430a859d265afacb
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 2eae81f357904bd5034d7409ef42b681d1085930
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332039"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695220"
 ---
 # <a name="vpn-gateways-overview"></a>VPN 网关概述
 
@@ -43,8 +43,6 @@ VPN 网关，可使用从本地对私有云的服务和服务在私有云，从�
 > 在 1078 字节或更低，还必须将 TCP MSS。 或者，如果 VPN 设备不支持 MSS 固定，您可以或者设置 MTU 为 1118 字节的隧道接口上而不是。 
 
 ### <a name="cryptographic-parameters"></a>加密的参数
-
-站点到站点 VPN 连接使用以下默认加密参数建立安全连接。  当你创建从本地 VPN 设备的连接时，必须匹配参数。
 
 站点到站点 VPN 连接使用以下默认加密参数建立安全连接。  当你创建从本地 VPN 设备的连接时，使用任何本地 VPN 网关支持以下参数。
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5b2c153646021aeb8ee0dbb787cfce41af19568d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443676"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620518"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 
@@ -29,7 +29,7 @@ ms.locfileid: "67443676"
 * 自信地使用流分析为客户开发流解决方案。
 * 使用监视和日志记录体验来排解问题。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要完成本解决方案，需要满足以下先决条件：
 * [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)
 
@@ -46,11 +46,11 @@ ms.locfileid: "67443676"
 
 | TollID | EntryTime | LicensePlate | 状态 | 制造商 | 模型 | VehicleType | VehicleWeight | 收费站 | 标记 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 第 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |第 |0 |7 | |
-| 第 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |第 |0 |4 |123456789 |
-| 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Taurus |第 |0 |5 |456789123 |
-| 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |第 |0 |4 | |
-| 第 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |第 |0 |5 |789123456 |
+| 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
+| 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |第 |0 |4 |123456789 |
+| 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Taurus |1 |0 |5 |456789123 |
+| 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
+| 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |1 |0 |5 |789123456 |
 | 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |第 |0 |6 |321987654 |
 
 下面是每个列的简短说明：
@@ -73,11 +73,11 @@ ms.locfileid: "67443676"
 
 | **TollId** | **ExitTime** | **LicensePlate** |
 | --- | --- | --- |
-| 第 |2014-09-10T12:03:00.0000000Z |JNB 7001 |
-| 第 |2014-09-10T12:03:00.0000000Z |YXZ 1001 |
+| 1 |2014-09-10T12:03:00.0000000Z |JNB 7001 |
+| 1 |2014-09-10T12:03:00.0000000Z |YXZ 1001 |
 | 3 |2014-09-10T12:04:00.0000000Z |ABC 1004 |
 | 2 |2014-09-10T12:07:00.0000000Z |XYZ 1003 |
-| 第 |2014-09-10T12:08:00.0000000Z |BNJ 1007 |
+| 1 |2014-09-10T12:08:00.0000000Z |BNJ 1007 |
 | 2 |2014-09-10T12:07:00.0000000Z |CDE 1007 |
 
 下面是每个列的简短说明：
@@ -95,10 +95,10 @@ ms.locfileid: "67443676"
 | --- | --- | --- |
 | SVT 6023 |285429838 |第 |
 | XLZ 3463 |362715656 |0 |
-| BAC 1005 |876133137 |第 |
+| BAC 1005 |876133137 |1 |
 | RIV 8632 |992711956 |0 |
 | SNY 7188 |592133890 |0 |
-| ELH 9896 |678427724 |第 |
+| ELH 9896 |678427724 |1 |
 
 下面是每个列的简短说明：
 
@@ -164,7 +164,7 @@ ms.locfileid: "67443676"
 
    为了解释查询的意图，我们假设需要统计进入某个收费亭的汽车数目。 由于进入高速公路收费亭的车流是连续性的，这些入口事件类似于永不停止的流。 若要量化流，必须定义要不断度量的“时间段”。 我们进一步将问题具体化为“每三分钟有多少汽车进入收费亭？” 这通常称为轮转计数。
 
-   如你所见，Azure 流分析使用类似 SQL 的查询语言，并且添加了一些扩展以指定查询与时间相关的方面。  有关详细信息，请参阅[时间管理](https://msdn.microsoft.com/library/azure/mt582045.aspx)和查询中所用的[开窗](https://msdn.microsoft.com/library/azure/dn835019.aspx)构造。
+   如你所见，Azure 流分析使用类似 SQL 的查询语言，并且添加了一些扩展以指定查询与时间相关的方面。  有关详细信息，请参阅[时间管理](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)和查询中所用的[开窗](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)构造。
 
 3. 检查 TollApp 示例作业的输入。 当前查询中仅使用了 EntryStream 输入。
    - **EntryStream** 输入是一个事件中心连接，它将代表每次汽车进入高速公路收费亭的事件数据排队。 示例中包含的 Web 应用将会创建事件，而这些数据将在此事件中心排队。 请注意，此输入在流式处理查询的 FROM 子句中查询。
@@ -304,7 +304,7 @@ GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 3. 在流式处理作业的“配置”标题下，选择“缩放”。 
 
-4. 将“流单元”滑块从 1 滑到 6。  流单元定义作业能够接收的计算能力大小。 选择“保存”。 
+4. 将“流单元”滑块从 1 滑到 6。  流单元定义作业能够接收的计算能力大小。 选择**保存**。
 
 5. **启动**流式处理作业，以演示其他缩放操作。 Azure 流分析可在更多的计算资源之间分配工作，并可以使用 PARTITION BY 子句中指定的列将不同资源中的工作分区，从而提高吞吐量。
 

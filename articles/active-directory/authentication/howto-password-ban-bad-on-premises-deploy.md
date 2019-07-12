@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134ab2a5f0b1b1569cdf4747f5bbe3f895ba4e8f
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 8487f82b123b42f9d6a6f0fbd6d6cbb240bf9fdc
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293020"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785530"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -44,7 +44,7 @@ ms.locfileid: "67293020"
    > 代理服务部署是部署 Azure AD 密码保护，即使域控制器可能会建立出站直接 internet 连接的强制要求。 
    >
 * 将安装 Azure AD 密码保护代理服务的所有计算机都必须安装的.NET 4.7。
-  应已完全更新的 Windows Server 上安装.NET 4.7。 如果这不是这种情况，下载并运行安装程序，请参阅[Windows.NET Framework 4.7 脱机安装程序](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)。
+  应已完全更新的 Windows Server 上安装.NET 4.7。 如果这不是这种情况，下载并运行安装程序，请参阅[Windows.NET Framework 4.7 脱机安装程序](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)。
 * 所有计算机，包括获取 Azure AD 密码保护组件安装的域控制器都必须安装的通用 C 运行时。 通过确保从 Windows 更新的所有更新，可以获取运行时。 也可以特定于操作系统的更新包中获取它。 有关详细信息，请参阅[在 Windows 中的通用 C 运行时的更新](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)。
 * 网络连接之间必须存在的每个域中至少一个域控制器和至少一台服务器承载密码保护代理服务。 此连接必须允许域控制器访问 RPC 终结点映射器端口 135 和代理服务上的 RPC 服务器端口。 默认情况下，RPC 服务器端口是动态的 RPC 端口，但可以配置[使用静态端口](#static)。
 * 承载代理服务的所有计算机必须都具有网络访问以下终结点：

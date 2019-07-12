@@ -9,19 +9,19 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: marsma
-ms.component: B2C
-ms.openlocfilehash: 1de1734d791608f3262d2af70becc2e082c9f317
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: B2C
+ms.openlocfilehash: af3244a32e9d02a1ba5053da85547bf614053127
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511151"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67587414"
 ---
 # <a name="cookies-definitions-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的 cookie 定义
 
 下表列出了在 Azure Active Directory B2C 中使用的 cookie。
 
-| Name | Domain | 过期时间 | 目的 |
+| 名称 | Domain | 过期时间 | 用途 |
 | ----------- | ------ | -------------------------- | --------- |
 | x-ms-cpim-admin | main.b2cadmin.ext.azure.com | 结束的[浏览器会话](active-directory-b2c-token-session-sso.md) | 在租户间保存用户成员身份数据。 一个用户的租户是成员和级别的成员身份 （管理员或用户）。 |
 | x-ms-cpim-slice | login.microsoftonline.com、 b2clogin.com、 经过品牌打造的域 | 结束的[浏览器会话](active-directory-b2c-token-session-sso.md) | 使用将请求路由到适当的生产实例。 |

@@ -6,19 +6,19 @@ documentationcenter: ''
 author: mdgattuso
 manager: danielgi
 editor: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: magattus
-ms.openlocfilehash: 3a94b8252feb7c5c345d678579c477fce02d6e03
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d4ab3ca32f229e92ae6bae5906c6c70593e9f9d3
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60679145"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594041"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>使用缓存规则控制 Azure CDN 缓存行为
 
@@ -113,7 +113,7 @@ Azure 内容分发网络 (CDN) 提供了两种方法来控制文件的缓存方�
 > - 对于“Verizon 提供的 Azure CDN 标准版”  配置文件，传播通常在 10 分钟内完成。  
 >
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [缓存工作原理](cdn-how-caching-works.md)
 - [教程：设置 Azure CDN 缓存规则](cdn-caching-rules-tutorial.md)

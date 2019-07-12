@@ -15,19 +15,19 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039f8c9f114dfd3542fefa7b1a1eea8656cbb9c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ebb2a38e520c988ee7ca9a234aadd6ae2de4f0cb
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65782973"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807747"
 ---
-# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>删除 Azure Active Directory 应用程序代理的个人数据  
+# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>删除 Azure Active Directory 应用程序代理的个人数据
 
-Azure Active Directory 应用程序代理要求你在设备上安装连接器，这意味着设备上可能存在个人数据。 本文提供了如何删除该个人数据以提高隐私的步骤。 
-
+Azure Active Directory 应用程序代理要求你在设备上安装连接器，这意味着设备上可能存在个人数据。 本文提供了如何删除该个人数据以提高隐私的步骤。
 
 ## <a name="where-is-the-personal-data"></a>个人数据在哪里？
+
 应用程序代理可以将个人数据写入以下日志类型：
 
 - 连接器事件日志
@@ -52,36 +52,33 @@ Azure Active Directory 应用程序代理要求你在设备上安装连接器，
 
 ### <a name="view-or-export-specific-data"></a>查看或导出特定数据
 
-若要查看或导出特定数据，请在每个连接器事件日志中搜索相关条目。 日志位于 `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`。 
+若要查看或导出特定数据，请在每个连接器事件日志中搜索相关条目。 日志位于 `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`。
 
 由于日志是文本文件，可以使用 [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) 来搜索与用户相关的文本项。  
 
-若要查找个人数据，请在日志文件中搜索 UserID。 
+若要查找个人数据，请在日志文件中搜索 UserID。
 
 若要查找由使用 Kerberos 约束委派的应用程序记录的个人数据，请搜索用户名类型的这些组件：
 
 - 本地用户主体名称
 - 用户主体名称的用户名部分
 - 本地用户主体名称的用户名部分
-- 本地安全帐户管理器 (SAM) 帐户名 
-
+- 本地安全帐户管理器 (SAM) 帐户名
 
 ### <a name="delete-specific-data"></a>删除特定数据
 
 若要删除特定数据，请执行以下操作：
 
 1. 重启 Microsoft Azure AD 应用程序代理连接器服务以生成新的日志文件。 生成新日志文件后，可以删除或修改旧日志文件。 
-2. 按照前面介绍的[查看或导出特定数据](#view-or-export-specific-data)过程，查找需要删除的信息。 搜索所有连接器日志。
-3. 删除相关日志文件，或者有选择地删除包含个人数据的字段。 如果不再需要旧日志文件，也可以将其全部删除。
+1. 按照前面介绍的[查看或导出特定数据](#view-or-export-specific-data)过程，查找需要删除的信息。 搜索所有连接器日志。
+1. 删除相关日志文件，或者有选择地删除包含个人数据的字段。 如果不再需要旧日志文件，也可以将其全部删除。
 
 ### <a name="turn-off-connector-logs"></a>禁用连接器日志
 
-确保连接器日志不包含个人数据的一个选项是禁用日志生成。 若要停止生成连接器日志，请从 `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config` 中删除以下突出显示的行。 
+确保连接器日志不包含个人数据的一个选项是禁用日志生成。 若要停止生成连接器日志，请从 `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config` 中删除以下突出显示的行。
 
-![配置](./media/application-proxy-remove-personal-data/01.png)
-
+![显示了突出显示的代码，以删除代码片段](./media/application-proxy-remove-personal-data/01.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 有关应用程序代理的概述，请参阅[如何提供对本地应用程序的安全远程访问](application-proxy.md)。
-

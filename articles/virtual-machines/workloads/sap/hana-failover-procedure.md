@@ -4,7 +4,7 @@ description: 如何为 Azure （大型实例） 上的 SAP HANA 执行故障转�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7d4f6216b4a57796ab5c0296713316dd97c47a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6454c82e3d9c73d1b5a4b2224abf1ab63a798355
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64987892"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709642"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>灾难恢复故障转移过程
 
@@ -105,7 +105,7 @@ ms.locfileid: "64987892"
 
 您已运行了 SAP 生产工作负荷一段时间在灾难恢复站点中。 随着生产站点中问题的解决，需要故障回复到生产站点。 由于不能丢失数据，因此回到生产站点这一过程涉及到几个步骤且需要与 Azure 上的 SAP HANA 运营团队进行紧密协作。 问题解决后，需要联系运营团队，以便开始同步回到生产站点。
 
-执行以下步骤:
+请执行以下步骤：
 
 1. Azure 上的 SAP HANA 运营团队获取从灾难恢复存储卷同步生产存储卷（现表示生产状态）的触发指令。 在此状态中，生产站点中的 HANA 大型实例单元处于关闭状态。
 1. Azure 运营团队上的 SAP HANA 监视复制，并可确保，它消除之前它们将通知你。

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: f37c945758cfbd03889d79acf764e7f67022267a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6ec91ca83d7aa1bc5e6c290d35b573a60cc0ed19
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789403"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605776"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>示例 3-分类：预测信用风险
 
@@ -27,7 +27,7 @@ ms.locfileid: "65789403"
 
 ![实验的关系图](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "65789403"
 
 [示例 4-分类：信用风险预测 （成本敏感）](ui-sample-classification-predict-credit-risk-cost-sensitive.md)提供了一个高级的试验，解决了此试验中相同的问题。 它演示了如何执行_成本敏感_使用的分类**执行 Python 脚本**模块，并比较两个二进制分类算法的性能。 如果你想要了解有关如何生成分类实验详细信息，请参阅它。
 
-## <a name="data"></a>数据
+## <a name="data"></a>Data
 
 我们从 UC Irvine 存储库使用德语信用卡数据集。
 数据集包含 1000 示例使用 20 个特征和 1 个标签。 每个示例表示一个人。 这些功能包括数值和分类特征。 请参阅[UCI 网站](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)分类特征的含义。 最后一列是标签，它表示信用风险，并且有只有两个可能的值： 高信用风险 = 2 和低信用风险 = 1。
@@ -78,3 +78,4 @@ ms.locfileid: "65789403"
 - [示例 2-回归：比较进行汽车价格预测算法](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [示例 4-分类：预测信用风险 （成本敏感）](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [示例 5-分类：预测客户流失](ui-sample-classification-predict-churn.md)
+- [示例 6-分类：预测航班延误](ui-sample-classification-predict-flight-delay.md)

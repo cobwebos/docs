@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 00147002317f15345f01c88e81973837d16e6669
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8eedea2e867dd2a5e2d9cf7e92f47c007bc48af1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65797610"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707087"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -343,6 +343,8 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 出于安全考虑，IoT Edge 守护程序会强制对连接到 edgeHub 的所有模块执行进程识别。 它会验证某个模块发送的所有消息是否来自该模块的主进程 ID。 如果发送消息的模块的进程 ID 不同于最初建立的进程 ID，则守护程序会拒绝该消息并返回 404 错误消息。
 
 ### <a name="resolution"></a>解决方法
+从版本 1.0.7，模块的所有进程被都授权连接。 如果升级到 1.0.7 不可行，完成以下步骤。 有关详细信息，请参阅[1.0.7 发布 changelog](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1)。
+
 确保自定义 IoT Edge 模块始终使用相同的进程 ID 向 Edge 中心发送消息。 例如，请确保`ENTRYPOINT`而不是`CMD`命令在 Docker 文件中，由于`CMD`将会导致一个进程模块的 ID 和 bash 命令运行的主要程序，而另一个进程 ID`ENTRYPOINT`将导致单个进程 id。
 
 
@@ -351,7 +353,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地服务器来与 Az
 
 IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的模块，但仍依赖于底层计算机和网络配置。 因此，必须确保设置适当的网络和防火墙规则来保护 Edge 与云之间的通信。 为托管 Azure IoT Edge 运行时的底层服务器配置防火墙规则时，可参考下表中的指导：
 
-|协议|端口|传入|传出|指南|
+|Protocol|Port|传入|传出|指南|
 |--|--|--|--|--|
 |MQTT|8883|阻止（默认）|阻止（默认）|<ul> <li>使用 MQTT 作为通信协议时，请将传出（出站）端口配置为“打开”。<li>IoT Edge 不支持将端口 1883 用于 MQTT。 <li>应阻止传入（入站）连接。</ul>|
 |AMQP|5671|阻止（默认）|打开（默认）|<ul> <li>IoT Edge 的默认通信协议。 <li> 如果未为其他支持的协议配置 Azure IoT Edge，或者 AMQP 是所需的通信协议，则必须将此端口配置为“打开”。<li>IoT Edge 不支持将端口 5672 用于 AMQP。<li>当 Azure IoT Edge 使用不同的受 IoT 中心支持的协议时，请阻止此端口。<li>应阻止传入（入站）连接。</ul></ul>|
@@ -380,7 +382,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 将 `daemon.json` 放入平台上的适当位置： 
 
-| 平台 | 位置 |
+| 平台 | Location |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | 包含 Windows 容器的 Windows 主机 | `C:\ProgramData\iotedge-moby\config` |
@@ -389,7 +391,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 *重启容器引擎，使更新生效*
 
-| 平台 | 命令 |
+| 平台 | Command |
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows（管理 Powershell） | `Restart-Service iotedge-moby -Force` |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: magoedte
-ms.openlocfilehash: fda79a7ea361a6b44798d18b79ffd763055087a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf06004c70609dbea59a47b207e3568299260a82
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122628"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594446"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>使用 Azure 策略的 Vm （预览版） 中启用 Azure Monitor
 
@@ -82,35 +82,35 @@ ms.locfileid: "67122628"
 
 下表中列出的 Azure VM 的策略定义。
 
-|Name |描述 |Type |
+|名称 |描述 |类型 |
 |-----|------------|-----|
-|[预览]：启用用于 VM 的 Azure Monitor |为指定的作用域 （管理组、 订阅或资源组） 中的虚拟机中启用 Azure Monitor。 将 Log Analytics 工作区用作参数。 |计划 |
-|[预览]：审核依赖项代理部署 – VM 映像 (OS) 未列出 |如果在列表中未定义 VM 映像 (OS)，并且未安装代理，Vm 报告为不符合要求。 |策略 |
-|[预览]：Audit Log Analytics 代理部署 – VM 映像 (OS) 未列出 |如果在列表中未定义 VM 映像 (OS)，并且未安装代理，Vm 报告为不符合要求。 |策略 |
-|[预览]：部署 Linux Vm 的依赖关系代理 |如果在列表中定义 VM 映像 (OS)，并且未安装代理，请部署 Linux Vm 的依赖关系代理。 |策略 |
-|[预览]：部署 Windows Vm 的依赖关系代理 |如果在列表中定义 VM 映像 (OS)，并且未安装代理，请部署 Windows Vm 的依赖关系代理。 |策略 |
-|[预览]：部署 Linux Vm 的 Log Analytics 代理 |部署 Linux Vm 的 Log Analytics 代理，如果在列表中定义 VM 映像 (OS)，并且未安装代理。 |策略 |
-|[预览]：部署 Windows Vm 的 Log Analytics 代理 |部署 Windows Vm 的 Log Analytics 代理，如果在列表中定义 VM 映像 (OS)，并且未安装代理。 |策略 |
+|\[预览\]：启用用于 VM 的 Azure Monitor |为指定的作用域 （管理组、 订阅或资源组） 中的虚拟机中启用 Azure Monitor。 将 Log Analytics 工作区用作参数。 |计划 |
+|\[预览\]：审核依赖项代理部署 – VM 映像 (OS) 未列出 |如果在列表中未定义 VM 映像 (OS)，并且未安装代理，Vm 报告为不符合要求。 |策略 |
+|\[预览\]：Audit Log Analytics 代理部署 – VM 映像 (OS) 未列出 |如果在列表中未定义 VM 映像 (OS)，并且未安装代理，Vm 报告为不符合要求。 |策略 |
+|\[预览\]：部署 Linux Vm 的依赖关系代理 |如果在列表中定义 VM 映像 (OS)，并且未安装代理，请部署 Linux Vm 的依赖关系代理。 |策略 |
+|\[预览\]：部署 Windows Vm 的依赖关系代理 |如果在列表中定义 VM 映像 (OS)，并且未安装代理，请部署 Windows Vm 的依赖关系代理。 |策略 |
+|\[预览\]：部署 Linux Vm 的 Log Analytics 代理 |部署 Linux Vm 的 Log Analytics 代理，如果在列表中定义 VM 映像 (OS)，并且未安装代理。 |策略 |
+|\[预览\]：部署 Windows Vm 的 Log Analytics 代理 |部署 Windows Vm 的 Log Analytics 代理，如果在列表中定义 VM 映像 (OS)，并且未安装代理。 |策略 |
 
 ### <a name="policies-for-azure-virtual-machine-scale-sets"></a>策略的 Azure 虚拟机规模集
 
 下表中列出的 Azure 虚拟机规模集的策略定义。
 
-|名称 |描述 |Type |
+|名称 |描述 |类型 |
 |-----|------------|-----|
-|[预览]：Azure Monitor 启用虚拟机规模集 |为虚拟机规模集 （管理组、 订阅或资源组） 指定的作用域中启用 Azure Monitor。 将 Log Analytics 工作区用作参数。 请注意:如果规模集升级策略设置为手动，可将扩展应用到集中的所有 Vm，通过在其上调用升级。 在 CLI 中，这是 az vmss 更新实例。 |计划 |
-|[预览]：审核依赖项代理部署在虚拟机规模集-VM 映像 (OS) 未列出 |报告虚拟机规模集为不符合要求，如果在列表中未定义 VM 映像 (OS)，并且未安装代理。 |策略 |
-|[预览]：Audit Log Analytics 代理部署在虚拟机规模集-VM 映像 (OS) 未列出 |报告虚拟机规模集为不符合要求，如果在列表中未定义 VM 映像 (OS)，并且未安装代理。 |策略 |
-|[预览]：部署 Linux 虚拟机规模集的依赖关系代理 |部署的 Linux 虚拟机规模集如果在列表中定义 VM 映像 (OS)，并且未安装代理的依赖关系代理。 |策略 |
-|[预览]：部署 Windows 虚拟机规模集的依赖关系代理 |部署的 Windows 虚拟机规模集如果在列表中定义 VM 映像 (OS)，并且未安装代理的依赖关系代理。 |策略 |
-|[预览]：部署 Linux 虚拟机规模集的 Log Analytics 代理 |部署适用于 Linux 虚拟机规模集如果在列表中定义 VM 映像 (OS)，并且未安装代理的 Log Analytics 代理。 |策略 |
-|[预览]：部署 Windows 虚拟机规模集的 Log Analytics 代理 |部署的 Windows 虚拟机规模集如果在列表中定义 VM 映像 (OS)，并且未安装代理的 Log Analytics 代理。 |策略 |
+|\[预览\]：Azure Monitor 启用虚拟机规模集 |为虚拟机规模集 （管理组、 订阅或资源组） 指定的作用域中启用 Azure Monitor。 将 Log Analytics 工作区用作参数。 注意:如果规模集升级策略设置为手动，可将扩展应用到集中的所有 Vm，通过在其上调用升级。 在 CLI 中，这是 az vmss 更新实例。 |计划 |
+|\[预览\]：审核依赖项代理部署在虚拟机规模集-VM 映像 (OS) 未列出 |报告虚拟机规模集为不符合要求，如果在列表中未定义 VM 映像 (OS)，并且未安装代理。 |策略 |
+|\[预览\]：Audit Log Analytics 代理部署在虚拟机规模集-VM 映像 (OS) 未列出 |报告虚拟机规模集为不符合要求，如果在列表中未定义 VM 映像 (OS)，并且未安装代理。 |策略 |
+|\[预览\]：部署 Linux 虚拟机规模集的依赖关系代理 |部署的 Linux 虚拟机规模集如果在列表中定义 VM 映像 (OS)，并且未安装代理的依赖关系代理。 |策略 |
+|\[预览\]：部署 Windows 虚拟机规模集的依赖关系代理 |部署的 Windows 虚拟机规模集如果在列表中定义 VM 映像 (OS)，并且未安装代理的依赖关系代理。 |策略 |
+|\[预览\]：部署 Linux 虚拟机规模集的 Log Analytics 代理 |部署适用于 Linux 虚拟机规模集如果在列表中定义 VM 映像 (OS)，并且未安装代理的 Log Analytics 代理。 |策略 |
+|\[预览\]：部署 Windows 虚拟机规模集的 Log Analytics 代理 |部署的 Windows 虚拟机规模集如果在列表中定义 VM 映像 (OS)，并且未安装代理的 Log Analytics 代理。 |策略 |
 
 以下介绍独立策略（未包含在计划中）：
 
-|名称 |描述 |Type |
+|名称 |描述 |type |
 |-----|------------|-----|
-|[预览]：VM – 报告不匹配的 audit Log Analytics 工作区 |如果它们不会记录到指定策略或计划分配中的 Log Analytics 工作区，Vm 报告为不符合要求。 |策略 |
+|\[预览\]：VM – 报告不匹配的 audit Log Analytics 工作区 |如果它们不会记录到指定策略或计划分配中的 Log Analytics 工作区，Vm 报告为不符合要求。 |策略 |
 
 ### <a name="assign-the-azure-monitor-initiative"></a>分配 Azure Monitor 计划
 若要创建策略分配从**Vm 策略覆盖范围的 Azure Monitor**页上，执行以下步骤。 若要了解如何完成这些步骤，请参阅 [从 Azure 门户创建策略分配](../../governance/policy/assign-policy-portal.md)。
@@ -180,19 +180,19 @@ ms.locfileid: "67122628"
 
 * 未部署 log Analytics 代理或依赖关系代理。  
     这对于已经拥有 VM 的范围来说是典型情况。 若要缓解此问题，部署所需的代理[创建修补任务](../../governance/policy/how-to/remediate-resources.md)的不符合策略。  
-    - [预览]: Deploy Dependency agent for Linux VMs
-    - [预览]: Deploy Dependency agent for Windows VMs
-    - [预览]: Deploy Log Analytics agent for Linux VMs
-    - [预览]: Deploy Log Analytics agent for Windows VMs
+    - \[预览\]：部署 Linux Vm 的依赖关系代理
+    - \[预览\]：部署 Windows Vm 的依赖关系代理
+    - \[预览\]：部署 Linux Vm 的 Log Analytics 代理
+    - \[预览\]：部署 Windows Vm 的 Log Analytics 代理
 
 * VM 映像 (OS) 不被标识策略定义中。  
     部署策略标准仅包含通过已知 Azure VM 映像部署的 VM。 请查看文档，了解 VM OS 是否受支持。 如果不受支持，则复制部署策略并更新或修改它来使映像合规。  
-    - [预览]：审核依赖项代理部署 – VM 映像 (OS) 未列出
-    - [预览]：Audit Log Analytics 代理部署 – VM 映像 (OS) 未列出
+    - \[预览\]：审核依赖项代理部署 – VM 映像 (OS) 未列出
+    - \[预览\]：Audit Log Analytics 代理部署 – VM 映像 (OS) 未列出
 
 * VM 未登录到指定的 Log Analytics 工作区。  
     可能存在计划范围中的某些 VM 登录到策略部署中指定的 Log Analytics 工作区以外的 Log Analytics 工作区的情况。 此策略是一个工具，以确定哪个 Vm 向不符合要求的工作区进行报告。  
-    - [预览]: Audit Log Analytics workspace for VM – Report mismatch
+    - \[预览\]：VM – 报告不匹配的 audit Log Analytics 工作区
 
 ## <a name="edit-an-initiative-assignment"></a>编辑计划分配
 
@@ -202,7 +202,7 @@ ms.locfileid: "67122628"
 - 描述
 - 由分配
 - Log Analytics 工作区
-- 例外
+- Exceptions
 
 ## <a name="next-steps"></a>后续步骤
 

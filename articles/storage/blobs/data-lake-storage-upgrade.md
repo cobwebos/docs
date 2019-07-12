@@ -8,12 +8,12 @@ ms.author: normesta
 ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 84e3aff9c1c8cb3e7fe399c861c2c7d58c278fed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d5bf318a86e989ce66bffbd2aa72638ea477ab1
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730532"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673929"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>将大数据分析解决方案从 Azure Data Lake Storage Gen1 升级到 Azure Data Lake Storage Gen2
 
@@ -220,9 +220,9 @@ Data Lake Storage Gen1 将特定消息和数据推送到其他服务，有助于
 
 | 策略                       | 工具                                                                                                             | 优点                                                                                                                             | 注意事项                                                                                                                                                                                                                                                                                                                |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **直接迁移**                 | [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2-from-gen1) | 托管云服务                                                                                                                | 仅复制数据。 当前无法复制 ACL。                                                                                                                                                                                                                                                                      |
+| **直接迁移**                 | [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2-from-gen1) | 托管云服务                                                                                                                | 可以通过当前复制数据和 Acl。                                                                                                                                                                                                                                                                      |
 |                                    | [Distcp](https://hadoop.apache.org/docs/r1.2.1/distcp.html)                                                           | 可使用此工具复制众所周知的 Hadoop 提供的工具权限（即 ACL）                                                   | 需要可以同时连接 Data Lake Storage Gen1 和 Gen2 的群集。                                                                                                                                                                                   |
-| **一次性复制和增量复制** | Azure 数据工厂                                                                                                    | 托管云服务                                                                                                                | 若要支持 ADF 中的增量复制，需要以时序的方式组织数据。 增量复制的最短时间间隔是 [15 分钟](https://docs.microsoft.com/azure/data-factory/how-to-create-tumbling-window-trigger)。 对于更短的时间间隔，ADF 将不起作用。 当前无法复制 ACL。 |
+| **一次性复制和增量复制** | Azure 数据工厂                                                                                                    | 托管云服务                                                                                                                | 可以通过当前复制数据和 Acl。 若要支持 ADF 中的增量复制，需要以时序的方式组织数据。 增量复制的最短时间间隔是 [15 分钟](https://docs.microsoft.com/azure/data-factory/how-to-create-tumbling-window-trigger)。 |
 | **并行采用**              | [WANdisco](https://docs.wandisco.com/bigdata/wdfusion/adls/)                                                           | 支持一致的复制，如果使用纯 Hadoop 环境连接到 Azure Data Lake Storage，则支持双向复制 | 如果不使用纯 Hadoop 环境，则复制可能会延迟。                                                                                                                                                                                                                                                  |
 
 请注意，有些第三方可以处理 Data Lake Storage Gen1 到 Data Lake Storage Gen2 的升级，而不涉及上述数据/元数据复制工具（例如：[Cloudera](https://blog.cloudera.com/blog/2017/08/use-amazon-s3-with-cloudera-bdr/)）。 它们提供执行数据迁移以及工作负载迁移的“一站式”体验。 可能必须对其生态系统之外的任何工具执行带外升级。

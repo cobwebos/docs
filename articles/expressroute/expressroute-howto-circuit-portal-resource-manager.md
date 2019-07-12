@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 16f3ad1aa037dca2e7b8c3e68ae952c27b952711
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce6d64f1df7a91f68e4621189553c36b36709039
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366431"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657228"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
 
@@ -21,6 +21,7 @@ ms.locfileid: "60366431"
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager 模板](expressroute-howto-circuit-resource-manager-template.md)
 > * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
 >
@@ -56,7 +57,7 @@ ms.locfileid: "60366431"
    * “数据计量”  决定计费类型。 可以指定“Metered”  以获取数据流量套餐，指定“Unlimited”  以获取无限制流量套餐。 请注意，你可以将计费类型从“按流量计费”更改为“不限流量”   。
 
      > [!IMPORTANT]
-     > 不能更改类型从**Unlimited**到**按流量计费**。
+     > 无法将类型从“不限流量”更改为“按流量计费”   。
 
    * “对等互连位置”  是与 Microsoft 建立对等互连的实际位置。
 
@@ -121,7 +122,7 @@ ms.locfileid: "60366431"
 
 ## <a name="modify"></a>修改 ExpressRoute 线路
 
-可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。 可以修改“配置”  页上的“带宽”、“SKU”、“计费模型”和“允许经典操作”。 若要了解限制，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。 
+可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。 可以修改“配置”  页上的“带宽”、“SKU”、“计费模型”和“允许经典操作”。 若要了解限制，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 
 可以执行下列任务，而不产生任何故障时间：
 
@@ -139,9 +140,9 @@ ms.locfileid: "60366431"
 * 可以启用和禁用允许经典操作  。
   > [!IMPORTANT]
   > 如果现有端口上的容量不足，可能需要重新创建 ExpressRoute 线路。 如果该位置没有额外的可用容量，则不能升级线路。
-  > 
+  >
   > 尽管你可无缝升级带宽，但是无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，并重新预配新的 ExpressRoute 线路。
-  > 
+  >
   > 如果要使用的资源超出了标准线路所允许的范围，可能无法禁用 Premium 加载项。
 
 若要修改 ExpressRoute 线路，请单击“配置”  。

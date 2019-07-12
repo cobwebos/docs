@@ -4,7 +4,7 @@ description: 在 Azure 上使用 Windows Server 故障转移群集和文件共�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 32905f6d505f83ead805550205df0daf6be501e5
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60651575"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710114"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -199,7 +199,7 @@ ms.locfileid: "60651575"
 > ![Windows][Logo_Windows] Windows
 >
 
-可以使用 [Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址。 
+可以通过使用管理多个虚拟 IP 地址[Azure 内部负载均衡器][load-balancer-multivip-overview]。 
 
 在 SAP 部署中，可使用内部负载均衡器，为 SAP Central Services (ASCS/SCS) 实例创建 Windows 群集配置。
 
@@ -216,9 +216,9 @@ ms.locfileid: "60651575"
 > 本文档中介绍的配置尚不支持用于 [Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)
 > 
 
-有关负载均衡器限制的详细信息，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”。 还可考虑使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而不是 Azure 负载均衡器的基本 SKU。
+有关负载均衡器限制的详细信息，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]。 还可考虑使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而不是 Azure 负载均衡器的基本 SKU。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 已配置 WSFC 群集，通过文件共享用于一个 SAP ASCS/SCS 实例，如下图所示  。
 
@@ -256,7 +256,7 @@ _**图 2：** 两个群集中的 SAP 多 SID 配置_
 * 在 DNS 服务器上创建 SAP ASCS/SCS 群集实例的虚拟主机名。
 * 使用 PowerShell 将 IP 地址添加到现有 Azure 内部负载均衡器。
 
-[SAP 多 SID 方案的基础结构准备工作][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare]中介绍了这些步骤。
+中介绍了这些步骤[SAP 多 SID 方案的基础结构准备工作][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare]。
 
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>通过使用现有的 SAP 全局主机在 SOFS 群集上准备基础结构
@@ -461,10 +461,10 @@ _**图 13：** 绑定到 sapglobal2 主机和 Volume2 的第二个 sapmnt 已创
 
 ## <a name="next-steps"></a>后续步骤
 
-* [不使用共享磁盘在故障转移群集上安装 ASCS/SCS 实例][sap-official-ha-file-share-document]：HA 文件共享的官方 SAP 指南
+* [不使用共享磁盘在故障转移群集上安装 ASCS/SCS 实例][sap-official-ha-file-share-document]:HA 文件共享的官方 SAP 指南
 
 * [Windows Server 2016 中的存储空间直通][s2d-in-win-2016]
 
-* [应用程序数据的横向扩展文件服务器概述][sofs-overview]
+* [横向扩展文件服务器应用程序数据概述][sofs-overview]
 
-* [Windows Server 2016 中存储方面的新增功能][new-in-win-2016-storage]
+* [什么是 Windows Server 2016 中的存储中的新增功能][new-in-win-2016-storage]

@@ -4,15 +4,15 @@ description: 如何设置 Windows 虚拟桌面预览主机池 FSLogix 配置文�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: f6516e37107a16d80c4d9eb9514782bdbcc44184
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 692902c28b336dd46a7c6f00d5cf5a61ee9f7328
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925214"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619105"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>为主机池设置用户配置文件共享
 
@@ -62,9 +62,9 @@ Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案
 6. 创建名为**配置文件**。
 7. 创建配置文件项的以下值：
 
-| Name                | Type               | 数据/值                        |
+| 名称                | 类型               | 数据/值                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | DWORD              | 第                                 |
+| Enabled             | DWORD              | 1                                 |
 | VHDLocations        | 多字符串值 | "网络文件共享路径"     |
 
 >[!IMPORTANT]

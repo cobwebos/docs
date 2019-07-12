@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9cd1be26f6832fffb86dfefd0d93d9dbb393c0f0
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 68d0f4f85bc8879191784f038c74fafc40c422b7
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303873"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604690"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -64,7 +64,7 @@ Reset-StorageSyncServer
 > [!Note]  
 > 如果该服务器是群集的一部分，可以使用可选的 *Reset-StorageSyncServer -CleanClusterRegistration* 参数来同时删除群集注册。
 
-<a id="web-site-not-trusted"></a>**注册服务器时，出现许多“网站不受信任”的响应。为什么？**  
+<a id="web-site-not-trusted"></a>**注册服务器时，出现许多“网站不受信任”的响应。为什么?**  
 如果在服务器注册过程中启用了“Internet Explorer 增强的安全性”策略，则会出现此问题。  有关如何以正确的方式禁用“Internet Explorer 增强的安全性”  策略的详细信息，请参阅[准备 Windows Server 以使用 Azure 文件同步](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync)，以及[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 
 ## <a name="sync-group-management"></a>同步组管理
@@ -254,7 +254,7 @@ PerItemErrorCount: 1006.
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同步期间更改了文件，因此需要重新同步。 | 无需采取措施。 |
 
 #### <a name="handling-unsupported-characters"></a>处理不受支持的字符
-如果**FileSyncErrorsReport.ps1** PowerShell 脚本显示由于不支持的字符 （错误代码 0x8007007b） 导致的失败，应删除或重命名从各自的文件名称的错误上的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-tool)可用于标识不受支持的字符。
+如果**FileSyncErrorsReport.ps1** PowerShell 脚本显示由于不支持的字符 （错误代码 0x8007007b） 导致的失败，应删除或重命名从各自的文件名称的错误上的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用于标识不受支持的字符。
 
 下表包含 Azure 文件同步尚不支持的所有 Unicode 字符。
 
@@ -877,7 +877,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 5. 再现问题。 完成后，输入 **D**。
 6. 随即会将一个包含日志和跟踪文件的 .zip 文件保存到指定的输出目录。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 - [监视 Azure 文件同步](storage-sync-files-monitoring.md)
 - [Azure 文件常见问题解答](storage-files-faq.md)
 - [在 Windows 中排查 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)

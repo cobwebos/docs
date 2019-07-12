@@ -2,17 +2,17 @@
 title: 通过 SSH 登录到 Azure Kubernetes 服务 (AKS) 群集节点
 description: 了解如何与 Azure Kubernetes 服务 (AKS) 群集节点建立 SSH 连接，以完成故障排除和维护任务。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: iainfou
-ms.openlocfilehash: 34f2d11cf4e1fb8e03d037be221e7b18ed4c5ad0
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.author: mlearned
+ms.openlocfilehash: 6ddd1b160110e7a751f54f89b387a62d94e9308e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303328"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614479"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 连接到 Azure Kubernetes 服务 (AKS) 群集节点以进行维护或故障排除
 
@@ -24,7 +24,7 @@ ms.locfileid: "67303328"
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal]。
 
-您还需要 Azure CLI 版本 2.0.64 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果你需要安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+您还需要 Azure CLI 版本 2.0.64 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="add-your-public-ssh-key"></a>添加 SSH 公钥
 

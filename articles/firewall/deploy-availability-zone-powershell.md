@@ -5,28 +5,23 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/20/2019
+ms.date: 7/10/2019
 ms.author: victorh
-ms.openlocfilehash: 2fa6a62a28a1536da83994cb07b7c5fa5d7bda9f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 56958eedceeb4602589d65d5e0eb7b10e8a9ff2d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276907"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704000"
 ---
 # <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>部署使用 Azure PowerShell 可用性区域 Azure 防火墙
 
-> [!IMPORTANT]
-> 使用可用性区域的 azure 防火墙当前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-可以在跨多个可用性区域，用于提高可用性的部署过程中配置 azure 防火墙。
+在部署期间，可将 Azure 防火墙配置为跨多个可用性区域，以提高可用性。
 
 此功能可实现以下方案：
 
-- 您可以增加可用性为 99.99%运行时间。 有关详细信息，请参阅 Azure 防火墙[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/)。 99.99%运行时间时选择了两个或多个可用性区域提供 SLA。
-- 您还可以关联 Azure 防火墙到邻近原因的特定区域使用的服务标准 99.95 %sla。
+- 您可以增加可用性为 99.99%运行时间。 有关详细信息，请参阅 Azure 防火墙的[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/)。 如果选择了两个或更多个可用性区域，则可以提供 99.99% 的运行时间 SLA。
+- 还可以仅仅出于相互更靠近的原因，将 Azure 防火墙关联到特定的区域，并享用服务标准 99.95% SLA。
 
 有关 Azure 防火墙可用性区域的详细信息，请参阅[什么是 Azure 防火墙？](overview.md)
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: 7f82bf5a40df0554d4f98b2d835fcbd69279be43
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: dedc498ebc910b448b1684136c288b2045780e00
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204159"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797957"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>将订阅密钥与 LUIS 应用配合使用
 
@@ -32,6 +32,8 @@ ms.locfileid: "67204159"
 
 您创建[预测终结点资源](get-started-portal-deploy-app.md#create-the-endpoint-resource)在 Azure 门户中。 此资源仅应用于终结点预测查询。 请勿使用此资源来创建对应用的更改。
 
+您可以创建语言理解资源或认知服务资源。 如果要创建语言理解资源，较好的做法是的 postpend 的资源类型为资源名称。 
+
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
 <a name="endpoint-key" ></a>
@@ -45,6 +47,15 @@ ms.locfileid: "67204159"
 <a name="assign-endpoint-key"></a>
 <a name="assign-resource"></a>
 
+### <a name="using-resource-from-luis-portal"></a>使用从 LUIS 门户的资源
+
+如果使用 LUIS 门户的资源，您不需要知道你的密钥和位置。 相反，您需要知道资源租户、 订阅和资源名称。
+
+一次你[分配](#assign-resource-key-to-luis-app-in-luis-portal)到 LUIS 门户、 密钥和位置中的 LUIS 应用资源提供的管理部分中的查询预测终结点 URL 的一部分**密钥和终结点设置**页。
+ 
+### <a name="using-resource-from-rest-api-or-sdk"></a>使用通过 REST API 或 SDK 资源
+
+如果使用的 REST API(s) 或 SDK 中的资源，您需要知道你的密钥和位置。 管理部分中的查询预测终结点 URL 的一部分提供此信息**密钥和终结点设置**页以及如资源的概述和密钥页上的 Azure 门户中所示。
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>在 LUIS 门户中将资源密钥分配到 LUIS 应用
 
@@ -132,7 +143,7 @@ ms.locfileid: "67204159"
 
     此 POST API 需要以下设置：
 
-    |Type|设置|值|
+    |type|设置|值|
     |--|--|--|
     |Header|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
     |Header|`Ocp-Apim-Subscription-Key`|你的[创作密钥](luis-how-to-account-settings.md)。|

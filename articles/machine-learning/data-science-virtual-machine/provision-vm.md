@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 64642da88850e9a0a17173bc50ae9e750cab55a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57768fc463f5ea1d2f1ec386f3f0975758220013
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235099"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626381"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows Data Science Virtual Machine
 
@@ -61,13 +61,13 @@ DSVM 中随附以下工具：
 
 使用 DSVM 可以立即开发分析项目。 可以处理各种语言版本的任务，包括 R、Python、SQL 和 C#。 Visual Studio 提供易用的集成开发环境 (IDE) 用于开发和测试代码。 VM 中包含 Azure SDK，可让你在 Microsoft 云平台上使用各种服务生成应用程序。
 
-此数据科研 VM 映像不产生软件费用。 只需支付 Azure 使用费。 具体费用取决于预配的虚拟机大小。 可在 [Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm?tab=PlansAndPrice) 页上的“定价详细信息”部分找到有关计算费的更多详细信息。 
+此数据科研 VM 映像不产生软件费用。 只需支付 Azure 使用费。 具体费用取决于预配的虚拟机大小。 可在 [Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) 页上的“定价详细信息”部分找到有关计算费的更多详细信息。 
 
 ### <a name="other-dsvm-versions"></a>其他 DSVM 版本
 
 * [Ubuntu](dsvm-ubuntu-intro.md) 映像。 该映像包含许多类似于 DSVM 的工具，此外还有一些附加的深度学习框架。
 * [Linux CentOS](linux-dsvm-intro.md) 映像。
-* Data Science Virtual Machine 的 [Windows Server 2012 版本](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm)。 有些工具只能在 Windows Server 2016 版本中使用。 否则，本文也适用于 Windows Server 2012 版。
+* Data Science Virtual Machine 的 [Windows Server 2012 版本](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows)。 有些工具只能在 Windows Server 2016 版本中使用。 否则，本文也适用于 Windows Server 2012 版。
 
 ## <a name="prerequisite"></a>先决条件
 

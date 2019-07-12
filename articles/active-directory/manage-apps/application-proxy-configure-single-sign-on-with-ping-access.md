@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43498a7829a43fad331841aca045f52ae680be
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 54a99d001f8cb59af3042ce8b6849a2cd9480e99
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481468"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723993"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
@@ -53,10 +53,11 @@ Azure Active Directory (Azure AD) 应用程序代理已经与 PingAccess 合作�
 应用程序代理连接器是一个 Windows Server 服务，将定向到发布的应用程序的远程员工的流量。 有关更详细安装说明，请参阅[教程：在 Azure Active Directory 中添加用于通过应用程序代理远程访问的本地应用程序](application-proxy-add-on-premises-application.md)。
 
 1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)作为应用程序管理员。 此时会显示“Azure Active Directory 管理中心”页。 
-2. 选择**Azure Active Directory** > **应用程序代理** > **下载连接器服务**。 **应用程序代理连接器下载**页将出现。
+1. 选择**Azure Active Directory** > **应用程序代理** > **下载连接器服务**。 **应用程序代理连接器下载**页将出现。
 
    ![下载应用程序代理连接器](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
-3. 遵照安装说明操作。
+
+1. 遵照安装说明操作。
 
 下载连接器应自动启用应用程序代理为你的目录，但如果不是，你可以选择**启用应用程序代理**。
 
@@ -112,7 +113,7 @@ Azure Active Directory (Azure AD) 应用程序代理已经与 PingAccess 合作�
 
    ![显示基于标头的登录屏幕上和 PingAccess](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
 
-1. 选择“保存”。 
+1. 选择**保存**。
 
 然后确保重定向 URL 设置为外部 URL:
 
@@ -138,8 +139,8 @@ Azure Active Directory (Azure AD) 应用程序代理已经与 PingAccess 合作�
 
 | Azure AD 域的名称 | PingAccess 字段的名称 | 数据格式 |
 | --- | --- | --- |
-| **应用程序 （客户端） ID** | **客户端 ID** | GUID |
-| **目录 （租户） ID** | **颁发者** | GUID |
+| **应用程序(客户端) ID** | **客户端 ID** | GUID |
+| **目录(租户) ID** | **颁发者** | GUID |
 | `PingAccess key` | **客户端机密** | 随机字符串 |
 
 若要收集此信息：
@@ -181,7 +182,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 1. 选择自己的应用程序。
 1. 从的边栏**应用注册**选择应用程序页**清单**。 将显示应用程序的注册的清单 JSON 代码。
 1. 搜索`acceptMappedClaims`字段，并将值更改为`True`。
-1. 选择“保存”。 
+1. 选择**保存**。
 
 ### <a name="use-of-optional-claims-optional"></a>使用可选声明 （可选）
 
@@ -205,7 +206,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 
 ### <a name="use-of-claims-mapping-policy-optional"></a>使用声明映射策略 （可选）
 
-[声明映射策略 （预览）](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties/)的 azure Ad 中不存在特性。 声明映射，可通过添加其他自定义声明支持 ADFS 或用户对象的旧的本地应用迁移到云
+[声明映射策略 （预览）](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties)的 azure Ad 中不存在特性。 声明映射，可通过添加其他自定义声明支持 ADFS 或用户对象的旧的本地应用迁移到云
 
 若要使应用程序使用的自定义声明并包括其他字段，请确保你已还[创建自定义声明映射策略并将其分配到应用程序](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
 
@@ -214,7 +215,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 >
 > 你可以执行策略定义和分配通过 PowerShell、 Azure AD Graph 资源管理器或 Microsoft Graph。 如果要在 PowerShell 中执行它们，您可能需要首先使用`New-AzureADPolicy`然后将其分配到应用程序使用`Add-AzureADServicePrincipalPolicy`。 有关详细信息，请参阅[声明映射策略分配](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
 
-示例：
+例如：
 ```powershell
 $pol = New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","JwtClaimType":"employeeid"}]}}') -DisplayName "AdditionalClaims" -Type "ClaimsMappingPolicy"
 

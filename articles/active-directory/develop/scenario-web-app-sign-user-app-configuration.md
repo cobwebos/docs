@@ -1,6 +1,6 @@
 ---
-title: Web 应用登录用户 （代码配置）-Microsoft 标识平台
-description: 了解如何生成 web 应用登录用户 （代码配置）
+title: 用于登录用户的 Web 应用（代码配置）- Microsoft 标识平台
+description: 了解如何构建用于登录用户的 Web 应用（代码配置）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,35 +15,37 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82e6cbcd01c87ddffb7eac8d0ea0faef85f41a13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7484b627d3bc3f26fa01d4c38ee96047c70d007
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254010"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785482"
 ---
-# <a name="web-app-that-signs-in-users---code-configuration"></a>Web 应用登录用户的代码配置
+# <a name="web-app-that-signs-in-users---code-configuration"></a>用于登录用户的 Web 应用 - 代码配置
 
-了解如何配置该登录用户的 Web 应用程序的代码。
+了解如何为用于登录用户的 Web 应用配置代码。
 
-## <a name="libraries-used-to-protect-web-apps"></a>用于保护 Web 应用库
+## <a name="libraries-used-to-protect-web-apps"></a>库用于保护 Web 应用
 
 <!-- This section can be in an include for Web App and Web APIs -->
-是用于保护 Web 应用 （和 Web API） 的库：
+用于保护 Web 应用（和 Web API）的库为：
 
 | 平台 | 库 | 描述 |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_net.png) | [适用于.NET 的标识模型扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 使用直接通过 ASP.NET 和 ASP.NET Core，适用于.NET 的 Microsoft 标识扩展提供了一组.NET Framework 和.NET Core 上运行的 Dll。 从 ASP.NET/ASP.NET Core Web 应用程序，您可以控制令牌验证使用**TokenValidationParameters**类 （尤其是在某些 ISV 方案） |
+| ![.NET](media/sample-v2-code/logo_net.png) | [适用于 .NET 的标识模型扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 在由 ASP.NET 和 ASP.NET Core 直接使用的情况下，适用于 .NET 的 Microsoft 标识扩展提议了一组在 .NET Framework 和 .NET Core 上运行的 DLL。 在 ASP.NET/ASP.NET Core Web 应用中，可以使用 **TokenValidationParameters** 类控制令牌验证（尤其适用于某些 ISV 方案） |
 
 ## <a name="aspnet-core-configuration"></a>ASP.NET Core 配置
 
+在这篇文章和以下代码片段所摘自[ASP.NET Core Web 应用增量教程，第 1 章](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg)。 您可能想要为该教程的完整的实现详细信息，请参阅。
+
 ### <a name="application-configuration-files"></a>应用程序配置文件
 
-在 ASP.NET Core Web 应用程序登录用户的 Microsoft 标识平台配置通过`appsettings.json`文件。 您需要填写的设置如下：
+在 ASP.NET Core 中，使用 Microsoft 标识平台登录用户的 Web 应用程序通过 `appsettings.json` 文件进行配置。 需填充的设置为：
 
-- 在云中`Instance`如果你想在国家云中运行您的应用程序
-- 中的访问群体 `tenantId`
-- `clientId`为应用程序，如从 Azure 门户复制。
+- 云 `Instance`（如果需要应用在国家云中运行）
+- `tenantId` 中的受众
+- 应用程序的 `clientId`，从 Azure 门户中复制。
 
 ```JSon
 {
@@ -70,7 +72,7 @@ ms.locfileid: "66254010"
 }
 ```
 
-在 ASP.NET Core 中，是包含 URL 的另一个文件 (`applicationUrl`) 和 SSL 端口 (`sslPort`) 为你的应用程序，以及各种配置文件。
+在 ASP.NET Core 中，有另一个文件包含应用程序的 URL (`applicationUrl`) 和 SSL 端口 (`sslPort`)，此外还有各种配置文件。
 
 ```JSon
 {
@@ -102,16 +104,16 @@ ms.locfileid: "66254010"
 }
 ```
 
-在 Azure 门户中，答复你需要注册中的 Uri**身份验证**应用程序页必须与匹配这些 Url; 也就是说，对于上面的两个配置文件，它们将是`https://localhost:44321/signin-oidc`作为 applicationUrl是`http://localhost:3110`但`sslPort`是指定 (44321) 和`CallbackPath`是`/signin-oidc`中定义`appsettings.json`。
+在 Azure 门户中，需要在“身份验证”页中为应用程序注册的回复 URI  必须与这些 URL 匹配；也就是说，对于上面的两个配置文件，它们需要是 `https://localhost:44321/signin-oidc`（因为 applicationUrl 是 `http://localhost:3110`），但 `sslPort` 已指定 (44321)，且 `CallbackPath` 为 `/signin-oidc`（在 `appsettings.json` 中定义）。
   
-同样，在注销 URI 将设置为`https://localhost:44321/signout-callback-oidc`。
+注销 URI 将采用相同方式设置为 `https://localhost:44321/signout-callback-oidc`。
 
 ### <a name="initialization-code"></a>初始化代码
 
-在 ASP.NET Core Web 应用 （和 Web Api） 中，执行应用程序初始化的代码位于`Startup.cs`文件，并且，若要添加使用 Microsoft 标识平台 (以前称为 Azure AD) v2.0 身份验证，你将需要添加以下代码。 在代码中的注释应该浅显易懂。
+在 ASP.NET Core Web 应用（和 Web API）中，执行应用程序初始化的代码位于 `Startup.cs` 文件中。若要使用 Microsoft 标识平台（以前称为 Azure AD）v2.0 添加身份验证，需添加以下代码。 代码中的注释应该浅显易懂。
 
   > [!NOTE]
-  > 如果你的项目开始在 Visual studio 中使用的默认 ASP.NET core web 项目`dotnet new mvc`方法`AddAzureAD`则使用默认情况下，因为会自动加载相关的包。 但是如果从零开始生成项目并尝试使用下面的代码，我们建议添加 NuGet 包 **"Microsoft.AspNetCore.Authentication.AzureAD.UI"** 到项目，才能使`AddAzureAD`提供的方法。
+  > 如果通过 Visual Studio 或 `dotnet new mvc` 使用默认的 ASP.NET Core Web 项目来启动项目，则可默认使用 `AddAzureAD` 方法，因为相关的包会自动加载。 但是，如果从头生成一个项目并尝试使用以下代码，则建议将 NuGet 包“Microsoft.AspNetCore.Authentication.AzureAD.UI”  添加到项目，使 `AddAzureAD` 方法可用。
   
 ```CSharp
  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
@@ -140,7 +142,7 @@ ms.locfileid: "66254010"
 
 ## <a name="aspnet-configuration"></a>ASP.NET 配置
 
-在 ASP.NET 中，将应用程序配置通过`Web.Config`文件
+在 ASP.NET 中，应用程序通过 `Web.Config` 文件进行配置
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -162,7 +164,7 @@ ms.locfileid: "66254010"
   </appSettings>
 ```
 
-为 ASP.NET Web 应用中的身份验证相关的代码 / Web Api 位于`App_Start/Startup.Auth.cs`文件。
+与在 ASP.NET Web 应用/Web API 中进行身份验证相关的代码位于 `App_Start/Startup.Auth.cs` 文件中。
 
 ```CSharp
  public void ConfigureAuth(IAppBuilder app)

@@ -8,19 +8,19 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
-ms.author: zchia
-ms.openlocfilehash: e9d0d996b961c31732642c9476f529bfb7561fbe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: jeedes
+ms.openlocfilehash: f0ca2dfa90e1312db664962e7ffbe6b3f4dd96e1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453393"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670935"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>教程：配置自动用户预配的 Smartsheet
 
@@ -31,7 +31,7 @@ ms.locfileid: "67453393"
 >
 > 此连接器目前以公共预览版提供。 有关常规 Microsoft Azure 的使用条款预览版功能的详细信息，请参阅[补充使用条款的 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -87,7 +87,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![Smartsheet 安装](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
-7. 定义 API 的访问令牌的名称。 单击“确定”。 
+7. 定义 API 的访问令牌的名称。 单击 **“确定”** 。
 
     ![Smartsheet 安装](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
@@ -157,7 +157,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”  。
 
 8. 下**映射**部分中，选择**Azure Active Directory 用户同步到 Smartsheet**。
 

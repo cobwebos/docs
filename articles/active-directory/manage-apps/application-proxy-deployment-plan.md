@@ -7,7 +7,7 @@ author: barbaraselden
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d40c0604f0947abe8d536eafe87545790476a98
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108484"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625531"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>计划的 Azure AD 应用程序代理部署
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 应用程序代理是在本地应用程序的�
 
 以下部分提供了规划将为有效的部署体验进行设置的元素的键的广泛视图。 
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 您需要在开始您的实现之前满足以下先决条件。 您可以设置你的环境，其中这些系统必备组件，包括在此查看详细信息[教程](application-proxy-add-on-premises-application.md)。
 
@@ -70,7 +70,8 @@ Azure Active Directory (Azure AD) 应用程序代理是在本地应用程序的�
 
 * **公共证书**:如果使用自定义域名，你必须购买非 Microsoft 受信任的证书颁发机构颁发的公共证书。 具体取决于您的组织要求，获得证书可能需要一些时间，我们建议在开始尽可能，尽早过程。 Azure 应用程序代理支持标准[通配符](application-proxy-wildcard.md)，或基于 SAN 的证书。
 
-* **域要求**:单一登录方式登录到发布的应用程序使用 Kerberos 约束委派 (KCD) 需要将连接器主机是域加入要发布的应用程序所在的同一 AD 域。 本主题的详细信息，请参阅[进行单一登录的 KCD](application-proxy-configure-single-sign-on-with-kcd.md)使用应用程序代理。 连接器服务的本地系统上下文中运行，并不应配置为使用自定义标识。
+* **域要求**:单一登录方式登录到使用 Kerberos 约束委派 (KCD) 发布的应用程序需要运行连接器的服务器和运行应用程序的服务器是已加入域中并且属于相同域或信任域。
+本主题的详细信息，请参阅[进行单一登录的 KCD](application-proxy-configure-single-sign-on-with-kcd.md)使用应用程序代理。 连接器服务的本地系统上下文中运行，并不应配置为使用自定义标识。
 
 * **Url 的 DNS 记录**
 

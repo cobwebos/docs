@@ -2,24 +2,25 @@
 title: 了解 Azure 安全中心的 IoT 安全模块孪生预览 |Microsoft Docs
 description: 了解有关安全模块孪生以及如何使用它们在 Azure 安全中心对 IoT 的概念。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: de0f21fbd847ff801308523f48e9d0c8a91880fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f964fd2b121c6232081673666f5babb160e1721
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65198391"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618313"
 ---
 # <a name="security-module"></a>安全模块
 
@@ -46,7 +47,7 @@ ASC for IoT 可与现有的 IoT 设备管理平台完全集成，使你能够管
 请参阅[创建安全模块孪生](quickstart-create-security-twin.md)并[配置安全代理](how-to-agent-configuration.md)若要了解如何创建、 自定义和配置孪生。 请参阅[了解模块孪生](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)若要了解有关在 IoT 中心模块孪生的概念的详细信息。 
  
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 - [ASC IoT 预览版](overview.md)
 - [部署安全代理](how-to-deploy-agent.md)
 - [安全代理身份验证方法](concept-security-agent-authentication-methods.md)

@@ -4,7 +4,7 @@ description: 了解如何使用 Windows 故障转移群集和共享磁盘为 SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1229b7f9e2a430a663a3e78bb457c03cf4a4a590
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c1a7d3d3a8f66cfbb3ed649ac645520f39cbb1e4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60714349"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709017"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中，使用 Windows 故障转移群集和共享磁盘为 SAP ASCS/SCS 实例安装 SAP NetWeaver HA
 
@@ -149,13 +149,13 @@ ms.locfileid: "60714349"
 
 本文介绍如何通过使用 Windows Server 故障转移群集和群集共享磁盘，群集化 SAP ASCS/SCS 实例，在 Azure 中配置高可用性 SAP 系统。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 在开始安装之前，请查看这些文档：
 
-* [体系结构指南：使用群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例的群集][sap-high-availability-guide-wsfc-shared-disk]
+* [体系结构指南：使用群集共享的磁盘在 Windows 故障转移群集的群集 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-shared-disk]
 
-* [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘，准备 SAP HA 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
+* [通过针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享的磁盘准备 SAP ha 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
 
 本文不会介绍 DBMS 安装，因为安装因所使用的 DBMS 系统而异。 本文假设 DBMS 在高可用性方面的疑虑已通过不同 DBMS 供应商为 Azure 提供的功能支持而获得解决。 例如，适用于 SQL Server 的 AlwaysOn 或数据库镜像，以及适用于 Oracle 数据库的 Oracle Data Guard。 在本文中所使用的方案中，我们未向 DBMS 添加更多保护。
 
@@ -211,7 +211,7 @@ ms.locfileid: "60714349"
    * **Java 系统**：**SCS** 实例编号 **01**
    * **ABAP+Java 系统**：**ASCS** 实例编号 **00** 和 **SCS** 实例编号 **01**
 
-   若要对 ABAP ASCS 实例使用 00 以外的实例编号并且对 Java SCS 实例使用 01 以外的实例编号，请先更改 Azure 内部负载均衡器的默认负载均衡规则。 有关详细信息，请参阅[更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则][sap-ha-guide-8.9]。
+   若要对 ABAP ASCS 实例使用 00 以外的实例编号并且对 Java SCS 实例使用 01 以外的实例编号，请先更改 Azure 内部负载均衡器的默认负载均衡规则。 有关详细信息，请参阅[更改 ASCS/SCS 默认负载均衡的 Azure 内部负载均衡器规则][sap-ha-guide-8.9]。
 
 下面几个任务未在标准的 SAP 安装文档中做介绍。
 
@@ -222,7 +222,7 @@ ms.locfileid: "60714349"
 
 ### <a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>修改 ASCS/SCS 实例的 SAP 配置文件
 
-首先，需要添加新的配置文件参数。 配置文件参数可避免 SAP 工作进程与排队服务器之间的连接在空闲时间太长时关闭。 [在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项][sap-ha-guide-8.11]部分中已提到了出现该问题的情景。 在该部分中，我们还介绍了对一些基本 TCP/IP 连接参数所做的两项更改。 在第二个步骤中，需将排队服务器设置为发送 `keep_alive` 信号，以便连接不会达到 Azure 内部负载均衡器的空闲阈值。
+首先，需要添加新的配置文件参数。 配置文件参数可避免 SAP 工作进程与排队服务器之间的连接在空闲时间太长时关闭。 我们提到过中该问题的情景[SAP ASCS/SCS 实例的两个群集节点上添加注册表项][sap-ha-guide-8.11]。 在该部分中，我们还介绍了对一些基本 TCP/IP 连接参数所做的两项更改。 在第二个步骤中，需将排队服务器设置为发送 `keep_alive` 信号，以便连接不会达到 Azure 内部负载均衡器的空闲阈值。
 
 修改 ASCS/SCS 实例的 SAP 配置文件：
 

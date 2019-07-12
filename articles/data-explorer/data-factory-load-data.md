@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2142fbf03daa6667b20db43f9212a2b5e6d7dd44
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60447724"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657533"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>将数据复制到 Azure 数据资源管理器使用 Azure 数据工厂 
 
@@ -28,7 +28,7 @@ Azure 数据工厂提供了用于将数据加载到 Azure 数据资源管理器�
 
 本文介绍如何使用数据工厂复制数据工具将数据从 Amazon S3 加载到 Azure 数据资源管理器。 可以遵循类似的步骤来将数据复制从其他数据存储，例如[Azure Blob 存储](/azure/data-factory/connector-azure-blob-storage)， [Azure SQL 数据库](/azure/data-factory/connector-azure-sql-database)， [Azure SQL 数据仓库](/azure/data-factory/connector-azure-sql-data-warehouse)， [GoogleBigQuery](/azure/data-factory/connector-google-bigquery)，[Oracle](/azure/data-factory/connector-oracle)，和[文件系统](/azure/data-factory/connector-file-system)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * [Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)
@@ -50,7 +50,7 @@ Azure 数据工厂提供了用于将数据加载到 Azure 数据资源管理器�
     | **订阅** | 选择要在其中创建数据工厂的 Azure 订阅。 |
     | **资源组** | 选择**新建**并输入新的资源组的名称。 选择**使用现有**，如果有现有的资源组。 |
     | **版本** | 选择“V2”  |
-    | **位置** | 选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置或区域中。 |
+    | **Location** | 选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置或区域中。 |
     | | |
 
 1. 在工具栏上，监视创建过程中选择通知。 创建操作完成后，转到你创建的数据工厂。 **数据工厂**主页打开。
@@ -141,7 +141,7 @@ Azure 数据资源管理器中新建链接的服务创建要复制到 Azure 数�
     * 选择**完成**以完成创建链接的服务。
 
     > [!NOTE]
-    > Azure 数据工厂使用的服务主体来访问 Azure 数据资源管理器服务。 为服务主体[创建服务主体的 Azure Active Directory (Azure AD)](/azure/azure-stack/azure-stack-create-service-principals#manage-service-principal-for-azure-ad)。 不要使用**Azure 密钥保管库**方法。
+    > Azure 数据工厂使用的服务主体来访问 Azure 数据资源管理器服务。 为服务主体[创建服务主体的 Azure Active Directory (Azure AD)](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal)。 不要使用**Azure 密钥保管库**方法。
 
 1. **目标数据存储**随即打开。 您创建的 Azure 数据资源管理器数据连接是可供使用。 选择**下一步**来配置连接。
 

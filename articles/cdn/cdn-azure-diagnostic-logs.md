@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66125808"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594206"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -189,7 +189,7 @@ ms.locfileid: "66125808"
 
 字段说明： 
 
-|值|描述|
+|ReplTest1|描述|
 |-------|---------|
 |订阅 ID    |Azure 订阅的 ID，采用 GUID 格式。|
 |资源组名称 |CDN 资源所属资源组的名称。|
@@ -197,7 +197,7 @@ ms.locfileid: "66125808"
 |终结点名称 |CDN 终结点的名称|
 |年龄|  年份的四位数表示形式，例如 2017|
 |月份| 月份的两位数表示形式。 01 = 1 月...12 = 12 月|
-|日期|   月份中日的两位数表示形式|
+|Day|   月份中日的两位数表示形式|
 |PT1H.json| 实际存储分析数据的 JSON 文件|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>将核心分析数据导出到 CSV 文件

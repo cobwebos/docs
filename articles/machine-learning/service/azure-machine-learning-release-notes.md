@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: d43bef902b66976c32735b6d45029f41bb5e3264
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 7aedb0804626d1204121568904763bec5e83e858
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514045"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786274"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -25,7 +25,70 @@ ms.locfileid: "67514045"
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
+## <a name="2019-07-09"></a>2019-07-09
 
+### <a name="visual-interface"></a>可视界面
++ **预览功能**
+  + 添加可视界面中的"执行 R 脚本"模块。
+
+### <a name="azure-machine-learning-sdk-for-python-v1048"></a>Azure Machine Learning SDK for Python v1.0.48
+
++ **新功能**
+  + **azureml-opendatasets**
+    + **azureml contrib opendatasets**现可作为**azureml opendatasets**。 仍可运行旧的包，但我们建议你使用**azureml opendatasets**展望未来更丰富的功能和改进。
+    + 这个新的包，可将打开数据集注册为 AML 工作区中的数据集，并利用任何数据集提供的功能。
+    + 它还包含现有功能，例如使用打开数据集作为 Pandas/SPARK 数据框架和位置的天气等一些数据集联接。
+
++ **预览功能**
+    + HyperDriveConfig 现在可以接受管道对象作为参数，以支持超参数优化使用管道。
+
++ **Bug 修复和改进**
+  + **azureml-train-automl**
+    + 修复了 bug 有关转换后丢失列类型。
+    + 修复了 bug，以允许 y_query 为包含无 (s) 开头的对象类型。 
+    + 中的不必要地扩大生成的系综，即使分数保持不变的系综选择过程中修复的问题。
+    + 修复中 AutoMLStep whitelist_models 和 blacklist_models 设置。
+    + 修复阻止预处理 AutoML 会在 Azure 机器学习管道的上下文中使用时的使用情况问题。
+  + **azureml-opendatasets**
+    + 已移动的 azureml-contrib-opendatasets 到 azureml opendatasets。
+    + 允许打开数据集类来注册到 AML 工作区并无缝利用 AML 数据集的能力。
+    + 改进了的 NoaaIsdWeather 大大丰富非 SPARK 版本中的性能。
+  + **azureml-explain-model**
+    + Interpretability 对象的已更新联机文档。
+    + 添加 batch_size 来模拟说明时 include_local 流式处理批以改进执行时间的 DecisionTreeExplainableModel 全局说明 = False。
+    + 修复了问题其中`explanation.expected_values`将用于在其中有时返回 float 而不是浮点数的列表。
+    + 添加了的预期值到 automl 模拟说明中的输出说明模型库。
+    + 修复排列特征重要性时提供转换参数来获取原始特征重要性。
+    + 添加 batch_size 来模拟说明时 include_local 流式处理批以改进执行时间的 DecisionTreeExplainableModel 模型 explainability 库的全局说明 = False。
+  + **azureml-core**
+    + 添加附加 DBFS AzureML CLI 中的数据存储的功能。
+    + 如果在其中创建一个空文件夹与数据存储上传修复的问题`target_path`入门`/`。
+    + 已启用的比较的两个数据集。
+    + 模型和映像删除现在提供了有关检索上游依赖于它们，如果删除因上游依赖关系的对象的详细信息。
+    + 不推荐使用 auto_prepare_environment 中的未使用的 RunConfiguration 设置。
+  + **azureml-mlflow**
+    + 提高的资源利用率的使用 azureml.mlflow 的远程运行。
+    + 改进了 azureml mlflow 包的文档。
+    + 修复了问题 mlflow.log_artifacts("my_dir") 将在其中保存项目"my_dir/项目的路径"而不是"项目路径"下。
+  + **azureml-dataprep**
+    + 数据流对象现在要循环生成一系列记录。
+    + 修复了问题其中`Dataflow.read_pandas_dataframe`会失败时`in_memory`参数设置为 True。
+    + 改进的 pandas 数据帧与非字符串列索引处理。
+    + 公开`set_diagnostics_collection()`允许以编程方式启用/禁用遥测数据收集。
+    + 添加了上限值和 bottomValues 汇总。
+  + **azureml-pipeline-core**
+    + 管道的所有步骤的参数 hash_paths 已弃用，将在以后删除。 通过默认 source_directory 内容进行哈希运算 （除.amlignore 或.gitignore 中列出的文件）
+    + 继续改进模块和 ModuleStep RunConfiguration 集成和进一步的更改做好准备以解锁其使用情况管道中的支持计算类型特定模块。
+  + **azureml-pipeline-steps**
+    + AzureBatchStep:输入/输出方面的改进的文档。
+    + AzureBatchStep:更改 delete_batch_job_after_finish 默认值为 true。
+  + **azureml-train-core**
+    + 现在已接受字符串，因为自动超参数优化的计算目标。
+    + 不推荐使用 auto_prepare_environment 中的未使用的 RunConfiguration 设置。
+    + 已弃用参数`conda_dependencies_file_path`并`pip_requirements_file_path`以便获取`conda_dependencies_file`和`pip_requirements_file`分别。
+  + **azureml-opendatasets**
+    + 提高 NoaaIsdWeather 极大地扩充非 SPARK 版本中的性能。
+    
 ## <a name="2019-07-01"></a>2019-07-01
 
 ### <a name="azure-machine-learning-data-prep-sdk-v117"></a>Azure 机器学习数据准备 SDK v1.1.7
@@ -257,7 +320,7 @@ ms.locfileid: "67514045"
 
 ### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Azure 机器学习数据准备 SDK v1.1.2
 
-请注意:数据准备 Python SDK 将无法再安装`numpy`和`pandas`包。 请参阅[更新的安装说明](https://aka.ms/aml-data-prep-installation)。
+注意:数据准备 Python SDK 将无法再安装`numpy`和`pandas`包。 请参阅[更新的安装说明](https://aka.ms/aml-data-prep-installation)。
 
 + **新功能**
   + 现在可以使用透视转换。

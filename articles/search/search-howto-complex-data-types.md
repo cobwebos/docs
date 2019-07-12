@@ -10,12 +10,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 61f2094449995e26c3d321aaf35deb3d60ff250c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7e6ddefd13d669c949389bc4fad85fb6cff4d3a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056594"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621364"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>如何在 Azure 搜索中为复杂数据类型建模
 
@@ -50,12 +50,12 @@ Azure 搜索原生支持复杂类型和集合。 这些类型，可在 Azure 搜
     {
       "Description": "Budget Room, 1 Queen Bed (Cityside)",
       "Type": "Budget Room",
-      "BaseRate": 96.99,
+      "BaseRate": 96.99
     },
     {
       "Description": "Deluxe Room, 2 Double Beds (City View)",
       "Type": "Deluxe Room",
-      "BaseRate": 150.99,
+      "BaseRate": 150.99
     },
   ]
 }

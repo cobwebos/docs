@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1bd9774cf045d9ed7f16a637fcb2eb1378b48686
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: d0a81d5d7ce8e7569b77007b6ad9c322cf626f16
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565813"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670697"
 ---
 # <a name="assets"></a>资产
 
@@ -101,7 +101,7 @@ curl -X PUT \
 |description|名称|
 |lastModified|LastModified|
 |storageAccountName|StorageAccountName|
-|storageEncryptionFormat| 选项-创建选项|
+|storageEncryptionFormat| 选项 （创建选项）|
 |type||
 
 ## <a name="storage-side-encryption"></a>存储端加密

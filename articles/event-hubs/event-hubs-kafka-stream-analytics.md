@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: b6bba4ed45530ba66a1adde274022a80091cd199
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c4beede2508104fc9af934d3f9a2bbcce791292
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60747904"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626190"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到启用了 Kafka 的事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
@@ -30,7 +30,7 @@ ms.locfileid: "60747904"
 使用事件中心公开的 Kafka 终结点时，无需更改协议客户端或运行自己的群集。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。 及更高版本。 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，请确保符合以下先决条件：
 
@@ -55,7 +55,7 @@ ms.locfileid: "60747904"
     4. 选择想在其中创建事件中心命名空间的订阅  。 
     5. 创建新的资源组  ，或选择现有资源组。 
     6. 选择一个位置  。 
-    7. 单击**创建**。
+    7. 单击“创建”。 
     
         ![创建命名空间](./media/event-hubs-kafka-stream-analytics/create-event-hub-namespace-page.png) 
 4. 在“通知消息”  中，选择“资源组名称”  。 
@@ -144,7 +144,7 @@ ms.locfileid: "60747904"
     2. 选择 **Azure 订阅**。
     3. 选择之前创建的事件中心命名空间  。 
     4. 选择事件中心  的测试  。 
-    5. 选择“保存”。  
+    5. 选择**保存**。 
 
         ![事件中心输入配置](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
 
@@ -157,13 +157,13 @@ ms.locfileid: "60747904"
     2. 选择 **Azure 订阅**。 
     3. 选择 Azure 存储帐户  。 
     4. 输入存储流分析查询的输出数据的容器的名称  。
-    5. 选择“保存”。 
+    5. 选择**保存**。
 
         ![Blob 存储输出配置](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
  
 
 ### <a name="define-a-query"></a>定义查询
-设置用于读取传入数据流的流分析作业以后，下一步是创建一个可分析实时数据的转换。 请使用[流分析查询语言](https://msdn.microsoft.com/library/dn834998.aspx)来定义转换查询。 在本演练中，定义经过数据而不执行任何转换的查询。
+设置用于读取传入数据流的流分析作业以后，下一步是创建一个可分析实时数据的转换。 请使用[流分析查询语言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)来定义转换查询。 在本演练中，定义经过数据而不执行任何转换的查询。
 
 1. 选择“查询”。 
 2. 在查询窗口中，将 `[YourOutputAlias]` 替换为之前创建的输出别名。

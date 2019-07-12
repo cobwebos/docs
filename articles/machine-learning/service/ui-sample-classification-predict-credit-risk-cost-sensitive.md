@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d714756c19b94eafc40cc0dbeffbc07704e8f94e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efed981b500ff14a66c2355a1d14bd762000622f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787818"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606167"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>示例 4-分类：预测信用风险 （成本敏感）
 
@@ -29,7 +29,7 @@ ms.locfileid: "65787818"
 
 [![实验的关系图](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
@@ -37,7 +37,7 @@ ms.locfileid: "65787818"
 
     ![打开试验](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
-## <a name="data"></a>数据
+## <a name="data"></a>Data
 
 我们从 UC Irvine 存储库使用德语信用卡数据集。 此数据集包含 1000 示例使用 20 个特征和 1 个标签。 每个示例表示一个人。 20 个特征包括数值和分类特征。 请参阅[UCI 网站](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)有关数据集的详细信息。 最后一列是标签，它表示信用风险，并且有只有两个可能的值： 高信用风险 = 2 和低信用风险 = 1。
 
@@ -164,3 +164,4 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 - [示例 2-回归：比较进行汽车价格预测算法](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [示例 3-分类：预测信用风险](ui-sample-classification-predict-credit-risk-basic.md)
 - [示例 5-分类：预测客户流失](ui-sample-classification-predict-churn.md)
+- [示例 6-分类：预测航班延误](ui-sample-classification-predict-flight-delay.md)

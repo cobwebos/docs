@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fdbbea2d32762d2d4030ec3a10826595dadd371c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c828f616d0be1611770c8673f9884e0ee50dba19
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449833"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625598"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -86,14 +86,14 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
       net stop filesyncsvc
 
-      请注意:存储同步代理 (filesyncsvc) 服务在停止后会自动启动。
+      注意:存储同步代理 (filesyncsvc) 服务在停止后会自动启动。
 
 ## <a name="firewall"></a>防火墙
 如前面的部分所述，端口 443 需对外开放。 可能需要进一步对通过此端口流向特定域的流量进行限制，具体取决于所在数据中心、分支或区域的策略。
 
 下表介绍了进行通信所需的域：
 
-| 服务 | 公共云终结点 | Azure 政府版终结点 | 使用情况 |
+| 服务 | 公共云终结点 | Azure 政府版终结点 | 用法 |
 |---------|----------------|---------------|------------------------------|
 | **Azure 资源管理器** | https://management.azure.com | https://management.usgovcloudapi.net | 包括初始服务器注册调用在内的任何用户调用（例如 PowerShell）都会转到/经过此 URL。 |
 | **Azure Active Directory** | https://login.windows.net | https://login.microsoftonline.us | Azure 资源管理器调用必须由经过身份验证的用户发出。 若要成功，请使用此 URL 进行用户身份验证。 |
@@ -111,33 +111,33 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 | 云  | 区域 | 主终结点 URL | 配对区域 | 发现 URL |
 |--------|--------|----------------------|---------------|---------------|
-| 公共 |澳大利亚东部 | https://kailani-aue.one.microsoft.com | 澳大利亚东南部 | https://tm-kailani-aue.one.microsoft.com |
-| 公共 |澳大利亚东南部 | https://kailani-aus.one.microsoft.com | 澳大利亚东部 | https://tm-kailani-aus.one.microsoft.com |
-| 公共 | 巴西南部 | https://brazilsouth01.afs.azure.net | 美国中南部 | https://tm-brazilsouth01.afs.azure.net |
-| 公共 | 加拿大中部 | https://kailani-cac.one.microsoft.com | 加拿大东部 | https://tm-kailani-cac.one.microsoft.com |
-| 公共 | 加拿大东部 | https://kailani-cae.one.microsoft.com | 加拿大中部 | https://tm-kailani.cae.one.microsoft.com |
-| 公共 | 印度中部 | https://kailani-cin.one.microsoft.com | 印度南部 | https://tm-kailani-cin.one.microsoft.com |
-| 公共 | 美国中部 | https://kailani-cus.one.microsoft.com | 美国东部 2 | https://tm-kailani-cus.one.microsoft.com |
-| 公共 | 东亚 | https://kailani11.one.microsoft.com | 东南亚 | https://tm-kailani11.one.microsoft.com |
-| 公共 | East US | https://kailani1.one.microsoft.com | 美国西部 | https://tm-kailani1.one.microsoft.com |
-| 公共 | 美国东部 2 | https://kailani-ess.one.microsoft.com | 美国中部 | https://tm-kailani-ess.one.microsoft.com |
-| 公共 | 日本东部 | https://japaneast01.afs.azure.net | 日本西部 | https://tm-japaneast01.afs.azure.net |
-| 公共 | 日本西部 | https://japanwest01.afs.azure.net | 日本东部 | https://tm-japanwest01.afs.azure.net |
-| 公共 | 韩国中部 | https://koreacentral01.afs.azure.net/ | 韩国南部 | https://tm-koreacentral01.afs.azure.net/ |
-| 公共 | 韩国南部 | https://koreasouth01.afs.azure.net/ | 韩国中部 | https://tm-koreasouth01.afs.azure.net/ |
-| 公共 | 美国中北部 | https://northcentralus01.afs.azure.net | 美国中南部 | https://tm-northcentralus01.afs.azure.net |
-| 公共 | 北欧 | https://kailani7.one.microsoft.com | 西欧 | https://tm-kailani7.one.microsoft.com |
-| 公共 | 美国中南部 | https://southcentralus01.afs.azure.net | 美国中北部 | https://tm-southcentralus01.afs.azure.net |
-| 公共 | 印度南部 | https://kailani-sin.one.microsoft.com | 印度中部 | https://tm-kailani-sin.one.microsoft.com |
-| 公共 | 东南亚 | https://kailani10.one.microsoft.com | 东亚 | https://tm-kailani10.one.microsoft.com |
-| 公共 | 英国南部 | https://kailani-uks.one.microsoft.com | 英国西部 | https://tm-kailani-uks.one.microsoft.com |
-| 公共 | 英国西部 | https://kailani-ukw.one.microsoft.com | 英国南部 | https://tm-kailani-ukw.one.microsoft.com |
-| 公共 | 美国中西部 | https://westcentralus01.afs.azure.net | 美国西部 2 | https://tm-westcentralus01.afs.azure.net |
-| 公共 | 西欧 | https://kailani6.one.microsoft.com | 北欧 | https://tm-kailani6.one.microsoft.com |
-| 公共 | 美国西部 | https://kailani.one.microsoft.com | East US | https://tm-kailani.one.microsoft.com |
-| 公共 | 美国西部 2 | https://westus201.afs.azure.net | 美国中西部 | https://tm-westus201.afs.azure.net |
-| Government | 美国亚利桑那州政府 | https://usgovarizona01.afs.azure.us | 美国德克萨斯州政府 | https://tm-usgovarizona01.afs.azure.us |
-| Government | 美国德克萨斯州政府 | https://usgovtexas01.afs.azure.us | 美国亚利桑那州政府 | https://tm-usgovtexas01.afs.azure.us |
+| 公共 |澳大利亚东部 | https:\//kailani-aue.one.microsoft.com | 澳大利亚东南部 | https:\//tm-kailani-aue.one.microsoft.com |
+| 公共 |澳大利亚东南部 | https:\//kailani-aus.one.microsoft.com | 澳大利亚东部 | https:\//tm-kailani-aus.one.microsoft.com |
+| 公共 | 巴西南部 | https:\//brazilsouth01.afs.azure.net | 美国中南部 | https:\//tm-brazilsouth01.afs.azure.net |
+| 公共 | 加拿大中部 | https:\//kailani-cac.one.microsoft.com | 加拿大东部 | https:\//tm-kailani-cac.one.microsoft.com |
+| 公共 | 加拿大东部 | https:\//kailani-cae.one.microsoft.com | 加拿大中部 | https:\//tm-kailani.cae.one.microsoft.com |
+| 公共 | 印度中部 | https:\//kailani-cin.one.microsoft.com | 印度南部 | https:\//tm-kailani-cin.one.microsoft.com |
+| 公共 | 美国中部 | https:\//kailani-cus.one.microsoft.com | 美国东部 2 | https:\//tm-kailani-cus.one.microsoft.com |
+| 公共 | 东亚 | https:\//kailani11.one.microsoft.com | 东南亚 | https:\//tm-kailani11.one.microsoft.com |
+| 公共 | East US | https:\//kailani1.one.microsoft.com | 美国西部 | https:\//tm-kailani1.one.microsoft.com |
+| 公共 | 美国东部 2 | https:\//kailani-ess.one.microsoft.com | 美国中部 | https:\//tm-kailani-ess.one.microsoft.com |
+| 公共 | 日本东部 | https:\//japaneast01.afs.azure.net | 日本西部 | https:\//tm-japaneast01.afs.azure.net |
+| 公共 | 日本西部 | https:\//japanwest01.afs.azure.net | 日本东部 | https:\//tm-japanwest01.afs.azure.net |
+| 公共 | 韩国中部 | https:\//koreacentral01.afs.azure.net/ | 韩国南部 | https:\//tm-koreacentral01.afs.azure.net/ |
+| 公共 | 韩国南部 | https:\//koreasouth01.afs.azure.net/ | 韩国中部 | https:\//tm-koreasouth01.afs.azure.net/ |
+| 公共 | 美国中北部 | https:\//northcentralus01.afs.azure.net | 美国中南部 | https:\//tm-northcentralus01.afs.azure.net |
+| 公共 | 北欧 | https:\//kailani7.one.microsoft.com | 西欧 | https:\//tm-kailani7.one.microsoft.com |
+| 公共 | 美国中南部 | https:\//southcentralus01.afs.azure.net | 美国中北部 | https:\//tm-southcentralus01.afs.azure.net |
+| 公共 | 印度南部 | https:\//kailani-sin.one.microsoft.com | 印度中部 | https:\//tm-kailani-sin.one.microsoft.com |
+| 公共 | 东南亚 | https:\//kailani10.one.microsoft.com | 东亚 | https:\//tm-kailani10.one.microsoft.com |
+| 公共 | 英国南部 | https:\//kailani-uks.one.microsoft.com | 英国西部 | https:\//tm-kailani-uks.one.microsoft.com |
+| 公共 | 英国西部 | https:\//kailani-ukw.one.microsoft.com | 英国南部 | https:\//tm-kailani-ukw.one.microsoft.com |
+| 公共 | 美国中西部 | https:\//westcentralus01.afs.azure.net | 美国西部 2 | https:\//tm-westcentralus01.afs.azure.net |
+| 公共 | 西欧 | https:\//kailani6.one.microsoft.com | 北欧 | https:\//tm-kailani6.one.microsoft.com |
+| 公共 | 美国西部 | https:\//kailani.one.microsoft.com | East US | https:\//tm-kailani.one.microsoft.com |
+| 公共 | 美国西部 2 | https:\//westus201.afs.azure.net | 美国中西部 | https:\//tm-westus201.afs.azure.net |
+| Government | 美国亚利桑那州政府 | https:\//usgovarizona01.afs.azure.us | 美国德克萨斯州政府 | https:\//tm-usgovarizona01.afs.azure.us |
+| Government | 美国德克萨斯州政府 | https:\//usgovtexas01.afs.azure.us | 美国亚利桑那州政府 | https:\//tm-usgovtexas01.afs.azure.us |
 
 - 如果使用本地冗余 (LRS) 或区域冗余 (ZRS) 存储帐户，只需启用“主终结点 URL”下面列出的 URL。
 
@@ -145,9 +145,9 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 **示例：** 在 `"West US"` 中部署存储同步服务并在其中注册自己的服务器。 在本例中，允许与服务器通信的 URL 为：
 
-> - https://kailani.one.microsoft.com （主终结点：美国西部）
-> - https://kailani1.one.microsoft.com （配对的故障转移区域：美国东部）
-> - https://tm-kailani.one.microsoft.com （主要区域的发现 URL）
+> - https:\//kailani.one.microsoft.com (主终结点：美国西部）
+> - https:\//kailani1.one.microsoft.com (配对的故障转移区域：美国东部）
+> - https:\//tm-kailani.one.microsoft.com (发现 URL 的主要区域)
 
 ## <a name="summary-and-risk-limitation"></a>摘要和风险限制
 本文档前面部分的列表包含 Azure 文件同步目前用来通信的 URL。 防火墙必须能够允许发往这些域的出站流量。 Microsoft 会不断更新此列表。

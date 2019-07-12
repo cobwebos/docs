@@ -1,7 +1,7 @@
 ---
 title: Python 快速入门：创建、 加载和查询使用 Azure 搜索 REST Api-Azure 搜索索引
 description: 介绍如何创建索引、 加载数据，并使用 Python、 Jupyter Notebook 和 Azure 搜索 REST API 运行查询。
-ms.date: 06/20/2019
+ms.date: 07/09/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 613879abd4c5c09450b690b793500a99428cff29
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
-ms.translationtype: MT
+ms.openlocfilehash: 39ff269c582a2d981d8fb30e09a550813a262eca
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485477"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798734"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在使用 Jupyter 笔记本的 Python 中创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.locfileid: "67485477"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 本快速入门使用以下服务和工具。 
 
-+ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section)，提供 Python 3.x 和 Jupyter Notebooks。
++ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section)，提供 Python 3.x 和 Jupyter Notebook。
 
 + [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 对于本快速入门，可以使用免费层。 
 
@@ -295,26 +295,13 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
-## <a name="clean-up"></a>清理 
+## <a name="clean-up"></a>清理
 
-应该删除不再需要的索引。 在免费服务中最多只能创建三个索引。 应删除任何不主动使用为其他教程留出空间的索引。
+当您正在自己的订阅中时，它是建议项目的末尾来识别是否仍需要的资源创建。 持续运行资源可能会产生费用。 您可以逐个删除资源或删除要删除整个资源集的资源组。
 
-若要删除的对象的最简单方法是通过门户中，但由于这是 Python 快速入门，以下语法将生成相同的结果：
+可以查找和管理资源在门户中，使用**的所有资源**或**资源组**在左侧导航窗格中的链接。
 
-   ```python
-  url = endpoint + "indexes/hotels-quickstart" + api_version
-  response  = requests.delete(url, headers=headers)
-   ```
-
-可以通过向现有索引的列表来验证索引删除。 如果酒店-快速入门将消失，就会知道您已成功的请求。
-
-```python
-url = endpoint + "indexes" + api_version + "&$select=name"
-
-response  = requests.get(url, headers=headers)
-index_list = response.json()
-pprint(index_list)
-```
+如果使用的一项免费服务，请记住，你被限制为三个索引、 索引器和数据源。 您可以删除使其保持在限制在门户中的各个项。 
 
 ## <a name="next-steps"></a>后续步骤
 

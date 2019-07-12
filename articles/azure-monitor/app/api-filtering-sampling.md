@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 062b565369c3b6e877d36f883a152ca6c013e0cf
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d1c4005651518eb27eebde0005bd70b4adad6432
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479659"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798363"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
@@ -96,7 +96,10 @@ public class SuccessfulDependencyFilter : ITelemetryProcessor
     }
 }
 ```
-3. 在 ApplicationInsights.config 中插入此项：
+
+3. 添加您的处理器
+
+**ASP.NET 应用**在 ApplicationInsights.config 中插入此：
 
 ```xml
 <TelemetryProcessors>
@@ -129,6 +132,26 @@ builder.Build();
 ```
 
 在此点后创建的 TelemetryClients 将使用处理器。
+
+**ASP.NET Core 应用**
+
+> [!NOTE]
+> 使用添加初始值设定项`ApplicationInsights.config`或使用`TelemetryConfiguration.Active`不能用于 ASP.NET Core 应用程序。 
+
+
+有关[ASP.NET Core](asp-net-core.md#adding-telemetry-processors)添加一个新的应用程序`TelemetryInitializer`可通过将其添加到依赖关系注入容器，如下所示。 这是在`ConfigureServices`方法在`Startup.cs`类。
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // ...
+        services.AddApplicationInsightsTelemetry();
+        services.AddApplicationInsightsTelemetryProcessor<SuccessfulDependencyFilter>();
+
+        // If you have more processors:
+        services.AddApplicationInsightsTelemetryProcessor<AnotherProcessor>();
+    }
+```
 
 ### <a name="example-filters"></a>示例筛选器
 #### <a name="synthetic-requests"></a>综合请求
@@ -237,7 +260,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-**加载初始值设定项**
+**ASP.NET 应用程序：加载初始值设定项**
 
 在 ApplicationInsights.config 中：
 
@@ -257,15 +280,27 @@ namespace MvcWebRole.Telemetry
 protected void Application_Start()
 {
     // ...
-    TelemetryConfiguration.Active.TelemetryInitializers
-    .Add(new MyTelemetryInitializer());
+    TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
 }
 ```
 
-
 [查看此示例的详细信息。](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
-<a name="js-initializer"></a>
+**ASP.NET Core 应用：加载初始值设定项**
+
+> [!NOTE]
+> 使用添加初始值设定项`ApplicationInsights.config`或使用`TelemetryConfiguration.Active`不能用于 ASP.NET Core 应用程序。 
+
+有关[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)添加一个新的应用程序`TelemetryInitializer`可通过将其添加到依赖关系注入容器，如下所示。 这是在`ConfigureServices`方法在`Startup.cs`类。
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
+```
 
 ### <a name="java-telemetry-initializers"></a>Java 遥测初始值设定项
 

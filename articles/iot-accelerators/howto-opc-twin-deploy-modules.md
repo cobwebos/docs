@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 41d544fd23d258393cc83ea09371332655223581
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 798f087c260b6b0a1efc366b864fe2bb7bce732e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203931"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603705"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>部署 OPC 孪生模块从零开始的依赖项
 
@@ -72,7 +72,7 @@ OPC 孪生模块在 IoT Edge 上运行，并提供了多个边缘服务添加到
               "restartPolicy": "always",
               "settings": {
                 "image": "mcr.microsoft.com/iotedge/opc-twin:latest",
-                "createOptions": "{\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"CapAdd\":[\"NET_ADMIN\"]}}"
+                "createOptions": "{\"NetworkingConfig\": {\"EndpointsConfig\": {\"host\": {}}}, \"HostConfig\": {\"NetworkMode\": \"host\" }}"
               }
             },
             "opcpublisher": {
@@ -109,7 +109,7 @@ OPC 孪生模块在 IoT Edge 上运行，并提供了多个边缘服务添加到
 
 将模块部署到 Azure IoT Edge 网关设备的最简单方法是通过 Azure 门户。  
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 1. 部署 OPC 孪生[依赖项](howto-opc-twin-deploy-dependencies.md)获取所生成和`.env`文件。 请注意已部署`hub name`的`PCS_IOTHUBREACT_HUB_NAME`变量中生成`.env`文件。
 
@@ -136,7 +136,7 @@ OPC 孪生模块在 IoT Edge 上运行，并提供了多个边缘服务添加到
    作为*创建选项*使用以下 JSON:
 
    ```json
-   {"HostConfig":{"NetworkMode":"host","CapAdd":["NET_ADMIN"]}}
+   {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
    ```
 
    必要时请填写可选字段。 要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 必需属性](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties)。 要详细了解模块孪生，请参阅[定义或更新所需属性](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)。
@@ -170,13 +170,13 @@ OPC 孪生模块在 IoT Edge 上运行，并提供了多个边缘服务添加到
 
     然后选择**下一步**
 
-11. 审阅部署信息和清单。  它应类似于上面的部署清单。  选择“提交”。 
+11. 审阅部署信息和清单。  它应类似于上面的部署清单。  选择**提交**。
 
 12. 将模块部署到设备之后，即可在门户的“设备详细信息”页中查看所有模块  。 此页面显示每个已部署模块的名称，以及部署状态和退出代码等有用信息。
 
 ## <a name="deploying-using-azure-cli"></a>使用 Azure CLI 进行部署
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 1. 安装最新版本[Azure 命令行界面 (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)从[此处](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 

@@ -12,12 +12,12 @@ ms.date: 05/15/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2576a33e62b370bc2fd91c5d155e9f8d6e52c0f8
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 01477ad3a5a0c4643721815fa2b0943512c0c520
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190270"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723981"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>单一登录到 Azure Active Directory 中的应用程序
 
@@ -36,7 +36,7 @@ ms.locfileid: "67190270"
 
 此流程图有助于确定哪种单一登录方法最适合你的情况。
 
-![选择单一登录方法](./media/what-is-single-sign-on/choose-single-sign-on-method-040419.png)
+![单一登录方法的决策流程图](./media/what-is-single-sign-on/choose-single-sign-on-method-040419.png)
 
 下表总结了单一登录方法，并提供了更多详细信息的链接。
 
@@ -47,23 +47,24 @@ ms.locfileid: "67190270"
 | [基于密码](#password-based-sso) | 云和本地 | 在应用程序使用用户名和密码进行身份验证时选择“基于密码”。 基于密码的单一登录允许使用 Web 浏览器扩展插件或移动应用安全存储和重放应用程序的密码。 此方法使用应用程序提供的现有登录过程，但允许管理员管理密码。 |
 | [链接](#linked-sign-on) | 云和本地 | 当应用程序配置为在其他标识提供程序服务中的单一登录，请选择链接登录。 此选项不会向应用程序添加单一登录。 不过，应用程序可能已经使用其他服务（如 Active Directory 联合身份验证服务）实现了单一登录。|
 | [已禁用](#disabled-sso) | 云和本地 | 当应用尚未准备好配置为单一登录时，请使用已禁用的单一登录。 用户每次启动此应用程序时都需要输入其用户名和密码。|
-| [集成身份验证 (IWA)](#integrated-windows-authentication-iwa-sso) | 仅限本地 | 对于使用[集成身份验证 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) 的应用程序或声明感知型应用程序，请选择 IWA 单一登录。 对于 IWA，应用程序代理连接器使用 Kerberos 约束委派 (KCD) 对应用程序的用户进行身份验证。 | 
-| [基于标头](#header-based-sso) | 仅限本地 | 当应用程序使用标头进行身份验证时，请使用基于标头的单一登录。 基于标头的单一登录需要适用于 Azure AD 的 PingAccess。 应用程序代理使用 Azure AD 对用户进行身份验证，然后通过连接器服务传递流量。  | 
+| [集成身份验证 (IWA)](#integrated-windows-authentication-iwa-sso) | 仅限本地 | 对于使用[集成身份验证 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) 的应用程序或声明感知型应用程序，请选择 IWA 单一登录。 对于 IWA，应用程序代理连接器使用 Kerberos 约束委派 (KCD) 对应用程序的用户进行身份验证。 |
+| [基于标头](#header-based-sso) | 仅限本地 | 当应用程序使用标头进行身份验证时，请使用基于标头的单一登录。 基于标头的单一登录需要适用于 Azure AD 的 PingAccess。 应用程序代理使用 Azure AD 对用户进行身份验证，然后通过连接器服务传递流量。  |
 
 ## <a name="openid-connect-and-oauth"></a>OpenID Connect 和 OAuth
-开发新应用程序时，使用 OpenID Connect 和 OAuth 等新式协议，使应用在多个设备平台间实现最佳的单一登录体验。 OAuth 允许用户或管理员为受保护的资源[授予许可证](configure-user-consent.md)（例如，[MS Graph](/graph/overview)）。 我们为应用提供易于采用的 [SDK](../develop/reference-v2-libraries.md)，此外，应用将可使用 [MS Graph](/graph/overview)。
+
+开发新应用程序时，使用 OpenID Connect 和 OAuth 等新式协议，使应用在多个设备平台间实现最佳的单一登录体验。 OAuth 允许用户或管理员[授予许可](configure-user-consent.md)受保护的资源，例如[Microsoft Graph](/graph/overview)。 我们提供易于采用[Sdk](../develop/reference-v2-libraries.md)以及您的应用程序，此外，您的应用程序将可供使用[Microsoft Graph](/graph/overview)。
 
 有关详细信息，请参阅：
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
-- [Azure Active Directory 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
+- [Microsoft 标识平台开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
 
 ## <a name="saml-sso"></a>SAML SSO
+
 使用“SAML 单一登录”，Azure AD 通过用户的 Azure AD 帐户向应用程序进行身份验证  。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色。
 
 选择基于 SAML 的单一登录（如果应用程序支持）。
-
 
 使用以下任何协议的应用程序支持基于 SAML 的单一登录：
 
@@ -79,9 +80,10 @@ ms.locfileid: "67190270"
 有关 SAML 协议的详细信息，请参阅[单一登录 SAML 协议](../develop/single-sign-on-saml-protocol.md)。
 
 ## <a name="password-based-sso"></a>基于密码的 SSO
-使用基于密码的登录时，用户在首次访问应用程序时使用用户名和密码登录。 首次登录后，Azure AD 会为应用程序提供用户名和密码。 
 
-基于密码的单一登录使用应用程序提供的现有身份验证过程。 为应用程序启用密码单一登录时，Azure AD 会收集并安全地存储应用程序的用户名和密码。 用户凭据以加密状态存储在目录中。 
+使用基于密码的登录时，用户在首次访问应用程序时使用用户名和密码登录。 首次登录后，Azure AD 会为应用程序提供用户名和密码。
+
+基于密码的单一登录使用应用程序提供的现有身份验证过程。 为应用程序启用密码单一登录时，Azure AD 会收集并安全地存储应用程序的用户名和密码。 用户凭据以加密状态存储在目录中。
 
 在以下情况下选择基于密码的单一登录：
 
@@ -118,12 +120,12 @@ Azure AD 管理员管理凭据时：
 
 最终用户管理凭据时：
 
-- 用户可以根据需要更新或删除密码来管理其密码。 
+- 用户可以根据需要更新或删除密码来管理其密码。
 - 管理员仍可以为应用程序设置新凭据。
 
-
 ## <a name="linked-sign-on"></a>联合登录
-链接登录使 Azure AD 能够为已配置为其他服务中的单一登录的应用程序提供单一登录。 链接的应用程序可以在 Office 365 门户或 Azure AD MyApps 门户中向最终用户显示。 例如，用户可以从 Office 365 门户启动配置为 Active Directory 联合身份验证服务 2.0 (AD FS) 中的单一登录的应用程序。 对于从 Office 365 门户或 Azure AD MyApps 门户启动的链接的应用程序，还可以使用其他报告。 
+
+链接登录使 Azure AD 能够为已配置为其他服务中的单一登录的应用程序提供单一登录。 链接的应用程序可以在 Office 365 门户或 Azure AD MyApps 门户中向最终用户显示。 例如，用户可以从 Office 365 门户启动配置为 Active Directory 联合身份验证服务 2.0 (AD FS) 中的单一登录的应用程序。 对于从 Office 365 门户或 Azure AD MyApps 门户启动的链接的应用程序，还可以使用其他报告。
 
 ### <a name="linked-sign-on-for-application-migration"></a>链接登录应用程序迁移
 
@@ -133,47 +135,43 @@ Azure AD 管理员管理凭据时：
 
 ## <a name="disabled-sso"></a>已禁用的 SSO
 
-已禁用模式意味着应用程序未使用单一登录。 已禁用单一登录时，用户可能需要进行两次身份验证。 首先，用户向 Azure AD 进行身份验证，然后他们再登录到应用程序。 
+已禁用模式意味着应用程序未使用单一登录。 已禁用单一登录时，用户可能需要进行两次身份验证。 首先，用户向 Azure AD 进行身份验证，然后他们再登录到应用程序。
 
 使用已禁用的单一登录模式：
 
 - 如果尚未准备好将此应用程序与 Azure AD 单一登录集成，或
 - 如果要测试应用程序的其他方面，或
-- 作为不需要用户进行身份验证的本地应用程序的安全层。 禁用后，用户需要进行身份验证。 
+- 作为不需要用户进行身份验证的本地应用程序的安全层。 禁用后，用户需要进行身份验证。
 
 ## <a name="integrated-windows-authentication-iwa-sso"></a>集成身份验证 (IWA) SSO
 
 [应用程序代理](application-proxy.md)针对使用[集成身份验证 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) 的应用程序或声明感知应用程序提供单一登录 (SSO)。 如果应用程序使用 IWA，则应用程序代理将使用 Kerberos 约束委派 (KCD) 对应用程序进行身份验证。 如果有信任 Azure Active Directory 的声明感知应用程序，则单一登录可用，因为用户已经通过使用 Azure AD 进行了身份验证。
 
-选择集成身份验证单一登录模式：
+选择集成 Windows 身份验证单一登录模式以提供单一登录到的本地应用程序进行身份验证的 IWA。
 
-- 为使用 IWA 进行身份验证的本地应用提供单一登录。 
-
-要为 IWA 配置本地应用，请参阅[针对具有应用程序代理的应用程序通过 Kerberos 约束委派进行单一登录](application-proxy-configure-single-sign-on-with-kcd.md)。 
+要为 IWA 配置本地应用，请参阅[针对具有应用程序代理的应用程序通过 Kerberos 约束委派进行单一登录](application-proxy-configure-single-sign-on-with-kcd.md)。
 
 ### <a name="how-single-sign-on-with-kcd-works"></a>使用 KCD 的单一登录的工作原理
 此示意图解释了用户访问使用 IWA 的本地应用程序时的流程。
 
-![Microsoft AAD 身份验证流程示意图](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
+![Microsoft Azure AD 身份验证流示意图](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
 1. 用户输入用于通过应用程序代理访问本地应用程序的 URL。
-2. 应用程序代理将请求重定向到 Azure AD 身份验证服务，以进行预身份验证。 此时，Azure AD 将应用所有适用的身份验证和授权策略，例如多重身份验证。 如果用户通过验证，Azure AD 将创建令牌并将其发送给用户。
-3. 用户将令牌传递给应用程序代理。
-4. 应用程序代理对令牌进行验证并从令牌中检索用户主体名称 (UPN)。 然后，它通过双重身份验证的安全通道将请求、UPN 和服务主体名称 (SPN) 发送到连接器。
-5. 连接器与本地 AD，模拟用户以获取应用程序的 Kerberos 令牌将使用 Kerberos 约束委派 (KCD) 协商。
-6. Active Directory 域服务将应用程序的 Kerberos 令牌发送到连接器。
-7. 连接器使用从 AD 收到的 Kerberos 令牌，将原始请求发送到应用程序服务器。
-8. 应用程序将响应发送到连接器，该响应随后返回到应用程序代理服务，最后返回到用户。
+1. 应用程序代理将请求重定向到 Azure AD 身份验证服务，以进行预身份验证。 此时，Azure AD 将应用所有适用的身份验证和授权策略，例如多重身份验证。 如果用户通过验证，Azure AD 将创建令牌并将其发送给用户。
+1. 用户将令牌传递给应用程序代理。
+1. 应用程序代理对令牌进行验证并从令牌中检索用户主体名称 (UPN)。 然后，它通过双重身份验证的安全通道将请求、UPN 和服务主体名称 (SPN) 发送到连接器。
+1. 连接器与本地 AD，模拟用户以获取应用程序的 Kerberos 令牌将使用 Kerberos 约束委派 (KCD) 协商。
+1. Active Directory 域服务将应用程序的 Kerberos 令牌发送到连接器。
+1. 连接器使用从 AD 收到的 Kerberos 令牌，将原始请求发送到应用程序服务器。
+1. 应用程序将响应发送到连接器，该响应随后返回到应用程序代理服务，最后返回到用户。
 
 ## <a name="header-based-sso"></a>基于标头的 SSO
 
-基于标头的单一登录适用于使用 HTTP 标头进行身份验证的应用程序。 此登录方法使用名为 PingAccess 的第三方身份验证服务。 用户只需向 Azure AD 进行身份验证。 
+基于标头的单一登录适用于使用 HTTP 标头进行身份验证的应用程序。 此登录方法使用名为 PingAccess 的第三方身份验证服务。 用户只需向 Azure AD 进行身份验证。
 
-出现以下情况时，请选择基于标头的单一登录：
+应用程序代理和 PingAccess 配置应用程序时，请选择基于标头的单一登录。
 
-- 应用程序配置了应用程序代理和 PingAccess
-
-要配置基于标头的身份验证，请参阅[使用应用程序代理通过基于标头的身份验证进行单一登录](application-proxy-configure-single-sign-on-with-ping-access.md)。 
+要配置基于标头的身份验证，请参阅[使用应用程序代理通过基于标头的身份验证进行单一登录](application-proxy-configure-single-sign-on-with-ping-access.md)。
 
 ### <a name="what-is-pingaccess-for-azure-ad"></a>什么是 PingAccess for Azure AD？
 
@@ -183,15 +181,13 @@ Azure AD 管理员管理凭据时：
 
 ### <a name="how-do-i-get-a-license-for-pingaccess"></a>如何获取 PingAccess 许可证？
 
-由于本方案是通过 Azure AD 与 PingAccess 之间的合作提供的，因此需要获取这两个服务的许可证。 但是，Azure AD Premium 订阅包含一个 PingAccess 基本许可证，可涵盖多达 20 个应用程序。 如果需要发布超过 20 个基于标头的应用程序，则可以再从 PingAccess 获取一个许可证。 
+由于本方案是通过 Azure AD 与 PingAccess 之间的合作提供的，因此需要获取这两个服务的许可证。 但是，Azure AD Premium 订阅包含一个 PingAccess 基本许可证，可涵盖多达 20 个应用程序。 如果需要发布超过 20 个基于标头的应用程序，则可以再从 PingAccess 获取一个许可证。
 
 有关详细信息，请参阅 [Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。
 
-
 ## <a name="related-articles"></a>相关文章
-* [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](../saas-apps/tutorial-list.md)
-* [用于配置单一登录的教程](configure-single-sign-on-portal.md)
-* [管理对应用程序的访问简介](what-is-access-management.md)
-* 下载链接：[单一登录部署计划](https://aka.ms/SSODeploymentPlan)。
 
-
+- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](../saas-apps/tutorial-list.md)
+- [用于配置单一登录的教程](configure-single-sign-on-portal.md)
+- [管理对应用程序的访问简介](what-is-access-management.md)
+- 下载链接：[单一登录部署计划](https://aka.ms/SSODeploymentPlan)

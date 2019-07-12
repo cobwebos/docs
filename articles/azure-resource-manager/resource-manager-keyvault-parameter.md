@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: e47a087e27b6a8ade947e36ded762ce2e518ca25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de52dbb10d515a2255b5886df5bf0a0faa454f6b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65507997"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672758"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
@@ -94,7 +94,7 @@ Set-AzKeyVaultAccessPolicy `
       ]
     }
     ```
-    将“00000000-0000-0000-0000-000000000000”替换为需要部署模板的用户的订阅 ID。
+    "00000000-0000-0000-0000-000000000000"替换为订阅 id。
 
 2. 使用 JSON 文件创建新角色：
 

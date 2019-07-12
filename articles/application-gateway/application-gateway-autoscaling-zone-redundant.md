@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 6aad0502b5739906d1fa8fa896f8d0af8cc38e30
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8e79fd1a839113cad5a3a36c01855d98793d7032
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204999"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655312"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余的应用程序网关 v2 
 
@@ -23,7 +23,7 @@ ms.locfileid: "67204999"
 - 自动缩放  ：凭借自动缩放 SKU，应用程序网关或 WAF 部署可根据变化中的流量负载模式增加或减少。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 此 SKU 提供，则返回 true 的弹性。 在 Standard_v2 和 WAF_v2 SKU 中，应用程序网关可以同时在固定容量 （已禁用自动缩放） 和启用自动缩放模式下进行操作。 固定容量模式对具有一致性和可预测工作负荷的方案非常有用。 自动缩放模式为有益于应用程序，请参阅中的应用程序流量的变体。
 - **区域冗余**：应用程序网关或 WAF 部署可以跨多个可用性区域，无需预配每个区域使用流量管理器中的单独应用程序网关实例。 您可以选择一个区域或多个区域部署应用程序网关实例位置，这将发生区域故障更具弹性。 应用程序的后端池可以通过类似方式分布在多个可用性区域中。
 
-  区域冗余是可用仅 Azure 区域提供的。 在其他区域，支持所有其他功能。 有关详细信息，请参阅[在 Azure 中的可用性区域是什么？](../availability-zones/az-overview.md#services-support-by-region)
+  区域冗余是可用仅 Azure 区域提供的。 在其他区域，支持所有其他功能。 有关详细信息，请参阅 [Azure 中的可用性区域是什么？](../availability-zones/az-overview.md#services-support-by-region)
 - **静态 VIP**：应用程序网关 v2 SKU 仅支持静态 VIP 类型。 这可确保与应用程序网关相关联的 VIP 不会更改的部署，即使在重启后的生命周期。  不存在静态 VIP 在 v1 中，因此你必须使用应用程序网关 URL 而不是 IP 地址的域名称路由到应用服务通过应用程序网关。
 - **标头重写**:应用程序网关，可添加、 删除或更新与 v2 SKU 的 HTTP 请求和响应标头。 有关详细信息，请参阅[重写 HTTP 标头与应用程序网关](rewrite-http-headers.md)
 - **密钥保管库集成 （预览版）** :应用程序网关 v2 支持的附加到启用 HTTPS 侦听器的服务器证书 （在公共预览版） 与密钥保管库集成。 有关详细信息，请参阅[使用密钥保管库证书的 SSL 终止](key-vault-certs.md)。
@@ -35,7 +35,7 @@ ms.locfileid: "67204999"
 
 ## <a name="supported-regions"></a>支持的区域
 
-在以下区域均提供 Standard_v2 和 WAF_v2 SKU:美国中北部、美国中南部、美国西部、美国西部 2、美国东部、美国东部 2、美国中部、欧洲北部、欧洲西部、亚洲东南部、法国中部、英国西部、日本东部、日本西部。 将在将来添加其他区域。
+在以下区域均提供 Standard_v2 和 WAF_v2 SKU:美国中北部、 美国中南部、 美国西部、 美国西部 2、 美国东部、 美国东部 2、 美国中部、 欧洲北部、 欧洲西部、 亚洲东南部、 法国中部、 英国西部、 日本东部、 日本西部、 澳大利亚东部、 澳大利亚东南部、 加拿大中部、 加拿大东部、 亚洲东部、 韩国中部、 韩国南部、 印度南部、 英国南部、 印度中部、 印度西部、 印度南部。
 
 ## <a name="pricing"></a>定价
 

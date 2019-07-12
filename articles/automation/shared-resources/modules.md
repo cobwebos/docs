@@ -3,18 +3,17 @@ title: 在 Azure 自动化中管理模块
 description: 本文介绍如何在 Azure 自动化中管理模块。
 services: automation
 ms.service: automation
-ms.subservice: shared-resources
 author: bobbytreed
 ms.author: robreed
 ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 69817d1412aa13d0e7983aa3ad27c15e59185432
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cd085164fc9804e0c1c822df1c72d3ef94093a07
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478176"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672789"
 ---
 # <a name="manage-modules-in-azure-automation"></a>在 Azure 自动化中管理模块
 
@@ -249,10 +248,10 @@ PowerShell 模块可导入到 Azure 自动化中，这样其 cmdlet 就可以在
 | Microsoft.PowerShell.Security |  |
 | Microsoft.PowerShell.Utility |  |
 | Microsoft.WSMan.Management |  |
-| Orchestrator.AssetManagement.Cmdlets | 第 |
+| Orchestrator.AssetManagement.Cmdlets | 1 |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
-| StateConfigCompositeResources | 第 |
+| StateConfigCompositeResources | 1 |
 | xDSCDomainjoin | 1.1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |

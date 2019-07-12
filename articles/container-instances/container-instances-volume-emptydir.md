@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: danlep
-ms.openlocfilehash: 98a72123a05fa7d8dc16be7ddb787f2a2cf7e4d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d91706da898e84effc6194a74dce69a66be0f4ac
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563114"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657607"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载 emptyDir 卷
 
 了解如何在 Azure 容器实例中装载 *emptyDir* 卷以在容器组中的容器之间共享数据。
 
 > [!NOTE]
-> 当前只有 Linux 容器能装载 *emptyDir* 卷。 我们正致力于为 Windows 容器提供全部功能，你可在 [Azure 容器实例的配额和区域可用性](container-instances-quotas.md)中了解当前的平台差异。
+> 当前只有 Linux 容器能装载 *emptyDir* 卷。 我们正致力于为 Windows 容器提供的所有功能，可以找到在当前的平台差异[概述](container-instances-overview.md#linux-and-windows-containers)。
 
 ## <a name="emptydir-volume"></a>emptyDir 卷
 

@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: e7395c69d99884a5c662e545a69778ed195aec55
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e6afd90c4e5a1b0759b3de7789ec37db4c04f2c7
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543133"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827443"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>监视 Azure FXT 边缘文件管理器硬件状态
 
@@ -44,9 +44,9 @@ Azure FXT 边缘文件管理器混合存储缓存系统具有多个内置于机�
 
 驱动器 (3) 的右侧都标有驱动器的容量和其他信息。
 
-驱动器号显示在驱动器之间的空间上。 Azure FXT 边缘文件管理器，在驱动器 0 是驱动器中，向左上角和驱动器 1 是它正下方。 编号将继续在该模式中。 
+驱动器编号显示在驱动器之间的空间上。 在 Azure FXT Edge Filer 中，驱动器 0 为左上角的驱动器，驱动器 1 位于其正下方。 编号将继续在该模式中。 
 
-![一个硬驱动器托架 FXT 机箱，其中显示驱动器号和容量标签中的照片](media/fxt-drives-photo.png)
+![FXT 机箱中一个硬盘槽的图片，其中显示了驱动器编号和容量标签](media/fxt-drives-photo.png)
 
 ## <a name="left-control-panel"></a>左侧的控件面板
 
@@ -58,7 +58,7 @@ Azure FXT 边缘文件管理器混合存储缓存系统具有多个内置于机�
 
 在左侧的状态指示符显示稳定琥珀色指示灯在该系统中是否存在错误。 下表描述了可能的原因和解决方案的错误。 
 
-如果您仍然可以在尝试使用这些解决方案的错误，联系支持部门获取帮助。 
+如果仍在尝试使用这些解决方案时遇到错误[请联系支持人员](fxt-support-ticket.md)有关的帮助。 
 
 | 图标 | 描述 | 添加状态 | 可能的解决方案 |
 |----------------|---------------|--------------------|----------------------|
@@ -79,7 +79,7 @@ Azure FXT 边缘文件管理器混合存储缓存系统具有多个内置于机�
 |-------------------------------------------|-----------------------------------------------|
 | 纯色的蓝色 | 正常操作： 系统已开启，通常情况下，操作系统和系统 ID 模式未处于活动状态。 <br/>如果你想要切换到系统 ID 模式，请按系统运行状况和 ID 按钮。 |
 | 闪烁的蓝色 | 系统 ID 模式处于活动状态。 如果你想要切换到系统运行状况模式，按系统运行状况和 ID 系统按钮。 |
-| 琥珀色 | 系统为防故障模式。 如果问题仍然存在，请联系 Microsoft 客户服务和支持。 |
+| 琥珀色 | 系统为防故障模式。 如果问题仍然存在，请[请联系 Microsoft 客户服务和支持](fxt-support-ticket.md)。 |
 | 闪烁的琥珀色 | 系统故障。 检查系统事件日志以特定的错误消息。 有关生成系统固件和监视系统组件的代理的事件和错误消息的信息，请参阅 qrl.dell.com 的错误代码查找页面。 |
 
 

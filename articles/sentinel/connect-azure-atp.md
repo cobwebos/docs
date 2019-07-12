@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 5bf3cc44-ecda-4c78-8a63-31ab42f43605
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: f0d86a62c59df5bebd34137d0903fcaa7014573d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77f745f92133f4f43cd2a65f2b69ded1eff9e8ed
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204272"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620616"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>将数据连接从 Azure 高级威胁防护 (ATP)
 
@@ -30,7 +31,7 @@ ms.locfileid: "65204272"
 
 可以从日志流式传输[Azure 高级威胁防护](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp)到 Azure Sentinel 单击一次。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - 具有全局管理员或安全管理员权限的用户
 - 您必须是 Azure ATP 个人预览版客户

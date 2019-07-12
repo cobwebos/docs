@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 0e67a56e3d723874ed93fc8dcad91e3063d923ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c415bdecdaf55f3068dcd804ab34de402fe7a31f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076187"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612293"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>流分析和 Power BI：针对流式处理数据的实时分析仪表板
 
@@ -24,7 +24,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 可观看演示此方案的[视频](https://www.youtube.com/watch?v=SGUpT-a99MA)。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保具有以下各项：
 
@@ -57,7 +57,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 4. 选择“授权”以后，系统会打开一个弹出窗口，并要求你提供通过 Power BI 帐户进行身份验证所需的凭据。  授权成功以后，请单击“保存”以保存设置。 
 
-8. 单击**创建**。
+8. 单击“创建”。 
 
 数据集是使用以下设置创建的；
 
@@ -100,7 +100,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. 单击“ **保存**”。
+4. 单击“保存”  。
 
 
 ## <a name="test-the-query"></a>测试查询
@@ -111,7 +111,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
     * 打开命令提示符。
     * 请转到 telcogenerator.exe 和修改的 telcodatagen.exe.config 文件所在的文件夹。
-    * 运行以下命令：
+    * 运行下面的命令：
 
        `telcodatagen.exe 1000 .2 2`
 
@@ -158,7 +158,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
     ![新磁贴的可视化效果详细信息](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
-7. 单击“下一步”。 
+7. 单击“下一步”  。
 
 8. 填写磁贴详细信息，例如标题和副标题。
 
@@ -242,5 +242,5 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

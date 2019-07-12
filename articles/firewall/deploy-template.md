@@ -3,21 +3,20 @@ title: 使用模板部署 Azure 防火墙
 description: 使用模板部署 Azure 防火墙
 services: firewall
 author: vhorne
-manager: jpconnock
 ms.service: firewall
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 7/9/2018
 ms.author: victorh
-ms.openlocfilehash: e0fbec8b22993345114d8d6642e42095191d0b37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b39174152e427e408e7dfbbc353baf5f96ec7c01
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115689"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657082"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>使用模板部署 Azure 防火墙
 
-[创建 AzureFirewall 沙盒设置模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox)创建具有防火墙的测试网络环境。 网络具有一个虚拟网络 (VNet)，其中包含三个子网：AzureFirewallSubnet  、ServersSubnet  和 JumpboxSubnet  。 ServersSubnet  和 JumpboxSubnet  子网均包含一个单个、双核 Windows Server 虚拟机。
+[创建 AzureFirewall 沙盒设置模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox)创建具有防火墙的测试网络环境。 网络具有一个虚拟网络 (VNet)，其中包含三个子网：AzureFirewallSubnet  、ServersSubnet  和 JumpboxSubnet  。 ServersSubnet  和 JumpboxSubnet  子网均包含一个单个、双核 Windows Server 虚拟机。
 
 防火墙在 AzureFirewallSubnet  子网中，并配置有一个应用程序规则集合，其中包含允许访问 www.microsoft.com  的单个规则。
 
@@ -34,7 +33,7 @@ ms.locfileid: "66115689"
 
 **使用模板安装和部署 Azure 防火墙：**
 
-1. 在 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox) 中访问模板。
+1. 在 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox) 中访问模板。
    
 1. 阅读简介，并准备好部署后，选择“部署到 Azure”  。
    

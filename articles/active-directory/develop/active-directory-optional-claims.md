@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60eeb420c723e22b771b4b86b55c2ce7d6a23659
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 98b0ec2e1defc4701bff798b2fa93900ec8a9a64
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536823"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595164"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：向 Azure AD 应用提供可选声明
 
@@ -42,7 +42,7 @@ ms.locfileid: "67536823"
 
 | 帐户类型 | v1.0 令牌 | v2.0 令牌  |
 |--------------|---------------|----------------|
-| Microsoft 个人帐户  | 不适用  | 支持 |
+| Microsoft 个人帐户  | 不可用  | 支持 |
 | Azure AD 帐户      | 支持 | 支持 |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v1.0 和 v2.0 的可选声明集
@@ -181,7 +181,7 @@ ms.locfileid: "67536823"
 
 **表 6：OptionalClaim 类型属性**
 
-| Name                 | 类型                    | 描述                                                                                                                                                                                                                                                                                                   |
+| 名称                 | 类型                    | 描述                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |
@@ -193,7 +193,7 @@ ms.locfileid: "67536823"
 
 > [!Note]
 > - 目录架构扩展是 Azure 的仅限 AD 功能，因此如果你的应用程序清单请求自定义扩展插件，而 MSA 用户登录到您的应用程序，将不返回这些扩展。
-> - Azure AD 的可选声明仅适用于 Azure AD 扩展和不起作用的使用 Microsoft Graph 目录扩展。 这两个 Api 需要`Directory.ReadWriteAll`仅可以由管理员同意的权限。
+> - Azure AD 的可选声明仅适用于 Azure AD 扩展并不适用于 Microsoft Graph 目录扩展。 这两个 Api 需要`Directory.ReadWriteAll`仅可以由管理员同意的权限。
 
 ### <a name="directory-extension-formatting"></a>目录扩展格式设置
 
@@ -254,11 +254,11 @@ ms.locfileid: "67536823"
    }
    ```
 
-   | 可选声明架构 | 值 |
+   | 可选声明架构 | ReplTest1 |
    |----------|-------------|
    | **名称：** | 必须是"组" |
-   | **源：** | 不使用。 省略或指定 null |
-   | **重要：** | 不使用。 省略或指定 false |
+   | **源：** | 未使用。 省略或指定 null |
+   | **重要：** | 未使用。 省略或指定 false |
    | **additionalProperties:** | 其他属性的列表。  Valid options are "sam_account_name", “dns_domain_and_sam_account_name”, “netbios_domain_and_sam_account_name”, "emit_as_roles" |
 
    在只有一个"sam_account_name"，"dns_domain_and_sam_account_name"additionalProperties"netbios_domain_and_sam_account_name"是必需的。  如果存在多个，使用第一个和任何其他人所忽略。

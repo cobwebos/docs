@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: c6fcb345b49ce6354a24408ebe163fb928990252
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d527b08f3610531bef8e98a11998942411651d27
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925690"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621353"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>设置了应用程序开发人员控制分发 (ADCD) 在 IBM zD & T v1
 
@@ -21,13 +21,13 @@ ms.locfileid: "64925690"
 
 本文介绍如何设置 ADCD 实例的 zD T 在 Azure 上的环境中。 ADCDs 创建开发和测试环境中 zD 和 t。 运行完整 Z 系列操作系统实现
 
-ZD （& T），ADCDs 仅适用于 IBM 客户和合作伙伴和一样都专用于开发和测试目的。 它们将不用于生产环境。 许多 IBM 安装包是通过下载[Passport 优势](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html)或[IBM PartnerWorld](https://www-356.ibm.com/partnerworld/wps/servlet/ContentHandler/isv_com_sys_zos_adcd)。
+ZD （& T），ADCDs 仅适用于 IBM 客户和合作伙伴和一样都专用于开发和测试目的。 它们将不用于生产环境。 许多 IBM 安装包是通过下载[Passport 优势](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html)或[IBM PartnerWorld](https://www.ibm.com/partnerworld/public)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- [ZD & T 环境][ ibm-install-z]以前在 Azure 上设置了。 本文假定使用前面创建的同一个 Ubuntu 16.04 VM 映像。
+- [ZD & T 环境][ibm-install-z]以前在 Azure 上设置了。 本文假定使用前面创建的同一个 Ubuntu 16.04 VM 映像。
 
 - 对通过 IBM PartnerWorld 或 Passport 利用 ADCD 媒体的访问。
 
@@ -39,7 +39,7 @@ ZD （& T），ADCDs 仅适用于 IBM 客户和合作伙伴和一样都专用于
 
 ## <a name="download-the-installation-packages-from-passport-advantage"></a>Passport 利用从下载的安装包
 
-ADCD 媒体访问权限是必需的。 以下步骤假设你是 IBM 客户，并可以使用 Passport 优势。 可以使用 IBM 合作伙伴[IBM PartnerWorld](https://www-356.ibm.com/partnerworld/wps/servlet/ContentHandler/isv_com_sys_zos_adcd)。
+ADCD 媒体访问权限是必需的。 以下步骤假设你是 IBM 客户，并可以使用 Passport 优势。 可以使用 IBM 合作伙伴[IBM PartnerWorld](https://www.ibm.com/partnerworld/public)。
 
 > [!NOTE]
 > 本文假定 Windows PC 用于访问 Azure 门户并下载 IBM 媒体。 如果您使用的是 Mac 或 Ubuntu 桌面、 命令和用于获取 IBM 媒体的过程可能会略有不同。

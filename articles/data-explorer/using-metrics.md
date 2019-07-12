@@ -7,18 +7,18 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: a9c9f4d827d21c374bebba9d39e33b0bcad8a83e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb59fa0fe9094943dfc942d1d6e664891996c9e3
+ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826762"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67569282"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>使用指标监视 Azure 数据资源管理器的性能、运行状况和使用情况
 
 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 Azure 数据资源管理器指标提供群集资源运行状况和性能的关键指标。 使用本文中详述的独立指标可以监视特定方案中 Azure 数据资源管理器群集的运行状况和性能。 还可以将指标用作正常运行的 [Azure 仪表板](/azure/azure-portal/azure-portal-dashboards)和 [Azure 警报](/azure/azure-monitor/platform/alerts-metric-overview)的基础。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，创建[Azure 免费帐户](https://azure.microsoft.com/free/)。
 
@@ -42,7 +42,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
     **指标** | **单位** | **聚合** | **指标说明**
     |---|---|---|---|
-    | 缓存利用率 | Percent | Avg、Max、Min | 群集当前使用的已分配缓存资源百分比。 缓存是指为用户活动分配的、符合定义的缓存策略的 SSD 大小。 80% 或更低的平均缓存利用率可以维持群集的正常状态。 如果平均缓存利用率超过 80%时，则群集应[纵向扩展](manage-cluster-scale-up.md)到存储优化的定价层级，或[横向扩展](manage-cluster-scale-out.md)为更多实例。 也可以调整缓存策略（减少缓存的天数）。 如果缓存利用率超过 100%，则根据缓存策略缓存的数据大小将大于群集上的缓存总大小。 |
+    | 缓存利用率 | Percent | Avg、Max、Min | 群集当前使用的已分配缓存资源百分比。 缓存是指为用户活动分配的、符合定义的缓存策略的 SSD 大小。 80% 或更低的平均缓存利用率可以维持群集的正常状态。 如果平均缓存利用率超过 80%时，则群集应[纵向扩展](manage-cluster-vertical-scaling.md)到存储优化的定价层级，或[横向扩展](manage-cluster-horizontal-scaling.md)为更多实例。 也可以调整缓存策略（减少缓存的天数）。 如果缓存利用率超过 100%，则根据缓存策略缓存的数据大小将大于群集上的缓存总大小。 |
     | CPU | Percent | Avg、Max、Min | 群集中的计算机当前使用的已分配计算资源百分比。 80% 或更低的平均 CPU 利用率可以维持群集的正常状态。 最大 CPU 利用率值为 100%，表示没有更多的计算资源可用于处理数据。 如果某个群集的性能不佳，请检查最大 CPU 利用率值，以确定特定的 CPU 是否阻塞。 |
     | 处理的事件数（针对事件中心） | Count | Max、Min、Sum | 从事件中心读取的以及由群集处理的事件总数 事件划分为群集引擎拒绝的事件和接受的事件。 |
     | 引入延迟 | 秒 | Avg、Max、Min | 引入数据的延迟，根据从群集中收到数据，到数据可供查询的时间来测得。 引入延迟周期决于引入方案。 |

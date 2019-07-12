@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 41a57d1ad5d216797fc60ea13acff346734fdef8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7885b03e9f92fc8e8c5b2c78049760cbed8d4dc7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433631"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703960"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
@@ -173,12 +173,12 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
     下表描述了窗体上的各项元素：
 
-    | 属性 | 值 |
+    | 属性 | ReplTest1 |
     | --- | --- |
     | 选择脚本 | 要使用自己的脚本，请选择“自定义”  。 否则，请从提供的脚本中选择一个。 |
     | Name |指定脚本操作的名称。 |
     | Bash 脚本 URI |指定脚本的 URI。 |
-    | 头节点/辅助节点/Zookeeper 节点 |指定运行脚本的节点：“头节点”、“工作节点”或“ZooKeeper 节点”。    |
+    | Head/工作人员/ZooKeeper |指定运行脚本的节点：“头节点”、“工作节点”或“ZooKeeper 节点”。    |
     | Parameters |根据脚本的需要，指定参数。 |
 
     使用“持久保存此脚本操作”条目，确保在执行缩放操作期间应用该脚本  。
@@ -255,7 +255,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
     下表描述了窗体上的各项元素：
 
-    | 属性 | 值 |
+    | 属性 | ReplTest1 |
     | --- | --- |
     | 选择脚本 | 要使用自己的脚本，请选择“自定义”  。 否则，请选择提供的脚本。 |
     | Name |指定脚本操作的名称。 |
@@ -310,7 +310,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
     如果省略此命令的参数，系统会提示你指定参数。 如果指定了 `-u` 的脚本接受参数，可以使用 `-p` 参数来指定参数。
 
-    有效的节点类型包括 `headnode`、`workernode` 和 `zookeeper`。 如果应将脚本应用到多个节点类型，请指定分号 `;` 分隔的类型。 例如，`-n headnode;workernode`。
+    有效的节点类型包括 `headnode`、`workernode` 和 `zookeeper`。 如果应将脚本应用到多个节点类型，请指定分号 `;` 分隔的类型。 例如， `-n headnode;workernode` 。
 
     若要持久保存脚本，请添加 `--persistOnSuccess`。 也可以在以后使用 `azure hdinsight script-action persisted set` 持久保存脚本。
 
@@ -426,7 +426,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 3. **示例**。 对于常见的自定义组件，Microsoft 和其他人可能会提供演示如何在 HDInsight 群集上使用这些组件的示例。 我们不针对这些示例提供支持。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 可以使用 Ambari web UI 查看脚本操作记录的信息。 如果在创建群集期间脚本失败，则与该群集关联的默认存储帐户中也会提供日志。 本部分提供有关如何使用这两个选项检索日志的信息。
 

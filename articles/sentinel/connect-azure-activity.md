@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 8c25baa8-b93b-41da-9e6c-15bb7b5c5511
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 67e4bb2d0f308a3f20f0a29ec8b1f2a0d46fc082
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e329c8efd9b0e89f5f5eae41952cda9a45a95969
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204363"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620658"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>将数据从 Azure 活动日志连接
 
@@ -30,7 +31,7 @@ ms.locfileid: "65204363"
 可以从日志流式传输[Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)到 Azure Sentinel 单击一次。 活动日志是一种深入了解 Azure 中发生的订阅级别事件的订阅日志。 这包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 使用活动日志，您可以确定 ' 什么，谁，以及何时的任何写入操作 (PUT、 POST、 DELETE) 在订阅中的资源执行的。 还可以了解该操作和其他相关属性的状态。 活动日志不包括读取 (GET) 操作或使用经典的资源的操作 /"RDFE"模型。 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 具有全局管理员或安全管理员权限的用户
 

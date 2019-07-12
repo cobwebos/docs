@@ -2,24 +2,25 @@
 title: 安装和部署 IoT 代理预览版的 Azure 安全中心的 Linux C 代理指南 |Microsoft Docs
 description: 了解如何在 32 位和 64 位 Linux 上安装 IoT 代理在 Azure 安全中心。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 3ccf2aec-106a-4d2c-8079-5f3e8f2afdcb
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: mlottner
-ms.openlocfilehash: 49ebb5932e1e918330625fd0df98811873dd5cd5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f5b98060486e6c55bb1702386cd5438f558254b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200661"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616845"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>为适用于 Linux 的 IoT C 基于安全代理部署 Azure 安全中心
 
@@ -36,7 +37,7 @@ ms.locfileid: "65200661"
 > * 卸载代理
 > * 故障排除 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 有关其他平台和代理版本，请参阅[选择适当的安全代理](how-to-deploy-agent.md)。
 
@@ -87,7 +88,7 @@ ms.locfileid: "65200661"
 
     ./InstallSecurityAgent.sh -–uninstall
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 运行以下命令来检查部署状态：
 
     systemctl status ASCIoTAgent.service

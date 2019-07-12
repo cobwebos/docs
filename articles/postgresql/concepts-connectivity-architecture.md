@@ -3,15 +3,15 @@ title: Azure Database for PostgreSQL 中的连接体系结构
 description: 介绍 Azure Database for PostgreSQL 服务器的连接体系结构。
 author: kummanish
 ms.author: manishku
-ms.service: PostgreSQL
+ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 73c23c471cb12ca3a3a7df4380779b464b8d86d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d91458c555c819c4bcf97215a712719ebc5eb71
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735731"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588960"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的连接体系结构
 本文介绍 Azure Database for PostgreSQL 连接体系结构以及如何从内部和外部 Azure 客户端流量定向到 Azure Database for PostgreSQL 数据库实例。

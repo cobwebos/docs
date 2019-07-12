@@ -1,5 +1,5 @@
 ---
-title: 为基于 Linux 的 HDInsight 群集配置 OS 修补计划 - Azure
+title: 配置 OS 修补计划对于基于 Linux 的 HDInsight 群集-Azure
 description: 了解如何为基于 Linux 的 HDInsight 群集配置 OS 修补计划。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,56 +7,58 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: a73866a8898042b546fa47d9c3d14ab4e58e9a12
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: efe74618b269000749f7ba6c24d35903e540dcfb
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503236"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657052"
 ---
-# <a name="os-patching-for-hdinsight"></a>针对 HDInsight 的 OS 修补 
+# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>配置 OS 修补计划的基于 Linux 的 HDInsight 群集 
 
 > [!IMPORTANT]
-> Ubuntu 映像都可用于创建在三个月发布的新 HDInsight 群集。 自 2019 年 1 月起，系统**不**会自动修补正在运行的群集。 客户必须使用脚本操作或其他机制来修补正在运行的群集。 新创建的群集将始终包含最新的可用更新，其中包括最新的安全修补程序。
+> Ubuntu 映像都可用于创建在三个月发布的新 Azure HDInsight 群集。 截至年 1 月 2019年正在运行的群集不自动修补。 客户必须使用脚本操作或其他机制来修补正在运行的群集。 新创建的群集将始终包含最新的可用更新，其中包括最新的安全修补程序。
 
-## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>如何为基于 Linux 的 HDInsight 群集配置 OS 修补计划
-需不定期重启 HDInsight 群集中的虚拟机，以便安装重要的安全修补程序。 
+有时，必须在 HDInsight 群集中安装重要的安全修补程序来重新启动虚拟机 (Vm)。
 
-使用本文中所述的脚本操作，可以修改 OS 修补计划，如下所示：
-1. 安装所有更新或都安装内核 + 安全性仅更新或内核仅都安装更新。
-2. 立即重新启动或计划在 VM 上重启。
+通过使用本文中所述的脚本操作，可以修改 OS 修补计划，如下所示：
+
+1. 安装所有更新，或者仅内核 + 安全更新或内核更新。
+2. 立即重新启动，或计划在 VM 上的重启。
 
 > [!NOTE]  
-> 这些脚本操作将仅适用于 2016 年 8 月 1 日之后创建的基于 Linux 的 HDInsight 群集。 仅在重启 VM 后，修补程序才生效。 这些脚本不会自动应用更新的所有将来的更新周期。 运行每个时间的新更新需要安装更新并重启 VM 才能应用的脚本。
+> 本文中所述的脚本操作将仅使用 2016 年 8 月 1 日之后创建的基于 Linux 的 HDInsight 群集。 修补程序在重新启动 Vm 后才会生效。
+> 脚本操作不会自动应用更新为所有将来的更新周期。 每次必须应用新的更新以安装更新，然后重新启动 VM 运行的脚本。
 
-## <a name="how-to-use-the-script"></a>如何使用脚本 
+## <a name="add-information-to-the-script"></a>将信息添加到脚本
 
-使用此脚本需要以下信息：
-1. 安装-更新-计划的重新启动脚本位置： https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh 。
+使用脚本需要以下信息：
+
+- 安装-更新-计划的重新启动脚本位置： https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh 。
     
-   HDInsight 使用此 URI 在群集中的所有虚拟机上查找并运行脚本。 此脚本提供选项来安装更新和重新启动 VM。
+   HDInsight 使用此 URI 来查找并在群集中的所有 Vm 上运行该脚本。 此脚本提供选项来安装更新和重启 VM。
   
-2. 在计划重启脚本位置： https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh 。
+- 在计划重启脚本位置： https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh 。
     
-   HDInsight 使用此 URI 在群集中的所有虚拟机上查找并运行脚本。 此脚本重新启动 VM。
+   HDInsight 使用此 URI 来查找并在群集中的所有 Vm 上运行该脚本。 此脚本重新启动 VM。
   
-3. 应用该脚本的群集节点类型：头节点、辅助节点、zookeeper。 此脚本必须应用于群集中的所有节点类型。 如果它不应用于节点类型，然后该节点类型的虚拟机不会更新或重新启动。
+- 该脚本应用到群集节点类型是头节点、 辅助角色节点和 zookeeper。 将脚本应用到群集中的所有节点类型。 如果脚本未应用于节点类型，不会更新或重新启动该节点类型的 Vm。
 
-4. 参数：安装更新的计划重新启动脚本接受两个数字参数：
+- 安装更新的计划重新启动脚本接受两个数字参数：
 
     | 参数 | 定义 |
     | --- | --- |
-    | 内核仅安装更新 / 安装所有更新/都安装内核 + 安全性仅更新 |0 或 1 或 2。 值为 0 时 1 安装所有都更新，和两次安装内核 + 安全性都更新仅安装仅，内核都更新。 如果没有提供任何参数，默认值为 0。 |
-    | 不重启/启用计划重启/启用立即重新启动 |0 或 1 或 2。 值为 0 禁用重新启动，1 启用计划重新启动而 2 将启用立即重新启动。 如果没有提供任何参数，默认值为 0。 用户必须输入参数 1 的输入参数 2。 |
+    | 内核仅安装更新 / 安装所有更新/都安装内核 + 安全性仅更新|0、 1 或 2。 值为 0 将仅安装内核更新。 如果值为 1 将安装所有更新，以及两次都安装仅内核 + 安全更新。 如果没有提供任何参数，默认值为 0。 |
+    | 不重启/启用计划重启/启用立即重新启动 |0、 1 或 2。 值为 0 会禁用重新启动。 值为 1 启用计划的重新启动，并 2 将启用立即重新启动。 如果没有提供任何参数，默认值为 0。 用户必须更改输入的参数 1 的输入参数 2。 |
    
- 5. 参数：计划重新启动脚本接受一个数字参数：
+ - 计划重新启动脚本接受一个数字参数：
 
     | 参数 | 定义 |
     | --- | --- |
-    | 启用计划重启/启用立即重新启动 |1 或 2。 如果值为 1 启用计划重新启动 （重新启动按计划在接下来的 12-24 小时） 而 2 允许立即重新启动 （在 5 分钟内）。 如果没有提供任何参数，默认值为 1。 |  
+    | 启用计划重启/启用立即重新启动 |1 或 2。 值为 1 将启用计划重新启动 （12-24 小时内已计划）。 值为 2 将启用立即重新启动 （以 5 分钟为单位）。 如果未不指定任何参数，默认值为 1。 |  
 
-> [!NOTE] 
-> 必须将脚本标记为持久化时将应用于现有的群集。 否则，通过缩放操作创建的任何新节点都将使用默认修补计划。  如果在群集创建过程中应用该脚本，则其会自动持久化。
+> [!NOTE]
+> 必须将脚本标记为保存后将其应用于现有的群集。 否则，通过缩放操作创建的任何新节点都将使用默认修补计划。 如果将脚本应用作为群集创建过程的一部分，它具有自动持久化。
 
 
 ## <a name="next-steps"></a>后续步骤

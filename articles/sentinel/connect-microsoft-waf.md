@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 99c553145f0a600826e48bec437449f278b74fbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a308394c3cfa77f80db1361b5a49a485ee5ca0e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205641"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611352"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>从 Microsoft web 应用程序防火墙连接数据
 
@@ -30,7 +31,7 @@ ms.locfileid: "65205641"
 您可以从 Azure 应用程序网关的 Microsoft web 应用程序防火墙 (WAF) 的日志流式传输。 此 WAF 保护你的应用程序免受常见 web 漏洞，如 SQL 注入和跨站点脚本，并允许你自定义规则，以减少误报。 按照这些说明你的 Microsoft Web 应用程序防火墙日志流式传输到 Azure Sentinel。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 现有应用程序网关资源
 

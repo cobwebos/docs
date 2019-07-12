@@ -3,17 +3,17 @@ title: 常见问题-VMware CloudSimple 解决方案
 description: Azure 通过 CloudSimple VMware 解决方案的常见问题
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 05/24/19
+ms.date: 05/24/2019
 ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8cc6cf834c54ca25c12a6d66675e4290fd66136
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e187a4a75a27e206a632388f1e20a94da032eb08
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165822"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595344"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>有关通过 CloudSimple VMware 解决方案的常见问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "67165822"
 * CloudSimple 服务
 * 连接
 * 网络
-* 安全
+* 安全性
 * 计算
 * 存储
 * VMware
@@ -101,7 +101,7 @@ Azure ExpressRoute 线路提供高速、 低延迟的安全连接。 CloudSimple
 
 在 CloudSimple 门户中，可以轻松地分配新的公共 IP 地址并将其与你的虚拟机或的设备的专用 IP 地址关联。 此外可以创建新的防火墙规则或应用现有防火墙规则以允许流量从特定端口和特定设置将在门户中的 IP 地址。 有关安装过程中，请参阅[为私有云环境分配公共 IP 地址](https://docs.azure.cloudsimple.com/public-ips)。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 **我在 CloudSimple 上的安全选项有哪些？**
 

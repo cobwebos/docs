@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e04dfa4148213e88aa46e464a31cdd9b6125e0bf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60768986"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705767"
 ---
 # <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境
 
@@ -33,7 +33,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 - 使用外部 IP 地址上的 VIP，通常称为外部 ASE。
 - 使用内部 IP 地址上的 VIP，通常称为 ILB ASE，因为内部终结点是内部负载均衡器 (ILB)。
 
-本文介绍如何创建外部 ASE。 有关 ASE 的概述，请参阅[应用服务环境简介][Intro]。 若要了解如何创建 ILB ASE，请参阅[创建和使用 ILB ASE][MakeILBASE]。
+本文介绍如何创建外部 ASE。 有关 ASE 的概述，请参阅[应用服务环境简介][Intro]. For information on how to create an ILB ASE, see [Create and use an ILB ASE][MakeILBASE]。
 
 ## <a name="before-you-create-your-ase"></a>创建 ASE 前的准备工作
 
@@ -96,7 +96,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
     b. 输入新的子网名称。
 
-    c. 选择子网的大小。 请记住选择足够的大小，以容纳 ASE 的未来增长  。 建议使用 `/25`，其地址长度为 128 位且能够容纳最大尺寸的 ASE。 例如，建议不要使用 `/28`，因为仅有 16 位地址可用。 基础结构至少使用 7 个地址，Azure 网络使用另外 5 个地址。 在 `/28` 子网中，对于外部 ASE，你最多可以缩放 4 个应用服务计划，而对于 ILB ASE，只能缩放 3 个应用服务计划。
+    c. 选择子网的大小。 请记住选择足够的大小，以容纳 ASE 的未来增长  。 建议使用 `/24`，其地址长度为 128 位且能够容纳最大尺寸的 ASE。 例如，建议不要使用 `/28`，因为仅有 16 位地址可用。 基础结构至少使用 7 个地址，Azure 网络使用另外 5 个地址。 在 `/28` 子网中，对于外部 ASE，你最多可以缩放 4 个应用服务计划，而对于 ILB ASE，只能缩放 3 个应用服务计划。
 
     d. 选择子网 IP 范围。
 
@@ -132,7 +132,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
     b. 输入新的子网名称。
 
-    c. 选择子网的大小。 请记住选择足够的大小，以容纳 ASE 的未来增长  。 建议使用 `/25`，其地址长度为 128 位且能够容纳最大尺寸的 ASE。 例如，建议不要使用 `/28`，因为仅有 16 位地址可用。 基础结构至少使用 7 个地址，Azure 网络使用另外 5 个地址。 在 `/28` 子网中，对于外部 ASE，你最多可以缩放 4 个应用服务计划，而对于 ILB ASE，只能缩放 3 个应用服务计划。
+    c. 选择子网的大小。 请记住选择足够的大小，以容纳 ASE 的未来增长  。 建议使用 `/24`，其地址长度为 128 位且能够容纳最大尺寸的 ASE。 例如，建议不要使用 `/28`，因为仅有 16 位地址可用。 基础结构至少使用 7 个地址，Azure 网络使用另外 5 个地址。 在 `/28` 子网中，对于外部 ASE，你最多可以缩放 4 个应用服务计划，而对于 ILB ASE，只能缩放 3 个应用服务计划。
 
     d. 选择子网 IP 范围。
 
@@ -164,7 +164,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
     * 如果选择新的 VNet，则可指定名称和位置。 
     
-    * 新 VNet 的地址范围为 192.168.250.0/23，并拥有名为“默认”的子网。 子网定义为 192.168.250.0/24。 仅可选择一个资源管理器 VNet。 “VIP 类型”选择决定 ASE 能否从 Internet（外部）直接访问或是否使用 ILB  。 若要深入了解这些选项，请参阅[在应用服务环境中创建和使用内部负载均衡器][MakeILBASE]。 
+    * 新 VNet 的地址范围为 192.168.250.0/23，并拥有名为“默认”的子网。 子网定义为 192.168.250.0/24。 仅可选择一个资源管理器 VNet。 “VIP 类型”选择决定 ASE 能否从 Internet（外部）直接访问或是否使用 ILB  。 若要了解有关这些选项的详细信息，请参阅[创建和使用具有应用服务环境的内部负载均衡器][MakeILBASE]。 
 
       * 如果对“VIP 类型”选择“外部”，则可选择为实现基于 IP 的 SSL 而创建系统时所用的外部 IP 地址数   。 
     
@@ -176,7 +176,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 仍可创建初版应用服务环境 (ASEv1) 的实例。 若要开始该过程，请在市场内搜索“应用服务环境 v1”  。 采用与创建独立 ASE 相同的方式创建 ASE。 完成后，ASEv1 就有两个前端和两个辅助角色。 ASEv1 创建后，必须管理前端和辅助角色。 它们不会在创建应用服务计划时自动添加。 前端充当 HTTP/HTTPS 终结点，并将流量发送给辅助角色。 辅助角色是托管应用的角色。 可在创建 ASE 后，调整前端和辅助角色的数量。 
 
-若要深入了解 ASEv1，请参阅[应用服务环境 v1 简介][ASEv1Intro]。 若要深入了解如何缩放、管理和监视 ASEv1，请参阅[如何配置应用服务环境][ConfigureASEv1]。
+若要深入了解 ASEv1，请参阅[应用服务环境 v1 简介][ASEv1Intro]. For more information on scaling, managing, and monitoring ASEv1, see [How to configure an App Service Environment][ConfigureASEv1]。
 
 <!--Image references-->
 [1]: ./media/how_to_create_an_external_app_service_environment/createexternalase-create.png

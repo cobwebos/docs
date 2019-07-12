@@ -2,24 +2,25 @@
 title: 有关 IoT 预览版的 Azure 安全中心安全警报指南 |Microsoft Docs
 description: 了解有关安全警报和建议的补救措施利用 Azure 安全中心进行 IoT 功能和服务。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: db3a955cd9e572d1daca044aed75048e394e8457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6168278a51cf5a73fec0387ab61f46e201d158f9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200761"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616950"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>IoT 安全警报的 azure 安全中心
 
@@ -81,7 +82,7 @@ ms.locfileid: "65200761"
 
 ## <a name="built-in-alerts-for-iot-hub"></a>IoT 中心的内置警报
 
-| Severity | Name                                                                         | 描述                                                                                                                                                                                                                                                                                                                            |
+| Severity | 名称                                                                         | 描述                                                                                                                                                                                                                                                                                                                            |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 中型   | 已添加到 IoT 中心的新证书                                    |已添加到 IoT 中心的新证书。 如果此添加不由经过授权的参与方，则可能表示恶意活动。                                                                                                                                                                                                    |
 | 中型   | 从 IoT 中心已删除证书                                    | 从 IoT 中心已删除的证书。 如果此操作不由经过授权的参与方，则可能表示恶意活动。                                                                                                                                                                                                |
@@ -91,7 +92,7 @@ ms.locfileid: "65200761"
 | 低      | 尝试从 IoT 中心检测到删除诊断设置       | 尝试删除检测到的 IoT 中心的诊断设置。 诊断设置，可发生安全事件或泄露您的网络时重新创建的调查的活动跟踪信息。 如果此操作不由经过授权的参与方，则可能表示恶意活动。       |
 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [概述](overview.md)
 - [访问安全数据](how-to-security-data-access.md)

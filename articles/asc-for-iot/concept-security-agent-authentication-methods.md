@@ -2,24 +2,25 @@
 title: IoT 预览版的 Azure 安全中心的身份验证方法 |Microsoft Docs
 description: 使用 Azure 安全中心的 IoT 服务时，了解有关可用的不同的身份验证方法。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 10b38f20-b755-48cc-8a88-69828c17a108
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 634d1aedfaf868766e3c1bf97373b9c310885835
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d5701ae37d64e25fba981cd85deed2c4e4d87a15
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65198388"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618334"
 ---
 # <a name="security-agent-authentication-methods"></a>安全代理身份验证方法 
 
@@ -66,8 +67,8 @@ AzureIoTSecurity 代理来执行身份验证这两种方法：
 |**identity**|身份验证模式| **模块**或**设备**|
 |**type**|身份验证类型|**SymmetricKey**或**SelfSignedCertificate**|
 |**filePath**|包含的证书或对称密钥的文件的绝对完整路径| |
-|**gatewayHostname**|IoT 中心的 FQDN|示例：ContosoIotHub.azure-devices.net|
-|**deviceId**|设备 ID|示例：MyDevice1|
+|**gatewayHostname**|IoT 中心的 FQDN|例如：ContosoIotHub.azure-devices.net|
+|**deviceId**|设备 ID|例如：MyDevice1|
 |**certificateLocationKind**|证书存储位置|**本地文件**或**应用商店**|
 
 
@@ -111,7 +112,7 @@ AzureIoTSecurity 代理来执行身份验证这两种方法：
 }
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 - [安全代理概述](security-agent-architecture.md)
 - [部署安全代理](how-to-deploy-agent.md)
 - [访问原始安全数据](how-to-security-data-access.md)

@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
-ms.author: sumeet.mittal
+ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 54178ae8988266c751ae0e23ae8c5e6ef7a16f20
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e36e1ca17b5106c79076d1c62e737ba60907ab19
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544161"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666459"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -39,11 +39,12 @@ ms.locfileid: "67544161"
 - **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
 - **[Azure 事件中心](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在提供了 ADLS Gen1 的所有 Azure 区域正式发布。
+- **[Azure 应用服务](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** :在应用服务已上市的所有 Azure 区域公开发布
 
 **公共预览版**
 
 - **[Azure 容器注册表](../container-registry/container-registry-vnet.md)** :在 Azure 容器注册表是可用的所有 Azure 区域中预览可用。
-- **[Azure 应用服务](https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions)** :在应用服务已上市的所有 Azure 区域中预览可用。
+.
 
 有关最新通知，请查看 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
 

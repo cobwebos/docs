@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: baca05a9c007849d813b2f4de17378e6d18da4a5
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318472"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701732"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 源移动数据
 
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-http-connector.md)
 > * [版本 2（当前版本）](../connector-http.md)
 
@@ -39,7 +39,7 @@ ms.locfileid: "60318472"
 
 从本地 HTTP 终结点复制数据时，必须在本地环境或 Azure VM 中安装数据管理网关。 若要了解数据管理网关以及有关如何设置网关的分步说明，请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 可以使用各种工具或 API 创建包含复制活动的管道，用于从 HTTP 源移动数据：
 
@@ -66,7 +66,7 @@ ms.locfileid: "60318472"
 
 将“authenticationType”设置为“基本”、“摘要式”或“Windows”     。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
 | userName | 用于访问 HTTP 终结点的用户名。 | 是 |
 | password | 用户 (**username**) 的密码。 | 是 |
@@ -94,7 +94,7 @@ ms.locfileid: "60318472"
 
 若要使用基本身份验证，请将“authenticationType”设置为“ClientCertificate”   。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
 | embeddedCertData | PFX 文件的二进制数据的 Base64 编码内容。 | 指定是 **embeddedCertData**，还是 **certThumbprint** |
 | certThumbprint | 在网关计算机的证书存储中安装的证书的指纹。 仅当从本地 HTTP 源复制数据时才适用。 | 指定是 **embeddedCertData**，还是 **certThumbprint** |
@@ -221,7 +221,7 @@ ms.locfileid: "60318472"
 
 目前，如果复制活动中的源为 **HttpSource** 类型，则支持以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 这是获取响应而不是读取响应数据的超时。 | 否<br />（默认值：**00:01:40**） |
 

@@ -10,13 +10,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 05/22/2019
-ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/05/2019
+ms.openlocfilehash: 05ec49c98c5bcfe40346550f5570c03a8fb3f881
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66016379"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657997"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例的时区
 
@@ -30,7 +30,9 @@ ms.locfileid: "66016379"
 
 ## <a name="supported-time-zones"></a>支持的时区
 
-支持的时区集继承自托管实例的底层操作系统。 它会定期更新，以获取新的时区定义并反映对现有时区所做的更改。 
+支持的时区集继承自托管实例的底层操作系统。 它会定期更新，以获取新的时区定义并反映对现有时区所做的更改。
+
+[将更改策略，夏时制/时区](https://aka.ms/time)保证向前 2010 年历史的准确性。
 
 受支持时区名称的列表是通过 [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) 系统视图公开的。
 
@@ -43,7 +45,7 @@ ms.locfileid: "66016379"
 
 ### <a name="set-the-time-zone-through-the-azure-portal"></a>通过 Azure 门户设置时区
 
-输入新实例的参数时，请从受支持时区列表中选择一个时区。 
+输入新实例的参数时，请从受支持时区列表中选择一个时区。
   
 ![在创建实例期间设置时区](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
@@ -82,7 +84,10 @@ ms.locfileid: "66016379"
 
 ### <a name="point-in-time-restore"></a>时间点还原
 
-执行时间点还原时，要还原到的时间将解释为 UTC 时间。 此设置可避免夏时制及其潜在更改造成任何多义性。
+<del>当你执行时点还原时，还原到的时间被解释为 UTC 时间。 此设置可避免由于夏时制和其潜在更改不明确性。<del>
+
+ >[!WARNING]
+  > 还原到时间解释根据自动数据库备份来自源托管实例的时区和当前的行为不是根据上面的语句。 我们正在努力更正此行为，以解释给定的点的时间为 UTC 时间。 请参阅[已知问题](sql-database-managed-instance-timezone.md#known-issues)的更多详细信息。
 
 ### <a name="auto-failover-groups"></a>自动故障转移组
 
@@ -95,6 +100,21 @@ ms.locfileid: "66016379"
 
 - 无法更改现有托管实例的时区。
 - 从 SQL Server 代理作业启动的外部进程不会观察实例的时区。
+
+## <a name="known-issues"></a>已知问题
+
+时间点还原 (PITR) 时执行操作，还原到的时间解释根据设置，其中创建自动数据库备份的托管实例上，即使门户页 PITR 意味着时间被解释为 UTC 的时区。
+
+例如：
+
+假设其中自动备份从该实例具有东部标准时间 (UTC-5) 所在的时区设置。
+有关时点还原的门户页面会建议你选择要还原到的时间是 UTC 时间：
+
+![PITR 的本地时间使用门户](media/sql-database-managed-instance-timezone/02-pitr-with-nonutc-timezone.png)
+
+但是，若要还原到的时间实际上解释为东部标准时间，并且在此特定示例中数据库将还原到在 9 AM 东部标准时间，并不是 UTC 时间的状态。
+
+如果你想要执行的特定点 UTC 时间的时间点还原，首先计算源实例的时区中的等效时间，并使用该时间在门户或 PowerShell/CLI 脚本。
 
 ## <a name="list-of-supported-time-zones"></a>支持的时区列表
 
@@ -239,7 +259,7 @@ ms.locfileid: "66016379"
 | 萨摩亚群岛标准时间 | (UTC+13:00) 萨摩亚 |
 | 莱恩群岛标准时间 | (UTC+14:00) 基里巴斯岛 |
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>请参阅 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

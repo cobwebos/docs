@@ -2,18 +2,18 @@
 title: Azure 到 Azure 复制问题和错误的 Azure Site Recovery 故障排除 | Microsoft Docs
 description: 解决复制 Azure 虚拟机进行灾难恢复时出现的错误和问题
 services: site-recovery
-author: sujayt
+author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: sujayt
-ms.openlocfilehash: 3c87e159022b6dcf13daf2a2659c88c0529a8f48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: asgang
+ms.openlocfilehash: 1e0450554597d99aa99d6df51f22bfc90c0d92ad
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796430"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798563"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -97,29 +97,29 @@ ms.locfileid: "65796430"
 
 8.  检查是否已为证书创建使用者哈希作为符号链接。
 
-    - 命令
+    - Command
 
       ``# ls -l | grep Baltimore``
 
-    - 输出
+    - Output
 
       ``lrwxrwxrwx 1 root root   29 Jan  8 09:48 3ad48a91.0 -> Baltimore_CyberTrust_Root.pem
       -rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem``
 
-    - 命令
+    - Command
 
       ``# ls -l | grep VeriSign_Class_3_Public_Primary_Certification_Authority_G5``
 
-    - 输出
+    - Output
 
       ``-rw-r--r-- 1 root root 1774 Jun  5  2014 VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem
       lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-    - 命令
+    - Command
 
       ``# ls -l | grep DigiCert_Global_Root``
 
-    - 输出
+    - Output
 
       ``lrwxrwxrwx 1 root root   27 Jan  8 09:48 399e7759.0 -> DigiCert_Global_Root_CA.pem
       -rw-r--r-- 1 root root 1380 Jun  5  2014 DigiCert_Global_Root_CA.pem``
@@ -139,11 +139,11 @@ ms.locfileid: "65796430"
 
 14. 检查文件是否存在。  
 
-    - 命令
+    - Command
 
       ``# ls -l 653b494a.0 b204d74a.0 3513523f.0``
 
-    - 输出
+    - Output
 
       ``-rw-r--r-- 1 root root 1774 Jan  8 09:52 3513523f.0
       -rw-r--r-- 1 root root 1303 Jan  8 09:52 653b494a.0
@@ -156,7 +156,7 @@ ms.locfileid: "65796430"
 
 ### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>问题 1：未能向 Site Recovery 注册 Azure 虚拟机 (151195) </br>
 - **可能的原因** </br>
-  - 由于 DNS 解析失败而无法建立到 Site Recovery 终结点的连接。
+  - 无法连接由于 DNS 解析失败的 Site Recovery 终结点。
   - 在重新保护期间，对虚拟机进行故障转移但无法从 DR 区域访问 DNS 服务器时经常会出现此问题。
 
 - **解决方法**
@@ -175,7 +175,7 @@ ms.locfileid: "65796430"
       - 如果将来要向 Azure Active Directory (AAD) 添加新地址，则需要创建新的 NSG 规则。
 
 > [!NOTE]
-> 如果虚拟机位于**标准**内部负载均衡器之后，则默认情况下无法访问 O365 IP，即 默认情况下 login.micorsoftonline.com。 请将其更改为**基本**内部负载均衡器类型或创建[此文](https://aka.ms/lboutboundrulescli)中提到的出站访问权限。
+> 如果虚拟机位于**标准**内部负载均衡器之后，则默认情况下无法访问 O365 IP，即 默认情况下 login.microsoftonline.com。 请将其更改为**基本**内部负载均衡器类型或创建[此文](https://aka.ms/lboutboundrulescli)中提到的出站访问权限。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>问题 3：Site Recovery 配置失败 (151197)
 - **可能的原因** </br>
@@ -187,23 +187,23 @@ ms.locfileid: "65796430"
 
 ### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>问题 4：当网络流量通过本地代理服务器时 A2A 复制失败 (151072)
 - **可能的原因** </br>
-  - 自定义代理设置无效，并且 ASR 移动服务代理未在 IE 中自动检测到代理设置
+  - 自定义代理设置无效，Azure Site Recovery 移动服务代理没有自动的检测到 IE 中的代理设置
 
 
 - **解决方法**
   1. 移动服务代理通过 Windows 上的 IE 和 Linux 上的 /etc/environment 检测代理设置。
-  2. 如果只想对 ASR 移动服务设置代理，可在位于以下路径的 ProxyInfo.conf 中提供代理详细信息：</br>
+  2. 如果想要设置 Azure Site Recovery 移动服务代理，则可以提供 ProxyInfo.conf 位于中的代理详细信息：</br>
      - ***Linux*** 上的 ``/usr/local/InMage/config/``
      - ***Windows*** 上的 ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
   3. ProxyInfo.conf 应包含采用以下 INI 格式的代理设置。</br>
                 *[proxy]*</br>
                 *Address=http://1.2.3.4*</br>
                 *Port=567*</br>
-  4. ASR 移动服务代理仅支持***未经身份验证的代理***。
+  4. Azure Site Recovery 移动服务代理仅支持***未经过身份验证代理***。
 
 
 ### <a name="fix-the-problem"></a>解决问题
-若要将[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)加入允许列表，请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤执行操作。
+若要允许[所需的 Url](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)，按照中的步骤[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)。
 
 ## <a name="disk-not-found-in-the-machine-error-code-150039"></a>在计算机中找不到磁盘（错误代码 150039）
 
@@ -232,17 +232,42 @@ ms.locfileid: "65796430"
  ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
 2. 要关闭警告， 请转到“复制的项”>“VM”> 在“概述”部分下单击“关闭警报”。
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
-## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>无法查看"启用复制"中的选定内容的 Azure VM 或资源组
 
- **原因 1：资源组和源虚拟机位于不同的位置** <br>
-Azure Site Recovery 当前源区域的资源组和虚拟机的要求应放置在同一位置。 如果不是这种情况，那么在保护期间将无法找到虚拟机。 作为一种解决方法，可以启用从虚拟机而不是恢复服务保管库的复制。 转到 Sourece VM > 属性 > 灾难恢复和启用复制。
 
-**原因 2：资源组不是所选订阅的一部分** <br>
-如果资源组不是给定订阅的一部分，则可能无法在保护期间找到该资源组。 确保资源组属于正在使用的订阅。
+## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information--error-code-150225"></a>从保管库已完成，但信息 （错误代码 150225） 中删除虚拟机
+虚拟机的保护时，Azure Site Recovery 源虚拟机上创建一些链接。 当您删除保护或禁用复制时，Azure Site Recovery 清除作业的一部分删除下面的链接。 在虚拟机具有资源锁的情况下作业获取完成的信息。 它指示已从恢复服务保管库中删除虚拟机，但一些过时的链接无法在源计算机从清理。
 
- **原因 3：过时配置** <br>
-如果看不到要为其启用复制的虚拟机，可能是因为有过时的 Site Recovery 配置保留在 Azure VM 中。 在以下情况中，过时配置可能会留在 Azure VM 上：
+如果不想在以后再次保护此虚拟机，则可以忽略此警告。 但是，如果您需要更高版本保护此虚拟机然后你应该清理链接中执行以下步骤所述。 
 
+**如果您不干净然后：**
+
+1.  启用恢复服务保管库中的复制期间，虚拟机将不会列出。 
+2.  如果你尝试保护 VM**虚拟机 > 设置 > 灾难恢复**它将失败，出现错误"*无法启用复制，由于 VM上现有的过时的资源链接*".
+
+
+### <a name="fix-the-problem"></a>解决问题
+
+>[!NOTE]
+>
+>Azure Site Recovery 不会删除源虚拟机或执行以下步骤时以任何方式影响它。
+>
+
+1. 从 VM 或 VM 中删除该锁的资源组。 例如：以下 VM 名称"MoveDemo"具有需要删除的资源锁。
+
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. 下载脚本[删除过时的 Azure Site Recovery 配置](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)。
+3. 执行脚本*Cleanup-stale-asr-config-Azure-VM.ps1*。
+4. 提供订阅 ID，VM 资源组和 VM 名称作为参数。
+5. 如果要求提供 Azure 凭据，请提供，并检查该脚本获取执行无任何错误。 
+
+
+## <a name="replication-cannot-be-enabled-because-of-the-existing-stale-resource-links-on-the-vm-error-code-150226"></a>无法启用复制，由于 VM （错误代码 150226） 上的现有过时的资源链接
+
+**原因：虚拟机的配置已过期从右向左，从以前的 Site Recovery 保护**
+
+在以下情况中，过时配置可能会留在 Azure VM 上：
+
+- 使用 Site Recovery 启用 Azure VM 的复制，然后禁用复制，但**源 VM 具有资源锁**。
 - 使用 Site Recovery 为 Azure VM 启用复制，然后删除 Site Recovery 保管库，而不在 VM 上明确禁用复制。
 - 使用 Site Recovery 为 Azure VM 启用复制，然后删除包含 Site Recovery 保管库的资源组，而不在 VM 上明确禁用复制。
 
@@ -250,9 +275,52 @@ Azure Site Recovery 当前源区域的资源组和虚拟机的要求应放置在
 
 >[!NOTE]
 >
->请确保在使用以下脚本之前更新“AzureRM.Resources”模块。
+>Azure Site Recovery 不会删除源虚拟机或执行以下步骤时以任何方式影响它。
 
-可使用[删除过时 ASR 配置脚本](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)，删除 Azure VM 上的过时 Site Recovery 配置。 删除过时配置后，应能够看到该 VM。
+
+1. 从 VM 或 VM 中删除该锁的资源组，如果有的话。 例如：  以下 VM 名称"MoveDemo"具有需要删除的资源锁。
+   
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. 下载脚本[删除过时的 Azure Site Recovery 配置](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)。
+3. 执行脚本*Cleanup-stale-asr-config-Azure-VM.ps1*。
+4. 提供订阅 ID，VM 资源组和 VM 名称作为参数。
+5. 如果要求提供 Azure 凭据，请提供，并检查该脚本获取执行无任何错误。  
+
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>无法查看"启用复制"中的选定内容的 Azure VM 或资源组
+
+ **原因 1：资源组和源虚拟机位于不同的位置**
+ 
+Azure Site Recovery 当前源区域的资源组和虚拟机的要求应放置在同一位置。 如果不是这样您将无法保护期间找到的虚拟机或资源组。 
+
+**解决方法是**，可以启用从虚拟机而不是恢复服务保管库的复制。 转到源 VM > 属性 > 灾难恢复和启用复制。
+
+**原因 2：资源组不是所选订阅的一部分**
+
+如果资源组不是给定订阅的一部分，则可能无法在保护期间找到该资源组。 确保资源组属于正在使用的订阅。
+
+ **原因 3：过时配置**
+ 
+如果看不到要为其启用复制的虚拟机，可能是因为有过时的 Site Recovery 配置保留在 Azure VM 中。 在以下情况中，过时配置可能会留在 Azure VM 上：
+
+- 使用 Site Recovery 为 Azure VM 启用复制，然后删除 Site Recovery 保管库，而不在 VM 上明确禁用复制。
+- 使用 Site Recovery 为 Azure VM 启用复制，然后删除包含 Site Recovery 保管库的资源组，而不在 VM 上明确禁用复制。
+
+- 使用 Site Recovery 启用 Azure VM 的复制，然后禁用复制，但源 VM 具有资源锁。
+
+### <a name="fix-the-problem"></a>解决问题
+
+> [!NOTE]
+>
+> 请确保在使用以下脚本之前更新“AzureRM.Resources”模块。 Azure Site Recovery 不会删除源虚拟机或执行以下步骤时以任何方式影响它。
+>
+
+1. 从 VM 或 VM 中删除该锁的资源组，如果有的话。 例如：  以下 VM 名称"MoveDemo"具有需要删除的资源锁。
+
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. 下载脚本[删除过时配置](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)。
+3. 执行脚本*Cleanup-stale-asr-config-Azure-VM.ps1*。
+4. 提供订阅 ID，VM 资源组和 VM 名称作为参数。
+5. 如果要求提供 Azure 凭据，请提供，并检查该脚本获取执行无任何错误。
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>无法选择虚拟机进行保护
  **原因 1：虚拟机安装的某些扩展处于失败或无响应状态** <br>
@@ -362,8 +430,8 @@ Few examples: </br>
 
 If the LVM device doesn't exist, fix either by creating it or remove the parameter for the same from the GRUB configuration files and then retry the enable protection. </br>
 
-## Site recovery mobility service update completed with warnings ( error code 151083)
-Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  site recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
+## Site Recovery mobility service update completed with warnings ( error code 151083)
+Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  Site Recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
 **Please note** that this is just a warning and existing replication keeps on working even after the new agent update. You can choose to reboot anytime you want to get the benefits of new filter driver but if you don't reboot than also old filter driver keeps on working. Apart from filter driver, **benefits of  any other enhancements and fixes in mobility service get realized without any reboot when the agent gets updated.**  
 
 

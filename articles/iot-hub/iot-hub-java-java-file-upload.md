@@ -9,24 +9,24 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 3658b57d003ddc5429c6857f88044376fe1aaa93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27cdada0bfbb4236e16d17c263aaba0f4f5c511f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399067"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620136"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中心将文件从设备上传到云
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-本教程的内容基于[使用 IoT 中心发送云到设备的消息](iot-hub-java-java-c2d.md)教程中所述的代码，介绍如何使用 [IoT 中心的文件上传功能](iot-hub-devguide-file-upload.md)将文件上传到 [Azure Blob 存储](../storage/index.yml)。 本教程介绍如何：
+本教程中的代码为基础[发送云到设备消息通过 IoT 中心](iot-hub-java-java-c2d.md)教程向您展示如何使用[文件上传功能的 IoT 中心](iot-hub-devguide-file-upload.md)若要将文件上载到[Azure blob存储](../storage/index.yml)。 本教程介绍如何：
 
 * 安全提供具有 Azure blob URI 的设备，用于上传文件。
 
 * 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-[将遥测数据发送到 IoT 中心 (Java)](quickstart-send-telemetry-java.md) 和[使用 IoT 中心发送云到设备的消息 (Java)](iot-hub-java-java-c2d.md) 教程介绍了 IoT 中心提供的基本的设备到云和云到设备消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+[将遥测从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)快速入门和[发送云到设备消息通过 IoT 中心](iot-hub-java-java-c2d.md)IoT 的基本设备到云和云到设备消息传送功能教程中心。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频
@@ -37,7 +37,7 @@ ms.locfileid: "60399067"
 
 在本教程的最后，将运行两个 Java 控制台应用：
 
-* **simulated-device**，这是 [使用 IoT 中心发送云到设备的消息] 教程中创建的应用的修改版本。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
+* **模拟设备**，[使用 IoT 中心发送云到设备消息] 教程中创建的应用的修改的版本。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
 
 * **read-file-upload-notification**，它可以接收来自 IoT 中心的文件上传通知。
 
@@ -56,7 +56,7 @@ ms.locfileid: "60399067"
 
 ## <a name="upload-a-file-from-a-device-app"></a>从设备应用上传文件
 
-本部分中的操作将会修改在[使用 IoT 中心发送云到设备的消息](iot-hub-java-java-c2d.md)中创建的设备应用，以便将文件上传到 IoT 中心。
+在本部分中，会修改中创建的设备应用[发送云到设备消息通过 IoT 中心](iot-hub-java-java-c2d.md)文件上传到 IoT 中心。
 
 1. 将一个图像文件复制到 `simulated-device` 文件夹并将其重命名为 `myimage.png`。
 
@@ -265,7 +265,9 @@ mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 在本教程中，你已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 可以使用以下文章继续探索 IoT 中心功能和方案：
 
 * [以编程方式创建 IoT 中心](iot-hub-rm-template-powershell.md)
+
 * [C SDK 简介](iot-hub-device-sdk-c-intro.md)
+
 * [Azure IoT SDK](iot-hub-devguide-sdks.md)
 
 若要进一步探索 IoT 中心的功能，请参阅：

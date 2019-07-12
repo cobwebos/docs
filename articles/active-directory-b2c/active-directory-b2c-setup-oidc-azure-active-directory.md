@@ -1,5 +1,5 @@
 ---
-title: 设置 Azure Active Directory 组织的登录 - Azure Active Directory B2C | Microsoft Docs
+title: 设置了登录 Azure Active Directory 组织的 Azure Active Directory B2C
 description: 在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 28dbf0382ac151857e72d4bb59e207f07c8ad3f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b867a7f9ffeab3d243c8c094830aa0984cffd04a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508424"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654201"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织
 
@@ -32,19 +32,19 @@ ms.locfileid: "66508424"
 2. 请确保使用的是包含 Azure AD 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含 Azure AD 租户的目录  。 此租户与 Azure AD B2C 租户不同。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”   。
 4. 选择“新注册”。 
-5. 输入应用程序的名称。 例如，`Azure AD B2C App`。
+5. 输入应用程序的名称。 例如， `Azure AD B2C App` 。
 6. 对于此应用程序，接受选择“仅此组织目录中的帐户”  。
 7. 对于“重定向 URI”  ，接受值 **Web**，并以全小写字母输入以下 URL，其中 `your-B2C-tenant-name` 将替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`：
 
     ```
-    https://your--B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
+    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
     现在，所有 URL 都应使用 [b2clogin.com](b2clogin.md)。
 
 8. 单击“注册”  。 复制“应用程序(客户端) ID”供以后使用  。
 9. 在应用程序菜单中依次选择“证书和机密”、“新建客户端机密”。  
-10. 输入客户端密码的名称。 例如，`Azure AD B2C App Secret`。
+10. 输入客户端密码的名称。 例如， `Azure AD B2C App Secret` 。
 11. 选择到期期限。 对于此应用程序，接受选项“1 年内”  。
 12. 选择“添加”  ，然后复制显示的新客户端密码的值，以便以后使用。
 
@@ -63,10 +63,10 @@ ms.locfileid: "66508424"
     ```
 
 8. 对于“客户端 ID”  ，输入先前记录的应用程序 ID；对于“客户端密码”  ，输入先前记录的客户端密码。
-9. （可选）输入  Domain_hint 的值。 例如，`ContosoAD`。 在请求中使用 domain_hint 引用此标识提供者时会用到该值  。 
-10. 单击“确定”。 
+9. （可选）输入  Domain_hint 的值。 例如， `ContosoAD` 。 在请求中使用 domain_hint 引用此标识提供者时会用到该值  。
+10. 单击 **“确定”** 。
 11. 选择“映射此标识提供者的声明”  并设置以下声明：
-    
+
     - 在“用户 ID”中输入 `oid`  。
     - 在“显示名称”中输入 `name`  。
     - 在“名字”中输入 `given_name`  。

@@ -4,7 +4,7 @@ description: 使用虚拟机扩展在 Windows 虚拟机上部署 Log Analytics �
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/29/2019
 ms.author: roiyz
-ms.openlocfilehash: fb931d5ce72b21cb17abbcd11095dbc8d611f0c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b9d0e582b77dc06e1655a7bdb57ee232c603bc86
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064429"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706666"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 虚拟机扩展
 
@@ -28,7 +28,7 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -42,7 +42,7 @@ Windows 的 Log Analytics 代理扩展支持以下版本的 Windows 操作系统
 
 | Log Analytics Windows 代理捆绑包版本 | Azure 监视 Windows VM 扩展版本 | 发布日期 | 发行说明 |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> 添加了代理服务器连接 （WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH 支持） 时禁用默认凭据的功能 </li></ul>|
+| 10.20.18001 | 1.0.18001 | 2019 年 7 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> 添加了代理服务器连接 （WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH 支持） 时禁用默认凭据的功能 </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>次要稳定的修补程序 </li></ul> |
 | 10.19.10006 | 不适用 | 2018 年 12 月 | <ul><li> 次要稳定的修补程序 </li></ul> | 
 | 8.0.11136 | 不适用 | 2018 年 9 月 |  <ul><li> 添加了的对检测上 VM 移动的资源 ID 更改 </li><li> 添加了的对报告的资源 ID 时使用非扩展安装 </li></ul>| 

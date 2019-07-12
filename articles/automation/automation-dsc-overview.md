@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b486c30827ee67b58cbdc0027c8221cceed02e51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5d4657f87b0a6cbae0699c5a2f95773ff55f633
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235948"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798447"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
 
@@ -41,7 +41,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 
 使用 Azure Automation State Configuration 进行管理的节点将详细的报表状态数据发送到内置拉取服务器。 可以将 Azure Automation State Configuration 配置为将此数据发送到 Log Analytics 工作区。 若要了解如何将 State Configuration 状态数据发送到 Log Analytics 工作区，请参阅[将 Azure Automation State Configuration 报表数据转发到 Azure Monitor 日志](automation-dsc-diagnostics.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在使用 Azure Automation State Configuration (DSC) 时，请考虑以下要求。
 
@@ -81,6 +81,10 @@ Ubuntu  | 18.04
 * 全局 URL：*.azure-automation.net
 * 美国弗吉尼亚州政府的全局 URL：*.azure-automation.us
 * 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.net
+
+这提供了要与 Azure 自动化通信的托管节点的网络连接。
+如果你使用的 DSC 资源，如节点之间进行通信[WaitFor * 资源](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource)，还需要允许节点之间的流量。
+请参阅文档以了解这些网络要求每个 DSC 资源。
 
 #### <a name="proxy-support"></a>代理支持
 

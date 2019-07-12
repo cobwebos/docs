@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.subservice: hybrid
-ms.author: martincoetzer
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96b5e8ab63c1784ff073c7ba38cd4a6319db43c5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a20a1a1009949aa2e6de8586040e918ae15c8d39
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452730"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655944"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 的强大的标识基础的四个步骤
 
@@ -147,7 +147,7 @@ MFA[登录报表](https://docs.microsoft.com/azure/active-directory/authenticati
 
 ### <a name="self-service-app-management"></a>自助服务应用程序管理
 
-你的用户可以自己发现其访问面板中的应用程序之前，需要启用[自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access)到你想要允许用户自行发现并请求任何应用程序访问。 自助服务应用程序访问是允许用户自行发现应用程序并 （可选） 允许业务组批准对这些应用程序的访问的好办法。 您可以允许业务组来管理分配给用户的凭据[在应用程序密码单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-the-application-for-password-single-sign-on)直接从其访问面板。
+你的用户可以自己发现其访问面板中的应用程序之前，需要启用[自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access)到你想要允许用户自行发现并请求任何应用程序访问。 自助服务应用程序访问是允许用户自行发现应用程序并 （可选） 允许业务组批准对这些应用程序的访问的好办法。 您可以允许业务组来管理分配给用户的凭据[在应用程序密码单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app)直接从其访问面板。
 
 ### <a name="self-service-group-management"></a>自助组管理
 
@@ -212,7 +212,7 @@ Azure AD Connect 和 AD FS 可生命周期管理和身份验证都可能会破�
 
 *"使用 Cloud App Security，我们可以快速找出异常并采取措施。"* --- [Eric LePenske 高级管理器中，信息安全 Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 有很多方面实现混合标识解决方案，但此四步清单将帮助你快速完成将使用户能够提高工作效率和安全的标识基础结构。
 

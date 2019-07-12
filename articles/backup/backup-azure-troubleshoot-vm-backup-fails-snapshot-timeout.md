@@ -7,14 +7,14 @@ manager: saurabhsensharma
 keywords: Azure 备份；VM 代理；网络连接；
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 12/03/2018
-ms.author: saurabhsensharma
-ms.openlocfilehash: 5abaa040b22000a300fba22590866846f6dbbd4a
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.date: 07/05/2019
+ms.author: saurse
+ms.openlocfilehash: 1bfc862a7063a023fd148e5504b3baa7fb275229
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565674"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704967"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 

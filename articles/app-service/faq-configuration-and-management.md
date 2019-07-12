@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 88051c45f21bdf11807ffcc63d8248cba81ae70b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec2580f0c71c98c7a03f3326cb1b8ff539109ee0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66137064"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720030"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -30,7 +30,7 @@ ms.locfileid: "66137064"
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>如果要移动应用服务资源，则是否有我应该注意的限制？
 
-如果你计划将应用服务资源移动到新的资源组或订阅，则需要注意几个限制。 有关详细信息，请参阅[应用服务限制](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations)。
+如果你计划将应用服务资源移动到新的资源组或订阅，则需要注意几个限制。 有关详细信息，请参阅[应用服务限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)。
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>如何为 Web 应用使用自定义域名？
 
@@ -56,11 +56,11 @@ ms.locfileid: "66137064"
 
 当前，Azure Application Insights 不支持移动操作。 如果原始资源组包括 Application Insights 资源，则无法移动该资源。 如果在尝试移动应用服务应用时包括了 Application Insights 资源，则整个移动操作会失败。 不过，即使 Application Insights 和应用服务计划不与应用位于同一资源组中，应用也可以正常运行。
 
-有关详细信息，请参阅[应用服务限制](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations)。
+有关详细信息，请参阅[应用服务限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)。
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>我可以在何处找到指导清单并详细了解资源移动操作？
 
-[应用服务限制](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations)演示如何将资源移到新订阅，或移到同一个订阅中的新资源组。 可以获取有关资源移动清单的信息、了解支持移动操作的服务以及详细了解应用服务限制和其他主题。
+[应用服务限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)演示如何将资源移到新订阅，或移到同一个订阅中的新资源组。 可以获取有关资源移动清单的信息、了解支持移动操作的服务以及详细了解应用服务限制和其他主题。
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>如何为 Web 应用设置服务器时区？
 
@@ -70,7 +70,7 @@ ms.locfileid: "66137064"
 2. 在“应用设置”  下，添加此设置：
     * 键 = WEBSITE_TIME_ZONE
     * 值 = *所需时区*
-3. 选择“保存”。 
+3. 选择**保存**。
 
 有关可接受的值，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”  列。
 

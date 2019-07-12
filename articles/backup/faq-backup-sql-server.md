@@ -7,13 +7,13 @@ manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: sachdevaswati
-ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijayts
+ms.openlocfilehash: b5e6b1b07f986228eef66e2e92fb9ac3caef32fa
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700168"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704828"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关在 Azure VM 备份运行的 SQL Server 数据库的常见问题解答
 
@@ -59,13 +59,13 @@ ms.locfileid: "64700168"
 根据 SQL 限制可以运行复制仅完整备份，对辅助副本;但是，不允许完整备份。
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>可以保护可用性组的本地？
-不。 Azure 备份来保护在 Azure 中运行的 SQL Server 数据库。 如果某一可用性组 (AG) 跨 Azure 和本地计算机之间，仅当主副本运行在 Azure 中，可以保护可用性组。 此外，Azure 备份会保护仅在恢复服务保管库所在的同一 Azure 区域中运行的节点。
+否。 Azure 备份来保护在 Azure 中运行的 SQL Server 数据库。 如果某一可用性组 (AG) 跨 Azure 和本地计算机之间，仅当主副本运行在 Azure 中，可以保护可用性组。 此外，Azure 备份会保护仅在恢复服务保管库所在的同一 Azure 区域中运行的节点。
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>可以跨区域保护可用性组？
 Azure 备份恢复服务保管库可以检测并保护在与保管库位于同一区域中的所有节点。 如果 SQL Server Always On 可用性组跨多个 Azure 区域，将备份从主节点的区域设置。 Azure 备份可根据备份首选项检测并保护可用性组中的所有数据库。 当不满足您的备份首选项时，备份将失败，并获取故障警报。
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>成功的备份作业是否会创建警报？
-不。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 记录有关门户警报的详细的行为[此处](backup-azure-monitoring-built-in-monitor.md)。 但是，感兴趣的情况下是否有警报甚至对于成功的作业，你可以使用[使用 Azure Monitor 监视](backup-azure-monitoring-use-azuremonitor.md)。
+否。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 记录有关门户警报的详细的行为[此处](backup-azure-monitoring-built-in-monitor.md)。 但是，感兴趣的情况下是否有警报甚至对于成功的作业，你可以使用[使用 Azure Monitor 监视](backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>可以看到备份作业菜单中的计划备份作业？
 **备份作业**菜单将只显示即席备份作业。 对于计划的作业使用[使用 Azure Monitor 监视](backup-azure-monitoring-use-azuremonitor.md)。

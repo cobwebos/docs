@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172935"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673240"
 ---
 预热缓存   
 启用 ReadOnly 主机缓存的磁盘能够提供比磁盘限制更高的 IOPS。 若要通过主机缓存来实现此最大读取性能，首先必须对此磁盘的缓存进行预热。 这样可确保需要通过基准测试工具在 CacheReads 卷上实现的读取 IO 实际上可以直接命中缓存而不是磁盘。 命中缓存导致单个启用缓存的磁盘可以实现额外的 IOPS。
@@ -25,7 +25,7 @@ ms.locfileid: "67172935"
 
 ### <a name="iometer"></a>Iometer
 
-在 VM 上[下载 Iometer 工具](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download)。
+在 VM 上[下载 Iometer 工具](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download)。
 
 #### <a name="test-file"></a>测试文件
 
@@ -62,24 +62,24 @@ Iometer 使用一个测试文件，该文件存储在运行基准测试的卷上
 
 1. 使用显示在下面的值创建两个访问规范：
 
-   | Name | 请求大小 | 随机百分比 | 读取百分比 |
+   | 名称 | 请求大小 | 随机百分比 | 读取百分比 |
    | --- | --- | --- | --- |
    | RandomWrites\_1MB |1 MB |100 |0 |
    | RandomReads\_1MB |1 MB |100 |100 |
 1. 运行 Iometer 测试，以便使用以下参数初始化缓存磁盘。 针对目标卷使用三个工作线程，队列深度为 128。 在“测试设置”选项卡上将测试的“运行时间”持续时间设置为 2 小时。
 
-   | 场景 | 目标卷 | Name | Duration |
+   | 应用场景 | 目标卷 | 名称 | Duration |
    | --- | --- | --- | --- |
    | 初始化缓存磁盘 |CacheReads |RandomWrites\_1MB |2 小时 |
 1. 运行 Iometer 测试，以便使用以下参数预热缓存磁盘。 针对目标卷使用三个工作线程，队列深度为 128。 在“测试设置”选项卡上将测试的“运行时间”持续时间设置为 2 小时。
 
-   | 场景 | 目标卷 | Name | 持续时间 |
+   | 应用场景 | 目标卷 | 名称 | 持续时间 |
    | --- | --- | --- | --- |
    | 预热缓存磁盘 |CacheReads |RandomReads\_1MB |2 小时 |
 
 预热缓存磁盘后，继续执行下面列出的测试方案。 若要运行 Iometer 测试，请为**每个**目标卷使用至少三个工作线程。 对于每个工作线程，请选择目标卷并设置队列深度，并选择一个保存的测试规范（如下表所示），以便运行相应的测试方案。 该表还显示了运行这些测试时 IOPS 和吞吐量的预期结果。 所有方案都使用 8 KB 的较小 IO 大小，而队列深度则较高，为 128。
 
-| 测试方案 | 目标卷 | Name | 结果 |
+| 测试方案 | 目标卷 | 名称 | 结果 |
 | --- | --- | --- | --- |
 | 最大 读取 IOPS |CacheReads |RandomWrites\_8K |50,000 IOPS |
 | 最大 写入 IOPS |NoCacheWrites |RandomReads\_8K |64,000 IOPS |

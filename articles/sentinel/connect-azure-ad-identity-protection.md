@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 91c870e5-2669-437f-9896-ee6c7fe1d51d
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 10dc31e21f20618450de6d99b3fce40d63272d31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c88c157c5f37bb0bd1e82225bdacfbd60806bbf8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204371"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620638"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>从 Azure AD Identity Protection 连接数据
 
@@ -30,7 +31,7 @@ ms.locfileid: "65204371"
 可以从日志流式传输[Azure AD Identity Protection](https://docs.microsoft.com/azure/information-protection/reports-aip)到 Azure Sentinel 流到 Azure Sentinel 若要查看的仪表板、 创建自定义警报和改进的调查的警报。 Azure Active Directory Identity Protection 提供存在风险的用户、 风险事件和漏洞的综合的视图，能够立即修复风险，并设置策略以自动修复以后的事件。 该服务基于 Microsoft 保护用户身份的经验，并获得超过一天的 13 亿个日志的项的信号的准确性。 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 您必须具有[Azure Active Directory Premium P1 或 P2 许可证](https://azure.microsoft.com/pricing/details/active-directory/)
 - 具有全局管理员或安全管理员权限的用户

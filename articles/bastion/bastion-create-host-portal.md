@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4a52383e6ab24c6ae1e2be0b67293d65dfa04466
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 65116ebbd6a66241a5b35a39f3dfb8f826a3745f
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477886"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594276"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>创建 Azure 堡垒主机 （预览）
 
@@ -57,7 +57,7 @@ ms.locfileid: "67477886"
     * **子网**：新的堡垒主机资源将部署到的虚拟网络中的子网。 必须创建使用的名称值的子网**AzureBastionSubnet**。 此值可以让 Azure 知道堡垒将资源部署到的子网。 这是不同于网关子网。 我们强烈建议使用至少为/27 或更大子网 （/ 27、 / 26 等）。 创建**AzureBastionSubnet**没有任何网络安全组的情况下将路由表或委派。
     * **公共 IP 地址**：将在其 （通过端口 443） 中访问 RDP/SSH 守护资源的公共 IP。 创建新的公共 IP，或使用一个现有。 公共 IP 地址必须在要创建的堡垒资源所在的同一区域中。
     * **公共 IP 地址名称**：公共 IP 地址资源的名称。
-    * **公共 IP 地址 SKU**:默认情况下预填充**标准**。
+    * **公共 IP 地址 SKU**:默认情况下预填充**标准**。 Azure 堡垒使用/支持仅标准的公共 IP SKU。
     * **分配**:默认情况下预填充**静态**。
 
 1. 完成指定设置，请单击**查看 + 创建**。 此验证的值。 验证后，可以开始创建过程。

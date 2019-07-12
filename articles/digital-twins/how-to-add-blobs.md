@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9490772226ecdb90cdd2e0b98fe8336b91db6044
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c61544ce10c5a7d16b3ffc0009039e27f5feecb1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754499"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670801"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>将 Blob 添加到 Azure 数字孪生中的对象
 
@@ -36,7 +36,7 @@ Azure 数字孪生支持将 Blob 附加到设备、空间和用户。 Blob 可�
 
 四个主要 JSON 架构是：
 
-[![JSON 架构](media/how-to-add-blobs/blob-models.PNG)](media/how-to-add-blobs/blob-models.PNG#lightbox)
+[![JSON 架构](media/how-to-add-blobs/blob-models-img.png)](media/how-to-add-blobs/blob-models-img.png#lightbox)
 
 JSON Blob 元数据符合以下模型：
 
@@ -51,11 +51,11 @@ JSON Blob 元数据符合以下模型：
   }
 ```
 
-| 特性 | Type | 描述 |
+| 特性 | type | 描述 |
 | --- | --- | --- |
 | **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
-| **name** |String | Blob 的用户友好名称 |
-| **type** | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
+| **名称** |字符串 | Blob 的用户友好名称 |
+| **type** | 字符串 | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
 | **typeId** | Integer | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
 | **subtype** | String | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
 | **subtypeId** | Integer | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
@@ -108,19 +108,19 @@ Swagger 文档完整详细地介绍了这些模型架构。
 }
 ```
 
-| 特性 | Type | 描述 |
+| 特性 | type | 描述 |
 | --- | --- | --- |
-| **id** | String | Blob 的唯一标识符 |
-| **name** |String | Blob 的用户友好名称 |
-| **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
-| **type** | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
+| **id** | 字符串 | Blob 的唯一标识符 |
+| **名称** |String | Blob 的用户友好名称 |
+| **parentId** | 字符串 | 要与 Blob 关联的父实体（空间、设备或用户） |
+| **type** | 字符串 | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
 | **typeId** | Integer | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
 | **subtype** | String | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
 | **subtypeId** | Integer | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
-| **sharing** | String | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
+| **sharing** | 字符串 | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
 | **description** | String | Blob 的自定义说明 |
 | **contentInfos** | Array | 指定包括版本的非结构化元数据信息 |
-| **fullName** | String | Blob 的全名 |
+| **fullName** | 字符串 | Blob 的全名 |
 | **spacePaths** | String | 空间路径 |
 
 Blob 元数据始终提供为具有 **Content-Type** `application/json` 的第一个区块，或提供为 `.json` 文件。 文件数据在第二个区块中提供，可以是任何受支持的 MIME 类型。
@@ -159,7 +159,7 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| 值 | 替换为 |
+| ReplTest1 | 替换为 |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | 多部分内容边界名称 |
 
@@ -183,7 +183,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 最后，[cURL](https://curl.haxx.se/) 用户可以相同的方式发出多部分表单请求：
 
-[![设备 blob](media/how-to-add-blobs/curl.PNG)](media/how-to-add-blobs/curl.PNG#lightbox)
+[![设备 blob](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
 
 ```bash
 curl
@@ -195,7 +195,7 @@ curl
  -F "text=PATH_TO_FILE;type=text/plain"
 ```
 
-| 值 | 替换为 |
+| ReplTest1 | 替换为 |
 | --- | --- |
 | YOUR_TOKEN | 有效的 OAuth 2.0 令牌 |
 | YOUR_SPACE_ID | 要与 Blob 关联的空间的 ID |
@@ -211,7 +211,7 @@ curl
 
 可以将 blob 附加到设备。 下图显示了管理 API 的 Swagger 参考文档。 其中指定了使用 Blob 时所需的设备相关 API 终结点，以及要传入其中的所有必需路径参数。
 
-[![设备 blob](media/how-to-add-blobs/blobs-device-api.PNG)](media/how-to-add-blobs/blobs-device-api.PNG#lightbox)
+[![设备 blob](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
 
 例如，若要更新或创建某个 Blob 并将其附加到设备，请向以下项发出经身份验证的 HTTP PATCH 请求：
 
@@ -229,7 +229,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 
 此外，还可以将 blob 附加到空间。 下图列出了负责处理 Blob 的所有空间 API 终结点。 此外，它还列出了传入这些终结点的所有路径参数。
 
-[![空间 blob](media/how-to-add-blobs/blobs-space-api.PNG)](media/how-to-add-blobs/blobs-space-api.PNG#lightbox)
+[![空间 blob](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
 
 例如，若要返回附加到某个空间的 Blob，请向以下项发出经身份验证的 HTTP GET 请求：
 
@@ -249,7 +249,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 
 可将 Blob 附加到用户模型（例如，关联个人资料图片）。 下图显示了相关的用户 API 终结点和所有必需的路径参数（例如 `id`）：
 
-[![用户的 blob](media/how-to-add-blobs/blobs-users-api.PNG)](media/how-to-add-blobs/blobs-users-api.PNG#lightbox)
+[![用户的 blob](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
 
 例如，若要提取附加到某个用户的 Blob，请向以下项发出包含所有必需表单数据的经身份验证的 HTTP GET 请求：
 

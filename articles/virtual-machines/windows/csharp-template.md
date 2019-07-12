@@ -4,7 +4,7 @@ description: 了解如何使用 C# 和 Resource Manager 模板部署 Azure VM。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: bfba66e8-c923-4df2-900a-0c2643b81240
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 80c2a1f4b9b724058b8b573f265a3cb2a99302a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a798f4b90057cd4220467cec4756ddda10fe456e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305965"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718722"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>使用 C# 和 Resource Manager 模板部署 Azure 虚拟机
 
@@ -56,7 +56,7 @@ ms.locfileid: "66305965"
 
 ### <a name="create-the-template-file"></a>创建模板文件
 
-1. 在解决方案资源管理器中，右键单击“myDotnetProject” > ，单击“添加” > “新建项”，然后在“Visual C# 项”中选择“文本文件”      。 命名文件 CreateVMTemplate.json，然后单击“添加”   。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 CreateVMTemplate.json，然后单击“添加”   。
 2. 将此 JSON 代码添加到创建的文件中：
 
     ```json
@@ -168,7 +168,7 @@ ms.locfileid: "66305965"
 
 若要在模板中指定的资源参数的值，您可以创建参数文件包含的值。
 
-1. 在解决方案资源管理器中，右键单击 *“myDotnetProject”*  >  **，单击** >  **“添加”** **“新建项”** ，然后在 *“Visual C# 项”中选择“文本文件”* 。 命名文件 Parameters.json，然后单击“添加”   。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 Parameters.json，然后单击“添加”   。
 2. 将此 JSON 代码添加到创建的文件中：
 
     ```json
@@ -188,7 +188,7 @@ ms.locfileid: "66305965"
 
 在可部署模板之前，请先确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。 从服务主体中，将获取对 Azure 资源管理器请求进行身份验证的令牌。 还应记录授权文件中所需的应用程序 ID、身份验证秘钥和的租户 ID。
 
-1. 在解决方案资源管理器中，右键单击 *“myDotnetProject”*  >  **，单击** >  **“添加”** **“新建项”** ，然后在 *“Visual C# 项”中选择“文本文件”* 。 命名文件 azureauth.properties，然后单击“添加”   。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 azureauth.properties，然后单击“添加”   。
 2. 添加这些授权属性：
 
     ```

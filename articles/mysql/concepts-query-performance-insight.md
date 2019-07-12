@@ -3,15 +3,15 @@ title: Azure Database for MySQL 中的查询性能见解
 description: 本指南介绍了用于 MySQL 的 Azure 数据库中的查询性能见解功能
 author: ajlam
 ms.author: andrela
-ms.service: MySQL
+ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: fe6dce58714f8221625d13af1f8458662a19eaf6
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 8f142933ebf955cbe3aa119f42779109fb6ef7db
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461756"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67589074"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的查询性能见解
 
@@ -38,7 +38,7 @@ Query Performance Insight 可帮助你快速确定运行时间最长的查询、
 
 **所有者** 或 **参与者** 查询性能见解中查看的查询文本所需的权限。 **读取器** 可以查看图表和表，但不是会查询文本。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 对函数的查询性能见解，数据必须存在于 [Query Store](concepts-query-store.md)。
 

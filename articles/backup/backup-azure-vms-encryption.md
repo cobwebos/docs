@@ -7,13 +7,13 @@ manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
-ms.author: geetha
-ms.openlocfilehash: 893a22fb9f325625707869c8f6571d572b8f6b33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: geg
+ms.openlocfilehash: 24ae6ddae30110f6d125158d6f2744bf4eae5006
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61216879"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704979"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>备份和还原已加密的 Azure VM
 
@@ -140,7 +140,7 @@ Azure VM 需要拥有只读访问权限才能备份密钥和机密以及关联�
 
     ![Azure 备份选择](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-6. 单击“确定”。  “备份管理服务”随即会添加到“访问策略”中。  
+6. 单击 **“确定”** 。 “备份管理服务”随即会添加到“访问策略”中。  
 
     ![访问策略](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 

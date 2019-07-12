@@ -5,14 +5,14 @@ author: mattwojo
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: b0c78cbcc06de3a18f2127693a7c1b24c075e297
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f861a05bd369fb279ab82e230cad307a3569967e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65806231"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619376"
 ---
 # <a name="how-to-create-a-commercial-marketplace-account-in-partner-center"></a>如何在合作伙伴中心中创建的商业应用商店帐户
 
@@ -27,7 +27,7 @@ ms.locfileid: "65806231"
 
 如果您有一个帐户[云合作伙伴门户 (CPP)](https://cloudpartner.azure.com)的已迁移转移到合作伙伴中心，不需要创建一个新的帐户。 请参阅[发布服务器从 CPP 迁移](#publishers-migrated-from-cpp)。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要在合作伙伴中心上创建一个帐户，请确保你有：
 

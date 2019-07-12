@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f95af348eb11abee5a46a89e08da5bf4eb873c42
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 83e32a1e8f77604330a9f3aba0e011a0a0851e2f
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566133"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625608"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
 AzCopy 是一个命令行实用工具，可用于将数据复制到，或存储帐户之间。 本文包含使用 Blob 存储的示例命令。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 请参阅[开始使用 AzCopy](storage-use-azcopy-v10.md)文章以下载 AzCopy 并了解您可以向存储服务的授权凭据的方法。
 

@@ -10,14 +10,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 manager: craigg
-ms.date: 03/13/2019
+ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b0e10ce48088853090958dca9d8c1fad20780e7
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070358"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723255"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -76,7 +76,7 @@ ms.locfileid: "67070358"
 
 有关使用 T-SQL 进行备份的信息，请参阅 [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql)。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 ### <a name="auditing"></a>审核
 
@@ -293,13 +293,13 @@ WITH PRIVATE KEY (<private_key_options>)
   - 不支持 SQL Server Analysis Services。
 - 部分支持通知。
 - 支持电子邮件通知，不过需要配置数据库邮件配置文件。 SQL Server 代理只能使用一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`。 
-  - 不支持寻呼机。 
+  - 不支持寻呼机。
   - 不支持 NetSend。
   - 尚不支持警报。
-  - 不支持代理。 
+  - 不支持代理。
 - 不支持事件日志。
 
-目前不支持以下功能，但以后会支持：
+当前不支持以下 SQL 代理功能：
 
 - 代理
 - 针对空闲 CPU 计划作业
@@ -398,7 +398,13 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="replication"></a>复制
 
-复制功能适用于托管实例公共预览版。 有关复制的信息，请参阅 [SQL Server 复制](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)。
+[事务复制](sql-database-managed-instance-transactional-replication.md)适用于公共预览版托管实例上有一些约束：
+- Al 类型的复制参与方 （发布服务器、 分发服务器、 拉出订阅服务器和推送订阅服务器） 可以放置在托管实例，但不能发布服务器和分发服务器放置在不同的实例。
+- 支持事务、 快照发布和双向复制类型。 不支持合并复制、 对等复制和可更新的订阅。
+- 托管的实例可与最新版本的 SQL Server 通信。 请参阅受支持的版本[此处](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)。
+- 事务复制有一些[额外的网络要求](sql-database-managed-instance-transactional-replication.md#requirements)。
+
+有关配置复制的信息，请参阅[复制教程](replication-with-sql-database-managed-instance.md)。
 
 ### <a name="restore-statement"></a>RESTORE 语句 
 
@@ -459,7 +465,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ## <a name="Environment"></a>环境约束的限制
 
-### <a name="subnet"></a>子网
+### <a name="subnet"></a>Subnet
 - 在为你的托管实例保留的子网不能将任何其他资源 （例如虚拟机）。 将这些资源放在其他子网。
 - 子网必须具有足够数量的可用[IP 地址](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 最小值是 16，而建议是在子网中拥有至少 32 个 IP 地址。
 - [服务终结点不能为与托管的实例子网相关联](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 创建虚拟网络时，请务必禁用“服务终结点”选项。
@@ -486,7 +492,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="tempdb-size"></a>TEMPDB 大小
 
-在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据实例存储大小受到限制。 `tempdb` 数据库始终拆分为 12 个数据文件。 无法更改此最大大小，每个文件，并且无法将新文件添加到`tempdb`。 如果某些查询需要 `tempdb` 中每个核心 24 GB 以上的空间，这些查询可能返回错误。 `tempdb` 始终会重新创建为一个空数据库实例启动或故障转移和任何更改在进行`tempdb`不会保留。 
+在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据实例存储大小受到限制。 `tempdb` 日志文件大小被限制为 120 GB 常规用途和业务关键层上。 `tempdb` 数据库始终拆分为 12 个数据文件。 无法更改此最大大小，每个文件，并且无法将新文件添加到`tempdb`。 某些查询可能会返回错误，如果它们需要 24 GB 以上每个核心中`tempdb`或如果它们生成 120 GB 以上的日志。 `tempdb` 时，始终重新创建空数据库实例启动时或故障转移和任何更改在进行`tempdb`不会保留。 
 
 ### <a name="cant-restore-contained-database"></a>无法还原包含的数据库
 
@@ -585,6 +591,11 @@ using (var scope = new TransactionScope())
 不能在使用服务托管透明数据加密 (TDE) 加密的数据库上执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服务托管的 TDE 强制使用内部 TDE 密钥对备份进行加密。 无法导出该密钥，因此无法还原备份。
 
 **解决方法：** 使用自动备份和时间点还原，或者改用[客户托管 (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key)。 也可以在数据库上禁用加密。
+
+### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>时点还原由源实例上设置的时区遵循时间
+
+当前时间点还原将解释通过还原到以下特定于时区的源实例改为按以下 UTC 时间。
+检查[托管实例所在的时区已知问题](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues)的更多详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

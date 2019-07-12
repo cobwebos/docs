@@ -3,18 +3,18 @@ title: 为 Azure Red Hat OpenShift 的 azure Active Directory 集成 |Microsoft 
 description: 了解如何创建用于测试 Microsoft Azure Red Hat OpenShift 群集上的应用程序的 Azure AD 安全组和用户。
 author: jimzim
 ms.author: jzim
-ms.service: openshift
+ms.service: container-service
 manager: jeconnoc
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: b79efa6ee1f4c052a0037a971fc36d8a9ae0ce58
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 00609905d09f8d414660c21805c6efca5eb30843
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67458738"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669389"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>为 Azure Red Hat OpenShift 的 azure Active Directory 集成
 
@@ -33,7 +33,7 @@ Microsoft Azure Red Hat OpenShift 需要有权代表你的群集执行任务。 
 1. 转到[用户-所有用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)边栏选项卡。
 2. 单击 **+ 新用户**以打开**用户**窗格。
 3. 输入**名称**为此用户。
-4. 创建**用户名**根据你创建的租户的名称与`.onmicrosoft.com`附加在后面。 例如，`yourUserName@yourTenantName.onmicrosoft.com` 。 记下此用户名。 你将需要它来登录到你的群集。
+4. 创建**用户名**根据你创建的租户的名称与`.onmicrosoft.com`附加在后面。 例如， `yourUserName@yourTenantName.onmicrosoft.com` 。 记下此用户名。 你将需要它来登录到你的群集。
 5. 单击**目录角色**以打开目录角色窗格中，选择**全局管理员**，然后单击**确定**窗格的底部。
 6. 在中**用户**窗格中，单击**显示密码**并记录临时密码。 在第一次登录后，将提示您将其重置。
 7. 在窗格的底部，单击**创建**以创建用户。

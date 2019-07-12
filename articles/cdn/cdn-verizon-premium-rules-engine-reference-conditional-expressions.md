@@ -3,16 +3,16 @@ title: 来自 Verizon 高级版的 azure CDN 规则引擎条件表达式 |Micros
 description: 参考文档，了解 Azure CDN from Verizon Premium 规则引擎匹配条件和功能。
 services: cdn
 author: mdgattuso
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: c6e49e6fbc0c541ce9a8cd903eb313d61413257c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f790e37ae876c0640d55ebfb51abb43c6a705f04
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481529"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593218"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>来自 Verizon 的高级规则引擎条件表达式的 azure CDN
 
@@ -30,7 +30,7 @@ ELSE IF| ELSE IF 表达式指定在一组特定于此 ELSE IF 语句的功能发
 
  > [!TIP]
    > 后一个规则可能会覆盖前一个规则所指定的操作。
-   > 示例：全方位的规则保护通过基于令牌的身份验证的所有请求。 在它下面可能会创建其他规则，以便对某种请求做例外处理。
+   > 例如：全方位的规则保护通过基于令牌的身份验证的所有请求。 在它下面可能会创建其他规则，以便对某种请求做例外处理。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,7 +4,7 @@ description: 为 Azure 虚拟机和虚拟机规模集的双向串行控制台。
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4fb2fd9503dad4113609b35dbe66496a03272f85
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: f3fa646fcca99d5762f480b3fd12c5e249eabaf8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137207"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710582"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 azure 串行控制台
 
@@ -33,7 +33,7 @@ ms.locfileid: "67137207"
 > 在全球 Azure 区域中，串行控制台是已正式发布。 串行控制台目前不可用于 Azure 政府云或 Azure 中国云。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - VM 或虚拟机规模集实例必须使用资源管理部署模型。 不支持经典部署。
 
@@ -106,7 +106,7 @@ Oracle Linux        | 默认已启用串行控制台访问。
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>访问串行控制台的常见场景
 
-场景          | 串行控制台中的操作
+应用场景          | 串行控制台中的操作
 :------------------|:-----------------------------------------
 *FSTAB* 文件受损 | 按 **Enter** 键继续，然后使用文本编辑器修复 *FSTAB* 文件。 可能需要在单用户模式下执行此操作。 有关详细信息，请参阅的串行控制台部分[如何修复 fstab 问题](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)并[使用串行控制台访问 GRUB 和单用户模式下](serial-console-grub-single-user-mode.md)。
 错误的防火墙规则 |  如果已配置 ip 表来阻止 SSH 连接，可以使用串行控制台进行与 VM 交互而无需 SSH。 更多详细信息，请参阅[iptables 手册页](https://linux.die.net/man/8/iptables)。<br>同样，如果你 firewalld 阻止 SSH 访问，可以通过串行控制台访问 VM，并重新配置 firewalld。 更多详细信息可在[firewalld 文档](https://firewalld.org/documentation/)。
@@ -189,7 +189,7 @@ SSH 配置问题 | 访问串行控制台并更改设置。 串行控制台可以
 ## <a name="errors"></a>错误
 大多数错误都是暂时性的，重试连接往往可以解决。 下表显示了错误和缓解措施的列表。 这些错误和缓解措施适用于这两个 Vm 和虚拟机规模集实例。
 
-错误                            |   缓解措施
+Error                            |   缓解措施
 :---------------------------------|:--------------------------------------------|
 无法检索 *&lt;VMNAME&gt;* 的启动诊断设置。 若要使用串行控制台，请确保为此 VM 启用了启动诊断。 | 确保 VM 已启用[启动诊断](boot-diagnostics.md)。
 VM 处于已停止/已解除分配状态。 启动 VM，然后重试串行控制台连接。 | VM 必须处于已启动状态才能访问串行控制台。

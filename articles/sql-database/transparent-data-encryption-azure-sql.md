@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: 7066b600cf50df583fbf8e9e674ef17d77b86183
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dfc48fec948ab0cf3d16a49bb60eb3c274f2864e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061389"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723269"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL 数据库和数据仓库的透明数据加密
 
@@ -33,7 +33,7 @@ ms.locfileid: "67061389"
 
 ## <a name="service-managed-transparent-data-encryption"></a>服务托管的透明数据加密
 
-在 Azure 中，透明数据加密的默认设置是通过内置的服务器证书保护数据库加密密钥。 内置服务器证书是每个服务器特有的。 如果某个数据库存在异地复制关系，则主数据库和异地辅助数据库将受主数据库的父服务器密钥的保护。 如果两个数据库连接到同一个服务器，则它们也共享相同的内置证书。 Microsoft 根据内部安全策略自动轮换这些证书，根密钥由 Microsoft 内部密码存储保护。  客户可以验证 SQL 数据库中可用的独立第三方审核报告的内部安全策略遵守[Microsoft 信任中心](https://servicetrust.microsoft.com/)。
+在 Azure 中，透明数据加密的默认设置是通过内置的服务器证书保护数据库加密密钥。 内置服务器证书是唯一的每个服务器和使用的加密算法为 AES 256。 如果某个数据库存在异地复制关系，则主数据库和异地辅助数据库将受主数据库的父服务器密钥的保护。 如果两个数据库连接到同一个服务器，则它们也共享相同的内置证书。  Microsoft 根据内部安全策略自动轮换这些证书，根密钥由 Microsoft 内部密码存储保护。  客户可以验证 SQL 数据库中可用的独立第三方审核报告的内部安全策略遵守[Microsoft 信任中心](https://servicetrust.microsoft.com/)。
 
 Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还原。
 
@@ -112,7 +112,7 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 使用 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名连接到数据库。
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 | [ALTER DATABASE（Azure SQL 数据库）](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF 会加密或解密数据库 |
 | [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |返回有关数据库的加密状态及其关联的数据库加密密钥的信息 |
@@ -126,7 +126,7 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 若要通过 REST API 配置透明数据加密，必须以 Azure 所有者、参与者或 SQL 安全管理员的身份进行连接。
 对 Azure SQL 数据库和数据仓库使用以下命令集：
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 |[创建或更新服务器](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|将 Azure Active Directory 标识添加到 SQL Server 实例（用于授予 Key Vault 的访问权限）|
 |[创建或更新服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|将 Key Vault 密钥添加到 SQL Server 实例|

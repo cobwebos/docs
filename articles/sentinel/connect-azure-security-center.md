@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7f2f85f8b68efadf1dc0a35d1a8e6bda2655f53b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 697983000f84f9e4efe7e2c8ef9dbb2f636e0735
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65207300"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620572"
 ---
 # <a name="connect-data-from-azure-security-center"></a>将数据连接从 Azure 安全中心
 
@@ -31,7 +32,7 @@ ms.locfileid: "65207300"
 
 Azure Sentinel 使你能够连接中的警报[Azure 安全中心](../security-center/security-center-intro.md)并将其传送到 Azure Sentinel。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 如果你想要从 Azure 安全中心中导出的警报，你必须是您传输其日志的订阅的参与者。
 

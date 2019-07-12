@@ -3,16 +3,16 @@ title: 载入到现有第一道防线使用 Azure 门户中的根或顶点域
 description: 了解如何载入到使用 Azure 门户的现有前门域根或顶点。
 services: front-door
 author: sharad4u
-ms.service: front-door
+ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 464c38b0ece274d2ea7df89ab9fd7c0a60dc4b58
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 8fe8da95a61d2f2bb35095236131670cb6ef0e70
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332486"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605796"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>载入根或顶点域中的对你第一道防线
 Azure 的第一道防线使用 CNAME 记录来验证域加入自定义域的所有权。 此外，第一道防线不公开与你的第一道防线配置文件关联的前端 IP 地址，因此您不能将顶点域映射到 IP 地址，如果目的是为载入它到 Azure 第一道防线。

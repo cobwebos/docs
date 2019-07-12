@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6fceee819762e10809a94f72d944e7625cb7e67c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 49b8554f6064f036d4305cf7a5c1450c2f18c48d
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478554"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798486"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -75,7 +75,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 ## <a name="create-run-as-account-using-powershell"></a>使用 PowerShell 创建运行方式帐户
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 以下列表提供了在 PowerShell 中创建运行方式帐户所要满足的要求：
 
@@ -104,7 +104,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 1. 将以下脚本保存到计算机。 在本示例中，请使用文件名 *New-RunAsAccount.ps1* 保存。
 
-   该脚本使用多个 Azure 资源管理器 cmdlet 来创建资源。 下表显示了 cmdlet 及其所需的权限。
+   该脚本使用多个 Azure 资源管理器 cmdlet 来创建资源。 在前面[权限](#permissions)表显示了 cmdlet 和他们所需的权限。
 
     ```powershell
     #Requires -RunAsAdministrator
@@ -370,13 +370,35 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 ## <a name="limiting-run-as-account-permissions"></a>限制运行方式帐户权限
 
-为了控制针对 Azure 自动化中资源的自动化目标，默认情况下运行方式帐户会被授予订阅中的参与者权限。 如果需要限制运行方式服务主体可以执行的操作，可以从订阅的参与者角色中删除该帐户并将该帐户添加为要指定的资源组的参与者。
+若要控制对 Azure 中的资源的自动化的目标，可以运行[更新 AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8)若要更改现有运行方式帐户服务主体到 PowerShell 库中的脚本创建和使用自定义角色定义。 此角色将具有除之外的所有资源的权限[Key Vault](https://docs.microsoft.com/azure/key-vault/)。 
 
-在 Azure 门户中，选择“订阅”  并选择自动化帐户的订阅。 依次选择“访问控制(IAM)”  、“角色分配”  选项卡。搜索自动化帐户的服务主体（类似于 \<AutomationAccountName\>_唯一标识符）。 选择该帐户，然后单击“删除”  以从订阅中将其删除。
+> [!IMPORTANT]
+> 运行之后`Update-AutomationRunAsAccountRoleAssignments.ps1`脚本中，通过使用运行方式帐户访问密钥保管库的 runbook 将不再起作用。 在你的帐户对 Azure 密钥保管库的调用中，应查看的 runbook。
+>
+> 若要通过 Azure 自动化 runbook 将需要访问密钥保管库[将运行方式帐户添加到密钥保管库的权限](#add-permissions-to-key-vault)。
 
-![订阅参与者](media/manage-runas-account/automation-account-remove-subscription.png)
+如果你需要限制运行方式服务主体可以执行的操作更多，则可以添加到其他资源类型`NotActions`的自定义角色定义。 下面的示例限制访问`Microsoft.Compute`。 如果您将添加到**NotActions**的角色定义中，将无法再访问任何计算资源，此角色。 若要了解有关角色定义的详细信息，请参阅[了解有关 Azure 资源的角色定义](../role-based-access-control/role-definitions.md)。
 
-若要将服务主体添加到资源组，请在 Azure 门户中选择资源组，然后选择“访问控制(标识和访问管理)”  。 选择“添加角色分配”  ，这将打开“添加角色分配”  页面。 对于“角色”  ，选择“参与者”  。 在“选择”  文本框中，键入运行方式帐户的服务主体名称，并从列表中选择它。 单击“保存”  以保存更改。 对要向 Azure 自动化运行方式服务主体授予其访问权限的资源组完成这些步骤。
+```powershell
+$roleDefinition = Get-AzureRmRoleDefinition -Name 'Automation RunAs Contributor'
+$roleDefinition.NotActions.Add("Microsoft.Compute/*")
+$roleDefinition | Set-AzureRMRoleDefinition
+```
+
+若要确定是否在由你运行方式帐户使用的服务主体**参与者**或自定义角色定义转到自动化帐户并在**帐户设置**，选择**以运行帐户** > **Azure 运行方式帐户**。 下**角色**您会发现正在使用的角色定义。 
+
+[![](media/manage-runas-account/verify-role.png "验证运行方式帐户角色")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+
+若要确定角色定义中的自动化运行方式帐户用于多个订阅或自动化帐户，可以使用[检查 AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) PowerShell 库中的脚本。
+
+### <a name="add-permissions-to-key-vault"></a>将权限添加到密钥保管库
+
+如果你想要允许 Azure 自动化管理密钥保管库和运行方式帐户服务主体使用自定义角色定义你将需要执行其他步骤来进行此项操作：
+
+* 向 Key Vault 中授予权限
+* 设置访问策略
+
+可以使用[扩展 AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb)到密钥保管库，为你的运行方式帐户的权限或访问在 PowerShell 库中的脚本[授予对密钥保管库的应用程序访问权限](../key-vault/key-vault-group-permissions-for-apps.md)有关密钥保管库上设置权限的详细信息。
 
 ## <a name="misconfiguration"></a>配置错误
 

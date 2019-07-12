@@ -2,17 +2,17 @@
 title: API 服务器授权 Azure Kubernetes 服务 (AKS) 中的 IP 范围
 description: 了解如何保护使用的 IP 地址范围用于访问 API 服务器在 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: d425fc3e037b43321a278fb16781e86dfafef15c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: mlearned
+ms.openlocfilehash: 6516bbcb4ea879279812d61d9fe31f1ea4268280
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441531"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616254"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>预览版-对 API 服务器使用的安全访问授权所需的 IP 地址范围中 Azure Kubernetes 服务 (AKS)
 

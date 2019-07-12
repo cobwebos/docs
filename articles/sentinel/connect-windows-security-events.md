@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d51d2e09-a073-41c8-b396-91d60b057e6a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 36d38aa82b4f0ec8d7d9ef6ebb1145b1fcc334df
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 188febf090ddb3f685f9d3c3b94d822f15bbcfcb
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190573"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673768"
 ---
 # <a name="connect-windows-security-events"></a>连接 Windows 安全事件 
 
@@ -30,10 +31,10 @@ ms.locfileid: "67190573"
 可以对来自连接到 Azure Sentinel 工作区的 Windows 服务器的所有安全事件进行流式都传输。 此连接可以查看仪表板、 创建自定义警报和改进的调查。 这为您提供了更详细地了解您组织的网络，并提高你的安全操作功能。  您可以选择哪些事件进行流式处理：
 
 - **所有事件**-所有 Windows 安全性和 AppLocker 事件。
-- **常见**-一组标准的审核的事件。 完整用户审核记录包含在此集中。 例如，此集包含用户登录和用户注销（事件 ID 4634）。 我们加入审核操作，如安全组更改、关键域控制器 Kerberos 操作以及行业组织建议的其他事件。
+- **常见**-一组标准的审核的事件。 完整用户审核记录包含在此集中。 例如，此集包含用户的登录和用户注销事件 （事件 ID 4634）。 我们加入审核操作，如安全组更改、关键域控制器 Kerberos 操作以及行业组织建议的其他事件。
 
 数量非常少的事件包含在通用集中，因为在所有事件中选择该集的主要动机是为了减少数量，而不是筛选出特定事件。
-- **最小**-少量的事件可能表示潜在的威胁。 通过启用此选项，你将无法具有完整的审核跟踪。  此集涵盖可能指示成功违反的事件以及数量很少的重要事件。 例如，此集包含用户成功和失败的登录（事件 ID 4624 和 4625），但不包含对审核很重要但对检测毫无意义且数量相对较多的注销。 此集的大多数数据量是登录事件和进程创建事件（事件 ID 4688）。
+- **最小**-少量的事件可能表示潜在的威胁。 通过启用此选项，你将无法具有完整的审核跟踪。  此集涵盖可能指示成功违反的事件以及数量很少的重要事件。 例如，此集包含用户成功和失败的登录 （事件 Id 4624 和 4625），但它不包含注销这是重要的审核但未对检测毫无意义，相对较多的信息。 大部分此集的数据量是登录事件和进程创建事件 （事件 ID 4688）。
 - **无**-没有安全性或 AppLocker 事件。
 
 > [!NOTE]

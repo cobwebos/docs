@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 68a5d5278e1181695695647cff187d4b95624b40
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 05723a90725992e6b955524a2d35c82d3378ee3d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537644"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621853"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>对 SSIS 集成运行时中的包执行进行故障排除
 
@@ -57,11 +57,33 @@ ms.locfileid: "67537644"
 
 较旧版本的 SQL Server Management Studio (SSMS) 中的已知的问题会导致此错误。 如果包中包含未在其中使用 SSMS 执行部署的计算机安装的自定义组件 （例如，SSIS 的 Azure 功能包或合作伙伴组件），SSMS 将删除该组件，并会导致错误。 升级[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)到包含该问题已修复的最新版本。
 
+### <a name="error-messagessis-executor-exit-code--1073741819"></a>错误消息:"SSIS 执行程序退出代码： 显示-1073741819。"
+
+* 可能的原因和建议的操作：
+  * 当多个 Excel 源或目标并行执行多线程中时，此错误可能是由于 Excel 源和目标的限制。 你可以通过此限制更改您的 Excel 组件按顺序执行，或将它们分离到不同的包并通过"执行包任务"的触发器 ExecuteOutOfProcess 属性设置为 True 的解决方法。
+
 ### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>错误消息："没有足够空间的磁盘上"
 
 此错误意味着在 SSIS integration runtime 节点的本地磁盘用完。 检查你的包或自定义安装程序是否正在消耗大量磁盘空间：
 * 如果磁盘由您的包，它将包执行完成后释放它们。
 * 如果磁盘由自定义安装，你将需要停止 SSIS 集成运行时，修改您的脚本，并再次启动集成运行时。 整个 Azure blob 容器指定自定义安装程序将复制到 SSIS integration runtime 节点，因此检查是否存在该容器下的任何不必要的内容。
+
+### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>错误消息："无法从主服务器检索资源。 Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException:代码： 300004。 说明： 负载文件"* * *"失败。"
+
+* 可能的原因和建议的操作：
+  * 如果 SSIS 活动在执行包从文件系统 （包文件或项目文件），将发生此错误，如果项目、 包或配置文件不是可通过将 SSIS 活动中提供的包访问凭据进行访问
+    * 如果使用 Azure 文件：
+      * 文件路径应首先阅读\\ \\\<存储帐户名称\>。 file.core.windows.net\\\<文件共享路径\>
+      * 域应为"Azure"
+      * 用户名应为\<存储帐户名称\>
+      * 密码应为\<存储访问密钥\>
+    * 如果您所使用的本地文件，请检查如果 VNet、 包访问凭据和权限配置正确，以便你的 AZURE-SSIS 集成运行时可以访问你的本地文件共享
+
+### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>错误消息："文件名...指定在连接不是有效"
+
+* 可能的原因和建议的操作：
+  * 指定了无效的文件名称
+  * 请确保使用 FQDN （完全限定域名） 而不短时间中的连接管理器
 
 ### <a name="error-message-cannot-open-file-"></a>错误消息："无法打开文件 '...'"
 

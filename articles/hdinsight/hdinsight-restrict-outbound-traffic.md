@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: af5ddd50556b493cddf27d1ebb766d9bf6105107
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8bb077242c0a989e100c81d4dfefeb53f4bc90c4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433438"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620692"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>配置出站网络流量的 Azure HDInsight 群集使用的防火墙 （预览版）
 
@@ -54,13 +54,13 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 
 1. 输入**名称**，**优先级**，然后单击**允许**从**操作**下拉列表菜单，然后按输入以下规则**FQDN 标记部分**:
 
-   | **Name** | **源地址** | **FQDN 标记** | **说明** |
+   | **名称** | **源地址** | **FQDN 标记** | **说明** |
    | --- | --- | --- | --- |
    | Rule_1 | * | HDInsight 和 WindowsUpdate | 所需的 HDI 服务 |
 
 1. 添加以下规则，用于**目标 Fqdn 部分**:
 
-   | **Name** | **源地址** | **Protocol:Port** | **目标 FQDN** | **说明** |
+   | **名称** | **源地址** | **Protocol:Port** | **目标 FQDN** | **说明** |
    | --- | --- | --- | --- | --- |
    | Rule_2 | * | https:443 | login.windows.net | 允许 Windows 登录活动 |
    | Rule_3 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | 如果你的群集由 WASB 提供支持，然后为 WASB 添加规则。 若要使用仅 https 连接请确保["需要安全传输"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)的存储帐户上启用。 |
@@ -78,16 +78,16 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 1. 在“添加网络规则集合”屏幕上输入**名称**和**优先级**，然后单击“操作”下拉菜单中的“允许”。   
 1. 创建中的以下规则**IP 地址**部分：
 
-   | **Name** | 协议  | **源地址** | **目标地址** | **目标端口** | **说明** |
+   | **名称** | 协议  | **源地址** | **目标地址** | **目标端口** | **说明** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_1 | UDP | * | * | `123` | 时间服务 |
-   | Rule_2 | 任意 | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | 如果使用企业安全包 (ESP)，然后在允许与 AAD DS ESP 群集通信的 IP 地址部分中添加网络规则。 可以在门户中找到的 AAD DS 部分上的域控制器的 IP 地址 | 
+   | Rule_2 | Any | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | 如果使用企业安全包 (ESP)，然后在允许与 AAD DS ESP 群集通信的 IP 地址部分中添加网络规则。 可以在门户中找到的 AAD DS 部分上的域控制器的 IP 地址 | 
    | Rule_3 | TCP | * | Data Lake 存储帐户的 IP 地址 | `*` | 如果正在使用 Azure Data Lake Storage，则可以在“IP 地址”部分中添加一个网络规则来解决 ADLS Gen1 和 Gen2 的 SNI 问题。 此选项会将流量路由到防火墙，这可能会导致大量数据负载的成本较高，但此通信是记录，并且在防火墙日志可审核。 确定 Data Lake Storage 帐户的 IP 地址。 可以使用 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` 等 PowerShell 命令将 FQDN 解析成 IP 地址。|
    | Rule_4 | TCP | * | * | `12000` | （可选）如果正在使用 Log Analytics，请在“IP 地址”部分中创建一个网络规则以实现与 Log Analytics 工作区的通信。 |
 
 1. 创建中的以下规则**服务标记**部分：
 
-   | **Name** | 协议  | **源地址** | **服务标记** | **目标端口** | **说明** |
+   | **名称** | 协议  | **源地址** | **服务标记** | **目标端口** | **说明** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_7 | TCP | * | SQL | `1433` | 为 SQL，您可以记录和审核 SQL 流量，除非你为 SQL Server 中配置服务终结点上的 HDInsight 子网，这将绕过防火墙，在服务标记部分中配置网络规则。 |
 
@@ -126,7 +126,7 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 
 1. 单击“设置”下的“子网”，然后单击“关联”，将创建的路由表分配到 HDInsight 子网。   
 1. 在“关联子网”  屏幕上，选择已创建群集的虚拟网络以及用于 HDInsight 群集的 **HDInsight 子网**。
-1. 单击“确定”。 
+1. 单击 **“确定”** 。
 
 ## <a name="edge-node-or-custom-application-traffic"></a>边缘节点或自定义应用程序流量
 

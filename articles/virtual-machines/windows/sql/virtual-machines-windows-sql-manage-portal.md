@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e2a807bbd6baeb2f14a6d36f5d98a28d48725449
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59a85e855c9fab9f2a3437c83c867b8076f55049
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082711"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607211"
 ---
 # <a name="manage-sql-server-vms-in-azure-using-the-azure-portal"></a>管理 Azure 中使用 Azure 门户中的 SQL Server Vm
 
@@ -33,7 +33,7 @@ ms.locfileid: "67082711"
 ## <a name="remarks"></a>备注
 
 - **SQL 虚拟机**资源是用于查看和管理 SQL Server Vm 的建议的方法。 但是，目前**SQL 虚拟机**资源不支持的管理[结束 (EOS) 支持](virtual-machines-windows-sql-server-2008-eos-extend-support.md)SQL Server Vm。 若要管理 EOS SQL Server Vm 的设置，请使用已弃用[SQL Server 配置选项卡](#access-sql-server-configuration-tab)相反。 
-- **SQL 虚拟机**仅适用于 SQL Server Vm 的具有资源，正在[向 SQL 虚拟机资源提供程序注册](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-the-sql-vm-resource-provider)。 
+- **SQL 虚拟机**仅适用于 SQL Server Vm 的具有资源，正在[向 SQL 虚拟机资源提供程序注册](virtual-machines-windows-sql-register-with-resource-provider.md)。 
 
 
 ## <a name="access-sql-virtual-machine-resource"></a>访问 SQL 虚拟机资源
@@ -60,7 +60,7 @@ ms.locfileid: "67082711"
   > **SQL 虚拟机**资源是为专用的 SQL Server 设置。 选择在 VM 的名称**虚拟机**字段用于导航到特定于 VM，但不专用于 SQL Server 的设置。 
 
 ## <a name="access-sql-server-configuration-tab"></a>访问 SQL Server 配置选项卡
-SQL Server 配置选项卡已被弃用。 在此期间，它是唯一的方法来管理[结束 (EOS) 支持](virtual-machines-windows-sql-server-2008-eos-extend-support.md)SQL Server Vm 和 SQL Server Vm 还没有[向 SQL 虚拟机资源提供程序注册](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-the-sql-vm-resource-provider)。
+SQL Server 配置选项卡已被弃用。 在此期间，它是唯一的方法来管理[结束 (EOS) 支持](virtual-machines-windows-sql-server-2008-eos-extend-support.md)SQL Server Vm 和 SQL Server Vm 还没有[向 SQL 虚拟机资源提供程序注册](virtual-machines-windows-sql-register-with-resource-provider.md)。
 
 若要访问不推荐使用的 SQL server 配置选项卡，您将需要导航到**虚拟机**资源。 为此，请执行以下操作：
 

@@ -4,15 +4,15 @@ description: 如何从 web 浏览器连接到 Windows 虚拟桌面预览。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: d99f20efcebc3c9d97c5e2228e8b55bfd3f432b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f6bb7c414c38eaa605d259195218c461ddb0ca7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65834015"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620165"
 ---
 # <a name="connect-from-a-web-browser"></a>从 Web 浏览器进行连接
 
@@ -25,12 +25,12 @@ Web 客户端可以从 web 浏览器，而无需耗时较长的安装过程中�
 
 而应运行任何支持 HTML5 的浏览器，我们正式支持以下操作系统和浏览器。
 
-| 浏览器           | 支持的 OS                     | 说明               |
+| 浏览者           | 支持的 OS                     | 说明               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
 | Apple Safari      | macOS                            |                     |
-| Mozilla Firefox   | Windows、 macOS、 Linux            | 55 或更高版本 |
+| Mozilla Firefox   | Windows、macOS、Linux            | 55 或更高版本 |
 | Google Chrome     | Windows、 macOS、 Linux、 Chrome OS |                     |
 
 ## <a name="access-remote-resources-feed"></a>源访问远程资源

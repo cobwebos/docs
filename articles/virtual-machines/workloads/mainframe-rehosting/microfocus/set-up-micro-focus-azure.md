@@ -4,16 +4,19 @@ description: 重新托管在 IBM z/OS 大型机的工作负荷使用 Micro Focus
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
+ms.author: edprice
 manager: edprice
 editor: edprice
+ms.topic: conceptual
+ms.date: 05/29/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 45d6f8606c665d78783f987c2f2b49a77801639c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de4bdcb14aa1b5aa1f757da7be4db7d93dd13ff0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304614"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620298"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>在 Azure 上安装微焦点 Enterprise Server 4.0 和企业级开发版 4.0
 
@@ -25,7 +28,7 @@ Azure 上的常见工作负荷是一个开发和测试环境。 此方案中很�
 
 适用于 Enterprise Server 的相应开发环境是企业开发人员，在任一 Microsoft Visual Studio 2017 或更高版本，运行 Visual Studio Community （免费下载），或 Eclipse。 本文介绍如何使用 Windows Server 2016 虚拟机，附带 Visual Studio 2017 或更高版本安装的部署该网站。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 开始之前，请查看这些系统必备组件：
 

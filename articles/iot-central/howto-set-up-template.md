@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7fb0fba519a7833ac318c713dc9eb3c6ac7f8b5b
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: d27fd9460685c08a2b13936415935f5aaf893797
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509555"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622412"
 ---
 # <a name="set-up-a-device-template"></a>设置设备模板
 
@@ -88,7 +88,7 @@ ms.locfileid: "67509555"
 
 | 显示名称        | 字段名称    |  默认严重性 |
 | --------------------| ------------- |-----------|
-| 风扇电机错误     | fanmotorerror |  错误    |
+| 风扇电机错误     | fanmotorerror |  Error    |
 
 ![包含风扇电机事件详细信息的“创建事件”窗体](./media/howto-set-up-template/eventmeasurementsform.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "67509555"
 
 | 显示名称 | 字段名称    |  值 1   | 显示名称 | 值 2    |显示名称  | 
 | -------------| ------------- |----------- | -------------| -----------| -------------|
-| 风扇模式     | fanmode       |  第         | 正在运行    |     0      | 已停止      |
+| 风扇模式     | fanmode       |  1         | 正在运行    |     0      | 已停止      |
 
 ![带有风扇模式详细信息的“编辑状态”窗体](./media/howto-set-up-template/statemeasurementsform.png)
 
@@ -150,7 +150,7 @@ assetloc: {
 
 ## <a name="settings"></a>设置
 
-设置用于控制设备。 使用设置，操作员可以向设备提供输入。 可将多个设置添加到设备模板。这些设置将在“设置”选项卡上显示为可供操作员使用的磁贴。  可以添加多种类型的设置：数字、文本、日期、切换开关、选取列表和部分标签。
+设置用于控制设备。 使用设置，操作员可以向设备提供输入。 可将多个设置添加到设备模板。这些设置将在“设置”选项卡上显示为可供操作员使用的磁贴。  可添加多种类型的设置： 数字、 文本、 日期、 切换和部分标签。
 
 设置可以处于三种状态之一。 设备会报告这些状态。
 
@@ -223,7 +223,7 @@ assetloc: {
    - **作为地址的位置**
    - **作为坐标的位置**
 
-4. 选择“保存”。  操作员可以在“Device Explorer”  中更新位置值。
+4. 选择**保存**。 操作员可以在“Device Explorer”  中更新位置值。
 
 #### <a name="add-location-as-a-device-property"></a>添加设备位置属性
 

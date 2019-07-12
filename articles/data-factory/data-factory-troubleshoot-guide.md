@@ -5,17 +5,16 @@ services: data-factory
 author: abnarain
 manager: craigg
 ms.service: data-factory
-ms.topic: troubleshoot
-ms.subservice: troubleshoot
+ms.topic: troubleshooting
 ms.date: 6/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 8d6ab565098e1ea40ede5c650f05e670a1edc7f6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d220730bb2e93e32d00e56ed98f4962ad89eda5a
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452678"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626325"
 ---
 # <a name="troubleshooting-azure-data-factory"></a>Azure 数据工厂进行故障排除
 本文列出了常见疑难解答问题。
@@ -44,7 +43,7 @@ ms.locfileid: "67452678"
 | 3202           | 无法分析请求对象：预期的密钥和值设置为 JSON 映射字段 base_parameters，获得键:"..." 改为。 | 创作错误：没有为参数提供值         | 检查管道 json，并确保 Notebook baseParameters 中的所有参数都具有指定的非空值。 |
 | 3202           | 用户：SimpleUserContext {userId =...，名称 =user@company.com，orgId =...} 未授权访问群集 | 生成访问令牌的用户不被允许访问指定链接服务中的 Databricks 群集。 | 确保用户在工作区中具有所需的权限。   |
 | 3203           | 群集处于终止状态，不可用于接收作业。 请解决群集或稍后重试。 | 已终止群集。    对于交互式群集，这可能是一个争用条件。 | 若要避免此问题，最好是使用作业群集。             |
-| 3204           | 作业执行失败。 可以有任意数量的错误消息，从意外的群集状态到特定于活动的消息。  最常见根本没有错误消息。 | 不适用                                                          | 不适用                                                          |
+| 3204           | 作业执行失败。 可以有任意数量的错误消息，从意外的群集状态到特定于活动的消息。  最常见根本没有错误消息。 | 不可用                                                          | 不可用                                                          |
 
 
 
@@ -81,7 +80,7 @@ ms.locfileid: "67452678"
 | 2505         | 无法创建共享访问签名，除非使用帐户密钥凭据。 | 自定义活动仅支持使用访问密钥的存储帐户。 | 说明，请参阅                                            |
 | 2507         | 文件夹路径不存在或为空:...            | 指定路径处的存储帐户中没有文件。       | FolderPath 必须包含你想要运行的可执行文件。 |
 | 2508         | 在资源文件夹中有重复的文件。               | 有的 folderPath 不同子文件夹中具有相同名称的多个文件。 | 自定义活动进行平展处理在 folderPath 下的文件夹结构。  如果需要保留文件夹结构，zip 文件并将其提取 Azure Batch 上具有解压缩命令，例如： powershell.exe-nologo noprofile-命令"& {添加类型-A System.IO.Compression.FileSystem';  [IO.Compression.ZipFile]::ExtractToDirectory （$zipFile，$folder）;}" ;  $folder\yourProgram.exe |
-| 2509         | 批处理 url...是无效的它必须为 Uri 格式。         | 批处理的 Url 必须是类似于 https://mybatchaccount.eastus.batch.azure.com | 说明，请参阅                                            |
+| 2509         | 批处理 url...是无效的它必须为 Uri 格式。         | 批处理的 Url 必须是类似于 https:\//mybatchaccount.eastus.batch.azure.com | 说明，请参阅                                            |
 | 2510         | 发送请求时出错。               | 批处理 URL 无效                                         | 验证批处理 URL。                                            |
 
 ## <a name="hdinsight-spark-hive-mapreduce-pig-hadoop-streaming"></a>HDInsight （Spark、 Hive、 MapReduce、 Pig、 Hadoop 流式处理）
@@ -92,7 +91,7 @@ ms.locfileid: "67452678"
 | 2300         | 无法提交 Hadoop 作业。 作业:...，群集:.../。 错误：任务已取消。 | 作业的提交操作已超时。                         | 这可能是常规 HDInsight 连接问题或网络连接问题。 首先请确认 HDInsight Ambari UI 是可通过任何浏览器并且你的凭据仍有效。 请务必执行此操作从 VM/计算机使用自承载 ir。 如果安装自承载的 IR 然后尝试重新提交从 ADF 作业。 如果仍然失败，请与支持的 ADF 团队联系。 |
 | 2300         | 未经授权: Ambari 用户名或密码不正确  <br/><br/>未经授权: 用户管理员被锁定在 Ambari 中   <br/><br/>403-禁止访问：访问被拒绝 | 为 HDInsight 提供的凭据不正确，或者已过期 | 请更正它们并重新部署链接的服务。 请确保凭据使用 HDInsight 上首先通过打开群集 URI 的任何浏览器并尝试登录。 如果它们不起作用，您可以从 Azure 门户重置它们。 |
 | 2300,   2310 | 502-web 服务器作为网关或代理服务器时收到了无效响应       <br/>错误的网关 | 错误来自 HDInsight                               | 此错误即将从 HDInsight 群集。 请参阅[HDInsight 故障排除程序](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)与常见的错误。    <br/>对于 Spark 群集它可能还导致因[这](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)。 <br/><br/>[其他链接](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502) |
-| 2300         | 无法提交 Hadoop 作业。 作业:...，群集:...错误: {\"错误\":\"无法如 templeton 服务正忙于处理请求过多提交作业提交作业请求提供服务。 请等待一些时间才会重试该操作。 请参阅配置 templeton.parallellism.job.submit，可以配置并发请求。 \  <br/><br/>无法提交 Hadoop 作业。 作业：161da5d4-6fa8-4ef4-a240-6b6428c5ae2f，群集： https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/ 。   错误: {\"错误\":\"java.io.IOException: org.apache.hadoop.yarn.exceptions.YarnException:未能提交到 YARN application_1561147195099_3730: org.apache.hadoop.security.AccessControlException:队列 root.joblauncher 已有 500 个应用程序，将无法接受的应用程序提交： application_1561147195099_3730\ | 太多的作业是在同时提交到 HDInsight | 请考虑限制提交到 HDI 的并发作业数。 请参阅 ADF 活动并发，如果他们要提交的同一个活动。 更改触发器，以便随着时间的推移分散在并发的管道运行。 另请参阅 HDInsight 文档以便调整"templeton.parallellism.job.submit"，如错误所示。 |
+| 2300         | 无法提交 Hadoop 作业。 作业:...，群集:...错误: {\"错误\":\"无法如 templeton 服务正忙于处理请求过多提交作业提交作业请求提供服务。 请等待一些时间才会重试该操作。 请参阅配置 templeton.parallellism.job.submit，可以配置并发请求。 \  <br/><br/>无法提交 Hadoop 作业。 作业：161da5d4-6fa8-4ef4-a240-6b6428c5ae2f，群集： https: \/ /abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/。   错误: {\"错误\":\"java.io.IOException: org.apache.hadoop.yarn.exceptions.YarnException:未能提交到 YARN application_1561147195099_3730: org.apache.hadoop.security.AccessControlException:队列 root.joblauncher 已有 500 个应用程序，将无法接受的应用程序提交： application_1561147195099_3730\ | 太多的作业是在同时提交到 HDInsight | 请考虑限制提交到 HDI 的并发作业数。 请参阅 ADF 活动并发，如果他们要提交的同一个活动。 更改触发器，以便随着时间的推移分散在并发的管道运行。 另请参阅 HDInsight 文档以便调整"templeton.parallellism.job.submit"，如错误所示。 |
 | 2303,   2347 | Hadoop 作业失败，退出代码为"5"。 请参阅wasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr的更多详细信息。  <br/><br/>Hive 执行失败，错误代码 UserErrorHiveOdbcCommandExecutionFailure。   请参阅wasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out的更多详细信息 | 作业已提交到 HDInsight，和它在 HDInsight 上失败 | 作业已成功提交到 HDInsight。 它未在群集上。 请打开 HDInsight Ambari UI 上的作业，打开日志，或者作为错误消息指出从存储打开文件。错误的详细信息将在该文件中。 |
 | 2328         | 处理请求时出现内部服务器错误。 请重试请求，或联系支持人员 | 按需 HDInsight 上发生的情况。                              | HDInsight 预配失败时，此错误将来自 HDInsight 服务。 请与 HDInsight 团队联系并向其按需群集名称。 |
 | 2310         | java.lang.NullPointerException                               | 将作业提交到 Spark 群集时出错了      | 此异常来自 HDInsight 和隐藏实际问题。   请联系 HDInsight 团队以获取支持，并向他们提供群集名称和活动运行时间范围。 |

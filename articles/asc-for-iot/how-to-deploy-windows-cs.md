@@ -2,24 +2,25 @@
 title: Azure 安全中心的 IoT 代理预览版的 Windows 安装 |Microsoft Docs
 description: 了解有关如何安装适用于 32 位或 64 位 Windows 设备上 IoT 代理 Azure 安全中心。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 64fc576885bb9d9c3c46aafd808db65d2f8ff77f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b22faa6ea02a1a3d093aee1dec84ca1680da54d2
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200603"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616762"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>为 IoT 部署 Azure 安全中心C#-基于 Windows 的安全代理
 
@@ -36,7 +37,7 @@ ms.locfileid: "65200603"
 > * 卸载代理
 > * 故障排除 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 有关其他平台和代理风格，请参阅[选择适当的安全代理](how-to-deploy-agent.md)。
 
@@ -98,7 +99,7 @@ ms.locfileid: "65200603"
     .\InstallSecurityAgent.ps1 -Uninstall
     ``` 
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果代理无法启动，请启用日志记录（日志记录默认设置为“禁用”  ）以获取更多信息。
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 02/20/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e062fd73f2baeb4948430b13e0caa1f5c0b3f066
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4a5723b2ffbd34fd7cf022bf747b4504b3bdac53
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341112"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797658"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问
 
@@ -26,7 +26,7 @@ ms.locfileid: "67341112"
 
 Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一样创建一个新的 Azure 机器学习工作区时，它附带了三个默认角色。 可以将用户添加到工作区并将其分配到这些内置角色之一。
 
-| 角色 | 访问级别 |
+| Role | 访问级别 |
 | --- | --- |
 | **读取者** | 在工作区中的只读操作。 读取器可以列出和查看在工作区中，资产，但无法创建或更新这些资产。 |
 | **参与者** | 查看、 创建、 编辑或删除 （如果适用） 的工作区中的资产。 例如，参与者可以创建试验、 创建或附加的计算群集、 提交运行，和部署 web 服务。 |

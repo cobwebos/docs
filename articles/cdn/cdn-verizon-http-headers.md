@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: magattus
-ms.openlocfilehash: b9f7a5332c8529753f2e22efd6af3d04cb3f44b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5881bea578f2791f8dc0d6e760fd15c6f47e435
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479748"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593252"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 Verizon 特定的 HTTP 标头
 
@@ -39,7 +39,7 @@ ms.locfileid: "66479748"
 X-Forwarded-For | 指示请求方的 IP 地址。| 10.10.10.10
 X-Forwarded-Proto | 指示请求的协议。 | http
 X-Host | 指示请求的主机名。 | cdn.mydomain.com
-X-Midgress | 指示是否通过附加的 CDN 服务器来代理请求。 例如，POP 服务器到源防护服务器，或 POP 服务器到 ADN 网关服务器。 <br />仅当发生 midgress 流量时，才将此标头添加到请求中。 在这种情况下，标头设置为 1，指示通过附加的 CDN 服务器代理了请求。| 第
+X-Midgress | 指示是否通过附加的 CDN 服务器来代理请求。 例如，POP 服务器到源防护服务器，或 POP 服务器到 ADN 网关服务器。 <br />仅当发生 midgress 流量时，才将此标头添加到请求中。 在这种情况下，标头设置为 1，指示通过附加的 CDN 服务器代理了请求。| 1
 [主机](#host-request-header) | 标识可在其中找到所请求内容的主机和端口。 | marketing.mydomain.com:80
 [X-Gateway-List](#x-gateway-list-request-header) | ADN:标识分配给客户源服务器的 ADN 网关服务器故障转移列表。 <br />源防护：指示分配给客户源的源防护服务器组。 | `icn1,hhp1,hnd1`
 X-EC- _&lt;name&gt;_ | 以 *X-EC* 开头的请求标头（例如 X-EC-Tag、[X-EC-Debug](cdn-http-debug-headers.md)）保留给 CDN 使用。| waf-production

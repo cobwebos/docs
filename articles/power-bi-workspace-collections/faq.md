@@ -2,18 +2,18 @@
 title: Power BI 工作区集合常见问题解答
 description: 与 Power BI 工作区集合相关的常见问题。
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: e3c28cc28261e65e945887d7ad9bfa5fd3984605
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b737c7753ce374d0360738e37d83609d1db995b1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701585"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672424"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI 工作区集合常见问题解答
 
@@ -72,7 +72,7 @@ Azure 门户会提供关于针对订阅已执行的呈现/报表会话数的帐�
 
 ## <a name="does-my-application-end-user-need-a-power-bi-license"></a>应用程序的最终用户是否需要 Power BI 许可证？
 
-不。 应用程序的最终用户无需单独购买 Power BI 订阅便可访问应用内数据可视化元素。 在 Power BI 工作区集合模型中，会通过 Azure 消耗计量器针对服务向应用程序提供商计费。 请参阅[定价和许可页](https://go.microsoft.com/fwlink/?LinkId=760527)。
+否。 应用程序的最终用户无需单独购买 Power BI 订阅便可访问应用内数据可视化元素。 在 Power BI 工作区集合模型中，会通过 Azure 消耗计量器针对服务向应用程序提供商计费。 请参阅[定价和许可页](https://go.microsoft.com/fwlink/?LinkId=760527)。
 
 ## <a name="how-does-user-authentication-work-with-power-bi-workspace-collections"></a>如何对 Power BI 工作区集合的用户进行身份验证？
 
@@ -98,11 +98,11 @@ Power BI 工作区集合服务使用“应用令牌”进行身份验证和授�
 
 可以立即开始体验免费版！ 如果拥有 Azure 订阅，现在就可以直接从 Azure 门户预配 Power BI 工作区集合。 也可以创建[免费 Azure 帐户](https://azure.microsoft.com/free/)。 一旦 Power BI 工作区集合服务预配完毕，就可以直接轻松使用 Power BI REST API，或使用 [GitHub](https://go.microsoft.com/fwlink/?LinkID=746472) 上提供的开发人员 SDK。 关于如何使用开发人员 SDK 提供的示例。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [什么是 Microsoft Power BI 工作区集合](what-are-power-bi-workspace-collections.md)
 [Microsoft Power BI 工作区集合入门](get-started.md)
 [示例入门](get-started-sample.md)   
 [JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

@@ -16,92 +16,85 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a51401bcb8d282fef10b0b06e646b652bf5f8e8
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: b7e819551e7d85ccd039e23298b852302bba2d92
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513393"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807581"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
-## <a name="overview"></a>概述
+SCIM 是标准化的协议和架构的目标是为驱动器中标识跨多个系统的管理方式更好的一致性。 在应用程序进行用户管理支持 SCIM 终结点，Azure AD 用户预配服务可以发送请求来创建、 修改或删除已分配的用户和组添加到此终结点。
 
-SCIM 是标准化的协议和架构的目标是为驱动器中标识跨多个系统的管理方式更好的一致性。 在应用程序进行用户管理支持 SCIM 终结点，Azure AD 用户预配服务可以发送请求来创建、 修改或删除已分配的用户和组添加到此终结点。 
-
-Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../saas-apps/tutorial-list.md)实现 SCIM，如接收用户的方法更改通知。  除此之外，客户可以连接支持的特定配置文件的应用程序[SCIM 2.0 协议规范](https://tools.ietf.org/html/rfc7644)Azure 门户中使用泛型"非库"集成选项。 
+Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../saas-apps/tutorial-list.md)实现 SCIM，如接收用户的方法更改通知。  除此之外，客户可以连接支持的特定配置文件的应用程序[SCIM 2.0 协议规范](https://tools.ietf.org/html/rfc7644)Azure 门户中使用泛型"非库"集成选项。
 
 本文的重点是在 Azure AD 作为非库应用其泛型 SCIM 连接器的一部分实现的 SCIM 2.0 的配置文件。 但是，成功测试的应用程序支持 SCIM 的一般的 Azure ad 连接器是将为支持用户预配 Azure AD 库中列出的应用的步骤。 Azure AD 应用程序库中列出你的应用程序的详细信息，请参阅[如何：列出 Azure AD 应用程序库中的应用程序](../develop/howto-app-gallery-listing.md)。
- 
 
->[!IMPORTANT]
->Azure AD SCIM 实现的行为最近于 2018 年 12 月 18 日更新。 有关更改内容的信息，请参阅 [Azure AD 用户预配服务 SCIM 2.0 协议合规性](application-provisioning-config-problem-scim-compatibility.md)。
+> [!IMPORTANT]
+> Azure AD SCIM 实现的行为最近于 2018 年 12 月 18 日更新。 有关更改内容的信息，请参阅 [Azure AD 用户预配服务 SCIM 2.0 协议合规性](application-provisioning-config-problem-scim-compatibility.md)。
 
-![][0]
-*图 1：从 Azure Active Directory 预配到实现 SCIM 的应用程序或标识存储*
+![显示从 Azure AD 预配到应用程序或标识存储][0]<br/>
+图 1：*从 Azure Active Directory 预配到实现 SCIM 的应用程序或标识存储*
 
 本文分为四个部分：
 
 * **[预配的用户和组添加到第三方应用程序支持 SCIM 2.0](#provisioning-users-and-groups-to-applications-that-support-scim)**  -如果你的组织使用，实现的 SCIM 2.0 Azure AD 配置文件支持，可以开始自动同时运行的第三方应用程序预配和取消预配的用户和组今天。
-
 * **[了解 Azure AD SCIM 实现](#understanding-the-azure-ad-scim-implementation)** -如果你正在构建支持 SCIM 2.0 用户管理 API 的应用程序，此部分详细介绍了如何实现 Azure AD SCIM 客户端，以及如何应对建模SCIM 协议请求处理和响应。
-  
 * **[构建使用 Microsoft CLI 库的 SCIM 终结点](#building-a-scim-endpoint-using-microsoft-cli-libraries)** -公共语言基础结构 (CLI) 库以及代码示例显示如何开发 SCIM 终结点和转换 SCIM 消息。  
-
-* **[用户和组架构参考](#user-and-group-schema-reference)** -介绍了支持的非库应用程序的 Azure AD SCIM 实现的用户和组架构。 
+* **[用户和组架构参考](#user-and-group-schema-reference)** -介绍了支持的非库应用程序的 Azure AD SCIM 实现的用户和组架构。
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>将用户和组预配到支持 SCIM 的应用程序
+
 可以将 azure AD 配置为自动预配分配用户和组添加到实现的特定配置文件的应用程序[SCIM 2.0 协议](https://tools.ietf.org/html/rfc7644)。 配置文件的详细信息记录在[了解 Azure AD SCIM 实现](#understanding-the-azure-ad-scim-implementation)。
 
 请咨询应用程序提供者，或参阅应用程序提供者文档中的说明，以了解是否符合这些要求。
 
->[!IMPORTANT]
->Azure AD SCIM 实现基于 Azure AD 用户预配服务，它旨在不断地保留在 Azure AD 之间同步用户和目标应用程序，并实现一组非常特定的标准操作。 请务必了解这些行为，若要了解 Azure AD SCIM 客户端的行为。 有关详细信息，请参阅[用户预配过程中发生？](user-provisioning.md#what-happens-during-provisioning)。
+> [!IMPORTANT]
+> Azure AD SCIM 实现基于 Azure AD 用户预配服务，它旨在不断地保留在 Azure AD 之间同步用户和目标应用程序，并实现一组非常特定的标准操作。 请务必了解这些行为，若要了解 Azure AD SCIM 客户端的行为。 有关详细信息，请参阅[用户预配过程中发生？](user-provisioning.md#what-happens-during-provisioning)。
 
 ### <a name="getting-started"></a>入门
+
 支持本文所述 SCIM 配置文件的应用程序可以使用 Azure AD 应用程序库中的“非库应用程序”功能连接到 Azure Active Directory。 连接后，Azure AD 将每隔 40 分钟运行同步过程，此过程将为分配的用户和组查询应用程序的 SCIM 终结点，并根据分配详细信息创建或修改这些用户和组。
 
 **连接到支持 SCIM 的应用程序：**
 
 1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)。 
-
 1. 选择**企业应用程序**在左窗格中。 显示所有已配置应用的列表，包括那些从库添加的应用。
-
 1. 选择 **+ 新应用程序** > **所有** > **非库应用程序**。
-
 1. 输入你的应用程序的名称并选择**添加**若要创建应用对象。 新的应用添加到企业应用程序的列表，并打开到其应用程序管理屏幕。
-    
-   ![][1]
-   *图 2：Azure AD 应用程序库*
-    
+
+   ![屏幕截图显示了 Azure AD 应用程序库][1]<br/>
+   图 2：*Azure AD 应用程序库*
+
 1. 在应用程序管理屏幕中，选择**预配**左侧面板中。
 1. 在“预配模式”菜单中，选择“自动”   。
-    
-   ![][2]
-   *图 3：在 Azure 门户中配置预配*
-    
+
+   示例：![在 Azure 门户中的应用程序的预配页][2]<br/>
+   图 3：*在 Azure 门户中配置预配*
+
 1. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL  。 示例： https://api.contoso.com/scim/v2/
-1. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段  。 
+1. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段  。
 1. 选择**测试连接**，使 Azure Active Directory 尝试连接到 SCIM 终结点。 如果该尝试失败，显示错误信息。  
 
-    >[!NOTE]
-    >**测试连接**使用随机 GUID 作为在 Azure AD 配置中选择的匹配属性，针对不存在的用户查询 SCIM 终结点。 预期正确响应为“HTTP 200 正常”以及空的 SCIM ListResponse 消息。 
+    > [!NOTE]
+    > **测试连接**使用随机 GUID 作为在 Azure AD 配置中选择的匹配属性，针对不存在的用户查询 SCIM 终结点。 预期正确响应为“HTTP 200 正常”以及空的 SCIM ListResponse 消息。
 
 1. 如果尝试连接到应用程序成功，然后选择**保存**保存管理员凭据。
 1. 在“映射”部分中有两个可选的属性映射集：一个用于用户对象，一个用于组对象  。 分别选择它们，查看从 Azure Active Directory 同步到应用的属性。 选为“匹配”属性的特性用于匹配应用中的用户和组，以执行更新操作  。 选择“保存”，提交所有更改  。
 
-    >[!NOTE]
-    >也可通过禁用“组”映射来选择性禁用组对象的同步。 
+    > [!NOTE]
+    > 也可通过禁用“组”映射来选择性禁用组对象的同步。
 
 1. “设置”下的“作用域”字段定义同步的用户和组   。 选择**仅同步分配的用户和组**（推荐） 以仅同步用户和组中分配**用户和组**选项卡。
 1. 你的配置完成后，设置**预配状态**到**上**。
-1. 选择**保存**以启动 Azure AD 预配服务。 
+1. 选择**保存**以启动 Azure AD 预配服务。
 1. 如果仅同步分配用户和组 （推荐），请务必选择**用户和组**选项卡并分配用户或你想要同步的组。
 
 启动初始同步后，可以选择**审核日志**在左面板中监视进度，它显示了通过预配服务对您的应用程序的所有操作。 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](check-status-user-account-provisioning.md)。
 
 > [!NOTE]
-> 初始同步长，若要执行的时间比更高版本，只要服务正在运行，大约每隔 40 分钟就会进行同步。 
+> 初始同步长，若要执行的时间比更高版本，只要服务正在运行，大约每隔 40 分钟就会进行同步。
 
 ## <a name="understanding-the-azure-ad-scim-implementation"></a>了解 Azure AD SCIM 实现
 
@@ -131,25 +124,27 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 * 可以在查询资源的属性应设置为匹配的属性中的应用程序[Azure 门户](https://portal.azure.com)。 有关详细信息，请参阅[自定义用户预配属性映射](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 
 ### <a name="user-provisioning-and-de-provisioning"></a>用户预配和取消预配
+
 如下图所示，Azure Active Directory 将发送到 SCIM 服务以管理应用程序的标识存储中的用户的生命周期的消息。  
 
-![][4]
-*图 4：用户预配和取消预配顺序*
+![显示用户预配和取消预配顺序][4]<br/>
+图 4：*用户预配和取消预配顺序*
 
 ### <a name="group-provisioning-and-de-provisioning"></a>组预配和取消预配
-组预配和取消预配是可选的。 实现并启用时下, 图显示的消息，Azure AD 会发送到 SCIM 服务以管理应用程序的标识存储中的组的生命周期。  这些消息通过两种方式中的用户有关的消息不同： 
+
+组预配和取消预配是可选的。 实现并启用时下, 图显示的消息，Azure AD 会发送到 SCIM 服务以管理应用程序的标识存储中的组的生命周期。  这些消息通过两种方式中的用户有关的消息不同：
 
 * 若要检索组的请求指定成员属性是要从在对请求响应中提供的任何资源中排除。  
 * 确定引用属性是否具有特定值的请求是有关成员属性的请求。  
 
-![][5]
-*图 5：组预配和取消预配顺序*
+![显示组预配和取消预配顺序][5]<br/>
+图 5：*组预配和取消预配顺序*
 
 ### <a name="scim-protocol-requests-and-responses"></a>SCIM 协议请求和响应
 本部分提供示例 SCIM 请求发出的 Azure AD SCIM 客户端和示例的预期的响应。 为获得最佳结果，因此应将应用以处理这些请求以这种格式，并发出预期的响应。
 
->[!IMPORTANT]
->若要了解 Azure AD 用户预配服务如何以及何时发出如下所述的操作，请参阅[用户预配过程中发生？](user-provisioning.md#what-happens-during-provisioning)。
+> [!IMPORTANT]
+> 若要了解 Azure AD 用户预配服务如何以及何时发出如下所述的操作，请参阅[用户预配过程中发生？](user-provisioning.md#what-happens-during-provisioning)。
 
 - [用户操作](#user-operations)
   - [创建用户](#create-user)
@@ -203,6 +198,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 #### <a name="create-user"></a>创建用户
 
 ###### <a name="request"></a>请求
+
 *POST/用户*
 ```json
 {
@@ -230,6 +226,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ```
 
 ##### <a name="response"></a>响应
+
 *HTTP/1.1 201 已创建*
 ```json
 {
@@ -255,7 +252,6 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
     }]
 }
 ```
-
 
 #### <a name="get-user"></a>获取用户
 
@@ -288,12 +284,15 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
     }]
 }
 ```
+
 #### <a name="get-user-by-query"></a>通过查询获取用户
 
 ##### <a name="request-2"></a>请求
+
 *GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
 ##### <a name="response-2"></a>响应
+
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -330,9 +329,11 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 #### <a name="get-user-by-query---zero-results"></a>获取用户查询的零个结果
 
 ##### <a name="request-3"></a>请求
+
 *GET/用户？ 筛选器 = 用户名 eq"不存在用户"*
 
 ##### <a name="response-3"></a>响应
+
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -348,6 +349,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 #### <a name="update-user-multi-valued-properties"></a>更新用户多值属性
 
 ##### <a name="request-4"></a>请求
+
 *修补程序/用户/6764549bef60420686bc HTTP/1.1*
 ```json
 {
@@ -368,6 +370,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ```
 
 ##### <a name="response-4"></a>响应
+
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -397,6 +400,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 #### <a name="update-user-single-valued-properties"></a>更新用户单值属性
 
 ##### <a name="request-5"></a>请求
+
 *修补程序/用户/5171a35d82074e068ce2 HTTP/1.1*
 ```json
 {
@@ -410,6 +414,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ```
 
 ##### <a name="response-5"></a>响应
+
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -440,9 +445,11 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 #### <a name="delete-user"></a>删除用户
 
 ##### <a name="request-6"></a>请求
+
 *DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
 
 ##### <a name="response-6"></a>响应
+
 *HTTP/1.1 204 无内容*
 
 ### <a name="group-operations"></a>组操作
@@ -455,6 +462,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 #### <a name="create-group"></a>创建组
 
 ##### <a name="request-7"></a>请求
+
 *POST /Groups HTTP/1.1*
 ```json
 {
@@ -469,6 +477,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ```
 
 ##### <a name="response-7"></a>响应
+
 *HTTP/1.1 201 已创建*
 ```json
 {
@@ -489,6 +498,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 #### <a name="get-group"></a>获取组
 
 ##### <a name="request-8"></a>请求
+
 *GET/组/40734ae655284ad3abcc？ excludedAttributes = 成员 HTTP/1.1*
 
 ##### <a name="response-8"></a>响应
@@ -513,6 +523,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 *GET /Groups？ excludedAttributes = 成员筛选器 = displayName eq"displayName"HTTP/1.1*
 
 ##### <a name="response-9"></a>响应
+
 *HTTP/1.1 200 确定*
 ```json
 {
@@ -534,9 +545,11 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
     "itemsPerPage": 20
 }
 ```
+
 #### <a name="update-group-non-member-attributes"></a>更新组 [非成员属性]
 
 ##### <a name="request-10"></a>请求
+
 *PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
 {
@@ -550,11 +563,13 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ```
 
 ##### <a name="response-10"></a>响应
+
 *HTTP/1.1 204 无内容*
 
 ### <a name="update-group-add-members"></a>更新组 [添加成员。
 
 ##### <a name="request-11"></a>请求
+
 *修补/组/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -571,11 +586,13 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ```
 
 ##### <a name="response-11"></a>响应
+
 *HTTP/1.1 204 无内容*
 
 #### <a name="update-group-remove-members"></a>更新组 [删除成员]
 
 ##### <a name="request-12"></a>请求
+
 *修补/组/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -592,18 +609,21 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ```
 
 ##### <a name="response-12"></a>响应
+
 *HTTP/1.1 204 无内容*
 
 #### <a name="delete-group"></a>删除组
 
 ##### <a name="request-13"></a>请求
+
 *DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
 ##### <a name="response-13"></a>响应
+
 *HTTP/1.1 204 无内容*
 
-
 ## <a name="building-a-scim-endpoint-using-microsoft-cli-libraries"></a>构建使用 Microsoft CLI 库的 SCIM 终结点
+
 通过与 Azure Active Directory 中创建的 SCIM web 服务的接口，可以启用自动用户预配为几乎任何应用程序或标识存储。
 
 工作方式如下：
@@ -614,7 +634,8 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 4. 用户和组在 Azure AD 中分配到此应用程序。 分配后，它们是放入队列，以同步到目标应用程序。 处理队列的同步过程每隔 40 分钟运行一次。
 
 ### <a name="code-samples"></a>代码示例
-若要简化此过程[代码示例](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)提供其创建 SCIM web 服务终结点并演示自动预配。 该示例是维护一个文件，与表示用户和组以逗号分隔值的行的提供程序。    
+
+若要简化此过程[代码示例](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)提供其创建 SCIM web 服务终结点并演示自动预配。 该示例是维护一个文件，与表示用户和组以逗号分隔值的行的提供程序。
 
 **先决条件**
 
@@ -624,6 +645,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 * [具有 Azure AD Premium 试用版或许可版的 Azure 订阅](https://azure.microsoft.com/services/active-directory/)
 
 ### <a name="getting-started"></a>入门
+
 实现可以接受来自 Azure AD 的预配请求的 SCIM 终结点的最简单方法是构建和部署将预配的用户输出逗号分隔值 (CSV) 文件的代码示例。
 
 #### <a name="to-create-a-sample-scim-endpoint"></a>创建示例 SCIM 终结点
@@ -651,38 +673,23 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 #### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>在 Azure AD 中注册示例 SCIM 终结点
 
 1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)。 
-
 1. 选择**企业应用程序**在左窗格中。 显示所有已配置应用的列表，包括那些从库添加的应用。
-
 1. 选择 **+ 新应用程序** > **所有** > **非库应用程序**。
-
 1. 输入你的应用程序的名称并选择**添加**若要创建应用对象。 创建的应用程序对象代表要预配和实现单一登录的目标应用，而不仅是 SCIM 终结点。
-
 1. 在应用程序管理屏幕中，选择**预配**左侧面板中。
-
-1. 在“预配模式”菜单中，选择“自动”   。
-    
-   ![][2]
-   *图 6：在 Azure 门户中配置预配*
-    
+1. 在“预配模式”菜单中，选择“自动”   。    
 1. 在“租户 URL”字段中，输入面向 Internet 的 URL 和 SCIM 终结点的端口  。 该条目类似于 http://testmachine.contoso.com:9000 或 http://\< ip-address>:9000/，其中 \< ip-address> 是 Internet 公开 IP 地址。 
-
 1. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段  。 
 1. 选择**测试连接**，使 Azure Active Directory 尝试连接到 SCIM 终结点。 如果该尝试失败，显示错误信息。  
 
-    >[!NOTE]
-    >**测试连接**使用随机 GUID 作为在 Azure AD 配置中选择的匹配属性，针对不存在的用户查询 SCIM 终结点。 预期正确响应为“HTTP 200 正常”以及空的 SCIM ListResponse 消息
+    > [!NOTE]
+    > **测试连接**使用随机 GUID 作为在 Azure AD 配置中选择的匹配属性，针对不存在的用户查询 SCIM 终结点。 预期正确响应为“HTTP 200 正常”以及空的 SCIM ListResponse 消息
 
 1. 如果尝试连接到应用程序成功，然后选择**保存**保存管理员凭据。
-
 1. 在“映射”部分中有两个可选的属性映射集：一个用于用户对象，一个用于组对象  。 分别选择它们，查看从 Azure Active Directory 同步到应用的属性。 选为“匹配”属性的特性用于匹配应用中的用户和组，以执行更新操作  。 选择“保存”，提交所有更改  。
-
 1. “设置”下的“作用域”字段定义同步的用户或组   。 选择 **"仅同步分配的用户和组**（推荐） 以仅同步用户和组中分配**用户和组**选项卡。
-
 1. 你的配置完成后，设置**预配状态**到**上**。
-
-1. 选择**保存**以启动 Azure AD 预配服务。 
-
+1. 选择**保存**以启动 Azure AD 预配服务。
 1. 如果仅同步分配用户和组 （推荐），请务必选择**用户和组**选项卡并分配用户或你想要同步的组。
 
 启动初始同步后，可以选择**审核日志**在左面板中监视进度，它显示了通过预配服务对您的应用程序的所有操作。 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](check-status-user-account-provisioning.md)。
@@ -690,15 +697,17 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 验证此示例的最后一步是打开 Windows 计算机上 \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug 文件夹中的 TargetFile.csv 文件。 运行预配过程后，此文件会显示所有已分配和预配的用户与组的详细信息。
 
 ### <a name="development-libraries"></a>开发库
-若要开发自己的符合 SCIM 规范的 Web 服务，请先熟悉 Microsoft 提供的、有助于加速开发过程的以下库： 
 
-- 提供公共语言基础结构 (CLI) 库以配合基于该基础结构的语言，例如 C#。 其中一个库，Microsoft.SystemForCrossDomainIdentityManagement.Service，声明了一个接口 Microsoft.SystemForCrossDomainIdentityManagement.IProvider，如下图中所示。 使用这些库的开发人员将对某个类（一般称为提供程序）实现该接口。 这些库可让开发人员部署的 web 服务符合 SCIM 规范。 可以在 Internet 信息服务或任何可执行的 CLI 程序集内或者托管 web 服务。 请求将转换为对提供程序方法的调用，这些方法由开发者编程，以便对某些标识存储执行操作。
+若要开发自己的符合 SCIM 规范的 Web 服务，请先熟悉 Microsoft 提供的、有助于加速开发过程的以下库：
+
+* 提供公共语言基础结构 (CLI) 库以配合基于该基础结构的语言，例如 C#。 其中一个库，Microsoft.SystemForCrossDomainIdentityManagement.Service，声明了一个接口 Microsoft.SystemForCrossDomainIdentityManagement.IProvider，如下图中所示。 使用这些库的开发人员将对某个类（一般称为提供程序）实现该接口。 这些库可让开发人员部署的 web 服务符合 SCIM 规范。 可以在 Internet 信息服务或任何可执行的 CLI 程序集内或者托管 web 服务。 请求将转换为对提供程序方法的调用，这些方法由开发者编程，以便对某些标识存储执行操作。
   
-   ![][3]
+   ![明细：请求转换为对提供程序的方法调用][3]
   
-- [快速路由处理程序](https://expressjs.com/guide/routing.html)用于分析代表对 node.js Web 服务的调用（由 SCIM 规范定义）的 node.js 请求对象。   
+* [快速路由处理程序](https://expressjs.com/guide/routing.html)用于分析代表对 node.js Web 服务的调用（由 SCIM 规范定义）的 node.js 请求对象。
 
 ### <a name="building-a-custom-scim-endpoint"></a>构建自定义 SCIM 终结点
+
 使用 CLI 库的开发人员可以其服务托管在任何可执行文件的 CLI 程序集，或 Internet 信息服务中。 以下代码示例用于将服务托管在地址为 http://localhost:9000: 的可执行程序集中： 
 
    ```csharp
@@ -823,6 +832,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
    ```
 
 ### <a name="handling-endpoint-authentication"></a>处理终结点身份验证
+
 来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。   接收请求的任何服务应将颁发者作为 Azure Active Directory 的所需的 Azure Active Directory 租户，以访问 Azure Active Directory Graph web 服务进行身份验证。  在令牌中，颁发者由一个 iss 声明，例如"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ "。  在此示例中，声明值的基址 https://sts.windows.net 、 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422、 是为 Azure Active Directory 租户的唯一标识符其颁发的令牌。  如果颁发的令牌用于访问 Azure Active Directory Graph Web 服务，该服务的标识符 00000002-0000-0000-c000-000000000000 应在令牌的 aud 声明值中。  每个在单个租户中注册应用程序可能会收到相同`iss`SCIM 请求声明。
 
 使用 CLI 库构建 SCIM 服务由 Microsoft 提供的开发人员可以通过执行以下步骤使用 Microsoft.Owin.Security.ActiveDirectory 包的 Azure Active Directory 中的请求进行身份验证： 
@@ -845,7 +855,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
      }
    ```
 
-2. 将以下代码添加到该方法，以对所有服务的终结点作为确定它们持有 Azure Active Directory 为指定的租户，以访问 Azure AD Graph web 服务颁发的令牌进行身份验证的任何都请求： 
+1. 将以下代码添加到该方法，以对所有服务的终结点作为确定它们持有 Azure Active Directory 为指定的租户，以访问 Azure AD Graph web 服务颁发的令牌进行身份验证的任何都请求： 
 
    ```csharp
      private void OnServiceStartup(
@@ -985,7 +995,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
    * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
    * correlationIdentifier:System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
 
-2. 如果对具有匹配的用户的 mailNickname 属性值的 externalId 属性值的用户的 web 服务的查询的响应未返回任何用户，然后 Azure Active Directory 将请求服务预配用户对应于一项在 Azure Active Directory。  以下是此类请求的示例： 
+1. 如果对具有匹配的用户的 mailNickname 属性值的 externalId 属性值的用户的 web 服务的查询的响应未返回任何用户，然后 Azure Active Directory 将请求服务预配用户对应于一项在 Azure Active Directory。  以下是此类请求的示例： 
 
    ```
     POST https://.../scim/Users HTTP/1.1
@@ -1029,7 +1039,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
    ```
    如果请求预配用户，资源参数的值将是 Microsoft.SystemForCrossDomainIdentityManagement 的实例。 Core2EnterpriseUser 类，在 Microsoft.SystemForCrossDomainIdentityManagement.Schemas 库中定义。  如果预配用户的请求成功，则方法的实现应返回 Microsoft.SystemForCrossDomainIdentityManagement 的实例。 Core2EnterpriseUser 类，其 Identifier 属性值设置为新预配用户的唯一标识符。  
 
-3. 为了更新存在于前端为 SCIM 的标识存储中的已知用户，Azure Active Directory 将通过类似于下面的请求向服务请求该用户的当前状态来继续处理： 
+1. 为了更新存在于前端为 SCIM 的标识存储中的已知用户，Azure Active Directory 将通过类似于下面的请求向服务请求该用户的当前状态来继续处理： 
    ```
     GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
     Authorization: Bearer ...
@@ -1067,7 +1077,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
    * 标识符："54D382A4-2050-4C03-94D1-E769F1D15682"
    * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-4. 如果要更新引用属性，Azure Active Directory 查询以确定服务前端的标识存储中的引用属性的当前值是否与 Azure Active 中该属性的值已匹配的服务目录。 对于用户，以这种方式查询当前值的唯一属性是 manager 属性。 确定特定用户对象的 manager 属性当前是否具有特定值的请求示例如下： 
+1. 如果要更新引用属性，Azure Active Directory 查询以确定服务前端的标识存储中的引用属性的当前值是否与 Azure Active 中该属性的值已匹配的服务目录。 对于用户，以这种方式查询当前值的唯一属性是 manager 属性。 确定特定用户对象的 manager 属性当前是否具有特定值的请求示例如下： 
 
    如果使用由 Microsoft 提供用于实现 SCIM 服务的 CLI 库生成服务，则会将请求转换为对服务的提供者的查询方法的调用。 作为参数自变量值提供的对像属性值如下： 
   
@@ -1083,7 +1093,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 
    在这里，索引 x 的值可以是 0 并且索引 y 的值可以是 1，或 x 的值可以是 1 和 y 的值可以是 0，具体取决于筛选器查询参数的表达式的顺序。   
 
-5. 以下是从 Azure Active Directory 向 SCIM 服务发出更新用户请求的示例： 
+1. 以下是从 Azure Active Directory 向 SCIM 服务发出更新用户请求的示例： 
    ```
     PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
     Authorization: Bearer ...
@@ -1266,7 +1276,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
    * (PatchRequest as PatchRequest2).Operations.Count:第
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName:OperationName.Add
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Path.AttributePath: "manager"
-   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count:第
+   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count:1
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value:2819c223-7f76-453a-919d-413861904646
 
@@ -1312,6 +1322,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
    * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="user-and-group-schema-reference"></a>用户和组架构参考
+
 Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  这些类型的资源是用户和组。  
 
 用户资源由架构标识符`urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`，此协议规范中包括的哪些： https://tools.ietf.org/html/rfc7643 。  表 1 中提供了 Azure Active Directory 中用户的用户资源的属性的属性的默认映射。  
@@ -1352,10 +1363,11 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 | proxyAddresses |emails[type eq "other"].Value |
 
 ## <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>允许 IP 地址由 Azure AD 预配服务以便 SCIM 请求
+
 某些应用，开发自己的应用程序的入站的流量。 为了使 Azure AD 预配服务以按预期方式工作，必须允许使用的 IP 地址。 每个服务标记/地区的 IP 地址的列表，请参阅 JSON 文件中- [Azure IP 范围和服务标记-公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 可以下载并根据需要为你的防火墙程序这些 Ip。 可在 Azure AD 预配的保留的 IP 范围"AzureActiveDirectoryDomainServices。"下找到
- 
 
 ## <a name="related-articles"></a>相关文章
+
 * [在 SaaS 应用中自动预配和取消预配用户](user-provisioning.md)
 * [为用户预配自定义属性映射](customize-application-attributes.md)
 * [为属性映射编写表达式](functions-for-customizing-application-data.md)

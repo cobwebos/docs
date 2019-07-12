@@ -6,14 +6,14 @@ author: kasinh
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/18/2017
+ms.date: 07/09/2019
 ms.author: kasinh
-ms.openlocfilehash: d1fb3434f0d3954a07980963866bcd7cce004379
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 770baeeacb5f3808eba05f9e262bcbca75c6baad
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60650759"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705224"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>从 Azure 备份服务器恢复数据
 可使用 Azure 备份服务器恢复已备份到恢复服务保管库的数据。 用于执行此操作的过程已集成到 Azure 备份服务器管理控制台中，且与其他 Azure 备份组件的恢复工作流类似。
@@ -83,21 +83,13 @@ ms.locfileid: "60650759"
 | 没有。 | 错误消息 | 疑难解答步骤 |
 |:---:|:--- |:--- |
 | 1. |此服务器未注册到保管库凭据所指定的保管库。 |原因：  当所选保管库凭据文件不属于与 Azure 备份服务器（在其上进行恢复尝试）关联的恢复服务保管库时，会出现此错误。 <br> **解决方法：** 从 Azure 备份服务器所注册到的恢复服务保管库中下载保管库凭据文件。 |
-| 2. |可恢复的数据不可用，或所选服务器不是 DPM 服务器。 |原因：  没有其他 Azure 备份服务器注册到了恢复服务保管库、服务器尚未上传元数据，或者所选服务器不是 Azure 备份服务器（又称 Windows Server 或 Windows Client）。 <br> **解决方法：** 如果有其他 Azure 备份服务器注册到了恢复服务保管库，请确保安装了最新 Azure 备份代理。 <br>如果有其他 Azure 备份服务器注册到了恢复服务保管库，请等到安装之后的某一天来启动恢复过程。 每夜执行的作业会将所有受保护的备份的元数据上传到云。 数据将可用于恢复。 |
+| 2. |可恢复的数据不可用，或所选服务器不是 DPM 服务器。 |原因：  有其他 Azure 备份服务器注册到恢复服务保管库，或在服务器具有尚未上传元数据，或所选的服务器不是 Azure 备份服务器 （使用 Windows Server 或 Windows 客户端）。 <br> **解决方法：** 如果有其他 Azure 备份服务器注册到了恢复服务保管库，请确保安装了最新 Azure 备份代理。 <br>如果有其他 Azure 备份服务器注册到了恢复服务保管库，请等到安装之后的某一天来启动恢复过程。 每夜执行的作业会将所有受保护的备份的元数据上传到云。 数据将可用于恢复。 |
 | 3. |没有其他 DPM 服务器注册到此保管库中。 |原因：  没有其他 Azure 备份服务器注册到了正在从其尝试恢复的保管库。<br>**解决方法：** 如果有其他 Azure 备份服务器注册到了恢复服务保管库，请确保安装了最新 Azure 备份代理。<br>如果有其他 Azure 备份服务器注册到了恢复服务保管库，请等到安装之后的某一天来启动恢复过程。 每夜执行的作业会将所有受保护的备份的元数据上传到云。 数据将可用于恢复。 |
 | 4. |提供的加密密码不会与以下服务器关联的通行短语不匹配： **\<服务器名称 >** |原因：  用于 Azure 备份服务器的恢复数据加密流程的加密密码与所提供的加密密码不匹配。 代理不能对数据进行解密。 因此恢复失败。<br>**解决方法：** 请确保提供的加密密码与要进行数据恢复的 Azure 备份服务器的相关加密密码相同。 |
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="next-steps"></a>后续步骤
 
-### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>在安装 UR7 以及最新 Azure 备份代理之后，为何无法添加外部 DPM 服务器？
+阅读其他常见问题：
 
-对于通过云对数据源进行保护的 DPM 服务器（使用 Update Rollup 7 之前的更新汇总），必须在安装 UR7 及最新 Azure 备份代理之后等待至少一天，然后才能开始“添加外部 DPM 服务器”  。 需要一天的时间才能将 DPM 保护组的元数据上传到 Azure。 首次上传保护组元数据时通过一个每晚执行的作业实现。
-
-### <a name="what-is-the-minimum-version-of-the-microsoft-azure-recovery-services-agent-needed"></a>所需的最低版本的 Microsoft Azure 恢复服务代理是哪个版本？
-
-启用此功能所需的 Microsoft Azure 恢复服务代理或 Azure 备份代理的最低版本为 2.0.8719.0。  若要查看代理版本：打开“控制面板” **>** “所有控制面板项” **>** “程序和功能” **>** “Microsoft Azure 恢复服务代理”。 如果版本低于 2.0.8719.0，可下载并安装[最新 Azure 备份代理](https://go.microsoft.com/fwLink/?LinkID=288905)。
-
-![清除外部 DPM](./media/backup-azure-alternate-dpm-server/external-dpm-azurebackupagentversion.png)
-
-## <a name="next-steps"></a>后续步骤：
-•    [Azure 备份常见问题解答](backup-azure-backup-faq.md)
+- [常见的问题](backup-azure-vm-backup-faq.md)有关 Azure VM 备份
+- 有关 Azure 备份代理的[常见问题](backup-azure-file-folder-backup-faq.md)

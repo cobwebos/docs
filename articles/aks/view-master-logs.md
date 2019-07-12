@@ -2,17 +2,17 @@
 title: 查看 Azure Kubernetes 服务 (AKS) 控制器日志
 description: 了解如何启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: iainfou
-ms.openlocfilehash: 256101cce5588f56a8094a7a9a98e5fe69e6ec73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: ef77b991461c5d9640cbab9d53f8393540f47c9b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497257"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613922"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -20,7 +20,7 @@ ms.locfileid: "66497257"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文要求在 Azure 帐户中运行一个现有的 AKS 群集。 如果没有 AKS 群集，请使用 [Azure CLI][cli-quickstart] 或 [Azure 门户][portal-quickstart]创建一个群集。 Azure Monitor 日志适用于支持 RBAC 和不支持 RBAC 的 AKS 群集。
+本文要求在 Azure 帐户中运行一个现有的 AKS 群集。 如果你还没有 AKS 群集，创建一个使用[Azure CLI][cli-quickstart] or [Azure portal][portal-quickstart]。 Azure Monitor 日志适用于支持 RBAC 和不支持 RBAC 的 AKS 群集。
 
 ## <a name="enable-diagnostics-logs"></a>启用诊断日志
 
@@ -37,15 +37,15 @@ ms.locfileid: "66497257"
 1. 准备就绪后，选择“保存”以启用收集选定日志。 
 
 > [!NOTE]
-> AKS 仅捕获在订阅上启用功能标志后创建或升级的群集的审核日志。 若要注册 *AKSAuditLog* 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示：
+> AKS 仅捕获在订阅上启用功能标志后创建或升级的群集的审核日志。 若要注册*AKSAuditLog*功能标志，请使用[az 功能注册][az-feature-register]命令，在下面的示例所示：
 >
 > `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
 >
-> 等待状态显示“已注册”  。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+> 等待状态显示“已注册”  。 您可以检查注册状态使用[az 功能列表][az-feature-list]命令：
 >
 > `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
 >
-> 准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 AKS 资源提供程序的注册状态：
+> 准备就绪后，刷新使用 AKS 资源提供程序的注册[az provider register][az-provider-register]命令：
 >
 > `az provider register --namespace Microsoft.ContainerService`
 
@@ -77,7 +77,7 @@ spec:
     - containerPort: 80
 ```
 
-使用 [kubectl create][kubectl-create] 命令创建 Pod 并指定 YAML 文件，如以下示例所示：
+创建具有 pod [kubectl 创建][kubectl-create]命令并指定你的 YAML 文件，如下面的示例中所示：
 
 ```
 $ kubectl create -f nginx.yaml
@@ -114,7 +114,7 @@ AzureDiagnostics
 
 若要查看其他日志，可将针对 *Category* 名称的查询更新为 *kube-controller-manager* 或 *kube-scheduler*，具体取决于启用的其他日志。 然后，可以使用附加的 *where* 语句来具体化要查找的事件。
 
-有关如何查询和筛选日志数据的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据][analyze-log-analytics]。
+有关如何查询和筛选日志数据的详细信息，请参阅[查看或分析使用 log analytics 日志搜索收集的数据][analyze-log-analytics]。
 
 ## <a name="log-event-schema"></a>日志事件架构
 
@@ -133,7 +133,7 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 
-本文已介绍如何启用和查看 AKS 群集中 Kubernetes 主组件的日志。 若要进一步进行监视和排除故障，还可以[查看 Kubelet 日志][kubelet-logs]并[启用 SSH 节点访问][aks-ssh]。
+本文已介绍如何启用和查看 AKS 群集中 Kubernetes 主组件的日志。 若要监视并进一步排除故障，您还可以[查看 Kubelet 日志][kubelet-logs] and [enable SSH node access][aks-ssh]。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

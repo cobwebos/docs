@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 999bffe9650f3d2f2a04dba728a9aa41fa46a6b0
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60324074"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593407"
 ---
 # <a name="using-azure-cdn-with-sas"></a>将 Azure CDN 与 SAS 一起使用
 
@@ -32,7 +32,7 @@ ms.locfileid: "60324074"
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>设置 Azure CDN 以用于存储 SAS
 对于将 SAS 与 Azure CDN 一起使用，建议使用以下三个选项。 所有选项都假设已创建了一个有效的 SAS（请参阅先决条件）。 
  
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>系统必备
 首先创建存储帐户，然后为资产生成 SAS。 可以生成两种类型的存储访问签名：服务 SAS 或帐户 SAS。 有关详细信息，请参阅[共享访问签名的类型](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures)。
 
 生成 SAS 令牌后，可将 `?sv=<SAS token>` 追加到 URL，访问 blob 存储文件。 此 URL 格式如下： 

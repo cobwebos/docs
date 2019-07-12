@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bccaa28d34ebff47c7de73a4d9b3d8296ae9fef
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: b01ff1e2d0c9bc926d54bd54716e0579ef395ec0
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476131"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655996"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>如何填写自定义开发应用程序的特定字段
 
@@ -41,9 +41,9 @@ ms.locfileid: "67476131"
 
 | 字段            | 描述                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Name             | 应用程序的名称。 它应至少具有四个字符。                |
+| 名称             | 应用程序的名称。 它应至少具有四个字符。                |
 | 支持的帐户类型| 选择希望应用程序支持哪些帐户： 此组织目录中的帐户、 任何组织的目录中的帐户或任何组织的目录中的帐户和个人 Microsoft 帐户。  |
-| 重定向 URI （可选） | 选择您要构建，应用程序的类型**Web**或**公共客户端 （移动和桌面）** ，然后输入你的应用程序的重定向 URI （或回复 URL）。 对于 Web 应用程序，请提供应用的基 URL。 例如， http://localhost:31544 可以是本地计算机上运行的 Web 应用的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。 对于公共客户端应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入应用程序，如 myapp://auth 特定的值。若要查看 Web 应用程序或本机应用程序的特定示例，请参阅[快速入门](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts)。|
+| 重定向 URI （可选） | 选择您要构建，应用程序的类型**Web**或**公共客户端 （移动和桌面）** ，然后输入你的应用程序的重定向 URI （或回复 URL）。 对于 Web 应用程序，请提供应用的基 URL。 例如， http://localhost:31544 可以是本地计算机上运行的 Web 应用的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。 对于公共客户端应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入应用程序，如 myapp://auth 特定的值。若要查看 Web 应用程序或本机应用程序的特定示例，请参阅[快速入门](https://docs.microsoft.com/azure/active-directory/develop)。|
 
 一旦已填写上述字段，在 Azure 门户中注册应用程序和重定向到应用程序概述页上。 在左窗格中的设置页**管理**具有多个字段，以便自定义应用程序。 下表介绍的所有字段。 您将只能看到这些字段，具体取决于您创建的 web 应用程序或公共客户端应用程序的子集。
 
@@ -60,7 +60,7 @@ ms.locfileid: "67476131"
 | 上传新徽标 | 可使用此字段上传应用程序的徽标。 徽标必须采用.bmp、.jpg 或.png 格式，并且文件大小应小于 100 KB。 图像大小应为 215x215 像素，中心图像大小应为 94x94 像素。|
 | 主页 URL   | 这是在应用程序注册过程中指定的登录 URL。|
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
 | 字段           | 描述        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

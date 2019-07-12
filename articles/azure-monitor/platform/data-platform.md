@@ -5,18 +5,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 8883c1e7f2874e1e2e61b8eca122f2ec294c7849
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00c0fea9d8ca7ee299a9a19473917eba90edd675
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808961"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606976"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor 数据平台
 
@@ -70,9 +70,9 @@ Azure Monitor 中的分布式跟踪是使用 [Application Insights SDK](../app/d
 | 特性  | 度量值 | 日志 |
 |:---|:---|:---|
 | 优点 | 轻型数据，支持警报等近实时方案。 非常适合用于快速检测问题。 | 使用丰富查询语言进行分析。 非常适合用于深入分析和识别根本原因。 |
-| 数据 | 仅限数字值 | 文本或数字数据 |
+| Data | 仅限数字值 | 文本或数字数据 |
 | 结构 | 标准属性集，包括采样时间、受监视的资源、数字值。 某些指标包含多个维度用于进一步的定义。 | 取决于日志类型的唯一属性集。 |
-| 集合 | 定期收集。 | 可以在事件触发要创建的记录时偶发性地收集。 |
+| Collection | 定期收集。 | 可以在事件触发要创建的记录时偶发性地收集。 |
 | 在 Azure 门户中查看 | 指标资源管理器 | Log Analytics |
 | 数据源包括 | 从 Azure 资源收集的平台指标。<br>Application Insights 监视的应用程序。<br>应用程序或 API 定义的自定义指标。 | 应用程序和诊断日志。<br>监视解决方案。<br>代理和 VM 扩展。<br>应用程序请求和异常。<br>Azure 安全中心。<br>数据收集器 API。 |
 

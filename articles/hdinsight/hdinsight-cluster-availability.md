@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 459de569916af14b0efea0ff08b92e5c93ed2369
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 195999ba685828042fc958e8aed7e67bad694657
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718920"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786563"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>如何监视群集的 Ambari 和 Azure Monitor 日志可用性
 
@@ -123,7 +123,7 @@ Azure 监视器将记录生成的多个资源，例如 HDInsight 群集，以先
 > [!NOTE] 
 > 可用性速率度量 24 小时内，因此你的群集需要运行至少 24 小时，才能看到准确的费率。
 
-可以通过单击固定此表与共享仪表板**Pin**在右上角。 如果还没有任何可写共享仪表板，可以了解如何创建一个此处：[创建和共享在 Azure 门户中的仪表板](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-a-dashboard-and-manage-access-control)。
+可以通过单击固定此表与共享仪表板**Pin**在右上角。 如果还没有任何可写共享仪表板，可以了解如何创建一个此处：[创建和共享在 Azure 门户中的仪表板](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard)。
 
 ### <a name="azure-monitor-alerts"></a>Azure 监视器警报
 

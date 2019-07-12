@@ -2,17 +2,17 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的群集隔离
 description: 了解有关 Azure Kubernetes 服务 (AKS) 中的隔离的群集操作员最佳做法
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 8150e184f0c7533d5a6e7e4847bf126206f5e6c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60465271"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614933"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集隔离的最佳做法
 
@@ -26,19 +26,19 @@ ms.locfileid: "60465271"
 
 ## <a name="design-clusters-for-multi-tenancy"></a>设计多租户群集
 
-Kubernetes 提供所需的功能让你在同一个群集中逻辑隔离团队和工作负荷。 目标应该是提供最少量的特权，特权范围限定为每个团队所需的资源。 Kubernetes 中的[命名空间][k8s-namespaces]创建逻辑隔离边界。 其他 Kubernetes 功能以及有关隔离和多租户的注意事项包括以下几个方面：
+Kubernetes 提供所需的功能让你在同一个群集中逻辑隔离团队和工作负荷。 目标应该是提供最少量的特权，特权范围限定为每个团队所需的资源。 一个[Namespace][k8s-namespaces]在 Kubernetes 中创建逻辑隔离边界。 其他 Kubernetes 功能以及有关隔离和多租户的注意事项包括以下几个方面：
 
-* “计划”包括资源配额和 pod 中断预算等基本功能的用法。  有关这些功能的详细信息，请参阅[有关 AKS 中基本计划程序功能的最佳做法][aks-best-practices-scheduler]。
-  * 更高级的计划程序功能包括排斥 (taint) 和容许 (toleration)、节点选择器，以及节点和 pod 关联与反关联。 有关这些功能的详细信息，请参阅[有关 AKS 中高级计划程序功能的最佳做法][aks-best-practices-advanced-scheduler]。
+* “计划”包括资源配额和 pod 中断预算等基本功能的用法。  有关这些功能的详细信息，请参阅[在 AKS 中的基本计划程序功能的最佳做法][aks-best-practices-scheduler]。
+  * 更高级的计划程序功能包括排斥 (taint) 和容许 (toleration)、节点选择器，以及节点和 pod 关联与反关联。 有关这些功能的详细信息，请参阅[在 AKS 中的高级计划程序功能的最佳做法][aks-best-practices-advanced-scheduler]。
 * “网络”包括用于控制传入和传出 pod 的流量流的网络策略的用法。 
-* “身份验证和授权”包括基于角色的访问控制 (RBAC) 和 Azure Active Directory (AD) 集成、pod 标识以及 Azure Key Vault 中的机密的用法。  有关这些功能的详细信息，请参阅[有关 AKS 中身份验证和授权的最佳做法][aks-best-practices-identity]。
+* “身份验证和授权”包括基于角色的访问控制 (RBAC) 和 Azure Active Directory (AD) 集成、pod 标识以及 Azure Key Vault 中的机密的用法。  有关这些功能的详细信息，请参阅[身份验证和授权在 AKS 中的最佳做法][aks-best-practices-identity]。
 * “容器”包括 pod 安全策略、pod 安全上下文，以及扫描映像和运行时中的漏洞。  此外，还涉及到使用 App Armor 或 Seccomp（安全计算）来限制容器对基础节点的访问。
 
 ## <a name="logically-isolate-clusters"></a>逻辑隔离群集
 
 **最佳做法指导** - 使用逻辑隔离来隔离团队和项目。 尝试尽量减少要部署的物理 AKS 群集数，以隔离团队或应用程序。
 
-使用逻辑隔离可将单个 AKS 群集用于多个工作负荷、团队或环境。 Kubernetes [命名空间][k8s-namespaces]构成了工作负荷和资源的逻辑隔离边界。
+使用逻辑隔离可将单个 AKS 群集用于多个工作负荷、团队或环境。 Kubernetes[命名空间][k8s-namespaces]窗体的工作负荷和资源的逻辑隔离边界。
 
 ![AKS 中 Kubernetes 群集的逻辑隔离](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
@@ -61,7 +61,7 @@ AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存�
 本文重点介绍了群集隔离。 有关 AKS 中的群集操作的详细信息，请参阅以下最佳做法：
 
 * [基本 Kubernetes 计划程序功能][aks-best-practices-scheduler]
-* [高级 Kubernetes 计划程序功能][aks-best-practices-advanced-scheduler]
+* [高级的 Kubernetes 计划程序功能][aks-best-practices-advanced-scheduler]
 * [身份验证和授权][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

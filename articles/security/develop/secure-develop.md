@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f68f6c366571b8f0f04f8507606c1a4008ab0405
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4add4bf07178aa616e86f8a64b313630466824f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443243"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653261"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 在本文中，我们介绍的安全活动和用于开发云应用程序时，请考虑控件。 安全问题和概念，可在 Microsoft 的实现和验证阶段过程中考虑[安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)介绍。 旨在帮助您定义活动和可用于开发更安全的应用程序的 Azure 服务。
@@ -88,7 +88,7 @@ Blacklisting 和允许列表是执行输入的语法验证的两种常规方法�
 
 若要防范暴力破解和基于字典的猜测，必须实现强密码策略，以确保用户创建一个复杂的密码 （例如，12 个字符的最小长度和需要字母数字和特殊字符）。
 
-标识框架可用于创建和强制实施密码策略。 Azure AD B2C 可帮助你使用密码管理，从而[内置策略](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-password-reset-policy)，[自助服务密码重置](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)，和的详细信息。
+标识框架可用于创建和强制实施密码策略。 Azure AD B2C 可帮助你使用密码管理，从而[内置策略](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow)，[自助服务密码重置](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)，和的详细信息。
 
 若要防范攻击的默认帐户，验证所有密钥和密码都的可替换，并且它们正在生成或替换后安装的资源。
 

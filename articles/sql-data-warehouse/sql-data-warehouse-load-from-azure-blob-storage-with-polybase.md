@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
+ms.subservice: load-data
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: eb52169fc522ba323f82c42d9505571b18f49f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b96b65b7dd38900fccb8d5d3a9133f37ee93949f
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244485"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595521"
 ---
 # <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>将 Contoso 零售数据加载到 Azure SQL 数据仓库
 
@@ -28,7 +28,7 @@ ms.locfileid: "66244485"
 3. 完成加载后执行优化。
 
 ## <a name="before-you-begin"></a>开始之前
-若要运行本教程，需要一个已包含 SQL 数据仓库的 Azure 帐户。 如果尚未预配数据仓库，请参阅[创建 SQL 数据仓库并设置服务器级防火墙规则][Create a SQL Data Warehouse]。
+若要运行本教程，需要一个已包含 SQL 数据仓库的 Azure 帐户。 如果没有数据仓库预配，请参阅[创建 SQL 数据仓库并设置服务器级防火墙规则][Create a SQL Data Warehouse]。
 
 ## <a name="1-configure-the-data-source"></a>1.配置数据源
 PolyBase 使用 T-SQL 外部对象来定义外部数据的位置和属性。 外部对象定义存储在 SQL 数据仓库中。 数据存储在外部。
@@ -89,7 +89,7 @@ WITH
 > 
 
 ## <a name="2-configure-data-format"></a>2.配置数据格式
-数据存储在 Azure Blob 存储中的文本文件内，每个字段以分隔符隔开。 在 SSMS 中运行以下 [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] 命令，以指定文本文件中数据的格式。 Contoso 数据未压缩，以坚线分隔。
+数据存储在 Azure Blob 存储中的文本文件内，每个字段以分隔符隔开。 在 SSMS 中，运行以下[CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT]命令文本文件中指定的数据格式。 Contoso 数据未压缩，以坚线分隔。
 
 ```sql
 CREATE EXTERNAL FILE FORMAT TextFileFormat 
@@ -213,7 +213,7 @@ GO
 ```
 
 ### <a name="42-load-the-data-into-new-tables"></a>4.2. 将数据载入新表
-若要将 Azure Blob 存储中的数据载入数据仓库表，请使用 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 使用 CTAS 的加载操作利用创建的强类型化外部表。 若要将数据载入新表，请对每个表使用一个 [CTAS][CTAS] 语句。 
+若要从 Azure blob 存储的数据加载到数据仓库表中，使用[CREATE TABLE AS SELECT (TRANSACT-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] statement. Loading with CTAS leverages the strongly typed external tables you've created. To load the data into new tables, use one [CTAS][CTAS]每个表的语句。 
  
 CTAS 将创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，新表将是外部表中的列和数据类型的副本。
 
@@ -276,12 +276,12 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-有关维护列存储索引的详细信息，请参阅 [管理列存储索引][manage columnstore indexes] 一文。
+有关维护列存储索引的详细信息，请参阅[管理列存储索引][manage columnstore indexes]一文。
 
 ## <a name="6-optimize-statistics"></a>6.优化统计信息
 最好是在加载之后马上创建单列统计信息。 如果知道某些列不会在查询谓词中使用，可以不创建有关这些列的统计信息。 如果针对每个列创建单列统计信息，则重新生成所有统计信息可能需要花费很长时间。 
 
-如果决定针对每个表的每个列创建单列统计信息，可以使用 [统计信息][statistics]一文中的存储过程代码示例 `prc_sqldw_create_stats`。
+如果决定针对每个表的每个列创建单列统计信息，可以使用 [statistics][statistics]（统计信息）一文中的存储过程代码示例 `prc_sqldw_create_stats`。
 
 以下示例是创建统计信息的不错起点。 它会针对维度表中的每个列以及事实表中的每个联接列创建单列统计信息。 以后，随时可以将单列或多列统计信息添加到其他事实表列。
 

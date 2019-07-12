@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: a41c3f60d4b949f78c0755f97c9ef7e6302d78d8
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 68c40cf893bf150756f0a03056473e82cff5754f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330003"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620958"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 
@@ -64,7 +64,7 @@ ms.locfileid: "67330003"
 
     ![在边栏选项卡中导航到诊断日志](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  在“诊断设置”中创建“名称”，并选中“发送到 Log Analytics”旁边的复选框    。 然后添加现有的或创建新的“Log Analytics 工作区”  。 选中“日志”下“执行”和“创作”的复选框，以及“指标”下“AllMetrics”的复选框      。 单击“ **保存**”。 建议在 Stream Analytics 作业所在的同一 Azure 区域中使用 Log Analytics 工作区，以防止其他成本。
+2.  在“诊断设置”中创建“名称”，并选中“发送到 Log Analytics”旁边的复选框    。 然后添加现有的或创建新的“Log Analytics 工作区”  。 选中“日志”下“执行”和“创作”的复选框，以及“指标”下“AllMetrics”的复选框      。 单击“保存”  。 建议在 Stream Analytics 作业所在的同一 Azure 区域中使用 Log Analytics 工作区，以防止其他成本。
 
     ![诊断日志设置](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
@@ -106,8 +106,8 @@ resourceId | 发生操作的资源的 ID，采用大写格式。 其中包括订
 category | 日志类别，“执行”  或“创作”  。
 operationName | 被记录的操作的名称。 例如，**发送事件：SQL 输出写入到 mysqloutput 失败**。
 status | 操作的状态。 例如，“失败”  或“成功”  。
-级别 | 日志级别。 例如，“错误”  、“警告”  或“信息性消息”  。
-属性 | 日志项目的具体详细信息；序列化为 JSON 字符串。 有关详细信息，请参阅本文的以下部分。
+level | 日志级别。 例如，“错误”  、“警告”  或“信息性消息”  。
+properties | 日志项目的具体详细信息；序列化为 JSON 字符串。 有关详细信息，请参阅本文的以下部分。
 
 ### <a name="execution-log-properties-schema"></a>执行日志属性架构
 
@@ -119,10 +119,10 @@ status | 操作的状态。 例如，“失败”  或“成功”  。
 
 名称 | 描述
 ------- | -------
-源 | 发生错误的作业输入或输出的名称。
+Source | 发生错误的作业输入或输出的名称。
 消息 | 与错误关联的消息。
-Type | 错误类型。 例如，DataConversionError  、CsvParserError  和 ServiceBusPropertyColumnMissingError  。
-数据 | 包含用于准确找到错误起源的数据。 会根据数据大小截断数据。
+类型 | 错误类型。 例如，DataConversionError  、CsvParserError  和 ServiceBusPropertyColumnMissingError  。
+Data | 包含用于准确找到错误起源的数据。 会根据数据大小截断数据。
 
 数据错误根据 operationName  值采用以下架构：
 
@@ -140,9 +140,9 @@ Type | 错误类型。 例如，DataConversionError  、CsvParserError  和 Serv
 
 名称 | 描述
 -------- | --------
-错误 | （可选）错误信息。 通常情况下，这是异常信息（如果存在）。
+Error | （可选）错误信息。 通常情况下，这是异常信息（如果存在）。
 消息| 日志消息。
-Type | 消息类型。 映射到错误的内部分类。 例如，JobValidationError  或 BlobOutputAdapterInitializationFailure  。
+类型 | 消息类型。 映射到错误的内部分类。 例如，JobValidationError  或 BlobOutputAdapterInitializationFailure  。
 相关性 ID | 用于唯一标识作业执行的 [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 从作业开始到作业停止期间所有的执行日志条目具有相同的“相关 ID”  值。
 
 ## <a name="next-steps"></a>后续步骤
@@ -150,5 +150,5 @@ Type | 消息类型。 映射到错误的内部分类。 例如，JobValidationE
 * [流分析简介](stream-analytics-introduction.md)
 * [流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [扩展流分析作业](stream-analytics-scale-jobs.md)
-* [流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics 数据错误](https://docs.microsoft.com/azure/stream-analytics/data-errors)

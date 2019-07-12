@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: a16ed7134fc9f3c159715f58f116de3fb30e8aca
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1c5c38e9af58aa9468fb0e22491327d3a35f0dda
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481111"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656649"
 ---
 # <a name="back-up-an-sap-hana-database"></a>备份 SAP HANA 数据库
 
@@ -26,7 +26,7 @@ ms.locfileid: "67481111"
 
 **支持** | **详细信息**
 --- | ---
-**支持的地理区域** | 澳大利亚东南部、 澳大利亚东部 <br> 巴西南部 <br> 加拿大中部、 加拿大东部 <br> 南亚洲东部、 亚洲东部 <br> 美国东部、 美国东部 2、 美国中西部、 美国西部、 美国西部 2、 美国中北部、 美国中部、 美国中南部<br> 印度中部、 印度南部 <br> 日本东部、日本西部<br> 韩国中部、韩国南部 <br> 欧洲北部、欧洲西部 <br> 英国南部、 英国西部
+**支持的地理区域** | 澳大利亚东南部、 澳大利亚东部 <br> 巴西南部 <br> 加拿大中部、 加拿大东部 <br> 南亚洲东部、 亚洲东部 <br> 美国东部、 美国东部 2、 美国中西部、 美国西部、 美国西部 2、 美国中北部、 美国中部、 美国中南部<br> 印度中部、 印度南部 <br> 日本东部、日本西部<br> 韩国中部、韩国南部 <br> 欧洲北部、欧洲西部 <br> 英国南部、 英国西部
 **受支持的 VM 的操作系统** | SLES 12 SP2 或 SP3。
 **支持的 HANA 版本** | HANA 上的 SDC 1.x 中，在 HANA MDC 2.x < = SPS03
 
@@ -41,7 +41,7 @@ ms.locfileid: "67481111"
   - 若要创建新策略，请在保管库中单击**策略** > **备份策略** >  **+ 添加** > **中的 SAP HANAAzure VM**，并指定策略设置。
   - 若要分配不同的策略，请运行数据库的虚拟机的属性在单击当前的策略名称。 然后在**备份策略**页可以选择要用于备份的不同策略。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 请确保您在配置备份之前执行以下操作：
 

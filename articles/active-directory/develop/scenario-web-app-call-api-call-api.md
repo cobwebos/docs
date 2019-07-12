@@ -1,6 +1,6 @@
 ---
-title: Web 应用调用 web Api （调用 web API）-Microsoft 标识平台
-description: 了解如何构建一个 Web 应用，调用 web Api （调用 web API）
+title: 调用 Web API 的 Web 应用（调用 Web API）- Microsoft 标识平台
+description: 了解如何构建调用 Web API 的 Web 应用（调用 Web API）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,20 +15,31 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd44dda06b2f6fc48538f2fb74c0bf8e04d0362b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3624f4e859081e53ee27b6f8415eb3f9b5a2a5fa
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074630"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785465"
 ---
-# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Web 应用调用 web Api 的调用 web API
+# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>调用 Web API 的 Web 应用 - 调用 Web API
 
-现在，您有一个令牌，可以调用受保护的 web API。
+现在你已有令牌，可以调用受保护的 Web API 了。
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 
-下面是操作的简化的代码`HomeController`。 此代码获取令牌以调用 Microsoft Graph。 此时间代码已添加，显示了如何调用 Microsoft Graph 为 REST API。
+以下是 `HomeController` 操作的简化代码。 此代码获取用于调用 Microsoft Graph 的令牌。 这一次添加了代码，显示了如何将 Microsoft Graph 作为 REST API 调用。 中提供针对图形 API 的 URL`appsettings.json`文件，并在一个名为变量中读取`webOptions`:
+
+```JSon
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    ...
+  },
+  ...
+  "GraphApiUrl": "https://graph.microsoft.com"
+}
+```
 
 ```CSharp
 public async Task<IActionResult> Profile()
@@ -72,11 +83,11 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> 可以使用同样的原则来调用任何 web API。
+> 可以使用相同的原则来调用任何 Web API。
 >
-> 大多数 Azure web Api 提供简化调用它的 SDK。 这也是 Microsoft Graph 的大小写。 将在下一篇文章中了解在哪里可以找到说明这些方面的教程。
+> 大多数 Azure Web API 都提供了一个 SDK 来简化调用。 Microsoft Graph 也是如此。 下一篇文章介绍如何找到说明这些方面的教程。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [迁移到生产环境](scenario-web-app-call-api-production.md)
+> [转移到生产环境](scenario-web-app-call-api-production.md)

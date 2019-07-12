@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4b73edd10521b23fb4befbe4fe7d9f0c7b496de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3edfdca16141726ea591c8473528fc23ee076c53
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204304"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620610"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Azure 信息保护中连接数据
 
@@ -30,7 +31,7 @@ ms.locfileid: "65204304"
 可以从日志流式传输[Azure 信息保护](https://docs.microsoft.com/azure/information-protection/reports-aip)到 Azure Sentinel 单击一次。 Azure 信息保护有助于保护你的数据，它是存储在云中还是在本地基础结构和控制并帮助保护电子邮件、 文档和向公司之外共享的敏感数据存储。 从简单的分类到嵌入式的标签和权限，增强在所有时间与 Azure 信息保护的数据保护。 当您连接 Azure 信息保护到 Azure Sentinel，你的流的所有警报从 Azure 信息保护到 Azure Sentinel。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - 使用全局管理员、 安全管理员或信息保护权限的用户
 
@@ -49,7 +50,7 @@ ms.locfileid: "65204304"
 
 4. 选择在其中部署 Azure Sentinel 的工作区。 
 
-5. 单击“确定”。 
+5. 单击 **“确定”** 。
 
 6. 若要使用 Log Analytics 中的 Azure 信息保护警报相关的架构，搜索**InformationProtectionLogs_CL**。
 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: e7210b2b1be072f5326070d768d5fe12c386ee0b
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 5312ad2593e732f4c84eb67ed263bc9e4666a67a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191598"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594198"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion-preview"></a>使用 NSG 的访问和 Azure 堡垒 （预览版）
 
@@ -26,11 +26,11 @@ ms.locfileid: "67191598"
 
 在此图中：
 
-* 在虚拟网络中部署堡垒主机。
-* 用户连接到在 Azure 门户中使用任何 HTML5 浏览器。
-* 用户选择要连接到虚拟机。
+* Bastion 主机部署在虚拟网络中。
+* 用户使用任何 HTML5 浏览器连接到 Azure 门户。
+* 用户选择要连接到的虚拟机。
 * 单击一下，在浏览器中打开 RDP/SSH 会话。
-* 在 Azure VM 上需要没有公共 IP。
+* Azure VM 无需公共 IP。
 
 ## <a name="nsg"></a>网络安全组
 
@@ -44,9 +44,9 @@ ms.locfileid: "67191598"
 
 如果将应用到 Nsg **AzureBastionSubnet**，允许以下 Azure 控制平面和基础结构的两个服务标记：
 
-* **（仅限资源管理器） GatewayManager**:此标记表示 Azure 网关管理器服务的地址前缀。 如果为值指定 GatewayManager，是允许还是拒绝到 GatewayManager 流量。
+* **（仅限资源管理器） GatewayManager**:此标记表示 Azure 网关管理器服务的地址前缀。 如果为值指定 GatewayManager，是允许还是拒绝到 GatewayManager 流量。  如果要在 AzureBastionSubnet 创建 Nsg，启用入站流量的 GatewayManager 标记。
 
-* **AzureCloud （仅限资源管理器）** :此标记表示 azure 包括所有数据中心的公共 IP 地址的 IP 地址空间。 值指定 AzureCloud，是允许还是拒绝流量到 Azure 公共 IP 地址。 如果只想要允许访问特定区域中的 AzureCloud，可以指定该区域。 例如，如果你想要只允许访问 Azure AzureCloud 美国东部区域中，您可以指定 AzureCloud.EastUS 作为服务标记。
+* **AzureCloud （仅限资源管理器）** :此标记表示 azure 包括所有数据中心的公共 IP 地址的 IP 地址空间。 值指定 AzureCloud，是允许还是拒绝流量到 Azure 公共 IP 地址。 如果你想要只允许访问特定区域中的 AzureCloud，可以指定该区域。 例如，如果你想要只允许访问 Azure AzureCloud 美国东部区域中，您可以指定 AzureCloud.EastUS 作为服务标记。 如果要在 AzureBastionSubnet 创建 Nsg，启用出站流量的 AzureCloud 标记。
 
 ## <a name="next-steps"></a>后续步骤
 

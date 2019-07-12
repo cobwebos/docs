@@ -14,21 +14,21 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5efbe874bbf3c1c4081eb7a2c76c1be5a3358ec8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5015f00d3c6dfe0e1e5c2466af777cc0f1bc509
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518980"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607155"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>使用 Azure SQL VM CLI 为 Azure VM 上的 SQL Server 中配置 Always On 可用性组
 本文介绍如何使用[Azure SQL VM CLI](/cli/azure/sql/vm?view=azure-cli-latest/)来部署 Windows 故障转移群集 (WSFC) 和 SQL Server 虚拟机添加到群集，以及创建内部负载均衡器和 Always On 可用性组侦听程序。  Always On 可用性组的实际部署仍可手动通过 SQL Server Management Studio (SSMS)。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要自动执行的 Always On 可用性组使用 Azure SQL VM CLI 安装程序，必须已具备以下先决条件： 
 - 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
 - 一个具有域控制器的资源组。 
-- 一个或多个已加入域的[Azure 正在运行 SQL Server 2016 （或更高版本） Enterprise edition 中的 Vm](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)中*同一个可用性集或多个不同的可用性区域*已[注册与 SQL 虚拟机资源提供程序](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)。  
+- 一个或多个已加入域的[Azure 正在运行 SQL Server 2016 （或更高版本） Enterprise edition 中的 Vm](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)中*同一个可用性集或多个不同的可用性区域*已[注册与 SQL 虚拟机资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)。  
 - [Azure CLI](/cli/azure/install-azure-cli)。 
 - 两个可用 （未由任何实体） IP 地址，一个内部负载均衡器，一个用于可用性组位于同一子网中的可用性组侦听器。 如果正在使用现有的负载均衡器，则只有一个可用的 IP 地址需要为可用性组侦听器。 
 

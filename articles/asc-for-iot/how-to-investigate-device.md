@@ -2,24 +2,25 @@
 title: IoT 设备调查指南预览版的 azure 安全中心 |Microsoft Docs
 description: 此方法指南说明如何使用 Azure IoT 的安全中心调查可疑使用 Log Analytics 在 IoT 设备。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: b18b48ae-b445-48f8-9ac0-365d6e065b64
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 15e65c155a98ae12c156587735d34a16ed2c9109
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 884d001a65962d5e7e6e52dd47ce6ad7e02e1057
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192661"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618120"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>调查可疑的 IoT 设备
 
@@ -45,7 +46,7 @@ ASC for IoT 默认将安全警报和建议存储在 Log Analytics 工作区中�
 1. 打开 IoT 中心， 
 1. 下**安全**，单击**概述**，然后选择**设置**。
 1. 更改 Log Analytics 工作区配置详细信息。 
-1. 单击“ **保存**”。 
+1. 单击“保存”  。 
 
 根据配置执行以下操作，以访问 Log Analytics 工作区中存储的数据：
 

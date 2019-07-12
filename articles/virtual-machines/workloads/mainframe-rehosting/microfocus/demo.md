@@ -2,15 +2,16 @@
 title: 为 Micro 焦点企业开发人员 4.0 Azure 虚拟机上设置 Micro 焦点 CICS BankDemo
 description: 运行 Micro 焦点 BankDemo 应用程序在 Azure 虚拟机 (Vm) 来了解如何使用微焦点企业服务器和企业开发人员。
 author: sread
+ms.author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7afe29cb98a294b2a30020ad48f8b27264386746
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304791"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621339"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>为 Azure 上微焦点企业开发人员 4.0 设置 Micro 焦点 CICS BankDemo
 
@@ -18,7 +19,7 @@ ms.locfileid: "66304791"
 
 CICs 代表客户信息控制系统，事务平台由许多联机大型机应用程序。 BankDemo 应用程序非常适合于学习 Enterprise Server 和企业开发人员工作方式，以及如何管理和部署实际的应用程序完成，但的绿屏终端。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 使用的 VM[企业级开发版](set-up-micro-focus-azure.md)。 请记住企业开发人员有一个企业服务器上的完成实例用于开发和测试目的。 此实例是用于演示企业服务器的实例。
 

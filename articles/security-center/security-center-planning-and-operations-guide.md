@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/11/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 04cfe489e9eea53bf58dd64e0eac3e5a95033bcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca96ba4c6b0de8ad39866a0783e7091fb4755164
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966840"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706236"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于其组织正计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -78,8 +78,8 @@ ms.locfileid: "65966840"
 
 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../role-based-access-control/built-in-roles.md)。 用户打开安全中心时，只能看到有权访问的资源的相关信息。 这意味着，可以将资源所属的订阅或资源组的“所有者”、“参与者”或“读者”角色分配给用户。 除这些角色外，还有两个特定的安全中心角色：
 
-- 安全读者  ：属于此角色的用户只能查看安全中心配置（包括建议、警报、策略和运行状况），无法进行更改。
-- 安全管理员  ：与安全读者一样，但它还可更新安全策略，消除建议和警报。
+- 安全读取者  ：属于此角色的用户只能查看安全中心配置（包括建议、警报、策略和运行状况），无法进行更改。
+- 安全管理员  ：与安全读取者一样，但它还可更新安全策略，消除建议和警报。
 
 上述安全中心角色无权访问存储、Web 和移动或物联网等其他 Azure 服务区域。  
 
@@ -87,21 +87,21 @@ ms.locfileid: "65966840"
 
  Jeff（工作负荷所有者）
 
-* 资源组所有者/协作者
+* 资源组所有者/参与者
 
 **David（IT 安全）**
 
-* 订阅所有者/协作者或安全管理员
+* 订阅所有者/参与者或安全管理员
 
 **Judy（安全操作）**
 
 * 查看警报的订阅读取者或安全读取者
-* 消除警报所需的订阅所有者/协作者或安全管理员
+* 消除警报时所需的订阅所有者/参与者或安全管理员
 
 **Sam（安全分析师）**
 
 * 查看警报的订阅读者
-* 消除警报所需的订阅所有者/协作者
+* 消除警报所需的订阅所有者/参与者
 * 可能需要工作区的访问权限
 
 其他一些需要考虑的重要信息：

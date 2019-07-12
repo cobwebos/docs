@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: ff7c862e-2e23-4a28-bd18-f2924a30899d
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6b1e167d26b5848238dd51bf9792f8316c33a385
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d6a467307e4816ffbb45f23bac55b8023267352
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205578"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611243"
 ---
 # <a name="connect-data-from-office-365-logs"></a>从 Office 365 日志连接数据
 
@@ -30,7 +31,7 @@ ms.locfileid: "65205578"
 您可以从审核日志流式传输[Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide)到 Azure Sentinel 单击一次。 您可以流式传输到单个工作区中 Azure Sentinel 来自多个租户的审核日志。 Office 365 活动日志连接器提供了深入了解正在进行的用户活动。 将从 Office 365 来获取有关各种用户、 管理员、 系统和策略的操作和事件信息。 通过 Office 365 日志连接到 Azure Sentinel 可以使用此数据以查看仪表板、 创建自定义警报，并改进调查过程。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 您必须是全局管理员或安全管理员在你的租户
 - 你在计算机上，从中你登录到 Azure Sentinel 以创建连接，确保端口 4433 对 web 流量开放。

@@ -2,17 +2,17 @@
 title: 限制对 Azure Kubernetes 服务 (AKS) 中的 kubeconfig 的访问
 description: 了解如何控制群集管理员和群集用户对 Kubernetes 配置文件 (kubeconfig) 的访问
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: b55cc226cfbb462cdccd73b3b80cfb0d56c10711
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: cbc653b86ed83f9d6a7348d39f51dc7cd49c6892
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475612"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615671"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 基于角色的访问控制定义对 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 配置文件的访问
 
@@ -22,23 +22,23 @@ ms.locfileid: "66475612"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
+本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal]。
 
 这篇文章还要求运行 Azure CLI 版本 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="available-cluster-roles-permissions"></a>可用的群集角色权限
 
-使用 `kubectl` 工具与 AKS 群集交互时，将使用一个定义了群集连接信息的配置文件。 此配置文件通常存储在 *~/.kube/config* 中。可在此 *kubeconfig* 文件中定义多个群集。 使用 [kubectl config use-context][kubectl-config-use-context] 命令在群集之间切换。
+使用 `kubectl` 工具与 AKS 群集交互时，将使用一个定义了群集连接信息的配置文件。 此配置文件通常存储在 *~/.kube/config* 中。可在此 *kubeconfig* 文件中定义多个群集。 使用的群集之间切换[kubectl 配置使用的上下文][kubectl-config-use-context]命令。
 
-使用 [az aks get-credentials][az-aks-get-credentials] 命令可以获取 AKS 群集的访问凭据，并将其合并到 *kubeconfig* 文件中。 可以使用 Azure 基于角色的访问控制 (RBAC) 来控制对这些凭据的访问。 使用这些 Azure RBAC 角色可以定义谁能够检索 *kubeconfig* 文件，以及他们在群集中拥有的权限。
+[Az aks get-credentials 来获取凭据][az-aks-get-credentials]命令可用于获取 AKS 群集的访问凭据，并将它们到合并*kubeconfig*文件。 可以使用 Azure 基于角色的访问控制 (RBAC) 来控制对这些凭据的访问。 使用这些 Azure RBAC 角色可以定义谁能够检索 *kubeconfig* 文件，以及他们在群集中拥有的权限。
 
 有两个内置角色：
 
 * **Azure Kubernetes 服务群集管理员角色**  
-    * 允许访问 *Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action* API 调用。 此 API 调用[列出群集管理员凭据][api-cluster-admin]。
+    * 允许访问 *Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action* API 调用。 此 API 调用[列出了群集管理员凭据][api-cluster-admin]。
     * 下载 *clusterAdmin* 角色的 *kubeconfig*。
 * **Azure Kubernetes 服务群集用户角色**
-    * 允许访问 *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action* API 调用。 此 API 调用[列出群集用户凭据][api-cluster-user]。
+    * 允许访问 *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action* API 调用。 此 API 调用[列出了群集用户凭据][api-cluster-user]。
     * 下载 *clusterUser* 角色的 *kubeconfig*。
 
 这些 RBAC 角色可应用于 Azure Active Directory (AD) 用户或组。
@@ -47,9 +47,9 @@ ms.locfileid: "66475612"
 
 若要将其中一个可用的角色分配，需要获取 AKS 群集的资源 ID 和 Azure AD 用户帐户或组的 ID。 下面的示例命令：
 
-* 获取群集资源 ID 使用[az aks show] [ az-aks-show]命令获取名为群集*myAKSCluster*中*myResourceGroup*资源组。 请根据需要提供自己的群集和资源组名称。
-* 使用[az 帐户 show] [ az-account-show]并[az ad 用户显示][ az-ad-user-show]命令以获取用户 id。
-* 最后，使用 [az role assignment create][az-role-assignment-create] 命令分配角色。
+* 获取群集资源 ID 使用[az aks show][az-aks-show]命令获取名为群集*myAKSCluster*中*myResourceGroup*资源组。 请根据需要提供自己的群集和资源组名称。
+* 使用[az 帐户 show][az-account-show] and [az ad user show][az-ad-user-show]命令以获取用户 id。
+* 最后，将分配角色使用[az 角色分配创建][az-role-assignment-create]命令。
 
 以下示例将分配*Azure Kubernetes 服务群集管理员角色*到单独的用户帐户：
 
@@ -69,7 +69,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> 如果你想要将权限分配给 Azure AD 组，更新`--assignee`参数中的对象 ID 与前面的示例所示*组*而非*用户*。 若要获取组的对象 ID，请使用[az ad 组 show] [ az-ad-group-show]命令。 下面的示例获取名为的 Azure AD 组对象 ID *appdev*: `az ad group show --group appdev --query objectId -o tsv`
+> 如果你想要将权限分配给 Azure AD 组，更新`--assignee`参数中的对象 ID 与前面的示例所示*组*而非*用户*。 若要获取组的对象 ID，请使用[az ad 组显示][az-ad-group-show]命令。 下面的示例获取名为的 Azure AD 组对象 ID *appdev*: `az ad group show --group appdev --query objectId -o tsv`
 
 可根据需要将上述分配更改为“群集用户角色”。 
 
@@ -90,13 +90,13 @@ az role assignment create \
 
 ## <a name="get-and-verify-the-configuration-information"></a>获取并验证配置信息
 
-分配 RBAC 角色后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取 AKS 群集的 *kubeconfig* 定义。 以下示例获取 *--admin* 凭据，如果为用户分配了“群集管理员角色”，则这些凭据可正常运行： 
+已分配的 RBAC 角色，使用[az aks get-credentials 来获取凭据][az-aks-get-credentials]命令来获取*kubeconfig* AKS 群集的定义。 以下示例获取 *--admin* 凭据，如果为用户分配了“群集管理员角色”，则这些凭据可正常运行： 
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-然后，可以使用 [kubectl config view][kubectl-config-view] 命令来验证群集上下文是否显示已应用管理员配置信息： 
+然后，可以使用[kubectl 配置视图][kubectl-config-view]命令来验证是否*上下文*群集显示已应用管理员配置信息：
 
 ```
 $ kubectl config view
@@ -125,7 +125,7 @@ users:
 
 ## <a name="remove-role-permissions"></a>删除角色权限
 
-若要删除角色分配，请使用 [az role assignment delete][az-role-assignment-delete] 命令。 指定的帐户 ID 和群集资源 ID，如在上一命令中获得。 如果您的角色分配到组，而不是用户时，指定相应的组对象 ID，而不是帐户的对象 ID`--assignee`参数：
+若要删除角色分配，请使用[az 角色分配删除][az-role-assignment-delete]命令。 指定的帐户 ID 和群集资源 ID，如在上一命令中获得。 如果您的角色分配到组，而不是用户时，指定相应的组对象 ID，而不是帐户的对象 ID`--assignee`参数：
 
 ```azurecli-interactive
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
@@ -133,7 +133,7 @@ az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 
 ## <a name="next-steps"></a>后续步骤
 
-若要增强在访问 AKS 群集时的安全性，请[集成 Azure Active Directory 身份验证][aad-integration]。
+为了增强安全性到 AKS 群集的访问权限[将 Azure Active Directory 身份验证集成][aad-integration]。
 
 <!-- LINKS - external -->
 [kubectl-config-use-context]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config

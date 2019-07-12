@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: f25840c21ec64ca8d8e9e17eb39637cff7524c76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d928ca458be8e412a91d93efdacab19425f0f2fd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755259"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695684"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>创建、更改或删除网络接口
 
@@ -49,9 +49,9 @@ ms.locfileid: "66755259"
 
     |设置|必需？|详细信息|
     |---|---|---|
-    |Name|是|该名称在所选的资源组中必须唯一。 随着时间推移，Azure 订阅中可能会有多个网络接口。 请参阅[命名约定](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions)，获取有关创建命名约定来简化多个网络接口的管理的建议。 创建网络接口后，无法更改其名称。|
+    |名称|是|该名称在所选的资源组中必须唯一。 随着时间推移，Azure 订阅中可能会有多个网络接口。 请参阅[命名约定](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions)，获取有关创建命名约定来简化多个网络接口的管理的建议。 创建网络接口后，无法更改其名称。|
     |虚拟网络|是|为网络接口选择虚拟网络。 只能将网络接口分配到与该接口位于相同订阅和位置的虚拟网络。 创建网络接口后，无法更改其分配到的虚拟网络。 将网络接口添加到的虚拟机也必须位于该接口所在的同一位置和订阅中。|
-    |子网|是|在所选的虚拟网络中选择一个子网。 创建网络接口后，可更改它分配到的子网。|
+    |Subnet|是|在所选的虚拟网络中选择一个子网。 创建网络接口后，可更改它分配到的子网。|
     |专用 IP 地址分配|是| 在此设置中，将为 IPv4 地址选择分配方法。 从以下分配方法中选择：**动态：** 选择此选项时，Azure 将从所选子网的地址空间中自动分配下一个可用地址。 **静态：** 选择此选项时，必须手动从所选子网的地址空间中手动分配一个可用的 IP 地址。 静态地址和动态地址保持不变，除非手动更改或删除网络接口。 创建网络接口后，可更改分配方法。 Azure DHCP 服务器将此地址分配到虚拟机操作系统中的网络接口。|
     |网络安全组|否| 保留设置为“无”，选择现有的[网络安全组](security-overview.md)，或[创建网络安全组](tutorial-filter-network-traffic.md)。  网络安全组可用于筛选进出网络接口的网络流量。 可向网络接口应用零个或一个网络安全组。 也可向网络接口分配到的子网应用零个或一个网络安全组。 将网络安全组应用到网络接口以及该接口分配到的子网时，有时会产生意外结果。 若要对应用到网络接口和子网的网络安全组进行故障排除，请参阅[网络安全组故障排除](diagnose-network-traffic-filter-problem.md)。|
     |订阅|是|选择一个 Azure [订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 网络接口附加到的虚拟机及其连接到的虚拟网络必须位于同一订阅中。|
@@ -69,7 +69,7 @@ ms.locfileid: "66755259"
 
 **命令**
 
-|Tool|命令|
+|Tool|Command|
 |---|---|
 |CLI|[az network nic create](/cli/azure/network/nic)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)|
@@ -83,7 +83,7 @@ ms.locfileid: "66755259"
 3. 为所选网络接口列出了以下项：
    - **概述：** 提供网络接口的相关信息，例如分配给它的 IP 地址、网络接口分配到的虚拟网络/子网，以及网络接口附加到的虚拟机（若已附加到某虚拟机）。 下图显示名为 mywebserver256 的网络接口的概述设置  ：![网络接口概述](./media/virtual-network-network-interface/nic-overview.png)
 
-     通过选择移动到不同的资源组或订阅的网络接口 (**更改**) 旁边**资源组**或**订阅名称**。 如果移动网络接口，必须同时移动与该网络接口相关的所有资源。 例如，如果网络接口已附加到虚拟机，则还必须移动该虚拟机及其相关的其他资源。 若要移动网络接口，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-portal)。 该文章列出了先决条件，以及如何使用 Azure 门户、PowerShell 和 Azure CLI 移动资源。
+     通过选择移动到不同的资源组或订阅的网络接口 (**更改**) 旁边**资源组**或**订阅名称**。 如果移动网络接口，必须同时移动与该网络接口相关的所有资源。 例如，如果网络接口已附加到虚拟机，则还必须移动该虚拟机及其相关的其他资源。 若要移动网络接口，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-the-portal)。 该文章列出了先决条件，以及如何使用 Azure 门户、PowerShell 和 Azure CLI 移动资源。
    - **IP 配置：** 此处列出分配到 IP 配置的公共和专用 IPv4 及 IPv6 地址。 如果向 IP 配置分配了 IPv6 地址，该地址不会显示。 若要详细了解 IP 配置以及如何添加和删除 IP 地址，请参阅[为 Azure 网络接口配置 IP 地址](virtual-network-network-interface-addresses.md)。 此部分还配置了 IP 转发和子网分配。 若要详细了解这些设置，请参阅[启用或禁用 IP 转发](#enable-or-disable-ip-forwarding)和[更改子网分配](#change-subnet-assignment)。
    - **DNS 服务器：** 可指定 Azure DHCP 服务器向网络接口分配哪个 DNS 服务器。 网络接口可从其连接到的虚拟网络继承设置，或使用自定义设置来替代其分配到的虚拟网络的设置。 若要修改显示的内容，请参阅[更改 DNS 服务器](#change-dns-servers)。
    - **网络安全组 (NSG)** ：显示与网络接口关联的 NSG（若有）。 NSG 包含用于筛选网络接口网络流量的入站和出站规则。 如果网络接口关联有 NSG，会显示关联的 NSG 的名称。 若要修改显示的内容，请参阅[关联或取消关联网络安全组](#associate-or-dissociate-a-network-security-group)。
@@ -96,7 +96,7 @@ ms.locfileid: "66755259"
 
 如果将 IPv6 地址分配到网络接口，PowerShell 输出将返回信息表示地址已分配，但不返回分配的地址。 同样，CLI 将返回信息表示地址已分配，但在其地址的输出中返回 null  。
 
-|Tool|命令|
+|Tool|Command|
 |---|---|
 |CLI|使用 [az network nic list](/cli/azure/network/nic) 查看订阅中的网络接口；使用 [az network nic show](/cli/azure/network/nic) 查看网络接口的设置|
 |PowerShell|使用 [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) 查看订阅中的网络接口或查看网络接口的设置|
@@ -113,11 +113,11 @@ DNS 服务器由 Azure DHCP 服务器分配到虚拟机操作系统中的网络�
    - **自定义**：可自行配置 DNS 服务器来解析多个虚拟网络中的名称。 输入要用作 DNS 服务器的服务器的 IP 地址。 指定的 DNS 服务器地址仅分配到此网络接口，并将替代该网络接口分配到的虚拟网络的任何 DNS 设置。
      >[!Note]
      >如果 VM 使用 NIC 是可用性集的一部分，从是可用性集的一部分的所有 Nic 的 Vm 的每个指定的所有 DNS 服务器将被都继承。
-5. 选择“保存”。 
+5. 选择**保存**。
 
 **命令**
 
-|Tool|命令|
+|Tool|Command|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -134,11 +134,11 @@ IP 转发使网络接口附加到的虚拟机能够：
 2. 选择要为其启用或禁用 IP 转发的网络接口。
 3. 在“设置”  部分中选择“IP 配置”  。
 4. 选择“启用”或“禁用”（默认设置）以更改设置。  
-5. 选择“保存”。 
+5. 选择**保存**。
 
 **命令**
 
-|Tool|命令|
+|Tool|Command|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -152,13 +152,13 @@ IP 转发使网络接口附加到的虚拟机能够：
 3. 在“设置”  下选择“IP 配置”  。 如果所列任何 IP 配置的任何专用 IP 地址旁边出现“(静态)”，则必须完成以下步骤，将 IP 地址分配方法更改为动态。  必须使用动态分配方法分配所有专用 IP 地址，以更改网络接口的子网分配。 如果使用动态方法分配地址，请转到步骤 5。 如果使用静态分配方法分配了任何 IPv4 地址，请完成以下步骤，将分配方法更改为动态：
    - 从 IP 配置列表中选择要更改 IPv4 地址分配方法的 IP 配置。
    - 选择“动态”  作为专用 IP 地址**分配**方法。 无法使用静态分配方法分配 IPv6 地址。
-   - 选择“保存”。 
+   - 选择**保存**。
 4. 从“子网”下拉列表中选择要将网络接口移到的子网。 
-5. 选择“保存”。  新的动态地址是从新子网的子网地址范围中分配的。 将网络接口分配到新子网之后，可在需要时从新子网地址范围中分配静态 IPv4 地址。 若要详细了解如何添加、更改和删除网络接口的 IP 地址，请参阅[管理 IP 地址](virtual-network-network-interface-addresses.md)。
+5. 选择**保存**。 新的动态地址是从新子网的子网地址范围中分配的。 将网络接口分配到新子网之后，可在需要时从新子网地址范围中分配静态 IPv4 地址。 若要详细了解如何添加、更改和删除网络接口的 IP 地址，请参阅[管理 IP 地址](virtual-network-network-interface-addresses.md)。
 
 **命令**
 
-|Tool|命令|
+|Tool|Command|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
@@ -172,7 +172,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 
 **命令**
 
-|Tool|命令|
+|Tool|Command|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -184,7 +184,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 3. 在“设置”下选择“网络安全组”   。
 4. 选择“编辑”  。
 5. 选择“网络安全组”，然后选择要与网络接口相关联的网络安全组，或者选择“无”来取消关联网络安全组   。
-6. 选择“保存”。 
+6. 选择**保存**。
 
 **命令**
 
@@ -204,7 +204,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 
 **命令**
 
-|Tool|命令|
+|Tool|Command|
 |---|---|
 |CLI|[az network nic delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface)|
@@ -251,7 +251,7 @@ Azure 网络观察程序的下一个跃点功能还有助于确定路由是否�
 
 若要在网络接口上执行任务，必须将你的帐户分配到[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表中所列适当权限的[自定义](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 操作                                                                     | Name                                                      |
+| Action                                                                     | 名称                                                      |
 | ---------                                                                  | -------------                                             |
 | Microsoft.Network/networkInterfaces/read                                   | 获取网络接口                                     |
 | Microsoft.Network/networkInterfaces/write                                  | 创建或更新网络接口                        |

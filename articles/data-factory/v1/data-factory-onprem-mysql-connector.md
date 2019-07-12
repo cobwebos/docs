@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: de1263d68e96a23bd6b5eca4297e74b56ba22e40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 2468fc0cbdcee9088aa9acb387af396dd448ad0a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60823940"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701679"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 移动数据
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-onprem-mysql-connector.md)
 > * [版本 2（当前版本）](../connector-mysql.md)
 
@@ -33,7 +33,7 @@ ms.locfileid: "60823940"
 
 可以将数据从本地 MySQL 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 MySQL 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 MySQL 数据存储。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 数据工厂服务支持使用数据管理网关连接到本地 MySQL 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
 即使 MySQL 数据库托管在 Azure IaaS 虚拟机 (VM) 中，仍需要网关。 只要网关能连接数据库，即可在与数据存储相同的 VM 上或不同的 VM 上安装网关。
@@ -73,7 +73,7 @@ ms.locfileid: "60823940"
 | database |MySQL 数据库的名称。 |是 |
 | schema |数据库中架构的名称。 |否 |
 | authenticationType |用于连接 MySQL 数据库的身份验证类型。 可能的值为：`Basic` |是 |
-| username |指定用于连接到 MySQL 数据库的用户名。 |是 |
+| userName |指定用于连接到 MySQL 数据库的用户名。 |是 |
 | password |指定该用户帐户的密码。 |是 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 MySQL数据库。 |是 |
 
@@ -82,7 +82,7 @@ ms.locfileid: "60823940"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息  。 **RelationalTable** 类型数据集（包括 MySQL 数据集）的 typeProperties 部分具有以下属性
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
 | tableName |链接服务引用的 MySQL 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -306,11 +306,11 @@ ms.locfileid: "60823940"
 | bit |Decimal |
 | Blob |Byte[] |
 | bool |Boolean |
-| char |String |
+| char |字符串 |
 | date |Datetime |
-| datetime |Datetime |
+| DATETIME |Datetime |
 | decimal |Decimal |
-| 双精度 |Double |
+| double precision |Double |
 | double |Double |
 | enum |String |
 | float |Single |
@@ -319,7 +319,7 @@ ms.locfileid: "60823940"
 | 无符号 integer |Int64 |
 | integer |Int32 |
 | long varbinary |Byte[] |
-| long varchar |String |
+| long varchar |字符串 |
 | longblob |Byte[] |
 | longtext |String |
 | mediumblob |Byte[] |
@@ -331,14 +331,14 @@ ms.locfileid: "60823940"
 | set |String |
 | 无符号 smallint |Int32 |
 | smallint |Int16 |
-| Text |String |
+| text |字符串 |
 | time |TimeSpan |
 | timestamp |Datetime |
 | tinyblob |Byte[] |
 | 无符号 tinyint |Int16 |
 | tinyint |Int16 |
 | tinytext |String |
-| varchar |String |
+| varchar |字符串 |
 | year |Int |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列

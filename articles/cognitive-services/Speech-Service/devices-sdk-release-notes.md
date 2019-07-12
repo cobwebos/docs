@@ -8,17 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 07/10/2019
 ms.author: wellsi
-ms.openlocfilehash: 93272520434ea43a94af9441a947239e983c216f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1ca6b5265cf97ef551ec0b13b46ac934a372d2c7
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606683"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797913"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>认知服务语音设备 SDK 发行说明
 以下部分列出了最新版本中的更改。
+
+## <a name="speech-devices-sdk-160"></a>语音设备 SDK 1.6.0:
+
+*   支持[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) Windows 和 Linux 使用通用上[示例应用程序](https://aka.ms/sdsdk-download)
+*   更新[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)到 1.6.0 版本组件。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。
 
 ## <a name="speech-devices-sdk-151"></a>语音设备 SDK 1.5.1:
 

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: magattus
-ms.openlocfilehash: 6bd1d24cdece91265a7355678ea2bc0b0f9e3910
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08e705d3c3623d4d02ccaea609eb0555aa1c8e33
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60767992"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593927"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>通过 Azure CDN 进行动态站点加速
 
@@ -147,7 +147,7 @@ TCP 慢启动  是 TCP 协议的算法，用于通过限制通过网络发送的
 --- | ---  
 JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
-## <a name="caching"></a>正在缓存
+## <a name="caching"></a>缓存
 
 使用 DSA 时，默认将关闭 CDN 上的缓存，即使源在响应中包含 `Cache-Control` 或 `Expires` 标头也是如此。 DSA 通常用于因对每个客户端是唯一的而不应缓存的动态资产。 缓存可能会中断此行为。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: bbbc2bc5c47821469ecf15a27195b1bf0c12e6e5
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 1ee266d7d9846a357dce613817affdb0cde5bfdc
+ms.sourcegitcommit: e6cb7ca206a125c05acfd431b5a64391a8dcc6b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190620"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67569029"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据的流性能和优化指南
 
@@ -127,7 +127,18 @@ Azure 数据工厂映射数据流提供了用于设计、 部署和安排在规�
 * 选择此常用选项时，请记住这一点。 如果要合并到单个输出文件分区的多个大型源代码文件，可以运行群集节点资源不足。
 * 若要避免耗尽计算节点资源，您可以在 ADF 中，这会针对性能进行优化，保留默认值或显式分区方案，然后再添加合并中的所有部分的管道中的后续复制活动从输出文件夹文件到新的单文件。 从根本上来说，此方法将从文件合并转换的操作，并实现相同的结果与设置"输出到单个文件"。
 
+### <a name="looping-through-file-lists"></a>循环遍历文件列表
+
+在大多数情况下，数据流在 ADF 中将执行的管道，允许通过多个文件流源数据转换进行循环访问从更好。 换而言之，应首选使用通配符或在您的源数据中的文件列表流，若要循环访问的文件在每个迭代上调用执行数据流管道中使用 ForEach 的大型列表。 数据流过程将通过允许循环内部数据流进行更快地执行。
+
+例如，如果我有我想要在 Blob 存储中的文件夹中处理从 2019 年 7 月的数据文件的列表，它是更高的性能从管道调用执行数据流的活动一次并在此类源中使用通配符:
+
+```DateFiles/*_201907*.txt```
+
+这将比对 Blob 存储区中的管道，然后循环访问与执行数据流内活动中使用 ForEach 的所有匹配文件中查找更好地执行。
+
 ## <a name="next-steps"></a>后续步骤
+
 请参阅与性能相关的其他数据流文章：
 
 - [数据流优化选项卡](concepts-data-flow-optimize-tab.md)

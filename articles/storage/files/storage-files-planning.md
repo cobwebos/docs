@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6506a93914cfbc10f37980c4b916a93aa9aad75d
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 28487397cbfe70a64b3c403039d7f38270e04dca
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67564397"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827062"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -210,10 +210,20 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 |西欧     |LRS|否         |
 |美国西部 2     |LRS、 ZRS|否         |
 
+若要帮助我们优化新的区域和功能，请填写此[调查](https://aka.ms/azurefilesatscalesurvey)。
 
 ### <a name="steps-to-onboard"></a>要登记的步骤
 
-若要注册到更大的文件共享预览你的订阅，请运行以下 PowerShell 命令：
+若要注册到更大的文件共享预览你的订阅，您需要使用 Azure PowerShell。 您可以使用[Azure Cloud Shell](https://shell.azure.com/)或安装[本地 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0)运行以下 PowerShell 命令：
+
+首先，请确保选择了想要在预览中注册的订阅：
+
+```powershell
+$context = Get-AzSubscription -SubscriptionId ...
+Set-AzContext $context
+```
+
+然后，使用以下命令在预览中注册：
 
 ```powershell
 Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage

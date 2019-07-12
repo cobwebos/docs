@@ -2,17 +2,17 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod
 description: 了解如何保护流量流入和 pod 流通过使用 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 网络策略
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: a0512806ec797f43fc54d8a28a7cbadf86faf1d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: c9bf2c2c459999813c7fc30f95be653168d270ad
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230018"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613954"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -29,7 +29,7 @@ ms.locfileid: "65230018"
 > 
 > 如果你想要继续使用在预览期间使用网络策略的现有测试群集，将群集升级到最新 GA 版本新 Kubernetes 版本，然后将部署下面的 YAML 清单，若要修复崩溃的指标服务器和 Kubernetes仪表板。 此修补程序才需要使用的是 Calico 网络策略引擎的群集。
 >
-> 作为安全性最佳实践，[查看此 YAML 清单的内容][ calico-aks-cleanup]若要了解什么部署到 AKS 群集。
+> 作为安全性最佳实践，[查看此 YAML 清单的内容][calico-aks-cleanup]若要了解什么部署到 AKS 群集。
 >
 > `kubectl delete -f https://raw.githubusercontent.com/Azure/aks-engine/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml`
 
@@ -59,7 +59,7 @@ Azure 提供两种方法来实现网络策略。 创建 AKS 群集时选择的�
 
 | 功能                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
-| 支持的平台                      | Linux                      | Linux                       |
+| 受支持的平台                      | Linux                      | Linux                       |
 | 支持的网络选项             | Azure CNI                  | Azure CNI                   |
 | 与 Kubernetes 规范的符合性 | 支持的所有策略类型 |  支持的所有策略类型 |
 | 其他功能                      | 无                       | 扩展包括全局网络策略、 全局网络设置和主机终结点的策略模型。 有关使用的详细信息`calicoctl`CLI 来管理这些扩展功能，请参阅[calicoctl 用户参考][calicoctl]。 |
@@ -76,7 +76,7 @@ Azure 提供两种方法来实现网络策略。 创建 AKS 群集时选择的�
 
 首先，让我们创建的 AKS 群集，支持网络策略。 创建群集时，可以仅启用的网络策略功能。 无法在现有 AKS 群集上启用网络策略。
 
-若要使用网络策略和 AKS 群集，必须使用[Azure CNI 插件][ azure-cni]并定义自己的虚拟网络和子网。 如需详细了解如何规划所需的子网范围，请参阅[配置高级网络][use-advanced-networking]。
+若要使用网络策略和 AKS 群集，必须使用[Azure CNI 插件][azure-cni] and define your own virtual network and subnets. For more detailed information on how to plan out the required subnet ranges, see [configure advanced networking][use-advanced-networking]。
 
 以下示例脚本：
 
@@ -138,7 +138,7 @@ az aks create \
     --network-policy azure
 ```
 
-创建群集需要几分钟时间。 群集准备就绪后，配置`kubectl`通过使用连接到 Kubernetes 群集[az aks get-credentials 来获取凭据][ az-aks-get-credentials]命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据：
+创建群集需要几分钟时间。 群集准备就绪后，配置`kubectl`通过使用连接到 Kubernetes 群集[az aks get-credentials 来获取凭据][az-aks-get-credentials]命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -207,7 +207,7 @@ spec:
   ingress: []
 ```
 
-使用网络策略应用所[kubectl 适用][ kubectl-apply]命令并指定 YAML 清单的名称：
+使用网络策略应用所[kubectl 应用][kubectl-apply]命令并指定 YAML 清单的名称：
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
@@ -265,7 +265,7 @@ spec:
 > [!NOTE]
 > 此网络策略使用 namespaceSelector 和 podSelector 元素作为入口规则   。 YAML 语法非常重要的入口规则是累加性。 在此示例中，两个元素必须匹配要应用的入口规则。 以前的 Kubernetes 版本*1.12*可能不正确解释这些元素和限制网络流量，正如您期望。 有关此行为的详细信息，请参阅[的行为与选择器][policy-rules]。
 
-使用更新的网络策略应用所[kubectl 适用][ kubectl-apply]命令并指定 YAML 清单的名称：
+使用更新的网络策略应用所[kubectl 应用][kubectl-apply]命令并指定 YAML 清单的名称：
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
@@ -388,7 +388,7 @@ spec:
 
 在更复杂示例中，您可以定义多个入口规则，如*namespaceSelector* ，然后*podSelector*。
 
-使用更新的网络策略应用所[kubectl 适用][ kubectl-apply]命令并指定 YAML 清单的名称：
+使用更新的网络策略应用所[kubectl 应用][kubectl-apply]命令并指定 YAML 清单的名称：
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
@@ -446,7 +446,7 @@ exit
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在本文中，我们将创建两个命名空间，并将网络策略应用。 若要清理这些资源，请使用[kubectl 删除][ kubectl-delete]命令并指定资源名称：
+在本文中，我们将创建两个命名空间，并将网络策略应用。 若要清理这些资源，请使用[kubectl 删除][kubectl-delete]命令并指定资源名称：
 
 ```console
 kubectl delete namespace production

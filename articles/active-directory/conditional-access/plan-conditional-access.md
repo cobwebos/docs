@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56ddc2738305600c611cab1e09d654164f78b3d6
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3fca84a71e1ede572e3889f973248db158115bec
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509431"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655500"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：规划在 Azure Active Directory 中的条件性访问部署
 
@@ -57,7 +57,7 @@ Azure Active Directory 条件性访问，可以将你的云应用的保护集成
 
 对于“这样做”，请定义策略对访问条件做出的响应。  在响应中，可以使用附加的要求（例如，多重身份验证 (MFA)）阻止或授予访问权限。 有关完整概述，请参阅[什么是访问控制在 Azure Active Directory 条件性访问？](controls.md)  
 
-与访问控制条件的组合表示条件性访问策略。
+条件与访问控制的组合表示一种条件访问策略。
 
 ![原因和响应](./media/plan-conditional-access/51.png)
 
@@ -158,11 +158,11 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 测试计划非常重要，它可以在预期结果与实际结果之间进行比较。 进行测试之前，始终应该持有某种预期。 下表概述了示例测试用例。 根据 CA 策略的配置方式调整方案和预期结果。
 
-|策略 |场景 |预期结果 | 结果 |
+|策略 |应用场景 |预期结果 | 结果 |
 |---|---|---|---|
 |[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户在受信任的位置/工作时登录到应用 |不提示用户执行 MFA| |
 |[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户不在受信任的位置/工作时登录到应用 |提示用户执行 MFA，他们可以成功登录| |
-|[要求执行 MFA（针对管理员）](https://docs.microsoft.com/azure/active-directory/conditional-access/baseline-protection#require-mfa-for-admins)|全局管理员登录到应用 |提示管理员执行 MFA| |
+|[要求执行 MFA（针对管理员）](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|全局管理员登录到应用 |提示管理员执行 MFA| |
 |[有风险的登录](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|用户使用 [Tor 浏览器](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)登录到应用 |提示管理员执行 MFA| |
 |[设备管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|经授权的用户尝试从已授权的设备登录|授予访问权限| |
 |[设备管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|经授权的用户尝试从未授权的设备登录|阻止访问| |
@@ -181,7 +181,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 ### <a name="evaluate-a-simulated-sign-in"></a>评估模拟登录
 
-现在，已配置条件性访问策略，你可能想要知道它能否按预期运行。 第一步，使用条件性访问[怎么办策略工具](what-if-tool.md)来模拟测试用户的单一登录。 该模拟会估计此登录对策略的影响并生成模拟报表。
+你已经配置了条件访问策略，现在可能想知道它是否按预期工作。 第一步，使用条件访问 [what if 策略工具](what-if-tool.md)模拟测试用户登录。 该模拟会估计此登录对策略的影响并生成模拟报表。
 
 >[!NOTE]
 > 模拟的运行给你的条件性访问策略影响的印象，但它不会替换实际测试运行。

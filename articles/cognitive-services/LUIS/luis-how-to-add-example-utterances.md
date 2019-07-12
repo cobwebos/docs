@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: dd8ed146c507d8d39ba99c6573321ee80bc891c9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: af43697dc864019c6fd86b041e231a54d8aa8b40
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442566"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827487"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>将实体添加到示例话语 
 
@@ -45,7 +45,7 @@ Are there any SQL server jobs?
     > [!NOTE]
     > 选择要标记为实体的单词时：
     > * 如果是单个单词，请直接将其选中。 
-    > * 如果是至少包含两个单词的组合，请先选择组合的开头，然后选择其结尾。
+    > * 对于一组两个或多个词语，选择第一个单词，然后最终 word。
 
 1. 在“需要创建什么类型的实体?”弹出对话框中，验证实体名称并选择简单实体类型，然后选择“完成”。   
 

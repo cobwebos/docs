@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/24/2019
+ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 98e8c0ccd150776341e644f7565696e8fbd63e99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b060e2c8a7353dd8145ced8c6e89d9b666a4212c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556268"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703900"
 ---
-# <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure 媒体服务 v3 常见问题
+# <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 方面的常见问题
 
 本文将解答 Azure 媒体服务 (AMS) v3 常见问题。
 
-## <a name="v3-apis"></a>v3 API
+## <a name="general"></a>常规
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>哪些 Azure 角色可以对 Azure 媒体服务资源执行操作？ 
 
@@ -45,6 +45,10 @@ ms.locfileid: "65556268"
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>哪些功能尚不可用 Azure 媒体服务 v3 中？
 
 有关详细信息，请参阅[功能 v2 Api 方面的差距](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis)。
+
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>在订阅之间移动媒体服务帐户的流程是什么？  
+
+有关详细信息，请参阅[订阅之间移动媒体服务帐户](media-services-account-concept.md)。
 
 ## <a name="live-streaming"></a>实时传送视频流 
 

@@ -2,17 +2,17 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的高级计划程序功能
 description: 了解有关使用 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能（例如排斥 (taint) 和容许 (toleration)、节点选择器和关联，或 pod 间关联和反关联）的群集操作员最佳做法
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 5affcd5ee1e51ac754d8a9bb81560a6cc3626860
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 4caa4219d2bf7558dbdf71e92e4993722c6e8f6a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055614"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614878"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能的最佳做法
 
@@ -73,7 +73,7 @@ spec:
 
 应用排斥时，请与应用程序开发人员和所有者协作，让他们在其部署中定义所需的容许。
 
-有关排斥和容许的详细信息，请参阅[应用排斥和容许][k8s-taints-tolerations]。
+有关 taints 和 tolerations 的详细信息，请参阅[应用 taints 和 tolerations][k8s-taints-tolerations]。
 
 有关如何使用在 AKS 中的多个节点池的详细信息，请参阅[创建和管理在 AKS 中为群集的多个节点池][use-multiple-node-pools]。
 
@@ -130,7 +130,7 @@ spec:
 
 使用这些计划程序选项时，请与应用程序开发人员和所有者协作，让他们正确定义其 pod 规范。
 
-有关使用节点选择器的详细信息，请参阅[将 Pod 分配到节点][k8s-node-selector]。
+有关使用节点选择器的详细信息，请参阅[为节点分配 Pod][k8s-node-selector]。
 
 ### <a name="node-affinity"></a>节点关联
 
@@ -166,7 +166,7 @@ spec:
 
 该设置的 *IgnoredDuringExecution* 部分表示当节点标签更改时，不应从节点中逐出 pod。 Kubernetes 计划程序仅对所要计划的新 pod 使用更新的节点标签，对于已在节点上计划的 pod 则不使用。
 
-有关详细信息，请参阅[关联和反关联][k8s-affinity]。
+有关详细信息，请参阅[相关性和反相关性][k8s-affinity]。
 
 ### <a name="inter-pod-affinity-and-anti-affinity"></a>pod 间关联和反关联
 
@@ -179,13 +179,13 @@ Kubernetes 计划程序逻辑隔离工作负荷的最终方法之一是使用 po
 | webapp-1   | webapp-2   | webapp-3   |
 | cache-1    | cache-2    | cache-3    |
 
-与使用节点选择器或节点关联相比，此示例是一种更复杂的部署。 部署可让你控制 Kubernetes 如何在节点上计划 pod，并可以逻辑隔离资源。 有关使用 Azure Redis 缓存的 Web 应用程序示例的完整示例，请参阅[在同一节点上共置 pod][k8s-pod-affinity]。
+与使用节点选择器或节点关联相比，此示例是一种更复杂的部署。 部署可让你控制 Kubernetes 如何在节点上计划 pod，并可以逻辑隔离资源。 此 web 应用程序使用 Azure 缓存的 Redis 示例的完整示例，请参阅[归置同一节点上的 pod][k8s-pod-affinity]。
 
 ## <a name="next-steps"></a>后续步骤
 
 本文重点介绍了高级 Kubernetes 计划程序功能。 有关 AKS 中的群集操作的详细信息，请参阅以下最佳做法：
 
-* [多租户和群集隔离][aks-best-practices-scheduler]
+* [多租户和群集的隔离][aks-best-practices-scheduler]
 * [基本 Kubernetes 计划程序功能][aks-best-practices-scheduler]
 * [身份验证和授权][aks-best-practices-identity]
 

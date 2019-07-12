@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8cd76909c9ce15a97de4ea5af3b21ac120058dd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4ca08a7b757889f79fb7ea5b85d7bc5c1c72259
+ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60705835"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67569367"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure 安全中心检测功能
 本文档讨论了 Azure 安全中心的高级检测功能，帮助用户确定以 Microsoft Azure 资源（包括 Windows 和 Linux）为目标的活跃威胁，了解进行快速响应所需的知识。
@@ -34,7 +34,7 @@ Azure 安全中心的标准层提供高级检测功能。 有免费试用版可�
 
 作为响应，组织通常会部署各种点解决方案，查找已知的攻击特征，重点做好企业外围防护或终结点防护。 这些解决方案会生成大量的低保真警报，需要安全分析师进行会审和调查。 大多数组织缺乏必要的时间和专业技术来响应此类警报 – 许多警报被置之不理。  同时，攻击者的攻击方法也在逐渐改进，可以突破许多基于攻击特征的防御，并且可以 [适应云环境](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/)。 必须采用新方法更快地确定新出现的威胁，加快检测和应对速度。
 
-## <a name="how-azure-security-center-detects-and-responds-to-threats"></a>Azure 安全中心如何检测和应对威胁
+## Azure 安全中心如何检测和应对威胁 <a name="asc-detects"></a>
 Microsoft 安全研究人员始终在不断地寻找威胁。 得益于 Microsoft 在云中和本地的广泛存在，他们可以访问大量的遥测数据。 由于能够广泛访问和收集各种数据集，Microsoft 可以通过本地消费者产品和企业产品以及联机服务发现新的攻击模式和趋势。 因此，当攻击者发布新的越来越复杂的漏斗利用方式时，安全中心就可以快速更新其检测算法。 此方法可以让用户始终跟上变化莫测的威胁环境。
 
 安全中心可以自动从 Azure 资源、网络以及连接的合作伙伴解决方案收集安全信息，对威胁进行检测。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 安全中心会对安全警报进行重要性分类，并提供威胁处置建议。
@@ -78,7 +78,7 @@ Azure 安全中心建立了安全研究和数据科学团队，持续监视威�
 
 将这些措施结合起来，形成新的改进型检测方法，使用户能够即时受益，而用户不需采取任何措施。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 本文档介绍了如何使用 Azure 安全中心的检测功能。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md)

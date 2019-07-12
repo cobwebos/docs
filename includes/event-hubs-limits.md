@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: fa6b4d6d0db09f8c4955430d6dc227356416d915
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b105fb14608d53c5c2ef469ab44e211ccdf4d3c8
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735914"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812553"
 ---
 下表列出了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
-| 限制 | 范围 | 说明 | 值 |
+| 限制 | 范围 | 说明 | ReplTest1 |
 | --- | --- | --- | --- |
 | 每个订阅的事件中心命名空间数 |订阅 |- |100 |
 | 每个命名空间的事件中心数 |命名空间 |创建新事件中心的后续请求会被拒绝。 |10 |
@@ -31,11 +31,12 @@ ms.locfileid: "66735914"
 | 最大吞吐量单位 |命名空间 |超出吞吐量单位限制会导致数据受到限制，并生成[服务器忙异常](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)。 若要请求更多的标准层的吞吐量单位，文件[支持请求](/azure/azure-supportability/how-to-create-azure-support-request)。 [额外的吞吐量单位](../articles/event-hubs/event-hubs-auto-inflate.md)将基于承诺的购买以大小为 20 个单位的块的形式提供。 |20 |
 | 每个命名空间的授权规则数量 |命名空间|将拒绝后续的授权规则创建请求。|12 |
 | GetRuntimeInformation 方法对的调用数 | 实体 | - | 每秒 50 | 
+| 虚拟网络 (VNet) 和 IP 配置规则的数量 | 实体 | - | 128 | 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>事件中心专用-配额和限制
 事件中心专用产品/服务按固定的每月价格，至少包含 4 个小时的使用量计费。 专用的层提供标准计划的但具有企业规模容量和限制的所有功能的客户的要求苛刻的工作负荷。 
 
-| Feature | 限制 |
+| 功能 | 限制 |
 | --- | ---|
 | 带宽 |  20 CU |
 | 命名空间 | CU 每 50 个 |

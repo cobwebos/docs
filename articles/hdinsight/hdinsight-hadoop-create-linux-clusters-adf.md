@@ -189,9 +189,9 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     |属性  |值  |
     |---------|---------|
-    |名称 | 输入数据工厂的名称。 该名称必须全局唯一。|
-    |订阅 | 选择 Azure 订阅。 |
-    |资源组 | 选择“使用现有项”，然后选择使用 PowerShell 脚本创建的资源组。  |
+    |Name | 输入数据工厂的名称。 该名称必须全局唯一。|
+    |Subscription | 选择 Azure 订阅。 |
+    |Resource group | 选择“使用现有项”，然后选择使用 PowerShell 脚本创建的资源组。  |
     |版本 | 保留为“V2”  。 |
     |位置 | 位置会自动设置为先前在创建资源组时指定的位置。 在本教程中，位置设置为“美国东部”  。 |
 
@@ -230,7 +230,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     |属性 |值 |
     |---|---|
-    |名称 |输入 `HDIStorageLinkedService` 。|
+    |Name |输入 `HDIStorageLinkedService` 。|
     |Azure 订阅 |从下拉列表中选择你的订阅。|
     |存储帐户名称 |选择作为 PowerShell 脚本的一部分创建的 Azure 存储帐户。|
 
@@ -252,7 +252,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     | 属性 | 值 |
     | --- | --- |
-    | 名称 | 输入 `HDInsightLinkedService` 。|
+    | Name | 输入 `HDInsightLinkedService` 。|
     | Type | 选择“按需 HDInsight”  。 |
     | Azure 存储链接服务 | 选择 `HDIStorageLinkedService`。 |
     | 群集类型 | 选择“hadoop”  |
@@ -260,7 +260,7 @@ Write-host "`nScript completed" -ForegroundColor Green
     | 服务主体 ID | 提供作为先决条件的一部分创建的 Azure Active Directory 服务主体的应用程序 ID。 |
     | 服务主体密钥 | 提供 Azure Active Directory 服务主体的身份验证密钥。 |
     | 群集名称前缀 | 提供一个值，该值将用作由数据工厂创建的所有群集类型的前缀。 |
-    |订阅 |从下拉列表中选择你的订阅。|
+    |Subscription |从下拉列表中选择你的订阅。|
     | 选择资源组 | 选择作为先前使用的 PowerShell 脚本的一部分创建的资源组。|
     |选择区域 | 从下拉列表中选择一个区域。|
     | OS 类型/群集 SSH 用户名 | 输入一个 SSH 用户名，常见的是 `sshuser`。 |

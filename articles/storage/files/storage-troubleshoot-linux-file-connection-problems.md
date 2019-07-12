@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 97f737c8d1228bd03baf59f2ebe830f715241299
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 232b4ca2ee4f3137069ed155cc82a5c5e3251420
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449843"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807280"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
@@ -94,19 +94,30 @@ ms.locfileid: "67449843"
 
 关闭一些句柄，减少并发打开句柄的数量，然后重试操作。
 
+若要查看的文件共享、 目录或文件打开句柄，请使用[Get AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet。  
+
+若要关闭的文件共享、 目录或文件打开句柄，请使用[关闭 AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet。
+
+> [!Note]  
+> Az PowerShell 模块版本 2.4 或更高版本中包含的 Get AzStorageFileHandle 和关闭 AzStorageFileHandle cmdlet。 若要安装最新的 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>在 Linux 中将文件复制到 Azure 文件以及从中复制文件时速度缓慢
 
 - 如果没有特定的最低 I/O 大小要求，建议 I/O 大小为 1 MiB 以实现最佳性能。
-- 如果知道通过写入扩展的最终文件大小，并且文件上尚未写入的结尾包含零时软件不会出现兼容性问题，请提前设置文件大小，而不是使每次写入都成为扩展写入。
 - 使用正确的复制方法：
     - 使用 [AZCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 在两个文件共享之间传输任何内容。
-    - 通过并行使用 cp 可以提高复制速度，线程数取决于你的用例和工作负荷。 此示例使用六个： `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`。
+    - 通过并行使用 cp 或 dd 可以提高复制速度，线程数取决于你的用例和工作负荷。 下面的示例使用六个： 
+    - cp 示例 （cp 将用作文件系统的默认块大小的区块大小）： `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`。
+    - dd （此命令显式设置块区大小为 1 的 MiB） 示例： `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - 打开源第三方工具，如：
         - [GNU 并行](https://www.gnu.org/software/parallel/)。
         - [Fpart](https://github.com/martymac/fpart) -对文件进行排序，并将其打包到分区。
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -使用 Fpart 和复制工具来生成多个实例，若要将数据从 src_dir 迁移到 dst_url。
         - [多](https://github.com/pkolano/mutil)-根据 GNU coreutils 多线程的 cp 和 md5sum。
+- 将文件大小，请提前设置而不使每次写入都成为扩展写入，帮助提高在其中已知的文件大小的情况下复制速度。 如果扩展写入需要避免使用，则可以设置具有的目标文件大小`truncate - size <size><file>`命令。 在此之后，`dd if=<source> of=<target> bs=1M conv=notrunc`命令会将源文件复制而无需反复更新目标文件的大小。 例如，可以设置要复制的每个文件的目标文件大小 （假定/mnt/共享区下装载共享）：
+    - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
+    - 然后-无需扩展写入并行复制文件： `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>使用 SMB 3.0 装载 Azure 文件时出现“装载错误(115): 操作正在进行”
@@ -141,10 +152,27 @@ ms.locfileid: "67449843"
 
 验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”  。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
+<a id="open-handles"></a>
+## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>无法删除文件或目录中的 Azure 文件共享
+
+### <a name="cause"></a>原因
+如果文件或目录具有一个打开的句柄，通常会出现此问题。 
+
+### <a name="solution"></a>解决方案
+
+如果 SMB 客户端已关闭所有打开的句柄，且此问题继续出现，请执行以下：
+
+- 使用[Get AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 来查看打开的句柄。
+
+- 使用[关闭 AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet，以关闭打开的句柄。 
+
+> [!Note]  
+> Az PowerShell 模块版本 2.4 或更高版本中包含的 Get AzStorageFileHandle 和关闭 AzStorageFileHandle cmdlet。 若要安装最新的 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM 上装载的 Azure 文件共享性能缓慢
 
-### <a name="cause-1-caching"></a>原因 1：正在缓存
+### <a name="cause-1-caching"></a>原因 1：缓存
 
 性能缓慢的一个可能原因是禁用了缓存。 缓存可以是如果您重复访问的文件，否则，它可以是一项开销非常有用。 检查是否禁用它之前使用缓存。
 
@@ -191,40 +219,6 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
-
-## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>无法连接或装载 Azure 文件共享
-
-### <a name="cause"></a>原因
-
-造成此问题的常见原因包括：
-
-- 正在使用不兼容的 Linux 分发客户端。 建议使用以下 Linux 分发来连接 Azure 文件共享：
-
-    |   | SMB 2.1 <br>（装载在同一 Azure 区域内的 VM 上） | SMB 3.0 <br>（从本地和跨区域装载） |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04+ |
-    | RHEL | 7+ | 7.5+ |
-    | CentOS | 7+ |  7.5+ |
-    | Debian | 8+ |   |
-    | openSUSE | 13.2+ | 42.3+ |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
-
-- 在客户端上未安装 CIFS 实用程序 (cifs 实用程序)。
-- 客户端上未安装最低的 SMB/CIFS 版本 2.1。
-- 客户端不支持 SMB 3.0 加密。 SMB 3.0 加密在 Ubuntu 16.4 和更高版本以及 SUSE 12.3 和更高版本中可用。 其他分发要求内核 4.11 及更高版本。
-- 试图通过不受支持的 TCP 端口 445 连接到存储帐户。
-- 试图从 Azure VM 连接到 Azure 文件共享，而该 VM 并非与存储帐户处于同一区域。
-- 如果在存储帐户上启用了[需要安全转移]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置，则 Azure 文件仅允许使用带加密的 SMB 3.0 进行连接。
-
-### <a name="solution"></a>解决方案
-
-若要解决此问题，请使用 [Troubleshooting tool for Azure Files mounting errors on Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)（用于 Linux 上 Azure 文件装载错误的故障排除工具）。 此工具：
-
-* 有助于验证客户端运行环境。
-* 可检测导致 Azure 文件访问失败的不兼容客户端配置。
-* 可提供自我修复的说明性指导。
-* 可收集诊断跟踪。
-
 
 ## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: 无法访问 '&lt;path&gt;':输入/输出错误
 

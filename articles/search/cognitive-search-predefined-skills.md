@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 7925f3aef4123fddd3a96c6e62971b881ae4cbc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9dfa6af4fb13018051c06783e5ae2bc3f49c0da
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65021861"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672091"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>内容扩充的预定义技能（Azure 搜索）
 
@@ -45,9 +45,9 @@ ms.locfileid: "65021861"
 | [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | 通过向自定义 Web API 执行 HTTP 调用，实现认知搜索管道的可扩展性 |
 
 
-有关创建[自定义技能](cognitive-search-custom-skill-web-api.md)的指导，请参阅[如何定义自定义界面](cognitive-search-custom-skill-interface.md)和[示例：创建自定义技能](cognitive-search-create-custom-skill-example.md)。
+有关创建指导[自定义技能](cognitive-search-custom-skill-web-api.md)，请参阅[如何定义自定义接口](cognitive-search-custom-skill-interface.md)和[示例：创建认知搜索的自定义技能](cognitive-search-create-custom-skill-example.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [自定义技能接口定义](cognitive-search-custom-skill-interface.md)

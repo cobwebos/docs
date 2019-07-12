@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 5299437dea18510fa5f85ee27240c8afc434d125
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95ad2ba4798d41f2e5e49ca33735b997859af23f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477257"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67658144"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -37,7 +37,7 @@ ms.locfileid: "61477257"
 
 ## <a id="images"></a>映像
 
-1. **有哪些 SQL Server 虚拟机库映像可用？**
+1. **有哪些 SQL Server 虚拟机库映像可用？** 
 
    Azure 为所有 Windows 和 Linux 版本中的所有受支持 SQL Server 主要发行版维护虚拟机映像。 有关详细信息，请参阅 [Windows VM 映像](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)和 [Linux VM 映像](../../linux/sql/sql-server-linux-virtual-machines-overview.md#create)的完整列表。
 
@@ -60,7 +60,7 @@ ms.locfileid: "61477257"
 
 1. **是否可以设置虚拟机库中未显示的配置（例如 Windows 2008 R2 + SQL Server 2012）？**
 
-   不。 对于包含 SQL Server 的虚拟机图库映像，必须通过 Azure 门户或 [PowerShell](virtual-machines-windows-ps-sql-create.md) 选择提供的某个映像。 
+   否。 对于包含 SQL Server 的虚拟机图库映像，必须通过 Azure 门户或 [PowerShell](virtual-machines-windows-ps-sql-create.md) 选择提供的某个映像。 
 
 
 ## <a name="creation"></a>创建
@@ -79,7 +79,6 @@ ms.locfileid: "61477257"
 
    可通过两种方式来执行此操作。 可以预配[支持许可证的虚拟机映像](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)之一，也称为自带许可 (BYOL)。 另一个选项是将 SQL Server 安装介质复制到 Windows Server VM 上，然后在 VM 上安装 SQL Server。 但是，如果手动安装 SQL Server，则没有门户集成，并且不支持 SQL Server IaaS 代理扩展，因此“自动备份”和“自动修补”等功能在此方案中不起作用。 出于此原因，我们建议使用 BYOL 库映像之一。 要在 Azure VM 上使用 BYOL 或自己的 SQL Server 媒体，必须获得 [Azure 上通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)。 有关详细信息，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
-
 1. **如果 SQL Server 仅用于待机/故障转移，是否必须付费才能在 Azure VM 上为 SQL Server 授予许可？**
 
    如果有[虚拟机许可常见问题解答](https://azure.microsoft.com/pricing/licensing-faq/)中所述的“软件保障”并且使用“许可证移动性”，则无需付费即可为在 HA 部署中作为被动次要副本参与的 SQL Server 授予许可。 否则，你需要付费才可为其授予许可。
@@ -97,7 +96,7 @@ ms.locfileid: "61477257"
 
 1. **切换许可模型是否需要将 SQL Server 停机？**
 
-   不。 [更改许可模型](virtual-machines-windows-sql-ahb.md)不需将 SQL Server 停机，因为更改会立即生效，不需重启 VM。 但是，若要向 SQL VM 资源提供程序注册 SQL Server VM，[SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md)是先决条件，并且安装 SQL IaaS 扩展会重新启动 SQL Server 服务。 同样，如果需要安装 SQL IaaS 扩展，则应在维护时段中进行。 
+   否。 [更改许可模型](virtual-machines-windows-sql-ahb.md)不需将 SQL Server 停机，因为更改会立即生效，不需重启 VM。 但是，若要向 SQL VM 资源提供程序注册 SQL Server VM，[SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md)是先决条件，并且安装 SQL IaaS 扩展会重新启动 SQL Server 服务。 同样，如果需要安装 SQL IaaS 扩展，则应在维护时段中进行。 
 
 1. **CSP 订阅是否能够激活 Azure 混合权益？**
 
@@ -105,7 +104,7 @@ ms.locfileid: "61477257"
 
 1. **将 VM 注册到新的 SQL VM 资源提供程序是否需额外付费？**
 
-   不。 SQL VM 资源提供程序只是为 Azure VM 上的 SQL Server 启用更多的可管理性，不额外收费。 
+   否。 SQL VM 资源提供程序只是为 Azure VM 上的 SQL Server 启用更多的可管理性，不额外收费。 
 
 1. **SQL VM 资源提供程序是否适用于所有客户？**
  
@@ -147,9 +146,10 @@ ms.locfileid: "61477257"
    
 ## <a name="updating-and-patching"></a>更新和修补
 
-1. **如何更改为 Azure VM 中 SQL Server 的新版本？**
+1. **如何更改到其他 Azure VM 中的 SQL Server 的版本/版本？**
 
-   享有软件保障的客户可以使用批量许可门户中的安装媒体对 Azure VM 上运行的 SQL Server 执行就地升级。 但是，目前没有任何办法可以更改 SQL Server 实例的版本。 请使用所需的 SQL Server 版本创建新的 Azure 虚拟机，然后使用[标准数据迁移技术](virtual-machines-windows-migrate-sql.md)，将数据库迁移到新的服务器。
+   客户可以通过使用包含其所需的版本或版本的 SQL Server 安装程序介质更改其版本/版本的 SQL Server。 更改版本后才可使用 Azure 门户修改要准确反映计费的 vm 的 vm 的 edition 属性。 有关详细信息，请参阅[更改版本的 SQL Server VM](virtual-machines-windows-sql-change-edition.md)。 
+
 
 1. **如何将更新和服务包应用到 SQL Server VM？**
 
@@ -170,7 +170,7 @@ ms.locfileid: "61477257"
 
 1. **如何在 Azure VM 上安装 SQL 数据工具？**
 
-    从 [Microsoft SQL Server 数据工具 - Visual Studio 2013 商业智能](https://www.microsoft.com/en-us/download/details.aspx?id=42313)下载并安装 SQL 数据工具。
+    从 [Microsoft SQL Server 数据工具 - Visual Studio 2013 商业智能](https://www.microsoft.com/download/details.aspx?id=42313)下载并安装 SQL 数据工具。
 
 1. **是否支持在 SQL Server Vm 上的 MSDTC 分布式的事务？**
    

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb09d91bb3204a1ab3dc4f9df71eabd2ee7d2bd1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 406bd11765e4b580849e8719939c3e11c19d99a8
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591313"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604570"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>使用 Azure 快速入门模板为 Azure VM 上的 SQL Server 中配置 Always On 可用性组
 本文介绍如何使用 Azure 快速入门模板来部分自动化在 Azure 中为 SQL Server 虚拟机部署 Always On 可用性组配置的过程。 此过程使用两个 Azure 快速入门模板。 
@@ -34,11 +34,11 @@ ms.locfileid: "60591313"
 其他可用性组配置部分（例如创建可用性组，以及创建内部负载均衡器）必须手动完成。 本文提供自动和手动步骤的顺序。
  
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>系统必备 
 若要使用快速入门模板自动设置 Always On 可用性组，必须满足以下先决条件： 
 - 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
 - 一个具有域控制器的资源组。 
-- Azure 中的一个或多个已加入域的 VM，它们[运行 SQL Server 2016 Enterprise Edition（或更高版本）](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)，位于[已注册到 SQL VM 资源提供程序](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)的同一个可用性集或可用性区域中。  
+- Azure 中的一个或多个已加入域的 VM，它们[运行 SQL Server 2016 Enterprise Edition（或更高版本）](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)，位于[已注册到 SQL VM 资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)的同一个可用性集或可用性区域中。  
 - 两个可用 （未由任何实体） IP 地址，一个内部负载均衡器，一个用于可用性组位于同一子网中的可用性组侦听器。 如果正在使用现有的负载均衡器，则需要一个可用的 IP 地址。  
 
 ## <a name="permissions"></a>权限
@@ -56,7 +56,7 @@ ms.locfileid: "60591313"
 
     下表显示了模板的所需值： 
 
-   | **字段** | 值 |
+   | **字段** | ReplTest1 |
    | --- | --- |
    | **订阅** |  SQL Server VM 所在的订阅。 |
    |**资源组** | SQL Server VM 所在的资源组。 | 
@@ -95,7 +95,7 @@ Always On 可用性组 (AG) 侦听器都需要内部 Azure 负载均衡器 (ILB)
 4. 在“负载均衡器”边栏选项卡上，单击“创建”。  
 5. 在“创建负载均衡器”对话框中配置负载均衡器，如下所示： 
 
-   | 设置 | 值 |
+   | 设置 | ReplTest1 |
    | --- | --- |
    | **名称** |表示负载均衡器的文本名称。 例如 **sqlLB**。 |
    | 类型  |**内部**：大多数实施方案使用内部负载均衡器，它可让同一虚拟网络中的应用程序连接到可用性组。  </br> **外部**：可让应用程序通过公共 Internet 连接连接到可用性组。 |
@@ -105,7 +105,7 @@ Always On 可用性组 (AG) 侦听器都需要内部 Azure 负载均衡器 (ILB)
    | **专用 IP 地址** | 指定子网中的某个可用 IP 地址。 |
    | **订阅** |如果有多个订阅，可能会显示此字段。 选择要与此资源关联的订阅。 它通常是与可用性组的所有资源相同的订阅。 |
    | **资源组** |选择 SQL Server 实例所在的资源组。 |
-   | **位置** |选择 SQL Server 实例所在的 Azure 位置。 |
+   | **Location** |选择 SQL Server 实例所在的 Azure 位置。 |
    | &nbsp; | &nbsp; |
 
 6. 选择“创建”  。 
@@ -133,7 +133,7 @@ Always On 可用性组 (AG) 侦听器都需要内部 Azure 负载均衡器 (ILB)
 
     下表显示了模板的所需值： 
 
-   | **字段** | 值 |
+   | **字段** | ReplTest1 |
    | --- | --- |
    |**资源组** | SQL Server VM 和可用性组所在的资源组。 | 
    |**现有故障转移群集名称** | SQL Server VM 要加入到的群集的名称。 |
@@ -190,7 +190,7 @@ AG 侦听程序 Azure 快速入门模板中使用的选定可用性组已包含�
 
     ![用户帐户为空表明 UPN 缺失](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
-5. 填充与用户名称匹配的“用户登录名”，然后从下拉列表中选择适当的域。  
+5. 填写**用户登录名**匹配的用户的名称，并从下拉列表中选择正确的域。 
 6. 选择“应用”以保存所做的更改，然后选择“确定”，将对话框关闭。   
 
    完成这些更改后，尝试再次部署 Azure 快速入门模板。 

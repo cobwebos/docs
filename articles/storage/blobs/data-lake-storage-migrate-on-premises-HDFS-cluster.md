@@ -7,13 +7,13 @@ ms.service: storage
 ms.date: 06/11/2019
 ms.author: normesta
 ms.topic: article
-ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 65ef586d74297e692160dc075dead2f0b1d973b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: data-lake-storage-gen2
+ms.openlocfilehash: 4445a8566c04d30cfb8743cbd33623f2e23f0dde
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116977"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595403"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>使用 Azure Data Box 将数据从本地 HDFS 存储迁移到 Azure 存储
 
@@ -27,7 +27,7 @@ ms.locfileid: "67116977"
 > * 将设备发回 Microsoft。
 > * 将移动到数据湖存储第 2 代上的数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 您需要以下操作来完成迁移。
 
@@ -345,7 +345,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 在计划来启动 DistCp 作业的本地 Hadoop 群集，创建用于指定你想要排除的目录列表中的文件。
 
-下面是一个示例：
+以下是一个示例：
 
 ```
 .*ranger/audit.*

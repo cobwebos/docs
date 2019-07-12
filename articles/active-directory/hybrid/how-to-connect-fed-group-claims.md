@@ -5,19 +5,19 @@ services: active-directory
 documentationcenter: ''
 ms.reviewer: paulgarn
 manager: daveba
-ms.component: hybrid
+ms.subservice: hybrid
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: e00e41a34bb28a2569d5922926a8f6c4fbe4bd57
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 2d547c73137605e4666499b568bdcebce394935a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481421"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595228"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>使用 Azure Active Directory （公共预览版） 配置应用程序的组声明
 
@@ -160,8 +160,8 @@ Azure Active Directory 可以提供在应用程序中使用的令牌中的用户
    | 可选声明架构 | 值 |
    |----------|-------------|
    | **名称：** | 必须是"组" |
-   | **源：** | 不使用。 省略或指定 null |
-   | **重要：** | 不使用。 省略或指定 false |
+   | **源：** | 未使用。 省略或指定 null |
+   | **重要：** | 未使用。 省略或指定 false |
    | **additionalProperties:** | 其他属性的列表。  Valid options are "sam_account_name", “dns_domain_and_sam_account_name”, “netbios_domain_and_sam_account_name”, "emit_as_roles" |
 
    在只有一个"sam_account_name"，"dns_domain_and_sam_account_name"additionalProperties"netbios_domain_and_sam_account_name"是必需的。  如果存在多个，使用第一个和任何其他人所忽略。

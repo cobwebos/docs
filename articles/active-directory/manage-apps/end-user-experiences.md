@@ -12,14 +12,15 @@ ms.date: 05/03/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e5fc24e426c87bbc5062183f2ee2db0e546484
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74c6787068cf8ba1e86cbf43955d0ac995aa8de1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388212"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702109"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory 中应用程序的最终用户体验
+
 Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织中的最终用户部署应用程序：
 
 * Azure AD 访问面板
@@ -30,27 +31,31 @@ Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织�
 请自行决定要选择哪种方法在组织中进行部署。
 
 ## <a name="azure-ad-access-panel"></a>Azure AD 访问面板
+
 位于 https://myapps.microsoft.com 的访问面板是一个基于 Web 的门户，它允许在 Azure Active Directory 中拥有组织帐户的最终用户查看和启动 Azure AD 管理员已向他们授予其访问权限的基于云的应用程序。 如果是使用 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) 的最终用户，则还可以通过访问面板利用自助服务组管理功能。
 
-![Azure AD 访问面板](media/what-is-single-sign-on/azure-ad-access-panel.png)
+![屏幕截图显示了 Azure AD 访问面板门户](media/what-is-single-sign-on/azure-ad-access-panel.png)
 
 访问面板是与 Azure 管理门户分开的，因此不要求用户拥有 Azure 订阅或 Office 365 订阅。
 
 有关 Azure AD 访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="office-365-application-launcher"></a>Office 365 应用程序启动器
+
 对于已部署 Office 365 的组织，通过 Azure AD 分配给用户的应用程序也将出现在 Office 365 门户[ https://portal.office.com/myapps ](https://portal.office.com/myapps)。 组织中的用户可以使用此方式便捷地启动应用程序且无需使用另一个门户，建议使用 Office 365 的组织采用这种应用程序启动解决方案。
 
-![Office 365 门户](./media/end-user-experiences/microsoft-365-portal-office-com.png)
+![屏幕截图显示了 Office 365 门户](./media/end-user-experiences/microsoft-365-portal-office-com.png)
 
 有关 Office 365 应用程序启动器的详细信息，请参阅[让应用出现在 Office 365 应用启动器中](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)。
 
 ## <a name="direct-sign-on-to-federated-apps"></a>直接登录联合应用
+
 大多数支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 的联合应用程序也支持用户在应用程序启动，再通过 Azure AD 的自动重定向或单击链接进行登录。 这称为服务提供商发起的登录，Azure AD 应用程序库中的大多数联合应用程序都支持这种方式（请参阅 Azure 门户上应用的单一登录配置向导中链接的文档来了解详细信息）。
 
 ![移动应用登录页的示例](./media/end-user-experiences/workdaymobile.png)
 
 ## <a name="direct-sign-on-links"></a>直接登录链接
+
 Azure AD 还为支持基于密码单一登录、链接单一登录以及任何形式的联合单一登录的各个应用程序提供直接单一登录链接。
 
 这些链接是专门编写的 URL，用于使用户完成特定应用程序的 Azure AD 登录过程而无需用户从 Azure AD 访问面板或 Office 365 启动。 这些**用户访问 Url**下可用的企业应用程序的属性。 在 Azure 门户中，选择**Azure Active Directory** > **企业应用程序**。 选择应用程序，并选择**属性**。
@@ -70,4 +75,5 @@ Azure AD 还为支持基于密码单一登录、链接单一登录以及任何�
 这些链接使用与访问面板和 Office 365 相同的访问控制机制，只有在 Azure 门户中已分配到应用程序的这些用户或组能够成功通过身份验证。 不过，任何未经授权的用户都会看到一条消息说明他们未获得访问权限，并会获得一个加载访问面板的链接用于查看他们有权访问的应用程序。
 
 ## <a name="next-steps"></a>后续步骤
+
 有关部署计划，请参阅 [Azure Active Directory 部署计划](../fundamentals/active-directory-deployment-plans.md)

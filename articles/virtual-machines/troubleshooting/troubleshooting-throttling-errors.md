@@ -4,7 +4,7 @@ description: Azure 计算中的限制错误、重试和回退。
 services: virtual-machines
 documentationcenter: ''
 author: changov
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: efa10f5beae64105857b00b186683d491edb00f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9e0f2620bf6ff163207fc16ee24a327936ec4bf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233779"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709193"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>排查 API 限制错误 
 
@@ -89,7 +89,7 @@ Content-Type: application/json; charset=utf-8
 PowerShell cmdlet 使用 REST 服务 API，客户端可以轻松直接调用该 API（但是尚未提供正式支持）。 若要查看 HTTP 请求格式，请在使用 -Debug 开关的情况下运行 cmdlet 或者使用 Fiddler 探查其执行。
 
 
-## <a name="best-practices"></a>最佳做法 
+## <a name="best-practices"></a>最佳实践 
 
 - 请勿无条件地以及（或者）立即地重试 Azure 服务 API 错误。 遇到不可重试的错误时，常见的情况是客户端代码会进入快速的重试循环。 重试最终会耗光目标操作对应的组的允许调用限制，影响订阅的其他客户端。 
 - 在大容量 API 自动化示例中，如果目标操作组的可用调用计数掉到某个较低的阈值以下，则可考虑实施前摄性客户端自动限制。 

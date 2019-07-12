@@ -2,17 +2,17 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的标识
 description: 了解有关为 Azure Kubernetes 服务 (AKS) 中的群集管理身份验证和授权的群集操作员最佳做法
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: iainfou
-ms.openlocfilehash: f98e38556458b8d8a675d1e3f985aacfca022082
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: mlearned
+ms.openlocfilehash: 82bf59dddeecab0addf00a935f55be8d1d7952d3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65074165"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614784"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
 
@@ -42,13 +42,13 @@ Kubernetes 群集的开发人员和应用程序所有者需要访问不同的资
 1. 应用 Kubernetes 基于角色的访问控制 (RBAC) 和群集策略。
 1. 开发人员的请求成功或失败，具体取决于前面的 Azure AD 组成员身份和 Kubernetes RBAC 验证以及策略。
 
-若要创建使用 Azure AD 的 AKS 群集，请参阅[将 Azure Active Directory 与 AKS 集成][aks-aad]。
+若要创建使用 Azure AD 的 AKS 群集，请参阅[集成 Azure Active Directory 与 AKS][aks-aad]。
 
 ## <a name="use-role-based-access-controls-rbac"></a>使用基于角色的访问控制 (RBAC)
 
 **最佳做法指导** - 使用 Kubernetes RBAC 定义用户或组对群集中的资源拥有的权限。 创建角色和绑定，用于分配所需的最少量权限。 与 Azure AD 集成，使用户状态或组成员身份的任何更改可自动更新，并使群集资源访问权限保持最新状态。
 
-在 Kubernetes 中，可以针对群集中的资源提供精细访问控制。 可在群集级别或者针对特定的命名空间定义权限。 可以定义能够使用哪些权限管理哪些资源。 这些角色将结合绑定应用到用户或组。 有关角色、群集角色和绑定的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的访问和标识选项][aks-concepts-identity]。   
+在 Kubernetes 中，可以针对群集中的资源提供精细访问控制。 可在群集级别或者针对特定的命名空间定义权限。 可以定义能够使用哪些权限管理哪些资源。 这些角色将结合绑定应用到用户或组。 有关详细信息*角色*， *ClusterRoles*，并*绑定*，请参阅[访问和标识选项的 Azure Kubernetes 服务 (AKS)][aks-concepts-identity].
 
 例如，可以创建一个角色，用于授予对名为 *finance-app* 的命名空间中的资源的完全访问权限，如以下示例 YAML 清单中所示：
 
@@ -84,7 +84,7 @@ roleRef:
 
 *developer1\@contoso.com* 通过 AKS 群集进行身份验证后，便对 *finance-app* 命名空间中的资源拥有了完全权限。 这样，即可以逻辑方式隔离和控制对资源的访问权限。 应根据上一部分中所述，将 Kubernetes RBAC 与 Azure AD 集成结合使用。
 
-若要了解如何使用 Azure AD 组通过 RBAC 来控制对 Kubernetes 资源的访问，请参阅[在 AKS 中使用基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问][azure-ad-rbac]。
+若要了解如何使用 Azure AD 组来控制使用 RBAC 的 Kubernetes 资源的访问权限，请参阅[控制对群集资源在 AKS 中使用基于角色的访问控制和 Azure Active Directory 标识访问][azure-ad-rbac]。
 
 ## <a name="use-pod-identities"></a>使用 pod 标识
 
@@ -111,20 +111,20 @@ roleRef:
 > [!NOTE]
 > 托管 Pod 标识是开源项目，Azure 技术支持部门不为其提供支持。
 
-若要使用 pod 标识，请参阅 [Kubernetes 应用程序的 Azure Active Directory 标识][aad-pod-identity]。
+若要使用 pod 的标识，请参阅[Kubernetes 应用程序的 Azure Active Directory 标识][aad-pod-identity]。
 
 ## <a name="next-steps"></a>后续步骤
 
 本最佳做法文章重点介绍了群集和资源的身份验证与授权。 若要实施其中的某些最佳做法，请参阅以下文章：
 
-* [将 Azure Active Directory 与 AKS 集成][aks-aad]
-* [将 Azure 资源的托管标识与 AKS 配合使用][aad-pod-identity]
+* [Azure Active Directory 与 AKS 集成][aks-aad]
+* [使用 AKS 使用 Azure 资源管理的标识][aad-pod-identity]
 
 有关 AKS 中的群集操作的详细信息，请参阅以下最佳做法：
 
-* [多租户和群集隔离][aks-best-practices-scheduler]
+* [多租户和群集的隔离][aks-best-practices-scheduler]
 * [基本 Kubernetes 计划程序功能][aks-best-practices-scheduler]
-* [高级 Kubernetes 计划程序功能][aks-best-practices-advanced-scheduler]
+* [高级的 Kubernetes 计划程序功能][aks-best-practices-advanced-scheduler]
 
 <!-- EXTERNAL LINKS -->
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity

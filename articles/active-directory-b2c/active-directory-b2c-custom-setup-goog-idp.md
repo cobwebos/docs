@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 212243f38b153f75c08a9b4c58622d0444f0ac62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 498fe63964e44de8f9e1bc06c1740f1a9ef9b392
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510375"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654172"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略设置 Google 帐户登录
 
@@ -23,14 +23,14 @@ ms.locfileid: "66510375"
 
 本文介绍如何让 Google 帐户的用户使用 Azure Active Directory (Azure AD) B2C 中的[自定义策略](active-directory-b2c-overview-custom.md)登录。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 完成 [Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
 - 如果没有 Google 帐户，请根据[创建 Google 帐户](https://accounts.google.com/SignUp)中所述创建一个帐户。
 
 ## <a name="register-the-application"></a>注册应用程序
 
-若要让 Google 帐户的用户登录，需要创建一个 Google 应用程序项目。 
+若要让 Google 帐户的用户登录，需要创建一个 Google 应用程序项目。
 
 1. 使用帐户凭据登录到 [Google 开发人员控制台](https://console.developers.google.com/)。
 2. 输入  “项目名称”，单击  “创建”，然后确保使用的是新项目。
@@ -40,7 +40,7 @@ ms.locfileid: "66510375"
 6. 在“应用程序类型”  下，选择“Web 应用程序”  。
 7. 输入应用程序的**名称**。
 8. 在“授权的 JavaScript 来源”中输入 `https://your-tenant-name.b2clogin.com`，然后在“授权的重定向 URI”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。   将 your-tenant-name 替换为租户的名称。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
-8. 单击**创建**。
+8. 单击“创建”。 
 9. 复制“客户端 ID”  和“客户端密码”  的值。 将 Google 配置为租户中的标识提供者时需要这两项。 客户端机密是一个重要的安全凭据。
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
@@ -50,17 +50,17 @@ ms.locfileid: "66510375"
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-4. 在“概述”页上，选择“标识体验框架 - 预览”  。
+4. 在“概述”页上选择“标识体验框架”  。
 5. 选择“策略密钥”  ，然后选择“添加”  。
 6. 对于“选项”  ，请选择 `Manual`。
-7. 输入策略密钥的**名称**。 例如，`GoogleSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+7. 输入策略密钥的**名称**。 例如， `GoogleSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 在“机密”中，输入前面记录的应用程序机密  。
 9. 在“密钥用法”处选择 `Signature`。 
-10. 单击**创建**。
+10. 单击“创建”。 
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
-如果希望用户使用 Google 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。 
+如果希望用户使用 Google 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
 可以通过在策略的扩展文件中将 Google 帐户添加到 **ClaimsProviders** 元素，将该帐户定义为声明提供程序。
 
@@ -111,7 +111,7 @@ ms.locfileid: "66510375"
     ```
 
 4. 将 **client_id** 设置为应用程序注册中的应用程序 ID。
-5. 保存文件。
+5. 保存该文件。
 
 ### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
 
@@ -129,7 +129,7 @@ ms.locfileid: "66510375"
 2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
 3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 4. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
-5. 重命名用户旅程的 ID。 例如，`SignUpSignInGoogle`。
+5. 重命名用户旅程的 ID。 例如， `SignUpSignInGoogle` 。
 
 ### <a name="display-the-button"></a>显示按钮
 
@@ -152,8 +152,8 @@ ms.locfileid: "66510375"
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
     ```
-    
-    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 ID。 例如，`Google-OAuth`。
+
+    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 ID。 例如， `Google-OAuth` 。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
@@ -167,14 +167,14 @@ ms.locfileid: "66510375"
 4. 选择“应用程序”，然后选择“添加”   。
 5. 输入应用程序的名称，例如 *testapp1*。
 6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`   。
-7. 单击**创建**。
+7. 单击“创建”。 
 
 ## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 
 更新用于启动创建的用户旅程的信赖方 (RP) 文件。
 
 1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignInGoogle.xml*。
-2. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInGoogle`。
+2. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如， `SignUpSignInGoogle` 。
 3. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_google`
 4. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，以匹配所创建的新用户旅程的 ID (SignUpSignGoogle)。
 5. 保存更改并上传文件，然后选择列表中的新策略。

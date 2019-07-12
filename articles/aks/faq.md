@@ -2,18 +2,18 @@
 title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务 (AKS) 的常见问题的解答。
 services: container-service
-author: iainfoulds
+author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/03/2019
-ms.author: iainfou
-ms.openlocfilehash: d4fa365e1ed055fa8ddeb8fd475e152af84a3b71
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.date: 07/08/2019
+ms.author: mlearned
+ms.openlocfilehash: 495f182ed450d0fac69b31ea2996bacc60863fea
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560447"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672781"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -62,30 +62,28 @@ Windows Server 中的节点 （当前在 AKS 中的预览版），Windows 更新
 每个 AKS 部署都跨越两个资源组：
 
 1. 创建第一个资源组。 此组仅包含 Kubernetes 服务资源。 AKS 资源提供程序在部署期间自动创建第二个资源组。 第二个资源组的一个示例是*于 MC_myResourceGroup_myAKSCluster_eastus*。 有关如何指定此第二个资源组的名称的信息，请参阅下一节。
-1. 第二个资源组，如*于 MC_myResourceGroup_myAKSCluster_eastus*，包含所有与群集关联的基础结构资源。 这些资源包括 Kubernetes 节点 VM、虚拟网络和存储。 此资源组旨在简化资源清理。
+1. 第二个资源组，称为*节点的资源组*，包含所有与群集关联的基础结构资源。 这些资源包括 Kubernetes 节点 VM、虚拟网络和存储。 默认情况下，节点资源组具有一个名称，如*于 MC_myResourceGroup_myAKSCluster_eastus*。 AKS 将自动删除节点资源时删除该群集，因此它应仅用于共享群集的生命周期的资源。
 
-如果您创建的 AKS 群集中使用的资源，例如存储帐户或保留公共 IP 地址，将它们放在自动生成的资源组中。
+## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>可以提供我自己的 AKS 节点资源组的名称？
 
-## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>我是否可为 AKS 基础结构资源组提供自己的名称？
-
-是的。 默认情况下，AKS 资源提供程序会自动创建的辅助资源组 (如*于 MC_myResourceGroup_myAKSCluster_eastus*) 在部署过程。 为了符合企业策略，你可以为此托管群集 (*MC_* ) 资源组提供自己的名称。
+是的。 默认情况下，AKS 将名称节点资源组*MC_clustername_resourcegroupname_location*，但也可以提供自己的名称。
 
 若要指定自己的资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 *0.3.2* 或更高版本。 当使用创建 AKS 群集[az aks 创建][az-aks-create]命令，使用 *-节点资源组*参数并指定资源组的名称。 如果您[使用 Azure 资源管理器模板][aks-rm-template]若要部署 AKS 群集，可以定义的资源组名称使用*nodeResourceGroup*属性。
 
 * 在自己的订阅中的 Azure 资源提供程序会自动创建的辅助资源组。
 * 仅当要创建群集时，可以指定自定义资源组名称。
 
-在使用*MC_* 资源组，请记住，您不能：
+工作节点资源组时，请记住，您不能：
 
-* 指定现有的资源组*MC_* 组。
-* 指定不同的订阅*MC_* 资源组。
-* 更改*MC_* 后创建群集资源组名称。
-* 指定托管资源内的名称*MC_* 资源组。
-* 修改或删除中的托管资源标记*MC_* 资源组。 （请参阅下一节中的其他信息。）
+* 指定节点资源组的现有资源组。
+* 指定节点资源组不同的订阅。
+* 创建群集后，请更改节点资源组名称。
+* 指定节点资源组中的托管资源的名称。
+* 修改或删除的节点资源组中的托管资源的标记。 （请参阅下一节中的其他信息。）
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>可以修改标记和其他属性 MC_ 资源组中的 AKS 资源？
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>可以修改标记和其他属性的节点资源组中的 AKS 资源？
 
-如果修改或删除 Azure 创建标记和其他资源属性*MC_* 资源组中，可能会收到意外的结果，例如缩放和升级错误。 AKS，可创建和修改自定义标记。 你可能想要创建或修改自定义标记，例如，若要将业务单元或成本中心分配。 通过修改下的资源*MC_* 在 AKS 群集中断服务级别目标 (SLO)。 有关详细信息，请参阅[没有 AKS 提供的服务级别协议？](#does-aks-offer-a-service-level-agreement)
+如果修改或删除 Azure 创建标记和节点资源组中的其他资源属性，您可以得到意外的结果，例如缩放和升级错误。 AKS，可创建和修改自定义标记。 你可能想要创建或修改自定义标记，例如，若要将业务单元或成本中心分配。 通过修改在 AKS 群集的节点资源组下的资源，则会中断服务级别目标 (SLO)。 有关详细信息，请参阅[没有 AKS 提供的服务级别协议？](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS 支持哪些 Kubernetes 许可控制器？ 是否可以添加或删除许可控制器？
 
@@ -122,7 +120,7 @@ AKS 没有当前以本机方式集成到 Azure 密钥保管库。 但是， [Kub
 
 在 AKS，你可以将`maxPods`值时使用 Azure CLI 和 Azure 资源管理器模板创建群集。 但是，Kubenet 和 Azure CNI 需要*最小值*（验证在创建时）：
 
-| 网络 | 最小值 | 最大值 |
+| 网络 | 最低要求 | 最大值 |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |

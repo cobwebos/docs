@@ -2,18 +2,18 @@
 title: 连接到 Power BI 工作区集合中的数据源 | Microsoft Docs
 description: 了解如何连接到 Power BI 工作区集合内的数据源。
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 721458c5725e912d801b307ac05f3fde0776580e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ce666a017c1e5ac25b11fe1c22cdb37746f75df
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708755"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669159"
 ---
 # <a name="connect-to-a-data-source"></a>连接到数据源
 
@@ -65,9 +65,9 @@ ms.locfileid: "64708755"
 ## <a name="directquery-and-measures"></a>DirectQuery 和度量值
 为了确保发送到基础数据源的查询具有可接受的性能，针对度量值施加了一些限制。 使用 **Power BI Desktop** 时，高级用户可以通过选择“文件”>“选项和设置”>“选项”  来选择绕过此限制。 在“选项”  对话框中，选择“DirectQuery”  ，并选择“允许 DirectQuery 模式下的度量值不受限制”  选项。 选中该选项后，可以使用对度量值有效的任何 DAX 表达式。 不过，用户必须知道，虽然一些表达式在导入数据时性能很好，但在 DirectQuery  模式下可能会导致对后端源的查询非常缓慢。 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Microsoft Power BI 工作区集合入门](get-started.md)
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: b7fa59f4086608a8bacabde21f0c02c108f1f5e8
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: bcfefc9698f7f251e99531750e19e7c06395e064
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466731"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655707"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>通过 Azure Monitor 日志管理使用情况和成本
 
@@ -413,7 +413,7 @@ union withsource = $table Usage
 
 ## <a name="limits-summary"></a>限制摘要
 
-有一些其他的 Log Analytics 限制，其中一些依赖于 Log Analytics 定价层。 记录了这些[此处](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-limits)。
+有一些其他的 Log Analytics 限制，其中一些依赖于 Log Analytics 定价层。 记录了这些[此处](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)。
 
 
 ## <a name="next-steps"></a>后续步骤

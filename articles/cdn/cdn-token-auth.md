@@ -7,19 +7,19 @@ author: zhangmanling
 manager: zhangmanling
 editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
-ms.service: cdn
+ms.service: azure-cdn
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: b55685bc9cfdc8c31e6658050be94cbe49062f89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa71f472294b91baebc2a6075ddb2b50123e545d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472158"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593392"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>使用令牌身份验证保护 Azure CDN 资产
 
@@ -114,7 +114,7 @@ ms.locfileid: "66472158"
       >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
       >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
       >       </ul></li>
-      >       <li>输入值`/pictures/`:只请求包含`/pictures/`允许路径。 例如，`http://www.mydomain.com/pictures/city/strasbourg.png`。</li>
+      >       <li>输入值`/pictures/`:只请求包含`/pictures/`允许路径。 例如， `http://www.mydomain.com/pictures/city/strasbourg.png` 。</li>
       >       <li>输入值`/pictures/city/strasbourg.png`:允许仅为此特定路径和资产的请求。</li>
       >    </ul>
       > </tr>
@@ -162,7 +162,7 @@ ms.locfileid: "66472158"
 
    7. 选择“加密”  生成令牌。
 
-      生成令牌后，它会显示在“生成的令牌”框中。  若要使用该令牌，请将其作为查询字符串追加​​到文件 URL 路径的末尾。 例如，`http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`。
+      生成令牌后，它会显示在“生成的令牌”框中。  若要使用该令牌，请将其作为查询字符串追加​​到文件 URL 路径的末尾。 例如， `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b` 。
         
    8. 根据需要使用解密工具测试令牌，以便可以查看令牌的参数。 将令牌值粘贴到“要解密的令牌”框中  。 从“要解密的密钥”  列表中选择加密密钥，然后选择“解密”  。
 

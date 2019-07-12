@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eb2555cdc163ee0f88149248b9e7d83a51d34a1b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 42e983ead6f7562c6a31cf9ef4ad2d97d0ff9707
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172796"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673248"
 ---
-1. 在[Azure 门户](http://portal.azure.com)中，选择要为其创建虚拟网关的资源管理器虚拟网络。
+1. 在[Azure 门户](https://portal.azure.com)中，选择要为其创建虚拟网关的资源管理器虚拟网络。
 
 2. 在虚拟网络页的“设置”部分中，选择“子网”展开“子网”页    。
 

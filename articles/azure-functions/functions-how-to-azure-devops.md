@@ -1,39 +1,39 @@
 ---
-title: 持续交付函数代码更新使用 Azure DevOps
-description: 了解如何设置面向 Azure Functions 的 Azure DevOps 管道。
+title: 通过使用 Azure DevOps-Azure 函数持续交付函数代码更新
+description: 了解如何设置 Azure DevOps 管道面向 Azure Functions。
 author: ahmedelnably
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
-ms.custom: ''
-ms.openlocfilehash: 9806a982982971b1b3ac9c28454e17813b2ad2a5
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0fdad0caa2deef0d7d55b30a85632f72f4ff0ecc
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479871"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594460"
 ---
-# <a name="continuous-delivery-using-azure-devops"></a>使用 Azure DevOps 实现持续交付
+# <a name="continuous-delivery-by-using-azure-devops"></a>通过使用 Azure DevOps 持续交付
 
-你可以自动部署到 Azure 函数应用使用的函数[Azure 管道](/azure/devops/pipelines/)。
-若要定义你的管道，可以使用：
+您可以使用自动部署您的函数到 Azure Functions 应用[Azure 管道](/azure/devops/pipelines/)。
 
-- YAML 文件：此文件描述了管道，它可能具有生成步骤一节，并发布部分。 YAML 文件应与应用相同的存储库中。
+有两个选项用于定义你的管道：
 
-- 模板：模板已准备进行生成或部署您的应用程序的任务。
+- **YAML 文件**:YAML 文件描述管道。 该文件可能具有的生成步骤节和版本部分。 YAML 文件必须与应用相同的存储库中。
+- **模板**:模板是现成的生成或部署您的应用程序的任务。
 
 ## <a name="yaml-based-pipeline"></a>基于 YAML 管道
 
+若要创建基于 YAML 管道，首先构建您的应用程序，然后部署该应用。
+
 ### <a name="build-your-app"></a>生成应用
 
-生成 Azure 管道中的应用取决于您的应用程序的编程语言。
-每种语言有特定的生成步骤，以创建用于部署项目，可用于部署 function app 在 Azure 中。
+生成 Azure 管道中的应用的方式取决于应用程序的编程语言。 每种语言具有创建部署项目的特定生成步骤。 部署项目用于在 Azure 中的将函数应用部署。
 
 #### <a name="net"></a>.NET
 
-下面的示例可用于创建你的 YAML 文件来构建.NET 应用程序。
+下面的示例可用于创建要构建一个.NET 应用的 YAML 文件：
 
 ```yaml
 pool:
@@ -64,7 +64,7 @@ steps:
 
 #### <a name="javascript"></a>JavaScript
 
-下面的示例可用于创建 YAML 文件以生成 JavaScript 应用程序：
+下面的示例可用于创建要生成的 JavaScript 应用的 YAML 文件：
 
 ```yaml
 pool:
@@ -92,7 +92,7 @@ steps:
 
 #### <a name="python"></a>Python
 
-您可以使用下面的示例创建 YAML 文件构建 Python 应用，Linux Azure Functions 仅支持 Python:
+下面的示例可用于创建 YAML 文件用于生成 Python 应用。 仅 Linux Azure Functions 支持 Python。
 
 ```yaml
 pool:
@@ -125,7 +125,7 @@ steps:
 ```
 #### <a name="powershell"></a>PowerShell
 
-可以使用下面的示例创建你的 YAML 文件，将 PowerShell 应用程序打包，Windows Azure Functions 仅支持 PowerShell:
+下面的示例可用于创建一个 YAML 文件来打包 PowerShell 应用。 PowerShell 仅支持 Windows Azure Functions。
 
 ```yaml
 pool:
@@ -145,11 +145,11 @@ steps:
 
 ### <a name="deploy-your-app"></a>将应用部署
 
-具体取决于宿主的 OS 中，您需要在 YAML 文件中包含以下 YAML 示例。
+必须在 YAML 文件中，具体取决于宿主操作系统包括以下 YAML 示例之一。
 
 #### <a name="windows-function-app"></a>Windows 函数应用
 
-可以使用以下代码片段将部署到 Windows 函数应用
+以下代码片段可用于部署 Windows 函数应用：
 
 ```yaml
 steps:
@@ -166,7 +166,7 @@ steps:
 
 #### <a name="linux-function-app"></a>Linux 函数应用
 
-可以使用以下代码片段将部署到 Linux 函数应用
+以下代码片段可用于部署 Linux 函数应用：
 
 ```yaml
 steps:
@@ -184,61 +184,59 @@ steps:
 
 ## <a name="template-based-pipeline"></a>基于模板的管道
 
-Azure DevOps 中的模板是预定义的生成或部署应用程序的任务组。
+Azure DevOps 中的模板是预定义的生成或部署应用程序的任务。
 
 ### <a name="build-your-app"></a>生成应用
 
-生成 Azure 管道中的应用取决于您的应用程序的编程语言。 每种语言有特定的生成步骤，以创建用于部署项目，可用于更新 Azure 中的函数应用。
-若要使用的内置生成模板，创建新的生成管道时，选择**使用经典编辑器**以使用设计器模板创建一个管道
+生成 Azure 管道中的应用的方式取决于应用程序的编程语言。 每种语言具有创建部署项目的特定生成步骤。 部署项目用于更新 Azure 中的函数应用。
 
-![Azure 管道经典编辑器](media/functions-how-to-azure-devops/classic-editor.png)
+若要使用的内置生成模板，创建新的生成管道时，选择**使用经典编辑器**使用设计器模板创建的管道。
 
-配置你的代码的源之后, 搜索 Azure Functions 生成模板，并选择与你的应用程序的语言相匹配的模板。
+![选择 Azure 管道经典编辑器](media/functions-how-to-azure-devops/classic-editor.png)
 
-![Azure Functions 生成模板](media/functions-how-to-azure-devops/build-templates.png)
+配置你的代码的源后，搜索 Azure Functions 生成模板。 选择与你的应用程序的语言相匹配的模板。
 
-在某些情况下，生成项目具有特定的文件夹结构，并且可能需要检查**预置根文件夹名称，在存档路径**选项。
+![选择 Azure Functions 生成模板](media/functions-how-to-azure-devops/build-templates.png)
 
-![在前面添加根文件夹](media/functions-how-to-azure-devops/prepend-root-folder.png)
+在某些情况下，生成项目具有特定的文件夹结构。 可能需要选择**预置根文件夹名称，在存档路径**复选框。
+
+![选择前面添加的根文件夹名称](media/functions-how-to-azure-devops/prepend-root-folder.png)
 
 #### <a name="javascript-apps"></a>JavaScript 应用程序
 
-如果 JavaScript 应用程序具有 Windows 本机模块依赖关系，您需要更新：
+如果 JavaScript 应用程序依赖于 Windows 的本机模块，则必须更新到的代理池版本**Hosted VS2017**。
 
-- 代理池版本到**托管 VS2017**
-
-  ![更改生成代理 OS](media/functions-how-to-azure-devops/change-agent.png)
+![更新代理池版本](media/functions-how-to-azure-devops/change-agent.png)
 
 ### <a name="deploy-your-app"></a>将应用部署
 
-在创建新的发布管道，搜索 Azure Functions 发布模板。
+当创建新的发布管道时，搜索 Azure Functions 发布模板。
 
-![](media/functions-how-to-azure-devops/release-template.png)
+![搜索 Azure Functions 发布模板](media/functions-how-to-azure-devops/release-template.png)
 
 发布模板中不支持部署到的部署槽。
 
-## <a name="creating-an-azure-pipeline-using-the-azure-cli"></a>创建使用 Azure CLI Azure 管道
+## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>使用 Azure CLI 创建一个生成管道
 
-使用`az functionapp devops-pipeline create`[命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)，会创建一个 Azure 管道以生成和发布你的存储库中的任何代码更改。 该命令将生成新的 YAML 文件，用于定义生成和发布管道，并将其提交到存储库。 Azure CLI 命令不支持部署到部署槽。
-此命令的必备组件取决于你的代码的位置：
+若要在 Azure 中创建一个生成管道，请使用`az functionapp devops-pipeline create`[命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)。 创建生成管道来生成和发布存储库中所做的任何代码更改。 该命令生成的新的 YAML 文件定义生成和发布管道，然后将其提交到存储库。 此命令的必备组件取决于你的代码的位置。
 
 - 如果你的代码是在 GitHub 中：
 
-    - 需要能够**编写**到你的订阅的权限。
+    - 您必须具有**编写**为你的订阅的权限。
 
-    - 你是在 Azure DevOps 项目管理员。
+    - 必须是 Azure DevOps 中的项目管理员。
 
-    - 您有权创建 GitHub 个人访问令牌具有足够的权限。 [GitHub PAT 权限要求。](https://aka.ms/azure-devops-source-repos)
+    - 必须有权创建具有足够的权限的 GitHub 个人访问令牌 (PAT)。 有关详细信息，请参阅[GitHub PAT 权限要求。](https://aka.ms/azure-devops-source-repos)
 
-    - 您有权提交到 GitHub 存储库提交自动生成的 YAML 文件中的主分支。
+    - 必须有权使您可以提交自动生成的 YAML 文件提交到 GitHub 存储库中的主分支。
 
 - 如果你的代码在 Azure 存储库：
 
-    - 需要能够**编写**到你的订阅的权限。
+    - 您必须具有**编写**为你的订阅的权限。
 
-    - 你是在 Azure DevOps 项目管理员。
+    - 必须是 Azure DevOps 中的项目管理员。
 
 ## <a name="next-steps"></a>后续步骤
 
-+ [Azure Functions 概述](functions-overview.md)
-+ [Azure DevOps 概述](/azure/devops/pipelines/)
+- 审阅[Azure Functions 概述](functions-overview.md)。
+- 审阅[Azure DevOps 概述](/azure/devops/pipelines/)。

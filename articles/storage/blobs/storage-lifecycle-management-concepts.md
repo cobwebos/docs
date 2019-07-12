@@ -9,12 +9,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 50eb62b20be66337c819372fa3d97eae4d7214b8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 43a673621aa3c114f99479a6da97153dae44990d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435747"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696094"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -31,7 +31,7 @@ ms.locfileid: "67435747"
 
 ## <a name="storage-account-support"></a>存储帐户支持
 
-生命周期管理策略适用于常规用途 v2 (GPv2) 帐户和 Blob 存储帐户。 在 Azure 门户中，你可以升级到 GPv2 帐户的现有的常规用途 (GPv1) 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。  
+生命周期管理策略是适用于常规用途 v2 (GPv2) 帐户、 Blob 存储帐户和高级块 Blob 存储帐户。 在 Azure 门户中，你可以升级到 GPv2 帐户的现有的常规用途 (GPv1) 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。  
 
 ## <a name="pricing"></a>定价
 
@@ -39,7 +39,7 @@ ms.locfileid: "67435747"
 
 ## <a name="regional-availability"></a>区域可用性
 
-生命周期管理功能目前在所有全局 Azure 区域。
+生命周期管理功能目前在所有全局 Azure 和 Azure 政府版区域。
 
 ## <a name="add-or-remove-a-policy"></a>添加或删除策略
 
@@ -197,7 +197,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 每个规则在策略中的有几个参数：
 
-| 参数名称 | 参数类型 | 说明 | 需要 |
+| 参数名称 | 参数类型 | 说明 | 必填 |
 |----------------|----------------|-------|----------|
 | `name`         | String |规则名称可以包含最多 256 个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | True |
 | `enabled`      | Boolean | 可选的布尔值，以允许规则以将临时禁用。 默认值为 true，如果未设置。 | False | 
@@ -262,7 +262,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 生命周期管理支持分层和删除的 blob 以及删除的 blob 快照。 在 Blob 或 Blob 快照中为每个规则至少定义一个操作。
 
-| 操作        | 基本 Blob                                   | 快照      |
+| Action        | 基本 Blob                                   | 快照      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 目前支持位于热层的 Blob         | 不支持 |
 | tierToArchive | 目前支持位于热层或冷层的 Blob | 不支持 |

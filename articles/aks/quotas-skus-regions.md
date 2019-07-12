@@ -2,17 +2,17 @@
 title: 配额、 Sku 和区域可用性在 Azure Kubernetes 服务 (AKS)
 description: 了解 Azure Kubernetes 服务 (AKS) 中的默认配额、受限制的节点 VM SKU 大小和适用地区。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.author: iainfou
-ms.openlocfilehash: 8d4ed8f791858747814972bcf16a9672a7f12610
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 318846cddecdf020e2e751d3a0b9e05fc83bba73
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65901458"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614549"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和适用地区
 
@@ -43,15 +43,15 @@ AKS 群集中的每个节点都包含固定数量的计算资源，例如 vCPU �
 - Standard_F1
 - Standard_F1s
 
-有关 VM 类型及其计算资源的详细信息，请参阅 [Azure 中的虚拟机的大小][vm-skus]。
+VM 类型和其计算资源的详细信息，请参阅[在 Azure 中的虚拟机的大小][vm-skus]。
 
 ## <a name="region-availability"></a>上市区域
 
-有关可以在其中部署和运行群集的地点的最新列表，请参阅 [AKS 适用地区][region-availability]。
+有关最新的位置的列表可以部署和运行群集，请参阅[AKS 区域可用性][region-availability]。
 
 ## <a name="next-steps"></a>后续步骤
 
-某些默认限制和配额可以提高。 如果你的资源支持增加，请求通过增加[Azure 支持请求][ azure-support] (对于**问题类型**，选择**配额**).
+某些默认限制和配额可以提高。 如果你的资源支持增加，请求通过增加[Azure 支持请求][azure-support](对于**问题类型**，选择**配额**)。
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

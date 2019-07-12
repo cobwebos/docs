@@ -3,19 +3,19 @@ title: 将现有 Azure SQL 数据仓库迁移到 Gen2 | Microsoft Docs
 description: 有关将现有数据仓库迁移到 Gen2 以及按区域迁移计划的说明。
 services: sql-data-warehouse
 author: mlee3gsd
-ms.author: anumjs
+ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3141f3a1d6a9f09261dee4113276af72168e35e8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+ms.openlocfilehash: e1327ded4b07f379f954ee5594b4eec2b7523ab4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444695"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621114"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>将数据仓库升级到 Gen2
 
@@ -131,7 +131,7 @@ Microsoft 帮助降低运行数据仓库的入门级的成本。  能够处理�
 - 答：如果在 Gen1 上运行 DW600 或 DW1200，建议分别使用 DW500c 或 DW1000c，因为 Gen2 提供的内存、资源和性能比 Gen1 更高。
 
 **问：我可以禁用异地备份吗？**
-- 答：不。 异地备份是一项企业功能，可在区域不可用时保留数据仓库的可用性。 若有其他疑虑，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)。
+- 答：否。 异地备份是一项企业功能，可在区域不可用时保留数据仓库的可用性。 若有其他疑虑，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 **问：Gen1 和 Gen2 之间的 T-SQL 语法有区别吗？**
 

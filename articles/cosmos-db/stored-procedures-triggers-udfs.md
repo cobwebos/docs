@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 529c536d9ea3b898745f03c80b63702b2af485da
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 53ff318dcc034fb11e2d554f9ad8e8814eb32879
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165583"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672587"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>存储过程、触发器和用户定义的函数
 
@@ -37,7 +37,7 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 * **封装：** 使用存储过程可在一个位置分组逻辑。 封装在数据的顶层添加一个抽象层，使你能够独立于数据改进应用程序。 如果数据无架构，并且你无需管理直接将其他逻辑添加到应用程序的过程，则此抽象层非常有用。 借助这种抽象，可以通过从脚本简化访问来保证数据的安全。
 
 > [!TIP]
-> 存储过程最适合写入密集型操作。 确定要在何处使用存储过程时，请在尽量封装最大量的写入操作的基础上进行优化。 一般而言，存储过程不是执行大量读取操作的最有效方式，因此，使用存储过程来批处理要返回到客户端的大量读取操作不会带来所需的优势。
+> 存储的过程是最适合的写入密集型，并且需要跨分区键值的事务操作。 在决定是否要使用存储的过程，优化周围封装写入可能的最大数量。 通常情况下，存储的过程不执行大量的读取或查询操作的最有效方式，因此，使用存储过程向批处理大量读取返回到客户端不会产生任何所需的权益。 为了获得最佳性能，应在客户端，使用 Cosmos SDK 上执行这些读取密集型操作。 
 
 ## <a name="transactions"></a>事务
 
@@ -73,7 +73,7 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 
 JavaScript 函数还有[预配的吞吐量容量](request-units.md)方面的约束。 JavaScript 函数可能会在短时间内占用大量的请求单位，如果达到预配的吞吐量容量限制，它们可能受到速率限制。 必须注意，脚本除了在执行数据库操作时需要消耗吞吐量以外，还会消耗其他吞吐量，不过，与从客户端执行相同的操作相比，这些数据库操作的开销略低。
 
-## <a name="triggers"></a>触发器
+## <a name="triggers"></a>Triggers
 
 Azure Cosmos DB 支持两种类型的触发器：
 

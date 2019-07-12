@@ -8,24 +8,24 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0913e1877c63ed1a8e960676be02a12b45a34a7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12fd1b03e58d1c62157c6652ce96d8f0172dadb2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240099"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606104"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
 
 强烈建议先阅读[规划 Azure 文件部署](storage-files-planning.md)和[规划 Azure 文件同步部署](storage-sync-files-planning.md)，再按照本文中的步骤进行操作。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 * Azure 文件共享在同一区域中你想要部署 Azure 文件同步。有关详细信息，请参阅：
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#region-availability)。
     - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
 * 至少一个支持与 Azure 文件同步进行同步的 Windows Server 实例或 Windows Server 群集。有关支持的 Windows Server 版本的详细信息，请参阅 [Windows Server 的互操作性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)。
-* 可使用 PowerShell 5.1 或 PowerShell 6 + Az PowerShell 模块。 在任何支持的系统，但始终必须直接在要注册的 Windows Server 实例上运行服务器注册 cmdlet 包括非 Windows 系统上，可以为 Azure 文件同步使用 Az PowerShell 模块。 在 Windows Server 2012 R2，可以验证您至少运行 PowerShell 5.1。\*通过查看的值**PSVersion**的属性 **$PSVersionTable**对象：
+* 可使用 PowerShell 5.1 或 PowerShell 6 + Az PowerShell 模块。 可以在任何支持的系统，但服务器注册 cmdlet 必须始终运行 Windows Server 实例上，包括非 Windows 系统上为 Azure 文件同步使用 Az PowerShell 模块是注册 （这可以直接或通过 PowerShell远程处理）。 在 Windows Server 2012 R2，可以验证您至少运行 PowerShell 5.1。\*通过查看的值**PSVersion**的属性 **$PSVersionTable**对象：
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -39,17 +39,25 @@ ms.locfileid: "66240099"
     > 如果你打算使用服务器注册 UI，而不是直接从 PowerShell 注册，则必须使用 PowerShell 5.1。
 
 * 如果您选择要使用 PowerShell 5.1，请确保在已安装最少.NET 4.7.2。 详细了解如何[.NET Framework 版本和依赖关系](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)在系统上。
-* Az PowerShell 模块，可以按照此处的说明进行安装：[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 
-* 当前安装了独立于 Az 模块 Az.StorageSync 模块：
 
-    ```PowerShell
-    Install-Module Az.StorageSync -AllowClobber
-    ```
+    > [!Important]  
+    > 如果要在 Windows Server Core 上安装.NET 4.7.2+，则必须安装与`quiet`和`norestart`标志，否则安装将失败。 例如，如果安装.NET 4.8，命令将如以下所示：
+    > ```PowerShell
+    > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
+    > ```
+
+* Az PowerShell 模块，可以按照此处的说明进行安装：[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+     
+    > [!Note]  
+    > Az.StorageSync 模块现安装 Az PowerShell 模块时已自动安装。
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>准备 Windows Server，用于 Azure 文件同步
 对于要与 Azure 文件同步配合使用的每个服务器（包括故障转移群集中的服务器节点），请禁用“Internet Explorer 增强的安全性配置”。  只需在最初注册服务器时禁用。 可在注册服务器后重新启用。
 
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+> [!Note]  
+> 如果你正在部署 Windows Server Core 上的 Azure 文件同步，可以跳过此步骤。
+
 1. 打开服务器管理器。
 2. 单击“本地服务器”  ：  
     ![服务器管理器 UI 左侧的“本地服务器”](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
@@ -62,18 +70,23 @@ ms.locfileid: "66240099"
 若要禁用“Internet Explorer 增强的安全性配置”，请在权限提升的 PowerShell 会话中执行以下命令：
 
 ```powershell
-# Disable Internet Explorer Enhanced Security Configuration 
-# for Administrators
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+$installType = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\").InstallationType
 
-# Disable Internet Explorer Enhanced Security Configuration 
-# for Users
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
-
-# Force Internet Explorer closed, if open. This is required to fully apply the setting.
-# Save any work you have open in the IE browser. This will not affect other browsers,
-# including Microsoft Edge.
-Stop-Process -Name iexplore -ErrorAction SilentlyContinue
+# This step is not required for Server Core
+if ($installType -ne "Server Core") {
+    # Disable Internet Explorer Enhanced Security Configuration 
+    # for Administrators
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+    
+    # Disable Internet Explorer Enhanced Security Configuration 
+    # for Users
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+    
+    # Force Internet Explorer closed, if open. This is required to fully apply the setting.
+    # Save any work you have open in the IE browser. This will not affect other browsers,
+    # including Microsoft Edge.
+    Stop-Process -Name iexplore -ErrorAction SilentlyContinue
+}
 ``` 
 
 ---
@@ -100,7 +113,14 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 替换 **< Az_Region >** ， **< RG_Name >** ，并 **< my_storage_sync_service >** 与你自己的值，然后使用以下命令来创建和部署存储同步服务：
 
 ```powershell
-Connect-AzAccount
+$hostType = (Get-Host).Name
+
+if ($installType -eq "Server Core" -or $hostType -eq "ServerRemoteHost") {
+    Connect-AzAccount -UseDeviceAuthentication
+}
+else {
+    Connect-AzAccount
+}
 
 # this variable holds the Azure region you want to deploy 
 # Azure File Sync into

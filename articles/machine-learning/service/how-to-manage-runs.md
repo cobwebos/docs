@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 04/05/2019
-ms.openlocfilehash: a93492b8ea97500fe3c761f3ac0c49f8c1342d09
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a67ac07c26063b380bda2b8cb2b6a02677e7f816
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074953"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656193"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>启动、 监视和取消在 Python 中的训练运行
 
@@ -29,7 +29,7 @@ ms.locfileid: "67074953"
 * 创建子运行。
 * 标记和查找的运行。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 您将需要以下项：
 
@@ -178,7 +178,7 @@ local_script_run.cancel()
 print("Did the run cancel?",local_script_run.get_status())
 ```
 
-如果运行完成，但其包含一个错误 （例如，使用不正确的训练脚本），可以使用[ `fail()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#fail-error-details-none---set-status-true-)方法以将其标记为失败。
+如果运行完成，但其包含一个错误 （例如，使用不正确的训练脚本），可以使用[ `fail()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-)方法以将其标记为失败。
 
 ```Python
 local_script_run = exp.submit(run_config)

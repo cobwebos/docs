@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: a0846a7d03cc2f63af6747c8b8514b563c1d4a5d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4e19b916553912e36f2c3beee3f6a518b244e4d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447801"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707000"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例的资源限制
 
@@ -37,11 +37,11 @@ Azure SQL 数据库托管的实例可以部署在两个硬件代次：Gen4 和 G
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | 硬件 | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器、快速 NVMe SSD、vCore=1 LP（超线程） |
-| vCore 数 | 8、16、24 个 vCore | 4、 8、 16、 24、 32、 40、 64，80 个 Vcore |
-| 内存 （内存/内核之比） | 每个 vCore 7 GB | 每个 vCore 5.1 GB |
+| Vcore 数 | 8、16、24 个 vCore | 4、 8、 16、 24、 32、 40、 64，80 个 Vcore |
+| 最大内存 （内存/内核之比） | 每个 vCore 7 GB<br/>添加更多 Vcore，以获取更多的内存。 | 每个 vCore 5.1 GB<br/>添加更多 Vcore，以获取更多的内存。 |
 | 最大内存中 OLTP 内存 | 实例的限制：每个 vCore 3 GB<br/>数据库限制：<br/> -8 核：每个数据库的 8 GB<br/> -16 核心：每个数据库为 20 GB<br/> -24 核心：每个数据库的 36 GB | 实例的限制：每个 vCore 2.5 GB<br/>数据库限制：<br/> -8 核：每个数据库的 13 GB<br/> -16 核心：每个数据库的 32 GB |
-| 最大实例存储（常规用途） |  8 TB | 8 TB |
-| 最大实例存储（业务关键） | 1 TB | 1 TB、2 TB 或 4 TB，具体取决于核心数 |
+| 最大实例保留存储 （常规用途） |  8 TB | 8 TB |
+| 最大实例保留存储 （业务关键） | 1 TB | 1 TB、2 TB 或 4 TB，具体取决于核心数 |
 
 > [!IMPORTANT]
 > AustraliaEast 区域中不再支持新 Gen4 数据库。
@@ -53,16 +53,16 @@ Azure SQL 数据库托管的实例可以部署在两个硬件代次：Gen4 和 G
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
 | vCore 数目\* | 第 4 代：8、16、24<br/>Gen5：4, 8, 16, 24, 32, 40, 64, 80 | Gen4：8、16、24、32 <br/> Gen5：4, 8, 16, 24, 32, 40, 64, 80 |
-| 内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：40.8 GB - 408 GB (5.1GB/vCore) | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：40.8 GB - 408 GB (5.1GB/vCore) |
-| 最大实例存储大小 | -对于 4 个 vcore 数 (仅 Gen5) 2 TB<br/>的有关其他大小 8 TB | Gen4：1 TB <br/> Gen5： <br/>-1 TB 的 4、 8、 16 个 Vcore<br/>- 24 个 vCore 2 TB<br/>- 4 TB（适用于 32、40、64、80 个 vCore） |
-| 每个数据库的最大存储 | 由每个实例的最大存储大小决定 | 由每个实例的最大存储大小决定 |
+| 最大内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：40.8 GB - 408 GB (5.1GB/vCore)<br/>添加更多 Vcore，以获取更多的内存。 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：40.8 GB - 408 GB (5.1GB/vCore)<br/>添加更多 Vcore，以获取更多的内存。 |
+| 最大实例保留的存储大小 | -对于 4 个 vcore 数 (仅 Gen5) 2 TB<br/>的有关其他大小 8 TB | Gen4：1 TB <br/> Gen5： <br/>-1 TB 的 4、 8、 16 个 Vcore<br/>- 24 个 vCore 2 TB<br/>- 32、40、64、80 个 vCore 4 TB |
+| 最大数据库大小 | 由每个实例的最大存储大小决定 | 由每个实例的最大存储大小决定 |
 | 每个实例的数据库数目上限 | 100 | 100 |
-| 每个实例的数据库文件数目上限 | 最多 280 个 | 每个数据库 32,767 个文件 |
-| 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K (1375/vCore) |
-| 日志吞吐量 | 3 MB/s（每个 vCore）<br/>每个实例的最大 22 MB/秒 | 每个 vCore 4 MB/秒<br/>最大为 48 MB/秒（每个实例）|
-| 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 不适用 |
-| IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
-| 最大 tempDB 大小 | 192 - 1,920 GB（每个 vCore 为 24 GB） | 无约束 - 受最大实例存储大小限制 |
+| 每个实例的数据库文件的最大数量 | 最多 280 个 | 每个数据库 32,767 个文件 |
+| 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[增加文件大小，以获取更多 IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K (1375/vCore)<br/>添加更多 Vcore，以获取更好的 IO 性能。 |
+| 日志写入吞吐量限制 | 3 MB/s（每个 vCore）<br/>每个实例的最大 22 MB/秒 | 每个 vCore 4 MB/秒<br/>最大为 48 MB/秒（每个实例）|
+| 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[增加文件大小，以获取更好的 IO 性能](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 不可用 |
+| 存储 IO 延迟 （近似） | 5-10 毫秒 | 1-2 毫秒 |
+| 最大 tempDB 大小 | 192 - 1,920 GB（每个 vCore 为 24 GB）<br/>添加更多 Vcore，以获取更多的 TempDB 空间。 | 受最大实例存储大小限制。 TempDB 日志文件大小为当前限制为 24 GB/vCore。 |
 | 最大会话数 | 30000 | 30000 |
 
 > [!NOTE]
@@ -126,7 +126,7 @@ Azure SQL 数据库托管的实例可以部署在两个硬件代次：Gen4 和 G
 
      ![问题类型配额](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
-3. 单击“下一步”。 
+3. 单击“下一步”  。
 4. 上**问题选项卡**用于新的支持请求：
    - 对于“严重性”，选择问题的严重性级别  。
    - 对于“详细信息”，提供有关问题的其他信息，包括错误消息  。
@@ -140,9 +140,9 @@ Azure SQL 数据库托管的实例可以部署在两个硬件代次：Gen4 和 G
      > - 服务层后配额的现有子网中每个 Vcore，所需的数量的增加 （如果现有子网的任何需要先将其展开。
      > - 所需的新子网数量和每个新子网中的服务级别的 Vcore 的总行数 （如果您需要部署新的子网中的托管的实例）。
 
-5. 单击“下一步”。 
+5. 单击“下一步”  。
 6. 在新支持请求的“联系人信息”选项卡上，输入首选联系方式（电子邮件或电话）和联系人详细信息。
-7. 单击**创建**。
+7. 单击“创建”。 
 
 ## <a name="next-steps"></a>后续步骤
 

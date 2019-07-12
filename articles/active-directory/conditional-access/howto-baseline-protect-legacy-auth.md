@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8e9ea8956d87e2ec47cc65495e81d8a0f0ad8cb
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: d21b54c3bea98a9a1499dc75890f75f28f2f9dc0
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560921"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655709"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>基准策略：块旧式身份验证 （预览版）
 
@@ -27,7 +27,7 @@ ms.locfileid: "67560921"
 
 现在，所有会损害登录尝试的大部分来自于传统的身份验证。 传统的身份验证不支持多重身份验证 (MFA)。 即使你的目录上启用了 MFA 策略，恶意参与者可以使用旧版协议进行身份验证，并绕过 MFA。
 
-保护你的帐户免受恶意身份验证请求所做的旧协议的最佳方法是阻止这些尝试一起。 若要使你更轻松地阻止通过旧协议所做的所有登录请求，我们创建了正好基线策略。
+保护你的帐户免受恶意身份验证请求所做的旧协议的最佳方式是完全阻止这些尝试。 为了使你更轻松地保护您的环境，在我们创建这个基线策略来阻止旧式身份验证。
 
 **块旧式身份验证**是[基准策略](concept-baseline-protection.md)阻止从旧协议进行的所有身份验证请求。 若要成功登录的所有用户，必须使用新式身份验证。 与其他基线策略结合使用，来自旧协议的所有请求将被都阻止，并将 mfa 需要时，会要求所有用户。 此策略不会阻止 Exchange ActiveSync。
 
@@ -78,13 +78,13 @@ SharePoint Online 启用新式身份验证默认值。 对于 2017 年 8 月 1 �
 
 若要防止发出的 Skype for Business 的旧式身份验证请求，就需要启用新式验证的 Skype for Business Online。 对于 2017 年 8 月 1 日之后创建的目录是默认情况下启用新式身份验证的 Skype for Business。
 
-若要启用新式身份验证在 Skype for Business 中的，我们建议在过渡到 Microsoft Teams，默认情况下支持新式身份验证。 但是，如果你不能为 tr 这一次，您需要启用新式验证的 Skype for Business Online，以便 Skype 的业务客户端将开始使用新式身份验证。 一文中执行以下步骤[Skype for Business 拓扑支持新式身份验证](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)，有关为 Skype for Business 启用新式身份验证的步骤。
+我们建议在过渡到 Microsoft Teams，默认情况下支持新式身份验证。 但是，如果你不能将这一次迁移，你需要启用新式验证的 Skype for Business Online，以便业务客户端的 Skype 开始使用新式身份验证。 按照这篇文章中的步骤[Skype for Business 拓扑支持新式身份验证](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)、 为 Skype for Business 启用新式身份验证。
 
-除了启用新式验证的 Skype for Business Online，我们建议新式身份验证为 Exchange Online 启用新式身份验证的 Skype for Business 时启用。 此过程将有助于同步的新式身份验证在 Exchange Online 和 Skype for Business 中联机状态，并将防止多个登录提示的 Skype for Business 客户端。
+除了启用新式验证的 Skype for Business Online，我们建议启用新式身份验证为 Exchange Online 启用新式身份验证的 Skype for Business 时。 此过程将有助于同步的新式身份验证在 Exchange Online 和 Skype for Business 中联机状态，并将防止多个登录提示的 Skype for Business 客户端。
 
 ### <a name="step-5-using-mobile-devices"></a>步骤 5：使用移动设备
 
-你的移动设备上的应用程序需要阻止也旧式身份验证。 我们建议使用适用于移动设备 Outlook。 Outlook Mobile 默认情况下支持新式身份验证和将满足其他 MFA 基线保护策略。
+你的移动设备上的应用程序需要阻止也旧式身份验证。 我们建议使用适用于移动设备 Outlook。 适用于移动设备 outlook 默认情况下支持新式身份验证，并将满足其他 MFA 基线保护策略。
 
 若要使用本机 iOS 邮件客户端，需要运行 iOS 版本 11.0 或更高版本以确保邮件客户端已更新，以阻止旧式身份验证。
 
@@ -92,9 +92,10 @@ SharePoint Online 启用新式身份验证默认值。 对于 2017 年 8 月 1 �
 
 如果你是企业内部技术部署中使用本地 Exchange Server 和 Skype 的混合客户，这两个服务将需要更新，以启用新式身份验证。 当在混合环境中使用新式身份验证，您仍正在验证本地用户。 授予对资源 （文件或电子邮件） 更改其访问权限的文章。
 
-你可以开始为用户启用新式身份验证的本地之前，请务必满足 theIf 满足的要求，现在已准备就绪以启用新式身份验证的本地。
+你可以开始为用户启用新式身份验证的本地之前，请务必满足先决条件。
+现在，你准备好启用新式身份验证的本地。
 
-启用新式身份验证步骤请参阅以下文章：
+可在以下文章中找到启用新式身份验证步骤：
 
 * [如何配置 Exchange Server 的本地使用混合新式身份验证](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 * [如何使用 Skype for Business 使用新式身份验证 (ADAL)](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
@@ -105,7 +106,7 @@ SharePoint Online 启用新式身份验证默认值。 对于 2017 年 8 月 1 �
 
 若要启用此策略并保护你的组织：
 
-1. 登录到 **Azure 门户** 作为全局管理员、 安全管理员或条件性访问管理员。
+1. 登录到 **Azure 门户** 作为全局管理员、 安全管理员或条件访问管理员。
 1. 浏览到**Azure Active Directory** > **条件性访问**。
 1. 在策略列表中，选择**基准策略：块旧式身份验证 （预览版）** 。
 1. 设置**启用策略**到**立即使用策略**。
@@ -117,4 +118,4 @@ SharePoint Online 启用新式身份验证默认值。 对于 2017 年 8 月 1 �
 
 * [条件性访问基线保护策略](concept-baseline-protection.md)
 * [保护标识基础结构的五个步骤](../../security/azure-ad-secure-steps.md)
-* [什么是 Azure Active Directory 中条件性访问？](overview.md)
+* [什么是 Azure Active Directory 中的条件访问？](overview.md)

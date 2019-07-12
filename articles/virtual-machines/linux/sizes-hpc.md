@@ -4,7 +4,7 @@ description: 列出 Azure 中适用于 Linux 高性能计算虚拟机的各种�
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 003a14174ff65bab253f27a458d4f3e2c0a1a6db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 847f25d9be1a8654bbc0435d7874acb0ff793304
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070004"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695603"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>高性能计算虚拟机大小
 
@@ -56,7 +56,15 @@ Azure Marketplace 有支持 RDMA 连接的许多 Linux 分发：
   "typeHandlerVersion": "1.0",
   } 
   ```
- 
+  
+  以下命令中的现有 VM 规模集的所有支持 RDMA 的 Vm 上安装最新版本 1.0 InfiniBandDriverLinux 扩展*myVMSS*中名为的资源组部署*myResourceGroup*:
+  ```powershell
+  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
+  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
+  ```
+  
   > [!NOTE]
   > 在基于 CentOS 的 HPC 映像中，内核更新已在 **yum** 配置文件中禁用。 这是因为 Linux RDMA 驱动程序以 RPM 包的形式分发，如果更新了内核，驱动程序更新可能无法运行。
   >
@@ -82,6 +90,8 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Linux H
 * **虚拟机**：在同一可用性集中部署支持 RDMA 的 HPC VM（在使用 Azure 资源管理器部署模型时）。 如果使用经典部署模型，请在同一云服务中部署 VM。 
 
 * **虚拟机规模集**-在虚拟机规模集，请确保限制为单个放置组部署。 例如，在资源管理器模板中，将 `singlePlacementGroup` 属性设置为 `true`。 
+
+* **在虚拟机之间的 MPI** -如果 MPI 通信，虚拟机 (Vm) 之间所需请确保 Vm 位于同一个可用性集内或相同的虚拟机规模集。
 
 * **Azure CycleCloud**：在 [Azure CycleCloud](/azure/cyclecloud/) 中创建 HPC 群集，以在 Linux 节点上运行 MPI 作业。
 

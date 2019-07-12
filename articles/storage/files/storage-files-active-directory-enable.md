@@ -5,14 +5,14 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 06/19/2019
+ms.date: 07/05/2019
 ms.author: rogarana
-ms.openlocfilehash: 80d871bdc17c3f93e113b08201d6c53f29bfeff0
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: cd4c952caa336f2602d3c30e0db3e10ebee59cb9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295621"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696129"
 ---
 # <a name="enable-azure-active-directory-domain-service-authentication-over-smb-for-azure-files-preview"></a>Azure 文件 （预览版） 通过 SMB 启用 Azure Active Directory 域服务身份验证
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -22,20 +22,20 @@ ms.locfileid: "67295621"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview-of-the-workflow"></a>工作流概述
-通过 SMB 为 Azure 文件启用 Azure AD 之前，请确认已正确配置 Azure AD 和 Azure 存储环境。 建议逐步完成[先决条件](#prerequisites)，确保已执行所有必需步骤。 
+Azure 文件 SMB 上启用 Azure AD DS 身份验证之前，请确保你的 Azure AD 和 Azure 存储环境的正确配置。 建议逐步完成[先决条件](#prerequisites)，确保已执行所有必需步骤。 
 
 接下来，按照以下步骤授予使用 Azure AD 凭据访问 Azure 文件资源的权限： 
 
-1. 通过 SMB 为存储帐户启用 Azure AD 身份验证，使用关联的 Azure AD 域服务部署注册存储帐户。
+1. 通过为存储帐户的 SMB，若要注册关联的 Azure AD 域服务部署的存储帐户中启用 Azure AD DS 身份验证。
 2. 将共享的访问权限分配给 Azure AD 标识（用户、组或服务主体）。
 3. 通过 SMB 为目录和文件配置 NTFS 权限。
 4. 从加入域的 VM 装载 Azure 文件共享。
 
-下图说明了通过 SMB 为 Azure 文件启用 Azure AD 身份验证的端到端工作流。 
+下图显示了 Azure 文件启用 SMB 上的 Azure AD DS 身份验证的端到端工作流。 
 
 ![显示通过 SMB 为 Azure 文件启用 Azure AD 的工作流的图表](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>先决条件 
 
 在通过 SMB 为 Azure 文件启用 Azure AD 之前，请确保满足以下先决条件：
 
@@ -56,7 +56,7 @@ ms.locfileid: "67295621"
     要使用来自 VM 的 Azure AD 凭据访问文件共享，你的 VM 必须已通过 Azure AD 域服务加入域。 有关如何将 VM 加入域的详细信息，请参阅[将 Windows Server 虚拟机加入托管域](../../active-directory-domain-services/join-windows-vm.md)。
 
     > [!NOTE]
-    > 只有在运行在高于 Windows 7 或 Windows Server 2008 R2 版本的 OS 上的 Azure VM 上才支持通过 SMB 为 Azure 文件启用 Azure AD 身份验证。
+    > 仅在 Windows 7 或 Windows Server 2008 R2 上方的操作系统版本上运行的 Azure Vm 上支持与 Azure 文件的 SMB 上的 azure AD DS 身份验证。
 
 4.  **选择或创建 Azure 文件共享。**
 
@@ -67,15 +67,15 @@ ms.locfileid: "67295621"
 
     要验证是否已正确配置 VM 和文件共享，请尝试使用存储帐户密钥装载文件共享。 有关详细信息，请参阅[在 Windows 中装载 Azure 文件共享并对其进行访问](storage-how-to-use-files-windows.md)。
 
-## <a name="enable-azure-ad-authentication-for-your-account"></a>为帐户启用 Azure AD 身份验证
+## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>启用 Azure AD DS 帐户的身份验证
 
-若要通过 SMB 为 Azure 文件启用 Azure AD 身份验证，可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 为 2018 年 9 月 24 日之后创建的存储帐户设置属性。 设置此属性会将存储帐户注册到关联的 Azure AD 域服务部署。 然后，为存储帐户中的所有新文件和现有文件共享启用通过 SMB 的 Azure AD 身份验证。 
+若要为 Azure 文件中启用 SMB 上的 Azure AD DS 身份验证，您可以设置属性在 2018 年 9 月 24 日之后创建的存储帐户使用 Azure 门户、 Azure PowerShell 或 Azure CLI。 设置此属性会将存储帐户注册到关联的 Azure AD 域服务部署。 为存储帐户中的所有新的和现有文件共享然后启用 SMB 上的 azure AD DS 身份验证。 
 
-请注意，只有在将 Azure AD 域服务成功部署到 Azure AD 租户后，才能通过 SMB 启用 Azure AD 身份验证。 有关详细信息，请参阅[先决条件](#prerequisites)。
+请记住，你可以启用 Azure AD DS 身份验证通过 SMB 仅后已成功部署到 Azure AD 租户的 Azure AD 域服务。 有关详细信息，请参阅[先决条件](#prerequisites)。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要使用 [Azure 门户](https://portal.azure.com)通过 SMB 启用 Azure AD 身份验证，请执行以下步骤：
+若要启用 Azure AD DS 身份验证通过使用 SMB [Azure 门户](https://portal.azure.com)，请执行以下步骤：
 
 1. 在 Azure 门户中，导航到现有的存储帐户或[创建存储帐户](../common/storage-quickstart-create-account.md)。
 2. 在“设置”部分选择“配置”。  
@@ -87,13 +87,13 @@ ms.locfileid: "67295621"
   
 ### <a name="powershell"></a>PowerShell  
 
-若要使用 Azure PowerShell 通过 SMB 启用 Azure AD 身份验证，请先安装具有 Azure AD 支持的 `Az.Storage` 模块的预览版本。 有关如何安装 PowerShell 的详细信息，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)：
+若要通过 SMB 使用 Azure PowerShell 启用 Azure AD DS 身份验证：首先，安装最新的 Az 模块 （2.4 或更高版本） 或 Az.Storage 模块 （1.5 或更高版本）。有关安装 PowerShell 的详细信息，请参阅[使用 powershellget 进行的 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps):
 
 ```powershell
 Install-Module -Name Az.Storage -AllowPrerelease -Force -AllowClobber
 ```
 
-接下来，创建新存储帐户，然后调用 [Set-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) 并将 **EnableAzureFilesAadIntegrationForSMB** 参数设置为 **true**。 在下面的示例中，请务必将占位符值替换为你自己的值。
+接下来，创建新的存储帐户，然后调用[集 AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount)并设置**EnableAzureActiveDirectoryDomainServicesForFile**参数**true**。 在下面的示例中，请务必将占位符值替换为你自己的值。 (如果已使用前一预览版模块，特性支持的参数是**EnableAzureFilesAadIntegrationForSMB**。)
 
 ```powershell
 # Create a new storage account
@@ -102,8 +102,17 @@ New-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Location "<azure-region>" `
     -SkuName Standard_LRS `
     -Kind StorageV2 `
-    -EnableAzureFilesAadIntegrationForSMB $true
+    -EnableAzureActiveDirectoryDomainServicesForFile $true
 ```
+若要启用此功能在现有的存储帐户，请使用以下命令：
+
+```powershell
+# Update a storage account
+Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
+    -Name "<storage-account-name>" `
+    -EnableAzureActiveDirectoryDomainServicesForFile $true
+```
+
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -122,98 +131,36 @@ az storage account create -n <storage-account-name> -g <resource-group-name> --f
 
 ## <a name="assign-access-permissions-to-an-identity"></a>为标识分配访问权限 
 
-要使用 Azure AD 凭据访问 Azure 文件资源，标识（用户、组或服务主体）必须具有共享级别的必要权限。 本部分中的指导演示如何将文件共享的读取、写入或删除权限分配给标识。
+要使用 Azure AD 凭据访问 Azure 文件资源，标识（用户、组或服务主体）必须具有共享级别的必要权限。 此过程类似于指定 Windows 共享权限，可以在其中指定给定用户对文件共享的访问类型。 本部分中的指导演示如何将文件共享的读取、写入或删除权限分配给标识。
+
+我们引入了用于向用户授予共享级别权限的两个 Azure 内置角色：存储文件数据 SMB 共享读取器和存储文件数据 SMB 共享参与者。 
+
+- **存储文件数据 SMB 共享读取器**Azure 存储文件共享中允许通过 SMB 进行读取访问
+- **存储文件数据 SMB 共享参与者**允许通过 SMB 中 Azure 存储文件共享读取、 写入和删除访问权限
 
 > [!IMPORTANT]
 > 对文件共享的完全管理控制（包括将角色分配给标识的控制权限）需要使用存储帐户密钥。 Azure AD 凭据不支持管理控制。 
 
-### <a name="define-a-custom-role"></a>定义自定义角色
+可以使用 Azure 门户、 PowerShell 或 Azure CLI 的内置角色分配授予共享级别权限的用户的 Azure AD 标识。 
 
-要授予共享级别权限，请定义自定义 RBAC 角色并将其分配给标识，同时将其范围限定为特定文件共享。 此过程类似于指定 Windows 共享权限，可以在其中指定给定用户对文件共享的访问类型。  
+#### <a name="azure-portal"></a>Azure 门户
+若要将 RBAC 角色分配给 Azure AD 标识，使用[Azure 门户](https://portal.azure.com)，请执行以下步骤：
 
-以下各节中显示的模板为文件共享提供“读取”或“更改”权限。 要定义自定义角色，请创建一个 JSON 文件并将相应的模板复制到该文件。 有关定义自定义 RBAC 角色的详细信息，请参阅[在 Azure 中自定义角色](../../role-based-access-control/custom-roles.md)。
-
-**共享级别更改权限的角色定义**  
-以下自定义角色模板提供共享级别更改权限，向标识授予对共享的读取、写入和删除访问权限。
-
-```json
-{
-  "Name": "<Custom-Role-Name>",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows for read, write and delete access to Azure File Share over SMB",
-  "Actions": [
-    "Microsoft.Storage/storageAccounts/fileServices/*"
-  ],
-  "DataActions": [
-    "Microsoft.Storage/storageAccounts/fileServices/*"
-  ],
-  "NotDataActions": [
-    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermissions/action",
-    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/actassuperuser/action"
-  ],
-  "AssignableScopes": [
-        "/subscriptions/<Subscription-ID>"
-  ]
-}
-```
-
-**共享级别读取权限的角色定义**  
-以下自定义角色模板提供共享级别读取权限，向标识授予对共享的读取访问权限。
-
-```json
-{
-  "Name": "<Custom-Role-Name>",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows for read access to Azure File Share over SMB",
-  "Actions": [
-    "Microsoft.Storage/storageAccounts/fileServices/*/read"
-  ],
-  "DataActions": [
-    "Microsoft.Storage/storageAccounts/fileServices/*/read"
-  ],
-  "AssignableScopes": [
-        "/subscriptions/<Subscription-ID>"
-  ]
-}
-```
-
-### <a name="create-the-custom-role"></a>创建自定义角色
-
-若要创建自定义角色，请使用 PowerShell 或 Azure CLI。 
+1. 在 Azure 门户中，导航到你的文件共享，或[在 Azure 文件中创建文件共享](storage-how-to-create-file-share.md)。
+2. 选择“访问控制 (IAM)”  。
+3. 选择**添加的角色分配**
+4. 在**添加的角色分配**边栏选项卡中，选择相应的内置角色 （存储文件数据 SMB 共享读取器、 存储文件数据 SMB 共享参与者） 从**角色**下拉列表中。 保持**分配访问权限**为默认值："Azure AD 用户、 组或服务主体"，并按名称或电子邮件地址选择 Azure AD 标识的目标。 
+5. 最后，选择**保存**以完成角色分配操作。
 
 #### <a name="powershell"></a>PowerShell
 
-以下 PowerShell 命令基于某个示例模板创建自定义角色。
-
-```powershell
-#Create a custom role based on the sample template above
-New-AzRoleDefinition -InputFile "<custom-role-def-json-path>"
-```
-
-#### <a name="cli"></a>CLI 
-
-以下 Azure CLI 命令基于某个示例模板创建自定义角色。
-
-```azurecli-interactive
-#Create a custom role based on the sample templates above
-az role definition create --role-definition "<Custom-role-def-JSON-path>"
-```
-
-### <a name="assign-the-custom-role-to-the-target-identity"></a>将自定义角色分配给目标标识
-
-接下来，使用 PowerShell 或 Azure CLI 将自定义角色分配给 Azure AD 标识。 
-
-#### <a name="powershell"></a>PowerShell
-
-以下 PowerShell 命令演示如何列出可用的自定义角色，然后基于登录名将自定义角色分配给 Azure AD 标识。 有关如何使用 PowerShell 分配 RBAC 角色的详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../../role-based-access-control/role-assignments-powershell.md)。
+以下 PowerShell 命令演示如何将 RBAC 角色分配给 Azure AD 标识，基于登录名。 有关如何使用 PowerShell 分配 RBAC 角色的详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../../role-based-access-control/role-assignments-powershell.md)。
 
 运行以下示例脚本时，请务必将占位符值（包括括号）替换为自己的值。
 
 ```powershell
 #Get the name of the custom role
-$FileShareContributorRole = Get-AzRoleDefinition "<role-name>"
+$FileShareContributorRole = Get-AzRoleDefinition "<role-name>" #Use one of the built-in roles: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor
 #Constrain the scope to the target file share
 $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 #Assign the custom role to the target identity with the specified scope.
@@ -222,15 +169,13 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 #### <a name="cli"></a>CLI
   
-以下 CLI 2.0 命令演示如何列出可用的自定义角色，然后基于登录名将自定义角色分配给 Azure AD 标识。 有关如何使用 Azure CLI 分配 RBAC 角色的详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。 
+以下 CLI 2.0 命令演示如何将 RBAC 角色分配给 Azure AD 标识，基于登录名。 有关如何使用 Azure CLI 分配 RBAC 角色的详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。 
 
 运行以下示例脚本时，请务必将占位符值（包括括号）替换为自己的值。
 
 ```azurecli-interactive
-#List the custom roles
-az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
-#Assign the custom role to the target identity
-az role assignment create --role "<custom-role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
+#Assign the built-in role to the target identity: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor
+az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 ```
 
 ## <a name="configure-ntfs-permissions-over-smb"></a>通过 SMB 配置 NTFS 权限 

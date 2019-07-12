@@ -9,29 +9,29 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: f60236163cd88822c384bd356a1770d616639174
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d52e0e1093668a65e76bd6600329619240aee182
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596620"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612594"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中心将文件从设备上传到云
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-本教程的内容基于[使用 IoT 中心发送云到设备的消息](iot-hub-node-node-c2d.md)教程中所述的代码，介绍如何使用 [IoT 中心的文件上传功能](iot-hub-devguide-file-upload.md)将文件上传到 [Azure Blob 存储](../storage/index.yml)。 本教程介绍如何：
+本教程中的代码为基础[发送云到设备消息通过 IoT 中心](iot-hub-node-node-c2d.md)教程向您展示如何使用[文件上传功能的 IoT 中心](iot-hub-devguide-file-upload.md)若要将文件上载到[Azure blob存储](../storage/index.yml)。 本教程介绍如何：
 
-- 安全提供具有 Azure blob URI 的设备，用于上传文件。
-- 
-- 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
+* 安全提供具有 Azure blob URI 的设备，用于上传文件。
 
-[IoT 中心入门](quickstart-send-telemetry-node.md)教程展示了 IoT 中心基本的设备到云消息功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+* 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-*  包含图像的大型文件
-*  视频
-*  以高频率采样的振动数据
-*  某种形式的预处理数据。
+[向 IoT 中心从设备发送遥测数据](quickstart-send-telemetry-node.md)快速入门演示了基本的 IoT 中心设备到云消息传送的功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+
+* 包含图像的大型文件
+* 视频
+* 以高频率采样的振动数据
+* 某种形式的预处理数据。
 
 通常使用 [Azure 数据工厂](../data-factory/introduction.md)或 [Hadoop](../hdinsight/index.yml) 堆栈等工具在云中批处理这些文件。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
 
@@ -216,6 +216,8 @@ node SimulatedDevice.js
 
 在本教程中，你已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 可以使用以下文章继续探索 IoT 中心功能和方案：
 
-*  [以编程方式创建 IoT 中心](iot-hub-rm-template-powershell.md)
-*  [C SDK 简介](iot-hub-device-sdk-c-intro.md)
-*  [Azure IoT SDK](iot-hub-devguide-sdks.md)
+* [以编程方式创建 IoT 中心](iot-hub-rm-template-powershell.md)
+
+* [C SDK 简介](iot-hub-device-sdk-c-intro.md)
+
+* [Azure IoT SDK](iot-hub-devguide-sdks.md)

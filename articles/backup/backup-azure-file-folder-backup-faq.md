@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: d4d1044a30d4ebc551cf1305993aba2a201c4c94
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: dd800c0eeb18fe45b44a72aeb58b500623b2b366
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514446"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705083"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>与对文件和文件夹进行备份相关的常见问题
 
@@ -88,9 +88,19 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 缓存文件夹的大小由你正在备份的数据量确定。
 - 缓存文件夹卷的可用空间应当至少为备份数据总大小的 5-10%。
 - 如果卷的可用空间少于 5%，请增大卷大小，或将缓存文件夹移到具有足够空间的卷。
-- 如果您备份 Windows 系统状态，则需要额外的 30 到 35 gb 空间中包含的缓存文件夹的卷的可用空间
-### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>如何更改 MARS 代理的缓存位置？
+- 如果备份 Windows 系统状态，则将需要额外的 30 到 35 gb 空间中包含的缓存文件夹的卷的可用空间。
 
+### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>如何检查 scratch 文件夹是否有效且可访问？
+
+1. 默认情况下 scratch 文件夹位于 `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+2. 请确保与如下所示的注册表密钥条目的值相匹配的 scratch 文件夹位置的路径：
+
+  | 注册表路径 | 注册表项 | ReplTest1 |
+  | --- | --- | --- |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新缓存文件夹位置* |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新缓存文件夹位置* |
+
+### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>如何更改 MARS 代理的缓存位置？
 
 1. 通过在权限提升的命令提示符下运行以下命令来停止备份引擎：
 

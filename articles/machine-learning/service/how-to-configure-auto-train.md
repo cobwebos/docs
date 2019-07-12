@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c003ebaed645fcdefb379eb100220ccc2207d82
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 0d9019a6b4a32066480a70f72562bc5a7a9a1e8b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202979"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797649"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动化的机器学习实验
 
@@ -40,7 +40,7 @@ ms.locfileid: "67202979"
 
 在开始试验之前，应确定要解决的机器学习问题类型。 自动化机器学习支持分类、回归和预测任务类型。
 
-在自动化和优化过程中，自动化机器学习支持以下算法。 用户不需要指定算法。 尽管 DNN 算法可在定型期间，自动化机器学习不生成 DNN 模型。
+在自动化和优化过程中，自动化机器学习支持以下算法。 用户不需要指定算法。 
 
 分类 | 回归 | 时间序列预测
 |-- |-- |--
@@ -125,7 +125,7 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 
 `get_data` 脚本可以返回：
 
-密钥 | Type | 与以下对象互斥    | 描述
+Key | type | 与以下对象互斥    | 描述
 ---|---|---|---
 X | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |  用于训练的所有特征
 y | Pandas 数据帧或 Numpy 数组 |   label   | 用于训练的标签数据。 对于分类，应是一个整数数组。
@@ -134,8 +134,8 @@ y_valid |   Pandas 数据帧或 Numpy 数组 | data_train、label | （可选）
 sample_weight | Pandas 数据帧或 Numpy 数组 |   data_train、label、columns| （可选）每个样本的权重值。  需要为数据点分配不同的权重时使用
 sample_weight_valid | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |    （可选）每个验证样本的权重值。  如果未指定，则在 train 与 validate 之间拆分 sample_weight
 data_train |    Pandas 数据帧 |  X、y、X_valid、y_valid |    用于训练的所有数据（特征+标签）
-label | 字符串  | X、y、X_valid、y_valid |  data_train 中的哪个列表示标签
-列 | 字符串数组  ||  （可选）用于特征的列的白名单 
+label | string  | X、y、X_valid、y_valid |  data_train 中的哪个列表示标签
+columns | 字符串数组  ||  （可选）用于特征的列的白名单 
 cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行交叉验证的索引列表 
 
 ## <a name="train-and-validation-data"></a>训练和验证数据
@@ -322,7 +322,7 @@ best_run, fitted_model = automl_run.get_output()
 
 + API 1:`get_engineered_feature_names()`返回，工程的特征名称的列表。
 
-  用法:
+  用法：
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -338,7 +338,7 @@ best_run, fitted_model = automl_run.get_output()
 
 + API 2:`get_featurization_summary()`返回特征化所有输入功能的摘要。
 
-  用法:
+  用法：
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
@@ -372,7 +372,7 @@ best_run, fitted_model = automl_run.get_output()
 
    其中：
 
-   |输出|定义|
+   |Output|定义|
    |----|--------|
    |RawFeatureName|从提供的数据集的输入的功能/列名称。|
    |TypeDetected|检测到数据类型的输入功能。|

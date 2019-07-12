@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-ant-msft
-ms.openlocfilehash: 3ea502477cc5b380c99a183d9270c2b2e94375a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: jeedes
+ms.openlocfilehash: dd8335442cd370e0478c029a927c71e26fe6ef1b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67049363"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672852"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>教程：将 Zscaler 配置自动用户预配
 
@@ -32,7 +32,7 @@ ms.locfileid: "67049363"
 
 > 此连接器目前以公共预览版提供。 有关常规 Microsoft Azure 的使用条款预览版功能的详细信息，请参阅[补充使用条款的 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本教程中所述的方案假定你已具备以下项：
 
@@ -124,7 +124,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Zscaler 预配](./media/zscaler-provisioning-tutorial/notification.png)
 
-9. 单击“ **保存**”。
+9. 单击“保存”  。
 
 10. 下**映射**部分中，选择**Azure Active Directory 用户同步到 Zscaler**。
 

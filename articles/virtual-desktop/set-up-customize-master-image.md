@@ -4,19 +4,19 @@ description: 了解如何准备、 自定义并将 Windows 虚拟桌面预览主
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 186086a94470faaf19fa8a3c07939b9856ae2ec9
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 2413a380adf32755452482d2b68d2055f7db666d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466819"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620438"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
-本文介绍如何准备要上传到 Azure，包括如何创建虚拟机 (Vm)，并在其上安装软件的主虚拟硬盘 (VHD) 映像。 这些说明适用于可以与组织的现有进程使用的特定于 Windows 的虚拟桌面预览版的配置。
+本文介绍如何准备要上传到 Azure，包括如何创建虚拟机 (Vm)，并在其上安装软件的主虚拟硬盘 (VHD) 映像。 这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面预览版的配置。
 
 ## <a name="create-a-vm"></a>创建 VM
 

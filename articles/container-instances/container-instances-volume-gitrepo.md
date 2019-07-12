@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86f8c099061cd3b75b77330c567f34dea2b34928
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563013"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657598"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载 gitRepo 卷
 
 了解如何在容器实例中装载 *gitRepo* 卷以克隆 Git 存储库。
 
 > [!NOTE]
-> 当前只有 Linux 容器能装载 *gitRepo* 卷。 我们正致力于为 Windows 容器提供全部功能，你可在 [Azure 容器实例的配额和区域可用性](container-instances-quotas.md)中了解当前的平台差异。
+> 当前只有 Linux 容器能装载 *gitRepo* 卷。 我们正致力于为 Windows 容器提供的所有功能，可以找到在当前的平台差异[概述](container-instances-overview.md#linux-and-windows-containers)。
 
 ## <a name="gitrepo-volume"></a>gitRepo 卷
 
@@ -35,9 +35,9 @@ ms.locfileid: "60563013"
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>装载 gitRepo 卷：Azure CLI
 
-在使用 [Azure CLI](/cli/azure) 部署容器实例时若要装载 gitRepo 卷，请在 [az container create][az-container-create] 命令中提供 `--gitrepo-url` 和 `--gitrepo-mount-path` 参数。 还可以指定要将卷克隆到其中的目录 (`--gitrepo-dir`) 和要克隆的修订版的提交哈希 (`--gitrepo-revision`)。
+若要装载 gitRepo 卷，在将容器实例时[Azure CLI](/cli/azure)，提供`--gitrepo-url`并`--gitrepo-mount-path`参数[az 容器创建][az-container-create]命令。 还可以指定要将卷克隆到其中的目录 (`--gitrepo-dir`) 和要克隆的修订版的提交哈希 (`--gitrepo-revision`)。
 
-此示例命令克隆 Microsoft [aci helloworld] [ aci-helloworld]示例应用程序到`/mnt/aci-helloworld`容器实例中：
+此示例命令克隆 Microsoft [aci helloworld][aci-helloworld]示例应用程序到`/mnt/aci-helloworld`容器实例中：
 
 ```azurecli-interactive
 az container create \
@@ -50,7 +50,7 @@ az container create \
     --gitrepo-mount-path /mnt/aci-helloworld
 ```
 
-若要验证 gitRepo 卷是否已装载，请使用 [az container exec][az-container-exec] 在该容器中启动 shell 并列出目录：
+若要验证 gitRepo 卷是否已装载，请启动带的容器中的 shell [az 容器 exec][az-container-exec]并列出目录：
 
 ```console
 $ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh

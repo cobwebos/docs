@@ -4,16 +4,16 @@ description: 通过 Power BI 工作区集合进行身份验证和授权。
 services: power-bi-workspace-collections
 author: rkarlin
 ms.author: rkarlin
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 5fbe08bb9ebc355074a790f7732c9de10eaad859
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 713c56904769c133272db4fb65f8b596ab66804b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707100"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672510"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>通过 Power BI 工作区集合进行身份验证和授权
 
@@ -140,7 +140,7 @@ Body
 
 ### <a name="operations-and-scopes"></a>操作和作用域
 
-|Operation|目标资源|令牌权限|
+|操作|目标资源|令牌权限|
 |---|---|---|
 |基于数据集创建（在内存中）新报表。|数据集|Dataset.Read|
 |基于数据集创建（在内存中）新报表并保存该报表。|数据集|* Dataset.Read<br>* Workspace.Report.Create|
@@ -172,7 +172,7 @@ Body
 
 ![应用中嵌入的报表的示例](media/get-started-sample/sample-web-app.png)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Microsoft Power BI 工作区集合示例入门](get-started-sample.md)  
@@ -180,4 +180,4 @@ Body
 [Microsoft Power BI 工作区集合入门](get-started.md)  
 [PowerBI-CSharp Git 存储库](https://github.com/Microsoft/PowerBI-CSharp)
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

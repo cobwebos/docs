@@ -4,7 +4,7 @@ description: 使用 Azure 资源管理器模板新建具有 Azure 诊断扩展�
 services: virtual-machines-windows
 documentationcenter: ''
 author: sbtron
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 8cde8fe7-977b-43d2-be74-ad46dc946058
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00b4a145da9104cab410c5a07f6d7ec5ded5c45d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d1c5598bd7ea5b3f35d5447935953d4cd55664a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60800010"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706753"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用
 Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊断功能。 通过将该扩展纳入为 Azure 资源管理器模板的一部分，可以在虚拟机上启用这些功能。 有关将任何扩展纳入为虚拟机模板一部分的详细信息，请参阅[使用 VM 扩展创作 Azure 资源管理器模板](../windows/template-description.md#extensions)。 本文介绍了如何将 Azure 诊断扩展添加到 Windows 虚拟机模板中。  
@@ -164,7 +164,7 @@ MetricAggregation 值 *PT1M* 和 *PT1H* 分别表示一分钟的聚合和一小�
 * **V2S**：字符串常数
 * **yyyymmdd**：表开始收集数据的日期
 
-示例：WADMetricsPT1HP10DV2S20151108  包含从 2015 年 11 月 11 日开始 10 天内长达一小时的聚合指标数据    
+例如：WADMetricsPT1HP10DV2S20151108  包含从 2015 年 11 月 11 日开始 10 天内长达一小时的聚合指标数据    
 
 每个 WADMetrics 表都包含以下列：
 

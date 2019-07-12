@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 63cf4101-92e7-49dd-a155-a90e54a792ca
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 838c76e6a383b61ff465f3ed7506af34c8cd01d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60579885"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594181"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]
@@ -155,7 +155,7 @@ ms.locfileid: "60579885"
 
 既然已经编写了程序的基本结构，我们现在应该创建 `Main` 方法调用的方法。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 在可以使用 Azure CDN 管理库之前，我们需要验证我们的服务主体并获取身份验证令牌。  此方法使用 ADAL 来检索令牌。
 
 ```csharp

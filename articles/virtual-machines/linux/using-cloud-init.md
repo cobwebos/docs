@@ -4,7 +4,7 @@ description: Microsoft Azure 中的 cloud-init 功能的概述
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 195c22cd-4629-4582-9ee3-9749493f1d72
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 377ad49ae3a5ae0f61cd0fd93b68dd817d617397
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 057f7c42c037dac4cb2be686df09287de7113f0d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050818"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695391"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init 对 Azure 中虚拟机的支持
 本文介绍了在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时间配置虚拟机 (VM) 或虚拟机缩放集 (VMSS) 的现有支持。 Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。  
@@ -34,13 +34,13 @@ Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装  或
 
 | 发布者 | 产品/服务 | SKU | Version | cloud-init 就绪 |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |最新 |是 | 
-|Canonical |UbuntuServer |17.1 |最新 |是 | 
-|Canonical |UbuntuServer |16.04-LTS |最新 |是 | 
-|Canonical |UbuntuServer |14.04.5-LTS |最新 |是 |
-|CoreOS |CoreOS |Stable |最新 |是 |
-|OpenLogic |CentOS |7-CI |最新 |预览 |
-|RedHat |RHEL |7-RAW-CI |最新 |预览 |
+|Canonical |UbuntuServer |18.04-LTS |latest |是 | 
+|Canonical |UbuntuServer |17.1 |latest |是 | 
+|Canonical |UbuntuServer |16.04-LTS |latest |是 | 
+|Canonical |UbuntuServer |14.04.5-LTS |latest |是 |
+|CoreOS |CoreOS |Stable |latest |是 |
+|OpenLogic |CentOS |7-CI |latest |预览 |
+|RedHat |RHEL |7-RAW-CI |latest |预览 |
 
 目前，Azure Stack 不支持使用 cloud-init 预配 RHEL 7.4 和 CentOS 7.4。
 

@@ -1,17 +1,17 @@
 ---
 author: zhangmanling
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
-ms.openlocfilehash: 7f80c8f1773cfeb8ddfb222d068a5c6571c2e5c7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f21a768733456a6c00e5a87612f3055dd76d416c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173296"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594115"
 ---
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 在编写 CDN 管理代码之前，需要做一些准备工作，使代码能够与 Azure 资源管理器进行交互。 若要执行此准备工作，你需要：
 
 * 创建一个资源组，用来包含本教程中创建的 CDN 配置文件

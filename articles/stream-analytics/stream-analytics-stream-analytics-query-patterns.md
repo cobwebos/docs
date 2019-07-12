@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: b0f513462f1e09718dc18e9ce454b82e8978961f
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 88df7ae0d4e6054d82302ad5f0adabcf656cb0f5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329615"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620802"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
 
@@ -224,7 +224,7 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
 | CountMake | Time |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000Z |
-| 第 |2015-01-01T00:00:04.000Z |
+| 1 |2015-01-01T00:00:04.000Z |
 
 **解决方案：**
 
@@ -429,7 +429,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 **输出**：  
 
-| 用户 | Feature | Duration |
+| 用户 | 功能 | Duration |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -515,7 +515,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 | windowend | lastevent.t | lastevent.value |
 | --- | --- | --- |
-| 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |第 |
+| 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1 |
 | 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2 |
 | 2014-01-01T14:01:10.000Z |2014-01-01T14:01:10.000Z |3 |
 | 2014-01-01T14:01:15.000Z |2014-01-01T14:01:15.000Z |4 |
@@ -621,11 +621,11 @@ WHERE
 
 | LicensePlate | 制造商 | Time | TollID |
 | --- | --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 第 |
-| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 第 |
+| DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
+| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
 | QYF 9358 |Honda |2015-07-27T00:00:01.0000000Z | 2 |
 | GXF 9462 |BMW |2015-07-27T00:00:04.0000000Z | 2 |
-| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000Z | 第 |
+| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000Z | 1 |
 | RMV 8282 |Honda |2015-07-27T00:00:03.0000000Z | 3 |
 | MDR 6128 |BMW |2015-07-27T00:00:11.0000000Z | 2 |
 | YZK 5704 |Ford |2015-07-27T00:00:07.0000000Z | 3 |
@@ -636,10 +636,10 @@ WHERE
 | --- | --- |
 | 第 | 2 |
 | 2 | 2 |
-| 第 | 1 |
-| 3 | 第 |
-| 2 | 第 |
-| 3 | 第 |
+| 1 | 1 |
+| 3 | 1 |
+| 2 | 1 |
+| 3 | 1 |
 
 **解决方案**；
 
@@ -660,14 +660,14 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 
 **输入**：  
 
-| DeviceId | Time | 特性 | 值 |
+| DeviceId | Time | 特性 | ReplTest1 |
 | --- | --- | --- | --- |
-| 第 |2018-07-27T00:00:01.0000000Z |温度 |50 |
-| 第 |2018-07-27T00:00:01.0000000Z |温度 |50 |
+| 1 |2018-07-27T00:00:01.0000000Z |温度 |50 |
+| 1 |2018-07-27T00:00:01.0000000Z |温度 |50 |
 | 2 |2018-07-27T00:00:01.0000000Z |温度 |40 |
-| 第 |2018-07-27T00:00:05.0000000Z |温度 |60 |
+| 1 |2018-07-27T00:00:05.0000000Z |温度 |60 |
 | 2 |2018-07-27T00:00:05.0000000Z |温度 |50 |
-| 第 |2018-07-27T00:00:10.0000000Z |温度 |100 |
+| 1 |2018-07-27T00:00:10.0000000Z |温度 |100 |
 
 **输出**：  
 
@@ -718,6 +718,6 @@ Azure Stream Analytics 提供内置的地理空间函数可用于实现方案，
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

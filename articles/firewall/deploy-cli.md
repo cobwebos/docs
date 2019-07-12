@@ -4,15 +4,15 @@ description: 在本文中，您将了解如何部署和配置 Azure 防火墙使
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 06/11/2019
+ms.date: 7/10/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: b40ac789fbc331e779e85462724e5c8a8e9bce47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24954eecde58c978fa3e14bb3a2d411d708687a3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083348"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707166"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>部署和配置 Azure 防火墙使用 Azure CLI
 
@@ -20,7 +20,7 @@ ms.locfileid: "67083348"
 
 可以控制 Azure 子网的出站网络访问的一种方法是使用 Azure 防火墙。 使用 Azure 防火墙，可以配置：
 
-* 应用程序规则，用于定义可从子网访问的完全限定域名 (FQDN)。
+* 应用程序规则，用于定义可从子网访问的完全限定域名 (FQDN)。 此外可以 FQDN[包括 SQL 实例](sql-fqdn-filtering.md)。
 * 网络规则，用于定义源地址、协议、目标端口和目标地址。
 
 将网络流量路由到用作子网默认网关的防火墙时，网络流量受到配置的防火墙规则的控制。
@@ -49,11 +49,18 @@ ms.locfileid: "67083348"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 ### <a name="azure-cli"></a>Azure CLI
 
 如果选择在本地安装并使用 CLI，请运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 **az --version**。 有关安装或升级的信息，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+
+安装 Azure 防火墙扩展：
+
+```azurecli-interactive
+az extension add -n azure-firewall
+```
+
 
 ## <a name="set-up-the-network"></a>设置网络
 

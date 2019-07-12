@@ -5,7 +5,7 @@ services: active-directory
 manager: daveba
 editor: billmath
 ms.assetid: 7c781f61-848a-48ad-9863-eb29da78f53c
-ms.service: active-directory  
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39ac0e9cf11a0c6c212c4beadb6635ad2b6b056d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4fcdf75586de9621bd0e42cba6fa9c80e5d30817
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60244717"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595215"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书
 
@@ -36,7 +36,7 @@ ms.locfileid: "60244717"
 >[!NOTE]
 >若要详细了解 AD FS 所使用的证书，请参阅[了解 AD FS 所使用的证书](https://technet.microsoft.com/library/cc730660.aspx)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * **AD FS 场**：确保 AD FS 场基于 Windows Server 2012 R2 或更高版本。
 * **Azure AD Connect**：确保 Azure AD Connect 的版本为 1.1.553.0 或更高版本。 将使用任务“更新 AD FS SSL 证书”  。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f7e93dc12b9932fed90c7f9fa3145e56a3488b32
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4140754afa8de994b227dc187cd73c9ccfa86f9
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448021"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666033"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -61,7 +61,7 @@ ms.locfileid: "67448021"
 当功能处于预览中时，这意味着我们正在积极寻求关于功能效果如何的反馈。 处于预览中的功能具备完整功能，但我们可能为了响应客户反馈而进行重大更改。 我们建议不要在生产环境中依赖处于预览中的功能。 如果有任何关于预览功能的反馈，请通过[如何向 Microsoft Azure API 管理团队提问？](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)中的联系选项之一告知我们。
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>如何确保 API 管理网关和后端服务之间的连接安全？
-有多个选项可确保 API 管理网关和后端服务之间的连接安全。 可以：
+有多个选项可确保 API 管理网关和后端服务之间的连接安全。 你可以：
 
 * 使用 HTTP 基本身份验证。 有关详细信息，请参阅[导入并发布第一个 API](import-and-publish.md)。
 * 使用[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全](api-management-howto-mutual-certificates.md)中所述的 SSL 相互身份验证。
@@ -69,7 +69,7 @@ ms.locfileid: "67448021"
 * 将 API 管理实例连接到 Azure 虚拟网络。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何将 API 管理服务实例复制到新实例？
-如果要将 API 管理实例复制到新实例，则有多个选项。 可以：
+如果要将 API 管理实例复制到新实例，则有多个选项。 你可以：
 
 * 使用 API 管理中的备份和还原功能。 有关详细信息，请参阅[如何使用 Azure API 管理中的服务备份和还原实现灾难恢复](api-management-howto-disaster-recovery-backup-restore.md)。
 * 使用 [API 管理 REST API](/rest/api/apimanagement/) 创建自己的备份和还原功能。 使用 REST API 保存和还原所需的服务实例中的实体。
@@ -87,7 +87,7 @@ ms.locfileid: "67448021"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 转到具有要更新的 API 管理实例的资源组。
-3. 在 API 管理中，将 **API 管理参与者**角色分配给该用户。
+3. 在 API 管理中，将分配**Api 管理服务参与者**向用户角色。
 
 现在，新添加的参与者可以使用 Azure PowerShell [cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 下面是以管理员身份登录的方法：
 
@@ -100,7 +100,7 @@ ms.locfileid: "67448021"
 如果要添加的策略在策略管理器中显示为变暗或有阴影，请确保处于该策略的正确范围内。 每个策略声明都设计为在特定范围和策略部分中使用。 若要查看策略部分和策略范围，请参阅 [API 管理策略](/azure/api-management/api-management-policies)中的策略的用法部分。
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>如何在单个 API 中设置多个环境？
-若要在单个 API 中设置多个环境（例如，一个测试环境和一个生产环境），则有两个选项。 可以：
+若要在单个 API 中设置多个环境（例如，一个测试环境和一个生产环境），则有两个选项。 你可以：
 
 * 在同一租户上托管不同的 API。
 * 在不同租户上托管相同的 API。

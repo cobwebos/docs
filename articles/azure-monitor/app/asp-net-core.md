@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 7fe5a4f5a5d1d254918f1b4f997acfb9cf67a75b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5ea7ec41ccc721e8eafda56aa7463505ba089845
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272436"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827812"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -35,14 +35,14 @@ ms.locfileid: "67272436"
 * **托管平台**:Azure 应用服务、 Azure VM、 Docker、 Azure Kubernetes 服务 (AKS) 等的 Web 应用功能。
 * **IDE**:Visual Studio、 VS Code 或命令行。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 正常运行的 ASP.NET Core 应用程序。 如果需要创建一个 ASP.NET Core 应用程序，请按照这[ASP.NET Core 教程](https://docs.microsoft.com/aspnet/core/getting-started/)。
 - 有效的 Application Insights 检测密钥。 此密钥需将任何遥测数据发送到 Application Insights。 如果你需要创建新的 Application Insights 资源，若要获取检测密钥，请参阅[创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>启用 Application Insights 服务器端遥测数据 (Visual Studio)
 
-1. 在 Visual Studio 中打开项目。
+1. 在 Visual Studio 中打开你的项目。
 
     > [!TIP]
     > 如果愿意，您可以设置源代码管理为你的项目以便可以跟踪所有 Application Insights 进行的更改。 若要启用源代码管理，请选择**文件** > **添加到源代码管理**。
@@ -177,7 +177,7 @@ ms.locfileid: "67272436"
 您可以自定义 Application Insights SDK 适用于 ASP.NET Core，若要更改默认配置。 Application Insights ASP.NET SDK 的用户可能会熟悉通过更改配置`ApplicationInsights.config`或通过修改`TelemetryConfiguration.Active`。 更改不同的方式针对 ASP.NET Core 的配置。 将 ASP.NET Core SDK 添加到应用程序并将其配置通过使用 ASP.NET Core 内置[依赖关系注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 进行中的几乎所有配置更改`ConfigureServices()`方法在`Startup.cs`类，除非将否则转。 以下各节提供的详细信息。
 
 > [!NOTE]
-> 在 ASP.NET Core 应用程序，通过修改来更改配置`TelemetryConfiguration.Active`不建议使用。
+> 在 ASP.NET Core 应用程序，通过修改来更改配置`TelemetryConfiguration.Active`不受支持。
 
 ### <a name="using-applicationinsightsserviceoptions"></a>使用 ApplicationInsightsServiceOptions
 
@@ -314,6 +314,23 @@ using Microsoft.ApplicationInsights.Channel;
     }
 ```
 
+### <a name="disable-telemetry-dynamically"></a>动态禁用遥测
+
+如果你想要禁用遥测数据，有条件地和动态，您可能会解决`TelemetryConfiguration`与你的代码中的任意位置的 ASP.NET Core 依赖关系注入容器实例并设置`DisableTelemetry`上它的标志。
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddApplicationInsightsTelemetry();
+    }
+
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
+    {
+        configuration.DisableTelemetry = true;
+        ...
+    }
+```
+
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>如何跟踪不会自动收集遥测数据？
@@ -364,7 +381,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>可以启用 Application Insights 监视使用状态监视器之类的工具？
 
-不。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)并[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)目前支持 ASP.NET 4.x 仅。
+否。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)并[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)目前支持 ASP.NET 4.x 仅。
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>Application Insights 会自动启用我的 ASP.NET Core 2.0 应用程序？
 
@@ -408,3 +425,4 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 * [配置快照集合](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)若要查看在引发异常时源代码和变量的状态。
 * [使用 API](../../azure-monitor/app/api-custom-events-metrics.md)发送事件和指标的应用程序的性能和使用情况的详细视图。
 * 使用[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)从世界各地不断检查应用。
+* [在 ASP.NET Core 中的依赖关系注入](https://docs.microsoft.com/aspnet/fundamentals/dependency-injection)

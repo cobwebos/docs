@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 37d43dbdd8de66a10a94827e313679dc6ffd220d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: b0c7c38ebabfdd142394152f735d40320a98dced
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490386"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798156"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>获取企业协议保留成本和使用情况
 
@@ -40,7 +40,7 @@ ms.locfileid: "67490386"
 
 两个数据集的比较：
 
-| 数据 | 实际成本数据集 | 摊销的成本数据集 |
+| Data | 实际成本数据集 | 摊销的成本数据集 |
 | --- | --- | --- |
 | 预订购买 | 在此视图中可用。<br><br>  若要获得此数据筛选器在 ChargeType =&quot;采购&quot;。 <br><br> 请参阅 ReservationID 或 ReservationName 知道费用是针对哪些保留。  | 此视图不适用于。 <br><br> 摊销数据中未提供的采购成本。 |
 | EffectivePrice | 值为零的使用情况，可获取预订折扣。 | 值为已预订折扣的使用情况的保留的每小时按比例分配成本。 |
@@ -120,7 +120,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 - 资源 （例如 VM)
 - 资源组
-- 标记
+- Tags
 - 订阅
 
 ### <a name="get-the-blended-rate-for-chargeback"></a>混合的速率获得退款
@@ -139,17 +139,17 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 2. 获取保留成本。 总和_成本_值，以获取你为保留的实例付费的货币值。 它包括使用和未使用预订的成本。
 3. 减去保留从估计的即用即付成本，以获取估计的节省成本。
 
-## <a name="reservation-purchases-and-amortization-in-azure-cost-analysis"></a>预订购买和摊销在 Azure 成本分析
+## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>预订购买和摊销成本分析
 
-预订的实例成本现已推出[Azure 成本分析预览模式](https://preview.portal.azure.com/?feature.canmodifystamps=true&amp;microsoft_azure_costmanagement=stage2&amp;Microsoft_Azure_CostManagement_arm_canary=true&amp;Microsoft_Azure_CostManagement_apiversion=2019-04-01-preview&amp;Microsoft_Azure_CostManagement_amortizedCost=true#blade/Microsoft_Azure_CostManagement/Menu/costanalysis)。 默认情况下，成本数据视图为的实际成本。 您可以切换到摊销成本。 下面是一个示例。
+预留成本均位于[成本分析](https://aka.ms/costanalysis)。 默认情况下成本分析显示**实际成本**，这是你的帐单上显示成本的方式。 若要查看预订购买细分和关联的资源的使用权益，请切换到**摊销成本**:
 
 ![显示在成本分析中选择摊销的成本的位置的示例](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-应用筛选器以查看你的费用由预订或费用类型。 保留名称，可以查看按保留项细分的成本进行分组。
+按费用类型的使用情况、 购买和退款; 看一个分行符进行分组或通过的保留和按需成本细分保留的项。 请记住在查看实际成本时将看到仅保留成本是购买，但成本将分配给单个资源时查看摊销成本使用 benfit。 您还会看到一个新**UnusedReservation**收费类型时查看摊销成本。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
 

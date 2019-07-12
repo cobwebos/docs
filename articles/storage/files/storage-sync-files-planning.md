@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a745fefa5ceb0f81cf8d66e7af9e308c0ecb40b9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e9e790ac8ac67478a0e7b5143a5b2f1fdd9c790c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449856"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798664"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -69,25 +69,12 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 ## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Azure 文件同步系统要求和互操作性 
 本部分介绍了 Azure 文件同步代理的系统要求以及与 Windows Server 功能和角色以及第三方解决方案的互操作性。
 
-### <a name="evaluation-tool"></a>评估工具
-在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 请注意，其检查涵盖了下面提到的大多数但并非全部功能；建议你仔细读完本部分的剩余内容，以确保你的部署顺利进行。 
+### <a name="evaluation-cmdlet"></a>评估 cmdlet
+部署 Azure 文件同步之前, 应评估是否与你使用 Azure 文件同步计算 cmdlet 的系统兼容。 此 cmdlet 检查存在潜在问题与您的文件系统和数据集，如不支持的字符或不受支持的操作系统版本。 请注意，其检查涵盖了下面提到的大多数但并非全部功能；建议你仔细读完本部分的剩余内容，以确保你的部署顺利进行。 
 
-#### <a name="download-instructions"></a>下载说明
-1. 请确保已安装了最新版本的 PackageManagement 和 PowerShellGet（这允许你安装预览版模块）
-    
-    ```powershell
-        Install-Module -Name PackageManagement -Repository PSGallery -Force
-        Install-Module -Name PowerShellGet -Repository PSGallery -Force
-    ```
- 
-2. 重启 PowerShell
-3. 安装模块
-    
-    ```powershell
-        Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
-    ```
+可以通过安装 Az PowerShell 模块，可以按照此处的说明安装安装评估 cmdlet:[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-#### <a name="usage"></a>使用情况  
+#### <a name="usage"></a>用法  
 可以采用以下多种不同的方式调用评估工具：可以执行系统检查、数据集检查或者同时执行这两种检查。 若要同时执行系统和数据集检查，请使用以下命令： 
 
 ```powershell
@@ -115,11 +102,11 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
     | Version | 支持的 SKU | 支持的部署选项 |
     |---------|----------------|------------------------------|
-    | Windows Server 2019 | 数据中心和标准版 | 完全（带 UI 的服务器） |
-    | Windows Server 2016 | 数据中心和标准版 | 完全（带 UI 的服务器） |
-    | Windows Server 2012 R2 | 数据中心和标准版 | 完全（带 UI 的服务器） |
+    | Windows Server 2019 | 数据中心和标准版 | 完整和核心 |
+    | Windows Server 2016 | 数据中心和标准版 | 完整和核心 |
+    | Windows Server 2012 R2 | 数据中心和标准版 | 完整和核心 |
 
-    将来的 Windows Server 版本将在发布后添加。 Windows 旧版本可能根据用户的反馈添加。
+    将来的 Windows Server 版本将在发布后添加。
 
     > [!Important]  
     > 我们建议使用 Windows 更新提供的最新更新，将用于 Azure 文件同步的所有服务器保持最新。 
@@ -133,7 +120,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 ### <a name="file-system-features"></a>文件系统功能
 
-| Feature | 支持状态 | 说明 |
+| 功能 | 支持状态 | 说明 |
 |---------|----------------|-------|
 | 访问控制列表 (ACL) | 完全支持 | Windows ACL 由 Azure 文件同步进行保留，并由 Windows Server 在服务器终结点上强制实施。 如果直接在云中访问文件，则 Azure 文件不（尚不）支持 Windows ACL。 |
 | 硬链接 | 已跳过 | |
@@ -159,7 +146,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 | \*.laccdb | Access DB 锁定文件|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | 内部同步文件|
 | \\系统卷信息 | 特定于卷的文件夹 |
-| $RECYCLE.BIN| Folder |
+| $RECYCLE.BIN| 文件夹 |
 | \\SyncShareState | 用于同步的文件夹 |
 
 ### <a name="failover-clustering"></a>故障转移群集
@@ -169,8 +156,12 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 > 必须在故障转移群集中的每个节点上安装 Azure 文件同步代理，才能正常进行同步。
 
 ### <a name="data-deduplication"></a>重复数据删除
-**代理版本 5.0.2.0**   
-Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重复数据删除。 在启用了云分层的卷上启用重复数据删除后，即可在本地缓存更多文件，而无需预配更多存储。 请注意，这些卷节约仅用于在本地;Azure 文件中的数据将不会删除重复数据。 
+**代理版本 5.0.2.0 或更高版本**   
+Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重复数据删除。 使用启用云分层的卷上启用重复数据删除可以多个文件的本地缓存而无需预配更多存储空间。 
+
+当具有启用云分层卷启用重复数据删除时，将分层服务器终结点位置中的重复数据删除优化文件类似于普通文件基于云分层策略设置。 一次重复数据删除优化的文件已被分层，重复数据删除垃圾回收作业将自动运行以通过删除不再被引用的不必要的区块来回收磁盘空间的卷上的其他文件。
+
+请注意卷节省仅适用于服务器;Azure 文件共享中的数据将不会删除重复数据。
 
 **Windows Server 2012 R2 或之前的代理版本**  
 对于未启用云分层的卷，Azure 文件同步支持在卷上启用 Windows Server 重复数据删除。
@@ -181,14 +172,14 @@ Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重
     - 根据可用空间的卷上的层文件，可用空间策略将继续使用热度地图。
     - 日期策略将跳过的文件可能已否则适合分层由于重复数据删除优化作业访问文件分层。
 - 对于正在进行重复数据删除优化作业，将获取云分层与日期策略延迟由重复数据删除[MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps)设置，如果没有已分层文件。 
-    - 示例：如果 MinimumFileAgeDays 设置为 7 天，云分层日期策略为 30 天，策略将文件分层 37 天后的日期。
-    - 请注意:一旦文件分层的 Azure 文件同步时，重复数据删除优化作业将跳过该文件。
+    - 例如：如果 MinimumFileAgeDays 设置为 7 天，云分层日期策略为 30 天，策略将文件分层 37 天后的日期。
+    - 注意:一旦文件分层的 Azure 文件同步时，重复数据删除优化作业将跳过该文件。
 - 如果安装了 Azure 文件同步代理运行 Windows Server 2012 R2 的服务器升级到 Windows Server 2016 或 Windows Server 2019，必须执行以下步骤来支持重复数据删除和云分层在同一个卷上：  
     - 卸载 Windows Server 2012 R2 的 Azure 文件同步代理并重新启动服务器。
     - 下载适用于新的服务器操作系统版本 （Windows Server 2016 或 Windows Server 2019） 的 Azure 文件同步代理。
     - 安装 Azure 文件同步代理并重新启动服务器。  
     
-    请注意:卸载并重新安装代理时，将保留在服务器上的 Azure 文件同步配置设置。
+    注意:卸载并重新安装代理时，将保留在服务器上的 Azure 文件同步配置设置。
 
 ### <a name="distributed-file-system-dfs"></a>分布式文件系统 (DFS)
 Azure 文件同步支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进行互操作。
@@ -220,7 +211,7 @@ Azure 文件同步支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进�
 Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endpoint Protection (SCEP) 都会自动跳过读取设有此属性的文件。 我们已对这两个解决方案进行了测试并发现了一个小问题：向现有的同步组添加服务器时，在新服务器上会重新调用（下载）小于 800 字节的文件。 这些文件将保留在新服务器上并且不会分层，因为它们不符合分层大小要求 (> 64kb)。
 
 > [!Note]  
-> 防病毒供应商可以检查其产品和 Azure 文件同步使用 [Azure 文件同步防病毒软件兼容性测试套件] 之间的兼容性 (https://www.microsoft.com/download/details.aspx?id=58322) ，适用于 Microsoft 下载中心获得。
+> 防病毒供应商可以检查其产品和 Azure 文件同步使用之间的兼容性[Azure 文件同步防病毒软件兼容性测试套件](https://www.microsoft.com/download/details.aspx?id=58322)，适用于 Microsoft 下载中心获得。
 
 ### <a name="backup-solutions"></a>备份解决方案
 与防病毒解决方案一样，备份解决方案可能导致重新调用分层文件。 建议使用云备份解决方案来备份 Azure文件共享，而不是使用本地备份产品。
@@ -263,6 +254,7 @@ Azure 文件同步仅在以下区域中可用：
 | 东亚 | 中国香港特别行政区 |
 | East US | 弗吉尼亚州 |
 | 美国东部 2 | 弗吉尼亚州 |
+| 法国中部 | 巴黎 |
 | 韩国中部| 首尔 |
 | 韩国南部| 釜山 |
 | 日本东部 | 东京都埼玉县 |
@@ -304,6 +296,7 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 | 东亚           | 东南亚     |
 | East US             | 美国西部            |
 | 美国东部 2           | 美国中部         |
+| 法国中部      | 法国南部       |
 | 日本东部          | 日本西部         |
 | 日本西部          | 日本东部         |
 | 韩国中部       | 韩国南部        |

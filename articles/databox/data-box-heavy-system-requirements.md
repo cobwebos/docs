@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: b9e249885bd0e930773d4b374f85d72e60abdbdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 4b41af691bb864dd11b001a6217a7b1e0318d6e0
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427744"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592325"
 ---
-# <a name="azure-data-box-heavy-system-requirements-preview"></a>Azure Data Box Heavy 系统要求（预览版）
+# <a name="azure-data-box-heavy-system-requirements"></a>Azure 数据框大量的系统要求
 
 本文介绍 Azure Data Box Heavy 设备以及连接到该设备的客户端的重要系统要求。 建议在部署 Data Box Heavy 之前仔细查看信息，然后在部署和后续操作期间根据需要重新参考。
 

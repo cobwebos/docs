@@ -3,7 +3,7 @@ title: Oracle 云基础结构与连接的 Azure ExpressRoute |Microsoft Docs
 description: 将 Azure ExpressRoute 连接与 Oracle 云基础结构 (OCI) FastConnect，若要启用跨云 Oracle 应用程序解决方案
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/24/2019
 ms.author: rogirdh
-ms.openlocfilehash: ce1f86f7594692c797aaca5008b211b96ba81fbe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 671d7c8eb9f10e346b49056e1cc117c9882bb6e8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453146"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707565"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>设置 Azure 与 Oracle 云基础结构之间直接相互连接  
 
@@ -32,7 +32,7 @@ ms.locfileid: "67453146"
 
 ![跨云网络连接](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 若要建立 Azure 和 OCI 之间的连接，必须具有有效的 Azure 订阅和 active OCI 租户。
 
@@ -66,7 +66,7 @@ ms.locfileid: "67453146"
     * 在中**提供程序服务密钥**，粘贴 ExpressRoute 服务密钥。
     * 专用 IP 地址空间划分为上一步中使用第一个/30**主要 BGP IP 地址**和第二个/30 专用 IP 地址空间**辅助 BGP IP**地址。
         * 将分配两个范围的第一个可用地址为 Oracle BGP IP 地址 （主要或次要） 和第二个地址给客户 BGP IP 地址 （从 FastConnect 角度看）。 第一个可用 IP 地址是/30 中的第二个 IP 地址的地址的空间 （由 Microsoft 保留的第一个 IP 地址）。
-    * 单击**创建**。
+    * 单击“创建”。 
 1. 完成将 FastConnect 链接到你的 Oracle 租户通过动态路由网关，使用路由表下的虚拟云网络。
 1. 导航到 Azure，并确保**提供程序状态**为 ExpressRoute 线路已更改为**已预配**和该类型的对等互连**Azure 专用**已预配。 这是用于执行以下步骤的先决条件。
 

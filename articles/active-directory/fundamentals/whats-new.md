@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 833a22635c1d53dce9086aa3e11220d5868a302c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: af215c80148010d526c951e7a5128d6e4622b1cd
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471995"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625571"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -61,7 +61,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 
 在 6 月 2019，我们添加到应用程序库支持使用联合身份验证这些 22 新应用程序：
 
-[Azure AD SAML Toolkit](https://docs.microsoft.com/azure/active-directory/saas-apps/saml-toolkit-tutorial)， [Otsuka Shokai （大塚商会）](https://docs.microsoft.com/azure/active-directory/saas-apps/otsuka-shokai-tutorial)， [ANAQUA](https://docs.microsoft.com/azure/active-directory/saas-apps/anaqua-tutorial)， [Azure VPN 客户端](https://portal.azure.com/)， [ExpenseIn](https://docs.microsoft.com/azure/active-directory/saas-apps/expensein-tutorial)， [帮助器帮助程序](https://docs.microsoft.com/azure/active-directory/saas-apps/helper-helper-tutorial)，[价位以帮助](https://docs.microsoft.com/azure/active-directory/saas-apps/costpoint-tutorial)， [GlobalOne](https://docs.microsoft.com/azure/active-directory/saas-apps/globalone-tutorial)， [Mercedes Benz 车内 Office](https://me.secure.mercedes-benz.com/)， [Skore](https://app.justskore.it/)， [Oracle 云基础结构控制台](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial)， [CyberArk SAML 身份验证](https://docs.microsoft.com/azure/active-directory/saas-apps/cyberark-saml-authentication-tutorial)， [Scrible Edu](https://www.scrible.com/sign-in/#/create-account)， [PandaDoc](https://docs.microsoft.com/azure/active-directory/saas-apps/pandadoc-tutorial)， [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial)， [Proptimise OS](https://proptimise.co.uk/property-software/)， [Vtiger CRM (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/vtiger-crm-saml-tutorial)，Oracle 的 Oracle 零售产品销售，适用于 Oracle E-business Suite，Oracle IDC Oracle 访问管理器的访问管理器的电子商务套件，适用于 PeopleSoft，Oracle 对 JD Edwards IDC IDC Oracle
+[Azure AD SAML Toolkit](https://docs.microsoft.com/azure/active-directory/saas-apps/saml-toolkit-tutorial)， [Otsuka Shokai （大塚商会）](https://docs.microsoft.com/azure/active-directory/saas-apps/otsuka-shokai-tutorial)， [ANAQUA](https://docs.microsoft.com/azure/active-directory/saas-apps/anaqua-tutorial)， [Azure VPN 客户端](https://portal.azure.com/)， [ExpenseIn](https://docs.microsoft.com/azure/active-directory/saas-apps/expensein-tutorial)， [帮助器帮助程序](https://docs.microsoft.com/azure/active-directory/saas-apps/helper-helper-tutorial)，[价位以帮助](https://docs.microsoft.com/azure/active-directory/saas-apps/costpoint-tutorial)， [GlobalOne](https://docs.microsoft.com/azure/active-directory/saas-apps/globalone-tutorial)， [Mercedes Benz 车内 Office](https://me.secure.mercedes-benz.com/)， [Skore](https://app.justskore.it/)， [Oracle 云基础结构控制台](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial)， [CyberArk SAML 身份验证](https://docs.microsoft.com/azure/active-directory/saas-apps/cyberark-saml-authentication-tutorial)， [Scrible Edu](https://www.scrible.com/sign-in/#/create-account)， [PandaDoc](https://docs.microsoft.com/azure/active-directory/saas-apps/pandadoc-tutorial)， [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial)， [Proptimise OS](https://proptimise.co.uk/software/)， [Vtiger CRM (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/vtiger-crm-saml-tutorial)，Oracle 的 Oracle 零售产品销售，适用于 Oracle E-business Suite，Oracle IDC Oracle 访问管理器的访问管理器的电子商务套件，适用于 PeopleSoft，Oracle 对 JD Edwards IDC IDC Oracle
 
 有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://aka.ms/azureadapprequest)。
 
@@ -178,7 +178,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 ### <a name="identity-secure-score-is-now-available-in-azure-ad-general-availability"></a>标识安全分数现已推出 Azure AD （正式发布）
 
 **类型：** 新功能  
-**服务类别：** 不适用  
+**服务类别：** 不可用  
 **产品功能：** 标识安全性和保护
 
 你现在可以监视和提高你的身份使用的标识的安全状况保护 Azure AD 中的评分功能。 标识安全功能分数将使用单个仪表板，以帮助您：
@@ -615,7 +615,7 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 ## <a name="february-2019"></a>2019 年 2 月
 
-### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>可配置 Azure AD SAML 令牌加密(公共预览版) 
+### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>可配置 Azure AD SAML 令牌加密 （公共预览版） 
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -627,7 +627,7 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 ---
 
-### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>使用 Azure AD 访问评审创建组或应用的访问评审
+### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>创建访问评审的组或应用使用 Azure AD 访问评审
 
 **类型：** 新功能  
 **服务类别：** 访问评审  
@@ -639,7 +639,7 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Azure AD 应用库中已推出新的联合应用 - 2019 年 2 月
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>新的联合应用可在 Azure AD 应用库-2019 年 2 月
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -653,7 +653,7 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 ---
 
-### <a name="enhanced-combined-mfasspr-registration"></a>增强了组合 MFA/SSPR 注册
+### <a name="enhanced-combined-mfasspr-registration"></a>增强的组合的 MFA/SSPR 注册
 
 **类型：** 已更改的功能  
 **服务类别：** 自助密码重置  
@@ -681,7 +681,7 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 ---
 
-### <a name="updated-policy-management-experience-for-user-flows"></a>更新了用户流的策略管理体验
+### <a name="updated-policy-management-experience-for-user-flows"></a>更新后的策略的管理体验的用户流
 
 **类型：** 已更改的功能  
 **服务类别：** B2C - 使用者标识管理  
@@ -695,7 +695,7 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 ---
 
-### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>选择由 Azure AD B2C 提供的特定页元素版本
+### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>选择 Azure AD b2c 提供的特定页面元素版本
 
 **类型：** 新功能  
 **服务类别：** B2C - 使用者标识管理  
@@ -707,7 +707,7 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 ---
 
-### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>可配置的 B2C (GA) 最终用户密码要求
+### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>可配置最终用户密码要求的 B2C (GA）)
 
 **类型：** 新功能  
 **服务类别：** B2C - 使用者标识管理  
@@ -719,7 +719,7 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 ---
 
-### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>自定义品牌的身份验证体验的新的默认模板
+### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>自定义品牌的身份验证体验的新默认模板
 
 **类型：** 新功能  
 **服务类别：** B2C - 使用者标识管理  

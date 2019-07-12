@@ -3,17 +3,17 @@ title: 排查 Azure 备份代理
 description: 安装和注册 Azure 备份代理进行故障排除
 services: backup
 author: saurabhsensharma
-manager: shivamg
+manager: sivan
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/05/2019
 ms.author: saurse
-ms.openlocfilehash: 1c4c2ed6265bdb3c29986fb0b90c3d85d32aadca
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: HT
+ms.openlocfilehash: 437b175efad081b8382d80be8427aa074920fd3e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434012"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705055"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排除 Microsoft Azure 恢复服务 (MARS) 代理的问题
 
@@ -46,7 +46,7 @@ ms.locfileid: "67434012"
 | 原因 | 建议的操作 |
 | ---     | ---    |
 | **保管库凭据无效** <br/> <br/> 保管库的凭据文件可能已损坏或可能已过期。 （例如，它们可能已下载超过 48 小时之前注册的时间。）| 从 Azure 门户上的恢复服务保管库下载新的凭据。 (请参阅中的步骤 6[下载 MARS 代理](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent)部分。)然后执行以下步骤，根据需要： <ul><li> 如果你已安装并注册 MARS，打开 Microsoft Azure 备份代理 MMC 控制台，然后选择**注册服务器**中**操作**窗格来完成与新的注册凭据。 <br/> <li> 如果新安装将失败，请尝试重新安装使用新的凭据。</ul> **注意**：如果已经下载了多个保管库凭据文件，只有最新的文件的有效期为接下来的 48 小时。 我们建议您下载新的保管库凭据文件。
-| **代理服务器/防火墙阻止注册** <br/>或 <br/>**没有 internet 连接** <br/><br/> 如果您的计算机或代理服务器具有有限的 internet 连接，并且您不确保所必需的 Url 的访问，则注册将失败。| 执行以下步骤：<br/> <ul><li> 使用你的 IT 团队，以确保系统已建立 internet 连接。<li> 如果没有代理服务器，请确保注册代理时，不选择代理选项。 [检查你的代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你有防火墙/代理服务器，使用网络团队协作，确保这些 Url 和 IP 地址具有访问权限：<br/> <br> **URLs**<br> www.msftncsi.com <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>请尝试在完成上述故障排除步骤后再次注册。
+| **代理服务器/防火墙阻止注册** <br/>或 <br/>**没有 internet 连接** <br/><br/> 如果您的计算机或代理服务器具有有限的 internet 连接，并且您不确保所必需的 Url 的访问，则注册将失败。| 执行以下步骤：<br/> <ul><li> 使用你的 IT 团队，以确保系统已建立 internet 连接。<li> 如果没有代理服务器，请确保注册代理时，不选择代理选项。 [检查你的代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你有防火墙/代理服务器，使用网络团队协作，确保这些 Url 和 IP 地址具有访问权限：<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>请尝试在完成上述故障排除步骤后再次注册。
 | **防病毒软件正在阻止注册** | 如果必须在服务器上安装的防病毒软件，将需要排除规则添加到这些文件和文件夹的防病毒扫描： <br/><ui> <li> CBengine.exe <li> CSC.exe<li> Scratch 文件夹中。 其默认位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <li> 位于 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin 的 bin 文件夹。
 
 ### <a name="additional-recommendations"></a>其他建议
@@ -68,34 +68,34 @@ ms.locfileid: "67434012"
 
 ## <a name="unable-to-download-vault-credential-file"></a>无法下载保管库凭据文件
 
-| 错误   | 建议的操作 |
+| Error   | 建议的操作 |
 | ---     | ---    |
 |未能下载保管库凭据文件。 (ID:403) | <ul><li> 请尝试使用不同的浏览器，下载保管库凭据或执行以下步骤： <ul><li> 启动 Internet Explorer。 选择按 F12。 </li><li> 转到**网络**选项卡并清除缓存和 cookie。 </li> <li> 刷新页面。<br></li></ul> <li> 检查是否已禁用或已过期订阅。<br></li> <li> 检查任何防火墙规则是否阻止下载。 <br></li> <li> 请确保你未用完保管库 （每个保管库的 50 个机） 上的限制。<br></li>  <li> 请确保用户具有下载保管库凭据和服务器注册到保管库所需的 Azure 备份权限。 请参阅[使用基于角色的访问控制管理 Azure 备份恢复点](backup-rbac-rs-vault.md)。</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份
 
-| 错误  | 可能的原因 | 建议的操作 |
+| Error  | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
 | <br /><ul><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。 (ID:100050) 检查网络设置，并确保你能够连接到 internet。<li>(407) 代理需要身份验证。 |代理正在阻止连接。 |  <ul><li>在 Internet Explorer 中，转到**工具** > **Internet 选项** > **安全** > **Internet**. 选择**自定义级别**向下滚动到**文件下载**部分。 选择“启用”  。<p>您可能还需要添加[Url 和 IP 地址](backup-configure-vault.md#verify-internet-access)到在 Internet Explorer 中受信任的站点。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。<li> 如果你的计算机具有有限的 internet 访问权限，请确保代理在计算机上的防火墙设置允许这些[Url 和 IP 地址](backup-configure-vault.md#verify-internet-access)。 <li>如果必须在服务器上安装的防病毒软件，请从防病毒扫描中排除这些文件： <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 没有为每个服务器上安装的.NET Framework 版本 CSC.exe。 排除受影响的服务器上所有版本的.NET Framework 的 CSC.exe 文件。 <li>Scratch 文件夹或缓存位置。 <br>Scratch 文件夹或缓存路径的默认位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。<li>位于 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin 的 bin 文件夹。
 
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>未能设置安全备份的加密密钥
 
-| 错误 | 可能的原因 | 建议的操作 |
+| Error | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
 | <br />未能设置安全备份的加密密钥。 激活未完全成功，但加密密码已保存到以下文件。 |<li>服务器已注册到另一个保管库。<li>在配置期间，通行短语已损坏。| 服务器从保管库取消注册并使用新的通行短语重新注册它。
 
 ## <a name="the-activation-did-not-complete-successfully"></a>激活未成功完成
 
-| 错误  | 可能的原因 | 建议的操作 |
+| Error  | 可能的原因 | 建议的操作 |
 |---------|---------|---------|
-|<br />激活未成功完成。 由于内部服务错误 [0x1FC07]，当前操作失败。 请过些时间后重试此操作。 如果问题仍然存在，请联系 Microsoft 支持部门。     | <li> Scratch 文件夹位于不具有足够的空间的卷上。 <li> Scratch 文件夹已被错误地移动。 <li> 缺少 OnlineBackup.KEK 文件。         | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移动到具有介于 5%到 10%的备份数据的总大小之间的可用空间的卷。 若要正确移动缓存位置，请参阅中的步骤[备份文件和文件夹有关的常见问题](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)。<li> 确保 OnlineBackup.KEK 文件存在。 <br>*Scratch 文件夹或缓存路径的默认位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。        |
+|<br />激活未成功完成。 由于内部服务错误 [0x1FC07]，当前操作失败。 请过些时间后重试此操作。 如果问题仍然存在，请联系 Microsoft 支持部门。     | <li> Scratch 文件夹位于不具有足够的空间的卷上。 <li> Scratch 文件夹已被错误地移动。 <li> 缺少 OnlineBackup.KEK 文件。         | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移动到具有介于 5%到 10%的备份数据的总大小之间的可用空间的卷。 若要正确移动缓存位置，请参阅中的步骤[备份文件和文件夹有关的常见问题](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)。<li> 确保 OnlineBackup.KEK 文件存在。 <br>*Scratch 文件夹或缓存路径的默认位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>未正确配置加密通行短语
 
-| 错误  | 可能的原因 | 建议的操作 |
+| Error  | 可能的原因 | 建议的操作 |
 |---------|---------|---------|
-| <br />错误 34506。 未正确配置此计算机上存储的加密密码。    | <li> Scratch 文件夹位于不具有足够的空间的卷上。 <li> Scratch 文件夹已被错误地移动。 <li> 缺少 OnlineBackup.KEK 文件。        | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移动到具有介于 5%到 10%的备份数据的总大小之间的可用空间的卷。 若要正确移动缓存位置，请参阅中的步骤[备份文件和文件夹有关的常见问题](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)。<li> 确保 OnlineBackup.KEK 文件存在。 <br>*Scratch 文件夹或缓存路径的默认位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。         |
+| <br />错误 34506。 未正确配置此计算机上存储的加密密码。    | <li> Scratch 文件夹位于不具有足够的空间的卷上。 <li> Scratch 文件夹已被错误地移动。 <li> 缺少 OnlineBackup.KEK 文件。        | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移动到具有介于 5%到 10%的备份数据的总大小之间的可用空间的卷。 若要正确移动缓存位置，请参阅中的步骤[备份文件和文件夹有关的常见问题](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)。<li> 确保 OnlineBackup.KEK 文件存在。 <br>*Scratch 文件夹或缓存路径的默认位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。         |
 
 
 ## <a name="backups-dont-run-according-to-schedule"></a>不按照计划运行备份

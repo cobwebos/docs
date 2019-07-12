@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f24ad348c681609392f83af894bf774dbee226bc
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60763085"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620842"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
 
@@ -33,7 +33,7 @@ ms.locfileid: "60763085"
 
 若要标识 Twitter 上的实时热门话题，公司需要关于关键主题推文量及情绪的实时分析。 换而言之，需要一个基于该社交媒体源的情绪分析分析引擎。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 本教程将使用客户端应用程序连接到 Twitter，并查找具有特定井号标签（可设置）的推文。 为了运行应用程序并使用 Azure 流分析来分析推文，必须具备以下内容：
 
 * Azure 订阅
@@ -67,7 +67,7 @@ ms.locfileid: "60763085"
 
     ![用于创建新事件中心的边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
-7. 单击**创建**。
+7. 单击“创建”。 
 
 
 ### <a name="grant-access-to-the-event-hub"></a>授予对事件中心的访问权限
@@ -85,7 +85,7 @@ ms.locfileid: "60763085"
 
     ![用于创建新事件中心访问策略的边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
  
-4.  单击**创建**。
+4.  单击“创建”。 
 
 5.  部署策略后，在共享访问策略列表中单击该策略。
 
@@ -206,7 +206,7 @@ ms.locfileid: "60763085"
 
     ![创建新的流分析作业](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
-3. 单击**创建**。
+3. 单击“创建”。 
 
     创建作业后，门户就会显示作业详细信息。
 
@@ -227,14 +227,14 @@ ms.locfileid: "60763085"
 
      ![为流分析作业创建新输入](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-3. 单击**创建**。
+3. 单击“创建”。 
 
 
 ## <a name="specify-the-job-query"></a>指定作业查询
 
-流分析支持简单的声明性查询模型，该模型用于描述转换。 若要了解有关语言的详细信息，请参阅 [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)。  本教程会帮助你创作和测试多个针对 Twitter 数据的查询。
+流分析支持简单的声明性查询模型，该模型用于描述转换。 若要了解有关语言的详细信息，请参阅 [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)。  本教程会帮助你创作和测试多个针对 Twitter 数据的查询。
 
-若要比较各个主题的提及次数，可使用[翻转窗口](https://msdn.microsoft.com/library/azure/dn835055.aspx)每五秒按主题获取提及次数。
+若要比较各个主题的提及次数，可使用[翻转窗口](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)每五秒按主题获取提及次数。
 
 1. 如果尚未关闭“输入”边栏选项卡，请将其关闭  。
 
@@ -266,13 +266,13 @@ ms.locfileid: "60763085"
 
     如果未将 `TwitterStream` 用作输入的别名，请在查询中将别名替换为 `TwitterStream`。  
 
-    此查询使用 **TIMESTAMP BY** 关键字指定在临时计算中使用的有效负载的时间戳字段。 如果未指定此字段，会根据每个事件到达事件中心的时间执行窗口化操作。 通过 [Stream Analytics Query Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)（流分析查询参考）的“Arrival Time vs Application Time”（到达时间与应用程序时间比较）部分了解详细信息。
+    此查询使用 **TIMESTAMP BY** 关键字指定在临时计算中使用的有效负载的时间戳字段。 如果未指定此字段，会根据每个事件到达事件中心的时间执行窗口化操作。 通过 [Stream Analytics Query Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)（流分析查询参考）的“Arrival Time vs Application Time”（到达时间与应用程序时间比较）部分了解详细信息。
 
     此查询还可以通过使用 **System.Timestamp** 属性访问每个窗口结束时的时间戳。
 
 5. 单击“测试”  。 查询会针对已采用的数据运行。
     
-6. 单击“ **保存**”。 这将查询保存为流分析作业的一部分。 （不会保存示例数据。）
+6. 单击“保存”  。 这将查询保存为流分析作业的一部分。 （不会保存示例数据。）
 
 
 ## <a name="experiment-using-different-fields-from-the-stream"></a>使用流中的不同字段进行试验 
@@ -312,7 +312,7 @@ ms.locfileid: "60763085"
     
      ![流分析作业的“新建输出”边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
-4. 单击**创建**。 
+4. 单击“创建”。  
 
     Azure 创建存储帐户，并自动生成密钥。 
 
@@ -348,7 +348,7 @@ ms.locfileid: "60763085"
 
 ## <a name="create-another-query-to-identify-trending-topics"></a>创建另一个查询以标识热门话题
 
-可用于了解 Twitter 情绪的另一个查询是基于[滑动窗口](https://msdn.microsoft.com/library/azure/dn835051.aspx)。 为了确定热门话题，需查找指定时间内超出某一提及次数阈值的主题。
+可用于了解 Twitter 情绪的另一个查询是基于[滑动窗口](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)。 为了确定热门话题，需查找指定时间内超出某一提及次数阈值的主题。
 
 对于本教程，需检查过去 5 秒内提及次数超过 20 次的主题。
 
@@ -365,7 +365,7 @@ ms.locfileid: "60763085"
     HAVING COUNT(*) > 20
     ```
 
-4. 单击“ **保存**”。
+4. 单击“保存”  。
 
 5. 请确保 TwitterWpfClient 应用程序正在运行。 
 
@@ -379,5 +379,5 @@ ms.locfileid: "60763085"
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

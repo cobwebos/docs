@@ -2,24 +2,25 @@
 title: 了解 Azure 安全中心的 IoT 安全建议预览 |Microsoft Docs
 description: 了解安全建议以及如何使用它们在 Azure 安全中心对 IoT 的概念。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 02ced504-d3aa-4770-9d10-b79f80af366c
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 122a1585abf43d1aedc7f329cd7e41a6228f8c3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ee71bbacdba7a14e94de41563a04be9c0f00d13
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200669"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618411"
 ---
 # <a name="security-recommendations"></a>安全建议
 
@@ -35,7 +36,7 @@ Azure 安全中心 (ASC) IoT 扫描你的 Azure 资源和 IoT 设备，并提供
 
 设备建议提供见解和建议以提高设备安全状态。 
 
-| Severity | Name                                                      | 数据源 | 描述                                                                                                                                                                                           |
+| Severity | 名称                                                      | 数据源 | 描述                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 中型   | 在设备上打开端口                                      | 代理       | 在设备上找到的侦听终结点                                                                                                                                                          |
 | 中型   | 在一个链中找到的宽松的防火墙策略。 | 代理       | 允许找到 （输入/输出） 的防火墙策略。 防火墙策略应默认情况下，拒绝所有流量，并定义相应规则以允许与设备的必要通信。                               |
@@ -47,7 +48,7 @@ Azure 安全中心 (ASC) IoT 扫描你的 Azure 资源和 IoT 设备，并提供
 
 操作建议提供见解和建议以提高安全代理配置。
 
-| Severity | Name                                    | 数据源 | 描述                                                                       |
+| Severity | 名称                                    | 数据源 | 描述                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
 | 低      | 代理将导致的消息发送          | 代理       | 过去 24 小时内已小于 4 kb 10%或更多安全消息。  |
 | 低      | 不是最佳的安全克隆配置 | 代理       | 安全孪生配置并非最佳选择。                                        |

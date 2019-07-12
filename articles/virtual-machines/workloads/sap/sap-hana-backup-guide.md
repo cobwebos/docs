@@ -4,7 +4,7 @@ description: SAP HANA 备份指南介绍适用于 Azure 虚拟机上的 SAP HANA
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 89896fab7b1c359007ed23d4f9d9771e366ca68a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91671b39e6ac33e16636cc924f5c0aa5e3fcbf3b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60936935"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709943"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP HANA 备份指南
 
@@ -207,7 +207,7 @@ Azure 备份服务可以处理加密的 VM/磁盘（请参阅[如何使用 Azure
 
 使用 HANA Studio 备份控制台可以限制 HANA 备份文件的最大文件大小。 在示例环境中，使用该功能可能会导致生成多个较小的备份文件，而不是一个 230-GB 的备份文件。 较小的文件大小会对性能造成明显的影响（请参阅相关文章[文件级别的 SAP HANA Azure 备份](sap-hana-backup-file-level.md)）。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 下表根据测试结果显示了用于备份 Azure 虚拟机上运行的 SAP HANA 数据库的解决方案的优点和缺点。
 

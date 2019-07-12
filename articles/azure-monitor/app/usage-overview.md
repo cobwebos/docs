@@ -13,12 +13,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: f2539d5250ff436a720fe10f748f40db29b0ee25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba29688958ee11aa9906a820f7a3d2bf41223743
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783396"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798167"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -132,11 +132,11 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 在 Application Insights 门户中根据属性值筛选和拆分数据，以便比较不同的版本。
 
-为此，请[设置遥测初始值设定项](../../azure-monitor/app/api-filtering-sampling.md##add-properties-itelemetryinitializer)：
+为此，请[设置遥测初始值设定项](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)：
+
+**ASP.NET 应用程序**
 
 ```csharp
-
-
     // Telemetry initializer class
     public class MyTelemetryInitializer : ITelemetryInitializer
     {
@@ -155,8 +155,24 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
     {
         // ...
         TelemetryConfiguration.Active.TelemetryInitializers
-        .Add(new MyTelemetryInitializer());
+         .Add(new MyTelemetryInitializer());
     }
+```
+
+**ASP.NET Core 应用**
+
+> [!NOTE]
+> 使用添加初始值设定项`ApplicationInsights.config`或使用`TelemetryConfiguration.Active`不能用于 ASP.NET Core 应用程序。 
+
+有关[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)添加一个新的应用程序`TelemetryInitializer`可通过将其添加到依赖关系注入容器，如下所示。 这是在`ConfigureServices`方法在`Startup.cs`类。
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
 ```
 
 所有新的 TelemetryClient 会自动添加指定的属性值。 单个遥测事件可以替代默认值。

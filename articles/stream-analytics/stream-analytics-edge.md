@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 17b9d11b75e2677e22fa2e38c21a69f018a4bee8
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 8e3b6d0fbefb8e3d3437fd5e24f929e453c573df
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508346"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621014"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 流分析
  
@@ -46,7 +46,7 @@ ASA 使用 IoT 中心将 Edge 作业部署到设备。 [可在此处查看有关
 
 |      |步骤   | 说明   |
 | ---   | ---   |  ---      |
-| 第   | 创建存储容器    | 存储容器用于保存作业定义，IoT 设备可在其中进行访问它们。 <br>  你可以重用任何现有的存储容器。     |
+| 1   | 创建存储容器    | 存储容器用于保存作业定义，IoT 设备可在其中进行访问它们。 <br>  你可以重用任何现有的存储容器。     |
 | 2   | 创建 ASA 边缘作业    |  创建新的作业，选择“Edge”  作为“宿主环境”  。 <br> 这些作业从云创建/管理，并在你自己的 IoT Edge 设备上运行。     |
 | 3   | **在设备上设置 IoT Edge 环境**   | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) 或 [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 说明。          |
 | 4   | 在 IoT Edge 设备上部署 ASA    |  ASA 作业定义被导出到之前创建的存储容器。       |
@@ -81,7 +81,7 @@ ASA 使用 IoT 中心将 Edge 作业部署到设备。 [可在此处查看有关
 4. 在“IoT Edge 设置”  菜单中设置存储容器信息。
 
 5. 设置可选设置
-    1.  事件排序。 你可以在门户中配置无序策略。 [此处](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396)可获取文档。
+    1.  事件排序。 你可以在门户中配置无序策略。 [此处](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)可获取文档。
     2.  区域设置。 设置内部化格式。
 
 

@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 0da95dbdca52232b4b24ad921bf2d9c78dc76d56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e467def33eb2980e58611d50c314a1206877e3b0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247719"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619691"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>合作伙伴中心中的商业应用商店的分析
 
@@ -138,7 +138,7 @@ ms.locfileid: "66247719"
 
 - **通过 Azure 计费**:Microsoft 按代表你的客户，当您选择[出售产品/服务通过 Microsoft](./create-new-saas-offer.md#sell-through-microsoft)此许可证类型。 付款类型包括即用即付通过信用卡或发票企业。
 - **自带许可**:Microsoft 不向客户的这种类型的 marketplace 产品/服务使用情况收取费用。 列为 **[立即获取 （免费）](./create-new-saas-offer.md#get-it-now-free)** 在 marketplace 中。
-- **免费**：Microsoft 不向客户的这种类型的 marketplace 产品/服务使用情况收取费用。 列为 **[免费试用版](./create-new-saas-offer.md#free-trial)** 在 marketplace 中。
+- **免费**：Microsoft 不向客户的这种类型的 marketplace 产品/服务使用情况收取费用。 列为 **[免费试用版](./create-new-saas-offer.md##free-trial-listing)** 在 marketplace 中。
 - **在 Microsoft 的分销商**:表示产品/服务的一部分由 Microsoft 分销商销售 **[云解决方案提供商 (CSP) 计划](./create-new-saas-offer.md#csp-program-opt-in)** 。
 
 ![按许可证类型列出的合作伙伴中心分析订单](./media/analyze-license-type.png)

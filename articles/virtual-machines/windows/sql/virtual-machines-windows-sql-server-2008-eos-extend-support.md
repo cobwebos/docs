@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ecb7030fa3652525a36ce15d66ea6e5daf9c3296
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b16fecd6db1f4bed319c832795a2252f8de96c6c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304223"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607136"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>扩展对 SQL Server 2008 和 SQL Server 2008 R2 与 Azure 支持
 
@@ -43,7 +43,7 @@ SQL Server 2008 上的客户将需要自行安装或升级到 SQL Server 2008 R2
 ## <a name="licensing"></a>许可
 可以转换为即用即付 SQL Server 2008R2 部署[Azure 混合权益 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/)。
 
-若要将软件保障 (SA) 基于许可证转换为即用即付，客户应注册与 SQL VM[资源提供程序](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)。 后注册到 SQL VM 资源提供程序，SQL 许可证类型将是可互换 AHB 和即用即付之间。
+若要将软件保障 (SA) 基于许可证转换为即用即付，客户应注册与 SQL VM[资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)。 后注册到 SQL VM 资源提供程序，SQL 许可证类型将是可互换 AHB 和即用即付之间。
 
 Azure VM 上自行安装的 SQL Server 2008 或 SQL Server 2008 R2 实例可以使用 SQL 资源提供程序注册，并将他们的许可类型转换为即用即付。
 
@@ -69,7 +69,7 @@ EOS 上的 SQL Server Azure VM 灾难恢复解决方案如下所示：
 - **Azure Site Recovery**：可以区域和通过 Azure Site Recovery 复制的区域之间复制 VM。 SQL Server 要求应用程序一致的快照，以确保在发生灾难时进行恢复。 Azure Site Recovery 提供最小 1 小时的 RPO 和 2 小时 + SQL Server 恢复时间 RTO EOS SQL Server 灾难恢复。
 
 ## <a name="security-patching"></a>安全修补
-带有 SQL 注册 SQL Server 虚拟机后，将通过 Microsoft 更新通道传递出去的 SQL Server Vm 的扩展的安全更新[资源提供程序](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)。 也可以手动或自动下载修补程序。
+带有 SQL 注册 SQL Server 虚拟机后，将通过 Microsoft 更新通道传递出去的 SQL Server Vm 的扩展的安全更新[资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)。 也可以手动或自动下载修补程序。
 
 **自动修补** ：默认处于启用状态。 Azure 可以通过自动修补来自动修补 SQL Server 和操作系统。 如果安装 SQL IaaS 扩展，可以指定一周、 时间和维护时段的持续时间的日。 Azure 会在维护时段进行修补。 维护时段计划使用 VM 的时间区域设置。  有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动修补](virtual-machines-windows-sql-automated-patching.md)。
 

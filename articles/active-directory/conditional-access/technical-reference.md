@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5919eebccad8d7f9e048ae07be296eaaaf8428eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 535842989ef49ee13a5ddee7c4349a3b819f741c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112103"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797846"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -101,7 +101,7 @@ ms.locfileid: "67112103"
 
 在条件性访问策略中，可以配置[客户端应用](conditions.md#client-apps)条件，将绑定到的客户端应用程序具有发起访问尝试的策略。 设置客户端应用条件，在用户尝试从以下类型的客户端应用进行访问时授予其访问权限或阻止访问：
 
-- 浏览器
+- 浏览者
 - 移动应用和桌面应用
 
 ![控制客户端应用的访问](./media/technical-reference/03.png)
@@ -114,7 +114,7 @@ ms.locfileid: "67112103"
 
 此设置适用于所有浏览器。 但是，若要符合设备策略（如兼容设备要求），支持以下操作系统和浏览器：
 
-| 操作系统                     | 浏览器                                      |
+| OS                     | 浏览器                                      |
 | :--                    | :--                                           |
 | Windows 10             | Internet Explorer、Microsoft Edge、Chrome     |
 | Windows 8/8.1        | Internet Explorer、Chrome                     |
@@ -134,15 +134,15 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 
 #### <a name="chrome-support"></a>Chrome 支持
 
-对于 Windows 10 创意者更新（版本 1703）或更高版本中的 Chrome 支持，请安装[此扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)  。
+对于 Chrome 支持在**Windows 10 创意者更新 (1703 版本)** 或更高版本，安装[Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 条件性访问策略要求设备特定的详细信息时需要此扩展。
 
 若要自动将此扩展部署到 Chrome 浏览器，请创建以下注册表项：
 
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1 |
-| Type | REG_SZ (String) |
+| 名称 | 1 |
+| 类型 | REG_SZ (String) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
 对于 Windows 8.1 和 7  中的 Chrome 支持，请创建以下注册表项：
@@ -150,8 +150,8 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1 |
-| Type | REG_SZ (String) |
+| 名称 | 1 |
+| type | REG_SZ (String) |
 | Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。

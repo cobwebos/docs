@@ -5,23 +5,23 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 684491b546a0456d936ae199cdfb93180aa05043
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64867969"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607023"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
 > [!NOTE]
-> Azure Monitor 数据平台基于两种基本数据类型：指标和日志。 本文介绍指标。 请参阅[Azure Monitor 中的日志](data-platform-logs.md)有关详细说明的日志和[Azure Monitor 数据平台](data-platform.md)有关的两个比较。
+> Azure Monitor 数据平台基于两种基本数据类型：指标和日志。 本文介绍指标。 有关日志的详细介绍，请参阅 [Azure Monitor 中的日志](data-platform-logs.md)；有关日志与指标的比较，请参阅 [Azure Monitor 数据平台](data-platform.md)。
 
 Azure Monitor 中的指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。 本文将介绍指标的构建方式、可对指标执行哪些操作，以及如何识别需要在指标中存储数据的不同数据源。
 
@@ -100,7 +100,7 @@ Azure Monitor 从三个基本源收集指标。 在 Azure Monitor 指标数据�
 ## <a name="retention-of-metrics"></a>指标的保留期
 对于 Azure 中的大多数资源，指标存储 93 天。 有一些例外情况：
   * **经典来宾 OS 指标**。 经典来宾 OS 指标会保留 14 天。 若要保留期更长，我们建议使用新的来宾 OS 指标，这些指标使用 [Windows 诊断扩展 (WAD)](../platform/diagnostics-extension-overview.md) 收集，并用于具有 [InfluxData Telegraf 代理](https://www.influxdata.com/time-series-platform/telegraf/)的 Linux 虚拟机。
-  * **Application Insights 基于日志的指标**。 在场景后面[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md)转换日志查询。 其保留期与基础日志中事件的保留期相匹配。 对于 Application Insights 资源，日志存储 90 天。 
+  * **Application Insights 基于日志的指标**。 在后台，[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md)将转换为日志查询。 其保留期与基础日志中事件的保留期相匹配。 对于 Application Insights 资源，日志存储 90 天。 
 
 > [!NOTE]
 > 可[将 Azure Monitor 资源的平台指标发送到 Log Analytics 工作区](diagnostic-logs-stream-log-store.md)以分析长期趋势。

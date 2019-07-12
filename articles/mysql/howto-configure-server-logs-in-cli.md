@@ -1,23 +1,23 @@
 ---
 title: 访问慢速查询 Azure Database for MySQL 中日志使用 Azure CLI
 description: 本文介绍如何使用 Azure CLI 访问 for MySQL 的 Azure 数据库中的慢查询日志。
-author: andrela
-ms.author: ajlam
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 06/12/219
-ms.openlocfilehash: 740dbce579fba6347b1a7f2cfc6bcae40d3503ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/12/2019
+ms.openlocfilehash: e6d25a4d8b470580626cab4a84f9d912a3f79f75
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052709"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612641"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>配置和使用 Azure CLI 访问慢查询日志
 可以使用 Azure CLI、 Azure 命令行实用程序来下载 Azure Database for MySQL 慢查询日志。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)
 - [Azure CLI](/cli/azure/install-azure-cli) 或浏览器中的 Azure Cloud Shell

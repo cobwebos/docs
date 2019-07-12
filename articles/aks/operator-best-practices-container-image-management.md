@@ -2,17 +2,17 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的容器映像管理
 description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理和保护容器映像的群集操作员最佳做法
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: iainfou
-ms.openlocfilehash: ea39bceaa6b58e84def9635436d902002e33cd14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514511"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614819"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中容器映像管理和安全性的最佳做法
 
@@ -24,13 +24,13 @@ ms.locfileid: "66514511"
 > * 扫描并修复映像漏洞
 > * 在更新基础映像时自动触发并重新部署容器映像
 
-还可以阅读[群集安全性][best-practices-cluster-security]和[Pod 安全性][best-practices-pod-security]的最佳做法。
+您还可以阅读的最佳实践[群集安全性][best-practices-cluster-security] and for [pod security][best-practices-pod-security]。
 
 ## <a name="secure-the-images-and-run-time"></a>保护映像和运行时
 
 **最佳做法指南** - 扫描容器映像是否存在漏洞，只部署通过了验证的映像。 定期更新基础映像和应用程序运行时，然后在 AKS 群集中重新部署工作负荷。
 
-采用基于容器的工作负荷的一个要素是：验证用于生成自己的应用程序的映像和运行时的安全性。 如何确保不向部署中引入安全漏洞？ 部署工作流应包含一个使用 [Twistlock][twistlock] 或 [Aqua][aqua] 等工具扫描容器映像的流程，然后只允许部署经过验证的映像。
+采用基于容器的工作负荷的一个要素是：验证用于生成自己的应用程序的映像和运行时的安全性。 如何确保不向部署中引入安全漏洞？ 部署工作流应包括一个进程来扫描容器映像，如使用工具[Twistlock][twistlock] or [Aqua][aqua]，然后仅允许已验证要部署映像。
 
 ![扫描并修复容器映像、验证和部署](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 
@@ -40,17 +40,17 @@ ms.locfileid: "66514511"
 
 **最佳做法指南** - 你使用的是应用程序映像的基础映像，请在更新基础映像时通过自动化生成新映像。 这些基础映像通常包含安全修补程序，请更新所有下游应用程序容器映像。
 
-每次更新基础映像时，都应更新任何下游容器映像。 应将此生成过程集成到验证和部署管道中（例如 [Azure Pipelines][azure-pipelines] 或 Jenkins）。 这些管道确保应用程序继续在更新后的基础映像上运行。 验证应用程序容器映像后，就可以更新 AKS 部署，以便运行最新的安全映像。
+每次更新基础映像时，都应更新任何下游容器映像。 应将此生成过程集成到验证和部署管道，如[Azure 管道][azure-pipelines]或 Jenkins。 这些管道确保应用程序继续在更新后的基础映像上运行。 验证应用程序容器映像后，就可以更新 AKS 部署，以便运行最新的安全映像。
 
 Azure 容器注册表任务也可以在更新基础映像时自动更新容器映像。 通过此功能，你可以生成少量基础映像，并通过 bug 修复和安全修复定期更新它们。
 
-有关基础映像更新的详细信息，请参阅[使用 Azure 容器注册表任务在基础映像更新时自动化映像生成][acr-base-image-update].
+有关基本映像更新的详细信息，请参阅[上使用 Azure 容器注册表任务的基础映像更新的自动映像生成][acr-base-image-update]。
 
 ## <a name="next-steps"></a>后续步骤
 
 本文重点介绍了如何保护容器。 若要实施其中某些做法，请参阅以下文章：
 
-* [使用 Azure 容器注册表任务在基础映像更新时自动化映像生成][acr-base-image-update]
+* [自动生成映像在 Azure 容器注册表任务的基本映像更新][acr-base-image-update]
 
 <!-- EXTERNAL LINKS -->
 [azure-pipelines]: /azure/devops/pipelines/?view=vsts

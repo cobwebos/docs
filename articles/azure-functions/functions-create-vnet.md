@@ -7,13 +7,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
-ms.author: alkarche, glenga
-ms.openlocfilehash: 55cce60ab3d1cda3cb870afd2f6214f917a04189
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: alkarche
+ms.reviewer: glenga
+ms.openlocfilehash: 0a31b58a3c843a2add0c84dc1a3ad4ab6417815e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063274"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612891"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>教程： 将与 Azure 虚拟网络集成函数
 
@@ -37,7 +38,7 @@ ms.locfileid: "67063274"
 
 在高级版计划中运行的函数具有与 web 应用相同的托管功能在 Azure 应用服务中，其中包括 VNet 集成功能。 若要详细了解 VNet 集成，包括故障排除和高级配置，请参阅[将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 对于本教程中，它是必须了解 IP 寻址和子网。 可以使用启动[本文介绍了寻址和子网的基础知识](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)。 很多更多文章和视频，请联机参阅。
 
@@ -68,7 +69,7 @@ ms.locfileid: "67063274"
     | **订阅** | 订阅 | 你的资源在其下创建的订阅。 | 
     | **[资源组](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | 选择`myResourceGroup`，或使用 function app 创建的资源组。 为函数应用，WordPress VM 使用相同的资源组和托管计划轻松完成本教程时清理资源。 |
     | **虚拟机名称** | VNET-Wordpress | VM 名称必须是唯一的资源组中 |
-    | **[区域](https://azure.microsoft.com/regions/)** | （欧洲）欧洲西部 | 选择你附近的区域或附近函数的访问 VM。 |
+    | **[区域](https://azure.microsoft.com/regions/)** | （欧洲）西欧 | 选择你附近的区域或附近函数的访问 VM。 |
     | **大小** | B1s | 选择**更改大小**，然后选择 B1s 标准映像，具有 1 个 vCPU 和 1 GB 的内存。 |
     | **身份验证类型** | 密码 | 若要使用密码身份验证，还必须指定**用户名**，一种安全**密码**，然后**确认密码**。 对于本教程，您不需要登录到 VM，除非需要进行故障排除。 |
 

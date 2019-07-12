@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 44f16b3334b991e071fa85ca4cffbc0837f0a6ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffce8a2bd8a04e73acdeac037be0b10ba1a9a887
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244434"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672387"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>将认知服务资源与 Azure 搜索中的技能集联系起来 
 
@@ -42,7 +42,7 @@ AI 算法驱动器[认知索引管道](cognitive-search-concept-intro.md)用于�
 
 1. 打开导入数据向导：
 
-   ![打开导入数据向导](media/search-get-started-portal/import-data-cmd2.png "打开导入数据向导")
+   ![打开导入数据向导](media/search-get-started-portal/import-data-cmd.png "打开导入数据向导")
 
 1. 选择数据源，然后转到“添加认知搜索(可选)”。  有关此向导的分步演练，请参阅[使用门户工具进行导入、索引编制和查询](search-get-started-portal.md)。
 
@@ -136,7 +136,7 @@ Content-Type: application/json
 }
 ```
 
-## <a name="example-estimate-costs"></a>示例：估算成本
+## <a name="example-estimate-costs"></a>例如：估算成本
 
 若要估算认知搜索索引编制的相关成本，请先构想一下文档的大致结构，以便能够得出一些数字。 例如，可以使用以下似近值：
 

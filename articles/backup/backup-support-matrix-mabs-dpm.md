@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 0f99042d91738c88a8b673444bb3d4a40602b012
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 85e65c36a0d636d94a9ef9070c21ab047542d8f4
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204168"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594258"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 备份的支持矩阵
 
@@ -53,9 +53,9 @@ DPM 和 MABS 支持备份各种应用、服务器和客户端操作系统。 它
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-**方案** | **代理** | **位置**
+**方案** | **代理** | **Location**
 --- | --- | ---
-**备份本地计算机/工作负荷** | 你想要备份的计算机上运行 DPM/MABS 保护代理。<br/><br/> DPM/MABS 服务器上在 MARS 代理。 | 必须在本地运行 DPM/MABS。
+**备份本地计算机/工作负荷** | 你想要备份的计算机上运行 DPM/MABS 保护代理。<br/><br/> DPM/MABS 服务器上在 MARS 代理。<br/> 启用此功能所需的 Microsoft Azure 恢复服务代理或 Azure 备份代理的最低版本为 2.0.8719.0。  | 必须在本地运行 DPM/MABS。
 **Azure VM/工作负荷的备份** | 受保护计算机上的 DPM/MABS 保护代理。<br/><br/> DPM/MABS 服务器上在 MARS 代理。 | DPM/MABS 必须在 Azure VM 上运行。
 
 ## <a name="supported-deployments"></a>支持的部署
@@ -152,7 +152,7 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 - MBS 备份存储在弹性文件系统 (ReFS) 磁盘中。
 - MBS 使用 ReFS 块克隆备份更快和更有效地使用存储空间。
 - 在将卷添加到本地 DPM/MABS 存储池时，需要可以通过驱动器号配置它们。 然后，可以在不同的卷上配置工作负荷存储。
-- 创建保护组用于将数据备份到 DPM/MABS 时，可以选择要使用的驱动器。 例如，可能会为 SQL 或其他高 IOPS 工作负荷的高性能驱动器存储备份和存储将备份频率较低的性能驱动器的工作负载。
+- 创建保护组用于将数据备份到 DPM/MABS 时，可以选择要使用的驱动器。 例如，可能会为 SQL 或其他高 IOPS 工作负荷高效的驱动器上存储备份和存储将备份频率较低的性能驱动器的工作负载。
 
 
 ## <a name="supported-backups-to-mabs"></a>MABS 支持的备份
@@ -206,7 +206,7 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 **VMware VM：vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3、v2 <br/><br/> DPM 2012 R2 需要 System Center 更新汇总 1 <br/><br/>本地。 | VMware Vm 备份 Csv、 NFS 和 SAN 存储上。<br/><br/> 恢复整个 VM。<br/><br/> Windows/Linux 备份。<br/><br/> 文件夹/文件的项级恢复（仅适用于 Windows VM）。<br/><br/> 不支持 VMware vApp。<br/><br/> Linux VM 的恢复是针对整个计算机进行的。
 
 
-- 请注意，群集工作负载由 DPM/MABS 备份应在与 DPM/MABS 相同的域或子/受信任的域。
+- 群集工作负载由 DPM/MABS 备份应在与 DPM/MABS 相同的域或子/受信任的域。
 - 可以使用 NTLM/证书身份验证在不受信任的域或工作组中备份数据。
 
 

@@ -4,7 +4,7 @@ description: 在 Azure 环境中设计和实现 Oracle 数据库。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 039b1628571b786a4997c08f96cc9aa0f347c7f7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8058246ea5f4ac87c24fab8c5ec64032eb8a1f0b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446699"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710639"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -212,7 +212,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 保存数据磁盘设置后，将无法更改主机缓存设置，除非在 OS 级别卸载驱动器，然后在进行更改后重新装载它。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 设置并配置 Azure 环境后，下一步是保护网络的安全。 以下是一些建议：
 

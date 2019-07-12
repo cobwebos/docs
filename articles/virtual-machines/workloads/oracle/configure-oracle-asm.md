@@ -4,7 +4,7 @@ description: 在 Azure 环境中快速启动并运行 Oracle ASM。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 0af6e87d3e0b4b3b40b63db07384d4a33a9d43e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2f6eab495680b3f32246488af5b7bbe5263d93a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154189"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707703"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
@@ -461,14 +461,14 @@ ssh <publicIpAddress>
 
    ![安装程序中的“选择安装选项”页屏幕截图](./media/oracle-asm/install01.png)
 
-3. 在“选择产品语言”页上，确保已选择“英语”或所需的语言。    单击`next`。
+3. 在“选择产品语言”页上，确保已选择“英语”或所需的语言。    单击 `next`。
 
 4. 在“创建 ASM 磁盘组”页上： 
    - 输入磁盘组的名称。
    - 在“冗余”下面，选择“外部”。  
    - 在“分配单元大小”下面，选择“4”。  
    - 在“添加磁盘”下面，选择“ORCLASMSP”。  
-   - 单击`next`。
+   - 单击 `next`。
 
 5. 在“指定 ASM 密码”页上，选择“对这些帐户使用相同的密码”选项，并输入密码。  
 

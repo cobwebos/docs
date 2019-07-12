@@ -2,17 +2,17 @@
 title: 升级 Azure Kubernetes 服务 (AKS) 群集
 description: 了解如何升级 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 2cadd4b33cb52307599ce1e83eee8370ef9850fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: dd88b5a044fe495da374178be8774f45bdd30f61
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66692778"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614060"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
@@ -26,7 +26,7 @@ ms.locfileid: "66692778"
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>检查是否有可用的 AKS 群集升级
 
-若要检查哪些 Kubernetes 版本可用于群集，请使用 [az aks get-upgrades][az-aks-get-upgrades] 命令。 以下示例在名为 *myResourceGroup* 的资源组中检查是否有可供名为 *myAKSCluster* 的群集使用的升级：
+若要检查哪些 Kubernetes 版本不可用于你的群集，请使用[az aks get-升级][az-aks-get-upgrades]命令。 以下示例在名为 *myResourceGroup* 的资源组中检查是否有可供名为 *myAKSCluster* 的群集使用的升级：
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
@@ -47,7 +47,7 @@ default  myResourceGroup  1.11.9         1.11.9           1.12.7, 1.12.8
 
 ## <a name="upgrade-an-aks-cluster"></a>升级 AKS 群集
 
-如果有一系列适用于 AKS 群集的版本，则可使用 [az aks upgrade][az-aks-upgrade] 命令进行升级。 在升级过程中，AKS 将新节点添加到群集，在运行指定的 Kubernetes 版本，然后仔细[cordon 和大量消耗][ kubernetes-drain]尽量减少中断正在运行的旧节点之一应用程序。 当新节点确认为运行应用程序 pod 时，将删除旧节点。 重复此过程，直到群集中的所有节点均未都升级。
+使用 AKS 群集的可用版本的列表，使用[az aks 升级][az-aks-upgrade]command to upgrade. During the upgrade process, AKS adds a new node to the cluster that runs the specified Kubernetes version, then carefully [cordon and drains][kubernetes-drain]要尽量减少到正在运行的应用程序造成中断的旧节点之一。 当新节点确认为运行应用程序 pod 时，将删除旧节点。 重复此过程，直到群集中的所有节点均未都升级。
 
 下面的示例将群集升级到版本*1.12.8*:
 
@@ -57,7 +57,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 
 升级群集需要几分钟时间，具体取决于有多少节点。
 
-若要确认升级是否成功，请使用 [az aks show][az-aks-show] 命令：
+若要确认升级是否成功，请使用[az aks 显示][az-aks-show]命令：
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table

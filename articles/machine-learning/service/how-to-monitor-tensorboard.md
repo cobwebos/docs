@@ -1,21 +1,20 @@
 ---
-title: 可视化使用 TensorBoard 和 Azure 机器学习服务的试验
+title: 使用 TensorBoard 将试验可视化
+titleSuffix: Azure Machine Learning service
 description: 启动 TensorBoard 可视化试验运行历史记录，并确定潜在的超参数优化和重新训练的领域。
 services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: article
 author: maxluk
 ms.author: maxluk
-ms.reviewer: nibaccam
-ms.service: machine-learning
-ms.component: core
-ms.workload: data-services
-ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: babd4cdf8b7ed9e04b4bd975d840688b27439c4f
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: fde2b6d1d298e89227951c376d584452fbff2679
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560855"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707053"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>可视化试验运行和使用 TensorBoard 和 Azure 机器学习的指标
 
@@ -28,7 +27,7 @@ ms.locfileid: "67560855"
 
 + 对于不以本机方式输出 TensorBoard 可使用文件，例如如 scikit-learn 或 Azure 机器学习试验，试验使用[`export_to_tensorboard()`方法](#export)TensorBoard 日志导出运行历史记录和启动从那里 TensorBoard。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 若要运行的历史记录在试验中启动 TensorBoard 和视图，在实验需要以前启用了日志记录以跟踪其度量值和性能。  
 

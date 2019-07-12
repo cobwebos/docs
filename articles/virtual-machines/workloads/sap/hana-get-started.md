@@ -4,7 +4,7 @@ description: 有关在 Azure 虚拟机上手动安装单实例 SAP HANA 的快�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 5091932989849943f00cb71f72378dd17af23a4a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 914da98359d11ff25709164d6301737404b3b011
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60204533"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707664"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>快速入门：手动安装单实例 SAP HANA Azure 虚拟机上
 ## <a name="introduction"></a>简介
@@ -30,7 +30,7 @@ ms.locfileid: "60204533"
 > [!NOTE]
 > 本指南介绍如何将 SAP HANA 部署到 Azure VM 中。 有关如何将 SAP HANA 部署到 HANA 大型实例的信息，请参阅[使用 SAP Azure 虚拟机上](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)。
  
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本指南假定您熟悉此类基础结构即服务 (IaaS) 基础知识：
  * 如何部署虚拟机 (Vm) 或 Azure 门户或 PowerShell 通过虚拟网络。
  * Azure 跨平台命令行接口 (CLI)，其中包括使用 JavaScript 对象表示法 (JSON) 模板的选项。
@@ -176,17 +176,17 @@ Azure VM 类型和用于 SAP HANA 的 SAP 支持的工作负荷方案记录在[S
  `sudo zypper list-patches`
 
 根据问题种类，可按类别和严重性对修补程序进行分类。 类别的常用的值有： 
-- 安全
+- 安全性
 - 建议
 - 可选
-- Feature
+- 功能
 - Document
 - yast
 
 严重性的常用的值有：
 
 - 严重
-- 重要说明
+- 重要提示
 - 中等
 - 低
 - 未指定

@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: dc086bc1252c084b717807213b5ba4c7f9d7bb97
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: db1074046adc52ad859a325c2b875da84dbdb0cd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514052"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701394"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -20,7 +20,7 @@ ms.locfileid: "67514052"
 
 ![合作伙伴中心中的商业应用商店仪表板](./media/new-offer-overview.png)
 
-选择 +**创建一个新...** 按钮，然后选择**软件即服务**菜单项。 
+选择 +**新产品/服务...** 按钮，然后选择**软件即服务**菜单项。 
 
 如果你选择的其他产品/服务类型之一，你将定向到较旧[云合作伙伴门户](https://cloudpartner.azure.com/)。  唯一的 SaaS 产品/服务目前在合作伙伴中心上的商业 Marketplace 门户中可用。 
 
@@ -31,14 +31,15 @@ ms.locfileid: "67514052"
 ![新建产品/服务对话框](./media/new-offer-popup.png)
 
 
-## <a name="offer-id-and-name"></a>产品/服务 ID 和名称
+## <a name="offer-id-and-alias"></a>产品/服务 ID 和别名
 
-- **产品/服务 ID**：在帐户中创建每个产品/服务的唯一标识符。 此 ID 将是可见的 marketplace 产品/服务和 Azure 资源管理器模板 （如果适用） 的 URL 地址中的客户。 产品/服务 ID 必须是小写字母、 字母数字 （包括连字符和下划线，但不是含空格）。 这是 50 个字符，在选择后不能更新创建。  
+- **产品/服务 ID**：在你的帐户中每个产品/服务的唯一标识符。 此 ID 将是可见的 marketplace 产品/服务和 Azure 资源管理器模板 （如果适用） 的 URL 地址中的客户。 产品/服务 ID 必须是小写字母、 字母数字 （包括连字符和下划线，但不是含空格）。 这是 50 个字符，在选择后不能更改*创建*。  
 示例： 测试产品/服务 1
 <br>导致 URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
-- **套餐名称**：SaaS 应用程序产品/服务，在发布、 播发和 web 站点上一致的官方名称。  此名称可能商标。  产品/服务名称不能包含空格，表情符号 （除非它们是商标或版权符号），并且必须限制为 50 个字符。
-<br>示例：测试产品/服务 1&#8482;
+- **别名提供**:用来指代在合作伙伴中心门户中的产品/服务的名称。 此名称不会在 marketplace 中使用，并且不同于*产品/服务名称*和其他将向客户显示的值。 选择后，不能更改此值*创建*。
+
+<br>例如：测试产品/服务 1&#8482;
 
 选择“创建”  。  **产品/服务概述**页创建此产品/服务。  
 
@@ -115,8 +116,8 @@ ms.locfileid: "67514052"
 ##### <a name="get-it-now-free"></a>立即获取 （免费）
 列出产品/服务向客户免费提供有效的 URL （http 或 https 的开头），他们可以访问您的应用程序。  例如： `https://contoso.com/saas-app`
 
-##### <a name="free-trial"></a>免费试用
-列出客户免费试用版产品/服务通过提供有效的 URL （http 或 https 的开头），他们可以访问您的应用程序。  例如： `https://contoso.com/trial/saas-app`
+##### <a name="free-trial-listing"></a>免费试用版 （列表）
+通过提供有效的 URL （http 或 https 的开头），他们可以访问您的应用程序列出产品/服务向客户具有免费试用版的链接。  例如：`https://contoso.com/trial/saas-app`。 创建产品/服务列表免费试用版，托管且你的服务配置和执行不具有订阅由 Microsoft 管理。
 
 ##### <a name="contact-me"></a>与我联系
 通过连接您的客户关系管理 (CRM) 系统来收集客户联系人信息。 客户会要求共享其信息的权限。 这些客户的详细信息，以及产品/服务名称、 ID 和 marketplace 源它们在其中找到产品/服务，将发送到已配置的 CRM 系统。 有关配置你的 CRM 的详细信息，请参阅[Connect 潜在客户管理](#connect-lead-management)。 
@@ -174,7 +175,7 @@ ms.locfileid: "67514052"
 
 选择**保存**之后完成这些字段。 
 
-### <a name="category"></a>Category
+### <a name="category"></a>类别
 选择最少的一 （1） 和最多三 （3） 用于分组到相应的 marketplace 搜索领域的产品/服务的类别。 请指出产品/服务如何支持这些类别的产品/服务说明中。 
 
 ### <a name="industry"></a>行业
@@ -204,6 +205,9 @@ ms.locfileid: "67514052"
 ## <a name="offer-listing"></a>产品/服务列表
 
 列出产品/服务是可用的语言 （和市场） 选项卡上显示的产品/服务，英语 （美国） 目前可用的唯一位置。 此外，此页显示特定于语言的列表和已添加的日期/时间的状态。 需要为每种语言定义 （提供名称、 说明、 搜索词等） 的应用商店详细信息 / 市场。
+
+> [!NOTE]
+> 产品/服务列表内容 （如产品/服务说明、 文档、 屏幕截图、 使用和隐私策略条款的） 不需要是英文，只要产品/服务描述开始这句话，"此应用程序是仅在 [非英语语言] 中可用。" 它也是可接受提供*有用链接 URL*提供产品/服务列表内容中使用以外的语言中的内容。
 
 ### <a name="offer-listings"></a>套餐列表
 
@@ -268,9 +272,9 @@ ms.locfileid: "67514052"
 
 - **连接 webhook** （必需）：对于 Microsoft 需要代表客户向你发送的所有异步事件（示例：SaaS 订阅已无效），我们要求你提供连接 webhook。 如果还没有就地 webhook 系统，最简单的配置是将 HTTP 终结点逻辑应用，它将侦听的任何事件发布到其并适当地处理它们 (例如 https:\//prod-1westus.logic.azure.com:443/work)。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
 
-- **Azure AD 租户 ID** （必需）：在 Azure 门户中，我们要求您[创建 Azure Active Directory (AD) 应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)位于经过身份验证的通信，以便我们可以验证我们的两个服务之间的连接。 若要查找[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id)，转到 Azure Active Directory，然后选择**属性**，然后查找**Directory ID**数列出 （例如50c464d3-4930-494c-963c-1e951d15360e)。
+- **Azure AD 租户 ID** （必需）：在 Azure 门户中，我们要求您[创建 Azure Active Directory (AD) 应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)位于经过身份验证的通信，以便我们可以验证我们的两个服务之间的连接。 若要查找[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)，转到 Azure Active Directory，然后选择**属性**，然后查找**Directory ID**数列出 （例如50c464d3-4930-494c-963c-1e951d15360e)。
 
-- **Azure AD 应用 ID** （必需）：您还需要您[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key)和身份验证密钥。 若要获取这些值，请转到 Azure Active Directory，并选择**应用注册**，然后寻找**应用程序 ID**数列出 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 若要查找的身份验证密钥，请转到**设置**，然后选择**密钥**。 需要提供的说明和持续时间，然后将提供一个数字值。
+- **Azure AD 应用 ID** （必需）：您还需要您[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)和身份验证密钥。 若要获取这些值，请转到 Azure Active Directory，并选择**应用注册**，然后寻找**应用程序 ID**数列出 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 若要查找的身份验证密钥，请转到**设置**，然后选择**密钥**。 需要提供的说明和持续时间，然后将提供一个数字值。
 
  请注意，Azure 应用程序 ID 是与发布服务器 ID 相关联，因此请确保，所有产品/服务中使用相同的应用程序 ID。
 
@@ -306,6 +310,22 @@ ms.locfileid: "67514052"
 #### <a name="plan-pricing-and-availability"></a>计划定价和可用性
 
 **定价和可用性**选项卡可以配置此计划将在中，提供市场所需的货币化模型、 价格和计费的术语。 此外，您可以指示是否使该计划为每个人或仅为特定客户 （专用受众） 可见。
+
+##### <a name="enabling-free-trials"></a>启用免费试用版
+
+通过商业 marketplace SaaS 产品/服务，可通过 Microsoft 销售时提供一个月免费试用版。 对于所有计费模型和按流量计费的计划除外条款，支持免费试用版。 此选项允许客户具有低的门槛通过一个月的免费访问权限。  如果您选择启用的免费试用版产品/服务中的计划，客户不能将转换为付费订阅之前在初始的一个月内结束。  在此期间，客户购买产品/服务可以试用任何启用免费试用版的支持计划，并在它们之间转换。  转换为付费订阅期限结束时自动进行。
+
+>[!Note]
+>如果客户选择将转换为某个计划没有免费试用版，则转换将发生这种情况，但免费试用版将立即丢失。  此外，一旦客户启动付费计划，它们可以不再获取免费试用版同样，在同一订阅即使它们转换为一种支持免费试用版的 SKU。
+
+若要配置的免费试用版的功能是可用于你的产品/服务中的每个计划。 只需导航到的定价和可用性的每个产品/服务并选中复选框以允许一个月试用版。
+
+![一个月免费试用版复选框](./media/free-trial-enable.png)
+
+若要获取当前参与免费试用版订阅客户的信息，请使用新的 API 属性`isFreeTrial`，其将被标记为 true 或 false。 请参阅[SaaS 获取订阅 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)有关详细信息。
+
+>[!Note]
+>利用 marketplace 计数服务的计划不支持免费试用版。
 
 #### <a name="markets"></a>市场
 
@@ -434,13 +454,13 @@ Microsoft 可以消除托管和维护服务的预配和部署使用此类型的�
 
 - **Azure 订阅 ID** （需要 Azure 资源管理器和逻辑应用）：输入订阅 ID，授予对资源使用情况报告和计费在 Azure 帐户服务访问权限。 我们建议你考虑[创建单独的 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)如果你还没有用于体验版。 你可以通过登录到找到你的 Azure 订阅 ID [Azure 门户](https://portal.azure.com/)并导航到**订阅**的左侧菜单的选项卡。 选择选项卡会显示你的订阅 ID (例如"a83645ac-1234年-5ab6-6789-1h234g764ghty")。
 
-- **Azure AD 租户 ID** （必需）：输入在 Azure Active Directory (AD)[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 Active Directory 选项卡，选择**属性**，然后查找**Directory ID**数列出 （例如50c464d3-4930-494c-963c-1e951d15360e)。 你还可以查看你组织的使用在你的域名 URL 的租户 id: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com)。
+- **Azure AD 租户 ID** （必需）：输入在 Azure Active Directory (AD)[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 Active Directory 选项卡，选择**属性**，然后查找**Directory ID**数列出 （例如50c464d3-4930-494c-963c-1e951d15360e)。 你还可以查看你组织的使用在你的域名 URL 的租户 id: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com)。
 
 - **Azure AD 租户名称**（需要动态 365）：输入你的 Azure Active Directory (AD) 名称。 若要查找此名称，请登录到[Azure 门户](https://portal.azure.com/)，在右上角你的租户名称将列在你的帐户名称。
 
-- **Azure AD 应用 ID** （必需）：输入在 Azure Active Directory (AD)[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 Active Directory 选项卡，选择**应用注册**，然后查找**应用程序 ID**数列出 (例如 50c464d3-4930-494c-963c-1e951d15360e)。
+- **Azure AD 应用 ID** （必需）：输入在 Azure Active Directory (AD)[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 Active Directory 选项卡，选择**应用注册**，然后查找**应用程序 ID**数列出 (例如 50c464d3-4930-494c-963c-1e951d15360e)。
 
-- **Azure AD 应用客户端机密**（必需）：输入 Azure AD 应用程序[客户端机密](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key)。 若要查找此值，请登录到[Azure 门户](https://portal.azure.com/)。 选择**Azure Active Directory**选项卡中左侧菜单中，选择**应用注册**，然后选择你的测试版应用。 接下来，选择**证书和机密**，选择**新的客户端机密**，输入描述，选择**从不**下**Expires**，然后选择**添加**。 请务必复制密钥值。 （不要导航离开页面之前执行此操作，否则不会有权访问值。）
+- **Azure AD 应用客户端机密**（必需）：输入 Azure AD 应用程序[客户端机密](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 若要查找此值，请登录到[Azure 门户](https://portal.azure.com/)。 选择**Azure Active Directory**选项卡中左侧菜单中，选择**应用注册**，然后选择你的测试版应用。 接下来，选择**证书和机密**，选择**新的客户端机密**，输入描述，选择**从不**下**Expires**，然后选择**添加**。 请务必复制密钥值。 （不要导航离开页面之前执行此操作，否则不会有权访问值。）
 
 请记住**保存**才能转到下一部分 ！
 

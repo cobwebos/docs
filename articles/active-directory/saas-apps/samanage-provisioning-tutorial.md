@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: v-wingf-msft
+ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d474d9bfd6016885eaa21afcea5d44d39c624084
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67cfe5a26740837508ea3a3e76295a896c3cc107
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730583"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670922"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>教程：为 Samanage 配置自动用户预配
 
@@ -30,7 +30,7 @@ ms.locfileid: "64730583"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的作用，它的工作原理，以及常见问题的信息，请参阅[自动用户预配和取消预配到软件作为-服务 (SaaS) 应用程序与 Azure Active Directory](../manage-apps/user-provisioning.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在本教程中所述的方案假定你拥有：
 
@@ -116,7 +116,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![Samanage 通知电子邮件](./media/samanage-provisioning-tutorial/EmailNotification.png)
 
-8. 选择“保存”。 
+8. 选择**保存**。
 
 9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Samanage”   。
 

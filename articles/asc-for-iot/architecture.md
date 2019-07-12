@@ -2,24 +2,25 @@
 title: 了解 Azure 安全中心的 IoT 解决方案体系结构预览 |Microsoft Docs
 description: 了解有关流的 IoT 服务在 Azure 安全中心中的信息。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 3c775c8cb99b056c7f468c028a80dd0b27ae6438
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5cab57343f9675df0702cf4281b3d74ca96d86ae
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200684"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618544"
 ---
 # <a name="azure-security-center-for-iot-architecture"></a>Azure 安全中心的 IoT 体系结构
 

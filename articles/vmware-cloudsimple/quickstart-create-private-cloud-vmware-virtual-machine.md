@@ -3,17 +3,17 @@ title: 快速入门-创建私有云上的 VMware VM
 description: 介绍如何创建和 VMware VM 上 CloudSimple 私有云
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 06/03/19
+ms.date: 06/03/2019
 ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 217154578ad11755cd658ff3b106cfbe266277ab
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 33354ce09ad6ba1a9a7c08a8cd3b945f3788011a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154616"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595689"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在您的私有云上创建 VMware 虚拟机
 
@@ -115,7 +115,7 @@ CloudSimple 分配默认 vCenter 用户帐户使用用户名 **cloudowner@clouds
 
 应用程序和私有云环境中运行的工作负荷需要名称解析和 DHCP 服务，用于查找和 IP 地址分配。 正确的 DHCP 和 DNS 基础结构需要提供这些服务。 可以在 vCenter 提供私有云环境中的这些服务中配置虚拟机。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 * Vlan 配置为分布式的端口组
 

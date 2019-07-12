@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 51ca597208b582e95fd305886dcf163744825eee
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: af6fd7b99147396a70fccc7b2b11dfef3def15a8
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509646"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786298"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure 应用服务中配置 Linux Java 应用
 
@@ -133,7 +133,7 @@ az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --s
 
 优化应用程序堆设置时，请查看应用服务计划详细信息，并考虑多个应用程序和部署槽位方面的需求，以得出最佳内存分配。
 
-如果要部署的 JAR 应用程序，它应命名*app.jar*以便内置映像可以正确地标识您的应用程序。 （的 Maven 插件情况执行此重命名自动）。如果不希望重命名为 JAR *app.jar*，可以上传包含要运行 JAR 的命令的 shell 脚本。 然后粘贴到此脚本中的完整路径[启动文件](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file)在门户的配置部分中的文本框。
+如果要部署的 JAR 应用程序，它应命名*app.jar*以便内置映像可以正确地标识您的应用程序。 （的 Maven 插件情况执行此重命名自动）。如果不希望重命名为 JAR *app.jar*，可以上传包含要运行 JAR 的命令的 shell 脚本。 然后粘贴到此脚本中的完整路径[启动文件](app-service-linux-faq.md#built-in-images)在门户的配置部分中的文本框。
 
 ### <a name="turn-on-web-sockets"></a>启用 Web 套接字
 
@@ -170,6 +170,10 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 ### <a name="adjust-startup-timeout"></a>调整启动超时
 
 如果你的 Java 应用程序是特别大，则应增加启动时间限制。 若要执行此操作，创建应用程序设置，`WEBSITES_CONTAINER_START_TIME_LIMIT`并将其设置为应用服务超时前应等待的秒数。最大值是`1800`秒。
+
+### <a name="pre-compile-jsp-files"></a>预编译 JSP 文件
+
+若要提高 Tomcat 应用程序的性能，可以部署到应用服务之前编译 JSP 文件。 可以使用[的 Maven 插件](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html)提供 Apache 投掷，或使用这[Ant 生成文件](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation)。
 
 ## <a name="secure-applications"></a>安全应用程序
 
@@ -267,7 +271,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 
 默认情况下，应用服务需要你 JAR 的应用程序命名为*app.jar*。 如果它具有此名称，将自动运行。 对于 Maven 用户中，您可以设置的 JAR 名称通过包括`<finalName>app</finalName>`中`<build>`一部分您*pom.xml*。 [您可以在 Gradle 这样做](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName)通过设置`archiveFileName`属性。
 
-如果你想要使用不同的 JAR 名称，还必须提供[启动命令](app-service-linux-faq.md#built-in-images)执行 JAR 文件。 例如，`java -jar my-jar-app.jar` 。 可以为您在门户中，在配置下的启动命令设置值 > 常规设置，或使用名为应用程序设置`STARTUP_COMMAND`。
+如果你想要使用不同的 JAR 名称，还必须提供[启动命令](app-service-linux-faq.md#built-in-images)执行 JAR 文件。 例如， `java -jar my-jar-app.jar` 。 可以为您在门户中，在配置下的启动命令设置值 > 常规设置，或使用名为应用程序设置`STARTUP_COMMAND`。
 
 ### <a name="server-port"></a>服务器端口
 

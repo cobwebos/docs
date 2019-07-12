@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5e691dde92ac05b653cdafb22db9276c7a566008
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd9aa28703003d2e286197d57e9f00361e2b460d
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258949"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654003"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>成为云市场发布者
 
@@ -22,11 +22,11 @@ ms.locfileid: "66258949"
 
 |  | 注册步骤 | Duration | 详细信息 |  
 |:--- |:--- |:--- |:--- |  
-| 第 | 在 Microsoft 合作伙伴网络中注册 | 15 分钟 | [在 Microsoft 合作伙伴网络中注册](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
-| 2 | 创建 Microsoft 帐户 <ul>（Azure 市场交易套餐的必需步骤，其他的建议步骤）</ul> | 15 分钟 | [创建 Microsoft ID](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 1 | 在 Microsoft 合作伙伴网络中注册 | 15 分钟 | [在 Microsoft 合作伙伴网络中注册](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#register-for-an-account-using-the-enrollment-page) |  
+| 2 | 创建 Microsoft 帐户 <ul>（Azure 市场交易套餐的必需步骤，其他的建议步骤）</ul> | 15 分钟 | [创建 Microsoft ID](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
 | 3 | 创建合作伙伴中心帐户 | 15 分钟 | [创建合作伙伴中心帐户](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
-| 4 |  登录到云合作伙伴门户 | 1-3 天 | [登录到云合作伙伴门户](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
-| 5 | 在 Microsoft 开发人员中心注册（适用于 Azure 市场交易套餐） | 5-10 天 | [在开发人员中心注册](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
+| 4 |  登录到云合作伙伴门户 | 1-3 天 | [登录到云合作伙伴门户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#sign-in-with-a-work-account) |  
+| 5 | 在 Microsoft 开发人员中心注册（适用于 Azure 市场交易套餐） | 5-10 天 | [在开发人员中心注册](/azure/marketplace/deprecated/register-dev-center) |  
 
 
 ## <a name="1-register-in-microsoft-partner-network"></a>1.在 Microsoft 合作伙伴网络中注册  
@@ -50,9 +50,9 @@ Microsoft 帐户，例如 *\@outlook.com 或\@live.com*，用于访问许多 Mic
 [! IMPORTANT] 请注意，不能使用与工作电子邮件关联的 Microsoft 帐户来访问门户。
 
 > [!Note]
-> 如果已经有 Microsoft 帐户，请查看[有关创建 Microsoft ID 来管理市场帐户的准则](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)，以便确定其能否用于市场发布。 
+> 如果已经有 Microsoft 帐户，请查看[有关创建 Microsoft ID 来管理市场帐户的准则](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-tenants)，以便确定其能否用于市场发布。 
 > 
-> 使用 Azure Active Directory 联合公司帐户的用户在尝试创建或使用现有 Microsoft 帐户之前，应该阅读[此文](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)。
+> 使用 Azure Active Directory 联合公司帐户的用户在尝试创建或使用现有 Microsoft 帐户之前，应该阅读[此文](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-users)。
 
 *   若需创建或管理 Microsoft 帐户的帮助，请访问 [Microsoft 帐户帮助支持页](https://support.microsoft.com/products/microsoft-account?category=manage-account)。
 

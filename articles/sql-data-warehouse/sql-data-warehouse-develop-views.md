@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d4321f8aef6e754d8a1c5b16ac82b4fa62c40949
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8d516cfd764f947bd2fe7fc25f6394c313c0d9a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873614"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595502"
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的视图
 有关在开发解决方案时使用 Azure SQL 数据仓库中的 T-SQL 视图的技巧。 
@@ -23,12 +23,18 @@ ms.locfileid: "65873614"
 ## <a name="why-use-views"></a>为何使用视图？
 可以通过多种不同的方式使用视图来提升解决方案的质量。  本文重点介绍几个示例，说明如何使用视图来丰富解决方案，以及需要注意的限制。
 
+
+> [!IMPORTANT]
+> 请参阅在新的具体化的视图语法[创建具体化视图 AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)。  有关详细信息，请参阅[发行说明](/azure/sql-data-warehouse/release-notes-10-0-10106-0)。
+>
+
+
 > [!NOTE]
 > 本文未讨论 CREATE VIEW 的语法。 有关详细信息，请参阅 [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql) 文档。
 > 
-> 
 
 ## <a name="architectural-abstraction"></a>体系结构摘要
+
 一种常见的应用模式是在加载数据时，使用 CREATE TABLE AS SELECT (CTAS) 并后接对象重命名模式来重建表。
 
 以下示例向日期维度添加新的日期记录。 请注意，这里先创建了一个新表 DimDate_New，然后将它重命名以替换表的原始版本。

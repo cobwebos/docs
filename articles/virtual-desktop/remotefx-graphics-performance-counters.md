@@ -4,15 +4,15 @@ description: 本文介绍如何使用远程桌面协议会话中的 RemoteFX 图
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
+ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 0b4113f1e0024415135aa99d1fb4e881efe448a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a139542bf9272336784ac96d667d65caa1ed96ff
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66499259"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607333"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>诊断中远程桌面的图形性能问题
 

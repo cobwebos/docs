@@ -4,19 +4,150 @@ description: 列出了可移动到新资源组或订阅的 Azure 资源类型。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 6/6/2019
+ms.date: 7/9/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9ab8fbd8fa0453ca6c89f3e7ad91bea95b0b9096
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 093c20407cb6210125106189f36566f539de0dcc
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331986"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721113"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
-本文列出了 Azure 资源类型是否支持移动操作。 尽管资源类型支持移动操作，但可能有阻止资源移动的情况。 有关影响移动操作的情况的详细信息，请参阅[将资源移动至新资源组或订阅](resource-group-move-resources.md)。
+本文列出了 Azure 资源类型是否支持移动操作。 它还提供有关移动资源时要考虑的特殊条件的信息。
 
-若要以逗号分隔值文件的形式获取同一数据，请下载 [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv)。
+跳转到资源提供程序命名空间：
+> [!div class="op_single_selector"]
+> - [Microsoft.AAD](#microsoftaad)
+> - [microsoft.aadiam](#microsoftaadiam)
+> - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
+> - [Microsoft.AnalysisServices](#microsoftanalysisservices)
+> - [Microsoft.ApiManagement](#microsoftapimanagement)
+> - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft.AppService](#microsoftappservice)
+> - [Microsoft.Authorization](#microsoftauthorization)
+> - [Microsoft.Automation](#microsoftautomation)
+> - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
+> - [Microsoft.AzureStack](#microsoftazurestack)
+> - [Microsoft.Backup](#microsoftbackup)
+> - [Microsoft.Batch](#microsoftbatch)
+> - [Microsoft.BatchAI](#microsoftbatchai)
+> - [Microsoft.BingMaps](#microsoftbingmaps)
+> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
+> - [Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.Blueprint](#microsoftblueprint)
+> - [Microsoft.BotService](#microsoftbotservice)
+> - [Microsoft.Cache](#microsoftcache)
+> - [Microsoft.Cdn](#microsoftcdn)
+> - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
+> - [Microsoft.ClassicCompute](#microsoftclassiccompute)
+> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
+> - [Microsoft.ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
+> - [Microsoft.Compute](#microsoftcompute)
+> - [Microsoft.Container](#microsoftcontainer)
+> - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
+> - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
+> - [Microsoft.ContainerService](#microsoftcontainerservice)
+> - [Microsoft.ContentModerator](#microsoftcontentmoderator)
+> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
+> - [Microsoft.CostManagement](#microsoftcostmanagement)
+> - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
+> - [Microsoft.DataBox](#microsoftdatabox)
+> - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
+> - [Microsoft.Databricks](#microsoftdatabricks)
+> - [Microsoft.DataCatalog](#microsoftdatacatalog)
+> - [Microsoft.DataConnect](#microsoftdataconnect)
+> - [Microsoft.DataExchange](#microsoftdataexchange)
+> - [Microsoft.DataFactory](#microsoftdatafactory)
+> - [Microsoft.DataLake](#microsoftdatalake)
+> - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
+> - [Microsoft.DataLakeStore](#microsoftdatalakestore)
+> - [Microsoft.DataMigration](#microsoftdatamigration)
+> - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
+> - [Microsoft.DBforMySQL](#microsoftdbformysql)
+> - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
+> - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
+> - [Microsoft.Devices](#microsoftdevices)
+> - [Microsoft.DevSpaces](#microsoftdevspaces)
+> - [Microsoft.DevTestLab](#microsoftdevtestlab)
+> - [microsoft.dns](#microsoftdns)
+> - [Microsoft.DocumentDB](#microsoftdocumentdb)
+> - [Microsoft.DomainRegistration](#microsoftdomainregistration)
+> - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
+> - [Microsoft.EventGrid](#microsofteventgrid)
+> - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Genomics](#microsoftgenomics)
+> - [Microsoft.HanaOnAzure](#microsofthanaonazure)
+> - [Microsoft.HDInsight](#microsofthdinsight)
+> - [Microsoft.HealthcareApis](#microsofthealthcareapis)
+> - [Microsoft.HybridCompute](#microsofthybridcompute)
+> - [Microsoft.HybridData](#microsofthybriddata)
+> - [Microsoft.ImportExport](#microsoftimportexport)
+> - [microsoft.insights](#microsoftinsights)
+> - [Microsoft.IoTCentral](#microsoftiotcentral)
+> - [Microsoft.IoTSpaces](#microsoftiotspaces)
+> - [Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kusto](#microsoftkusto)
+> - [Microsoft.LabServices](#microsoftlabservices)
+> - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
+> - [Microsoft.LocationServices](#microsoftlocationservices)
+> - [Microsoft.Logic](#microsoftlogic)
+> - [Microsoft.MachineLearning](#microsoftmachinelearning)
+> - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
+> - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
+> - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
+> - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
+> - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
+> - [Microsoft.Maps](#microsoftmaps)
+> - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
+> - [Microsoft.Media](#microsoftmedia)
+> - [Microsoft.Migrate](#microsoftmigrate)
+> - [Microsoft.NetApp](#microsoftnetapp)
+> - [Microsoft.Network](#microsoftnetwork)
+> - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
+> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
+> - [Microsoft.Peering](#microsoftpeering)
+> - [Microsoft.Portal](#microsoftportal)
+> - [Microsoft.PortalSdk](#microsoftportalsdk)
+> - [Microsoft.PowerBI](#microsoftpowerbi)
+> - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Microsoft.ProjectOxford](#microsoftprojectoxford)
+> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
+> - [Microsoft.Relay](#microsoftrelay)
+> - [Microsoft.SaaS](#microsoftsaas)
+> - [Microsoft.Scheduler](#microsoftscheduler)
+> - [Microsoft.Search](#microsoftsearch)
+> - [Microsoft.Security](#microsoftsecurity)
+> - [Microsoft.ServerManagement](#microsoftservermanagement)
+> - [Microsoft.ServiceBus](#microsoftservicebus)
+> - [Microsoft.ServiceFabric](#microsoftservicefabric)
+> - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
+> - [Microsoft.SignalRService](#microsoftsignalrservice)
+> - [Microsoft.SiteRecovery](#microsoftsiterecovery)
+> - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft.Sql](#microsoftsql)
+> - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
+> - [Microsoft.SqlVM](#microsoftsqlvm)
+> - [Microsoft.Storage](#microsoftstorage)
+> - [Microsoft.StorageCache](#microsoftstoragecache)
+> - [Microsoft.StorageSync](#microsoftstoragesync)
+> - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
+> - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
+> - [Microsoft.StorSimple](#microsoftstorsimple)
+> - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
+> - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
+> - [Microsoft.TerraformOSS](#microsoftterraformoss)
+> - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
+> - [Microsoft.Token](#microsofttoken)
+> - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
+> - [microsoft.visualstudio](#microsoftvisualstudio)
+> - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Microsoft.Web](#microsoftweb)
+> - [Microsoft.WindowsIoT](#microsoftwindowsiot)
+> - [Microsoft.WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 | 资源类型 | 资源组 | 订阅 |
@@ -55,6 +186,9 @@ ms.locfileid: "67331986"
 | appidentities | 否 | 否 |
 | gateways | 否 | 否 |
 
+> [!IMPORTANT]
+> 请参阅[应用服务移动指南](./move-limitations/app-service-move-limitations.md)。
+
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
@@ -66,6 +200,9 @@ ms.locfileid: "67331986"
 | automationaccounts | 是 | 是 |
 | automationaccounts/configurations | 是 | 是 |
 | automationaccounts/runbooks | 是 | 是 |
+
+> [!IMPORTANT]
+> Runbook 在自动化帐户所在的同一资源组中必须存在。
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | 资源类型 | 资源组 | 订阅 |
@@ -93,7 +230,7 @@ ms.locfileid: "67331986"
 | clusters | 否 | 否 |
 | fileservers | 否 | 否 |
 | jobs | 否 | 否 |
-| 工作区 | 否 | 否 |
+| workspaces | 否 | 否 |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | 资源类型 | 资源组 | 订阅 |
@@ -125,10 +262,13 @@ ms.locfileid: "67331986"
 | ------------- | ----------- | ---------- |
 | redis | 是 | 是 |
 
+> [!IMPORTANT]
+> 如果用于 Redis 实例的 Azure 缓存配置为使用虚拟网络，该实例不能移到其他订阅。 请参阅[虚拟网络将移动限制](./move-limitations/virtual-network-move-limitations.md)。
+
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 配置文件 | 是 | 是 |
+| profiles | 是 | 是 |
 | profiles/endpoints | 是 | 是 |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
@@ -136,11 +276,17 @@ ms.locfileid: "67331986"
 | ------------- | ----------- | ---------- |
 | certificateorders | 是 | 是 |
 
+> [!IMPORTANT]
+> 请参阅[应用服务移动指南](./move-limitations/app-service-move-limitations.md)。
+
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
 | domainnames | 是 | 否 |
 | virtualmachines | 是 | 否 |
+
+> [!IMPORTANT]
+> 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 到这种情况下，可以在与特定操作的订阅之间移动经典部署资源。
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 | 资源类型 | 资源组 | 订阅 |
@@ -149,10 +295,16 @@ ms.locfileid: "67331986"
 | reservedips | 否 | 否 |
 | virtualnetworks | 否 | 否 |
 
+> [!IMPORTANT]
+> 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 到这种情况下，可以在与特定操作的订阅之间移动经典部署资源。
+
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
 | storageaccounts | 是 | 否 |
+
+> [!IMPORTANT]
+> 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 到这种情况下，可以在与特定操作的订阅之间移动经典部署资源。
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | 资源类型 | 资源组 | 订阅 |
@@ -178,6 +330,9 @@ ms.locfileid: "67331986"
 | virtualmachines | 是 | 是 |
 | virtualmachines/extensions | 是 | 是 |
 | virtualmachinescalesets | 是 | 是 |
+
+> [!IMPORTANT]
+> 请参阅[虚拟机移动指南](./move-limitations/virtual-machines-move-limitations.md)。
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
 | 资源类型 | 资源组 | 订阅 |
@@ -238,7 +393,7 @@ ms.locfileid: "67331986"
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 工作区 | 否 | 否 |
+| workspaces | 否 | 否 |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | 资源类型 | 资源组 | 订阅 |
@@ -390,6 +545,11 @@ ms.locfileid: "67331986"
 | ------------- | ----------- | ---------- |
 | clusters | 是 | 是 |
 
+> [!IMPORTANT]
+> 可以将 HDInsight 群集移到新的订阅或资源组。 但是，无法在订阅之间移动链接到 HDInsight 群集的网络资源（例如虚拟网络、NIC 或负载均衡器）。 此外，无法将连接到群集的虚拟机的 NIC 移到新的资源组。
+>
+> 将 HDInsight 群集移到新的订阅时，首先移动其他资源（如存储帐户）。 然后移动 HDInsight 群集本身。
+
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
@@ -427,6 +587,9 @@ ms.locfileid: "67331986"
 | webtests | 是 | 是 |
 | workbooks | 是 | 是 |
 
+> [!IMPORTANT]
+> 请确保将移动到新的订阅不超过[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)。
+
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
@@ -444,6 +607,9 @@ ms.locfileid: "67331986"
 | hsmpools | 否 | 否 |
 | vaults | 是 | 是 |
 
+> [!IMPORTANT]
+> 用于磁盘加密的密钥保管库不能移动到同一订阅中或跨订阅的资源组。
+
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
@@ -452,7 +618,7 @@ ms.locfileid: "67331986"
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| labaccounts | 是 | 是 |
+| labaccounts | 否 | 否 |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | 资源类型 | 资源组 | 订阅 |
@@ -478,7 +644,7 @@ ms.locfileid: "67331986"
 | ------------- | ----------- | ---------- |
 | commitmentplans | 是 | 是 |
 | webservices | 是 | 否 |
-| 工作区 | 是 | 是 |
+| workspaces | 是 | 是 |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 | 资源类型 | 资源组 | 订阅 |
@@ -508,7 +674,7 @@ ms.locfileid: "67331986"
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 工作区 | 否 | 否 |
+| workspaces | 否 | 否 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | 资源类型 | 资源组 | 订阅 |
@@ -566,7 +732,7 @@ ms.locfileid: "67331986"
 | expressrouteports | 否 | 否 |
 | frontdoors | 否 | 否 |
 | frontdoorwebapplicationfirewallpolicies | 否 | 否 |
-| loadbalancers | 是 | 是 |
+| loadbalancers | 是-基本 SKU<br>否-标准 SKU | 是-基本 SKU<br>否-标准 SKU |
 | localnetworkgateways | 是 | 是 |
 | natgateways | 是 | 是 |
 | networkintentpolicies | 是 | 是 |
@@ -582,7 +748,7 @@ ms.locfileid: "67331986"
 | privatednszones/virtualnetworklinks | 是 | 是 |
 | privateendpoints | 否 | 否 |
 | privatelinkservices | 否 | 否 |
-| publicipaddresses | 是 | 是 |
+| publicipaddresses | 是-基本 SKU<br>否-标准 SKU | 是-基本 SKU<br>否-标准 SKU |
 | publicipprefixes | 是 | 是 |
 | routefilters | 否 | 否 |
 | routetables | 是 | 是 |
@@ -598,6 +764,9 @@ ms.locfileid: "67331986"
 | vpnsites | 否 | 否 |
 | webapplicationfirewallpolicies | 是 | 是 |
 
+> [!IMPORTANT]
+> 请参阅[虚拟网络移动指南](./move-limitations/virtual-network-move-limitations.md)。
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
@@ -607,13 +776,16 @@ ms.locfileid: "67331986"
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 工作区 | 是 | 是 |
+| workspaces | 是 | 是 |
+
+> [!IMPORTANT]
+> 请确保将移动到新的订阅不超过[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)。
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
 | managementconfigurations | 是 | 是 |
-| 解决方案 | 是 | 是 |
+| solutions | 是 | 是 |
 | 视图 | 是 | 是 |
 
 ## <a name="microsoftpeering"></a>Microsoft.Peering
@@ -651,6 +823,9 @@ ms.locfileid: "67331986"
 | ------------- | ----------- | ---------- |
 | vaults | 是 | 是 |
 
+> [!IMPORTANT]
+> 请参阅[恢复服务移动指南](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)。
+
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
@@ -671,6 +846,9 @@ ms.locfileid: "67331986"
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
 | searchservices | 是 | 是 |
+
+> [!IMPORTANT]
+> 在一个操作中的不同区域中，不能移动多个搜索资源。 只能通过多个单独的操作移动它们。
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 | 资源类型 | 资源组 | 订阅 |
@@ -720,6 +898,9 @@ ms.locfileid: "67331986"
 | ------------- | ----------- | ---------- |
 | siterecoveryvault | 否 | 否 |
 
+> [!IMPORTANT]
+> 请参阅[恢复服务移动指南](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)。
+
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
@@ -739,6 +920,9 @@ ms.locfileid: "67331986"
 | servers/databases | 是 | 是 |
 | servers/elasticpools | 是 | 是 |
 | virtualclusters | 是 | 是 |
+
+> [!IMPORTANT]
+> 数据库和服务器必须是同一资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | 资源类型 | 资源组 | 订阅 |
@@ -786,6 +970,9 @@ ms.locfileid: "67331986"
 | ------------- | ----------- | ---------- |
 | streamingjobs | 是 | 是 |
 
+> [!IMPORTANT]
+> Stream Analytics 无法移动作业，在运行时状态。
+
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
@@ -825,6 +1012,9 @@ ms.locfileid: "67331986"
 | account/extension | 是 | 是 |
 | account/project | 是 | 是 |
 
+> [!IMPORTANT]
+> 若要更改 Azure DevOps 所需的订阅，请参阅[更改用于计费的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
+
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
@@ -845,6 +1035,9 @@ ms.locfileid: "67331986"
 | sites/premieraddons | 是 | 是 |
 | sites/slots | 是 | 是 |
 
+> [!IMPORTANT]
+> 请参阅[应用服务移动指南](./move-limitations/app-service-move-limitations.md)。
+
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
@@ -855,7 +1048,7 @@ ms.locfileid: "67331986"
 | ------------- | ----------- | ---------- |
 | applicationgroups | 否 | 否 |
 | hostpools | 否 | 否 |
-| 工作区 | 否 | 否 |
+| workspaces | 否 | 否 |
 
 ## <a name="third-party-services"></a>第三方服务
 
@@ -863,3 +1056,5 @@ ms.locfileid: "67331986"
 
 ## <a name="next-steps"></a>后续步骤
 有关移动资源的命令，请参阅[将资源移动至新资源组或订阅](resource-group-move-resources.md)。
+
+若要以逗号分隔值文件的形式获取同一数据，请下载 [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv)。

@@ -2,24 +2,25 @@
 title: 选择并将其部署为 IoT 代理预览版的 Azure 安全中心 |Microsoft Docs
 description: 了解有关如何选择并将其部署为 IoT 设备上的 IoT 安全代理的 Azure 安全中心。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 32a9564d-16fd-4b0d-9618-7d78d614ce76
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 5c76cce5a3d9add8a1dcd8acc439a70c4a8655a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c549e5ccbda9b364b3e7d20c9572eb777c32299e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200565"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616834"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>选择并部署 IoT 设备上的安全代理
 
@@ -80,7 +81,7 @@ IoT 安全代理类型的每个 ASC 提供相同的功能，集，还支持类�
 这两个代理版本提供了相同的功能集，并支持类似的配置选项。
 请参阅[安全代理比较](how-to-deploy-agent.md#understand-security-agent-options)若要了解详细信息。
 
-## <a name="supported-platforms"></a>支持的平台
+## <a name="supported-platforms"></a>受支持的平台
 
 以下列表包含所有当前支持的平台。
 

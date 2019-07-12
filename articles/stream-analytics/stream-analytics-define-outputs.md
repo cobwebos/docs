@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 17214bb4904cc540de0a7d6f753b7e70abfa564c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ef2a55b377c2ca48b9417310926a014a82f679d7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443645"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621880"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
 本文介绍可用于 Azure Stream Analytics 作业输出的类型。 输出可帮助存储和保存流分析作业的结果。 通过使用输出数据，您可以执行更多业务分析和数据仓库的数据。
 
-在设计时在 Stream Analytics 查询，请参阅输出的名称通过[INTO 子句](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics)。 可以使用单个输出每个作业或每个流式处理作业 （如果需要使用它们） 通过提供在查询中的多个 INTO 子句的多个输出。
+在设计时在 Stream Analytics 查询，请参阅输出的名称通过[INTO 子句](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)。 可以使用单个输出每个作业或每个流式处理作业 （如果需要使用它们） 通过提供在查询中的多个 INTO 子句的多个输出。
 
 若要创建、 编辑和测试 Stream Analytics 作业输出，可以使用[Azure 门户](stream-analytics-quick-create-portal.md#configure-job-output)， [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)， [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)， [REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)，并[Visual Studio](stream-analytics-quick-create-vs.md)。
 
@@ -40,7 +40,7 @@ Stream Analytics 从 azure Data Lake 存储输出当前不是在 Azure 中国 21
 | 订阅 | 包含你的 Azure Data Lake 存储帐户的订阅。 |
 | 帐户名 | 要将发送输出的 Data Lake Store 帐户的名称。 您会看到在订阅中可用的 Data Lake Store 帐户的下拉列表。 |
 | 路径前缀模式 | 用于写入你指定的 Data Lake Store 帐户中的文件的文件路径。 可以指定一个或多个实例的 {date} 和 {time} 变量：<br /><ul><li>示例 1：folder1/logs/{date}/{time}</li><li>示例 2：folder1/logs/{date}</li></ul><br />创建的文件夹结构的时间戳遵循 UTC 而不是本地时间。<br /><br />如果文件路径模式不包含尾部反斜杠 （/），则文件路径中的最后一个模式视为文件名前缀。 <br /><br />在这些情况下会创建新文件：<ul><li>在输出架构中进行更改</li><li>外部或内部重启作业</li></ul> |
-| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD |
+| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 例如：YYYY/MM/DD |
 |时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以指定组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV 和 Avro。|
 | 编码 | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。|
@@ -81,7 +81,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 | 存储帐户密钥 | 与存储帐户关联的密钥。                              |
 | 存储容器   | 对存储在 Azure Blob 服务中的 blob 进行逻辑分组。 将 blob 上传到 Blob 服务时，必须为该 blob 指定一个容器。 |
 | 路径模式 | 可选。 用于写入指定容器中的 blob 的文件路径模式。 <br /><br /> 在路径模式中，可以选择使用数据时间变量的一个或多个实例指定 blob 写入的频率： <br /> {date}、{time} <br /><br />可以使用自定义 blob 分区从事件数据中指定一个自定义 {field} 名称来对 blob 进行分区。 字段名称是字母数字，并且可以包含空格、连字符和下划线。 对自定义字段的限制包括以下内容： <ul><li>字段名称不区分大小写。 例如，服务无法区分列“ID”和列“id”。</li><li>不允许嵌套字段。 在作业查询中改用别名来“平展”字段。</li><li>不能使用表达式作为字段名称。</li></ul> <br />通过此功能可以在路径中使用自定义日期/时间格式说明符配置。 一次只能指定一个自定义日期和时间格式，并用 {datetime:\<specifier>} 关键字括起来。 \<specifier> 允许的输入为 yyyy、MM、M、dd、d、HH、H、mm、m、ss 或 s。 可以在路径中多次使用 {datetime:\<specifier>} 关键字以构成自定义的日期/时间配置。 <br /><br />示例： <ul><li>示例 1：cluster1/logs/{date}/{time}</li><li>示例 2：cluster1/logs/{date}</li><li>示例 3：cluster1/{client_id}/{date}/{time}</li><li>示例 4：cluster1/{datetime:ss}/{myField}，其中查询是：SELECT data.myField AS myField FROM Input;</li><li>示例 5：cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />创建的文件夹结构的时间戳遵循 UTC 而不是本地时间。<br /><br />文件命名采用以下约定： <br /><br />{路径前缀模式}/schemaHashcode_Guid_Number.extension<br /><br />示例输出文件：<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />有关此功能的详细信息，请参阅 [Azure 流分析自定义 blob 输出分区](stream-analytics-custom-path-patterns-blob-storage-output.md)。 |
-| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD |
+| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 例如：YYYY/MM/DD |
 | 时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以指定组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV 和 Avro。 |
 | 编码    | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。 |
@@ -149,12 +149,12 @@ Power BI 使用的先入先出 (FIFO) 保留策略。 数据将收集在表中�
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>将从 Stream Analytics 的数据类型转换为 Power BI
 如果输出架构更改，Azure 流分析会在运行时动态更新数据模型。 列名称更改、列类型更改，以及添加或删除列，这些都会进行跟踪。
 
-此表涵盖了从的数据类型转换[Stream Analytics 的数据类型](https://msdn.microsoft.com/library/azure/dn835065.aspx)到 Power BI[实体数据模型 (EDM) 类型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)，如果 Power BI 数据集和表不存在。
+此表涵盖了从的数据类型转换[Stream Analytics 的数据类型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)到 Power BI[实体数据模型 (EDM) 类型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)，如果 Power BI 数据集和表不存在。
 
 从流分析 | 到 Power BI
 -----|-----
 bigint | Int64
-nvarchar(max) | String
+nvarchar(max) | 字符串
 datetime | Datetime
 float | Double
 记录数组 | 字符串类型，常量值"IRecord"或"IArray"
@@ -165,12 +165,12 @@ float | Double
 避免`SELECT *`查询，以防止跨行动态架构更新。 除了潜在性能影响，它可能会导致不确定性的结果所需的时间。 选择需要在 Power BI 仪表板上显示的确切字段。 此外，数据值应与所选数据类型相符。
 
 
-上一步/当前 | Int64 | String | Datetime | Double
+上一步/当前 | Int64 | 字符串 | Datetime | Double
 -----------------|-------|--------|----------|-------
-Int64 | Int64 | String | String | Double
-Double | Double | String | String | Double
-String | String | String | String | String 
-datetime | String | String |  datetime | String
+Int64 | Int64 | String | 字符串 | Double
+Double | Double | String | 字符串 | Double
+String | String | 字符串 | 字符串 | String 
+datetime | 字符串 | String |  datetime | String
 
 ## <a name="table-storage"></a>表存储
 
@@ -247,7 +247,7 @@ Azure Cosmos DB 输出从 Stream Analytics 目前不在 Azure 中国 21Vianet �
 | 帐户 ID | Azure Cosmos DB 帐户的名称或终结点 URI。 |
 | 帐户密钥 | Azure Cosmos DB 帐户的共享访问密钥。 |
 | 数据库 | Azure Cosmos DB 数据库名称。 |
-| 容器名称 | 容器名称，才能使用 Cosmos DB 中必须存在。 示例：  <br /><ul><li> _MyContainer_:必须存在名为"MyContainer"的容器。</li>|
+| 容器名称 | 容器名称，才能使用 Cosmos DB 中必须存在。 例如：  <br /><ul><li> _MyContainer_:必须存在名为"MyContainer"的容器。</li>|
 | 文档 ID |可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。
 
 ## <a name="azure-functions"></a>Azure Functions
@@ -261,7 +261,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions �
 | --- | --- |
 | 函数应用 |Azure Functions 应用的名称。 |
 | 函数 |Azure Functions 应用程序中函数的名称。 |
-| 密钥 |如果你想要使用另一个订阅中的 Azure Function，就可以做到通过提供该键来访问你的函数。 |
+| Key |如果你想要使用另一个订阅中的 Azure Function，就可以做到通过提供该键来访问你的函数。 |
 | 最大批大小 |一个属性，它允许您设置到 Azure 函数发送每个输出批的最大大小。 输入单元以字节为单位。 默认情况下，此值为 262,144 字节 (256 KB)。 |
 | 最大批数  |允许您发送到 Azure Functions 的每个批次中指定的最大事件数属性。 默认值为 100。 |
 

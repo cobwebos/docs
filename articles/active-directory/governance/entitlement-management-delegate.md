@@ -3,8 +3,8 @@ title: 在 Azure AD 授权管理 （预览版）-Azure Active Directory 中的�
 description: 了解可以分配委派权利管理 Azure Active Directory 中的任务的角色。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 06/07/2019
-ms.author: rolyon
+ms.date: 07/10/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fa0be8e2af7644564ba27e6d58fda09b1ae7bc7
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: d4c4933847a39a56084894e5bbd40e166e6b73b6
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191494"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798634"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 授权管理 （预览版） 中的任务委托
 
@@ -38,7 +38,7 @@ ms.locfileid: "67191494"
 
 若要了解如何，您可能委派权利管理中的任务，它有助于考虑这样一个示例。 假设你的组织有以下五个用户：
 
-| 用户 | 系 | 说明 |
+| 用户 | 部门 | 说明 |
 | --- | --- | --- |
 | Alice | IT | 全局管理员 |
 | Bob | 研究 | Bob 也是信息检索组的所有者 |
@@ -64,7 +64,7 @@ ms.locfileid: "67191494"
 
 授权管理具有以下特定于授权管理的角色。
 
-| 角色 | 描述 |
+| Role | 描述 |
 | --- | --- |
 | 目录创建者 | 创建和管理目录。 通常 IT 管理员，并且不是全局管理员或资源的集合的资源所有者。 自动创建一个目录的人员将成为目录的第一个目录所有者，并且可以添加其他目录所有者。 |
 | 目录所有者 | 编辑和管理现有目录。 通常的 IT 管理员或资源所有者或目录所有者已指定的用户。 |
@@ -84,7 +84,7 @@ ms.locfileid: "67191494"
 | [编辑目录](entitlement-management-catalog-create.md#edit-a-catalog) |  | :heavy_check_mark: |  |  |
 | [删除目录](entitlement-management-catalog-create.md#delete-a-catalog) |  | :heavy_check_mark: |  |  |
 | [将目录所有者或访问包管理器添加到目录](#add-a-catalog-owner-or-an-access-package-manager) |  | :heavy_check_mark: |  |  |
-| [在目录中创建新的访问包](entitlement-management-access-package-create.md) |  | :heavy_check_mark: |  |  |
+| [在目录中创建新的访问包](entitlement-management-access-package-create.md) |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
 | [管理访问包中的资源角色](entitlement-management-access-package-edit.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [指定谁可以请求访问包](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [直接向用户分配访问包](entitlement-management-access-package-edit.md#directly-assign-a-user) |  | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -130,7 +130,7 @@ ms.locfileid: "67191494"
 
 1. 单击“选择”  。
 
-1. 单击“ **保存**”。
+1. 单击“保存”  。
 
 ## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>添加目录所有者或访问包管理器
 

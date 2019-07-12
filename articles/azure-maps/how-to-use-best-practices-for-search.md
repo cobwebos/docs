@@ -1,18 +1,19 @@
 ---
 title: 如何有效地使用 Azure Maps 搜索服务搜索 |Microsoft Docs
 description: 了解如何使用 Azure Maps 搜索服务搜索使用最佳方案
+author: walsehgal
 ms.author: v-musehg
 ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9cb0f89b4a48d7139adb35dcef48c0115b005c57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c4347eb0f89c17a285aaa4b51760300b9c89aa7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205607"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617861"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>使用 Azure 地图搜索服务的最佳做法
 
@@ -24,7 +25,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包含�
 * 读取地址搜索响应结构
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 若要调用任何 Maps 服务 API，需要具有 Maps 帐户和密钥。 有关创建帐户和检索密钥的信息，请参阅[如何管理 Azure Maps 帐户和密钥](how-to-manage-account-keys.md)。
 

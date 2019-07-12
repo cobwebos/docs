@@ -2,30 +2,30 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中创建用于 Pod 的静态卷
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁盘手动创建卷
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: b166f70186b063782fb2c2245e351d6dfca6f978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 9017c8cf721fbb9c493dc18da769b9d6e83ddf05
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072163"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616141"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 磁盘手动创建并使用卷
 
 基于容器的应用程序通常需要访问数据并将数据保存在外部数据卷中。 如果单个 Pod 需要访问存储，则可以使用 Azure 磁盘来提供本机卷供应用程序使用。 本文介绍了如何手动创建 Azure 磁盘并将其附加到 AKS 中的 Pod。
 
 > [!NOTE]
-> Azure 磁盘一次只能装载到单个 Pod 中。 如果需要在多个 Pod 之间共享永久性卷，请使用 [Azure 文件][azure-files-volume]。
+> Azure 磁盘一次只能装载到单个 Pod 中。 如果需要在多个 Pod 之间共享永久性卷，请使用 [Azure 文件存储][azure-files-volume]。
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
+本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal]。
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -41,7 +41,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-现在，使用 [az disk create][az-disk-create] 命令创建磁盘。 指定在上一命令中获取的节点资源组名称，然后指定磁盘资源的名称，例如 *myAKSDisk*。 下面的示例创建*20*GiB 磁盘和磁盘一次创建的输出 ID。 如果需要使用 Windows Server 容器 （目前以预览版在 AKS 中） 创建用于磁盘，将添加`--os-type windows`参数，以正确格式化该磁盘。
+现在，使用 [az disk create][az-disk-create] 命令创建磁盘。 指定在上一命令中获取的节点资源组名称，然后指定磁盘资源的名称，例如 *myAKSDisk*。 以下示例创建一个 *20*GiB 的磁盘，并且在创建后输出磁盘的 ID。 如果需要使用 Windows Server 容器 （目前以预览版在 AKS 中） 创建用于磁盘，将添加`--os-type windows`参数，以正确格式化该磁盘。
 
 ```azurecli-interactive
 az disk create \

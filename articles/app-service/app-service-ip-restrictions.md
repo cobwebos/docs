@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 2b0892fb107827cd9060a36855e9b8bf4416463c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3c547fbc09aeb034df5b7ed579639e1ff4bc0b4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069440"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705797"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制 #
 
@@ -32,7 +32,7 @@ ms.locfileid: "67069440"
 
 访问限制功能是在应用服务前端角色（即代码运行所在的辅助角色主机中的上游）中实现的。 因此，访问限制是有效的网络 ACL。
 
-限制从 Azure 虚拟网络 (VNet) 访问 Web 应用的功能称为[服务终结点][serviceendpoints]。 使用服务终结点可以限制为从选定的子网对多租户服务进行访问。 必须在网络端以及用于启用该功能的服务中启用该功能。 它并不适将流量限制到应用服务环境中托管的应用。  如果要在应用服务环境中，您可以控制对使用 IP 地址规则对应用程序的访问。
+访问限于你的 web 应用从 Azure 虚拟网络 (VNet) 的功能称为[服务终结点][serviceendpoints]。 使用服务终结点可以限制为从选定的子网对多租户服务进行访问。 必须在网络端以及用于启用该功能的服务中启用该功能。 它并不适将流量限制到应用服务环境中托管的应用。  如果要在应用服务环境中，您可以控制对使用 IP 地址规则对应用程序的访问。
 
 ![访问限制流](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "67069440"
 
 ## <a name="service-endpoints"></a>服务终结点
 
-服务终结点，可限制对所选的 Azure 虚拟网络子网的访问。 若要限制访问特定子网，请使用类型的虚拟网络创建限制规则。 可以选择订阅、 VNet 和子网你想要允许或拒绝访问。 如果尚未为选定子网的 Microsoft.Web 启用服务终结点，系统会自动启用它，除非你选中了不再询问的相应复选框。 有关何时要在应用而不是子网中启用它，在很大程度上取决于你是否有权在子网中启用服务终结点。 如果需要让其他某人在子网中启用服务终结点，可以选中相应的复选框，在预期将来要在子网中启用服务终结点的情况下，为服务终结点配置应用。 
+通过服务终结点，可以限制对选定 Azure 虚拟网络子网的访问。 若要限制对特定子网的访问，请使用虚拟网络类型创建限制规则。 可以选择要允许或拒绝访问的订阅、VNet 和子网。 如果尚未为选定子网的 Microsoft.Web 启用服务终结点，系统会自动启用它，除非你选中了不再询问的相应复选框。 有关何时要在应用而不是子网中启用它，在很大程度上取决于你是否有权在子网中启用服务终结点。 如果需要让其他某人在子网中启用服务终结点，可以选中相应的复选框，在预期将来要在子网中启用服务终结点的情况下，为服务终结点配置应用。 
 
 ![添加 VNet 访问限制规则](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
@@ -84,11 +84,11 @@ ms.locfileid: "67069440"
 
 ## <a name="blocking-a-single-ip-address"></a>阻止单个 IP 地址 ##
 
-在添加第一个 IP 限制规则时，服务会将添加显式**全部拒绝**规则优先级为 2147483647。 在实践中，显式**全部拒绝**规则将执行的最后一条规则，并且将阻止对显式不允许使用任何 IP 地址访问**允许**规则。
+添加第一个 IP 限制规则时，服务将添加优先级为 2147483647 的显式“全部拒绝”  规则。 实际上，显式“全部拒绝”  规则将是最后执行的规则，并将阻止访问使用“允许”  规则未明确允许的任何 IP 地址。
 
-用户要明确阻止的单个 IP 地址或 IP 地址块的方案，但所有内容允许的其他访问权限，有必要添加显式**允许所有**规则。
+如果用户希望显式阻止单个 IP 地址或 IP 地址块，但允许所有其他访问，则有必要添加一个显式的“全部允许”  规则。
 
-![块单个 ip 地址](media/app-service-ip-restrictions/block-single-address.png)
+![阻止单个 IP 地址](media/app-service-ip-restrictions/block-single-address.png)
 
 ## <a name="scm-site"></a>SCM 站点 
 
@@ -98,7 +98,7 @@ ms.locfileid: "67069440"
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>访问限制规则的编程操作 ##
 
-新的访问限制功能目前没有适用的 CLI 或 PowerShell，但是可以通过 PUT 操作在资源管理器中的应用配置上手动设置值。 例如，可以使用 resources.azure.com 并编辑 ipSecurityRestrictions 块以添加所需的 JSON。
+当前没有 CLI 或 PowerShell 对新的访问限制功能，但可以使用手动设置值[Azure REST API](https://docs.microsoft.com/rest/api/azure/)上应用配置资源管理器中的 PUT 操作。 例如，可以使用 resources.azure.com 并编辑 ipSecurityRestrictions 块以添加所需的 JSON。
 
 此信息在资源管理器中的位置为：
 
@@ -106,15 +106,19 @@ management.azure.com/subscriptions/subscription ID/resourceGroups/resource group
 
 前面的示例的 JSON 语法为：
 
-    "ipSecurityRestrictions": [
-      {
-        "ipAddress": "131.107.159.0/24",
-        "action": "Allow",
-        "tag": "Default",
-        "priority": 100,
-        "name": "allowed access"
+    {
+      "properties": {
+        "ipSecurityRestrictions": [
+          {
+            "ipAddress": "122.133.144.0/24",
+            "action": "Allow",
+            "tag": "Default",
+            "priority": 100,
+            "name": "IP example rule"
+          }
+        ]
       }
-    ],
+    }
 
 ## <a name="function-app-ip-restrictions"></a>函数应用 IP 限制
 

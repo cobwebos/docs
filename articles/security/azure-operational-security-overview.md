@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 38054d6ee3799296887726954ef1f096945aeaeb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca9feb226a077484ba43bef7cd14d962ea95b37a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60586843"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653422"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -47,7 +47,7 @@ IT 运营团队负责管理数据中心基础结构、应用程序和数据，�
 
 Azure 备份提供多个组件，可将其下载并部署到适当计算机、服务器或云端。 依据要保护的内容选择部署的组件或代理。 无论是保护本地数据还是云端数据，所有 Azure 备份组件均可用于将数据备份到 Azure 中的 Azure 恢复服务保管库中。 
 
-有关详细信息，请参阅 [Azure 备份组件表](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-azure-backup-components-should-i-use)。
+有关详细信息，请参阅 [Azure 备份组件表](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use)。
 
 ### <a name="site-recovery"></a>Site Recovery
 

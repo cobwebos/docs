@@ -9,13 +9,13 @@ ms.date: 01/28/2019
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-manager: jeconnoc
-ms.openlocfilehash: 69f5bdd80e4cf10db6a530ddfa08a1f26cd42ca0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: gwallace
+ms.openlocfilehash: 2da92b4fcd98024ada8d852d65e08fe8c70e3884
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754414"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704055"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 的业务连续性和灾难恢复
 
@@ -79,7 +79,7 @@ azds space select -n <space name>
 
 如果使用的是 Visual Studio，则可以通过以下步骤切换现有项目使用的群集：
 
-1. 在 Visual Studio 中打开项目。
+1. 在 Visual Studio 中打开你的项目。
 1. 在解决方案资源管理器中右键单击项目名称，然后单击“属性” 
 1. 在左窗格中，单击“调试” 
 1. 在“调试属性”页上，单击“配置文件”  下拉列表，然后选择“Azure Dev Spaces”  。
