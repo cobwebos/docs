@@ -4,7 +4,7 @@ description: 了解如何在 Azure 中的混合连接系列 VM 大小的预览�
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: f96a1179c103dd9dfb4d358572f9a9adbe24b977
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cdb539846104f70dabf684925685fb062fea8af
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809867"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797559"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虚拟机概述
 
@@ -31,7 +31,7 @@ ms.locfileid: "66809867"
 
 VM 并不知道 pCores 0-1 和 24 25 不提供给它。 因此，它公开每个 vNUMA 好像本机具有 22 个核心。
 
-Intel Xeon 白金、 金牌和 Silver Cpu 还到 CPU 套接字引入内部的通信以及外部的载 2D 网格网络。 我们强烈建议固定为优化性能和一致性的过程。 固定进程将运行 HC 系列 Vm 上，因为作为公开基础硅-是在来宾 VM。 有关 Intel Xeon SP 体系结构： 的更多信息 https://bit.ly/2RCYkiE
+Intel Xeon 白金、 金牌和 Silver Cpu 还到 CPU 套接字引入内部的通信以及外部的载 2D 网格网络。 我们强烈建议固定为优化性能和一致性的过程。 固定进程将运行 HC 系列 Vm 上，因为作为公开基础硅-是在来宾 VM。 若要了解详细信息，请参阅[Intel Xeon SP 体系结构](https://bit.ly/2RCYkiE)。
 
 下图显示核心职责的划分的 Azure 虚拟机监控程序和 HC 系列 VM 保留。
 
