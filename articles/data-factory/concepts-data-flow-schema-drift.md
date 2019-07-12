@@ -3,16 +3,15 @@ title: Azure 数据工厂映射数据流架构偏差
 description: 使用架构偏差在 Azure 数据工厂中生成可复原的数据流
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fd610afc0a21a97a8544b9e4b173f207f5fb50f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61261878"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722878"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>映射数据流架构偏差
 
@@ -34,7 +33,7 @@ ms.locfileid: "61261878"
 
 * 选择此选项后，每次执行数据流都会从源读取所有传入字段，并通过整个流将其传递到接收器。
 
-* 请务必使用“自动映射”来映射接收器转换中的所有新字段，以选取所有新字段并将其载入目标：
+* 请务必使用"自动映射"映射到接收器的转换中的所有新字段，以便所有新字段获取选取和在目标。
 
 <img src="media/data-flow/automap.png" width="400">
 

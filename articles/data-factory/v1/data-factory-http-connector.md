@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: baca05a9c007849d813b2f4de17378e6d18da4a5
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
-ms.translationtype: HT
+ms.openlocfilehash: 22d6999b2a69aceb4421cea070d784f693bdf9c4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701732"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839284"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 源移动数据
 
@@ -45,7 +45,7 @@ ms.locfileid: "67701732"
 
 - 创建管道最简单的方法是使用复制数据向导。 有关使用复制数据向导创建管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-- 也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、 **.NET API** 或 **REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 有关将数据从 HTTP 源复制到Azure Blob 存储的 JSON 示例，请参阅 [JSON 示例](#json-examples)。
+- 此外可以使用以下工具创建管道： **Visual Studio**， **Azure PowerShell**，则**Azure 资源管理器模板**，则 **.NET API**，或**REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 有关将数据从 HTTP 源复制到Azure Blob 存储的 JSON 示例，请参阅 [JSON 示例](#json-examples)。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
@@ -94,7 +94,7 @@ ms.locfileid: "67701732"
 
 若要使用基本身份验证，请将“authenticationType”设置为“ClientCertificate”   。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
 
-| 属性 | 说明 | 必填 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | embeddedCertData | PFX 文件的二进制数据的 Base64 编码内容。 | 指定是 **embeddedCertData**，还是 **certThumbprint** |
 | certThumbprint | 在网关计算机的证书存储中安装的证书的指纹。 仅当从本地 HTTP 源复制数据时才适用。 | 指定是 **embeddedCertData**，还是 **certThumbprint** |
@@ -231,7 +231,7 @@ ms.locfileid: "67701732"
 
 ## <a name="json-examples"></a>JSON 示例
 
-以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 这些示例展示如何将数据从 HTTP 源复制到 Azure Blob 存储。 但是，使用 Azure 数据工厂中的复制活动，可以将数据*直接*从任何源复制到任何[受支持](data-factory-data-movement-activities.md#supported-data-stores-and-formats)的接收器。
+以下示例提供示例 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 这些示例展示如何将数据从 HTTP 源复制到 Azure Blob 存储。 但是，使用 Azure 数据工厂中的复制活动，可以将数据*直接*从任何源复制到任何[受支持](data-factory-data-movement-activities.md#supported-data-stores-and-formats)的接收器。
 
 示例：**将数据从 HTTP 源复制到 Azure Blob 存储**
 

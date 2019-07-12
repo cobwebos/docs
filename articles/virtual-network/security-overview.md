@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: a81232266749c14ce421ccf774e0cbd843b8b4eb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 99a55d0cd06e6f1a92a70b20447d300dbc05eee1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436607"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709540"
 ---
 # <a name="security-groups"></a>安全组
 <a name="network-security-groups"></a>
@@ -38,7 +38,7 @@ ms.locfileid: "67436607"
 |Protocol     | TCP、UDP 或“任何”，包括（但不限于）TCP、UDP 和 ICMP。 不能仅指定 ICMP，因此，如果需要 ICMP，请使用“任何”。 |
 |Direction| 该规则是应用到入站还是出站流量。|
 |端口范围     |可以指定单个端口或端口范围。 例如，可以指定 80 或 10000-10005。 指定范围可以减少创建的安全规则数。 只能在通过资源管理器部署模型创建的网络安全组中创建扩充式安全规则。 在通过经典部署模型创建的网络安全组中，不能在同一个安全规则中指定多个端口或端口范围。   |
-|操作     | 允许或拒绝        |
+|Action     | 允许或拒绝        |
 
 在允许或拒绝流量之前，将使用 5 元组信息（源、源端口、目标、目标端口和协议）按优先级对网络安全组安全规则进行评估。 将为现有连接创建流记录。 是允许还是拒绝通信取决于流记录的连接状态。 流记录允许网络安全组有状态。 例如，如果针对通过端口 80 访问的任何地址指定了出站安全规则，则不需要指定入站安全规则来响应出站流量。 如果通信是从外部发起的，则只需指定入站安全规则。 反之亦然。 如果允许通过某个端口发送入站流量，则不需要指定出站安全规则来响应通过该端口发送的流量。
 删除启用了流的安全规则时，现有连接不一定会中断。 当连接停止并且至少几分钟内在任一方向都没有流量流过时，流量流会中断。
@@ -82,6 +82,11 @@ ms.locfileid: "67436607"
 * **AzureBackup*** （仅限资源管理器）：此标记表示 AzureBackup 服务的地址前缀。 如果指定*AzureBackup*值，允许或拒绝 AzureBackup 流量。 此标记上具有依赖项**存储**并**AzureActiveDirectory**标记。此标记建议用于出站安全规则。 
 * **AzureActiveDirectoryDomainServices*** （仅限资源管理器）：此标记表示 Azure Active Directory 域服务专用部署的管理流量的地址前缀。 如果指定*AzureActiveDirectoryDomainServices*值，允许或拒绝 AzureActiveDirectoryDomainServices 流量。 对于入站/出站安全规则建议使用此标记。  
 * **SqlManagement*** （仅限资源管理器）：此标记表示的地址前缀为 SQL 的管理流量的专用部署。 如果指定*SqlManagement*值，允许或拒绝 SqlManagement 流量。 对于入站/出站安全规则建议使用此标记。 
+* **CognitiveServicesManagement** （仅限资源管理器）：此标记表示认知服务的地址前缀的流量。 如果指定*CognitiveServicesManagement*值，允许或拒绝 CognitiveServicesManagement 流量。 此标记建议用于出站安全规则。  
+* **Dynamics365ForMarketingEmail** （仅限资源管理器）：此标记表示的 Dynamics 365 的市场营销电子邮件服务的地址前缀。 如果指定*Dynamics365ForMarketingEmail*值，允许或拒绝 Dynamics365ForMarketingEmail 流量。 如果只想要允许访问特定于中的 Dynamics365ForMarketingEmail[区域](https://azure.microsoft.com/regions)，可以采用以下格式 Dynamics365ForMarketingEmail 指定该区域。 [区域名称]。
+* **AzurePlatformDNS** （仅限资源管理器）：此标记表示这是一个基本的基础结构服务的 DNS。 如果指定*AzurePlatformDNS*的值，可以禁用默认[Azure 平台中不考虑](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)dns。 请花在使用此标记的警告。 建议使用此标记前测试。 
+* **AzurePlatformIMDS** （仅限资源管理器）：此标记表示 IMDS 这是一个基本的基础结构服务。 如果指定*AzurePlatformIMDS*的值，可以禁用默认[Azure 平台中不考虑](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)为 IMDS。 请花在使用此标记的警告。 建议使用此标记前测试。 
+* **AzurePlatformLKM** （仅限资源管理器）：此标记表示 Windows 许可或密钥管理服务。 如果指定*AzurePlatformLKM*的值，可以禁用默认[Azure 平台中不考虑](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)的许可。 请花在使用此标记的警告。 建议使用此标记前测试。 
 
 > [!NOTE]
 > Azure 服务的服务标记表示来自所使用的特定云的地址前缀。 
@@ -105,41 +110,41 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|优先度|source|源端口|目标|目标端口|Protocol|访问|
+|优先度|Source|源端口|目标|目标端口|Protocol|Access|
 |---|---|---|---|---|---|---|
-|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|全部|允许|
+|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|All|Allow|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|优先度|source|源端口|目标|目标端口|Protocol|访问|
+|优先度|Source|源端口|目标|目标端口|Protocol|Access|
 |---|---|---|---|---|---|---|
-|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|全部|允许|
+|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|All|Allow|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|优先度|source|源端口|目标|目标端口|Protocol|访问|
+|优先度|Source|源端口|目标|目标端口|Protocol|Access|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|全部|拒绝|
+|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|All|拒绝|
 
 ### <a name="outbound"></a>出站
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|Source|源端口| 目标 | 目标端口 | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 全部 | 允许 |
+| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | All | Allow |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|Source|源端口| 目标 | 目标端口 | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 全部 | 允许 |
+| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | All | Allow |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|Source|源端口| 目标 | 目标端口 | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 全部 | 拒绝 |
+| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | All | 拒绝 |
 
 在“源”和“目标”列表中，“VirtualNetwork”、“AzureLoadBalancer”和“Internet”是[服务标记](#service-tags)，而不是 IP 地址。      在“协议”列中，“所有”包含 TCP、UDP 和 ICMP。  创建规则时，可以指定 TCP、UDP 或“所有”，但不能仅指定 ICMP。 因此，如果规则需要 ICMP，请为协议选择“所有”。  “源”和“目标”列中的“0.0.0.0/0”表示所有地址。    Azure 门户、Azure CLI 或 Powershell 等客户端可以使用 * 或任何字符来表示此表达式。
  
@@ -157,25 +162,25 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 若要让流量从 Internet 流到 Web 服务器，此规则是必需的。 由于来自 Internet 的入站流量被 [DenyAllInbound](#denyallinbound) 默认安全规则拒绝，因此 *AsgLogic* 或 *AsgDb* 应用程序安全组不需更多规则。
 
-|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|Source|源端口| 目标 | 目标端口 | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 100 | Internet | * | AsgWeb | 80 | TCP | 允许 |
+| 100 | Internet | * | AsgWeb | 80 | TCP | Allow |
 
 ### <a name="deny-database-all"></a>Deny-Database-All
 
 由于 [AllowVNetInBound](#allowvnetinbound) 默认安全规则允许在同一虚拟网络中的资源之间进行的所有通信，因此需要使用此规则来拒绝来自所有资源的流量。
 
-|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|Source|源端口| 目标 | 目标端口 | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | 全部 | 拒绝 |
+| 120 | * | * | AsgDb | 1433 | All | 拒绝 |
 
 ### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 
 此规则允许从 *AsgLogic* 应用程序安全组到 *AsgDb* 应用程序安全组的流量。 此规则的优先级高于 *Deny-Database-All* 规则的优先级。 因此，此规则在 *Deny-Database-All* 规则之前处理，这样系统就会允许来自 *AsgLogic* 应用程序安全组的流量，而阻止所有其他流量。
 
-|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|Source|源端口| 目标 | 目标端口 | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 110 | AsgLogic | * | AsgDb | 1433 | TCP | 允许 |
+| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
 
 将应用程序安全组指定为源或目标的规则只会应用到属于应用程序安全组成员的网络接口。 如果网络接口不是应用程序安全组的成员，则规则不会应用到网络接口，即使网络安全组关联到子网。
 

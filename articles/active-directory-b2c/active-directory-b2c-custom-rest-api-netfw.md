@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b3b896b2c423f2f9155ddb7803e59e719bd027cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 466d5eff27d9a8105fb840ce4ba79571b6207092
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510719"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835511"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -53,7 +53,7 @@ ms.locfileid: "66510719"
 * 发回会员号。
 * 将会员号添加到 JSON Web 令牌 (JWT)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。
 
 ## <a name="step-1-create-an-aspnet-web-api"></a>步骤 1：创建 ASP.NET Web API
@@ -64,11 +64,11 @@ ms.locfileid: "66510719"
 
 3. 在“名称”框中为该应用程序命名（例如 *Contoso.AADB2C.API*），选择“确定”。  
 
-    ![创建新的 Visual Studio 项目](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
+    ![在 Visual Studio 中创建新的 Visual Studio 项目](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
 4. 在“新建 ASP.NET Web 应用程序”窗口中，选择“Web API”或“Azure API 应用”模板。   
 
-    ![选择“Web API”模板](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
+    ![在 Visual Studio 中选择 web API 模板](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
 5. 确保身份验证设置为“无身份验证”。 
 
@@ -138,15 +138,15 @@ ms.locfileid: "66510719"
 
 1. 在“解决方案资源管理器”中，右键单击“控制器”文件夹，选择“添加”，并选择“控制器”。   
 
-    ![添加新控制器](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
+    ![在 Visual Studio 中添加新的控制器](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
 2. 在“添加基架”窗口中，选择“Web API 控制器 - 空”，再选择“添加”。   
 
-    ![选择“Web API 2 控制器 - 空”](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
+    ![在 Visual Studio 中选择 Web API 2 控制器-空](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
 3. 在“添加控制器”窗口中，将控制器命名为 **IdentityController**，选择“添加”。  
 
-    ![键入控制器名称](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
+    ![输入 Visual Studio 中的控制器名称](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
 
     基架会在“控制器”文件夹中创建名为 *IdentityController.cs* 的文件。 
 
@@ -206,11 +206,11 @@ ms.locfileid: "66510719"
 ## <a name="step-3-publish-the-project-to-azure"></a>步骤 3：将项目发布到 Azure
 1. 在解决方案资源管理器中右键单击“Contoso.AADB2C.API”项目，选择“发布”。  
 
-    ![发布到 Microsoft Azure 应用服务](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
+    ![将发布到 Microsoft Azure 应用服务中使用 Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
 
 2. 在“发布”窗口中，依次选择“Microsoft Azure 应用服务”、“发布”。   
 
-    ![创建新的 Microsoft Azure 应用服务](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
+    ![使用 Visual Studio 创建新的 Microsoft Azure 应用服务](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
 
     此时会打开“创建应用服务”窗口。  在此窗口中，创建在 Azure 中运行 ASP.NET Web 应用所需的全部 Azure 资源。
 
@@ -219,9 +219,9 @@ ms.locfileid: "66510719"
 
 3. 在“Web 应用名称”框中，键入唯一的应用名称（有效字符为 a-z、0-9 和连字符 (-)）。  Web 应用的 URL 为 http://<app_name>.azurewebsites.NET，其中，*app_name* 是 Web 应用的名称。 可以接受自动生成的名称，它是唯一的。
 
-    ![提供应用服务属性](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
+    ![配置应用服务属性](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
 
-4. 若要开始创建 Azure 资源，请选择“创建”。   
+4. 若要开始创建 Azure 资源，请选择“创建”。 
     创建 ASP.NET Web 应用后，向导会将该应用发布到 Azure，然后在默认浏览器中启动该应用。
 
 6. 复制 Web 应用的 URL。
@@ -262,7 +262,7 @@ ms.locfileid: "66510719"
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    
+
     <!-- Custom Restful service -->
     <TechnicalProfile Id="REST-API-SignUp">
       <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
@@ -347,14 +347,14 @@ ms.locfileid: "66510719"
 
 2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。 
 
-    ![B2C_1A_signup_signin 窗口](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
+    ![在 Azure 门户中 B2C_1A_signup_signin 自定义策略页](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
 
-3. 在“名”框中键入 **Test** 来测试该过程。   
+3. 在“名”框中键入 **Test** 来测试该过程。 
     Azure AD B2C 会在窗口顶部显示一条错误消息。
 
-    ![测试策略](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
+    ![测试注册登录页面上的给定名称输入的验证](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4. 在“名”框中键入一个名称（不要键入“Test”）。   
+4. 在“名”框中键入一个名称（不要键入“Test”）。 
     Azure AD B2C 会注册该用户，然后将 loyaltyNumber 发送到应用程序。 请注意此 JWT 中的编号。
 
 ```
