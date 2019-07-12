@@ -4,19 +4,19 @@ description: 可以通过 Azure DevOps Projects 轻松地在 Azure 上开始操�
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 01/22/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 02977032c5975de4098600ddbebccfcbb9b0fafd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 109a7e327217a342f485dd61b53115569f2346cd
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595498"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722979"
 ---
-# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>使用 Azure DevOps Projects 为 IoT Edge 创建 CI/CD 管道（预览版）
+# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>为 IoT Edge，通过 Azure DevOps 项目创建 CI/CD 管道
 
 使用 DevOps Projects 为 IoT Edge 应用程序配置持续集成 (CI) 和持续交付 (CD)。 DevOps Projects 可以简化 Azure Pipelines 中生成和发布管道的初始配置。
 
@@ -38,7 +38,7 @@ DevOps Projects 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Az
 
    ![选择用于创建新应用程序的语言](./media/how-to-devops-project/select-language.png)
 
-2. 选择“简单 IoT (预览版)”作为应用程序框架，然后选择“下一步”   。
+2. 选择**简单 IoT**作为你的应用程序框架，然后选择**下一步**。
 
    ![选择简单 IoT 框架](media/how-to-devops-project/select-iot.png)
 

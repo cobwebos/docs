@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: dabaa06e224c6498c0080c4546c04f40e3919bb6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bb6cd43c77c31874115250d13f8d4067b3db7b36
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448533"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67804975"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>通过 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据
 
@@ -54,7 +54,7 @@ IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](https://docs.micro
 
 此文章介绍了 IoT Edge 在 IoT Edge 设备运行的 blob 服务的容器上的 Azure Blob 存储与相关的概念。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 Azure IoT Edge 设备：
 
@@ -62,13 +62,14 @@ Azure IoT Edge 设备：
 
 - IoT Edge 模块上的 Azure Blob 存储支持以下设备配置：
 
-  | 操作系统 | 体系结构 |
-  | ---------------- | ----- | ----- |
-  | Ubuntu Server 16.04 | AMD64 |
-  | Ubuntu Server 18.04 | AMD64 |
-  | Windows 10 IoT Enterprise | AMD64 |
-  | Windows Server 2019 | AMD64 |
-  | Raspbian-stretch | ARM32 |
+  | 操作系统 | AMD64 | ARM32v7 | ARM64 |
+  | ---------------- | ----- | ----- | ---- |
+  | Raspbian-stretch | 否 | 是 | 否 |  
+  | Ubuntu Server 16.04 | 是 | 否 | 是 |
+  | Ubuntu Server 18.04 | 是 | 否 | 是 |
+  | Windows 10 IoT 企业版 17763 | 是 | 否 | 否 |
+  | Windows Server 2019 内部版本 17763 | 是 | 否 | 否 |
+  
 
 云资源：
 
@@ -99,7 +100,7 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 | ----- | ----- | ---- | ---- |
 | deleteOn | true、false | 默认设置为 `false`，若要启用它，可将它设置为 `true`| `deviceAutoDeleteProperties__deleteOn={false,true}` |
 | deleteAfterMinutes | `<minutes>` | 指定以分钟为单位的时间。 该模块会自动删除 blob 从本地存储时此值过期 | `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| retainWhileUploading | true、false | 默认情况下它设置为`true`，并且它还保留 blob，而如果 deleteAfterMinutes 过期上载到云存储。 可以将其设置为`false`并 deleteAfterMinutes 过期时，就立即将删除数据。 请注意:对于此属性工作 uploadOn 应设置为 true| `deviceAutoDeleteProperties__retainWhileUploading={false,true}` |
+| retainWhileUploading | true、false | 默认情况下它设置为`true`，并且它还保留 blob，而如果 deleteAfterMinutes 过期上载到云存储。 可以将其设置为`false`并 deleteAfterMinutes 过期时，就立即将删除数据。 注意:对于此属性工作 uploadOn 应设置为 true| `deviceAutoDeleteProperties__retainWhileUploading={false,true}` |
 
 ## <a name="configure-log-files"></a>配置日志文件
 

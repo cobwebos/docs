@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/03/2019
+ms.date: 07/10/2019
 ms.author: jaredr80
-ms.openlocfilehash: bda5fb8a267fae3309c73678465693e1fef9b838
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 21d06dfaecb0448194355f13978483779a2ff6be
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565956"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805698"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -42,9 +42,9 @@ ms.locfileid: "67565956"
 
 | **地缘政治区域** | **区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- | --- |
-| **澳大利亚政府** | 第 | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
-| **欧洲** | 第 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹、 Amsterdam2、 都柏林、 法兰克福、 伦敦、 London2、 马赛、 纽波特 （威尔士）、 巴黎、 苏黎世 |
-| **北美** | 第 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、 芝加哥、 达拉斯、 丹佛、 拉斯维加斯、 洛杉矶、 迈阿密、 纽约、 圣安东尼奥、 西雅图、 硅谷、 硅 Valley2、 华盛顿 DC，华盛顿 DC2、 蒙特利尔、 魁北克市、 多伦多 |
+| **澳大利亚政府** | 1 | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
+| **欧洲** | 1 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹、 Amsterdam2、 都柏林、 法兰克福、 伦敦、 London2、 马赛、 纽波特 （威尔士）、 巴黎、 苏黎世 |
+| **北美** | 1 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、 芝加哥、 达拉斯、 丹佛、 拉斯维加斯、 洛杉矶、 迈阿密、 纽约、 圣安东尼奥、 西雅图、 硅谷、 硅 Valley2、 华盛顿 DC，华盛顿 DC2、 蒙特利尔、 魁北克市、 多伦多 |
 | **亚洲** | 2 |东亚、东南亚 |中国香港特别行政区，吉隆坡、 新加坡、 新加坡 2 台北 |
 | **印度** | 2 |印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
 | **日本** | 2 |日本西部、日本东部 |大坂、东京 |
@@ -74,12 +74,12 @@ ms.locfileid: "67565956"
 
 
 ### <a name="production-azure"></a>生产 Azure
-| **位置** | **对等位置所有者** | **本地 Azure 区域** | **服务提供商** |
+| **Location** | **对等位置所有者** | **本地 Azure 区域** | **服务提供商** |
 | --- | --- | --- | --- |
 | **阿姆斯特丹** | Equinix | 西欧 | Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、IX Reach、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Telia Carrier、Verizon、Zayo |
 | **阿姆斯特丹 2** | Interxion | 西欧 | CenturyLink Cloud Connect、 DE CIX、 Interxion、 Vodafone |
 | **亚特兰大** | Equinix | 不适用 | Equinix、Megaport |
-| **奥克兰** | Vocus | 不适用 | Devoli、 Megaport |
+| **奥克兰** | Vocus | 不适用 | Devoli，Kordia、 Megaport |
 | **釜山** |LG CNS | 韩国南部 | LG CNS |
 | **堪培拉** | CDC | 澳大利亚中部 | CDC |
 | **堪培拉 2** | CDC | 澳大利亚中部 2| CDC |
@@ -93,7 +93,7 @@ ms.locfileid: "67565956"
 | **Dubai2** | du datamena | 阿拉伯联合酋长国北部 | du datamena Orixcom |
 | **都柏林** | Equinix | 北欧 | Colt、eir、Equinix、Interxion、Megaport |
 | **法兰克福** | Interxion | 不适用 | DE CIX、 Interxion |
-| **香港特別行政区** | Equinix | 东亚 | Aryaka Networks、 British Telecom、 CenturyLink Cloud Connect、 首席 Telecom、 China Telecom Global、 Equinix、 Megaport、 NTT Communications、 Orange、 PCCW Global Limited、 Tata Communications、 Verizon |
+| **香港特別行政区** | Equinix | 东亚 | Aryaka Networks、 British Telecom、 CenturyLink Cloud Connect、 首席 Telecom、 China Telecom Global、 Equinix、 Megaport、 NTT Communications、 Orange、 PCCW Global Limited、 Tata Communications、 Telia 承运人，Verizon |
 | **约翰内斯堡** | Teraco | 南非北部 | British Telecom、 Internet Solutions-Cloud Connect、 Liquid Telecom、 Teraco |
 | **吉隆坡** | TIME dotCom | 不适用 | TIME dotCom |
 | **拉斯维加斯** | 开关 | 不适用 | CenturyLink Cloud Connect、Megaport |
@@ -108,7 +108,7 @@ ms.locfileid: "67565956"
 | **孟买 2** | Airtel | 印度西部 | Airtel、Sify、Vodafone Idea |
 | **纽约** | Equinix | 不适用 | CenturyLink Cloud Connect、 Coresite、 Equinix、 InterCloud、 Megaport、 数据包、 Zayo |
 | **Newport(Wales)** | Next Generation Data | 英国西部 | British Telecom、 Colt、 Level 3 Communications、 下一代数据 |
-| **大阪** | Equinix | 日本西部 | Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT SmartConnect、Softbank |
+| **大阪** | Equinix | 日本西部 | Colt，Equinix、 Internet Initiative Japan Inc.-IIJ、 NTT Communications、 NTT SmartConnect、 Softbank |
 | **巴黎** | Interxion | 法国中部 | CenturyLink Cloud Connect、 Colt、 Equinix、 Intercloud、 Interxion、 橙色、 Telia 运营商、 Zayo |
 | **珀斯** | NextDC | 不适用 | Megaport、 NextDC |
 | **魁北克市** | 4Degrees | 加拿大东部 | Bell Canada、Megaport |
@@ -126,14 +126,14 @@ ms.locfileid: "67565956"
 | **多伦多** | Cologix | 加拿大中部 | At&t netbond、 Bell Canada、 CenturyLink Cloud Connect、 Cologix、 Equinix、 IX 达到 Megaport、 Telus、 Verizon、 Zayo |
 | **华盛顿特区** | Equinix | 美国东部、 美国东部 2 | Aryaka Networks、 AT & T NetBond、 British Telecom、 CenturyLink Cloud Connect、 Cologix、 Comcast、 Coresite、 Equinix、 Internet2、 InterCloud、 Level 3 Communications、 Megaport、 Neutrona Networks、 NTT Communications、 Orange、 PacketFabric、 冲刺 （sprint）、 TataCommunications、 Telia 运营商、 Verizon、 Zayo |
 | **华盛顿特区 2** | Coresite | 美国东部、 美国东部 2 |Coresite | 
-| **Zurich** | Interxion | 不适用 | Interxion |
+| **Zurich** | Interxion | 不适用 | Intercloud、 Interxion |
 
  **+** 表示即将推出
 
 ### <a name="national-cloud-environments"></a>国家/地区云环境
 
 ### <a name="us-government-cloud"></a>美国政府云
-| **位置** | **服务提供商** |
+| **Location** | **服务提供商** |
 | --- | --- |
 | **芝加哥** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 | **达拉斯** |Equinix、Megaport、Verizon |
@@ -142,10 +142,10 @@ ms.locfileid: "67565956"
 | **圣安东尼奥** | CenturyLink Cloud Connect、Megaport |
 | **硅谷** | Equinix、Level 3 Communications、Verizon |
 | **西雅图** | Equinix、Megaport |
-| **华盛顿特区** |At&t netbond、 Equinix、 Level 3 Communications、 Megaport、 Verizon |
+| **华盛顿特区** |在 & T NetBond、 CenturyLink Cloud Connect、 Equinix、 Level 3 Communications、 Megaport、 Verizon |
 
 ### <a name="china"></a>中国
-| **位置** | **服务提供商** |
+| **Location** | **服务提供商** |
 | --- | --- |
 | **北京** |中国电信 |
 | **北京 2** | 中国电信 GDS |
@@ -178,7 +178,7 @@ ms.locfileid: "67565956"
   * 根据 [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md) 中的步骤来设置连接。
 
 ## <a name="c1partners"></a>通过其他服务提供商建立的连接
-| **位置** | **Exchange** | **连接提供商** |
+| **Location** | **Exchange** | **连接提供商** |
 | --- | --- | --- |
 | **阿姆斯特丹** | Equinix、Telecity | BICS、CloudXpress、Eurofiber、Fastweb S.p.A、Gulf Bridge International、MainOne、Nianet、Post、Proximus、TDC Erhverv、Telecom Italia Sparkle、Telia |
 | **亚特兰大** | Equinix| Crown Castle

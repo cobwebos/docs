@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b4f8caf03aad339cea3c3fcc732fc1af6086ea7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f6c2f36e1061243851b37da47659aaf7a18e8d6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108890"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673006"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory Identity Protection（已刷新）是什么？
 
@@ -119,7 +119,7 @@ Identity Protection 基于两种风险类型：
 
 ## <a name="how-identity-protection-detects-risk"></a>Identity Protection 如何检测风险  
 
-Azure AD 使用机器学习来检测异常和可疑活动，具体使用在登录过程中实时检测到的信号，以及与用户及其登录活动相关的非实时信号。 使用这些数据，Identity Protection 在每次用户进行身份验证时计算实时登录风险，并为每个用户确定整体用户风险级别。 Identity Protection 允许你通过配置 Identity Protection 用户风险和登录风险策略，自动对这些风险检测采取措施。  
+Azure AD 使用机器学习来检测异常和可疑活动，具体使用在登录过程中实时检测到的信号，以及与用户及其登录活动相关的非实时信号。 使用此数据，Identity Protection 计算实时登录风险的用户身份验证，以及确定总体用户风险级别为每个用户每次。 Identity Protection 允许你通过配置 Identity Protection 用户风险和登录风险策略，自动对这些风险检测采取措施。  
 
  
 
@@ -132,7 +132,7 @@ Azure AD 使用机器学习来检测异常和可疑活动，具体使用在登�
  
 
  
- ![流](./media/overview-v2/01.png)
+ ![流向](./media/overview-v2/01.png)
  
 
  
@@ -194,7 +194,7 @@ Azure AD 使用机器学习来检测异常和可疑活动，具体使用在登�
 
 Identity Protection 支持 Azure AD 中的 3 个角色，以平衡围绕部署的管理活动： 
 
-| 角色 | 有权执行的操作 | 无权执行的操作 |
+| Role | 有权执行的操作 | 无权执行的操作 |
 | --- | --- | --- |
 | 全局管理员 | 对 Identity Protection 具有完全访问权限、载入 Identity Protection | |
 | 安全管理员 | 对 Identity Protection 具有完全访问权限 | 载入 Identity Protection、重置用户密码 |

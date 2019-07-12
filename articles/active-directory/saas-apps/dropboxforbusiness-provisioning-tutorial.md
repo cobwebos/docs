@@ -8,19 +8,19 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
-ms.author: zchia
-ms.openlocfilehash: c95346ff9026b7fc8c9141234fb3cde9c0809d23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: jeedes
+ms.openlocfilehash: d7a7a76c86100041b544916c7d10e43bf3aaa44d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053479"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672912"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>教程：为 Dropbox for Business 配置自动用户预配
 
@@ -29,7 +29,7 @@ ms.locfileid: "67053479"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -114,7 +114,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-9. 单击“ **保存**”。
+9. 单击“保存”  。
 
 10. 下**映射**部分中，选择**Azure Active Directory 用户同步到 Dropbox**。
 

@@ -4,7 +4,7 @@ description: 列出 Azure 中适用于 Windows 虚拟机的各种计算优化大
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 8d28fd5c01e91c4af9c8eeea4a3f342b57468ddc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a067bb19b55cbe77d7a74339bc5d255728c3bb8e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64506886"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695624"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>计算优化虚拟机大小
 

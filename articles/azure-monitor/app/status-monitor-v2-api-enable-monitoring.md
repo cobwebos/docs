@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e0d5363e253e89b32b5eca14366504f0ace39043
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1e5a4ac9f159ce238149d44127fd63dcf3279623
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479643"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807102"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v031-alpha"></a>状态监视器 v2 API：启用 ApplicationInsightsMonitoring (v0.3.1-alpha)
+# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v040-alpha"></a>状态监视器 v2 API：启用 ApplicationInsightsMonitoring (v0.4.0-alpha)
 
 本文介绍的 cmdlet 时的成员[Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
 
@@ -75,7 +75,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ```
 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 
 ### <a name="-instrumentationkey"></a>-InstrumentationKey
 **必需。** 使用此参数由目标计算机上的所有应用程序提供单个检测密钥以供使用。
@@ -93,9 +93,9 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 - **MachineFilter**需要C#的计算机或 VM 名称的正则表达式。
     - “.*”将匹配所有项
     - ComputerName 将匹配仅在计算机与指定的确切名称。
-- **AppFilter**需要C#的计算机或 VM 名称的正则表达式。
+- **AppFilter**需要C#正则表达式的 IIS 站点名称。 通过运行命令获取你的服务器上的站点列表[get iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite)。
     - “.*”将匹配所有项
-    - 应用程序名称将匹配与指定的确切名称仅 IIS 应用程序。
+    - 'SiteName' 将与指定的名称完全匹配仅 IIS 站点。
 - **InstrumentationKey**需启用与前面两个筛选器匹配的应用程序的监视。
     - 保留此值为 null，如果你想要定义规则以排除监视。
 

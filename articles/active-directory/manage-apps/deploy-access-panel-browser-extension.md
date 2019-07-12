@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf665362e2d20f26c17e8a4ae9da29fc30cb47ce
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481294"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807683"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何：部署 Internet Explorer 使用组策略的访问面板扩展
 
@@ -30,7 +30,7 @@ ms.locfileid: "67481294"
 
 访问面板扩展也适用于 [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) 和 [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998)，两者都不需要管理员权限即可安装。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 已设置 [Active Directory 域服务](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)，并且已将用户的计算机加入域。
 * 必须拥有“编辑设置”权限才能编辑组策略对象 (GPO)。 默认情况下，以下安全组的成员具有此权限：域管理员、企业管理员和组策略创建者所有者。 [了解详细信息。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
@@ -43,9 +43,11 @@ ms.locfileid: "67481294"
 1. 在“服务器管理器”窗口中，转到“文件和存储服务”。  
 
     ![打开文件和存储服务](./media/deploy-access-panel-browser-extension/files-services.png)
+
 1. 转到“共享”选项卡。  然后单击“任务” > “新建共享...”  
 
-    ![打开文件和存储服务](./media/deploy-access-panel-browser-extension/shares.png)
+    ![屏幕截图显示了在何处可以找到新的共享从任务屏幕](./media/deploy-access-panel-browser-extension/shares.png)
+
 1. 完成“新建共享向导”并设置权限，确保可以从用户的计算机访问该共享位置。  [了解有关共享的详细信息。](https://technet.microsoft.com/library/cc753175.aspx)
 1. 下载以下 Microsoft Windows Installer 程序包（.msi 文件）：[Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. 将该安装程序包复制到共享中所需的位置。
@@ -80,13 +82,14 @@ ms.locfileid: "67481294"
 
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
+
 1. 右键单击“软件安装”，并选择“新建” > “包...”   
 1. 转到[步骤 1：创建分发点](#step-1-create-the-distribution-point)中包含安装程序包的共享文件夹，选择 .msi 文件，然后单击“打开”  。
 
    > [!IMPORTANT]
    > 如果该共享也位于此服务器上，请验证是否可以通过网络文件路径（而不是本地文件路径）访问此 .msi。
 
-    ![从共享文件夹中选择安装包。](./media/deploy-access-panel-browser-extension/select-package.png)
+    ![选择共享文件夹中的安装包](./media/deploy-access-panel-browser-extension/select-package.png)
 
 1. 在“部署软件”提示窗口中，选择“已分配”作为部署方法。   然后单击“确定”  。
 
@@ -100,6 +103,7 @@ ms.locfileid: "67481294"
 
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
+
 1. 右键单击“加载项列表”，并选择“编辑”。  
 
     ![右键单击"外接程序列表"，然后选择"编辑"](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
@@ -111,8 +115,8 @@ ms.locfileid: "67481294"
 1. 在“显示内容”窗口中执行以下步骤： 
 
    1. 对于第一列（“值名称”字段），请复制并粘贴以下类 ID：  `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   2. 对于第二列（“值”字段），请输入以下值：  `1`
-   3. 单击“确定”关闭“显示内容”窗口。  
+   1. 对于第二列（“值”字段），请输入以下值：  `1`
+   1. 单击“确定”关闭“显示内容”窗口。  
 
       ![填写在上一步中指定的值](./media/deploy-access-panel-browser-extension/show-contents.png)
 
@@ -160,7 +164,7 @@ ms.locfileid: "67481294"
 1. 重新启动后，打开 **Internet Explorer**。 在窗口右上角单击“工具”（齿轮图标），并选择“管理加载项”。  
 1. 在“管理加载项”窗口中，检查“访问面板扩展”是否已安装且其“状态”设置为“已启用”。    
 
-   ![检查访问面板扩展是否已安装并启用。](./media/deploy-access-panel-browser-extension/verify-install.png)
+   ![验证安装并启用访问面板扩展](./media/deploy-access-panel-browser-extension/verify-install.png)
 
 ## <a name="learn-more"></a>了解详细信息
 

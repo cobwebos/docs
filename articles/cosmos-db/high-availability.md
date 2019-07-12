@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 928c943e21e7d00b87ac1e506b98d47107ac4348
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 904994134db28a8244f15ff42e0104e8565c68dd
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508549"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839803"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 实现高可用性
 
@@ -93,7 +93,8 @@ Azure Cosmos DB 是全球分布的多主数据库服务，在区域中断期间�
 |Throughput    |  X RU/s 预配的吞吐量      |  X RU/s 预配的吞吐量       |  2 倍的 RU/s 预配的吞吐量 <br/><br/> 此配置模式需要两次量进行比较时到单个区域使用可用性区域因为有两个区域的吞吐量。   |
 
 > [!NOTE] 
-> 若要启用的可用性区域支持，Azure Cosmos DB 帐户必须具有多主/多区域写入已启用。 
+> 若要启用对多区域 Azure Cosmos 帐户的可用性区域支持，该帐户必须具有启用多主机写入。
+
 
 将区域添加到新的或现有 Azure Cosmos 帐户时，可以启用区域冗余。 目前，只能启用区域冗余通过使用 Azure 门户、 PowerShell 和 Azure 资源管理器模板。 若要启用你的 Azure Cosmos 帐户上的区域冗余，应设置`isZoneRedundant`标记，用于`true`的特定位置。 可以设置此标志中的位置属性。 例如，以下 powershell 代码段，"东南亚"区域的区域冗余：
 

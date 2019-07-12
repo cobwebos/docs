@@ -4,7 +4,7 @@ description: 了解如何在 Azure 中创建和管理 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: fbae9c8e-2341-4ed0-bb20-fd4debb2f9ca
@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 604a47ef73d50a2d127d1569b0b6a240a7a27d73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bb87713f1f7d1f41f68f3743b2504784b37bb23
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506842"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723055"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机概述
 
@@ -101,7 +101,7 @@ VM [扩展](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ft
 ### <a name="related-resources"></a>相关资源
 VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则要予以创建。
 
-| Resource | 必选 | 描述 |
+| Resource | 需要 | 描述 |
 | --- | --- | --- |
 | [资源组](../../azure-resource-manager/resource-group-overview.md) |是 |VM 必须包含在资源组中。 |
 | [存储帐户](../../storage/common/storage-create-storage-account.md) |是 |VM 需要使用存储帐户来存储其虚拟硬盘。 |

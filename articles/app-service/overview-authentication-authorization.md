@@ -16,12 +16,12 @@ ms.date: 08/24/2018
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 1e8bd60eab5853b121b9c08622914b9c62449f8f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
-ms.translationtype: HT
+ms.openlocfilehash: 42d925a77de20392459081e6669706da330ba7fa
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618770"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836714"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 
@@ -56,7 +56,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ### <a name="user-claims"></a>用户声明
 
-对于所有语言框架，应用服务通过将用户声明注入请求标头，向代码提供这些声明。 对于 ASP.NET 4.6 应用，应用服务会在 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) 中填充经过身份验证的用户声明，使你能够遵循标准的 .NET 代码模式（包括 `[Authorize]` 属性）。 同样，对于 PHP 应用，应用服务会填充 `_SERVER['REMOTE_USER']` 变量。
+对于所有语言框架，应用服务通过将用户声明注入请求标头，向代码提供这些声明。 对于 ASP.NET 4.6 应用，应用服务会在 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) 中填充经过身份验证的用户声明，使你能够遵循标准的 .NET 代码模式（包括 `[Authorize]` 属性）。 同样，对于 PHP 应用，应用服务会填充 `_SERVER['REMOTE_USER']` 变量。 对于 Java 应用程序中，声明是[可以从 Tomcat servlet 访问](containers/configure-language-java.md#authenticate-users)。
 
 对于 [Azure Functions](../azure-functions/functions-overview.md)，.NET 代码的 `ClaimsPrincipal.Current` 不会解冻，但仍可以在请求标头中找到用户声明。
 

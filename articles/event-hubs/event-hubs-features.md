@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 5b2618807a39f20de041a78204dcc40793b22843
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e0505960a413308283c4e67e33ec495eedd3b092
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275438"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827723"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -66,30 +66,8 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 使用[事件中心捕获](event-hubs-capture-overview.md)，可以自动捕获事件中心的流式处理数据，并将其保存到所选 Blob 存储帐户或 Azure Data Lake 服务帐户。 可以从 Azure 门户启用捕获，并指定大小上限和时间范围以执行捕获。 使用事件中心捕获，用户可以指定自己的 Azure Blob 存储帐户和容器或 Azure Data Lake 服务帐户（其中之一用于存储已捕获数据）。 捕获的数据用 Apache Avro 格式编写。
 
 ## <a name="partitions"></a>分区
+[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-事件中心通过分区使用者模式提供消息流式处理功能，在此模式下，每个使用者只读取消息流的特定子集或分区。 此模式支持事件处理的水平缩放，同时提供队列和主题中不可用的其他面向流的功能。
-
-分区是事件中心内保留的有序事件。 当较新的事件到达时，它们将添加到此序列的末尾。 可以将分区视为“提交日志”。
-
-![事件中心](./media/event-hubs-features/partition.png)
-
-事件中心按配置的保留时间保留数据，该时间适用于事件中心的所有分区。 事件根据特定的时间过期；无法显式删除事件。 由于分区互相独立且包含自身的数据序列，因此通常按不同速率增大。
-
-![事件中心](./media/event-hubs-features/multiple_partitions.png)
-
-分区数在创建时指定，必须介于 2 到 32 之间。 分区计数不可更改，因此在设置分区计数时应考虑长期规模。 分区是一种数据组织机制，与使用方应用程序中所需的下游并行度相关。 事件中心的分区数与预期会有的并发读取者数直接相关。 要将分区数增加到 32 以上，可以联系事件中心团队。
-
-虽然可以标识分区并向其直接发送数据，但并不建议直接发送到分区， 而应使用[事件发布者](#event-publishers)和容量部分介绍的更高级构造。 
-
-分区中填充了一系列的事件数据，这些数据包含事件的正文、用户定义的属性包和元数据，例如，它在分区中的偏移量，以及它在流序列中的编号。
-
-如需详细了解分区以及如何在可用性和可靠性之间进行取舍，请参阅[事件中心编程指南](event-hubs-programming-guide.md#partition-key)和[事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)这两篇文章。
-
-### <a name="partition-key"></a>分区键
-
-可以使用[分区键](event-hubs-programming-guide.md#partition-key)将传入事件数据映射到特定分区，以便进行数据组织。 分区键是发送者提供的、要传递给事件中心的值。 该键通过静态哈希函数进行处理，以便分配分区。 如果在发布事件时未指定分区键，则会使用循环分配。
-
-事件发布者只知道其分区密钥，而不知道事件要发布到的分区。 键与分区的这种分离使发送者无需了解有关下游处理的过多信息。 每个设备或用户的唯一标识就可以充当一个适当的分区键，但是，也可以使用其他属性（例如地理位置），以便将相关的事件分组到单个分区中。
 
 ## <a name="sas-tokens"></a>SAS 令牌
 
@@ -144,7 +122,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 为特定分区建立 AMQP 1.0 会话和链接后，事件中心服务会将事件传送到 AMQP 1.0 客户端。 与 HTTP GET 等基于提取的机制相比，此传送机制可以实现更高的吞吐量和更低的延迟。 将事件发送到客户端时，每个事件数据实例将包含重要的元数据，例如，用于简化对事件序列执行的检查点操作的偏移量和序列号。
 
 事件数据：
-* Offset
+* 偏移量
 * 序列号
 * 正文
 * 用户属性

@@ -4,7 +4,7 @@ description: 了解如何创建 Debian VHD 映像，以便在 Azure 中进行部
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: a6de7a7c-cc70-44e7-aed0-2ae6884d401a
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: szark
-ms.openlocfilehash: 6ef0a9f6efbf5f8398ba242150b2eb6102875f7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bdeaf4ec4a276e7cdd94402159f6adac474b3af8
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799284"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671533"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>为 Azure 准备 Debian VHD
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本部分假定你已经将从 [Debian 网站](https://www.debian.org/distrib/)下载的 .iso 文件中的 Debian Linux 操作系统安装到虚拟硬盘。 可以使用多种现有的工具来创建 .vhd 文件；Hyper-V 只是一个示例。 有关 Hyper-V 的使用说明，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 ## <a name="installation-notes"></a>安装说明
@@ -50,7 +50,7 @@ ms.locfileid: "60799284"
 
 ## <a name="manually-prepare-a-debian-vhd"></a>手动准备 Debian VHD
 1. 在 Hyper-V 管理器中，选择虚拟机。
-2. 单击“连接”  以打开该虚拟机的控制台窗口。
+2. 单击“连接”打开该虚拟机的控制台窗口。 
 3. 如果用 ISO 安装了 OS，请注释掉与 `/etc/apt/source.list` 中的“`deb cdrom`”相关的任何行。
 
 4. 编辑 `/etc/default/grub` 文件并按如下方式修改 **GRUB_CMDLINE_LINUX** 参数，包含用于 Azure 的其他内核参数。

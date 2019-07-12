@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: e9cb9a902cf60fbd3b297a72a7dfa836ee18c835
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
-ms.translationtype: HT
+ms.openlocfilehash: 98bd222212d616a5d2c608779c607bb431d184b9
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484586"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657332"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>创建并在 Azure HDInsight 中配置企业安全性套餐群集
 
@@ -108,7 +108,7 @@ Azure HDInsight Enterprise Security 包，您可以访问你在 Azure 中的 Apa
 1. 单击**创建资源**并键入**directory**。 选择**Azure Active Directory** > **创建**。
 1. 输入**HDIFabrikam**下**组织名称**。
 1. 输入**HDIFabrikamoutlook**下**初始域名**。
-1. 单击**创建**。
+1. 单击“创建”。 
 1. 在 Azure 门户中左侧，单击**Azure Active Directory**。
 1. 如有必要，单击**切换目录**更改为你创建的新目录**HDIFabrikamoutlook**。
 1. 下**管理**单击**自定义域名** > **添加自定义域**。
@@ -139,7 +139,7 @@ Azure HDInsight Enterprise Security 包，您可以访问你在 Azure 中的 Apa
 
         ![目录角色](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image040.png)
 
-    1. 输入用户密码。 单击**创建**。
+    1. 输入用户密码。 单击“创建”。 
 
 1. 如果你想要更改新创建的用户的密码<fabrikamazureadmin@hdifabrikam.com>。 登录到 Azure 门户中使用的标识，然后将提示你更改密码。
 
@@ -152,7 +152,7 @@ Azure HDInsight Enterprise Security 包，您可以访问你在 Azure 中的 Apa
 1. 安装 Microsoft Azure Active Directory 连接的域控制器上。
     1. 在上一步中打开下载的可执行文件，并同意许可条款。 单击 **“继续”** 。
 
-        ![具有 Azure AD Connect](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image052.png)
+        ![Azure AD Connect](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image052.png)
 
     1. 单击**使用快速设置**并完成安装。
 
@@ -186,7 +186,7 @@ Azure HDInsight Enterprise Security 包，您可以访问你在 Azure 中的 Apa
 1. 选择订阅。
 1. 下**资源组**单击**新建**，然后输入**HDIFabrikam CentralUS**。
 1. 选择**美国中部**下**位置**。
-1. 单击**创建**。
+1. 单击“创建”。 
 
 ![创建新的用户分配托管的标识](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image082.png)
 
@@ -219,7 +219,7 @@ Azure HDInsight Enterprise Security 包，您可以访问你在 Azure 中的 Apa
 
     ![选择网络](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image086.png)
 
-1. 上**管理员组**屏幕上，你应看到一条通知，一个组名为**AAD DC 管理员**已创建用于管理此组。 您可以根据需要修改此组的成员身份，但这不是必需的这篇文章的步骤。 单击“确定”。 
+1. 上**管理员组**屏幕上，你应看到一条通知，一个组名为**AAD DC 管理员**已创建用于管理此组。 您可以根据需要修改此组的成员身份，但这不是必需的这篇文章的步骤。 单击 **“确定”** 。
 
     ![查看管理员组](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image088.png)
 
@@ -302,7 +302,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
     1. 下**设置**单击**入站安全规则** > **添加**。
     1. 上**添加入站的安全规则**屏幕上，输入以下属性，然后单击**添加**:
 
-        | 属性 | 值 |
+        | 属性 | ReplTest1 |
         |---|---|
         | Source | Any |
         | Source port ranges | * |
@@ -310,8 +310,8 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         | Destination port range | 636 |
         | Protocol | Any |
         | Action | Allow |
-        | 优先度 | <Desired Number> |
-        | Name | Port_LDAP_636 |
+        | 优先度 | \<所需的数量\> |
+        | 名称 | Port_LDAP_636 |
 
     ![入站的安全规则](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
@@ -345,7 +345,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 1. 在上安装自定义 DNS **HDIFabrikam AADDSVNET**虚拟网络。
     1. 转到 Azure 门户 >**资源组** > **OnPremADVRG** > **HDIFabrikam AADDSVNET**  >  **DNS 服务器**。
     1. 选择**自定义**并输入`10.0.0.4`和`10.0.0.5`。
-    1. 单击“ **保存**”。
+    1. 单击“保存”  。
 
         ![保存自定义 dns 设置](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image123.png)
 
@@ -361,7 +361,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
             ![选择群集访问权限组](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image129.jpg)
 
-    1. 完成群集配置的其他步骤，并在验证详细信息**群集摘要**。 单击**创建**。
+    1. 完成群集配置的其他步骤，并在验证详细信息**群集摘要**。 单击“创建”。 
 
 1. 登录到用于在新创建的群集的 Ambari UI`https://CLUSTERNAME.azurehdinsight.net`通过使用您的管理员用户名称`hdiadmin@hdifabrikam.com`和密码。
 

@@ -4,7 +4,7 @@ description: 如何通过 Azure CLI 使用 SMB 在 Linux VM 上装载 Azure 文�
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b3bba1da5238655ca749f6464c539e53ca48f27
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ca58bbc6f7b983ff545eb2dca6240359637e214
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60542775"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671223"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
@@ -55,7 +55,7 @@ STORAGEACCT=$(az storage account create \
 
 ## <a name="get-the-storage-key"></a>获取存储密钥
 
-创建存储帐户时，帐户密钥是成对创建的，这样是为了不中断任何服务就可轮换密钥。 轮换到密钥对中的第二个密钥后，创建新的密钥对。 新的存储帐户密钥始终成对创建，因此始终至少有一个未使用的存储帐户密钥可以切换到。
+创建存储帐户时，帐户密钥是成对创建的，这样是为了不中断任何服务就可轮换密钥。 轮换到密钥对中的第二个密钥后，将创建新的密钥对。 新的存储帐户密钥始终成对创建，因此始终至少有一个未使用的存储帐户密钥可以切换到。
 
 使用 [az storage account keys list](/cli/azure/storage/account/keys) 查看存储帐户密钥。 此示例将密钥 1 的值存储在 **STORAGEKEY** 变量中。
 

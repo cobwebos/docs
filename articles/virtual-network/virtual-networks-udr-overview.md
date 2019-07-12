@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop; kumud
-ms.openlocfilehash: 07c8087043526a8eb0bf7a1963a761c40c11a925
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 383282aedd83f8f3e673444354bf17fdbf3f453c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202853"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798955"
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -34,7 +34,7 @@ Azure 自动创建系统路由，并将路由分配到虚拟网络中的每个�
 
 每个路由包含地址前缀和下一跃点类型。 将离开子网的流量发送到某个路由的地址前缀中的 IP 地址时，包含前缀的该路由是 Azure 使用的路由。 详细了解当多个路由包含相同的前缀或重叠前缀时，[Azure 如何选择路由](#how-azure-selects-a-route)。 只要创建了虚拟网络，Azure 就会自动为虚拟网络中的每个子网创建下述默认的系统路由：
 
-|source |地址前缀                                        |下一跃点类型  |
+|Source |地址前缀                                        |下一跃点类型  |
 |-------|---------                                               |---------      |
 |默认|对虚拟网络唯一                           |虚拟网络|
 |默认|0.0.0.0/0                                               |Internet       |
@@ -57,10 +57,10 @@ Azure 自动创建系统路由，并将路由分配到虚拟网络中的每个�
 
 Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前提是你启用这些功能。 Azure 会根据功能将可选的默认路由添加到虚拟网络中的特定子网，或者添加到虚拟网络中的所有子网。 启用不同的功能时，Azure 可能添加的其他系统路由和下一跃点类型为：
 
-|source                 |地址前缀                       |下一跃点类型|向其添加路由的虚拟网络中的子网|
+|Source                 |地址前缀                       |下一跃点类型|向其添加路由的虚拟网络中的子网|
 |-----                  |----                                   |---------                    |--------|
-|默认                |对虚拟网络唯一，例如：10.1.0.0/16|VNet 对等互连                 |全部|
-|虚拟网络网关|从本地通过 BGP 播发的前缀，或者在本地网关中配置的前缀     |虚拟网络网关      |全部|
+|默认                |对虚拟网络唯一，例如：10.1.0.0/16|VNet 对等互连                 |All|
+|虚拟网络网关|从本地通过 BGP 播发的前缀，或者在本地网关中配置的前缀     |虚拟网络网关      |All|
 |默认                |多个                               |虚拟网络服务终结点|仅为其启用服务终结点的子网。|
 
 * **虚拟网络 (VNet) 对等互连**：在两个虚拟网络之间创建虚拟网络对等互连时，会为每个虚拟网络（已为其创建对等互连）的地址空间中的每个地址范围添加一个路由。 详细了解[虚拟网络对等互连](virtual-network-peering-overview.md)。<br>
@@ -98,7 +98,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 不能在用户定义路由中指定“VNet 对等互连”或“VirtualNetworkServiceEndpoint”作为下一跃点类型。   下一跃点类型为“VNet 对等互连”或“VirtualNetworkServiceEndpoint”的路由只能在配置虚拟网络对等互连或服务终结点时，通过 Azure 创建。  
 
-## <a name="next-hop-types-across-azure-tools"></a>**各个 Azure 工具中的下一跃点类型**
+## <a name="next-hop-types-across-azure-tools"></a>跨 Azure 工具的下一跃点类型
 
 下一跃点类型的显示和引用名称在 Azure 门户和命令行工具以及 Azure 资源管理器部署模型和经典部署模型中并不相同。 下表列出了在不同的工具和[部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中引用每个下一跃点类型时所使用的名称：
 
@@ -139,7 +139,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 例如，路由表包含以下路由：
 
 
-|source   |地址前缀  |下一跃点类型           |
+|Source   |地址前缀  |下一跃点类型           |
 |---------|---------         |-------                 |
 |默认  | 0.0.0.0/0        |Internet                |
 |用户     | 0.0.0.0/0        |虚拟网络网关 |
@@ -209,9 +209,9 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 图中  Subnet1 的路由表包含以下路由：
 
-|ID  |source |状态  |地址前缀    |下一跃点类型          |下一跃点 IP 地址|用户定义路由的名称| 
+|id  |Source |状态  |地址前缀    |下一跃点类型          |下一跃点 IP 地址|用户定义路由的名称| 
 |----|-------|-------|------              |-------                |--------           |--------      |
-|第   |默认|无效|10.0.0.0/16         |虚拟网络        |                   |              |
+|1   |默认|无效|10.0.0.0/16         |虚拟网络        |                   |              |
 |2   |用户   |活动 |10.0.0.0/16         |虚拟设备      |10.0.100.4         |Within-VNet1  |
 |3   |用户   |活动 |10.0.0.0/24         |虚拟网络        |                   |Within-Subnet1|
 |4   |默认|无效|10.1.0.0/16         |VNet 对等互连           |                   |              |
@@ -243,7 +243,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 图中  Subnet2 的路由表包含以下路由：
 
-|source  |状态  |地址前缀    |下一跃点类型             |下一跃点 IP 地址|
+|Source  |状态  |地址前缀    |下一跃点类型             |下一跃点 IP 地址|
 |------- |-------|------              |-------                   |--------           
 |默认 |活动 |10.0.0.0/16         |虚拟网络           |                   |
 |默认 |活动 |10.1.0.0/16         |VNet 对等互连              |                   |

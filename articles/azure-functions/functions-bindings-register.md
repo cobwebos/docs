@@ -8,14 +8,14 @@ manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 02/25/2019
+ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 88ffd6ec24ed19dd3b1e57277884c8759cdac1f9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 5969c3e0d270b45347f8132b2d655ba2e56cb2c0
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480332"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625898"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>注册 Azure Functions 绑定扩展
 
@@ -33,8 +33,8 @@ ms.locfileid: "67480332"
 |-------------------------|------------------------------------|------------------------------------|
 |Azure 门户|自动|自动|
 |非 .NET 语言或本地 Azure Core Tools 开发|自动|[使用 Azure Functions Core Tools 和扩展捆绑包](#extension-bundles)|
-|使用 Visual Studio 2019 的 C# 类库|[使用 NuGet 工具](#c-class-library-with-visual-studio-2019)|[使用 NuGet 工具](#c-class-library-with-visual-studio-2019)|
-|使用 Visual Studio Code 的 C# 类库|不适用|[使用 .NET Core CLI](#c-class-library-with-visual-studio-code)|
+|C#使用 Visual Studio 的类库|[使用 NuGet 工具](#vs)|[使用 NuGet 工具](#vs)|
+|使用 Visual Studio Code 的 C# 类库|不可用|[使用 .NET Core CLI](#vs-code)|
 
 ## <a name="extension-bundles"></a>扩展捆绑包以进行本地开发
 
@@ -69,9 +69,9 @@ ms.locfileid: "67480332"
 
 <a name="local-csharp"></a>
 
-## <a name="c-class-library-with-visual-studio-2019"></a>C\#与 Visual Studio 2019 类库
+## <a name="vs"></a> C\#使用 Visual Studio 的类库
 
-在 Visual Studio 2019  中，可使用 [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) 命令从包管理器控制台安装包，如以下示例所示：
+在中**Visual Studio**，可以从使用程序包管理器控制台安装程序包[Install-package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package)命令，如下面的示例中所示：
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
@@ -81,24 +81,25 @@ Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_V
 
 将示例中的 `<TARGET_VERSION>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
 
-## <a name="c-class-library-with-visual-studio-code"></a>使用 Visual Studio Code 的 C# 类库
+如果您使用`Install-Package`若要引用一个绑定，您不必使用[扩展捆绑包](#extension-bundles)。 这种方法是特定于 Visual Studio 中构建的类库。
+
+## <a name="vs-code"></a> C#使用 Visual Studio Code 的类库
 
 > [!NOTE]
 > 我们建议使用[扩展捆绑包](#extension-bundles)能够自动安装兼容的一组绑定扩展包的函数。
 
-在中**Visual Studio Code**，安装的包C#从命令提示符处使用类库项目[dotnet 添加包](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package)命令在.NET Core CLI 中，如下面的示例中所示：
+在中**Visual Studio Code**，安装的包C#从命令提示符处使用类库项目[dotnet 添加包](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package).NET Core CLI 命令。 下面的示例演示如何添加绑定：
 
 ```terminal
-dotnet add package Microsoft.Azure.WebJobs.Extensions.ServiceBus --version <TARGET_VERSION>
+dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>
 ```
 
 .NET Core CLI 只能用于 Azure Functions 2.x 开发。
 
-用于给定绑定的包的名称在该绑定的参考文章中提供。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
+替换为`<BINDING_TYPE_NAME>`与为你所需的绑定参考文章中提供的包的名称。 您可以找到所需的绑定参考文章中[支持的绑定的列表](./functions-triggers-bindings.md#supported-bindings)。
 
 将示例中的 `<TARGET_VERSION>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [Azure Functions 触发器和绑定示例](./functions-bindings-example.md)
-

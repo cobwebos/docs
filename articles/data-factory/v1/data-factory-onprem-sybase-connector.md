@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0de8d4145ff41b498149774af8ed74c56375dea9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 43bd21673c6619541f68e282d708bdbf54cd6f48
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60605190"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839860"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 移动数据
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-onprem-sybase-connector.md)
 > * [版本 2（当前版本）](../connector-sybase.md)
 
@@ -32,7 +32,7 @@ ms.locfileid: "60605190"
 
 可以将数据从本地 Sybase 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 Sybase 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 Sybase 数据存储。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 数据工厂服务支持通过数据管理网关连接到本地 Sybase 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
 即使 Sybase 数据库托管在 Azure IaaS VM 中，仍需要网关。 可在与数据存储相同的 IaaS VM 上或不同的 VM 上安装网关，只要网关能连接数据库即可。
@@ -49,7 +49,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
 - 创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 还可以使用以下工具来创建管道：Azure 门户  、Visual Studio  、Azure PowerShell  、Azure 资源管理器模板  、.NET API  和 REST API  。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 还可以使用以下工具来创建管道：**Visual Studio**， **Azure PowerShell**， **Azure Resource Manager 模板**， **.NET API**，并且**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -71,7 +71,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 | database |Sybase 数据库的名称。 |是 |
 | schema |数据库中架构的名称。 |否 |
 | authenticationType |用于连接 Sybase 数据库的身份验证类型。 可能的值包括：Anonymous、Basic 和 Windows。 |是 |
-| username |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
+| userName |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 Sybase 数据库。 |是 |
 
@@ -80,7 +80,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable**类型数据集（包括 Sybase 数据集）的 **typeProperties** 部分具有以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
 | tableName |链接服务指代的 Sybase 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -97,7 +97,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 
 ## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON 示例：将数据从 Sybase 复制到 Azure Blob
-以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何将数据从 Sybase 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。   
+下面的示例提供示例 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 它们演示如何将数据从 Sybase 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。   
 
 此示例具有以下数据工厂实体：
 

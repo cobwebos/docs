@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: c3732dd2fa87b00eec38f88ab828605b33567235
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 46a4544b86648ee99a751d4793013f6104d1d9df
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60396471"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807033"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Azure Monitor 日志流程
 [Microsoft Flow](https://ms.flow.microsoft.com) 支持使用数百种操作为不同服务创建自动化工作流。 来自一个操作的输出可以用作另一个操作的输入，从而在不同的服务之间创建集成。  可以借助用于 Microsoft Flow 的 Azure Log Analytics 连接器来构建工作流，以包括 Azure Monitor 中的 Log Analytics 工作区中的日志查询检索到的数据。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-例如，通过 Microsoft Flow，可在 Office 365 的电子邮件通知中使用 Azure Monitor 日志数据，在 Azure DevOps 中创建 bug，或者发布 Slack 消息。  可通过简单计划或从连接的服务中的某些操作（例如收到电子邮件或推文时）触发工作流。  
+例如，可以使用 Microsoft Flow 在 Office 365 的电子邮件通知中使用 Azure Monitor 日志数据、 Azure DevOps 中创建 bug 或发布 Slack 消息。  可通过简单计划或从连接的服务中的某些操作（例如收到电子邮件或推文时）触发工作流。  
 
 本文中的教程展示了如何创建一个流来通过电子邮件自动发送 Azure Monitor 日志查询的结果，这是一个关于如何在 Microsoft Flow 中使用 Log Analytics 连接器的示例。 
 

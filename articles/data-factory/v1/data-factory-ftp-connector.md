@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4aba7aadbe92b6c4f0ab417785e230bb6a6823df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d043072244ede5b1d7bd28d4628ffe3cf4961d8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486577"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836325"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器移动数据
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-ftp-connector.md)
 > * [版本 2（当前版本）](../connector-ftp.md)
 
@@ -40,12 +40,12 @@ ms.locfileid: "60486577"
 
 可将网关作为 FTP 服务器安装在同一本地计算机或 IaaS VM 上。 但是，我们建议将网关安装在单独的计算机或 IaaS VM 上，以避免资源争用，并获得更好的性能。 在单独的计算机上安装网关时，计算机应能够访问 FTP 服务器。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 可以使用不同的工具或 API 创建包含复制活动的管道（用于从 FTP 源移动数据）。
 
 创建管道的最简单方法是使用**数据工厂复制向导**。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-还可以使用以下工具来创建管道：Azure 门户  、Visual Studio  、PowerShell  、Azure 资源管理器模板  、.NET API  和 REST API  。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+还可以使用以下工具来创建管道：**Visual Studio**， **PowerShell**， **Azure Resource Manager 模板**， **.NET API**，并且**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建将数据从源数据存储移至接收器数据存储的管道：
 
@@ -68,7 +68,7 @@ ms.locfileid: "60486577"
 | type |将此类型设置为 FtpServer。 |是 |&nbsp; |
 | host |指定 FTP 服务器的名称或 IP 地址。 |是 |&nbsp; |
 | authenticationType |指定身份验证类型。 |是 |基本、匿名 |
-| username |指定有权访问 FTP 服务器的用户。 |否 |&nbsp; |
+| userName |指定有权访问 FTP 服务器的用户。 |否 |&nbsp; |
 | password |指定用户（用户名）的密码。 |否 |&nbsp; |
 | encryptedCredential |指定访问 FTP 服务器的加密凭据。 |否 |&nbsp; |
 | gatewayName |指定数据管理网关中用于连接到本地 FTP 服务器的网关名称。 |否 |&nbsp; |
@@ -153,7 +153,7 @@ ms.locfileid: "60486577"
 
 每个数据集类型的 **typeProperties** 节都不同。 它提供特定于数据集类型的信息。 **FileShare** 类型的数据集的 **typeProperties** 部分具有以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 组合在一起，基于切片开始和结束的日期时间构成文件夹路径。 |是 |
 | fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，生成文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
@@ -204,14 +204,14 @@ ms.locfileid: "60486577"
 
 在复制活动中，如果源的类型为 **FileSystemSource**，则 **typeProperties** 部分将具有以下属性：
 
-| 属性 | 说明 | 允许的值 | 需要 |
+| 属性 | 说明 | 允许的值 | 必填 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON 示例：将数据从 FTP 服务器复制到 Azure Blob
 此示例演示如何将数据从 FTP 服务器复制到 Azure Blob 存储。 但是，使用数据工厂中的复制活动，可以直接将数据复制到[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中所述的任何接收器。
 
-以下示例提供示例 JSON 定义，可用于通过使用 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道：
+以下示例提供示例 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)，或[PowerShell](data-factory-copy-activity-tutorial-using-powershell.md):
 
 * [FtpServer](#linked-service-properties) 类型的链接服务
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务

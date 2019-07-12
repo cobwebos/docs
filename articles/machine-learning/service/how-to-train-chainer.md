@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sgilley
-author: sdgilley
+ms.author: maxluk
+author: maxluk
+ms.reviewer: sdgilley
 ms.date: 06/15/2019
-ms.openlocfilehash: 5057a8cf6c8769761a1a1a9f513ec46d152289ab
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 8ecefccbdf5f02652e935858b6ae8fb4cdfde640
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488675"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840042"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>训练和链接器在规模较大的模型注册到 Azure 机器学习服务
 
@@ -26,7 +27,7 @@ ms.locfileid: "67488675"
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 在两种环境上运行此代码：
 

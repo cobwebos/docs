@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/27/2019
-ms.openlocfilehash: 1eeb37ce74b3e2f57588197d6bb88f59944c61cf
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: ce16450f7f25e5703cf283c4babb2a935aad21de
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460660"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813046"
 ---
 # <a name="automated-backups"></a>自动备份
 
@@ -75,7 +75,7 @@ SQL 数据库使用 SQL Server 技术创建[完整备份](https://docs.microsoft
 
 #### <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
 
-如果您使用的[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，默认备份保留期**七个**（单一、 共用，和实例数据库除外）。 对于所有 Azure SQL 数据库（单一、池化和实例数据库），可以[将备份保持期更改为最多 35 天](#how-to-change-the-pitr-backup-retention-period)。
+如果您使用的[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，默认备份保留期**七个**（单一、 共用，和实例数据库除外）。 对于所有 Azure SQL 数据库（单一数据库、共用数据库和实例数据库），可以[将备份保持期更改为最多 35 天](#how-to-change-the-pitr-backup-retention-period)。
 
 > [!WARNING]
 > 如果缩短当前保留期，早于新保留期的所有现有备份将不再可用。 如果延长当前保留期，SQL 数据库将保留现有备份，直至达到更长的保留期。
@@ -109,7 +109,11 @@ PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/st
 
 ## <a name="how-does-microsoft-ensure-backup-integrity"></a>Microsoft 如何确保备份完整性
 
-Azure SQL 数据库工程团队持续不断地自动测试整个服务中数据库的自动数据库备份的还原。 还原后，数据库还会使用 DBCC CHECKDB 接收完整性检查。 在完整性检查期间发现的任何问题都将导致向工程团队发出警报。 有关 Azure SQL 数据库中数据完整性的详细信息，请参阅 [Azure SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。
+持续，Azure SQL 数据库自动工程团队测试的自动的数据库备份还原数据库放置在逻辑服务器和弹性池 （这不是托管实例）。 在时间点还原时数据库还会收到使用 DBCC CHECKDB 的完整性检查。
+
+托管的实例会自动使用的初始备份`CHECKSUM`使用本机还原的数据库的`RESTORE`命令或数据迁移服务迁移完成后。
+
+在完整性检查期间发现的任何问题都将导致向工程团队发出警报。 有关 Azure SQL 数据库中数据完整性的详细信息，请参阅 [Azure SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。
 
 ## <a name="how-do-automated-backups-impact-compliance"></a>自动备份如何影响符合性
 

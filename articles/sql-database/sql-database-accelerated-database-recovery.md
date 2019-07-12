@@ -11,16 +11,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 77bc33747964a5f4ee1a67aba777dc3ed76b9a51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d556c82f47868f4ee06694e23092f10029d619d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073463"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839849"
 ---
 # <a name="accelerated-database-recovery"></a>加速的数据库恢复
 
-**加速的数据库恢复 (ADR)** 是一项新的 SQL 数据库引擎功能，通过重新设计 SQL 数据库引擎恢复过程，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 目前可用于 Azure SQL 数据库中的单一数据库和共用数据库，以及 Azure SQL 数据仓库中的数据库。 ADR 的主要优点是：
+**加速的数据库恢复 (ADR)** 是一项新的 SQL 数据库引擎功能，通过重新设计 SQL 数据库引擎恢复过程，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 是当前可用于单一数据库和 Azure SQL 数据库中的共用的数据库和 Azure SQL 数据仓库中的数据库 （目前处于公共预览状态）。 ADR 的主要优点是：
 
 - **快速且一致的数据库恢复**
 

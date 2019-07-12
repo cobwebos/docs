@@ -13,16 +13,31 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: ee3aeb9f44d1b98d6307c6a72d1e4786ea1ec664
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47578d5b6bb4a0094ba1a2e9e7dc7f92d0b0e231
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076900"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607090"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Azure 虚拟机上的 SQL Server 发行说明
 
 Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总了 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 的最新版本中的新功能和改进。 本文还列出了不与此版本直接相关但在同一时间范围内发布的值得注意的内容更新。 有关对其他 Azure 服务的改进，请参阅[服务更新](https://azure.microsoft.com/updates)
+
+
+## <a name="june-2019"></a>2019 年 7 月
+
+### <a name="service-improvements"></a>服务改进
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+| **新 SQL IaaS 安装模式** | 现在就可以在安装中的 SQL IaaS 扩展[轻量级模式下](virtual-machines-windows-sql-server-agent-extension.md)以避免重新启动 SQL Server 服务。  |
+| **SQL Server 版本修改** | 你现在可以更改[edition 属性](virtual-machines-windows-sql-change-edition.md)为 SQL Server VM。 |
+| **SQL VM RP 的更改** | 你可以[使用 SQL VM 资源提供程序注册到 SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) -甚至[Windows 2008 映像](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008r2-on-windows-server-2008-vms)-使用新的 SQL IaaS 模式。 |
+| **使用 AHUB BYOL 映像** | 从 marketplace 部署 BYOL 映像现在可以切换其[许可证类型为 PAYG](virtual-machines-windows-sql-ahb.md#remarks)。| 
+| &nbsp; | &nbsp; |
+
+
 
 ## <a name="may-2019"></a>2019 年 5 月
 
@@ -41,6 +56,8 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总�
 | &nbsp; | &nbsp; |
 
 
+
+
 ## <a name="april-2019"></a>2019 年 4 月
 
 ### <a name="service-improvements"></a>服务改进
@@ -55,7 +72,7 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总�
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-| **自定义映像可支持性** | 现在可以安装[SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md#installation)为自定义 OS 和 SQL 映像提供了有限的功能[灵活的许可](virtual-machines-windows-sql-ahb.md)。 当向 SQL 资源提供程序，注册自定义映像指定许可证类型为 AHUB 作为否则注册将失败。  | 
+| **自定义映像可支持性** | 现在可以安装[SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md#installation)为自定义 OS 和 SQL 映像提供了有限的功能[灵活的许可](virtual-machines-windows-sql-ahb.md)。 当向 SQL 资源提供程序，注册自定义映像指定许可证类型为 AHUB 作为否则注册将失败。 | 
 | **命名的实例可支持性** | 现可利用[SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md#installation)使用命名实例，如果已正确卸载默认实例。 | 
 | **门户增强功能** | 已改进部署 SQL Server VM 的 Azure 门户体验，以提高可用性。 有关详细信息，请参阅 brief[快速入门](quickstart-sql-vm-create-portal.md)和更全面[操作指南](virtual-machines-windows-portal-sql-server-provision.md)部署 SQL Server VM 的指南。|
 | &nbsp; | &nbsp; |
@@ -65,7 +82,7 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总�
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-| **门户改进** | 现可从即用即付自带的自己的许可证使用 SQL Server VM 的更改的许可模式[Azure 门户](virtual-machines-windows-sql-ahb.md#with-the-azure-portal-1)。|
+| **门户改进** | 现可从即用即付自带的自己的许可证使用 SQL Server VM 的更改的许可模式[Azure 门户](virtual-machines-windows-sql-ahb.md#change-license-for-vms-already-registered-with-resource-provider)|
 |**可用性组部署简化使用 Azure SQL VM CLI** | 它是现在比以往要请将可用性组部署到 Azure 中的 SQL Server VM。 [Azure SQL VM CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) ，可从命令行中，所有和记录时间中创建了 WSFC，ILB 和 AG 侦听器 ！ 有关详细信息，请参阅[使用 Azure SQL VM CLI 为 Azure VM 上的 SQL Server 中配置 Always On 可用性组](virtual-machines-windows-sql-availability-group-cli.md)。 | 
 | &nbsp; | &nbsp; |
 
@@ -76,7 +93,7 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总�
 | --- | --- |
 | **新的 SQL 群集组资源提供程序** | 新增了一个资源提供程序 (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups)，用于定义 Windows 故障转移群集的元数据。 将 SQL Server VM 加入到 SqlVirtualMachineGroups  ，会启动 Windows 故障转移群集服务，并将该 VM 加入到群集。  |
 |**使用 Azure 快速入门模板自动设置可用性组部署** |现在，可以使用两个 Azure 快速入门模板创建 Windows 故障转移群集、将 SQL Server VM 加入到该群集、创建侦听器并配置内部负载均衡器。 有关详细信息，请参阅[使用 Azure 快速入门模板为 Azure VM 上的 SQL Server 中配置 Always On 可用性组](virtual-machines-windows-sql-availability-group-quickstart-template.md)。 | 
-| **SQL VM 资源提供程序的自动注册** | 在本月之后部署的 SQL Server VM 会自动注册到新的 SQL Server 资源提供程序。 在本月之前部署的 SQL Server VM 仍然需要手动注册。 有关详细信息，请参阅[使用 SQL VM 资源提供程序注册现有的 SQL VM](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)。|
+| **SQL VM 资源提供程序的自动注册** | 在本月之后部署的 SQL Server VM 会自动注册到新的 SQL Server 资源提供程序。 在本月之前部署的 SQL Server VM 仍然需要手动注册。 有关详细信息，请参阅[使用 SQL VM 资源提供程序注册现有的 SQL VM](virtual-machines-windows-sql-register-with-resource-provider.md)。|
 | &nbsp; | &nbsp; |
 
 
@@ -84,8 +101,8 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总�
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-| **新的 SQL VM 资源提供程序** |  新增了一个适用于 SQL Server VM 的资源提供程序 (Microsoft.SqlVirtualMachine)，可用于更好地管理 SQL Server VM。 有关注册 VM 的详细信息，请参阅[将现有 SQL VM 注册到新的资源提供程序](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)。 |
-|**切换许可模型** |现在，可以使用 Azure CLI 或 Powershell 在 SQL VM 的“即用即付”模型与“自带许可”模型之间进行切换。 有关详细信息，请参阅[如何更改 SQL VM 的许可模型](virtual-machines-windows-sql-ahb.md)。 | 
+| **新的 SQL VM 资源提供程序** |  新增了一个适用于 SQL Server VM 的资源提供程序 (Microsoft.SqlVirtualMachine)，可用于更好地管理 SQL Server VM。 有关注册 VM 的详细信息，请参阅[将现有 SQL VM 注册到新的资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)。 |
+|**切换许可模型** | 现在，可以使用 Azure CLI 或 Powershell 在 SQL VM 的“即用即付”模型与“自带许可”模型之间进行切换。 有关详细信息，请参阅[如何更改 SQL VM 的许可模型](virtual-machines-windows-sql-ahb.md)。 | 
 | &nbsp; | &nbsp; |
 
 

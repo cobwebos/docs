@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: bbb907a7d73036352d4f5b8f36ccefacd89681ae
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: fe470165d11b24ffb1df704ecaa9804663fc9e5c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478857"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796028"
 ---
 # <a name="custom-resource-proxy-reference"></a>自定义资源代理引用
 
@@ -323,6 +323,7 @@ Content-Type: application/json; charset=utf-8
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 自定义资源提供程序的概述](./custom-providers-overview.md)
-- [教程：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
+- [快速入门：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
+- [教程：在 Azure 中创建自定义操作和资源](./tutorial-custom-providers-101.md)
 - [如何：向 Azure REST API 添加自定义操作](./custom-providers-action-endpoint-how-to.md)
 - [参考：自定义资源缓存参考](./custom-providers-proxy-cache-resource-endpoint-reference.md)

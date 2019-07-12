@@ -6,12 +6,12 @@ ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: f418cd6c5470740ce123448ddbbe54cb6e89dabe
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: d25ef00adc307bae57da2c04d4472874f8d67bcd
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67475936"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796083"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Azure 自定义资源提供程序概述
 
@@ -125,6 +125,7 @@ HttpMethod | 示例 URI | 描述
 
 在本文中，您学习了有关自定义提供程序的信息。 请转到下一篇文章中创建自定义提供程序。
 
-- [教程：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
+- [快速入门：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
+- [教程：在 Azure 中创建自定义操作和资源](./tutorial-custom-providers-101.md)
 - [如何：向 Azure REST API 添加自定义操作](./custom-providers-action-endpoint-how-to.md)
 - [如何：将自定义资源添加到 Azure REST API](./custom-providers-resources-endpoint-how-to.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 6/27/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 2399fcaa683e5807d2a5cd69d3dd3357d804fd28
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ba7b8ae5c7e68c22b83583de6cd0b84f621d4b25
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449958"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786669"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -40,7 +40,7 @@ ms.locfileid: "67449958"
 | 2018 年 9 月更新汇总 | 3.3.0.0 | 2018 年 9 月 24 日 | 支持 - 代理版本将于 2019 年 7 月 19 日到期 |
 | 2018 年 8 月更新汇总 | 3.2.0.0 | 2018 年 8 月 15 日 | 支持 - 代理版本将于 2019 年 7 月 19 日到期 |
 | 正式版 | 3.1.0.0 | 2018 年 7 月 19日 | 支持 - 代理版本将于 2019 年 7 月 19 日到期 |
-| 过期的代理 | 1.1.0.0 - 3.0.13.0 | 不适用 | 不支持 - 代理版本于 2018 年 10 月 1 日到期 |
+| 过期的代理 | 1.1.0.0 - 3.0.13.0 | 不可用 | 不支持 - 代理版本于 2018 年 10 月 1 日到期 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -62,7 +62,7 @@ ms.locfileid: "67449958"
     - 有几个可靠性和性能改进，在此版本中。 以进行云分层更高效和 Azure 文件同步与整个工作更好地在这些情况下具有带宽限制设置计划时，其中一些为目标。
 
 ### <a name="evaluation-tool"></a>评估工具
-在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool)部分。 
+在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)部分。 
 
 ### <a name="agent-installation-and-server-configuration"></a>代理安装和服务器配置
 若要详细了解如何使用 Windows Server 安装和配置 Azure 文件同步代理，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)和[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
@@ -159,7 +159,7 @@ ms.locfileid: "67449958"
 - 有关其他可靠性改进云分层和同步
 
 ### <a name="evaluation-tool"></a>评估工具
-在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool)部分。 
+在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)部分。 
 
 ### <a name="agent-installation-and-server-configuration"></a>代理安装和服务器配置
 若要详细了解如何使用 Windows Server 安装和配置 Azure 文件同步代理，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)和[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
@@ -256,7 +256,7 @@ ms.locfileid: "67449958"
     - 当传输因文件过大而中断时，Azure 文件同步会继续进行数据传输而不会重新传输。 
 
 ### <a name="evaluation-tool"></a>评估工具
-在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool)部分。 
+在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)部分。 
 
 ### <a name="agent-installation-and-server-configuration"></a>代理安装和服务器配置
 若要详细了解如何使用 Windows Server 安装和配置 Azure 文件同步代理，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)和[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
@@ -339,7 +339,7 @@ ms.locfileid: "67449958"
 以下发行说明适用于 Azure 文件同步代理版本 4.0.1.0（2018 年 11 月 13 日发布）。
 
 ### <a name="evaluation-tool"></a>评估工具
-在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool)部分。 
+在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)部分。 
 
 ### <a name="agent-installation-and-server-configuration"></a>代理安装和服务器配置
 若要详细了解如何使用 Windows Server 安装和配置 Azure 文件同步代理，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)和[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
@@ -415,7 +415,7 @@ ms.locfileid: "67449958"
 以下发行说明适用于 Azure 文件同步代理版本 3.1.0.0（2018 年 7 月 19 日发布）。
 
 ### <a name="evaluation-tool"></a>评估工具
-在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool)部分。 
+在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)部分。 
 
 ### <a name="agent-installation-and-server-configuration"></a>代理安装和服务器配置
 若要详细了解如何使用 Windows Server 安装和配置 Azure 文件同步代理，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)和[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。

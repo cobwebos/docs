@@ -7,18 +7,18 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
-ms.service: operations-management-suite
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: d6d2414935bb5d1f095ad2b200acafa97b3b9b32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a4f982f6265d1c8cab2ae666b9d6e2e33beb5064
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596654"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672924"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>在 Azure 中创建管理解决方案的最佳做法（预览版）
 > [!NOTE]
@@ -38,7 +38,7 @@ ms.locfileid: "60596654"
 - 在解决方案中包括 [IngestionAPI 模块](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5)，以供将数据写入到 Log Analytics 存储库的 runbook 使用。  将解决方案配置为[引用](solutions-solution-file.md#solution-resource)此资源，以便在删除了解决方案后，此资源仍保留。  这就可以让多个解决方案共享此模块。
 - 使用[自动化变量](../../automation/automation-schedules.md)为解决方案提供用户以后可能要更改的值。  即使解决方案配置为包含该变量，则仍可以更改该变量的值。
 
-## <a name="views"></a>视图
+## <a name="views"></a>Views
 - 所有解决方案都应包含在用户门户中显示的单一视图。  该视图可以包含多个[可视化效果部件](../../azure-monitor/platform/view-designer-parts.md)以演示不同数据集。
 - 向解决方案中的任何视图添加[数据流验证](../../azure-monitor/platform/view-designer-tiles.md)消息，以针对需要为待收集的所需数据而配置的数据源向用户提供指示。
 - 将解决方案配置为[包含](solutions-solution-file.md#solution-resource)该视图，因此如果删除解决方案，它也会被删除。

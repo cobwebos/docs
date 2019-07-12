@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 362f0b32ea99d0b888ea9f1efa0cd4ea74eb2fa1
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: db29d0761084e32d601dc9c6d94082cd09bc5d18
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67338492"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655463"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -44,7 +44,7 @@ Azure 应用服务是一个分布式的系统。 处理传入的 HTTP/HTTPS 请�
 
 对于任何给定的用例，可以有几种方法来解决问题。  若要使用所需的功能有时是由于只需用例本身之外的原因。 以下的入站的用例建议如何使用应用服务网络功能来解决控制流量转到您的应用程序的问题。 
  
-| 入站的用例 | Feature |
+| 入站的用例 | 功能 |
 |---------------------|-------------------|
 | 为你的应用需要基于 IP 的 SSL 支持 | 应用分配的地址 |
 | 不共享，您的应用程序的专用入站地址 | 应用分配的地址 |
@@ -58,7 +58,7 @@ Azure 应用服务是一个分布式的系统。 处理传入的 HTTP/HTTPS 请�
 
 在以下出站的用例建议如何使用网络功能的应用服务以解决您的应用程序的出站访问权限需求。 
 
-| 出站的用例 | Feature |
+| 出站的用例 | 功能 |
 |---------------------|-------------------|
 | 在同一区域中的 Azure 虚拟网络中访问资源 | VNet 集成 </br> ASE |
 | 访问不同的区域中的 Azure 虚拟网络中的资源 | 网关所需的 VNet 集成 </br> ASE 和 VNet 对等互连 |
@@ -223,7 +223,7 @@ ASE 提供隔离的专用应用程序托管最佳的情景，但却带来了一�
 您可以使用 VNet 集成的其他前端应用和 API 应用程序与它们的子网中的服务终结点使用相同的 API 应用的多个前端应用程序。  
 
 <!--Links-->
-[appassignedaddress]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#bind-your-ssl-certificate
+[appassignedaddress]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl
 [iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections

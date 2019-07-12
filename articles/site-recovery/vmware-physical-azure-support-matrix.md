@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/07/2019
 ms.author: raynew
-ms.openlocfilehash: 5dc98048099264942552862498b5137b4954c200
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 1d54f2847f7c37631374653bf291aadf091f3328
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491645"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805955"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -83,15 +83,15 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5,
 
 **支持的版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-14.04 LTS | [9.24][9.25 UR]  | 3.13.0-24-generic 到 3.13.0-169-generic，<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-146-generic，<br/>到 4.15.0-1042-azure 4.15.0-1023-azure |
+14.04 LTS | [9.26][9.26 UR]| 3.13.0-24-generic 到 3.13.0-170-generic，<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-148-generic，<br/>到 4.15.0-1045-azure 4.15.0-1023-azure |
+14.04 LTS | [9.25][9.25 UR]  | 3.13.0-24-generic 到 3.13.0-169-generic，<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-146-generic，<br/>到 4.15.0-1042-azure 4.15.0-1023-azure |
 14.04 LTS | [9.24][9.24 UR] | 3.13.0-24-generic 到 3.13.0-167-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-143-generic、<br/>4.15.0-1023-azure 到 4.15.0-1040-azure |
 14.04 LTS | [9.23][9.23 UR] | 3.13.0-24-generic 到 3.13.0-165-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-142-generic、<br/>4.15.0-1023-azure 到 4.15.0-1037-azure |
-14.04 LTS | [9.22][9.22 UR] | 3.13.0-24-generic 到 3.13.0-164-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-140-generic、<br/>4.15.0-1023-azure 到 4.15.0-1036-azure |
 |||
+16.04 LTS | [9.26][9.26 UR] | 4.4.0-21-generic 到 4.4.0-148-generic，<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>到 4.15.0-50-generic 4.15.0-13-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>到 4.15.0-1045-azure 4.15.0-1012-azure|
 16.04 LTS | [9.25][9.25 UR] | 4.4.0-21-generic 到 4.4.0-146-generic，<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>到 4.15.0-48-generic 4.15.0-13-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>到 4.15.0-1042-azure 4.15.0-1012-azure|
 16.04 LTS | [9.24][9.24 UR] | 4.4.0-21-generic 到 4.4.0-143-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-46-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1040-azure|
 16.04 LTS | [9.23][9.23 UR] | 4.4.0-21-generic 到 4.4.0-142-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-45-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1037-azure|
-16.04 LTS | [9.22][9.22 UR] | 4.4.0-21-generic 到 4.4.0-140-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-43-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1036-azure|
 
 ### <a name="debian-kernel-versions"></a>Debian 内核版本
 
@@ -108,10 +108,10 @@ Debian 8 | [9.22][9.22 UR],[9.23][9.23 UR]， [9.24][9.24 UR] | 3.16.0-4-amd64 �
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.26][9.26 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> 到 3.12.74-60.64.110-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>到 4.4.121-92.109-default SP2(LTSS) 4.4.121-92.73-default</br></br>到 4.4.178-94.91-default SP3 4.4.73-5-default</br></br>到 4.4.178-4.28-azure SP3 4.4.138-4.7-azure</br></br>到 4.12.14-95.16-default SP4 4.12.14-94.41-default</br>到 4.12.14-6.9-azure SP4 4.12.14-6.3-azure |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.25][9.25 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>到 4.4.121-92.104-default SP2(LTSS) 4.4.121-92.73-default</br></br>到 4.4.176-94.88-default SP3 4.4.73-5-default</br></br>到 4.4.176-4.25-azure SP3 4.4.138-4.7-azure</br></br>到 4.12.14-95.13-default SP4 4.12.14-94.41-default</br>到 4.12.14-6.9-azure SP4 4.12.14-6.3-azure |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.24][9.24 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default 到 4.4.175-94.79-default</br></br>SP4 4.12.14-94.41-default 到 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.23][9.23 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.69-default</br></br>SP4 4.12.14-94.41-default 到 4.12.14-95.6-default |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | [9.22][9.22 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.72-default |
 
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux 文件系统/来宾存储
@@ -144,10 +144,10 @@ BTRFS | 从支持 BTRFS[更新汇总 34](https://support.microsoft.com/help/4490
 主机网络 NIC 组合 | 对于 VMware VM，受支持。 <br/><br/>对于物理计算机复制，不支持。
 主机网络 VLAN | 是的。
 主机网络 IPv4 | 是的。
-主机网络 IPv6 | 不。
-来宾/服务器网络 NIC 组合 | 不。
+主机网络 IPv6 | 否。
+来宾/服务器网络 NIC 组合 | 否。
 来宾/服务器网络 IPv4 | 是的。
-来宾/服务器网络 IPv6 | 不。
+来宾/服务器网络 IPv6 | 否。
 来宾/服务器网络静态 IP (Windows) | 是的。
 来宾/服务器网络静态 IP (Linux) | 是的。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
 来宾/服务器网络多个 NIC | 是的。
@@ -193,8 +193,8 @@ Docker 磁盘配置 | 否
 来宾/服务器热添加/删除磁盘 | 否
 来宾/服务器 - 排除磁盘 | 是
 来宾/服务器多路径 (MPIO) | 否
-来宾/服务器 GPT 分区 | 从支持五个分区[更新汇总 37](https://support.microsoft.com/help/4508614/) （版本 9.25 的移动服务） 及更高版本。 以前四个受支持。
-来宾/服务器 EFI/UEFI 启动 | -支持 9.13 或更高版本运行移动服务版本时。<br/> -支持时迁移 VMware Vm 或物理服务器运行 Windows Server 2012 或更高版本到 Azure。<br/> -你仅可以将 Vm 复制进行迁移。 不支持故障回复到本地。<br/> -仅支持 NTFS 和不支持安全 UEFI 启动类型。 <br/> 的磁盘扇区大小应为每个物理扇区的 512 字节。
+来宾/服务器 GPT 分区 | 从支持五个分区[更新汇总 37](https://support.microsoft.com/help/4508614/) （版本 9.25 的移动服务） 及更高版本。 之前仅支持 4 个。
+来宾/服务器 EFI/UEFI 启动 | -支持 9.13 或更高版本运行移动服务版本时。<br/> -支持时迁移 VMware Vm 或物理服务器运行 Windows Server 2012 或更高版本到 Azure。<br/> -你仅可以将 Vm 复制进行迁移。 不支持故障回复到本地。<br/> -仅支持 NTFS <br/> 的不支持安全 UEFI 启动类型。 <br/> 的磁盘扇区大小应为每个物理扇区的 512 字节。
 
 ## <a name="replication-channels"></a>复制通道
 
@@ -238,7 +238,7 @@ HUB | 是
 来宾操作系统 | 验证复制的计算机[支持的操作系统](#replicated-machines)。 | 如果不支持，检查会失败。
 来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。
 操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。
-操作系统磁盘计数 | 第 | 如果不支持，检查会失败。
+操作系统磁盘计数 | 1 | 如果不支持，检查会失败。
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
 数据磁盘大小 | 最大 4,095 GB | 如果不支持，检查会失败。
 网络适配器 | 支持多个适配器。 |
@@ -286,7 +286,7 @@ VM 上所有磁盘的峰值数据变动量 | 54 MB/秒
 
 ## <a name="obtain-latest-components"></a>获取最新的组件
 
-**Name** | **说明** | **详细信息**
+**名称** | **说明** | **详细信息**
 --- | --- | ---
 配置服务器 | 已安装在本地。<br/> 协调本地 VMware 服务器 / 物理机和 Azure 之间的通信。 | - [了解有关](vmware-physical-azure-config-process-server-overview.md)配置服务器。<br/> - [了解有关](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)升级到最新版本。<br/> - [了解有关](vmware-azure-deploy-configuration-server.md)设置配置服务器。 
 进程服务器 | 默认安装在配置服务器上。<br/> 接收复制数据，通过缓存、 压缩和加密，对它进行优化，并将其发送到 Azure。<br/> 随着部署扩大，您可以添加额外的进程服务器以处理更大的复制流量。 | - [了解有关](vmware-physical-azure-config-process-server-overview.md)进程服务器。<br/> - [了解有关](vmware-azure-manage-process-server.md#upgrade-a-process-server)升级到最新版本。<br/> - [了解有关](vmware-physical-large-deployment.md#set-up-a-process-server)设置横向扩展进程服务器。
@@ -297,6 +297,7 @@ VM 上所有磁盘的峰值数据变动量 | 54 MB/秒
 ## <a name="next-steps"></a>后续步骤
 [了解如何](tutorial-prepare-azure.md)为 VMware VM 的灾难恢复准备 Azure。
 
+[9.26 UR]: https://support.microsoft.com/en-in/help/4508614/update-rollup-37-for-azure-site-recovery
 [9.25 UR]: https://support.microsoft.com/en-in/help/4508614/update-rollup-37-for-azure-site-recovery
 [9.24 UR]: https://support.microsoft.com/en-in/help/4503156
 [9.23 UR]: https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery

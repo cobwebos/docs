@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bf265f51f2fea16f90dd0bcf2891bd9bed5cef8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b994078350aec5657659f8835d228eb907606bb8
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963571"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807636"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
 
@@ -31,14 +31,11 @@ ms.locfileid: "65963571"
 使用 Azure Active Directory 门户查看和管理配置为单一登录的目录中的所有应用程序。 企业应用是在组织内部署和使用的应用。 请按照下列步骤来查看和管理企业应用程序：
 
 1. 打开[Azure Active Directory 门户](https://aad.portal.azure.com)。
-
 1. 选择**企业应用程序**在左窗格中。 显示所有已配置应用的列表，包括那些从库添加的应用。
-
 1. 选择任意应用，以加载其资源窗格中，您可以在其中查看报表和管理应用设置。
-
 1. 选择**预配**来管理用户帐户预配所选应用的设置。
 
-   ![应用程序资源窗格](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![预配的屏幕来管理用户帐户预配设置](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>预配模式
 
@@ -68,17 +65,17 @@ ms.locfileid: "65963571"
 
 没有一组预配置 Azure AD 用户对象和每个 SaaS 应用的用户对象之间的映射。 某些应用可管理其他类型的对象，例如“组”或“联系人”。 若要打开映射编辑器右侧，可以在其中查看并自定义这些表中选择一个映射。
 
-![应用程序资源窗格](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![显示属性映射屏幕](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 支持的自定义项包括：
 
 * 启用和禁用特定对象的映射（例如从 Azure AD 用户对象映射到 SaaS 应用的用户对象）。
 * 编辑从 Azure AD 用户对象转移到应用的用户对象的属性。 有关属性映射的详细信息，请参阅[了解属性映射类型](customize-application-attributes.md#understanding-attribute-mapping-types)。
-* 筛选 Azure AD 在目标应用程序运行的预配操作。 而不是让 Azure AD 完全同步的对象，可以限制运行的操作。 
+* 筛选 Azure AD 在目标应用程序运行的预配操作。 而不是让 Azure AD 完全同步的对象，可以限制运行的操作。
 
   例如，仅选择**更新**和现有用户帐户的应用程序中，但不会创建新的 Azure AD 仅更新。 仅选择**创建**Azure 仅创建新的用户帐户，但不会更新现有的和。 此功能允许管理员创建帐户创建不同的映射和更新工作流。
 
-* 添加新的属性映射。 选择**添加新映射**底部**属性映射**窗格。 填写**编辑属性**窗体并选择**确定**向列表添加新的映射。 
+* 添加新的属性映射。 选择**添加新映射**底部**属性映射**窗格。 填写**编辑属性**窗体并选择**确定**向列表添加新的映射。
 
 ### <a name="settings"></a>设置
 
