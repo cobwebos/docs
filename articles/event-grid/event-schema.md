@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: 4a795221790a9d56bcbfe30a50b0c838fb8d9e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304250"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785854"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
@@ -83,14 +83,14 @@ ms.locfileid: "66304250"
 
 所有事件均具有以下相同的顶级数据：
 
-| 属性 | Type | 描述 |
+| 属性 | 类型 | 描述 |
 | -------- | ---- | ----------- |
 | topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | string | 事件主题的发布者定义路径。 |
 | eventType | string | 此事件源的一个注册事件类型。 |
 | eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | string | 事件的唯一标识符。 |
-| data | 对象 | 特定于资源提供程序的事件数据。 |
+| data | object | 特定于资源提供程序的事件数据。 |
 | dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -104,6 +104,7 @@ ms.locfileid: "66304250"
 * [媒体服务](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [资源组（管理操作）](event-schema-resource-groups.md)
 * [服务总线](event-schema-service-bus.md)
+* [Azure SignalR](event-schema-azure-signalr.md)
 
 对于自定义主题，事件发布者确定数据对象。 顶级数据应具有与标准资源所定义事件相同的字段。
 

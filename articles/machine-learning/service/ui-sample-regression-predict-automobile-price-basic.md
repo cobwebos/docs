@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 9dfa4b62f5cb79a5716f6f29651e85d0f8a3a409
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ddc7ae10581075127f72dd020c59cf28bbfc9ae2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787844"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606130"
 ---
 # <a name="sample-1---regression-predict-price"></a>示例 1-回归：预测价格
 
@@ -34,7 +34,7 @@ ms.locfileid: "65787844"
 
 ![实验的关系图](media/ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
@@ -88,3 +88,4 @@ ms.locfileid: "65787844"
 - [示例 3-分类：预测信用风险](ui-sample-classification-predict-credit-risk-basic.md)
 - [示例 4-分类：预测信用风险 （成本敏感）](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [示例 5-分类：预测客户流失](ui-sample-classification-predict-churn.md)
+- [示例 6-分类：预测航班延误](ui-sample-classification-predict-flight-delay.md)

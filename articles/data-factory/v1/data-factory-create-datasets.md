@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f88d83a851ad878ac9ee9b0195816d2ca35e4c13
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487244"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839379"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-create-datasets.md)
 > * [版本 2（当前版本）](../concepts-datasets-linked-services.md)
 
@@ -79,7 +79,7 @@ ms.locfileid: "60487244"
 
 下表描述了上述 JSON 中的属性：
 
-| 属性 | 说明 | 需要 | 默认 |
+| 属性 | 说明 | 必填 | 默认 |
 | --- | --- | --- | --- |
 | name |数据集名称。 若要了解命名规则，请参阅 [Azure 数据工厂 - 命名规则](data-factory-naming-rules.md)。 |是 |NA |
 | type |数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#Type)。 |是 |NA |
@@ -191,11 +191,11 @@ structure:
 
 结构中的每个列都包含以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
 | name |列的名称。 |是 |
 | type |列的数据类型。  |否 |
-| culture |类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 |否 |
+| culture |类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认值为 `en-us`。 |否 |
 | format |类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 |否 |
 
 若要了解何时加入“结构”信息以及在结构  部分包含哪些信息，请遵循以下指南。
@@ -233,11 +233,11 @@ structure:
 
 下表介绍了可用于可用性部分的属性：
 
-| 属性 | 说明 | 需要 | 默认 |
+| 属性 | 说明 | 必填 | 默认 |
 | --- | --- | --- | --- |
 | frequency |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |NA |
 | interval |指定频率的乘数。<br/><br/>“频率 x 间隔”确定生成切片的频率。 例如，如果需要数据集每小时生成切片，请将“frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/>注意：如果将“frequency”  指定为“Minute”  ，则应将“interval”设置为小于 15 的值。 |是 |NA |
-| style |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>若将“frequency”  设置为“Month”  ，将“style”  设置为“EndOfInterval”  ，则会在每月的最后一天生成切片。 若将“style”  设置为“StartOfInterval”  ，则会在每月的第一天生成切片。<br/><br/>若将“frequency”  设置为“Day”  ，将“style”  设置为“EndOfInterval”  ，则会在一天的最后一小时生成切片。<br/><br/>若将 **frequency** 设置为 **Hour**，**style** 设置为 **EndOfInterval**，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
+| 样式 |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>若将“frequency”  设置为“Month”  ，将“style”  设置为“EndOfInterval”  ，则会在每月的最后一天生成切片。 若将“style”  设置为“StartOfInterval”  ，则会在每月的第一天生成切片。<br/><br/>若将“frequency”  设置为“Day”  ，将“style”  设置为“EndOfInterval”  ，则会在一天的最后一小时生成切片。<br/><br/>若将 **frequency** 设置为 **Hour**，**style** 设置为 **EndOfInterval**，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
 | anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/>请注意，是否此属性的日期部分比指定的频率更精细，则忽略更精细部分。 例如，如果“间隔”  是“每小时”  （frequency：hour 且 interval：1），而 **anchorDateTime** 包含**分钟和秒**，则将忽略 **anchorDateTime** 的分钟和秒部分。 |否 |01/01/0001 |
 | offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/>注意：如果同时指定了 anchorDateTime  和 offset  ，则结果是组合偏移。 |否 |NA |
 
@@ -280,7 +280,7 @@ structure:
 数据集定义中的“策略”  部分定义了数据集切片必须满足的标准或条件。
 
 ### <a name="validation-policies"></a>验证策略
-| 策略名称 | 描述 | 适用对象 | 需要 | 默认 |
+| 策略名称 | 描述 | 适用对象 | 必填 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |验证 Azure Blob 存储  中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob 存储 |否 |NA |
 | minimumRows |验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
@@ -316,7 +316,7 @@ minimumRows：
 
 除非由数据工厂生成数据集，否则应将其标记为“external”  。 此设置通常适用于管道中第一个活动的输入，除非正在使用活动或管道链接。
 
-| Name | 描述 | 需要 | 默认值 |
+| 名称 | 描述 | 需要 | 默认值 |
 | --- | --- | --- | --- |
 | dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，可使用此设置延迟每小时检查。<br/><br/>该设置仅适用于当前时间。 例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>请注意，此设置不影响过去的切片。 处理包含 Slice End Time   + dataDelay   < Now  的切片不会有任何延迟。<br/><br/>大于 23:59 小时的时间应使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00。 请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
 | retryInterval |失败与下一次尝试之间的等待时间。 此设置适用于当前时间。 如果上一次尝试失败，则在 retryInterval  时间段后进行下一次尝试。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |
@@ -328,7 +328,6 @@ minimumRows：
 可使用下列某个工具或 SDK 创建数据集：
 
 - 复制向导
-- Azure 门户
 - Visual Studio
 - PowerShell
 - Azure 资源管理器模板

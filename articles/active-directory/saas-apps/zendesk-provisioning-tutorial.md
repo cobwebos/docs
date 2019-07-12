@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-ant
+ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f559d2c2398998ba590419758de559f21d9b65f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 166b7727362549aaf054e3f0282c564eca687eb9
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696942"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672883"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>教程：为 Zendesk 配置自动用户预配
 
@@ -30,7 +30,7 @@ ms.locfileid: "64696942"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的作用，它的工作原理，以及常见问题的信息，请参阅[自动用户预配和取消预配到软件作为-服务 (SaaS) 应用程序与 Azure Active Directory](../manage-apps/user-provisioning.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 在本教程中所述的方案假定你拥有：
 
@@ -124,7 +124,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![Zendesk 通知电子邮件](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
 
-9. 选择“保存”。 
+9. 选择**保存**。
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Zendesk”   。
 

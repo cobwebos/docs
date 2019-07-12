@@ -4,7 +4,7 @@ description: 了解如何设置 Azure 上的 HPC MPI。
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 5356a033dbc3d989dd27019f03b1fe36035ff9a4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 541e42a72ea604c4d71dc546b14dea2f0857bcc1
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441650"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797511"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>为 HPC 设置消息传递接口
 
@@ -126,7 +126,7 @@ sudo ./platform_mpi-09.01.04.03r-ce.bin
 
 ## <a name="osu-mpi-benchmarks"></a>OSU MPI 基准
 
-[下载 OSU MPI 基准][ http://mvapich.cse.ohio-state.edu/benchmarks/ ](http://mvapich.cse.ohio-state.edu/benchmarks/)和解压缩。
+[下载 OSU MPI 基准](http://mvapich.cse.ohio-state.edu/benchmarks/)和解压缩。
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.5.tar.gz
@@ -146,14 +146,14 @@ MPI 基准正在`mpi/`文件夹。
 
 ## <a name="discover-partition-keys"></a>发现分区键
 
-与其他 Vm 通信发现分区键 （p 键）。
+发现与同一个租户 （可用性集或 VM 规模集） 中的其他 Vm 通信的分区键 （p 键）。
 
 ```bash
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 ```
 
-较大的两个是对于 MPI 应使用的租户密钥。 示例：如果以下为 p 键，则应使用 MPI 使用 0x800b。
+较大的两个是对于 MPI 应使用的租户密钥。 例如：如果以下为 p 键，则应使用 MPI 使用 0x800b。
 
 ```bash
 cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
@@ -164,13 +164,15 @@ cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 
 使用非默认 (0x7fff) 分区键的分区。 UCX 要求 p 键来清除的 MSB。 例如，作为为 0x800b 0x000b 设置 UCX_IB_PKEY。
 
+另请注意，只要租户 （AVSet 或 VMSS） 存在，PKEYs 保持不变。 即使节点位于添加/删除，这是，则返回 true。 新租户获取不同 PKEYs。
+
 
 ## <a name="set-up-user-limits-for-mpi"></a>为 MPI 设置用户限制
 
 为 MPI 设置用户的限制。
 
 ```bash
-cat << EOF >> /etc/security/limits.conf
+cat << EOF | sudo tee -a /etc/security/limits.conf
 *               hard    memlock         unlimited
 *               soft    memlock         unlimited
 *               hard    nofile          65535

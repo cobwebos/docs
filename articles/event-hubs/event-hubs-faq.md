@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: c5e58f7bc89fbe2d93f6610465abf4a92fd31406
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1ec6987f1a142e9bf9cd4413cfb4444bde1b7dd
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476111"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797002"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -83,7 +83,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. 记下在 `Non-authoritative answer` 中返回的 IP 地址。 此 IP 地址是静态的。 只有在你将命名空间还原到另一群集时，它才会更改。
+2. 记下在 `Non-authoritative answer` 中返回的 IP 地址。 只有在你将命名空间还原到另一群集时，它才会更改。
 
 如果对命名空间使用区域冗余，则需执行一些额外的步骤： 
 
@@ -111,11 +111,11 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 
-示例：
+例如：
 
 bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
 
-请注意:如果 sasl.jaas.config 不是框架中受支持的配置，请查找用于设置 SASL 用户名和密码的配置，并改为使用这些配置。 将用户名设置为 $ConnectionString，将密码设置为事件中心连接字符串。
+注意:如果 sasl.jaas.config 不是框架中受支持的配置，请查找用于设置 SASL 用户名和密码的配置，并改为使用这些配置。 将用户名设置为 $ConnectionString，将密码设置为事件中心连接字符串。
 
 ### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>支持 Kafka 的事件中心的消息/事件大小是多少？
 支持 Kafka 的事件中心允许的最大消息大小为 1MB。
@@ -169,7 +169,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
 | 100x1KB 批 | 2 | 400 MB/秒 | 400K 消息/秒 | 800 MB/秒 | 800K 消息/秒 | 400 TU | 100 TU | 
 | 10x10KB 批 | 2 | 666 MB/秒 | 66.6K 消息/秒 | 1.33 GB/秒 | 133K 消息/秒 | 666 TU | 166 TU |
-| 6x32KB 批 | 第 | 1.05 GB/秒 | 34K 消息/秒 | 1.05 GB/秒 | 34K 消息/秒 | 1000 TU | 250 TU |
+| 6x32KB 批 | 1 | 1.05 GB/秒 | 34K 消息/秒 | 1.05 GB/秒 | 34K 消息/秒 | 1000 TU | 250 TU |
 
 测试中使用了以下条件：
 
@@ -182,7 +182,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>如何创建事件中心专用群集？
 可以通过提交[提高配额支持请求](https://portal.azure.com/#create/Microsoft.Support)或联系[事件中心团队](mailto:askeventhubs@microsoft.com)来创建事件中心专用群集。 通常，我们需要花费大约两周时间来部署群集，并将其转交给你使用。 此过程是暂时性的，到时会 Azure 门户或 Azure 资源管理器模板提供完全自助的服务，只需大约两个小时即可部署群集。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 ### <a name="how-many-partitions-do-i-need"></a>需要多少分区？
 
@@ -230,7 +230,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 如需所有事件中心配额的列表，请参阅[配额](event-hubs-quotas.md)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>为什么在从其他订阅中删除命名空间后无法创建该命名空间？ 
 从订阅中删除命名空间时，请等待 4 个小时，然后才能在另一个订阅中使用相同的名称重新创建它。 否则，可能会收到以下错误消息：`Namespace already exists`。 

@@ -1,7 +1,7 @@
 ---
 title: Python 快速入门：创建、 加载和查询使用 Azure 搜索 REST Api-Azure 搜索索引
 description: 介绍如何创建索引、 加载数据，并使用 Python、 Jupyter Notebook 和 Azure 搜索 REST API 运行查询。
-ms.date: 07/09/2019
+ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 39ff269c582a2d981d8fb30e09a550813a262eca
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
-ms.translationtype: HT
+ms.openlocfilehash: 123afa2452c3e492b85292514e64f84d3baec390
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798734"
+ms.locfileid: "67840292"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在使用 Jupyter 笔记本的 Python 中创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "67798734"
 > * [门户](search-create-index-portal.md)
 > 
 
-生成的创建、 加载和查询 Azure 搜索索引中使用 Python 的 Jupyter 笔记本并[Azure 搜索 REST Api](https://docs.microsoft.com/rest/api/searchservice/)。 本文介绍如何生成步骤的步骤中，从零开始的笔记本。 或者，可以运行已完成的笔记本。 若要下载副本，请转到[azure 搜索-python 示例存储库](https://github.com/Azure-Samples/azure-search-python-samples)。
+生成的创建、 加载和查询 Azure 搜索索引中使用 Python 的 Jupyter 笔记本并[Azure 搜索 REST Api](https://docs.microsoft.com/rest/api/searchservice/)。 本文介绍如何构建循序渐进的笔记本。 此外，也可以[下载并运行已完成的 Jupyter Python notebook](https://github.com/Azure-Samples/azure-search-python-samples)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

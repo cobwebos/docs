@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: minxia
-author: mx-iao
+ms.author: maxluk
+author: maxluk
 ms.reviewer: peterlu
 ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8def58eb003fcc817c21151416744cf391b5f38f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d9c953eeecedf14a8f3fae43c5d4713252d58b4c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443932"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840082"
 ---
 # <a name="train-and-register-pytorch-models-at-scale-with-azure-machine-learning-service"></a>训练和大规模 PyTorch 模型注册到 Azure 机器学习服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "67443932"
 
 无论要开发思路加以的 PyTorch 模型还是正在将现有模型到云中，Azure 机器学习服务可以帮助你生成生产的模型。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在两种环境上运行此代码：
 

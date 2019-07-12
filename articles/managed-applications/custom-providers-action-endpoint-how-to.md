@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 1bfc0be81d42e922c47755543fb65aa413ec73a9
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6fbd20c201e1b141b7276e3283599b00cdefd118
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478753"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795304"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>向 Azure REST API 添加自定义操作
 
@@ -132,7 +132,7 @@ az resource invoke-action --action {actionName} \
                             }'
 ```
 
-参数 | 需要 | 描述
+参数 | 必填 | 描述
 ---|---|---
 action | *yes* | 在中定义的操作的名称**ResourceProvider**。
 id | *yes* | 资源 ID **ResourceProvider**。
@@ -186,7 +186,7 @@ id | *yes* | 资源 ID **ResourceProvider**。
 }
 ```
 
-参数 | 需要 | 描述
+参数 | 必填 | 描述
 ---|---|---
 resourceIdentifier | *yes* | 资源 ID **ResourceProvider**。
 apiVersion | *yes* | 资源运行时 API 版本。 这应始终为"2018年-09-01-预览"。
@@ -195,5 +195,6 @@ functionValues | *no* | 将发送到请求正文**终结点**。
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 自定义资源提供程序的概述](./custom-providers-overview.md)
-- [教程：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
+- [快速入门：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
+- [教程：在 Azure 中创建自定义操作和资源](./tutorial-custom-providers-101.md)
 - [如何：将自定义资源添加到 Azure REST API](./custom-providers-resources-endpoint-how-to.md)
