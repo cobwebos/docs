@@ -4,7 +4,7 @@ description: SUSE Linux Enterprise Server for SAP applications 上 SAP NetWeaver
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: 44f99ed1af65eb1e487295c11077fd558ce4285c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f88790d96a1e46f60db368f69155b3ad7afbef
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142958"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797494"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性
 
@@ -54,7 +54,7 @@ ms.locfileid: "65142958"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 本文介绍如何部署虚拟机、配置虚拟机、安装群集框架，以及安装高可用性 SAP NetWeaver 7.50 系统。
-在示例配置和安装命令等内容中，使用了 ASCS 实例编号 00、ERS 实例编号 02 和 SAP 系统 ID NW1。 示例中的资源名称（例如虚拟机、虚拟网络）假设已将[聚合模板][template-converged]与 SAP 系统 ID NW1 结合使用以创建资源。
+在示例配置和安装命令等内容中，使用了 ASCS 实例编号 00、ERS 实例编号 02 和 SAP 系统 ID NW1。 在示例中的资源 （例如虚拟机、 虚拟网络） 名称假定使用了[聚合模板][template-converged]与 SAP 系统 ID NW1 创建的资源。
 
 请先阅读以下 SAP 说明和文档
 
@@ -73,11 +73,11 @@ ms.locfileid: "65142958"
 * SAP 说明 [1984787] 包含有关 SUSE Linux Enterprise Server 12 的一般信息。
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
-* [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide]
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
-* [SUSE SAP HA 最佳做法指南][suse-ha-guide] 这些指南包含在本地设置 Netweaver HA 和 SAP HANA 系统复制所需的所有信息。 请使用上述指南作为常规基准。 它们提供更多详细信息。
-* [SUSE 高可用性扩展 12 SP3 发行说明][suse-ha-12sp3-relnotes]
+* [Azure 虚拟机规划和实施适用于 Linux 上的 SAP][planning-guide]
+* [适用于 Linux 上的 SAP 的 azure 虚拟机部署][deployment-guide]
+* [适用于 Linux 上的 SAP 的 azure 虚拟机 DBMS 部署][dbms-guide]
+* [SUSE SAP HA 最佳实践指南][suse-ha-guide]指南包含所需的所有信息来设置 Netweaver HA 和 SAP HANA 系统复制的本地。 请使用上述指南作为常规基准。 它们提供更多详细信息。
+* [SUSE High Availability Extension 12 SP3 发行说明][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>概述
 
@@ -125,7 +125,7 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>设置高度可用的 NFS 服务器
 
-SAP NetWeaver 要求对传输和配置文件目录使用共享存储。 请阅读 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性][nfs-ha]，了解如何为 SAP NetWeaver 设置 NFS 服务器。
+SAP NetWeaver 要求对传输和配置文件目录使用共享存储。 读取[SUSE Linux Enterprise Server 上的 Azure Vm 上的 NFS 的高可用性][nfs-ha]如何为 SAP NetWeaver 设置 NFS 服务器。
 
 ## <a name="setting-up-ascs"></a>设置 (A)SCS
 
@@ -137,8 +137,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
 
-1. 打开[ASCS/SCS 多 SID 模板][ template-multisid-xscs]或[聚合模板][ template-converged]在 Azure 门户上。 
-   ASCS/SCS 模板仅创建负载均衡规则的 SAP NetWeaver ASCS/SCS 和 ERS (仅限 Linux) 实例而聚合的模板还会创建数据库 （例如 Microsoft SQL Server 或 SAP HANA） 的负载均衡规则。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装数据库，请使用[聚合模板][template-converged]。
+1. 打开[ASCS/SCS 多 SID 模板][template-multisid-xscs] or the [converged template][template-converged] on the Azure portal. 
+   The ASCS/SCS template only creates the load-balancing rules for the SAP NetWeaver ASCS/SCS and ERS (Linux only) instances whereas the converged template also creates the load-balancing rules for a database (for example Microsoft SQL Server or SAP HANA). If you plan to install an SAP NetWeaver based system and you also want to install the database on the same machines, use the [converged template][template-converged]。
 1. 输入以下参数
    1. 资源前缀（仅限于 ASCS/SCS 多 SID 模板）  
       输入想要使用的前缀。 此值将用作所要部署的资源的前缀。
@@ -512,7 +512,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. [A] 配置 Keep Alive 
 
-   SAP NetWeaver 应用程序服务器和 ASCS/SCS 之间的通信是通过软件负载均衡器进行路由的。 负载均衡器在可配置的超时之后将断开非活动连接。 为了防止出现此情况，需要在 SAP NetWeaver ASCS/SCS 配置文件中设置一个参数，并更改 Linux 系统设置。 有关详细信息，请参阅 [SAP 说明 1410736][1410736]。
+   SAP NetWeaver 应用程序服务器和 ASCS/SCS 之间的通信是通过软件负载均衡器进行路由的。 负载均衡器在可配置的超时之后将断开非活动连接。 为了防止出现此情况，需要在 SAP NetWeaver ASCS/SCS 配置文件中设置一个参数，并更改 Linux 系统设置。 读取[SAP 说明 1410736][1410736]有关详细信息。
 
    在上一步中已添加了 ASCS/SCS 配置文件参数 enque/encni/set_so_keepalive。
 
@@ -710,7 +710,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 ## <a name="install-database"></a>安装数据库
 
-在此示例中，SAP NetWeaver 安装在 SAP HANA 上。 可以使用每个受支持的数据库完成此安装。 有关如何在 Azure 中安装 SAP HANA 的详细信息，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性][sap-hana-ha]。 有关支持的数据库列表，请参阅 [SAP 说明 1928533][1928533]。
+在此示例中，SAP NetWeaver 安装在 SAP HANA 上。 可以使用每个受支持的数据库完成此安装。 有关如何在 Azure 中安装 SAP HANA 的详细信息，请参阅[SAP HANA 的高可用性在 Azure 虚拟机 (Vm)][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533]。
 
 1. 运行 SAP 数据库实例安装
 
@@ -887,6 +887,9 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    # run as root
    # Remove failed actions for the ERS that occurred as part of the migration
    nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
+   # Remove migration constraints
+   nw1-cl-0:~ # crm resource clear rsc_sap_NW1_ASCS00
+   #INFO: Removed migration constraints for rsc_sap_NW1_ASCS00
    </code></pre>
 
    测试之后的资源状态：
@@ -1196,8 +1199,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 ## <a name="next-steps"></a>后续步骤
 
-* [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
-* [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
-* [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
+* [Azure 虚拟机规划和实施适用于 SAP][planning-guide]
+* [适用于 SAP 的 azure 虚拟机部署][deployment-guide]
+* [适用于 SAP 的 azure 虚拟机 DBMS 部署][dbms-guide]
 * 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
-* 若要了解如何在 Azure VM 上建立 SAP HANA 高可用性以及规划灾难恢复，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性以及 Azure Vm 上的 SAP HANA 的灾难恢复计划，请参阅[SAP HANA 的高可用性在 Azure 虚拟机 (Vm)][sap-hana-ha]

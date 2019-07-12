@@ -4,7 +4,7 @@ description: 使用 STONITH 在 SUSE 中为 Azure 上的 SAP HANA（大型实例
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ef1656a7e8a66092de3050a8f14c5b38e0e2e6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7cbec63cb04075977c167d8b21bf3128e91434f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123563"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710053"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中进行高可用性设置
 本文档将针对如何使用 STONITH 设备在 SUSE 操作系统上设置高可用性，进行详细的分步说明。
@@ -341,7 +341,7 @@ Service pacemaker stop
 ![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
 
 
-## <a name="9-troubleshooting"></a>9.故障排除
+## <a name="9-troubleshooting"></a>9.疑难解答
 本部分将介绍几个在安装过程中可能会遇到的失败情景。 你不一定会遇到这些问题。
 
 ### <a name="scenario-1-cluster-node-not-online"></a>方案 1：群集节点未联机

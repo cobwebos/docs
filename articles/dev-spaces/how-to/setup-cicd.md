@@ -7,15 +7,15 @@ author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
-manager: yuvalm
+manager: gwallace
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-ms.openlocfilehash: 983af0dd75e6ae62630c85d04ac3819c7e260439
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 01e1401c5054eb56d4e2313b5e03ce5a36d1b301
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60687240"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704064"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>结合使用 CI/CD 与 Azure Dev Spaces
 
@@ -25,7 +25,7 @@ ms.locfileid: "60687240"
 
 虽然本文介绍的是如何使用 Azure DevOps，但相同的概念同样适用于 Jenkins、TeamCity 等 CI/CD 系统。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 * [已启用 Azure Dev Spaces 的 Azure Kubernetes 服务 (AKS) 群集](../get-started-netcore.md)
 * [已安装 Azure Dev Spaces CLI](upgrade-tools.md)
 * [有项目的 Azure DevOps 组织](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
@@ -79,7 +79,7 @@ dev  空间始终包含最新状态的存储库（基线），以便开发人员
 1. 选择选项以创建**新建**构建管道。
 1. 选择**GitHub**作为源，授权你的 GitHub 帐户如果有必要，然后选择_azds_updates_分支从你的开发空间示例应用程序存储库的分叉版本。
 1. 选择**配置为代码**，或**YAML**，为你的模板。
-1. 此时，便会看到生成管道的配置页。 正如前面提到的特定于语言的路径导航**YAML 文件路径**使用 **...** 按钮。 例如，`samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`。
+1. 此时，便会看到生成管道的配置页。 正如前面提到的特定于语言的路径导航**YAML 文件路径**使用 **...** 按钮。 例如， `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml` 。
 1. 转到**变量**选项卡。
 1. 手动添加“dockerId”  作为变量，这是 [Azure 容器注册表管理员帐户](../../container-registry/container-registry-authentication.md#admin-account)的用户名。 （如本文先决条件中所述）
 1. 手动添加“dockerPassword”  作为变量，这是 [Azure 容器注册表管理员帐户](../../container-registry/container-registry-authentication.md#admin-account)的密码。 出于安全目的，请务必指定 dockerPassword  作为“机密”（通过选择锁图标）。
@@ -95,7 +95,7 @@ dev  空间始终包含最新状态的存储库（基线），以便开发人员
 1. 如果处理的是尚未包含发布定义的全新 DevOps 项目，必须先创建空白的发布定义，再继续操作。 只有在现有发布定义的情况下，“导入”选项才会显示在 UI 中。
 1. 在左侧，单击 **+ 新建**按钮，然后单击**导入管道**。
 1. 单击**浏览**，然后选择`samples/release.json`从你的项目。
-1. 单击“确定”。  请注意，“管道”窗格已加载发布定义编辑页。 另请注意，有一些红色警告图标，指明仍必须配置的群集专用详细信息。
+1. 单击 **“确定”** 。 请注意，“管道”窗格已加载发布定义编辑页。 另请注意，有一些红色警告图标，指明仍必须配置的群集专用详细信息。
 1. 在“管道”窗格的左侧，单击“添加项目”  气泡。
 1. 在中**源**下拉列表中，选择在生成管道你之前创建。
 1. 有关**默认版本**，选择**加上标记的生成管道默认分支中的最新**。
@@ -121,7 +121,7 @@ dev  空间始终包含最新状态的存储库（基线），以便开发人员
 1. 依次单击右上方的“保存”  和“确定”  。
 1. 依次单击“保存”按钮旁边的“+ 发布”  和“创建发布”  。
 1. 下**项目**，验证是否选择了从生成管道的最新版本。
-1. 单击**创建**。
+1. 单击“创建”。 
 
 此时，自动发布过程便会开始，将 mywebapi  和 webfrontend  图表部署到 dev  顶级空间中的 Kubernetes 群集。 你可以监视你的 Azure DevOps web 门户上发布的进度：
 

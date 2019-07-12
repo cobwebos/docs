@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: aadfae9a7b74986fd0ac8857669dd3ccaf62af1f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ebc41fc74d24708a177bf554029df8384c49df05
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166115"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657236"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
@@ -21,7 +21,7 @@ ms.locfileid: "67166115"
 可以在 Visual Studio Code 支持的平台（包括 Windows、Linux 和 macOS）上安装 Azure HDInsight 工具。 可以在下面找到不同平台的必备组件。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成本文中的步骤需要具有以下项：
 
@@ -267,7 +267,7 @@ ms.locfileid: "67166115"
 
 4. [连接](#connect-to-azure-account)到你的 Azure 帐户，或链接群集，如果你尚未这样做。
 
-5. 右键单击脚本编辑器，然后从上下文菜单中选择“HDInsight:  PySpark 批处理”，或使用快捷键 Ctrl + Alt + H  。 
+5. 右键单击脚本编辑器，然后选择“**HDInsight：** PySpark 批处理”，或使用快捷键 Ctrl + Alt + H  。 
 
 6. 选择要将 PySpark 作业提交到的群集。 
 
@@ -304,19 +304,19 @@ ms.locfileid: "67166115"
     | name | description | type | 
     | :- | :- | :- | 
     | file | 包含要执行的应用程序的文件 | path（必需） | 
-    | proxyUser | 运行作业时要模拟的用户 | 字符串 | 
-    | className | 应用程序 Java/Spark main 类 | 字符串 |
+    | proxyUser | 运行作业时要模拟的用户 | string | 
+    | className | 应用程序 Java/Spark main 类 | string |
     | args | 应用程序的命令行参数 | 字符串列表 | 
     | jars | 此会话中要使用的 jars | 字符串列表 | 
     | pyFiles | 此会话中要使用的 Python 文件 | 字符串列表 |
     | files | 此会话中要使用的文件 | 字符串列表 |
-    | driverMemory | 要用于驱动程序进程的内存量 | 字符串 |
+    | driverMemory | 要用于驱动程序进程的内存量 | string |
     | driverCores | 要用于驱动程序进程的内核数 | int |
-    | executorMemory | 每个执行程序进程要使用的内存量 | 字符串 |
+    | executorMemory | 每个执行程序进程要使用的内存量 | string |
     | executorCores | 用于每个执行程序的内核数 | int |
     | numExecutors | 为此会话启动的执行程序数量 | int |
     | archives | 此会话中要使用的存档 | 字符串列表 |
-    | queue | 要提交的 YARN 队列的名称 | 字符串 |
+    | queue | 要提交的 YARN 队列的名称 | string |
     | name | 此会话的名称 | string |
     | conf | Spark 配置属性 | key=val 的映射 |
 
@@ -326,10 +326,10 @@ ms.locfileid: "67166115"
     | name | description | type | 
     | :- | :- | :- | 
     | id | 会话 id | int | 
-    | appId | 此会话的应用程序 id |  String |
+    | appId | 此会话的应用程序 id |  字符串 |
     | appInfo | 应用程序详细信息 | key=val 的映射 |
     | log | 日志行 | 字符串列表 |
-    | state |   批处理状态 | 字符串 |
+    | state |   批处理状态 | string |
 
 >[!NOTE]
 >提交脚本时，分配的 livy 配置将在输出窗格中显示。
@@ -436,7 +436,7 @@ Visual Studio Code 的 HDInsight 支持以下功能：
 
 > [!NOTE]
 > 
->可以从 Azure 门户获取存储帐户的访问密钥。 有关信息，请参阅[视图，并复制访问密钥](https://docs.microsoft.com/azure/storage/common/storage-account-manage#view-and-copy-access-keys)。
+>可以从 Azure 门户获取存储帐户的访问密钥。 有关信息，请参阅[视图，并复制访问密钥](https://docs.microsoft.com/azure/storage/common/storage-account-manage#access-keys)。
 
 ## <a name="unlink-cluster"></a>取消链接群集
 

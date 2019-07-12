@@ -245,7 +245,7 @@
         - name: 运行批量预测
           displayName: score scoring asynchronous consume pipeline
           href: how-to-run-batch-predictions.md
-    - name: 监视 Web 服务
+    - name: 监视模型
       items:
         - name: 收集和评估模型数据
           displayName: track production
@@ -273,9 +273,6 @@
     - name: 机器学习 SDK
       displayName: api core package python data prep
       href: 'https://aka.ms/aml-sdk'
-    - name: 监视 SDK
-      displayName: api package python monitor
-      href: 'https://aka.ms/aml-monitoring-sdk'
     - name: 机器学习 CLI
       displayName: 'cli, extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md

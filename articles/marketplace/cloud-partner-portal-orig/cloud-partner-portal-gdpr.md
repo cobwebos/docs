@@ -7,17 +7,17 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 221f559dde2017c9b5d13dd4e06a140a6bcb5e2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91db369f9a2a0439bdbaf8600d1b329f0da00aa0
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935426"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786474"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>云合作伙伴门户 GDPR 符合性
 ====================================
 
-[一般数据保护条例 (GDPR)](https://ec.europa.eu/justice/data-protection/reform/index_en.htm) 是欧盟 (EU) 的一项数据保护和隐私法律。 GDPR 针对向欧盟居民提供产品及服务，或收集和分析欧盟居民相关信息的公司、政府机构、非营利组织和其他组织制定了规则。
+[一般数据保护条例 (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/) 是欧盟 (EU) 的一项数据保护和隐私法律。 GDPR 针对向欧盟居民提供产品及服务，或收集和分析欧盟居民相关信息的公司、政府机构、非营利组织和其他组织制定了规则。
 
 云合作伙伴门户提供有关其处理客户数据的详细信息以及用于保护该数据的安全措施。 通过其产品内体验可访问此信息。
 

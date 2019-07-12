@@ -4,7 +4,7 @@ description: SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 3d59fc48f1f6f6931ca18e09a420fdbccc7d53dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78d14add09a89b7ec4d4844a12ffa0434d714b3a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922289"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709104"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -71,10 +71,10 @@ ms.locfileid: "64922289"
 * SAP 说明 [401162] 包含有关在设置 HANA 系统复制时如何避免“地址已在使用”的信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
 * [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
-* [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]指南。
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide]（本文）。
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]指南。
-* [SUSE Linux Enterprise Server for SAP Applications 12 SP3 最佳做法指南][sles-for-sap-bp]
+* [Azure 虚拟机规划和实施适用于 Linux 上的 SAP][planning-guide]指南。
+* [适用于 Linux 上的 SAP 的 azure 虚拟机部署][deployment-guide]（详见本文）。
+* [适用于 Linux 上的 SAP 的 azure 虚拟机 DBMS 部署][dbms-guide]指南。
+* [SUSE Linux Enterprise Server for SAP 应用程序 12 SP3 最佳实践指南][sles-for-sap-bp]
   * 设置 SAP HANA SR 性能优化的基础结构 (SLES for SAP Applications 12 SP1)。 本指南包含为本地开发设置 SAP HANA 系统复制的所需的全部信息。 请使用本指南作为基准。
   * 设置 SAP HANA SR 成本优化的基础结构 (SLES for SAP Applications 12 SP1)
 
@@ -101,8 +101,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 可以使用 GitHub 上的某个快速入门模板部署全部所需的资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。
 若要部署模板，请执行以下步骤：
 
-1. 在 Azure 门户中打开[数据库模板][template-multisid-db]或[聚合模板][template-converged]。 
-    数据库模板仅创建数据库的负载均衡规则。 聚合模板还会创建 ASCS/SCS 和 ERS（仅限 Linux）实例的负载均衡规则。 如果打算安装基于 SAP NetWeaver 的系统，并想要在同一台计算机上安装 ASCS/SCS 实例，请使用[聚合模板][template-converged]。
+1. 打开[数据库模板][template-multisid-db] or the [converged template][template-converged] on the Azure portal. 
+    The database template creates the load-balancing rules for a database only. The converged template also creates the load-balancing rules for an ASCS/SCS and ERS (Linux only) instance. If you plan to install an SAP NetWeaver-based system and you want to install the ASCS/SCS instance on the same machines, use the [converged template][template-converged]。
 
 1. 输入以下参数：
     - **SAP 系统 ID**：输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
@@ -191,7 +191,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    1. 选择“确定”  。
    1. 针对端口 3**03**41 和 3**03**42 重复上述步骤。
 
-有关 SAP HANA 所需端口的详细信息，请阅读 [SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南中的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章或 [SAP 说明 2388694][2388694]。
+有关 SAP HANA 所需的端口的详细信息，请阅读一章[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)中[SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南或[SAP 说明 2388694][2388694].
 
 > [!IMPORTANT]
 > 不要启用 TCP 放置在 Azure 负载均衡器之后的 Azure Vm 上的时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数设置**net.ipv4.tcp_timestamps**到**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
@@ -347,7 +347,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[A]** 升级 SAP 主机代理。
 
-   从 [SAP 软件中心][sap-swcenter]下载最新的 SAP 主机代理存档，并运行以下命令升级代理。 替换存档的路径，使其指向已下载的文件：
+   下载最新的 SAP 主机代理存档，从[SAP 软件中心][sap-swcenter]并运行以下命令以升级代理。 替换存档的路径，使其指向已下载的文件：
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
@@ -688,7 +688,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 > [!IMPORTANT]
 > 请确保你选择的 OS 已经过 SAP 针对你使用的特定 VM 类型上的 SAP HANA 进行的认证。 可以在[经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中查找获得 SAP HANA 认证的 VM 类型和这些 VM 类型的 OS 版本列表。 请确保单击进入列出的 VM 类型的详细信息，以获取特定 VM 类型的 OS 版本支持的 SAP HANA 完整列表
 
-根据具体的用例，运行“SAP HANA SR 性能优化方案”或“SAP HANA SR 成本优化方案”指南中列出的所有测试用例。 可在 [SLES for SAP 最佳做法页][sles-for-sap-bp]上找到这些指南。
+根据具体的用例，运行“SAP HANA SR 性能优化方案”或“SAP HANA SR 成本优化方案”指南中列出的所有测试用例。 您可以在找到参考线[SLES for SAP 的最佳实践页面][sles-for-sap-bp]。
 
 以下测试是“SUSE Linux Enterprise Server for SAP Applications 12 SP1 的 SAP HANA SR 性能优化方案”指南测试说明的副本。 如需最新版本，另请阅读指南本身。 在开始测试之前，始终确保 HANA 已同步，另请确保 Pacemaker 的配置正确。
 
@@ -1084,7 +1084,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 
 ## <a name="next-steps"></a>后续步骤
 
-* [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
-* [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
-* [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
+* [Azure 虚拟机规划和实施适用于 SAP][planning-guide]
+* [适用于 SAP 的 azure 虚拟机部署][deployment-guide]
+* [适用于 SAP 的 azure 虚拟机 DBMS 部署][dbms-guide]
 * 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)
