@@ -4,7 +4,7 @@ description: 为 Azure 虚拟机和虚拟机规模集的双向串行控制台。
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 32d385416c83f81553e734d9471d0b502a458b07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e76fcd937f85ce3b1c156cf2f3dabb8ca95b9b68
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390504"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710556"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows azure 串行控制台
 
@@ -33,7 +33,7 @@ ms.locfileid: "66390504"
 > 在全球 Azure 区域中，串行控制台是已正式发布。 串行控制台目前不可用于 Azure 政府云或 Azure 中国云。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * VM 或虚拟机规模集实例必须使用资源管理部署模型。 不支持经典部署。
 
@@ -234,7 +234,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>要访问串行控制台的常见场景
 
-场景          | 串行控制台中的操作
+应用场景          | 串行控制台中的操作
 :------------------|:-----------------------------------------
 错误的防火墙规则 | 访问串行控制台，并修复 Windows 防火墙规则。
 文件系统损坏/检查 | 访问串行控制台并恢复文件系统。
@@ -246,7 +246,7 @@ RDP 配置问题 | 访问串行控制台并更改设置。 有关详细信息，
 ## <a name="errors"></a>错误
 大多数错误都是暂时性的，重试连接往往可以解决。 下表显示了一系列错误和缓解措施为两个 Vm 和虚拟机规模集实例。
 
-错误                            |   缓解措施
+Error                            |   缓解措施
 :---------------------------------|:--------------------------------------------|
 无法检索 *&lt;VMNAME&gt;* 的启动诊断设置。 若要使用串行控制台，请确保为此 VM 启用了启动诊断。 | 确保 VM 已启用[启动诊断](boot-diagnostics.md)。
 VM 处于已停止/已解除分配状态。 启动 VM，然后重试串行控制台连接。 | 虚拟机必须处于已启动状态才能访问串行控制台

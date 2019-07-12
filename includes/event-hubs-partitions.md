@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 5d6d2285680884cf20daaeef0a1ade53afad5b90
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
-ms.translationtype: HT
+ms.openlocfilehash: b23f9532aa1ca6f7bae914ff8cb9d7566a0fec86
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827647"
+ms.locfileid: "67841577"
 ---
 事件中心通过分区使用者模式提供消息流式处理功能，在此模式下，每个使用者只读取消息流的特定子集或分区。 此模式支持事件处理的水平缩放，同时提供队列和主题中不可用的其他面向流的功能。
 
@@ -23,7 +23,7 @@ ms.locfileid: "67827647"
 
 事件中心按配置的保留时间保留数据，该时间适用于事件中心的所有分区。 事件根据特定的时间过期；无法显式删除事件。 由于分区互相独立且包含自身的数据序列，因此通常按不同速率增大。
 
-![事件中心](./media/event-hubs-partitions/multiple_partitions.png)
+![事件中心](./media/event-hubs-partitions/multiple-partitions.png)
 
 分区数在创建时指定，必须介于 2 到 32 之间。 分区计数不可更改，因此在设置分区计数时应考虑长期规模。 分区是一种数据组织机制，与使用方应用程序中所需的下游并行度相关。 事件中心的分区数与预期会有的并发读取者数直接相关。 要将分区数增加到 32 以上，可以联系事件中心团队。
 

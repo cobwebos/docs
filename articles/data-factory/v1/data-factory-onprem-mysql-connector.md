@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2468fc0cbdcee9088aa9acb387af396dd448ad0a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
-ms.translationtype: HT
+ms.openlocfilehash: 20dd86a46ac1b50f5ce20da6ecf9dff251a8c0b0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701679"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839009"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -33,7 +33,7 @@ ms.locfileid: "67701679"
 
 可以将数据从本地 MySQL 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 MySQL 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 MySQL 数据存储。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 数据工厂服务支持使用数据管理网关连接到本地 MySQL 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
 即使 MySQL 数据库托管在 Azure IaaS 虚拟机 (VM) 中，仍需要网关。 只要网关能连接数据库，即可在与数据存储相同的 VM 上或不同的 VM 上安装网关。
@@ -51,7 +51,7 @@ ms.locfileid: "67701679"
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
 - 创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 还可以使用以下工具来创建管道：Azure 门户  、Visual Studio  、Azure PowerShell  、Azure 资源管理器模板  、.NET API  和 REST API  。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 还可以使用以下工具来创建管道：**Visual Studio**， **Azure PowerShell**， **Azure Resource Manager 模板**， **.NET API**，并且**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -82,7 +82,7 @@ ms.locfileid: "67701679"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息  。 **RelationalTable** 类型数据集（包括 MySQL 数据集）的 typeProperties 部分具有以下属性
 
-| 属性 | 说明 | 必填 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | tableName |链接服务引用的 MySQL 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -99,7 +99,7 @@ ms.locfileid: "67701679"
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON 示例：将数据从 MySQL 复制到 Azure Blob
-此示例提供示例 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 其中演示如何将数据从本地 MySQL 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+此示例提供示例 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 其中演示如何将数据从本地 MySQL 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 > [!IMPORTANT]
 > 此示例提供 JSON 代码段。 它不包括创建数据工厂的分步说明。 请参阅文章[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)以获取分步说明。
@@ -306,7 +306,7 @@ ms.locfileid: "67701679"
 | bit |Decimal |
 | Blob |Byte[] |
 | bool |Boolean |
-| char |字符串 |
+| char |String |
 | date |Datetime |
 | DATETIME |Datetime |
 | decimal |Decimal |
@@ -319,13 +319,13 @@ ms.locfileid: "67701679"
 | 无符号 integer |Int64 |
 | integer |Int32 |
 | long varbinary |Byte[] |
-| long varchar |字符串 |
+| long varchar |String |
 | longblob |Byte[] |
 | longtext |String |
 | mediumblob |Byte[] |
 | 无符号 mediumint |Int64 |
 | mediumint |Int32 |
-| mediumtext |String |
+| mediumtext |字符串 |
 | numeric |Decimal |
 | real |Double |
 | set |String |
@@ -337,7 +337,7 @@ ms.locfileid: "67701679"
 | tinyblob |Byte[] |
 | 无符号 tinyint |Int16 |
 | tinyint |Int16 |
-| tinytext |String |
+| tinytext |字符串 |
 | varchar |字符串 |
 | year |Int |
 

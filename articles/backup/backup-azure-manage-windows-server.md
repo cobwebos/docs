@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/21/2018
+ms.date: 07/08/2019
 ms.author: raynew
-ms.openlocfilehash: f7d97866bb3ae895f83fff248ceec2e83dd60bf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b447290a6910d144703bb796290908d0fc21b924
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688912"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705142"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
@@ -216,7 +216,7 @@ ms.locfileid: "66688912"
 * Azure 存储
 * Azure 工作负荷
 
-#### <a name="operation"></a>Operation
+#### <a name="operation"></a>操作
 
 可以查看一个操作或所有操作。 不能选择两个或三个操作。 可用的操作包括：
 
@@ -260,21 +260,6 @@ ms.locfileid: "66688912"
 * 与保管库关联的 Cloud LRS 存储使用情况
 * 与保管库关联的 Cloud GRS 存储使用情况
 
-
-## <a name="frequently-asked-questions"></a>常见问题
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>多长时间后，门户中会反映 Azure 备份代理作业状态？
-最长可能需要 15 分钟，Azure 门户才会反映 Azure 备份代理作业状态。
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>备份作业失败后，需要多长时间才会引发警报？
-Azure 备份失败后，会在 20 分钟内引发警报。
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>是否存在配置了通知却不发送电子邮件的情况？
-是的。 在以下情况下，不会发送通知：
-
-* 已将通知配置为每小时发送，并且在一小时内引发并解决了警报
-* 取消了作业
-* 由于原始备份作业正在进行，另一个备份作业失败
 
 ## <a name="troubleshooting-monitoring-issues"></a>监视问题疑难解答
 

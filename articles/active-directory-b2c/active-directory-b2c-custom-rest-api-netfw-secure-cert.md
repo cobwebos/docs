@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b007aa4619effbd34e4e969e4ce7b58f3b0c4cf6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1690adfe5336ea85328e16755c5e3bc82b6d240a
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510528"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835615"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用客户端证书保护 RESTful 服务
 
@@ -33,7 +33,7 @@ ms.locfileid: "66510528"
 * 将证书上传到 Azure AD B2C 策略密钥。
 * 将自定义策略配置为使用客户端证书。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 * 完成[集成 REST API 声明交换](active-directory-b2c-custom-rest-api-netfw.md)一文中所述的步骤。
 * 获取有效的证书（包含私钥的 .pfx 文件）。
 
@@ -47,24 +47,24 @@ ms.locfileid: "66510528"
 >有关设置 **clientCertEnabled** 属性的详细信息，请参阅[为 Web 应用配置 TLS 相互身份验证](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)。
 
 ## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>步骤 2：将证书上传到 Azure AD B2C 策略密钥
-将 `clientCertEnabled` 设置为 *true* 之后，与 RESTful API 之间的通信需要客户端证书。 若要获取、上传以及在 Azure AD B2C 租户中存储客户端证书，请执行以下操作： 
+将 `clientCertEnabled` 设置为 *true* 之后，与 RESTful API 之间的通信需要客户端证书。 若要获取、上传以及在 Azure AD B2C 租户中存储客户端证书，请执行以下操作：
 1. 在 Azure AD B2C 租户中，选择“B2C 设置”   > “标识体验框架”  。
 
 2. 若要查看租户中的可用密钥，请选择“策略密钥”。 
 
-3. 选择 **添加** 。  
+3. 选择 **添加** 。
     此时会打开“创建密钥”窗口。 
 
 4. 在“选项”框中，选择“上传”。  
 
-5. 在“名称”框中，键入 **B2cRestClientCertificate**。   
+5. 在“名称”框中，键入 **B2cRestClientCertificate**。 
     前缀 *B2C_1A_* 会自动添加。
 
 6. 在“文件上传”框中，选择包含私钥的证书 .pfx 文件。 
 
 7. 在“密码”框中，键入证书的密码  。
 
-    ![上传策略密钥](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
+    ![上传在创建在 Azure 门户中密钥页上的策略密钥](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
 7. 选择“创建”  。
 
@@ -85,7 +85,7 @@ ms.locfileid: "66510528"
     <Item Key="AuthenticationType">ClientCertificate</Item>
     ```
 
-5. 紧靠在 `<Metadata>` 元素右括号的后面添加以下 XML 片段： 
+5. 紧靠在 `<Metadata>` 元素右括号的后面添加以下 XML 片段：
 
     ```xml
     <CryptographicKeys>
@@ -119,12 +119,12 @@ ms.locfileid: "66510528"
 
 2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。 
 
-3. 在“名”框中键入 **Test** 来测试该过程。   
-    Azure AD B2C 会在窗口顶部显示一条错误消息。    
+3. 在“名”框中键入 **Test** 来测试该过程。 
+    Azure AD B2C 会在窗口顶部显示一条错误消息。
 
-    ![测试标识 API](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![给定名称文本框中突出显示和输入显示验证错误](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. 在“名”框中键入一个名称（不要键入“Test”）。   
+4. 在“名”框中键入一个名称（不要键入“Test”）。 
     Azure AD B2C 会注册该用户，然后将会员号发送到应用程序。 请注意此 JWT 示例中的编号：
 
    ```
@@ -152,7 +152,7 @@ ms.locfileid: "66510528"
    >如果收到“名称无效，请提供有效名称”错误消息，表示 Azure AD B2C 在提供客户端证书时已成功调用 RESTful 服务。  下一步是验证证书。
 
 ## <a name="step-6-add-certificate-validation"></a>步骤 6：添加证书验证
-由 Azure AD B2C 发送到 RESTful 服务的客户端证书不会在 Azure 应用服务平台中经历验证，系统只会检查该证书是否存在。 验证该证书是 Web 应用的责任。 
+由 Azure AD B2C 发送到 RESTful 服务的客户端证书不会在 Azure 应用服务平台中经历验证，系统只会检查该证书是否存在。 验证该证书是 Web 应用的责任。
 
 本部分会添加示例 ASP.NET 代码，用于针对身份验证目的验证证书属性。
 
@@ -171,7 +171,7 @@ ms.locfileid: "66510528"
 将证书的“使用者名称”、“颁发者名称”和“证书指纹”值替换为自己的证书值。   
 
 ### <a name="62-add-the-isvalidclientcertificate-function"></a>6.2：添加 IsValidClientCertificate 函数
-打开 *Controllers\IdentityController.cs* 文件，将以下函数添加到 `Identity` 控制器类： 
+打开 *Controllers\IdentityController.cs* 文件，将以下函数添加到 `Identity` 控制器类：
 
 ```csharp
 private bool IsValidClientCertificate()
@@ -219,7 +219,7 @@ private bool IsValidClientCertificate()
         Trace.TraceError($"Subject name '{clientCertInRequest.Subject}' is not valid");
         return false;
     }
-    
+
     // 3. Check the issuer name of the certificate
     bool foundIssuerCN = false;
     string[] certIssuerData = clientCertInRequest.Issuer.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
@@ -273,7 +273,7 @@ private bool IsValidClientCertificate()
 >根据服务的敏感性，可能需要添加更多验证。 例如，可能需要测试证书是否链接到受信任根证书颁发机构、颁发者组织名称验证，等等。
 
 ### <a name="63-call-the-isvalidclientcertificate-function"></a>6.3：调用 IsValidClientCertificate 函数
-打开 *Controllers\IdentityController.cs* 文件，在 `SignUp()` 函数的开头添加以下代码片段： 
+打开 *Controllers\IdentityController.cs* 文件，在 `SignUp()` 函数的开头添加以下代码片段：
 
 ```csharp
 if (IsValidClientCertificate() == false)
@@ -299,4 +299,4 @@ if (IsValidClientCertificate() == false)
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
 * 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert)用于参考。
-* 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)下载完整代码。 
+* 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)下载完整代码。

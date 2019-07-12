@@ -4,7 +4,7 @@ description: 了解如何在 Azure 中的 HB 系列 VM 大小的预览支持。
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
-ms.openlocfilehash: bf143aa316a3d373a6303865cdc39ee0aaf27d87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809912"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707778"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB 系列虚拟机概述
 

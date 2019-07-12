@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/05/2019
-ms.openlocfilehash: 29fdb200075a5b5843944a7a890cc2f8ad61f1ee
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.date: 07/11/2019
+ms.openlocfilehash: b8591fe750d4bb1441cdc28c488b2c860eb0bccb
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543855"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840066"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>部署模型使用自定义 Docker 映像
 
@@ -38,7 +38,7 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
 * 创建自定义映像：提供有关创建自定义映像和配置到 Azure 容器注册表使用 Azure CLI 和机器学习 CLI 的身份验证向管理员和开发运营的信息。
 * 使用自定义映像：为数据科学家和开发运营/MLOps 提供有关部署从 Python SDK 或机器学习 CLI 训练的模型时使用的自定义映像的信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 * Azure 机器学习服务工作组。 有关详细信息，请参阅[创建工作区](setup-create-workspace.md)一文。
 * Azure 机器学习 SDK。 有关详细信息，请参阅 Python SDK 一部分[创建工作区](setup-create-workspace.md#sdk)一文。
@@ -116,6 +116,9 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
     ```text
     FROM ubuntu:16.04
 
+    ARG CONDA_VERSION=4.5.12
+    ARG PYTHON_VERSION=3.6
+
     ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
     ENV PATH /opt/miniconda/bin:$PATH
 
@@ -124,12 +127,12 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
 
-    RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.5.12-Linux-x86_64.sh -O ~/miniconda.sh && \
+    RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh -O ~/miniconda.sh && \
         /bin/bash ~/miniconda.sh -b -p /opt/miniconda && \
         rm ~/miniconda.sh && \
         /opt/miniconda/bin/conda clean -tipsy
 
-    RUN conda install -y python=3.6 && \
+    RUN conda install -y conda=${CONDA_VERSION} python=${PYTHON_VERSION} && \
         conda clean -aqy && \
         rm -rf /opt/miniconda/pkgs && \
         find / -type d -name __pycache__ -prune -exec rm -rf {} \;
@@ -164,7 +167,7 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
 * __映像名称__。 例如，`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda`是 Microsoft 提供的一个基本 Docker 映像的路径。
 * 如果图像位于__专用存储库__，需要以下信息：
 
-    * 注册表__地址__。 例如，`myregistry.azureecr.io` 。
+    * 注册表__地址__。 例如， `myregistry.azureecr.io` 。
     * 服务主体__用户名__并__密码__对注册表具有读取访问权限。
 
     如果没有此信息，Azure 容器注册表包含映像需求助管理员。
@@ -173,7 +176,7 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
 
 Microsoft 提供多个 docker 映像上可公开访问存储库，可以在此部分中的步骤：
 
-| Image | 描述 |
+| 图像 | 描述 |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure 机器学习服务的基本映像 |
 | `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | 包含 ONNX 运行时。 |

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 73e53e47576b0697c0d09b386bb3e830d976dd04
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a437927f6ad43f4c3a90433faa5b9fa6f964aa5c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606664"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839239"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -33,7 +33,7 @@ ms.locfileid: "67606664"
 
 **问：是否始终需要生成自定义语音模型？**
 
-**答**：不是。 如果应用程序使用通用的日常语言，则无需自定义模型。 如果应用程序用于背景噪音很小或无背景噪音的环境，则无需自定义模型。
+**答**：否。 如果应用程序使用通用的日常语言，则无需自定义模型。 如果应用程序用于背景噪音很小或无背景噪音的环境，则无需自定义模型。
 
 你可以在门户中部署基线模型和自定义模型，并针对这些模型运行准确度测试。 可以使用此功能衡量基线模型与自定义模型的准确度。
 
@@ -83,7 +83,12 @@ ms.locfileid: "67606664"
 
 **答**：REST API 将请求限制为每 5 秒 25 个。 可以在我们的[语音转文本](speech-to-text.md)页面中找到详细信息。
 
-如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。
+**问：我如何计费的双声道音频？**
+
+**答**：如果单独提交每个通道 （在其自己的文件中每个通道），你将按每个文件的持续时间收费。 如果使用复合到一起，每个通道提交单个文件，然后你将收取单一文件的持续时间。
+
+> [!IMPORTANT]
+> 如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。
 
 ## <a name="importing-data"></a>导入数据
 
@@ -93,7 +98,7 @@ ms.locfileid: "67606664"
 
 **问：是否可以压缩文本文件，以便上传更大的文本文件？** 
 
-**答**：不是。 目前，仅允许未压缩的文本文件。
+**答**：否。 目前，仅允许未压缩的文本文件。
 
 **问：数据报告表明，有言语导入失败。问题出在哪里？**
 

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: f725f38a335972ae8e0a8b8402a99202caa54a70
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147084"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805704"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>使用日志来解决验证问题，Azure Data Box 磁盘
 
@@ -90,8 +90,8 @@ ms.locfileid: "67147084"
 | `InvalidBlobNameFormat` | 文件路径不会映射到有效的 blob 路径中根据 Azure Blob 命名约定云。|重命名该文件，以便它符合[Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)。 重试验证。 |
 | `InvalidFileNameFormat` | 文件路径不会映射到有效的文件路径中根据 Azure 文件命名约定云。 |重命名该文件，以便它符合[Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)。 重试验证。 |
 | `InvalidDiskNameFormat` | 文件路径不会映射到有效的磁盘名称中根据 Azure 托管磁盘命名约定云。 |重命名该文件，以便它符合[Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)。 重试验证。       |
-| `NotPartOfFileShare` | 无法上载文件，因为上传路径不是有效。 将文件上传到 Azure 文件中的文件夹。   | 在错误中删除的文件并将这些文件上传到预创建的文件夹。 重试验证。 |
-| `NonVhdFileNotSupportedForManagedDisk` | 无法上载非 VHD 文件，作为托管磁盘。 |删除非 VHD 文件，因为不支持这些帐号。 重试验证。 |
+| `NotPartOfFileShare` | 文件上传路径不是有效的。 将文件上传到 Azure 文件中的文件夹。   | 在错误中删除的文件并将这些文件上传到预创建的文件夹。 重试验证。 |
+| `NonVhdFileNotSupportedForManagedDisk` | 无法上载非 VHD 文件，作为托管磁盘。 |删除非 VHD 文件从`ManagedDisk`文件夹，因为这些不受支持或移动到这些文件`PageBlob`文件夹。 重试验证。 |
 
 
 ## <a name="next-steps"></a>后续步骤

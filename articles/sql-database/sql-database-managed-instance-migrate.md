@@ -11,27 +11,31 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 9fe6ab797eaa325ad802702e95f5a0e5b8e4fef4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/07/2019
+ms.openlocfilehash: 7cf54b79fac87905117e321574571890c59315e6
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070426"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827077"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
 本文介绍了如何将 SQL Server 2005 或更高版本实例迁移到 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。 有关迁移到单一数据库或弹性池的信息，请参阅[迁移到单一数据库或入池数据库](sql-database-cloud-migrate.md)。 有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。
 
+> [!NOTE]
+> 如果你想要快速启动并试用托管实例，您可能想要转到[快速入门指南](/sql-database-managed-instance-quickstart-guide.md)而不是此页。 
+
 概括而言，数据库迁移过程如下所示：
 
 ![迁移过程](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- [评估托管实例兼容性](#assess-managed-instance-compatibility)
+- [评估托管的实例兼容性](#assess-managed-instance-compatibility)您应确保不存在阻塞问题可能会阻止迁移。
+  - 此步骤还包括创建[性能基线](#create-performance-baseline)若要确定源 SQL Server 实例上的资源使用情况。 如果你想 o，则需要此步骤部署正确大小的托管实例，并验证迁移后的性能不会受到影响。
 - [选择应用连接选项](sql-database-managed-instance-connect-app.md)
-- [部署到大小最适合的托管实例](#deploy-to-an-optimally-sized-managed-instance)
-- [选择迁移方法，然后迁移](#select-migration-method-and-migrate)
-- [监视应用程序](#monitor-applications)
+- [将部署到具有最佳大小的托管实例](#deploy-to-an-optimally-sized-managed-instance)您将在其中选择技术特征 （Vcore 数、 内存量） 和性能层 （业务关键、 常规用途） 的托管实例。
+- [选择迁移方法，然后迁移](#select-migration-method-and-migrate)您将使用脱机迁移 （本机备份/还原、 数据库 importe/导出） 或联机迁移 （数据迁移服务、 事务复制） 将数据库迁移。
+- [监视应用程序](#monitor-applications)以确保您具有预期性能。
 
 > [!NOTE]
 > 若要将单个数据库迁移到单个数据库或弹性池，请参阅[将 SQL Server 数据库迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
@@ -58,7 +62,11 @@ ms.locfileid: "67070426"
 
 ### <a name="create-performance-baseline"></a>创建性能基线
 
-如果你需要对托管实例上使用 SQL Server 上运行你原始工作负荷的工作负荷的性能进行比较，您需要创建将用于比较的性能基线。 下面是一些需要度量值的 SQL Server 实例的参数： 
+如果你需要对托管实例上使用 SQL Server 上运行你原始工作负荷的工作负荷的性能进行比较，您需要创建将用于比较的性能基线。 
+
+性能基准是一组的参数，如平均/最大 CPU 使用率、 平均/最大磁盘 IO 延迟、 吞吐量、 IOPS、 平均/最大页生存期，平均 tempdb 的最大大小。 你想要迁移后，具有相似或甚至更好的参数，因此务必要测量和记录这些参数的基线值。 除了系统参数，将需要选择在你的工作负荷和度量值最小/平均/最大持续时间内，针对所选查询的 CPU 使用率的一组有代表性的查询或最重要的查询。 这些值将使你来比较工作负荷的托管实例的原始值上运行你的源 SQL Server 的性能。
+
+下面是一些需要度量值的 SQL Server 实例的参数： 
 - [监视 SQL Server 实例上的 CPU 使用率](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)并记录平均值和峰值 CPU 使用情况。
 - [监视 SQL Server 实例上的内存使用情况](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage)确定使用的不同组件，如缓冲池的内存量和计划缓存中，列存储池[内存中 OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)，等等。此外，您应发现 Page Life Expectancy 内存性能计数器的平均值和峰值值。
 - 监视源 SQL Server 实例使用的磁盘 IO 使用情况[sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)视图或[性能计数器](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage)。
@@ -72,9 +80,10 @@ ms.locfileid: "67070426"
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>部署到大小最适合的托管实例
 
 托管实例是为要迁移到云中的本地工作负载量身定制。 它引入了一个[新的购买模型](sql-database-service-tiers-vcore.md)，这让你在为工作负荷选择适当的资源级别时更具灵活性。 在本地环境中，你可能习惯于使用物理核心和 IO 带宽来调整这些工作负荷的大小。 托管实例的购买模型以虚拟核心 (vCore) 为依据，同时单独提供更多存储和 IO 资源。 借助 vCore 模型可以更方便地根据当前在本地使用的计算资源，来了解云中的计算要求。 使用此新模型可以适当地调整云中目标环境的大小。 此处介绍了一些通用准则可帮助你选择适当的服务层和特征：
-- [监视 SQL Server 实例上的 CPU 使用率](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)和检查多少计算您当前使用 （使用动态管理视图、 SQL Server Management Studio 或其他监视工具） 的能力。 可以预配托管实例相匹配的 SQL Server，记住，CPU 特征可能需要进行缩放，以匹配具有使用的内核数[托管实例的安装位置的 VM 特征](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics)。
-- 检查您的 SQL Server 实例上的可用内存量，并选择[有匹配的内存的服务层](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics)。 可以用来度量值来确定在 SQL Server 实例上的页生存期[是否需要额外的内存](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444)。
-- 度量值常规用途和业务关键服务层之间进行选择的文件子系统的 IO 的延迟。
+- 根据基线可以预配托管实例相匹配的 SQL Server 使用的内核数量的 CPU 使用情况，具有记住该 CPU 特征可能需要进行缩放，以匹配[托管实例所在的 VM 特征安装](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)。
+- 根据基线内存使用情况选择[有匹配的内存的服务层](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)。 不能直接选择的内存量，因此需要选择具有匹配的内存 (例如 5.1 GB/vCore Gen5 中) 的 Vcore 量的托管实例。 
+- 基于在基线 IO 延迟文件子系统的选择常规用途 （大于 5 毫秒延迟） 和业务关键服务层之间 (延迟不超过 3 毫秒)。
+- 根据基线的吞吐量预分配数据的大小或日志文件，以获取预期 IO 性能。
 
 你可以选择计算和存储资源在部署时间和以后可进行更改而不会造成应用程序使用[Azure 门户](sql-database-scale-resources.md):
 
@@ -169,6 +178,13 @@ ms.locfileid: "67070426"
 使参数的更改或升级服务层将聚合到的最佳配置，直到获得适合你需求的工作负荷性能。
 
 ### <a name="monitor-performance"></a>监视性能
+
+托管的实例提供了大量用于监视和故障排除，高级工具，您应使用它们来监视你的实例上的性能。 某些参数，你将需要监视是：
+- 要确定的实例上的 CPU 使用率会执行的预配的 Vcore 数所最符合你的工作负荷。
+- 若要确定托管实例上的页生存期[是否需要额外的内存](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444)。
+- 等待统计数据，例如`INSTANCE_LOG_GOVERNOR`或`PAGEIOLATCH`它将告诉您是否有存储 IO 问题，尤其是在其中你可能需要预分配文件，以更好的 IO 性能的常规用途层上。
+
+## <a name="leverage-advanced-paas-features"></a>利用高级的 PaaS 功能
 
 后一个完全托管的平台上，并且已验证的工作负荷性能的匹配 SQL Server 工作负荷性能，需要 SQL 数据库服务的一部分自动提供的优势。 
 

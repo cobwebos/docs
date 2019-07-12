@@ -11,17 +11,18 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 03/10/2019
-ms.author: cephalin;byvinyal
+ms.author: cephalin
+ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b054e56afdec65ac000b0dc18a0c1a3fd845b4c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65e5d6bacc67c64fa21268a853dc9c9d9b447da7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955979"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617172"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
-[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 这些凭据不是与 Azure Active Directory 凭据相同。
+[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 这些凭据与 Azure Active Directory 凭据不同。
 
 * **用户级凭据**：一组适用于整个 Azure 帐户的凭据。 需要部署到任何订阅（Azure 帐户有权对其进行访问）中的任何应用的应用服务时，可以使用这组凭据。 这是在门户 GUI（例如应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)的“概览”和“属性”）中呈现的默认组。   通过基于角色的访问控制 (RBAC) 或 coadmin 权限的应用程序访问权限授予用户后，该用户可以使用他们自己的用户级凭据，直到撤消访问权限。 请勿与其他 Azure 用户共享这些凭据。
 

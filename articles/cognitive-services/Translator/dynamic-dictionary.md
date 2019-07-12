@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 2ef1e474dd5d36f1967501ea7bdedc4736954a2b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a815434cb8797acf6b92a8fe4a4f1ff69508975d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436013"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839215"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>如何使用动态字典
 
@@ -24,6 +24,11 @@ ms.locfileid: "67436013"
 **语法：**
 
 <mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
+
+**要求：**
+
+* `From`和`To`语言必须不同。 
+* 必须包括`From`而不是使用自动检测功能在 API 转换请求中的参数。 
 
 **示例：en-de：**
 

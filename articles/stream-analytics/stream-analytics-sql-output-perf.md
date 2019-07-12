@@ -3,18 +3,18 @@ title: 从 Azure 流分析输出到 Azure SQL 数据库
 description: 了解如何将数据从 Azure 流分析输出到 SQL Azure，并实现更高的写入吞吐量速率。
 services: stream-analytics
 author: chetanmsft
-ms.author: chetanmsft
+ms.author: chetang
 manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: ac58bbbc252d66620ad410bffa805b75ec3042d4
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: e0775bff1e7bdeeaf2c544fd815c2ce3bf129eae
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341757"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620858"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>从 Azure 流分析输出到 Azure SQL 数据库
 
@@ -54,6 +54,6 @@ Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 �
 
 写入到非聚集列存储索引 (NCCI)，较小的大容量插入可以在其中创建太多段，可能会崩溃索引时需要执行另一个此类方案。 在这种情况下，建议将改为使用聚集列存储索引。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 概括而言，使用 Azure 流分析中适用于 SQL 输出的、使作业并行化与 SQL Azure 中分区表相符的分区输出功能，应该可以明显改善吞吐量。 利用 Azure 数据工厂来协调从内存中表到基于磁盘的表的数据移动，可让吞吐量获得指数级的提升。 如果可行，改善消息密度也可能是改善总体吞吐量的主要因素。
