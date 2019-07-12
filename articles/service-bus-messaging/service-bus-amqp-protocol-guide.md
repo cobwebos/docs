@@ -224,7 +224,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”  ），其
 | --- | --- | --- |
 | message-id |应用程序为此消息定义的自由格式标识符。 用于重复检测。 |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |应用程序定义的用户标识符，服务总线无法进行解释。 |无法通过服务总线 API 访问。 |
-| 至 |应用程序定义的目标标识符，服务总线无法进行解释。 |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| to |应用程序定义的目标标识符，服务总线无法进行解释。 |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | subject |应用程序定义的消息用途标识符，服务总线无法进行解释。 |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | reply-to |应用程序定义的回复路径指示符，服务总线无法进行解释。 |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |应用程序定义的相关性标识符，服务总线无法进行解释。 |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
