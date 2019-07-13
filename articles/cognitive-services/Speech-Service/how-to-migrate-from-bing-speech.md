@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
-ms.author: gracez
-ms.openlocfilehash: 33907437ab330278bdf7b023f6a93bd96e78cbad
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.author: nitinme
+ms.openlocfilehash: 205ca0baa195a3859fd7d5cc04e3057411ecbe1c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561342"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67845888"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
 
@@ -37,7 +37,7 @@ ms.locfileid: "67561342"
 
 语音服务都很大程度上类似于必应语音，具有以下差异。
 
-Feature | 必应语音 | 语音服务 | 详细信息
+功能 | 必应语音 | 语音服务 | 详细信息
 -|-|-|-
 C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | 语音服务支持 Windows 和 Linux。
 Java SDK | :heavy_check_mark: | :heavy_check_mark: | 语音服务支持的 Android 和语音设备。
@@ -92,7 +92,7 @@ Websocket 协议 | :heavy_check_mark: | :heavy_check_mark: | 语音服务 Websoc
 * [免费试用语音服务](get-started.md)
 * [快速入门：使用语音 SDK 在 UWP 应用中识别语音](quickstart-csharp-uwp.md)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [语音服务发行说明](releasenotes.md)
 * [什么是语音服务](overview.md)
 * [语音服务和语音 SDK 文档](speech-sdk.md#get-the-sdk)

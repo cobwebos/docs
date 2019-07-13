@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: e990ebe89f4446a0226aa0e0f73ffd900e5b021a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: nolachar
+ms.openlocfilehash: ed18d30a0c3f5d51cb3a07b8948863cdda16c1ae
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592942"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67845967"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>何时使用枚举的实体和设置实体操作
 
@@ -64,12 +64,12 @@ ms.locfileid: "67592942"
 > [!NOTE]
 > 我们当前提供的每个枚举实体最多 5 个值的限制。 每个值使用当前 64 限制中的槽之一。 请参阅[cl 值和边界](../cl-values-and-boundaries.md)
 
-示例：智能机器人应用程序：是你的订单吗？
+例如：智能机器人应用程序：是你的订单吗？
 用户：是
 
 开放和不固定的实体的可能的值时，需要使用替代功能如下所示[预期实体](05-expected-entity.md)。
 
-示例：智能机器人应用程序：你叫什么名字？
+例如：智能机器人应用程序：你叫什么名字？
 用户：Matt 智能机器人应用程序：什么是您喜爱的颜色？
 用户：银牌服务
 
@@ -85,7 +85,7 @@ ms.locfileid: "67592942"
 
 ### <a name="set-entity-actions"></a>设置实体的操作
 
-如上所述，"设置实体"操作只需设置实体为已知的枚举值。 通过创建 API 回调操作并使用内存管理器来将实体设置为一个值，可获得相同的结果。 例如 [https://login.microsoftonline.com/consumers/](`memory.Set(entityName, entityValue)`)。 无需编写此代码和创建这些操作会变得枯燥乏味且难以管理-因此对话学习器具有特殊操作来促进这项工作，并自动生成这些操作中使用时。 将这些功能作为独立操作保留的功能来编写这些而无需进行耦合与其他操作或在机器人中的代码。
+如上所述，"设置实体"操作只需设置实体为已知的枚举值。 通过创建 API 回调操作并使用内存管理器来将实体设置为一个值，可获得相同的结果。 例如 `memory.Set(entityName, entityValue)`。 无需编写此代码和创建这些操作会变得枯燥乏味且难以管理-因此对话学习器具有特殊操作来促进这项工作，并自动生成这些操作中使用时。 将这些功能作为独立操作保留的功能来编写这些而无需进行耦合与其他操作或在机器人中的代码。
 
 - 因此，必须首先创建枚举实体引用的枚举实体值时，只能创建设置实体的操作。
 - 设置实体的操作是还"非 await"由于任何可见输出，并且需要跟在用户可以看到"等待"操作。
