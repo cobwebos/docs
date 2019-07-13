@@ -58,7 +58,8 @@
     - name: 使用令牌获取见解
       href: use-insights-token.md
     - name: 调整和裁剪缩略图
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: 使用图像见解标记搜索图像
       href: tutorial-visual-search-insights-token.md
     - name: 创建单页 Web 应用

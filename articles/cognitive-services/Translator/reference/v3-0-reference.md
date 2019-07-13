@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 9b8f3894062c34e743a39f28b5f079a67a285c84
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 8956aff86777e2a2570c6a555a9bd0882f328a77
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357687"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868409"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -31,10 +31,10 @@ ms.locfileid: "67357687"
 
 ## <a name="base-urls"></a>基 URL
 
-Microsoft Translator 位于多个数据中心位置之外。 这些文件在当前位于 6 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/regions):
+Microsoft Translator 位于多个数据中心位置之外。 这些文件在当前位于 10 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/regions):
 
-* **美洲：** 美国西部 2 和美国中西部 
-* **亚太区：** 亚洲东南部和韩国南部
+* **美洲：** 美国东部、 美国中南部、 美国西部中部和美国西部 2 
+* **亚太区：** 韩国南部、 日本东部、 东南亚和澳大利亚东部
 * **欧洲：** 欧洲北部和欧洲西部
 
 在大多数情况下，对 Microsoft 文本翻译 API 的请求由距离请求的来源位置最近的数据中心处理。 如果出现数据中心故障，可能 Azure 地理位置外部路由请求。
@@ -49,7 +49,7 @@ Microsoft Translator 位于多个数据中心位置之外。 这些文件在当�
 |Azure|亚太区|    api-apc.cognitive.microsofttranslator.com|
 
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 文本翻译 API 订阅或[认知服务多服务](https://azure.microsoft.com/pricing/details/cognitive-services/)在 Microsoft 认知服务，并使用你的订阅密钥 （可在 Azure 门户中） 进行身份验证。 
 

@@ -51,7 +51,8 @@
     - name: 对新闻进行分页
       href: paging-news.md
     - name: 调整和裁剪缩略图
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: 从 API 的 v5 升级到 v7
       href: bing-news-upgrade-guide-v5-to-v7.md
     - name: 使用 Visual Studio

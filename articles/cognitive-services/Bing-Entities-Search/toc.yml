@@ -45,7 +45,8 @@
 - name: 操作指南
   items:
     - name: 调整和裁剪缩略图
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
 - name: 概念
   items:
     - name: 搜索实体
