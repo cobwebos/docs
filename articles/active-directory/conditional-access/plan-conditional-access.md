@@ -24,7 +24,7 @@ ms.locfileid: "67655500"
 
 ## <a name="what-you-should-know"></a>要点
 
-将条件性访问视为一个框架，可用于控制对组织的应用和资源，而不是独立的功能的访问。 因此，某些条件性访问设置需要其他功能进行配置。 例如，可以配置一个用于响应特定[登录风险级别](../identity-protection/howto-sign-in-risk-policy.md#what-is-the-sign-in-risk-policy)的策略。 但是，基于登录风险级别的策略需要启用 [Azure Active Directory Identity Protection](../identity-protection/overview.md)。
+将条件性访问视为一个框架，可用于控制对组织的应用和资源，而不是独立的功能的访问。 因此，某些条件性访问设置需要其他功能进行配置。 例如，可以配置一个用于响应特定[登录风险级别](../identity-protection/howto-sign-in-risk-policy.md#what-is-the-sign-in-risk-policy)的策略。 但是，基于登录风险级别的策略需要启用 [Azure Active Directory 标识保护](../identity-protection/overview.md)。
 
 如果需要附加的功能，则还可能需要获取相关的许可证。 例如，而条件性访问是 Azure AD Premium P1 功能，标识保护需要一个 Azure AD Premium P2 许可证。
 
@@ -114,16 +114,16 @@ Azure Active Directory 条件性访问，可以将你的云应用的保护集成
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>响应可能已泄密的帐户
 
-使用条件性访问策略，您可以实现对登录名从可能遭到入侵的标识的自动的响应。 帐户泄密的可能性以风险级别的形式表示。 Identity Protection 计算两种风险级别：登录风险和用户风险。 若要对登录风险实施响应，可以使用两个选项：
+使用条件性访问策略，您可以实现对登录名从可能遭到入侵的标识的自动的响应。 帐户泄密的可能性以风险级别的形式表示。 “标识保护”计算两种风险级别：登录风险和用户风险。 若要对登录风险实施响应，可以使用两个选项：
 
 - [登录风险条件](conditions.md#sign-in-risk)中条件性访问策略
 - Identity Protection 中的[登录风险策略](../identity-protection/howto-sign-in-risk-policy.md) 
 
 解决条件形式的登录风险是首选方法，因为它提供更多的自定义选项。
 
-在 Identity Protection 中，用户风险级别仅用作[用户风险策略](../identity-protection/howto-user-risk-policy.md)。 
+在“标识保护”中，用户风险级别仅用作[用户风险策略](../identity-protection/howto-user-risk-policy.md)。 
 
-有关详细信息，请参阅[什么是 Azure Active Directory Identity Protection？](../identity-protection/overview.md) 
+有关详细信息，请参阅[什么是 Azure Active Directory 标识保护？](../identity-protection/overview.md) 
 
 ### <a name="require-managed-devices"></a>需要托管设备
 

@@ -1,8 +1,8 @@
 ---
-title: 如何在 Azure Active Directory Identity Protection（已刷新）中提高检测精度 | Microsoft Docs
-description: 如何在 Azure Active Directory Identity Protection（已刷新）中提高检测精度。
+title: 如何在 Azure Active Directory 标识保护（已刷新）中提高检测精度 | Microsoft Docs
+description: 如何在 Azure Active Directory 标识保护（已刷新）中提高检测精度。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
@@ -26,7 +26,7 @@ ms.locfileid: "60453203"
 ---
 # <a name="how-to-improve-the-detection-accuracy"></a>如何：提高检测精度 
 
-Identity Protection 提供了可将环境中的风险检测反馈给 Azure AD 的机制。 若要提供反馈，可以确认检测到的有风险的用户或登录事件的状态。 Microsoft 用户利用此反馈对当前的风险检测采取措施，并提高未来检测精度。 
+“标识保护”提供了可将环境中的风险检测反馈给 Azure AD 的机制。 若要提供反馈，可以确认检测到的有风险的用户或登录事件的状态。 Microsoft 用户利用此反馈对当前的风险检测采取措施，并提高未来检测精度。 
 
 
 ## <a name="what-is-detection"></a>什么是检测？
@@ -133,6 +133,6 @@ Identity Protection 提供了可将环境中的风险检测反馈给 Azure AD �
 
 ## <a name="next-steps"></a>后续步骤
 
-若要获取 Azure AD Identity Protection 的概述，请参阅 [Azure AD Identity Protection 概述](overview-v2.md)。
+若要获取“Azure AD 标识保护”的概述，请参阅 [Azure AD 标识保护概述](overview-v2.md)。
 
 

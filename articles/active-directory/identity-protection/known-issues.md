@@ -1,8 +1,8 @@
 ---
-title: Azure Active Directory 中有关 Identity Protection（已刷新）的常见问题解答和已知问题 | Microsoft Docs
-description: Azure Active Directory 中有关 Identity Protection（已刷新）的常见问题解答和已知问题。
+title: Azure Active Directory 中有关“标识保护”（已刷新）的常见问题解答和已知问题 | Microsoft Docs
+description: Azure Active Directory 中有关“标识保护”（已刷新）的常见问题解答和已知问题。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
@@ -24,7 +24,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "60452667"
 ---
-# <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Azure Active Directory 中有关 Identity Protection（已刷新）的常见问题解答和已知问题
+# <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Azure Active Directory 中有关“标识保护”（已刷新）的常见问题解答和已知问题
 
 
 ## <a name="dismiss-user-risk-known-issues"></a>消除已知问题的用户风险
@@ -55,7 +55,7 @@ username  字段上的查询区分大小写，而 Name  字段上的查询不区
 
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-event"></a>为什么我不能为每个风险事件设置自己的风险级别？
 
-Identity Protection 中的风险级别依赖于检测的精度，并由我们的监督式机器学习提供支持。 若要自定义用户体验，管理员可以在用户风险和登录风险策略中包含/排除某些用户/组。
+“标识保护”中的风险级别依赖于检测的精度，并由我们的监督式机器学习提供支持。 若要自定义用户体验，管理员可以在用户风险和登录风险策略中包含/排除某些用户/组。
 
 
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>为什么登录位置与用户真正登录的位置不匹配？
@@ -63,7 +63,7 @@ Identity Protection 中的风险级别依赖于检测的精度，并由我们的
 IP 地理位置映射是整个行业面临的挑战。 如果认为登录报告中列出的位置与实际位置不匹配，请联系支持人员。 
 
 
-### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Identity Protection 中的反馈机制是如何工作的？
+### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>“标识保护”中的反馈机制是如何工作的？
 
 **确认泄漏**（在登录时） - 通知 Azure AD Identity Protection，该登录不是由标识所有者执行的，并指示受到存在泄漏。
 
@@ -85,9 +85,9 @@ IP 地理位置映射是整个行业面临的挑战。 如果认为登录报告�
 
 
 
-### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-events-are-shown-in-identity-protection"></a>即使在 Identity Protection 中没有显示有风险登录或风险事件，为什么会出现较低（或较高）的用户风险评分？
+### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-events-are-shown-in-identity-protection"></a>即使在“标识保护”中没有显示有风险登录或风险事件，为什么会出现较低（或较高）的用户风险评分？
 
-考虑到用户风险实质上是累积的，并且不会过期，即使 Identity Protection 最近没有显示风险登录或风险事件，也可能存在较低或较高用户风险。 如果针对用户的唯一恶意活动发生在我们存储风险登录和风险事件的详细信息的时间范围之外，就会发生这种情况。 我们不会终止用户风险，因为众所周知，恶意参与者会在客户环境的遭到泄漏的标识后停留超过 140 天，然后加大攻击力度。 客户可以通过访问 `Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab` 来查看用户的风险时间线，以了解为什么用户处于风险之中。
+考虑到用户风险实质上是累积的，并且不会过期，即使“标识保护”最近没有显示风险登录或风险事件，也可能存在较低或较高用户风险。 如果针对用户的唯一恶意活动发生在我们存储风险登录和风险事件的详细信息的时间范围之外，就会发生这种情况。 我们不会终止用户风险，因为众所周知，恶意参与者会在客户环境的遭到泄漏的标识后停留超过 140 天，然后加大攻击力度。 客户可以通过访问 `Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab` 来查看用户的风险时间线，以了解为什么用户处于风险之中。
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>为什么登录的“登录风险(总计)”分数为高，而与之相关的检测结果为低风险或中等风险？
 

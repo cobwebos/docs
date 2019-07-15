@@ -31,7 +31,7 @@ ms.locfileid: "67164816"
 
 启用条件性访问策略-这是最灵活的方式为用户启用双重验证。 启用使用条件性访问策略仅适用于在云中 Azure MFA，并且是一项高级功能的 Azure AD。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)。
 
-通过 Azure AD Identity Protection 启用 - 此方法使用 Azure AD Identity Protection 风险策略，要求仅基于所有云应用程序的登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
+通过“Azure AD 标识保护”启用 - 此方法使用“Azure AD 标识保护”风险策略，要求仅基于所有云应用程序的登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory 标识保护](../identity-protection/howto-sign-in-risk-policy.md)
 
 > [!Note]
 > 有关许可和定价的详细信息，请参见 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/

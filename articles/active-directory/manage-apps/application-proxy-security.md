@@ -69,7 +69,7 @@ Azure AD 应用程序代理是一个反向代理，因此，发往后端应用�
 
 获得一流的安全保护。
 
-由于属于 Azure Active Directory，因此应用程序代理可以利用 [Azure AD Identity Protection](../active-directory-identityprotection.md)（数据由 Microsoft 安全响应中心和反数字犯罪部门提供）。 我们会共同主动发现遭到入侵的帐户，并提供保护，以免出现高风险登录威胁。我们考虑许多因素，以确定哪些登录尝试有高风险。 这些因素包括标记为受感染设备、对网络进行匿名化处理，以及非典型或不太可能的位置。
+由于属于 Azure Active Directory，因此应用程序代理可以利用 [Azure AD 标识保护](../active-directory-identityprotection.md)（数据由 Microsoft 安全响应中心和反数字犯罪部门提供）。 我们会共同主动发现遭到入侵的帐户，并提供保护，以免出现高风险登录威胁。我们考虑许多因素，以确定哪些登录尝试有高风险。 这些因素包括标记为受感染设备、对网络进行匿名化处理，以及非典型或不太可能的位置。
 
 其中的许多报告与事件已通过某个 API 提供，便于与安全信息与事件管理 (SIEM) 系统集成。
 

@@ -1,8 +1,8 @@
 ---
-title: Azure Active Directory Identity Protection（已刷新）是什么？ | Microsoft Docs
-description: Azure Active Directory Identity Protection（已刷新）是什么？
+title: Azure Active Directory 标识保护（已刷新）是什么？ | Microsoft Docs
+description: Azure Active Directory 标识保护（已刷新）是什么？
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
@@ -24,9 +24,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 07/09/2019
 ms.locfileid: "67673006"
 ---
-# <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory Identity Protection（已刷新）是什么？
+# <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory 标识保护（已刷新）是什么？
 
-Identity Protection 体验已经过刷新，以更好地保护组织的标识。 此刷新后的体验提供了：
+“标识保护”体验已经过刷新，以更好地保护组织的标识。 此刷新后的体验提供了：
 
 - 经重新设计的管理体验，围绕与你最相关的风险 - 用户风险和登录风险
 
@@ -44,7 +44,7 @@ Identity Protection 体验已经过刷新，以更好地保护组织的标识。
 
 安全是组织当下关心的头等大事。 大多数安全漏洞出现在当攻击者通过窃取用户的标识来获取环境的访问权限时。 近年来，攻击者越来越擅于使用第三方违规，以及使用复杂的网络钓鱼攻击。 攻击者获取较低权限的用户帐户的访问权限后，即可通过横向移动，轻松访问重要的公司资源。 
 
-为响应这些威胁，Azure AD Identity Protection 使你能够： 
+为响应这些威胁，Azure AD 标识保护使你能够： 
 
 - 主动防止滥用遭到入侵的标识 
 
@@ -56,14 +56,14 @@ Identity Protection 体验已经过刷新，以更好地保护组织的标识。
 
  
 
-Azure AD Identity Protection 是 Azure Active Directory Premium P2 的一项功能，它允许你配置策略，以便在用户标识遭到入侵或帐户所有者以外的其他人试图使用其标识登录时自动进行响应。 也可以自动阻止这些策略，除了 Azure AD 提供其他条件性访问控制，访问或启动缓解措施，例如密码重置或强制实施多重身份验证。 此外，Identity Protection 还提供监视和报告功能，以便更深入地了解组织中的风险和潜在威胁。 
+Azure AD 标识保护是 Azure Active Directory Premium P2 的一项功能，它允许你配置策略，以便在用户标识遭到入侵或帐户所有者以外的其他人试图使用其标识登录时自动进行响应。 也可以自动阻止这些策略，除了 Azure AD 提供其他条件性访问控制，访问或启动缓解措施，例如密码重置或强制实施多重身份验证。 此外，“标识保护”还提供监视和报告功能，以便更深入地了解组织中的风险和潜在威胁。 
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
 
 ## <a name="risk-events"></a>风险事件
 
-Azure AD Identity Protection 检测到以下风险事件： 
+“Azure AD 标识保护”检测到以下风险事件： 
 
  
 
@@ -81,7 +81,7 @@ Azure AD Identity Protection 检测到以下风险事件：
 
 ## <a name="types-of-risk"></a>风险类型 
 
-Identity Protection 基于两种风险类型：
+“标识保护”基于两种风险类型：
 
 - 登录风险
 
@@ -117,13 +117,13 @@ Identity Protection 基于两种风险类型：
 
 
 
-## <a name="how-identity-protection-detects-risk"></a>Identity Protection 如何检测风险  
+## <a name="how-identity-protection-detects-risk"></a>“标识保护”如何检测风险  
 
-Azure AD 使用机器学习来检测异常和可疑活动，具体使用在登录过程中实时检测到的信号，以及与用户及其登录活动相关的非实时信号。 使用此数据，Identity Protection 计算实时登录风险的用户身份验证，以及确定总体用户风险级别为每个用户每次。 Identity Protection 允许你通过配置 Identity Protection 用户风险和登录风险策略，自动对这些风险检测采取措施。  
+Azure AD 使用机器学习来检测异常和可疑活动，具体使用在登录过程中实时检测到的信号，以及与用户及其登录活动相关的非实时信号。 使用此数据，Identity Protection 计算实时登录风险的用户身份验证，以及确定总体用户风险级别为每个用户每次。 “标识保护”允许你通过配置“标识保护”用户风险和登录风险策略，自动对这些风险检测采取措施。  
 
  
 
-要理解 Identity Protection 如何检测风险，有两个重要概念：用户风险和登录风险。 登录风险反映了给定身份验证请求未经标识所有者授权的概率。 有两种类型的登录风险：实时登录风险和总登录风险。 实时登录风险在给定登录尝试时进行检测（例如来自匿名 IP 地址的登录）。 总登录风险是检测到的实时登录风险以及与用户登录相关的任何后续非实时风险事件的总计（如无法前往的位置）。 用户风险反映了恶意参与者破坏给定标识的总体可能性。 用户风险包含给定用户的所有风险活动，包括：
+要理解“标识保护”如何检测风险，有两个重要概念：用户风险和登录风险。 登录风险反映了给定身份验证请求未经标识所有者授权的概率。 有两种类型的登录风险：实时登录风险和总登录风险。 实时登录风险在给定登录尝试时进行检测（例如来自匿名 IP 地址的登录）。 总登录风险是检测到的实时登录风险以及与用户登录相关的任何后续非实时风险事件的总计（如无法前往的位置）。 用户风险反映了恶意参与者破坏给定标识的总体可能性。 用户风险包含给定用户的所有风险活动，包括：
 
 - 实时登录风险
 - 后续登录风险
@@ -137,7 +137,7 @@ Azure AD 使用机器学习来检测异常和可疑活动，具体使用在登�
 
  
 
-上图概述了 Identity Protection 风险检测的基线流和对任何给定登录的响应。  
+上图概述了“标识保护”风险检测的基线流和对任何给定登录的响应。  
 
  
 
@@ -166,7 +166,7 @@ Azure AD 使用机器学习来检测异常和可疑活动，具体使用在登�
 
 2. Azure AD 检测到登录尝试来自一个匿名 IP 地址，从而触发了实时登录风险。 
 
-3. 恶意参与者会收到 MFA 提示，因为 Contoso 的 IT 管理员配置了 Identity Protection 登录风险条件访问策略，要求在中等或更高级别风险情况下进行 MFA。 
+3. 恶意参与者会收到 MFA 提示，因为 Contoso 的 IT 管理员配置了“标识保护”登录风险条件访问策略，要求在中等或更高级别风险情况下进行 MFA。 
 
 4. 恶意行动者失败 MFA 质询，并且无法访问员工的 Exchange Online 的帐户。 
 
@@ -186,19 +186,19 @@ Azure AD 使用机器学习来检测异常和可疑活动，具体使用在登�
 
 6. 员工的以前的风险事件已解决和她的用户风险级别会自动重置作为对缓解凭据泄漏的响应。 
 
-## <a name="how-do-i-configure-identity-protection"></a>如何配置 Identity Protection？ 
+## <a name="how-do-i-configure-identity-protection"></a>如何配置“标识保护”？ 
 
-若要开始使用 Identity Protection，首先配置用户风险策略和登录风险策略。 配置这些策略并将其应用于测试组后，就可以模拟风险事件，以了解 Identity Protection 将如何在环境中进行响应。 以下快速入门指南分步演示了如何在环境中设置上述策略和测试。 
+若要开始使用“标识保护”，首先配置用户风险策略和登录风险策略。 配置这些策略并将其应用于测试组后，就可以模拟风险事件，以了解“标识保护”将如何在环境中进行响应。 以下快速入门指南分步演示了如何在环境中设置上述策略和测试。 
 
  
 
-Identity Protection 支持 Azure AD 中的 3 个角色，以平衡围绕部署的管理活动： 
+“标识保护”支持 Azure AD 中的 3 个角色，以平衡围绕部署的管理活动： 
 
 | Role | 有权执行的操作 | 无权执行的操作 |
 | --- | --- | --- |
-| 全局管理员 | 对 Identity Protection 具有完全访问权限、载入 Identity Protection | |
-| 安全管理员 | 对 Identity Protection 具有完全访问权限 | 载入 Identity Protection、重置用户密码 |
-| 安全读取者 | 对 Identity Protection 的只读访问 | 载入 Identity Protection、修改用户、配置策略、重置密码| 
+| 全局管理员 | 对“标识保护”具有完全访问权限、载入“标识保护” | |
+| 安全管理员 | 对“标识保护”具有完全访问权限 | 载入“标识保护”、重置用户密码 |
+| 安全读取者 | 对“标识保护”的只读访问 | 载入“标识保护”、修改用户、配置策略、重置密码| 
 
 有关更多详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)
 
@@ -206,7 +206,7 @@ Identity Protection 支持 Azure AD 中的 3 个角色，以平衡围绕部署�
 ## <a name="licensing"></a>许可
 
 >[!NOTE]
-> 在 Identity Protection 的公共预览版（已刷新）期间，只有 Azure AD Premium P2 客户能够访问有风险的用户报告和有风险的登录报告。
+> 在“标识保护”的公共预览版（已刷新）期间，只有 Azure AD Premium P2 客户能够访问有风险的用户报告和有风险的登录报告。
 
 
 
@@ -226,7 +226,7 @@ Identity Protection 支持 Azure AD 中的 3 个角色，以平衡围绕部署�
 
 ## <a name="next-steps"></a>后续步骤 
 
-若要开始使用 Identity Protection，请参阅[配置登录风险策略](quickstart-sign-in-risk-policy.md)。 
+若要开始使用“标识保护”，请参阅[配置登录风险策略](quickstart-sign-in-risk-policy.md)。 
 
 
 

@@ -29,7 +29,7 @@ B2B 来宾用户许可按照 5:1 的比例自动计算和报告。 目前，无�
 ## <a name="examples-calculating-guest-user-licenses"></a>示例：计算来宾用户许可证数
 确定有多少个来宾用户需要访问付费的 Azure AD 服务之后，请确保提供足够数量的 Azure AD 付费许可证，以按所需的 1:5 比例涵盖来宾用户。 下面是一些可能的恶意活动：
 
-- 你想要邀请 100 个来宾用户使用你的 Azure AD 应用或服务，并想要向所有来宾用户分配访问管理和预配权限。 您还想要为 50 个这些来宾用户需要 MFA 和条件性访问。 若要涵盖这种组合，需要 10 个 Azure AD Basic 许可证和 10 个 Azure AD Premium P1 许可证。 如果你打算对来宾用户使用 Identity Protection 功能，需要按相同的 1:5 比例提供 Azure AD Premium P2 许可证才能涵盖这些来宾用户。
+- 你想要邀请 100 个来宾用户使用你的 Azure AD 应用或服务，并想要向所有来宾用户分配访问管理和预配权限。 您还想要为 50 个这些来宾用户需要 MFA 和条件性访问。 若要涵盖这种组合，需要 10 个 Azure AD Basic 许可证和 10 个 Azure AD Premium P1 许可证。 如果你打算对来宾用户使用“标识保护”功能，需要按相同的 1:5 比例提供 Azure AD Premium P2 许可证才能涵盖这些来宾用户。
 - 你想要邀请 60 个来宾用户，而这些用户都需要执行 MFA，因此，必须至少有 12 个 Azure AD Premium P1 许可证。 10 名员工有 Azure AD Premium P1 许可证，因此，根据 1:5 的许可比例，最多允许 50 个来宾用户。 需要额外购买两个 Premium P1 许可证才能涵盖 10 个附加的来宾用户。
 
 ## <a name="next-steps"></a>后续步骤

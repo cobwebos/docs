@@ -113,7 +113,7 @@ Privileged Identity Management 为角色或“及时”管理员访问引入了�
 
 ## <a name="identity-protection"></a>标识保护
 
-Azure AD Identity Protection 提供了可疑登录活动和潜在漏洞的统一视图来帮助保护企业。 Identity Protection 根据以下信号检测用户和特权（管理员）标识的可疑活动：
+Azure AD 标识保护提供了可疑登录活动和潜在漏洞的统一视图来帮助保护企业。 “标识保护”根据以下信号检测用户和特权（管理员）标识的可疑活动：
 
 * 暴力攻击。
 * 凭据泄漏。
@@ -124,7 +124,7 @@ Azure AD Identity Protection 提供了可疑登录活动和潜在漏洞的统一
 了解更多：
 
 * [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [第 9 频道：Azure AD 和标识展示：Identity Protection 预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [第 9 频道：Azure AD 和标识展示：“标识保护”预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>安全中心
 

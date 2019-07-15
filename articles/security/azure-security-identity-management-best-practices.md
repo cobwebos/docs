@@ -159,7 +159,7 @@ ms.locfileid: "67127210"
 - 配置自动响应与组织标识相关的可疑操作。
 - 调查可疑事件，并采取适当的措施进行解决。
 
-此方法使用 Azure AD Identity Protection 风险评估来确定是否需要基于所有云应用程序的用户和登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory Identity Protection](../active-directory/identity-protection/overview.md)。
+此方法使用“Azure AD 标识保护”风险评估来确定是否需要基于所有云应用程序的用户和登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory 标识保护](../active-directory/identity-protection/overview.md)。
 
 > [!Note]
 > 选项 1，通过更改用户状态，启用多重身份验证可以覆盖条件性访问策略。 选项 2 和 3 使用条件性访问策略，因为您不能与它们使用选项 1。
@@ -306,7 +306,7 @@ ms.locfileid: "67127210"
 **详细信息**：使用 Azure AD Premium [异常报告](../active-directory/active-directory-view-access-usage-reports.md)。 制定相应的流程和过程，使 IT 管理员每天或按需（通常在事件响应方案中）运行这些报告。
 
 **最佳做法**：安装一个主动监视系统，用于通知风险，并且可以根据业务需求调整风险等级（高、中或低）。   
-**详细信息**：使用 [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md)，它会在自己的仪表板上标记当前风险并通过电子邮件发送每日摘要通知。 要帮助保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。
+**详细信息**：使用 [Azure AD 标识保护](../active-directory/active-directory-identityprotection.md)，它会在自己的仪表板上标记当前风险并通过电子邮件发送每日摘要通知。 要帮助保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。
 
 不主动监视其标识系统的组织将面临用户凭据泄露的风险。 如果不知道有人通过这些凭据实施可疑活动，组织就无法缓解这种类型的威胁。
 

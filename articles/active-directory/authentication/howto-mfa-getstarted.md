@@ -13,7 +13,7 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 296486755f0935e4eb8dcdb663da46ef60ef38bc
 ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/28/2019
 ms.locfileid: "67441013"
@@ -255,7 +255,7 @@ function Set-MfaState {
    * 可选：在“排除”选项卡上，选择组织不需要对其执行 MFA 的云应用。 
    * 单击“完成”  。
 1. 在“条件”部分下  ：
-   * 可选：如果已启用 Azure Identity Protection，则可以选择在实施该策略的过程中评估登录风险。
+   * 可选：如果已启用 Azure 标识保护，则可以选择在实施该策略的过程中评估登录风险。
    * 可选：如果已配置受信任的位置或命名的位置，则可以指定在策略中包括或排除这些位置。
 1. 在“授予”下，确保选中“授权访问”单选按钮   。
     * 选中“要求多重身份验证”复选框  。

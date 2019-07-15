@@ -1,8 +1,8 @@
 ---
-title: Azure Active Directory Identity Protection 通知 | Microsoft Docs
+title: “Azure Active Directory 标识保护”通知 | Microsoft Docs
 description: 了解通知如何支持调查活动。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -25,9 +25,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "65784344"
 ---
-# <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection 通知
+# <a name="azure-active-directory-identity-protection-notifications"></a>“Azure Active Directory 标识保护”通知
 
-Azure AD Identity Protection 会发送两种类型的自动生成的通知电子邮件，帮助你管理用户风险和风险事件：
+Azure AD 标识保护会发送两种类型的自动生成的通知电子邮件，帮助你管理用户风险和风险事件：
 
 - 检测到有风险的用户电子邮件
 - 每周摘要电子邮件
@@ -37,7 +37,7 @@ Azure AD Identity Protection 会发送两种类型的自动生成的通知电子
 
 ## <a name="users-at-risk-detected-email"></a>检测到有风险的用户电子邮件
 
-当 Azure AD Identity Protection 检测到帐户受到威胁时，会生成“检测到有风险的用户”  的警报电子邮件。 该电子邮件包括指向[针对风险报告而标记的用户](../reports-monitoring/concept-user-at-risk.md)  的链接。 建议立即调查有风险的用户。
+当“Azure AD 标识保护”检测到帐户受到威胁时，会生成“检测到有风险的用户”  的警报电子邮件。 该电子邮件包括指向[针对风险报告而标记的用户](../reports-monitoring/concept-user-at-risk.md)  的链接。 建议立即调查有风险的用户。
 
 此警报的配置，可指定哪些用户风险级别在你想要生成的警报。 用户的风险级别达到已指定了什么; 时，将生成电子邮件但是，它们移动到此用户风险级别后，不会收到有关此用户的风险检测到电子邮件警报的新用户。 例如，如果设置要对中等用户风险和 John 将移到中等风险用户发出警报的策略，您将接收 John 检测到风险电子邮件的用户。 但是，如果 John 然后移到高风险或有其他风险事件，不会收到在检测到风险警报第二个用户。
 
@@ -52,7 +52,7 @@ Azure AD Identity Protection 会发送两种类型的自动生成的通知电子
 - **此邮件的收件人** - 收件人默认包括所有全局管理员。 全局管理员还可将其他全局管理员、安全管理员、安全读取者添加为收件人。  
 
 
-要打开相关对话框，请单击“Identity Protection”页中“设置”部分的“警报”    。
+要打开相关对话框，请单击“标识保护”页中“设置”部分的“警报”    。
 
 ![检测到有风险的用户电子邮件](./media/notifications/05.png)
 
@@ -68,7 +68,7 @@ Azure AD Identity Protection 会发送两种类型的自动生成的通知电子
 
 - 检测到的漏洞
 
-- 指向 Identity Protection 中相关报告的链接
+- 指向“标识保护”中相关报告的链接
 
     ![补救](./media/notifications/400.png "补救")
 
@@ -78,7 +78,7 @@ Azure AD Identity Protection 会发送两种类型的自动生成的通知电子
 
 ![用户风险](./media/notifications/62.png "用户风险")
 
-要打开相关对话框，请单击“Identity Protection”页中“设置”部分的“每周摘要”    。
+要打开相关对话框，请单击“标识保护”页中“设置”部分的“每周摘要”    。
 
 ![检测到有风险的用户电子邮件](./media/notifications/04.png)
 

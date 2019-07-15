@@ -70,7 +70,7 @@ ms.locfileid: "67509013"
 
 ![登录风险级别](./media/conditions/22.png)
 
-若要使用此条件，需要启用 [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-enable)。
+若要使用此条件，需要启用 [Azure Active Directory 标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-enable)。
  
 此条件的常见用例包括提供以下保护的策略： 
 

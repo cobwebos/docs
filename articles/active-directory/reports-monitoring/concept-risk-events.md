@@ -2,7 +2,7 @@
 title: Azure Active Directory 风险事件 | Microsoft Docs
 description: 本文详细概述了风险事件。
 services: active-directory
-keywords: azure active directory identity protection , 安全性, 风险, 风险级别, 漏洞, 安全策略
+keywords: azure active directory 标识保护, 安全性, 风险, 风险级别, 漏洞, 安全策略
 author: MarkusVi
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
@@ -33,7 +33,7 @@ ms.locfileid: "67107697"
 
  - **Azure AD Identity Protection** - 风险事件也是 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 的报告功能的一部分。
 
-此外，还可以使用 [Identity Protection 风险事件 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) 通过 Microsoft Graph 以编程方式访问安全检测。 有关详细信息，请参阅 [Azure Active Directory Identity Protection 和 Microsoft Graph 入门](../identity-protection/graph-get-started.md)。 
+此外，还可以使用[“标识保护”风险事件 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) 通过 Microsoft Graph 以编程方式访问安全检测。 有关详细信息，请参阅 [Azure Active Directory 标识保护和 Microsoft Graph 入门](../identity-protection/graph-get-started.md)。 
 
 目前，Azure Active Directory 检测 6 种类型的风险事件：
 
@@ -47,14 +47,14 @@ ms.locfileid: "67107697"
 ![风险事件](./media/concept-risk-events/91.png)
 
 > [!IMPORTANT]
-> 有时，可能会在[登录报表](concept-sign-ins.md)中发现没有相应登录输入的风险事件。 这是因为“身份保护”评估“交互式”和“非交互式”登录的风险，而登录报表只显示交互式登录   。
+> 有时，可能会在[登录报表](concept-sign-ins.md)中发现没有相应登录输入的风险事件。 这是因为“标识保护”评估“交互式”和“非交互式”登录的风险，而登录报表只显示交互式登录   。
 
 从检测到的风险事件获得的见解会绑定到 Azure AD 订阅。 
 
 * 使用 **Azure AD Premium P2 版本**时，可以获取有关所有基础检测的最详细的信息。 
 * 与**Azure AD Premium P1 版本**的高级检测 （如不熟悉登录属性） 不受你的许可证，将显示在名称下**中检测到其他风险的登录**. 此外，隐藏的风险级别和风险详细信息字段。
 
-已检测的风险事件表示保护身份的一个重要方面，您还可以选择手动解决它们或通过配置条件性访问策略实施自动的响应。 有关详细信息，请参阅 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)。
+已检测的风险事件表示保护身份的一个重要方面，您还可以选择手动解决它们或通过配置条件性访问策略实施自动的响应。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../active-directory-identityprotection.md)。
 
 ## <a name="risk-event-types"></a>风险事件类型
 
@@ -90,7 +90,7 @@ Microsoft 对检测过程的持续投入使得：
 
 这一风险事件类型可根据过去的登录位置（IP、纬度/经度和 ASN）来确定新的/不熟悉的登录位置。 系统会存储用户以前的登录位置信息，并将其视为“熟悉”位置。 当从尚未在熟悉位置列表中列出的位置登录时，将触发此风险事件。 系统具有 30 天的初始学习期间，在此期间它不会将任何新位置标记为不熟悉的位置。 系统还会忽略从常用设备和接近熟悉位置的地理位置进行登录。 
 
-Identity Protection 检测来自不熟悉位置的登录，也用于基本身份验证/旧版协议。 由于这些协议没有熟悉的新型特性（如客户端 ID），因此没有足够的遥测数据来减少误报。 若要减少检测到的风险事件数，应该转向新型身份验证。   
+“标识保护”检测来自不熟悉位置的登录，也用于基本身份验证/旧版协议。 由于这些协议没有熟悉的新型特性（如客户端 ID），因此没有足够的遥测数据来减少误报。 若要减少检测到的风险事件数，应该转向新型身份验证。   
 
 ### <a name="sign-ins-from-infected-devices"></a>从受感染的设备登录
 

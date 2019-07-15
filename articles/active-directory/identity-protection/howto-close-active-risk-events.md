@@ -1,8 +1,8 @@
 ---
-title: 如何在 Azure Active Directory Identity Protection 中关闭活动风险事件 | Microsoft Docs
+title: 如何在 Azure Active Directory 标识保护中关闭活动风险事件 | Microsoft Docs
 description: 了解用于关闭活动风险事件的选项。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -107,4 +107,4 @@ Azure Active Directory 使用[风险事件](../reports-monitoring/concept-risk-e
 
 ## <a name="next-steps"></a>后续步骤
 
-若要获取 Azure AD Identity Protection 的概述，请参阅 [Azure AD Identity Protection 概述](overview.md)。
+若要获取“Azure AD 标识保护”的概述，请参阅 [Azure AD 标识保护概述](overview.md)。

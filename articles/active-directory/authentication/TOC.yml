@@ -16,7 +16,7 @@
       href: tutorial-sspr-pilot.md
     - name: 启用 SSPR 本地集成
       href: tutorial-enable-writeback.md
-    - name: 集成 Azure Identity Protection
+    - name: 集成 Azure 标识保护
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
   expanded: true

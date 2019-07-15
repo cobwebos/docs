@@ -67,7 +67,7 @@ ms.locfileid: "67594961"
 1. 为每个用户预配依赖于不同信道的多种身份验证方法，例如基于 Internet 的 Microsoft Authenticator 应用、在设备上生成的 OATH 令牌和手机短信。
 2. 在 Windows 10 设备上部署 Windows Hello for Business，以便直接通过设备登录满足 MFA 要求。
 3. 通过 [Azure AD 混合联接](https://docs.microsoft.com/azure/active-directory/devices/overview)或 [Microsoft Intune 受管理设备](https://docs.microsoft.com/intune/planning-guide)使用受信任的设备。 受信任的设备将改善用户体验，因为受信任的设备本身就能满足策略的强身份验证要求，无需向用户发出 MFA 质询。 而在注册新设备以及从不受信任的设备访问应用或资源时，需使用 MFA。
-4. 当用户或登录面临风险时，使用 Azure AD Identity Protection 基于风险的策略来阻止访问，而不是使用固定的 MFA 策略。
+4. 当用户或登录面临风险时，使用“Azure AD 标识保护”基于风险的策略来阻止访问，而不是使用固定的 MFA 策略。
 
 >[!NOTE]
 > 基于风险的策略需要 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 许可证。

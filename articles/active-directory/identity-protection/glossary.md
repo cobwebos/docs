@@ -1,8 +1,8 @@
 ---
-title: Azure Active Directory Identity Protection 术语表 | Microsoft 文档
-description: Azure Active Directory Identity Protection 术语表
+title: Azure Active Directory 标识保护术语表 | Microsoft Docs
+description: Azure Active Directory 标识保护术语表
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略, 术语表
+keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略, 术语表
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -24,14 +24,14 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "67109003"
 ---
-# <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 术语表
+# <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory 标识保护术语表
 ### <a name="at-risk-user"></a>有风险（用户）
 具有一个或多个活动风险事件的用户。 
 
 ### <a name="atypical-sign-in-location"></a>异常登录位置
 从特定用户、类似用户或租户不常用的地理位置登录。
 
-### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
+### <a name="azure-ad-identity-protection"></a>Azure AD 标识保护
 Azure Active Directory 的安全模块，提供合并的视图用于洞察影响组织标识的风险事件和潜在漏洞。
 
 ### <a name="conditional-access"></a>条件性访问
@@ -44,16 +44,16 @@ Azure Active Directory 的安全模块，提供合并的视图用于洞察影响
 Azure Active Directory 中的活动记录。
 
 ### <a name="false-positive-risk-event"></a>误报（风险事件）
-由 Identity Protection 用户手动设置的风险事件状态，表示此风险事件经过调查，被错误地标记为风险事件。
+由“标识保护”用户手动设置的风险事件状态，表示此风险事件经过调查，被错误地标记为风险事件。
 
 ### <a name="identity"></a>标识
 必须通过基于条件（例如密码或证书等）的身份验证方式来验证个人或实体。
 
 ### <a name="identity-risk-event"></a>标识风险事件
-Identity Protection 标记为异常的 AAD 事件，可能表示标识已遭入侵。
+“标识保护”标记为异常的 AAD 事件，可能表示标识已遭入侵。
 
 ### <a name="ignored-risk-event"></a>已忽略（风险事件）
-Identity Protection 用户手动设置的风险事件状态，表示此风险事件已关闭，无需采取补救措施。
+“标识保护”用户手动设置的风险事件状态，表示此风险事件已关闭，无需采取补救措施。
 
 ### <a name="impossible-travel-from-atypical-locations"></a>不可能来自异常位置
 检测到同一用户两次登录时触发的风险事件，其中至少一次登录来自异常登录位置，并且登录的间隔时间比在两地之间实际移动所需的最短时间还要短。  
@@ -92,13 +92,13 @@ Identity Protection 用户手动设置的风险事件状态，表示此风险事
 在允许事件继续进行之前，检测异常并评估事件的风险（例如登录尝试）。
 
 ### <a name="remediated-risk-event"></a>已补救（风险事件）
-Identity Protection 自动设置的风险事件状态，指示已使用此风险事件类型的标准补救措施来补救此风险事件。 例如，当用户密码重置时，指示以前的密码已遭入侵的风险事件可自动补救。
+“标识保护”自动设置的风险事件状态，指示已使用此风险事件类型的标准补救措施来补救此风险事件。 例如，当用户密码重置时，指示以前的密码已遭入侵的风险事件可自动补救。
 
 ### <a name="remediation"></a>补救
 保护以前疑似或已知遭到入侵的标识或设备的措施。 补救措施可让标识或设备还原到安全状态，解决以前与标识或设备关联的风险事件。
 
 ### <a name="resolved-risk-event"></a>已解决（风险事件）
-Identity Protection 用户手动设置的风险事件状态，指示用户已在 Identity Protection 外部采取适当的补救措施，应该将风险事件视为已关闭。
+“标识保护”用户手动设置的风险事件状态，指示用户已在“标识保护”外部采取适当的补救措施，应该将风险事件视为已关闭。
 
 ### <a name="risk-event-status"></a>风险事件状态
 风险事件的属性，指示事件是否处于活动状态，如果已关闭，则指示其关闭原因。
@@ -107,7 +107,7 @@ Identity Protection 用户手动设置的风险事件状态，指示用户已在
 风险事件的类别，指示导致事件被视为有风险的异常类型。
 
 ### <a name="risk-level-risk-event"></a>风险级别（风险事件）
-指示风险事件的严重性（高、中或低），可帮助 Identity Protection 用户指定为了降低组织风险而采取的措施的优先级。 
+指示风险事件的严重性（高、中或低），可帮助“标识保护”用户指定为了降低组织风险而采取的措施的优先级。 
 
 ### <a name="risk-level-sign-in"></a>风险级别（登录）
 指示特定登录（其他某人尝试使用用户的标识）的可能性（高、中或低）。
@@ -116,7 +116,7 @@ Identity Protection 用户手动设置的风险事件状态，指示用户已在
 指示标识遭到入侵的可能性（高、中或低）。
 
 ### <a name="risk-level-vulnerability"></a>风险级别（漏洞）
-指示漏洞的严重性（高、中或低），可帮助 Identity Protection 用户指定为了降低组织风险而采取的措施的优先级。
+指示漏洞的严重性（高、中或低），可帮助“标识保护”用户指定为了降低组织风险而采取的措施的优先级。
 
 ### <a name="secure-identity"></a>安全（标识）
 采取补救措施（例如更改密码或者重建计算机映像），将可能遭到入侵的标识还原到未遭入侵的状态。

@@ -86,7 +86,7 @@ Microsoft 建议你制定并遵循一个路线图，防止特权访问受到网�
 
 如果尚未启用 Azure AD Privileged Identity Management (PIM)，请在生产租户中启用它。 启用 Privileged Identity Management 以后，会收到有关特权访问角色更改的通知电子邮件。 向目录中的高特权角色添加更多用户时，这些通知相当于早期警告。
 
-Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5 中。 这些解决方案有助于保护对本地环境和云中环境中的应用程序和资源的访问权限。 如果还没有 Azure AD Premium P2 或 EMS E5，但希望评估本路线图中提到的更多功能，请注册[企业移动性 + 安全性 90 天免费试用版](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)。 有了这些许可证试用版，就可以尝试 Azure AD Privileged Identity Management 和 Azure AD Identity Protection，以便使用 Azure AD 高级安全报告、审核和警报来监视活动。
+Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5 中。 这些解决方案有助于保护对本地环境和云中环境中的应用程序和资源的访问权限。 如果还没有 Azure AD Premium P2 或 EMS E5，但希望评估本路线图中提到的更多功能，请注册[企业移动性 + 安全性 90 天免费试用版](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)。 有了这些许可证试用版，就可以试用 Azure AD Privileged Identity Management 和 Azure AD 标识保护，以便使用 Azure AD 高级安全报告、审核和警报来监视活动。
 
 启用 Azure AD Privileged Identity Management 以后，请执行以下操作：
 
@@ -161,7 +161,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="turn-on-password-hash-synchronization"></a>启用密码哈希同步
 
-密码哈希同步是一种功能，用于将用户密码哈希的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。 即使决定使用 Active Directory 联合身份验证服务 (AD FS) 或其他标识提供者进行联合身份验证，也可以选择性地设置密码哈希同步，作为在本地基础结构（例如 AD 或 ADFS 服务器）发生故障或变得临时不可用时的备用身份验证方式。 这样用户就可以在登录到该服务时使用登录到本地 AD 实例时使用的密码。 另外，如果用户在其他未连接到 Azure AD 的服务上使用过相同的电子邮件地址和密码，则还可以通过 Identity Protection 将这些密码哈希与已知泄露的密码进行比较，从而检测出那些泄露的凭据。  有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)。
+密码哈希同步是一种功能，用于将用户密码哈希的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。 即使决定使用 Active Directory 联合身份验证服务 (AD FS) 或其他标识提供者进行联合身份验证，也可以选择性地设置密码哈希同步，作为在本地基础结构（例如 AD 或 ADFS 服务器）发生故障或变得临时不可用时的备用身份验证方式。 这样用户就可以在登录到该服务时使用登录到本地 AD 实例时使用的密码。 另外，如果用户在其他未连接到 Azure AD 的服务上使用过相同的电子邮件地址和密码，则还可以通过“标识保护”将这些密码哈希与已知泄露的密码进行比较，从而检测出那些泄露的凭据。  有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)。
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>要求对所有特权角色用户和公开的用户进行多重身份验证 (MFA)
 
@@ -173,9 +173,9 @@ Azure AD 建议你要求对所有用户进行多重身份验证 (MFA)，这包�
 
 如果使用 Windows Hello for Business，则可通过 Windows Hello 登录体验来满足 MFA 要求。 有关详细信息，请参阅 [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport)。 
 
-#### <a name="configure-identity-protection"></a>配置 Identity Protection 
+#### <a name="configure-identity-protection"></a>配置“标识保护” 
 
-Azure AD Identity Protection 是一种基于算法的监视和报告工具，可以用来检测影响组织标识的潜在漏洞。 可以配置自动响应，以便对那些检测到的可疑活动进行响应，并采取相应的解决措施。 有关详细信息，请参阅 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)。
+Azure AD 标识保护是一种基于算法的监视和报告工具，可以用来检测影响组织标识的潜在漏洞。 可以配置自动响应，以便对那些检测到的可疑活动进行响应，并采取相应的解决措施。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../active-directory-identityprotection.md)。
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>获取 Office 365 安全功能分数（如果使用 Office 365）
 

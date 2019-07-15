@@ -1,6 +1,6 @@
 ---
-title: 将基于风险的 MFA 和 SSPR 与 Azure Identity Protection 配合使用
-description: 本教程介绍如何启用 Azure Identity Protection 集成，以便进行多重身份验证和自助密码重置，从而减少风险行为。
+title: 将基于风险的 MFA 和 SSPR 与 Azure 标识保护配合使用
+description: 本教程介绍如何启用“Azure 标识保护”集成，以便进行多重身份验证和自助密码重置，从而减少风险行为。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -20,7 +20,7 @@ ms.locfileid: "67113209"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>教程：使用风险事件触发多重身份验证和密码更改
 
-本教程需启用 Azure Active Directory (Azure AD) Identity Protection，这是一项 Azure AD Premium P2 功能，不仅仅是一项监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，以便自动响应风险行为。 这些策略可以进行自动阻止，也可以启动修正，包括要求进行密码更改和强制进行多重身份验证。
+本教程需启用 Azure Active Directory (Azure AD) 标识保护，这是一项 Azure AD Premium P2 功能，不仅仅是一项监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，以便自动响应风险行为。 这些策略可以进行自动阻止，也可以启动修正，包括要求进行密码更改和强制进行多重身份验证。
 
 Azure AD 标识保护策略可以在现有的条件访问策略基础上使用，充当另一层保护。 用户也许从来不会触发某项需要这其中的某个策略的风险行为，但作为管理员，你知道他们是受到保护的。
 
@@ -33,7 +33,7 @@ Azure AD 标识保护策略可以在现有的条件访问策略基础上使用�
 * 从具有可疑活动的 IP 地址登录
 * 从不熟悉的位置登录
 
-有关 Azure AD Identity Protection 的详细信息，可参阅[什么是 Azure AD Identity Protection](../active-directory-identityprotection.md)
+有关“Azure AD 标识保护”的详细信息，可参阅[什么是 Azure AD 标识保护](../active-directory-identityprotection.md)
 
 > [!div class="checklist"]
 > * 启用 Azure MFA 注册
@@ -52,10 +52,10 @@ Azure AD 标识保护策略可以在现有的条件访问策略基础上使用�
 
 ### <a name="enable-users-to-register-for-multi-factor-authentication"></a>允许用户注册多重身份验证
 
-Azure AD Identity Protection 包括一个默认策略，该策略可以让用户注册多重身份验证并轻松地标识当前注册状态。 启用此策略不会一开始就要求用户执行多重身份验证，而是会要求他们预先注册。
+Azure AD 标识保护包括一个默认策略，该策略可以让用户注册多重身份验证并轻松地标识当前注册状态。 启用此策略不会一开始就要求用户执行多重身份验证，而是会要求他们预先注册。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 单击“所有服务”，然后浏览到“Azure AD Identity Protection”。  
+1. 单击“所有服务”，然后浏览到“Azure AD 标识保护”。  
 1. 单击“MFA 注册”。 
 1. 将“强制实施策略”  设置为“打开”。
    1. 设置此策略会要求所有用户注册那些准备供多重身份验证使用的方法。

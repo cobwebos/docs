@@ -1,8 +1,8 @@
 ---
-title: 如何在 Azure Active Directory Identity Protection 中配置用户风险策略| Microsoft Docs
-description: 了解如何配置 Azure AD Identity Protection 用户风险策略。
+title: 如何在 Azure Active Directory 标识保护中配置用户风险策略| Microsoft Docs
+description: 了解如何配置“Azure AD 标识保护”用户风险策略。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -44,7 +44,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 ## <a name="how-do-i-access-the-user-risk-policy"></a>如何访问用户风险策略？
    
-登录风险策略位于 [Azure AD Identity Protection 页](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy)上的“配置”  部分中。
+登录风险策略位于[“Azure AD 标识保护”页](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy)上的“配置”  部分中。
    
 ![用户风险策略](./media/howto-user-risk-policy/1014.png)
 
@@ -107,7 +107,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 **若要打开相关的配置对话框**：
 
-- 在“Azure AD Identity Protection”边栏选项卡上的“配置”部分中，单击“用户风险策略”。   
+- 在“Azure AD 标识保护”边栏选项卡上的“配置”部分中，单击“用户风险策略”。   
 
     ![用户风险策略](./media/howto-user-risk-policy/1009.png "用户风险策略")
 
@@ -116,4 +116,4 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要获取 Azure AD Identity Protection 的概述，请参阅 [Azure AD Identity Protection 概述](overview.md)。
+若要获取“Azure AD 标识保护”的概述，请参阅 [Azure AD 标识保护概述](overview.md)。

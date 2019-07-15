@@ -98,7 +98,7 @@ Microsoft Online 业务服务（例如 Office 365 或 Microsoft Azure）要求�
 |企业用户|使用组和管理员角色管理许可证分配、访问应用以及设置委托。 有关详细信息，请参阅 [Azure Active Directory 用户管理文档](../users-groups-roles/index.yml)。|
 |混合标识|使用 Azure Active Directory Connect 和 Connect Health 提供单一用户标识，以便针对所有资源进行身份验证和授权，而不考虑位置（云或本地）。 有关详细信息，请参阅[混合标识文档](../hybrid/index.yml)。|
 |标识治理|通过员工、业务合作伙伴、供应商、服务和应用访问控制管理组织的标识。 还可执行访问评审。 有关详细信息，请参阅 [Azure AD 标识治理文档](../governance/identity-governance-overview.md)和 [Azure AD 访问评审](../governance/access-reviews-overview.md)。|
-|标识保护|检测影响组织标识的潜在漏洞，配置用于响应可疑操作的策略，然后采取相应的解决措施。 有关详细信息，请参阅 [Azure AD Identity Protection](../identity-protection/index.yml)。|
+|标识保护|检测影响组织标识的潜在漏洞，配置用于响应可疑操作的策略，然后采取相应的解决措施。 有关详细信息，请参阅 [Azure AD 标识保护](../identity-protection/index.yml)。|
 |Azure 资源的托管标识|在 Azure AD 中为 Azure 服务提供可以对任何 Azure AD 支持的身份验证服务（包括 Key Vault）进行身份验证的自动托管标识。 有关详细信息，请参阅[什么是 Azure 资源的托管标识？](../managed-identities-azure-resources/overview.md)。|
 |Privileged Identity Management (PIM)|管理、控制和监视组织内的访问。 此功能包括访问 Azure AD、Azure 和其他 Microsoft Online Services（例如 Office 365 或 Intune）中的资源。 有关详细信息，请参阅 [Azure AD Privileged Identity Management](../privileged-identity-management/index.yml)。|
 |报表和监视|了解环境中的安全性和使用模式。 有关详细信息，请参阅 [Azure Active Directory 报表和监视](../reports-monitoring/index.yml)。|

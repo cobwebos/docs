@@ -52,7 +52,7 @@ Azure 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问�
 * 请对支持人员进行培训，以处理用户因无法访问其身份验证方法或操作不正确而无法登录的情况。
    * 使用条件性访问策略适用于 Azure MFA 服务，支持人员可以将用户添加到从要求 MFA 的策略中排除的组。
 * 请考虑使用条件性访问命名位置，如来尽量减少双重验证提示。 使用此功能，管理员可以绕过双重验证的用户，从安全的受信任的网络位置，例如网络登录使用的新用户加入的段。
-* 部署 [Azure AD Identity Protection](../active-directory-identityprotection.md) 并根据风险事件触发双重验证。
+* 部署 [Azure AD 标识保护](../active-directory-identityprotection.md)并根据风险事件触发双重验证。
 
 ## <a name="next-steps"></a>后续步骤
 

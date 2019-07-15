@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection 检测到的漏洞
-description: Azure Active Directory Identity Protection 检测到的漏洞概述。
+title: “Azure Active Directory 标识保护”检测到的漏洞
+description: “Azure Active Directory 标识保护”检测到的漏洞概述。
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,13 +18,13 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "67108785"
 ---
-# <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 检测到的漏洞
+# <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>“Azure Active Directory 标识保护”检测到的漏洞
 
 漏洞是可能由攻击者利用的环境中的弱点。 我们建议管理员解决这些漏洞，以提高其组织的安全状况。
 
 ![Identity Protection 报告漏洞](./media/vulnerabilities/identity-protection-vulnerabilities.png)
 
-以下部分概述了 Identity Protection 报告的漏洞。
+以下部分概述了由“标识保护”报告的漏洞。
 
 ## <a name="multi-factor-authentication-registration-not-configured"></a>未配置多重身份验证注册
 

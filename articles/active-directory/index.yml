@@ -198,7 +198,7 @@ conceptualContent:
     links:
     - url: /azure/active-directory/identity-protection/overview
       itemType: overview
-      text: 什么是 Identity Protection？
+      text: 什么是“标识保护”？
     - url: /azure/active-directory/identity-protection/quickstart-sign-in-risk-policy
       itemType: quickstart
       text: 检测到会话风险时阻止访问

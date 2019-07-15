@@ -159,12 +159,12 @@ Azure AD 设备注册是基础设备基于[条件性访问](../active-directory/
 
 ## <a name="identity-protection"></a>标识保护
 
-Azure AD Identity Protection 是一种安全服务，它提供一个综合视图，你可以在其中查看影响组织标识的风险事件和潜在漏洞。 Identity Protection 使用现有的 Azure AD 异常检测功能，该功能可通过 Azure AD 异常活动报告得到。 Identity Protection 还引入了新的可以实时检测异常的风险事件类型。
+Azure AD 标识保护是一种安全服务，它提供一个综合视图，你可以在其中查看影响组织标识的风险事件和潜在漏洞。 “标识保护”使用现有的 Azure AD 异常检测功能，该功能可通过 Azure AD 异常活动报告得到。 “标识保护”还引入了新的可以实时检测异常的风险事件类型。
 
 了解更多：
 
 * [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [第 9 频道：Azure AD 和标识展示：Identity Protection 预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [第 9 频道：Azure AD 和标识展示：“标识保护”预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>混合标识管理/Azure AD Connect
 

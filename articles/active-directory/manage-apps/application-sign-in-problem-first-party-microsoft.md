@@ -67,7 +67,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
   * 确保**多重身份验证**不会阻止用户访问。 [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)或[检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)
 
-  * 确保**条件访问策略**或 **Identity Protection** 策略不会阻止用户访问。 [检查特定的条件性访问策略](#problems-with-conditional-access-policies)或[检查特定应用程序的条件性访问策略](#check-a-specific-applications-conditional-access-policy)或[禁用特定的条件性访问策略](#disable-a-specific-conditional-access-policy)
+  * 确保**条件访问策略**或**标识保护**策略不会阻止用户访问。 [检查特定的条件性访问策略](#problems-with-conditional-access-policies)或[检查特定应用程序的条件性访问策略](#check-a-specific-applications-conditional-access-policy)或[禁用特定的条件性访问策略](#disable-a-specific-conditional-access-policy)
 
   * 确保用户的**身份验证联系信息**是最新的以允许强制执行多重身份验证或条件访问策略。 [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)或[检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)
 
@@ -209,7 +209,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="check-a-users-authentication-contact-info"></a>检查用户的身份验证联系信息
 
-若要检查用于多重身份验证、条件访问、Identity Protection 和密码重置的用户身份验证联系信息，请执行以下步骤：
+若要检查用于多重身份验证、条件访问、标识保护和密码重置的用户身份验证联系信息，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 

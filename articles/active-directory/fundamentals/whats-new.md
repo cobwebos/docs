@@ -314,7 +314,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 ### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-in-refreshed-azure-ad-identity-protection"></a>新 Azure AD 威胁智能检测现已推出刷新 Azure AD Identity Protection
 
 **类型：** 新功能  
-**服务类别：** Azure AD Identity Protection  
+**服务类别：** Azure AD 标识保护  
 **产品功能：** 标识安全性和保护
 
 Azure AD 威胁智能检测现已推出刷新的 Azure AD Identity Protection。 这一新功能可帮助以指示特定用户的不寻常的或者是与基于 Microsoft 的内部和外部威胁智能的已知的攻击模式保持一致的用户活动。
@@ -775,13 +775,13 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 ---
 
-### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>新的 New Azure AD Identity Protection 增强功能（公共预览版）
+### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>新的“Azure AD 标识保护”增强功能（公共预览版）
 
 **类型：** 已更改的功能  
 **服务类别：** 标识保护  
 **产品功能：** 标识安全性和保护
 
-我们很高兴地宣布，我们已为 Azure AD Identity Protection 公开预览版套餐添加以下增强功能，其中包括：
+我们很高兴地宣布，我们已为“Azure AD 标识保护”公开预览版套餐添加以下增强功能，其中包括：
 
 - 经过更新后集成度更高的用户界面
 
@@ -791,7 +791,7 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 - 针对风险用户和风险登录实现产品范围的符合性
 
-有关增强功能的详细信息，请参阅[什么是 Azure Active Directory Identity Protection（已刷新）？](https://aka.ms/IdentityProtectionDocs) 以进行详细的了解并通过产品内提示共享自己的想法。
+有关增强功能的详细信息，请参阅[什么是 Azure Active Directory 标识保护（已刷新）？](https://aka.ms/IdentityProtectionDocs) 以进行详细的了解并通过产品内提示共享自己的想法。
 
 ---
 

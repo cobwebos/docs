@@ -1,8 +1,8 @@
 ---
-title: Azure Active Directory Identity Protection 演练手册 | Microsoft 文档
-description: 了解如何使用 Azure AD Identity Protection 来限制攻击者利用已泄露标识或设备的能力，以及保护之前怀疑或已知受到威胁的标识或设备。
+title: Azure Active Directory 标识保护演练手册 | Microsoft Docs
+description: 了解如何使用 Azure AD 标识保护来限制攻击者利用已泄露标识或设备的能力，以及保护之前怀疑或已知受到威胁的标识或设备。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+keywords: Azure Active Directory 标识保护, Cloud Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -24,11 +24,11 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "67108834"
 ---
-# <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection 操作手册
+# <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory 标识保护操作手册
 
 此操作手册有助于：
 
-* 通过模拟风险事件和漏洞在 Identity Protection 环境中填充数据
+* 通过模拟风险事件和漏洞在“标识保护”环境中填充数据
 * 设置基于风险的条件性访问策略和测试这些策略的影响
 
 
@@ -56,7 +56,7 @@ ms.locfileid: "67108834"
 1. 使用 [Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en)，导航到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。   
 2. 输入要在**从匿名 IP 地址登录**报告中显示的帐户的凭据。
 
-登录会在 10 - 15 分钟内显示在 Identity Protection 仪表板上。 
+登录会在 10 - 15 分钟内显示在“标识保护”仪表板上。 
 
 ### <a name="sign-ins-from-unfamiliar-locations"></a>从不熟悉的位置登录
 
@@ -82,7 +82,7 @@ ms.locfileid: "67108834"
 2. 使用新 VPN 导航到 [https://myapps.microsoft.com](https://myapps.microsoft.com)，然后输入测试帐户的凭据。
    
 
-登录会在 10 - 15 分钟内显示在 Identity Protection 仪表板上。
+登录会在 10 - 15 分钟内显示在“标识保护”仪表板上。
 
 ### <a name="impossible-travel-to-atypical-location"></a>不可能前往异常位置
 
@@ -99,10 +99,10 @@ ms.locfileid: "67108834"
 4. 更改 IP 地址。 可以在不同的数据中心中通过使用 VPN、Tor 加载项或在 Azure 中启动新计算机更改 IP 地址。
 5. 像往常一样使用相同凭据并在上次登录后的数分钟内登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
 
-登录会在 2-4 小时内显示在 Identity Protection 仪表板中。
+登录会在 2-4 小时内显示在“标识保护”仪表板中。
 
 ## <a name="simulating-vulnerabilities"></a>模拟漏洞
-漏洞是 Azure AD 环境中可能由危险分子利用的弱点。 Azure AD Identity Protection 中当前显示了 3 种类型的漏洞，这些漏洞会利用 Azure AD 的其他功能。 设置这些功能后，这些漏洞会自动显示在 Identity Protection 仪表板上。
+漏洞是 Azure AD 环境中可能由危险分子利用的弱点。 Azure AD 标识保护中当前显示了 3 种类型的漏洞，这些漏洞会利用 Azure AD 的其他功能。 设置这些功能后，这些漏洞会自动显示在“标识保护”仪表板上。
 
 * Azure AD [多重身份验证](../authentication/multi-factor-authentication.md)
 * Azure AD [Cloud Discovery](https://docs.microsoft.com/cloud-app-security/)。
@@ -124,8 +124,8 @@ ms.locfileid: "67108834"
 **若要测试用户风险安全策略，请执行以下步骤**：
 
 1. 使用租户的全局管理员凭据登录到 [https://portal.azure.com](https://portal.azure.com)。
-2. 导航到 **Identity Protection**。 
-3. 在“Azure AD Identity Protection”页中，单击“用户风险策略”。  
+2. 导航到**标识保护**。 
+3. 在“Azure AD 标识保护”页中，单击“用户风险策略”。  
 4. 在“分配”部分，选择所需的用户（和组）以及用户风险级别。 
 
     ![用户风险](./media/playbook/03.png "演练手册")
@@ -150,9 +150,9 @@ ms.locfileid: "67108834"
 
 1. 使用租户的全局管理员凭据登录到 [https://portal.azure.com](https://portal.azure.com)。
 
-2. 导航到 **Azure AD Identity Protection**。
+2. 导航到 **Azure AD 标识保护**。
 
-3. 在“Azure AD Identity Protection”主页中，单击“登录风险策略”。   
+3. 在“Azure AD 标识保护”主页中，单击“登录风险策略”。   
 
 4. 在“分配”部分，选择所需的用户（和组）以及登录风险级别。 
 

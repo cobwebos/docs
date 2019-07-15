@@ -37,7 +37,7 @@ ms.locfileid: "67107541"
 
 **问：我目前使用`https://graph.windows.net/<tenant-name>/reports/`终结点 Api 以编程方式将 Azure AD 安全报告 （特定类型的检测，例如已泄漏的凭据或来自匿名 IP 地址的登录） 拉取到我们的报告系统。我应当切换到什么？**
 
-**答:** 可以使用  [Identity Protection 风险事件 API](../identity-protection/graph-get-started.md) 通过 Microsoft Graph 访问安全检测。 此新格式在如何查询数据方面提供了更大的灵活性，可以使用高级筛选、字段选择和其他手段；并且此新格式将风险事件标准化为一种类型，以便更轻松地集成到 SIEM 和其他数据收集工具中。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 不过，[新 API 使用的是 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，后者是 O365 或 Azure AD 之类的 API 的 Microsoft 标准。 因此，需要做的工作可以扩展当前 MS Graph 投资或者帮助开始向此新的标准平台进行转换。
+**答:** 可以使用 [“标识保护”风险事件 API](../identity-protection/graph-get-started.md) 通过 Microsoft Graph 访问安全检测。 此新格式在如何查询数据方面提供了更大的灵活性，可以使用高级筛选、字段选择和其他手段；并且此新格式将风险事件标准化为一种类型，以便更轻松地集成到 SIEM 和其他数据收集工具中。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 不过，[新 API 使用的是 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，后者是 O365 或 Azure AD 之类的 API 的 Microsoft 标准。 因此，需要做的工作可以扩展当前 MS Graph 投资或者帮助开始向此新的标准平台进行转换。
 
 ---
 
@@ -107,9 +107,9 @@ ms.locfileid: "67107541"
 
 ## <a name="risky-sign-ins"></a>有风险的登录
 
-**问：Identity Protection 中存在风险事件，但登录报告中未显示相应的登录。** 这是正常情况吗？
+**问：“标识保护”中存在风险事件，但登录报告中未显示相应的登录。** 这是正常情况吗？
 
-**答:** 是的，Identity Protection 会评估所有身份验证流的风险，无论其为交互式还是非交互式。 但是，所有登录报告仅显示交互式登录。
+**答:** 是的，“标识保护”会评估所有身份验证流的风险，无论其为交互式还是非交互式。 但是，所有登录报告仅显示交互式登录。
 
 ---
 
@@ -127,7 +127,7 @@ ms.locfileid: "67107541"
 
 **问：风险事件“检测到具有附加风险的登录”指示什么？**
 
-**答:** 为了深入了解环境中所有具有风险的登录，对于执行了 Azure AD Identity Protection 订阅者专用的检测登录，“登录时检测到其他风险”将充当其占位符。
+**答:** 为了深入了解环境中所有具有风险的登录，对于为了执行“Azure AD 标识保护”订阅方专用的检测而进行的登录，“登录时检测到其他风险”将充当占位符。
 
 ---
 

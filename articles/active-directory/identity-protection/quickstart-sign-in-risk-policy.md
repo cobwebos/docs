@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure Active Directory Identity Protection 检测到会话风险后阻止访问 | Microsoft Docs
+title: 快速入门 - 使用“Azure Active Directory 标识保护”检测到会话风险后阻止访问 | Microsoft Docs
 description: 在本快速入门，了解如何配置 Azure Active Directory (Azure AD) Identity Protection 登录风险条件性访问策略来阻止基于会话的风险的登录名。
 services: active-directory
 keywords: identity protection 中，条件访问应用，Azure AD 中，安全地访问公司资源，条件性访问策略的条件性访问
@@ -24,9 +24,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "67108809"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>快速入门：使用 Azure Active Directory Identity Protection 检测到会话风险后阻止访问  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>快速入门：使用“Azure Active Directory 标识保护”检测到会话风险后阻止访问  
 
-若要使环境保持受保护状态，可能需要阻止可疑用户登录。 Azure Active Directory (Azure AD) Identity Protection 会分析每次登录，并计算不是由用户帐户合法所有者执行的登录尝试的可能性。 这种可能性（低、中、高）以称作登录风险级别的计算值来表示。 通过设置登录风险条件，你可以配置登录风险条件性访问策略，以响应特定登录风险级别。 
+若要使环境保持受保护状态，可能需要阻止可疑用户登录。 Azure Active Directory (Azure AD) 标识保护会分析每次登录，并计算不是由用户帐户合法所有者执行的登录尝试的可能性。 这种可能性（低、中、高）以称作登录风险级别的计算值来表示。 通过设置登录风险条件，你可以配置登录风险条件性访问策略，以响应特定登录风险级别。 
 
 本快速入门介绍如何配置登录风险条件性访问策略以阻止登录时一介质和以上登录风险级别已检测到。 
 
@@ -43,9 +43,9 @@ ms.locfileid: "67108809"
 
 - 对 Azure AD Premium P2 版本的访问权限 - Azure AD Identity Protection 是一项 Azure AD Premium P2 功能  。 
 
-- **Identity Protection** - 本快速入门中的方案需要启用 Identity Protection。 如果不知道如何启用 Identity Protection，请参阅[启用 Azure Active Directory Identity Protection](../identity-protection/enable.md)。
+- **Identity Protection** - 本快速入门中的方案需要启用 Identity Protection。 如果不知道如何启用“标识保护”，请参阅[启用 Azure Active Directory 标识保护](../identity-protection/enable.md)。
 
-- **Tor 浏览器** - [Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en)可帮助保护你在网络中的隐私。 Identity Protection 将来自 Tor 浏览器的登录检测为“从匿名 IP 地址登录”，这种登录存在中等风险级别。  有关详细信息，请参阅 [Azure Active Directory 风险事件](../reports-monitoring/concept-risk-events.md)。  
+- **Tor 浏览器** - [Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en)可帮助保护你在网络中的隐私。 “标识保护”将来自 Tor 浏览器的登录检测为“从匿名 IP 地址登录”，这种登录存在中等风险级别。  有关详细信息，请参阅 [Azure Active Directory 风险事件](../reports-monitoring/concept-risk-events.md)。  
 
 - 名为 Alain Charon 的测试帐户：如果不知道如何创建测试帐户，请参阅[添加新用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)  。
 
@@ -83,9 +83,9 @@ ms.locfileid: "67108809"
 
 1. 以全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
 
-2. 转到 [Azure AD Identity Protection 页](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/Overview)。
+2. 转到[“Azure AD 标识保护”页](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/Overview)。
  
-3. 在“Azure AD Identity Protection”页上的“配置”部分中，单击“登录风险策略”    。
+3. 在“Azure AD 标识保护”页上的“配置”部分中，单击“登录风险策略”    。
  
 4. 在策略页上的“分配”部分，单击“用户”   。
 

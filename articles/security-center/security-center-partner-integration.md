@@ -56,7 +56,7 @@ ms.locfileid: "67064280"
 
    ![安全中心概述](./media/security-center-partner-integration/overview.png)
 
-在“安全解决方案”  下，可以查看集成式 Azure 安全解决方案的运行状况信息，并执行基本的管理任务。 还可以连接其他类型的安全数据源，例如通用事件格式 (CEF) 的 Azure Active Directory Identity Protection 警报和防火墙日志。
+在“安全解决方案”  下，可以查看集成式 Azure 安全解决方案的运行状况信息，并执行基本的管理任务。 还可以连接其他类型的安全数据源，例如通用事件格式 (CEF) 的 Azure Active Directory 标识保护警报和防火墙日志。
 
 ### <a name="connected-solutions"></a>已连接解决方案
 
@@ -87,7 +87,7 @@ ms.locfileid: "67064280"
 
 ### <a name="discovered-solutions"></a>已发现解决方案
 
-安全中心自动发现在 Azure 中运行但未连接到安全中心的安全解决方案，然后在“发现的解决方案”部分显示这些解决方案。  其中包括 Azure 解决方案，例如 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)，以及合作伙伴解决方案。
+安全中心自动发现在 Azure 中运行但未连接到安全中心的安全解决方案，然后在“发现的解决方案”部分显示这些解决方案。  其中包括 Azure 解决方案，例如 [Azure AD 标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)，以及合作伙伴解决方案。
 
 > [!NOTE]
 > 在订阅级别，安全中心标准层是已发现解决方案功能所必需的。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。

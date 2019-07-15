@@ -201,7 +201,7 @@ ms.locfileid: "67656459"
   In | 有权执行的操作
   --- | ---
   [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务监视与安全相关的策略<br>管理安全威胁和警报<br>查看报告
-  Identity Protection Center | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有 Identity Protection Center 操作
+  标识保护中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 安全读取者角色的所有权限<br>无法管理 Azure AD 角色分配或设置 
   [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 管理安全策略<br>查看、调查和响应安全威胁<br>查看报告
   Azure 高级威胁防护 | 监视和响应可疑安全活动
@@ -216,7 +216,7 @@ ms.locfileid: "67656459"
   In | 有权执行的操作
   --- | ---
   [Microsoft 365 安全中心](https://protection.office.com) | 安全读取者角色的所有权限<br>查看、 调查和响应安全威胁警报
-  Identity Protection Center | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有 Identity Protection Center 操作
+  标识保护中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 安全读取者角色的所有权限
   [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 安全读取者角色的所有权限<br>查看、 调查和响应安全警报
   Windows Defender ATP 和 EDR | 安全读取者角色的所有权限<br>查看、 调查和响应安全警报
@@ -230,7 +230,7 @@ ms.locfileid: "67656459"
   In | 有权执行的操作
   --- | ---
   [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务查看与安全相关的策略<br>查看安全威胁和警报<br>查看报告
-  Identity Protection Center | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>加密<li>数据丢失预防<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
+  标识保护中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>加密<li>数据丢失预防<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 以只读方式访问 Azure AD PIM 中所显示的一切信息：Azure AD 角色分配的策略和报告、安全审阅，以及在未来还可通过读取来访问 Azure AD 角色分配以外的方案的策略数据和报告。<br>**不能**注册 Azure AD PIM 或对其进行任何更改。 充当此角色的人员可以在 PIM 门户中或通过 PowerShell 为符合条件的用户激活其他角色（例如，全局管理员或特权角色管理员）。
   [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 查看安全策略<br>查看并调查安全威胁<br>查看报告
   Windows Defender ATP 和 EDR | 查看并调查警报

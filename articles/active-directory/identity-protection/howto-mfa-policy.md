@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure Active Directory Identity Protection 中配置多重身份验证注册策略| Microsoft Docs
-description: 了解如何配置 Azure AD Identity Protection 多重身份验证注册策略。
+title: 如何在 Azure Active Directory 标识保护中配置多重身份验证注册策略| Microsoft Docs
+description: 了解如何配置“Azure AD 标识保护”多重身份验证注册策略。
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -35,7 +35,7 @@ Azure 多重身份验证提供了一种方法来验证对正在使用多个而�
 
 ## <a name="how-do-i-access-the-registration-policy"></a>如何访问注册策略？
 
-MFA 注册策略位于 [Azure AD Identity Protection 页面](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy)上的“配置”  部分中。
+MFA 注册策略位于[“Azure AD 标识保护”页](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy)上的“配置”  部分中。
 
 ![MFA 策略](./media/howto-mfa-policy/1014.png)
 
@@ -66,4 +66,4 @@ MFA 注册策略位于 [Azure AD Identity Protection 页面](https://portal.azur
 
 ## <a name="next-steps"></a>后续步骤
 
-若要获取 Azure AD Identity Protection 的概述，请参阅 [Azure AD Identity Protection 概述](overview.md)。
+若要获取“Azure AD 标识保护”的概述，请参阅 [Azure AD 标识保护概述](overview.md)。

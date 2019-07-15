@@ -1,8 +1,8 @@
-- name: Identity Protection 文档
+- name: “标识保护”文档
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure AD Identity Protection？
+    - name: 什么是 Azure AD 标识保护？
       href: overview.md
 - name: 快速入门
   items:
@@ -22,7 +22,7 @@
   items:
     - name: 标识保护
       items:
-        - name: 启用 Azure AD Identity Protection
+        - name: 启用 Azure AD 标识保护
           href: enable.md
         - name: 配置 MFA 注册策略
           href: howto-mfa-policy.md
@@ -38,7 +38,7 @@
           href: playbook.md
         - name: 常见问题解答
           href: faqs.md
-    - name: Identity Protection（已刷新）
+    - name: 标识保护（已刷新）
       items:
         - name: 概述
           href: overview-v2.md

@@ -146,7 +146,7 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 #### <a name="identity-protection"></a>标识保护
 
-[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 是一种安全服务，它提供一个整合的视图来让用户查看影响组织标识的风险事件和潜在漏洞。 Identity Protection 使用现有的 Azure Active Directory 异常情况检测功能（可通过 Azure AD 的异常活动报告得到），并引入了可以实时检测异常情况的新风险事件类型。
+[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 是一种安全服务，它提供一个整合的视图来让用户查看影响组织标识的风险事件和潜在漏洞。 “标识保护”使用现有的 Azure Active Directory 异常情况检测功能（可通过 Azure AD 的异常活动报告得到），并引入了可以实时检测异常情况的新风险事件类型。
 
 ## <a name="secure-resource-access"></a>安全资源访问
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection 风险事件参考 | Microsoft Docs
-description: Azure Active Directory Identity Protection 风险事件参考。
+title: Azure Active Directory 标识保护风险事件参考 | Microsoft Docs
+description: Azure Active Directory 标识保护风险事件参考。
 services: active-directory
 documentationcenter: ''
 author: MicrosoftGuyJFlo
@@ -23,7 +23,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "65191524"
 ---
-# <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection 风险事件参考
+# <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory 标识保护风险事件参考
 
 大多数安全违规出现在当攻击者通过窃取用户的标识来获取环境的访问权限时。 发现标识是否遭到入侵并不容易。 Azure Active Directory 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 每个检测到的可疑操作都存储在称为“风险事件”的记录中。
 

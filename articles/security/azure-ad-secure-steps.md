@@ -128,13 +128,13 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 
 Azure Active Directory 中的许多功能可以自动截获攻击，以消除检测与响应之间的延迟。 如果能够减少罪犯渗入你的环境所能利用的时间，则就可以降低成本和风险。 下面是可以采取的具体措施。
 
-### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>使用 Azure AD Identity Protection 实施用户风险安全策略
+### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>使用“Azure AD 标识保护”实施用户风险安全策略
 
 用户风险指示用户身份透露的可能性，它是根据与用户身份关联的[用户风险事件](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)计算的。 用户风险策略是条件访问策略的计算结果为特定用户或组的风险级别。 根据“低”、“中”、“高”风险级别，可以配置一个策略来阻止访问，或者要求使用多重身份验证进行安全密码更改。 Microsoft 建议要求高风险用户进行安全密码更改。
 
 ![已标记为存在风险的用户](media/azure-ad/azure-ad-sec-steps1.png)
 
-### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>使用 Azure AD Identity Protection 实施登录风险策略
+### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>使用“Azure AD 标识保护”实施登录风险策略
 
 登录风险是指除帐户所有者以外的其他某人尝试使用标识登录的可能性。 一个[登录风险策略](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)是条件性访问策略的计算结果为特定用户或组的风险级别。 根据风险级别（高/中/低），可以配置一个策略来阻止访问，或强制实施多重身份验证。 请确保针对“中”或更高风险的登录强制实施多重身份验证。
 
@@ -154,11 +154,11 @@ Microsoft Azure 服务和功能提供可配置的安全审核和日志记录选�
 
 ![Azure AD Connect Health](media/azure-ad/azure-ad-sec-steps4.png)
 
-### <a name="monitor-azure-ad-identity-protection-events"></a>监视 Azure AD Identity Protection 事件
+### <a name="monitor-azure-ad-identity-protection-events"></a>监视“Azure AD 标识保护”事件
 
 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 是一个通知、监视和报告工具，可用于检测影响组织标识的潜在漏洞。 它可以检测风险事件，例如，泄漏的凭据、不可能的轨迹、来自受感染设备的登录、匿名的 IP 地址、与可疑活动关联的 IP 地址，以及未知的位置。 启用通知警报可以接收有风险用户的电子邮件，和/或每周摘要电子邮件。
 
-Azure AD Identity Protection 提供两份应该每日监视的重要报告：
+Azure AD 标识保护提供两份应该每日监视的重要报告：
 1. 风险登录报告显示应该调查的用户登录活动，合法所有者不可以执行这种登录。
 2. 风险用户报告显示可能已泄密的用户帐户，例如，检测到已泄漏的凭据，或者用户从不同的位置登录，导致不可能的行程事件。 
 

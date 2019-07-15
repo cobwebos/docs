@@ -76,7 +76,7 @@ ms.locfileid: "67113242"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已启用了 Azure 多重身份验证。 请继续学习下一教程来了解如何将 Azure Identity Protection 集成到自助服务密码重置和多重身份验证体验。
+在本教程中，你已启用了 Azure 多重身份验证。 请继续学习下一教程来了解如何将 Azure标识保护集成到自助服务密码重置和多重身份验证体验。
 
 > [!div class="nextstepaction"]
 > [在登录时评估风险](tutorial-risk-based-sspr-mfa.md)

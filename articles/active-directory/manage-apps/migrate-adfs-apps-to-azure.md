@@ -48,7 +48,7 @@ ms.locfileid: "67724013"
 - **访问更安全**
 
   - 配置每个应用程序进行细致访问控制，包括 Azure 多重身份验证，使用[Azure AD 条件访问](../active-directory-conditional-access-azure-portal.md)。 将这些策略应用到 SaaS 和自定义应用的方式可以与现在对 Office 365 应用策略的方式相同。
-  - 若要根据用于确定危险流量的机器学习和试探法来检测威胁并保护登录，请使用 [Azure AD Identity Protection](../active-directory-identityprotection.md)。
+  - 若要根据用于确定危险流量的机器学习和试探法来检测威胁并保护登录，请使用 [Azure AD 标识保护](../active-directory-identityprotection.md)。
 
 - **Azure AD B2B 协作**
 

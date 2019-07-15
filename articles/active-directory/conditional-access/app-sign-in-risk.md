@@ -33,8 +33,8 @@ ms.locfileid: "67509054"
 若要完成本教程中的方案，需要：
 
 - **有权访问 Azure AD Premium P2 版本** - 尽管条件访问是 Azure AD Premium P1 的一项功能，但需要使用 P2 版本，因为本快速入门中的方案需要 Identity Protection。
-- **Identity Protection** - 本快速入门中的方案需要启用 Identity Protection。 如果不知道如何启用 Identity Protection，请参阅[启用 Azure Active Directory Identity Protection](../identity-protection/enable.md)。
-- **Tor 浏览器** - [Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en)可帮助保护你在网络中的隐私。 Identity Protection 将来自 Tor 浏览器的登录检测为“从匿名 IP 地址登录”，这种登录具有中等风险级别。 有关详细信息，请参阅 [Azure Active Directory 风险事件](../reports-monitoring/concept-risk-events.md)。  
+- **Identity Protection** - 本快速入门中的方案需要启用 Identity Protection。 如果不知道如何启用“标识保护”，请参阅[启用 Azure Active Directory 标识保护](../identity-protection/enable.md)。
+- **Tor 浏览器** - [Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en)可帮助保护你在网络中的隐私。 “标识保护”将来自 Tor 浏览器的登录检测为“从匿名 IP 地址登录”，这种登录具有中等风险级别。 有关详细信息，请参阅 [Azure Active Directory 风险事件](../reports-monitoring/concept-risk-events.md)。  
 - **名为 Alain Charon 的测试帐户**：如果不知道如何创建测试帐户，请参阅[添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
 
 ## <a name="test-your-sign-in"></a>测试登录

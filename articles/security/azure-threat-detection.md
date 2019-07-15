@@ -1,6 +1,6 @@
 ---
 title: Azure 高级威胁检测 | Microsoft Docs
-description: 了解 Azure AD Identity Protection 及其功能。
+description: 了解 Azure AD 标识保护及其功能。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -29,21 +29,21 @@ Azure 提供多种安全性配置和自定义选项，以满足应用部署的�
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护
 
-[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 是 [Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) 版本中的一项功能，概述了可影响组织标识的风险事件和潜在漏洞。 Identity Protection 使用现有的 Azure AD 异常情况检测功能（可通过 [Azure AD 异常活动报告](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports)获得），并引入了新的可以检测实时异常的风险事件类型。
+[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 是 [Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) 版本中的一项功能，概述了可影响组织标识的风险事件和潜在漏洞。 “标识保护”使用现有的 Azure AD 异常情况检测功能（可通过 [Azure AD 异常活动报告](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports)获得），并引入了新的可以检测实时异常的风险事件类型。
 
-![Azure AD Identity Protection 示意图](./media/azure-threat-detection/azure-threat-detection-fig1.png)
+![“Azure AD 标识保护”示意图](./media/azure-threat-detection/azure-threat-detection-fig1.png)
 
-Identity Protection 使用自适应机器学习算法和启发式学习法来检测异常行为以及可能表示标识已遭入侵的风险事件。 Identity Protection 使用此数据生成报告和警报，以便可以调查这些风险事件并采取相应的补救措施或缓解措施。
+“标识保护”使用自适应机器学习算法和启发式学习法来检测异常行为以及可能表示标识已遭入侵的风险事件。 “标识保护”使用此数据生成报告和警报，以便可以调查这些风险事件并采取相应的补救措施或缓解措施。
 
-Azure Active Directory Identity Protection 不只是一个监视和报告工具。 Identity Protection 根据风险事件计算每个用户的用户风险级别，以便可以配置基于风险的策略来自动保护组织的标识。
+Azure Active Directory 标识保护不只是一个监视和报告工具。 “标识保护”根据风险事件计算每个用户的用户风险级别，以便可以配置基于风险的策略来自动保护组织的标识。
 
 这些基于风险的策略，以及其他[条件访问控制](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access)提供的 Azure Active Directory 和[EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access)，可以自动阻止或提供自适应补救措施，包括重置密码和强制实施多重身份验证。
 
-### <a name="identity-protection-capabilities"></a>Identity Protection 功能
+### <a name="identity-protection-capabilities"></a>“标识保护”功能
 
-Azure Active Directory Identity Protection 不只是一个监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。 这些策略，除了 Azure Active Directory 与 EMS，提供的其他条件性访问控制可以自动阻止或启动自适应补救措施包括密码重置和强制实施多重身份验证。
+Azure Active Directory 标识保护不只是一个监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。 这些策略，除了 Azure Active Directory 与 EMS，提供的其他条件性访问控制可以自动阻止或启动自适应补救措施包括密码重置和强制实施多重身份验证。
 
-Azure Identity Protection 可帮助保护帐户和标识的一些示例包括：
+Azure 标识保护可帮助保护帐户和标识的一些示例包括：
 
 [检测风险事件和有风险的帐户](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#detection)
 -   使用机器学习和启发式规则检测 6 种风险事件类型。

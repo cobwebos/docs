@@ -1,8 +1,8 @@
 ---
-title: Azure AD Identity Protection 中的登录体验 | Microsoft 文档
-description: 根据当 Identity Protection 缓解或补救某个用户问题，或者当某个策略要求使用多重身份验证时，用户如何操作。
+title: Azure AD 标识保护中的登录体验 | Microsoft Docs
+description: 概述了当“标识保护”已缓解或补救某个用户问题时或当某个策略要求使用多重身份验证时的用户体验。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -24,8 +24,8 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "60295176"
 ---
-# <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection 中的登录体验
-使用 Azure Active Directory Identity Protection 时，可以：
+# <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD 标识保护中的登录体验
+使用 Azure Active Directory 标识保护时，可以：
 
 * 要求用户注册多重身份验证
 * 处理有风险的登录以及用户遭到入侵的问题

@@ -1,8 +1,8 @@
 ---
-title: Azure Active Directory (Azure AD) Identity Protection 安全概览 | Microsoft Docs
+title: Azure Active Directory (Azure AD) 标识保护安全概览 | Microsoft Docs
 description: 了解如何通过“安全概览”深入了解组织的安全状态。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
@@ -24,7 +24,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "60452923"
 ---
-# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - 安全概览
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory 标识保护 - 安全概览
 
 通过[安全概览](https://aka.ms/IdentityProtectionRefresh)，可以深入了解组织的安全状态。 它有助于发现潜在攻击，并了解策略有效性。
 
@@ -61,7 +61,7 @@ ms.locfileid: "60452923"
 
 ### <a name="unprotected-risky-sign-ins"></a>未保护的有风险登录
 
-“未保护的有风险登录”磁贴显示上周成功实时有风险登录数，这些登录既没有遭阻止，也没有受到条件访问策略、Identity Protection 风险策略或每用户 MFA 的 MFA 质询。 这些是成功但没有接受 MFA 质询的潜在遭入侵登录。 为了今后保护此类登录，请应用登录风险策略。 单击“未保护的有风险登录”磁贴会重定向到“登录风险策略配置”边栏选项卡，在其中可以将登录风险策略配置为，必须对指定风险级别的登录进行 MFA。
+“未保护的有风险登录”磁贴显示上周成功实时有风险登录数，这些登录既没有遭阻止，也没有受到条件访问策略、标识保护风险策略或每用户 MFA 的 MFA 质询。 这些是成功但没有接受 MFA 质询的潜在遭入侵登录。 为了今后保护此类登录，请应用登录风险策略。 单击“未保护的有风险登录”磁贴会重定向到“登录风险策略配置”边栏选项卡，在其中可以将登录风险策略配置为，必须对指定风险级别的登录进行 MFA。
 
 
 ### <a name="legacy-authentication"></a>旧式身份验证
@@ -76,7 +76,7 @@ ms.locfileid: "60452923"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [第 9 频道：Azure AD 和标识展示：Identity Protection 预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [第 9 频道：Azure AD 和标识展示：“标识保护”预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 - [启用 Azure Active Directory Identity Protection](enable.md)
 

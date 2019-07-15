@@ -117,7 +117,7 @@ ms.locfileid: "60438261"
 下表列出了 Azure 门户中“Azure AD 异常活动”安全报告和相应的风险事件类型。 有关详细信息，请参阅 [Azure Active Directory 风险事件](concept-risk-events.md)。  
 
 
-| Azure AD 异常活动报告 |  Identity Protection 风险事件类型|
+| Azure AD 异常活动报告 |  标识保护风险事件类型|
 | :--- | :--- |
 | 具有已泄漏凭据的用户 | 已泄漏凭据 |
 | 异常登录活动 | 不可能前往异常位置 |

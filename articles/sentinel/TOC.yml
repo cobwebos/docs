@@ -32,7 +32,7 @@
               href: connect-cloud-app-security.md
             - name: 连接 Azure 活动日志
               href: connect-azure-activity.md
-            - name: 连接 Azure AD Identity Protection
+            - name: 连接 Azure AD 标识保护
               href: connect-azure-ad-identity-protection.md
             - name: 连接 Azure 信息保护
               href: connect-azure-information-protection.md
