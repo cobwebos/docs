@@ -61,8 +61,16 @@
   items:
     - name: Azure 资源管理器
       href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: 区域和可用性
-      href: regions-and-availability.md
+    - name: 区域
+      href: regions.md
+    - name: 可用性和性能
+      items:
+        - name: 可用性
+          href: availability.md
+        - name: 归置
+          href: co-location.md
+        - name: 网络性能
+          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: VM 类型和大小
       href: sizes.md
       items:
@@ -322,6 +330,8 @@
           href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 高可用性
           href: manage-availability.md
+        - name: 创建邻近放置组
+          href: proximity-placement-groups.md
         - name: 纵向缩放
           href: vertical-scaling-automation.md
         - name: 在可用性区域中创建 VM

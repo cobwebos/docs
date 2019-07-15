@@ -126,6 +126,8 @@
           href: virtual-kubelet.md
         - name: 使用群集自动缩放程序（预览版）
           href: cluster-autoscaler.md
+        - name: 使用可用性区域（预览版）
+          href: availability-zones.md
         - name: 使用多个节点池（预览版）
           href: use-multiple-node-pools.md
         - name: 使用 Terraform 部署 AKS
@@ -315,6 +317,8 @@
         - name: Azure DevOps 项目
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
+        - name: 部署中心启动器
+          href: deployment-center-launcher.md
     - name: 故障排除
       items:
         - name: 常见问题

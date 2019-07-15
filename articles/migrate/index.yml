@@ -14,13 +14,30 @@ metadata:
   ms.date: 11/22/2017
   ms.author: raynew
 abstract:
-  description: Azure Migrate 可帮助发现和评估本地计算机是否适合迁移到 Azure，并为正在运行的 Azure VM 提供大小调整和成本估计。
+  description: Azure Migrate 可帮助你迁移到 Azure 云。 Azure Migrate 提供了一个中心，用于跟踪本地工作负荷与云 VM 的发现、评估和迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及来自独立软件供应商 (ISV) 的集成工具。
 sections:
   - title: 分步教程
     items:
       - type: paragraph
-        text: 了解如何评估要迁移到 Azure 的 VMware VM
+        text: 了解如何评估 VMware VM 以及如何将其迁移到 Azure
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-vmware">准备 VMware VM 以进行评估和迁移到 Azure</a>
+          - html: <a href="tutorial-assess-vmware">评估 VMware VM 以便迁移到 Azure</a>
+          - html: <a href="tutorial-migrate-vmware">使用无代理迁移将 VMware VM 迁移到 Azure</a>
+          - html: <a href="tutorial-migrate-vmware-agent">使用基于代理的迁移将 VMware VM 迁移到 Azure</a>
+      - type: paragraph
+        text: 了解如何评估 Hyper-V VM 以及如何将其迁移到 Azure
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-hyper-v">准备 Hyper-V VM 以进行评估和迁移到 Azure</a>
+          - html: <a href="tutorial-assess-hyper-v">评估 HYPER-V VM 以便迁移到 Azure</a>
+          - html: <a href="tutorial-migrate-hyper-v">将 Hyper-V VM 迁移到 Azure</a>
+      - type: paragraph
+        text: 了解如何将物理服务器、虚拟机和云 VM 迁移到 Azure
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial-assessment-vmware">发现和评估本地 VMware VM</a>
+          - html: <a href="tutorial-migrate-physical-virtual-machines">将物理服务器或虚拟化服务器迁移到 Azure</a>

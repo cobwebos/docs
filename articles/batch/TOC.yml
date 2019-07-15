@@ -27,7 +27,7 @@
       href: tutorial-rendering-batchexplorer-blender.md
     - name: 并行 R 模拟
       href: tutorial-r-doazureparallel.md
-    - name: 将 OCR 与 Batch 和 Azure Functions 配合使用
+    - name: 将 OCR 与 Batch 和 Functions 配合使用
       href: tutorial-batch-functions.md
 - name: 示例
   items:

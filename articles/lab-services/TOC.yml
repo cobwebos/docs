@@ -56,6 +56,8 @@
           href: best-practices-distributive-collaborative-development-environment.md
         - name: 与 Azure DevOps 集成
           href: devtest-lab-dev-ops.md
+        - name: 使用声明功能
+          href: devtest-lab-use-claim-capabilities.md
         - name: 方案
           items:
             - name: 适合使用开发测试实验室的常见场景

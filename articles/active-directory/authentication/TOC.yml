@@ -16,8 +16,6 @@
       href: tutorial-sspr-pilot.md
     - name: 启用 SSPR 本地集成
       href: tutorial-enable-writeback.md
-    - name: 启用 Windows 10 密码重置
-      href: tutorial-sspr-windows.md
     - name: 集成 Azure Identity Protection
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
@@ -73,8 +71,8 @@
           href: howto-sspr-authenticationdata.md
         - name: 启用密码写回
           href: howto-sspr-writeback.md
-        - name: 用于 Windows 7、8 和 8.1 的 SSPR
-          href: howto-sspr-windows-7-8.md
+        - name: 用于 Windows 客户端的 SSPR
+          href: howto-sspr-windows.md
     - name: 基于云的 MFA
       items:
         - name: 部署基于云的 MFA

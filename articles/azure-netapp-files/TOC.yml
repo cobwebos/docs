@@ -43,10 +43,12 @@
       href: azure-netapp-files-create-netapp-account.md
     - name: 设置容量池
       href: azure-netapp-files-set-up-capacity-pool.md
-    - name: 将子网委托到 Azure NetApp 文件
+    - name: 将子网委派给 Azure NetApp 文件
       href: azure-netapp-files-delegate-subnet.md
-    - name: 为 Azure NetApp 文件创建卷
+    - name: 创建用于 Azure NetApp 文件的 NFS 卷
       href: azure-netapp-files-create-volumes.md
+    - name: 创建用于 Azure NetApp 文件的 SMB 卷
+      href: azure-netapp-files-create-volumes-smb.md
     - name: 为 NFS 卷配置导出策略
       href: azure-netapp-files-configure-export-policy.md
     - name: 管理卷

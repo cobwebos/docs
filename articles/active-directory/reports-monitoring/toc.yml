@@ -58,7 +58,7 @@
           href: howto-power-bi-content-pack.md
         - name: 配置报告 API 的先决条件
           href: howto-configure-prerequisites-for-reporting-api.md
-        - name: 如何使用 Azure Monitor 工作簿
+        - name: 如何使用 Azure AD 工作簿
           href: howto-use-azure-monitor-workbooks.md
     - name: 监视
       items:
@@ -87,6 +87,8 @@
 - name: 引用
   expanded: true
   items:
+    - name: 用于报告的 Azure AD PowerShell cmdlet
+      href: reference-powershell-reporting.md
     - name: 审核日志 API 参考
       href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
     - name: 登录日志 API 参考

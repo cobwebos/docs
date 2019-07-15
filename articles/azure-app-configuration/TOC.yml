@@ -29,6 +29,8 @@
   items:
     - name: 使用 ASP.NET Core 启用动态配置
       href: enable-dynamic-configuration-aspnet-core.md
+    - name: 在 .NET Core 应用中启用动态配置
+      href: enable-dynamic-configuration-dotnet-core.md
     - name: 在 .NET Core 应用中使用功能标志
       href: use-feature-flags-dotnet-core.md
     - name: 管理功能标志

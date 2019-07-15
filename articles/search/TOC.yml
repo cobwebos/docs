@@ -131,6 +131,8 @@
           href: search-what-is-an-index.md
         - name: 创建索引（门户）
           href: search-create-index-portal.md
+        - name: 创建多语言索引
+          href: search-language-support.md
         - name: 分析器
           items:
             - name: 添加分析器
@@ -360,6 +362,8 @@
       href: 'https://azure.microsoft.com/support/community/?product=search'
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=search'
+    - name: 反馈论坛 (UserVoice)
+      href: 'https://feedback.azure.com/forums/263029-azure-search'
     - name: 演示站点
       items:
         - name: 财务文件演示
