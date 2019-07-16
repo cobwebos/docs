@@ -181,7 +181,7 @@ ms.locfileid: "67311324"
 
     ![为 web 应用命名](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/name-web-app.png)
 
-1. 选择“Web 应用程序”和“创建”   .。
+1. 选择“Web 应用程序”和“创建”   。
 
     ![选择 Web 应用程序](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project-type.png)
 
