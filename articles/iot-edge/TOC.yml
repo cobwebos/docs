@@ -137,10 +137,14 @@
           href: how-to-update-iot-edge.md
     - name: 使用 DPS 进行自动预配
       items:
-        - name: Linux
-          href: how-to-auto-provision-simulated-device-linux.md
-        - name: Windows
-          href: how-to-auto-provision-simulated-device-windows.md
+        - name: 对称密钥证明
+          href: how-to-auto-provision-symmetric-keys.md
+        - name: TPM 证明
+          items:
+            - name: Linux
+              href: how-to-auto-provision-simulated-device-linux.md
+            - name: Windows
+              href: how-to-auto-provision-simulated-device-windows.md
     - name: 开发和调试自定义模块
       items:
         - name: Visual Studio 2019

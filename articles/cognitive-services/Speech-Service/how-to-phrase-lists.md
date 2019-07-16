@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 158819d481c0ce245539d783f194b159b2b9edb6
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606524"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226352"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>语音到文本的短语列表
 
@@ -24,6 +24,9 @@ ms.locfileid: "67606524"
 例如，如果您有一个命令"移动到"和"Ward"，可能就读的可能目标可以添加的"移动到 Ward"条目。 添加一个短语将增加的可能性，当"移动到 Ward"将会被识别而不是"推动"识别音频。
 
 将单个单词或完整的短语可以添加到短语列表。 识别过程如果音频中包含的完全匹配项，则使用短语列表中的条目。 如果短语列表中包含"到 Ward 移动"，并捕获该短语生成上一示例中，为"移动到缓慢"，则识别结果将为"缓慢移动到 Ward"。
+
+>[!Note]
+> 目前，短语列出了仅支持英语语音到文本。
 
 ## <a name="how-to-use-phrase-lists"></a>如何使用短语列表
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: aaae84fcb7df2abfe7e78adb64c22fb19fe45f4e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 203526b23a9571f0cccf3ebed432978772282418
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606719"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226424"
 ---
 # <a name="try-speech-services-for-free"></a>免费试用语音服务
 
@@ -89,7 +89,7 @@ ms.locfileid: "67606719"
 
    * 新资源的名称。 名称有助于区分同一服务的多个订阅。
    * 选择新资源关联的 Azure 订阅，以确定计费方式。
-   * 选择将使用资源的区域。 目前在东亚、欧洲北部和美国西部区域提供语音服务。
+   * 选择[区域](regions.md)其中将使用的资源。
    * 选择免费或付费定价层。 单击“查看全部定价详细信息”，获取每个层的定价和用量配额的完整信息  。
    * 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
    * 为了以后可便捷访问订阅，请选中“固定到仪表板”复选框  。
