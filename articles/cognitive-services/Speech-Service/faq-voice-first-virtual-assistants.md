@@ -35,7 +35,7 @@ ms.locfileid: "67606641"
 
 **问：在连接时，我收到 401 错误和无法正常工作。我知道我语音的订阅密钥有效。这是怎么回事？**
 
-**答:** 在预览版中，直接行语音具有可以使用哪些订阅的特定限制。 确保使用**语音**资源 （Microsoft.CognitiveServicesSpeechServices，"Speech"） 和*不***认知服务**资源 (Microsoft.CognitiveServicesAllInOne，"所有认知服务")。 仅[语音服务区域子集](regions.md#voice-first-virtual-assistants)目前支持直接行语音。
+**答:** 在预览版中，直接行语音具有可以使用哪些订阅的特定限制。 确保使用**语音**资源 （Microsoft.CognitiveServicesSpeechServices，"Speech"） 和 *不* **认知服务**资源 (Microsoft.CognitiveServicesAllInOne，"所有认知服务")。 仅[语音服务区域子集](regions.md#voice-first-virtual-assistants)目前支持直接行语音。
 
 ![更正订阅的直拨电话语音](media/voice-first-virtual-assistants/faq-supported-subscription.png "兼容的语音订阅的示例")
 

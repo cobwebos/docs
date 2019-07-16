@@ -179,7 +179,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 | type | 是 | 操作的类型。  警报操作的类型是 Alert  。 |
 | name | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
 | description | 否 | 警报的可选说明。 |
-| 严重性 | 是 | 警报记录的严重等级包括以下值：<br><br>  严重<br> 警告<br> 信息性
+| severity | 是 | 警报记录的严重等级包括以下值：<br><br>  严重<br> 警告<br> 信息性
 
 
 #### <a name="threshold"></a>阈值
