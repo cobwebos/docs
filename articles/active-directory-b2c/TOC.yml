@@ -56,7 +56,7 @@
           href: active-directory-b2c-overview-custom.md
         - name: 用户访问权限
           href: manage-user-access.md
-    - name: JavaScript 和页面协定
+    - name: JavaScript 和页面布局
       href: user-flow-javascript-overview.md
     - name: OAuth 2.0
       href: active-directory-b2c-reference-oauth-code.md
@@ -142,8 +142,8 @@
               href: active-directory-b2c-custom-setup-msa-idp.md
             - name: Twitter
               href: active-directory-b2c-custom-setup-twitter-idp.md
-        - name: 页协定
-          href: page-contract.md
+        - name: 页面布局
+          href: page-layout.md
         - name: 密码复杂性
           href: active-directory-b2c-reference-password-complexity-custom.md
         - name: 密码更改

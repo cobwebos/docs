@@ -102,6 +102,8 @@
           href: manage-database-permissions.md
         - name: 检查群集运行状况
           href: check-cluster-health.md
+        - name: 选择群集 VM SKU
+          href: manage-cluster-choose-sku.md
         - name: 管理群集横向缩放
           href: manage-cluster-horizontal-scaling.md
         - name: 管理群集纵向缩放

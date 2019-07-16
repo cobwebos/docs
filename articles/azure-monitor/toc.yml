@@ -280,8 +280,10 @@
               href: platform/custom-fields.md
         - name: 配置应用程序
           items:
-            - name: Azure 应用
+            - name: Azure 托管的应用
               items:
+                - name: Azure VM 和 Azure 虚拟机规模集
+                  href: app/azure-vm-vmss-apps.md
                 - name: Azure 应用服务
                   href: app/azure-web-apps.md
                 - name: Azure 云服务
@@ -709,8 +711,8 @@
               href: platform/metrics-getting-started.md
             - name: 指标资源管理器的高级功能
               href: platform/metrics-charts.md
-            - name: 指标图表示例
-              href: platform/metric-chart-samples.md
+            - name: 基于日志的指标
+              href: platform/app-insights-metrics.md
             - name: 排查指标图表问题
               href: platform/metrics-troubleshoot.md
         - name: 日志

@@ -49,11 +49,17 @@
         - name: 部署步骤
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/deploy.md
-    - name: NIST SP 800-53 Rev 4
+    - name: NIST SP 800-53 Rev4
       items:
+        - name: 概述
+          displayName: 'standards, nist, 800-53, rev 4'
+          href: ./samples/nist-sp-800-53-rev4/index.md
         - name: 控制映射
-          displayName: 'standards, nist, 800-53'
+          displayName: 'standards, nist, 800-53, rev 4'
           href: ./samples/nist-sp-800-53-rev4/control-mapping.md
+        - name: 部署步骤
+          displayName: 'standards, nist, 800-53, rev 4'
+          href: ./samples/nist-sp-800-53-rev4/deploy.md
     - name: PCI-DSS v3.2.1
       items:
         - name: 概述

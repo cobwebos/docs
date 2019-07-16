@@ -61,7 +61,7 @@
           href: plan-sso-deployment.md
     - name: 一键式 SSO
       items:
-        - name: 什么是一键式 SSO
+        - name: “一键式 SSO”配置
           href: one-click-sso-tutorial.md
     - name: 预配用户和组
       items:

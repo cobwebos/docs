@@ -54,34 +54,32 @@
       href: migrate-replication-appliance.md
     - name: 用于评估的最佳做法
       href: best-practices-assessment.md
-    - name: 评估计算
+    - name: “评估”概述
       href: concepts-assessment-calculation.md
     - name: 依赖项可视化
       href: concepts-dependency-visualization.md
 - name: 操作指南
   items:
-    - name: 迁移示例 - Contoso 系列
-      href: contoso-migration-overview.md
-    - name: 部署设备以进行 VMware 评估/迁移（无代理）
+    - name: 使用以前的版本
+      href: migrate-v1.md
+    - name: 部署 VMware 设备
       href: how-to-set-up-appliance-vmware.md
-    - name: 部署设备以进行 Hyper-V 评估/迁移
+    - name: 部署 HYPER-V 设备
       href: how-to-set-up-appliance-hyper-v.md
-    - name: 第一次添加评估/迁移工具
+    - name: 首次添加工具
       href: how-to-add-tool-first-time.md
     - name: 添加评估工具
       href: how-to-assess.md
-    - name: 添加迁移工具
-      href: how-to-migrate.md
-    - name: 分组将计算机以进行评估
-      items:
-        - name: 创建组
-          href: how-to-create-a-group.md
-        - name: 使用计算机依赖关系将计算机分组
-          href: how-to-create-group-machine-dependencies.md
-        - name: 使用组依赖关系优化组
-          href: how-to-create-group-dependencies.md
+    - name: 将计算机分组以进行评估
+      href: how-to-create-a-group.md
+    - name: 使用依赖项可视化将计算机分组
+      href: how-to-create-group-machine-dependencies.md
+    - name: 创建评估
+      href: how-to-create-assessment.md
     - name: 自定义评估
       href: how-to-modify-assessment.md
+    - name: 添加迁移工具
+      href: how-to-migrate.md
     - name: 大规模评估和迁移
       items:
         - name: 评估大量 VMware VM
@@ -90,6 +88,10 @@
           href: scale-hyper-v-assessment.md
         - name: 自动执行大量 VM 的迁移
           href: how-to-migrate-at-scale.md
+    - name: 迁移示例 - Contoso 系列
+      href: contoso-migration-overview.md
+- name: 故障排除
+  items:
     - name: 排查 Azure Migrate 问题
       href: troubleshooting-general.md
 - name: 资源
