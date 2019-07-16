@@ -260,7 +260,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
     | 选择脚本 | 要使用自己的脚本，请选择“自定义”  。 否则，请选择提供的脚本。 |
     | Name |指定脚本操作的名称。 |
     | Bash 脚本 URI |指定脚本的 URI。 |
-    | 头节点/辅助节点/Zookeeper 节点 |指定运行脚本的节点：“头节点”、“工作节点”或“ZooKeeper 节点”。    |
+    | Head/Worker/ZooKeeper 节点 |指定运行脚本的节点：“Head”、“Worker”或“ZooKeeper”。    |
     | Parameters |根据脚本的需要，指定参数。 |
 
     使用“持久保存此脚本操作”条目，确保在缩放操作中应用了脚本  。
