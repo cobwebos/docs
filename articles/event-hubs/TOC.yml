@@ -59,6 +59,8 @@
   items:
     - name: 事件中心术语
       href: event-hubs-features.md
+    - name: 事件处理程序主机
+      href: event-hubs-event-processor-host.md
     - name: 可用性和一致性
       href: event-hubs-availability-and-consistency.md
     - name: 可伸缩性
@@ -90,8 +92,6 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: 编程指南
           href: event-hubs-programming-guide.md
-        - name: 使用事件处理程序主机接收事件
-          href: event-hubs-event-processor-host.md
     - name: 处理数据
       items:
         - name: 使用 Azure 流分析处理数据

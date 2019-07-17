@@ -33,6 +33,12 @@
       href: how-to-delete-invitation.md
     - name: 撤销共享订阅
       href: how-to-revoke-share-subscription.md
+- name: 引用
+  items:
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.datashare
+    - name: REST API
+      href: /rest/api/datashare
 - name: 资源
   items:
     - name: 博客

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: a8a1f6fe9372d013d310c557161ceb813b8a478b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3682b9e0c38344be1522440290b46f8c10bd5607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163641"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275908"
 ---
 # <a name="application-settings"></a>应用程序设置
 
@@ -48,7 +48,7 @@ ms.locfileid: "67163641"
 
 #### <a name="brazilian-portuguese-pt-br-diacritics"></a>葡萄牙语 （巴西)`pt-br`音调符号
 
-|标注字符设置为 false|标注字符设置为 false|
+|标注字符设置为 false|标注字符设置为 true|
 |-|-|
 |`á`|`a`|
 |`â`|`a`|
@@ -66,7 +66,7 @@ ms.locfileid: "67163641"
 
 #### <a name="dutch-nl-nl-diacritics"></a>荷兰语`nl-nl`音调符号
 
-|标注字符设置为 false|标注字符设置为 false|
+|标注字符设置为 false|标注字符设置为 true|
 |-|-|
 |`á`|`a`|
 |`à`|`a`|
@@ -85,7 +85,7 @@ ms.locfileid: "67163641"
 
 这包括法语和加拿大子区域性。
 
-|标注字符设置为 false|标注字符设置为 false|
+|标注字符设置为 false|标注字符设置为 true|
 |--|--|
 |`é`|`e`|
 |`à`|`a`|
@@ -104,7 +104,7 @@ ms.locfileid: "67163641"
 
 #### <a name="german-de-de-diacritics"></a>德语`de-de`音调符号
 
-|标注字符设置为 false|标注字符设置为 false|
+|标注字符设置为 false|标注字符设置为 true|
 |--|--|
 |`ä`|`a`|
 |`ö`|`o`| 
@@ -112,7 +112,7 @@ ms.locfileid: "67163641"
 
 #### <a name="italian-it-it-diacritics"></a>意大利语`it-it`音调符号
 
-|标注字符设置为 false|标注字符设置为 false|
+|标注字符设置为 false|标注字符设置为 true|
 |--|--|
 |`à`|`a`|
 |`è`|`e`|
@@ -129,7 +129,7 @@ ms.locfileid: "67163641"
 
 这包括墨西哥西班牙语和加拿大。
 
-|标注字符设置为 false|标注字符设置为 false|
+|标注字符设置为 false|标注字符设置为 true|
 |-|-|
 |`á`|`a`|
 |`é`|`e`|

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 121e94228ca85684b20f2ee43c0f7fa3af82fc73
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cb30b476471e140f96fa1d159e9a16898f529607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606340"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277494"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>语音设备 SDK 麦克风阵列建议
 
@@ -30,7 +30,7 @@ ms.locfileid: "67606340"
 |          | 循环的数组    |       |  线性数组              |                |
 |----------|-------------------|-------------------|----------------|----------------|
 |          |<img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/>|<img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/>|
-| \# Mics  | 7                 | 4                 | 4              | 2              |
+| \# 接通麦克风  | 7                 | 4                 | 4              | 2              |
 | geometry | 6 的外部，1 Center、 半径 = 42.5 mm，均匀分布| 3 个外部，1 Center、 半径 = 42.5 mm，均匀分布 | 长度 = 120 mm 间距 = 40 mm | 间距 = 40 mm |
 
 应根据为每个数组，从 0 增加上面所示的编号排序麦克风通道。  Microsoft 音频堆栈将需要执行回声抵消的音频播放的附加引用流。
@@ -43,34 +43,34 @@ ms.locfileid: "67606340"
 
 | 参数                         | 建议                       |
 |-----------------------------------|-----------------------------------|
-| SNR                               | \> 65 dB （1khz 信号 94 dBSPL，一个加权干扰）   |
+| SNR                               | \>= 65 dB （1khz 信号 94 dBSPL，一个加权干扰）   |
 | Amplitude 匹配                | 为 @ 1khz 1 个 dB                     |
 | 匹配阶段                    | 为 @ 1khz 2 °                       |
-| 声学重载点 (AOP)     | \> 120 dBSPL (THD = 10%)          |
+| 声学重载点 (AOP)     | \>= 120 dBSPL (THD = 10%)          |
 | 比特率                          | 最小值 24 位                    |
 | 采样率                     | 最小 16 kHz\*                   |
-| Directivity                       | 全向                   |
 | 频率响应                | 为 3 个 dB，200 8000 Hz 浮点掩码\*|
 | 可靠性                       | 存储温度范围-40 ° C 到 70 ° C<br />操作-20 ° C 到 55 ° C 的温度范围  |
 
-*\*更高版本的采样率或"宽"频率范围可能有必要为高质量通信 (VoIP) 应用程序*
+*\* 更高版本的采样率或"宽"频率范围可能有必要为高质量通信 (VoIP) 应用程序*
 
 选择好组件必须与完美 electroacoustic 集成成对使用以避免因而会影响使用的组件的性能。 唯一的用例可能还需要其他要求 (例如： 操作系统温度范围)。
 
 ## <a name="microphone-array-integration"></a>麦克风阵列集成
 
-数组时集成到设备和任何固定的收益或 EQ 后性能应符合以下建议：
+麦克风阵列时集成到设备的性能将不同于组件规范。 请务必确保麦克风很好地匹配后的集成。 因此设备性能测量后获得任何修复或 EQ 应满足以下建议：
 
 |  参数        |    建议 |
 |--------------------|----------------------------------------------------|
-|  SNR                 | \> 65 dB （1khz 信号 94 dBSPL，一个加权干扰） |
+|  SNR                 | \> 63 dB （1khz 信号 94 dBSPL，一个加权干扰） |
 |  输出敏感度  | -26 dBFS/Pa @ 1khz （推荐） |
 |  Amplitude 匹配  | 为 2 个 dB，200 8000 Hz |
-|  匹配阶段      | 为 5 °，200 8000 Hz |
-| THD %                 | ≤ 1%、 200 8000 Hz，94 dBSPL，第五个顺序 |
-|  频率响应  | 为 6 的 dB，200 8000 Hz 浮点掩码\* |
+| THD %\*                 | ≤ 1%、 200 8000 Hz，94 dBSPL，第五个顺序 |
+|  频率响应  | 为 6 的 dB，200 8000 Hz 浮点掩码\*\* |
 
-*\*"宽度"频率范围可能有必要为高质量通信 (VoIP) 应用程序*
+*\*\* 低失真演讲者所需度量值 THD (例如 Neumann KH120)*
+
+*\*\* "宽度"频率范围可能有必要为高质量通信 (VoIP) 应用程序*
 
 ## <a name="speaker-integration-recommendations"></a>演讲者集成的建议
 
