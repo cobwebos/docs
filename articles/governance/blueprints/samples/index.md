@@ -7,12 +7,12 @@ ms.service: blueprints
 ms.topic: sample
 ms.date: 06/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 743cd27b5328cae2fe19688f6d0638d6f706d8a8
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ccee11a9b2e5505073bac9f5cb2e9d3efb8816e1
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225978"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249609"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -24,7 +24,7 @@ ms.locfileid: "68225978"
 |---------|---------|
 | [ISO 27001 共享服务](./iso27001-shared/index.md) | 提供了一组符合标准的基础结构模式和策略防护机制，以便帮助通过 ISO 27001 认证。 |
 | [ISO 27001 应用服务环境/SQL 数据库工作负荷](./iso27001-ase-sql-workload/index.md) | 为 [ISO 27001 共享服务](./iso27001-shared/index.md)蓝图示例提供了其他基础结构。 |
-| [NIST SP 800-53 R4](./nist-sp-800-53-rev4/control-mapping.md) | 提供用于符合 NIST SP 800-53 R4 的规范措施。 |
+| [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | 提供用于符合 NIST SP 800-53 R4 的规范措施。 |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | 提供一组策略以帮助用户符合 PCI-DSS v3.2.1。 |
 | [英国官方和英国 NHS 监管](./ukofficial/index.md) | 提供了一组符合标准的基础结构模式和策略防护措施，以便帮助用户通过英国官方和英国 NHS 认证。 |
 

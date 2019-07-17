@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: 94eaeb6e34e74e1a0f1a3958c23cf33b86c4adcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c317cbec02b82743c233bf36f743cea808c30c69
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620283"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253591"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>特征是指有关操作和上下文的信息
 
@@ -66,9 +66,10 @@ Personalizer 并不指定，限制，或修复可以发送操作和上下文的�
 * current_time
 * NewsArticle_TextAnalytics
 
-可以根据自己的约定来命名特征命名空间，只要它们是有效的 JSON 键即可。
+可以根据自己的约定来命名特征命名空间，只要它们是有效的 JSON 键即可。 命名空间用于将功能组织成不同的集，并消除歧义具有类似名称的功能。 您可以将作为 prefix 命名空间的新增功能的名称。 不能嵌套命名空间。
 
-在以下 JSON 中，`user`、`state` 和 `device` 是特征命名空间。
+
+在以下 JSON 中，`user`、`state` 和 `device` 是特征命名空间。 公共预览版注意：目前我们强烈建议使用 utf-8 基于功能命名空间的名称和不同字母开头。 例如， `user`， `state`，并`device`开头`u`， `s`，并`d`。 当前具有具有相同的第一个字符的命名空间可能导致索引用于机器学习中的冲突。
 
 JSON 对象可以包含嵌套的 JSON 对象和简单的属性值。 仅当数组项是数字，可以包含一个数组。 
 
@@ -77,7 +78,7 @@ JSON 对象可以包含嵌套的 JSON 对象和简单的属性值。 仅当数�
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug",
+                "profileType":"AnonymousUser",
                 "latlong": [47.6, -122.1]
             }
         },
@@ -167,7 +168,7 @@ JSON 对象可以包含嵌套的 JSON 对象和简单的属性值。 仅当数�
 
 下面是一些可能的恶意活动：
 
-|目的|操作|
+|用途|Action|
 |--|--|
 |个性化要在新闻网站上突出显示的文章。|每个操作是一篇潜在的新闻文章。|
 |优化网站上的广告位置。|每个操作是一个布局或有关创建广告布局的规则（例如，在顶部排列、在右侧排列、使用小图像、使用大图像）。|

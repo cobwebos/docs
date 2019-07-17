@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: fbefbea171a8559466117c55703a14268b4c4c99
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 26ab3cb247309aa21791ca5a984f39ef40ce9a78
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592927"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249635"
 ---
 # <a name="specify-a-face-detection-model"></a>指定人脸检测模型
 
@@ -27,7 +27,7 @@ ms.locfileid: "67592927"
 
 如果不确定是否应该使用最新模型，请跳到[评估不同的模型](#evaluate-different-models)部分评估新模型并使用当前数据集的结果进行比较。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 您应熟悉 AI 人脸检测的概念。 如果不是，请参阅的人脸检测概念指南或操作方法指南：
 
@@ -45,8 +45,7 @@ ms.locfileid: "67592927"
 
 请求 URL[人脸-检测]REST API 将如下所示：
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
 如果使用客户端库，则可以分配的值为`detectionModel`通过传入一个合适的字符串。 如果将其分配的 API 将使用默认的模型版本 (`detection_01`)。 请查看适用于 .NET 客户端库的以下代码示例。
 

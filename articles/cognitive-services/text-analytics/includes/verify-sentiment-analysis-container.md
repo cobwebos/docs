@@ -1,5 +1,5 @@
 ---
-title: 容器支持
+title: 验证情绪分析容器实例
 titleSuffix: Azure Cognitive Services
 description: 了解如何验证情绪分析容器实例。
 services: cognitive-services
@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: f68d9c7098f2b1ca782e2522c632c2e267b35336
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f69d573e9e70a505018e94cca354f363097cc1b8
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67455142"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229172"
 ---
 ## <a name="verify-the-sentiment-analysis-container-instance"></a>验证情绪分析容器实例
 
 1. 选择**概述**选项卡，复制的 IP 地址。
-1. 打开新的浏览器选项卡，并使用的 IP 地址，例如， `http://<IP-address>:5000 (http://55.55.55.55:5000`)。 显示容器的主页上，如果希望了解容器正在运行。
+1. 打开新浏览器选项卡并输入 IP 地址。 例如，输入`http://<IP-address>:5000 (http://55.55.55.55:5000`)。 显示容器的主页上，如果希望了解容器正在运行。
 
-    ![查看容器主页，以验证它正在运行](../media/how-tos/container-instance/swagger-docs-on-container.png)
+    ![查看容器主页上，验证正在运行](../media/how-tos/container-instance/swagger-docs-on-container.png).
 
-1. 选择**服务 API 说明**链接以导航到容器 swagger 页。
+1. 选择**服务 API 说明**链接以转到容器的 swagger 页。
 
-1. 选择任一**POST** Api，然后选择**试试看**。这些参数会显示包括输入示例：
+1. 选择任一**POST** Api，然后选择**试试看**。这些参数会显示，其中包括此示例输入：
 
     ```json
     {
@@ -49,7 +49,7 @@ ms.locfileid: "67455142"
     }
     ```
 
-1. 输入替换为以下 JSON:
+1. 输入替换为以下 JSON 内容：
 
     ```json
     {
@@ -93,4 +93,4 @@ ms.locfileid: "67455142"
     }
     ```
 
-我们现在可以关联文档`id`的原始请求有效负载文档的响应负载 JSON `id`，并查看是否的分数为通过`.98`，该值指示非常积极的情绪。
+我们现在可以关联文档`id`的响应有效负载的 JSON 数据的原始请求有效负载文档`id`。 我们看到的分数为多个`.98`，指示强积极的情绪。

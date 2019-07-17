@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: 0f1069c4a3d0a841b792cedf5a5a90aec80a4cc9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592972"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254346"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定人脸识别模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "67592972"
 
 对于新用户，我们建议使用最新的模型。 请继续阅读，了解如何在不同的人脸操作中指定模型，同时避免模型冲突。 如果高级用户不确定是否要切换到最新的模型，可以转到[评估不同的模型](#evaluate-different-models)部分来评估新模型，并使用当前数据集比较结果。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 读者应该熟悉 AI 人脸检测和识别的概念。 否则请先阅读以下操作指南：
 
@@ -45,8 +45,7 @@ ms.locfileid: "67592972"
 
 或者，可以指定 _returnRecognitionModel_ 参数（默认为 **false**）来指示是否应在响应中返回 _recognitionModel_。 因此，[Face - Detect] REST API 的请求 URL 将如下所示：
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
 如果使用客户端库，则可以通过传递一个表示版本的字符串来分配 `recognitionModel` 的值。
 如果不分配该值，将使用默认模型版本 (_recognition_01_)。 请查看适用于 .NET 客户端库的以下代码示例。

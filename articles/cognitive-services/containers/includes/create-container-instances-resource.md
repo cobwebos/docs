@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: 38addf4651373ba0f4df411325218a255c835508
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 05284d434e6bd22fd50957f7cc5ec966f88a4fd4
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717201"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229181"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>创建 Azure 容器实例资源
 
@@ -22,7 +22,7 @@ ms.locfileid: "67717201"
 
 2. 上**基础知识**选项卡上，输入以下详细信息：
 
-    |设置|ReplTest1|
+    |设置|值|
     |--|--|
     |订阅|选择订阅。|
     |资源组|选择可用的资源组或创建一个新如`cognitive-services`。|
@@ -39,12 +39,12 @@ ms.locfileid: "67717201"
     |--|--|
     |端口|将 TCP 端口设置为`5000`。 公开端口 5000 上的容器。|
 
-4. 上**高级**选项卡上，输入所需**环境变量**容器[计费设置](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers#billing-arguments)的 ACI 资源：
+4. 上**高级**选项卡上，输入所需**环境变量**计费 ACI 资源设置的容器：
 
     | Key | ReplTest1 |
     |--|--|
-    |`apikey`|从复制**密钥**文本分析资源页面。 它是不包含空格或短划线的 32 字母数字字符字符串`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。|
-    |`billing`|从复制**概述**文本分析资源页面。 示例： `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |`apikey`|从复制**密钥**资源页面。 它是不包含空格或短划线的 32 字母数字字符字符串`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。|
+    |`billing`|从复制**概述**资源页面。|
     |`eula`|`accept`|
 
 1. 单击**查看和创建**
