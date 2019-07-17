@@ -187,8 +187,8 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 
 | 元素名称 | 需要 | description |
 |:--|:--|:--|
-| 运算符 | 是 | 比较运算符包括以下值：<br><br>**gt = 大于<br>lt = 小于** |
-| 值 | 是 | 要比较结果的值。 |
+| Operator | 是 | 比较运算符包括以下值：<br><br>**gt = 大于<br>lt = 小于** |
+| Value | 是 | 要比较结果的值。 |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 本部分为可选。 将其包含在指标度量警报中。
