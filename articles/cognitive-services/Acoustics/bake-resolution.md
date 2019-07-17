@@ -1,7 +1,7 @@
 ---
-title: 项目噪声制作解决方法
+title: 项目噪声制作解决方案
 titlesuffix: Azure Cognitive Services
-description: 此概念概述介绍粗和没问题的解决办法，同时烤噪声之间的差异。
+description: 此概念概述介绍了收录噪声时的粗糙分辨率和精细分辨率之间的差异。
 services: cognitive-services
 author: KyleStorck
 manager: nitinme
@@ -9,26 +9,26 @@ ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: kylesto
-ms.openlocfilehash: c4f4581beb26eb63392644b40b1e5f16dae0481d
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.author: kylsto
+ms.openlocfilehash: ba7c71c666ae8f90d499bfe52303537aeb112a77
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849959"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296703"
 ---
-# <a name="project-acoustics-bake-resolution"></a>项目噪声制作解决方法
-此概念概述介绍粗和没问题的解决办法，同时烤噪声之间的差异。 选择此设置面点工作流在探测步骤。
+# <a name="project-acoustics-bake-resolution"></a>项目噪声制作解决方案
+此概念概述介绍了收录噪声时的粗糙分辨率和精细分辨率之间的差异。 在收录工作流的探测步骤中选择此设置。
 
 ## <a name="Coarse-vs-Fine-Resolution"></a>粗糙与精细分辨率
 
-高分辨率和低分辨率设置之间的唯一区别在于模拟的执行频率。 高分辨率的执行频率是低分辨率的两倍。 这对声学模拟有许多影响：
+高分辨率和低分辨率设置之间的唯一区别在于模拟的执行频率。 高分辨率的执行频率是低分辨率的两倍。 这对声音模拟有很多影响:
 
 * 低分辨率的波长是高分辨率的两倍，因此体素是后者的两倍大。
 * 模拟时间与体素大小直接相关，因此低分辨率烘焙的速度约为高分辨率烘焙的 16 倍。
-* 不能模拟门户 （例如，门或 windows） 小于 voxel 大小。 粗略的设置可能会导致一些这些较小的门户，从而不会模拟;因此，它们不会传递声音通过在运行时。 通过查看体素可确定是否发生该情况。
+* 不能模拟小于 voxel 大小的门户 (例如, 门或 windows)。 粗设置可能会导致不模拟某些较小的门户;因此, 它们不会在运行时传递声音。 通过查看体素可确定是否发生该情况。
 * 更低的模拟频率将减少角和边周围的衍射。
-* 在"填充"voxels (即包含 geometry 的 voxels) 内，不能位于声音的源。 这会不导致任何声音。 会更加困难，因此它们不是内部的粗略比使用精细设置时，它是更大的 voxels 放置声音的源。
+* 无法在 "填充的" voxels (即包含几何的 voxels) 中找到声音源。 这不会产生任何声音。 更难放置声音源, 使其不在 voxels 的更大范围内, 而不是在使用精细设置时。
 * 如下所示，更大的体素将更多地挤入门户。 第一张图像是使用低分辨率创建的，而第二张是使用高分辨率的同一门口。 如红色标记所示，更少体素挤入使用高分辨率设置的门口。 蓝色线条是几何体定义的门廊，而红色线条是体素大小定义的有效声学门户。 这种侵入如何在给定的情况下播放出来完全取决于体素与门户几何体的一致程度，后者由场景中对象的大小和位置决定。
 
 ![Unreal 中填充门廊的低分辨率体素的屏幕截图](media/unreal-coarse-bake.png)
@@ -37,4 +37,4 @@ ms.locfileid: "67849959"
 
 ## <a name="next-steps"></a>后续步骤
 
-使用自己尝试粗和正常解析设置我们[Unreal](unreal-baking.md)或[Unity](unity-baking.md)插件。
+使用我们的[Unreal](unreal-baking.md)或[Unity](unity-baking.md)插件尝试使用粗和精细分辨率设置。

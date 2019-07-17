@@ -1,7 +1,7 @@
 ---
 title: 仪表板 - 语言理解
 titleSuffix: Azure Cognitive Services
-description: 使用分析仪表板，可视化的报告工具修复意向。
+description: 使用分析仪表板 (可视化的报告工具) 修复意向。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 055d113a2bc77f8de1b4b881718007c869470532
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f068aa7ca6b396ebba05b9d9462d9e95faf7fbaa
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236947"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296420"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>如何使用仪表板来改善应用
 
-使用示例言语时查找并修复已训练应用的意向问题。 仪表板显示整体应用程序信息，与应修复的意向的要点。 
+使用示例言语时查找并修复已训练应用的意向问题。 该仪表板显示总体应用信息, 其中突出显示了应修复的意向。 
 
-检查仪表板分析信息是一个迭代的过程，在更改和改善模型的过程中需要反复检查。
+查看仪表板分析是一个迭代过程, 请在更改和改进模型时重复此过程。
 
 对于在意向中不包含任何示例言语的应用（称为仅限模式的应用），此页不会提供相关的分析。  
 
@@ -38,11 +38,11 @@ ms.locfileid: "66236947"
 
 正确的预测以蓝色表示。
 
-在仪表板显示了这些问题并告诉你的意向会受到影响并建议您应该做什么来改进应用。 
+该仪表板显示了这些问题, 并告诉你哪些意图受到影响, 并建议你应该采取哪些措施来改进应用。 
 
 ## <a name="before-app-is-trained"></a>训练应用之前 
 
-训练应用之前，仪表板不包含任何建议的修补程序。 训练应用即可看到这些建议。  
+训练应用之前, 仪表板不包含任何修补建议。 训练应用即可看到这些建议。  
 
 ## <a name="check-your-publishing-status"></a>检查发布状态
 
@@ -50,7 +50,7 @@ ms.locfileid: "66236947"
 
 请检查活动的版本是否为要修复的版本。 
 
-![仪表板显示了应用的外部服务，发布区域，并聚合终结点命中数。](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
+!["仪表板" 显示应用的外部服务、已发布区域和聚合终结点命中。](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
 其中还会显示任何外部服务、发布区域，以及聚合的终结点访问次数。 
 
@@ -84,7 +84,7 @@ ms.locfileid: "66236947"
 
 ### <a name="patterns-and-phrase-lists"></a>模式和短语列表
 
-在分析页并不指示何时使用[模式](luis-concept-patterns.md)或[短语列表](luis-concept-feature.md)。 如果您添加它们，它可以帮助不正确或不清楚的预测，但不会帮助进行数据不平衡。 
+分析页面并不指示何时使用[模式](luis-concept-patterns.md)或[短语列表](luis-concept-feature.md)。 如果添加了这些数据, 则可以帮助进行不正确或不明确的预测, 但不会帮助数据不平衡。 
 
 ### <a name="review-data-imbalance"></a>检查数据不平衡问题
 
@@ -96,7 +96,7 @@ ms.locfileid: "66236947"
 
 * 请将更多言语添加到意向，然后重新训练。 
 
-不要为 None 意向添加语音样本，除非，建议在仪表板上。
+不要将最谈话添加到 "无" 意向, 除非已在仪表板上建议。
 
 > [!Tip]
 > 使用该页上的第三个部分 - 包含“言语(数目)”设置的“每个意向的言语”可以快速直观地了解哪些意向需要更多的言语。    
@@ -154,7 +154,7 @@ ms.locfileid: "66236947"
 
 使用筛选器可以查找存在特定问题的意向：
 
-|筛选器|建议的百分比|目的|
+|筛选器|建议的百分比|用途|
 |--|--|--|
 |问题最严重的意向|-|**从此处着手** - 修复此意向中的言语比其他修复方法更能改善应用。|
 |正确的预测低于|60%|这是选定意向中正确的、但置信度评分低于阈值的言语的百分比。 |

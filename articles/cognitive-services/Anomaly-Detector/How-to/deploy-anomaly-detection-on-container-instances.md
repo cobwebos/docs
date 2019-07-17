@@ -1,31 +1,31 @@
 ---
 title: 运行 Azure 容器实例
 titleSuffix: Azure Cognitive Services
-description: 将异常情况检测器容器部署到 Azure 容器实例，并在 web 浏览器中进行测试。
+description: 将异常探测器容器部署到 Azure 容器实例, 并在 web 浏览器中对其进行测试。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: anomaly-detection
+ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: b5adc3ed9234050d3977e812202717a0ce83e842
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: defbd1275e24217c235caaef15dc8f7a55ad8613
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711688"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296571"
 ---
-# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>将异常情况检测器容器部署到 Azure 容器实例
+# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>将异常探测器容器部署到 Azure 容器实例
 
-了解如何部署认知服务[异常情况检测器](../anomaly-detector-container-howto.md)到 Azure 容器[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程说明了创建异常情况检测程序资源。 然后我们将讨论拉取相关联的容器映像。 最后，我们重点介绍能够练习从浏览器两个业务流程。 使用容器可以移动开发人员的注意力从管理到改为将重点放在应用程序开发的基础结构。
+了解如何将认知服务[异常检测](../anomaly-detector-container-howto.md)容器容器部署到 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程演示如何创建异常探测器资源。 然后讨论如何拉取关联的容器映像。 最后, 我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力转向管理基础结构, 而不是专注于应用程序开发。
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
-必须先完成并提交[异常情况检测器容器请求窗体](https://aka.ms/adcontainer)容器请求访问。
+必须先完成并提交[异常探测器容器请求窗体](https://aka.ms/adcontainer), 才能请求访问容器。
 
 [!INCLUDE [Request access](../../../../includes/cognitive-services-containers-request-access-only.md)]
 
