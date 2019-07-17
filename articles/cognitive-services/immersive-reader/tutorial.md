@@ -1,20 +1,21 @@
 ---
-title: 教程：启动沉浸式阅读器 (Node.js)
+title: 教程：使用 Node.js 启动沉浸式阅读器
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将从头开始构建 Web 应用程序并添加沉浸式阅读器功能。
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ac90496c950d8a563bf8794b4c1bb105b6c12232
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f8697042ed46e0ff333f736454346908d76cf039
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444062"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718377"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>教程：启动沉浸式阅读器 (Node.js)
 

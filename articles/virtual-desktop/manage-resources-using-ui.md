@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 275fec5fb696a7e1352bbddccd288863e984b796
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 9579db9836ef41706f2c6be09570fa7c1459e14f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304563"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620458"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>教程：部署管理工具
 
@@ -57,8 +57,8 @@ ms.locfileid: "67304563"
 ### <a name="guidance-for-template-parameters"></a>有关模板参数的指导
 下面说明了如何输入用于配置工具的参数：
 
-- 这是 RD 代理 URL： <https://rdbroker.wvd.microsoft.com/>
-- 这是资源 URL： <https://mrs-prod.ame.gbl/mrs-RDInfra-prod>
+- 这是 RD 代理 URL：https:\//rdbroker.wvd.microsoft.com/
+- 这是资源 URL： https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
 - 在已禁用 MFA 的情况下使用 AAD 凭据登录到 Azure。 请参阅[运行 Azure 资源管理器模板所要做好的准备](#what-you-need-to-run-the-azure-resource-manager-template)。
 - 对要注册到管理工具的 Azure Active Directory 中的应用程序使用唯一名称，例如 Apr3UX。
 

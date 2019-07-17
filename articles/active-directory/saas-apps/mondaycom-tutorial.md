@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cdc605c059857c826056fece782bbb9a9c86a15
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 93c5e473c62dc6b38f0b2c2906560d6099842d49
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275825"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718494"
 ---
 # <a name="tutorial-integrate-mondaycom-with-azure-active-directory"></a>教程：将 monday.com 与 Azure Active Directory 集成
 
@@ -78,7 +78,7 @@ ms.locfileid: "67275825"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”窗格中，如果服务提供商元数据文件，并且要配置 IDP 发起模式，请执行以下步骤   ：
+1. 在“基本 SAML 配置”窗格中，如果服务提供商元数据文件，并且要配置 IDP 发起模式，请执行以下步骤   ：
 
     1. 选择“上传元数据文件”  。
 
@@ -89,7 +89,7 @@ ms.locfileid: "67275825"
        > [!Note]
        > 如果“标识符”和“回复 URL”值未自动填充，请手动填充这些值。   “标识符”和“回复 URL”相同，值采用以下模式：`https://<your-domain>.monday.com/saml/saml_callback`  
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<your-domain>.monday.com`
 
@@ -100,7 +100,7 @@ ms.locfileid: "67275825"
 
     ![“用户属性”窗格](common/edit-attribute.png)
 
-6. 除了上述属性，monday.com 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+1. 除了上述属性，monday.com 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
     | 名称 | 源属性|
     | ---------------| --------------- |
@@ -109,10 +109,6 @@ ms.locfileid: "67275825"
     | LastName | user.surname |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
-
-    ![图像](./media/mondaycom-tutorial/attribute01.png)
-
-    ![图像](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -136,17 +132,25 @@ ms.locfileid: "67275825"
 
 ### <a name="configure-mondaycom"></a>配置 monday.com
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录 monday.com。
+1. 若要在 monday.com 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”   。
 
-2. 转到页面右上角的“配置文件”，然后单击“管理员”   。
+    ![我的应用扩展](common/install-myappssecure-extension.png)
 
-     ![monday.com 配置](./media/mondaycom-tutorial/configuration01.png)
+1. 将扩展添加到浏览器后，单击“设置 monday.com”  会定向到 monday.com 应用程序。 在此处，请提供管理员凭据以登录到 monday.com。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-6。
 
-3. 选择“安全性”，并确保单击“SAML”旁边的“打开”   。
+    ![设置配置](common/setup-sso.png)
+
+1. 若要手动设置 monday.com，请打开新的 Web 浏览器窗口，以管理员身份登录 monday.com，并执行以下步骤：
+
+1. 转到页面右上角的“配置文件”，然后单击“管理员”   。
+
+    ![monday.com 配置](./media/mondaycom-tutorial/configuration01.png)
+
+1. 选择“安全性”，并确保单击“SAML”旁边的“打开”   。
 
     ![monday.com 配置](./media/mondaycom-tutorial/configuration02.png)
 
-4. 填写 IDP 中的以下详细信息。
+1. 填写 IDP 中的以下详细信息。
 
     ![monday.com 配置](./media/mondaycom-tutorial/configuration03.png)
 

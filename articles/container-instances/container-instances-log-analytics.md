@@ -1,24 +1,24 @@
 ---
 title: 使用 Azure Monitor 日志进行容器实例日志记录
-description: 了解如何将容器输出（STDOUT 和 STDERR）发送到 Azure Monitor 日志。
+description: 了解如何将日志从 Azure 容器实例发送到 Azure Monitor 日志。
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 07/17/2018
+ms.date: 07/09/2019
 ms.author: danlep
-ms.openlocfilehash: 13f1fa92365c284ed10bd7c0a1b2fdefef50b29e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cab0bc4d2d0491c70a1d2f11f3a5d5d831ade6cf
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879698"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722640"
 ---
 # <a name="container-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器实例日志记录
 
-Log Analytics 工作区可以集中存储和查询来自 Azure 资源、本地资源以及其他云中的资源的日志数据。 Azure 容器实例提供内置支持，支持将数据发送到 Azure Monitor 日志。
+Log Analytics 工作区提供了一个集中的位置，用于存储和查询来自 Azure 资源、本地资源以及其他云中的资源的日志数据。 Azure 容器实例提供内置支持，支持将数据发送到 Azure Monitor 日志。
 
-若要将容器实例数据发送到 Azure Monitor 日志，必须使用 Azure CLI（或 Cloud Shell）和 YAML 文件创建容器组。 以下部分介绍如何创建启用了日志记录的容器组和查询日志。
+若要将容器实例数据发送到 Azure Monitor 日志，必须在创建容器组时指定 Log Analytics 工作区 ID 和工作区密钥。 以下部分介绍如何创建启用了日志记录的容器组和查询日志。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,8 +36,8 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 若要获取 Log Analytics 工作区 ID 和主密钥，请执行以下操作：
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
-1. 选择“设置”下的“高级设置”
-1. 选择“连接的源” > “Windows 服务器”（或“Linux 服务器”--二者的 ID 和密钥相同）
+1. 在“设置”下，选择“高级设置”  
+1. 选择“连接的源”   >   “Windows 服务器”（或“Linux 服务器”  --二者的 ID 和密钥相同）
 1. 记下以下内容：
    * **工作区 ID**
    * **主密钥**
@@ -66,7 +66,7 @@ az container create \
 如果喜欢使用 YAML 部署容器组，请使用此方法。 下面的 YAML 定义包含单个容器的容器组。 将 YAML 复制到一个新文件中，然后将 `LOG_ANALYTICS_WORKSPACE_ID` 和 `LOG_ANALYTICS_WORKSPACE_KEY` 替换为在前面的步骤中获得的值。 将该文件保存为 **deploy-aci.yaml**。
 
 ```yaml
-apiVersion: 2018-06-01
+apiVersion: 2018-10-01
 location: eastus
 name: mycontainergroup001
 properties:
@@ -90,7 +90,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-接下来执行以下命令，以便部署容器组；将 `myResourceGroup` 替换为订阅中的资源组（或者先创建名为“myResourceGroup”的资源组）：
+接下来，执行下面的命令，以部署该容器组。 将 `myResourceGroup` 替换为订阅中的资源组（或者先创建名为“myResourceGroup”的资源组）：
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
@@ -100,22 +100,24 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 ## <a name="view-logs-in-azure-monitor-logs"></a>查看 Azure Monitor 日志中的日志
 
-部署容器组以后，可能需要等待数分钟（最多 10 分钟），第一个日志条目才会显示在 Azure 门户中。 若要查看容器组的日志，请先打开 Log Analytics 工作区，然后执行以下操作：
+部署容器组以后，可能需要等待数分钟（最多 10 分钟），第一个日志条目才会显示在 Azure 门户中。 若要查看容器组的日志，请执行以下操作：
 
-1. 在“OMS 工作区”概览中，选择“日志搜索”。 OMS 工作区现在称为 Log Analytics 工作区。  
-1. 在“尝试更多查询”下选择“所有收集的数据”链接。
+1. 在 Azure 门户中导航到 Log Analytics 工作区
+1. 在“常规”  下，选择“日志”   
+1. 键入以下查询：`search *`
+1. 选择“运行” 
 
-此时会看到 `search *` 查询显示的多个结果。 如果一开始没有看到任何结果，请等待数分钟，然后选择“运行”按钮，再次执行查询。 默认情况下，日志条目以“列表”视图方式显示--选择“表”即可以更紧致的格式查看日志条目。 然后即可展开某一行来查看单个日志条目的内容。
+此时会看到 `search *` 查询显示的多个结果。 如果起初没有看到任何结果，请等待几分钟，然后选择“运行”按钮，再次执行查询  。 默认情况下会以“表”的形式显示日志条目  。 然后即可展开某一行来查看单个日志条目的内容。
 
 ![Azure 门户中的“日志搜索”结果][log-search-01]
 
 ## <a name="query-container-logs"></a>查询容器日志
 
-Azure Monitor 日志包含全面的[查询语言][query_lang]，用于从可能多达数千行的日志输出中拉取信息。
+Azure Monitor 日志包含全面的[查询语言][query_lang]，用于从可能有数千行的日志输出中拉取信息。
 
 Azure 容器实例日志记录代理将条目发送到 Log Analytics 工作区中的 `ContainerInstanceLog_CL` 表。 查询的基本结构是一个源表 (`ContainerInstanceLog_CL`)，后跟一系列以竖线字符 (`|`) 隔开的运算符。 可以将多个运算符链接起来以优化结果和执行高级函数。
 
-若要查看查询结果，请将以下查询粘贴到查询文本框（位于“显示旧式语言转换器”下面）中，然后选择“运行”按钮以执行该查询。 此查询显示其“消息”字段包含“warn”一词的所有日志条目：
+若要查看查询结果，请将以下查询粘贴到查询文本框（位于“显示旧式语言转换器”下面）中，然后选择“运行”按钮以执行该查询。  此查询显示其“消息”字段包含“warn”一词的所有日志条目：
 
 ```query
 ContainerInstanceLog_CL

@@ -14,18 +14,20 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 9cbdfe957587977b01bc46b46818856f789f46d8
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 78c64786f523aa424e8a9816e42db70e2a2997c2
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393616"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798458"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用动态配置
 
-ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据。 它可以动态处理更改，而不会导致应用程序重启。 ASP.NET Core 支持将配置设置绑定到强类型 .NET 类。 它通过使用各种 `IOptions<T>` 模式将其注入到代码中。 其中一种模式（特别是 `IOptionsSnapshot<T>`）会在基础数据发生更改时自动重载应用程序的配置。
+ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据。 它可以动态处理更改，而不会导致应用程序重启。 ASP.NET Core 支持将配置设置绑定到强类型 .NET 类。 它通过使用各种 `IOptions<T>` 模式将其注入到代码中。 其中一种模式（特别是 `IOptionsSnapshot<T>`）会在基础数据发生更改时自动重载应用程序的配置。 可将 `IOptionsSnapshot<T>` 注入应用程序的控制器，以访问 Azure 应用配置中存储的最新配置。
 
-可将 `IOptionsSnapshot<T>` 注入应用程序的控制器，以访问 Azure 应用配置中存储的最新配置。 还可以设置应用程序配置 ASP.NET Core 客户端库，以持续监视和检索应用程序配置存储区中的任何更改。 定义用于轮询的周期性间隔。
+此外，还可以设置应用配置 ASP.NET Core 客户端库，以使用中间件动态刷新一组配置设置。 只要 Web 应用继续接收请求，配置设置就会继续使用配置存储区进行更新。
+
+为了使设置保持更新并避免对配置存储区进行太多的调用，对每个设置使用了一个缓存。 在设置的缓存值过期前，刷新操作不会更新该值，即使该值在配置存储区中已发生更改。 每个请求的默认过期时间为 30 秒，但是，如果需要，可以重写该过期时间。
 
 本教程演示如何在代码中实现动态配置更新。 它建立在快速入门中介绍的 Web 应用之上。 在继续操作之前，请先完成[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
 
@@ -45,7 +47,7 @@ ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据�
 
 ## <a name="reload-data-from-app-configuration"></a>从应用配置重载数据
 
-1. 打开 *Program.cs*，并更新 `CreateWebHostBuilder` 方法：向其中添加 `config.AddAzureAppConfiguration()` 方法。
+1. 打开 *Program.cs*，并更新 `CreateWebHostBuilder` 方法以添加 `config.AddAzureAppConfiguration()` 方法。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -53,19 +55,22 @@ ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据�
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
+
                 config.AddAzureAppConfiguration(options =>
+                {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .Watch("TestApp:Settings:BackgroundColor")
-                           .Watch("TestApp:Settings:FontColor")
-                           .Watch("TestApp:Settings:Message"));
+                           .ConfigureRefresh(refresh =>
+                           {
+                               refresh.Register("TestApp:Settings:BackgroundColor")
+                                      .Register("TestApp:Settings:FontColor")
+                                      .Register("TestApp:Settings:Message")
+                           });
+                }
             })
             .UseStartup<Startup>();
     ```
 
-    `.Watch` 方法中的第二个参数表示轮询间隔，ASP.NET 客户端库按此间隔查询应用程序配置存储区。 客户端库检查特定配置设置，以查看是否发生了任何更改。
-    
-    > [!NOTE]
-    > 如果未指定，则 `Watch` 扩展方法的默认轮询间隔为 30 秒。
+    `ConfigureRefresh` 方法用于指定在刷新操作触发时通过应用配置存储更新配置数据所用的设置。 为了实际触发刷新操作，需要对刷新中间件进行配置，以使应用程序在发生任何更改时刷新配置数据。
 
 2. 添加 Settings.cs 文件，用于定义和实现新的 `Settings` 类  。
 
@@ -98,6 +103,21 @@ ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据�
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
     ```
+
+4. 更新 `Configure` 方法以添加中间件，从而允许在 ASP.NET Core Web 应用继续接收请求的同时，更新已为刷新操作注册的配置设置。
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
+        app.UseMvc();
+    }
+    ```
+    
+    该中间件使用 `Program.cs` 的 `AddAzureAppConfiguration` 方法中指定的刷新配置，以针对 ASP.NET Core Web 应用收到的每个请求触发刷新。 对于每个请求，均会触发刷新操作，并且客户端库会检查已注册的配置设置的缓存值是否过期。 对于已过期的缓存值，设置的值使用应用配置存储进行更新，而其余的值保持不变。
+    
+    > [!NOTE]
+    > 配置设置的默认缓存过期时间为 30 秒，但是，可以通过调用作为参数传递到 `ConfigureRefresh` 方法的选项初始值设定项上的 `SetCacheExpiration` 方法来重写该过期时间。
 
 ## <a name="use-the-latest-configuration-data"></a>使用最新的配置数据
 
@@ -177,9 +197,12 @@ ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据�
     | TestAppSettings:FontColor | lightGray |
     | TestAppSettings:Message | Azure 应用配置中的数据 - 现可实时更新！ |
 
-6. 刷新浏览器页面，查看新的配置设置。
+6. 刷新浏览器页面，查看新的配置设置。 可能需要对浏览器页进行多次刷新，才能使更改得到反映。
 
     ![本地刷新应用快速入门](./media/quickstarts/aspnet-core-app-launch-local-after.png)
+    
+    > [!NOTE]
+    > 由于缓存配置设置的默认过期时间为 30 秒，因此，在缓存过期时，在应用配置存储中对设置所做的任何更改都仅反映在 Web 应用中。
 
 ## <a name="clean-up-resources"></a>清理资源
 

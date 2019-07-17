@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0afbc6f28bab905f00e3713ddb012479c1c9c36f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 626ee2ca81967ab088ab4b5aceda15a99231d118
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009406"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604331"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-javascript-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 JavaScript 生成缩略图
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 生成缩略图
 
 在本快速入门中，你将使用计算机视觉的 REST API 基于图像生成缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
 
@@ -40,7 +40,7 @@ ms.locfileid: "60009406"
 1. 将代码保存为以 `.html` 为扩展名的文件。 例如，`get-thumbnail.html`。
 1. 打开一个浏览器窗口。
 1. 在浏览器中，将文件拖放到浏览器窗口。
-1. 在浏览器中显示网页时，选择“生成缩略图”按钮。
+1. 在浏览器中显示网页时，选择“生成缩略图”按钮  。
 
 ```html
 <!DOCTYPE html>

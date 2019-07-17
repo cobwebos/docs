@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ad619a72bc66df04675cd63589c540d2adc05b0b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 71fc32fb34ae67f6d3a4de556da8b107574cc920
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996113"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603530"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-ruby-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Ruby 提取印刷体文本 (OCR)
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-ruby"></a>快速入门：使用计算机视觉 REST API 和 Ruby 提取印刷体文本 (OCR)
 
 在本快速入门中，你将使用计算机视觉的 REST API，通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
 
@@ -27,7 +27,7 @@ ms.locfileid: "59996113"
 ## <a name="prerequisites"></a>先决条件
 
 - 必须安装有 [Ruby](https://www.ruby-lang.org/en/downloads/) 2.4.x 或更高版本。
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
+- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
@@ -40,7 +40,7 @@ ms.locfileid: "59996113"
     1. （可选）将 `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\` 替换为要从中提取印刷体文本的另一图像的 URL。
 1. 将代码保存为以 `.rb` 为扩展名的文件。 例如，`get-printed-text.rb`。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `ruby` 命令运行示例。 例如，`ruby get-printed-text.rb`。
+1. 在提示符处，使用 `ruby` 命令运行示例。 例如，`ruby get-printed-text.rb` 。
 
 ```ruby
 require 'net/http'

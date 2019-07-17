@@ -7,20 +7,20 @@ ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: evanhi
-ms.openlocfilehash: e4196cf59537be5194ceb510a1b7b066c97de19a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 41200139ef55fa1ae441192e2d81b5228cf29bad
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410224"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795316"
 ---
-# <a name="tutorial-create-custom-provider-and-deploy-custom-resources"></a>教程：创建自定义提供程序并部署自定义资源
+# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>快速入门：创建自定义提供程序并部署自定义资源
 
-在本教程中，我们将创建自己的资源提供程序，并为该资源提供程序部署自定义资源类型。 有关自定义提供程序的详细信息，请参阅 [Azure 自定义提供程序预览版概述](custom-providers-overview.md)。
+在本快速入门中，你将创建自己的资源提供程序，并为该资源提供程序部署自定义资源类型。 有关自定义提供程序的详细信息，请参阅 [Azure 自定义提供程序预览版概述](custom-providers-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程中的步骤需要调用 REST 操作。 可以通过[不同的方法来发送 REST 请求](/rest/api/azure/)。 如果还没有用于 REST 操作的工具，请安装 [ARMClient](https://github.com/projectkudu/ARMClient)。 它是一种可简化 Azure 资源管理器 API 调用的开源命令行工具。
+完成本快速入门中的步骤需要调用 REST 操作。 可以通过[不同的方法来发送 REST 请求](/rest/api/azure/)。 如果还没有用于 REST 操作的工具，请安装 [ARMClient](https://github.com/projectkudu/ARMClient)。 它是一种可简化 Azure 资源管理器 API 调用的开源命令行工具。
 
 ## <a name="deploy-custom-provider"></a>部署自定义提供程序
 
@@ -53,7 +53,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $rgName `
 
 ## <a name="view-custom-provider-and-resource"></a>查看自定义提供程序和资源
 
-在门户中，自定义提供程序是隐藏的资源类型。 若要确认资源提供程序是否已部署，请导航到资源组。 选择“显示隐藏类型”选项。
+在门户中，自定义提供程序是隐藏的资源类型。 若要确认资源提供程序是否已部署，请导航到资源组。 选择“显示隐藏类型”选项。 
 
 ![显示隐藏的资源类型](./media/create-custom-providers/show-hidden.png)
 
@@ -122,7 +122,7 @@ armclient POST $pingURI
 
 ## <a name="create-resource-type"></a>创建资源类型
 
-若要创建自定义资源类型，可以在模板中部署资源。 此方法显示在本教程部署的模板中。 也可针对此资源类型发送 PUT 请求。
+若要创建自定义资源类型，可以在模板中部署资源。 此方法显示在本快速入门部署的模板中。 也可针对此资源类型发送 PUT 请求。
 
 ```
 PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/<resource-name>?api-version=2018-09-01-preview

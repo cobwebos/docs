@@ -5,21 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 06/11/2019
+ms.date: 06/28/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 7ee6b2dd07a89de4f5347e82bde19990dbb6c995
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 46f3f87fac5b65229e03ee91d8f2b93b1a1590e8
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077546"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795277"
 ---
 # <a name="what-is-azure-virtual-wan"></a>什么是 Azure 虚拟 WAN？
 
 Azure Virtual WAN 是一种网络服务，提供到 Azure 并穿过该服务的经优化的自动分支连接。 Azure 区域充当可以选择将分支连接到的中心。 还可以利用 Azure 主干连接分支，享用分支到 VNet 的连接。 我们有一个支持使用 Azure 虚拟 WAN VPN 实现连接自动化的合作伙伴列表。 有关详细信息，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。
 
-Azure 虚拟 WAN 将许多 Azure 云连接服务汇集到一个操作界面中，例如站点到站点 VPN（正式发布版）、ExpressRoute（预览版）、点到站点用户 VPN（预览版）。 通过使用虚拟网络连接建立与 Azure VNet 的连接。
+Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN、ExpressRoute 和点到站点用户 VPN）汇集到一个操作界面中。 通过使用虚拟网络连接建立与 Azure VNet 的连接。
+
+用于虚拟 WAN 的 ExpressRoute 和点到站点用户 VPN 目前以预览版提供。
 
 ![虚拟 WAN 示意图](./media/virtual-wan-about/virtualwan1.png)
 

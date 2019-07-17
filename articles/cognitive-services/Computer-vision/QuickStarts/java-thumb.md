@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b732f65227c7449b45f2e656abcc90a42411ad5e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 8d068efd00dffb5edd168fadf0003bddd2aa9880
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010613"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604372"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-java-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Java 生成缩略图
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>快速入门：使用计算机视觉 REST API 和 Java 生成缩略图
 
 在本快速入门中，你将使用计算机视觉的 REST API 基于图像生成缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
 
@@ -63,7 +63,7 @@ ms.locfileid: "60010613"
    1. 如果需要，将 `uriBase` 的值替换为你在其中获取了订阅密钥的 Azure 区域中的[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法的终结点 URL。
    1. （可选）将 `imageToAnalyze` 的值替换为你要为其生成缩略图的另一图像的 URL。
 1. 保存，然后生成 Java 项目。
-1. 如果使用的是 IDE，请运行 `Main`。 否则，请打开一个命令提示窗口，然后使用 `java` 命令运行已编译的类。 例如，`java Main`。
+1. 如果使用的是 IDE，请运行 `Main`。 否则，请打开一个命令提示窗口，然后使用 `java` 命令运行已编译的类。 例如，`java Main` 。
 
 ```java
 // This sample uses the following libraries:
@@ -85,7 +85,7 @@ public class Main {
     // from the West US region, replace "westcentralus" in the URL
     // below with "westus".
     //
-    // Free trial subscription keys are generated in the "westus" region.
+    // Free trial subscription keys are generated in the "westcentralus" region.
     // If you use a free trial subscription key, you shouldn't need to change
     // this region.
     private static final String uriBase =

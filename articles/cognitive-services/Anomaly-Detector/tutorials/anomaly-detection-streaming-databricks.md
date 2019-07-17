@@ -1,6 +1,7 @@
 ---
 title: 教程：使用 Azure Databricks 针对流数据进行异常情况检测
-description: 使用异常检测器 API 和 Azure Databricks 来监视你的数据中的异常。
+titleSuffix: Azure Cognitive Services
+description: 使用异常检测器 API 和 Azure Databricks 来监视数据中的异常。
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -10,16 +11,16 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: 7009771f2b647bb582b3d8091edce99fe901a9f1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 8d3f5d0e10fadd31fd8bde77339b872c1b90451f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080794"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721470"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据进行异常情况检测
 
-[Azure Databricks](https://azure.microsoft.com/services/databricks/)是一种快速、 简单和协作的基于 Apache Spark 分析服务。 异常情况检测器 API，Azure 认知服务的一部分提供的监视时序数据的方法。 使用本教程中的数据接近实时的速度针对数据流运行异常情况检测使用 Azure Databricks。 将引入 twitter 数据使用 Azure 事件中心，并将其导入使用 Spark 事件中心连接器在 Azure Databricks。 然后，将使用 API 来检测针对流数据的异常。 
+[Azure Databricks](https://azure.microsoft.com/services/databricks/) 是基于Apache Spark 的快速、简单、协作型分析服务。 异常检测器 API 是 Azure 认知服务的一部分，可以用于监视时序数据。 按照本教程的说明，使用 Azure Databricks 以近实时方式对数据流运行异常检测。 我们将使用 Azure 事件中心引入推特数据，并使用 Spark 事件中心连接器将其导入 Azure Databricks。 然后，我们将使用 API 检测流式传输数据中的异常。 
 
 下图演示了应用程序流：
 
@@ -33,34 +34,34 @@ ms.locfileid: "67080794"
 > * 创建用于访问流数据的 Twitter 应用
 > * 在 Azure Databricks 中创建 Notebook
 > * 附加事件中心和 Twitter API 的库
-> * 创建异常情况检测程序资源，并检索访问密钥
+> * 创建异常检测器资源并检索访问密钥
 > * 将推文发送到事件中心
 > * 读取事件中心的推文
-> * 对推文运行异常情况检测
+> * 在推文中运行异常检测
 
 > [!Note]
-> 本教程介绍了一种实现建议的方法[解决方案体系结构](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)异常情况检测器 api。
+> 本教程引入了一个方法，用于为异常检测器 API 实现建议的[解决方案体系结构](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 > [!Note]
-> 免费试用版密钥异常情况检测程序 api 时，不能完成本教程。 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
+> 本教程不能使用异常检测器 API 的免费试用版密钥来完成。 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - [Azure 事件中心命名空间](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)和事件中心。
 
-- [连接字符串](../../../event-hubs/event-hubs-get-connection-string.md)访问事件中心命名空间。 连接字符串应具有的相似格式：
+- 用于访问事件中心命名空间的[连接字符串](../../../event-hubs/event-hubs-get-connection-string.md)。 该连接字符串应采用类似于
 
-    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`。 
+    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>` 的格式。 
 
-- 共享的访问策略名称和策略的关键事件中心。
+- 事件中心的共享访问策略名称和策略密钥。
 
-请参阅 Azure 事件中心[快速入门](../../../event-hubs/event-hubs-create.md)有关创建命名空间和事件中心信息。
+请参阅 Azure 事件中心[快速入门](../../../event-hubs/event-hubs-create.md)，了解如何创建命名空间和事件中心。
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
-在本部分中，创建 Azure Databricks 工作区中使用[Azure 门户](https://portal.azure.com/)。
+在本部分，使用 [Azure 门户](https://portal.azure.com/)创建 Azure Databricks 工作区。
 
 1. 在 Azure 门户中，选择“创建资源”   >   “分析” >   “Azure Databricks”。
 
@@ -74,8 +75,8 @@ ms.locfileid: "67080794"
     |**工作区名称**     | 提供 Databricks 工作区的名称        |
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
     |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../../azure-resource-manager/resource-group-overview.md)。 |
-    |**位置**     | 选择**美国东部 2**或任何其他可用区域之一。 请参阅[推出区域的 Azure 服务](https://azure.microsoft.com/regions/services/)的区域可用性。        |
-    |**定价层**     |  选择“标准”或“高级”。   请不要选择**试用版**。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
+    |**位置**     | 选择“美国东部 2”或任何其他可用区域之一。  有关区域可用性，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
+    |**定价层**     |  选择“标准”或“高级”。   请勿选择“试用版”  。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
     选择“创建”  。
 
@@ -85,22 +86,22 @@ ms.locfileid: "67080794"
 
 1. 在 Azure 门户中，转到所创建的 Databricks 工作区，然后选择“启动工作区”。 
 
-2. 系统随后会将你重定向到 Azure Databricks 门户。 在门户中，选择**新的群集**。
+2. 系统随后会将你重定向到 Azure Databricks 门户。 在门户中选择“新建群集”。 
 
     ![Azure 上的 Databricks](../media/tutorials/databricks-on-azure.png "Azure 上的 Databricks")
 
-3. 在中**新的群集**页上，提供用于创建群集的值。
+3. 在“新建群集”页中，提供用于创建群集的值。 
 
     ![在 Azure 上创建 Databricks Spark 群集](../media/tutorials/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
     除以下值外，接受其他所有默认值：
 
    * 输入群集的名称。
-   * 在本文中，请创建运行时为 **5.2** 的群集。 不要选择**5.3**运行时。
-   * 请确保**处于不活动状态\_\_处于非活动状态的分钟数**选中复选框。 提供持续时间 （以分钟为单位） 以终止群集，如果群集未被使用。
+   * 在本文中，请创建运行时为 **5.2** 的群集。 请勿选择 **5.3** 运行时。
+   * 请务必选中“在不活动超过 \_\_ 分钟后终止”  复选框。 如果未使用群集，则请提供一个持续时间（以分钟为单位），超过该时间后群集会被终止。
 
      选择“创建群集”。  
-4. 创建群集需要几分钟时间。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
+4. 创建群集需要数分钟。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 ## <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
 
@@ -122,13 +123,13 @@ ms.locfileid: "67080794"
 
 ## <a name="attach-libraries-to-spark-cluster"></a>将库附加到 Spark 群集
 
-本教程使用 Twitter API 将推文发送到事件中心。 也可以使用 [Apache Spark 事件中心连接器](https://github.com/Azure/azure-event-hubs-spark)在 Azure 事件中心读取和写入数据。 若要将这些 API 用作群集的一部分，请将其作为库添加到 Azure Databricks，然后将其与 Spark 群集相关联。 以下说明介绍如何将添加到库**共享**工作区中的文件夹。
+本教程使用 Twitter API 将推文发送到事件中心。 也可以使用 [Apache Spark 事件中心连接器](https://github.com/Azure/azure-event-hubs-spark)在 Azure 事件中心读取和写入数据。 若要将这些 API 用作群集的一部分，请将其作为库添加到 Azure Databricks，然后将其与 Spark 群集相关联。 以下说明介绍如何将库添加到工作区中的 **Shared** 文件夹。
 
 1. 在 Azure Databricks 工作区中选择“工作区”  ，然后右键单击“共享”  。 从上下文菜单中选择“创建”   >   “库”。
 
    ![“添加库”对话框](../media/tutorials/databricks-add-library-option.png "“添加库”对话框")
 
-2. 在新的库页中，对于**源**选择**Maven**。 有关**协调**，输入你想要添加的包的坐标。 下面是本教程中使用的库的 Maven 坐标：
+2. 在“新建库”  页中，选择“Maven”作为“源”  。 对于“坐标”  ，请输入要添加的包的坐标。 下面是本教程中使用的库的 Maven 坐标：
 
    * Spark 事件中心连接器 - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter API - `org.twitter4j:twitter4j-core:4.0.7`
@@ -141,43 +142,43 @@ ms.locfileid: "67080794"
 
     ![选择要添加的库](../media/tutorials/select-library.png "选择要添加的库")
 
-5. 如果在库页中没有群集，请选择**群集**并运行已创建的群集。 等待，直到状态显示正在运行，然后返回到库页。
-在库页上，选择你想要使用的库，然后选择的群集**安装**。 在库成功地与群集相关联后，状态将立即更改为**已安装**。
+5. 如果库页中没有群集，请选择“群集”并运行所创建的群集。  等到状态显示为“正在运行”，然后返回到库页面。
+在库页上，选择要在其中使用该库的群集，然后选择“安装”。  将库成功关联到群集后，状态会立即更改为“已安装”  。
 
-    ![将库安装到群集](../media/tutorials/databricks-library-attached.png "安装库附加到群集")
+    ![将库安装到群集](../media/tutorials/databricks-library-attached.png "将库安装到群集")
 
 6. 针对 Twitter 包 `twitter4j-core:4.0.7` 重复上述步骤。
 
 ## <a name="get-a-cognitive-services-access-key"></a>获取认知服务访问密钥
 
-在本教程中，您使用[Azure 认知服务异常情况检测器 Api](../overview.md)上近乎实时的推文流运行异常情况检测。 使用这些 Api 之前，必须在 Azure 上创建异常情况检测程序资源，并检索访问密钥，以使用异常检测器 Api。
+本教程介绍如何使用 [Azure 认知服务异常检测器 API](../overview.md) 以近实时的方式对推文流运行异常检测。 在使用这些 API 之前，必须在 Azure 上创建异常检测器资源，并检索使用异常检测器 API 所需的访问密钥。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择“+ 创建资源”。 
 
-3. 在 Azure Marketplace 下选择**AI + 机器学习** > **查看所有** > **认知服务-更** >  **异常情况检测器**。 或者，可以使用[此链接](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)若要转到**创建**直接对话框。
+3. 在 Azure 市场下，选择“AI + 机器学习”   > “全部查看”   > “认知服务 - 更多”   >   “异常检测器”。 也可使用[此链接](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)，直接转到“创建”对话框。 
 
-    ![创建异常情况检测程序资源](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "创建异常情况检测程序资源")
+    ![创建异常检测器资源](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "创建异常检测器资源")
 
 4. 在“创建”  对话框中，提供以下值：
 
-    |值 |描述  |
+    |值 |说明  |
     |---------|---------|
-    |Name     | 异常情况检测程序资源的名称。        |
-    |订阅     | 将与之关联的 Azure 订阅资源。        |
-    |Location     | 一个 Azure 位置。        |
-    |定价层     | 服务的定价层。 有关异常情况检测程序定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)。        |
+    |名称     | 异常检测器资源的名称。        |
+    |订阅     | 将要与资源关联的 Azure 订阅。        |
+    |位置     | Azure 位置。        |
+    |定价层     | 服务定价层。 有关异常检测器定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)。        |
     |资源组     | 指定是要创建新的资源组还是选择现有的资源组。        |
 
 
      选择“创建”  。
 
-5. 创建资源后，从**概述**选项卡上，复制并保存**终结点**URL，如屏幕截图中所示。 然后选择**显示访问密钥**。
+5. 创建资源后，从“概览”选项卡复制并保存  **终结点** URL，如屏幕截图所示。 然后选择“显示访问密钥”  。
 
     ![显示访问密钥](../media/tutorials/cognitive-services-get-access-keys.png "显示访问密钥")
 
-6. 下**密钥**，选择你想要使用的密钥对复制图标。 保存访问密钥。
+6. 在“密钥”  下针对要使用的密钥选择复制图标。 保存访问密钥。
 
     ![复制访问密钥](../media/tutorials/cognitive-services-copy-access-keys.png "复制访问密钥")
 
@@ -186,13 +187,13 @@ ms.locfileid: "67080794"
 在本部分，请使用以下名称在 Databricks 工作区中创建两个 Notebook
 
 - **SendTweetsToEventHub** - 用于从 Twitter 获取推文并将其流式传输到事件中心的生成者 Notebook。
-- **AnalyzeTweetsFromEventHub** -用于从事件中心读取推文并运行异常情况检测的使用者笔记本。
+- **AnalyzeTweetsFromEventHub** - 用于从事件中心读取推文并运行异常检测的使用者 Notebook。
 
-1. 在 Azure Databricks 工作区中，选择**工作区**在左窗格中。 在“工作区”下拉列表中选择“创建”，然后选择“Notebook”。   
+1. 在 Azure Databricks 工作区的左窗格中选择“工作区”  。 在“工作区”下拉列表中选择“创建”，然后选择“Notebook”。   
 
     ![在 Databricks 中创建笔记本](../media/tutorials/databricks-create-notebook.png "在 Databricks 中创建笔记本")
 
-2. 在中**创建 Notebook**对话框框中，输入**SendTweetsToEventHub**作为名称，选择**Scala**作为语言，并选择前面创建的 Spark 群集。
+2. 在“创建 Notebook”  对话框中输入 **SendTweetsToEventHub** 作为名称，选择 **Scala** 作为语言，并选择前面创建的 Spark 群集。
 
     ![在 Databricks 中创建笔记本](../media/tutorials/databricks-notebook-details.png "在 Databricks 中创建笔记本")
 
@@ -202,7 +203,7 @@ ms.locfileid: "67080794"
 
 ## <a name="send-tweets-to-event-hubs"></a>将推文发送到事件中心
 
-在 **SendTweetsToEventHub** Notebook 中粘贴以下代码，并将占位符替换为前面创建的事件中心命名空间和 Twitter 应用程序的值。 此 notebook 使用关键字"Azure"的推文中提取创建时间和数量"Like"，并实时流式那些作为事件传输到事件中心。
+在 **SendTweetsToEventHub** Notebook 中粘贴以下代码，并将占位符替换为前面创建的事件中心命名空间和 Twitter 应用程序的值。 此笔记本从包含关键字“Azure”的推文中提取“赞”的创建时间和数目，然后将其作为事件以实时方式流式传输到事件中心。
 
 ```scala
 //
@@ -299,7 +300,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。 输出中的每个事件是数引入到事件中心的"Like"s 和时间戳的组合。
+若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。 输出中的每个事件是已引入事件中心的“赞”的时间戳和数目的组合。
 
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
@@ -322,9 +323,9 @@ pool.shutdown()
 
 ## <a name="read-tweets-from-event-hubs"></a>读取事件中心的推文
 
-在中**AnalyzeTweetsFromEventHub**笔记本中粘贴以下代码，并将占位符替换为你前面创建的异常情况检测程序资源值。 此 Notebook 读取前面使用 **SendTweetsToEventHub** Notebook 流式传输到事件中心的推文。
+在 **AnalyzeTweetsFromEventHub** Notebook 中粘贴以下代码，并将占位符替换为前面创建的异常检测器资源的值。 此 Notebook 读取前面使用 **SendTweetsToEventHub** Notebook 流式传输到事件中心的推文。
 
-首先，编写一个客户端调用异常情况检测程序。 
+首先，编写一个客户端来调用异常检测器。 
 ```scala
 
 //
@@ -435,7 +436,7 @@ object AnomalyDetector extends Serializable {
     defined class AnomalyBatchResponse
     defined object AnomalyDetector
 
-然后准备供将来使用的聚合函数。
+然后，准备一个供将来使用的聚合函数。
 ```scala
 //
 // User Defined Aggregation Function for Anomaly Detection
@@ -502,7 +503,7 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
     import scala.collection.immutable.ListMap
     defined class AnomalyDetectorAggregationFunction
 
-从异常情况检测的事件中心，然后加载数据。 将占位符替换为值的前面创建的 Azure 事件中心。
+然后，从事件中心加载数据，以便进行异常检测。 将占位符替换为前面创建的 Azure 事件中心的值。
 
 ```scala
 //
@@ -540,18 +541,18 @@ display(msgStream)
 
 ```
 
-现在，输出类似于下图。 请注意，您在表中的日期可能与本教程中的日期不同，因为数据是实时。
-![负载数据从事件中心](../media/tutorials/load-data-from-eventhub.png "负载数据从事件中心")
+现在，输出如下图所示。 请注意，你在表中的日期可能不同于本教程中的日期，因为数据是实时的。
+![从事件中心加载数据](../media/tutorials/load-data-from-eventhub.png "从事件中心加载数据")
 
 现在已通过适用于 Apache Spark 的事件中心连接器接近实时地将数据从 Azure 事件中心流式传输到 Azure Databricks 中。 有关如何使用适用于 Spark 的事件中心连接器的详细信息，请参阅[连接器文档](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs)。
 
 
 
-## <a name="run-anomaly-detection-on-tweets"></a>对推文运行异常情况检测
+## <a name="run-anomaly-detection-on-tweets"></a>在推文中运行异常检测
 
-在本部分中，使用异常检测器 API 接收对推文运行异常情况检测。 对于此部分，请将代码片段添加到同一 **AnalyzeTweetsFromEventHub** Notebook。
+在此部分，请对使用异常检测器 API 接收到的推文运行异常检测。 对于此部分，请将代码片段添加到同一 **AnalyzeTweetsFromEventHub** Notebook。
 
-若要执行异常情况检测，首先，需要按小时聚合指标计数。
+若要进行异常检测，首先需按小时聚合指标计数。
 ```scala
 //
 // Aggregate Metric Count by Hour
@@ -567,7 +568,7 @@ groupStream.printSchema
 
 display(groupStream)
 ```
-现在，输出类似于以下代码片段。
+现在，输出如以下代码片段所示。
 ```
 groupTime                       average
 2019-04-23T04:00:00.000+0000    24
@@ -579,8 +580,8 @@ groupTime                       average
 
 ```
 
-然后获取聚合的输出结果与增量。 由于异常情况检测需要更长的历史记录窗口，我们将使用增量至您想要检测的历史记录数据保留。 替换为"[占位符： 表名]"具有限定增量表名 （例如，"tweets"） 创建。 替换为"[占位符： 检查点的文件夹名称]"字符串值都是唯一的每次运行此代码 (例如，"etl-从-事件中心-20190605")。
-若要了解有关 Azure Databricks 上的增量 Lake 的详细信息，请参阅[增量 Lake 指南](https://docs.azuredatabricks.net/delta/index.html)
+然后，获取 Delta 的聚合输出结果。 由于异常检测需要较长的历史记录窗口，我们将使用 Delta 来保留需检测的时间点的历史记录数据。 将“[占位符: 表名]”替换为要创建的限定 Delta 表名（例如“tweets”）。 将“[占位符: 检查点的文件夹名称]”替换为一个字符串值，每次运行此代码时，该字符串值都是独一无二的（例如“etl-from-eventhub-20190605”）。
+若要详细了解 Azure Databricks 上的 Delta Lake，请参阅 [Delta Lake Guide](https://docs.azuredatabricks.net/delta/index.html)（Delta Lake 指南）
 
 
 ```scala
@@ -596,7 +597,7 @@ groupStream.writeStream
 
 ```
 
-替换为"[占位符： 表名]"上面已经选择具有相同的增量表名称。
+将“[占位符: 表名]”替换为在上面选择的 Delta 表名。
 ```scala
 //
 // Show Aggregate Result
@@ -610,7 +611,7 @@ twitterData.show(200, false)
 
 display(twitterData)
 ```
-按如下所示输出： 
+输出如下： 
 ```
 groupTime                       average
 2019-04-08T01:00:00.000+0000    25.6
@@ -623,7 +624,7 @@ groupTime                       average
 
 ```
 
-现在聚合的时序数据是连续引入到增量。 然后可以安排每小时作业检测到最新点的异常情况。 替换为"[占位符： 表名]"上面已经选择具有相同的增量表名称。
+现在，聚合的时序数据已持续引入到 Delta 中。 然后，我们可以计划一个小时作业，用于检测最新时间点的异常。 将“[占位符: 表名]”替换为在上面选择的 Delta 表名。
 
 ```scala
 //
@@ -662,7 +663,7 @@ spark.udf.register("anomalydetect", new AnomalyDetectorAggregationFunction)
 val adResult = spark.sql("SELECT '" + endTime.toString + "' as datetime, anomalydetect(groupTime, average) as anomaly FROM series")
 adResult.show()
 ```
-结果如下所示： 
+结果如下： 
 
 ```
 +--------------------+-------+
@@ -672,20 +673,20 @@ adResult.show()
 +--------------------+-------+
 ```
 
-就这么简单！ 使用 Azure Databricks，已成功数据流式传输到 Azure 事件中心、 通过使用流数据的事件中心连接器，并在流式处理数据以近乎实时运行异常情况检测。
-虽然在本教程中，粒度为每小时，你可以随时更改以满足你需求的粒度。 
+就这么简单！ 现已成功使用 Azure Databricks 以接近实时的速度将数据流式传输到 Azure 事件中心，通过事件中心连接器使用了流数据，然后对流数据运行了异常检测。
+虽然在本教程中粒度为小时，但我们始终可以根据自己的需要更改粒度。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-运行完本教程后，可以终止群集。 为此，请在 Azure Databricks 工作区中，选择**群集**在左窗格中。 针对想要终止的群集，将光标移动到下面的省略号**操作**列，并选择**终止**图标，然后选择**确认**。
+运行完本教程后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”  。 针对想要终止的群集，将光标移到“操作”  列下面的省略号上，选择“终止”  图标，然后选择“确认”。 
 
 ![停止 Databricks 群集](../media/tutorials/terminate-databricks-cluster.png "停止 Databricks 群集")
 
-如果不手动终止的群集将自动停止，提供所选**处于不活动状态\_\_处于非活动状态的分钟数**创建群集时的复选框。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
+如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”  复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用 Azure Databricks 将数据流式传输到 Azure 事件中心，然后从事件中心实时读取流数据。 转到下一步的教程，了解如何调用异常检测器 API 并直观显示使用 Power BI desktop 的异常。 
+本教程介绍了如何使用 Azure Databricks 将数据流式传输到 Azure 事件中心，然后从事件中心实时读取流数据。 继续学习下一教程，了解如何调用异常检测器 API 并使用 Power BI Desktop 将异常可视化。 
 
 > [!div class="nextstepaction"]
->[使用 Power BI desktop 的批处理异常情况检测](batch-anomaly-detection-powerbi.md)
+>[使用 Power BI Desktop 进行批量异常检测](batch-anomaly-detection-powerbi.md)

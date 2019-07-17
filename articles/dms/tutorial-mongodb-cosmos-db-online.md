@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/29/2019
-ms.openlocfilehash: 0bd271dbf173885cbd5f7835c5dc6b672a3e6035
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.date: 07/04/2019
+ms.openlocfilehash: 17f1b36ba5d5b699cce621db3917ef92654047ff
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298967"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565581"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>教程：使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 
@@ -150,7 +150,14 @@ ms.locfileid: "66298967"
 
      * 对于 JSON 转储，blob 容器中的文件必须放置到以包含数据库命名的文件夹中。 在每个数据库文件夹中，数据文件必须放置到名为“数据”且采用 collection.json 格式命名的子文件夹中  。 元数据文件（如有）必须放置到名为“元数据”且同样采用 collection.json 格式命名的子文件夹中  。 元数据文件必须采用由 MongoDB bsondump 工具所生成的相同格式。
 
-   如果无法进行 DNS 名称解析，可以使用 IP 地址。
+    > [!IMPORTANT]
+    > 建议不要在 mongo 服务器上使用自签名证书。 但是，如果使用了自签名证书，请使用**连接字符串模式**连接到服务器，并确保连接字符串包含 “”
+    >
+    >```
+    >&sslVerifyCertificate=false
+    >```
+
+    如果无法进行 DNS 名称解析，可以使用 IP 地址。
 
    ![指定源详细信息](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-source1.png)
 

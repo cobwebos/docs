@@ -1,21 +1,21 @@
 ---
 title: 教程：人脸 API C#
 titleSuffix: Azure Cognitive Services
-description: 创建一个简单的 Windows 应用，该应用使用认知服务人脸 API 检测图像中人脸的特征。
+description: 创建一个 Windows 应用，该应用使用认知服务人脸 API 检测图像中人脸的特征。
 services: cognitive-services
 author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 07/03/2019
 ms.author: ghogen
-ms.openlocfilehash: 492161a9a47627db8a06686daf953e99ca652e02
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 7907a79289149d9e165dd6df0c09bee596e624e2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827669"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606814"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用连接服务连接到认知服务人脸 API
 
@@ -239,7 +239,7 @@ ms.locfileid: "65827669"
 
 不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 要通过门户删除资源组，请执行以下操作：
 
-1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，请将其选中。
+1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
 1. 选择“删除资源组”  。
 1. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”   。
 

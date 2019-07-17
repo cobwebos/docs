@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 00684df614771437f33655538a808468ee778d29
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9ddb882658551115b05df3820e70a6b6684d563b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486999"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604037"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>快速入门：使用适用于 Java 的自定义视觉 SDK 创建对象检测项目
 
@@ -29,7 +29,7 @@ ms.locfileid: "58486999"
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>获取自定义视觉 SDK 和示例代码
 
-若要编写使用自定义视觉的 Java 应用，需要自定义视觉 maven 包。 这些都包括在要下载的示例项目中，但你可以在此处逐个访问它们。
+若要编写使用自定义视觉的 Java 应用，需要自定义视觉 maven 包。 这些包将包含在要下载的示例项目中，但你可以在此处逐个访问它们。
 
 可从 maven 中央存储库安装自定义影像 SDK：
 - [定型 SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
@@ -37,7 +37,7 @@ ms.locfileid: "58486999"
 
 克隆或下载[认知服务 Java SDK 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master)项目。 导航到 **Vision/CustomVision/** 文件夹。
 
-此 Java 项目创建新的名为“示例 Java OD 项目”的自定义视觉对象检测项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，它上传图像以定型和测试分类器。 在此项目中，分类器用于确定树是铁杉树还是日本樱花树。
+此 Java 项目创建新的名为“示例 Java OD 项目”  的自定义视觉对象检测项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，它上传图像以定型和测试分类器。 在此项目中，分类器用于确定树是铁杉树  还是日本樱花树  。
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -50,7 +50,7 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 ## <a name="understand-the-code"></a>了解代码
 
-在 Java IDE 中加载 `Vision/CustomVision` 项目，打开 _CustomVisionSamples.java_ 文件。 找到 **runSample** 方法，注释掉 **ImageClassification_Sample** 方法调用&mdash;这会执行本指南中不介绍的图像分类方案。 **ObjectDetection_Sample** 方法实现本快速入门的主要功能；请导航到其定义并检查代码。 
+在 Java IDE 中加载 `Vision/CustomVision` 项目，打开 _CustomVisionSamples.java_ 文件。 找到 **runSample** 方法，注释掉 **ImageClassification_Sample** 方法调用&mdash;此方法会执行图像分类方案（本指南中未介绍）。 **ObjectDetection_Sample** 方法实现本快速入门的主要功能；请导航到其定义并检查代码。 
 
 ### <a name="create-a-new-custom-vision-service-project"></a>创建新的自定义视觉服务项目
 

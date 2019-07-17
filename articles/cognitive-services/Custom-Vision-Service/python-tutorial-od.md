@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 15c7df52dcc2b9ab6977ee9d67d7997ff8b14287
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 623bf0b054544d2c25f3542043afe20d778fdd24
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485962"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603497"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>快速入门：使用自定义视觉 Python SDK 创建对象检测项目
 
@@ -46,7 +46,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 ### <a name="create-the-custom-vision-service-project"></a>创建自定义视觉服务项目
 
-将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。 请注意，创建对象检测和图像分类项目之间的区别是 **create_project** 调用中指定的域。
+将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。 创建对象检测和图像分类项目之间的区别是 **create_project** 调用中指定的域。
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -85,7 +85,7 @@ scissors_tag = trainer.create_tag(project.id, "scissors")
 
 在对象检测项目中标记图像时，需要使用标准化坐标指定每个标记对象的区域。
 
-若要将图像、标记和区域添加到项目，请在创建标记后插入以下代码。 请注意，对于本教程，区域与代码进行内联硬编码。 区域在标准化坐标中指定边界框，坐标按以下顺序给定：左部、顶部、宽度、高度。
+若要将图像、标记和区域添加到项目，请在创建标记后插入以下代码。 在本教程中，区域使用代码进行内联硬编码。 区域在标准化坐标中指定边界框，坐标按以下顺序给定：左部、顶部、宽度、高度。
 
 ```Python
 fork_image_regions = {

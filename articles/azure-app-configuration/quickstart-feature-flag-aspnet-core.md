@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: bd812ad1194f88b14d88f067583ca6eee4bb0c74
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 38b404ec10fb7b66b5e276665b0c9047d0576c15
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274208"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798389"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入门：将功能标志添加到 ASP.NET Core 应用
 
@@ -84,12 +84,10 @@ ms.locfileid: "67274208"
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 运行以下命令添加对 `Microsoft.Extensions.Configuration.AzureAppConfiguration` 和 `Microsoft.FeatureManagement` NuGet 包的引用：
+1. 通过运行以下命令，添加对 `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet 包的引用：
 
     ```
-    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008920001-990
-
-    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
     ```
 
 1. 运行以下命令，还原项目包：
@@ -146,6 +144,16 @@ ms.locfileid: "67274208"
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddFeatureManagement();
+    }
+    ```
+
+1. 更新 `Configure` 方法以添加中间件，以允许在 ASP.NET Core Web 应用继续接收请求的同时定期刷新功能标志值。
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
+        app.UseMvc();
     }
     ```
 

@@ -1,17 +1,17 @@
 ---
-title: Azure PowerShell 脚本 - Azure Cosmos DB 更新 SQL (Core) API 的 RU/秒
-description: Azure PowerShell 脚本 - Azure Cosmos DB 更新 SQL (Core) API 的 RU/秒
+title: Azure PowerShell 脚本 - Azure Cosmos DB 更新 RU/秒 - SQL (Core) API
+description: Azure PowerShell 脚本 - Azure Cosmos DB 更新 RU/秒 - SQL (Core) API
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9558579fbdbd2185f6de650547863361ff2b80a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: fae1e7946905a96fbbf00909c96dd3aa99d766d5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247329"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603841"
 ---
 # <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>更新 Azure Cosmos DB 的数据库或容器的 RU/秒 - SQL (Core) API
 

@@ -5,28 +5,27 @@ services: databox
 documentationcenter: NA
 author: alkohli
 ms.service: databox
-ms.subservice: pod
+ms.subservice: heavy
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0f4657cdd71a104ca111f62a6e9757b5a33b46e8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271739"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592297"
 ---
-# <a name="what-is-azure-data-box-heavy-preview"></a>什么是 Azure Data Box Heavy？ （预览版）
+# <a name="what-is-azure-data-box-heavy"></a>什么是 Azure Data Box Heavy？
 
 使用 Azure Data Box Heavy 能够以快速、廉价且可靠的方式将数百 TB 的数据发送到 Azure。 将数据转移到 Azure 的方式是这样的：我们向你寄送一个存储容量为 1 PB 的 Data Box Heavy 设备，然后你将数据填充到其中并将其寄回 Microsoft。 该设备具有坚固的外壳，可在运输过程中保护数据。
 
-Data Box Heavy 目前为预览版。 通过 Azure 门户注册即可请求我们寄送一个设备。 在数据中心收到设备后，请使用本地 Web UI 对其进行设置。 将数据从服务器复制到设备，然后将设备发回 Azure。 在 Azure 数据中心，数据将上传到 Azure 存储帐户。 可以在 Azure 门户中跟踪整个端到端过程。
+在数据中心收到设备后，请使用本地 Web UI 对其进行设置。 将数据从服务器复制到设备，然后将设备发回 Azure。 在 Azure 数据中心，数据将上传到 Azure 存储帐户。 可以在 Azure 门户中跟踪整个端到端过程。
 
 
 > [!IMPORTANT]
-> - Data Box Heavy 以预览版提供。 在部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-> - 若要请求设备，请在[预览门户](https://aka.ms/azuredatabox)中注册。
-> - 在预览期，Data Box Heavy 可以寄送到美国和欧盟的客户。 有关详细信息，请参阅[适用区域](#region-availability)。
+> - 若要请求设备，请在 [Azure 门户](https://portal.azure.com)中注册。
+
 
 ## <a name="use-cases"></a>用例
 
@@ -115,25 +114,14 @@ Data Box Heavy 可以根据部署服务的区域、设备的发货国家/地区�
 
 ## <a name="sign-up"></a>注册
 
-Data Box Heavy 以预览版提供，需要进行注册。 按照以下步骤注册 Data Box Heavy：
+按照以下步骤注册 Data Box Heavy：
 
-1. 登录到 Azure 门户： https://aka.ms/azuredatabox 。
+1. 登录到 Azure 门户： https://portal.azure.com 。
 2. 单击“+ 创建资源”，创建新的资源  。 搜索“Azure Data Box”  。 选择“Azure Data Box”服务  。
-
-    <!--![The Data Box Heavy sign up 1]()-->
-
 3. 单击“创建”。 
-
-    <!--![The Data Box Heavy sign up 2]()-->
-
-4. 选择要用于 Data Box Heavy 预览版的订阅。 选择要部署 Data Box Heavy 资源的区域。 在“Data Box Heavy”选项中，单击“注册”   。
-
-   <!--![The Data Box Heavy sign up 3]()-->
-
+4. 选择要用于 Data Box Heavy 的订阅。 选择要部署 Data Box Heavy 资源的区域。 在“Data Box Heavy”选项中，单击“注册”   。
 5. 回答有关数据所在国家/地区、时间范围、数据要传输到的目标 Azure 服务、网络带宽和数据传输频率的问题。 查看“隐私和条款”，然后选中“Microsoft 可以使用你的电子邮件地址与你取得联系”复选框。
 
-    <!--![The Data Box Heavy sign up 4]()-->
-
-注册并为预览版启用订阅后，即可订购 Data Box Heavy。
+注册后，即可订购 Data Box Heavy。
 
     

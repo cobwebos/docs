@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: fbac507ce904227aebd235323da32f3a4d216075
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0d6699bbe9a4f3206424032699060d235e8ffbc4
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994429"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604165"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-ruby-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Ruby 生成缩略图
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-ruby"></a>快速入门：使用计算机视觉 REST API 和 Ruby 生成缩略图
 
 在本快速入门中，你将使用计算机视觉的 REST API 基于图像生成缩略图。 使用[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法，可以生成图像的缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
 
@@ -40,7 +40,7 @@ ms.locfileid: "59994429"
     1. （可选）将 `https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\` 替换为你要为其生成缩略图的另一图像的 URL。
 1. 将代码保存为以 `.rb` 为扩展名的文件。 例如，`get-thumbnail.rb`。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `ruby` 命令运行示例。 例如，`ruby get-thumbnail.rb`。
+1. 在提示符处，使用 `ruby` 命令运行示例。 例如，`ruby get-thumbnail.rb` 。
 
 ```ruby
 require 'net/http'

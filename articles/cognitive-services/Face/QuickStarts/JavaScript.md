@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: d1aa3e3a23acf82af8435cbb075fac38353500e5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 70c496aef0ff2f34c917fd594767d464cab3e625
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538725"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603424"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>快速入门：使用 REST API 和 JavaScript 检测图像中的人脸
 
@@ -41,7 +41,7 @@ ms.locfileid: "57538725"
 </html>
 ```
 
-然后在该文档的 `body` 元素中添加以下代码。 这将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”按钮、响应窗格和图像显示窗格。
+然后在该文档的 `body` 元素中添加以下代码。 此代码将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”  按钮、响应窗格和图像显示窗格。
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +65,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>编写 JavaScript 脚本
 
-在该文档中 `h1` 元素的正上方添加以下代码。 这会设置调用人脸 API 的 JavaScript 代码。
+在该文档中 `h1` 元素的正上方添加以下代码。 此代码会设置调用人脸 API 的 JavaScript 代码。
 
 ```html
 <script type="text/javascript">
@@ -136,11 +136,11 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="run-the-script"></a>运行脚本
 
-在浏览器中打开 *detectFaces.html*。 单击“分析人脸”按钮时，应用应显示给定 URL 中的图像并打印出人脸数据的 JSON 字符串。
+在浏览器中打开 *detectFaces.html*。 单击“分析人脸”  按钮时，应用应显示给定 URL 中的图像并打印出人脸数据的 JSON 字符串。
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-下面是成功的 JSON 响应的示例。
+以下文本是成功的 JSON 响应的示例。
 
 ```json
 [

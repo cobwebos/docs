@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本 - 在 Azure Cosmos 帐户中创建关闭了编制索引功能的容器
-description: Azure PowerShell 脚本示例 - 在 Azure Cosmos 帐户中创建关闭了编制索引功能的容器
+title: Azure PowerShell 脚本 - 在 Azure Cosmos 帐户中创建一个关闭索引的容器
+description: Azure PowerShell 脚本示例 - 在 Azure Cosmos 帐户中创建一个关闭索引的容器
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4fc75eadd0f3ad87d313d10a9005997d46103666
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
-ms.translationtype: MT
+ms.openlocfilehash: 7cec954bc85873d300a4abb96396025600e17201
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566812"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603866"
 ---
-# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 在 Azure Cosmos 帐户中创建关闭了编制索引功能的容器
+# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 在 Azure Cosmos 帐户中创建一个关闭索引的容器
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

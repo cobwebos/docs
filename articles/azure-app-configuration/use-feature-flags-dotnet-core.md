@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5e27c6a1ab5fc9dff779c6e5d04689683d5c8e6d
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274152"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798382"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用功能标志
 
@@ -86,30 +86,42 @@ public class Startup
 
 我们建议将功能标志保留在应用程序的外部，并单独对其进行管理。 这样便可以随时修改标志状态，并使这些更改在应用程序中立即生效。 应用程序配置提供一个中心位置用于通过专用门户 UI 来组织和控制所有功能标志。 应用程序配置还直接通过其 .NET Core 客户端库将标志传送到应用程序。
 
-将 ASP.NET Core 应用程序连接到应用程序配置的最简单方法是使用配置提供程序 `Microsoft.Extensions.Configuration.AzureAppConfiguration`。 若要使用此 NuGet 包，请将以下代码添加到 *Program.cs* 文件：
+将 ASP.NET Core 应用程序连接到应用程序配置的最简单方法是使用配置提供程序 `Microsoft.Azure.AppConfiguration.AspNetCore`。 按照以下步骤使用此 NuGet 包。
 
-```csharp
-using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+1. 打开 *Program.cs* 文件，并添加以下代码。
 
-public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-           .ConfigureAppConfiguration((hostingContext, config) => {
-               var settings = config.Build();
-               config.AddAzureAppConfiguration(options => {
-                   options.Connect(settings["ConnectionStrings:AppConfig"])
-                          .UseFeatureFlags();
-                });
-           })
-           .UseStartup<Startup>();
-```
+   ```csharp
+   using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
-功能标志值预期会不断变化。 默认情况下，功能管理器每隔 30 秒刷新功能标志值。 以下代码演示如何在 `options.UseFeatureFlags()` 调用中将轮询间隔更改为 5 秒：
+   public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+       WebHost.CreateDefaultBuilder(args)
+              .ConfigureAppConfiguration((hostingContext, config) => {
+                  var settings = config.Build();
+                  config.AddAzureAppConfiguration(options => {
+                      options.Connect(settings["ConnectionStrings:AppConfig"])
+                             .UseFeatureFlags();
+                   });
+              })
+              .UseStartup<Startup>();
+   ```
+
+2. 打开 *Startup.cs*，并更新 `Configure` 方法以添加中间件，从而允许在 ASP.NET Core Web 应用继续接收请求的同时，功能标志值以重复的时间间隔进行刷新。
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   {
+       app.UseAzureAppConfiguration();
+       app.UseMvc();
+   }
+   ```
+
+功能标志值预期会不断变化。 默认情况下，功能标志值缓存 30 秒，因此，在中间件收到请求时触发的刷新操作不会更新该值，直到缓存值过期为止。 以下代码演示如何在 `options.UseFeatureFlags()` 调用中将缓存过期时间或轮询间隔更改为 5 分钟。
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(300);
+                featureFlagOptions.CacheExpirationTime = TimeSpan.FromMinutes(5);
            });
 });
 ```

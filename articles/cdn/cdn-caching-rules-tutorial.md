@@ -6,7 +6,7 @@ documentationcenter: ''
 author: mdgattuso
 manager: danielgi
 editor: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 10d06d2e792b476a4c973029241d6cb98c0dd444
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c6da3270de94fd0d5525f28cdd31039f5bd85dbd
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094065"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594075"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>教程：设置 Azure CDN 缓存规则
 
 > [!NOTE] 
-> Azure CDN 缓存规则仅适用于 **Verizon 提供的标准 Azure CDN** 和 **Akamai 提供的标准 Azure CDN**。 对于 **Verizon 提供的高级 Azure CDN**，可以在“管理”门户中使用 [Azure CDN 规则引擎](cdn-rules-engine.md)来获得类似的功能。
+> Azure CDN 缓存规则仅适用于 **Verizon 提供的标准 Azure CDN** 和 **Akamai 提供的标准 Azure CDN**。 对于 **Verizon 提供的高级 Azure CDN**，可以在“管理”门户中使用 [Azure CDN 规则引擎](cdn-rules-engine.md)来获得类似的功能。 
  
 
 本教程介绍如何使用 Azure 内容分发网络 (CDN) 缓存规则，全局性地和根据自定义条件（例如 URL 路径和文件扩展名）设置或修改默认的缓存过期行为。 Azure CDN 提供两种类型的缓存规则：
@@ -48,11 +48,11 @@ ms.locfileid: "49094065"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，依次选择一个 CDN 配置文件和一个终结点。
 
-2. 在左窗格中的“设置”下，选择“缓存规则”。
+2. 在左窗格中的“设置”下，选择“缓存规则”。 
 
    ![CDN 缓存规则按钮](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
-   “缓存规则”页随即出现。
+   “缓存规则”  页随即出现。
 
    ![CDN“缓存规则”页](./media/cdn-caching-rules/cdn-caching-rules-page.png)
 
@@ -61,11 +61,11 @@ ms.locfileid: "49094065"
 
 按如下所述创建一个全局缓存规则：
 
-1. 在“全局缓存规则”下面，将“查询字符串缓存行为”设置为“忽略查询字符串”。
+1. 在“全局缓存规则”下面，将“查询字符串缓存行为”设置为“忽略查询字符串”。   
 
-2. 将“缓存行为”设置为“缺少时设置”。
+2. 将“缓存行为”设置为“缺少时设置”。  
        
-3. 对于“缓存过期持续时间”，请在“天”字段中输入 10。
+3. 对于“缓存过期持续时间”，请在“天”字段中输入 10。  
 
     全局缓存规则会影响对终结点发出的所有请求。 此规则遵循源缓存指令标头（如果存在，值为 `Cache-Control` 或 `Expires`）；如果未指定此类标头，则将缓存设置为 10 天。 
 
@@ -75,9 +75,9 @@ ms.locfileid: "49094065"
 
 按如下所述创建一个自定义缓存规则：
 
-1. 在“自定义缓存规则”下面，将“匹配条件”设置为“路径”，将“匹配值”设置为 `/images/*.jpg`。
+1. 在“自定义缓存规则”下面，将“匹配条件”设置为“路径”，将“匹配值”设置为 `/images/*.jpg`。    
     
-2. 将“缓存行为”设置为“替代”，并在“天”字段中输入 30。
+2. 将“缓存行为”设置为“替代”，并在“天”字段中输入 30。   
        
     此自定义缓存规则针对终结点的 `/images` 文件夹中的所有 `.jpg` 图像文件设置 30 天缓存持续时间。 它会替代源服务器发送的所有 `Cache-Control` 或 `Expires` HTTP 标头。
 
@@ -90,15 +90,15 @@ ms.locfileid: "49094065"
  
 1. 选择 CDN 配置文件，然后选择其缓存规则需要删除的终结点。
 
-2. 在左窗格中的“设置”下，选择“缓存规则”。
+2. 在左窗格中的“设置”下，选择“缓存规则”。 
 
-3. 在“全局缓存规则”下，将“缓存行为”设置为“未设置”。
+3. 在“全局缓存规则”  下，将“缓存行为”  设置为“未设置”  。
  
-4. 在“自定义缓存规则”下，选中要删除的规则旁边的复选框。
+4. 在“自定义缓存规则”  下，选中要删除的规则旁边的复选框。
 
-5. 选择“删除”。
+5. 选择“删除”。 
 
-6. 从页面顶部，选择“保存”。
+6. 从页面顶部，选择“保存”  。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -10,16 +10,19 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: f2de205b6237d3af434700c47056ce52b89a53b4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b6c932d6c6f3f8ce5d75f87ab86ae6bf38b0b03a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447316"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705605"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-go"></a>快速入门：使用 Go 通过文本翻译 API 获取受支持语言的列表
 
 本快速入门介绍如何使用 Go 和文本翻译 REST API 发出可以返回所支持语言的列表的 GET 请求。
+
+>[!TIP]
+> 如果你想一次看到所有代码，这个示例的源代码可以在 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go) 上找到。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -108,7 +111,7 @@ if err != nil {
 }
 ```
 
-如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。 
+如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="handle-and-print-the-response"></a>处理并输出响应
 
@@ -227,10 +230,10 @@ go run get-languages.go
 
 ## <a name="next-steps"></a>后续步骤
 
-从 GitHub 上的 [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) 中浏览认知服务 API 的 Go 程序包。
+查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
 
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的 Go 程序包](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+> [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>另请参阅
 

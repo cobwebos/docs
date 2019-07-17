@@ -1,21 +1,21 @@
 ---
 title: 什么是墨迹识别器？ - 墨迹识别器 API
-titlesuffix: Azure Cognitive Services
-description: 将墨迹识别器集成到应用程序、网站、工具和其他解决方案中，以提供...
+titleSuffix: Azure Cognitive Services
+description: 将墨迹识别器集成到你的应用程序、网站、工具和其他解决方案中，以允许识别墨迹笔划数据并将其用作输入。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
+ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 0ed1a72a5dc61458200b72c768ad722656b820d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 95121523c510e72894086740ad340bdfd33f3c32
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65025603"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721399"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>什么是墨迹识别器 API？
 

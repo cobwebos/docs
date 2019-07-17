@@ -6,19 +6,19 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/29/2019
+ms.date: 07/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: fd81115f4e811366b6b115d1c73a9be7ca26698b
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d0d1dbb81f00f500f3eb95c605ed0c15c634f624
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485626"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706826"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>在门户中创建 Azure 搜索服务
 
-Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 虽然 Azure 搜索可以与其他 Azure 服务轻松集成，但也可以单独将其用于网络服务器上的应用或在其他云平台上运行的软件。
+Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 虽然 Azure 搜索可以与其他 Azure 服务轻松集成，但它也可以作为单独的组件使用，或与网络服务器上的应用或在其他云平台上运行的软件集成。
 
 本文介绍如何在 [Azure 门户](https://portal.azure.com/)中创建 Azure 搜索资源。
 
@@ -73,10 +73,10 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 
 如果你正在为由另一项 Azure 服务（Azure 存储、Azure Cosmos DB、Azure SQL 数据库）提供的数据编制索引，我们建议你在同一区域中创建 Azure 搜索服务以避免产生带宽费用。 当服务位于同一区域时，出站数据不收费。
 
-如果你使用的是认知服务 AI 扩充，请在你的认知服务资源所在的区域中创建服务。 服务共存于同一位置是 AI 扩充所必需的。
+如果你使用的是认知服务 AI 扩充，请在你的认知服务资源所在的区域中创建服务。 *将 Azure 搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
 
 > [!Note]
-> 印度中部目前无法提供新服务。 对于已在印度中部的服务，你可以无限制地纵向扩展，并且你的服务在该区域是完全受支持的。 对该区域的限制是暂时的，我们将在其较长时间适用时删除此说明。
+> 印度中部目前无法提供新服务。 对于已在印度中部的服务，你可以无限制地纵向扩展，并且你的服务在该区域是完全受支持的。 对此区域的限制是临时的，仅限于新服务。 如果该限制不再适用，我们将删除此说明。
 
 ## <a name="select-a-pricing-tier-sku"></a>选择定价层 (SKU)
 
@@ -88,27 +88,29 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 
 ## <a name="create-your-service"></a>创建服务
 
-请记住将服务固定到仪表板，以便登录时可轻松访问。
+输入创建服务所需的输入内容。 
 
-![固定到仪表板](./media/search-create-service-portal/new-service3.png "将资源固定到仪表板以方便访问")
+![查看和创建服务](./media/search-create-service-portal/new-service3.png "查看和创建服务")
+
+服务将在几分钟内部署，你可以通过 Azure 通知对其进行监视。 考虑将该服务固定到仪表板，以方便将来访问。
+
+![监视和固定服务](./media/search-create-service-portal/monitor-notifications.png "监视和固定服务")
 
 ## <a name="get-a-key-and-url-endpoint"></a>获取密钥和 URL 终结点。
 
-使用新服务时，必须提供 URL 终结点和授权 API 密钥，只有少数几个例外。 快速入门、教程（例如[探索 Azure 搜索 REST API (Postman)](search-get-started-postman.md) 和[如何在 .NET 中使用 Azure 搜索](search-howto-dotnet-sdk.md)）、示例、自定义代码都需要终结点和密钥才能在特定资源上运行。
+除非是使用门户访问新服务，否则在访问新服务时，需要提供 URL 终结点和身份验证 API 密钥。
 
 1. 在服务概览页的右侧找到并复制 URL 终结点。
 
-   ![包含 URL 终结点的服务概览页](./media/search-create-service-portal/url-endpoint.png "URL 终结点和其他服务详细信息")
-
 2. 在左侧导航窗格中，选择“密钥”  ，然后复制任一管理员密钥（它们是相同的）。 在服务上创建、更新和删除对象需要管理员 API 密钥。
 
-   ![显示主密钥和辅助密钥的密钥页](./media/search-create-service-portal/admin-api-keys.png "用于授权的管理员 API 密钥")
+   ![包含 URL 终结点的服务概览页](./media/search-create-service-portal/get-url-key.png "URL 终结点和其他服务详细信息")
 
-基于门户的任务不需终结点和密钥。 门户已链接到具有管理员权限的 Azure 搜索资源。 至于门户教程，请从[教程：Azure 搜索中的导入、索引和查询](search-get-started-portal.md)着手。
+基于门户的任务不需终结点和密钥。 门户已链接到具有管理员权限的 Azure 搜索资源。 有关门户演练，请从[快速入门：在门户中创建 Azure 搜索索引](search-get-started-portal.md)入手。
 
 ## <a name="scale-your-service"></a>扩展服务
 
-创建服务可能需要几分钟（至少 15 分钟，具体取决于层）。 预配服务后，可以对其进行扩展以满足需求。 由于为 Azure 搜索服务选择标准层，因此可采用两个维度扩展服务：副本和分区。 如果已选择基本层，仅可以添加副本。 如果预配了免费服务，则扩展不可用。
+预配服务后，可以对其进行扩展以满足需求。 如果为 Azure 搜索服务选择了“标准”层，则可以采用两个维度扩展服务：副本和分区。 如果已选择基本层，仅可以添加副本。 如果预配了免费服务，则扩展不可用。
 
 ***分区***允许服务存储和搜索更多文档。
 
@@ -126,7 +128,7 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 ![添加容量](./media/search-create-service-portal/settings-scale.png "通过副本和分区添加容量")
 
 > [!Note]
-> 每个层对于单个服务中允许的搜索单位总数都有不同的[限制](search-limits-quotas-capacity.md)（副本 * 分区 = 搜索单位总数）。
+> 所在的层级越高，每个分区的存储大小和速度就越高。 有关详细信息，请参阅[容量和限制](search-limits-quotas-capacity.md)。
 
 ## <a name="when-to-add-a-second-service"></a>何时添加第二个服务
 
@@ -148,4 +150,4 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 预配 Azure 搜索服务后，可以继续在门户中创建第一个索引。
 
 > [!div class="nextstepaction"]
-> [教程：在门户中导入数据、编制索引和运行查询](search-get-started-portal.md)
+> [快速入门：在门户中创建 Azure 搜索索引](search-get-started-portal.md)

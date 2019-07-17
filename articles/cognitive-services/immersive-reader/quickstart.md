@@ -1,26 +1,27 @@
 ---
-title: 快速入门：创建用于启动沉浸式阅读器的 Web 应用 (C#)
+title: 快速入门：创建使用 C# 启动沉浸式阅读器的 Web应用
 titlesuffix: Azure Cognitive Services
-description: 在本快速入门中，你将从头开始构建一个 Web 应用，并添加沉浸式阅读器功能。
+description: 在本快速入门中，你将从头开始构建一个 Web 应用，并添加沉浸式阅读器 API 功能。
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 77d95383c801038c256ccb2bf386ddf06048cf78
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 3b408de6b60e7e7704ee228b52c399e5b80e3a9e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311812"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718417"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>快速入门：创建用于启动沉浸式阅读器的 Web 应用 (C#)
 
 [沉浸式读取器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术以提高阅读理解能力。
 
-在本快速入门中，你将从头开始构建一个 Web 应用，并使用沉浸式阅读器 SDK 集成沉浸式阅读器。 本快速入门的完整工作示例可在[此处](https://github.com/Microsoft/immersive-reader-sdk/samples/quickstart-csharp)找到。
+在本快速入门中，你将从头开始构建一个 Web 应用，并使用沉浸式阅读器 SDK 集成沉浸式阅读器。 本快速入门的完整工作示例可在[此处](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/quickstart-csharp)找到。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -39,7 +40,7 @@ ms.locfileid: "67311812"
 
 ## <a name="acquire-an-access-token"></a>获取访问令牌
 
-在下一步中，需要订阅密钥和终结点。 可以在 Azure 门户的沉浸式阅读器资源的“密钥”页中找到订阅密钥。 可以在“概述”页中找到终结点。
+在下一步中，需要订阅密钥和终结点。 可以在 Azure 门户中的沉浸式阅读器资源的“秘钥”页中找到订阅密钥。 可以在“概述”页中找到终结点。
 
 右键单击_解决方案资源管理器_中的项目，然后选择“管理用户机密”  。 这将打开一个名为 _secrets.json_ 的文件。 将该文件的内容替换为以下内容，并在适当的位置提供订阅密钥和终结点。
 

@@ -1,6 +1,7 @@
 ---
-title: 快速入门：检测异常的异常情况检测程序 REST API 使用时序数据和C#|Microsoft Docs
-description: 使用异常检测器 API 来检测异常数据系列中，作为一个批或针对流式处理数据。
+title: 快速入门：使用异常检测器 REST API 和 C# 检测时序数据的异常
+titleSuffix: Azure Cognitive Services
+description: 使用异常检测器 API 能够以批或流数据的形式检测数据系列的异常。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,37 +10,37 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 2a02b56c2fa0f99166cfde0f0089273ed2af4cb9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 1b3ed38e7ce8738a0e92775915e894c6e0bbd52a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073217"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721558"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入门：检测异常的异常情况检测程序 REST API 使用时序数据和C# 
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入门：使用异常检测器 REST API 和 C# 检测时序数据的异常 
 
-使用本快速入门教程开始使用异常检测器 API 的两种检测模式来检测异常的时序数据。 此C#应用程序将发送包含 JSON 格式的时间序列数据的两个 API 请求并获取响应。
+参考本快速入门可以开始使用异常检测器 API 的两种检测模式来检测时序数据的异常。 此 C# 应用程序发送两个包含 JSON 格式的时序数据的 API 请求，并获取响应。
 
 | API 请求                                        | 应用程序输出                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| 作为一批中检测异常                        | JSON 响应包含用于时间序列数据和任何检测到的异常的位置中的每个数据点异常状态 （和其他数据）。 |
-| 检测到异常情况状态的最新的数据点 | JSON 响应包含用于时间序列数据的最新数据点的异常状态 （和其他数据）。                                                                                                                                         |
+| 批量检测异常                        | JSON 响应包含时序数据中每个数据点的异常状态（和其他数据），以及检测到的任何异常所在的位置。 |
+| 检测最新数据点的异常状态 | JSON 响应包含时序数据中最新数据点的异常状态（和其他数据）。                                                                                                                                         |
 
  虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 任何版本的[Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/downloads/)，
+- 任何版本的 [Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/downloads/)、
 
-- [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。 若要安装 Newtonsoft.Json NuGet 包在 Visual Studio 中的形式：
+- [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。 若要在 Visual Studio 中以 NuGet 包的形式安装 Newtonsoft.Json，请执行以下操作：
     
     1. 在**解决方案资源管理器**中右键单击你的项目。
     2. 选择“管理 NuGet 包”。 
     3. 搜索 *Newtonsoft.Json* 并安装该包。
 
-- 如果使用的 Linux/MacOS，可以通过使用运行此应用程序[Mono](https://www.mono-project.com/)。
+- 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
-- JSON 文件包含时间序列数据点。 本快速入门教程的示例数据，可[GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)。
+- 包含时序数据点的 JSON 文件。 可在 [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json) 上找到本快速入门的示例数据。
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
@@ -59,12 +60,12 @@ ms.locfileid: "67073217"
     using System.Threading.Tasks;
     ```
 
-2. 为订阅密钥和终结点创建变量。 下面是可用于异常情况检测的 Uri。 这些将追加到你的服务终结点更高版本才能创建 API 请求 Url。
+2. 为订阅密钥和终结点创建变量。 下面是可用于异常检测的 URI。 稍后会将这些 URL 追加到服务终结点，以创建 API 请求 URL。
 
     |检测方法  |URI  |
     |---------|---------|
-    |批处理检测    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |最新的数据点上的检测     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    |批量检测    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
+    |对最新数据点进行检测     | `/anomalydetector/v1.0/timeseries/last/detect`        |
     
     ```csharp
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -84,7 +85,7 @@ ms.locfileid: "67073217"
 
 2. 使用 `HttpClient` 对象设置客户端的安全协议和标头信息。 请务必将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头中。 然后，为请求创建 `StringContent` 对象。
 
-3. 发送包含请求`PostAsync()`，然后返回响应。
+3. 发送包含 `PostAsync()` 的请求，然后返回响应。
 
 ```csharp
 static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
@@ -100,15 +101,15 @@ static async Task<string> Request(string apiAddress, string endpoint, string sub
 }
 ```
 
-## <a name="detect-anomalies-as-a-batch"></a>作为一批中检测异常
+## <a name="detect-anomalies-as-a-batch"></a>批量检测异常
 
-1. 创建名为 `detectAnomaliesBatch()` 的新函数。 构造请求并将其发送通过调用`Request()`与你的终结点、 订阅密钥、 批处理异常情况检测的 URL 和时间序列数据的函数。
+1. 创建名为 `detectAnomaliesBatch()` 的新函数。 通过终结点、订阅密钥、批量异常检测的 URL 以及时序数据调用 `Request()` 函数，构造并发送请求。
 
 2. 反序列化 JSON 对象，并将其写入控制台。
 
-3. 如果响应包含`code`字段中，打印的错误代码和错误消息。 
+3. 如果响应包含 `code` 字段，请输出错误代码和错误消息。 
 
-4. 否则，在数据集中发现的异常的位置。 响应的`isAnomaly`字段包含布尔值的数组，其中每个指示数据点是否为异常。 将其转换为响应对象的字符串数组`ToObject<bool[]>()`函数。 循环访问数组，并打印的任何索引`true`值。 如果任何发现，这些值对应于异常的数据点的索引。
+4. 否则，请查找异常在数据集中的位置。 响应的 `isAnomaly` 字段包含布尔值数组，其中每个值都指示数据点是否为异常。 使用响应对象的 `ToObject<bool[]>()` 函数将其转换为字符串数组。 循环访问该数组，并输出任何 `true` 值的索引。 如果找到任何此类值，这些值对应于异常数据点的索引。
 
 ```csharp
 static void detectAnomaliesBatch(string requestData){
@@ -139,9 +140,9 @@ static void detectAnomaliesBatch(string requestData){
 }
 ```
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>检测到异常情况状态的最新的数据点
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>检测最新数据点的异常状态
 
-1. 创建名为 `detectAnomaliesLatest()` 的新函数。 构造请求并将其发送通过调用`Request()`与你的终结点、 订阅密钥、 最新点异常情况检测的 URL 和时间序列数据的函数。
+1. 创建名为 `detectAnomaliesLatest()` 的新函数。 通过终结点、订阅密钥、最新数据点异常检测的 URL 以及时序数据调用 `Request()` 函数，构造并发送请求。
 
 2. 反序列化 JSON 对象，并将其写入控制台。
 
@@ -159,11 +160,11 @@ static void detectAnomaliesLatest(string requestData){
 }
 ```
 
-## <a name="load-your-time-series-data-and-send-the-request"></a>加载时间系列数据并发送请求
+## <a name="load-your-time-series-data-and-send-the-request"></a>加载时序数据并发送请求
 
-1. 应用程序的 main 方法，与将 JSON 时间系列数据加载`File.ReadAllText()`。 
+1. 在应用程序的 main 方法中，使用 `File.ReadAllText()` 加载 JSON 时序数据。 
 
-2. 调用上面创建的异常情况检测函数。 使用 `System.Console.ReadKey()`，在运行应用程序后让控制台窗口保持打开状态。
+2. 调用上面创建的异常检测函数。 使用 `System.Console.ReadKey()`，在运行应用程序后让控制台窗口保持打开状态。
 
 ```csharp
 static void Main(string[] args){
@@ -179,9 +180,9 @@ static void Main(string[] args){
 
 ### <a name="example-response"></a>示例响应
 
-成功的响应以 JSON 格式返回。 单击以下链接，查看 GitHub 上的 JSON 响应：
-* [示例批处理检测响应](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
-* [示例最新点检测响应](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+成功的响应以 JSON 格式返回。 单击以下链接在 GitHub 上查看 JSON 响应：
+* [批量检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
+* [最新数据点检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/13/2019
 ms.author: swmachan
-ms.openlocfilehash: f09f9081dd535762afd2e26e5e86476eb06f5133
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0c36830709c59632945a8c11e8a7113dcd5dc7e7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445239"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704568"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>快速入门：使用 C# 通过文本翻译 API 对文本进行直译
 
@@ -158,7 +158,7 @@ foreach (TransliterationResult o in deserializedOutput)
 }
 ```
 
-如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。 
+如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
@@ -214,10 +214,10 @@ Transliterated to latn script: Kon\'nichiwa
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览此快速入门的示例代码和其他内容，包括翻译和语言识别，以及 GitHub 上的其他示例文本翻译项目。
+查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
 
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的 C# 示例](https://aka.ms/TranslatorGitHub?type=&language=c%23)
+> [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>另请参阅
 

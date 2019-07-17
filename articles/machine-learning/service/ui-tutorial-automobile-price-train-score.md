@@ -9,114 +9,211 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: e37e99323c92adad0b9e897af8c276a8ac153371
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 21f5a2d93b708e93f124bd44177bb7852dfbd86a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515632"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720518"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>教程：使用可视界面预测汽车价格
 
 本教程详细介绍如何在 Azure 机器学习服务可视界面中开发预测解决方案。 本教程结束时，你将获得一个可以根据发送的技术规范预测任何汽车的价格的解决方案。
 
-本教程[延续快速入门教程](ui-quickstart-run-experiment.md)，是**由两个部分构成的教程系列的第一部分**。 但是，不需要完成快速入门即可开始学习本教程。
-
-本教程系列的第一部分介绍如何：
+本教程的第一部分介绍如何：
 
 > [!div class="checklist"]
-> * 导入和清理数据（与快速入门中的步骤相同）
+> * 导入和清除数据
 > * 训练机器学习模型
 > * 评分和评估模型
 
-本教程系列的[第二部分](ui-tutorial-automobile-price-deploy.md)介绍如何将预测模型部署为 Azure Web 服务。
-
-> [!NOTE]
-> 我们提供了本教程的已完成版本作为示例试验。
-> 在“试验”页中，转到“新增” > “示例 1 - 回归:   汽车价格预测(基本)”
-
+本教程的[第二部分](ui-tutorial-automobile-price-deploy.md)介绍如何将预测模型部署为 Azure Web 服务。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
 
+我们提供了本教程的已完成版本作为示例试验。
+
+若要进行查找，请从“试验页”  中选择“新增”  ，然后选择  “示例 1 - 回归: 汽车价格预测(基本)”试验。
+
 ## <a name="create-a-workspace"></a>创建工作区
 
-如果你有一个 Azure 机器学习服务工作区，请跳至[下一部分](#open-the-visual-interface-webpage)。 否则，现在请创建一个工作区。
+如果你有一个 Azure 机器学习服务工作区，请跳至[下一部分](#open-the-visual-interface-webpage)。
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
 ## <a name="open-the-visual-interface-webpage"></a>打开可视界面网页
 
-1. 在 [Azure 门户](https://portal.azure.com/)中打开你的工作区。  
+1. 在 [Azure 门户](https://portal.azure.com/)中打开你的工作区。
 
-1. 在工作区中，选择“可视界面”。   然后选择“启动可视界面”。   
+1. 在工作区中，选择“可视界面”。  然后选择“启动可视界面”。  
 
     ![Azure 门户的屏幕截图，其中显示了如何从机器学习服务工作区访问可视界面](./media/ui-tutorial-automobile-price-train-score/launch-ui.png)
 
-    界面网页将在新的浏览器页中打开。  
+## <a name="create-your-first-experiment"></a>创建第一个试验
 
-## <a name="import-and-clean-your-data"></a>导入和清理数据
-
-首先需要清理数据。 如果你已完成快速入门，可以重复使用其中所述的数据准备试验。 如果你尚未完成快速入门，请跳过下一部分并[从新的试验开始](#start-from-a-new-experiment)。
-
-### <a name="reuse-the-quickstart-experiment"></a>重复使用快速入门试验
-
-1. 打开快速入门试验。
-
-1. 在窗口底部选择“另存为”  。
-
-1. 在弹出的对话框中为该试验指定新名称。
-
-    ![显示如何将试验重命名为“教程 - 预测汽车价格”的屏幕截图](./media/ui-tutorial-automobile-price-train-score/save-a-copy.png)
-
-1. 实验现在看起来应当与下图类似：
-
-    ![显示试验预期状态的屏幕截图。 汽车数据集将连接到“选择列”模块，后者将连接到“清理缺失数据”](./media/ui-tutorial-automobile-price-train-score/save-copy-result.png)
-
-如果你已成功重复使用快速入门试验，请跳过下一部分以开始[训练模型](#train-the-model)。
-
-### <a name="start-from-a-new-experiment"></a>从新的试验开始
-
-如果你尚未完成快速入门，请遵循以下步骤快速创建一个用于导入和清理汽车数据集的试验。
+此可视界面工具提供了一个交互式的可视场所，用于生成预测分析模型。 将数据集和分析模块拖放到交互式画布上，并将它们连接到一起以创建一个试验  。
 
 1. 在可视界面窗口的底部选择“+新建”以创建新的试验。 
 
-1. 选择“试验” >  “空白试验”。  
+    ![添加新试验](./media/ui-tutorial-automobile-price-train-score/add-new.png)
+
+1. 选择“空白试验”。 
 
 1. 在画布顶部选择默认试验名称“... 创建的试验”，然后将它重命名为有意义的名称。  例如“汽车价格预测”。  名称不需唯一。
 
-1. 试验画布左侧是数据集和模块的控制板。 若要查找模块，请使用模块控制板顶部的搜索框。 在搜索框中键入“汽车”，找到标有“汽车价格数据(原始)”的数据集。   将该数据集拖放到试验画布上。
+## <a name="add-data"></a>添加数据
 
-    ![显示如何查找汽车价格数据集的屏幕截图](./media/ui-tutorial-automobile-price-train-score/automobile-dataset.png)
+需要用于机器学习的首先是数据。 可以使用本界面中包含的多个示例数据集。 还可以从现有源导入数据。 在本教程中，可以使用示例数据集“汽车价格数据(原始)”  。 
 
-    找到数据后，可以添加一个用于彻底删除“规范化损失”列的模块。  然后添加用于删除任何存在缺失数据的行的另一个模块。
+1. 试验画布左侧是数据集和模块的控制板。 选择“保存的数据集”，然后选择“示例”，以便查看可用的示例数据集。  
 
-1. 在搜索框中键入“选择列”，找到“选择数据集中的列”模块。   然后将该模块拖放到试验画布上。 使用此模块可以选择要在模型中包含或排除哪些数据列。
+1. 选择数据集“汽车价格数据(原始)”，然后将其拖到画布上。 
 
-1. 将“汽车价格数据(原始)”数据集的输出端口连接到“选择数据集中的列”模块的输入端口。 
+   ![将数据拖到画布上](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
 
-    ![显示如何将“汽车价格数据”模块连接到“选择列”模块的 Gif 动画](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
+## <a name="select-columns"></a>选择列
 
-1. 选择“选择数据集中的列”模块，然后在“属性”窗格中选择“启动列选择器”。  
+选择要处理哪些数据列。 若要开始操作，请将模块配置为显示所有可用列。
 
-   1. 在左侧选择“使用规则” 
+> [!TIP]
+> 如果知道所需数据或模块的名称，请使用调色板顶部的搜索栏进行快速查找。 本教程的其余部分将使用此快捷方式。
 
-   1. 在“开头为”旁边，选择“所有列”。   这些规则指示“选择数据集中的列”传递所有列（要排除的列除外）。 
 
-   1. 在下拉列表中，选择“排除”和**列名称**，然后在文本框中键入“规范化损失”。  
+1. 在“搜索”框中键入“选择”，以便查找“在数据集中选择列”模块。  
 
-   1. 选择“确定”按钮关闭列选择器（右下角）。
+1. 单击“在数据集中选择列”，然后将其拖到画布上。  将模块拖到此前添加的数据集下方。
 
-     此时“选择数据集中的列”  的属性窗格指示它将传入数据集中的所有列，但“规范化损失”  除外。
+1. 将数据集连接到“在数据集中选择列”：  单击数据集的输出端口，将其拖到“在数据集中选择列”的输入端口，然后放开鼠标按钮。  即便是在画布上来回移动，数据集和模块仍保持连接。
 
-1. 双击“选择数据集中的列”模块并输入“排除规范化损失”，将注释添加到该模块。  这有助于快速查看模块在试验中的运行情况。
+    > [!TIP]
+    > 数据集和模块都有由小圆圈表示的输入和输出端口 - 输入端口位于顶部，输出端口位于底部。 将一个模块的输出端口连接到另一个模块的输入端口时，即可通过试验创建数据流。
+    >
 
-    ![显示“选择列”模块的正确配置的屏幕截图](./media/ui-tutorial-automobile-price-train-score/select-columns.png)
+    ![连接模块](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
 
-1. 在搜索框中键入“清理”，找到“清理缺失数据”模块。   将“清理缺失数据”模块拖到试验画布，然后将其连接到“选择数据集中的列”模块。  
+    红色感叹号表示尚未设置该模块的属性。
 
-1. 在“属性”  窗格的“清理模式”下选择“删除整行”   。 这些选项指示“清理缺失数据”通过删除存在缺失值的行来清理数据。  双击该模块并键入注释“删除缺失值行”。
+1. 选择“在数据集中选择列”模块。 
 
-![显示“清理缺失数据”模块的正确配置的屏幕截图](./media/ui-tutorial-automobile-price-train-score/clean-missing-data.png)
+1. 在画布右侧的“属性”窗格中，选择“编辑列”。  
+
+    在“选择列”对话框中选择“所有列”，并包括“所有功能”。    此对话框应如下所示：
+
+     ![列选择器](./media/ui-tutorial-automobile-price-train-score/select-all.png)
+
+1. 在右下角，选择“确定”以关闭列选择器。 
+
+## <a name="run-the-experiment"></a>运行试验
+
+在任何时刻，单击数据集或模块的输出端口即可查看数据流中的数据在该时刻的情形。 如果“可视化”选项已禁用，则先需要运行此试验。 
+
+试验在计算目标上运行，该目标是附加到工作区的计算资源。 一旦创建了计算目标，就可以在以后的运行中重用它。
+
+[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
+
+在计算目标可用后，试验就会运行。 在运行完成后，每个模块上都会显示一个绿色的对勾标记。
+
+
+## <a name="preview-the-data"></a>预览数据
+
+运行了初始试验后，可以直观显示数据，以详细了解需要处理的数据集。
+
+1. 选择“在数据集中选择列”底部的输出端口，然后选择“可视化”。  
+
+1. 单击数据窗口中的不同列，查看有关该列的信息。
+
+    在此数据集中，每行代表一辆汽车，与每辆汽车关联的变量显示为列。 此数据集中有 205 行和 26 列。
+
+     每次单击某个数据列时，就会在左侧显示该列的**统计**信息和**可视化**图像。 例如，单击 **num-of-doors** 时，会看到它有 2 个唯一值和 2 个缺失值。 向下滚动即可看到值：两个门和四个门。
+
+     ![预览数据](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
+
+1. 单击每一列以了解有关数据集的更多信息，并考虑这些列对预测汽车价格是否有用。
+
+## <a name="prepare-data"></a>准备数据
+
+数据集通常需要经过一定的预处理才能进行分析。 在直观显示数据集时，你可能已经注意到某些值缺失。 需要清除这些缺失值，使模型能够正确分析数据。 将删除任何有缺失值的行。 另外，**normalized-losses** 列有大比例的缺失值，因此你将从模型中完全排除该列。
+
+> [!TIP]
+> 使用大多数模块时，都必须从输入数据中清除缺失值。
+
+### <a name="remove-column"></a>删除列
+
+首先，彻底删除 **normalized-losses** 列。
+
+1. 选择“在数据集中选择列”模块。 
+
+1. 在画布右侧的“属性”窗格中，选择“编辑列”。  
+
+    * 让“使用规则”和“所有列”处于选中状态   。
+
+    * 在下拉列表中，选择“排除”  和“列名称”  ，并在文本框内部单击。 键入“normalized-losses”。 
+
+    * 在右下角，选择“确定”以关闭列选择器。 
+
+    ![排除列](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+        
+    现在，“在数据集中选择列”的属性窗格指示它会传递数据集中除 **normalized-losses** 外的所有列。
+        
+    属性窗格显示 **normalized-losses** 列已排除。
+        
+    ![属性窗格](./media/ui-tutorial-automobile-price-train-score/property-pane.png)
+        
+    可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 
+
+1. 双击“在数据集中选择列”模块，键入注释“排除规范化的损失”。  
+    
+    键入注释后，在模块外单击。 此时会显示一个向下箭头，表明模块包含注释。
+
+1. 单击向下箭头，显示注释。
+
+    模块现在显示向上箭头，隐藏注释。
+        
+    ![注释](./media/ui-tutorial-automobile-price-train-score/comments.png)
+
+### <a name="clean-missing-data"></a>清理缺失数据
+
+训练模型时，必须对缺少的数据执行某些操作。 在本例中，你将添加一个模块以删除任何缺少数据的剩余行。
+
+1. 在“搜索”框中键入“清理”，查找“清理缺失数据”模块。  
+
+1. 将“清理缺失数据”模块拖到试验画布上，然后将其连接到“在数据集中选择列”模块。   
+
+1. 在“属性”窗格中，选择“清理模式”下的“删除整个行”。  
+
+    这些选项指导“清理缺失数据”来清理数据，方法是删除有缺失值的行。 
+
+1. 双击该模块并键入注释“删除缺失值行”。
+ 
+    ![删除行](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
+
+    试验现在应该如下所示：
+    
+    ![选择列](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
+
+## <a name="visualize-the-results"></a>可视化结果
+
+由于对试验中的模块进行了更改，因此状态已变为“处于草稿状态”。  若要将新的干净数据可视化，先需再次运行试验。
+
+1. 选择底部的“运行”，运行此试验。 
+
+    这次可以重复使用此前创建的计算目标。
+
+1. 选择对话框中的“运行”。 
+
+   ![运行试验](./media/ui-tutorial-automobile-price-train-score/select-compute.png)
+
+1. 当运行完成以后，右键单击“清理缺失数据”模块，将新的干净数据可视化。 
+
+    ![可视化干净数据](./media/ui-tutorial-automobile-price-train-score/visualize-cleaned.png)
+
+1. 单击已清理数据窗口中的不同列，查看数据的改变情况。
+
+    ![可视化干净数据](media/ui-tutorial-automobile-price-train-score/visualize-result.png)
+
+    现在有 193 行和 25 列。
+
+    单击 **num-of-doors** 时，可以看到它仍有 2 个唯一值，但现在有 0 个缺失值。 通过单击浏览所有其余列以查看数据集中是否有缺失的值。 
 
 ## <a name="train-the-model"></a>训练模型
 
@@ -154,7 +251,8 @@ ms.locfileid: "66515632"
 
     ![显示列选择器模块的正确配置的屏幕截图。 “使用规则”>“包括列名称”>“价格”](./media/ui-tutorial-automobile-price-train-score/select-price.png)
 
-    现在，试验应如下所示：
+    试验应该如下所示：
+
     ![显示添加“训练模型”模块后试验的正确配置的屏幕截图。](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
 ### <a name="run-the-training-experiment"></a>运行训练试验
@@ -219,7 +317,7 @@ ms.locfileid: "66515632"
 
 在本教程系列的第一部分，你已完成以下步骤：
 
-* 重复使用快速入门中创建的试验
+* 已创建试验
 * 准备数据
 * 训练模型
 * 评分和评估模型

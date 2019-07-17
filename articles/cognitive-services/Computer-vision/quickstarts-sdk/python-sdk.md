@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 9b126d5ccbbf3cb1f22163ffb6ac53a8aff61004
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: c03568ece97bdaad86f4564debf9f3b2fa14c6ed
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357338"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786647"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>适用于 Python 的 Azure 认知服务计算机视觉 SDK
 
@@ -38,7 +38,7 @@ ms.locfileid: "66357338"
 ## <a name="prerequisites"></a>先决条件
 
 * [Python 3.6+][python]
-* 免费的[计算机视觉密钥][computervision_resource]和关联的终结点。 创建 [ComputerVisionClient][ref_computervisionclient] 客户端对象的实例时需要使用这些值。 使用以下其中一种方法获取这些值。
+* 免费的[计算机视觉密钥][computervision_resource]and associated endpoint. You need these values when you create the instance of the [ComputerVisionClient][ref_computervisionclient]客户端对象。 使用以下其中一种方法获取这些值。
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>如果你没有 Azure 订阅
 
@@ -84,7 +84,7 @@ source cogsrv-vision-env/bin/activate
 
 ### <a name="install-the-sdk"></a>安装 SDK
 
-安装包含 [pip][pip] 的适用于 Python 的 Azure 认知服务计算机视觉 SDK [包][pypi_computervision]：
+安装用于 Python 的 Azure 认知服务计算机视觉 SDK [包][pypi_computervision]（with [pip][pip]）：
 
 ```Bash
 pip install azure-cognitiveservices-vision-computervision
@@ -150,11 +150,11 @@ client = ComputerVisionClient(endpoint, credentials)
 
 ## <a name="examples"></a>示例
 
-在使用以下任何任务前，你需要 [ComputerVisionClient][ref_computervisionclient] 客户端对象。
+在使用以下任何任务前，需要 [ComputerVisionClient][ref_computervisionclient] 客户端对象。
 
 ### <a name="analyze-an-image"></a>分析图像
 
-可以使用 [`analyze_image`][ref_computervisionclient_analyze_image] 分析图像中的某些特征。 使用 [`visual_features`][ref_computervision_model_visualfeatures] 属性设置针对图像执行的分析类型。 常用值为 `VisualFeatureTypes.tags` 和 `VisualFeatureTypes.description`。
+可以使用 [`analyze_image`][ref_computervisionclient_analyze_image] 分析图像以了解特定功能. Use the [`visual_features`][ref_computervision_model_visualfeatures] 属性可设置要对该图像执行的分析的类型。 常用值为 `VisualFeatureTypes.tags` 和 `VisualFeatureTypes.description`。
 
 ```Python
 url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
@@ -167,7 +167,7 @@ for tag in image_analysis.tags:
 
 ### <a name="get-subject-domain-list"></a>获取主题域列表
 
-使用 [`list_models`][ref_computervisionclient_list_models] 查看用于分析图像的主题域。 [按域分析图像](#analyze-an-image-by-domain)时将使用这些域名。 域的示例是 `landmarks`。
+查看用于通过 [`list_models`][ref_computervisionclient_list_models] 分析图像的主题域。 [按域分析图像](#analyze-an-image-by-domain)时将使用这些域名。 域的示例是 `landmarks`。
 
 ```Python
 models = client.list_models()
@@ -216,7 +216,7 @@ for caption in analysis.captions:
 
 ### <a name="get-text-from-image"></a>获取图像中的文本
 
-可以从图像中获取任何手写或打印的文本。 这需要对 SDK 进行两次调用：[`batch_read_file`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#batch-read-file-url--mode--custom-headers-none--raw-false----operation-config-) 和 [`get_read_operation_result`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#get-read-operation-result-operation-id--custom-headers-none--raw-false----operation-config-)。 对 `batch_read_file` 的调用是异步的。 在 `get_read_operation_result` 调用的结果中，需要先使用 [`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] 检查第一次调用是否已完成，然后提取文本数据。 结果包括文本以及该文本的边框坐标。
+可以从图像中获取任何手写或打印的文本。 这需要对 SDK 进行两次调用：[`batch_read_file`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) 和 [`get_read_operation_result`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python)。 对 `batch_read_file` 的调用是异步的。 在 `get_read_operation_result` 调用的结果中，需要先使用 [`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] 检查第一个调用是否已完成，然后再提取文本数据。 结果包括文本以及该文本的边框坐标。
 
 ```Python
 # import models
@@ -286,7 +286,7 @@ image.save('thumbnail.jpg')
 
 ### <a name="general"></a>常规
 
-使用 Python SDK 来与 [ComputerVisionClient][ref_computervisionclient] 客户端对象交互时，将使用 [`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] 返回错误。 服务返回的错误对应于返回给 REST API 请求的相同 HTTP 状态代码。
+与 [ComputerVisionClient][ref_computervisionclient] 交互时，client object using the Python SDK, the [`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] 类用于返回错误。 服务返回的错误对应于返回给 REST API 请求的相同 HTTP 状态代码。
 
 例如，如果你尝试使用无效的密钥分析图像，则会返回 `401` 错误。 以下代码片段通过捕获异常并显示有关错误的其他信息来妥善处理该[错误][ref_httpfailure]。
 
@@ -312,7 +312,7 @@ except HTTPFailure as e:
 
 ### <a name="handle-transient-errors-with-retries"></a>使用重试处理暂时性错误
 
-使用 [ComputerVisionClient][ref_computervisionclient] 客户端时，可能会遇到服务强制实施的[速率限制][computervision_request_units]所导致的暂时性错误，或者网络中断等其他暂时性问题。 了解如何处理此类错误的信息，请参阅云设计模式指南中的[重试模式][azure_pattern_retry]，以及相关的[断路器模式][azure_pattern_circuit_breaker]。
+使用 [ComputerVisionClient][ref_computervisionclient] client, you might encounter transient failures caused by [rate limits][computervision_request_units]，或者网络中断等其他暂时性问题。 有关如何处理此类故障的信息，请参阅云设计模式指南中的[重试模式][azure_pattern_retry]，以及相关的[断路器模式][azure_pattern_circuit_breaker]。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本-使用 Azure Cosmos 帐户中的大分区键创建容器
-description: Azure PowerShell 脚本示例-使用 Azure Cosmos 帐户中的大分区键创建容器
+title: Azure PowerShell 脚本 - 在 Azure Cosmos 帐户中创建具有大分区键的容器
+description: Azure PowerShell 脚本示例 - 在 Azure Cosmos 帐户中创建具有大分区键的容器
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: c4e8f26c59312b5216a6834e34c5bbc2bf58563a
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
-ms.translationtype: MT
+ms.openlocfilehash: 1e61640115d1b85c69a1513b043a1a55ac720c19
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566799"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603853"
 ---
-# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-account-using-powershell"></a>使用 Azure Cosmos 帐户使用 PowerShell 中的大分区键创建容器
+# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 在 Azure Cosmos 帐户中创建具有大分区键的容器
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 349ae3450b5817b5cfe9c95c41d159e3daca7a39
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629920"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603396"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入门：使用人脸 REST API 和 C# 检测图像中的人脸
 
@@ -77,7 +77,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>接收图像输入
 
-将以下代码添加到 **Program** 类的 **Main** 方法。 这样会将一个提示写入到控制台，要求用户输入图像 URL。 然后，它会调用另一方法 (**MakeAnalysisRequest**)，在该位置处理图像。
+将以下代码添加到 **Program** 类的 **Main** 方法。 此代码会将一个提示写入到控制台，要求用户输入图像 URL。 然后，它会调用另一方法 (**MakeAnalysisRequest**)，在该位置处理图像。
 
 ```csharp
         static void Main(string[] args)
@@ -162,7 +162,7 @@ namespace DetectFace
 
 ### <a name="process-the-input-image-data"></a>处理输入图像数据
 
-将以下方法添加到 **Program** 类。 这会将指定 URL 中的图像转换为字节数组。
+将以下方法添加到 **Program** 类。 此方法会将指定 URL 中的图像转换为字节数组。
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +179,7 @@ namespace DetectFace
 
 ### <a name="parse-the-json-response"></a>分析 JSON 响应
 
-将以下方法添加到 **Program** 类。 这会格式化 JSON 输入，使之更加易于读取。 应用会将该字符串数据写入到控制台。 然后即可关闭类和命名空间。
+将以下方法添加到 **Program** 类。 此方法会格式化 JSON 输入，使之更加易于读取。 应用会将该字符串数据写入到控制台。 然后即可关闭类和命名空间。
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.

@@ -7,21 +7,21 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: quickstart
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: d1c65b590fd68f68fdaeb110c0fd00e0c5a6649a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 31bbc59b0587bb71999c4b10d273f75942737be2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127648"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604131"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入门：尝试在 Web 上使用内容审查器
 
 本快速入门将使用联机内容审查器评审工具来测试内容审查器的基本功能，且无需编写任何代码。 若要更快速地将此服务集成到应用中，请参阅[后续步骤](#next-steps)部分中的其他快速入门。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Web 浏览器
 
@@ -69,5 +69,5 @@ ms.locfileid: "62127648"
 
 了解如何在应用中单独使用审查 API。
 - 实施图像审查。 使用 [API 控制台](try-image-api.md)或 [C# 快速入门](image-moderation-quickstart-dotnet.md)，根据标记、置信度评分和提取的其他信息扫描图像并检测潜在的成人和猥亵内容。
-- 实施文本审查。 使用[API 控制台](try-text-api.md)或使用[C#快速入门](text-moderation-quickstart-dotnet.md)扫描潜在的猥亵词语，计算机辅助不需要的文本分类 （预览版） 和个人数据的文本内容。
+- 实施文本审查。 使用 [API 控制台](try-text-api.md)或 [C# 快速入门](text-moderation-quickstart-dotnet.md)扫描文本内容以查找潜在的亵渎内容、机器辅助的不需要的文本分类（预览）和个人数据。
 - 实施视频审查。 请按照[适用于 C# 的视频审核操作指南](video-moderation-api.md)扫描视频并检测潜在的成人和猥亵内容。 

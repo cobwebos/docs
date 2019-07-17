@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 05/16/2019
+ms.date: 07/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b3c5c08e9862d59481573b501045466d6d691a77
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ee3c4da96629910801413cbbad69963defb87dfe
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485497"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798780"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "67485497"
 
 + [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
-+ 使用 [Postman 桌面应用](https://www.getpostman.com/)或 [Telerik Fiddler](https://www.telerik.com/fiddler) 将请求发送到 Azure 搜索。
++ 使用 [Postman 桌面应用](https://www.getpostman.com/)将请求发送到 Azure 搜索。
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
@@ -240,7 +240,11 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="clean-up"></a>清理
 
-如果不再需要搜索服务，则释放服务的最快方法是删除包含 Azure 搜索服务的资源组。 删除资源组将永久删除其中的所有内容，包括服务和任何存储的内容。 在门户中，资源组名称显示在每个服务的“概述”页上。
+在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组，以删除整个资源集。
+
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
+
+如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 
 ## <a name="next-steps"></a>后续步骤
 

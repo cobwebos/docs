@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: b5eb57562dac498c0e5bf2960007f52ad1117ac2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 618e7e19b20f361aa0a8c668e9621a29db43772d
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244771"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797752"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置生存时间
 
@@ -35,6 +35,11 @@ ms.locfileid: "66244771"
    * 单击“保存”  以保存更改。
 
    ![在 Azure 门户中配置生存时间](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+
+
+- 当 DefaultTimeToLive 为 null 时，生存时间为“关”
+- 当 DefaultTimeToLive 为 -1 时，“生存时间”设置为“开”（无默认值）
+- 当 DefaultTimeToLive 具有任何其他整数值（0 除外）时，“生存时间”设置为“开”
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>使用 SDK 在容器上启用生存时间
 

@@ -17,6 +17,8 @@
       href: notifications.md
     - name: 你的登录体验是怎样的？
       href: flows.md
+    - name: 标识保护和 B2B 用户
+      href: concept-identity-protection-b2b.md
 - name: 操作指南
   expanded: true
   items:

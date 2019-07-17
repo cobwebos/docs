@@ -10,16 +10,19 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: cb01269d21d3b036dfff84faef1903dc082dc6f1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e31f30373349d4048f9021ab8eee7f39dcf5cd57
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445040"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705513"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-with-nodejs"></a>快速入门：使用 Node.js 通过文本翻译 API 获取所支持语言的列表
 
 本快速入门介绍如何使用 Node.js 和文本翻译 REST API 发出可以返回所支持语言的列表的 GET 请求。
+
+>[!TIP]
+> 如果你想一次看到所有代码，这个示例的源代码可以在 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS) 上找到。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,7 +67,7 @@ let options = {
 };
 ```
 
-如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。 
+如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="make-the-request-and-print-the-response"></a>发出请求并输出响应
 
@@ -185,8 +188,10 @@ node get-languages.js
 
 ## <a name="next-steps"></a>后续步骤
 
+查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的 Node.js 示例](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS)
+> [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>另请参阅
 

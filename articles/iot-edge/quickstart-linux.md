@@ -4,17 +4,17 @@ description: 本快速入门介绍如何创建 IoT Edge 设备，然后从 Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/02/2019
+ms.date: 07/09/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 58dc2f5d8862c0b51b36e028d52275b2c8e732be
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: e4b2f9eaa243c0cbef66f88544be769481dd6722
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537561"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798660"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux 设备
 
@@ -55,11 +55,11 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
 
 IoT Edge 设备：
 
-* 充当 IoT Edge 设备的 Linux 设备或虚拟机。 应使用 Microsoft 提供的 [Azure IoT Edge on Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) 虚拟机，该虚拟机在设备上预先安装了运行 IoT Edge 所需的所有项。 使用以下命令创建此虚拟机：
+* 充当 IoT Edge 设备的 Linux 设备或虚拟机。 应使用 Microsoft 提供的 [Azure IoT Edge on Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) 虚拟机，该虚拟机在设备上预先安装了运行 IoT Edge 所需的所有项。 接受使用条款并使用以下命令创建此虚拟机：
 
    ```azurecli-interactive
    az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
-   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
    可能需要几分钟才能创建并启动新的虚拟机。

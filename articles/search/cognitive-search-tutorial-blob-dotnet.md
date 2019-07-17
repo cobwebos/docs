@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 7fc33f89797fe0e3cc3a9832c9dc084194cf6603
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 2c77d509a0e66fd02bd949e481c5f0316fdd9afb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485768"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672006"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C# 教程：在 Azure 搜索索引管道中调用认知服务 API
 
@@ -697,4 +697,4 @@ catch (Exception e)
 使用自定义技能自定义或扩展管道。 创建自定义技能并将其添加到技能集可以载入自己编写的文本或图像分析代码。
 
 > [!div class="nextstepaction"]
-> [示例：创建自定义技能](cognitive-search-create-custom-skill-example.md)
+> 示例：[创建认知搜索的自定义技能](cognitive-search-create-custom-skill-example.md)

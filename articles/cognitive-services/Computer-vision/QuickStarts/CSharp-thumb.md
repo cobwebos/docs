@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 5915aa522fe06b432ca036553c7dd7da63836c9e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3ae1b1ba289957187d31f48e4adb1f1d80c7c068
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995109"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606006"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 C# 生成缩略图
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-c"></a>快速入门：使用计算机视觉 REST API 和 C# 生成缩略图
 
 在本快速入门中，你将使用计算机视觉的 REST API 基于图像生成缩略图。 使用[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法，可以生成图像的缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
 
@@ -35,9 +35,9 @@ ms.locfileid: "59995109"
 
 1. 使用 Visual C# 控制台应用模板在 Visual Studio 中创建新的 Visual Studio 解决方案。
 1. 安装 Newtonsoft.Json NuGet 包。
-    1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”。
-    1. 单击“浏览”选项卡，在“搜索”框中键入“Newtonsoft.Json”。
-    1. 选择显示的 Newtonsoft.Json，单击项目名称旁边的复选框，然后单击“安装”。
+    1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”    。
+    1. 单击“浏览”选项卡，在“搜索”框中键入“Newtonsoft.Json”   。
+    1. 选择显示的 Newtonsoft.Json，单击项目名称旁边的复选框，然后单击“安装”   。
 1. 将 `Program.cs` 中的代码替换为以下代码，然后根据需要在代码中进行以下更改：
     1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
     1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法的终结点 URL。
@@ -212,10 +212,6 @@ StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.Stre
   Expires: -1
 }
 ```
-
-## <a name="clean-up-resources"></a>清理资源
-
-不再需要 Visual Studio 解决方案时，请将其删除。 为此，请打开文件资源管理器，导航到在其中创建 Visual Studio 解决方案的文件夹，然后删除该文件夹。
 
 ## <a name="next-steps"></a>后续步骤
 

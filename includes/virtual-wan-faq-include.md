@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9d8482fdf8e914801fb77e2ab1712145fa3ccea0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9cad403e39239ea92aa432ef3234c5388bfa95c7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077492"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673236"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Azure 虚拟网络网关（VPN 网关）与 Azure 虚拟 WAN vpngateway 之间有什么差别？
 
@@ -109,7 +109,7 @@ ms.locfileid: "67077492"
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>虚拟 WAN 与现有 Azure 虚拟网络网关有何不同？
 
-虚拟网络网关 VPN 限制为 30 个隧道。 对于连接，应当为大型 VPN 使用虚拟 WAN。 对于除中西部区域之外的所有区域，你可以以 2 Gbps 的速率最多连接到 1,000 个分支。 对于中西部区域，可以提供 20 Gbps 的速率。 我们将来会向其他区域推出 20 Gbps 的速率。 连接是从本地 VPN 设备到虚拟中心的主动-主动隧道。 每个区域中可以有一个中心，这意味着你可以跨中心连接到 1,000 多个分支。
+虚拟网络网关 VPN 限制为 30 个隧道。 对于连接，应当为大型 VPN 使用虚拟 WAN。 在所有区域的中心内，可以以 20 Gbps 的速率最多连接到 1,000 个分支。 连接是从本地 VPN 设备到虚拟中心的主动-主动隧道。 每个区域中可以有一个中心，这意味着你可以跨中心连接到 1,000 多个分支。
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>虚拟 WAN 如何支持 SD-WAN 设备？
 

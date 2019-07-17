@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 4a28e9f1f911e274f9a53275afa577024405b336
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b210af2a70a3ce858d8f53102a181c75373b4176
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474698"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606949"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教程：视频和脚本审查
 
@@ -37,7 +37,7 @@ ms.locfileid: "66474698"
 - 在[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)网站上注册并创建自定义标记。 执行此步骤时如需帮助，请参阅[使用标记](Review-Tool-User-Guide/tags.md)。
 
     ![屏幕截图：视频审查自定义标记](images/video-tutorial-custom-tags.png)
-- 若要运行示例应用程序，需要有 Azure 帐户、Azure 媒体服务帐户、Azure 内容审查器资源，以及 Azure Active Directory 凭据。 有关如何获取这些项的说明，请查看[视频审查 API](video-moderation-api.md) 指南。
+- 若要运行示例应用程序，需要有 Azure 帐户、Azure 媒体服务帐户、Azure 内容审查器资源，以及 Azure Active Directory 凭据。 有关如何获取这些资源的说明，请查看[视频审查 API](video-moderation-api.md) 指南。
 - 从 GitHub 下载[视频审查控制台应用程序](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp)。
 
 ## <a name="enter-credentials"></a>输入凭据
@@ -225,7 +225,7 @@ ms.locfileid: "66474698"
 > [!NOTE]
 > 控制台应用程序使用 [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 根据上传视频的音频轨道生成脚本。结果以 WebVTT 格式提供。 有关此格式的详细信息，请参阅 [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)（Web 视频文本轨道格式）。
 
-## <a name="create-a-the-human-in-the-loop-review"></a>创建人为介入评论
+## <a name="create-a-human-review"></a>创建人工评审
 
 审查过程会从视频返回一个关键帧列表，以及其音频轨道的脚本。 下一步是在内容审查器评论工具中为人工审查器创建评论。 回到 `Program.cs` 中的 `ProcessVideo()` 方法，你会看到对 `CreateVideoReviewInContentModerator()` 方法的调用。 此方法位于 `videoReviewApi` 类中，该类位于 `VideoReviewAPI.cs` 中，如下所示。
 

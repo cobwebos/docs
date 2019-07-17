@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: b25cc8c04aed8cd333ff4de5b12db6674323787d
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: c7a7e7994ef5e16640f59efdc672f6793bc4f18d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393604"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706475"
 ---
 # <a name="keys-and-values"></a>键和值
 
@@ -94,7 +94,7 @@ Azure 应用配置将配置数据存储为键值对。 键值对是一种简单�
 | `label=1.0.*` | 匹配以 1.0. 开头的标签  |
 | `label=*.0.0` | 匹配以 .0.0 结尾的标签  |
 | `label=*.0.*` | 匹配包含 .0. 的标签  |
-| `label=%00,1.0.0` | 匹配标签 `null` 或 1.0.1，限制为五个 CSV  |
+| `label=%00,1.0.0` | 匹配标签 `null` 或 **1.0.0**，限制为五个 CSV |
 
 ## <a name="values"></a>值
 

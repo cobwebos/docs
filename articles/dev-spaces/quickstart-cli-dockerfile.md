@@ -1,0 +1,158 @@
+---
+title: 使用 Azure Dev Spaces 在 Kubernetes 上通过 Dockerfile 部署应用程序
+titleSuffix: Azure Dev Spaces
+author: zr-msft
+services: azure-dev-spaces
+ms.service: azure-dev-spaces
+ms.author: zarhoads
+ms.date: 07/08/2019
+ms.topic: quickstart
+description: 使用 Azure Dev Spaces 在 AKS 上通过 Dockerfile 部署微服务
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
+manager: gwallace
+ms.openlocfilehash: a272047955564ba745d4cf521e560af9d24cfb9e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710690"
+---
+# <a name="quickstart-develop-an-application-with-a-dockerfile-on-kubernetes-using-azure-dev-spaces"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 上通过 Dockerfile 开发应用程序
+本指南介绍如何：
+
+- 使用 Azure 中的托管 Kubernetes 群集设置 Azure Dev Spaces。
+- 使用命令行在容器中开发并运行代码。
+
+## <a name="prerequisites"></a>先决条件
+
+- Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
+- [已安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+
+## <a name="create-an-azure-kubernetes-service-cluster"></a>创建 Azure Kubernetes 服务群集
+
+需要在[支持的区域][supported-regions]中创建 AKS 群集。 以下命令创建名为 *MyResourceGroup* 的资源组，以及名为 *MyAKS* 的 AKS 群集。
+
+```cmd
+az group create --name MyResourceGroup --location eastus
+az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+```
+
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>在 AKS 群集上启用 Azure Dev Spaces
+
+使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。 以下命令在 *MyResourceGroup* 组中的 *MyAKS* 群集上启用 Dev Spaces，并创建一个默认开发空间。 
+
+```cmd
+$ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+
+'An Azure Dev Spaces Controller' will be created that targets resource 'MyAKS' in resource group 'MyResourceGroup'. Continue? (y/N): y
+
+Creating and selecting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup'...2m 24s
+
+Select a dev space or Kubernetes namespace to use as a dev space.
+ [1] default
+Type a number or a new name: 1
+
+Kubernetes namespace 'default' will be configured as a dev space. This will enable Azure Dev Spaces instrumentation for new workloads in the namespace. Continue? (Y/n): Y
+
+Configuring and selecting dev space 'default'...3s
+
+Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
+```
+
+## <a name="get-sample-application-code"></a>获取示例应用程序代码
+
+本文使用 [Azure Dev Spaces 示例应用程序](https://github.com/Azure/dev-spaces)来演示 Azure Dev Spaces 的用法。 示例应用程序采用 Go 编写，但是，只要提供有效 Dockerfile 以使应用程序容器化并让其运行在 AKS 上，那么几乎使用任何语言都可行。
+
+从 GitHub 克隆该应用程序，并导航到 *dev-spaces/samples/golang/getting-started/webfrontend* 目录：
+
+```cmd
+git clone https://github.com/Azure/dev-spaces
+cd dev-spaces/samples/golang/getting-started/webfrontend
+```
+
+## <a name="prepare-the-application"></a>准备应用程序
+
+为了在 Azure Dev Spaces 上运行应用程序，需要 Dockerfile 和 Helm 图表。 对于某些语言，如 [Java][java-quickstart], [.NET core][netcore-quickstart] 和 [Node.js][nodejs-quickstart]，Azure Dev Spaces 客户端工具可以生成所需的所有资产。 对于其他许多语言，如 Go、PHP 和 Python，只要你可以提供有效的 Dockerfile，该客户端工具就可以生成 Helm 图表。
+
+示例应用程序包括有效的 Dockerfile。 若要生成 Helm 图表资产以在 Kubernetes 中运行应用程序，请使用 `azds prep` 命令：
+
+```cmd
+azds prep --public
+```
+
+必须从 *dev-spaces/samples/golang/getting-started/webfrontend* 目录运行 `prep` 命令才能正确生成 Helm 图表资产。
+
+# <a name="build-and-run-code-in-kubernetes"></a>在 Kubernetes 中生成并运行代码
+
+使用 `azds up` 命令在 AKS 中生成并运行代码：
+
+```cmd
+$ azds up
+Using dev space 'default' with target 'MyAKS'
+Synchronizing files...3s
+Installing Helm chart...2s
+Waiting for container image build...39s
+Building container image...
+Step 1/7 : FROM golang:1.10
+Step 2/7 : EXPOSE 80
+Step 3/7 : WORKDIR /go/src
+Step 4/7 : COPY src .
+Step 5/7 : WORKDIR /go/src/app
+Step 6/7 : RUN go install app
+Step 7/7 : ENTRYPOINT /go/bin/app
+Built container image in 41s
+Waiting for container...13s
+Service 'webfrontend' port 'http' is available at http://default.webfrontend.1234567890abcdef1234.eus.azds.io/
+Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:50199
+...
+```
+
+可以通过打开公共 URL 并导航到 `/api` 路径来查看服务是否正在运行。 该公共 URL 显示在 `azds up` 命令的输出中。 在此示例中，公共 URL 是 `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/`，你应导航到 `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/api`。
+
+如果使用 *Ctrl+C* 停止 `azds up` 命令，服务将继续在 AKS 中运行，并且公共 URL 仍然可用。
+
+## <a name="update-code"></a>更新代码
+
+若要部署服务的更新版本，可以更新项目中的任何文件，然后重新运行 `azds up` 命令。 例如：
+
+1. 如果 `azds up` 仍在运行，请按 *Ctrl+C*。
+1. 将 [`src/app/main.go` 中的第 29 行](https://github.com/Azure/dev-spaces/blob/master/samples/golang/getting-started/webfrontend/src/app/main.go#L29)更新为：
+    
+    ```golang
+        fmt.Fprintf(w, "Hello from webfrontend in Azure")
+    ```
+
+1. 保存所做更改。
+1. 重新运行 `azds up` 命令：
+
+    ```cmd
+    $ azds up
+    Using dev space 'default' with target 'MyAKS'
+    Synchronizing files...1s
+    Installing Helm chart...3s
+    Waiting for container image build...
+    ...    
+    ```
+
+1. 导航到正在运行的服务并观察所做的更改。
+1. 按 *Ctrl+C* 停止 `azds up` 命令。
+
+## <a name="clean-up-your-azure-resources"></a>清理 Azure 资源
+
+```cmd
+az group delete --name MyResourceGroup --yes --no-wait
+```
+
+## <a name="next-steps"></a>后续步骤
+
+了解 Azure Dev Spaces 如何帮助开发跨多个容器的更复杂应用程序，以及如何通过在不同的空间中使用不同的代码版本或分支来简化协作式开发。
+
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces 中的团队开发][team-quickstart]
+
+
+[java-quickstart]: quickstart-java.md
+[nodejs-quickstart]: quickstart-nodejs.md
+[netcore-quickstart]: quickstart-netcore.md
+[team-quickstart]: quickstart-team-development.md
+[supported-regions]: about.md#supported-regions-and-configurations

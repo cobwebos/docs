@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/26/2019
+ms.date: 7/10/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 9a875f4450b700fc9db74b4402471e282f8e9dab
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: da82f6c93045b38aed887860c6d5c45c93b2260b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442916"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703954"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -30,7 +30,7 @@ Azure 防火墙提供以下功能：
 
 内置高可用性，因此不需要部署额外的负载均衡器，也不需要进行任何配置。
 
-## <a name="availability-zones-public-preview"></a>可用性区域（公开预览版）
+## <a name="availability-zones"></a>可用性区域
 
 在部署期间，可将 Azure 防火墙配置为跨多个可用性区域，以提高可用性。 使用可用性区域可将可用性提高到 99.99% 运行时间。 有关详细信息，请参阅 Azure 防火墙的[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/)。 如果选择了两个或更多个可用性区域，则可以提供 99.99% 的运行时间 SLA。
 
@@ -51,7 +51,7 @@ Azure 防火墙提供以下功能：
 
 ## <a name="application-fqdn-filtering-rules"></a>应用程序 FQDN 筛选规则
 
-可将出站 HTTP/S 流量限制为指定的完全限定域名 (FQDN) 列表，包括通配符域名。 此功能不需要 SSL 终止。
+可将出站 HTTP/S 流量或 Azure SQL 流量（预览版）限制到指定的一组完全限定的域名 (FQDN)（包括通配符）。 此功能不需要 SSL 终止。
 
 ## <a name="network-traffic-filtering-rules"></a>网络流量筛选规则
 
@@ -77,7 +77,11 @@ FQDN 标记使你可以轻松地允许已知的 Azure 服务网络流量通过�
 
 转换到防火墙公共 IP 地址的入站网络流量（目标网络地址转换）并将其筛选到虚拟网络上的专用 IP 地址。
 
-## <a name="multiple-public-ips-public-preview"></a>多个公共 IP（公共预览版）
+## <a name="multiple-public-ip-addresses"></a>多个公共 IP 地址
+
+> [!IMPORTANT]
+> 可通过 Azure PowerShell、Azure CLI、REST 和模板来使用具有多个公共 IP 地址的 Azure 防火墙。 门户用户界面将以增量方式添加到区域，并在完成推出时在所有区域均可用。
+
 
 可将多个公共 IP 地址（最多 100 个）关联到防火墙。
 
@@ -85,9 +89,6 @@ FQDN 标记使你可以轻松地允许已知的 Azure 服务网络流量通过�
 
 - **DNAT** - 可将多个标准端口实例转换为后端服务器。 例如，如果你有两个公共 IP 地址，可以转换这两个 IP 地址的 TCP 端口 3389 (RDP)。
 - **SNAT** - 其他端口可用于出站 SNAT 连接，以减少 SNAT 端口耗尽的可能性。 目前，Azure 防火墙会随机选择用于建立连接的源公共 IP 地址。 如果你在网络中进行任何下游筛选，则需要允许与防火墙关联的所有公共 IP 地址。
-
-> [!NOTE]
-> 在公共预览期，如果在正在运行的防火墙中添加或删除公共 IP 地址，使用 DNAT 规则的现有入站连接可能会有 40 - 120 秒的时间无法正常运行。 除非解除分配或删除防火墙，否则无法删除已分配到该防火墙的第一个公共 IP 地址。
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor 日志记录
 
@@ -108,10 +109,10 @@ Azure 防火墙存在以下已知问题：
 |威胁智能警报可能会被屏蔽|配置为仅警报模式时，目标为 80/443 的用于出站筛选的网络规则会屏蔽威胁智能警报。|使用应用程序规则为 80/443 创建出站筛选。 或者，将威胁智能模式更改为“提醒和拒绝”  。|
 |Azure 防火墙只将 Azure DNS 用于名称解析|Azure 防火墙只使用 Azure DNS 来解析 FQDN。 不支持自定义 DNS 服务器。 对其他子网上的 DNS 解析没有影响。|我们正在努力放宽此限制。|
 |Azure 防火墙 SNAT/DNAT 不适用于专用 IP 目标|Azure 防火墙 SNAT/DNAT 支持仅限于 Internet 出口/入口。 SNAT/DNAT 目前不适用于专用 IP 目标。 例如，分支到分支。|这是当前的一项限制。|
-|无法删除第一个公共 IP 地址|除非解除分配或删除防火墙，否则无法删除已分配到该防火墙的第一个公共 IP 地址。|这是设计使然。|
-|如果添加或删除公共 IP 地址，DNAT 规则可能暂时性地无法正常运行。| 如果在正在运行的防火墙中添加或删除公共 IP 地址，使用 DNAT 规则的现有入站连接可能会有 40 - 120 秒的时间无法正常运行。|这是此公共预览版功能的一项限制。|
+|无法删除第一个公共 IP 配置|每个 Azure 防火墙公共 IP 地址都分配给一个 IP 配置  。  第一个 IP 配置在防火墙部署过程中分配，通常还包含对防火墙子网的引用（除非通过模板部署以不同的方式进行了显式配置）。 无法删除此 IP 配置，因为它会取消分配防火墙。 如果防火墙至少包含另一个可用的公共 IP 地址，则你仍然可以更改或删除与此 IP 配置相关联的公共 IP 地址。|这是设计使然。|
 |只能在部署期间配置可用性区域。|只能在部署期间配置可用性区域。 部署防火墙后无法配置可用性区域。|这是设计使然。|
 |对入站连接的 SNAT|除了 DNAT 以外，通过防火墙公共 IP 地址（入站）建立的连接将通过 SNAT 转换为某个防火墙专用 IP。 当前提出此项要求（也适用于主动/主动 NVA）的目的是确保对称路由。|若要保留 HTTP/S 的原始源，请考虑使用 [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) 标头。 例如，在防火墙的前面使用 [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) 等服务。 还可以添加 WAF 作为 Azure Front Door 的一部分，并链接到防火墙。
+|仅在代理模式下支持 SQL FQDN 筛选（端口 1433）|对于 Azure SQL 数据库、Azure SQL 数据仓库和 Azure SQL 托管实例：<br><br>在预览期间，仅在代理模式下支持 SQL FQDN 筛选（端口 1433）。<br><br>对于 Azure SQL IaaS：<br><br>如果使用的是非标准端口，则可以在应用程序规则中指定这些端口。|对于采用重定向模式的 SQL（这是从 Azure 内连接时采用的默认设置），可以通过将 SQL 服务标记用作 Azure 防火墙网络规则的一部分来改为对访问进行筛选。
 
 ## <a name="next-steps"></a>后续步骤
 

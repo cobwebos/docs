@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4f13a384cb32596d191625c8f13bc914686c6297
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7c76715957737b2967c0312015fd122b58dd2d98
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000175"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605911"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-go-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Go 生成缩略图
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-with-go"></a>快速入门：使用计算机视觉 REST API 和 Go 生成缩略图
 
 在本快速入门中，你将使用计算机视觉的 REST API 基于图像生成缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
 
@@ -27,7 +27,7 @@ ms.locfileid: "60000175"
 ## <a name="prerequisites"></a>先决条件
 
 - 必须安装有 [Go](https://golang.org/dl/)。
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
+- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
@@ -40,8 +40,8 @@ ms.locfileid: "60000175"
     1. （可选）将 `imageUrl` 的值替换为生成缩略图时所依据的另一图像的 URL。
 1. 将代码保存为以 `.go` 为扩展名的文件。 例如，`get-thumbnail.go`。
 1. 打开命令提示符窗口。
-1. 在提示符处运行 `go build` 命令，对文件中的包进行编译。 例如，`go build get-thumbnail.go`。
-1. 在提示符处，运行所编译的包。 例如，`get-thumbnail`。
+1. 在提示符处运行 `go build` 命令，对文件中的包进行编译。 例如，`go build get-thumbnail.go` 。
+1. 在提示符处，运行所编译的包。 例如，`get-thumbnail` 。
 
 ```go
 package main
@@ -64,7 +64,7 @@ func main() {
     // from the West US region, replace "westcentralus" in the URL
     // below with "westus".
     //
-    // Free trial subscription keys are generated in the "westus" region.
+    // Free trial subscription keys are generated in the "westcentralus" region.
     // If you use a free trial subscription key, you shouldn't need to change
     // this region.
     const uriBase =

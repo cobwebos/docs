@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB 获取吞吐量 （RU/秒） 为 MongoDB API
-description: Azure PowerShell 脚本-Azure Cosmos DB 获取吞吐量 （RU/秒） 为 MongoDB API
+title: Azure PowerShell 脚本 - Azure Cosmos DB 获取吞吐量（RU/秒）- MongoDB API
+description: Azure PowerShell 脚本 - Azure Cosmos DB 获取吞吐量（RU/秒）- MongoDB API
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 57a58ae278f3df81218e50c4bc4d8b8c40315fdf
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
-ms.translationtype: MT
+ms.openlocfilehash: 91e3d8f1240e2eebb3e1d30ee18b16299f442106
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566825"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602291"
 ---
-# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>获取数据库或 Azure Cosmos DB 的 MongoDB API 的集合的吞吐量 (RU/s)
+# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>获取 Azure Cosmos DB 的数据库或集合的吞吐量（RU/秒）- MongoDB API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

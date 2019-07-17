@@ -2,18 +2,18 @@
 title: Azure Kubernetes 服务简介
 description: 了解 Azure Kubernetes 服务的功能和优势，以便在 Azure 中部署和管理基于容器的应用程序。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: overview
 ms.date: 05/06/2019
-ms.author: iainfou
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b14e4b452c1dcd92cc3e5447428c28f1d2c5b18e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5515951a9bde596935f4c603ffd9e088f74dee45
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073818"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615163"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
@@ -23,7 +23,7 @@ ms.locfileid: "65073818"
 
 有关 Kubernetes 基础知识的详细信息，请参阅 [AKS 的 Kubernetes 核心概念][concepts-clusters-workloads]。
 
-若要开始，请[通过 Azure 门户][aks-portal]或者[通过 Azure CLI][aks-cli] 完成 AKS 快速入门。
+若要开始，请在 [Azure 门户][aks-portal]中or [with the Azure CLI][aks-cli] 完成 AKS 快速入门。
 
 ## <a name="access-security-and-monitoring"></a>访问权限、安全性和监视
 
@@ -57,7 +57,7 @@ AKS 节点在 Azure 虚拟机上运行。 可以将存储连接到节点和 Pod�
 
 Azure Kubernetes 服务提供多个 Kubernetes 版本。 新版本在 AKS 中可用以后，即可使用 Azure 门户或 Azure CLI 升级群集。 在升级过程中，节点会被仔细封锁和排除以尽量减少对正在运行的应用程序造成中断。
 
-若要详细了解生命周期版本，请参阅 [AKS 中支持的 Kubernetes 版本][aks-supported versions]。 有关升级步骤，请参阅[升级 Azure Kubernetes 服务 (AKS) 群集][aks-upgrade]。
+若要详细了解生命周期版本，请参阅 [AKS 中支持的 Kubernetes 版本][aks-supported versions]. For steps on how to upgrade, see [Upgrade an Azure Kubernetes Service (AKS) cluster][aks-upgrade]。
 
 ### <a name="gpu-enabled-nodes"></a>启用 GPU 的节点
 
@@ -71,7 +71,7 @@ AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个�
 
 有关详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-使用 [Azure 磁盘][azure-disk]或 [Azure 文件存储][azure-files]完成动态永久性卷的入门。
+通过使用 [Azure 磁盘][azure-disk]or [Azure Files][azure-files]来开始使用动态永久性卷。
 
 ## <a name="virtual-networks-and-ingress"></a>虚拟网络和入口
 
@@ -91,7 +91,7 @@ AKS 群集可以部署到现有的虚拟网络中。 在此配置中，群集中
 
 Kubernetes 有丰富的生态系统，其中包含各种开发和管理工具，例如 Helm、Draft 以及适用于 Visual Studio Code 的 Kubernetes 扩展。 这些工具可以与 AKS 无缝地配合使用。
 
-另外，Azure Dev Spaces 为团队提供快速、迭代的 Kubernetes 开发体验。 只需最少的配置，即可直接在 AKS 中运行和调试容器。 有关入门，请参阅 [Azure Dev Spaces][azure-dev-spaces]。
+另外，Azure Dev Spaces 为团队提供快速、迭代的 Kubernetes 开发体验。 只需最少的配置，即可直接在 AKS 中运行和调试容器。 若要开始使用，请参阅 [Azure Dev Spaces][azure-dev-spaces]。
 
 Azure DevOps 项目允许通过简单的解决方案将现有的代码和 Git 存储库带到 Azure 中。 DevOps 项目自动创建 Azure 资源（例如 AKS，Azure DevOps Services 中的一种发布管道，其中包括用于 CI 的生成管道），为 CD 设置发布管道，然后创建适用于监视的 Azure Application Insights 资源。
 
@@ -109,7 +109,7 @@ Azure Kubernetes 服务 (AKS) 已被 CNCF 认证为符合 Kubernetes 规范。
 
 ## <a name="regulatory-compliance"></a>法规符合性
 
-Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有关详细信息，请参阅 [Microsoft Azure 符合性概述][compliance-doc]。
+Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有关详细信息，请参阅 [Microsoft Azure 合规性概述][compliance-doc]。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,7 +4,7 @@ description: 本快速入门介绍了如何使用 Azure 门户创建 Linux 虚�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/12/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 693f9144d1cb454b0a9dd98b5ae63938abd7d26d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f491a160e0f4f72f072dc43c46571f96dd19a297
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420398"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671043"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
@@ -57,29 +57,29 @@ cat ~/.ssh/id_rsa.pub
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户的左上角，选择“创建资源”。
+1. 在 Azure 门户的左上角，选择“创建资源”  。
 
-1. 在 Azure 市场资源列表上方的搜索框中，搜索并选择 Canonical 提供的“Ubuntu Server 16.04 LTS”，然后选择“创建”。
+1. 在 Azure 市场资源列表上方的搜索框中，搜索并选择 Canonical 提供的“Ubuntu Server 16.04 LTS”  ，然后选择“创建”  。
 
-1. 在“基本信息”标签页中的“项目详细信息”下，确保选择了正确的订阅，然后在“资源组”下选择“新建”。 在弹出窗口中，键入 *myResourceGroup* 作为资源组的名称，然后选择“确定”。 
+1. 在“基本信息”  标签页中的“项目详细信息”  下，确保选择了正确的订阅，然后在“资源组”  下选择“新建”  。 在弹出窗口中，键入 *myResourceGroup* 作为资源组的名称，然后选择“确定”  。 
 
     ![为 VM 新建资源组](./media/quick-create-portal/project-details.png)
 
-1. 在“实例详细信息”下，对于“虚拟机名称”键入 *myVM*，对于“区域”选择“美国东部”。 保留其他默认值。
+1. 在“实例详细信息”  下，对于“虚拟机名称”  键入 *myVM*，对于“区域”  选择“美国东部”  。 保留其他默认值。
 
     ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
 
-1. 在“管理员帐户”下，选择“SSH 公钥”，键入用户名，然后将公钥粘贴到文本框中。 删除公钥中的所有前导或尾随空格。
+1. 在“管理员帐户”  下，选择“SSH 公钥”  ，键入用户名，然后将公钥粘贴到文本框中。 删除公钥中的所有前导或尾随空格。
 
     ![管理员帐户](./media/quick-create-portal/administrator-account.png)
 
-1. 在“入站端口规则” > “公共入站端口”下，选择“允许所选端口”，然后从下拉列表中选择“SSH (22)”和“HTTP (80)”。 
+1. 在“入站端口规则”   > “公共入站端口”  下，选择“允许所选端口”  ，然后从下拉列表中选择“SSH (22)”  和“HTTP (80)”  。 
 
     ![打开 RDP 和 HTTP 的端口](./media/quick-create-portal/inbound-port-rules.png)
 
-1. 保留其余默认值，然后选择页面底部的“查看 + 创建”按钮。
+1. 保留其余默认值，然后选择页面底部的“查看 + 创建”  按钮。
 
-1. 在“创建虚拟机”页上，可以查看要创建的 VM 的详细信息。 准备好以后，选择“创建”。
+1. 在“创建虚拟机”页上，  可以查看要创建的 VM 的详细信息。 准备好以后，选择“创建”  。
 
 部署 VM 需要数分钟。 部署完成后，请转到下一部分。
 
@@ -88,11 +88,11 @@ cat ~/.ssh/id_rsa.pub
 
 创建与 VM 的 SSH 连接。
 
-1. 选择 VM 的概述页面上的“连接”按钮。 
+1. 选择 VM 的概述页面上的“连接”按钮。  
 
     ![门户 9](./media/quick-create-portal/portal-quick-start-9.png)
 
-2. 在“连接到虚拟机”页面中，请保留默认选项，以使用 IP 地址通过端口 22 进行连接。 在“使用 VM 本地帐户登录”中，将显示一个连接命令。 单击相应按钮来复制该命令。 下面的示例展示了 SSH 连接命令的样式：
+2. 在“连接到虚拟机”页面中，请保留默认选项，以使用 IP 地址通过端口 22 进行连接。  在“使用 VM 本地帐户登录”  中，将显示一个连接命令。 单击相应按钮来复制该命令。 下面的示例展示了 SSH 连接命令的样式：
 
     ```bash
     ssh azureuser@10.111.12.123
@@ -120,7 +120,7 @@ sudo apt-get -y install nginx
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -57,7 +57,7 @@
           href: isv-choose-multi-tenant-federation.md
         - name: 为多租户应用程序创建文档
           href: isv-create-sso-documentation.md
-        - name: 规划单一登录部署
+        - name: 计划单一登录部署
           href: plan-sso-deployment.md
     - name: 一键式 SSO
       items:
@@ -81,20 +81,6 @@
           href: tenant-restrictions.md
         - name: 配置 SAML 令牌加密（预览版）
           href: howto-saml-token-encryption.md
-    - name: 单一登录
-      items:
-        - name: 什么是单一登录
-          href: what-is-single-sign-on.md
-        - name: 规划单一登录部署
-          href: plan-sso-deployment.md
-        - name: 在多租户应用程序中启用单一登录
-          href: isv-sso-content.md
-        - name: 选择正确的 SSO 联合身份验证协议
-          href: isv-choose-multi-tenant-federation.md
-        - name: 为多租户应用程序创建 Azure 租户
-          href: isv-tenant-multi-tenant-app.md
-        - name: 创建和发布应用程序的 SSO 文档
-          href: isv-create-sso-documentation.md
     - name: 最终用户门户
       href: end-user-experiences.md
 - name: 操作指南

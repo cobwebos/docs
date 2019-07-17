@@ -292,6 +292,8 @@
       displayName: 'module, import'
 - name: 跨组件方案
   items:
+    - name: 使用 SendGrid 从 Runbook 发送电子邮件
+      href: automation-send-email.md
     - name: Runbook 库
       href: automation-runbook-gallery.md
     - name: 使用指标警报监视 Runbook

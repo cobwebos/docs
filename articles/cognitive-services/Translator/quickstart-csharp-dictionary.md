@@ -10,18 +10,21 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 0c8fb4eb50b5824126d2be2160dd341ed60955af
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1f80f9b0f044fe8b32a555b0509e14cd2172dd0a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448200"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704594"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-c"></a>快速入门：通过 C# 使用双语字典查找字词
 
 本快速入门介绍如何使用 .NET Core 和文本翻译 API 获取术语的备用翻译，以及这些备用翻译的使用示例。
 
 此快速入门需要包含文本翻译资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
+
+>[!TIP]
+> 如果你想一次看到所有代码，这个示例的源代码可以在 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) 上找到。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -146,7 +149,7 @@ static string PrettyPrint(string s)
 }
 ```
 
-如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。 
+如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
@@ -199,10 +202,10 @@ dotnet run
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览此快速入门的示例代码和其他内容，包括音译和语言识别，以及 GitHub 上的其他示例文本翻译项目。
+查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
 
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的 C# 示例](https://aka.ms/TranslatorGitHub?type=&language=c%23)
+> [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>另请参阅
 

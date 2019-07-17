@@ -1,5 +1,6 @@
 ---
-title: 快速入门：使用异常检测器 REST API 和 Python 以批的形式检测异常 | Microsoft Docs
+title: 快速入门：使用异常检测器 REST API 和 Python 以批的形式检测异常
+titleSuffix: Azure Cognitive Services
 description: 使用异常检测器 API 能够以批或流数据的形式检测数据系列的异常。
 services: cognitive-services
 author: aahill
@@ -9,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 0ab39a7bb86671efb6258e3171e3bf7847aa241f
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c69bc4db35a198d73f9b29ee3ed2fa6b6f71be49
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341742"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721446"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入门：使用异常检测器 REST API 和 Python 检测时序数据的异常
 

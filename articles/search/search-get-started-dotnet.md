@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2019
-ms.openlocfilehash: a5cbd2036f92c27709d92d0cf415cc9837645fb8
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 07/09/2019
+ms.openlocfilehash: d3236f4782cc4fd9113329f03e36515a91bad528
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485601"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798772"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>快速入门：使用 C# 通过 .NET SDK 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "67485601"
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
 
-+ 示例索引和文档在本文中以及此快速入门的 [Visual Studio solution](https://github.com/Azure-Samples/azure-search-dotnet-samples/quickstart)（Visual Studio 解决方案）中提供。
++ 示例索引和文档在本文中以及此快速入门的 [Visual Studio solution](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart)（Visual Studio 解决方案）中提供。
 
 + [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
@@ -550,13 +550,11 @@ ms.locfileid: "67485601"
 
 ## <a name="clean-up"></a>清理
 
-创建完索引并想要删除它时，只需对 `SearchServiceClient` 调用 `Indexes.Delete` 方法。
+在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-```csharp
-serviceClient.Indexes.Delete("hotels");
-```
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
 
-如果还完成了搜索服务，则可从 Azure 门户中删除资源。
+如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 
 ## <a name="next-steps"></a>后续步骤
 

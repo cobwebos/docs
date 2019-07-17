@@ -10,18 +10,21 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: c7b5a75f9c73ef470ebb84a8b42f7400c81f0b96
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f3264a9b8c99ebffb8cf6e06c6fa0d5813f7f595
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444966"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704411"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>快速入门：使用文本翻译 API 通过 Node.js 对文本进行直译
 
 本快速入门介绍如何使用 Node.js 和文本翻译 REST API 将文本从一个脚本直译（转换）为另一个脚本。 在提供的示例中，日语在经过直译后使用拉丁字母。
 
 此快速入门需要包含文本翻译资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
+
+>[!TIP]
+> 如果你想一次看到所有代码，这个示例的源代码可以在 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS) 上找到。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -93,9 +96,9 @@ let options = {
 };
 ```
 
-若要对请求进行身份验证，最容易的方法是将订阅密钥作为 `Ocp-Apim-Subscription-Key` 标头传入，这是我们在此示例中使用的方法。 替代方法是交换订阅密钥来获取访问令牌，将访问令牌作为 `Authorization` 标头传入，以便对请求进行验证。 
+若要对请求进行身份验证，最容易的方法是将订阅密钥作为 `Ocp-Apim-Subscription-Key` 标头传入，这是我们在此示例中使用的方法。 替代方法是交换订阅密钥来获取访问令牌，将访问令牌作为 `Authorization` 标头传入，以便对请求进行验证。
 
-如果使用的是认知服务多服务订阅，则还必须在请求标头中包括 `Ocp-Apim-Subscription-Region`。 
+如果使用的是认知服务多服务订阅，则还必须在请求标头中包括 `Ocp-Apim-Subscription-Region`。
 
 有关详细信息，请参阅[身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
@@ -139,8 +142,10 @@ node transliterate-text.js
 
 ## <a name="next-steps"></a>后续步骤
 
+查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的 Node.js 示例](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS)
+> [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>另请参阅
 

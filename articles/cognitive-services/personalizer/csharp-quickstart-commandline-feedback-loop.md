@@ -1,5 +1,5 @@
 ---
-title: 反馈循环 - 个性化体验创建服务
+title: 快速入门：创建反馈循环 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 在本 C# 快速入门中使用个性化体验创建服务个性化内容。
 services: cognitive-services
@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: quickstart
 ms.date: 06/11/2019
 ms.author: edjez
-ms.openlocfilehash: 2f2e3d01b02f7c06d69a09374528475301952179
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0b856b8d134cc160b8bb759fce0408204cf0ba61
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055510"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722439"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>快速入门：使用 C# 个性化内容 
 

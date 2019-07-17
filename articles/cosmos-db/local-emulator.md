@@ -3,15 +3,15 @@ title: 使用 Azure Cosmos 模拟器在本地开发
 description: 利用 Azure Cosmos 模拟器，无需创建 Azure 订阅即可在本地免费开发和测试应用程序。
 ms.service: cosmos-db
 ms.topic: tutorial
-author: deborahc
-ms.author: dech
-ms.date: 06/21/2019
-ms.openlocfilehash: d7d9d62525161e6871cafd65cf5cd2c403cf0579
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+author: markjbrown
+ms.author: mjbrown
+ms.date: 07/09/2019
+ms.openlocfilehash: 9649c53f9fc11795449afd78b12fda691239bb18
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331779"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797326"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -232,7 +232,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 ### <a name="command-line-syntax"></a>命令行语法
 
-    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/?]
+    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
 
 若要查看选项列表，请在命令提示符下键入 `CosmosDB.Emulator.exe /?`。
 
@@ -244,18 +244,19 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 | 关机| 关闭 Azure Cosmos 模拟器。| CosmosDB.Emulator.exe /Shutdown | |
 |DataPath | 指定要在其中存储数据文件的路径。 默认值为 %LocalAppdata%\CosmosDBEmulator。 | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<datapath\>：可访问路径 |
 |端口 | 指定用于模拟器的端口号。 默认值为 8081。 |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>：单个端口号 |
-| MongoPort | 指定用于 MongoDB 兼容性 API 的端口号。 默认值为 10255。 |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>：单个端口号|
-| CassandraPort | 指定用于 Cassandra 终结点的端口号。 默认值为 10350。 | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>：单个端口号 |
 | ComputePort | 指定用于计算互操作网关服务的端口号。 该网关的 HTTP 终结点探测端口计算得出 ComputePort + 79。 因此，ComputePort 和 ComputePort + 79 必须打开且可使用。 默认值为 8900, 8979。 | CosmosDB.Emulator.exe /ComputePort = \<computeport\> | \<computeport\>：单个端口号 |
+| EnableMongoDbEndpoint | 启用 MongoDB API | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
+| MongoPort | 指定用于 MongoDB 兼容性 API 的端口号。 默认值为 10255。 |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>：单个端口号|
 | EnableCassandraEndpoint | 启用 Cassandra API | CosmosDB.Emulator.exe /EnableCassandraEndpoint | |
+| CassandraPort | 指定用于 Cassandra 终结点的端口号。 默认值为 10350。 | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>：单个端口号 |
 | EnableGremlinEndpoint | 启用 Gremlin API | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
 | GremlinPort | 用于 Gremlin 终结点的端口号。 默认值为 8901。 | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>：单个端口号 |
+|EnableTableEndpoint | 启用 Azure 表 API | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |TablePort | 用于 Azure 表终结点的端口号。 默认值为 8902。 | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>：单个端口号|
 | KeyFile | 从指定文件中读取授权密钥。 使用 /GenKeyFile 选项来生成密钥文件 | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>：文件的路径 |
 | ResetDataPath | 以递归方式删除指定路径中的所有文件。 如果不指定路径，则默认为 %LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<path\>：文件路径  |
 | StartTraces  |  开始收集调试跟踪日志。 | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | 停止收集调试跟踪日志。 | CosmosDB.Emulator.exe /StopTraces  | |
-|EnableTableEndpoint | 启用 Azure 表 API | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |FailOnSslCertificateNameMismatch | 默认情况下，如果证书的 SAN 不包含模拟器主机的域名、本机 IPv4 地址、“localhost”和“127.0.0.1”，则模拟器会重新生成自签名的 SSL 证书。 启用此选项后，模拟器在启动时会失败。 之后，你应使用 /GenCert 选项来创建和安装新的自签名 SSL 证书。 | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
 | GenCert | 生成并安装新的自签名 SSL 证书。 选择性地包含用于通过网络访问模拟器的其他 DNS 名称的列表（以逗号分隔）。 | CosmosDB.Emulator.exe /GenCert[ \<comma-separated list of additional dns-names\>] | |
 | DirectPorts |指定用于直接连接的端口。 默认值为 10251、10252、10253、10254。 | CosmosDB.Emulator.exe /DirectPorts:\<directports\> | \<directports\>：以逗号分隔的 4 个端口的列表 |
@@ -276,11 +277,11 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 默认情况下，可最多创建 25 个固定大小的容器（仅支持使用 Azure Cosmos DB SDK 创建），或使用 Azure Cosmos 模拟器创建 5 个不受限容器。 通过修改 PartitionCount 值，可最多创建 250 个固定大小的容器或 50 个不受限容器，也可创建两者的任意组合（前提是总数不超过 250 个固定大小的容器，其中 1 个不受限容器 = 5 个固定大小的容器）  。 但是，建议不要设置用 200 个以上固定大小的容器进行运行的模拟器。 因为这会造成磁盘 IO 操作的开销增加，导致在运行终结点 API 时出现不可预测的超时情况。
 
-
 如果在已超过当前分区计数后尝试创建容器，则模拟器将引发 ServiceUnavailable 异常，并收到以下消息。
 
 “很抱歉，此区域当前需求较高，暂时无法满足你的请求。 我们在持续努力推出越来越多的容量，请进行重试。
-随时欢迎出于任何原因发送电子邮件至 askcosmosdb@microsoft.com。 ActivityId:12345678-1234-1234-1234-123456789abc”
+随时欢迎出于任何原因发送电子邮件至 askcosmosdb@microsoft.com。
+ActivityId:12345678-1234-1234-1234-123456789abc”
 
 要更改 Azure Cosmos 模拟器中可用容器的数量，请执行以下步骤：
 

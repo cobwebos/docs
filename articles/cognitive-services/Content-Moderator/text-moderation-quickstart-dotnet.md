@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f848ea0d1c86b9c12d26c59b8f0e92d1e5d70094
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756536"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604049"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>快速入门：使用 C# 分析文本内容中是否存在令人反感的材料
 
-本文中的信息和代码示例有助于你完成[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 的使用入门。 本文将介绍如何对文本内容执行基于字词的筛选和分类，以便审查其中是否存在可能会令人反感的材料。
+本文中的信息和代码示例有助于你完成[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 的使用入门。 本文介绍如何对文本内容执行基于字词的筛选和分类，以便审查其中是否存在可能会令人反感的材料。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "58756536"
 
 1. 在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目并将其命名为 **TextModeration**。 
 1. 如果解决方案中有其他项目，请将此项目选为单一启动项目。
-1. 获取所需的 NuGet 包。 右键单击解决方案资源管理器中的项目，选择“管理 NuGet 包”，然后找到并安装以下包：
+1. 获取所需的 NuGet 包。 右键单击解决方案资源管理器中的项目，选择“管理 NuGet 包”，然后找到并安装以下包： 
     - `Microsoft.Azure.CognitiveServices.ContentModerator`
     - `Microsoft.Rest.ClientRuntime`
     - `Newtonsoft.Json`
@@ -51,17 +51,17 @@ ms.locfileid: "58756536"
 
 ### <a name="create-the-content-moderator-client"></a>Create the Content Moderator client
 
-向 *Program.cs* 文件添加以下代码，为订阅创建内容审查器客户端提供程序。 在同一命名空间中添加此代码和 **Program** 类。 还需使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
+向 *Program.cs* 文件添加以下代码，为订阅创建内容审查器客户端提供程序。 在同一命名空间中添加此代码和 **Program** 类。 还需使用区域标识符和订阅密钥的值更新  AzureRegion 和 CMSubscriptionKey  字段。
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=54-77)]
 
 ### <a name="set-up-input-and-output-targets"></a>设置输入和输出目标
 
-向 Program.cs 中的 Program 类添加以下静态字段。 这些字段指定输入文本内容和输出 JSON 内容的文件。
+向 Program.cs 中的 Program 类添加以下静态字段   。 这些字段指定输入文本内容和输出 JSON 内容的文件。
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
-需创建 *TextFile.txt* 输入文件并相应地更新其路径（相对路径相对于执行目录）。 打开 _TextFile.txt_ 并添加需审查的文本。 本快速入门使用以下示例文本：
+需创建 TextFile.txt  输入文件并更新其路径（路径相对于执行目录）。 打开 _TextFile.txt_ 并添加需审查的文本。 本快速入门使用以下示例文本：
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -71,7 +71,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 
 ### <a name="load-the-input-text"></a>加载输入文本
 
-将以下代码添加到 Main 方法。 **ScreenText** 方法是重要的操作， 其参数指定将要执行的内容审查操作。 在此示例中，该方法配置为：
+将以下代码添加到 Main 方法  。 **ScreenText** 方法是重要的操作， 其参数指定将要执行的内容审查操作。 在此示例中，该方法配置为：
 - 检测文本中可能存在的猥亵语言。
 - 规范化文本和自动更正错别字。
 - 检测个人数据，例如美国和英国的电话号码、电子邮件地址和美国邮寄地址。

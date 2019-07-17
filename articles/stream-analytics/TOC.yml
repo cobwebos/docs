@@ -94,10 +94,12 @@
           href: stream-analytics-clean-up-your-job.md
         - name: 进行作业配对以确保可靠性
           href: stream-analytics-job-reliability.md
-        - name: 使用托管标识进行身份验证
+        - name: 使用托管标识进行身份验证 - ADLS Gen 1 输出
           href: stream-analytics-managed-identities-adls.md
         - name: 使用 SQL 参考数据
           href: sql-reference-data.md
+        - name: 使用托管标识进行身份验证 - Blob 输出
+          href: blob-output-managed-identity.md
     - name: 构建解决方案
       items:
         - name: Twitter 情绪分析

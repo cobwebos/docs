@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8ee96f2e06071d60eb97596687387fd80ba14cc3
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 1c45e06159e4c2850efa2d3ab3290647961fb7e1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496277"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592420"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb-preview"></a>教程：通过 SMB 将数据复制到 Azure Data Box Heavy（预览）
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>教程：通过 SMB 将数据复制到 Azure Data Box Heavy
 
 本教程介绍如何使用本地 Web UI 连接到主机并从中复制数据。
 

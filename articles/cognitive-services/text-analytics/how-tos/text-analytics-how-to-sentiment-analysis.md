@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: d4269a99a8e535692e4897630a7edd9b27347d41
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e17b68dfd63952d0c8c81415b090b047c5808e2e
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304040"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797807"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>示例：如何使用文本分析检测情绪
 
@@ -103,7 +103,7 @@ ms.locfileid: "67304040"
 
 下方示例展示了本文中文档集合的响应。
 
-```
+```json
 {
     "documents": [
         {
@@ -130,6 +130,133 @@ ms.locfileid: "67304040"
     "errors": []
 }
 ```
+
+## <a name="sentiment-analysis-v3-public-preview"></a>情绪分析 V3 公共预览版
+
+[下一版本的情绪分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9)现在为公共预览版，在 API 的文本分类和计分的准确度和细节方面有了显著改进。 
+
+> [!NOTE]
+> * 情绪分析 v3 的请求格式和[数据限制](../overview.md#data-limits)与上一版本相同。
+> * 目前，情绪分析 V3： 
+>    * 只支持英语。  
+>    * 已在以下区域发布：`Central US`、`Central Canada`、`East Asia` 
+
+|Feature |说明  |
+|---------|---------|
+|准确度改进     | 与以前的版本相比，文本文档在检测积极、中立、消极和复杂情绪方面有显著改进。           |
+|文档和句子级别的情绪评分     | 检测文档及其中单个句子的情绪。 如果文档包含多个句子，则会为每个句子分配一个情绪分数。         |
+|情绪类别和评分     | API 现在返回文本的情绪类别（`positive`、`negative`、`neutral`和`mixed`）和情绪评分。        |
+| 输出改进 | 情绪分析现在会返回整个文本文档及其中单个句子的信息。 |
+
+### <a name="sentiment-labeling"></a>情绪标记
+
+情绪分析 V3 可以在句子和文档级别返回评分和标签（`positive`、`negative`和`neutral`）。 在文档级别，也可返回`mixed`情绪标签（不是评分）。 可以通过聚合句子的评分来确定文档的情绪。
+
+| 句子情绪                                                        | 返回的文档标签 |
+|---------------------------------------------------------------------------|----------------|
+| 至少有一个积极的句子，其余句子为中立句子。 | `positive`     |
+| 至少有一个消极的句子，其余句子为中立句子。  | `negative`     |
+| 至少有一个消极的句子，至少有一个积极的句子。         | `mixed`        |
+| 所有句子均为中立句子。                                                 | `neutral`      |
+
+### <a name="sentiment-analysis-v3-example-request"></a>情绪分析 V3 示例请求
+
+以下 JSON 是一个示例，演示了如何向新版情绪分析发出请求。 请注意，请求格式设置与上一版相同：
+
+```json
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Hello world. This is some input text that I love."
+    },
+    {
+      "language": "en",
+      "id": "2",
+      "text": "It's incredibly sunny outside! I'm so happy."
+    }
+  ]
+}
+```
+
+### <a name="sentiment-analysis-v3-example-response"></a>情绪分析 V3 示例响应
+
+虽然请求格式与上一版相同，但是响应格式已更改。 以下 JSON 是一个来自新版 API 的示例响应：
+
+```json
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "documentScores": {
+                "positive": 0.98570585250854492,
+                "neutral": 0.0001625834556762,
+                "negative": 0.0141316400840878
+            },
+            "sentences": [
+                {
+                    "sentiment": "neutral",
+                    "sentenceScores": {
+                        "positive": 0.0785155147314072,
+                        "neutral": 0.89702343940734863,
+                        "negative": 0.0244610067456961
+                    },
+                    "offset": 0,
+                    "length": 12
+                },
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.98570585250854492,
+                        "neutral": 0.0001625834556762,
+                        "negative": 0.0141316400840878
+                    },
+                    "offset": 13,
+                    "length": 36
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "sentiment": "positive",
+            "documentScores": {
+                "positive": 0.89198976755142212,
+                "neutral": 0.103382371366024,
+                "negative": 0.0046278294175863
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.78401315212249756,
+                        "neutral": 0.2067587077617645,
+                        "negative": 0.0092281140387058
+                    },
+                    "offset": 0,
+                    "length": 30
+                },
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.99996638298034668,
+                        "neutral": 0.0000060341349126,
+                        "negative": 0.0000275444017461
+                    },
+                    "offset": 31,
+                    "length": 13
+                }
+            ]
+        }
+    ],
+    "errors": []
+}
+```
+
+### <a name="example-c-code"></a>示例 C# 代码
+
+可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs) 上查找一个可调用此版情绪分析的示例 C# 应用程序。
 
 ## <a name="summary"></a>摘要
 

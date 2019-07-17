@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cb029530d2c6cdac82fd0d257e10717386eebf0e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8f3a1dadaddb423a83f4c3691a4b5747a5196d2a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65022097"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795333"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>快速入门：在 Azure 搜索中使用认知技能创建 AI 索引管道
 
@@ -53,19 +53,19 @@ Azure 搜索与[认知服务](https://azure.microsoft.com/services/cognitive-ser
 
 1. [注册 Azure Blob 存储](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，创建存储帐户，打开 Blob 服务页并创建容器。  在 Azure 搜索所在的同一区域创建存储帐户。
 
-1. 在创建的容器中，单击“上传”以上传在上一步中下载的示例文件。
+1. 在创建的容器中，单击“上传”  以上传在上一步中下载的示例文件。
 
    ![Azure Blob 存储中的源文件](./media/cognitive-search-quickstart-blob/sample-data.png)
 
 ## <a name="create-the-enrichment-pipeline"></a>创建扩充管道
 
-返回到 Azure 搜索服务仪表板页，单击命令栏上的“导入数据”，通过四个步骤设置认知扩充管道。
+返回到 Azure 搜索服务仪表板页，单击命令栏上的“导入数据”，通过四个步骤设置认知扩充管道  。
 
   ![导入数据命令](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
 
-在“连接到数据”中，选择“Azure Blob 存储”，再选择创建的帐户和容器。 为数据源命名，并对余下的设置使用默认值。 
+在“连接到数据”中，选择“Azure Blob 存储”，再选择创建的帐户和容器   。 为数据源命名，并对余下的设置使用默认值。 
 
   ![Azure Blob 配置](./media/cognitive-search-quickstart-blob/blob-datasource.png)
 
@@ -77,11 +77,11 @@ Azure 搜索与[认知服务](https://azure.microsoft.com/services/cognitive-ser
 
 接下来，将扩充步骤添加到索引管道。 如果没有认知服务资源，可以注册每天提供 20 个事务的免费版本。 示例数据包含 14 个文件，因此运行此向导后，将最大程度使用完每日分配。
 
-1. 展开“附加认服务”以查看用于向认知服务 API 提供资源的选项。 在本教程中，你可以使用“免费”资源。
+1. 展开“附加认服务”以查看用于向认知服务 API 提供资源的选项  。 在本教程中，你可以使用“免费”资源  。
 
    ![附加认知服务](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
-2. 展开“添加扩充”并选择执行自然语言处理的技能。 在本快速入门中，我们针对人员、组织和地点选择了实体识别。
+2. 展开“添加扩充”并选择执行自然语言处理的技能  。 在本快速入门中，我们针对人员、组织和地点选择了实体识别。
 
    ![附加认知服务](media/cognitive-search-quickstart-blob/skillset.png)
 
@@ -104,15 +104,15 @@ Azure 搜索与[认知服务](https://azure.microsoft.com/services/cognitive-ser
 
 + 默认字段基于原始源数据字段 (`content`)，以及认知管道创建的输出字段（`people`、`organizations` 和 `locations`）。 默认数据类型从元数据和数据采样推断。
 
-+ 默认密钥是 metadata_storage_path（此字段包含唯一值）。
++ 默认密钥是 metadata_storage_path（此字段包含唯一值）  。
 
-+ 这些字段的默认属性**可检索**且**可搜索**。 Searchable 表示字段可搜索。 Retrievable 表示可以在结果中返回该字段。 向导假设你希望这些字段可检索且可搜索，因为它们是通过技能集创建的。
++ 这些字段的默认属性**可检索**且**可搜索**。 Searchable 表示字段可搜索  。 Retrievable 表示可以在结果中返回该字段  。 向导假设你希望这些字段可检索且可搜索，因为它们是通过技能集创建的。
 
   ![索引字段](media/cognitive-search-quickstart-blob/index-fields.png)
 
 请注意 `content` 字段旁边的 **Retrievable** 属性带有删除线和问号。 对于包含大量的文本的 Blob 文档，`content` 字段包含文件主体，因此可能包含数千行。 如果需要将文件内容传递到客户端代码，请确保 **Retrievable** 保持选定状态。 否则，如果提取的元素（`people`、`organizations` 和 `locations`）足以满足需要，请考虑在 `content` 中清除此属性。
 
-将某个字段标记为 **Retrievable** 并不意味着该字段一定会出现在搜索结果中。 可以使用 **$select** 查询参数指定要包含的字段，来精确控制搜索结果的构成。 对于包含大量文本的字段（例如 `content`），可以使用 **$select** 参数向应用程序的用户提供可管理的搜索结果，同时确保客户端代码可以通过 **Retrievable** 属性访问全部所需信息。
+将某个字段标记为 **Retrievable** 并不意味着该字段一定会出现在搜索结果中。  可以使用 **$select** 查询参数指定要包含的字段，来精确控制搜索结果的构成。 对于包含大量文本的字段（例如 `content`），可以使用 **$select** 参数向应用程序的用户提供可管理的搜索结果，同时确保客户端代码可以通过 **Retrievable** 属性访问全部所需信息。
   
 继续转到下一页。
 
@@ -120,17 +120,17 @@ Azure 搜索与[认知服务](https://azure.microsoft.com/services/cognitive-ser
 
 ### <a name="step-4-configure-the-indexer"></a>步骤 4：配置索引器
 
-索引器是推动索引过程的高级资源。 它指定数据源名称、目标索引和执行频率。 “导入数据”向导的最终结果始终是一个可以反复运行的索引器。
+索引器是推动索引过程的高级资源。 它指定数据源名称、目标索引和执行频率。 “导入数据”向导的最终结果始终是一个可以反复运行的索引器  。
 
-在“索引器”页中，可以接受默认名称并使用“立即运行”计划选项来立即运行它。 
+在“索引器”页中，可以接受默认名称并使用“立即运行”计划选项来立即运行它   。 
 
   ![索引器定义](media/cognitive-search-quickstart-blob/indexer-def.png)
 
-单击“提交”以创建并同时运行索引器。
+单击“提交”以创建并同时运行索引器  。
 
 ## <a name="monitor-indexing"></a>监视索引
 
-完成扩充步骤所用的时间比完成编制典型的基于文本的索引所用的时间更长。 向导应在概述页打开索引器列表，以便你能够跟踪进度。 若要进行自导航，请转到“概述”页，然后单击“索引器”。
+完成扩充步骤所用的时间比完成编制典型的基于文本的索引所用的时间更长。 向导应在概述页打开索引器列表，以便你能够跟踪进度。 若要进行自导航，请转到“概述”页，然后单击“索引器”  。
 
 由于 JPG 和 PNG 文件都是图像文件，并且我们忽略了来自此管道的 OCR 技能，因此会出现警告。 此外，还会出现截断通知。 Azure 搜索将“免费层”的提取字符数限制为 32,000 个字符。
 
@@ -140,11 +140,11 @@ Azure 搜索与[认知服务](https://azure.microsoft.com/services/cognitive-ser
 
 ## <a name="query-in-search-explorer"></a>搜索浏览器中的查询
 
-创建索引后，可以提交查询以返回索引中的文档。 在门户中，使用“搜索浏览器”来运行查询并查看结果。 
+创建索引后，可以提交查询以返回索引中的文档。 在门户中，使用“搜索浏览器”来运行查询并查看结果  。 
 
-1. 在搜索服务仪表板页上，单击命令栏上的“搜索浏览器”。
+1. 在搜索服务仪表板页上，单击命令栏上的“搜索浏览器”  。
 
-1. 选择顶部的“更改索引”，选择创建的索引。
+1. 选择顶部的“更改索引”，选择创建的索引  。
 
 1. 输入要在其中查询索引的搜索字符串，例如 `search=Microsoft&searchFields=organizations`。
 
@@ -166,19 +166,21 @@ CTRL-F 还有助于确定有多少个文档包含在给定的结果集中。 对
 
 最后，本快速入门提到可以通过查询索引来查看结果。 Azure 搜索最终提供的结果是一个可搜索的索引，可以[简单](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)或[全面扩展的查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)来查询它。 包含扩充字段的索引与其他任何索引类似。 若要合并标准或[自定义分析器](search-analyzers.md)、[评分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[同义词](search-synonyms.md)、[分面筛选器](search-filters-facets.md)、异地搜索或其他任何 Azure 搜索功能，完全可以这样做。
 
-## <a name="clean-up-resources"></a>清理资源
+## <a name="clean-up"></a>清理
 
-完成探索后，最快的清理方式是删除包含 Azure 搜索服务和 Azure Blob 服务的资源组。  
+在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-假设已将这两个服务放在同一个组中，则删除该资源组会永久删除其中的所有内容，包括在本练习中创建的服务和任何存储内容。 在门户中，资源组名称显示在每个服务的“概述”页上。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
+
+如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 
 ## <a name="next-steps"></a>后续步骤
 
 根据预配认知服务资源的方式，可以结合不同的技能和源数据字段，通过重新运行该向导来体验索引和扩充功能。 若要重复步骤，请删除索引和索引器，然后使用新的选项组合重新创建索引器。
 
-+ 在“概述” > “索引”中选择创建的索引，然后单击“删除”。
++ 在“概述” > “索引”中选择创建的索引，然后单击“删除”    。
 
-+ 在“概述”中，双击“索引器”磁贴。 找到创建的索引器并将其删除。
++ 在“概述”中，双击“索引器”磁贴   。 找到创建的索引器并将其删除。
 
 或者，重复使用示例数据和创建的服务，通过下一篇教程了解如何以编程方式执行相同的任务。 
 

@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c93271fcd74d1369112a2c5d2bba98fd14ff7c84
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: f4e627286f6a32816eafa84e860cb8eb49111f67
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357195"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604347"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 JavaScript 提取手写文本
+# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 提取手写文本
 
 在本快速入门中，你将使用计算机视觉的 REST API 从图像中提取手写文本。 使用[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API 和[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API，可以检测图像中的手写文本，并将识别的字符提取到计算机可用的字符流中。
 
@@ -68,11 +68,11 @@ ms.locfileid: "66357195"
         // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the "westus" region.
+        // Free trial subscription keys are generated in the "westcentralus" region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
-            "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
+            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
 
         // Display the image.
         var sourceImageUrl = document.getElementById("inputImage").value;
@@ -289,10 +289,6 @@ Image to read:
   ]
 }
 ```
-
-## <a name="clean-up-resources"></a>清理资源
-
-不再需要该文件时，请将其删除。
 
 ## <a name="next-steps"></a>后续步骤
 

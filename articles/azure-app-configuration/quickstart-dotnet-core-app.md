@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 0bf4aff8e0bae3e84e6383ec560dbfe67e30b994
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c42066b3ac02264ee357bac7ed3fdd360e9d5d4a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408720"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798417"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入门：使用应用程序配置创建 .NET Core 应用
 
@@ -39,13 +39,13 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+创建”来添加以下键值对：
+6. 选择“配置资源管理器” > “+创建”来添加以下键值对   ：
 
     | 密钥 | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 应用配置的数据 |
 
-    暂时将“标签”和“内容类型”保留为空。
+    暂时将“标签”和“内容类型”保留为空   。
 
 ## <a name="create-a-net-core-console-app"></a>创建 .NET Core 控制台应用
 
@@ -53,15 +53,15 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 1. 为项目新建一个文件夹。
 
-2. 在新文件夹中，运行以下命令，创建新的 ASP.NET Core MVC Web 应用项目：
+2. 在新文件夹中，运行以下命令以创建新的 ASP.NET Core 控制台应用项目：
 
         dotnet new console
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 通过运行以下命令，添加对 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 包的引用：
+1. 通过运行以下命令，添加对 `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet 包的引用：
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
 
 2. 运行以下命令，还原项目包：
 
@@ -89,7 +89,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问键。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问键  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

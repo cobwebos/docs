@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 73979ec3bd1d667453a186ea1f20bbeddc12db8f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 435ad986a9f0b96d42c88d450f40e5900ad33b7c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273312"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653255"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>有关 Azure 空间定位点的常见问题解答
 
@@ -120,11 +120,11 @@ Azure 空间定位点将 6DoF 跟踪器作为构造块，使你可以将真实�
 
 **问：它是否适用于 Unreal？**
 
-**答:** 我们预计很快会支持 Unreal。
+**答:** 将来会考虑支持 Unreal。
 
 **问：它是否适用于 Xamarin？**
 
-**答:** 是的。 虽然我们不提供 Xamarin SDK，但是预计开发人员可以通过与 Azure 空间定位点 API 集成，在其 Xamarin 应用中使用 Azure 空间定位点。
+**答:** 将来会考虑支持 Xamarin。
 
 **问：Azure 空间定位点使用哪些端口和协议？**
 

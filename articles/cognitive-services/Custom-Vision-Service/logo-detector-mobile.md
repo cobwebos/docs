@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 51b2cd42fabe6406f88388e99459a6f3dd3e69f5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: b4b10591069b71a4e70769f5bdcd6149768c5007
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827653"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604018"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>教程：识别照片中的 Azure 服务徽标
 
-在本教程中，你会了解在大型方案中使用 Azure 自定义视觉的示例应用。 AI Visual Provision 应用（适用于移动平台的 Xamarin.Forms 应用）将分析 Azure 服务徽标的照片，然后将实际服务部署到用户的 Azure 帐户。 你将在本文中了解如何配合其他组件使用自定义视觉来提供有用的端到端应用程序。 自行运行整个应用方案，或者，只是完成设置中的自定义视觉部分，然后再了解该应用如何使用自定义视觉。
+在本教程中，你会了解在大型方案中使用 Azure 自定义视觉的示例应用。 AI Visual Provision 应用（适用于移动平台的 Xamarin.Forms 应用）将分析 Azure 服务徽标的照片，然后将实际服务部署到用户的 Azure 帐户。 你将在本文中了解如何配合其他组件使用自定义视觉来提供有用的端到端应用程序。 可以自行运行整个应用方案，也可以只完成设置的自定义视觉部分，并探索应用如何使用它。
 
 本教程会说明如何：
 
@@ -51,7 +51,7 @@ ms.locfileid: "65827653"
 
 接下来，通过上传 Azure 服务徽标图像并手动标记这些图像来训练徽标检测算法。 AIVisualProvision 存储库包含一组可用的训练图像。 在网站上，选择“训练图像”  选项卡上的“添加图像”  按钮。然后转到存储库的 Documents/Images/Training_DataSet  文件夹。 需要手动标记每个图像中的徽标，因此，如果只是测试此项目，则可能只要上传一部分图像。 上传计划使用的每个标记的至少 15 个实例。
 
-上传训练图像之后，选择屏幕上的第一个图像。 此时会打开标记窗口。 针对每个图像中的每个徽标绘制方框并分配标记。 
+上传训练图像之后，选择屏幕上的第一个图像。 此时会出现标记窗口。 针对每个图像中的每个徽标绘制方框并分配标记。 
 
 ![自定义视觉网站上的徽标标记](media/azure-logo-tutorial/tag-logos.png)
 
@@ -63,13 +63,13 @@ ms.locfileid: "65827653"
 
 ## <a name="train-the-object-detector"></a>训练对象检测器
 
-在左窗格中，将“标记”开关设置为“已标记”以显示图像。   然后选择页面顶部的绿色按钮以训练模型。 这样做可让算法知道如何识别新图像中的相同标记。 它还会基于现有的某些图像测试模型，以生成准确度评分。
+在左窗格中，将“标记”开关设置为“已标记”以显示图像。   然后选择页面顶部的绿色按钮以训练模型。 该算法将训练识别新图像中的相同标记。 它还会基于现有的某些图像测试模型，以生成准确度评分。
 
 ![自定义视觉网站的“训练图像”选项卡。在此屏幕截图中，框出了“训练”按钮](media/azure-logo-tutorial/train-model.png)
 
 ## <a name="get-the-prediction-url"></a>获取预测 URL
 
-训练模型之后，可将其集成到应用中。 为此，需要获取终结点 URL（应用将要查询的模型地址）和预测密钥（向应用授予预测请求的访问权限）。 在“性能”选项卡中，选择页面顶部的“预测 URL”按钮。  
+训练模型之后，可将其集成到应用中。 需要获取终结点 URL（应用将要查询的模型地址）和预测密钥（向应用授予预测请求的访问权限）。 在“性能”选项卡中，选择页面顶部的“预测 URL”按钮。  
 
 ![自定义视觉网站，显示了“预测 API”窗口，其中显示 URL 地址和 API 密钥](media/azure-logo-tutorial/cusvis-endpoint.png)
 
@@ -95,7 +95,7 @@ ms.locfileid: "65827653"
 
 订阅计算机视觉服务即可获取密钥和终结点 URL。 有关此步骤的帮助，请参阅[如何获取订阅密钥](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe)。
 
-![Azure 门户中的计算机视觉服务，其中选择了“快速启动”菜单。 密钥的链接会列出，API 终结点 URL 也是如此](media/azure-logo-tutorial/comvis-keys.png)
+![Azure 门户中的计算机视觉服务，其中选择了“快速入门”菜单。 密钥的链接会列出，API 终结点 URL 也是如此](media/azure-logo-tutorial/comvis-keys.png)
 
 接下来，打开 Source\VisualProvision\AppSettings.cs  文件，并使用正确的值填充 `ComputerVisionEndpoint` 和 `ComputerVisionKey` 变量。
 

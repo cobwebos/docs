@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 07/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 3972f9f93cc6323601102f1a54bb067a8995d9e4
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: bc6b9662a5d67f6ed315c33444bcb061115fe6d4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484757"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701482"
 ---
 # <a name="what-is-azure-data-box-edge"></a>什么是 Azure Data Box Edge？ 
 
@@ -34,7 +34,7 @@ Azure Data Box Edge 是具有网络数据传输功能的支持 AI 的边缘计�
     - 划分和传输在云中进行更深入分析所需的数据。
     - 分析和应对 IoT 事件。 
 
-- **推理 Azure 机器学习** - 使用 Data Box Edge 可以运行机器学习 (ML) 模型，以快速获取可处理的数据，然后将数据发送到云中。 可以传输整个数据集，以继续重新训练和改进机器学习模型。 有关如何在 Databox Edge 设备上使用 Azure ML 硬件加速模型的详细信息，请参阅[在 Databox Edge 上部署 Azure ML 硬件加速模型](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)。
+- **推理 Azure 机器学习** - 使用 Data Box Edge 可以运行机器学习 (ML) 模型，以快速获取可处理的数据，然后将数据发送到云中。 可以传输整个数据集，以继续重新训练和改进机器学习模型。 有关如何在 Data Box Edge 设备上使用 Azure ML 硬件加速模型的详细信息，请参阅[在 Data Box Edge 上部署 Azure ML 硬件加速模型](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)。
 
 - **通过网络将数据传输到 Azure** - 使用 Data Box Edge 可以快速轻松地将数据传输到 Azure，以实现其他计算和分析或存档目的。 
 
@@ -88,16 +88,9 @@ Data Box Edge 解决方案包括 Data Box Edge 资源、Data Box Edge 物理设�
 
 将数据传输到的 Data Box Edge 物理设备、Azure 资源和目标存储帐户不一定非要位于同一区域。
 
-- **资源可用性** - 对于此版本，Data Box Edge 资源可以在以下区域获得：
-    - **美国** - 美国东部
-    - **欧盟** - 西欧
-    - **亚太** - 东南亚
+- **资源可用性** - 有关 Data Box Edge 资源可用的所有区域的列表，请转到[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 Data Box Edge 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
     
-    Data Box Edge 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
-    
-- **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。 
-
-    存储帐户存储 Data Box 数据的区域应靠近设备所在位置，以获得最佳性能。 远离设备的存储帐户会导致长时间的延迟和性能下降。 
+- **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。 存储帐户存储 Data Box Edge 数据的区域应靠近设备所在位置，以便获得最佳性能。 远离设备的存储帐户会导致长时间的延迟和性能下降。 
 
 
 ## <a name="next-steps"></a>后续步骤

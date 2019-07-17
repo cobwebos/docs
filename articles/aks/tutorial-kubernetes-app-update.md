@@ -2,18 +2,18 @@
 title: Azure 上的 Kubernetes 教程 - 更新应用程序
 description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何使用新版应用程序代码将现有应用程序部署更新到 AKS。
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 05eac7e673ad01e9d3e0fb25f261444fd7bc4e6d
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b645fc9f67229d087a5d1655f733e2f3e50d4471
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475514"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614380"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序。
 
@@ -31,7 +31,7 @@ ms.locfileid: "66475514"
 
 上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，将应用程序部署到了 AKS 群集。
 
-此外，还克隆了应用程序存储库，其中包括应用程序源代码和本教程中使用的预创建的 Docker Compose 文件。 验证是否已克隆存储库，并且是否已将目录更改为克隆的目录。 如果尚未完成这些步骤，并且想要逐一完成，请先学习[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
+此外，还克隆了应用程序存储库，其中包括应用程序源代码和本教程中使用的预创建的 Docker Compose 文件。 验证是否已克隆存储库，并且是否已将目录更改为克隆的目录。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
 此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -88,7 +88,7 @@ docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 现在，请使用 [docker push][docker-push] 将映像上传到注册表。 将 `<acrLoginServer>` 替换为 ACR 登录服务器名称。
 
 > [!NOTE]
-> 如果在推送到 ACR 注册表时遇到问题，请确保你仍已登录。 使用在 [创建 Azure 容器注册表](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry)步骤中创建的 Azure 容器注册表的名称运行 [az acr login][az-acr-login] 命令。 例如，`az acr login --name <azure container registry name>`。
+> 如果在推送到 ACR 注册表时遇到问题，请确保你仍已登录。 使用在 [创建 Azure 容器注册表](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry)步骤中创建的 Azure 容器注册表的名称运行 [az acr login][az-acr-login] 命令。 例如，`az acr login --name <azure container registry name>` 。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -96,7 +96,7 @@ docker push <acrLoginServer>/azure-vote-front:v2
 
 ## <a name="deploy-the-updated-application"></a>部署更新的应用程序
 
-为了提供最长运行时间，必须运行应用程序 Pod 的多个实例。 使用 [kubectl get pods][kubectl-get] 命令验证运行的前端实例的数目：
+为了提供最长运行时间，必须运行应用程序 Pod 的多个实例。 使用 [kubectl get pods][kubectl-get] 命令验证正在运行的前端实例的数目：
 
 ```
 $ kubectl get pods

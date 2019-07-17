@@ -3,15 +3,15 @@ title: Azure PowerShell 脚本 - 更改 Azure Cosmos 帐户的故障转移优先
 description: Azure PowerShell 脚本示例 - 更改 Azure Cosmos 帐户的故障转移优先级
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 785ca8941c24014fd00d8135b66cefccd99d2951
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
-ms.translationtype: MT
+ms.openlocfilehash: 0aea4e8e01b5f65be0d0ca4bb08082e058cba311
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561214"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603966"
 ---
 # <a name="change-failover-priority-for-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 更改 Azure Cosmos 帐户的故障转移优先级
 
@@ -38,7 +38,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | 命令 | 说明 |
 |---|---|
 |**Azure 资源**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | 针对资源调用操作。 |
+| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | 对资源调用操作。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

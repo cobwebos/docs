@@ -8,23 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 01/11/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: f5f777238b4682cfd5873ceeb34452218d4c46f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 5a218db0527a5e1d5642cb485b75df894a275764
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068278"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605007"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>快速入门：使用 Node.js 将文本转换为语音
 
 本快速入门介绍了如何使用 Node.js 和文本转语音 REST API 将文本转换为语音。 本指南中包含的请求正文以[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 的形式构造，这样你就可以选择响应的语音和语言。
 
-本快速入门需要[Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)与语音服务资源。 如果没有帐户，可以使用[免费试用版](get-started.md)获取订阅密钥。
+此快速入门需要包含语音服务资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](get-started.md)获取订阅密钥。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要：
 
@@ -53,9 +52,9 @@ const xmlbuilder = require('xmlbuilder');
 
 ## <a name="get-an-access-token"></a>获取访问令牌
 
-文本转语音 REST API 需要使用访问令牌进行身份验证。 若要获取访问令牌，需要进行交换。 此函数将交换访问令牌使用语音服务的订阅密钥`issueToken`终结点。
+文本转语音 REST API 需要使用访问令牌进行身份验证。 若要获取访问令牌，需要进行交换。 此函数通过 `issueToken` 终结点使用语音服务订阅密钥来交换访问令牌。
 
-此示例假定您的语音服务的订阅已在美国西部区域中。 如果使用其他区域，请更新 `uri` 的值。 如需完整的列表，请参阅[区域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)。
+此示例假定语音服务订阅位于“美国西部”区域。 如果使用其他区域，请更新 `uri` 的值。 如需完整的列表，请参阅[区域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)。
 
 将以下代码复制到项目中：
 
@@ -136,9 +135,9 @@ function textToSpeech(accessToken, text) {
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-即将完成。 最后一步是创建异步函数。 此函数会从环境变量中读取订阅密钥，提示你输入文本，接着获取令牌，等待请求完成，然后将文本转换为语音，再将音频另存为 .wav。
+即将完成。 最后一步是创建异步函数。 此函数将从环境变量中读取订阅密钥，提示输入文本，获取令牌，等待请求完成，然后将文本转换为语音并将音频另存为 .wav。
 
-如果不熟悉环境变量，或者首选在测试时将订阅密钥硬编码为字符串，请将 `process.env.SPEECH_SERVICE_KEY` 替换为字符串形式的订阅密钥。
+如果不熟悉环境变量，或希望使用硬编码为字符串的订阅密钥来测试，请将 `process.env.SPEECH_SERVICE_KEY` 替换为字符串形式的订阅密钥。
 
 ```javascript
 // Use async and await to get the token before attempting

@@ -4,21 +4,21 @@ description: 了解如何在 Azure Cosmos DB 中配置应用程序中的多主�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/02/2019
+ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 73b4ada713e264aaa2504fe4d4f504e07ae45181
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 646706eabf1b3a33c3143410f0e922a03e6a8ad6
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538076"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565909"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>在使用 Azure Cosmos DB 的应用程序配置多主数据库
 
 创建启用了多个写入区域的帐户后，必须在应用程序中对 DocumentClient 的 ConnectionPolicy 进行两处更改，以启用 Azure Cosmos DB 中的多主数据库和多宿主功能。 在 ConnectionPolicy 中，将 UseMultipleWriteLocations 设置为 true，并将部署应用程序的区域的名称传递给 SetCurrentLocation。 这将根据传入位置的地理接近性填充 PreferredLocations 属性。 如果稍后将新区域添加到帐户中，则无需更新或重新部署应用程序，它将自动检测距离较近的区域，并在发生区域事件时自动定位到该区域。
 
-> [!TIP]
-> 最初没有为多主数据库配置的 Cosmos 帐户可以迁移，而无需停机时间。 若要了解详细信息，请参阅[配置多个写入区域](how-to-manage-database-account.md#configure-multiple-write-regions)
+> [!Note]
+> 最初配置有单个写入区域的 Cosmos 帐户可以配置为多个写入区域（即多主数据库）且停机时间为零。 若要了解详细信息，请参阅[配置多个写入区域](how-to-manage-database-account.md#configure-multiple-write-regions)
 
 ## <a id="netv2"></a>.NET SDK v2
 

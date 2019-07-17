@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, 系统要求, CPU, GPU, USB, 设置, 安装, 最低, 要求
-ms.openlocfilehash: 6cc938734f9e3125c39cc2eb77d54c12b6867824
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 49305d86b496c43fdccc2646d9d777ae7d932067
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452522"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657945"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>Azure Kinect 传感器 SDK 系统要求
 
@@ -47,7 +47,7 @@ ms.locfileid: "67452522"
 
 - 第七代 Intel® CoreTM i5 处理器（四核 2.4 GHz 或更快）
 - 4 GB 内存
-- NVIDIA GEFORCE GTX 1070 / RTX 2070 或更佳
+- NVIDIA GEFORCE GTX 1070 或更佳
 - 专用 USB3 端口
 
 根据具体的用例，低端或早期的 CPU 和 NVIDIA GPU 可能也适用。

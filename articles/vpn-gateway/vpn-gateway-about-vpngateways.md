@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 05/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0d4bba41170408b640b4e8d3809c77b7a6443c6a
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b4ad8697997a8c90a6548c66819bfe790c8235e3
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480050"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798993"
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 
@@ -51,7 +51,7 @@ VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资
 
 ## <a name="gwsku"></a>网关 SKU
 
-创建虚拟网络网关时，需指定要使用的网关 SKU。 请根据工作负荷、吞吐量、功能和 SLA 的类型，选择满足需求的 SKU。 有关网关 SKU 的详细信息（包括支持的功能、生产和开发测试以及配置步骤），请参阅[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
+创建虚拟网络网关时，需指定要使用的网关 SKU。 请根据工作负荷、吞吐量、功能和 SLA 的类型，选择满足需求的 SKU。 有关网关 SKU 的详细信息（包括支持的功能、生产和开发测试以及配置步骤），请参阅 [VPN 网关设置 - 网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) 一文。 有关旧版 SKU 的信息，请参阅[使用旧版 SKU](vpn-gateway-about-skus-legacy.md)。
 
 ### <a name="benchmark"></a>按隧道、连接和吞吐量列出的网关 SKU
 

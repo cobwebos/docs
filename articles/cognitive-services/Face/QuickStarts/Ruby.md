@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 6583db5b1403f70593d586a610f4d06be15c729b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312389"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603359"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>快速入门：使用 REST API 和 Ruby 检测图像中的人脸
 
@@ -28,7 +28,7 @@ ms.locfileid: "56312389"
 
 ## <a name="write-the-script"></a>编写脚本
 
-创建一个新文件 (_faceDetection.rb_)，并添加以下代码。 这将根据给定的图像 URL 调用人脸 API。
+创建一个新文件 (_faceDetection.rb_)，并添加以下代码。 此代码将对给定的图像 URL 调用人脸 API。
 
 ```ruby
 require 'net/http'
@@ -74,7 +74,7 @@ puts response.body
 ruby faceDetection.rb
 ```
 
-应该会看到输出到控制台的已检测到人脸数据的 JSON 字符串。 下面是成功的 JSON 响应的示例。
+应该会看到输出到控制台的已检测到人脸数据的 JSON 字符串。 以下文本是成功的 JSON 响应的示例。
 
 ```json
 [

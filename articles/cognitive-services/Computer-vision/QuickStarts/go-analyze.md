@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 693dd25b1fdd3757cbd9c77e974c6818f59a915f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 679dd8d1216d4d4893cca15a02230f58bff2ff32
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004442"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605959"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Go 分析远程图像
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-go"></a>快速入门：使用计算机视觉 REST API 和 Go 分析远程图像
 
 在本快速入门中，你将使用计算机视觉的 REST API 分析远程存储的图像以提取视觉特征。 使用[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法，可以根据图像内容提取视觉特征。
 
@@ -40,8 +40,8 @@ ms.locfileid: "60004442"
     1. （可选）将 `imageUrl` 的值替换为要分析的其他图像的 URL。
 1. 将代码保存为以 `.go` 为扩展名的文件。 例如，`analyze-image.go`。
 1. 打开命令提示符窗口。
-1. 在提示符处运行 `go build` 命令，对文件中的包进行编译。 例如，`go build analyze-image.go`。
-1. 在提示符处，运行所编译的包。 例如，`analyze-image`。
+1. 在提示符处运行 `go build` 命令，对文件中的包进行编译。 例如，`go build analyze-image.go` 。
+1. 在提示符处，运行所编译的包。 例如，`analyze-image` 。
 
 ```go
 package main
@@ -64,7 +64,7 @@ func main() {
     // from the West US region, replace "westcentralus" in the URL
     // below with "westus".
     //
-    // Free trial subscription keys are generated in the "westus" region.
+    // Free trial subscription keys are generated in the "westcentralus" region.
     // If you use a free trial subscription key, you shouldn't need to change
     // this region.
     const uriBase =

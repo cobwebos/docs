@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: anroth
-ms.openlocfilehash: 9b6d01908265791a83ee311375fa50fcca995f79
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: fd5e46f47169705b9d19397a6b91770beab229dd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472714"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604075"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>快速入门：使用自定义视觉 .NET SDK 创建图像分类项目
 
-本文提供信息和示例代码，以帮助你开始通过 C# 使用自定义视觉 SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、定型项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 .NET 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，请改为查看[基于浏览器的指南](getting-started-build-a-classifier.md)。
+本文提供信息和示例代码，以帮助你开始通过 C# 使用自定义视觉 SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、定型项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 .NET 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，  请改为查看[基于浏览器的指南](getting-started-build-a-classifier.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,14 +27,14 @@ ms.locfileid: "58472714"
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>获取自定义视觉 SDK 和示例代码
 
-若要编写使用自定义视觉的 .NET 应用，需要自定义视觉 NuGet 包。 这些都包括在要下载的示例项目中，但你可以在此处逐个访问它们。
+若要编写使用自定义视觉的 .NET 应用，需要自定义视觉 NuGet 包。 这些包将包含在要下载的示例项目中，但你可以在此处逐个访问它们。
 
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
 克隆或下载[认知服务 .NET 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)项目。 导航到 **CustomVision/ImageClassification** 文件夹，在 Visual Studio 中打开 _ImageClassification.csproj_。
 
-此 Visual Studio 项目会新建名为“我的新项目”的自定义视觉项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，它上传图像以定型和测试分类器。 在此项目中，分类器用于确定树是铁杉树还是日本樱花树。
+此 Visual Studio 项目会新建名为“我的新项目”的自定义视觉项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。  然后，它上传图像以定型和测试分类器。 在此项目中，分类器用于确定树是铁杉树  还是日本樱花树  。
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -120,7 +120,7 @@ foreach (var c in result.Predictions)
 
 应用程序运行时，会打开一个控制台窗口并写入以下输出：
 
-```
+```console
 Creating new project:
         Uploading images
         Training

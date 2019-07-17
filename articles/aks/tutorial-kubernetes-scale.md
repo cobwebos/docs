@@ -2,18 +2,18 @@
 title: Kubernetes on Azure 教程 - 缩放应用程序
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何缩放 Kubernetes 中的节点和 Pod，以及如何实施水平 Pod 自动缩放。
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 062e16c0d196cf91d6e0adde46ed973f1c0d1191
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 5a942aa10f36df55ac232defa610102700e3995b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304423"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614197"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "66304423"
 
 ## <a name="before-you-begin"></a>开始之前
 
-上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，将应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请开始参阅[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
+上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
 
 此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -70,7 +70,7 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>自动缩放 Pod
 
-Kubernetes 支持[水平 Pod 自动缩放][kubernetes-hpa]以根据 CPU 利用率或其他选择指标调整部署中的 Pod 数。 [指标服务器][metrics-server]用来将资源利用率提供给 Kubernetes，可自动部署在 AKS 群集 1.10 及更高版本中。 若要查看 AKS 群集的版本，请使用 [az aks show][az-aks-show] 命令，如以下示例所示：
+kubernetes支持[水平 Pod 自动缩放][kubernetes-hpa] to adjust the number of pods in a deployment depending on CPU utilization or other select metrics. The [Metrics Server][metrics-server]用于为 kubernetes 提供资源利用率，并自动部署在 AKS 群集版本 1.10 及更高版本中。 若要查看 AKS 群集的版本，请使用 [az aks show][az-aks-show] 命令，如以下示例所示：
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion

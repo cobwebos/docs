@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a78df2d4d84487399da10ca722550639a92e71bf
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492393"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798143"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>项目音响效果 Unreal/Wwise 快速入门
 在本快速入门中，将使用为 Unreal Engine 和 Wwise 提供的示例内容来试验项目音响效果设计控件。
@@ -31,16 +31,16 @@ ms.locfileid: "59492393"
 若要设置项目音响效果 Unreal/Wwise示例项目，需要先将项目音响效果插件安装到 Wwise 中。 然后将 Wwise 二进制文件部署到 Unreal 项目，并调整 Wwise 的 Unreal 插件以支持项目音响效果。
 
 ### <a name="install-the-project-acoustics-wwise-plugin"></a>安装项目音响效果 Wwise 插件
-打开 Wwise Launcher，然后在“插件”选项卡的“安装新插件”下，选择“从目录添加”。 选择下载的包中包含的 `AcousticsWwisePlugin\ProjectAcoustics` 目录。
+打开 Wwise Launcher，然后在“插件”选项卡的“安装新插件”下，选择“从目录添加”    。 选择下载的包中包含的 `AcousticsWwisePlugin\ProjectAcoustics` 目录。
 
 ![显示安装 Wwise 插件选项的 Wwise Launcher 的屏幕截图](media/wwise-install-new-plugin.png)
 
 ### <a name="add-wwise-binaries-to-the-project-acoustics-unreal-sample-project"></a>将 Wwise 二进制文件添加到项目音响效果 Unreal 示例项目
-在 Wwise Launcher 中，单击“Unreal Engine”选项卡，单击“最近的 Unreal Engine 项目”旁边的汉堡菜单，然后选择“浏览项目”。 打开包 `AcousticsSample\AcousticsGame\AcousticsGame.uproject` 中的示例 Unreal 项目 `.uproject` 文件。
+在 Wwise Launcher 中，单击“Unreal Engine”选项卡，单击“最近的 Unreal Engine 项目”旁边的汉堡菜单，然后选择“浏览项目”    。 打开包 `AcousticsSample\AcousticsGame\AcousticsGame.uproject` 中的示例 Unreal 项目 `.uproject` 文件。
 
 ![Wwise Launcher Unreal 选项卡的屏幕截图](media/wwise-unreal-tab.png)
 
-然后，在项目音响效果示例项目旁边，单击“在项目中集成 Wwise”。
+然后，在项目音响效果示例项目旁边，单击“在项目中集成 Wwise”  。
 
 ![Wwise Launcher 的屏幕截图，其中显示音效游戏 Unreal 项目](media/wwise-acoustics-game-project.png)
 
@@ -50,14 +50,16 @@ ms.locfileid: "59492393"
 
     ![Windows 资源管理器窗口的屏幕截图，其中显示修补 Wwise 项目的脚本](media/patch-wwise-script.png)
 
-* 如果没有安装 DirectX SDK，则需要在 `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` 中注释掉包含 DXSDK_DIR 的行
+* 如果没有安装 DirectX SDK，则根据所用的 Wwise 版本，可能需要在 `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` 中注释掉包含 `DXSDK_DIR` 的行：
 
     ![显示注释掉 DXSDK 的代码编辑器的屏幕截图](media/directx-sdk-comment.png)
 
 ### <a name="open-the-unreal-project"></a>打开 Unreal 项目。 
 它会要求你重新生成模块；单击“是”。
 
-如果因生成故障打开项目失败，请检查是否已将项目音响效果 Wwise 插件安装到项目音响效果示例项目中使用的相同版本的 Wwise。
+>如果因生成故障打开项目失败，请检查是否已将项目音响效果 Wwise 插件安装到项目音响效果示例项目中使用的相同版本的 Wwise。
+
+>如果不使用 [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6，你将需要重新生成声音库，然后才能在示例项目中播放音频。
 
 ## <a name="experiment-with-project-acoustics-design-controls"></a>试验项目音响效果设计控件
 通过单击 Unreal 编辑器中的播放按钮，侦听场景的声音效果。 在桌面上，使用 W、A、S、D 和鼠标进行移动。 若要查看更多控件的键盘快捷方式，请按 **F1**。 下面是一些要尝试的设计活动：
@@ -67,14 +69,14 @@ ms.locfileid: "59492393"
 
 ![Unreal 编辑器音效设计控件的屏幕截图](media/demo-scene-sound-source-design-controls.png)
 
-如果“闭塞”乘数大于 1（默认值为 1），闭塞将被扩大。 将其设置为小于 1 会使闭塞效果更精细。
+如果“闭塞”乘数大于 1（默认值为 1），闭塞将被扩大  。 将其设置为小于 1 会使闭塞效果更精细。
 
-若要启用穿墙传输，请将“传输 (dB)”滑块从最低级别移开。 
+若要启用穿墙传输，请将“传输 (dB)”滑块从最低级别移开  。 
 
 ### <a name="modify-wetness-for-a-source"></a>修改源湿度
-若要更改湿度随距离变化的速度，请使用“可感知距离弯曲”。 “项目音响效果”通过模拟计算整个空间的湿度级别，湿度级别会随距离平稳变化，并提供可感知的距离提示。增加距离弯曲会通过增加与距离相关的湿度级别来扩大这种效果。 如果弯曲值小于 1，基于距离的混响变化会更加精细。 通过调整“湿度 (dB)”，还可以在更精细的细节中调整此效果。
+若要更改湿度随距离变化的速度，请使用“可感知距离弯曲”  。 “项目音响效果”通过模拟计算整个空间的湿度级别，湿度级别会随距离平稳变化，并提供可感知的距离提示。增加距离弯曲会通过增加与距离相关的湿度级别来扩大这种效果。 如果弯曲值小于 1，基于距离的混响变化会更加精细。 通过调整“湿度 (dB)”，还可以在更精细的细节中调整此效果  。
 
-通过调整“衰减时间刻度”来增加整个空间的衰减时间。 请考虑模拟结果是 1.5 秒衰减时间的情况。 将“衰减时间刻度”设置为 2 将导致应用于源的衰减时间为 3 秒。
+通过调整“衰减时间刻度”来增加整个空间的衰减时间  。 请考虑模拟结果是 1.5 秒衰减时间的情况。 将“衰减时间刻度”设置为 2 将导致应用于源的衰减时间为 3 秒  。
 
 ### <a name="modify-distance-based-attenuation"></a>修改基于距离的衰减
 项目音响效果 Wwise 混音器插件遵循 Wwise 内置的基于距离的按源衰减。 更改此曲线将改变干路径级别。 项目音响效果插件将调整湿度级别以保持模拟和设计控件指定的湿干混合。

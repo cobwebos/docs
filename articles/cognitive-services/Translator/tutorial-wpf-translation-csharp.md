@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: b300c40b4a9c832a0df87f7cfc6e6a9558d766f6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 36d85e11133e7197212ae1b37609628689b68a13
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448233"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657940"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
 
@@ -62,7 +62,7 @@ ms.locfileid: "67448233"
 1. 打开 Visual Studio。 然后选择“文件”>“新建”>“项目”。 
 2. 在左侧面板中，找到并选择“Visual C#”。  然后在中间面板中选择“WPF 应用(.NET Framework)”。 
    ![在 Visual Studio 中创建 WPF 应用](media/create-wpf-project-visual-studio.png)
-3. 为项目命名，将框架版本设置为 **.NET Framework 4.5.2 或更高版本**，然后单击“确定”。 
+3. 将项目命名为 `MSTranslatorTextDemo`，将框架版本设置为 **.NET Framework 4.5.2 或更高版本**，然后单击“确定”  。
 4. 现已创建项目。 你会注意到，有两个选项卡已打开：`MainWindow.xaml` 和 `MainWindow.xaml.cs`。 在整个教程中，我们会将代码添加到这两个文件。 第一个文件用于应用的用户界面；第二个文件用于调用文本翻译和必应拼写检查。
    ![检查环境](media/blank-wpf-project.png)
 
@@ -82,6 +82,7 @@ ms.locfileid: "67448233"
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
    * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
    * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
 3. 添加对项目的这些引用后，可以单击“确定”关闭“引用管理器”。  
 
 > [!NOTE]
@@ -197,7 +198,7 @@ ms.locfileid: "67448233"
        // authentication options, see: https://docs.microsoft.com/azure/cognitive-services/authentication.
        const string COGNITIVE_SERVICES_KEY = "YOUR_COG_SERVICES_KEY";
        // Endpoints for Translator Text and Bing Spell Check
-       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api- version=3.0";
+       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api-version=3.0";
        const string BING_SPELL_CHECK_API_ENDPOINT = "https://westus.api.cognitive.microsoft.com/bing/v7.0/spellcheck/";
        // An array of language codes
        private string[] languageCodes;
@@ -211,7 +212,7 @@ ms.locfileid: "67448233"
        {
            Exception e = (Exception)args.ExceptionObject;
            MessageBox.Show("Caught " + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-           System.Windows.app.Current.Shutdown();
+           System.Windows.Application.Current.Shutdown();
        }
        // MainWindow constructor
        public MainWindow()
@@ -224,7 +225,7 @@ ms.locfileid: "67448233"
                MessageBox.Show("One or more invalid API subscription keys.\n\n" +
                    "Put your keys in the *_API_SUBSCRIPTION_KEY variables in MainWindow.xaml.cs.",
                    "Invalid Subscription Key(s)", MessageBoxButton.OK, MessageBoxImage.Error);
-               System.Windows.app.Current.Shutdown();
+               System.Windows.Application.Current.Shutdown();
            }
            else
            {

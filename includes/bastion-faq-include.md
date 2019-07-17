@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e29a9265e010c3f442b742faf62b16dae02739fa
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 29ab9b3c33aae6005510c34b207c7f87714149e5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191136"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608083"
 ---
 ### <a name="preview"></a>如何参与公共预览版？
 
@@ -55,4 +55,8 @@ ms.locfileid: "67191136"
 
 ### <a name="previewbill"></a>定价 - 我加入此预览计划是否需要支付费用？
 
-在公共预览期间，只需支付部分费用。 不过，部署没有附加 SLA。 有关详细信息，请参阅[定价页](https://aka.ms/BastionHostPricing)。
+在公共预览期间，只需支付部分费用。 但是，没有任何 SLA 附加到部署。 有关详细信息，请参阅[定价页](https://aka.ms/BastionHostPricing)。
+
+### <a name="previewbill"></a>为什么在 Bastion 会话启动前收到了“你的会话已过期”的错误消息？
+
+会话只能从 Azure 门户启动。 登录到 Azure 门户，并重新开始会话。 如果直接从另一个浏览器会话或选项卡转到 URL，则会出现此错误。 它有助于确保会话更安全，并且该会话只能通过 Azure 门户来访问。

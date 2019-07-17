@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 14cf500cff9f1f7f8b1573862c3060326e6518fa
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: d814a943bc8dc789abe84b33583714beb998c0ef
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688862"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607016"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
 
@@ -65,7 +65,7 @@ Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和
 
 ## <a name="the-review-tool"></a>“审阅”工具
 
-内容审查器服务还包括基于 Web 的[审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)，其中托管的内容审阅可供审阅人处理。 人工输入不会训练服务，但是将服务与人工审阅团队组合起来以后，开发人员就可以在效率和准确性之间取得适当的平衡。 审阅工具还为各种内容审查器资源提供用户友好型前端。
+内容审查器服务还包括基于 Web 的[审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)，其中托管的内容审阅可供审阅人处理。 人工输入不会训练服务，但是将服务与人工审阅团队组合起来以后，开发人员就可以在效率和准确性之间取得适当的平衡。 评审工具还为各种内容审查器资源提供用户友好型前端。
 
 ![内容审查器人工审阅工具主页](images/homepage.PNG)
 

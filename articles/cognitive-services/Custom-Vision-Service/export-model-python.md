@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: babc9f8c7b8a05c4a91ead4990267311e926fd47
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ba8cf3392ac2bd3d371e5e1910c6671feba9dedf
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236422"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606885"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教程：运行以 Python 编写的 TensorFlow 模型
 
@@ -88,7 +88,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="deal-with-images-with-a-dimension-1600"></a>处理维度 > 1600 的图像
+### <a name="handle-images-with-a-dimension-1600"></a>处理维度 > 1600 的图像
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting

@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6722fa103b3d48a8ca8ff4b96c9d179a4f743608
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 18a00c2aebd05d2ed2da54e436d245c70bf25051
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996843"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604455"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-c35-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 C&#35; 提取印刷体文本 (OCR)
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>快速入门：使用计算机视觉 REST API 和 C# 提取印刷体文本 (OCR)
 
 在本快速入门中，你将使用计算机视觉的 REST API，通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 功能，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
 
@@ -27,7 +27,7 @@ ms.locfileid: "59996843"
 ## <a name="prerequisites"></a>先决条件
 
 - 必须具有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更高版本。
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
+- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
 
 ## <a name="create-and-run-the-sample-application"></a>创建和运行示例应用程序
 
@@ -35,9 +35,9 @@ ms.locfileid: "59996843"
 
 1. 使用 Visual C# 控制台应用模板在 Visual Studio 中创建新的 Visual Studio 解决方案。
 1. 安装 Newtonsoft.Json NuGet 包。
-    1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”。
-    1. 单击“浏览”选项卡，在“搜索”框中键入“Newtonsoft.Json”。
-    1. 选择显示的 Newtonsoft.Json，单击项目名称旁边的复选框，然后单击“安装”。
+    1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”    。
+    1. 单击“浏览”选项卡，在“搜索”框中键入“Newtonsoft.Json”   。
+    1. 选择显示的 Newtonsoft.Json，单击项目名称旁边的复选框，然后单击“安装”   。
 1. 将 `Program.cs` 中的代码替换为以下代码，然后根据需要在代码中进行以下更改：
     1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
     1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法的终结点 URL。
@@ -247,10 +247,6 @@ namespace CSHttpClientSample
     ]
 }
 ```
-
-## <a name="clean-up-resources"></a>清理资源
-
-不再需要 Visual Studio 解决方案时，请将其删除。 为此，请打开文件资源管理器，导航到在其中创建 Visual Studio 解决方案的文件夹，然后删除该文件夹。
 
 ## <a name="next-steps"></a>后续步骤
 
