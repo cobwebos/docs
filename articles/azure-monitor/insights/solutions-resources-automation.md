@@ -281,8 +281,8 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 | 数据类型 | 描述 | 示例 | 解析为 |
 |:--|:--|:--|:--|
-| string   | 将值括在双引号中。  | “\"Hello world\"” | “Hello world” |
-| numeric  | 用单引号将数字值括起来。| “64” | 64 |
+| string   | 将值括在双引号中。  | "\"Hello world\"" | "Hello world" |
+| numeric  | 用单引号将数字值括起来。| "64" | 64 |
 | boolean  | 引号中的“true”  或“false”  。  请注意，此值必须为小写。 | "true" | true |
 | datetime | 序列化日期值。<br>可以在 PowerShell 中使用 ConvertTo-Json cmdlet 为特定日期生成此值。<br>示例：get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
