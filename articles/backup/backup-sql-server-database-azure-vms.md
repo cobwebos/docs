@@ -7,13 +7,13 @@ manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: sachdevaswati
-ms.openlocfilehash: 28577bfc755d80cd479a40b9e2b653af6ddec319
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
-ms.translationtype: HT
+ms.author: vijayts
+ms.openlocfilehash: 422f4b6bf7f22cf7653ad75836c613e4c1ea01b9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204459"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704950"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -29,7 +29,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 > * 为数据库设置自动保护。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 备份 SQL Server 数据库之前，请检查以下条件：
 

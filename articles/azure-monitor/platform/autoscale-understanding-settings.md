@@ -101,14 +101,14 @@ ms.locfileid: "60787489"
 | profile | Capacity.minimum | 允许的最小容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源缩减到低于此数字。 |
 | profile | Capacity.default | 如果读取资源指标（在本例中，为“vmss1”的 CPU）时出现问题，且当前容量低于默认容量，则自动缩放将扩展到默认值。 这是为了确保资源可用性。 如果当前容量已大于默认容量，则自动缩放不会缩减。 |
 | profile | rules | 自动缩放使用配置文件中的规则在最大和最小容量之间自动缩放。 可以在一个配置文件中包含多个规则。 通常包含两个规则：一个用于确定何时扩展，另一个用于确定何时缩减。 |
-| rule | metricTrigger | 定义规则的指标条件。 |
+| rules | metricTrigger | 定义规则的指标条件。 |
 | metricTrigger | metricName | 指标的名称。 |
 | metricTrigger |  metricResourceUri | 发出指标的资源的资源 ID。 在大多数情况下，它与缩放的资源相同。 在某些情况下，它可能不同。 例如，可以基于存储队列中的消息数缩放虚拟机规模集。 |
 | metricTrigger | timeGrain | 指标采样持续时间。 例如，**TimeGrain = "PT1M"** 表示应使用 statistic 元素中指定的聚合方法每分钟聚合一次指标。 |
 | metricTrigger | statistic | timeGrain 时间段内的聚合方法。 例如，**statistic = "Average"** 且 **timeGrain = "PT1M"** 表示每分钟取平均值来聚合指标。 此属性规定指标的采样方式。 |
 | metricTrigger | timeWindow | 查找指标的时间范围。 例如，**timeWindow = "PT10M"** 表示自动缩放每次运行时，都会查询过去 10 分钟的指标。 使用该时间范围可将指标规范化，避免对暂时性的峰值作出反应。 |
 | metricTrigger | timeAggregation | 用于聚合已采样指标的聚合方法。 例如，如果 **TimeAggregation = "Average"** ，则应取平均值来聚合采样的指标。 上例取 10 个 1 分钟样本并求其平均值。 |
-| rule | scaleAction | 触发规则的 metricTrigger 时要执行的操作。 |
+| rules | scaleAction | 触发规则的 metricTrigger 时要执行的操作。 |
 | scaleAction | direction | “Increase”表示扩展，“Decrease”表示缩减。|
 | scaleAction | value | 要将资源容量增大或减小多少。 |
 | scaleAction | cooldown | 在执行缩放操作之后、再次执行缩放操作之前所要等待的时间。 例如，如果 **cooldown = "PT10M"** ，则自动缩放只会在 10 分钟之后才尝试再次执行缩放。 在添加或删除实例之后，cooldown（冷却）可让指标变稳定。 |

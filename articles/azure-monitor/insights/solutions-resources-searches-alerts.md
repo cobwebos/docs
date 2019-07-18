@@ -199,8 +199,8 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 | 元素名称 | 必选 | description |
 |:--|:--|:--|
 | TriggerCondition | 是 | 以下值指定该阈值是总违规次数还是连续违规次数：<br><br>**总次数<br>连续次数** |
-| 运算符 | 是 | 比较运算符包括以下值：<br><br>**gt = 大于<br>lt = 小于** |
-| 值 | 是 | 若要触发警报，该条件必须符合的次数。 |
+| Operator | 是 | 比较运算符包括以下值：<br><br>**gt = 大于<br>lt = 小于** |
+| Value | 是 | 若要触发警报，该条件必须符合的次数。 |
 
 
 #### <a name="throttling"></a>限制
