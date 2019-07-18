@@ -105,7 +105,7 @@ ms.locfileid: "67094602"
 
     ![Percolate 域和 URL 单一登录信息](common/preintegrated.png)
 
-5. 如果要在 SP 发起的模式下配置应用程序，请选择“设置其他 URL”，然后在“登录 URL”框中输入“https://percolate.com/app/login”    ：
+5. 如果要在 SP 发起的模式下配置应用程序，请选择“设置其他 URL”，然后在“登录 URL”框中输入 https://percolate.com/app/login    ：
 
    ![Percolate 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 6. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“复制”图标，以复制“应用联合元数据 URL”     。 保存此 URL。
