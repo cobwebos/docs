@@ -8,7 +8,7 @@
       href: whats-new.md
 - name: 教程
   items:
-    - name: VMware VM 评估和迁移
+    - name: 评估和迁移 VMware VM
       items:
         - name: 准备 VMware 以进行评估和迁移
           href: tutorial-prepare-vmware.md
@@ -22,7 +22,7 @@
               href: tutorial-migrate-vmware.md
             - name: 使用基于代理的迁移来迁移 VMware VM
               href: tutorial-migrate-vmware-agent.md
-    - name: Hyper-V 评估和迁移
+    - name: 评估和迁移 Hyper-V VM
       items:
         - name: 准备 Hyper-V 以进行评估和迁移
           href: tutorial-prepare-hyper-v.md
@@ -30,7 +30,7 @@
           href: tutorial-assess-hyper-v.md
         - name: 迁移 Hyper-V VM
           href: tutorial-migrate-hyper-v.md
-    - name: 迁移物理服务器和虚拟机
+    - name: 迁移物理服务器和 VM
       href: tutorial-migrate-physical-virtual-machines.md
 - name: 概念
   items:
@@ -70,7 +70,7 @@
       href: how-to-add-tool-first-time.md
     - name: 添加评估工具
       href: how-to-assess.md
-    - name: 将计算机分组以进行评估
+    - name: 分组将计算机以进行评估
       href: how-to-create-a-group.md
     - name: 使用依赖项可视化将计算机分组
       href: how-to-create-group-machine-dependencies.md

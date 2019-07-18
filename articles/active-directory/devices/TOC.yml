@@ -55,7 +55,9 @@
       items:
         - name: 排查加入混合 Azure AD 的 Windows 当前设备问题
           href: troubleshoot-hybrid-join-windows-current.md
-        - name: 排查加入混合 Azure AD 的旧式 Windows 设备问题
+        - name: 使用 dsregcmd 排除故障
+          href: troubleshoot-device-dsregcmd.md
+        - name: 排查加入混合 Azure AD 的下层 Windows 设备问题
           href: troubleshoot-hybrid-join-windows-legacy.md
         - name: 排查企业状态漫游问题
           href: enterprise-state-roaming-troubleshooting.md

@@ -140,7 +140,7 @@
               href: service-bus-amqp-overview.md
             - name: .NET
               href: service-bus-amqp-dotnet.md
-            - name: Java 消息服务和 AMQP
+            - name: Java 消息服务 (JMS) 和 AMQP
               href: service-bus-java-how-to-use-jms-api-amqp.md
             - name: AMQP 协议指南
               href: service-bus-amqp-protocol-guide.md
