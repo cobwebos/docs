@@ -232,7 +232,7 @@ systemctl start pacemaker
 ```
 ![start-pacemaker.png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-如果 pacemaker 服务失败  ，请参阅“方案 5：Pacemaker 服务失败”*
+如果 pacemaker 服务失败  ，请参阅“方案 5：  Pacemaker 服务失败”
 
 ## <a name="5---joining-the-cluster"></a>5. 加入群集
 本部分将介绍如何将节点加入到群集。

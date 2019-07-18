@@ -44,7 +44,7 @@ ms.locfileid: "65076235"
 
 ![应用权限和管理员同意](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
-守护程序应用程序需要具有租户管理员预先同意调用 web API 的应用程序。 在同一个提供此许可**API 的权限**页上，通过租户管理员选择**授予管理员同意*我们的组织***
+守护程序应用程序需要具有租户管理员预先同意调用 web API 的应用程序。 在同一个提供此许可 **API 的权限** 页上，通过租户管理员选择 **授予管理员同意*我们的组织***
 
 如果你是 ISV 构建多租户应用程序，你想要检查[部署的用例的多租户守护程序应用](scenario-daemon-production.md#deployment---case-of-multi-tenant-daemon-apps)段落。
 
