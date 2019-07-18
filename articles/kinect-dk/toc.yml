@@ -31,6 +31,8 @@
   items:
     - name: 使用传感器 SDK
       items:
+        - name: Azure Kinect 传感器 SDK
+          href: about-sensor-sdk.md
         - name: 找到并打开设备
           href: find-then-open-device.md
         - name: 检索图像
@@ -61,8 +63,6 @@
       href: record-external-synchronized-units.md
 - name: 工具
   items:
-    - name: Azure Kinect 传感器 SDK
-      href: about-sensor-sdk.md
     - name: Azure Kinect 查看器
       href: azure-kinect-viewer.md
     - name: Azure Kinect 录制器

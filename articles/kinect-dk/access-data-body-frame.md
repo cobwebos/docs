@@ -2,17 +2,18 @@
 title: 访问人体帧中的 Azure Kinect DK 数据
 description: 介绍用于访问人体帧中存储的数据的 API
 author: qm13
-ms.author: yijwan, quentinm
+ms.author: quentinm
+ms.reviewer: yijwan
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: 人体, 帧, azure, kinect, 跟踪, 提示
-ms.openlocfilehash: 1a229f21dfd7d454602608f0fb9aac0fd7f2e22d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8133d2c761a7c44a4d028a77bd6cb3a133a18033
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451448"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871772"
 ---
 # <a name="access-data-in-body-frame"></a>访问人体帧中的数据
 

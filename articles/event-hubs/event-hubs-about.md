@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7362bd5b4e15df516478ef4bef20d76fc46b326f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 7056d127aac8268a131d62c2b20655407e2336b2
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275361"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304073"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中心 — 大数据流式处理平台和事件引入服务
 Azure 事件中心是大数据流式处理平台和事件引入服务。 它可以每秒接收和处理数百万个事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。
@@ -29,17 +29,19 @@ Azure 事件中心是大数据流式处理平台和事件引入服务。 它可�
 - 存档数据
 - 事务处理
 - 用户遥测数据处理
-- 设备遥测数据流式处理 
+- 设备遥测数据流式处理
+
+[!VIDEO https://www.youtube.com/watch?v=45wgY-VSk9I]
 
 ## <a name="why-use-event-hubs"></a>为何使用事件中心？
 
 仅当能够轻松处理并且能够从数据源获取即时见解时，数据才有价值。 事件中心提供低延迟、可无缝集成的分布式流处理平台，并在 Azure 的内部和外部提供数据和分析服务，用于构建完整的大数据管道。
 
-事件中心充当事件管道的“前门”，在解决方案体系结构中通常称作“事件引入器”  。 事件引入器是位于事件发布者与事件使用者之间的组件或服务，可以将事件流的生成与这些事件的使用分离开来。 事件中心提供统一的流式处理平台和时间保留缓冲区，将事件生成者与事件使用者分离开来。 
+事件中心充当事件管道的“前门”，在解决方案体系结构中通常称作“事件引入器”  。 事件引入器是位于事件发布者与事件使用者之间的组件或服务，可以将事件流的生成与这些事件的使用分离开来。 事件中心提供统一的流式处理平台和时间保留缓冲区，将事件生成者与事件使用者分离开来。
 
-以下部分介绍 Azure 事件中心服务的重要功能： 
+以下部分介绍 Azure 事件中心服务的重要功能：
 
-## <a name="fully-managed-paas"></a>完全托管的 PaaS 
+## <a name="fully-managed-paas"></a>完全托管的 PaaS
 
 事件中心是完全托管的平台即服务 (PaaS)，其配置或管理开销极低，因此你可以专注于业务解决方案。 [Apache Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)提供 PaaS Kafka 体验，使用户无需管理、配置或运行群集。
 
@@ -51,14 +53,14 @@ Azure 事件中心是大数据流式处理平台和事件引入服务。 它可�
 
 Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，以构成无服务器体系结构。
 
-## <a name="scalable"></a>可缩放 
+## <a name="scalable"></a>可缩放
 
-使用事件中心可以从 MB 量级的数据流着手，然后逐步扩展到 GB 甚至 TB 量级的处理。 [自动扩充](event-hubs-auto-inflate.md)功能是用于根据用量需求扩展吞吐量单位数的众多选项之一。 
+使用事件中心可以从 MB 量级的数据流着手，然后逐步扩展到 GB 甚至 TB 量级的处理。 [自动扩充](event-hubs-auto-inflate.md)功能是用于根据用量需求扩展吞吐量单位数的众多选项之一。
 
 ## <a name="rich-ecosystem"></a>丰富的生态系统
 
 [Apache Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)可让 [Apache Kafka（1.0 和更高版本）](https://kafka.apache.org/)客户端和应用程序与事件中心通信。 你无需设置、配置和管理自己的 Kafka 群集。
- 
+
 借助支持各种[语言（.NET、Java、Python、Go、Node.js）](https://github.com/Azure/azure-event-hubs)的丰富生态系统，可以从事件中心轻松开始处理流。 所有支持的客户端语言提供低级别集成。 该生态系统还为你提供了与 Azure 服务（如 Azure 流分析和 Azure Functions）的无缝集成，使你能够构建无服务器体系结构。
 
 ## <a name="key-architecture-components"></a>重要的体系结构组件
@@ -77,7 +79,7 @@ Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，
 
 ## <a name="next-steps"></a>后续步骤
 
-要开始使用事件中心，请参阅“发送和接收事件”教程  ： 
+要开始使用事件中心，请参阅“发送和接收事件”教程  ：
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)

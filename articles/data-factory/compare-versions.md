@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 976724a40b604bcdc3c83ef1b3d2e95268f75304
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d31a134ae15e4ddbda0cc60a741f8780fec8d12
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432696"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838116"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure 数据工厂与数据工厂版本 1 之对比
 本文将数据工厂与数据工厂版本 1 进行了比较。 有关数据工厂的简介，请参阅[数据工厂简介](introduction.md)。有关数据工厂版本 1 的简介，请参阅 [Azure 数据工厂简介](v1/data-factory-introduction.md)。 
@@ -116,9 +116,9 @@ Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管�
 ## <a name="sdks"></a>SDK
  数据工厂的当前版本提供了可以用来创作、管理和监视管道的更为丰富的一组 SDK。
 
-- .NET SDK：.NET SDK 在当前版本中进行了更新。
+- .NET SDK  ：.NET SDK 在当前版本中进行了更新。
 
-- PowerShell：PowerShell cmdlet 在当前版本中进行了更新。 当前版本的 cmdlet 在名称中带有 **DataFactoryV2**，例如：Get-AzDataFactoryV2. 
+- PowerShell  ：PowerShell cmdlet 在当前版本中进行了更新。 当前版本的 cmdlet 在名称中带有 **DataFactoryV2**，例如：Get-AzDataFactoryV2. 
 
 - **Python SDK**：此 SDK 是当前版本中新增的。
 
@@ -130,7 +130,7 @@ Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管�
 
 | &nbsp; | V2 | V1 |
 | ------ | -- | -- | 
-| Azure 门户 | [是](quickstart-create-data-factory-portal.md) | [是](data-factory-build-your-first-pipeline-using-editor.md) |
+| Azure 门户 | [是](quickstart-create-data-factory-portal.md) | 否 |
 | Azure PowerShell | [是](quickstart-create-data-factory-powershell.md) | [是](data-factory-build-your-first-pipeline-using-powershell.md) |
 | .NET SDK | [是](quickstart-create-data-factory-dot-net.md) | [是](data-factory-build-your-first-pipeline-using-vs.md) |
 | REST API | [是](quickstart-create-data-factory-rest-api.md) | [是](data-factory-build-your-first-pipeline-using-rest-api.md) |

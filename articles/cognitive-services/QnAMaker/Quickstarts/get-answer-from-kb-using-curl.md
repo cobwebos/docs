@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 817a19d5cabd7d20dc17154f29b4430e6b96c5fa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: bb33e829853e1f9a975d29c7a80298b9033f0748
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072044"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249650"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>快速入门：使用 cURL 从知识库获取答案
 
 此基于 cURL 的快速入门详细介绍如何从知识库获取答案。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 最新的 [  cURL](https://curl.haxx.se/)。
 * 必须拥有 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)，并拥有[包含问题和答案的知识库](../Tutorials/create-publish-query-in-portal.md)。
@@ -69,7 +69,7 @@ ms.locfileid: "67072044"
 
 ## <a name="use-staging-endpoint-with-curl"></a>与 cURL 配合使用临时终结点
 
-如果你想要从过渡终结点中获得答案，使用`isTest`正文属性。
+如果想要从暂存终结点获取答案，请使用 `isTest` 正文属性。
 
 ```json
 isTest:true

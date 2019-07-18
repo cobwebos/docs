@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b7e59e39adbb485738ca66b7ad8e5ba8293ddc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ff2089e8abdde8e6a99de1be2be070fb457fa632
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784997"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276646"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
 
@@ -50,7 +50,7 @@ ms.locfileid: "65784997"
 
 ## <a name="set-up-your-project"></a>设置项目
 
-本部分逐步说明如何将 Windows 桌面 .NET 应用程序 (XAML) 与“登录 Microsoft”集成。 然后，该应用程序可以查询需要令牌的 Web API（例如 Microsoft 图形 API）。
+本部分逐步说明如何将 Windows 桌面 .NET 应用程序 (XAML) 与“登录 Microsoft”集成。  然后，该应用程序可以查询需要令牌的 Web API（例如 Microsoft 图形 API）。
 
 本指南创建的应用程序显示用来查询图形 API 的按钮、注销按钮和显示调用结果的文本框。
 
@@ -59,17 +59,17 @@ ms.locfileid: "65784997"
 
 ### <a name="create-your-application"></a>创建应用程序
 
-1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。
-2. 在“模板”下，选择“Visual C#”。
-3. 选择“空白应用(通用 Windows)”。
-4. 为应用命名，然后选择“确定”。
-5. 如果出现提示，请选择任意版本作为“目标”版本和“最低”版本，然后选择“确定”。
+1. 在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。
+2. 在“模板”下，选择“Visual C#”   。
+3. 选择“空白应用(通用 Windows)”。 
+4. 为应用命名，然后选择“确定”。 
+5. 如果出现提示，请选择任意版本作为“目标”版本和“最低”版本，然后选择“确定”。   
 
     >![最低版本和目标版本](./media/tutorial-v2-windows-uwp/vs-minimum-target.png)
 
 ## <a name="add-microsoft-authentication-library-to-your-project"></a>向项目添加 Microsoft 身份验证库
-1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器” > “包管理器控制台”。
-2. 在“包管理器控制台”窗口中复制并粘贴以下命令：
+1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器” > “包管理器控制台”    。
+2. 在“包管理器控制台”窗口中复制并粘贴以下命令： 
 
     ```powershell
     Install-Package Microsoft.Identity.Client -IncludePrerelease
@@ -147,7 +147,7 @@ ms.locfileid: "65784997"
         }
 
         /// <summary>
-        /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
+        /// Call AcquireTokenInteractive - to acquire a token requiring user to sign-in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
@@ -318,7 +318,7 @@ ms.locfileid: "65784997"
 
 ### <a name="more-information"></a>详细信息
 
-通过 OpenID 连接获取的 ID 令牌还包含与用户相关的一小部分信息。 `DisplayBasicTokenInfo` 显示令牌中包含的基本信息。 例如，显示用户的显示名称和 ID、令牌过期日期，以及表示访问令牌本身的字符串。 如果多次选择“调用 Microsoft 图形 API”按钮，将会发现后续请求重复使用了同一令牌。 而且还会发现，在 MSAL 决定续订令牌时，过期日期也延长了。
+通过 OpenID 连接获取的 ID 令牌还包含与用户相关的一小部分信息。  `DisplayBasicTokenInfo` 显示令牌中包含的基本信息。 例如，显示用户的显示名称和 ID、令牌过期日期，以及表示访问令牌本身的字符串。 如果多次选择“调用 Microsoft 图形 API”按钮，将会发现后续请求重复使用了同一令牌。  而且还会发现，在 MSAL 决定续订令牌时，过期日期也延长了。
 
 ## <a name="register-your-application"></a>注册应用程序
 
@@ -327,36 +327,36 @@ ms.locfileid: "65784997"
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 如果帐户存在于多个 Azure AD 租户中，请选择页面顶部的菜单右上角的 `Directory + Subscription`，并将门户会话切换为所需的 Azure AD 租户。
 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
-1. 选择“新注册”。
-   - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `UWP-App-calling-MSGraph`。
-   - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。
-   - 选择“注册”以创建应用程序。
-1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用。 返回 Visual Studio，打开 MainPage.xaml.cs，并将 ClientId 的值替换为刚刚记下的应用程序 ID：
-1. 在应用的页面列表中，选择“身份验证”。
-   1. 在“重定向 URI”部分的重定向 URI 列表中：
-   1. 在“类型”列中选择“公共客户端(移动和桌面)”。
-   1. 在“重定向 URI”列中输入 `urn:ietf:wg:oauth:2.0:oob`。
-1. 选择“保存”。
-1. 在应用的页面列表中，选择“API 权限”
-   - 单击“添加权限”按钮，然后
-   - 确保已选中“Microsoft API”的选项卡
-   - 在“常用 Microsoft API”部分中，单击“Microsoft Graph”
-   - 在“委托的权限”部分中，确保已勾选正确的权限：User.Read。 如有必要，请使用搜索框。
-   - 选择“添加权限”按钮
+1. 选择“新注册”。 
+   - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `UWP-App-calling-MSGraph`。
+   - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”   。
+   - 选择“注册”  以创建应用程序。
+1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用   。 返回 Visual Studio，打开 MainPage.xaml.cs，并将 ClientId 的值替换为刚刚记下的应用程序 ID  ：
+1. 在应用的页面列表中，选择“身份验证”。 
+   1. 在“重定向 URI”  部分的重定向 URI 列表中：
+   1. 在“类型”  列中选择“公共客户端(移动和桌面)”  。
+   1. 在“重定向 URI”列中输入 `urn:ietf:wg:oauth:2.0:oob`  。
+1. 选择“保存”。 
+1. 在应用的页面列表中，选择“API 权限” 
+   - 单击“添加权限”  按钮，然后
+   - 确保已选中“Microsoft API”的选项卡 
+   - 在“常用 Microsoft API”部分中，单击“Microsoft Graph”  
+   - 在“委托的权限”部分中，确保已勾选正确的权限  ：User.Read  。 如有必要，请使用搜索框。
+   - 选择“添加权限”按钮 
 
 ## <a name="enable-integrated-authentication-on-federated-domains-optional"></a>在联盟域中启用集成身份验证（可选）
 
 与 Azure AD 联盟域一起使用时，若要启用 Windows 集成身份验证，应用程序清单必须启用其他功能：
 
-1. 双击“Package.appxmanifest”。
-2. 选择“功能”选项卡并确保启用以下设置：
+1. 双击“Package.appxmanifest”。 
+2. 选择“功能”选项卡并确保启用以下设置： 
 
     - 企业身份验证
     - 专用网络(客户端和服务器)
     - 共享用户证书
 
 > [!IMPORTANT]
-> 默认情况下，未为此示例配置[集成 Windows 身份验证](https://aka.ms/msal-net-iwa)。 请求“企业身份验证”或“共享用户证书”功能的应用程序需要由 Windows 应用商店进行的更高级别的验证。 此外，并非所有开发人员都希望执行更高级别的验证。 仅当需要使用 Azure AD 联盟域进行 Windows 集成身份验证时，才启用此设置。
+> 默认情况下，未为此示例配置[集成 Windows 身份验证](https://aka.ms/msal-net-iwa)。 请求“企业身份验证”或“共享用户证书”功能的应用程序需要由 Windows 应用商店进行的更高级别的验证。   此外，并非所有开发人员都希望执行更高级别的验证。 仅当需要使用 Azure AD 联盟域进行 Windows 集成身份验证时，才启用此设置。
 
 ## <a name="test-your-code"></a>测试代码
 
@@ -364,23 +364,23 @@ ms.locfileid: "65784997"
 
 ![应用程序的用户界面](./media/tutorial-v2-windows-uwp/testapp-ui.png)
 
-准备好测试后，选择“调用 Microsoft Graph API”。 然后使用 Azure AD 组织帐户或 Microsoft 帐户（例如 live.com 或 outlook.com）登录。 如果是首次测试，会看到要求用户登录的窗口：
+准备好测试后，选择“调用 Microsoft Graph API”  。 然后使用 Azure AD 组织帐户或 Microsoft 帐户（例如 live.com 或 outlook.com）登录。 如果是首次测试，会看到要求用户登录的窗口：
 
 ![登录页](./media/tutorial-v2-windows-uwp/sign-in-page.png)
 
 ### <a name="consent"></a>同意
 
-首次登录应用程序时，会看到如下所示的许可屏幕。 选择“是”显式许可访问：
+首次登录应用程序时，会看到如下所示的许可屏幕。 选择“是”显式许可访问： 
 
 ![访问许可屏幕](./media/tutorial-v2-windows-uwp/consentscreen.png)
 
 ### <a name="expected-results"></a>预期结果
 
-“API 调用结果”屏幕上会显示 Microsoft 图形 API 调用返回的用户个人资料信息：
+“API 调用结果”屏幕上会显示 Microsoft 图形 API 调用返回的用户个人资料信息： 
 
 ![“API 调用结果”屏幕](./media/tutorial-v2-windows-uwp/uwp-results-screen.PNG)
 
-“令牌信息”框中还会显示通过 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 获得的令牌的相关基本信息：
+“令牌信息”框中还会显示通过 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 获得的令牌的相关基本信息： 
 
 |属性  |格式  |说明 |
 |---------|---------|---------|
@@ -406,7 +406,7 @@ Microsoft 图形 API 需要 *user.read* 作用域来读取用户的个人资料�
 * 在用户的证书存储中未找到有效的证书。
 * 请重试选择不同的身份验证方法。
 
-原因：未启用企业功能和证书功能。
+原因：  未启用企业功能和证书功能。
 
 **解决方案：** 按照[联盟域中的集成身份验证](#enable-integrated-authentication-on-federated-domains-optional)中的步骤操作。
 
@@ -414,8 +414,8 @@ Microsoft 图形 API 需要 *user.read* 作用域来读取用户的个人资料�
 
 [在联盟域中启用集成身份验证](#enable-integrated-authentication-on-federated-domains-optional)，并尝试在 Windows 10 计算机上使用 Windows Hello 登录到配置了多重身份验证的环境。 此时会显示证书列表。 但如果选择使用 PIN，则永远不会显示 PIN 窗口。
 
-原因：在 Windows 10 桌面版上运行的 UWP 应用程序中的 Web 身份验证代理存在已知限制。 该代理在 Windows 10 手机版上可正常工作。
+原因：  在 Windows 10 桌面版上运行的 UWP 应用程序中的 Web 身份验证代理存在已知限制。 该代理在 Windows 10 手机版上可正常工作。
 
-**解决方法：** 选择“使用其他选项登录”。 然后选择“使用用户名和密码登录”。 选择“提供密码”。 然后完成手机身份验证过程。
+**解决方法：** 选择“使用其他选项登录”。  然后选择“使用用户名和密码登录”。  选择“提供密码”。  然后完成手机身份验证过程。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

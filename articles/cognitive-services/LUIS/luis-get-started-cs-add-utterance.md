@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 01fd5b06a2e534a85c88d5c1a706713f07f40106
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273458"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277552"
 ---
 # <a name="quickstart-change-model-using-c"></a>快速入门：使用 C# 更改模型
 
@@ -43,13 +43,13 @@ ms.locfileid: "59273458"
 
 ### <a name="add-the-systemweb-dependency"></a>添加 System.Web 依赖项
 
-Visual Studio 项目需要 **System.Web**。 在解决方案资源管理器中，右键单击“引用”并从“程序集”部分中选择“添加引用”。
+Visual Studio 项目需要 **System.Web**。 在解决方案资源管理器中，右键单击“引用”并从“程序集”部分中选择“添加引用”。  
 
 ![添加 System.web 引用](./media/luis-quickstart-cs-add-utterance/system.web.png)
 
 ### <a name="add-other-dependencies"></a>添加其他依赖项
 
-Visual Studio 项目需要 **JsonFormatterPlus** 和 **CommandLineParser**。 在“解决方案资源管理器”中，右键单击“引用”，并选择“管理 NuGet 包...”。浏览并添加这两个包中的每一个包。 
+Visual Studio 项目需要 **JsonFormatterPlus** 和 **CommandLineParser**。 在“解决方案资源管理器”中，右键单击“引用”，并选择“管理 NuGet 包...”   。浏览并添加这两个包中的每一个包。 
 
 ![添加第三方依赖项](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
@@ -115,7 +115,7 @@ namespace ConsoleApp1
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>将 utterances.json 复制到输出目录
 
-在解决方案资源管理器中，通过右键单击解决方案资源管理器的项目名称，然后依次选择“添加”、“现有项”，添加 `utterances.json`。 选择 `utterances.json` 文件。 这会将文件添加到项目。 然后需要将它添加到输出方向。 右键单击 `utterances.json` 并选择“属性”。 在属性窗口中，标记 `Content` 的“生成操作”，并标记 `Copy Always` 的“复制到输出目录”。  
+在解决方案资源管理器中，通过右键单击解决方案资源管理器的项目名称，然后依次选择“添加”  、“现有项”  ，添加 `utterances.json`。 选择 `utterances.json` 文件。 这会将文件添加到项目。 然后需要将它添加到输出方向。 右键单击 `utterances.json` 并选择“属性”  。 在属性窗口中，标记 `Content` 的“生成操作”，并标记 `Copy Always` 的“复制到输出目录”。    
 
 ![将 JSON 文件标记为内容](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 

@@ -13,15 +13,15 @@ ms.topic: overview
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9bf8c51fda6985f88ecffa60b32c1c62e364a511
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: aed073e7d65f193c4123106ba1ae3f4f442965e1
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014924"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836316"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-introduction.md)
 > * [版本 2（当前版本）](../introduction.md)
 
@@ -42,7 +42,7 @@ ms.locfileid: "54014924"
 
 ![数据工厂概述](media/data-factory-introduction/what-is-azure-data-factory.png) 
 
-Azure 数据工厂是适合这些类型的方案的平台。 它是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂可执行以下任务： 
+Azure 数据工厂是适合这些类型的方案的平台。 它是  基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂可执行以下任务： 
 
 - 创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据。
 
@@ -52,7 +52,7 @@ Azure 数据工厂是适合这些类型的方案的平台。 它是基于云的�
 
 它更多是一种提取和加载 (EL) 以及转换和加载 (TL) 型平台，而不是一种传统的提取、转换和加载 (ETL) 型平台。 此类转换在处理数据时使用计算服务，而不是添加派生的列、对行计数、对数据排序，等等。 
 
-目前在 Azure 数据工厂中，工作流所使用和生成的数据为时间切片数据（每小时、每天、每周等）。 例如，管道可能会每天一次地读取输入数据、处理数据以及生成输出数据。 也可一次性运行某个工作流。  
+目前在 Azure 数据工厂中，工作流所使用和生成的数据为  时间切片数据（每小时、每天、每周等）。 例如，管道可能会每天一次地读取输入数据、处理数据以及生成输出数据。 也可一次性运行某个工作流。  
   
 
 ## <a name="how-does-it-work"></a>工作原理 
@@ -113,7 +113,7 @@ Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下�
 
 在数据工厂中使用链接服务有两个原因：
 
-* 代表数据存储。此类存储包括但不限于本地 SQL Server 数据库、Oracle 数据库、文件共享或 Azure Blob 存储帐户。 有关支持的数据存储列表，请参阅[数据移动活动](#data-movement-activities)部分。
+* 代表  数据存储。此类存储包括但不限于本地 SQL Server 数据库、Oracle 数据库、文件共享或 Azure Blob 存储帐户。 有关支持的数据存储列表，请参阅[数据移动活动](#data-movement-activities)部分。
 
 * 代表可托管活动执行的*计算资源*。 例如，HDInsightHive 活动在 HDInsight Hadoop 群集上运行。 有关支持的计算环境的列表，请参阅[数据转换活动](#data-transformation-activities)部分。
 
@@ -133,7 +133,6 @@ Azure 数据工厂本身不存储任何数据。 它可以用于创建数据驱�
 ## <a name="get-started-with-creating-a-pipeline"></a>创建管道入门
 可以使用以下工具或 API 之一，在 Azure 数据工厂中创建数据管道： 
 
-- Azure 门户
 - Visual Studio
 - PowerShell
 - .NET API
@@ -142,7 +141,7 @@ Azure 数据工厂本身不存储任何数据。 它可以用于创建数据驱�
 
 若要了解如何构建包含数据管道的数据工厂，请遵循以下教程中的分步说明：
 
-| 教程 | Description |
+| 教程 | 说明 |
 | --- | --- |
 | [在两个云数据存储之间移动数据](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |创建一个包含管道的数据工厂，将数据从 Blob 存储移到 SQL 数据库。 |
 | [使用 Hadoop 群集转换数据](data-factory-build-your-first-pipeline.md) |构建第一个包含数据管道的 Azure 数据工厂，该数据管道可以通过在 Azure HDInsight (Hadoop) 群集上运行 Hive 脚本来处理数据。 |

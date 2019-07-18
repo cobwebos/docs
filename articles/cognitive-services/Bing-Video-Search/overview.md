@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 06/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7b17c03b464ed7ccc13de2221c8e4cb36be05c3f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 64d6613a5bfb9b13500d2263d2f826d342972639
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442713"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867846"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>什么是必应视频搜索 API？
 
@@ -27,7 +27,7 @@ ms.locfileid: "67442713"
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [实时建议搜索词](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | 在用户键入时通过[必应自动建议 API](../bing-autosuggest/get-suggested-search-terms.md) 显示建议的搜索词改善应用体验。 |
 | [筛选和限制视频结果](concepts/get-videos.md#filtering-videos)                      | 通过编辑查询参数筛选返回的视频。                                                                                                       |
-| [缩略图的裁剪、重设大小和显示](resize-and-crop-thumbnails.md)                                                | 编辑和显示必应视频搜索 API 返回的视频的缩略图预览。                                                                                      |
+| [缩略图的裁剪、重设大小和显示](../bing-web-search/resize-and-crop-thumbnails.md)                                                | 编辑和显示必应视频搜索 API 返回的视频的缩略图预览。                                                                                      |
 | [获取热门视频](trending-videos.md) | 从全世界搜索热门视频。                                                                                                          |
 | [获取视频见解](video-insights.md) | 自定义一个从全世界搜罗热门视频的搜索。                                                                                                          |
 

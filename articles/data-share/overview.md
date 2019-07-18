@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 1e0d640c5434c27695b90ee7fd4c20a4959c24b3
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 7d4e51ec9564bfb123cf73d9fe89d040f42fe650
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788981"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807546"
 ---
 # <a name="what-is-azure-data-share-preview"></a>什么是 Azure Data Share 预览版？
 
@@ -78,14 +78,6 @@ Azure Data Share 利用 Azure 提供的基础安全措施来保护静态数据�
 可以在 Azure Data Share 资源级别设置访问控制，确保它由那些获得授权的用户访问。 
 
 Azure Data Share 利用 Azure 资源的托管标识（以前称为 MSI）在 Azure Active Directory 中进行自动标识管理。 利用 Azure 资源的托管标识，可以访问用于数据共享的存储帐户。 在数据提供者和数据使用者之间没有凭据交换。 有关详细信息，请参阅 [Azure 资源的托管标识页](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。 
-
-## <a name="pricing"></a>定价
-
-Azure Data Share 预览版对两个组件收费。 第一个组件用于数据共享管理。 预览版的数据共享管理将免费。
-
-第二个组件用于移动。 Aure Data Share 会对将数据从数据提供者的 Azure 租户移动到数据使用者的 Azure 租户这一操作收费。 数据集移动费用取决于移动数据集所需的数据集移动操作和计算。 数据集移动计算按 vCore 小时收费。 数据集移动计算费用按分钟比例计算，并向上舍入。 预览版的数据集移动操作免费。 
-
-有关定价的详细信息，请访问 Azure Data Share [定价页](https://azure.microsoft.com/pricing/)。
 
 ## <a name="supported-regions"></a>支持的区域
 

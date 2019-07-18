@@ -9,12 +9,12 @@ ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 12b141f9aa75231adae9f64c57709f290883b420
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 629b484d27d863727d180bb3e2d01b605ca539a6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433944"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850125"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -71,7 +71,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
    | 字段 | 值 |
    | ----- | ----- |
-   | 名称 | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
+   | Name | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
    | 说明 | 可选项目说明。 |
    | 资源组 | 选择一个包含自定义视觉服务资源的 Azure 资源组，或者如果尚未添加 Azure 资源组，则选择“新建”  。 |
    | 项目类型 | **分类** |
@@ -141,17 +141,9 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 1. 在 Visual Studio Code 中选择“视图”   >   “终端”，打开 VS Code 集成终端。
 
-2. 在集成终端中输入以下命令，以便安装（或更新）用于在 VS Code 中创建 IoT Edge Python 模块模板的 **cookiecuttere**：
+1. 选择“视图”   >   “命令面板”，打开 VS Code 命令面板。 
 
-    ```cmd/sh
-    pip install --upgrade --user cookiecutter
-    ```
-   >[!Note]
-   >确保将要在其中安装 Cookiecutter 的目录位于环境的 `Path` 中，这样才可以从命令提示符处调用它。
-
-3. 选择“视图”   >   “命令面板”，打开 VS Code 命令面板。 
-
-4. 在“命令面板”中，输入并运行 **Azure IoT Edge:New IoT Edge Solution** 命令。 在命令面板中提供以下信息，以便创建解决方案： 
+1. 在“命令面板”中，输入并运行 **Azure IoT Edge:New IoT Edge Solution** 命令。 在命令面板中提供以下信息，以便创建解决方案： 
 
    | 字段 | 值 |
    | ----- | ----- |

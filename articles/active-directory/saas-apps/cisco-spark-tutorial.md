@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dc537a631cd083da0f902fb4fcd44d47756eeba
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9bf8b4d696a3784988a92fc24de1ae6964786e07
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471773"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836448"
 ---
 # <a name="tutorial-integrate-cisco-webex-with-azure-active-directory"></a>教程：将 Cisco Webex 与 Azure Active Directory 集成
 
@@ -97,7 +97,7 @@ ms.locfileid: "67471773"
 
 6. 除了上述属性外，Cisco Webex 应用程序还需要另外几个属性在 SAML 响应中传回。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
-    | 名称 |  源属性|
+    | Name |  源属性|
     | ---------------|--------- |
     | uid | user.userprincipalname |
 
@@ -133,13 +133,13 @@ ms.locfileid: "67471773"
 
 2. 选择“设置”，在“身份验证”部分下单击“修改”。   
 
-    ![配置单一登录](./media/cisco-spark-tutorial/tutorial_cisco_spark_10.png)
+    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
   
 3. 选择“集成第三方标识提供者。(高级)”  ，然后转到下一个屏幕。
 
 4. 在“导入 Idp 元数据”页上，将 Azure AD 元数据文件拖放到页面上，或者使用文件浏览器选项找到并上传 Azure AD 元数据文件。  然后，选择“元数据中需要由证书颁发机构签名的证书(更安全)”并单击“下一步”。  
 
-    ![配置单一登录](./media/cisco-spark-tutorial/tutorial_cisco_spark_11.png)
+    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
 
 5. 选择“测试 SSO 连接”，当新的浏览器标签页打开时，通过登录使用 Azure AD 进行身份验证。 
 
@@ -147,7 +147,7 @@ ms.locfileid: "67471773"
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-在本部分中，将在 Azure 门户中创建一个名为 B.Simon 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
 1. 选择屏幕顶部的“新建用户”  。
@@ -182,13 +182,13 @@ ms.locfileid: "67471773"
 
 2. 单击“用户”，然后单击“管理用户”   。
    
-    ![配置单一登录](./media/cisco-spark-tutorial/tutorial_cisco_spark_12.png) 
+    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
 
 3. 在“管理用户”窗口中，选择“手动添加或修改用户”，并单击“下一步”。   
 
 4. 选择“姓名和电子邮件地址”。  然后，如下所述填写文本框：
 
-    ![配置单一登录](./media/cisco-spark-tutorial/tutorial_cisco_spark_13.png) 
+    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
 
     a. 在“名字”  文本框中，键入用户的名字，例如 **B**。
 

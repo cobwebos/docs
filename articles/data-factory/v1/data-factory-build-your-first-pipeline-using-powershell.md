@@ -14,17 +14,16 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9d273886b3add43818af80915e42b4aa7ca69a89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0f18fc8a18cbcf5d85b68ed40790eda36d653812
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146887"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836579"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
-> * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
@@ -164,8 +163,8 @@ ms.locfileid: "66146887"
 
    | 属性 | 说明 |
    |:--- |:--- |
-   | ClusterSize |指定 HDInsight 群集的大小。 |
-   | TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
+   | clusterSize |指定 HDInsight 群集的大小。 |
+   | timeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
    | linkedServiceName |指定用于存储 HDInsight 生成的日志的存储帐户 |
 
     请注意以下几点：

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84da3ca512af30ad3b5d4fbc1182f5195366e1ae
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 9955ea434f7a0e48f2d1f81d2a1f57cc3cd67dcb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565446"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277881"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
 
-使用 `AcquireTokenSilent` 方法可获取令牌，以在初始 `AcquireTokenAsync` 方法后访问受保护资源。 你不希望在用户每次需要访问资源时都要求其验证其凭据。 大多数时候，你希望在无需任何用户交互的情况下进行令牌获取和续订
+使用 `AcquireTokenSilent` 方法可获取令牌，以在初始 `AcquireTokenInteractive` 方法后访问受保护资源。 你不希望在用户每次需要访问资源时都要求其验证其凭据。 大多数时候，你希望在无需任何用户交互的情况下进行令牌获取和续订
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();

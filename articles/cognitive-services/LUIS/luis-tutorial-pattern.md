@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/22/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 33541d2a61c52476f6e314f6981a623390de8fa9
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: e559d4a3366c45bd054cbf3a235805e048de3493
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193732"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276049"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>教程：添加常见的模式模板话语格式
 
@@ -47,15 +47,15 @@ ms.locfileid: "57193732"
 
 2. 将 JSON 导入到新应用中。
 
-3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `patterns`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+3. 在“管理”  部分的“版本”  选项卡上，克隆版本并将其命名为 `patterns`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
 
 ## <a name="create-new-intents-and-their-utterances"></a>创建新意向及其话语
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. 在“意向”页上，选择“创建新意向”。 
+2. 在“意向”页上，选择“创建新意向”。   
 
-3. 在弹出对话框中输入 `OrgChart-Manager`，然后选择“完成”。
+3. 在弹出对话框中输入 `OrgChart-Manager`，然后选择“完成”。 
 
     ![创建新消息弹出窗口](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
 
@@ -73,11 +73,11 @@ ms.locfileid: "57193732"
 
     如果 keyPhrase 实体在意向的话语中而不是员工实体中标记，请不要担心。 两者都已在“测试”窗格和终结点中正确预测。 
 
-5. 在左侧导航栏中选择“意向”。
+5. 在左侧导航栏中选择“意向”。 
 
-6. 选择“创建新意向”。 
+6. 选择“创建新意向”  。 
 
-7. 在弹出对话框中输入 `OrgChart-Reports`，然后选择“完成”。
+7. 在弹出对话框中输入 `OrgChart-Reports`，然后选择“完成”。 
 
 8. 将示例陈述添加到意向。
 
@@ -223,9 +223,9 @@ ms.locfileid: "57193732"
 
 ## <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>添加 OrgChart-Manager 意向的模式
 
-1. 选择顶部菜单中的“生成”。
+1. 选择顶部菜单中的“生成”  。
 
-2. 在左侧导航栏中，在“提高应用性能”下，从左侧导航栏中选择“模式”。
+2. 在左侧导航栏中，在“提高应用性能”下，从左侧导航栏中选择“模式”   。
 
 3. 选择 **OrgChart-Manager** 意向，然后输入以下模板话语：
 
@@ -244,7 +244,7 @@ ms.locfileid: "57193732"
 
     [![为意向输入模板话语的屏幕截图](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. 在“模式”页上选择“OrgChart-Reports”意向，然后输入以下模板言语：
+4. 在“模式”页上选择“OrgChart-Reports”意向，然后输入以下模板言语： 
 
     |模板话语|
     |:--|
@@ -387,15 +387,15 @@ ms.locfileid: "57193732"
 
 ## <a name="edit-the-existing-pattern-template-utterance"></a>编辑现有模式模板话语
 
-1. 在 LUIS 网站上，在顶部的菜单中选择“生成”，然后在左侧菜单中选择“模式”。 
+1. 在 LUIS 网站上，在顶部的菜单中选择“生成”  ，然后在左侧菜单中选择“模式”。  
 
-1. 搜索现有的模板言语 `Who is {Employee}['s] manager[?]`，选择右侧的省略号 (***...***)，然后在弹出菜单中选择“编辑”。 
+1. 搜索现有的模板言语 `Who is {Employee}['s] manager[?]`，选择右侧的省略号 (***...***)，然后在弹出菜单中选择“编辑”。  
 
 1. 将模板话语更改为：`who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
 ## <a name="add-new-pattern-template-utterances"></a>添加新的模式模板话语
 
-1. 仍然停留在“生成”的“模式”部分中，添加几个新的模式模板话语。 从“意向”下拉菜单中选择“OrgChart-Manager”，然后输入下面的每条模板话语：
+1. 仍然停留在“生成”  的“模式”  部分中，添加几个新的模式模板话语。 从“意向”下拉菜单中选择“OrgChart-Manager”  ，然后输入下面的每条模板话语：
 
     |意向|包含可选文本和预构建的实体的示例话语|
     |--|--|
@@ -405,11 +405,11 @@ ms.locfileid: "57193732"
 
 2. 将应用定型。
 
-3. 选择面板顶部的“测试”以打开测试面板。 
+3. 选择面板顶部的“测试”  以打开测试面板。 
 
 4. 输入多条测试话语来验证模式是否匹配以及意向得分是否很高。 
 
-    输入第一条话语后，选择结果下的“检查”，以便可以看到所有预测结果。 每个言语应该包含 **OrgChart Manager** 意向，并且应提取 Employee 和 datetimeV2 实体的值。
+    输入第一条话语后，选择结果下的“检查”  ，以便可以看到所有预测结果。 每个言语应该包含 **OrgChart Manager** 意向，并且应提取 Employee 和 datetimeV2 实体的值。
 
     |话语|
     |--|
@@ -439,7 +439,7 @@ ms.locfileid: "57193732"
 
 此代码围绕所需的谓语时态使用 **group**，并在两者之间结合 **or** 管道使用可选的 `in` 和 `on`。 
 
-1. 在“模式”页上，选择“OrgChart-Manager”筛选器。 通过搜索 `manager` 来缩小列表范围。 
+1. 在“模式”页上，选择“OrgChart-Manager”筛选器。   通过搜索 `manager` 来缩小列表范围。 
 
     ![在 OrgChart-Manager 意向模式中搜索“manager”一词](./media/luis-tutorial-pattern/search-patterns.png)
 

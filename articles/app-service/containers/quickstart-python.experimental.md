@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a386924be2f82aadafeaccbeadc68e5e27404855
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ea247907aebc241fb8f1b266ad55bc2fc983607f
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546317"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853989"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python 应用
 
@@ -64,7 +64,7 @@ Checking connectivity... done.
 
 切换到包含示例代码的目录并运行 `az webapp up` 命令。
 
-在以下示例中，请将 <app_name> 替换为一个唯一的应用名称。
+在以下示例中，将 \<app_name>  替换为全局唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`）。
 
 ```bash
 cd python-docs-hello-world
@@ -121,7 +121,7 @@ Python 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
 
-祝贺你！ 现已将第一个 Python 应用部署到 Linux 应用服务。
+祝贺你！  现已将第一个 Python 应用部署到 Linux 应用服务。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 
@@ -151,7 +151,7 @@ az webapp up -n <app_name>
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/quickstart-python/app-service-list.png)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 71d7ebb8cb797e2166fc91fdfdefdba5f22d82ec
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: bf0f74fe76ec7a83e0ce23ca83141276a677a5df
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272697"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868089"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>使用必应视频搜索 API 来搜索视频
 
@@ -98,7 +98,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghi
 
 ## <a name="video-thumbnails"></a>视频缩略图
 
-可以显示必应视频搜索 API 返回的所有或部分视频缩略图。 如果显示一部分缩略图，请为用户提供查看剩余视频的选项。 作为必应 API 的[使用和显示要求](../UseAndDisplayRequirements.md)的一部分，你必须按照响应中提供的顺序来显示视频。 若要了解如何重设缩略图的大小，请参阅[重设缩略图的大小并对其进行裁剪](../resize-and-crop-thumbnails.md)。 
+可以显示必应视频搜索 API 返回的所有或部分视频缩略图。 如果显示一部分缩略图，请为用户提供查看剩余视频的选项。 作为必应 API 的[使用和显示要求](../UseAndDisplayRequirements.md)的一部分，你必须按照响应中提供的顺序来显示视频。 若要了解如何重设缩略图的大小，请参阅[重设缩略图的大小并对其进行裁剪](../../bing-web-search/resize-and-crop-thumbnails.md)。 
 
 当用户将鼠标悬停在缩略图上时，你可以使用 [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) 来播放视频的缩略图版本。 显示运动缩略图时，必须显示其属性。
 
