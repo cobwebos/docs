@@ -108,7 +108,7 @@ ms.locfileid: "67540356"
     是的，Azure 文件支持本地冗余存储 (LRS) 和异地冗余存储 (GRS)。 如果通过为 GRS 配置的帐户发起配对区域之间的存储帐户故障转移，Microsoft 建议仅将新区域视为数据的备份。 Azure 文件同步不会自动开始与新的主区域进行同步。 
 
 * <a id="sizeondisk-versus-size"></a>
-  **使用 Azure 文件共享后，为什么文件的占用空间属性与大小属性不一致？  **  
+  **使用 Azure 文件共享后，为什么文件的占用空间属性与大小属性不一致？**    
   请参阅[了解云分层](storage-sync-cloud-tiering.md#sizeondisk-versus-size)。
 
 * <a id="is-my-file-tiered"></a>
@@ -123,7 +123,7 @@ ms.locfileid: "67540356"
   请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-force-tiering)。
 
 * <a id="afs-effective-vfs"></a>
-  **当卷上有多个服务器终结点时，如何解释卷可用空间？ **  
+  **当卷上有多个服务器终结点时，如何解释卷可用空间？**   
   请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-effective-vfs)。
 
 * <a id="afs-files-excluded"></a>
@@ -373,7 +373,7 @@ ms.locfileid: "67540356"
 
 ## <a name="features-and-interoperability-with-other-services"></a>功能以及与其他服务的互操作性
 * <a id="cluster-witness"></a>
-**是否可以将 Azure 文件共享作为 Windows 服务器故障转移群集的文件共享见证？ **  
+**是否可以将 Azure 文件共享作为 Windows 服务器故障转移群集的文件共享见证？**   
     Azure 文件共享目前不支持此配置。 有关如何为 Azure Blob 存储设置此服务的详细信息，请参阅[部署故障转移群集的云见证](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)。
 
 * <a id="containers"></a>
