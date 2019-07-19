@@ -39,7 +39,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [skip](#skip)
 * [split](#split)
 * [startsWith](#startswith)
-* [字符串](#string)
+* [string](#string)
 * [substring](#substring)
 * [take](#take)
 * [toLower](#tolower)
