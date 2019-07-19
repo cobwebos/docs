@@ -1,6 +1,6 @@
 ---
-title: PowerShell 快速入门：创建、 加载和查询使用 Azure 搜索 REST Api-Azure 搜索索引
-description: 介绍如何创建索引、 加载数据，并使用 PowerShell 的运行查询 Invoke-restmethod 和 Azure 搜索 REST API。
+title: PowerShell 快速入门:使用 Azure 搜索 REST Api 创建、加载和查询索引-Azure 搜索
+description: 说明如何使用 PowerShell 的 Invoke-restmethod 和 Azure 搜索 REST API 创建索引、加载数据以及运行查询。
 ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c8a49fe5d334b5752b9272e480fb2502a980b0a4
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 6bff2c84a4bfd81b94054b85744c17a1cd217756
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840175"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67847061"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>快速入门：在 PowerShell 中使用 REST Api 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -26,13 +26,13 @@ ms.locfileid: "67840175"
 > * [门户](search-create-index-portal.md)
 > 
 
-本文将指导你完成创建、 加载和查询使用 PowerShell 的 Azure 搜索索引的过程并[Azure 搜索 REST Api](https://docs.microsoft.com/rest/api/searchservice/)。 本文介绍如何以交互方式运行 PowerShell 命令。 此外，也可以[下载并运行 Powershell 脚本](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)执行相同的操作。
+本文指导完成使用 PowerShell 和[Azure 搜索 REST api](https://docs.microsoft.com/rest/api/searchservice/)创建、加载和查询 azure 搜索索引的过程。 本文介绍如何以交互方式运行 PowerShell 命令。 或者, 可以[下载并运行](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)执行相同操作的 Powershell 脚本。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>系统必备
 
-本快速入门使用以下服务和工具。 
+此快速入门中需要以下服务和工具。 
 
 + [PowerShell 5.1 或更高版本](https://github.com/PowerShell/PowerShell)，使用 [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) 按序完成交互式步骤。
 
@@ -90,7 +90,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 索引的所需元素包括名称和字段集合。 字段集合定义文档的结构。  每个字段具有一个确定其用法的名称、类型和属性（例如，该字段在搜索结果是否可全文搜索、可筛选或可检索）。 在索引中，必须将一个 `Edm.String` 类型的字段指定为文档标识的键。 
 
-此索引名为"hotels 快速入门"，并且请参阅下面的字段定义。 它是其他演练中使用的一个更大 [Hotels 索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)的子集。 为简明起见，本快速入门已对其进行修整。
+此索引命名为 "宾馆快速入门", 并具有如下所示的字段定义。 它是其他演练中使用的一个更大 [Hotels 索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)的子集。 为简明起见，本快速入门已对其进行修整。
 
 1. 将此示例粘贴到 PowerShell，以创建包含索引架构的 **$body** 对象。
 
@@ -121,7 +121,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     "@
     ```
 
-2. 将 URI 设置为你的服务上的索引集合和*hotels-快速入门*索引。
+2. 将 URI 设置为服务上的索引集合和*酒店快速入门*索引。
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06"
@@ -174,7 +174,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     ```
 
 > [!Tip]
-> 进行验证，还可以检查在门户中的索引列表。
+> 若要进行验证, 还可以在门户中查看索引列表。
 
 <a name="load-documents"></a>
 
@@ -271,18 +271,18 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     "@
     ```
 
-1. 将终结点设置为*hotels-快速入门*文档集合，包括在索引操作 (索引/酒店-快速入门/docs/index)。
+1. 将终结点设置为 "*宾馆快速入门*" 文档集合, 并包括索引操作 (索引/宾馆-快速入门/文档/索引)。
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
     ```
 
-1. 运行该命令与 **$url**， **$headers**，并 **$body**若要将文档加载到快速入门的酒店索引。
+1. 运行带有 **$url**、 **$headers**和 **$body**的命令, 将文档加载到酒店快速入门索引。
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    结果应类似于以下示例。 应会看到[状态代码 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
+    结果应类似于以下示例。 你应看到[状态代码 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
 
     ```
     {
@@ -320,11 +320,11 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 此步骤说明如何使用[搜索文档 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 查询索引。
 
-请确保搜索 $urls 上使用单引号。 查询字符串包含 **$** 字符，并且您可以省略无需对它们进行转义，如果整个字符串括在单引号中...
+请确保在搜索 $urls 使用单引号。 查询字符串包含 **$** 个字符, 如果整个字符串括在单引号中, 则可以忽略它们的转义。
 
-1. 将终结点设置为*hotels-快速入门*文档集合，并添加**搜索**要在查询字符串中传递参数。 
+1. 将终结点设置为 "*宾馆-快速入门*" 文档集合, 并添加**搜索**参数以传入查询字符串。 
   
-   此字符串执行空搜索 (搜索 = *)，返回 unranked 的列表 (搜索分数 = 1.0) 的任意文档。 默认情况下，Azure 搜索一次返回 50 个匹配项。 作为结构化，此查询将返回整个文档结构和值。 添加 **$count = true**才能得到的结果中的所有文档的计数。
+   此字符串执行空搜索 (search = *), 返回任意文档的 unranked 列表 (搜索评分 = 1.0)。 默认情况下, Azure 搜索一次返回50个匹配项。 作为结构化, 此查询将返回整个文档结构和值。 添加 **$count = true**以获取结果中的所有文档的计数。
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
@@ -394,15 +394,15 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 ```
 ## <a name="clean-up"></a>清理 
 
-当您正在自己的订阅中时，它是建议项目的末尾来识别是否仍需要的资源创建。 持续运行资源可能会产生费用。 您可以逐个删除资源或删除要删除整个资源集的资源组。
+在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-可以查找和管理资源在门户中，使用**的所有资源**或**资源组**在左侧导航窗格中的链接。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
 
-如果使用的一项免费服务，请记住，你被限制为三个索引、 索引器和数据源。 您可以删除使其保持在限制在门户中的各个项。 
+如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 
 ## <a name="next-steps"></a>后续步骤
 
-在此快速入门中，您可以使用 PowerShell 来单步执行创建和访问 Azure 搜索中的内容的基本工作流。 有关的概念，我们建议移到更高级的方案，如从 Azure 数据源; 建立索引
+本快速入门介绍了如何使用 PowerShell 逐步完成用于在 Azure 搜索中创建和访问内容的基本工作流。 考虑到这些概念, 我们建议转到更高级的方案, 例如从 Azure 数据源进行索引;
 
 > [!div class="nextstepaction"]
-> [REST 教程：编制索引并在 Azure 搜索中搜索半结构化的数据 (JSON blob)](search-semi-structured-data.md)
+> [REST 教程:在 Azure 搜索中索引和搜索半结构化数据 (JSON blob)](search-semi-structured-data.md)

@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
-ms.author: sujayt
-ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sutalasi
+ms.openlocfilehash: 844563e03529e472624b35d2b545c3e432e4ea17
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789732"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876296"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
 
@@ -48,10 +48,10 @@ ms.locfileid: "60789732"
 
 **URL** | **详细信息**  
 --- | ---
-\* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果您知道所有缓存存储帐户的 Vm，则可以加入允许列表的特定存储帐户 Url (例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 而不是 *。 blob.core.windows.net
+\* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 Vm 的所有缓存存储帐户, 则可以将特定存储帐户 Url (例如: cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 的允许列表, 而不是 blob.core.windows.net。
 login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行授权和身份验证。
 *.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery IP”。
-\* .servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery 监视 IP”。
+*.servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery 监视 IP”。
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
@@ -77,7 +77,7 @@ Site Recovery IP 地址范围如下：
    美国中北部 | 23.96.195.247 | 168.62.249.226
    北欧 | 40.69.212.238 | 52.169.18.8
    西欧 | 52.166.13.64 | 40.68.93.145
-   美国东部 | 13.82.88.226 | 104.45.147.24
+   East US | 13.82.88.226 | 104.45.147.24
    美国西部 | 40.83.179.48 | 104.40.26.199
    美国中南部 | 13.84.148.14 | 104.210.146.250
    美国中部 | 40.69.144.231 | 52.165.34.144
@@ -128,7 +128,7 @@ Site Recovery IP 地址范围如下：
 
 3. 为对应于目标位置的 Site Recovery IP 创建出站 HTTPS (443) 规则：
 
-   **位置** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址**
+   **Location** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址**
     --- | --- | ---
    美国中部 | 40.69.144.231 | 52.165.34.144
 
@@ -142,7 +142,7 @@ Site Recovery IP 地址范围如下：
 
 3. 为对应于源位置的 Site Recovery IP 创建出站 HTTPS (443) 规则：
 
-   **位置** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址**
+   **Location** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址**
     --- | --- | ---
    美国中部 | 13.82.88.226 | 104.45.147.24
 

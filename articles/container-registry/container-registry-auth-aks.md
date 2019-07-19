@@ -3,22 +3,23 @@ title: 使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 description: 了解如何使用 Azure Active Directory 服务主体从 Azure Kubernetes 服务访问专用容器注册表中的映像。
 services: container-service
 author: dlepow
+manager: gwallace
 ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: a541af77daf4136c0056cf9919d69c538d1dc5b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9690f900b6fe8d81fbebc3fcf5b7022b12bc3b96
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754477"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310263"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
 结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 本文详细介绍这两种 Azure 服务之间的建议身份验证配置。
 
-只需配置这些身份验证方法之一。 最常用方法是对[使用 AKS 服务主体授予访问权限](#grant-aks-access-to-acr)。 如果你有特定需求，也可以选择性地[使用 Kubernetes 机密授予访问权限](#access-with-kubernetes-secret)。
+只需配置其中一种身份验证方法。 最常见的方法是[使用 AKS 服务主体授予访问权限](#grant-aks-access-to-acr)。 如果有特定需求, 可以选择[使用 Kubernetes 机密授予访问权限](#access-with-kubernetes-secret)。
 
 本文假定已创建 AKS 群集，并且可以使用 `kubectl` 命令行客户端访问群集。
 
@@ -73,7 +74,7 @@ echo "Service principal ID: $CLIENT_ID"
 echo "Service principal password: $SP_PASSWD"
 ```
 
-现在可以在 Kubernetes [映像请求机密][image-pull-secret]中存储服务主体的凭据，当在 AKS 群集中运行容器时，会引用这些凭据。
+你现在可以将服务主体的凭据存储在 Kubernetes[映像请求机密][image-pull-secret]中, AKS 群集在运行容器时将引用该密钥。
 
 使用以下 kubectl  命令创建 Kubernetes 机密。 将 `<acr-login-server>` 替换为 Azure 容器注册表的完全限定名称（它的格式为“acrname.azurecr.io”）。 将 `<service-principal-ID>` 和 `<service-principal-password>` 替换为运行之前的脚本所获得的值。 将 `<email-address>` 替换为格式正确的任何电子邮件地址。
 

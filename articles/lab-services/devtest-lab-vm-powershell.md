@@ -1,6 +1,6 @@
 ---
-title: 在使用 Azure PowerShell 的开发测试实验室中创建虚拟机 |Microsoft Docs
-description: 了解如何使用 Azure 开发测试实验室创建和使用 Azure PowerShell 管理虚拟机。
+title: 使用 Azure PowerShell 在开发测试实验室中创建虚拟机 |Microsoft Docs
+description: 了解如何使用 Azure 开发测试实验室, 通过 Azure PowerShell 来创建和管理虚拟机。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a9629cd14c71a163612c2c4ba3c7b109a52b91ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1a6938bd541e316dbe9f333c670c382faab6ad21
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622433"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854261"
 ---
-# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>使用开发测试实验室使用 Azure PowerShell 创建虚拟机
-本文介绍如何使用 Azure PowerShell 在 Azure 开发测试实验室中创建虚拟机。 PowerShell 脚本可用于自动创建的 Azure 开发测试实验室中的实验室中的虚拟机。 
+# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>使用 Azure PowerShell 创建包含开发测试实验室的虚拟机
+本文介绍如何使用 Azure PowerShell 在 Azure 开发测试实验室中创建虚拟机。 可以使用 PowerShell 脚本在 Azure 开发测试实验室的实验室中自动创建虚拟机。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 开始之前：
 
-- [创建实验室](devtest-lab-create-lab.md)如果不想要使用现有实验室来测试这篇文章中的脚本或命令。 
-- [安装 Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0)或使用已集成到 Azure 门户的 Azure Cloud Shell。 
+- 如果你不想使用现有实验室来测试本文中的脚本或命令, 请[创建实验室](devtest-lab-create-lab.md)。 
+- [安装 Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0)或使用集成到 Azure 门户的 Azure Cloud Shell。 
 
 ## <a name="powershell-script"></a>PowerShell 脚本
-本部分中的示例脚本使用[Invoke AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) cmdlet。  此 cmdlet 使用实验室的资源 ID，要执行的操作的名称 (`createEnvironment`)，和必需的参数执行该操作。 参数是包含所有虚拟机描述属性的哈希表中。 
+本部分中的示例脚本使用[AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) cmdlet。  此 cmdlet 采用实验室的资源 ID、要执行的操作的名称 (`createEnvironment`), 以及执行该操作所需的参数。 参数位于包含所有虚拟机说明属性的哈希表中。 
 
 ```powershell
 [CmdletBinding()]
@@ -82,6 +82,7 @@ try {
           "labSubnetName"           = $labSubnetName;
           "notes"                   = "Windows Server 2016 Datacenter";
           "osType"                  = "windows"
+          "expirationDate"          = "2019-12-01"
           "galleryImageReference"   = @{
              "offer"     = "WindowsServer";
              "publisher" = "MicrosoftWindowsServer";
@@ -114,29 +115,29 @@ finally {
 }
 ```
 
-上述脚本中的虚拟机的属性使我们能够创建具有作为操作系统的 Windows Server 2016 DataCenter 的虚拟机。 对于每个类型的虚拟机，这些属性会略有不同。 [定义虚拟机](#define-virtual-machine)部分演示如何确定要在此脚本中使用的属性。
+使用上述脚本中虚拟机的属性, 我们可以创建使用 Windows Server 2016 DataCenter 作为操作系统的虚拟机。 对于每种类型的虚拟机, 这些属性将略有不同。 "[定义虚拟机](#define-virtual-machine)" 部分显示了如何确定要在此脚本中使用的属性。
 
-下面的命令提供了运行中的文件名称保存该脚本的示例：创建-LabVirtualMachine.ps1。 
+下面的命令提供一个示例, 用于运行保存在文件名中的脚本:Create-LabVirtualMachine。 
 
 ```powershell
  PS> .\Create-LabVirtualMachine.ps1 -ResourceGroupName 'MyLabResourceGroup' -LabName 'MyLab' -userName 'AdminUser' -password 'Password1!' -VMName 'MyLabVM'
 ```
 
 ## <a name="define-virtual-machine"></a>定义虚拟机
-本部分演示如何获取特定于你想要创建的虚拟机的类型的属性。 
+本部分演示如何获取特定于要创建的虚拟机类型的属性。 
 
 ### <a name="use-azure-portal"></a>使用 Azure 门户
-在 Azure 门户中创建 VM 时，你可以生成的 Azure 资源管理器模板。 不需要完成创建 VM 的过程。 直到您看到该模板，仅按照的步骤。 这是最佳的方法以获取必要的 JSON 描述，如果还没有的实验室创建 VM。 
+在 Azure 门户中创建 VM 时, 可以生成 Azure 资源管理器模板。 无需完成创建 VM 的过程。 只需要执行这些步骤, 直到看到该模板。 如果尚未创建实验室 VM, 则这是获取所需 JSON 说明的最佳方式。 
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
-2. 选择**所有服务**在左侧导航菜单中。
-3. 搜索并选择**开发测试实验室**从服务列表。 
-4. 上**开发测试实验室**页上，在实验室列表中选择你的实验室。
-5. 在你的实验室主页上，选择 **+ 添加**工具栏上。 
-6. 选择**基本映像**vm。 
-7. 选择**自动化选项**在上述页面的底部**提交**按钮。 
-8. 您看到**Azure 资源管理器模板**用于创建虚拟机。 
-9. 中的 JSON 段**资源**部分包含先前选择的映像类型的定义。 
+2. 选择左侧导航菜单中的 "**所有服务**"。
+3. 搜索并从服务列表中选择 "**开发测试实验室**"。 
+4. 在 "**开发测试实验室**" 页的实验室列表中, 选择实验室。
+5. 在实验室的主页上, 选择工具栏上的 " **+ 添加**"。 
+6. 为 VM 选择**基本映像**。 
+7. 选择 "**提交**" 按钮上方页面底部的 "**自动化选项**"。 
+8. 你会看到用于创建虚拟机的**Azure 资源管理器模板**。 
+9. **Resources**节中的 JSON 段包含之前所选图像类型的定义。 
 
     ```json
     {
@@ -176,19 +177,52 @@ finally {
     }
     ```
 
-在此示例中，您将了解如何获取 Azure Market Place 图像的定义。 可以在相同的方式获取自定义映像、 公式或环境的定义。 添加所需的虚拟机，任何项目并设置任何所需的高级的设置。 为必填的字段和任何可选字段提供值之后, 再选择**自动化选项**按钮。
+在此示例中, 你将了解如何获取 Azure 市场位置映像的定义。 可以采用相同的方式获取自定义图像、公式或环境的定义。 添加虚拟机所需的任何项目, 并设置所需的任何高级设置。 在为必填字段和任何可选字段提供值后, 在选择 "**自动化选项**" 按钮之前。
 
 ### <a name="use-azure-rest-api"></a>使用 Azure REST API
-以下过程提供使用 REST API 获取映像的属性的步骤：这些步骤仅适用于在实验室中的现有 VM。 
+以下过程提供了使用 REST API 获取图像属性的步骤:这些步骤仅适用于实验室中的现有 VM。 
 
-1. 导航到[虚拟机-列出](/rest/api/dtl/virtualmachines/list)页上，选择**试试**按钮。 
+1. 导航到 "[虚拟机-列表](/rest/api/dtl/virtualmachines/list)" 页, 选择 "**试用**" 按钮。 
 2. 选择 **Azure 订阅**。
 3. 输入**实验室的资源组**。
-4. 输入**名称的实验室**。 
+4. 输入**实验室的名称**。 
 5. 选择“运行”。 
-6. 您看到**映像属性**基于创建的 VM。 
+6. 此时会显示基于创建 VM 的**映像的属性**。 
 
+## <a name="set-expiration-date"></a>设置到期日期
+在定型、演示和试验等方案中, 您可能需要创建虚拟机并在固定的持续时间后自动将其删除, 以免产生不必要的成本。 使用 PowerShell 创建 VM 时, 可以为其设置过期日期, 如示例[PowerShell 脚本](#powershell-script)部分所示。
+
+下面是一个示例 PowerShell 脚本, 用于为实验室中的所有现有 Vm 设置过期日期:
+
+```powershell
+# Values to change
+$subscriptionId = '<Enter the subscription Id that contains lab>'
+$labResourceGroup = '<Enter the lab resource group>'
+$labName = '<Enter the lab name>'
+$VmName = '<Enter the VmName>'
+$expirationDate = '<Enter the expiration date e.g. 2019-12-16>'
+
+# Log into your Azure account
+Login-AzureRmAccount
+
+Select-AzureRmSubscription -SubscriptionId $subscriptionId
+$VmResourceId = "subscriptions/$subscriptionId/resourcegroups/$labResourceGroup/providers/microsoft.devtestlab/labs/$labName/virtualmachines/$VmName"
+
+$vm = Get-AzureRmResource -ResourceId $VmResourceId -ExpandProperties
+
+# Get all the Vm properties
+$VmProperties = $vm.Properties
+
+# Set the expirationDate property
+If ($VmProperties.expirationDate -eq $null) {
+    $VmProperties | Add-Member -MemberType NoteProperty -Name expirationDate -Value $expirationDate
+} Else {
+    $VmProperties.expirationDate = $expirationDate
+}
+
+Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
+```
 
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下内容：[有关 Azure 开发测试实验室的 azure PowerShell 文档](/powershell/module/az.devtestlabs/)
+请参阅以下内容:[Azure 开发测试实验室 Azure PowerShell 文档](/powershell/module/az.devtestlabs/)

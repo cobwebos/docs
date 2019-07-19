@@ -12,22 +12,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
-ms.author: monhaber
-ms.openlocfilehash: 1737856067b2490db4a993b4383b320cb13a7774
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.author: v-mohabe
+ms.openlocfilehash: 87f5a14bcd6003ad81b663ed97e5349dcbff2a30
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551774"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296515"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender 高级威胁防护与 Azure 安全中心
 
 Azure 安全中心通过与 [Windows Defender 高级威胁防护](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP) 相集成来扩展其云工作负荷保护平台产品/服务。
 此项更改带来了全面的终结点检测和响应 (EDR) 功能。 使用 Windows Defender ATP 集成可以查明异常。 还可以检测和响应 Azure 安全中心所监视的服务器终结点上出现的高级攻击。
 
-## <a name="windows-defender-atp-features-in-security-center"></a>安全中心中的 Windows Defender ATP 功能
+## <a name="windows-defender-atp-features-in-security-center"></a>安全中心的 Windows Defender ATP 功能
 
-当使用 Windows Defender ATP 你收到：
+使用 Windows Defender ATP 时, 你将获得:
 
 - **下一代入侵后检测传感器**：Windows 服务器的 Windows Defender ATP 传感器收集各种各样的行为信号。
 
@@ -51,10 +51,10 @@ Azure 安全中心通过与 [Windows Defender 高级威胁防护](https://www.mi
 
 ## <a name="platform-support"></a>平台支持
 
-安全中心中的 Windows Defender ATP 支持检测在 Windows Server 2012 R2 和 Windows Server 2016 属于标准服务订阅的操作系统上。
+安全中心的 windows Defender ATP 支持在属于标准服务订阅的 Windows Server 2012 R2 和 Windows Server 2016 操作系统上检测。
 
 > [!NOTE]
-> 当你使用 Azure 安全中心监视服务器时，Windows Defender ATP 租户自动创建和默认的 Windows Defender ATP 数据存储在欧洲。 如果你需要将数据移到另一个位置，你需要联系 Microsoft 支持部门重置租户。
+> 使用 Azure 安全中心监视服务器时, 将自动创建 Windows Defender ATP 租户, 并且默认情况下, Windows Defender ATP 数据存储在欧洲。 如果需要将数据移动到另一个位置, 则需要联系 Microsoft 支持部门重置租户。
 
 ## <a name="onboarding-servers-to-security-center"></a>将服务器加入安全中心 
 
@@ -71,7 +71,7 @@ Azure 安全中心通过与 [Windows Defender 高级威胁防护](https://www.mi
 
 ## <a name="enable-windows-defender-atp-integration"></a>启用 Windows Defender ATP 集成
 
-若要查看如果启用了 Windows Defender ATP 集成，请选择**安全中心** > **定价和设置**> 单击你的订阅。
+若要查看是否已启用 Windows Defender ATP 集成, 请选择 "**安全中心** > **定价 & 设置**" > 单击订阅。
 
   ![Azure 安全中心策略管理](media/security-center-wdatp/policy-management.png)
 

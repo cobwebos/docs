@@ -7,14 +7,14 @@ ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: jasontang501
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 9e786aed031d528b8ae574444b71753ac538cf47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 427cc34cc5a2801a2da98259f932678cdcf71ef7
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728317"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870834"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>在 Microsoft Azure 存储中管理并发
 ## <a name="overview"></a>概述
@@ -84,7 +84,7 @@ catch (StorageException ex)
 
 下表概述接受条件标头（例如请求中的 **If-Match**）的容器操作，以及在响应中返回 ETag 值的容器操作。  
 
-| Operation | 返回容器的 ETag 值 | 接受条件标头 |
+| 操作 | 返回容器的 ETag 值 | 接受条件标头 |
 |:--- |:--- |:--- |
 | 创建容器 |是 |否 |
 | 获取容器属性 |是 |否 |
@@ -100,7 +100,7 @@ catch (StorageException ex)
 
 下表概述接受条件标头（例如请求中的 **If-Match**）的 Blob 操作，以及在响应中返回 ETag 值的 Blob 操作。
 
-| Operation | 返回 ETag 值 | 接受条件标头 |
+| 操作 | 返回 ETag 值 | 接受条件标头 |
 |:--- |:--- |:--- |
 | 放置 Blob |是 |是 |
 | 获取 Blob |是 |是 |
@@ -235,7 +235,7 @@ customer.ETag = "*";
 
 下表概述表实体操作是如何使用 ETag 值的：
 
-| Operation | 返回 ETag 值 | 需要 If-match 请求标头 |
+| 操作 | 返回 ETag 值 | 需要 If-match 请求标头 |
 |:--- |:--- |:--- |
 | 查询实体 |是 |否 |
 | 插入实体 |是 |否 |

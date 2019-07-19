@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 域服务：服务主体配置故障排除 | Microsoft Docs
+title: Azure Active Directory 域服务：服务主体疑难解答 |Microsoft Docs
 description: Azure AD 域服务的服务主体配置疑难解答
 services: active-directory-ds
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 5b94fca6087da61fe10d6c80b3fe7cfb5798f2d3
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9e5fa8c84f5e7ca58117666846b603a118826150
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473897"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234141"
 ---
-# <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>排查托管域中无效的服务主体配置
+# <a name="troubleshoot-invalid-service-principal-configurations-for-azure-active-directory-domain-services"></a>排查 Azure Active Directory 域服务的服务主体配置无效
 
 本文帮助你排查和解决与导致以下警报消息的配置错误相关的服务主体问题：
 

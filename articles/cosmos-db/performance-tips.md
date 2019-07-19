@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: c8907f1b1c8069a3a3e92d01a5fa6341c06ec952
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21886c11bea6ff09cf97362e06c6d304aaa0d8cc
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688804"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250056"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 
@@ -38,7 +38,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
    * 直接模式
 
-     直接模式支持通过 TCP 和 HTTPS 协议的连接。 如果使用.NET SDK 的最新版本，.NET Standard 2.0 和.NET framework 中支持直接连接模式。 使用直接模式时，有两个可用的协议选项：
+     直接模式支持通过 TCP 和 HTTPS 协议的连接。 如果使用最新版本的 .NET SDK, 则 .NET Standard 2.0 和 .NET framework 支持直接连接模式。 使用直接模式时，有两个可用的协议选项：
 
      * TCP
      * HTTPS
@@ -142,15 +142,15 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
    若要减少检索所有适用结果所需的网络往返次数，可以使用 [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 请求标头将页面大小最大增加到 1000。 在只需要显示几个结果的情况下（例如，用户界面或应用程序 API 一次只返回 10 个结果），也可以将页面大小缩小为 10，以降低读取和查询所耗用的吞吐量。
 
    > [!NOTE] 
-   > MaxItemCount 属性不应只用于分页目的。 它是主要使用它通过减少最大项目数来提高查询的性能在单个页面中返回。  
+   > maxItemCount 属性不应仅用于分页目的。 它的主要用途是通过减少单个页面中返回的最大项数来提高查询性能。  
 
-   此外可以设置使用可用的 Azure Cosmos DB Sdk 的页大小。 [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) FeedOptions 中的属性可以设置要在 enmuration 操作中返回的项的最大数。 当`maxItemCount`设置为-1，SDK 会自动查找具体取决于文档大小的最大程度优化值。 例如：
+   也可以使用可用的 Azure Cosmos DB SDK 设置页面大小。 FeedOptions 中的 [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) 属性允许你设置要在列举操作中返回的最大项数。 当 `maxItemCount` 设置为 -1 时，SDK 会根据文档大小自动查找最佳值。 例如：
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
    ```
     
-   当执行查询时，TCP 数据包中发送生成的数据。 如果指定太低值`maxItemCount`，将发送的 TCP 数据包中的数据所需的行程数较高，这会影响性能。 因此，如果您不确定要设置的值`maxItemCount`属性，则最好将其设置为-1，并允许选择默认值的 SDK。 
+   执行查询时，结果数据在 TCP 数据包中发送。 如果为 `maxItemCount` 指定的值太低，则在 TCP 数据包中发送数据所需的往返次数很高，这会影响性能。 因此，如果你不确定要为 `maxItemCount` 属性设置什么值，最好将其设置为 -1，然后让 SDK 选择默认值。 
 
 10. **增加线程/任务数目**
 
@@ -172,7 +172,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
  
 1. **从索引中排除未使用的路径以加快写入速度**
 
-    Cosmos DB 的索引策略还允许使用索引路径（IndexingPolicy.IncludedPaths 和 IndexingPolicy.ExcludedPaths）指定要在索引中包括或排除的文档路径。 在事先知道查询模式的方案中，使用索引路径可改善写入性能并降低索引存储空间，因为索引成本与索引的唯一路径数目直接相关。  例如，下面的代码演示如何排除整个部分的文档 （一个子树） 索引使用"*"通配符。
+    Cosmos DB 的索引策略还允许使用索引路径（IndexingPolicy.IncludedPaths 和 IndexingPolicy.ExcludedPaths）指定要在索引中包括或排除的文档路径。 在事先知道查询模式的方案中，使用索引路径可改善写入性能并降低索引存储空间，因为索引成本与索引的唯一路径数目直接相关。  例如，以下代码演示如何使用“*”通配符从索引中排除整个文档部分（子树）。
 
     ```csharp
     var collection = new DocumentCollection { Id = "excludedPathCollection" };
@@ -194,7 +194,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     查询的复杂性会影响操作使用的请求单位数量。 谓词数、谓词性质、UDF 数目和源数据集的大小都会影响查询操作的成本。
 
-    若要测量任何操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头（或 .NET SDK 中 ResourceResponse<T> 或 FeedResponse<T> 中等效的 RequestCharge 属性）来测量这些操作占用的请求单位数。
+    若要测量任何操作 (创建、更新或删除) 的开销, 请检查[x-ms-请求费用](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)标头 (或 .net SDK 中的 ResourceResponse\<t > 或 FeedResponse\<T > 中的等效 RequestCharge 属性), 以度量这些操作消耗的请求单位数。
 
     ```csharp
     // Measure the performance (request units) of writes

@@ -1,42 +1,42 @@
 ---
-title: 通过进行身份验证与 Azure Active Directory 访问 blob 和队列数据客户端应用程序
-description: 使用 Azure Active Directory 进行身份验证从客户端应用程序、 获取 OAuth 2.0 令牌和授权对 Azure Blob 存储和队列存储的请求。
+title: 在客户端应用程序中使用 Azure Active Directory 进行身份验证以访问 Blob 和队列数据
+description: 使用 Azure Active Directory 从客户端应用程序内部进行身份验证、获取 OAuth 2.0 令牌，以及授权对 Azure Blob 存储和队列存储的请求。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 07/15/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: da10b70b85e284173abbd1779fb1d39f477ca0cd
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: ffae7467e9f94c68cf004b74c9791f2d9cda3171
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723204"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250009"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>从进行身份验证与 Azure Active Directory 应用程序可访问 blob 和队列
+# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>在应用程序中使用 Azure Active Directory 进行身份验证以访问 Blob 和队列
 
-使用 Azure Blob 存储或队列存储使用 Azure Active Directory (Azure AD) 的一个主要优点是你的凭据的不再需要存储在你的代码中。 相反，您可以从 Microsoft 标识平台 (以前称为 Azure AD) 请求的 OAuth 2.0 访问令牌。 Azure AD 进行身份验证安全主体 （用户、 组或服务主体） 运行应用程序。 如果验证成功，Azure AD 将向该应用程序，返回访问令牌和应用程序然后可以使用访问令牌以授权对 Azure Blob 存储或队列存储的请求。
+将 Azure Active Directory (Azure AD) 与 Azure Blob 存储和队列存储配合使用的主要优点在于不再需要在代码中存储凭据。 可以从 Microsoft 标识平台（以前称为 Azure AD）请求 OAuth 2.0 访问令牌。 Azure AD 对运行应用程序的安全主体（用户、组或服务主体）进行身份验证。 如果身份验证成功，Azure AD 会将访问令牌返回应用程序，应用程序可随之使用访问令牌对 Azure Blob 存储或队列存储请求授权。
 
-本文介绍如何使用 Microsoft 标识平台 2.0 配置你的本机应用程序或 web 应用程序进行身份验证。 代码示例使用 .NET，但其他语言使用类似的方法。 有关 Microsoft 标识平台 2.0 的详细信息，请参阅[Microsoft 标识平台 (v2.0) 概述](../../active-directory/develop/v2-overview.md)。
+本文介绍如何配置本机应用程序或 Web 应用程序，以便在 Microsoft 标识平台 2.0 中进行身份验证。 代码示例使用 .NET，但其他语言使用类似的方法。 有关 Microsoft 标识平台 2.0 的详细信息，请参阅 [Microsoft 标识平台 (v2.0) 概述](../../active-directory/develop/v2-overview.md)。
 
 有关 OAuth 2.0 代码授权流的概述，请参阅[使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
-## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>向 Azure AD 安全主体分配角色
+## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>将角色分配给 Azure AD 安全主体
 
-若要从 Azure 存储应用程序对安全主体进行身份验证，请先为该安全主体配置基于角色的访问控制 (RBAC) 设置。 Azure 存储定义包含容器和队列的权限的内置 RBAC 角色。 如果将 RBAC 角色分配给安全主体，该安全主体会获得该资源的访问权限。 有关详细信息，请参阅[到 Azure Blob 和队列数据，使用 RBAC 管理访问权限](storage-auth-aad-rbac.md)。
+若要从 Azure 存储应用程序对安全主体进行身份验证，请先为该安全主体配置基于角色的访问控制 (RBAC) 设置。 Azure 存储定义包含容器和队列权限的内置 RBAC 角色。 如果将 RBAC 角色分配给安全主体，该安全主体会获得该资源的访问权限。 有关详细信息，请参阅[使用 RBAC 管理对 Azure Blob 和队列数据的访问权限](storage-auth-aad-rbac.md)。
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>将应用程序注册到 Azure AD 租户
 
-使用 Azure AD 来授予对存储资源的访问权限的第一步向 Azure AD 租户中注册客户端应用程序[Azure 门户](https://portal.azure.com)。 注册客户端应用程序时，您将提供到 Azure AD 应用程序的信息。 Azure AD 随后会提供客户端 ID（也称为*应用程序 ID*）。在运行时，可以使用该 ID 将应用程序与 Azure AD 关联。 若要详细了解客户端 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../../active-directory/develop/app-objects-and-service-principals.md)。
+使用 Azure AD 授予存储资源访问权限的第一步是，通过 [Azure 门户](https://portal.azure.com)在 Azure AD 租户中注册客户端应用程序。 注册客户端应用程序时，需要向 Azure AD 提供关于应用程序的信息。 Azure AD 随后会提供客户端 ID（也称为*应用程序 ID*）。在运行时，可以使用该 ID 将应用程序与 Azure AD 关联。 若要详细了解客户端 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../../active-directory/develop/app-objects-and-service-principals.md)。
 
-若要注册你的 Azure 存储应用程序，请按照中所示的步骤[快速入门：将应用程序注册到 Microsoft 标识平台](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)。 下图显示用于注册的 web 应用程序常用的设置：
+若要注册 Azure 存储应用程序，请遵循以下文章中所述的步骤：[快速入门：将应用程序注册到 Microsoft 标识平台](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)。 下图显示了用于注册 Web 应用程序的常用设置：
 
-![显示如何使用 Azure AD 注册应用程序的屏幕截图](./media/storage-auth-aad-app/app-registration.png)
+![显示如何向 Azure AD 注册存储应用程序的屏幕截图](./media/storage-auth-aad-app/app-registration.png)
 
 > [!NOTE]
-> 如果将应用程序注册为本机应用程序，可以为**重定向 URI** 指定任何有效的 URI。 对于本机应用程序，此值不必是实际的 URL。 对于 web 应用程序，重定向 URI 必须是有效的 URI，因为它指定提供标记的 URL。
+> 如果将应用程序注册为本机应用程序，可以为**重定向 URI** 指定任何有效的 URI。 对于本机应用程序，此值不一定要是实际的 URL。 对于 Web 应用程序，重定向 URI 必须是有效的 URI，因为它指定了要向哪个 URL 提供令牌。
 
 注册应用程序后，可在“设置”下看到应用程序 ID（或客户端 ID）  ：
 
@@ -46,93 +46,91 @@ ms.locfileid: "67723204"
 
 ## <a name="grant-your-registered-app-permissions-to-azure-storage"></a>向 Azure 存储授予注册应用权限
 
-接下来，授予应用程序的权限来调用 Azure 存储 Api。 此步骤中使应用程序与 Azure AD 的 Azure 存储的请求进行授权。
+接下来，授予应用程序权限以调用 Azure 存储 API。 借助此步骤，应用程序可授权使用 Azure AD 请求 Azure 存储。
 
-1. 上**概述**已注册应用程序页，选择**查看 API 权限**。
-1. 在中**API 的权限**部分中，选择**添加权限**，然后选择**Microsoft Api**。
-1. 选择**Azure 存储**从显示的结果列表**请求 API 权限**窗格。
-1. 下**应用程序需要哪种类型的权限？** ，注意可用权限类型**委派权限**。 默认情况下，为你选择此选项。
-1. 在**选择权限**一部分**请求 API 权限**窗格中，选中的复选框旁边**user_impersonation**，然后单击**添加权限**。
+1. 在已注册的应用程序的“概述”页上，选择“查看 API 权限”。  
+1. 在 " **API 权限**" 部分中, 选择 "**添加权限**", 然后选择 " **Microsoft api**"。
+1. 从结果列表中选择 " **Azure 存储空间**", 以显示 "**请求 API 权限**" 窗格。
+1. 在“应用程序需要哪种类型的权限?”下，注意可用的权限类型是“委托的权限”。   默认已自动选择此选项。
+1. 在“请求 API 权限”窗格的“选择权限”部分，选中“user_impersonation”旁边的复选框，然后单击“添加权限”。    
 
-    ![存储的屏幕截图显示权限](media/storage-auth-aad-app/registered-app-permissions-1.png)
+    ![显示存储权限的屏幕截图](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-**API 权限**窗格现在显示在已注册 Azure AD 应用程序有权访问 Microsoft Graph 和 Azure 存储。 自动授予权限向 Microsoft Graph 时首先向 Azure AD 注册您的应用程序。
+现在, **API 权限**窗格显示已注册的 Azure AD 应用程序可访问 Microsoft Graph 和 Azure 存储。 首次向 Azure AD 注册应用时，系统会自动授予对 Microsoft Graph 的权限。
 
-![显示的屏幕截图注册应用权限](media/storage-auth-aad-app/registered-app-permissions-2.png)
+![显示注册应用权限的屏幕截图](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
 ## <a name="create-a-client-secret"></a>创建客户端机密
 
-在应用程序需要客户端机密以请求令牌时证明其身份。 若要添加的客户端机密，请按照下列步骤：
+请求令牌时，应用程序需要使用客户端机密来证明其身份。 若要添加客户端机密，请执行以下步骤：
 
-1. 导航到在 Azure 门户中的应用注册。
-1. 选择**证书和机密**设置。
-1. 下**客户端机密**，单击**新的客户端机密**若要创建新的机密。
-1. 提供的机密的说明，并选择所需的有效期间隔。
-1. 立即将新的机密的值复制到安全位置。 完整的值会向你显示一次。
+1. 在 Azure 门户中导航到你的应用注册。
+1. 选择“证书和机密”设置。 
+1. 在“客户端机密”下，单击“新建客户端机密”以创建新的机密。  
+1. 提供机密说明，并选择所需的过期时间间隔。
+1. 请马上将新机密的值复制到安全位置。 完整的值只会显示一次。
 
-    ![屏幕快照显示客户端机密](media/storage-auth-aad-app/client-secret.png)
+    ![显示客户端机密的屏幕截图](media/storage-auth-aad-app/client-secret.png)
 
-## <a name="client-libraries-for-token-acquisition"></a>客户端库来获取令牌
+## <a name="client-libraries-for-token-acquisition"></a>用于获取令牌的客户端库
 
-注册你的应用程序并授予它访问 Azure Blob 存储或队列存储中的数据的权限后，您可以将代码添加到你的应用程序安全主体进行身份验证并获取 OAuth 2.0 令牌。 若要进行身份验证和获取令牌，可以使用任一[Microsoft 标识平台身份验证库](../../active-directory/develop/reference-v2-libraries.md)或其他支持 OpenID Connect 1.0 的开放源代码库。 然后，应用程序可以使用访问令牌以授权对 Azure Blob 存储或队列存储的请求。
+注册应用程序并向其授予 Azure Blob 存储或队列存储中的数据的访问权限后，可将代码添加到应用程序，以便对安全主体进行身份验证并获取 OAuth 2.0 令牌。 若要进行身份验证并获取令牌，可以使用 [Microsoft 标识平台身份验证库](../../active-directory/develop/reference-v2-libraries.md)，或其他支持 OpenID Connect 1.0 的开源库。 然后，应用程序可以使用访问令牌来授权针对 Azure Blob 存储或队列存储发出的请求。
 
-为其支持获取令牌方案的列表，请参阅[方案](https://aka.ms/msal-net-scenarios)一部分[适用于.NET 的 Microsoft 身份验证库 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub 存储库。
+有关支持获取令牌的方案列表，请参阅[适用于 .NET 的 Microsoft 身份验证库 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub 存储库的[方案](https://aka.ms/msal-net-scenarios)部分。
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 Blob
-
-代码示例展示如何从 Azure AD 获取访问令牌。 访问令牌用于对指定用户进行身份验证，然后授权用于创建块 blob 的请求。 若要让此示例能够正常工作，请首先遵循上述部分列出的步骤。
-
-若要请求令牌，将需要你的应用注册中的以下值：
-
-- Azure AD 域的名称。 检索此值从**概述**Azure Active Directory 的页。
-- 租户 （或目录） 的 id。 检索此值从**概述**的应用程序注册页。
-- 客户端 （或应用程序） id。 检索此值从**概述**的应用程序注册页。
-- 客户端重定向 URI。 检索此值从**身份验证**应用注册设置。
-- 客户端机密的值。 从到的以前复制的位置检索此值。
-
-### <a name="well-known-values-for-authentication-with-azure-ad"></a>使用 Azure AD 进行身份验证的已知值
+## <a name="well-known-values-for-authentication-with-azure-ad"></a>使用 Azure AD 进行身份验证的已知值
 
 若要使用 Azure AD 验证安全主体的身份，需要在代码中包含一些已知值。
 
-#### <a name="azure-ad-authority"></a>Azure AD 颁发机构
+### <a name="azure-ad-authority"></a>Azure AD 颁发机构
 
 对于 Microsoft 公有云，基本 Azure AD 颁发机构如下，其中 *tenant-id* 是 Active Directory 租户 ID（或目录 ID）：
 
 `https://login.microsoftonline.com/<tenant-id>/`
 
-租户 ID 用于标识要用于身份验证的 Azure AD 租户。 它也称为目录 id。 若要检索租户 ID，请导航到**概述**在 Azure 门户中，应用注册页上，并从该处复制值。
+租户 ID 用于标识要用于身份验证的 Azure AD 租户。 它也称为目录 ID。 若要检索租户 ID，请在 Azure 门户中导航到应用注册的“概述”页，并从中复制该值。 
 
-#### <a name="storage-resource-id"></a>存储资源 ID
+### <a name="azure-storage-resource-id"></a>Azure 存储资源 ID
 
-使用 Azure 存储资源 ID 来获取令牌以授权对 Azure 存储请求：
+[!INCLUDE [storage-resource-id-include](../../../includes/storage-resource-id-include.md)]
 
-`https://storage.azure.com/`
+## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 Blob
+
+代码示例展示如何从 Azure AD 获取访问令牌。 访问令牌用于对指定用户进行身份验证，然后授权用于创建块 blob 的请求。 若要让此示例能够正常工作，请首先遵循上述部分列出的步骤。
+
+若要请求令牌，需要获取应用注册中的以下值：
+
+- Azure AD 域的名称。 可从 Azure Active Directory 的“概述”页检索此值。 
+- 租户（或目录）ID。 可从应用注册的“概述”页检索此值。 
+- 客户端（或应用程序）ID。 可从应用注册的“概述”页检索此值。 
+- 客户端重定向 URI。 可应用注册的“身份验证”设置检索此值。 
+- 客户端机密的值。 可从先前复制到的位置检索此值。
 
 ### <a name="create-a-storage-account-and-container"></a>创建存储帐户和容器
 
-若要运行的代码示例，请创建 Azure Active Directory 与位于同一订阅内的存储帐户。 然后创建该存储帐户内的容器。 示例代码将在此容器中创建块 blob。
+若要运行代码示例，请在 Azure Active Directory 所在的同一订阅中创建一个存储帐户。 然后在该存储帐户中创建一个容器。 示例代码将在此容器中创建块 Blob。
 
-接下来，显式分配**存储 Blob 数据参与者**示例代码将运行的用户帐户的角色。 有关如何分配此角色在 Azure 门户中的说明，请参阅[授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问](storage-auth-aad-rbac-portal.md)。
+接下来，将“存储 Blob 数据参与者”角色显式分配到用于运行示例代码的用户帐户。  若要了解如何在 Azure 门户中分配此角色的说明，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](storage-auth-aad-rbac-portal.md)。
 
 > [!NOTE]
-> 创建 Azure 存储帐户时，您不会自动分配权限来访问通过 Azure AD 数据。 你必须为自己显式分配一个用于 Azure 存储的 RBAC 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
+> 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 你必须为自己显式分配一个用于 Azure 存储的 RBAC 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
 
-### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>创建的 web 应用程序授予对 Blob 存储与 Azure AD 访问权限
+### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>创建一个授权使用 Azure AD 访问 Blob 存储的 Web 应用程序
 
-当你的应用程序访问 Azure 存储时，它 does 等代表该用户的这意味着，使用已登录用户的权限访问 blob 或队列资源。 若要尝试此代码示例，您需要的 web 应用程序会提示用户使用 Azure AD 标识进行登录。 您可以创建您自己，或使用由 Microsoft 提供的示例应用程序。
+当应用程序访问 Azure 存储时，它是在代表用户进行访问，这意味着，这是在使用已登录用户的权限访问 blob 或队列资源。 若要尝试运行此代码示例，需要提供一个可以提示用户使用 Azure AD 标识登录的 Web 应用程序。 你可以创建自己的, 或使用 Microsoft 提供的示例应用程序。
 
-已完成的示例 web 应用程序获取令牌，并使用它来创建在 Azure 存储中的 blob 已接入[GitHub](https://aka.ms/aadstorage)。 检查并运行已完成的示例可能有助于你了解的代码示例。 有关如何运行已完成的示例中，有关说明，请参阅一节[视图并运行已完成的示例](#view-and-run-the-completed-sample)。
+[GitHub](https://aka.ms/aadstorage) 上提供了一个已完成的示例 Web 应用程序，该应用程序可获取令牌，并使用该令牌在 Azure 存储中创建 Blob。 查看并运行这个已完成的示例可能有助于理解代码示例。 有关如何运行已完成的示例的说明，请参阅标题为[查看和运行已完成的示例](#view-and-run-the-completed-sample)的部分。
 
 #### <a name="add-references-and-using-statements"></a>添加引用和 using 语句  
 
-从 Visual Studio 中，安装 Azure 存储客户端库。 在“工具”菜单中，依次选择“NuGet 包管理器”和“包管理器控制台”    。 控制台窗口中，以安装用于.NET 的 Azure 存储客户端库中的所需的包中键入以下命令：
+在 Visual Studio 中安装 Azure 存储客户端库。 在“工具”菜单中，依次选择“NuGet 包管理器”和“包管理器控制台”    。 在控制台窗口中键入以下命令，以安装适用于 .NET 的 Azure 存储客户端库中的所需包：
 
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
 Install-Package Microsoft.Azure.Storage.Common
 ```
 
-接下来，将以下代码添加到 HomeController.cs 文件 using 语句：
+接下来，将以下 using 语句添加到 HomeController.cs 文件：
 
 ```csharp
 using Microsoft.Identity.Client; //MSAL library for getting the access token
@@ -142,7 +140,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 #### <a name="create-a-block-blob"></a>创建块 Blob
 
-添加下面的代码段，若要创建块 blob:
+添加以下代码片段以创建块 Blob：
 
 ```csharp
 private static async Task<string> CreateBlob(string accessToken)
@@ -162,9 +160,9 @@ private static async Task<string> CreateBlob(string accessToken)
 ```
 
 > [!NOTE]
-> 若要授权使用 OAuth 2.0 令牌的 blob 和队列操作，必须使用 HTTPS。
+> 若要授权使用 OAuth 2.0 令牌执行 Blob 和队列操作，必须使用 HTTPS。
 
-在上面的示例中，.NET 客户端库处理请求的授权以创建块 blob。 对于其他语言的 azure 存储客户端库还处理为您请求的授权。 但是，如果正在使用 REST API 通过 OAuth 标记调用 Azure 存储操作，之后将需要使用 OAuth 标记对请求进行授权。
+在上面的示例中，.NET 客户端库处理请求的授权以创建块 blob。 其他语言的 Azure 存储客户端库也可以自动处理请求授权。 但是，如果正在使用 REST API 通过 OAuth 标记调用 Azure 存储操作，之后将需要使用 OAuth 标记对请求进行授权。
 
 若要使用 OAuth 访问令牌调用 Blob 和队列服务操作，请使用“持有者令牌”方案在“授权”标头中传递访问令牌，并指定服务版本 2017-11-09 或更高版本，如以下示例所示   ：
 
@@ -177,9 +175,11 @@ Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 
 #### <a name="get-an-oauth-token-from-azure-ad"></a>从 Azure AD 获取 OAuth 令牌
 
-接下来，添加从 Azure AD 请求令牌的方法。 您请求的令牌将代表用户，并且我们将使用 GetTokenOnBehalfOfUser 方法。
+接下来, 添加一个方法, 该方法从 Azure AD 代表用户请求令牌。 此方法定义要为其授予权限的作用域。 有关权限和范围的详细信息, 请参阅[Microsoft 标识平台终结点中的权限和同意](../../active-directory/develop/v2-permissions-and-consent.md)。
 
-请记住，如果最近已登录，并将请求的令牌`storage.azure.com`资源，你将需要为用户提供一个用户界面，用户可以同意代表其执行此操作。 为了便于您需要捕获`MsalUiRequiredException`并将该功能来请求用户同意的情况下，添加下面的示例中所示：
+使用资源 ID 构造要为其获取令牌的范围。 该示例通过将资源 ID 与内置`user_impersonation`作用域结合使用来构造作用域, 这表示该令牌是代表用户请求的。
+
+请记住, 你可能需要向用户提供一个接口, 该接口允许用户同意代表他们请求令牌。 在需要同意时, 此示例将捕获**MsalUiRequiredException** , 并调用另一个方法来促进同意请求:
 
 ```csharp
 public async Task<IActionResult> Blob()
@@ -194,26 +194,30 @@ public async Task<IActionResult> Blob()
     }
     catch (MsalUiRequiredException ex)
     {
-        AuthenticationProperties properties = BuildAuthenticationPropertiesForIncrementalConsent(scopes, ex);
+        AuthenticationProperties properties =
+            BuildAuthenticationPropertiesForIncrementalConsent(scopes, ex);
         return Challenge(properties);
     }
 }
 ```
 
-许可是指用户授权应用程序代表他们访问受保护资源的过程。 Microsoft 标识平台 2.0 支持增量许可，这意味着安全主体可以最初请求最小权限集，并根据需要随着时间的推移添加权限。 当你的代码请求访问令牌时，指定的应用在任何给定时间按中所需的权限作用域`scope`参数。 有关增量许可的详细信息，请参阅一节**增量许可和动态许可**中[更新到 Microsoft 标识平台 (v2.0) 的原因？](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)。
+许可是指用户授权应用程序代表他们访问受保护资源的过程。 Microsoft 标识平台 2.0 支持增量许可，这意味着，安全主体最初可以请求极少量的一组权限，以后可按需添加权限。 当代码请求访问令牌时，请在 `scope` 参数中指定应用在任意给定时间所需的权限范围。 有关增量许可的详细信息，请参阅[为何要更新到 Microsoft 标识平台 (v2.0)？](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)中的“增量许可和动态许可”部分。 
 
-以下方法构造请求增量许可的身份验证属性：
+以下方法将会构造用于请求增量许可的身份验证属性：
 
 ```csharp
-private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes, MsalUiRequiredException ex)
+private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes,
+                                                                                    MsalUiRequiredException ex)
 {
     AuthenticationProperties properties = new AuthenticationProperties();
 
-    // Set the scopes, including the scopes that ADAL.NET / MSAL.NET need for the Token cache.
+    // Set the scopes, including the scopes that ADAL.NET or MSAL.NET need for the Token cache.
     string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
-    properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope, scopes.Union(additionalBuildInScopes).ToList());
+    properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
+                                                 scopes.Union(additionalBuildInScopes).ToList());
 
-    // Attempt to set the login_hint so that the logged-in user is not presented with an account selection dialog.
+    // Attempt to set the login_hint so that the logged-in user is not presented
+    // with an account selection dialog.
     string loginHint = HttpContext.User.GetLoginHint();
     if (!string.IsNullOrWhiteSpace(loginHint))
     {
@@ -235,11 +239,11 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ## <a name="view-and-run-the-completed-sample"></a>查看和运行已完成的示例
 
-若要运行示例应用程序，首先克隆或下载它从[GitHub](https://aka.ms/aadstorage)。 然后更新应用程序，如以下各节中所述。
+若要运行示例应用程序，请先从 [GitHub](https://github.com/Azure-Samples/storage-dotnet-azure-ad-msal) 克隆或下载它。 然后根据以下部分所述更新应用程序。
 
-### <a name="provide-values-in-the-settings-file"></a>设置文件中提供值
+### <a name="provide-values-in-the-settings-file"></a>在设置文件中提供值
 
-接下来，更新*appsettings.json*文件使用你自己的值，按如下所示：
+接下来，使用自己的值更新 *appsettings.json* 文件，如下所示：
 
 ```json
 {
@@ -265,7 +269,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ### <a name="update-the-storage-account-and-container-name"></a>更新存储帐户和容器名称
 
-在中*HomeController.cs*文件中，更新引用要使用的存储帐户和容器名称的块 blob 的 URI:
+在 *HomeController.cs* 文件中，更新引用块 Blob 的 URI，以使用存储帐户和容器的名称：
 
 ```csharp
 CloudBlockBlob blob = new CloudBlockBlob(
@@ -275,26 +279,26 @@ CloudBlockBlob blob = new CloudBlockBlob(
 
 ### <a name="enable-implicit-grant-flow"></a>启用隐式授权流
 
-若要运行示例，可能需要配置你的应用程序注册的隐式授权流。 请执行以下步骤：
+若要运行该示例，可能需要为应用注册配置隐式授权流。 请执行以下步骤：
 
-1. 导航到在 Azure 门户中的应用注册。
-1. 在管理部分中，选择**身份验证**设置。
-1. 下**高级设置**，在**隐式授权**部分中，选择复选框以启用访问令牌和 ID 令牌中，在下图中所示：
+1. 在 Azure 门户中导航到你的应用注册。
+1. 在“管理”部分，选择“身份验证”设置。 
+1. 在“隐式授权”部分中的“高级设置”下，选中相应的复选框以启用访问令牌和 ID 令牌，如下图所示：  
 
-    ![显示如何启用隐式授权流的设置的屏幕截图](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
+    ![显示如何启用隐式授权流设置的屏幕截图](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
 
-### <a name="update-the-port-used-by-localhost"></a>更新本地主机使用的端口
+### <a name="update-the-port-used-by-localhost"></a>更新 localhost 使用的端口
 
-运行示例时，可能会发现需要更新要使用的应用注册中指定 URI 的重定向*localhost*在运行时分配端口。 若要更新的重定向 URI 使用分配的端口，请按照下列步骤：
+运行该示例时，你可能会发现，需要更新应用注册中指定重定向 URI，以使用在运行时分配的 *localhost* 端口。 若要更新重定向 URI 以使用分配的端口，请执行以下步骤：
 
-1. 导航到在 Azure 门户中的应用注册。
-1. 在管理部分中，选择**身份验证**设置。
-1. 下**重定向 Uri**，编辑端口以匹配的示例应用程序，使用下图中所示：
+1. 在 Azure 门户中导航到你的应用注册。
+1. 在“管理”部分，选择“身份验证”设置。 
+1. 在“重定向 URI”下编辑端口，使之与示例应用程序使用的端口相匹配，如下图所示： 
 
-    ![显示的屏幕截图的应用程序注册重定向 Uri](media/storage-auth-aad-app/redirect-uri.png)
+    ![显示应用注册的重定向 URI 的屏幕截图](media/storage-auth-aad-app/redirect-uri.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 Microsoft 标识平台的详细信息，请参阅[Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)。
+- 若要详细了解 Microsoft 标识平台，请参阅 [Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)。
 - 若要详细了解 Azure 存储中的 RBAC 角色，请参阅[使用 RBAC 管理存储数据的访问权限](storage-auth-aad-rbac.md)。
-- 若要了解如何使用适用于使用 Azure 存储的 Azure 资源管理的标识，请参阅[验证对 blob 和队列与 Azure Active Directory 和管理的标识访问 Azure 资源的](storage-auth-aad-msi.md)。
+- 若要了解如何在 azure 存储中使用 Azure 资源的托管标识, 请参阅使用[Azure 资源的 Azure Active Directory 和托管标识对 blob 和队列的访问权限进行身份验证](storage-auth-aad-msi.md)。

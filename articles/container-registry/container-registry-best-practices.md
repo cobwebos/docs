@@ -3,16 +3,17 @@ title: Azure 容器注册表中的最佳做法
 description: 通过遵循这些最佳做法，了解如何有效使用 Azure 容器注册表。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: danlep
-ms.openlocfilehash: 2cf64c7c4f99a57c4a4a6cf03e68e8af803ceca9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1ab010300d3f7bec3aeb5969a9a09fa9ee9a6a5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787338"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309770"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure 容器注册表的最佳做法
 
@@ -50,11 +51,11 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 虽然可以试用特定的主机类型（如 Azure 容器实例），但完成操作后可能会删除容器实例。 但是，你可能还想保留推送到 Azure 容器注册表的映像集合。 通过将注册表置于其自己的资源组中，可以最小化删除容器实例资源组时在注册表中意外删除映像集合的风险。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 Azure 容器注册表的身份验证有两种主要方案：单个身份验证和服务（或“无外设”）身份验证。 下表提供了这两个方案的简要概述，以及每个方案的推荐身份验证方法。
 
-| Type | 示例方案 | 推荐的方法 |
+| 类型 | 示例方案 | 推荐的方法 |
 |---|---|---|
 | 单个标识 | 开发者从/向其开发计算机推送映像。 | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | 无外设/服务标识 | 用户未直接参与的生成和部署管道。 | [服务主体](container-registry-authentication.md#service-principal) |
@@ -63,9 +64,9 @@ Azure 容器注册表的身份验证有两种主要方案：单个身份验证�
 
 ## <a name="manage-registry-size"></a>管理注册表大小
 
-每个[容器注册表 SKU][container-registry-skus] 的存储约束旨在与典型方案保持一致：**基本** SKU 适用于入门，**标准** SKU 适用于大部分生产应用程序，**高级** SKU 适用于超大规模提升性能和[异地复制][container-registry-geo-replication]。 在注册表的整个生命周期中，应定期删除未使用的内容，管理注册表大小。
+每个[容器注册表 SKU][container-registry-skus]的存储约束旨在与典型方案保持一致:**基本** **入门, 适用**于大部分生产应用程序 **, 适用于**超大规模性能和[异地复制][container-registry-geo-replication]。 在注册表的整个生命周期中，应定期删除未使用的内容，管理注册表大小。
 
-使用 Azure CLI 命令 [az acr show-usage][az-acr-show-usage] 显示注册表的当前大小：
+使用 Azure CLI 命令[az acr show][az-acr-show-usage] : 显示注册表的当前大小:
 
 ```console
 $ az acr show-usage --resource-group myResourceGroup --name myregistry --output table

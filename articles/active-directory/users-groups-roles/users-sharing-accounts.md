@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 902696e35a2447b67dab74b73794b80ad5e26511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5638710c4c01d361d108cfef69869fad1a7dad1a
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083737"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304371"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
 ## <a name="overview"></a>概述
@@ -67,7 +67,6 @@ Azure AD 支持任何 Enterprise Mobility Suite (EMS)、高级或基本许可用
 * 添加应用程序[应用库](https://azure.microsoft.com/marketplace/active-directory/)或[自定义应用程序](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
 * 将应用程序配置为使用密码单一登录 (SSO)
 * 使用[基于组的分配](groups-saasapps.md)，并选择输入共享凭据的选项
-* 可选：在某些应用程序（例如 Facebook、Twitter 或 LinkedIn）中，可启用 [Azure AD 自动轮换密码](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)选项
 
 还可使用多重身份验证 (MFA) 提高共享帐户的安全性（深入了解[使用 Azure AD 保护应用程序](../authentication/concept-mfa-whichversion.md)），并可使用 [Azure AD 自助服务](groups-self-service-management.md)组管理来委派有关谁有权访问应用程序的管理权。
 

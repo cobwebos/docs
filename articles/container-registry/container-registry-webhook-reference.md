@@ -3,16 +3,17 @@ title: Azure 容器注册表 Webhook 架构参考
 description: Azure 容器注册表的 Webhook 请求 JSON 有效负载参考。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: danlep
-ms.openlocfilehash: 4c0845b9cf5194ecbd0ab813997e17e070840f44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcdee2be92f2a3052e2ebbfaab3a2f9cb96e0125
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61331335"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311603"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure 容器注册表 Webhook 参考
 
@@ -40,7 +41,7 @@ ms.locfileid: "61331335"
 
 ### <a name="push-event-payload"></a>Push 事件负载
 
-|元素|Type|描述|
+|元素|类型|描述|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -50,7 +51,7 @@ ms.locfileid: "61331335"
 
 ### <a name="target"></a>target
 
-|元素|Type|描述|
+|元素|type|描述|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。 与 Length 字段相同。|
@@ -61,7 +62,7 @@ ms.locfileid: "61331335"
 
 ### <a name="request"></a>request
 
-|元素|Type|描述|
+|元素|类型|描述|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
@@ -104,7 +105,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="chart-push-event-payload"></a>图表推送事件有效负载
 
-|元素|Type|描述|
+|元素|type|描述|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -113,7 +114,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="helm_target"></a>target
 
-|元素|Type|描述|
+|元素|类型|描述|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。|
@@ -154,7 +155,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ### <a name="delete-event-payload"></a>Delete 事件负载
 
-|元素|Type|描述|
+|元素|type|描述|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -164,7 +165,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ### <a name="delete_target"></a> 目标
 
-|元素|Type|描述|
+|元素|type|描述|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
@@ -172,7 +173,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ### <a name="delete_request"></a> 请求
 
-|元素|Type|描述|
+|元素|类型|描述|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
@@ -216,7 +217,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 
 ### <a name="chart-delete-event-payload"></a>图表删除事件有效负载
 
-|元素|Type|描述|
+|元素|类型|描述|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -225,7 +226,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 
 ### <a name="chart_delete_target"></a> 目标
 
-|元素|Type|描述|
+|元素|type|描述|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。|

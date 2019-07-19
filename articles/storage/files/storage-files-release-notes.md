@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 6/27/2019
+ms.date: 7/12/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: ba7b8ae5c7e68c22b83583de6cd0b84f621d4b25
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 5a2ec72f835b720e0c760069b58ef8f092aedcb2
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786669"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875827"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,13 +25,14 @@ ms.locfileid: "67786669"
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| V7 发布版- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19日日 | [外部测试](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
-| 2019 年 6 月更新汇总- [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019 年 6 月 27日日 | 支持（建议的版本） |
-| 2019 年 6 月更新汇总- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13日日 | 支持 |
-| 2019 年 5 更新汇总- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日 | 支持 |
-| V6 发布版- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019 年 4 月 21日日 | 支持 |
-| 2019 年 4 月更新汇总- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019 年 4 月 4日日 | 支持 |
-| 2019 年 3 月更新汇总- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019 年 3 月 7日日 | 支持 |
+| 2019年7月更新汇总- [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019年7月12日 | 支持-[试验](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
+| V7 版本- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019年6月19日 | 支持 |
+| 2019年6月更新汇总- [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019年6月27日 | 支持 |
+| 2019年6月更新汇总- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13 日 | 支持 |
+| 5月2019更新汇总- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日 | 支持 |
+| V6 版本- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019年4月21日 | 支持 |
+| 2019年4月更新汇总- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019年4月4日 | 支持 |
+| 2019年3月更新汇总- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019年3月7日 | 支持 |
 | V5 版本 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | 支持 |
 | 2019 年 1 月更新汇总 - [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 2019 年 1 月 14 日 | 支持 |
 | 2018 年 12 月更新汇总 - [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 2018 年 12 月 10 日 | 支持 |
@@ -45,21 +46,30 @@ ms.locfileid: "67786669"
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
-## <a name="agent-version-7000"></a>代理版本 7.0.0.0
-以下发行说明适用于版本 7.0.0.0 Azure 文件同步代理 （发布 2019 年 6 月 19 日）。
+## <a name="agent-version-7100"></a>代理版本7.1.0。0
+以下发行说明适用于2019年7月12日发布的 Azure 文件同步代理的版本7.1.0.0。 除了为版本7.0.0.0 列出的发行说明外, 还提供了这些说明。
+
+此版本修复的问题列表：  
+- 在 Windows Server 2012 R2 上访问或浏览 SMB 上的服务器终结点位置速度缓慢。 
+- 安装 Azure 文件同步 v6 代理后增加了 CPU 使用率。
+- 云分层遥测改进。
+- 针对云分层和同步的其他可靠性改进。
+
+## <a name="agent-version-7000"></a>代理版本7.0.0。0
+以下发行说明适用于 Azure 文件同步代理的版本 7.0.0.0 (发布时间为2019年6月19日)。
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>改进和已解决的问题
 
-- 对文件共享大小较大的支持
-    - 使用更大的 Azure 文件共享的预览版，我们正在增加文件同步也支持的限制。 在此第一个步骤中，Azure 文件同步现在支持注册到单一的 25 TB 和 50million 文件同步命名空间。 若要申请大型文件共享预览，请填写此窗体 https://aka.ms/azurefilesatscalesurvey 。 
-- 改进了的 Azure 备份文件级还原
-    - 使用 Azure 备份还原单个文件现在会检测到并更快地同步到服务器终结点。
-- 改进了的云分层召回 cmdlet 可靠性 
-    - 云分层召回 cmdlet (Invoke StorageSyncFileRecall) 现在支持每个文件重试次数和重试延迟时间，类似于 robocopy。
-- 仅支持 TLS 1.2 （TLS 1.0 和 1.1 已禁用）
-    - Azure 文件同步现在支持仅在具有 TLS 1.0 和 1.1 已禁用服务器上使用 TLS 1.2。 在此项改进之前, 服务器注册会失败，如果在服务器上已禁用 TLS 1.0 和 1.1。
-- 其他性能和可靠性改进的同步和云分层
-    - 有几个可靠性和性能改进，在此版本中。 以进行云分层更高效和 Azure 文件同步与整个工作更好地在这些情况下具有带宽限制设置计划时，其中一些为目标。
+- 支持较大的文件共享大小
+    - 预览更大的 Azure 文件共享, 我们也增加了对文件同步的支持限制。 在第一步中, Azure 文件同步现在支持单个同步命名空间中的25TB 和50million 文件。 若要申请大型文件共享预览, 请填写此窗体 https://aka.ms/azurefilesatscalesurvey 。 
+- 改进了 Azure 备份文件级还原
+    - 现在会检测使用 Azure 备份还原的单个文件并将其同步到服务器终结点。
+- 提高了云分层召回 cmdlet 的可靠性 
+    - 云分层召回 cmdlet (StorageSyncFileRecall) 现在支持每个文件重试计数和重试延迟, 这与 robocopy 类似。
+- 仅支持 TLS 1.2 (禁用 TLS 1.0 和 1.1)
+    - Azure 文件同步现在仅支持在禁用了 TLS 1.0 和1.1 的服务器上使用 TLS 1.2。 在此改进之前, 如果服务器上禁用了 TLS 1.0 和 1.1, 服务器注册将失败。
+- 同步和云分层的其他性能和可靠性改进
+    - 在此版本中, 有几个可靠性和性能改进。 其中一些功能旨在使云分层更高效, 并在这些情况下更好地 Azure 文件同步。
 
 ### <a name="evaluation-tool"></a>评估工具
 在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)部分。 
@@ -68,7 +78,7 @@ ms.locfileid: "67786669"
 若要详细了解如何使用 Windows Server 安装和配置 Azure 文件同步代理，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)和[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 
 - 代理安装包必须使用提升的（管理员）权限进行安装。
-- 代理不支持 Nano Server 部署选项。
+- Nano Server 部署选项不支持代理。
 - 只有 Windows Server 2019、Windows Server 2016 和 Windows Server 2012 R2 上支持此代理。
 - 代理需要至少 2 GiB 的内存。 如果服务器在启用了动态内存的虚拟机中运行，则至少应当为该 VM 配置 2048 MiB 内存。
 - 存储同步代理 (FileSyncSvc) 服务不支持进行了系统卷信息 (SVI) 目录压缩的卷上的服务器终结点。 此配置会导致意外结果。
@@ -115,48 +125,48 @@ ms.locfileid: "67786669"
 - 如果使用 Robocopy 将分层的文件复制到另一位置，生成的文件不会分层。 可能会对脱机属性进行设置，因为 Robocopy 会在复制操作中错误地包括该属性。
 - 使用 robocopy 复制文件时，可使用 /MIR 选项保留文件时间戳。 这将确保较旧的文件比最近访问的文件更早分层。
 
-## <a name="agent-version-6300"></a>代理版本 6.3.0.0
-以下发行说明仅适用于 2019 年 6 月 27 日发布的 Azure 文件同步代理的版本 6.3.0.0。 这些说明是版本 6.0.0.0 列出的发行说明。
+## <a name="agent-version-6300"></a>代理版本6.3.0。0
+以下发行说明适用于2019年6月27日发布的 Azure 文件同步代理的版本6.3.0.0。 除了为版本6.0.0.0 列出的发行说明外, 还提供了这些说明。
 
 此版本修复的问题列表：  
-- 访问或浏览基于 SMB 的服务器终结点位置是 Windows Server 2012 R2 上速度缓慢 
-- 安装 Azure 文件同步 v6 代理后增加的 CPU 使用率
+- Windows Server 2012 R2 上的 Windows Server endpoint location 访问或浏览 SMB 速度缓慢 
+- 安装 Azure 文件同步 v6 代理后增加了 CPU 使用率
 - 云分层遥测改进
 
-## <a name="agent-version-6200"></a>代理版本 6.2.0.0
-以下发行说明仅适用于 2019 年 6 月 13 日发布的 Azure 文件同步代理的版本 6.2.0.0。 这些说明是版本 6.0.0.0 列出的发行说明。
+## <a name="agent-version-6200"></a>代理版本6.2.0。0
+以下发行说明适用于2019年6月13日发布的 Azure 文件同步代理的版本6.2.0.0。 除了为版本6.0.0.0 列出的发行说明外, 还提供了这些说明。
 
 此版本修复的问题列表：  
-- 创建服务器终结点之后, CPU 使用率较高时，可能发生背景召回率将文件下载到服务器
-- 同步和云分层操作可能会因错误 ECS_E_SERVER_CREDENTIAL_NEEDED 由于令牌过期
-- 如果要下载该文件的 URL 包含保留的字符撤回文件可能会失败 
+- 创建服务器终结点后, 当后台回调将文件下载到服务器时, 可能会出现高 CPU 使用率
+- 由于令牌过期, 同步和云分层操作可能会失败并出现错误 ECS_E_SERVER_CREDENTIAL_NEEDED
+- 如果下载文件的 URL 包含保留字符, 则撤回文件可能会失败 
 
-## <a name="agent-version-6100"></a>代理版本 6.1.0.0
-以下发行说明仅适用于发布 2019 年 5 月 6 日，Azure 文件同步代理的版本 6.1.0.0。 这些说明是版本 6.0.0.0 列出的发行说明。
+## <a name="agent-version-6100"></a>代理版本6.1.0。0
+以下发行说明适用于2019年5月6日发布的 Azure 文件同步代理的版本6.1.0.0。 除了为版本6.0.0.0 列出的发行说明外, 还提供了这些说明。
 
 此版本修复的问题列表：  
-- Windows Admin Center 无法显示有 Azure 文件同步代理版本 6.0 安装的服务器上的代理版本和服务器终结点配置。
+- Windows 管理中心无法显示安装了 Azure 文件同步代理版本6.0 的服务器上的代理版本和服务器终结点配置。
 
-## <a name="agent-version-6000"></a>代理版本 6.0.0.0
-以下发行说明仅适用于 （发布 2019 年 4 月 22 日） 的 Azure 文件同步代理的版本为 6.0.0.0。
+## <a name="agent-version-6000"></a>代理版本6.0.0。0
+以下发行说明适用于 Azure 文件同步代理的版本 6.0.0.0 (发布于2019年4月22日)。
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>改进和已解决的问题
 
 - 代理自动更新支持
-  - 我们已经收到你的反馈，并将自动更新功能添加到 Azure 文件同步服务器代理。 有关详细信息，请参阅[Azure 文件同步代理更新策略](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#azure-file-sync-agent-update-policy)。
-- 支持 Azure 文件共享的 Acl
-  - Azure 文件同步始终支持同步服务器终结点之间的 Acl，而 Acl 不已同步到云终结点 （Azure 文件共享）。 此版本添加了对服务器和云终结点之间的同步 Acl 的支持。
+  - 我们已听取你的反馈, 并已将自动更新功能添加到 Azure 文件同步服务器代理中。 有关详细信息, 请参阅[Azure 文件同步代理更新策略](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#azure-file-sync-agent-update-policy)。
+- 支持 Azure 文件共享 Acl
+  - Azure 文件同步始终支持在服务器终结点之间同步 Acl, 但 Acl 未同步到云终结点 (Azure 文件共享)。 此版本添加了对在服务器和云终结点之间同步 Acl 的支持。
 - 并行上传和下载服务器终结点的同步会话 
-  - 服务器终结点现在支持上传和下载一次文件。 没有更多等待下载完成这样的文件上载到 Azure 文件共享。 
-- 新的云分层 cmdlet，以获取卷和分层状态
-  - 现在可以使用两个新的服务器本地 PowerShell cmdlet 来获取云分层和文件召回信息。 它们使两个事件通道在服务器上的日志记录信息可用：
-    - Get StorageSyncFileTieringResult 将为什么列出的所有文件和它们尚未分层的路径和报表的原因。
-    - Get StorageSyncFileRecallResult 报告文件召回的所有事件。 其中列出了每个文件召回以及它的路径以及成功或错误的召回。
-  - 默认情况下同时事件通道可以存储最多 1 MB 每个 – 你可以增加报告通过增加事件通道大小的文件的数量。
-- 对 FIPS 模式的支持
+  - 服务器终结点现在支持同时上载和下载文件。 不再等待下载完成, 因此文件可以上传到 Azure 文件共享。 
+- 用于获取卷和分层状态的新云分层 cmdlet
+  - 现在可以使用两个新的服务器本地 PowerShell cmdlet 来获取云分层和文件撤回信息。 它们使服务器上的两个事件通道中的日志记录信息可用:
+    - StorageSyncFileTieringResult 将列出尚未进行分层的所有文件及其路径, 并报告原因。
+    - StorageSyncFileRecallResult 报告所有文件撤回事件。 它列出回调的每个文件及其路径以及该回调的成功或错误。
+  - 默认情况下, 两个事件通道最多可存储1MB –可以通过增加事件通道大小增加报告的文件量。
+- 支持 FIPS 模式
   - Azure 文件同步现在支持在安装了 Azure 文件同步代理的服务器上启用 FIPS 模式。
-    - 在启用 FIPS 模式下在服务器上的之前, 安装 Azure 文件同步代理和[PackageManagement 模块](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2)在服务器上。 如果在服务器上已启用 FIPS[手动下载](https://docs.microsoft.com/powershell/gallery/how-to/working-with-packages/manual-download) [PackageManagement 模块](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2)到您的服务器。
-- 有关其他可靠性改进云分层和同步
+    - 在服务器上启用 FIPS 模式之前, 请在服务器上安装 Azure 文件同步 agent 和[PackageManagement 模块](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2)。 如果已在服务器上启用了 FIPS, 请手动将[PackageManagement 模块](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2)[下载](https://docs.microsoft.com/powershell/gallery/how-to/working-with-packages/manual-download)到你的服务器。
+- 云分层和同步的其他可靠性改进
 
 ### <a name="evaluation-tool"></a>评估工具
 在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)部分。 
@@ -165,7 +175,7 @@ ms.locfileid: "67786669"
 若要详细了解如何使用 Windows Server 安装和配置 Azure 文件同步代理，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)和[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 
 - 代理安装包必须使用提升的（管理员）权限进行安装。
-- 代理不支持 Nano Server 部署选项。
+- Nano Server 部署选项不支持代理。
 - 只有 Windows Server 2019、Windows Server 2016 和 Windows Server 2012 R2 上支持此代理。
 - 代理需要至少 2 GiB 的内存。 如果服务器在启用了动态内存的虚拟机中运行，则至少应当为该 VM 配置 2048 MiB 内存。
 - 存储同步代理 (FileSyncSvc) 服务不支持进行了系统卷信息 (SVI) 目录压缩的卷上的服务器终结点。 此配置会导致意外结果。
@@ -213,21 +223,21 @@ ms.locfileid: "67786669"
 - 使用 robocopy 复制文件时，可使用 /MIR 选项保留文件时间戳。 这将确保较旧的文件比最近访问的文件更早分层。
 - 从 SMB 客户端查看文件属性时，脱机属性可能会显示为设置不正确，因为对文件元数据进行了 SMB 缓存。
 
-## <a name="agent-version-5200"></a>代理版本 5.2.0.0
-以下发行说明仅适用于 2019 年 4 月 4 日发布的 Azure 文件同步代理的版本 5.2.0.0。 这些说明是版本 5.0.2.0 列出的发行说明。
+## <a name="agent-version-5200"></a>代理版本5.2.0。0
+以下发行说明适用于2019年4月4日发布的 Azure 文件同步代理的版本5.2.0.0。 除了为版本5.0.2.0 列出的发行说明外, 还提供了这些说明。
 
 此版本修复的问题列表：  
-- 脱机数据传输和数据传输的可靠性改进恢复功能
+- 脱机数据传输和数据传输恢复功能的可靠性改进
 - 同步遥测改进
 
-## <a name="agent-version-5100"></a>代理版本 5.1.0.0
-以下发行说明仅适用于 2019 年 3 月 7 日发布的 Azure 文件同步代理的版本 5.1.0.0。 这些说明是版本 5.0.2.0 列出的发行说明。
+## <a name="agent-version-5100"></a>代理版本5.1.0。0
+以下发行说明适用于2019年3月7日发布的 Azure 文件同步代理的版本5.1.0.0。 除了为版本5.0.2.0 列出的发行说明外, 还提供了这些说明。
 
 此版本修复的问题列表：  
-- 文件可能无法进行同步错误 0x80c8031d (ECS_E_CONCURRENCY_CHECK_FAILED)，如果服务器上失败的更改枚举
-- 如果同步会话或文件收到错误 0x80072f78 (WININET_E_INVALID_SERVER_RESPONSE) 时，同步将立即重试该操作
-- 文件可能会失败，错误 0x80c80203 (ECS_E_SYNC_INVALID_STAGED_FILE) 同步
-- 重新调用文件时，可能会发生高内存使用率
+- 如果在服务器上更改枚举失败, 则文件可能无法同步, 并出现错误 0x80c8031d (ECS_E_CONCURRENCY_CHECK_FAILED)
+- 如果同步会话或文件收到错误 0x80072f78 (WININET_E_INVALID_SERVER_RESPONSE), 同步将立即重试该操作
+- 文件可能无法同步, 并出现错误 0x80c80203 (ECS_E_SYNC_INVALID_STAGED_FILE)
+- 撤回文件时可能会出现高内存使用率
 - 云分层遥测改进 
 
 ## <a name="agent-version-5020"></a>代理版本 5.0.2.0

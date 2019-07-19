@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 80776f9284752e8554486cb458096ccc9319949e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 851943ad967a79a6800a899b31d0cf9f90a6889b
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61323740"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312244"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
@@ -74,13 +74,13 @@ ms.locfileid: "61323740"
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>为逻辑应用启用诊断日志记录
 
-对于更丰富的调试与运行时详细信息和事件，您可以设置诊断与日志记录[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)。 Azure Monitor 是 Azure 中的一个服务，用于监视云和本地环境，帮助使其保持较高的可用性和性能。 
+若要在运行时详细信息和事件中进行更丰富的调试, 可以设置[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)的诊断日志记录。 Azure Monitor 是 Azure 中的一个服务，用于监视云和本地环境，帮助使其保持较高的可用性和性能。 
 
 在开始之前，需要具有一个 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“逻辑应用”。 
 
-2. 在逻辑应用边栏选项卡菜单下**监视**，选择**诊断** > **诊断设置**。
+2. 在 "逻辑应用" 边栏选项卡上的 "**监视**" 下, 选择 "**诊断** > **诊断设置**"。
 
    ![依次转到“监视”、“诊断”、“诊断设置”](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "61323740"
 
    ![输入搜索字符串](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 
-   详细了解如何[如何在 Azure Monitor 日志中查找数据](../log-analytics/log-analytics-log-searches.md)。
+   详细了解[如何查找 Azure Monitor 日志中的数据](../log-analytics/log-analytics-log-searches.md)。
 
 5. 在结果页的左侧栏中，选择要查看的时间范围。
 若要通过添加筛选器优化查询，请选择“+添加”  。
@@ -178,7 +178,7 @@ ms.locfileid: "61323740"
 
 要监视逻辑应用的特定指标或超出的阈值，请[在 Azure 中设置警报](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。 
 
-若要设置警报，而无需[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)，请执行以下步骤。 有关更高级的警报条件和操作，也可以[设置 Azure Monitor 日志](#azure-diagnostics)。
+若要设置警报而不[Azure Monitor 日志](../log-analytics/log-analytics-overview.md), 请执行以下步骤。 有关更高级的警报条件和操作，也可以[设置 Azure Monitor 日志](#azure-diagnostics)。
 
 1. 在“逻辑应用”边栏选项卡菜单的“监视”  下，选择“诊断”   > “警报规则”   > “添加警报”  ，如下所示：
 
@@ -268,6 +268,26 @@ ms.locfileid: "61323740"
         "myActionHTTPValue": "@action()['outputs']['body']['<content>']",
         "transactionId": "@action()['inputs']['body']['<content>']"
     }
+  }
+  ```
+  下面是使用 "**初始化变量**" 操作的另一个示例。 该示例从操作的输入中添加跟踪的属性, 其中输入为数组, 而不是记录。  
+
+  ``` json
+  "actions": { 
+   "Initialize_variable": { 
+      "inputs": { 
+         "variables": [{ 
+            "name": "ConnectorName", 
+            "type": "String", 
+            "value": "SFTP-SSH" 
+         }]
+      },
+      "runAfter": {},
+      "trackedProperties": { 
+         "Track1": "@action().inputs.variables[0].value"
+      },
+      "type": "InitializeVariable"
+   } 
   }
   ```
 

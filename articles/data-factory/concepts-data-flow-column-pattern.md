@@ -1,23 +1,23 @@
 ---
 title: Azure 数据工厂映射数据流列模式
-description: 了解如何在映射的数据流中使用 Azure 数据工厂列模式来创建用于转换数据流中的数据而不考虑基础架构元数据字段的通用的模板模式
+description: 使用 Azure 数据工厂列模式在映射数据流中创建通用数据转换模式
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 08cdaafe00b7dc586ea75f6ff03fdb89107edee9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d24988dfd5cbaf20e92c5afbbc39dc0c78e3ef6a
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430751"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314857"
 ---
 # <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure 数据工厂映射数据流列模式
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-多个 Azure 数据工厂数据流转换支持“列模式”理念，因此你可以根据模式而不是硬编码的列名称来创建模板列。 表达式生成器中的此功能可用于定义而无需完全相同的、 特定字段名称转换为的列相匹配的模式。 模式是传入的源字段经常更改，尤其对于更改文本的文件或 NoSQL 数据库中的列的情况下很有用。 这种情况有时称为"架构偏差"。
+多个 Azure 数据工厂数据流转换支持“列模式”理念，因此你可以根据模式而不是硬编码的列名称来创建模板列。 您可以使用 "表达式生成器" 中的此功能定义模式以匹配转换列, 而不需要精确的特定字段名称。 如果传入源字段经常更改, 这种模式非常有用, 尤其是在更改文本文件或 NoSQL 数据库中的列的情况下。 这种情况有时称为 "架构偏移"。
 
 ![列模式](media/data-flow/columnpattern2.png "列模式")
 
@@ -27,6 +27,16 @@ ms.locfileid: "66430751"
 
 生成模板列模式时，请在表达式中使用 `$$` 来表示对输入数据流中每个已匹配字段的引用。
 
-如果选择使用表达式生成器正则表达式函数之一，则可以随后使用 $1、 $2、 3 美元...若要引用从您的正则表达式匹配的子模式。
+如果选择使用某个表达式生成器正则表达式函数，则可随后使用 $1、$2、$3 ... 来引用正则表达式中匹配的子模式。
 
-列模式方案的一个示例是对一系列传入字段使用 SUM。 聚合 SUM 计算位于“聚合”转换中。 然后可以在每个匹配项的匹配"integer"，然后使用 $$ 来引用在表达式中的每个匹配项的字段类型上使用之和。
+列模式方案的一个示例是对一系列传入字段使用 SUM。 聚合 SUM 计算位于“聚合”转换中。 然后, 你可以对匹配 "integer" 的字段类型的每个匹配项使用 SUM, 然后使用 $ $ 来引用表达式中的每个匹配项。
+
+## <a name="match-columns"></a>匹配列
+![列模式类型](media/data-flow/pattern2.png "模式类型")
+
+若要基于列生成模式, 可以匹配列名、类型、流或位置, 并将它们的任意组合与表达式函数和正则表达式结合使用。
+
+![列位置](media/data-flow/position.png "列位置")
+
+## <a name="next-steps"></a>后续步骤
+了解有关数据转换的 ADF 映射数据流[表达式语言](http://aka.ms/dataflowexpressions)的详细信息

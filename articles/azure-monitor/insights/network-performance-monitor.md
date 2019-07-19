@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: a5d5a9e07c28ab3059872f4d187c96586456a200
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c350ca3cd8cbfb5e550fccd0bae0df53168de178
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64916761"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312076"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -45,12 +45,14 @@ ms.locfileid: "64916761"
 NPM 可从以下任一区域托管的工作区监视世界上任何地方网络和应用程序之间的连接：
 * 西欧
 * 美国中西部
-* 美国东部
+* East US
 * 日本东部
 * 东南亚
 * 澳大利亚东南部
 * 英国南部
+* 印度中部
 * 美国弗吉尼亚州政府
+
 
 可在[文档](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)中查看支持 ExpressRoute 监视器的区域列表。
 
@@ -146,7 +148,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 1. 选择要监视的节点或清除要停止监视的节点。 
 2. 选中“用于监视”  ，或清除它（视情况而定）。 
-3. 选择“保存”。  
+3. 选择**保存**。 
 
 
 配置所需功能：
@@ -249,15 +251,15 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 网络性能监视器使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) 的警报功能。
 
-这意味着使用[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview)管理所有通知。  
+这意味着使用[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)管理所有通知。  
 
 如果你是通过 Log Analytics 创建警报的 NPM 用户： 
-1. 您将看到将重定向到 Azure 门户的链接。 单击该链接以访问门户。
+1. 你将看到一个链接, 它会将你重定向到 Azure 门户。 单击该链接以访问门户。
 2. 单击“网络性能监视器解决方案”磁贴。 
 3. 导航到“配置”。  
 4. 选择要针对其创建警报的测试，并按照下述步骤进行操作。
 
-如果你是 NPM 用户创建通过 Azure 门户警报：  
+如果你是 NPM 用户通过 Azure 门户创建警报:  
 1. 可以选择直接输入电子邮件，也可以选择通过操作组创建警报。
 2. 如果选择直接输入电子邮件，则将创建名为 **NPM Email ActionGroup** 的操作组，并将电子邮件 ID 添加到该操作组。
 3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
