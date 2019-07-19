@@ -3,7 +3,7 @@ title: Azure Batch 任务失败事件 | Microsoft Docs
 description: 批处理任务失败事件参考。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: f37769ceb761b8c8bc4834568813bb1b7af7f66a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 68c57fbf510d923c4c87bc180a935965a511dc26
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549982"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322905"
 ---
 # <a name="task-fail-event"></a>任务失败事件
 
@@ -52,7 +52,7 @@ ms.locfileid: "60549982"
 }
 ```
 
-|元素名称|Type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |jobId|String|包含任务的作业的 id。|
 |id|String|任务的 id。|
@@ -65,27 +65,27 @@ ms.locfileid: "60549982"
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|元素名称|Type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |poolId|String|运行任务的池的 id。|
 |nodeId|String|运行任务的节点的 id。|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|元素名称|Type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |numberOfInstances|Int32|任务所需的计算节点数。|
 
 ###  <a name="constraints"></a> constraints
 
-|元素名称|Type|说明|
+|元素名称|type|说明|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，并重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|元素名称|Type|说明|
+|元素名称|type|说明|
 |------------------|----------|-----------|
 |startTime|DateTime|任务开始运行的时间。 “Running”对应于**正在运行**状态，因此如果任务指定资源文件或应用程序包，则开始时间反映了任务开始下载或部署这些内容的时间。  如果任务已重启或重试，该时间是任务开始运行的最近时间。|
 |endTime|DateTime|任务完成的时间。|

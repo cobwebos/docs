@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b42a6b667a8708aeb2edeb0c80a5ab747b6c60a9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bfaf3cc9b113ff10766f7a17bd7bf09ffa619a8e
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60246193"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227419"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步：了解默认配置
 本文介绍现成的配置规则。 其中将说明这些规则及其对配置有何影响。 此外还将逐步介绍如何完成 Azure AD Connect 同步的默认配置。其目的是让读者了解配置模型（名为声明性预配）在实际示例中的运行情形。 本文假设已使用安装向导安装并配置了 Azure AD Connect 同步。
@@ -71,7 +71,7 @@ ms.locfileid: "60246193"
   2. 可以在 Exchange GAL（全局地址列表）中找到的属性将从具有 Exchange 邮箱的林提供。
   3. 如果找不到邮箱，这些属性可来自于任何林。
   4. Exchange 相关的属性（GAL 中未显示的技术属性）从 `mailNickname ISNOTNULL` 的林提供。
-  5. 如果有多个林匹配其中一个规则，将使用连接器（林）的创建顺序（日期/时间）来确定属性将由哪个林提供。
+  5. 如果有多个林匹配其中一个规则，将使用连接器（林）的创建顺序（日期/时间）来确定属性由哪个林提供。 第一个连接的林将是要同步的第一个林。 
 
 ### <a name="contact-out-of-box-rules"></a>联系人的现成规则
 联系人对象必须满足以下条件才进行同步：
@@ -95,7 +95,7 @@ ms.locfileid: "60246193"
 * 成员必须少于 50,000 个。 该计数为本地组中的成员数目。
   * 如果组在首次同步启动之前包含更多的成员，该组不会进行同步。
   * 如果成员数目在组最初创建之后有所增加，在达到 50,000 个成员时，组将停止同步，直到成员资格计数再次低于 50,000。
-  * 请注意:Azure AD 也强制实施 50,000 个成员身份计数。 无法同步包含更多成员的组，即使修改或删除此规则，也是如此。
+  * 注意:Azure AD 也强制实施 50,000 个成员身份计数。 无法同步包含更多成员的组，即使修改或删除此规则，也是如此。
 * 如果组是**通讯组**，则还必须启用邮件。 请参阅 [Contact out-of-box rules](#contact-out-of-box-rules)（联系人的现成规则），了解实施此规则的情况。
 
 以下组对象**不会**同步到 Azure AD：

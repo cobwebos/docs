@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: bcaa990cc2186a5f1eecdbbca91804c92370277c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cfbbd0b353699c4b04ede07df0450e66bd59612f
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357184"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311962"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>识别打印文本和手写文本
 
@@ -36,7 +36,7 @@ ms.locfileid: "66357184"
 读取 API 可以处理符合以下要求的图像：
 
 - 图像必须以 JPEG、PNG、BMP、PDF 或 TIFF 格式显示。
-- 图像的尺寸必须介于 50 x 50 和 4200 x 4200 像素之间。 PDF 页面必须为 17 x 17 英寸或更小。
+- 图像的尺寸必须介于 50 x 50 和 10000 x 10000 像素之间。 PDF 页面必须为 17 x 17 英寸或更小。
 - 图像的文件大小必须小于 20 MB。
 
 ### <a name="limitations"></a>限制

@@ -10,13 +10,14 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
-ms.author: mahender, yevbronsh
-ms.openlocfilehash: b18d5ba303d1cf7ab637638043f9e0727437c232
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.author: mahender
+ms.reviewer: yevbronsh
+ms.openlocfilehash: 8bc30d50772dffddca32d9f6e22c3d7cec566c70
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827857"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297150"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -277,11 +278,11 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServi
 若要了解有关 Microsoft.Azure.Services.AppAuthentication 及其公开的操作的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]以及[将应用服务和 KeyVault 与 MSI.NET 配合使用示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
 
 
-### <a name="using-the-azure-sdk-for-java"></a>使用 Azure SDK for Java
+### <a name="using-the-azure-sdk-for-java"></a>使用用于 Java 的 Azure SDK
 
-对于 Java 应用程序和功能，使用托管标识的最简单方法是通过[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)。 本部分演示如何开始在代码中使用此库。
+对于 Java 应用程序和函数, 使用托管标识的最简单方法是使用[AZURE SDK For Java](https://github.com/Azure/azure-sdk-for-java)。 本部分演示如何开始在代码中使用此库。
 
-1. 添加对的引用[Azure SDK 库](https://mvnrepository.com/artifact/com.microsoft.azure/azure)。 对于 Maven 项目，可能会添加到此代码片段`dependencies`项目的 POM 文件的部分：
+1. 添加对[AZURE SDK 库](https://mvnrepository.com/artifact/com.microsoft.azure/azure)的引用。 对于 Maven 项目, 可以将此代码片段添加到`dependencies`项目 POM 文件的部分中:
 
 ```xml
 <dependency>
@@ -291,7 +292,7 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServi
 </dependency>
 ```
 
-2. 使用`AppServiceMSICredentials`进行身份验证的对象。 此示例演示如何使用 Azure 密钥保管库的可用此机制：
+2. `AppServiceMSICredentials`使用对象进行身份验证。 此示例演示如何使用此机制来处理 Azure Key Vault:
 
 ```java
 import com.microsoft.azure.AzureEnvironment;

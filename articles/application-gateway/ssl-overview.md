@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: ee901fdcae9717cc6d03d7653bcaacc0c32518e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 199fcdf2ebf10852906b842f09fe7beafd2acdb5
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254317"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326608"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>应用程序网关的 SSL 终止和端到端 SSL 概述
 
@@ -22,10 +22,10 @@ ms.locfileid: "66254317"
 
 应用程序网关支持在网关上终止 SSL，之后，流量通常会以未加密状态流到后端服务器。 在应用程序网关上执行 SSL 终止可以带来诸多优势：
 
-- **改进了性能**– 最大性能下降时执行的 SSL 解密是初次握手。 为了提高性能，执行解密的服务器将会缓存 SSL 会话 ID 并管理 TLS 会话票证。 如果此操作是在应用程序网关上执行的，则来自同一个客户端的所有请求都可以使用缓存的值。 如果此操作是在后端服务器上执行的，则每当客户端的请求转到另一台服务器时，客户端都必须重新进行身份验证。 使用 TLS 票证有助于缓解此问题，但并非所有客户端都支持 TLS 票证，并且配置和管理这些票证可能有难度。
-- **更好地利用后端服务器**– SSL/TLS 处理是非常 CPU 资源，并成为更密集的密钥大小增加。 从后端服务器中消除此任务可使它们专注于以最有效的方式提供内容。
-- **智能路由**– 通过解密流量，应用程序网关有权访问请求内容，如标头、 URI 和等等，以及可以使用此数据来路由请求。
-- **证书管理**– 证书只需购买和安装应用程序网关和不是所有后端服务器上。 这可以节省时间和开支。
+- **提高了性能**-在进行 SSL 解密时, 最大的性能影响是初始握手。 为了提高性能，执行解密的服务器将会缓存 SSL 会话 ID 并管理 TLS 会话票证。 如果此操作是在应用程序网关上执行的，则来自同一个客户端的所有请求都可以使用缓存的值。 如果此操作是在后端服务器上执行的，则每当客户端的请求转到另一台服务器时，客户端都必须重新进行身份验证。 使用 TLS 票证有助于缓解此问题，但并非所有客户端都支持 TLS 票证，并且配置和管理这些票证可能有难度。
+- **更好地利用后端服务器**– SSL/TLS 处理会消耗大量 CPU, 并且随着密钥大小的增加, 变得越来越大。 从后端服务器中消除此任务可使它们专注于以最有效的方式提供内容。
+- **智能路由**–通过解密流量, 应用程序网关可以访问请求内容 (如标头、URI 等), 并可以使用此数据来路由请求。
+- **证书管理**–只需在应用程序网关上购买和安装证书, 而不是所有后端服务器。 这可以节省时间和开支。
 
 若要配置 SSL 终止，需将一个 SSL 证书添加到侦听器，使应用程序网关能够根据 SSL 协议规范派生对称密钥。 然后，可以使用该对称密钥来加密和解密发送到网关的流量。 SSL 证书需采用个人信息交换 (PFX) 格式。 此文件格式适用于导出私钥，后者是应用程序网关对流量进行加解密所必需的。
 
@@ -50,7 +50,7 @@ ms.locfileid: "66254317"
 有关详细信息，请参阅[配置应用程序网关的 SSL 终止](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)。
 
 ### <a name="size-of-the-certificate"></a>证书大小
-检查[应用程序网关限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits)部分以了解最大的 SSL 证书支持的大小。
+查看[应用程序网关限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits)部分，了解支持的最大 SSL 证书大小。
 
 ## <a name="end-to-end-ssl-encryption"></a>端到端 SSL 加密
 
@@ -91,10 +91,20 @@ SSL 策略将应用到前端和后端流量。 在前端上，应用程序网关
 
 - 由 CN 与 HTTP 后端设置中的主机名匹配的知名 CA 颁发机构签名的证书不需要任何额外的步骤即可使端到端 SSL 工作。 
 
-   例如，如果后端证书由知名 CA 颁发并具有 contoso.com 的 CN，并且后端 http 设置的主机字段也设置为 contoso.com，则不需要其他步骤。 可以将后端 http 设置协议设置为 HTTPS，并且运行状况探测和数据路径都将启用 SSL。 如果你使用 Azure 应用服务或其他 Azure web 服务作为后端，然后这些也是隐式受信任并再执行其他步骤所需的端到端 SSL。
+   例如，如果后端证书由知名 CA 颁发并具有 contoso.com 的 CN，并且后端 http 设置的主机字段也设置为 contoso.com，则不需要其他步骤。 可以将后端 http 设置协议设置为 HTTPS，并且运行状况探测和数据路径都将启用 SSL。 如果使用 Azure App Service 或其他 Azure web 服务作为后端, 则它们也是隐式信任的, 并且对于端到端 SSL, 无需执行其他步骤。
+   
+> [!NOTE] 
+>
+> 为了使 SSL 证书受信任, 后端服务器的证书必须由应用程序网关的受信任存储区中包含的 CA 颁发。如果证书不是由受信任的 CA 颁发的, 则应用程序网关会将检查查看颁发 CA 的证书是否由受信任的 CA 颁发, 依此类推, 直到找到了受信任的 CA (此时将建立受信任的安全连接), 或找不到受信任的 CA (此时, 应用程序网关会将后端 unhe 标记althy). 因此, 建议后端服务器证书同时包含 root 和 intermidiate Ca。
+
 - 如果证书是自签名证书，或是由未知中介签名的证书，那么，要在 v2 SKU 中启用端到端 SSL，必须定义受信任的根证书。 应用程序网关仅与符合以下条件的后端进行通信：后端的服务器证书的根证书与池关联的后端 http 设置中的受信任根证书列表之一匹配。
+
+> [!NOTE] 
+>
+> 自签名证书必须是证书链的一部分。 V2 SKU 中不支持不带链的单个自签名证书。
+
 - 除了根证书匹配之外，应用程序网关还会验证后端 http 设置中指定的主机设置是否与后端服务器的 SSL 证书提供的公用名 (CN) 的主机设置相匹配。 尝试与后端建立 SSL 连接时，应用程序网关会将服务器名称指示 (SNI) 扩展设置为后端 http 设置中指定的主机。
-- 如果已选择**从后端地址选择主机名**而不是选择后端 http 设置中的主机字段，则 SNI 标头始终设置为后端池 FQDN，并且后端服务器 SSL 证书上的 CN 必须与其 FQDN 匹配。 在此方案中不支持 ip 的后端池成员。
+- 如果已选择**从后端地址选择主机名**而不是选择后端 http 设置中的主机字段，则 SNI 标头始终设置为后端池 FQDN，并且后端服务器 SSL 证书上的 CN 必须与其 FQDN 匹配。 在此方案中不支持具有 Ip 的后端池成员。
 - 根证书是来自后端服务器证书的 base64 编码的根证书。
 
 ## <a name="next-steps"></a>后续步骤

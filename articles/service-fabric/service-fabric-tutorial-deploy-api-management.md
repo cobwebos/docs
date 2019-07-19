@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/26/2018
+ms.date: 07/10/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: fc2c23d93a1800232b81c5eb2f861e8b71c3e437
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c290b13ccb65c68c32d63638b15e8a3f59ef8010
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428070"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228101"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
 
@@ -36,7 +36,7 @@ ms.locfileid: "66428070"
 > [!IMPORTANT]
 > 由于所需的虚拟网络支持，此功能在 API 管理的**高级**和**开发人员**层中可用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 开始之前：
 
@@ -77,7 +77,7 @@ az account set --subscription <guid>
  1. 在 Visual Studio 中，选择“文件”->“新建项目”。
  2. 选择“云”下的 Service Fabric 应用程序模板并将其命名为“ApiApplication”  。
  3. 选择无状态 ASP.NET Core 服务模板并将项目命名为“WebApiService”  。
- 4. 选择 Web API ASP.NET Core 2.0 项目模板。
+ 4. 选择 "Web API ASP.NET Core 2.1" 项目模板。
  5. 创建项目后，打开 `PackageRoot\ServiceManifest.xml` 并从终结点资源配置中删除 `Port` 属性：
 
     ```xml
@@ -88,7 +88,7 @@ az account set --subscription <guid>
     </Resources>
     ```
 
-    删除端口允许 Service Fabric，若要指定从应用程序端口范围，通过网络安全组在群集 Resource Manager 模板中，从而允许流量从 API 管理流向打开动态端口。
+    通过删除该端口, Service Fabric 可以从应用程序端口范围动态指定一个端口, 该范围通过群集资源管理器模板中的网络安全组打开, 允许流量从 API 管理流向该端口。
 
  6. 可在本地于 Visual Studio 中按下 F5 来验证 Web API。
 
@@ -145,7 +145,7 @@ az account set --subscription <guid>
 
 * “displayName”可以是 API 的任意名称  。 对于本文，请使用“Service Fabric App”。
 * “name”为 API 提供一个唯一且有描述性的名称，例如“service-fabric-app”  。 它显示在开发人员和发布者门户中。
-* “serviceUrl”引用实现 API 的 HTTP 服务  。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 你可以在此处设置任何值。 对于本文，例如"http:\//servicefabric"。
+* “serviceUrl”引用实现 API 的 HTTP 服务  。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 你可以在此处设置任何值。 对于本文，例如“http:\//servicefabric”。
 * “path”附加到 API 管理服务的基础 URL  。 基础 URL 是常见的由 API 管理服务实例托管的所有 API。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。
 * “protocols”确定可用于访问 API 的协议  。 对于本文，列出 **http** 和 **https**。
 * “path”是 API 的后缀  。 对于本文，请使用“myapp”。
@@ -288,7 +288,7 @@ az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 群集由群集资源本身以及其他 Azure 资源组成。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
 
-登录到 Azure，选择要删除群集的订阅 ID。  可通过登录到 [Azure 门户](https://portal.azure.com)查找订阅 ID。 删除资源组和使用的所有群集资源[删除 AzResourceGroup cmdlet](/en-us/powershell/module/az.resources/remove-azresourcegroup)。
+登录到 Azure，选择要删除群集的订阅 ID。  可通过登录到 [Azure 门户](https://portal.azure.com)查找订阅 ID。 使用 [Remove-AzResourceGroup cmdlet](/en-us/powershell/module/az.resources/remove-azresourcegroup) 删除资源组和所有群集资源。
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"

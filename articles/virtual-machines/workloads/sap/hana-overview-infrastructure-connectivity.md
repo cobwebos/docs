@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
-ms.author: rclaus
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05bd09d3ab05f3ce426126e5629523fba087dad9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4a1df7406ab4f4d7137d12dd7131a4c26b617cb2
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707316"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869224"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>SAP HANA（大型实例）部署 
 
@@ -37,6 +37,7 @@ Microsoft 需要使用以下信息来部署 HANA 大型实例单元：
 - 对于每个 Azure 部署区域：
     - 用于将 Azure 虚拟网络连接到 HANA 大型实例的 ER-P2P 连接的 /29 IP 地址范围。
     - 用于 HANA 大型实例服务器 IP 池的 /24 CIDR 块。
+    - 可选: 使用[ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)启用从本地到 Hana 大型实例单元的直接路由, 或在不同 Azure 区域中的 Hana 大型实例单元之间进行路由时, 需要保留另一个/29 IP 地址范围。 此特定范围不能与之前定义的任何其他 IP 地址范围重叠。
 - 对于连接到 HANA 大型实例的每个 Azure 虚拟网络，虚拟网络地址空间属性中使用的 IP 地址范围值。
 - 对于每个 HANA 大型实例系统的数据：
   - 所需主机名，最好是使用完全限定的域名。

@@ -1,30 +1,30 @@
 ---
 title: 在 Azure 容器实例中启用 SSL
-description: 创建在 Azure 容器实例中运行的容器组的 SSL 或 TLS 终结点
+description: 为 Azure 容器实例中运行的容器组创建 SSL 或 TLS 终结点
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 12de4ef31084d8ac8586c79ffe3d0a8e891727bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f11fb209f8d2ace51081fd81f453faf9505af27c
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411387"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326071"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-container-group"></a>启用容器组中的 SSL 终结点
+# <a name="enable-an-ssl-endpoint-in-a-container-group"></a>在容器组中启用 SSL 终结点
 
-本文介绍如何创建[容器组](container-instances-container-groups.md)与应用程序容器和运行 SSL 提供程序的挎斗容器。 通过设置单独的 SSL 终结点的容器组，可以启用 SSL 连接用于你的应用程序而无需更改应用程序代码。
+本文介绍如何使用应用程序容器和运行 SSL 提供程序的挎斗容器创建[容器组](container-instances-container-groups.md)。 通过使用单独的 SSL 终结点设置容器组, 你可以为应用程序启用 SSL 连接, 而无需更改应用程序代码。
 
-您设置了由两个容器组成的一个容器组：
-* 运行一个简单的 web 应用使用公共 Microsoft 应用程序容器[aci helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld)映像。 
-* 挎斗容器运行公众[Nginx](https://hub.docker.com/_/nginx)图中，配置为使用 SSL。 
+设置包含两个容器的容器组:
+* 使用公共 Microsoft [helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld)映像运行简单 web 应用的应用程序容器。 
+* 运行公共[Nginx](https://hub.docker.com/_/nginx)映像的挎斗容器, 配置为使用 SSL。 
 
-在此示例中，容器组仅端口 443 针对公开 Nginx 使用其公共 IP 地址。 Nginx 将 HTTPS 请求路由到辅助 web 应用程序，在内部侦听端口 80。 你可以调整侦听其他端口的容器应用的示例。
+在此示例中, 容器组只公开端口443的 Nginx 及其公共 IP 地址。 Nginx 将 HTTPS 请求路由到辅助 web 应用, 该应用在内部侦听端口80。 可以调整侦听其他端口的容器应用的示例。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -32,37 +32,37 @@ ms.locfileid: "65411387"
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
-若要设置 Nginx 用作 SSL 提供程序，您需要一个 SSL 证书。 本文介绍如何创建和设置自签名 SSL 证书。 对于生产方案，应从证书颁发机构获取证书。
+若要将 Nginx 设置为 SSL 提供程序, 需要 SSL 证书。 本文介绍如何创建和设置自签名 SSL 证书。 对于生产方案, 应从证书颁发机构获取证书。
 
-若要创建自签名的 SSL 证书，请使用[OpenSSL](https://www.openssl.org/)工具在 Azure Cloud Shell 和许多 Linux 分发版中可用或在你的操作系统中使用的可比较客户端工具。
+若要创建自签名 SSL 证书, 请使用 Azure Cloud Shell 和许多 Linux 发行版中提供的[OpenSSL](https://www.openssl.org/)工具, 或在操作系统中使用类似的客户端工具。
 
-首先在本地工作目录中创建证书请求 （.csr 文件）：
+首先在本地工作目录中创建证书请求 (csr 文件):
 
 ```console
 openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 ```
 
-按照提示后，若要添加的标识信息。 对于公用名，请输入与证书关联的主机名。 当系统提示输入密码，而无需键入要跳过添加密码按 Enter。
+按照提示添加标识信息。 对于 "公用名", 请输入与证书关联的主机名。 当系统提示输入密码时, 无需键入即可按 Enter, 以跳过添加密码。
 
-运行以下命令以创建自签名的证书 （.crt 文件） 的证书请求中。 例如：
+运行以下命令, 从证书请求创建自签名证书 (.crt 文件)。 例如：
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 ```
 
-现在应看到在目录中的三个文件： 证书请求 (`ssl.csr`)，私钥 (`ssl.key`)，和自签名的证书 (`ssl.crt`)。 您使用`ssl.key`和`ssl.crt`在后续步骤中。
+你现在应会在目录中看到三个文件: 证书请求`ssl.csr`()、私钥 (`ssl.key`) 和自签名证书 (`ssl.crt`)。 在后面`ssl.key`的`ssl.crt`步骤中使用和。
 
-## <a name="configure-nginx-to-use-ssl"></a>配置 Nginx 以使用 SSL
+## <a name="configure-nginx-to-use-ssl"></a>将 Nginx 配置为使用 SSL
 
 ### <a name="create-nginx-configuration-file"></a>创建 Nginx 配置文件
 
-在本部分中，您将创建 Nginx 以使用 SSL 的配置文件。 通过将以下文本复制到名为的新文件启动`nginx.conf`。 在 Azure Cloud Shell 中，可以使用 Visual Studio Code 在工作目录中创建文件：
+在本部分中, 将创建 Nginx 的配置文件以使用 SSL。 首先, 将以下文本复制到名为`nginx.conf`的新文件中。 在 Azure Cloud Shell 中, 可以使用 Visual Studio Code 在工作目录中创建文件:
 
 ```console
 code nginx.conf
 ```
 
-在中`location`，请务必设置`proxy_pass`替换为应用程序的正确端口。 在此示例中，我们将设置为端口 80`aci-helloworld`容器。
+在`location`中, 请确保为`proxy_pass`应用设置正确的端口。 在此示例中, 我们为容器设置了`aci-helloworld`端口80。
 
 ```console
 # nginx Configuration File
@@ -126,9 +126,9 @@ http {
 }
 ```
 
-### <a name="base64-encode-secrets-and-configuration-file"></a>Base64 编码机密和配置文件
+### <a name="base64-encode-secrets-and-configuration-file"></a>Base64-编码机密和配置文件
 
-进行 Base64 编码 Nginx 配置文件、 SSL 证书和 SSL 密钥。 在下一部分中，输入用来部署容器组的 YAML 文件中的编码的内容。
+Base64-对 Nginx 配置文件、SSL 证书和 SSL 密钥进行编码。 在下一部分中, 将在用于部署容器组的 YAML 文件中输入编码内容。
 
 ```console
 cat nginx.conf | base64 -w 0 > base64-nginx.conf
@@ -138,17 +138,17 @@ cat ssl.key | base64 -w 0 > base64-ssl.key
 
 ## <a name="deploy-container-group"></a>部署容器组
 
-现在，通过指定的容器配置中部署容器组[YAML 文件](container-instances-multi-container-yaml.md)。
+现在, 通过在[YAML 文件](container-instances-multi-container-yaml.md)中指定容器配置来部署容器组。
 
 ### <a name="create-yaml-file"></a>创建 YAML 文件
 
-将以下 YAML 复制到名为的新文件`deploy-aci.yaml`。 在 Azure Cloud Shell 中，可以使用 Visual Studio Code 在工作目录中创建文件：
+将以下 YAML 复制到名为`deploy-aci.yaml`的新文件中。 在 Azure Cloud Shell 中, 可以使用 Visual Studio Code 在工作目录中创建文件:
 
 ```console
 code deploy-aci.yaml
 ```
 
-输入的 base64 编码内容文件下的指示位置`secret`。 例如，`cat`每个 base64 编码文件以查看其内容。 在部署期间，这些文件添加到[密卷](container-instances-volume-secret.md)容器组中。 在此示例中，机密卷装载到 Nginx 容器。
+输入 base64 编码文件的内容, 其中指定`secret`了。 例如, `cat`每个 base64 编码的文件都可查看其内容。 在部署过程中, 这些文件将被添加到容器组中的[机密卷](container-instances-volume-secret.md)。 在此示例中, 机密卷装载到 Nginx 容器中。
 
 ```YAML
 api-version: 2018-10-01
@@ -197,13 +197,13 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="deploy-the-container-group"></a>部署容器组
 
-创建一个包含资源组[az 组创建](/cli/azure/group#az-group-create)命令：
+使用[az group create](/cli/azure/group#az-group-create)命令创建资源组:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-部署容器组[az 容器创建](/cli/azure/container#az-container-create)命令，将作为参数传递的 YAML 文件。
+使用[az container create](/cli/azure/container#az-container-create)命令部署容器组, 并将 YAML 文件作为参数传递。
 
 ```azurecli
 az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
@@ -211,13 +211,13 @@ az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
 
 ### <a name="view-deployment-state"></a>查看部署状态
 
-若要查看部署的状态，请使用以下[az 容器显示](/cli/azure/container#az-container-show)命令：
+若要查看部署状态, 请使用以下[az container show](/cli/azure/container#az-container-show)命令:
 
 ```azurecli
 az container show --resource-group <myResourceGroup> --name app-with-ssl --output table
 ```
 
-对于成功的部署，输出是类似于下面：
+对于成功的部署, 输出类似于以下内容:
 
 ```console
 Name          ResourceGroup    Status    Image                                                    IP:ports             Network    CPU/Memory       OsType    Location
@@ -227,18 +227,18 @@ app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-
 
 ## <a name="verify-ssl-connection"></a>验证 SSL 连接
 
-若要查看正在运行的应用程序，请导航到其在浏览器中的 IP 地址。 例如，在此示例中所示的 IP 地址是`52.157.22.76`。 必须使用`https://<IP-ADDRESS>`查看正在运行的应用程序，由于 Nginx 服务器配置。 尝试连接与`http://<IP-ADDRESS>`失败。
+若要查看正在运行的应用程序, 请在浏览器中导航到其 IP 地址。 例如, 此示例中显示的 IP 地址是`52.157.22.76`。 由于 Nginx 服务器`https://<IP-ADDRESS>`配置的原因, 您必须使用查看正在运行的应用程序。 尝试连接`http://<IP-ADDRESS>`失败。
 
 ![浏览器屏幕截图，显示应用程序在 Azure 容器实例中运行](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> 由于此示例中使用自签名的证书，而不是从证书颁发机构，浏览器将显示安全警告，当通过 HTTPS 连接到的站点。 此行为是预期的行为。
+> 由于本示例使用自签名证书, 而不是证书颁发机构颁发的证书, 因此在通过 HTTPS 连接到站点时, 浏览器会显示安全警告。 此行为是预期的行为。
 >
 
 ## <a name="next-steps"></a>后续步骤
 
-本文档演示如何设置 Nginx 容器启用容器组中运行的 web 应用的 SSL 连接。 您可以改写此示例中为在端口 80 以外的端口侦听的应用。 此外可以更新 Nginx 配置文件将自动重定向端口 80 (HTTP) 以使用 HTTPS 上的服务器连接。
+本文介绍如何设置 Nginx 容器, 以启用到容器组中运行的 web 应用的 SSL 连接。 对于侦听端口80以外的端口的应用, 你可以调整此示例。 还可以更新 Nginx 配置文件, 以自动重定向端口 80 (HTTP) 上的服务器连接以使用 HTTPS。
 
-虽然这篇文章中挎斗使用 Nginx，你可以使用如另一个 SSL 提供程序[托盘](https://caddyserver.com/)。
+尽管本文在挎斗中使用 Nginx, 但你可以使用另一个 SSL 提供程序, 例如[Caddy](https://caddyserver.com/)。
 
-在容器组中启用 SSL 的另一种方法是部署中的组[Azure 虚拟网络](container-instances-vnet.md)与[Azure 应用程序网关](../application-gateway/overview.md)。 为 SSL 终结点，可以设置网关。 查看示例[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)会进行调整以启用在网关上的 SSL 终止。
+在容器组中启用 SSL 的另一种方法是在[azure 虚拟网络](container-instances-vnet.md)中使用[azure 应用程序网关](../application-gateway/overview.md)部署组。 网关可以设置为 SSL 终结点。 请参阅可调整的示例[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet), 以便在网关上启用 SSL 终端。

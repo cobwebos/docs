@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 421e0db48f045c5cbce52a0641902e6d2a11276e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3ce3d61bf6b5fb44fa13527bc5a93295784fa66b
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172746"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286165"
 ---
 ## <a name="trigger"></a>触发器
 
@@ -360,7 +360,7 @@ public void eventHubProcessor(
  }
 ```
 
- 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值来自事件中心的参数使用 `EventHubTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 Optional<T> 的可为 null 的值一起使用。
+ 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值来自事件中心的参数使用 `EventHubTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  此批注可用于本机 Java 类型、pojo 或可为 null 的值, >\<使用可选的。
 
 ## <a name="trigger---attributes"></a>触发器 - 特性
 
@@ -386,7 +386,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | 不适用 | 在函数代码中表示事件项的变量的名称。 |
+|**名称** | 不适用 | 在函数代码中表示事件项的变量的名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**eventHubName** |**EventHubName** | 仅适用于 Functions 2.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**consumerGroup** |**ConsumerGroup** | 一个可选属性，用于设置[使用者组](../articles/event-hubs/event-hubs-features.md)#event-consumers)，该组用于订阅事件中心的事件。 如果将其省略，则会使用 `$Default` 使用者组。 |
@@ -400,7 +400,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 事件中心触发器提供了几个[元数据属性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) 类的属性。
 
-|属性|Type|描述|
+|属性|类型|描述|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` 实例。|
 |`EnqueuedTimeUtc`|`DateTime`|排队时间 (UTC)。|
@@ -418,7 +418,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 [!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 使用事件中心输出绑定将事件写入到事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
 
@@ -449,7 +449,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-下面的示例演示如何使用`IAsyncCollector`接口以便将发送一批消息。 所处理的消息来自一个事件中心，并且将结果发送到另一个事件中心时，此方案中很常见。
+下面的示例演示如何使用`IAsyncCollector`接口发送一批消息。 当处理来自一个事件中心的消息并将结果发送到另一个事件中心时, 此方案很常见。
 
 ```csharp
 [FunctionName("EH2EH")]
@@ -676,7 +676,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为“eventHub”。 |
 |**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
-|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
+|**名称** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**eventHubName** |**EventHubName** | 仅适用于 Functions 2.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）  的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|
@@ -723,4 +723,4 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 |---------|---------|---------|
 |maxBatchSize|64|每个接收循环收到的最大事件计数。|
 |prefetchCount|不适用|基础 EventProcessorHost 将要使用的默认 PrefetchCount。|
-|batchCheckpointFrequency|第|创建 EventHub 游标检查点之前要处理的事件批数。|
+|batchCheckpointFrequency|1|创建 EventHub 游标检查点之前要处理的事件批数。|

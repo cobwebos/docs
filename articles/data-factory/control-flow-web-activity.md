@@ -12,15 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6153bf1162eaa1c7eab2c358977d754695b64fd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764282"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325398"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
+
+> [!NOTE]
+> Web 活动只能调用公开显示的 Url。 专用虚拟网络中承载的 Url 不支持此方法。
 
 ## <a name="syntax"></a>语法
 
@@ -61,7 +64,7 @@ Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+属性 | 说明 | 允许的值 | 必填
 -------- | ----------- | -------------- | --------
 name | Web 活动的名称 | String | 是
 type | 必须设置为 **WebActivity**。 | String | 是
@@ -86,7 +89,7 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 | 非 JSON 类型 | 不支持 | 不支持 |
 ||||
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 ### <a name="none"></a>无
 如果不需要身份验证，请排除“身份验证”属性。

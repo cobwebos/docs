@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 07/16/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 68d0f4f85bc8879191784f038c74fafc40c422b7
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 2cf0093d08c37c0941e86f9fc82b864aea14ebfe
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604690"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327091"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -244,17 +244,20 @@ PerItemErrorCount: 1006.
 
 | HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 补救 |
 |---------|-------------------|--------------|-------|-------------|
+| 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | 服务器上的分层文件无法访问。 如果在删除服务器终结点之前未重新调用该分层文件, 则会出现此问题。 | 若要解决此问题, 请参阅[删除服务器终结点后, 服务器上的分层文件无法访问](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)。 |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 由于尚未同步某个相关的文件夹，无法同步文件或目录更改。 在同步相关的更改后，此项将会同步。 | 无需采取措施。 |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 Azure 文件同步每天在服务器上创建临时 VSS 快照一次，以同步包含开放句柄的文件。 |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | 文件已更改，但同步尚未检测到此项更改。检测到此项更改后，同步将会恢复。 | 无需采取措施。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | 无法同步该文件，因为已达到 Azure 文件共享限制。 | 要解决此问题，请参阅疑难解答指南中的[达到 Azure 文件共享存储限制](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)部分。 |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | 此错误可能由于以下原因： 文件已由不受支持解决方案 （如 NTFS EFS) 加密、 文件有挂起状态的删除或文件位于 DFS-R 只读复制文件夹 | 如果文件已加密不受支持的解决方案，解密文件，并使用支持的加密解决方案。 有关支持解决方案的列表，请参阅计划指南中的[加密解决方案](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)部分。 如果文件处于删除待定状态，一旦关闭所有打开的文件句柄，将删除该文件。 如果在 DFS-R 只读复制文件夹位于该文件，则 Azure 文件同步不支持服务器终结点上 DFS-R 只读复制文件夹。 请参阅[规划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)有关详细信息。
+| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | 文件使用不受支持的解决方案 (如 NTFS EFS) 进行加密。 | 解密文件并使用受支持的加密解决方案。 有关支持解决方案的列表，请参阅计划指南中的[加密解决方案](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)部分。 |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | 发生此错误的原因如下:文件的删除挂起状态或文件位于 DFS R 只读复制文件夹中。 | 如果文件处于删除待定状态，一旦关闭所有打开的文件句柄，将删除该文件。 如果文件位于 DFS R 只读复制文件夹中, Azure 文件同步不支持 DFS 只读复制文件夹中的服务器终结点。 有关详细信息, 请参阅[规划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)。 |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同步期间更改了文件，因此需要重新同步。 | 无需采取措施。 |
 
+
 #### <a name="handling-unsupported-characters"></a>处理不受支持的字符
-如果**FileSyncErrorsReport.ps1** PowerShell 脚本显示由于不支持的字符 （错误代码 0x8007007b） 导致的失败，应删除或重命名从各自的文件名称的错误上的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用于标识不受支持的字符。
+如果**FileSyncErrorsReport** PowerShell 脚本显示由于不支持的字符 (错误代码 0x8007007b) 导致的失败, 则应从相应的文件名中删除或重命名出现错误的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用于标识不受支持的字符。
 
 下表包含 Azure 文件同步尚不支持的所有 Unicode 字符。
 
@@ -300,7 +303,7 @@ PerItemErrorCount: 1006.
 
 无需采取措施；服务器会重试。 如果此错误持续了几个小时，请创建支持请求。
 
-<a id="-2134364043"></a>**同步被阻止，直到更改检测完成还原后**  
+<a id="-2134364043"></a>**同步被阻止, 直到更改检测完成还原后**  
 
 | | |
 |-|-|
@@ -309,7 +312,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **所需的补救措施** | 否 |
 
-不需要执行任何操作。 文件共享时使用 Azure 备份还原 （云终结点），Azure 文件共享上的更改检测完成之前阻止同步。 更改检测运行它立即还原操作已完成，持续时间基于文件共享中文件的数量。
+不需要执行任何操作。 使用 Azure 备份还原文件或文件共享 (云终结点) 后, 同步会被阻止, 直到在 Azure 文件共享上完成更改检测。 一旦还原完成且持续时间基于文件共享中的文件数, 更改检测会立即运行。
 
 <a id="-2134364065"></a>**同步无法访问云终结点中指定的 Azure 文件共享。**  
 
@@ -736,7 +739,7 @@ if ($fileShare -eq $null) {
 1. 单击“角色分配”  选项卡以列出有权访问你的存储帐户的用户和应用程序（*服务主体*）。
 1. 检查“混合文件同步服务”是否与“读取器和数据访问”角色一起显示在列表中。   
 
-    ![存储帐户的访问控制选项卡中的混合文件同步服务服务主体的屏幕截图](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
+    ![存储帐户的 "访问控制" 选项卡中混合文件同步服务主体的屏幕截图](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
     如果“混合文件同步服务”  没有出现在列表中，请执行以下步骤：
 
@@ -797,14 +800,14 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 以下部分说明如何排查云分层问题，并确定问题是云存储问题还是服务器问题。
 
-<a id="monitor-tiering-activity"></a>**如何监视服务器上的分层活动**  
+### <a name="how-to-monitor-tiering-activity-on-a-server"></a>如何监视服务器上的分层活动  
 若要监视服务器上的分层活动，请使用遥测事件日志（位于“事件查看器”中的“应用程序和服务\Microsoft\FileSync\代理”下）中的事件 ID 9003、9016 和 9029。
 
 - 事件 ID 9003 提供服务器终结点的错误分布情况。 例如错误总数、错误代码，等等。请注意，将为每个错误代码记录一个事件。
 - 事件 ID 9016 提供卷的副本创建结果。 例如，可用空间百分比、会话中创建的文件副本数、无法创建副本的文件数，等等。
 - 事件 ID 9029 提供服务器终结点的副本创建会话信息。 例如，会话中尝试的文件数、会话分层的文件数、已分层的文件数，等等。
 
-<a id="monitor-recall-activity"></a>**如何监视服务器上的重新调用活动**  
+### <a name="how-to-monitor-recall-activity-on-a-server"></a>如何监视服务器上的撤回活动
 若要监视服务器上的回调活动，请使用遥测事件日志（位于“事件查看器”中的“应用程序和服务\Microsoft\FileSync\代理”下）中的事件 ID 9005、9006、9009 和 9059。
 
 - 事件 ID 9005 提供服务器终结点的重新调用可靠性。 例如，访问的唯一文件总数、访问失败的唯一文件总数，等等。
@@ -812,7 +815,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 - 事件 ID 9009 提供服务器终结点的回调会话信息。 例如，DurationSeconds、CountFilesRecallSucceeded、CountFilesRecallFailed 等。
 - 事件 ID 9059 提供服务器终结点的应用程序回调分布情况。 例如，ShareId、应用程序名称和 TotalEgressNetworkBytes。
 
-<a id="files-fail-tiering"></a>**排查文件无法分层的问题**  
+### <a name="how-to-troubleshoot-files-that-fail-to-tier"></a>如何对未能分层的文件进行故障排除
 如果文件无法分层到 Azure 文件：
 
 1. 在事件查看器中，查看位于 Applications and Services\Microsoft\FileSync\Agent 下的遥测、操作和诊断事件日志。 
@@ -828,7 +831,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 > [!NOTE]
 > 如果文件无法分层，则每小时在“遥测”事件日志中记录事件 ID 9003 一次（为每个错误代码记录一个事件）。 如果需要其他信息才能诊断问题，请使用“操作”和“诊断”事件日志。
 
-<a id="files-fail-recall"></a>排查无法重新调用文件的问题   
+### <a name="how-to-troubleshoot-files-that-fail-to-be-recalled"></a>如何对未能召回的文件进行故障排除  
 如果无法重新调用文件：
 1. 在事件查看器中，查看位于 Applications and Services\Microsoft\FileSync\Agent 下的遥测、操作和诊断事件日志。
     1. 验证文件是否在 Azure 文件共享中存在。
@@ -840,7 +843,88 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 > [!NOTE]
 > 如果文件无法重新调用，则每小时在“遥测”事件日志中记录事件 ID 9006 一次（为每个错误代码记录一个事件）。 如果需要其他信息才能诊断问题，请使用“操作”和“诊断”事件日志。
 
-<a id="files-unexpectedly-recalled"></a>**排查在服务器上意外重新调用文件的问题**  
+### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>删除服务器终结点后, 无法在服务器上访问分层文件
+如果在删除服务器终结点之前未重新调用这些文件, 则服务器上的分层文件将无法访问。
+
+如果分层文件不可访问, 则记录错误
+- 同步文件时, 错误代码-2147942467 (0x80070043-ERROR_BAD_NET_NAME) 记录在 ItemResults 事件日志中
+- 撤回文件时, 错误代码-2134376393 (0x80c80037-ECS_E_SYNC_SHARE_NOT_FOUND) 记录在 RecallResults 事件日志中
+
+如果满足以下条件, 则可以还原对分层文件的访问权限:
+- 已在过去30天内删除服务器终结点
+- 未删除云终结点 
+- 未删除文件共享
+- 未删除同步组
+
+如果满足上述条件, 则可以通过在同一同步组中的同一同步组内的同一路径上重新创建服务器终结点来还原对服务器上文件的访问权限。 
+
+如果未满足上述条件, 则无法还原访问, 因为服务器上的这些分层文件现在已孤立。 请按照下面的说明删除孤立的分层文件。
+
+**说明**
+- 当分层文件在服务器上不可访问时, 如果直接访问 Azure 文件共享, 则完整文件应仍可访问。
+- 若要防止将来使用孤立的分层文件, 请按照删除服务器终结点时[删除服务器终结](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)点中所述的步骤进行操作。
+
+<a id="get-orphaned"></a>**如何获取孤立分层文件的列表** 
+
+1. 验证是否安装了 Azure 文件同步 agent 版本5.1 或更高版本。
+2. 运行以下 PowerShell 命令以列出孤立的分层文件:
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+3. 保存 OrphanTieredFiles 输出文件, 以防文件在删除后需要从备份还原。
+
+<a id="remove-orphaned"></a>**如何删除孤立的分层文件** 
+
+*选项 1：删除孤立的分层文件*
+
+此选项将删除 Windows Server 上的孤立分层文件, 但需要删除服务器终结点 (如果该终结点由于30天后重新使用而存在), 或者连接到不同的同步组。 如果在重新创建服务器终结点之前在 Windows Server 或 Azure 文件共享上更新了文件, 则会发生文件冲突。
+
+1. 验证是否安装了 Azure 文件同步 agent 版本5.1 或更高版本。
+2. 备份 Azure 文件共享和服务器终结点位置。
+3. 按照[删除服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)中所述的步骤操作, 在同步组中删除服务器终结点 (如果存在)。
+
+> [!Warning]  
+> 如果在使用 StorageSyncOrphanedTieredFiles cmdlet 之前未删除服务器终结点, 则在服务器上删除孤立的分层文件将删除 Azure 文件共享中的完整文件。 
+
+4. 运行以下 PowerShell 命令以列出孤立的分层文件:
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+5. 保存 OrphanTieredFiles 输出文件, 以防文件在删除后需要从备份还原。
+6. 运行以下 PowerShell 命令以删除孤立的分层文件:
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFilesRemoved = Remove-StorageSyncOrphanedTieredFiles -Path <folder path containing orphaned tiered files> -Verbose
+$orphanFilesRemoved.OrphanedTieredFiles > DeletedOrphanFiles.txt
+```
+**说明** 
+- 在未同步到 Azure 文件共享的服务器上修改的分层文件将被删除。
+- 可访问 (而不是孤立) 的分层文件将不会被删除。
+- 非分层文件将保留在服务器上。
+
+7. 可选：如果在步骤3中删除服务器终结点, 请重新创建该终结点。
+
+*选项 2：装载 Azure 文件共享, 并在服务器上本地复制文件*
+
+此选项不需要删除服务器终结点, 但需要足够的磁盘空间来本地复制完整文件。
+
+1. 在具有孤立分层文件的 Windows 服务器上[装载](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)Azure 文件共享。
+2. 运行以下 PowerShell 命令以列出孤立的分层文件:
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+3. 使用 OrphanTieredFiles 输出文件标识服务器上的孤立分层文件。
+4. 通过将完整文件从 Azure 文件共享复制到 Windows Server 来覆盖孤立的分层文件。
+
+### <a name="how-to-troubleshoot-files-unexpectedly-recalled-on-a-server"></a>如何对服务器上意外召回的文件进行故障排除  
 读取大量文件的防病毒、备份和其他应用程序会导致意外的重新调用，除非这些应用程序遵循脱机属性并跳过读取这些文件的内容。 跳过支持此选项的产品的脱机文件可帮助避免在执行防病毒软件扫描或备份作业等操作时出现意外的重新调用。
 
 请咨询软件供应商，了解如何配置其解决方案以跳过读取脱机文件。
@@ -863,7 +947,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 如果问题未得到解决，请运行 AFSDiag 工具：
 1. 创建用于保存 AFSDiag 输出的目录（例如，C:\Output）。
     > [!NOTE]
-    >AFSDiag 将删除之前收集日志的输出目录中的所有内容。 指定输出位置未包含数据。
+    >AFSDiag 会在收集日志之前删除输出目录中的所有内容。 指定不包含数据的输出位置。
 2. 打开权限提升的 PowerShell 窗口并运行以下命令（在每条命令后面按 Enter）：
 
     ```powershell

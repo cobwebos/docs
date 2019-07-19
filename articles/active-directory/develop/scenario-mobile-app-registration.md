@@ -1,9 +1,9 @@
 ---
-title: 移动应用程序调用 web Api 的应用程序的代码配置 |Microsoft 标识平台
-description: 了解如何构建移动应用程序调用 web Api （应用程序的代码配置）
+title: 调用 Web API 的移动应用 - 应用的代码配置 | Microsoft 标识平台
+description: 了解如何构建调用 Web API 的移动应用（应用的代码配置）
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,36 +16,36 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b6ebab0eeca6895e1c7a0f6008972030d81da42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f43ae9da51f68c9765a36d27c993d1c9935d61fa
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962409"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326123"
 ---
-# <a name="mobile-app-that-calls-web-apis---app-registration"></a>调用 web Api 的应用注册的移动应用
+# <a name="mobile-app-that-calls-web-apis---app-registration"></a>调用 Web API 的移动应用 - 应用注册
 
-本文包含有关创建移动应用程序的应用程序注册说明。
+本文包含用于创建移动应用程序的应用注册说明。
 
 ## <a name="supported-account-types"></a>支持的帐户类型
 
-在移动应用程序中支持的帐户类型取决于你想要启用的体验和您的应用程序所面向的用户。
+在移动应用程序中支持的帐户类型取决于你想要启用的体验，以及应用的目标用户。
 
-## <a name="platform-configuration-and-redirect-uris"></a>平台配置和重定向 Uri  
+## <a name="platform-configuration-and-redirect-uris"></a>平台配置和重定向 URI  
 
-在创建移动应用时，最关键的注册步骤是重定向 URI。 这可以通过设置[身份验证边栏选项卡中的平台配置](https://aka.ms/MobileAppReg)。
+构建移动应用时，最关键的注册步骤是重定向 URI。 可以通过[“身份验证”边栏选项卡中的平台配置](https://aka.ms/MobileAppReg)对此进行设置。
 
-这种体验将启用应用以获取单一登录 (SSO) 通过 Microsoft Authenticator （和 Android 上的 Intune 公司门户） 以及支持设备管理策略。
+此体验将允许应用通过 Microsoft Authenticator（以及 Android 上的 Intune 公司门户）获取单一登录 (SSO)，以及支持设备管理策略。
 
-如果想要手动配置的重定向 URI，可以通过应用程序清单来执行此操作。 以下是建议的格式：
+如果首选以手动方式配置重定向 URI，则可通过应用程序清单来这样做。 建议的格式如下：
 
-- ***iOS***: `msauth.<BUNDLE_ID>://auth`
-- ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
-  - 可以使用通过 KeyTool 命令的版本或调试密钥生成 Android 签名哈希。
+- ***iOS***：`msauth.<BUNDLE_ID>://auth`
+- ***Android***：`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+  - Android 签名哈希可以通过 KeyTool 命令使用释放键或调试键来生成。
 
 ## <a name="api-permissions"></a>API 权限
 
-移动应用程序代表已登录用户调用 Api。 您的应用程序需要请求委托的权限，也称为作用域。 具体取决于所需的体验，这可以以静态方式通过 Azure 门户或动态地在运行时。 静态注册权限允许管理员轻松地批准您的应用程序，建议使用。
+移动应用程序代表已登录用户调用 API。 应用需要请求委托的权限（也称为作用域）。 根据所需体验，这可以通过 Azure 门户静态完成，也可以在运行时动态完成。 静态注册权限方便管理员批准应用，值得推荐。
 
 ## <a name="next-steps"></a>后续步骤
 

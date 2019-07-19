@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
-ms.author: kumud;anavin
-ms.openlocfilehash: 2cdf136a01678f7fb2e594b325cd78e8e0240c70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: anavin
+ms.openlocfilehash: fa647da6764ca61679aade2acc2849b474912278
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683416"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871986"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>创建虚拟网络对等互连 - 不同部署模型和不同订阅
 
@@ -56,7 +57,7 @@ ms.locfileid: "64683416"
 6. 在显示的“myVnetA - 访问控制(IAM)”边栏选项卡中，单击“+ 添加角色分配”   。
 7. 在显示的“添加角色分配”  边栏选项卡中，选择“角色”  框中的“网络参与者”  。
 8. 在“选择”框中，选择用户 B，或者键入用户 B 的电子邮件地址来搜索用户名  。 显示的用户列表来自要为其设置对等互连的虚拟网络所在的同一个 Azure Active Directory 租户。 单击出现在列表中的用户 B。
-9. 单击“ **保存**”。
+9. 单击“保存”  。
 10. 以用户 A 的身份注销门户，然后以用户 B 的身份登录。
 11. 单击“+ 新建”，在“在市场中搜索”框中键入“虚拟网络”，然后在搜索结果中单击“虚拟网络”     。
 12. 在显示的“虚拟网络”边栏选项卡中，在“选择部署模型”框中选择“经典”，然后单击“创建”     。

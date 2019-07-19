@@ -1,30 +1,31 @@
 ---
-title: 在 Azure 容器实例中使用正在启动的命令行
-description: 重写时部署 Azure 容器实例容器映像中配置的入口点
+title: 在 Azure 容器实例中使用启动命令行
+description: 部署 Azure 容器实例时, 重写容器映像中配置的入口点
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: da94a4c79694f511d41e5c8dda8c786fc7049726
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99440e22eb736522a25c2ee56bb07ef1d9967e66
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569635"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325666"
 ---
-# <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>若要重写默认命令行操作的容器实例中设置命令行
+# <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>在容器实例中设置命令行以覆盖默认的命令行操作
 
-创建容器实例时，可以选择指定的命令重写到容器映像提供支持的默认命令行指令。 此行为是类似于`--entrypoint`命令行参数`docker run`。
+创建容器实例时, 可以选择指定命令以将默认命令行指令融入重写到容器映像中。 此行为类似于的`--entrypoint`命令行`docker run`参数。
 
-像设置[环境变量](container-instances-environment-variables.md)容器实例的指定起始的命令行可用于批处理作业需要准备使用特定于任务的配置动态每个容器。
+与为容器实例设置[环境变量](container-instances-environment-variables.md)一样, 指定启动命令行对于需要使用特定于任务的配置动态准备每个容器的批处理作业非常有用。
 
-## <a name="command-line-guidelines"></a>命令行指导原则
+## <a name="command-line-guidelines"></a>命令行准则
 
-* 默认情况下，指定命令行*单一而无需 shell 启动进程*容器中。 例如，命令行可能会运行 Python 脚本或可执行文件。 
+* 默认情况下, 命令行指定一个*进程, 该进程在容器中不带 shell 的情况下启动*。 例如, 命令行可能运行 Python 脚本或可执行文件。 
 
-* 若要执行多个命令，请先通过设置容器操作系统中受支持的 shell 环境命令行。 示例：
+* 若要执行多个命令, 请通过设置容器操作系统中支持的 shell 环境来开始命令行。 示例：
 
   |操作系统  |默认 shell  |
   |---------|---------|
@@ -32,40 +33,40 @@ ms.locfileid: "64569635"
   |Alpine     |   `/bin/sh`      |
   |Windows     |    `cmd`     |
 
-  按照命令行程序将合并多个命令，在序列中运行的约定。
+  遵循 shell 的约定, 组合多个命令以便按顺序运行。
 
-* 具体取决于容器配置，可能需要设置命令行可执行文件的完整路径或参数。
+* 根据容器配置, 可能需要设置命令行可执行文件的完整路径或自变量。
 
-* 设置适当[重启策略](container-instances-restart-policy.md)对于容器实例，具体取决于是否在命令行指定一个长时间运行的任务或运行一次任务。 例如，重启策略的`Never`或`OnFailure`建议用于运行一次任务。 
+* 为容器实例设置适当的[重启策略](container-instances-restart-policy.md), 具体取决于命令行指定长时间运行的任务还是运行一次运行的任务。 例如, 对于只运行一次`Never`的`OnFailure`任务, 建议使用或的重新启动策略。 
 
-* 如果你需要在容器映像中设置的默认入口点有关的信息，使用[docker 映像检查](https://docs.docker.com/engine/reference/commandline/image_inspect/)命令。
+* 如果需要有关容器映像中的默认入口点集的信息, 请使用[docker image 检查](https://docs.docker.com/engine/reference/commandline/image_inspect/)命令。
 
 ## <a name="command-line-syntax"></a>命令行语法
 
-命令行语法各不相同，具体取决于 Azure API 或工具来创建实例。 如果指定 shell 环境，还发现在 shell 的命令语法约定。
+命令行语法根据用于创建实例的 Azure API 或工具而有所不同。 如果指定 shell 环境, 还应遵循 shell 的命令语法约定。
 
-* [az 容器创建][ az-container-create]命令：传递具有字符串`--command-line`参数。 示例： `--command-line "python myscript.py arg1 arg2"`)。
+* [az container create][az-container-create]命令:传递包含`--command-line`参数的字符串。 示例: `--command-line "python myscript.py arg1 arg2"`)。
 
-* [新 AzureRmContainerGroup] [ new-azurermcontainergroup] Azure PowerShell cmdlet:传递具有字符串`-Command`参数。 示例：`-Command "echo hello"`。
+* [新-get-azurermcontainergroup][new-azurermcontainergroup]Azure PowerShell cmdlet:传递包含`-Command`参数的字符串。 示例：`-Command "echo hello"`。
 
-* Azure 门户：在中**命令重写**容器配置的属性提供的不带引号的字符串，以逗号分隔列表。 示例： `python, myscript.py, arg1, arg2`)。 
+* Azure 门户：在容器配置的**命令重写**属性中, 提供一个逗号分隔的字符串列表 (不带引号)。 示例: `python, myscript.py, arg1, arg2`)。 
 
-* 资源管理器模板或 YAML 文件，或 Azure Sdk 之一：命令行属性指定为一个字符串数组。 示例： JSON 数组`["python", "myscript.py", "arg1", "arg2"]`Resource Manager 模板中。 
+* 资源管理器模板或 YAML 文件或 Azure Sdk 之一:将命令行属性指定为字符串数组。 示例: 资源管理器模板中`["python", "myscript.py", "arg1", "arg2"]`的 JSON 数组。 
 
-  如果您熟悉[Dockerfile](https://docs.docker.com/engine/reference/builder/)语法，此格式是类似于*exec* CMD 指令的窗体。
+  如果你熟悉[Dockerfile](https://docs.docker.com/engine/reference/builder/)语法, 此格式类似于 cmd.exe 指令的*exec*形式。
 
 ### <a name="examples"></a>示例
 
 |    |  Azure CLI   | 门户 | 模板 | 
 | ---- | ---- | --- | --- |
-| 单个命令 | `--command-line "python myscript.py arg1 arg2"` | **命令重写**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| 多个命令 | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**命令重写**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| 单个命令 | `--command-line "python myscript.py arg1 arg2"` | **命令替代**:`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| 多个命令 | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**命令替代**:`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Azure CLI 示例
 
-例如，修改的行为[microsoft/aci wordcount] [ aci-wordcount]容器映像，会分析莎士比亚著作中的文本*哈姆雷特*若要查找的最大频率出现的单词。 而不是分析*哈姆雷特*，可以设置指向不同的文本源的命令行。
+例如, 修改[microsoft/wordcount][aci-wordcount]容器映像的行为, 该映像分析莎士比亚的*哈姆雷特*中的文本, 以查找最常出现的单词。 您可以设置一个指向不同文本源的命令行, 而不是分析*哈姆雷特*。
 
-若要查看的输出[microsoft/aci wordcount] [ aci-wordcount]时，它将分析默认的文本，运行以下[az 容器创建][az-container-create]命令。 指定没有启动命令行，因此，默认容器命令运行。 出于演示目的，此示例设置[环境变量](container-instances-environment-variables.md)查找至少五个字母长的前 3 个字：
+查看[microsoft/wordcount][aci-wordcount] container when it analyzes the default text, run it with the following [az container create][az-container-create]命令的输出。 未指定任何启动命令行, 因此默认容器命令将运行。 出于说明目的, 此示例将设置[环境变量](container-instances-environment-variables.md)以查找长度至少为五个字符的前3个单词:
 
 ```azurecli-interactive
 az container create \
@@ -76,7 +77,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-容器的状态显示为*Terminated* (使用[az 容器显示][ az-container-show]检查状态)，显示具有日志[az 容器日志] [ az-container-logs]以查看输出。
+容器状态显示为已*终止*后 (使用[az container show][az-container-show] to check state), display the log with [az container logs][az-container-logs]查看输出。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -88,9 +89,9 @@ az container logs --resource-group myResourceGroup --name mycontainer1
 [('HAMLET', 386), ('HORATIO', 127), ('CLAUDIUS', 120)]
 ```
 
-现在设置第二个示例容器来通过指定不同的命令行分析不同的文本。 执行容器的 Python 脚本*wordcount.py*、 接受 URL 作为参数，并处理该页面的内容，而不是默认值。
+现在, 通过指定其他命令行来设置第二个示例容器来分析不同文本。 由容器*wordcount.py*执行的 Python 脚本接受 URL 作为参数, 并处理该页面的内容而不是默认值。
 
-例如，若要确定顶部都至少 5 位的 3 个字的字母长数据类型位于*罗密欧和朱丽叶*:
+例如, 若要在*罗密欧和朱丽叶*中确定长度至少为五个字符的前3个单词:
 
 ```azurecli-interactive
 az container create \
@@ -116,7 +117,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 ## <a name="next-steps"></a>后续步骤
 
-基于任务的情况下，例如批处理具有多个容器的大型数据集可以受益于在运行时的自定义命令行。 有关正在运行的基于任务的容器的详细信息，请参阅[重启策略运行容器化的任务](container-instances-restart-policy.md)。
+基于任务的方案 (如批处理包含多个容器的大型数据集) 可在运行时从自定义命令行受益。 有关运行基于任务的容器的详细信息, 请参阅[运行包含重新启动策略的容器化任务](container-instances-restart-policy.md)。
 
 <!-- LINKS - External -->
 [aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

@@ -2,21 +2,17 @@
 title: Python:对 Azure Data Lake Storage Gen1 执行的文件系统操作 | Microsoft Docs
 description: 了解如何使用 Python SDK 处理 Data Lake Storage Gen1 文件系统。
 services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 57efc718a51398b577a0078ba829d2f6209cab54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f65b6f0bfefd7763b72e8853b0314830a8c5327b
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878811"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68232554"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>使用 Python 在 Azure Data Lake Storage Gen1 上执行文件系统操作
 > [!div class="op_single_selector"]
@@ -29,7 +25,7 @@ ms.locfileid: "60878811"
 
 本文介绍了如何使用 Python SDK 在 Azure Data Lake Storage Gen1 上执行文件系统操作。 若要了解如何使用 Python 对 Data Lake Storage Gen1 执行帐户管理操作，请参阅[使用 Python 在 Data Lake Storage Gen1 上执行帐户管理操作](data-lake-store-get-started-python.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 * **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 
@@ -59,34 +55,34 @@ pip install azure-datalake-store
 
 2. 添加以下代码行导入所需的模块
 
-    ```
-    ## Use this only for Azure AD service-to-service authentication
-    from azure.common.credentials import ServicePrincipalCredentials
+   ```
+   ## Use this only for Azure AD service-to-service authentication
+   from azure.common.credentials import ServicePrincipalCredentials
 
-    ## Use this only for Azure AD end-user authentication
-    from azure.common.credentials import UserPassCredentials
+   ## Use this only for Azure AD end-user authentication
+   from azure.common.credentials import UserPassCredentials
 
-    ## Use this only for Azure AD multi-factor authentication
-    from msrestazure.azure_active_directory import AADTokenCredentials
+   ## Use this only for Azure AD multi-factor authentication
+   from msrestazure.azure_active_directory import AADTokenCredentials
 
-    ## Required for Azure Data Lake Storage Gen1 account management
-    from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
-    from azure.mgmt.datalake.store.models import DataLakeStoreAccount
+   ## Required for Azure Data Lake Storage Gen1 account management
+   from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
+   from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
-    ## Required for Azure Data Lake Storage Gen1 filesystem management
-    from azure.datalake.store import core, lib, multithread
+   ## Required for Azure Data Lake Storage Gen1 filesystem management
+   from azure.datalake.store import core, lib, multithread
 
-    # Common Azure imports
-    from azure.mgmt.resource.resources import ResourceManagementClient
-    from azure.mgmt.resource.resources.models import ResourceGroup
+   ## Common Azure imports
+   from azure.mgmt.resource.resources import ResourceManagementClient
+   from azure.mgmt.resource.resources.models import ResourceGroup
 
-    ## Use these as needed for your application
-    import logging, getpass, pprint, uuid, time
-    ```
+   ## Use these as needed for your application
+   import logging, getpass, pprint, uuid, time
+   ```
 
 3. 将更改保存到 mysample.py。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 本部分介绍有关使用 Azure AD 进行身份验证的不同方式。 可用选项包括：
 
@@ -129,7 +125,7 @@ pip install azure-datalake-store
 ## <a name="next-steps"></a>后续步骤
 * [使用 Python 在 Data Lake Storage Gen1 上执行帐户管理操作](data-lake-store-get-started-python.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Azure Data Lake Storage Gen1 Python（文件系统）参考](https://azure-datalake-store.readthedocs.io/en/latest)
 * [与 Azure Data Lake Storage Gen1 兼容的开源大数据应用程序](data-lake-store-compatible-oss-other-applications.md)

@@ -3,7 +3,7 @@ title: 在用户帐户下运行任务 - Azure Batch | Microsoft Docs
 description: 配置用于在 Azure Batch 中运行任务的用户帐户
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,15 +15,15 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bd5c16d755ef9b71f36b3d499838b12e6099ba6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93b3004303dd1587340b467c2fd52cb7233c95fd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595377"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322700"
 ---
 > [!NOTE] 
-> 本文中讨论的用户帐户是不同于用户帐户用于远程桌面协议 (RDP) 或安全外壳 (SSH)，出于安全原因。 
+> 出于安全原因, 本文中所述的用户帐户不同于用于远程桌面协议 (RDP) 或安全外壳 (SSH) 的用户帐户。 
 >
 > 若要通过 SSH 连接到运行 Linux 虚拟机配置的节点，请参阅[使用远程桌面连接到 Azure 中的 Linux VM](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)。 若要通过 RDP 连接到运行 Windows 的节点，请参阅[连接到 Windows Server VM](../virtual-machines/windows/connect-logon.md)。<br /><br />
 > 若要通过 RDP 连接到运行云服务配置的节点，请参阅[为 Azure 云服务中的角色启用远程桌面连接](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)。

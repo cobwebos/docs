@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c78a951258e3c279f96f44ceac469e4c38cf22c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 15c12aebccf34957db8442034ebbcd6ac7c107e1
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785562"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276727"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的 Web 应用 - 代码配置
 
@@ -44,7 +44,7 @@ ms.locfileid: "67785562"
 
 ASP.NET Core 中的配置在 `Startup.cs` 文件中发生。 需要订阅 `OnAuthorizationCodeReceived` Open ID Connect 事件，并通过此事件调用 MSAL.NET 的方法 `AcquireTokenFromAuthorizationCode`，这会影响到令牌缓存中的存储行为、所请求范围的访问令牌、在访问令牌即将过期时用于刷新访问令牌的刷新令牌，或者代表相同用户获取令牌（但为不同资源的令牌）的刷新令牌。
 
-下面的代码中的注释将帮助你了解编辑 MSAL.NET 和 ASP.NET Core 的某些困难方面。 中提供了完整的详细信息[ASP.NET Core Web 应用增量教程，第 2 章](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
+下面代码中的注释可帮助你了解一些复杂的 MSAL.NET 和 ASP.NET Core。 [ASP.NET Core Web 应用增量教程](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)中提供了完整的详细信息, 第2章
 
 ```CSharp
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
@@ -180,9 +180,12 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 }
 ```
 
+最后, 机密客户端应用程序还可以使用客户端证书或客户端断言来证明其身份, 而不是客户端机密。
+使用客户端断言是一种高级方案, 详细信息是[客户端断言](msal-net-client-assertions.md)
+
 ### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>ASP.NET (Core) Web 应用的 MSAL.NET 令牌缓存
 
-在 Web 应用（实际上是 Web API）中，令牌缓存实现不同于桌面应用程序令牌缓存实现（通常[基于文件](scenario-desktop-acquire-token.md#file-based-token-cache)）。 它可以使用 ASP.NET/ASP.NET Core 会话、Redis 缓存、数据库，甚至 Azure Blob 存储。 在上面的代码片段中，这是绑定缓存服务的 `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` 方法调用的对象。 本方案指南不会介绍相关的详细信息，但提供了链接。
+在 Web 应用（实际上是 Web API）中，令牌缓存实现不同于桌面应用程序令牌缓存实现（通常[基于文件](scenario-desktop-acquire-token.md#file-based-token-cache)）。 它可以使用 ASP.NET/ASP.NET Core 会话、Redis 缓存、数据库，甚至 Azure Blob 存储。 在上述代码片段中, 这是`EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);`方法调用的对象, 该对象绑定缓存服务。 本方案指南不会介绍相关的详细信息，但提供了链接。
 
 > [!IMPORTANT]
 > 对于 Web 应用和 Web API，要认识到的一个要点是，每个用户（每个帐户）应有一个令牌缓存。 需要为每个帐户序列化令牌缓存。

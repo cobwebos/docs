@@ -1,6 +1,6 @@
 ---
 title: Azure 状态监视器 v2 API 参考：禁用监视 |Microsoft Docs
-description: 状态监视器 v2 API 引用。 禁用 ApplicationInsightsMonitoring。 无需重新部署网站即可监视网站性能。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
+description: 状态监视器 v2 API 参考。 ApplicationInsightsMonitoring。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,26 +12,21 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 98171692284f5f28fb189e2658d207fb80d428ba
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 368365251ec61464869c6120ded2ec2237acffea
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807144"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326415"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring-v040-alpha"></a>状态监视器 v2 API：禁用 ApplicationInsightsMonitoring (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>状态监视器 v2 API：ApplicationInsightsMonitoring
 
-本文介绍的 cmdlet 时的成员[Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
-
-> [!IMPORTANT]
-> 状态监视器 v2 目前为公共预览版。
-> 没有附带服务级别协议，提供此预览版本，我们不建议将其用于生产工作负荷。 可能不支持某些功能，以及一些可能会受约束的功能。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
 
 ## <a name="description"></a>描述
 
-禁用监视目标计算机上。
-此 cmdlet 将删除对 IIS applicationHost.config 的编辑和删除注册表项。
+在目标计算机上禁用监视。
+此 cmdlet 将删除对 IIS applicationHost.config 的编辑并删除注册表项。
 
 > [!IMPORTANT] 
 > 此 cmdlet 需要具有管理员权限的 PowerShell 会话。
@@ -45,7 +40,7 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 ## <a name="parameters"></a>Parameters 
 
 ### <a name="-verbose"></a>-Verbose
-**通用参数。** 使用此开关以显示详细的日志。
+**通用参数。** 使用此开关可显示详细日志。
 
 ## <a name="output"></a>Output
 
@@ -77,4 +72,4 @@ Successfully disabled Application Insights Status Monitor
 ## <a name="next-steps"></a>后续步骤
 
  使用状态监视器 v2 执行更多操作：
- - 使用指南，了解如何[进行故障排除](status-monitor-v2-troubleshoot.md)状态监视器 v2。
+ - 使用我们的指南对状态监视器 v2 进行[故障排除](status-monitor-v2-troubleshoot.md)。

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 7fab3b05429e430b444c2a14213c524fbf19a01d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 66022b5e4885c515bd6117f9a44b8108ff84ae5c
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171713"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250096"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
 
@@ -109,7 +109,7 @@ ms.locfileid: "66171713"
    ```
 
     >[!NOTE]
-    >为了从配置服务器**拉取最新的证书**来横向扩展流程服务器，请执行命令 *“<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt*
+    >若要从配置服务器向横向扩展进程服务器**拉取最新证书**, 请执行命令 *"\<安装 Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe >"--registermt*
 
 8. 最后，通过执行以下命令重启 obengine。
    ```
@@ -154,13 +154,13 @@ ms.locfileid: "66171713"
     ![更新](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 将更新安装程序文件下载到配置服务器上。
 
-    ![更新](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Update](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. 双击以运行安装程序。
 5. 安装程序检测计算机上运行的当前版本。 单击“是”  开始升级。
 6. 升级完成时，验证服务器配置。
 
-    ![更新](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Update](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. 单击“完成”  关闭安装程序。
 8. 若要升级其余的 Site Recovery 组件，请参阅我们的[升级指南](https://aka.ms/asr_vmware_upgrades)。
@@ -181,23 +181,23 @@ ms.locfileid: "66171713"
   ```
 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-|参数名称| Type | 描述| 值|
+|参数名称| 类型 | 描述| 值|
 |-|-|-|-|
-| /ServerMode|必选|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
-|/InstallLocation|必选|用于安装组件的文件夹| 计算机上的任意文件夹|
-|/MySQLCredsFilePath|必选|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
-|/VaultCredsFilePath|必选|保管库凭据文件的路径|有效的文件路径|
-|/EnvType|需要|要保护的环境类型 |VMware<br>NonVMware|
-|/PSIP|必选|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/CSIP|需要|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/PassphraseFilePath|必选|通行短语文件位置的完整路径|有效的文件路径|
+| /ServerMode|必填|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
+|/InstallLocation|需要|用于安装组件的文件夹| 计算机上的任意文件夹|
+|/MySQLCredsFilePath|必填|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
+|/VaultCredsFilePath|必填|保管库凭据文件的路径|有效的文件路径|
+|/EnvType|必填|要保护的环境类型 |VMware<br>NonVMware|
+|/PSIP|需要|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/CSIP|必填|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/PassphraseFilePath|必填|通行短语文件位置的完整路径|有效的文件路径|
 |/BypassProxy|可选|指定配置服务器不使用代理连接到 Azure|若要从 Venu 获取此值|
 |/ProxySettingsFilePath|可选|代理设置（默认代理需要身份验证，或自定义代理）|文件应采用以下指定格式|
 |DataTransferSecurePort|可选|PSIP 上用于复制数据的端口号| 有效端口号（默认值为 9433）|
 |/SkipSpaceCheck|可选|跳过缓存磁盘的空间检查| |
-|/AcceptThirdpartyEULA|必选|该标志表示接受第三方 EULA| |
+|/AcceptThirdpartyEULA|必填|该标志表示接受第三方 EULA| |
 |/ShowThirdpartyEULA|可选|显示第三方 EULA。 如果作为输入提供，将忽略所有其他参数| |
 
 

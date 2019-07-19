@@ -4,7 +4,7 @@ description: 记录并分析 Azure Batch 帐户资源（诸如池和任务）的
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: e1fc405951789305b0df86fd0f7b91890fb45c06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242623"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323631"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
@@ -91,7 +91,7 @@ ms.locfileid: "66242623"
 
 * 将 Batch 诊断日志事件流式传输到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 数据中心每秒可以接受数百万事件，然后可以使用任何实时分析提供程序转换并存储这些事件。 
 
-* 发送到诊断日志[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)，可以在其中对其进行分析或将其导出以在 Power BI 或 Excel 中分析。
+* 将诊断日志发送到[Azure Monitor 日志](../log-analytics/log-analytics-overview.md), 您可以在其中对这些日志进行分析, 或者将其导出以在 Power BI 或 Excel 中进行分析。
 
 > [!NOTE]
 > 使用 Azure 服务存储或处理诊断日志数据可能会产生额外的费用。 
@@ -105,7 +105,7 @@ ms.locfileid: "66242623"
 
     选择存储帐户时，请选择性地设置保留策略。 如果未指定保留天数，则数据在存储帐户的生存期内会一直保留。
 
-4. 单击“ **保存**”。
+4. 单击“保存”  。
 
     ![Batch 诊断](media/batch-diagnostics/diagnostics-portal.png)
 
@@ -123,7 +123,7 @@ BATCHACCOUNTS/{batch account name}/y={four-digit numeric year}/
 m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
-示例：
+例如：
 
 ```
 insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 12fd1b03e58d1c62157c6652ce96d8f0172dadb2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 9c05f3cf9a4c6fc916f1c9578de7aee6d0190ee5
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606104"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327147"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -21,11 +21,11 @@ ms.locfileid: "67606104"
 强烈建议先阅读[规划 Azure 文件部署](storage-files-planning.md)和[规划 Azure 文件同步部署](storage-sync-files-planning.md)，再按照本文中的步骤进行操作。
 
 ## <a name="prerequisites"></a>先决条件
-* Azure 文件共享在同一区域中你想要部署 Azure 文件同步。有关详细信息，请参阅：
+* 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#region-availability)。
     - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
 * 至少一个支持与 Azure 文件同步进行同步的 Windows Server 实例或 Windows Server 群集。有关支持的 Windows Server 版本的详细信息，请参阅 [Windows Server 的互操作性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)。
-* 可使用 PowerShell 5.1 或 PowerShell 6 + Az PowerShell 模块。 可以在任何支持的系统，但服务器注册 cmdlet 必须始终运行 Windows Server 实例上，包括非 Windows 系统上为 Azure 文件同步使用 Az PowerShell 模块是注册 （这可以直接或通过 PowerShell远程处理）。 在 Windows Server 2012 R2，可以验证您至少运行 PowerShell 5.1。\*通过查看的值**PSVersion**的属性 **$PSVersionTable**对象：
+* Az PowerShell 模块可与 PowerShell 5.1 或 PowerShell 6 + 一起使用。 你可以在任何支持的系统 (包括非 Windows 系统) 上使用 Az PowerShell module for Azure 文件同步, 但必须始终在要注册的 Windows Server 实例上运行服务器注册 cmdlet (可以直接或通过 PowerShell 执行此操作)远程处理)。 在 Windows Server 2012 R2 上, 可以验证是否至少运行了 PowerShell 5.1。通过查看 **$PSVersionTable**对象的 PSVersion 属性的值:  \*
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -33,30 +33,30 @@ ms.locfileid: "67606104"
 
     与 Windows Server 2012 R2 的全新安装一样，如果 PSVersion 值低于 5.1.\*，可通过下载并安装 [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) 轻松升级。 需下载和安装的 Windows Server 2012 R2 的相应包为 Win8.1AndW2K12R2-KB\*\*\*\*\*\*\*-x64.msu  。 
 
-    PowerShell 6 + 可与任何受支持的系统，并且可以通过下载其[GitHub 页面](https://github.com/PowerShell/PowerShell#get-powershell)。 
+    PowerShell 6 + 可用于任何受支持的系统, 并且可以通过其[GitHub 页面](https://github.com/PowerShell/PowerShell#get-powershell)下载。 
 
     > [!Important]  
-    > 如果你打算使用服务器注册 UI，而不是直接从 PowerShell 注册，则必须使用 PowerShell 5.1。
+    > 如果你计划使用服务器注册 UI, 而不是直接从 PowerShell 注册, 则必须使用 PowerShell 5.1。
 
-* 如果您选择要使用 PowerShell 5.1，请确保在已安装最少.NET 4.7.2。 详细了解如何[.NET Framework 版本和依赖关系](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)在系统上。
+* 如果已选择使用 PowerShell 5.1, 请确保至少安装了 .NET 4.7.2。 详细了解系统上的[.NET Framework 版本和依赖关系](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)。
 
     > [!Important]  
-    > 如果要在 Windows Server Core 上安装.NET 4.7.2+，则必须安装与`quiet`和`norestart`标志，否则安装将失败。 例如，如果安装.NET 4.8，命令将如以下所示：
+    > 如果在 Windows Server Core 上安装 .net 4.7.2 +, 则必须用`quiet`和`norestart`标志安装, 否则安装将失败。 例如, 如果安装 .NET 4.8, 则命令将如下所示:
     > ```PowerShell
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-* Az PowerShell 模块，可以按照此处的说明进行安装：[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+* Az PowerShell 模块, 可按照此处的说明进行安装:[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
      
     > [!Note]  
-    > Az.StorageSync 模块现安装 Az PowerShell 模块时已自动安装。
+    > 安装 Az PowerShell 模块后, 将自动安装 Az Storagesync.sys 模块。
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>准备 Windows Server，用于 Azure 文件同步
 对于要与 Azure 文件同步配合使用的每个服务器（包括故障转移群集中的服务器节点），请禁用“Internet Explorer 增强的安全性配置”。  只需在最初注册服务器时禁用。 可在注册服务器后重新启用。
 
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 > [!Note]  
-> 如果你正在部署 Windows Server Core 上的 Azure 文件同步，可以跳过此步骤。
+> 如果要在 Windows Server Core 上部署 Azure 文件同步, 则可以跳过此步骤。
 
 1. 打开服务器管理器。
 2. 单击“本地服务器”  ：  
@@ -98,7 +98,7 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 > 存储同步服务已从其部署到的订阅和资源组继承访问权限。 我们建议仔细检查谁有权访问该服务。 具有写访问权限的实体可以开始从已注册到此存储同步服务的服务器同步新的文件集，使数据流向这些实体可以访问的 Azure 存储。
 
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
-若要部署存储同步服务，请转到[Azure 门户](https://portal.azure.com/)，单击*创建资源*，然后搜索 Azure 文件同步。在搜索结果中，选择“Azure 文件同步”，然后选择“创建”，打开“部署存储同步”选项卡    。
+若要部署存储同步服务, 请单击 " [Azure 门户](https://portal.azure.com/)", 再单击 "*创建资源*", 然后搜索 Azure 文件同步。在搜索结果中，选择“Azure 文件同步”，然后选择“创建”，打开“部署存储同步”选项卡    。
 
 在打开的窗格中，输入以下信息：
 
@@ -110,7 +110,7 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 完成后，选择“创建”部署存储同步服务  。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-替换 **< Az_Region >** ， **< RG_Name >** ，并 **< my_storage_sync_service >** 与你自己的值，然后使用以下命令来创建和部署存储同步服务：
+使用你自己的值替换 **< Az_Region >** 、 **< RG_Name >** 和 **< my_storage_sync_service >** , 然后使用以下项创建和部署存储同步服务:
 
 ```powershell
 $hostType = (Get-Host).Name
@@ -357,6 +357,19 @@ if ($cloudTieringDesired) {
 
 ---
 
+## <a name="configure-firewall-and-vnet-settings"></a>配置防火墙和 VNet 设置
+
+### <a name="portal"></a>门户
+如果要将 Azure 文件同步配置为使用防火墙和虚拟网络设置, 请执行以下操作:
+
+1. 在 Azure 门户中, 导航到要保护的存储帐户。
+1. 选择 lefthand 菜单上的 "**防火墙和虚拟网络**" 按钮。
+1. 在 "**允许访问**" 下选择**所选网络**。
+1. 确保你的服务器 IP 或虚拟网络列在相应的部分下。
+1. 请确保选中 "**允许受信任的 Microsoft 服务访问此存储帐户**"。
+1. 选择“保存”以保存设置  。
+
+
 ## <a name="onboarding-with-azure-file-sync"></a>使用 Azure 文件同步进行载入
 若要通过 Azure 文件同步在不停机的情况下首次进行载入，同时保持完整的文件保真度和访问控制列表 (ACL)，则建议采用的步骤如下所述：
  
@@ -375,13 +388,13 @@ if ($cloudTieringDesired) {
  
 如果没有可用于初始载入的额外存储空间，并且希望附加到现有的共享，则可以在 Azure 文件共享中预先播种数据。 当且仅当可以接受停机并且绝对可以保证在初始载入过程中服务器共享上不会发生数据更改时，才建议使用此方法。 
  
-1. 确保任何服务器上的数据在载入过程中都不会发生更改。
-2. 使用基于 SMB 的任何数据传输工具（例如 Robocopy、直接 SMB 复制）在 Azure 文件共享中预先播种服务器数据。 由于 AzCopy 不通过 SMB 上传数据，因此不能使用它进行预先播种。
+1. 确保任何服务器上的数据在载入过程中都不会更改。
+2. 使用任何数据传输工具通过 SMB 对 Azure 文件共享进行预 seed, 例如 Robocopy、直接 SMB 副本。 由于 AzCopy 不通过 SMB 上传数据，因此不能使用它进行预先播种。
 3. 使用所需的指向现有共享的服务器终结点创建 Azure 文件同步拓扑。
 4. 让同步服务在所有终结点上完成对帐过程。 
 5. 在对帐完成后，你可以打开共享进行更改。
  
-请注意，预先播种方法当前有几个限制 - 
+目前, 预播种方法有一些限制- 
 - 不能保持文件的完全保真度。 例如，文件会丢失 ACL 和时间戳。
 - 在同步拓扑完全启动并运行之前更改服务器上的数据可能会导致各个服务器终结点上发生冲突。  
 - 创建云终结点后，Azure 文件同步在启动初始同步之前会运行一个流程来检测云中的文件。完成此流程所需的时间取决于各种因素，例如，网速、可用带宽以及文件和文件夹的数目。 对于预览版，粗略估计，检测流程以大约每秒 10 个文件的速度运行。因此，当在云中预先播种数据时，即使预先播种运行速度很快，获得完全运行的系统所需的总体时间也会更长。

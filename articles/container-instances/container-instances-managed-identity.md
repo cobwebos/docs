@@ -3,17 +3,18 @@ title: 将托管标识与 Azure 容器实例结合使用
 description: 了解如何配合 Azure 容器实例中的其他 Azure 服务使用托管标识进行身份验证。
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: c14c3aaf2a5d648572fdc251540264e8057a00f9
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 773650e5e5e85d4a5fca0b3755f3730921cc5f2e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144306"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325929"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -252,7 +253,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必替换为密钥保管库 URL 中的名称 (*https:\//mykeyvault.vault.azure.net/...* ):
+现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必在 URL 中替换密钥保管库的名称 (*https:\//mykeyvault.vault.azure.net/* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

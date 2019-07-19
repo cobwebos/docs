@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11b71b4656181da328cf630cefa4d25cb4f4efda
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 35cb6cba02a1bdcf9f19c7f02b7e2ca4d01e0d3f
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482119"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67983668"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -75,7 +75,7 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 
 除使用 Azure AD 联接过程之外，还可手动将常规用户提升为某个特定设备上的本地管理员。 此步骤要求用户已是本地管理员组的成员。 
 
-从 **Windows 10 1709** 版本开始，可从“设置”->“帐户”->“其他用户”执行此任务  。 选择“添加工作单位或学校用户”，在“用户帐户”下输入用户的 UPN，然后在“帐户类型”下选择“管理员”      
+从**Windows 10 1709**版本开始, 你可以通过 "**设置-> 帐户" (> 其他用户**) 来执行此任务。 选择“添加工作单位或学校用户”，在“用户帐户”下输入用户的 UPN，然后在“帐户类型”下选择“管理员”      
  
 此外，还可使用命令提示符添加用户：
 
@@ -93,4 +93,4 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要大致了解如何在 Azure 门户中管理设备，请参阅[使用 Azure 门户管理设备](device-management-azure-portal.md)
-- 若要了解有关基于设备的条件性访问的详细信息，请参阅[配置 Azure Active Directory 基于设备的条件性访问策略](../conditional-access/require-managed-devices.md)。
+- 若要了解有关基于设备的条件性访问的详细信息, 请参阅[配置 Azure Active Directory 基于设备的条件性访问策略](../conditional-access/require-managed-devices.md)。

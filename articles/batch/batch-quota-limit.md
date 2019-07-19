@@ -4,7 +4,7 @@ description: 了解默认的 Azure Batch 配额、限制和约束，以及如何
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
 ms.service: batch
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: de32ae16ea4d3c52b8017f35ae5af6009ab59205
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 312f6746cb02aa66b0e7f8b47cb10e52558fa542
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080912"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323162"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -36,7 +36,7 @@ ms.locfileid: "67080912"
 
 配额是一种信用限制，不附带容量保证。 如果有大规模的容量需求，请联系 Azure 支持。
 
-此外请注意，配额不能保证值。 配额可以根据从 Batch 服务或用户请求以更改配额值的更改而有所不同。
+另请注意，配额并非获得保证的值。 配额因 Batch 服务的变化而变化，用户也可以请求更改配额值。
 
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "67080912"
 
 ## <a name="pool-size-limits"></a>池大小限制
 
-池大小限制由 Batch 服务设置。 与不同[资源配额](#resource-quotas)，不能更改这些值。 节点间通信和自定义映像的唯一池具有不同于标准配额限制。
+池大小限制由 Batch 服务设置。 与[资源配额](#resource-quotas)不同，这些值无法更改。 只有那些使用节点间通信和自定义映像的池的限制不同于标准配额。
 
 | **资源** | **最大限制** |
 | --- | --- |
@@ -61,7 +61,7 @@ ms.locfileid: "67080912"
 
 ## <a name="other-limits"></a>其他限制
 
-设置由 Batch 服务的其他限制。 与不同[资源配额](#resource-quotas)，不能更改这些值。
+其他由 Batch 服务设置的限制。 与[资源配额](#resource-quotas)不同，这些值无法更改。
 
 | **资源** | **最大限制** |
 | --- | --- |
@@ -71,7 +71,7 @@ ms.locfileid: "67080912"
 | 每个池的应用程序包数 | 10 |
 | 最长任务生存期 | 180 天<sup>1</sup> |
 
-<sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 180 天。 已完成的任务保留七天;最大生存期内未完成的任务的数据不可访问。
+<sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 180 天。 已完成的任务保留7天;不能在最大生存期内完成的任务数据不可访问。
 
 ## <a name="view-batch-quotas"></a>查看 Batch 配额
 
@@ -85,15 +85,15 @@ ms.locfileid: "67080912"
 
 ## <a name="increase-a-quota"></a>提高配额
 
-执行以下步骤，使用 [Azure 门户][portal]请求提高批处理帐户或订阅的配额。 可以提高哪种配额取决于批处理帐户的池分配模式。 若要请求增加配额，必须包含你想要增加的配额的 VM 系列。 应用增加配额时，它被应用于所有系列的 Vm。
+执行以下步骤，使用 [Azure 门户][portal]请求提高批处理帐户或订阅的配额。 可以提高哪种配额取决于批处理帐户的池分配模式。 若要请求增加配额，必须在请求中包括要增加其配额的 VM 系列。 应用增加配额的措施时，会应用到所有系列的 VM。
 
-### <a name="increase-cores-quota-in-batch"></a>在批处理中增加内核配额 
+### <a name="increase-cores-quota-in-batch"></a>提高 Batch 中的核心数配额 
 
 1. 在门户仪表板上选择“帮助 + 支持”  磁贴，或单击门户右上角的问号 ( **?** )。
 1. 选择“新建支持请求”   > “基本”  。
 1. 在“基本信息”  中：
    
-    a. **问题类型** > **服务和订阅限制 （配额）**
+    a. **问题类型** > **服务和订阅限制(配额)**
    
     b. 选择订阅。
    
@@ -103,19 +103,19 @@ ms.locfileid: "67080912"
     
 1. 在“详细信息”  中：
       
-    a. 在中**提供的详细信息**、 指定的位置、 配额类型和 Batch 帐户。
+    a. 在“提供详细信息”中，指定位置、配额类型和 Batch 帐户。 
     
-    ![增加 batch 配额][quota_increase]
+    ![批处理配额增加][quota_increase]
 
     配额类型包括：
 
-    * **每个批处理帐户**  
-        值特定于单个批处理帐户，包括专用和低优先级核心数和作业和池的数量。
+    * **按 Batch 帐户**  
+        特定于单个 Batch 帐户的值，包括专用核心数和低优先级核心数，以及作业和池的数目。
         
-    * **每个区域**  
-        适用于在区域中的所有批处理帐户和包括的每个区域每个订阅的 Batch 帐户数的值。
+    * **按区域**  
+        适用于某个区域中所有 Batch 帐户的值，包括单个订阅中单个区域的 Batch 帐户数。
 
-    低优先级配额是跨所有 VM 系列的单个值。 如果您需要受约束的 Sku，则必须选择**低优先级核心**并包含请求的 VM 系列。
+    低优先级配额是所有 VM 系列中的单个值。 如果需要受约束的 SKU，必须选择“低优先级核心数”，并包括要请求的 VM 系列。 
 
     b. 根据[业务影响情况][support_sev]选择“严重性”  。
 
@@ -127,9 +127,9 @@ ms.locfileid: "67080912"
    
     b. 输入并确认所需的联系人详细信息。
    
-    选择**创建**来提交支持请求。
+    选择“创建  ”，提交支持请求。
 
-提交支持请求后，Azure 支持人员将与你取得联系。 在几分钟时间或最多两个工作日内，可能已完成配额请求。
+提交支持请求后，Azure 支持人员将与你取得联系。 配额请求可能会在数分钟内完成，也可能需要长达两个工作日才能完成。
 
 ## <a name="related-quotas-for-vm-pools"></a>VM 池的相关配额
 

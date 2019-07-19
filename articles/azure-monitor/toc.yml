@@ -179,7 +179,7 @@
                   displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
                   href: app/asp-net.md
                 - name: .NET 控制台
-                  displayname: 'console, .NET, dotnet console, dotenet, c#, csharp, NET'
+                  displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
                   href: app/console.md
                 - name: ILogger
                   displayname: 'ilogger, logging, log'
@@ -295,7 +295,7 @@
                 - name: 性能测试
                   href: app/performance-testing.md
                 - name: 故障排除
-                  displayname: 'availability, troublshoot, troubleshoot availability'
+                  displayname: 'availability, troubleshoot, troubleshoot availability'
                   href: app/troubleshoot-availability.md
             - name: 分布式跟踪
               items:
@@ -497,6 +497,8 @@
                   href: insights/container-insights-alerts.md
                 - name: 代理管理
                   href: insights/container-insights-manage-agent.md
+                - name: 配置代理收集设置
+                  href: insights/container-insights-agent-config.md
                 - name: 更新以启用指标
                   href: insights/container-insights-update-metrics.md
                 - name: 故障排除
@@ -612,8 +614,6 @@
                   href: insights/vminsights-workbooks.md
                 - name: 使用日志查询分析数据
                   href: insights/vminsights-log-search.md
-                - name: 配置代理收集设置
-                  href: insights/container-insights-agent-config.md
                 - name: 禁用监视
                   href: insights/vminsights-optout.md
             - name: 容量和性能解决方案

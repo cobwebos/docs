@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 13e35ab93fc37541548785c6355489eaf3a3efc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b815ba80ac0860a4248b27e4013da4a8a9d12e18
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754549"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321297"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>设备到云 IoT 中心消息的消息扩充（预览版）
 
@@ -35,9 +35,12 @@ ms.locfileid: "66754549"
 
 * 任意静态字符串。 不允许条件、逻辑、操作和函数等动态值。 例如，如果你开发由多个客户使用的 SaaS 应用程序，可为每个客户分配一个标识符，并使该标识符在应用程序中可用。 当该应用程序运行时，IoT 中心会使用客户的标识符来戳记设备遥测消息，从而可为每个客户以不同的方式处理消息。
 
+* 发送消息的 IoT 中心的名称。 此值为 *$iothubname*。
+
 * 设备孪生中的信息，例如其路径。 示例包括 *$twin.tags.field* 和 *$twin.tags.latitude*。
 
-* 发送消息的 IoT 中心的名称。 此值为 *$iothubname*。
+   > [!NOTE]
+   > 目前, 仅 $iothubname、$twin、$twin 和 $twin 都是消息扩充的支持的变量和属性。
 
 ## <a name="applying-enrichments"></a>应用扩充
 

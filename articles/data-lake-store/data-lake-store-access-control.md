@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 211cb32298b17bb9e4023bf8bc74233c3916f58d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879100"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226100"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的访问控制
 
@@ -45,7 +45,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和文件夹使用这些权限：   
 
-|            |    文件     |   Folder |
+|            |    文件     |   文件夹 |
 |------------|-------------|----------|
 | **读取 (R)** | 可以读取文件内容 | 需有“读取”和“执行”权限才能列出文件夹内容  |
 | **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在文件夹中创建子项   |
@@ -71,15 +71,15 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 以下常见方案可帮助你了解对 Data Lake Storage Gen1 帐户执行特定操作所需的权限。
 
-| Operation | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
+| 操作 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | 读取      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | 追加到 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
 | DELETE    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | 创建    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| 列出      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| 列出      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| 列出      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| 列表      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| 列表      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| 列表      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -166,7 +166,7 @@ def access_check( user, desired_perms, path ) :
   # Handle the owning user. Note that mask IS NOT used.
   entry = get_acl_entry( path, OWNER )
   if (user == entry.identity)
-      return ( (desired_perms & e.permissions) == desired_perms )
+      return ( (desired_perms & entry.permissions) == desired_perms )
 
   # Handle the named users. Note that mask IS used.
   entries = get_acl_entries( path, NAMED_USER )
@@ -216,9 +216,9 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="umask"></a>umask
 
-创建文件或文件夹时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父文件夹上的 9 位值，其中包含  “负责人用户”、  “负责人组”和“其他”  的 RWX 值。
+创建文件或文件夹时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父文件夹上的一个9位值, 其中包含用于**拥有用户**、**拥有组**和**其他**的 RWX 值。
 
-Azure Data Lake Storage Gen1 的 umask 是设置为 007 的常量值。 此值将转换为
+Azure Data Lake Storage Gen1 的 umask 是设置为007的常量值。 此值将转换为
 
 | umask 组件     | 数字形式 | 简短形式 | 含义 |
 |---------------------|--------------|------------|---------|
@@ -250,7 +250,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
-不。 Data Lake Storage Gen1 帐户始终启用了通过 ACL 进行的访问控制。
+否。 Data Lake Storage Gen1 帐户始终启用了通过 ACL 进行的访问控制。
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>以递归方式删除文件夹及其内容需要哪些权限？
 
@@ -297,6 +297,6 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [在 Linux 上使用访问控制列表 (ACL)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)

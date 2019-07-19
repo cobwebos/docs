@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 02f772d02f5cc6f188d69b5e79debc0013cf1faa
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: e5674ffb4325eb27af8d0673b2d6ad5ba3a6195e
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488501"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854349"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -39,7 +39,7 @@ ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连�
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>如果我购买了具有给定带宽的 ExpressRoute 线路，我必须从网络服务提供商购买具有相同速度的 VPN 连接吗？
 
-不。 可以从服务提供商购买任何速度的 VPN 连接。 但是，与 Azure 的连接速度限制为购买的 ExpressRoute 线路带宽。
+否。 可以从服务提供商购买任何速度的 VPN 连接。 但是，与 Azure 的连接速度限制为购买的 ExpressRoute 线路带宽。
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>如果我购买了具有给定带宽的 ExpressRoute 线路，是否可以根据需要提升到更高的速度？
 
@@ -80,7 +80,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
-* Power BI-可通过一个 Azure 区域社区，请参阅[此处](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)有关如何查找出 Power BI 租户的区域。 
+* Power BI-通过 Azure 区域社区提供, 请参阅[此处](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)了解如何查找 Power BI 租户的区域。 
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/)（Azure 全球服务社区）
 * 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br><br>**不支持以下服务**：
@@ -123,17 +123,23 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 多个来自不同对等互连位置的 ExpressRoute 线路可以连接到同一虚拟网络，在单个线路变得不可用的情况下提供高可用性。 然后，可以为本地连接[分配更高的权重](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection)，首选特定的线路。 强烈建议客户设置至少两条 ExpressRoute 线路，避免单点故障。 
 
-请参阅[这里](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)设计以实现高可用性和[此处](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering)设计用于灾难恢复。  
+请参阅[此处](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute), 了解高[可用性和设计](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering)是否适用于灾难恢复。  
 
-### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>如何冗余实现 Microsoft 对等互连？
+### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>如何在 Microsoft 对等互连上实现冗余？
 
-强烈建议客户使用 Microsoft 对等互连才能访问 Azure 公共服务，如 Azure 存储或 Azure SQL，以及客户使用 Microsoft Office 365 它们不同对等互连中实现多条线路的对等互连时若要避免单点 faiure 的位置。 客户可以将这两个线路上相同的前缀播发并使用[AS PATH 追加](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)或播发前缀不同，若要确定从本地路径。
+当客户使用 Microsoft 对等互连访问 azure 公共服务 (如 Azure 存储或 Azure SQL) 以及使用 Microsoft 对等互连 (适用于 Office 365) 以在不同对等互连中实现多个线路时, 强烈建议使用此方法。用于避免单点故障的位置。 客户可以在两个线路上公布相同的前缀, 并使用[作为路径预置](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)或播发不同的前缀来确定本地的路径。
 
-请参阅[此处](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)设计以实现高可用性。
+有关高可用性的设计, 请参阅[此处](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)。
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>如何确保连接到 ExpressRoute 的虚拟网络上的高可用性？
 
 通过将不同的对等互连位置（例如，新加坡、新加坡 2）中的 ExpressRoute 线路连接到虚拟网络可以实现高可用性。 如果一条 ExpressRoute 线路出现故障，连接会故障转移到另一条 ExpressRoute 线路。 默认情况下，将基于等成本多路径路由 (ECMP) 对离开虚拟网络的流量进行路由。 可以使用连接权重来使一条线路优先于另一条线路。 有关详细信息，请参阅[优化 ExpressRoute 路由](expressroute-optimize-routing.md)。
+
+### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-or-public-peering-is-preferred-on-the-expressroute-path"></a>如何实现确保向 Azure 公共服务 (如 Azure 存储中的 azure 存储和 Azure SQL 或公共对等互连) 发送的流量优先于 ExpressRoute 路径？
+
+你必须在路由器上实施*本地首选项*属性, 以确保在 ExpressRoute 线路上始终首选从本地到 Azure 的路径。
+
+有关 BGP 路径选择和常见路由器配置, 请参阅[此处](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-of-microsoft-and-public-peerings)的其他详细信息。 
 
 ### <a name="onep2plink"></a>如果我不在云交换中共置，而我的服务提供商提供点到点连接，我需要在本地网络与 Microsoft 之间订购两个物理连接吗？
 
@@ -192,7 +198,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>连接到同一线路的虚拟网络相互隔离吗？
 
-不。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
+否。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>能否将一个虚拟网络连接到多条 ExpressRoute 线路？
 
@@ -226,7 +232,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>对于我可以通过 BGP 会话公布的 IP 范围有限制吗？
 
-对于 Microsoft 对等 BGP 会话中，不接受私有前缀 (RFC1918)。 我们在 Microsoft 和专用对等互连上接受任何前缀大小 （最大为/32)。
+对于 Microsoft 对等 BGP 会话中，不接受私有前缀 (RFC1918)。 接受 Microsoft 和专用对等互连的任何前缀大小 (高达/32)。
 
 ### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>如果超过 BGP 限制，会发生什么情况？
 
@@ -280,7 +286,7 @@ ExpressRoute 高级版是以下功能的集合：
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>我是否可以从高级功能集选择所需的功能？
 
-不。 无法选择功能。 如果启用 ExpressRoute 高级版，我们会启用所有功能。
+否。 无法选择功能。 如果启用 ExpressRoute 高级版，我们会启用所有功能。
 
 ### <a name="how-much-does-expressroute-premium-cost"></a>ExpressRoute 高级版的费用是多少？
 
@@ -292,23 +298,23 @@ ExpressRoute 高级版是以下功能的集合：
 
 ## <a name="expressroute-local"></a>ExpressRoute 本地
 ### <a name="what-is-expressroute-local"></a>什么是 ExpressRoute 本地？
-ExpressRoute 本地是上可用的 SKU 的 ExpressRoute 线路[ExpressRoute 直接](expressroute-erdirect-about.md)。 本地的一个重要功能是在 ExpressRoute 对等互连位置为您提供了本地线路访问仅向一个或两个 Azure 区域中或同一 metro 附近。 与此相反，标准线路允许你访问地缘政治区域和高级线路到所有 Azure 区域中的所有 Azure 区域全局。 
+ExpressRoute 本地是[expressroute](expressroute-erdirect-about.md)线路上提供的 expressroute 线路的 SKU。 本地的一项重要功能是, ExpressRoute 对等位置上的本地线路使你仅可访问同一地铁或附近的一个或两个 Azure 区域。 与此相反, 通过标准线路, 你可以访问地缘政治区域中的所有 Azure 区域, 以及全球所有 Azure 区域的高级线路。 
 
-### <a name="what-are-the-benefits-of-expressroute-local"></a>ExpressRoute 局部变量的优点是什么？
-你需要支付标准或高级 ExpressRoute 线路的传出数据传输，而无需付费传出数据传输单独本地 ExpressRoute 线路。 换而言之，ExpressRoute 本地价格包括数据传输费用。 ExpressRoute 本地是更经济的解决方案，如果你有大量要传输的数据并且可以在你所需的 Azure 区域附近到某一 ExpressRoute 对等互连位置的专用连接将你的数据。 
+### <a name="what-are-the-benefits-of-expressroute-local"></a>ExpressRoute 本地的优点是什么？
+尽管需要支付标准或高级 ExpressRoute 线路的出口数据传输费用, 但不会为 ExpressRoute 本地线路单独支付传出数据传输费用。 换句话说, ExpressRoute 本地价格包括数据传输费用。 如果有大量的数据要传输, 则 ExpressRoute 本地是更经济的解决方案, 可将数据通过专用连接引入到接近所需 Azure 区域的 ExpressRoute 对等互连位置。 
 
-### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>提供的功能的并不是本地 ExpressRoute？
-标准 ExpressRoute 线路与相比，本地线路具有同一组功能除外：
-* 如所述更高版本的 Azure 区域的访问权限的作用域
-* ExpressRoute 全球覆盖不可用本地
+### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>哪些功能可用, ExpressRoute 本地上没有哪些功能？
+与标准 ExpressRoute 线路相比, 本地线路具有一组相同的功能, 不同之处在于:
+* 如上所述的 Azure 区域访问范围
+* ExpressRoute Global Reach 在本地不可用
 
-ExpressRoute 本地也具有相同的限制对资源 （例如的 Vnet 数每个线路） 标准。 
+ExpressRoute 本地还对资源具有相同的限制 (例如, 每个线路的 Vnet 数)。 
 
 ### <a name="how-to-configure-expressroute-local"></a>如何配置 ExpressRoute 本地？ 
-ExpressRoute 本地才可在 ExpressRoute 直接上。 所以，首先需要配置你的 ExpressRoute 直接端口。 创建直接端口后可以创建本地线路的说明[此处](expressroute-howto-erdirect.md)。
+ExpressRoute 本地仅在 ExpressRoute 直接上可用。 首先, 需要配置 ExpressRoute 直接端口。 创建直接端口后, 可按照[此处](expressroute-howto-erdirect.md)的说明创建本地线路。
 
-### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>可使用的 ExpressRoute 本地和哪些 Azure 区域是每个对等互连位置映射到？
-ExpressRoute 本地位于其中一个或两个 Azure 区域是关闭的对等互连位置。 它不可用在对等互连位置没有任何 Azure 区域处于该状态或省或国家/地区。 请参阅有关确切的映射[位置页](expressroute-locations-providers.md)。  
+### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>ExpressRoute 本地可用, 哪些 Azure 区域是映射到的每个对等位置？
+ExpressRoute 本地在一个或两个 Azure 区域处于关闭状态的对等位置上可用。 此功能在不具有该状态或省/市/自治区或国家/地区的 Azure 区域的对等互连位置中不可用。 请参阅["位置" 页](expressroute-locations-providers.md)上的确切映射。  
 
 ## <a name="expressroute-for-office-365"></a>适用于 Office 365 的 ExpressRoute
 
@@ -377,10 +383,10 @@ Office 365 服务要求启用高级版外接程序。 有关费用，请参阅[�
 
 * 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只在将路由筛选器附加到线路之后才会播发。 默认情况下，不会显示任何前缀。
 
-## <a name="expressRouteDirect"></a>ExpressRoute Direct
+## <a name="expressRouteDirect"></a>ExpressRoute 直接
 
 [!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 
-## <a name="globalreach"></a>全球覆盖
+## <a name="globalreach"></a>Global Reach
 
 [!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]

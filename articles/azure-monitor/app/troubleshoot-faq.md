@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: ab1327b42a76a6e76183d84cb1750cce8b85228f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604279"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875381"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -37,6 +37,7 @@ ms.locfileid: "65604279"
 
 ## <a name="can-i-use-application-insights-with-"></a>是否可以将 Application Insights 用于...？
 
+* [Azure VM 或 Azure 虚拟机规模集中的 IIS 服务器上的 Web 应用](azure-vm-vmss-apps.md)
 * [IIS 服务器上的 Web 应用 - 本地或在 VM 中](asp-net.md)
 * [Java Web 应用](java-get-started.md)
 * [Node.js 应用](nodejs.md)
@@ -104,7 +105,7 @@ ms.locfileid: "65604279"
 * HTTP 请求
 * [依赖项](asp-net-dependencies.md)。 调用: SQL 数据库; 对外部服务的 HTTP 调用; Azure Cosmos DB、表、blob 存储和队列。 
 * [异常](asp-net-exceptions.md)和堆栈跟踪。
-* [性能计数器](performance-counters.md) - 如果使用[状态监视器](monitor-performance-live-website-now.md)、[Azure 监视](azure-web-apps.md)或 [Application Insights 收集编写器](java-collectd.md)。
+* [性能计数器](performance-counters.md)-如果你使用[状态监视器](monitor-performance-live-website-now.md)、[适用于应用服务的 AZURE 监视](azure-web-apps.md)、适用[于 VM 或虚拟机规模集的 azure 监视](azure-vm-vmss-apps.md)或[Application Insights collectd 编写器](java-collectd.md)。
 * [自定义编码的事件和指标](api-custom-events-metrics.md)。
 * [跟踪日志](asp-net-trace-logs.md)（如果配置相应的收集器）。
 

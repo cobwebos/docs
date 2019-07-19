@@ -3,17 +3,17 @@ title: 在 Azure Batch 池中配置节点终结点 | Microsoft Docs
 description: 如何在 Azure Batch 池中的计算节点上配置或禁用对 SSH 或 RDP 端口的访问。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: lahugh
-ms.openlocfilehash: d788db9d554c6200316bb4e3f36640dac1925fc4
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: e6c7f2762a6742a1aff7a2c3aff977b5e3657349
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341550"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322472"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>配置或禁用对 Azure Batch 池中计算节点的远程访问
 
@@ -31,7 +31,7 @@ ms.locfileid: "67341550"
 * 配置 NAT 池时，可以配置多个 NSG 规则。 将按优先顺序检查规则。 一旦应用某个规则，不再检查其他规则的匹配情况。
 
 
-## <a name="example-deny-all-rdp-traffic"></a>示例：拒绝所有 RDP 流量
+## <a name="example-deny-all-rdp-traffic"></a>例如：拒绝所有 RDP 流量
 
 以下 C# 代码片段演示如何在 Windows 池中的计算节点上配置 RDP 终结点，用于拒绝所有网络流量。 该终结点使用 *60000 - 60099* 范围内的端口的前端池。 
 
@@ -48,7 +48,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>示例：拒绝来自 Internet 的所有 SSH 流量
+## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>例如：拒绝来自 Internet 的所有 SSH 流量
 
 以下 Python 代码片段演示如何在 Linux 池中的计算节点上配置 SSH 终结点，用于拒绝所有 Internet 流量。 该终结点使用 *4000 - 4100* 范围内的端口的前端池。 
 
@@ -74,7 +74,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>示例：允许来自特定 IP 地址的 RDP 流量
+## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>例如：允许来自特定 IP 地址的 RDP 流量
 
 以下 C# 代码片段演示如何在 Windows 池中的计算节点上配置 RDP 终结点，以便仅允许来自 IP 地址 *198.51.100.7* 的 RDP 访问。 第二条 NSG 规则拒绝与该 IP 地址不匹配的流量。
 
@@ -92,7 +92,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>示例：允许来自特定子网的 SSH 流量
+## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>例如：允许来自特定子网的 SSH 流量
 
 以下 Python 代码片段演示如何在 Linux 池中的计算节点上配置 SSH 终结点，以便仅允许来自子网 *192.168.1.0/24* 的访问。 第二条 NSG 规则拒绝与该子网不匹配的流量。
 

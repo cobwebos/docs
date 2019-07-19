@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 域服务：创建组托管服务帐户 | Microsoft Docs
-description: 管理 Azure Active Directory 域服务托管域
+description: 了解如何创建与 Azure Active Directory 域服务托管域一起使用的组托管服务帐户 (gMSA)
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: iainfou
-ms.openlocfilehash: 77924fdcef18bf7304f3d9f872559be4d3405971
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 404160c895a8d0a72921fe202adba82c3d069aaf
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473601"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234113"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域上创建组托管服务帐户 (gMSA)
 本文展示了如何在 Azure AD 域服务托管域上创建托管服务帐户。

@@ -3,7 +3,7 @@ title: Azure Batch 任务开始事件 | Microsoft Docs
 description: 批处理任务开始事件参考。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: d50a0a7082e409084fd966370934a638ca9bb013
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 76100f1457123ac88055fddd55eb22a102201adf
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549863"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322809"
 ---
 # <a name="task-start-event"></a>任务开始事件
 
@@ -48,7 +48,7 @@ ms.locfileid: "60549863"
 }
 ```
 
-|元素名称|Type|说明|
+|元素名称|type|说明|
 |------------------|----------|-----------|
 |jobId|String|包含任务的作业的 id。|
 |id|String|任务的 id。|
@@ -61,25 +61,25 @@ ms.locfileid: "60549863"
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|元素名称|Type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |poolId|String|运行任务的池的 id。|
 |nodeId|String|运行任务的节点的 id。|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|元素名称|Type|说明|
+|元素名称|type|说明|
 |------------------|----------|-----------|
 |numberOfInstances|Int|任务所需的计算节点数。|
 
 ###  <a name="constraints"></a> constraints
 
-|元素名称|Type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，并重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|元素名称|Type|说明|
+|元素名称|type|说明|
 |------------------|----------|-----------|
 |retryCount|Int32|批处理服务重试任务的次数。 如果任务使用非零退出代码退出，该任务会重试，直至达到指定的 MaxTaskRetryCount|

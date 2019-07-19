@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: dd4690e27be38c3fef3053562ebee773698a70d7
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 2ec3b620138c4ae0487c29e38062c044a5210572
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154771"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314794"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -50,6 +50,7 @@ ms.locfileid: "67154771"
 * 将 Application Insights SDK 添加到项目：
 
   * [ASP.NET 项目](../../azure-monitor/app/asp-net.md)
+  * [ASP.NET Core 项目](../../azure-monitor/app/asp-net-core.md)
   * [Java 项目](../../azure-monitor/app/java-get-started.md)
   * [Node.js 项目](../../azure-monitor/app/nodejs.md)
   * [每个网页中的 JavaScript](../../azure-monitor/app/javascript.md) 
@@ -153,7 +154,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 [Application Insights Analytics](analytics.md) 的 `customEvents` 表格提供了遥测。 每行表示对应用中 `trackEvent(..)` 的调用。
 
-如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取正确的自定义事件数，因此应用代码如`customEvents | summarize sum(itemCount)`。
+如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取自定义事件的正确计数，应使用 `customEvents | summarize sum(itemCount)` 之类的代码。
 
 ## <a name="getmetric"></a>GetMetric
 
@@ -249,7 +250,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric 不发送指标的首选的方法。 在发送之前，应当始终对一段时间内的指标进行预聚合。 使用 GetMetric(..) 重载之一获取用于访问 SDK 预聚合功能的指标对象。 如果要实现您自己的预聚合逻辑，您可以使用 trackmetric （） 方法发送生成的聚合。 如果应用程序需要在每种场合下发送单独的遥测项而不需要在整个时间段上进行聚合，那么你可能就有了一个事件遥测用例；请参阅 TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry)。
+> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric 不是发送指标的首选方法。 在发送之前，应当始终对一段时间内的指标进行预聚合。 使用 GetMetric(..) 重载之一获取用于访问 SDK 预聚合功能的指标对象。 如果要实现自己的预聚合逻辑，则可以使用 TrackMetric() 方法发送生成的聚合。 如果应用程序需要在每种场合下发送单独的遥测项而不需要在整个时间段上进行聚合，那么你可能就有了一个事件遥测用例；请参阅 TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry)。
 
 Application Insights 可绘制未附加到特定事件的指标。 例如，可以定期监视队列长度。 对指标而言，变化和趋势比单个度量值更具价值，因此统计图表非常实用。
 
@@ -712,7 +713,7 @@ dependencies
 
 ## <a name="flushing-data"></a>刷新数据
 
-通常情况下，SDK 会将发送数据按固定时间间隔 （通常为 30 秒） 或缓冲区时完全 （通常为 500 项）。 但是，在某些情况下，可能需要刷新缓冲区，例如，在关闭的应用程序中使用 SDK 时。
+通常，SDK 以固定的间隔（通常为 30 秒）或每当缓冲区已满（通常为 500 项）时发送数据。 但是，在某些情况下，可能需要刷新缓冲区，例如，在关闭的应用程序中使用 SDK 时。
 
 *C#*
 
@@ -950,7 +951,7 @@ long startTime = System.currentTimeMillis();
 
 long endTime = System.currentTimeMillis();
 Map<String, Double> metrics = new HashMap<>();
-metrics.put("ProcessingTime", endTime-startTime);
+metrics.put("ProcessingTime", (double)endTime-startTime);
 
 // Setup some properties
 Map<String, String> properties = new HashMap<>();
@@ -1084,7 +1085,7 @@ TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 *Node.js*
 
-适用于 Node.js，你可以通过启用通过内部日志记录启用开发人员模式下`setInternalLogging`和设置`maxBatchSize`为 0，这将导致遥测数据收集时，就立即发送。
+对于 Node.js，可以启用开发人员模式，方法是通过 `setInternalLogging` 启用内部日志记录，并将 `maxBatchSize` 设置为 0，从而在收集到遥测数据后立即发送。
 
 ```js
 applicationInsights.setup("ikey")

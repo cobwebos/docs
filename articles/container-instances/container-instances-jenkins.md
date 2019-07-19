@@ -3,22 +3,23 @@ title: 使用 Azure 容器实例作为 Jenkins 生成代理
 description: 了解如何使用 Azure 容器实例作为 Jenkins 生成代理。
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: 2687a64bfd952888086862d929a3e5869aee5a4f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ed000779940d9af7b1384873bf9fddd1cde79c71
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583969"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326017"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>使用 Azure 容器实例作为 Jenkins 生成代理
 
 Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容器化工作负荷。 这些特性使得 ACI 成了大规模运行 Jenkins 生成作业的极佳平台。 本文逐步说明如何部署和使用一个将 ACI 预先配置为生成目标的 Jenkins 服务器。
 
-有关 Azure 容器实例的详细信息，请参阅[关于 Azure 容器实例][about-aci]。
+有关 Azure 容器实例的详细信息, 请参阅[关于 Azure 容器实例][about-aci]。
 
 ## <a name="deploy-a-jenkins-server"></a>部署 Jenkins 服务器
 
@@ -47,7 +48,7 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
    ![Jenkins 门户部署的其他设置](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. 若要进行服务主体集成，请选择“自动(MSI)”  ，让[适用于 Azure 资源的托管标识][managed-identities-azure-resources]自动创建 Jenkins 实例的身份验证标识。 选择“手动”可提供自己的服务主体凭据。 
+4. 对于 "服务主体集成", 选择 "**自动 (MSI)** ", 让[Azure 资源的托管标识][managed-identities-azure-resources]自动为 Jenkins 实例创建身份验证标识。 选择“手动”可提供自己的服务主体凭据。 
 
 5. 云代理将为 Jenkins 生成作业配置基于云的平台。 对于本文档，请选择“ACI”。  使用 ACI 云代理时，每个 Jenkins 生成作业将在容器实例中运行。
 
@@ -105,7 +106,7 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
    ![包含生成步骤选项的“生成”选项卡](./media/container-instances-jenkins/jenkins-job-02.png)
 
-5. 选择“保存”。 
+5. 选择**保存**。
 
 ## <a name="run-the-build-job"></a>运行生成作业
 
@@ -133,7 +134,7 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure 上的 Jenkins，请参阅 [Azure 和 Jenkins][jenkins-azure]。
+若要了解有关 Azure 上的 Jenkins 的详细信息, 请参阅[azure 和 Jenkins][jenkins-azure]。
 
 <!-- LINKS - internal -->
 [about-aci]: ./container-instances-overview.md

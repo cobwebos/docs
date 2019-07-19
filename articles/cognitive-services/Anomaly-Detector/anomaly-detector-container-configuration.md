@@ -1,7 +1,7 @@
 ---
-title: 如何为异常情况检测器 API 配置容器
+title: 如何配置异常探测器 API 的容器
 titleSuffix: Azure Cognitive Services
-description: 使用配置的异常情况检测器 API 容器运行时环境`docker run`命令参数。 此容器有多个必需设置，以及一些可选设置。
+description: 使用`docker run`命令参数配置异常探测器 API 容器运行时环境。 此容器有多个必需设置，以及一些可选设置。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: cb0a12df6696e76050d4c53bd75e07134b3dc27c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 617a8fc823b7c40d047e5825dc31b095da132f29
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721733"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321453"
 ---
-# <a name="configure-anomaly-detector-containers"></a>配置异常情况检测程序容器
+# <a name="configure-anomaly-detector-containers"></a>配置异常探测器容器
 
-**异常情况检测器**容器运行时环境配置为使用`docker run`命令参数。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
+使用`docker run`命令参数配置**异常探测器**容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
 # <a name="configuration-settings"></a>配置设置
 
 此容器具有以下配置设置：
 
-|必填|设置|用途|
+|需要|设置|用途|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|用于跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
@@ -41,11 +41,11 @@ ms.locfileid: "67721733"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值，该值必须为有效的密钥_异常情况检测器_为指定的资源[ `Billing` ](#billing-configuration-setting)配置设置。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值, 并且值必须是为[`Billing`](#billing-configuration-setting)配置设置指定的_异常探测器_资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**异常情况检测器**资源管理下**密钥**
+* Azure 门户：**异常探测器**资源管理,**项**下面
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -53,15 +53,15 @@ ms.locfileid: "67721733"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing`设置指定的终结点 URI 的_异常情况检测器_使用在 Azure 上的资源要计数的容器的计费信息。 必须指定此配置设置，一个值，该值必须是有效的终结点 URI 对于_异常情况检测器_在 Azure 上的资源。
+此`Billing`设置指定 Azure 上的_异常探测器_资源的终结点 URI, 该 URI 用于计量容器的计费信息。 您必须为此配置设置指定一个值, 并且该值必须是 Azure 上_异常探测器_资源的有效终结点 URI。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**异常情况检测器**概述，标记为 `Endpoint`
+* Azure 门户：**异常探测器**概述, 标记`Endpoint`
 
-|必填| 名称 | 数据类型 | 描述 |
+|需要| 名称 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
-|是| `Billing` | 字符串 | 账单终结点 URI<br><br>例如：<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
+|是| `Billing` | String | 账单终结点 URI<br><br>例如：<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -84,14 +84,14 @@ ms.locfileid: "67721733"
 
 使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 选项来指定输入装载或输出装载。
 
-异常情况检测器容器不使用输入或输出装载可存储培训或服务的数据。 
+异常探测器容器不使用输入或输出装入来存储定型或服务数据。 
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](anomaly-detector-container-howto.md#the-host-computer)的装载位置。 
 
 |可选| 名称 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
-|不允许| `Input` | 字符串 | 异常情况检测器容器请勿使用此功能。|
-|可选| `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
+|不允许| `Input` | String | 异常探测器容器不使用此。|
+|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例 
 
@@ -100,20 +100,20 @@ ms.locfileid: "67721733"
 * **行继续符**：以下各部分中的 Docker 命令使用反斜杠 `\` 作为 bash shell 的行继续符。 根据主机操作系统的要求替换或删除字符。 例如，Windows 的行继续符是插入符号 `^`。 将反斜杠替换为插入符号。 
 * **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
 
-将在方括号中，值为`{}`，使用你自己的值：
+将值替换为方括号`{}`, 并将替换为你自己的值:
 
 | 占位符 | ReplTest1 | 格式或示例 |
 |-------------|-------|---|
-|{BILLING_KEY} | 异常情况检测程序资源的终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | 包括区域的账单终结点值。|`https://westus2.api.cognitive.microsoft.com`|
+|{API_KEY} | 异常探测器资源的终结点键。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{ENDPOINT_URI} | 包括区域的账单终结点值。|`https://westus2.api.cognitive.microsoft.com`|
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](anomaly-detector-container-howto.md#billing)。
-> ApiKey 当值**密钥**从 Azure 异常情况检测程序资源的密钥页。 
+> ApiKey 值是 "Azure 异常检测器资源密钥" 页中的**密钥**。 
 
-## <a name="anomaly-detector-container-docker-examples"></a>异常情况检测器容器 Docker 示例
+## <a name="anomaly-detector-container-docker-examples"></a>异常探测器容器 Docker 示例
 
-以下 Docker 示例是为异常情况检测程序容器。 
+以下 Docker 示例适用于异常探测器容器。 
 
 ### <a name="basic-example"></a>基本示例 
 
@@ -121,8 +121,8 @@ ms.locfileid: "67721733"
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} 
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
   ```
 
 ### <a name="logging-example-with-command-line-arguments"></a>使用命令行参数的日志记录示例
@@ -131,6 +131,6 @@ ms.locfileid: "67721733"
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
+  Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```

@@ -1,9 +1,9 @@
 ---
-title: 移动应用程序调用 web Api 的调用的 web API |Microsoft 标识平台
-description: 了解如何构建一个移动应用，调用 web Api （调用 web API）
+title: 调用 Web API 的移动应用 - 调用 Web API | Microsoft 标识平台
+description: 了解如何构建调用 Web API 的移动应用（调用 Web API）
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,37 +16,37 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fc8c21db0f42bbb6804c00e27e82f840d7038c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1408c06570babfd93c46fdfc7a3c6754000bcbc
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111173"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320854"
 ---
-# <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>调用 web Api-移动应用程序调用 web API
+# <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>调用 Web API 的移动应用 - 调用 Web API
 
-您的应用程序具有已注册用户并接收令牌后，MSAL 将公开有关用户、 用户的环境和颁发的令牌的信息的多个片段。 您的应用程序可以使用这些值来调用 web API 或向用户显示一条欢迎消息。
+在应用登录用户并接收令牌以后，MSAL 会公开有关用户、用户的环境以及所颁发令牌的多项信息。 应用可以使用这些值来调用 Web API 或向用户显示欢迎消息。
 
-首先，我们将介绍 MSAL 结果。 然后我们将介绍如何使用中的访问令牌`AuthenticationResult`或`result`以调用受保护的 web API。
+首先，我们将查看 MSAL 结果。 接下来，我们看看如何使用 `AuthenticationResult` 或 `result` 中的访问令牌来调用受保护的 Web API。
 
 ## <a name="msal-result"></a>MSAL 结果
 MSAL 提供以下值： 
 
-- `AccessToken`：用于调用受保护的 web Api 中的持有者 HTTP 请求。
-- `IdToken`：包含有关登录的用户，用户的名称、 的主租户和存储的唯一标识符等有用信息。
-- `ExpiresOn`：令牌过期时间。 MSAL 负责应用的自动刷新。
-- `TenantId`：用户登录的租户的标识符。 对于来宾用户 (Azure Active Directory B2B)，此值将确定用户登录的用户的主租户的租户。  
-- `Scopes`：被授予与你的令牌作用域。 授予作用域可能是您请求的作用域的子集。
+- `AccessToken`：用于在 HTTP 持有者请求中调用受保护的 Web API。
+- `IdToken`：包含已登录用户的有用信息，例如用户的名称、主租户，以及存储的唯一标识符。
+- `ExpiresOn`：令牌的过期时间。 MSAL 处理应用的自动刷新。
+- `TenantId`：用户登录时使用的租户的标识符。 对于来宾用户 (Azure Active Directory B2B), 此值将确定用户登录时所用的租户, 而不是用户的主租户。  
+- `Scopes`：通过令牌授予的作用域。 授予的作用域可能是请求的作用域的子集。
 
-MSAL 还提供抽象以`Account`。 `Account`表示当前用户的登录的帐户。
+MSAL 也提供 `Account` 的抽象。 `Account` 表示当前用户的已登录帐户。
 
 - `HomeAccountIdentifier`：用户的主租户的标识符。
-- `UserName`：用户的首选的用户名。 这可能是空的 Azure Active Directory B2C 用户。
-- `AccountIdentifier`：已登录用户的标识符。 此值将与相同`HomeAccountIdentifier`值在大多数情况下，除非该用户是另一个租户中的来宾。
+- `UserName`：用户的首选用户名。 Azure Active Directory B2C 用户的此项可能为空。
+- `AccountIdentifier`：已登录用户的标识符。 大多数情况下，此值会与 `HomeAccountIdentifier` 值相同，除非用户是另一租户中的来宾。
 
-## <a name="call-an-api"></a>调用的 API
+## <a name="call-an-api"></a>调用 API
 
-访问令牌后，很容易地调用 web API。 您的应用程序将使用该令牌创建的 HTTP 请求，然后运行该请求。
+有了访问令牌以后，即可轻松调用 Web API。 应用将使用此令牌构造一个 HTTP 请求，然后运行该请求。
 
 ### <a name="android"></a>Android
 
@@ -126,14 +126,14 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 }
 ```
 
-## <a name="making-several-api-requests"></a>发出几个 API 请求
+## <a name="making-several-api-requests"></a>发出多个 API 请求
 
-如果你需要调用相同的 API 几次，或如果您需要调用多个 Api，在生成您的应用程序时请考虑以下因素：
+如需调用同一 API 多次，或者需要调用多个 API，请在生成应用时考虑以下事项：
 
-- **增量许可**:Microsoft 标识平台允许应用程序获得用户同意的情况下，随着权限是必需的而不是所有开头。 每次您的应用程序已准备好调用 API，它应请求仅需要使用作用域。
-- **条件性访问**:在某些情况下，可能会进行多个 API 请求时收到条件性访问的其他要求。 如果第一个请求具有没有应用的条件性访问策略，并且您的应用程序尝试以静默方式访问需要条件性访问的新 API，可以发生这种情况。 若要处理这种情况，请确保捕获错误与无提示请求并准备好进行交互式请求。  若要了解详细信息，请参阅[条件性访问指南](conditional-access-dev-guide.md)。
+- **增量许可**：Microsoft 标识平台允许应用在需要权限的时候获取用户许可，而不是在开始时统一这样做。 应用在每次准备调用 API 时，应该只请求需要使用的作用域。
+- **条件性访问**:在某些情况下, 你可能会在发出几个 API 请求时获得其他条件性访问要求。 如果第一个请求已应用条件性访问策略, 并且你的应用程序尝试以无提示方式访问需要条件访问的新 API, 则会发生这种情况。 若要处理这种情况, 请务必捕获无提示请求中的错误, 并准备好进行交互式请求。  若要了解详细信息, 请参阅[条件性访问指南](conditional-access-dev-guide.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [迁移到生产环境](scenario-mobile-production.md)
+> [转移到生产环境](scenario-mobile-production.md)

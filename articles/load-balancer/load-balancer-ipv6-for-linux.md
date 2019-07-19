@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 如何为 Linux VM 配置 DHCPv6。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
-ms.author: kumud
-ms.openlocfilehash: 66777ec314e95d81a4be57082f06ef16dc170186
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 3e987b6718ead6b7014ec302d1a186dabef11126
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516555"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274918"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>为 Linux VM 配置 DHCPv6
 
@@ -54,9 +54,9 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
-从 Ubuntu 17.10 开始，默认网络配置机制是[NETPLAN]( https://netplan.io)。  在安装/实例化时，NETPLAN 读取网络配置 YAML 配置文件中此位置: / {lib,etc,run}/netplan/*.yaml。
+从 Ubuntu 17.10 开始, 默认网络配置机制是[NETPLAN]( https://netplan.io)。  在安装/实例化时, NETPLAN 从 YAML 配置文件中的以下位置读取网络配置:/{lib、etc、run}/netplan/*. YAML。
 
-请附上*dhcp6:true*在配置中每个以太网接口的语句。  例如：
+请在配置中为每个以太网接口包含*dhcp6: true*语句。  例如：
   
         network:
           version: 2
@@ -64,7 +64,7 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
             eno1:
               dhcp6: true
 
-在早期启动过程 netplan"网络呈现器"将写入到的配置/关闭设备的控制移交运行到指定网络守护程序 NETPLAN，有关参考信息请参阅 https://netplan.io/reference 。
+在早期启动过程中, netplan "网络呈现器" 将配置写入/run, 以将设备的控制移交给指定的网络守护程序, 以获取 https://netplan.io/reference 有关 netplan 的参考信息, 请参阅。
  
 ## <a name="debian"></a>Debian
 
