@@ -50,7 +50,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| convertToArray |是 |整数、字符串、数组或对象 |要转换为数组的值。 |
+| convertToArray |是 |int、string、array 或 object |要转换为数组的值。 |
 
 ### <a name="return-value"></a>返回值
 
