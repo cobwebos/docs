@@ -170,7 +170,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ```
 
-## <a name="constructor"></a>构造函数
+## <a name="constructor"></a>Constructor
 
 定义工作流实例的输入参数。
 
@@ -203,7 +203,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 }
 ```
 
-## <a name="functions"></a>函数
+## <a name="functions"></a>Functions
 
 定义可在工作流中执行的函数。
 
@@ -330,7 +330,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 | AllowedInstanceRoles | 智能合约中参与或指定的、有权启动转换的用户角色列表。 实例角色在工作流中的“属性”内定义。  AllowedInstanceRoles 表示参与智能合同实例的用户。 AllowedInstanceRoles 允许你在合约实例中限制对用户角色执行操作。  例如，如果你在 AllowedRoles 中指定了角色，你可能只想允许创建合约的用户（InstanceOwner），而不是角色类型 (Owner) 中的所有用户能够终止。 | 否 |
 | DisplayName | 转换的友好显示名称。 | 是 |
 | Description | 转换的说明。 | 否 |
-| 函数 | 用于启动转换的函数的名称。 | 是 |
+| Functions | 用于启动转换的函数的名称。 | 是 |
 | NextStates | 成功转换后的潜在后续状态集合。 | 是 |
 
 ### <a name="transitions-example"></a>转换示例

@@ -81,6 +81,8 @@
       href: sample-v2-code.md
     - name: 概念
       items:
+        - name: 身份验证基础知识
+          href: authentication-scenarios.md
         - name: 身份验证流和应用方案
           href: authentication-flows-app-scenarios.md
         - name: 应用程序方案
@@ -271,8 +273,6 @@
                       href: msal-js-known-issues-safari-browser.md
         - name: 身份验证协议
           items:
-            - name: 身份验证基础知识
-              href: authentication-scenarios.md
             - name: 应用程序类型和 OAuth2.0
               href: v2-app-types.md
             - name: OAuth 2.0 和 OpenID Connect 协议

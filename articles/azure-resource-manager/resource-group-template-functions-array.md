@@ -129,7 +129,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
-| 其他参数 |否 |整数、字符串、数组或对象 |要测试是否为 null 的其他值。 |
+| 其他参数 |否 |int、string、array 或 object |要测试是否为 null 的其他值。 |
 
 ### <a name="return-value"></a>返回值
 
