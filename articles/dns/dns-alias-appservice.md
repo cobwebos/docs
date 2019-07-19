@@ -5,28 +5,28 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 11/3/2018
+ms.date: 7/13/2019
 ms.author: victorh
-ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d20ef750aa4556a73852982631423d3d08271f5
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790736"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854112"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>在区域顶点托管负载均衡的 Azure Web 应用
 
-DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容。 contoso.com 是区域顶点的示例。 这种限制将为流量管理器背后拥有负载均衡应用程序的应用程序所有者带来问题。 无法从区域顶点记录指向流量管理器配置文件。 因此，应用程序所有者必须使用一种解决方法。 应用程序层的重定向必须从区域顶点重定向到另一个域。 例如，contoso.com 中的重定向到 www\.contoso.com。 这种方案会给重定向功能带来单一故障点。
+DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容。 contoso.com 是区域顶点的示例。 这种限制将为流量管理器背后拥有负载均衡应用程序的应用程序所有者带来问题。 无法从区域顶点记录指向流量管理器配置文件。 因此，应用程序所有者必须使用一种解决方法。 应用程序层的重定向必须从区域顶点重定向到另一个域。 例如, 从 contoso.com 到 www\.contoso.com 的重定向。 这种方案会给重定向功能带来单一故障点。
 
 使用别名记录，此问题将不再存在。 应用程序所有者现在可将其区域顶点记录指向具有外部终结点的流量管理器配置文件。 应用程序所有者可以指向用于其 DNS 区域中任何其他域的相同流量管理器配置文件。
 
-例如，contoso.com 和 www\.contoso.com 可以指向同一个流量管理器配置文件。 只要流量管理器配置文件仅配置了外部终结点，就会出现这种情况。
+例如, contoso.com 和 www\.contoso.com 可以指向同一流量管理器配置文件。 只要流量管理器配置文件仅配置了外部终结点，就会出现这种情况。
 
 本文介绍如何为域顶点创建别名记录，以及为 Web 应用配置流量管理器配置文件终结点。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 必须具有可用于在 Azure DNS 中托管以供测试的域名。 必须能够完全控制此域。 完全控制包括能够为域设置名称服务器 (NS) 记录。
 
@@ -43,9 +43,9 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 使用下表中的配置信息在该资源组中创建两个 Web 应用服务计划。 有关创建应用服务计划的详细信息，请参阅[在 Azure 中管理应用服务计划](../app-service/app-service-plan-manage.md)。
 
 
-|Name  |操作系统  |Location  |定价层  |
+|名称  |操作系统  |Location  |定价层  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|美国东部|Dev/Test D1-Shared|
+|ASP-01     |Windows|East US|Dev/Test D1-Shared|
 |ASP-02     |Windows|美国中部|Dev/Test D1-Shared|
 
 ## <a name="create-app-services"></a>创建应用服务
@@ -55,7 +55,7 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 1. 选择 Azure 门户页的左上角，单击“创建资源”  。
 2. 在搜索栏中键入“Web 应用”并按 Enter 键。 
 3. 单击“Web 应用”。 
-4. 单击**创建**。
+4. 单击“创建”。 
 5. 接受默认值，并参考下表配置两个 Web 应用：
 
    |名称<br>（在 .azurewebsites.net 中必须唯一）|资源组 |应用服务计划/位置
@@ -76,7 +76,7 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
 在资源组中创建流量管理器配置文件。 使用默认值，并键入在 trafficmanager.net 命名空间中唯一的名称。
 
-创建流量管理器配置文件的信息，请参阅[快速入门：创建高度可用的 web 应用程序的流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
+有关创建流量管理器配置文件的信息, [请参阅快速入门:为高度可用的 web 应用程序](../traffic-manager/quickstart-create-traffic-manager-profile.md)创建流量管理器配置文件。
 
 ### <a name="create-endpoints"></a>创建终结点
 
@@ -87,14 +87,14 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 3. 单击“添加”  。
 4. 参考下表配置终结点：
 
-   |Type  |名称  |确定目标  |Location  |自定义标头设置|
+   |type  |名称  |目标  |Location  |自定义标头设置|
    |---------|---------|---------|---------|---------|
-   |外部终结点     |End-01|为 App-01 记下的 IP 地址|美国东部|主机：\<为 App-01 记下的 URL\><br>示例：**host:app-01.azurewebsites.net**|
+   |外部终结点     |End-01|为 App-01 记下的 IP 地址|East US|主机：\<为 App-01 记下的 URL\><br>示例：**host:app-01.azurewebsites.net**|
    |外部终结点     |End-02|为 App-02 记下的 IP 地址|美国中部|主机：\<为 App-02 记下的 URL\><br>示例：**host:app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>创建 DNS 区域
 
-可以使用现有 DNS 区域进行测试，或者创建新区域。 若要创建和委托在 Azure 中新的 DNS 区域，请参阅[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md)。
+可以使用现有 DNS 区域进行测试，或者创建新区域。 若要在 Azure 中创建和委派新的 DNS 区域[, 请参阅教程:在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md)。
 
 ### <a name="add-the-alias-record-set"></a>添加别名记录集
 
@@ -104,7 +104,7 @@ DNS 区域准备就绪后，你可以添加区域顶点的别名记录。
 2. 单击“记录集”  。
 3. 参考下表添加记录集：
 
-   |Name  |Type  |别名记录集  |别名类型  |Azure 资源|
+   |名称  |类型  |别名记录集  |别名类型  |Azure 资源|
    |---------|---------|---------|---------|-----|
    |@     |A|是|Azure 资源|流量管理器 - 你的配置文件|
 
@@ -144,3 +144,5 @@ DNS 区域准备就绪后，你可以添加区域顶点的别名记录。
 - [教程：配置表示 Azure 公共 IP 地址的别名记录](tutorial-alias-pip.md)
 - [教程：配置别名记录来支持为流量管理器使用顶点域名](tutorial-alias-tm.md)
 - [DNS 常见问题](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+
+若要了解如何迁移活动 DNS 名称, 请参阅[将活动 dns 名称迁移到 Azure App Service](../app-service/manage-custom-dns-migrate-domain.md)。

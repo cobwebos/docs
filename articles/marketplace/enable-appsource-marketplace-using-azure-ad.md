@@ -7,13 +7,13 @@ manager: pabutler
 ms.service: marketplace
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: qianw211
-ms.openlocfilehash: 950371fd92d255ed01dfa89d5c2fcbded686a971
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: pabutler
+ms.openlocfilehash: 0b68687a2bbaa817f2776757ccab9571638c0fd5
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443080"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876003"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>使用 Azure Active Directory 启用 AppSource 和市场列表
 
@@ -35,12 +35,12 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 | **产品/服务类型**    | **是否需要 Azure AD SSO？**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | 与我联系 | 试用 | 体验版 | 事务处理 |
-| 虚拟机 | 不适用 | 否 | 否 | 否 |
-| Azure 应用（解决方案模板）  | 不适用 | 不适用 | 不适用 | 不适用 |
-| 托管应用  | 不适用 | 不适用 | 不适用 | 否 |
+| 虚拟机 | 不可用 | 否 | 否 | 否 |
+| Azure 应用（解决方案模板）  | 不可用 | 不可用 | 不可用 | 不可用 |
+| 托管应用  | 不可用 | 不可用 | 不可用 | 否 |
 | SaaS  | 否 | 是 | 是 | 是 |
-| 容器  | 不适用 | 不适用 | 不适用 | 否 |
-| 咨询服务  | 否 | 不适用 | 不适用 | 不适用 |
+| 容器  | 不可用 | 不可用 | 不可用 | 否 |
+| 咨询服务  | 否 | 不可用 | 不可用 | 不可用 |
 
 有关 SaaS 技术需求的详细信息，请参阅 [SaaS 应用程序产品/服务发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
 
@@ -89,4 +89,4 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 ## <a name="next-steps"></a>后续步骤
 
 - 确保[已在 Azure 市场中注册](https://azuremarketplace.microsoft.com/sell)。
-- 请参阅[如何创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)有关如何创建或完成产品/服务详细信息。
+- 有关如何创建或完成产品/服务的详细信息, 请参阅[如何创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。

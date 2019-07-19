@@ -1,47 +1,47 @@
 ---
-title: 在商业 Marketplace 中创建新的 SaaS 产品/服务
-description: 如何创建新的软件即服务 (SaaS) 产品列表或销售 Azure Marketplace、 AppSource 或通过云解决方案提供商 (CSP) 计划在 Microsoft 合作伙伴中心上使用商业 Marketplace 门户。
+title: 在商业应用商店中创建新的 SaaS 产品/服务
+description: 如何创建新的软件即服务 (SaaS) 产品/服务, 以便在 Azure Marketplace、AppSource 或通过云解决方案提供商 (CSP) 计划的 Microsoft 合作伙伴中心使用商业应用商店门户。
 author: mattwojo
 manager: evansma
 ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: db1074046adc52ad859a325c2b875da84dbdb0cd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cea763416f36abd80b1d22b4414cc2454bc30c66
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701394"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868728"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
-若要开始创建与服务 (SaaS) 提供的软件，请确保你第一[创建合作伙伴中心帐户](./create-account.md)，然后打开[商业应用商店仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，与**概述**选定的选项卡。
+若要开始创建 "软件即服务" (SaaS) 产品/服务, 请确保先[创建合作伙伴中心帐户](./create-account.md), 并打开 "概述" 选项[卡, 并](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)选择 "**概述**" 选项卡。
 
-![合作伙伴中心中的商业应用商店仪表板](./media/new-offer-overview.png)
+![合作伙伴中心的商业应用商店仪表板](./media/new-offer-overview.png)
 
-选择 +**新产品/服务...** 按钮，然后选择**软件即服务**菜单项。 
+选择 "+**新产品/服务 ...** " 按钮, 然后选择 "**软件即服务**" 菜单项。 
 
-如果你选择的其他产品/服务类型之一，你将定向到较旧[云合作伙伴门户](https://cloudpartner.azure.com/)。  唯一的 SaaS 产品/服务目前在合作伙伴中心上的商业 Marketplace 门户中可用。 
+如果选择其他产品/服务类型之一, 你会被重定向到较旧的[云合作伙伴门户](https://cloudpartner.azure.com/)。  目前, 合作伙伴中心的商用 Marketplace 门户中提供了 SaaS 产品/服务。 
 
 ![在合作伙伴中心创建产品/服务窗口](./media/new-offer-click.png)
 
-**新产品/服务**显示对话框。 
+将显示 "**新建产品/服务**" 对话框。 
 
-![新建产品/服务对话框](./media/new-offer-popup.png)
+!["新建产品/服务" 对话框](./media/new-offer-popup.png)
 
 
 ## <a name="offer-id-and-alias"></a>产品/服务 ID 和别名
 
-- **产品/服务 ID**：在你的帐户中每个产品/服务的唯一标识符。 此 ID 将是可见的 marketplace 产品/服务和 Azure 资源管理器模板 （如果适用） 的 URL 地址中的客户。 产品/服务 ID 必须是小写字母、 字母数字 （包括连字符和下划线，但不是含空格）。 这是 50 个字符，在选择后不能更改*创建*。  
-示例： 测试产品/服务 1
-<br>导致 URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
+- **产品/服务 ID**：帐户中每个产品/服务的唯一标识符。 在 marketplace 产品/服务和 Azure 资源管理器模板 (如果适用) 的 URL 地址中, 客户将可以看到此 ID。 产品/服务 ID 必须是小写、字母数字 (包括连字符和下划线, 但没有空格)。 这限制为50个字符, 并且在你选择 "*创建*" 后将无法更改。  
+示例: 测试/服务-1
+<br>生成 URL:`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
-- **别名提供**:用来指代在合作伙伴中心门户中的产品/服务的名称。 此名称不会在 marketplace 中使用，并且不同于*产品/服务名称*和其他将向客户显示的值。 选择后，不能更改此值*创建*。
+- **提供别名**:用于引用合作伙伴中心门户中的产品/服务的名称。 此名称不会在 marketplace 中使用, 并且不同于将向客户显示的*产品/服务名称*和其他值。 选择 "*创建*" 后, 不能更改此值。
 
-<br>例如：测试产品/服务 1&#8482;
+<br>例如：测试优惠1&#8482;
 
-选择“创建”  。  **产品/服务概述**页创建此产品/服务。  
+选择“创建”  。  为此产品/服务创建了 "**产品/服务概述**" 页。  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
@@ -49,453 +49,453 @@ ms.locfileid: "67701394"
 
 ## <a name="offer-overview"></a>产品/服务概述
 
-**产品/服务概述**页包括： 
+"**产品概述**" 页包括: 
 
-- **发布状态**发布此产品/服务和每个步骤需要多长时间完成所需的步骤的直观地显示。 不完整的发布步骤图标将灰显。 
+- **发布状态**显示了发布此产品/服务所需步骤的直观表示形式, 以及每个步骤要完成的时间。 不完整的发布步骤图标将灰显。 
 
-- **产品/服务概述**菜单包含一组用于对此产品/服务执行操作的链接。 此操作的列表将根据产品/服务所做的选择。  
-    - 如果产品/服务是一个草稿 – 删除草稿 
-    - 如果产品/服务是实时 – 停止销售的产品/服务 
-    - 如果产品/服务处于预览阶段-发布 
-    - 如果尚未完成发布服务器注销-取消发布
+- "**产品概述**" 菜单包含用于对此产品/服务执行操作的链接的列表。 此操作列表将根据你为产品/服务所做的选择而更改。  
+    - 如果产品/服务是草稿–删除草稿 
+    - 如果产品/服务是现场的-停止销售优惠 
+    - 如果产品/服务处于预览阶段-上线 
+    - 如果尚未完成发布服务器注销–请取消发布
 
-## <a name="offer-setup"></a>产品/服务安装程序
+## <a name="offer-setup"></a>产品/服务设置
 
-**产品/服务安装程序**选项卡的要求提供的以下信息。 选择**保存**之后完成这些字段。
+"**产品/服务设置**" 选项卡要求提供以下信息。 完成这些字段后, 选择 "**保存**"。
 
-- **想要通过 Microsoft 销售？** （是/否）
-    - **是**，你想要销售产品/服务通过 Microsoft 与 Microsoft 托管 marketplace 事务代表你; 或 
-    - **不**，你想要仅列出测试产品/服务市场，通过处理独立于 Microsoft 的任何货币交易。    
+- **是否想要通过 Microsoft 销售？** (是/否)
+    - **是**的, 你希望通过 microsoft 出售你的产品/服务, microsoft 将代表你托管 marketplace 交易;或 
+    - **不**可以, 你希望只通过市场来列出你的产品/服务, 而独立于 Microsoft 处理任何货币交易。    
 
 ### <a name="sell-through-microsoft"></a>通过 Microsoft 进行销售
 
-通过 Microsoft 销售提供更好的客户发现和收购，Microsoft 可以通过你的代表主机 marketplace 事务并充分利用 Microsoft 的全球可用的商务功能。
+通过 Microsoft 进行销售可提供更好的客户发现和收购, 使 Microsoft 能够代表你托管 marketplace 交易, 并利用 Microsoft 的全球可用商业功能。
 
 #### <a name="saas-offer-requirements"></a>SaaS 产品/服务要求
 
-若要列出软件与服务 (SaaS) 提供使用合作伙伴中心上的商业应用商店，必须满足以下条件：
+若要在合作伙伴中心列出 "软件即服务" (SaaS) 产品/服务, 必须满足以下条件:
 
-- 产品/服务必须使用[Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/)进行标识管理和身份验证。
-- 产品/服务必须使用[SaaS 履行 Api](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)将与 Azure Marketplace 进行集成。
-- 有关更广泛的要求，请参阅[SaaS 产品/服务发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
+- 你的产品/服务必须使用[Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/)来进行身份管理和身份验证。
+- 你的产品/服务必须使用[SaaS 履单 api](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)与 Azure Marketplace 集成。
+- 有关更广泛的要求, 请参阅[SaaS 优惠发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
 
-#### <a name="saas-on-azure-billing-infrastructure-costs"></a>Azure 计费基础结构成本 SaaS
-如果在 Azure 中托管的 SaaS 产品/服务，，为发布服务器，必须考虑 Azure 基础结构使用费和软件许可费用为单个成本项。 此成本表示为对客户每月固定费用。 管理并直接付款给您的合作伙伴，azure 基础结构使用情况。 客户将无法看到实际的基础结构使用费。 发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。 
+#### <a name="saas-on-azure-billing-infrastructure-costs"></a>Azure 计费基础结构成本的 SaaS
+如果 SaaS 产品/服务托管在 Azure 中, 你作为发布者, 必须考虑 Azure 基础结构使用费用, 并将软件许可费用作为单个成本项目。 此成本按每月向客户收取费用。 Azure 基础结构的使用情况是直接管理和计费的。 客户将无法看到实际的基础结构使用费。 发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。 
 
-软件许可费用显示为每月重复执行基于站点的订阅的统一费率付费，并不按流量计费或基于消耗。
+软件许可费用作为每月定期定期基于站点的订阅提供, 并不按流量计费或消耗。
 
-|**你的许可证费用**|**每月 100 美元**|
+|**你的许可证费用**|**每月 $100**|
 |:---|:---|
 |Azure 使用费用（D1/1 核）|直接向发布者而不是客户收费|
-|Microsoft 向客户收取|100.00 美元 / 月 （发布服务器必须考虑中的许可证费用的任何引起的开销量或传递基础结构成本）|
+|客户由 Microsoft 计费|每月 $100.00 (发布者必须按许可费考虑任何产生的或通过的基础结构成本)|
 
 - 在这种情况下，Microsoft 向你收取 100.00 美元的软件许可证费用，并向发布者支付 80.00 美元。
-- 具有限定为合作伙伴**减少 Marketplace 服务费用**将看到从年 6 月 2020年直到 2019 年 5 提供在 SaaS 降低的交易费。 在此方案中，Microsoft 对您的软件许可证 100.00 美元进行收费和到发布服务器的回报 90.00 美元。
+- 符合**Marketplace 服务费用**的合作伙伴将从5月2019到6月5日起, 从 5 2020 月5日起, 对 SaaS 产品/服务的事务费用将减少。 在此方案中, Microsoft 为你的软件许可证计费 $100.00, 并向发布者支付 $90.00。
 
 > [!NOTE]
-> **减少的 Marketplace 服务费**:对于某些 SaaS 提供已在我们的商业应用商店上发布，Microsoft 会减少其 Marketplace 服务费用从 20%（如在 Microsoft 发布方协议中所述） 为 10%。 为了使产品/服务来限定，至少一个产品/服务必须已指定由 Microsoft 不会成为 IP 合作销售就绪或 IP 共同销售设置优先级。  资格必须满足每个日历月结束前的至少五 （5） 个工作日才能月接收此简化的 Marketplace 服务费。  减少了 Marketplace 服务费用不适用于 Vm、 管理的应用程序或通过我们的商业应用商店提供的任何其他产品。  减少了 Marketplace 服务费用将仅可供限定产品/服务为 2019 年 5 月 1 日和于 2020 年 6 月 30 日之间的 Microsoft 收集的许可证费用。  此时间后，Marketplace 服务费用将返回到其正常量。 
+> **降低 Marketplace 服务费用**:对于在我们的商业市场上发布的特定 SaaS 产品/服务, Microsoft 会将其 Marketplace 服务费用从 20% 降低到 10% (如 Microsoft 发布者协议中所述)。 为了使你的产品/服务符合资格, Microsoft 已将至少一个产品/服务指定为 "IP 共同销售就绪" 或 "IP 共同销售"。  在每个日历月结束之前, 必须在每个日历月结束至少五 (5) 个工作日内获得资格, 以便每月获得更少的 Marketplace 服务费用。  降低的 Marketplace 服务费用不适用于 Vm、托管应用或通过我们的商业市场提供的任何其他产品。  降低的 Marketplace 服务费用仅适用于 Microsoft 在5月1日、2019年6月 30 2020 日之间收集的许可费用。  此时间过后, Marketplace 服务费用将恢复为其正常量。 
 
-|**Microsoft 收费**|**每月 100 美元**|
+|**Microsoft 收费**|**每月 $100**|
 |:---|:---|
-|Microsoft 将许可证费用的 80% 支付给你 <br>**对于限定 SaaS 应用程序，Microsoft 支付许可证费用的 90%*|80.00 美元/月 <br>*$* 每个月 * 90.00|
+|Microsoft 将许可证费用的 80% 支付给你 <br>**对于合格的 SaaS 应用, Microsoft 将支付 90% 的许可证成本*|80.00 美元/月 <br>*$* 每月 90.00 *|
 
 
-#### <a name="csp-program-opt-in"></a>CSP 程序参加
-[云解决方案提供商 (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)程序，以达到数以百万计的合格的 Microsoft 客户只需极少的软件产品/服务市场营销和销售方面的投资。
+#### <a name="csp-program-opt-in"></a>CSP 计划选择加入
+通过[云解决方案提供商 (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)计划, 软件产品/服务可以通过最少的市场营销和销售投资达到数百万个合格的 Microsoft 客户。
 
-- **通道：使我的产品/服务在 CSP 计划中可用**（复选框）
+- **通道在 CSP 计划**中提供我的产品/服务 (复选框)
 
-选择在 CSP 计划中提供产品/服务使云解决方案提供商向其客户作为捆绑解决方案的一部分销售您的产品。 
+选拔在 CSP 计划中提供产品/服务, 云解决方案提供商可以将产品作为捆绑解决方案的一部分销售给客户。 
 
-### <a name="list-through-microsoft"></a>通过 Microsoft 的列表
+### <a name="list-through-microsoft"></a>通过 Microsoft 列出
 
-创建 marketplace 列表将提升您的企业提供 Microsoft。 选择列表仅产品/服务和服务并不通过 Microsoft 意味着，Microsoft 不直接参与软件许可证的事务。 没有任何关联的事务费用，发布服务器上保留的任何软件许可费用从客户收集的 100%。 但是，发布服务器是负责支持的软件许可证事务，包括但不是限于所有方面： 订单履行、 计数、 计费、 发票、 付款和集合。 
+通过创建 marketplace 列表, 通过 Microsoft 提升你的业务。 选择仅列出你的产品/服务, 而不是通过 Microsoft, 这意味着 Microsoft 不会直接参与软件许可证交易。 没有关联的事务费用, 发布者将保留从客户那里收集的任何软件许可费用的 100%。 但是, 发布者负责支持软件许可证事务的所有方面, 包括但不限于: 订单执行、计量、计费、开票、支付和收集。 
 
-- **你希望如何潜在客户交互，此列表的产品/服务？**
+- **你希望潜在客户如何与此列表服务进行交互？**
 
-##### <a name="get-it-now-free"></a>立即获取 （免费）
-列出产品/服务向客户免费提供有效的 URL （http 或 https 的开头），他们可以访问您的应用程序。  例如： `https://contoso.com/saas-app`
+##### <a name="get-it-now-free"></a>立即获取 (免费)
+通过提供有效的 URL (以 http 或 https 开头) 向客户免费列出你的产品/服务, 用户可以在其中访问你的应用程序。  例如： `https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>免费试用版 （列表）
-通过提供有效的 URL （http 或 https 的开头），他们可以访问您的应用程序列出产品/服务向客户具有免费试用版的链接。  例如：`https://contoso.com/trial/saas-app`。 创建产品/服务列表免费试用版，托管且你的服务配置和执行不具有订阅由 Microsoft 管理。
+##### <a name="free-trial-listing"></a>免费试用 (列出)
+向客户列出你的产品/服务, 其中包含免费试用版的链接, 方法是提供有效的 URL (以 http 或 https 开头), 用户可以在其中访问应用。  例如：`https://contoso.com/trial/saas-app`。 产品/服务列表免费试用版由您的服务创建、管理和配置, 并且没有 Microsoft 管理的订阅。
 
 ##### <a name="contact-me"></a>与我联系
-通过连接您的客户关系管理 (CRM) 系统来收集客户联系人信息。 客户会要求共享其信息的权限。 这些客户的详细信息，以及产品/服务名称、 ID 和 marketplace 源它们在其中找到产品/服务，将发送到已配置的 CRM 系统。 有关配置你的 CRM 的详细信息，请参阅[Connect 潜在客户管理](#connect-lead-management)。 
+通过连接客户关系管理 (CRM) 系统来收集客户联系信息。 系统将要求客户提供共享其信息的权限。 这些客户详细信息以及他们找到你的产品/服务的产品/服务名称、ID 和 marketplace 源将发送到已配置的 CRM 系统。 有关配置 CRM 的详细信息, 请参阅[连接潜在客户管理](#connect-lead-management)。 
 
-## <a name="example-marketplace-offer-listing"></a>示例 marketplace 产品/服务列表
+## <a name="example-marketplace-offer-listing"></a>Marketplace 优惠列表示例
 
-![示例 marketplace 产品/服务的说明列表](./media/marketplace-offer.svg)
+![带有说明的 marketplace 产品/服务示例列表](./media/marketplace-offer.svg)
 
 ## <a name="enable-a-test-drive"></a>启用体验版
 
-测试驱动器是通过为他们提供的选项在购买前试用，从而导致更高的转换以及高度发掘潜在客户生成展示给潜在的客户的产品/服务的好办法。 [了解有关体验版的详细信息。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+通过向客户提供 "在购买前试用" 的选项, 测试驱动器是向潜在客户展示你的产品/服务的一种好办法 [了解有关测试驱动器的详细信息。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-- **启用测试驱动器**（复选框） 
+- **启用测试驱动器**旁边 
 
-通过启用体验版，你将需要配置供客户试用产品/服务存在一段固定的时间在演示环境。 
+通过启用 "测试驱动器", 系统将要求你配置演示环境, 让客户在固定时间段内试用你的产品/服务。 
 
 ### <a name="type-of-test-drive"></a>测试驱动器的类型
 
-- **[Azure 资源管理器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** :包含组成解决方案的所有 Azure 资源的部署模板。 适合此方案的产品仅使用 Azure 资源。
-- **[Dynamics 365 业务中心](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** :Microsoft 托管和 Business Central 企业资源计划系统维护测试驱动器服务 （包括预配和部署） (财务、 操作、 供应链，CRM，等等。)。  
-- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** :Microsoft 托管和客户参与系统 （销售、 服务、 项目服务、 现场服务等） 维护测试驱动器服务 （包括预配和部署）。  
-- **[操作的 Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** :Microsoft 托管和 Finance and Operations 企业资源规划 （财务、 操作、 生产、 供应链等） 的系统维护测试驱动器服务 （包括预配和部署）。 
-- **[逻辑应用](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** :部署模板，其中包含所有复杂的解决方案体系结构。 任何自定义产品应使用此类测试驱动器。
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** :自定义构建的仪表板嵌入的链接。 要演示交互式 Power BI 视觉对象应使用这种体验版的产品。 此处只需要上传你的嵌入式 Power BI URL。
+- **[Azure 资源管理器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** :一个部署模板, 其中包含组成解决方案的所有 Azure 资源。 适用于此方案的产品只使用 Azure 资源。
+- **[Dynamics 365 For Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** :Microsoft 托管并维护企业中心企业资源规划系统 (财务、运营、供应链、CRM 等) 的测试驱动器服务 (包括预配和部署)。  
+- **[适用于客户参与的 Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** :Microsoft 托管并维护客户参与系统 (销售、服务、项目服务、现场服务等) 的测试驱动器服务 (包括预配和部署)。  
+- **[适用于操作的 Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** :Microsoft 为财务和运营企业资源规划系统 (财务、运营、制造、供应链等) 托管并维护测试驱动器服务 (包括预配和部署)。 
+- **[逻辑应用](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** :包含所有复杂解决方案体系结构的部署模板。 任何自定义产品都应使用这种类型的测试驱动器。
+- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** :指向自定义生成的仪表板的嵌入链接。 要演示交互 Power BI 视觉对象的产品应使用此类型的测试驱动器。 此处只需要上传你的嵌入式 Power BI URL。
 
 #### <a name="additional-test-drive-resources"></a>其他测试驱动器资源
-- [测试驱动器技术最佳实践](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [体验版市场营销最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [测试驱动器概述一个页导航](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+- [测试驱动器技术最佳方案](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [试用版销售最佳实践](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Test Drive 概述 One 寻呼](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
 ## <a name="connect-lead-management"></a>连接潜在客户管理
 
-通过列出产品/服务市场中的并挂接客户关系管理 (CRM) 系统，以便客户表达感兴趣或部署后，立即可以接收客户联系信息直接与客户联系你产品。
+通过在市场中列出产品/服务并挂钩你的客户关系管理 (CRM) 系统, 直接与客户联系, 以便你可以在客户提出兴趣后立即接收客户联系信息或部署产品.
 
-- **选择销售线索目标**（下拉菜单）：提供连接到 CRM 系统，你想要向其发送潜在客户的详细信息。 
+- **选择潜在顾客目标**(下拉菜单):向 CRM 系统提供连接详细信息, 您希望我们向客户发送客户主管。 
 
-合作伙伴中心支持以下的 CRM 系统的潜在客户管理。 选择安装程序说明的链接。
+对于潜在客户管理, 合作伙伴中心支持以下 CRM 系统。 选择安装说明的链接。
 
-- Azure Blob – 提供联系人的电子邮件、 容器名称和存储帐户连接字符串。 
-- [Azure 表](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)– 提供联系人电子邮件和存储帐户连接字符串。 
-- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) – 提供联系人电子邮件、 URL 和身份验证模式 （Office 365 或 Azure Active Directory）。
-- [Https 终结点](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https)– 提供联系人电子邮件和 HTTPS 终结点 URL。 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) – 提供联系人电子邮件、 窗体 ID、 Munchkin 帐户 ID 和服务器 id。
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -提供联系人电子邮件和组织 id。 
+- Azure Blob –提供联系人电子邮件、容器名称和存储帐户连接字符串。 
+- [Azure 表](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)–提供联系人电子邮件和存储帐户连接字符串。 
+- [DYNAMICS CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) –提供联系人电子邮件、URL 和身份验证模式 (Office 365 或 Azure Active Directory)。
+- [Https 终结点](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https)–提供联系人电子邮件和 Https 终结点 URL。 
+- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) –提供联系人电子邮件、表单 ID、MUNCHKIN 帐户 id 和服务器 id。
+- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -提供联系人电子邮件和组织 ID。 
 
 #### <a name="additional-lead-management-resources"></a>其他潜在客户管理资源
-- [潜在客户管理常见问题解答](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常见的潜在顾客配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [会导致管理概述一个页导航](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+- [潜在客户管理常见问题](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
+- [常见潜在客户配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [潜在客户管理概述 One 寻呼](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
-请记住**保存**才能转到下一部分 ！
+请记住在转到下一节之前**保存**。
 
 ## <a name="properties"></a>属性
-**属性**选项卡会要求您定义的类别和行业用于分组产品/服务市场，支持产品/服务和你的应用程序版本的法律协定上。 
+"**属性**" 选项卡要求你定义用于对你的产品/服务进行分组的类别和行业、支持你的产品/服务的法律合同和你的应用版本。 
 
-选择**保存**之后完成这些字段。 
+完成这些字段后, 选择 "**保存**"。 
 
 ### <a name="category"></a>类别
-选择最少的一 （1） 和最多三 （3） 用于分组到相应的 marketplace 搜索领域的产品/服务的类别。 请指出产品/服务如何支持这些类别的产品/服务说明中。 
+最少选择一 (1), 最多可选择三 (3) 个类别, 将产品/服务分组到适当的 marketplace 搜索区域。 请在产品/服务描述中了解产品/服务如何支持这些类别。 
 
 ### <a name="industry"></a>行业
-选择用于分组到相应的 marketplace 搜索领域的产品/服务的行业最多两 （2）。 如果产品/服务不是特定于行业的则选择一个。 请指出产品/服务如何支持产品/服务说明中的所选的行业。 
+选择最多两 (2) 个用于将你的产品/服务组合到适当市场搜索领域的行业。 如果您的产品/服务并不特定于某个行业, 请不要选择它。 请在产品/服务描述中了解产品/服务如何支持所选行业。 
 
 ### <a name="app-version"></a>应用版本
-这是一个可选字段 AppSource marketplace 中用于标识产品/服务的版本号。 
+这是一个可选字段, 用于在 AppSource marketplace 中标识产品的版本号。 
 
 ### <a name="standard-contract"></a>标准合同
 
 - **使用标准约定？**
 
-若要简化客户的采购过程并降低的软件供应商的法律的复杂性，Microsoft 以帮助简化在 marketplace 中的事务提供标准协定模板。 
+为了简化客户的采购过程并降低软件供应商的法律复杂性, Microsoft 提供了标准合同模板, 以帮助促进 marketplace 中的事务。 
 
-而不是编写自定义条款和条件，Azure Marketplace 发布者可以选择提供标准的合同，客户只需以审查并接受一次软件。 
+Azure Marketplace 发布者可以选择在标准合同下提供其软件, 而客户只需要来审查和接受一次, 而不是手工编写自定义条款和条件。 
 
-标准协定可在此处找到： https://go.microsoft.com/fwlink/?linkid=2041178 。
+可在此处找到标准协定: https://go.microsoft.com/fwlink/?linkid=2041178 。
 
 #### <a name="terms-of-use"></a>使用条款
 
-如果从标准约定不同许可条款，你可以选择输入此处使用自己法律条款。 此外可以在此字段中输入文本的最多 10,000 个字符。 如果你的使用条款的需要更长的说明，请输入此字段可以在其中找到其他许可条款的单个 URL 链接。 它将向客户显示为活动的链接。
+如果你的许可条款不同于标准合同, 你可以选择在此处输入你自己的法律条款。 你还可以在此字段中输入最多10000个字符的文本。 如果你的使用条款需要较长的说明, 请在此字段中输入一个 URL 链接, 你可以在其中找到你的其他许可条款。 它将向客户显示为活动链接。
 
 客户必须接受这些条款才能试用应用。 
 
-请记住**保存**才能转到下一部分 ！
+请记住在转到下一节之前**保存**。
 
 ## <a name="offer-listing"></a>产品/服务列表
 
-列出产品/服务是可用的语言 （和市场） 选项卡上显示的产品/服务，英语 （美国） 目前可用的唯一位置。 此外，此页显示特定于语言的列表和已添加的日期/时间的状态。 需要为每种语言定义 （提供名称、 说明、 搜索词等） 的应用商店详细信息 / 市场。
+"产品列表" 选项卡显示提供产品/服务的语言 (和市场), 当前只有英语 (美国) 是可用的位置。 此外, 此页还显示特定于语言的列表的状态以及添加它的日期/时间。 需要为每种语言/市场定义 marketplace 详细信息 (产品名称、说明、搜索词等)。
 
 > [!NOTE]
-> 产品/服务列表内容 （如产品/服务说明、 文档、 屏幕截图、 使用和隐私策略条款的） 不需要是英文，只要产品/服务描述开始这句话，"此应用程序是仅在 [非英语语言] 中可用。" 它也是可接受提供*有用链接 URL*提供产品/服务列表内容中使用以外的语言中的内容。
+> 如果产品/服务说明以短语开头, 则产品/服务列表内容 (例如产品/服务、文档、屏幕截图、使用条款和隐私策略) 无需使用英语, "此应用程序仅在 [非英语语言] 中可用"。 还可以提供一个*有用的链接 URL*来提供与产品/服务列表内容中所用语言不同的内容。
 
 ### <a name="offer-listings"></a>套餐列表
 
-提供要显示在 marketplace 中包括的产品/服务说明和市场营销资产的详细信息。
+提供要在 marketplace 中显示的详细信息, 包括产品/服务和市场营销资产的说明。
 
-- **名称**（必需）：此处定义的名称将显示为标题的产品/服务在你已选择的 marketplace(s) 上列出。 名称预先填充在基于以前**新产品/服务**条目。  这可能被商标。  这必须不能包含空格，表情符号 （除非它们是商标和版权符号），并且必须限制为 50 个字符。
-- **摘要**（必需）：提供产品/服务在 marketplace 列表搜索结果中使用的简短说明。 可以在此字段中输入最多 100 个字符的文本。
-- **说明**（必需）：提供的产品/服务会显示在 marketplace 清单概述的说明。 请考虑包括的价值主张、 优势、 任何类别或行业的关联，应用内购买的机会，所需的任何公开信息，以及若要了解详细信息的链接。
-可以在此字段中输入最多 3,000 个字符的文本。 更多技巧，请参阅文章[编写出色的应用程序的说明](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)。
-- **搜索关键字**:输入的客户可以使用 marketplace(s) 中查找产品/服务最多三个搜索关键字。
-- **入门说明**（必需）：介绍如何配置并开始为潜在客户使用你的应用。  本快速入门中可以包含指向更详细的联机文档。 可以在此字段中输入最多 3,000 个字符的文本。 
+- **名称**(必需):此处定义的名称将显示为你选择的 marketplace 中的产品/服务列表的标题。 该名称根据你以前的**新产品/服务**条目预填充。  这可能是商标字的。  这不能包含空格、表情符号 (除非它们是商标和版权符号), 并且必须限制为50个字符。
+- **摘要**(必需):提供要在 marketplace 列表搜索结果中使用的产品/服务的简短说明。 最多可在此字段中输入100个字符的文本。
+- **描述**(必需):提供产品/服务的说明, 以便在 marketplace 列表概述中显示。 考虑包括价值主张、关键优势、任何类别或行业关联、应用内购买机会、任何所需的披露, 以及用于了解详细信息的链接。
+最多可在此字段中输入3000个字符的文本。 有关更多提示, 请参阅文章[编写出色的应用说明](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)。
+- **搜索关键字**:输入最多三个搜索关键字, 客户可以使用这些关键字在 marketplace 中查找你的产品/服务。
+- **入门说明**(必需):说明如何为潜在客户配置和开始使用您的应用程序。  此快速入门可以包含指向更详细的联机文档的链接。 最多可在此字段中输入3000个字符的文本。 
 
 #### <a name="links"></a>链接
 
-- **隐私策略**（必需）：链接到你组织的隐私策略。 你负责确保您的应用程序符合隐私法律和法规，并提供有效的隐私策略
-- **CSP 计划的市场营销材料**（可选）：必须提供到市场营销材料，如果你选择扩展到产品/服务的链接[云解决方案提供商 (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)程序。 CSP 使 CSP 合作伙伴能够捆绑，市场中，然后转售产品/服务扩展到更广泛的合格的客户的产品/服务。 这些分销商将需要访问产品/服务的市场营销活动的材料。 有关详细信息，请参阅[到市场服务](https://partner.microsoft.com/reach-customers/gtm)。
-- **有用的链接**（可选）：有关你的应用或通过提供列出的相关的服务的可选补充联机文档**标题**并**URL**。 通过单击来添加其他有用的链接 **+ 添加 URL**。
+- **隐私策略**(必需):链接到你的组织的隐私策略。 你负责确保你的应用符合隐私法律和法规, 并负责提供有效的隐私策略
+- **CSP 计划营销材料**(可选):如果你选择将你的产品/服务扩展到[云解决方案提供商 (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)计划, 则必须提供到市场营销材料的链接。 CSP 通过使 CSP 合作伙伴捆绑、营销和转售你的产品/服务, 将你的产品/服务扩展到更广泛的合格客户。 这些分销商需要访问产品/服务的营销材料。 有关详细信息, 请参阅[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
+- **有用的链接**(可选):通过提供**标题**和**URL**来列出你的应用或相关服务的可选补充联机文档。 单击 " **+ 添加 URL**", 添加其他有用的链接。
 
 #### <a name="contact-information"></a>联系信息
 
-- **联系人**:对于每个客户联系，提供某位员工**名称**，**电话号码**，并**电子邮件**地址。  (这些*将不会*公开显示)。 一个**支持 URL**还需要**支持联系人**组。  (此信息*将*公开显示)。
+- **联系人**:对于每个客户联系人, 请提供员工**姓名**、**电话号码**和**电子邮件**地址。  (这些*将不*会公开显示)。 **支持联系人**组也需要**支持 URL** 。  (*将*公开显示此信息)。
 
-**支持联系人**（必需）：有关常规支持问题。
+**支持联系人**(必需):有关一般支持问题。
 
-**工程联系人**（必需）：有关技术问题。
+**工程联系人**(必需):有关技术问题。
 
-**通道管理器联系**（必需）：为分销商与 CSP 计划相关的问题。
+**通道管理器联系人**(必需):与 CSP 计划相关的经销商问题。
 
 #### <a name="files-and-images"></a>文件和映像
 
-- **文档**（必需）：以 PDF 格式，提供三 （3） 每个的文档的产品/服务的上限和下限的一 （1） 添加相关产品/服务，市场营销文档。
-- **映像**（可选）：有多个产品/服务的徽标图像整个 marketplace(s)，需要以下大小-小可能出现的位置的位置：48 x 48 像素 _（必需）、_ 中等：90 x 90 像素，大：216x216 像素 _（必需）、_ 宽：255x115 像素，并且 Hero:815 x 290 像素。 所有映像必须都可在中。PNG 格式。
-- **屏幕截图**（必需）：添加屏幕截图演示产品/服务。 最多五 （5） 的屏幕截图可能会添加，应在 1280 x 720 像素调整大小。 所有映像必须都可在中。PNG 格式。
-- **视频**（可选）：将链接添加到的视频，演示产品/服务。 可以使用 YouTube 和/或 Vimeo 视频链接，这将随产品/服务一起呈现给客户。 您还需要输入视频的缩略图像的大小调整为 1280 x 720 像素的 PNG 格式。 您可以显示每个产品/服务的四个视频的最大值。
+- **文档**(必需):以 PDF 格式为产品/服务添加相关营销文档, 最少提供一 (1) 个文档, 最多提供三 (3) 个文档。
+- **映像**(可选):你的产品/服务的徽标图像可能出现在整个 marketplace 中, 需要以下大小--小型:48 x 48 像素 _(必需),_ 中:90 x 90 像素, 较大:216 x 216 像素 _(必需),_ 宽:255 x 115 像素和英雄:815 x 290 像素。 所有映像都必须在中。PNG 格式。
+- **屏幕截图**(必需):添加演示产品/服务的屏幕截图。 最多可添加五 (5) 个屏幕截图, 大小应为 1280 x 720 像素。 所有映像都必须在中。PNG 格式。
+- **视频**(可选):添加指向演示产品/服务的视频的链接。 可以使用 YouTube 和/或 Vimeo 视频链接，这将随产品/服务一起呈现给客户。 还需要输入视频的缩略图, 大小为 1280 x 720 像素, 格式为 PNG。 每个产品/服务最多可显示四个视频。
 
-请记住**保存**才能转到下一部分 ！
+请记住在转到下一节之前**保存**。
 
-#### <a name="additional-marketplace-listing-resources"></a>其他 marketplace 列出的资源
+#### <a name="additional-marketplace-listing-resources"></a>其他 marketplace 列出资源
 
-- [最佳做法的 marketplace 产品/服务列表](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Marketplace 产品/服务列表的最佳实践](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 
 ## <a name="preview"></a>预览
 
-**预览版**选项卡可以定义有限**预览受众**用于释放之前向更广泛的 marketplace 用户发布产品/服务实时产品/服务。
+使用 "**预览**" 选项卡, 可以在将产品/服务发布到更广泛的 marketplace 受众之前, 定义用于发布产品/服务的受限**预览版**。
 
 > [!IMPORTANT]
-> 必须选择**投入**产品/服务将发布实时到 marketplace 公共受众后检查中预览产品/服务之前。
+> 在预览版中检查产品/服务后, 你必须选择 "**开始**", 然后将产品/服务发布到 marketplace 公共受众。
 
-- **定义预览受众：添加每行，以及可选的描述单个 AAD/MSA 帐户电子邮件。**
+- **定义预览受众:添加单个 AAD/MSA 帐户每行的电子邮件和可选描述。**
 
-手动添加最多十 （10） 电子邮件地址或 20 (20)，如果上传 CSV 文件中，现有 Microsoft 帐户 (MSA) 或 Azure Active Directory (AAD) 帐户如何进行验证之前发布产品/服务实时。 通过添加这些帐户，可以定义将有权预览产品/服务发布到 marketplace(s) 之前的受众。 如果产品/服务已激活，您仍可以用于测试的任何更改或更新产品/服务定义预览受众。
+手动添加最多十 (10) 个电子邮件地址, 或者在上传 CSV 文件 (对于现有 Microsoft 帐户 (MSA) 或 Azure Active Directory (AAD) 帐户), 以帮助在发布之前验证产品/服务。 通过添加这些帐户, 你将定义在将产品/服务发布到 marketplace 之前, 允许其预览版访问权限的用户。 如果你的产品/服务已处于活动阶段, 你仍可以定义预览受众来测试产品/服务的任何更改或更新。
 
 > [!NOTE]
-> 预览受众不同于专用受众。 预览受众允许对产品/服务的访问_以前_到实时在商店中发布。 您还可以选择创建计划并使其可仅供专用的受众。 在中**计划列表**选项卡上，可以定义与专用受众**这是私有计划**复选框。 然后，您可以定义最多 20,000 个客户使用 Azure 租户 Id 的私有访问群体。
+> 预览受众不同于一个专用受众。 在市场上发布生活_之前_, 允许预览版观众访问你的产品/服务。 你还可以选择创建一个计划并使其仅可供专用用户使用。 在 "**计划列表**" 选项卡中, 你可以使用 "**这是一个专用计划**" 复选框来定义专用受众。 然后, 你可以使用 Azure 租户 Id 为多达20000的客户定义专用受众。
 
 ## <a name="technical-configuration"></a>技术配置
 
-**技术配置**选项卡将定义用于连接到你的产品/服务的技术细节 （URL 路径、 webhook、 租户 ID 和应用程序 ID）。 此连接使我们能够预配最终客户的产品/服务，如果用户选择获取它。 关系图来描述收集字段的使用情况是文档中提供[SaaS 履行 Api](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)。
+"**技术配置**" 选项卡定义用于连接到产品/服务的技术详细信息 (URL 路径、webhook、租户 id 和应用 ID)。 此连接使我们能够为最终用户预配你的产品/服务。 适用于[SaaS 履单 api](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)的文档中提供了介绍所收集字段的使用情况的关系图。
 
-- **登录页 URL** （必需）：定义客户将登录后获取从 marketplace 产品/服务的站点 URL。 此 URL 将客户路由到页时将收到一个令牌的终结点。 该令牌可用于预配在履行 Api 中使用解析的详细信息交换。 这些详细信息和您收集任何其他可以用作构建您的体验中的客户交互 web 页面的一部分来完成注册并激活其购买的产品。
+- **登陆页 URL**(必需):定义客户在从 marketplace 获取产品/服务后将居住于的站点 URL。 此 URL 将是在客户路由到页面时接收令牌的终结点。 使用履单完成 Api 中的 resolve, 可以交换该令牌以获取预配详细信息。 您收集的这些详细信息以及您收集的任何其他人都可以在您的体验中使用, 以完成注册并激活他们的购买体验。
 
-- **连接 webhook** （必需）：对于 Microsoft 需要代表客户向你发送的所有异步事件（示例：SaaS 订阅已无效），我们要求你提供连接 webhook。 如果还没有就地 webhook 系统，最简单的配置是将 HTTP 终结点逻辑应用，它将侦听的任何事件发布到其并适当地处理它们 (例如 https:\//prod-1westus.logic.azure.com:443/work)。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
+- **连接 webhook**(必需):对于 Microsoft 需要代表客户向你发送的所有异步事件（示例：SaaS 订阅无效), 我们要求你提供连接 webhook。 如果尚未准备好 webhook 系统, 最简单的配置是创建一个 HTTP 终结点逻辑应用, 该应用将侦听任何发送给它的事件, 并相应地处理这些事件 (例如, https:\//prod-1westus.logic.azure.com:443/work)。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
 
-- **Azure AD 租户 ID** （必需）：在 Azure 门户中，我们要求您[创建 Azure Active Directory (AD) 应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)位于经过身份验证的通信，以便我们可以验证我们的两个服务之间的连接。 若要查找[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)，转到 Azure Active Directory，然后选择**属性**，然后查找**Directory ID**数列出 （例如50c464d3-4930-494c-963c-1e951d15360e)。
+- **Azure AD 租户 ID**(必需):在 Azure 门户中, 我们要求你[创建一个 Azure Active Directory (AD) 应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal), 以便我们可以验证两个服务之间的连接是否在经过身份验证的通信之后。 若要查找[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in), 请跳到 Azure Active Directory, 选择 "**属性**", 然后查找列出的**目录 ID**号 (例如 50c464d3-4930-494c-963c-1e951d15360e)。
 
-- **Azure AD 应用 ID** （必需）：您还需要您[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)和身份验证密钥。 若要获取这些值，请转到 Azure Active Directory，并选择**应用注册**，然后寻找**应用程序 ID**数列出 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 若要查找的身份验证密钥，请转到**设置**，然后选择**密钥**。 需要提供的说明和持续时间，然后将提供一个数字值。
+- **Azure AD 应用 ID**(必需):还需要[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)和身份验证密钥。 若要获取这些值, 请转到 Azure Active Directory 并选择**应用注册**, 然后查找列出的**应用程序 ID**号 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 若要查找身份验证密钥, 请单击 "**设置**" 并选择 "**密钥**"。 你将需要提供描述和持续时间, 然后将提供一个数值。
 
- 请注意，Azure 应用程序 ID 是与发布服务器 ID 相关联，因此请确保，所有产品/服务中使用相同的应用程序 ID。
+ 请注意, Azure 应用程序 ID 与你的发布者 ID 相关联, 因此请确保你的所有产品/服务中都使用相同的应用程序 ID。
 
 ## <a name="plan-overview"></a>计划概述
 
-**计划概述**选项卡可以提供了各种计划中的选项相同的产品/服务。 （有时称为 Sku） 这些计划可以具有不同的版本、 货币化率或服务层。 必须设置至少一个计划，若要在 marketplace 中销售。
+利用 "**计划概述**" 选项卡, 您可以在同一产品内提供各种计划选项。 这些计划 (有时称为 Sku) 在版本、盈利或服务层方面可能会有所不同。 至少必须设置一个计划, 才能在 marketplace 中销售产品/服务。
 
-创建后，你将看到你计划名称、 Id、 定价模型，可用性 （公共或私有），当前发布状态以及任何可用的操作。
+创建后, 你将看到计划名称、Id、定价模型、可用性 (公共或专用)、当前发布状态和任何可用操作。
 
-**操作**推出**计划概述**取决于你的计划的当前状态，并且可能包括：
+**计划概述**中的可用**操作**取决于计划的当前状态, 并且可能包括:
 
-- 如果计划状态为**草稿**– 删除草稿
-- 如果计划状态为**Live** – 停止销售计划或同步专用受众
+- 如果计划状态为**草稿**–删除草稿
+- 如果计划状态为 "**实时**" –停止销售计划或同步专用受众
 
-**创建新的计划**（最小的一个计划的用户选择此选项可以通过 Microsoft 销售）
+**创建新计划**(对于选择通过 Microsoft 进行销售的用户, 至少有一个计划)
 
-- **计划 ID:** 在此产品/服务中创建每个计划的唯一计划 ID。 此 ID 将可看到客户在产品 URL 和 Azure 资源管理器模板 （如果适用）。 使用仅小写字母、 字母数字字符、 短划线或下划线。 50 个字符最多允许为此计划 id。 请注意选择在创建后无法修改 ID。
-- **计划名称：** 确定该计划选择产品/服务中时，客户将看到此名称。 在此产品/服务中创建每个计划的唯一产品/服务名称。 计划名称用于区分可能属于同一个产品/服务 （例如软件计划 产品/服务名称：Windows Server;计划：Windows Server 2016 中，Windows Server 2019）。
+- **计划 ID:** 为此产品/服务中的每个计划创建唯一的计划 ID。 此 ID 将对产品 URL 中的客户可见, Azure 资源管理器模板 (如果适用)。 仅使用小写字母、字母数字字符、短划线或下划线。 此计划 ID 最多允许50个字符。 请注意, 在选择 "创建" 后, 不能修改该 ID。
+- **计划名称:** 客户在确定要在产品/服务中选择的计划时, 将看到此名称。 为此产品/服务中的每个计划创建一个唯一的产品/服务名称。 计划名称用于区分可能属于同一产品/服务的软件计划 (例如 产品/服务名称:Windows Server;打算Windows Server 2016、Windows Server 2019)。
 
 ### <a name="plan-listing"></a>计划列表
 
-**计划列表**选项卡显示你的计划是可用的语言 （和市场） 英语 （美国） 目前可用的唯一位置。 此外，此页显示特定于语言的列表和已添加的日期/时间的状态。 需要为每种语言定义 （提供名称、 说明、 搜索词等） 的应用商店详细信息 / 市场。
+"**计划列表**" 选项卡显示你的计划可用的语言 (和市场), 当前只有英语 (美国) 是可用的位置。 此外, 此页还显示特定于语言的列表的状态以及添加它的日期/时间。 需要为每种语言/市场定义 marketplace 详细信息 (产品名称、说明、搜索词等)。
 
 #### <a name="plan-listing-details"></a>计划列表详细信息
 
-选择一个计划语言将显示**计划列表**信息，包括**名称**和**说明。**
+选择一种计划语言将显示**计划列表**信息, 包括**名称**和**说明。**
 
-- **名称**：预填充基于预览版**新的计划**条目，将显示为产品/服务的"软件计划的"显示在 marketplace 中的标题。
-- **说明：** 此说明是解释为什么说此软件计划独一无二的机会和与其他软件计划内的产品/服务的任何差异。 可能包含最多 500 个字符。
+- **名称**：根据预览**新计划**条目进行预填充, 并将显示为产品/服务的 "软件计划" 的标题。
+- **说明：** 此说明是一个机会, 用于说明此软件计划的独特之处, 以及与你的产品/服务中的其他软件计划的不同之处。 最多可包含500个字符。
 
-选择**保存**之后完成这些字段。
+完成这些字段后, 选择 "**保存**"。
 
-#### <a name="plan-pricing-and-availability"></a>计划定价和可用性
+#### <a name="plan-pricing-and-availability"></a>规划定价和可用性
 
-**定价和可用性**选项卡可以配置此计划将在中，提供市场所需的货币化模型、 价格和计费的术语。 此外，您可以指示是否使该计划为每个人或仅为特定客户 （专用受众） 可见。
+使用 "**定价和可用性**" 选项卡, 您可以配置此计划将在其中提供的市场, 以及所需的盈利模型、价格和计费条款。 此外, 您还可以指示是使该计划对每个人都可见, 还是仅供特定客户 (一个专用受众) 使用。
 
-##### <a name="enabling-free-trials"></a>启用免费试用版
+##### <a name="enabling-free-trials"></a>启用免费试用
 
-通过商业 marketplace SaaS 产品/服务，可通过 Microsoft 销售时提供一个月免费试用版。 对于所有计费模型和按流量计费的计划除外条款，支持免费试用版。 此选项允许客户具有低的门槛通过一个月的免费访问权限。  如果您选择启用的免费试用版产品/服务中的计划，客户不能将转换为付费订阅之前在初始的一个月内结束。  在此期间，客户购买产品/服务可以试用任何启用免费试用版的支持计划，并在它们之间转换。  转换为付费订阅期限结束时自动进行。
-
->[!Note]
->如果客户选择将转换为某个计划没有免费试用版，则转换将发生这种情况，但免费试用版将立即丢失。  此外，一旦客户启动付费计划，它们可以不再获取免费试用版同样，在同一订阅即使它们转换为一种支持免费试用版的 SKU。
-
-若要配置的免费试用版的功能是可用于你的产品/服务中的每个计划。 只需导航到的定价和可用性的每个产品/服务并选中复选框以允许一个月试用版。
-
-![一个月免费试用版复选框](./media/free-trial-enable.png)
-
-若要获取当前参与免费试用版订阅客户的信息，请使用新的 API 属性`isFreeTrial`，其将被标记为 true 或 false。 请参阅[SaaS 获取订阅 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)有关详细信息。
+通过商用 marketplace 提供的 SaaS 产品, 可以在通过 Microsoft 销售时提供一个月免费试用版。 对于除计费计划之外的所有计费模型和条款, 都支持免费试用版。 此选项允许客户通过一个月的免费访问权限来进入低障碍。  如果你选择对你的产品/服务中的计划启用免费试用版, 则在第一个月期限结束之前, 客户将无法转换为付费订阅。  在此期间, 购买你的产品/服务的客户可以尝试使用启用了免费试用版的任何受支持计划并在它们之间进行转换。  在此期限结束时, 将自动转换为付费订阅。
 
 >[!Note]
->利用 marketplace 计数服务的计划不支持免费试用版。
+>如果客户选择转换为无免费试用版的计划, 则会发生转换, 但免费试用版将立即丢失。  此外, 一旦客户开始为某一计划付费, 他们就不能再在同一订阅上再次获得免费试用版, 即使他们转换为支持免费试用版的 SKU 也是如此。
+
+你的产品/服务中的每个计划都提供了配置免费试用版的功能。 只需导航到每个产品的定价和可用性, 并选中该复选框以允许一个月的试用版。
+
+![一个月免费试用复选框](./media/free-trial-enable.png)
+
+若要获取有关当前参与免费试用的客户订阅的信息, 请使用新的`isFreeTrial`API 属性, 该属性将标记为 true 或 false。 有关详细信息, 请参阅[SaaS 获取订阅 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) 。
+
+>[!Note]
+>利用 marketplace 计量服务的计划不支持免费试用版。
 
 #### <a name="markets"></a>市场
 
-- **编辑市场**（可选）
+- **编辑市场**可有可无
 
-必须至少一个市场中可用的每个计划。 选择你想要使此计划可用的任意市场位置旁的复选框。 包括在内，以帮助搜索框和按钮，选择"税务免税"国家/地区，在其中 Microsoft remits 销售和你的代表销项税。 
+每个计划都必须至少在一个市场中可用。 对于想要使此计划可用的任何市场位置, 选中相应的复选框。 用于选择 "已汇款" 国家/地区的搜索框和按钮, 其中包含 Microsoft 汇寄的销售和使用条款, 其中包含你的帮助。 
 
 
-如果你已为你计划在美国美元 (USD) 设置价格，并添加另一个市场位置，将根据当前的汇率计算新市场的价格。 始终应检查每个市场发布之前的价格。 可以通过将保存所做的更改后，使用"导出价格 (xlsx)"链接查看定价。
+如果已将计划的价格设置为美国美元 (USD) 并添加另一个市场位置, 则将根据当前汇率计算新市场的价格。 在发布前, 应始终查看每个市场的价格。 保存更改后, 可以通过使用 "导出价格 (.xlsx)" 链接来查看定价。
 
 #### <a name="pricing"></a>定价
 
-- 定价模型：  固定的费率或基于席位
+- 定价模型：  基于平面速率或座位
 
-**固定的费率：** 启用对使用单一的月度或年度价格固定的费率价格产品/服务的访问。 这有时称为基于站点的定价。
+**固定速率:** 使用单个每月或每年低价位价格启用对你的产品/服务的访问。 这有时称为基于站点的定价。 使用此定价模型, 你可以选择定义使用 marketplace 计量服务 API 根据非标准单位对客户收费的计费计划。  有关计费计费的详细信息, 请参阅[使用 marketplace 计量服务按流量](./saas-metered-billing.md)计费。
 
-**基于席位：** 启用对产品/服务的访问使用基于访问产品/服务或占用的用户数的价格*席位*。 此基于席位的模型使您可以设置所需的最低和最大允许的座位数根据价格。 这样一来，可以通过配置多个计划基于用户数量配置不同的价格点。  这些字段是可选的。 如果留空，将被当做席位数没有限制 （最小值为 1） 和系统可以支持的任意数量的最大值。 作为对你的计划的更新的一部分，可以编辑这些字段。
+**基于座位:** 根据访问产品/服务的用户数量或使用的*座位*, 使用价格启用对产品/服务的访问。 使用此基于座位的模型, 可以根据价格设置允许的最小和最大座位数。 通过这种方式, 可以通过配置多个计划, 根据用户数量来配置不同的价格点。  这些字段是可选的。 如果留空, 座位数将被解释为没有限制 (最小为 1, 最大值为系统可以支持的最大数目)。 这些字段可作为计划更新的一部分进行编辑。
 
-发布后，无法更改计费的定价模型选择。 此外，相同的产品/服务的所有计划必须都共享相同的定价模式。
+发布后, 无法更改计费定价模型选择。 此外, 同一产品/服务的所有计划必须共享同一定价模型。
 
-- **计费术语**:月度或年度
+- **计费术语**:每月或每年
 
-选择客户必须付出代价列出的频率。 必须提供至少一个月度或年度订阅价格，或这两个选项可提供给客户。
+选择客户必须支付所列价格的频率。 必须至少提供一个每月或每年的价格, 或者两个选项可供客户使用。
 
-- **价格**:美元每月或每年的美元
+- **价格**:每月 USD 或每年美元
 
-价格以当地货币表示的集 (美元 = 美国美元) 转换为使用当前汇率安装过程中提供的所有选定市场的本地货币。 通过导出定价电子表格并查看每个市场中的价格来验证发布前的这些价格。 如果你想要在一个单独的市场中设置自定义价格，修改并导入定价电子表格。 您有责任验证此定价，拥有这些设置。
-**必须先保存定价更改以便导出定价数据。*
+使用在安装过程中可用的当前汇率, 使用当地货币 (USD = 美国美元) 将价格设置为所有所选市场的本地货币。 在发布之前通过导出定价电子表格并查看每个市场中的价格来验证这些价格。 如果要在单个市场中设置自定义价格, 请修改并导入定价电子表格。 你负责验证此定价并拥有这些设置。
+**必须先保存定价更改, 才能导出定价数据。*
 
-查看发布之前仔细价格，因为没有什么发布计划后可以更改一些限制：
+发布之前请仔细查看你的价格, 因为发布计划后, 有一些限制会发生变化:
 
-- 一旦发布计划，无法更改定价模型。
-- 后计费的术语发布的一个计划，不能删除它更高版本。
-- 一旦发布你的计划中的市场的价格，不能以后更改。
+- 一旦发布了某个计划, 就不能更改定价模型。
+- 为计划发布计费字词后, 以后不能将其删除。
+- 一旦发布了计划中市场的价格, 以后就不能再对其进行更改。
 
-### <a name="plan-audience"></a>计划的受众
+### <a name="plan-audience"></a>规划受众
 
-可以选择要配置以供所有人或仅所选的特定受众才能看到每个计划。 您可以分配此受限用户是使用 Azure AD 租户 Id 中的成员身份。
+你可以选择将每个计划配置为对每个用户可见, 或者仅配置为你选择的特定群体。 你可以使用 Azure AD 租户 Id 分配此受限受众的成员身份。
 
 #### <a name="privacy"></a>隐私
 
-- **这是私有计划**（可选复选框）
+- **这是一种私有计划**(可选复选框)
 
-选中此框可使你的计划，专用和仅对所选的受限制的访问群体可见。 一旦发布为私有计划，可以将访问群体更新或选择以使所有人都可使用该计划。 后一个计划发布为对每个人可见，则必须始终保持对每个人都可见。 （该计划不能配置为专用计划再次）。
+选中此框以使您的计划成为私有计划, 并且只对所选的受限受众可见。 作为专用计划发布后, 您可以更新受众或选择使该计划对所有人都可用。 一旦将某个计划发布为每个人都可见, 它就必须对所有人都保持可见。 (计划不能再次配置为专用计划)。
 
-- **受限访问群体 (租户 Id)**
+- **受限受众 (租户 Id)**
 
-将分配有权访问此专用计划的受众。 使用租户 Id 的选项包括分配每个租户 ID 的说明来分配访问权限。 可以添加最多 10 个租户 Id，或 20,000 个客户租户 Id，如果导入.csv 电子表格文件。
+分配将有权访问此私有计划的受众。 使用租户 Id 分配访问权限, 其中包含分配给每个租户 ID 的说明。 如果导入 .csv 电子表格文件, 则最多可以添加10个租户 Id 或20000个客户租户 Id。
 
-租户是组织，以 GUID （全局唯一标识符，用来识别资源的 128 位的整数数值） 表示 id 的表示形式。 它是 Azure AD 专用实例，组织或应用开发人员与 Microsoft 建立关系时（例如注册 Azure、Microsoft Intune 或 Microsoft 365）会收到该实例。 每个 Azure AD 租户都是独特的，独立于其他 Azure AD 租户。 若要检查租户，登录到 Azure 门户中使用你想要用于管理你的应用程序的帐户。 如果你有一个租户，则会自动登录到该租户，并且帐户名的正下方会显示租户名称。 将鼠标指针悬停在 Azure 门户右上角的帐户名上，可以查看你的姓名、电子邮件、目录和租户 ID (GUID) 以及域。 如果帐户与多个租户相关联，则可以选择帐户名打开一个菜单，并在其中切换租户。 每个租户都有自己的唯一租户 ID。 您还可以查找使用域名 URL 在贵组织的租户 ID: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com)。
+租户是组织的表示形式, ID 表示为 GUID (全局唯一标识符, 是用于标识资源的128位整数)。 它是 Azure AD 专用实例，组织或应用开发人员与 Microsoft 建立关系时（例如注册 Azure、Microsoft Intune 或 Microsoft 365）会收到该实例。 每个 Azure AD 租户都是独特的，独立于其他 Azure AD 租户。 若要检查租户, 请使用要用于管理应用程序的帐户登录到 Azure 门户。 如果你有一个租户，则会自动登录到该租户，并且帐户名的正下方会显示租户名称。 将鼠标指针悬停在 Azure 门户右上角的帐户名上，可以查看你的姓名、电子邮件、目录和租户 ID (GUID) 以及域。 如果帐户与多个租户相关联，则可以选择帐户名打开一个菜单，并在其中切换租户。 每个租户都有自己的唯一租户 ID。 你还可以使用域名 URL 查找你组织的租户 ID, 网址为: [https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
 
-虽然 SaaS 产品/服务使用租户 Id 来定义专用的受众，其他产品/服务类型可以使用 Azure 订阅 Id （这也表示为 Guid）。
+尽管 SaaS 提供使用租户 Id 来定义专用受众, 但其他产品/服务类型可能使用 Azure 订阅 Id (也表示为 Guid)。
 
 > [!NOTE]
-> 专用的受众 （或受限制的受众） 不同于预览版受众。 在中 **[预览版](#preview)** 选项卡上，可以定义预览受众。 预览受众允许对产品/服务的访问*以前*实时在 marketplace 中发布的产品/服务。 预览受众虽然专用用户指定仅适用于特定计划，可以查看所有计划 (专用与否)，但仅在有限的预览版时测试并验证该计划。
+> 专用受众 (或受限受众) 不同于预览版观众。 在 " **[预览](#preview)** " 选项卡中, 可以定义预览观众。 在 marketplace 中发布产品/服务*之前*, 允许预览版用户访问你的产品/服务。 尽管专用受众称号仅适用于特定计划, 但预览版观众可以查看所有计划 (私密或不查看), 但仅限在测试和验证计划时的有限预览期内。
 
-## <a name="example-list-of-plans-within-a-marketplace-offer"></a>计划内的 marketplace 产品/服务的示例列表
+## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Marketplace 产品/服务中的计划示例列表
 
-![列出与说明示例 marketplace 计划](./media/marketplace-plan.svg)
+![带有说明的 marketplace 计划列表示例](./media/marketplace-plan.svg)
 
 ## <a name="test-drive"></a>体验版
 
-**测试驱动器**选项卡可以设置演示 （或"试用"） 这将使客户试用产品/服务提交之前来购买它。 在本文中了解更多信息[什么是体验版？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。 如果不再想要提供体验版产品/服务，返回到 **[提供了安装程序](#offer-setup)** 页上，取消选中**启用测试驱动器**。
+使用 "**测试驱动器**" 选项卡, 你可以设置一个演示 (或 "测试驱动器"), 使客户能够在提交之前试用你的产品/服务。 有关详细信息, 请参阅[什么是测试驱动器？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。 如果你不再希望为你的产品/服务提供一个测试驱动器, 请返回 " **[产品/服务设置](#offer-setup)** " 页, 然后取消选中 "**启用测试驱动器**"。
 
 ### <a name="technical-configuration"></a>技术配置
-以下类型的测试驱动器都可用，每个都有其自己的技术配置要求。
+可以使用以下类型的测试驱动器, 每种都有其自己的技术配置要求。
 
 - [Azure 资源管理器](#technical-configuration-for-azure-resource-manager-test-drive)
 - [Dynamics 365](#technical-configuration-for-dynamics-365-test-drive)
 - [逻辑应用](#technical-configuration-for-logic-app-test-drive)
-- [Power BI](#technical-configuration-not-required-for-power-bi-test-drives) （不是必需的技术配置）
+- [Power BI](#technical-configuration-not-required-for-power-bi-test-drives)(不需要技术配置)
 
-#### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>技术配置 Azure 资源管理器测试驱动器
+#### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Azure 资源管理器测试驱动器的技术配置
 
-包含组成解决方案的所有 Azure 资源的部署模板。 适合此方案的产品仅使用 Azure 资源。 了解有关设置详细[Azure 资源管理器体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)。
+一个部署模板, 其中包含组成解决方案的所有 Azure 资源。 适用于此方案的产品只使用 Azure 资源。 详细了解如何设置[Azure 资源管理器试用版驱动器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)。
 
-- **区域**（必需）：目前有 26 个其中体验版可提供的支持 Azure 的区域。 通常情况下，想要提供体验版希望最大数量的客户，在区域中，以便他们可以选择最靠近的区域为获得最佳性能。 您需要确保你的订阅允许部署所有中每个区域选择所需的资源。
+- **区域**(必需):目前, 有26个支持 Azure 的区域可供使用。 通常情况下, 你将希望使你的测试驱动器在你预计的客户数最多的区域中可用, 以便他们可以选择最接近的区域以获得最佳性能。 你将需要确保你的订阅可以在你选择的每个区域中部署所需的所有资源。
 
-- **Instances**：选择的类型 （热或冷） 和数字的可用实例，将提供产品/服务的区域数的乘积。
+- **Instances**：选择 "类型" ("热" 或 "冷") 和 "可用实例数", 将乘以提供的可用区域数。
 
-**Hot**：这种类型是实例的已部署并且正在等待每个所选区域的访问。 客户可以立即访问*热*测试之用，而无需等待部署的实例。 弊端在于这些实例始终在 Azure 订阅上运行，因此，它们会产生较高的运行时间成本。 强烈建议至少一个*热*实例，因为大多数客户不想等待完整部署，如果没有导致在客户的使用情况下车*热*实例不可用。
+**Hot**：此类型的实例部署并等待每个选定区域的访问权限。 客户可以即时访问测试驱动器的*热*实例, 而无需等待部署。 弊端在于这些实例始终在 Azure 订阅上运行，因此，它们会产生较高的运行时间成本。 强烈建议至少具有一个*热*实例, 因为大多数客户不希望等待完全部署, 因此, 如果没有可用的*热*实例, 则会导致客户使用中出现下拉。
 
-**冷**:这种类型的实例表示可能是每个区域进行部署的实例的总数。 冷实例需要整个测试驱动器资源管理器模板部署时客户请求体验版，因此*冷*实例都要慢得多加载比*热*实例。 不利的一面是，只需支付的体验版持续时间，它是*不*始终为与在 Azure 订阅上运行*热*实例。
+**冷**:此类型的实例表示每个区域可能部署的实例总数。 冷实例需要整个测试驱动器资源管理器模板在客户请求测试驱动器时进行部署, 因此,*冷*实例的加载速度慢于*热*实例。 缺点是, 你只需支付测试驱动器的持续时间, 就*不*会像使用*热*实例那样始终在 Azure 订阅上运行它。
 
-- **测试驱动器 Azure 资源管理器模板**:上传包含你的 Azure 资源管理器模板.zip。  详细了解如何快速入门文章中创建的 Azure 资源管理器模板[创建和使用 Azure 门户部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+- **试用 Azure 资源管理器模板**:上载包含 Azure 资源管理器模板的 .zip。  若要详细了解如何创建 Azure 资源管理器模板, 请参阅快速入门文章[使用 Azure 门户创建和部署 azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
 
-- **体验版持续时间**（必需）：输入测试驱动器将保持活动状态，在数小时的时间的长度。 此时间段结束后，体验版会自动终止。 此持续时间可能仅打赌集小时数的整数部分 （例如"2"小时"1.5"不是有效）。
+- **测试驱动器持续时间**(必需):输入测试驱动器将保持活动状态的时间长度 (以小时为单位)。 此时间段结束后，体验版会自动终止。 此持续时间可能只会按整小时数设置 (例如"2" 小时, "1.5" 无效。
 
-#### <a name="technical-configuration-for-dynamics-365-test-drive"></a>技术配置 Dynamics 365 测试驱动器
+#### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Dynamics 365 的技术配置测试驱动器
 
-Microsoft 可以消除托管和维护服务的预配和部署使用此类型的体验版的设置体验版的复杂性。 这种类型的托管的体验版的配置是而不考虑是否测试驱动器以目标 Business Central、 客户的参与情况或操作的访问群体相同的。
+Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服务预配和部署, 消除设置测试驱动器的复杂性。 无论测试驱动器是面向业务中心、客户接洽还是操作受众, 此类型的托管测试驱动器的配置都是相同的。
 
-- **最大并发测试驱动器**（必需）：设置可以一次使用体验版的客户的最大数目。 测试驱动器处于活动状态，因此将需要确保有足够的许可证可用于支持设置的最大限制时，每个并发用户将使用 Dynamics 365 许可证。 建议的值为 3-5。
+- **最大并发测试驱动器**(必需):设置一次可以使用您的测试驱动器的客户的最大数目。 在测试驱动器处于活动状态时, 每个并发用户将使用 Dynamics 365 许可证, 因此你将需要确保有足够的可用许可证来支持最大限制集。 建议的值为 3-5。
 
-- **体验版持续时间**（必需）：输入通过定义的小时数的测试驱动器将保持活动状态的时间的长度。 在数小时后该会话将结束并不能再使用一个许可证。 我们建议值为 2 到 24 个小时，具体取决于产品/服务的复杂性。 此持续时间可能仅打赌集小时数的整数部分 （例如"2"小时"1.5"不是有效）。  如果它们会时间不够，并且想要再次访问体验版，用户可以请求一个新的会话。
+- **测试驱动器持续时间**(必需):通过定义小时数来输入测试驱动器保持活动状态的时间长度。 超过此时间后, 会话将结束, 并且不再使用您的许可证之一。 建议使用2-24 小时的值, 具体取决于产品/服务的复杂性。 此持续时间可能只会按整小时数设置 (例如"2" 小时, "1.5" 无效。  如果用户运行时间不足, 并且想要再次访问测试驱动器, 则用户可以请求新的会话。
 
-- **实例 URL** （必需）：客户将在其中开始其体验版的 URL。 通常使用示例数据安装运行您的应用程序在 Dynamics 365 实例的 URL (例如 https://testdrive.crm.dynamics.com) 。
+- **实例 URL**(必需):客户将从其开始测试驱动器的 URL。 通常是运行应用并安装示例数据的 Dynamics 365 实例的 URL (例如 https://testdrive.crm.dynamics.com) ,
 
-- **实例 Web API URL** （必需）：检索通过登录到你的 Microsoft 365 帐户并导航到 Dynamics 365 实例的 Web API URL**设置** \&g t;**自定义** \&g t;**开发人员资源** \&g t;**实例 Web API (服务根 URL)** ，复制以下网页中找到的 URL (例如 https://testdrive.crm.dynamics.com/api/data/v9.0) 。
+- **实例 WEB API URL**(必需):通过登录到 Microsoft 365 帐户并导航到 "**设置** \&" gt; 来检索 Dynamics 365 实例的 Web API URL**自定义**\&g t;**开发人员资源**\&g t;**实例 WEB API (服务根 url)** , 复制此处找到的 URL (例如 https://testdrive.crm.dynamics.com/api/data/v9.0) )。
 
-- **角色名称**（必需）：提供自定义的 Dynamics 365 测试驱动器中定义的安全角色名称。 这将分配给该用户在其测试驱动器 （例如测试的汽车-角色）。
+- **角色名称**(必需):提供在自定义 Dynamics 365 测试驱动器中定义的安全角色名称。 这会在其测试驱动器 (例如, 测试驱动器角色) 期间分配给用户。
 
-#### <a name="technical-configuration-for-logic-app-test-drive"></a>逻辑应用体验版的技术配置
+#### <a name="technical-configuration-for-logic-app-test-drive"></a>逻辑应用的技术配置测试驱动器
 
-任何自定义产品应使用此类型的测试驱动器部署模板，其中包含多种复杂的解决方案体系结构。 测试驱动器的有关设置逻辑应用的详细信息，请访问[Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md)并[Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) GitHub 上。
+任何自定义产品都应使用这种类型的测试驱动器部署模板, 其中包含各种复杂的解决方案体系结构。 有关设置逻辑应用测试驱动器的详细信息, 请访问 GitHub 上的[操作](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md)和[客户参与](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)。
 
-- **区域**（必需、 单选下拉列表中）：目前有 26 个其中体验版可提供的支持 Azure 的区域。 逻辑应用的资源将部署在所选的区域。 如果逻辑应用具有特定区域中存储任何自定义资源，请确保此处选择该区域。 若要执行此操作的最佳方法是完全部署在 Azure 门户中订阅本地逻辑应用并验证它正常进行此选择之前。
+- **区域**(必需, 单项选择下拉列表):目前, 有26个支持 Azure 的区域可供使用。 逻辑应用的资源将部署在所选的区域中。 如果逻辑应用包含存储在特定区域中的任何自定义资源, 请确保在此处选择 "区域"。 实现此目的的最佳方式是在门户中将逻辑应用完全部署在 Azure 订阅上, 并在做出此选择之前验证它是否正常工作。
 
-- **最大并发测试驱动器**（必需）：设置可以一次使用体验版的客户的最大数目。 已部署的驱动器，从而使客户能够立即访问它们而无需等待部署这些测试。
+- **最大并发测试驱动器**(必需):设置一次可以使用您的测试驱动器的客户的最大数目。 已部署这些测试驱动器, 从而使客户无需等待部署即可立即访问它们。
 
-- **体验版持续时间**（必需）：输入测试驱动器将保持活动状态，在数小时的时间的长度。 此时间段结束后，测试驱动器会自动终止。
+- **测试驱动器持续时间**(必需):输入测试驱动器将保持活动状态的时间长度 (以小时为单位)。 此时间段结束后, 测试驱动器自动终止。
 
-- **Azure 资源组名称**（必需）：输入[Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)保存逻辑应用体验版的名称。
+- **Azure 资源组名称**(必需):输入逻辑应用测试驱动器保存到的[Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)名称。
 
-- **Azure 逻辑应用名称**（必需）：输入分配给用户的体验版的逻辑应用的名称。 此逻辑应用必须保存在更高版本的 Azure 资源组中。
+- **Azure 逻辑应用名称**(必需):输入逻辑应用的名称, 该名称将测试驱动器分配给用户。 此逻辑应用必须保存在上述 Azure 资源组中。
 
-- **取消预配逻辑应用名称**（必需）：输入客户运行完成后取消设置体验版的逻辑应用的名称。 此逻辑应用必须保存在更高版本的 Azure 资源组中。
+- 取消预**配逻辑应用名称**(必需):输入在客户完成后取消设置该测试驱动器的逻辑应用的名称。 此逻辑应用必须保存在上述 Azure 资源组中。
 
-#### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>对于 Power BI 体验版不是必需的技术配置
+#### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>Power BI 测试驱动器无需技术配置
 
-要演示交互式 Power BI 视觉对象可以使用的嵌入的链接共享自定义构建的仪表板作为其体验版，无需进一步的技术配置所需的产品。 了解有关设置详细[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)模板应用程序。
+希望演示交互 Power BI 视觉对象的产品可以使用嵌入的链接, 将自定义的仪表板共享为其测试驱动器, 无需进一步的技术配置。 了解有关设置[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)模板应用的详细信息。
 
-### <a name="deployment-subscription-details"></a>部署的订阅详细信息
+### <a name="deployment-subscription-details"></a>部署订阅详细信息
 
-若要部署你的名义体验版，请创建并提供单独的、 唯一的 Azure 订阅。 （非所需的 Power BI 体验版）。
+若要代表你部署测试驱动器, 请创建并提供一个单独的唯一 Azure 订阅。 (对于 Power BI 测试驱动器不是必需的)。
 
-- **Azure 订阅 ID** （需要 Azure 资源管理器和逻辑应用）：输入订阅 ID，授予对资源使用情况报告和计费在 Azure 帐户服务访问权限。 我们建议你考虑[创建单独的 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)如果你还没有用于体验版。 你可以通过登录到找到你的 Azure 订阅 ID [Azure 门户](https://portal.azure.com/)并导航到**订阅**的左侧菜单的选项卡。 选择选项卡会显示你的订阅 ID (例如"a83645ac-1234年-5ab6-6789-1h234g764ghty")。
+- **Azure 订阅 ID**(Azure 资源管理器和逻辑应用需要):输入订阅 ID, 为资源使用情况报告和计费授予对 Azure 帐户服务的访问权限。 如果还没有 Azure 订阅, 请考虑[创建一个单独的 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)用于测试驱动器。 你可以通过登录到[Azure 门户](https://portal.azure.com/)并导航到左侧菜单的 "**订阅**" 选项卡来查找你的 Azure 订阅 ID。 选择该选项卡将显示你的订阅 ID (例如 "a83645ac-5ab6-6789-1h234g764ghty")。
 
-- **Azure AD 租户 ID** （必需）：输入在 Azure Active Directory (AD)[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 Active Directory 选项卡，选择**属性**，然后查找**Directory ID**数列出 （例如50c464d3-4930-494c-963c-1e951d15360e)。 你还可以查看你组织的使用在你的域名 URL 的租户 id: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com)。
+- **Azure AD 租户 ID**(必需):输入 Azure Active Directory (AD)[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID, 请登录到[Azure 门户](https://portal.azure.com/), 在左侧菜单中选择 "Active Directory" 选项卡, 选择 "**属性**", 然后查找列出的**目录 ID**号 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 你还可以使用域名 URL 查找你组织的租户 ID, 网址为: [https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
 
-- **Azure AD 租户名称**（需要动态 365）：输入你的 Azure Active Directory (AD) 名称。 若要查找此名称，请登录到[Azure 门户](https://portal.azure.com/)，在右上角你的租户名称将列在你的帐户名称。
+- **Azure AD 租户名称**(动态365需要):输入 Azure Active Directory (AD) 名称。 若要查找此名称, 请登录到[Azure 门户](https://portal.azure.com/), 在右上角, 你的租户名称将在你的帐户名称下面列出。
 
-- **Azure AD 应用 ID** （必需）：输入在 Azure Active Directory (AD)[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 Active Directory 选项卡，选择**应用注册**，然后查找**应用程序 ID**数列出 (例如 50c464d3-4930-494c-963c-1e951d15360e)。
+- **Azure AD 应用 ID**(必需):输入 Azure Active Directory (AD)[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID, 请登录到[Azure 门户](https://portal.azure.com/), 在左侧菜单中选择 "Active Directory" 选项卡, 选择 "**应用注册**", 然后查找列出的**应用程序 ID**号 (例如 50c464d3-4930-494c-963c-1e951d15360e)。
 
-- **Azure AD 应用客户端机密**（必需）：输入 Azure AD 应用程序[客户端机密](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 若要查找此值，请登录到[Azure 门户](https://portal.azure.com/)。 选择**Azure Active Directory**选项卡中左侧菜单中，选择**应用注册**，然后选择你的测试版应用。 接下来，选择**证书和机密**，选择**新的客户端机密**，输入描述，选择**从不**下**Expires**，然后选择**添加**。 请务必复制密钥值。 （不要导航离开页面之前执行此操作，否则不会有权访问值。）
+- **Azure AD 应用客户端机密**(必需):输入 Azure AD 应用程序[客户端机密](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 若要查找此值, 请登录到[Azure 门户](https://portal.azure.com/)。 选择左侧菜单中的 " **Azure Active Directory** " 选项卡, 选择 "**应用注册**", 然后选择你的测试驱动器应用。 接下来, 选择 "**证书和密码**", 选择 "**新建客户端密码**", 输入描述, 选择 "**永不** **过期**", 然后选择 "**添加**"。 请确保复制值。 (在执行此操作之前, 请勿导航离开页面, 否则将无法访问此值。)
 
-请记住**保存**才能转到下一部分 ！
+请记住在转到下一节之前**保存**。
 
-### <a name="test-drive-listings-optional"></a>测试驱动器清单 （可选）
+### <a name="test-drive-listings-optional"></a>测试驱动器列表 (可选)
 
-**体验版节目表**下找到选项**测试驱动器**选项卡显示体验版是可用的语言 （和市场） 英语 （美国） 目前可用的唯一位置. 此外，此页显示特定于语言的列表和已添加的日期/时间的状态。 您需要定义测试驱动器的详细信息 （说明、 用户手册、 视频等） 每个语言/市场。
+"**测试驱动器**" 选项卡下的 "**测试驱动器列表**" 选项显示你的测试驱动器可用的语言 (和市场), 当前只有英语 (美国) 是可用的位置。 此外, 此页还显示特定于语言的列表的状态以及添加它的日期/时间。 需要为每种语言/市场定义测试驱动器详细信息 (说明、用户手册、视频等)。
 
-- **说明**（必需）：介绍了体验版，将演示内容，用户尝试使用、 多功能有待探索，和任何相关信息以帮助用户确定是否要获取产品/服务的目标。 可以在此字段中输入最多 3,000 个字符的文本。 
+- **描述**(必需):介绍您的测试驱动器、要演示的内容、要浏览的功能, 以及可帮助用户确定是否获取您的产品/服务的任何相关信息。 最多可在此字段中输入3000个字符的文本。 
 
-- **访问信息**（所需的 Azure 资源管理器和逻辑测试驱动器）：说明客户需要知道才能访问和使用此测试驱动器。 演练使用产品/服务和完全客户应掌握的知识来访问在整个测试驱动器的功能的情况。 可以在此字段中输入最多 10,000 个字符的文本。
+- **访问信息**(对于 Azure 资源管理器和逻辑测试驱动器是必需的):说明若要访问和使用此测试驱动器, 客户需要知道哪些内容。 逐步完成使用产品/服务的方案, 并确切了解客户在整个测试过程中访问功能应知道的情况。 最多可在此字段中输入10000个字符的文本。
 
-- **用户手册**（必需）：你的体验版深入演练。 用户手册应涵盖真正需要的客户遇到体验版获得并用作任何问题，它们可能具有的引用。 必须以 PDF 格式并上传后命名为 （255 个字符最大值） 文件。
+- **用户手册**(必需):深入演练了您的测试驱动器体验。 用户手册应确切地说明您希望客户从遇到该测试驱动器中获得的内容, 并为他们可能遇到的任何问题提供参考。 文件必须采用 PDF 格式, 并在上传后命名为 (最多255个字符)。
 
-- **视频：将视频添加**（可选）：可以上传到 YouTube 或 Vimeo 视频和此处引用的链接和缩略图图像 （533x324 像素为单位），以便客户可以查看信息以帮助他们更好地了解测试驱动器，包括如何成功使用的功能的演练操作你产品/服务和了解突出其优点的方案。
-  - **名称**（必需）
-  - **URL （YouTube 或 Vimeo 仅）** （必需）
-  - **缩略图 (533 x 324px)** :图像文件必须为 PNG 格式。
+- **视频添加视频** (可选):可以将视频上传到 YouTube 或 Vimeo, 并使用链接和缩略图 (533 x 324 像素) 在此处引用视频, 以便客户可以查看信息, 以帮助他们更好地了解测试驱动器, 包括如何成功使用提供并了解突出显示其优势的方案。
+  - **名称**请求
+  - **URL (仅限 YouTube 或 Vimeo)** 请求
+  - **缩略图 (533 x 324px)** :图像文件必须采用 PNG 格式。
 
-选择**保存**之后完成这些字段。
+完成这些字段后, 选择 "**保存**"。
 
 ## <a name="publish"></a>发布
 
-#### <a name="submit-offer-to-preview"></a>提交产品/服务预览
+#### <a name="submit-offer-to-preview"></a>将产品/服务提交到预览版
 
-完成的产品/服务所需的所有部分后，选择**发布**在门户的右上角。 你将重定向到**评审并将其发布**页。 
+完成产品/服务的所有必需部分后, 请选择门户右上角的 "**发布**"。 你将被重定向到 "**查看并发布**" 页。 
 
-如果这是你首次发布此产品/服务，你可以：
+如果这是你首次发布此产品/服务, 则可以:
 
 - 请参阅产品/服务的每个部分的完成状态。
-    - *未启动*– 意味着未动部分中，需要完成。
-    - *不完整*– 意味着本部分包含需要修复的错误或要求提供的详细信息。 请返回到区域，并更新它。
-    - *完整*– 表示部分已完成、 已提供所有必需的数据和没有任何错误。 产品/服务的所有部分都必须处于完成状态，然后才能提交产品/服务。
-- 提供测试说明到的认证团队，以确保您的应用程序是否正确，除了任何补充说明有助于你了解你的应用中进行测试。
-- 通过选择提交用于发布产品/服务**提交**。 我们将发送一封电子邮件，告知你产品/服务的预览版本时，供你审阅并批准。 必须返回到合作伙伴中心，然后选择**上线**产品/服务发布到公共 （或如果专用产品/服务，向专用受众） 产品/服务。
+    - *未启动*–表示该部分尚未接触, 需要完成。
+    - *不完整*–表示部分包含需要修复的错误或需要提供详细信息。 请返回到部分并对其进行更新。
+    - *Complete* –表示部分已完成, 所有必需的数据都已提供并且没有错误。 产品/服务的所有部分必须处于完整状态, 然后才能提交产品/服务。
+- 向认证团队提供测试说明, 以确保正确测试您的应用程序, 以及任何有助于了解应用程序的补充说明。
+- 通过选择 "**提交**" 提交产品/服务进行发布。 我们将向你发送一封电子邮件, 告知你该产品/服务的预览版本何时可供你查看和批准。 你必须返回到合作伙伴中心, 并选择 "产品 **/** 服务", 以便将你的产品/服务发布到公共 (或专用用户)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [更新商业 Marketplace 中的现有产品/服务](./update-existing-offer.md)
+- [更新商业应用商店中的现有产品/服务](./update-existing-offer.md)

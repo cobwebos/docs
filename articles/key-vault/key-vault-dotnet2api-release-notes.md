@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: f9dd8a48da08f00cea1219f72940dd84dd3a97ac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e173ff54020f2d365348ae037793cfbba3f9ed7f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725506"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260442"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 密钥保管库 .NET 2.0 - 发行说明和迁移指南
 以下信息有助于迁移到 C# 和 .NET 的 Azure Key Vault 库版本 2.0。  针对早期版本所编写的应用需进行更新，以支持最新版本。  为完全支持新增和改进的功能（如 Key Vault 证书），这些更改是必需的  。
@@ -48,15 +48,15 @@ Key Vault 证书管理 x509 证书，并支持以下行为：
 
 * *Secret* 更改为 *SecretBundle*
 * *Dictionary* 更改为 *IDictionary*
-* *List<T>、字符串 []* 更改为 *IList<T>*
+* *List\<t >, string []* 更改为*IList\<T >*
 * *NextList* 更改为 *NextPageLink*
 
 ## <a name="return-types"></a>返回类型
 
-* KeyList 和 SecretList 将返回 IPage<T> 而不是 ListKeysResponseMessage    
+* **KeyList**和**SecretList**现在返回*IPage\<T >* 而不是*ListKeysResponseMessage*
 * 生成的 BackupKeyAsync 将返回 BackupKeyResult，其中包含“值”（备份 blob）    。 以前，此方法会包装且仅返回值。
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>Exceptions
 
 * *KeyVaultClientException* 更改为 *KeyVaultErrorException*
 * 服务错误从 exception.Error 更改为 exception.Body.Error.Message   。

@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/10/2019
 ms.author: kgremban
-ms.openlocfilehash: f7004edf2bab0e22d4d1e4c1200d6e8b8ef729b3
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 72349597a2831a64cb11ff66b30e6948f34cc921
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485952"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68224697"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>在 Linux 上安装 Azure IoT Edge 运行时 (ARM32v7/armhf)
 
@@ -25,11 +25,11 @@ ms.locfileid: "67485952"
 本文列出了在 Linux ARM32v7/armhf IoT Edge 设备上安装 Azure IoT Edge 运行时的步骤。 例如，这些步骤适用于 Raspberry Pi 设备。 有关支持的 ARM32 操作系统的列表，请参阅 [Azure IoT Edge 支持的系统](support.md#operating-systems)。 
 
 >[!NOTE]
->Linux 软件存储库中的包受到每个包中的许可条款限制 (/usr/share/doc/*package-name*)。 使用程序包之前请阅读许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用包。
+>Linux 软件存储库中的包受到每个包中的许可条款限制 (/usr/share/doc/*package-name*)。 使用程序包之前请阅读许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用程序包。
 
 ## <a name="install-the-latest-version"></a>安装最新版本
 
-使用下列部分来安装到 Linux ARM 设备上的 Azure IoT Edge 服务的最新版本。 
+使用以下部分将 Azure IoT Edge 服务的最新版本安装到 Linux ARM 设备上。 
 
 ### <a name="install-the-container-runtime"></a>安装容器运行时
 
@@ -70,15 +70,15 @@ curl -L https://aka.ms/iotedged-linux-armhf-latest -o iotedge.deb && sudo dpkg -
 sudo apt-get install -f
 ```
 
-一旦成功安装 IoT Edge，输出将会提示你更新配置文件。 按照中的步骤[配置 Azure IoT Edge 安全守护程序](#configure-the-azure-iot-edge-security-daemon)部分，以完成预配你的设备。 
+成功安装 IoT Edge 后, 输出会提示你更新配置文件。 按照[配置 Azure IoT Edge 安全守护](#configure-the-azure-iot-edge-security-daemon)程序部分中的步骤完成设备的预配。 
 
 ## <a name="install-a-specific-version"></a>安装特定版本
 
-如果你想要安装特定版本的 Azure IoT Edge，你可以面向直接从 IoT Edge GitHub 存储库的组件文件。 使用相同`curl`前面各节中，若要获取所有 IoT Edge 到你的设备上的组件中列出的命令： 小鲸鱼引擎和 CLI、 libiothsm 和最后的 IoT Edge 安全守护程序。 唯一的区别是您替换**aka.ms** Url 直接指向你想要使用每个组件的版本的链接。
+如果要安装特定版本的 Azure IoT Edge, 则可以直接从 IoT Edge GitHub 存储库定位组件文件。 使用前面部分`curl`中列出的相同命令获取设备上的所有 IoT Edge 组件: 小鲸鱼引擎和 CLI、libiothsm, 最后 IoT Edge 安全守护程序。 唯一的区别是, 将**Aka.ms** url 替换为直接指向要使用的每个组件的版本的链接。
 
-导航到[Azure IoT Edge 释放](https://github.com/Azure/azure-iotedge/releases)，并找到想要面向的版本。 展开**资产**部分有关的版本，并选择的文件匹配 IoT Edge 设备的体系结构。 每个 IoT Edge 版本包含**iotedge**并**libiothsm**文件。 并非所有版本都包括**小鲸鱼引擎**或**小鲸鱼 cli**。 如果还没有安装的小鲸鱼容器引擎，查找通过较旧版本，直到找到一个包括小鲸鱼组件。 
+导航到[Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)版本, 并找到要以其为目标的发布版本。 展开版本的 "**资产**" 部分, 并选择与 IoT Edge 设备体系结构相匹配的文件。 每个 IoT Edge 版本都包含**iotedge**和**libiothsm**文件。 并非所有版本都包括**小鲸鱼**或**小鲸鱼**。 如果尚未安装小鲸鱼容器引擎, 请查看旧版本, 直到找到其中包含小鲸鱼组件的版本。 
 
-一旦成功安装 IoT Edge，输出将会提示你更新配置文件。 按照下一部分，以完成预配你的设备中的步骤。 
+成功安装 IoT Edge 后, 输出会提示你更新配置文件。 按照下一部分中的步骤完成设备的预配。 
 
 ## <a name="configure-the-azure-iot-edge-security-daemon"></a>配置 Azure IoT Edge 安全守护程序
 
@@ -98,23 +98,27 @@ sudo apt-get install -f
 sudo nano /etc/iotedge/config.yaml
 ```
 
-找到文件的 provisioning 节并取消注释 **manual** 预配模式。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。
+查找文件的预配配置, 并取消注释 "**手动设置配置**" 部分。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。 请确保注释掉任何其他预配部分。
 
 ```yaml
+# Manual provisioning configuration
 provisioning:
   source: "manual"
   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
   
-# provisioning: 
+# DPS TPM provisioning configuration
+# provisioning:
 #   source: "dps"
 #   global_endpoint: "https://global.azure-devices-provisioning.net"
 #   scope_id: "{scope_id}"
-#   registration_id: "{registration_id}"
+#   attestation:
+#     method: "tpm"
+#     registration_id: "{registration_id}"
 ```
 
 保存并关闭该文件。 
 
-`CTRL + X`、`Y`、`Enter`
+`CTRL + X`, `Y`, `Enter`
 
 在配置文件中输入预配信息后，重启守护程序：
 
@@ -124,7 +128,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>选项 2：自动预配
 
-若要自动预配设备，请[设置设备预配服务并检索设备注册 ID](how-to-auto-provision-simulated-device-linux.md)。 自动预配仅适用于具有受信任的平台模块 (TPM) 芯片的设备。 例如，默认情况下，Raspberry Pi 设备未附带 TPM。 
+若要自动预配设备，请[设置设备预配服务并检索设备注册 ID](how-to-auto-provision-simulated-device-linux.md)。 当使用自动预配时, IoT Edge 支持多种证明机制, 但你的硬件要求也会影响你的选择。 例如, 默认情况下, Raspberry Pi 设备不附带受信任的平台模块 (TPM) 芯片。
 
 打开配置文件。 
 
@@ -132,23 +136,27 @@ sudo systemctl restart iotedge
 sudo nano /etc/iotedge/config.yaml
 ```
 
-找到文件的 provisioning 节并取消注释 **dps** 预配模式。 使用 IoT 中心设备预配服务中的值更新 **scope_id** 和 **registration_id** 的值，并使用 TPM 更新 IoT Edge 设备。 
+查找文件的预配配置, 并取消注释适用于证明机制的部分。 例如, 使用 TPM 证明时, 请分别使用 IoT 中心设备预配服务和 IoT Edge 设备中的值更新**scope_id**和**registration_id**的值。
 
 ```yaml
-# provisioning:
-#   source: "manual"
-#   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+   # Manual provisioning configuration
+   # provisioning:
+   #   source: "manual"
+   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
   
-provisioning: 
-  source: "dps"
-  global_endpoint: "https://global.azure-devices-provisioning.net"
-  scope_id: "{scope_id}"
-  registration_id: "{registration_id}"
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "{scope_id}"
+     attestation:
+       method: "tpm"
+       registration_id: "{registration_id}"
 ```
 
 保存并关闭该文件。 
 
-`CTRL + X`、`Y`、`Enter`
+`CTRL + X`, `Y`, `Enter`
 
 在配置文件中输入预配信息后，重启守护程序：
 
