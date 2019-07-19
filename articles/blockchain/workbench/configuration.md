@@ -60,9 +60,9 @@ Azure Blockchain Workbench 应用程序是由配置元数据和智能合同代�
 | Description | 工作流的说明。 | 否 | 255 |
 | Initiators | [ApplicationRoles](#application-roles) 的集合。 为有权在工作流中创建合约的用户分配的角色。 | 是 | |
 | StartState | 工作流初始状态的名称。 | 是 | |
-| 属性 | [标识符](#identifiers)的集合。 表示可在链外读取，或者在用户体验工具中可视化的数据。 | 是 | |
-| 构造函数 | 定义用于创建工作流实例的输入参数。 | 是 | |
-| 函数 | 可在工作流中执行的[函数](#functions)集合。 | 是 | |
+| Properties | [identifiers](#identifiers)的集合。 表示可在链外读取，或者在用户体验工具中可视化的数据。 | 是 | |
+| Constructor | 定义用于创建工作流实例的输入参数。 | 是 | |
+| Functions | 可在工作流中执行的[函数](#functions)集合。 | 是 | |
 | States | 工作流[状态](#states)的集合。 | 是 | |
 
 有关示例，请参阅[配置文件示例](#configuration-file-example)。
