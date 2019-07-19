@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;dbgeorge
-ms.openlocfilehash: 058a1f964eb14d89628c92cbadd80511b7a27bae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: 7bb3db4861842e145689682035adc3c691538adf
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61230443"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297798"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Haivision KB 实时编码器发送单比特率实时流  
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "61230443"
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 *   访问运行 SW v5.01 或更高版本的 Haivision KB 编码器。
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
 * 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)

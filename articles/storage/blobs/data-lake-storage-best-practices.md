@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 7cfe19614b2107161dcce9c80690333212162045
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1a298584b2444d52f84c0e599462bc26c63a898
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061314"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302616"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>使用 Azure Data Lake Storage Gen2 的最佳做法
 
@@ -36,13 +36,13 @@ Azure Data Lake Storage Gen2 为 Azure Active Directory (Azure AD) 用户、组�
 
 ### <a name="security-for-service-principals"></a>服务主体的安全性
 
-Azure Active Directory 服务主体通常可供 Azure Databricks 之类的服务用来访问 Data Lake Storage Gen2 中的数据。 对于许多客户，单个 Azure Active Directory 服务主体可能已经足够，并可以完全控制权限的数据湖存储第 2 代文件系统根目录下。 其他客户可能需要多个包含不同服务主体的群集，让一个群集拥有数据的完全访问权限，另一个群集拥有只读访问权限。 
+Azure Active Directory 服务主体通常可供 Azure Databricks 之类的服务用来访问 Data Lake Storage Gen2 中的数据。 对于许多客户而言, 单个 Azure Active Directory 服务主体可能是足够的, 它可以在 Data Lake Storage Gen2 文件系统的根目录下具有完全权限。 其他客户可能需要多个包含不同服务主体的群集，让一个群集拥有数据的完全访问权限，另一个群集拥有只读访问权限。 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>启用 Data Lake Storage Gen2 防火墙，允许 Azure 服务访问
 
 Data Lake Storage Gen2 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要限制外部攻击途径，建议使用这一选项。 可以通过“防火墙” > “启用防火墙(启用)” > “允许 Azure 服务访问”选项在 Azure 门户的存储帐户上启用防火墙    。
 
-将 Azure Databricks 群集添加到可能允许通过存储防火墙访问的虚拟网络时，需要使用 Databricks 的预览功能。 若要启用此功能，请提出支持请求。
+若要从 Azure Databricks 访问你的存储帐户, 请将 Azure Databricks 部署到你的虚拟网络, 然后将该虚拟网络添加到防火墙。 请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
 ## <a name="resiliency-considerations"></a>复原注意事项
 

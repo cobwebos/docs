@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 404335ce0cd05085c79cbeea29ad95f79008289c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af9c072c428c486cab89288db4c9ee1c26513185
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681948"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250132"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>从 Blob 存储创建 Hive 表和加载数据
 
 本文介绍通用 Hive 查询，该查询可创建 Hive 表并从 Azure Blob 存储加载数据。 同时提供了一些如何对 Hive 表进行分区和使用优化行纵栏表 (ORC) 格式来增强查询性能的指南。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 有关说明，请参阅[关于 Azure 存储帐户](../../storage/common/storage-introduction.md)。
@@ -112,7 +112,7 @@ Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用
 ![显示 Hive 查询输出的 Azure 存储资源管理器](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2.使用 Hive 编辑器提交 Hive 查询
-此外可以使用查询控制台 （Hive 编辑器），通过输入以下形式的 URL *https:\//\<Hadoop 群集名称 >.azurehdinsight.net/Home/HiveEditor*在 web 浏览器。 必须先登录才能查看此控制台，因此需要使用 Hadoop 群集凭据进行登录。
+还可以通过在 web 浏览器中输入 URL, 将 " *https: Hadoop 群集名称" clustername>.azurehdinsight.net\//Home/HiveEditor 格式输入为 "https:/\<Hadoop 群集 > 名称*"。 必须先登录才能查看此控制台，因此需要使用 Hadoop 群集凭据进行登录。
 
 ### <a name="ps"></a> 3.使用 Azure PowerShell 命令提交 Hive 查询
 也可以使用 PowerShell 来提交 Hive 查询。 有关说明，请参阅[使用 PowerShell 提交 Hive 作业](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)。
@@ -141,7 +141,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
 * **\<表名称\>** ：要在指定的数据库内创建的表的名称。 如果你要使用默认的数据库，则该表可通过 *\<表名称\>* 而非 \<数据库名称\> 直接引用。
 * **\<字段分隔符\>** ：用于分隔数据文件（要上传到 Hive 表）中的字段的分隔符。
 * **\<行分隔符\>** ：用于分隔数据文件中的行的分隔符。
-* **\<存储位置\>** ：用于保存 Hive 表数据的 Azure 存储位置。 如果你未指定 *LOCATION \<存储位置\>* ，则默认情况下，数据库和表存储在 Hive 群集的默认容器的 hive/warehouse/  目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须引用为与群集的默认容器相对的位置，格式为 *'wasb:///<directory 1>/'* 或 *'wasb:///<directory 1>/<directory 2>/'* 等。执行查询后，相对目录会创建在默认容器中。
+* **\<存储位置\>** ：用于保存 Hive 表数据的 Azure 存储位置。 如果你未指定 *LOCATION \<存储位置\>* ，则默认情况下，数据库和表存储在 Hive 群集的默认容器的 hive/warehouse/  目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须与群集的默认容器相关, 格式为 *"wasb:///\<directory 1 >/"* 或 *"\<wasb:///directory 1 >/\<directory 2 >/"* 等。执行查询后，相对目录会创建在默认容器中。
 * **TBLPROPERTIES("skip.header.line.count"="1")** ：如果数据文件具有标题行，则必须在 create table  查询的**末尾处**添加此属性。 否则，标题行将作为记录加载到表。 如果数据文件没有标题行，则可以在查询中省略此配置。
 
 ## <a name="load-data"></a>将数据加载到 Hive 表
@@ -149,7 +149,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<Blob 数据的路径\>** ：如果要上传到 Hive 表的 blob 文件位于 HDInsight Hadoop 群集的默认容器 *\<对 blob 数据的路径\>* 应采用格式 *wasb: / /\<此容器中目录 > /\<blob 文件名称 >* 。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下， *\<对 blob 数据的路径\>* 应采用格式*wasb: / /\<容器名称 >\<存储帐户名称 >.blob.core.windows.net/\<blob 文件名称 >* 。
+* **\<Blob 数据的路径\>** ：如果要上传到 Hive 表的 blob 文件位于 HDInsight Hadoop 群集的默认容器 *\<对 blob 数据的路径\>* 应采用格式 *wasb: / /\<此容器中目录 > /\<blob 文件名称 >* 。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下,  *\<blob 数据\>的路径*应采用 *\<"wasb://容器名称" 格式 >\<存储帐户名称 >\<> "* 。
 
   > [!NOTE]
   > 要上传到 Hive 表的 blob 数据必须位于 Hadoop 群集存储帐户的默认或其他容器中。 否则，*LOAD DATA* 查询会失败，并声称它无法访问数据。

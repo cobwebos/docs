@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
-ms.author: rajraj
-ms.openlocfilehash: bab264769576b6e5478236c452d7de920d887c1a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: drewm
+ms.openlocfilehash: f97c7e6971fb9c58a3f08959c00c84e64e160916
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60617973"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871959"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>为虚拟机规模集选择适当数量的容错域
 默认情况下，系统会在没有区域的 Azure 区域中创建具有五个容错域的虚拟机规模集。 对于支持虚拟机规模集分区部署的区域，每个区域的容错域计数的默认值为 1。 在这种情况下，FD = 1 意味着尽最大努力将属于规模集的 VM 实例分布在多个机架上。
@@ -47,4 +47,4 @@ az vmss create \
 创建和配置所有的规模集资源和 VM 需要几分钟时间。
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解 Azure 环境的[可用性和冗余功能](../virtual-machines/windows/regions-and-availability.md)
+- 详细了解 Azure 环境的[可用性和冗余功能](../virtual-machines/windows/availability.md)

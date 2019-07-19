@@ -6,13 +6,13 @@ author: yijenj
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
-ms.author: yijenj
-ms.openlocfilehash: 225a4936bbbb8d068caa0ee2a3280c395dbd490e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: pabutler
+ms.openlocfilehash: 4986f888abca94549e921bfe5400d68f6d28c01f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964111"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876691"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
 Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
@@ -67,7 +67,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 <b>有关详细信息，请参阅 [Microsoft 合作伙伴网络的资质](https://partner.microsoft.com/membership/competencies)。</b>
  
 
-**SI 合作伙伴可提交以下 18 个国家/地区的咨询服务产品**
+**SI 合作伙伴可针对以下18个国家/地区提交咨询服务产品**
 
 |符合条件的国家/地区 |   |   |   |
 |---------|----------|----------|----------|
@@ -77,7 +77,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 |丹麦   |意大利   |     挪威          |美国 |
 |芬兰   |日本   |     波兰          
 
-咨询服务的启动将在特定地理区域中进行。 首次启动区域将包括：美国、加拿大、英国和澳大利亚。 面向其他国家/地区的目录将会推出后有意义数量和极具吸引力的服务产品选项已由合作伙伴提交并由 Microsoft 批准。
+咨询服务的启动将在特定地理区域中进行。 首次启动区域将包括：美国、加拿大、英国和澳大利亚。 其他国家/地区的目录将会在有意义的数量和令人耳目一新的服务产品/服务提交并由 Microsoft 批准后生效。
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>如何在 Azure 市场和 AppSource 中注册咨询服务
 首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)公司信息。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
@@ -117,7 +117,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 3. **提交**：提供说明中列出的必需信息。 所有内容和支持材料都必须以英文提交。 
 4. **评审**：我们的营销和编辑团队将会评审提交内容，并在可读性、语法和效果方面对其进行优化。 
 5. **暂存**：暂存提交内容以供查阅。 
-6. **发布**：在你和 Microsoft 都对暂存内容感到满意后，所列产品便可以在市场中推出。 用于列表推出日期取决于产品中指定国家/地区。 如果您选定的国家/地区的目录上的 Azure Marketplace 或 AppSource 已处于活动，您的列表将显示几个小时内。 否则，该目录一推出，就会显示列表。
+6. **发布**：在你和 Microsoft 都对暂存内容感到满意后，所列产品便可以在市场中推出。 你的列表的生效日期取决于你在产品/服务中指定的国家/地区。 如果所选国家/地区的目录已位于 Azure Marketplace 或 AppSource 上, 则你的列表将在几个小时内显示。 否则，该目录一推出，就会显示列表。
 
 ## <a name="offer-listings-and-content-review-criteria"></a>产品列表和内容审核标准
 产品/服务必须属于以下五种服务类型之一（可以列出多个）： 
@@ -149,7 +149,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 
 在审核“产品/服务说明”和“产品/服务摘要”时，审核团队会应用以下标准：
 
-|产品/服务类型  |需要 |建议  |
+|产品/服务类型  |必填 |建议  |
 |---------|---------|---------|
 |**评估**    |   包括一个详细的适用于多日或多周评估的议程，并说明客户预期可以获得的可交付结果      |    使用最常用的搜索引擎优化关键字来优化产品/服务摘要     |
 |**简报**    |   说明客户预期可以获得的可交付结果。 请记住，简报必须面对面提供。 如果提供的是虚拟服务，请选择另一产品/服务类型    |  使用最常用的搜索引擎优化关键字来优化产品/服务摘要       |

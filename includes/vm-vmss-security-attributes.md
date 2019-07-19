@@ -4,20 +4,20 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 07/10/2019
 ms.author: mbaldwin
-ms.openlocfilehash: df11493fa9663d3fcbf0a2f74a5acbead55a25fb
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 642f63966533416be7b86bae362d24cd286706b3
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800271"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68306079"
 ---
 ## <a name="preventative"></a>预防
 
 | 安全属性 | Yes/No | 说明 |
 |---|---|--|
-| 静态加密（例如服务器端加密、带客户托管密钥的服务器端加密，以及其他加密功能） | 是 | 请参阅[如何加密 Azure 中的 Linux 虚拟机](/azure/virtual-machines/linux/encrypt-disks.md)并[加密 Windows VM 上的虚拟磁盘](/azure/virtual-machines/windows/encrypt-disks.md)。 |
-| 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | Azure 虚拟机支持[ExpressRoute](/azure/expressroute)和 VNET 加密。 请参阅[传输中加密 Vm 中的](/azure/security/security-azure-encryption-overview.md#in-transit-encryption-in-vms)。 |
-| 加密密钥处理（CMK、BYOK 等）| 是 | 客户托管密钥是一种支持的 Azure 加密方案;请参阅[Azure 加密概述](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms.md)。|
+| 静态加密（例如服务器端加密、带客户托管密钥的服务器端加密，以及其他加密功能） | 是 | 请参阅[如何在 Azure 中加密 Linux 虚拟机](/azure/virtual-machines/linux/encrypt-disks)和[加密 Windows VM 上的虚拟磁盘](/azure/virtual-machines/windows/encrypt-disks)。 |
+| 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | Azure 虚拟机支持[ExpressRoute](/azure/expressroute)和 VNET 加密。 请参阅[Vm 中的传输中加密](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。 |
+| 加密密钥处理（CMK、BYOK 等）| 是 | 客户托管的密钥是受支持的 Azure 加密方案;请参阅[Azure 加密概述](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。|
 | 列级加密（Azure 数据服务）| 不可用 | |
 | 加密的 API 调用| 是 | 通过 HTTPS 和 SSL。 |
 
@@ -28,13 +28,13 @@ ms.locfileid: "67800271"
 | 服务终结点支持| 是 | |
 | VNet 注入支持| 是 | . |
 | 网络隔离和防火墙支持| 是 |  |
-| 强制隧道支持| 是 | 请参阅[配置强制隧道使用 Azure 资源管理器部署模型](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm.md)。 |
+| 强制隧道支持| 是 | 请参阅[使用 Azure 资源管理器部署模型配置强制隧道](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm)。 |
 
 ## <a name="detection"></a>检测
 
 | 安全属性 | Yes/No | 说明|
 |---|---|--|
-| Azure 监视支持（Log Analytics、App Insights 等）| 是 | 请参阅[监视和更新 Azure 中的 Linux 虚拟机](/azure/virtual-machines/linux/tutorial-monitoring.md)并[监视和更新 Azure 中的 Windows 虚拟机](/azure/virtual-machines/windows/tutorial-monitoring.md)。 |
+| Azure 监视支持（Log Analytics、App Insights 等）| 是 | 请参阅[在 azure 中监视和更新 Linux 虚拟机](/azure/virtual-machines/linux/tutorial-monitoring)和[在 azure 中监视和更新 Windows 虚拟机](/azure/virtual-machines/windows/tutorial-monitoring)。 |
 
 ## <a name="identity-and-access-management"></a>标识和访问管理
 

@@ -3,25 +3,25 @@ title: 在 Azure IoT Central 中使用 Webhook 触发 Azure Functions
 description: 创建每次在 Azure IoT 中心中触发规则时运行的函数应用。
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0d92e9bdf8ec207e5ef0e3f891c162182b5a4fff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 92d6f005018040e20c2df72dbc608a47bc8d9f08
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60518361"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849022"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>在 Azure IoT Central 中使用 Webhook 触发 Azure Functions
 
 本主题适用于构建者和管理员  。
 
-使用 Azure Functions 对来自 IoT Central 规则的 Webhook 输出运行无服务器代码。 无需预配 VM 或发布 web 应用以使用 Azure Functions，但可以改为运行此无服务器代码。 先使用 Azure Functions 转换 Webhook 有效负载，然后再将它发送到最终目标，如 SQL 数据库或事件网格。
+使用 Azure Functions 对来自 IoT Central 规则的 Webhook 输出运行无服务器代码。 无需预配 VM 或发布 web 应用即可使用 Azure Functions, 而是可以运行此代码无服务器。 先使用 Azure Functions 转换 Webhook 有效负载，然后再将它发送到最终目标，如 SQL 数据库或事件网格。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -31,15 +31,15 @@ ms.locfileid: "60518361"
 
     ![在 Azure 门户中创建新的 function app](media/howto-trigger-azure-functions/createfunction.png)
 
-2. 展开 function app，然后选择 **+ 按钮**旁边函数。 如果此函数在函数应用中的第一个，请选择**门户中**作为开发环境，然后选择**继续**。
+2. 展开函数应用, 然后选择 "函数" 旁边的 " **+" 按钮**。 如果此函数是函数应用中的第一个函数, 请选择 **"在门户中**作为开发环境", 并选择 "**继续**"。
 
     ![在函数应用中选择自定义函数](media/howto-trigger-azure-functions/customfunction.png)
 
-3. 选择**Webhook + API**模板，然后选择**创建**。 本主题使用基于.NET 的 Azure 函数。
+3. 选择 " **Webhook + API**模板", 并选择 "**创建**"。 本主题使用基于 .NET 的 Azure 函数。
 
     ![选择通用 Webhook 触发器](media/howto-trigger-azure-functions/genericwebhooktrigger.png)
 
-4. 在新函数中，选择 **<> / 获取函数 URL**，然后复制并保存该值。 此值将用于配置 webhook。
+4. 在新函数中, 选择 " **</> 获取函数 URL**", 然后复制并保存值。 此值将用于配置 webhook。
 
     ![获取函数的 URL](media/howto-trigger-azure-functions/getfunctionurl.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "60518361"
 
     ![向回调 URL 字段中输入函数 URL](media/howto-trigger-azure-functions/configurewebhook.PNG)
 
-6. 保存规则。 现在当触发规则时，webhook 调用要运行的函数应用。 在 function app 中，您可以选择**监视器**以查看该函数的调用历史记录。 可以使用 App Insights 或经典视图查看历史记录。
+6. 保存规则。 现在, 触发规则时, webhook 会调用函数应用以运行。 在 function app 中, 可以选择 "**监视器**" 以查看该函数的调用历史记录。 可以使用 App Insights 或经典视图查看历史记录。
 
     ![监视函数的调用历史记录](media/howto-trigger-azure-functions/monitorfunction.PNG)
 

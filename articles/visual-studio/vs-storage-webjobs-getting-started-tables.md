@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: a9a4475465fefb01ec53e6e0eb814f9b8f192a1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 481c2f1eaf20e317c8efa4f21f337f4073af898f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390783"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260749"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure 存储入门（Azure WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -30,7 +30,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 一些代码段显示了手动调用（即：不是使用触发器属性之一调用）的函数中使用的 **Table** 属性。
 
 ## <a name="how-to-add-entities-to-a-table"></a>如何向表中添加实体
-若要将实体添加到表中，请将 Table  属性与 ICollector<T>  或 IAsyncCollector<T>  参数一起使用，其中 T  指定想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
+若要将实体添加到表中, 请将**table**属性**与\<ICollector t >** 或 **\<IAsyncCollector t >** 参数一起使用, 其中**t**指定想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
 
 下面的代码示例将 **Person** 实体添加到名为 *Ingress* 的表。
 
@@ -79,7 +79,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 ![Ingress 函数已完成](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>如何从表中读取多个实体
-要读取表，请将 Table  属性与 IQueryable **<T>** 参数一起使用，其中 T  派生自 TableEntity  或者用于实现 ITableEntity  。
+若要读取表, 请将**table**属性与**IQueryable\<t >** 参数一起使用, 其中类型**t**从**TableEntity**派生或实现**ITableEntity**。
 
 下面的代码示例读取并记录 **Ingress** 表中的所有行：
 

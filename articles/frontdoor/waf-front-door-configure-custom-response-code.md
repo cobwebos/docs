@@ -1,6 +1,6 @@
 ---
-title: 配置 web 应用程序防火墙的自定义响应在 Azure 第一道防线
-description: 了解如何配置自定义响应代码和消息，当 web 应用程序防火墙 (WAF) 阻止请求。
+title: 在 Azure 前门上配置 web 应用程序防火墙的自定义响应
+description: 了解如何在 web 应用程序防火墙 (WAF) 阻止请求时配置自定义响应代码和消息。
 services: frontdoor
 author: KumudD
 ms.service: frontdoor
@@ -9,17 +9,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/21/2019
-ms.author: tyao;kumud
-ms.openlocfilehash: 146d17fe457751fb950f723c34826e43516e4e86
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 657dc3a43302d16bc403d790bf2c34c2d147dd6c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165374"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846370"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>配置 Azure web 应用程序防火墙的自定义响应
 
-默认情况下，Azure web 应用程序防火墙 (WAF) 与 Azure 第一道防线因为匹配规则，阻止请求时它将返回 403 状态代码与**请求被阻塞**消息。 本文介绍如何配置自定义响应状态代码和响应消息时请求被阻塞的 WAF。
+默认情况下, 当使用 Azure 前端的 Azure web 应用程序防火墙 (WAF) 阻止请求, 因为存在匹配的规则时, 会返回一个403状态代码, 其中包含**请求被阻止**的消息。 本文介绍如何在 WAF 阻止请求时配置自定义响应状态代码和响应消息。
 
 ## <a name="set-up-your-powershell-environment"></a>设置 PowerShell 环境
 Azure PowerShell 提供一组可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模型管理 Azure 资源的 cmdlet。 
@@ -44,15 +45,15 @@ Install-Module -Name Az.FrontDoor
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在 Azure 中，可将相关的资源分配到资源组。 通过使用在此示例中，创建资源组[新建 AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup)。
+在 Azure 中，可将相关的资源分配到资源组。 在此示例中, 将使用[AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup)创建资源组。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupWAF
 ```
 
-## <a name="create-a-new-waf-policy-with-custom-response"></a>创建新的 WAF 策略与自定义响应 
+## <a name="create-a-new-waf-policy-with-custom-response"></a>使用自定义响应创建新的 WAF 策略 
 
-下面是使用自定义响应状态代码设置为 405 和消息创建新的 WAF 策略的一个示例**被阻止。** 使用[新建 AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)。
+下面是一个示例, 介绍如何创建新的 WAF 策略, 并将自定义响应状态代码设置为 405, 并阻止发送消息 **。** 使用[AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)。
 
 ```azurepowershell
 # WAF policy setting
@@ -65,7 +66,7 @@ New-AzFrontDoorWafPolicy `
 -CustomBlockResponseBody "<html><head><title>You are blocked.</title></head><body></body></html>"
 ```
 
-修改自定义响应代码或响应正文设置的一个现有的 WAF 策略，使用[更新 AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/Update-AzFrontDoorWafPolicy)。
+使用[AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/Update-AzFrontDoorWafPolicy)修改现有 WAF 策略的自定义响应代码或响应正文设置。
 
 ```azurepowershell
 # modify WAF response code
@@ -86,4 +87,4 @@ Update-AzFrontDoorFireWallPolicy `
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解[第一道防线](front-door-overview.md)
+- 了解有关[前门](front-door-overview.md)的详细信息

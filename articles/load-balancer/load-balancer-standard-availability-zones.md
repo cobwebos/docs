@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 标准负载均衡器和可用性区域
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
-ms.author: kumud
-ms.openlocfilehash: 0820285555110e8e85bff814f4774d6da6443f69
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.author: allensu
+ms.openlocfilehash: 5ef7de148d5ef4727602b8287164f2aff9ccf822
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491981"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274506"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>标准负载均衡器和可用性区域
 
 Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones/az-overview.md)场景。 标准负载均衡器使用多种新的概念，可让资源适应区域并在区域之间分配资源，从而在端到端场景中优化可用性。  请查看[可用性区域](../availability-zones/az-overview.md)来了解可用性区域的定义、目前哪些区域支持可用性区域，以及其他相关的概念和产品。 可用性区域与标准负载均衡器的结合是一个可扩展的灵活功能集，可以创建多种不同的场景。  请查看本文档了解这些[概念](#concepts)和基本场景的[设计指南](#design)。
 
 >[!IMPORTANT]
->审阅[可用性区域](../availability-zones/az-overview.md)相关主题，其中包括任何区域特定信息。
+>查看[可用性区域](../availability-zones/az-overview.md)相关主题, 包括任何特定于区域的信息。
 
 ## <a name="concepts"></a> 适用于负载均衡器的可用性区域概念
 
@@ -33,7 +33,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
 
 负载均衡器资源的功能表示为前端、规则、运行状况探测和后端池定义。
 
-在可用性区域的上下文中，负载均衡器资源的行为和属性描述为区域冗余或局域性。  区域冗余和局域性描述属性的局域性。  在负载均衡器的上下文中，区域冗余的始终意味着*多个区域*，局域性表示隔离到服务*单个区域*。
+在可用性区域的上下文中，负载均衡器资源的行为和属性描述为区域冗余或局域性。  区域冗余和局域性描述属性的局域性。  在负载均衡器的上下文中, 区域冗余始终表示*多个区域*, 而区域是指将服务隔离到一个*区域*。
 
 公共负载均衡器和内部负载均衡器都支持区域冗余和局域性场景，并且两者都可根据需要跨区域定向流量（跨区域负载均衡）。 
 
@@ -54,7 +54,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
 #### <a name="zone-redundant-by-default"></a>默认的区域冗余
 
 >[!IMPORTANT]
->审阅[可用性区域](../availability-zones/az-overview.md)相关主题，其中包括任何区域特定信息。
+>查看[可用性区域](../availability-zones/az-overview.md)相关主题, 包括任何特定于区域的信息。
 
 在包含可用性区域的区域中，标准负载均衡器前端默认是区域冗余的。  单个前端 IP 地址在发生区域性故障时可以幸存，并且可用于访问后端池成员，不管这些成员位于哪个区域。 这并不意味着数据路径无法访问，任何重试或重新建立都会成功。 不需要 DNS 冗余方案。 前端的单个 IP 地址由多个可用性区域中多个独立的基础结构部署同时提供。  区域冗余意味着所有入站或出站流由某个区域中多个可用性区域使用单个 IP 地址同时提供。
 
@@ -99,7 +99,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
                 ],
 ```
 
-#### <a name="optional-zone-isolation"></a>可选的区域隔离
+#### <a name="optional-zone-isolation"></a>可选区域隔离
 
 可以选择将某个前端指定为保证位于单个区域，这称为局域性前端。   这意味着，任何入站或出站流将由某个区域中的单个局部区域提供。  前端的运行状态取决于该局部区域。  区域（保证前端所在的区域除外）中发生故障不会影响数据路径。 可以使用局域性前端来按可用性区域公开 IP 地址。  此外，可以直接使用局域性前端；如果前端由公共 IP 地址构成，可将其集成到[流量管理器](../traffic-manager/traffic-manager-overview.md)等 DNS 负载均衡产品并使用单个 DNS 名称，客户端会将该名称解析为多个局域性 IP 地址。  还可以使用此前端来按区域负载均衡终结点公开 IP 地址，以单独监视每个区域。  如果想要混合使用这些概念（对同一个后端使用区域冗余和局域性配置），请查看 [Azure 负载均衡器的多个前端](load-balancer-multivip-overview.md)。
 
@@ -186,7 +186,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
 
 使用负载均衡器可以轻松地将一个 IP 用作区域冗余的前端。 区域冗余的 IP 地址能够安全地为任何区域中的局域性资源提供服务，并且可以承受一个或多个区域的故障，前提是区域中有一个局部区域保持正常。 相反，局域性前端是在单个区域中部署服务的简化设计，其命运与相应的区域相同。
 
-区域冗余并不意味着数据路径或控制平面不可访问；它是明确的数据平面。 区域冗余流可以使用任何局部区域，客户流使用区域中所有正常的局部区域。 出现区域故障时，在该时间点使用正常区域的流量流不受影响。  在发生区域故障时使用区域的流量流可能会受到影响，但应用程序可以恢复。 Azure 局部区域故障后，这些流可以继续重新传输数据或重新建立，在区域中剩余的正常区域中。
+区域冗余并不意味着数据路径或控制平面不可访问；它是明确的数据平面。 区域冗余流可以使用任何局部区域，客户流使用区域中所有正常的局部区域。 出现区域故障时，在该时间点使用正常区域的流量流不受影响。  区域发生故障时使用区域的流量可能会受到影响, 但应用程序可以恢复。 一旦 Azure 围绕区域发生故障, 则在重新传输或重新建立时, 这些流可在区域内的剩余正常区域中继续进行。
 
 ### <a name="xzonedesign"></a>跨区域边界
 
@@ -210,7 +210,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
 ### <a name="zonalityguidance"></a>区域冗余与局域性
 
 >[!IMPORTANT]
->审阅[可用性区域](../availability-zones/az-overview.md)相关主题，其中包括任何区域特定信息。
+>查看[可用性区域](../availability-zones/az-overview.md)相关主题, 包括任何特定于区域的信息。
 
 区域冗余可以提供区域不可知性，同时，可以使用单个 IP 地址为服务提供复原能力。  因而它可以降低复杂性。  区域冗余还具有跨区域的机动性，可以针对任何区域中的资源安全使用。  此外，在不包含可用性区域的区域中，它可以充当一种保证，在区域获得可用性区域后限制所需的更改。  区域冗余 IP 地址或前端的配置语法在任何区域（包括不带可用性区域的区域）中都可成功。
 

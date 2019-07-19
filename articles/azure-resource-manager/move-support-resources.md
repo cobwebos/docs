@@ -6,17 +6,17 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 7/9/2019
 ms.author: tomfitz
-ms.openlocfilehash: 093c20407cb6210125106189f36566f539de0dcc
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 22493ad7998e9014c88c79e6ac5eee3bf1216119
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721113"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226814"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
-本文列出了 Azure 资源类型是否支持移动操作。 它还提供有关移动资源时要考虑的特殊条件的信息。
+本文列出了 Azure 资源类型是否支持移动操作。 它还提供有关移动资源时要考虑的特殊情况的信息。
 
-跳转到资源提供程序命名空间：
+跳转到资源提供程序命名空间:
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
 > - [microsoft.aadiam](#microsoftaadiam)
@@ -202,7 +202,7 @@ ms.locfileid: "67721113"
 | automationaccounts/runbooks | 是 | 是 |
 
 > [!IMPORTANT]
-> Runbook 在自动化帐户所在的同一资源组中必须存在。
+> Runbook 必须与自动化帐户位于同一资源组中。
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | 资源类型 | 资源组 | 订阅 |
@@ -263,7 +263,7 @@ ms.locfileid: "67721113"
 | redis | 是 | 是 |
 
 > [!IMPORTANT]
-> 如果用于 Redis 实例的 Azure 缓存配置为使用虚拟网络，该实例不能移到其他订阅。 请参阅[虚拟网络将移动限制](./move-limitations/virtual-network-move-limitations.md)。
+> 如果为 Redis 实例的 Azure Cache 配置了虚拟网络, 则无法将该实例移到不同的订阅。 请参阅[虚拟网络移动限制](./move-limitations/virtual-network-move-limitations.md)。
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | 资源类型 | 资源组 | 订阅 |
@@ -286,7 +286,7 @@ ms.locfileid: "67721113"
 | virtualmachines | 是 | 否 |
 
 > [!IMPORTANT]
-> 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 到这种情况下，可以在与特定操作的订阅之间移动经典部署资源。
+> 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 可以使用特定于该方案的操作跨订阅移动经典部署资源。
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 | 资源类型 | 资源组 | 订阅 |
@@ -296,7 +296,7 @@ ms.locfileid: "67721113"
 | virtualnetworks | 否 | 否 |
 
 > [!IMPORTANT]
-> 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 到这种情况下，可以在与特定操作的订阅之间移动经典部署资源。
+> 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 可以使用特定于该方案的操作跨订阅移动经典部署资源。
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 | 资源类型 | 资源组 | 订阅 |
@@ -304,7 +304,7 @@ ms.locfileid: "67721113"
 | storageaccounts | 是 | 否 |
 
 > [!IMPORTANT]
-> 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 到这种情况下，可以在与特定操作的订阅之间移动经典部署资源。
+> 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 可以使用特定于该方案的操作跨订阅移动经典部署资源。
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | 资源类型 | 资源组 | 订阅 |
@@ -558,7 +558,7 @@ ms.locfileid: "67721113"
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 计算机 | 否 | 否 |
+| 造 | 否 | 否 |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 | 资源类型 | 资源组 | 订阅 |
@@ -588,7 +588,7 @@ ms.locfileid: "67721113"
 | workbooks | 是 | 是 |
 
 > [!IMPORTANT]
-> 请确保将移动到新的订阅不超过[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)。
+> 请确保移动到新订阅不超过[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)。
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | 资源类型 | 资源组 | 订阅 |
@@ -608,7 +608,7 @@ ms.locfileid: "67721113"
 | vaults | 是 | 是 |
 
 > [!IMPORTANT]
-> 用于磁盘加密的密钥保管库不能移动到同一订阅中或跨订阅的资源组。
+> 用于磁盘加密的密钥保管库不能移到同一订阅中的资源组或跨订阅。
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | 资源类型 | 资源组 | 订阅 |
@@ -732,7 +732,7 @@ ms.locfileid: "67721113"
 | expressrouteports | 否 | 否 |
 | frontdoors | 否 | 否 |
 | frontdoorwebapplicationfirewallpolicies | 否 | 否 |
-| loadbalancers | 是-基本 SKU<br>否-标准 SKU | 是-基本 SKU<br>否-标准 SKU |
+| loadbalancers | 是-基本 SKU<br>无标准 SKU | 是-基本 SKU<br>无标准 SKU |
 | localnetworkgateways | 是 | 是 |
 | natgateways | 是 | 是 |
 | networkintentpolicies | 是 | 是 |
@@ -748,7 +748,7 @@ ms.locfileid: "67721113"
 | privatednszones/virtualnetworklinks | 是 | 是 |
 | privateendpoints | 否 | 否 |
 | privatelinkservices | 否 | 否 |
-| publicipaddresses | 是-基本 SKU<br>否-标准 SKU | 是-基本 SKU<br>否-标准 SKU |
+| publicipaddresses | 是-基本 SKU<br>无标准 SKU | 是-基本 SKU<br>无标准 SKU |
 | publicipprefixes | 是 | 是 |
 | routefilters | 否 | 否 |
 | routetables | 是 | 是 |
@@ -779,7 +779,7 @@ ms.locfileid: "67721113"
 | workspaces | 是 | 是 |
 
 > [!IMPORTANT]
-> 请确保将移动到新的订阅不超过[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)。
+> 请确保移动到新订阅不超过[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)。
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | 资源类型 | 资源组 | 订阅 |
@@ -848,7 +848,7 @@ ms.locfileid: "67721113"
 | searchservices | 是 | 是 |
 
 > [!IMPORTANT]
-> 在一个操作中的不同区域中，不能移动多个搜索资源。 只能通过多个单独的操作移动它们。
+> 不能在一个操作中将多个搜索资源移动到不同区域。 只能通过多个单独的操作移动它们。
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 | 资源类型 | 资源组 | 订阅 |
@@ -913,16 +913,16 @@ ms.locfileid: "67721113"
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| instancepools | 是 | 是 |
-| managedinstances | 是 | 是 |
-| managedinstances/databases | 是 | 是 |
+| instancepools | 否 | 否 |
+| managedinstances | 否 | 否 |
+| managedinstances/databases | 否 | 否 |
 | servers | 是 | 是 |
 | servers/databases | 是 | 是 |
 | servers/elasticpools | 是 | 是 |
 | virtualclusters | 是 | 是 |
 
 > [!IMPORTANT]
-> 数据库和服务器必须是同一资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
+> 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | 资源类型 | 资源组 | 订阅 |
@@ -971,7 +971,7 @@ ms.locfileid: "67721113"
 | streamingjobs | 是 | 是 |
 
 > [!IMPORTANT]
-> Stream Analytics 无法移动作业，在运行时状态。
+> 当流分析作业处于运行状态时, 无法将其移动。
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 | 资源类型 | 资源组 | 订阅 |
@@ -998,7 +998,7 @@ ms.locfileid: "67721113"
 ## <a name="microsofttoken"></a>Microsoft.Token
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 将存储 | 否 | 否 |
+| 区内 | 否 | 否 |
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 | 资源类型 | 资源组 | 订阅 |
@@ -1013,7 +1013,7 @@ ms.locfileid: "67721113"
 | account/project | 是 | 是 |
 
 > [!IMPORTANT]
-> 若要更改 Azure DevOps 所需的订阅，请参阅[更改用于计费的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
+> 若要更改 Azure DevOps 的订阅, 请参阅[更改用于计费的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 | 资源类型 | 资源组 | 订阅 |

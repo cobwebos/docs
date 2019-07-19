@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 2ce8c0b369cd59ac61279fe3c7acd2cdecfc007c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d6427db7090b3419fbe67535baeb4a5df6a5d65
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225605"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261316"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>适用于 Azure Cosmos DB 和 Java 的性能提示
 
@@ -138,7 +138,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     查询的复杂性会影响操作使用的请求单位数量。 谓词数、谓词性质、UDF 数目和源数据集的大小都会影响查询操作的成本。
 
-    若要测量任何操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头（或 [ResourceResponse<T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) 或 [FeedResponse<T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) 中的等效 RequestCharge 属性）来测量这些操作占用的请求单位数。
+    若要测量任何操作 (创建、更新或删除) 的开销, 请检查[x-ms-请求费用](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)标头 (或[ResourceResponse\<t](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse)中的等效 RequestCharge 属性 > 或[FeedResponse\<T >](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse)来测量这些操作占用的请求单位数。
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);

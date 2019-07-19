@@ -7,26 +7,26 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 4d2b4bef5bfcade93b222e69e85df782480e430e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a0da8b932d2efe88391991286ede2858440e4465
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615790"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68232650"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
-默认情况下，AKS 群集使用[kubenet][kubenet]，并为您创建的虚拟网络和子网。 使用 *kubenet*，节点从虚拟网络子网获取 IP 地址。 然后会在节点上配置网络地址转换 (NAT)，并且 Pod 将接收“隐藏”在节点 IP 背后的 IP 地址。 这种方法减少了需要在网络空间中保留供 Pod 使用的 IP 地址数量。
+默认情况下, AKS 群集使用[kubenet][kubenet], 并为你创建一个虚拟网络和子网。 使用 *kubenet*，节点从虚拟网络子网获取 IP 地址。 然后会在节点上配置网络地址转换 (NAT)，并且 Pod 将接收“隐藏”在节点 IP 背后的 IP 地址。 这种方法减少了需要在网络空间中保留供 Pod 使用的 IP 地址数量。
 
-与[Azure 容器网络接口 (CNI)][cni-networking]，每个 pod 从子网获取 IP 地址，并且可以直接访问。 这些 IP 地址在网络空间中必须唯一，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 使用此方法需要经过更详细的规划，并且经常会耗尽 IP 地址，或者在应用程序需求增长时需要在更大的子网中重建群集。
+使用[Azure 容器网络接口 (CNI)][cni-networking], 每个 pod 都从子网中获取 IP 地址, 并且可以直接访问。 这些 IP 地址在网络空间中必须唯一，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 使用此方法需要经过更详细的规划，并且经常会耗尽 IP 地址，或者在应用程序需求增长时需要在更大的子网中重建群集。
 
-本文展示了如何使用 *Azure CNI* 网络来创建和使用 AKS 群集的虚拟网络子网。 网络选项及注意事项的详细信息，请参阅[Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
+本文展示了如何使用 *Azure CNI* 网络来创建和使用 AKS 群集的虚拟网络子网。 有关网络选项和注意事项的详细信息, 请参阅[Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * AKS 群集的虚拟网络必须允许出站 Internet 连接。
 * 不要在同一子网中创建多个 AKS 群集。
-* 不能使用 AKS 群集`169.254.0.0/16`， `172.30.0.0/16`， `172.31.0.0/16`，或`192.0.2.0/24`为 Kubernetes 服务地址范围。
+* `169.254.0.0/16`AKS 群集不得将`172.30.0.0/16` `172.31.0.0/16`、、或`192.0.2.0/24`用于 Kubernetes 服务地址范围。
 * AKS 群集使用的服务主体在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -41,7 +41,7 @@ Pod 和群集节点的 IP 地址是从虚拟网络中指定的子网分配的。
 > 应在考虑到升级和缩放操作的基础上确定所需的 IP 地址数。 如果设置的 IP 地址范围仅支持固定数量的节点，则无法升级或缩放群集。
 >
 > - **升级** AKS 群集时，会将一个新节点部署到该群集中。 服务和工作负荷开始在新节点上运行，旧节点将从群集中删除。 这种滚动升级过程要求至少有一个额外的 IP 地址块可用。 那么，节点计数是 `n + 1`。
->   - 使用 Windows Server （目前以预览版在 AKS 中） 的节点池时，这种考虑因素是尤为重要。 在 AKS 中的 Windows 服务器节点不会自动应用 Windows 更新，而是在节点池上执行升级。 此升级将部署使用最新的窗口服务器 2019年基节点图像和安全补丁的新节点。 升级 Windows Server 节点池的详细信息，请参阅[升级在 AKS 中的节点池][nodepool-upgrade]。
+>   - 使用 Windows Server 节点池 (当前在 AKS 中为预览版) 时, 此注意事项尤其重要。 AKS 中的 windows Server 节点不会自动应用 Windows 更新, 而是在节点池上执行升级。 此升级通过最新的 Windows Server 2019 基本节点映像和安全修补程序部署新节点。 有关升级 Windows Server 节点池的详细信息, 请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
 >
 > - **缩放** AKS 群集时，会将一个新节点部署到该群集中。 服务和工作负荷开始在新节点上运行。 确定 IP 地址范围时需要考虑到如何纵向扩展群集可以支持的节点和 Pod 数目。 此外，应该为升级操作包含一个额外的节点。 那么，节点计数是 `n + number-of-additional-scaled-nodes-you-anticipate + 1`。
 
@@ -55,11 +55,11 @@ AKS 群集 IP 地址计划包括虚拟网络、至少一个节点和 Pod 子网�
 | Subnet | 大小必须足以容纳群集中可能预配的节点、Pod 以及所有 Kubernetes 和 Azure 资源。 例如，如果部署内部 Azure 负载均衡器，其前端 IP 分配自群集子网（而不是公共 IP）。 子网大小还应考虑到帐户升级操作或将来的缩放需求。<p />若要计算最小子网大小，包括用于升级操作的其他节点：  `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>50 个节点群集的示例：`(51) + (51  * 30 (default)) = 1,581`（/21 或更大）<p/>50 节点群集的示例，其中还包括纵向扩展额外 10 个节点的预配：`(61) + (61 * 30 (default)) = 1,891`（/21 或更大）<p>如果在创建群集时没有指定每个节点的最大 Pod 数，则每个节点的最大 Pod 数将设置为 30  。 所需的最小 IP 地址数取决于该值。 如果基于不同的最大值计算最小 IP 地址要求，请参阅[如何配置每个节点的最大 Pod 数](#configure-maximum---new-clusters)，以便在部署群集时设置此值。 |
 | Kubernetes 服务地址范围 | 此范围不应由此虚拟网络上或连接到此虚拟网络的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 |
 | Kubernetes DNS 服务 IP 地址 | Kubernetes 服务地址范围内的 IP 地址将由群集服务发现 (kube-dns) 使用。 请勿使用地址范围内的第一个 IP 地址，例如 1。 子网范围内的第一个地址用于 kubernetes.default.svc.cluster.local 地址  。 |
-| Docker 桥地址 | IP 地址（采用 CIDR 表示法）用作节点上的 Docker 桥 IP 地址。 默认地址为 172.17.0.1/16。 |
+| Docker 桥地址 | IP 地址（采用 CIDR 表示法）用作节点上的 Docker 桥 IP 地址。 此 CIDR 绑定到节点上的容器数。 默认地址为 172.17.0.1/16。 |
 
 ## <a name="maximum-pods-per-node"></a>每个节点的最大 Pod 数
 
-AKS 群集中每个节点的 pod 数最大为 250 个字符。 每个节点的默认  最大 Pod 数因 *kubenet* 和 *Azure CNI* 网络以及群集部署方法而异。
+AKS 群集中每个节点的最大 pod 数为250。 每个节点的默认  最大 Pod 数因 *kubenet* 和 *Azure CNI* 网络以及群集部署方法而异。
 
 | 部署方法 | Kubenet 默认值 | Azure CNI 默认值 | 可在部署时配置 |
 | -- | :--: | :--: | -- |
@@ -77,9 +77,9 @@ AKS 群集中每个节点的 pod 数最大为 250 个字符。 每个节点的�
 | Kubenet | 30 | 110 |
 
 > [!NOTE]
-> AKS 服务严格强制执行上表中的最小值。 您可以设置 maxPods 值低于最小值显示为这样做可以防止群集启动。
+> 上表中的最小值严格由 AKS 服务强制执行。 不能将 maxPods 值设置为低于最小显示的值, 因为这样做会阻止群集启动。
 
-* **Azure CLI**：指定`--max-pods`参数在部署使用的群集时[az aks 创建][az-aks-create]命令。 最大值为 250。
+* **Azure CLI**：使用`--max-pods` [az aks create][az-aks-create]命令部署群集时, 请指定参数。 最大值为 250。
 * **资源管理器模板**：使用资源管理器模板部署群集时，在 [ManagedClusterAgentPoolProfile] 对象中指定 `maxPods` 属性。 最大值为 250。
 * **Azure 门户**：使用 Azure 门户部署群集时，不能更改每个节点的最大 Pod 数。 使用 Azure 门户部署时，Azure CNI 网络群集中每个节点的 Pod 数限制为 30 个。
 
@@ -95,14 +95,14 @@ AKS 群集中每个节点的 pod 数最大为 250 个字符。 每个节点的�
 
 **子网**：要将群集部署到的虚拟网络中的子网。 若要在虚拟网络中为群集创建新的子网，请选择“新建”，并按照“创建子网”部分中的步骤操作   。 对于混合连接，地址范围不应与环境中的其他任何虚拟网络重叠。
 
-**Kubernetes 服务地址范围**：这是 Kubernetes 将分配给内部的虚拟 Ip 套[services][services]群集中。 可以使用任何专用地址范围，只要其符合以下要求即可：
+**Kubernetes 服务地址范围**：这是 Kubernetes 分配给群集中的内部[服务][services]的虚拟 ip 集。 可以使用任何专用地址范围，只要其符合以下要求即可：
 
 * 不得在群集的虚拟网络 IP 地址范围内
 * 不得与群集虚拟网络对等互连的任何其他虚拟网络重叠
 * 不得与任何本地 IP 重叠
-* 不能在范围内`169.254.0.0/16`， `172.30.0.0/16`， `172.31.0.0/16`，或 `192.0.2.0/24`
+* 不得位于范围`169.254.0.0/16`、 `172.30.0.0/16`、 `172.31.0.0/16`或内`192.0.2.0/24`
 
-虽然从技术上来说可以在群集所在的虚拟网络中指定一个服务地址范围，但建议不要这样做。 如果使用重叠的 IP 范围，则可能导致不可预测的行为。 有关详细信息，请参阅本文中的[常见问题解答](#frequently-asked-questions)部分。 Kubernetes 服务的详细信息，请参阅[Services][services] Kubernetes 文档中。
+虽然从技术上来说可以在群集所在的虚拟网络中指定一个服务地址范围，但建议不要这样做。 如果使用重叠的 IP 范围，则可能导致不可预测的行为。 有关详细信息，请参阅本文中的[常见问题解答](#frequently-asked-questions)部分。 有关 Kubernetes services 的详细信息, 请参阅 Kubernetes 文档中的[服务][services]。
 
 **Kubernetes DNS 服务 IP 地址**：群集的 DNS 服务的 IP 地址。 此地址必须在 Kubernetes 服务地址范围内。  请勿使用地址范围内的第一个 IP 地址，例如 1。 子网范围内的第一个地址用于 kubernetes.default.svc.cluster.local 地址  。
 
@@ -123,7 +123,7 @@ $ az network vnet subnet list \
 /subscriptions/<guid>/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
 ```
 
-使用[az aks 创建][az-aks-create]命令与`--network-plugin azure`参数，以创建具有高级网络的群集。 使用上一步中收集的子网 ID 更新 `--vnet-subnet-id` 值：
+结合`--network-plugin azure`参数使用[az aks create][az-aks-create]命令创建具有高级网络的群集。 使用上一步中收集的子网 ID 更新 `--vnet-subnet-id` 值：
 
 ```azurecli-interactive
 az aks create \
@@ -153,7 +153,7 @@ az aks create \
 
 * *是否可以配置基于 Pod 的网络策略？*
 
-  是的 Kubernetes 网络策略是在 AKS 中可用。 若要开始，请参阅[保护在 AKS 中使用网络策略的 pod 之间的流量][network-policy]。
+  是的, Kubernetes 网络策略在 AKS 中可用。 若要开始使用, 请参阅[在 AKS 中使用网络策略保护 pod 之间的流量][network-policy]。
 
 * 可部署到节点的 Pod 数上限是否可配置？ 
 
@@ -176,17 +176,17 @@ az aks create \
 - [将静态 IP 地址用于 Azure Kubernetes 服务 (AKS) 负载均衡器](static-ip.md)
 - [使用包含 Azure 容器服务 (AKS) 的内部负载均衡器](internal-lb.md)
 
-- [创建使用外部网络连接的基本入口控制器][aks-ingress-basic]
+- [创建具有外部网络连接的基本入口控制器][aks-ingress-basic]
 - [启用 HTTP 应用程序路由外接程序][aks-http-app-routing]
-- [创建入口控制器使用内部、 专用网络和 IP 地址][aks-ingress-internal]
-- [使用动态公共 IP 创建入口控制器和配置 let 's Encrypt 自动生成的 TLS 证书][aks-ingress-tls]
-- [具有静态公共 IP 创建入口控制器和配置 let 's Encrypt 自动生成的 TLS 证书][aks-ingress-static-tls]
+- [创建使用内部、专用网络和 IP 地址的入口控制器][aks-ingress-internal]
+- [使用动态公共 IP 创建入口控制器, 并配置让我们进行加密以自动生成 TLS 证书][aks-ingress-tls]
+- [使用静态公共 IP 创建入口控制器, 并配置让我们进行加密以自动生成 TLS 证书][aks-ingress-static-tls]
 
 ### <a name="aks-engine"></a>AKS 引擎
 
-[Azure Kubernetes 服务 （AKS 引擎） 引擎][aks-engine]是一个开放源代码项目，生成可用于部署 Azure 上的 Kubernetes 群集的 Azure 资源管理器模板。
+[Azure Kubernetes 服务引擎 (AKS 引擎)][aks-engine]是一个开源项目, 可生成可用于在 azure 上部署 Kubernetes 群集的 azure 资源管理器模板。
 
-使用 AKS 引擎创建的 Kubernetes 群集支持这两个[kubenet][kubenet] and [Azure CNI][cni-networking]插件。 因此，AKS 引擎同时支持这两种网络方案。
+通过 AKS 引擎创建的 Kubernetes 群集同时支持[kubenet][kubenet] and [Azure CNI][cni-networking]插件。 因此，AKS 引擎同时支持这两种网络方案。
 
 <!-- IMAGES -->
 [advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png

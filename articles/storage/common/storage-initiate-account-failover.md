@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 94a385b7e41dd4a7664dc40418456b304ebef509
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51e0379607c49019590a99c9fb7304f28be2afe5
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150016"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305739"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>启动存储帐户故障转移（预览版）
 
@@ -27,7 +27,7 @@ ms.locfileid: "65150016"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 请先确保已按照以下步骤操作，然后才能对存储帐户执行帐户故障转移：
 
@@ -67,7 +67,7 @@ ms.locfileid: "65150016"
 1. 卸载以前安装的所有 Azure PowerShell：
 
     - 使用“设置”  下的“应用和功能”  设置从 Windows 中删除以前安装的所有 Azure PowerShell。
-    - 从 `%Program Files%\WindowsPowerShell\Modules` 中删除所有 **Azure*** 模块。
+    - 从中  `%Program Files%\WindowsPowerShell\Modules`删除所有 Azure 模块。
     
 1. 确保已安装 PowerShellGet 最新版本。 打开 Windows PowerShell 窗口，然后运行以下命令以安装最新版本：
  

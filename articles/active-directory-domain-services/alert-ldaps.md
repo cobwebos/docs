@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 域服务：安全 LDAP 配置故障排除 | Microsoft Docs
+title: Azure Active Directory 域服务：安全 LDAP 故障排除 |Microsoft Docs
 description: Azure AD 域服务的安全 LDAP 疑难解答
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 453018f486ca3fda91d8447208fe3d936722522e
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473956"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234191"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD 域服务 - 安全 LDAP 配置疑难解答
 
@@ -46,7 +46,7 @@ ms.locfileid: "67473956"
    4. 针对目标端口范围，输入“636”。
    5. 协议为 TCP  。
    6. 为规则指定适当的名称、说明和优先级。 此规则的优先级应高于“全部拒绝”规则的优先级（如果有）。
-   7. 单击“确定”。 
+   7. 单击 **“确定”** 。
 5. 验证是否已创建规则。
 6. 在两小时后检查域的运行状况，确保已正确完成相关步骤。
 

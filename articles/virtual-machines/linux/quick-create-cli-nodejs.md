@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
-ms.author: v-livech
-ms.openlocfilehash: a757e156d48eb27a9e4d9b38cb08d5417f1e35b6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.author: gwallace
+ms.openlocfilehash: b36f6e2ace02324a63616f31fcdccfa666856699
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671076"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875219"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 创建 Linux VM
 

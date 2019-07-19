@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 了解如何使用 Azure 门户创建带有区域前端的标准负载均衡器
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.custom: seodec18
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
-ms.author: kumud
-ms.openlocfilehash: c81ff5ea330c4c0ba26a92a3b5399cfa961e4b2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 9a260c267febb3dc851fe0a8ca8a8e351124116b
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60753481"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275141"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>使用 Azure 门户创建具有区域性前端的标准负载均衡器
 

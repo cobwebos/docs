@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 本快速入门介绍如何使用 Azure 门户创建公共基本负载均衡器。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: db781899a3fe0d13d030943ed3ab4ebd3d105ad1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9819111c8264493648233f40252db4fb4410aaf1
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727576"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274087"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建基本负载均衡器
 
@@ -37,13 +37,13 @@ ms.locfileid: "64727576"
 1. 在屏幕的左上方，单击“创建资源”   > “网络”   > “负载均衡器”  。
 2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”    ：
 
-    | 设置                 | 值                                              |
+    | 设置                 | ReplTest1                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB   。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 名称                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”  。                                        |
-    | Type          | 选择“公共”。                                         |
+    | type          | 选择“公共”。                                         |
     | SKU           | 选择“基本”。                           |
     | 公共 IP 地址 | 选择“新建”。  |
     | 公共 IP 地址名称              | *MyPublicIP*   |

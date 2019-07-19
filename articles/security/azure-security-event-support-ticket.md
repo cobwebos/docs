@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2017
-ms.author: v-dabosl
-ms.openlocfilehash: 243b6b7846719d3f848073e3aa973c9406ca59c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: barclayn
+ms.openlocfilehash: 80ce352a9033b2da1db16643d07eab9eff70eb0a
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60586556"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875685"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>如何记录安全事件支持票证
 
@@ -32,7 +32,7 @@ ms.locfileid: "60586556"
 
     i. 问题和/或漏洞是什么？
 
-    ii. 对于漏洞，请提供 CVE (mitre.org) 或已填充 CVSS3 v3 计算器 (https://www.first.org/cvss/calculator/3.0) 。
+    ii. 对于漏洞, 请提供 CVE (mitre.org) 或已填充的 CVSS3 v3 计算器 (https://www.first.org/cvss/calculator/3.0) 。
 
     iii. 是否有解决方法或缓解措施？ 如果是，请提供补救措施。
 

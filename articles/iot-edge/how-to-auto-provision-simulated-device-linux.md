@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5ab85a8fb56789dbf3ecd6cf1cbc63e338615915
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1a13c130c45c746a42c0acf1ec2646f3c8f9bc51
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439131"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227520"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>使用 Linux 虚拟机上的虚拟 TPM 创建和预配 IoT Edge 设备
 
@@ -29,7 +29,7 @@ ms.locfileid: "67439131"
 
 本文中的步骤仅用于测试目的。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [已启用 Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 的 Windows 开发计算机。 本文使用运行 Ubuntu Server VM 的 Windows 10。 
 * 活动的 IoT 中心。 
@@ -82,7 +82,7 @@ ms.locfileid: "67439131"
 
 4. 选中“启用受信任的平台模块”。  
 
-5. 单击“确定”。   
+5. 单击 **“确定”** 。  
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>启动虚拟机并收集 TPM 数据
 
@@ -107,7 +107,7 @@ ms.locfileid: "67439131"
    sudo ./tpm_device_provision
    ```
    >[!TIP]
-   >如果要使用 TPM 模拟器进行测试，你将需要放置一个额外的参数`-Duse_tpm_simulator:BOOL=ON`来启用它。 完整的命令将为`cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..`。
+   >如果使用 TPM 模拟器进行测试, 则需要放入额外参数`-Duse_tpm_simulator:BOOL=ON`以启用它。 完整的命令将是`cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..`。
 
 5. 复制“注册 ID”和“认可密钥”的值。   稍后要使用这些值在 DPS 中为设备创建个人注册。 
 
@@ -123,8 +123,7 @@ ms.locfileid: "67439131"
 
 在 DPS 中创建注册时，可以声明“初始设备孪生状态”。  在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-monitor.md)。 
 
-
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到 IoT 中心设备预配服务的实例。 
+1. 在[Azure 门户](https://portal.azure.com)中, 导航到 IoT 中心设备预配服务的实例。 
 
 2. 在“设置”下，选择“管理注册”。   
 
@@ -153,7 +152,7 @@ ms.locfileid: "67439131"
       }
       ```
 
-   7. 选择“保存”。  
+   7. 选择**保存**。 
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 
 

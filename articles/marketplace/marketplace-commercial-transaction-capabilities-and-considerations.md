@@ -7,17 +7,17 @@ manager: nuno costa
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
-ms.author: yijenj
-ms.openlocfilehash: d266b314f19979578b7e7b8de4e7a7090200c9d2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: pabutler
+ms.openlocfilehash: c58a36988e3aee9b122446e3ee3c4878a582b8ad
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445440"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871031"
 ---
-# <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商业 marketplace 的事务功能和注意事项
+# <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商业市场交易功能和注意事项
 
-本文介绍如何在商业 marketplace 的以下商务相关主题
+本文介绍适用于商业应用商店的以下商业相关主题
 
 * 市场发布选项
 * 交易一般概述
@@ -26,21 +26,21 @@ ms.locfileid: "67445440"
 
 ## <a name="marketplace-publishing-options"></a>市场发布选项
 
-下面的发布选项可供商业 marketplace 发布者。
+以下发布选项适用于商业 marketplace 发布者。
 
 ### <a name="list--trial-publishing-options"></a>列表和试用发布选项
 
-发布者可以利用列表、 试用和 BYOL 的发布选项促销和用户获取目的。 使用以下选项，Microsoft 不直接参与发布者的软件许可证事务，并且没有任何关联的事务费用。 发布者负责支持软件许可证交易的各个方面，包括但不限于：订单、履行、计量、计费、开具发票、付款和费用收集。 借助列表和试用发布选项，发布者保留 100% 的收集自客户的发布者软件许可费。 
+发布者可以利用列表、试用和 BYOL 发布选项进行促销和用户获取。 借助这些选项, Microsoft 不会直接参与发布者的软件许可证事务, 也不会产生关联的事务费用。 发布者负责支持软件许可证交易的各个方面，包括但不限于：订单、履行、计量、计费、开具发票、付款和费用收集。 借助列表和试用发布选项，发布者保留 100% 的收集自客户的发布者软件许可费。 
 
 ### <a name="transact-publishing-option"></a>交易发布选项
 
-除了列表和试用版的发布选项，transact 发布选项可供发布服务器。 这充分利用 Microsoft 的全球可用的商务功能和 Microsoft 可以通过主机云 marketplace 事务代表发布者。
+除了列表和试用版发布选项以外, 发布服务器还提供了 "事务发布" 选项。 这将利用 Microsoft 的全球可用商业功能, 并允许 Microsoft 代表发布者托管云 marketplace 交易。
 
 ## <a name="transact-general-overview"></a>交易一般概述
 
-在使用事务处理发布选项，Microsoft 将使第三方软件的销售和客户的 Azure 订阅对某些产品/服务类型的部署。 发布服务器必须考虑的基础结构费用计费和发布自己的软件许可费用，当选择计费模型和产品/服务类型。
+使用 "事务发布" 选项时, Microsoft 允许销售第三方软件, 并将某些产品/服务类型部署到客户的 Azure 订阅。 在选择计费模型和产品/服务类型时, 发布者必须考虑基础结构费用的计费以及发布者自己的软件许可费用。
 
-以下产品/服务类型当前支持 Transact 发布选项：虚拟机、 Azure 应用程序和 SaaS 应用。
+以下产品/服务类型当前支持 "事务发布" 选项:虚拟机、Azure 应用程序和 SaaS 应用。
 
 
 ![[处理 Azure 市场中的企业交易]](./media/marketplace-publishers-guide/Transact-enterprise-deals.png)
@@ -53,7 +53,7 @@ ms.locfileid: "67445440"
 
 **对于 SaaS 应用**
 
-对于 SaaS 应用，发布者必须将 Azure 基础结构使用费和软件许可费视为单一费用项。  它表示为对客户的费用。 Azure 基础结构使用情况由合作伙伴直接管理并对其计费。  客户将无法看到实际的基础结构使用费。  发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。  不计量软件许可费，它也不基于消耗量。
+对于 SaaS 应用，发布者必须将 Azure 基础结构使用费和软件许可费视为单一费用项。  它表示为客户的固定费用。 Azure 基础结构使用情况由合作伙伴直接管理并对其计费。  客户将无法看到实际的基础结构使用费。  发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。  不计量软件许可费，它也不基于消耗量。
 
 ## <a name="transact-billing-models"></a>交易计费模式
 
@@ -65,7 +65,7 @@ ms.locfileid: "67445440"
 
 * 即用即付：软件许可证费用将根据所用的 Azure 基础结构显示为每小时每个核心 (vCPU) 定价费率。 这仅适用于虚拟机和 Azure 应用程序。
 
-* • 订阅定价：软件许可证费用将表示为月度或年度订阅，重复按固定的费率或每客户计费的费用。 这仅适用于 SaaS 应用和 Azure 应用程序 - 托管应用。
+* •订阅定价:软件许可证费用以每月或每年为单位显示, 按固定费率或每位客户计费的周期性费用。 这仅适用于 SaaS 应用和 Azure 应用程序 - 托管应用。
 
 * 免费软件试用版：免费使用软件许可证 30 天或 90 天。
 
@@ -75,9 +75,9 @@ ms.locfileid: "67445440"
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>即用即付和订阅（基于站点）定价
 
-WPay 作为-即付订阅定价时发布的即用即付或订阅的事务优惠，Microsoft 提供的技术和服务来处理软件许可证购买，否则将返回和退款。 在这种情况下，发布者出于上述目的授权 Microsoft 充当代理人。 发布者允许 Microsoft 促成软件许可交易，同时保留自身的卖家、提供商、分销商和许可方的称号。
+WPay 即用即付和订阅定价当发布即用即付或订阅交易时, Microsoft 将提供技术和服务来处理软件许可证购买、退货和退款。 在这种情况下，发布者出于上述目的授权 Microsoft 充当代理人。 发布者允许 Microsoft 促成软件许可交易，同时保留自身的卖家、提供商、分销商和许可方的称号。
 
-Microsoft，客户可在顺序、 许可证和使用发布者软件让的条款和条件的 Microsoft 的商业 Marketplace 和发布者的最终用户许可协议。 发布者必须提供其最终用户许可协议或选择[标准协定](https://docs.microsoft.com/azure/marketplace/standard-contract)创建产品/服务时。
+Microsoft 使客户能够订购、许可和使用出版商软件, 经受 Microsoft 的商业市场和发布者的最终用户许可协议的条款和条件。 发布者必须提供最终用户许可协议, 或在创建产品/服务时选择[标准合同](https://docs.microsoft.com/azure/marketplace/standard-contract)。
 
 
 ### <a name="free-software-trials"></a>免费软件试用
@@ -86,9 +86,9 @@ Microsoft，客户可在顺序、 许可证和使用发布者软件让的条款�
 
 ### <a name="private-offers"></a>专用产品/服务
 
-除了使用产品/服务类型和计费模型中的，以将转化为收益产品/服务、 发布者可以 transact 专用产品/服务，包括协商、 特定于交易的定价，或自定义配置。 专用产品/服务受全部 3 个交易发布选项的支持。
+除了使用产品/服务类型和计费模型来盈利产品/服务, 发布者还可以使用协商、交易特定定价或自定义配置来完成专用产品/服务。 专用产品/服务受全部 3 个交易发布选项的支持。
 
-此选项允许更高版本或更低定价比公开提供的产品/服务。 专用产品/服务可用于为产品/服务打折扣或为其添加奖励金。 可在产品/服务级别将其 Azure 订阅添加到允许列表，向一个或多个客户提供专用产品/服务。
+此选项允许比公开提供的产品/服务更高或更低的定价。 专用产品/服务可用于为产品/服务打折扣或为其添加奖励金。 可在产品/服务级别将其 Azure 订阅添加到允许列表，向一个或多个客户提供专用产品/服务。
 
 
 ### <a name="examples"></a>示例
@@ -126,10 +126,10 @@ Microsoft，客户可在顺序、 许可证和使用发布者软件让的条款�
 |Microsoft 保留 Azure 使用费用    |   每小时 $0.14     |
 |Microsoft 保留许可证费用的 0%   |  每小时 $0.00       |
 
-**SaaS 应用程序订阅**
+**SaaS 应用订阅**
 
-此选项必须配置为通过 Microsoft 销售，可以在平面速率或每个月度或年度基于用户定价。
-• 如果启用通过 SaaS 产品/服务，Microsoft 选项销售则具有以下的成本结构。
+此选项必须配置为通过 Microsoft 销售, 并可按固定费率或每个用户每月或每年的价格定价。
+•如果启用了 SaaS 产品/服务的 "销售通过 Microsoft" 选项, 则可以使用以下成本结构。
 
 |你的许可证费用       | 100.00 美元/月  |
 |--------------|---------|
@@ -137,14 +137,14 @@ Microsoft，客户可在顺序、 许可证和使用发布者软件让的条款�
 |*由 Microsoft 向客户收费*    |  100.00 美元/月（注意：发布者必须将任何引致的或者转付的基础结构费用考虑到许可证费用中）   |
 
 * 在这种情况下，Microsoft 向你收取 100.00 美元的软件许可证费用，并向发布者支付 80.00 美元。
-* 合作伙伴具有限定为减少 Marketplace 服务费用会减少的事务费用 SaaS 上提供了从年 6 月 2020年直到 2019 年 5。 在此方案中，Microsoft 对您的软件许可证 100.00 美元进行收费和到发布服务器的回报 90.00 美元。
+* 符合 Marketplace 服务费用的合作伙伴将从5月2019到6月5日起, 从 5 2020 月5日起, 对 SaaS 产品/服务的事务费用将减少。 在此方案中, Microsoft 为你的软件许可证计费 $100.00, 并向发布者支付 $90.00。
 
 |Microsoft 收费  | 100.00 美元/月  |
 |---------|---------|
-|Microsoft 将许可证费用的 80% 支付给你 <br> \* Microsoft 支付给你的许可证费用的 90%的任何限定的 SaaS 应用程序   |   80.00 美元/月 <br> \* 每月 90.00 美元    |
-|Microsoft 保留许可证费用的 20% <br> \* Microsoft 保留许可证费用的任何限定的 SaaS 应用程序的 10%。  |  20.00 美元/月 <br> \* $10.00     |
+|Microsoft 将许可证费用的 80% 支付给你 <br> \*Microsoft 为任何合格的 SaaS 应用支付 90% 的许可费用   |   80.00 美元/月 <br> \*每月 $90.00    |
+|Microsoft 保留许可证费用的 20% <br> \*Microsoft 为任何合格的 SaaS 应用节省了 10% 的许可费用。  |  20.00 美元/月 <br> \*$10.00     |
 
-* **减少了的 Marketplace 服务费用：** 对于某些我们商业 Marketplace 发布的 SaaS 产品，Microsoft 会减少其 Marketplace 服务费用从 20%（如在 Microsoft 发布方协议中所述） 为 10%。  为了使您的产品来限定，至少一个你的产品必须由 Microsoft 指定为 IP 联合销售就绪或 IP 共同销售设置优先级。 若要为每月接收此简化的 Marketplace 服务费，资格必须满足该日历月结束前的至少五 （5） 个工作日。 减少 Marketplace 服务费用不会应用于 Vm、 管理的应用程序或通过我们的商业应用商店提供的任何其他产品。  这减少了 Marketplace 服务费用将许可证费用，2019 年 5 月 1 日和于 2020 年 6 月 30 日之间的 Microsoft 收集与可供限定产品/服务。  该时间后将返回其正常量 Marketplace 服务费用。
+* **降低 Marketplace 服务费用:** 对于在我们的商业市场上发布的某些 SaaS 产品, Microsoft 将其 Marketplace 服务费用从 20% 降低到 10% (如 Microsoft 发布者协议中所述)。  为了使你的产品符合资格, Microsoft 至少必须将其中一个产品指定为 IP 联销售就绪或 IP 共同销售的优先级。 若要在该月内享受此降低的 Marketplace 服务费用, 必须在该日历月结束之前至少在5个工作日内满足资格。 降低 Marketplace 服务费用不适用于 Vm、托管应用或通过我们的商业市场提供的任何其他产品。  使用 Microsoft 在5月1日到2019到6月 30 2020 日之间收集的许可费用, 此降低了 Marketplace 服务费用。  在此之后, Marketplace 服务费用将恢复为其正常量。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客户开具发票、付款、计费和费用收集
 
@@ -205,13 +205,13 @@ Microsoft，客户可在顺序、 许可证和使用发布者软件让的条款�
 * 客户通常使用企业协议或支持信用卡的即用即付协议进行购买。 协议类型确定计费、发票、费用收集和付款时间。
 
 >[!NOTE] 
->通过合作伙伴中心的云合作伙伴门户或分析部分的见解部分提供了所有报告和事务处理发布选项的见解。
+>对于 "事务发布" 选项的所有报告和见解, 均可通过合作伙伴中心的 "云合作伙伴门户或分析" 部分的 "见解" 部分获得。
 
 #### <a name="billing-questions-and-support"></a>计费问题和支持
 
 有关详细信息和法律策略，请参阅[发布者协议](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)（请参见云合作伙伴门户）。
 
-若要获取有关帐单问题的帮助，请联系[商业 marketplace 发布者支持](https://aka.ms/marketplacepublishersupport)。
+若要获取有关计费问题的帮助, 请联系[商业 marketplace 发布者支持](https://aka.ms/marketplacepublishersupport)。
 
 ## <a name="transact-requirements"></a>交易要求
 
@@ -219,10 +219,10 @@ Microsoft，客户可在顺序、 许可证和使用发布者软件让的条款�
 
 ### <a name="requirements-for-all-offer-types"></a>所有产品/服务类型的要求
 
-- Microsoft 帐户和财务信息所需的事务处理发布选项，而不考虑该产品/服务的定价模型。
-- 必需的金融信息包括付款帐户和税务配置文件。
+- 无论产品/服务的定价模型如何, 都需要 Microsoft 帐户和财务信息。
+- 必需的财务信息包括支出帐户和税务配置文件。
 
-有关设置这些帐户的详细信息，请参阅[管理你的合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details)。
+有关设置这些帐户的详细信息, 请参阅[管理合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details)。
 
 
 ### <a name="requirements-for-specific-offer-types"></a>特定产品/服务类型的要求
@@ -235,7 +235,7 @@ Microsoft，客户可在顺序、 许可证和使用发布者软件让的条款�
 
 **Azure 应用程序：解决方案模板或托管应用** 
 
-必须通过虚拟机定价的总和预配一个或多个虚拟机和拉取。 对于单个计划的托管应用，可以选择固定费率每月订阅作为定价模型，而不是虚拟机定价。 在某些情况下，Azure 基础结构使用费将传递到客户单独从软件许可证费用，但在相同的帐单上。 但是，如果配置是托管应用程序产品/服务的 ISV 基础结构费用，到发布服务器中，Azure 资源进行计费，客户会接收包括基础结构、 软件许可证以及管理服务的费用的费用。
+必须通过虚拟机定价的总和预配一个或多个虚拟机和拉取。 对于单个计划的托管应用，可以选择固定费率每月订阅作为定价模型，而不是虚拟机定价。 在某些情况下, Azure 基础结构使用费用将与软件许可证费用分开传递给客户, 但在同一帐单上也是如此。 但是, 如果你配置了托管应用产品/服务以实现 ISV 基础结构费用, 则会向发布者计费 Azure 资源, 并且客户会收到包含基础结构、软件许可证和管理服务成本的固定费用。
 
 ## <a name="next-steps"></a>后续步骤
 

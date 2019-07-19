@@ -1,5 +1,5 @@
 ---
-title: 解决现有 Azure AD 域服务托管域的不匹配目录错误 | Microsoft Docs
+title: 解决 Azure AD 域服务中不匹配的目录错误 |Microsoft Docs
 description: 了解和解决现有 Azure AD 域服务托管域的不匹配目录错误
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 1ab6a535c9ffebcb423e7a5cb7f158224c004bd1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 676efa155c85ab371ec41c49ad0c15eb2bd5a24a
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472899"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234009"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>解决现有 Azure AD 域服务托管域的不匹配目录错误
 你有一个现有 Azure AD 域服务托管域。 导航到 Azure 门户并查看托管域时，会看到以下错误消息：

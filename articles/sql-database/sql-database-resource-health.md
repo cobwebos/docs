@@ -12,18 +12,18 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: c3b9fecd3ad404385732e55a9cf3aa65a6e388b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4757236d179e4d6ceb626f58f12cfe48799eed7a
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61482979"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854359"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>使用资源运行状况排查 Azure SQL 数据库的连接问题
 
 ## <a name="overview"></a>概述
 
-适用于 SQL 数据库的[资源运行状况](../service-health/resource-health-overview.md#getting-started)可以帮助你在 Azure 问题影响到 SQL 资源时进行诊断和获取支持。 它通知你有关资源的当前和过去运行状况的信息，并帮助你缓解问题。 在需要有关 Azure 服务问题的帮助时，资源运行状况将提供技术支持。
+适用于 SQL 数据库的[资源运行状况](../service-health/resource-health-overview.md#get-started)可以帮助你在 Azure 问题影响到 SQL 资源时进行诊断和获取支持。 它通知你有关资源的当前和过去运行状况的信息，并帮助你缓解问题。 在需要有关 Azure 服务问题的帮助时，资源运行状况将提供技术支持。
 
 ![概述](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: a370dcb349b61f3dda544d9c5a2030b6789e34c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dc55e4999a09c45463ae75b05d610b290f5ff526
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075443"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248315"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 AKS 群集性能 
 借助适用于容器的 Azure Monitor，可以使用性能图表和运行状况从两个角度（直接从 AKS 群集查看，或是从 Azure Monitor 查看订阅中的所有 AKS 群集）查看 Azure Kubernetes 服务 (AKS) 群集的工作负载。 在监视特定 AKS 群集时，还可以查看 Azure 容器实例 (ACI)。
@@ -27,15 +27,15 @@ ms.locfileid: "67075443"
 
 若要了解如何启用适用于容器的 Azure Monitor，请参阅[载入适用于容器的 Azure Monitor](container-insights-onboard.md)。
 
-Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集中运行 Linux 和 Windows Server 2019 部署你的订阅中跨资源组的运行状况状态。  它显示发现的不受解决方案监视的 AKS 群集。 可以即时了解群集运行状况，并且可以从这里向下钻取到节点和控制器性能页，或者进行导航来查看群集的性能图表。  对于发现的标识为“不受监视”的 AKS 群集，可以随时为该群集启用监视功能。  
+Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署的所有运行 Linux 和 Windows Server 2019 的受监视 AKS 群集的运行状况。  它显示发现的不受解决方案监视的 AKS 群集。 可以即时了解群集运行状况，并且可以从这里向下钻取到节点和控制器性能页，或者进行导航来查看群集的性能图表。  对于发现的标识为“不受监视”的 AKS 群集，可以随时为该群集启用监视功能。  
 
-使用 Azure Monitor for 相比 Linux 群集的容器监视 Windows Server 群集的主要差异如下所示：
+使用适用于容器的 Azure Monitor 监视 Windows Server 群集与监视 Linux 群集的主要差异如下：
 
-- 内存 RSS 跃点数不能用于 Windows 节点和容器 
-- 磁盘存储容量信息不是可用于 Windows 节点
-- 除了 Windows 容器日志提供了实时日志支持。
-- 仅监视环境的 pod，不 Docker 环境。
-- 预览版本中，支持最多为 30 的 Windows Server 容器。 此限制不适用于 Linux 容器。  
+- 内存 RSS 指标不适用于 Windows 节点和容器。
+- 磁盘存储容量信息不可用于 Windows 节点。
+- 实时日志支持可用，但 Windows 容器日志除外。
+- 仅监视 Pod 环境，不监视 Docker 环境。
+- 使用预览版时，最多支持 30 个 Windows Server 容器。 此限制不适用于 Linux 容器。  
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 登录到 [Azure 门户](https://portal.azure.com)。 
@@ -49,8 +49,8 @@ Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集�
 
 1. 多少群集处于严重或不正常状态？多少群集处于正常或未报告状态（也称未知状态）？
 2. 我的所有 [Azure Kubernetes 引擎（AKS 引擎）](https://github.com/Azure/aks-engine)部署是否都正常？
-3. 每个群集部署多少个节点、 用户和系统 pod？
-4. 磁盘空间是否可用以及是否有容量问题？
+3. 每个群集部署了多少节点、用户和系统 Pod？
+4. 多少磁盘空间可用？是否有容量问题？
 
 包含的运行状况有： 
 
@@ -61,10 +61,10 @@ Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集�
 * **找不到** - 工作区、资源组或包含此解决方案的工作区的订阅已删除。
 * **未授权** - 用户没有读取工作区中的数据所需的权限。
 *  - 尝试从工作区中读取数据时发生错误。
-* **配置错误**-用于容器的 Azure Monitor 中指定的工作区未正确配置。
+* **配置错误**-在指定的工作区中未正确配置容器的 Azure Monitor。
 * **没有数据** - 在过去 30 分钟内未向工作区报告数据。
 
-运行状况状态计算总体群集状态为*的最差*三个状态有一个例外-如果任何三个状态为*未知*，整体群集状态将显示**未知**.  
+在进行运行状况计算时，会将这三种状况中“最差”的一种视为群集的总体状况，唯一的例外是  - 如果这三种状况中的任何一种为“未知”，则群集总体状况会显示为“未知”。    
 
 下表提供了计算明细，该计算控制多群集视图中受监视群集的运行状况。
 
@@ -77,7 +77,7 @@ Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集�
 | |Unknown |如果未在过去 30 分钟报告 |  
 |**系统 Pod**| | |  
 | |Healthy |100% |
-| |警告 |不适用 |
+| |警告 |不可用 |
 | |严重 |<100% |
 | |Unknown |如果未在过去 30 分钟报告 |
 |**Node** | | |
@@ -107,9 +107,9 @@ Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集�
 - **节点计数**：Kubernetes 提供的节点计数和状态。 表示的群集节点状态为“全部”、“就绪”和“未就绪”，可通过图表上的选择器单独筛选或以组合方式进行筛选    。 
 - **活动 Pod 计数**：Kubernetes 提供的 Pod 计数和状态。 表示的 Pod 状态为“全部”、“挂起”、“正在运行”和“未知”，可通过图表上的选择器单独筛选或以组合方式进行筛选     。 
 
-可以使用向左键/向右键循环浏览图表上的每个数据点，使用向上键/向下键循环显示百分位线。 单击任何一种图表的右上角的图钉图标将所选的图表固定到上次查看的最后一个 Azure 仪表板。 从仪表板中，可以调整大小和重新定位图表。 在仪表板中选择该图表将容器的重定向到 Azure Monitor 和负载的正确作用域和视图。
+可以使用向左键/向右键循环浏览图表上的每个数据点，使用向上键/向下键循环显示百分位线。 单击其中任一图表右上角的图钉图标会将所选图表固定到你上次查看的最后一个 Azure 仪表板。 在仪表板中，可以调整图表大小及其位置。 在仪表板中选择图表会将你重定向到用于容器的 Azure Monitor，并加载正确的作用域和视图。
 
-用于容器的 azure Monitor 还支持 Azure Monitor[指标资源管理器](../platform/metrics-getting-started.md)，可以创建您自己绘图图表，关联和调查趋势，并位置固定到仪表板。 在指标资源管理器中，还可以使用所设置的条件将指标可视化为[基于指标的警报规则](../platform/alerts-metric.md)的基础。  
+容器 Azure Monitor 还支持 Azure Monitor[指标资源管理器](../platform/metrics-getting-started.md), 您可以在其中创建自己的绘图图、关联和调查趋势以及固定到仪表板。 在指标资源管理器中，还可以使用所设置的条件将指标可视化为[基于指标的警报规则](../platform/alerts-metric.md)的基础。  
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>在指标资源管理器中查看容器指标
 在指标资源管理器中，可以通过适用于容器的 Azure Monitor 查看聚合的节点和 Pod 利用率指标。 下表汇总了详细信息，这些信息有助于你了解如何使用指标图表来可视化容器指标。
@@ -136,13 +136,13 @@ Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集�
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>分析节点、控制器和容器运行状况
 
-切换到“节点”、“控制器”和“容器”选项卡时，页面右侧会自动显示“属性”窗格    。 它显示所选项的属性，包括定义用于组织 Kubernetes 对象的标签。 选择在 Linux 节点后，它还演示了部分下**本地磁盘容量**可用磁盘空间和用于向节点显示每个磁盘的百分比。 单击窗格中的 >> 链接以查看\隐藏窗格  。 
+切换到“节点”、“控制器”和“容器”选项卡时，页面右侧会自动显示“属性”窗格    。 它显示所选项的属性，包括定义用于组织 Kubernetes 对象的标签。 选择一个 Linux 节点时，它还会在“本地磁盘容量”部分下显示可用磁盘空间以及用于每个提供给节点的磁盘的百分比。  单击窗格中的 >> 链接以查看\隐藏窗格  。 
 
 ![示例 Kubernetes 透视属性窗格](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
-在层次结构中展开对象时，属性窗格将根据所选对象进行更新。 在窗格中，还可通过单击窗格顶部的“查看 Kubernetes 事件日志”链接，查看具有预定义日志搜索的 Kubernetes 事件  。 有关查看 Kubernetes 日志数据的详细信息，请参阅[搜索日志以分析数据](container-insights-log-search.md)。 时您正在查看群集资源，可以查看容器日志和实时事件。 有关此功能，来授予和控制访问所需的配置详细信息，请参阅[如何查看容器中的与 Azure Monitor 日志实时](container-insights-live-logs.md)。 
+在层次结构中展开对象时，属性窗格将根据所选对象进行更新。 在窗格中，还可通过单击窗格顶部的“查看 Kubernetes 事件日志”链接，查看具有预定义日志搜索的 Kubernetes 事件  。 有关查看 Kubernetes 日志数据的详细信息，请参阅[搜索日志以分析数据](container-insights-log-search.md)。 查看群集资源时，可以实时查看容器日志和事件。 有关此功能以及授予和控制访问权限所需的配置的详细信息，请参阅[如何使用适用于容器的 Azure Monitor 实时查看日志](container-insights-live-logs.md)。 
 
-使用 **+ 添加筛选器**从页面顶部的选项以筛选的视图的结果**服务**，**节点**， **Namespace**，或**节点池**并选择筛选器作用域后, 您从选择中显示的值之一**选择值**字段。  筛选器在配置后会在用户查看任何视角的 AKS 群集时进行全局应用。  公式只支持等号。  可以在第一个筛选器的基础上添加更多的筛选器，进一步缩小结果范围。  例如，如果指定了一个按“节点”筛选的筛选器，则第二个筛选器只能选择“服务”或“命名空间”。     
+请使用页面顶部的“+ 添加筛选器”选项，按“服务”、“节点”、“命名空间”或“节点池”筛选视图的结果。在选择筛选器范围以后，请从“选择值”字段显示的值中选择一个。        筛选器在配置后会在用户查看任何视角的 AKS 群集时进行全局应用。  公式只支持等号。  可以在第一个筛选器的基础上添加更多的筛选器，进一步缩小结果范围。  例如，如果指定了一个按“节点”筛选的筛选器，则第二个筛选器只能选择“服务”或“命名空间”。     
 
 ![通过筛选器缩小结果范围的示例](./media/container-insights-analyze/add-filter-option-01.png)
 
@@ -152,9 +152,9 @@ Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集�
 
 ![性能视图中的示例 Kubernetes 节点层次结构](./media/container-insights-analyze/containers-nodes-view.png)
 
-后面的所有基于 Linux 的节点列表中显示了运行 Windows Server 2019 操作系统的 Windows Server 容器。 当您展开 Windows Server 节点时，可以查看一个或多个 pod 和在节点上运行的容器。 选中一个节点后，属性窗格将显示版本信息，因为 Windows Server 节点不具有安装了代理，不包括的代理信息。  
+在列表中，运行 Windows Server 2019 OS 的 Windows Server 容器显示在所有基于 Linux 的节点后面。 展开 Windows Server 节点时，可以查看在节点上运行的一个或多个 Pod 和容器。 选择节点时，属性窗格会显示版本信息，但没有代理信息，因为 Windows Server 节点尚未安装代理。  
 
-![示例使用列出的 Windows Server 节点的节点层次结构](./media/container-insights-analyze/nodes-view-windows.png) 
+![列出了 Windows Server 节点的示例节点层次结构](./media/container-insights-analyze/nodes-view-windows.png) 
 
 运行 Linux 操作系统的 Azure 容器实例虚拟节点显示在列表中最后一个 AKS 群集节点之后。  展开 ACI 虚拟节点时，可以查看在节点上运行的一个或多个 ACI Pod 和容器。  不会为节点（只为 Pod）收集和报告指标。
 
@@ -163,7 +163,9 @@ Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集�
 从展开的节点中，你可以从在节点上运行的 pod 或容器向下钻取到控制器来查看针对该控制器筛选的性能数据。 单击特定节点的“控制器”列下的值。    
 ![性能视图中从节点到控制器的示例向下钻取](./media/container-insights-analyze/drill-down-node-controller.png)
 
-可从页面顶部选择控制器或容器，查看这些对象的状态和资源使用率。  如果想要查看内存利用率，可在“指标”下拉列表中选择“内存 RSS”或“内存工作集”    。 仅 Kubernetes 1.8 版和更高版本支持**内存 RSS**。 否则，看到的 **Min&nbsp;%** 值会显示为 *NaN&nbsp;%* ，它表示未定义或无法表示的值的数值数据类型值。 
+可从页面顶部选择控制器或容器，查看这些对象的状态和资源使用率。  如果想要查看内存利用率，可在“指标”下拉列表中选择“内存 RSS”或“内存工作集”    。 仅 Kubernetes 1.8 版和更高版本支持**内存 RSS**。 否则，看到的 **Min&nbsp;%** 值会显示为 *NaN&nbsp;%* ，它表示未定义或无法表示的值的数值数据类型值。
+
+内存工作集显示随附的内存和虚拟内存 (缓存), 并且是应用程序使用的总大小。 内存 RSS 只显示主内存, 即驻留内存。 此指标显示可用内存的实际容量。
 
 ![容器节点性能视图](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -200,7 +202,7 @@ Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集�
 
 可以在此处查看控制器和 ACI 虚拟节点控制器或未连接到控制器的虚拟节点 Pod 的性能运行状况。
 
-![<名称>控制器性能视图](./media/container-insights-analyze/containers-controllers-view.png)
+![\<> 控制器性能视图的名称](./media/container-insights-analyze/containers-controllers-view.png)
 
 行层次结构以控制器开始，当展开控制器时，可以查看一个或多个 pod。  展开 Pod，最后一行显示分组到 Pod 的容器。 从展开的控制器中，你可以向下钻取到运行它的节点来查看针对该节点筛选的性能数据。 未连接到控制器的 ACI Pod 在列表中最后列出。
 
@@ -216,7 +218,7 @@ Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集�
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 完成运行状态时容器的汇总状态，例如“正常”、“已终止”、“已失败”、“已停止”或“已暂停”      。 如果容器仍在运行，但是状态未正确显示或者未被代理选择并且超出 30 分钟后仍未响应，则状态为“未知”  。 下表中提供了状态图标的更多详细信息。|
-| Avg&nbsp;%、Min&nbsp;%、Max&nbsp;%、50th&nbsp;%、90th&nbsp;% | 汇总所选度量值和百分位数的每个实体的平均百分比的平均值。 |
+| Avg&nbsp;%、Min&nbsp;%、Max&nbsp;%、50th&nbsp;%、90th&nbsp;% | 按所选指标和百分位数汇总每个实体平均百分比的平均值。 |
 | Avg、Min、Max、50th、90th  | 所选百分位的容器的平均 CPU millicore 或内存性能汇总。 平均值根据为 Pod 设置的 CPU/内存限制进行计算。 |
 | 容器 | 控制器或 Pod 的容器总数。 |
 | 重启数 | 容器重启计数汇总。 |
@@ -241,7 +243,7 @@ Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集�
 
 在此处可查看 Azure Kubernetes 和 Azure 容器实例容器的性能运行状况。  
 
-![<名称>控制器性能视图](./media/container-insights-analyze/containers-containers-view.png)
+![\<> 控制器性能视图的名称](./media/container-insights-analyze/containers-containers-view.png)
 
 从容器中，可以向下钻取到某个 pod 或节点来查看针对该对象筛选的性能数据。 单击特定容器的“Pod”或“节点”列下的值。     
 
@@ -272,19 +274,19 @@ Azure Monitor 提供了一个多群集视图，显示所有受监视 AKS 群集�
 | ![“已失败”状态图标](./media/container-insights-analyze/containers-failed-icon.png) | “已失败”状态 |  
 
 ## <a name="disk-capacity-workbook"></a>磁盘容量工作簿
-工作簿将文本 [记录查询](../log-query/query-language.md)，[指标](../platform/data-platform-metrics.md)，和到丰富的交互式报表的参数。 有权访问相同 Azure 资源的其他团队成员都可编辑工作簿。
+工作簿可将文本、 [日志查询](../log-query/query-language.md)、[指标](../platform/data-platform-metrics.md)和参数合并到丰富的交互式报表中。 有权访问相同 Azure 资源的其他团队成员都可编辑工作簿。
 
-用于容器的 azure 监视器包含一个工作簿来帮助你开始，**磁盘容量**。  此工作簿提供了通过以下几个方面向容器中的节点显示每个磁盘的交互式磁盘使用情况图表：
+用于容器的 Azure Monitor 包含一个用于入门的工作簿：“磁盘容量”。   该工作簿在容器中为每个提供给节点的磁盘提供包含以下方面内容的交互式磁盘使用情况图表：
 
-- 磁盘 %的所有磁盘的使用情况
+- 所有磁盘的磁盘百分比使用情况
 - 所有磁盘的可用磁盘空间
-- 对于每个节点的磁盘，显示其 %已用空间的表格，趋势 %已用空间、 可用磁盘空间 (GiB) 和趋势的可用磁盘空间 (GiB)。 表中选择一行后，已用空间百分比和可用磁盘空间 (GiB) 如下所示 
+- 一个表，为每个节点磁盘显示其已使用空间百分比、已使用空间趋势百分比、可用磁盘空间 (GiB)，以及可用磁盘空间趋势 (GiB)。 选择表中的某个行时，会在下面显示已使用空间百分比和可用磁盘空间 (GiB) 
 
-通过选择访问此工作簿**磁盘容量**从**View 工作簿**下拉列表。  
+访问此工作簿的方法是从“查看工作簿”下拉列表选择“磁盘容量”。    
 
-![查看工作簿下拉列表](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
+![“查看工作簿”下拉列表](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
 
 ## <a name="next-steps"></a>后续步骤
-- 审阅[适用于容器的 Azure Monitor 创建性能警报](container-insights-alerts.md)若要了解如何为高的 CPU 和内存利用率，以支持 DevOps 或操作流程和过程创建警报。 
-- 视图[记录查询示例](container-insights-log-search.md#search-logs-to-analyze-data)若要查看预定义的查询和示例，以评估或自定义的警报、 可视化，或分析你的群集。
+- 请查看[使用用于容器的 Azure Monitor 创建性能警报](container-insights-alerts.md)，了解如何针对高 CPU 和内存利用率创建警报以支持 DevOps 或操作流程和过程。 
+- 请参阅[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，以查看预定义的查询，以及用于发警报、可视化或分析群集的评估或自定义示例。

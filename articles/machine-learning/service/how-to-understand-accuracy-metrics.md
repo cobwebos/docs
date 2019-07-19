@@ -1,32 +1,42 @@
 ---
-title: 训练自动化机器学习中的准确性指标
+title: 在自动 ML 中培训准确性指标
 titleSuffix: Azure Machine Learning service
-description: 了解有关自动化机器学习在运行过程中的每个的准确性指标。
+description: 了解每个运行的自动机器学习准确性指标。
 author: j-martens
 ms.author: jmartens
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: 44dfa387b289afe4dc5f030cca0b13325c04e811
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.date: 07/16/2019
+ms.openlocfilehash: dc147fd0252b2b5ec4ce334d6c1c464d9cde8ef5
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67313280"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297898"
 ---
-# <a name="evaluate-training-accuracy-in-automated-ml-with-metrics"></a>评估中使用的指标的自动机器学习训练准确性
+# <a name="evaluate-training-accuracy-in-automated-ml-with-metrics"></a>利用指标评估自动 ML 中的培训准确性
 
-有多种方法可以查看每个运行迭代训练准确性指标。
+在本文中, 你将了解 Azure 机器学习中自动 ml 模型的不同指标。 
 
+可以通过多种方式查看每个运行迭代的定型准确性指标。
 * 使用[Jupyter 小组件](how-to-track-experiments.md#view-run-details)
-* 使用[`get_metrics()`函数](how-to-track-experiments.md#query-run-metrics)任何`Run`对象
-* 视图[在 Azure 门户中的实验度量值](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)
+* 对任何`Run`对象使用[函数`get_metrics()` ](how-to-track-experiments.md#query-run-metrics)
+* 查看[Azure 门户中的试验指标](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)
+
+## <a name="prerequisites"></a>先决条件
+ 
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+ 
+* 使用 SDK 或 Azure 门户创建自动化机器学习试验。
+ 
+    * 使用 SDK 生成[分类模型](how-to-auto-train-remote.md)或[回归模型](tutorial-auto-train-models.md)
+    * 使用[Azure 门户](how-to-create-portal-experiments.md)通过上传适当的数据来创建分类或回归模型。
 
 ## <a name="classification-metrics"></a>分类指标
 
-以下度量值将保存在分类任务的每个运行迭代。
+分类任务的每次运行迭代中都保存了以下指标。
 
 |指标|描述|计算|其他参数
 --|--|--|--|
@@ -53,7 +63,7 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 
 ## <a name="regression-and-forecasting-metrics"></a>回归和预测指标
 
-以下度量值将保存在每个运行迭代的回归或预测任务。
+对于回归或预测任务, 在每次运行迭代中保存以下度量值。
 
 |指标|描述|计算|其他参数
 --|--|--|--|
@@ -68,3 +78,7 @@ root_mean_squared_error|均方根误差是目标与预测之间的预期平方�
 normalized_root_mean_squared_error|规范化均方根误差是均方根误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|除以数据范围|
 root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|无|
 normalized_root_mean_squared_log_error|规范化均方根对数误差指均方根对数误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|除以数据范围|
+
+## <a name="next-steps"></a>后续步骤
+
+详细了解 Azure 机器学习中的[自动 ml](concept-automated-ml.md) 。

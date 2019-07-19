@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 73dd46d1ca0a20748d7a3a7838c499f0c659253d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72cffea3e5d42210bffbdbeef94c475cc8bdebf4
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241679"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312103"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
 本指南介绍如何结合 Azure Active Directory (Azure AD) 使用 OAuth 2.0 协议配置 Azure API 管理实例，以保护 API。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要执行本文中的步骤，必须提供：
 * API 管理实例
 * 使用 API 管理实例发布的 API
@@ -44,7 +44,7 @@ ms.locfileid: "66241679"
 
 若要使用 Azure AD 保护 API，首先需要在 Azure AD 中注册一个表示该 API 的应用程序。 
 
-1. 导航到[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。 
+1. 导航到[Azure 门户应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)"页。 
 
 2. 选择“新注册”。  
 
@@ -64,7 +64,7 @@ ms.locfileid: "66241679"
 
 需要调用该 API 的每个客户端应用程序也必须注册到 Azure AD 中。 在本示例中，示例客户端应用程序是 API 管理开发人员门户中的开发人员控制台。 下面介绍如何在 Azure AD 中注册另一个应用程序用于表示开发人员控制台。
 
-1. 导航到[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。 
+1. 导航到[Azure 门户应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)"页。 
 
 1. 选择“新注册”。 
 
@@ -111,7 +111,7 @@ ms.locfileid: "66241679"
 
 在本示例中，开发人员控制台是 client-app。 以下步骤说明如何在开发人员门户中启用 OAuth 2.0 用户授权 
 
-1. 在 Azure 门户中，浏览到 API 管理实例。
+1. 在 Azure 门户中, 浏览到 API 管理实例。
 
 2. 选择“OAuth 2.0” > “添加”。  
 
@@ -122,9 +122,6 @@ ms.locfileid: "66241679"
 5. 选择“授权代码”作为“授权类型”。  
 
 6. 指定“授权终结点 URL”  和“令牌终结点 URL”  。 可以从 Azure AD 租户中的“终结点”页检索这些值。  再次浏览到“应用注册”页，并选择“终结点”。  
-
-    >[!NOTE]
-    > 在此处使用 **v1** 终结点
 
 7. 复制“OAuth 2.0 授权终结点”  ，并将其粘贴到“授权终结点 URL”  文本框。
 
@@ -156,7 +153,7 @@ ms.locfileid: "66241679"
 
 4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。   
 
-5. 选择“保存”。 
+5. 选择**保存**。
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>从开发人员门户成功调用 API
 

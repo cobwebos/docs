@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a6fc2af0cbe770ee787da757966bbc1647717e5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ddfa93328fb3533a937cc7f0d81482b66275faf3
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66302685"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848951"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>为 IoT Edge 准备开发和测试环境
 
@@ -49,7 +49,7 @@ Visual Studio 和 Visual Studio Code 都具有附加扩展，可帮助开发 IoT
 
 除 IoT Edge 扩展外，你可能会发现安装其他扩展也有助于开发。 例如，可使用[适用于 Visual Studio Code 的 Docker 支持](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)来管理映像、容器和注册表。 此外，所有主要支持的语言都具有 Visual Studio Code 的扩展，可在开发模块时提供帮助。 
 
-#### <a name="prerequisites"></a>必备组件
+#### <a name="prerequisites"></a>系统必备
 
 某些语言和服务的模块模板具有使用 Visual Studio Code 在开发计算机上构建项目文件夹时所必需的先决条件。
 
@@ -60,13 +60,13 @@ Visual Studio 和 Visual Studio Code 都具有附加扩展，可帮助开发 IoT
 | C# | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
 | Java | <ul><li>[Java SE 开发工具包 10](https://aka.ms/azure-jdks) <li> [设置 JAVA_HOME 环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node.js 模块生成器](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
-| Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html) <li> [Git](https://git-scm.com/) </ul> |
+| Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 
 ### <a name="visual-studio-20172019-extension"></a>Visual Studio 2017/2019 扩展
 
 适用于 Visual Studio 的 Azure IoT Edge 工具提供了基于 C# 和 C 构建的 IoT Edge 模块模板。 
 
-有关详细信息和下载，请参阅[适用于 Visual Studio 2017 的 Azure IoT Edge 工具](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)或[适用于 Visual Studio 2019 的 Azure IoT Edge 工具](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools)。
+有关详细信息和下载, 请参阅[适用于 Visual studio 2017 的 Azure IoT Edge 工具](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)或用于[visual studio 2019 的 Azure IoT Edge 工具](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools)。
 
 ### <a name="iot-edge-dev-tool"></a>IoT Edge 开发工具
 
@@ -80,7 +80,7 @@ Azure IoT Edge 开发工具使用命令行功能简化了 IoT Edge 开发。 此
 
 生产部署仅支持 IoT Edge 运行时，但借助以下工具可模拟或轻松创建 IoT Edge 设备以进行开发和测试。 这些工具不是互斥的，可协同工作以获得完整的开发体验。 
 
-| Tool | 也称为 | 支持的平台 | 最适用于 |
+| Tool | 也称为 | 受支持的平台 | 最适用于 |
 | ---- | ------------- | ------------------- | --------- |
 | IoT EdgeHub 开发工具  | iotedgehubdev | Windows, Linux, MacOS | 模拟设备来调试模块。 |
 | IoT Edge 开发容器 | microsoft/iotedgedev | Windows, Linux, MacOS | 开发而无需安装依赖项。 |

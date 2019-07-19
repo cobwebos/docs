@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: c1809885c930c4d22dff3f30d6e874aacf0b540e
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b9bf3b41bcd0a79027c5dd9a4f3df979fb0bd9f0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672555"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250155"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>将 Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
 
@@ -99,7 +99,7 @@ alter table myacidtable compact 'major';
 
 使用“头节点”作为执行的节点类型，针对群集启动某个脚本操作。 将以下 URI 粘贴到标有“Bash 脚本 URI”的文本框中： https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-数据分析 Studio 可以使用 URL 启动应用： https://<clustername>.azurehdinsight.net/das/
+可以通过以下 URL 启动数据分析工作室: https://\<> clustername clustername>.azurehdinsight.net/das/
 
 
 

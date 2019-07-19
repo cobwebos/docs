@@ -1,22 +1,22 @@
 ---
 title: 将数据从事件中心引入到 Azure 数据资源管理器
-description: 在本文中，您将了解如何将 （加载） 数据引入到 Azure 数据资源管理器从事件中心。
+description: 本文介绍如何从事件中心将数据引入 (加载) 到 Azure 数据资源管理器。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: f38f1c313be17457c28c5b30fa743f7a0eae2cc0
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.date: 07/17/2019
+ms.openlocfilehash: 8e13e9f95fac8d2e651755ade126417acc6d97da
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67621979"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311617"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中，创建事件中心，从 Azure 数据资源管理器和整个系统，请参阅数据流连接到它。
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中, 你将创建一个事件中心, 从 Azure 数据资源管理器连接到该中心, 并查看整个系统的数据流。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,7 +34,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="create-an-event-hub"></a>创建事件中心
 
-在本文中，将生成示例数据和将其发送到事件中心。 第一步是创建事件中心。 通过使用 Azure 资源管理器模板在 Azure 门户中执行此操作。
+本文将生成示例数据并将其发送到事件中心。 第一步是创建事件中心。 通过使用 Azure 资源管理器模板在 Azure 门户中执行此操作。
 
 1. 若要创建事件中心，请使用以下按钮开始部署。 右键单击并选择“在新窗口中打开”  ，以便按本文中的剩余步骤操作。
 
@@ -58,7 +58,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     |---|---|---|
     | 订阅 | 订阅 | 选择要用于事件中心的 Azure 订阅。|
     | 资源组 | test-hub-rg  | 创建新的资源组。 |
-    | Location | *美国西部* | 选择*美国西部*本文。 对于生产系统，请选择最能满足你需求的区域。 在与 Kusto 群集相同的位置创建事件中心命名空间以获得最佳性能（对于具有高吞吐量的事件中心命名空间来说最重要）。
+    | Location | *美国西部* | 对于本文, 请选择 "*美国西部*"。 对于生产系统，请选择最能满足你需求的区域。 在与 Kusto 群集相同的位置创建事件中心命名空间以获得最佳性能（对于具有高吞吐量的事件中心命名空间来说最重要）。
     | 命名空间名称 | 唯一的命名空间名称 | 选择用于标识命名空间的唯一名称。 例如，mytestnamespace  。 域名 servicebus.windows.net  将追加到所提供的名称。 该名称只能包含字母、数字和连字符。 名称必须以字母开头，并且必须以字母或数字结尾。 值长度必须介于 6 到 50 个字符之间。
     | 事件中心名称 | test-hub  | 事件中心位于命名空间下，该命名空间提供唯一的范围容器。 事件中心名称在命名空间中必须唯一。 |
     | 使用者组名称 | test-group  | 使用者组允许多个使用应用程序各自具有事件流的单独视图。 |
@@ -187,7 +187,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     ![消息结果集](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 策略配置为 5 分钟，默认情况下，因此可能会出现延迟。 请参阅[批处理策略](/azure/kusto/concepts/batchingpolicy)聚合选项。 请参阅[流式处理策略](/azure/kusto/concepts/streamingingestionpolicy)用于引入与聚合函数。
+    > * Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 默认情况下, 该策略配置为5分钟或 500 MB 的数据, 因此可能会遇到延迟。 请参阅[批处理策略](/azure/kusto/concepts/batchingpolicy)以获取聚合选项。 
+    > * 事件中心引入包括10秒或 1 MB 的事件中心响应时间。 
+    > * 将表配置为支持流式传输, 并在响应时间中删除 lag。 请参阅[流式处理策略](/azure/kusto/concepts/streamingingestionpolicy)。 
 
 ## <a name="clean-up-resources"></a>清理资源
 

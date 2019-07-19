@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 640d36649f59842a740b4c12b4e3ab39a6d98c13
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c2bff5749ab833efcb252d3fafb5d38cfbc8691e
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050948"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310280"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -31,7 +31,7 @@ ms.locfileid: "67050948"
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>可以使用流量管理器路由什么类型的流量？
 如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器终结点可以是任何面向 Internet 的 Azure 内部或外部托管的服务。 因此，流量管理器可以将源自公共 Internet 的流量路由到一组也面向 Internet 的终结点。 如果终结点位于专用网络内部（例如 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md#internalloadbalancer)的内部版本），或用户从此类内部网络发出 DNS 请求，则无法使用流量管理器来路由此流量。
 
-### <a name="does-traffic-manager-support-sticky-sessions"></a>流量管理器是否支持“粘滞”会话？
+### <a name="does-traffic-manager-support-sticky-sessions"></a>流量管理器是否支持 "粘滞" 会话？
 
 如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 它使用 DNS 响应将客户端引导到相应的服务终结点。 客户端直接连接到服务终结点，而不是通过流量管理器连接。 因此，流量管理器看不到客户端与服务器之间的 HTTP 流量。
 
@@ -57,9 +57,9 @@ ms.locfileid: "67050948"
 
 如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 完成 DNS 查找以后，客户端会直接连接到应用程序终结点，不通过流量管理器进行连接。 因此，连接可以使用任何应用程序协议。 如果选择 TCP 作为监视协议，则无需使用任何应用程序协议，就可以完成对流量管理器终结点运行状况的监视。 如果选择使用应用程序协议来验证运行状况，则要求终结点能够响应 HTTP 或 HTTPS GET 请求。
 
-### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>是否可以对“裸”域名使用流量管理器？
+### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>是否可以使用流量管理器和 "裸" 域名？
 
-是的。 若要了解如何创建域名称顶点处以引用 Azure 流量管理器配置文件的别名记录，请参阅[配置以支持顶点域名使用流量管理器的别名记录](../dns/tutorial-alias-tm.md)。
+是的。 若要了解如何创建域名顶点的别名记录以引用 Azure 流量管理器配置文件, 请参阅[使用流量管理器配置别名记录以支持顶点域名](../dns/tutorial-alias-tm.md)。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>处理 DNS 查询时流量管理器是否会考虑客户端子网地址？ 
 
@@ -406,9 +406,9 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 可以，有一种例外情况：多值类型的配置文件无法成为嵌套配置文件中的父级配置文件。
 
-### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>我在我的流量管理器配置文件中停止 web 应用程序终结点，但即使重启它未收到任何流量。 如何解决此问题？
+### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>我停止了流量管理器配置文件中的 web 应用程序终结点, 但在重新启动后, 即使未收到任何流量, 也是如此。 如何解决此问题？
 
-Azure web 应用程序终结点停止时流量管理器停止检查其运行状况，并仅在检测到该终结点已重启后重新启动运行状况检查。 若要防止这种延迟，请在流量管理器配置文件中禁用该终结点，然后在重启该终结点后将其重新启用。
+当 Azure web 应用程序终结点停止时, 流量管理器将停止检查其运行状况, 并在检测到终结点重新启动后重新启动运行状况检查。 若要防止这种延迟，请在流量管理器配置文件中禁用该终结点，然后在重启该终结点后将其重新启用。
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>如果应用程序不支持 HTTP 或 HTTPS，是否仍可使用流量管理器？
 
@@ -484,7 +484,7 @@ Azure web 应用程序终结点停止时流量管理器停止检查其运行状�
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>嵌套式配置文件是否会造成性能影响？
 
-不。 使用嵌套式配置文件不会造成性能影响。
+否。 使用嵌套式配置文件不会造成性能影响。
 
 在处理每个 DNS 查询时，流量管理器名称服务器会在内部遍历配置文件层次结构。 对父配置文件执行 DNS 查询可能会收到终结点来自子配置文件的 DNS 响应。 不管使用的是单个配置文件还是嵌套式配置文件，都只使用一条 CNAME 记录。 不需要在层次结构中为每个配置文件创建一条 CNAME 记录。
 

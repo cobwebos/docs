@@ -3,16 +3,17 @@ title: 升级经典 Azure 容器注册表
 description: 通过升级非托管的经典容器注册表，利用基本、标准和高级托管容器注册表的扩展功能集。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: a5099feee34eb5497b68987485412e29ad5d5365
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 05c227e7de078c6bb371049f16e191598b9ca4e5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480299"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310378"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>升级经典容器注册表
 
@@ -31,7 +32,7 @@ Azure 容器注册表 (ACR) 分为多个服务层级（[称为“SKU”](contain
 托管注册表存储有以下优点：
 
 * 容器映像[静态加密](container-registry-storage.md#encryption-at-rest)。
-* 映像存储使用[异地冗余存储](container-registry-storage.md#geo-redundant-storage)，以确保备份使用多区域复制 (仅高级 SKU) 映像。
+* 映像是使用[异地冗余存储](container-registry-storage.md#geo-redundant-storage)进行存储的, 可确保使用多区域复制来备份映像 (仅适用于高级 SKU)。
 * 可以自由地[在 SKU 之间切换](container-registry-skus.md#changing-skus)，在选择更高级 SKU 时支持更大吞吐量。 对于每个 SKU，ACR 都可以用户需求增加时满足吞吐量需求。
 * 注册表及其存储具有统一的安全模型，可以简化权限管理。 只需为容器注册表管理权限，不需为单独的存储帐户管理权限。
 
@@ -52,11 +53,11 @@ Azure 容器注册表 (ACR) 分为多个服务层级（[称为“SKU”](contain
 
 ## <a name="how-to-upgrade"></a>如何升级
 
-可以通过多种方式将非托管的经典注册表升级为某个托管的 SKU。 以下部分介绍 [Azure CLI][azure-cli] 和 [Azure 门户][azure-portal]的使用过程。
+可以通过多种方式将非托管的经典注册表升级为某个托管的 SKU。 在以下部分中, 我们将介绍使用[Azure CLI][azure-cli] and the [Azure portal][azure-portal]的过程。
 
 ## <a name="upgrade-in-azure-cli"></a>在 Azure CLI 中升级
 
-若要在 Azure CLI 中升级经典注册表，请执行 [az acr update][az-acr-update] 命令，并为注册表指定新的 SKU。 在以下示例中，名为 *myclassicregistry* 的经典注册表将升级为高级 SKU：
+若要在 Azure CLI 中升级经典注册表, 请执行[az acr update][az-acr-update]命令并为注册表指定新的 SKU。 在以下示例中，名为 *myclassicregistry* 的经典注册表将升级为高级 SKU：
 
 ```azurecli-interactive
 az acr update --name myclassicregistry --sku Premium
@@ -89,7 +90,7 @@ az acr update --name myclassicregistry --sku Premium
 
 `Cannot update the registry SKU due to reason: Registry size 12936251113 bytes exceeds the quota value 10737418240 bytes for SKU Basic. The suggested SKU is Standard.`
 
-如果收到类似的错误，请再次运行 [az acr update][az-acr-update] 命令并指定建议的 SKU，即可以容纳映像的下一最高级别的 SKU。
+如果收到类似错误, 请再次运行[az acr update][az-acr-update]命令并指定建议的 sku, 这是可容纳你的映像的下一个最高级别的 sku。
 
 ## <a name="upgrade-in-azure-portal"></a>在 Azure 门户中升级
 

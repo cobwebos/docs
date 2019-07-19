@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 了解如何为公共基本负载均衡器启用警报事件以及探测运行状况日志记录
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,15 +12,15 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
-ms.author: kumud
-ms.openlocfilehash: 0d7c792c5230a5d82e97f4598a5dcfb864cead74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 1995ad5e8179fdee11e960c2ad0e7c03602ebd31
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861131"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274803"
 ---
-# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>公共基本负载均衡器的 azure Monitor 日志
+# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>用于公共基本负载均衡器的 Azure Monitor 日志
 
 >[!IMPORTANT] 
 >Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-overview.md)，该概述通过 Azure Monitor 中的多维指标公开遥测数据。
@@ -32,7 +32,7 @@ ms.locfileid: "60861131"
 * **运行状况探测日志：** 可以使用此日志查看运行状况探测器检测到的问题，例如后端池中由于运行状况探测失败未从负载均衡器接收请求的实例数。 当运行状况探测状态发生更改时，将写入此日志。
 
 > [!IMPORTANT]
-> Azure 监视器将记录当前仅适用于公共基本负载均衡器。 日志仅适用于在资源管理器部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+> Azure Monitor 日志当前仅适用于公共基本负载均衡器。 日志仅适用于在资源管理器部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
 
 ## <a name="enable-logging"></a>启用日志记录
 
@@ -53,7 +53,7 @@ ms.locfileid: "60861131"
 5. 在“诊断”窗格中，在“状态”下选择“开”。   
 6. 单击“存储帐户”。 
 7. 在“日志”下，选择现有存储帐户或创建新存储帐户。  使用滑块来确定事件数据值得在事件日志中存储的天数。 
-8. 单击“ **保存**”。
+8. 单击“保存”  。
 
 诊断将保存在指定存储帐户的表存储中。 如果日志未保存，这是因为没有生成相关日志。
 
@@ -64,7 +64,7 @@ ms.locfileid: "60861131"
 
 ## <a name="audit-log"></a>审核日志
 
-默认情况下会生成审核日志。 日志在 Azure 的事件日志存储区中保留 90 天。 通过阅读 [查看事件和审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md) 一文可了解有关这些日志的详细信息。
+默认情况下会生成审核日志。 日志在 Azure 的事件日志存储区中保留 90 天。 通过阅读[查看事件和审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)一文可了解有关这些日志的详细信息。
 
 ## <a name="alert-event-log"></a>警报事件日志
 
@@ -146,7 +146,7 @@ JSON 输出在属性字段显示了探测运行状况的基本信息。 *dipDown
 ## <a name="additional-resources"></a>其他资源
 
 * [使用 Power BI 直观显示 Azure 审核日志](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)博客文章。
-* [查看和分析 Power BI 中的 Azure 审核日志及更多内容](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) 博客文章。
+* [查看和分析 Power BI 中的 Azure 审核日志及更多内容](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)博客文章。
 
 ## <a name="next-steps"></a>后续步骤
 

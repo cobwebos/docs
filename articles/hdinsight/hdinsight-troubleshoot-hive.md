@@ -4,15 +4,15 @@ description: 获取有关使用 Apache Hive 和 Azure HDInsight 的常见问题�
 keywords: Azure HDInsight, Hive, 常见问题解答, 故障排除指南, 常见问题
 ms.service: hdinsight
 author: dharmeshkakadia
-ms.author: dharmeshkakadia
+ms.author: dkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 43886a132f2f3cf75f0ec7a0b2dc0680a0f69589
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91e6803e0a1302a33a3bf176ad84d0b0e0c8c5b6
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712482"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875930"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hive 进行故障排除
 
@@ -170,7 +170,7 @@ ms.locfileid: "64712482"
 [使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-### <a name="see-also"></a>另请参阅
+### <a name="see-also"></a>请参阅
 [使用 Azure HDInsight 进行故障排除](hdinsight-troubleshoot-guide.md)
 
 

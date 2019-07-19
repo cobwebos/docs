@@ -7,13 +7,13 @@ manager: nunoc
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: 496fef7cfd93004e77a710942cffabbf23d6b29a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: nunoc
+ms.openlocfilehash: 1c27b85aca45f25354d6351c1a335b14cb9bc446
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937703"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297808"
 ---
 # <a name="support-for-the-marketplace"></a>市场的支持  
 以下是市场的支持选项列表。  
@@ -22,7 +22,7 @@ ms.locfileid: "64937703"
 
 ## <a name="onboarding"></a>登记
 
-与 Microsoft 开具票证[marketplace 发布者支持](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)问题载入和开始使用，或与 Microsoft[合作伙伴支持](https://partner.microsoft.com/support)如果您有关于 Microsoft 合作伙伴网络问题。
+如果你对 Microsoft 合作伙伴网络有疑问, 请向 Microsoft [marketplace 发布者](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)提供有关载入和入门问题的支持, 或者与 microsoft[合作伙伴支持](https://partner.microsoft.com/support)部门合作。
 
 ## <a name="cloud-partner-portal"></a>云合作伙伴门户  
 

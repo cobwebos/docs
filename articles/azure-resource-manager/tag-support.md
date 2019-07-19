@@ -6,37 +6,37 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4f1bc1415fbb875120d7b64128cae69e1e3f442c
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 72bb11cd064c90c2bbe1e9e6452dcbf07fe37817
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339838"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304868"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
-本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。 标记为的列**支持标记**指示资源类型是否具有标记的属性。 标记为的列**成本报表中的标记**指示是否该资源类型会将标记传递给成本报表。
+本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。 标记为**支持标记**的列指示资源类型是否具有标记的属性。 标记为 **"成本报表中的标记**" 的列指示该资源类型是否将标记传递给成本报告。
 
 若要以逗号分隔值文件的形式获取同一数据，请下载 [tag-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv)。
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | DomainServices | 是 | 是 |
 | DomainServices/oucontainer | 否 | 否 |
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | diagnosticSettings | 否 |  否 |
 | diagnosticSettingsCategories | 否 |  否 |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | supportProviders | 否 |  否 |
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | aadsupportcases | 否 |  否 |
 | addsservices | 否 |  否 |
@@ -48,7 +48,7 @@ ms.locfileid: "67339838"
 | services | 否 |  否 |
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | 配置 | 否 |  否 |
 | generateRecommendations | 否 |  否 |
@@ -56,7 +56,7 @@ ms.locfileid: "67339838"
 | 禁止显示 | 否 |  否 |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | actionRules | 否 |  否 |
 | alerts | 否 |  否 |
@@ -68,24 +68,24 @@ ms.locfileid: "67339838"
 | smartGroups | 否 |  否 |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | servers | 是 | 是 |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | reportFeedback | 否 |  否 |
 | 服务 | 是 | 是 |
 | validateServiceName | 否 |  否 |
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | attestationProviders | 否 |  否 |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | classicAdministrators | 否 |  否 |
 | denyAssignments | 否 |  否 |
@@ -100,7 +100,7 @@ ms.locfileid: "67339838"
 | roleDefinitions | 否 |  否 |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | automationAccounts | 是 | 是 |
 | automationAccounts/configurations | 是 | 是 |
@@ -110,7 +110,7 @@ ms.locfileid: "67339838"
 | automationAccounts/webhooks | 否 |  否 |
 
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | environments | 否 |  否 |
 | environments/accounts | 否 |  否 |
@@ -118,24 +118,24 @@ ms.locfileid: "67339838"
 | environments/accounts/namespaces/configurations | 否 |  否 |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | b2cDirectories | 是 | 否 |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | registrations | 是 | 是 |
 | registrations/customerSubscriptions | 否 |  否 |
 | registrations/products | 否 |  否 |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | batchAccounts | 是 | 是 |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | billingAccounts | 否 |  否 |
 | billingAccounts/billingProfiles | 否 |  否 |
@@ -189,18 +189,18 @@ ms.locfileid: "67339838"
 | usagePlans | 否 |  否 |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | mapApis | 是 | 是 |
 | updateCommunicationPreference | 否 |  否 |
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | BizTalk | 是 | 是 |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | blueprintAssignments | 否 |  否 |
 | blueprintAssignments/assignmentOperations | 否 |  否 |
@@ -211,20 +211,20 @@ ms.locfileid: "67339838"
 | blueprints/versions/artifacts | 否 |  否 |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | botServices | 是 | 是 |
 | botServices/channels | 否 |  否 |
 | botServices/connections | 否 |  否 |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | Redis | 是 | 是 |
 | RedisConfigDefinition | 否 |  否 |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | appliedReservations | 否 |  否 |
 | calculatePrice | 否 |  否 |
@@ -243,24 +243,24 @@ ms.locfileid: "67339838"
 | validateReservationOrder | 否 |  否 |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | edgenodes | 否 |  否 |
-| 配置文件 | 是 | 是 |
+| profiles | 是 | 是 |
 | profiles/endpoints | 是 | 是 |
 | profiles/endpoints/customdomains | 否 |  否 |
 | profiles/endpoints/origins | 否 |  否 |
 | validateProbe | 否 |  否 |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | certificateOrders | 是 | 是 |
 | certificateOrders/certificates | 否 |  否 |
 | validateCertificateRegistrationInformation | 否 |  否 |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | capabilities | 否 |  否 |
 | domainNames | 否 |  否 |
@@ -279,12 +279,12 @@ ms.locfileid: "67339838"
 | virtualMachines/diagnosticSettings | 否 |  否 |
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | classicInfrastructureResources | 否 |  否 |
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | capabilities | 否 |  否 |
 | expressRouteCrossConnections | 否 |  否 |
@@ -298,7 +298,7 @@ ms.locfileid: "67339838"
 | virtualNetworks/virtualNetworkPeerings | 否 |  否 |
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | capabilities | 否 |  否 |
 | disks | 否 |  否 |
@@ -314,18 +314,18 @@ ms.locfileid: "67339838"
 | vmImages | 否 |  否 |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | accounts | 是 | 是 |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | RateCard | 否 |  否 |
 | UsageAggregates | 否 |  否 |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | availabilitySets | 是 | 是 |
 | disks | 是 | 是 |
@@ -346,7 +346,7 @@ ms.locfileid: "67339838"
 | virtualMachineScaleSets/virtualMachines/networkInterfaces | 否 |  否 |
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | AggregatedCost | 否 |  否 |
 | 余额 | 否 |  否 |
@@ -364,18 +364,18 @@ ms.locfileid: "67339838"
 | ReservationRecommendations | 否 |  否 |
 | ReservationSummaries | 否 |  否 |
 | ReservationTransactions | 否 |  否 |
-| 标记 | 否 |  否 |
+| Tags | 否 |  否 |
 | 术语 | 否 |  否 |
 | UsageDetails | 否 |  否 |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | containerGroups | 是 | 是 |
 | serviceAssociationLinks | 否 |  否 |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | registries | 是 | 是 |
 | registries/builds | 否 |  否 |
@@ -401,24 +401,24 @@ ms.locfileid: "67339838"
 | registries/webhooks/ping | 否 |  否 |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | containerServices | 是 | 是 |
 | managedClusters | 是 | 是 |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | 服务 | 是 | 是 |
 | updateCommunicationPreference | 否 |  否 |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | accounts | 是 | 是 |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | 警报 | 否 |  否 |
 | BillingAccounts | 否 |  否 |
@@ -432,7 +432,7 @@ ms.locfileid: "67339838"
 | 报告 | 否 |  否 |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | hubs | 是 | 是 |
 | hubs/authorizationPolicies | 否 |  否 |
@@ -449,33 +449,33 @@ ms.locfileid: "67339838"
 | hubs/widgetTypes | 否 |  否 |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | jobs | 是 | 是 |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | DataBoxEdgeDevices | 是 | 是 |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
-| 工作区 | 是 | 否 |
+| workspaces | 是 | 否 |
 | workspaces/virtualNetworkPeerings | 否 |  否 |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | catalogs | 是 | 是 |
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | connectionManagers | 是 | 是 |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | dataFactories | 是 | 否 |
 | dataFactories/diagnosticSettings | 否 |  否 |
@@ -484,7 +484,7 @@ ms.locfileid: "67339838"
 | factories/integrationRuntimes | 否 |  否 |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | accounts | 是 | 是 |
 | accounts/dataLakeStoreAccounts | 否 |  否 |
@@ -492,34 +492,34 @@ ms.locfileid: "67339838"
 | accounts/storageAccounts/containers | 否 |  否 |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | accounts | 是 | 是 |
 | accounts/eventGridFilters | 否 |  否 |
 | accounts/firewallRules | 否 |  否 |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | services | 是 | 是 |
 | services/projects | 是 | 是 |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | servers | 是 | 是 |
 | servers/recoverableServers | 否 |  否 |
 | servers/virtualNetworkRules | 否 |  否 |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | servers | 是 | 是 |
 | servers/recoverableServers | 否 |  否 |
 | servers/virtualNetworkRules | 否 |  否 |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | servers | 是 | 是 |
 | servers/advisors | 否 |  否 |
@@ -530,7 +530,7 @@ ms.locfileid: "67339838"
 | servers/waitStatistics | 否 |  否 |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | IotHubs | 是 | 是 |
 | IotHubs/eventGridFilters | 否 |  否 |
@@ -538,12 +538,12 @@ ms.locfileid: "67339838"
 | usages | 否 |  否 |
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | 控制器 | 是 | 是 |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | labs | 是 | 是 |
 | labs/serviceRunners | 是 | 是 |
@@ -551,13 +551,13 @@ ms.locfileid: "67339838"
 | schedules | 是 | 是 |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | databaseAccountNames | 否 |  否 |
 | databaseAccounts | 是 | 是 |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | domains | 是 | 是 |
 | domains/domainOwnershipIdentifiers | 否 |  否 |
@@ -566,14 +566,14 @@ ms.locfileid: "67339838"
 | validateDomainRegistrationInformation | 否 |  否 |
 
 ## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | lcsprojects | 否 |  否 |
 | lcsprojects/clouddeployments | 否 |  否 |
 | lcsprojects/connectors | 否 |  否 |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | domains | 是 | 否 |
 | 域/主题 | 否 |  否 |
@@ -583,7 +583,7 @@ ms.locfileid: "67339838"
 | topicTypes | 否 |  否 |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | clusters | 是 | 否 |
 | namespaces | 是 | 否 |
@@ -594,13 +594,13 @@ ms.locfileid: "67339838"
 | namespaces/eventhubs/consumergroups | 否 |  否 |
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | features | 否 |  否 |
 | providers | 否 |  否 |
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | enroll | 否 |  否 |
 | galleryitems | 否 |  否 |
@@ -616,29 +616,29 @@ ms.locfileid: "67339838"
 | retrieveresourcesbyid | 否 |  否 |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | guestConfigurationAssignments | 否 |  否 |
 | software | 否 |  否 |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | hanainstances | 是 |  是 |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | clusters | 是 | 是 |
 | clusters/applications | 否 |  否 |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | jobs | 是 | 是 |
 
 ## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | labelGroups | 否 |  否 |
 | labelGroups/labels | 否 |  否 |
@@ -647,7 +647,7 @@ ms.locfileid: "67339838"
 | labelGroups/labels/subLabels/conditions | 否 |  否 |
 
 ## <a name="microsoftinsights"></a>microsoft.insights
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | actiongroups | 是 | 是 |
 | activityLogAlerts | 是 | 是 |
@@ -679,23 +679,23 @@ ms.locfileid: "67339838"
 | workbooks | 是 | 是 |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | diagnosticSettings | 否 |  否 |
 | diagnosticSettingsCategories | 否 |  否 |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | IoTApps | 是 | 是 |
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | 图形 | 是 | 是 |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | deletedVaults | 否 |  否 |
 | vaults | 是 | 是 |
@@ -703,7 +703,7 @@ ms.locfileid: "67339838"
 | vaults/secrets | 否 |  否 |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | clusters | 是 | 是 |
 | clusters/databases | 否 |  否 |
@@ -711,41 +711,41 @@ ms.locfileid: "67339838"
 | clusters/databases/eventhubconnections | 否 |  否 |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | labaccounts | 是 | 是 |
 | users | 否 |  否 |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | accounts | 是 | 是 |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | accounts | 是 | 是 |
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | logs | 否 |  否 |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | integrationAccounts | 是 | 是 |
 | workflows | 是 | 是 |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | commitmentPlans | 是 | 是 |
 | webServices | 是 | 是 |
 | 工作区 | 是 | 是 |
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | accounts | 是 | 是 |
 | accounts/workspaces | 是 | 是 |
@@ -755,24 +755,24 @@ ms.locfileid: "67339838"
 | teamAccounts/workspaces/projects | 是 | 是 |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | accounts | 是 | 是 |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
-| 工作区 | 是 | 是 |
+| workspaces | 是 | 是 |
 | workspaces/computes | 否 |  否 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | 标识 | 否 |  否 |
 | userAssignedIdentities | 是 | 
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | getEntities | 否 |  否 |
 | managementGroups | 否 |  否 |
@@ -781,13 +781,13 @@ ms.locfileid: "67339838"
 | tenantBackfillStatus | 否 |  否 |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | accounts | 是 | 是 |
 | accounts/eventGridFilters | 否 |  否 |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | offers | 否 |  否 |
 | offerTypes | 否 |  否 |
@@ -801,19 +801,19 @@ ms.locfileid: "67339838"
 | products | 否 |  否 |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | classicDevServices | 是 | 是 |
 | updateCommunicationPreference | 否 |  否 |
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | 协议 | 否 |  否 |
 | offertypes | 否 |  否 |
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | mediaservices | 是 | 是 |
 | mediaservices/accountFilters | 否 |  否 |
@@ -833,12 +833,12 @@ ms.locfileid: "67339838"
 | mediaservices/transforms/jobs | 否 |  否 |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | projects | 是 | 是 |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | applicationGateways | 是 | 否 |
 | applicationSecurityGroups | 是 | 是 |
@@ -864,8 +864,8 @@ ms.locfileid: "67339838"
 | dnszones/TXT | 否 |  否 |
 | expressRouteCircuits | 是  | 否 |
 | expressRouteServiceProviders | 否 |  否 |
-| frontdoors | 是的但限于 (请参阅[下面的备注](#frontdoor)) | 是 |
-| frontdoorWebApplicationFirewallPolicies | 是的但限于 (请参阅[下面的备注](#frontdoor)) | 是 |
+| frontdoors | 是, 但受限制 (请参阅[下面的注释](#frontdoor)) | 是 |
+| frontdoorWebApplicationFirewallPolicies | 是, 但受限制 (请参阅[下面的注释](#frontdoor)) | 是 |
 | getDnsResourceReference | 否 |  否 |
 | interfaceEndpoints | 是 | 是 |
 | internalNotify | 否 |  否 |
@@ -890,7 +890,7 @@ ms.locfileid: "67339838"
 | trafficmanagerprofiles | 是 | 是 |
 | trafficmanagerprofiles/heatMaps | 否 |  否 |
 | virtualHubs | 是 | 是 |
-| virtualNetworkGateways | 是 | 否 |
+| virtualNetworkGateways | 是 | 是 |
 | virtualNetworks | 是 | 是 |
 | virtualNetworks/subnets | 否 |  否 |
 | virtualNetworkTaps | 是 | 是 |
@@ -901,35 +901,35 @@ ms.locfileid: "67339838"
 
 <a id="frontdoor" />
 
-对于 Azure 第一道防线服务，可以将标记应用时创建资源，但更新或添加标记当前不支持。
+对于 Azure 前门服务, 可以在创建资源时应用标记, 但目前不支持更新或添加标记。
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | namespaces | 是 | 否 |
 | namespaces/notificationHubs | 是 | 否 |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | devices | 否 |  否 |
 | linkTargets | 否 |  否 |
 | storageInsightConfigs | 否 |  否 |
-| 工作区 | 是 | 是 |
+| workspaces | 是 | 是 |
 | workspaces/dataSources | 否 |  否 |
 | workspaces/linkedServices | 否 |  否 |
 | workspaces/query | 否 |  否 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | managementassociations | 否 |  否 |
 | managementconfigurations | 是 | 是 |
-| 解决方案 | 是 | 是 |
+| solutions | 是 | 是 |
 | 视图 | 是 | 是 |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | policyEvents | 否 |  否 |
 | policyStates | 否 |  否 |
@@ -937,35 +937,35 @@ ms.locfileid: "67339838"
 | remediations | 否 |  否 |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | consoles | 否 |  否 |
 | dashboards | 是 | 是 |
 | userSettings | 否 |  否 |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | workspaceCollections | 是 | 是 |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | capacities | 是 | 是 |
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | accounts | 是 | 是 |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | backupProtectedItems | 否 |  否 |
 | vaults | 是 | 是 |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | namespaces | 是 | 是 |
 | namespaces/authorizationrules | 否 |  否 |
@@ -975,13 +975,13 @@ ms.locfileid: "67339838"
 | namespaces/wcfrelays/authorizationrules | 否 |  否 |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | 资源 | 否 |  否 |
 | subscriptionsStatus | 否 |  否 |
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | availabilityStatuses | 否 |  否 |
 | childAvailabilityStatuses | 否 |  否 |
@@ -991,7 +991,7 @@ ms.locfileid: "67339838"
 | 通知 | 否 |  否 |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | deployments | 否 |  否 |
 | deployments/operations | 否 |  否 |
@@ -1010,25 +1010,25 @@ ms.locfileid: "67339838"
 | tenants | 否 |  否 |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | 服务 | 是 | 是 |
 | saasresources | 否 |  否 |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | flows | 是 | 是 |
 | jobcollections | 是 | 是 |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | resourceHealthMetadata | 否 |  否 |
 | searchServices | 是 | 是 |
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | advancedThreatProtectionSettings | 否 |  否 |
 | alerts | 否 |  否 |
@@ -1063,13 +1063,13 @@ ms.locfileid: "67339838"
 | workspaceSettings | 否 |  否 |
 
 ## <a name="microsoftsecuritygraph"></a>Microsoft.SecurityGraph
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | diagnosticSettings | 否 |  否 |
 | diagnosticSettingsCategories | 否 |  否 |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | namespaces | 是 | 否 |
 | namespaces/authorizationrules | 否 |  否 |
@@ -1084,13 +1084,13 @@ ms.locfileid: "67339838"
 | premiumMessagingRegions | 否 |  否 |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | clusters | 是 | 是 |
 | clusters/applications | 否 |  否 |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | 服务 | 是 | 是 |
 | gateways | 是 | 是 |
@@ -1099,12 +1099,12 @@ ms.locfileid: "67339838"
 | volumes | 是 | 是 |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | SignalR | 是 | 是 |
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | applianceDefinitions | 是 | 是 |
 | appliances | 是 | 是 |
@@ -1113,7 +1113,7 @@ ms.locfileid: "67339838"
 | jitRequests | 是 | 是 |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | managedInstances | 是 | 是 |
 | managedInstances/databases | 是（见下方备注） | 是 |
@@ -1141,14 +1141,14 @@ ms.locfileid: "67339838"
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | SqlVirtualMachineGroups | 是 | 是 |
 | SqlVirtualMachineGroups/AvailabilityGroupListeners | 否 |  否 |
 | SqlVirtualMachines | 是 | 是 |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | storageAccounts | 是 | 是 |
 | storageAccounts/blobServices | 否 |  否 |
@@ -1159,7 +1159,7 @@ ms.locfileid: "67339838"
 | usages | 否 |  否 |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | storageSyncServices | 是 | 是 |
 | storageSyncServices/registeredServers | 否 |  否 |
@@ -1169,12 +1169,12 @@ ms.locfileid: "67339838"
 | storageSyncServices/workflows | 否 |  否 |
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | managers | 是 | 是 |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | streamingjobs | 是（见下方备注） | 是 |
 | streamingjobs/diagnosticSettings | 否 |  否 |
@@ -1183,25 +1183,25 @@ ms.locfileid: "67339838"
 > Streamingjobs 运行时无法添加标记。 停止要添加标记的资源。
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | CreateSubscription | 否 |  否 |
 | SubscriptionDefinitions | 否 |  否 |
 | SubscriptionOperations | 否 |  否 |
 
 ## <a name="microsoftsupport"></a>microsoft.support
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | supporttickets | 否 |  否 |
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | providerRegistrations | 是 | 是 |
 | 资源 | 是 | 是 |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | environments | 是 | 否 |
 | environments/accessPolicies | 否 |  否 |
@@ -1209,14 +1209,14 @@ ms.locfileid: "67339838"
 | environments/referenceDataSets | 是 | 否 |
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | 帐户 | 是 | 是 |
 | account/extension | 是 | 是 |
 | account/project | 是 | 是 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | apiManagementAccounts | 否 |  否 |
 | apiManagementAccounts/apiAcls | 否 |  否 |
@@ -1263,18 +1263,18 @@ ms.locfileid: "67339838"
 | verifyHostingEnvironmentVnet | 否 |  否 |
 
 ## <a name="microsoftwindowsdefenderatp"></a>Microsoft.WindowsDefenderATP
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | diagnosticSettings | 否 |  否 |
 | diagnosticSettingsCategories | 否 |  否 |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | DeviceServices | 是 | 是 |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
-| 资源类型 | 支持标记 | 在成本报表中标记 |
+| 资源类型 | 支持标记 | 成本报表中的标记 |
 | ------------- | ----------- | ----------- |
 | components | 否 |  否 |
 | componentsSummary | 否 |  否 |

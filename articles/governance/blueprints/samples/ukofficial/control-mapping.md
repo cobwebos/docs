@@ -1,6 +1,6 @@
 ---
-title: 示例-英国官方和英国 NHS 蓝图 — 控件映射
-description: 英国官方和英国 NHS 蓝图示例控件映射。
+title: 示例-英国官方和英国 NHS 蓝图-控件映射
+description: 控制英国官方和英国 NHS 蓝图示例的映射。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,163 +8,163 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 01a8e104f6d590113784db28e4bfde849d78b15f
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 945898105aab7261ee494a86aeff10337599feb3
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491916"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226008"
 ---
-# <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>英国官方和英国 NHS 蓝图示例控件映射
+# <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>控制英国官方和英国 NHS 蓝图示例的映射
 
-以下文章详细介绍了英国官方和英国 NHS 蓝图示例如何映射到英国官方和英国 NHS 控件。 有关控件的详细信息，请参阅[英国官方](https://www.gov.uk/government/publications/government-security-classifications)。
+以下文章详细介绍了英国官方和英国 NHS 蓝图示例如何映射到英国官方和英国 NHS 控件。 有关控件的详细信息, 请参阅[UK 官方](https://www.gov.uk/government/publications/government-security-classifications)。
 
-以下映射到所**英国官方**并**英国 NHS**控件。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择 **[预览版]审核英国官方和英国 NHS 控制和部署特定的 VM 扩展以支持审核要求**内置策略计划。
+以下映射适用于**英国官方**和**英国 NHS**控件。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后, 找到并选择 "  **\[预览\]审核 UK 官方和英国 NHS 控件并部署特定的 VM 扩展", 以支持审核要求**内置策略计划。
 
-## <a name="1-data-in-transit-protection"></a>1 个数据在传输保护
+## <a name="1-data-in-transit-protection"></a>1传输防护中的数据
 
-蓝图可帮助你确保与 Azure 服务的信息传输是安全的通过将分配[Azure 策略](../../../policy/overview.md)审核不安全连接到存储帐户和 Redis 缓存的定义。
+该蓝图通过分配用于审核与存储帐户和 Redis 缓存的不安全连接的[Azure 策略](../../../policy/overview.md)定义, 帮助确保信息通过 azure 服务进行传输。
 
-- 应启用仅安全连接到你的 Redis 缓存
-- 应启用安全传输到存储帐户
+- 只应启用与 Redis 缓存的安全连接
+- 应该启用安全传输到存储帐户
 
 ## <a name="23-data-at-rest-protection"></a>2.3 静态数据保护
 
-此蓝图，帮助您强化您的加密控件使用的策略通过将分配[Azure 策略](../../../policy/overview.md)定义来强制实施特定的加密控制和审核使用弱加密设置。
-了解 Azure 资源中的哪些位置采用欠佳的加密配置有助于采取纠正措施，以确保根据信息安全策略配置资源。 具体而言，此蓝图分配的策略要求加密的 data lake 存储帐户;需要对 SQL 数据库; 透明数据加密审核存储帐户、 SQL 数据库、 虚拟机磁盘和自动化帐户的变量; 缺少加密审核不安全连接到存储帐户和 Redis 缓存中;审核弱的虚拟机密码加密;总结和审核未加密的 Service Fabric 通信。
+此蓝图通过分配[Azure 策略](../../../policy/overview.md)定义 (强制执行特定的如何控件并审核弱加密设置的使用), 帮助你在使用如何控件时执行策略。
+了解 Azure 资源中的哪些位置采用欠佳的加密配置有助于采取纠正措施，以确保根据信息安全策略配置资源。 具体而言, 此蓝图分配的策略需要 data lake 存储帐户的加密;需要对 SQL 数据库进行透明数据加密;审核存储帐户、SQL 数据库、虚拟机磁盘和自动化帐户变量上缺少的加密;审核到存储帐户和 Redis 缓存的不安全连接;审核弱虚拟机密码加密;和审核未加密 Service Fabric 通信。
 
-- 监视 Azure 安全中心中的未加密的 SQL 数据库
+- 在 Azure 安全中心监视未加密的 SQL 数据库
 - 应在虚拟机上应用磁盘加密
-- 自动化帐户的变量应进行加密
-- 应启用安全传输到存储帐户
-- Service Fabric 群集都应设置为 EncryptAndSign ClusterProtectionLevel 属性
-- 应启用对 SQL 数据库透明数据加密
+- 自动化帐户变量应进行加密
+- 应该启用安全传输到存储帐户
+- Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign
+- 应启用 SQL 数据库上的透明数据加密
 - 部署 SQL DB 透明数据加密
-- 需要对 Data Lake Store 帐户进行加密
-- 允许的位置 （已硬编码为"英国南部"和"英国西部"）
-- 允许的资源组的位置 （已硬编码为"英国南部"和"英国西部"）
+- Data Lake Store 帐户上需要加密
+- 允许的位置 (已硬编码为 "英国南部" 和 "英国西部")
+- 允许的资源组位置 (已硬编码为 "英国南部" 和 "英国西部")
 
 ## <a name="52-vulnerability-management"></a>5.2 漏洞管理
 
-此蓝图可帮助你通过将分配管理信息系统漏洞[Azure 策略](../../../policy/overview.md)监视缺失的 endpoint protection，缺少系统更新、 操作系统系统漏洞、 SQL 的定义漏洞和虚拟机的漏洞。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。
+此蓝图通过分配用于监视缺少的 endpoint protection、缺少系统更新、操作系统漏洞、SQL 漏洞和虚拟的[Azure 策略](../../../policy/overview.md)定义, 帮助你管理信息系统漏洞计算机漏洞。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。
 
 - 监视 Azure 安全中心 Endpoint Protection 的缺失情况
 - 应在计算机上安装系统更新
-- 在计算机上的安全配置中的漏洞应采取修正措施
-- 在 SQL 数据库上的漏洞应采取修正措施
-- 应通过漏洞评估解决方案修正漏洞
+- 应修复计算机上安全配置中的漏洞
+- 应修正 SQL 数据库上的漏洞
+- 应通过漏洞评估解决方案修复漏洞
 
-## <a name="53-protective-monitoring"></a>5.3 保护监视
+## <a name="53-protective-monitoring"></a>5.3 保护性监视
 
-此蓝图可帮助你通过将分配保护信息系统资产[Azure 策略](../../../policy/overview.md)定义，可在不受限制的访问、 白名单活动和威胁提供保护性监视。
+此蓝图通过分配[Azure 策略](../../../policy/overview.md)定义来帮助保护信息系统资产, 这些策略定义针对无限制访问、白名单活动和威胁提供保护性监视。
 
 - 审核对存储帐户的不受限的网络访问
 - 应在虚拟机上启用自适应应用程序控件
-- 在 SQL server 上部署威胁检测
-- 适用于 Windows Server 部署默认 Microsoft IaaS 反恶意软件扩展
+- 在 SQL 服务器上部署威胁检测
+- 为 Windows Server 部署默认的 Microsoft IaaS 反恶意软件扩展
 
-## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 安全用户管理 / 10 标识和身份验证
+## <a name="9-secure-user-management--10-identity-and-authentication"></a>9保护用户管理/10 身份验证和身份验证
 
-Azure 实施基于角色的访问控制 (RBAC 向可帮助你管理有权访问的资源在 Azure 中)。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图可帮助你限制，并通过分配来控制访问权限[Azure 策略](../../../policy/overview.md)定义要审核拥有所有者和/或读/写权限的外部帐户和帐户的所有者，读取和/或写入执行操作的权限没有启用多重身份验证。
+Azure 实施基于角色的访问控制 (RBAC), 以帮助你管理哪些用户有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图通过以下方法来限制和控制访问权限: 向所有者和/或读/写[权限指定所有者](../../../policy/overview.md)和/或读/写权限的外部帐户, 并使用具有不具有多重身份的 "读取" 和/或 "写入" 权限的帐户身份验证已启用。
 
-- 应与你的订阅的所有者权限在帐户上启用 MFA
-- MFA 应具有写入权限的订阅的已启用的帐户
-- 应与你的订阅上的读取权限在帐户上启用 MFA
-- 应从订阅中删除拥有所有者权限的外部帐户
+- 应在订阅上拥有所有者权限的帐户上启用 MFA
+- 应为 MFA 启用对订阅具有写入权限的帐户
+- 应在对订阅拥有读取权限的帐户上启用 MFA
+- 应从订阅中删除具有所有者权限的外部帐户
 - 应从订阅中删除具有写入权限的外部帐户
-- 应从订阅中删除拥有读取权限的外部帐户
+- 应从订阅中删除具有读取权限的外部帐户
 
-此蓝图分配 Azure 策略定义，以审核对 SQL 服务器和 Service Fabric 使用 Azure Active Directory 身份验证。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。
+此蓝图分配 Azure 策略定义, 以审核对 SQL server 和 Service Fabric 的 Azure Active Directory 身份验证的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。
 
-- 应为 SQL server 预配 Azure Active Directory 管理员
+- 应为 SQL server 设置 Azure Active Directory 管理员
 - Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证
 
-此蓝图还会指定 Azure 策略定义，审核应优先供审核，其中包括折旧前的帐户和外部帐户的帐户。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图将这两个 Azure 策略定义分配给应考虑删除的审核不建议使用的帐户。
+此蓝图还会将 Azure 策略定义分配给审核帐户, 这些帐户应优先考虑, 包括折旧帐户和外部帐户。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图将两个 Azure 策略定义分配给审核折旧帐户, 以便删除。
 
 - 应从订阅中删除弃用的帐户
-- 应从订阅中删除弃用的帐户拥有所有者权限
-- 应从订阅中删除拥有所有者权限的外部帐户
+- 应从订阅中删除不推荐使用的具有所有者权限的帐户
+- 应从订阅中删除具有所有者权限的外部帐户
 - 应从订阅中删除具有写入权限的外部帐户
 
-此蓝图还将审核 Linux VM 的 Azure 策略定义分配密码的文件权限设置不正确时的警报。 此设计使您可以采取纠正措施以确保身份验证器不会受到影响。
+此蓝图还会分配一个 Azure 策略定义, 用于审核 Linux VM 密码文件权限, 以在设置不正确时进行警报。 此设计使你可以采取纠正措施以确保验证器不会受到侵害。
 
-- [预览版]: Audit Linux VM /etc/passwd file permissions are set to 0644
+- \[预览\]：Audit Linux VM/etc/passwd 文件权限设置为0644
 
-此蓝图可帮助你通过将分配审核不强制执行最小长度和其他密码要求的 Windows Vm 的 Azure 策略定义强制使用强密码。 识别违反密码强度策略的 VM 有助于采取纠正措施，以确保所有 VM 用户帐户的密码符合策略。
+此蓝图通过分配 Azure 策略定义来帮助你强制实施强密码, 这些策略定义用于审核不强制实施最低强度的 Windows Vm 和其他密码要求。 识别违反密码强度策略的 VM 有助于采取纠正措施，以确保所有 VM 用户帐户的密码符合策略。
 
-- [预览]: Deploy requirements to audit Windows VMs that do not have the password complexity setting enabled
-- [预览]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
-- [预览]: Deploy requirements to audit Windows VMs that do not have a minimum password age of 1 day
-- [预览]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [预览]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
-- [预览]: Audit Windows VMs that do not have the password complexity setting enabled
-- [预览]: Audit Windows VMs that do not have a maximum password age of 70 days
-- [预览]: Audit Windows VMs that do not have a minimum password age of 1 day
-- [预览]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [预览]: Audit Windows VMs that allow re-use of the previous 24 passwords
+- \[预览\]：部署要求以审核未启用密码复杂性设置的 Windows Vm
+- \[预览\]：部署要求, 以审核不具有最长密码期限70天的 Windows Vm
+- \[预览\]：部署要求, 以审核不具有最短密码期限1天的 Windows Vm
+- \[预览\]：部署要求以审核不将最短密码长度限制为14个字符的 Windows Vm
+- \[预览\]：部署用于审核 Windows Vm 的要求, 这些虚拟机允许重复使用以前的24个密码
+- \[预览\]：审核未启用密码复杂性设置的 Windows Vm
+- \[预览\]：审核未使用最长密码期限70天的 Windows Vm
+- \[预览\]：审核未使用最短密码期限为1天的 Windows Vm
+- \[预览\]：审核不将最短密码长度限制为14个字符的 Windows Vm
+- \[预览\]：审核允许重复使用以前24密码的 Windows Vm
 
-此蓝图还有助于通过分配 Azure 策略定义控制对 Azure 资源的访问。 这些策略将审核可能允许更高资源访问权限的资源类型和配置的使用。 了解违反这些策略的资源有助于采取纠正措施来确保仅限已授权的用户访问 Azure 资源。
+此蓝图还有助于通过分配 Azure 策略定义来控制对 Azure 资源的访问。 这些策略将审核可能允许更高资源访问权限的资源类型和配置的使用。 了解违反这些策略的资源有助于采取纠正措施来确保仅限已授权的用户访问 Azure 资源。
 
-- [预览]: Deploy requirements to audit Linux VMs that have accounts without passwords
-- [预览]: Deploy requirements to audit Linux VMs that allow remote connections from accounts without passwords
-- [预览]: Audit Linux VMs that have accounts without passwords
-- [预览]: Audit Linux VMs that allow remote connections from accounts without passwords
-- 存储帐户应迁移到新的 Azure 资源管理器资源
-- 虚拟机应迁移到新的 Azure 资源管理器资源
+- \[预览\]：部署要求以审核具有无密码帐户的 Linux Vm
+- \[预览\]：部署要求以审核 Linux Vm, 这些 Vm 允许无密码的帐户进行远程连接
+- \[预览\]：审核帐户没有密码的 Linux Vm
+- \[预览\]：审核 Linux Vm, 允许无密码的帐户进行远程连接
+- 应将存储帐户迁移到新的 Azure 资源管理器资源
+- 应将虚拟机迁移到新的 Azure 资源管理器资源
 - 审核不使用托管磁盘的 VM
 
-## <a name="11-external-interface-protection"></a>11 外部界面保护
+## <a name="11-external-interface-protection"></a>11外部接口保护
 
-而不是使用适当的安全用户管理的 25 个以上的策略，此蓝图可帮助你保护免受未经授权的访问服务接口，通过将分配[Azure 策略](../../../policy/overview.md)定义不受限制的监视器存储帐户。 无限制地访问存储帐户可以允许在信息系统内所含的信息进行意外的访问。 此蓝图还将分配一个策略，使虚拟机上的自适应应用程序控件。
+除了为适当的安全用户管理使用超过25个策略之外, 此蓝图还有助于通过分配用于监视不受限制的存储帐户的[Azure 策略](../../../policy/overview.md)定义, 来保护服务接口免受未经授权的访问。 具有不受限制访问权限的存储帐户可允许对信息系统中包含的信息进行意外访问。 此蓝图还会分配一个策略, 该策略启用虚拟机上的自适应应用程序控制。
 
 - 审核对存储帐户的不受限的网络访问
 - 应在虚拟机上启用自适应应用程序控件
 
-## <a name="12-secure-service-administration"></a>12 安全服务管理
+## <a name="12-secure-service-administration"></a>12安全服务管理
 
-Azure 实施基于角色的访问控制 (RBAC 向可帮助你管理有权访问的资源在 Azure 中)。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图可帮助你限制并可以通过分配五个控制特权的访问权限[Azure 策略](../../../policy/overview.md)定义要审核的外部帐户的所有者和/或写入权限和帐户与所有者，和/或写入权限没有启用多重身份验证。
+Azure 实施基于角色的访问控制 (RBAC), 以帮助你管理哪些用户有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图通过以下方法来帮助你限制和控制特权访问权限: 分配5个[Azure 策略](../../../policy/overview.md)定义, 以审核具有所有者和/或写入权限的外部帐户, 以及拥有所有者和/或写入权限的具有以下权限的帐户:已启用多重身份验证。
 
-用于云服务管理的系统将具有高特权来访问该服务。 其泄露将产生重大影响，包括绕过安全控制、窃取或操纵大量数据的手段。 服务提供商的管理员用于管理操作的服务的方法应旨在缓解攻击可以破坏服务的安全性的任何风险。 如果不实现这一原则，攻击者可能绕过安全控制、 窃取或操纵大量数据的方法。
+用于云服务管理的系统将具有高特权来访问该服务。 其泄露将产生重大影响，包括绕过安全控制、窃取或操纵大量数据的手段。 服务提供商管理员用于管理操作服务的方法应设计为缓解可能破坏服务安全的任何攻击风险。 如果未实现此原则, 攻击者可能会绕过安全控制并盗取或处理大量数据。
 
-- 应与你的订阅的所有者权限在帐户上启用 MFA
-- MFA 应具有写入权限的订阅的已启用的帐户
-- 应从订阅中删除拥有所有者权限的外部帐户
+- 应在订阅上拥有所有者权限的帐户上启用 MFA
+- 应为 MFA 启用对订阅具有写入权限的帐户
+- 应从订阅中删除具有所有者权限的外部帐户
 - 应从订阅中删除具有写入权限的外部帐户
 
-此蓝图分配 Azure 策略定义，以审核对 SQL 服务器和 Service Fabric 使用 Azure Active Directory 身份验证。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。
+此蓝图分配 Azure 策略定义, 以审核对 SQL server 和 Service Fabric 的 Azure Active Directory 身份验证的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。
 
-- 应为 SQL server 预配 Azure Active Directory 管理员
+- 应为 SQL server 设置 Azure Active Directory 管理员
 - Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证
 
-此蓝图还会指定 Azure 策略定义，审核应优先供审核，其中包括折旧前的帐户和使用提升的权限的外部帐户的帐户。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图将这两个 Azure 策略定义分配给应考虑删除的审核不建议使用的帐户。
+此蓝图还会将 Azure 策略定义分配给审核帐户, 这些帐户应优先排序, 包括具有提升权限的帐户和外部帐户。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图将两个 Azure 策略定义分配给审核折旧帐户, 以便删除。
 
 - 应从订阅中删除弃用的帐户
-- 应从订阅中删除弃用的帐户拥有所有者权限
-- 应从订阅中删除拥有所有者权限的外部帐户
+- 应从订阅中删除不推荐使用的具有所有者权限的帐户
+- 应从订阅中删除具有所有者权限的外部帐户
 - 应从订阅中删除具有写入权限的外部帐户
 
-此蓝图还将审核 Linux VM 的 Azure 策略定义分配密码的文件权限设置不正确时的警报。 此设计使您可以采取纠正措施以确保身份验证器不会受到影响。
+此蓝图还会分配一个 Azure 策略定义, 用于审核 Linux VM 密码文件权限, 以在设置不正确时进行警报。 此设计使你可以采取纠正措施以确保验证器不会受到侵害。
 
-- [预览]: Audit Linux VM /etc/passwd file permissions are set to 0644
+- \[预览\]：Audit Linux VM/etc/passwd 文件权限设置为0644
 
-## <a name="13-audit-information-for-users"></a>用户的 13 审核信息
+## <a name="13-audit-information-for-users"></a>13个用户的审核信息
 
-此蓝图可帮助您确保通过将分配记录系统事件[Azure 策略](../../../policy/overview.md)审核日志设置 Azure 资源上的定义。 分配的策略还会审核虚拟机是否不向指定的 Log Analytics 工作区发送日志。
+此蓝图可帮助你确保通过分配审核 Azure 资源上的日志设置的[Azure 策略](../../../policy/overview.md)定义来记录系统事件。 分配的策略还会审核虚拟机是否不向指定的 Log Analytics 工作区发送日志。
 
-- 监视未经审核的 SQL 服务器在 Azure 安全中心
+- 监视 Azure 安全中心中的未经审核 SQL server
 - 审核诊断设置
 - 审核 SQL 服务器级别审核设置
-- [预览]: Deploy Log Analytics Agent for Linux VMs
-- [预览]: Deploy Log Analytics Agent for Windows VMs
+- \[预览\]：为 Linux VM 部署 Log Analytics 代理
+- \[预览\]：为 Windows VM 部署 Log Analytics 代理
 - 创建虚拟网络时部署网络观察程序
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已学习了英国官方和英国 NHS 蓝图的控件映射，请访问以下文章，了解概述以及如何部署此示例：
+现在, 你已经查看了英国官方和英国 NHS 蓝图的控件映射, 接下来请访问以下文章来了解概述以及如何部署此示例:
 
 > [!div class="nextstepaction"]
 > [英国官方和英国 NHS 蓝图-概述](./index.md)
-> [英国官方和英国 NHS 蓝图的部署步骤](./deploy.md)
+> [英国官方和英国 NHS 蓝图-部署步骤](./deploy.md)
 
 有关蓝图和如何使用这些蓝图的更多文章：
 

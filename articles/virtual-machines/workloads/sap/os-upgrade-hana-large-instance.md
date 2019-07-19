@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/28/2018
-ms.author: saghorpa
+ms.date: 07/04/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583a633c64943185f874e1c0ff80f654010aa53
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: aa88e45f2523dd65c4f714bfeab1c0eda401d720
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710020"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869153"
 ---
 # <a name="operating-system-upgrade"></a>操作系统升级
 本文档介绍 HANA 大型实例操作系统升级的详细信息。
@@ -27,11 +27,11 @@ ms.locfileid: "67710020"
 >[!NOTE]
 >操作系统升级是客户的责任，Microsoft 运营支持团队可指导你发现升级过程中需要留意的重点领域。 在计划升级前，你还应咨询操作系统供应商。
 
-Microsoft 运营团队在预配 HLI 单元时安装操作系统。 随着时间推移，你需要维护 HLI 单元的操作系统（例如：修补、优化、升级等）。
+在现在的速度设置中, Microsoft 运营团队安装了操作系统。 随着时间推移，你需要维护 HLI 单元的操作系统（例如：修补、优化、升级等）。
 
-在对操作系统进行重大更改（例如，将 SP1 升级到 SP2）之前，必须通过开具支持票证进行咨询来与 Microsoft 运营团队联系。
+在对操作系统进行重大更改 (例如, 将 SP1 升级到 SP2) 之前, 需要通过打开支持票证来与 Microsoft 运营团队联系以进行查阅。
 
-请在票证上包括以下内容：
+在票证中包括:
 
 * 你的 HLI 订阅 ID。
 * 你的服务器名称。
@@ -47,9 +47,9 @@ Microsoft 运营团队在预配 HLI 单元时安装操作系统。 随着时间�
 ## <a name="known-issues"></a>已知问题
 
 以下是升级过程中几个常见的已知问题：
-- 在 II 类 SKU 上，Software Foundation Software (SFS) 会在操作系统升级后移除。 必须在操作系统升级后重新安装兼容的 SFS。
-- 以太网卡驱动程序（ENIC 和 FNIC）会回滚到旧版本。 必须在升级后重新安装兼容版本的驱动程序。
+- 在 II 类 SKU 上，Software Foundation Software (SFS) 会在操作系统升级后移除。 在 OS 升级后, 需要重新安装兼容的 SFS。
+- 以太网卡驱动程序（ENIC 和 FNIC）会回滚到旧版本。 升级后需要重新安装兼容的驱动程序版本。
 
 ## <a name="next-steps"></a>后续步骤
 - 有关 I 类 SKU 操作系统备份的信息，请参阅[备份和恢复](hana-overview-high-availability-disaster-recovery.md)。
-- 有关 II 类 SKU 的信息，请参阅 [II 类 SKU 操作系统备份](os-backup-type-ii-skus.md)。
+- 请参阅第 ii 类 SKU 类的[修订版3橡皮类型的操作系统备份](os-backup-type-ii-skus.md)。

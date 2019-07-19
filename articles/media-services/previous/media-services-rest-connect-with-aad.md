@@ -12,18 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: 6284a1aa0cc3a49291553309b058e4d9f65b24c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: willzhan; johndeu
+ms.openlocfilehash: 66c69552157df957e572a3af092131a3b7e560d5
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701018"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871697"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问媒体服务 API
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 通过 Azure 媒体服务使用 Azure AD 身份验证时，可以通过以下两种方式之一进行身份验证：
 
@@ -46,7 +47,7 @@ ms.locfileid: "64701018"
 > [!IMPORTANT]
 > 目前，媒体服务支持 Azure 访问控制服务身份验证模型。 不过，访问控制身份验证将于 2018 年 6 月 1 日弃用。 建议尽快迁移到 Azure AD 身份验证模型。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。

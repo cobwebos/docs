@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 本文介绍 Azure 如何使 VM 与公共 Internet 服务通信。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
-ms.author: kumud
-ms.openlocfilehash: f9742d14fc14230f2424d005aa6aa8b1db3cece4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 6623b3e679faaa73f18c0f6b376de101113bcbdb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967736"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274543"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -34,13 +34,13 @@ Azure 使用源网络地址转换 (SNAT) 来执行此功能。 当多个专用 I
 有多种[出站方案](#scenarios)。 可根据需要结合这些方案。 请认真分析这些方案，以了解在部署模型和应用方案中应用这些方案时的功能、约束和模式。 查看有关[管理这些方案](#snatexhaust)的指导。
 
 >[!IMPORTANT] 
->标准负载均衡器和标准公共 IP 为出站连接引入了新功能和不同的行为。  它们不同于基本 SKU。  如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。  这包括使用内部标准负载均衡器时创建出站连接。  建议始终使用标准公共负载均衡器上的出站规则。  [方案 3](#defaultsnat)不适用于标准 SKU。  这意味着使用内部标准负载均衡器时，如果需要出站连接，则需要采取步骤为后端池中的 VM 创建出站连接。  在出站连接的上下文中，单独的 VM、可用性集中的所有 VM、VMSS 中的所有实例都是一个组。 这意味着，如果可用性集中的单个 VM 与标准 SKU 关联，则该可用性集中的所有 VM 实例现在都遵循相同的规则，就好像这些 VM 实例与标准 SKU 相关联一样，即使单个实例与标准 SKU 没有直接关联。  请仔细查看整个文档以了解整体概念，查看[标准负载均衡器](load-balancer-standard-overview.md)了解 SKU 之间的差异，并查看[出站规则](load-balancer-outbound-rules-overview.md)。  使用出站规则可以对出站连接的所有方面进行细化管理控制。
+>标准负载均衡器和标准公共 IP 为出站连接引入了新功能和不同的行为。  它们不同于基本 SKU。  如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。  这包括在使用内部标准负载均衡器时创建出站连接。  建议始终使用标准公共负载均衡器上的出站规则。  [方案 3](#defaultsnat)不适用于标准 SKU。  这意味着使用内部标准负载均衡器时，如果需要出站连接，则需要采取步骤为后端池中的 VM 创建出站连接。  在出站连接的上下文中，单独的 VM、可用性集中的所有 VM、VMSS 中的所有实例都是一个组。 这意味着，如果可用性集中的单个 VM 与标准 SKU 关联，则该可用性集中的所有 VM 实例现在都遵循相同的规则，就好像这些 VM 实例与标准 SKU 相关联一样，即使单个实例与标准 SKU 没有直接关联。  请仔细查看整个文档以了解整体概念，查看[标准负载均衡器](load-balancer-standard-overview.md)了解 SKU 之间的差异，并查看[出站规则](load-balancer-outbound-rules-overview.md)。  使用出站规则可以对出站连接的所有方面进行细化管理控制。
 
 ## <a name="scenarios"></a>方案概述
 
 Azure 负载均衡器和相关资源是使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)时显式定义的。  Azure 目前提供三种不同的方法实现 Azure 资源管理器资源的出站连接。 
 
-| SKU | 场景 | 方法 | IP 协议 | 描述 |
+| SKU | 应用场景 | 方法 | IP 协议 | 描述 |
 | --- | --- | --- | --- | --- |
 | 标准、基本 | [1.具有实例级公共 IP 地址的 VM（有或没有负载均衡器）](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配实例 NIC 的 IP 配置的公共 IP。 此实例具有所有可用的临时端口。 在使用标准负载均衡器时，应使用[出站规则](load-balancer-outbound-rules-overview.md)显式定义出站连接 |
 | 标准、基本 | [2.与 VM 关联的公共负载均衡器（实例上没有实例级公共 IP 地址）](#lb) | 使用负载均衡器前端进行端口伪装 (PAT) 的 SNAT | TCP、UDP |Azure 与多个专用 IP 地址共享公共负载均衡器前端的公共 IP 地址。 Azure 使用前端的临时端口进行 PAT。 |
@@ -70,7 +70,7 @@ SNAT 端口是按照[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 
 如果[多个公共 IP 地址与负载均衡器基本版相关联](load-balancer-multivip-overview.md)，则所有这些公共 IP 地址都是出站流的候选项，并且会随机选择其中一个。  
 
-若要监视的出站连接负载均衡器基本运行状况，可以使用[的负载均衡器日志的 Azure Monitor](load-balancer-monitor-log.md)并[警报事件日志](load-balancer-monitor-log.md#alert-event-log)要监视 SNAT 端口耗尽消息。
+若要监视负载均衡器基本版的出站连接的运行状况, 可以使用[负载均衡器 Azure Monitor 日志](load-balancer-monitor-log.md), 并使用[警报事件日志](load-balancer-monitor-log.md#alert-event-log)监视 SNAT 端口耗尽消息。
 
 ### <a name="defaultsnat"></a>场景 3：无实例级公共 IP 地址的独立 VM
 

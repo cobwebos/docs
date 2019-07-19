@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e92e4d0e296e83b413cfd2a67041a5749c16699e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482233"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297658"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 设备代码流
 
@@ -31,11 +31,11 @@ ms.locfileid: "67482233"
 Microsoft 标识平台支持[设备代码授予](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12)，可让用户登录到智能电视、IoT 设备或打印机等输入受限的设备。  若要启用此流，设备会让用户在另一台设备上的浏览器中访问一个网页，以进行登录。  用户登录后，设备可以获取所需的访问令牌和刷新令牌。  
 
 > [!IMPORTANT]
-> 在此期间，Microsoft 标识平台终结点仅支持设备流用于 Azure AD 租户，但不适用于个人帐户。  这意味着，必须使用设置为租户的终结点或 `organizations` 终结点。  这种支持将尽快启用。 
+> 目前, Microsoft 标识平台终结点仅支持 Azure AD 租户的设备流, 但不支持个人帐户。  这意味着，必须使用设置为租户的终结点或 `organizations` 终结点。  即将启用此支持。 
 >
 > 受邀加入 Azure AD 租户的个人帐户可以使用设备流授予，但只能在该租户的上下文中使用。
 >
-> 作为附加的说明， `verification_uri_complete` response 字段不包含或支持这一次。  
+> 作为附加说明, `verification_uri_complete`此时不包含或支持响应字段。  
 
 > [!NOTE]
 > Microsoft 标识平台终结点并非支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](active-directory-v2-limitations.md)。
@@ -57,7 +57,7 @@ Microsoft 标识平台支持[设备代码授予](https://tools.ietf.org/html/dra
 ```
 // Line breaks are for legibility only.
 
-POST https://login.microsoftonline.com/{tenant}/devicecode
+POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/devicecode
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
@@ -67,8 +67,8 @@ scope=user.read%20openid%20profile
 
 | 参数 | 条件 | 描述 |
 | --- | --- | --- |
-| `tenant` | 需要 |要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。  |
-| `client_id` | 需要 | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。 |
+| `tenant` | 必填 |要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。  |
+| `client_id` | 必填 | Azure 门户的**应用程序 (客户端) ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
 | `scope` | 建议 | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  |
 
 ### <a name="device-authorization-response"></a>设备授权响应
@@ -101,15 +101,15 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 
 | 参数 | 需要 | 描述|
 | -------- | -------- | ---------- |
-| `grant_type` | 需要 | 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
+| `grant_type` | 必填 | 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | 需要 | 必须与初始请求中使用的 `client_id` 匹配。 |
-| `device_code`| 需要 | 设备授权请求中返回的 `device_code`。  |
+| `device_code`| 必填 | 设备授权请求中返回的 `device_code`。  |
 
 ### <a name="expected-errors"></a>预期错误
 
 由于设备代码流是一个轮询协议，因此，客户端必须预料到在用户完成身份验证之前会收到错误。  
 
-| 错误 | 描述 | 客户端操作 |
+| Error | 描述 | 客户端操作 |
 | ------ | ----------- | -------------|
 | `authorization_pending` | 用户尚未完成身份验证，但未取消流。 | 在至少 `interval` 秒之后重复请求。 |
 | `authorization_declined` | 最终用户拒绝了授权请求。| 停止轮询，并恢复到未经过身份验证状态。  |

@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: b7bc040ae799aec98454fb227bbeeb6027f9615a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 0325fc8cabc43988fb27a307921977b9b487c123
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673238"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286241"
 ---
 GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍有关 GPU、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。
 
-* **NC，NCv2，NCv3**大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序和模拟、AI 和深度学习。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。 NC 系列使用 Intel Xeon E5 2690 v3 2.60 的处理器 v3 (Haswell) 处理器，NCv2 系列和 NCv3 系列 Vm 使用 Intel Xeon E5 2690 v4 (Broadwell) 处理器。
+* **NC、NCv2、NCv3**大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序和模拟、AI 和深度学习。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。 NC 系列使用 Intel 2690 v3 2.60 GHz v3 (Haswell) 处理器, NCv2 系列和 NCv3 系列 Vm 使用 Intel 至强 E5-2690 v4 (Broadwell) 处理器。
 
-* **和 NDv2** ND 系列专注于进行深度学习的培训和推理方案。 它使用 NVIDIA Tesla P40 GPU 和 Intel Xeon E5 2690 v4 (Broadwell) 处理器。 NDv2 系列使用 Intel Xeon Platinum 8168 (Skylake) 处理器。
+* **ND 和 NDv2**ND 系列重点介绍用于深度学习的定型和推理方案。 它使用 NVIDIA Tesla P40 GPU 和 Intel 2690 v4 (Broadwell) 处理器。 NDv2 系列使用 Intel 强白金 8168 (Skylake) 处理器。
 
-* **NV 和 NVv3**大小都进行了优化并设计用于远程可视化效果、 流式处理、 游戏、 编码和 VDI 方案使用 OpenGL 和 DirectX 之类的框架。  这些 VM 由 NVIDIA Tesla M60 GPU 提供支持。
+* **NV 和 NVv3**大小经过优化, 适用于使用 OpenGL 和 DirectX 等框架的远程可视化、流式处理、游戏、编码和 VDI 方案。  这些 VM 由 NVIDIA Tesla M60 GPU 提供支持。
 
 ## <a name="nc-series"></a>NC 系列
 
@@ -29,7 +29,7 @@ GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 �
 
 高级存储缓存：不支持
 
-NC 系列 Vm 采用[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf)卡和 Intel Xeon E5 2690 v3 (Haswell) 处理器。 通过将 CUDA 用于能源勘探应用、碰撞模拟、光纤跟踪渲染、深度学习等领域，用户可以更快地分析数据。 NC24r 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
+NC 系列 Vm 由[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf)卡和 Intel 2690 E5-V3 (Haswell) 处理器提供支持。 通过将 CUDA 用于能源勘探应用、碰撞模拟、光纤跟踪渲染、深度学习等领域，用户可以更快地分析数据。 NC24r 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
 
 | Size | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 |
 | --- | --- | --- | --- | --- | --- | --- | ---- |
@@ -48,7 +48,7 @@ NC 系列 Vm 采用[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/S
 
 高级存储缓存：支持
 
-NCv2 系列 VM 采用 [NVIDIA Tesla P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) GPU。 这些 GPU 可提供比 NC 系列高 2 倍以上的计算性能。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 除了 Gpu，NCv2 系列 Vm 还提供支持的 Intel Xeon E5 2690 v4 (Broadwell) 的 Cpu。
+NCv2 系列 VM 采用 [NVIDIA Tesla P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) GPU。 这些 GPU 可提供比 NC 系列高 2 倍以上的计算性能。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 除了 Gpu 外, NCv2 系列 Vm 还由 Intel 强 2690 v4 (Broadwell) Cpu 提供支持。
 
 NC24rs v2 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
 
@@ -73,7 +73,7 @@ NC24rs v2 配置提供了针对紧密耦合的并行计算工作负荷优化的�
 
 高级存储缓存：支持
 
-NCv3 系列 VM 采用 [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) GPU。 这些 GPU 可提供 NCv2 系列的 1.5 倍计算性能。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 NC24rs v3 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。 除了 Gpu，NCv3 系列 Vm 还提供支持的 Intel Xeon E5 2690 v4 (Broadwell) 的 Cpu。
+NCv3 系列 VM 采用 [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) GPU。 这些 GPU 可提供 NCv2 系列的 1.5 倍计算性能。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 NC24rs v3 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。 除了 Gpu 外, NCv3 系列 Vm 还由 Intel 强 2690 v4 (Broadwell) Cpu 提供支持。
 
 > [!IMPORTANT]
 > 对于此大小系列，订阅中的 vCPU（核心）配额在每个区域中最初都设置为 0。 可以请求在某个[可用区域](https://azure.microsoft.com/regions/services/)中[提高此系列的 vCPU 配额](../articles/azure-supportability/resource-manager-core-quotas-request.md)。
@@ -98,7 +98,7 @@ NCv3 系列 VM 采用 [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-cent
 
 Infiniband：不支持
 
-NDv2 系列虚拟机是 GPU 系列的新成员，经过专门设计以满足 HPC、AI 和机器学习工作负荷方面的需求。 8 由 NVIDIA Tesla V100 NVLINK 互连 Gpu 和 40 Intel Xeon Platinum 8168 (Skylake) 内核和 672 GiB 的系统内存。 NDv2 实例为利用 Cuda、TensorFlow、Pytorch、Caffe 的 HPC 和 AI 以及其他框架提供卓越的 FP32 和 FP64 性能。
+NDv2 系列虚拟机是 GPU 系列的新成员，经过专门设计以满足 HPC、AI 和机器学习工作负荷方面的需求。 它由8个 NVIDIA Tesla V100 NVLINK 互连 Gpu 和 40 Intel 强白金 8168 (Skylake) 核心和 672 GiB 系统内存提供支持。 NDv2 实例为利用 Cuda、TensorFlow、Pytorch、Caffe 的 HPC 和 AI 以及其他框架提供卓越的 FP32 和 FP64 性能。
 
 [注册并在预览期访问这些虚拟机](https://aka.ms/ndv2signup)。
 <br>
@@ -113,7 +113,7 @@ NDv2 系列虚拟机是 GPU 系列的新成员，经过专门设计以满足 HPC
 
 高级存储缓存：支持
 
-ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列的新成员。 它们在训练和推理方面性能卓越。 ND 实例采用[NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) Gpu 和 Intel Xeon E5 2690 v4 (Broadwell) 的 Cpu。 这些实例可以针对单精度浮点运算和利用 Microsoft 认知工具包、TensorFlow、Caffe 及其他框架的 AI 工作负荷提供卓越的性能。 ND 系列还提供了更大的 GPU 内存大小（24 GB），能够适应更大的神经网络模型。 与 NC 系列一样，ND 系列可通过 RDMA 和 InfiniBand 连接提供含辅助型低延迟、高吞吐量网络的配置，以便可运行跨多个 GPU 的大规模训练作业。
+ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列的新成员。 它们在训练和推理方面性能卓越。 ND 实例由[NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) Gpu 和 Intel 2690 V4 (Broadwell) cpu 提供支持。 这些实例可以针对单精度浮点运算和利用 Microsoft 认知工具包、TensorFlow、Caffe 及其他框架的 AI 工作负荷提供卓越的性能。 ND 系列还提供了更大的 GPU 内存大小（24 GB），能够适应更大的神经网络模型。 与 NC 系列一样，ND 系列可通过 RDMA 和 InfiniBand 连接提供含辅助型低延迟、高吞吐量网络的配置，以便可运行跨多个 GPU 的大规模训练作业。
 
 > [!IMPORTANT]
 > 对于此大小系列，订阅中每个区域的 vCPU（核心）配额最初都设置为 0。 可以请求在某个[可用区域](https://azure.microsoft.com/regions/services/)中[提高此系列的 vCPU 配额](../articles/azure-supportability/resource-manager-core-quotas-request.md)。
@@ -136,7 +136,7 @@ ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列�
 
 高级存储缓存：不支持
 
-NV 系列虚拟机采用 [NVIDIA Tesla M60 ](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 NVIDIA GRID 技术，适用于桌面加速型应用程序和虚拟桌面，方便客户将其数据或模拟可视化。 用户可以在 NV 实例上直观显示其图形密集型工作流以获取高级图形功能，并可额外运行单精度工作负荷，例如编码和渲染。 NV 系列 Vm 还由 Intel Xeon E5 2690 v3 (Haswell) 的 Cpu。
+NV 系列虚拟机采用 [NVIDIA Tesla M60 ](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 NVIDIA GRID 技术，适用于桌面加速型应用程序和虚拟桌面，方便客户将其数据或模拟可视化。 用户可以在 NV 实例上直观显示其图形密集型工作流以获取高级图形功能，并可额外运行单精度工作负荷，例如编码和渲染。 NV 系列 Vm 还由 Intel 2690 v3 (Haswell) Cpu 提供支持。
 
 NV 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可以灵活地将 NV 实例用作单个用户的虚拟工作站，或将 25 个并发用户都连接到用于虚拟应用程序方案的 VM。
 
@@ -148,15 +148,15 @@ NV 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可�
 
 1 GPU = 半块 M60 卡。
 
-## <a name="nvv3-series-preview-sup1sup"></a>NVv3 系列 （预览版） <sup>1</sup>
+## <a name="nvv3-series--sup1sup"></a>NVv3 系列<sup>1</sup>
 
 高级存储：支持
 
 高级存储缓存：支持
 
-由提供支持 NVv3 系列虚拟机[NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) Gpu 和 NVIDIA GRID 技术，具有 Intel E5 2690 v4 (Broadwell) 的 Cpu。 此类虚拟机面向 GPU 加速图形应用程序和虚拟桌面，客户希望利用这些应用和桌面直观呈现数据、模拟要查看的结果、处理 CAD 或渲染和流式处理内容。 此外，这些虚拟机还能运行编码和渲染等单精度工作负荷。 支持高级存储和附带的系统内存 (RAM) 两次比其前身 NV 系列 NVv3 虚拟机。  
+NVv3 系列虚拟机由[NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu 和带有 Intel E5-2690 V4 (Broadwell) CPU 的 nvidia 网格技术提供支持。 此类虚拟机面向 GPU 加速图形应用程序和虚拟桌面，客户希望利用这些应用和桌面直观呈现数据、模拟要查看的结果、处理 CAD 或渲染和流式处理内容。 此外，这些虚拟机还能运行编码和渲染等单精度工作负荷。 NVv3 虚拟机支持高级存储, 并在与其前置 NV 系列进行比较时提供系统内存 (RAM) 的两倍。  
 
-NVv3 实例中的每个 GPU 带有 GRID 许可证。 使用此许可证，可以灵活地将 NV 实例用作单个用户的虚拟工作站，或将 25 个并发用户都连接到用于虚拟应用程序方案的 VM。
+NVv3 实例中的每个 GPU 都附带了网格许可证。 使用此许可证，可以灵活地将 NV 实例用作单个用户的虚拟工作站，或将 25 个并发用户都连接到用于虚拟应用程序方案的 VM。
 
 | Size | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/Mbps | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -166,4 +166,4 @@ NVv3 实例中的每个 GPU 带有 GRID 许可证。 使用此许可证，可以
 
 1 GPU = 半块 M60 卡。
 
-<sup>1</sup> NVv3 系列 Vm 的 Intel 超线程技术功能
+<sup>1</sup> NVv3 系列 Vm 功能 Intel 超线程技术

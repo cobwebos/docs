@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: db4b799aa31a4132609b0dd158b65070fb2474b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e9019699d8a81d31d2b20f674fd76fcb70021d6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510954"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846828"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用用户流将访问令牌传递给应用程序
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C 中的[用户流](active-directory-b2c-ref
 
 Azure AD B2C 当前仅支持传递 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) 标识提供者（这包括 [Facebook](active-directory-b2c-setup-fb-app.md) 和 [Google](active-directory-b2c-setup-goog-app.md)）的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 应用程序必须使用 [v2 用户流](user-flow-versions.md)。
 - 用户流是使用 OAuth 2.0 标识提供者配置的。
@@ -54,12 +54,8 @@ Azure AD B2C 当前仅支持传递 [OAuth 2.0](active-directory-b2c-reference-oa
 
     应会看到类似于以下示例的内容：
 
-    ![已解码的令牌](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.png)
+    ![突出显示了 idp_access_token 块的 jwt.ms 中已解码的令牌](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 
 在 [Azure AD B2C 令牌概述](active-directory-b2c-reference-tokens.md)中了解详细信息。
-
-
-
-

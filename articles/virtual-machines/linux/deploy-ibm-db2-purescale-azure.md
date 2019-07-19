@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
-ms.author: njray
-ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: edprice
+ms.openlocfilehash: 68fde09b1ee5f18aa784793cc19e9f547b19ed43
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60716041"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871883"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
 
@@ -28,7 +28,7 @@ ms.locfileid: "60716041"
 
 要按照迁移使用的步骤进行操作，请参阅 GitHub 上的 [DB2onAzure](https://aka.ms/db2onazure) 存储库中的安装脚本。 这些脚本基于典型的中型联机事务处理 (OLTP) 工作负载所用的体系结构。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 要部署此体系结构，请下载并运行 GitHub 上 [DB2onAzure](https://aka.ms/db2onazure) 存储库中的 deploy.sh 脚本。
 
@@ -78,7 +78,7 @@ GitHub 存储库包含一个响应 (.rsp) 文件 DB2server.rsp，通过该文件
 > [!NOTE]
 > 示例响应文件 DB2server.rsp 包含在 GitHub 上的 [DB2onAzure](https://aka.ms/db2onazure) 存储库中。 如果要使用此文件，必须先对其进行编辑，然后才能在环境中使用。
 
-| 屏幕名称               | 字段                                        | 值                                                                                                 |
+| 屏幕名称               | 字段                                        | ReplTest1                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | 欢迎使用                   |                                              | 新安装                                                                                           |
 | 选择产品          |                                              | DB2 版本 11.1.3.3。 带有 DB2 pureScale 的服务器版本                                              |

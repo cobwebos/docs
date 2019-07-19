@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: a453e82f47bb9eed25c8d5caf986bc854085e8ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3edfa1ca63560f447d2c9ea3da3588e069b7af1
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061215"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226824"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 使用它[自动检测请求、 跟踪依赖项和收集性能计数器](auto-collect-dependencies.md#java)，诊断性能问题和异常，并[编写的代码][ api]若要跟踪用户对您的应用程序。 
+[Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 使用它可[自动检测请求、跟踪依赖项和收集性能计数器](auto-collect-dependencies.md#java), 诊断性能问题和异常, 并[编写代码][api]来跟踪用户对应用执行的操作。 
 
 ![概述示例数据的屏幕截图](./media/java-get-started/overview-graphs.png)
 
@@ -169,6 +169,8 @@ Application Insights SDK 按以下顺序查找密钥：
         TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
     }
 ```
+
+请注意,[实时度量值](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)不支持从代码读取检测密钥。
 
 ## <a name="4-add-an-http-filter"></a>4.添加 HTTP 筛选器
 最后一个配置步骤可让 HTTP 请求组件记录每个 Web 请求。 （如果只需要单纯的 API，则不需要执行此步骤。）
@@ -434,34 +436,10 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 ### <a name="unix-performance-counters"></a>Unix 性能计数器
 * [使用 Application Insights 插件安装 collectd](java-collectd.md) ，获取各种不同的系统和网络数据。
 
-## <a name="local-forwarder"></a>本地转发器
-
-[本地转发器](https://docs.microsoft.com/azure/application-insights/local-forwarder)是从各种 SDK 和框架中收集 Application Insights 或 [OpenCensus](https://opencensus.io/) 遥测并将其路由到 Application Insights 的代理。 它能够在 Windows 和 Linux 下运行。
-
-```xml
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-<DeveloperMode>false</DeveloperMode>
-<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-<!-- The properties below are optional. The values shown are the defaults for each property -->
-<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
-```
-
-如果使用的是 SpringBoot 入门版，请将以下内容添加到配置文件（application.properties）中：
-
-```yml
-azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
-azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
-azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
-```
-
-SpringBoot application.properties 和 applicationinsights.xml 配置的默认值是相同的。
-
 ## <a name="get-user-and-session-data"></a>获取用户和会话数据
 好了，现在正在从 Web 服务发送遥测数据。 若要获取应用程序的 360 度全方位视图，可以添加更多监视：
 
-* [将遥测添加到网页][usage]，监视页面视图和用户指标。
+* [将遥测添加到网页][usage]，用于监视页面视图和用户指标。
 * [设置 Web 测试][availability]，确保应用程序处于活动状态且能够做出响应。
 
 ## <a name="capture-log-traces"></a>捕获日志跟踪

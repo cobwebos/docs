@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 08429ca76823b9e6c80a197cc390a5964c4198e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: db3f1b6657ae455ae049eaffd6758fc7e6944fb9
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969004"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68001020"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB 和 Azure Functions 的基于事件的无服务器体系结构
 
@@ -20,7 +20,7 @@ Azure Functions 提供连接到[更改源](change-feed.md)的最简单方法。 
 
 ![使用 Azure Cosmos DB 触发器的基于事件的无服务器 Functions](./media/change-feed-functions/functions.png)
 
-借助 [Azure Cosmos DB 触发器](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)，可以利用[更改源处理器](./change-feed-processor.md)的缩放与可靠事件检测功能，而无需维护任何[辅助角色基础结构](./change-feed-processor.md#implementing-the-change-feed-processor-library)。 只需专注于 Azure 函数的逻辑，而无需考虑事件溯源管道的剩余。 甚至可以将触发器和任何其他 [Azure Functions 绑定](../azure-functions/functions-triggers-bindings.md#supported-bindings)搭配使用。
+借助 [Azure Cosmos DB 触发器](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)，可以利用[更改源处理器](./change-feed-processor.md)的缩放与可靠事件检测功能，而无需维护任何[辅助角色基础结构](./change-feed-processor.md)。 只需专注于 Azure 函数的逻辑，而无需考虑事件溯源管道的剩余。 甚至可以将触发器和任何其他 [Azure Functions 绑定](../azure-functions/functions-triggers-bindings.md#supported-bindings)搭配使用。
 
 > [!NOTE]
 > 目前，仅支持将 Azure Cosmos DB 触发器与 Core (SQL) API 配合使用。
@@ -44,7 +44,7 @@ Azure Functions 提供连接到[更改源](change-feed.md)的最简单方法。 
 
 可以使用 [Azure Cosmos DB 模拟器](./local-emulator.md)[在本地运行 Azure 函数](../azure-functions/functions-develop-local.md)，以创建和开发基于事件的无服务器流，而无需使用 Azure 订阅，也不会产生任何费用。
 
-如果你想要在云中测试实时方案，可以[免费试用 Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)而无需任何信用卡或所需的 Azure 订阅。
+如果要测试云中的实时方案, 可以[免费试用 Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) , 无需任何信用卡或 Azure 订阅。
 
 ## <a name="next-steps"></a>后续步骤
 

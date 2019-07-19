@@ -1,5 +1,5 @@
 ---
-title: 动态阻止的密码-Azure Active Directory
+title: 动态禁止的密码-Azure Active Directory
 description: 使用 Azure AD 动态禁止密码在你的环境中禁止弱密码
 services: active-directory
 ms.service: active-directory
@@ -11,94 +11,96 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c043b2ed1a626e362d7edd1a83429aa14046f8ac
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fe2b4ed91969248bc0818f98306a108555eac424
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703065"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853053"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>消除你的组织中的错误密码
 
-行业领导者告诉您不应在多个位置使用相同的密码，可使复杂，并不使其如"Password123"一样简单。 组织如何保证他们的用户是遵循最佳实践指导原则？ 如何在确保用户未使用弱密码或甚至变体对弱密码？
+业内领导人告诉您不要在多个位置使用同一密码, 使其复杂化, 并使其变得简单, 如 "Password123"。 组织如何保证其用户遵循最佳做法指南？ 他们怎样才能确保用户不会使用弱密码, 甚至不能使用弱密码。
 
-在具有更强的密码的第一步是向用户提供指导。 在以下链接中可以找到 Microsoft 当前为此主题提供的指导：
+具有更强密码的初始步骤是向用户提供指导。 在以下链接中可以找到 Microsoft 当前为此主题提供的指导：
 
 [Microsoft 密码指导](https://www.microsoft.com/research/publication/password-guidance)
 
-具有正确的指导是重要的是，但即便使用了，我们知道，许多用户仍将最终会选择弱密码。 通过检测和阻止已知弱密码和变体，以及根据需要阻止特定于你的组织的其他弱条款，azure AD 密码保护来保护你的组织。
+很重要的指导很重要, 但在这种情况下, 我们知道许多用户仍会选择弱密码。 Azure AD 密码保护通过检测和阻止已知弱密码及其变种, 并有选择性地阻止特定于你的组织的附加弱术语, 来保护你的组织。
 
 有关我们目前在安全方面所做努力的详细信息，请参阅 [Microsoft 安全智能报告](https://www.microsoft.com/security/operations/security-intelligence-report)。
 
 ## <a name="global-banned-password-list"></a>全局禁止密码列表
 
-Azure AD Identity Protection 团队不断地分析 Azure AD 安全遥测寻找常用弱或已泄露的密码，或更具体地说，弱数据库中使用的术语通常作为基础的弱密码。 找不到此类弱条款，这些都添加到全局受禁的密码列表。 全局受禁的密码列表的内容不基于任何外部数据源。 全局受禁的密码列表完全基于正在进行的 Azure AD 安全遥测和分析结果。
+Azure AD Identity Protection 团队不断分析 Azure AD 的安全遥测数据, 以查找常用弱密码或泄露的密码, 或更具体地说, 这是通常用作弱密码的基础的弱基准术语。 如果找到此类薄弱术语, 则会将其添加到 "全局禁止密码" 列表中。 全局禁止密码列表的内容不基于任何外部数据源。 全局禁止密码列表完全取决于当前 Azure AD 安全遥测和分析的结果。
 
-每当更改或在 Azure AD 中的任何租户中的任何用户重置新密码时，当前版本的全局受禁的密码列表用作验证密码强度时输入的密钥。 此验证会导致较强密码的所有 Azure AD 客户。
+每当更改或重置 Azure AD 中任何租户中的任何用户的新密码时, 全局禁止密码列表的当前版本在验证密码强度时用作密钥输入。 此验证为所有 Azure AD 客户带来了更强的密码。
 
 > [!NOTE]
-> 网络罪犯也在攻击中使用类似的策略。 因此 Microsoft 不公开发布此列表的内容。
+> 网络罪犯还在其攻击中使用类似的策略。 因此, Microsoft 不会公开发布此列表的内容。
 
 ## <a name="custom-banned-password-list"></a>自定义禁止密码列表
 
-某些组织可能想要通过在 Microsoft 所调用的自定义受禁的密码列表中添加其自己的自定义全局阻止的密码列表顶部提高安全性更进一步。 Microsoft 建议，添加到此列表中的条款主要致力于研究组织特定的术语包括：
+某些组织可能希望通过在 Microsoft 调用 "自定义禁止密码" 列表中的 "全局禁止密码" 列表的顶部添加自己的自定义, 进一步提高安全性。 Microsoft 建议添加到此列表中的条款主要用于特定于组织的术语, 例如:
 
 - 品牌名称
 - 产品名称
-- 位置 （例如，例如公司总部）
-- 特定于公司的内部条款
-- 这意味着特定公司的缩写形式。
+- 位置 (例如, 公司总部)
+- 公司特定的内部术语
+- 具有特定公司含义的缩写。
 
-一旦条款添加到自定义受禁的密码列表，它们将添加到全局受禁的密码列表这是验证密码时。
+将字词添加到 "自定义禁止密码" 列表后, 在验证密码时, 它们将与 "全局禁止密码" 列表中的词条结合。
 
 > [!NOTE]
-> 自定义受禁的密码列表被限制为 1000年条款最多可以拥有。 它不适用于阻止的密码极大的列表。 若要完全利用自定义受禁的密码列表的优势，Microsoft 建议您首先阅读和了解密码评估算法 (请参阅[如何评估密码](concept-password-ban-bad.md#how-are-passwords-evaluated)) 之前添加到新的条款自定义阻止的列表。 了解如何算法可将使您的企业能够有效地检测和阻止的弱密码及其变体的较大数字。
+> 自定义禁止密码列表限制为最多包含1000个术语。 它不用于阻止极大型的密码列表。 为了充分利用自定义禁止密码列表的优点, Microsoft 建议你先查看并了解密码评估算法 (请参阅[如何计算密码](concept-password-ban-bad.md#how-are-passwords-evaluated)), 然后再将新术语添加到自定义禁止列表。 了解算法的工作原理可使企业有效地检测和阻止大量弱密码及其变种。
 
-例如： 请考虑名为"Contoso"，该费用基于位于伦敦，，可将名为"小组件"的产品的客户。 对于此类客户，它将是浪费，也不太安全，以尝试阻止这些术语的变体，如：
+例如: 假设有一个名为 "Contoso" 的客户, 该客户基于伦敦, 这会生成一个名为 "小组件" 的产品。 对于这类客户而言, 尝试阻止这些术语的特定变体 (例如:
 
-- "Contoso ！ 1"
+- "Contoso! 1"
 - "Contoso@London"
 - "ContosoWidget"
-- "!Contoso"
+- "!Contoso
 - "LondonHQ"
-- ...etcetera
+- ...等
 
-相反，它是更高效、 安全地阻止仅关键基本术语：
+相反, 它比仅阻止关键基准术语更有效、更安全:
 
-- "Contoso"
-- "London"
-- "Widget"
+- Contoso
+- 伦敦
+- 小组件
 
-然后会自动阻止密码验证算法，弱变体，上述的组合。
+密码验证算法随后会自动阻止上述的弱变体和组合。
 
 自定义的禁止密码列表和启用本地 Active Directory 集成的能力是使用 Azure 门户管理的。
 
-![修改自定义受禁的密码列表下的身份验证方法](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
+![修改 "身份验证方法" 下的 "自定义禁止密码" 列表](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
 
-## <a name="password-spray-attacks-and-third-party-compromised-password-lists"></a>密码喷射攻击和第三方已泄露的密码列表
+## <a name="password-spray-attacks-and-third-party-compromised-password-lists"></a>密码喷涂攻击和第三方泄露的密码列表
 
-一个关键 Azure AD 密码保护好处是帮助你防范密码喷射的攻击。 大多数密码喷射攻击不尝试攻击任何给定的单个帐户超过几次，因为这种行为会大大提高检测，通过帐户锁定或其他方式的可能性。 大多数密码喷射攻击因此依赖于提交只有少量的对每个企业中的帐户的已知最弱密码。 该技术允许攻击者可以快速搜索同时避免潜在的检测阈值在易被破坏帐户。
+密码保护权益 Azure AD 一项关键, 旨在帮助你防御密码喷涂攻击。 大多数密码喷涂攻击不会尝试多次攻击任何给定的帐户, 因为这种行为会通过帐户锁定或其他方式大幅增加检测的可能性。 因此, 大多数密码喷涂攻击依赖于只针对企业中的每个帐户提交少量的已知最弱密码。 此方法可让攻击者快速搜索容易受到攻击的帐户, 同时避免出现可能的检测阈值。
 
-Azure AD 密码保护旨在有效地阻止可能会使用在密码喷射攻击中，根据实际安全遥测数据由 Azure AD 所示的所有已知弱密码。  Microsoft 可察觉的枚举数以百万计的密码已泄露以前公开已知的安全漏洞中的第三方网站。 它是常见的第三方密码验证产品，基于对这些数以百万计的密码的暴力破解比较。 Microsoft 认为这种技术不是提高总体密码强度密码喷射攻击者使用的典型策略的最佳方法。
+Azure AD 密码保护旨在有效地阻止可能在密码喷涂攻击中使用的所有已知弱密码, 具体取决于 Azure AD 所查看的实际安全遥测数据。  Microsoft 对第三方网站进行了了解, 这些网站列举了在以前的公开已知安全漏洞内受到破坏的数百万密码。 第三方密码验证产品通常基于对数百万密码进行的暴力式比较。 Microsoft 认为此类技术不是根据密码喷涂攻击者使用的典型策略来提高密码强度的最佳方法。
 
 > [!NOTE]
-> 全局受禁的密码列表不是的 Microsoft 基于自己执行的任何第三方数据源，包括已泄露的密码列表。
+> Microsoft 全局禁止密码列表不基于任何第三方数据源, 包括已泄露的密码列表。
 
-尽管 Microsoft 的全局禁止的列表很小的某些第三方大容量列表相比，其安全影响因为事实源自实际密码喷射攻击，再加上这一事实的现实环境安全遥测数据，Microsoft密码验证算法使用智能模糊匹配的技术。 最终结果是它将有效地检测和阻止数以百万计的被用在企业中最常见的弱密码。 选择要将特定于组织的字词添加到自定义受禁的密码列表的客户还受益于相同的算法。
+尽管 Microsoft 全局禁止列表与一些第三方大容量列表相比很小, 但其安全效果却是从实际的密码喷涂攻击的真实安全遥测中获得的, 这也是 Microsoft密码验证算法使用智能模糊匹配技术。 最终的结果是, 它将有效检测和阻止在企业中使用数百万个最常见的弱密码。 选择将组织特定的条款添加到自定义禁止密码列表中的客户也将受益于相同的算法。
+
+可以在[Pa $ $word](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)上查看有关基于密码的安全问题的其他信息。
 
 ## <a name="on-premises-hybrid-scenarios"></a>本地混合方案
 
-保护纯云帐户很有帮助，但是许多组织维护着混合方案，包括本地 Windows Server Active Directory。 它是可以在安装 Azure AD 密码保护的 Windows Server Active Directory 代理在本地扩展到现有基础结构阻止的密码列表。 现在，更改、设置或重置本地密码的用户或管理员需要与纯云用户遵循相同的密码策略。
+保护纯云帐户很有帮助，但是许多组织维护着混合方案，包括本地 Windows Server Active Directory。 通过安装本地代理, 还可以将 Azure AD 密码保护的安全性优势扩展到 Windows Server Active Directory 环境中。 现在, 在 Active Directory 中更改或重置密码的用户和管理员需要遵从与仅限云的用户相同的密码策略。
 
 ## <a name="how-are-passwords-evaluated"></a>如何评估密码
 
-每当用户更改或重置其密码时，都会通过针对全局和自定义禁止密码列表（如果配置了后者）对其进行验证来检查新密码的强度和复杂程度。
+每当用户更改或重置其密码时, 将通过对照全局和自定义禁止密码列表 (如果已配置) 中的条款组合列表来验证新密码的强度和复杂性。
 
 即使用户的密码包含禁止密码，如果整体密码足够强，那么仍可以接受该密码。 将通过以下步骤评估新配置密码的整体强度，从而确定应接受还是拒绝该密码。
 
 ### <a name="step-1-normalization"></a>步骤 1：规范化
 
-新密码首先经过一个规范化处理过程。 此方法允许一小组已禁止的密码将映射到更广的潜在弱密码。
+新密码首先经过一个规范化处理过程。 此方法允许将一小部分禁止的密码映射到一组更大的可能弱密码。
 
 规范化分为两个部分。  首先，将所有大写字母都改为小写字母。  其次，执行常见的字符替换，例如：  
 
@@ -121,13 +123,13 @@ Azure AD 密码保护旨在有效地阻止可能会使用在密码喷射攻击�
 
 “abcdeg”（最后一个字符由“f”变为“g”）    ** ；“abcdefg”（末尾附加了“g”）   ** ；“abcde”（删除了末尾的尾随“f”）     **
 
-上述每个密码都不与禁止的密码“abcdef”精确匹配。 但是，由于每个示例是 1 被阻止的字词 abcdef 的编辑距离内，它们均被视为作为"abcdef"的匹配项。
+上述每个密码都不与禁止的密码“abcdef”精确匹配。 但是, 由于每个示例都处于禁止字词 "abcdef" 的编辑距离 1, 因此它们被视为与 "abcdef" 匹配。
 
 #### <a name="substring-matching-on-specific-terms"></a>子字符串匹配（特定字词）
 
 在经过规范化处理的密码上使用子字符串匹配，以检查用户的名字和姓氏以及租户名称（请注意，在 Active Directory 域控制器上验证密码时，不会执行租户名称匹配）。
 
-示例： 假设我们有一个用户，Pol，想要重置其密码为"P0l123fb"。 标准化后，此密码将变为"pol123fb"。 匹配的子字符串将查找该密码包含用户的名字"Pol"。 即使"P0l123fb"不是特定于任一受禁的密码列表，匹配的子字符串在密码中找到"Pol"。 因此，该密码将被拒绝。
+示例: 假设我们有一个用户 Registry.pol, 该用户要将其密码重置为 "P0l123fb"。 规范化后, 此密码将变为 "pol123fb"。 子字符串匹配发现密码包含用户的名字 "Registry.pol"。 即使 "P0l123fb" 不是专门针对禁止的密码列表, 也在密码中找到了匹配的 "Registry.pol" 的子字符串。 因此，该密码将被拒绝。
 
 #### <a name="score-calculation"></a>分数计算
 
@@ -135,7 +137,7 @@ Azure AD 密码保护旨在有效地阻止可能会使用在密码喷射攻击�
 
 1. 为在用户密码中找到的每个禁止密码提供一个分数。
 2. 为每个剩余的唯一字符提供一个分数。
-3. 密码必须至少五 （5），才能被接受的点。
+3. 密码必须至少为五 (5) 点才能被接受。
 
 接下来的两个示例假定 Contoso 正在使用 Azure AD 密码保护，并且在其自定义列表中包含“contoso”。 我们还假定全局列表中包含“blank”。
 
@@ -143,16 +145,16 @@ Azure AD 密码保护旨在有效地阻止可能会使用在密码喷射攻击�
 
 经过规范化处理后，此密码变为“contosoblank12”。 匹配过程发现此密码包含两个禁止密码：contoso 和 blank。 然后为此密码提供一个分数：
 
-[contoso] + [空白] + [1] + [2] = 4 个点由于此密码是在五 （5） 点，将被拒绝。
+[contoso] + [空白] + [1] + [2] = 4 点, 因为此密码低于五 (5) 点, 将被拒绝。
 
 示例：用户将其密码更改为“ContoS0Bl@nkf9!”。
 
 经过规范化处理后，此密码变为“contosoblankf9!”。 匹配过程发现此密码包含两个禁止密码：contoso 和 blank。 然后为此密码提供一个分数：
 
-[contoso] + [空白] + [f] + [9] + [！] = 5 点由于此密码是至少五 （5） 点，接受它。
+[contoso] + [空白] + [f] + [9] + [!] = 5 点, 因为此密码至少为五 (5) 点, 因此接受此密码。
 
    > [!IMPORTANT]
-   > 请注意，根据持续的安全性分析和研究，禁止密码算法以及全局列表可以并且会随时在 Azure 中进行更改。 对于本地 DC 代理服务，更新的算法才会生效后的 DC 代理软件重新安装。
+   > 请注意，根据持续的安全性分析和研究，禁止密码算法以及全局列表可以并且会随时在 Azure 中进行更改。 对于本地 DC 代理服务, 更新的算法只有在重新安装 DC 代理软件之后才会生效。
 
 ## <a name="license-requirements"></a>许可要求
 
@@ -162,7 +164,7 @@ Azure AD 密码保护旨在有效地阻止可能会使用在密码喷射攻击�
 | 从本地 Windows Server Active Directory 同步的用户 | Azure AD Premium P1 或 P2 | Azure AD Premium P1 或 P2 |
 
 > [!NOTE]
-> 不会同步到 Azure Active Directory 的本地 Windows Server Active Directory 用户还利用基于现有的许可为同步的用户的 Azure AD 密码保护的优点。
+> 本地 Windows Server Active Directory 不同步到 Azure Active Directory 的用户也可以基于已同步用户的现有许可提供 Azure AD 密码保护的好处。
 
 可以在 [Azure Active Directory 定价站点](https://azure.microsoft.com/pricing/details/active-directory/)上找到包括成本在内的其他许可信息。
 

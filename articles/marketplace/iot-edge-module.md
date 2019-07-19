@@ -7,13 +7,13 @@ manager: pabutler
 ms.service: marketplace
 ms.topic: article
 ms.date: 09/22/2018
-ms.author: qianw211
-ms.openlocfilehash: c734461f1a57c100b4a00ab5c309659f8b0e903a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: pabutler
+ms.openlocfilehash: 3010b63c7c4c575d915789c19b60710194c79196
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964019"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874673"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -84,7 +84,7 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 - 请[在 Microsoft 合作伙伴网络中注册](https://partner.microsoft.com/membership)。
 - 创建 [Microsoft 帐户](https://account.microsoft.com/account/)（Azure 市场交易套餐的必需步骤；其他的建议步骤）。
-- 提交[市场注册表](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)。 请参阅如何[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)有关详细信息。
+- 提交[市场注册表](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)。 有关详细信息, 请参阅如何[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
 
 如果已注册并正在创建新套餐或正在使用现有套餐，
 

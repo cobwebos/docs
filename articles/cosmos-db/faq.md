@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 89c04a55138d57fd2ff37a96f2bc92b12d1780d9
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5cbbd507352471f5e093ef018de4b0c849aad442
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341234"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68000794"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
@@ -81,14 +81,14 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 
 以下条件适用于“试用 Azure Cosmos DB”订阅：
 
-* 一个[吞吐量预配的容器](./set-throughput.md#set-throughput-on-a-container)SQL、 Gremlin API 和表帐户对于每个订阅。
-* 最多三个[吞吐量预配集合](./set-throughput.md#set-throughput-on-a-container)MongoDB 帐户对于每个订阅。
-* 一个[吞吐量预配的数据库](./set-throughput.md#set-throughput-on-a-database)每个订阅。 预配吞吐量数据库可以包含任意数量的容器内。
+* 针对 SQL、Gremlin API 和表帐户, 每个订阅[预配了一个吞吐量容器](./set-throughput.md#set-throughput-on-a-container)。
+* 对于 MongoDB 帐户, 每个订阅最多可[预配](./set-throughput.md#set-throughput-on-a-container)三个吞吐量。
+* 为每个订阅[预配](./set-throughput.md#set-throughput-on-a-database)了一个吞吐量。 已预配吞吐量的数据库可以包含任意数量的容器。
 * 10-GB 存储容量。
 * 以下 [Azure 区域](https://azure.microsoft.com/regions/)中提供全局复制：美国中部、北欧和东南亚
-* 5 个 K RU/s 预配在容器级别时的最大吞吐量。
-* 20 K RU/s 的数据库级别的预配时的最大吞吐量。
-* 订阅在 30 天后过期，并且可以扩展到最大总的前 31 天。
+* 在容器级别预配时, 最大吞吐量为 5 K RU/s。
+* 在数据库级别预配时, 最大吞吐量为 20 K RU/s。
+* 订阅将在30天后过期, 最多可以扩展到31天。
 * 不能为“试用 Azure Cosmos DB”帐户创建 Azure 支持票据；但会为拥有现有支持计划的订阅者提供支持。
 
 ## <a name="set-up-azure-cosmos-db"></a>设置 Azure Cosmos DB
@@ -99,7 +99,7 @@ Azure 门户中提供了 Azure Cosmos DB。 首先注册 Azure 订阅。 注册�
 
 ### <a name="what-is-a-master-key"></a>什么是主密钥？
 
-主密钥是用于访问帐户的所有资源的安全令牌。 拥有此密钥的人对数据库帐户中的所有资源具有读取和写入访问权。 分发主密钥时要格外小心。 主要主密钥和辅助主密钥位于**密钥**边栏选项卡[Azure 门户][azure-portal]。 有关密钥的详细信息，请参阅[查看、复制和重新生成访问密钥](manage-with-cli.md#list-account-keys)。
+主密钥是用于访问帐户的所有资源的安全令牌。 拥有此密钥的人对数据库帐户中的所有资源具有读取和写入访问权。 分发主密钥时要格外小心。 在[Azure 门户][azure-portal]的 "**密钥**" 边栏选项卡中提供主要主密钥和辅助主密钥。 有关密钥的详细信息，请参阅[查看、复制和重新生成访问密钥](manage-with-cli.md#list-account-keys)。
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>可以将 PreferredLocations 设置为哪些区域？
 
@@ -151,7 +151,7 @@ GitHub 上提供了 SQL API [.NET](sql-api-dotnet-samples.md)、[Java](https://g
 
 ### <a name="how-do-i-create-a-database"></a>我如何创建数据库？
 
-可以按照[添加集合](create-sql-api-dotnet.md#create-collection-database)中所述使用 [Azure 门户](https://portal.azure.com)，使用某个 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 或使用 [REST API](/rest/api/cosmos-db/) 来创建数据库。
+可以按照[添加集合](create-sql-api-java.md#add-a-container)中所述使用 [Azure 门户](https://portal.azure.com)，使用某个 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 或使用 [REST API](/rest/api/cosmos-db/) 来创建数据库。
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>我如何设置用户和权限？
 
@@ -159,7 +159,7 @@ GitHub 上提供了 SQL API [.NET](sql-api-dotnet-samples.md)、[Java](https://g
 
 ### <a name="does-the-sql-api-support-sql"></a>SQL API 是否支持 SQL？
 
-由 SQL API 帐户支持的 SQL 查询语言是 SQL Server 所支持的查询功能的增强子集。 Azure Cosmos DB SQL 查询语言通过基于 JavaScript 的用户定义函数 (UDF)，提供丰富的分层和关系运算符以及扩展性。 JSON 语法允许将 JSON 文档模型化为具有标签化节点的树状，由 Azure Cosmos DB 自动索引技术及 Azure Cosmos DB 的 SQL 查询方言使用。 有关使用 SQL 语法的信息，请参阅[SQL 查询][query]一文。
+由 SQL API 帐户支持的 SQL 查询语言是 SQL Server 所支持的查询功能的增强子集。 Azure Cosmos DB SQL 查询语言通过基于 JavaScript 的用户定义函数 (UDF)，提供丰富的分层和关系运算符以及扩展性。 JSON 语法允许将 JSON 文档模型化为具有标签化节点的树状，由 Azure Cosmos DB 自动索引技术及 Azure Cosmos DB 的 SQL 查询方言使用。 有关使用 SQL 语法的信息, 请参阅[Sql 查询][query]一文。
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>SQL API 是否支持 SQL 聚合函数？
 
@@ -203,7 +203,7 @@ SQL API 通过 JavaScript 存储过程和触发器支持语言集成式事务。
 
 ### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>什么是 Azure Cosmos DB 的用于 MongoDB 的 API？
 
-Azure Cosmos DB 的 API for MongoDB 是一个线路协议兼容层，允许应用程序使用现有的、社区支持的 SDK 和用于 MongoDB 的驱动程序轻松、透明地与本机 Azure Cosmos DB 数据库引擎通信。 开发人员现在可以使用现有的 MongoDB 工具链和技术，生成能够充分利用 Azure Cosmos DB 的应用程序。 开发人员受益于 Azure Cosmos DB 的独特功能，其中包括全局分布多主机复制，自动索引、 备份维护、 得到资金支持的服务级别协议 (Sla) 等。
+Azure Cosmos DB 的 API for MongoDB 是一个线路协议兼容层，允许应用程序使用现有的、社区支持的 SDK 和用于 MongoDB 的驱动程序轻松、透明地与本机 Azure Cosmos DB 数据库引擎通信。 开发人员现在可以使用现有的 MongoDB 工具链和技术，生成能够充分利用 Azure Cosmos DB 的应用程序。 开发人员受益于 Azure Cosmos DB 的独特功能, 其中包括具有多主机复制的全局分发、自动索引、备份维护、财务支持的服务级别协议 (Sla) 等。
 
 ### <a name="how-do-i-connect-to-my-database"></a>如何连接到我的数据库？
 
@@ -217,7 +217,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 
 除了常见的 MongoDB 错误代码外，Azure Cosmos DB 的用于 MongoDB 的 API 还有自己的特定错误代码：
 
-| 错误               | 代码  | 描述  | 解决方案  |
+| Error               | 代码  | 描述  | 解决方案  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 使用的请求单位总数超过了集合的预配请求单位率，已达到限制。 | 考虑从 Azure 门户中对分配给一个容器或一组容器的吞吐量进行缩放，或者重试。 |
 | ExceededMemoryLimit | 16501 | 作为一种多租户服务，操作已超出客户端的内存配额。 | 通过限制性更强的查询条件缩小操作的作用域，或者通过 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)联系支持人员。 <br><br>示例：<em>&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name:"Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
@@ -230,7 +230,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 
 ### <a name="how-can-i-use-the-table-api-offering"></a>如何使用表 API 产品/服务？
 
-Azure Cosmos DB 表 API 现已推出[Azure 门户][azure-portal]。 首先必须注册 Azure 订阅。 注册成功后，可将 Azure Cosmos DB 表 API 帐户添加到 Azure 订阅，然后向帐户添加表。
+[Azure 门户][azure-portal]提供了 Azure Cosmos DB 表 API。 首先必须注册 Azure 订阅。 注册成功后，可将 Azure Cosmos DB 表 API 帐户添加到 Azure 订阅，然后向帐户添加表。
 
 可以在 [Azure Cosmos DB 表 API 简介](table-introduction.md)中找到支持的语言和相关的快速入门。
 
@@ -742,13 +742,13 @@ Apache Cassandra SDK 的使用 CQLv3 的客户端驱动程序用于客户端程�
 
 是的，可以使用正则语法创建复合分区键。
 
-### <a name="can-i-use-stable-loader-for-data-loading"></a>是否可以使用 sstable 加载程序加载数据？
+### <a name="can-i-use-sstableloader-for-data-loading"></a>是否可以使用 sstableloader 来加载数据？
 
-否，稳定的加载程序不受支持。
+不支持, 不支持 sstableloader。
 
 ### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>本地 Apache Cassandra 群集是否可与 Azure Cosmos DB 的 Cassandra API 配对？
 
-目前，Azure Cosmos DB 针对云环境提供了优化的体验，且不产生操作开销。 如果需要配对，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送邮件并在其中提供你的方案的说明。 我们正在努力为帮助对上的内部部署的/不同云 Cassandra 群集到 Cosomos DB 的 Cassandra API 的产品/服务。
+目前，Azure Cosmos DB 针对云环境提供了优化的体验，且不产生操作开销。 如果需要配对，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送邮件并在其中提供你的方案的说明。 我们正在致力于帮助将本地/不同云 Cassandra 群集与 Cosomos DB 的 Cassandra API 配对。
 
 ### <a name="does-cassandra-api-provide-full-backups"></a>Cassandra API 是否提供完整备份？
 
@@ -763,12 +763,12 @@ Azure Cosmos DB Cassandra API 借助 Azure Cosmos DB 的全球分布式平台。
 
 ### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Apache Cassandra API 是否默认对实体的所有属性编制索引？
 
-Cassandra API 计划来支持辅助索引编制，以帮助创建选择性索引对某些属性。 
+Cassandra API 计划支持辅助索引, 以帮助对某些属性创建选择性索引。 
 
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>是否可以在本地将新的 Cassandra API SDK 用于模拟器？
 
-支持此功能是。
+是支持这种情况。
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-change-feed-and-other-functionality-will-these-capabilities-be-added-to-the-cassandra-api"></a>平台形式的 Azure Cosmos DB 似乎拥有许多功能，例如，更改源和其他功能。 这些功能是否将添加到 Cassandra API 中？
 

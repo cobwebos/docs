@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 12/03/2018
+ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: f596fb3a066017f0236de5b79586891dd21efb11
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443980"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227948"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
 
 在本文中，你可以了解如何将已部署到 Azure Kubernetes 群集 (AKS) 的 Azure 机器学习服务中的输入模型数据收集到 Azure Blob 存储中。 
 
 启用后，收集的这些数据可帮助你：
-* [监视数据偏差](how-to-monitor-data-drift.md)根据生产数据进入您的模型
+* [监视数据偏离](how-to-monitor-data-drift.md), 因为生产数据进入你的模型
 
 * 更好地决定何时重新训练或优化模型
 
@@ -48,7 +48,7 @@ Blob 中输出数据的路径遵循以下语法：
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 

@@ -6,13 +6,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.author: rkmanda
-ms.openlocfilehash: 7479d9a230bd28c2ed2e4c8c79ba9301028af36c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: philmea
+ms.openlocfilehash: 32caebf8ea216050427f4400102cf56ffc657b55
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60779366"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875250"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
 
@@ -32,7 +32,7 @@ ms.locfileid: "60779366"
 
 ## <a name="intra-region-ha"></a>区域内部 HA
 
-IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内部 HA。 [IoT 中心服务发布的 SLA](https://azure.microsoft.com/support/legal/sla/iot-hub) 是利用这些冗余实现的。 IoT 解决方案开发人员无需完成任何额外工作就能利用这些 HA 功能。 尽管 IoT 中心提供相当高的运行时间保证，但与任何分布式计算平台一样，暂时性的故障仍有可能出现。 如果你刚开始使用你的解决方案迁移到云，从内部部署解决方案，你需要把重点放从优化"平均故障时间"转变为"平均恢复时间"。 换而言之，以混合模式操作云时，暂时性故障被视为正常。 必须在与云应用程序交互的组件中内置[重试策略](iot-hub-reliability-features-in-sdks.md)，以处理暂时性故障。
+IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内部 HA。 [IoT 中心服务发布的 SLA](https://azure.microsoft.com/support/legal/sla/iot-hub) 是利用这些冗余实现的。 IoT 解决方案开发人员无需完成任何额外工作就能利用这些 HA 功能。 尽管 IoT 中心提供相当高的运行时间保证，但与任何分布式计算平台一样，暂时性的故障仍有可能出现。 如果只是开始从本地解决方案将解决方案迁移到云, 则你的关注点需要从优化 "平均故障时间" 转换为 "平均恢复时间"。 换而言之，以混合模式操作云时，暂时性故障被视为正常。 必须在与云应用程序交互的组件中内置[重试策略](iot-hub-reliability-features-in-sdks.md)，以处理暂时性故障。
 
 > [!NOTE]
 > 某些 Azure 服务还通过与[可用性区域 (AZ)](../availability-zones/az-overview.md) 集成，在区域中提供附加的可用性层。 IoT 中心服务目前不支持 AZ。
@@ -64,7 +64,7 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 >
 > - 故障转移后，可以借助前面配置的相同订阅来使用通过事件网格发出的事件，前提是这些事件网格订阅仍然可用。
 >
-> - 在路由到 blob 存储时，请列出 blob，再循环访问它们，以确保读取所有容器而不进行任何分区假设。 在 Microsoft 启动故障转移或手动故障转移期间，分区范围可能会发生更改。 若要了解如何枚举的 blob，请参阅列表[路由到 blob 存储](iot-hub-devguide-messages-d2c.md#azure-blob-storage)。
+> - 在路由到 blob 存储时，请列出 blob，再循环访问它们，以确保读取所有容器而不进行任何分区假设。 在 Microsoft 启动的故障转移或手动故障转移过程中, 分区范围可能会发生更改。 若要了解如何枚举 blob 列表, 请参阅[路由到 blob 存储](iot-hub-devguide-messages-d2c.md#azure-blob-storage)。
 
 ### <a name="microsoft-initiated-failover"></a>Microsoft 发起的故障转移
 
@@ -110,14 +110,14 @@ IoT 解决方案中对部署拓扑的完整处理不在本文的介绍范围内�
 
 概括而言，为了实现 IoT 中心的区域故障转移模型，需要执行以下步骤：
 
-* **辅助 IoT 中心和设备路由逻辑**:如果主要区域服务中断，设备必须开始连接到次要区域。 由于大多数服务状态感知的性质，解决方案管理员通常触发区域间的故障转移过程。 要使新终结点与设备通信，同时保留过程控制权，最佳方式是让它们定期在*监护*服务中检查是否存在当前活动的终结点。 该监护服务可以是 Web 应用程序，可使用 DNS 重定向技术将它复制并使其可访问（例如，使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)）。
+* **辅助 IoT 中心和设备路由逻辑**:如果主要区域中的服务中断, 设备必须开始连接到次要区域。 由于大多数服务状态感知的性质，解决方案管理员通常触发区域间的故障转移过程。 要使新终结点与设备通信，同时保留过程控制权，最佳方式是让它们定期在*监护*服务中检查是否存在当前活动的终结点。 该监护服务可以是 Web 应用程序，可使用 DNS 重定向技术将它复制并使其可访问（例如，使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)）。
 
    > [!NOTE]
    > IoT 中心服务不是 Azure 流量管理器中受支持的终结点类型。 我们建议在提议的监护服务中实现终结点运行状况探测 API，使之与 Azure 流量管理器集成。
 
-* **标识注册表复制**:为了可用，辅助 IoT 中心必须包含可以连接到解决方案的所有设备标识。 解决方案应该保留设备标识的异地复制备份，并在切换设备的活动终结点之前将其上传到辅助 IoT 中心。 IoT 中心的设备标识导出功能在此背景下非常有用。 有关详细信息，请参阅 [IoT 中心开发人员指南 - 标识注册表](iot-hub-devguide-identity-registry.md)。
+* **标识注册表复制**:若要使用, 辅助 IoT 中心必须包含能够连接到解决方案的所有设备标识。 解决方案应该保留设备标识的异地复制备份，并在切换设备的活动终结点之前将其上传到辅助 IoT 中心。 IoT 中心的设备标识导出功能在此背景下非常有用。 有关详细信息，请参阅 [IoT 中心开发人员指南 - 标识注册表](iot-hub-devguide-identity-registry.md)。
 
-* **合并逻辑**:当主要区域再次可用时，所有状态和已在辅助站点中创建的数据必须都迁移回主要区域。 此状态和数据主要与设备标识和应用程序元数据相关，必须与主要 IoT 中心以及主要区域中的任何其他应用程序特定存储合并。 
+* **合并逻辑**:当主要区域再次变得可用时, 在辅助站点中创建的所有状态和数据都必须迁移回到主要区域。 此状态和数据主要与设备标识和应用程序元数据相关，必须与主要 IoT 中心以及主要区域中的任何其他应用程序特定存储合并。 
 
 为简化此步骤，应当使用幂等操作。 幂等操作可以将副作用降到最低，包括来自最终一致的事件分布的副作用，以及来自事件的重复项目或失序传送的副作用。 此外，应用程序逻辑应该设计为能够容许潜在的不一致或稍微过期的状态。 之所以发生此情况是因为系统需要额外的时间来根据恢复点目标 (RPO) 修复自身。
 

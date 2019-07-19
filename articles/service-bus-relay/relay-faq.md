@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: c6ea5e72f70620004b4b00be0c779893a3b2ad90
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f9f182a459f9a38c96bdf923998d1cdfee8fc3ac
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706190"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277962"
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题
 
@@ -42,7 +42,7 @@ ms.locfileid: "67706190"
 本部分回答了一些关于中继定价结构的常见问题。 若要了解一般的 Azure 定价信息，还可以参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。 有关中继定价的完整信息，请参阅[服务总线定价详细信息][Pricing overview]。
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>如何对混合连接和 WCF 中继收费？
-有关中继定价的完整信息，请参阅[混合连接和 WCF 中继][Pricing overview]服务总线定价详细信息页上的表。 除该页上标示的价格外，还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
+有关中继定价的完整信息, 请参阅服务总线定价详细信息页上的[混合连接和 WCF 中继][Pricing overview]表。 除该页上标示的价格外，还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
 
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>使用混合连接时怎样计费？
 以下是三种示例计费方案，适用于混合连接：
@@ -125,10 +125,10 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 
 ## <a name="troubleshooting"></a>疑难解答
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Azure 中继 API 所生成的异常有哪些，可以采用哪些建议操作？
-有关常见异常以及可以采取的建议的操作的说明，请参阅[中继异常][Relay exceptions]。
+有关常见异常以及可以采取的建议操作的说明, 请参阅[中继异常][Relay exceptions]。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>什么是共享访问签名？哪些语言可以用来生成签名？
-共享访问签名 (SAS) 是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在节点、 PHP、 Java、 C 中生成自有签名的信息和C#，请参阅[服务总线的共享的访问签名身份验证][Shared Access Signatures]。
+共享访问签名 (SAS) 是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 node.js、PHP、Python、Java、C 和C#中生成自己的签名的信息, 请参阅[使用共享访问签名进行服务总线身份验证][Shared Access Signatures]。
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>是否可以将中继终结点加入允许列表？
 是的。 中继客户端使用完全限定的域名连接到 Azure 中继服务。 客户可以在支持 DNS 允许列表的防火墙上为 `*.servicebus.windows.net` 添加一个条目。

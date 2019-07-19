@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 46e6858376fa70b4b57b6106f8292b842f206d01
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 12a80f77720a6e93a6631947f13247b667c34897
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480236"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254735"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -279,7 +279,7 @@ module.exports = function(context, myQueueItem) {
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
+|**名称** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|要监视的队列的名称。  仅在监视队列的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**subscriptionName**|**SubscriptionName**|要监视的订阅的名称。 仅在监视主题的情况下设置，不为队列设置。|
@@ -295,7 +295,7 @@ module.exports = function(context, myQueueItem) {
 * `string` - 如果消息是文本。
 * `byte[]` - 适用于二进制数据。
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
-* `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法的反序列化消息。
+* `BrokeredMessage`-提供反序列化的消息, 其中包含[BrokeredMessage\<. GetBody T > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)方法。
 
 这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x，请使用 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
 
@@ -315,7 +315,7 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 
 服务总线触发器提供了几个[元数据属性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 类的属性。
 
-|属性|Type|描述|
+|属性|type|描述|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|传递次数。|
 |`DeadLetterSource`|`string`|死信源。|
@@ -595,7 +595,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
+|**名称** | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在发送主题消息的情况下设置，不为队列设置。|
 |**连接**|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyServiceBus”，函数运行时将会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。|

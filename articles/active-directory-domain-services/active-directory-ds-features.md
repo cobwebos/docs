@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: e49a37ec95a8cf26a2c63bd90759da35fc537e41
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e0f38ed8367f076c9f9c4da77440bb3e9603d514
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67474238"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234210"
 ---
-# <a name="azure-ad-domain-services"></a>Azure AD 域服务
-## <a name="features"></a>功能
+# <a name="features-provided-by-azure-active-directory-domain-services"></a>Azure Active Directory 域服务提供的功能
+
 可在 Azure AD 域服务托管域中使用以下功能。
 
 * **简单的部署体验：** 只需单击几下鼠标，就能为 Azure AD 目录启用 Azure AD 域服务。 托管域包括仅限云的用户帐户和从本地目录同步的用户帐户。
@@ -32,7 +32,7 @@ ms.locfileid: "67474238"
 * **使用自定义名称创建域：** 可以使用 Azure AD 域服务创建具有自定义名称的域（例如“contoso100.com”）。 可以使用已验证或未验证的域名。 还可以选择性地使用 Azure AD 目录提供的内置域后缀（即“*.onmicrosoft.com”）来创建域。
 * **与 Azure AD 集成：** 无需配置或管理向 Azure AD 域服务的复制。 Azure AD 域服务中自动提供来自 Azure AD 目录的用户帐户、组成员身份和用户凭据（密码）。 新用户、组或者对 Azure AD 租户或本地目录中的属性所做的更改会自动同步到 Azure AD 域服务。
 * **NTLM 和 Kerberos 身份验证：** 借助对 NTLM 和 Kerberos 身份验证的支持，可以部署依赖于 Windows 集成身份验证的应用程序。
-* **使用企业凭据/密码：** Azure AD 租户中用户的密码可与 Azure AD 域服务配合使用。 用户可以使用其公司凭据对将计算机加入域，以交互方式或通过远程桌面登录并对托管域进行身份验证。
+* **使用企业凭据/密码：** Azure AD 租户中用户的密码可与 Azure AD 域服务配合使用。 用户可以使用其公司凭据来加入域、以交互方式或通过远程桌面登录, 并对托管域进行身份验证。
 * **LDAP 绑定和 LDAP 读取支持：** 可以使用依赖于 LDAP 绑定的应用程序，在 Azure AD 域服务所服务的域中验证用户的身份。 此外，使用 LDAP 读取操作从目录查询用户/计算机属性的应用程序也可以针对 Azure AD 域服务正常运行。
 * **安全 LDAP (LDAPS)：** 通过安全 LDAP (LDAPS) 启用对目录的访问。 默认情况下，可在虚拟网络中使用安全 LDAP 访问。 但是，也可以选择为 Internet 启用安全 LDAP 访问。
 * **组策略：** 可为每个用户和计算机容器使用单个内置 GPO，针对用户帐户和已加入域的计算机强制实施符合所需安全策略的规范。 还可以创建自己的自定义 GPO 并将其分配到自定义组织单位来[管理组策略](manage-group-policy.md)。

@@ -3,16 +3,17 @@ title: 使用服务主体的 Azure 容器注册表身份验证
 description: 使用 Azure Active Directory 服务主体允许访问专用容器注册表中的映像。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 5d8904b5906adbdab68989b3a5cf9c3975c23533
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97c45a009b155eea7bc61a9dd337090b9e3c1b42
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61347056"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309947"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>使用服务主体的 Azure 容器注册表身份验证
 
@@ -34,7 +35,7 @@ Azure AD“服务主体”  提供对订阅中的 Azure 资源的访问权限。
 
 在**无外设方案**中，应当使用服务主体来提供注册表访问。 即，任何必须以自动或其他无人参与方式来推送或拉取容器映像的应用程序、服务或脚本。
 
-若要对注册表进行个人访问，例如手动将容器映像拉取到开发工作站时，则应当改用你自己的 [Azure AD 标识](container-registry-authentication.md#individual-login-with-azure-ad)进行注册表访问（例如使用 [az acr login][az-acr-login]）。
+若要对注册表进行单独访问 (例如, 当你手动将容器映像拉取到开发工作站时), 应改为使用你自己的[Azure AD 标识](container-registry-authentication.md#individual-login-with-azure-ad)进行注册表访问 (例如, 使用[az acr login][az-acr-login])。
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 

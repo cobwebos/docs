@@ -1,6 +1,6 @@
 ---
-title: 登录到配置为密码单一登录的 Azure AD 库应用程序时出现的问题 | Microsoft Docs
-description: 介绍问题区域以便为对登录到配置为密码单一登录的 Azure AD 库应用程序相关问题进行故障排除提供指导
+title: 使用 "访问面板" 中的 "基于密码的单一登录 (SSO)" |Microsoft Docs
+description: 讨论了用于解决与登录到为密码单一登录配置的 Azure AD 库应用程序相关的问题的问题区域。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d95703166c3e1ed8034ea8c0d813c54759603fce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c020f3ab3ea7ed96b72d0490b717225d44c4fac1
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825053"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277743"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>登录到配置为密码单一登录的 Azure AD 库应用程序时出现的问题
 

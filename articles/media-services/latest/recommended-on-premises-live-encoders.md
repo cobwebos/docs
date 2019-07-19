@@ -6,15 +6,15 @@ keywords: 编码;编码器;媒体
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 06/12/2019
+ms.date: 08/16/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: e31ad51121b1b198e2d444e70c3f482b208ef105
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1f152f7f94c12beecf015d9389ed85cb310573bd
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840141"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297726"
 ---
 # <a name="recommended-live-streaming-encoders"></a>建议的实时传送视频流编码器
 
@@ -61,7 +61,7 @@ ms.locfileid: "67840141"
 - Media Excel Hero Live 和 Hero 4K (UHD/HEVC)
 
 > [!TIP]
->  如果您正在传输多个语言版本 （例如，一个英语的音频轨迹和一个西班牙语的音频轨道） 的实时事件，可以实现此目的使用媒体 Excel 实时编码器配置为将实时源发送到传递的实时事件。
+>  如果要以多种语言 (例如, 一个英语音轨和一个西班牙语音轨) 流式传输实时事件, 则可以使用配置为将实时源发送到传递实时事件的媒体 Excel 实时编码器来实现此目的。
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>配置本地实时编码器设置
 
@@ -97,7 +97,7 @@ ms.locfileid: "67840141"
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
 11. 运行实时编码器大约 10 分钟。
 12. 停止实时事件。 
-13. 使用 [Azure Media Player](http://aka.ms/azuremediaplayer) 等播放器观看存档的资产，确保以各种质量水平播放时不会出现明显的问题。 或者，在实时会话中通过预览 URL 进行观看和验证。
+13. 使用 [Azure Media Player](https://aka.ms/azuremediaplayer) 等播放器观看存档的资产，确保以各种质量水平播放时不会出现明显的问题。 或者，在实时会话中通过预览 URL 进行观看和验证。
 14. 记录资产 ID、为实时存档发布的流式处理 URL，以及实时编码器所使用的设置和版本。
 15. 在创建每个示例后重置实时事件状态。
 16. 对编码器支持的所有配置重复（有或无广告信号、字幕或不同编码速度）步骤 5 到 15。
@@ -116,18 +116,18 @@ ms.locfileid: "67840141"
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
 11. 运行实时编码器大约 10 分钟。
 12. 停止实时事件。
-13. 使用 [Azure Media Player](http://aka.ms/azuremediaplayer) 等播放器观看存档的资产，确保以各种质量水平播放时不会出现明显的问题。 或者，在实时会话中通过预览 URL 进行观看和验证。
+13. 使用 [Azure Media Player](https://aka.ms/azuremediaplayer) 等播放器观看存档的资产，确保以各种质量水平播放时不会出现明显的问题。 或者，在实时会话中通过预览 URL 进行观看和验证。
 14. 记录资产 ID、为实时存档发布的流式处理 URL，以及实时编码器所使用的设置和版本。
 15. 在创建每个示例后重置实时事件状态。
 16. 对编码器支持的所有配置重复（有或无广告信号、字幕或不同编码速度）步骤 5 到 15。
 
 ### <a name="longevity-verification"></a>使用寿命验证
 
-遵循[直通实时事件验证](#pass-through-live-event-verification)中的相同步骤（步骤 11 除外）。 <br/>运行实时编码器一周或更长时间，而不是 10 分钟。 使用 [Azure Media Player](http://aka.ms/azuremediaplayer) 等播放器不时观看实时传送视频流（或存档的资产），确保播放没有明显问题。
+遵循[直通实时事件验证](#pass-through-live-event-verification)中的相同步骤（步骤 11 除外）。 <br/>运行实时编码器一周或更长时间，而不是 10 分钟。 使用 [Azure Media Player](https://aka.ms/azuremediaplayer) 等播放器不时观看实时传送视频流（或存档的资产），确保播放没有明显问题。
 
 ### <a name="email-your-recorded-settings"></a>通过电子邮件发送记录的设置
 
-最后，通过电子邮件将记录的设置和实时存档参数作为通知发送到 Azure 媒体服务 (amslived@microsoft.com)，告知所有自我验证检查已通过。 另请提供联系信息，以方便跟进。 在此过程中如有任何问题，可以联系 Azure 媒体服务团队。
+最后，通过电子邮件将记录的设置和实时存档参数作为通知发送到 Azure 媒体服务 (amshelp@microsoft.com)，告知所有自我验证检查已通过。 另请提供联系信息，以方便跟进。 在此过程中如有任何问题，可以联系 Azure 媒体服务团队。
 
 ## <a name="next-steps"></a>后续步骤
 

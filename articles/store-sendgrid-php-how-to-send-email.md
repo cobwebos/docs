@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
-ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: db3333aa52782ceb949ef3f46a903b618f6e3f2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: erikre
+ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
+ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60931222"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870913"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>如何通过 PHP 使用 SendGrid 电子邮件服务
 
@@ -117,7 +118,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 ```
 
 ### <a name="web-api"></a>Web API
-使用 PHP 的 [curl 函数][curl function]来通过 SendGrid Web API 发送电子邮件。
+使用 PHP 的[卷函数][curl function]通过 SENDGRID Web API 发送电子邮件。
 
 ```php
 <?php

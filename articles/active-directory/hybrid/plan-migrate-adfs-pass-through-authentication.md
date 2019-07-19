@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：PTA 到 Azure ad 从联合身份验证迁移
+title: Azure AD Connect：从联合迁移到 PTA 进行 Azure AD
 description: 本文提供有关将混合标识环境从联合身份验证转移到直通身份验证的信息。
 services: active-directory
 author: billmath
@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27f5a7d8bb6dc347414d84d8cf536f1c2d7a9910
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba63f9c04e062741eded9c39e44ba64281931387
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109340"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311350"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的直通身份验证
 
@@ -77,8 +77,8 @@ ms.locfileid: "67109340"
    ![“其他任务”页上的“查看当前配置”选项屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
 3. 在“查看解决方案”页上，滚动到“Active Directory 联合身份验证服务(AD FS)”。  <br />
 
-   * 如果此部分显示了 AD FS 配置，则可以肯定 AD FS 最初是使用 Azure AD Connect 配置的。 可以使用 Azure AD Connect 的“更改用户登录”选项将域从联合标识转换为托管标识。  有关该过程的详细信息，请参阅“选项 1：  使用 Azure AD Connect 配置直通身份验证”部分。
-   * 如果当前设置中未列出 AD FS，则必须使用 PowerShell 手动将域从联合标识转换为托管标识。 有关该过程的详细信息，请参阅“选项 2：  使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到直通身份验证”部分。
+   * 如果此部分显示了 AD FS 配置，则可以肯定 AD FS 最初是使用 Azure AD Connect 配置的。 可以使用 Azure AD Connect 的“更改用户登录”选项将域从联合标识转换为托管标识。  有关此过程的详细信息, 请参阅部分**选项 A:** 使用 Azure AD Connect 配置直通身份验证”部分。
+   * 如果当前设置中未列出 AD FS，则必须使用 PowerShell 手动将域从联合标识转换为托管标识。 有关该过程的详细信息，请参阅“选项 B：  使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到直通身份验证”部分。
 
 ### <a name="document-current-federation-settings"></a>阐述当前联合身份验证设置
 
@@ -88,7 +88,7 @@ ms.locfileid: "67109340"
 Get-MsolDomainFederationSettings -DomainName YourDomain.extention | fl *
 ```
 
-示例：
+例如：
 
 ``` PowerShell
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
@@ -128,9 +128,9 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 |-|-|
 | 打算对其他这些应用程序（非 Azure AD 和 Office 365）保留使用 AD FS。 | 转换域后，将同时使用 AD FS 和 Azure AD。 考虑用户体验。 在某些情况下，用户可能需要进行身份验证两次，一次是针对 Azure AD（然后用户可以通过 SSO 访问 Office 365 等其他应用程序），另一次是针对仍以信赖方信任方式绑定到 AD FS 的任何应用程序再次进行身份验证。 |
 | AD FS 实例经过重度的自定义，并依赖于 onload.js 文件中的特定自定义设置（例如，你已更改登录体验，使用户只需以 **SamAccountName** 格式输入其用户名而不是用户主体名称 (UPN)；或者组织在登录体验中使用了众多的品牌设计）。 不能在 Azure AD 中复制 onload.js 文件。 | 在继续之前，必须验证 Azure AD 是否可以满足当前自定义要求。 如需更多信息和指导，请参阅有关 AD FS 品牌和 AD FS 自定义的部分。|
-| 使用 AD FS 阻止旧版身份验证客户端。| 请考虑更换阻止通过结合使用的身份验证客户端的早期版本的 AD FS 控件[条件访问控制](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)并[Exchange Online 客户端访问规则](https://aka.ms/EXOCAR)。 |
+| 使用 AD FS 阻止旧版身份验证客户端。| 请考虑通过结合使用[条件访问控制](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)和[Exchange Online 客户端访问规则](https://aka.ms/EXOCAR)来替换阻止早期版本身份验证客户端的 AD FS 控件。 |
 | 要求用户在 AD FS 中进行身份验证时对本地多重身份验证服务器解决方案执行多重身份验证。| 在托管标识域中，无法通过本地多重身份验证解决方案将多重身份验证质询注入到身份验证流。 但是，在转换域后，可以使用 Azure 多重身份验证服务进行多重身份验证。<br /><br /> 如果用户当前未使用 Azure 多重身份验证，则需要执行一次性的用户注册步骤。 必须准备好将规划的注册过程传达给用户。 |
-| 目前在 AD FS 中使用访问控制策略（AuthZ 规则）来控制对 Office 365 的访问。| 请考虑使用等效的 Azure AD 替换策略[条件性访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)并[Exchange Online 客户端访问规则](https://aka.ms/EXOCAR)。|
+| 目前在 AD FS 中使用访问控制策略（AuthZ 规则）来控制对 Office 365 的访问。| 请考虑将策略替换为等效的 Azure AD[条件性访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)和[Exchange Online 客户端访问规则](https://aka.ms/EXOCAR)。|
 
 ### <a name="common-ad-fs-customizations"></a>常见的 AD FS 自定义项
 
@@ -142,13 +142,13 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 将域转换为直通身份验证后，**InsideCorporateNetwork** 声明不再可用。 可以使用 [Azure AD 中的命名位置](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations)来取代此功能。
 
-配置命名的位置后，必须更新所有已配置为包含或排除网络的条件性访问策略**所有受信任的位置**或**MFA 受信任的 Ip**值复制到反映新的命名位置。
+配置命名位置后, 必须更新所有已配置为包括或排除网络**所有受信任位置**的条件访问策略, 或者更新**MFA 受信任的 ip**值, 以反映新的命名位置。
 
-有关详细信息**位置**条件在条件访问中，请参阅[Active Directory 条件性访问位置](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)。
+有关条件访问中的**位置**条件的详细信息, 请参阅[Active Directory 条件访问位置](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)。
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>已加入混合 Azure AD 的设备
 
-到 Azure AD 加入设备时，可以创建强制执行设备满足访问标准的安全性和符合性的条件性访问规则。 此外，用户可以使用组织的工作或学校帐户（而不是个人帐户）登录到设备。 使用已加入混合 Azure AD 的设备可将已加入 Active Directory 域的设备加入到 Azure AD。 你的联合环境可能已设置为使用此功能。
+将设备加入到 Azure AD 时, 可以创建条件性访问规则, 强制设备满足安全和合规性的访问标准。 此外，用户可以使用组织的工作或学校帐户（而不是个人帐户）登录到设备。 使用已加入混合 Azure AD 的设备可将已加入 Active Directory 域的设备加入到 Azure AD。 你的联合环境可能已设置为使用此功能。
 
 为了确保在将域转换为直通身份验证之后，混合加入仍适用于任何已加入域的设备，对于 Windows 10 客户端，必须使用 Azure AD Connect 将 Active Directory 计算机帐户同步到 Azure AD。
 

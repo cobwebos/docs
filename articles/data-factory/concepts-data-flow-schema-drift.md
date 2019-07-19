@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 6fd610afc0a21a97a8544b9e4b173f207f5fb50f
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 562daa024985a546ffb49c4da11eace3bc81a659
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722878"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314813"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>映射数据流架构偏差
 
@@ -25,7 +25,8 @@ ms.locfileid: "67722878"
 * 定义可以使用数据模式而不是硬编码字段和值的转换参数
 * 定义可以识别与传入字段相匹配而不是使用命名字段的表达式
 
-## <a name="how-to-implement-schema-drift"></a>如何实现架构偏差
+## <a name="how-to-implement-schema-drift-in-adf-mapping-data-flows"></a>如何在 ADF 中实现架构偏移映射数据流
+ADF 以本机方式支持灵活的架构, 这些架构因执行而变化, 因此您无需重新编译数据流即可构建泛型数据转换逻辑。
 
 * 在源转换中选择“允许架构偏差”
 
@@ -33,11 +34,13 @@ ms.locfileid: "67722878"
 
 * 选择此选项后，每次执行数据流都会从源读取所有传入字段，并通过整个流将其传递到接收器。
 
-* 请务必使用"自动映射"映射到接收器的转换中的所有新字段，以便所有新字段获取选取和在目标。
+* 默认情况下, 所有新检测到的列 (偏移列) 将作为字符串数据类型到达。 如果希望自动从源中推断数据类型, 请在 "源转换" 中选择 "推断偏移列类型"。
+
+* 请确保使用 "自动映射" 映射接收器转换中的所有新字段, 以便在目标中获取和着陆所有新字段, 同时在接收器上设置 "允许架构偏移"。
 
 <img src="media/data-flow/automap.png" width="400">
 
-* 使用简单的“源 -> 接收器”（即复制）映射在该方案中引入新字段后，一切都会正常工作。
+* 在该方案中引入新字段时, 所有内容都将起作用, 并使用简单的源 > 接收器 (复制) 映射。
 
 * 若要在处理架构偏差的该工作流中添加转换，可以使用模式匹配来按名称、类型和值对列进行匹配。
 
@@ -66,10 +69,12 @@ Azure 数据工厂数据流语法使用 $$ 来表示匹配模式中每个匹配�
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
-## <a name="access-new-columns-downstream"></a>下游访问新的列
+## <a name="access-new-columns-downstream"></a>访问下游新列
+使用列模式生成新列时, 可以在数据流转换后使用以下方法来访问这些新列:
 
-生成新列与列模式时，可以更高版本中使用"byName"表达式函数在数据流转换来访问这些新列。
+* 使用 "byPosition" 按位置编号标识新列。
+* 使用 "byName" 按其名称标识新列。
+* 在列模式下, 使用 "名称"、"流"、"位置" 或 "类型" 或它们的任意组合来匹配新列。
 
 ## <a name="next-steps"></a>后续步骤
-
-在中[数据流表达式语言](data-flow-expression-functions.md)将为您的附加工具用于列模式和包括"byName"和"byPosition"的架构偏差。
+在[数据流表达式语言](data-flow-expression-functions.md)中, 你将找到用于列模式和架构偏移的其他功能, 包括 "byName" 和 "byPosition"。

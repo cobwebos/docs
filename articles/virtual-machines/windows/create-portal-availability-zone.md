@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 15dd81b6d222c811fe26ec693927355ebdeb47ee
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: af2295643869ba8022fe15cf1e1cef3f2f20a428
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719032"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849829"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>使用 Azure 门户在可用性区域中创建 Windows 虚拟机
 
@@ -75,4 +75,4 @@ ms.locfileid: "67719032"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure VM 的[区域和可用性](regions-and-availability.md)。
+本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。

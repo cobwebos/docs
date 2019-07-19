@@ -10,23 +10,23 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 05/02/2019
+ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c5d60bb51a96725f766c6b49d61ac20fb2a1b58
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65471836"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297919"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>使用 Azure 机器学习数据准备 SDK 转换数据
 
-在本文中，你将了解转换数据使用的不同方法`azureml-dataprep`包。 包提供了可以轻松添加列、 筛选出不需要的行或列，并输入缺失值的函数。 请参阅完整的参考文档[azureml dataprep 包](https://aka.ms/data-prep-sdk)。
+本文介绍使用`azureml-dataprep`包转换数据的不同方法。 包提供了一些函数, 使你可以轻松地添加列、筛选掉不需要的行或列, 以及归结缺失值。 请参阅[dataprep 包](https://aka.ms/data-prep-sdk)的完整参考文档。
 
 > [!Important]
-> 如果要构建一个新的解决方案，请尝试[Azure 机器学习数据集](how-to-explore-prepare-data.md)（预览版） 来转换数据、 快照数据和存储版本控制的数据集定义。 数据集是数据准备 SDK，提供可用于管理 AI 解决方案中的数据集的扩展的功能的下一个版本。 如果您使用`azureml-dataprep`包来创建数据流而不是使用转换与`azureml-datasets`的包装，以创建数据集，您将不能以供以后使用快照或版本控制的数据集。
+> 如果要生成新的解决方案, 请尝试使用[Azure 机器学习数据集](how-to-explore-prepare-data.md)(预览版) 来转换数据、快照数据和存储版本化的数据集定义。 数据集是数据准备 SDK 的下一个版本, 它提供了用于在 AI 解决方案中管理数据集的扩展功能。 如果使用`azureml-dataprep`包通过转换创建数据流, 而不是`azureml-datasets`使用包来创建数据集, 则以后将无法使用快照或版本控制数据集。
 
-本操作说明展示了以下任务的示例：
+本操作说明显示以下任务的示例:
 
 - 使用表达式添加列
 - [估算缺失值](#impute-missing-values)
@@ -46,10 +46,10 @@ dflow = dprep.read_csv(path=r'data\crime0-10.csv')
 dflow.head(3)
 ```
 
-||ID|案例号|Date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
+||id|案例号|Date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 |0|10140490|HY329907|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
-|第|10139776|HY329265|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|第|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
+|第|10139776|HY329265|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
 |2|10140270|HY329253|07/05/2015 11:20:00 PM|121XX S FRONT AVE|0486|BATTERY|DOMESTIC BATTERY SIMPLE|STREET|false|true|...|9|53|08B|||2015|07/12/2015 12:42:46 PM|
 
 
@@ -63,10 +63,10 @@ case_category = dflow.add_column(new_column_name='Case Category',
 case_category.head(3)
 ```
 
-||ID|案例号|案例类别|Date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
+||id|案例号|案例类别|Date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|------|
 |0|10140490|HY329907|HY|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
-|第|10139776|HY329265|HY|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|第|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
+|1|10139776|HY329265|HY|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
 |2|10140270|HY329253|HY|07/05/2015 11:20:00 PM|121XX S FRONT AVE|0486|BATTERY|DOMESTIC BATTERY SIMPLE|STREET|false|true|...|9|53|08B|||2015|07/12/2015 12:42:46 PM|
 
 
@@ -94,15 +94,15 @@ dflow = dflow.to_number(['Latitude', 'Longitude'])
 dflow.head(3)
 ```
 
-||ID|逮捕|纬度|经度|
+||id|逮捕|纬度|经度|
 |-----|------|-----|------|-----|
 |0|10140490|false|41.973309|-87.800175|
-|第|10139776|false|42.008124|-87.659550|
+|1|10139776|false|42.008124|-87.659550|
 |2|10140270|false|NaN|NaN|
 
-第三条记录缺少纬度和经度值。 若要输入这些缺失值，请使用[ `ImputeMissingValuesBuilder` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py)若要了解一个固定的表达式。 它可使用计算得出的 `MIN`、`MAX`、`MEAN` 值或 `CUSTOM` 值来估算列。 如果指定 `group_by_columns`，将使用每组计算得出的 `MIN`、`MAX` 和 `MEAN` 按组估算缺失值。
+第三条记录缺少纬度和经度值。 若要归结这些缺失值, 可[`ImputeMissingValuesBuilder`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py)使用来了解固定表达式。 它可使用计算得出的 `MIN`、`MAX`、`MEAN` 值或 `CUSTOM` 值来估算列。 如果指定 `group_by_columns`，将使用每组计算得出的 `MIN`、`MAX` 和 `MEAN` 按组估算缺失值。
 
-检查`MEAN`纬度列使用的值[ `summarize()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow)函数。 此函数接受 `group_by_columns` 参数中的列数组以指定聚合级别。 `summary_columns` 参数接受 `SummaryColumnsValue` 调用。 此函数调用指定当前列名、新计算字段的名称和要执行的 `SummaryFunction`。
+使用函数检查纬度列的值。`MEAN` [`summarize()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) 此函数接受 `group_by_columns` 参数中的列数组以指定聚合级别。 `summary_columns` 参数接受 `SummaryColumnsValue` 调用。 此函数调用指定当前列名、新计算字段的名称和要执行的 `SummaryFunction`。
 
 ```python
 dflow_mean = dflow.summarize(group_by_columns=['Arrest'],
@@ -137,10 +137,10 @@ dflow_imputed = impute_builder.to_dataflow()
 dflow_imputed.head(3)
 ```
 
-||ID|逮捕|纬度|经度|
+||id|逮捕|纬度|经度|
 |-----|------|-----|------|-----|
 |0|10140490|false|41.973309|-87.800175|
-|第|10139776|false|42.008124|-87.659550|
+|1|10139776|false|42.008124|-87.659550|
 |2|10140270|false|41.878961|42.000000|
 
 如以上结果所示，缺少的纬度是使用 `Arrest=='false'` 组的 `MEAN` 值进行估算。 缺少的经度是使用 42 进行估算。
@@ -163,7 +163,7 @@ dflow.head(4)
 ||DATE|REPORTTPYE|HOURLYDRYBULBTEMPF|HOURLYRelativeHumidity|HOURLYWindSpeed|
 |----|----|----|----|----|----|
 |0|1/1/2015 0:54|FM-15|22|50|10|
-|第|1/1/2015 1:00|FM-12|22|50|10|
+|1|1/1/2015 1:00|FM-12|22|50|10|
 |2|1/1/2015 1:54|FM-15|22|50|10|
 |3|1/1/2015 2:54|FM-15|22|50|11|
 
@@ -178,7 +178,7 @@ builder.preview(count=5)
 ||DATE|date_timerange|
 |----|----|----|
 |0|1/1/2015 0:54|Jan 1, 2015 12AM-2AM|
-|第|1/1/2015 1:00|Jan 1, 2015 12AM-2AM|
+|1|1/1/2015 1:00|Jan 1, 2015 12AM-2AM|
 |2|1/1/2015 1:54|Jan 1, 2015 12AM-2AM|
 |3|1/1/2015 2:54|Jan 1, 2015 2AM-4AM|
 |4|1/1/2015 3:54|Jan 1, 2015 2AM-4AM|
@@ -190,7 +190,7 @@ builder.preview(count=5)
 现在，传入向下查看行需要跳过 (`skip`) 最上面几行对应的数字。
 
 > [!NOTE]
-> Preview() 函数将跳过的行，但不是重新编号输出索引。 在以下示例中，表中索引 0 对应于索引 30 数据流中。
+> Preview () 函数跳过行, 但不会对输出索引进行数字编号。 在下面的示例中, 表中的索引0对应于数据流中的索引30。
 
 ```python
 builder.preview(skip=30, count=5)
@@ -204,7 +204,7 @@ builder.preview(skip=30, count=5)
 |3|1/2/2015 0:54|Feb 1, 2015 12AM-2AM|
 |4|1/2/2015 1:00|Feb 1, 2015 12AM-2AM|
 
-此处可以发现生成的程序存在问题。 仅根据你上面提供的一个示例，派生程序选择了将日期分析为“日/月/年”，但这并不符合本示例的需求。 若要解决此问题，特定记录索引为目标，并提供另一个示例使用`add_example()`函数在`builder`变量。
+此处可以发现生成的程序存在问题。 仅根据你上面提供的一个示例，派生程序选择了将日期分析为“日/月/年”，但这并不符合本示例的需求。 若要解决此问题, 请以特定记录索引为目标, 并提供`add_example()`另一个`builder`对变量使用函数的示例。
 
 ```python
 builder.add_example(source_data=dflow.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
@@ -219,7 +219,7 @@ builder.preview(skip=30, count=5)
 |3|1/2/2015 0:54|Jan 2, 2015 12AM-2AM|
 |4|1/2/2015 1:00|Jan 2, 2015 12AM-2AM|
 
-现在正确处理的行 2015 年 1 月 2 日作为"2015 年 1 月 2 日"，但如果您查看超出索引 76 派生列，您看到的值派生列中具有执行任何操作。
+现在, 行正确地处理了 "1/2/2015" 作为 "Jan 2, 2015", 但如果你看不到派生列的索引 76, 则会看到末尾的值在派生列中没有任何内容。
 
 ```python
 builder.preview(skip=75, count=5)
@@ -228,8 +228,8 @@ builder.preview(skip=75, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/3/2015 7:00|2015 年 1 月 3 日上午 6 点-8|
-|第|1/3/2015 7:54|2015 年 1 月 3 日上午 6 点-8|
+|0|1/3/2015 7:00|1月3日, 2015 早晨-早晨8点|
+|1|1/3/2015 7:54|1月3日, 2015 早晨-早晨8点|
 |2|1/29/2015 6:54|无|
 |3|1/29/2015 7:00|无|
 |4|1/29/2015 7:54|无|
@@ -241,13 +241,13 @@ builder.preview(skip=75, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/3/2015 7:00|2015 年 1 月 3 日上午 6 点-8|
-|第|1/3/2015 7:54|2015 年 1 月 3 日上午 6 点-8|
-|2|1/29/2015 6:54|2015 年 1 月 29 日上午 6 点-8|
-|3|1/29/2015 7:00|2015 年 1 月 29 日上午 6 点-8|
-|4|1/29/2015 7:54|2015 年 1 月 29 日上午 6 点-8|
+|0|1/3/2015 7:00|1月3日, 2015 早晨-早晨8点|
+|1|1/3/2015 7:54|1月3日, 2015 早晨-早晨8点|
+|2|1/29/2015 6:54|Jan 29, 2015 早晨-早晨8点|
+|3|1/29/2015 7:00|Jan 29, 2015 早晨-早晨8点|
+|4|1/29/2015 7:54|Jan 29, 2015 早晨-早晨8点|
 
- 若要查看当前示例中派生的调用列表`list_examples()`生成器对象。
+ 若要查看 builder 对象上当前示例派生`list_examples()`调用的列表, 则为。
 
 ```python
 examples = builder.list_examples()
@@ -256,14 +256,14 @@ examples = builder.list_examples()
 | |DATE|示例|example_id|
 | -------- | -------- | -------- | -------- |
 |0|1/1/2015 1:00|Jan 1, 2015 12AM-2AM|-1|
-|第|1/2/2015 0:54|Jan 2, 2015 12AM-2AM|-2|
+|1|1/2/2015 0:54|Jan 2, 2015 12AM-2AM|-2|
 |2|1/29/2015 20:54|Jan 29, 2015 8PM-10PM|-3|
 
 
-在某些情况下如果你想要删除的示例，不正确，则可以传递中任意一种`example_row`pandas 数据帧，从或`example_id`值。 例如，如果您运行`builder.delete_example(example_id=-1)`，它将删除第一个转换示例。
+在某些情况下, 如果要删除不正确的示例, 则可以`example_row`从 pandas 数据帧或`example_id` value 传入。 例如, 如果运行`builder.delete_example(example_id=-1)`, 则会删除第一个转换示例。
 
 
-调用`to_dataflow()`生成器，它返回数据流与添加所需的派生列。
+在`to_dataflow()`生成器上调用, 它将返回添加所需派生列的数据流。
 
 ```python
 dflow = builder.to_dataflow()
@@ -272,9 +272,14 @@ df = dflow.to_pandas_dataframe()
 
 ## <a name="filtering"></a>Filtering
 
-SDK 包括方法[ `drop_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow)并[ `filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py)以便你可以筛选出列或行。
+SDK 包括方法[`drop_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow)和[`filter()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) , 以便筛选出列或行。
 
 ### <a name="initial-setup"></a>初始设置
+
+> [!Note]
+> 此同一个示例中的 URL 不是完整的 URL。 相反, 它引用 blob 中的 demo 文件夹。 数据的完整 URL 是 https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
+
+在本教程中, 我们要做的就是加载文件夹内的所有文件, 并将结果聚合到 green_df_raw 和 yellow_df_raw 中。
 
 ```python
 import azureml.dataprep as dprep
@@ -286,14 +291,14 @@ dflow.head(5)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|无|无|无|无|无|无|无|无|无|无|无|无|无|
-|第|2013-08-01 08:14:37|2013-08-01 09:09:06|N|第|0|0|0|0|第|.00|0|0|21.25|
+|1|2013-08-01 08:14:37|2013-08-01 09:09:06|N|第|0|0|0|0|1|.00|0|0|21.25|
 |2|2013-08-01 09:13:00|2013-08-01 11:38:00|N|第|0|0|0|0|2|.00|0|0|75|
-|3|2013-08-01 09:48:00|2013-08-01 09:49:00|N|5|0|0|0|0|第|.00|0|第|2.1|
-|4|2013-08-01 10:38:35|2013-08-01 10:38:51|N|第|0|0|0|0|第|.00|0|0|3.25|
+|3|2013-08-01 09:48:00|2013-08-01 09:49:00|N|5|0|0|0|0|第|.00|0|1|2.1|
+|4|2013-08-01 10:38:35|2013-08-01 10:38:51|N|1|0|0|0|0|1|.00|0|0|3.25|
 
 ### <a name="filtering-columns"></a>筛选列
 
-若要筛选列，请使用 `drop_columns()`。 此方法采用要删除的列列表或更复杂的自变量调用[ `ColumnSelector` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py)。
+若要筛选列，请使用 `drop_columns()`。 此方法获取要删除的列的列表或一个名[`ColumnSelector`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py)为的更复杂参数。
 
 #### <a name="filtering-columns-with-list-of-strings"></a>使用字符串列表筛选列
 
@@ -307,7 +312,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|无|无|无|无|无|无|无|无|无|无|无|
-|第|2013-08-01 08:14:37|2013-08-01 09:09:06|0|0|0|0|第|.00|0|0|21.25|
+|1|2013-08-01 08:14:37|2013-08-01 09:09:06|0|0|0|0|1|.00|0|0|21.25|
 
 #### <a name="filtering-columns-with-regex"></a>使用正则表达式筛选列
 
@@ -321,7 +326,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|无|无|无|无|无|无|无|
-|第|2013-08-01 08:14:37|2013-08-01 09:09:06|第|.00|0|0|21.25|
+|1|2013-08-01 08:14:37|2013-08-01 09:09:06|1|.00|0|0|21.25|
 
 ## <a name="filtering-rows"></a>筛选行
 
@@ -345,7 +350,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-01 19:33:28|2013-08-01 19:35:21|5|.00|0.08|0|4.58|
-|第|2013-08-05 13:16:38|2013-08-05 13:18:24|第|.00|0.30|0|3.8|
+|1|2013-08-05 13:16:38|2013-08-05 13:18:24|1|.00|0.30|0|3.8|
 
 ### <a name="filtering-rows-with-complex-expressions"></a>使用复杂表达式筛选行
 
@@ -362,7 +367,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-08 12:16:00|2013-08-08 12:16:00|1.0|.00|2.25|5.00|19.75|
-|第|2013-08-12 14:43:53|2013-08-12 15:04:50|1.0|5.28|6.46|5.33|32.29|
+|1|2013-08-12 14:43:53|2013-08-12 15:04:50|1.0|5.28|6.46|5.33|32.29|
 
 还可以结合使用多个表达式生成器来创建嵌套表达式，从而筛选行。
 
@@ -387,7 +392,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-13 06:11:06+00:00|2013-08-13 06:30:28+00:00|1.0|9.57|7.47|5.33|44.80|
-|第|2013-08-23 12:28:20+00:00|2013-08-23 12:50:28+00:00|2.0|8.22|8.08|5.33|40.41|
+|1|2013-08-23 12:28:20+00:00|2013-08-23 12:50:28+00:00|2.0|8.22|8.08|5.33|40.41|
 
 ## <a name="custom-python-transforms"></a>自定义 Python 转换
 
@@ -413,10 +418,10 @@ dflow.head(2)
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|
-|0|ALABAMA|第|101710|Hale County|10171002158| |
-|第|ALABAMA|第|101710|Hale County|10171002162| |
+|0|ALABAMA|1|101710|Hale County|10171002158| |
+|第|ALABAMA|1|101710|Hale County|10171002162| |
 
-减少数据集和执行一些基本的转换，包括删除列、 替换值和转换类型。
+剪裁数据集并执行一些基本转换, 包括删除列、替换值和转换类型。
 
 ```python
 dflow = dflow.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
@@ -428,7 +433,7 @@ dflow.head(2)
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
 |0|ALABAMA|Hale County|1.017100e+10|无|
-|第|ALABAMA|Hale County|1.017100e+10|无|
+|1|ALABAMA|Hale County|1.017100e+10|无|
 
 使用以下筛选器查找空值。
 
@@ -439,11 +444,11 @@ dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
 |0|ALABAMA|Hale County|1.017100e+10|无|
-|第|ALABAMA|Hale County|1.017100e+10|无|
+|1|ALABAMA|Hale County|1.017100e+10|无|
 
 ### <a name="transform-partition"></a>转换分区
 
-使用[ `transform_partition()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#transform-partition-script--str-----azureml-dataprep-api-dataflow-dataflow)以替换所有 null 值为 0。 下面的代码按分区运行，而不是一次性对整个数据集运行。 也就是说，对于大型数据集，下面的代码可能会在运行时处理数据时按分区并行运行。
+使用[`transform_partition()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#transform-partition-script--str-----azureml-dataprep-api-dataflow-dataflow)将所有 null 值替换为0。 下面的代码按分区运行，而不是一次性对整个数据集运行。 也就是说，对于大型数据集，下面的代码可能会在运行时处理数据时按分区并行运行。
 
 Python 脚本必须定义一个名为 `transform()` 的函数，该函数接受 `df` 和 `index` 两个参数。 `df` 参数是包含分区数据的 panda dataframe，`index` 参数是分区的唯一标识符。 转换函数可以充分编辑在 dataframe 中传递的内容，但是必须返回 dataframe。 Python 脚本导入的任何库都必须位于运行数据流的环境中。
 
@@ -459,11 +464,11 @@ df.head(2)
 ||stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
 |0|ALABAMA|Hale County|1.017100e+10|0.0|
-|第|ALABAMA|Hale County|1.017100e+10|0.0|
+|1|ALABAMA|Hale County|1.017100e+10|0.0|
 
 ### <a name="new-script-column"></a>新脚本列
 
-若要创建新的列具有县名称和状态名称，以及利用状态名称，可以使用 Python 脚本。 若要执行此操作，请使用[ `new_script_column()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-column-new-column-name--str--insert-after--str--script--str-----azureml-dataprep-api-dataflow-dataflow)上数据流的方法。
+您可以使用 Python 脚本创建具有县名称和省/市/自治区名称的新列, 还可以将状态名称大写。 为此, 请在数据流[`new_script_column()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-column-new-column-name--str--insert-after--str--script--str-----azureml-dataprep-api-dataflow-dataflow)上使用方法。
 
 Python 脚本必须定义一个名为 `newvalue()` 的函数，该函数接受一个自变量 `row`。 `row` 自变量是 dict (`key`:column name, `val`: current value)，会为数据集中的每一行将该自变量传递给该函数。 此函数必须返回要在新列中使用的值。 Python 脚本导入的任何库都必须位于运行数据流的环境中。
 
@@ -482,7 +487,7 @@ dflow.head(2)
 
 ### <a name="new-script-filter"></a>新脚本筛选器
 
-生成使用 Python 表达式[ `new_script_filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-filter-script--str-----azureml-dataprep-api-dataflow-dataflow)来筛选数据集 Hale 不在新的行`county_state`列。 若要保留行，表达式返回 `True`；若要删除行，表达式返回 `False`。
+使用[`new_script_filter()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-filter-script--str-----azureml-dataprep-api-dataflow-dataflow)生成 Python 表达式, 以便仅将数据集筛选为 "Hale" 不在新`county_state`列中的行。 若要保留行，表达式返回 `True`；若要删除行，表达式返回 `False`。
 
 ```python
 dflow = dflow.new_script_filter("""
@@ -496,8 +501,8 @@ dflow.head(2)
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Jefferson County|Jefferson County, Alabama|1.019200e+10|1.0|
-|第|ALABAMA|Jefferson County|Jefferson County, Alabama|1.019200e+10|0.0|
+|1|ALABAMA|Jefferson County|Jefferson County, Alabama|1.019200e+10|0.0|
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 Azure 机器学习数据准备 SDK[教程](tutorial-data-prep.md)有关解决特定方案的示例
+* 有关解决特定方案的示例, 请参阅 Azure 机器学习数据准备 SDK[教程](tutorial-data-prep.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: 0691c35661a6d185a6aa5ed3383ad600653359d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 925264bb69093ab70465665e1d2da615a7a3e53d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058600"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261759"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>.NET Core ILogger 日志的 ApplicationInsightsLoggerProvider
 
@@ -108,7 +108,7 @@ public class ValuesController : ControllerBase
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>在 ASP.NET Core 应用中从 Startup.cs 和 Program.cs 捕获 ILogger 日志
 
 > [!NOTE]
-> 在 ASP.NET Core 3.0 及更高版本，不再可以注入`ILogger`Startup.cs 和 Program.cs 中。 有关详细信息，请参阅 https://github.com/aspnet/Announcements/issues/353 。
+> 在 ASP.NET Core 3.0 及更高版本中，无法再在 Startup.cs 和 Program.cs 中注入 `ILogger`。 有关详细信息，请参阅 https://github.com/aspnet/Announcements/issues/353 。
 
 新的 ApplicationInsightsLoggerProvider 可以提前在应用程序启动管道中捕获日志。 尽管 Application Insights（从版本 2.7.0-beta3 开始）中会自动启用 ApplicationInsightsLoggerProvider，但只有在稍后进入管道后，才会设置它的检测密钥。 因此，只会从 **Controller**/其他类捕获日志。 若要捕获从 **Program.cs** 和 **Startup.cs** 本身开始的每个日志，必须显式为 ApplicationInsightsLoggerProvider 启用检测密钥。 此外，在从 **Program.cs** 或 **Startup.cs** 本身记录日志时，不会完全设置 *TelemetryConfiguration*。 因此，这些日志将采用最低的配置，该配置使用 InMemoryChannel，不使用采样，且不使用标准的初始化程序或处理程序。
 
@@ -287,7 +287,7 @@ class Program
 <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" Version="2.9.1" />
 ```
 
-以下部分介绍如何使用 **services.Configure<TelemetryConfiguration>()** 方法重写默认的 TelemetryConfiguration。 此示例设置 `ServerTelemetryChannel` 和采样。 它将自定义的 ITelemetryInitializer 添加到 TelemetryConfiguration。
+以下部分说明如何使用服务重写默认 TelemetryConfiguration **。配置\<TelemetryConfiguration > ()** 方法。 此示例设置 `ServerTelemetryChannel` 和采样。 它将自定义的 ITelemetryInitializer 添加到 TelemetryConfiguration。
 
 ```csharp
     // Create the DI container.

@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure 标准负载均衡器功能概述
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.custom: seodec18
 ms.service: load-balancer
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
-ms.author: kumud
-ms.openlocfilehash: 266630cb7c9601af69073a6c9beb7d7ada9b8034
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 8eb8134452685add53b9dc339437ac262ecc8a9f
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957481"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274401"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure 标准负载均衡器概述
 
@@ -75,7 +75,7 @@ ms.locfileid: "65957481"
 ### <a name="az"></a>可用性区域
 
 >[!IMPORTANT]
->审阅[可用性区域](../availability-zones/az-overview.md)相关主题，其中包括任何区域特定信息。
+>查看[可用性区域](../availability-zones/az-overview.md)相关主题, 包括任何特定于区域的信息。
 
 标准负载均衡器在提供可用性区域的区域中支持其他功能。  这些功能可增量到所有标准负载均衡器提供的内容。  可用性区域配置可用于公共和内部标准负载均衡器。
 

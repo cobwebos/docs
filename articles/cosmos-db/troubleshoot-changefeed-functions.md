@@ -7,12 +7,12 @@ ms.date: 05/23/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 09ea70ac302806b4cb0e97fde92dda4208e3d659
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c728a735e56e461e49dd3f594186c9c0192a3f0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734521"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250015"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>诊断和排查在 Azure Functions 中使用 Azure Cosmos DB 触发器时出现的问题
 
@@ -27,17 +27,17 @@ Azure Cosmos DB 触发器和绑定通过基本 Azure Functions 运行时依赖�
 
 除非明确指定，否则本文每当提到运行时，都始终会参考 Azure Functions V2。
 
-## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>独立地使用 Azure Cosmos DB SDK
+## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>独立使用 Azure Cosmos DB SDK
 
 扩展包的关键功能是为 Azure Cosmos DB 触发器和绑定提供支持。 它还包括 [Azure Cosmos DB.NET SDK](sql-api-sdk-dotnet-core.md)，用于帮助你以编程方式来与 Azure Cosmos DB 交互，而无需使用触发器和绑定。
 
-若要使用 Azure Cosmos DB SDK，请务必不要将项目添加到另一个 NuGet 包引用。 而是**让 SDK 引用通过 Azure Functions 的扩展包进行解析**。 使用 Azure Cosmos DB SDK 独立于触发器和绑定
+若要使用 Azure Cosmos DB SDK，请务必不要将项目添加到另一个 NuGet 包引用。 而是**让 SDK 引用通过 Azure Functions 的扩展包进行解析**。 独立于触发器和绑定使用 Azure Cosmos DB SDK
 
 此外，如果手动创建自己的 [Azure Cosmos DB SDK 客户端](./sql-api-sdk-dotnet-core.md)实例，应遵循以下模式：只提供一个[使用单一实例模式方法](../azure-functions/manage-connections.md#documentclient-code-example-c)的客户端实例。 此过程可避免操作中出现潜在的套接字问题。
 
 ## <a name="common-scenarios-and-workarounds"></a>常见方案和解决方法
 
-### <a name="azure-function-fails-with-error-message-collection-doesnt-exist"></a>Azure 函数失败，错误消息集合不存在
+### <a name="azure-function-fails-with-error-message-collection-doesnt-exist"></a>Azure Function 失败, 出现错误消息集合不存在
 
 Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据库 'database-name' 中)或租约集合 'collection2-name' (在数据库 'database2-name' 中)不存在。 在侦听器启动之前，这两个集合必须存在。 若要自动创建租约集合，请将 'CreateLeaseCollectionIfNotExists' 设置为 'true'”
 
@@ -81,7 +81,7 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 在这种情况下，最佳措施是在代码中以及在可能正在处理更改的循环中添加 `try/catch blocks`，以检测特定的项子集中出现的任何失败，并相应地对其进行处理（将这些项发送到另一个存储以做进一步的分析或重试）。 
 
 > [!NOTE]
-> Azure Cosmos DB 触发器，默认情况下，不会重试一批更改如果代码执行期间出现未处理异常。 这意味着，更改未抵达目标的原因是无法处理它们。
+> 默认情况下, 如果在代码执行过程中出现未经处理的异常, Azure Cosmos DB 触发器将不会重试一批更改。 这意味着，更改未抵达目标的原因是无法处理它们。
 
 如果你发现触发器根本未收到某些更改，则最常见的情形是有**另一个 Azure 函数正在运行**。 该函数可能是部署在 Azure 中的另一个 Azure 函数，或者是在开发人员计算机本地运行的、采用**完全相同配置**（相同的受监视容器和租约容器）的 Azure 函数，并且此 Azure 函数正在窃取你的 Azure 函数预期要处理的更改子集。
 
@@ -89,13 +89,13 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 解决此问题的简单方法之一是将采用新值/不同值的 `LeaseCollectionPrefix/leaseCollectionPrefix` 应用到你的函数，或使用新的租约容器进行测试。
 
-### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>绑定只能使用 IReadOnlyList<Document>或 JArray
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>仅可通过 IReadOnlyList\<文档 > 或 JArray 进行绑定
 
-如果你的 Azure Functions 项目 （或任何引用的项目） 包含对 Azure Cosmos DB SDK 与不同版本而不是由提供的手动 NuGet 引用，将发生此错误[Azure Functions Cosmos DB 扩展](./troubleshoot-changefeed-functions.md#dependencies)。
+如果 Azure Functions 项目 (或任何引用的项目) 包含对 Azure Cosmos DB SDK 的手动 NuGet 引用, 而该版本与[Azure Functions Cosmos DB 扩展](./troubleshoot-changefeed-functions.md#dependencies)提供的版本不同, 则会发生此错误。
 
-解决此种情况下，删除手动 NuGet 引用已添加并让 Azure Cosmos DB SDK 引用解析通过 Azure Functions Cosmos DB 扩展包。
+若要解决此问题, 请删除已添加的手动 NuGet 引用, 并让 Azure Cosmos DB SDK 引用通过 Azure Functions Cosmos DB 扩展包进行解析。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [启用 Azure Functions 的监视](../azure-functions/functions-monitoring.md)
+* [为 Azure Functions 启用监视](../azure-functions/functions-monitoring.md)
 * [Azure Cosmos DB .NET SDK 故障排除](./troubleshoot-dot-net-sdk.md)

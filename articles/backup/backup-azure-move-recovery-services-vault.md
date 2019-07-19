@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sogup
-ms.openlocfilehash: 72bfbc34f57e7725ae9556e893825900474317cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57263dfd1e226f2ff4321b2d097d30106fae87fa
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64876852"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304922"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 订阅和资源组移动恢复服务保管库
 
@@ -35,7 +35,7 @@ ms.locfileid: "64876852"
 - 不管 VM 是否连同保管库一起移动，都始终可以从保管库中保留的备份历史记录还原该 VM。
 - Azure 磁盘加密要求密钥保管库和 VM 位于同一 Azure 区域和订阅中。
 - 若要移动包含托管磁盘的虚拟机，请参阅[此文](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)。
-- 移动通过经典模型部署的资源时，其选项各不相同，具体取决于是在订阅中移动资源，还是将资源移到新订阅。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#classic-deployment-limitations)。
+- 移动通过经典模型部署的资源时，其选项各不相同，具体取决于是在订阅中移动资源，还是将资源移到新订阅。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
 - 跨订阅移动保管库或将其移到新资源组后，为保管库定义的备份策略将会保留。
 - 不支持在 IaaS VM 中使用 Azure 文件存储、Azure 文件同步或 SQL 跨订阅和资源组移动保管库。
 - 如果跨订阅移动包含 VM 备份数据的保管库，则必须将 VM 移到同一订阅，并使用同一目标资源组来继续备份。<br>
@@ -75,7 +75,7 @@ ms.locfileid: "64876852"
    ![确认消息](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
 
-## <a name="use-azure-portal-to-move-recovery-services-vault-to-a-different-subscription"></a>使用 Azure 门户将移到其他订阅的恢复服务保管库
+## <a name="use-azure-portal-to-move-recovery-services-vault-to-a-different-subscription"></a>使用 Azure 门户将恢复服务保管库移到不同的订阅
 
 可将恢复服务保管库及其关联的资源移到不同的订阅
 

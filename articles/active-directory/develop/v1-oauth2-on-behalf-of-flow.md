@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51fd5c8f406ea54c7fc8e81c674e41b30d7ad406
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: eb64aa401838451191a830a5adbfb435ac5fdf25
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482416"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261938"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委托用户标识的服务到服务调用
 
@@ -38,7 +38,7 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 
 在使用 [OAuth 2.0 授权代码授权流](v1-protocols-oauth-code.md)的应用程序上对用户进行身份验证后，启动 OBO 流。 此时，应用程序将访问令牌（令牌 A）发送到包含用户声明并同意访问 API A 的中间层 Web API (API A)。然后，API A 向下游 Web API (API B) 发出经过身份验证的请求。
 
-这些步骤构成了代理流：![OAuth2.0 上的代理流中显示的步骤](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+这些步骤构成了代理流：![以 OAuth 2.0 代理流的顺序显示步骤](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. 客户端应用程序使用令牌 A 向 API A 发出请求。
 1. API A 向 Azure AD 令牌颁发终结点进行身份验证并请求访问 API B 的令牌。
@@ -58,32 +58,32 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部栏中选择帐户，并在“目录”列表下为应用程序选择 Active Directory 租户  。
 1. 在左窗格中，选择“更多服务”，然后选择“Azure Active Directory”   。
-1. 选择**应用注册**，然后**新注册**。
+1. 依次选择“应用注册”、“新建注册”   。
 1. 输入应用程序的友好名称，并选择应用程序类型。
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
-1. 设置为基 URL 重定向 URI。
+1. 将重定向 URI 设置为基 URL。
 1. 选择“注册”  以创建应用程序。
 1. 在退出 Azure 门户之前生成客户端密码。
-1. 在 Azure 门户中，选择你的应用程序并选择**证书和机密**。
-1. 选择**新的客户端机密**并添加持续时间为一年或两年的机密。
-1. 当保存此页时，Azure 门户会显示机密值。 复制并保存在安全位置中的机密值。
+1. 在 Azure 门户中，选择应用程序，然后选择“证书和机密”  。
+1. 选择“新建客户端密码”  并添加持续时间为一年或两年的机密。
+1. 保存此页时，Azure 门户将显示机密值。 复制机密值并将其保存在安全位置。
 
 > [!IMPORTANT]
-> 您需要在实现中配置的应用程序设置的机密。 同样，不显示此机密值，并且它不通过任何其他方法可检索。 因此，当它在 Azure 门户中可见时请立即记录。
+> 在实现中配置应用程序设置时需要此机密。 此机密值不会再次显示，并且无法通过任何其他方式检索。 因此，当它在 Azure 门户中可见时请立即记录。
 
 ### <a name="register-the-client-application"></a>注册客户端应用程序
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部栏中选择帐户，并在“目录”列表下为应用程序选择 Active Directory 租户  。
 1. 在左窗格中，选择“更多服务”，然后选择“Azure Active Directory”   。
-1. 选择**应用注册**，然后**新注册**。
+1. 依次选择“应用注册”、“新建注册”   。
 1. 输入应用程序的友好名称，并选择应用程序类型。
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
-1. 设置为基 URL 重定向 URI。
+1. 将重定向 URI 设置为基 URL。
 1. 选择“注册”  以创建应用程序。
-1. 为应用程序配置权限。 在中**API 的权限**，选择**添加权限**，然后**我的 Api**。
+1. 为应用程序配置权限。 在“API 权限”  中，依次选择“添加权限”  、“我的 API”  。
 1. 在文本字段中键入中间层服务的名称。
-1. 选择**选择权限**，然后选择**访问<service name>** 。
+1. 选择 "**选择权限**", 然后选择 "**访问\<服务名称 >** "。
 
 ### <a name="configure-known-client-applications"></a>配置已知的客户端应用程序
 
@@ -213,7 +213,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 ### <a name="error-response-example"></a>错误响应示例
 
-尝试设置条件性访问策略 （例如，多重身份验证） 与为下游 api 获取访问令牌时，Azure AD 令牌终结点将返回错误响应。 中间层服务应给客户端应用程序中显示此错误，以便客户端应用程序可以提供用户交互，以满足条件性访问策略。
+Azure AD 令牌终结点在尝试获取通过条件访问策略 (例如多重身份验证) 设置的下游 API 的访问令牌时, 会返回错误响应。 中间层服务应向客户端应用程序呈现此错误, 以便客户端应用程序可以提供用户交互, 以满足条件访问策略。
 
 ```
 {

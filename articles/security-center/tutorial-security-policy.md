@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/05/2019
+ms.date: 7/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7ff05421222ff0f4312d703366cfd443eee06450
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551733"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314922"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
@@ -32,7 +32,7 @@ ms.locfileid: "67551733"
 > 安全中心使用 Azure Policy 开始集成。 现有客户将自动迁移到 Azure Policy 中新的内置计划，而不是安全中心中的旧的安全策略。 除了 Azure Policy 中存在新计划外，此更改不会影响资源或环境。
 
 ## <a name="what-are-security-policies"></a>什么是安全策略？
-安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure Policy 中，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如，使用受管制的数据，例如个人数据或客户数据的应用程序可能需要比其他工作负载更高级别的安全性。 若要跨订阅或管理组设置策略，请在 [Azure Policy](../governance/policy/overview.md) 中进行设置。
+安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure Policy 中，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如, 使用受管制数据 (如个人数据或客户数据) 的应用程序可能需要比其他工作负载更高级别的安全性。 若要跨订阅或管理组设置策略，请在 [Azure Policy](../governance/policy/overview.md) 中进行设置。
 
 安全策略驱动在 Azure 安全中心获得的安全建议。 可以使用它们监视符合性以帮助识别潜在漏洞和缓解威胁。 若要详细了解如何确定适合你的选项，请参阅[内置安全性策略](security-center-policy-definitions.md)列表。
 
@@ -71,7 +71,7 @@ Azure Policy 由以下组件构成：
    在“策略管理”屏幕中，可以看到管理组数、订阅数、工作区数以及管理组结构  。
 
    > [!NOTE]
-   > - “安全中心”仪表板在“订阅覆盖范围”下显示的订阅数可能会高于在“策略管理”下显示的订阅数   。 订阅覆盖范围显示标准订阅、免费订阅和“未覆盖”订阅的数量。 “未覆盖”订阅未启用“安全中心”，并且不会显示在“策略管理”下  。
+   > “安全中心”仪表板在“订阅覆盖范围”下显示的订阅数可能会高于在“策略管理”下显示的订阅数   。 订阅覆盖范围显示标准订阅、免费订阅和“未覆盖”订阅的数量。 “未覆盖”订阅未启用“安全中心”，并且不会显示在“策略管理”下  。
    >
 
 2. 选择想要查看其策略的订阅或管理组。
@@ -84,10 +84,10 @@ Azure Policy 由以下组件构成：
    ![策略屏幕](./media/security-center-policies/policy-screen.png)
 
 > [!NOTE]
-> - 查看已分配的策略时，可以看到多个分配并且可以看到每个分配如何自行配置。
+> 查看已分配的策略时，可以看到多个分配并且可以看到每个分配如何自行配置。
 
 ## <a name="edit-security-policies"></a>编辑安全策略
-可以在 [Azure Policy](../governance/policy/tutorials/create-and-manage.md) 中为每个 Azure 订阅和管理组编辑默认的安全策略。 若要修改安全策略，你必须是该订阅或包含型管理组的所有者、参与者或安全管理员。
+可以在 [Azure Policy](../governance/policy/tutorials/create-and-manage.md) 中为每个 Azure 订阅和管理组编辑默认的安全策略。 若要修改安全策略, 你必须是该订阅或包含管理组的所有者或安全管理员。
 
 有关如何在 Azure Policy 中编辑安全策略的说明，请参阅[创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)。
 
@@ -114,7 +114,7 @@ Azure Policy 由以下组件构成：
 1. 在“参数”  部分中，搜索调用要禁用的建议的策略，然后从下拉列表中选择“禁用” 
 
    ![禁用策略](./media/tutorial-security-policy/disable-policy.png)
-1. 单击“ **保存**”。
+1. 单击“保存”  。
    > [!Note]
    > 禁用策略更改可能需要长达 12 小时才会生效。
 
@@ -125,11 +125,11 @@ Azure 安全中心与 Azure Policy 实现了本机集成，借助它，可以利
 
 Azure Policy 中的重要概念： 
 
-- 一个**策略定义**是一种规则 
+- **策略定义**是一种规则 
 
-- **计划**是策略定义 （规则） 的集合 
+- **计划**是策略定义（规则）的集合 
 
-- **分配**是一项计划或策略为特定的作用域 （管理组、 订阅等） 的应用程序 
+- **分配**是将计划或策略应用于特定的范围（管理组、订阅等） 
 
 安全中心有一项内置计划，它包括中心内的所有安全策略。 为评估对 Azure 资源的安全中心策略，应对管理组或想访问的订阅创建一个分配。  
 
@@ -145,6 +145,7 @@ Azure Policy 中的重要概念：
 
 本示例演示如何对订阅或管理组分配内置的安全中心计划
  
+ ```
     PUT  
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
@@ -169,6 +170,7 @@ Azure Policy 中的重要概念：
     } 
 
     } 
+ ```
 
 本示例演示如何对订阅分配内置的安全中心计划，且禁用以下策略： 
 
@@ -178,10 +180,10 @@ Azure Policy 中的重要概念：
 
 - 终结点保护 ("endpointProtectionMonitoringEffect") 
 
-
+ ```
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
     
-    请求正文 (JSON) 
+    Request Body (JSON) 
     
     { 
     
@@ -210,12 +212,12 @@ Azure Policy 中的重要概念：
      } 
     
     } 
-
+ ```
 此示例演示如何删除分配：
-
+ ```
     DELETE   
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
-
+ ```
 
 ### 策略名引用 <a name="policy-names"></a>
 

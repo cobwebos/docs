@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: d69825b947af69a86525a996ed8709472846d9fe
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 73cf6fd1c20f2e4208d1f7c28a756f28a2fad839
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795677"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302575"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -96,7 +96,7 @@ ms.locfileid: "67795677"
 
 ### <a name="netnet-core"></a>.NET/.NET Core
 
-**编写自定义 TelemetryInitializer 按如下所示。**
+**按如下所示编写自定义 TelemetryInitializer。**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -119,9 +119,9 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**ASP.NET 应用程序：加载到活动的 TelemetryConfiguration 初始值设定项**
+**ASP.NET apps:将初始值设定项加载到活动 TelemetryConfiguration**
 
-在 ApplicationInsights.config 中：
+在 Applicationinsights.config 中:
 
 ```xml
     <ApplicationInsights>
@@ -133,7 +133,7 @@ namespace CustomInitializer.Telemetry
     </ApplicationInsights>
 ```
 
-ASP.NET Web 应用的另一种方法是实例化代码，例如在 Global.aspx.cs 中的初始值设定项：
+ASP.NET Web 应用程序的另一种方法是在代码中（例如在 Global.aspx.cs 中）实例化初始值设定项：
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -147,11 +147,11 @@ ASP.NET Web 应用的另一种方法是实例化代码，例如在 Global.aspx.c
 ```
 
 > [!NOTE]
-> 使用添加初始值设定项`ApplicationInsights.config`或使用`TelemetryConfiguration.Active`不能用于 ASP.NET Core 应用程序。 
+> 使用`ApplicationInsights.config`或使用`TelemetryConfiguration.Active`添加初始值设定项对 ASP.NET Core 应用程序无效。 
 
-**ASP.NET Core 应用：加载到 TelemetryConfiguration 初始值设定项**
+**ASP.NET Core 应用:将初始值设定项加载到 TelemetryConfiguration**
 
-有关[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)添加一个新的应用程序`TelemetryInitializer`可通过将其添加到依赖关系注入容器，如下所示。 这是在`ConfigureServices`方法在`Startup.cs`类。
+对于 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) 应用程序，添加新的 `TelemetryInitializer` 是通过将其添加到依赖项注入容器来完成的，如下所示。 这是在 `Startup.cs` 类的 `ConfigureServices` 方法中完成的。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -197,7 +197,7 @@ Spring Boot 入门版会自动将云角色名称分配给你为 spring.applicati
 
 ```javascript
 appInsights.queue.push(() => {
-appInsights.context.addTelemetryInitializer((envelope) => {
+appInsights.addTelemetryInitializer((envelope) => {
   envelope.tags["ai.cloud.role"] = "your role name";
   envelope.tags["ai.cloud.roleInstance"] = "your role instance";
 });

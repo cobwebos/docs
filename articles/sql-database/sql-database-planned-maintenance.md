@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 928338a911efae051df7164239dbd19f9317338a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 235d29c876616948516bbe4309ddd630bc3f6dca
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584601"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67852588"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>规划 Azure 维护事件 - Azure SQL 数据库
 
@@ -41,7 +41,7 @@ Azure SQL DB 为每个数据库维护了一组正常运营所需的最低数量�
 
 ## <a name="resource-health"></a>资源运行状况
 
-如果 SQL 数据库发生登录失败的情况，请在 [Azure 门户](https://portal.azure.com)的[资源运行状况](../service-health/resource-health-overview.md#getting-started)窗口中查看当前状态。 运行状况历史记录部分包含每个事件（如果有）的停机原因。
+如果 SQL 数据库发生登录失败的情况，请在 [Azure 门户](https://portal.azure.com)的[资源运行状况](../service-health/resource-health-overview.md#get-started)窗口中查看当前状态。 运行状况历史记录部分包含每个事件（如果有）的停机原因。
 
 
 ## <a name="next-steps"></a>后续步骤

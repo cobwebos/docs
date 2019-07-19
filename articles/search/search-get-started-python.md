@@ -1,6 +1,6 @@
 ---
-title: Python 快速入门：创建、 加载和查询使用 Azure 搜索 REST Api-Azure 搜索索引
-description: 介绍如何创建索引、 加载数据，并使用 Python、 Jupyter Notebook 和 Azure 搜索 REST API 运行查询。
+title: Python 快速入门:使用 Azure 搜索 REST Api 创建、加载和查询索引-Azure 搜索
+description: 介绍如何使用 Python、Jupyter 笔记本和 Azure 搜索 REST API 创建索引、加载数据以及运行查询。
 ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
@@ -10,14 +10,14 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 123afa2452c3e492b85292514e64f84d3baec390
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1c570549514ff5a5e7e598aa54d8e2ac4b5a5341
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840292"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849788"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在使用 Jupyter 笔记本的 Python 中创建 Azure 搜索索引
+# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>快速入门：使用 Jupyter 笔记本在 Python 中创建 Azure 搜索索引
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
@@ -26,17 +26,17 @@ ms.locfileid: "67840292"
 > * [门户](search-create-index-portal.md)
 > 
 
-生成的创建、 加载和查询 Azure 搜索索引中使用 Python 的 Jupyter 笔记本并[Azure 搜索 REST Api](https://docs.microsoft.com/rest/api/searchservice/)。 本文介绍如何构建循序渐进的笔记本。 此外，也可以[下载并运行已完成的 Jupyter Python notebook](https://github.com/Azure-Samples/azure-search-python-samples)。
+使用 Python 和[Azure 搜索 REST api](https://docs.microsoft.com/rest/api/searchservice/)构建创建、加载和查询 azure 搜索索引的 Jupyter 笔记本。 本文介绍如何逐步生成笔记本。 或者, 可以[下载并运行已完成的 Jupyter Python 笔记本](https://github.com/Azure-Samples/azure-search-python-samples)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-本快速入门使用以下服务和工具。 
+此快速入门中需要以下服务和工具。 
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section)，提供 Python 3.x 和 Jupyter Notebook。
 
-+ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 对于本快速入门，可以使用免费层。 
++ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费层。 
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
@@ -52,7 +52,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="connect-to-azure-search"></a>连接到 Azure 搜索
 
-在此任务中，启动 Jupyter notebook 并验证可以连接到 Azure 搜索。 将从你的服务请求的索引列表来执行此操作。 在装有 Anaconda3 的 Windows 上，可以使用 Anaconda Navigator 来启动笔记本。
+在此任务中, 启动 Jupyter 笔记本并验证是否可以连接到 Azure 搜索。 你将通过从服务请求索引列表来实现此目的。 在装有 Anaconda3 的 Windows 上，可以使用 Anaconda Navigator 来启动笔记本。
 
 1. 创建新的 Python3 笔记本。
 
@@ -73,7 +73,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
-1. 在第三个单元格中构建请求。 此 GET 请求以搜索服务的索引集合为目标，并选择现有的索引的名称属性。
+1. 在第三个单元格中构建请求。 此 GET 请求以搜索服务的索引集合为目标, 并选择现有索引的名称属性。
 
    ```python
    url = endpoint + "indexes" + api_version + "&$select=name"
@@ -82,19 +82,19 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    pprint(index_list)
    ```
 
-1. 运行每个步骤。 如果存在索引，则响应将包含索引名称的列表。 在下面的屏幕截图，该服务已经有 azureblob 索引和 realestate-我们的示例索引。
+1. 运行每个步骤。 如果索引存在, 则响应将包含索引名称列表。 在下面的屏幕截图中, 该服务已有 azureblob 索引和 realestate 索引。
 
    ![Jupyter 笔记本中的 Python 脚本，该脚本包含对 Azure 搜索发出的 HTTP 请求](media/search-get-started-python/connect-azure-search.png "Jupyter 笔记本中的 Python 脚本，该脚本包含对 Azure 搜索发出的 HTTP 请求")
 
-   与此相反，空索引集合返回此响应： `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   与此相反, 空索引集合返回此响应:`{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 ## <a name="1---create-an-index"></a>1 - 创建索引
 
-除非使用门户，否则在加载数据之前，服务中必须存在一个索引。 此步骤中使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)推送到该服务的索引架构。
+除非使用门户，否则在加载数据之前，服务中必须存在一个索引。 此步骤使用[Create index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)向服务推送索引架构。
 
-所需的元素的索引包括名称、 字段集合和一个密钥。 字段集合定义文档的结构。  每个字段有一个名称、 类型和确定如何使用该字段的属性 (例如，是否是全文索引时才可搜索、 筛选或可在搜索结果中检索)。 在索引中，必须将一个 `Edm.String` 类型的字段指定为文档标识的键。 
+索引所需的元素包括名称、字段集合和键。 字段集合定义文档的结构。  每个字段都有一个名称、类型和属性, 这些属性确定字段的使用方式 (例如, 它是在搜索结果中可以进行全文搜索、可筛选还是可检索)。 在索引中，必须将一个 `Edm.String` 类型的字段指定为文档标识的键。 
 
-此索引名为"hotels 快速入门"，并且请参阅下面的字段定义。 它是其他演练中使用的一个更大 [Hotels 索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)的子集。 为简明起见，本快速入门已对其进行修整。
+此索引命名为 "宾馆快速入门", 并具有如下所示的字段定义。 它是其他演练中使用的一个更大 [Hotels 索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)的子集。 为简明起见，本快速入门已对其进行修整。
 
 1. 在下一个单元格中，将以下示例粘贴到某个单元格以提供架构。 
 
@@ -124,7 +124,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     }
     ```
 
-2. 在另一个单元格中构建请求。 该 PUT 请求以搜索服务的索引集合为目标，并创建基于在上一个单元格中提供的索引架构的索引。
+2. 在另一个单元格中构建请求。 此 PUT 请求以搜索服务的索引集合为目标, 并基于在上一个单元格中提供的索引架构创建索引。
 
    ```python
    url = endpoint + "indexes" + api_version
@@ -135,12 +135,12 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 3. 运行每个步骤。
 
-   响应包含架构的 JSON 表示形式。 下面的屏幕截图显示响应的一部分。
+   响应包含架构的 JSON 表示形式。 以下屏幕截图只显示响应的一部分。
 
     ![请求创建索引](media/search-get-started-python/create-index.png "请求创建索引")
 
 > [!Tip]
-> 若要验证创建索引的另一种方法是检查在门户中的索引列表。
+> 验证索引创建的另一种方法是在门户中检查索引列表。
 
 <a name="load-documents"></a>
 
@@ -148,7 +148,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 若要推送文档，请向索引的 URL 终结点发出 HTTP POST 请求。 REST API 为[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 文档源自于 GitHub 上的 [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON)。
 
-1. 在新的单元格，提供了四个符合索引架构的文档。 指定每个文档的上传操作。
+1. 在新单元中, 提供符合索引架构的四个文档。 指定每个文档的上传操作。
 
     ```python
     documents = {
@@ -233,7 +233,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     }
     ```   
 
-2. 在另一个单元格中构建请求。 此 POST 请求以快速入门的酒店索引的文档集合为目标，并将推送上一步中提供的文档。
+2. 在另一个单元格中构建请求。 此 POST 请求以宾馆快速入门索引的文档集合为目标, 并推送上一步骤中提供的文档。
 
    ```python
    url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
@@ -250,19 +250,19 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 此步骤说明如何使用[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 查询索引。
 
-1. 在某一单元，提供了执行空搜索的查询表达式 (搜索 = *)，返回 unranked 的列表 (搜索分数 = 1.0) 的任意文档。 默认情况下，Azure 搜索一次返回 50 个匹配项。 作为结构化，此查询将返回整个文档结构和值。 添加 $count = true，以在结果中获取所有文档的计数。
+1. 在单元中, 提供一个查询表达式, 该表达式执行空搜索 (search = *), 返回任意文档的 unranked 列表 (搜索评分 = 1.0)。 默认情况下, Azure 搜索一次返回50个匹配项。 作为结构化, 此查询将返回整个文档结构和值。 添加 $count = true 以获取结果中的所有文档的计数。
 
    ```python
    searchstring = '&search=*&$count=true'
    ```
 
-1. 在新的单元格提供下面的示例，若要搜索的术语"酒店"和"wifi"。 添加 $select 可指定要在搜索结果中包括哪些字段。
+1. 在新单元中, 提供以下示例来搜索术语 "酒店" 和 "wifi"。 添加 $select 以指定要包含在搜索结果中的字段。
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-1. 在另一个单元格中，明确表述请求。 此 GET 请求以快速入门的酒店索引的文档集合为目标，并将附加上一步中指定的查询。
+1. 在另一个单元格中, 表述请求。 此 GET 请求以宾馆快速入门索引的文档集合为目标, 并附加你在上一步中指定的查询。
 
    ```python
    url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
@@ -275,21 +275,21 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
     ![搜索索引](media/search-get-started-python/search-index.png "搜索索引")
 
-1. 请尝试其他几个查询示例，以大致了解语法。 您可以替换`searchstring`与下面的示例，然后重新运行搜索请求。 
+1. 请尝试其他几个查询示例，以大致了解语法。 可以将替换`searchstring`为以下示例, 然后重新运行搜索请求。 
 
-   应用筛选器： 
+   应用筛选器: 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
    ```
 
-   执行前两个结果：
+   采用前两个结果:
 
    ```python
    searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
    ```
 
-    按特定字段进行排序：
+    按特定字段排序:
 
    ```python
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
@@ -297,15 +297,15 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="clean-up"></a>清理
 
-当您正在自己的订阅中时，它是建议项目的末尾来识别是否仍需要的资源创建。 持续运行资源可能会产生费用。 您可以逐个删除资源或删除要删除整个资源集的资源组。
+在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-可以查找和管理资源在门户中，使用**的所有资源**或**资源组**在左侧导航窗格中的链接。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
 
-如果使用的一项免费服务，请记住，你被限制为三个索引、 索引器和数据源。 您可以删除使其保持在限制在门户中的各个项。 
+如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 
 ## <a name="next-steps"></a>后续步骤
 
-为简化本快速入门使用的 Hotels 索引的简化的版本。 可以创建要尝试更感兴趣的查询的完整版本。 若要获取完整版本和所有 50 个文档，请运行**导入数据**向导，并选择*酒店示例*从内置的示例数据源。
+作为简化, 此快速入门使用的是缩略索引的缩写形式。 你可以创建完整版本来尝试更有趣的查询。 若要获取完整版本和所有50文档, 请运行**导入数据**向导, 并从内置示例数据源选择 "*宾馆示例*"。
 
 > [!div class="nextstepaction"]
 > [快速入门：在 Azure 门户中创建索引](search-get-started-portal.md)

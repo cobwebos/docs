@@ -5,69 +5,87 @@ author: rimman
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/02/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d0faeba5278e23990a72c9d2dd3d7e18510bdf80
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 42b7cd8a60e70ab75afc30910c46eb49f1f6d62a
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342047"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68000949"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器 
 
-借助 [Azure Cosmos DB 更改源处理器库](sql-api-sdk-dotnet-changefeed.md)，可以在多个使用者之间分配事件处理负载。 此库简化了跨分区的以及并行工作的多个线程中的更改的读取。
+更改源处理器是[AZURE COSMOS DB SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3)的一部分。 它简化了读取更改源的过程, 并有效地在多个使用者之间分发事件处理。
 
-更改源处理器库的主要优势在于，无需管理每个分区和继续标记，也无需手动轮询每个容器。
+更改源处理器库的主要优点是其容错行为, 可确保对更改源中的所有事件进行 "至少一次" 传递。
 
-更改源处理器库简化了跨分区的以及并行工作的多个线程中的更改的读取。 它使用租约机制自动管理跨分区的更改读取。 如下图中所示，如果启动两个使用更改源处理器库的客户端，它们会在彼此之间划分工作。 如果不断增加客户端的数目，它们仍会在彼此之间划分工作。
+## <a name="components-of-the-change-feed-processor"></a>更改源处理器的组件
 
-![使用 Azure Cosmos DB 更改源处理器库](./media/change-feed-processor/change-feed-output.png)
+实现更改源处理器有四个主要组件: 
 
-左侧的客户端先启动并开始监视所有分区，然后第二个客户端启动，随后，第一个客户端让某些租约转移到第二个客户端。 这是在不同的计算机和客户端之间分配工作的有效方法。
+1. **监视的容器：** 监视的容器是用于生成更改源的数据。 受监视容器的任何插入和更新均反映在容器的更改源中。
 
-如果有两个无服务器 Azure 函数正在监视同一个容器并使用相同的租约，则根据处理器库决定处理分区的方式，这两个函数可能会收到不同的文档。
+1. **租约容器：** 租约容器充当状态存储, 并协调处理跨多个工作线程的更改源。 租赁容器可以存储在与监视容器相同的帐户中, 也可以存储在单独的帐户中。 
 
-## <a name="implementing-the-change-feed-processor-library"></a>实施更改源处理器库
+1. **主机:** 主机是使用更改源处理器来侦听更改的应用程序实例。 具有相同租约配置的多个实例可以并行运行, 但每个实例应具有不同的**实例名称**。 
 
-实施更改源处理器库需要四个主要组件： 
+1. **委托:** 委托是定义您 (开发人员) 要对更改源处理器读取的每批更改执行的操作的代码。 
 
-1. **监视的容器：** 监视的容器是用于生成更改源的数据。 对监视容器的任何插入和更改都会反映在容器的更改源中。
-
-1. **租约容器：** 租约容器协调处理跨多个辅助角色的更改源。 单独的容器用于存储租约，一个分区一个租约。 最好将此租约容器存储在不同的帐户（写入区域更靠近更改源处理器运行位置）。 租用对象有以下属性：
-
-   * 所有者：指定拥有租约的主机。
-
-   * 继续：为特殊分区指定更改源中的位置（继续标记）。
-
-   * 时间戳：租约最近更新时间；时间戳可用于检查租约是否到期。
-
-1. **处理器主机：** 每个主机根据具有活动租用的其他主机实例数目，确定要处理的分区数目。
-
-   * 主机启动时，将获取租用，以在所有主机中均衡工作负荷。 主机定期续订租用，使租用保持活动状态。
-
-   * 主机为每次读取检查其租用的最近继续标记。 为确保并发安全，主机会检查 ETag 的每次租用更新。 此外还支持其他检查点策略。
-
-   * 关闭后，主机会释放所有租用，但保留继续信息，以便稍后从存储检查点继续读取。
-
-   目前，主机数量不能大于分区（租约）数量。
-
-1. **使用者：** 使用者或辅助角色是执行每个主机启动的更改源处理的线程。 每个处理器主机可以有多个使用者。 每个使用者从分配给其的分区上读取更改源，并就更改和过期的租用通知主机。
-
-若要进一步了解更改源处理器的四个元素是如何协同工作的，请看下图中的一个示例。 监视的集合存储文档，并将“City”用作分区键。 可以看到蓝色分区包含“A - E”中的“City”字段的文档。 有两个主机，每个主机有两个从四个并行分区读取的使用者。 箭头显示的是从更改源中特定位置读取的使用者。 在第一个分区中，深蓝色表示更改源上未读取的更改，而浅蓝色表示更改源上已读取的更改。 主机使用租用集合来存储“继续”值，跟踪每个使用者的当前读取位置。
+若要进一步了解更改源处理器的四个元素是如何协同工作的，请看下图中的一个示例。 监视的容器存储文档, 并使用 "City" 作为分区键。 我们发现分区键值分布在包含项的范围内。 有两个主机实例, 更改源处理器向每个实例分配不同范围的分区键值, 以最大程度地提高计算分布。 每个范围都是并行读取的, 它的进度与租赁容器中的其他范围分开维护。
 
 ![更改源处理器示例](./media/change-feed-processor/changefeedprocessor.png)
 
-### <a name="change-feed-and-provisioned-throughput"></a>更改源和预配吞吐量
+## <a name="implementing-the-change-feed-processor"></a>实现更改源处理器
+
+从调用`Container` `GetChangeFeedProcessorBuilder`的实例中, 入口点始终是监视的容器:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
+
+其中第一个参数是描述此处理器的目标的唯一名称, 第二个参数是将处理更改的委托实现。 
+
+委托的示例如下:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
+
+最后, 使用`WithInstanceName`定义此处理器实例的名称, 该名称是用于维护租约`WithLeaseContainer`状态的容器。
+
+调用`Build`将为你显示可通过调用`StartAsync`启动的处理器实例。
+
+## <a name="processing-life-cycle"></a>处理生命周期
+
+主机实例的正常生命周期如下:
+
+1. 读取更改源。
+1. 如果没有任何更改, 则睡眠时间为预定义的时间长度 ( `WithPollInterval`在生成器中可自定义) 并中转到 #1。
+1. 如果有更改, 请将其发送到**委托**。
+1. 当委托**成功**处理更改后, 请用最新的已处理时间点更新租约存储, 并中转到 #1。
+
+## <a name="error-handling"></a>错误处理。
+
+更改源处理器可复原用户代码错误。 这意味着, 如果委托实现具有未经处理的异常 (步骤 #4), 则将停止处理特定批更改的线程, 并将创建一个新线程。 新线程将进行检查, 该时间点是租约存储区的最新时间点, 并从该处重新开始, 从而有效地将同一批更改发送到委托。 此行为将继续, 直到你的委托正确地处理更改, 这是因为如果委托代码引发, 它将会重试该批处理。
+
+## <a name="dynamic-scaling"></a>动态缩放
+
+如简介中所述, 更改源处理器可自动将计算分布到多个实例中。 你可以使用更改源处理器部署应用程序的多个实例, 并利用它, 唯一的关键要求是:
+
+1. 所有实例都应具有相同的租赁容器配置。
+1. 所有实例都应具有相同的工作流名称。
+1. 每个实例都需要具有不同的实例名称`WithInstanceName`()。
+
+如果这三个条件适用, 则更改源处理器将使用相等的分布算法, 将租用容器中的所有租约分散到所有正在运行的实例和并行计算。 一个租约只能在给定时间由一个实例拥有, 因此, 最大实例数等于租约数。
+
+实例可以增大和缩小, 更改源处理器会通过相应地重新分发来动态调整负载。
+
+## <a name="change-feed-and-provisioned-throughput"></a>更改源和预配吞吐量
 
 消耗的 RU 会产生费用，将数据移入和移出 Cosmos 容器始终会消耗 RU。 租约容器消耗的 RU 也会产生费用。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [Azure Cosmos DB 更改源处理器库](sql-api-sdk-dotnet-changefeed.md)
-* [NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
-* [GitHub 上的其他示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
+* [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [GitHub 上的其他示例](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>后续步骤
 

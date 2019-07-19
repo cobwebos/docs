@@ -1,5 +1,5 @@
 ---
-title: JavaScript 示例-Azure Active Directory B2C |Microsoft Docs
+title: JavaScript 示例 - Azure Active Directory B2C | Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中使用 JavaScript。
 services: active-directory-b2c
 author: mmacy
@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9e19df7c50ca9d2c57ab385a567f4911b200c5e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5dfc1ef732c8456356de82f7fe026476fdfc075b
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510885"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227131"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-可以向 Azure Active Directory (Azure AD) B2C 应用程序添加自己的 JavaScript 客户端代码。 若要为应用程序中启用 JavaScript，您必须将元素添加到您[自定义策略](active-directory-b2c-overview-custom.md)，选择[页面协定](page-contract.md)，并使用[b2clogin.com](b2clogin.md)在请求中。 本文介绍如何更改你的自定义策略以启用脚本执行。
+可以向 Azure Active Directory (Azure AD) B2C 应用程序添加自己的 JavaScript 客户端代码。 若要为应用程序启用 JavaScript, 则必须将元素添加到[自定义策略](active-directory-b2c-overview-custom.md), 选择[页面布局](page-layout.md), 并在请求中使用[b2clogin.com](b2clogin.md) 。 本文介绍如何更改自定义策略以启用脚本执行。
 
 > [!NOTE]
-> 如果要为用户流启用 JavaScript，请参阅 [Azure Active Directory B2C 中的 JavaScript 和页面协定版本](user-flow-javascript-overview.md)。
+> 如果要为用户流启用 JavaScript, 请参阅[Azure Active Directory B2C 中的 javascript 和页面布局版本](user-flow-javascript-overview.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
-选择你的应用程序的用户界面元素的页协定。 如果打算使用 JavaScript，需要为自定义策略中所有的内容定义定义一个页协定版本。
+为应用程序的用户界面元素选择页面布局。 如果打算使用 JavaScript, 则需要为自定义策略中的所有内容定义定义页面布局版本。
 
 ## <a name="add-the-scriptexecution-element"></a>添加 ScriptExecution 元素
 
@@ -143,7 +143,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-在代码中，将 `termsOfUseUrl` 替换使用条款协议的链接。 对于你的目录，创建名为的新用户属性**termsOfUse** ，然后包括**termsOfUse**为用户属性。
+在代码中，将 `termsOfUseUrl` 替换使用条款协议的链接。 对于你的目录，创建一个名为 **termsOfUse** 的新用户属性，然后包括 **termsOfUse** 作为用户属性。
 
 ## <a name="next-steps"></a>后续步骤
 

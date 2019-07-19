@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: dde3e04dc8f30ea5657139d50dd4456e5dfb57c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935736"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868749"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>虚拟机产品/服务的定价
 ==================================
@@ -34,21 +34,31 @@ ms.locfileid: "64935736"
             "currency": "USD",
                 "individually": 
                 {
-                    "sharedcore": 2,
+                    "sharedcore": 1,
                     "1core": 2,
-                    "2core": 3,
-                    "4core": 4,
-                    "6core": 5,
+                    "2core": 2,
+                    "4core": 2,
+                    "6core": 2,
                     "8core": 2,
+                    "10core": 4,
                     "12core": 4,
                     "16core": 4,
                     "20core": 4,
                     "24core": 4,
-                    "32core": 4,
-                    "36core": 4,
-                    "40core": 4,
-                    "64core": 4,
-                    "128core": 4
+                    "32core": 6,
+                    "36core": 6,
+                    "40core": 6,
+                    "44core": 6,
+                    "48core": 10,
+                    "60core": 10,
+                    "64core": 10,
+                    "72core": 10,
+                    "80core": 12,
+                    "96core": 12,
+                    "120core": 15,
+                    "128core": 15,
+                    "208core": 20,
+                    "416core": 30
                 }
         }
         ...
@@ -90,7 +100,13 @@ ms.locfileid: "64935736"
      }
 ```
 
-<a name="regions"></a>区域
+<a name="new-core-sizes-added-on-722019"></a>7/2/2019 上增加了新的核心大小
+---------------------------
+
+VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价格 (基于内核数) 通知。  新价格适用于核心大小10、44、48、60、120、208和416。  对于现有 VM, 将根据当前价格自动计算这些核心大小的新价格。  发布者截至2019年8月1日, 以查看其他价格并进行任何所需的更改。  在此日期之后, 如果发布者尚未重新发布, 则这些新的核心大小的自动计算价格将生效。
+
+
+<a name="regions"></a>Regions
 -------
 
 下表显示了可以为自定义核心定价指定的不同区域及其对应的货币代码。
@@ -128,7 +144,7 @@ ms.locfileid: "64935736"
 | HU         | 匈牙利              | HUF               |
 | IS         | 冰岛              | ISK               |
 | IN         | 印度                | INR               |
-| ID         | 印度尼西亚            | IDR               |
+| id         | 印度尼西亚            | IDR               |
 | IE         | 爱尔兰              | EUR               |
 | IL         | 以色列               | ILS               |
 | IT         | 意大利                | EUR               |

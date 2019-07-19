@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7484b627d3bc3f26fa01d4c38ee96047c70d007
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: c962e95b3d213c4089b51f58139cab17a3332cbd
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785482"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853066"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>用于登录用户的 Web 应用 - 代码配置
 
@@ -37,7 +37,7 @@ ms.locfileid: "67785482"
 
 ## <a name="aspnet-core-configuration"></a>ASP.NET Core 配置
 
-在这篇文章和以下代码片段所摘自[ASP.NET Core Web 应用增量教程，第 1 章](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg)。 您可能想要为该教程的完整的实现详细信息，请参阅。
+本文中的代码片段和以下文章摘自[ASP.NET Core Web 应用增量教程第1章](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg)。 你可能想要参考该教程, 了解完整的实现细节。
 
 ### <a name="application-configuration-files"></a>应用程序配置文件
 
@@ -58,7 +58,7 @@ ms.locfileid: "67785482"
     "Instance": "https://login.microsoftonline.com/",
 
     // Azure AD Audience among:
-    // - the tenant Id as a a GUID obtained from the azure portal to sign-in users in your organization
+    // - the tenant Id as a GUID obtained from the azure portal to sign-in users in your organization
     // - "organizations" to sign-in users in any work or school accounts
     // - "common" to sign-in users with any work and school account or Microsoft personal account
     // - "consumers" to sign-in users with Microsoft personal account only

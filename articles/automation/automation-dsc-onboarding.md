@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 8a505e88ff92c5227d3b42da2adaf1dce58e6fbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca53d85a09727b75f68da8d049ac3fcd6723a041
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65441505"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302271"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 
@@ -56,7 +56,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 如果虚拟机未安装 PowerShell 所需状态扩展且电源状态为“正在运行”，请单击“连接”  。
 
-在“注册”  下，输入用例所需的[“PowerShell DSC 本地配置管理器”值](/powershell/dsc/metaconfig4)，并选择性地输入要分配给 VM 的节点配置。
+在“注册”  下，输入用例所需的[“PowerShell DSC 本地配置管理器”值](/powershell/dsc/managing-nodes/metaconfig)，并选择性地输入要分配给 VM 的节点配置。
 
 ![加入](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
@@ -81,7 +81,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 ## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>位于本地或 Azure 以外的云中的物理/虚拟 Windows 计算机/AWS
 
-运行 Windows 服务器在本地或其他云环境中还可以登记到 Azure 自动化状态配置，只要它们具有[到 Azure 的出站访问](automation-dsc-overview.md#network-planning):
+在本地或其他云环境中运行的 Windows 服务器还可以载入 Azure 自动化状态配置, 前提是它们具有[azure 的出站访问权限](automation-dsc-overview.md#network-planning):
 
 1. 确保已在要加入到 Azure Automation State Configuration 的计算机上安装最新版本的 [WMF 5](https://aka.ms/wmf5latest)。
 1. 请根据以下[**生成 DSC 元配置**](#generating-dsc-metaconfigurations)部分中的说明生成包含所需 DSC 元配置的文件夹。
@@ -96,7 +96,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 ## <a name="physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure"></a>位于本地或者非 Azure 云中的物理/虚拟 Linux 计算机
 
-运行的 Linux 服务器的本地或其他云环境中还可以登记到 Azure 自动化状态配置，只要它们具有[到 Azure 的出站访问](automation-dsc-overview.md#network-planning):
+在本地或其他云环境中运行的 Linux 服务器还可以载入 Azure 自动化状态配置, 前提是它们具有[azure 的出站访问权限](automation-dsc-overview.md#network-planning):
 
 1. 确保已在希望加入到 Azure Automation State Configuration 的计算机上安装[适用于 Linux 的 PowerShell Desired State Configuration](https://github.com/Microsoft/PowerShell-DSC-for-Linux) 的最新版本。
 1. 如果 [PowerShell DSC 本地 Configuration Manager 默认值](/powershell/dsc/metaconfig4)与用例匹配，并且想要将计算机加入为**同时**从 Azure Automation State Configuration 提取并报告信息，则请执行以下操作：

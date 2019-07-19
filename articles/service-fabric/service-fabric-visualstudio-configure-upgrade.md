@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
-ms.author: mikkelhegn
-ms.openlocfilehash: 79120371ca2a62e5ef9f2bf38476635db12e9fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mikhegn
+ms.openlocfilehash: 5979541146b7cd7b854f35c5bf204e71208f066b
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61082826"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876760"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>在 Visual Studio 中配置 Service Fabric 应用程序的升级
 Azure Service Fabric 的 Visual Studio 工具提供发布到本地或远程群集的升级支持。 在测试和调试期间将应用程序升级到较新的版本而不是替换应用程序的三种方案：
@@ -31,7 +31,7 @@ Azure Service Fabric 的 Visual Studio 工具提供发布到本地或远程群�
 ## <a name="parameters-needed-to-upgrade"></a>升级所需的参数
 可以选择的部署类型有两种：常规或升级。 常规部署会将群集上所有先前的部署信息和数据都清除，而升级部署则将其保留。 在 Visual Studio 中升级 Service Fabric应用程序时，需要提供应用程序升级参数和运行状况检查策略。 应用程序升级参数可帮助控制升级，而运行状况检查策略可确定升级是否成功。 有关详细信息，请参阅 [Service Fabric 应用程序升级：升级参数](service-fabric-application-upgrade-parameters.md)。
 
-有三种升级模式：*监视*， *UnmonitoredAuto*，和*UnmonitoredManual*。
+有三种升级模式:*监视*的、 *UnmonitoredAuto*和*UnmonitoredManual*。
 
 * Monitored 升级自动执行升级和应用程序运行状况检查。
 * UnmonitoredAuto 升级自动执行升级，但跳过应用程序运行状况检查。

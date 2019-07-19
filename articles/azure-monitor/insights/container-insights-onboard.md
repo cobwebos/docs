@@ -1,6 +1,6 @@
 ---
-title: 如何启用用于容器的 Azure Monitor |Microsoft Docs
-description: 本文介绍如何启用和配置 Azure Monitor 用于容器，以便您可以了解如何执行你的容器和已证实存在哪些与性能相关问题。
+title: 如何启用容器 Azure Monitor |Microsoft Docs
+description: 本文介绍如何为容器启用和配置 Azure Monitor，以便了解容器的性能以及已识别的性能相关问题。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,18 +11,18 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/02/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: aff2dcebdab1ad93b8b1958164764b66eb755d1c
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 25be8f166fec8a311fdc2ed1fa3fca6339185e94
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514508"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867521"
 ---
-# <a name="how-to-enable-azure-monitor-for-containers"></a>如何启用用于容器的 Azure Monitor
+# <a name="how-to-enable-azure-monitor-for-containers"></a>如何为容器启用 Azure Monitor
 
-本文提供的选项，可用于设置用于容器的 Azure Monitor 来监视部署到 Kubernetes 环境和上承载的工作负荷的性能概述[Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/)。
+本文概述了可用于为容器设置 Azure Monitor 的选项，这些选项用于监视部署到 Kubernetes 环境并托管在 [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/)上的工作负荷的性能。
 
 可使用以下支持的方法为 AKS 的新部署，或是一个或多个现有部署启用适用于容器的 Azure Monitor：
 
@@ -31,14 +31,14 @@ ms.locfileid: "67514508"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 在开始之前，请确保做好以下准备：
 
 * **Log Analytics 工作区。**
 
-    用于容器的 azure Monitor 支持在 Azure 中列出的区域中的 Log Analytics 工作区[各区域的产品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)，不包括在区域**美国弗吉尼亚州政府**。
+    容器 Azure Monitor 在 Azure[产品 (按区域](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)) 中列出的区域中支持 Log Analytics 工作区, 不包括区域**US Gov 弗吉尼亚州**。
 
-    启用新的 AKS 群集的监视或让 AKS 群集订阅的默认资源组中创建默认工作区的载入体验时，可以创建工作区。 如果选择自行创建工作区，可以通过 [Azure 资源管理器](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../learn/quick-create-workspace.md)来创建。 用于默认工作区的受支持的映射对的列表，请参阅[容器的 Azure Monitor 的区域映射](container-insights-region-mapping.md)。
+    你可以在启用新 AKS 群集的监视时创建工作区, 或让载入体验在 AKS 群集订阅的默认资源组中创建默认工作区。 如果选择自行创建工作区，可以通过 [Azure 资源管理器](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../learn/quick-create-workspace.md)来创建。 有关用于默认工作区的支持映射对的列表, 请参阅[容器 Azure Monitor 的区域映射](container-insights-region-mapping.md)。
 
 * 需要成为 **Log Analytics 参与者角色**的成员才能启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../platform/manage-access.md)。
 
@@ -46,12 +46,14 @@ ms.locfileid: "67514508"
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
+* 默认情况下, 不收集 Prometheus 指标。 在[配置代理](container-insights-agent-config.md)以收集它们之前, 请务必查看 Prometheus[文档](https://prometheus.io/)以了解可以定义的内容。
+
 ## <a name="components"></a>组件
 
 监视性能的能力依赖于 Linux 容器化 Log Analytics 代理，该代理专门针对用于容器的 Azure Monitor 开发而来。 此专用代理可从群集中的所有节点处收集性能和事件数据，并且在部署期间，会自动部署该代理，并注册指定 Log Analytics 工作区。 该代理的版本为 microsoft/oms:ciprod04202018 或更高版本，并由采用以下格式的日期表示：mmddyyyy  。
 
 >[!NOTE]
->借助适用于 AKS 的 Windows Server 支持的预览版本，AKS 节点的群集，Windows Server 无需安装以收集数据然后转发到 Azure Monitor 的代理。 相反，会自动作为标准部署的一部分部署在群集中的 Linux 节点收集，并将数据转发到 Azure Monitor 代表群集中的所有 Windows 节点。  
+>随着 Windows Server 预览版对 AKS 的支持，带有 Windows Server 节点的 AKS 群集没有安装代理即可收集数据并将数据转发到 Azure Monitor。 但是，在标准部署过程中，自动部署在群集中的 Linux 节点会代表群集中的所有 Windows 节点收集数据并将数据转发到 Azure Monitor。  
 >
 
 当该代理的新版本发布时，会在承载于 Azure Kubernetes 服务 (AKS) 上的托管 Kubernetes 群集上自动升级该代理。 要关注发布的版本，请参阅[代理发布公告](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)。
@@ -60,17 +62,17 @@ ms.locfileid: "67514508"
 >如果已部署 AKS 群集，可使用 Azure CLI 或提供的 Azure 资源管理器模板启用监视，如后文所示。 不能使用 `kubectl` 升级、删除、重新部署或部署代理。
 >模板需要部署在群集所在的资源组中。
 
-使用下表中所述的以下方法之一用于容器启用 Azure Monitor。
+可以使用下表中所述的下列方法之一为容器启用 Azure Monitor。
 
 | 部署状态 | 方法 | 描述 |
 |------------------|--------|-------------|
-| 新的 AKS 群集 | [使用 Azure CLI 创建群集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| 您可以使用 Azure CLI 创建新的 AKS 群集的监视。 |
-| | [使用 Terraform 创建群集](container-insights-enable-new-cluster.md#enable-using-terraform)| 可以让您使用的开源工具 Terraform 创建新的 AKS 群集的监视。 |
-| 现有的 AKS 群集 | [启用使用 Azure CLI](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | 您可以启用监视的已使用 Azure CLI 部署 AKS 群集。 |
-| |[使用 Terraform 启用](container-insights-enable-existing-clusters.md#enable-using-terraform) | 您可以启用监视的已使用 Terraform 的开放源代码工具部署 AKS 群集。 |
-| | [启用从 Azure Monitor](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| 可以启用一个或多个已部署从 Azure Monitor 中的 AKS 群集多页的 AKS 群集的监视。 |
-| | [启用从 AKS 群集](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| 您可以直接从 Azure 门户中的 AKS 群集监视。 |
-| | [启用使用 Azure 资源管理器模板](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| 您可以启用预先配置的 Azure 资源管理器模板与 AKS 群集的监视。 |
+| 新建 AKS 群集 | [使用 Azure CLI 创建群集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| 可以启用对使用 Azure CLI 创建的新 AKS 群集的监视。 |
+| | [使用 Terraform 创建群集](container-insights-enable-new-cluster.md#enable-using-terraform)| 可以启用对使用开源工具 Terraform 创建的新 AKS 群集的监视。 |
+| 现有 AKS 群集 | [使用 Azure CLI 启用](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | 可以使用 Azure CLI 启用对已部署的 AKS 群集的监视。 |
+| |[使用 Terraform 启用](container-insights-enable-existing-clusters.md#enable-using-terraform) | 可以使用开源工具 Terraform 启用对已部署的 AKS 群集的监视。 |
+| | [从 Azure Monitor 启用](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| 可以从 Azure Monitor 的 AKS 多群集页启用对一个或多个已经部署的 AKS 群集的监视。 |
+| | [从 AKS 群集启用](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| 可以直接从 Azure 门户中的 AKS 群集启用监视。 |
+| | [使用 Azure 资源管理器模板启用](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| 可以使用预先配置的 Azure 资源管理器模板启用对 AKS 群集的监视。 |
 
 ## <a name="next-steps"></a>后续步骤
 

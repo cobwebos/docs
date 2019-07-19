@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: vashan, rajraj, changov
-ms.openlocfilehash: a9e0f2620bf6ff163207fc16ee24a327936ec4bf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: changov
+ms.reviewer: vashan, rajraj
+ms.openlocfilehash: 6ae14edb7fa6b44f7c3bb961ffbcceb26eb9dee3
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709193"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875465"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>排查 API 限制错误 
 
@@ -35,7 +36,7 @@ Azure 计算请求可能会根据订阅和区域进行限制，以便优化服�
 | Header                            | 值格式                           | 示例                               | 描述                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | 限制策略（涵盖资源 Bucket 或操作组，包括此请求的目标）的剩余 API 调用计数                                                                   |
-| x-ms-request-charge               | ```<count>```                             | 第                                     | 针对此 HTTP 请求进行的调用计数计入相应策略的限制。 这通常为 1。 针对特殊情况（例如针对虚拟机规模集的缩放）的批请求可以有多个计数。 |
+| x-ms-request-charge               | ```<count>```                             | 1                                     | 针对此 HTTP 请求进行的调用计数计入相应策略的限制。 这通常为 1。 针对特殊情况（例如针对虚拟机规模集的缩放）的批请求可以有多个计数。 |
 
 
 请注意，一个 API 请求可能受多个限制策略的约束。 每个策略会有单独的 `x-ms-ratelimit-remaining-resource` 标头。 

@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 中的 azure Active Directory 登录日志架构 |Microsoft Docs
-description: 介绍日志架构中使用 Azure Monitor 中为 Azure AD 登录
+title: Azure Monitor 中的 Azure Active Directory 登录日志架构 |Microsoft Docs
+description: 描述在 Azure Monitor 中使用的 Azure AD 登录日志架构
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,14 +17,14 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ac6c56dca100ea9836158f46881c4eb12213e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0e7ae7e90642a6adfd35e71765e2753334660c56
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60285194"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261867"
 ---
-# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解释 Azure Monitor 中的 Azure AD 登录日志架构
+# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解释中的 Azure AD 登录日志架构 Azure Monitor
 
 本文介绍 Azure Monitor 中的 Azure Active Directory (Azure AD) 登录日志架构。 与登录相关的大多数信息都在 `records` 对象的 Properties 属性下提供  。
 
@@ -146,7 +146,7 @@ ms.locfileid: "60285194"
 | 字段名 | 描述 |
 |------------|-------------|
 | Time | 日期和时间 (UTC)。 |
-| ResourceId | 此值未映射，可以放心地忽略此字段。  |
+| resourceId | 此值未映射，可以放心地忽略此字段。  |
 | OperationName | 对于登录，此值始终为“登录活动”  。 |
 | OperationVersion | 客户端请求的 REST API 版本。 |
 | 类别 | 对于登录，此值始终为“登录”  。 | 
@@ -154,7 +154,12 @@ ms.locfileid: "60285194"
 | ResultType | 登录操作的结果，可以是“成功”或“失败”   。 | 
 | ResultSignature | 包含登录操作的错误代码（如果有）。 |
 | ResultDescription | 提供登录操作的错误说明。 |
-| DurationMs |  此值未映射，可以放心地忽略此字段。|
+| riskDetail | riskDetail | 提供风险用户、登录或风险事件的特定状态背后的 "原因"。 可能的值包括: `none`、 `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordReset` `adminConfirmedSigninSafe` 、`adminDismissedAllRiskForUser`、、、 、、、和`aiConfirmedSigninSafe` 。`unknownFutureValue` `userPerformedSecuredPasswordChange` `userPassedMFADrivenByRiskBasedPolicy` `adminConfirmedSigninCompromised` 值`none`表示尚未对用户执行任何操作或目前未登录。 <br>**注意：** 此属性的详细信息需要 Azure AD Premium P2 许可证。 其他许可证返回值`hidden`。 |
+| riskEventTypes | riskEventTypes | 与登录关联的风险事件类型。 可能的值包括: `unlikelyTravel`、 `anonymizedIPAddress` `unfamiliarFeatures` `malwareInfectedIPAddress` 、`generic`、、、 `suspiciousIPAddress` 、、`unknownFutureValue`、和。 `investigationsThreatIntelligence` `maliciousIPAddress` `leakedCredentials` |
+| riskLevelAggregated | riskLevel | 聚合的风险级别。 可能的值包括: `none`、 `low`、 `medium`、 `high`、 `hidden`和。 `unknownFutureValue` 该值`hidden`表示没有为用户或登录启用 Azure AD Identity Protection。 **注意：** 此属性的详细信息仅适用于 Azure AD Premium P2 客户。 将返回`hidden`所有其他客户。 |
+| riskLevelDuringSignIn | riskLevel | 登录过程中的风险级别。 可能的值包括: `none`、 `low`、 `medium`、 `high`、 `hidden`和。 `unknownFutureValue` 该值`hidden`表示没有为用户或登录启用 Azure AD Identity Protection。 **注意：** 此属性的详细信息仅适用于 Azure AD Premium P2 客户。 将返回`hidden`所有其他客户。 |
+| riskState | riskState | 报告风险用户、登录或风险事件的状态。 可能的值包括: `none`、 `confirmedSafe`、 `remediated`、 `dismissed`、 `atRisk`、 `confirmedCompromised`和。`unknownFutureValue` |
+| DurationMs |  此值未映射，可以放心地忽略此字段。 |
 | CallerIpAddress | 发出请求的客户端的 IP 地址。 | 
 | CorrelationId | 客户端所传递的可选 GUID。 此值可帮助将客户端操作与服务器端操作关联，并且在跟踪跨服务的日志时非常有用。 |
 | 标识 | 发出请求时提供的令牌中的标识。 可以是用户帐户、系统帐户或服务主体。 |
