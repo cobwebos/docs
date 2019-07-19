@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172914"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286196"
 ---
 共享映像库可让你使用 RBAC 共享映像。 可以使用 RBAC 在租户中共享映像，甚至可以与租户外部的个人共享映像。 但是，若要在 Azure 租户外部大规模共享映像，应创建一个应用注册来方便共享。  使用应用注册可以实现更复杂的共享方案，例如： 
 
@@ -27,7 +27,7 @@ ms.locfileid: "67172914"
 1. [在 Azure 门户中打开“应用注册(预览版)”](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/)。    
 1. 从页面顶部的菜单中选择“新建注册”。 
 1. 在“名称”中键入 *myGalleryApp*。 
-1. 在中**支持的帐户类型**，选择**中的任何组织的目录和个人 Microsoft 帐户的帐户**。
+1. 在 "**支持的帐户类型**" 中, 选择 "**帐户"** 。
 1. 在“重定向 URI”中键入 *https://www.microsoft.com* ，然后选择“注册”。   创建应用注册后，概述页将会打开。
 1. 在概述页上，复制“应用程序(客户端) ID”并保存供稍后使用。    
 1. 依次选择“证书和机密”、“新建客户端机密”。  
@@ -44,9 +44,9 @@ ms.locfileid: "67172914"
 1. 在“选择”下键入 *myGalleryApp*，并在此应用显示在列表中时将其选中。  完成后，选择“保存”  。
 
 
-## <a name="give-tenant-2-access"></a>让租户 2 访问
+## <a name="give-tenant-2-access"></a>授予租户 2 访问权限
 
-通过使用浏览器登录中请求向应用程序租户 2 的访问。 请将 *<Tenant2 ID>* 替换为要与其共享映像库的租户的租户 ID。 请将 *<Application (client) ID>* 替换为创建的应用注册的应用程序 ID。 完成替换后，将 URL 粘贴到浏览器中，然后遵照登录提示登录到租户 2。
+通过使用浏览器请求登录，授予租户 2 对应用程序的访问权限。 将 *\<Tenant2 id >* 替换为要与之共享图像库的租户的租户 ID。 将 *\<应用程序 (客户端) ID >* 替换为你创建的应用程序注册的应用程序 id。 完成替换后，将 URL 粘贴到浏览器中，然后遵照登录提示登录到租户 2。
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

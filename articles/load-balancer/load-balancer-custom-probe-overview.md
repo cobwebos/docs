@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 了解如何使用运行状况探测来监视负载均衡器后的实例
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
-ms.author: kumud
-ms.openlocfilehash: e488a4a6438279270f3d86dafa16c45eda184059
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 75009530940a0cce7adb8469ead5f55f509a1faa
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65415708"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275338"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -212,9 +212,9 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-o
 
 ## <a name="monitoring"></a>监视
 
-公共和内部[标准负载均衡器](load-balancer-standard-overview.md)通过 Azure Monitor 将每个终结点和后端实例的运行状况探测状态公开为多维指标。 这些指标可供其他 Azure 服务或合作伙伴应用程序。 
+公共和内部[标准负载均衡器](load-balancer-standard-overview.md)通过 Azure Monitor 将每个终结点和后端实例的运行状况探测状态公开为多维指标。 其他 Azure 服务或合作伙伴应用程序可使用这些指标。 
 
-基本公共负载均衡器公开运行状况探测状态汇总每个通过 Azure Monitor 日志的后端池。  Azure Monitor 日志不可用于内部基本负载均衡器。  可以使用[Azure Monitor 日志](load-balancer-monitor-log.md)若要检查的公共负载均衡器探测运行状况和探测计数。 可以配合 Power BI 或 Azure Operation Insights 使用日志记录，以提供有关负载均衡器运行状况的统计信息。
+基本的公共负载均衡器通过 Azure Monitor 日志公开每个后端池的运行状况探测状态。  Azure Monitor 日志不适用于内部基本负载均衡器。  你可以使用[Azure Monitor 日志](load-balancer-monitor-log.md)来检查公共负载均衡器探测运行状况和探测计数。 可以配合 Power BI 或 Azure Operation Insights 使用日志记录，以提供有关负载均衡器运行状况的统计信息。
 
 ## <a name="limitations"></a>限制
 
