@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c2f9a2a3d431e2948c7d50541b576b23c3ece6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e18157c95dac0de90c50b4b7e8591e32c5b76aaf
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507542"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227232"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为
 
@@ -36,7 +36,7 @@ Azure AD B2C 中的标识体验框架包括提供程序 `Handler="Web.TPEngine.P
 
 Application Insights 可以使用关联 ID 来记录用户会话，以便统一事件。 Application Insights 可以在数秒内提供事件和会话，并提供许多可视化工具、导出工具和分析工具。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。 本文假设使用的是自定义策略初学者包。 但是，初学者包不是必需的。
 
@@ -47,11 +47,11 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用包含 Azure 订阅的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含订阅的目录  。 此租户不是 Azure AD B2C 租户。
 3. 选择 Azure 门户左上角的“创建资源”，然后搜索并选择“Application Insights”   。
-4. 单击**创建**。
+4. 单击“创建”。 
 5. 输入此资源的名称  。
 6. 在“应用程序类型”下，选择“ASP.NET web 应用程序”   。
 7. 对于资源组，选择现有的组，或输入新组的名称  。
-8. 单击**创建**。
+8. 单击“创建”。 
 4. 创建 Application Insights 资源后，将其打开，展开“Essentials”并复制检测密钥  。
 
 ![Application Insights 概览和检测密钥](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-insights.png)
@@ -166,7 +166,7 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 ```
 
 > [!IMPORTANT]
-> 将 `ApplicationInsights-Common` 技术配置文件中的检测密钥更改为 Application Insights 资源提供的 GUID。
+> 将 `AzureInsights-Common` 技术配置文件中的检测密钥更改为 Application Insights 资源提供的 GUID。
 
 ## <a name="add-the-technical-profiles-as-orchestration-steps"></a>添加技术配置文件，作为业务流程步骤
 

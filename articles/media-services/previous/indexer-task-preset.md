@@ -12,14 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: adsolank
-ms.reviewer: juliako
-ms.openlocfilehash: 129694edacb390aa62c061941810b8c98be7e96c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.author: juliako
+ms.openlocfilehash: a9a47f970f0f934e0953bd5e2d6e5575758a9c1c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619167"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67873507"
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer 的任务预设 
 

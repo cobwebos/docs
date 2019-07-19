@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: rajani-janaki-ram
-ms.openlocfilehash: 981b78345a0d9ea589e9c39ddaa2e253f1dd343f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rajanaki
+ms.openlocfilehash: a13dee2010688b02fd86fb05900826470a7d7a08
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65412842"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876046"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>删除 Site Recovery 服务保管库
 
@@ -77,4 +77,4 @@ ms.locfileid: "65412842"
 
     Remove-AzRecoveryServicesVault -Vault $vault
 
-详细了解如何[Get AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault)，并[删除 AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault)。
+了解有关[AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault)和[AzRecoveryServicesVault 的](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault)详细信息。

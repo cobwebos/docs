@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 2b9c8f1bb7407dd36623fd8ad68f9489172a1caf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a62a4d5f06856ca0fe6356ca388047679097e3f
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712224"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68004478"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 区域和记录概述
 
@@ -88,6 +88,8 @@ SOA 记录集在每个区域（名称 =“\@”）的顶点处自动创建，并
 
 用户可以修改 SOA 记录的所有属性，但“主机”属性除外，此属性预配置为引用 Azure DNS 所提供的主名称服务器名。
 
+更改区域中的记录时, SOA 记录中的区域序列号不会自动更新。 如果需要, 可以通过编辑 SOA 记录手动进行更新。
+
 ### <a name="spf-records"></a>SPF 记录
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
@@ -111,7 +113,7 @@ DNS 记录中的多个字符串不应与 TXT 记录集的多个 TXT 记录混淆
 
 ## <a name="tags-and-metadata"></a>标记和元数据
 
-### <a name="tags"></a>标记
+### <a name="tags"></a>Tags
 
 标记是名称/值列表，Azure 资源管理器利用它们来标记资源。  Azure 资源管理器使用标记来启用 Azure 帐单的筛选视图，并支持设置需要标记的策略。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../azure-resource-manager/resource-group-using-tags.md)。
 
@@ -134,7 +136,7 @@ Etag 是在 Azure DNS REST API 级别使用 HTTP 标头指定的。  下表给�
 | Header | 行为 |
 | --- | --- |
 | 无 |PUT 始终成功（没有 Etag 检查） |
-| If-match \<etag> |只有当资源存在并且 Etag 匹配时，PUT 才会成功 |
+| 如果-match \<etag > |只有当资源存在并且 Etag 匹配时，PUT 才会成功 |
 | If-match * |只有当资源存在时，PUT 才会成功 |
 | If-none-match * |只有当资源不存在时，PUT 才会成功 |
 

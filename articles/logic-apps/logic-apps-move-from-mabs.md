@@ -9,12 +9,12 @@ ms.author: jonfan
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: f813cb5d8d5c442fc17f126c3a2ff6de7b0bdde1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfc0aa4fa7c70ae91f25f97671b15dacfe991594
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61321131"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273180"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>从 BizTalk 服务迁移到 Azure 逻辑应用
 
@@ -52,7 +52,7 @@ BizTalk 服务有几种类型的项目。
 
 ## <a name="connectors"></a>连接器
 
-BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于 HTTP 的请求/响应交互的双向网桥。 逻辑应用使用相同的术语，并且有通过连接到各种技术和服务来提供相同用途的 180 + 连接器。 例如，连接器可用于云 SaaS 和 PaaS 服务（例如 OneDrive、Office365、Dynamics CRM 及其他服务）并可通过本地数据网关用于本地系统，本地数据网关替代了 BizTalk 服务的 BizTalk 适配器服务。 BizTalk 服务中的源仅限于 FTP、SFTP 和服务总线队列或主题订阅。
+BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于 HTTP 的请求/响应交互的双向网桥。 逻辑应用使用相同的术语, 并具有数百个连接器, 它们通过连接到各种技术和服务来实现相同的目的。 例如，连接器可用于云 SaaS 和 PaaS 服务（例如 OneDrive、Office365、Dynamics CRM 及其他服务）并可通过本地数据网关用于本地系统，本地数据网关替代了 BizTalk 服务的 BizTalk 适配器服务。 BizTalk 服务中的源仅限于 FTP、SFTP 和服务总线队列或主题订阅。
 
 ![](media/logic-apps-move-from-mabs/sources.png)
 
@@ -106,7 +106,7 @@ BizTalk 服务会做出路由决策，决定由哪个终结点或连接器来发
 
 BizTalk 服务允许你运行在你自己的程序集中上传的[自定义代码](https://msdn.microsoft.com/library/azure/dn232389.aspx)。 此功能是通过 [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) 接口实现的。 网桥中的每个阶段都包括两个属性（On Enter Inspector 和 On Exit Inspector），它们提供你创建的实现了此接口的 .NET 类型。 通过自定义代码，可以对数据执行更复杂的处理，还可以重复使用程序集中执行常见业务逻辑的现有代码。 
 
-逻辑应用提供了两个主要的方式来执行自定义代码：Azure Functions 和 API 应用。 可以创建 Azure Functions，也可以从逻辑应用中调用。 请参阅[通过 Azure Functions 为逻辑应用添加和运行自定义代码](../logic-apps/logic-apps-azure-functions.md)。 使用 API 应用（Azure 应用服务的一部分）创建自己的触发器和操作。 了解有关[创建用于逻辑应用的自定义 API](../logic-apps/logic-apps-create-api-app.md) 的详细信息。 
+逻辑应用提供了两种主要方法来执行自定义代码:Azure Functions 和 API 应用。 可以创建 Azure Functions，也可以从逻辑应用中调用。 请参阅[通过 Azure Functions 为逻辑应用添加和运行自定义代码](../logic-apps/logic-apps-azure-functions.md)。 使用 API 应用（Azure 应用服务的一部分）创建自己的触发器和操作。 了解有关[创建用于逻辑应用的自定义 API](../logic-apps/logic-apps-create-api-app.md) 的详细信息。 
 
 如果程序集中有从 BizTalk 服务中调用的自定义代码，可以将此代码移到 Azure Functions，也可以使用 API 应用创建自定义 API；具体取决于要实现什么。 例如，如果代码包装了逻辑应用没有其连接器的另一个服务，则请创建 API 应用，并在逻辑应用中使用你的 API 应用提供的操作。 如果有帮助程序函数或库，则 Azure Functions 很有可能是最合适的。
 

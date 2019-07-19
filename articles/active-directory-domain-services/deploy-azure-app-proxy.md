@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 域服务：部署 Azure Active Directory 应用程序代理 | Microsoft Docs
+title: Azure Active Directory 域服务：部署 Azure AD 应用程序代理 |Microsoft Docs
 description: 在 Azure Active Directory 域服务托管域上使用 Azure AD 应用程序代理
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: e9ccbd81a8efeb69ea073d89edd6579a6d59699a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: eca421697081310b1bf245172b3ff125e11c8728
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473614"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234175"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域上部署 Azure AD 应用程序代理
 Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问的本地应用程序，帮助用户为远程辅助角色提供支持。 使用 Azure AD 域服务，现在可以将本地运行的旧版应用程序提升并转移到 Azure 基础结构服务。 然后，可以使用 Azure AD 应用程序代理发布这些应用程序，以允许组织中的用户进行安全远程访问。
@@ -86,7 +86,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
     ![疑难解答程序成功](./media/app-proxy/app-proxy-connector-troubleshooter.png)
 5. 应看到新安装的连接器在 Azure AD 目录的应用程序代理页上列出。
 
-    ![](./media/app-proxy/app-proxy-connector-page.png)
+    ![在 Azure 门户中, 已安装的连接器显示为 "可用"](./media/app-proxy/app-proxy-connector-page.png)
 
 > [!NOTE]
 > 可以选择将连接器安装在多个服务器上，以确保在对通过 Azure AD 应用程序代理发布的应用程序进行身份验证时提供高可用性。 执行上面所列的相同步骤在已加入到托管域的其他服务器上安装连接器。

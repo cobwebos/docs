@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: bbab0d8d0947c18cf8e6c178d12fdbd7b335d2b6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 822efe2534d49c0995a672232107cc322e547989
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485896"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227511"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>在 Linux 上安装 Azure IoT Edge 运行时 (x64)
 
@@ -26,11 +26,11 @@ ms.locfileid: "67485896"
 本文列出了在 Ubuntu Linux x64 (Intel/AMD) IoT Edge 设备上安装 Azure IoT Edge 运行时的步骤。 有关支持的 AMD64 操作系统的列表，请参阅 [Azure IoT Edge 支持的系统](support.md#operating-systems)。
 
 > [!NOTE]
-> Linux 软件存储库中的包受到每个包中的许可条款限制 (/usr/share/doc/*package-name*)。 使用程序包之前请阅读许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用包。
+> Linux 软件存储库中的包受到每个包中的许可条款限制 (/usr/share/doc/*package-name*)。 使用程序包之前请阅读许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用程序包。
 
 ## <a name="install-the-latest-version"></a>安装最新版本
 
-使用下列部分来安装到你的设备上的 Azure IoT Edge 服务的最新版本。 
+使用下列部分将 Azure IoT Edge 服务的最新版本安装到你的设备上。 
 
 ### <a name="register-microsoft-key-and-software-repository-feed"></a>注册 Microsoft 密钥和软件存储库源
 
@@ -89,7 +89,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 #### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>验证 Linux 内核的小鲸鱼兼容性
 
-许多嵌入式的设备制造商提供包含可能缺少所需的容器运行时兼容性功能的自定义 Linux 内核的设备映像。 如果安装的推荐时遇到问题[小鲸鱼](https://github.com/moby/moby)容器运行时，您可能能够使用在 Linux 内核配置进行故障排除[检查配置](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh)中提供的脚本官方[小鲸鱼 Github 存储库](https://github.com/moby/moby)通过在设备上运行以下命令。
+许多嵌入式设备制造商提供的设备映像包含可能缺少容器运行时兼容性所需功能的自定义 Linux 内核。 如果在安装建议的[小鲸鱼](https://github.com/moby/moby)容器运行时遇到问题, 可以使用官方[小鲸鱼 GitHub 存储库](https://github.com/moby/moby)中提供的[检查-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh)脚本对 Linux 内核配置进行故障排除, 方法是:在设备上运行以下命令。
 
    ```bash
    curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
@@ -97,13 +97,13 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
    ./check-config.sh
    ```
 
-这将提供详细的输出，其中包含的小鲸鱼运行时使用的内核功能的状态。 你将想要确保所有项下`Generally Necessary`和`Network Drivers`启用以确保你内核与小鲸鱼运行时完全兼容。  如果您已确定任何缺少的功能，您可能会重新生成源从内核，然后在相应的内核.config 中选择包含关联的模块启用它们。同样，如果使用如 defconfig 或 menuconfig 的内核配置生成器，您需要查找和启用相应功能，并相应地重新生成你的内核。  部署新修改的内核后, 运行检查配置脚本以验证已成功启用标识的功能。
+这将提供详细的输出, 其中包含小鲸鱼运行时使用的内核功能的状态。 你将需要确保启用和`Generally Necessary` `Network Drivers`下的所有项, 以确保内核与小鲸鱼运行时完全兼容。  如果已识别任何缺少的功能, 则可以通过从源重新生成内核并选择关联的模块以包含在相应的 kernel 中来启用它们。同样, 如果使用的是 defconfig 或 menuconfig 这样的内核配置生成器, 则需要查找并启用相应的功能, 并相应地重建内核。  部署新修改的内核后, 请再次运行检查-config 脚本, 验证已确定的功能是否已成功启用。
 
 ### <a name="install-the-azure-iot-edge-security-daemon"></a>安装 Azure IoT Edge 安全守护程序
 
 **IoT Edge 安全守护程序**提供和维护 IoT Edge 设备上的安全标准。 守护程序在每次开机时启动，并通过启动 IoT Edge 运行时的其余部分来启动设备。
 
-安装命令还会安装标准版**libiothsm**如果尚不存在。
+安装命令还会安装标准版本的**libiothsm** (如果尚未存在)。
 
 执行 apt 更新。
 
@@ -117,27 +117,27 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
    sudo apt-get install iotedge
    ```
 
-一旦成功安装 IoT Edge，输出将会提示你更新配置文件。 按照中的步骤[配置 Azure IoT Edge 安全守护程序](#configure-the-azure-iot-edge-security-daemon)部分，以完成预配你的设备。 
+成功安装 IoT Edge 后, 输出会提示你更新配置文件。 按照[配置 Azure IoT Edge 安全守护](#configure-the-azure-iot-edge-security-daemon)程序部分中的步骤完成设备的预配。 
 
 ## <a name="install-a-specific-version"></a>安装特定版本
 
-如果你想要安装特定版本的 Azure IoT Edge，你可以面向直接从 IoT Edge GitHub 存储库的组件文件。 使用以下步骤来获取所有 IoT Edge 到你的设备上的组件： 小鲸鱼引擎和 CLI、 libiothsm 和最后的 IoT Edge 安全守护程序。
+如果要安装特定版本的 Azure IoT Edge, 则可以直接从 IoT Edge GitHub 存储库定位组件文件。 使用以下步骤获取设备上的所有 IoT Edge 组件: 小鲸鱼引擎和 CLI、libiothsm, 最后 IoT Edge 安全守护程序。
 
-1. 导航到[Azure IoT Edge 释放](https://github.com/Azure/azure-iotedge/releases)，并找到想要面向的版本。 
+1. 导航到[Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)版本, 并找到要以其为目标的发布版本。 
 
-2. 展开**资产**部分，了解该版本。
+2. 展开该版本的 "**资产**" 部分。
 
-3. 可能那里也可能不是对任何给定发行版中的小鲸鱼引擎更新。 如果看到文件的开头**小鲸鱼引擎**并**小鲸鱼 cli**，使用以下命令来更新这些组件。 如果看不到任何小鲸鱼文件，你还没有安装在你的设备上的小鲸鱼返回执行的较旧版本资产直到您找到它们。 
+3. 在任何给定版本中, 小鲸鱼引擎可能有也可能没有更新。 如果看到以**小鲸鱼**和**小鲸鱼**开头的文件, 请使用以下命令更新这些组件。 如果看不到任何小鲸鱼文件, 并且设备上尚未安装小鲸鱼, 请返回到旧版本的资产, 直到找到它们。 
 
-   1. 查找**小鲸鱼引擎**与 IoT Edge 设备的体系结构匹配的文件。 右键单击文件链接并复制链接地址。
+   1. 查找与 IoT Edge 设备体系结构匹配的**小鲸鱼**文件。 右键单击文件链接, 并复制链接地址。
 
-   2. 使用以下命令中复制的链接安装该版本的小鲸鱼引擎： 
+   2. 使用以下命令中复制的链接安装该版本的小鲸鱼引擎: 
 
       ```bash
       curl -L <moby-engine link> -o moby_engine.deb && sudo dpkg -i ./moby_engine.deb
       ```
 
-   3. 查找**小鲸鱼 cli**与 IoT Edge 设备的体系结构匹配的文件。 小鲸鱼 CLI 是一个可选组件，但在开发过程中很有用。 右键单击文件链接并复制链接地址。 
+   3. 查找与 IoT Edge 设备体系结构匹配的**小鲸鱼**文件。 小鲸鱼 CLI 是一个可选组件, 但在开发过程中可能会有所帮助。 右键单击文件链接, 并复制链接地址。 
 
    4. 使用以下命令中复制的链接安装该版本的小鲸鱼 CLI: 
 
@@ -145,25 +145,25 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
       curl -L <moby-cli link> -o moby_cli.deb && sudo dpkg -i ./moby_cli.deb
       ```
 
-4. 每个版本都应具有的 IoT Edge 安全守护程序和 hsmlib 的新文件。 使用以下命令更新这些组件。 
+4. 每个版本都应有 IoT Edge 安全守护程序和 hsmlib 的新文件。 使用以下命令更新这些组件。 
 
-   1. 查找**libiothsm std**与 IoT Edge 设备的体系结构匹配的文件。 右键单击文件链接并复制链接地址。 
+   1. 查找符合 IoT Edge 设备体系结构的**libiothsm 标准**文件。 右键单击文件链接, 并复制链接地址。 
 
-   2. 使用以下命令中复制的链接安装 hsmlib 该版本：
+   2. 使用以下命令中的复制链接来安装该版本的 hsmlib:
 
       ```bash
       curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
       ```
    
-   3. 查找**iotedge**与 IoT Edge 设备的体系结构匹配的文件。 右键单击文件链接并复制链接地址。 
+   3. 查找与 IoT Edge 设备体系结构匹配的**iotedge**文件。 右键单击文件链接, 并复制链接地址。 
 
-   4. 使用以下命令中复制的链接安装该版本的 IoT Edge 安全守护程序。 
+   4. 使用以下命令中的复制链接来安装该版本的 IoT Edge 安全守护程序。 
 
       ```bash
       curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
       ```
 
-一旦成功安装 IoT Edge，输出将会提示你更新配置文件。 按照下一部分，以完成预配你的设备中的步骤。 
+成功安装 IoT Edge 后, 输出会提示你更新配置文件。 按照下一部分中的步骤完成设备的预配。 
 
 ## <a name="configure-the-azure-iot-edge-security-daemon"></a>配置 Azure IoT Edge 安全守护程序
 
@@ -183,23 +183,27 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 sudo nano /etc/iotedge/config.yaml
 ```
 
-找到文件的 provisioning 节。 取消注释 **manual** 预配模式，并确保注释掉 dps 预配模式。使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。
+查找文件的预配配置, 并取消注释 "**手动设置配置**" 部分。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。 请确保注释掉任何其他预配部分。
 
    ```yaml
+   # Manual provisioning configuration
    provisioning:
      source: "manual"
      device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
   
+   # DPS TPM provisioning configuration
    # provisioning:
    #   source: "dps"
    #   global_endpoint: "https://global.azure-devices-provisioning.net"
    #   scope_id: "{scope_id}"
-   #   registration_id: "{registration_id}"
-   ```
+   #   attestation:
+   #     method: "tpm"
+   #     registration_id: "{registration_id}"
+```
 
 保存并关闭该文件。
 
-   `CTRL + X`、`Y`、`Enter`
+   `CTRL + X`, `Y`, `Enter`
 
 在配置文件中输入预配信息后，重启守护程序：
 
@@ -209,7 +213,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>选项 2：自动预配
 
-若要自动预配设备，请[设置设备预配服务并检索设备注册 ID](how-to-auto-provision-simulated-device-linux.md)。 自动预配仅适用于具有受信任的平台模块 (TPM) 芯片的设备。 例如，默认情况下，Raspberry Pi 设备未附带 TPM。
+若要自动预配设备，请[设置设备预配服务并检索设备注册 ID](how-to-auto-provision-simulated-device-linux.md)。 当使用自动预配时, IoT Edge 支持多种证明机制, 但你的硬件要求也会影响你的选择。 例如, 默认情况下, Raspberry Pi 设备不附带受信任的平台模块 (TPM) 芯片。
 
 打开配置文件。
 
@@ -217,23 +221,27 @@ sudo systemctl restart iotedge
 sudo nano /etc/iotedge/config.yaml
 ```
 
-找到文件的 provisioning 节。 取消注释 **dps** 预配模式，并注释掉 manual 节。 使用 IoT 中心设备预配服务中的值更新 **scope_id** 和 **registration_id** 的值，并使用 TPM 更新 IoT Edge 设备。
+查找文件的预配配置, 并取消注释适用于证明机制的部分。 例如, 使用 TPM 证明时, 请分别使用 IoT 中心设备预配服务和 IoT Edge 设备中的值更新**scope_id**和**registration_id**的值。
 
    ```yaml
+   # Manual provisioning configuration
    # provisioning:
    #   source: "manual"
    #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
   
+   # DPS TPM provisioning configuration
    provisioning:
      source: "dps"
      global_endpoint: "https://global.azure-devices-provisioning.net"
      scope_id: "{scope_id}"
-     registration_id: "{registration_id}"
+     attestation:
+       method: "tpm"
+       registration_id: "{registration_id}"
    ```
 
 保存并关闭该文件。
 
-   `CTRL + X`、`Y`、`Enter`
+   `CTRL + X`, `Y`, `Enter`
 
 在配置文件中输入预配信息后，重启守护程序：
 

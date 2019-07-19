@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/16/2018
+ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: b6ca4810d86bb3c8413f0a740ac4483a848b8e10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d870690416f96a2e1c24e6de16bdc8faa060f6bd
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726257"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68225160"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
 > [!div class="op_single_selector"]
@@ -28,17 +28,17 @@ ms.locfileid: "60726257"
 
 本文演示在 Visual Studio 中创建和调试简单的 Reliable Actor 应用程序。 有关 Reliable Actors 的详细信息，请参阅 [Service Fabric Reliable Actors 简介](service-fabric-reliable-actors-introduction.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，确保计算机上已设置 Service Fabric 开发环境（包括 Visual Studio）。 有关详细信息，请参阅[如何设置开发环境](service-fabric-get-started.md)。
 
 ## <a name="create-a-new-project-in-visual-studio"></a>在 Visual Studio 中创建新项目
 
-以管理员身份启动 Visual Studio 2015 或以上版本，然后新建一个“Service Fabric 应用程序”  项目：
+以管理员身份启动 Visual Studio 2019 或更高版本, 然后创建新的**Service Fabric 应用程序**项目:
 
 ![适用于 Visual Studio 的 Service Fabric 工具 - 新建项目][1]
 
-在下一步对话框中，选择**执行组件服务**下 **.NET Core 2.0**并输入服务的名称。
+在下一个对话框中, 选择 " **.Net Core 2.0** " 下的 "执行组件**服务**" 并输入服务的名称。
 
 ![Service Fabric 项目模板][5]
 
@@ -116,7 +116,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet 包及其所有依赖项都安装在 ActorClient 项目中。
 
-5. 客户端项目还需要对接口项目的引用。  在 ActorClient 项目中，右键单击“依赖项”  ，然后单击“添加引用...”  。选择“项目”>“解决方案”  （如果尚未选择），然后勾选“HelloWorld.Interfaces”  旁边的复选框。  单击“确定”。 
+5. 客户端项目还需要对接口项目的引用。  在 ActorClient 项目中，右键单击“依赖项”  ，然后单击“添加引用...”  。选择“项目”>“解决方案”  （如果尚未选择），然后勾选“HelloWorld.Interfaces”  旁边的复选框。  单击 **“确定”** 。
     
     ![“添加引用”对话框][7]
 

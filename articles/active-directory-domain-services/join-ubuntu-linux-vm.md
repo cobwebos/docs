@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: b21c5c517b1f4a1cbcbf2028a079793c70996d58
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 29a6cb69a818ed11e5f20dddd7299c01fbefbf47
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473124"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234016"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>将 Azure 中的 Ubuntu 虚拟机加入托管域
 本文介绍如何将 Ubuntu Linux 虚拟机加入 Azure AD 域服务托管域。
@@ -57,15 +57,16 @@ Ubuntu 虚拟机已在 Azure 中预配。 下一个任务是使用在预配 VM �
 ## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>配置 Linux 虚拟机上的 hosts 文件
 在 SSH 终端中编辑 /etc/hosts 文件，并更新计算机的 IP 地址和主机名。
 
-```
+```console
 sudo vi /etc/hosts
 ```
 
 在 hosts 文件中输入以下值：
 
-```
+```console
 127.0.0.1 contoso-ubuntu.contoso100.com contoso-ubuntu
 ```
+
 此处，“contoso100.com”是托管域的 DNS 域名。 “contoso-ubuntu”是要加入托管域的 Ubuntu 虚拟机的主机名。
 
 
@@ -74,12 +75,13 @@ sudo vi /etc/hosts
 
 1.  在 SSH 终端中键入以下命令，从存储库下载包列表。 此命令会更新包列表，以获取有关最新版的包及其依赖项的信息。
 
-    ```
+    ```console
     sudo apt-get update
     ```
 
 2. 键入以下命令安装所需的包。
-    ```
+
+    ```console
       sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli
     ```
 
@@ -87,27 +89,26 @@ sudo vi /etc/hosts
 
     > [!TIP]
     > 如果托管域的名称为 contoso100.com，请输入 CONTOSO100.COM 作为领域。 请记住，必须以大写形式指定领域名。
-    >
-    >
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>在 Linux 虚拟机上配置的 NTP（网络时间协议）设置
 Ubuntu VM 的日期和时间必须与托管域同步。 在 /etc/ntp.conf 文件中添加托管域的 NTP 主机名。
 
-```
+```console
 sudo vi /etc/ntp.conf
 ```
 
 在 ntp.conf 文件中，输入以下值并保存文件：
 
-```
+```console
 server contoso100.com
 ```
+
 此处，“contoso100.com”是托管域的 DNS 域名。
 
 现在，请将 Ubuntu VM 的日期和时间与 NTP 服务器同步，然后启动 NTP 服务：
 
-```
+```console
 sudo systemctl stop ntp
 sudo ntpdate contoso100.com
 sudo systemctl start ntp
@@ -119,7 +120,7 @@ sudo systemctl start ntp
 
 1. 发现 AAD 域服务托管域。 在 SSH 终端中键入以下命令：
 
-    ```
+    ```console
     sudo realm discover CONTOSO100.COM
     ```
 
@@ -136,7 +137,7 @@ sudo systemctl start ntp
     > * 以大写字母指定域名，否则 kinit 会失败。
     >
 
-    ```
+    ```console
     kinit bob@CONTOSO100.COM
     ```
 
@@ -144,9 +145,8 @@ sudo systemctl start ntp
 
     > [!TIP]
     > 使用在前一步骤中指定的同一用户帐户（“kinit”）。
-    >
 
-    ```
+    ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM' --install=/
     ```
 
@@ -155,29 +155,34 @@ sudo systemctl start ntp
 
 ## <a name="update-the-sssd-configuration-and-restart-the-service"></a>更新 SSSD 配置并重启服务
 1. 在 SSH 终端中键入以下命令。 打开 sssd.conf 文件并进行以下更改
-    ```
+    
+    ```console
     sudo vi /etc/sssd/sssd.conf
     ```
 
 2. 注释禁止 **use_fully_qualified_names = True** 行并保存文件。
-    ```
+    
+    ```console
     # use_fully_qualified_names = True
     ```
 
 3. 重启 SSSD 服务。
-    ```
+    
+    ```console
     sudo service sssd restart
     ```
 
 
 ## <a name="configure-automatic-home-directory-creation"></a>配置自动主目录创建
 若要在用户登录后自动创建主目录，请在 PuTTY 终端中键入以下命令：
-```
+
+```console
 sudo vi /etc/pam.d/common-session
 ```
 
 在此文件中的“session optional pam_sss.so”行下面添加以下行，并保存此文件：
-```
+
+```console
 session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ```
 
@@ -186,17 +191,20 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 验证计算机是否已成功加入托管域。 使用不同的 SSH 连接连接到已加入域的 Ubuntu VM。 使用域用户帐户连接，并检查该用户帐户是否正确解析。
 
 1. 在 SSH 终端中键入以下命令，使用 SSH 连接到已加入域的 Ubuntu 虚拟机。 使用属于托管域的域帐户（例如，在本例中为“bob@CONTOSO100.COM”）。
-    ```
+    
+    ```console
     ssh -l bob@CONTOSO100.COM contoso-ubuntu.contoso100.com
     ```
 
 2. 在 SSH 终端中键入以下命令，查看是否已正确初始化主目录。
-    ```
+    
+    ```console
     pwd
     ```
 
 3. 在 SSH 终端中键入以下命令，查看组成员身份是否正确解析。
-    ```
+    
+    ```console
     id
     ```
 
@@ -205,12 +213,14 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 可为“AAD DC 管理员”组的成员授予 Ubuntu VM 上的管理特权。 sudo 文件位于 /etc/sudoers 中。 在 sudoers 中添加的 AD 组成员可以执行 sudo。
 
 1. 在 SSH 终端中，请确保使用超级用户特权登录。 可以使用创建 VM 时指定的本地管理员帐户。 请执行以下命令：
-    ```
+    
+    ```console
     sudo vi /etc/sudoers
     ```
 
 2. 将以下条目添加到 /etc/sudoers 文件并保存该文件：
-    ```
+    
+    ```console
     # Add 'AAD DC Administrators' group members as admins.
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```

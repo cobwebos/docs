@@ -3,20 +3,20 @@ title: 使用 REST API 检索指标
 titlesuffix: Azure Load Balancer
 description: 在给定的时间和日期范围内，使用 Azure REST API 收集负载均衡器的运行状况和利用率指标。
 services: sql-database
-author: KumudD
+author: asudbring
 ms.reviewer: routlaw
 manager: jeconnoc
 ms.service: load-balancer
 ms.custom: REST, seodec18
 ms.topic: article
 ms.date: 06/06/2017
-ms.author: KumudD
-ms.openlocfilehash: 9f5206ef5348ee8fd7b3fe981a9cfe4afc1367fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 0d12dc04aff58dd6273d8d29d422bdbd9e7c886b
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734535"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274525"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>使用 REST API 获取负载均衡器利用率指标
 

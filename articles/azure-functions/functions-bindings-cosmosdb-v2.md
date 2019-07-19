@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 1a505fc5ef09fe9842e72488843155af7c0888cb
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: b0f8b5efcf7e22a3f9d98d5c812ba4821a8b2124
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480819"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254770"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
-> [!div class="op_single_selector" title1="选择正在使用的 Azure Functions 运行时版本： "]
+> [!div class="op_single_selector" title1="选择要使用的 Azure Functions 运行时的版本: "]
 > * [版本 1](functions-bindings-cosmosdb.md)
 > * [第 2 版](functions-bindings-cosmosdb-v2.md)
 
@@ -196,7 +196,7 @@ JavaScript 代码如下所示：
 ```
 
 
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的参数使用 `@CosmosDBTrigger` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 Optional<T> 的可为 null 的值一起使用。
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的参数使用 `@CosmosDBTrigger` 注释。  此批注可用于本机 Java 类型、pojo 或可为 null 的值, >\<使用可选的。
 
 
 跳过触发器示例
@@ -260,7 +260,7 @@ JavaScript 代码如下所示：
 |---------|---------|----------------------|
 |**type** || 必须设置为 `cosmosDBTrigger`。 |
 |**direction** || 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
-|name  || 函数代码中使用的变量名称，表示发生更改的文档列表。 |
+|**名称** || 函数代码中使用的变量名称，表示发生更改的文档列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
 |**databaseName**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
 |**collectionName** |**CollectionName** | 受监视的集合的名称。 |
@@ -1529,7 +1529,7 @@ public class DocByIdFromQueryString {
 }
  ```
 
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的函数参数使用 `@CosmosDBInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 Optional<T> 的可为 null 的值一起使用。
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的函数参数使用 `@CosmosDBInput` 注释。  此批注可用于本机 Java 类型、pojo 或可为 null 的值, >\<使用可选的。
 
 #### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>HTTP 触发器，从查询字符串查找 ID - POJO 参数 (Java)
 
@@ -1716,7 +1716,7 @@ public class DocsFromRouteSqlQuery {
 |---------|---------|----------------------|
 |**type**     || 必须设置为 `cosmosDB`。        |
 |**direction**     || 必须设置为 `in`。         |
-|name      || 表示函数中的文档的绑定参数的名称。  |
+|**名称**     || 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
 |**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
 |**id**    | **Id** | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 **id** 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
@@ -1732,7 +1732,7 @@ public class DocsFromRouteSqlQuery {
 
 在 JavaScript 函数中，函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 JavaScript 示例。
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos DB 数据库。
 
@@ -2301,7 +2301,7 @@ public String cosmosDbQueryById(
 |---------|---------|----------------------|
 |**type**     || 必须设置为 `cosmosDB`。        |
 |**direction**     || 必须设置为 `out`。         |
-|name      || 表示函数中的文档的绑定参数的名称。  |
+|**名称**     || 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
 |**collectionName** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |

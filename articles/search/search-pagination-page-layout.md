@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 73f0dc98d7d2c3e7aa77f6414cbd58e58599eae7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb86a75be464cb78a16170626bc96778d43bb8b6
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068830"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67974627"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>如何在 Azure 搜索中使用搜索结果
 本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 通过发送给 Azure 搜索服务的[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定与页面相关的选项，以使用这些选项将数据或信息提供到搜索结果。 
@@ -34,21 +34,21 @@ ms.locfileid: "67068830"
 
 ![][1]
 
-在 Azure 搜索中，使用 `$count`、`$top` 和 `$skip` 参数返回这些值。 下面的示例演示名为"联机-目录"，对索引命中总计的示例请求返回作为`@odata.count`:
+在 Azure 搜索中，使用 `$count`、`$top` 和 `$skip` 参数返回这些值。 下面的示例演示一个名为 "联机目录" 的索引上的命中总数示例请求, 返回为`@odata.count`:
 
     GET /indexes/online-catalog/docs?$count=true
 
 检索 15 个组中的记录，同时显示总匹配记录，从第一页开始：
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=0&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
 
 分页结果需要 `$top` 和 `$skip`，其中 `$top` 指定批量返回的项数，`$skip` 指定要跳过的项数。 在以下示例中，每个页面显示接下来的 15 个项，由 `$skip` 中的增量跳转指示。
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=0&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=15&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=15&$count=true
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=30&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
 
 ## <a name="layout"></a>布局
 
@@ -56,7 +56,7 @@ ms.locfileid: "67068830"
 
  ![][2]
 
-在 Azure 搜索中，您将使用`$select`和一个[搜索 API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)来实现这种体验。
+在 Azure 搜索中, 你将`$select`使用和[搜索 API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)来实现这种体验。
 
 若要返回平铺布局的字段的子集：
 
@@ -96,7 +96,7 @@ ms.locfileid: "67068830"
 
 ## <a name="filters-at-the-page-level"></a>页面级别的筛选器
 
-如果您的解决方案设计包含特定类型的内容 （例如，一个在线零售应用程序在页面顶部列出了部门的） 的专用的搜索页面，您可以插入[筛选器表达式](search-filters.md)一起**onClick**事件来打开的页面中的预筛选状态。
+如果你的解决方案设计包括特定内容类型 (例如, 页面顶部列出了部门的联机零售应用程序) 的专用搜索页面, 则可以将[筛选表达式](search-filters.md)与**onClick**事件一起插入到打开处于预筛选状态的页面。
 
 可以发送带有或不带有搜索表达式的筛选器。 例如，将按品牌名称筛选以下请求，以便仅返回与之匹配的记录。
 
@@ -104,7 +104,7 @@ ms.locfileid: "67068830"
 
 有关 `$filter` 表达式的详细信息，请参阅[搜索记录（Azure 搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice)
 - [索引操作](https://docs.microsoft.com/rest/api/searchservice/Index-operations)

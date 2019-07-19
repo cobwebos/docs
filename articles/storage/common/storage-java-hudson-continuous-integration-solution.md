@@ -7,14 +7,14 @@ ms.service: storage
 ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
-ms.author: seguler
+ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 4b47af857fada453e36fcb0c23e6d89e5ad90e42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54e91d4df1109b9ece1150f8b44665789e4dfce1
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154345"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875889"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>将 Azure 存储用于 Hudson 持续集成解决方案
 ## <a name="overview"></a>概述
@@ -35,7 +35,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 * 客户和合作伙伴下载生成项目时的性能。
 * 通过选择匿名访问、基于过期的共享访问、签名访问、专用访问等来控制用户访问策略。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 需要下列项才能将 Blob 服务用于 Hudson CI 解决方案：
 
 * 一个 Hudson 持续集成解决方案。

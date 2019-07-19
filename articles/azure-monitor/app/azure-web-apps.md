@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5594c1f3517bf3d3f74841493df3c683304fa3f5
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 4f296aae6c147b0d5209276dbd008a1207837cfd
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502093"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875206"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -39,10 +39,10 @@ ms.locfileid: "67502093"
 > [!NOTE]
 > 如果同时检测到了基于代理的监视和基于手动 SDK 的检测，则只会遵循手动检测设置， 目的是防止发送重复数据。 有关详细信息，请查看下面的[故障排除部分](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)。
 
-## <a name="enable-agent-based-monitoring-net"></a>启用基于代理的监视 (.NET)
+## <a name="enable-agent-based-monitoring-for-net-applications"></a>为 .NET 应用程序启用基于代理的监视
 
 > [!NOTE]
-> 不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression 的组合。 有关详细信息，请参阅[故障排除部分](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)中的说明。
+> 不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 Urlcompression> 的组合。 有关详细信息，请参阅[故障排除部分](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)中的说明。
 
 
 1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。 
@@ -75,7 +75,7 @@ ms.locfileid: "67502093"
 
     * 有关受支持自适应采样遥测处理器设置的列表，可以参阅[代码](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs)和[相关的文档](https://docs.microsoft.com/azure/azure-monitor/app/sampling)。
 
-## <a name="enable-agent-based-monitoring-net-core"></a>启用基于代理的监视 (.NET Core)
+## <a name="enable-agent-based-monitoring-for-net-core-applications"></a>为 .NET Core 应用程序启用基于代理的监视
 
 支持以下 .NET Core 版本：ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2
 
@@ -96,7 +96,7 @@ ms.locfileid: "67502093"
 
     ![根据平台选择选项](./media/azure-web-apps/choose-options-new-net-core.png)
 
-## <a name="enable-client-side-monitoring-net"></a>启用客户端监视 (.NET)
+## <a name="enable-client-side-monitoring-for-net-applications"></a>为 .NET 应用程序启用客户端监视
 
 可以选择为 ASP.NET 启用客户端监视。 若要启用客户端监视：
 
@@ -113,7 +113,7 @@ ms.locfileid: "67502093"
 
 若要禁用客户端监视，请从“应用程序设置”中删除关联的键值对，或将值设置为 false。
 
-## <a name="enable-client-side-monitoring-net-core"></a>启用客户端监视 (.NET Core)
+## <a name="enable-client-side-monitoring-for-net-core-applications"></a>为 .NET Core 应用程序启用客户端监视
 
 对于使用“建议的集合”的 .NET Core 应用，**默认已启用**客户端监视，无论是否存在应用设置“APPINSIGHTS_JAVASCRIPT_ENABLED”。 
 
@@ -138,7 +138,7 @@ ms.locfileid: "67502093"
 
 ### <a name="application-settings-definitions"></a>应用程序设置定义
 
-|应用设置名称 |  定义 | 值 |
+|应用设置名称 |  定义 | ReplTest1 |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | 用于控制运行时监视的主扩展。 | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  （仅限默认模式）已启用基本功能以确保最佳性能。 | `default` 或 `recommended`。 |
@@ -169,7 +169,6 @@ ms.locfileid: "67502093"
           }
         }
       ]
-
 ```
 
 此[模板](https://github.com/Andrew-MSFT/BasicImageGallery)可帮助使用为 Application Insights 配置的应用程序设置创建一个 Azure 资源管理器模板示例，具体而言，从[第 238 行](https://github.com/Andrew-MSFT/BasicImageGallery/blob/c55ada54519e13ce2559823c16ca4f97ddc5c7a4/CoreImageGallery/Deploy/CoreImageGalleryARM/azuredeploy.json#L238)开始的节用于创建此模板。
@@ -320,7 +319,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 如果已从低于 2.5.1 的版本完成升级，请检查是否已从应用程序 bin 文件夹中删除了 ApplicationInsigths dll。[参阅故障排除步骤](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 下面是我们针对 Azure 应用服务中运行的基于 .NET 和 .NET Core 的应用程序的基于扩展/代理的监视提供的分步故障排除指南。
 

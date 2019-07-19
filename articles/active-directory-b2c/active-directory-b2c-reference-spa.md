@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9eadabcedc9d5fd1baedb6cd893e6f7829c5ca8
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ade9740d6c5e9edcda4a01c72b94c6f84686447d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835730"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248794"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 OAuth 2.0 隐式流的单页登录
 
-许多新式应用程序都有一个单页应用前端（主要以 JavaScript 编写）。 通常情况下，使用 React、 Angular 或 Vue.js 等框架编写应用。 主要在浏览器上运行的单页应用和其他 JavaScript 应用在身份验证时还面临一些其他挑战：
+许多新式应用程序都有一个单页应用前端（主要以 JavaScript 编写）。 通常, 应用是使用响应、角度或 Vue 等框架编写的。 主要在浏览器上运行的单页应用和其他 JavaScript 应用在身份验证时还面临一些其他挑战：
 
 - 这些应用程序的安全特征与传统的基于服务器的 Web 应用程序不同。
 - 许多授权服务器与标识提供者不支持跨源资源共享 (CORS) 请求。
@@ -27,11 +27,11 @@ ms.locfileid: "67835730"
 
 为了支持这些应用程序，Azure Active Directory B2C (Azure AD B2C) 使用 OAuth 2.0 隐式流。 [OAuth 2.0 规范第 4.2 部分](https://tools.ietf.org/html/rfc6749)描述了 OAuth 2.0 授权隐式授权流。 在隐式流中，应用直接从 Azure Active Directory (Azure AD) 授权终结点接收令牌，无需任何服务器到服务器的交换。 所有身份验证逻辑和会话处理全部都是在 JavaScript 客户端中执行的，无需进行额外的页面重定向。
 
-Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了简单的身份验证和授权。 Azure AD B2C 引入了[策略参数](active-directory-b2c-reference-policies.md)。 通过该策略参数，可以使用 OAuth 2.0 向应用添加策略，例如注册、登录和配置文件管理用户流。 在本文中的示例 HTTP 请求**fabrikamb2c.onmicrosoft.com**用作示例。 如果你有一个租户并已创建了用户流，则可将 `fabrikamb2c` 替换为该租户的名称。
+Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了简单的身份验证和授权。 Azure AD B2C 引入了[策略参数](active-directory-b2c-reference-policies.md)。 通过该策略参数，可以使用 OAuth 2.0 向应用添加策略，例如注册、登录和配置文件管理用户流。 在本文的示例 HTTP 请求中, 将使用**fabrikamb2c.onmicrosoft.com**作为示例。 如果你有一个租户并已创建了用户流，则可将 `fabrikamb2c` 替换为该租户的名称。
 
 隐式登录流看起来类似于下图。 本文后面将详细说明每个步骤。
 
-![泳道样式图示的 OpenID Connect 的隐式流](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
+![显示 OpenID Connect 隐式流的泳道样式示意图](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
 ## <a name="send-authentication-requests"></a>发送身份验证请求
 
@@ -173,7 +173,7 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点。 应用可以使用终�
 
 将用户登录到单页应用后，便可获取访问令牌以调用受 Azure AD 保护的 Web API。 即使已使用 `token` 响应类型收到令牌，也仍可以使用此方法获取其他资源的令牌，而无需再次将用户重定向到登录页。
 
-在典型的 Web 应用流中，你将对 `/token` 终结点发出请求。 但是，该终结点不支持 CORS 请求，因此进行 AJAX 调用以获取和刷新令牌并不可取。 相反，可以在隐藏的 HTML iframe 元素中使用隐式流，以获取其他 Web API 的新令牌。 下面是一个示例（带换行符以便阅读）：
+在典型的 Web 应用流中，你将对 `/token` 终结点发出请求。 但是, 该终结点不支持 CORS 请求, 因此, 不能选择进行 AJAX 调用来获取刷新令牌。 相反，可以在隐藏的 HTML iframe 元素中使用隐式流，以获取其他 Web API 的新令牌。 下面是一个示例（带换行符以便阅读）：
 
 ```
 
@@ -196,13 +196,13 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | client_id |必填 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | response_type |必填 |必须包含 OpenID Connect 登录的 `id_token`。  也可能包含响应类型 `token`。 如果在此处使用 `token`，应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
 | redirect_uri |建议 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 |
-| scope |需要 |范围的空格分隔列表。  若要获取令牌，请包含相应资源所需的所有范围。 |
+| scope |必填 |范围的空格分隔列表。  若要获取令牌，请包含相应资源所需的所有范围。 |
 | response_mode |建议 |指定用于将生成的令牌送回到应用的方法。  可以是 `query`、`form_post` 或 `fragment`。 |
 | state |建议 |随令牌响应返回的请求中所包含的值。  它可以是你想要使用的任何内容的字符串。  随机生成的唯一值通常用于防止跨站点请求伪造攻击。  它还可用于在身份验证请求发生前，对有关用户在应用中的状态信息进行编码。 例如，用户之前所在的页面或视图。 |
-| nonce |需要 |由应用生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌 中。  应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机产生的唯一字符串，可识别请求的来源。 |
+| nonce |必填 |由应用生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌 中。  应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机产生的唯一字符串，可识别请求的来源。 |
 | prompt |必填 |若要刷新并获取隐藏的 iframe 中的令牌，请使用 `prompt=none` 以确保 iframe 会立即返回，而不会停滞在登录页面上。 |
 | login_hint |必填 |若要刷新并获取隐藏的 iframe 中的令牌，请在此提示中加入用户的用户名，以便区分用户在给定时间内可能具有的多个会话。 可以使用 `preferred_username` 声明从以前的登录中提取用户名。 |
-| domain_hint |需要 |可以是 `consumers` 或 `organizations`。  若要刷新并获取隐藏的 iframe 中的令牌，请在请求中包含 `domain_hint` 值。  从以前登录的 ID 令牌提取 `tid` 声明，以确定要使用哪个值。  如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，请使用 `domain_hint=consumers`。  否则使用 `domain_hint=organizations`。 |
+| domain_hint |必填 |可以是 `consumers` 或 `organizations`。  若要刷新并获取隐藏的 iframe 中的令牌，请在请求中包含 `domain_hint` 值。  从以前登录的 ID 令牌提取 `tid` 声明，以确定要使用哪个值。  如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，请使用 `domain_hint=consumers`。  否则使用 `domain_hint=organizations`。 |
 
 通过设置 `prompt=none` 参数，此请求会立即成功或立即失败，并返回到应用程序。  成功的响应会通过 `response_mode` 参数中指定的方法，发送到位于所指示的重定向 URI 的应用。
 
@@ -258,7 +258,7 @@ p=b2c_1_sign_in
 
 | 参数 | 必需？ | 描述 |
 | --- | --- | --- |
-| p |需要 |要用于从应用程序中注销用户的策略。 |
+| p |必填 |要用于从应用程序中注销用户的策略。 |
 | post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
 
 > [!NOTE]

@@ -3,20 +3,20 @@ title: 负载均衡器的 Azure 资源管理器支持 | Microsoft Docs
 description: 使用 Azure 资源管理器将 powershell 用于负载均衡器。 对负载均衡器使用模板
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 596ac871067886ee3124c0f21beb35cb3b8fe1ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 839b607b7787d51151401737848a46d7b66229dd
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888974"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275490"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>将 Azure 资源管理器支持与 Azure 负载均衡器配合使用
 
@@ -30,9 +30,9 @@ Azure 资源管理器是 Azure 中的首选服务管理框架。 Azure 负载均
 
 * 前端 IP 配置 - 单个负载均衡器可包含一个或多个前端 IP 地址（也称为虚拟 IP，即 VIP）。 这些 IP 地址充当流量的入口。
 * 后端地址池 - 即指与虚拟机网络接口卡 (NIC) 关联且分配有负载的 IP 地址。
-* 负载均衡规则 – 规则属性将映射给定的前端 IP 和端口组合到一组的后端 IP 地址和端口组合。 单个负载均衡器可拥有多个负载均衡规则。 每个规则是前端 IP 和端口与后端 IP 和端口与 Vm 关联的组合。
+* 负载均衡规则-规则属性将给定的前端 IP 和端口组合映射到一组后端 IP 地址和端口组合。 单个负载均衡器可拥有多个负载均衡规则。 每个规则都包含前端 IP 和端口, 以及与 Vm 关联的后端 IP 和端口。
 * 探测 – 使用探测可以跟踪 VM 实例的运行状况。 如果运行状况探测失败，VM 实例会自动从轮转列表中删除。
-* 入站的 NAT 规则 – NAT 规则定义流过前端 IP 的入站的流量，并分配到后端 IP。
+* 入站 NAT 规则– NAT 规则定义流过前端 IP 并分配到后端 IP 的入站流量。
 
 ![](./media/load-balancer-arm/load-balancer-arm.png)
 

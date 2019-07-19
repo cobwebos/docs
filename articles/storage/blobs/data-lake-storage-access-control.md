@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 72a72e385217178cb6afee237cc3a3e5c5d1248b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 112d3b18df8205aac173eafb8f8e30ed6c32e048
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751635"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249076"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
@@ -24,11 +24,11 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-RBAC 使用角色分配对服务主体有效地应用权限集。  一个*安全主体*是一个对象，表示用户、 组、 服务主体或定义在 Azure Active Directory (AD) 对 Azure 资源的访问请求的托管的标识。
+RBAC 使用角色分配对服务主体有效地应用权限集。  *安全主体*是一个对象, 表示用户、组、服务主体或在请求访问 Azure 资源的 AZURE ACTIVE DIRECTORY (AD) 中定义的托管标识。
 
-一般情况下，这些 Azure 资源限制为顶级资源（例如：Azure 存储帐户）。 对于 Azure 存储，因此 Azure 数据湖存储第 2 代，此机制已扩展到容器 （文件系统） 资源。
+一般情况下，这些 Azure 资源限制为顶级资源（例如：Azure 存储帐户）。 对于 Azure 存储, 进而 Azure Data Lake Storage Gen2, 此机制已扩展到容器 (文件系统) 资源。
 
-若要了解如何将角色分配给你的存储帐户的作用域中的安全主体，请参阅[授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+若要了解如何将角色分配给存储帐户范围内的安全主体, 请参阅在[Azure 门户中使用 RBAC 授予对 Azure blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>角色分配对文件和目录级访问控制列表的影响
 
@@ -91,7 +91,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 | **执行 (X)** | 不表示 Data Lake Storage Gen2 上下文中的任何内容 | 需要遍历目录的子项 |
 
 > [!NOTE]
-> 如果仅使用 Acl (没有 RBAC) 授予权限，则若要授予服务主体读取或写入访问的文件，你将需要为服务主体**Execute**到文件系统中，并在每个文件夹的权限导致该文件的文件夹的层次结构。
+> 如果你只使用 Acl (无 RBAC) 授予权限, 则若要授予服务主体对文件的读取或写入访问权限, 你将需要为文件系统以及文件夹层次结构中的每个文件夹授予服务主体**执行**权限。导致文件。
 
 #### <a name="short-forms-for-permissions"></a>权限的简短形式
 
@@ -112,7 +112,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 下表列出了一些常见方案，可帮助你了解对存储帐户执行特定操作所需的权限。
 
-|    Operation             |    /    | Oregon/ | Portland/ | Data.txt     |
+|    操作             |    /    | Oregon/ | Portland/ | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
 | Read Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Append to Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -134,10 +134,10 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 - 命名用户
 - 命名组
 - 命名服务主体
-- 名为管理的标识
+- 命名的托管标识
 - 所有其他用户
 
-用户和组的标识是 Azure Active Directory (Azure AD) 标识。 因此，除非另行说明，否则*用户*，在数据湖存储第 2 代的上下文，可以向 Azure AD 用户，请参阅中，服务主体、 托管标识或安全组。
+用户和组的标识是 Azure Active Directory (Azure AD) 标识。 因此, 除非另有说明, 否则,*用户*在 Data Lake Storage Gen2 上下文中可以引用 Azure AD 用户、服务主体、托管标识或安全组。
 
 #### <a name="the-owning-user"></a>拥有用户
 
@@ -151,7 +151,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 #### <a name="the-owning-group"></a>拥有组
 
-在 POSIX ACL 中，每个用户都与“主组”关联  。 例如，用户“Alice”可能属于“finance”组。 Alice 还可能属于多个组，但有一个组始终指定为其主组。 在 POSIX 中，当 Alice 创建文件时，该文件的拥有组设置为她的主组，在本例中为“finance”。 否则，所有者组的行为类似于为其他用户/组分配的权限。
+在 POSIX ACL 中，每个用户都与“主组”关联  。 例如，用户“Alice”可能属于“finance”组。 Alice 还可能属于多个组, 但一个组始终被指定为其主要组。 在 POSIX 中，当 Alice 创建文件时，该文件的拥有组设置为她的主组，在本例中为“finance”。 否则，所有者组的行为类似于为其他用户/组分配的权限。
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>为新的文件或目录分配拥有组
 
@@ -270,7 +270,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
-不。 只要开启了分层命名空间 (HNS) 功能，存储帐户就能通过 ACL 进行访问控制。
+否。 只要开启了分层命名空间 (HNS) 功能，存储帐户就能通过 ACL 进行访问控制。
 
 即使关闭了 HNS 功能，Azure RBAC 授权规则仍适用。
 
@@ -312,8 +312,10 @@ def set_default_acls_for_new_child(parent, child):
 
 若要获取服务主体的对应于应用注册的 OID，可以使用 `az ad sp show` 命令。 指定应用程序 ID 作为参数。 以下示例获取服务主体的 OID，该 OID 对应于应用 ID 为 18218b12-1895-43e9-ad80-6e8fc1ea88ce 的应用注册。 在 Azure CLI 中运行以下命令：
 
-`az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
-<<OID will be displayed>>`
+```
+$ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
+<<OID will be displayed>>
+```
 
 获取服务主体的正确 OID 后，转到存储资源管理器的“管理访问权限”页，以添加该 OID 并为其分配适当的的权限。  请务必选择“保存”。 
 
@@ -334,6 +336,6 @@ ACL 不支持继承。 但是，可以使用默认 ACL 来设置父目录下创�
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [在 Linux 上使用访问控制列表 (ACL)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Azure Data Lake Storage Gen2 概述](../blobs/data-lake-storage-introduction.md)

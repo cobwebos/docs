@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 925461ba6c74fe0bcf286692c1a19bb4e7c02dfa
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337419"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254424"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
@@ -109,7 +109,7 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？
 
-此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息，请查看[此建议](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
+此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息, 请查看[此建议](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
 
 有关详细信息，请参阅以下文章：
 - [如何配置和运行云服务的启动任务](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
@@ -143,7 +143,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何为云服务启用 WAD 日志记录？
 可以通过以下选项启用 Windows Azure 诊断 (WAD) 日志记录：
 1. [从 Visual Studio 启用](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [启用通过.NET 代码](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+2. [通过 .NET 代码启用](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [通过 Powershell 启用](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
 若要获取云服务的当前 WAD 设置，可以使用 [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps cmd，也可以通过门户从“云服务 - > 扩展”边栏选项卡查看它。
@@ -282,7 +282,7 @@ Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>云服务 VM 上的驱动器为何显示可用磁盘空间不足？
 这是预期行为，应不会导致任何应用程序问题。 Azure PaaS VM 中的 %approot% 驱动器的日记功能启用后，基本上会占用文件通常所用空间的两倍。 但是请注意以下几点，从根本上看，此问题无足轻重。
 
-%approot% 驱动器大小的计算方法是 <.cspkg 的大小 + 日记最大大小 + 备用可用空间> 或 1.5 GB 两者中较大的一个。 VM 的大小与此计算方法无关。 （VM 大小仅影响临时 C: 驱动器的大小） 
+% Approot% 驱动器大小的计算公式为\<: .cspkg + 最大日志大小 + 可用空间的边距 > 或 1.5 GB, 取两者中较大者。 VM 的大小与此计算方法无关。 （VM 大小仅影响临时 C: 驱动器的大小） 
 
 不支持写入 %approot% 驱动器。 如果要写入 Azure VM，必须在临时 LocalStorage 资源（或其他选项，例如 Blob 存储、Azure 文件等）中执行此操作。 因此 %approot% 文件夹的可用空间没有意义。 如果不确定应用程序是否要写入 %approot% 驱动器，可以让服务持续运行几天，然后比较“之前”和“之后”的大小。 
 
@@ -311,10 +311,10 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
     
 如[此文](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可为以下值之一：
 
-|值|含义|
+|ReplTest1|含义|
 ------|------
 |0|没有 SNI|
-|第|已启用 SNI |
+|1|已启用 SNI |
 |2 |使用中心证书存储的非 SNI 绑定|
 |3|使用中心证书存储的 SNI 绑定 |
  

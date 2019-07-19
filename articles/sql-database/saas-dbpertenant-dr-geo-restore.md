@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
-ms.author: ayolubek
+ms.author: craigg
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: c96f2dc2b44ea2118d9f0dd6c988017efcba5800
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d6977f9f957aba2c01265f750f82847e16d299ee
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556908"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872041"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
 
@@ -106,7 +106,7 @@ ms.locfileid: "60556908"
 > [!IMPORTANT]
 > 为简单起见，在这些示例中，同步进程以及其他长时间运行的恢复和遣返进程将作为以客户端用户身份运行的本地 PowerShell 作业或会话来实现。 几小时后，登录时颁发的身份验证令牌将会过期，因而作业将会失败。 在生产场景中，长时间运行的进程应作为以服务主体身份运行的某种可靠 Azure 服务来实现。 请参阅[使用 Azure PowerShell 创建具有证书的服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)。 
 
-1. 在 PowerShell ISE 中，打开 ...\Learning Modules\UserConfig.psm1 文件。 将第 10 行和第 11 行中的 `<resourcegroup>` 和 `<user>` 替换为部署应用时使用的值。 保存文件。
+1. 在 PowerShell ISE 中，打开 ...\Learning Modules\UserConfig.psm1 文件。 将第 10 行和第 11 行中的 `<resourcegroup>` 和 `<user>` 替换为部署应用时使用的值。 保存该文件。
 
 2. 在 PowerShell ISE 中，打开 ...\Learning Modules\Business Continuity 和 Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 脚本。
 

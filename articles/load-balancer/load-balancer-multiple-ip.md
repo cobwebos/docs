@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 在主要和辅助 IP 配置间进行负载均衡。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 0cf5aa45e1e8a28dfcdadac0ea32658e5993d06c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: dbf8cdd326d3e1c8f32f6dc2bd3486146993e06b
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591678"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274739"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 
@@ -42,7 +42,7 @@ ms.locfileid: "60591678"
 - Azure 负载均衡器用于公开两个前端 IP 地址，每个地址对应于一个网站。 前端地址用于将流量分配到每个网站的相应 IP 配置。
 - 前端 IP 地址和后端池 IP 地址使用相同的端口号。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 方案示例假设已创建名为 **contosofabrikam** 的资源组，该资源组的配置如下：
 
@@ -194,4 +194,4 @@ ms.locfileid: "60591678"
 
 ## <a name="next-steps"></a>后续步骤
 - 若要深入了解如何在 Azure 中结合使用负载均衡服务，请参阅[在 Azure 中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-- 了解如何使用不同类型的日志进行管理和故障排除中的负载均衡器[Azure Monitor for Azure 负载均衡器日志](../load-balancer/load-balancer-monitor-log.md)。
+- 了解如何使用不同类型的日志对[Azure 负载均衡器 Azure Monitor 日志中的](../load-balancer/load-balancer-monitor-log.md)负载均衡器进行管理和故障排除。

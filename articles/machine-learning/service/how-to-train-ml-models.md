@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 85be0abb9437a648135fe852e357596c8ff91dc3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 0080c8ac5e957912c5fd59a7051619ee60bd914c
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840101"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260074"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 
@@ -59,7 +59,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 参数 | 描述
 --|--
 `source_directory`| 包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算 
-`script_params`| 指定训练脚本的命令行参数的字典`entry_script`，格式为 < 命令行参数，值 > 对。 若要指定在 verbose 标志`script_params`，使用`<command-line argument, "">`。
+`script_params`| 指定训练脚本`entry_script`的命令行参数的字典, `<command-line argument, value>`格式为成对。 若要在中`script_params`指定详细标志, 请使用。 `<command-line argument, "">`
 `compute_target`| 运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 群集。 （请注意，即使 AmlCompute 集群是常用目标，也可以选择其他计算目标类型，比如 Azure VM 甚至是本地计算机。）
 `entry_script`| 要在远程计算上运行的训练脚本的文件路径（相对于 `source_directory`）。 此文件以及所依赖的任何其他文件应位于此文件夹中
 `conda_packages`| 要通过训练脚本所需的 conda 安装的 Python 包列表。  
@@ -122,16 +122,16 @@ print(run.get_portal_url())
 
 ## <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
 
-启动时运行，其中源目录是本地 Git 存储库的培训，存储库有关的信息存储在运行历史记录。 例如，在存储库的当前提交 ID 记录为历史记录。
+当你开始在源目录为本地 Git 存储库的训练运行时, 有关存储库的信息存储在运行历史记录中。 例如, 将在历史记录中记录存储库的当前提交 ID。
 
 ## <a name="examples"></a>示例
-显示估计器模式的基础知识的笔记本，请参阅：
+有关显示估计器模式基础知识的笔记本, 请参阅:
 * [how-to-use-azureml/training-with-deep-learning/how-to-use-estimator](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)
 
-训练 scikit notebook-可以通过估算器了解模型，请参阅：
+有关使用估计器训练 scikit-learn 模型的笔记本, 请参阅:
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-使用深度学习框架特定房产训练模型的 notebook，请参阅：
+有关使用深度学习框架特定估算的培训模型上的笔记本, 请参阅:
 * [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

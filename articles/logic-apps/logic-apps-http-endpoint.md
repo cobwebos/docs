@@ -5,21 +5,21 @@ services: logic-apps
 ms.service: logic-apps
 ms.workload: integration
 author: ecfan
-ms.author: klam; LADocs
+ms.author: klam
 ms.reviewer: jehollan, klam, LADocs
 manager: carmonm
 ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.openlocfilehash: b091fb8c6f0b2b655ce0595188c362206f79d702
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f93e90ef442740e4fb17f166023fbe3d5f0bae66
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495056"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875955"
 ---
-# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>调用、 触发或嵌套工作流使用 Azure 逻辑应用中的 HTTP 终结点
+# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>在 Azure 逻辑应用中通过 HTTP 终结点调用、触发或嵌套工作流
 
 可以在逻辑应用中以触发器的形式本机公开同步的 HTTP 终结点，以便通过 URL 触发或调用逻辑应用。 还可以通过可调用的终结点模式在逻辑应用中嵌套工作流。
 
@@ -271,9 +271,9 @@ ms.locfileid: "66495056"
 
 ## <a name="q--a"></a>问题解答
 
-#### <a name="q-what-about-url-security"></a>问：URL 的安全性呢？
+#### <a name="q-what-about-url-security"></a>问:URL 安全性如何？
 
-答：Azure 安全地生成逻辑应用回调 Url 使用共享访问签名 (SAS)。 此签名以查询参数的形式传递。在触发逻辑应用之前必须验证此签名。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
+答：Azure 使用共享访问签名 (SAS) 安全地生成逻辑应用回调 Url。 此签名以查询参数的形式传递。在触发逻辑应用之前必须验证此签名。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
 
    > [!IMPORTANT]
    > 对于生产和安全系统，强烈建议不要直接从浏览器中调用逻辑应用，因为：
@@ -281,18 +281,18 @@ ms.locfileid: "66495056"
    > * URL 中会出现共享访问密钥。
    > * 由于跨逻辑应用客户的共享域，将无法管理安全内容策略。
 
-#### <a name="q-can-i-configure-http-endpoints-further"></a>问：可以配置 HTTP 终结点进一步吗？
+#### <a name="q-can-i-configure-http-endpoints-further"></a>问:是否可以进一步配置 HTTP 终结点？
 
-答：是的 HTTP 终结点支持通过更高级的配置[ **API 管理**](../api-management/api-management-key-concepts.md)。 此服务还提供相应的功能，使你能够以一致的方式管理所有 API（包括逻辑应用）、设置自定义域名和使用其他身份验证方法等等，例如：
+答：是的, HTTP 端点通过[**API 管理**](../api-management/api-management-key-concepts.md)支持更高级的配置。 此服务还提供相应的功能，使你能够以一致的方式管理所有 API（包括逻辑应用）、设置自定义域名和使用其他身份验证方法等等，例如：
 
 * [更改请求方法](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
 * [更改请求的 URL 段](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#RewriteURL)
 * 在 [Azure 门户](https://portal.azure.com/ "Azure 门户")中设置 API 管理域
 * 设置用于检查基本身份验证的策略。
 
-#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>问：从 2014 年 12 月 1 日预览版迁移的架构时，将发生什么变化？
+#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>问:从2014年12月1日预览版迁移架构时, 发生了什么变化？
 
-答：下面是有关这些更改的摘要：
+答：下面是有关这些更改的摘要:
 
 | 2014 年 12 月 1 日预览版 | 2016 年 6 月 1 日 |
 | --- | --- |

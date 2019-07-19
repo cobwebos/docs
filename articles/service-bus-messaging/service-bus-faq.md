@@ -1,6 +1,6 @@
 ---
 title: Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs
-description: 回答了一些关于 Azure 服务总线的常见问题。
+description: 解答一些有关 Azure 服务总线的常见问题。
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 26609e7b21af8804a4b43039c84c04597035721c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706212"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278341"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 
@@ -86,7 +86,7 @@ ms.locfileid: "67706212"
 
 ## <a name="best-practices"></a>最佳实践
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure 服务总线的最佳实践有哪些？
-请参阅[使用服务总线改进性能的最佳做法][Best practices for performance improvements using Service Bus]– 这篇文章介绍如何在交换消息时优化性能。
+请参阅[使用服务总线改进性能的最佳实践][Best practices for performance improvements using Service Bus]-本文介绍如何在交换消息时优化性能。
 
 ### <a name="what-should-i-know-before-creating-entities"></a>创建实体前需了解哪些事项？
 队列和主题的下列属性固定不变。 预配实体时，请考虑此限制，因为必须创建新的替代实体才可修改这些属性。
@@ -114,14 +114,14 @@ ms.locfileid: "67706212"
 
 ## <a name="quotas"></a>配额
 
-有关服务总线限制和配额的列表，请参阅[服务总线配额概述][Quotas overview]。
+有关服务总线限制和配额的列表, 请参阅[服务总线配额概述][Quotas overview]。
 
 ### <a name="does-service-bus-have-any-usage-quotas"></a>服务总线是否有任何使用率配额？
 默认情况下，对于任何云服务，Microsoft 设置聚合的每月使用配额，通过对所有的客户订阅计算得到。 如果你需要更多配额，可以随时联系客户服务，以便了解你的需求并相应地调整这些限制。 对于服务总线，总用量配额是每月 50 亿条消息。
 
 虽然 Microsoft 保留禁用在给定月份超过使用配额的客户帐户的权利，但仍然会在采取任何措施前发送电子邮件通知，并多次尝试与客户联系。 超过这些配额的客户仍需负责超出配额的费用。
 
-至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 您可以找到有关这些配额的更多详细信息[服务总线配额概述][Quotas overview]。
+至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 你可以在[服务总线配额概述][Quotas overview]中找到有关这些配额的更多详细信息。
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>如何处理大小 > 1 MB 的消息？
 服务总线消息服务（队列和主题/订阅）允许应用程序发送大小不超过 256 KB（标准层）或 1 MB（高级层）的消息。 若要处理大小超过 1 MB 的消息，请使用[此博客文章](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)中所述的声明检查模式。
@@ -131,10 +131,10 @@ ms.locfileid: "67706212"
 从订阅中删除命名空间时，请等待 4 个小时，然后才能在另一个订阅中使用相同的名称重新创建它。 否则，可能会收到以下错误消息：`Namespace already exists`。 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Azure 服务总线 API 生成了哪些异常？建议采取什么操作？
-有关可能的服务总线异常的列表，请参阅[异常概述][Exceptions overview]。
+有关可能的服务总线异常的列表, 请参阅[异常概述][Exceptions overview]。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>什么是共享访问签名？哪些语言支持生成签名？
-共享访问签名是基于 SHA-256 安全哈希或 URI 的身份验证机制。 有关如何在 Node.js、 PHP、 Java 和 C 中生成自有签名的信息\#，请参阅[共享访问签名][Shared Access Signatures]一文。
+共享访问签名是基于 SHA-256 安全哈希或 URI 的身份验证机制。 有关如何在 node.js、PHP、Java、Python 和C#中生成自己的签名的信息, 请参阅[共享访问签名][Shared Access Signatures]一文。
 
 ## <a name="subscription-and-namespace-management"></a>订阅和命名空间管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>如何将命名空间迁移到另一个 Azure 订阅中？

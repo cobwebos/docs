@@ -7,14 +7,14 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/27/2017
-ms.author: diegomrtnzg
+ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: 8aa62e4ed65f8223071786ac165f8343cb6901d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd502a308d6298dc2941461632a2832ac336c45c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60430277"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849865"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>（已弃用）用于通过 Azure DevOps 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
@@ -46,7 +46,7 @@ ms.locfileid: "60430277"
 7. 群集上的 Docker Swarm 模式提取最新的映像版本 
 8. 使用 Docker 堆栈部署应用程序的新版本 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始本教程之前，需要完成以下任务：
 

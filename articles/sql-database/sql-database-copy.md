@@ -8,20 +8,20 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
-ms.author: sahsan
+ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 06/03/2019
-ms.openlocfilehash: 6a4d3fd0f7b670bbb0b01385252b405829a91baa
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dc82ace4c5bf1204075bfa5e34d0b1489a3acb98
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442315"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876275"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
-Azure SQL 数据库提供几种方法用于创建现有 Azure SQL 数据库的事务一致性副本 ([单个数据库](sql-database-single-database.md)) 在同一台服务器或另一台服务器上。 可以使用 Azure 门户、PowerShell 或 T-SQL 复制 SQL 数据库。 
+Azure SQL 数据库提供多种方法, 用于在同一服务器或不同服务器上创建现有 Azure SQL 数据库 ([单一数据库](sql-database-single-database.md)) 的事务一致性副本。 可以使用 Azure 门户、PowerShell 或 T-SQL 复制 SQL 数据库。 
 
 ## <a name="overview"></a>概述
 
@@ -94,7 +94,7 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 
 ### <a name="copy-a-sql-database-to-a-different-subscription"></a>将 SQL 数据库复制到不同的订阅
 
-在上一部分中所述的步骤可用于将数据库复制到其他订阅中的 SQL 数据库服务器。 请确保你使用的登录名具有与源数据库的数据库所有者相同的名称和密码，并且它是 dbmanager 角色的成员或者是服务器级主体登录名。 
+您可以使用上一节中所述的步骤将您的数据库复制到其他订阅中的 SQL 数据库服务器。 请确保你使用的登录名具有与源数据库的数据库所有者相同的名称和密码，并且它是 dbmanager 角色的成员或者是服务器级主体登录名。 
 
 > [!NOTE]
 > [Azure 门户](https://portal.azure.com)不支持复制到其他订阅，因为门户调用 ARM API，并且它使用订阅证书来访问异地复制中涉及的两台服务器。  

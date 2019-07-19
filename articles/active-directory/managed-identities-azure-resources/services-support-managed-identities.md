@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca461f3be740c3b0bac18795991bb721a5305240
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e6869602b7d4aff6d779d189f0b6444dde2055d4
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611534"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261907"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -79,7 +79,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 预览 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 预览 | 不可用 | 不可用 | 不可用 |
 
-请参阅以下列表来使用与托管的标识[Azure 蓝图](../../governance/blueprints/overview.md):
+请参阅以下列表, 以将托管标识用于[Azure 蓝图](../../governance/blueprints/overview.md):
 
 - [Azure 门户-蓝图分配](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
 - [REST API-蓝图分配](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
@@ -155,7 +155,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 可用 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 预览 | 不可用 | 不可用 | 不可用 |
 
-请参阅以下列表来配置托管的标识的 Azure 容器注册表任务 (在区域中 （如果有）):
+请参阅以下列表, 为 Azure 容器注册表任务配置托管标识 (在可用区域中):
 
 - [Azure CLI](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
 
@@ -165,12 +165,12 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-resource-manager"></a>Azure 资源管理器
 
-请参阅以下列表来配置到 Azure 资源管理器的访问权限：
+请参阅以下列表, 配置对 Azure 资源管理器的访问权限:
 
-- [将通过 Azure 门户的访问权限分配](howto-assign-access-portal.md)
-- [将通过 Powershell 的访问权限分配](howto-assign-access-powershell.md)
-- [分配的访问权限通过 Azure CLI](howto-assign-access-CLI.md)
-- [分配的访问权限通过 Azure 资源管理器模板](../../role-based-access-control/role-assignments-template.md)
+- [通过 Azure 门户分配访问权限](howto-assign-access-portal.md)
+- [通过 Powershell 分配访问权限](howto-assign-access-powershell.md)
+- [通过 Azure CLI 分配访问权限](howto-assign-access-CLI.md)
+- [通过 Azure 资源管理器模板分配访问权限](../../role-based-access-control/role-assignments-template.md)
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
@@ -228,10 +228,10 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
-| Azure 全球 | `https://storage.azure.com/` | 可用 |
-| Azure Government | `https://storage.azure.com/` | 可用 |
-| Azure 德国 | `https://storage.azure.com/` | 可用 |
-| Azure 中国世纪互联 | `https://storage.azure.com/` | 可用 |
+| Azure 全球 | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 可用 |
+| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 可用 |
+| Azure 德国 | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 可用 |
+| Azure 中国世纪互联 | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 可用 |
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 

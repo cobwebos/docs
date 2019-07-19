@@ -3,18 +3,18 @@ title: 'Azure Toolkit for IntelliJ：通过 SSH 远程调试 Spark 应用程序 
 description: 逐步介绍如何使用用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具通过 SSH 远程调试 HDInsight 群集上的应用程序
 keywords: 远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试
 ms.service: hdinsight
-author: hrasheed
-ms.author: hrasheed-msft
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 7554f0739626520153196472a790ab672a932331
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0bca6c16124f886d9df9e88e651f3f7450f51a1a
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066208"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876357"
 ---
 # <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>使用 Azure Toolkit for IntelliJ 通过 SSH 在本地或远程调试 HDInsight 群集上的 Apache Spark 应用程序
 
@@ -38,9 +38,9 @@ ms.locfileid: "67066208"
 
    - **Spark 项目 (Scala)**
 
-   - **Spark 项目的示例 (Scala)**
+   - **包含示例的 Spark 项目 (Scala)**
 
-   - **Spark 项目与失败任务调试示例 （预览版） (Scala)**
+   - **具有失败任务调试示例的 Spark 项目 (预览版) (Scala)**
 
      此示例使用“Spark 项目和示例(Scala)”模板。 
 
@@ -68,7 +68,7 @@ ms.locfileid: "67066208"
 
 1. 选择“src”   > “main”   > “scala”  ，在项目中打开代码。 本示例使用“SparkCore_wasbloTest”脚本。 
 
-### <a name="prerequisite-for-windows"></a>Windows 先决条件
+### <a name="prerequisite-for-windows"></a>Windows 必备组件
 在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常。 发生此异常的原因是 Windows 中缺少 WinUtils.exe。 
 
 若要解决此错误，请[下载该可执行文件](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)到某个位置（例如 **C:\WinUtils\bin**）。 然后，必须添加环境变量 HADOOP_HOME，并将其值设置为 C:\WinUtils。  

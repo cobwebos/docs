@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 055242c3118ce9d972d55cdc6a21bf623679a0c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13c870ec87fa914f74bcfc4297dbe2fcc0bea282
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242057"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875612"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>通过 Azure PowerShell 创建和使用虚拟机规模集的共享映像
 
@@ -57,7 +58,7 @@ ms.locfileid: "66242057"
 
 ## <a name="create-a-scale-set-from-the-shared-image-version"></a>从共享的映像版本创建规模集
 
-使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 创建虚拟机规模集。 下面的示例创建的规模集从中的新映像版本*美国中南部*数据中心。 出现提示时，可针对规模集中的 VM 实例设置自己的管理凭据：
+使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 创建虚拟机规模集。 以下示例从*美国中南部*数据中心的新映像版本创建规模集。 出现提示时，可针对规模集中的 VM 实例设置自己的管理凭据：
 
 
 ```azurepowershell-interactive

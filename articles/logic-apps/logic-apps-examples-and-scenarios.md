@@ -10,16 +10,16 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/2018
-ms.openlocfilehash: 89e0294db3178cedd3b14aada0b505787b17c75e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6d9a2929d7b8b1687b602093d0e9de35508dbd8c
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303683"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273089"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
 
-[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)提供 [100 多个可以使用的连接器](../connectors/apis-list.md)（从本地 SQL Server 或 SAP 到 Microsoft 认知服务），可帮助用户安排和集成不同的服务。 逻辑应用服务“无服务器”，因此无需担心规模或实例。 只需定义带有触发器的工作流和工作流执行的操作。 基础平台处理缩放、可用性和性能。 逻辑应用尤其适用于需要在多个系统中协调多个操作的用例和方案。
+[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)通过提供[数百个随时可用的连接器](../connectors/apis-list.md)(范围从本地 SQL Server 或 SAP 到 Microsoft 认知服务), 帮助你安排和集成不同的服务。 逻辑应用服务“无服务器”，因此无需担心规模或实例。 只需定义带有触发器的工作流和工作流执行的操作。 基础平台处理缩放、可用性和性能。 逻辑应用尤其适用于需要在多个系统中协调多个操作的用例和方案。
 
 为了帮助你详细了解 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)支持的多种模式和功能，下面提供了一些常见示例和方案。
 
@@ -98,7 +98,7 @@ ms.locfileid: "60303683"
 * [从逻辑应用调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md)
 * [教程：使用 Azure Functions 触发逻辑应用](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
-* [教程：创建与 Azure 逻辑应用集成的函数和 Microsoft 认知服务，以分析 Twitter 帖子人气](../azure-functions/functions-twitter-email.md)
+* [教程：创建一个与 Azure 逻辑应用和 Microsoft 认知服务集成的函数以分析 Twitter post 情绪](../azure-functions/functions-twitter-email.md)
 * [教程：通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [博客：从逻辑应用调用 SOAP 终结点](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 

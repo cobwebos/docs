@@ -17,17 +17,15 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 357c83cfd0ae3fed8b13419e72f50fcb90c04186
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: ff55853c859008690548b161451a24941a597d3a
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550655"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277905"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>与 MSAL.NET 配合使用时特定于 Xamarin Android 的注意事项
 本文介绍将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的具体注意事项。
-
-本文适用于 MSAL.NET 3.x。 如果对 MSAL.NET 2.x 感兴趣，请参阅 [MSAL.NET 2.x 中的 Xamarin Android 详情](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Xamarin-Android-specifics-2x)。
 
 ## <a name="set-the-parent-activity"></a>设置父活动
 
@@ -38,6 +36,26 @@ var authResult = AcquireTokenInteractive(scopes)
  .WithParentActivityOrWindow(parentActivity)
  .ExecuteAsync();
 ```
+还可以通过回调在 PublicClientApplication 级别 (在 MSAL 4.2 + 中) 设置此项。
+
+```CSharp
+// Requires MSAL.NET 4.2 or above
+var pca = PublicClientApplicationBuilder
+  .Create("<your-client-id-here>")
+  .WithParentActivityOrWindow(() => parentActivity)
+  .Build();
+```
+
+建议在[此处](https://github.com/jamesmontemagno/CurrentActivityPlugin)使用 CurrentActivityPlugin。  然后, PublicClientApplication 生成器代码将如下所示:
+
+```CSharp
+// Requires MSAL.NET 4.2 or above
+var pca = PublicClientApplicationBuilder
+  .Create("<your-client-id-here>")
+  .WithParentActivityOrWindow(() => CrossCurrentActivity.Current)
+  .Build();
+```
+
 
 ## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>确保身份验证流的交互部分结束后控制返回到 MSAL。
 在 Android 上，需重写 `Activity` 的 `OnActivityResult` 方法并调用 AuthenticationContinuationHelper MSAL 类的 SetAuthenticationContinuationEventArgs 方法。
@@ -70,7 +88,7 @@ protected override void OnActivityResult(int requestCode,
 
 ## <a name="use-the-embedded-web-view-optional"></a>使用嵌入式 Web 视图（可选）
 
-默认情况下 MSAL.NET 使用系统 web 浏览器，使你能够获取与 Web 应用程序的 SSO 和其他应用。 在某些罕见情况下，可能需要指定你需要使用嵌入式 Web 视图。 有关详细信息，请参阅 [MSAL.NET 使用 Web 浏览器](msal-net-web-browsers.md)和 [Android 系统浏览器](msal-net-system-browser-android-considerations.md)。
+默认情况下, MSAL.NET 使用系统 web 浏览器, 可让你获取 Web 应用程序和其他应用的 SSO。 在某些罕见情况下，可能需要指定你需要使用嵌入式 Web 视图。 有关详细信息，请参阅 [MSAL.NET 使用 Web 浏览器](msal-net-web-browsers.md)和 [Android 系统浏览器](msal-net-system-browser-android-considerations.md)。
 
 ```csharp
 bool useEmbeddedWebView = !app.IsSystemWebViewAvailable;
@@ -81,7 +99,7 @@ var authResult = AcquireTokenInteractive(scopes)
  .ExecuteAsync();
 ```
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 如果创建新的 Xamarin.Forms 应用程序并添加对 MSAL.Net NuGet 包的引用，则这会刚好适用。
 但是，如果需要将现有的 Xamarin.Forms 应用程序升级到 MSAL.NET 预览版 1.1.2 或更高版本，则可能会遇到内部版本问题。
 
@@ -92,12 +110,12 @@ var authResult = AcquireTokenInteractive(scopes)
 - 所有 Xamarin.Android.Support 包应该都以版本 25.4.0.2 为目标
 - 清除/重新生成
 - 尝试在 Visual Studio 中将最大并行项目内部版本数设置为 1（“选项”->“项目和解决方案”->“生成并运行”->“最大并行项目内部版本数”）
-- 另外，如果是从命令行生成的，请尝试删除命令中的 /m（如果使用了它）。
+- 或者, 如果要从命令行生成, 请尝试从命令中删除/m (如果使用)。
 
 
 ### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>错误：名称 'AuthenticationContinuationHelper' 不存在于当前上下文中
 
-这可能是因为 Visual Studio 未正确更新 Android.csproj* 文件。 有时 **\<HintPath >** filepath 错误地包含而不是 netstandard13 **monoandroid90**。
+这可能是因为 Visual Studio 未能正确更新 Android * 文件。 有时,  **\<HintPath >** filepath 不正确地包含 netstandard13 而不是**monoandroid90**。
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,

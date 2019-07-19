@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: fa6ab58de09e26683cdd958ef77b0fa01d88e2e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c2d776012e702469be4fd3217fb89be0ad419bf
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225588"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261617"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>适用于 Azure Cosmos DB 和 Async Java 的性能提示
 
@@ -198,7 +198,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     查询的复杂性会影响操作使用的请求单位数量。 谓词数、谓词性质、UDF 数目和源数据集的大小都会影响查询操作的成本。
 
-    若要测量任何操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 标头来测量这些操作占用的请求单位数。 也可以在 ResourceResponse<T> 或 FeedResponse<T> 中找到等效的 RequestCharge 属性。
+    若要测量任何操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 标头来测量这些操作占用的请求单位数。 还可以查看 ResourceResponse\<t > 或 FeedResponse\<T > 中等效的 RequestCharge 属性。
 
     ```Java
     ResourceResponse<Document> response = asyncClient.createDocument(collectionLink, documentDefinition, null,

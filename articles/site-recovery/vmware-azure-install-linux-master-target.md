@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: efb49db6cce7ba238d40bf80ddf87b2a1a83834f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479988"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261433"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -29,7 +29,7 @@ ms.locfileid: "66479988"
 
 请在本文末尾或者在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)中发表任何评论或问题。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 若要选择用于部署主目标的主机，请确定是要故障回复到现有的本地虚拟机还是新的虚拟机。 
     * 对于现有虚拟机，主目标的主机应有权访问虚拟机的数据存储。
@@ -46,7 +46,7 @@ ms.locfileid: "66479988"
 - **保留驱动器的附加磁盘大小**：1 TB
 - **CPU 核心数**：4 个核心或更多
 
-支持以下的 Ubuntu 内核。
+支持以下 Ubuntu 内核:
 
 
 |内核系列  |最高支持  |
@@ -83,7 +83,7 @@ ms.locfileid: "66479988"
 1. 选择“否”（默认选项），然后按 Enter。  
 
      ![配置键盘](./media/vmware-azure-install-linux-master-target/image5.png)
-1. 选择**英语 （美国）** 为键盘，并选择原点的国家/地区/区域**Enter**。
+1. 选择 "**英语 (美国)** " 作为键盘的源国家/地区, 然后选择**Enter**。
 
 1. 选择“英语(美国)”作为键盘布局，再按 Enter。  
 
@@ -245,7 +245,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
     ![多路径 ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. 格式化驱动器，然后在新驱动器上创建文件系统：mkfs.ext4 /dev/mapper/<保留磁盘的多路径 id>  。
+3. 格式化驱动器, 然后在新驱动器上创建文件系统: **mkfs\<. ext4/dev/mapper/保留磁盘的多路径 id >** 。
     
     ![文件系统](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -279,7 +279,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
     `echo <passphrase> >passphrase.txt`
 
-    示例： 
+    例如： 
 
        `echo itUx70I47uxDuUVY >passphrase.txt`
     
@@ -290,7 +290,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
 
-    示例： 
+    例如： 
     
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
@@ -321,7 +321,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
     ./install -q -d /usr/local/ASR -r MT -v VmWare
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
-    示例： 
+    例如： 
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt

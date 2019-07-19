@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: roiyz;cynthn
-ms.openlocfilehash: 5a885637aa2321e12953a72754eed42c91b5b201
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: roiyz
+ms.reviewer: cynthn
+ms.openlocfilehash: 79a65dc0e7aa85b2f8cef5f884fab7bc6cd076fe
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706733"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876728"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>使用 Azure Policy 限制 Linux VM 上的扩展安装
 
