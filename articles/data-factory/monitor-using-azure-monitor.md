@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 722d77bf27e3cd7eb921b09e0a1d4732a5b5f874
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 6bad74d33f5d50bb7a35de69927bf97daad07798
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514413"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326850"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 发警报和监视数据工厂
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
@@ -40,11 +40,11 @@ Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的�
 ### <a name="diagnostic-settings"></a>诊断设置
 可以使用“诊断设置”配置非计算资源的诊断日志。 用于资源控制的诊断设置：
 
-* 诊断日志会发送到何处 （存储帐户、 事件中心或 Azure Monitor 日志）。
+* 将诊断日志发送到何处（存储帐户、事件中心或 Azure Monitor 日志）。
 * 发送哪些日志类别。
 * 应该将每个日志类别保留在存储帐户中多长时间。
 * 保留期为 0 天表示永久保留日志。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
-* 如果设置了保留策略，但禁止将日志存储在存储帐户中 （例如，仅事件中心或 Azure Monitor 日志选项处于选中状态），则保留策略产生任何影响。
+* 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，仅选择了“事件中心”或“Azure Monitor 日志”选项），则保留策略无效。
 * 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。
 
 ### <a name="enable-diagnostic-logs-via-rest-apis"></a>通过 REST API 启用诊断日志
@@ -103,7 +103,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | 描述 |
+| 属性 | type | 描述 |
 | --- | --- | --- |
 | storageAccountId |String | 要将诊断日志发送到的存储帐户的资源 ID |
 | serviceBusRuleId |String | 服务总线命名空间的服务总线规则 ID。你要在该服务总线命名空间中创建事件中心，以便流式传输诊断日志。 规则 ID 的格式为：“{服务总线资源 ID}/authorizationrules/{密钥名称}”。|
@@ -234,7 +234,9 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ## <a name="schema-of-logs--events"></a>日志和事件的架构
 
-### <a name="activity-run-logs-attributes"></a>活动运行日志属性
+### <a name="azure-monitor-schema"></a>Azure Monitor 架构
+
+#### <a name="activity-run-logs-attributes"></a>活动运行日志属性
 
 ```json
 {
@@ -273,23 +275,23 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | 描述 | 示例 |
+| 属性 | 类型 | 描述 | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 活动运行日志始终为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | 在时间跨度表示，采用 UTC 格式的事件时间 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| time | String | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |activityRunId| String| 活动运行的 ID | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |pipelineRunId| String| 管道运行的 ID | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| String | 数据工厂资源的关联资源 ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | 诊断日志的类别。 请将此属性设置为“ActivityRuns”。 | `ActivityRuns` |
-|级别| String | 诊断日志的级别。 请将此属性设置为“Informational” | `Informational` |
+|level| String | 诊断日志的级别。 请将此属性设置为“Informational” | `Informational` |
 |operationName| String |活动的名称及其状态。 如果状态为启动检测信号，则返回 `MyActivity -`。 如果状态为结束检测信号，则返回 `MyActivity - Succeeded` 和最终状态 | `MyActivity - Succeeded` |
 |pipelineName| String | 管道的名称 | `MyPipeline` |
 |activityName| String | 活动名称 | `MyActivity` |
 |start| String | 活动运行的开始时间，以时间跨度表示，采用 UTC 格式 | `2017-06-26T20:55:29.5007959Z`|
 |end| String | 活动运行的结束时间，以时间跨度表示，采用 UTC 格式。 如果活动尚未结束（正在启动的活动的诊断日志），则设置默认值 `1601-01-01T00:00:00Z`。  | `2017-06-26T20:55:29.5007959Z` |
 
-### <a name="pipeline-run-logs-attributes"></a>管道运行日志属性
+#### <a name="pipeline-run-logs-attributes"></a>管道运行日志属性
 
 ```json
 {
@@ -319,22 +321,22 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | 描述 | 示例 |
+| 属性 | type | 描述 | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 活动运行日志为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | 在时间跨度表示，采用 UTC 格式的事件时间 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| time | String | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |runId| String| 管道运行的 ID | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| String | 数据工厂资源的关联资源 ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | 诊断日志的类别。 请将此属性设置为“PipelineRuns” | `PipelineRuns` |
-|级别| String | 诊断日志的级别。 请将此属性设置为“Informational” | `Informational` |
+|level| String | 诊断日志的级别。 请将此属性设置为“Informational” | `Informational` |
 |operationName| String |管道的名称及其状态。 如果管道运行已完成，则返回“Pipeline - Succeeded”和最终状态| `MyPipeline - Succeeded` |
 |pipelineName| String | 管道的名称 | `MyPipeline` |
 |start| String | 活动运行的开始时间，以时间跨度表示，采用 UTC 格式 | `2017-06-26T20:55:29.5007959Z`|
 |end| String | 活动运行的结束时间，以时间跨度表示，采用 UTC 格式。 如果活动尚未结束（正在启动的活动的诊断日志），则设置默认值 `1601-01-01T00:00:00Z`。  | `2017-06-26T20:55:29.5007959Z` |
 |status| String | 管道运行的最终状态（Succeeded 或 Failed） | `Succeeded`|
 
-### <a name="trigger-run-logs-attributes"></a>触发器运行日志属性
+#### <a name="trigger-run-logs-attributes"></a>触发器运行日志属性
 
 ```json
 {
@@ -363,15 +365,15 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```
 
-| 属性 | Type | 描述 | 示例 |
+| 属性 | 类型 | 描述 | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 对于活动运行日志，请设置为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | 在时间跨度表示，采用 UTC 格式的事件时间 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| time | String | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |triggerId| String| 触发器运行的 ID | `08587023010602533858661257311` |
 |resourceId| String | 数据工厂资源的关联资源 ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | 诊断日志的类别。 请将此属性设置为“PipelineRuns” | `PipelineRuns` |
-|级别| String | 诊断日志的级别。 请将此属性设置为“Informational” | `Informational` |
+|level| String | 诊断日志的级别。 请将此属性设置为“Informational” | `Informational` |
 |operationName| String |触发器的名称，以及指示是否已成功激发的最终状态。 如果检测信号成功，则返回“MyTrigger - Succeeded”| `MyTrigger - Succeeded` |
 |triggerName| String | 触发器的名称 | `MyTrigger` |
 |triggerType| String | 触发器的类型（手动触发器或计划的触发器） | `ScheduleTrigger` |
@@ -379,11 +381,33 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |start| String | 激发触发器的开始时间，以时间跨度表示，采用 UTC 格式 | `2017-06-26T20:55:29.5007959Z`|
 |status| String | 指示是否已成功激发触发器的最终状态（Succeeded 或 Failed） | `Succeeded`|
 
+### <a name="log-analytics-schema"></a>Log Analytics 架构
+
+Log Analytics 从 Azure Monitor 继承架构, 但有以下例外:
+
+* 每个列名中的第一个字母将大写, Azure Monitor 中的示例*correlationid*将在*Log Analytics 中。*
+* 将删除列*级别*。
+* 动态列*属性*将保留为以下动态 JSON blob 类型:
+
+    | Azure Monitor 列 | Log Analytics 列 | 类型 |
+    | --- | --- | --- |
+    | $. 属性。UserProperties | UserProperties | 动态 |
+    | $. 属性。批注 | 批注 | 动态 |
+    | $. 属性。送 | 输入 | 动态 |
+    | $. 属性。输出 | Output | 动态 |
+    | $. 属性。错误。错误代码 | 错误 | int |
+    | $. 属性。错误。消息 | ErrorMessage | string |
+    | $. 属性。条 | Error | 动态 |
+    | $. 属性。早期 | 早期 | 动态 |
+    | $. 属性。Parameters | Parameters | 动态 |
+    | $. 属性。SystemParameters | SystemParameters | 动态 |
+    | $. 属性。Tags | Tags | 动态 |
+    
 ## <a name="metrics"></a>度量值
 
 在 Azure 监视器中可以使用遥测来查看 Azure 上的工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的指标（也称为性能计数器）。 Azure 监视器提供多种方式来配置和使用这些指标，以便进行监视与故障排除。
 
-ADFV2 发出以下指标
+ADFV2 发出以下度量值:
 
 | **指标**           | **指标显示名称**         | **单位** | **聚合类型** | **说明**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
@@ -394,7 +418,7 @@ ADFV2 发出以下指标
 | TriggerSucceededRuns | 成功的触发器运行数指标  | Count    | 总计                | 在一分钟时段内成功的触发器运行总数   |
 | TriggerFailedRuns    | 失败的触发器运行数指标     | Count    | 总计                | 在一分钟时段内失败的触发器运行总数      |
 
-若要访问指标，请按照 https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 一文中的说明进行操作
+若要访问指标, 请完成[Azure Monitor 数据平台](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)中的说明。
 
 ## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>使用 Azure Monitor 监视数据工厂指标
 
@@ -412,13 +436,28 @@ ADFV2 发出以下指标
 
 为数据工厂启用诊断设置。
 
-1.  选择“Azure Monitor” -> “诊断设置”-> 选择数据工厂 -> 启用诊断。  
+1. 在门户中，导航到“Azure Monitor”并单击“设置”菜单中的“诊断设置”   。
 
-    ![monitor-oms-image1.png](media/data-factory-monitor-oms/monitor-oms-image1.png)
+2. 选择要为其设置诊断设置的数据工厂。
+    
+3. 如果所选数据工厂上不存在任何设置, 系统将提示您创建设置。 单击“启用诊断”。
 
-2.  提供包括工作区配置在内的诊断设置。
+   ![添加诊断设置 - 没有现有的设置](media/data-factory-monitor-oms/monitor-oms-image1.png)
+
+   如果数据工厂上存在设置, 你将看到已在此数据工厂上配置的设置列表。 单击“添加诊断设置”。
+
+   ![添加诊断设置 - 现有的设置](media/data-factory-monitor-oms/add-diagnostic-setting.png)
+
+4. 为设置提供名称，并选中“发送到 Log Analytics”  框，然后选择 Log Analytics 工作区。
 
     ![monitor-oms-image2.png](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+5. 单击“保存”  。
+
+几分钟后, 新设置会显示在此数据工厂的设置列表中, 只要生成新的事件数据, 就会立即将诊断日志流式传输到该工作区。 发出事件后可能需要最多 15 分钟的时间该事件才会出现在 Log Analytics 中。
+
+> [!NOTE]
+> 由于任何给定 Azure 日志表的列数不超过 500, 因此**强烈建议使用资源特定模式**。 有关详细信息, 请参阅[Log Analytics 已知限制](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics)。
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>从 Azure 市场安装 Azure 数据工厂分析
 
@@ -462,7 +501,7 @@ ADFV2 发出以下指标
 
 ## <a name="alerts"></a>警报
 
-登录到 Azure 门户，然后依次单击“监视器”-&gt;“警报”  以创建警报。
+登录到 Azure 门户, 并单击 "**监视** > **警报**" 以创建警报。
 
 ![门户菜单中的警报](media/monitor-using-azure-monitor/alerts_image3.png)
 

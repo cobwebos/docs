@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 6b0e10ce48088853090958dca9d8c1fad20780e7
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: fa5e8a1f51284d93f51a1a197e2612f356b8b0d5
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723255"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228273"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -27,7 +27,7 @@ ms.locfileid: "67723255"
 - [安全性](#security)包括[审核](#auditing)、[证书](#certificates)、[凭据](#credential)、[加密提供程序](#cryptographic-providers)、[登录名和用户名](#logins-and-users)以及[服务密钥和服务主密钥](#service-key-and-service-master-key)方面的差异。
 - [配置](#configuration)包括[缓冲池扩展](#buffer-pool-extension)、[排序规则](#collation)、[兼容性级别](#compatibility-levels)、[数据库镜像](#database-mirroring)、[数据库选项](#database-options)、[SQL Server 代理](#sql-server-agent)以及[表选项](#tables)方面的差异。
 - [功能](#functionalities)包括 [BULK INSERT/OPENROWSET](#bulk-insert--openrowset)、[CLR](#clr)、[DBCC](#dbcc)、[分布式事务](#distributed-transactions)、[已扩展事件](#extended-events)、[外部库](#external-libraries)、[文件流和文件表](#filestream-and-filetable)、[全文语义搜索](#full-text-semantic-search)、[链接服务器](#linked-servers)、[Polybase](#polybase)、[复制](#replication)、[还原](#restore-statement)、[Service Broker](#service-broker)、[存储过程、函数和触发器](#stored-procedures-functions-and-triggers)方面的差异。
-- [环境设置](#Environment)例如 Vnet 和子网配置。
+- [环境设置](#Environment), 如 vnet 和子网配置。
 - [在托管实例中行为不同的功能](#Changes)。
 - [暂时性的限制和已知问题](#Issues)。
 
@@ -145,7 +145,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - 链接服务器。
 
 - 不支持设置映射到作为数据库所有者的 Azure AD 组的 Azure AD 登录名。
-- 支持使用其他 Azure AD 主体模拟 Azure AD 服务器级主体，例如 [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql) 子句。 EXECUTE AS 限制是：
+- 支持使用其他 Azure AD 主体模拟 Azure AD 服务器级主体，例如 [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql) 子句。 EXECUTE AS 限制如下:
 
   - 当名称不同于登录名时，EXECUTE AS USER 不支持 Azure AD 用户。 例如，如果用户是通过语法 CREATE USER [myAadUser] FROM LOGIN [john@contoso.com] 创建的，则会尝试通过 EXEC AS USER = _myAadUser_ 进行模拟。 基于 Azure AD 服务器主体（登录名）创建 **USER** 时，请指定与 **LOGIN** 中的 login_name 相同的 user_name。
   - 只有属于 `sysadmin` 角色的 SQL 服务器级主体（登录名）可以针对 Azure AD 主体执行以下操作：
@@ -276,7 +276,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="sql-server-agent"></a>SQL Server 代理
 
-- 托管实例中当前不支持启用和禁用 SQL Server 代理。 SQL 代理始终运行。
+- 当前在托管实例中不支持启用和禁用 SQL Server 代理。 SQL 代理始终运行。
 - SQL Server 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。 
 - 作业
   - 支持 T-SQL 作业步骤。
@@ -299,7 +299,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - 不支持代理。
 - 不支持事件日志。
 
-当前不支持以下 SQL 代理功能：
+当前不支持以下 SQL 代理功能:
 
 - 代理
 - 针对空闲 CPU 计划作业
@@ -398,13 +398,13 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="replication"></a>复制
 
-[事务复制](sql-database-managed-instance-transactional-replication.md)适用于公共预览版托管实例上有一些约束：
-- Al 类型的复制参与方 （发布服务器、 分发服务器、 拉出订阅服务器和推送订阅服务器） 可以放置在托管实例，但不能发布服务器和分发服务器放置在不同的实例。
-- 支持事务、 快照发布和双向复制类型。 不支持合并复制、 对等复制和可更新的订阅。
-- 托管的实例可与最新版本的 SQL Server 通信。 请参阅受支持的版本[此处](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)。
+[事务复制](sql-database-managed-instance-transactional-replication.md)可用于托管实例上的公共预览版, 但有一些限制:
+- Al 类型的复制参与者 (发布服务器、分发服务器、请求订阅服务器和推送订阅服务器) 可以置于托管实例上, 但不能将发布服务器和分发服务器放置在不同的实例上。
+- 支持事务、快照和双向复制类型。 不支持合并复制、对等复制和可更新订阅。
+- 托管实例可以与 SQL Server 的最新版本通信。 请在[此处](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)查看受支持的版本。
 - 事务复制有一些[额外的网络要求](sql-database-managed-instance-transactional-replication.md#requirements)。
 
-有关配置复制的信息，请参阅[复制教程](replication-with-sql-database-managed-instance.md)。
+有关配置复制的信息, 请参阅[复制教程](replication-with-sql-database-managed-instance.md)。
 
 ### <a name="restore-statement"></a>RESTORE 语句 
 
@@ -463,18 +463,19 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持 `Extended stored procedures`，其中包括 `sp_addextendedproc` 和 `sp_dropextendedproc`。 请参阅[扩展存储过程](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)。
 - 不支持 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 请参阅 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
 
-## <a name="Environment"></a>环境约束的限制
+## <a name="Environment"></a>环境约束
 
 ### <a name="subnet"></a>Subnet
-- 在为你的托管实例保留的子网不能将任何其他资源 （例如虚拟机）。 将这些资源放在其他子网。
-- 子网必须具有足够数量的可用[IP 地址](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 最小值是 16，而建议是在子网中拥有至少 32 个 IP 地址。
-- [服务终结点不能为与托管的实例子网相关联](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 创建虚拟网络时，请务必禁用“服务终结点”选项。
-- Vcore 数目和类型的实例可以在一个区域中部署的具有一些[约束和限制](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)。
-- 有一些[必须应用于子网的安全规则](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。
+- 在为托管实例保留的子网中, 不能放置任何其他资源 (例如虚拟机)。 将这些资源置于其他子网中。
+- 子网必须具有足够数量的可用[IP 地址](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 最小值为 16, 但建议至少在子网中包含32个 IP 地址。
+- [无法将服务终结点与托管实例的子网相关联](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 创建虚拟网络时，请务必禁用“服务终结点”选项。
+- 在某个区域中, 可以部署的 Vcore 和实例类型有一些[限制和限制](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)。
+- 某些[安全规则必须应用于子网](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。
 
 ### <a name="vnet"></a>VNET
-- 可以使用资源模型部署 VNet-不支持为 VNet 的经典模型。
-- 应用服务环境、 逻辑应用和托管实例 （使用异地复制，事务复制，或通过链接服务器使用） 等某些服务无法访问托管实例在不同区域中，如果其 Vnet 进行连接使用[全局对等互连](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。 你可以通过 VNet 网关经由 ExpressRoute 或 VNet-to-VNet 连接到这些资源。
+- 可以使用资源模型-不支持 VNet 的经典模型来部署 VNet。
+- 创建托管实例后, 不支持将托管实例或 VNet 移到另一个资源组或订阅。
+- 某些服务 (如应用服务环境、逻辑应用和托管实例, 用于异地复制、事务复制或通过链接服务器) 无法访问不同区域中的托管实例, 如果它们的 Vnet 使用[global对等互连](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。 你可以通过 VNet 网关经由 ExpressRoute 或 VNet-to-VNet 连接到这些资源。
 
 ## <a name="Changes"></a>行为更改
 
@@ -482,8 +483,8 @@ WITH PRIVATE KEY (<private_key_options>)
 
 - `SERVERPROPERTY('EngineEdition')` 返回值 8。 此属性唯一标识托管实例。 请参阅 [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql)。
 - `SERVERPROPERTY('InstanceName')` 返回 NULL，因为 SQL Server 存在的实例概念并不适用于托管实例。 请参阅 [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql)。
-- `@@SERVERNAME` 返回为完整的 DNS"可连接"名称，例如，我管理 instance.wcus17662feb9ce98.database.windows.net。 请参阅 [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql)。 
-- `SYS.SERVERS` 返回为完整的 DNS"可连接"名称，如`myinstance.domain.database.windows.net`属性"name"和"data_source。" 请参阅 [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql)。
+- `@@SERVERNAME`返回完整 DNS "可连接" 名称, 例如, my-managed-instance.wcus17662feb9ce98.database.windows.net。 请参阅 [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql)。 
+- `SYS.SERVERS`返回完整 DNS "可连接" 名称, 如`myinstance.domain.database.windows.net`属性 "name" 和 "data_source"。 请参阅 [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql)。
 - `@@SERVICENAME` 返回 NULL，因为 SQL Server 存在的服务概念并不适用于托管实例。 请参阅 [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql)。
 - 支持 `SUSER_ID`。 如果 Azure AD 登录名不在 sys.syslogins 中，则返回 NULL。 请参阅 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql)。 
 - 不支持 `SUSER_SID`。 将返回错误数据，这是暂时性的已知问题。 请参阅 [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql)。 
@@ -492,7 +493,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="tempdb-size"></a>TEMPDB 大小
 
-在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据实例存储大小受到限制。 `tempdb` 日志文件大小被限制为 120 GB 常规用途和业务关键层上。 `tempdb` 数据库始终拆分为 12 个数据文件。 无法更改此最大大小，每个文件，并且无法将新文件添加到`tempdb`。 某些查询可能会返回错误，如果它们需要 24 GB 以上每个核心中`tempdb`或如果它们生成 120 GB 以上的日志。 `tempdb` 时，始终重新创建空数据库实例启动时或故障转移和任何更改在进行`tempdb`不会保留。 
+在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据实例存储大小受到限制。 `tempdb`在常规用途和业务关键层上, 日志文件大小限制为 120 GB。 `tempdb` 数据库始终拆分为 12 个数据文件。 无法更改每个文件的最大大小, 并且无法将新文件添加`tempdb`到。 如果中`tempdb`的每个核心需要超过 24 GB, 或者它们产生的日志超过 120GB, 则某些查询可能会返回错误。 `tempdb`当实例启动或故障转移时, 始终会重新创建为空数据库, 在中所做的`tempdb`任何更改都不会保留。 
 
 ### <a name="cant-restore-contained-database"></a>无法还原包含的数据库
 
@@ -592,10 +593,10 @@ using (var scope = new TransactionScope())
 
 **解决方法：** 使用自动备份和时间点还原，或者改用[客户托管 (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key)。 也可以在数据库上禁用加密。
 
-### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>时点还原由源实例上设置的时区遵循时间
+### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>时间点还原遵循源实例上设置的时区
 
-当前时间点还原将解释通过还原到以下特定于时区的源实例改为按以下 UTC 时间。
-检查[托管实例所在的时区已知问题](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues)的更多详细信息。
+时间点还原目前按源实例的时区 (而不是按照 UTC) 来解释要还原到的时间。
+有关更多详细信息, 请查看[托管实例时区已知问题](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues)。
 
 ## <a name="next-steps"></a>后续步骤
 

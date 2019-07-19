@@ -1,6 +1,6 @@
 ---
-title: 云 Azure 安全中心 （事件） 中的智能警报关联 |Microsoft Docs
-description: 本主题说明如何在 Azure 安全中心是合成使用云智能警报关联来生成安全事件。
+title: Azure 安全中心中的云智能警报关联 (事件) |Microsoft Docs
+description: 本主题介绍了如何使用云智能警报相关来生成安全事件 (在 Azure 安全中心中)。
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,31 +13,31 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 2ab4dab8cb7729b0c2ca023f22066f7b5d166a02
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: 7ba2cf14d9fac100f44a1ef23997b27ba062bee0
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571772"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295866"
 ---
-# <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>在 Azure 安全中心 （事件） 的云智能警报关联
+# <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure 安全中心中的云智能警报关联 (事件)
 
-安全中心会持续分析混合云工作负荷使用高级的分析和威胁智能来提醒用户恶意活动。
+安全中心使用高级分析和威胁智能来持续分析混合云工作负荷, 以提醒你有关恶意活动的信息。
 
-随着广泛的威胁不断扩大和需求来检测甚至微小的指示泄露会增加，可能会比较困难安全分析人员确定级别不同的警报，并识别实际攻击。 安全中心可帮助分析人员应对警报疲劳和诊断攻击，发生时，通过将不同的警报和低保真信号到安全事件相关联。
+随着威胁范围的广泛发展, 甚至需要检测到少许的增长, 这可能会使安全分析人员诊断不同警报并识别实际攻击, 这可能会很困难。 安全中心通过将不同的警报和低保真信号关联到安全事件, 帮助分析人员应对警报疲劳并诊断攻击。
 
-合成是技术和分析后端为提供支持安全中心的事件，使其能够关联不同的警报和上下文信号组合在一起。 熔通过查看不同的信号的工作原理上订阅报告资源，并查找显示攻击进度或发出信号表示一个统一的响应过程的共享上下文信息的流行模式应为为其创建。
+合成是支持安全中心事件的技术和分析后端, 使其能够将不同的警报和上下文信号彼此关联起来。 合成工作方式: 查看跨资源报告的针对订阅的不同信号, 查找使用共享上下文信息显示攻击进度或信号的常见模式, 以指示统一的响应过程为其执行。
 
-合成分析组合使用 AI 分析警报，发现新的攻击模式，在发生安全域知识。 
+合成 analytics 结合了安全域知识和 AI, 分析警报, 发现新的攻击模式。 
 
-安全中心将利用 MITRE 攻击矩阵能够感知有意相关联的警报帮助安全域知识来形式化。 此外，通过使用每个步骤的攻击中收集的信息，安全中心可以出活动看起来好像是步骤的攻击，但不是规则。  
+安全中心利用 MITRE 攻击矩阵将警报与其感知意向关联起来, 从而帮助将安全域的知识正式化。 此外, 通过使用为攻击的每个步骤收集的信息, 安全中心可以将似乎是攻击的步骤的活动排除在外, 而不是。  
 
-因为攻击通常会发生跨不同的租户，安全中心可以组合 AI 算法来分析对每个订阅报告它们标识为普遍警报模式而不是要顺便说一下关联与每个攻击序列其他。
+由于攻击通常发生在不同的租户中, 安全中心可以结合 AI 算法来分析每个订阅上报告的攻击顺序, 以将它们标识为常见警报模式, 而不是只是与每个订阅关联以外.
 
-在事故的调查，分析师通常需要额外的上下文来访问有关的性质威胁以及如何缓解此问题并且作出判定。 例如，即使检测到网络异常，则不了解什么发生在网络上或目标资源相关情况下很难了解接下来要采取的操作。 若要帮助，安全事件可以包括项目、 相关的事件和信息。 根据检测到的威胁类型和您的环境的配置，可用于安全事件的其他信息会有所不同。 
+调查事件时, 分析人员通常需要额外的上下文来了解有关威胁性质和如何缓解威胁的结论。 例如, 即使在检测到网络异常的情况下也不了解网络上发生的其他情况, 或与目标资源有关的情况, 也很难理解接下来要执行的操作。 为了提供帮助, 安全事件可能包括项目、相关事件和信息。 可用于安全事件的其他信息取决于检测到的威胁类型以及环境的配置。 
 
-![安全事件的详细信息](./media/security-center-alerts-cloud-smart/security-incident.png)
+![安全事件详细信息](./media/security-center-alerts-cloud-smart/security-incident.png)
 
-若要更好地了解安全事件，请参阅[如何处理 Azure 安全中心中的安全事件](https://docs.microsoft.com/azure/security-center/security-center-incident)。
+若要更好地了解安全事件, 请参阅[如何处理 Azure 安全中心的安全事件](https://docs.microsoft.com/azure/security-center/security-center-incident)。
 

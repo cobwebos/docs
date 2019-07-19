@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f6422bf2ccc42c12d8f2d20a5a7ece8d37e8b48e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 398b2236caa77e4aef5b471079407a5edeeeee2d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449731"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326935"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -23,7 +23,7 @@ Azure 存储提供分层安全模型。 借助此模型，可保护存储帐户�
 在网络规则生效后访问存储帐户的应用程序需要在请求中提供适当的授权。 支持通过 Azure Active Directory (Azure AD) 凭据（适用于 Blob 和队列）、有效的帐户访问密钥或 SAS 令牌进行授权。
 
 > [!IMPORTANT]
-> Azure 文件同步尚不支持防火墙和虚拟网络。 如果您使用的 Azure 文件同步在你的存储帐户并启用这些，Azure 文件同步将不同步。
+> Azure 文件同步尚不支持防火墙和虚拟网络。 如果在存储帐户上使用 Azure 文件同步, 并启用了这些帐户, 则 Azure 文件同步不会同步。
 >
 > 默认情况下，除非请求来自在 Azure 虚拟网络 (VNet) 内运行的服务，否则开启存储帐户的防火墙规则会阻止数据传入请求。 被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。
 >
@@ -129,7 +129,7 @@ Azure 存储提供分层安全模型。 借助此模型，可保护存储帐户�
 > [!NOTE]
 > 服务终结点不适用于位于虚拟网络所在区域和指定区域对之外的流量。 可以将允许从虚拟网络访问存储帐户的网络规则仅应用于存储帐户主区域或指定配对区域中的存储帐户。
 
-### <a name="required-permissions"></a>所需权限
+### <a name="required-permissions"></a>所需的权限
 
 若要向存储帐户应用虚拟网络规则，用户必须对要添加的子网拥有适当的权限。 所需的权限为*向子网加入服务*权限，该权限包含在*存储帐户参与者*内置角色中。 该权限还可以添加到自定义角色定义中。
 
@@ -338,7 +338,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 > [!IMPORTANT]
 > 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果  。
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>Exceptions
 
 大多数情况下，网络规则可以实现安全的网络配置。 但是，在某些情况下，必须允许例外才能启用完整功能。 可以为存储帐户针对受信任的 Microsoft 服务和存储分析数据访问配置例外。
 
@@ -350,18 +350,19 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 如果启用“允许受信任的 Microsoft 服务...”例外，以下服务（在订阅中注册后）有权访问存储帐户  ：
 
-|服务|资源提供程序名称|目的|
+|服务|资源提供程序名称|用途|
 |:------|:---------------------|:------|
 |Azure 备份|Microsoft.RecoveryServices|在 IAAS 虚拟机中运行非托管磁盘的备份和还原。 （不是托管磁盘的必需操作）。 [了解详细信息](/azure/backup/backup-introduction-to-azure-backup)。|
-|Azure Data Box|Microsoft.DataBox|启用导入到 Azure 中使用 Data Box 的数据。 [了解详细信息](/azure/databox/data-box-overview)。|
+|Azure Data Box|Microsoft.DataBox|允许使用 Data Box 将数据导入到 Azure。 [了解详细信息](/azure/databox/data-box-overview)。|
 |Azure 开发测试实验室|Microsoft.DevTestLab|自定义映像创建和项目安装。 [了解详细信息](/azure/devtest-lab/devtest-lab-overview)。|
 |Azure 事件网格|Microsoft.EventGrid|启用 Blob 存储事件发布并允许事件网格发布到存储队列。 了解有关 [blob 存储事件](/azure/event-grid/event-sources)和[发布到队列](/azure/event-grid/event-handlers)的信息。|
 |Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。 [了解详细信息](/azure/event-hubs/event-hubs-capture-overview)。|
+| Azure 文件同步| Microsoft.StorageSync| 使你能够将本地文件服务器转换为 Azure 文件共享的缓存。 允许多站点同步、快速灾难恢复和云端备份。 [了解详细信息](../files/storage-sync-files-planning.md)|
 |Azure HDInsight|Microsoft.HDInsight|为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详细信息](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。|
 |Azure Monitor|Microsoft.Insights|允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。|
 |Azure 网络|Microsoft.Network|存储和分析网络流量日志。 [了解详细信息](/azure/network-watcher/network-watcher-packet-capture-overview)。|
 |Azure Site Recovery|Microsoft.SiteRecovery |通过启用 Azure IaaS 虚拟机的复制来配置灾难恢复。 如果使用启用了防火墙的缓存存储帐户、源存储帐户或目标存储帐户，则这是必需的。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。|
-|Azure SQL 数据仓库|Microsoft.Sql|允许导入和导出方案中使用 PolyBase 的特定 SQL 数据库实例。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。|
+|Azure SQL 数据仓库|Microsoft.Sql|允许使用 PolyBase 从特定 SQL 数据库实例导入和导出方案。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。|
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问
 

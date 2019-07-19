@@ -9,18 +9,18 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 56e66f17e9ce1d2482463f619e82dfd29d48f191
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577791"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990297"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>从 Go（预览版）收集分布式跟踪
 
 Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) 和我们新的[本地转发器](./opencensus-local-forwarder.md)集成来对 Go 应用程序进行分布式跟踪。 本文将逐步介绍设置 OpenCensus for Go 并将跟踪数据提供给 Application Insights 的过程。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 需要一个 Azure 订阅。
 - 应该安装 Go，本文使用版本 1.11 [去下载](https://golang.org/dl/)。
@@ -40,16 +40,18 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
    ![添加 Application Insights 资源](./media/opencensus-Go/0001-create-resource.png)
 
+ > [!NOTE]
+   >如果这是你首次创建 Application Insights 资源, 你可以访问[创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)一文了解详细信息。
+
    此时会显示配置对话框，请使用下表填写输入字段。
 
-    | 设置        | 值           | 说明  |
+    | 设置        | ReplTest1           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
-   | **应用程序类型** | 常规 | 所监视的应用的类型 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
-   | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
+   | **Location** | East US | 选择离你近的位置或离托管应用的位置近的位置 |
 
-2. 单击**创建**。
+2. 单击“创建”。 
 
 ## <a name="configure-local-forwarder"></a>配置本地转发器
 

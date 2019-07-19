@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae423b6fb141cab4038e65ba85c6067f1c23aee0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60740902"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320677"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的计算机组
 使用 Azure Monitor 中的计算机组可为一组特定的计算机设定[日志查询](../log-query/log-query-overview.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志查询中包括组时，结果仅限于与组中的计算机匹配的记录。
@@ -53,9 +53,9 @@ ms.locfileid: "60740902"
 
 下表介绍了用于定义计算机组的属性。
 
-| 属性 | 描述 |
+| 属性 | Description |
 |:---|:---|
-| Name   | 要在门户中显示的查询名称。 |
+| 名称   | 要在门户中显示的查询名称。 |
 | 函数别名 | 查询中用于标识计算机组的唯一别名。 |
 | 类别       | 用于在门户中对查询进行组织的类别。 |
 
@@ -84,7 +84,7 @@ ms.locfileid: "60740902"
 ### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
 当配置 Azure Monitor 来导入 Configuration Manager 集合成员身份时，它将为每个集合创建计算机组。  每隔 3 小时会检索一次集合成员身份信息，以使计算机组保持最新。 
 
-必须[将 Configuration Manager 连接到 Azure Monitor](collect-sccm.md) 才能导入 Configuration Manager 集合。  然后，可以通过 Azure 门户上 Log Analytics 工作区的“高级设置”配置导入。   依次选择“计算机组”、“SCCM”、“导入 Configuration Manager 集合成员身份”。     无需进一步的配置。
+必须[将 Configuration Manager 连接到 Azure Monitor](collect-sccm.md) 才能导入 Configuration Manager 集合。  
 
 ![SCCM 中的计算机组](media/computer-groups/configure-sccm.png)
 

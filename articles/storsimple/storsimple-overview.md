@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
-ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: timlt
+ms.openlocfilehash: 5a3800cfdf36bdc2e042eec860310a508204ba11
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630163"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876451"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
 ## <a name="overview"></a>概述
@@ -36,7 +36,7 @@ StorSimple 使用[存储分层](#automatic-storage-tiering)管理各种存储介
 ## <a name="why-use-storsimple"></a>为什么使用 StorSimple？
 下表介绍了 Microsoft Azure StorSimple 提供的某些主要优势。
 
-| Feature | 优势 |
+| 功能 | 优势 |
 | --- | --- |
 | 透明集成 |使用 iSCSI 协议以不可见的方式链接数据存储设施。 这样可以确保存储在云中、数据中心或远程服务器上的数据看起来好像存储在单个位置。 |
 | 降低存储成本 |分配足够的本地存储或云存储以满足当前需求，仅在必要时才扩展云存储。 它可以通过消除相同数据的冗余版本（删除重复）和使用压缩，进一步降低存储需求和开支。 |
@@ -205,7 +205,7 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作负荷摘要
 下表列出了受支持的 StorSimple 工作负荷摘要。
 
-| 场景 | 工作负荷 | 支持 | 限制 | Version |
+| 应用场景 | 工作负荷 | 支持 | 限制 | Version |
 | --- | --- | --- | --- | --- |
 | 协作 |文件共享 |是 | |所有版本 |
 | 协作 |分布式文件共享 |是 | |所有版本 |
@@ -232,7 +232,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 下面是 StorSimple 支持的基础结构组件列表。
 
-| 场景 | 工作负荷 | 支持 | 限制 | Version |
+| 应用场景 | 工作负荷 | 支持 | 限制 | Version |
 | --- | --- | --- | --- | --- |
 | 常规 |Express Route |是 | |所有版本 |
 | 常规 |DataCore FC |是* |受 DataCore SANsymphony 支持 |所有版本 |

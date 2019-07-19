@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: allclark;yaqiyang
-ms.openlocfilehash: f6b21f288b94e06414fe66ff775ebb264368c0b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: yaya
+ms.openlocfilehash: 9dd336ef973b603108aad62c90e4dab385d20317
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411604"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67873900"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>下载 Azure SDK for PHP
 
@@ -32,9 +32,9 @@ Azure SDK for PHP 包括允许你针对 Azure 开发、部署和管理 PHP 应�
 * **Azure PowerShell（仅限 Windows）** 。 这是一组用于部署和管理 Azure 服务（例如云服务和虚拟机）的 PowerShell cmdlet。
 * **Azure 模拟器（仅限 Windows）** 。 计算和存储模拟器是一系列云服务和数据管理服务的本地模拟器，允许在本地测试应用程序。 Azure 模拟器仅在 Windows 上运行。
 
-以下各节将介绍如何下载和安装上述组件。
+以下各节介绍如何下载和安装上述组件。
 
-本主题中的说明假定用户已安装 [PHP][install-php]。
+本主题中的说明假定你已安装[PHP][install-php] 。
 
 > [!NOTE]
 > 若要使用 Azure 的 PHP 客户端库，则必须安装 PHP 5.5 或更高版本。
@@ -45,7 +45,7 @@ Azure SDK for PHP 包括允许你针对 Azure 开发、部署和管理 PHP 应�
 
 Azure 的 PHP 客户端库提供了一个用于从任何操作系统访问 Azure 功能（例如，数据管理服务和云服务）的接口。 可以通过 Composer 安装这些库。
 
-有关如何使用 Azure 的 PHP 客户端库的信息，请参阅[如何使用 BLOB 服务][blob-service]、[如何使用表服务][table-service]以及[如何使用队列服务][queue-service]。
+有关如何使用适用于 Azure 的 PHP 客户端库的信息, 请参阅[如何使用 Blob 服务][blob-service], [How to Use the Table Service][table-service]和[如何使用队列服务][队列服务]。
 
 ### <a name="install-via-composer"></a>通过 Composer 安装
 
@@ -69,9 +69,9 @@ Azure 的 PHP 客户端库提供了一个用于从任何操作系统访问 Azure
 
 Azure PowerShell 是一组用于部署和管理 Azure 服务（例如，云服务和虚拟机）的 PowerShell cmdlet。 Azure 模拟器是一系列云服务和数据管理服务的模拟器，允许在本地测试应用程序。 这些组件仅受 Windows 支持。
 
-安装 Azure PowerShell 和 Azure 模拟器的建议方法是使用 [Microsoft Web 平台安装程序][download-wpi]。 请注意，也可以选择安装其他开发组件，如 PHP、SQL Server、Microsoft Drivers for SQL Server for PHP 和 WebMatrix。
+安装 Azure PowerShell 和 Azure 模拟器的建议方法是使用[Microsoft Web 平台安装程序][download-wpi]。 请注意，也可以选择安装其他开发组件，如 PHP、SQL Server、Microsoft Drivers for SQL Server for PHP 和 WebMatrix。
 
-有关如何使用 Azure PowerShell 的信息，请参阅[如何使用 Azure PowerShell][powershell-tools]。
+有关如何使用 Azure PowerShell 的信息, 请参阅[如何使用 Azure PowerShell][powershell-tools]。
 
 ## <a name="azure-cli"></a>Azure CLI
 

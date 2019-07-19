@@ -1,6 +1,6 @@
 ---
-title: 如何查询日志从 Azure Monitor 的容器 |Microsoft Docs
-description: 用于容器的 azure Monitor 收集指标和日志数据和这篇文章介绍记录并包含的示例查询。
+title: 如何从用于容器的 Azure Monitor 查询日志 | Microsoft Docs
+description: 用于容器的 Azure Monitor 收集指标和日志数据，本文介绍了这些记录并包含了示例查询。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,17 +11,18 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 66fc55d8c3dbb8487d1e796d5f30b08a94f717f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d6e65331db53be5ba13a75e6b03b271f1071716d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60494758"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67989820"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何查询 Azure 监视器中的容器的日志
-用于容器的 azure Monitor 从容器主机和容器，收集性能指标、 清单数据和运行状况状态信息并将其转发到 Azure Monitor 中的 Log Analytics 工作区。 每隔三分钟收集数据。 此数据是可用于[查询](../../azure-monitor/log-query/log-query-overview.md)Azure 监视器中。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何从用于容器的 Azure Monitor 查询日志
+
+用于容器的 Azure Monitor 从容器主机和容器收集性能指标、清单数据和运行状况状态信息，并将其转发到 Azure Monitor 中的 Log Analytics 工作区。 每隔三分钟收集数据。 此数据可用于 Azure Monitor 中的[查询](../../azure-monitor/log-query/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 ## <a name="container-records"></a>容器记录
 
@@ -33,24 +34,32 @@ ms.locfileid: "60494758"
 | 容器库存 | `ContainerInventory` | TimeGenerated、计算机、容器名称、ContainerHostname、映像、ImageTag、ContainerState、ExitCode、EnvironmentVar、命令、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
 | 容器日志 | `ContainerLog` | TimeGenerated、计算机、映像 ID、容器名称、LogEntrySource、LogEntry、SourceSystem、ContainerID |
 | 容器节点清单 | `ContainerNodeInventory`| TimeGenerated、计算机、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
-| Kubernetes 群集中的 Pod 清单 | `KubePodInventory` | TimeGenerated、 计算机、 ClusterId、 ContainerCreationTimeStamp、 PodUid、 PodCreationTimeStamp、 ContainerRestartCount、 PodRestartCount、 PodStartTime、 ContainerStartTime、 ServiceName、 ControllerKind、 ControllerName、 名称， ContainerStatusReason、 ContainerID、 容器名称、 名称、 PodLabel、 Namespace、 PodStatus、 ClusterName、 PodIp、 SourceSystem |
+| Kubernetes 群集中的 Pod 清单 | `KubePodInventory` | TimeGenerated、计算机、ClusterId、ContainerCreationTimeStamp、PodUid、PodCreationTimeStamp、ContainerRestartCount、PodRestartCount、PodStartTime、ContainerStartTime、ServiceName、ControllerKind、ControllerName、ContainerStatus、ContainerStatusReason、ContainerID、ContainerName、Name、PodLabel、Namespace、PodStatus、ClusterName、PodIp、SourceSystem |
 | Kubernetes 群集节点部分清单 | `KubeNodeInventory` | TimeGenerated, Computer, ClusterName, ClusterId, LastTransitionTimeReady, Labels, Status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
 | Kubernetes 事件 | `KubeEvents` | TimeGenerated, Computer, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, Message,  SourceSystem | 
 | Kubernetes 群集中的服务 | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Kubernetes 群集节点部分的性能指标 | Perf &#124; where ObjectName == “K8SNode” | 计算机、 ObjectName、 CounterName &#40;cpuAllocatableBytes，memoryAllocatableBytes，cpuCapacityNanoCores，memoryCapacityBytes，memoryRssBytes，cpuUsageNanoCores，memoryWorkingsetBytes，restartTimeEpoch&#41;，CounterValue、TimeGenerated、 CounterPath、 SourceSystem | 
-| Kubernetes 群集容器部分的性能指标 | Perf &#124; where ObjectName == “K8SContainer” | CounterName &#40; cpuRequestNanoCores，memoryRequestBytes，cpuLimitNanoCores，memoryWorkingSetBytes，restartTimeEpoch，cpuUsageNanoCores，memoryRssBytes&#41;，CounterValue、 TimeGenerated、 CounterPath、 SourceSystem | 
-| InsightsMetrics | 计算机名称、 Namespace、 源、 SourceSystem、 标记、 TimeGenerated，键入，值 |
+| Kubernetes 群集节点部分的性能指标 | Perf &#124; where ObjectName == “K8SNode” | Computer、ObjectName、CounterName（cpuAllocatableBytes、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes、memoryRssBytes、cpuUsageNanoCores、memoryWorkingsetBytes、restartTimeEpoc）、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
+| Kubernetes 群集容器部分的性能指标 | Perf &#124; where ObjectName == “K8SContainer” | CounterName（cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryWorkingSetBytes、restartTimeEpoch、cpuUsageNanoCores、memoryRssBytes）、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
+| 自定义指标 |`InsightsMetrics` | 计算机、名称、命名空间、源、SourceSystem、标记<sup>1</sup>、TimeGenerated、类型、Va、_ResourceId | 
+
+<sup>1</sup> "*标记*" 属性表示对应指标的[多个维度](../platform/data-platform-metrics.md#multi-dimensional-metrics)。 有关在`InsightsMetrics`表中收集和存储的指标以及记录属性的说明的其他信息, 请参阅[InsightsMetrics 概述](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)。
+
+>[!NOTE]
+>目前, 对 Prometheus 的支持是公共预览版中的一项功能。
+>
 
 ## <a name="search-logs-to-analyze-data"></a>搜索日志以分析数据
-Azure Monitor 日志可以帮助您查找所的趋势，诊断瓶颈，预测，或相关联的数据可帮助您确定是否以最佳方式执行的当前群集配置。 提供预定义日志搜索，可直接使用，也可通过自定义来按自己想要的方式返回信息。 
+
+Azure Monitor 日志有助于查找趋势、诊断瓶颈、预测或关联有助于确定是否最优执行当前群集配置的数据。 提供预定义日志搜索，可直接使用，也可通过自定义来按自己想要的方式返回信息。
 
 通过在预览窗格中选择“查看 Kubernetes 事件日志”或“查看容器日志”选项，对工作区中的数据执行交互式分析   。 “日志搜索”页面在用户所处的 Azure 门户页面的右侧显示  。
 
 ![在 Log Analytics 中分析数据](./media/container-insights-analyze/container-health-log-search-example.png)   
 
-转发到你的工作区的容器日志输出为 STDOUT 和 STDERR。 由于 Azure Monitor 正在监视 Azure 托管的 Kubernetes (AKS)，目前因生成了大量数据而不收集 Kube-system。 
+转发到工作区的容器日志输出为 STDOUT 和 STDERR。 由于 Azure Monitor 正在监视 Azure 托管的 Kubernetes (AKS)，目前因生成了大量数据而不收集 Kube-system。 
 
 ### <a name="example-log-search-queries"></a>日志搜索查询示例
+
 从一两个示例开始生成查询，然后修改它们以适应需求的做法通常很有用。 可使用以下示例查询进行试验，帮助生成更高级的查询：
 
 | 查询 | Description | 
@@ -61,5 +70,38 @@ Azure Monitor 日志可以帮助您查找所的趋势，诊断瓶颈，预测，
 | 选择“折线图”显示选项  ：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器 CPU | 
 | 选择“折线图”显示选项  ：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器内存 |
 
+下面的示例是一个 Prometheus 指标查询。 收集的度量值是计数, 若要确定在特定时间段内发生了多少错误, 必须从计数中减去。 数据集按*partitionKey*分区, 这意味着, 对于每个唯一的*名称*、*主机名*和*OperationType*集, 我们在该集上运行一个子查询, 该查询通过*TimeGenerated*对日志进行排序。查找先前的*TimeGenerated*和记录时间的计数, 以确定速率。
+
+```
+let data = InsightsMetrics 
+| where Namespace contains 'prometheus' 
+| where Name == 'kubelet_docker_operations' or Name == 'kubelet_docker_operations_errors'    
+| extend Tags = todynamic(Tags) 
+| extend OperationType = tostring(Tags['operation_type']), HostName = tostring(Tags.hostName) 
+| extend partitionKey = strcat(HostName, '/' , Name, '/', OperationType) 
+| partition by partitionKey ( 
+    order by TimeGenerated asc 
+    | extend PrevVal = prev(Val, 1), PrevTimeGenerated = prev(TimeGenerated, 1) 
+    | extend Rate = iif(TimeGenerated == PrevTimeGenerated, 0.0, Val - PrevVal) 
+    | where isnull(Rate) == false 
+) 
+| project TimeGenerated, Name, HostName, OperationType, Rate; 
+let operationData = data 
+| where Name == 'kubelet_docker_operations' 
+| project-rename OperationCount = Rate; 
+let errorData = data 
+| where Name == 'kubelet_docker_operations_errors' 
+| project-rename ErrorCount = Rate; 
+operationData 
+| join kind = inner ( errorData ) on TimeGenerated, HostName, OperationType 
+| project-away TimeGenerated1, Name1, HostName1, OperationType1 
+| extend SuccessPercentage = iif(OperationCount == 0, 1.0, 1 - (ErrorCount / OperationCount))
+```
+
+输出将显示类似于以下内容的结果:
+
+![数据引入卷的日志查询结果](./media/container-insights-log-search/log-query-example-prometheus-metrics.png)
+
 ## <a name="next-steps"></a>后续步骤
-用于容器的 azure 监视器不包括一组预定义的警报。 审阅[适用于容器的 Azure Monitor 创建性能警报](container-insights-alerts.md)若要了解如何创建高的 CPU 和内存使用率，以支持 DevOps 或操作流程和过程建议的警报。 
+
+用于容器的 Azure Monitor 不包含预定义的警报集。 请查看[使用用于容器的 Azure Monitor 创建性能警报](container-insights-alerts.md)，了解如何针对高 CPU 和内存利用率创建建议的警报以支持 DevOps 或操作流程和过程。 

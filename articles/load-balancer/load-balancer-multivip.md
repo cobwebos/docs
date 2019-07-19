@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 概述 MultiVIP，以及如何在云服务上设置多个 VIP
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: bf5721e206316a4ce576253743e9ac65de47094a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 3e97bea85d4d97b159168b21b4a6e932e655ccfb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591775"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274709"
 ---
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>为云服务配置多个 VIP
 
@@ -172,7 +172,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -Virtual
 
 ## <a name="next-steps"></a>后续步骤
 
-[为 Azure 负载均衡器的 azure Monitor 日志](load-balancer-monitor-log.md)
+[Azure 负载平衡 Azure Monitor 日志](load-balancer-monitor-log.md)
 
 [面向 Internet 的负载均衡器概述](load-balancer-internet-overview.md)
 

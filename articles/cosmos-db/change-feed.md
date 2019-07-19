@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 51a554586c67842ead40cd4a1bfaaa51bbdd8a18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e450c0682a22a6e667a2bca153ce5d706a5bea96
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954394"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986238"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的更改源 - 概述
 
@@ -94,7 +94,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 可通过以下选项使用更改源：
 
 * [将更改源与 Azure Functions 配合使用](change-feed-functions.md)
-* [将更改源与更改源处理器库配合使用](change-feed-processor.md) 
+* [将更改源与更改源处理器一起使用](change-feed-processor.md) 
 
 更改源适用于容器中的每个逻辑分区键，它可以分配给一个或多个使用者进行并行处理，如下图所示。
 
@@ -108,7 +108,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 * 更改源包括针对容器中的项所执行的插入和更新操作。 在项（如文档）中的删除位置设置“软删除”标志，可以捕获删除操作。 此外，也可以使用 [TTL 功能](time-to-live.md)为项设置有限的过期时段。 例如，24 小时，可使用该属性的值来捕获删除操作。 使用此解决方案时，处理更改的时间间隔必须比 TTL 过期时段要短。 
 
-* 在更改源中，对项的每个更改都将显示一次，且客户端必须管理其检查点逻辑。 如果想要避免复杂的检查点管理过程，更改源处理器库提供了自动检查点和“至少一次”语义。 请参阅[将更改源与更改源处理器库配合使用](change-feed-processor.md)。
+* 在更改源中，对项的每个更改都将显示一次，且客户端必须管理其检查点逻辑。 如果要避免管理检查点的复杂性, 更改源处理器会提供自动检查点和 "至少一次" 语义。 请参阅[将更改源与更改源处理器结合使用](change-feed-processor.md)。
 
 * 更改日志中仅包含最近对给定项所做的更改。 而不包含中途的更改。
 
@@ -126,4 +126,4 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 * [读取更改源的选项](read-change-feed.md)
 * [将更改源与 Azure Functions 配合使用](change-feed-functions.md)
-* [使用更改源处理器库](change-feed-processor.md)
+* [使用更改源处理器](change-feed-processor.md)

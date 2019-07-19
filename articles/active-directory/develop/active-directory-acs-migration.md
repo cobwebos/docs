@@ -9,6 +9,7 @@ editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
+ms.custom: aaddev
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +18,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fc58d1a9bc06345165d4c322ea347c59166b614
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 3daf44ee29a2f7b29eec9215876ca6edc18a5800
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483245"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325059"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -148,12 +149,12 @@ https://<mynamespace>.accesscontrol.windows.net
 
 ### <a name="sharepoint-customers"></a>SharePoint 客户
 
-SharePoint 2013、 2016年和 SharePoint Online 客户都在云中、 在本地和混合方案中进行身份验证是使用 ACS。 有些 SharePoint 功能和用例会受 ACS 停用的影响，但有些则不会。 下表汇总了对利用 ACS 的某些最流行 SharePoint 功能进行迁移的指导：
+对于云、本地和混合方案, SharePoint 2013、2016和 SharePoint Online 客户使用 ACS 进行身份验证。 有些 SharePoint 功能和用例会受 ACS 停用的影响，但有些则不会。 下表汇总了对利用 ACS 的某些最流行 SharePoint 功能进行迁移的指导：
 
-| Feature | 指南 |
+| 功能 | 指南 |
 | ------- | -------- |
-| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，你可以[SharePoint 直接连接到 Azure AD 中使用 Azure AD 应用库 SharePoint 内部部署应用程序上](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)。 |
-| [应用身份验证和在本地 SharePoint 中的服务器到服务器身份验证](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | 不受 ACS 停用的影响；无需更改。 | 
+| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在, 你可以[使用本地应用 Azure AD 应用库 sharepoint 将 sharepoint 直接连接到 Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)。 |
+| [应用身份验证 & 本地 SharePoint 中的服务器到服务器身份验证](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | 不受 ACS 停用的影响；无需更改。 | 
 | [SharePoint 加载项的低信任授权（提供程序托管和 SharePoint 托管）](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 停用的影响；无需更改。 |
 | [SharePoint 云混合搜索](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | 不受 ACS 停用的影响；无需更改。 |
 
@@ -285,8 +286,8 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 |     |     |
 | --- | --- |
-| ![下图显示了 Auth0 徽标](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
-| ![下图显示了 Ping Identity 徽标](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持许多与 ACS，相同的功能，PingFederate 是类似的内部部署标识产品，可提供更大的灵活性上。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
+| ![此图像显示 Auth0 徽标](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
+| ![此图显示了 Ping 标识徽标](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务, 它支持与 ACS 相同的许多功能, 而 PingFederate 是一种类似的本地标识产品, 可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 
@@ -347,8 +348,8 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 |     |     |
 | --- | --- |
-| ![下图显示了 Auth0 徽标](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
-| ![下图显示了 Ping Identity 徽标](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持许多与 ACS，相同的功能，PingFederate 是类似的内部部署标识产品，可提供更大的灵活性上。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
+| ![此图像显示 Auth0 徽标](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
+| ![此图显示了 Ping 标识徽标](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务, 它支持与 ACS 相同的许多功能, 而 PingFederate 是一种类似的本地标识产品, 可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 

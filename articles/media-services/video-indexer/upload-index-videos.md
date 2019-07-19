@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e92086ca18887b9b2c2362e97d855c33834b83bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e62eb862cf6d6760ca67b9e948a724b16303e89
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799190"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305628"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -23,7 +23,7 @@ ms.locfileid: "65799190"
 
 * 从 URL 上传视频（首选），
 * 作为请求正文中的字节数组发送视频文件。
-* 通过提供使用现有的 Azure 媒体服务资产[资产 ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) （仅限付费帐户支持）。
+* 通过提供[资产 ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (仅在付费帐户中支持) 来使用现有的 Azure 媒体服务资产。
 
 本文介绍如何基于 URL 使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 来上传视频和编制视频索引。 本文中的代码示例包括注释掉的代码，该代码显示了如何上传字节数组。 <br/>本文还介绍可以在 API 上设置的用于更改 API 过程和输出的某些参数。
 
@@ -32,13 +32,13 @@ ms.locfileid: "65799190"
 ## <a name="uploading-considerations"></a>上传注意事项
 
 - 根据 URL（首选方式）上传视频时，必须使用 TLS 1.2（或更高版本）保护终结点
-- 具有 URL 选项上传大小被限制为 30 GB
-- 请求 URL 长度仅限于 2048年个字符
+- 带有 URL 选项的上传大小限制为30GB
+- 请求 URL 长度限制为2048个字符
 - 对于字节数组选项，上传大小限制为 2GB
 - 字节组选项会在 30 分钟后超时
 - 需要对 `videoURL` 参数中提供的 URL 进行编码
-- 索引编制媒体服务资产具有与索引从 URL 相同的限制
-- 视频索引器的最大持续时间限制为 4 小时为单个文件
+- 为媒体服务资产编制索引与从 URL 创建索引具有相同的限制
+- 对于单个文件, 视频索引器的最大持续时间限制为4小时
 
 > [!Tip]
 > 建议使用 .NET framework 版本 4.6.2. 或更高版本，因为较旧的 .NET framework 不会默认为 TLS 1.2。
@@ -60,22 +60,22 @@ ms.locfileid: "65799190"
 - 索引状态更改： 
     - 属性：    
     
-        |Name|描述|
+        |名称|描述|
         |---|---|
         |id|视频 ID|
         |state|视频状态|  
-    - 示例： https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+    - 示例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - 在视频中标识的人：
   - 属性
     
-      |Name|描述|
+      |名称|描述|
       |---|---|
       |id| 视频 ID|
       |faceId|出现在视频索引中的人脸 ID|
       |knownPersonId|在人脸模型中唯一的个人 ID|
       |personName|人名|
         
-    - 示例： https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - 示例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>说明
 
@@ -291,4 +291,4 @@ public class AccountContractSlim
 
 ## <a name="next-steps"></a>后续步骤
 
-[检查 Azure 视频索引器输出中生成的 API](video-indexer-output-json-v2.md)
+[检查 API 生成的 Azure 视频索引器输出](video-indexer-output-json-v2.md)

@@ -4,7 +4,7 @@ description: 从开发的角度了解 Batch 服务的功能及其 API。
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
@@ -15,18 +15,18 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1fbe5b0a49960248133c35fb4a0401a31b95fb35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bead5f0bec6d57c0f4aaddc6537e00c466d987f1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700938"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323879"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
 这篇 Azure Batch 服务核心组件的概述将介绍 Batch 开发人员可用来构建大规模并发计算解决方案的主要服务功能和资源。
 
-不管是在开发可发出直接 [REST API][batch_rest_api] 调用的分布式计算应用程序或服务，还是使用某个 [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)，都可以使用本文中介绍的多种资源和功能。
+无论你是要开发发出直接[REST API][batch_rest_api]调用的分布式计算应用程序或服务, 还是使用某个[Batch sdk](batch-apis-tools.md#azure-accounts-for-batch-development), 都可以使用本文中所述的许多资源和功能。
 
 > [!TIP]
 > 有关 Batch 服务的更全面介绍，请参阅 [Basics of Azure Batch](batch-technical-overview.md)（Azure Batch 基础知识）。 另请参阅最新的 [Batch 服务更新](https://azure.microsoft.com/updates/?product=batch)。
@@ -36,7 +36,7 @@ ms.locfileid: "64700938"
 ## <a name="batch-service-workflow"></a>Batch 服务工作流
 几乎所有使用 Batch 服务处理并行工作负荷的应用程序和服务都使用以下典型高级工作流：
 
-1. 将要处理的**数据文件**上传到 [Azure 存储][azure_storage]帐户。 Batch 包含访问 Azure Blob 存储的内置支持，在运行任务时，任务可以将这些文件下载到 [计算节点](#compute-node) 。
+1. 将要处理的**数据文件**上传到[Azure 存储][azure_storage]帐户。 Batch 包含访问 Azure Blob 存储的内置支持，在运行任务时，任务可以将这些文件下载到 [计算节点](#compute-node) 。
 2. 上传任务所要运行的 **应用程序文件** 。 这些文件可能是二进制文件或脚本及其依赖项，并由作业中的任务执行。 任务可以从存储帐户下载这些文件，或者，你可以使用 Batch 的 [应用程序包](#application-packages) 功能来管理和部署应用程序。
 3. 创建计算节点的 [池](#pool) 。 创建池时，可以指定池的计算节点数目、其大小和操作系统。 运行作业中的每个任务时，会将任务分配到池中的某个节点以执行。
 4. 创建 [作业](#job)。 作业管理任务的集合。 你可以将每个作业关联到要运行该作业的任务的特定池。
@@ -46,7 +46,7 @@ ms.locfileid: "64700938"
 以下部分介绍上述资源，以及可实现分布式计算方案的其他批处理资源。
 
 > [!NOTE]
-> 需要有[批处理帐户](#account)才能使用批处理服务。 此外，大多数 Batch 解决方案都可以使用关联的 [Azure 存储][azure_storage]帐户存储和检索文件。 
+> 需要有[批处理帐户](#account)才能使用批处理服务。 大多数 Batch 解决方案也使用关联的[Azure 存储][azure_storage]帐户进行文件存储和检索。 
 >
 >
 
@@ -90,7 +90,7 @@ Batch 支持以下类型的 Azure 存储帐户：
 创建 Batch 帐户时可以将存储帐户与 Batch 帐户关联，也可以稍后关联。 选择存储帐户时，请考虑成本和性能要求。 例如，与 GPv1 相比，GPv2 和 blob 存储帐户选项支持更大的[容量和可伸缩性限制](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。 （请联系 Azure 支持以请求提高存储上限。）对于包含大量读取或写入存储帐户的并行任务的 Batch 解决方案，这些帐户选项可以提高其性能。
 
 ## <a name="compute-node"></a>计算节点
-计算节点是专门用于处理一部分应用程序工作负荷的 Azure 虚拟机 (VM) 或云服务 VM。 节点大小确定了 CPU 核心数目、内存容量，以及分配给节点的本地文件系统大小。 可以使用 [Azure 虚拟机市场][vm_marketplace]提供的 Azure 云服务映像或自己准备的自定义映像创建 Windows 或 Linux 节点池。 有关这些选项的详细信息，请参阅下面的 [池](#pool) 部分。
+计算节点是专门用于处理一部分应用程序工作负荷的 Azure 虚拟机 (VM) 或云服务 VM。 节点大小确定了 CPU 核心数目、内存容量，以及分配给节点的本地文件系统大小。 你可以通过使用 Azure 云服务、 [Azure 虚拟机 Marketplace][vm_marketplace]中的映像或你准备的自定义映像来创建 Windows 或 Linux 节点池。 有关这些选项的详细信息，请参阅下面的 [池](#pool) 部分。
 
 节点可以运行节点操作系统环境支持的任何可执行文件或脚本。 这包括适用于 Windows 的 \*.exe、\*.cmd、\*.bat 和 PowerShell 脚本，以及适用于 Linux 的二进制文件、shell 和 Python 脚本。
 
@@ -132,7 +132,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 - **虚拟机配置**，它指定池由 Azure 虚拟机组成。 可以从 Linux 或 Windows 映像创建这些 VM。 
 
-    基于虚拟机配置创建池时，不仅要指定节点大小和用于创建它们的映像源，还必须指定要安装在节点上的“虚拟机映像引用”  和批处理“节点代理 SKU”  。 有关指定这些池属性的详细信息，请参阅 [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md)（在 Azure Batch 池中预配 Linux 计算节点）。 可选选择性地将一个或多个空数据磁盘附加到从市场映像创建的池 VM，也可将数据磁盘包括在用于创建 VM 的自定义映像中。 包括数据磁盘，需要装载和使用它们在 VM 内的从磁盘进行格式化。
+    基于虚拟机配置创建池时，不仅要指定节点大小和用于创建它们的映像源，还必须指定要安装在节点上的“虚拟机映像引用”  和批处理“节点代理 SKU”  。 有关指定这些池属性的详细信息，请参阅 [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md)（在 Azure Batch 池中预配 Linux 计算节点）。 可选选择性地将一个或多个空数据磁盘附加到从市场映像创建的池 VM，也可将数据磁盘包括在用于创建 VM 的自定义映像中。 如果包含数据磁盘, 则需要在 VM 内装载并格式化这些磁盘, 才能使用这些磁盘。
 
 - **云服务配置**，它指定池由 Azure 云服务节点组成。 云服务只  提供 Windows 计算节点。
 
@@ -229,19 +229,19 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
     Batch 可以检测并重试失败的任务。 可以将**任务重试最大次数**指定为约束，包括指定是要*始终*重试还是*永不*重试某个任务。 重试某个任务意味着要将任务重新排队以再次运行。
 * 客户端应用程序可将任务添加到作业，用户也可以指定 [作业管理器任务](#job-manager-task)。 作业管理器任务包含必要的信息用于为池中某个计算节点上运行的包含作业管理器任务的作业创建所需的任务。 作业管理器任务专门由 Batch 来处理 – 创建作业和重新启动失败的作业后，会立即将任务排队。 *作业计划* 创建的作业 [需要](#scheduled-jobs) 作业管理器任务，因为它是在实例化作业之前定义任务的唯一方式。
-* 默认情况下，当作业内的所有任务都完成时，作业仍保持活动状态。 可以更改此行为，使作业在其中的所有任务完成时自动终止。 将作业的 **onAllTasksComplete** 属性（在 Batch .NET 中为 [OnAllTasksComplete][net_onalltaskscomplete]）设置为 *terminatejob*，可在作业的所有任务处于已完成状态时自动终止该作业。
+* 默认情况下，当作业内的所有任务都完成时，作业仍保持活动状态。 可以更改此行为，使作业在其中的所有任务完成时自动终止。 将作业的**onAllTasksComplete**属性 (Batch .net 中的 "[onAllTasksComplete][net_onalltaskscomplete] ") 设置为 " *terminatejob* ", 以在其所有任务都处于 "已完成" 状态时自动终止作业。
 
     请注意，Batch 服务将 *没有* 任务的作业视为其所有任务都已完成。 因此，此选项往往与 [作业管理器任务](#job-manager-task)配合使用。 如果想要使用自动作业终止而不通过作业管理器终止，首先应该将新作业的 **onAllTasksComplete** 属性设置为 *noaction*，然后只有在完成将任务添加到作业之后才将它设置为 *terminatejob*。
 
 ### <a name="job-priority"></a>作业优先级
-可以向你在 Batch 中创建的作业分配优先级。 Batch 服务使用作业的优先级值来确定帐户中的作业计划顺序（不要与 [计划的作业](#scheduled-jobs)相混淆）。 优先级值的范围为 -1000 到 1000，-1000 表示最低优先级，1000 表示最高优先级。 若要更新作业的优先级，请调用[更新作业的属性][rest_update_job]操作 (Batch REST) 或修改 [CloudJob.Priority][net_cloudjob_priority] 属性 (Batch .NET)。
+可以向你在 Batch 中创建的作业分配优先级。 Batch 服务使用作业的优先级值来确定帐户中的作业计划顺序（不要与 [计划的作业](#scheduled-jobs)相混淆）。 优先级值的范围为 -1000 到 1000，-1000 表示最低优先级，1000 表示最高优先级。 若要更新作业的优先级, 请调用[更新作业][rest_update_job] operation (Batch REST), or modify the [CloudJob.Priority][net_cloudjob_priority]属性 (Batch .net) 的属性。
 
 在同一个帐户内，高优先级作业的计划优先顺序高于低优先级作业。 一个帐户中具有较高优先级值的作业，其计划优先级并不高于不同帐户中较低优先级值的另一个作业。
 
 不同池的作业计划是独立的。 在不同的池之间，即使作业的优先级较高，如果其关联的池缺少空闲的节点，则不保证此作业优先计划。 在同一个池中，相同优先级的作业有相同的计划机会。
 
 ### <a name="scheduled-jobs"></a>计划的作业
-使用[作业计划][rest_job_schedules]可在 Batch 服务中创建周期性作业。 作业计划指定何时要运行作业，并包含要运行的作业的规范。 可以指定计划的持续时间（计划的持续时间和生效时间），以及在计划的时间段创建作业的频率。
+使用[作业计划][rest_job_schedules]可以在 Batch 服务中创建定期作业。 作业计划指定何时要运行作业，并包含要运行的作业的规范。 可以指定计划的持续时间（计划的持续时间和生效时间），以及在计划的时间段创建作业的频率。
 
 ## <a name="task"></a>任务
 任务是与作业关联的计算单位。 它在节点上运行。 任务将分配到节点以执行，或排入队列直到节点空闲。 简而言之，任务将在计算节点上运行一个或多个程序或脚本，以执行你需要完成的工作。
@@ -279,7 +279,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 启动任务的主要优点是可以包含全部所需的信息，使你能够配置计算节点，以及安装执行任务所需的应用程序。 因此，增加池中的节点数量与指定新的目标节点计数一样简单。 启动任务向 Batch 服务提供配置新节点并使其准备好接受任务所需的信息。
 
-与任何 Azure Batch 任务一样，除了指定要执行的**命令行**以外，还可以指定 [Azure 存储][azure_storage]中的**资源文件**列表。 Batch 服务先将资源文件从 Azure 存储复制到节点，然后运行命令行。 对于池启动任务，文件列表通常包含任务应用程序及其依赖项。
+与任何 Azure Batch 任务一样, 除了指定要执行的**命令行**以外, 还可以指定[Azure 存储][azure_storage]中的**资源文件**列表。 Batch 服务先将资源文件从 Azure 存储复制到节点，然后运行命令行。 对于池启动任务，文件列表通常包含任务应用程序及其依赖项。
 
 但是，启动任务还可能包含计算节点上运行的所有任务使用的引用数据。 例如，启动任务的命令行可执行 `robocopy` 操作，将应用程序文件（已指定为资源文件并下载到节点）从启动任务的[工作目录](#files-and-directories)复制到[共享文件夹](#files-and-directories)，然后然后运行 MSI 或 `setup.exe`。
 
@@ -335,16 +335,16 @@ Batch 提供作业准备任务来设置作业前的执行。 作业释放任务�
 * *taskC* 同时依赖于 *taskA* 和 *taskB*。
 * *taskD* 在执行前依赖于某个范围的任务，例如任务 *1* 到 *10*。
 
-有关此功能的更深入信息，请查看 [Azure Batch 中的任务依赖关系](batch-task-dependencies.md)和 [azure-batch-samples][github_samples] GitHub 存储库中的 [TaskDependencies][github_sample_taskdeps] 代码示例。
+有关此功能的更深入详细信息, 请查看 Azure Batch 和[TaskDependencies][github_sample_taskdeps] code sample in the [azure-batch-samples][github_samples] GitHub 存储库[中的任务依赖关系](batch-task-dependencies.md)。
 
 ## <a name="environment-settings-for-tasks"></a>任务的环境设置
-批处理服务执行的每个任务都可以访问在计算节点上设置的环境变量。 这包括 Batch 服务定义的（[服务定义型][msdn_env_vars]）环境变量以及用户可以针对其任务定义的自定义环境变量。 任务执行的应用程序和脚本可以在执行期间访问这些环境变量。
+批处理服务执行的每个任务都可以访问在计算节点上设置的环境变量。 这包括 Batch 服务定义的环境变量 ([服务定义][msdn_env_vars]), 以及可为任务定义的自定义环境变量。 任务执行的应用程序和脚本可以在执行期间访问这些环境变量。
 
-可以通过填充这些实体的 *环境设置* 属性，在任务或作业级别设置自定义环境变量。 有关示例，请参阅[将任务添加到作业][rest_add_task]操作 (Batch REST API)，或 Batch .NET 中的 [CloudTask.EnvironmentSettings][net_cloudtask_env] 和 [CloudJob.CommonEnvironmentSettings][net_job_env] 属性。
+可以通过填充这些实体的 *环境设置* 属性，在任务或作业级别设置自定义环境变量。 例如, 请参阅在 Batch .net 中[将任务添加到作业][rest_add_task] operation (Batch REST API), or the [CloudTask.EnvironmentSettings][net_cloudtask_env]和[cloudjob.commonenvironmentsettings][net_job_env]属性。 CloudJob
 
-客户端应用程序或服务可使用[获取有关任务的信息][rest_get_task_info]操作 (Batch REST) 或通过访问 [CloudTask.EnvironmentSettings][net_cloudtask_env] 属性 (Batch .NET)，来获取任务的环境变量（服务定义型和自定义环境变量）。 在计算节点上执行的进程可以在节点上访问这些和其他环境变量，例如，通过使用熟悉的 `%VARIABLE_NAME%` (Windows) 或 `$VARIABLE_NAME` (Linux) 语法。
+你的客户端应用程序或服务可以使用 "[获取有关任务][rest_get_task_info] operation (Batch REST) or by accessing the [CloudTask.EnvironmentSettings][net_cloudtask_env]的信息" 属性 (Batch .net) 获取任务的环境变量 (服务定义的和自定义的)。 在计算节点上执行的进程可以在节点上访问这些和其他环境变量，例如，通过使用熟悉的 `%VARIABLE_NAME%` (Windows) 或 `$VARIABLE_NAME` (Linux) 语法。
 
-可以在[计算节点环境变量][msdn_env_vars]中找到包含所有服务定义型环境变量的完整列表。
+可以在[计算节点环境变量][msdn_env_vars]中查找所有服务定义的环境变量的完整列表。
 
 ## <a name="files-and-directories"></a>文件和目录
 每个任务都有一个 *工作目录* ，任务将在该目录中创建零个或多个文件和目录。 此工作目录可用于存储任务运行的程序、任务处理的数据，以及任务执行的处理的输出。 任务的所有文件和目录由任务用户拥有。
@@ -423,9 +423,9 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 >
 
 ## <a name="security-with-certificates"></a>证书的安全性
-在加密或解密任务的敏感信息（例如 [Azure 存储帐户][azure_storage]的密钥）时，通常需要使用证书。 为此，可以在节点上安装证书。 加密的机密通过命令行参数或内嵌在某个任务资源中来传递给任务，已安装的证书可用于解密机密。
+在加密或解密任务的敏感信息 (例如[Azure 存储帐户][azure_storage]的密钥) 时, 通常需要使用证书。 为此，可以在节点上安装证书。 加密的机密通过命令行参数或内嵌在某个任务资源中来传递给任务，已安装的证书可用于解密机密。
 
-可以使用[添加证书][rest_add_cert]操作 (Batch REST) 或 [CertificateOperations.CreateCertificate][net_create_cert] 方法 (Batch .NET) 将证书添加到 Batch 帐户。 然后，可以将该证书与新池或现有池相关联。 将证书与池关联后，Batch 服务将在池中的每个节点上安装该证书。 在启动节点之后、启动任何任务（包括启动任务和作业管理器任务）之前，Batch 服务将安装相应的证书。
+使用[add 证书][rest_add_cert] operation (Batch REST) or [CertificateOperations.CreateCertificate][net_create_cert]方法 (Batch .net) 将证书添加到 Batch 帐户。 然后，可以将该证书与新池或现有池相关联。 将证书与池关联后，Batch 服务将在池中的每个节点上安装该证书。 在启动节点之后、启动任何任务（包括启动任务和作业管理器任务）之前，Batch 服务将安装相应的证书。
 
 如果将证书添加到 *现有* 池，必须重新启动其计算节点，证书才会应用到节点。
 
@@ -462,7 +462,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 ### <a name="debugging-application-failures"></a>调试应用程序失败
 * `stderr` 和 `stdout`
 
-    在执行过程中，应用程序可以生成诊断输出，这些信息可用于排查问题。 如前一部分[文件和目录](#files-and-directories)中所述，批处理服务会将标准输出和标准错误输出发送到计算节点上的任务目录中的 `stdout.txt` 和 `stderr.txt` 文件。 可以使用 Azure 门户或 Batch SDK 之一下载这些文件。 例如，可以使用 Batch .NET 库中的 [ComputeNode.GetNodeFile][net_getfile_node] 和 [CloudTask.GetNodeFile][net_getfile_task] 检索这些文件和其他文件来进行故障排除。
+    在执行过程中，应用程序可以生成诊断输出，这些信息可用于排查问题。 如前一部分[文件和目录](#files-and-directories)中所述，批处理服务会将标准输出和标准错误输出发送到计算节点上的任务目录中的 `stdout.txt` 和 `stderr.txt` 文件。 可以使用 Azure 门户或 Batch SDK 之一下载这些文件。 例如, 你可以通过使用 Batch .net 库and [CloudTask.GetNodeFile][net_getfile_task]中的[ComputeNode][net_getfile_node]来检索这些文件和其他文件, 以便进行故障排除。
 
 * **任务退出代码**
 
@@ -471,13 +471,13 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 ### <a name="accounting-for-task-failures-or-interruptions"></a>应对任务失败或中断
 任务偶尔会失败或中断。 任务应用程序本身可能会失败，运行任务的节点可能会重新启动，或者在调整大小操作期间，可能会因为池的取消分配策略设置为在不等待任务完成的情况下立即删除节点，而从池中删除节点。 在所有情况下，任务都可以由 Batch 自动排队，并在另一个节点上执行。
 
-还有可能导致任务停止响应或花费很长时间执行的间歇性问题。 可为任务设置最长的执行时间间隔。 如果超出最长执行时间间隔，Batch 服务会中断任务应用程序。
+偶尔问题也可能导致任务停止响应或执行时间过长。 可为任务设置最长的执行时间间隔。 如果超出最长执行时间间隔，Batch 服务会中断任务应用程序。
 
 ### <a name="connecting-to-compute-nodes"></a>连接到计算节点
-可通过远程登录到计算节点来进一步执行调试和故障排除。 可以使用 Azure 门户下载 Windows 节点的远程桌面协议 (RDP) 文件，并获取 Linux 节点的安全外壳 (SSH) 连接信息。 也可以使用 Batch API（例如，使用 [Batch .NET][net_rdpfile] 或 [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh)）执行此操作。
+可通过远程登录到计算节点来进一步执行调试和故障排除。 可以使用 Azure 门户下载 Windows 节点的远程桌面协议 (RDP) 文件，并获取 Linux 节点的安全外壳 (SSH) 连接信息。 还可以通过使用 Batch Api (例如, 使用[batch .net][net_rdpfile]或[batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh)) 执行此操作。
 
 > [!IMPORTANT]
-> 若要通过 RDP 或 SSH 连接到某个节点，必须先在该节点上创建一个用户。 为此，可以使用 Azure 门户通过 Batch REST API [将用户帐户添加到节点][rest_create_user]、在 Batch .NET 中调用 [ComputeNode.CreateComputeNodeUser][net_create_user] 方法，或在 Batch Python 模块中调用 [add_user][py_add_user] 方法。
+> 若要通过 RDP 或 SSH 连接到某个节点，必须先在该节点上创建一个用户。 为此, 可以使用 Azure 门户,[将用户帐户添加到][rest_create_user] by using the Batch REST API, call the [ComputeNode.CreateComputeNodeUser][net_create_user] batch .net 中的 node 方法, 或在 batch Python 模块中调用[add_user][py_add_user]方法。
 >
 >
 
@@ -486,29 +486,29 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 ### <a name="troubleshooting-problematic-compute-nodes"></a>对有问题的计算节点进行故障排除
 在部分任务失败的情况下，Batch 客户端应用程序或服务可以检查失败任务的元数据来找出行为异常的节点。 池中的每个节点都有一个唯一 ID，运行任务的节点包含在任务元数据中。 识别出“有问题的节点”后，可对其执行多种操作：
 
-* **重新启动节点** ([REST][rest_reboot] | [.NET][net_reboot])
+* **重新启动节点**([REST][rest_reboot] | [.NET][net_reboot])
 
     重新启动节点有时可以清除潜在的问题，例如进程停滞或崩溃。 请注意，如果池使用启动任务或作业使用作业准备任务，节点重新启动时将执行这些任务。
-* **重置映像节点** ([REST][rest_reimage] | [.NET][net_reimage])
+* 重新**映像节点**([REST][rest_reimage] | [.NET][net_reimage])
 
     这会在节点上重新安装操作系统。 和重新启动节点一样，在重置映像节点后，便重新执行启动任务和作业准备任务。
-* **从池中删除节点** ([REST][rest_remove] | [.NET][net_remove])
+* **从池中删除节点**([REST][rest_remove] | [.NET][net_remove])
 
     有时必须从池中完全删除节点。
-* **禁用节点上的任务计划** ([REST][rest_offline] | [.NET][net_offline])
+* **禁用节点上的任务计划**([REST][rest_offline] | [.NET][net_offline])
 
-    这实际上是使节点脱机，以便不再收到任何分配的任务，但允许节点继续运行并保留在池中。 这可让你执行进一步的调查以了解失败原因，却又会不丢失失败任务的数据，并且不让节点造成额外的任务失败。 例如，可以禁用节点上的任务计划，并从 [远程登录](#connecting-to-compute-nodes) 以检查节点的事件日志，或执行其他故障排除操作。 完成调查后，可以启用任务计划 ([REST][rest_online] | [.NET][net_online]) 使节点重新联机，或者执行上述其他操作。
+    这实际上是使节点脱机，以便不再收到任何分配的任务，但允许节点继续运行并保留在池中。 这可让你执行进一步的调查以了解失败原因，却又会不丢失失败任务的数据，并且不让节点造成额外的任务失败。 例如，可以禁用节点上的任务计划，并从 [远程登录](#connecting-to-compute-nodes) 以检查节点的事件日志，或执行其他故障排除操作。 完成调查后, 可以通过启用任务计划 ([REST][rest_online] | [.NET][net_online]) 或执行前面讨论的其他操作之一使节点重新联机。
 
 > [!IMPORTANT]
-> 可以使用本部分中所述的每项操作（重新启动、重置映像、删除和禁用任务计划），来指定当执行操作时要如何处理节点上当前正在运行的任务。 例如，禁用具有 Batch .NET 客户端库的节点上的任务计划时，可以指定 [DisableComputeNodeSchedulingOption][net_offline_option] 枚举值，以指定是要**终止**运行中的任务、将任务**重新排队**以在其他节点上计划，还是允许执行中的任务先完成再执行操作 (**TaskCompletion**)。
+> 可以使用本部分中所述的每项操作（重新启动、重置映像、删除和禁用任务计划），来指定当执行操作时要如何处理节点上当前正在运行的任务。 例如, 使用 Batch .NET 客户端库禁用节点上的任务计划时, 可以指定[DisableComputeNodeSchedulingOption][net_offline_option]枚举值来指定是否**终止**正在运行的任务, 并将其**重新排队**在执行操作前, 在其他节点上进行计划或允许运行任务完成 (**TaskCompletion**)。
 >
 >
 
 ## <a name="next-steps"></a>后续步骤
 * 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。
 * 了解使用[批处理 .NET 客户端库](quick-run-dotnet.md)或 [Python](quick-run-python.md) 开发支持批处理的应用程序的基本概念。 这些快速入门介绍了使用 Batch 服务在多个计算节点上执行工作负荷的示例应用程序，并说明了如何使用 Azure 存储进行工作负荷文件暂存和检索。
-* 下载并安装 [Batch Explorer][batch_labs]，供开发 Batch 解决方案时使用。 借助 Batch Explorer 来创建、调试和监视 Azure Batch 应用程序。 
-* 请参阅社区资源，包括 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch)、[Batch 社区存储库](https://github.com/Azure/Batch)和 MSDN 上的 [Azure Batch 论坛][batch_forum]。 
+* 下载并安装[Batch Explorer][batch_labs]以便在开发 Batch 解决方案时使用。 借助 Batch Explorer 来创建、调试和监视 Azure Batch 应用程序。 
+* 请参阅 MSDN 上的社区资源, 包括[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch)、 [Batch 社区](https://github.com/Azure/Batch)存储库和[Azure Batch 论坛][batch_forum]。 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 

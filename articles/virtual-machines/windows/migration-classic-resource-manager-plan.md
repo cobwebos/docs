@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 5e2790515e172ec14e2180f9dfcac6c97b2e135a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 26766be8b2468da0df44fa42655db0ee04db45a2
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723173"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327074"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 尽管 Azure 资源管理器提供了许多精彩功能，但请务必计划迁移，以确保一切顺利进行。 花时间进行规划可确保执行迁移活动时不会遇到问题。
@@ -114,7 +114,7 @@ ms.locfileid: "67723173"
 
 - **可用性集** - 对于要迁移到 Azure 资源管理器的虚拟网络 (vNet)，经典部署（即云服务）包含的 VM 必须全部位于同一个可用性集中，或者 VM 均不得位于任何可用性集中。 云服务中具有多个可用性集与 Azure 资源管理器不兼容，并且迁移将暂停。  此外，不能出现一些 VM 位于可用性集，而一些 VM 不位于可用性集的情况。 若要解决此问题，需要修正或重新配置云服务。  请相应地进行规划，因为这可能很耗时。
 
-- **Web/辅助角色部署** - 包含 Web 和辅助角色的云服务无法迁移到 Azure 资源管理器。 必须先从虚拟网络中删除 Web/辅助角色，才能开始迁移。  典型的解决方案只是将 Web/辅助角色实例移到单独的经典虚拟网络中，该网络也链接到了 ExpressRoute 回路，或者将代码迁移到较新的 PaaS 应用服务（此讨论已超出本文范围）中。 在前一个重新部署用例中，创建了新的经典虚拟网络，将该 Web/辅助角色移动/重新部署到该新虚拟网络，然后从正在删除的虚拟网络中删除这些部署。 无需更改代码。 新的[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)功能可以用来使包含 Web/辅助角色的经典虚拟网络和同一 Azure 区域中的其他虚拟网络（如正在迁移的虚拟网络）通力合作（**虚拟网络迁移完成后，对等虚拟网络无法迁移**），从而提供没有性能损失和延迟/带宽损失的相同功能。 鉴于增加了[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)，现可轻易缓解 Web/辅助角色部署，且不会阻止到 Azure 资源管理器的迁移。
+- **Web/辅助角色部署** - 包含 Web 和辅助角色的云服务无法迁移到 Azure 资源管理器。 若要迁移 web 角色和辅助角色的内容, 需要将代码本身迁移到较新的 PaaS 应用服务 (此讨论超出了本文档的范围)。 如果希望将 web/辅助角色保持原样, 但将经典 Vm 迁移到资源管理器部署模型, 则必须先从虚拟网络中删除 web/辅助角色, 然后才能开始迁移。  典型的解决方案是将 web/辅助角色实例移到还链接到 ExpressRoute 线路的单独的经典虚拟网络。 在以前的重新部署用例中, 创建新的经典虚拟网络, 将 web/辅助角色移动/重新部署到该新虚拟网络, 然后从要移动的虚拟网络中删除这些部署。 无需更改代码。 新的[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)功能可以用来使包含 Web/辅助角色的经典虚拟网络和同一 Azure 区域中的其他虚拟网络（如正在迁移的虚拟网络）通力合作（**虚拟网络迁移完成后，对等虚拟网络无法迁移**），从而提供没有性能损失和延迟/带宽损失的相同功能。 鉴于增加了[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)，现可轻易缓解 Web/辅助角色部署，且不会阻止到 Azure 资源管理器的迁移。
 
 - **Azure 资源管理器配额** - 对于经典部署模型和 Azure 资源管理器部署模型，Azure 区域都有单独的配额/限制。 即使在不使用新硬件的迁移方案中 *（我们正在将现有的 VM 从经典部署模型切换到 Azure 资源管理器部署模型）* ，Azure 资源管理器配额仍需处于容量充足的位置，才能开始迁移。 下面列出了我们已知的导致问题的主要限制。  开具配额支持票证来提高限制。
 

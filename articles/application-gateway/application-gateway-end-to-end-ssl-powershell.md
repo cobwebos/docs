@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: d9851f6b3e32d0c7ab0d7774458ba5bc4d9ba823
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7b909bf88fde2277aa2a285bbf36916191db1f3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729673"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67973398"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>使用 PowerShell 通过应用程序网关配置端到端 SSL
 
@@ -27,7 +27,7 @@ Azure 应用程序网关支持对流量进行端到端加密。 应用程序网�
 
 ![方案图像][scenario]
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>应用场景
 
 在此方案中，可学习如何通过 PowerShell 使用端到端 SSL 创建应用程序网关。
 
@@ -44,7 +44,7 @@ Azure 应用程序网关支持对流量进行端到端加密。 应用程序网�
 
 若要对应用程序网关配置端到端 SSL，需要网关证书和后端服务器证书。 网关证书用于根据 SSL 协议规范派生对称密钥。 然后使用对称密钥加密和解密发送到网关的流量。 网关证书需要采用个人信息交换 (PFX) 格式。 此文件格式适用于导出私钥，后者是应用程序网关对流量进行加解密所必需的。
 
-为端到端 SSL 加密后, 端必须显式允许应用程序网关。 将后端服务器的公用证书上传到应用程序网关。 添加证书后，可确保应用程序网关仅与已知后端实例通信。 从而进一步保护端到端通信。
+对于端到端 SSL 加密, 应用程序网关必须显式允许后端。 将后端服务器的公用证书上传到应用程序网关。 添加证书后，可确保应用程序网关仅与已知后端实例通信。 从而进一步保护端到端通信。
 
 配置过程在以下部分中介绍。
 
@@ -174,7 +174,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    ```
 
    > [!NOTE]
-   > 在上一步中提供的证书应该是后端上存在的.pfx 证书的公钥。 以索赔、证据和推理 (CER) 格式导出后端服务器上安装的证书（不是根证书），将其用在此步骤。 此步骤会将后端加入应用程序网关的允许列表。
+   > 在上一步中提供的证书应该是后端中存在的 .pfx 证书的公钥。 以索赔、证据和推理 (CER) 格式导出后端服务器上安装的证书（不是根证书），将其用在此步骤。 此步骤会将后端加入应用程序网关的允许列表。
 
    如果使用的是应用程序网关 v2 SKU，则创建受信任的根证书而不是身份验证证书。 有关详细信息，请参阅[应用程序网关的端到端 SSL 概述](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)：
 
@@ -227,13 +227,19 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
 
 使用上述所有步骤创建应用程序网关。 网关创建过程需要花费较长时间。
 
+对于 V1 SKU, 请使用以下命令
 ```powershell
-$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
-## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>应用新的证书，如果后端证书已过期
+对于 V2 SKU, 请使用以下命令
+```powershell
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -TrustedRootCertificate $trustedRootCert01 -Verbose
+```
 
-使用此过程将应用新的证书，如果后端证书已过期。
+## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>如果后端证书已过期，则应用新证书
+
+如果后端证书已过期，请使用此过程应用新证书。
 
 1. 检索要更新的应用程序网关。
 
@@ -241,33 +247,33 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. 从包含该证书的公钥的.cer 文件中添加新的证书资源，也可以是相同的证书添加到在应用程序网关上的 SSL 终端的侦听器。
+2. 从 .cer 文件中添加新的证书资源，该文件包含证书的公钥，也可以是添加到侦听器中用于在应用程序网关上终止 SSL 的同一证书。
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
    ```
     
-3. 到变量中获取新的身份验证证书对象 (类型名称：Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate).
+3. 将新的身份验证证书对象放入变量 (TypeName:Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate)。
 
    ```powershell
    $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
    ```
  
- 4. 将分配到新的证书**BackendHttp**设置并与 $AuthCert 变量引用。 （指定你想要更改的 HTTP 设置名称。）
+ 4. 将新证书分配到 **BackendHttp** 设置中，并使用 $AuthCert 变量引用它。 （指定要更改的 HTTP 设置名称。）
  
    ```powershell
    $out= Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $gw -Name "HTTP1" -Port 443 -Protocol "Https" -CookieBasedAffinity Disabled -AuthenticationCertificates $Authcert
    ```
     
- 5. 提交到应用程序网关更改并将传递到 $out 变量包含的新配置。
+ 5. 将更改提交到应用程序网关，并将包含的新配置传递到 $out 变量中。
  
    ```powershell
    Set-AzApplicationGateway -ApplicationGateway $gw  
    ```
 
-## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>从 HTTP 设置中删除未使用过期的证书
+## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>从 HTTP 设置中删除未使用的过期证书
 
-使用此过程从 HTTP 设置中删除未使用过期的证书。
+使用此过程从 HTTP 设置中删除未使用的过期证书。
 
 1. 检索要更新的应用程序网关。
 
@@ -275,13 +281,13 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. 列出你想要删除的身份验证证书的名称。
+2. 列出要删除的身份验证证书的名称。
 
    ```powershell
    Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw | select name
    ```
     
-3. 删除从应用程序网关的身份验证证书。
+3. 从应用程序网关中删除身份验证证书。
 
    ```powershell
    $gw=Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name ExpiredCert

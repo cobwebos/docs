@@ -12,49 +12,49 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/27/2019
-ms.openlocfilehash: ce16450f7f25e5703cf283c4babb2a935aad21de
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: c75b19fff478c14ff47996cf9159e48f3ff69724
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813046"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261197"
 ---
 # <a name="automated-backups"></a>自动备份
 
-SQL 数据库自动创建在 7 到 35 天内保留的数据库备份，并使用 Azure[读取访问异地冗余存储 (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)以确保它们保留即使数据中心都不可用。 这些备份将自动创建。 数据库备份是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库备份可以保护数据免遭意外损坏或删除。 如果你的安全规则需要备份是长时间的时间 （最多 10 年），则可以配置[长期保留](sql-database-long-term-retention.md)上单一数据库和弹性池。
+SQL 数据库会自动创建保留7到35天之间的数据库备份, 并使用 Azure[读取访问异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)来确保即使数据中心不可用, 也会保留这些备份。 这些备份是自动创建的。 数据库备份是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库备份可以保护数据免遭意外损坏或删除。 如果你的安全规则要求你的备份长时间可用 (长达10年), 可以在单一数据库和弹性池上配置[长期保留](sql-database-long-term-retention.md)。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="what-is-a-sql-database-backup"></a>什么是 SQL 数据库备份？
 
-SQL 数据库使用 SQL Server 技术创建[完整备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server)每周[差异备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)每隔 12 小时，并且[事务日志备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)每隔 5-10 分钟。 备份存储在[RA-GRS 存储 blob](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)复制到[配对的数据中心](../best-practices-availability-paired-regions.md)，以防数据中心中断。 还原数据库时，服务会确定需要还原哪些完整、差异备份和事务日志备份。
+SQL 数据库使用 SQL Server 技术每周创建[完整备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server), 每隔12小时创建一次[差异备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), 每5-10 分钟创建一次[事务日志备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)。 备份存储在[GRS 存储 blob](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)中, 这些 blob 复制到[配对的数据中心](../best-practices-availability-paired-regions.md), 以防止数据中心服务中断。 还原数据库时，服务会确定需要还原哪些完整、差异备份和事务日志备份。
 
 可使用这些备份执行以下任务：
 
-- **将现有数据库还原到某个时间点，在过去**使用 Azure 门户、 Azure PowerShell、 Azure CLI 或 REST API 的保留期内。 在单一数据库和弹性池，此操作将创建与原始数据库相同的服务器中的新数据库。 在托管实例，此操作可以创建一份相同或不同托管在同一订阅下实例的数据库。
-  - **[更改备份保留期](#how-to-change-the-pitr-backup-retention-period)** 之间 7 到 35 天，若要配置备份策略。
-  - **将长期保留策略更改为 10 年之久**单一数据库和弹性池使用[在 Azure 门户](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)或[Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups)。
-- **已删除的数据库还原到它已被删除的时间**或保持期内随时。 只能在同一逻辑服务器或其中创建原始数据库托管实例中还原已删除的数据库。
+- 使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 将**现有数据库还原到保持期过去的时间点**。 在单一数据库和弹性池中, 此操作会在与原始数据库相同的服务器中创建新的数据库。 在托管实例中, 此操作可在同一订阅下创建数据库的副本或相同或不同的托管实例。
+  - 将 **[备份保持期更改](#how-to-change-the-pitr-backup-retention-period)** 为7到35天, 以配置备份策略。
+  - 使用[Azure 门户](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)或[Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups),**将长期保留策略更改为最多10年**的单一数据库和弹性池。
+- 将**已删除的数据库还原到它删除的时间**或保留期内的任何时间。 删除的数据库只能在创建原始数据库的同一逻辑服务器或托管实例中还原。
 - **将数据库还原到另一个地理区域**。 在无法访问服务器和数据库的情况下，异地还原可帮助从地理位置灾难中恢复。 它会在全球任意位置的任意现有服务器中创建新数据库。
-- **从特定的长期备份还原数据库**单一数据库或弹性池中，如果数据库已配置了长期保留策略 (LTR)。 LTR，可还原的数据库使用较旧版本[Azure 门户](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal)或[Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups)以满足符合性请求或运行应用程序的旧版本。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
+- 如果数据库已配置长期保留策略 (LTR), 请从单一数据库或弹性池上**的特定长期备份还原数据库**。 LTR 允许使用[Azure 门户](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal)或[Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups)还原旧版本的数据库, 以满足符合性请求或运行旧版本的应用程序。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
 - 若要执行还原，请参阅[从备份还原数据库](sql-database-recovery-using-backups.md)。
 
 > [!NOTE]
 > 在 Azure 存储中，术语*复制*是指将文件从一个位置复制到另一个位置。 SQL 的“数据库复制”是指让多个辅助数据库与主数据库保持同步  。
 
-可以尝试使用下面的示例这些操作的部分：
+可以使用以下示例尝试一些操作:
 
 | | Azure 门户 | Azure PowerShell |
 |---|---|---|
 | 更改备份保留期 | [单一数据库](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-the-azure-portal) <br/> [托管实例](sql-database-automated-backups.md#change-pitr-for-a-managed-instance) | [单一数据库](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[托管实例](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| 更改长期备份保留 | [单个数据库](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>托管的实例-n/A  | [单一数据库](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups)<br/>托管的实例-n/A  |
+| 更改长期备份保留 | [单个数据库](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>托管实例-N/A  | [单一数据库](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups)<br/>托管实例-N/A  |
 | 从时间点还原数据库 | [单个数据库](sql-database-recovery-using-backups.md#point-in-time-restore) | [单个数据库](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [托管实例](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | 还原已删除的数据库 | [单个数据库](sql-database-recovery-using-backups.md#deleted-database-restore-using-the-azure-portal) | [单个数据库](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [托管实例](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| 从 Azure Blob 存储还原数据库 | 单个数据库的 n/A <br/>托管的实例-n/A  | 单个数据库的 n/A <br/>[托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| 从 Azure Blob 存储还原数据库 | 单一数据库-不适用 <br/>托管实例-N/A  | 单一数据库-不适用 <br/>[托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="how-long-are-backups-kept"></a>备份保留多长时间？
 
-每个 SQL 数据库的默认备份保留期为 7 到 35 天，具体取决于购买模型和服务层级。 可以在 SQL 数据库服务器上更新数据库的备份保持期。 有关详细信息，请参阅[更改备份保持期](#how-to-change-the-pitr-backup-retention-period)。
+所有 Azure SQL 数据库 (单一数据库、共用实例数据库和托管实例数据库) 的默认备份保持期为**七**天。 你可以[将备份保持期更改为最多35天](#how-to-change-the-pitr-backup-retention-period)。
 
 如果删除一个数据库，SQL 数据库将保留其备份，就像保留联机数据库的备份一样。 例如，如果删除保留期为 7 天的基本数据库，已保留 4 天的备份将继续保存 3 天。
 
@@ -62,23 +62,6 @@ SQL 数据库使用 SQL Server 技术创建[完整备份](https://docs.microsoft
 
 > [!IMPORTANT]
 > 如果删除了托管 SQL 数据库的 Azure SQL 服务器，则属于该服务器的所有弹性池和数据库也会被删除且不可恢复。 无法还原已删除的服务器。 但是，如果配置了长期保留，将不会删除具有 LTR 的数据库的备份，并且可以还原这些数据库。
-
-### <a name="default-backup-retention-period"></a>默认备份保持期
-
-#### <a name="dtu-based-purchasing-model"></a>基于 DTU 的购买模型
-
-使用基于 DTU 的购买模型创建的数据库的默认保留期取决于服务层级：
-
-- 基本服务层**一个**一周。
-- 标准服务层**五个**周。
-- 高级服务层**五个**周。
-
-#### <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
-
-如果您使用的[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，默认备份保留期**七个**（单一、 共用，和实例数据库除外）。 对于所有 Azure SQL 数据库（单一数据库、共用数据库和实例数据库），可以[将备份保持期更改为最多 35 天](#how-to-change-the-pitr-backup-retention-period)。
-
-> [!WARNING]
-> 如果缩短当前保留期，早于新保留期的所有现有备份将不再可用。 如果延长当前保留期，SQL 数据库将保留现有备份，直至达到更长的保留期。
 
 ## <a name="how-often-do-backups-happen"></a>备份发生的频率
 
@@ -109,9 +92,9 @@ PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/st
 
 ## <a name="how-does-microsoft-ensure-backup-integrity"></a>Microsoft 如何确保备份完整性
 
-持续，Azure SQL 数据库自动工程团队测试的自动的数据库备份还原数据库放置在逻辑服务器和弹性池 （这不是托管实例）。 在时间点还原时数据库还会收到使用 DBCC CHECKDB 的完整性检查。
+在日常工作中, Azure SQL 数据库工程团队会自动测试还原逻辑服务器和弹性池中的数据库的自动数据库备份 (这在托管实例中不可用)。 在时间点还原时, 数据库还使用 DBCC CHECKDB 接收完整性检查。
 
-托管的实例会自动使用的初始备份`CHECKSUM`使用本机还原的数据库的`RESTORE`命令或数据迁移服务迁移完成后。
+迁移完成后, 托管实例使用`CHECKSUM`本机`RESTORE`命令或数据迁移服务还原的数据库进行自动初始备份。
 
 在完整性检查期间发现的任何问题都将导致向工程团队发出警报。 有关 Azure SQL 数据库中数据完整性的详细信息，请参阅 [Azure SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。
 
@@ -124,6 +107,9 @@ PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/st
 ## <a name="how-to-change-the-pitr-backup-retention-period"></a>如何更改 PITR 备份保持期
 
 可以使用 Azure 门户、PowerShell 或 REST API 更改默认 PITR 备份保持期。 支持的值包括：7、14、21、28 或 35 天。 以下示例演示如何将 PITR 保留期更改为 28 天。
+
+> [!WARNING]
+> 如果缩短当前保留期，早于新保留期的所有现有备份将不再可用。 如果延长当前保留期，SQL 数据库将保留现有备份，直至达到更长的保留期。
 
 > [!NOTE]
 > 这些 API 将只影响 PITR 保留期。 如果为数据库配置了 LTR，它将不受影响。 有关如何更改 LTR 保持期的详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。

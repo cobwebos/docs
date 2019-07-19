@@ -1,7 +1,7 @@
 ---
-title: 设置 Azure Application Insights 监视机器学习模型
+title: 设置 Azure 应用程序 Insights 来监视 ML 模型
 titleSuffix: Azure Machine Learning service
-description: 监视部署与使用 Azure Application Insights 的 Azure 机器学习服务的 web 服务
+description: 使用 Azure 应用程序 Insights 监视使用 Azure 机器学习服务部署的 web 服务
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 04/02/2019
+ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c12f55228d77656ef57598da0fb002fdea29bd4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60820226"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871787"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>使用 Application Insights 监视 Azure 机器学习模型
 
@@ -28,7 +28,7 @@ ms.locfileid: "60820226"
 [详细了解 Application Insights](../../azure-monitor/app/app-insights-overview.md)。 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -131,11 +131,11 @@ ms.locfileid: "60820226"
 
 ## <a name="example-notebook"></a>示例笔记本
 
-[How-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) 笔记本演示了本文中的概念。 
+[Ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb)笔记本展示了这篇文章中的概念的概念。 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>后续步骤
 还可以在生产环境中收集模型上的数据。 阅读[在生产环境中收集模型数据](how-to-enable-data-collection.md)一文。 
 
-请参阅有关[容器的 Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)。
+同时读取[容器 Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)。

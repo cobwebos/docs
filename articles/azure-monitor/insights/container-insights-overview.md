@@ -11,40 +11,45 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d6321564672097fbf901d1d33afac9f606fcb63a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d8fb7bc0e837ba78d86a39524d869c9bb01895d
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521834"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867566"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>用于容器的 Azure Monitor 概述
 
 用于容器的 Azure Monitor 功能旨在监视部署到 Azure 容器实例或 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 监视容器至关重要，特别是在大规模运行包含多个应用程序的生产群集时。
 
-用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 容器日志也会被收集。  启用监视 Kubernetes 群集中后，指标和日志自动收集有关您通过适用于 Linux 的 Log Analytics 代理的容器化版本。 度量值写入到的度量值存储，日志数据写入到与关联的日志存储在[Log Analytics](../log-query/log-query-overview.md)工作区。 
+用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 容器日志也会被收集。  从 Kubernetes 群集启用监视后，将通过适用于 Linux 的 Log Analytics 代理的容器化版本自动收集指标和日志。 指标将写入指标存储区，日志数据将写入与 [Log Analytics](../log-query/log-query-overview.md) 工作区关联的日志存储区。 
 
-![Azure 监视的容器体系结构](./media/container-insights-overview/azmon-containers-architecture-01.png)
+![用于容器的 Azure Monitor 的体系结构](./media/container-insights-overview/azmon-containers-architecture-01.png)
  
 ## <a name="what-does-azure-monitor-for-containers-provide"></a>用于容器的 Azure Monitor 提供了什么？
 
-用于容器的 azure 监视器可提供全面的监视体验使用 Azure Monitor 的不同功能让您了解性能和 Kubernetes 群集和容器工作负荷的运行状况。 使用用于容器的 Azure Monitor 可以：
+用于容器的 Azure Monitor 使用 Azure Monitor 的不同功能提供全面的监视体验，使你能够了解 Kubernetes 群集和容器工作负荷的性能和运行状况。 使用用于容器的 Azure Monitor 可以：
 
 * 确定节点上运行的 AKS 容器及其平均处理器和内存利用率。 此信息可帮助标识资源瓶颈。
 * 确定 Azure 容器实例中托管的容器组及其容器的处理器和内存利用率。  
 * 确定容器在控制器或 Pod 中的驻留位置。 此信息可帮助了解控制器或 Pod 的整体性能。
 * 查看在主机上运行的与支持 Pod 的标准过程无关的工作负荷的资源利用率。
 * 了解群集在平均负载和最重负载下的行为。 此信息有助于了解容量需求及确定群集可承受的最大负载。 
-* 配置警报，以主动通知你，或在节点或容器上的 CPU 和内存使用率超过阈值时对其进行记录。  
+* 配置警报，以便在节点或容器上的 CPU 和内存使用率超出阈值时主动通知你或将其记录下来。
+* 与[Prometheus](https://prometheus.io/docs/introduction/overview/)集成, 以查看它从节点和 Kubernetes 收集的应用程序和工作负荷指标使用[查询](container-insights-log-search.md)创建自定义警报、仪表板, 并详细执行详细分析。
+
+>[!NOTE]
+>目前, 对 Prometheus 的支持是公共预览版中的一项功能。
+>
 
 ## <a name="how-do-i-access-this-feature"></a>如何访问此功能？
-可以通过两种方式访问用于容器的 Azure Monitor：从 Azure Monitor 访问或直接从所选 AKS 群集访问。 通过 Azure Monitor，具有的所有容器部署，这会监视，哪些是不是，允许跨订阅和资源组，将搜索和筛选器，然后向下钻到 Azure Monitor 获取容器从全局角度所选的容器。  否则，您可以直接从 AKS 页上的所选 AKS 容器访问该功能。  
+可以通过两种方式访问用于容器的 Azure Monitor：从 Azure Monitor 访问或直接从所选 AKS 群集访问。 在 Azure Monitor 中可以从全局角度查看已部署的所有容器（受到监视的容器和未受监视的容器），从而可以跨订阅和资源组进行搜索和筛选，然后从所选容器钻取到用于容器的 Azure Monitor。  否则，可以直接从 AKS 页上选定的 AKS 容器访问该功能。  
 
 ![访问用于容器的 Azure Monitor 的方法概述](./media/container-insights-overview/azmon-containers-experience.png)
 
 如果想要监视和管理 Docker 和 Windows 容器主机以查看配置、审核和资源利用率，请参阅[容器监视解决方案](../../azure-monitor/insights/containers.md)。
 
 ## <a name="next-steps"></a>后续步骤
-若要开始监视你的 AKS 群集，请查看[如何启用针对容器的 Azure 监视器](container-insights-onboard.md)以了解要求和可用的方法来启用监视。  
+若要开始监视 AKS 群集，请查看[如何为容器启用 Azure Monitor](container-insights-onboard.md) 以了解启用监视的要求和可用方法。  

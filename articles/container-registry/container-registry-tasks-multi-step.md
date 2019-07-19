@@ -3,16 +3,17 @@ title: 使用 Azure 容器注册表多步骤任务自动执行映像生成、测
 description: 介绍多步骤任务，这是 Azure 容器注册表中 ACR 任务的一项功能，可以提供用于在云中生成、测试和修补容器映像的基于任务的工作流。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89962fbce6863b16a0d8b229047eb19a821e37bb
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829576"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310573"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>在 ACR 任务中运行多步骤生成、测试和修补任务
 
@@ -30,7 +31,7 @@ ms.locfileid: "60829576"
 1. 如果测试通过，则生成 Helm 图表存档包
 1. 使用新的 Helm 图表存档包执行 `helm upgrade`
 
-所有步骤在 Azure 中执行，可将工作卸载到 Azure 的计算资源，并消除基础结构的管理工作。 除了 Azure 容器注册表费用以外，只需为所用的资源付费。 有关定价信息，请参阅 [Azure 容器注册表定价][pricing]中的“容器生成”部分。 
+所有步骤在 Azure 中执行，可将工作卸载到 Azure 的计算资源，并消除基础结构的管理工作。 除了 Azure 容器注册表费用以外，只需为所用的资源付费。 有关定价的信息, 请参阅[Azure 容器注册表定价][pricing]中的**容器构建**部分。
 
 
 ## <a name="common-task-scenarios"></a>常见任务方案
@@ -47,9 +48,9 @@ ms.locfileid: "60829576"
 
 ACR 任务中的多步骤任务定义为 YAML 文件中的一系列步骤。 每个步骤可以指定对成功完成前面一个或多个步骤的依赖性。 可使用以下任务步骤类型：
 
-* [`build`](container-registry-tasks-reference-yaml.md#build)：生成使用熟悉的一个或多个容器映像`docker build`语法中的，按系列或并行。
-* [`push`](container-registry-tasks-reference-yaml.md#push)：将构建的映像推送到容器注册表。 支持 Azure 容器注册表等专用注册表，并支持公共 Docker 中心。
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd)：运行一个容器，以便它可以为正在运行的任务的上下文中的函数进行操作。 可将参数传递到容器的 `[ENTRYPOINT]`，并指定 env、detach 等属性，以及其他熟悉的 `docker run` 参数。 `cmd` 步骤类型可以实现单元测试和功能测试，并支持并发容器执行。
+* [`build`](container-registry-tasks-reference-yaml.md#build)：使用熟悉`docker build`的语法, 以系列或并行方式生成一个或多个容器映像。
+* [`push`](container-registry-tasks-reference-yaml.md#push)：将生成的映像推送到容器注册表。 支持 Azure 容器注册表等专用注册表，并支持公共 Docker 中心。
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd)：运行容器, 使其能够作为运行任务上下文中的一个函数运行。 可将参数传递到容器的 `[ENTRYPOINT]`，并指定 env、detach 等属性，以及其他熟悉的 `docker run` 参数。 `cmd` 步骤类型可以实现单元测试和功能测试，并支持并发容器执行。
 
 以下代码片段演示如何组合使用这些任务步骤类型。 多步骤任务使用类似于以下内容的 YAML 文件可以像从 Dockerfile 构建单个映像并推送到注册表一样简单：
 
@@ -83,13 +84,13 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
 
-有关多个方案的完整多步骤任务 YAML 文件和 Dockerfile，请参阅[任务示例][task-examples]。
+有关多个方案, 请参阅完成多步骤任务 YAML 文件和 Dockerfile 的[任务示例][task-examples]。
 
 ## <a name="run-a-sample-task"></a>运行示例任务
 
 任务既支持手动执行（称作“快速运行”），也支持在提交 Git 或更新基础映像时的自动执行。
 
-若要运行某个任务，请先在 YAML 文件中定义该任务的步骤，然后执行 Azure CLI 命令 [az acr run][az-acr-run]。
+若要运行任务, 首先在 YAML 文件中定义任务的步骤, 然后执行 Azure CLI 命令[az acr run][az-acr-run]。
 
 以下示例 Azure CLI 命令使用示例任务 YAML 文件运行一个任务。 其任务的步骤生成映像，然后推送该映像。 在运行该命令之前，请使用自己的 Azure 容器注册表名称更新 `\<acrName\>`。
 
@@ -154,7 +155,7 @@ Run ID: yd14 was successful after 19s
 可在以下资源中找到多步骤任务的参考信息和示例：
 
 * [任务参考](container-registry-tasks-reference-yaml.md) - 任务步骤的类型、属性和用法。
-* [任务示例][task-examples] - 从简单到复杂的多种方案的示例 `task.yaml` 文件。
+* [任务示例][task-examples]-多`task.yaml`个方案的示例文件, 简单到复杂。
 * [命令存储库](https://github.com/AzureCR/cmd) - 作为 ACR 任务命令的容器集合。
 
 <!-- IMAGES -->

@@ -3,17 +3,18 @@ title: 快速入门 - 将 Azure 容器注册表事件发送到事件网格
 description: 在本快速入门中，我们将为容器注册表启用事件网格事件，然后将容器映像推送和删除事件发送到示例应用程序。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: danlep
 ms.custom: seodec18
-ms.openlocfilehash: f5c075942a29968ea57c684cd817e578df951989
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49ee9a7f12601b0d93e320ab797be4a1ada41c04
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60427626"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309801"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入门：将事件从私有容器注册表发送到事件网格
 
@@ -23,7 +24,7 @@ Azure 事件网格是一个完全托管的事件路由服务，可以通过发�
 
 ![呈现示例 Web 应用程序的 Web 浏览器，其中包含三个收到的事件][sample-app-01]
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户][azure-account]。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][azure-account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -31,7 +32,7 @@ Azure 事件网格是一个完全托管的事件路由服务，可以通过发�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下 [az group create][az-group-create] 命令在 *eastus* 区域创建名为 *myResourceGroup* 的资源组。 若要对资源组使用不同的名称，请将 `RESOURCE_GROUP_NAME` 设置为不同的值。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下[az group create][az-group-create]命令会在*eastus*区域中创建名为*myResourceGroup*的资源组。 若要对资源组使用不同的名称，请将 `RESOURCE_GROUP_NAME` 设置为不同的值。
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -41,7 +42,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-接下来，使用以下命令将容器注册表部署到资源组中。 在运行 [az acr create][az-acr-create] 命令之前，请将 `ACR_NAME` 设置为注册表的名称。 该名称在 Azure 中必须唯一，并且限制为 5-50 个字母数字字符。
+接下来，使用以下命令将容器注册表部署到资源组中。 运行[az acr create][az-acr-create]命令之前, 请将设置`ACR_NAME`为注册表的名称。 该名称在 Azure 中必须唯一，并且限制为 5-50 个字母数字字符。
 
 ```azurecli-interactive
 ACR_NAME=<acrName>
@@ -100,7 +101,7 @@ az group deployment create \
 
 ## <a name="subscribe-to-registry-events"></a>订阅注册表事件
 
-在事件网格中订阅一个主题，以告知你要跟踪哪些事件，以及要将事件发送到何处。  以下 [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] 命令订阅创建的容器注册表，并将 Web 应用的 URL 指定为要将事件发送到的终结点。 此处可以重复使用在前面几个部分填充的环境变量，因此无需进行编辑。
+在事件网格中订阅一个主题，以告知你要跟踪哪些事件，以及要将事件发送到何处。  以下[az eventgrid event-订阅 create][az-eventgrid-event-subscription-create]命令订阅你创建的容器注册表, 并将你的 web 应用的 URL 指定为它应将事件发送到的终结点。 此处可以重复使用在前面几个部分填充的环境变量，因此无需进行编辑。
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -185,7 +186,7 @@ $ az acr repository show-tags --name $ACR_NAME --repository myimage
 
 ### <a name="delete-the-image"></a>删除映像
 
-现在，请使用 [az acr repository delete][az-acr-repository-delete] 命令删除映像，以生成 `ImageDeleted` 事件：
+现在, 通过使用`ImageDeleted` [az acr repository delete][az-acr-repository-delete]命令删除图像来生成事件:
 
 ```azurecli-interactive
 az acr repository delete --name $ACR_NAME --image myimage:v1

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 4613b576b444059d448cf1094284f2a68e6c31a8
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 90358d54077a0c320e8d3186e806b8a61d951c82
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275154"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321341"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>配置“识别文本”Docker 容器
 
@@ -31,7 +31,7 @@ ms.locfileid: "67275154"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey`设置指定 Azure`Cognitive Services`用于跟踪容器的计费信息的资源键。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”  资源的有效密钥。
+此`ApiKey`设置指定用于跟踪`Cognitive Services`容器的计费信息的 Azure 资源密钥。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”  资源的有效密钥。
 
 可以在以下位置找到此设置：
 
@@ -49,11 +49,11 @@ ms.locfileid: "67275154"
 
 * Azure 门户：**认知服务**概述，标记为 `Endpoint`
 
-请记住添加`vision/v1.0`路由到终结点 URI 下, 表中所示。 
+请记住将`vision/v1.0`路由添加到终结点 URI, 如下表所示。 
 
-|必选| Name | 数据类型 | 描述 |
+|必填| 名称 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|是| `Billing` | String | 账单终结点 URI<br><br>例如：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -79,10 +79,10 @@ ms.locfileid: "67275154"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](computer-vision-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| Name | 数据类型 | 描述 |
+|可选| 名称 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | “计算机视觉”容器不使用此项。|
-|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例 
 
@@ -91,14 +91,14 @@ ms.locfileid: "67275154"
 * **行继续符**：以下各部分中的 Docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
 * **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
 
-请记住添加`vision/v1.0`路由到终结点 URI 下, 表中所示。 
+请记住将`vision/v1.0`路由添加到终结点 URI, 如下表所示。 
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | ReplTest1 | 格式或示例 |
 |-------------|-------|---|
-|{BILLING_KEY} | 认知服务资源终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | 包括区域的账单终结点值。|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|
+|{API_KEY} | 认知服务资源的终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{ENDPOINT_URI} | 包括区域的账单终结点值。|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](computer-vision-how-to-install-containers.md#billing)。
@@ -114,8 +114,8 @@ ms.locfileid: "67275154"
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} 
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
   ```
 
 ### <a name="logging-example"></a>日志记录示例 
@@ -124,8 +124,8 @@ ms.locfileid: "67275154"
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
 

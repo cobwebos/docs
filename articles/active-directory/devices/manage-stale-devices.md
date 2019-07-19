@@ -1,6 +1,6 @@
 ---
 title: 如何在 Azure AD 中管理陈旧的设备 | Microsoft Docs
-description: 了解如何从 Azure Active Directory 中已注册的设备的数据库中删除过时设备。
+description: 了解如何从 Azure Active Directory 中的已注册设备的数据库中删除过期设备。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b64fd7efb00dabd1e1758ec631e6992d68bff2ab
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8e9c11613a9bdcaedad1a69662b2d6bd7bfefc3b
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481655"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867261"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理陈旧的设备
 
@@ -43,7 +43,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 设备尝试身份验证时，会触发活动时间戳的评估。 在以下情况下，Azure AD 会评估活动时间戳：
 
-- 需要条件性访问策略[被管理的设备](../conditional-access/require-managed-devices.md)或[批准的客户端应用](../conditional-access/app-based-conditional-access.md)已触发。
+- 已触发需要[托管设备](../conditional-access/require-managed-devices.md)或批准的[客户端应用](../conditional-access/app-based-conditional-access.md)的条件性访问策略。
 - 已加入 Azure AD 或已加入混合 Azure AD 的 Windows 10 设备在网络中处于活动状态。 
 - Intune 受管理设备已签入服务。
 
@@ -129,7 +129,7 @@ Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, De
 mateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
-如果你的目录中有大量设备，使用时间戳筛选器缩小返回的设备数。 获取时间戳超过特定日期的所有设备并将返回的数据存储在 CSV 文件中： 
+如果目录中有大量设备, 请使用时间戳筛选器来缩小返回的设备的数量。 获取时间戳超过特定日期的所有设备并将返回的数据存储在 CSV 文件中： 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
@@ -145,6 +145,13 @@ Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, Devi
 ### <a name="why-should-i-worry-about-my-bitlocker-keys"></a>为何需要注意保管 BitLocker 密钥？
 
 为 Windows 10 设备配置的 BitLocker 密钥存储在 Azure AD 中的设备对象上。 如果删除某个陈旧设备，则也会删除该设备上存储的 BitLocker 密钥。 在删除陈旧设备之前，应该确定清理策略是否与设备的实际生命周期相一致。 
+
+### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>为什么要考虑 Windows Autopilot 设备？
+
+如果 Azure AD 设备与 Windows Autopilot 对象关联, 则在将来重新用作其他用途设备时, 可能会出现以下三种情况:
+- 使用 Windows Autopilot 用户驱动的部署而无需使用白手套, 将创建一个新的 Azure AD 设备, 但不会使用 ZTDID 标记它。
+- 使用 Windows Autopilot 自行部署模式部署, 由于找不到关联 Azure AD 设备, 它们将会失败。  (这是一种安全机制, 用于确保没有 "入侵者" 设备尝试将 Azure AD 加入无凭据。)失败将指示 ZTDID 不匹配。
+- 对于 Windows Autopilot 纯白手套部署, 由于找不到关联 Azure AD 设备, 它们将会失败。 (后台手套部署使用相同的自部署模式进程, 因此它们强制实施相同的安全机制。)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>如何知道所有已加入的设备类型？
 

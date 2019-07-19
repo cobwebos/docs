@@ -4,7 +4,7 @@ description: 如何有效地将巨量的任务提交到单个 Azure Batch 作业
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 0aff792d7e005fb17ebec0715ca3ac7237fd7a71
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: f91d47e1f57fb74575fbdad0a76386b53fb38b1f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341011"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322523"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>将大量的任务提交到 Batch 作业
 
@@ -61,7 +61,7 @@ Batch API 提供所需的方法用于高效地将任务作为集合添加到作�
 
 * **HTTP 连接限制** - 当 Batch 客户端添加大量的任务时，并发 HTTP 连接数可能会限制该客户端的性能。 可以使用某些 API 限制 HTTP 连接数。 例如，使用 .NET API 进行开发时，[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 属性默认设置为 2。 我们建议将该值增大到接近或大于并行操作数目。
 
-## <a name="example-batch-net"></a>示例：批处理 .NET
+## <a name="example-batch-net"></a>例如：批处理 .NET
 
 以下 C# 代码片段演示了在使用 Batch .NET API 添加大量任务时要配置的设置。
 
@@ -85,7 +85,7 @@ await batchClient.JobOperations.AddTaskAsync(jobId, tasksToAdd, parallelOptions)
 ```
 
 
-## <a name="example-batch-cli-extension"></a>示例：Batch CLI 扩展
+## <a name="example-batch-cli-extension"></a>例如：Batch CLI 扩展
 
 使用包含 [Batch CLI 模板](batch-cli-templates.md)的 Azure Batch CLI 扩展，创建包含[任务工厂](https://github.com/Azure/azure-batch-cli-extensions/blob/master/doc/taskFactories.md)的作业模板 JSON 文件。 任务工厂为单个任务定义中的某个作业配置相关任务的集合。  
 
@@ -128,7 +128,7 @@ await batchClient.JobOperations.AddTaskAsync(jobId, tasksToAdd, parallelOptions)
 ```
 若要使用模板运行作业，请参阅[使用 Azure Batch CLI 模板和文件传输](batch-cli-templates.md)。
 
-## <a name="example-batch-python-sdk-extension"></a>示例：Batch Python SDK 扩展
+## <a name="example-batch-python-sdk-extension"></a>例如：Batch Python SDK 扩展
 
 若要使用 Azure Batch Python SDK 扩展，请先安装 Python SDK 和扩展：
 

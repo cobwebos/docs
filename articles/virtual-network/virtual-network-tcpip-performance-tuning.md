@@ -1,16 +1,9 @@
 ---
-title: Azure Vm 的 TCP/IP 性能优化 |Microsoft Docs
+title: 针对 Azure Vm 的 TCP/IP 性能优化 |Microsoft Docs
 description: 了解各种常用的 TCP/IP 性能优化技术及其与 Azure VM 之间的关系。
 services: virtual-network
 documentationcenter: na
-author:
-- rimayber
-- dgoddard
-- stegag
-- steveesp
-- minale
-- btalb
-- prachank
+author: rimayber
 manager: paragk
 editor: ''
 ms.assetid: ''
@@ -20,20 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2019
-ms.author:
-- rimayber
-- dgoddard
-- stegag
-- steveesp
-- minale
-- btalb
-- prachank
-ms.openlocfilehash: ad1a5b69e4ec7b44c0e61a5ddd2c06633464d31a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rimayber
+ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
+ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235000"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297784"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>适用于 Azure VM 的 TCP/IP 性能优化
 
@@ -53,9 +40,9 @@ ms.locfileid: "66235000"
 
 源与目标之间的路径中的网络设备可能会丢弃超过 MTU 的数据包，或者将数据包分段成较小的片段。
 
-#### <a name="the-dont-fragment-bit-in-an-ip-packet"></a>IP 数据包中的位不分段
+#### <a name="the-dont-fragment-bit-in-an-ip-packet"></a>IP 数据包中的 "不分段" 位
 
-不要分段 (DF) 位是 IP 协议标头中的标志。 DF 位指示发送方与接收方之间的路径中的网络设备不得将数据包分段。 设置此位的原因有很多。 （请参阅本文的“路径 MTU 发现”部分中的一个示例。）如果网络设备收到的数据包不分段设置位，并且该数据包的大小超过设备的接口 MTU，标准行为是针对要丢弃该数据包的设备。 设备会将一条 ICMP Fragmentation Needed（需要 ICMP 分段）消息发回给数据包的原始源。
+不分段 (DF) 位是 IP 协议标头中的标志。 DF 位指示发送方与接收方之间的路径中的网络设备不得将数据包分段。 设置此位的原因有很多。 （请参阅本文的“路径 MTU 发现”部分中的一个示例。）当网络设备接收到不分段位集的数据包, 并且该数据包超过设备的接口 MTU 时, 标准行为是设备丢弃数据包。 设备会将一条 ICMP Fragmentation Needed（需要 ICMP 分段）消息发回给数据包的原始源。
 
 #### <a name="performance-implications-of-fragmentation"></a>分段对性能的影响
 
@@ -65,7 +52,7 @@ ms.locfileid: "66235000"
 
 分段可能对性能造成的另一种负面影响是，分段的数据包可能失序。 不按顺序接收数据包时，某些类型的网络设备可能会丢弃数据包。 如果发生这种情况，必须重新传输整个数据包。
 
-片段通常删除被网络防火墙等安全设备或已耗尽时的网络设备的接收缓冲区。 当网络设备的接收缓冲区耗尽时，网络设备会尝试重组分段的数据包，但没有资源可用于存储和恢复数据包。
+通常由网络防火墙等安全设备或网络设备的接收缓冲区用尽时丢弃片段。 当网络设备的接收缓冲区耗尽时，网络设备会尝试重组分段的数据包，但没有资源可用于存储和恢复数据包。
 
 可将分段视为一种负面操作，但通过 Internet 连接各种网络时，有必要支持分段。
 
@@ -104,7 +91,7 @@ FragmentSmack 是 Linux 内核处理分段的 IPv4 和 IPv6 数据包重组时�
 
 大规模发送卸载 (LSO) 可以通过将数据包分段任务卸载到以太网适配器来提高网络性能。 启用 LSO 后，TCP/IP 堆栈会创建一个较大的 TCP 数据包并将其发送到以太网适配器进行分段，然后转发片段。 LSO 的好处是无需让 CPU 将数据包分段成符合 MTU 的大小，而是将该处理任务卸载到硬件中执行分段的以太网接口。 若要详细了解 LSO 的好处，请参阅[支持大规模发送卸载](https://docs.microsoft.com/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso)。
 
-启用 LSO 后，Azure 客户在执行数据包捕获时可能会看到较大的帧大小。 某些客户认为出现碎片或大 MTU，正在使用不时，可能会导致这些大帧大小。 以太网适配器可以使用 LSO 将更大的最大片段大小 (MSS) 播发到 TCP/IP 堆栈，以创建更大的 TCP 数据包。 然后，整个未分段的帧将转发到以太网适配器，并在 VM 上执行的数据包捕获中显示。 但是，数据包将分解为多个较小的帧通过以太网适配器，根据以太网适配器的 MTU。
+启用 LSO 后，Azure 客户在执行数据包捕获时可能会看到较大的帧大小。 这种大帧大小可能会导致一些客户考虑到碎片发生, 或者不使用较大的 MTU。 以太网适配器可以使用 LSO 将更大的最大片段大小 (MSS) 播发到 TCP/IP 堆栈，以创建更大的 TCP 数据包。 然后，整个未分段的帧将转发到以太网适配器，并在 VM 上执行的数据包捕获中显示。 但是, 以太网适配器会根据以太网适配器的 MTU 将数据包分解为多个较小的帧。
 
 ### <a name="tcp-mss-window-scaling-and-pmtud"></a>TCP MSS 窗口缩放和 PMTUD
 
@@ -124,7 +111,7 @@ IP 标头和 TCP 标头各为 20 字节，总共为 40 字节。 因此，MTU �
 
 MSS 会经过协商，但不一定表明可以使用实际 MSS。 这是因为，源与目标之间的路径中的其他网络设备使用的 MTU 值，可能小于源和目标的 MTU 值。 在这种情况下，MTU 小于数据包的设备将会丢弃该数据包。 该设备会发回包含其 MTU 的 ICMP Fragmentation Needed (Type 3, Code 4) 消息。 此 ICMP 消息可让源主机适当减小其路径 MTU。 此过程称为“路径 MTU 发现”(PMTUD)。
 
-PMTUD 过程的效率低下，会影响网络性能。 如果发送的数据包超过网络路径的 MTU，需要使用更低的 MSS 重新传输该数据包。 如果发送方未收到 ICMP Fragmentation Needed 消息，原因可能是路径中存在网络防火墙（通常称为“PMTUD 黑洞”），因此发送方不知道它需要降低 MSS 并持续重新传输数据包。  这就是原因，我们不建议增加 Azure VM MTU。
+PMTUD 过程的效率低下，会影响网络性能。 如果发送的数据包超过网络路径的 MTU，需要使用更低的 MSS 重新传输该数据包。 如果发送方未收到 ICMP Fragmentation Needed 消息，原因可能是路径中存在网络防火墙（通常称为“PMTUD 黑洞”），因此发送方不知道它需要降低 MSS 并持续重新传输数据包。  这就是我们不建议增加 Azure VM MTU 的原因。
 
 #### <a name="vpn-and-mtu"></a>VPN 和 MTU
 
@@ -141,9 +128,9 @@ PMTUD 过程的效率低下，会影响网络性能。 如果发送的数据包�
 | | | | |
 |-|-|-|-|
 |Route |**距离**|**单向时间**|**RTT**|
-|纽约飞往旧金山|4,148 公里|21 ms|42 ms|
-|伦敦到纽约|5,585 公里|28 ms|56 ms|
-|纽约到悉尼|15,993 公里|80 毫秒|160 ms|
+|纽约到旧金山|4148千米|21毫秒|42 ms|
+|纽约到伦敦|5585千米|28毫秒|56 ms|
+|纽约到悉尼|15993千米|80 ms|160 ms|
 
 此表显示了两个位置之间的直线距离。 网络中的距离往往大于直线距离。 下面是计算受制于光速的最小 RTT 的简单公式：
 
@@ -151,7 +138,7 @@ PMTUD 过程的效率低下，会影响网络性能。 如果发送的数据包�
 
 可以使用 200 作为传播速度。 这是光在 1 毫秒内传播的距离（以米为单位）。
 
-让我们纽约到旧金山看作为示例。 两者之间的直线距离为 4,148 公里。 将该值插入公式，会得到以下结果：
+接下来, 我们将纽约转到旧金山。 两者之间的直线距离为 4,148 公里。 将该值插入公式，会得到以下结果：
 
 `Minimum RTT = 2 * (4,148 / 200)`
 
@@ -178,7 +165,7 @@ PMTUD 过程的效率低下，会影响网络性能。 如果发送的数据包�
 | | | | |
 |-|-|-|-|
 |**TCP 窗口大小（字节）**|**RTT 延迟（毫秒）**|**最大每秒兆字节吞吐量**|**最大每秒兆位吞吐量**|
-|65,535|第|65.54|524.29|
+|65,535|1|65.54|524.29|
 |65,535|30|2.18|17.48|
 |65,535|60|1.09|8.74|
 |65,535|90|.73|5.83|
@@ -262,7 +249,7 @@ Set-NetTCPSetting
 
 加速网络通过 Azure 的内部可编程硬件以及 SR-IOV 之类的技术，提供一贯的超低网络延迟。 加速网络将大量的 Azure 软件定义网络堆栈从 CPU 转移到基于 FPGA 的 SmartNIC。 这项变化可让最终用户应用程序回收计算周期，减轻 VM 上的负载，减少波动和延迟不一致性。 换而言之，性能可能更具确定性。
 
-加速的网络可以在来宾 VM 以绕过主机并建立直接与主机的 SmartNIC 数据路径，从而提高性能。 加速网络的部分优势如下：
+加速网络通过允许来宾 VM 绕过主机并直接与主机的 SmartNIC 建立数据路径, 提高了性能。 加速网络的部分优势如下：
 
 - **降低延迟/提高每秒数据包数 (pps)** ：从数据路径中去除虚拟交换机可以消除数据包在主机中进行策略处理所花费的时间，同时增大了 VM 中可处理的数据包数。
 
@@ -276,7 +263,7 @@ Set-NetTCPSetting
 
 接收端缩放 (RSS) 是一种网络驱动程序技术，它通过在多处理器系统中的多个 CPU 之间分配接收处理，更有效地分配网络流量的接收负载。 简单来说，RSS 可让系统处理更多的接收流量，因为它使用所有可用的 CPU，而不是只使用一个。 有关 RSS 的更多技术讨论，请参阅[接收端缩放简介](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling)。
 
-在 VM 上启用加速网络后，若要获得最佳性能，需要启用 RSS。 RSS 还可以提供不使用的 Vm 上的优势加速网络。 有关如何确定 RSS 是否已启用及其启用方法的概述，请参阅[优化 Azure 虚拟机的网络吞吐量](https://aka.ms/FastVM)。
+在 VM 上启用加速网络后，若要获得最佳性能，需要启用 RSS。 RSS 还可为不使用加速网络的 Vm 提供权益。 有关如何确定 RSS 是否已启用及其启用方法的概述，请参阅[优化 Azure 虚拟机的网络吞吐量](https://aka.ms/FastVM)。
 
 ### <a name="tcp-timewait-and-timewait-assassination"></a>TCP TIME_WAIT 和 TIME_WAIT 抹消
 
@@ -298,9 +285,9 @@ Azure 提供多种 VM 大小和类型，每种大小和类型的性能各不相�
 
 分配给每个虚拟机的网络带宽按虚拟机的传出（出站）流量计算。 从虚拟机流出的所有网络流量均计入分配限制，不管流向哪个目标。 例如，如果虚拟机的限制为 1,000 Mbps，则不管出站流量的目标是同一虚拟网络中的另一虚拟机，还是 Azure 外部，均适用该限制。
 
-传入流量不直接计算，或者说不直接受到限制。 但还有其他一些因素，如 CPU 和存储限制，可能会影响虚拟机的能力来处理传入的数据。
+传入流量不直接计算，或者说不直接受到限制。 但还有其他因素 (如 CPU 和存储限制) 可能会影响虚拟机处理传入数据的能力。
 
-加速网络旨在改进网络性能（包括延迟、吞吐量和 CPU 使用率）。 加速的网络可以提高虚拟机的吞吐量，但它可以执行该操作只能由虚拟机的已分配的带宽。
+加速网络旨在改进网络性能（包括延迟、吞吐量和 CPU 使用率）。 加速网络可以提高虚拟机的吞吐量, 但最多只能执行虚拟机的分配带宽。
 
 Azure 虚拟机上至少附加了一个网络接口。 它们可能包含多个网络接口。 分配给某个虚拟机的带宽是流经所有网络接口（已连接到该虚拟机）的所有出站流量的总和。 换言之，带宽是按虚拟机分配的，而不管该虚拟机上附加了多少个网络接口。
 

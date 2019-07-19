@@ -1,24 +1,25 @@
 ---
-title: 从虚拟网络到 Azure 容器注册表限制访问
-description: 允许访问到 Azure 容器注册表中，仅从 Azure 虚拟网络中的资源或公共 IP 地址范围。
+title: 限制从虚拟网络访问 Azure 容器注册表
+description: 仅允许从 Azure 虚拟网络中的资源或从公共 IP 地址范围访问 Azure 容器注册表。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: e6e0cdd73a5a2999f78599a06cc7ee397ecc3b4b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 2030496548df312b4f4cfab60c216d5f332c7ac2
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806593"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310393"
 ---
-# <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>限制对 Azure 容器注册表使用 Azure 虚拟网络或防火墙规则的访问
+# <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>使用 Azure 虚拟网络或防火墙规则限制对 Azure 容器注册表的访问权限
 
-[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)提供安全、 专用网络，以便将你的 Azure 和本地资源。 通过限制访问到专用 Azure 容器注册表从 Azure 虚拟网络，可确保仅在虚拟网络中的资源访问注册表。 对于跨界方案，还可以配置防火墙规则以允许仅从特定 IP 地址的注册表访问权限。
+[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)为 azure 和本地资源提供安全的专用网络。 通过限制对 Azure 虚拟网络中的专用 Azure 容器注册表的访问权限, 你可以确保仅虚拟网络中的资源访问注册表。 对于跨界方案, 你还可以将防火墙规则配置为仅允许来自特定 IP 地址的注册表访问。
 
-本文介绍两个方案，以创建网络访问规则，以限制对 Azure 容器注册表的访问： 从虚拟网络中部署的虚拟机或虚拟机的公共 IP 地址。
+本文介绍两种创建网络访问规则以限制对 Azure 容器注册表的访问的方案: 从部署在虚拟网络中的虚拟机或从 VM 的公共 IP 地址。
 
 > [!IMPORTANT]
 > 此功能目前以预览版提供，存在一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
@@ -26,21 +27,21 @@ ms.locfileid: "67806593"
 
 ## <a name="preview-limitations"></a>预览版限制
 
-* 仅**高级**可以使用网络访问规则来配置容器注册表。 有关注册表服务层的信息，请参阅[Azure 容器注册表 Sku](container-registry-skus.md)。 
+* 只能为**高级**容器注册表配置网络访问规则。 有关注册表服务层的信息, 请参阅[Azure 容器注册表 sku](container-registry-skus.md)。 
 
-* 仅[Azure Kubernetes 服务](../aks/intro-kubernetes.md)群集或 Azure[虚拟机](../virtual-machines/linux/overview.md)可用于为主机访问虚拟网络中的容器注册表。 *目前不支持其他 Azure 服务包括 Azure 容器实例。*
+* 只有[Azure Kubernetes Service](../aks/intro-kubernetes.md)群集或 azure[虚拟机](../virtual-machines/linux/overview.md)可以用作主机来访问虚拟网络中的容器注册表。 *当前不支持包括 Azure 容器实例的其他 Azure 服务。*
 
-* [ACR 任务](container-registry-tasks-overview.md)操作当前不支持在容器注册表中访问虚拟网络中。
+* 在虚拟网络中访问的容器注册表中当前不支持[ACR 任务](container-registry-tasks-overview.md)操作。
 
-* 每个注册表支持最多为 100 的虚拟网络规则。
+* 每个注册表最多支持100个虚拟网络规则。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-* 若要使用 Azure CLI 在本文中，Azure CLI 版本 2.0.58 中执行步骤或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+* 若要使用本文中 Azure CLI 的步骤, 需要 Azure CLI 版本2.0.58 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
-* 如果还没有容器注册表，创建一个 (所需的高级 SKU)，并如推送的示例图像`hello-world`从 Docker 中心。 例如，使用[Azure 门户][quickstart-portal]or the [Azure CLI][quickstart-cli]创建注册表。 
+* 如果还没有容器注册表, 请创建一个 (需要高级 SKU), 并`hello-world`从 Docker Hub 推送示例映像。 例如, 使用[Azure 门户][quickstart-portal] or the [Azure CLI][quickstart-cli]创建注册表。 
 
-* 如果你想要限制的注册表访问不同的 Azure 订阅中使用虚拟网络，需要在该订阅中注册用于 Azure 容器注册表的资源提供程序。 例如：
+* 如果要使用其他 Azure 订阅中的虚拟网络限制注册表访问, 则需要在该订阅中注册 Azure 容器注册表的资源提供程序。 例如：
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -48,33 +49,33 @@ ms.locfileid: "67806593"
   az provider register --namespace Microsoft.ContainerRegistry
   ``` 
 
-## <a name="about-network-rules-for-a-container-registry"></a>有关容器注册表的网络规则
+## <a name="about-network-rules-for-a-container-registry"></a>关于容器注册表的网络规则
 
-默认情况下的 Azure 容器注册表接受通过 internet 从任何网络上的主机的连接。 通过虚拟网络，可以允许仅 Azure 资源，例如 AKS 群集或 Azure VM 可以安全地访问注册表中，而无需跨网络边界。 此外可以配置网络防火墙规则允许列表到特定的公共 internet IP 地址范围。 
+默认情况下, Azure 容器注册表接受来自任何网络上的主机的 internet 连接。 使用虚拟网络, 可以仅允许 Azure 资源 (例如 AKS 群集或 Azure VM) 安全访问注册表, 而无需跨越网络边界。 你还可以配置网络防火墙规则, 以将特定的公共 internet IP 地址范围列入允许列表。 
 
-若要限制对注册表的访问，请首先更改注册表的默认操作，以便拒绝所有网络连接。 然后，添加网络访问规则。 客户端授予访问权限通过网络规则必须继续[到容器注册表进行身份验证](https://docs.microsoft.com/azure/container-registry/container-registry-authentication)和有权访问的数据。
+若要限制对注册表的访问权限, 请首先更改注册表的默认操作, 使其拒绝所有网络连接。 然后, 添加网络访问规则。 通过网络规则授予访问权限的客户端必须继续对[容器注册表进行身份验证](https://docs.microsoft.com/azure/container-registry/container-registry-authentication), 并且有权访问数据。
 
-### <a name="service-endpoint-for-subnets"></a>服务终结点的子网
+### <a name="service-endpoint-for-subnets"></a>子网的服务终结点
 
-若要允许来自子网中访问虚拟网络，需要添加[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)Azure 容器注册表服务。 
+若要允许从虚拟网络中的子网进行访问, 需要为 Azure 容器注册表服务添加[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。 
 
-多租户服务，如 Azure 容器注册表，使用单一组的 IP 地址的所有客户。 服务终结点将分配一个终结点来访问注册表。 此终结点提供流量的最佳路由到的资源通过 Azure 主干网络。 虚拟网络和子网的标识也随每个请求进行传输。
+多租户服务 (如 Azure 容器注册表) 为所有客户使用一组 IP 地址。 服务终结点分配终结点以访问注册表。 此终结点通过 Azure 主干网络为流量提供到资源的最佳路由。 虚拟网络和子网的标识也随每个请求进行传输。
 
 ### <a name="firewall-rules"></a>防火墙规则
 
-对于 IP 网络规则，提供允许从 internet 地址范围，如使用 CIDR 表示法*16.17.18.0/24*或单独 IP 地址将像*16.17.18.19*。 IP 网络规则仅适用于*公共*internet IP 地址。 （如在 RFC 1918 中所定义），为专用网络保留的 IP 地址范围不允许在 IP 规则。
+对于 IP 网络规则, 请使用 CIDR 表示法 (如*16.17.18.0/24* ) 或单个 IP 地址 (例如*16.17.18.19*) 提供允许的 internet 地址范围。 仅允许*公共*internet ip 地址使用 IP 网络规则。 IP 规则中不允许为专用网络保留的 IP 地址范围 (如 RFC 1918 中所定义)。
 
-## <a name="create-a-docker-enabled-virtual-machine"></a>创建启用 Docker 的虚拟机
+## <a name="create-a-docker-enabled-virtual-machine"></a>创建启用了 Docker 的虚拟机
 
-在本文中，使用在启用 Docker 的 Ubuntu 虚拟机访问的 Azure 容器注册表。 若要对注册表使用 Azure Active Directory 身份验证，还安装[Azure CLI][azure-cli]在 VM 上。 如果已有 Azure 虚拟机，跳过此步骤中创建。
+本文介绍如何使用启用了 Docker 的 Ubuntu VM 来访问 Azure 容器注册表。 若要对注册表使用 Azure Active Directory 身份验证, 请在 VM 上安装[Azure CLI][azure-cli] 。 如果已有 Azure 虚拟机, 请跳过此创建步骤。
 
-你的虚拟机和容器注册表，可能会使用相同的资源组。 此安装程序简化了清理结束时，但不是必需的。 如果您选择创建的虚拟机和虚拟网络的单独的资源组，运行[az 组创建][az-group-create]。 下面的示例创建名为的资源组*myResourceGroup*中*westcentralus*位置：
+你可以对虚拟机和容器注册表使用同一资源组。 此设置简化了在结束时的清理, 但并不是必需的。 如果选择为虚拟机和虚拟网络创建单独的资源组, 请运行[az group create][az-group-create]。 以下示例在 " *westcentralus* " 位置创建名为 " *myResourceGroup* " 的资源组:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-现在，将默认值部署 Ubuntu Azure 虚拟机[az vm 创建][az-vm-create]。 下面的示例创建名为的 VM *myDockerVM*:
+现在使用[az vm create][az-vm-create]部署默认 Ubuntu Azure 虚拟机。 以下示例创建名为*myDockerVM*的 VM:
 
 ```azurecli
 az vm create \
@@ -85,7 +86,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-创建 VM 需要几分钟时间。 等该命令完成后，记下 Azure CLI 显示的 `publicIpAddress`。 使用此地址来建立 SSH 连接到 VM，并可用于更高版本安装的防火墙规则。
+创建 VM 需要几分钟时间。 等该命令完成后，记下 Azure CLI 显示的 `publicIpAddress`。 使用此地址来建立与 VM 的 SSH 连接, 并根据需要为防火墙规则设置更高的连接。
 
 ### <a name="install-docker-on-the-vm"></a>在 VM 上安装 Docker
 
@@ -95,7 +96,7 @@ az vm create \
 ssh azureuser@publicIpAddress
 ```
 
-运行以下命令以在 Ubuntu VM 上安装 Docker:
+运行以下命令, 在 Ubuntu VM 上安装 Docker:
 
 ```bash
 sudo apt install docker.io -y
@@ -117,19 +118,19 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>安装 Azure CLI
 
-按照[使用 apt 安装 Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) 中的步骤在 Ubuntu 虚拟机上安装 Azure CLI。 对于本文中，请确保安装版本 2.0.58 或更高版本。
+按照[使用 apt 安装 Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) 中的步骤在 Ubuntu 虚拟机上安装 Azure CLI。 对于本文, 请确保安装2.0.58 或更高版本。
 
 退出 SSH 连接。
 
 ## <a name="allow-access-from-a-virtual-network"></a>允许从虚拟网络进行访问
 
-在本部分中，将容器注册表配置为允许来自子网中的 Azure 虚拟网络访问。 提供了使用 Azure CLI 和 Azure 门户的等效步骤。
+在本部分中, 将容器注册表配置为允许从 Azure 虚拟网络中的子网进行访问。 提供的等效步骤使用 Azure CLI 和 Azure 门户。
 
-### <a name="allow-access-from-a-virtual-network---cli"></a>允许从虚拟网络-CLI 进行访问
+### <a name="allow-access-from-a-virtual-network---cli"></a>允许从虚拟网络进行访问-CLI
 
 #### <a name="add-a-service-endpoint-to-a-subnet"></a>将服务终结点添加到子网
 
-在创建 VM 时，默认情况下的 Azure 同一资源组中创建虚拟网络。 虚拟网络的名称基于虚拟机的名称。 例如，如果为虚拟机命名*myDockerVM*，默认虚拟网络名称是*myDockerVMVNET*，与名为的子网*myDockerVMSubnet*。 在 Azure 门户或通过使用对此进行验证[az 网络 vnet 列表][az-network-vnet-list]命令：
+创建 VM 时, Azure 默认情况下会在同一资源组中创建虚拟网络。 虚拟网络的名称基于虚拟机的名称。 例如, 如果将虚拟机命名为*myDockerVM*, 则默认虚拟网络名称为*myDockerVMVNET*, 子网名为*myDockerVMSubnet*。 在 Azure 门户或使用[az network vnet list][az-network-vnet-list]命令验证此内容:
 
 ```azurecli
 az network vnet list --resource-group myResourceGroup --query "[].{Name: name, Subnet: subnets[0].name}"
@@ -146,7 +147,7 @@ az network vnet list --resource-group myResourceGroup --query "[].{Name: name, S
 ]
 ```
 
-使用[az 网络 vnet 子网更新][az-network-vnet-subnet-update]命令，将添加**Microsoft.ContainerRegistry**与子网的服务终结点。 替换为虚拟网络和以下命令中的子网的名称：
+使用[az network vnet subnet update][az-network-vnet-subnet-update]命令将**microsoft.containerregistry**服务终结点添加到子网。 在以下命令中, 将虚拟网络和子网的名称替换:
 
 ```azurecli
 az network vnet subnet update \
@@ -156,7 +157,7 @@ az network vnet subnet update \
   --service-endpoints Microsoft.ContainerRegistry
 ```
 
-使用[az 网络 vnet 子网显示][az-network-vnet-subnet-show]命令来检索子网的资源 ID。 您需要它在稍后的步骤来配置网络访问规则。
+使用[az network vnet subnet show][az-network-vnet-subnet-show]命令检索子网的资源 ID。 你需要在后面的步骤中配置网络访问规则。
 
 ```azurecli
 az network vnet subnet show \
@@ -173,72 +174,72 @@ az network vnet subnet show \
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="change-default-network-access-to-registry"></a>更改注册表的默认网络访问
+#### <a name="change-default-network-access-to-registry"></a>更改注册表的默认网络访问权限
 
-默认情况下，Azure 容器注册表允许任何网络上的主机的连接。 若要限制对所选网络的访问，更改用于拒绝访问的默认操作。 在下面的示例注册表的名称替换[az acr update][az-acr-update]命令：
+默认情况下, Azure 容器注册表允许来自任何网络上的主机的连接。 若要限制对所选网络的访问, 请将默认操作更改为 "拒绝访问"。 在下面的[az acr update][az-acr-update]命令中替换注册表的名称:
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
 ```
 
-#### <a name="add-network-rule-to-registry"></a>将网络规则添加到注册表
+#### <a name="add-network-rule-to-registry"></a>向注册表添加网络规则
 
-使用[az acr 网络规则添加][az-acr-network-rule-add]命令，将网络规则添加到注册表，允许从虚拟机的子网访问。 替换为容器注册表的名称和以下命令中的子网的资源 ID: 
+使用[az acr 网络规则添加][az-acr-network-rule-add]命令将网络规则添加到允许从 VM 子网进行访问的注册表。 将容器注册表的名称和子网的资源 ID 替换为以下命令: 
 
  ```azurecli
 az acr network-rule add --name mycontainerregistry --subnet <subnet-resource-id>
 ```
 
-继续[验证是否对注册表的访问](#verify-access-to-the-registry)。
+继续[验证对注册表的访问](#verify-access-to-the-registry)。
 
-### <a name="allow-access-from-a-virtual-network---portal"></a>允许访问从虚拟网络-门户
+### <a name="allow-access-from-a-virtual-network---portal"></a>允许从虚拟网络进行访问-门户
 
 #### <a name="add-service-endpoint-to-subnet"></a>将服务终结点添加到子网
 
-在创建 VM 时，默认情况下的 Azure 同一资源组中创建虚拟网络。 虚拟网络的名称基于虚拟机的名称。 例如，如果为虚拟机命名*myDockerVM*，默认虚拟网络名称是*myDockerVMVNET*，与名为的子网*myDockerVMSubnet*。
+创建 VM 时, Azure 默认情况下会在同一资源组中创建虚拟网络。 虚拟网络的名称基于虚拟机的名称。 例如, 如果将虚拟机命名为*myDockerVM*, 则默认虚拟网络名称为*myDockerVMVNET*, 子网名为*myDockerVMSubnet*。
 
-若要将服务终结点为 Azure 容器注册表添加到子网：
+将 Azure 容器注册表的服务终结点添加到子网:
 
-1. 在顶部的搜索框[Azure 门户][azure-portal]，输入*虚拟网络*。 当“虚拟网络”出现在搜索结果中时，请将其选中  。
-1. 从虚拟网络列表中，选择你的虚拟机部署的位置，如虚拟网络*myDockerVMVNET*。
-1. 下**设置**，选择**子网**。
-1. 选择你的虚拟机部署的位置，如子网*myDockerVMSubnet*。
-1. 下**服务终结点**，选择**Microsoft.ContainerRegistry**。
+1. 在 " [Azure 门户][azure-portal]顶部的搜索框中, 输入"*虚拟网络*"。 当“虚拟网络”出现在搜索结果中时，请将其选中  。
+1. 从虚拟网络列表中, 选择要在其中部署虚拟机的虚拟网络, 例如 " *myDockerVMVNET*"。
+1. 在 "**设置**" 下, 选择 "**子网**"。
+1. 选择要在其中部署虚拟机的子网, 例如 " *myDockerVMSubnet*"。
+1. 在 "**服务终结点**" 下, 选择**microsoft.containerregistry**。
 1. 选择**保存**。
 
 ![将服务终结点添加到子网][acr-subnet-service-endpoint] 
 
-#### <a name="configure-network-access-for-registry"></a>配置网络访问的注册表
+#### <a name="configure-network-access-for-registry"></a>为注册表配置网络访问权限
 
-默认情况下，Azure 容器注册表允许任何网络上的主机的连接。 若要限制对虚拟网络的访问：
+默认情况下, Azure 容器注册表允许来自任何网络上的主机的连接。 若要限制对虚拟网络的访问权限:
 
-1. 在门户中，导航到容器注册表。
-1. 下**设置**，选择**防火墙和虚拟网络**。
+1. 在门户中, 导航到容器注册表。
+1. 在 "**设置**" 下, 选择 "**防火墙和虚拟网络**"。
 1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问  。 
-1. 选择**将现有虚拟网络添加**，并选择虚拟网络和子网配置的服务终结点。 选择 **添加** 。
+1. 选择 "**添加现有虚拟网络**", 并选择使用服务终结点配置的虚拟网络和子网。 选择 **添加** 。
 1. 选择**保存**。
 
-![配置容器注册表的虚拟网络][acr-vnet-portal]
+![为容器注册表配置虚拟网络][acr-vnet-portal]
 
-继续[验证是否对注册表的访问](#verify-access-to-the-registry)。
+继续[验证对注册表的访问](#verify-access-to-the-registry)。
 
-## <a name="allow-access-from-an-ip-address"></a>允许从 IP 地址进行访问
+## <a name="allow-access-from-an-ip-address"></a>允许来自 IP 地址的访问
 
-在本部分中，将容器注册表配置为允许来自特定 IP 地址或范围的访问。 提供了使用 Azure CLI 和 Azure 门户的等效步骤。
+在本部分中, 将容器注册表配置为允许从特定 IP 地址或范围进行访问。 提供的等效步骤使用 Azure CLI 和 Azure 门户。
 
-### <a name="allow-access-from-an-ip-address---cli"></a>允许访问来自某个 IP 地址-CLI
+### <a name="allow-access-from-an-ip-address---cli"></a>允许从 IP 地址进行访问-CLI
 
-#### <a name="change-default-network-access-to-registry"></a>更改注册表的默认网络访问
+#### <a name="change-default-network-access-to-registry"></a>更改注册表的默认网络访问权限
 
-如果尚未这样做，更新要默认拒绝访问的注册表配置。 在下面的示例注册表的名称替换[az acr update][az-acr-update]命令：
+如果尚未执行此操作, 请将注册表配置更新为默认拒绝访问。 在下面的[az acr update][az-acr-update]命令中替换注册表的名称:
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
 ```
 
-#### <a name="remove-network-rule-from-registry"></a>从注册表中删除网络规则
+#### <a name="remove-network-rule-from-registry"></a>从注册表删除网络规则
 
-如果你之前添加网络规则，以允许从虚拟机的子网进行访问，请删除子网的服务终结点和网络规则。 使用容器注册表的名称和在前面步骤中检索到的子网的资源 ID 替换[az acr 网络规则删除][az-acr-network-rule-remove]命令： 
+如果你以前添加了允许从 VM 的子网访问的网络规则, 请删除子网的服务终结点和网络规则。 将容器注册表的名称和在 " [az acr 网络-规则" 删除][az-acr-network-rule-remove]命令的前面步骤中检索到的子网的资源 ID 替换为: 
 
 ```azurecli
 # Remove service endpoint
@@ -254,87 +255,87 @@ az network vnet subnet update \
 az acr network-rule remove --name mycontainerregistry --subnet <subnet-resource-id>
 ```
 
-#### <a name="add-network-rule-to-registry"></a>将网络规则添加到注册表
+#### <a name="add-network-rule-to-registry"></a>向注册表添加网络规则
 
-使用[az acr 网络规则添加][az-acr-network-rule-add]命令，将网络规则添加到注册表，允许来自 VM 的 IP 地址的访问。 替换为容器注册表的名称和以下命令中的 VM 的公共 IP 地址。
+使用[az acr 网络规则添加][az-acr-network-rule-add]命令将网络规则添加到允许从 VM 的 IP 地址进行访问的注册表。 在以下命令中, 将容器注册表的名称和 VM 的公共 IP 地址替换为。
 
 ```azurecli
 az acr network-rule add --name mycontainerregistry --ip-address <public-IP-address>
 ```
 
-继续[验证是否对注册表的访问](#verify-access-to-the-registry)。
+继续[验证对注册表的访问](#verify-access-to-the-registry)。
 
-### <a name="allow-access-from-an-ip-address---portal"></a>允许访问来自某个 IP 地址-门户
+### <a name="allow-access-from-an-ip-address---portal"></a>允许来自 IP 地址的访问-门户
 
-#### <a name="remove-existing-network-rule-from-registry"></a>从注册表中删除现有的网络规则
+#### <a name="remove-existing-network-rule-from-registry"></a>从注册表中删除现有网络规则
 
-如果你之前添加网络规则，以允许从虚拟机的子网进行访问，请删除现有规则。 如果你想要从不同的 VM 访问注册表，请跳过此部分。
+如果你以前添加了允许从 VM 的子网访问的网络规则, 请删除现有规则。 如果要从不同的 VM 访问注册表, 请跳过此部分。
 
-* 更新子网设置，为 Azure 容器注册表中删除子网的服务终结点。 
+* 更新子网设置, 删除 Azure 容器注册表的子网的服务终结点。 
 
-  1. 在中[Azure 门户][azure-portal]，导航到在其中部署你的虚拟机的虚拟网络。
-  1. 下**设置**，选择**子网**。
-  1. 选择在其中部署你的虚拟机的子网。
-  1. 下**服务终结点**，删除的复选框**Microsoft.ContainerRegistry**。 
+  1. 在[Azure 门户][azure-portal]中, 导航到部署了虚拟机的虚拟网络。
+  1. 在 "**设置**" 下, 选择 "**子网**"。
+  1. 选择要在其中部署虚拟机的子网。
+  1. 在 "**服务终结点**" 下, 删除**microsoft.containerregistry**的复选框。 
   1. 选择**保存**。
 
-* 删除允许访问注册表的子网的网络规则。
+* 删除允许子网访问注册表的网络规则。
 
-  1. 在门户中，导航到容器注册表。
-  1. 下**设置**，选择**防火墙和虚拟网络**。
-  1. 下**虚拟网络**，选择虚拟网络的名称，然后选择**删除**。
+  1. 在门户中, 导航到容器注册表。
+  1. 在 "**设置**" 下, 选择 "**防火墙和虚拟网络**"。
+  1. 在 "**虚拟网络**" 下, 选择虚拟网络的名称, 然后选择 "**删除**"。
   1. 选择**保存**。
 
-#### <a name="add-network-rule-to-registry"></a>将网络规则添加到注册表
+#### <a name="add-network-rule-to-registry"></a>向注册表添加网络规则
 
-1. 在门户中，导航到容器注册表。
-1. 下**设置**，选择**防火墙和虚拟网络**。
-1. 如果尚未执行此操作，选择允许从访问**选定的网络**。 
-1. 下**虚拟网络**，确保已选中任何网络。
-1. 下**防火墙**，输入 VM 的公共 IP 地址。 或者，在包含 VM 的 IP 地址的 CIDR 表示法输入的地址范围。
+1. 在门户中, 导航到容器注册表。
+1. 在 "**设置**" 下, 选择 "**防火墙和虚拟网络**"。
+1. 如果尚未执行此操作, 请选择允许从**所选网络**进行访问。 
+1. 在 "**虚拟网络**" 下, 确保未选择网络。
+1. 在 "**防火墙**" 下, 输入 VM 的公共 IP 地址。 或者, 以 CIDR 表示法输入包含 VM IP 地址的地址范围。
 1. 选择**保存**。
 
-![配置容器注册表的防火墙规则][acr-vnet-firewall-portal]
+![为容器注册表配置防火墙规则][acr-vnet-firewall-portal]
 
-继续[验证是否对注册表的访问](#verify-access-to-the-registry)。
+继续[验证对注册表的访问](#verify-access-to-the-registry)。
 
-## <a name="verify-access-to-the-registry"></a>验证对注册表的访问
+## <a name="verify-access-to-the-registry"></a>验证对注册表的访问权限
 
-之后等待几分钟的配置更新，请验证 VM 可以访问容器注册表。 请通过 SSH 连接到你的 VM，并运行[az acr login][az-acr-login]命令登录到注册表。 
+等待几分钟后更新配置, 并验证 VM 是否可以访问容器注册表。 与 VM 建立 SSH 连接, 并运行[az acr login][az-acr-login]命令以登录到注册表。 
 
 ```bash
 az acr login --name mycontainerregistry
 ```
 
-你可以执行注册表操作，例如运行`docker pull`从注册表提取的示例图像。 替换为适用于你使用注册表登录服务器名称 （全部小写） 作为前缀的注册表的映像和标记值：
+你可以执行注册表操作, 如 " `docker pull`运行" 从注册表提取示例映像。 替换适用于注册表的图像和标记值, 并以注册表登录服务器名称 (全部小写) 作为前缀:
 
 ```bash
 docker pull mycontainerregistry.azurecr.io/hello-world:v1
 ``` 
 
-Docker 已成功将该映像拉取到 VM。
+Docker 已成功将映像提取到 VM。
 
-此示例演示您可以通过网络访问规则访问专用容器注册表。 但是，从不同的登录名主机不具有配置了网络访问规则，不能访问注册表。 如果你尝试从另一台主机使用登录`az acr login`命令或`docker login`命令中，输出为如下所示：
+此示例演示了如何通过网络访问规则访问专用容器注册表。 但是, 无法从未配置网络访问规则的其他登录主机访问注册表。 如果尝试使用`az acr login`命令或`docker login`命令从另一个主机登录, 则输出类似于以下内容:
 
 ```Console
 Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ failed with status: 403 Forbidden
 ```
 
-## <a name="restore-default-registry-access"></a>还原默认注册表访问权限
+## <a name="restore-default-registry-access"></a>还原默认注册表访问
 
-若要还原注册表，以允许访问默认情况下，删除任何配置的网络规则。 然后设置以允许访问的默认操作。 提供了使用 Azure CLI 和 Azure 门户的等效步骤。
+若要将注册表还原为默认允许访问, 请删除配置的所有网络规则。 然后, 设置默认操作以允许访问。 提供的等效步骤使用 Azure CLI 和 Azure 门户。
 
 ### <a name="restore-default-registry-access---cli"></a>还原默认注册表访问-CLI
 
 #### <a name="remove-network-rules"></a>删除网络规则
 
-若要查看为您的注册表配置的网络规则的列表，请运行以下[az acr 网络规则列表][az-acr-network-rule-list]命令：
+若要查看为你的注册表配置的网络规则列表, 请运行以下[az acr 网络规则列表][az-acr-network-rule-list]命令:
 
 ```azurecli
 az acr network-rule list--name mycontainerregistry 
 ```
 
-对于配置为每个规则，请运行[az acr 网络规则删除][az-acr-network-rule-remove]命令以将其删除。 例如：
+对于配置的每个规则, 请运行[az acr 网络规则 remove][az-acr-network-rule-remove]命令将其删除。 例如：
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.
@@ -353,29 +354,29 @@ az acr network-rule remove \
 
 #### <a name="allow-access"></a>允许访问
 
-在下面的示例注册表的名称替换[az acr update][az-acr-update]命令：
+在下面的[az acr update][az-acr-update]命令中替换注册表的名称:
 ```azurecli
 az acr update --name myContainerRegistry --default-action Allow
 ```
 
-### <a name="restore-default-registry-access---portal"></a>还原默认注册表访问-门户
+### <a name="restore-default-registry-access---portal"></a>还原默认注册表访问门户
 
 
-1. 在门户中，导航到容器注册表，并选择**防火墙和虚拟网络**。
-1. 下**虚拟网络**，选择每个虚拟网络，然后选择**删除**。
-1. 下**防火墙**，选择每个地址范围，并选择删除图标。
-1. 下**允许从访问**，选择**的所有网络**。 
+1. 在门户中, 导航到容器注册表, 选择 "**防火墙和虚拟网络**"。
+1. 在 "**虚拟网络**" 下, 选择每个虚拟网络, 然后选择 "**删除**"。
+1. 在 "**防火墙**" 下, 选择每个地址范围, 然后选择 "删除" 图标。
+1. 在 "**允许访问**" 下, 选择 "**所有网络**"。 
 1. 选择**保存**。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果你创建所有相同的资源中的 Azure 资源组，并不再需要它们，或者可以使用单个删除的资源[az 组删除](/cli/azure/group)命令：
+如果在同一资源组中创建了所有 Azure 资源, 并且不再需要这些资源, 可以选择使用单个[az group delete](/cli/azure/group)命令删除资源:
 
 ```azurecli
 az group delete --name myResourceGroup
 ```
 
-若要清理你的资源在门户中，导航到 myResourceGroup 资源组。 已加载的资源组，请单击**删除资源组**来删除资源组和存储在此处的资源。
+若要在门户中清理资源, 请导航到 myResourceGroup 资源组。 加载资源组后, 单击 "**删除资源组**" 以删除存储在其中的资源组和资源。
 
 ## <a name="next-steps"></a>后续步骤
 

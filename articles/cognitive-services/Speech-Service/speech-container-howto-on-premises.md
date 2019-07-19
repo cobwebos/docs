@@ -1,5 +1,5 @@
 ---
-title: 与 Kubernetes 和 Helm 一起使用
+title: 与 Kubernetes 和 Jenkins 配合使用
 titleSuffix: Azure Cognitive Services
 description: 使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像, 我们将创建一个 Kubernetes 包。 此包将部署到本地的 Kubernetes 群集。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: ace519d9be5945754fb79dc4c6fbb244c665d98b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: ba292a7d3bdf58ff78764bc2095fdf4a8c486070
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302610"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326207"
 ---
-# <a name="use-with-kubernetes-and-helm"></a>与 Kubernetes 和 Helm 一起使用
+# <a name="use-with-kubernetes-and-helm"></a>与 Kubernetes 和 Jenkins 配合使用
 
-使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像, 我们将创建一个 Kubernetes 包。 此包将部署到本地的 Kubernetes 群集。 最后, 我们将探讨如何测试已部署的服务和各种配置选项。 有关在没有 Kubernetes 业务流程的情况下运行 Docker 容器的详细信息, 请参阅[安装和运行语音服务容器](speech-container-howto.md)。
+在本地管理语音容器的一个选项是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像, 我们将创建一个 Kubernetes 包。 此包将部署到本地的 Kubernetes 群集。 最后, 我们将探讨如何测试已部署的服务和各种配置选项。 有关在没有 Kubernetes 业务流程的情况下运行 Docker 容器的详细信息, 请参阅[安装和运行语音服务容器](speech-container-howto.md)。
 
 ## <a name="prerequisites"></a>系统必备
 

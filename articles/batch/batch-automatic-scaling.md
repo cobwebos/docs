@@ -4,7 +4,7 @@ description: 对云池启用自动缩放功能可以动态调整池中计算节�
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 489a3935605432b485f7b0866668f6dbfaac686b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118105"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323753"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动缩放公式
 
@@ -40,7 +40,7 @@ Azure Batch 可以根据定义的参数自动缩放池。 通过自动缩放，B
 >
 
 ## <a name="automatic-scaling-formulas"></a>自动缩放公式
-自动缩放公式是一个定义的包含一个或多个语句的字符串值。 自动缩放公式会分配给池的 [autoScaleFormula][rest_autoscaleformula] 元素 (Batch REST) 或 [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] 属性 (Batch .NET)。 Batch 服务使用公式来确定池中可供下一个处理间隔使用的目标计算节点数。 公式字符串不能超过 8 KB，最多可以包含 100 个以分号分隔的语句，可以包括换行符和注释。
+自动缩放公式是一个定义的包含一个或多个语句的字符串值。 自动缩放公式分配给池的[autoScaleFormula][rest_autoscaleformula] element (Batch REST) or [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula]属性 (Batch .net)。 Batch 服务使用公式来确定池中可供下一个处理间隔使用的目标计算节点数。 公式字符串不能超过 8 KB，最多可以包含 100 个以分号分隔的语句，可以包括换行符和注释。
 
 可以将自动缩放公式视为 Batch 自动缩放“语言”。 公式语句是自由形式的表达式，可以包括服务定义的变量（由 Batch 服务定义的变量）和用户定义的变量（定义的变量）。 公式语句可以通过内置类型、运算符和函数对这些值执行各种操作。 例如，语句可以采用以下格式：
 
@@ -59,10 +59,11 @@ $variable2 = function2($OtherServiceDefinedVariable, $variable1);
 
 节点的目标数可以大于、小于或等于池中该节点类型的当前数目。 Batch 按特定的间隔（请参阅[自动缩放间隔](#automatic-scaling-interval)）对池的自动缩放公式求值。 Batch 将池中每种节点类型的目标数调整成在求值时自动缩放公式所指定的数目。
 
-### <a name="sample-autoscale-formula"></a>示例自动缩放公式
+### <a name="sample-autoscale-formulas"></a>示例自动缩放公式
 
-下面是可以进行调整以适用于大多数方案的自动缩放公式示例。 示例公式中的变量 `startingNumberOfVMs` 和 `maxNumberofVMs` 可以根据需要进行调整。 此公式缩放专用节点，但可对其进行修改，使其也适用于缩放低优先级节点。 
+下面是两个自动缩放公式的示例, 可以将其调整为适用于大多数方案。 示例公式`startingNumberOfVMs`中`maxNumberofVMs`的变量和可以根据需要进行调整。
 
+#### <a name="pending-tasks"></a>挂起任务
 ```
 startingNumberOfVMs = 1;
 maxNumberofVMs = 25;
@@ -72,6 +73,17 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 ```
 
 对于此自动缩放公式，最初使用单个 VM 创建池。 `$PendingTasks` 指标定义正在运行或已排队的任务数。 该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 `$TargetDedicatedNodes` 变量。 该公式确保专用节点的目标数永远不会超过 25 个 VM。 提交新任务时，池会自动增大。 任务完成时，VM 会逐个变为可用状态，自动缩放公式会收缩池。
+
+此公式缩放专用节点，但可对其进行修改，使其也适用于缩放低优先级节点。
+
+#### <a name="preempted-nodes"></a>抢占节点 
+```
+maxNumberofVMs = 25;
+$TargetDedicatedNodes = min(maxNumberofVMs, $PreemptedNodeCount.GetSample(180 * TimeInterval_Second));
+$TargetLowPriorityNodes = min(maxNumberofVMs , maxNumberofVMs - $TargetDedicatedNodes);
+```
+
+此示例创建一个以25个低优先级节点开头的池。 每次抢占低优先级节点时, 会将其替换为专用节点。 与第一个示例一样, 该`maxNumberofVMs`变量会阻止池超过25个 vm。 此示例可用于利用低优先级 Vm, 同时还可确保池的生存期仅出现固定数量的 preemptions。
 
 ## <a name="variables"></a>变量
 可在自动缩放公式中同时使用“服务定义”  和“用户定义”  的变量。 服务定义的变量内置在 Batch 服务中。 有些服务定义的变量是可读写的，有些是只读的。 用户定义的变量是你定义的变量。 在上一节中所示的示例公式中，`$TargetDedicatedNodes` 和 `$PendingTasks` 是服务定义的变量。 变量 `startingNumberOfVMs` 和 `maxNumberofVMs` 是用户定义的变量。
@@ -126,7 +138,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 * double
 * doubleVec
 * doubleVecList
-* 字符串
+* string
 * timestamp--timestamp 是包含以下成员的复合结构：
 
   * year
@@ -152,7 +164,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 ## <a name="operations"></a>操作
 上一部分中列出的类型允许以下操作。
 
-| Operation | 支持的运算符 | 结果类型 |
+| 操作 | 支持的运算符 | 结果类型 |
 | --- | --- | --- |
 | double *operator* double |+, -, *, / |double |
 | double *operator* timeinterval |* |timeinterval |
@@ -280,7 +292,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
             <li>$TargetLowPriorityNodes</li>
             <li>$CurrentDedicatedNodes</li>
             <li>$CurrentLowPriorityNodes</li>
-            <li>$preemptedNodeCount</li>
+            <li>$PreemptedNodeCount</li>
             <li>$SampleNodeCount</li>
     </ul></p>
     <p>这些服务定义的变量可用于根据节点资源使用量进行调整：</p>
@@ -362,7 +374,7 @@ $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 4. （可选）设置 [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) 属性（默认值为 15 分钟）。
 5. 使用 [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) 或 [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) 提交池。
 
-以下代码片段在 .NET 中创建启用自动缩放的池。 该池的自动缩放公式在星期一将专用节点的目标数设置为 5，在其他星期日期将该目标数设置为 1。 [自动缩放间隔](#automatic-scaling-interval)设置为 30 分钟。 在本文的此部分与其他 C# 代码片段中，`myBatchClient` 是 [BatchClient][net_batchclient] 类的适当初始化的实例。
+以下代码片段在 .NET 中创建启用自动缩放的池。 该池的自动缩放公式在星期一将专用节点的目标数设置为 5，在其他星期日期将该目标数设置为 1。 [自动缩放间隔](#automatic-scaling-interval)设置为 30 分钟。 在本文的此类C#和其他代码片段中`myBatchClient` , 是正确初始化的[BatchClient][net_batchclient]类的实例。
 
 ```csharp
 CloudPool pool = myBatchClient.PoolOperations.CreatePool(
@@ -376,7 +388,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> 创建启用自动缩放的池时，请不要在 **CreatePool** 调用中指定 _targetDedicatedNodes_ 参数或 _targetLowPriorityNodes_ 参数。 应该指定池中的 **AutoScaleEnabled** 和**AutoScaleFormula** 属性。 这些属性的值确定每种类型的节点的目标数。 另请注意，若要手动调整启用自动缩放功能的池的大小（例如，使用 [BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync] 来调整），则必须先**禁用**该池的自动缩放，然后调整其大小。
+> 创建启用自动缩放的池时，请不要在 **CreatePool** 调用中指定 _targetDedicatedNodes_ 参数或 _targetLowPriorityNodes_ 参数。 应该指定池中的 **AutoScaleEnabled** 和**AutoScaleFormula** 属性。 这些属性的值确定每种类型的节点的目标数。 此外, 若要手动调整启用了自动缩放的池的大小 (例如, 使用[BatchClient. PoolOperations. batchclient.pooloperations.resizepoolasync 来调整][net_poolops_resizepoolasync]), 请先**禁用**池上的自动缩放, 然后调整其大小。
 >
 >
 
@@ -386,8 +398,8 @@ await pool.CommitAsync();
 ### <a name="automatic-scaling-interval"></a>自动缩放间隔
 默认情况下，Batch 服务根据其自动缩放公式每隔 15 分钟调整池大小。 可使用以下池属性配置此间隔：
 
-* [CloudPool.AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .NET)
-* [autoScaleEvaluationInterval][rest_autoscaleinterval] (REST API)
+* [CloudPool. AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .net)
+* [autoScaleEvaluationInterval][rest_autoscaleinterval](REST API)
 
 最小间隔为 5 分钟，最大间隔为 168 小时。 如果指定的间隔超出此范围，Batch 服务将返回“错误的请求(400)”错误。
 
@@ -400,8 +412,8 @@ await pool.CommitAsync();
 
 每个 Batch SDK 都提供了启用自动缩放的方式。 例如：
 
-* [BatchClient.PoolOperations.EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
-* [对池启用自动缩放][rest_enableautoscale] (REST API)
+* [BatchClient. PoolOperations. batchclient.pooloperations.enableautoscaleasync][net_enableautoscaleasync] (Batch .net)
+* [启用池的自动缩放][rest_enableautoscale](REST API)
 
 启用现有池的自动缩放时，请注意以下要点：
 
@@ -416,7 +428,7 @@ await pool.CommitAsync();
 >
 >
 
-此 C# 代码片段使用 [Batch.NET][net_api] 库启用现有池的自动缩放：
+此C#代码片段使用[Batch .net][net_api]库启用现有池的自动缩放:
 
 ```csharp
 // Define the autoscaling formula. This formula sets the target number of nodes
@@ -463,7 +475,7 @@ await myBatchClient.PoolOperations.EnableAutoScaleAsync(
 
     在此 REST API 请求中，在 URI 中指定池 ID，并在请求正文的 autoScaleFormula  元素中指定自动缩放公式。 操作的响应包含任何可能与该公式相关的错误信息。
 
-我们将在此 [Batch.NET][net_api] 代码片段中评估自动缩放公式。 如果池未启用自动缩放，先启用自动缩放。
+在此[Batch .net][net_api]代码片段中, 我们将评估自动缩放公式。 如果池未启用自动缩放，先启用自动缩放。
 
 ```csharp
 // First obtain a reference to an existing pool
@@ -612,7 +624,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>示例 3：考虑并行任务
-此示例根据任务数调整池大小。 此公式还考虑为池设置的 [MaxTasksPerComputeNode][net_maxtasks] 值。 在对池启用了[并行任务执行](batch-parallel-node-tasks.md)的情况下，此方法特别有效。
+此示例根据任务数调整池大小。 此公式还考虑为池设置的[cloudpool.maxtaskspercomputenode][net_maxtasks]值。 在对池启用了[并行任务执行](batch-parallel-node-tasks.md)的情况下，此方法特别有效。
 
 ```csharp
 // Determine whether 70 percent of the samples have been recorded in the past

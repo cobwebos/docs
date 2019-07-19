@@ -3,7 +3,7 @@ title: 在 Batch 中使用计算密集型 Azure VM |Microsoft Docs
 description: 如何在 Azure Batch 池中利用 HPC 和 GPU VM 大小
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: 3974be886b57fbf685b211369094edf844d96ab6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 687783520b082cdfd1a6ffc91a8641ea35fafd68
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776518"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323349"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>在 Batch 池中使用 RDMA 或 GPU 实例
 
@@ -43,21 +43,21 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Linux 池 - 虚拟机配置
 
-| 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
+| Size | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS 或<br/>基于 CentO 的 HPC<br/>（Azure 市场） | Intel MPI 5<br/><br/>Linux RDMA 驱动程序 | 启用节点间通信，禁用并发任务执行 |
-| [NC、NCv2、NCv3、NDv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Ubuntu 16.04 LTS 或<br/>CentOS 7.3 或 7.4<br/>（Azure 市场） | NVIDIA CUDA 或 CUDA Toolkit 驱动程序 | 不适用 | 
-| [NV、NVv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS 或<br/>CentOS 7.3<br/>（Azure 市场） | NVIDIA GRID 驱动程序 | 不适用 |
+| [NC、NCv2、NCv3、NDv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Ubuntu 16.04 LTS 或<br/>CentOS 7.3 或 7.4<br/>（Azure 市场） | NVIDIA CUDA 或 CUDA Toolkit 驱动程序 | 不可用 | 
+| [NV、NVv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS 或<br/>CentOS 7.3<br/>（Azure 市场） | NVIDIA GRID 驱动程序 | 不可用 |
 
 <sup>*</sup>支持 RDMA 的 N 系列大小还包含 NVIDIA Tesla GPU
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Windows 池 - 虚拟机配置
 
-| 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
+| Size | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016、2012 R2 或<br/>2012（Azure 市场） | Microsoft MPI 2012 R2 或更高版本，或<br/> Intel MPI 5<br/><br/>Windows RDMA 驱动程序 | 启用节点间通信，禁用并发任务执行 |
-| [NC、NCv2、NCv3、ND、NDv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Windows Server 2016 或 <br/>2012 R2（Azure 市场） | NVIDIA CUDA 或 CUDA Toolkit 驱动程序| 不适用 | 
-| [NV、NVv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>2012 R2（Azure 市场） | NVIDIA GRID 驱动程序 | 不适用 |
+| [NC、NCv2、NCv3、ND、NDv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Windows Server 2016 或 <br/>2012 R2（Azure 市场） | NVIDIA CUDA 或 CUDA Toolkit 驱动程序| 不可用 | 
+| [NV、NVv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>2012 R2（Azure 市场） | NVIDIA GRID 驱动程序 | 不可用 |
 
 <sup>*</sup>支持 RDMA 的 N 系列大小还包含 NVIDIA Tesla GPU
 
@@ -67,7 +67,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 > 具有云服务配置的 Batch 池不支持 N 系列大小。
 >
 
-| 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
+| Size | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016、2012 R2、2012 或<br/>2008 R2（来宾 OS 系列） | Microsoft MPI 2012 R2 或更高版本，或<br/>Intel MPI 5<br/><br/>Windows RDMA 驱动程序 | 启用节点间通信，<br/> 禁用并发任务执行 |
 
@@ -98,7 +98,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 * [Batch Shipyard](https://github.com/Azure/batch-shipyard) 将自动配置 GPU 和 RDMA 驱动程序，以便透明地用于 Azure Batch 上的容器化工作负荷。 Batch Shipyard 完全由配置文件驱动。 提供众多的示例配方配置来启用 GPU 和 RDMA 工作负荷，例如 [CNTK GPU 配方](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI)，它可在 N 系列 VM 上预先配置 GPU 驱动程序，并以 Docker 映像形式加载 Microsoft Cognitive Toolkit 软件。
 
 
-## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>示例：Windows NC VM 池上的 NVIDIA GPU 驱动程序
+## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>例如：Windows NC VM 池上的 NVIDIA GPU 驱动程序
 
 若要在 Windows NC 节点的池上运行 CUDA 应用程序，需要安装 NVDIA GPU 驱动程序。 以下示例步骤使用应用程序包来安装 NVIDIA GPU 驱动程序。 如果工作负载取决于特定的 GPU 驱动程序版本，则可以选择此选项。
 
@@ -107,7 +107,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 3. 将程序包上载到 Batch 帐户。 有关详细步骤，请参阅[应用程序包](batch-application-packages.md)指南。 指定应用程序 ID（如 GPUDriver）和版本（如 411.82）   。
 1. 通过 Batch API 或 Azure 门户，在虚拟机配置中创建具有所需节点数和规模的池。 下表显示了使用启动任务静默安装 NVIDIA GPU 驱动程序的示例设置：
 
-| 设置 | 值 |
+| 设置 | ReplTest1 |
 | ---- | ----- | 
 | **映像类型** | 市场 (Linux/Windows) |
 | **发布者** | MicrosoftWindowsServer |
@@ -117,7 +117,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 | **应用程序包引用** | GPUDriver，版本 411.82 |
 | **启用了启动任务** | True<br>**命令行** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**用户标识** - 池自动用户、管理员<br/>**等待成功** - True
 
-## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>示例：Linux NC VM 池上的 NVIDIA GPU 驱动程序
+## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>例如：Linux NC VM 池上的 NVIDIA GPU 驱动程序
 
 若要在 Linux NC 节点的池上运行 CUDA 应用程序，需要从 CUDA Toolkit 安装必要的 NVIDIA Tesla GPU 驱动程序。 以下示例步骤使用 GPU 驱动程序创建和部署自定义 Ubuntu 16.04 LTS 映像：
 
@@ -128,14 +128,14 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 4. 在支持 NC VM 的区域中创建 Batch 帐户。
 5. 通过 Batch API 或 Azure 门户，[使用自定义映像](batch-custom-images.md)创建具有所需节点数和规模的池。 下表列出了映像的示例池设置：
 
-| 设置 | 值 |
+| 设置 | ReplTest1 |
 | ---- | ---- |
 | **映像类型** | 自定义映像 |
 | **自定义映像** | *映像名称* |
 | **节点代理 SKU** | batch.node.ubuntu 16.04 |
 | **节点大小** | NC6 标准 |
 
-## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>示例：Windows H16r VM 池上的 Microsoft MPI
+## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>例如：Windows H16r VM 池上的 Microsoft MPI
 
 要在 Azure H16r VM 节点的池上运行 Windows MPI 应用程序，需要配置 HpcVmDrivers 扩展并安装 [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi)。 以下是使用必要的驱动程序和软件部署自定义 Windows Server 2016 映像的示例步骤：
 
@@ -147,22 +147,22 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 1. 请按照步骤为 Batch 创建[快照和自定义 Windows VM 映像](batch-custom-images.md)。
 1. 通过 Batch API 或 Azure 门户，[使用自定义映像](batch-custom-images.md)创建具有所需节点数和规模的池。 下表列出了映像的示例池设置：
 
-| 设置 | 值 |
+| 设置 | ReplTest1 |
 | ---- | ---- |
 | **映像类型** | 自定义映像 |
 | **自定义映像** | *映像名称* |
 | **节点代理 SKU** | batch.node.windows amd64 |
 | **节点大小** | H16r 标准 |
 | **启用了节点间通信** | True |
-| **每个节点的任务上限** | 第 |
+| **每个节点的任务上限** | 1 |
 
-## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>示例：Linux H16r VM 池上的 Intel MPI
+## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>例如：Linux H16r VM 池上的 Intel MPI
 
 要在 Linux H 系列节点的池上运行 MPI 应用程序，一种选择是使用 Azure 市场中[基于 CentOS 的 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74HPC?tab=Overview) 映像。 预装了 Linux RDMA 驱动程序和 Intel MPI。 此映像还支持 Docker 容器工作负载。
 
 通过 Batch API 或 Azure 门户，使用该映像创建具有所需节点数和规模的池。 下表列出了示例池设置：
 
-| 设置 | 值 |
+| 设置 | ReplTest1 |
 | ---- | ---- |
 | **映像类型** | 市场 (Linux/Windows) |
 | **发布者** | OpenLogic |
@@ -170,7 +170,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 | **Sku** | 7.4 |
 | **节点大小** | H16r 标准 |
 | **启用了节点间通信** | True |
-| **每个节点的任务上限** | 第 |
+| **每个节点的任务上限** | 1 |
 
 ## <a name="next-steps"></a>后续步骤
 

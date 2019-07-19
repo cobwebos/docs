@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cae6039b904f3dcd19ed191dc1b5fdd2f05f0323
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
-ms.translationtype: HT
+ms.openlocfilehash: 796118999041b2bef2d51657901e9e399578e97c
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260350"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327038"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -115,6 +115,10 @@ ms.locfileid: "68260350"
 
 若要部署为 web 服务, 您必须创建一个推理配置 (`InferenceConfig`) 和一个部署配置。 推理或模型计分是部署模型用于预测的阶段, 最常见的是生产数据。 在推理配置中, 你指定为模型提供服务所需的脚本和依赖项。 在 "部署配置" 中, 指定如何为计算目标提供模型的详细信息。
 
+> [!IMPORTANT]
+> Azure 机器学习 SDK 不为 web 服务或 IoT Edge 部署提供访问数据存储或数据集的方法。 如果需要部署的模型来访问在部署外部存储的数据, 例如在 Azure 存储帐户中, 则必须使用相关的 SDK 开发自定义代码解决方案。 例如,[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)。
+>
+> 可能适用于你的方案的另一种方法是[批处理预测](how-to-run-batch-predictions.md), 这在评分时提供对数据存储的访问。
 
 ### <a id="script"></a> 1.& 依赖项定义条目脚本
 

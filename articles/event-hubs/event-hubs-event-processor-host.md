@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 07/16/2019
 ms.author: shvija
-ms.openlocfilehash: 26f0abb48ba268f79167ed5d00e4f96d8b5e5998
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 013200295f3a6a48d6d96663f98bce506808cd70
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821873"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277374"
 ---
-# <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>使用事件处理程序主机从 Azure 事件中心接收事件
+# <a name="event-processor-host"></a>事件处理程序主机
 
 Azure 事件中心是强大的遥测引入服务，使用它能以较低的成本流式传输数百万个事件。 本文介绍如何通过*事件处理程序主机* (EPH) 使用引用的事件；EPH 是一个智能使用者代理，可以简化检查点、租用和并行事件读取器的管理。  
 
@@ -113,7 +113,7 @@ public class SimpleEventProcessor : IEventProcessor
 | **使用者组名称** | **分区 ID** | **主机名（所有者）** | **租约（或所有权）获取时间** | **分区（检查点）中的偏移量** |
 | --- | --- | --- | --- | --- |
 | $Default | 0 | Consumer\_VM3 | 2018-04-15T01:23:45 | 156 |
-| $Default | 第 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
+| $Default | 1 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
 | $Default | 2 | Consumer\_VM0 | 2018-04-15T01:22:56 | 122 |
 | : |   |   |   |   |
 | : |   |   |   |   |
@@ -179,10 +179,10 @@ Epoch 功能可让用户确保在任意时间点使用者组中只有一个接�
 在流处理中，用户有时想要在单个使用者组中创建多个接收器。 若要支持此类方案，我们确实可以创建一个不带 Epoch 的接收器；在本例中，我们最多允许在使用者组中创建 5 个并发的接收器。
 
 ### <a name="mixed-mode"></a>混合模式
-我们不建议在其中创建接收方使用时期，然后切换到无 epoch 或进行相反转换的相同使用者组上的应用程序使用情况。 但是，如果发生这种行为，服务将使用以下规则进行处理：
+我们不建议使用应用程序的使用情况, 在该应用程序中, 你可以创建具有 epoch 的接收方, 然后在相同的使用者组上切换到无 epoch 或反之亦然。 但是，如果发生这种行为，服务将使用以下规则进行处理：
 
 - 如果已创建一个使用 Epoch e1 的接收器，并且该接收器正在接收事件；同时，创建的新接收器不带 Epoch，那么，创建新接收器的操作将会失败。 Epoch 接收器始终在系统中优先。
-- 如果已创建一个使用 Epoch e1 的接收器，并且该接收器已断开连接；同时，在新 MessagingFactory 中创建的新接收器不带 Epoch，那么，创建新接收器的操作将会成功。 有一点需要此处我们的系统将检测在大约 10 分钟后的"接收方断开连接"。
+- 如果已创建一个使用 Epoch e1 的接收器，并且该接收器已断开连接；同时，在新 MessagingFactory 中创建的新接收器不带 Epoch，那么，创建新接收器的操作将会成功。 此处需要注意的是, 我们的系统会在大约10分钟后检测到 "接收器断开连接"。
 - 如果创建了一个或多个不带 Epoch 的接收器，并且创建了使用 Epoch e1 的新接收器，那么，所有旧接收器将断开连接。
 
 

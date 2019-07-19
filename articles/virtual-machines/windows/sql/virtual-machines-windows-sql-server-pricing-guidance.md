@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d53c1de9678db497a20788d0cab7ee4f0e6f0c9c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a872b8c34011247e68b0d459482c0599ac0426f2
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607059"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228389"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 的定价指南
 
@@ -99,7 +99,7 @@ ms.locfileid: "67607059"
 “通过许可移动性使用自己的 SQL Server 许可证”  （也称为**BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是已通过批量许可计划获得许可证和软件保障。
 
 > [!IMPORTANT]
-> BYOL 映像需要具有软件保障的企业协议。 目前，它们未作为 Azure 云解决方案合作伙伴 (CSP) 的一部分提供。 CSP 客户还可以通过将部署的即用即付映像，然后启用凭借自己的许可证[Azure 混合权益](virtual-machines-windows-sql-ahb.md)。
+> BYOL 映像需要具有软件保障的企业协议。 目前，它们未作为 Azure 云解决方案合作伙伴 (CSP) 的一部分提供。 CSP 客户可以通过部署即用即付映像, 然后启用[Azure 混合权益](virtual-machines-windows-sql-ahb.md)来自带许可证。
 
 > [!NOTE]
 > BYOL 映像目前仅适用于 Windows 虚拟机。 但是，可以在仅限 Linux 的 VM 上手动安装 SQL Server。 请参阅 [Linux SQL VM 常见问题解答](../../linux/sql/sql-server-linux-faq.md)中的指导原则。
@@ -114,8 +114,7 @@ ms.locfileid: "67607059"
 
 | BYOL 权益 | 描述 |
 |-----|-----|
-| 节省费用  | 如果工作负荷将连续运行 SQL Server Standard 或 Enterprise 超过 10 个月  ，则自带 SQL Server 许可证比按使用情况付费更具成本效益。 |
-| 长期节省  | 通常，若购买或续订 SQL Server 许可证，前三年每年要便宜 30%  。 此外，三年之后，无需再续订许可证，只需支付软件保障费用。 此时，它将便宜两倍  。 |
+| 节省费用  | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)提供高达 55% 的节省量。 有关详细信息, 请参阅 [交换机授权模型] (虚拟机-ahb.md |
 | 免费的被动辅助副本  | 自带许可证的另一项好处是每个 SQL Server [免费许可 1 个被动辅助副本](https://azure.microsoft.com/pricing/licensing-faq/)以实现高可用性。 这会高度可用的 SQL Server 部署（例如使用 Always On 可用性组）的许可成本减少了一半。 通过故障转移服务器软件保障权益，可享用被动辅助副本的运行权限。 |
 
 若要使用上述某个自带许可证映像创建 SQL Server 2017 Azure VM，请参阅前缀为“{BYOL}”的 VM：

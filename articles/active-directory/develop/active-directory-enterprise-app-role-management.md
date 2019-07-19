@@ -8,26 +8,27 @@ manager: CelesteDG
 editor: ''
 ms.assetid: eb2b3741-3cde-45c8-b639-a636f3df3b74
 ms.service: active-directory
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15165bce70a9bc2fbf3eb840ca8bce4fd5073280
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 148324f293c36b88657f50a7405d85210b62dcc4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544643"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321242"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
 可以使用 Azure Active Directory (Azure AD) 为完成应用授权后收到的响应令牌中的角色声明自定义声明类型。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - 安装了目录的 Azure AD 订阅。
 - 启用了单一登录 (SSO) 的订阅。 必须使用应用程序配置 SSO。
@@ -159,13 +160,13 @@ ms.locfileid: "65544643"
     | 角色名称  | user.assignedroles |
 
     >[!NOTE]
-    >如果角色声明值为 null，然后 Azure AD 不会发送此值在令牌中，这是根据设计默认值。
+    >如果角色声明值为 null, 则 Azure AD 将不会在令牌中发送此值, 这是默认设置。
 
-    a. 单击**编辑**图标以打开**用户属性和声明**对话框。
+    a. 单击 "**编辑**" 图标, 打开 "& 声明" 对话框中的 "**用户属性**"。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b. 在中**管理用户声明**对话框中，通过单击添加 SAML 令牌属性**添加新声明**。
+    b. 在 "**管理用户声明**" 对话框中, 单击 "**添加新声明**" 添加 "SAML 令牌" 属性。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
@@ -177,7 +178,7 @@ ms.locfileid: "65544643"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 选择“保存”。 
+    f. 选择**保存**。
 
 10. 若要在标识提供者启动的单一登录中测试应用程序，请登录到[访问面板](https://myapps.microsoft.com)，然后选择应用程序磁贴。 在 SAML 令牌中，应该会看到具有所提供的声明名称的用户的所有已分配角色。
 

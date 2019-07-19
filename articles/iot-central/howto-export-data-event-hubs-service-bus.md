@@ -4,34 +4,34 @@ description: 如何将数据从 Azure IoT Central 应用程序导出到 Azure �
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/20/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6f10352646350152c5aac795885231697e81fe7
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65463988"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850194"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>导出 Azure IoT Central 中的数据
 
 *本主题适用于管理员。*
 
-本文介绍如何在 Azure IoT Central 中使用连续数据导出功能，以将数据导出到您自己**Azure 事件中心**，并**Azure 服务总线**实例。 可以将“度量”  、“设备”  和“设备模板”  导出至自己的目标，以便执行暖路径见解和分析操作。 这包括在 Azure 流分析中触发自定义规则、在 Azure 逻辑应用中触发自定义工作流，或者通过 Azure Functions 转换和传递数据。 
+本文介绍如何使用 Azure IoT Central 中的连续数据导出功能将数据导出到自己的**Azure 事件中心**和**azure 服务总线**实例。 可以将“度量”  、“设备”  和“设备模板”  导出至自己的目标，以便执行暖路径见解和分析操作。 这包括在 Azure 流分析中触发自定义规则、在 Azure 逻辑应用中触发自定义工作流，或者通过 Azure Functions 转换和传递数据。 
 
 > [!Note]
 > 同样，启用连续数据导出时，只能获得从那时之后的数据。 目前，关闭连续数据导出后将暂时无法检索数据。 若要保留更多的历史数据，请及早启用连续数据导出。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 你必须是 IoT Central 应用程序中的管理员
 
 ## <a name="set-up-export-destination"></a>设置导出目标
 
-如果没有将导出到现有事件中心/服务总线，请按照下列步骤：
+如果没有要导出到的现有事件中心/服务总线, 请遵循以下步骤:
 
 ## <a name="create-event-hubs-namespace"></a>创建事件中心命名空间
 
@@ -55,25 +55,25 @@ ms.locfileid: "65463988"
 
 ## <a name="set-up-continuous-data-export"></a>设置连续数据导出
 
-现在，已将数据导出到事件中心/服务总线目标，请按照下列步骤来设置持续的数据导出。 
+现在, 你已有要将数据导出到的事件中心/服务总线目标, 请按照以下步骤设置连续数据导出。 
 
 1. 登录到 IoT Central 应用程序。
 
-2. 在左侧菜单中，选择**连续数据导出**。
+2. 在左侧菜单中, 选择 "**连续数据导出**"。
 
     > [!Note]
     > 如果在左侧菜单中看不到“连续数据导出”，则说明你在应用中不是管理员。 请与管理员联系以设置数据导出。
 
     ![创建新的 cde 事件中心](media/howto-export-data/export_menu1.png)
 
-3. 选择 **+ 新建**在右上角的按钮。 选择其中一个**Azure 事件中心**或**Azure 服务总线**为导出的目标。 
+3. 选择右上方的 " **+ 新建**" 按钮。 选择**Azure 事件中心**或**azure 服务总线**作为导出目标。 
 
     > [!NOTE] 
     > 每个应用的最大导出数目是 5。 
 
     ![创建新的连续数据导出](media/howto-export-data/export_new1.png)
 
-4. 在下拉列表框中，选择你**事件中心命名空间/服务总线命名空间**。 也可选取列表中的最后一个选项，即“输入连接字符串”。  
+4. 在下拉列表框中, 选择**事件中心命名空间/服务总线命名空间**。 也可选取列表中的最后一个选项，即“输入连接字符串”。  
 
     > [!NOTE] 
     > 只会在 **IoT Central 应用所在的订阅**中看到存储帐户/事件中心命名空间/服务总线命名空间。 若要导出到此订阅外部的某个目标，请选择“输入连接字符串”，然后参阅步骤 5。 
@@ -84,8 +84,8 @@ ms.locfileid: "65463988"
     ![创建新的 cde 事件中心](media/howto-export-data/export_create1.png)
 
 5. （可选）如果选中了“输入连接字符串”，则会出现一个用于粘贴连接字符串的新框。  若要获取连接字符串，请执行以下操作：
-    - 事件中心或服务总线，请转到 Azure 门户中的命名空间。
-        - 下**设置**，选择**共享访问策略**
+    - 事件中心或服务总线, 请中转到 Azure 门户中的命名空间。
+        - 在 "**设置**" 下, 选择 "**共享访问策略**"
         - 选择默认的 **RootManageSharedAccessKey**，或者创建一个新的
         - 复制主连接字符串或辅助连接字符串
  
@@ -93,7 +93,7 @@ ms.locfileid: "65463988"
 
 7. 在“要导出的数据”  下，通过将类型设置为“打开”  来指定要导出的各类数据。
 
-6. 若要启用连续数据导出，请确保将“数据导出”  设置为“打开”  。 选择“保存”。 
+6. 若要启用连续数据导出，请确保将“数据导出”  设置为“打开”  。 选择**保存**。
 
     ![配置连续数据导出](media/howto-export-data/export_list1.png)
 

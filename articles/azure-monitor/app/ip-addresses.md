@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 07/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: e59b82c3b1000d679e6faa0fc3c55c624a255443
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
-ms.translationtype: HT
+ms.openlocfilehash: 3d2aefa7040ca2082e0e584d250d99f1ca00edf7
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302538"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326425"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 地址
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服务使用许多 IP 地址。 如果要监视的应用托管在防火墙后面，可能需要知道这些 IP 地址。
@@ -52,7 +52,7 @@ ms.locfileid: "68302538"
 | 配置 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | 配置 |`auth.gfx.ms` | |`443` |
 | 配置 |`login.live.com` | |`443` |
-| 安装 |`packages.nuget.org`、`nuget.org`、`api.nuget.org`、`az320820.vo.msecnd.net`（NuGet 下载） | |`443` |
+| 安装 | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`,`dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>可用性测试
 这是用于运行[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)的地址列表。 如果想要对应用运行 Web 测试，但 Web 服务器局限于为特定的客户端提供服务，则必须允许来自可用性测试服务器的传入流量。

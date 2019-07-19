@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: d4ca08a7b757889f79fb7ea5b85d7bc5c1c72259
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.openlocfilehash: ac3d1a55a707349873132befb25a38358b563138
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569367"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875563"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure 安全中心检测功能
 本文档讨论了 Azure 安全中心的高级检测功能，帮助用户确定以 Microsoft Azure 资源（包括 Windows 和 Linux）为目标的活跃威胁，了解进行快速响应所需的知识。
@@ -34,7 +34,7 @@ Azure 安全中心的标准层提供高级检测功能。 有免费试用版可�
 
 作为响应，组织通常会部署各种点解决方案，查找已知的攻击特征，重点做好企业外围防护或终结点防护。 这些解决方案会生成大量的低保真警报，需要安全分析师进行会审和调查。 大多数组织缺乏必要的时间和专业技术来响应此类警报 – 许多警报被置之不理。  同时，攻击者的攻击方法也在逐渐改进，可以突破许多基于攻击特征的防御，并且可以 [适应云环境](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/)。 必须采用新方法更快地确定新出现的威胁，加快检测和应对速度。
 
-## Azure 安全中心如何检测和应对威胁 <a name="asc-detects"></a>
+## Azure 安全中心如何检测和响应威胁<a name="asc-detects"></a>
 Microsoft 安全研究人员始终在不断地寻找威胁。 得益于 Microsoft 在云中和本地的广泛存在，他们可以访问大量的遥测数据。 由于能够广泛访问和收集各种数据集，Microsoft 可以通过本地消费者产品和企业产品以及联机服务发现新的攻击模式和趋势。 因此，当攻击者发布新的越来越复杂的漏斗利用方式时，安全中心就可以快速更新其检测算法。 此方法可以让用户始终跟上变化莫测的威胁环境。
 
 安全中心可以自动从 Azure 资源、网络以及连接的合作伙伴解决方案收集安全信息，对威胁进行检测。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 安全中心会对安全警报进行重要性分类，并提供威胁处置建议。
@@ -50,7 +50,7 @@ Microsoft 安全研究人员始终在不断地寻找威胁。 得益于 Microsof
 ### <a name="threat-intelligence"></a>威胁情报
 Microsoft 提供大量的全球威胁情报。 遥测数据的来源包括：Azure、Office 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC)。 研究人员也会收到在主要的云服务提供者之间共享的威胁情报信息，以及通过第三方的威胁情报源订阅的此类信息。 Azure 安全中心可能会在分析该信息后发出警报，提醒用户注意来自行为不端攻击者的威胁。 示例包括：
 
-* **发往恶意 IP 地址的出站通信**：如果出站流量流向已知的僵尸网络或暗网，则很有可能用户的资源已受攻击，攻击者正尝试在该系统上执行命令或迫使数据泄露。 Azure 安全中心会将网络流量与 Microsoft 的全球威胁数据库进行对比，如果检测到与恶意 IP 地址的通信，则会向用户发出警报。
+* **与恶意 IP 地址的出站通信**: 到已知的僵尸网络或暗网的出站流量可能表示资源已泄露, 攻击者正在尝试对该系统或盗取数据执行命令。 Azure 安全中心会将网络流量与 Microsoft 的全球威胁数据库进行对比，如果检测到与恶意 IP 地址的通信，则会向用户发出警报。
 
 ## <a name="behavioral-analytics"></a>行为分析
 行为分析是一种技术，该技术会对数据进行分析并将数据与一系列已知模式对比。 不过，这些模式不是简单的特征， 需要对大型数据集运用复杂的机器学习算法来确定， 或者由分析专家通过仔细分析恶意行为来确定。 Azure 安全中心可以使用行为分析对虚拟机日志、虚拟网络设备日志、结构日志、故障转储和其他资源进行分析，确定受攻击的资源。

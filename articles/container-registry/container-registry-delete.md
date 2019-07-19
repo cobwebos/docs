@@ -3,22 +3,23 @@ title: 删除 Azure 容器注册表中的映像资源
 description: 详细介绍如何通过删除容器映像数据有效管理注册表大小。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: danlep
-ms.openlocfilehash: c603afa61499a615a0882cef06f14fd3d080a9ef
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: eaf3b3e591ca2ddbd29fd5547d334ef90b24fc5e
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797766"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309645"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>删除 Azure 容器注册表中的容器映像
 
 要保持 Azure 容器注册表的大小不变，应定期删除过时的映像数据。 尽管部分部署到生产的容器映像可能需要存储更长时间，但通常可更快删除其他映像。 例如，在自动化生成和测试方案中，可使用从未部署的映像快速填充注册表，并可在完成生成和测试通过后不久即将其清除。
 
-因为可通过多种不同的方式删除映像数据，请务必了解每个删除操作如何影响存储使用情况。 本文介绍如何删除映像数据的几种方法：
+因为可通过多种不同的方式删除映像数据，请务必了解每个删除操作如何影响存储使用情况。 本文介绍几种删除图像数据的方法:
 
 * 删除[存储库](#delete-repository)：删除存储库中的所有映像和所有唯一层。
 * 按[标记](#delete-by-tag)删除：删除映像、其标记、其引用的所有唯一层，以及与其关联的所有其他标记。
@@ -26,13 +27,13 @@ ms.locfileid: "67797766"
 
 提供示例脚本是为了自动完成删除操作。
 
-有关这些概念的简介，请参阅[注册表，存储库和映像](container-registry-concepts.md)。
+有关这些概念的介绍, 请参阅[关于注册表、存储库和映像](container-registry-concepts.md)。
 
 ## <a name="delete-repository"></a>删除存储库
 
-删除存储库时，将一并删除存储库中的所有映像，包括所有标记、唯一层和清单。 删除存储库，当您恢复使用引用该存储库中的唯一层的映像的存储空间。
+删除存储库时，将一并删除存储库中的所有映像，包括所有标记、唯一层和清单。 删除存储库时, 会恢复在该存储库中引用唯一层的映像所使用的存储空间。
 
-以下 Azure CLI 命令会删除“acr-helloworld”存储库，并删除该存储库中的所有标记和清单。 如果注册表中的任何其他映像不能引用已删除的清单引用的层，层数据还会删除，恢复存储空间。
+以下 Azure CLI 命令会删除“acr-helloworld”存储库，并删除该存储库中的所有标记和清单。 如果注册表中的任何其他图像未引用已删除的清单所引用的层, 则还会删除其层数据, 从而恢复存储空间。
 
 ```azurecli
  az acr repository delete --name myregistry --repository acr-helloworld
@@ -42,7 +43,7 @@ ms.locfileid: "67797766"
 
 可通过在删除操作中指定存储库名称和标记，删除存储库中的单个映像。 如果按标记删除，将恢复该映像中任何唯一层所用的存储空间；唯一层是指不由存储库中的其他任何映像共享的层。
 
-若要删除标记，请使用[az acr 存储库中删除][az-acr-repository-delete]并在映像名称指定`--image`参数。 此操作删除映像的所有唯一层以及与之关联的任何其他标记。
+若要按标记删除, 请使用[az acr repository delete][az-acr-repository-delete] , 并在`--image`参数中指定映像名称。 此操作删除映像的所有唯一层以及与之关联的任何其他标记。
 
 例如，从注册表“myregistry”中删除“acr-helloworld:latest”映像：
 
@@ -53,7 +54,7 @@ Are you sure you want to continue? (y/n): y
 ```
 
 > [!TIP]
-> 按标记删除不应与删除标记（取消标记）混淆  。 可以删除一个标记具有 Azure CLI 命令[az acr 存储库标记][az-acr-repository-untag]。 取消标记映像时不释放任何空间，因为其[清单](container-registry-concepts.md#manifest)和层数据仍保留在注册表中。 仅删除标记引用本身。
+> 按标记删除不应与删除标记（取消标记）混淆  。 可以使用 Azure CLI 命令[az acr repository 取消标记][az-acr-repository-untag]删除标记。 取消标记映像时不释放任何空间，因为其[清单](container-registry-concepts.md#manifest)和层数据仍保留在注册表中。 仅删除标记引用本身。
 
 ## <a name="delete-by-manifest-digest"></a>按清单摘要删除
 
@@ -82,7 +83,7 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-接下来，指定你想要删除中的摘要[az acr 存储库删除][az-acr-repository-delete]命令。 该命令的格式如下：
+接下来, 在[az acr repository delete][az-acr-repository-delete]命令中指定要删除的摘要。 该命令的格式如下：
 
 ```azurecli
 az acr repository delete --name <acrName> --image <repositoryName>@<digest>
@@ -112,7 +113,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 在确定过时的清单摘要以后，可以运行以下 Bash 脚本，删除早于指定时间戳的清单摘要。 它需要 Azure CLI 和 xargs  。 默认情况下，该脚本不执行任何删除。 将 `ENABLE_DELETE` 值改为 `true` 以启用映像删除。
 
 > [!WARNING]
-> 请谨慎使用以下示例脚本，已删除映像数据是无法恢复的。 如果系统按清单摘要（而不是映像名称）拉取映像，则不应运行这些脚本。 删除清单摘要后，这些系统即无法从注册表拉取映像。 而不是由清单，请考虑采用*唯一标记*方案，请[推荐最佳做法][tagging-best-practices]。 
+> 请谨慎使用以下示例脚本，已删除映像数据是无法恢复的。 如果系统按清单摘要（而不是映像名称）拉取映像，则不应运行这些脚本。 删除清单摘要后，这些系统即无法从注册表拉取映像。 请考虑采用*唯一的标记*方案 ([建议的最佳做法][tagging-best-practices]), 而不是按清单进行请求。 
 
 ```bash
 #!/bin/bash
@@ -197,10 +198,10 @@ fi
 az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
 ```
 
-在脚本中使用此命令，可以删除存储库中的所有未标记的映像。
+在脚本中使用此命令, 可以删除存储库中所有未标记的图像。
 
 > [!WARNING]
-> 请谨慎使用以下示例脚本，已删除映像数据是无法恢复的。 如果系统按清单摘要（而不是映像名称）拉取映像，则不应运行这些脚本。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 而不是由清单，请考虑采用*唯一标记*方案，请[推荐最佳做法][tagging-best-practices]。
+> 请谨慎使用以下示例脚本，已删除映像数据是无法恢复的。 如果系统按清单摘要（而不是映像名称）拉取映像，则不应运行这些脚本。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 请考虑采用*唯一的标记*方案 ([建议的最佳做法][tagging-best-practices]), 而不是按清单进行请求。
 
 **Bash 中的 Azure CLI**
 

@@ -1,9 +1,9 @@
 ---
-title: 移动应用程序调用 web Api 的应用程序获取令牌 |Microsoft 标识平台
-description: 了解如何构建一个移动应用，调用 web Api （应用程序获取令牌）
+title: 调用 Web API 的移动应用 - 获取应用的令牌 | Microsoft 标识平台
+description: 了解如何生成调用 Web API 的移动应用（获取应用的令牌）
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,22 +16,22 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590184c25fa0aa3cb3219aa9c185a31e62090ba9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c1ac880aa8274cc9a4ea554de84dcb46476236f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111147"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320909"
 ---
-# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>调用 web Api-移动应用获取令牌
+# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>用于调用 Web API 的移动应用 - 获取令牌
 
-你可以开始调用受保护之前的 web Api，您的应用程序将需要访问令牌。 本文将指导完成使用 Microsoft 身份验证库 (MSAL) 获取令牌的过程。
+需为应用提供一个访问令牌，然后才能开始调用受保护的 Web API。 本文详述使用 Microsoft 身份验证库 (MSAL) 获取令牌的过程。
 
-## <a name="scopes-to-request"></a>作用域，以请求
+## <a name="scopes-to-request"></a>请求的作用域
 
-请求的令牌，需要定义作用域。 作用域确定您的应用程序可以访问哪些数据。  
+请求令牌时，需定义作用域。 作用域决定了应用能够访问哪些数据。  
 
-最简单的方法是组合所需的 web API 的`App ID URI`与作用域`.default`。 执行此操作会告知 Microsoft 标识平台应用所需的门户中的所有作用域设置。
+最简单的方法是将所需 Web API 的 `App ID URI` 与作用域 `.default` 组合在一起。 这样做是为了告知 Microsoft 标识平台，应用需要在门户中设置的所有作用域。
 
 #### <a name="android"></a>Android
 ```Java
@@ -50,9 +50,9 @@ var scopes = new [] {"https://graph.microsoft.com/.default"};
 
 ## <a name="get-tokens"></a>获取令牌
 
-### <a name="via-msal"></a>Via MSAL
+### <a name="via-msal"></a>通过 MSAL
 
-MSAL 允许应用程序获取令牌以无提示方式和以交互方式。 只需调用这些方法和 MSAL 返回请求的作用域的访问令牌。 正确模式是执行无提示请求和故障回复到交互式请求。
+MSAL 允许应用以无提示方式和交互方式获取令牌。 直接调用这些方法，然后 MSAL 就会返回所请求作用域的访问令牌。 正确模式是先执行无提示请求，然后回退到交互式请求。
 
 #### <a name="android"></a>Android
 
@@ -163,9 +163,9 @@ catch(MsalUiRequiredException e)
 
 ### <a name="via-the-protocol"></a>通过协议
 
-我们不建议直接使用协议。 如果这样做，应用程序不会支持某些单一登录 (SSO)、 设备管理和条件性访问方案。
+建议不要直接使用协议。 如果执行此操作, 则应用不支持某些单一登录 (SSO)、设备管理和条件性访问方案。
 
-当使用协议的移动应用程序获取令牌时，需要进行两个请求： 获取授权代码和交换的令牌。
+使用协议获取移动应用的令牌时，需发出两个请求：获取授权代码，然后用它来换取令牌。
 
 #### <a name="get-authorization-code"></a>获取授权代码
 
@@ -179,7 +179,7 @@ client_id=<CLIENT_ID>
 &state=12345
 ```
 
-#### <a name="get-access-and-refresh-token"></a>获取访问权限和刷新令牌
+#### <a name="get-access-and-refresh-token"></a>获取访问和刷新令牌
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -196,4 +196,4 @@ client_id=<CLIENT_ID>
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [调用 web API](scenario-mobile-call-api.md)
+> [调用 Web API](scenario-mobile-call-api.md)

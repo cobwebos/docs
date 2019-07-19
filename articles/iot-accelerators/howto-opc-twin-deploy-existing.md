@@ -1,6 +1,6 @@
 ---
-title: 如何将 OPC 孪生模块部署到现有的 Azure 项目 |Microsoft Docs
-description: 如何将 OPC 孪生部署到现有项目。
+title: 如何将 OPC 克隆模块部署到现有的 Azure 项目 |Microsoft Docs
+description: 如何将 OPC 克隆部署到现有项目中。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 5e3be8f0c565f86ab5332730972e0ed960d22255
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: fc70d140479be100e6aa52cf8105d3e466342cd7
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603728"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302661"
 ---
-# <a name="deploy-opc-twin-to-an-existing-project"></a>将 OPC 孪生部署到现有项目
+# <a name="deploy-opc-twin-to-an-existing-project"></a>将 OPC 克隆部署到现有项目
 
-OPC 孪生模块在 IoT Edge 上运行，并提供多个边缘服务到 OPC 孪生和注册表服务。
+OPC 克隆模块在 IoT Edge 上运行, 并向 OPC 克隆和注册表服务提供多个边缘服务。
 
-OPC 孪生微服务促进工厂运算符和 OPC 孪生 IoT Edge 模块通过在工厂车间的 OPC UA 服务器设备之间通信。 微服务公开通过其 REST API 的 OPC UA 服务 （浏览、 读取、 写入和执行）。 
+OPC 克隆微服务通过 OPC 双子 IoT Edge 模块, 促进工厂操作员与工厂中的 OPC UA 服务器设备之间的通信。 微服务通过其 REST API 公开 OPC UA 服务 (浏览、读取、写入和执行)。 
 
-OPC UA 设备注册表微服务提供对已注册的 OPC UA 应用程序和其终结点的访问。 操作员和管理员可以注册和取消注册新的 OPC UA 应用程序和浏览现有的包括其终结点。 除了应用程序和终结点管理，注册表服务还编录已注册的 OPC 孪生 IoT Edge 模块。 服务 API 将帮助您控制的边缘模块功能，例如，启动或停止服务器发现 （扫描服务），或激活可使用 OPC 孪生微服务访问的新终结点孪生。
+OPC UA 设备注册表微服务提供对已注册的 OPC UA 应用程序及其终结点的访问权限。 操作员和管理员可以注册和取消注册新的 OPC UA 应用程序, 并浏览现有的 OPC UA 应用程序, 包括其终结点。 除应用程序和终结点管理外, 注册表服务还将注册的 OPC 克隆 IoT Edge 模块。 服务 API 使你能够控制边缘模块功能, 例如, 启动或停止服务器发现 (扫描服务), 或者激活可使用 OPC 克隆微服务访问的新终结点孪生。
 
-模块的核心是监督程序标识。 监督程序管理终结点孪生，对应于使用相应的 OPC UA 注册表 API 激活的 OPC UA 服务器终结点。 此终结点孪生转换来自 OPC 孪生微服务在云中运行到 OPC UA 二进制消息，通过有状态安全通道发送到托管终结点的 OPC UA JSON。 监督程序还提供了设备发现事件发送到 OPC UA 设备载入服务进行处理，在更新到 OPC UA 注册表导致这些事件的发现服务。  本文介绍如何将 OPC 孪生模块部署到现有项目。
+模块的核心是监察员标识。 监控器管理终结点克隆, 这对应于使用相应 OPC UA 注册表 API 激活的 OPC UA 服务器终结点。 此终结点孪生将从云中运行的 OPC 克隆微服务接收的 OPC UA JSON 转换为 OPC UA 二进制消息, 这些消息通过有状态安全通道发送到托管终结点。 此监察员还提供了发现服务, 用于将设备发现事件发送到 OPC UA 设备载入服务进行处理, 在此类事件中, 这些事件会导致更新 OPC UA 注册表。  本文介绍如何将 OPC 克隆模块部署到现有项目。
 
 > [!NOTE]
-> 部署详细信息和说明的详细信息，请参阅 GitHub[存储库](https://github.com/Azure/azure-iiot-opc-twin-module)。
+> 有关部署详细信息和说明的详细信息, 请参阅 GitHub[存储库](https://github.com/Azure/azure-iiot-opc-twin-module)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
-请确保有 PowerShell 并[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)安装扩展。 如果你已经不这样做，克隆此 GitHub 存储库。 在 PowerShell 中运行以下命令：
+请确保已安装 PowerShell 和[AzureRM powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)扩展。 如果尚未这样做, 请克隆此 GitHub 存储库。 在 PowerShell 中运行以下命令：
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git
@@ -39,75 +39,75 @@ cd azure-iiot-components
 
 ## <a name="deploy-industrial-iot-services-to-azure"></a>将工业 IoT 服务部署到 Azure
 
-1. 在 PowerShell 会话中，运行：
+1. 在 PowerShell 会话中, 运行:
 
     ```powershell
     set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
     .\deploy.cmd
     ```
 
-2. 按照提示将对部署的资源组的名称和一个名称分配给网站。   该脚本部署微服务和到 Azure 订阅中的资源组及其 Azure 平台依赖项。  该脚本还会以支持基于 OAUTH 的身份验证在 Azure Active Directory (AAD) 租户中注册应用程序。  部署将需要几分钟的时间。  已成功部署解决方案后将看到的示例：
+2. 按照提示为部署的资源组和网站的名称分配一个名称。   该脚本将微服务及其 Azure 平台依赖项部署到 Azure 订阅中的资源组。  该脚本还会在 Azure Active Directory (AAD) 租户中注册一个应用程序, 以支持基于 OAUTH 的身份验证。  部署需要几分钟时间。  成功部署解决方案后会看到的示例:
 
-   ![工业 IoT OPC 孪生将部署到现有项目](media/howto-opc-twin-deploy-existing/opc-twin-deploy-existing1.png)
+   ![工业 IoT OPC 将部署到现有项目](media/howto-opc-twin-deploy-existing/opc-twin-deploy-existing1.png)
 
    输出包括公共终结点的 URL。 
 
-3. 该脚本成功完成后，选择是否要保存.env 文件。  如果你想要连接到云终结点使用控制台等工具或部署的模块，用于开发和调试，需要.env 环境文件。
+3. 脚本成功完成后, 选择是否要保存该`.env`文件。  如果要使用`.env`诸如控制台之类的工具连接到云终结点或部署和调试模块来连接到云终结点, 则需要环境文件。
 
 ## <a name="troubleshooting-deployment-failures"></a>部署故障排除
 
 ### <a name="resource-group-name"></a>资源组名称
 
-请确保使用简短和简单的资源组名称。  名称资源这种情况下它必须遵循与命名要求的资源也使用的名称。  
+请确保使用简短且简单的资源组名称。  该名称还用于命名资源, 因为它必须符合资源命名要求。  
 
-### <a name="website-name-already-in-use"></a>已在使用网站名称
+### <a name="website-name-already-in-use"></a>网站名称已被使用
 
-可能的网站名称已在使用它。  如果遇到此错误，您需要使用不同的应用程序名称。
+网站的名称可能已在使用中。  如果遇到此错误, 则需要使用其他应用程序名称。
 
 ### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory (AAD) 注册
 
-部署脚本会尝试在 Azure Active Directory 中注册两个 AAD 应用程序。  根据您为所选的 AAD 租户的权限，则部署可能失败。 有两个选项：
+部署脚本尝试在 Azure Active Directory 中注册两个 AAD 应用程序。  部署可能失败, 具体取决于你对所选 AAD 租户的权限。 有两个选项：
 
-1. 如果你的租户列表中选择 AAD 租户，重新启动该脚本并从列表中选择其他。
-2. 或者，部署另一个订阅中的专用 AAD 租户，重新启动该脚本，然后选择此选项可以使用它。
+1. 如果从租户列表中选择了 AAD 租户, 请重新启动脚本, 然后从列表中选择另一个。
+2. 另外, 还可以在另一个订阅中部署私有 AAD 租户, 重新启动脚本, 并选择使用它。
 
 > [!WARNING]
-> 永远不会继续而无需验证。  如果你选择这样做，任何人都可以从未经身份验证的 Internet 访问 OPC 孪生终结点。   你可以始终选择["本地"部署选项](howto-opc-twin-deploy-dependencies.md)进行检验。
+> 从不进行身份验证时不继续。  如果你选择这样做, 任何人都可以从未经身份验证的 Internet 访问你的 OPC 克隆终结点。   始终可以选择["本地" 部署选项](howto-opc-twin-deploy-dependencies.md)来启动橡胶轮。
 
-## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>部署-一体工业 IoT 服务演示
+## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>部署多个工业 IoT 服务演示
 
-而不是只是服务和依赖项也可以部署-一体演示。  一个演示中的所有包含三个 OPC UA 服务器、 OPC 孪生模块、 所有微服务和 Web 应用程序的示例。  它被用于演示目的。
+你还可以部署一个一体演示, 而不只是服务和依赖项。  其中的所有演示都包含三个 OPC UA 服务器、OPC 克隆模块、所有微服务和示例 Web 应用程序。  它用于演示目的。
 
-1. 请确保你拥有的存储库 （见上文） 克隆。 打开 PowerShell 提示符下运行的存储库的根目录中：
+1. 请确保具有存储库的克隆 (请参阅上文)。 在存储库的根目录中打开 PowerShell 提示符, 并运行以下命令:
 
     ```powershell
     set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
     .\deploy -type demo
     ```
 
-2. 按照提示操作以将新的名称分配给资源组和将名称传递给该网站。  一旦成功部署，脚本将显示 web 应用程序终结点的 URL。
+2. 按照提示为资源组和网站的名称分配新名称。  成功部署后, 该脚本会显示 web 应用程序终结点的 URL。
 
 ## <a name="deployment-script-options"></a>部署脚本选项
 
-该脚本采用以下参数：
+此脚本采用以下参数:
 
 ```powershell
 -type
 ```
 
-类型的部署 （虚拟机，本地，演示）
+部署类型 (vm、本地、演示)
 
 ```powershell
 -resourceGroupName
 ```
 
-可以是一个现有或新的资源组的名称。
+可以是现有或新资源组的名称。
 
 ```powershell
 -subscriptionId
 ```
 
-也可选择将在其中部署资源的订阅 ID。
+可选, 将在其中部署资源的订阅 ID。
 
 ```powershell
 -subscriptionName
@@ -119,19 +119,19 @@ cd azure-iiot-components
 -resourceGroupLocation
 ```
 
-选择资源组位置。 如果指定，将尝试在此位置创建新的资源组。
+可选, 资源组位置。 如果已指定, 则将尝试在此位置创建新的资源组。
 
 ```powershell
 -aadApplicationName
 ```
 
-若要注册 AAD 应用程序的名称。
+要在其下注册的 AAD 应用程序的名称。
 
 ```powershell
 -tenantId
 ```
 
-若要使用的 AAD 租户。
+要使用的 AAD 租户。
 
 ```powershell
 -credentials
@@ -139,7 +139,7 @@ cd azure-iiot-components
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已了解如何将 OPC 孪生部署到现有项目，下面是建议的下一步：
+现在, 你已了解如何将 OPC 克隆部署到现有项目, 下面是建议的后续步骤:
 
 > [!div class="nextstepaction"]
 > [OPC 客户端和 OPC PLC 的安全通信](howto-opc-vault-deploy-existing-client-plc-communication.md)

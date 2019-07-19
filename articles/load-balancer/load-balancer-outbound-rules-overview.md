@@ -4,21 +4,21 @@ titlesuffix: Azure Load Balancer
 description: 使用出站规则定义出站网络地址转换
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2018
-ms.author: kumud
-ms.openlocfilehash: 52fafa7e9dd46b6c78af3776797bae48b22ea8df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 7/17/2019
+ms.author: allensu
+ms.openlocfilehash: 39a23fa277d7bb389098674556b65b1b13676ead
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698434"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305584"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
 
@@ -208,7 +208,7 @@ disableOutboundSNAT 参数默认为 false，这意味着，负载均衡规则**�
 - 可配置的出站空闲超时范围为 4 到 120 分钟（240 到 7200 秒）。
 - 负载均衡器不支持将 ICMP 用于出站 NAT。
 - 不能使用门户来配置或查看出站规则。  请改为使用模板、REST API、Az CLI 2.0 或 PowerShell。
-- 出站规则只能应用于主 NIC 和主 IP 配置。
+- 出站规则只能应用于 NIC 的主 IP 配置。  支持多个 Nic。
 
 ## <a name="next-steps"></a>后续步骤
 

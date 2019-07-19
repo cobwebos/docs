@@ -10,21 +10,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7101519aa4a87995dac3a7f11046eed84a2c09b6
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 7356541ed6288603a66d5caa43138284d8d4d918
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812767"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320470"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2.0 预览版 (Azure Functions)
 
 Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) 的扩展，可用于在无服务器环境中编写有状态函数  。 该扩展可用于管理状态、检查点和重启。 如果你不熟悉 Durable Functions，请参阅[概述文档](durable-functions-overview.md)。
 
-Durable Functions 1.x 是 Azure Functions 的 GA （正式版） 功能，但还包含多个当前处于公共预览状态的子功能。 本文介绍最新发布的预览版功能，并详细介绍其工作原理和用法。
+Durable Functions 1.x 是 Azure Functions 的 GA (正式发布) 功能, 但也包含多个目前以公共预览版提供的子功能。 本文介绍最新发布的预览版功能，并详细介绍其工作原理和用法。
 
 > [!NOTE]
-> 这些预览功能是 Durable Functions 2.0 版本中，这是当前的一部分**预览质量版本**与几个重大更改。 Azure Functions Durable 扩展包生成可以找到在 nuget.org 中的窗体中的版本与**2.0.0-betaX**。 这些内部版本不适合生产工作负荷，并且后续版本可能包含其他重大更改。
+> 这些预览功能是 Durable Functions 2.0 版本的一部分, 当前是一种包含多项重大更改的**预览质量版本**。 可以在 nuget.org 上找到具有**2.0.0-betaX**形式版本的持久扩展包生成。 Azure Functions 这些版本不适用于生产工作负荷, 后续版本可能包含其他重大更改。
 
 ## <a name="breaking-changes"></a>重大变化
 
@@ -32,11 +32,11 @@ Durable Functions 2.0 中引入了几项中断性变更。 现有的应用程序
 
 ### <a name="hostjson-schema"></a>Host.json 架构
 
-以下代码片段演示了 host.json 的新架构。 主要更改，需要注意的是新的子节：
+以下代码片段演示了 host.json 的新架构。 要注意的主要变化是新的小节:
 
-* `"storageProvider"` (和`"azureStorage"`子节) 对于特定于存储的配置
-* `"tracking"` 用于跟踪和日志记录配置
-* `"notifications"` (和`"eventGrid"`子部分) 的事件网格通知配置
+* `"storageProvider"`存储特定配置`"azureStorage"`的 (和子节)
+* `"tracking"`用于跟踪和日志记录配置
+* `"notifications"`事件网格通知`"eventGrid"`配置的 (和子节)
 
 ```json
 {
@@ -101,7 +101,7 @@ Durable Functions 支持的各种“上下文”对象包含适合在单元测�
 
 ### <a name="net-programing-models"></a>.NET 编程模型
 
-有两个可选的编程模型，用于创作持久实体。 下面的代码是一个简单的示例*计数器*作为标准函数实现的实体。 此函数用于定义三个*operations*， `add`， `reset`，并`get`，每个整数状态值，该操作的`currentValue`。
+有两个用于创作持久性实体的可选编程模型。 下面的代码是作为标准函数实现的简单*计数器*实体的示例。 此函数定义三个操作`add`: `reset`、和`get`, `currentValue`每个*操作*都操作一个整数状态值。
 
 ```csharp
 [FunctionName("Counter")]
@@ -127,7 +127,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-此模型最适合于简单的实体实现或具有一组动态操作的实现。 但是，还有一些非常有用的实体的都是静态的但具有更复杂的实现基于类的编程模型。 下面的示例是等效的实现`Counter`实体使用.NET 类和方法。
+此模型最适用于简单实体实现或具有动态操作集的实现。 但是, 也有一个基于类的编程模型, 它对于静态但具有更复杂的实现的实体很有用。 下面的示例是使用 .net 类和方法`Counter`的实体的等效实现。
 
 ```csharp
 public class Counter
@@ -147,12 +147,12 @@ public class Counter
 }
 ```
 
-基于类的模型是类似于编程模型通过在那时推广[Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/)。 在此模型中，实体类型被定义为.NET 类。 类的每种方法是可以由外部客户端调用的操作。 但是，与 Orleans 不同.NET 接口是可选的。 以前*计数器*示例未使用一个接口，但它仍可以通过其他函数或通过 HTTP API 调用。
+基于类的模型类似于那时推广的编程[模型。](https://www.microsoft.com/research/project/orleans-virtual-actors/) 在此模型中, 实体类型定义为 .NET 类。 类的每个方法都是可由外部客户端调用的操作。 不过, 与奥尔良不同, .NET 接口是可选的。 前面的*计数器*示例未使用接口, 但仍可通过其他函数或 HTTP API 调用来调用它。
 
 通过唯一的标识符（实体 ID）访问实体实例。   实体 ID 只是用于唯一标识实体实例的字符串对。 该环境包括：
 
-* **实体名称**： 用于标识的实体类型 （例如，"计数器"） 的名称。
-* **实体键**： 唯一标识的实体相同的名称 (例如，GUID) 的所有其他实体之间的字符串。
+* **实体名称**: 标识实体类型的名称 (例如, "计数器")。
+* **实体键**: 唯一标识同一名称的所有其他实体中的实体 (例如, GUID) 的字符串。
 
 例如，*counter* 实体函数可用于保留在线游戏中的积分。 游戏的每个实例都有一个唯一的实体 ID，例如 `@Counter@Game1`、`@Counter@Game2`，等等。
 
@@ -172,7 +172,7 @@ public class Counter
 * 持久实体可与持久业务流程结合使用，可充当本文稍后将会介绍的分布式锁。
 * 实体中的请求/响应模式限制为业务流程。 对于实体间的通信，与原始执行组件模型中一样，只允许单向消息（也称为“信号”）。 此行为可防止分布式死锁。
 
-### <a name="durable-entity-net-apis"></a>持久实体.NET Api
+### <a name="durable-entity-net-apis"></a>持久性实体 .NET Api
 
 实体支持涉及到多个 API。 例如，有一个新的 API 可以定义实体函数（如上所示），这些函数指定对某个实体调用某个操作时会发生什么情况。 此外，已使用新功能更新了客户端和业务流程的现有 API，以便与实体交互。
 
@@ -181,8 +181,8 @@ public class Counter
 针对实体执行操作可以针对上下文对象（.NET 中的 `IDurableEntityContext`）调用这些成员：
 
 * **OperationName**：获取操作的名称。
-* **GetInput\<TInput >** ： 获取操作的输入。
-* **GetState\<TState >** ： 获取实体的当前状态。
+* **Getinputt>\<TInput >** : 获取操作的输入。
+* **GetState\<TState >** : 获取实体的当前状态。
 * **SetState**：更新实体的状态。
 * **SignalEntity**：将单向消息发送到实体。
 * **Self**：获取实体的 ID。
@@ -201,9 +201,9 @@ public class Counter
 
 * **ReadEntityStateAsync\<T>** ：读取实体的状态。
 * **SignalEntityAsync**：将单向消息发送到实体，并等待消息排队。
-* **SignalEntityAsync\<T >** ： 相同`SignalEntityAsync`使用生成的代理对象的类型，但`T`。
+* **SignalEntityAsync\<T >** : 与相同`SignalEntityAsync` , 但使用类型`T`的生成的代理对象。
 
-以前`SignalEntityAsync`调用需要指定名称的该实体操作，因为`string`和作为操作的有效负载`object`。 下面的示例代码是此模式的示例：
+之前`SignalEntityAsync`的调用要求将实体操作的名称指定`string`为, 并将操作的负载指定为`object`。 下面的示例代码是此模式的示例:
 
 ```csharp
 EntityId id = // ...
@@ -211,7 +211,7 @@ object amount = 5;
 context.SignalEntityAsync(id, "Add", amount);
 ```
 
-还有可能生成类型安全的访问的代理对象。 若要生成类型安全代理，实体类型必须实现一个接口。 例如，假设`Counter`前面所述的实体实现`ICounter`接口，定义，如下所示：
+还可以为类型安全访问生成代理对象。 若要生成类型安全的代理, 实体类型必须实现接口。 例如, 假设前面提到`Counter`的实体实现了`ICounter`接口, 定义如下:
 
 ```csharp
 public interface ICounter
@@ -227,7 +227,7 @@ public class Counter : ICounter
 }
 ```
 
-然后，客户端代码可以使用`SignalEntityAsync<T>`并指定`ICounter`接口作为类型参数来生成类型安全代理。 此类型安全代理服务器，请使用下面的代码示例所示：
+然后, 客户端代码`SignalEntityAsync<T>`可以使用并`ICounter`将接口指定为类型参数, 以生成类型安全的代理。 下面的代码示例演示了如何使用类型安全的代理:
 
 ```csharp
 [FunctionName("UserDeleteAvailable")]
@@ -241,14 +241,14 @@ public static async Task AddValueClient(
 }
 ```
 
-在上一示例中，`proxy`参数是动态生成的实例`ICounter`，后者在内部转换为调用`Add`到 （非类型化） 的等效调用到`SignalEntityAsync`。
+在上面的示例中, `proxy`参数是动态生成的`ICounter`实例, 它`Add`在内部将对的调用转换为对`SignalEntityAsync`的等效 (非类型化) 调用。
 
 > [!NOTE]
-> 务必要注意`ReadEntityStateAsync`并`SignalEntityAsync`方法的`IDurableOrchestrationClient`优先于一致性的性能。 `ReadEntityStateAsync` 可以返回过时的值，和`SignalEntityAsync`之前在操作完成后，可以返回。
+> 请务必注意`ReadEntityStateAsync` , 和`SignalEntityAsync`方法`IDurableOrchestrationClient`优先于性能。 `ReadEntityStateAsync`可以返回过期值, 并`SignalEntityAsync`可在操作完成之前返回。
 
 #### <a name="accessing-entities-from-orchestrations"></a>从业务流程访问实体
 
-业务流程可以访问使用实体`IDurableOrchestrationContext`对象。 它们可以在单向通信（即发即弃）与双向通信（请求和响应）之间做出选择。 相应的方法是：
+业务流程可以使用`IDurableOrchestrationContext`对象来访问实体。 它们可以在单向通信（即发即弃）与双向通信（请求和响应）之间做出选择。 各自的方法是:
 
 * **SignalEntity**：将单向消息发送到实体。
 * **CallEntityAsync**：将消息发送到实体，并等待指示操作完成的响应。
@@ -256,7 +256,7 @@ public static async Task AddValueClient(
 
 使用双向通信时，在执行操作期间引发的任何异常也会传回到调用方业务流程，并重新引发。 与此相反，使用即发即弃通信模式时，观测不到异常。
 
-为类型安全的访问，业务流程函数可以生成基于接口的代理。 `CreateEntityProxy`扩展方法可用于此目的：
+对于类型安全访问, 业务流程函数可以基于接口生成代理。 `CreateEntityProxy`扩展方法可用于此目的:
 
 ```csharp
 public interface IAsyncCounter
@@ -266,7 +266,7 @@ public interface IAsyncCounter
     Task<int> GetAsync();
 }
 
-[FunctionName("CounterOrchestration)]
+[FunctionName("CounterOrchestration")]
 public static async Task Run(
     [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
@@ -278,7 +278,7 @@ public static async Task Run(
 }
 ```
 
-在上一示例中，假设"counter"实体已存在它可实现`IAsyncCounter`接口。 业务流程无法再使用`IAsyncCounter`类型定义为以同步方式与实体交互生成的代理类型。
+在前面的示例中, 假定存在一个实现`IAsyncCounter`接口的 "计数器" 实体。 然后, 业务流程就可以使用`IAsyncCounter`类型定义生成代理类型以同步与实体交互。
 
 ### <a name="locking-entities-from-orchestrations"></a>从业务流程锁定实体
 
@@ -375,4 +375,4 @@ Durable Task Framework 目前支持多个存储提供程序，包括 [Azure 存�
 `connectionStringName` 必须引用应用设置或环境变量的名称。 该应用设置或环境变量应包含“服务器:端口”格式的 Redis 连接字符串值。  例如，用于连接本地 Redis 群集的 `localhost:6379`。
 
 > [!NOTE]
-> Redis 提供程序目前是试验性的，仅支持单个节点上运行的函数应用。 不保证 Redis 提供程序将进行正式发布，曾经和将来的版本中可能会删除。
+> Redis 提供程序目前是试验性的，仅支持单个节点上运行的函数应用。 不保证 Redis 提供程序已正式发布, 并且可能会在将来的版本中删除。

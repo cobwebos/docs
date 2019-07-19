@@ -1,20 +1,20 @@
 ---
-author: wesmc7777
+author: yegu-ms
 ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
-ms.author: wesmc
-ms.openlocfilehash: 8ebf5ddfa118e0aeadeab0c00a981871a4b5708e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: yegu
+ms.openlocfilehash: 61e93e3700b9a396d2ac4fdcbb51fc5c874cf9cb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173521"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286310"
 ---
 .NET 应用程序可以使用 **StackExchange.Redis** 缓存客户端，可使用 NuGet 包在 Visual Studio 中进行配置，以简化缓存客户端应用程序的配置。 
 
 > [!NOTE]
-> 有关详细信息，请参阅 [StackExchange.Redis](http://github.com/StackExchange/StackExchange.Redis) GitHub 页和 [StackExchange.Azure Redis 缓存客户端文档](http://github.com/StackExchange/StackExchange.Redis#documentation)。
+> 有关详细信息，请参阅 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) GitHub 页和 [StackExchange.Azure Redis 缓存客户端文档](https://github.com/StackExchange/StackExchange.Redis#documentation)。
 >
 >
 

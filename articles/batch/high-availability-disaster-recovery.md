@@ -4,7 +4,7 @@ description: 了解如何针对区域性中断问题设计 Batch 应用程序
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: lahugh
-ms.openlocfilehash: b863785575263fedd144b3d599962a8e1559e0a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3c76a5100e6ac1db067ccdbd582ddf9adba946c1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549746"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322588"
 ---
 # <a name="design-your-application-for-high-availability"></a>针对高可用性设计应用程序
 

@@ -3,22 +3,22 @@ title: Azure 容器实例故障排除
 description: 了解如何排查 Azure 容器实例问题
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 9dc3e19f9429a6055a799f3f013c732538fa370d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b41a3862341ef39c1288985d86d86667fbc5866
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65070851"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325590"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
-本文展示了如何排查管理容器或向 Azure 容器实例部署容器时出现的常见问题。 另请参阅[方面的常见问题](container-instances-faq.md)。
+本文展示了如何排查管理容器或向 Azure 容器实例部署容器时出现的常见问题。 另请参阅[常见问题解答。](container-instances-faq.md)
 
 ## <a name="naming-conventions"></a>命名约定
 
@@ -46,7 +46,7 @@ ms.locfileid: "65070851"
 }
 ```
 
-在部署 Windows 映像的基于半年频道发布了 1709年或 1803，这不受支持，最常遇到此错误。 在 Azure 容器实例中支持的 Windows 映像，请参阅[方面的常见问题](container-instances-faq.md#what-windows-base-os-images-are-supported)。
+部署基于半年频道版本1709或1803的 Windows 映像时, 通常会遇到此错误, 这是不受支持的。 有关 Azure 容器实例中支持的 Windows 映像, 请参阅[常见问题解答](container-instances-faq.md#what-windows-base-os-images-are-supported)。
 
 ## <a name="unable-to-pull-image"></a>无法请求映像
 
@@ -54,7 +54,7 @@ ms.locfileid: "65070851"
 
 若要解决此问题，请删除容器实例，然后重试部署。 请确保映像存在于注册表中，并且你已正确键入映像名称。
 
-如果无法请求映像，[az container show][az-container-show] 的输出会显示如下事件：
+如果无法请求映像, 则[az container show][az-container-show]的输出中会显示如下所示的事件:
 
 ```bash
 "events": [
@@ -89,7 +89,7 @@ ms.locfileid: "65070851"
 
 容器组的[重启策略](container-instances-restart-policy.md)默认为 **Always**，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never**。 如果指定了“失败时”  ，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
 
-在没有长时间运行的进程的情况下运行容器组时，可能会看到重复退出并重启 Ubuntu 或 Alpine 等映像。 通过 [EXEC](container-instances-exec.md) 连接将无法正常工作，因为容器没有使其保持活动的进程。 若要解决此问题，包括如下所示与容器组部署 start 命令，以使容器保持运行。
+在没有长时间运行的进程的情况下运行容器组时，可能会看到重复退出并重启 Ubuntu 或 Alpine 等映像。 通过 [EXEC](container-instances-exec.md) 连接将无法正常工作，因为容器没有使其保持活动的进程。 若要解决此问题, 请在容器组部署中包含如下所示的 "启动" 命令, 以使容器保持运行。
 
 ```azurecli-interactive
 ## Deploying a Linux container
@@ -102,7 +102,7 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
  --command-line "ping -t localhost"
 ```
 
-容器实例 API 和 Azure 门户包含 `restartCount` 属性。 若要检查容器的重启次数，可在 Azure CLI 中使用 [az container show][az-container-show] 命令。 在以下示例输出中（为简洁起见已将其截断），可以在输出末尾看到 `restartCount` 属性。
+容器实例 API 和 Azure 门户包含 `restartCount` 属性。 若要检查容器的重启次数, 可以在 Azure CLI 中使用[az container show][az-container-show]命令。 在以下示例输出中（为简洁起见已将其截断），可以在输出末尾看到 `restartCount` 属性。
 
 ```json
 ...
@@ -174,7 +174,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 ### <a name="cached-images"></a>缓存的图像
 
-Azure 容器实例使用一种缓存机制来帮助加快容器启动时间的常见构建映像[Windows 基本映像](container-instances-faq.md#what-windows-base-os-images-are-supported)，其中包括`nanoserver:1809`， `servercore:ltsc2019`，和`servercore:1809`。 常用 Linux 映像如`ubuntu:1604`和`alpine:3.6`也被缓存。 对于缓存的映像和标记的最新列表，请使用[列出缓存映像][ list-cached-images] API。
+Azure 容器实例使用缓存机制来帮助加快使用常见[Windows 基准映像](container-instances-faq.md#what-windows-base-os-images-are-supported)(包括`nanoserver:1809`、 `servercore:ltsc2019`和`servercore:1809`) 生成的映像的容器启动时间。 常用的 Linux 映像 (例如`ubuntu:1604`和`alpine:3.6` ) 也被缓存。 有关缓存的图像和标记的最新列表, 请使用[列出缓存的映像][list-cached-images]API。
 
 > [!NOTE]
 > 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。
@@ -206,7 +206,7 @@ Azure 容器实例目前不支持具有常规 docker 配置的端口映射，但
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[检索容器日志和事件](container-instances-get-logs.md)来帮助调试你的容器。
+了解如何[检索容器日志和事件](container-instances-get-logs.md)以帮助调试容器。
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions

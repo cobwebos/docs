@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 351b6a8e056d22fa8f2d695a2722b39b9771c8b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/15/2019
+ms.openlocfilehash: a1ff1449b5cc63c16035f8785662f250a008fbc1
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299383"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305532"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -49,8 +49,9 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 
 * [资源组名称](#resource-group-name)
 * [群集类型和配置](#cluster-types) 
-* 群集登录和 SSH 用户名
-* [位置](#location)
+* [群集名称](#cluster-name)
+* [群集登录和 SSH 用户名](#cluster-login-and-ssh-username)
+* [Location](#location)
 
 ## <a name="resource-group-name"></a>资源组名称
 
@@ -76,12 +77,31 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 ### <a name="hdinsight-version"></a>HDInsight 版本
 选择此群集的 HDInsight 版本。 有关详细信息，请参阅[支持的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
 
+## <a name="cluster-name"></a>群集名称
+
+HDInsight 群集名称具有以下限制:
+- 允许的字符: a-z、0-9、a-z 
+- 最大长度：59
+- 保留名称: 应用
+- 必须是唯一的
+- VNET 中的前6个字符必须唯一
 
 ## <a name="cluster-login-and-ssh-username"></a>群集登录和 SSH 用户名
 使用 HDInsight 群集时，可以在群集创建期间配置两个用户帐户：
 
 * HTTP 用户：默认的用户名为 *admin*。它使用 Azure 门户上的基本配置。 有时称为“群集用户”。
 * SSH 用户：用于通过 SSH 连接到群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+
+HTTP 用户名具有以下限制:
+- 允许的特殊字符: _ 和@ 
+- 不允许使用字符: #;。 ""\/,: '! *？ $ ({}) [] < > | &--= +% ~ ^ space
+- 最大长度：20
+
+SSH 用户名具有以下限制:
+- 允许的特殊字符: _ 和@ 
+- 不允许使用字符: #;。 ""\/,: '! *？ $ ({}) [] < > | &--= +% ~ ^ space
+- 最大长度：64
+- 保留名称: hadoop、用户、oozie、hive、mapred、ambari、zookeeper、tez、hdfs、sqoop、yarn、hcat、ams、hbase、风暴、管理员、管理员、用户、user1、测试、用户 123 2、user3、admin1、actuser、管理员2、、、guest、john、owner、root、server、sql、support、support_388945a0、sys、test2、test3、user4、user5、spark
 
 企业安全数据包允许将 HDInsight 与 Active Directory 和 Apache Ranger 集成。 可使用企业安全数据包创建多个用户。
 
@@ -154,12 +174,12 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 ### <a name="number-of-nodes-for-each-cluster-type"></a>每种群集类型的节点数
 每种群集类型都有自身的节点数、节点术语和默认的 VM 大小。 下表中的括号内列出了每个节点类型的节点数目。
 
-| Type | Nodes | 图表 |
+| 类型 | Nodes | 图表 |
 | --- | --- | --- |
-| Hadoop |头节点 (2)，辅助角色节点 （1 +） |![HDInsight Hadoop 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
+| Hadoop |头节点 (2)、工作器节点 (1+) |![HDInsight Hadoop 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |头服务器 (2)，区域服务器 (1+)，主控/ZooKeeper 节点 (3) |![HDInsight HBase 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
 | Storm |Nimbus 节点 (2)，监督程序服务器 (1+)，ZooKeeper 节点 (3) |![HDInsight Storm 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |头节点 (2)，辅助角色节点 （1 +），ZooKeeper 节点 (3) （对于 A1 ZooKeeper VM 大小免费） |![HDInsight Spark 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| Spark |头节点 (2), 辅助角色节点 (1 +), ZooKeeper 节点 (3) (对于 A1 ZooKeeper VM 大小免费) |![HDInsight Spark 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 有关详细信息，请参阅“HDInsight 提供了哪些 Hadoop 组件和版本？”中的[群集的默认节点配置和虚拟机大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)
 
@@ -168,13 +188,13 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 不同群集类型具有不同的节点类型、节点数和节点大小：
 * Hadoop 群集类型默认具有： 
     * 两个*头节点*  
-    * 四个*辅助角色节点*
+    * 四个工作器节点 
 * Storm 群集类型默认具有： 
     * 两个 *Nimbus 节点*
     * 三个 *ZooKeeper 节点*
     * 四个*监督器节点* 
 
-如果您只需试用 HDInsight，我们建议使用一个辅助角色节点。 有关 HDInsight 定价的详细信息，请参阅 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)。
+如果你只是想要试用 HDInsight，我们建议你使用一个工作器节点。 有关 HDInsight 定价的详细信息，请参阅 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)。
 
 > [!NOTE]  
 > 群集大小限制因 Azure 订阅而异。 若要提高限制的大小，请联系 [Azure 计费支持人员](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
@@ -191,7 +211,7 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 若要了解在使用各种 SDK 创建群集或使用 Azure PowerShell 时，应使用什么值指定 VM 大小，请参阅[用于 HDInsight 群集的 VM 大小](../cloud-services/cloud-services-sizes-specs.md#size-tables)。 从此链接文章中，使用表“大小”  列中的值。
 
 > [!IMPORTANT]  
-> 如果需要 32 个以上的辅助角色节点的群集中，您必须选择具有至少为 8 个核心和 14 GB RAM 的头节点大小。
+> 如果群集中需要32个以上的辅助角色节点, 则必须选择至少具有8个核心和 14 GB RAM 的头节点大小。
 
 有关详细信息，请参阅[虚拟机的大小](../virtual-machines/windows/sizes.md)。 有关不同大小的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。   
 

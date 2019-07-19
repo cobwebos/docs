@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
-ms.author: hkanna
-ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: matd
+ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60633681"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875305"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>用作备份目标的 StorSimple 与 Veeam 的集成
 
@@ -104,7 +104,7 @@ StorSimple 提供以下优势：
 | 备份方案  | 本地存储容量  | 云存储容量  |
 |---|---|---|
 | 主备份  | 最近的备份存储在本地存储中以加快恢复速度，满足恢复点目标 (RPO)。 | 备份历史记录 (RPO) 占用云容量 |
-| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 不适用  |
+| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 不可用  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>用作主备份目标的 StorSimple
 
@@ -259,10 +259,10 @@ StorSimple 提供以下优势：
 
 | 每种备份类型的保留期 | 大小 (TiB) | GFS 乘数\* | 总容量 (TiB)  |
 |---|---|---|---|
-| 每周完整备份 | 第 | 4  | 4 |
+| 每周完整备份 | 1 | 4  | 4 |
 | 每日增量备份 | 0.5 | 20（周期等于每月周数） | 12（使用 2 个以提高配额） |
-| 每月完整备份 | 第 | 12 | 12 |
-| 每年完整备份 | 第  | 10 | 10 |
+| 每月完整备份 | 1 | 12 | 12 |
+| 每年完整备份 | 1  | 10 | 10 |
 | GFS 要求 |   | 38 |   |
 | 提高的配额  | 4  |   | 总共 42，满足 GFS 要求  |
 
@@ -380,10 +380,10 @@ StorSimple 提供以下优势：
 
 | 备份类型和保留期 | 配置的存储 | 大小 (TiB) | GFS 乘数 | 总容量\* (TiB) |
 |---|---|---|---|---|
-| 第 1 周（完整和增量） |本地磁盘（短期）| 第 | 1 | 第 |
-| StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 第 | 4 | 4 |
-| 每月完整备份 |StorSimple 磁盘（长期） | 第 | 12 | 12 |
-| 每年完整备份 |StorSimple 磁盘（长期） | 第 | 1 | 第 |
+| 第 1 周（完整和增量） |本地磁盘（短期）| 1 | 1 | 第 |
+| StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 1 | 4 | 4 |
+| 每月完整备份 |StorSimple 磁盘（长期） | 1 | 12 | 12 |
+| 每年完整备份 |StorSimple 磁盘（长期） | 第 | 1 | 1 |
 |GFS 卷大小要求 |  |  |  | 18*|
 
 \* 总容量包括 17 TiB 的 StorSimple 磁盘和 1 TiB 的本地 RAID 卷。
@@ -500,14 +500,14 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 灾难的发生可能会出于多种因素。 下表列出了常见的灾难恢复方案。
 
-| 场景 | 影响 | 如何恢复 | 说明 |
+| 应用场景 | 影响 | 如何恢复 | 说明 |
 |---|---|---|---|
 | StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
 | Veeam 服务器故障 | 备份和还原操作会中断。 | 重新构建备份服务器，并根据 [Veeam 帮助中心（技术文档）](https://www.veeam.com/documentation-guides-datasheets.html)中的详述执行数据库还原。  | 必须在灾难恢复站点重建或还原 Veeam 服务器。 将数据库还原到最近的时间点。 如果还原的 Veeam 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
 | 站点发生故障，导致备份服务器和 StorSimple 丢失 | 备份和还原操作会中断。 | 首先还原 StorSimple，然后还原 Veeam。 | 首先还原 StorSimple，然后还原 Veeam。 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 |
 
 
-## <a name="references"></a>参考
+## <a name="references"></a>参考资料
 
 本文参考了以下文档：
 

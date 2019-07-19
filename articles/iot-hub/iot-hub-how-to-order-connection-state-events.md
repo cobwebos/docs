@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: f4baab6e0909144efc613572207e7f24c4b4fe1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a020221d841682d1e18d2b728a732ec4dfc35ef3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743289"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67988290"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序
 
@@ -20,13 +20,13 @@ ms.locfileid: "66743289"
 
 序号是十六进制数的字符串表示形式。 可以使用字符串比较来确定更大的编号。 如果将字符串转换为十六进制，则编号是一个 256 位数编号。 序号严格递增，最新事件的编号大于其他事件。 如果经常出现设备连接和断开连接事件，并且你想要确保只使用最新事件来触发下游操作（因为 Azure 事件网格不支持事件排序），则此功能非常有用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 * 有效的 Azure 帐户。 如果没有帐户，可以[创建一个免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* 有效的 Azure Cosmos DB SQL API 帐户。 如果尚未创建此帐户，请参阅[创建数据库帐户](../cosmos-db/create-sql-api-dotnet.md#create-an-azure-cosmos-db-account)中的演练。
+* 有效的 Azure Cosmos DB SQL API 帐户。 如果尚未创建此帐户，请参阅[创建数据库帐户](../cosmos-db/create-sql-api-java.md#create-a-database-account)中的演练。
 
-* 数据库中的集合。 请参阅[添加集合](../cosmos-db/create-sql-api-dotnet.md#add-a-database-and-a-collection)中的演练。 创建集合时，请对分区键使用 `/id`。
+* 数据库中的集合。 请参阅[添加集合](../cosmos-db/create-sql-api-java.md#add-a-container)中的演练。 创建集合时，请对分区键使用 `/id`。
 
 * Azure 中的 IoT 中心。 如果尚未创建 Iot 中心，请参阅 [IoT 中心入门](iot-hub-csharp-csharp-getstarted.md)中的演练。
 
@@ -292,7 +292,7 @@ ms.locfileid: "66743289"
 
 3. 对于“设备 ID”，请输入 `Demo-Device-1`。 
 
-4. 选择“保存”。 
+4. 选择**保存**。
 
 5. 可以添加具有不同设备 ID 的多个设备。
 

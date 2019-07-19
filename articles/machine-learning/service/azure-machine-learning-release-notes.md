@@ -10,189 +10,192 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7aedb0804626d1204121568904763bec5e83e858
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 2568d2213d15faf66ecf606e56ea6b82bacafc3e
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786274"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233687"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
 本文介绍 Azure 机器学习服务版本。  有关每个 SDK 的完整说明，请访问以下内容的参考文档：
-+ 在 Azure 机器学习[**主要适用于 Python SDK**](https://aka.ms/aml-sdk)
++ Azure 机器学习的[**用于 Python 的主 SDK**](https://aka.ms/aml-sdk)
 + Azure 机器学习[数据准备 SDK](https://aka.ms/data-prep-sdk) 
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
 ## <a name="2019-07-09"></a>2019-07-09
 
-### <a name="visual-interface"></a>可视界面
+### <a name="visual-interface"></a>视觉对象接口
 + **预览功能**
-  + 添加可视界面中的"执行 R 脚本"模块。
+  + 在可视界面中添加了 "执行 R 脚本" 模块。
 
-### <a name="azure-machine-learning-sdk-for-python-v1048"></a>Azure Machine Learning SDK for Python v1.0.48
+### <a name="azure-machine-learning-sdk-for-python-v1048"></a>用于 Python 的 Azure 机器学习 SDK 1.0.48
 
 + **新功能**
   + **azureml-opendatasets**
-    + **azureml contrib opendatasets**现可作为**azureml opendatasets**。 仍可运行旧的包，但我们建议你使用**azureml opendatasets**展望未来更丰富的功能和改进。
-    + 这个新的包，可将打开数据集注册为 AML 工作区中的数据集，并利用任何数据集提供的功能。
-    + 它还包含现有功能，例如使用打开数据集作为 Pandas/SPARK 数据框架和位置的天气等一些数据集联接。
+    + **contrib-opendatasets**现在作为**azureml-opendatasets**提供。 旧包仍可正常工作, 但建议使用**opendatasets** , 以获得更丰富的功能和改进。
+    + 此新包允许你将打开的数据集注册为 AML 工作区中的数据集, 并利用数据集提供的任何功能。
+    + 它还包括一些现有功能, 如将打开的数据集用作 Pandas/SPARK dataframes 以及某些数据集 (如天气) 的位置联接。
 
 + **预览功能**
-    + HyperDriveConfig 现在可以接受管道对象作为参数，以支持超参数优化使用管道。
+    + HyperDriveConfig 现在可以接受管道对象作为参数, 以支持使用管道进行超参数优化。
 
 + **Bug 修复和改进**
   + **azureml-train-automl**
-    + 修复了 bug 有关转换后丢失列类型。
-    + 修复了 bug，以允许 y_query 为包含无 (s) 开头的对象类型。 
-    + 中的不必要地扩大生成的系综，即使分数保持不变的系综选择过程中修复的问题。
-    + 修复中 AutoMLStep whitelist_models 和 blacklist_models 设置。
-    + 修复阻止预处理 AutoML 会在 Azure 机器学习管道的上下文中使用时的使用情况问题。
+    + 修复了转换后丢失列类型的相关 bug。
+    + 修复了 bug, 以允许 y_query 是一个不包含任何内容的对象类型。 
+    + 修复了系综选择过程中不必要地增加生成的系综的问题, 即使分数保持不变也是如此。
+    + 解决了 AutoMLStep 中 whitelist_models 和 blacklist_models 设置的问题。
+    + 修复了在 Azure ML 管道的上下文中使用 AutoML 时阻止使用预处理的问题。
   + **azureml-opendatasets**
-    + 已移动的 azureml-contrib-opendatasets 到 azureml opendatasets。
-    + 允许打开数据集类来注册到 AML 工作区并无缝利用 AML 数据集的能力。
-    + 改进了的 NoaaIsdWeather 大大丰富非 SPARK 版本中的性能。
+    + 已将 contrib-opendatasets 移动到 azureml-opendatasets。
+    + 允许打开的数据集类注册到 AML 工作区并无缝地利用 AML 数据集功能。
+    + 显著改进了非 SPARK 版本中的 NoaaIsdWeather 丰富性能。
   + **azureml-explain-model**
-    + Interpretability 对象的已更新联机文档。
-    + 添加 batch_size 来模拟说明时 include_local 流式处理批以改进执行时间的 DecisionTreeExplainableModel 全局说明 = False。
-    + 修复了问题其中`explanation.expected_values`将用于在其中有时返回 float 而不是浮点数的列表。
-    + 添加了的预期值到 automl 模拟说明中的输出说明模型库。
-    + 修复排列特征重要性时提供转换参数来获取原始特征重要性。
-    + 添加 batch_size 来模拟说明时 include_local 流式处理批以改进执行时间的 DecisionTreeExplainableModel 模型 explainability 库的全局说明 = False。
+    + 更新了 interpretability 对象的联机文档。
+    + 将 batch_size 添加到模拟说明的 include_local = False, 以便对批处理中的全局说明进行流式处理以提高 DecisionTreeExplainableModel 的执行时间。
+    + 修复了这样的`explanation.expected_values`问题: 有时会返回 float, 而不是其中包含 float 的列表。
+    + 向说明模型库中的模拟说明的 automl 输出添加了预期值。
+    + 修复了在为获取原始功能重要性而提供的转换参数时的排列功能重要性。
+    + 将 batch_size 添加到模拟说明的 include_local = False, 以便对批处理中的全局说明进行流式处理, 以提高模型 explainability 库的 DecisionTreeExplainableModel 的执行时间。
   + **azureml-core**
-    + 添加附加 DBFS AzureML CLI 中的数据存储的功能。
-    + 如果在其中创建一个空文件夹与数据存储上传修复的问题`target_path`入门`/`。
-    + 已启用的比较的两个数据集。
-    + 模型和映像删除现在提供了有关检索上游依赖于它们，如果删除因上游依赖关系的对象的详细信息。
-    + 不推荐使用 auto_prepare_environment 中的未使用的 RunConfiguration 设置。
+    + 添加了在 AzureML CLI 中附加 DBFS 数据存储的功能。
+    + 修复了数据存储上传的问题, 其中创建了一个`target_path`空文件夹`/`(如果使用开始)。
+    + 启用了两个数据集的比较。
+    + 模型和图像删除现在提供了有关检索上游对象的详细信息, 如果由于上游依赖关系而删除操作失败, 则会依赖于这些对象。
+    + 弃用了 auto_prepare_environment 中未使用的 RunConfiguration 设置。
   + **azureml-mlflow**
-    + 提高的资源利用率的使用 azureml.mlflow 的远程运行。
-    + 改进了 azureml mlflow 包的文档。
-    + 修复了问题 mlflow.log_artifacts("my_dir") 将在其中保存项目"my_dir/项目的路径"而不是"项目路径"下。
-  + **azureml-dataprep**
-    + 数据流对象现在要循环生成一系列记录。
-    + 修复了问题其中`Dataflow.read_pandas_dataframe`会失败时`in_memory`参数设置为 True。
-    + 改进的 pandas 数据帧与非字符串列索引处理。
-    + 公开`set_diagnostics_collection()`允许以编程方式启用/禁用遥测数据收集。
-    + 添加了上限值和 bottomValues 汇总。
+    + 提高了使用 mlflow 的远程运行的资源利用率。
+    + 改进了 mlflow 包的文档。
+    + 修复了 mlflow _artifacts ("my_dir") 在 "my_dir/伪像-路径" 而不是 "项目路径" 下保存项目的问题。
   + **azureml-pipeline-core**
-    + 管道的所有步骤的参数 hash_paths 已弃用，将在以后删除。 通过默认 source_directory 内容进行哈希运算 （除.amlignore 或.gitignore 中列出的文件）
-    + 继续改进模块和 ModuleStep RunConfiguration 集成和进一步的更改做好准备以解锁其使用情况管道中的支持计算类型特定模块。
+    + 所有管道步骤的参数 hash_paths 已弃用, 并将在将来删除。 默认情况下, source_directory 的内容进行哈希处理 (amlignore 或 .gitignore 中列出的文件除外)
+    + 继续改进 Module 和 ModuleStep 以支持计算类型特定模块, 为 RunConfiguration 集成做好准备, 并进一步更改以在管道中对其使用进行解锁。
   + **azureml-pipeline-steps**
-    + AzureBatchStep:输入/输出方面的改进的文档。
-    + AzureBatchStep:更改 delete_batch_job_after_finish 默认值为 true。
+    + AzureBatchStep:有关输入/输出的改进文档。
+    + AzureBatchStep:将 delete_batch_job_after_finish 默认值更改为 true。
   + **azureml-train-core**
-    + 现在已接受字符串，因为自动超参数优化的计算目标。
-    + 不推荐使用 auto_prepare_environment 中的未使用的 RunConfiguration 设置。
-    + 已弃用参数`conda_dependencies_file_path`并`pip_requirements_file_path`以便获取`conda_dependencies_file`和`pip_requirements_file`分别。
+    + 现在可将字符串作为自动超参数优化的计算目标接受。
+    + 弃用了 auto_prepare_environment 中未使用的 RunConfiguration 设置。
+    + 不推荐`conda_dependencies_file_path`使用`pip_requirements_file_path`的参数, `conda_dependencies_file`并`pip_requirements_file`分别为和。
   + **azureml-opendatasets**
-    + 提高 NoaaIsdWeather 极大地扩充非 SPARK 版本中的性能。
-    
+    + 显著提高非 SPARK 版本中的 NoaaIsdWeather 丰富性能。
+
+### <a name="azure-machine-learning-data-prep-sdk-v118"></a>Azure 机器学习数据准备 SDK 1.1。8
+
++ **新功能**
+ + 现在可以循环访问数据流对象, 从而生成一系列记录。 请参阅的`Dataflow.to_record_iterator`文档。
+
++ **Bug 修复和改进**
+ + 增强了 DataPrep SDK 的可靠性。
+ + 改进了 pandas DataFrames 与非字符串列索引的处理。
+ + 提高了数据集`to_pandas_dataframe`的性能。
+ + 修复了在多节点环境中运行时, Spark 执行数据集失败的 bug。
+
 ## <a name="2019-07-01"></a>2019-07-01
 
-### <a name="azure-machine-learning-data-prep-sdk-v117"></a>Azure 机器学习数据准备 SDK v1.1.7
+### <a name="azure-machine-learning-data-prep-sdk-v117"></a>Azure 机器学习数据准备 SDK 1.1。7
 
-我们还原更改，从而提高性能，因为，它会导致问题的一些客户使用 Azure Databricks。 如果您遇到 Azure Databricks 上的问题，你可以升级到版本 1.1.7 使用以下方法之一：
-1. 运行此脚本来升级： `%sh /home/ubuntu/databricks/python/bin/pip install azureml-dataprep==1.1.7`
-2. 重新创建群集，它将安装最新数据准备 SDK 版本。
+我们恢复了改进性能的更改, 因为这会导致某些使用 Azure Databricks 的客户出现问题。 如果 Azure Databricks 上遇到问题, 可以使用以下方法之一升级到版本 1.1.7:
+1. 运行以下脚本进行升级:`%sh /home/ubuntu/databricks/python/bin/pip install azureml-dataprep==1.1.7`
+2. 重新创建群集, 这将安装最新的数据准备 SDK 版本。
 
 ## <a name="2019-06-25"></a>2019-06-25
 
-### <a name="azure-machine-learning-sdk-for-python-v1045"></a>Azure Machine Learning SDK for Python v1.0.45
+### <a name="azure-machine-learning-sdk-for-python-v1045"></a>用于 Python 的 Azure 机器学习 SDK 1.0.45
 
 + **新功能**
-  + 添加决策树的代理项模型来模拟 azureml 解释模型包中的说明
-  + 若要指定要推断映像上安装 CUDA 版本的功能。 CUDA 9.0、 9.1 和 10.0 的支持。
-  + 基础映像现可在 Azure 机器学习培训的信息[Azure ML 容器 GitHub 存储库](https://github.com/Azure/AzureML-Containers)和[DockerHub](https://hub.docker.com/_/microsoft-azureml)
-  + 添加了的 CLI 支持管道计划。 运行"az ml 管道-h"若要了解详细信息
-  + 自定义 Kubernetes 命名空间参数添加到 AKS web 服务部署配置和 CLI。
-  + 管道的所有步骤的不推荐使用的 hash_paths 参数
-  + Model.register 现在支持注册为使用单个模型的多个单个文件`child_paths`参数。
+  + 添加决策树代理项模型来模拟 azureml 中的说明包
+  + 可以指定要安装在推断映像上的 CUDA 版本。 支持 CUDA 9.0、9.1 和10.0。
+  + 有关 Azure ML 培训基础映像的信息现已在[AZURE Ml 容器 GitHub 存储库](https://github.com/Azure/AzureML-Containers)和[DockerHub](https://hub.docker.com/_/microsoft-azureml)中提供
+  + 为管道计划添加了 CLI 支持。 运行 "az ml 漏斗-h" 以了解详细信息
+  + 已将自定义 Kubernetes 命名空间参数添加到 AKS webservice 部署配置和 CLI。
+  + 所有管道步骤的不推荐使用的 hash_paths 参数
+  + 现在, 注册支持将多个单独的文件注册为单个模型, 并使用`child_paths`参数。
   
 + **预览功能**
-    + 现在，评分 explainers 可以根据需要保存 conda 和 pip 更可靠的序列化和反序列化的信息。
+    + 计分 explainers 现在可以选择保存 conda 和 pip 信息以实现更可靠的序列化和反序列化。
     + 自动功能选择器的 Bug 修复。
-    + 更新到新的 api 公开的新实现的 bug 修补 mlflow.azureml.build_image。
-
-+ **重大更改**
+    + 已将 mlflow 更新为新的 api, 并修复了新实现公开的 bug。
 
 + **Bug 修复和改进**
-  + 已删除的 paramiko 从 azureml core 依赖项。 旧的计算目标的添加了的弃用警告附加方法。
-  + 提高性能的 run.create_children
-  + 在模拟说明使用二元分类器中，教师概率用于缩放 shap 值时修复概率的顺序
-  + 改进的错误处理和自动机器学习的消息。 
-  + 已修复的自动机器学习迭代超时问题。
-  + 改进了自动机器学习时序转换性能。
+  + 从 azureml 核心中删除了 paramiko 依赖项。 为旧计算目标附加方法添加了弃用警告。
+  + 提高运行的性能。 create_children
+  + 在使用二元分类器模拟说明中, 当教师概率用于缩放 shap 值时, 修复概率顺序
+  + 改善了自动机器学习的错误处理和消息。 
+  + 解决了自动机器学习的迭代超时问题。
+  + 提高了自动机器学习的时间序列转换性能。
 
 ## <a name="2019-06-24"></a>2019-06-24
 
-### <a name="azure-machine-learning-data-prep-sdk-v116"></a>Azure 机器学习数据准备 SDK v1.1.6
+### <a name="azure-machine-learning-data-prep-sdk-v116"></a>Azure 机器学习数据准备 SDK 1.1。6
 
 + **新功能**
-  + 添加的探顶值汇总函数 (`SummaryFunction.TOPVALUES`) 和下限值 (`SummaryFunction.BOTTOMVALUES`)。
+  + 添加了 top 值 (`SummaryFunction.TOPVALUES`) 和下限值 (`SummaryFunction.BOTTOMVALUES`) 的汇总函数。
 
 + **Bug 修复和改进**
-  + 显著改进的性能`read_pandas_dataframe`。
-  + 修复了 bug 会导致`get_profile()`在指向二进制文件的数据流失败。
-  + 公开`set_diagnostics_collection()`允许以编程方式启用/禁用遥测数据收集。
-  + 更改的行为`get_profile()`。 NaN 值现在将忽略的最小值、 平均值、 标准和总和，用于与 Pandas 的行为保持一致。
+  + 显著提高了的性能`read_pandas_dataframe`。
+  + 修复了一个 bug, 该`get_profile()` bug 会导致指向二进制文件的数据流失败。
+  + 公开`set_diagnostics_collection()`以允许对遥测集合进行编程启用/禁用。
+  + 更改了的`get_profile()`行为。 现在, 对于 Min、Mean、Std 和 Sum, NaN 值将被忽略, 它们与 Pandas 的行为保持一致。
 
 
 ## <a name="2019-06-10"></a>2019-06-10
 
-### <a name="azure-machine-learning-sdk-for-python-v1043"></a>Azure Machine Learning SDK for Python v1.0.43
+### <a name="azure-machine-learning-sdk-for-python-v1043"></a>用于 Python 的 Azure 机器学习 SDK 1.0.43
 
 + **新功能**
-  + Azure 机器学习现在提供常用机器学习和数据分析框架 scikit-learn 一流的支持。 使用[`SKLearn`估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)，用户可以轻松地训练和部署 scikit-learn 模型。
-    + 了解如何[运行与 scikit-learn 的超参数优化使用 HyperDrive](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)。
-  + 添加了的对在管道以及模块和 ModuleVersion 来管理可重用的类中创建 ModuleStep 计算单元。
-  + ACI web 服务现在支持通过更新持久 scoring_uri。 Scoring_uri 将从 IP 更改为 FQDN。 可以通过设置 deploy_configuration dns_name_label 配置 FQDN 的 Dns 名称标签。 
-  + 自动化的机器学习的新功能：
-    + STL 特征化器来进行预测
-    + 为功能扫描启用了 k 均值聚类分析
-  + 只需 AmlCompute 配额审批变得更快 ！ 我们现在已自动批准你的配额请求的阈值内的过程。 有关配额的工作原理的详细信息，请参阅有关[如何管理配额](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas)。
+  + Azure 机器学习现在为常见机器学习和数据分析框架 Scikit-learn 提供一流支持。 使用估计器, 用户可以轻松地训练和部署 scikit-learn 模型。 [ `SKLearn` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)
+    + 了解如何[使用 scikit-learn 运行超参数优化-了解如何使用 HyperDrive](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)。
+  + 添加了有关在管道中创建 ModuleStep 的支持, 以及模块和 ModuleVersion 类, 以管理可重用的计算单元。
+  + ACI webservices 现在支持通过更新提供持久的 scoring_uri。 Scoring_uri 将从 IP 更改为 FQDN。 可以通过在 deploy_configuration 上设置 dns_name_label 来配置 FQDN 的 Dns 名称标签。 
+  + 自动化机器学习的新功能:
+    + STL 特征化器 for 预测
+    + 为功能扫描启用了 KMeans 群集
+  + AmlCompute 配额批准已变得更快! 现在, 我们已自动在阈值内批准配额请求。 有关配额工作方式的详细信息, 请了解[如何管理配额](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas)。
 
 + **预览功能**
-    + 与集成[MLflow](https://mlflow.org) 1.0.0 跟踪通过 azureml mlflow 包 ([notebook 示例](https://aka.ms/azureml-mlflow-examples))。
-    + 提交与运行 Jupyter notebook。 [API 参考文档](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
-    + 公共预览版[数据偏差检测器](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py)通过 azureml contrib datadrift 包 ([notebook 示例](https://aka.ms/azureml-datadrift-example))。 数据偏差是主要理由之一，随着时间的推移会降低模型准确性。 它进行数据提供服务时，若要在生产环境中的模型是不同于该模型进行定型的数据。 AML 数据偏差检测程序可帮助监视数据偏差的客户，并发送警报，每当检测到偏差。 
+    + 通过 MLflow 包 ([例如笔记本](https://aka.ms/azureml-mlflow-examples)) 与[MLflow](https://mlflow.org) 1.0.0 跟踪进行集成。
+    + 提交 Jupyter 笔记本作为运行。 [API 参考文档](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
+    + 公共预览版通过 contrib-datadrift 包 ([示例笔记本](https://aka.ms/azureml-datadrift-example)) 的[数据偏移检测](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py)程序。 数据偏移是模型准确性随时间推移而降低的主要原因之一。 在生产环境中为模型提供的数据不同于对模型进行定型的数据时, 会发生这种情况。 AML 数据偏移检测探测器可帮助客户监视数据偏移并在检测到偏差时发送警报。 
 
 + **重大更改**
 
 + **Bug 修复和改进**
-  + RunConfiguration 加载和保存支持完整后兼容的以前的行为与指定的完整文件路径。
-  + 添加在 ServicePrincipalAuthentication，默认情况下关闭缓存。
-  + 启用日志记录的同一指标名称下的多个绘图。
-  + 类现在从 azureml.core 导入正确的模型 (`from azureml.core import Model`)。
-  + 在管道步骤中，`hash_path`参数现已弃用。 新行为是哈希完整 source_directory，.amlignore 或.gitignore 中列出的文件除外。
-  + 在管道包中各种`get_all`并`get_all_*`方法已弃用的`list`和`list_*`分别。
-  + azureml.core.get_run 不再需要返回原始运行的类型之前，导入的类。
-  + 修复了对 web 服务更新的一些调用未触发更新。
-  + 评分 AKS web 服务超时值应为 5 毫秒之间出现。 允许的最大评分请求 scoring_timeout_ms 具有已解除了一个从 1 分钟到 5 分钟。
+  + RunConfiguration 加载和保存支持为以前的行为指定完整的文件路径, 并具有完整的后向兼容性。
+  + 在 ServicePrincipalAuthentication 中添加了缓存, 默认情况下处于关闭状态。
+  + 在同一指标名称下启用多个绘图的日志记录。
+  + 现已正确地从 azureml (`from azureml.core import Model`) 中导入模型类。
+  + 在管道步骤中`hash_path` , 参数现已弃用。 新行为是对 source_directory (amlignore 或 .gitignore 中列出的文件除外) 进行哈希处理。
+  + 在管道包中, `get_all`已`get_all_*`不推荐使用和`list_*`的`list`各种和方法。
+  + azureml。获取运行类型后, 就不再需要导入类, 然后返回原始的运行类型。
+  + 修复了对 WebService 更新的某些调用未触发更新的问题。
+  + AKS webservices 上的评分超时应介于5ms 和且之间。 评分请求的最大允许 scoring_timeout_ms 已从1分钟到5分钟的已升级。
   + LocalWebservice 对象现在具有`scoring_uri`和`swagger_uri`属性。
-  + 输出目录的创建和输出目录上的传用户进程外移动。 启用运行历史记录在每个用户进程中运行的 SDK。 这样应该会解决运行一些分布式培训的经验丰富的同步问题。
-  + （适用于分布式培训仅） 的进程名称和 PID，现在将包括用户进程名称从编写的 azureml 日志的名称。
+  + 已移动的输出目录创建和输出目录上传出用户进程。 已启用运行历史记录 SDK, 以便在每个用户进程中运行。 这应该解决分布式培训运行遇到的一些同步问题。
+  + 从用户进程名称写入的 azureml 日志的名称现在将包括进程名称 (仅适用于分布式培训) 和 PID。
 
-### <a name="azure-machine-learning-data-prep-sdk-v115"></a>Azure 机器学习数据准备 SDK v1.1.5
+### <a name="azure-machine-learning-data-prep-sdk-v115"></a>Azure 机器学习数据准备 SDK 1.1。5
 
 + **Bug 修复和改进**
-  + 对于具有两位数年份的格式的已解释的日期时间值，已更新的有效的年范围以匹配 Windows 可能会发布。 到 1950年-2049年，从 1930年 2029 年更改范围。
-  + 读取时中的文件和设置`handleQuotedLineBreaks=True`，`\r`将被视为新行。
-  + 修复了 bug 导致`read_pandas_dataframe`在某些情况下失败。
-  + 改进了的性能`get_profile`。
+  + 对于具有两位数年份格式的解释日期时间值, 已更新有效年份范围, 以匹配 Windows 可能会释放。 范围已从1930-2029 更改为1950-2049。
+  + 在文件和设置`handleQuotedLineBreaks=True`中读取时, `\r`将被视为新行。
+  + 修复了在某些情况`read_pandas_dataframe`下导致失败的 bug。
+  + 改进的`get_profile`性能。
   + 改进的错误消息。
 
 ## <a name="2019-05-28"></a>2019-05-28
 
-### <a name="azure-machine-learning-data-prep-sdk-v114"></a>Azure 机器学习数据准备 SDK v1.1.4
+### <a name="azure-machine-learning-data-prep-sdk-v114"></a>Azure 机器学习数据准备 SDK 1.1。4
 
 + **新功能**
-  + 现在可以使用以下表达式语言函数来提取和分析的日期时间值到新列。
-    + `RegEx.extract_record()` 将日期时间元素提取到一个新列。
-    + `create_datetime()` 从单独的日期时间元素创建 datetime 对象。
-  + 调用时`get_profile()`，现在可以看到，标记分位列 （预计） 为以清楚指示的值为近似值。
-  + 现在，您可以使用 * * 模式匹配时从 Azure Blob 存储中读取。
+  + 现在可以使用以下表达式语言函数将日期时间值提取并分析到新列中。
+    + `RegEx.extract_record()`将 datetime 元素提取到新列中。
+    + `create_datetime()`从单独的 datetime 元素创建 datetime 对象。
+  + 在调用`get_profile()`时, 您现在可以看到分位列标记为 (est.) 以清楚地指示值是近似值。
+  + 你现在可以在从 Azure Blob 存储中进行读取时使用 * * 组合。
     + 例如，`dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
 
 + **Bug 修复**
@@ -200,269 +203,269 @@ ms.locfileid: "67786274"
 
 ## <a name="2019-05-14"></a>2019-05-14
 
-### <a name="azure-machine-learning-sdk-for-python-v1039"></a>Azure Machine Learning SDK for Python v1.0.39
+### <a name="azure-machine-learning-sdk-for-python-v1039"></a>用于 Python 的 Azure 机器学习 SDK 1.0.39
 + **更改**
-  + 运行的配置 auto_prepare_environment 选项已被弃用，自动准备成为默认值。
+  + 正在弃用运行配置 auto_prepare_environment 选项, 并将自动准备变为默认值。
 
 ## <a name="2019-05-08"></a>2019-05-08
 
-### <a name="azure-machine-learning-data-prep-sdk-v113"></a>Azure 机器学习数据准备 SDK v1.1.3
+### <a name="azure-machine-learning-data-prep-sdk-v113"></a>Azure 机器学习数据准备 SDK 1.1。3
 
 + **新功能**
-  + 若要从 PostgresSQL 数据库，通过调用 read_postgresql 或使用一种数据存储中读取的添加了的支持。
-    + 请参阅操作方法指南中的示例：
-      + [数据引入 notebook](https://aka.ms/aml-data-prep-ingestion-nb)
-      + [数据存储 notebook](https://aka.ms/aml-data-prep-datastore-nb)
+  + 添加了对从 PostgresSQL 数据库读取的支持, 方法是调用 read_postgresql 或使用数据存储。
+    + 请参阅操作方法指南中的示例:
+      + [数据引入笔记本](https://aka.ms/aml-data-prep-ingestion-nb)
+      + [数据存储笔记本](https://aka.ms/aml-data-prep-datastore-nb)
 
 + **Bug 修复和改进**
-  + 列类型转换的修复的问题：
-  + 现在正确地转换为布尔值列的布尔值或数值列。
-  + 现在不会失败时尝试设置为日期类型的日期列。
-  + 改进的 JoinType 类型和附带参考文档。 当联接两个数据流，现在可以指定其中一种联接：
-    + 无、 匹配、 内部、 UNMATCHLEFT、 LEFTANTI、 LEFTOUTER、 UNMATCHRIGHT、 RIGHTANTI、 RIGHTOUTER、 FULLANTI，完整的。
-  + 改进了的数据类型推断来识别更多日期格式。
+  + 修复了列类型转换的问题:
+  + 现在可将布尔值或数值列正确转换为布尔值列。
+  + 现在, 在尝试将日期列设置为日期类型时不会失败。
+  + 改进了 JoinType 类型和随附的参考文档。 联接两个数据流时, 你现在可以指定以下类型的联接之一:
+    + NONE、MATCH、INNER、UNMATCHLEFT、LEFTANTI、LEFTOUTER、UNMATCHRIGHT、RIGHTANTI、RIGHTOUTER、FULLANTI、FULL。
+  + 改进了数据类型推断以识别更多日期格式。
 
 ## <a name="2019-05-06"></a>2019-05-06
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在 Azure 门户中，您现在可以：
-+ 创建和运行自动化的机器学习试验 
-+ 创建用于试用 Jupyter 笔记本示例的笔记本 VM 或你自己。
-+ 在机器学习服务工作区，其中包括自动机器学习、 直观的界面和托管 Notebook Vm 中的全新创作部分 （预览版）
-    + 自动创建使用自动机器学习模型 
-    + 使用拖放可视化界面，运行试验
-    + 创建笔记本 VM 来浏览数据、 创建模型，以及部署服务。
-+ 实时图表和更新运行的报表中的指标和运行详细信息页
-+ 更新后的文件查看器日志、 输出和运行详细信息页中的快照。
-+ 在试验选项卡中，创建新的和改进的报表体验。 
-+ 添加了的能够从 Azure 机器学习服务工作区的概述页中下载的 config.json 文件。
+在 Azure 门户中, 现在可以:
++ 创建并运行自动 ML 试验 
++ 创建笔记本 VM, 尝试使用示例 Jupyter 笔记本或自己的笔记本。
++ "机器学习服务" 工作区中的全新创作部分 (预览), 其中包括自动机器学习、视觉对象界面和托管笔记本 Vm
+    + 使用自动机器学习自动创建模型 
+    + 使用拖放可视界面运行试验
+    + 创建笔记本 VM 来浏览数据、创建模型和部署服务。
++ 运行报表和运行详细信息页中的实时图表和指标更新
++ 更新了运行详细信息页中的日志、输出和快照的文件查看器。
++ "试验" 选项卡中新的和改进的报表创建体验。 
++ 添加了从 "Azure 机器学习服务" 工作区的 "概述" 页下载 .config 文件的功能。
 + 支持从 Azure Databricks 工作区创建机器学习服务工作区 
 
 ## <a name="2019-04-26"></a>2019-04-26
 
-### <a name="azure-machine-learning-sdk-for-python-v1033"></a>Azure Machine Learning SDK for Python v1.0.33
+### <a name="azure-machine-learning-sdk-for-python-v1033"></a>用于 Python 的 Azure 机器学习 SDK 1.0.33
 + **新功能**
-  + _Workspace.create_方法现在接受的 CPU 和 GPU 群集的默认群集配置。
-  + 如果工作区创建失败，因为已清除依赖的资源。
-  + 默认 Azure 容器注册表 SKU 切换到基本。
-  + 在需要运行或映像创建时，将延迟，创建 azure 容器注册表。
-  + 对训练运行环境的支持。
+  + _工作区。_ 现在, create 方法接受 CPU 和 GPU 群集的默认群集配置。
+  + 如果工作区创建失败, 则会清理依赖的资源。
+  + 默认 Azure 容器注册表 SKU 切换为 "基本"。
+  + Azure 容器注册表是在需要用于运行或创建映像时, 惰式创建的。
+  + 支持定型运行环境。
 
-### <a name="notebook-virtual-machine"></a>Notebook 虚拟机 
+### <a name="notebook-virtual-machine"></a>笔记本虚拟机 
 
-用作安全、 面向企业的宿主环境 Notebook VM 在其中可以编程机器学习试验、 部署模型作为 web 终结点和执行所有其他操作支持的 Azure 机器学习 SDK 使用 Python 的 Jupyter 笔记本。 它提供了几个功能：
-+ [快速启动 VM 的预配置笔记本](quickstart-run-cloud-notebook.md) 具有最新版本的 Azure 机器学习 SDK 和相关的程序包。
-+ 通过经验证的技术，例如 HTTPS，Azure Active Directory 身份验证和授权保护的访问。
-+ 笔记本和 blob 存储帐户的 Azure 机器学习工作区中的代码的可靠的云存储。 您可以安全地删除你的 notebook VM，而不会丢失所做的工作。
-+ 预安装了示例笔记本进行探索和试验使用 Azure 机器学习服务功能。
-+ Azure Vm、 任何 VM 类型、 任何包、 任何驱动程序的完全自定义功能。 
+使用笔记本 VM 作为适用于 Jupyter 笔记本的安全、企业就绪的托管环境, 你可以在其中计划机器学习试验, 将模型部署为 web 终结点, 并使用 Python 执行 Azure 机器学习 SDK 支持的所有其他操作。 它提供多种功能:
++ [快速启动预配置的笔记本 VM](quickstart-run-cloud-notebook.md) , 该 VM 具有最新版本的 Azure 机器学习 SDK 和相关包。
++ 通过 Azure Active Directory 身份验证和授权等经验证的技术 (如 HTTPS) 来保护访问。
++ Azure 机器学习工作区 blob 存储帐户中的笔记本和代码的可靠云存储。 可以安全地删除笔记本 VM, 而不会丢失工作。
++ 预安装的示例笔记本, 用于探索和试验 Azure 机器学习服务功能。
++ Azure Vm 的完整自定义功能、任何 VM 类型、任何包、任何驱动程序。 
 
 ## <a name="2019-04-26"></a>2019-04-26
 
-### <a name="azure-machine-learning-sdk-for-python-v1033-released"></a>用于 Python v1.0.33 发布的 azure 机器学习 SDK。
+### <a name="azure-machine-learning-sdk-for-python-v1033-released"></a>Azure 机器学习 SDK for Python v 1.0.33 已发布。
 
-+ Azure ML 硬件加速模型上[Fpga](concept-accelerate-with-fpgas.md)已正式发布。
-  + 现在可以[使用 azureml 加速模型包](how-to-deploy-fpga-web-service.md)到：
-    + 训练的受支持的深度神经网络 （ResNet 50、 ResNet 152、 DenseNet 121、 VGG-16 和 SSD VGG） 的权重
-    + 使用传输学习使用受支持的 DNN
-    + 将模型注册模型管理服务和容器化模型
-    + 将模型部署到 Azure VM 中使用 Azure Kubernetes 服务 (AKS) 群集中 FPGA
-  + 部署到的容器[Azure 数据框边缘](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)服务器设备
-  + 评分与 gRPC 终结点与此数据[示例](https://github.com/Azure-Samples/aml-hardware-accelerated-models)
++ [Fpga](concept-accelerate-with-fpgas.md)上的 Azure ML 硬件加速模型现已正式发布。
+  + 你现在可以[使用加速-模型包](how-to-deploy-fpga-web-service.md)来执行以下操作:
+    + 训练受支持的深层神经网络的权重 (ResNet 50、ResNet 152、DenseNet-121、VGG-16 和 SSD-VGG)
+    + 将传输学习与受支持的 DNN 配合使用
+    + 向模型管理服务注册模型并容器化模型
+    + 使用 Azure Kubernetes 服务 (AKS) 群集中的 FPGA 将模型部署到 Azure VM
+  + 将容器部署到[Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)服务器设备
+  + 通过此[示例](https://github.com/Azure-Samples/aml-hardware-accelerated-models)将数据与 gRPC 终结点评分
 
 ### <a name="automated-machine-learning"></a>自动化机器学习
 
-+ 扫描结合使用以启用动态添加 featurizers 进行性能优化的功能。 新 featurizers： 工作的证据、 目标编码、 文本目标编码、 分类距离的权重的嵌入内容
-+ 智能 CV 处理训练/有效拆分内自动机器学习
-+ 几个内存优化的更改和运行时性能改进
-+ 模型说明中的性能改进
-+ ONNX 模型转换为本地运行的
-+ 添加了的 Subsampling 支持
-+ 智能停止时未定义任何退出条件
-+ 堆积的集合
++ 功能扫描, 可以动态添加 featurizers 以实现性能优化。 新 featurizers: 工作嵌入、证据权重、目标编码、文本目标编码、群集距离
++ 用于处理自动 ML 内定型/有效拆分的智能 CV
++ 很少的内存优化更改和运行时性能改进
++ 模型说明的性能改进
++ 本地运行的 ONNX 模型转换
++ 增加了次采样支持
++ 智能停止, 未定义退出条件
++ 堆积整体
 
-+ 时间序列预测
-  + 新预测预测的函数   
-  + 现在可以使用滚动域交叉验证，时序数据
-  + 添加用于配置系列滞后的时间的新功能 
-  + 添加以支持滚动窗口聚合功能的新功能
-  + 新的假日检测和特征化器中定义国家/地区代码时尝试设置
++ 时序预测
+  + 新建预测预测函数   
+  + 你现在可以使用时序数据的滚动源交叉验证
+  + 添加的新功能配置时序滞后 
+  + 添加了新功能以支持滚动窗口聚合功能
+  + 在实验设置中定义国家/地区代码时的新假日检测和特征化器
 
 + Azure Databricks
-  + 启用时序预测和建模 explainabilty/interpretability 功能
-  + 现在，你可以取消和恢复 （继续） 自动化机器学习试验
-  + 添加了对多核处理支持
+  + 启用时序预测和模型 explainabilty/interpretability 功能
+  + 你现在可以取消和恢复 (继续) 自动 ML 试验
+  + 添加了对多核处理的支持
 
 ### <a name="mlops"></a>MLOps
-+ **本地部署和调试进行评分的容器**<br/> 现在可以部署本地机器学习模型和评分文件和依赖关系，以确保它们按预期的行为上的快速循环访问。
++ **用于计分容器 & 调试的本地部署**<br/> 现在, 你可以在本地部署 ML 模型并快速循环访问评分文件和依赖项, 以确保它们按预期方式运行。
 
-+ **Introduced InferenceConfig & Model.deploy()**<br/> 模型部署现在支持与入口脚本，RunConfig 相同指定源文件夹。  此外，模型部署已简化为单个命令。
++ **Introduced InferenceConfig & Model.deploy()**<br/> 模型部署现在支持使用条目脚本指定源文件夹, 与 .Runconfig 相同。  此外, 模型部署已简化为单个命令。
 
-+ **Git 引用跟踪**<br/> 客户一直请求推出基本 Git 集成功能的一些时间，因为它可帮助维护的端到端审核线索。 我们在 Azure 机器学习中的 Git 相关元数据 （存储库、 提交、 干净状态） 的主要实体上实施了跟踪。 将通过 SDK 和 CLI 自动收集此信息。
++ **Git 引用跟踪**<br/> 客户已请求使用基本 Git 集成功能, 因为它有助于维持端到端的审核线索。 我们已经跨 Azure ML 中的主要实体实现了跨 Git 相关元数据 (存储库、提交、清理状态) 的跟踪。 此信息将由 SDK 和 CLI 自动收集。
 
-+ **模型的分析和验证服务**<br/> 客户经常抱怨的难度以正确的大小与他们推理的服务关联的计算。 与我们分析服务的模型，客户可以提供示例输入，我们将分析跨 16 不同 CPU / 内存配置以确定最佳的调整大小以进行部署。
++ **模型分析 & 验证服务**<br/> 客户经常会抱怨难以正确调整与其推理服务关联的计算的大小。 利用我们的模型分析服务, 客户可以提供示例输入, 我们将跨16个不同的 CPU/内存配置进行分析, 以确定部署的最佳大小。
 
-+ **推理使基础映像**<br/> 另一个常见的投诉时将从试验移到推理重新共享依赖项的困难。 使用我们新的基本映像，用于共享功能，现在可以重用您试验基础映像、 依赖项和所有推理。 这应提高部署速度并减少从内部的无缝连接到外部循环。
++ **自带用于推理的基本映像**<br/> 另一种常见的问题是, 从试验到推理重新共享依赖项时遇到困难。 使用新的基本映像共享功能, 现在可以重复使用试验基础映像、依赖项和所有项来进行推理。 这会加快部署速度, 并减少从内部到外部循环的间隔。
 
-+ **改进了的 Swagger 架构生成体验**<br/> 我们以前的 swagger 生成的方法是容易出错且无法自动执行。 我们有一种从通过修饰器的任何 Python 函数生成 swagger 架构的新行中方法。 我们已进行开源此代码和我们的架构生成协议不会耦合到 Azure 机器学习平台。
++ **提高 Swagger 架构生成体验**<br/> 以前的 swagger 生成方法很容易出错, 无法自动执行。 我们有一种新的基于修饰器的 Python 函数生成 swagger 架构的方式。 我们有开源的此代码, 架构生成协议并不耦合到 Azure ML 平台。
 
-+ **Azure 机器学习 CLI 已正式推出 (GA)**<br/> 现在可以使用单个 CLI 命令部署模型。 我们有了常见的客户反馈，没有人会从 Jupyter notebook 机器学习模型部署。 [ **CLI 参考文档**](https://aka.ms/azmlcli)已更新。
++ **Azure ML CLI 现已正式发布 (GA)**<br/> 现在可以使用单个 CLI 命令部署模型。 我们提供了一些常见的客户反馈, 其中没有人从 Jupyter 笔记本部署 ML 模型。 [**CLI 参考文档**](https://aka.ms/azmlcli)已更新。
 
 
 ## <a name="2019-04-22"></a>2019-04-22
 
-用于 Python v1.0.30 发布的 azure 机器学习 SDK。
+Azure 机器学习 SDK for Python v 1.0.30 已发布。
 
-[ `PipelineEndpoint` ](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?view=azure-ml-py)已引入同时保持相同的终结点添加已发布管道的新版本。
+[`PipelineEndpoint`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?view=azure-ml-py)介绍了如何在保持同一终结点的情况下添加新版本的已发布管道。
 
 ## <a name="2019-04-17"></a>2019-04-17
 
-### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Azure 机器学习数据准备 SDK v1.1.2
+### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Azure 机器学习数据准备 SDK 1.1。2
 
-注意:数据准备 Python SDK 将无法再安装`numpy`和`pandas`包。 请参阅[更新的安装说明](https://aka.ms/aml-data-prep-installation)。
+注意:数据准备 Python SDK 将不再安装`numpy`和`pandas`打包。 请参阅[更新的安装说明](https://aka.ms/aml-data-prep-installation)。
 
 + **新功能**
   + 现在可以使用透视转换。
-    + 操作方法指南：[Pivot notebook](https://aka.ms/aml-data-prep-pivot-nb)
-  + 现在可以本机函数中使用正则表达式。
+    + 操作方法指南:[枢轴](https://aka.ms/aml-data-prep-pivot-nb)
+  + 你现在可以在本机函数中使用正则表达式。
     + 示例：
       + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
       + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
-  + 现在，您可以使用`to_upper` 并`to_lower` 表达式语言中的函数。
-  + 现在可以看到的数据配置文件中的每列的唯一值的数量。
-  + 对于某些常用的读取器步骤，您现在可以传递中`infer_column_types`参数。 如果设置为`True`，数据准备会尝试检测并自动将列类型的转换。
-    + `inference_arguments` 现已弃用。
-  + 现在，可以调用`Dataflow.shape`。
+  + 你现在可以在`to_upper`表达式`to_lower`语言中使用 和 函数。
+  + 现在, 可以看到数据配置文件中每个列的唯一值数。
+  + 对于一些常用的读取器步骤, 你现在可以传入`infer_column_types`参数。 如果将其设置为`True`, 则 "数据准备" 将尝试检测并自动转换列类型。
+    + `inference_arguments`现已弃用。
+  + 你现在可以调用`Dataflow.shape`。
 
 + **Bug 修复和改进**
-  + `keep_columns` 现在接受一个附加的可选参数`validate_column_exists`，如果该检查的结果`keep_columns`将包含的任何列。
-  + （这从文件中读取） 的所有读取器步骤现在接受其他可选自变量`verify_exists`。
-  + 读取 pandas 数据帧和获取数据配置文件的改进了的性能。
-  + 修复了 bug，切片数据流中的单步失败，单个索引。
+  + `keep_columns` 现在接受一个额外的可选`validate_column_exists`参数, 该参数检查的`keep_columns`结果是否包含任何列。
+  + 从文件读取的所有读取器步骤现在都接受其他可选参数`verify_exists`。
+  + 提高了读取 pandas 数据帧和获取数据配置文件的性能。
+  + 修复了这样的 bug: 从数据流切分单个步骤失败, 并出现单个索引。
 
 ## <a name="2019-04-15"></a>2019-04-15
 
 ### <a name="azure-portal"></a>Azure 门户
-  + 现在可以重新提交现有的远程计算群集上运行的现有脚本。 
-  + 在管道选项卡上，现在可以使用新参数运行已发布的管道。 
-  + 运行详细信息现在支持新的快照文件查看器。 提交特定运行时，您可以查看的目录的快照。 此外可以下载已提交启动运行 notebook。
-  + 现在可以取消父中的运行，从 Azure 门户。
+  + 你现在可以重新提交现有远程计算群集上运行的现有脚本。 
+  + 你现在可以在 "管道" 选项卡上使用新参数运行已发布的管道。 
+  + 运行详细信息现在支持新的快照文件查看器。 提交特定运行时, 可以查看目录的快照。 你还可以下载已提交的笔记本以启动运行。
+  + 你现在可以从 Azure 门户中取消父运行。
 
 ## <a name="2019-04-08"></a>2019-04-08
 
-### <a name="azure-machine-learning-sdk-for-python-v1023"></a>Azure Machine Learning SDK for Python v1.0.23
+### <a name="azure-machine-learning-sdk-for-python-v1023"></a>用于 Python 的 Azure 机器学习 SDK 1.0.23
 
 + **新功能**
   + Azure 机器学习 SDK 现在支持 Python 3.7。
-  + Azure 机器学习 DNN 房产现在提供内置的多版本支持。 例如， `TensorFlow` 估算器现在接受`framework_version`参数，并且用户可以指定"1.10"或"1.12"版本。 对于当前的 SDK 版本支持的版本的列表，请调用`get_supported_versions()`需的框架类 (例如， `TensorFlow.get_supported_versions()`)。
-  有关最新 SDK 版本支持的版本的列表，请参阅[DNN 估算器文档](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py)。
+  + Azure 机器学习 DNN 估算现在提供内置的多版本支持。 例如, `TensorFlow`  估计器现在接受一个`framework_version`参数, 并且用户可以指定版本 "1.10" 或 "1.12"。 有关当前 SDK 版本支持的版本的列表, 请对所需`get_supported_versions()`的框架类调用 ( `TensorFlow.get_supported_versions()`例如)。
+  有关最新 SDK 版本支持的版本的列表, 请参阅[DNN 估计器文档](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py)。
 
-### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Azure 机器学习数据准备 SDK v1.1.1
+### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Azure 机器学习数据准备 SDK 版本1.1。1
 
 + **新功能**
-  + 您可以阅读使用 read_ * 转换的多个数据存储/数据路径/DataReference 源。
-  + 您还可以对要创建一个新列的列执行以下操作： 部门、 floor、 模、 电源、 长度。
-  + 数据准备现在是 Azure 机器学习诊断套件的一部分，并且将默认情况下记录诊断信息。
-    + 若要关闭此功能，设置此环境变量为 true:DISABLE_DPREP_LOGGER
+  + 可以使用 read_ * 转换来读取多个数据存储/数据路径/DataReference 源。
+  + 您可以对列执行以下操作来创建新列: 除法、楼层、取模、power、length。
+  + 数据准备现在是 Azure ML 诊断套件的一部分, 默认情况下会记录诊断信息。
+    + 若要关闭此功能, 请将此环境变量设置为 true:DISABLE_DPREP_LOGGER
 
 + **Bug 修复和改进**
-  + 常用的类和函数的改进的代码文档。
-  + 修复了 bug auto_read_file 未能读取 Excel 文件中。
-  + 添加了的选项覆盖在 read_pandas_dataframe 文件夹。
-  + 添加了的对 Fedora 27/28 和 Ubuntu 1804 dotnetcore2 依赖项的安装，以及改进了的性能。
-  + 改进了从 Azure Blob 中读取的性能。
-  + 列类型检测现在支持长时间类型的列。
-  + 修复了 bug 已被某些日期值显示为时间戳，而不是 Python datetime 对象。
-  + 修复了 bug，其中一些类型计数已显示为双精度型值而不是整数。
+  + 改进了常用类和函数的代码文档。
+  + 修复了未能读取 Excel 文件的 auto_read_file 中的 bug。
+  + 添加了覆盖 read_pandas_dataframe 中的文件夹的选项。
+  + 提高了 dotnetcore2 依赖关系安装的性能, 并增加了对 Fedora 27/28 和 Ubuntu 1804 的支持。
+  + 提高了从 Azure Blob 读取的性能。
+  + 列类型检测现在支持 Long 类型的列。
+  + 修复了一些日期值显示为时间戳的 bug, 而不是 Python datetime 对象。
+  + 修复了某些类型计数显示为双精度型而不是整数的错误。
 
   
 ## <a name="2019-03-25"></a>2019-03-25
 
-### <a name="azure-machine-learning-sdk-for-python-v1021"></a>Azure Machine Learning SDK for Python v1.0.21
+### <a name="azure-machine-learning-sdk-for-python-v1021"></a>用于 Python 的 Azure 机器学习 SDK 1.0.21
 
 + **新功能**
-  + *Azureml.core.Run.create_children*方法允许多个子级的低延迟创建运行一次调用。
+  + *Create_children*方法允许使用单个调用来创建多个子运行的低延迟。
 
-### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure 机器学习数据准备 SDK v1.1.0
+### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure 机器学习数据准备 SDK 1.1。0
 
 + **重大更改**
-  + 数据准备包的概念已被弃用并不再受支持。 而不是持久保存在一个包中的多个数据流，您可以单独保留数据流。
-    + 操作方法指南：[打开和保存数据流的 notebook](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
+  + 数据准备包的概念已不推荐使用, 不再受支持。 您可以单独保存数据流, 而不是将多个数据流保存在一个包中。
+    + 操作方法指南:[打开并保存数据流笔记本](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
 
 + **新功能**
-  + 数据准备现在可以识别的类型匹配的特定语义，并相应地拆分的列。 目前支持 STypes 包括： 电子邮件地址、 地理坐标 （纬度和经度）、 IPv4 和 IPv6 地址、 美国电话号码和美国邮政编码。
-    + 操作方法指南：[语义类型 notebook](https://aka.ms/aml-data-prep-semantic-types-nb)
-  + 数据准备现在支持从两个数值列生成结果的列执行以下操作： 减、 乘、 除、 和取模。
-  + 您可以调用`verify_has_data()`上检查是否在数据流将生成的记录，如果执行的数据流。
+  + 数据准备现在可以识别与特定语义类型匹配的列, 并相应地进行拆分。 当前支持的 STypes 包括: 电子邮件地址、地理坐标 (纬度 & 经度)、IPv4 和 IPv6 地址、美国电话号码和 US 邮政编码。
+    + 操作方法指南:[语义类型笔记本](https://aka.ms/aml-data-prep-semantic-types-nb)
+  + 数据准备现在支持以下操作, 以便从两个数值列生成结果列: 减、乘、除和模数。
+  + 可以在数据流`verify_has_data()`上调用以检查数据流是否会在执行时产生记录。
 
 + **Bug 修复和改进**
-  + 现在可以指定要在直方图中使用的数值列配置文件的箱数。
-  + `read_pandas_dataframe`转换表现在要求具有字符串的数据帧或字节类型的列名称。
-  + 修复了 bug`fill_nulls`转换，其中的值未正确填写如果列已丢失。
+  + 你现在可以在用于数值列配置文件的直方图中指定要使用的储箱数。
+  + `read_pandas_dataframe`转换现在要求数据帧具有字符串或字节类型的列名称。
+  + 修复了`fill_nulls`转换中的 bug, 其中如果缺少列, 则不会正确填充值。
 
 ## <a name="2019-03-11"></a>2019-03-11
 
-### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Azure Machine Learning SDK for Python v1.0.18
+### <a name="azure-machine-learning-sdk-for-python-v1018"></a>用于 Python 的 Azure 机器学习 SDK 1.0.18
 
  + **更改**
-   + Azureml tensorboard 程序包将取代 azureml contrib tensorboard。
-   + 此版本中，您可以设置用户帐户 (amlcompute) 在托管的计算群集上创建它时。 这可以通过将这些属性传递中预配配置。 您可以找到更多详细信息中的[SDK 参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-)。
+   + Tensorboard 包取代了 contrib-tensorboard。
+   + 在此版本中, 你可以在托管计算群集 (amlcompute) 上设置一个用户帐户, 而创建该帐户。 可以通过在预配配置中传递这些属性来完成此操作。 可以在[SDK 参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-)中找到更多详细信息。
 
-### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure 机器学习数据准备 SDK v1.0.17
+### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure 机器学习数据准备 SDK 1.0.17
 
 + **新功能**
-  + 现在支持添加两个数值列来生成结果的列使用表达式语言。
+  + 现在支持使用表达式语言添加两个数值列来生成结果列。
 
 + **Bug 修复和改进**
-  + 改进的文档和参数检查 random_split。
+  + 改进了 random_split 的文档和参数检查。
   
 ## <a name="2019-02-27"></a>2019-02-27
 
-### <a name="azure-machine-learning-data-prep-sdk-v1016"></a>Azure 机器学习数据准备 SDK v1.0.16
+### <a name="azure-machine-learning-data-prep-sdk-v1016"></a>Azure 机器学习数据准备 SDK 1.0.16
 
 + **Bug 修复**
-  + 修复了导致的身份验证问题的服务主体的 API 更改。
+  + 修复了 API 更改导致的服务主体身份验证问题。
 
 ## <a name="2019-02-25"></a>2019-02-25
 
-### <a name="azure-machine-learning-sdk-for-python-v1017"></a>Azure Machine Learning SDK for Python v1.0.17
+### <a name="azure-machine-learning-sdk-for-python-v1017"></a>用于 Python 的 Azure 机器学习 SDK 1.0.17
 
 + **新功能**
 
-  + Azure 机器学习现在为常用的 DNN 框架，链接器提供一流的支持。 使用[ `Chainer` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)类用户可以轻松地训练和部署链接器模型。
-    + 了解如何[使用 ChainerMN 运行分布式的培训](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
-    + 了解如何[运行链接器使用 HyperDrive 与超参数优化](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
-  + Azure 机器学习管道添加管道运行基于数据存储的修改可以触发。 管道[计划 notebook](https://aka.ms/pl-schedule)会更新，以展示此功能。
+  + Azure 机器学习现在为常见的 DNN 框架 Chainer 提供一流的支持。 使用[`Chainer`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)类用户可以轻松地训练和部署 Chainer 模型。
+    + 了解如何[通过 ChainerMN 运行分布式培训](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
+    + 了解如何[使用 HyperDrive 通过 Chainer 运行超参数优化](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
+  + 添加 Azure 机器学习管道可根据数据存储修改触发管道运行。 管道[计划笔记本](https://aka.ms/pl-schedule)已更新, 以展示此功能。
 
 + **Bug 修复和改进**
-  + 我们添加了支持 Azure 机器学习管道为 source_directory_data_store 属性设置为的所需的数据存储 （如 blob 存储） 上[RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)提供给[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)。 默认情况下步骤作为后备数据存储，可能会遇到限制问题，同时执行大量的步骤时使用 Azure 文件存储。
+  + 我们添加了对 source_directory_data_store 属性的 Azure 机器学习支持, 以便在[RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)上将属性设置为所需的数据存储 (例如 blob 存储), 并将其提供给[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)。 默认情况下, 步骤使用 Azure 文件存储作为后备数据存储, 如果同时执行大量步骤, 则可能会遇到限制问题。
 
 ### <a name="azure-portal"></a>Azure 门户
 
 + **新功能**
-  + 新的拖放功能表报表编辑器的体验。 用户可以将列从井中到表的预览将显示其中的表区域。 可以重新排列列。
-  + 新的日志文件查看器
-  + 尝试运行、 计算、 模型、 图像和活动选项卡中的部署的链接
+  + 报表的新拖放表编辑器体验。 用户可以将列从表中拖到将显示表预览的表区域。 可以重新排列这些列。
+  + 新建日志文件查看器
+  + 从 "活动" 选项卡中试验运行、计算、模型、图像和部署的链接
 
-### <a name="azure-machine-learning-data-prep-sdk-v1015"></a>Azure 机器学习数据准备 SDK v1.0.15
+### <a name="azure-machine-learning-data-prep-sdk-v1015"></a>Azure 机器学习数据准备 SDK 1.0.15
 
 + **新功能**
-  + 数据准备现在支持从数据流写入文件流。 此外提供的功能来处理要创建新的文件名称的文件流名称。
-    + 操作方法指南：[使用与文件流 notebook](https://aka.ms/aml-data-prep-file-stream-nb)
+  + 数据准备现在支持从数据流写入文件流。 还提供操作文件流名称以创建新文件名的功能。
+    + 操作方法指南:[使用文件流笔记本](https://aka.ms/aml-data-prep-file-stream-nb)
 
 + **Bug 修复和改进**
-  + 改进了的 t-Digest 对大型数据集的性能。
-  + 数据准备现在支持从数据路径的读取数据。
-  + 一种热编码现在适用于布尔值和数字列。
-  + 其他杂项的 bug 修复。
+  + 提高了针对大型数据集的 t 摘要式性能。
+  + 数据准备现在支持从数据路径读取数据。
+  + 一个热编码现在适用于布尔值和数字列。
+  + 其他 bug 修复。
 
 ## <a name="2019-02-11"></a>2019-02-11
 
 ### <a name="azure-machine-learning-sdk-for-python-v1015"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.15
 
 + **新功能**
-  + Azure 机器学习管道添加 AzureBatchStep ([notebook](https://aka.ms/pl-azbatch))，HyperDriveStep (notebook) 和基于时间的计划功能 ([notebook](https://aka.ms/pl-schedule))。
+  + 添加了 AzureBatchStep ([笔记本](https://aka.ms/pl-azbatch))、HyperDriveStep (笔记本) 和基于时间的计划功能 ([笔记本](https://aka.ms/pl-schedule)) Azure 机器学习管道。
   +  DataTranferStep 已更新，可以与 Azure SQL Server 和 Azure database for PostgreSQL ([notebook](https://aka.ms/pl-data-trans)) 配合使用。
 
 + **更改**
@@ -475,7 +478,7 @@ ms.locfileid: "67786274"
   + 数据准备现在支持使用数据存储从 Azure SQL 数据库读取数据。
  
 + **更改**
-  + 改进了对大型数据的特定操作的内存性能。
+  + 提高了某些操作对大型数据的内存性能。
   + `read_pandas_dataframe()` 现在要求指定 `temp_folder`。
   + `ColumnProfile` 的 `name` 属性已弃用 - 请改用 `column_name`。
 
@@ -485,7 +488,7 @@ ms.locfileid: "67786274"
 
 + **更改**： 
   + Azure 机器学习 SDK 不再将 azure-cli 包作为依赖项。 具体而言，azure-cli-core 和 azure-cli-profile 已从 azureml-core 中删除。 以下是对用户有所影响的更改：
-    + 如果您是执行"az login"，然后使用 azureml sdk，SDK 将在一次执行浏览器或设备代码日志。 它不会使用“az login”所创建的任何凭据状态。
+    + 如果要执行 "az login", 然后使用 azureml-sdk, SDK 将多次执行浏览器或设备代码日志。 它不会使用“az login”所创建的任何凭据状态。
     + 对于 Azure CLI 身份验证（如使用“az login”），请使用 azureml.core.authentication.AzureCliAuthentication  类。 对于 Azure CLI 身份验证，请在安装了 azureml-sdk 的 Python 环境中执行 pip install azure-cli  。
     + 如果在使用服务主体执行“az login”以实现自动化，则建议使用 azureml.core.authentication.ServicePrincipalAuthentication  类，因为 azureml-sdk 不会使用 azure CLI 所创建的凭据状态。 
 
@@ -494,7 +497,7 @@ ms.locfileid: "67786274"
 ### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Azure 机器学习数据准备 SDK v1.0.8
 
 + **Bug 修复**
-  + 改进了获取数据配置文件的性能。
+  + 提高了获取数据配置文件的性能。
   + 修复了与错误报告相关的次要 bug。
   
 ### <a name="azure-portal-new-features"></a>Azure 门户：新功能
@@ -558,7 +561,7 @@ Azure 机器学习服务现已公开发布。
 在此版本中，我们将宣告一个通过 [Azure 机器学习计算](how-to-set-up-training-targets.md#amlcompute)获得的全新托管计算体验。 此计算目标替换适用于 Azure 机器学习的 Azure Batch AI 计算。 
 
 此计算目标：
-+ 用于模型训练和批处理推理/评分
++ 用于模型定型和批处理推理/计分
 + 是单节点到多节点计算
 + 为用户执行群集管理和作业计划
 + 默认进行自动缩放

@@ -15,18 +15,18 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ff1cb57bb3317adc7ab6208ebf5029361b7c54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d74eb91b5122f63088f3344836eab8decf5c57d2
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235139"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227374"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
 
 ## <a name="how-password-hash-synchronization-works"></a>密码哈希同步的工作原理
-Active Directory 域服务以实际用户密码的哈希值表示形式存储密码。 哈希值是单向数学函数（哈希算法  ）的计算结果。 没有任何方法可将单向函数的结果还原为纯文本版本的密码。 无法使用密码哈希来登录本地网络。
+Active Directory 域服务以实际用户密码的哈希值表示形式存储密码。 哈希值是单向数学函数（哈希算法  ）的计算结果。 没有任何方法可将单向函数的结果还原为纯文本版本的密码。 
 
 为了同步密码，Azure AD Connect 同步将从本地 Active Directory 实例提取密码哈希。 同步到 Azure Active Directory 身份验证服务之前，已对密码哈希应用其他安全处理。 密码将基于每个用户按时间顺序同步。
 

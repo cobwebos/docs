@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
-ms.date: 02/20/2019
-ms.openlocfilehash: 0d75b983ad6d3b6256852335dc523b481bbe046f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/12/2019
+ms.openlocfilehash: f93fdcbea103259e493399ae479cf001c1ff68db
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60819274"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868810"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>在 Azure 机器学习服务中启用日志记录
 
@@ -27,7 +27,7 @@ ms.locfileid: "60819274"
 > * 部署的模型
 > * Python `logging` 设置
 
-[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。 使用[指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)有关 SDK 的详细信息。
+[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。 有关 SDK 的详细信息, 请使用[指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
 ## <a name="training-models-and-compute-target-logging"></a>训练模型和计算目标日志记录
 
@@ -41,7 +41,7 @@ run = exp.start_logging()
 run.log("test-val", 10)
 ```
 
-请参阅的参考文档[运行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)附加的日志记录函数的类。
+有关其他日志记录功能, 请参阅[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)类的参考文档。
 
 若要在训练过程中启用应用程序状态的本地日志记录，请使用 `show_output` 参数。 启用详细日志记录可以查看训练过程的详细信息，以及有关任何远程资源或计算目标的信息。 提交试验时使用以下代码启用日志记录。
 
@@ -90,9 +90,10 @@ compute.wait_for_completion(show_output=True)
 from azureml.core.webservice import Webservice
 
 service = Webservice.deploy_from_image(deployment_config=your_config,
-                                            image=image,
-                                            name="example-image",
-                                            workspace=ws)
+                                       image=image,
+                                       name="example-image",
+                                       workspace=ws
+                                       )
 
 service.wait_for_deployment(show_output=True)
 ```

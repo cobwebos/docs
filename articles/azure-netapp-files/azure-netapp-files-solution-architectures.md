@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure NetApp 文件的解决方案体系结构 |Microsoft Docs
-description: 为使用 Azure NetApp 文件的解决方案体系结构提供的最佳实践的参考资料。
+description: 提供有关使用 Azure NetApp 文件的解决方案体系结构的最佳实践的参考。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,26 +14,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: b-juche
-ms.openlocfilehash: 89d6bd183d8cfc47915936e536f5ab9bf0ac258a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d4682ed375453cee4e5aa107d69c288e66cd11a7
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454121"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867409"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
-本文提供了对最佳实践可帮助你了解有关使用 Azure NetApp 文件的解决方案体系结构。  
+本文介绍了可帮助你了解使用 Azure NetApp 文件的解决方案体系结构的最佳做法。  
 
-## <a name="solutions-for-oracle-database"></a>针对 Oracle 数据库的解决方案
+## <a name="solutions-for-oracle-database"></a>Oracle 数据库的解决方案
 
-* [在 Azure 部署最佳实践指南，使用 Azure NetApp 文件上的 oracle](https://www.netapp.com/us/media/tr-4780.pdf)
-* [Oracle VM 映像和 Microsoft Azure 上的部署：共享的存储的配置选项](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
+* [Oracle on Azure 部署最佳实践指南使用 Azure NetApp 文件](https://www.netapp.com/us/media/tr-4780.pdf)
+* [Oracle VM 映像及其在 Microsoft Azure 上的部署:共享存储配置选项](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
 
-## <a name="solutions-for-sap-applications"></a>SAP 应用程序的解决方案
+## <a name="solutions-for-sap-applications"></a>适用于 SAP 应用程序的解决方案
 
-* [使用 Azure NetApp 文件在 Microsoft Azure 上的 SAP 应用程序](https://www.netapp.com/us/media/tr-4746.pdf)
-* [使用 Azure NetApp 文件的 SAP 应用程序的 SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* [使用 Azure NetApp 文件 Microsoft Azure 上的 SAP 应用程序](https://www.netapp.com/us/media/tr-4746.pdf)
+* [Azure Vm 上的 SAP NetWeaver 高可用性, 适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* [适用于 sap NetWeaver 的 azure 虚拟机高可用性, 适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 
 ## <a name="talon-solutions"></a>Talon 解决方案 
 
-[全局分布式的企业文件共享与 Azure NetApp 文件和 Talon FAST™](https://www.talonstorage.com/products/azure-netapp-files)
+[与 Azure NetApp 文件和 Talon FAST™的全球分布式企业文件共享](https://www.talonstorage.com/products/azure-netapp-files)

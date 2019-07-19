@@ -3,7 +3,7 @@ title: 将已完成作业和任务的结果或日志保存到数据存储 - Azur
 description: 了解用于保存批处理任务和作业的输出数据的不同选项。 可以将数据保存到 Azure 存储，或保存到其他数据存储。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
 ms.service: batch
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc579cd372616563b61e5ba04fe32612f3efb1c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b5fe15b36913106692377c483110cce2c0418a3f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549933"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322862"
 ---
 # <a name="persist-job-and-task-output"></a>持久保存作业和任务输出
 
@@ -53,9 +53,9 @@ Batch 服务支持在[向作业添加任务](https://docs.microsoft.com/rest/api
 
 批处理定义了用于为 Azure 存储中的任务输出文件命名的一组可选的约定。 [批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)介绍了这些约定。 文件约定标准根据作业和任务的名称确定 Azure 存储中用于给定输出文件的目标容器和 blob 路径的名称。
 
-是否要使用文件约定标准为输出数据文件命名由你决定。 也可以根据自己的需要为目标容器和 blob 命名。 如果使用文件约定标准为输出文件命名，则输出文件可在 [Azure 门户][portal]中进行查看。
+是否要使用文件约定标准为输出数据文件命名由你决定。 也可以根据自己的需要为目标容器和 blob 命名。 如果使用文件约定标准为输出文件命名，则可以在 [Azure 门户][portal]中查看输出文件。
 
-使用 C# 和 .NET 生成批处理解决方案的开发人员可以使用[适用于 .NET 的文件约定库][nuget_package]，按照[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)将任务数据保存到 Azure 存储帐户。 文件约定库以众所周知的方法处理将输出文件移动到 Azure 存储并为目标容器和 blob 命名的过程。
+使用C#和 .Net 生成批处理解决方案的开发人员可以使用[适用于 .Net 的文件约定库][nuget_package], 根据[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)将任务数据保存到 Azure 存储帐户。 文件约定库以众所周知的方法处理将输出文件移动到 Azure 存储并为目标容器和 blob 命名的过程。
 
 有关使用适用于 .NET 的文件约定库保存任务输出的详细信息，请参阅[使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储](batch-task-output-file-conventions.md)。
 
@@ -83,13 +83,13 @@ Batch 服务支持在[向作业添加任务](https://docs.microsoft.com/rest/api
 
 - **输出检索**：可以直接从池中的计算节点检索任务输出；如果已保存任务输出，则可以从 Azure 存储或其他数据存储检索任务输出。 若要直接从计算节点检索任务输出，需要获取文件名及其在节点上的输出位置。 如果将任务输出保存到 Azure 存储，则需要文件在 Azure 存储中的完整路径才能使用 Azure 存储 SDK 下载输出文件。
 
-- **查看输出**：导航到 Azure 门户中的某个 Batch 任务并选择“节点上的文件”  时，将看到与该任务关联的所有文件，而不仅仅是你想要查看的输出文件。 同样，计算节点上的文件仅在该节点存在时才可用，并且仅在为任务设置的文件保留时间范围内才可用。 若要查看已保存到 Azure 存储的任务输出，可使用 Azure 门户或 Azure 存储客户端应用程序（例如 [Azure 存储资源管理器][storage_explorer]）。 若要使用门户或其他工具查看 Azure 存储中的输出数据，则必须知道文件的位置并直接导航到该文件。
+- **查看输出**：导航到 Azure 门户中的某个 Batch 任务并选择“节点上的文件”  时，将看到与该任务关联的所有文件，而不仅仅是你想要查看的输出文件。 同样，计算节点上的文件仅在该节点存在时才可用，并且仅在为任务设置的文件保留时间范围内才可用。 若要查看已保存到 Azure 存储的任务输出, 可以使用 Azure 门户或 Azure 存储客户端应用程序, 如[Azure 存储资源管理器][storage_explorer]。 若要使用门户或其他工具查看 Azure 存储中的输出数据，则必须知道文件的位置并直接导航到该文件。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 在[使用批处理服务 API 将任务数据保存到 Azure 存储](batch-task-output-files.md)中了解如何使用批处理服务 API 中的新功能保存任务数据。
 - 在[使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储](batch-task-output-file-conventions.md)中，了解如何使用适用于 .NET 的 Batch 文件约定库。
-- 请参阅 GitHub 上的 [PersistOutputs][github_persistoutputs] 示例项目，该示例演示了如何使用适用于 .NET 的 Batch 客户端库和适用于 .NET 的文件约定库将任务输出保存到持久存储。
+- 请参阅 GitHub 上的[PersistOutputs][github_persistoutputs]示例项目, 其中演示了如何使用适用于 .Net 的 Batch 客户端库和适用于 .Net 的文件约定库将任务输出持久保存到持久存储。
 
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com

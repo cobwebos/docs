@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 04/19/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8bd16378e9c82a011309c12cf241b59d03405a77
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5e251402a89f84a0aa67eee676c1794207dd24fb
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173316"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869888"
 ---
 | Resource | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -25,15 +25,15 @@ ms.locfileid: "67173316"
 
 #### <a name="template-limits"></a>模板限制
 
-| 值 | 默认限制 | 最大限制 |
+| ReplTest1 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| parameters |256 |256 |
+| Parameters |256 |256 |
 | 变量 |256 |256 |
 | 资源（包括副本计数） |800 |800 |
-| Outputs |64 |64 |
+| outputs |64 |64 |
 | 模板表达式 |24,576 个字符 |24,576 个字符 |
 | 已导出模板中的资源 |200 |200 | 
-| 模板大小 |1 MB |1 MB |
+| 模板大小 |4 MB |4 MB |
 | 参数文件大小 |64 KB |64 KB |
 
 通过使用嵌套模板，可超出某些模板限制。 有关详细信息，请参阅[部署 Azure 资源时使用链接的模板](../articles/azure-resource-manager/resource-group-linked-templates.md)。 若要减少参数、变量或输出的数量，可以将几个值合并为一个对象。 有关详细信息，请参阅[对象即参数](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md)。

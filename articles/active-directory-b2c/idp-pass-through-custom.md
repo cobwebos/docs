@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d9420398c012b8da18e3b035cb845db6ce8c942d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2253e9f6331662f0ead0251f9affd7996e02aa31
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511064"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846883"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略将访问令牌传递给应用程序
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure Active Directory (Azure AD) B2C 中的[自定义策略](active-directory-b2c-get-started-custom.md)允许应用程序的用户通过标识提供者进行注册或登录。 当发生此行为时，Azure AD B2C 会从标识提供者收到一个[访问令牌](active-directory-b2c-reference-tokens.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 你在自定义策略中添加声明类型和输出声明来将该令牌传递给你在 Azure AD B2C 中注册的应用程序。 
+Azure Active Directory (Azure AD) B2C 中的[自定义策略](active-directory-b2c-get-started-custom.md)允许应用程序的用户通过标识提供者进行注册或登录。 当发生此行为时，Azure AD B2C 会从标识提供者收到一个[访问令牌](active-directory-b2c-reference-tokens.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 你在自定义策略中添加声明类型和输出声明来将该令牌传递给你在 Azure AD B2C 中注册的应用程序。
 
 Azure AD B2C 支持传递 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) 和 [OpenID Connect](active-directory-b2c-reference-oidc.md) 标识提供者的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 自定义策略使用 OAuth 2.0 或 OpenID Connect 标识提供者进行配置。
 
-## <a name="add-the-claim-elements"></a>添加声明元素 
+## <a name="add-the-claim-elements"></a>添加声明元素
 
 1. 打开 *TrustframeworkExtensions.xml* 文件，向 **ClaimsSchema** 元素中添加标识符为 `identityProviderAccessToken` 的以下 **ClaimType** 元素：
 
@@ -102,13 +102,8 @@ Azure AD B2C 支持传递 [OAuth 2.0](active-directory-b2c-reference-oauth-code.
 
     应会看到类似于以下示例的内容：
 
-    ![已解码的令牌](./media/idp-pass-through-custom/idp-pass-through-custom-token.png)
+    ![突出显示了 idp_access_token 块的 jwt.ms 中已解码的令牌](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 
 在 [Azure Active Directory 令牌参考](active-directory-b2c-reference-tokens.md)中了解有关令牌的更多信息。
-
-
-
-
-

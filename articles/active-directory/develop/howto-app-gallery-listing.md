@@ -18,16 +18,16 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41b407b4343db4f594049c4b1027fe4279dab840
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 7e1b0ea2f808c982a587392edbe57eb75c532ee2
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482952"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324709"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>如何：在 Azure Active Directory 应用程序库中列出你的应用程序
 
-本文演示如何列出 Azure AD 应用程序库中的应用程序、 单一登录 (SSO)、 实现和管理列表。
+本文介绍如何在 Azure AD 应用程序库中列出应用程序、如何实现单一登录 (SSO) 和管理列表。
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
 
@@ -38,7 +38,7 @@ ms.locfileid: "67482952"
 - 共同客户可以获得分步配置教程。
 - 使用 SCIM 的客户可以将预配用于同一应用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 对于联合应用程序（Open ID 和 SAML/WS-Fed），应用程序必须支持 SaaS 模型才能在 Azure AD 库中列出。 企业库应用程序应支持多个客户配置，而不是任何特定客户。
 
@@ -51,7 +51,7 @@ ms.locfileid: "67482952"
 - 对于自动用户预配请求，应在库中列出应用程序，并使用 SAML 2.0/WS-Fed 启用单一登录功能。 如果尚未列出，可以在门户上一起请求 SSO 和用户预配。
 
 >[!NOTE]
->我们正在运行与大量的 SCIM 连接器的请求，因此我们已停止在我们的门户上执行新请求。 请保存你的请求上进一步通知之前。 我们这种延迟，这可能会造成任何不便的道歉。
+>我们正在使用大量的 SCIM 连接器请求, 因此我们已停止在我们的门户上发出新请求。 在进一步通知之前, 请保留你的请求。 我们道歉此延迟, 这可能导致的任何不便。
 
 ## <a name="submit-the-request-in-the-portal"></a>在门户中提交请求
 
@@ -113,25 +113,25 @@ ms.locfileid: "67482952"
     * 如果要从 Azure AD 库中删除现有应用程序，请选择“删除现有应用程序列表”  。
     * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 
 
-## <a name="listing-requests-by-customers"></a>列出由客户的请求
+## <a name="listing-requests-by-customers"></a>列出客户的请求
 
-客户可以提交的通过单击列出的应用程序请求**应用程序请求的客户** -> **提交新请求**。
+客户可以通过单击 "**客户** -> 的应用请求**提交新请求**" 来提交列出应用程序的请求。
 
-![显示请求的客户应用程序磁贴](./media/howto-app-gallery-listing/customer-submit-request.png)
+![显示 "客户请求的应用" 磁贴](./media/howto-app-gallery-listing/customer-submit-request.png)
 
-下面是客户的流请求的应用程序-
+下面是客户请求的应用程序的流程-
 
-![向客户显示请求的应用程序流](./media/howto-app-gallery-listing/customer-request.png)
+![显示客户请求的应用流](./media/howto-app-gallery-listing/customer-request.png)
 
 ## <a name="timelines"></a>时间线
 
 在库中列出 SAML 2.0 或 WS-Fed 应用程序这一过程的时间线是 7-10 个工作日。
 
-   ![列出到库的 SAML 应用程序时间线](./media/howto-app-gallery-listing/timeline.png)
+   ![将 SAML 应用程序列出到库中的时间线](./media/howto-app-gallery-listing/timeline.png)
 
 在库中列出 OpenID Connect 应用程序这一过程的时间线是 2-5 个工作日。
 
-   ![列出到库的 SAML 应用程序时间线](./media/howto-app-gallery-listing/timeline2.png)
+   ![将 SAML 应用程序列出到库中的时间线](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>升级
 

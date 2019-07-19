@@ -8,13 +8,13 @@ ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
-ms.author: agaiha
-ms.openlocfilehash: e43ba83581b6ce012c619036317361a7c1c0bf4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 0627361fdd4f94a329b08b184dbd542e1927af39
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710410"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871912"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -49,7 +49,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 
 可下载配置只是一个示例；请对其进行修改以适应你的需求。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 * Azure Linux 代理 2.2.0 版或更高版本  。 大部分 Azure VM Linux 库映像包含 2.2.7 版或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)将其更新。
 * **Azure CLI**。 在计算机上[设置 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 环境。
@@ -127,7 +127,7 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 }
 ```
 
-名称 | 值
+名称 | ReplTest1
 ---- | -----
 storageAccountName | 扩展写入数据的存储帐户的名称。
 storageAccountEndPoint | （可选）标识存储帐户所在云的终结点。 如果缺少此设置，则 LAD 默认为 Azure 公有云`https://core.windows.net`。 若要使用 Azure Germany、Azure 政府或 Azure China 中的存储帐户，请相应地设置此值。
@@ -229,7 +229,7 @@ https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.wi
 }
 ```
 
-元素 | 值
+元素 | ReplTest1
 ------- | -----
 StorageAccount | 扩展写入数据的存储帐户的名称。 必须与[受保护的设置](#protected-settings)中指定的名称相同。
 mdsdHttpProxy | （可选）与[受保护的设置](#protected-settings)中的相同。 如果设置，则专用值将重写公用值。 将包含机密（如密码）的代理设置放在[受保护的设置](#protected-settings)中。
@@ -252,7 +252,7 @@ mdsdHttpProxy | （可选）与[受保护的设置](#protected-settings)中的�
 
 此可选结构控制指标和日志的收集，以传递到 Azure Metrics 服务和其他数据接收器。 必须指定 `performanceCounters` 和/或 `syslogEvents`。 必须指定 `metrics` 结构。
 
-元素 | 值
+元素 | ReplTest1
 ------- | -----
 eventVolume | （可选）控制在存储表中创建的分区数。 必须是 `"Large"`、`"Medium"` 或 `"Small"`。 如果未指定，默认值为 `"Medium"`。
 sampleRateInSeconds | （可选）两次收集原始（未聚合）指标之间的默认时间间隔。 支持的最小采样率为 15 秒。 如果未指定，默认值为 `15`。
@@ -309,7 +309,7 @@ performanceCounters 节中指定的指标样本每 15 秒收集一次，或者�
 * 上一次收集的值
 * 用于计算聚合的原始样本数
 
-元素 | 值
+元素 | ReplTest1
 ------- | -----
 sinks | （可选）LAD 将聚合指标结果发送到的接收器的名称的逗号分隔列表。 所有聚合指标都将发布到列出的每个接收器。 请参阅 [sinksConfig](#sinksconfig)。 示例：`"EHsink1, myjsonsink"`。
 type | 标识指标的实际提供程序。
@@ -355,9 +355,9 @@ LAD 和 Azure 门户都不需要 counterSpecifier 值匹配任何模式。 请�
 
 syslogEventConfiguration 收集将为相关的每个 syslog 辅助参数创建一个条目。 如果特定辅助参数的 minSeverity 为“NONE”，或者该辅助参数并未出现在元素中，则不会捕获该辅助参数下的任何事件。
 
-元素 | 值
+元素 | ReplTest1
 ------- | -----
-sinks | 要将单个日志事件发布到的接收器的名称的逗号分隔列表。 与 syslogEventConfiguration 中的限制匹配的所有日志事件都会发布到列出的每个接收器。 示例：“EHforsyslog”
+sinks | 要将单个日志事件发布到的接收器的名称的逗号分隔列表。 与 syslogEventConfiguration 中的限制匹配的所有日志事件都会发布到列出的每个接收器。 例如：“EHforsyslog”
 facilityName | Syslog 辅助参数名称（例如“LOG\_USER”或“LOG\_LOCAL0”）。 有关完整列表，请参阅 [syslog 手册页](http://man7.org/linux/man-pages/man3/syslog.3.html)的“facility”部分。
 minSeverity | Syslog 严重性级别（例如“LOG\_ERR”或“LOG\_INFO”）。 有关完整列表，请参阅 [syslog手册页](http://man7.org/linux/man-pages/man3/syslog.3.html)的“level”部分。 扩展将捕获发送到该辅助参数的等于或高于指定级别的事件。
 
@@ -384,11 +384,11 @@ minSeverity | Syslog 严重性级别（例如“LOG\_ERR”或“LOG\_INFO”）
 ]
 ```
 
-元素 | 值
+元素 | ReplTest1
 ------- | -----
 命名空间 | （可选）应在其中执行查询的 OMI 命名空间。 如果未指定，则默认值为“root/scx”，由 [ System Center 跨平台提供程序](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation)实现。
 query | 要执行的 OMI 查询。
-table | （可选）指定存储帐户中的 Azure 存储表（请参阅[受保护的设置](#protected-settings)）。
+表 | （可选）指定存储帐户中的 Azure 存储表（请参阅[受保护的设置](#protected-settings)）。
 frequency | （可选）两次执行查询之间的秒数。 默认值为 300（5 分钟）；最小值为 15 秒。
 sinks | （可选）应将原始样本指标结果发布到的附加接收器的名称的逗号分隔列表。 扩展或 Azure Metrics 不计算这些原始样本的聚合。
 
@@ -411,7 +411,7 @@ sinks | （可选）应将原始样本指标结果发布到的附加接收器的
 元素 | 值
 ------- | -----
 file | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。
-table | （可选）指定的存储帐户（在受保护的配置中指定）中的 Azure 存储表，文件“结尾”处的新行将写入此表。
+表 | （可选）指定的存储帐户（在受保护的配置中指定）中的 Azure 存储表，文件“结尾”处的新行将写入此表。
 sinks | （可选）日志行发送到的附加接收器的名称的逗号分隔列表。
 
 必须指定“表”和/或“接收器”。
@@ -502,7 +502,7 @@ TransfersPerSecond | 每秒读取或写入操作数
 
 可通过设置 `"condition": "IsAggregate=True"`，获取跨所有文件系统的聚合值。 可通过设置 `"condition": 'Name="/mnt"'`，获取已装入的特定文件系统（如“/mnt”）的值。 
 
-**注意**：如果使用 Azure 门户而不 JSON，正确的条件字段窗体将名称 = / mnt
+**注意**：如果使用的是 Azure 门户而不是 JSON, 则正确的条件字段格式为 Name = '/mnt '
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>磁盘类的内置指标
 

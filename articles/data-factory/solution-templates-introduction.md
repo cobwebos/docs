@@ -11,12 +11,12 @@ ms.date: 01/04/2019
 author: gauravmalhot
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d239e44364c3a4879f2f131717511385a4bd7037
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60786910"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234452"
 ---
 # <a name="templates"></a>模板
 
@@ -40,15 +40,17 @@ ms.locfileid: "60786910"
 
 ### <a name="out-of-the-box-data-factory-templates"></a>现成的数据工厂模板
 
-数据工厂使用 Azure 资源管理器模板来保存数据工厂管道模板。 可以看到所有资源管理器模板，以及清单文件中用于数据工厂模板，带[官方 Azure 数据工厂 GitHub 存储库](https://github.com/Azure/Azure-DataFactory/tree/master/templates)。 Microsoft 提供的预定义模板包括但不限于以下各项：
+数据工厂使用 Azure 资源管理器模板来保存数据工厂管道模板。 在[官方 Azure 数据工厂 GitHub 存储库](https://github.com/Azure/Azure-DataFactory/tree/master/templates)中，可以看到所有资源管理器模板，以及现成数据工厂模板使用的清单文件。 Microsoft 提供的预定义模板包括但不限于以下各项：
 
 -   复制模板：
 
     -   [从数据库进行批量复制](solution-template-bulk-copy-with-control-table.md)
     
-    -   [将新文件通过 LastModifiedDate 复制](solution-template-copy-new-files-lastmodifieddate.md)
+    -   [按 LastModifiedDate 复制新文件](solution-template-copy-new-files-lastmodifieddate.md)
 
     -   [在基于文件的存储之间复制多个文件容器](solution-template-copy-files-multiple-containers.md)
+
+    -   [移动文件](solution-template-move-files.md)
 
     -   [从数据库进行增量复制](solution-template-delta-copy-with-control-table.md)
 

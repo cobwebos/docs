@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 5e8b385d018482d281153f1cf80f9953cb8c7f06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d6e205c23545eb4a01ce58a8bc2b63c58200e32a
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60700460"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228293"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例创建虚拟网络
 
@@ -34,6 +34,9 @@ Azure SQL 数据库托管实例必须部署在 Azure [虚拟网络](../virtual-n
 > 在部署第一个实例之前，应[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 在资源放入子网后，无法调整子网大小。
 >
 > 如果打算使用现有的虚拟网络，则需要修改该网络的配置，以适应托管实例。 有关详细信息，请参阅[根据托管实例修改现有的虚拟网络](sql-database-managed-instance-configure-vnet-subnet.md)。
+>
+> 创建托管实例后, 不支持将托管实例或 VNet 移到另一个资源组或订阅。
+
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 

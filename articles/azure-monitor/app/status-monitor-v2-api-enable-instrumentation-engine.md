@@ -1,6 +1,6 @@
 ---
 title: Azure 状态监视器 v2 API 参考：启用检测引擎 |Microsoft Docs
-description: 状态监视器 v2 API 引用。 启用 InstrumentationEngine。 无需重新部署网站即可监视网站性能。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
+description: 状态监视器 v2 API 参考。 InstrumentationEngine。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,40 +12,35 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 79446e6676a35a1b51e5e0839eb539d730b499da
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: d4683a1cad5172f7104e745433bd141bcf36d56f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807119"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326374"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine-v040-alpha"></a>状态监视器 v2 API：启用 InstrumentationEngine (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-enable-instrumentationengine"></a>状态监视器 v2 API：InstrumentationEngine
 
-本文介绍的 cmdlet 时的成员[Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
-
-> [!IMPORTANT]
-> 状态监视器 v2 目前为公共预览版。
-> 没有附带服务级别协议，提供此预览版本，我们不建议将其用于生产工作负荷。 可能不支持某些功能，以及一些可能会受约束的功能。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
 
 ## <a name="description"></a>描述
 
-通过设置一些注册表项，检测引擎。
-重新启动 IIS 以实现所做的更改才会生效。
+通过设置一些注册表项启用检测引擎。
+重启 IIS 以使这些更改生效。
 
-检测引擎可以补充由.NET Sdk 收集的数据。
-它收集事件和消息描述托管进程的执行。 这些事件和消息包括依赖项结果代码、 HTTP 谓词和 SQL 命令文本。
+检测引擎可以补充 .NET SDK 收集的数据。
+它收集描述托管进程执行的事件和消息。 这些事件和消息包括依赖项结果代码、HTTP 谓词和[SQL 命令文本](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)。
 
-如果，启用检测引擎：
-- 使用启用 cmdlet 监视已启用但未启用检测引擎。
-- 你已手动检测使用.NET Sdk 在应用程序，并想要收集的其他遥测数据。
+在以下情况下启用检测引擎：
+- 已使用 Enable cmdlet 启用了监视，但未启用检测引擎。
+- 已使用 .NET SDK 手动检测应用，并希望收集其他遥测数据。
 
 > [!IMPORTANT] 
 > 此 cmdlet 需要具有管理员权限的 PowerShell 会话。
 
 > [!NOTE] 
-> - 此 cmdlet 需要查看并接受我们的许可协议和隐私声明语句。
-> - 检测引擎会增加系统开销，并默认处于关闭状态。
+> - 此 cmdlet 要求查看并接受我们的许可条款和隐私声明。
+> - 检测引擎会增加额外的开销，默认情况下处于关闭状态。
 
 ## <a name="examples"></a>示例
 
@@ -74,17 +69,17 @@ Configuring registry for instrumentation engine...
 ## <a name="next-steps"></a>后续步骤
 
   查看遥测：
- - [浏览指标](../../azure-monitor/app/metrics-explorer.md)监视性能和使用情况。
-- [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)来诊断问题。
-- 使用[analytics](../../azure-monitor/app/analytics.md)获取更多高级查询。
+ - [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况。
+- [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
+- 使用[分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
  
  添加更多遥测：
  - [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
-- [添加 web 客户端遥测](../../azure-monitor/app/javascript.md)，查看网页代码中的异常，并启用跟踪调用。
-- [将 Application Insights SDK 添加到你的代码](../../azure-monitor/app/asp-net.md)以便插入跟踪和记录调用。
+- [添加 Web 客户端遥测](../../azure-monitor/app/javascript.md)，以查看网页代码中的异常并启用跟踪调用。
+- [将 Application Insights SDK 添加到代码](../../azure-monitor/app/asp-net.md)，以便插入跟踪和日志调用。
  
  使用状态监视器 v2 执行更多操作：
- - 使用指南，了解如何[进行故障排除](status-monitor-v2-troubleshoot.md)状态监视器 v2。
+ - 使用我们的指南可[排查状态监视器 v2 问题](status-monitor-v2-troubleshoot.md)。
  - [获取配置](status-monitor-v2-api-get-config.md)以确认是否正确记录了你的设置。
  - [获取状态](status-monitor-v2-api-get-status.md)以检查监视。

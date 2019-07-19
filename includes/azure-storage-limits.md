@@ -8,30 +8,31 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e3cff54f49d40fb7da99dcafa9535349ccb70e09
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 54050116f9894f9a7903dad53caf6b01228313b7
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150480"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326966"
 ---
 下表介绍 Azure 常规用途 v1、v2 和 Blob 存储帐户的默认限制。 “传入”  限制是指请求中发送到存储帐户的所有数据。 “传出”  限制是指响应中从存储帐户接收的所有数据。
 
 | Resource | 默认限制 |
 | --- | --- |
 | 每个订阅每个区域的存储帐户数，包括标准帐户和高级帐户 | 250 |
-| 最大存储帐户容量 | 2 PB 针对美国和欧洲，对于所有其他区域，其中包括英国 500 TB |
+| 最大存储帐户容量 | 2 PB, 适用于美国和欧洲, 所有其他地区为 500 TB (包括英国) <sup>1</sup>|
 | 每个存储帐户的 Blob 容器、Blob、文件共享、表、队列、实体或消息数上限 | 无限制 |
 | 每个存储帐户的最大请求速率<sup>1</sup> | 每秒 20,000 个请求 |
-| 最大入口<sup>1</sup>每个存储帐户 （美国区域） | 如果已启用 RA-GRS/GRS 的 10 Gbps，20 Gbps; 对于 LRS/ZRS<sup>2</sup> |
-| 最大入口<sup>1</sup>每个存储帐户 （非美国区域） | 如果已启用 RA-GRS/GRS，则为 5 Gbps，10 Gbps; 对于 LRS/ZRS<sup>2</sup> |
-| 对于常规用途 v2 和 Blob 存储帐户 （所有区域） 的最大出口 | 50 Gbps |
-| 常规用途 v1 存储帐户 （美国区域） 的最大出口 | 如果启用 RA-GRS/GRS，则为 20 Gbps、 30 Gbps; 对于 LRS/ZRS<sup>2</sup> |
-| 常规用途 v1 存储帐户 （非美国区域） 的最大出口 | 如果已启用 RA-GRS/GRS 的 10 Gbps，15 Gbps; 对于 LRS/ZRS<sup>2</sup> |
+| 每个存储帐户的最大入口<sup>1</sup> (美国, 欧洲区域) | 25 Gbps |
+| 每个存储帐户的最大入口<sup>1</sup> (美国和欧洲区域除外) | 如果启用了 GRS/GRS, 则为 5 gbps; 对于 LRS/ZRS<sup>2</sup>为 10 gbps |
+| 常规用途 v2 和 Blob 存储帐户的最大出口 (所有区域) | 50 Gbps |
+| 常规用途 v1 存储帐户的最大出口 (美国区域) | 如果启用了 GRS/GRS, 则为 20 gbps; 对于 LRS/ZRS<sup>2</sup> , 则为 30 gbps |
+| 常规用途 v1 存储帐户的最大出口 (非美国区域) | 如果启用了 GRS/GRS, 则为 10 gbps; 对于 LRS/ZRS<sup>2</sup> , 则为 15 gbps |
 
-<sup>1</sup> Azure 标准存储帐户根据请求支持更高的入口上限。 若要请求提高帐户入口上限，请与 [Azure 支持](https://azure.microsoft.com/support/faq/)联系。
+<sup>1</sup>Azure 标准存储帐户支持更高的容量限制和更高的请求入口限制。 若要请求提高帐户入口上限，请与 [Azure 支持](https://azure.microsoft.com/support/faq/)联系。 有关详细信息, 请参阅[宣布更大、更大规模的存储帐户](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。
 
 <sup>2</sup> [Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)选项包括：
+
 - **RA-GRS**：读取访问异地冗余存储。 如果已启用 RA-GRS，辅助位置的出口目标与主要位置的出口目标相同。
 - **GRS**：异地冗余存储。
 - **ZRS**：区域冗余存储。

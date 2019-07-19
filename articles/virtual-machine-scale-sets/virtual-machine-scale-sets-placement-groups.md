@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.author: jeconnoc
-ms.openlocfilehash: be78fd35f7c4f5079b30e53c740bce91e515643a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
-ms.translationtype: HT
+ms.openlocfilehash: 46ca46c99187b14974b78ccc4acc134a5f716b05
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871937"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326705"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型虚拟机规模集
 用户现在可以创建容量高达 1,000 台 VM 的 Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)。 在本文档中，_大型虚拟机规模集_定义为能够扩展到 100 台 VM 以上的规模集。 此功能通过规模集属性 (_singlePlacementGroup=False_) 设置。 
@@ -42,7 +42,7 @@ _大型_ 规模集之所以特别，不是因为 VM 数，而是因为其包含�
 - 对于由多个放置组组成的规模集，在进行第 4 层负载均衡时需要 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-standard-overview.md)。 负载均衡器标准 SKU 还有其他优势，例如能够在多个规模集之间进行负载均衡。 标准 SKU 还要求规模集有与之关联的网络安全组，否则 NAT 池无法正常使用。 若需使用 Azure 负载均衡器基本 SKU，请确保将规模集配置为使用单个放置组，这是默认设置。
 - 所有规模集均支持通过 Azure 应用程序网关进行的第 7 层负载均衡。
 - 规模集按定义使用单个子网 - 请确保子网的地址空间能够容纳所需的所有 VM。 默认情况下，规模集会进行过度预配（在部署或扩展时创建额外的 VM，免费），目的是提高部署可靠性和性能。 请额外预留 20% 的地址空间（相对于计划扩展的目标 VM 数）。
-- 容错域和升级域仅在放置组内保持一致性。 此体系结构不会改变规模集的总体可用性，因为 VM 在不同的物理硬件中是均衡分布的，但却意味着，如果需要保证两台 VM 位于不同的硬件中，则必须确保其位于同一放置组的不同容错域中。 请参阅此链接：[Azure 区域和可用性](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability/)。 
+- 容错域和升级域仅在放置组内保持一致性。 此体系结构不会改变规模集的总体可用性，因为 VM 在不同的物理硬件中是均衡分布的，但却意味着，如果需要保证两台 VM 位于不同的硬件中，则必须确保其位于同一放置组的不同容错域中。 请参阅此链接[可用性选项](/azure/virtual-machines/windows/availability)。 
 - 容错域和放置组 ID 显示在规模集 VM 的_实例视图_ 中。 可以在 [Azure 资源浏览器](https://resources.azure.com/)中查看规模集 VM 的实例视图。
 
 ## <a name="creating-a-large-scale-set"></a>创建大型规模集

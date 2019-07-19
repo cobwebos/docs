@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 4de308f57d59720610eb9ee30ab67b569a5656d5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3ac9d8d64e4f16a4d6268606e723b14e32d8c16e
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442240"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261768"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
@@ -55,7 +55,7 @@ FunctionsProject
  | - bin
 ```
 
-存在共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都具有自己的代码文件 (.csx) 和绑定配置文件 (function.json)。
+有一个共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都具有自己的代码文件 (.csx) 和绑定配置文件 (function.json)。
 
 [2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
@@ -465,7 +465,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持 [6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于 `T`，可仅使用 [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
+`BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如, 移动应用表输出绑定支持[6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), 但只能将[ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)或[IAsyncCollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)用于。 `T`
 
 ### <a name="single-attribute-example"></a>单属性示例
 
@@ -512,7 +512,7 @@ public static async Task Run(string input, Binder binder)
 下表列出了每种绑定类型的 .NET 属性及其定义所在的包。
 
 > [!div class="mx-codeBreakAll"]
-> | 绑定 | 属性 | 添加引用 |
+> | 绑定 | 特性 | 添加引用 |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
 > | 事件中心 | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |

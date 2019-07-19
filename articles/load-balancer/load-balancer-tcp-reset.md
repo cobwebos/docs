@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 具有空闲超时情况下发送双向 TCP RST 数据包功能的负载均衡器
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
-ms.author: kumud
-ms.openlocfilehash: 4a09492fcb8a7985fa27b6daae89aa5dec0fa6e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 8485f4b6e8d4ff55de4930b3cfb7a07802cf1d41
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413862"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274159"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>负载均衡器空闲情况下的 TCP 重置（公共预览版）
 

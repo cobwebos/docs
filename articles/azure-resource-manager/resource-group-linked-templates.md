@@ -4,14 +4,14 @@ description: 介绍如何使用 Azure 资源管理器模板中的链接模板创
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4a5fe1bd2bf57fbec240ab242dd889014dde9578
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c79429d1a39e975c6bcc7fce191846a6205f9a86
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206430"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311701"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -83,14 +83,14 @@ ms.locfileid: "67206430"
 > [!NOTE]
 > 对于嵌套模板，不能使用嵌套模板中定义的参数或变量。 可以使用主模板中的参数和变量。 在前面的示例中，`[variables('storageName')]` 从主模板（而不是嵌套模板）中检索值。 此限制不适用于外部模版。
 >
-> 两个资源内定义嵌套的模板和一个资源依赖于其他，依赖项的值是只需依赖的资源的名称：
+> 对于嵌套模板中定义的两个资源, 一个资源依赖于另一个资源, 则依赖项的值只是从属资源的名称:
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"
 > ],
 > ```
 >
-> 不能在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
+> 对于在嵌套模板`reference`中部署的资源, 不能在嵌套模板的 "输出" 部分中使用函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
 
 嵌套模板需要与标准模板[相同的属性](resource-group-authoring-templates.md)。
 
@@ -147,7 +147,7 @@ ms.locfileid: "67206430"
 ]
 ```
 
-## <a name="using-copy"></a>使用副本
+## <a name="using-copy"></a>使用复制
 
 若要使用嵌套的模板创建资源的多个实例，请在 **Microsoft.Resources/deployments** 资源的级别添加副本元素。
 

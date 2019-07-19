@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0f87b122f81fbd04767354e623dcb808466ee1be
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 508d13356a7dd221b0767a0cedd60b4f1402baf4
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673247"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286222"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
@@ -32,9 +32,9 @@ ms.locfileid: "67673247"
 
 ### <a name="nvidia-grid-drivers"></a>NVIDIA GRID 驱动程序
 
-Microsoft 为用作虚拟工作站或用于虚拟应用程序的 NV 和 NVv2 系列 VM，重新分发 NVIDIA GRID 驱动程序安装程序。 请仅在下表所列操作系统上的 Azure NV VM 上安装这些 GRID 驱动程序。 这些驱动程序包括 Azure 中 GRID Virtual GPU Software 的许可。 不需要设置 NVIDIA vGPU 软件许可证服务器。
+Microsoft 为用作虚拟工作站或虚拟应用程序的 NV 和 NVv3 系列 Vm 重新分发 NVIDIA 网格驱动程序安装程序。 仅在 Azure NV 系列 Vm 上安装这些网格驱动程序, 且仅在下表中列出的操作系统上安装。 这些驱动程序包括 Azure 中 GRID Virtual GPU Software 的许可。 无需设置 NVIDIA vGPU 软件许可证服务器。
 
 | OS | 驱动程序 |
 | -------- |------------- |
-| Windows Server 2019<br/><br/>Windows Server 2016<br/><br/>Windows 10 （最多版本 1809年。 未修补/不支持的 1809年的修补程序级别 0）。 | [网格 8.0 (425.31)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe) |
-| Windows Server 2012 R2 | [网格 8.0 (425.31)](https://go.microsoft.com/fwlink/?linkid=874184) (.exe)  |
+| Windows Server 2019<br/><br/>Windows Server 2016<br/><br/>Windows 10 | [网格 9.0 (431.02)](https://go.microsoft.com/fwlink/?linkid=874181)(.exe) |
+| Windows Server 2012 R2<br/><br/>Windows Server 2008 R2<br/><br/>Windows 8<br/><br/>Windows 7 | [网格 9.0 (431.02)](https://go.microsoft.com/fwlink/?linkid=874184)(.exe)  |
