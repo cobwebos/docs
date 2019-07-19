@@ -21,6 +21,8 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: 使用 .NET SDK
       items:
+        - name: 创建和管理应用
+          href: sdk-csharp-quickstart-authoring-app.md
         - name: 查询预测终结点
           href: sdk-csharp-quickstart-query-prediction-endpoint.md
     - name: 使用 REST API
