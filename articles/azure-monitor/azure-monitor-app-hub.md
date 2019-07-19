@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 451a2d6e658c08823d1629270bb7503ebd236c02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5571f84de5c6dd4f5dffea5869c744b7e5c02e24
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255694"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875285"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -66,8 +66,9 @@ ms.locfileid: "66255694"
                                                     <div class="cardText">
                                                         <h3>新增功能</h3>
                                                         <p>
+                                                            <a href="./app/azure-vm-vmss-apps.md">无代码置备监视 Azure VM 和 Azure 虚拟机规模集应用程序</a><br>
                                                             <a href="./app/kubernetes.md">监视 Kubernetes 应用程序</a><br>
-                                                            <a href="./app/status-monitor-v2-overview.md">用于 IIS 的应用程序的状态监视器 v2</a><br>
+                                                            <a href="./app/status-monitor-v2-overview.md">用于 IIS 应用的状态监视器 v2</a><br>
                                                         </p>
                                                         <br><br>
                                                         <h3>快速入门</h3>
@@ -146,6 +147,7 @@ ms.locfileid: "66255694"
                                                             <a href="./app/asp-net.md">深入的监视配置</a><br>
                                                             <a href="./app/monitor-performance-live-website-now.md">状态监视器</a><br>
                                                             <a href="./app/azure-web-apps.md">应用服务监视</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">VM 和虚拟机规模集应用程序监视</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">自定义事件和指标</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">开源 .NET SDK GitHub 存储库</a>
                                                         </p>

@@ -1,23 +1,23 @@
 ---
-title: 允许或阻止邀请特定组织的 Azure Active Directory |Microsoft Docs
+title: 允许或阻止特定组织的邀请-Azure Active Directory |Microsoft Docs
 description: 向管理员介绍如何使用 Azure 门户或 PowerShell 设置访问或拒绝列表，以允许或阻止来自某些域的 B2B 用户。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 07/15/2018
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa975446c19db3176fdb89ccfb1a987b1fda049d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62cbe68bcf191c7ee6fc906bc8ba8ea66e3efb31
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113220"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233880"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>允许或阻止向特定组织中的 B2B 用户发送邀请
 
@@ -27,8 +27,9 @@ ms.locfileid: "67113220"
 
 - 可以创建允许列表或拒绝列表。 不能同时设置这两种类型的列表。 默认情况下，不在允许列表中的任何域都会包含在拒绝列表中，反之亦然。 
 - 对于每个组织，只能创建一个策略。 可以更新策略以包含更多的域，或者删除策略以创建新策略。 
+- 可以添加到允许列表或拒绝列表的域数量仅受策略大小限制。 整个策略的最大大小为 25 KB (25000 个字符), 其中包括允许列表或拒绝列表以及为其他功能配置的任何其他参数。
 - 此列表独立于 OneDrive for Business 和 SharePoint Online 允许/阻止列表。 若要在 SharePoint Online 中限制单个文件的共享，需要为 OneDrive for Business 和 SharePoint Online 设置允许或拒绝列表。 有关详细信息，请参阅 [SharePoint Online 和 OneDrive for Business 中受限制的域共享](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9)。
-- 此列表不适用于已兑换邀请的外部用户。 设置列表后，将强制实施该列表。 如果用户邀请处于挂起状态，而你设置了一个阻止该用户的域的策略，则该用户在尝试兑换邀请时将会失败。
+- 此列表不适用于已经兑换邀请的外部用户。 设置列表后，将强制实施该列表。 如果用户邀请处于挂起状态，而你设置了一个阻止该用户的域的策略，则该用户在尝试兑换邀请时将会失败。
 
 ## <a name="set-the-allow-or-deny-list-policy-in-the-portal"></a>在门户中设置允许或拒绝列表策略
 
@@ -157,7 +158,7 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 Azure AD B2B 的概述，请参阅[什么是 Azure AD B2B 协作？](what-is-b2b.md)
-- 有关条件性访问和 B2B 协作的信息，请参阅[B2B 协作用户的条件性访问](conditional-access.md)。
+- 有关条件访问和 B2B 协作的信息, 请参阅[b2b 协作用户的条件性访问](conditional-access.md)。
 
 
 

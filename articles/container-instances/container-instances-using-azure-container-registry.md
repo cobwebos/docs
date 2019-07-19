@@ -3,27 +3,28 @@ title: 从 Azure 容器注册表部署到 Azure 容器实例
 description: 了解如何使用容器映像在 Azure 容器注册表中部署 Azure 容器实例中的容器。
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 515dc8ed4a2fc9b3d2973d393c6894d8c7cef8f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 502f178b66e7ba233552d7db4e095363c8bb8628
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729378"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325562"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
 [Azure 容器注册表](../container-registry/container-registry-intro.md)是基于 Azure 的托管容器注册表服务，用于存储专用的 Docker 容器映像。 本文介绍如何将存储在 Azure 容器注册表中的容器映像部署到 Azure 容器实例。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 **Azure 容器注册表**：需要一个 Azure 容器注册表（注册表中的至少一个容器映像）才能完成本文中的步骤。 如果需要注册表，请参阅[使用 Azure CLI 创建容器注册表](../container-registry/container-registry-get-started-azure-cli.md)。
 
-**Azure CLI**：本文中的命令行示例使用 [Azure CLI](/cli/azure/)，并采用适用于 Bash shell 的格式。 可在本地[安装 Azure CLI](/cli/azure/install-azure-cli)，或使用 [Azure Cloud Shell][cloud-shell-bash]。
+**Azure CLI**：本文中的命令行示例使用 [Azure CLI](/cli/azure/)，并采用适用于 Bash shell 的格式。 你可以在本地[安装 Azure CLI](/cli/azure/install-azure-cli) , 或使用[Azure Cloud Shell][cloud-shell-bash]。
 
 ## <a name="configure-registry-authentication"></a>配置注册表身份验证
 
@@ -49,7 +50,7 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 现在需要创建服务主体，并将其凭据存储在 Key Vault 中。
 
-以下命令使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 创建服务主体，使用 [az keyvault secret set][az-keyvault-secret-set] 将服务主体的**密码**存储在保管库中。
+以下命令使用[az ad sp create for rbac][az-ad-sp-create-for-rbac] to create the service principal, and [az keyvault secret set][az-keyvault-secret-set]将服务主体的**密码**存储在保管库中。
 
 ```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
@@ -87,13 +88,13 @@ az keyvault secret set \
 
 将服务主体凭据存储到 Azure Key Vault 机密中后，应用程序和服务可以使用它们来访问专用注册表。
 
-首先，使用 [az acr show][az-acr-show] 命令获取注册表的登录服务器名称。 登录服务器名称全部小写，并且类似于 `myregistry.azurecr.io`。
+首先, 使用[az acr show][az-acr-show]命令获取注册表的登录服务器名称。 登录服务器名称全部小写，并且类似于 `myregistry.azurecr.io`。
 
 ```azurecli
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $RES_GROUP --query "loginServer" --output tsv)
 ```
 
-执行以下 [az container create][az-container-create] 命令来部署容器实例。 该命令使用 Azure Key Vault 中存储的服务主体凭据对容器注册表进行身份验证，并假设事先已将 [aci-helloworld](container-instances-quickstart.md) 映像推送到注册表。 如果想要使用注册表中的不同映像，请更新 `--image` 值。
+执行以下[az container create][az-container-create]命令以部署容器实例。 该命令使用 Azure Key Vault 中存储的服务主体凭据对容器注册表进行身份验证，并假设事先已将 [aci-helloworld](container-instances-quickstart.md) 映像推送到注册表。 如果想要使用注册表中的不同映像，请更新 `--image` 值。
 
 ```azurecli
 az container create \

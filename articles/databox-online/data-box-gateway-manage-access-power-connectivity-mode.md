@@ -8,14 +8,14 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 44343f6bc6f48a6caa056f3336af55613a1e74d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38662fc8dda935d5f000aee6609fd9b2e42de17f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476798"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253151"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>在 Azure 数据网关的管理访问、 电源和连接模式
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>管理 Azure Data Box Gateway 的访问、电源和连接模式
 
 本文介绍如何管理 Azure Data Box Gateway 的访问、电源和连接模式。 这些操作是通过本地 Web UI 或 Azure 门户执行的。
 
@@ -28,11 +28,11 @@ ms.locfileid: "66476798"
 
 ## <a name="manage-device-access"></a>管理对设备的访问
 
-向你的数据框网关设备的访问控制通过使用设备密码。 你可以通过本地 web UI 密码。 此外可以重置设备密码在 Azure 门户中。
+对 Data Box Gateway 设备的访问通过使用设备密码进行控制。 可以通过本地 web UI 更改密码。 你还可以在 Azure 门户中重置设备密码。
 
 ### <a name="change-device-password"></a>更改设备密码
 
-请按照下列步骤在本地 UI 更改设备密码。
+请在本地 UI 中执行以下步骤, 以更改设备密码。
 
 1. 在本地 Web UI 中，转到“维护”>“密码更改”。 
 2. 依次输入当前密码和新密码。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 确认新密码。
@@ -54,47 +54,47 @@ ms.locfileid: "66476798"
 
     ![重置密码](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
-## <a name="manage-resource-access"></a>管理资源的访问权限
+## <a name="manage-resource-access"></a>管理资源访问
 
-若要创建数据框边缘/数据框网关、 IoT 中心和 Azure 存储资源，您需要在资源组级别权限作为参与者或更高版本。 您还需要相应的资源提供程序注册。 对于涉及激活密钥和凭据的任何操作，则还要求向 Azure Active Directory 图形 API 的权限。 以下各节中描述了这些。
+若要创建 Data Box Edge/Data Box Gateway、IoT 中心和 Azure 存储资源, 需要具有资源组级别的参与者或更高级别的权限。 还需要注册相应的资源提供程序。 对于涉及激活密钥和凭据的任何操作, 还需要 Azure Active Directory 图形 API 的权限。 以下部分介绍了这些内容。
 
-### <a name="manage-microsoft-azure-active-directory-graph-api-permissions"></a>管理 Microsoft Azure Active Directory 图形 API 权限
+### <a name="manage-microsoft-azure-active-directory-graph-api-permissions"></a>管理 Microsoft Azure Active Directory Graph API 权限
 
-在生成的数据框边缘设备，或执行任何操作，需要提供凭据的激活密钥，您需要对 Azure Active Directory 图形 API 的权限。 可能需要凭据的操作：
+为 Data Box Edge 设备生成激活密钥, 或执行需要凭据的任何操作时, 需要具有 Azure Active Directory 图形 API 的权限。 需要凭据的操作可以是:
 
--  创建具有关联的存储帐户的共享。
--  创建用户有权访问设备上的共享。
+-  使用关联的存储帐户创建共享。
+-  创建可访问设备上的共享的用户。
 
-您应该`User`因为您需要能够访问 Active Directory 租户上`Read all directory objects`。 不能为来宾用户，因为没有权限`Read all directory objects`。 如果你是来宾，如生成的激活密钥，创建共享数据框边缘设备上的操作创建的用户将所有失败。
+你应该`User`可以访问 Active Directory 租户, 因为你需要`Read all directory objects`能够访问它。 你不能是来宾用户, 因为他们没有权限`Read all directory objects`。 如果你是来宾，则生成激活密钥、在 Data Box Edge 设备上创建共享以及创建用户等操作都将失败。
 
-有关如何向 Azure Active Directory 图形 API 的用户提供访问权限的详细信息，请参阅[管理员、 用户和来宾用户的默认访问](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+有关如何向用户提供对 Azure Active Directory 图形 API 的访问的详细信息, 请参阅[管理员、用户和来宾用户的默认访问权限](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 
 ### <a name="register-resource-providers"></a>注册资源提供程序
 
-若要预配 Azure 中的资源 （在 Azure 资源管理器模型中），您需要支持该资源的创建的资源提供程序。 例如，若要预配虚拟机，应具有 Microsoft.Compute 资源提供程序订阅中可用。
+若要在 Azure 中预配资源 (在 Azure 资源管理器模型中), 需要一个支持创建该资源的资源提供程序。 例如, 要设置虚拟机, 订阅中应提供 "Microsoft. 计算" 资源提供程序。
  
-资源提供程序的订阅级别上注册。 默认情况下，任何新的 Azure 订阅是预注册的常用的资源提供程序的列表。 此列表中不包含 Microsoft.DataBoxEdge 的资源提供程序。
+资源提供程序在订阅级别注册。 默认情况下，任何新的 Azure 订阅都预注册到一组常用的资源提供程序中。 "DataBoxEdge" 的资源提供程序未包含在此列表中。
 
-无需授予用户能够创建 Microsoft.DataBoxEdge 等他们拥有所有者权限，其资源组中的资源，只要这些资源的资源提供程序已对订阅级别访问权限注册。
+你无需向订阅级别授予访问权限, 用户可以在其拥有所有者权限的资源组中创建类似于 "DataBoxEdge" 的资源, 前提是这些资源的资源提供程序已注册.
 
-尝试创建的任何资源之前，请确保在订阅中注册资源提供程序。 如果未注册资源提供程序，你将需要确保创建新资源的用户具有足够的权限注册的订阅级别上的所需的资源提供程序。 如果尚未执行此同时，您将看到以下错误：
+尝试创建任何资源之前, 请确保在订阅中注册了资源提供程序。 如果未注册资源提供程序, 则需要确保创建新资源的用户具有足够的权限在订阅级别上注册所需的资源提供程序。 如果还没有这样做, 则会看到以下错误:
 
-*订阅<Subscription name>不具有权限，无法注册资源提供程序：Microsoft.DataBoxEdge.*
+*订阅\<订阅名称 > 无权注册资源提供程序:DataBoxEdge。*
 
 
-若要获取当前订阅中已注册的资源提供程序的列表，请运行以下命令：
+若要获取当前订阅中已注册资源提供程序的列表, 请运行以下命令:
 
 ```PowerShell
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-为数据框边缘设备`Microsoft.DataBoxEdge`应注册。 若要注册`Microsoft.DataBoxEdge`，订阅管理员可以运行以下命令：
+对于 Data Box Edge 设备, `Microsoft.DataBoxEdge`应当注册。 若要`Microsoft.DataBoxEdge`注册, 订阅管理员应运行以下命令:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-有关如何注册资源提供程序的详细信息，请参阅[解决资源提供程序注册错误](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)。
+有关如何注册资源提供程序的详细信息, 请参阅[解决资源提供程序注册的错误](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)。
 
 ## <a name="manage-connectivity-mode"></a>管理连接模式
 

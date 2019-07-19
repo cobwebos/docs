@@ -5,18 +5,49 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 65c23b05cfcb623f8e2870df813f5516b3039d5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bd8c0417b32e93a4f52b545c4d7fc532992a0b1
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883471"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854330"
 ---
 # <a name="optimize-expressroute-routing"></a>优化 ExpressRoute 路由
 有多个 ExpressRoute 线路时，可以通过多个路径连接到 Microsoft。 结果就是，所采用的路由可能不是最理想的 - 也就是说，流量可能会经历较长的路径才能到达 Microsoft，而 Microsoft 的流量也可能会经历较长的路径才能到达网络。 网络路径越长，延迟越严重。 延迟对应用程序性能和用户体验有直接影响。 本文将详述此问题，并说明如何使用标准路由技术来优化路由。
+
+## <a name="path-selection-on-microsoft-and-public-peerings"></a>Microsoft 和 Public 对等互连上的路径选择
+使用 Microsoft 或公共对等互连时, 如果你有一个或多个 ExpressRoute 线路, 并通过 Internet 交换 (IX) 或 Internet 服务提供商 (ISP) 连接到 Internet, 则必须确保流量流过所需路径。 BGP 基于多种因素 (包括最长前缀匹配 (LPM)) 使用最佳路径选择算法。 若要确保通过 Microsoft 或公共对等互连发往 Azure 的流量遍历 ExpressRoute 路径, 客户必须实现*本地首选项*属性, 以确保在 ExpressRoute 上始终首选该路径。 
+
+> [!NOTE]
+> 默认的本地首选项通常为100。 更喜欢更高的本地首选项。 
+>
+>
+
+请考虑以下示例方案:
+
+![ExpressRoute 案例 1 问题 - 从客户到 Microsoft 的路由欠佳](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+
+在上面的示例中, 若要首选 ExpressRoute 路径, 请按如下所示配置本地首选项。 
+
+**来自 R1 的 Cisco IOS-XE 配置:**
+
+    R1(config)#route-map prefer-ExR permit 10
+    R1(config-route-map)#set local-preference 150
+
+    R1(config)#router BGP 345
+    R1(config-router)#neighbor 1.1.1.2 remote-as 12076
+    R1(config-router)#neighbor 1.1.1.2 activate
+    R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
+
+**来自 R1 的 Junos 配置:**
+
+    user@R1# set protocols bgp group ibgp type internal
+    user@R1# set protocols bgp group ibgp local-preference 150
+
+
 
 ## <a name="suboptimal-routing-from-customer-to-microsoft"></a>从客户到 Microsoft 的欠佳路由
 让我们通过一个示例来详细了解路由问题。 假设你在美国有两个办公室，一个在洛杉矶，一个在纽约。 办公室通过广域网 (WAN) 进行连接，该广域网可能是自己的主干网络，也可能是你服务提供商的 IP VPN。 有两个 ExpressRoute 线路，一个在美国西部，一个在美国东部，也通过 WAN 连接。 显然，可以通过两个路径连接到 Microsoft 网络。 现在，假设你在美国西部和美国东部都有 Azure 部署（例如 Azure 应用服务）。 目的是将洛杉矶的用户连接到 Azure 美国西部，将纽约的用户连接到 Azure 美国东部，因为服务管理员宣称每个办公室的用户都能够访问附近的 Azure 服务以获取最佳体验。 遗憾的是，此计划适用于东海岸用户，但不适用于西海岸用户。 以下是问题的原因。 在每个 ExpressRoute 线路上，我们会向你播发 Azure 美国东部的前缀 (23.100.0.0/16) 和 Azure 美国西部的前缀 (13.100.0.0/16)。 如果不知道哪个前缀是来自哪个区域，则无法进行区别对待。 WAN 网络可能会认为这两种前缀更靠近美国东部而非美国西部，因此会将两个办公室的用户都路由到美国东部的 ExpressRoute 线路。 结果就是，洛杉矶办公室的许多用户会很不满意。

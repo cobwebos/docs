@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
-ms.author: monhaber
-ms.openlocfilehash: e2d66db2ae3c379db86d40603d919489fdf15eed
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.author: v-mohabe
+ms.openlocfilehash: 02d993d760338356fa29ee58a03215e14d6583f1
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144266"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295606"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure 安全中心支持的平台和功能
 
@@ -51,7 +51,7 @@ ms.locfileid: "67144266"
 支持以下 Linux 操作系统：
 
 > [!NOTE]
-> 由于不断更改支持的 Linux 操作系统的列表，如果您愿意，请单击[此处](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems)若要查看支持的版本，最新列表，如果自上次发布本主题后进行了更改。
+> 由于受支持的 Linux 操作系统的列表不断变化, 因此, 如果需要, 请单击[此处](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems)查看受支持版本的最新列表, 以防自上次发布本主题以来发生了更改。
 
 64 位
 * CentOS 6 和 7
@@ -82,7 +82,7 @@ ms.locfileid: "67144266"
 |----|----|----|----|----|----|----|----|
 |**环境**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
 ||**虚拟机**|**虚拟机规模集**||**虚拟机**|**虚拟机规模集**|
-|VMBA 威胁检测警报|✔|✔|✔|✔（在支持的版本上）|✔（在支持的版本上）|✔|建议 （免费） 威胁检测 （标准）|
+|VMBA 威胁检测警报|✔|✔|✔|✔（在支持的版本上）|✔（在支持的版本上）|✔|建议 (免费) 威胁检测 (标准)|
 |基于网络的威胁检测警报|✔|✔|X|✔|✔|X|标准|
 |Windows Defender ATP 集成|✔（在支持的版本上）|✔（在支持的版本上）|✔|X|X|X|标准|
 |允许缺失修补程序|✔|✔|✔|✔|✔|✔|免费|
@@ -97,8 +97,8 @@ ms.locfileid: "67144266"
 |无文件威胁检测|✔|✔|✔|X|X|X|标准|
 |网络映射|✔|✔|X|✔|✔|X|标准|
 |自适应网络控制|✔|✔|X|✔|✔|X|标准|
-|法规符合性仪表板和报表|✔|✔|✔|✔|✔|✔|标准|
-|建议和 Docker 托管 IaaS 容器上的威胁检测|X|X|X|✔|✔|✔|标准|
+|合规性仪表板 & 报表|✔|✔|✔|✔|✔|✔|标准|
+|Docker 托管的 IaaS 容器上的建议和威胁检测|X|X|X|✔|✔|✔|标准|
 
 ### <a name="supported-endpoint-protection-solutions"></a>受支持的终结点保护解决方案
 
@@ -106,7 +106,7 @@ ms.locfileid: "67144266"
  - 是否可以使用 Azure 安全中心安装每个解决方案。
  - 安全中心可以发现哪些保护解决方案。 如果发现其中一个终结点保护解决方案，安全中心将建议不要安装。
 
-有关这些保护的每个生成建议时的信息，请参阅[终结点保护评估和建议](security-center-endpoint-protection.md)。
+有关为每个保护生成建议的时间的信息, 请参阅[Endpoint Protection 评估和建议](security-center-endpoint-protection.md)。
 
 | 终结点保护| 平台 | 安全中心安装 | 安全中心发现 |
 |------|------|-----|-----|
@@ -124,7 +124,7 @@ ms.locfileid: "67144266"
 ## <a name="supported-paas-features"></a>支持的 PaaS 功能
 
 
-|服务|建议 （免费）|威胁检测 （标准）|
+|服务|建议 (免费)|威胁检测 (标准)|
 |----|----|----|
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
@@ -156,7 +156,7 @@ ms.locfileid: "67144266"
 
 \* 公共预览版目前支持这些功能。
 
-\*\* AAD 建议属性仅适用于标准订阅
+\*\*AAD 建议仅适用于标准订阅
 
 
 

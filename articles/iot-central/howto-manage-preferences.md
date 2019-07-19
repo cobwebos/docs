@@ -3,17 +3,17 @@ title: 在 IoT Central 中管理应用程序首选项| Microsoft Docs
 description: 如何在 IoT Central 中管理你的应用程序首选项和个人首选项
 author: lmasieri
 ms.author: lmasieri
-ms.date: 02/20/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 00d40b9910f9b549443373c84b079c543037ce62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5c0dbcb1c1f483bd7499de08c9f1949adff415b
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236322"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850150"
 ---
 # <a name="manage-your-application-preferences"></a>管理应用程序首选项
 
@@ -23,11 +23,11 @@ ms.locfileid: "65236322"
 
 ## <a name="changing-language"></a>更改语言
 
-IoT 中心都支持多种语言。 您可以通过使用切换您的首选的语言**语言选取器**顶部导航栏上的设置图标。 一旦你已更改你的语言，IoT 中心会记住你的选择，并将其应用到所有应用程序。 此类仪表板图像未本地化的应用程序中的自定义。
+支持多种语言的 IoT Central。 使用顶部导航栏上的 "设置" 图标上的 "**语言选取器**", 可以切换首选语言。 更改语言后, IoT Central 会记住所选内容, 并将其应用于所有应用程序。 在应用程序中进行的自定义 (例如仪表板映像) 未本地化。
 
 ## <a name="changing-theme"></a>更改主题
 
-我们同时支持深色主题和浅色主题。 浅色主题时默认值，可以通过选择顶部导航栏上的设置图标来更改主题。
+我们同时支持深色主题和浅色主题。 虽然浅色主题为默认设置, 但你可以通过选择顶部导航栏上的 "设置" 图标来更改主题。
 
 ![IoT Central 主题选取器](media/howto-manage-preferences/settings.png)
 

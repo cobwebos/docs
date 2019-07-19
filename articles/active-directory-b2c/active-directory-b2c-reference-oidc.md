@@ -11,12 +11,12 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0c855a3e0280e1fadf2362f2d8959beff2f5d00a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c5626e2ddfc24eeaeed562f3eaf73d16626eb458
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271969"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278039"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -73,7 +73,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
 | response_type | 是 | 必须包含 OpenID Connect 的 ID 令牌。 如果 Web 应用程序还需要使用令牌来调用 Web API，则可以使用 `code+id_token`。 |
@@ -135,6 +135,8 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运
 
 从 OpenID Connect 元数据终结点获取元数据文档后，可以使用 RSA-256 公钥来验证 ID 令牌的签名。 此终结点上可能列出多个密钥，每个密钥使用 `kid` 声明进行标识。 ID 令牌的标头还包含 `kid` 声明，该声明指示哪个密钥用于对 ID 令牌进行签名。
 
+若要验证令牌 Azure AD B2C, 需要使用指数 (e) 和取模 (n) 生成公钥。 你需要根据相应的编程语言来确定如何执行此操作。 可在此处找到有关通过 RSA 协议生成公钥的官方文档: https://tools.ietf.org/html/rfc3447#section-3.1
+
 验证 ID 令牌的签名后，还有几项声明需要验证。 例如：
 
 - 验证 `nonce` 声明以防止令牌重放攻击。 其值应为在登录请求中指定的内容。
@@ -153,9 +155,9 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运
 
 如果仅需要 Web 应用程序运行用户流，则可以跳过下面几个部分。 这些部分仅适用于需要对 Web API 进行验证的调用，以及受到 Azure AD B2C 保护的 Web 应用程序。
 
-通过将 `POST` 请求发送到 `/token` 终结点，可以将获取的授权代码（通过 `response_type=code+id_token` 获取）兑换为所需资源的令牌。 在 Azure AD B2C 中，你可以[请求的其他 API 的访问令牌](active-directory-b2c-access-tokens.md#request-a-token)像往常一样通过在请求中指定其范围。
+通过将 `POST` 请求发送到 `/token` 终结点，可以将获取的授权代码（通过 `response_type=code+id_token` 获取）兑换为所需资源的令牌。 在 Azure AD B2C 中, 可以通过在请求中指定其作用域, 照常[请求其他 API 的访问令牌](active-directory-b2c-access-tokens.md#request-a-token)。
 
-按照约定的使用应用程序的客户端 ID 作为所请求的范围 （这将导致与该客户端 ID 作为"audience"访问令牌），还可以为应用的后端 Web API 请求访问令牌：
+你还可以通过使用应用的客户端 ID 作为请求的作用域来为你的应用程序的后端 Web API 请求访问令牌 (这会导致使用该客户端 ID 的访问令牌为 "受众"):
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
@@ -165,7 +167,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
-| 参数 | 必选 | 描述 |
+| 参数 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | p | 是 | 用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
 | client_id | 是 | Azure 门户分配给应用程序的[应用程序 ID](https://portal.azure.com/) 。 |
@@ -232,7 +234,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | p | 是 | 用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
 | client_id | 是 | Azure 门户分配给应用程序的[应用程序 ID](https://portal.azure.com/) 。 |
@@ -289,10 +291,10 @@ p=b2c_1_sign_in
 &post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | p | 是 | 想要用于从应用程序中注销用户的用户流。 |
 | post_logout_redirect_uri | 否 | 用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
 
-将用户定向到 `end_session` 终结点会清除用户的某些 Azure AD B2C 的单一登录状态，但是不会将用户从其社交标识提供者 (IDP) 会话中注销。 如果用户在后续登录中选择相同的 IDP，他们将重新进行身份验证，且无需输入其凭据。 如果用户想要注销应用程序，并不一定意味着他们想要注销其 Facebook 帐户。 但是，如果使用本地帐户，则用户的会话将正常结束。
+将用户定向到 `end_session` 终结点会清除用户的某些 Azure AD B2C 的单一登录状态，但是不会将用户从其社交标识提供者 (IDP) 会话中注销。 如果用户在后续登录中选择相同的 IDP，他们将重新进行身份验证，且无需输入其凭据。 如果用户想要从应用程序中注销, 则不一定意味着他们要注销其 Facebook 帐户。 但是, 如果使用了本地帐户, 用户的会话便会正确结束。
 

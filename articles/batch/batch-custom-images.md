@@ -3,17 +3,17 @@ title: 基于自定义映像预配 Azure Batch 池 | Microsoft Docs
 description: 基于自定义映像创建 Batch 池，以预配包含应用程序所需的软件和数据的计算节点。 自定义映像是配置计算节点以运行 Batch 工作负载的高效方法。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 80cba5e1b5e38e31dea2272cc4e33b4a95940e41
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 54456ff48ca7104cc1ba10ddc47cec1bc364ddf6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565614"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323691"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>使用自定义映像创建虚拟机池 
 
@@ -34,7 +34,7 @@ ms.locfileid: "67565614"
 - **选择磁盘类型。** 可以为 OS 磁盘和数据磁盘使用高级存储。
 - **扩大池的大小。** 使用托管的自定义映像创建池时，该池可以扩大，而无需创建映像 Blob VHD 的副本。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - **托管映像资源**。 若要使用自定义映像创建虚拟机池，需在 Batch 帐户所在的同一 Azure 订阅和区域中使用或创建托管映像资源。 应该基于 VM 的 OS 磁盘快照及其附加的数据磁盘（可选）创建该映像。 有关准备托管映像的详细信息和步骤，请参阅以下部分。
   - 对创建的每个池使用唯一的自定义映像。
@@ -113,13 +113,13 @@ ms.locfileid: "67565614"
 
 ## <a name="considerations-for-using-packer"></a>使用 Packer 的注意事项
 
-直接使用 Packer 创建托管的映像资源只能通过用户订阅模式批处理帐户完成。 批处理服务模式下帐户，您需要创建 VHD，然后将 VHD 导入到托管的映像资源。 具体取决于你池分配模式 （用户订阅或 Batch 服务），你的步骤来创建托管的映像资源而异。
+只能使用用户订阅模式批处理帐户来创建直接使用 Packer 的托管映像资源。 对于 Batch 服务模式帐户, 需要首先创建 VHD, 然后将 VHD 导入到托管映像资源。 根据池分配模式 (用户订阅或批处理服务), 创建托管映像资源的步骤会有所不同。
 
-请确保用于创建托管的映像资源存在的任何引用自定义映像的池的生存期。 如果不这样做可以导致池分配失败和/或调整大小失败。 
+确保用于创建托管映像的资源存在于引用自定义映像的任何池的生存期。 否则, 可能会导致池分配失败和/或重设故障大小。 
 
-如果删除的图像或基础资源，则您可能会遇到错误类似于： `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`。 如果发生这种情况，请确保尚未删除基础资源。
+如果删除了图像或基础资源, 可能会收到类似于以下内容的错误: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`。 如果发生这种情况, 请确保未删除基础资源。
 
-使用 Packer 创建 VM 的详细信息，请参阅[Linux 使用 Packer 生成映像](../virtual-machines/linux/build-image-with-packer.md)或[Windows 使用 Packer 生成映像](../virtual-machines/windows/build-image-with-packer.md)。
+有关使用 Packer 创建 VM 的详细信息, 请参阅使用[Packer 生成 Linux 映像](../virtual-machines/linux/build-image-with-packer.md)或[使用 Packer 生成 Windows 映像](../virtual-machines/windows/build-image-with-packer.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

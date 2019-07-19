@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: b195271edeea6cd5ea527454ad1615ac85a32138
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7b003c588d7b079823bb046676a1226828fcae2
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658545"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249863"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权
 
@@ -55,9 +55,9 @@ ms.locfileid: "60658545"
 
     选中所需类型即可指定“授权的授权类型”。  “授权代码”是默认指定的。 
 
-    输入“授权终结点 URL”。  对于 Azure Active Directory，此 URL 将类似于以下 URL，其中 `<client_id>` 将替换为客户端 ID，用于向 OAuth 2.0 服务器标识应用程序。
+    输入“授权终结点 URL”。  对于 Azure Active Directory, 此 url 将类似于以下 url, 其中`<tenant_id>`将替换为你的 Azure AD 租户的 ID。
 
-    `https://login.microsoftonline.com/<client_id>/oauth2/authorize`
+    `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
     “授权请求方法”指定如何向 OAuth 2.0 服务器发送授权请求。  默认选择 **GET**。
 

@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: dx@sendgrid.com
-ms.openlocfilehash: 91d28802b4af23da5b8060fa7c8f9a7e843a7dab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: erikre
+ms.reviewer: dx@sendgrid.com
+ms.openlocfilehash: c3211ba9f8a8b16ad4372c82d8e50c46f3ad6897
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60444661"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876377"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>如何在 Azure 中使用 SendGrid 发送电子邮件
 ## <a name="overview"></a>概述
@@ -34,7 +35,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 * 转发客户查询。
 * 处理传入的电子邮件。
 
-有关详细信息，请访问 [https://sendgrid.com](https://sendgrid.com) 或 SendGrid 的 [C# library][sendgrid-csharp] GitHub 存储库。
+有关详细信息, 请[https://sendgrid.com](https://sendgrid.com)访问或 SendGrid 的[ C#库 GitHub 存储库][sendgrid-csharp]。
 
 ## <a name="create-a-sendgrid-account"></a>创建 SendGrid 帐户
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -74,7 +75,7 @@ SendGrid 的 .NET 类库名为 **SendGrid**。 其中包含以下命名空间：
 ## <a name="how-to-create-an-email"></a>如何：创建电子邮件
 使用 **SendGridMessage** 对象创建电子邮件。 创建邮件对象后，可以设置属性和方法，包括电子邮件发件人、电子邮件收件人以及电子邮件的主题和正文。
 
-以下示例演示如何创建完全填充的电子邮件对象：
+以下示例演示了如何创建完全填充的电子邮件对象：
 
     var msg = new SendGridMessage();
 
@@ -96,9 +97,9 @@ SendGrid 的 .NET 类库名为 **SendGrid**。 其中包含以下命名空间：
 有关 **SendGrid** 类型支持的所有属性和方法的详细信息，请参阅 GitHub 上的 [sendgrid-csharp][sendgrid-csharp]。
 
 ## <a name="how-to-send-an-email"></a>如何：发送电子邮件
-创建电子邮件后，可以使用 SendGrid 的 API 发送该邮件。 或者，可以[使用 .NET 的内置库][NET-library]。
+创建电子邮件后，可以使用 SendGrid 的 API 发送该邮件。 或者, 你可以使用[。NET 的内置库][NET-library]。
 
-发送电子邮件需要用户提供 SendGrid API 密钥。 如需有关如何配置 API 密钥的详细信息，请访问 SendGrid 的 API 密钥[文档][documentation]。
+发送电子邮件需要用户提供 SendGrid API 密钥。 如果需要有关如何配置 API 密钥的详细信息, 请访问 SendGrid 的 API 密钥[文档][documentation]。
 
 可通过 Azure 门户存储这些凭据，方法是单击“应用程序设置”，再在“应用设置”下添加键/值对。
 
@@ -232,7 +233,7 @@ SendGrid 的 .NET 类库名为 **SendGrid**。 其中包含以下命名空间：
     msg.AddAttachment(banner2);
 
 ## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>如何：使用邮件设置启用页脚、跟踪和分析
-SendGrid 通过使用邮件设置和跟踪设置提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如点击跟踪、Google 分析、订阅跟踪等）。 如需应用的完整列表，请参阅[设置文档][settings-documentation]。
+SendGrid 通过使用邮件设置和跟踪设置提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如点击跟踪、Google 分析、订阅跟踪等）。 有关应用的完整列表, 请参阅[设置文档][settings-documentation]。
 
 可以使用作为 **SendGridMessage** 类的一部分实现的方法将应用应用到 **SendGrid** 电子邮件。 以下示例演示了脚注和单击跟踪筛选器：
 
@@ -248,7 +249,7 @@ SendGrid 通过使用邮件设置和跟踪设置提供其他电子邮件功能�
     msg.SetClickTracking(true);
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>如何：使用其他 SendGrid 服务
-SendGrid 提供了多个 API 和 Webhook，方便用户在 Azure 应用程序中使用其他功能。 如需更多详细信息，请查看 [SendGrid API 参考][SendGrid API documentation]。
+SendGrid 提供了多个 API 和 Webhook，方便用户在 Azure 应用程序中使用其他功能。 有关更多详细信息, 请参阅[SENDGRID API 参考][SendGrid API documentation]。
 
 ## <a name="next-steps"></a>后续步骤
 此时，已了解 SendGrid 电子邮件服务的基础知识，请访问以下链接以了解更多信息。

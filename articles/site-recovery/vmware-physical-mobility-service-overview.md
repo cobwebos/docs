@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 929a4e4366c9e94ed4e1915406914991624f6baa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c692b1c5b77b95e5487a847b46473906135c3d86
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565516"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261137"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
@@ -115,7 +115,7 @@ ms.locfileid: "60565516"
 #### <a name="installation-settings"></a>安装设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | UnifiedAgent.exe /Role <MS/MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
+用法 | Unifiedagent.exe/Role \<MS/MT >/InstallLocation \<安装位置 >/Platform "VmWare"/Silent
 安装程序日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log 下。
 /Role | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 /InstallLocation| 可选参数。 指定移动服务的安装位置（任意文件夹）。
@@ -125,7 +125,7 @@ ms.locfileid: "60565516"
 #### <a name="registration-settings"></a>注册设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>
+用法 | UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>
 代理配置日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log 下。
 /CSEndPoint | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
 /PassphraseFilePath |  必需。 通行短语的位置。 使用任何有效的 UNC 或本地文件路径。
@@ -154,7 +154,7 @@ ms.locfileid: "60565516"
 #### <a name="installation-settings"></a>安装设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | ./install -d <Install Location> -r <MS/MT> -v VmWare -q
+用法 | 。/install-d \<安装位置 >-r \<MS/MT > v VmWare-q
 -r | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 -d | 可选参数。 指定移动服务的安装位置：/usr/local/ASR。
 -v | 必需。 指定一个平台，以便在其上安装移动服务。 对于 VMware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。
@@ -163,7 +163,7 @@ ms.locfileid: "60565516"
 #### <a name="registration-settings"></a>注册设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>
+用法 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>
 -i | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
 -P |  必需。 通行短语所保存到的文件的完整文件路径。 使用任何有效文件夹。
 

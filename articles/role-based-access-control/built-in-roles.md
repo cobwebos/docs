@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/24/2019
+ms.date: 07/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b92bc0a6c5d51ad26e069a363619edbdf0daa7c0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: de068563e50da4510343572fd641aadd93157073
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442869"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868644"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -54,22 +54,22 @@ ms.locfileid: "67442869"
 | [自动化 Runbook 操作员](#automation-runbook-operator) | 读取 Runbook 属性 - 以能够创建 runbook 的作业。 |
 | [Avere 参与者](#avere-contributor) | 可以创建和管理 Avere vFXT 群集。 |
 | [Avere 操作员](#avere-operator) | 由 Avere vFXT 群集用来管理群集 |
-| [Azure 事件中心数据所有者 （预览）](#azure-event-hubs-data-owner-preview) | 允许到 Azure 事件中心资源的完全访问权限。 |
-| [Azure 事件中心数据接收方 （预览版）](#azure-event-hubs-data-receiver-preview) | 允许接收 Azure 事件中心资源的访问权限。 |
-| [Azure 事件中心数据发件人 （预览版）](#azure-event-hubs-data-sender-preview) | 允许发送到 Azure 事件中心资源的访问。 |
+| [Azure 事件中心数据所有者 (预览)](#azure-event-hubs-data-owner-preview) | 允许对 Azure 事件中心资源进行完全访问。 |
+| [Azure 事件中心数据接收方 (预览版)](#azure-event-hubs-data-receiver-preview) | 允许接收对 Azure 事件中心资源的访问权限。 |
+| [Azure 事件中心数据发送程序 (预览)](#azure-event-hubs-data-sender-preview) | 允许发送对 Azure 事件中心资源的访问权限。 |
 | [Azure Kubernetes 服务群集管理员角色](#azure-kubernetes-service-cluster-admin-role) | 列出群集管理员凭据操作。 |
 | [Azure Kubernetes 服务群集用户角色](#azure-kubernetes-service-cluster-user-role) | 列出群集用户凭据操作。 |
-| [Azure Maps 数据读取器 （预览版）](#azure-maps-data-reader-preview) | 授予访问权限以读取映射 Azure maps 帐户的相关的数据。 |
-| [Azure 服务总线数据所有者 （预览）](#azure-service-bus-data-owner-preview) | 允许完全访问 Azure 服务总线资源。 |
-| [Azure 服务总线数据接收方 （预览版）](#azure-service-bus-data-receiver-preview) | 允许接收 Azure 服务总线资源的访问权限。 |
-| [Azure 服务总线数据发件人 （预览版）](#azure-service-bus-data-sender-preview) | 允许发送到 Azure 服务总线资源的访问权限。 |
+| [Azure Maps 数据读取器 (预览)](#azure-maps-data-reader-preview) | 授予对 Azure maps 帐户中读取映射相关数据的访问权限。 |
+| [Azure 服务总线数据所有者 (预览)](#azure-service-bus-data-owner-preview) | 允许完全访问 Azure 服务总线资源。 |
+| [Azure 服务总线数据接收方 (预览版)](#azure-service-bus-data-receiver-preview) | 允许接收对 Azure 服务总线资源的访问权限。 |
+| [Azure 服务总线数据发送程序 (预览)](#azure-service-bus-data-sender-preview) | 允许发送对 Azure 服务总线资源的访问权限。 |
 | [Azure Stack 注册所有者](#azure-stack-registration-owner) | 允许管理 Azure Stack 注册。 |
-| [备份参与者](#backup-contributor) | 可以让你管理备份服务，但不能创建保管库和授予对其他人访问权限 |
+| [备份参与者](#backup-contributor) | 允许你管理备份服务, 但无法创建保管库并向其他人授予访问权限 |
 | [备份操作员](#backup-operator) | 允许管理备份服务，但删除备份、创建保管库以及授予其他人访问权限除外 |
 | [备份读取器](#backup-reader) | 可以查看备份服务，但是不能进行更改 |
 | [计费读者](#billing-reader) | 允许对帐单数据进行读取访问 |
 | [BizTalk 参与者](#biztalk-contributor) | 允许管理 BizTalk 服务，但不允许访问这些服务。 |
-| [区块链成员节点访问 （预览）](#blockchain-member-node-access-preview) | 可以对区块链成员节点进行访问 |
+| [区块链成员节点访问 (预览)](#blockchain-member-node-access-preview) | 允许访问区块链成员节点 |
 | [CDN 终结点参与者](#cdn-endpoint-contributor) | 可以管理 CDN 终结点，但不能向其他用户授予访问权限。 |
 | [CDN 终结点读者](#cdn-endpoint-reader) | 可以查看 CDN 终结点，但不能进行更改。 |
 | [CDN 配置文件参与者](#cdn-profile-contributor) | 可以管理 CDN 配置文件及其终结点，但不能向其他用户授予访问权限。 |
@@ -103,8 +103,8 @@ ms.locfileid: "67442869"
 | [实验室创建者](#lab-creator) | 允许在 Azure 实验室帐户下创建、管理、删除托管实验室。 |
 | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 |
 | [Log Analytics 读者](#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 |
-| [逻辑应用参与者](#logic-app-contributor) | 允许管理逻辑应用，但这些更改的访问权限。 |
-| [逻辑应用操作员](#logic-app-operator) | 可以读取、 启用和禁用逻辑应用，但不是编辑或更新它们。 |
+| [逻辑应用参与者](#logic-app-contributor) | 允许你管理逻辑应用, 但不能更改它们的访问权限。 |
+| [逻辑应用操作员](#logic-app-operator) | 允许读取、启用和禁用逻辑应用, 但不允许对其进行编辑或更新。 |
 | [托管应用程序操作员角色](#managed-application-operator-role) | 可让你在托管应用程序资源上读取和执行操作 |
 | [托管应用程序读者](#managed-applications-reader) | 允许读取托管应用中的资源和请求 JIT 访问。 |
 | [托管的标识参与者](#managed-identity-contributor) | 创建、读取、更新和删除用户分配的标识 |
@@ -129,18 +129,18 @@ ms.locfileid: "67442869"
 | [Site Recovery 读取器](#site-recovery-reader) | 允许查看 Site Recovery 状态，但不允许执行其他管理操作 |
 | [空间定位点帐户参与者](#spatial-anchors-account-contributor) | 允许管理帐户中的空间定位点，但不能删除它们 |
 | [空间定位点帐户所有者](#spatial-anchors-account-owner) | 允许管理帐户中的空间定位点，包括删除它们 |
-| [空间定位点帐户读取者](#spatial-anchors-account-reader) | 允许查找并读取帐户中的空间定位点的属性 |
+| [空间定位点帐户读取者](#spatial-anchors-account-reader) | 允许在帐户中查找和读取空间定位点的属性 |
 | [SQL DB 参与者](#sql-db-contributor) | 允许管理 SQL 数据库，但不允许访问这些数据库。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 |
 | [SQL 托管实例参与者](#sql-managed-instance-contributor) | 允许你管理 SQL 托管实例和所需的网络配置，但无法向其他人授予访问权限。 |
 | [SQL 安全管理器](#sql-security-manager) | 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 |
 | [SQL Server 参与者](#sql-server-contributor) | 允许管理 SQL 服务器和数据库，但不允许访问它们及其安全相关的策略。 |
-| [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户。 不提供对存储帐户中的数据的访问。 |
+| [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户。 提供对帐户密钥的访问权限, 它可用于通过共享密钥授权访问数据。 |
 | [存储帐户密钥操作员服务角色](#storage-account-key-operator-service-role) | 允许列出和重新生成存储帐户访问密钥。 |
 | [存储 Blob 数据参与者](#storage-blob-data-contributor) | 读取、写入和删除 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [存储 Blob 数据所有者](#storage-blob-data-owner) | 提供对 Azure 存储 blob 容器和数据的完全访问权限，包括分配 POSIX 访问控制。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [存储 Blob 数据读者](#storage-blob-data-reader) | 读取和列出 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [存储队列数据参与者](#storage-queue-data-contributor) | 读取、写入和删除 Azure 存储队列与队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
-| [存储队列数据消息处理者](#storage-queue-data-message-processor) | 查看、 检索和从 Azure 存储队列中删除一条消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
+| [存储队列数据消息处理者](#storage-queue-data-message-processor) | 查看、检索和删除 Azure 存储队列中的消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [存储队列数据消息发送者](#storage-queue-data-message-sender) | 向 Azure 存储队列添加消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [存储队列数据读取者](#storage-queue-data-reader) | 读取和列出 Azure 存储队列与队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [支持请求参与者](#support-request-contributor) | 允许创建和管理支持请求 |
@@ -552,11 +552,11 @@ ms.locfileid: "67442869"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-event-hubs-data-owner-preview"></a>Azure 事件中心数据所有者 （预览）
+## <a name="azure-event-hubs-data-owner-preview"></a>Azure 事件中心数据所有者 (预览)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许到 Azure 事件中心资源的完全访问权限。 |
+> | **说明** | 允许对 Azure 事件中心资源进行完全访问。 |
 > | **Id** | f526a384-b230-433a-b45c-95f59c4a2dec |
 > | **操作** |  |
 > | Microsoft.EventHub/* |  |
@@ -567,11 +567,11 @@ ms.locfileid: "67442869"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-event-hubs-data-receiver-preview"></a>Azure 事件中心数据接收方 （预览版）
+## <a name="azure-event-hubs-data-receiver-preview"></a>Azure 事件中心数据接收方 (预览版)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许接收 Azure 事件中心资源的访问权限。 |
+> | **说明** | 允许接收对 Azure 事件中心资源的访问权限。 |
 > | **Id** | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
 > | **操作** |  |
 > | Microsoft.EventHub/*/eventhubs/consumergroups/read |  |
@@ -582,11 +582,11 @@ ms.locfileid: "67442869"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-event-hubs-data-sender-preview"></a>Azure 事件中心数据发件人 （预览版）
+## <a name="azure-event-hubs-data-sender-preview"></a>Azure 事件中心数据发送程序 (预览)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许发送到 Azure 事件中心资源的访问。 |
+> | **说明** | 允许发送对 Azure 事件中心资源的访问权限。 |
 > | **Id** | 2b629674-e913-4c01-ae53-ef4638d8f975 |
 > | **操作** |  |
 > | Microsoft.EventHub/*/eventhubs/read |  |
@@ -631,7 +631,7 @@ ms.locfileid: "67442869"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 授予访问权限以读取映射 Azure maps 帐户的相关的数据。 |
+> | **说明** | 授予对 Azure maps 帐户中读取映射相关数据的访问权限。 |
 > | **Id** | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | **操作** |  |
 > | *无* |  |
@@ -642,7 +642,7 @@ ms.locfileid: "67442869"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-service-bus-data-owner-preview"></a>Azure 服务总线数据所有者 （预览）
+## <a name="azure-service-bus-data-owner-preview"></a>Azure 服务总线数据所有者 (预览)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -657,11 +657,11 @@ ms.locfileid: "67442869"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-service-bus-data-receiver-preview"></a>Azure 服务总线数据接收方 （预览版）
+## <a name="azure-service-bus-data-receiver-preview"></a>Azure 服务总线数据接收方 (预览版)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许接收 Azure 服务总线资源的访问权限。 |
+> | **说明** | 允许接收对 Azure 服务总线资源的访问权限。 |
 > | **Id** | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
 > | **操作** |  |
 > | Microsoft.ServiceBus/*/queues/read |  |
@@ -674,11 +674,11 @@ ms.locfileid: "67442869"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-service-bus-data-sender-preview"></a>Azure 服务总线数据发件人 （预览版）
+## <a name="azure-service-bus-data-sender-preview"></a>Azure 服务总线数据发送程序 (预览)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许发送到 Azure 服务总线资源的访问权限。 |
+> | **说明** | 允许发送对 Azure 服务总线资源的访问权限。 |
 > | **Id** | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
 > | **操作** |  |
 > | Microsoft.ServiceBus/*/queues/read |  |
@@ -712,7 +712,7 @@ ms.locfileid: "67442869"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许管理备份服务，但不允许创建保管库以及授予其他人访问权限 |
+> | **说明** | 允许你管理备份服务, 但无法创建保管库并向其他人授予访问权限 |
 > | **Id** | 5e467623-bb1f-42f4-a55d-6e525e11384b |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -735,7 +735,7 @@ ms.locfileid: "67442869"
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/* | 创建和管理与保管库相关的扩展信息 |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | 获取恢复服务保管库的警报。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
-> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作获取表示“vault”类型的 Azure 资源的对象 |
+> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作可获取表示 "vault" 类型 Azure 资源的对象 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 创建和管理已注册的标识 |
 > | Microsoft.RecoveryServices/Vaults/usages/* | 创建和管理恢复服务保管库的使用情况 |
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
@@ -744,9 +744,9 @@ ms.locfileid: "67442869"
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 验证对受保护项的操作 |
-> | Microsoft.RecoveryServices/Vaults/write | “创建保管库”操作创建“vault”类型的 Azure 资源 |
+> | Microsoft.RecoveryServices/Vaults/write | “创建保管库”操作将创建 "vault" 类型的 Azure 资源 |
 > | Microsoft.RecoveryServices/Vaults/backupOperations/read | 返回恢复服务保管库的备份操作状态。 |
-> | Microsoft.RecoveryServices/Vaults/backupEngines/read | 返回使用保管库注册的所有备份管理服务器。 |
+> | Microsoft.RecoveryServices/Vaults/backupEngines/read | 返回保管库中注册的所有备份管理服务器。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | 获取所有可保护的容器 |
 > | Microsoft.RecoveryServices/locations/backupStatus/action | 检查恢复服务保管库的备份状态 |
@@ -773,15 +773,15 @@ ms.locfileid: "67442869"
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.Network/virtualNetworks/read | 获取虚拟网络定义 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 返回操作状态 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 返回操作的状态 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 获取对保护容器执行的操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 对受保护的项执行备份。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 获取对受保护项执行的操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 返回对受保护项执行的操作的状态。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护项的对象详细信息 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 对受保护项目执行备份操作。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 获取对受保护项目执行的操作的结果。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 返回对受保护项目执行的操作的状态。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护的项的对象详细信息 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 预配受保护项的即时项恢复 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 获取受保护项的恢复点。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 还原受保护项的恢复点。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 获取受保护项目的恢复点。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 还原受保护项目的恢复点。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 吊销受保护项的即时项恢复 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 创建备份受保护项 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | 返回所有已注册的容器 |
@@ -793,18 +793,18 @@ ms.locfileid: "67442869"
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回所有保护策略 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | 创建和管理可备份的项 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 返回所有受保护项的列表。 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 返回属于订阅的所有容器 |
+> | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 返回所有受保护项目的列表。 |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 返回全部属于订阅的容器 |
 > | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | 返回恢复服务的受保护项和受保护服务器的摘要。 |
-> | Microsoft.RecoveryServices/Vaults/certificates/write | “更新资源证书”操作更新资源/保管库凭据证书。 |
-> | Microsoft.RecoveryServices/Vaults/extendedInformation/read | “获取扩展信息”操作获取表示“vault”类型的 Azure 资源的对象的扩展信息 |
-> | Microsoft.RecoveryServices/Vaults/extendedInformation/write | “获取扩展信息”操作获取表示“vault”类型的 Azure 资源的对象的扩展信息 |
+> | Microsoft.RecoveryServices/Vaults/certificates/write | “更新资源证书”操作可更新资源/保管库的凭据证书。 |
+> | Microsoft.RecoveryServices/Vaults/extendedInformation/read | “获取扩展信息”操作可获取表示 ?vault? 类型的 Azure 资源的对象扩展信息 |
+> | Microsoft.RecoveryServices/Vaults/extendedInformation/write | “获取扩展信息”操作可获取表示 ?vault? 类型的 Azure 资源的对象扩展信息 |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | 获取恢复服务保管库的警报。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
-> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作获取表示“vault”类型的 Azure 资源的对象 |
-> | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | “获取操作结果”操作可用于获取异步提交的操作的操作状态和结果 |
-> | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | “获取容器”操作可用于获取针对资源注册的容器。 |
-> | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | “注册服务容器”操作可用于向恢复服务注册容器。 |
+> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作可获取表示 "vault" 类型 Azure 资源的对象 |
+> | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | “获取操作结果”操作可用于获取异步提交操作的操作状态和结果 |
+> | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | “获取容器”操作可用于获取为资源注册的容器。 |
+> | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | “注册服务容器”操作可用于借助恢复服务注册容器。 |
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
@@ -815,7 +815,7 @@ ms.locfileid: "67442869"
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | 获取策略操作的状态。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | 创建已注册的容器 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | 在容器内进行工作负载的查询 |
-> | Microsoft.RecoveryServices/Vaults/backupEngines/read | 返回使用保管库注册的所有备份管理服务器。 |
+> | Microsoft.RecoveryServices/Vaults/backupEngines/read | 返回保管库中注册的所有备份管理服务器。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | 创建备份保护意向 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | 获取备份保护意向 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | 获取所有可保护的容器 |
@@ -843,13 +843,13 @@ ms.locfileid: "67442869"
 > | **Id** | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 返回操作状态 |
+> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是由服务使用的内部操作 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 返回操作的状态 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 获取对保护容器执行的操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 获取对受保护项执行的操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 返回对受保护项执行的操作的状态。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护项的对象详细信息 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 获取受保护项的恢复点。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 获取对受保护项目执行的操作的结果。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 返回对受保护项目执行的操作的状态。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护的项的对象详细信息 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 获取受保护项目的恢复点。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | 返回所有已注册的容器 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | 返回作业操作的结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | 返回所有作业对象 |
@@ -858,19 +858,19 @@ ms.locfileid: "67442869"
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | 返回恢复服务保管库的备份操作结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回所有保护策略 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 返回所有受保护项的列表。 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 返回属于订阅的所有容器 |
+> | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 返回所有受保护项目的列表。 |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 返回全部属于订阅的容器 |
 > | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | 返回恢复服务的受保护项和受保护服务器的摘要。 |
-> | Microsoft.RecoveryServices/Vaults/extendedInformation/read | “获取扩展信息”操作获取表示“vault”类型的 Azure 资源的对象的扩展信息 |
+> | Microsoft.RecoveryServices/Vaults/extendedInformation/read | “获取扩展信息”操作可获取表示 ?vault? 类型的 Azure 资源的对象扩展信息 |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | 获取恢复服务保管库的警报。 |
-> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作获取表示“vault”类型的 Azure 资源的对象 |
-> | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | “获取操作结果”操作可用于获取异步提交的操作的操作状态和结果 |
-> | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | “获取容器”操作可用于获取针对资源注册的容器。 |
+> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作可获取表示 "vault" 类型 Azure 资源的对象 |
+> | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | “获取操作结果”操作可用于获取异步提交操作的操作状态和结果 |
+> | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | “获取容器”操作可用于获取为资源注册的容器。 |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/read | 返回恢复服务保管库的存储配置。 |
 > | Microsoft.RecoveryServices/Vaults/backupconfig/read | 返回恢复服务保管库的配置。 |
 > | Microsoft.RecoveryServices/Vaults/backupOperations/read | 返回恢复服务保管库的备份操作状态。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | 获取策略操作的状态。 |
-> | Microsoft.RecoveryServices/Vaults/backupEngines/read | 返回使用保管库注册的所有备份管理服务器。 |
+> | Microsoft.RecoveryServices/Vaults/backupEngines/read | 返回保管库中注册的所有备份管理服务器。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | 获取备份保护意向 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | 获取容器中的所有项 |
 > | Microsoft.RecoveryServices/locations/backupStatus/action | 检查恢复服务保管库的备份状态 |
@@ -929,11 +929,11 @@ ms.locfileid: "67442869"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="blockchain-member-node-access-preview"></a>区块链成员节点访问 （预览）
+## <a name="blockchain-member-node-access-preview"></a>区块链成员节点访问 (预览)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 可以对区块链成员节点进行访问 |
+> | **说明** | 允许访问区块链成员节点 |
 > | **Id** | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **操作** |  |
 > | Microsoft.Blockchain/blockchainMembers/transactionNodes/read | 获取或列出现有的区块链成员事务节点。 |
@@ -1270,6 +1270,7 @@ ms.locfileid: "67442869"
 > | Microsoft.Support/* | 创建和管理支持票证 |
 > | Microsoft.Advisor/configurations/read | 获取配置 |
 > | Microsoft.Advisor/recommendations/read | 读取建议 |
+> | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1292,6 +1293,7 @@ ms.locfileid: "67442869"
 > | Microsoft.Support/* | 创建和管理支持票证 |
 > | Microsoft.Advisor/configurations/read | 获取配置 |
 > | Microsoft.Advisor/recommendations/read | 读取建议 |
+> | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1433,7 +1435,7 @@ ms.locfileid: "67442869"
 > | Microsoft.DevTestLab/*/read | 读取实验室属性 |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | 在实验室中认领随机可认领虚拟机。 |
 > | Microsoft.DevTestLab/labs/createEnvironment/action | 在实验室中创建虚拟机。 |
-> | Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action | 请确保当前用户在实验室中具有有效的配置文件。 |
+> | Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action | 确保当前用户在实验室中有有效的配置文件。 |
 > | Microsoft.DevTestLab/labs/formulas/delete | 删除公式。 |
 > | Microsoft.DevTestLab/labs/formulas/read | 读取公式。 |
 > | Microsoft.DevTestLab/labs/formulas/write | 添加或修改公式。 |
@@ -1699,7 +1701,7 @@ ms.locfileid: "67442869"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许管理逻辑应用，但这些更改的访问权限。 |
+> | **说明** | 允许你管理逻辑应用, 但不能更改它们的访问权限。 |
 > | **Id** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -1733,7 +1735,7 @@ ms.locfileid: "67442869"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 可以读取、 启用和禁用逻辑应用，但不是编辑或更新它们。 |
+> | **说明** | 允许读取、启用和禁用逻辑应用, 但不允许对其进行编辑或更新。 |
 > | **Id** | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -1886,7 +1888,7 @@ ms.locfileid: "67442869"
 > | Microsoft.Insights/components/* | 读取/写入/删除 Application Insights 组件。 |
 > | Microsoft.Insights/DiagnosticSettings/* | 读取/写入/删除诊断设置。 |
 > | Microsoft.Insights/eventtypes/* | 列出订阅中的活动日志事件（管理事件）。 此权限适用于对活动日志的编程和门户访问。 |
-> | Microsoft.Insights/LogDefinitions/* | 需要通过门户访问活动日志的用户必须拥有此权限。 列出活动日志中的日志类别。 |
+> | Microsoft.Insights/LogDefinitions/* | 此权限对于需要通过门户访问活动日志的用户是必需的。 列出活动日志中的日志类别。 |
 > | Microsoft.Insights/metricalerts/* |  |
 > | Microsoft.Insights/MetricDefinitions/* | 读取指标定义（资源的可用指标类型的列表）。 |
 > | Microsoft.Insights/Metrics/* | 读取资源的指标。 |
@@ -1901,6 +1903,7 @@ ms.locfileid: "67442869"
 > | Microsoft.Support/* | 创建和管理支持票证 |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
+> | AlertsManagement/smartDetectorAlertRules/* |  |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -2165,11 +2168,11 @@ ms.locfileid: "67442869"
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
 > | Microsoft.Network/virtualNetworks/read | 获取虚拟网络定义 |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
+> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是由服务使用的内部操作 |
 > | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp 是服务使用的内部操作 |
-> | Microsoft.RecoveryServices/Vaults/certificates/write | “更新资源证书”操作更新资源/保管库凭据证书。 |
+> | Microsoft.RecoveryServices/Vaults/certificates/write | “更新资源证书”操作可更新资源/保管库的凭据证书。 |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/* | 创建和管理与保管库相关的扩展信息 |
-> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作获取表示“vault”类型的 Azure 资源的对象 |
+> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作可获取表示 "vault" 类型 Azure 资源的对象 |
 > | Microsoft.RecoveryServices/Vaults/refreshContainers/read |  |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 创建和管理已注册的标识 |
 > | Microsoft.RecoveryServices/vaults/replicationAlertSettings/* | 创建或更新复制警报设置 |
@@ -2181,7 +2184,7 @@ ms.locfileid: "67442869"
 > | Microsoft.RecoveryServices/Vaults/storageConfig/* | 创建和管理恢复服务保管库的存储配置 |
 > | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
-> | Microsoft.RecoveryServices/Vaults/vaultTokens/read | “保管库令牌”操作可用于获取保管库级后端操作的保管库令牌。 |
+> | Microsoft.RecoveryServices/Vaults/vaultTokens/read | “保管库标记”操作可用于为保管库级后端操作获取“保管库标记”。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | 读取恢复服务保管库的警报 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
@@ -2206,13 +2209,13 @@ ms.locfileid: "67442869"
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
 > | Microsoft.Network/virtualNetworks/read | 获取虚拟网络定义 |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
+> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是由服务使用的内部操作 |
 > | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp 是服务使用的内部操作 |
-> | Microsoft.RecoveryServices/Vaults/extendedInformation/read | “获取扩展信息”操作获取表示“vault”类型的 Azure 资源的对象的扩展信息 |
-> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作获取表示“vault”类型的 Azure 资源的对象 |
+> | Microsoft.RecoveryServices/Vaults/extendedInformation/read | “获取扩展信息”操作可获取表示 ?vault? 类型的 Azure 资源的对象扩展信息 |
+> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作可获取表示 "vault" 类型 Azure 资源的对象 |
 > | Microsoft.RecoveryServices/Vaults/refreshContainers/read |  |
-> | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | “获取操作结果”操作可用于获取异步提交的操作的操作状态和结果 |
-> | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | “获取容器”操作可用于获取针对资源注册的容器。 |
+> | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | “获取操作结果”操作可用于获取异步提交操作的操作状态和结果 |
+> | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | “获取容器”操作可用于获取为资源注册的容器。 |
 > | Microsoft.RecoveryServices/vaults/replicationAlertSettings/read | 读取任何警报设置 |
 > | Microsoft.RecoveryServices/vaults/replicationEvents/read | 读取任何事件 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | 检查结构的一致性 |
@@ -2254,7 +2257,7 @@ ms.locfileid: "67442869"
 > | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
 > | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
-> | Microsoft.RecoveryServices/Vaults/vaultTokens/read | “保管库令牌”操作可用于获取保管库级后端操作的保管库令牌。 |
+> | Microsoft.RecoveryServices/Vaults/vaultTokens/read | “保管库标记”操作可用于为保管库级后端操作获取“保管库标记”。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
@@ -2275,14 +2278,14 @@ ms.locfileid: "67442869"
 > | **Id** | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
-> | Microsoft.RecoveryServices/Vaults/extendedInformation/read | “获取扩展信息”操作获取表示“vault”类型的 Azure 资源的对象的扩展信息 |
+> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是由服务使用的内部操作 |
+> | Microsoft.RecoveryServices/Vaults/extendedInformation/read | “获取扩展信息”操作可获取表示 ?vault? 类型的 Azure 资源的对象扩展信息 |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | 获取恢复服务保管库的警报。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
-> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作获取表示“vault”类型的 Azure 资源的对象 |
+> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作可获取表示 "vault" 类型 Azure 资源的对象 |
 > | Microsoft.RecoveryServices/Vaults/refreshContainers/read |  |
-> | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | “获取操作结果”操作可用于获取异步提交的操作的操作状态和结果 |
-> | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | “获取容器”操作可用于获取针对资源注册的容器。 |
+> | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | “获取操作结果”操作可用于获取异步提交操作的操作状态和结果 |
+> | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | “获取容器”操作可用于获取为资源注册的容器。 |
 > | Microsoft.RecoveryServices/vaults/replicationAlertSettings/read | 读取任何警报设置 |
 > | Microsoft.RecoveryServices/vaults/replicationEvents/read | 读取任何事件 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/read | 读取任何结构 |
@@ -2303,7 +2306,7 @@ ms.locfileid: "67442869"
 > | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
 > | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
-> | Microsoft.RecoveryServices/Vaults/vaultTokens/read | “保管库令牌”操作可用于获取保管库级后端操作的保管库令牌。 |
+> | Microsoft.RecoveryServices/Vaults/vaultTokens/read | “保管库标记”操作可用于为保管库级后端操作获取“保管库标记”。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 > | **不操作** |  |
 > | *无* |  |
@@ -2557,7 +2560,7 @@ ms.locfileid: "67442869"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许管理存储帐户。 提供对帐户密钥，可用于访问通过共享密钥的授权数据的访问。 |
+> | **说明** | 允许管理存储帐户。 提供对帐户密钥的访问权限, 它可用于通过共享密钥授权访问数据。 |
 > | **Id** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取所有授权 |
@@ -2584,7 +2587,7 @@ ms.locfileid: "67442869"
 > | **Id** | 81a9662b-bebf-436f-a333-f67b29880f12 |
 > | **操作** |  |
 > | Microsoft.Storage/storageAccounts/listkeys/action | 返回指定存储帐户的访问密钥。 |
-> | Microsoft.Storage/storageAccounts/regeneratekey/action | 重新生成指定存储帐户的访问密钥。 |
+> | Microsoft.Storage/storageAccounts/regeneratekey/action | 再生成指定存储帐户的访问密钥。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -2626,7 +2629,7 @@ ms.locfileid: "67442869"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="storage-blob-data-reader"></a>存储 Blob 数据读取器
+## <a name="storage-blob-data-reader"></a>存储 Blob 数据读取者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2664,7 +2667,7 @@ ms.locfileid: "67442869"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 在 Azure 存储队列中扫视、检索和删除消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
+> | **说明** | 查看、检索和删除 Azure 存储队列中的消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 > | **Id** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | **操作** |  |
 > | *无* |  |
@@ -2812,13 +2815,13 @@ ms.locfileid: "67442869"
 > | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | 创建备份保护意向 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护项的对象详细信息 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护的项的对象详细信息 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 创建备份受保护项 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回所有保护策略 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/write | 创建保护策略 |
-> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作获取表示“vault”类型的 Azure 资源的对象 |
+> | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作可获取表示 "vault" 类型 Azure 资源的对象 |
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
-> | Microsoft.RecoveryServices/Vaults/write | “创建保管库”操作创建“vault”类型的 Azure 资源 |
+> | Microsoft.RecoveryServices/Vaults/write | “创建保管库”操作将创建 "vault" 类型的 Azure 资源 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |

@@ -1,5 +1,5 @@
 ---
-title: 确定发布 Azure 应用商店中的选项 |Azure Marketplace
+title: 确定 Azure Marketplace 中的发布选项 |Azure Marketplace
 description: 本文为希望了解如何将应用发布到 Azure 市场的合作伙伴介绍了合格条件和发布要求。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
@@ -7,13 +7,13 @@ manager: pabutler
 ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
-ms.author: qianw211
-ms.openlocfilehash: 7a6a4c1366f23336072e00d1af59bbaa4bd5c7a4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: pabutler
+ms.openlocfilehash: 4864e2c040ad6771ad187269de43d5978fc6324f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442056"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876060"
 ---
 # <a name="publishing-guide-by-offer-type"></a>发布指南（按产品/服务类型）
 
@@ -23,7 +23,7 @@ ms.locfileid: "67442056"
 
 在创建套餐之前，必须选择套餐类型。 套餐类型对应于你要发布的解决方案、应用或服务套餐的类型，并取决于与 Microsoft 产品和服务的匹配情况。 
 
-单个产品/服务类型可以以不同的方式来启用不同的发布选项，调用操作，预配，或配置定价。 套餐类型的发布选项和配置也取决于套餐资格和技术要求。 
+可以采用不同的方式配置单个产品/服务类型, 以支持不同的发布选项、操作调用、预配或定价。 套餐类型的发布选项和配置也取决于套餐资格和技术要求。 
 
 在创建产品/服务之前，请务必查看店面和产品/服务类型资格要求以及技术方面的发布要求。
 
@@ -39,7 +39,7 @@ ms.locfileid: "67442056"
 | [**SaaS 应用程序**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | 使用 SaaS 应用程序产品/服务类型可让客户以订阅的形式购买基于 SaaS 的技术解决方案。 |
 | [**容器产品/服务**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | 如果解决方案是预配为基于 Kubernetes 的 Azure 容器服务的 Docker 容器映像，请使用“容器”产品/服务类型。 |
 | [**IoT Microsoft Edge 模块**](https://docs.microsoft.com/azure/marketplace/iot-edge-module) | Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Microsoft 服务（如 Azure 流分析）、第三方服务，或你自己特定于解决方案的代码。 |
-| [**咨询服务**](https://docs.microsoft.com/azure/marketplace/consulting-services) | 咨询服务可帮助客户与 services 进行连接以支持并拓展 Azure、 Dynamics 365 或 Power 套件服务的用法。|
+| [**咨询服务**](https://docs.microsoft.com/azure/marketplace/consulting-services) | 咨询服务有助于将客户连接到服务, 以支持和扩展其对 Azure、Dynamics 365 或 Power Suite 服务的使用。|
 
 
 最后，通过列出选项和产品/服务类型，查看 [**Azure AD 要求**](https://docs.microsoft.com/azure/marketplace/enable-appsource-marketplace-using-azure-ad)，获取有关单一登录要求的更多信息。

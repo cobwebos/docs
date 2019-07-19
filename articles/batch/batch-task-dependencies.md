@@ -4,7 +4,7 @@ description: 在 Azure Batch 中创建依赖于其他任务的完成的任务，
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca6918b809a9b4ede3fffb151c7fa5183ae03b47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a0a258630fcb3639f20de4c72591611b7af15b90
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550342"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322980"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>创建任务依赖关系，以运行依赖于其他任务的任务
 
@@ -38,10 +38,10 @@ ms.locfileid: "60550342"
 用户可以创建依赖于一对一或一对多关系中其他任务的任务。 甚至可以创建一个范围依赖关系，使其中一项任务依赖于特定任务 ID 范围内一组任务的完成。 可以组合这三种基本方案，以创建多对多关系。
 
 ## <a name="task-dependencies-with-batch-net"></a>Batch .NET 的任务依赖关系
-本文讨论如何使用 [Batch .NET][net_msdn] 库配置任务依赖关系。 本文首先说明如何为作业[启用任务依赖关系](#enable-task-dependencies)，然后演示如何[为任务配置依赖关系](#create-dependent-tasks)。 本文还介绍如何指定一个依赖关系操作，以便在父任务失败时运行依赖任务。 最后介绍 Batch 支持的[依赖关系方案](#dependency-scenarios)。
+本文介绍如何使用[Batch .net][net_msdn]库配置任务依赖关系。 本文首先说明如何为作业[启用任务依赖关系](#enable-task-dependencies)，然后演示如何[为任务配置依赖关系](#create-dependent-tasks)。 本文还介绍如何指定一个依赖关系操作，以便在父任务失败时运行依赖任务。 最后介绍 Batch 支持的[依赖关系方案](#dependency-scenarios)。
 
 ## <a name="enable-task-dependencies"></a>启用任务依赖关系
-要在批处理应用程序中使用任务依赖关系，必须先将作业配置为使用任务依赖关系。 在 Batch .NET 中，为 [CloudJob][net_cloudjob] 启用任务依赖关系的方法是将其 [UsesTaskDependencies][net_usestaskdependencies] 属性设置为 `true`：
+要在批处理应用程序中使用任务依赖关系，必须先将作业配置为使用任务依赖关系。 在 Batch .net 中, 在[CloudJob][net_cloudjob] by setting its [UsesTaskDependencies][net_usestaskdependencies]属性中启用它`true`以:
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -51,10 +51,10 @@ CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
 unboundJob.UsesTaskDependencies = true;
 ```
 
-在以上代码片段中，“batchClient”是 [BatchClient][net_batchclient] 类的一个实例。
+在上面的代码段中, "batchClient" 是[batchClient][net_batchclient]类的实例。
 
 ## <a name="create-dependent-tasks"></a>创建依赖任务
-若要创建一个依赖于一个或多个父任务的完成的任务，可以指定该任务必须“依赖于”其他任务。 在 Batch .NET 中，为 [CloudTask][net_cloudtask].[DependsOn][net_dependson] 属性配置 [TaskDependencies][net_taskdependencies] 类的一个实例：
+若要创建一个依赖于一个或多个父任务的完成的任务，可以指定该任务必须“依赖于”其他任务。 在 Batch .net 中, 使用[TaskDependencies][net_taskdependencies]类的实例配置[CloudTask][net_cloudtask] .[DependsOn][net_dependson]属性:
 
 ```csharp
 // Task 'Flowers' depends on completion of both 'Rain' and 'Sun'
@@ -68,7 +68,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 此代码片段创建任务 ID 为“Flowers”的依赖任务。 “Flowers”任务依赖于“Rain”和“Sun”任务。 “Flowers”任务将计划为仅在“Rain”和“Sun”任务已成功完成后才在计算节点上运行。
 
 > [!NOTE]
-> 默认情况下，当任务处于“已完成”  状态并且其“退出代码”  为 `0` 时，该任务视为已成功完成。 在 Batch .NET 中，这意味着 [CloudTask][net_cloudtask].[State][net_taskstate] 属性值为 `Completed`，CloudTask 的 [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode] 属性值为 `0`。 有关如何更改此设置，请参阅[依赖项操作](#dependency-actions)部分。
+> 默认情况下，当任务处于“已完成”  状态并且其“退出代码”  为 `0` 时，该任务视为已成功完成。 在 Batch .NET 中, 这意味着[CloudTask][net_cloudtask].[State][net_taskstate] property value of `Completed` and the CloudTask's [TaskExecutionInformation][net_taskexecutioninformation]。[ExitCode][net_exitcode]属性值为`0`。 有关如何更改此设置，请参阅[依赖项操作](#dependency-actions)部分。
 > 
 > 
 
@@ -87,7 +87,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 > 在本部分的示例中，仅在父任务成功完成时才运行依赖任务。 此行为是依赖任务的默认行为。 可以通过指定一个依赖关系操作来重写默认行为，在父任务失败后运行依赖任务。 有关详细信息，请参阅[依赖关系操作](#dependency-actions)部分。
 
 ### <a name="one-to-one"></a>一对一
-在一对一关系中，任务依赖于一个父任务的成功完成。 若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnId][net_onid] 静态方法提供单个任务 ID。
+在一对一关系中，任务依赖于一个父任务的成功完成。 若要创建依赖项, 请在填充[CloudTask][net_cloudtask]的[DependsOn][net_dependson]属性时, 为[TaskDependencies][net_taskdependencies] .[OnId][net_onid]静态方法提供单一任务 ID。
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -101,7 +101,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>一对多
-在一对多关系中，任务依赖于多个父任务的完成。 若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnIds][net_onids] 静态方法提供任务 ID 的集合。
+在一对多关系中，任务依赖于多个父任务的完成。 若要创建依赖项, 请在填充[CloudTask][net_cloudtask]的[DependsOn][net_dependson]属性时, 向[TaskDependencies][net_taskdependencies] .[OnIds][net_onids]静态方法提供任务 id 的集合。
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -118,7 +118,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 
 ### <a name="task-id-range"></a>任务 ID 范围
 在依赖于一系列父任务的关系中，任务依赖于其 ID 位于某个范围内的任务的完成。
-若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnIdRange][net_onidrange] 静态方法提供该范围内的第一个和最后一个任务 ID。
+若要创建依赖项, 请在填充[CloudTask][net_cloudtask]的[DependsOn][net_dependson]属性时, 向[TaskDependencies][net_taskdependencies] .[OnIdRange][net_onidrange]静态方法提供范围中的第一个和最后一个任务 id。
 
 > [!IMPORTANT]
 > 将任务 ID 范围用于依赖项时，只有 ID 表示整数值的任务将由范围选定。 因此范围 `1..10` 将选择任务 `3` 和 `7`，而不是 `5flamingoes`。 
@@ -153,7 +153,7 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 例如，假设某个依赖任务正在等待完成上游任务后提供的数据。 如果上游任务失败，依赖任务仍可使用旧数据运行。 在这种情况下，依赖关系操作可以指定即使父任务失败，依赖任务也符合运行的条件。
 
-依赖关系操作基于父任务的退出条件。 可为以下任一退出条件指定依赖关系操作；对于 .NET，请参阅 [ExitConditions][net_exitconditions] 类了解详细信息：
+依赖关系操作基于父任务的退出条件。 您可以为以下任一退出条件指定依赖关系操作;对于 .NET, 请参阅[ExitConditions][net_exitconditions]类了解详细信息:
 
 - 发生预处理错误时。
 - 发生文件上传错误时。 如果任务退出，并返回通过“exitCodes”或“exitCodeRanges”指定的退出代码，然后遇到文件上传错误，则优先执行退出代码指定的操作   。
@@ -161,7 +161,7 @@ new CloudTask("4", "cmd.exe /c echo 4")
 - 任务退出并返回处于“ExitCodeRanges”属性指定的范围内的退出代码时  。
 - 如果任务退出，并返回非由“ExitCodes”或“ExitCodeRanges”定义的退出代码，或者如果任务退出，并返回预处理错误，而“PreProcessingError”属性未设置，或者如果任务失败，并返回文件上传错误，而“FileUploadError”属性未设置，则为默认情况     。 
 
-若要在 .NET 中指定依赖关系操作，请为退出条件设置 [ExitOptions][net_exitoptions].[DependencyAction][net_dependencyaction] 属性。 **DependencyAction** 属性采用以下两个值之一：
+若要在 .NET 中指定依赖项操作, 请设置[exitoptions.][net_exitoptions]。Exit 条件的[DependencyAction][net_dependencyaction]属性。 **DependencyAction** 属性采用以下两个值之一：
 
 - 将 **DependencyAction** 属性设置为 **Satisfy** 表示在父任务退出并返回指定的错误时，依赖任务符合运行的条件。
 - 将 **DependencyAction** 属性设置为 **Block** 表示依赖任务不符合运行的条件。
@@ -204,7 +204,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 ```
 
 ## <a name="code-sample"></a>代码示例
-[TaskDependencies][github_taskdependencies] 示例项目是 GitHub 上的 [Azure Batch 代码示例][github_samples]之一。 此 Visual Studio 解决方案演示了：
+GitHub 上的[TaskDependencies][github_taskdependencies] sample project is one of the [Azure Batch code samples][github_samples] 。 此 Visual Studio 解决方案演示了：
 
 - 如何在作业中启用任务依赖关系
 - 如何创建依赖于其他任务的任务
@@ -215,7 +215,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 使用 Batch 的[应用程序包](batch-application-packages.md)功能，可以轻松地部署任务在计算节点上执行的应用程序并对其进行版本控制。
 
 ### <a name="installing-applications-and-staging-data"></a>安装应用程序和暂存数据
-有关准备节点以运行任务的方法概述，请参阅 Azure Batch 论坛中的 [Installing applications and staging data on Batch compute nodes][forum_post]（在批处理计算节点上安装应用程序和暂存数据）。 此帖子由某个 Azure Batch 团队成员编写，是一篇很好的入门教程，介绍如何使用不同的方法将应用程序、任务输入数据和其他文件复制到计算节点。
+有关准备节点以运行任务的方法概述, 请参阅在 Azure Batch 论坛中的[Batch 计算节点上安装应用程序和暂存数据][forum_post]。 此帖子由某个 Azure Batch 团队成员编写，是一篇很好的入门教程，介绍如何使用不同的方法将应用程序、任务输入数据和其他文件复制到计算节点。
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies

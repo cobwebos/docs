@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: asgan
-ms.openlocfilehash: 271e3c31c3e08d170add84ca4995f4876d4d3a33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: asgang
+ms.openlocfilehash: d479a568ddeac29be88d0709b7544ba645274afa
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753770"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875664"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题：Azure 到 Azure 的灾难恢复
 
@@ -56,12 +56,12 @@ Site Recovery 团队会与 Azure 容量管理团队合作，规划足够的基�
 
 ### <a name="can-i-add-new-disks-to-replicated-vms-and-enable-replication-for-them"></a>是否可以向复制的 VM 添加新磁盘并为这些磁盘启用复制？
 
-可以。使用托管磁盘的 Azure VM 允许这样做。 将新磁盘添加到为复制启用 Azure VM，VM 的复制运行状况将显示警告，请注意，指定在 VM 上的一个或多个磁盘是可用于保护。 可以为添加的磁盘启用复制。
+可以。使用托管磁盘的 Azure VM 允许这样做。 将新磁盘添加到启用了复制的 Azure VM 时, VM 的复制运行状况将显示警告, 并显示一个说明, 指出 VM 上的一个或多个磁盘可用于保护。 可以为添加的磁盘启用复制。
 - 如果为添加的磁盘启用保护，此警告会在初始复制后消失。
 - 如果选择不为磁盘启用复制，则可选择关闭此警告。
 - 对某个 VM 进行故障转移时，如果向其添加了磁盘并为该磁盘启用了复制，则复制点会显示可用于恢复的磁盘。 例如，如果 VM 有一个磁盘，你添加了一个新的磁盘，则在添加磁盘之前创建的复制点会显示复制点包含“1 个磁盘（共 2 个）”。
 
-Site Recovery 不支持"热"的磁盘从 VM 中删除复制。 如果删除某个 VM 磁盘，则需先禁用该 VM 的复制，然后为其重新启用复制。
+Site Recovery 不支持复制的 VM 中的磁盘 "热删除"。 如果删除某个 VM 磁盘，则需先禁用该 VM 的复制，然后为其重新启用复制。
 
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
@@ -222,7 +222,7 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 ## <a name="reprotection-and-failback"></a>重新保护和故障回复
 
 ### <a name="after-a-failover-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>从主要区域故障转移到灾难恢复区域后，灾难恢复区域中的 VM 是否自动受到保护？
-不。 将 Azure VM 从一个区域[故障转移](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)次要区域中的 VM。
+否。 将 Azure VM 从一个区域[故障转移](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)次要区域中的 VM。
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>重新保护时，Site Recovery 是否将完整的数据从次要区域复制到主要区域？
 这取决于具体的情况。 例如，如果源区域 VM 存在，则只会同步源磁盘与目标磁盘之间的更改。 Site Recovery 将通过比较磁盘来计算差异，然后传输数据。 此过程通常需要几个小时。 有关重新保护期间所发生情况的详细信息，请参阅[在主要区域中重新保护已故障转移的 Azure VM]( https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection)。
@@ -230,16 +230,16 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>故障回复需要多长时间？
 进行重新保护后，故障回复所需的时间通常类似于从主要区域故障转移到次要区域所需的时间。
 
-## <a name="capacity"></a>容量
+## <a name="capacity"></a>功能
 
 ### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>如何保证 Azure VM 在目标区域的容量？
 Site Recovery 团队会与 Azure 容量管理团队合作，规划足够的基础结构容量，确保支持灾难恢复的 VM 在启动故障转移时可以成功部署到目标区域中。
 
-### <a name="does-site-recovery-work-with-reserved-instances"></a>Site Recovery 的工作与预订实例？
-是的可以购买[保留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)灾难恢复区域和 Site Recovery 中故障转移操作将使用它们。 </br> 不需要任何其他配置。
+### <a name="does-site-recovery-work-with-reserved-instances"></a>Site Recovery 是否适用于预留实例？
+是的, 你可以在灾难恢复区域中购买[保留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/), Site Recovery 故障转移操作将使用它们。 </br> 不需要任何其他配置。
 
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>复制数据是否会发送到 Site Recovery 服务？
 不会。Site Recovery 不会拦截复制的数据，也没有 VM 上运行的组件的任何相关信息。 只有协调复制与故障转移所需的元数据将发送到站点恢复服务。  

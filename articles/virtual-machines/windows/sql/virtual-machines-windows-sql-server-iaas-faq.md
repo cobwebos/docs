@@ -14,13 +14,13 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
-ms.author: v-shysun
-ms.openlocfilehash: 95ad2ba4798d41f2e5e49ca33735b997859af23f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.author: mathoma
+ms.openlocfilehash: 7f6ec1ee65727fb8c3c7d98f696c288e95ec880a
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67658144"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876199"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -146,9 +146,9 @@ ms.locfileid: "67658144"
    
 ## <a name="updating-and-patching"></a>更新和修补
 
-1. **如何更改到其他 Azure VM 中的 SQL Server 的版本/版本？**
+1. **如何实现在 Azure VM 中更改为不同版本的 SQL Server？**
 
-   客户可以通过使用包含其所需的版本或版本的 SQL Server 安装程序介质更改其版本/版本的 SQL Server。 更改版本后才可使用 Azure 门户修改要准确反映计费的 vm 的 vm 的 edition 属性。 有关详细信息，请参阅[更改版本的 SQL Server VM](virtual-machines-windows-sql-change-edition.md)。 
+   客户可以使用包含其所需版本 SQL Server 的安装媒体更改其版本的 SQL Server。 更改了版本后, 请使用 Azure 门户修改 VM 的 edition 属性以准确反映 VM 的计费。 有关详细信息, 请参阅[更改版本的 SQL Server VM](virtual-machines-windows-sql-change-edition.md)。 
 
 
 1. **如何将更新和服务包应用到 SQL Server VM？**
@@ -172,9 +172,9 @@ ms.locfileid: "67658144"
 
     从 [Microsoft SQL Server 数据工具 - Visual Studio 2013 商业智能](https://www.microsoft.com/download/details.aspx?id=42313)下载并安装 SQL 数据工具。
 
-1. **是否支持在 SQL Server Vm 上的 MSDTC 分布式的事务？**
+1. **SQL Server Vm 上是否支持 MSDTC 的分布式事务？**
    
-    是的。 本地 DTC 是受支持的 SQL Server 2016 SP2 及更高版本。 但是，作为事务正在进行故障转移期间使用 Always On 可用性组中，将失败，并且必须重试时，必须测试应用程序。 群集的 DTC 是从 Windows Server 2019 开始提供。 
+    是的。 SQL Server 2016 SP2 及更高版本支持本地 DTC。 但是, 在使用 Always On 可用性组时, 必须对应用程序进行测试, 因为故障转移过程中正在进行的事务将失败, 并且必须重试。 群集 DTC 从 Windows Server 2019 开始使用。 
 
 ## <a name="resources"></a>资源
 

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cdec216187050a449f23f72474e0265acce14c5f
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60389570"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867396"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
 
@@ -28,7 +28,7 @@ ms.locfileid: "60389570"
 
 ## <a name="template-limits"></a>模板限制
 
-将模板大小限制为 1 MB 以内，每个参数文件大小限制为 64 KB 以内。 已完成对迭代资源定义、变量值和参数值的扩展后，1 MB 的限制将适用于该模板的最终状态。 
+将模板大小限制为 4 MB, 每个参数文件大小限制为 64 KB。 4 MB 的限制适用于通过迭代资源定义和变量和参数的值展开后, 模板的最终状态。 
 
 还将受限于：
 
@@ -46,7 +46,7 @@ ms.locfileid: "60389570"
 
 如果资源组的区域临时不可用，则不能更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍将按预期运行，但你无法更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 使用[参数](resource-group-authoring-templates.md#parameters)时，本部分中的信息可以提供帮助。
 
 ### <a name="general-recommendations-for-parameters"></a>有关参数的一般建议
@@ -293,7 +293,7 @@ ms.locfileid: "60389570"
    > 
    > 
 
-## <a name="outputs"></a>Outputs
+## <a name="outputs"></a>outputs
 
 如果使用模板创建公共 IP 地址，请包含 [outputs 节](resource-group-authoring-templates.md#outputs)，用于返回 IP 地址和完全限定域名 (FQDN) 的详细信息。 部署后，可以使用输出值轻松检索有关公共 IP 地址和 FQDN 的详细信息。
 

@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: rajani-janaki-ram
-ms.openlocfilehash: 400ffaa9e6fed14ceabf34283cd5fa7c7a0336b8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.author: rajanaki
+ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203401"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875797"
 ---
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
 
@@ -152,12 +152,12 @@ ms.locfileid: "67203401"
 > 这两个选项都不会从受保护的服务器中卸载移动服务，需要手动卸载。 如果打算使用相同的配置服务器重新保护服务器，可以跳过卸载移动服务这一步。
 
 > [!NOTE]
-> 如果已故障转移 VM 并且在 Azure 中运行，请注意，禁用保护不会删除/影响故障转移的 VM。
-## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>禁用对 Azure VM (Azure 到 Azure) 的保护
+> 如果已对 VM 进行故障转移, 并且它在 Azure 中运行, 请注意, 禁用保护不会删除/影响故障转移 VM。
+## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>禁用对 Azure VM 的保护（Azure 到 Azure）
 
 -  依次转到“受保护的项”   > “复制的项”  ，右键单击计算机，再单击“禁用复制”  。
 > [!NOTE]
-> 不会从受保护的服务器卸载移动服务，需要手动将其卸载。 如果您计划重新保护服务器，则可以跳过卸载移动服务。
+> 移动服务将不会从受保护的服务器中卸载，需要手动卸载它。 如果计划再次保护服务器，可以跳过卸载移动服务。
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>禁用对 Hyper-V 虚拟机（Hyper-V 到 Azure）的保护
 
@@ -173,7 +173,7 @@ ms.locfileid: "67203401"
      > 如果选择“删除”  选项，请运行下面的一组脚本，清理本地 Hyper-V 服务器上的复制设置。
 
 > [!NOTE]
-> 如果已故障转移 VM 并且在 Azure 中运行，请注意，禁用保护不会删除/影响故障转移的 VM。
+> 如果已对 VM 进行故障转移, 并且它在 Azure 中运行, 请注意, 禁用保护不会删除/影响故障转移 VM。
 
 1. 在源 Hyper-V 主机服务器上，取消复制虚拟机。 将 SQLVM1 替换为虚拟机名称，并通过管理 PowerShell 运行以下脚本
 

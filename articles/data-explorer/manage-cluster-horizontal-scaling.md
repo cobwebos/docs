@@ -1,59 +1,65 @@
 ---
-title: 横向扩展 Azure 数据资源管理器群集
+title: 管理 Azure 数据资源管理器中的群集横向缩放 (扩大) 以适应不断变化的需求
 description: 本文介绍如何根据不断变化的需求采用相关步骤对 Azure 数据资源管理器群集进行横向缩放。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/30/2019
-ms.openlocfilehash: 29bfcc42462a667850f0b2e1bbda3d29cd1597ab
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.date: 07/14/2019
+ms.openlocfilehash: 70e6bdfcf9718244632ad02e09d3ddadee71a617
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571512"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311573"
 ---
-# <a name="manage-cluster-horizontal-scaling-to-accommodate-changing-demand"></a>管理群集横向缩放以适应不断变化的需求
+# <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>管理 Azure 数据资源管理器中的群集横向缩放 (扩大) 以适应不断变化的需求
 
-调整好群集的大小对于 Azure 数据资源管理器的性能至关重要。 但是，对群集的需求不能绝对准确地进行预测。 静态群集大小可能导致利用不充分或利用过度，二者都不理想。
+调整好群集的大小对于 Azure 数据资源管理器的性能至关重要。 静态群集大小可能导致利用不充分或利用过度，二者都不理想。
 
-更好的方法是对群集进行缩放，根据不断变化的需求来添加或删除容量。  有两个工作流进行缩放： 
-* 水平缩放，也称为扩大和缩小。
-* 垂直缩放，也称为向上和向下缩放。
+由于群集上的需求不能使用绝对准确度预测, 因此最好*缩放*群集, 添加和删除容量和 CPU 资源, 并改变需求。 
+
+有两个用于缩放 Azure 数据资源管理器群集的工作流: 
+
+* 水平缩放, 也称为放大和缩小。
+* [垂直缩放](manage-cluster-vertical-scaling.md), 也称为向上和向下缩放。
 
 本文介绍水平缩放工作流。
 
-水平缩放，可自动根据预定义的规则和计划实例计数。 在 Azure 门户中指定群集的自动缩放设置，如本文所述。
+## <a name="configure-horizontal-scaling"></a>配置水平缩放
 
-## <a name="steps-to-configure-horizontal-scaling"></a>配置水平缩放的步骤
+通过使用水平缩放, 你可以根据预定义的规则和计划自动缩放实例计数。 指定群集的自动缩放设置:
 
-在 Azure 门户中，转到数据资源管理器群集资源。 在“设置”标题下，选择“横向扩展”   。 
+1. 在 Azure 门户中转到 Azure 数据资源管理器群集资源。 在 "**设置**" 下, 选择 "**横向扩展**"。 
 
-选择所需的自动缩放方法：**手动缩放**，**优化自动缩放**或**自定义自动缩放**。
+2. 在 "向**外扩展**" 窗口中, 选择所需的自动缩放方法:**手动缩放**、**优化自动缩放**或**自定义自动缩放**。
 
 ### <a name="manual-scale"></a>手动缩放
 
-手动缩放为默认设置，其中创建群集。 这意味着群集具有静态群集容量，不会自动更改。 可以选择使用栏的静态容量并且不会更改直到下一次将更改群集的横向扩展设置。
+在群集创建过程中, 手动缩放是默认设置。 群集的静态容量不会自动更改。 使用 "**实例计数**" 栏可以选择静态容量。 群集的缩放将保留在该设置中, 直到你进行了其他更改。
 
    ![手动缩放方法](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
 ### <a name="optimized-autoscale"></a>优化的自动缩放
 
-优化的自动缩放是建议的自动缩放方法。 若要配置优化自动缩放的步骤：
+建议使用自动缩放方法。 此方法优化群集性能和成本。 如果群集接近利用率的状态, 它将在中进行缩放。 此操作可降低成本, 但会降低性能级别。 如果群集接近利用率状态, 则会将其扩展以保持最佳性能。 配置优化的自动缩放:
 
-1. 选择已进行优化的自动缩放选项和选择较低的限制和群集的实例的量的上限，将这些限制之间进行自动缩放。
-2. 单击“保存”。
+1. 选择**优化的自动缩放**。 
+
+1. 选择 "最小实例计数" 和 "最大实例计数"。 群集根据负载自动缩放范围。
+
+1. 选择**保存**。
 
    ![优化的自动缩放方法](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
 
-后单击保存优化自动缩放机制将开始工作，操作会显示群集的活动日志中。 此自动缩放方法优化群集性能和成本： 如果群集将启动进入它将会向外接程序这样的相同和较低的成本，使性能的使用不足的状态，并且群集将启动进入的状态使用过度，它将是向外扩展以确保其运行良好
+优化的自动缩放开始工作。 现在, 群集的 Azure 活动日志中会显示其操作。
 
 ### <a name="custom-autoscale"></a>自定义自动缩放
 
-自定义自动缩放方法允许你缩放群集动态地基于你指定的指标。 下图显示的流和配置自定义自动缩放的步骤。 图后面提供了更多详细信息。
+使用自定义自动缩放, 可以根据指定的指标动态缩放群集。 下图显示了用于配置自定义自动缩放的流和步骤。 图后面提供了更多详细信息。
 
-1. 在“自动缩放设置名称”框中提供一个名称，例如“横向扩展: 缓存使用率”。   
+1. 在 "**自动缩放设置名称**" 框中, 输入一个名称, 如 "*横向扩展: 缓存使用率*"。 
 
    ![缩放规则](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
@@ -61,7 +67,7 @@ ms.locfileid: "67571512"
 
 3. 选择“+ 添加规则”  。
 
-4. 在右侧的“缩放规则”部分，提供每项设置的值。 
+4. 在右侧的 "**缩放规则**" 部分中, 输入每个设置的值。
 
     **条件**
 
@@ -86,7 +92,7 @@ ms.locfileid: "67571512"
 
 5. 选择 **添加** 。
 
-6. 在左侧的“实例限制”部分，提供每项设置的值。 
+6. 在左侧的 "**实例限制**" 部分中, 输入每个设置的值。
 
     | 设置 | 说明和值 |
     | --- | --- |
@@ -97,9 +103,10 @@ ms.locfileid: "67571512"
 
 7. 选择**保存**。
 
-现在已为 Azure 数据资源管理器群集配置了横向扩展操作。 添加另一条适用于横向缩减操作的规则。 如果在解决群集缩放问题时需要帮助，请在 Azure 门户中[提交支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
+现已为 Azure 数据资源管理器群集配置了横向缩放。 添加另一个规则以进行垂直缩放。 如果在解决群集缩放问题时需要帮助，请在 Azure 门户中[提交支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [通过指标监视 Azure 数据资源管理器的性能、运行状况和使用情况](using-metrics.md)
-* [管理群集垂直缩放](manage-cluster-vertical-scaling.md)适当调整大小的群集。
+
+* [管理群集垂直缩放](manage-cluster-vertical-scaling.md)以适应群集的适当大小。

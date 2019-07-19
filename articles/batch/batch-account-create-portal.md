@@ -4,7 +4,7 @@ description: 了解如何在 Azure 门户中创建 Azure Batch 帐户，以便�
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86747b72c436c4dac3bbf0a752fee4d24cb47f60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e1543d578e6812fd270bd76ec18bdfe8fe5ba6a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60722503"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324035"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -109,11 +109,15 @@ ms.locfileid: "60722503"
 
 在“用户订阅”模式下，需要的 Azure 密钥保管库与要创建的批处理帐户属于同一资源组。 请确保资源组所在的区域是[提供](https://azure.microsoft.com/regions/services/)批处理的区域，也是订阅所支持的区域。
 
-1. 在 [Azure 门户][azure_portal]中，选择“新建”   > “安全性”   >   “Key Vault”。
+1. 在 [Azure 门户][azure_portal]中，选择“新建”   >   “安全性” > “密钥保管库”  。
 
 1. 在“创建密钥保管库”页中，输入密钥保管库的名称，并在区域中创建需要用于 Batch 帐户的资源组。  让其余设置保留默认值，然后选择“创建”。 
 
-以用户订阅模式创建 Batch 帐户时，请使用密钥保管库的资源组，指定“用户订阅”  作为池分配模式，然后选择密钥保管库。
+在用户订阅模式下创建 Batch 帐户时, 请使用密钥保管库的资源组。 指定**用户订阅**作为池分配模式, 选择密钥保管库, 并选中 "向密钥保管库授予 Azure Batch 访问权限" 框。 
+
+如果希望手动授予对密钥保管库的访问权限, 请访问密钥保管库的 "**访问策略**" 部分, 并选择 " **Microsoft Azure Batch**"。 使用下拉菜单配置**机密权限**。 必须至少为 Azure Batch 提供**Get**、 **List**、 **Set**和**Delete**权限。
+
+![Azure Batch 的机密权限](./media/batch-account-create-portal/secret-permissions.png)
 
 ### <a name="configure-subscription-quotas"></a>配置订阅配额
 

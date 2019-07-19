@@ -3,24 +3,25 @@ title: Azure 容器注册表 webhook
 description: 了解如何使用 webhook 在注册表存储库中发生特定操作时触发事件。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: danlep
-ms.openlocfilehash: 18ac3fcb2797b24c9d5e5f05968eed4bf8732af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59e8d4979e7be02d6097e1c3eccc44e64da87e95
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389455"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311588"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>使用 Azure 容器注册表 webhook
 
-Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类似于 Docker Hub 存储公共 Docker 映像。 它还可以托管存储库[Helm 图表](container-registry-helm-repos.md)（预览版），一种封装格式应用程序部署到 Kubernetes。 可以使用 Webhook 在其中一个注册表存储库中发生特定操作时触发事件。 Webhook 可在注册表级别响应事件或者将其范围缩小到特定存储库标记。 与[异地复制](container-registry-geo-replication.md)注册表中，你可以配置每个 webhook 以响应特定的区域副本中的事件。
+Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类似于 Docker Hub 存储公共 Docker 映像。 它还可以托管[Helm 图](container-registry-helm-repos.md)(预览版) 的存储库、用于将应用程序部署到 Kubernetes 的打包格式。 可以使用 Webhook 在其中一个注册表存储库中发生特定操作时触发事件。 Webhook 可在注册表级别响应事件或者将其范围缩小到特定存储库标记。 使用[异地复制](container-registry-geo-replication.md)的注册表, 你可以将每个 webhook 配置为响应特定区域副本中的事件。
 
 有关 Webhook 请求的详细信息，请参阅 [Azure 容器注册表 Webhook 架构参考](container-registry-webhook-reference.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 容器注册表 - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。 [Azure 容器注册表 SKU](container-registry-skus.md) 具有不同的 Webhook 配额。
 * Docker CLI - 要将本地计算机设置为 Docker 主机并访问 Docker CLI 命令，请安装 [Docker 引擎](https://docs.docker.com/engine/installation/)。
@@ -33,10 +34,10 @@ Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类
 1. 在 Webhook 工具栏中选择“添加”  。
 1. 使用以下信息完成“创建 webhook”窗体  ：
 
-| 值 | 描述 |
+| ReplTest1 | 描述 |
 |---|---|
 | Webhook 名称 | 想要赋予 webhook 的名称。 它只能包含字母和数字，且长度必须为 5-50 个字符。 |
-| Location | 有关[异地复制](container-registry-geo-replication.md)注册表中，指定的 Azure 区域的注册表副本。 
+| Location | 对于[异地复制](container-registry-geo-replication.md)的注册表, 请指定注册表副本的 Azure 区域。 
 | 服务 URI | Webhook 应向其发送 POST 通知的 URI。 |
 | 自定义标头 | 想要随 POST 请求一起传递的标头。 它们的格式应该为：“键: 值”。 |
 | 触发操作 | 触发 webhook 的操作。 操作包括映像推送、映像删除、Helm 图表推送、Helm 图表删除以及映像隔离。 你可以选择一个或多个操作来触发 Webhook。 |

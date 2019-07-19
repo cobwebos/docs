@@ -9,27 +9,26 @@ ms.topic: conceptual
 ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
-ms.date: 12/04/2018
-ms.custom: seodec18
-ms.openlocfilehash: 1e403ac0d2fbe9572a44fb3cde9d25e4df9b3db4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/12/2019
+ms.openlocfilehash: c233c44625779d6b070ccce1795a84f264d4764b
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60818509"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868801"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务对大型数据集运行批量预测
 
-本文介绍如何使用 Azure 机器学习服务对大量数据进行异步预测。
+本文介绍如何使用 Azure 机器学习服务异步对大量数据进行预测。
 
 批量预测（或批量评分）可以针对异步应用程序空前未有的吞吐量进行经济有效的推理。 批量预测管道可以进行缩放，以便在数 TB 生产数据的基础上进行推理。 批量预测针对高吞吐量的即发即弃预测进行优化，适用于大量的数据。
 
 >[!TIP]
 > 如果系统要求低延迟处理（以便快速处理单个文档或少量文档），则请使用[实时评分](how-to-consume-web-service.md)而不是批量预测。
 
-在以下步骤中，需创建一个[机器学习管道](concept-ml-pipelines.md)来注册预先训练的计算机视觉模型 ([Inception-V3](https://arxiv.org/abs/1512.00567))。 然后使用该预先训练的模型对 Azure Blob 存储帐户中提供的图像进行批量评分。 这些用于评分的图像是 [ImageNet](http://image-net.org/) 数据集中的未标记图像。
+在以下步骤中, 你将创建一个[机器学习管道](concept-ml-pipelines.md)来注册预先训练的计算机视觉模型 ([开始-V3](https://arxiv.org/abs/1512.00567))。 然后使用预先训练的模型对 Azure Blob 存储帐户中提供的映像执行批处理评分。 这些用于评分的图像是 [ImageNet](http://image-net.org/) 数据集中的未标记图像。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -38,12 +37,13 @@ ms.locfileid: "60818509"
 - 创建用于保存所有管道资源的 Azure 机器学习工作区。 可以使用以下代码；如需更多选项，请参阅[创建工作区配置文件](how-to-configure-environment.md#workspace)。
 
   ```python
-  ws = Workspace.create(
-     name = '<workspace-name>',
-     subscription_id = '<subscription-id>',
-     resource_group = '<resource-group>',
-     location = '<workspace_region>',
-     exist_ok = True)
+  from azureml.core import Workspace
+  ws = Workspace.create(name = '<workspace-name>',
+                        subscription_id = '<subscription-id>',
+                        resource_group = '<resource-group>',
+                        location = '<workspace_region>',
+                        exist_ok = True
+                        )
   ```
 
 ## <a name="set-up-machine-learning-resources"></a>设置机器学习资源
@@ -59,14 +59,15 @@ ms.locfileid: "60818509"
 
 首先，访问包含模型、标签和图像的数据存储。
 
-将使用 *pipelinedata* 帐户中名为 *sampledata* 的公共 Blob 容器，其中包含 ImageNet 评估集中的图像。 此公共容器的数据存储名称为 *images_datastore*。 将此数据存储注册到工作区：
+使用名为*sampledata*的公共 blob 容器, 该容器  包含 ImageNet 评估集中的图像。 此公共容器的数据存储名称为 *images_datastore*。 将此数据存储注册到工作区：
 
 ```python
-# Public blob container details
+from azureml.core import Datastore
+
 account_name = "pipelinedata"
 datastore_name="images_datastore"
 container_name="sampledata"
- 
+
 batchscore_blob = Datastore.register_azure_blob_container(ws,
                       datastore_name=datastore_name,
                       container_name= container_name,
@@ -89,23 +90,25 @@ def_data_store = ws.get_default_datastore()
 管道中的数据源由 [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) 对象表示。  `DataReference` 对象指向驻留在数据存储中的或者可从数据存储访问的数据。 不管是用于输入图像的目录、用于存储预先训练的模型的目录、用于标签的目录还是输出目录，都需要 `DataReference` 对象。
 
 ```python
-input_images = DataReference(datastore=batchscore_blob, 
+from azureml.data.data_reference import DataReference
+
+input_images = DataReference(datastore=batchscore_blob,
                              data_reference_name="input_images",
                              path_on_datastore="batchscoring/images",
                              mode="download")
-                           
-model_dir = DataReference(datastore=batchscore_blob, 
+
+model_dir = DataReference(datastore=batchscore_blob,
                           data_reference_name="input_model",
                           path_on_datastore="batchscoring/models",
-                          mode="download")                          
-                         
-label_dir = DataReference(datastore=batchscore_blob, 
+                          mode="download")
+
+label_dir = DataReference(datastore=batchscore_blob,
                           data_reference_name="input_labels",
                           path_on_datastore="batchscoring/labels",
-                          mode="download")                          
-                         
-output_dir = PipelineData(name="scores", 
-                          datastore=def_data_store, 
+                          mode="download")
+
+output_dir = PipelineData(name="scores",
+                          datastore=def_data_store,
                           output_path_on_compute="batchscoring/results")
 ```
 
@@ -114,6 +117,9 @@ output_dir = PipelineData(name="scores",
 在 Azure 机器学习中，*计算*（或*计算目标*）是指在机器学习管道中执行计算步骤的计算机或群集。 例如，可以创建 `Azure Machine Learning compute`。
 
 ```python
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
+
 compute_name = "gpucluster"
 compute_min_nodes = 0
 compute_max_nodes = 4
@@ -128,17 +134,17 @@ else:
     provisioning_config = AmlCompute.provisioning_configuration(
                      vm_size = vm_size, # NC6 is GPU-enabled
                      vm_priority = 'lowpriority', # optional
-                     min_nodes = compute_min_nodes, 
+                     min_nodes = compute_min_nodes,
                      max_nodes = compute_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws, 
-                        compute_name, 
+    compute_target = ComputeTarget.create(ws,
+                        compute_name,
                         provisioning_config)
-    
+
     compute_target.wait_for_completion(
-                     show_output=True, 
-                     min_node_count=None, 
+                     show_output=True,
+                     min_node_count=None,
                      timeout_in_minutes=20)
 ```
 
@@ -173,7 +179,7 @@ tar.extractall(model_dir)
 import shutil
 from azureml.core.model import Model
 
-# register downloaded model 
+# register downloaded model
 model = Model.register(
         model_path = "models/inception_v3.ckpt",
         model_name = "inception", # This is the name of the registered model
@@ -205,7 +211,7 @@ def get_class_label_dict(label_file):
 
 class DataIterator:
   # Definition of the DataIterator here
-  
+
 def main(_):
     # Refer to batch-scoring Notebook for implementation.
     label_file_name = os.path.join(args.label_dir, "labels.txt")
@@ -232,14 +238,12 @@ def main(_):
         saver = tf.train.Saver()
         saver.restore(sess, model_path)
         out_filename = os.path.join(args.output_dir, "result-labels.txt")
-            
+
         # copy the file to artifacts
         shutil.copy(out_filename, "./outputs/")
 ```
 
 ## <a name="build-and-run-the-batch-scoring-pipeline"></a>生成并运行批量评分管道
-
-有了生成管道所需的一切以后，即可将这一切组合在一起。
 
 ### <a name="prepare-the-run-environment"></a>准备运行环境
 
@@ -247,6 +251,8 @@ def main(_):
 
 ```python
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
 
 cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.10.0", "azureml-defaults"])
 
@@ -263,8 +269,9 @@ amlcompute_run_config.environment.spark.precache_packages = False
 使用带默认值的 [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) 对象创建一个管道参数。
 
 ```python
+from azureml.pipeline.core.graph import PipelineParameter
 batch_size_param = PipelineParameter(
-                    name="param_batch_size", 
+                    name="param_batch_size",
                     default_value=20)
 ```
 
@@ -273,15 +280,16 @@ batch_size_param = PipelineParameter(
 使用脚本、环境配置和参数创建管道步骤。 将已附加到工作区的计算目标指定为执行脚本时的目标。 使用 [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) 创建管道步骤。
 
 ```python
+from azureml.pipeline.steps import PythonScriptStep
 inception_model_name = "inception_v3.ckpt"
 
 batch_score_step = PythonScriptStep(
     name="batch_scoring",
     script_name="batch_score.py",
-    arguments=["--dataset_path", input_images, 
+    arguments=["--dataset_path", input_images,
                "--model_name", "inception",
-               "--label_dir", label_dir, 
-               "--output_dir", output_dir, 
+               "--label_dir", label_dir,
+               "--output_dir", output_dir,
                "--batch_size", batch_size_param],
     compute_target=compute_target,
     inputs=[input_images, label_dir],
@@ -295,6 +303,8 @@ batch_score_step = PythonScriptStep(
 现在请运行管道并检查其生成的输出。 输出会有一个与每个输入图像相对应的分数。
 
 ```python
+from azureml.pipeline.core import Pipeline
+
 # Run the pipeline
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
 pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline, pipeline_params={"param_batch_size": 20})
@@ -318,8 +328,8 @@ df.head()
 
 ```python
 published_pipeline = pipeline_run.publish_pipeline(
-    name="Inception_v3_scoring", 
-    description="Batch scoring using Inception v3 model", 
+    name="Inception_v3_scoring",
+    description="Batch scoring using Inception v3 model",
     version="1.0")
 ```
 
@@ -332,8 +342,8 @@ from azureml.pipeline.core import PublishedPipeline
 
 rest_endpoint = published_pipeline.endpoint
 # specify batch size when running the pipeline
-response = requests.post(rest_endpoint, 
-        headers=aad_token, 
+response = requests.post(rest_endpoint,
+        headers=aad_token,
         json={"ExperimentName": "batch_scoring",
                "ParameterAssignments": {"param_batch_size": 50}})
 
@@ -346,7 +356,7 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解此方面的端到端运行机制，请尝试 [GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines) 中的批量评分笔记本。 
+若要了解此方面的端到端运行机制，请尝试 [GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines) 中的批量评分笔记本。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

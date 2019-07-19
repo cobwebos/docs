@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d84801d6368bcc29f08145f190c2a07c64050ced
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 0c301bb1eabf77184a292a84e2de750662a167ad
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795089"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276696"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>调用 Web API 的桌面应用 - 获取令牌
 
@@ -58,7 +58,7 @@ catch(MsalUiRequiredException ex)
 以下示例演示了如何以少量的代码来以交互方式获取令牌，用于在 Microsoft Graph 中读取用户的个人资料。
 
 ```CSharp
-string[] scopes = new string["user.read"];
+string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
 AuthenticationResult result;
@@ -76,7 +76,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>必需参数
 
-`AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果该令牌适用于 Microsoft Graph，可以在名为“权限”的部分中每个 Microsoft Graph API 的 API 参考中找到所需的范围。 例如，向[列出用户的联系人](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)，将需要使用作用域"User.Read"，"Contacts.Read"。 另请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
+`AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果该令牌适用于 Microsoft Graph，可以在名为“权限”的部分中每个 Microsoft Graph API 的 API 参考中找到所需的范围。 例如, 若要[列出用户的联系人](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts), 则需要使用作用域 "User. read"、"contacts"。 另请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
 
 在 Android 上，还需要指定父活动（使用 `.WithParentActivityOrWindow`，如下所示），以便在交互后令牌返回到该父活动。 如果未指定父活动，则调用 `.ExecuteAsync()` 时会引发异常。
 
@@ -185,7 +185,7 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
   - 租户化（采用 `https://login.microsoftonline.com/{tenant}/` 格式，其中，`tenant` 是表示租户 ID 或者与该租户关联的域的 GUID）。
   - 适用于任何工作和学校帐户 (`https://login.microsoftonline.com/organizations/`)
 
-  > 不支持 Microsoft 个人帐户 （不能使用 /common 或 /consumers 租户）
+  > 不支持 Microsoft 个人帐户 (不能使用/common 或/consumers 租户)
 
 - 由于 Windows 集成身份验证是一种静默流：
   - 应用程序的用户必须已事先许可使用该应用程序
@@ -294,7 +294,7 @@ static async Task GetATokenForGraph()
 **不建议**使用此流，因为要求用户提供其密码的应用程序是不安全的。 有关此问题的详细信息，请参阅[此文](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。 在已加入 Windows 域的计算机上以静默方式获取令牌的首选流是 [Windows 集成身份验证](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)。 否则，也可以使用[设备代码流](https://aka.ms/msal-net-device-code-flow)
 
 > [!NOTE] 
-> 虽然这是在某些情况下 （DevOps 方案） 很有用，如果你想要在其中提供你 onw UI 在交互式方案中使用用户名/密码，您应认真考虑如何将从它移开。 使用用户名/密码意味着会丧失许多功能：
+> 尽管这在某些情况下 (DevOps 方案) 很有用, 但如果你想要在提供 onw UI 的交互方案中使用用户名/密码, 则确实应考虑如何从该位置移走。 使用用户名/密码意味着会丧失许多功能：
 >
 > - 新式标识的核心租户：密码被盗用、重放。 我们的观点是共享机密可能会被截获。
 > 此方法与无密码登录是不兼容的。
@@ -305,7 +305,7 @@ static async Task GetATokenForGraph()
 
 以下约束也适用：
 
-- 用户名/密码流并不符合条件性访问和多重身份验证：因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
+- 用户名/密码流与条件性访问和多重身份验证不兼容:因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
 - 它仅适用工作和学校帐户（而不适用于 MSA）
 - 可在 .NET Desktop 和 .NET Core 中使用该流，但不能在 UWP 中使用
 
@@ -325,7 +325,7 @@ static async Task GetATokenForGraph()
  string authority = "https://login.microsoftonline.com/contoso.com";
  string[] scopes = new string[] { "user.read" };
  IPublicClientApplication app;
- app = PublicClientApplicationBuild.Create(clientId)
+ app = PublicClientApplicationBuilder.Create(clientId)
        .WithAuthority(authority)
        .Build();
  var accounts = await app.GetAccountsAsync();
@@ -366,7 +366,7 @@ static async Task GetATokenForGraph()
  string authority = "https://login.microsoftonline.com/contoso.com";
  string[] scopes = new string[] { "user.read" };
  IPublicClientApplication app;
- app = PublicClientApplicationBuild.Create(clientId)
+ app = PublicClientApplicationBuilder.Create(clientId)
                                    .WithAuthority(authority)
                                    .Build();
  var accounts = await app.GetAccountsAsync();
@@ -650,9 +650,9 @@ static async Task<AuthenticationResult> GetATokenForGraph()
   ![image](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 
 > [!IMPORTANT]
-> MSAL.NET 将为你创建令牌缓存，当你调用应用程序的 `GetUserTokenCache` 和 `GetAppTokenCache` 方法时，它会提供 `IToken` 缓存。 最好是不要自行实现接口。 实现自定义令牌缓存序列化时，你的责任是：
+> MSAL.NET 为你创建了标记缓存, 并在调用`IToken`应用程序的`UserTokenCache`和`AppTokenCache`属性时提供缓存。 最好是不要自行实现接口。 实现自定义令牌缓存序列化时，你的责任是：
 >
-> - 做出反应`BeforeAccess`并`AfterAccess`"事件"(或它们*异步*对应)。 `BeforeAccess` 委托负责反序列化缓存，而 `AfterAccess` 负责序列化缓存。
+> - 对`BeforeAccess`和`AfterAccess` "events" (或*异步*对应项) 做出反应。 `BeforeAccess` 委托负责反序列化缓存，而 `AfterAccess` 负责序列化缓存。
 > - 其中的一部分事件存储或加载 Blob，这些 Blob 将通过事件参数传递到所需的任何存储。
 
 所用的策略会有所不同，具体取决于是针对公共客户端应用程序（桌面）还是机密客户端应用程序（Web 应用/Web API、守护程序应用）编写令牌缓存序列化。
@@ -777,18 +777,12 @@ namespace CommonCacheMsalV3
   /// <returns></returns>
   public static void EnableSerialization(ITokenCache cache, string unifiedCacheFileName, string adalV3CacheFileName)
   {
-   usertokenCache = cache;
    UnifiedCacheFileName = unifiedCacheFileName;
    AdalV3CacheFileName = adalV3CacheFileName;
 
-   usertokenCache.SetBeforeAccess(BeforeAccessNotification);
-   usertokenCache.SetAfterAccess(AfterAccessNotification);
+   cache.SetBeforeAccess(BeforeAccessNotification);
+   cache.SetAfterAccess(AfterAccessNotification);
   }
-
-  /// <summary>
-  /// Token cache
-  /// </summary>
-  static ITokenCache usertokenCache;
 
   /// <summary>
   /// File path where the token cache is serialized with the unified cache format

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: a6e78ea6a4427043bf3c06a4663029585c99e331
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 52df4308020b03565c851b6969c0e2e31464d7d7
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473152"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234056"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>将 Red Hat Enterprise Linux 7 虚拟机加入托管域
 本文说明如何将 Red Hat Enterprise Linux (RHEL) 7 虚拟机加入 Azure AD 域服务托管域。
@@ -57,24 +57,25 @@ RHEL 7.2 虚拟机已在 Azure 中预配。 下一个任务是使用在预配 VM
 ## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>配置 Linux 虚拟机上的 hosts 文件
 在 SSH 终端中编辑 /etc/hosts 文件，并更新计算机的 IP 地址和主机名。
 
-```
+```console
 sudo vi /etc/hosts
 ```
 
 在 hosts 文件中输入以下值：
 
-```
+```console
 127.0.0.1 contoso-rhel.contoso100.com contoso-rhel
 ```
+
 在这里，“contoso100.com”是托管域的 DNS 域名。 “contoso-rhel”是要加入到托管域的 RHEL 虚拟机的主机名。
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>在 Linux 虚拟机上安装所需的包
 接下来，在虚拟机上安装加入域所需的包。 在 SSH 终端中，键入以下命令以安装所需的包：
 
-    ```
-    sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
-    ```
+```console
+sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
+```
 
 
 ## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>将 Linux 虚拟机加入托管域
@@ -82,7 +83,7 @@ sudo vi /etc/hosts
 
 1. 发现 AAD 域服务托管域。 在 SSH 终端中键入以下命令：
 
-    ```
+    ```console
     sudo realm discover CONTOSO100.COM
     ```
 
@@ -97,9 +98,8 @@ sudo vi /etc/hosts
     > [!TIP]
     > * 请确保指定属于“AAD DC 管理员”组的用户。
     > * 以大写字母指定域名，否则 kinit 会失败。
-    >
 
-    ```
+    ```console
     kinit bob@CONTOSO100.COM
     ```
 
@@ -107,9 +107,8 @@ sudo vi /etc/hosts
 
     > [!TIP]
     > 使用在前一步骤中指定的同一用户帐户（“kinit”）。
-    >
 
-    ```
+    ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'
     ```
 
@@ -120,17 +119,20 @@ sudo vi /etc/hosts
 验证计算机是否已成功加入托管域。 使用不同 SSH 连接连接到已加入域的 RHEL VM。 使用域用户帐户连接，并检查该用户帐户是否正确解析。
 
 1. 在 SSH 终端中键入以下命令，使用 SSH 连接到已加入域的 RHEL 虚拟机。 使用属于托管域的域帐户（例如，在本例中为“bob@CONTOSO100.COM”）。
-    ```
+    
+    ```console
     ssh -l bob@CONTOSO100.COM contoso-rhel.contoso100.com
     ```
 
 2. 在 SSH 终端中键入以下命令，查看是否已正确初始化主目录。
-    ```
+    
+    ```console
     pwd
     ```
 
 3. 在 SSH 终端中键入以下命令，查看组成员身份是否正确解析。
-    ```
+    
+    ```console
     id
     ```
 

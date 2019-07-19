@@ -10,12 +10,12 @@ ms.date: 11/20/2018
 ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 87651aa1fd44a831e94a00b5871faaae51f2f6a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d44dabe68900aa45b076f44cc38ed85d6938afa
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148297"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249953"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>如何通过 iOS 使用 Blob 存储
 
@@ -80,7 +80,7 @@ ms.locfileid: "65148297"
 #import <AZSClient/AZSClient.h>
 ```
 
-如果使用的是 Swift，则需要创建桥接头文件并在其中导入 <AZSClient/AZSClient.h>：
+如果使用的是 Swift, 则需要创建桥接标头并将 azsclient.framework \</azsclient.framework > 导入:
 
 1. 创建头文件 `Bridging-Header.h`，并添加上面的 import 语句。
 2. 转到“生成设置”  选项卡，并搜索“Objective-C 桥接头文件”  。

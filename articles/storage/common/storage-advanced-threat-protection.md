@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fb221d774d9d00a5dc7b0d94edc35a5651443a5b
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621960"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874061"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Azure 存储的高级威胁防护
 
 Azure 存储高级威胁防护提供额外的一层安全智能，用于检测试图访问或利用存储帐户的异常或可能有害的企图。 借助此保护层，用户无需成为安全专家，也无需管理安全监视系统便可以解决威胁。 
 
-出现在活动中的异常情况时触发安全警报。  这些安全警报集成在一起[Azure 安全中心](https://azure.microsoft.com/services/security-center/)，还将发送通过电子邮件到订阅管理员，具有可疑活动和如何调查和修正的威胁的建议的详细信息。
+当发生异常时, 将触发安全警报。  这些安全警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成, 还会通过电子邮件发送给订阅管理员, 并详细介绍了可疑活动以及如何调查和修正威胁的建议。
 
 > [!NOTE]
-> * 目前仅适用于 Blob 存储的 Azure 存储高级的威胁防护。
-> * 有关定价详细信息，包括 30 天免费试用版，请参阅[Azure 安全中心定价页]( https://azure.microsoft.com/pricing/details/security-center/)。
-> * Azure 存储功能的 ATP 目前不在 Azure 政府版和主权云区域中可用。
+> * Azure 存储的高级威胁防护目前仅适用于 Blob 存储。
+> * 有关定价详细信息 (包括免费的30天试用版), 请参阅[Azure 安全中心定价页]( https://azure.microsoft.com/pricing/details/security-center/)。
+> * Azure 存储的 ATP 功能当前在 Azure 政府版和主权的云区域中不可用。
 
-Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删除 Blob 存储进行威胁检测到的请求。 若要调查的警报从高级威胁防护，可以查看相关的存储活动使用存储分析日志记录。 有关详细信息，请参阅如何[配置存储分析日志记录](storage-monitor-storage-account.md#configure-logging)。
+适用于 Azure 存储的高级威胁防护引入对 Blob 存储的读取、写入和删除请求的诊断日志进行威胁检测。 若要调查高级威胁防护中的警报, 可以使用存储分析日志记录查看相关的存储活动。 有关详细信息, 请参阅如何[配置存储分析日志记录](storage-monitor-storage-account.md#configure-logging)。
 
 ## <a name="set-up-advanced-threat-protection"></a>设置高级威胁防护 
 
@@ -38,27 +38,37 @@ Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删�
 
 3. 在“高级威胁防护”配置边栏选项卡中 
     * **打开**高级*威胁防护*
-    * 单击“保存”以保存新的或更新的高级威胁防护策略  。 （图中的价格是例如目的。）
+    * 单击“保存”以保存新的或更新的高级威胁防护策略  。 （图像中的价格仅用于示例目的。）
 
 ![打开 Azure 存储高级威胁防护](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="using-azure-security-center"></a>使用 Azure 安全中心
-当你订阅到标准层在 Azure 安全中心高级威胁防护设置你的存储帐户上。 有关详细信息请参阅[升级到安全中心标准层以增强安全性](https://docs.microsoft.com/azure/security-center/security-center-pricing)。 （图中的价格是例如目的。）
 
-![在 ASC 中的标准层](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing.png)
+当你订阅 Azure 安全中心的 "标准" 层时, 会自动对所有存储帐户设置高级威胁防护。 你可以在特定订阅下为你的存储帐户启用或禁用高级威胁防护, 如下所示:
+
+1. 在[Azure 门户]([https://portal.azure.com)中启动**Azure 安全中心**。
+1. 在主菜单中, 单击 "**定价 & 设置**"。
+1. 单击要为其存储帐户启用或禁用威胁防护的订阅。
+
+    ![选择订阅](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
+
+1. 单击“定价层”  。
+1. 在 "**按资源类型选择定价层**" 部分的 "**存储帐户**" 行中, 单击 "**已启用**" 或 "**已禁用**"。
+
+    ![在安全中心启用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
+1. 单击“保存”  。
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
-使用 Azure 资源管理器模板部署具有高级威胁防护的 Azure 存储帐户已启用。
-有关详细信息，请参阅[存储帐户的高级威胁防护](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)。
+使用 Azure 资源管理器模板来部署启用了高级威胁防护的 Azure 存储帐户。 有关详细信息, 请参阅[具有高级威胁防护的存储帐户](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)。
 
 ### <a name="using-azure-policy"></a>使用 Azure 策略
 
-使用 Azure 策略以在特定订阅或资源组下的存储帐户启用高级威胁防护。
+使用 Azure 策略在特定订阅或资源组中的存储帐户之间启用高级威胁防护。
 
-1. 再 Azure**策略-定义**页。
+1. Azure**策略定义**页面午餐。
 
-1. 搜索**存储帐户上部署高级威胁防护**策略。
+1. 搜索 "**部署高级威胁防护存储帐户**" 策略。
 
      ![搜索策略](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
   
@@ -66,12 +76,12 @@ Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删�
 
     ![选择订阅或组](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
 
-1. 将策略分配。
+1. 分配策略。
 
-    ![策略定义页面](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
+    !["策略定义" 页](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="using-rest-api"></a>使用 REST API
-使用 Rest API 命令来创建、 更新或获取特定的存储帐户的高级威胁防护设置。
+使用 Rest API 命令创建、更新或获取特定存储帐户的高级威胁防护设置。
 
 * [高级威胁防护-创建](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [高级威胁防护-获取](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
@@ -80,11 +90,11 @@ Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删�
 
 使用以下 PowerShell cmdlet:
 
-  * [启用高级的威胁防护](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+  * [启用高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
   * [获取高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-  * [禁用高级的威胁防护](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+  * [禁用高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
-## <a name="explore-security-anomalies"></a>浏览安全异常
+## <a name="explore-security-anomalies"></a>探索安全异常
 
 存储活动出现异常时，用户会收到一封电子邮件通知，其中包含有关可疑安全事件的信息。 事件详细信息包括：
 
@@ -109,55 +119,55 @@ Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删�
 
 警报是因访问或攻击存储帐户的异常且可能有害的尝试而生成的。 这些事件可以触发以下警报：
 
-### <a name="anomalous-access-pattern-alerts"></a>异常访问模式的警报
+### <a name="anomalous-access-pattern-alerts"></a>异常访问模式警报
 
-* **从异常位置访问**:当有人已从异常的地理位置访问存储帐户时，会触发此警报。
-可能的原因：
+* **从异常位置访问**:当某个用户从异常地理位置访问了存储帐户时, 将触发此警报。
+可能的原因:
    * 攻击者已访问你的存储帐户
    * 合法用户已从新位置访问你的存储帐户
  
-* **应用程序异常**:此警报表示异常的应用程序具有访问此存储帐户。 可能的原因：
-   * 攻击者已访问使用新的应用程序在存储帐户。
-   * 合法用户已使用新的应用程序/浏览器访问你的存储帐户。
+* **应用程序异常**:此警报表示异常应用程序已访问此存储帐户。 可能的原因:
+   * 攻击者使用新的应用程序访问了你的存储帐户。
+   * 合法用户使用了新的应用程序/浏览器来访问你的存储帐户。
 
-* **匿名访问**:此警报表明此帐户已被以匿名方式访问 （即，没有任何身份验证），这是意外相比对此帐户的最新的访问模式。
-可能的原因：
-   * 攻击者已利用了对容器的公共读取访问。
-   * 合法用户或应用程序已使用到的容器的公共读取访问权限。
+* **匿名访问**:此警报表示此帐户已匿名访问 (即, 没有任何身份验证), 这与此帐户上的最新访问模式有意外的对比。
+可能的原因:
+   * 攻击者已利用容器的公共读取访问权限。
+   * 合法用户或应用程序已使用容器的公共读取访问权限。
 
-* **Tor 异常**:此警报表明从名为 Tor （匿名代理） 的活动退出节点的 IP 地址的成功访问了此帐户。 此警报的严重性会考虑使用 （如果有），身份验证类型和是否是第一个这样的此类访问。
-可能的原因：
-   * 攻击者已访问使用 Tor 在存储帐户。
-   * 合法用户访问使用 Tor 在存储帐户。
+* **Tor 异常**:此警报表示已成功从称为 Tor 的活动退出节点的 IP 地址 (匿名代理) 访问此帐户。 此警报的严重性考虑使用的身份验证类型 (如果有), 以及这是否是此类访问的第一种情况。
+可能的原因:
+   * 攻击者使用 Tor 访问了你的存储帐户。
+   * 合法用户使用 Tor 访问了你的存储帐户。
 
 
-### <a name="anomalous-extractupload-alerts"></a>异常的提取/上传警报
+### <a name="anomalous-extractupload-alerts"></a>异常提取/上传警报
 
-* **数据泄露**:此警报表示已与此存储容器上最近的活动相比，提取的数据量非常大。 可能的原因：
-   * 攻击者已从容器中提取大量数据。 (例如： 数据泄露/破坏、 未经授权的数据传输)
-   * 合法用户或应用程序已从容器中提取不寻常的大量数据。 (例如： 维护活动)
+* **数据渗透**:此警报表明与此存储容器上的最近活动相比, 已经提取了异常大量的数据。 可能的原因:
+   * 攻击者已从容器提取大量数据。 (例如: data 渗透/违例、未经授权的数据传输)
+   * 合法用户或应用程序已从容器提取了异常数据量。 (例如: 维护活动)
 
-* **意外的删除**:此警报表明一个或多个意外的删除操作发生在存储帐户中，相比在此帐户上最近的活动。 可能的原因：
+* **意外删除**:此警报表示存储帐户中发生了一个或多个意外的删除操作, 与此帐户上的最近活动相比。 可能的原因:
    * 攻击者已从你的存储帐户中删除数据。
-   * 合法用户执行了异常的删除。
+   * 合法用户执行了异常删除。
 
-* **将 Azure 云服务包上传**:此警报表明，已与此帐户上最近的活动相比以异常方式上载到存储帐户的 Azure 云服务包 （.cspkg 文件）。 可能的原因： 
-   * 攻击者准备部署到 Azure 云服务从你的存储帐户的恶意代码。
-   * 已为合法服务部署而准备了合法用户。
+* **上载 Azure 云服务包**:此警报表示 Azure 云服务包 (.cspkg 文件) 已以异常方式上传到存储帐户, 与此帐户上的最近活动相比。 可能的原因: 
+   * 攻击者已准备好将恶意代码从你的存储帐户部署到 Azure 云服务。
+   * 合法用户已准备好进行合法的服务部署。
 
-### <a name="suspicious-storage-activities-alerts"></a>可疑存储活动警报
+### <a name="suspicious-storage-activities-alerts"></a>可疑的存储活动警报
 
-* **访问权限更改**:此警报表示已以异常方式中的存储容器的访问权限已更改。 可能的原因： 
-   * 攻击者已更改容器权限以降低其安全性。
-   * 合法用户更改了容器的权限。
+* **访问权限更改**:此警报表示此存储容器的访问权限已以异常方式更改。 可能的原因: 
+   * 攻击者已更改容器权限来削弱其安全性。
+   * 合法用户已更改容器权限。
 
-* **访问检查**:此警报表明，已与此帐户上最近的活动相比以异常方式检查存储帐户的访问权限。 可能的原因： 
-   * 攻击者执行了未来攻击的侦测。
-   * 合法用户的存储帐户上执行维护。
+* **访问检查**:此警报表示与此帐户上的最近活动相比, 以异常方式检查过存储帐户的访问权限。 可能的原因: 
+   * 攻击者已执行侦测, 以应对未来的攻击。
+   * 合法用户已对存储帐户执行维护。
 
-* **数据浏览**:此警报表示存储帐户中的容器或 blob 已枚举以异常方式，与此帐户上最近的活动相比。 可能的原因： 
-   * 攻击者执行了未来攻击的侦测。
-   * 合法用户或应用程序逻辑探讨了存储帐户中的数据。
+* **数据浏览**:此警报表示存储帐户中的 blob 或容器已被异常地枚举, 与此帐户上的最近活动相比。 可能的原因: 
+   * 攻击者已执行侦测, 以应对未来的攻击。
+   * 合法用户或应用程序逻辑已浏览存储帐户中的数据。
 
 
 
@@ -166,6 +176,6 @@ Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[登录 Azure 存储帐户](/rest/api/storageservices/About-Storage-Analytics-Logging)
+* 了解有关[Azure 存储帐户中的日志的](/rest/api/storageservices/About-Storage-Analytics-Logging)详细信息
 
 * 了解有关 [Azure 安全中心](../../security-center/security-center-intro.md)的详细信息

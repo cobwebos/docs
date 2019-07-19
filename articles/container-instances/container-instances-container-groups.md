@@ -1,20 +1,20 @@
 ---
 title: Azure 容器实例容器组
-description: 了解如何多容器组在 Azure 容器实例中工作
+description: 了解多容器组在 Azure 容器实例中的工作方式
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cba57875daf9b570d274ec8c4e9c4146af0dc045
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b17004e7821bcac61ca98afdbeaf87644da2a441
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072832"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326056"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
@@ -22,7 +22,7 @@ Azure 容器实例中的顶层资源是容器组。  本文介绍容器组的定
 
 ## <a name="how-a-container-group-works"></a>容器组工作原理
 
-容器组是安排在同一主机上的容器集合。 容器组中的容器共享生命周期、 资源、 本地网络和存储卷。 它是在概念上与类似*pod*中[Kubernetes][kubernetes-pod]。
+容器组是安排在同一主机上的容器集合。 容器组中的容器共享生命周期、资源、本地网络和存储卷。 它在概念上类似于[Kubernetes][kubernetes-pod]中的*pod* 。
 
 以下关系图显示了一个包含多个容器的容器组示例：
 
@@ -37,41 +37,41 @@ Azure 容器实例中的顶层资源是容器组。  本文介绍容器组的定
 * 包含两个 Azure 文件共享作为卷装载，每个容器本地装载一个共享。
 
 > [!NOTE]
-> 多容器组目前支持仅 Linux 容器。 Windows 容器中的 Azure 容器实例仅支持单个实例的部署。 我们正致力于为 Windows 容器提供的所有功能，您可以了解在服务中的当前平台差异[概述](container-instances-overview.md#linux-and-windows-containers)。
+> 多容器组目前仅支持 Linux 容器。 对于 Windows 容器, Azure 容器实例仅支持单个实例的部署。 尽管我们正在努力将所有功能引入 Windows 容器, 但你可以在服务[概述](container-instances-overview.md#linux-and-windows-containers)中找到当前的平台差异。
 
 ## <a name="deployment"></a>部署
 
-以下是部署多容器组的两种常见方式： 使用[资源管理器模板][ resource-manager template]或[YAML 文件][yaml-file]。 您需要部署其他 Azure 服务资源时，建议使用资源管理器模板 (例如， [Azure 文件共享][azure-files]) 部署容器实例时。 由于 YAML 格式更简洁的特性，YAML 文件时，建议你的部署包括仅容器实例。
+下面是部署多容器组的两种常见方法: 使用[资源管理器模板][resource-manager template] or a [YAML file][yaml-file]。 部署容器实例时, 如果需要部署其他 Azure 服务资源 (例如[Azure 文件共享][azure 文件]), 则建议使用资源管理器模板。 由于 YAML 格式更简洁, 因此当部署仅包含容器实例时, 建议使用 YAML 文件。
 
-若要保留容器组的配置，您可以将配置导出到 YAML 文件使用 Azure CLI 命令[az 容器导出][az-container-export]。 导出可在"配置即代码"的版本控制中存储你的容器组配置 还可以将导出的文件用作使用 YAML 开发新配置时的起点。
+若要保留容器组的配置, 可以使用 Azure CLI 命令[az 容器 export][az-container-export]将配置导出到 YAML 文件。 通过导出, 你可以在版本控制中将容器组配置存储为 "配置为代码"。 还可以将导出的文件用作使用 YAML 开发新配置时的起点。
 
 ## <a name="resource-allocation"></a>资源分配
 
-Azure 容器实例分配资源，例如 Cpu、 内存，并选择性地[Gpu] [ gpus] （预览版） 到容器组通过添加[资源请求][resource-requests]的组中的实例。 作为示例，占用 CPU 资源，如果有两个实例，每个请求 1 创建的容器组 CPU，则为容器组分配了 2 个 Cpu。
+Azure 容器实例分配资源, 如组中实例的 cpu、内存和可选[gpu][gpus] (preview) to a container group by adding the [resource requests][resource-requests] 。 取 CPU 资源示例: 如果创建包含两个实例的容器组, 每个实例请求1个 CPU, 则会为该容器组分配2个 cpu。
 
-可用于容器组的最大资源依赖于[Azure 区域][ region-availability]用于部署。
+容器组可用的最大资源取决于用于部署的[Azure 区域][region-availability]。
 
 ### <a name="container-resource-requests-and-limits"></a>容器资源请求和限制
 
-* 默认情况下，在组中的容器实例共享的组的请求的资源。 具有两个组中实例的每个请求 1 CPU，作为整体组有权访问 2 个 Cpu。 每个实例可以最多使用 2 个 Cpu，实例可能会争夺 CPU 资源，在运行时。
+* 默认情况下, 组中的容器实例共享组中请求的资源。 在包含两个实例的组中, 每个请求1个 CPU, 整个组都有权访问2个 CPU。 每个实例最多可以使用2个 Cpu, 并且实例在运行时可能会争用 CPU 资源。
 
-* 若要限制的组中实例的资源使用量，根据需要设置[资源限制][ resource-limits]的实例。 具有两个实例的组中请求 1 CPU，一个容器可能需要更多的 Cpu 比其他运行。
+* 若要限制组中某个实例的资源使用, 可选择设置该实例的[资源限制][resource-limits]。 在两个请求1个 CPU 的实例的组中, 其中一个容器可能需要更多的 Cpu 才能运行。
 
-  在此方案中，你可以设置资源限制为 0.5 个 CPU 一个实例和第二个 2 个 Cpu 的限制。 此配置限制为 0.5 的第一个容器的资源使用情况 CPU，允许最多使用完整 2 个 Cpu 如果可用的第二个容器。
+  在这种情况下, 你可以将一个实例的资源限制设置为 0.5 CPU, 为第二个实例设置2个 Cpu 的限制。 此配置将第一个容器的资源使用率限制为 0.5 CPU, 允许第二个容器最多使用完整2个 Cpu (如果可用)。
 
-有关详细信息，请参阅[ResourceRequirements] [ resource-requirements]容器中的属性组 REST API。
+有关详细信息, 请参阅 REST API 容器组中的[ResourceRequirements][resource-requirements]属性。
 
-### <a name="minimum-and-maximum-allocation"></a>最小值和最大分配
+### <a name="minimum-and-maximum-allocation"></a>最小和最大分配
 
-* 分配**最小**1 的 CPU 和 1 GB 的内存与容器组。 小于 1 可预配组中的单个容器实例 CPU 和 1 GB 的内存。 
+* 向容器组分配**至少**1 个 CPU 和 1 GB 的内存。 可以为组中的各个容器实例预配少于1个 CPU 和 1 GB 的内存。 
 
-* 有关**最大**资源在容器组中，请参阅[资源可用性][ region-availability]部署区域中的 Azure 容器实例的。
+* 有关容器组中的**最大**资源, 请参阅部署区域中 Azure 容器实例的[资源可用性][region-availability]。
 
 ## <a name="networking"></a>网络
 
-容器组共享 IP 地址和该 IP 地址上的端口命名空间。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 由于组内的容器共享端口命名空间，不支持端口映射。 组内的容器可相互通过访问它们已公开的端口上的本地主机即使这些端口不组的 IP 地址上对外公开。
+容器组共享 IP 地址和该 IP 地址上的端口命名空间。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 由于组中的容器共享端口命名空间, 因此不支持端口映射。 组内的容器可以通过其公开端口上的 localhost 相互联系, 即使这些端口未在组的 IP 地址外部公开。
 
-（可选） 部署到的容器组[Azure 虚拟网络][ virtual-network] （预览版） 来让容器与虚拟网络中的其他资源进行安全通信。
+(可选) 将容器组部署到[Azure 虚拟网络][virtual-network](预览版) 中, 以允许容器与虚拟网络中的其他资源安全通信。
 
 ## <a name="storage"></a>存储
 
@@ -86,7 +86,7 @@ Azure 容器实例分配资源，例如 Cpu、 内存，并选择性地[Gpu] [ g
 * 为 Web 应用程序提供服务的容器和从源控件拉取最新内容的容器。
 * 应用程序容器和日志记录容器。 日志记录容器收集主要应用程序输出的日志和指标并将其写入长期存储。
 * 应用程序容器和监视容器。 监视容器定期向应用程序发送请求，确保该应用程序正常运行和响应，并在应用程序出现异常时发出警报。
-* 前端容器和后端容器。 前端可能用作 web 应用程序，与后端运行的服务来检索数据。 
+* 前端容器和后端容器。 前端可以为 web 应用程序提供服务, 后端运行服务来检索数据。 
 
 ## <a name="next-steps"></a>后续步骤
 

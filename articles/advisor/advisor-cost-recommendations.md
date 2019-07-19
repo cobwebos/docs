@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: fef7b82e6969de16d1815250d2373c99021b0e86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96e939f8e3da58a123d9a6733b71b74c2ff0ba87
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254721"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311914"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
@@ -25,7 +25,7 @@ ms.locfileid: "66254721"
 
 顾问会显示继续运行虚拟机的预估成本，以便你选择关闭它还是对其进行调整。
 
-若要加强对低使用率虚拟机的标识，可在每个订阅的基础上调整平均 CPU 使用率。
+如果你想要更积极地识别使用不足的虚拟机, 你可以基于每个订阅调整 CPU 使用率规则。
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>通过消除未设置的 ExpressRoute 线路来降低成本
 
@@ -33,7 +33,7 @@ ms.locfileid: "66254721"
 
 ## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>通过删除或重新配置空闲虚拟网络网关来降低成本
 
-顾问会识别已闲置超过 90 天的虚拟网络网关。 由于这些网关按小时计费，因此如果不打算再使用它们，则应考虑重新配置或删除它们。 
+顾问标识在超过90天内空闲的虚拟网络网关。 由于这些网关按小时计费，因此如果不打算再使用它们，则应考虑重新配置或删除它们。 
 
 ## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>购买虚拟机预留实例可节省即用即付成本
 
@@ -45,12 +45,12 @@ ms.locfileid: "66254721"
 
 顾问可以标识目前未关联到 Azure 资源（例如负载均衡器或 VM）的公共 IP 地址。 这些公共 IP 地址会产生少许费用。 如果不打算使用它们，删除它们可以节省成本。
 
-## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>删除未通过的 Azure 数据工厂管道
+## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>删除失败的 Azure 数据工厂管道
 
-Azure 顾问将检测 Azure 数据工厂管道，反复失败，并建议解决问题，或在不再需要时删除失败管道。 您将收取这些管道即使但它们都不为你提供服务时失败。 
+Azure 顾问将检测重复失败的 Azure 数据工厂管道, 并建议解决这些问题, 或在不再需要时删除失败的管道。 即使这些管道发生故障, 也会对这些管道进行计费。 
 
-## <a name="use-standard-snapshots-for-managed-disks"></a>使用标准托管磁盘的快照
-若要保存 60%的成本，我们建议将快照存储在标准存储，而不考虑父磁盘的存储类型。 这是托管磁盘快照的默认选项。 Azure 顾问会标识存储高级存储，建议将快照从高级版迁移到标准存储的快照。 [了解有关托管磁盘定价的详细信息](https://aka.ms/aa_manageddisksnapshot_learnmore)
+## <a name="use-standard-snapshots-for-managed-disks"></a>使用托管磁盘的标准快照
+为了节省 60% 的成本, 我们建议将快照存储在标准存储中, 而不考虑父磁盘的存储类型。 这是托管磁盘快照的默认选项。 Azure 顾问会识别存储高级存储的快照, 并建议将快照从高级存储迁移到标准存储。 [了解有关托管磁盘定价的详细信息](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>如何访问 Azure 顾问中的成本建议
 

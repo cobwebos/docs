@@ -12,19 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6ad2ab00060528557f618eb684ccfa710c3f09b9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074178"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876426"
 ---
-# <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>在运行时使用 Application Insights 状态监视器检测 Web 应用
+# <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时通过 Application Insights 无代码置备附加来检测 web 应用
 
 无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 需要 [Microsoft Azure](https://azure.com) 订阅。
 
 状态监视器可用于检测托管在 IIS、本地或 VM 中的 .NET 应用程序。
 
+- 如果你的应用部署到 Azure VM 或 Azure 虚拟机规模集, 请遵循[这些说明](azure-vm-vmss-apps.md)。
 - 如果应用部署在 Azure 应用服务中，请遵循[这些说明](azure-web-apps.md)。
 - 如果应用部署在 Azure VM 中，则可通过 Azure 控制面板启用 Application Insights 监视。
 - （我们还单独提供了有关检测 [Azure 云服务](../../azure-monitor/app/cloudservices.md)的文章。）
@@ -63,7 +64,7 @@ ms.locfileid: "67074178"
 2. 如果尚未安装 Application Insights 状态监视器，请[下载并运行安装程序](#download)
 3. 在状态监视器中，选择已安装的 Web 应用程序或者要监视的网站。 使用 Azure 凭据登录。
 
-    配置资源，以便在其中通过 Application Insights 门户查看结果。 （通常情况下，最好是创建新的资源。 如果已针对此应用进行了 [Web 测试][availability]或[客户端监视][client]，请选择现有资源。） 
+    配置资源，以便在其中通过 Application Insights 门户查看结果。 （通常情况下，最好是创建新的资源。 如果已针对此应用进行了 [Web 测试][availability]or [client monitoring][client]，请选择现有资源。） 
 
     ![选择应用和资源。](./media/monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
@@ -149,7 +150,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * 若要输出详细日志，请修改配置文件：`C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` 并将 `<add key="TraceLevel" value="All" />` 添加到 `appsettings`。
 然后重启状态监视器。
 
-* 按状态监视器是一个.NET 应用程序还可以启用[通过将适当的诊断添加到配置文件.net 跟踪](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如，在某些情况下它可用于查看在网络级别的正在发生[配置网络跟踪](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
+* 由于状态监视器是 .NET 应用程序, 因此还可以[通过将相应的诊断添加到配置文件来启用 .net 跟踪](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如, 在某些情况下, 通过[配置网络跟踪](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)来查看网络级别发生的情况会很有用。
 
 ### <a name="insufficient-permissions"></a>权限不足
   
@@ -186,7 +187,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * Windows server 2012 R2
 * Windows Server 2016
 
-使用最新 SP 及.NET Framework 4.5 （在此版本的 framework 上构建状态监视器）
+具有最新 SP 和 .NET Framework 4.5 (状态监视器是基于此版本的 Framework 构建的)
 
 在客户端：对于 Windows 7、8、8.1 和 10，同样需要安装 .NET Framework 4.5
 
@@ -280,7 +281,7 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 
 目前，状态监视器仅可安装 Application Insights SDK 版本 2.3 或 2.4。 
 
-是 Application Insights SDK 版本 2.4[最后一个版本支持.NET 4.0](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1)这是[EOL 2016 年 1 月](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/)。 因此，到目前为止状态监视器可以用于检测.NET 4.0 应用程序。 
+Application Insights SDK 版本2.4 是支持 .NET 4.0 ([年1月 1 2016 日](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/)) 的[最新版本](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1)。 因此, 目前可以使用状态监视器来检测 .NET 4.0 应用程序。 
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>是否每次更新应用都需要运行状态监视器？
 
@@ -294,7 +295,7 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 
 * HTTP 请求
 * 对依赖项的调用
-* 例外
+* Exceptions
 * 性能计数器
 
 对于已在编译时进行检测的应用程序：
@@ -311,6 +312,7 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 
 ## <a name="download"></a>下载状态监视器
 
+- 使用新的[PowerShell 模块](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)
 - 下载并运行[状态监视器安装程序](https://go.microsoft.com/fwlink/?LinkId=506648)
 - 或运行 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)并在其中搜索 Application Insights 状态监视器。
 
@@ -319,13 +321,13 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 查看遥测：
 
 * [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况
-* [搜索事件和日志][diagnostic]，以便诊断问题
+* [搜索事件和日志][diagnostic]以诊断问题
 * [分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询
 
 添加更多遥测：
 
-* [创建 Web 测试][availability]，确保站点保持活动状态。
-* [添加 Web 客户端遥测][usage]，查看网页代码中的异常并将其插入跟踪调用。
+* [创建 Web 测试][availability]，以确保站点保持活动状态。
+* [添加 Web 客户端遥测][usage]，以查看网页代码中的异常并将其插入跟踪调用。
 * [将 Application Insights SDK 添加到代码][greenbrown]，以便插入跟踪和日志调用
 
 <!--Link references-->

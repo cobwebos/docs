@@ -1,60 +1,61 @@
 ---
-title: 使用 Azure 容器注册表任务使用托管的标识
-description: 提供对 Azure 资源包括通过 Azure 资源的分配的托管的标识的其他专用容器注册表的 Azure 容器注册表任务访问权限。
+title: 将托管标识用于 Azure 容器注册表任务
+description: 通过为 Azure 资源分配托管标识, 提供 azure 容器注册表任务对 Azure 资源的访问权限, 包括其他专用容器注册表。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 5b60727472a06aaac8ccd3dce8609461e8972311
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 46351af375ab4c6e59a3ddfba3c05c1e517fab0d
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67148025"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311538"
 ---
-# <a name="use-an-azure-managed-identity-in-acr-tasks"></a>使用 Azure 托管 ACR 任务中的标识 
+# <a name="use-an-azure-managed-identity-in-acr-tasks"></a>在 ACR 任务中使用 Azure 托管标识 
 
-使用[管理 Azure 资源的标识](../active-directory/managed-identities-azure-resources/overview.md)进行身份验证从 ACR 任务到 Azure 容器注册表或其他 Azure 资源，而无需提供或管理在代码中的凭据。 例如，使用托管的标识或拉取容器映像推送到另一个注册表，作为一项任务中的步骤。
+使用[azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)对 azure 容器注册表或其他 azure 资源的 ACR 任务进行身份验证, 而无需在代码中提供或管理凭据。 例如, 使用托管标识将容器映像提取或推送到其他注册表, 作为任务中的一个步骤。
 
-在本文中，您了解有关管理的标识的详细信息和操作方法：
+在本文中, 你将了解有关托管标识的详细信息以及如何:
 
 > [!div class="checklist"]
-> * 启用系统分配标识或上一个 ACR 任务的用户分配标识
-> * 授予对 Azure 资源，例如其他 Azure 容器注册表的标识访问权限
-> * 使用托管的标识从任务访问的资源 
+> * 在 ACR 任务上启用系统分配的标识或用户分配的标识
+> * 向标识授予对 Azure 资源 (例如其他 Azure 容器注册表) 的访问权限
+> * 使用托管标识从任务访问资源 
 
-若要创建的 Azure 资源，本文要求运行 Azure CLI 版本 2.0.66 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+若要创建 Azure 资源, 本文要求运行 Azure CLI 版本2.0.66 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 ## <a name="why-use-a-managed-identity"></a>为什么使用托管标识？
 
-Azure 资源的托管标识可在 Azure Active Directory (Azure AD) 中为 Azure 服务提供一个自动托管标识。 你可以配置[某些 Azure 资源](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)，ACR 任务包括托管标识。 然后使用该标识访问其他 Azure 资源，而无需在代码或脚本中传递凭据。
+Azure 资源的托管标识可在 Azure Active Directory (Azure AD) 中为 Azure 服务提供一个自动托管标识。 你可以使用托管标识配置[某些 Azure 资源](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), 包括 ACR 任务。 然后使用该标识访问其他 Azure 资源，而无需在代码或脚本中传递凭据。
 
 托管标识有两种类型：
 
 * *用户分配的标识*，可以将其分配给多个资源，并根据需要持久保存。 用户分配的标识现提供预览版。
 
-* 一个*系统托管标识*，这是唯一的某个特定的资源，例如 ACR 任务，该资源的生存期内持续。
+* *系统管理的标识*, 它对特定资源 (如 ACR 任务) 是唯一的, 并在该资源的生存期内持续。
 
-设置托管标识的 Azure 资源后，授予对另一个资源，就像任何安全主体的标识访问权限。 例如，将分配的托管的标识具有拉取、 推送和拉取或其他权限的角色到专用容器注册表在 Azure 中。 （有关完整的注册表角色列表，请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。）可以授予标识对一个或多个资源的访问权限。
+使用托管标识设置 Azure 资源后, 可以将该标识授予对其他资源的访问权限, 就像任何安全主体一样。 例如, 为 Azure 中的专用容器注册表分配包含请求、推送和拉取或其他权限的托管标识。 （有关完整的注册表角色列表，请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。）可以授予标识对一个或多个资源的访问权限。
 
 ## <a name="create-container-registries"></a>创建容器注册表
 
-对于本教程中，你将需要三个容器注册表：
+对于本教程, 需要三个容器注册表:
 
-* 使用第一个注册表创建和执行 ACR 任务。 在本文中，名为此源注册表*myregistry*。 
-* 第二个和第三个注册表是要推送的映像生成的第一个示例任务的目标注册表。 在本文中，目标注册表名为*customregistry1*并*customregistry2*。
+* 使用第一个注册表来创建和执行 ACR 任务。 本文中, 此源注册表名为*myregistry*。 
+* 第二个和第三个注册表是用于推送其生成的映像的第一个示例任务的目标注册表。 在本文中, 目标注册表名称为*customregistry1*和*customregistry2*。
 
-替换为自己的注册表名称在后续步骤中。
+在后面的步骤中将替换为你自己的注册表名称。
 
-如果您没有所需的 Azure 容器注册表，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。 不需要尚未向注册表推送映像。
+如果还没有所需的 Azure 容器注册表, 请参阅[快速入门:使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。 你还不需要将映像推送到注册表。
 
-## <a name="example-task-with-a-system-assigned-identity"></a>示例：使用系统分配标识的任务
+## <a name="example-task-with-a-system-assigned-identity"></a>例如：使用系统分配的标识的任务
 
-此示例演示如何创建[多步骤任务](container-registry-tasks-multi-step.md)具有系统分配的标识。 任务生成映像，然后使用标识来使用两个目标注册表将映像推送进行身份验证。
+此示例演示如何使用系统分配的标识创建[多步骤任务](container-registry-tasks-multi-step.md)。 该任务生成一个映像, 然后使用该标识通过两个目标注册表进行身份验证, 以便推送映像。
 
-此示例中任务的步骤中定义[YAML 文件](container-registry-tasks-reference-yaml.md)名为`testtask.yaml`。 该文件位于的 multipleRegistries 目录[acr 任务](https://github.com/Azure-Samples/acr-tasks)示例存储库。 该文件将在此处重现：
+此示例任务的步骤在名为`testtask.yaml`的[YAML 文件](container-registry-tasks-reference-yaml.md)中定义。 该文件位于 " [acr-任务](https://github.com/Azure-Samples/acr-tasks)示例存储库" 的 multipleRegistries 目录中。 此文件将在此处重现:
 
 ```yml
 version: v1.0.0
@@ -65,9 +66,9 @@ steps:
   - push: ["{{.Values.REGISTRY2}}/hello-world:{{.Run.ID}}"]
 ```
 
-### <a name="create-task-with-system-assigned-identity"></a>使用系统分配的标识创建任务
+### <a name="create-task-with-system-assigned-identity"></a>用系统分配的标识创建任务
 
-创建任务*多个 reg*通过执行以下[az acr 任务创建][ az-acr-task-create]命令。 任务上下文是 multipleRegistries 文件夹的示例存储库，并且该命令引用的文件`testtask.yaml`存储库中。 `--assign-identity`带任何附加值的参数创建该任务的系统分配标识。 此任务是设置，因此您必须手动触发，但您可将它设置到存储库推送提交或拉取请求时运行。 
+通过执行以下[az acr task create][az-acr-task-create]命令, 创建*多注册表*任务。 任务上下文是示例存储库的 multipleRegistries 文件夹, 命令引用存储库中的文件`testtask.yaml` 。 没有其他值的参数会为任务创建系统分配的标识。`--assign-identity` 此任务已设置, 因此你必须手动对其进行触发, 但你可以将其设置为在提交到存储库时运行, 或进行拉取请求。 
 
 ```azurecli
 az acr task create \
@@ -80,7 +81,7 @@ az acr task create \
   --assign-identity
 ```
 
-在命令输出中，`identity`部分显示的类型标识`SystemAssigned`任务中设置。 `principalId`是标识的服务主体 ID:
+在命令输出中, `identity`部分显示在任务中设置类型`SystemAssigned`的标识。 `principalId`是标识的服务主体 ID:
 
 ```console
 [...]
@@ -94,24 +95,24 @@ az acr task create \
 [...]
 ``` 
 
-使用[az acr 任务 show] [ az-acr-task-show]命令存储`principalId`在变量中，若要在更高版本的命令中使用：
+使用[az acr task show][az-acr-task-show]命令将存储`principalId`在变量中, 以便在后面的命令中使用:
 
 ```azurecli
 principalID=$(az acr task show --name multiple-reg --registry myregistry --query identity.principalId --output tsv)
 ```
 
-### <a name="give-identity-push-permissions-to-two-target-container-registries"></a>授予对两个目标容器注册表的标识请求权限
+### <a name="give-identity-push-permissions-to-two-target-container-registries"></a>向两个目标容器注册表授予标识推送权限
 
-在本部分中，若要将推送到两个目标注册表，名为的系统分配的标识权限授予*customregistry1*并*customregistry2*。
+在本部分中, 为系统分配的标识授予推送到名为 " *customregistry1* " 和 " *customregistry2*" 的两个目标注册表项的权限。
 
-首先，使用[az acr show] [ az-acr-show]命令来获取每个注册表的资源 ID 并将 Id 存储在变量中：
+首先, 使用[az acr show][az-acr-show]命令获取每个注册表的资源 ID 并将 id 存储在变量中:
 
 ```azurecli
 reg1_id=$(az acr show --name customregistry1 --query id --output tsv)
 reg2_id=$(az acr show --name customregistry2 --query id --output tsv)
 ```
 
-使用[创建的 az 角色分配][ az-role-assignment-create]命令来分配标识`acrpush`到每个注册表的角色。 此角色具有到容器注册表拉取和推送映像的权限。
+使用[az role assign create][az-role-assignment-create]命令将`acrpush`角色分配给每个注册表。 此角色有权请求和将映像推送到容器注册表。
 
 ```azurecli
 az role assignment create --assignee $principalID --scope $reg1_id --role acrpush
@@ -120,7 +121,7 @@ az role assignment create --assignee $principalID --scope $reg2_id --role acrpus
 
 ### <a name="add-target-registry-credentials-to-task"></a>将目标注册表凭据添加到任务
 
-现在，使用[az acr 任务凭据添加][ az-acr-task-credential-add]命令，将标识的凭据添加到任务，以便它能够与这两个目标注册表身份验证。
+现在, 使用[az acr task credential add][az-acr-task-credential-add]命令将标识凭据添加到任务, 以便它能够在两个目标注册表中进行身份验证。
 
 ```azurecli
 az acr task credential add \
@@ -138,7 +139,7 @@ az acr task credential add \
 
 ### <a name="manually-run-the-task"></a>手动运行任务
 
-使用[az acr 任务运行][ az-acr-task-run]命令以手动触发的任务。 `--set`参数用于将作为任务变量的值的两个目标注册表登录服务器名称中传递`REGISTRY1`和`REGISTRY2`。
+使用[az acr task run][az-acr-task-run]命令手动触发任务。 参数用于将两个目标注册表项的登录服务器名称作为任务变量`REGISTRY1`和`REGISTRY2`的值传入。 `--set`
 
 ```azurecli
 az acr task run \
@@ -219,25 +220,25 @@ cf31: digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95
 Run ID: cf31 was successful after 35s
 ```
 
-## <a name="example-task-with-a-user-assigned-identity"></a>示例：使用用户分配标识的任务
+## <a name="example-task-with-a-user-assigned-identity"></a>例如：具有用户分配的标识的任务
 
-在此示例中的用户分配标识创建有权从 Azure key vault 读取机密。 将此标识分配到读取机密、 生成映像，并登录到 Azure CLI 来读取图像标记的多步骤任务。
+在此示例中, 将创建一个用户分配的标识, 其中包含从 Azure 密钥保管库中读取机密的权限。 将此标识分配给读取机密的多步骤任务, 生成映像, 然后登录 Azure CLI 以读取图像标记。
 
-### <a name="create-a-key-vault-and-store-a-secret"></a>创建密钥保管库和存储机密
+### <a name="create-a-key-vault-and-store-a-secret"></a>创建密钥保管库并存储机密
 
-首先，如果需要创建名为的资源组*myResourceGroup*中*eastus*以下位置[az 组创建][ az-group-create]命令：
+首先, 如果需要, 请在*eastus*位置创建一个名为*myResourceGroup*的资源组, 并在其中包含以下[az group create][az-group-create]命令:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用[az keyvault 创建][ az-keyvault-create]命令以创建密钥保管库。 请务必指定一个唯一的密钥保管库名称。 
+使用[az keyvault create][az-keyvault-create]命令创建密钥保管库。 请确保指定唯一的密钥保管库名称。 
 
 ```azurecli-interactive
 az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
 ```
 
-示例机密存储在密钥保管库中使用[az keyvault secret set] [ az-keyvault-secret-set]命令：
+使用[az keyvault secret set][az-keyvault-secret-set]命令将示例机密存储在密钥保管库中:
 
 ```azurecli
 az keyvault secret set \
@@ -247,11 +248,11 @@ az keyvault secret set \
   --vault-name mykeyvault
 ```
 
-例如，你可能想要存储凭据，因此可以拉入专用映像的专用 Docker 注册表进行身份验证。
+例如, 你可能想要存储凭据以使用专用 Docker 注册表进行身份验证, 以便可以提取专用映像。
 
 ### <a name="create-an-identity"></a>创建标识
 
-创建名为标识*myACRTasksId*中使用订阅[az 标识创建][ az-identity-create]命令。 可以使用你以前用来创建容器注册表或密钥保管库或一个不同的同一资源组。
+在订阅中使用[az identity create][az-identity-create]命令创建名为*myACRTasksId*的标识。 你可以使用之前使用的同一资源组创建容器注册表或密钥保管库, 或使用其他资源组。
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRTasksId
@@ -267,25 +268,25 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myACRTasks
 principalID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query principalId --output tsv)
 ```
 
-### <a name="grant-identity-access-to-keyvault-to-read-secret"></a>标识授予对密钥保管库读取机密
+### <a name="grant-identity-access-to-keyvault-to-read-secret"></a>向 keyvault 授予标识访问权限以读取机密
 
-运行以下[az keyvault 设置策略][ az-keyvault-set-policy]命令以设置对密钥保管库访问策略。 以下示例允许用户分配标识从 key vault 获取机密。 更高版本需要此访问权限来成功地运行了多步骤任务。
+运行以下[az keyvault set-policy][az-keyvault-set-policy]命令来设置密钥保管库上的访问策略。 以下示例允许用户分配的标识从密钥保管库获取机密。 稍后需要此访问权限才能成功运行多步骤任务。
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
 ```
 
-### <a name="grant-identity-reader-access-to-the-resource-group-for-registry"></a>标识读取器访问权限授予注册表的资源组
+### <a name="grant-identity-reader-access-to-the-resource-group-for-registry"></a>向标识读取器授予对注册表的资源组的访问权限
 
-运行以下[创建的 az 角色分配][ az-role-assignment-create]命令，将分配标识一个读取者角色，在这种情况下为包含源注册表的资源组。 稍后需要此角色来成功地运行了多步骤任务。
+运行以下[az role assign create][az-role-assignment-create]命令, 将标识指定为读取者角色, 在本例中为包含源注册表的资源组。 稍后需要此角色来成功运行多步骤任务。
 
 ```azurecli
 az role assignment create --role reader --resource-group myResourceGroup --assignee $principalID
 ```
 
-### <a name="create-task-with-user-assigned-identity"></a>使用用户分配的标识创建任务
+### <a name="create-task-with-user-assigned-identity"></a>创建具有用户分配的标识的任务
 
-现在，创建[多步骤任务](container-registry-tasks-multi-step.md)并将其分配用户分配的标识。 对于此示例任务，创建[YAML 文件](container-registry-tasks-reference-yaml.md)名为`managed-identities.yaml`本地工作目录中并粘贴以下内容。 请务必使用密钥保管库的名称替换文件中的密钥保管库名称
+现在创建一个[多步骤任务](container-registry-tasks-multi-step.md), 并为其分配用户分配的标识。 对于此示例任务, 请在本地工作目录`managed-identities.yaml`中创建一个名为的[YAML 文件](container-registry-tasks-reference-yaml.md)并粘贴以下内容。 请确保将该文件中的密钥保管库名称替换为你的密钥保管库的名称
 
 ```yml
 version: v1.0.0
@@ -309,13 +310,13 @@ steps:
   - cmd: microsoft/azure-cli az acr repository show-tags -n {{.Values.registryName}} --repository my-website
 ```
 
-此任务将执行以下操作：
+此任务将执行以下操作:
 
-* 验证它可以访问密钥保管库中的机密。 此步骤是出于演示目的。 在实际方案中，您可能需要任务步骤以获取凭据来访问私有 Docker 中心存储库。
-* 生成并将推送`mywebsite`源注册表的映像。
-* 登录到 Azure CLI 将列表`my-website`图像源注册表中的标记。
+* 验证它是否可以访问密钥保管库中的机密。 此步骤用于演示目的。 在实际方案中, 你可能需要使用任务步骤来获取访问专用 Docker 中心存储库所需的凭据。
+* 生成`mywebsite`映像并将其推送到源注册表。
+* 登录到 Azure CLI 以列出源注册表`my-website`中的图像标记。
 
-创建名为的任务*msitask*并将其传递先前创建的用户分配的标识的资源 ID。 从创建此示例任务`managed-identities.yaml`因此您必须手动触发在本地工作目录中，保存的文件。
+创建名为*msitask*的任务, 并向其传递先前创建的用户分配的标识的资源 ID。 此示例任务是从你保存`managed-identities.yaml`在本地工作目录中的文件创建的, 因此你必须手动触发它。
 
 ```azurecli
 az acr task create \
@@ -328,7 +329,7 @@ az acr task create \
   --assign-identity $resourceID
 ```
 
-在命令输出中，`identity`部分显示的类型标识`UserAssigned`任务中设置。 `principalId`是标识的服务主体 ID:
+在命令输出中, `identity`部分显示在任务中设置类型`UserAssigned`的标识。 `principalId`是标识的服务主体 ID:
 
 ```console
 [...]
@@ -346,13 +347,13 @@ az acr task create \
 
 ### <a name="manually-run-the-task"></a>手动运行任务
 
-使用[az acr 任务运行][ az-acr-task-run]命令以手动触发的任务。 `--set`使用参数将传递给该任务中的源注册表名称：
+使用[az acr task run][az-acr-task-run]命令手动触发任务。 `--set`参数用于将源注册表名称传入任务:
 
 ```azurecli
 az acr task run --name msitask --registry myregistry --set registryName=myregistry  
 ```
 
-输出显示了解析机密，和映像是已成功生成并推送，则任务将记录到标识与 Azure CLI，若要从源注册表中读取图像标记：
+输出显示密码已解析, 映像已成功生成并推送, 并且该任务登录到带有标识的 Azure CLI, 以便从源注册表读取映像标记:
 
 ```console
 Queued a run with ID: cf32
@@ -412,12 +413,12 @@ cf32: digest: sha256:cbb4aa83b33f6959d83e84bfd43ca901084966a9f91c42f111766473dc9
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您学习了如何使用管理的标识与 Azure 容器注册表任务和操作方法：
+本文介绍了如何在 Azure 容器注册表任务中使用托管标识, 以及如何:
 
 > [!div class="checklist"]
-> * 启用系统分配标识或 ACR 任务上用户分配
-> * 授予对 Azure 资源，例如其他 Azure 容器注册表的标识访问权限
-> * 使用托管的标识从任务访问的资源  
+> * 在 ACR 任务上启用系统分配的标识或用户分配的标识
+> * 向标识授予对 Azure 资源 (例如其他 Azure 容器注册表) 的访问权限
+> * 使用托管标识从任务访问资源  
 
 * 详细了解 [Azure 资源的托管标识](/azure/active-directory/managed-identities-azure-resources/)。
 

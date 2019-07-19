@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a798b766d09428e7ebebc04d969d63a542de3808
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 43c0da3ca8fa4b2f74d48b0e202cc56bc8b9406c
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835721"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227221"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略配置包含动态内容的 UI
 
@@ -23,7 +23,7 @@ ms.locfileid: "67835721"
 
 使用 Azure Active Directory B2C (Azure AD B2C) 自定义策略可在查询字符串中发送参数。 通过将该参数传递到 HTML 终结点，可以动态更改页面内容。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 本文重点介绍如何使用自定义策略来自定义包含动态内容的 Azure AD B2C 用户界面。  若要开始，请参阅[自定义策略中的 UI 自定义](active-directory-b2c-ui-customization-custom.md)。
 
 >[!NOTE]
@@ -89,7 +89,7 @@ ms.locfileid: "67835721"
 ### <a name="step-22-add-the-mvc-view"></a>步骤 2.2：添加 MVC 视图
 1. 右键单击“Views/Home”文件夹，选择“添加” > “新项”。  
 
-    ![Visual Studio 中添加新项菜单项](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
+    ![Visual Studio 中的 "添加新项" 菜单项](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
 
 2. 在“添加新项 - Contoso.AADB2C.UI”窗口中，选择“Web”>“ASP.NET”。  
 
@@ -99,7 +99,7 @@ ms.locfileid: "67835721"
 
 5. 选择 **添加** 。
 
-    ![在 Visual Studio 中使用突出显示的 MVC 视图页面添加新项对话框](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view2.png)
+    ![突出显示 Visual Studio 中的 "添加新项" 对话框, 其中突出显示了 MVC 视图页](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view2.png)
 
 6. 如果 *unified.cshtml* 文件尚未打开，请双击该文件将其打开，然后清除文件内容。
 
@@ -123,7 +123,7 @@ ms.locfileid: "67835721"
 
 找到包含 `ID` 值 background_background_image 的 `<img>` 元素，将 `src` 替换为 https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1 或想要使用的其他任何背景图像   。
 
-![更改页面背景](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
+![带有自定义 background_background_image src 值的 img 元素](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
 
 ### <a name="step-24-add-your-view-to-the-mvc-controller"></a>步骤 2.4：将视图添加到 MVC 控制器
 
@@ -174,7 +174,7 @@ ms.locfileid: "67835721"
 
 2. 在“设置”部分中的“API”部分下，选择“CORS”。   
 
-    ![在 Azure 门户中的应用服务菜单中突出显示的 CORS 菜单项](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS2.png)
+    ![Azure 门户中的 "应用服务" 菜单中突出显示的 CORS 菜单项](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS2.png)
 
 3. 在“CORS”窗口中的“允许的来源”框内，执行以下操作之一：  
 
@@ -183,7 +183,7 @@ ms.locfileid: "67835721"
 
 4. 选择**保存**。
 
-    ![与允许的来源中突出显示的星号的 CORS 设置页](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS3.png)
+    ![在允许的来源中突出显示了星号的 CORS 设置页](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS3.png)
 
     选择“保存”后，API 应用会接受来自指定 URL 的 JavaScript 调用。 
 
@@ -196,7 +196,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
     >若要验证托管内容的站点是否已启用 CORS 并可测试 CORS 请求，请转到 [test-cors.org](https://test-cors.org/) 网站。
 
 * 提供的内容通过 **HTTPS** 安全传输。
-* 正在使用*绝对 URL*，如`https://yourdomain/content`、 对所有链接、 CSS 内容和图像。
+* 为所有链接、CSS 内容和图像`https://yourdomain/content`使用*绝对 url*, 例如。
 
 ## <a name="step-5-configure-your-content-definition"></a>步骤 5：配置内容定义
 若要配置 `ContentDefinition`，请执行以下操作：
@@ -213,7 +213,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 6. 将 `LoadUri` 的值从 _~/tenant/default/unified_ 更改为 _https://<app_name>.azurewebsites.net/home/unified_。
     自定义策略应如下所示：
 
-    ![示例 XML 代码段，其中突出显示的 loaduri 来元素](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
+    ![突出显示了 Loaduri 来元素的示例 XML 代码段](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>步骤 6：将策略上传到租户
 1. 在 [Azure 门户](https://portal.azure.com)中，切换到[你的 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后选择“Azure AD B2C”。 
@@ -292,7 +292,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 
 2. 找到具有 ID `background_background_image` 的 `<img>` 元素，并将 `src` 值替换为 `@ViewData["background"]`。
 
-    ![具有突出显示 src 值的 img 元素 ](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
+    ![突出显示 src 值的 img 元素 ](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
 
 ### <a name="83-upload-the-changes-and-publish-your-policy"></a>步骤 8.3：上传更改并发布策略
 1. 将 Visual Studio 项目发布到 Azure 应用服务。
@@ -306,16 +306,16 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 
 5. 将 _campaignId_ 查询字符串参数添加到 URI。 例如，如下图所示添加 `&campaignId=hawaii`：
 
-    ![突出显示 campaignId 查询字符串参数的 URI](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-campaignId-param.png)
+    ![已突出显示 campaignId 查询字符串参数的 URI](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-campaignId-param.png)
 
 6. 按 **Enter** 显示 Hawaii 背景图像。
 
-    ![夏威夷映像自定义背景注册登录页](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo2.png)
+    ![用夏威夷图像自定义背景的注册登录页](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo2.png)
 
 7. 将值更改为 *Tokyo* 并按 **Enter**。
     浏览器会显示 Tokyo 背景。
 
-    ![东京映像自定义背景注册登录页](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
+    ![用东京图像自定义背景注册登录页](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
 
 ## <a name="step-9-change-the-rest-of-the-user-journey"></a>步骤 9：更改剩余的用户旅程
 如果在登录页面上选择“立即注册”链接，浏览器会显示默认背景，而不是定义的背景。  之所以出现此行为，是因为前面仅更改了注册或登录页面。 若要更改剩余的 Self-Assert 内容定义，请执行以下操作：
