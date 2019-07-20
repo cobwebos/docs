@@ -11,32 +11,32 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: c4ef58f35b3d038f360ff962c70e92711bc205ce
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7f178152fb5b6d540c2cecdfa42687469dfe3881
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446510"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356992"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
-文本分析容器提供对原始文本的高级自然语言处理，并且包含三项主要功能：情绪分析、关键短语提取和语言检测。 容器当前不支持实体链接。
+文本分析容器提供对原始文本的高级自然语言处理, 并包括三个主要功能: 情绪分析、关键短语提取和语言检测。 容器当前不支持实体链接。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-若要运行任何文本分析容器，必须具有主计算机和容器环境。
+若要运行任何文本分析容器, 你必须拥有主机计算机和容器环境。
 
 ## <a name="preparation"></a>准备工作
 
 使用文本分析容器之前，必须满足以下先决条件：
 
-|需要|目的|
+|必填|用途|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br>  在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|`Cognitive Services`资源 |若要使用容器，必须具有：<br><br>一项[_认知服务_](text-analytics-how-to-access-key.md) Azure 资源，用于获取关联的计费密钥和计费终结点 URI。 这两个值都可以从 Azure 门户中的认知服务“概览”和“密钥”页获取；必须获取这两个值才能启动容器。 需将 `text/analytics/v2.0` 路由添加到终结点 URI，如以下 BILLING_ENDPOINT_URI 示例所示。<br><br>**{BILLING_KEY}** ：资源密钥<br><br>**{BILLING_ENDPOINT_URI}** ：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+|文本分析资源 |若要使用容器，必须具有：<br><br>用于获取关联的 API 密钥和终结点 URI 的 Azure[文本分析](text-analytics-how-to-access-key.md)资源。 这两个值可以从 Azure 门户中的“文本分析概述”和“密钥”页面获得，并且是启动容器时所必需的。<br><br>**{API_KEY}** :"**密钥**" 页上有两个可用的资源键之一<br><br>**{ENDPOINT_URI}** :"**概述**" 页中提供的终结点|
 
 ### <a name="the-host-computer"></a>主计算机
 
@@ -46,11 +46,11 @@ ms.locfileid: "67446510"
 
 下表描述了每个文本分析容器的 CPU 和内存配置，其中包括要分配的最少和建议 CPU 核心数（至少 2.6 GHz）和内存量 (GB)。
 
-| 容器 | 最小值 | 建议 | TPS<br>(最小值, 最大值)|
+| 容器 | 最低要求 | 建议 | TPS<br>(最小值, 最大值)|
 |-----------|---------|-------------|--|
-|关键短语提取 | 单核，2 GB 内存 | 单核，4 GB 内存 |15、30|
-|语言检测 | 单核，2 GB 内存 | 单核，4 GB 内存 |15、30|
-|情绪分析 | 单核，2 GB 内存 | 单核，4 GB 内存 |15、30|
+|关键短语提取 | 单核, 2 GB 内存 | 1核, 4 GB 内存 |15、30|
+|语言检测 | 单核, 2 GB 内存 | 1核, 4 GB 内存 |15、30|
+|情绪分析 | 单核, 2 GB 内存 | 1核, 4 GB 内存 |15、30|
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 * TPS - 每秒事务数
@@ -76,7 +76,6 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 * [情绪分析](https://go.microsoft.com/fwlink/?linkid=2018654)
 
 使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
-
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>适用于关键短语提取容器的 Docker 拉取
 
@@ -112,10 +111,8 @@ docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 
 | 占位符 | 值 |
 |-------------|-------|
-|{BILLING_KEY} | 此密钥用于启动容器，可以从 Azure 门户中的`Cognitive Services`“密钥”页上获取该密钥。  |
-|{BILLING_ENDPOINT_URI} | Azure `Cognitive Services`“概览”页面上提供了账单终结点 URI 值。 <br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
-
-需将 `text/analytics/v2.0` 路由添加到终结点 URI，如上述 BILLING_ENDPOINT_URI 示例所示。
+|{API_KEY} | 此密钥用于启动容器，可以从 Azure 门户中的`Text Analytics`“密钥”页上获取该密钥。 |
+|{ENDPOINT_URI} | Azure `Text Analytics`“概览”页面上提供了账单终结点 URI 值。 |
 
 在以下示例 `docker run` 命令中，请将这些参数替换为自己的值。
 
@@ -123,8 +120,8 @@ docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 mcr.microsoft.com/azure-cognitive-services/keyphrase \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 此命令：
@@ -155,23 +152,23 @@ ApiKey={BILLING_KEY}
 
 [!INCLUDE [How to stop the container](../../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果运行启用了输出[装入点](../text-analytics-resource-container-config.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。 
 
 ## <a name="billing"></a>计费
 
-文本分析容器使用 Azure 帐户中的_认知服务_资源向 Azure 发送账单信息。 
+文本分析容器使用 Azure 帐户中的_文本分析_资源向 Azure 发送账单信息。 
 
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](../text-analytics-resource-container-config.md)。
 
-<!--blogs/samples/video coures -->
+<!--blogs/samples/video course -->
 
 [!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 在本文中，我们已学习相关的概念，以及文本分析容器的下载、安装和运行工作流。 综上所述：
 
@@ -188,4 +185,3 @@ ApiKey={BILLING_KEY}
 
 * 查看[配置容器](../text-analytics-resource-container-config.md)了解配置设置
 * 参阅[常见问题解答 (FAQ)](../text-analytics-resource-faq.md) 解决与功能相关的问题。
-
