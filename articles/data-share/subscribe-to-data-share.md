@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 2dc4994d88fc03c23a6d5722d6018c926e7d6b8c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: fc63c1a0b3b496de8e5ecea58f79f1db9d872e80
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788359"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838425"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>教程：使用 Azure Data Share 预览版接受和接收数据
 
@@ -31,6 +31,8 @@ ms.locfileid: "67788359"
 * Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。 
 * Data Share 邀请：Microsoft Azure 发出的邀请，主题名为“来自 **<yourdataprovider@domain.com>** 的 Azure Data Share 邀请”。
+* 向存储帐户添加角色分配的权限，该权限存在于 *Microsoft.Authorization/role assignments/write* 权限中。 所有者角色中存在此权限。 
+* Microsoft.DataShare 的资源提供程序注册。 有关如何执行此操作的信息，请参阅 [Azure 资源提供程序](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)文档。 
 
 > [!IMPORTANT]
 > 若要接受和接收 Azure Data Share，你必须先注册 Microsoft.DataShare 资源提供程序，而且你必须是在其中接受数据的存储帐户的所有者。 按[排查 Azure Data Share 预览版问题](data-share-troubleshoot.md)中记录的说明注册数据共享资源提供程序，并将你自己添加为存储帐户的所有者。 

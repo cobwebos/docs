@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: b48ecce1c87c0a29996e437d621c3ce396a84856
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2b28c38d2444f227d26df1f9ca2d70876ff41064
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232658"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260593"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理邮件列表请求
 
@@ -51,11 +51,11 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ## <a name="create-your-logic-app"></a>创建逻辑应用
 
-1. 在 Azure 主菜单中，选择“创建资源” > “企业集成” > “逻辑应用”。
+1. 在 Azure 主菜单中，选择“创建资源” > “企业集成” > “逻辑应用”    。
 
    ![创建逻辑应用](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app.png)
 
-2. 在“创建逻辑应用”下，提供有关逻辑应用的信息，如下所示。 完成后，请选择“固定到仪表板” > “创建”。
+2. 在“创建逻辑应用”下，提供有关逻辑应用的信息，如下所示。  完成后，请选择“固定到仪表板” > “创建”   。
 
    ![提供逻辑应用信息](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
@@ -65,10 +65,10 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅的名称 | 
    | **资源组** | LA-MailingList-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称 | 
    | **位置** | 美国东部 2 | 用于存储逻辑应用信息的区域 | 
-   | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。 | 
+   | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。  | 
    |||| 
 
-3. 在 Azure 部署应用以后，逻辑应用设计器会打开并显示一个页面，其中包含简介视频以及针对常用逻辑应用模式的模板。 在“模板”下选择“空白逻辑应用”。
+3. 在 Azure 部署应用以后，逻辑应用设计器会打开并显示一个页面，其中包含简介视频以及针对常用逻辑应用模式的模板。   在“模板”下选择“空白逻辑应用”。
 
    ![选择空白逻辑应用模板](./media/tutorial-process-mailing-list-subscriptions-workflow/choose-logic-app-template.png)
 
@@ -77,9 +77,9 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ## <a name="add-trigger-to-monitor-emails"></a>添加用于监视电子邮件的触发器
 
-1. 在设计器的搜索框中输入“当电子邮件到达时”。 为电子邮件提供商选择以下触发器：**<*your-email-provider*> - 收到新电子邮件时**
+1. 在设计器的搜索框中输入“当电子邮件到达时”。 为电子邮件提供商选择以下触发器： **<*your-email-provider*> - 收到新电子邮件时**
    
-   ![为电子邮件提供商选择以下触发器：“收到新电子邮件时”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
+   ![针对电子邮件提供程序选择以下触发器：“新电子邮件到达时”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
 
    * 对于 Azure 工作或学校帐户，请选择“Office 365 Outlook”。
    * 对于个人 Microsoft 帐户，请选择“Outlook.com”。
@@ -92,14 +92,14 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       ![指定用于检查邮件的文件夹、时间间隔和频率](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | 设置 | 值 | Description | 
+      | 设置 | 值 | 说明 | 
       | ------- | ----- | ----------- | 
       | **文件夹** | Inbox | 要监视的电子邮件文件夹 | 
-      | 间隔 | 1 | 在两次检查之间需等待的时间间隔数 | 
+      | 间隔  | 1 | 在两次检查之间需等待的时间间隔数 | 
       | **频率** | 小时 | 两次检查的间隔的时间单位  | 
       |  |  |  | 
 
-   2. 选择“显示高级选项”。 在“主题筛选器”框中输入以下文本，供触发器在电子邮件主题中查找：```subscribe-test-members-ML```
+   2. 选择“显示高级选项”  。 在“主题筛选器”框中输入以下文本，供触发器在电子邮件主题中查找：  ```subscribe-test-members-ML```
 
       ![设置高级选项](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-advanced-options.png)
 
@@ -107,7 +107,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![折叠形状即可隐藏详细信息](./media/tutorial-process-mailing-list-subscriptions-workflow/collapse-trigger-shape.png)
 
-5. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
+5. 保存逻辑应用。 在设计器工具栏上，选择“保存”  。
 
    逻辑应用现已生成，但除了检查传入电子邮件，不能执行任何操作。 
    因此，请添加一项在触发器触发时进行响应的操作。
@@ -116,7 +116,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 有了触发器以后，即可添加一项[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)，以便发送批准或拒绝请求的电子邮件。 
 
-1. 在该触发器下，选择“+ 新建步骤” > “添加操作”。 搜索“审批”，然后选择此操作：**<*your-email-provider*> - 发送审批电子邮件**
+1. 在该触发器下，选择“+ 新建步骤” > “添加操作”   。 搜索“审批”，然后选择此操作： **<*your-email-provider*> - 发送审批电子邮件**
 
    ![选择“<your-email-provider> - 发送审批电子邮件”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-send-approval-email.png)
 
@@ -141,26 +141,26 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ## <a name="check-approval-response"></a>检查审批响应
 
-1. 在“发送审批电子邮件”操作下，选择“+ 新建步骤” > “添加条件”。
+1. 在“发送审批电子邮件”操作下，选择“+ 新建步骤” > “添加条件”。   
 
    此时会显示条件形状，以及任何可以作为工作流输入包括的参数。 
 
 2. 重命名此条件，并提供更好的说明。
 
-   1. 在条件的标题栏中，选择**省略号** (**...**) 按钮 >“重命名”。
+   1. 在条件的标题栏中，选择**省略号** ( **...** ) 按钮 >“重命名”。 
 
       例如，如果浏览器处于窄视图状态：
 
       ![重命名条件](./media/tutorial-process-mailing-list-subscriptions-workflow/condition-rename.png)
 
-      如果浏览器处于宽视图状态，且动态内容列表阻止了对省略号按钮的访问，请在条件中选择“添加动态内容”，关闭该列表。
+      如果浏览器处于宽视图状态，且动态内容列表阻止了对省略号按钮的访问，请在条件中选择“添加动态内容”，关闭该列表。 
 
    2. 重命名条件并提供以下说明：```If request approved```
 
-3. 生成一个条件，用于检查审批者是否选择了“批准”：
+3. 生成一个条件，用于检查审批者是否选择了“批准”： 
 
-   1. 在条件中单击“选择一个值”框，该框位于左侧（宽浏览器视图）或顶部（窄浏览器视图）。
-   在参数列表或动态内容列表的“发送审批电子邮件”下选择“SelectedOption”字段。
+   1. 在条件中单击“选择一个值”框，  该框位于左侧（宽浏览器视图）或顶部（窄浏览器视图）。
+   在参数列表或动态内容列表的“发送审批电子邮件”下选择“SelectedOption”字段。  
 
       例如，如果使用的是宽视图，则条件看起来与以下示例类似：
 
@@ -168,7 +168,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    2. 在比较运算符框中选择此运算符：**等于**
 
-   3. 在右侧（宽视图）或底部（窄视图）的“选择一个值”框中，输入此值：```Approve```
+   3. 在右侧（宽视图）或底部（窄视图）的“选择一个值”框中，  输入此值：```Approve```
 
       完成后，条件如以下示例所示：
 
@@ -182,8 +182,8 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 现在，请添加一项操作，用于将批准的成员添加到邮件列表。
 
-1. 在条件的 **If true** 分支中，选择“添加操作”。
-搜索“mailchimp”，然后选择此操作：**MailChimp - 将成员添加到列表**
+1. 在条件的 **If true** 分支中，选择“添加操作”。 
+搜索“mailchimp”，并选择以下操作：**MailChimp - 将成员添加到列表**
 
    ![选择“MailChimp - 将成员添加到列表”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -193,11 +193,11 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![为“将成员添加到列表”提供信息](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | 设置 | 值 | Description | 
+   | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
    | **列表 ID** | test-members-ML | MailChimp 邮件列表的名称 | 
    | **Status** | subscribed | 新成员的订阅状态。 有关详细信息，请参阅 <a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Manage subscribers with the MailChimp API</a>（使用 MailChimp API 管理订户）。 | 
-   | **电子邮件地址** | <*new-member-email-address*> | 在参数列表或动态内容列表的“收到新电子邮件时”下选择“发件人”，以便传入新成员的电子邮件地址。 
+   | **电子邮件地址** | <*new-member-email-address*> | 在参数列表或动态内容列表的“收到新电子邮件时”下选择“发件人”，以便传入新成员的电子邮件地址。   
    |  |  |  | 
 
 5. 保存逻辑应用。
@@ -206,14 +206,14 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ## <a name="check-for-success-or-failure"></a>检查操作是成功还是失败
 
-1. 在 **If true** 分支的“将成员添加到列表”操作下，选择“更多...” > “添加条件”。
+1. 在 **If true** 分支的“将成员添加到列表”操作下，  选择“更多...”   >   “添加条件”。
 
 2. 重命名条件并提供以下说明：```If add member succeeded```
 
 3. 生成一个条件，用于检查批准的成员在加入邮件列表时是成功还是失败：
 
-   1. 在条件中单击“选择一个值”框，该框位于左侧（宽浏览器视图）或顶部（窄浏览器视图）。
-   在参数列表或动态内容列表的“将成员添加到列表”下，选择“状态”字段。
+   1. 在条件中单击“选择一个值”框，  该框位于左侧（宽浏览器视图）或顶部（窄浏览器视图）。
+   在参数列表或动态内容列表的“将成员添加到列表”下，选择“状态”字段。  
 
       例如，如果使用的是宽视图，则条件看起来与以下示例类似：
 
@@ -221,7 +221,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    2. 在比较运算符框中选择此运算符：**等于**
 
-   3. 在右侧（宽视图）或底部（窄视图）的“选择一个值”框中，输入此值：```subscribed```
+   3. 在右侧（宽视图）或底部（窄视图）的“选择一个值”框中，  输入此值：```subscribed```
 
    完成后，条件如以下示例所示：
 
@@ -231,11 +231,11 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ## <a name="send-email-if-member-added"></a>在添加了成员的情况下发送电子邮件
 
-1. 在条件“如果添加成员成功”的 **If true** 分支中，选择“添加操作”。
+1. 在条件“如果添加成员成功”的 **If true** 分支中，选择“添加操作”。  
 
    ![在条件的“If true”分支中，选择“添加操作”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
-2. 搜索“outlook 发送电子邮件”，然后选择此操作：**<*your-email-provider*> - 发送电子邮件**
+2. 搜索“outlook 发送电子邮件”，然后选择此操作： **<*your-email-provider*> - 发送电子邮件**
 
    ![为“发送电子邮件”添加操作](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-2.png)
 
@@ -248,19 +248,19 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
    | **收件人** | <*your-email-address*> | 一个电子邮件地址，可向其发送成功电子邮件。 为进行测试，可以使用自己的电子邮件地址。 | 
-   | **主题** | <*subject-for-success-email*> | 成功电子邮件的主题。 对于本教程，请输入以下文本并在参数列表或动态内容列表的“将成员添加到列表”下选择指定的字段： <p>“成功! 成员已添加到 'test-members-ML': **电子邮件地址**” | 
-   | **正文** | <*body-for-success-email*> | 成功电子邮件的正文内容。 对于本教程，请输入以下文本并在参数列表或动态内容列表的“将成员添加到列表”下选择指定的字段：  <p>“新成员已加入 'test-members-ML': **电子邮件地址**”</br>“成员的选择加入状态: **状态**” | 
+   | **主题** | <*subject-for-success-email*> | 成功电子邮件的主题。 对于本教程，请输入以下文本并在参数列表或动态内容列表的“将成员添加到列表”下选择指定的字段：  <p>“成功! 成员已添加到 'test-members-ML':**电子邮件地址**” | 
+   | **正文** | <*body-for-success-email*> | 成功电子邮件的正文内容。 对于本教程，请输入以下文本并在参数列表或动态内容列表的“将成员添加到列表”下选择指定的字段：   <p>“新成员已加入 'test-members-ML':**电子邮件地址**”</br>“成员的选择加入状态:**状态**” | 
    | | | | 
 
 5. 保存逻辑应用。
 
 ## <a name="send-email-if-member-not-added"></a>在添加不了成员的情况下发送电子邮件
 
-1. 在条件“如果添加成员成功”的 **If false** 分支中，选择“添加操作”。
+1. 在条件“如果添加成员成功”的 **If false** 分支中，选择“添加操作”。  
 
    ![在条件的“If false”分支中，选择“添加操作”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
-2. 搜索“outlook 发送电子邮件”，然后选择此操作：**<*your-email-provider*> - 发送电子邮件**
+2. 搜索“outlook 发送电子邮件”，然后选择此操作： **<*your-email-provider*> - 发送电子邮件**
 
    ![为“发送电子邮件”添加操作](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-2.png)
 
@@ -273,7 +273,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
    | **收件人** | <*your-email-address*> | 一个电子邮件地址，可向其发送失败电子邮件。 为进行测试，可以使用自己的电子邮件地址。 | 
-   | **主题** | <*subject-for-failure-email*> | 失败电子邮件的主题。 对于本教程，请输入以下文本并在参数列表或动态内容列表的“将成员添加到列表”下选择指定的字段： <p>“失败，成员未添加到 'test-members-ML': **电子邮件地址**” | 
+   | **主题** | <*subject-for-failure-email*> | 失败电子邮件的主题。 对于本教程，请输入以下文本并在参数列表或动态内容列表的“将成员添加到列表”下选择指定的字段：  <p>“失败，成员未添加到 'test-members-ML':**电子邮件地址**” | 
    | **正文** | <*body-for-failure-email*> | 失败电子邮件的正文内容。 对于本教程，请输入以下文本： <p>“成员可能已存在。 请检查 MailChimp 帐户。” | 
    | | | | 
 
@@ -288,11 +288,11 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 1. 向自己发送一封加入邮件列表的电子邮件请求。
 等待请求显示在收件箱中。
 
-3. 若要手动启动逻辑应用，可在设计器工具栏中选择“运行”。 
+3. 若要手动启动逻辑应用，可在设计器工具栏中选择“运行”  。 
 
    如果电子邮件的主题与触发器的主题筛选器匹配，逻辑应用会向你发送审批订阅请求的电子邮件。
 
-4. 在审批电子邮件中，选择“批准”。
+4. 在审批电子邮件中，选择“批准”  。
 
 5. 如果订户的电子邮件地址在邮件列表中不存在，逻辑应用会添加该人的电子邮件地址并向你发送一封电子邮件，如以下示例所示：
 
@@ -310,7 +310,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要包含逻辑应用和相关资源的资源组时，可将其删除。 在 Azure 主菜单中转到“资源组”，然后选择逻辑应用的资源组。 选择“删除资源组”。 输入资源组名称作为确认，然后选择“删除”。
+不再需要包含逻辑应用和相关资源的资源组时，可将其删除。 在 Azure 主菜单中转到“资源组”，然后选择逻辑应用的资源组。  选择“删除资源组”。  输入资源组名称作为确认，然后选择“删除”。 
 
 ![“概览”>“删除资源组”](./media/tutorial-process-mailing-list-subscriptions-workflow/delete-resource-group.png)
 

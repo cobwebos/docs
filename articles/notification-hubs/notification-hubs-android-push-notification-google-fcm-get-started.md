@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/30/2019
+ms.date: 07/15/2019
 ms.author: jowargo
-ms.openlocfilehash: f2efa9b7e1e534f93e4ea01ba52740c8c5ac7b02
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: a01a71190f6de4bd08ee306f0175b01fee3db3d5
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653854"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227886"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>教程：使用 Azure 通知中心和 Google Firebase Cloud Messaging 将通知推送到 Android 设备
 
@@ -100,7 +100,6 @@ ms.locfileid: "67653854"
     ![Android SDK 管理器 - 选择了“Google Play 服务”](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
 3. 如果看到了“确认更改”  对话框，请选择“确定”  。 组件安装程序将安装所请求的组件。 在安装组件后，选择“完成”  。
 4. 选择“确定”  以关闭“新项目的设置”  对话框。  
-5. 选择工具栏中的“立即同步”  图标。
 1. 打开 AndroidManifest.xml 文件，然后将以下标记添加到应用程序  标记。
 
     ```xml
@@ -115,7 +114,6 @@ ms.locfileid: "67653854"
 
     ```gradle
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
-    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
 2. 在 dependencies 节的后面添加以下存储库。
@@ -146,7 +144,7 @@ ms.locfileid: "67653854"
 
 ### <a name="update-the-androidmanifestxml-file"></a>更新 AndroidManifest.xml 文件
 
-1. 收到 FCM 注册令牌后，使用它[在 Azure 通知中心注册](notification-hubs-push-notification-registration-management.md)。 请使用名为 `RegistrationIntentService` 的 `IntentService` 在后台支持此注册。 此服务还刷新 FCM 注册令牌。
+1. 收到 FCM 注册令牌后，使用它[在 Azure 通知中心注册](notification-hubs-push-notification-registration-management.md)。 请使用名为 `RegistrationIntentService` 的 `IntentService` 在后台支持此注册。 此服务还刷新 FCM 注册令牌。 你还将创建一个名为 `FirebaseService` 的类作为 `FirebaseMessagingService` 的子类，并重写 `onMessageReceived` 方法以接收和处理通知。 
 
     将以下服务定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。
 
@@ -155,22 +153,14 @@ ms.locfileid: "67653854"
         android:name=".RegistrationIntentService"
         android:exported="false">
     </service>
-    ```
-
-2. 还需定义通知接收者。 将以下接收者定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。 
-
-    ```xml
-    <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
-        android:permission="com.google.android.c2dm.permission.SEND">
+    <service
+        android:name=".FirebaseService"
+        android:exported="false">
         <intent-filter>
-            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            <category android:name="<your package name>" />
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
         </intent-filter>
-    </receiver>
+    </service>
     ```
-
-    > [!IMPORTANT]
-    > 将 `<your package NAME>` 占位符替换为 AndroidManifest.xml 文件顶部显示的实际包名称。
 3. 在`</application>`标记下面添加以下必要的 FCM 相关权限。
 
     ```xml
@@ -307,7 +297,6 @@ ms.locfileid: "67653854"
     ```java
     import com.google.android.gms.common.ConnectionResult;
     import com.google.android.gms.common.GoogleApiAvailability;
-    import com.microsoft.windowsazure.notifications.NotificationsManager;
     import android.content.Intent;
     import android.util.Log;
     import android.widget.TextView;
@@ -373,6 +362,7 @@ ms.locfileid: "67653854"
 
         mainActivity = this;
         registerWithNotificationHubs();
+        FirebaseService.createChannelAndHandleNotifications(getApplicationContext());
     }
     ```
 
@@ -421,11 +411,14 @@ ms.locfileid: "67653854"
     android:id="@+id/text_hello"
     ```
 
-11. 接下来，为 AndroidManifest.xml 中定义的接收者添加一个子类。 将另一个名为 `MyHandler`的新类添加到项目。
+11. 接下来，为 AndroidManifest.xml 中定义的接收者添加一个子类。 将另一个名为 `FirebaseService`的新类添加到项目。
 
-12. 在 `MyHandler.java` 的顶部添加以下 import 语句：
+12. 在 `FirebaseService.java` 的顶部添加以下 import 语句：
 
     ```java
+    import com.google.firebase.messaging.FirebaseMessagingService;
+    import com.google.firebase.messaging.RemoteMessage;
+    import android.util.Log;
     import android.app.NotificationChannel;
     import android.app.NotificationManager;
     import android.app.PendingIntent;
@@ -436,16 +429,17 @@ ms.locfileid: "67653854"
     import android.os.Build;
     import android.os.Bundle;
     import android.support.v4.app.NotificationCompat;
-    import com.microsoft.windowsazure.notifications.NotificationsHandler;    
-    import com.microsoft.windowsazure.notifications.NotificationsManager;
     ```
 
-13. 为 `MyHandler` 类添加以下代码，使其成为 `com.microsoft.windowsazure.notifications.NotificationsHandler` 的子类。
+13. 为 `FirebaseService` 类添加以下代码，使其成为 `FirebaseMessagingService` 的子类。
 
-    此代码将重写 `OnReceive` 方法，因此处理程序会报告所收到的通知。 处理程序还使用 `sendNotification()` 方法将推送通知发送到 Android 通知管理器。 应用未运行但收到通知时，应调用 `sendNotification()` 方法。
+    此代码将重写 `onMessageReceived` 方法，并报告所收到的通知。 它还使用 `sendNotification()` 方法将推送通知发送到 Android 通知管理器。 应用未在运行但收到通知时，应调用 `sendNotification()` 方法。
 
     ```java
-    public class MyHandler extends NotificationsHandler {
+    public class FirebaseService extends FirebaseMessagingService
+    {
+        private String TAG = "FirebaseService";
+    
         public static final String NOTIFICATION_CHANNEL_ID = "nh-demo-channel-id";
         public static final String NOTIFICATION_CHANNEL_NAME = "Notification Hubs Demo Channel";
         public static final String NOTIFICATION_CHANNEL_DESCRIPTION = "Notification Hubs Demo Channel";
@@ -453,16 +447,33 @@ ms.locfileid: "67653854"
         public static final int NOTIFICATION_ID = 1;
         private NotificationManager mNotificationManager;
         NotificationCompat.Builder builder;
-        Context ctx;
+        static Context ctx;
     
         @Override
-        public void onReceive(Context context, Bundle bundle) {
-            ctx = context;
-            String nhMessage = bundle.getString("message");
-            sendNotification(nhMessage);
+        public void onMessageReceived(RemoteMessage remoteMessage) {
+            // ...
+    
+            // TODO(developer): Handle FCM messages here.
+            // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
+            Log.d(TAG, "From: " + remoteMessage.getFrom());
+    
+            String nhMessage;
+            // Check if message contains a notification payload.
+            if (remoteMessage.getNotification() != null) {
+                Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+    
+                nhMessage = remoteMessage.getNotification().getBody();
+            }
+            else {
+                nhMessage = remoteMessage.getData().values().iterator().next();
+            }
+    
+            // Also if you intend on generating your own notifications as a result of a received FCM
+            // message, here is where that should be initiated. See sendNotification method below.
             if (MainActivity.isVisible) {
                 MainActivity.mainActivity.ToastNotify(nhMessage);
             }
+            sendNotification(nhMessage);
         }
     
         private void sendNotification(String msg) {
@@ -490,6 +501,8 @@ ms.locfileid: "67653854"
         }
     
         public static void createChannelAndHandleNotifications(Context context) {
+            ctx = context;
+    
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel channel = new NotificationChannel(
                         NOTIFICATION_CHANNEL_ID,
@@ -500,8 +513,7 @@ ms.locfileid: "67653854"
     
                 NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
                 notificationManager.createNotificationChannel(channel);
-                NotificationsManager.handleNotifications(context, "", MyHandler.class);
-            }
+             }
         }
     }
     ```
@@ -538,7 +550,7 @@ ms.locfileid: "67653854"
 ### <a name="run-the-mobile-app-on-emulator"></a>在仿真器中运行移动应用
 在模拟器中测试推送通知之前，请确保模拟器映像支持你为应用程序选择的 Google API 级别。 如果映像不支持本机 Google API，可能会收到 “SERVICE\_NOT\_AVAILABLE”异常。 
 
-另外，请确保已将 Google 帐户添加到运行的模拟器的“设置” > “帐户”下   。 否则，尝试向 FCM 注册可能会导致 “AUTHENTICATION\_FAILED” 异常  。
+另外，请确保已在“设置”   > “帐户”  下将 Google 帐户添加到正在运行的模拟器中。 否则，尝试向 FCM 注册可能会导致 “AUTHENTICATION\_FAILED” 异常  。
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，你已使用 Firebase Cloud Messaging 将通知广播到在该服务中注册的所有 Android 设备。 若要了解如何向特定的设备推送通知，请转到以下教程：

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 07/16/2018
 ms.author: diberry
-ms.openlocfilehash: 87e006cc5d56e0c7eb5455147c5ce9eb40afc162
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 189514c51451dedfaab7b07f28d79f674b32f83a
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086609"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277532"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>教程：确定常见意向和实体
 
@@ -47,13 +47,13 @@ LUIS 提供几个预生成意向，以便提供常见用户意向。
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. 选择“添加预生成域意向”。 
+1. 选择“添加预生成域意向”  。 
 
 1. 搜索 `Utilities`。 
 
     [![“预生成意向”对话框的屏幕截图，其中的搜索框中包含“实用工具”](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
 
-1. 选择以下意向，然后选择“完成”： 
+1. 选择以下意向，然后选择“完成”  ： 
 
    * Utilities.Cancel
    * Utilities.Confirm
@@ -61,18 +61,18 @@ LUIS 提供几个预生成意向，以便提供常见用户意向。
    * Utilities.StartOver
    * Utilities.Stop
 
-     这些意向有助于确定用户在聊天中所处的位置及其需求。 
+     这些意向有助于确定用户在聊天中所处的位置及其需求。 这些意向包括实体的使用。 这些实体会自动添加到 LUIS 应用：number、ordinal 和 Utilities.DirectionalReference。 
 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>添加预生成的实体以帮助提取常见数据类型
 
 LUIS 为常见数据提取提供多个预生成的实体。 
 
-1. 在左侧导航菜单中选择“实体”。
+1. 在左侧导航菜单中选择“实体”  。
 
-1. 选择“添加预生成的实体”按钮。
+1. 选择“添加预生成的实体”按钮  。
 
-1. 从预生成的实体列表中选择以下实体，然后选择“完成”：
+1. 从预生成的实体列表中选择以下实体，然后选择“完成”： 
 
    * **[PersonName](luis-reference-prebuilt-person.md)** 
    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**

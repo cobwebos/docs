@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: e5781af44732782936e1e1a87bf70bd4a9d4804d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 286a19207236392367b924bea7e26e90fd0db8d5
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722295"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253461"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
 
@@ -29,14 +29,14 @@ Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要
 
 ## <a name="how-does-personalizer-work"></a>个性化体验创建服务的工作原理
 
-个性化体验创建服务使用机器学习模型来发现上下文中排名最高的操作。 客户端应用程序会提供可能操作的列表，其中包含有关这些操作的信息、有关上下文的信息，并且可能包含有关用户、设备等的信息。个性化体验创建服务会确定要执行的操作。 一旦客户端应用程序使用所选的操作，就会向个性化体验创建服务提供奖励评分形式的反馈。 反馈循环完成后，个性化体验创建服务会自动更新自身的模型以用于将来的排名。
+个性化体验创建服务使用机器学习模型来发现上下文中排名最高的操作。 客户端应用程序会提供可能操作的列表，其中包含有关这些操作的信息、有关上下文的信息，并且可能包含有关用户、设备等的信息。个性化体验创建服务会确定要执行的操作。 一旦客户端应用程序使用所选的操作，就会向个性化体验创建服务提供奖励评分形式的反馈。 收到反馈后，个性化体验创建服务会自动更新自身用于将来排名的模型。
 
 ## <a name="how-do-i-use-the-personalizer"></a>如何使用个性化体验创建服务？
 
 ![使用个性化体验创建服务来选择要向用户显示的视频](media/what-is-personalizer/personalizer-example-highlevel.png)
 
 1. 在应用中选择要个性化的体验。
-1. 在 Azure 门户中创建并配置个性化服务
+1. 在 Azure 门户中创建并配置个性化服务的实例。 每个实例都是一个个性化体验创建服务循环。
 1. 结合有关用户的信息（特征）以及内容（操作）使用 SDK 调用个性化体验创建服务。   使用个性化体验创建服务之前，无需提供清理的带标签的数据。 
 1. 在客户端应用程序中，向用户显示个性化体验创建服务选择的操作。
 1. 使用 SDK 向个性化体验创建服务提供反馈，指示用户是否选择了个性化体验创建服务的操作。 此反馈是一个奖励评分，值通常为 -1 到 1。 

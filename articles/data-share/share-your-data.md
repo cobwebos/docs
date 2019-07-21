@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: ebd60607f9a24074e0fa985973dfc35674f0d66c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 01888f3656765b922c1b646e7ca8e07d81e799f3
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788449"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838417"
 ---
 # <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>教程：使用 Azure Data Share 预览版共享数据
 
@@ -29,6 +29,8 @@ ms.locfileid: "67788449"
 
 * Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* 向存储帐户添加角色分配的权限，该权限存在于 *Microsoft.Authorization/role assignments/write* 权限中。 所有者角色中存在此权限。 
+* 收件人 Azure 登录电子邮件地址（使用其电子邮件别名将无效）。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -48,9 +50,9 @@ ms.locfileid: "67788449"
 
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | 名称 | *datashareacount* | 指定 Data Share 帐户的名称。 |
-    | 订阅 | 订阅 | 选择要用于 Data Share 帐户的 Azure 订阅。|
-    | 资源组 | *test-resource-group* | 使用现有资源组或创建新资源组。 |
+    | Name | *datashareacount* | 指定 Data Share 帐户的名称。 |
+    | Subscription | 订阅 | 选择要用于 Data Share 帐户的 Azure 订阅。|
+    | Resource group | *test-resource-group* | 使用现有资源组或创建新资源组。 |
     | 位置 | 美国东部 2  | 选择 Data Share 帐户的区域。
     | | |
 

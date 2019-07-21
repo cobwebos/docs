@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54c3ae22b9cc2e447960b9e3527bbbb0afae3e54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095094"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227469"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>教程：Azure Active Directory 与 PageDNA 的集成
 
@@ -171,7 +171,7 @@ PageDNA 支持以下功能：
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过向 Britta Simon 授予 PageDNA 的访问权限支持她使用 Azure 单一登录。
+在本部分中，通过授予用户 Britta Simon 访问 PageDNA 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “PageDNA”。   
 
@@ -212,3 +212,4 @@ PageDNA 支持以下功能：
 * [单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 * [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

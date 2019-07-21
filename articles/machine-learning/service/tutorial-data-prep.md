@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: sihhu
-ms.author: MayMSFT
+author: MayMSFT
+ms.author: sihhu
 ms.reviewer: trbye
-ms.date: 03/29/2019
+ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b7bf5a0ece3927c7dbafdec9716b7c6f8dfbc0e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 55bece47ad2a9965e5137ad720631d9b5f5add48
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474704"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297888"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
@@ -112,6 +112,9 @@ yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
+
+> [!Note]
+> 此同一示例中的 URL 不是完整的 URL， 而是引用 blob 中的 demo 文件夹。 某些数据的完整 URL 为 https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 `Dataflow` 对象类似于数据帧，表示针对数据执行的一系列松散评估的不可变操作。 可以通过调用不同的转换并筛选可用方法来添加操作。 在 `Dataflow` 中添加操作后，始终会获得新的 `Dataflow` 对象。
 

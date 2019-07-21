@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51c37f983162b82747760b05e2ec5e4e6553c0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106948"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227484"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>教程：Azure Active Directory 与 AnswerHub 集成
 
@@ -193,7 +193,7 @@ ms.locfileid: "67106948"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 AnswerHub 的权限，将她设置为使用 Azure 单一登录。
+在本部分中，通过授予用户 Britta Simon 访问 AnswerHub 的权限，将其设置为使用 Azure AD 单一登录。
 
 分配 Azure AD 测试用户： 
 

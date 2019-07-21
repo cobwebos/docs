@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: b48d8d74843947c3e40dc80234560b0147be6eea
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 5471bf4041275d5988414def99dd2130f51fbb80
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542965"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67828022"
 ---
 # <a name="tutorial-mount-the-cluster"></a>教程：装载群集
 
@@ -43,7 +43,7 @@ ms.locfileid: "67542965"
 
 适用于小型安装的更简单方法是在装载客户端时使用脚本分配整个范围内的 IP 地址。 
 
-其他负载均衡方法可能适用于大型或复杂系统。 请咨询 Microsoft 代表，或提出支持请求以寻求帮助。 （Azure FXT Edge Filer 目前不支持 Azure 负载均衡器。） 
+其他负载均衡方法可能适用于大型或复杂系统。 请咨询 Microsoft 代表，或提出[支持请求](fxt-support-ticket.md)以寻求帮助。 （Azure FXT Edge Filer 目前不支持 Azure 负载均衡器。） 
 
 ## <a name="create-the-mount-command"></a>创建装载命令 
 

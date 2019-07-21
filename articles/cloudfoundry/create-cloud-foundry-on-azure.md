@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 11c8fdca595840389f318ce9810674d53ac7f2d2
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: f5ae599b516ac3ce6a9fcc40c0e26d242134e7d7
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273364"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226622"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>在 Azure 上创建 Pivotal Cloud Foundry 群集
 
@@ -64,7 +64,7 @@ ssh-keygen -t rsa -b 2048
 
     > [!NOTE]
     >
-    > 选择自己的应用程序主页和标识符 URI，例如 [http://www.contoso.com](http://www.contoso.com)。
+    > 选择自己的应用程序主页和标识符 URI，例如 http\://www\.contoso.com。
 
 4. 使用新的应用 ID 创建服务主体。
 

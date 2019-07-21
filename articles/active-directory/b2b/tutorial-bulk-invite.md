@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f91d51bda4c41a314c7cc1c2cc895e36bde0500
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d3bd02afa1fe1aaba6602201f839468a58673c29
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768208"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278001"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>教程：批量邀请 Azure AD B2B 协作用户
 
@@ -60,7 +60,7 @@ Get-Module -ListAvailable AzureAD*
    Install-Module AzureADPreview 
   ```
 
-可能会收到提示，其要求你从不受信任的存储库安装模块。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块。
+可能会收到提示，其要求你从不受信任的存储库安装模块。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块  。
 
 ### <a name="get-test-email-accounts"></a>获取测试电子邮件帐户
 
@@ -68,14 +68,14 @@ Get-Module -ListAvailable AzureAD*
 
 ## <a name="prepare-the-csv-file"></a>准备 CSV 文件
 
-在 Microsoft Excel 中，使用受邀用户的姓名和电子邮件地址列表创建一个 CSV 文件。 请确保包含“Name”和“InvitedUserEmailAddress”列标题。 
+在 Microsoft Excel 中，使用受邀用户的姓名和电子邮件地址列表创建一个 CSV 文件。 请确保包含“Name”和“InvitedUserEmailAddress”列标题   。 
 
 例如，按以下格式创建一个工作表：
 
 
 ![显示“等待用户接受”的 PowerShell 输出](media/tutorial-bulk-invite/AddUsersExcel.png)
 
-将此文件保存为 C:\BulkInvite\Invitations.csv。 
+将此文件保存为 C:\BulkInvite\Invitations.csv  。 
 
 如果没有 Excel，可在任意文本编辑器（例如记事本）中创建 CSV 文件。 以逗号分隔每个值，以换行符分隔每一行。 
 
@@ -86,13 +86,13 @@ Get-Module -ListAvailable AzureAD*
 ```powershell
 Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 ```
-例如，`Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`。
+例如，`Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"` 。
 
 在系统提示时输入凭据。
 
 ## <a name="send-bulk-invitations"></a>批量发送邀请
 
-要发送邀请，请运行以下 PowerShell 脚本（其中 c:\bulkinvite\invitations.csv 是 CSV 文件的路径）： 
+要发送邀请，请运行以下 PowerShell 脚本（其中 c:\bulkinvite\invitations.csv 是 CSV 文件的路径）  ： 
 
 ```powershell
 $invitations = import-csv c:\bulkinvite\invitations.csv
@@ -120,7 +120,7 @@ foreach ($email in $invitations)
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-应会看到已列出受邀用户，其中用户主体名称 (UPN) 采用 emailaddress#EXT#\@domain 的格式。 例如，lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com，其中 contoso.onmicrosoft.com 是你从其发送邀请的组织。
+应会看到已列出受邀用户，其中用户主体名称 (UPN) 采用 emailaddress  #EXT#\@domain  的格式。 例如，lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com，其中 contoso.onmicrosoft.com 是你从其发送邀请的组织  。
 
 ## <a name="clean-up-resources"></a>清理资源
 

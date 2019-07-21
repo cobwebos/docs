@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 21c7e996cfe2f07d9a5b056d8cbc22f238bb48fd
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: e787366694b55d3dcd61eec2c5a5b42dd187ec55
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357603"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226836"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>使用 Azure Maps 搜索附近兴趣点
 
@@ -239,9 +239,9 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    API `sup` 提供一个固定在地图上所需位置的信息窗口。 
+    API `*atlas.Popup` 提供一个固定在地图上所需位置的信息窗口。 
 
-2. 在 script 标记中的 `GetMap` 函数后面添加以下代码，以便在弹出窗口中显示鼠标悬停结果信息  。
+2. 在 `GetMap` 函数中添加以下代码，以便在弹出窗口中显示鼠标悬停结果信息。
 
     ```JavaScript
     function showPopup(e) {

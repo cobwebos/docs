@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6ec429bc7c1598e947b798c30e7992e3d357d00c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: d75e4c3e2b6f28dfbde670406854ac87790dd090
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303815"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850116"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>教程：为 Linux 设备开发和部署 Python IoT Edge 模块
 
@@ -69,25 +69,15 @@ ms.locfileid: "66303815"
 
 ### <a name="create-a-new-project"></a>创建新项目
 
-使用 Python 包 **cookiecutter** 创建一个 Python 解决方案模板，以便在其上生成项目。 
+使用 VS Code 创建一个 Python 解决方案模板，以便在其上生成项目。 
 
 1. 在 Visual Studio Code 中选择“视图”   >   “终端”，打开 VS Code 集成终端。
 
-2. 在终端中输入以下命令，以便安装（或更新）用于创建 IoT Edge 解决方案模板的 **cookiecuttere**：
+1. 选择“视图”   >   “命令面板”，打开 VS Code 命令面板。 
 
-    ```cmd/sh
-    pip install --upgrade --user cookiecutter
-    ```
-   >[!Note]
-   >确保将要在其中安装 Cookiecutter 的目录位于环境的 PATH 中，这样才可以从命令提示符处调用它。 目录是安装脚本的输出的一部分，例如 `C:\Users\{user}\AppData\Roaming\Python\Python{version}\Scripts`。
-   >
-   >重启 Visual Studio Code，使对 PATH 所做的更改生效。 
+1. 在命令面板中，输入并运行命令“Azure:  Sign in”并按照说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
 
-3. 选择“视图”   >   “命令面板”，打开 VS Code 命令面板。 
-
-4. 在命令面板中，输入并运行命令“Azure:  Sign in”并按照说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
-
-5. 在命令面板中，输入并运行“Azure IoT Edge: **New IoT Edge solution** 命令。 按提示操作，提供以下信息，以便创建解决方案：
+1. 在命令面板中，输入并运行“Azure IoT Edge: **New IoT Edge solution** 命令。 按提示操作，提供以下信息，以便创建解决方案：
 
    | 字段 | 值 |
    | ----- | ----- |

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6824cc84c24b41fd82afd39ead3029a212173948
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 496cf801a44638af61306b43791abce9466e2cb2
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67624799"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835685"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在单页应用程序中启用身份验证
 
@@ -121,7 +121,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     请使用有效的电子邮件地址，并使用验证码进行验证。 设置密码。 输入请求的属性的值。
 
-    ![注册工作流](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
+    ![登录/注册用户流提供的注册页](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
 1. 单击“创建”，  在 Azure AD B2C 目录中创建本地帐户。
 

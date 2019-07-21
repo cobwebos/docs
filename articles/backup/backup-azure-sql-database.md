@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 5dbdeeba68ae75069b61bd6dc069279ec3c5e5de
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2957e784540f7c6450235d26da43121db2458dd1
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443009"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249527"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -48,7 +48,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 **支持的部署** | 支持 SQL 市场 Azure VM 和非市场（手动安装的 SQL Server）VM。
 **支持的地理区域** | 澳大利亚东南部 (ASE)、澳大利亚东部 (AE) <br> 巴西南部 (BRS)<br> 加拿大中部 (CNC)、加拿大东部 (CE)<br> 东南亚 (SEA)、东亚 (EA) <br> 美国东部 (EUS)、美国东部 2 (EUS2)、美国中西部 (WCUS)、美国西部 (WUS)；美国西部 2 (WUS 2) 美国中北部 (NCUS) 美国中部 (CUS) 美国中南部 (SCUS) <br> 印度中部 (INC)、印度南部 (INS) <br> 日本东部 (JPE)、日本西部 (JPW) <br> 韩国中部 (KRC)、韩国南部 (KRS) <br> 北欧 (NE)、西欧 <br> 英国南部 (UKS)、英国西部 (UKW)
 **受支持的操作系统** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012<br/><br/> 目前不支持 Linux。
-**支持的 SQL Server 版本** | SQL Server 2017、SQL Server 2016、SQL Server 2014、SQL Server 2012。<br/><br/> Enterprise、Standard、Web、Developer、Express。
+**支持的 SQL Server 版本** | SQL Server 2017（[此处](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)详述）、SQL Server 2016 和 SP（[此处](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)详述）、SQL Server 2014、SQL Server 2012。<br/><br/> Enterprise、Standard、Web、Developer、Express。
 **支持的 .NET 版本** | 安装在 VM 上的 .NET Framework 4.5.2 及更高版本
 
 ### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>对 SQL Server 2008 和 SQL Server 2008 R2 的支持
@@ -76,7 +76,7 @@ Azure 备份最近已宣布对 [EOS SQL Sever](https://docs.microsoft.com/azure/
 - 在一个保管库中最多可以备份约 2000 个 SQL Server 数据库  。 如果有大量数据库，可创建多个保管库。
 - 一次最多可配置 50 个数据库的备份；此限制有助于优化备份负载  。
 - 我们支持最高 2TB 大小的数据库；对于超过此大小的数据库，可能会出现性能问题  。
-- 若要了解每个服务器可以保护多少个数据库，我们需要考虑带宽、VM 大小、备份频率、数据库大小等因素。我们正在开发一个规划器，它可以帮助你自行计算这些数字。 我们很快将发布此规划器。
+- 若要了解每个服务器可以保护多少个数据库，我们需要考虑带宽、VM 大小、备份频率、数据库大小等因素。[下载](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)资源规划器，它根据 VM 资源和备份策略提供每个服务器可以具有的大致数据库数。
 - 对于可用性组，将基于几个因素从不同节点获取备份。 下面概述了可用性组的备份行为。
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Always On 可用性组的备份行为

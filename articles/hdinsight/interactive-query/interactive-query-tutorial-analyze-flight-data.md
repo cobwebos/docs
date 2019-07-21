@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 06/25/2019
+ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 403e165d7ebe8365ffa0fd2f5f3779d3b4fab68f
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: fbab8502c088c2ae7a4b8e87285d7e4cac1de4c0
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543632"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807386"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据
 
@@ -42,7 +42,7 @@ ms.locfileid: "67543632"
 
 2. 在页面上，清除所有字段，然后选择以下值：
 
-   | 名称 | 值 |
+   | Name | 值 |
    | --- | --- |
    | 筛选年份 |2019 |
    | 筛选期间 |1 月 |
@@ -59,6 +59,8 @@ ms.locfileid: "67543632"
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
+
+    如果要求你输入“yes”或“no”以继续，请在命令提示符下键入“yes”，然后按 Enter。 键入时，文本在窗口中不可见。
 
 2. 上传完成后，使用 SSH 连接到群集。 通过将 `CLUSTERNAME` 替换为 HDInsight 群集的名称来编辑以下命令。 然后输入以下命令：
 
