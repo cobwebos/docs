@@ -56,8 +56,6 @@
           href: best-practices-distributive-collaborative-development-environment.md
         - name: 与 Azure DevOps 集成
           href: devtest-lab-dev-ops.md
-        - name: 使用声明功能
-          href: devtest-lab-use-claim-capabilities.md
         - name: 方案
           items:
             - name: 适合使用开发测试实验室的常见场景
@@ -68,6 +66,8 @@
               href: devtest-lab-test-env.md
             - name: 使用训练实验室
               href: devtest-lab-training-lab.md
+            - name: 用于使用可认领 VM 的方案
+              href: devtest-lab-use-claim-capabilities.md
 - name: 操作指南
   items:
     - name: 教室实验室
@@ -158,11 +158,11 @@
           items:
             - name: 创建 VM - Azure 门户
               href: devtest-lab-add-vm.md
-            - name: 使用 Azure PowerShell 创建 VM
+            - name: 创建 VM - Azure PowerShell
               href: devtest-lab-vm-powershell.md
-            - name: 使用 Azure CLI 创建和管理 VM
+            - name: 创建 VM - Azure CLI
               href: devtest-lab-vmcli.md
-            - name: 使用资源管理器模板创建 VM
+            - name: 创建 VM - 资源管理器模板
               href: devtest-lab-use-resource-manager-template.md
             - name: 使用 PowerShell 或 CLI 启动或停止 VM
               href: use-command-line-start-stop-virtual-machines.md
@@ -172,6 +172,8 @@
               href: devtest-lab-resize-vm.md
             - name: 重新部署 VM
               href: devtest-lab-redeploy-vm.md
+            - name: 配置 VM 的自动关闭
+              href: devtest-lab-auto-shutdown-vm.md
             - name: 创建和管理可认领 VM
               href: devtest-lab-add-claimable-vm.md
             - name: 配置机密
@@ -210,9 +212,9 @@
               items:
                 - name: 从 VM 创建自定义映像
                   href: devtest-lab-create-custom-image-from-vm-using-portal.md
-                - name: 使用 Azure 门户从 VHD 创建自定义映像
+                - name: 从 VHD 创建自定义映像 - Azure 门户
                   href: devtest-lab-create-template.md
-                - name: 使用 PowerShell 从 VHD 创建自定义映像
+                - name: 从 VHD 创建自定义映像 - PowerShell
                   href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
                 - name: 使用 AzCopy 上传 VHD 文件
                   href: devtest-lab-upload-vhd-using-azcopy.md

@@ -217,8 +217,8 @@
         - name: 自动训练预测模型
           displayName: time series
           href: how-to-auto-train-forecast.md
-        - name: 查看准确性指标
-          href: how-to-understand-accuracy-metrics.md
+        - name: 了解图表和指标
+          href: how-to-understand-automated-ml.md
     - name: 部署和提供模型
       items:
         - name: 在何处以及如何部署

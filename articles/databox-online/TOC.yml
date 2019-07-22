@@ -47,6 +47,8 @@
           href: data-box-gateway-monitor.md
         - name: 故障排除
           href: data-box-gateway-troubleshoot.md
+        - name: 联系 Microsoft 支持部门
+          href: data-box-edge-contact-microsoft-support.md
     - name: 发行说明
       items:
         - name: 1905 - 最新版
@@ -105,9 +107,11 @@
               href: data-box-edge-connect-powershell-interface.md
         - name: 故障排除
           href: data-box-edge-troubleshoot.md
+        - name: 联系 Microsoft 支持部门
+          href: data-box-edge-contact-microsoft-support.md
         - name: 监视
           href: data-box-edge-monitor.md
-        - name: 退回设备
+        - name: 返回或替换设备
           href: data-box-edge-return-device.md
     - name: 发行说明
       items:

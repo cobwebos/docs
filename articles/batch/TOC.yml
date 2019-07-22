@@ -61,6 +61,8 @@
           href: batch-account-create-portal.md
         - name: 使用批处理管理 .NET 来管理 Azure Batch 帐户
           href: batch-management-dotnet.md
+        - name: 成本分析和预算
+          href: budget.md
     - name: 使用 Azure AD 进行身份验证
       items:
         - name: 将 Azure AD 与 Batch 服务配合使用
