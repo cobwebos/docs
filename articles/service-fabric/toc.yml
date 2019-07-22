@@ -274,7 +274,7 @@
           items:
             - name: Azure 群集概述
               href: service-fabric-azure-clusters-overview.md
-            - name: 节点类型和 VM 规模集
+            - name: 节点类型和虚拟机规模集
               href: service-fabric-cluster-nodetypes.md
             - name: 升级 Azure 中的群集
               href: service-fabric-cluster-upgrade.md
@@ -547,8 +547,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: 建议的做法
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: 重构已迁移的应用
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: 实现应用程序现代化
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: 管理应用程序生命周期
       items:
         - name: 打包应用程序

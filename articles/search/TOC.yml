@@ -334,8 +334,6 @@
           href: cognitive-search-skill-keyphrases.md
         - name: 语言检测
           href: cognitive-search-skill-language-detection.md
-        - name: 命名实体识别
-          href: cognitive-search-skill-named-entity-recognition.md
         - name: 实体识别
           href: cognitive-search-skill-entity-recognition.md
         - name: 文本合并
@@ -344,6 +342,8 @@
           href: cognitive-search-skill-textsplit.md
         - name: 情绪
           href: cognitive-search-skill-sentiment.md
+        - name: 文本翻译（预览版）
+          href: cognitive-search-skill-text-translation.md
         - name: 图像分析
           href: cognitive-search-skill-image-analysis.md
         - name: OCR
@@ -352,12 +352,15 @@
           href: cognitive-search-skill-shaper.md
         - name: 条件逻辑
           href: cognitive-search-skill-conditional.md
-        - name: 不推荐使用的技能
-          href: cognitive-search-skill-deprecated.md
     - name: 自定义技能
       items:
         - name: 自定义 Web API
           href: cognitive-search-custom-skill-web-api.md
+    - name: 不推荐使用的技能
+      href: cognitive-search-skill-deprecated.md
+      items:
+        - name: 命名实体识别
+          href: cognitive-search-skill-named-entity-recognition.md
 - name: 资源
   items:
     - name: Azure 社区支持

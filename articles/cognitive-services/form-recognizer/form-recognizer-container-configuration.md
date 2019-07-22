@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 7752b09dd1bf20d796b19d03e62426b098486c39
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 4a490e8a9f111985df9c9e8c9f73bc36d686cc2a
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718453"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348696"
 ---
 # <a name="configure-form-recognizer-containers"></a>配置表单识别器容器
 
@@ -77,7 +77,7 @@ ms.locfileid: "67718453"
 |可选| 名称 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |必填| `Input` | String | 输入装入点的目标。 默认值为 `/input`。    <br><br>例如：<br>`--mount type=bind,src=c:\input,target=/input`|
-|必填| `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。  <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
+|必填| `Output` | String | 输出装入点的目标。 默认值为 `/output`。  <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
@@ -90,8 +90,8 @@ ms.locfileid: "67718453"
 
 | 占位符 | ReplTest1 |
 |-------------|-------|
-|{BILLING_KEY} | 用于启动容器的密钥。 可以从 Azure 门户的“表单识别器密钥”页获取它。  |
-|{BILLING_ENDPOINT_URI} | 可以从 Azure 门户的“表单识别器概览”页获取计费终结点 URI 值。|
+|{FORM_RECOGNIZER_API_KEY} | 用于启动容器的密钥。 可以从 Azure 门户的“表单识别器密钥”页获取它。  |
+|{FORM_RECOGNIZER_ENDPOINT_URI} | 可以从 Azure 门户的“表单识别器概览”页获取计费终结点 URI 值。|
 |{COMPUTER_VISION_API_KEY}| 可以从 Azure 门户的“计算机视觉 API 密钥”页获取此密钥。|
 |{COMPUTER_VISION_ENDPOINT_URI}|计费终结点。 如果使用基于云的计算机视觉资源，则可以从 Azure 门户的“计算机视觉 API 概览”页获取 URI 值。 如果使用 *cognitive-services-recognize-text* 容器，请使用在 `docker run` 命令中传递给容器的计费终结点 URL。|
 
@@ -113,8 +113,8 @@ docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
 --mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} \
+Billing={FORM_RECOGNIZER_ENDPOINT_URI} \
+ApiKey={FORM_RECOGNIZER_API_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 ```
@@ -127,13 +127,12 @@ docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
 --mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} \
+Billing={FORM_RECOGNIZER_ENDPOINT_URI} \
+ApiKey={FORM_RECOGNIZER_API_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 Logging:Console:LogLevel:Default=Information
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 

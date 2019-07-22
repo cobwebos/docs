@@ -29,6 +29,8 @@
       href: publish-service-catalog-app.md
     - name: 发布市场应用程序
       href: publish-marketplace-app.md
+    - name: 创建包含自定义提供程序的托管应用程序
+      href: tutorial-create-managed-app-with-custom-provider.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -83,6 +85,14 @@
           href: custom-providers-proxy-cache-resource-endpoint-reference.md
         - name: 自定义提供程序 RESTful 终结点参考
           href: reference-custom-providers-csharp-endpoint.md
+    - name: 应用程序项目
+      items:
+        - name: 用户界面元素
+          href: reference-createuidefinition-artifact.md
+        - name: 部署模板
+          href: reference-main-template-artifact.md
+        - name: 查看定义
+          href: reference-view-definition-artifact.md
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell

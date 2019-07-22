@@ -175,7 +175,7 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 | 字段 | 描述 |
 |----|----|
 | WebSocket 消息编码 | Text |
-| 正文 | 有效负载作为 JSON 结构 |
+| Body | 有效负载作为 JSON 结构 |
 
 #### <a name="required-message-headers"></a>必需的消息标头
 
@@ -244,7 +244,7 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 | 字段 | 描述 |
 |-------------|----------------|
 | WebSocket 消息编码 | Binary |
-| 正文 | 音频区块的二进制数据。 最大大小为 8,192 字节。 |
+| Body | 音频区块的二进制数据。 最大大小为 8,192 字节。 |
 
 #### <a name="required-message-headers"></a>必需的消息标头
 
@@ -332,7 +332,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 | WebSocket 消息编码 | Text |
 | Path | `speech.startDetected` |
 | Content-Type | application/json; charset=utf-8 |
-| 正文 | JSON 结构，包含检测到语音开始时的条件信息。 此结构中的 Offset 字段指定在音频流中检测到语音时的位置相对于流开始位置的偏移（以 100 纳秒为单位）  。 |
+| Body | JSON 结构，包含检测到语音开始时的条件信息。 此结构中的 Offset 字段指定在音频流中检测到语音时的位置相对于流开始位置的偏移（以 100 纳秒为单位）  。 |
 
 #### <a name="sample-message"></a>示例消息
 
@@ -358,7 +358,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | Path | `speech.hypothesis` |
 | X-RequestId | 采用“无连字符”格式的 UUID |
 | Content-Type | application/json |
-| 正文 | 语音假设 JSON 结构 |
+| Body | 语音假设 JSON 结构 |
 
 #### <a name="sample-message"></a>示例消息
 
@@ -389,7 +389,7 @@ Duration 元素指定该语音短语的持续时间（以 100 纳秒为单位）
 | WebSocket 消息编码 | Text |
 | Path | `speech.phrase` |
 | Content-Type | application/json |
-| 正文 | 语音短语 JSON 结构 |
+| Body | 语音短语 JSON 结构 |
 
 语音短语 JSON 架构包括以下字段：`RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 有关这些字段的详细信息，请参阅[听录响应](../concepts.md#transcription-responses)。
 
@@ -416,7 +416,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | ------------- | ---------------- |
 | WebSocket 消息编码 | Text |
 | Path | `speech.endDetected` |
-| 正文 | 包含检测到语音结束时的偏移的 JSON 结构。 偏移从用于识别的音频开始位置计算，以 100 纳秒为单位表示。 |
+| Body | 包含检测到语音结束时的偏移的 JSON 结构。 偏移从用于识别的音频开始位置计算，以 100 纳秒为单位表示。 |
 | Content-Type | application/json; charset=utf-8 |
 
 #### <a name="sample-message"></a>示例消息
@@ -442,7 +442,7 @@ Offset 元素指定识别出短语时的位置相对于音频流开头位置的�
 | WebSocket 消息编码 | Text |
 | Path | `turn.start` |
 | Content-Type | application/json; charset=utf-8 |
-| 正文 | JSON 结构 |
+| Body | JSON 结构 |
 
 #### <a name="sample-message"></a>示例消息
 
@@ -468,7 +468,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | ------------- | ---------------- |
 | WebSocket 消息编码 | Text |
 | Path | `turn.end` |
-| 正文 | 无 |
+| Body | 无 |
 
 #### <a name="sample-message"></a>示例消息
 
