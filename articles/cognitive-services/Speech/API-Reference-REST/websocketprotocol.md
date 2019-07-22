@@ -311,7 +311,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 | Path | `telemetry` |
 | X-Timestamp | 采用 ISO 8601 格式的客户端 UTC 时钟时间戳 |
 | Content-Type | `application/json` |
-| 正文 | 包含有关轮次的客户端信息的 JSON 结构 |
+| Body | 包含有关轮次的客户端信息的 JSON 结构 |
 
 [遥测架构](#telemetry-schema)一节中定义了 `telemetry` 消息正文的架构。
 
