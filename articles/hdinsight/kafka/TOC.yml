@@ -220,8 +220,6 @@
           href: ../hdinsight-virtual-network-architecture.md
         - name: 使用防火墙限制出站流量
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: Azure VNet 中的 HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: 将 HDInsight 与本地网络相连
           href: ../connect-on-premises-network.md
     - name: 使用 Azure Monitor 日志进行监视
