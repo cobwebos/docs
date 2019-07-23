@@ -52,8 +52,6 @@
           href: howto-provide-risk-event-feedback.md
         - name: 配置风险策略
           href: howto-configure-risk-policies.md
-        - name: 提高检测精度
-          href: howto-improve-detection-accuracy.md
         - name: 反馈和已知问题
           href: known-issues.md
 - name: 引用
