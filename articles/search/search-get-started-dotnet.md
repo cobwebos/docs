@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/09/2019
-ms.openlocfilehash: d3236f4782cc4fd9113329f03e36515a91bad528
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 07/11/2019
+ms.openlocfilehash: 6138df5b80f479a54683ec0408b832dd78bff8e4
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798772"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67847083"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>快速入门：使用 C# 通过 .NET SDK 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -35,11 +35,9 @@ ms.locfileid: "67798772"
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门使用以下服务、工具和数据。 
+本快速入门需要以下服务和工具。
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
-
-+ 示例索引和文档在本文中以及此快速入门的 [Visual Studio solution](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart)（Visual Studio 解决方案）中提供。
 
 + [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
@@ -195,11 +193,14 @@ ms.locfileid: "67798772"
     }
     ```
 
-    该字段的特性决定字段在应用程序中的使用方式。 例如，`IsSearchable` 特性分配给每个应包含在全文搜索中的字段。 在 .NET SDK 中，默认禁用未显式启用的字段行为。
+    该字段的特性决定字段在应用程序中的使用方式。 例如，`IsSearchable` 属性必须分配给每个应包含在全文搜索中的字段。 
+    
+    > [!NOTE]
+    > 在 .NET SDK 中，必须显式将字段属性化为 [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet)、[`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)、[`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet) 和 [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet)。 此行为与 REST API 相反，后者基于数据类型隐式启用属性（例如，简单的字符串字段是自动可搜索的）。
 
     类型为 `string` 的索引中必须恰好有一个字段为“密钥”字段，用于唯一地标识每个文档  。 在此架构中，密钥为 `HotelId`。
 
-    在此索引中，“说明”字段使用可选的分析器属性，该属性在需要替代默认标准 Lucene 分析器时指定。 `description_fr` 字段使用法语 Lucene 分析器 ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet))，因为该字段存储法语文本。 `description` 使用可选的 Microsoft 语言分析器 ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet))。
+    在此索引中，“说明”字段使用可选的 [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) 属性，该属性在需要替代默认标准 Lucene 分析器时指定。 `description_fr` 字段使用法语 Lucene 分析器 ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet))，因为该字段存储法语文本。 `description` 使用可选的 Microsoft 语言分析器 ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet))。
 
 1. 在 Program.cs 中，使用存储在应用程序配置文件 (appsettings.json) 中的值，创建 [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) 类的实例，以连接到服务。 
 

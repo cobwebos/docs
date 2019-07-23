@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, sdk, 麦克风, 访问麦克风, 麦克风数据
-ms.openlocfilehash: 86e18d9e29d2cd9dce37a1d5a855a3d21491e8cc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eb138e227a65bef834f9b1c7d5117a76d55b3dae
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451398"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850085"
 ---
 # <a name="quickstart-build-your-first-azure-kinect-application"></a>快速入门：生成第一个 Azure Kinect 应用程序
 
@@ -176,6 +176,6 @@ int main()
 
 ## <a name="next-steps"></a>后续步骤
 
-还可以查看以下文章：
+了解如何使用传感器 SDK 查找并打开 Azure Kinect DK 设备
 > [!div class="nextstepaction"]
->[使用 Azure Kinect 传感器 SDK](about-sensor-sdk.md)
+>[查找并打开设备](find-then-open-device.md)

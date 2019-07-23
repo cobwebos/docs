@@ -4,14 +4,14 @@ description: 介绍 Azure 托管应用程序的概念
 author: tfitzmac
 ms.service: managed-applications
 ms.topic: overview
-ms.date: 05/31/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5b6cb030c6eba5d80dfd046f1c3950609da1ed73
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 97d6a229651f1c3fbcdbb79c7ae7d1c1f855882b
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479822"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234752"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
@@ -68,6 +68,8 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 ### <a name="managed-resource-group"></a>托管资源组
 
 此资源组包含托管应用程序所需的所有资源。 例如，此资源组包含解决方案的虚拟机、存储帐户和虚拟网络。 使用者对此资源组拥有有限的访问权限，因为使用者不会管理托管应用程序的单个资源。 发布者对此资源组的访问权限对应于托管应用程序定义中指定的角色。 例如，发布者可以请求此资源组的“所有者”或“参与者”角色。 访问权限可以是永久性的，也可以限制为特定的时间。
+
+将[托管应用程序发布到市场](publish-marketplace-app.md)时，发布者可以授予使用者对托管资源组中的资源执行特定操作的能力。 例如，发布者可以指定使用者可以重启虚拟机。 仍拒绝除读取操作外的其他所有操作。
 
 当使用者删除托管应用程序时，也会一并删除托管资源组。
 

@@ -9,20 +9,17 @@ ms.topic: tutorial
 ms.date: 06/05/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 61569159d83493bb5338f8eda5b9201ef9164143
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: ba1ec821bd25e3b9f4479c3d09fdf5ab981ab0a7
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734586"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305513"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js 控制台应用以管理 Azure Cosmos DB SQL API 数据
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET（预览版）](sql-api-dotnet-get-started-preview.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [.NET Core（预览版）](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [异步 Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
@@ -130,8 +127,9 @@ ms.locfileid: "66734586"
 > [!Note]
 > 如果连接到 **Cosmos DB 模拟器**，请通过创建自定义连接策略来禁用 SSL 验证。
 >   ```
->   const connectionPolicy = new cosmos.ConnectionPolicy ()
->   connectionPolicy.DisableSSLVerification = true
+>   const ConnectionPolicy = require('@azure/cosmos').ConnectionPolicy;
+>   const connectionPolicy = new ConnectionPolicy();
+>   connectionPolicy.DisableSSLVerification = true;
 >
 >   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey }, connectionPolicy });
 >   ```
@@ -155,7 +153,7 @@ ms.locfileid: "66734586"
 
    可以使用 **Databases** 类的 `createIfNotExists` 或 create 函数创建数据库。 数据库是跨容器分区的项的逻辑容器。 
 
-2. 复制 **createDatabase** 和 **readDatabase** 方法并将其粘贴到 app.js 文件的 ```databaseId``` 和 ```containerId``` 定义下。 **createDatabase** 函数会使用通过 ```config``` 对象指定的 ID ```FamilyDatabase``` 来创建新数据库（如果不存在数据库）。 **readDatabase** 函数会读取数据库的定义，确保数据库存在。
+2. 复制 **createDatabase** 和 **readDatabase** 方法并将其粘贴到 app.js 文件的 ```databaseId``` 和 ```containerId``` 定义下。 createDatabase 函数会使用通过 ```config``` 对象指定的 ID ```FamilyDatabase``` 来创建新数据库（如果不存在数据库）  。 **readDatabase** 函数会读取数据库的定义，确保数据库存在。
 
    ```javascript
    /**
@@ -383,7 +381,7 @@ ms.locfileid: "66734586"
 
 可以使用 **Items** 类的 create 函数创建项。 使用 SQL API 时，项会投射为文档，后者是用户定义的（任意）JSON 内容。 现在，可以将项插入 Azure Cosmos DB 中。
 
-1. 将 **createFamilyItem** 函数复制并粘贴到 **readContainer** 函数下面。 **createFamilyItem** 函数创建的项包含在 ```config``` 对象中保存的 JSON 数据。 我们会进行检查，确保在创建项之前不存在具有相同 ID 的项。
+1. 将 **createFamilyItem** 函数复制并粘贴到 **readContainer** 函数下面。 **createFamilyItem** 函数创建的项包含在 ```config``` 对象中保存的 JSON 数据。 我们会进行检查以确保在创建项之前不存在具有相同 ID 的项。
 
    ```javascript
    /**

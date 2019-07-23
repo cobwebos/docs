@@ -13,12 +13,12 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: da4de9185ba7371281c140c5f2456d85661c0af4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fcbf181601230493dc52bde06e4f35db062f9a32
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706440"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807166"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>使用 Java 和 Maven 创建你的第一个函数
 
@@ -72,17 +72,25 @@ Maven 会请求你提供所需的值以完成项目的生成。 有关 groupId  
 下面的 `com.fabrikam.functions` 和 `fabrikam-functions` 标识符用作示例，目的是使本快速入门中后面的步骤更易读。 建议你在此步骤中向 Maven 提供你自己的值。
 
 ```Output
-Define value for property 'groupId': com.fabrikam.functions
-Define value for property 'artifactId' : fabrikam-functions
+Define value for property 'groupId' (should match expression '[A-Za-z0-9_\-\.]+'): com.fabrikam.functions
+Define value for property 'artifactId' (should match expression '[A-Za-z0-9_\-\.]+'): fabrikam-functions
 Define value for property 'version' 1.0-SNAPSHOT : 
 Define value for property 'package': com.fabrikam.functions
 Define value for property 'appName' fabrikam-functions-20170927220323382:
+Define value for property 'appRegion' westus: :
+Define value for property 'resourceGroup' java-functions-group: :
 Confirm properties configuration: Y
 ```
 
-在此示例 `fabrikam-functions` 中，Maven 在新文件夹中创建名为 artifactId  的项目文件 项目中生成的准备运行代码是一个 [HTTP 触发的](/azure/azure-functions/functions-bindings-http-webhook)函数，该函数回显请求正文：
+在此示例 `fabrikam-functions` 中，Maven 在新文件夹中创建名为 artifactId  的项目文件 项目中生成的准备运行代码是一个 [HTTP 触发的](/azure/azure-functions/functions-bindings-http-webhook)函数，该函数回显请求正文。 将 src/main/java/com/fabrikam/functions/Function.java 替换为以下代码  ： 
 
 ```java
+package com.fabrikam.functions;
+
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
 public class Function {
     /**
      * This function listens at endpoint "/api/hello". Two ways to invoke it using "curl" command in bash:
@@ -206,7 +214,7 @@ return request.createResponse(200, "Hi, " + name);
 保存更改。 运行 mvn 清理包，如以前一样通过从终端运行 `azure-functions:deploy` 进行重新部署。 函数应用将更新，并且以下请求：
 
 ```bash
-curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
+curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/hello
 ```
 
 将具有更新的输出：

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: allensu
-ms.openlocfilehash: d9b1d0624aa94884c269eb33131f8b61671e99ee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1f7fd3398c24eb82b1a2308f3b52df382c0aab7e
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051009"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68224660"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流量管理器配置文件
 
@@ -36,42 +36,25 @@ ms.locfileid: "67051009"
 本快速入门需要两个部署在两个不同的 Azure 区域（美国东部和西欧）的 Web 应用程序实例。   每个都可以充当流量管理器的主终结点和故障转移终结点。
 
 1. 在屏幕的左上方，选择“创建资源”   > “Web”   >   “Web 应用”。
-2. 在“Web 应用”中，输入或选择以下设置： 
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 应用程序名称 | 输入 Web 应用的唯一名称。  |
-    | 订阅 | 选择要将 Web 应用应用到其中的订阅。 |
-    | 资源组 | 选择“新建”，然后输入 *myResourceGroupTM1*。  |
-    | 操作系统 | 选择“Windows”作为操作系统。  |
-    | 发布 | 选择“代码”作为要发布的格式。  |
+1. 在“创建 Web 应用”中，在“基本信息”选项卡中键入或选择以下值：  
 
-3. 选择“应用服务计划/位置”。 
-4. 在“应用服务计划”  中，选择“新建”  。
-5. 在“应用服务计划”中，输入或选择以下设置： 
+   - **订阅** > **资源组**：选择“新建”，然后键入 **myResourceGroupTM1**。 
+   - “实例详细信息”   >   “名称”：键入 myWebAppEastUS  。
+   - “实例详细信息”   >   “发布”：选择“代码”  。
+   - **实例详细信息** > **运行时堆栈**：选择“ASP.NET V4.7” 
+   - **实例详细信息** > 操作系统  ：选择“Windows”  。
+   - “实例详细信息” > “区域”：   选择“美国东部”  。
+   - “应用服务计划”   >   “Windows 计划(美国东部)”：选择“新建”，然后键入 myAppServicePlanEastUS  
+   - **应用服务计划** > **SKU 和大小**：选择“标准版 S1”  。
+   
+3. 选择“监视”选项卡，或选择“下一步: 监视”   。  在“监视”下，将“Application Insights” > “启用 Application Insights”设置为“否”     。
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 应用服务计划 | 输入 *myAppServicePlanEastUS*。 |
-    | 位置 | 美国东部 |
-    | 定价层 | S1 标准 |
+4. 选择“查看并创建” 
 
-6. 选择“确定”  。
+5. 查看设置，并单击“创建”。   Web 应用在成功部署后会创建默认的网站。
 
-7. 在“Web 应用”中，选择“创建”  。  Web 应用在成功部署后会创建默认的网站。
-
-8. 若要在另一 Azure 区域创建另一个网站，请使用以下设置重复步骤 1-7：
-
-    | 设置 | 值 |
-    | --------| ----- |
-    | 名称 | 输入 Web 应用的唯一名称。 |
-    | 订阅 | 选择要将 Web 应用应用到其中的订阅。 |
-    | 资源组 | 选择“新建”  ，然后输入 *myResourceGroupTM2*。 |
-    | 操作系统 | 选择“Windows”作为操作系统。  |
-    | 发布 | 选择“代码”作为要发布的格式。  |
-    | 应用服务计划/位置 | 输入 *myAppServicePlanWestEurope*。 |
-    | 位置 | 西欧 |
-    | 定价层 | S1 标准 |
+6. 按步骤创建另一个 Web 应用，其名称为 myWebAppWestEurope，其资源组名称为 myResourceGroupTM2，其位置为西欧，其应用服务计划名称为 myAppServicePlanWestEurope，其他所有设置与 myWebAppEastUS 相同         。
 
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 

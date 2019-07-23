@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 6/29/2018
-ms.openlocfilehash: 2892dc3b8f25624e7925c9b4aa86110c167ad616
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 90287ab45341f203905aaf32eb6325edd3687231
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299115"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273135"
 ---
 # <a name="what-is-azure-logic-apps"></a>什么是 Azure 逻辑应用？
 
@@ -29,7 +29,7 @@ ms.locfileid: "66299115"
 * 将上传的文件从 SFTP 或 FTP 服务器移至 Azure 存储。 
 * 监视推文中的特定主题，分析观点，针对需要查看的项目创建警报或任务。
 
-若要使用 Azure 逻辑应用生成企业集成解决方案，可以从一个不断扩充的库中进行选择。该库包含 [200 多个连接器](../connectors/apis-list.md)，包括各种服务，例如 Azure 服务总线、Functions、存储；SQL、Office 365、Dynamics、Salesforce、BizTalk、SAP、Oracle DB、文件共享，等等。 [连接器](#logic-app-concepts)提供[触发器](#logic-app-concepts)和/或[操作](#logic-app-concepts)，所创建的逻辑应用可以安全地对数据进行实时访问和处理。
+若要使用 Azure 逻辑应用生成企业集成解决方案，可以从一个不断扩充的库中进行选择。该库包含[上百个可使用的连接器](../connectors/apis-list.md)，包括各种服务，例如 Azure 服务总线、Functions 和存储；SQL、Office 365、Dynamics、Salesforce、BizTalk、SAP、Oracle DB、文件共享等。 [连接器](#logic-app-concepts)提供[触发器](#logic-app-concepts)和/或[操作](#logic-app-concepts)，所创建的逻辑应用可以安全地对数据进行实时访问和处理。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 

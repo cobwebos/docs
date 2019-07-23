@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83f5b08e5fee17c0ea5577d4d56d4d3208a818e3
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 5375d47c1b012a1c808a1115b7c902d99b05bf9d
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625293"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304721"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>快速入门：生成一个与 Azure AD 集成以进行身份验证和授权的 .NET Web API
 
@@ -59,12 +59,21 @@ ms.locfileid: "67625293"
 
 3. 在左侧导航窗格中，选择“Azure Active Directory”  。
 4. 选择“应用注册”，然后选择“新建注册”   。
-5. “注册应用程序”页显示后，请输入应用程序的名称。 
+5. “注册应用程序”页显示后，请输入应用程序的名称。  例如，输入“待办事项列表服务”。
 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
 6. 在“重定向 URI”  部分下选择  “Web”平台，并将值设置为 `https://localhost:44321/`（Azure AD 将令牌返回到的位置）。
 7. 完成后，选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值。  
-6. 选择“公开 API”  ，然后通过单击“设置”来更新应用程序 ID URI。  输入租户特定的标识符。 例如，输入 `https://contoso.onmicrosoft.com/TodoListService`。
-7. 保存配置。 让门户保持打开状态，因为稍后你还需要注册客户端应用程序。
+8. 选择“公开 API”，然后单击“添加范围”   。
+9. 通过选择“保存并继续”接受建议的应用程序 ID URI (api://{clientId})  。
+10. 输入以下参数：
+    1. 对于“范围名称”，请输入“access_as_user”  。
+    1. 请确保为“谁能同意?”选择了“管理员和用户”选项   。
+    1. 在“管理员许可显示名称”中，输入“以用户身份访问 TodoListService”  。
+    1. 在“管理员许可说明”中，键入“以用户身份访问 TodoListService Web API”  。
+    1. 在“用户许可显示名称”中，键入“以用户身份访问 TodoListService”  。
+    1. 在“用户许可说明”中，键入“以用户身份访问 TodoListService Web API”  。
+    1. 在“状态”中，选择“启用”   。
+11. 选择“添加范围”以保存配置  。 让门户保持打开状态，因为稍后你还需要注册客户端应用程序。
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>步骤 2：将应用设置为使用 OWIN 身份验证管道
 
@@ -73,8 +82,8 @@ ms.locfileid: "67625293"
 1. 要开始，请打开解决方案，然后使用 Package Manager Console 将 OWIN 中间件 NuGet 包添加到 TodoListService 项目。
 
     ```
-    PM> Install-Package Microsoft.Owin.Security.ActiveDirectory -ProjectName TodoListService
-    PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
+    Install-Package Microsoft.Owin.Security.ActiveDirectory -ProjectName TodoListService
+    Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
     ```
 
 2. 将名为 `Startup.cs` 的 OWIN 启动类添加到 TodoListService 项目。  右键单击项目，选择“添加”>“新建项”，然后搜索“OWIN”   。 当应用程序启动时，该 OWIN 中间件将调用 `Configuration(…)` 方法。
@@ -94,7 +103,7 @@ ms.locfileid: "67625293"
 4. 打开文件 `App_Start\Startup.Auth.cs` 并实现 `ConfigureAuth(…)` 方法。 在 `WindowsAzureActiveDirectoryBearerAuthenticationOptions` 中提供的参数将充当应用程序与 Azure AD 通信时使用的坐标。 若要使用它们，你需要使用 `System.IdentityModel.Tokens` 命名空间中的类。
 
     ```csharp
-    using System.IdentityModel.Tokens;
+    using Microsoft.IdentityModel.Tokens;
     ```
 
     ```csharp
@@ -148,9 +157,9 @@ ms.locfileid: "67625293"
 需要先配置待办事项列表客户端，使它能够从 Azure AD 获取令牌并可调用服务，才能看到待办事项服务的运行情况。
 
 1. 返回到 [Azure 门户](https://portal.azure.com)。
-1. 在 Azure AD 租户中创建新的应用程序注册。  输入一个**名称**，用以向用户说明你的应用程序，对于“重定向 URI”值  ，请输入 `http://TodoListClient/`，并在下拉列表中选择“公共客户端(移动和桌面)”  。
+1. 在 Azure AD 租户中创建新的应用程序注册。  输入一个**名称**，用以向用户说明你的应用程序，对于“重定向 URI”值  ，请输入 `https://TodoListClient/`，并在下拉列表中选择“公共客户端(移动和桌面)”  。
 1. 完成注册后，Azure AD 将向应用分配唯一应用程序 ID。 在后面的步骤中会用到此值，因此，请从应用程序页复制此值。
-1. 选择“API 权限”  ，然后选择“添加权限”  。  找到并选择待办事项列表服务，在“委派的权限”下添加“user_impersonation Access TodoListService”权限，并选择“添加权限”    。
+1. 选择“API 权限”  ，然后选择“添加权限”  。  找到并选择“待办事项列表服务”，在“委派的权限”下添加“user_impersonation Access TodoListService”权限，并选择“添加权限”     。
 1. 在 Visual Studio 中，打开 TodoListClient 项目中的 `App.config`，然后在 `<appSettings>` 节中输入配置值。
 
     * `ida:Tenant` 是 Azure AD 租户的名称，例如，contoso.onmicrosoft.com。

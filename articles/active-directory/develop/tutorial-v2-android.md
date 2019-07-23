@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c6b0d4cd664b12dbd0fbd4e9423240c8dbebb3
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: cb1e322e0424debc14a29ad8a516c95acea54714
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723819"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872098"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>从 Android 应用将用户登录并调用 Microsoft Graph
 
@@ -33,61 +33,57 @@ ms.locfileid: "67723819"
 
 ![显示本教程生成的示例应用的工作原理](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
-此示例中的应用会将用户登录并代表他们获取数据。  此数据可通过需要授权的受保护 API (Microsoft Graph API) 进行访问。
+本教程中的应用会将用户登录并代表他们获取数据。  该数据可通过一个受保护的 API (Microsoft 图形 API) 进行访问，该 API 需要授权并且受 Microsoft 标识平台保护。
 
 更具体说来：
 
 * 你的应用将通过浏览器或 Microsoft Authenticator 和 Intune 公司门户登录用户。
-* 最终用户将接受应用程序请求的权限。 
+* 最终用户将接受应用程序请求的权限。
 * 将为你的应用颁发 Microsoft Graph API 的一个访问令牌。
 * 该访问令牌将包括在对 Web API 的 HTTP 请求中。
 * 处理 Microsoft Graph 响应。
 
-该示例使用 Android 的 Microsoft 身份验证库 (MSAL) 来实现身份验证。 MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录 (SSO)，并管理帐户。
+该示例使用 Android 的 Microsoft 身份验证库 (MSAL) 来实现身份验证：[com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)。
+
+ MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录 (SSO)，并管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 此指导式设置使用 Android Studio。
-* 必须使用 Android 16 或更高版本（建议使用版本 19 及更高版本）。
-
-## <a name="library"></a>库
-
-本指南使用以下身份验证库：
-
-|库|说明|
-|---|---|
-|[com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft 身份验证库 (MSAL)|
+* 本教程需要 Android Studio 16 版本或更高版本（建议使用 19+ 版本）。
 
 ## <a name="create-a-project"></a>创建一个项目
 
 本教程将创建新项目。 如果想要下载完整教程，请[下载代码](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)。
 
-1. 打开 Android Studio，然后选择“启动新的 Android Studio 项目” 
-2. 选择“基本活动”，单击“下一步”。  
-3. 命名应用程序
-4. 保存包名称。 以后需将它输入 Azure 门户中。 
+1. 打开 Android Studio，然后选择“启动新的 Android Studio 项目”  。
+2. 选择“基本活动”，再选择“下一步”   。
+3. 命名应用程序。
+4. 保存包名称。 以后需将它输入 Azure 门户中。
 5. 将“最低 API 级别”  设置为 **API 19** 或更高，然后单击“完成”。 
 6. 在项目视图的下拉列表中选择“项目”  ，以便显示源和非源的项目文件，然后打开 **app/build.gradle**，将 `targetSdkVersion` 设置为 `27`。
 
 ## <a name="register-your-application"></a>注册应用程序
 
-1. 转到 [Azure 门户](https://aka.ms/MobileAppReg)
+1. 转到 [Azure 门户](https://aka.ms/MobileAppReg)。
 2. 打开[“应用注册”边栏选项卡](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)，单击“+新建注册”。 
 3. 输入应用的“名称”，然后在不设置重定向  URI 的情况下单击“注册”。 
 4. 在显示的窗格的“管理”部分，  选择“身份验证”   > “+ 添加平台”   >   “Android”。
 5. 输入项目的包名称。 如果下载了代码，则该值为 `com.azuresamples.msalandroidapp`。
-6. 在“配置 Android 应用”页的“签名哈希”部分，单击“生成开发签名哈希”。    然后复制用于平台的 KeyTool 命令。 请注意，KeyTool.exe 是作为 Java 开发工具包 (JDK) 的一部分安装的，必须还安装 OpenSSL 工具才能执行 KeyTool 命令。
+6. 在“配置 Android 应用”页的“签名哈希”部分，单击“生成开发签名哈希”。    然后复制用于平台的 KeyTool 命令。
+
+   > [!Note]
+   > 安装 KeyTool.exe，使其作为 Java 开发工具包 (JDK) 的一部分。 还必须安装 OpenSSL 工具才能执行 KeyTool 命令。
+
 7. 生成由 KeyTool 生成的**签名哈希**。
 8. 单击 `Configure` 并保存出现在“Android 配置”页中的“MSAL 配置”   ，以便在稍后配置应用时输入它。  单击“完成”  。
 
 ## <a name="build-your-app"></a>生成应用
 
-### <a name="configure-your-android-app"></a>配置 Android 应用
+### <a name="add-your-app-registration"></a>添加应用注册
 
 1. 在 Android Studio 的项目窗格中，导航到 **app\src\main\res**。
 2. 右键单击“res”  ，选择“新建”   >   “目录”。 输入 `raw` 作为新目录名称，然后单击“确定”。 
 3. 在 **app** > **src** > **res** > **raw** 中，新建名为 `auth_config.json` 的 JSON 文件，然后粘贴以前保存的 MSAL 配置。 有关详细信息，请参阅 [MSAL 配置](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)。
-   <!-- Workaround for Docs conversion bug -->
 4. 在 **app** > **src** > **main** > **AndroidManifest.xml** 中，添加下面的 `BrowserTabActivity` 活动。 该条目允许 Microsoft 在完成身份验证后回调应用程序：
 
     ```xml
@@ -186,7 +182,7 @@ ms.locfileid: "67723819"
 ### <a name="use-msal"></a>使用 MSAL
 
 现在，请在 `MainActivity.java` 中进行更改，以便在应用中添加并使用 MSAL。
-在 Android 项目窗口中导航到 **app** > **src** > **main** > **java** > **com.example.msal**，然后打开 `MainActivity.java`
+在 Android Studio 项目窗口中，导航到 app  >  src  >  main  >  java  >  com.example.msal，然后打开 `MainActivity.java`      。
 
 #### <a name="required-imports"></a>要求的导入
 

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a42cfe1374f3defdf6ed8acc828e6c7e446588bc
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c5955be5670759329e42ec24999d73df977c665e
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595142"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276842"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>快速入门：使用应用的标识获取令牌并从控制台应用中调用 Microsoft Graph API
 
@@ -142,7 +142,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 #### <a name="step-5-run-the-application"></a>步骤 5：运行应用程序
 
-如果使用 Visual Studio，请按 **F5** 运行该应用程序，否则请通过命令提示符或控制台来运行该应用程序：
+如果使用 Visual Studio，请按 F5 运行该应用程序，否则请通过命令提示符或控制台来运行该应用程序  ：
 
 ```console
 cd {ProjectFolder}\daemon-console
@@ -215,7 +215,7 @@ result = await app.AcquireTokenForClient(scopes)
 > |---------|---------|
 > | `scopes` | 包含请求的范围。 对于机密客户端，这应该使用与 `{Application ID URI}/.default` 类似的格式，指示所请求的范围是在 Azure 门户的应用对象集中静态定义的范围（就 Microsoft Graph 来说，`{Application ID URI}` 指向 `https://graph.microsoft.com`）。 就自定义 Web API 来说，`{Application ID URI}` 在  Azure 门户的应用程序注册（预览版）的“公开 API”部分定义。 |
 
-有关详细信息，请参阅 [`AcquireTokenForClient` 的参考文档](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclientasync?view=azure-dotnet#Microsoft_Identity_Client_ConfidentialClientApplication_AcquireTokenForClientAsync_System_Collections_Generic_IEnumerable_System_String__)
+有关详细信息，请参阅 [`AcquireTokenForClient` 的参考文档](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet#Microsoft_Identity_Client_ConfidentialClientApplication_AcquireTokenForClientAsync_System_Collections_Generic_IEnumerable_System_String__)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

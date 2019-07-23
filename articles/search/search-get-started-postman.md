@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 07/11/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ee3c4da96629910801413cbbad69963defb87dfe
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 5a61f5476551d785f2db0ef52dff45554302fd07
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798780"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849806"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -28,15 +28,17 @@ ms.locfileid: "67798780"
 
 若要探索 [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice)，最轻松的方式之一是使用 Postman 或其他 Web 测试工具来构建 HTTP 请求并检查响应。 在编写任何代码之前，可以使用适当的工具按照这些说明发送请求和查看响应。
 
-如果还没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，然后[注册 Azure 搜索](search-create-service-portal.md)。
+本文说明如何以交互方式表述请求。 或者，你可以[下载并导入 Postman 集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart)以使用预定义的请求。
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门使用以下服务和工具。 
-
-+ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
+本快速入门需要以下服务和工具。 
 
 + 使用 [Postman 桌面应用](https://www.getpostman.com/)将请求发送到 Azure 搜索。
+
++ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
@@ -54,20 +56,20 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 在本部分，我们将使用所选的 Web 工具来与 Azure 搜索建立连接。 每个工具都会持久保留会话的请求标头信息，这意味着，只需输入 api-key 和 Content-Type 一次即可。
 
-使用任一工具都需要选择一个命令（GET、POST、PUT 等）并提供 URL 终结点；对于某些任务，需要在请求正文中提供 JSON。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 替换为一个有效值。 
+使用任一工具都需要选择一个命令（GET、POST、PUT 等）并提供 URL 终结点；对于某些任务，需要在请求正文中提供 JSON。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 替换为一个有效值。 添加 `$select=name` 以便仅返回每个索引的名称。 
 
-    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06
+    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name
 
 请注意 HTTPS 前缀、服务的名称、对象（在本例中为索引集合）的名称和 [api-version](search-api-versions.md)。 api-version 是必需的小写字符串；对于当前版本，它指定为 `?api-version=2019-05-06`。 API 版本定期更新。 将 api-version 包括在每个请求中即可完全控制要使用的版本。  
 
-请求标头组合包括两个元素：内容类型，以及用于在 Azure 搜索中进行身份验证的 api-key。 将管理员 API 密钥 (YOUR-ADMIN-API-KEY) 替换为一个有效值。 
+请求标头组合包括两个元素：内容类型，以及用于在 Azure 搜索中进行身份验证的 api-key。 将管理员 API 密钥 (YOUR-AZURE-SEARCH-ADMIN-API-KEY) 替换为一个有效值。 
 
-    api-key: <YOUR-ADMIN-API-KEY>
+    api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
 在 Postman 中，构建如以下屏幕截图所示的请求。 选择“GET”作为谓词，提供 URL，然后单击“发送”。   此命令连接到 Azure 搜索，读取索引集合，并在成功连接后返回 HTTP 状态代码 200。 如果服务已有索引，则响应还会包含索引定义。
 
-![Postman 请求标头][6]
+![Postman 请求 URL 和标头](media/search-get-started-postman/postman-url.png "Postman 请求 URL 和标头")
 
 ## <a name="1---create-an-index"></a>1 - 创建索引
 
@@ -81,11 +83,11 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`。
 
-3. 在请求正文中提供索引定义（如下所示）。
+3. 在请求正文中提供索引定义（下方提供了可直接复制的代码）。
 
 4. 单击“Send”  。
 
-![Postman 请求正文][8]
+![请求正文中的索引 JSON 文档](media/search-get-started-postman/postman-request.png "")
 
 ### <a name="index-definition"></a>索引定义
 
@@ -93,23 +95,30 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 字段的属性决定了允许的操作。 默认情况下，REST API 允许很多操作。 例如，默认情况下，所有字符串均可供搜索、检索、筛选、分面。 通常，仅当需要禁用某种行为时，才要设置属性。
 
-          {
-         "name": "hotels",  
-         "fields": [
-           {"name": "hotelId", "type": "Edm.String", "key":true, "searchable": false},
-           {"name": "baseRate", "type": "Edm.Double"},
-           {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-           {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
-           {"name": "hotelName", "type": "Edm.String"},
-           {"name": "category", "type": "Edm.String"},
-           {"name": "tags", "type": "Collection(Edm.String)"},
-           {"name": "parkingIncluded", "type": "Edm.Boolean"},
-           {"name": "smokingAllowed", "type": "Edm.Boolean"},
-           {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
-           {"name": "rating", "type": "Edm.Int32"},
-           {"name": "location", "type": "Edm.GeographyPoint"}
-          ]
-         }
+```json
+{
+    "name": "hotels-quickstart",  
+    "fields": [
+        {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
+        {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
+        {"name": "Description", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false, "analyzer": "en.lucene"},
+        {"name": "Category", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Tags", "type": "Collection(Edm.String)", "searchable": true, "filterable": true, "sortable": false, "facetable": true},
+        {"name": "ParkingIncluded", "type": "Edm.Boolean", "filterable": true, "sortable": true, "facetable": true},
+        {"name": "LastRenovationDate", "type": "Edm.DateTimeOffset", "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Rating", "type": "Edm.Double", "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Address", "type": "Edm.ComplexType", 
+        "fields": [
+        {"name": "StreetAddress", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "searchable": true},
+        {"name": "City", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "StateProvince", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "PostalCode", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Country", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true}
+        ]
+     }
+  ]
+}
+```
 
 提交此请求后，会获得 HTTP 201 响应，指示索引已成功创建。 可以在门户中验证此操作，但请注意，门户页有刷新时间间隔，因此可能需要等待一到两分钟。
 
@@ -126,82 +135,102 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 将谓词更改为  POST。
 
-2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/docs/index?api-version=2019-05-06`。
+2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`。
 
-3. 在请求正文中提供 JSON 文档（如下所示）。
+3. 在请求的正文中提供 JSON 文档（复制就绪代码如下）。
 
 4. 单击“Send”  。
 
-![Postman 请求有效负载][10]
+![请求正文中的 JSON 文档](media/search-get-started-postman/postman-docs.png "请求正文中的 JSON 文档")
 
 ### <a name="json-documents-to-load-into-the-index"></a>要载入索引的 JSON 文档
 
 请求正文包含四个要添加到 hotels 索引的文档。
 
-         {
-         "value": [
-         {
-             "@search.action": "upload",
-             "hotelId": "1",
-             "baseRate": 199.0,
-             "description": "Best hotel in town",
-             "description_fr": "Meilleur hôtel en ville",
-             "hotelName": "Fancy Stay",
-             "category": "Luxury",
-             "tags": ["pool", "view", "wifi", "concierge"],
-             "parkingIncluded": false,
-             "smokingAllowed": false,
-             "lastRenovationDate": "2010-06-27T00:00:00Z",
-             "rating": 5,
-             "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
-           },
-           {
-             "@search.action": "upload",
-             "hotelId": "2",
-             "baseRate": 79.99,
-             "description": "Cheapest hotel in town",
-             "description_fr": "Hôtel le moins cher en ville",
-             "hotelName": "Roach Motel",
-             "category": "Budget",
-             "tags": ["motel", "budget"],
-             "parkingIncluded": true,
-             "smokingAllowed": true,
-             "lastRenovationDate": "1982-04-28T00:00:00Z",
-             "rating": 1,
-             "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
-           },
-           {
-             "@search.action": "upload",
-             "hotelId": "3",
-             "baseRate": 279.99,
-             "description": "Surprisingly expensive",
-             "hotelName": "Dew Drop Inn",
-             "category": "Bed and Breakfast",
-             "tags": ["charming", "quaint"],
-             "parkingIncluded": true,
-             "smokingAllowed": false,
-             "lastRenovationDate": null,
-             "rating": 4,
-             "location": { "type": "Point", "coordinates": [-122.33207, 47.60621] }
-           },
-           {
-             "@search.action": "upload",
-             "hotelId": "4",
-             "baseRate": 220.00,
-             "description": "This could be the one",
-             "hotelName": "A Hotel for Everyone",
-             "category": "Basic hotel",
-             "tags": ["pool", "wifi"],
-             "parkingIncluded": true,
-             "smokingAllowed": false,
-             "lastRenovationDate": null,
-             "rating": 4,
-             "location": { "type": "Point", "coordinates": [-122.12151, 47.67399] }
-           }
-          ]
-         }
+```json
+{
+    "value": [
+    {
+    "@search.action": "upload",
+    "HotelId": "1",
+    "HotelName": "Secret Point Motel",
+    "Description": "The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Time's Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.",
+    "Category": "Boutique",
+    "Tags": [ "pool", "air conditioning", "concierge" ],
+    "ParkingIncluded": false,
+    "LastRenovationDate": "1970-01-18T00:00:00Z",
+    "Rating": 3.60,
+    "Address": 
+        {
+        "StreetAddress": "677 5th Ave",
+        "City": "New York",
+        "StateProvince": "NY",
+        "PostalCode": "10022",
+        "Country": "USA"
+        } 
+    },
+    {
+    "@search.action": "upload",
+    "HotelId": "2",
+    "HotelName": "Twin Dome Motel",
+    "Description": "The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.",
+    "Category": "Boutique",
+    "Tags": [ "pool", "free wifi", "concierge" ],
+    "ParkingIncluded": false,
+    "LastRenovationDate": "1979-02-18T00:00:00Z",
+    "Rating": 3.60,
+    "Address": 
+        {
+        "StreetAddress": "140 University Town Center Dr",
+        "City": "Sarasota",
+        "StateProvince": "FL",
+        "PostalCode": "34243",
+        "Country": "USA"
+        } 
+    },
+    {
+    "@search.action": "upload",
+    "HotelId": "3",
+    "HotelName": "Triple Landscape Hotel",
+    "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+    "Category": "Resort and Spa",
+    "Tags": [ "air conditioning", "bar", "continental breakfast" ],
+    "ParkingIncluded": true,
+    "LastRenovationDate": "2015-09-20T00:00:00Z",
+    "Rating": 4.80,
+    "Address": 
+        {
+        "StreetAddress": "3393 Peachtree Rd",
+        "City": "Atlanta",
+        "StateProvince": "GA",
+        "PostalCode": "30326",
+        "Country": "USA"
+        } 
+    },
+    {
+    "@search.action": "upload",
+    "HotelId": "4",
+    "HotelName": "Sublime Cliff Hotel",
+    "Description": "Sublime Cliff Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 1800 palace.",
+    "Category": "Boutique",
+    "Tags": [ "concierge", "view", "24-hour front desk service" ],
+    "ParkingIncluded": true,
+    "LastRenovationDate": "1960-02-06T00:00:00Z",
+    "Rating": 4.60,
+    "Address": 
+        {
+        "StreetAddress": "7400 San Pedro Ave",
+        "City": "San Antonio",
+        "StateProvince": "TX",
+        "PostalCode": "78216",
+        "Country": "USA"
+        }
+    }
+  ]
+}
+```
 
-在几秒钟内，应在会话列表中看到 HTTP 200 响应。 这指示已成功创建文档。 
+在几秒钟内，应在会话列表中看到 HTTP 201 响应。 这指示已成功创建文档。 
 
 如果收到 207，则指示至少有一个文档无法上传。 如果收到 404，则表示请求的标头或正文有语法错误：请验证是否已更改终结点，使之包括 `/docs/index`。
 
@@ -213,34 +242,56 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 现在，索引和文档已加载，可以使用[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 针对它们发出查询了。
 
-需扩展 URL，以包含使用搜索运算符指定的查询字符串。
+需扩展 URL，以包含使用搜索运算符指定的查询表达式。
 
 为此，请在 Postman 中：
 
 1. 将谓词更改为 **GET**。
 
-2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2019-05-06`。
+2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`。
 
 3. 单击“Send”  。
 
-此查询针对“motel”一词进行搜索，在搜索结果中返回文档的计数。 在单击“发送”后，请求和响应应类似于以下针对 Postman 的屏幕截图  。 状态代码应为 200。
+此查询为空，在搜索结果中返回文档的计数。 在单击“发送”后，请求和响应应类似于以下针对 Postman 的屏幕截图  。 状态代码应为 200。
 
- ![Postman 查询响应][11]
+ ![使用 URL 上的搜索字符串 GET](media/search-get-started-postman/postman-query.png "使用 URL 上的搜索字符串 GET")
+
+尝试其他查询示例来了解语法。 你可以执行字符串搜索、逐字筛选查询、限制结果集、将搜索范围限定为特定字段等。
+
+将当前 URL 替换为以下 URL，并每次单击“发送”以查看结果  。
+
+```
+# Query example 1 - Search on restaurant and wifi
+# Return only the HotelName, Description, and Tags fields
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=restaurant wifi&$count=true&$select=HotelName,Description,Tags&api-version=2019-05-06
+
+# Query example 2 - Apply a filter to the index to find hotels rated 4 or highter
+# Returns the HotelName and Rating. Two documents match
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$filter=Rating gt 4&$select=HotelName,Rating&api-version=2019-05-06
+
+# Query example 3 - Take the top two results, and show only HotelName and Category in the results
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=boutique&$top=2&$select=HotelName,Category&api-version=2019-05-06
+
+# Query example 4 - Sort by a specific field (Address/City) in ascending order
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
+```
 
 ## <a name="get-index-properties"></a>获取索引属性
-还可以查询系统信息，获取文档计数和存储使用量：`https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/stats?api-version=2019-05-06`
+还可以使用[获取统计信息](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)来查询文档计数和索引大小： 
 
-在 Postman 中，请求应如下所示，响应包括文档计数和所用空间（以字节为单位）。
+```
+https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2019-05-06`
+```
 
- ![Postman 系统查询][12]
+向 URL 添加 `/stats` 会返回索引信息。 在 Postman 中，请求应如下所示，响应包括文档计数和所用空间（以字节为单位）。
+
+ ![获取索引信息](media/search-get-started-postman/postman-system-query.png "获取索引信息")
 
 请注意，api-version 语法有所不同。 对于此请求，请使用 `?` 来追加 api-version。 `?` 将 URL 路径与查询字符串分隔开，而 & 将查询字符串中的每个“名称=值”对分隔开。 就此查询来说，api-version 是查询字符串中的第一个项，也是唯一项。
 
-有关此 API 的详细信息，请参阅[获取索引统计信息 REST API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)。
-
 ## <a name="clean-up"></a>清理
 
-在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组，以删除整个资源集。
+在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
 可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
 
@@ -250,19 +301,4 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 REST 客户端对于即席探索很有用，但在了解 REST API 工作原理以后，则可继续代码操作。 有关后续步骤，请参阅以下链接：
 
-+ [快速入门：使用 .NET SDK 创建索引](search-create-index-dotnet.md)
-+ [快速入门：使用 PowerShell 创建索引 (REST)](search-create-index-rest-api.md)
-
-<!--Image References-->
-[1]: ./media/search-get-started-postman/fiddler-url.png
-[2]: ./media/search-get-started-postman/AzureSearch_Fiddler2_PostDocs.png
-[3]: ./media/search-get-started-postman/AzureSearch_Fiddler3_Query.png
-[4]: ./media/search-get-started-postman/AzureSearch_Fiddler4_QueryResults.png
-[5]: ./media/search-get-started-postman/AzureSearch_Fiddler5_QueryStats.png
-[6]: ./media/search-get-started-postman/postman-url.png
-[7]: ./media/search-get-started-postman/fiddler-request.png
-[8]: ./media/search-get-started-postman/postman-request.png
-[9]: ./media/search-get-started-postman/fiddler-docs.png
-[10]: ./media/search-get-started-postman/postman-docs.png
-[11]: ./media/search-get-started-postman/postman-query.png
-[12]: ./media/search-get-started-postman/postman-system-query.png
++ [快速入门：使用 .NET SDK 创建索引](search-get-started-dotnet.md)

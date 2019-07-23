@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5fbbd2cf999ab8ba3183879bd9b417353aa5edd0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: b5e2ccef3b2a91f903706745d74a4bf16e1003d4
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203483"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305228"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -143,19 +143,19 @@ ms.locfileid: "67203483"
 
     ![针对 Always On 可用性组启用自动保护](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. 在“选择备份策略”中选择一个策略，然后单击“确定” ****  **** 。
+5. 在“选择备份策略”中选择一个策略，然后单击“确定”。  
 
-   - 选择默认策略： HourlyLogBackup。
+   - 选择默认策略：HourlyLogBackup。
    - 选择前面为 SQL 创建的现有备份策略。
    - 根据 RPO 和保留范围定义新策略。
 
      ![选择“备份策略”](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6. 在“备份”菜单中，选择“启用备份” ****  **** 。
+6. 在“备份”菜单生，选择“启用备份”   。
 
     ![启用选定的备份策略](./media/backup-azure-sql-database/enable-backup-button.png)
 
-7. 在门户的“通知”区域跟踪配置进度 ****  。
+7. 在门户的“通知”区域跟踪配置进度。 
 
     ![通知区域](./media/backup-azure-sql-database/notifications-area.png)
 
@@ -245,5 +245,5 @@ ms.locfileid: "67203483"
 
 > [!div class="nextstepaction"]
 > [还原 Azure VM 上的 SQL Server 数据库](./restore-sql-database-azure-vm.md)
- 
+ 
 

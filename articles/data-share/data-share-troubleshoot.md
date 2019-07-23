@@ -7,12 +7,12 @@ ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: ef33ff41ce78657709a497860cdbc3acb1bb24ae
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: c02f72d6a327c4dcb94ac8844005613cfe316986
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789001"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838378"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>排查 Azure Data Share 预览版中的常见问题
 
@@ -34,6 +34,8 @@ ms.locfileid: "67789001"
 
 需要拥有 [Azure 参与者 RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)才能完成这些步骤。 
 
+如果仍无法查看数据共享邀请，请联系你的数据提供者，并确保他们已将邀请发送到你的 Azure 登录电子邮件地址而“不是”电子邮件别名  。 
+
 > [!IMPORTANT]
 > 如果在配置存储之前已接受 Azure Data Share 邀请并退出此服务，请按[配置数据集映射](how-to-configure-mapping.md)操作方法指南中详述的说明操作，了解如何配置接收的数据共享并开始接收数据。 
 
@@ -47,12 +49,12 @@ ms.locfileid: "67789001"
 
 ![权限错误](media/error-write-privilege.png)
 
-如果在创建新数据共享或接收新数据共享时收到任何上述错误，则是因为没有足够的访问存储帐户的权限。 所需操作为 *Microsoft.Authorization/role assignments/write*，该操作存在于存储所有者角色中，也可将其分配给自定义角色。 即使是你创建的存储帐户，也并不意味着你会自动成为该存储帐户的所有者。 按照这些步骤操作，为你自己授予存储帐户所有者角色。 也可使用此权限来创建自定义角色，将自己添加到该角色中。  
+如果在创建新数据共享或接收新数据共享时收到任何上述错误，则是因为没有足够的访问存储帐户的权限。 所需权限为“Microsoft.Authorization/role assignments/write”，它存在于存储所有者角色中，也可将其分配给自定义角色  。 即使是你创建的存储帐户，也并不意味着你会自动成为该存储帐户的所有者。 按照这些步骤操作，为你自己授予存储帐户所有者角色。 也可使用此权限来创建自定义角色，将自己添加到该角色中。  
 
 1. 导航到 Azure 门户中的存储帐户
 1. 选择“访问控制(标识和访问管理)” 
 1. 单击“添加” 
-1. 将自己作为存储 Blob 数据所有者添加到其中
+1. 将自己添加为所有者。
 
 ## <a name="next-steps"></a>后续步骤
 

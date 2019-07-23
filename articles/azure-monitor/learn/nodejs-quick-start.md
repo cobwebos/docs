@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/01/2019
+ms.date: 07/12/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: c6979ce5cade09d4daa4e6eddd79fb69175ec902
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d92a96f928c859fba056f1d98c07ee4852aad0f1
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849393"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68002753"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>开始监视 Node.js Web 应用程序
 
@@ -41,27 +41,26 @@ ms.locfileid: "58849393"
 
 Application Insights 可以从任何连接 Internet 的应用程序收集遥测数据，而不考虑它是在本地运行还是在云中运行。 按照以下步骤开始查看此数据。
 
-1. 选择“创建资源” > “开发人员工具” > “Application Insights”。
+1. 选择“创建资源”   >   “开发人员工具” >   “Application Insights”。
 
    ![添加 Application Insights 资源](./media/nodejs-quick-start/1createresourseappinsights.png)
 
-   ![添加 Application Insights 资源](./media/nodejs-quick-start/2createnodejs.png)
+   > [!NOTE]
+   >如果这是你首次创建 Application Insights 资源，可以通过访问[创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)文档来了解更多信息。
 
-
-   此时会显示配置对话框，请使用下表填写输入字段。
+   此时会显示配置页，请使用下表填写输入字段。 
 
     | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
    | **应用程序类型** | Node.js 应用程序 | 所监视的应用的类型 |
-   | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
-2. 单击“创建”。
+2. 单击“创建”。 
 
 ## <a name="configure-app-insights-sdk"></a>配置 App Insights SDK
 
-1. 选择“概述”，然后复制应用程序的**检测密钥**。
+1. 选择“概述”，然后复制应用程序的**检测密钥**。 
 
    ![“新建 App Insights 资源”窗体](./media/nodejs-quick-start/3key.png)
 
@@ -85,23 +84,23 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>开始在 Azure 门户中监视
 
-1. 现在可以在 Azure 门户中重新打开 Application Insights“概述”页（已在其中检索到检测密钥），查看有关当前正在运行的应用程序的详细信息。
+1. 现在可以在 Azure 门户中重新打开 Application Insights“概述”  页（已在其中检索到检测密钥），查看有关当前正在运行的应用程序的详细信息。
 
    ![Application Insights 概述菜单](./media/nodejs-quick-start/4overview.png)
 
-2. 单击“应用程序映射”以获取应用程序组件之间依赖关系的可视布局。 每个组件均显示 KPI，如负载、性能、失败和警报。
+2. 单击“应用程序映射”  以获取应用程序组件之间依赖关系的可视布局。 每个组件均显示 KPI，如负载、性能、失败和警报。
 
    ![应用程序地图](./media/nodejs-quick-start/5appmap.png)
 
-3. 单击“应用分析”图标 ![“应用程序映射”图标](./media/nodejs-quick-start/006.png) “在 Analytics 中查看”。  这将打开“Application Insights Analytics”，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
+3. 单击“应用分析”  图标 ![“应用程序映射”图标](./media/nodejs-quick-start/006.png)  “在 Analytics 中查看”。  这将打开“Application Insights Analytics”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
 
    ![一段时间内用户请求的分析图](./media/nodejs-quick-start/6analytics.png)
 
-4. 返回到“概述”页并检查 KPI 图形。  此仪表板提供有关应用程序运行状况的统计信息，包括传入请求数、这些请求的持续时间，以及发生的任何故障。
+4. 返回到“概述”  页并检查 KPI 图形。  此仪表板提供有关应用程序运行状况的统计信息，包括传入请求数、这些请求的持续时间，以及发生的任何故障。
 
    ![“运行状况概述时间线”图](./media/nodejs-quick-start/7kpidashboards.png)
 
-   若要启用“页面视图加载时间”图表以填充“客户端遥测”数据，请将此脚本添加到要跟踪的每一页：
+   若要启用“页面视图加载时间”  图表以填充“客户端遥测”  数据，请将此脚本添加到要跟踪的每一页：
 
    ```HTML
    <!-- 
@@ -123,7 +122,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
    </script>
    ```
 
-5. 在左侧单击“指标”。 使用指标资源管理器调查资源的运行状况和利用率。 可以单击“添加新图表”创建其他自定义视图，或者选择“编辑”修改现有的图表类型、高度、调色板、分组和指标。 例如，可以制作一个图表来显示浏览器页面的平均加载时间，只需从指标下拉列表中选取“浏览器页面加载时间”并从聚合中选择“平均”即可。 若要详细了解 Azure 指标资源管理器，请访问 [Azure 指标资源管理器入门](../../azure-monitor/platform/metrics-getting-started.md)。
+5. 在左侧单击“指标”  。 使用指标资源管理器调查资源的运行状况和利用率。 可以单击“添加新图表”  创建其他自定义视图，或者选择“编辑”  修改现有的图表类型、高度、调色板、分组和指标。 例如，可以制作一个图表来显示浏览器页面的平均加载时间，只需从指标下拉列表中选取“浏览器页面加载时间”并从聚合中选择“平均”即可。 若要详细了解 Azure 指标资源管理器，请访问 [Azure 指标资源管理器入门](../../azure-monitor/platform/metrics-getting-started.md)。
 
    ![“服务器指标”图](./media/nodejs-quick-start/8metrics.png)
 
@@ -133,8 +132,8 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 完成测试后，即可删除资源组和所有相关的资源。 为此，请执行以下步骤。
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击“myResourceGroup”。
-2. 在资源组页上单击“删除”，在文本框中键入 **myResourceGroup**，然后单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，然后单击“myResourceGroup”  。
+2. 在资源组页上单击“删除”  ，在文本框中键入 **myResourceGroup**，然后单击“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 
