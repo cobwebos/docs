@@ -57,7 +57,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [机器学习活动：批处理执行和更新资源](transform-data-using-machine-learning.md) | Azure VM
 [存储过程](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL 数据仓库或 SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
-[自定义代码](transform-data-using-dotnet-custom-activity.md) | Azure 批处理
+[自定义代码](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks
 
 有关详细信息，请参阅[数据转换活动](transform-data.md)一文。
