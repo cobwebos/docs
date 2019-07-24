@@ -5,6 +5,7 @@
     - name: 关于 Azure 数字孪生
       href: about-digital-twins.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 查找可用房间
       href: quickstart-view-occupancy-dotnet.md

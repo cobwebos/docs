@@ -50,7 +50,7 @@ ms.locfileid: "65153810"
     | **OS** | Linux | 该函数应用在 Linux 上运行。 |
     | **发布** | 代码 | 将使用**运行时堆栈**的默认 Linux 容器。 只需提供函数应用项目代码即可。 另一个选项是发布自定义的 [Docker 映像](functions-create-function-linux-custom-image.md)。 |
     | [托管计划](functions-scale.md) | 应用服务计划 | 定义如何将资源分配给 Function App 的托管计划。 在应用服务计划中运行时，可以控制[函数应用的缩放](functions-scale.md)。  |
-    | **应用服务计划/位置** | 创建计划 | 选择“新建”并提供**应用服务计划**的名称。 在与你靠近或者与函数要访问的其他服务靠近的[区域](https://azure.microsoft.com/regions/)中选择一个**位置**。 选择所需的**[定价层](https://azure.microsoft.com/pricing/details/app-service/linux/)**。 <br/>不能在同一个应用服务计划中同时运行 Linux 和 Windows 函数应用。 |
+    | **应用服务计划/位置** | 创建计划 | 选择“新建”并提供**应用服务计划**的名称。 在与你靠近或者与函数要访问的其他服务靠近的[区域](https://azure.microsoft.com/regions/)中选择一个**位置**。 选择所需的 **[定价层](https://azure.microsoft.com/pricing/details/app-service/linux/)** 。 <br/>不能在同一个应用服务计划中同时运行 Linux 和 Windows 函数应用。 |
     | **运行时堆栈** | 首选语言 | 选择支持你喜欢的函数编程语言的运行时。 对于 C# 和 F# 函数，选择 **.NET**。 [Python 支持](functions-reference-python.md)目前为预览版。 |
     | **[存储](../storage/common/storage-quickstart-create-account.md)** |  全局唯一名称 |  创建函数应用使用的存储帐户。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可使用现有帐户，但该帐户必须符合[存储帐户要求](functions-scale.md#storage-account-requirements)。 |
     | **[Application Insights](functions-monitoring.md)** | 已启用 | 默认会启用 Application Insights。 我们建议立即启用 Application Insights 集成，并选择靠近应用服务计划位置的某个托管位置。 如果希望在以后执行此操作，请参阅[监视 Azure Functions](functions-monitoring.md)。  |

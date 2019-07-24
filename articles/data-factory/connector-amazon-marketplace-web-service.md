@@ -44,7 +44,7 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：AmazonMWS  | 是 |
+| type | type 属性必须设置为：AmazonMWS | 是 |
 | endpoint | Amazon MWS 服务器的终结点（即，mws.amazonservices.com）  | 是 |
 | marketplaceID | 要从中检索数据的 Amazon Marketplace ID。 要从多个市场 ID 检索数据，请将其用逗号 (`,`) 分隔。 （即，A2EUQ1WTGCTBG2）  | 是 |
 | sellerID | Amazon Marketplace ID。  | 是 |
@@ -84,11 +84,11 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Amazon Marketplace Web 服务数据集支持的属性列表。
 
-要从 Amazon Marketplace Web 服务复制数据，请将数据集的 type 属性设置为“AmazonMWSObject”  。 支持以下属性：
+要从 Amazon Marketplace Web 服务复制数据，请将数据集的 type 属性设置为“AmazonMWSObject”。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：AmazonMWSObject  | 是 |
+| type | 数据集的 type 属性必须设置为：AmazonMWSObject | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -114,11 +114,11 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 
 ### <a name="amazon-mws-as-source"></a>Amazon MWS 作为源
 
-要从 Amazon Marketplace Web 服务复制数据，请将复制活动中的源类型设置为“AmazonMWSSource”  。 复制活动**源**部分支持以下属性：
+要从 Amazon Marketplace Web 服务复制数据，请将复制活动中的源类型设置为“AmazonMWSSource”。 复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：AmazonMWSSource  | 是 |
+| type | 复制活动源的 type 属性必须设置为：AmazonMWSSource | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

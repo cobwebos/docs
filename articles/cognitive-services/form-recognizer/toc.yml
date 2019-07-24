@@ -41,6 +41,10 @@
   items:
     - name: 表单识别器 API
       href: 'https://aka.ms/form-recognizer/api'
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview'
 - name: 资源
   items:
     - name: 定价和限制

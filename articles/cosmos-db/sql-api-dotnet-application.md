@@ -1,21 +1,21 @@
 ---
-title: 适用于 Azure Cosmos DB 的 ASP.NET MVC 教程：Web 应用程序开发
-description: 介绍如何创建使用 Azure Cosmos DB 的 MVC Web 应用程序的 ASP.NET MVC 教程。 将存储 JSON 并从 Azure 网站上托管的待办事项应用程序中访问数据 — ASP NET MVC 教程分步说明。
+title: 适用于 Azure Cosmos DB 的 ASP.NET Core MVC 教程：Web 应用程序开发
+description: ASP.NET Core MVC 教程介绍如何创建使用 Azure Cosmos DB 的 MVC Web 应用程序。 我们将存储 JSON 并从 Azure 应用服务上托管的待办事项应用中访问数据 - ASP NET Core MVC 教程分步说明。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 05/21/2019
+ms.date: 06/24/2019
 ms.author: sngun
-ms.openlocfilehash: 15cf3b1316cc35e22538ca353302c4a82d2d418b
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 85d9cbe7d0807ca0e7951e1e12d1edbbf7c921db
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979017"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67985879"
 ---
-# <a name="_Toc395809351"></a>ASP.NET MVC 教程：使用 Azure Cosmos DB 进行 Web 应用程序开发
+# <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教程：通过 .NET SDK 开发使用 Azure Cosmos DB 的 ASP.NET Core MVC Web 应用程序 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -23,526 +23,288 @@ ms.locfileid: "65979017"
 > * [Node.js](sql-api-nodejs-application.md)
 > * [Python](sql-api-python-application.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
-> 
 
-为了特别说明可以如何有效地利用 Azure Cosmos DB 来存储和查询 JSON 文档，本文提供了演示如何使用 Azure Cosmos DB 构建待办事项应用的完整演练。 任务将存储为 Azure Cosmos DB 中的 JSON 文档。
 
-![按本教程创建的待办事项列表 MVC Web 应用程序屏幕截图 - ASP NET MVC 分步教程](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-image01.png)
+本教程介绍如何使用 Azure Cosmos DB 通过 Azure 上托管的 ASP.NET MVC 应用程序存储和访问数据。 在本教程中，请使用 .NET SDK V3。 下图显示将要使用本文中的示例生成的网页：
+ 
+![按本教程创建的待办事项列表 MVC Web 应用程序屏幕截图 - ASP NET Core MVC 分步教程](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-image01.png)
 
-本演练演示如何使用 Azure Cosmos DB 服务从 Azure 上托管的 ASP.NET MVC Web 应用程序来存储和访问数据。 如果正在寻找只侧重于 Azure Cosmos DB 而不是 ASP.NET MVC 组件的教程，请参阅 [构建 Azure Cosmos DB C# 控制台应用程序](sql-api-get-started.md)。
+如果没有时间完成本教程，可以从 [GitHub][GitHub] 下载完整的示例项目。
+
+本教程涉及：
+
+> [!div class="checklist"]
+> * 创建 Azure Cosmos 帐户
+> * 创建 ASP.NET Core MVC 应用
+> * 将应用连接到 Azure Cosmos DB 
+> * 对数据执行 CRUD 操作
 
 > [!TIP]
-> 本教程假定先前已有使用 ASP.NET MVC 和 Azure 网站的经验。 如果不熟悉 ASP.NET 或[必备工具](#_Toc395637760)，我们建议从 [GitHub][GitHub] 下载完整的示例项目，并按照此示例中的说明操作。 构建之后，可以回顾本文以深入了解项目上下文中的代码。
-> 
-> 
+> 本教程假定你先前有使用 ASP.NET Core MVC 和 Azure 应用服务的经验。 如果不熟悉 ASP.NET Core 或[必备工具](#prerequisites)，建议从 [GitHub][GitHub] 下载完整的示例项目，然后添加所需的 NuGet 包并运行它。 生成项目之后，可以回顾本文以深入了解项目上下文中的代码。
 
-## <a name="_Toc395637760"></a>本数据库教程的先决条件
-在按照本文中的说明操作之前，应确保已拥有下列项：
+## <a name="prerequisites"></a>先决条件 
 
-* 有效的 Azure 帐户。  如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+在按照本文中的说明操作之前，请确保具备以下资源：
+
+* **有效的 Azure 帐户：** 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)]  
-* 针对 Visual Studio 2017 的用于 .NET 的 Microsoft Azure SDK，可通过 Visual Studio 安装程序获得。
 
-本文中的所有屏幕截图都是使用 Microsoft Visual Studio Community 2017 获取的。 如果系统配备了不同的版本，那么，屏幕和选项可能不会完全相符，但只要符合上述先决条件，本解决方案应该还是有效。
+本文中的所有屏幕截图都是使用 Microsoft Visual Studio Community 2019 获取的。 如果系统配置了不同的版本，那么，屏幕和选项可能不会完全相符，但只要符合上述先决条件，本解决方案应该还是有效的。
 
-## <a name="_Toc395637761"></a>步骤 1：创建 Azure Cosmos DB 数据库帐户
-让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个 Azure Cosmos DB SQL 帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[创建新的 ASP.NET MVC 应用程序](#_Toc395637762)。
+## <a name="create-an-azure-cosmos-account"></a>步骤 1：创建 Azure Cosmos 帐户
+
+让我们首先创建一个 Azure Cosmos 帐户。 如果已有一个 Azure Cosmos DB SQL API 帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[创建新的 ASP.NET MVC 应用程序](#create-a-new-mvc-application)部分。
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 [!INCLUDE [keys](../../includes/cosmos-db-keys.md)]
 
-<br/>
-现在，我们将演练如何从头开始创建新的 ASP.NET MVC 应用程序。 
+在下一部分，将新建一个 ASP.NET Core MVC 应用程序。 
 
-## <a name="_Toc395637762"></a>步骤 2：新建 ASP.NET MVC 应用程序
+## <a name="create-a-new-mvc-application"></a>步骤 2：新建 ASP.NET Core MVC 应用程序
 
-1. 在 Visual Studio 的“文件”菜单中，指向“新建”，并单击“项目”。 将显示“新建项目”对话框。
+1. 在 Visual Studio 的“文件”菜单中，选择“新建”，然后选择“项目”。 将显示“新建项目”对话框。
 
-2. 在“项目类型”窗格中，依次展开“模板”、“Visual C#”、“Web”，并选择“ASP.NET Web 应用程序”。
+2. 在“新建项目”窗口中，使用“搜索模板”输入框来搜索“Web”，然后选择“ASP.NET Core Web 应用程序”。 
 
-      ![突出显示 ASP.NET Web 应用程序项目的“新建项目”对话框屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
+   ![新建 ASP.NET Core Web 应用程序项目](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
 
-3. 在“名称”框中，键入项目的名称。 本教程使用名称“todo”。 如果选择使用其他名称，则每当本教程提及 todo 命名空间时，必须调整所提供的代码示例，以便使用为应用程序命名的名称。 
-4. 单击“浏览”导航到要在其中创建项目的文件夹，并单击“确定”。
-   
-      将出现“新建 ASP.NET Web 应用程序”对话框。
-   
-    ![突出显示 MVC 应用程序模板的“New ASP.NET Web 应用程序”对话框屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-MVC.png)
-5. 在模板窗格中，选择“MVC”。
+3. 在“名称”框中，键入项目的名称。 本教程使用名称“todo”。 如果选择使用此名称之外的其他名称，则每当本教程提及 todo 命名空间时，请调整所提供的代码示例，以便使用为应用程序命名的名称。 
 
-6. 单击“确定”，让 Visual Studio 围绕空白 ASP.NET MVC 模板基架的搭建执行操作。 
+4. 选择“浏览”，导航到要在其中创建项目的文件夹。 选择“创建”。 
 
-          
-7. Visual Studio 创建好样板 MVC 应用程序之后，便拥有可以在本地运行的空白 ASP.NET 应用程序。
-   
-    我们会跳过在本地运行项目，因为我确定我们都已看过 ASP.NET“Hello World”应用程序。 让我们直接跳到将 Azure Cosmos DB 添加到此项目并构建应用程序的步骤。
+5. 此时会出现“新建 ASP.NET Core Web 应用程序”对话框。 在模板列表中，选择“Web 应用程序(模型-视图-控制器)”。
 
-## <a name="_Toc395637767"></a>步骤 3：将 Azure Cosmos DB 添加到 MVC Web 应用程序项目
-我们已经完成了此解决方案的大部分 ASP.NET MVC 琐事，现在可以开始本教程的真正目的，也就是将 Azure Cosmos DB 添加到 MVC Web 应用程序。
+6. 选择“创建”，让 Visual Studio 围绕空白 ASP.NET Core MVC 模板执行基架操作。 
 
-1. Azure Cosmos DB .NET SDK 将打包并以 NuGet 包的形式分发。 要在 Visual Studio 中获取 NuGet 包，请使用 Visual Studio 中的 NuGet 包管理器，方法是右键单击“解决方案资源管理器”中的项目，并单击“管理 NuGet 包”。
-   
-    ![解决方案资源管理器中突出显示“管理 NuGet 包”的 Web 应用程序项目右键单击选项的屏幕截图。](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
-   
-    此时会显示“管理 NuGet 包”对话框。
-2. 在 NuGet“浏览”框中，键入 ***Azure DocumentDB***。 （包名称尚未更新为 Azure Cosmos DB。）
-   
-    从结果中安装“Microsoft 提供的 Microsoft.Azure.DocumentDB”包。 这会下载并安装 Azure Cosmos DB 程序包，以及所有依赖项（例如 Newtonsoft.Json）。 在“预览”窗口中单击“确定”，并在“许可证接受”窗口中单击“我接受”，以完成安装。
-   
-    ![突出显示 Microsoft Azure Cosmos DB 客户端库的“管理 NuGet 包”窗口屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
-   
-      或者，也可以使用程序包管理器控制台来安装程序包。 为此，请在“工具”菜单中，单击“NuGet 包管理器”，并单击“包管理器控制台”。 在提示符处键入以下命令。
-   
-        Install-Package Microsoft.Azure.DocumentDB
-        
-3. 安装程序包之后，Visual Studio 解决方案应该类似于下列添加了两个新引用（Microsoft.Azure.Documents.Client 和 Newtonsoft.Json）的解决方案。
-   
-    ![解决方案资源管理器中添加到 JSON 数据项目的两个引用的屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-added-references.png)
+7. 待 Visual Studio 创建好样板 MVC 应用程序之后，便有了可以在本地运行的空白 ASP.NET 应用程序。
 
-## <a name="_Toc395637763"></a>步骤 4：设置 ASP.NET MVC 应用程序
-现在我们可以开始向此 MVC 应用程序添加模型、视图和控制器：
+## <a name="add-nuget-packages"></a>步骤 3：向项目添加 Azure Cosmos DB NuGet 包
 
-* [添加模型](#_Toc395637764)。
-* [添加控制器](#_Toc395637765)。
-* [添加视图](#_Toc395637766)。
+有了此解决方案所需的大多数 ASP.NET Core MVC 框架代码以后，即可添加连接到 Azure Cosmos DB 所需的 NuGet 包。
 
-### <a name="_Toc395637764"></a>添加 JSON 数据模型
-首先，让我们在 MVC 中创建 **M** （模型）。 
+1. Azure Cosmos DB .NET SDK 将打包并以 NuGet 包的形式分发。 若要在 Visual Studio 中获取 NuGet 包，请使用 Visual Studio 中的 NuGet 包管理器，方法是右键单击“解决方案资源管理器”中的项目，然后选择“管理 NuGet 包”。
+   
+   ![屏幕截图：解决方案资源管理器中 Web 应用程序项目的右键单击选项，其中突出显示了“管理 NuGet 包”。](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
+   
+2. 此时会显示“管理 NuGet 包”对话框。 在 NuGet 的“浏览”框中，键入 **Microsoft.Azure.Cosmos**。 从结果中安装 **Microsoft.Azure.Cosmos** 包。 它会下载并安装 Azure Cosmos DB 包及其依赖项。 在“接受许可证”窗口中选择“我接受”，以完成安装。
+   
+   也可使用包管理器控制台来安装 NuGet 包。 为此，请在“工具”菜单中选择“NuGet 包管理器”，然后选择“包管理器控制台”。 在提示符处键入以下命令：
+   
+   ```bash
+   Install-Package Microsoft.Azure.Cosmos
+   ```        
 
-1. 在“解决方案资源管理器”中，右键单击“模型”文件夹，单击“添加”，并单击“类”。
-   
-      此时会显示“添加新项”对话框。
-2. 将新类命名为 **Item.cs**，然后单击“添加”。 
-3. 在这个新的 **Item.cs** 文件中，将下列代码添加到最后一个 *using 语句*后面。
-   
-        using Newtonsoft.Json;
-4. 现在将此代码 
-   
-        public class Item
-        {
-        }
-   
-    替换为以下代码。
-   
-        public class Item
-        {
-            [JsonProperty(PropertyName = "id")]
-            public string Id { get; set; }
-   
-            [JsonProperty(PropertyName = "name")]
-            public string Name { get; set; }
-   
-            [JsonProperty(PropertyName = "description")]
-            public string Description { get; set; }
-   
-            [JsonProperty(PropertyName = "isComplete")]
-            public bool Completed { get; set; }
-        }
-   
-    Azure Cosmos DB 中的所有数据都会通过线路传递，并存储为 JSON。 若要通过 JSON.NET 控制对象的序列化/反序列化方式，可以使用刚才创建的 **Item** 类中所示的 **JsonProperty** 属性。 **不一定** 要这样做，但我想确保所有属性都按照 JSON camelCase 命名约定命名。 
-   
-    使用 JSON 时，不但可以控制属性名称的格式，还可以像我命名 **Description** 属性一样重命名 .NET 属性。 
+3. 安装该包之后，Visual Studio 项目就会包含对 Microsoft.Azure.Cosmos 的库引用。
+  
+## <a name="set-up-the-mvc-application"></a>步骤 4：设置 ASP.NET Core MVC 应用程序
 
-### <a name="_Toc395637765"></a>添加控制器
-现已创建 **M**，接下来创建 MVC 中的 **C**（控制器类）。
+现在可以向此 MVC 应用程序添加模型、视图和控制器了：
 
-1. 在“解决方案资源管理器”中，右键单击“控制器”文件夹，单击“添加”，并单击“控制器”。
-   
-    此时会显示“添加基架”对话框。
-2. 选择“MVC 5 控制器 - 空”，并单击“添加”。
-   
-    ![突出显示“MVC 5 控制器 - 空”选项的“添加基架”对话框屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
-3. 将新控制器命名为 **ItemController**
-   
-    ![“添加控制器”对话框的屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-controller.png)
-   
-    创建文件之后，Visual Studio 解决方案应该类似于下列在“解决方案资源管理器”中包含有新 ItemController.cs 文件的解决方案。 系统还会显示先前创建的新 Item.cs 文件。
-   
-    ![突出显示 ItemController.cs 新文件和 Item.cs 新文件的“Visual Studio 解决方案 - 解决方案资源管理器”屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-item-solution-explorer.png)
-   
-    可以关闭 ItemController.cs，我们稍后会回头使用此文件。 
+* [添加模型](#add-a-model)。
+* [添加控制器](#add-a-controller)。
+* [添加视图](#add-views)。
 
-### <a name="_Toc395637766"></a>添加视图
-现在，我们可以开始创建 MVC 中的 **V** （视图）：
+### <a name="add-a-model"></a> 添加模型
 
-* [添加“项索引”视图](#AddItemIndexView)
+1. 在“解决方案资源管理器”中，右键单击“模型”文件夹，选择“添加”，然后选择“类”。 此时会显示“添加新项”对话框。
+
+1. 将新类命名为 **Item.cs**，然后选择“添加”。 
+
+1. 接下来，将“Item.cs”类中的代码替换为以下代码：
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs)]
+   
+   Azure Cosmos DB 中存储的数据都会通过线路传递，并存储为 JSON。 若要控制通过 JSON.NET 进行的对象序列化/反序列化方式，可以使用已创建的 **Item** 类中展示的 **JsonProperty** 属性。 不但可以控制进入 JSON 的属性名称的格式，而且可以像重命名 **Completed** 属性一样重命名 .NET 属性。 
+
+### <a name="add-a-controller"></a>添加控制器
+
+1. 在“解决方案资源管理器”中，右键单击“控制器”文件夹，选择“添加”，然后选择“控制器”。 此时会显示“添加基架”对话框。
+
+1. 选择“MVC 控制器 - 空”，然后选择“添加”。
+
+   ![突出显示“MVC 控制器 - 空”选项的“添加基架”对话框屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
+
+1. 将新控制器命名为 **ItemController**，并将该文件中的代码替换为以下代码：
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
+
+   此处使用的 **ValidateAntiForgeryToken** 属性可帮助此应用程序防止跨站点请求伪造攻击。 不仅需添加此属性，还应确保视图也适用于此防伪令牌。 有关此主题的详细信息以及如何正确实施此操作的示例，请参阅[防止跨网站请求伪造][Preventing Cross-Site Request Forgery]. The source code provided on [GitHub][GitHub]包含完整实现。
+
+   我们还会在方法参数中使用 **Bind** 属性，帮助防范过度提交攻击。 有关更多详细信息，请参阅 [ASP.NET MVC 中的基本 CRUD 操作][Basic CRUD Operations in ASP.NET MVC]。
+
+### <a name="add-views"></a>添加视图
+
+接下来，请创建以下三个视图： 
+
+* [添加“列表项”视图](#AddItemIndexView)。
 * [添加“新建项”视图](#AddNewIndexView)。
-* [添加“编辑项”视图](#_Toc395888515)。
+* [添加“编辑项”视图](#AddEditIndexView)。
 
-#### <a name="AddItemIndexView"></a>添加“项索引”视图
-1. 在“解决方案资源管理器”中，展开“视图”文件夹，右键单击先前在添加 **ItemController** 时 Visual Studio 创建的空白“项”文件夹，单击“添加”，并单击“视图”。
+#### <a name="AddItemIndexView"></a>添加“列表项”视图
+
+1. 在“解决方案资源管理器”中，展开“视图”文件夹，右键单击先前在添加 **ItemController** 时 Visual Studio 创建的空白“项”文件夹，单击“添加”，然后单击“视图”。
    
-    ![显示项目文件夹的解决方案资源管理器屏幕截图，其中突出显示了使用“添加视图”命令创建的 Visual Studio](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view.png)
-2. 在“添加视图”对话框中，执行以下操作： 
+   ![解决方案资源管理器的屏幕截图，显示了 Visual Studio 创建的项文件夹，并突出显示了“添加视图”命令](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view.png)
+
+2. 在“添加视图”对话框中，更新以下值：
    
    * 在“视图名称”框中，键入“索引”。
    * 在“模板”框中，选择“列表”。
    * 在“模型类”框中，选择“项(todo.Models)”。
    * 在“布局页”框中，键入 ***~/Views/Shared/_Layout.cshtml***。
      
-   ![显示“添加视图”对话框的屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view-dialog.png)
-3. 设置完所有这些值之后，单击“添加”，让 Visual Studio 创建新的模板视图。 完成之后，它会打开刚创建的 cshtml 文件。 我们可以在 Visual Studio 中关闭该文件，我们稍后会回头使用此文件。
+   ![屏幕截图：显示“添加视图”对话框](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view-dialog.png)
+
+3. 在添加这些值之后，选择“添加”，让 Visual Studio 创建新的模板视图。 完成之后，它会打开创建的 cshtml 文件。 可以在 Visual Studio 中关闭该文件，因为稍后会回头使用它。
 
 #### <a name="AddNewIndexView"></a>添加“新建项”视图
-与创建“项索引”视图的方式类似，我们现在可以开始创建新的视图，以供创建新**项**使用。
 
-1. 在“解决方案资源管理器”中，再次右键单击“Item”文件夹，单击“添加”，并单击“视图”。
-2. 在“添加视图”对话框中，执行以下操作： 
+与创建视图来列出项一样，请执行以下步骤，以便创建新视图来创建项：
+
+1. 在“解决方案资源管理器”中，请再次右键单击“项”文件夹，选择“添加”，然后选择“视图”。
+
+1. 在“添加视图”对话框中，更新以下值：
    
    * 在“视图名称”框中，键入“创建”。
    * 在“模板”框中，选择“创建”。
    * 在“模型类”框中，选择“项(todo.Models)”。
    * 在“布局页”框中，键入 ***~/Views/Shared/_Layout.cshtml***。
-   * 单击“添加”。
+   * 选择 **添加** 。
    
-#### <a name="_Toc395888515"></a>添加“编辑项”视图
-最后，采用与之前相同的方式添加最后一个视图，以供编辑 **项** 使用。
+#### <a name="AddEditIndexView"></a>添加“编辑项”视图
 
-1. 在“解决方案资源管理器”中，再次右键单击“Item”文件夹，单击“添加”，并单击“视图”。
-2. 在“添加视图”对话框中，执行以下操作： 
+最后，通过以下步骤添加一个用于编辑项目的视图：
+
+1. 在“解决方案资源管理器”中，请再次右键单击“项”文件夹，选择“添加”，然后选择“视图”。
+
+1. 在“添加视图”对话框中，执行以下操作：
    
    * 在“视图名称”框中，键入“编辑”。
    * 在“模板”框中，选择“编辑”。
    * 在“模型类”框中，选择“项(todo.Models)”。
    * 在“布局页”框中，键入 ***~/Views/Shared/_Layout.cshtml***。
-   * 单击“添加”。
+   * 选择 **添加** 。
 
-完成此操作之后，关闭 Visual Studio 中的所有 cshtml 文档，我们稍后会回头使用这些视图。
+完成此操作之后，请关闭 Visual Studio 中的所有 cshtml 文档，因为稍后会回头使用这些视图。
 
-## <a name="_Toc395637769"></a>步骤 5：连接 Azure Cosmos DB
-我们已经创建了标准的 MVC 项目，现在我们可以开始添加 Azure Cosmos DB 的代码。 
+## <a name="connect-to-cosmosdb"></a>步骤 5：连接到 Azure Cosmos DB 
 
-在本节中，我们将添加代码来处理下列操作：
+创建标准的 MVC 项目后，现在可以添加代码来连接到 Azure Cosmos DB 并执行 CRUD 操作了。 
 
-* [列出未完成的项](#_Toc395637770)。
-* [添加项](#_Toc395637771)。
-* [编辑项](#_Toc395637772)。
+### <a name="perform-crud-operations"></a> 对数据执行 CRUD 操作
 
-### <a name="_Toc395637770"></a>列出 MVC Web 应用程序中未完成的项
-首先要执行的操作是添加类，其中包含要连接并使用 Azure Cosmos DB 的所有逻辑。 在本教程中，我们会将所有逻辑封装到名为 DocumentDBRepository 的存储库类中。 
+在这里，首先要执行的操作是添加类，其中包含连接并使用 Azure Cosmos DB 所需的逻辑。 在本教程中，我们会将该逻辑封装到名为 `CosmosDBService` 的类和名为 `ICosmosDBService` 的接口中。 此服务执行 CRUD 和读取源操作，例如列出不完整的项以及创建、编辑和删除项。 
 
-1. 在“解决方案资源管理器”中，右键单击该项目，单击“添加”，并单击“类”。 将新类命名为 **DocumentDBRepository**，并单击“添加”。
-2. 在刚刚创建的 **DocumentDBRepository** 类中，在*命名空间*声明上方添加以下 *using 语句*
-   
-        using Microsoft.Azure.Documents; 
-        using Microsoft.Azure.Documents.Client; 
-        using Microsoft.Azure.Documents.Linq; 
-        using System.Configuration;
-        using System.Linq.Expressions;
-        using System.Threading.Tasks;
-        using System.Net;
-        
-    现在将此代码 
-   
-        public class DocumentDBRepository
-        {
-        }
-   
-    替换为以下代码。
-   
-        public static class DocumentDBRepository<T> where T : class
-        {
-            private static readonly string DatabaseId = ConfigurationManager.AppSettings["database"];
-            private static readonly string CollectionId = ConfigurationManager.AppSettings["collection"];
-            private static DocumentClient client;
-   
-            public static void Initialize()
-            {
-                client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);
-                CreateDatabaseIfNotExistsAsync().Wait();
-                CreateCollectionIfNotExistsAsync().Wait();
-            }
-   
-            private static async Task CreateDatabaseIfNotExistsAsync()
-            {
-                try
-                {
-                    await client.ReadDatabaseAsync(UriFactory.CreateDatabaseUri(DatabaseId));
-                }
-                catch (DocumentClientException e)
-                {
-                    if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
-                    {
-                        await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-            }
-   
-            private static async Task CreateCollectionIfNotExistsAsync()
-            {
-                try
-                {
-                    await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId));
-                }
-                catch (DocumentClientException e)
-                {
-                    if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
-                    {
-                        await client.CreateDocumentCollectionAsync(
-                            UriFactory.CreateDatabaseUri(DatabaseId),
-                            new DocumentCollection { Id = CollectionId },
-                            new RequestOptions { OfferThroughput = 1000 });
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-            }
-        }
-   
-    
-3. 我们打算从配置中读取部分值，因此请打开应用程序的 **Web.config** 文件，并在 `<AppSettings>` 节下面添加下列几行。
-   
-        <add key="endpoint" value="enter the URI from the Keys blade of the Azure Portal"/>
-        <add key="authKey" value="enter the PRIMARY KEY, or the SECONDARY KEY, from the Keys blade of the Azure  Portal"/>
-        <add key="database" value="ToDoList"/>
-        <add key="collection" value="Items"/>
-4. 现在，使用 Azure 门户的“密钥”边栏选项卡来更新*终结点*和 *authKey* 的值。 使用“密钥”边栏选项卡中的“URI”作为终结点设置的值，使用“密钥”边栏选项卡中的“主密钥”或“辅助密钥”作为 authKey 设置的值。
+1. 在“解决方案资源管理器”的项目中创建名为 **Services** 的新文件夹。
 
-    我们已经连接了 Azure Cosmos DB 存储库，现在让我们添加应用程序逻辑。
+1. 右键单击 **Services** 文件夹，选择“添加”，然后选择“类”。 将新类命名为 **CosmosDBService**，然后选择“添加”。
 
-1. 我们想要用待办事项列表应用程序做的第一件事就是显示未完成的项。  在 **DocumentDBRepository** 类中的任意位置复制并粘贴以下代码片段。
-   
-        public static async Task<IEnumerable<T>> GetItemsAsync(Expression<Func<T, bool>> predicate)
-        {
-            IDocumentQuery<T> query = client.CreateDocumentQuery<T>(
-                UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId))
-                .Where(predicate)
-                .AsDocumentQuery();
-   
-            List<T> results = new List<T>();
-            while (query.HasMoreResults)
-            {
-                results.AddRange(await query.ExecuteNextAsync<T>());
-            }
-   
-            return results;
-        }
-2. 打开我们先前添加的 **ItemController** ，并在命名空间声明上方添加以下 *using 语句* 。
-   
-        using System.Net;
-        using System.Threading.Tasks;
-        using todo.Models;
-   
-    如果项目名称不是“todo”，则必须使用“todo. Models”进行更新，才能反映项目名称。
-   
-    现在将此代码
-   
-        //GET: Item
-        public ActionResult Index()
-        {
-            return View();
-        }
-   
-    替换为以下代码。
-   
-        [ActionName("Index")]
-        public async Task<ActionResult> IndexAsync()
-        {
-            var items = await DocumentDBRepository<Item>.GetItemsAsync(d => !d.Completed);
-            return View(items);
-        }
-3. 打开 **Global.asax.cs** 并将以下行添加到 **Application_Start** 方法 
-   
-        DocumentDBRepository<todo.Models.Item>.Initialize();
+1. 将以下代码添加到 **CosmosDBService** 类，并将该文件中的代码替换为以下代码：
 
-此时，应该可以构建解决方案，而不会发生任何错误。
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs)]
 
-如果现在运行应用程序，则可转到 **HomeController** 以及该控制器的“索引”视图。 这是我们一开始就选定的 MVC 模板项目默认行为，但是我们不想要这样的行为！ 让我们更改此 MVC 应用程序上的路由以改变此行为。
+1. 重复步骤 2-3，但这次是针对名为 **ICosmosDBService** 的类进行操作，并添加以下代码：
 
-打开 ***App\_Start\RouteConfig.cs***，找到以“defaults:”开头的行，并将它更改为如下行。
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs)]
+ 
+1. 前面的代码接收 `CosmosClient` 作为构造函数的一部分。 我们需要沿着 ASP.NET Core 管道转到项目的 **Startup.cs**，并根据配置将客户端初始化为将要通过[依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)注入的单一实例。 在 **ConfigureServices** 处理程序中，我们定义：
 
-        defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
+    ```csharp
+    services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
+    ```
 
-若未在 URL 中指定控制路由行为的值，这会让 ASP.NET MVC 知道改用“项”（而不是“主页”）作为控制器，并使用“索引”作为视图。
+1. 在同一文件中，我们定义帮助程序方法 **InitializeCosmosClientInstanceAsync**，用于读取配置并初始化客户端。
 
-若运行应用程序，它现在会调用到 **ItemController**，进而调用到存储库类，并使用 GetItems 方法将所有未完成的项返回到“视图\\项\\索引”视图。 
+    ```csharp
+    private static async Task<CosmosDbService> InitializeCosmosClientInstanceAsync(IConfigurationSection configurationSection)
+    {
+        string databaseName = configurationSection.GetSection("DatabaseName").Value;
+        string containerName = configurationSection.GetSection("ContainerName").Value;
+        string account = configurationSection.GetSection("Account").Value;
+        string key = configurationSection.GetSection("Key").Value;
+        CosmosClientBuilder clientBuilder = new CosmosClientBuilder(account, key);
+        CosmosClient client = clientBuilder
+                            .WithConnectionModeDirect()
+                            .Build();
+        CosmosDbService cosmosDbService = new CosmosDbService(client, databaseName, containerName);
+        Database database = await client.CreateDatabaseIfNotExistsAsync(databaseName);
+        await database.CreateContainerIfNotExistsAsync(containerName, "/id");
 
-如果构建并立即运行此项目，现在应该会看到如下内容。    
+        return cosmosDbService;
+    }
+    ```
+
+1. 配置在项目的 **appsettings.json** 文件中定义。 打开该文件，并添加名为 **CosmosDb** 的节：
+
+   ```csharp
+     "CosmosDb": {
+        "Account": "<enter the URI from the Keys blade of the Azure Portal>",
+        "Key": "<enter the PRIMARY KEY, or the SECONDARY KEY, from the Keys blade of the Azure  Portal>",
+        "DatabaseName": "Tasks",
+        "ContainerName": "Items"
+      }
+   ```
+ 
+现在，如果运行此应用程序，ASP.NET Core 的管道会实例化 **CosmosDbService** 并将单个实例作为单一实例保留；当使用 **ItemController** 处理客户端请求时，它会收到此单个实例并且能够用它来执行 CRUD 操作。
+
+现在，如果构建并立即运行此项目，则会看到如下所示内容：
 
 ![按本数据库教程创建的待办事项列表 Web 应用程序屏幕截图](./media/sql-api-dotnet-application/build-and-run-the-project-now.png)
 
-### <a name="_Toc395637771"></a>添加项
-我们可以开始将一些项放入数据库中，所以除了空白网格以外，我们还可以看到其他内容。
 
-让我们将一些代码添加到 Azure Cosmos DBRepository 和 ItemController，以在 Azure Cosmos DB 中持久保存记录。
+## <a name="run-the-application"></a>步骤 6：在本地运行应用程序
 
-1. 将下列方法添加到 **DocumentDBRepository** 类。
-   
-       public static async Task<Document> CreateItemAsync(T item)
-       {
-           return await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId), item);
-       }
-   
-   此方法只接受传递给它的对象，并将对象保留在 Azure Cosmos DB 中。
-2. 打开 ItemController.cs 文件，并在类中添加下列代码段。 这是 ASP.NET MVC 得知如何执行 **创建** 操作的方式。 在此情况下，只需呈现先前创建的关联 Create.cshtml 视图。
-   
-        [ActionName("Create")]
-        public async Task<ActionResult> CreateAsync()
-        {
-            return View();
-        }
-   
-    现在此控制器需要更多代码，以接受“创建”视图所提交的数据。
-3. 将下一个代码块添加到 ItemController.cs 类，以告诉 ASP.NET MVC 如何使用窗体 POST 来执行此控制器的操作。
-   
-        [HttpPost]
-        [ActionName("Create")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateAsync([Bind(Include = "Id,Name,Description,Completed")] Item item)
-        {
-            if (ModelState.IsValid)
-            {
-                await DocumentDBRepository<Item>.CreateItemAsync(item);
-                return RedirectToAction("Index");
-            }
-   
-            return View(item);
-        }
-   
-    此代码会调用到 DocumentDBRepository，并使用 CreateItemAsync 方法将新的待办事项保存到数据库。 
-   
-    **安全说明**：此处使用的 **ValidateAntiForgeryToken** 属性可帮助此应用程序防止跨站点请求伪造攻击。 这不仅仅是添加此属性，视图也必须使用此防伪令牌。 有关此主题的详细信息以及如何正确实施此操作的示例，请参阅[防止跨站点请求伪造][Preventing Cross-Site Request Forgery]。 [GitHub][GitHub] 上提供的源代码已有完整实现。
-   
-    **安全说明**：我们还会在方法参数中使用 **Bind** 属性，帮助防范过度提交攻击。 有关更多详细信息，请参阅 [ASP.NET MVC 中的基本 CRUD 操作][Basic CRUD Operations in ASP.NET MVC]。
+若要在本地计算机中测试应用程序，请使用以下步骤：
 
-将新项添加到数据库所需的代码至此结束。
+1. 在 Visual Studio 中按 F5 即可在调试模式下构建应用程序。 这样应该可以构建应用程序，并启动包含先前看到的空白网格页面的浏览器：
+   
+   ![按本教程创建的待办事项列表 Web 应用程序屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
+       
+2. 单击“新建”链接，并在“名称”和“描述”字段中添加值。 让“已完成”复选框保持未选中状态，否则，新项会以已完成状态添加，不出现在初始列表中。
+   
+3. 单击“创建”，此时会重定向回“索引”视图，创建的项会出现在列表中。 可以向待办事项列表添加更多项。
 
-### <a name="_Toc395637772"></a>编辑项
-我们最后还要做一件事，那就是添加在数据库中编辑 **项** 并将它们标记为已完成的功能。 编辑视图已添加到项目中，因此，我们只需重新将某些代码添加到控制器和 **DocumentDBRepository** 类。
+    ![屏幕截图：“索引”视图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
+  
+4. 单击列表上某个**项**旁边的“编辑”将转到“编辑”视图，可以在此视图中更新对象的任何属性（包括“已完成”标志）。 如果标记“已完成”标志并单击“保存”，该**项**会在列表中显示为已完成。
+   
+   ![勾选了“已完成”框的“索引”视图屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
 
-1. 将下列代码添加到 **DocumentDBRepository** 类。
-   
-        public static async Task<Document> UpdateItemAsync(string id, T item)
-        {
-            return await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, id), item);
-        }
-   
-        public static async Task<T> GetItemAsync(string id)
-        {
-            try
-            {
-                Document document = await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, id));
-                return (T)(dynamic)document;
-            }
-            catch (DocumentClientException e)
-            {
-                if (e.StatusCode == HttpStatusCode.NotFound)
-                {
-                    return null;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-        }
-   
-    这些方法中的第一个方法 (**GetItem**) 会从 Azure Cosmos DB 中提取某个项，此项会被传递回 **ItemController**，接着传到“编辑”视图。
-   
-    刚刚添加的第二个方法使用从 **ItemController** 传入的**文档**版本取代 Azure Cosmos DB 中的**文档**。
-2. 将下列代码添加到 **ItemController** 类。
-   
-        [HttpPost]
-        [ActionName("Edit")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditAsync([Bind(Include = "Id,Name,Description,Completed")] Item item)
-        {
-            if (ModelState.IsValid)
-            {
-                await DocumentDBRepository<Item>.UpdateItemAsync(item.Id, item);
-                return RedirectToAction("Index");
-            }
-   
-            return View(item);
-        }
-   
-        [ActionName("Edit")]
-        public async Task<ActionResult> EditAsync(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-   
-            Item item = await DocumentDBRepository<Item>.GetItemAsync(id);
-            if (item == null)
-            {
-                return HttpNotFound();
-            }
-   
-            return View(item);
-        }
-   
-    第一个方法会处理当用户单击“索引”视图中的“编辑”链接时所发生的 Http GET。 此方法会从 Azure Cosmos DB 中提取[**文档**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx)，并将它传递给“编辑”视图。
-   
-    “编辑”视图会接着对 **IndexController** 执行 Http POST 操作。 
-   
-    添加的第二个方法会处理此操作：将更新对象传递到 Azure Cosmos DB 以便持久保存在数据库中。
+5. 可以随时使用 [Cosmos 资源管理器](https://cosmos.azure.com)或 Azure Cosmos DB 模拟器的数据资源管理器来验证 Azure Cosmos DB 服务中数据的状态。
 
-这样便大功告成了，这些就是我们必须运行应用程序的所有操作：列出未完成的**项**，添加新**项**，最后是编辑**项**。
+6. 完成应用测试后，按 Ctrl+F5 停止调试应用。 可以开始部署了！
 
-## <a name="_Toc395637773"></a>步骤 6：在本地运行应用程序
-若要在本地计算机上测试应用程序，请执行以下操作：
-
-1. 在 Visual Studio 中按 F5，即可在调试模式下构建应用程序。 这样应该可以构建应用程序，并启动包含先前看到的空白网格页面的浏览器：
-   
-    ![按本数据库教程创建的待办事项列表 Web 应用程序屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
-   
-     
-2. 单击“新建”链接，并在“名称”和“描述”字段中添加值。 将“已完成”复选框保持为未选中状态，否则，新**项**将以已完成状态添加，不会出现在初始列表中。
-   
-    ![“创建”视图的屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-new-item.png)
-3. 单击“创建”，随后将重定向回到“索引”视图，创建的**项**会出现在列表中。
-   
-    ![“索引”视图的屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
-   
-    向待办事项列表任意添加更多 **项** 。
-    
-4. 单击列表上某个**项**旁边的“编辑”将转到“编辑”视图，可以在此视图中更新对象的任何属性（包括“已完成”标志）。 如果标记“已完成”标志并单击“保存”，该**项**将从未完成任务列表中删除。
-   
-    ![勾选了“已完成”框的“索引”视图屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
-5. 完成应用测试后，按 Ctrl+F5 停止调试应用。 可以开始部署了！
-
-## <a name="_Toc395637774"></a>步骤 7：将应用程序部署到 Azure 应用服务 
+## <a name="deploy-the-application-to-azure"></a>步骤 7：部署应用程序 
 现在，已经拥有了可以使用 Azure Cosmos DB 正常工作的完整应用程序，接下来我们要将此 Web 应用部署到 Azure 应用服务。  
 
-1. 要发布此应用程序，只需要右键单击“解决方案资源管理器”中的项目，单击“发布”即可。
+1. 若要发布此应用程序，请右键单击“解决方案资源管理器”中的项目，然后选择“发布”。
    
-    ![解决方案资源管理器中“发布”选项的屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish.png)
+2. 在“发布”对话框中选择“应用服务”，然后选择“新建”以创建应用服务配置文件，或选择“选择现有”以使用现有配置文件。
 
-2. 在“发布”对话框中，单击“Microsoft Azure App Service”，然后选择“新建”以创建应用服务配置文件，或单击“选择现有项”使用现有配置文件。
-
-    ![Visual Studio 中的“发布”对话框](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish-to-existing.png)
-
-3. 如果具有现有的 Azure 应用服务配置文件，请输入订阅名称。 使用“视图”按资源组或资源类型进行筛选，然后选择 Azure 应用服务。 
+3. 如果具有现有的 Azure 应用服务配置文件，请从下拉列表中选择“订阅”。 使用“视图”筛选器按资源组或资源类型进行筛选。 接下来搜索必需的 Azure 应用服务，然后选择“确定”。
    
-    ![Visual Studio 中的“应用服务”对话框](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service.png)
+   ![Visual Studio 中的“应用服务”对话框](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service.png)
 
-4. 若要创建新的 Azure 应用服务配置文件，请单击“发布”对话框中的“新建”。 在“创建应用服务”对话框中，输入 Web 应用名称和相应的订阅、资源组和应用服务计划，然后单击“创建”。
+4. 若要创建新的 Azure 应用服务配置文件，请单击“发布”对话框中的“新建”。 在“创建应用服务”对话框中，输入 Web 应用名称和相应的订阅、资源组和应用服务计划，然后选择“创建”。
 
-    ![Visual Studio 中的“创建应用服务”对话框](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service.png)
+   ![Visual Studio 中的“创建应用服务”对话框](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service.png)
 
-在几秒钟内，Visual Studio 将完成 Web 应用程序发布并启动浏览器，可从中查看在 Azure 中运行的简单作品！
+在几秒钟内，Visual Studio 会发布 Web 应用程序并启动浏览器，方便你查看在 Azure 中运行的项目！
 
+## <a name="next-steps"></a>后续步骤
+本教程介绍了如何生成能够访问 Azure Cosmos DB 中存储的数据的 ASP.NET Core MVC Web 应用程序。 你现在可以继续学习下一篇文章：
 
+* [了解如何在 Azure Cosmos DB 中将数据分区](./partitioning-overview.md)
+* [了解如何在 Azure Cosmos DB 中执行更高级的查询](./how-to-sql-query.md)
+* [了解如何在更高级的方案中为数据建模](./how-to-model-partition-example.md)
 
-## <a name="_Toc395637775"></a>后续步骤
-祝贺你！ 刚才构建了第一个使用 Azure Cosmos DB 的 ASP.NET MVC Web 应用程序并将其发布到了 Azure。 可以从 [GitHub][GitHub] 下载或克隆完整应用程序（包括本教程未涵盖的详细信息和删除功能）的源代码。 因此，如果想将代码添加到应用中，请捕捉代码，再将它添加到此应用中。
-
-若要向应用程序添加其他功能，请查看 [Azure Cosmos DB .NET 库](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)中提供的 API，并欢迎在 [GitHub][GitHub] 上的 Azure Cosmos DB .NET 库中补充内容。 
 
 [Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
 [Preventing Cross-Site Request Forgery]: https://go.microsoft.com/fwlink/?LinkID=517254
 [Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
-[GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
+[GitHub]: https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app

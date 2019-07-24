@@ -356,7 +356,7 @@
     - name: 企业安全性
       items:
         - name: 概述
-          href: ../domain-joined/apache-domain-joined-introduction.md
+          href: ../domain-joined/hdinsight-security-overview.md
         - name: 企业安全性计划
           href: ../domain-joined/apache-domain-joined-architecture.md
         - name: 在 HDInsight 中配置企业安全性

@@ -5,6 +5,7 @@
     - name: 关于空间定位点
       href: overview.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 创建 Unity 应用
       href: unity-overview.yml

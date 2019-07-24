@@ -71,7 +71,7 @@ Get-Module Az.Sql
 
 创建弹性作业代理需要一个用作[作业数据库](sql-database-job-automation-overview.md#job-database)的数据库（S0 或更高级别）。 
 
- 下面的脚本创建新的资源组、服务器以及可用作作业数据库的数据库。下面的脚本还创建了另外一个服务器，其中包含两个用于对其执行作业的空数据库。*
+*下面的脚本创建新的资源组、服务器以及可用作作业数据库的数据库。下面的脚本还创建了另外一个服务器，其中包含两个用于对其执行作业的空数据库* 。
 
 弹性作业没有特定的命名要求，因此可以使用所需的任何命名约定，只要其符合 [Azure 要求](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)即可。
 
@@ -295,12 +295,12 @@ $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 |**创建时间** | 作业执行刚刚创建，还没有进行。|
 |**InProgress** | 作业执行目前正在进行中。|
 |**WaitingForRetry** | 作业执行无法完成其操作，正在等待重试。|
-|成功  | 作业执行已成功完成。|
+|成功 | 作业执行已成功完成。|
 |**SucceededWithSkipped** | 作业执行已成功完成，但跳过了它的一些子项。|
-|失败  | 作业执行失败，已用尽重试次数。|
+|失败 | 作业执行失败，已用尽重试次数。|
 |**TimedOut** | 作业执行已超时。|
 |**已取消** | 作业执行已取消。|
-|已跳过  | 已跳过作业执行，因为同一作业步骤的另一个执行已在同一目标上运行。|
+|已跳过 | 已跳过作业执行，因为同一作业步骤的另一个执行已在同一目标上运行。|
 |**WaitingForChildJobExecutions** | 作业执行正在等待其子执行完成。|
 
 ## <a name="schedule-the-job-to-run-later"></a>计划要在以后运行的作业
