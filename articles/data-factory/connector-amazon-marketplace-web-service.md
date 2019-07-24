@@ -47,7 +47,7 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 | type | type 属性必须设置为：AmazonMWS  | 是 |
 | endpoint | Amazon MWS 服务器的终结点（即，mws.amazonservices.com）  | 是 |
 | marketplaceID | 要从中检索数据的 Amazon Marketplace ID。 要从多个市场 ID 检索数据，请将其用逗号 (`,`) 分隔。 （即，A2EUQ1WTGCTBG2）  | 是 |
-| sellerID | Amazon 卖方 ID。  | 是 |
+| sellerID | Amazon Marketplace ID。  | 是 |
 | mwsAuthToken | Amazon MWS 身份验证令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | accessKeyId | 用于访问数据的访问密钥 ID。  | 是 |
 | secretKey | 用于访问数据的密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
