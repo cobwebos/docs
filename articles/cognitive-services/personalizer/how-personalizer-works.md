@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: edjez
-ms.openlocfilehash: 38480d3cc32d53084b79af627e4f7e6ae7dcc03d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 7bdafafc0d542a98b80f2b6f5db2c14c8777bf5b
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722359"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423258"
 ---
 # <a name="how-personalizer-works"></a>个性化体验创建服务的工作原理
 
@@ -33,7 +33,7 @@ ms.locfileid: "67722359"
 **奖励** API：
 
 * 通过记录每个排名调用的特征和奖励评分来收集用于训练模型的数据。
-* 根据学习策略中指定的设置，使用该数据更新模型。 
+* 根据学习策略中指定的设置，使用该数据更新模型。
 
 ## <a name="architecture"></a>体系结构
 
@@ -57,7 +57,7 @@ ms.locfileid: "67722359"
 
 * **学习循环**：可为受益于个性化的应用程序的每个部分创建学习循环。 如果需要个性化多个体验，请为每个体验创建一个循环。 
 
-* **操作**：操作是可供选择的内容项，例如产品或促销。 个性化体验创建服务通过排名 API 选择要向用户显示的最相关操作，称为“奖励操作”。  每个操作可以包含连同排名请求一起提交的特征。
+* **操作**：操作是可供选择的内容项，例如产品或促销。 个性化体验创建服务通过排名 API 选择要向用户显示的最相关操作，称为“奖励操作”。 每个操作可以包含连同排名请求一起提交的特征。
 
 * **Context**：若要提供更准确的排名，请提供有关上下文的信息，例如：
     * 你的用户。
@@ -79,6 +79,8 @@ ms.locfileid: "67722359"
 * **非活动事件**：非活动事件是调用了排名，但不确定用户是否会看到结果（因为客户端应用程序的决策）的事件。 使用非活动事件可以创建和存储个性化结果，然后决定放弃这些结果，而不会影响机器学习模型。
 
 * **模型**：个性化体验创建服务模型捕获习得的有关用户行为的数据，从发送到排名和奖励调用的参数组合中获取训练数据，并提供学习策略确定的训练行为。 
+
+* **学习策略**:Personalizer 在每个事件上定型模型的方式取决于一些会影响机器学习算法工作方式的元参数。 新的 Personalizer 循环将以默认的学习策略开始, 这可能会产生适度的性能。 运行[评估](concepts-offline-evaluation.md)时, Personalizer 可以创建专门优化到循环使用情况的新学习策略。 对于在评估过程中生成的每个特定循环, Personalizer 将显著提高性能。
 
 ## <a name="example-use-cases-for-personalizer"></a>个性化体验创建服务的用例
 
@@ -182,3 +184,4 @@ ms.locfileid: "67722359"
 ## <a name="next-steps"></a>后续步骤
 
 了解[可在何处使用个性化体验创建服务](where-can-you-use-personalizer.md)。
+执行[脱机评估](how-to-offline-evaluation.md)

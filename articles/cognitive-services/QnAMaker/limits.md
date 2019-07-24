@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 07/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b366352d19b3f1e03e32e5fbddf0cb2816fa1ba3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320286"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423457"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -60,16 +60,17 @@ ms.locfileid: "68320286"
 * 文件名长度：200
 * 支持的文件格式:：“.tsv”、“.pdf”、“.txt”、“.docx”、“.xlsx”。
 * 备用问题的最大数量：300
-* 问题答案对的最大数量：取决于所选的 **[Azure 搜索层限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** 。 问答对是 Azure 搜索索引中的文档。 
+* 问题答案对的最大数量：取决于所选的 **[Azure 搜索层](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** 。 问题和答案对映射到 Azure 搜索索引中的文档。 
+* URL/HTML 页面:1000000个字符
 
 ## <a name="create-knowledge-base-call-limits"></a>创建知识库调用限制：
-表示每个创建知识库操作的限制；即，单击“创建知识库”或调用 CreateKnowledgeBase API  。
+表示每个创建知识库操作的限制；即，单击“创建知识库”或调用 CreateKnowledgeBase API。
 * 每个答案的备用问题的最大数量：300
 * 最大 URL 数：10
 * 最大文件数：10
 
 ## <a name="update-knowledge-base-call-limits"></a>更新知识库调用限制
-表示每个更新操作的限制；即，单击“保存并培训”或调用 UpdateKnowledgeBase API  。
+表示每个更新操作的限制；即，单击“保存并培训”或调用 UpdateKnowledgeBase API。
 * 每个源名称的长度：300
 * 添加或删除的备用问题的最大数量：300
 * 添加或删除的元数据字段的最大数量：10

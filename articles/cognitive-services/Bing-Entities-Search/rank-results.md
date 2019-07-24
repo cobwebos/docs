@@ -1,6 +1,6 @@
 ---
 title: 使用排名显示答案 - 必应实体搜索
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用排名显示必应实体搜索 API 返回的答案。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 9e2a4075436145a0cc185b7ab1b406fa8d27b8e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60309328"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423919"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>使用排名显示实体搜索结果  
 

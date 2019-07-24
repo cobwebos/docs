@@ -156,8 +156,8 @@
         - name: 训练 API
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
-    - name: 常见问题解答
-      href: faqs.md
+    - name: 故障排除
+      href: troubleshooting.md
     - name: 限制
       href: limits.md
     - name: 术语表

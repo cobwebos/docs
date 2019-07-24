@@ -3,20 +3,20 @@ title: 使用语音 SDK 开发应用 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音 SDK 创建应用。
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 7c698abb133c14f32b60b22acbbccc37a191a02e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8fc27002af4ebef0825b23c806cfedbe7adf9642
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604850"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404811"
 ---
 # <a name="ship-an-application"></a>交付应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "67604850"
 
 认知服务语音 SDK 在 Windows 10 和 Windows Server 2016 上进行测试。
 
-认知服务语音 SDK 需要[Microsoft VisualC++可再发行组件的 Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)系统上。 可在此处下载最新版 `Microsoft Visual C++ Redistributable for Visual Studio 2019` 安装程序：
+认知服务语音 SDK 需要在系统上安装[适用于 Visual Studio 2019 的 Microsoft visual C++可再发行组件](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 可在此处下载最新版 `Microsoft Visual C++ Redistributable for Visual Studio 2019` 安装程序：
 
 - [Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
@@ -39,7 +39,7 @@ ms.locfileid: "67604850"
 
 所需语音 SDK 文件可部署在与应用程序相同的目录中。 这样，应用程序便可直接访问库。 请确保选择与应用程序匹配的正确版本 (Win32/x64)。
 
-| 名称 | 函数
+| 姓名 | 函数
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | 核心 SDK，对于本机和托管部署是必需的
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | 对于托管部署是必需的
@@ -48,11 +48,11 @@ ms.locfileid: "67604850"
 > 从版本 1.3.0 开始，不再需要 `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` 文件（在以前的版本中提供）。 此功能现在集成到核心 SDK 中。
 
 >[!NOTE]
-> 为 Windows 窗体应用 (.NET Framework)C#项目，请确保这些库包含项目的部署设置。 你可以检查这下`Properties -> Publish Section`。 单击`Application Files`按钮并找到相应的库，从列表中向下滚动。 请确保值设置为`Included`。 发布/部署项目时，visual Studio 将包括该文件。
+> 对于 Windows 窗体应用 (.NET Framework) C#项目, 请确保项目的部署设置中包含这些库。 你可以在下`Properties -> Publish Section`进行查看。 单击该`Application Files`按钮, 并从滚动列表中查找对应的库。 请确保将值设置为`Included`。 发布/部署项目时, Visual Studio 将包括该文件。
 
 ## <a name="linux"></a>Linux
 
-Speech SDK 目前支持的 Ubuntu 16.04、 Ubuntu 18.04 和 Debian 9 分发版。
+语音 SDK 目前支持 Ubuntu 16.04、Ubuntu 18.04 和 Debian 9 分发版。
 对于本机应用程序，需要交付语音 SDK 库 `libMicrosoft.CognitiveServices.Speech.core.so`。
 请确保选择与应用程序匹配的版本（x86、x64）。 根据 Linux 版本，可能还需要包括以下依赖项：
 
@@ -67,7 +67,7 @@ sudo apt-get update
 sudo apt-get install libssl1.0.0 libasound2
 ```
 
-在 Debian 9 上安装这些包：
+在 Debian 9 上安装以下包:
 
 ```sh
 sudo apt-get update

@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: c99e5f9b810499dd67be55d137a2e451a59be0b6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15faacccfa1e0f7dd759f719c02e106918d735bb
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386645"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414688"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -54,7 +54,7 @@ ms.locfileid: "68386645"
 
 ## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>认知服务和 Azure 机器学习 (AML) 的相似之处是什么？
 
-这两者都具有应用人工智能 (AI) 以增强业务运营的最终目标, 不过, 在各自的产品中提供此方法会有所不同。 
+这两者都具有应用人工智能 (AI) 以增强业务运营的最终目标, 不过, 每种方法在各自的产品中提供这种操作都是不同的。 
 
 通常, 受众不同:
 
@@ -117,6 +117,10 @@ _利用_服务, 你可以提供数据来增强其自身的数据。 服务可能
  
 服务用于可进行 REST API 或 SDK 调用的任何应用程序。 应用程序的示例包括网站、bot、虚拟或混合现实、桌面和移动应用程序。 
 
+## <a name="how-is-cognitive-search-related-to-cognitive-services"></a>认知搜索与认知服务的关系如何？
+
+[Azure 搜索](../search/search-what-is-azure-search.md)使用认知服务提供此功能。 认知服务是在 Azure 搜索中通过包装单个 Api 的[内置技能](../search/cognitive-search-predefined-skills.md)公开的。 您可以使用免费资源来执行演练, 但计划为更大的卷创建和附加[收费资源](../search/cognitive-search-attach-cognitive-services.md)。
+
 ## <a name="how-can-you-use-cognitive-services"></a>如何使用认知服务？
 
 每个服务都提供数据的相关信息。 可以将服务组合在一起, 以将语音 (音频) 转换为文本, 将文本翻译成多种语言, 然后使用翻译后的语言从知识库获取答案。 虽然认知服务可用于自行创建智能解决方案, 但也可以将其与传统的机器学习项目结合使用来补充模型或加速开发过程。 
@@ -125,7 +129,7 @@ _利用_服务, 你可以提供数据来增强其自身的数据。 服务可能
 
 |认知服务|模型信息|
 |--|--|
-|自定义视觉|适用于 Android 的 Tensorflow 导出, CoreML for iOS11, ONNX for Windows ML|
+|[自定义视觉](./custom-vision-service/home.md)|适用于 Android 的 Tensorflow[导出](./Custom-Vision-Service/export-model-python.md), CoreML for IOS11, ONNX FOR Windows ML|
 
 
 ## <a name="next-steps"></a>后续步骤
