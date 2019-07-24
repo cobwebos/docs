@@ -5,6 +5,8 @@
   items:
     - name: 什么是认知服务？
       href: Welcome.md
+    - name: 认知服务和机器学习
+      href: cognitive-services-and-machine-learning.md
     - name: 语言支持
       href: language-support.md
 - name: 容器支持

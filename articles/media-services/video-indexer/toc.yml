@@ -21,6 +21,8 @@
       href: compare-video-indexer-with-media-services-presets.md
     - name: 管理多个租户
       href: manage-multiple-tenants.md
+    - name: 语言识别模型
+      href: language-identification-model.md
     - name: 自定义内容模型
       items:
         - name: 概述

@@ -27,6 +27,8 @@
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
 - name: 概念
   items:
+    - name: 计划报告和监视部署
+      href: plan-monitoring-and-reporting.md
     - name: 审核日志
       href: concept-audit-logs.md
     - name: 登录日志

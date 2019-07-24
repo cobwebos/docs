@@ -193,6 +193,18 @@
                   href: scenario-mobile-overview.md
                 - name: 应用注册
                   href: scenario-mobile-app-registration.md
+                - name: 代码配置
+                  href: scenario-mobile-app-configuration.md
+                - name: 移动平台特定的配置
+                  items:
+                    - name: Xamarin Android
+                      href: msal-net-xamarin-android-considerations.md
+                    - name: Android 上的系统浏览器
+                      href: msal-net-system-browser-android-considerations.md
+                    - name: Xamarin iOS
+                      href: msal-net-xamarin-ios-considerations.md
+                    - name: 通用 Windows 平台
+                      href: msal-net-uwp-considerations.md
                 - name: 获取应用的令牌
                   href: scenario-mobile-acquire-token.md
                 - name: 调用 Web API
@@ -255,14 +267,6 @@
                   items:
                     - name: Web 浏览器
                       href: msal-net-web-browsers.md
-                    - name: Xamarin Android
-                      href: msal-net-xamarin-android-considerations.md
-                    - name: Android 上的系统浏览器
-                      href: msal-net-system-browser-android-considerations.md
-                    - name: Xamarin iOS
-                      href: msal-net-xamarin-ios-considerations.md
-                    - name: 通用 Windows 平台
-                      href: msal-net-uwp-considerations.md
                 - name: MSAL.js
                   items:
                     - name: 使用 IE 时的注意事项

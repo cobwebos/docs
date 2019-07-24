@@ -11,16 +11,16 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e73e089f0753f49233c75a5e55513ebaf7bf9c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a6908a26e1d513261094be28620c3c9a2d86b48
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861797"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383110"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>有关身份验证、应用和设备管理的用户帮助
 
-我们创建了此内容来帮助你设置和使用安全信息与双重验证、了解如何重置自己的密码、设置和加入 Azure Active Directory 设备以及设置和使用 Microsoft Authenticator 应用与“我的应用”门户。
+我们创建了此内容来帮助你设置和使用安全信息与双重验证、重置自己的密码、设置和加入 Azure Active Directory 设备以及设置和使用 Microsoft Authenticator 应用与“我的应用”门户。
 
 |  |
 |--|
@@ -77,6 +77,7 @@ ms.locfileid: "60861797"
                         <a href="/azure/active-directory/user-help/security-info-setup-auth-app">设置验证器应用</a><br/>
                         <a href="/azure/active-directory/user-help/security-info-setup-text-msg">设置短信</a><br/>
                         <a href="/azure/active-directory/user-help/security-info-setup-phone-number">设置电话呼叫</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-security-key">设置安全密钥</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-sign-in">如何登录</a>
                         </p>
                     </div>

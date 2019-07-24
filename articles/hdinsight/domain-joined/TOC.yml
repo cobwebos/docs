@@ -32,8 +32,14 @@
       href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
     - name: 网络访问
       items:
-        - name: Azure VNet 中的 HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
+        - name: HDInsight 虚拟网络体系结构
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: 为 HDInsight 计划 VNET
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: 为 HDInsight 创建 VNET
+          href: ../hdinsight-create-virtual-network.md
+        - name: NSG 和 UDR 所需的 IP 地址
+          href: ../hdinsight-management-ip-addresses.md
         - name: 将 HDInsight 与本地网络相连
           href: ../connect-on-premises-network.md
         - name: 在 Azure VNet 中创建 Apache HBase 群集

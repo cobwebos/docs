@@ -98,8 +98,6 @@
           href: sisense.md
     - name: 管理
       items:
-        - name: 管理数据库权限
-          href: manage-database-permissions.md
         - name: 检查群集运行状况
           href: check-cluster-health.md
         - name: 选择群集 VM SKU
@@ -108,6 +106,10 @@
           href: manage-cluster-horizontal-scaling.md
         - name: 管理群集纵向缩放
           href: manage-cluster-vertical-scaling.md
+        - name: 管理群集安全性
+          href: manage-cluster-security.md
+        - name: 管理数据库权限
+          href: manage-database-permissions.md
         - name: 删除数据
           href: delete-data.md
         - name: 处理重复数据

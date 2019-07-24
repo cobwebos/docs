@@ -74,6 +74,8 @@
           href: security-info-setup-text-msg.md
         - name: 设置电话呼叫
           href: security-info-setup-phone-number.md
+        - name: 设置安全密钥
+          href: security-info-setup-security-key.md
         - name: 设置电子邮件
           href: security-info-setup-email.md
         - name: 设置安全问题

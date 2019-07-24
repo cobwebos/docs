@@ -122,10 +122,12 @@
               href: application-gateway-end-to-end-ssl-powershell.md
         - name: 管理证书
           items:
-            - name: 创建证书以便将后端列入允许列表
+            - name: 后端证书
               href: certificates-for-backend-authentication.md
             - name: 续订证书
               href: renew-certificates.md
+            - name: 生成自签名证书
+              href: self-signed-certificates.md
         - name: SSL 策略
           items:
             - name: 配置 SSL 策略

@@ -3,106 +3,110 @@ title: Azure IoT Edge
 summary: Azure IoT Edge 是基于物联网 (IoT) 中心构建的 IoT 服务。 此服务供想要在设备或“边缘”上（而不是在云中）分析数据的客户使用。 通过将部分工作负荷移至边缘，设备将消息发送到云所花费的时间可以更少，并且设备可以对事件更快地做出响应。
 metadata:
   ms.topic: landing-page
+  ms.openlocfilehash: 71589d66856b4f6d3a32da50252fadff564373ff
+  ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/23/2019
+  ms.locfileid: "68414422"
 landingContent:
-  - title: 针对 Linux 设备进行开发
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: 将第一个 IoT Edge 模块部署到 Linux 设备
-            url: quickstart-linux.md
-      - linkListType: tutorial
-        links:
-          - text: 开发适用于 Linux 设备的 IoT Edge 模块
-            url: tutorial-develop-for-linux.md
-      - linkListType: how-to-guide
-        links:
-          - text: 使用 Visual Studio Code 开发和调试模块
-            url: how-to-vs-code-develop-module.md
-  - title: 针对 Windows 设备进行开发
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: 将第一个 IoT Edge 模块部署到 Windows 设备
-            url: quickstart.md
-      - linkListType: tutorial
-        links:
-          - text: 开发适用于 Windows 设备的 IoT Edge 模块
-            url: tutorial-develop-for-windows.md
-      - linkListType: how-to-guide
-        links:
-          - text: 使用 Visual Studio 2017 开发和调试模块
-            url: how-to-visual-studio-develop-module.md
-  - title: 预配 IoT Edge 设备
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: 在 Linux x64 上安装 IoT Edge
-            url: how-to-install-iot-edge-linux.md
-          - text: 在 Linux ARM32 上安装 IoT Edge
-            url: how-to-install-iot-edge-linux-arm.md
-          - text: 在 Windows x64 上安装 IoT Edge
-            url: how-to-install-iot-edge-windows.md
-          - text: 自动预配 Linux 设备
-            url: how-to-auto-provision-simulated-device-linux.md
-          - text: 自动预配 Windows 设备
-            url: how-to-auto-provision-simulated-device-windows.md
-  - title: 参与开放源代码社区活动
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: IoT Edge 存储库
-            url: 'https://github.com/Azure/iotedge'
-          - text: IoT Edge GitHub 问题
-            url: 'https://github.com/Azure/iotedge/issues'
-          - text: 最新版本和更改日志
-            url: 'https://github.com/Azure/azure-iotedge/releases'
-  - title: 使用 IoT Edge 设备作为网关
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: 如何将 IoT Edge 设备用作网关
-            url: iot-edge-as-gateway.md
-      - linkListType: how-to-guide
-        links:
-          - text: 配置透明网关
-            url: how-to-create-transparent-gateway.md
-          - text: 通过 Azure IoT 中心对下游设备进行身份验证
-            url: how-to-authenticate-downstream-device.md
-          - text: 将下游设备连接到网关
-            url: how-to-connect-downstream-device.md
-  - title: 准备生产方案
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: 了解自动部署
-            url: module-deployment-monitoring.md
-          - text: 平台支持
-            url: support.md
-          - text: 生产部署清单
-            url: production-checklist.md
-          - text: 了解 IoT Edge 证书使用详细信息
-            url: iot-edge-certs.md
-          - text: IoT Edge 的安全标准
-            url: security.md
-      - linkListType: how-to-guide
-        links:
-          - text: 使用 Azure CLI 大规模部署并监视
-            url: how-to-deploy-monitor-cli.md
-          - text: 使用 Azure Pipelines 创建 CI/CD 管道
-            url: how-to-ci-cd.md
-      - linkListType: deploy
-        links:
-          - text: 适用于 IoT 中心的 REST API
-            url: 'https://docs.microsoft.com/rest/api/iothub/'
-  - title: 将 AI 部署到边缘
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: 将 Azure 机器学习作为 IoT Edge 模块进行部署
-            url: tutorial-deploy-machine-learning.md
-          - text: 在边缘使用自定义视觉服务进行图像分类
-            url: tutorial-deploy-custom-vision.md
-      - linkListType: deploy
-        links:
-          - text: 在 Azure 市场中查找 Azure 认知服务模块
-            url: 'https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules&search=azure%20cognitive%20services'
+- title: 针对 Linux 设备进行开发
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 将第一个 IoT Edge 模块部署到 Linux 设备
+      url: quickstart-linux.md
+  - linkListType: tutorial
+    links:
+    - text: 开发适用于 Linux 设备的 IoT Edge 模块
+      url: tutorial-develop-for-linux.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Visual Studio Code 开发和调试模块
+      url: how-to-vs-code-develop-module.md
+- title: 针对 Windows 设备进行开发
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 将第一个 IoT Edge 模块部署到 Windows 设备
+      url: quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: 开发适用于 Windows 设备的 IoT Edge 模块
+      url: tutorial-develop-for-windows.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Visual Studio 2017 开发和调试模块
+      url: how-to-visual-studio-develop-module.md
+- title: 预配 IoT Edge 设备
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Linux 上安装 IoT Edge
+      url: how-to-install-iot-edge-linux.md
+    - text: 在 Windows 上安装 IoT Edge
+      url: how-to-install-iot-edge-windows.md
+    - text: 自动预配 Linux 设备
+      url: how-to-auto-provision-simulated-device-linux.md
+    - text: 自动预配 Windows 设备
+      url: how-to-auto-provision-simulated-device-windows.md
+- title: 参与开放源代码社区活动
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: IoT Edge 存储库
+      url: https://github.com/Azure/iotedge
+    - text: IoT Edge GitHub 问题
+      url: https://github.com/Azure/iotedge/issues
+    - text: 最新版本和更改日志
+      url: https://github.com/Azure/azure-iotedge/releases
+- title: 使用 IoT Edge 设备作为网关
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 如何将 IoT Edge 设备用作网关
+      url: iot-edge-as-gateway.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置透明网关
+      url: how-to-create-transparent-gateway.md
+    - text: 通过 Azure IoT 中心对下游设备进行身份验证
+      url: how-to-authenticate-downstream-device.md
+    - text: 将下游设备连接到网关
+      url: how-to-connect-downstream-device.md
+- title: 准备生产方案
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 了解自动部署
+      url: module-deployment-monitoring.md
+    - text: 平台支持
+      url: support.md
+    - text: 生产部署清单
+      url: production-checklist.md
+    - text: 了解 IoT Edge 证书使用详细信息
+      url: iot-edge-certs.md
+    - text: IoT Edge 的安全标准
+      url: security.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure CLI 大规模部署并监视
+      url: how-to-deploy-monitor-cli.md
+    - text: 使用 Azure Pipelines 创建 CI/CD 管道
+      url: how-to-ci-cd.md
+  - linkListType: deploy
+    links:
+    - text: 适用于 IoT 中心的 REST API
+      url: https://docs.microsoft.com/rest/api/iothub/
+- title: 将 AI 部署到边缘
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将 Azure 机器学习作为 IoT Edge 模块进行部署
+      url: tutorial-deploy-machine-learning.md
+    - text: 在边缘使用自定义视觉服务进行图像分类
+      url: tutorial-deploy-custom-vision.md
+  - linkListType: deploy
+    links:
+    - text: 在 Azure 市场中查找 Azure 认知服务模块
+      url: https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules&search=azure%20cognitive%20services

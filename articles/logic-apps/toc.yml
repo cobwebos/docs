@@ -303,10 +303,12 @@
           href: test-logic-apps-mock-data-static-results.md
     - name: 部署
       items:
+        - name: 概述 - 自动执行逻辑应用部署
+          href: logic-apps-azure-resource-manager-templates-overview.md
         - name: 创建逻辑应用模板
-          href: logic-apps-create-deploy-template.md
+          href: logic-apps-create-azure-resource-manager-templates.md
         - name: 部署逻辑应用模板
-          href: logic-apps-create-deploy-azure-resource-manager-templates.md
+          href: logic-apps-deploy-azure-resource-manager-templates.md
     - name: 监视
       items:
         - name: 监视逻辑应用
@@ -377,7 +379,7 @@
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelogicapps'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
     - name: Twitter
