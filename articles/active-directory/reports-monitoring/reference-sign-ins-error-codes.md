@@ -19,7 +19,7 @@ ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 760eb5a37a09687cd98ca7abbdcb0bc42667f830
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "67107628"
@@ -40,7 +40,7 @@ ms.locfileid: "67107628"
 
 ![登录活动](./media/reference-sign-ins-error-codes/61.png "登录活动")
 
-在“登录状态”下拉框中选择“失败”，以筛选报告，显示所有失败的登录。  
+在“登录状态”下拉框中选择“失败”，以筛选报告，显示所有失败的登录。
 
 ![登录活动](./media/reference-sign-ins-error-codes/06.png "登录活动")
 
