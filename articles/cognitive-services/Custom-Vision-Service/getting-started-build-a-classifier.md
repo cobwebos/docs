@@ -1,38 +1,39 @@
 ---
-title: 生成分类器 - 自定义影像服务
+title: 快速入门：生成分类器 - 自定义视觉服务
 titlesuffix: Azure Cognitive Services
-description: 了解如何使用自定义影像服务网站创建图像分类模型。
+description: 在本快速入门中，你将了解如何使用自定义视觉服务网站创建图像分类模型。
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: conceptual
-ms.date: 04/03/2019
+ms.topic: quickstart
+ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 3cb67b57f406774b4bcaf57c24b8e7741068ced6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 748336dcea580cefaf7638c86c1466bf0c16a472
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497308"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423568"
 ---
-# <a name="how-to-build-a-classifier-with-custom-vision"></a>如何使用自定义影像服务生成分类器
+# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>快速入门：如何使用自定义影像服务生成分类器
 
-若要使用自定义影像服务进行图像分类，首先必须生成分类器模型。 在本指南中，将了解如何通过自定义影像服务网站生成分类器。
+在本快速入门中，你将了解如何通过自定义视觉服务网站生成分类器。 生成分类器模型后，可以使用自定义视觉服务进行图像分类。
 
-## <a name="prerequisites"></a>必备组件
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- 有效的 Azure 订阅。 免费[创建一个帐户](https://azure.microsoft.com/free/)。
+## <a name="prerequisites"></a>先决条件
+
 - 一组用于训练分类器的图像。 有关选择图像的提示，请参阅下文。
 
-
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>在 Azure 门户中创建自定义视觉资源
-若要使用自定义影像服务，你将需要创建自定义视觉训练和预测中的资源[Azure 门户](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision)。 这将创建训练和预测资源。 
+
+若要使用自定义视觉服务，需要在 Azure 门户中创建“自定义视觉训练和预测”资源。 填写“创建自定义视觉”[](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision)页上的对话框窗口，以创建“训练和预测”资源。 
 
 ## <a name="create-a-new-project"></a>创建新项目
 
-在 Web 浏览器中，导航到[自定义影像服务网页](https://customvision.ai)，然后选择“登录”  。 使用用于登录到 Azure 门户的同一帐户登录。
+在 Web 浏览器中，导航到[自定义影像服务网页](https://customvision.ai)，然后选择“登录”  。 使用用于登录 Azure 门户的帐户登录。
 
 ![“登录”页的图像](./media/browser-home.png)
 
@@ -44,13 +45,13 @@ ms.locfileid: "66497308"
 1. 输入项目名称和描述。 然后选择一个资源组。 如果登录帐户与 Azure 帐户相关联，则“资源组”下拉列表将显示包含自定义影像服务资源的所有 Azure 资源组。 
 
    > [!NOTE]
-   > 如果没有资源组不可用，请确认您已登录到[customvision.ai](https://customvision.ai)使用与你相同的帐户用于登录到[Azure 门户](https://portal.azure.com/)。 此外，请确认在自定义视觉门户中选择的“目录”与自定义视觉资源所在 Azure 门户中的目录相同。 在这两个站点中，可从屏幕右上角的下拉帐户菜单中选择目录。 
+   > 如果没有可用的资源组，请确认已使用登录 [Azure 门户](https://portal.azure.com/)时所用的同一帐户登录 [customvision.ai](https://customvision.ai)。 此外，请确认在自定义视觉门户中选择的“目录”与自定义视觉资源所在 Azure 门户中的目录相同。 在这两个站点中，可从屏幕右上角的下拉帐户菜单中选择目录。 
 
 1. 选择“项目类型”下的“分类”   。 然后，在“分类类型”下，根据用例选择“多标签”或“多类”    。 多标签分类将任意数量的标记应用于图像（零个或多个），而多类分类将图像分类为单个类别（提交的每个图像将被分类为最有可能的标记）。 将能够根据需要稍后更改分类类型。
 
 1. 接下来，选择一个可用域。 每个域都会针对特定类型的图像优化分类器，如下表所述。 将能够根据需要稍后更改域。
 
-    |Domain|目的|
+    |域|目的|
     |---|---|
     |__常规__| 针对各种图像分类任务进行优化。 如果其他域都不合适，或者不确定要选择哪个域，请选择“通用”域。 |
     |__食品__|针对餐厅菜肴的照片进行优化。 如果要对各种水果或蔬菜的照片进行分类，请使用“食品”域。|
@@ -62,21 +63,7 @@ ms.locfileid: "66497308"
 
 ## <a name="choose-training-images"></a>选择训练图像
 
-作为最低要求，我们建议在初始训练集中每个标记使用至少 30 张图像。 此外还需要收集一些额外的图像，以便在训练后测试模型。
-
-为了有效地训练模型，请使用具有视觉多样性的图像。 选择具有以下变化的图像：
-* 照相机角度
-* 照明
-* background
-* 视觉样式
-* 个人/分组主题
-* size
-* type
-
-此外，请确保所有训练图像满足以下条件：
-* .jpg、png 或 .bmp 格式
-* 大小不超过 6 MB （预测图像不超过 4 MB）
-* 最短的边不小于 256 像素；任何小于此像素的图像将通过自定义影像服务自动纵向扩展
+[!INCLUDE [choose training images](includes/choose-training-images.md)]
 
 ## <a name="upload-and-tag-images"></a>上传和标记图像
 
@@ -118,9 +105,7 @@ ms.locfileid: "66497308"
 
 ### <a name="probability-threshold"></a>概率阈值
 
-请注意“性能”选项卡左窗格上的“概率阈值”滑块   。这是在计算精确度和召回率时被认为是正确的预测概率的阈值。
-
-解释具有高概率阈值的预测调用往往会返回精确度很高的结果，但召回率会偏低（找到的分类是正确的，但很多都未找到）；低概率阈值则相反（找到大多数实际分类，但在该集中存在误报）。 考虑到这一点，应该根据项目的特定需求设置概率阈值。 稍后，在客户端接收来自该模型的预测结果时，应使用相同的概率阈值作为筛选器。
+[!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
 ## <a name="manage-training-iterations"></a>管理训练迭代
 
@@ -128,7 +113,8 @@ ms.locfileid: "66497308"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本指南中，了解了如何使用自定义影像服务网站创建和训练图像分类模型。 接下来，获取有关改进模型的迭代过程的详细信息。
+在本快速入门中，已了解了如何使用自定义视觉服务网站创建和训练图像分类模型。 接下来，获取有关改进模型的迭代过程的详细信息。
 
-[测试和重新训练模型](test-your-model.md)
+> [!div class="nextstepaction"]
+> [测试和重新训练模型](test-your-model.md)
 

@@ -41,6 +41,9 @@
     - name: 获取资源更改
       displayName: 'resource, change, history, snapshot, details'
       href: ./how-to/get-resource-changes.md
+- name: 故障排除
+  displayName: 'errors, violation'
+  href: ./troubleshoot/general.md
 - name: 引用
   items:
     - name: Azure CLI
