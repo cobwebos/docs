@@ -59,7 +59,7 @@ sections:
       - type: paragraph
         text: 了解如何使用 Azure 空间定位点设置、管理、生成和部署应用。
       - type: list
-        style: ordered
+        style: unordered
         items:
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">在 Unity 中共享。</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">使用 Azure Cosmos DB 在 Unity 中共享。</a>
