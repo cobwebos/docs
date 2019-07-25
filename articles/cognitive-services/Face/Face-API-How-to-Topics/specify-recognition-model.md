@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
 ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 07/19/2019
 ms.locfileid: "68254346"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定人脸识别模型
@@ -25,7 +25,7 @@ ms.locfileid: "68254346"
 
 对于新用户，我们建议使用最新的模型。 请继续阅读，了解如何在不同的人脸操作中指定模型，同时避免模型冲突。 如果高级用户不确定是否要切换到最新的模型，可以转到[评估不同的模型](#evaluate-different-models)部分来评估新模型，并使用当前数据集比较结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 读者应该熟悉 AI 人脸检测和识别的概念。 否则请先阅读以下操作指南：
 
@@ -59,7 +59,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 人脸 API 可以从图像中提取人脸数据，并将其与 **Person** 对象相关联（例如，通过 [Add face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API 调用），多个 **Person** 对象可以一起存储在 **PersonGroup** 中。 然后，可以根据 **PersonGroup** 比较新的人脸（使用 [Face - Identify] 调用），该组中匹配的人员将被识别。
 
-**PersonGroup** 中的所有 **Person** 应有一个唯一的识别模型，在创建该组使用 ([PersonGroup - 创建] 或 [LargePersonGroup - 创建]）时，可以使用 `recognitionModel` 参数指定此模型。 如果不指定此参数，则会使用原始的 `recognition_01` 模型。 某个组始终使用创建它时所用的识别模型，将新的人脸添加到该组时，它们将与此模型相关联；创建组后无法更改此行为。 若要查看 **PersonGroup** 是使用哪个模型配置的，请结合设置为 **true** 的 _returnRecognitionModel_ 参数使用 [PersonGroup - Get] API。
+**PersonGroup** 中的所有 **Person** 应有一个唯一的识别模型，在创建该组使用 [PersonGroup - 创建] 或 [LargePersonGroup - 创建] 时，可以使用 `recognitionModel` 参数指定此模型。 如果不指定此参数，则会使用原始的 `recognition_01` 模型。 某个组始终使用创建它时所用的识别模型，将新的人脸添加到该组时，它们将与此模型相关联；创建组后无法更改此行为。 若要查看 **PersonGroup** 是使用哪个模型配置的，请结合设置为 **true** 的 _returnRecognitionModel_ 参数使用 [PersonGroup - Get] API。
 
 请查看适用于 .NET 客户端库的以下代码示例。
 

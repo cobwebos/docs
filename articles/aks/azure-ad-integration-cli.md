@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: mlearned
 ms.openlocfilehash: 5b99d76ef20c288d6ae0bd33e1e2b6a75a359d3a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67616277"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成
@@ -49,7 +49,7 @@ aksname="myakscluster"
 
 若要与 AKS 集成，请创建并使用充当标识请求终结点的 Azure AD 应用程序。 所需的第一个 Azure AD 应用程序获取用户的 Azure AD 组成员身份。
 
-使用 [az ad app create][az-ad-app-create]command, then update the group membership claims using the [az ad app update][az-ad-app-update] 命令创建服务器应用程序组件。 以下示例使用[开始之前](#before-you-begin)部分中定义的 *aksname* 变量，并创建一个变量
+使用[az ad app create][az-ad-app-create]命令创建服务器应用程序组件, 然后使用[az ad app update][az-ad-app-update]命令更新组成员身份声明。 以下示例使用[开始之前](#before-you-begin)部分中定义的 *aksname* 变量，并创建一个变量
 
 ```azurecli-interactive
 # Create the Azure AD application
@@ -62,7 +62,7 @@ serverApplicationId=$(az ad app create \
 az ad app update --id $serverApplicationId --set groupMembershipClaims=All
 ```
 
-现在，使用 [az ad sp create][az-ad-sp-create]command. This service principal is used to authenticate itself within the Azure platform. Then, get the service principal secret using the [az ad sp credential reset][az-ad-sp-credential-reset] 命令为服务器应用创建服务主体，并将其分配给名为“serverApplicationSecret”  的变量，以便在以下步骤之一中使用：
+现在, 使用[az ad sp create][az-ad-sp-create]命令创建服务器应用的服务主体。 此服务主体用于在 Azure 平台中对自身进行身份验证。 然后, 使用[az ad sp credential reset][az-ad-sp-credential-reset]命令获取服务主体机密, 并将其分配给名为*serverApplicationSecret*的变量, 以便在以下步骤之一中使用:
 
 ```azurecli-interactive
 # Create a service principal for the Azure AD application
@@ -89,7 +89,7 @@ az ad app permission add \
     --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role
 ```
 
-最后，使用 [az ad app permission grant][az-ad-app-permission-grant] command. This step fails if the current account is not a tenant admin. You also need to add permissions for Azure AD application to request information that may otherwise require administrative consent using the [az ad app permission admin-consent][az-ad-app-permission-admin-consent] 授予在上一步骤中为服务器应用程序分配的权限：
+最后, 使用[az ad app 权限 grant][az-ad-app-permission-grant]命令为服务器应用程序授予在上一步中分配的权限。 如果当前帐户不是租户管理员，此步骤将会失败。还需要为 Azure AD 应用程序添加权限, 以便请求可能需要使用[az AD app 权限管理员同意][az-ad-app-permission-admin-consent]进行管理许可的信息:
 
 ```azurecli-interactive
 az ad app permission grant --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000
@@ -120,7 +120,7 @@ az ad sp create --id $clientApplicationId
 oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Permissions[0].id" -o tsv)
 ```
 
-使用 [az ad app permission add][az-ad-app-permission-add]command. Then, grant permissions for the client application to communication with the server application using the [az ad app permission grant][az-ad-app-permission-grant] 命令添加对客户端应用程序和服务器应用程序组件的权限，以使用 oAuth2 通信流：
+添加客户端应用程序和服务器应用程序组件的权限, 以使用[az ad app 权限 add][az-ad-app-permission-add]命令。 然后, 使用[az ad app 权限 grant][az-ad-app-permission-grant]命令为客户端应用程序授予与服务器应用程序的通信权限:
 
 ```azurecli-interactive
 az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
@@ -129,7 +129,7 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 
 ## <a name="deploy-the-cluster"></a>部署群集
 
-创建两个 Azure AD 应用程序后，请创建 AKS 群集本身。 首先使用 [az group create][az-group-create] 命令创建资源组。 下面的示例创建中的资源组*EastUS*区域：
+创建两个 Azure AD 应用程序后，请创建 AKS 群集本身。 首先使用 [az group create][az-group-create] 命令创建资源组。 以下示例在*EastUS*区域中创建资源组:
 
 为群集创建资源组：
 
@@ -137,7 +137,7 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 az group create --name myResourceGroup --location EastUS
 ```
 
-使用 [az account show][az-account-show]command. Then, create the AKS cluster using the [az aks create][az-aks-create] 命令获取 Azure 订阅的租户 ID。 用于创建 AKS 群集的命令可提供服务器和客户端应用程序 ID、服务器应用程序服务主体机密和租户 ID：
+使用[az account show][az-account-show]命令获取你的 Azure 订阅的租户 ID。 然后, 使用[az AKS create][az-aks-create]命令创建 AKS 群集。 用于创建 AKS 群集的命令可提供服务器和客户端应用程序 ID、服务器应用程序服务主体机密和租户 ID：
 
 ```azurecli-interactive
 tenantId=$(az account show --query tenantId -o tsv)
@@ -153,7 +153,7 @@ az aks create \
     --aad-tenant-id $tenantId
 ```
 
-最后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取群集管理员凭据。 在以下步骤之一中，你将获取普通用户群集凭据，以查看 Azure AD 身份验证流的运作方式。 
+最后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取群集管理员凭据。 在以下步骤之一中，你将获取普通用户群集凭据，以查看 Azure AD 身份验证流的运作方式。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
@@ -161,7 +161,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 ## <a name="create-rbac-binding"></a>创建 RBAC 绑定
 
-在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户   。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
+在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
 
 使用 [az ad signed-in-user show][az-ad-signed-in-user-show] 命令获取用户当前登录用户的用户主体名称 (UPN)。 在下一步骤中，将为 Azure AD 集成启用此用户帐户。
 
