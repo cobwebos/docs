@@ -6,6 +6,12 @@
       href: home.md
 - name: 快速入门
   items:
+    - name: 使用 Web 门户
+      items:
+        - name: 生成分类器
+          href: getting-started-build-a-classifier.md
+        - name: 生成对象检测器
+          href: get-started-build-detector.md
     - name: 使用 .NET SDK
       items:
         - name: 图像分类
@@ -42,8 +48,6 @@
       href: logo-detector-mobile.md
 - name: 操作指南
   items:
-    - name: 生成分类器
-      href: getting-started-build-a-classifier.md
     - name: 测试模型
       href: test-your-model.md
     - name: 改进分类器

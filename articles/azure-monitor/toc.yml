@@ -398,6 +398,8 @@
               items:
                 - name: 访问控制
                   href: app/resources-roles-access-control.md
+                - name: IP 地址收集
+                  href: app/ip-collection.md
                 - name: 采样
                   displayname: 'adaptive sampling, fixed rate sample, fixed sampling, ingestion sampling'
                   href: app/sampling.md

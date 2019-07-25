@@ -7,18 +7,19 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 06/20/2019
+ms.date: 07/22/2019
 ms.topic: hub-page
-ms.openlocfilehash: 1e78c31c19bdbc8ea223c504a53f1df73caa5d44
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: ad403b58a0f6aad37e9d8d547d269b9f45566559
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295384"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442820"
 ---
 <div id="main" class="v2">
 <h1>Azure 认知服务文档</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。</p>
+        <p> 每个服务都有其自己的<a href="/azure/cognitive-services/language-support">语言支持</a>和<a href="/azure/cognitive-services/cognitive-services-and-machine-learning#service-requirements-for-the-data-model">数据模型要求</a>（从完全训练的模型到可完全自定义的模型）。 
 
 
 <h2>认知服务 API</h2>
@@ -123,6 +124,25 @@ ms.locfileid: "67295384"
                             <div class="cardText">
                                 <h3>什么是认知服务？</h3>
                                 <p>了解 Azure 认知服务，以及如何使用不同的 API 来生成智能应用。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-and-machine-learning/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_get-started.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>认知服务和机器学习</h3>
+                                <p>了解在哪些情况下适合将 Azure 认知服务与其他用于机器学习的 Azure 产品/服务配合使用。</p>
                             </div>
                         </div>
                     </div>

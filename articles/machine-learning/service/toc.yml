@@ -56,6 +56,11 @@
         - name: 部署回归模型
           displayName: experiment drag-and-drop visual interface Tutorial 2
           href: ui-tutorial-automobile-price-deploy.md
+    - name: 自动化机器学习
+      items:
+        - name: 分类（银行数据）
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-first-experiment-automated-ml.md
 - name: 示例
   items:
     - name: Notebooks

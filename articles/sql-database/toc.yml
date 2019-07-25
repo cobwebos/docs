@@ -19,7 +19,7 @@
       href: sql-database-managed-instance-quickstart-guide.md
     - name: 创建
       items:
-        - name: 单一数据库 - 门户
+        - name: 单一数据库
           href: sql-database-single-database-get-started.md
         - name: 单一数据库 - 模板
           displayName: 'Azure Resource Manager template, ARM'
@@ -87,14 +87,22 @@
           href: sql-database-design-first-database.md
         - name: 使用 .NET 设计数据库
           href: sql-database-design-first-database-csharp.md
-    - name: 单一实例数据库
+    - name: 单一数据库
       items:
         - name: 使用 DMS 迁移到单一/共用数据库
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
+        - name: 添加到故障转移组
+          href: sql-database-single-database-failover-group-tutorial.md
         - name: 实现地理分散的数据库
           href: sql-database-implement-geo-distributed-database.md
+        - name: 配置活动异地复制
+          href: sql-database-active-geo-replication-portal.md
         - name: 设置 Azure SQL 数据同步
           href: sql-database-get-started-sql-data-sync.md
+    - name: 弹性池
+      items:
+        - name: 添加到故障转移组
+          href: sql-database-elastic-pool-failover-group-tutorial.md
     - name: 托管实例
       items:
         - name: 使用 DMS 进行联机迁移
@@ -245,8 +253,6 @@
               href: sql-database-active-geo-replication.md
             - name: 自动故障转移组
               href: sql-database-auto-failover-group.md
-            - name: 配置活动异地复制 - 门户
-              href: sql-database-active-geo-replication-portal.md
             - name: 为副本配置安全性
               href: sql-database-geo-replication-security-config.md
         - name: 数据库恢复选项
@@ -516,6 +522,8 @@
           href: sql-database-managed-instance-connect-app.md
     - name: 加载和移动数据
       items:
+        - name: 将资源移到新区域
+          href: sql-database-move-resources-across-regions.md
         - name: 在 Azure 中复制数据库
           href: sql-database-copy.md
         - name: 从 BACPAC 文件导入数据库

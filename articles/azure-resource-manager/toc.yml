@@ -63,18 +63,18 @@
       href: template-best-practices.md
     - name: 用于提供云一致性的模板
       href: templates-cloud-consistency.md
-    - name: 资源提供程序和类型
-      href: resource-manager-supported-services.md
-    - name: 部署管理器
-      displayName: adm
-      href: deployment-manager-overview.md
-    - name: 部署管理器运行状况检查
-      displayName: adm
-      href: deployment-manager-health-check.md
     - name: 部署模式
       href: deployment-modes.md
     - name: 资源的删除
       href: resource-group-delete.md
+    - name: 部署管理器
+      items:
+        - name: 概述
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-overview.md
+        - name: 运行状况检查
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-health-check.md
     - name: 资源管理器部署和经典部署
       href: resource-manager-deployment-model.md
     - name: Azure 的常见安全属性
@@ -228,6 +228,8 @@
           href: resource-manager-sku-not-available-errors.md
         - name: Windows 部署问题
           href: ../virtual-machines/windows/troubleshoot-deploy-vm.md
+    - name: 资源提供程序和类型
+      href: resource-manager-supported-services.md
     - name: 限制请求
       href: resource-manager-request-limits.md
     - name: 跟踪异步操作
