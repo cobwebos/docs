@@ -1,5 +1,10 @@
 - name: 安全开发文档
   href: index.yml
+- name: 示例应用
+  expanded: true
+  items:
+    - name: Linux 容器中的 Web 应用
+      href: secure-web-app.md
 - name: 概念
   expanded: true
   items:

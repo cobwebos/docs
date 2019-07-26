@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 2d9ce34d52d08b4dd38caaadfab48b7a69870e9a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: fcc1a093f8df87da24f9d7f7945c490d7b58c9bd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447937"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320585"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>快速入门：使用 Java 查询 Azure SQL 数据库
 
@@ -37,8 +37,7 @@ ms.locfileid: "58447937"
   |||[从现场进行连接](sql-database-managed-instance-configure-p2s.md)
   |加载数据|根据快速入门加载的 Adventure Works|[还原 Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 所提供的 [BACPAC](sql-database-import.md) 文件还原或导入 Adventure Works|
-  |||
-
+  
   > [!IMPORTANT]
   > 本文中脚本的编写目的是使用 Adventure Works 数据库。 使用托管实例时，必须将 Adventure Works 数据库导入一个实例数据库，或者修改本文中的脚本，以便使用 Wide World Importers 数据库。
 
@@ -56,19 +55,19 @@ ms.locfileid: "58447937"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 导航到“SQL 数据库”或“SQL 托管实例”页。
+2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 
-3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标。 
+3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称    。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标  。 
 
 ## <a name="create-the-project"></a>创建项目
 
-1. 从命令提示符创建名为 sqltest 的新 Maven 项目。
+1. 从命令提示符创建名为 sqltest 的新 Maven 项目。 
 
     ```bash
     mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
     ```
 
-1. 将文件夹更改为 *sqltest*，然后使用喜欢的文本编辑器打开 pom.xml。 使用以下代码，将 **Microsoft JDBC Driver for SQL Server** 添加到项目的依赖项。
+1. 将文件夹更改为 *sqltest*，然后使用喜欢的文本编辑器打开 pom.xml  。 使用以下代码，将 **Microsoft JDBC Driver for SQL Server** 添加到项目的依赖项。
 
     ```xml
     <dependency>
@@ -78,7 +77,7 @@ ms.locfileid: "58447937"
     </dependency>
     ```
 
-1. 另请在 pom.xml 中向项目添加以下属性。 如果没有 properties 节，可以将其添加到 dependencies 后面。
+1. 另请在 pom.xml  中向项目添加以下属性。 如果没有 properties 节，可以将其添加到 dependencies 后面。
 
    ```xml
    <properties>
@@ -87,11 +86,11 @@ ms.locfileid: "58447937"
    </properties>
    ```
 
-1. 保存并关闭 pom.xml。
+1. 保存并关闭  pom.xml。
 
 ## <a name="add-code-to-query-database"></a>添加用于查询数据库的代码
 
-1. 此时，你应该在 Maven 项目中有了一个名为 App.java 的文件，其位置为：
+1. 此时，你应该在 Maven 项目中有了一个名为  App.java 的文件，其位置为：
 
    *..\sqltest\src\main\java\com\sqldbsamples\App.java*
 

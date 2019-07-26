@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, sdk, 麦克风, 访问麦克风, 麦克风数据
-ms.openlocfilehash: eb138e227a65bef834f9b1c7d5117a76d55b3dae
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: a803486b0d78c98f7994571654f98635eb47fe09
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850085"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371027"
 ---
 # <a name="quickstart-build-your-first-azure-kinect-application"></a>快速入门：生成第一个 Azure Kinect 应用程序
 
@@ -89,7 +89,7 @@ config.color_format     = K4A_IMAGE_FORMAT_COLOR_BGRA32;
 config.color_resolution = K4A_COLOR_RESOLUTION_3072P;
 
 // Start the camera with the given configuration
-k4a_device_start_cameras(device, &config)
+k4a_device_start_cameras(device, &config);
 
 // ...Camera capture and application specific code would go here...
 

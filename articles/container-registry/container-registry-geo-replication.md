@@ -3,17 +3,17 @@ title: 异地复制的 Azure 容器注册表
 description: 开始创建和管理异地复制的 Azure 容器注册表。
 services: container-registry
 author: stevelas
-manager: jeconnoc
+manager: gwallace
 ms.service: container-registry
 ms.topic: overview
 ms.date: 05/24/2019
 ms.author: stevelas
-ms.openlocfilehash: a26b261a900dfae742e00d9540e744524b781815
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: e17b70843fcda1d183de1b81a98da53138835340
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384106"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309593"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 

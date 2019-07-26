@@ -87,11 +87,11 @@
               href: billing-reservation-discount-app-service-isolated-stamp.md
             - name: Azure 软件计划
               href: billing-understand-suse-reservation-charges.md
-        - name: 未包括软件成本
+        - name: 不包含 Windows 和 SQL 成本
           href: billing-reserved-instance-windows-software-costs.md
-        - name: 单个订阅的使用情况
+        - name: 单个订阅的使用情况数据
           href: billing-understand-reserved-instance-usage.md
-        - name: Enterprise 使用情况
+        - name: 企业客户的使用情况数据
           href: billing-understand-reserved-instance-usage-ea.md
         - name: 预留交换和退款
           href: billing-azure-reservations-self-service-exchange-and-refund.md

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ae5e16aa00147d6ea434090720b51af06e8e0c5
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 764c7c048dd0398b495ee31421a8e2bc9f8169ee
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807567"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477201"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>查看 Azure Active Directory 租户应用程序
 
@@ -79,4 +79,4 @@ Azure AD 租户应用程序可以在 Azure 门户的“企业应用”  部分�
 找到所需的应用程序后，可以继续[将更多应用程序添加到租户](add-application-portal.md)。 或者，可以选择该应用程序，以查看或编辑属性和配置选项。 例如，可以配置单一登录。
 
 > [!div class="nextstepaction"]
-> [配置单一登录](configure-single-sign-on-portal.md)
+> [配置单一登录](configure-single-sign-on-non-gallery-applications.md)

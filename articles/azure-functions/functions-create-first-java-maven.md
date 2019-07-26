@@ -13,12 +13,12 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fcbf181601230493dc52bde06e4f35db062f9a32
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 20327e64080182518fd28b1d367ffe37be5ce9a4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807166"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323969"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>使用 Java 和 Maven 创建你的第一个函数
 
@@ -125,7 +125,7 @@ public class Function {
 
 将目录更改为新创建的项目文件夹，并通过 Maven 生成和运行此函数：
 
-```
+```CMD
 cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
@@ -147,7 +147,7 @@ Http Functions:
 
 使用 curl 在新的终端窗口中从命令行触发函数：
 
-```
+```CMD
 curl -w "\n" http://localhost:7071/api/hello -d LocalFunction
 ```
 
@@ -170,7 +170,7 @@ az login
 > [!NOTE]
 > 使用 Visual Studio Code 来部署函数应用时，请记住选择非免费的订阅，否则会出现错误。 可以在 IDE 的左侧观察订阅。
 
-```
+```azurecli
 mvn azure-functions:deploy
 ```
 
@@ -189,7 +189,7 @@ mvn azure-functions:deploy
 > [!NOTE]
 > 确保将“访问权限”  设置为 `Anonymous`。 选择默认级别 `Function` 时，需要在请求中提供[函数密钥](../azure-functions/functions-bindings-http-webhook.md#authorization-keys)才能访问函数终结点。
 
-```
+```azurecli
 curl -w "\n" https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 

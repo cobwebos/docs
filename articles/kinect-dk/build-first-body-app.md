@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, sdk, 人体, 跟踪, 关节, 应用程序, 第一个
-ms.openlocfilehash: 9d7affd68219021cea99494c7e26e43dd4e86cb8
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6a3329dccba1afeb8725716bfa5593150632f846
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876643"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423123"
 ---
 # <a name="quickstart-build-your-first-azure-kinect-body-tracking-application"></a>快速入门：生成第一个 Azure Kinect 人体跟踪应用程序
 
@@ -72,7 +72,7 @@ k4a_device_start_cameras(device, &deviceConfig);
 
 ```C
 k4a_calibration_t sensor_calibration;
-k4a_device_get_calibration(device, device_config.depth_mode, K4A_COLOR_RESOLUTION_OFF, &sensor_calibration);
+k4a_device_get_calibration(device, deviceConfig.depth_mode, K4A_COLOR_RESOLUTION_OFF, &sensor_calibration);
 
 k4abt_tracker_t tracker = NULL;
 k4abt_tracker_create(&sensor_calibration, &tracker);
@@ -153,15 +153,15 @@ k4a_device_close(device);
 
 int main()
 {
-    k4a_device_configuration_t device_config = K4A_DEVICE_CONFIG_INIT_DISABLE_ALL;
-    device_config.depth_mode = K4A_DEPTH_MODE_NFOV_UNBINNED;
+    k4a_device_configuration_t deviceConfig = K4A_DEVICE_CONFIG_INIT_DISABLE_ALL;
+    deviceConfig.depth_mode = K4A_DEPTH_MODE_NFOV_UNBINNED;
 
     k4a_device_t device;
     VERIFY(k4a_device_open(0, &device), "Open K4A Device failed!");
-    VERIFY(k4a_device_start_cameras(device, &device_config), "Start K4A cameras failed!");
+    VERIFY(k4a_device_start_cameras(device, &deviceConfig), "Start K4A cameras failed!");
 
     k4a_calibration_t sensor_calibration;
-    VERIFY(k4a_device_get_calibration(device, device_config.depth_mode, device_config.color_resolution, &sensor_calibration),
+    VERIFY(k4a_device_get_calibration(device, deviceConfig.depth_mode, deviceConfig.color_resolution, &sensor_calibration),
         "Get depth camera calibration failed!");
 
     k4abt_tracker_t tracker = NULL;

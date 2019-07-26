@@ -3,17 +3,18 @@ title: Azure 中的专用 Docker 容器注册表 - 概述
 description: 介绍 Azure 容器注册表服务，该服务提供基于云的托管专用 Docker 注册表。
 services: container-registry
 author: stevelas
+manager: gwallace
 ms.service: container-registry
 ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 3502a2ec7c56d01abe2ceb9f61db9c1c2d8179a0
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 8b20c54d2151afae227a085dd66a0d31f2b85305
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302340"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310671"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure 中的专用 Docker 容器注册表简介
 

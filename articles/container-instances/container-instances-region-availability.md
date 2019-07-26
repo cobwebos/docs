@@ -3,16 +3,17 @@ title: Azure 容器实例资源可用性
 description: Azure 容器实例服务的计算和内存资源在不同 Azure 区域的可用性。
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 05/14/2019
 ms.author: danlep
-ms.openlocfilehash: 64b60178413e470cc7fe9b3991c6fc29b5a0f860
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 14e7b9a3ea11e59aabeb901c4039e69208ea0cfd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794296"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325706"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 

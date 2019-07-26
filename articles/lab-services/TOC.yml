@@ -255,6 +255,8 @@
               href: devtest-lab-guidance-prescriptive-adoption.md
             - name: 参考体系结构
               href: devtest-lab-reference-architecture.md
+            - name: 提供概念证明
+              href: deliver-proof-concept.md
             - name: 纵向扩展开发测试实验室部署
               href: devtest-lab-guidance-scale.md
             - name: 安排实现开发测试实验室

@@ -408,8 +408,9 @@
                   href: app/telemetry-channels.md
                 - name: TelemetryProcessors
                   displayname: 'processors, filtering, telemetry filtering, telemetry processor'
-                - name: 遥测关联
                   href: app/api-filtering-sampling.md
+                - name: 遥测关联
+                  href: app/correlation.md
                 - name: 在 .NET SDK 中跟踪自定义操作
                   href: app/custom-operations-tracking.md
                 - name: 自定义电子邮件报告
@@ -603,6 +604,8 @@
                       href: insights/vminsights-enable-at-scale-powershell.md
                     - name: 为混合环境启用
                       href: insights/vminsights-enable-hybrid-cloud.md
+                    - name: 与 Operations Manager 集成
+                      href: insights/service-map-scom.md
                 - name: 监视运行状况
                   href: insights/vminsights-health.md
                 - name: 映射依赖项
@@ -621,14 +624,8 @@
               href: insights/vmware.md
             - name: Wire Data 解决方案
               href: insights/wire-data.md
-            - name: 服务映射
-              items:
-                - name: 用途
-                  href: insights/service-map.md
-                - name: 配置
-                  href: insights/service-map-configure.md
-                - name: 与 Operations Manager 集成
-                  href: insights/service-map-scom.md
+            - name: 服务映射解决方案
+              href: insights/service-map.md
             - name: 计算机组
               href: platform/computer-groups.md
             - name: 配置管理器

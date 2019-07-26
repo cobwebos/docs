@@ -43,7 +43,7 @@
       href: container-registry-skus.md
     - name: 注册表、存储库和映像
       href: container-registry-concepts.md
-    - name: 映像存储
+    - name: 图像存储
       href: container-registry-storage.md
     - name: 内容格式
       href: container-registry-image-formats.md
@@ -101,6 +101,8 @@
           href: container-registry-tasks-scheduled.md
         - name: 多步骤任务
           href: container-registry-tasks-multi-step.md
+        - name: 使用 Buildpacks 生成映像（预览版）
+          href: container-registry-tasks-pack-build.md
         - name: 与托管标识配合使用
           href: container-registry-tasks-authentication-managed-identity.md
     - name: 注册表和其他 Azure 服务

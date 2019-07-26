@@ -63,6 +63,8 @@
           href: how-vs-code-works-with-dev-spaces.md
     - name: 如何
       items:
+        - name: 安装 Azure Dev Spaces
+          href: how-to/install-dev-spaces.md
         - name: 使用 Azure Cloud Shell 创建 Kubernetes 群集
           href: how-to/create-cluster-cloud-shell.md
         - name: 共享 Azure Dev Spaces
@@ -81,5 +83,7 @@
           href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Azure Dev Spaces 的业务连续性和灾难恢复
           href: how-to/dev-spaces-business-continuity.md
+        - name: 与 Windows 容器交互
+          href: how-to/run-dev-spaces-windows-containers.md
     - name: 故障排除
       href: troubleshooting.md

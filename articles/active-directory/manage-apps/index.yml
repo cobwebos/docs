@@ -48,4 +48,4 @@ sections:
         style: unordered
         items:
           - html: '<a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">SaaS 应用程序教程</a>'
-          - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">配置单一登录</a>
+          - html: <a href="/azure/active-directory/manage-apps/application-proxy-add-on-premises-application">添加通过应用程序代理访问的本地应用</a>

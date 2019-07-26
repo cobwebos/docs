@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.openlocfilehash: a56fab3f8f572f277c11dc566c7d74104226b4fc
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: dd7d8658b8f1fbe01a8928963e7f78d2adbe1d74
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480576"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325508"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>快速入门：在 Azure Cosmos DB 中使用 Java SDK 创建图形数据库 
 
@@ -150,13 +150,13 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 2. 在 git 终端窗口中，使用以下命令安装所需的 Java 包。
 
-   ```
+   ```git
    mvn package
    ```
 
 3. 在 git 终端窗口中，使用以下命令启动 Java 应用程序。
     
-    ```
+    ```git
     mvn exec:java -D exec.mainClass=GetStarted.Program
     ```
 

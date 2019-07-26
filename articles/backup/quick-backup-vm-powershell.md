@@ -1,7 +1,6 @@
 ---
 title: Azure 快速入门 - 使用 PowerShell 备份 VM
 description: 了解如何使用 Azure PowerShell 备份虚拟机
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
@@ -10,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 05432f5a38c3d907afa95ac7b1b3adfe9c5515fe
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 3766b3b7f9dbab23673498eefd3f335b8e7f6c16
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236334"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467159"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>使用 PowerShell 在 Azure 中备份虚拟机
 
@@ -50,7 +49,7 @@ ms.locfileid: "65236334"
 创建保管库时：
 
 - 对于资源组和位置，指定要备份的 VM 的资源组和位置。
-- 如果使用此[示例脚本](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)创建了 VM，则资源组为 myResourceGroup，VM 为 *myVM，资源位于 WestEurope 区域中。
+- 如果使用此[示例脚本](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)创建了 VM，则资源组为 myResourceGroup  ，VM 为 *myVM  ，资源位于 WestEurope  区域中。
 - Azure 备份会自动处理备份数据的存储。 默认情况下，保管库使用[异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md)。 异地冗余可确保将备份数据复制到距主区域数百英里以外的辅助 Azure 区域。
 
 现在创建保管库：
@@ -144,7 +143,7 @@ ms.locfileid: "65236334"
     ```powershell
     Get-AzRecoveryservicesBackupJob
     ```
-    输出类似于以下示例，该示例显示作业处于“正在进行”状态：
+    输出类似于以下示例，该示例显示作业处于“正在进行”  状态：
 
     ```
     WorkloadName   Operation         Status       StartTime              EndTime                JobID
@@ -153,7 +152,7 @@ ms.locfileid: "65236334"
     myvm           ConfigureBackup   Completed    9/18/2017 9:33:18 PM   9/18/2017 9:33:51 PM   fe79c739
     ```
 
-2. 当作业状态是“已完成”时，VM 受保护并存储了完整恢复点。
+2. 当作业状态是“已完成”  时，VM 受保护并存储了完整恢复点。
 
 
 ## <a name="clean-up-the-deployment"></a>清理部署

@@ -2,20 +2,20 @@
 title: 快速入门：在 Azure SQL 数据仓库中横向扩展计算资源 - Azure 门户 | Microsoft Docs
 description: 使用 Azure 门户在 Azure SQL 数据仓库中缩放计算资源。 横向扩展计算为提高性能或缩放重新计算以节约成本。
 services: sql-data-warehouse
-author: kevinvngo
+author: Antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: implement
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: Anthony.vanGemert
 ms.reviewer: jrasnick
-ms.openlocfilehash: b02259e2eaf497fb1bfefc4c1ed7611a22394d48
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7c3e48cc57613b107e82cb0fbcb7d69aceb6cf0a
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894183"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479261"
 ---
 ## <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure SQL 数据仓库中缩放计算资源
 
@@ -29,7 +29,7 @@ ms.locfileid: "57894183"
 
 ## <a name="before-you-begin"></a>开始之前
 
-可以缩放现有的数据仓库，或使用[快速入门：创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。  本快速入门教程缩放 **mySampleDataWarehouse**。
+可以缩放现有的数据仓库，或使用[快速入门：创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。  本快速入门教程缩放 **mySampleDataWarehouse**。
 
 >[!Note]
 >数据仓库必须处于联机状态才能缩放。 
@@ -40,9 +40,9 @@ ms.locfileid: "57894183"
 
 更改数据仓库单位：
 
-1. 在 Azure 门户的左侧页面中，单击“SQL 数据仓库”。
-2. 从“SQL 数据仓库”页中选择“mySampleDataWarehouse”。 此操作打开数据仓库。
-3. 单击“缩放”。
+1. 在 Azure 门户的左侧页面中，单击“SQL 数据仓库”  。
+2. 从“SQL 数据仓库”页中选择“mySampleDataWarehouse”   。 此操作打开数据仓库。
+3. 单击“缩放”  。
 
     ![单击“缩放”](media/quickstart-scale-compute-portal/click-scale.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "57894183"
 
     ![移动滑块](media/quickstart-scale-compute-portal/scale-dwu.png)
 
-3. 单击“保存”。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
+3. 单击“保存”  。 此时会显示确认消息。 单击“是”  以确认或“否”  以取消。
 
     ![点击“保存”](media/quickstart-scale-compute-portal/confirm-change.png)
 
