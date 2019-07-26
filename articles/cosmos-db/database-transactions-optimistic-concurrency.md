@@ -4,15 +4,15 @@ description: 本文介绍 Azure Cosmos DB 中的数据库事务和乐观并发�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1da5dabad04d72c903072a33dfb7b0229f99c62d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b58255aa471fe78c84b5f6a7432c0f3d402f0875
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978990"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467910"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>事务和乐观并发控制
 
@@ -55,7 +55,7 @@ Azure Cosmos DB 中的数据库引擎支持使用快照隔离且完全符合 ACI
 
 存储在 Azure Cosmos 容器中的每个项都具有系统定义的 `_etag` 属性。 每次更新项时，`_etag` 的值都由服务器自动生成和更新。 `_etag` 可与客户端提供的 `if-match` 请求标头配合使用，使服务器能够决定是否可以条件性地更新某项。 如果 `if-match` 标头的值与服务器上的 `_etag` 的值匹配，则会更新该项。 如果 `if-match` 请求标头值不再是最新值，则服务器会拒绝该操作，并提供“HTTP 412 前置条件失败”响应消息。 然后客户端可重新提取该项，以在服务器上获取该项的当前版本，或用该项自己的 `_etag` 值覆盖服务器中该项的版本。 此外，`_etag` 可以与 `if-none-match` 标头配合使用，以确定是否需要重新提取资源。 
 
-项的`_etag`值发生更改，每次更新项。 对于替换项操作，必须在请求选项中显式表达 `if-match`。 有关示例，请参阅 [GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446) 中的示例代码。 将对存储过程接触的所有写入项隐式检查 `_etag` 值。 如果检查到任何冲突，存储过程将回退事务并引发异常。 通过此方法，将以原子方式应用存储过程中的所有写入内容或不应用任何写入内容。 这是应用程序重新应用更新并重试原始客户端请求的信号。
+每次更新`_etag`项时, 项的值都会发生更改。 对于替换项操作，必须在请求选项中显式表达 `if-match`。 有关示例，请参阅 [GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446) 中的示例代码。 将对存储过程接触的所有写入项隐式检查 `_etag` 值。 如果检查到任何冲突，存储过程将回退事务并引发异常。 通过此方法，将以原子方式应用存储过程中的所有写入内容或不应用任何写入内容。 这是应用程序重新应用更新并重试原始客户端请求的信号。
 
 ## <a name="next-steps"></a>后续步骤
 

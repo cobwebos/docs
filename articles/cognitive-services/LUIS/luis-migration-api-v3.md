@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 07/22/2019
 ms.author: diberry
-ms.openlocfilehash: 4c08c95a05d4f22e2338a7264409aec0f64a4755
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: edaa36cf22e63d42eb347aea3da1816e2c93b45e
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442516"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479222"
 ---
-# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>预览版：迁移到的 API 版本 3.x LUIS 应用
+# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>预览版：迁移到 API 版本 3.x, 适用于 LUIS 应用
 
 查询预测终结点 API 已发生更改。 请使用本指南了解如何迁移到终结点 API 版本 3。 
 
@@ -44,25 +44,30 @@ V3 API **不支持**以下 LUIS 功能：
 
 为 V3 提供了[参考文档](https://aka.ms/luis-api-v3)。
 
-## <a name="endpoint-url-changes-by-slot-name"></a>槽名称由终结点 URL 更改
+## <a name="endpoint-url-changes-by-slot-name"></a>终结点 URL 按槽名称更改
 
 V3 终结点 HTTP 调用的格式已更改。
 
 |方法|URL|
 |--|--|
-|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0 预览版</b>/apps/<b>{应用 ID}</b>/slots/<b>{槽名称}</b>/ 预测？查询 =<b>{QUERY}</b>|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict?query=<b>{QUERY}</b>|
 |发布|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
 |||
 
-## <a name="endpoint-url-changes-by-version-id"></a>按版本 ID 的终结点 URL 更改
+槽的有效值:
 
-如果你想要查询的版本，需首先[通过 API 发布](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)与`"directVersionPublish":true`。 查询引用而不是槽名称的版本 ID 的终结点。
+* `production`
+* `staging`
+
+## <a name="endpoint-url-changes-by-version-id"></a>终结点 URL 按版本 ID 更改
+
+如果希望按版本查询，首先需要使用 `"directVersionPublish":true` [通过 API 发布](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)。 查询引用版本 ID 而不是槽名称的终结点。
 
 
 |方法|URL|
 |--|--|
-|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0 预览版</b>/apps/<b>{应用 ID}</b>/versions/<b>{版本 ID}</b>/预测？ 查询 =<b>{QUERY}</b>|
-|发布|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0 预览版</b>/apps/<b>{应用 ID}</b>/versions/<b>{版本 ID}</b>/预测|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict?query=<b>{QUERY}</b>|
+|发布|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict|
 |||
 
 ## <a name="prebuilt-entities-with-new-json"></a>使用新 JSON 的预生成实体
@@ -75,12 +80,12 @@ V3 响应对象更改包括[预生成实体](luis-reference-prebuilt-entities.md
 
 V3 API 包含不同的查询字符串参数。
 
-|参数名称|Type|Version|默认|目的|
+|参数名称|类型|Version|默认|用途|
 |--|--|--|--|--|
-|`log`|boolean|V2 和 V3|false|存储日志文件中的查询。| 
-|`query`|string|仅 V3|没有默认值-它是必需的 GET 请求中|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
-|`show-all-intents`|boolean|仅 V3|false|在 **prediction.intents** 对象中返回包含相应评分的所有意向。 意向将在父 `intents` 对象中作为对象返回。 这样，便可以通过编程方式进行访问，而无需在数组中查找意向：`prediction.intents.give`。 在 V2 中，这些意向在数组中返回。 |
-|`verbose`|boolean|V2 和 V3|false|**在 V2 中**，如果设置为 true，则返回所有预测意向。 如果需要所有预测的意向，请使用 V3 参数 `show-all-intents`。<br><br>**在 V3 中**，此参数仅提供实体预测的实体元数据详细信息。  |
+|`log`|boolean|V2 和 V3|假|将查询存储在日志文件中。| 
+|`query`|string|仅 V3|无默认值 - 在 GET 请求中是必需的|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
+|`show-all-intents`|boolean|仅 V3|假|在 **prediction.intents** 对象中返回包含相应评分的所有意向。 意向将在父 `intents` 对象中作为对象返回。 这样，便可以通过编程方式进行访问，而无需在数组中查找意向：`prediction.intents.give`。 在 V2 中，这些意向在数组中返回。 |
+|`verbose`|boolean|V2 和 V3|假|**在 V2 中**，如果设置为 true，则返回所有预测意向。 如果需要所有预测的意向，请使用 V3 参数 `show-all-intents`。<br><br>**在 V3 中**，此参数仅提供实体预测的实体元数据详细信息。  |
 
 
 
@@ -103,12 +108,12 @@ V3 API 包含不同的查询字符串参数。
 }
 ```
 
-|属性|Type|Version|默认|目的|
+|属性|type|Version|默认|用途|
 |--|--|--|--|--|
-|`dynamicLists`|数组|仅 V3|非必需。|[动态列表](#dynamic-lists-passed-in-at-prediction-time)使你可以扩展现有的训练和已发布列表实体，已在 LUIS 应用。|
-|`externalEntities`|数组|仅 V3|非必需。|[外部实体](#external-entities-passed-in-at-prediction-time)使 LUIS 应用程序能够识别并在运行时，可用作针对现有实体的功能标记实体。 |
-|`options.datetimeReference`|string|仅 V3|无默认值|用于确定[datetimeV2 偏移量](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。|
-|`options.overridePredictions`|boolean|仅 V3|false|指定如果用户的[（使用与现有实体的相同名称） 的外部实体](#override-existing-model-predictions)使用或模型中的现有实体用于进行预测。 |
+|`dynamicLists`|array|仅 V3|非必需。|使用[动态列表](#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
+|`externalEntities`|array|仅 V3|非必需。|[外部实体](#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
+|`options.datetimeReference`|string|仅 V3|无默认值|用于确定 [datetimeV2 偏移量](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 DatetimeReference 的格式为[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)。|
+|`options.overridePredictions`|boolean|仅 V3|假|指定是使用用户的[外部实体（与现有实体具有相同名称）](#override-existing-model-predictions)，还是使用模型中的现有实体进行预测。 |
 |`query`|string|仅 V3|必需。|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
 
 
@@ -144,6 +149,8 @@ V3 的顶级 JSON 属性为：
     }
 }
 ```
+
+`normalizedQuery`包含拼写更正。 这对应于 V2 API 属性`alteredQuery`。  
 
 `intents` 对象是未排序的列表。 不要假设 `intents` 中的第一个子级对应于 `topIntent`。 请改用 `topIntent` 值来查找评分：
 
@@ -195,11 +202,11 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 在以下示例中，假设某段言语包含文本 `Yellow Bird Lane`。 此文本将作为自定义 `Location` 实体的 `Destination` 角色进行预测。
 
-|言语文本|实体名称|角色名称|
+|言语文本|实体名称|角色名|
 |--|--|--|
 |`Yellow Bird Lane`|`Location`|`Destination`|
 
-在 V2 中，实体由实体名称以及用作对象属性的角色进行标识： 
+在 V2 中，实体由实体名称以及用作对象属性的角色进行标识：
 
 ```JSON
 "entities":[
@@ -214,7 +221,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 ]
 ```
 
-在 V3 中，如果预测针对角色，则实体由实体角色引用： 
+在 V3 中，如果预测针对角色，则实体由实体角色引用：
 
 ```JSON
 "entities":{
@@ -312,9 +319,9 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 ### <a name="override-existing-model-predictions"></a>重写现有模型预测
 
-`overridePredictions`选项属性指定是否用户将发送具有相同名称的预测实体具有重叠的外部实体，LUIS 选择传入的实体或现有模型中的实体。 
+`overridePredictions` 选项属性指定如果用户发送与同名的预测实体重叠的外部实体，LUIS 将选择传入的实体还是模型中存在的实体。 
 
-例如，请考虑查询`today I'm free`。 检测到 LUIS`today`作为 datetimeV2 与以下响应：
+例如，考虑查询 `today I'm free`。 LUIS 检测到 `today` 为 datetimeV2，响应如下：
 
 ```JSON
 "datetimeV2": [
@@ -330,7 +337,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 ]
 ```
 
-如果用户发送的外部实体：
+如果用户发送外部实体：
 
 ```JSON
 {
@@ -343,7 +350,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 }
 ```
 
-如果`overridePredictions`设置为`false`，LUIS 返回响应，因为如果未发送的外部实体。 
+如果 `overridePredictions` 设置为 `false`，则 LUIS 将返回响应就像未发送外部实体一样。 
 
 ```JSON
 "datetimeV2": [
@@ -359,7 +366,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 ]
 ```
 
-如果`overridePredictions`设置为`true`，LUIS 返回响应包括：
+如果 `overridePredictions` 设置为 `true`，则 LUIS 将返回包括以下内容的响应：
 
 ```JSON
 "datetimeV2": [
@@ -371,9 +378,9 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解决
 
-可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。  
+可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。 
 
 主要目的是扩展预生成实体，但并不局限于该实体类型。 
 
@@ -442,7 +449,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 ## <a name="deprecation"></a>弃用 
 
-不将 V3 预览版之后至少 9 月内弃用 V2 API。 
+在 V3 预览后至少 9 个月内不会弃用 V2 API。 
 
 ## <a name="next-steps"></a>后续步骤
 

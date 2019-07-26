@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: e1ec6987f1a142e9bf9cd4413cfb4444bde1b7dd
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 66b11ef8e746222074eadab2348f8a2cf9dab39f
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797002"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479151"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -24,14 +24,14 @@ ms.locfileid: "67797002"
 ### <a name="what-is-an-event-hubs-namespace"></a>什么是事件中心命名空间？
 命名空间是事件中心/Kafka 主题的范围容器。 它提供唯一的 [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)。 命名空间充当容装多个事件中心/Kafka 主题的应用程序容器。 
 
-### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>何时创建新的命名空间与使用现有的命名空间？
-容量分配 ([吞吐量单位 (Tu)](#throughput-units)) 的命名空间级别计费。 命名空间也是与区域关联。
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>何时创建新的命名空间与使用现有命名空间？
+容量分配 ([吞吐量单位 (tu)](#throughput-units)) 按命名空间级别计费。 命名空间也与区域关联。
 
-您可能想要创建新的命名空间而不是使用一个中一个现有的以下方案： 
+您可能想要创建一个新的命名空间, 而不是在以下情况下使用现有的命名空间: 
 
-- 需要一个与新的区域相关联的事件中心。
-- 需要一个与不同的订阅相关联的事件中心。
-- 需要使用不同的容量分配一个事件中心 （即，容量需要具有添加的事件中心命名空间将超过 40 TU 阈值并不想要转的专用群集）  
+- 需要与新区域关联的事件中心。
+- 需要与其他订阅关联的事件中心。
+- 需要一个具有不同容量分配的事件中心 (也就是说, 具有已添加事件中心的命名空间的容量需要超过 40 TU 阈值, 并且你不希望获得专用群集)  
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>事件中心基本和标准这两种服务层有什么不同？
 
@@ -92,7 +92,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. 记下“非权威回答”  部分中的名称，该名称采用下述格式之一： 
+2. 记下“非权威回答”部分中的名称，该名称采用下述格式之一： 
 
     ```
     <name>-s1.servicebus.windows.net
@@ -153,7 +153,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 如果某个命名空间中所有事件中心间的总出口吞吐量或总出口事件率超过了聚合吞吐量单位限额，接收方会受到限制，并会收到指明已超出出口配额的错误信息。 入口和出口配额是分开强制实施的，因此，任何发送方都不会使事件耗用速度减慢，并且接收方也无法阻止事件发送到事件中心。
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>可预留/选择的吞吐量单位 (TU) 数量是否有限制？
-在多租户产品/服务中，吞吐量单位最多可扩展到 40 TU（可在门户中最多选择 20 TU，然后提出支持票证，在同一命名空间中将数目提高到 40 TU）。 如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。  专用群集按容量单位 (CU) 销售。
+在多租户产品/服务中，吞吐量单位最多可扩展到 40 TU（可在门户中最多选择 20 TU，然后提出支持票证，在同一命名空间中将数目提高到 40 TU）。 如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。 专用群集按容量单位 (CU) 销售。
 
 ## <a name="dedicated-clusters"></a>专用群集
 
@@ -185,8 +185,9 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 ## <a name="best-practices"></a>最佳实践
 
 ### <a name="how-many-partitions-do-i-need"></a>需要多少分区？
+分区数在创建时指定，必须介于 2 到 32 之间。 分区计数不可更改，因此在设置分区计数时应考虑长期规模。 分区是一种数据组织机制，与使用方应用程序中所需的下游并行度相关。 事件中心的分区数与预期会有的并发读取者数直接相关。 有关分区的详细信息, 请参阅[分区](event-hubs-features.md#partitions)。
 
-事件中心的分区数在设置后无法修改。 鉴于这一点，请务必在开始之前考虑需要多少分区。 
+创建时, 可能需要将其设置为可能的最大值 (即 32)。 请记住, 如果将发送方配置为仅发送到32以外的单个分区, 则具有多个分区将导致事件发送到多个分区, 而不保留订单。 在前一种情况下, 必须在所有32分区中读取事件。 在后一种情况下, 除了需要在事件处理器主机上进行额外的配置, 没有明显的额外成本。
 
 事件中心设计用于允许每个用户组使用单个分区读取器。 在大多数用例中，四个分区的默认设置就足够了。 如果希望扩展事件处理，则可以考虑添加其他分区。 对分区没有特定的吞吐量限制，但是命名空间中的聚合吞吐量受吞吐量单位数限制。 增加命名空间中吞吐量单位的数量时，可能需要添加额外分区来允许并发读取器实现其自身的最大吞吐量。
 

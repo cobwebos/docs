@@ -2,7 +2,7 @@
 title: 使用 Azure SQL 数据仓库中的事务 | Microsoft Docs
 description: 有关在开发解决方案时实现 Azure SQL 数据仓库中的事务的技巧。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,17 +10,17 @@ ms.subservice: development
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b6f95607c7cfc574d647be3046cef4a4b61906f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f00f8a25d0abf3af6d76b372b44145546a79879
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861751"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479610"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>使用 SQL 数据仓库中的事务
 有关在开发解决方案时实现 Azure SQL 数据仓库中的事务的技巧。
 
-## <a name="what-to-expect"></a>期望
+## <a name="what-to-expect"></a>预期结果
 与预期一样，SQL 数据仓库支持将事务纳入数据仓库工作负载。 但是，为了确保 SQL 数据仓库的性能维持在一定的程度，相比于 SQL Server，其某些功能会受到限制。 本文将突出两者的差异，并列出其他信息。 
 
 ## <a name="transaction-isolation-levels"></a>事务隔离级别
@@ -34,11 +34,11 @@ SQL 数据仓库实现 ACID 事务。 但是，事务支持的隔离级别受限
 * 出现平均数据分布 
 * 平均行长度为 250 个字节
 
-## <a name="gen2"></a>Gen2
+## <a name="gen2"></a>第 2 代
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | 每个分布的上限 (GB) | 分布的数量 | 最大事务大小 (GB) | 每分发的行数 | 每个事务的最大行数 |
 | --- | --- | --- | --- | --- | --- |
-| DW100c |第 |60 |60 |4,000,000 |240,000,000 |
+| DW100c |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
 | DW300c |2.25 |60 |135 |9,000,000 |540,000,000 |
 | DW400c |3 |60 |180 |12,000,000 |720,000,000 |
@@ -55,11 +55,11 @@ SQL 数据仓库实现 ACID 事务。 但是，事务支持的隔离级别受限
 | DW15000c |112.5 |60 |6,750 |450,000,000 |27,000,000,000 |
 | DW30000c |225 |60 |13,500 |900,000,000 |54,000,000,000 |
 
-## <a name="gen1"></a>Gen1
+## <a name="gen1"></a>第 1 代
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | 每个分布的上限 (GB) | 分布的数量 | 最大事务大小 (GB) | 每分发的行数 | 每个事务的最大行数 |
 | --- | --- | --- | --- | --- | --- |
-| DW100 |第 |60 |60 |4,000,000 |240,000,000 |
+| DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
 | DW300 |2.25 |60 |135 |9,000,000 |540,000,000 |
 | DW400 |3 |60 |180 |12,000,000 |720,000,000 |

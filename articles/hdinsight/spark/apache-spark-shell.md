@@ -2,18 +2,18 @@
 title: 在 Azure HDInsight 中使用交互式 Spark Shell
 description: 交互式 Spark Shell 提供了一个读取执行打印进程，用于一次运行一个 Spark 命令并查看结果。
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: 9044ed3ad9cf9ffa2f54d130bb50b37df121b86f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7aac2812787a7c14d99377754a4f85e699ef3f09
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696803"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441893"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>从 Spark Shell 运行 Apache Spark
 

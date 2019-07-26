@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 6e5034d0ff8f14a9fc381f6fd1a214a91ad4d1ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e81a7daad8ae565d177fc06970f06fe2c6b3829
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60444395"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335770"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>使用 Azure 应用服务保护 PaaS Web 和移动应用程序的最佳做法
 
@@ -30,14 +30,17 @@ Azure 应用服务是一个平台即服务 (PaaS) 产品，可创建适用于任
 ## <a name="authenticate-through-azure-active-directory-ad"></a>通过 Azure Active Directory (AD) 进行身份验证
 应用服务为标识提供者提供 OAuth 2.0 服务。 OAuth 2.0 注重简化客户端开发人员的工作，同时为 Web 应用程序、桌面应用程序和移动电话提供特定的授权流。 Azure AD 使用 OAuth 2.0，可让你授予移动和 Web 应用程序的访问权限。 若要了解详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/overview-authentication-authorization.md)。
 
-## <a name="restrict-access-based-on-role"></a>基于角色限制访问 
+## <a name="restrict-access-based-on-role"></a>基于角色限制访问
 对于想要实施数据访问安全策略的组织，限制访问是必须要做的事。 可使用基于角色的访问控制 (RBAC) 向特定范围的用户、组和应用程序分配权限，例如需要知道和最低特权安全原则。 若要了解有关向用户授予应用程序访问权限的详细信息，请参阅[什么是基于角色的访问控制](../role-based-access-control/overview.md)。
 
 ## <a name="protect-your-keys"></a>保护你的密钥
-如果丢失了订阅密钥，安全做得再好也无济于事。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Key Vault，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。 还可以使用 Key Vault 和自动续订来管理 TLS 证书。 请参阅 [Azure Key Vault](../key-vault/key-vault-whatis.md) 了解详细信息。 
+如果丢失了订阅密钥，安全做得再好也无济于事。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Key Vault，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。 还可以使用 Key Vault 和自动续订来管理 TLS 证书。 请参阅 [Azure Key Vault](../key-vault/key-vault-whatis.md) 了解详细信息。
 
 ## <a name="restrict-incoming-source-ip-addresses"></a>限制传入的源 IP 地址
 [应用服务环境](../app-service/environment/intro.md)提供虚拟网络集成功能，可帮助你通过网络安全组 (NSG) 限制传入的源 IP 地址。 如果不熟悉 Azure 虚拟网络 (VNET)，可使用此功能将多个 Azure 资源放置在可以控制其访问权限但无法通过 Internet 路由的网络中。 若要了解详细信息，请参阅[将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)。
+
+对于 Windows 上的应用服务, 你还可以通过配置 web.config 动态限制 IP 地址。有关详细信息, 请参阅[动态 IP 安全性](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
+
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了有关保护 PaaS Web 和移动应用程序的一系列应用服务安全最佳实践。 若要了解有关保护 PaaS 部署的详细信息，请参阅：

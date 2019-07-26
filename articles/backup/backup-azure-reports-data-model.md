@@ -1,19 +1,18 @@
 ---
 title: Azure 备份的数据模型
 description: 本文介绍 Azure 备份报表的 Power BI 数据模型详细信息。
-services: backup
 author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
-ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 66245a25af000d999ded87c58e3ba225b373b101
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337572"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465594"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Azure 备份报表的数据模型
 本文介绍用于创建 Azure 备份报表的 Power BI 数据模型。 使用此数据模型，可基于相关字段筛选现有报表，更重要是，还可使用模型中表格和字段创建自己的报表。 
@@ -70,7 +69,7 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 | 月份 |Text |用于筛选数据的月份，月份以第一天开始，在第 31 天结束 |
 | MonthDate | Date |月份中当月结束的日期，用于筛选数据 |
 | MonthDiff |十进制数 |用于筛选数据的月份差别，例如 0 表示本月的数据，-1 表示上个月的数据，0 和 -1 表示本月和上个月的数据 |
-| 周次 |Text |用于筛选数据的周次，每周从星期天开始，星期六结束 |
+| 周 |Text |用于筛选数据的周次，每周从星期天开始，星期六结束 |
 | WeekDate |Date |一周结束的日期，用于筛选数据 |
 | WeekDiff |十进制数 |用于筛选数据的周次差别，例如 0 表示本周的数据，-1 表示上一周的数据，0 和 -1 表示本周和上一周的数据 |
 | 年份 |Text |用于筛选数据的日历年 |
@@ -83,10 +82,10 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 | --- | --- | --- |
 | #JobsCreatedInPeriod |整数 |在选定时间段内创建的作业数 |
 | %FailuresForJobsCreatedInPeriod |百分比 |所选时间段内作业失败总数的百分比 |
-| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |十进制数 |所选时间段内为创建的“备用”作业转换的数据的第 80 百分位值（以 MB 计）  |
+| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |十进制数 |所选时间段内为创建的“备用”作业转换的数据的第 80 百分位值（以 MB 计） |
 | AsOnDateTime |Date/Time |所选行的最近刷新时间 |
-| AvgBackupDurationInMinsForJobsCreatedInPeriod |十进制数 |所选时间段内创建的“已完成备份”作业所用的平均时间（以分钟计）  |
-| AvgRestoreDurationInMinsForJobsCreatedInPeriod |十进制数 |所选时间段内创建的“已完成还原”作业所用的平均时间（以分钟计）  |
+| AvgBackupDurationInMinsForJobsCreatedInPeriod |十进制数 |所选时间段内创建的“已完成备份”作业所用的平均时间（以分钟计） |
+| AvgRestoreDurationInMinsForJobsCreatedInPeriod |十进制数 |所选时间段内创建的“已完成还原”作业所用的平均时间（以分钟计） |
 | BackupStorageDestination |Text |备份存储目标，例如云、磁盘  |
 | EntityState |Text |作业对象的当前状态，例如“活动”、“已删除” |
 | JobFailureCode |Text |导致作业失败的故障代码字符串 |

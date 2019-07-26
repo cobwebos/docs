@@ -2,7 +2,7 @@
 title: SQL 数据仓库中的临时表 | Microsoft 文档
 description: 提供了有关使用临时表的基本指导，并重点介绍了会话级临时表的原则。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 32830039c62f7ff68137e704b2562269fd4ad2c7
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: e43e52e56ec7abbf5d8eb879defef54bd7d50658
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466115"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479823"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL 数据仓库中的临时表
 本文包含使用临时表的基本指导，并重点介绍会话级别临时表的原则。 使用本文中的信息可以帮助将代码模块化，从而同时提高代码的可重用性和易维护性。
@@ -202,7 +202,7 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>临时表的限制
-SQL 数据仓库在实现临时表时确实会施加一些限制。  目前，仅支持会话范围的临时表。  不支持全局临时表。  此外，不能在临时表上创建视图。  临时表只能创建哈希或轮循机制分布。  不支持复制的临时表分布。 
+SQL 数据仓库在实现临时表时确实会施加一些限制。  目前，仅支持会话范围的临时表。  不支持全局临时表。  此外，不能在临时表上创建视图。  只能通过哈希或轮循机制分布来创建临时表。  不支持复制的临时表分布。 
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解如何开发表，请参阅[表概述](sql-data-warehouse-tables-overview.md)。

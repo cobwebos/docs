@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: e60188496e060eeea14fc7b7f1cc9a662551b286
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 27a675982711f8d8f0b36ea0cc2600de45e97a6e
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485162"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348457"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 
@@ -48,7 +48,7 @@ ms.locfileid: "67485162"
 如果此方法未能解决此问题，请执行以下步骤，手动还原 BEK 文件：
 
 1. 拍摄受影响的 VM 的系统磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要运行[管理 bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde)命令，在步骤 7， **BitLocker 驱动器加密**必须在恢复 VM 中启用功能。
+2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤7中运行[manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde)命令, 必须在恢复 VM 中启用**BitLocker 驱动器加密**功能。
 
     附加托管磁盘时，可能会收到“包含加密设置，因此不能用作数据磁盘”错误消息。 在此情况下，运行以下脚本，重试附加磁盘：
 
@@ -83,7 +83,7 @@ ms.locfileid: "67485162"
     ```powershell
     $vmName = "myVM"
     $vault = "myKeyVault"
-    Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.ContentType -match 'BEK')} `
+    Get-AzKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.ContentType -match 'BEK')} `
             | Sort-Object -Property Created `
             | ft  Created, `
                 @{Label="Content Type";Expression={$_.ContentType}}, `
@@ -104,7 +104,7 @@ ms.locfileid: "67485162"
 
     如果看到两个重复的卷，具有较新时间戳的卷为恢复 VM 使用的当前 BEK 文件。
 
-    如果“内容类型”  值为“包装的 BEK”  ，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
+    如果“内容类型”值为“包装的 BEK”，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
 
     获取驱动器的 BEK 文件名称后，须创建 secret-file-name.BEK 文件以解锁驱动器。
 
@@ -112,22 +112,22 @@ ms.locfileid: "67485162"
 
     ```powershell
     $vault = "myKeyVault"
-    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK"
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $vault -Name $bek
+    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C"
+    $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $vault -Name $bek
     $bekSecretBase64 = $keyVaultSecret.SecretValueText
     $bekFileBytes = [Convert]::FromBase64String($bekSecretbase64)
     $path = "C:\BEK\DiskEncryptionKeyFileName.BEK"
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  若要通过使用 BEK 文件解锁附加的磁盘，请运行以下命令。
+7.  若要使用 BEK 文件解锁附加的磁盘, 请运行以下命令。
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
     在此示例中，附加的 OS 磁盘为驱动器 F。请确保使用正确的驱动器号。 
 
-    - 如果使用 BEK 密钥成功解锁了磁盘。 我们可以考虑 BitLocker 问题会得到解决。 
+    - 如果使用 BEK 密钥成功解锁了磁盘。 我们可以考虑要解决的 BitLocker 问题。 
 
     - 如果使用 BEK 密钥未能解锁磁盘，则可以使用暂停保护，通过运行以下命令暂时关闭 BitLocker
     
@@ -145,7 +145,7 @@ ms.locfileid: "67485162"
 
 对于密钥加密密钥方案，请执行以下步骤：
 
-1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”  中 Key Vault 访问策略中的“解包”权限。
+1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”中 Key Vault 访问策略中的“解包”权限。
 2. 将以下脚本保存到 .PS1 文件：
 
     ```powershell
@@ -254,7 +254,7 @@ ms.locfileid: "67485162"
     ```
     在此示例中，附加的 OS 磁盘为驱动器 F。请确保使用正确的驱动器号。 
 
-    - 如果使用 BEK 密钥成功解锁了磁盘。 我们可以考虑 BitLocker 问题会得到解决。 
+    - 如果使用 BEK 密钥成功解锁了磁盘。 我们可以考虑要解决的 BitLocker 问题。 
 
     - 如果使用 BEK 密钥未能解锁磁盘，则可以使用暂停保护，通过运行以下命令暂时关闭 BitLocker
     

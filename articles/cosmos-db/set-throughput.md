@@ -4,14 +4,14 @@ description: 了解如何为 Azure Cosmos 容器和数据库设置预配的吞�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: adf0891203321ca02c47494f1865ca78a833e301
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 2bcd428e2de90251d4d64111b1c3e6b6f812ac4c
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561378"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467626"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
 
@@ -60,7 +60,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 如果逻辑分区上的工作负荷消耗的吞吐量超过了分配给特定逻辑分区的吞吐量，操作将受到速率限制。 出现速率限制时，可以增大整个数据库的吞吐量，或重试操作。 有关分区的详细信息，请参阅[逻辑分区](partition-data.md)。
 
-可在单个物理分区中托管多个属于不同容器的逻辑分区，这些容器共享预配给数据库的吞吐量。 尽管容器的单个逻辑分区始终划归到物理分区，但可以在“R”物理分区中映射和托管“C”容器中共享数据库预配吞吐量的“L”逻辑分区。    
+可在单个物理分区中托管多个属于不同容器的逻辑分区，这些容器共享预配给数据库的吞吐量。 尽管容器的单个逻辑分区始终划归到物理分区，但可以在“R”物理分区中映射和托管“C”容器中共享数据库预配吞吐量的“L”逻辑分区。 
 
 下图显示了物理分区如何托管属于数据库中不同容器的一个或多个逻辑分区：
 
@@ -70,13 +70,13 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 可以合并两个模型。 同时对数据库和容器预配吞吐量。 以下示例演示如何对 Azure Cosmos 数据库和容器预配吞吐量：
 
-* 可以创建预配吞吐量为“K”RU 的名为“Z”的 Azure Cosmos 数据库。   
-* 接下来，在该数据库中创建名为 A、B、C、D、E 的五个容器。      创建容器 B 时，请确保启用“为此容器预配专用吞吐量”  选项，并在此容器上显式配置“P”  个 RU 的预配吞吐量。 请注意，只有在创建数据库和容器时，才能配置共享吞吐量和专用吞吐量。 
+* 可以创建预配吞吐量为“K”RU 的名为“Z”的 Azure Cosmos 数据库。 
+* 接下来，在该数据库中创建名为 A、B、C、D、E 的五个容器。 创建容器 B 时，请确保启用“为此容器预配专用吞吐量”选项，并在此容器上显式配置“P”个 RU 的预配吞吐量。 请注意，只有在创建数据库和容器时，才能配置共享吞吐量和专用吞吐量。 
 
    ![在容器级别设置吞吐量](./media/set-throughput/coll-level-throughput.png)
 
-* “K”RU 吞吐量在 A、C、D、E 这四个容器之间共享。      提供给 A、C、D 或 E 的确切吞吐量各不相同。     每个容器的吞吐量没有 SLA 的保障。
-* 保证名为 B 的容器始终可以获得“P”RU 吞吐量。   该容器有 SLA 的保障。
+* “K”RU 吞吐量在 A、C、D、E 这四个容器之间共享。提供给 A、C、D 或 E 的确切吞吐量各不相同。 每个容器的吞吐量没有 SLA 的保障。
+* 保证名为 B 的容器始终可以获得“P”RU 吞吐量。 该容器有 SLA 的保障。
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>在数据库或容器上更新吞吐量
 
@@ -90,7 +90,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 使用 .NET SDK 时，可以通过 [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) 方法检索容器或数据库的最小吞吐量。 
 
-可以随时缩放容器或数据库的预配吞吐量。 执行缩放操作时以增加吞吐量，可能需要更长时间，这取决要预配所需的资源的系统任务。 可以检查在 Azure 门户或使用 Sdk 以编程方式缩放操作的状态。 使用.Net SDK，你可以使用获取缩放操作的状态`DocumentClient.ReadOfferAsync`方法。
+可以随时缩放容器或数据库的预配吞吐量。 执行缩放操作以增加吞吐量时, 可能需要较长的时间, 因为系统任务需要设置所需的资源。 可以在 Azure 门户中或使用 Sdk 以编程方式检查缩放操作的状态。 使用 .net SDK 时, 可以使用`DocumentClient.ReadOfferAsync`方法获取缩放操作的状态。
 
 ## <a name="comparison-of-models"></a>模型比较
 

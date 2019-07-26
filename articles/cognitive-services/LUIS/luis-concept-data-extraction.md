@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d10588e3df3932f5749093170e7e76fc029053ff
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150682"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479092"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从包含意向和实体的话语文本中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
@@ -24,16 +24,16 @@ ms.locfileid: "65150682"
 最难提取的数据是机器学习的数据，因为它不是确切的文本匹配。 机器学习[实体](luis-concept-entity-types.md)的数据提取需要作为[创作周期](luis-concept-app-iteration.md)的一部分，直到你确信已接收到所需的数据。
 
 ## <a name="data-location-and-key-usage"></a>数据位置和密钥用法
-LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 请求（POST 或 GET）包含陈述以及一些可选配置，例如暂存或生产环境  。
+LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 请求（POST 或 GET）包含陈述以及一些可选配置，例如暂存或生产环境。
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-在编辑 LUIS 应用时，`appID` 可在该 LUIS 应用的“设置”  页上找到，也可在 URL 中找到（在 `/apps/` 之后）。 `subscription-key` 是用于查询应用的终结点密钥。 虽然可以在学习 LUIS 时使用免费的创作/初学者密钥，但是将终结点密钥更改为支持[所需 LUIS 用法](luis-boundaries.md#key-limits)的密钥非常重要。 `timezoneOffset` 的单位是分钟。
+在编辑 LUIS 应用时，`appID` 可在该 LUIS 应用的“设置”页上找到，也可在 URL 中找到（在 `/apps/` 之后）。 `subscription-key` 是用于查询应用的终结点密钥。 虽然可以在学习 LUIS 时使用免费的创作/初学者密钥，但是将终结点密钥更改为支持[所需 LUIS 用法](luis-boundaries.md#key-limits)的密钥非常重要。 `timezoneOffset` 的单位是分钟。
 
-HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模型确定的所有意向和实体信息  。 终结点 URL 位于 [LUIS](luis-reference-regions.md) 网站的“管理”  部分的“密钥和终结点”  页上。
+HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模型确定的所有意向和实体信息。 终结点 URL 位于 [LUIS](luis-reference-regions.md) 网站的“管理”部分的“密钥和终结点”页上。
 
 ## <a name="data-from-intents"></a>意向中的数据
-主数据是评分最高的意向名称  。 使用 `MyStore` [快速入门](luis-quickstart-intents-only.md)，则终结点响应为：
+主数据是评分最高的意向名称。 使用 `MyStore` [快速入门](luis-quickstart-intents-only.md)，则终结点响应为：
 
 ```JSON
 {
@@ -48,7 +48,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 |数据对象|数据类型|数据位置|值|
 |--|--|--|--|
-|意向|String|topScoringIntent.intent|"GetStoreInfo"|
+|Intent|String|topScoringIntent.intent|"GetStoreInfo"|
 
 如果机器人或 LUIS 调用应用基于不止一个意向评分来进行决策，则通过设置查询字符串参数 `verbose=true` 来返回所有意向的评分。 终结点响应为：
 
@@ -75,10 +75,10 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 意向按评分从高到低排序。
 
-|数据对象|数据类型|数据位置|值|分数|
+|数据对象|数据类型|数据位置|ReplTest1|分数|
 |--|--|--|--|:--|
-|意向|String|intents[0].intent|"GetStoreInfo"|0.984749258|
-|意向|String|intents[1].intent|"None"|0.0168218873|
+|Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
+|Intent|String|intents[1].intent|"None"|0.0168218873|
 
 如果添加预构建的域，则意向名称指示该域，例如 `Utilties` 或 `Communication` 以及意向：
 
@@ -106,11 +106,11 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-|Domain|数据对象|数据类型|数据位置|值|
+|Domain|数据对象|数据类型|数据位置|ReplTest1|
 |--|--|--|--|--|
-|实用程序|意向|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|通信|意向|String|intents[1].intent|<b>Communication</b>.StartOver"|
-||意向|String|intents[2].intent|"None"|
+|公用事业|Intent|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
+|通信|Intent|String|intents[1].intent|<b>Communication</b>.StartOver"|
+||Intent|String|intents[2].intent|"None"|
 
 
 ## <a name="data-from-entities"></a>实体中的数据
@@ -118,7 +118,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 陈述中的单个单词或短语可以匹配多个实体。 在这种情况下，会返回每个匹配实体及其评分。
 
-所有实体都返回在终结点响应中的“实体”数组中  ：
+所有实体都返回在终结点响应中的“实体”数组中：
 
 ```JSON
 "entities": [
@@ -148,141 +148,15 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ## <a name="simple-entity-data"></a>简单实体数据
 
-[简单实体](luis-concept-entity-types.md)是一种机器学习值。 它可以是一个单词或短语。
-
-`Bob Jones wants 3 meatball pho`
-
-在之前的陈述中，`Bob Jones` 被标记为一个简单的 `Customer` 实体。
-
-从终结点返回的数据包括实体名称、从陈述中发现的文本、所发现文本的位置，以及评分：
-
-```JSON
-"entities": [
-  {
-  "entity": "bob jones",
-  "type": "Customer",
-  "startIndex": 0,
-  "endIndex": 8,
-  "score": 0.473899543
-  }
-]
-```
-
-|数据对象|实体名称|值|
-|--|--|--|
-|简单实体|`Customer`|`bob jones`|
+[简单实体](reference-entity-simple.md)是一种机器学习值。 它可以是一个单词或短语。
 
 ## <a name="composite-entity-data"></a>复合实体数据
-[复合](luis-concept-entity-types.md)实体是机器学习的，并且可包括单词或短语。 例如，考虑一个预构建的 `number` 和 `Location::ToLocation` 的复合实体，其具有以下陈述：
 
-`book 2 tickets to paris`
-
-注意数字 `2` 和 ToLocation `paris` 之间有单词，这些单词不属于任何实体。 [LUIS](luis-reference-regions.md) 网站中的已标记话语中使用的绿色下划线指示复合实体。
-
-![复合实体](./media/luis-concept-data-extraction/composite-entity.png)
-
-复合实体返回在 `compositeEntities` 数组中，且该复合中的所有实体也都返回在 `entities` 数组中：
-
-```JSON
-
-"entities": [
-    {
-    "entity": "2 tickets to cairo",
-    "type": "ticketInfo",
-    "startIndex": 0,
-    "endIndex": 17,
-    "score": 0.67200166
-    },
-    {
-    "entity": "2",
-    "type": "builtin.number",
-    "startIndex": 0,
-    "endIndex": 0,
-    "resolution": {
-        "subtype": "integer",
-        "value": "2"
-    }
-    },
-    {
-    "entity": "cairo",
-    "type": "builtin.geographyV2",
-    "startIndex": 13,
-    "endIndex": 17
-    }
-],
-"compositeEntities": [
-    {
-    "parentType": "ticketInfo",
-    "value": "2 tickets to cairo",
-    "children": [
-        {
-        "type": "builtin.geographyV2",
-        "value": "cairo"
-        },
-        {
-        "type": "builtin.number",
-        "value": "2"
-        }
-    ]
-    }
-]
-```    
-
-|数据对象|实体名称|值|
-|--|--|--|
-|预构建实体 - 数量|"builtin.number"|"2"|
-|预生成实体 - GeographyV2|"Location::ToLocation"|"paris"|
+[复合实体](reference-entity-composite.md)由其他实体 (例如预生成实体、简单、正则表达式和列表实体) 组成。 各种单独的实体构成整个实体。 
 
 ## <a name="list-entity-data"></a>列表实体数据
 
-[列表](luis-concept-entity-types.md)实体不进行机器学习。 它是确切的文本匹配。 列表代表列表中的项以及这些项的同义词。 LUIS 将任何列表中某个项的任何匹配项标记为响应中的实体。 同义词可位于多个列表中。
-
-假设应用有一个名为 `Cities` 的列表，允许城市名称的变体，包括机场城市 (Sea-tac)、机场代码 (SEA)、邮政编码 (98101) 和电话区号 (206)。
-
-|列表项|项同义词|
-|---|---|
-|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
-|`Paris`|`cdg`、`roissy`、`ory`、`75001`、`1`、`+33`|
-
-`book 2 tickets to paris`
-
-在之前的陈述中，单词 `paris` 映射至属于 `Cities` 列表实体一部分的“巴黎”项。 列表实体同时匹配项的规范化名称及其同义词。
-
-```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 22,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
-
-另一个使用巴黎的同义词的示例陈述：
-
-`book 2 tickets to roissy`
-
-```JSON
-"entities": [
-  {
-    "entity": "roissy",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 23,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
+[列表实体](reference-entity-list.md)表示固定的、封闭的相关单词集及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。 
 
 ## <a name="prebuilt-entity-data"></a>预构建实体数据
 [预构建](luis-concept-entity-types.md)实体是基于正则表达式匹配项、使用开源 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 项目发现的。 预构建实体返回在实体数组中，并使用前缀为 `builtin::` 的类型名称。 以下文本是一个示例陈述，其中包含返回的预构建实体：
@@ -369,35 +243,8 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 ```
 
 ## <a name="regular-expression-entity-data"></a>正则表达式实体数据
-[正则表达式](luis-concept-entity-types.md)实体是基于正则表达式匹配项、使用创建实体时提供的表达式发现的。 如果将 `kb[0-9]{6}` 用作正则表达式实体定义，则下面的 JSON 响应就是一个示例陈述，其包含为查询 `When was kb123456 published?` 返回的正则表达式实体：
 
-```JSON
-{
-  "query": "when was kb123456 published?",
-  "topScoringIntent": {
-    "intent": "FindKBArticle",
-    "score": 0.933641255
-  },
-  "intents": [
-    {
-      "intent": "FindKBArticle",
-      "score": 0.933641255
-    },
-    {
-      "intent": "None",
-      "score": 0.04397359
-    }
-  ],
-  "entities": [
-    {
-      "entity": "kb123456",
-      "type": "KB number",
-      "startIndex": 9,
-      "endIndex": 16
-    }
-  ]
-}
-```
+[正则表达式实体](reference-entity-regular-expression.md)基于您提供的正则表达式模式提取实体。
 
 ## <a name="extracting-names"></a>提取名称
 从陈述提取名称非常困难，因为名称几乎可以是字母和单词的任何组合。 根据要提取的名称类型，有若干选项。 以下建议不是规则，而是更多准则。
@@ -418,7 +265,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ### <a name="new-and-emerging-names"></a>新出现的名称
 
-一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是难度最大数据提取的类型。 以开头 **[简单实体](luis-concept-entity-types.md#simple-entity)** ，并添加[短语列表](luis-concept-feature.md)。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
+一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难进行的数据提取类型。 以开头 **[简单实体](luis-concept-entity-types.md#simple-entity)** ，并添加[短语列表](luis-concept-feature.md)。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
 ## <a name="pattern-roles-data"></a>模式角色数据
 角色是实体间的上下文差别。
@@ -482,49 +329,8 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 ```
 
 ## <a name="patternany-entity-data"></a>Pattern.any 实体数据
-Pattern.any 实体是长度可变的实体，用于某个[模式](luis-concept-patterns.md)的模板陈述中。
 
-```JSON
-{
-  "query": "where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?",
-  "topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.999999464
-  },
-  "intents": [
-    {
-      "intent": "FindForm",
-      "score": 0.999999464
-    },
-    {
-      "intent": "GetEmployeeBenefits",
-      "score": 4.883697E-06
-    },
-    {
-      "intent": "None",
-      "score": 1.02040713E-06
-    },
-    {
-      "intent": "GetEmployeeOrgChart",
-      "score": 9.278342E-07
-    },
-    {
-      "intent": "MoveAssetsOrPeople",
-      "score": 9.278342E-07
-    }
-  ],
-  "entities": [
-    {
-      "entity": "understand your responsibilities as a member of the community",
-      "type": "FormName",
-      "startIndex": 18,
-      "endIndex": 78,
-      "role": ""
-    }
-  ]
-}
-```
-
+[Pattern。 any](reference-entity-pattern-any.md)是仅在模式的模板查询文本中使用的可变长度占位符, 用于标记实体开始和结束的位置。  
 
 ## <a name="sentiment-analysis"></a>情绪分析
 如果配置了情绪分析，LUIS json 响应会包含情绪分析内容。 请在[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文档中详细了解情绪分析。

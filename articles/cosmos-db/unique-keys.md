@@ -5,14 +5,14 @@ author: rimman
 ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: af3c7771ce977cf248c5f1b61ba1c535a10ccd3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5b8eb4d5334eb198ff6699897c56b516ded069e
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242512"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467569"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB 中的唯一键约束
 
@@ -56,4 +56,4 @@ ms.locfileid: "66242512"
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解[逻辑分区](partition-data.md)
-* 探索[如何定义唯一键](how-to-define-unique-keys.md)创建容器时
+* 了解如何在创建容器时[定义唯一键](how-to-define-unique-keys.md)

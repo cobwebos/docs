@@ -1,50 +1,49 @@
 ---
-title: Azure 无服务器概述 | Microsoft Docs
-description: 了解如何在云中创建功能强大的解决方案，而无需担心基础结构
+title: 概述-Azure 无服务器
+description: 在云中创建强大的解决方案, 无需担心基础结构
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: jeffhollan
 ms.author: jehollan
 ms.reviewer: klam, estfan, LADocs
-ms.custom: vs-azure
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 9cd1946d8fa670764bcc95b82298d07cc70417bd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 363002712bdd06e74360de9af186f5a458a4999d
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684102"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385354"
 ---
-# <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>概述：Azure 使用 Azure 逻辑应用和 Azure Functions 无服务器技术
+# <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>概述：Azure 无服务器的 Azure 逻辑应用和 Azure Functions
 
-[无服务器](https://azure.microsoft.com/solutions/serverless/)应用程序提供以下优势：部署速度快、减少了所需代码，并且缩放简单。  本文将探讨无服务器解决方案的各种属性以及 Azure 无服务器产品/服务。
+[无服务器](https://azure.microsoft.com/solutions/serverless/)应用程序提供了更多优点, 如提高开发速度、降低代码、简易性和规模。 本文介绍无服务器解决方案和 Azure 无服务器产品/服务的不同属性。
 
 ## <a name="what-is-serverless"></a>什么是无服务器？
 
-无服务器的意思并不是说没有服务器，它只是说开发人员不需要考虑服务器。  在传统应用程序开发中，很大一部分工作是解决与缩放、托管以及监视解决方案相关的问题以满足应用程序的需求。  使用无服务器产品/服务时，解决方案中已考虑了这些问题。  此外，无服务器应用程序是按基于消耗的计划计费的。  如果永远不使用应用程序，则永远不会产生费用。  这些功能使得开发人员可以集中精力来处理解决方案的业务逻辑。
+无服务器并不意味着没有服务器, 而是让开发人员不必担心服务器。 在传统应用程序开发中，很大一部分工作是解决与缩放、托管以及监视解决方案相关的问题以满足应用程序的需求。 在无服务器的情况下, 这些问题是解决方案的一部分。 此外, 无服务器应用按基于消耗的计划计费。 如果从未使用过该应用, 则不会产生任何费用。 这些功能可帮助开发人员仅专注于解决方案的业务逻辑。
 
-Azure 中围绕无服务器产品/服务的核心服务有 [Azure Functions](https://azure.microsoft.com/services/functions/) 和 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)。  这两种解决方案都遵守上述原则，并使开发人员可以通过最少的代码构建可靠的云应用程序。
+用于无服务器的核心 Azure 服务是[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)和[Azure Functions](https://azure.microsoft.com/services/functions/)。 这两个解决方案都遵循前面所述的原则, 可帮助开发人员以最少的代码构建可靠的云应用。
 
-## <a name="what-are-azure-functions"></a>什么是 Azure Functions？
+## <a name="what-is-azure-logic-apps"></a>什么是 Azure 逻辑应用？
 
-Azure Functions 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 用户可以只编写解决现有问题所需的代码，而无需担心要运行该代码的整个应用程序或基础结构。 Functions 可使开发更有效率，并可以使用自己所选的开发语言，例如 C#、F#、Node.js、Python 或 PHP。 只需为代码运行的时间付费，并且 Azure 会根据需要进行缩放。
+[Azure 逻辑应用](logic-apps-overview.md)提供了一种方法来简化和实现云中可缩放的集成和工作流。 此服务提供了一个可视化设计器, 可将流程作为一系列步骤 (称为工作流) 进行建模并实现自动化。 云服务和本地系统之间有许多[连接器](../connectors/apis-list.md), 可快速将无服务器应用程序连接到其他 api。 每个逻辑应用都以触发器开头, 例如 "将帐户添加到 Dynamics CRM 时"。 触发触发器后, 工作流可以运行操作、转换和条件逻辑的组合。 当在一个进程中协调不同的 Azure Functions 时, 尤其是当该进程需要与外部系统或 API 交互时, 逻辑应用是一种很好的选择。
 
-如果要立即投入和开始使用 Azure Functions，请从 [创建第一个 Azure 函数](../azure-functions/functions-create-first-azure-function.md)开始。 如果要查找有关 Functions 的更多技术信息，请参阅 [开发人员参考](../azure-functions/functions-reference.md)。
+要开始使用逻辑应用，请先[创建第一个逻辑应用](quickstart-create-first-logic-app-workflow.md)。 有关逻辑应用的更多技术信息, 请参阅[开发人员参考](logic-apps-workflow-definition-language.md)。
 
-## <a name="what-are-azure-logic-apps"></a>什么是 Azure 逻辑应用？
+## <a name="what-is-azure-functions"></a>什么是 Azure Functions？
 
-Azure 逻辑应用提供了用于在云中简化并实现可缩放的集成和工作流的方式。 它提供了可视化设计器，用于为流程建模并将流程作为一系列步骤（称为工作流）自动执行。  在云服务和本地服务之间有[许多连接器](../connectors/apis-list.md)可用来快速将无服务器应用连接到其他 API。  逻辑应用以触发器开头（例如，“当将帐户添加到 Dynamics CRM 时”），在触发之后许多组合操作、转换和条件逻辑才能开始。  在流程中安排不同的 Azure Functions 时，逻辑应用是一个很好的选择 - 尤其是当流程需要与外部系统或 API 进行交互时。
+Azure Functions 是一项服务, 用于在云中轻松运行代码段或 "函数"。 你可以仅编写当前问题所需的代码, 而无需担心整个应用或所需的基础结构。 Functions 可使开发更有效率，并可以使用自己所选的开发语言，例如 C#、F#、Node.js、Python 或 PHP。 只需为代码运行的时间付费, Azure 会根据需要进行缩放。
 
-要开始使用逻辑应用，请先[创建第一个逻辑应用](quickstart-create-first-logic-app-workflow.md)。  如果要查找有关逻辑应用的更多技术信息，请参阅[开发人员参考](logic-apps-workflow-actions-triggers.md)。
+若要开始 Azure Functions, 请从[创建第一个 Azure 函数](../azure-functions/functions-create-first-azure-function.md)开始。 有关函数的更多技术信息, 请参阅[开发人员参考](../azure-functions/functions-reference.md)。
 
-## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>如何在 Azure 中构建和部署无服务器应用程序？
+## <a name="how-can-i-build-and-deploy-serverless-apps-in-azure"></a>如何在 Azure 中构建和部署无服务器应用？
 
-Azure 提供了在开发、部署和管理无服务器应用时可以使用的一组丰富工具。  可以直接在 Azure 门户中构建这类应用，也可以使用 [Visual Studio 中的工具](logic-apps-serverless-get-started-vs.md)进行构建。  开发应用程序后，可以将其[立即部署](logic-apps-create-deploy-template.md)。  Azure 还提供了针对无服务器应用程序的监视功能。  此监视可以访问在 Azure 门户中，通过 API 或 Sdk，或者使用集成的工具对 Azure Monitor 日志和 Application Insights。
+Azure 提供丰富的工具, 用于开发、部署和管理无服务器应用。 可以通过[Visual Studio](logic-apps-serverless-get-started-vs.md)中的工具或[Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)直接在 Azure 门户中生成应用。 生成应用后, 可以[通过 Azure 资源管理器模板快速部署该应用](logic-apps-deploy-azure-resource-manager-templates.md)。 Azure 还提供监视, 可以通过 Azure 门户、API 或 Sdk 访问该工具, 也可以使用集成的工具 Azure Monitor 日志和 Application Insights 进行监视。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [开始在 Visual Studio 中构建无服务器应用](logic-apps-serverless-get-started-vs.md)
-* [使用无服务器产品/服务创建 customer insights 仪表板](logic-apps-scenario-social-serverless.md)
-* [为逻辑应用构建部署模板](logic-apps-create-deploy-template.md)
+* [在 Visual Studio 中构建无服务器应用](logic-apps-serverless-get-started-vs.md)
+* [创建包含无服务器的 customer insights 仪表板](logic-apps-scenario-social-serverless.md)
+* [自动部署逻辑应用](logic-apps-azure-resource-manager-templates-overview.md)

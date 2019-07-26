@@ -2,7 +2,7 @@
 title: 连接到 Azure SQL 数据仓库 sqlcmd |Microsoft 文档
 description: 使用 sqlcmd 命令行实用程序连接并查询 Azure SQL 数据仓库。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 72760c5123703a664695c1be4d286a38e96ecc3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873324"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479504"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>使用 sqlcmd 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -27,10 +27,10 @@ ms.locfileid: "65873324"
 > 
 > 
 
-使用 [sqlcmd][sqlcmd] 命令行实用程序连接并查询 Azure SQL 数据仓库。  
+使用[sqlcmd][sqlcmd]命令行实用程序连接到 Azure SQL 数据仓库并进行查询。  
 
 ## <a name="1-connect"></a>1.连接
-若要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入 **sqlcmd**，后跟 SQL 数据仓库数据库的连接字符串。 连接字符串需要以下参数：
+若要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入 **sqlcmd** ，后跟 SQL 数据仓库数据库的连接字符串。 连接字符串需要以下参数：
 
 * **服务器 (-S)：** 采用 `<`Server Name`>`.database.windows.net 格式的服务器
 * **数据库 (-d)：** 数据库名称。
@@ -62,7 +62,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > 
 > 
 
-## <a name="2-query"></a>2.Query
+## <a name="2-query"></a>2.查询
 连接后，可以对实例发出任何支持的 Transact-SQL 语句。  在此示例中，查询以交互模式进行提交。
 
 ```sql
@@ -83,7 +83,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅 [sqlcmd 文档][sqlcmd]，详细了解 sqlcmd 中的可用选项。
+有关 sqlcmd 中可用选项的详细信息, 请参阅[sqlcmd 文档][sqlcmd]。
 
 <!--Image references-->
 
