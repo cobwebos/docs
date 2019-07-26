@@ -7,7 +7,7 @@ metadata:
   description: 了解如何使用必应 Web 搜索 API 在 Web 中搜索网页、图像、视频、新闻，等等。
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-web-search
   ms.tgt_pltfrm: na

@@ -6,7 +6,7 @@ metadata:
   description: 了解如何使用表单识别器以智能方式从表单文档中提取键值数据。
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
   ms.tgt_pltfrm: na

@@ -6,7 +6,7 @@ metadata:
   description: 了解如何使用内容审查器检查文本、图像和视频中是否存在可能有冒犯性、有危害或令人不适的内容。
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: content-moderator
   ms.tgt_pltfrm: na

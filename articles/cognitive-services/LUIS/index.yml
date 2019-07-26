@@ -6,7 +6,7 @@ metadata:
   title: 语言理解 (LUIS) - 教程、快速入门、API 参考
   description: 了解如何使用语言理解服务使应用程序可以理解用户以自己的语言表达的内容。
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na

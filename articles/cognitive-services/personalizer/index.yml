@@ -6,7 +6,7 @@ metadata:
   title: 个性化体验创建服务 - 教程、快速入门和 API 参考
   description: 了解如何使用个性化体验创建服务来让应用程序选择要显示给用户的最佳体验，并从其实时行为中学习信息。
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na

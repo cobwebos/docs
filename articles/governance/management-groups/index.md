@@ -7,12 +7,12 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 1958a829df2643bd218d4e8d7f6dd563b5b395e8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6ca8351e7294c5a9cdd9f594eb4524d04a27b5c1
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237163"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516975"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 
@@ -98,7 +98,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 |读取器                      |        |        |        |        |               |               | X     |
 |MG 读取者*                  |        |        |        |        |               |               | X     |
 |资源策略参与者 |        |        |        |        |               | X             |       |
-|用户访问管理员   |        |        |        |        | X             |               |       |
+|用户访问管理员   |        |        |        |        | X             | X             |       |
 
 *：MG 参与者和 MG 读者只允许用户在管理组范围执行这些操作。  
 **：将订阅或管理组移入/移出层次结构不一定需要根管理组上的角色分配。  请参阅[使用管理组管理资源](manage.md)了解有关将项目移到层次结构中的详细信息。

@@ -7,7 +7,7 @@ metadata:
   description: 开发人员可利用语音服务轻松将强大的语音支持功能添加到其应用程序。 示例包括语音命令控制和对话、自然语音聊天、语音听录和听写以及语音翻译。
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: speech-service

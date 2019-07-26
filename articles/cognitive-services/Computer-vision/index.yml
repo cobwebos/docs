@@ -6,7 +6,7 @@ metadata:
   description: 了解如何使用计算机视觉处理图像并返回信息。 教程介绍了如何构建使用该 API 的应用。
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
   ms.tgt_pltfrm: na

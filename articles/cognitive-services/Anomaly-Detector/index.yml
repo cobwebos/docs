@@ -6,7 +6,7 @@ metadata:
   description: 使用异常检测器 API 可在一段时间内监视数据，并通过机器学习检测异常。 深入了解数据，而无论数据量、行业或场景如何。
   services: cognitive-services
   author: aahill
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.tgt_pltfrm: na

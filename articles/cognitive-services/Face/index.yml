@@ -6,7 +6,7 @@ metadata:
   description: 了解如何使用人脸 API 来检测和识别图像中的人脸并返回人脸信息。 教程介绍了如何构建使用该 API 的应用。
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: face-api
   ms.tgt_pltfrm: na
