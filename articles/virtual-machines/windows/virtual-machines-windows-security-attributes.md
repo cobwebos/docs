@@ -1,6 +1,6 @@
 ---
-title: 安全特性适用于 Azure Windows 虚拟机
-description: 评估 Azure Windows 虚拟机的常见安全属性进行的检查表
+title: Azure Windows 虚拟机的安全属性
+description: 用于评估 Azure Windows 虚拟机的安全属性清单
 services: virtual-machines
 ms.service: virtual-machines
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0c13ca0f383db53d14847f72f1ea63166f763d94
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 1aabdbf24725ae0986feb1f9652e13e806df8fdf
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800258"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444326"
 ---
-# <a name="security-attributes-for-windows-virtual-machines"></a>安全特性适用于 Windows 的虚拟机
+# <a name="security-attributes-for-windows-virtual-machines"></a>Windows 虚拟机的安全属性
 
-本文介绍构建到 Windows 虚拟机的安全属性。
+本文介绍 Windows 虚拟机中内置的安全属性。
 
 [!INCLUDE [Security attributes header](../../../includes/security-attributes-header.md)]
 

@@ -8,21 +8,24 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: fe92d36eca05b47f928f6644053fb9b0149d6db9
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 07/24/2019
+ms.openlocfilehash: cd611918b755ac3d5b6088ec6abe1711962921c7
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326770"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423163"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
-对于逻辑应用和集成帐户需要访问 [ Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的情况，请创建[集成服务环境  (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 ISE 是专用和隔离的环境, 使用专用的存储和其他与公共或 "全局" 逻辑应用服务不同的资源。 这种分离还减少了其他 Azure 租户可能对应用性能产生的影响。
+对于逻辑应用和集成帐户需要访问 [ Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的情况，请创建[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 ISE 是专用和隔离的环境, 使用专用的存储和其他与公共或 "全局" 逻辑应用服务不同的资源。 这种分离还减少了其他 Azure 租户可能对应用性能产生的影响。
 
 当你创建 ISE 时, Azure 会将此 ISE*注入*到 Azure 虚拟网络, 然后将逻辑应用服务部署到你的虚拟网络中。 创建逻辑应用或集成帐户时, 请选择你的 ISE 作为其位置。 然后，逻辑应用或集成帐户可以直接访问虚拟网络中的虚拟机 (VM)、服务器、系统和服务等资源。
 
 ![选择集成服务环境](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
+
+> [!IMPORTANT]
+> 要使逻辑应用和集成帐户在 ISE 中协同工作, 两者都必须使用*相同的 ise*作为其位置。
 
 ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和响应超时、消息大小和自定义连接器请求的限制。 有关详细信息, 请参阅[Azure 逻辑应用的限制和配置](logic-apps-limits-and-config.md)。 若要了解有关 ISEs 的详细信息, 请参阅[从 Azure 逻辑应用访问 Azure 虚拟网络资源](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。
 
@@ -43,9 +46,9 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
-* [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 如果没有虚拟网络，请了解如何[创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 
+* [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 如果没有虚拟网络，请了解如何[创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。
 
-  * 你的虚拟网络必须具有四个*空*子网, 以便在 ISE 中创建和部署资源。 你可以提前创建这些子网, 也可以等待, 直到创建了你可以在其中创建子网的 ISE。 了解有关[子网要求](#create-subnet)的详细信息。 
+  * 你的虚拟网络必须具有四个*空*子网, 以便在 ISE 中创建和部署资源。 你可以提前创建这些子网, 也可以等待, 直到创建了你可以在其中创建子网的 ISE。 了解有关[子网要求](#create-subnet)的详细信息。
   
     > [!NOTE]
     > 如果使用提供与 Microsoft 云服务的专用连接的[ExpressRoute](../expressroute/expressroute-introduction.md), 则必须创建一个包含以下路由的[路由表](../virtual-network/manage-route-table.md), 并将该表链接到你的 ISE 使用的每个子网:
@@ -101,7 +104,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 若要创建集成服务环境 (ISE)，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)上的 Azure 主菜单上，选择“创建资源”。 
+1. 在 [Azure 门户](https://portal.azure.com)上的 Azure 主菜单上，选择“创建资源”。
 在搜索框中，输入“集成服务环境”作为筛选器。
 
    ![新建资源](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
@@ -110,7 +113,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    ![选择“创建”](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
 
-1. 为环境提供以下详细信息，然后选择“查看 + 创建”，例如  ：
+1. 为环境提供以下详细信息，然后选择“查看 + 创建”，例如：
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
@@ -122,7 +125,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
    | **Location** | 是 | <*Azure-datacenter-region*> | 要在其中部署环境的 Azure 数据中心区域 |
    | **SKU** | 是 | **高级**或**开发人员 (无 SLA)** | 要创建和使用的 ISE SKU。 有关这些 Sku 之间的差异, 请参阅[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 |
    | **额外容量** | 价格 <br>是 <p><p>开发 <br>不适用 | 价格 <br>0到10 <p><p>开发 <br>不适用 | 要用于此 ISE 资源的其他处理单元的数量。 若要在创建后添加容量, 请参阅[添加 ISE 容量](#add-capacity)。 |
-   | **虚拟网络** | 是 | <Azure-virtual-network-name  > | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果没有网络, 请[先创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 <p>**重要说明**：创建 ISE 时可以仅执行此注入  。 |
+   | **虚拟网络** | 是 | <Azure-virtual-network-name> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果没有网络, 请[先创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 <p>**重要说明**：创建 ISE 时可以仅执行此注入。 |
    | **子网** | 是 | <*subnet-resource-list*> | ISE 需要四个*空*子网, 以便在您的环境中创建和部署资源。 要创建每个子网，请[按照此表下方的步骤操作](#create-subnet)。  |
    |||||
 
@@ -130,14 +133,13 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    **创建子网**
 
-   若要在环境中创建和部署资源, ISE 需要四个不委托给任何服务的*空*子网。 
-   创建环境后,*无法*更改这些子网地址。 每个子网必须满足以下条件：
+   若要在环境中创建和部署资源, ISE 需要四个不委托给任何服务的*空*子网。 创建环境后,*无法*更改这些子网地址。 每个子网必须满足以下条件：
 
    * 的名称以字母字符或下划线开头, 且不包含以下字符: `<`、 `>`、 `%`、 `&`、 `\\` `?`、、`/`
 
    * 使用无[类别域间路由 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)和 B 类地址空间。
 
-   * 至少`/27`在地址空间中使用, 因为每个子网必须具有32地址作为*最小值*。 例如：
+   * 至少`/27`在地址空间中使用, 因为每个子网必须*至少*具有 32*地址。* 例如：
 
      * `10.0.0.0/27`具有32个地址, 因为 2<sup>(32-27)</sup>为 2<sup>5</sup>或32。
 
@@ -153,34 +155,33 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
      **地址前缀**:0.0.0.0/0<br>
      **下一跃点**：Internet
 
-   1. 在“子网”列表下，选择“管理子网配置”   。
+   1. 在“子网”列表下，选择“管理子网配置”。
 
       ![管理子网配置](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
 
-   1. 在“子网”窗格中，选择“子网”   。
+   1. 在“子网”窗格中，选择“子网”。
 
       ![添加子网](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
 
-   1. 在“添加子网”窗格中，提供此信息  。
+   1. 在“添加子网”窗格中，提供此信息。
 
       * **名称**：子网的名称
       * **地址范围(CIDR 块)** ：虚拟网络采用 CIDR 格式的子网范围
 
       ![添加子网详细信息](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
 
-   1. 完成后，选择“确定”  。
+   1. 完成后，选择“确定”。
 
    1. 重复这些步骤创建额外三个子网。
 
       > [!NOTE]
       > 如果尝试创建的子网无效, Azure 门户将显示一条消息, 但不会阻止你的进度。
 
-1. Azure 成功验证 ISE 信息后，请选择“创建”，例如  ：
+1. Azure 成功验证 ISE 信息后，请选择“创建”，例如：
 
    ![成功验证后，选择“创建”](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
 
-   Azure 随即开始部署该环境，但此过程最长可能需要两个小时才能完成  。 
-   若要检查部署状态，请在 Azure 工具栏上选择通知图标打开通知窗格。
+   Azure 随即开始部署该环境，但此过程最长可能需要两个小时才能完成。 若要检查部署状态，请在 Azure 工具栏上选择通知图标打开通知窗格。
 
    ![检查部署状态](./media/connect-virtual-network-vnet-isolated-environment/environment-deployment-status.png)
 
@@ -191,12 +192,13 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
    否则, 请按照 Azure 门户说明进行故障排除部署。
 
    > [!NOTE]
-   > 如果部署失败或删除了 ISE, Azure 可能需要长达一小时的时间才能释放子网。 这种延迟意味着可能需要等待, 才能在另一 ISE 中重用这些子网。 
+   > 如果部署失败或删除了 ISE, Azure 可能需要长达一小时的时间才能释放子网。 这种延迟意味着可能需要等待, 才能在另一 ISE 中重用这些子网。
    >
    > 如果删除虚拟网络, 则在释放子网之前, Azure 通常需要两个小时, 但此操作可能需要更长时间。 
-   > 删除虚拟网络时, 请确保没有资源仍处于连接状态。 请参阅[删除虚拟网络](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
+   > 删除虚拟网络时, 请确保没有资源仍处于连接状态。 
+   > 请参阅[删除虚拟网络](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
 
-1. 如果部署完成后 Azure 未自动转到你的环境，可以选择“转到资源”来查看该环境。   
+1. 如果部署完成后 Azure 未自动转到你的环境，可以选择“转到资源”来查看该环境。  
 
 有关创建子网的详细信息, 请参阅[添加虚拟网络子网](../virtual-network/virtual-network-manage-subnet.md)。
 
@@ -204,9 +206,26 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 ## <a name="create-logic-app---ise"></a>创建逻辑应用 - ISE
 
-若要创建在 integration service 环境 (ISE) 中运行的逻辑应用, 请[按常规方式创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md), 但在设置**Location**属性时, 请从**integration service 环境**部分中选择你的 ISE,实例
+若要创建在 integration service 环境 (ISE) 中运行的逻辑应用, 请执行以下步骤:
 
-  ![选择集成服务环境](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-integration-service-environment.png)
+1. 找到并打开 ISE (如果尚未打开)。 在 ISE 菜单的 "**设置**" 下, 选择 "**逻辑应用** > **添加**"。
+
+   ![向 ISE 中添加新的逻辑应用](./media/connect-virtual-network-vnet-isolated-environment/add-logic-app-to-ise.png)
+
+   或
+
+   在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。
+
+1. 提供要用于逻辑应用的名称、Azure 订阅和 Azure 资源组 (新的或现有的)。
+
+1. 从 "**位置**" 列表中的 " **Integration service 环境**" 部分, 选择你的 ISE, 例如:
+
+   ![选择集成服务环境](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-ise.png)
+
+   > [!IMPORTANT]
+   > 如果要将逻辑应用与集成帐户一起使用, 则这些逻辑应用和集成帐户必须使用相同的 ISE。
+
+1. 继续[以常规方式创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 有关在使用 ISE 与全局逻辑应用服务相比, 触发器和操作的工作方式以及如何标记它们的区别, 请参阅[ISE 概述中的隔离与全局](connect-virtual-network-vnet-isolated-environment-overview.md#difference)。
 
@@ -214,11 +233,26 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 ## <a name="create-integration-account---ise"></a>创建集成帐户 - ISE
 
-如果要在 integration service 环境 (ISE) 中将集成帐户用于逻辑应用, 该集成帐户必须使用与逻辑应用*相同的环境*。 ISE 中的逻辑应用只能引用同一 ISE 中的集成帐户。 基于在创建时选择的[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) , ISE 包含特定的集成帐户使用情况, 无需额外付费。 若要了解如何使用 ISEs 集成帐户的定价和计费, 请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率, 请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
+基于在创建时选择的[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) , ISE 包含特定的集成帐户使用情况, 无需额外付费。 集成服务环境 (ISE) 中存在的逻辑应用只能引用位于同一 ISE 中的集成帐户。 因此, 若要使集成帐户在 ISE 中使用逻辑应用, 集成帐户和逻辑应用必须使用与其位置相同的*环境*。 有关集成帐户和 ISEs 的详细信息, 请[参阅 integration accounts with](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
+)ISE。
 
-若要创建使用 ISE 的集成帐户, 请[按常规方式创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), 但在设置**Location**属性时, 请从**integration service 环境**部分中选择你的 ISE, 例如:
+若要创建使用 ISE 的集成帐户, 请遵循以下步骤:
 
-![选择集成服务环境](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
+1. 找到并打开 ISE (如果尚未打开)。 在 ISE 菜单的 "**设置**" 下, 选择 "**集成帐户** > " "**添加**"。
+
+   ![向 ISE 中添加新的集成帐户](./media/connect-virtual-network-vnet-isolated-environment/add-integration-account-to-ise.png)
+
+   或
+
+   在 Azure 主菜单中, 选择 "**创建资源** > **集成** > **集成帐户**"。
+
+1. 提供要用于集成帐户的名称、Azure 订阅、Azure 资源组 (新的或现有的) 和定价层。
+
+1. 从 "**位置**" 列表中的 " **Integration service 环境**" 部分, 选择逻辑应用使用的相同 ISE, 例如:
+
+   ![选择集成服务环境](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
+
+1. 继续[以常规方式创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
 
 <a name="add-capacity"></a>
 

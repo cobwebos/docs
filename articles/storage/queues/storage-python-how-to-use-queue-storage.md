@@ -1,5 +1,5 @@
 ---
-title: 如何通过 Python 的 Azure 存储使用队列存储
+title: 如何通过 Python 使用队列存储-Azure 存储
 description: 了解如何通过 Python 使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。
 services: storage
 author: mhopkins-msft
@@ -10,12 +10,12 @@ ms.date: 12/14/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 75f04893067d92813207bd656fc3368239ae9303
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 141999f4119ac92e2b8846477c50edf8fba027d0
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142788"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360024"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>如何通过 Python 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -85,7 +85,7 @@ for message in messages:
 ```
 
 ## <a name="how-to-dequeue-messages"></a>如何：取消消息的排队
-代码分两步从队列中删除消息。 在调用 **get\_messages** 时，默认情况下会获得队列中的下一条消息。 对于从此队列读取消息的任何其他代码，从 get\_messages  返回的消息将变得不可见。 默认情况下，此消息将持续 30 秒不可见。 若要从队列中删除消息，还必须调用 **delete\_message**。 此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后会立即调用 **delete\_message**。
+代码分两步从队列中删除消息。 在调用 **get\_messages** 时，默认情况下会获得队列中的下一条消息。 对于从此队列读取消息的任何其他代码，从 get\_messages 返回的消息将变得不可见。 默认情况下，此消息将持续 30 秒不可见。 若要从队列中删除消息，还必须调用 **delete\_message**。 此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后会立即调用 **delete\_message**。
 
 ```python
 messages = queue_service.get_messages('taskqueue')
@@ -98,10 +98,11 @@ for message in messages:
 首先，可以获取一批消息（最多 32 个）。 其次，可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少时间来完全处理每个消息。 以下代码示例使用 **get\_messages** 方法在一次调用中获取 16 条消息。 然后，使用 for 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。
 
 ```python
-messages = queue_service.get_messages('taskqueue', num_messages=16, visibility_timeout=5*60)
+messages = queue_service.get_messages(
+    'taskqueue', num_messages=16, visibility_timeout=5*60)
 for message in messages:
     print(message.content)
-    queue_service.delete_message('taskqueue', message.id, message.pop_receipt)        
+    queue_service.delete_message('taskqueue', message.id, message.pop_receipt)
 ```
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>如何：更改已排队消息的内容
@@ -110,7 +111,8 @@ for message in messages:
 ```python
 messages = queue_service.get_messages('taskqueue')
 for message in messages:
-    queue_service.update_message('taskqueue', message.id, message.pop_receipt, 0, u'Hello World Again')
+    queue_service.update_message(
+        'taskqueue', message.id, message.pop_receipt, 0, u'Hello World Again')
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>如何：获取队列长度

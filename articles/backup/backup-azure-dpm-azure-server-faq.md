@@ -1,22 +1,21 @@
 ---
 title: Azure 备份服务器和 DPM 常见问题
 description: 针对以下常见问题的解答：Azure 备份服务器和 DPM。
-services: backup
 author: srinathvasireddy
 manager: sivan
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: srinathv
-ms.openlocfilehash: 7a598038ee435b67b9ad8f06bdec2490bc1c53c3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 54727daa158172ae44379b847c70602ca998c65d
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705105"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466412"
 ---
-# <a name="azure-backup-server-and-dpm---faq"></a>Azure 备份服务器和 DPM 的常见问题
-本文解答有关 Azure 备份服务器和 DPM 的常见问题。
+# <a name="azure-backup-server-and-dpm---faq"></a>Azure 备份服务器和 DPM-常见问题
+本文解答了有关 Azure 备份服务器和 DPM 的常见问题。
 
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>是否可以使用 Azure 备份服务器为物理服务器创建裸机恢复 (BMR) 备份？ <br/>
 是的。
@@ -32,7 +31,7 @@ ms.locfileid: "67705105"
 是的。 但应首先设置 DPM，然后再安装 Azure 备份代理。  按此顺序安装组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装代理。
 
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>在安装 UR7 以及最新 Azure 备份代理之后，为何无法添加外部 DPM 服务器？
-对于通过云对数据源进行保护的 DPM 服务器（使用 Update Rollup 7 之前的更新汇总），必须在安装 UR7 及最新 Azure 备份代理之后等待至少一天，然后才能开始“添加外部 DPM 服务器”  。 需要一天的时间才能将 DPM 保护组的元数据上传到 Azure。 首次上传保护组元数据时通过一个每晚执行的作业实现。
+对于通过云对数据源进行保护的 DPM 服务器（使用 Update Rollup 7 之前的更新汇总），必须在安装 UR7 及最新 Azure 备份代理之后等待至少一天，然后才能开始“添加外部 DPM 服务器”。 需要一天的时间才能将 DPM 保护组的元数据上传到 Azure。 首次上传保护组元数据时通过一个每晚执行的作业实现。
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware 和 Hyper-V 备份
 
@@ -42,7 +41,7 @@ ms.locfileid: "67705105"
 - [详细了解](backup-mabs-protection-matrix.md)支持的版本。
 - [请按照下列步骤](backup-azure-backup-server-vmware.md)备份 VMware 服务器。
 
-### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster"></a>是否需要单独的许可证来恢复完整的本地 VMware/HYPER-V 群集？
+### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster"></a>是否需要单独的许可证以恢复完整的本地 VMware/Hyper-v 群集？
 不需要单独的 VMware/Hyper-V 保护许可。
 
 - 如果你是 System Center 客户，使用 System Center Data Protection Manager (DPM) 来保护 VMware VM。
@@ -61,5 +60,5 @@ ms.locfileid: "67705105"
 
 阅读其他常见问题：
 
-- [了解详细信息](backup-support-matrix-mabs-dpm.md)有关 Azure 备份服务器和 DPM 支持矩阵。
-- [了解详细信息](backup-azure-mabs-troubleshoot.md)有关 Azure 备份服务器和 DPM 故障排除指南。
+- [详细了解](backup-support-matrix-mabs-dpm.md)AZURE 备份服务器和 DPM 支持矩阵。
+- [了解](backup-azure-mabs-troubleshoot.md)有关 AZURE 备份服务器和 DPM 故障排除指南的详细信息。

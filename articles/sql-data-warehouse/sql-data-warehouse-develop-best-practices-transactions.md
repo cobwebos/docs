@@ -2,7 +2,7 @@
 title: 优化 Azure SQL 数据仓库的事务 | Microsoft Docs
 description: 了解如何在尽量降低长时间回退风险的情况下优化 Azure SQL 数据仓库中的事务性代码的性能。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ab1da9fce74359448311591986d57abbbcef066
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2299c526dd63eb8e8772661ee8fae66153fc36c3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873643"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479675"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>优化 Azure SQL 数据仓库中的事务
 了解如何在尽量降低长时间回退风险的情况下优化 Azure SQL 数据仓库中的事务性代码的性能。
@@ -67,7 +67,7 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 | 主索引 | 加载方案 | 日志记录模式 |
 | --- | --- | --- |
-| 堆 |任意 |**最少** |
+| 堆 |Any |**最少** |
 | 聚集索引 |空目标表 |**最少** |
 | 聚集索引 |加载的行不与目标中现有页面重叠 |**最少** |
 | 聚集索引 |加载的行与目标中现有页面重叠 |完整 |

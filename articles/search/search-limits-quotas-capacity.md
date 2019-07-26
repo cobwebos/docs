@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b6940be7f64aa9ae16258fa936d197e2715235ab
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 35beb55d7326b954a568a377b73696fe598742c5
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485399"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348295"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
-对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”、“标准”还是“存储优化”定价层上[预配 Azure 搜索](search-create-service-portal.md)     。
+对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”、“标准”还是“存储优化”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
 
 + **免费**层是 Azure 订阅随附的多租户共享服务。
 
@@ -29,7 +29,7 @@ ms.locfileid: "67485399"
 + **存储优化**层在专用计算机上运行，与**标准**层相比具有更多的总存储、存储带宽和内存。 “存储优化”层分为两个级别：L1 和 L2
 
 > [!NOTE]
-> 截至 7 月 1 日，所有层都是正式上市，包括存储优化层。 上可以找到所有定价[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页。
+> 从7月1日起, 所有层都已正式发布, 其中包括存储优化层。 可以在[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上找到所有定价。
 
   S3 高密度 (S3 HD) 是针对特定工作负荷设计的：[多租户](search-modeling-multitenant-saas-applications.md)和大量的小索引（每个索引一百万个文档，每个服务三千个索引）。 此层未提供[索引器功能](search-indexer-overview.md)。 在 S3 HD 上，数据引入必须利用推送方式，使用 API 调用将数据从源推送到索引。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "67485399"
 | 每个索引的复杂集合字段的最大数目 |40 |40 |40 |40 |40 |40 |40 |40 |
 | 每个文档的所有复杂集合的最大元素数目 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | 复杂字段的最大深度 |10 |10 |10 |10 |10 |10 |10 |10 |
-| 每个索引最大[建议器](https://docs.microsoft.com/rest/api/searchservice/suggesters)数 |第 |1 |1 |1 |1 |1 |1 |第 |
+| 每个索引最大[建议器](https://docs.microsoft.com/rest/api/searchservice/suggesters)数 |1 |1 |1 |1 |1 |1 |1 |1 |
 | 每个索引的最大[计分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)数 |100 |100 |100 |100 |100 |100 |100 |100 |
 | 每个配置文件的最大函数数量 |8 |8 |8 |8 |8 |8 |8 |8 |
 
@@ -107,15 +107,15 @@ ms.locfileid: "67485399"
 
 | Resource | 免费&nbsp;<sup>1</sup> | 基本&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| 最大索引器数 |3 |5 或 15|50 |200 |200 |不适用 |10 |10 |
-| 最大数据源数 |3 |5 或 15 |50 |200 |200 |不适用 |10 |10 |
-| 最大技能集数<sup>4</sup> |3 |5 或 15 |50 |200 |200 |不适用 |10 |10 |
-| 每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |不适用 |无限制 |无限制 |
+| 最大索引器数 |3 |5 或 15|50 |200 |200 |不可用 |10 |10 |
+| 最大数据源数 |3 |5 或 15 |50 |200 |200 |不可用 |10 |10 |
+| 最大技能集数<sup>4</sup> |3 |5 或 15 |50 |200 |200 |不可用 |10 |10 |
+| 每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |不可用 |无限制 |无限制 |
 | 最小计划 | 5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 | 5 分钟 |
-| 最长运行时间 <sup>5</sup> | 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |不适用  |24 小时 |24 小时 |
-| 认知搜索技能集的最长运行时间或具有图像分析的 blob 索引 <sup>5</sup> | 3-10 分钟 |2 小时 |2 小时 |2 小时 |2 小时 |不适用  |2 小时 |2 小时 |
-| Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |不适用  |256 |256 |
-| Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4&nbsp;百万 |4&nbsp;百万 |4&nbsp;百万 |不适用 |4&nbsp;百万 |4&nbsp;百万 |
+| 最长运行时间 <sup>5</sup> | 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |不可用  |24 小时 |24 小时 |
+| 认知搜索技能集的最长运行时间或具有图像分析的 blob 索引 <sup>5</sup> | 3-10 分钟 |2 小时 |2 小时 |2 小时 |2 小时 |不可用  |2 小时 |2 小时 |
+| Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |不可用  |256 |256 |
+| Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4&nbsp;百万 |4&nbsp;百万 |4&nbsp;百万 |不可用 |4&nbsp;百万 |4&nbsp;百万 |
 
 <sup>1</sup> 对于免费服务，对于 blob 源，索引器最长执行时间为 3 分钟；对于所有其他数据源，索引器最长执行时间为为 1 分钟。 对于调用认知服务的 AI 索引，免费服务的限制是每天 20 个免费事务，而根据定义，一个事务是指一个成功通过扩充管道的文档。
 
@@ -137,7 +137,7 @@ ms.locfileid: "67485399"
 
 ## <a name="data-limits-cognitive-search"></a>数据限制（认知搜索）
 
-用于调用文本分析资源进行[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)、[语言检测](cognitive-search-skill-language-detection.md)的[认知搜索管道](cognitive-search-concept-intro.md)会受到数据限制。 记录的最大大小应为 50,000 个字符，通过 `String.Length` 进行测量。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+用于调用文本分析资源进行[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)、[语言检测](cognitive-search-skill-language-detection.md)的[认知搜索管道](cognitive-search-concept-intro.md)会受到数据限制。 记录的最大大小应为50000个字符[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="api-request-limits"></a>API 请求限制
 * 每个请求最大 16 MB <sup>1</sup>

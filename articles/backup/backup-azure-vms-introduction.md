@@ -1,19 +1,18 @@
 ---
 title: 关于 Azure VM 备份
 description: 了解 Azure VM 备份，并记下一些最佳做法。
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 93be913182db56941c346ef0cad47f70c0d614c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf6aa07319b8029744a5c8898a4104d330fbb1d1
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706832"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465218"
 ---
 # <a name="about-azure-vm-backup"></a>关于 Azure VM 备份
 
@@ -21,7 +20,7 @@ ms.locfileid: "64706832"
 
 ## <a name="backup-process"></a>备份过程
 
-下面是如何备份 Azure 执行一次备份 Azure vm:
+下面介绍 Azure 备份如何对 Azure VM 完成备份：
 
 1. 对于选择进行备份的 Azure VM，Azure 备份服务将根据指定的备份计划启动备份作业。
 1. 首次备份期间，如果 VM 已运行，则会在 VM 上安装备份扩展。
@@ -107,7 +106,7 @@ Azure 备份根据备份计划创建快照。
 - **磁盘变动率：** 如果正在进行增量备份的受保护磁盘的每日变动率超过 200 GB，则备份可能需要花费很长时间（8 小时以上）才能完成。
 - **备份版本：** 最新版本的备份（称为“即时还原”版本）使用比校验和比较更佳的优化进程来识别更改。 但是，如果使用即时还原并删除了备份快照，则备份将改用校验和比较。 在这种情况下，备份操作将超过 24 小时（或失败）。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 我们建议在配置 VM 备份时遵循以下做法：
 
@@ -125,7 +124,7 @@ Azure 备份根据备份计划创建快照。
 
 针对特定 VM 的计费仅在停止保护并且删除全部备份数据后才会停止。 当停止保护并且没有活动的备份作业时，最后一个成功的 VM 备份的大小将成为用于每月帐单的受保护实例大小。
 
-受保护实例大小计算基于 VM 的实际大小。  VM 的大小是 VM 中除临时存储以外的所有数据之和。 定价基于数据磁盘中存储的实际数据，而不是附加到 VM 的每个数据磁盘的最大支持大小。
+受保护实例大小计算基于 VM 的实际大小。 VM 的大小是 VM 中除临时存储以外的所有数据之和。 定价基于数据磁盘中存储的实际数据，而不是附加到 VM 的每个数据磁盘的最大支持大小。
 
 与此类似，备份存储的收费是基于 Azure 备份中存储的数据量，即每个恢复点中实际数据之和。
 
@@ -142,4 +141,4 @@ Azure 备份根据备份计划创建快照。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，[为 Azure VM 备份准备](backup-azure-arm-vms-prepare.md)。
+现在,[准备 AZURE VM 备份](backup-azure-arm-vms-prepare.md)。

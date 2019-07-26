@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 28720098206c7afdefacbd47de283b2ef8d5a606
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b55502bbc24868b6d8b0352f581bbf4adc81e53a
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243242"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442253"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -70,24 +70,24 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|需要|
+|名称|描述|必填|
 |----------|-----------------|--------------|
 |json-to-xml|根元素。|是|
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-|Name|描述|需要|默认|
+|名称|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
-|apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终应用转换。<br />-   content-type-json - 仅在响应的 Content-Type 标头指示存在 JSON 的情况下进行转换。|是|不适用|
-|consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 JSON，则应用转换。<br />-   false - 始终应用转换。|否|true|
+|应用|属性必须设置为以下值之一。<br /><br /> -   always - 始终应用转换。<br />-   content-type-json - 仅在响应的 Content-Type 标头指示存在 JSON 的情况下进行转换。|是|不可用|
+|consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 JSON，则应用转换。<br />-   false - 始终应用转换。|否|真|
 |parse-date|设为 `false` 时，转换时则只是简单地复制日期值|否|true|
 
-### <a name="usage"></a>使用情况
+### <a name="usage"></a>用法
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 -   **策略节：** 入站、出站、错误时
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
 ##  <a name="ConvertXMLtoJSON"></a> 将 XML 转换为 JSON
  `xml-to-json` 策略将请求或响应正文从 XML 转换为 JSON。 此策略可以用来根据仅用 XML 的后端 Web 服务来提升 API。
@@ -114,24 +114,24 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必选|
+|姓名|描述|必填|
 |----------|-----------------|--------------|
 |xml-to-json|根元素。|是|
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-|Name|描述|需要|默认|
+|姓名|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
-|kind|属性必须设置为以下值之一。<br /><br /> -   javascript-friendly - 转换后的 JSON 具有 JavaScript 开发人员熟知的形式。<br />-   direct - 转换后的 JSON 反映了原始 XML 文档的结构。|是|不适用|
-|apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终转换。<br />-   content-type-xml - 仅在响应的 Content-Type 标头指示存在 XML 的情况下进行转换。|是|不适用|
+|kind|属性必须设置为以下值之一。<br /><br /> -   javascript-friendly - 转换后的 JSON 具有 JavaScript 开发人员熟知的形式。<br />-   direct - 转换后的 JSON 反映了原始 XML 文档的结构。|是|不可用|
+|应用|属性必须设置为以下值之一。<br /><br /> -   always - 始终转换。<br />-   content-type-xml - 仅在响应的 Content-Type 标头指示存在 XML 的情况下进行转换。|是|不可用|
 |consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 XML，则应用转换。<br />-   false - 始终应用转换。|否|true|
 
-### <a name="usage"></a>使用情况
+### <a name="usage"></a>用法
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 -   **策略节：** 入站、出站、错误时
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
 ##  <a name="Findandreplacestringinbody"></a> 在正文中查找并替换字符串
  `find-and-replace` 策略查找请求或响应子字符串并将其替换为不同的子字符串。
@@ -150,23 +150,23 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|需要|
+|名称|描述|必填|
 |----------|-----------------|--------------|
 |find-and-replace|根元素。|是|
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-|Name|描述|需要|默认|
+|名称|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
-|from|要搜索的字符串。|是|不适用|
-|to|替换字符串。 指定一个零长度的替换字符串，以便删除搜索字符串。|是|不适用|
+|来自|要搜索的字符串。|是|不可用|
+|to|替换字符串。 指定一个零长度的替换字符串，以便删除搜索字符串。|是|不可用|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端、错误时
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
 ##  <a name="MaskURLSContent"></a> 在内容中屏蔽 URL
  `redirect-content-urls` 策略重写（屏蔽）响应正文中的链接，使其通过网关指向等效的链接。 在出站节中用于重写响应正文链接，使之指向网关。 在入站节中使用，以便获得相反的效果。
@@ -188,16 +188,16 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|需要|
+|名称|描述|必填|
 |----------|-----------------|--------------|
 |redirect-content-urls|根元素。|是|
 
-### <a name="usage"></a>使用情况
+### <a name="usage"></a>用法
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 -   **策略节：** 入站、出站
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
 ##  <a name="SetBackendService"></a> 设置后端服务
  使用 `set-backend-service` 策略将传入请求重定向到一个后端，此后端不同于在 API 设置中为该操作指定的后端。 此策略将传入请求的后端服务基 URL 更改为在策略中指定的基 URL。
@@ -261,37 +261,37 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必选|
+|姓名|描述|必填|
 |----------|-----------------|--------------|
 |set-backend-service|根元素。|是|
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-|名称|描述|需要|默认|
+|名称|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
-|base-url|新的后端服务基 URL。|必须存在 `base-url` 或 `backend-id` 中的一个。|不适用|
-|backend-id|要路由到的后端标识符。 （后端实体通过 [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|不适用|
-|sf-partition-key|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 用于从名称解析服务中解析特定分区。|否|不适用|
-|sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|不适用|
-|sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|不适用|
-|sf-service-instance-name|只有在后端为 Service Fabric 服务时才适用。 允许在运行时更改服务实例。 |否|不适用|
-|sf-listener-name|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 使用 Service Fabric Reliable Services 可在服务中创建多个侦听器。 当后端可靠服务具有多个侦听器时，此属性用于选择特定侦听器。 如果未指定此属性，API 管理将尝试使用没有名称的侦听器。 没有名称的侦听器对于只有一个侦听器的 Reliable Services 来说是非常典型的。 |否|不适用|
+|base-url|新的后端服务基 URL。|必须存在 `base-url` 或 `backend-id` 中的一个。|不可用|
+|backend-id|要路由到的后端标识符。 （后端实体通过 [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|不可用|
+|sf-partition-key|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 用于从名称解析服务中解析特定分区。|否|不可用|
+|sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|不可用|
+|sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|不可用|
+|sf-service-instance-name|只有在后端为 Service Fabric 服务时才适用。 允许在运行时更改服务实例。 |否|不可用|
+|sf-listener-name|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 使用 Service Fabric Reliable Services 可在服务中创建多个侦听器。 当后端可靠服务具有多个侦听器时，此属性用于选择特定侦听器。 如果未指定此属性，API 管理将尝试使用没有名称的侦听器。 没有名称的侦听器对于只有一个侦听器的 Reliable Services 来说是非常典型的。 |否|不可用|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 -   **策略节：** 入站、后端
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
 ##  <a name="SetBody"></a> 设置正文
  使用 `set-body` 策略设置传入和传出请求的消息正文。 可以使用 `context.Request.Body` 属性或 `context.Response.Body` 访问消息正文，具体取决于策略是在入站节中还是在出站节中。
 
 > [!IMPORTANT]
 >  请注意，默认情况下，当用户使用 `context.Request.Body` 或 `context.Response.Body` 访问消息正文时，原始的消息正文会丢失，必须将正文返回到表达式中，以便对其进行设置。 若要保留正文内容，请在访问消息时将 `preserveContent` 参数设置为 `true`。 如果 `preserveContent` 设置为 `true`，而表达式返回了不同的正文，则会使用返回的正文。
-> 
+>
 >  在使用 `set-body` 策略时，请注意以下事项。
-> 
+>
 > - 若要使用 `set-body` 策略返回全新的或更新的正文，则不需将 `preserveContent` 设置为 `true`，因为是在显式提供全新的正文内容。
 >   -   将响应的内容保留在入站管道中并不合理，因为尚无响应。
 >   -   将请求的内容保留在出站管道中并不合理，因为请求此时已发送到后端。
@@ -397,15 +397,15 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必选|
+|姓名|描述|必填|
 |----------|-----------------|--------------|
 |set-body|根元素。 包含正文文本，或者包含会返回正文的表达式。|是|
 
 ### <a name="properties"></a>属性
 
-|Name|描述|需要|默认|
+|名称|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
-|template|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- Liquid - 设置正文策略会使用 Liquid 模板引擎 |否||
+|模板|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- Liquid - 设置正文策略会使用 Liquid 模板引擎 |否||
 
 对于访问请求和响应信息，Liquid 模板可绑定到具有以下属性的上下文对象： <br />
 <pre>context.
@@ -447,12 +447,12 @@ OriginalUrl.
 
 
 
-### <a name="usage"></a>使用情况
+### <a name="usage"></a>用法
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
 ##  <a name="SetHTTPheader"></a> 设置 HTTP 标头
  `set-header` 策略向现有的响应和/或请求标头赋值，或者添加新的响应和/或请求标头。
@@ -491,37 +491,37 @@ OriginalUrl.
  有关详细信息，请参阅[策略表达式](api-management-policy-expressions.md)和[上下文变量](api-management-policy-expressions.md#ContextVariables)。
 
 > [!NOTE]
-> 标头的多个值会连接到 CSV 字符串，例如所示： `headerName: value1,value2,value3`
+> 标头的多个值连接到 CSV 字符串, 例如:`headerName: value1,value2,value3`
 >
 > 例外情况包括标准化标头，其值：
 > - 可能包含逗号（`User-Agent`、`WWW-Authenticate`、`Proxy-Authenticate`），
 > - 可能包含日期（`Cookie`、`Set-Cookie`、`Warning`），
 > - 包含日期（`Date`、`Expires`、`If-Modified-Since`、`If-Unmodified-Since`、`Last-Modified`、`Retry-After`）。
 >
-> 发生这些异常时多个标头值不能连接为一个字符串，并将作为单独的标头，例如传递： `User-Agent: value1`
+> 对于这些异常, 多个标头值将不会连接成一个字符串, 并将作为单独的标头进行传递, 例如:`User-Agent: value1`
 >`User-Agent: value2`
 >`User-Agent: value3`
 
 ### <a name="elements"></a>元素
 
-|Name|描述|需要|
+|姓名|描述|必填|
 |----------|-----------------|--------------|
 |set-header|根元素。|是|
 |value|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
-|Name|描述|需要|默认|
+|姓名|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有标头的值。<br />-   skip - 不替换现有标头值。<br />-   append - 将值追加到现有标头值。<br />-   delete - 从请求中删除标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。|否|override|
-|name|指定要设置的标头的名称。|是|不适用|
+|name|指定要设置的标头的名称。|是|不可用|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端、错误时
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
 ##  <a name="SetQueryStringParameter"></a> 设置查询字符串参数
  `set-query-parameter` 策略添加、删除请求查询字符串参数或替换其值。 可用于传递后端服务所需的查询参数，这些参数是可选的或者永远不能出现在请求中。
@@ -564,24 +564,24 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|姓名|描述|必填|
 |----------|-----------------|--------------|
 |set-query-parameter|根元素。|是|
 |value|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
-|Name|描述|需要|默认|
+|名称|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当查询参数已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有参数的值。<br />-   skip - 不替换现有查询参数值。<br />-   append - 将值追加到现有查询参数值。<br />-   delete - 从请求中删除查询参数。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置查询参数；结果中只会设置列出的值。|否|override|
-|name|指定要设置的查询参数的名称。|是|不适用|
+|name|指定要设置的查询参数的名称。|是|不可用|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 -   **策略节：** 入站、后端
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
 ##  <a name="RewriteURL"></a> 重写 URL
  `rewrite-uri` 策略将请求 URL 从其公用格式转换为 Web 服务所需的格式，如以下示例所示。
@@ -643,23 +643,23 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必选|
+|名称|描述|必填|
 |----------|-----------------|--------------|
 |rewrite-uri|根元素。|是|
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-|特性|描述|需要|默认|
+|特性|描述|必填|默认|
 |---------------|-----------------|--------------|-------------|
-|template|包含任何查询字符串参数的实际 Web 服务 URL。 使用表达式时，整个值必须是一个表达式。|是|不适用|
+|template|包含任何查询字符串参数的实际 Web 服务 URL。 使用表达式时，整个值必须是一个表达式。|是|不可用|
 |copy-unmatched-params|指定是否将原始 URL 模板中不存在的传入请求中的查询参数添加到重新编写模板定义的 URL|否|true|
 
-### <a name="usage"></a>使用情况
+### <a name="usage"></a>用法
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略段：** 入站
+-   **策略节：** 入站
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
 ##  <a name="XSLTransform"></a> 使用 XSLT 转换 XML
  `Transform XML using an XSLT` 策略在请求或响应正文中将 XSL 转换应用到 XML。
@@ -712,18 +712,18 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|Name|描述|需要|
+|名称|描述|必填|
 |----------|-----------------|--------------|
 |xsl-transform|根元素。|是|
 |参数|用于定义在转换中使用的变量|否|
 |xsl:stylesheet|根样式表元素。 在其中定义的所有元素和属性都遵循标准的 [XSLT 规范](https://www.w3.org/TR/xslt)|是|
 
-### <a name="usage"></a>使用情况
+### <a name="usage"></a>用法
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 -   **策略节：** 入站、出站
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
 ## <a name="next-steps"></a>后续步骤
 

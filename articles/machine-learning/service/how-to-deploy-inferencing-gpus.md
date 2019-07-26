@@ -9,44 +9,61 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 06/01/2019
-ms.openlocfilehash: eeb1bc35e0438a7e99ea5ed8284f0c8611108da0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 07/24/2019
+ms.openlocfilehash: 520e7fe953256e4c489e4c540493d9f74dda3aef
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326993"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494360"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 
-本文介绍如何使用 Azure 机器学习服务将支持 GPU 的 Tensorflow 深度学习模型部署为 web 服务。
+本文介绍如何使用 Azure 机器学习服务将支持 GPU 的模型部署为 web 服务。 本文中的信息基于在 Azure Kubernetes 服务 (AKS) 上部署模型。 AKS 群集提供模型用于推理的 GPU 资源。
 
-将模型部署到 Azure Kubernetes 服务 (AKS) 群集, 以便执行启用 GPU 的推断。 推断或模型计分是部署的模型用于预测的阶段。 使用 Gpu 而不是 Cpu, 为高度可并行化计算提供性能优势。
+推理或模型计分是部署模型用于进行预测的阶段。 使用 Gpu 而不是 Cpu, 可为高度可并行化的计算提供性能优势。
 
-虽然此示例使用 TensorFlow 模型, 但你可以通过对计分文件和环境文件进行少量更改, 将以下步骤应用到支持 Gpu 的任何机器学习框架。 
-
-在本文中，将执行以下步骤：
-
-* 创建启用了 GPU 的 AKS 群集
-* 部署 Tensorflow GPU 模型
-* 向已部署的模型发出示例查询
+> [!TIP]
+> 尽管本文中的代码片段 usee TensorFlow 模型, 但你可以将这些信息应用到支持 Gpu 的任何机器学习框架。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习服务工作区。
-* Python 发行版。
-* 已注册的 Tensorflow 保存的模型。
+* Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。
+
+* 安装了 Azure 机器学习 SDK 的 Python 开发环境。 有关详细信息, 请参阅创建工作区一文中的[PYTHON SDK](setup-create-workspace.md#sdk)部分。
+
+* 使用 GPU 的已注册模型。
+
     * 若要了解如何注册模型, 请参阅[部署模型](../service/how-to-deploy-and-where.md#registermodel)。
 
-可以完成本操作方法系列的第一部分,[如何训练 TensorFlow 模型](how-to-train-tensorflow.md)以实现必需的先决条件。
+    * 若要创建并注册用于创建此文档的 Tensorflow 模型, 请参阅[如何定型 Tensorflow 模型](how-to-train-tensorflow.md)。
 
-## <a name="provision-an-aks-cluster-with-gpus"></a>使用 Gpu 预配 AKS 群集
+* 大致了解[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-Azure 有很多不同的 GPU 选项。 可以为推断使用其中的任何一个。 若要全面了解功能和成本, 请参阅[N 系列 vm 列表](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series)。
+## <a name="connect-to-your-workspace"></a>连接到你的工作区
 
-有关将 AKS 与 Azure 机器学习服务一起使用的详细信息, 请参阅[如何部署和位置](../service/how-to-deploy-and-where.md#deploy-aks)。
+若要连接到现有工作区, 请使用以下代码:
 
-```Python
+> [!IMPORTANT]
+> 此代码段需要将工作区配置保存到当前目录或其父项。 有关创建工作区并将配置保存到文件的详细信息, 请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。
+
+```python
+from azureml.core import Workspace
+
+# Connect to the workspace
+ws = Workspace.from_config()
+```
+
+## <a name="create-a-kubernetes-cluster-with-gpus"></a>使用 Gpu 创建 Kubernetes 群集
+
+Azure Kubernetes 服务提供了许多不同的 GPU 选项。 您可以将其中任何一个用于模型推理。 若要全面了解功能和成本, 请参阅[N 系列 vm 列表](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series)。
+
+以下代码演示了如何为工作区创建新的 AKS 群集:
+
+```python
+from azureml.core.compute import ComputeTarget, AksCompute
+from azureml.exceptions import ComputeTargetException
+
 # Choose a name for your cluster
 aks_name = "aks-gpu"
 
@@ -68,11 +85,16 @@ except ComputeTargetException:
 ```
 
 > [!IMPORTANT]
-> 只要预配了 AKS 群集, Azure 就会向你收费。 完成后, 请务必删除 AKS 群集。
+> 只要存在 AKS 群集, Azure 就会向你收费。 完成后, 请务必删除 AKS 群集。
+
+有关将 Azure Kubernetes Service 与 Azure 机器学习 service 配合使用的详细信息, 请参阅[如何部署和位置](how-to-deploy-and-where.md#deploy-aks)。
 
 ## <a name="write-the-entry-script"></a>写入条目脚本
 
-将以下代码保存到工作目录`score.py`中的。 此文件将映像发送到你的服务时将其评分。 它加载 TensorFlow 保存的模型, 将输入图像传递到每个 POST 请求上的 TensorFlow 会话, 然后返回生成的分数。 其他推断框架需要不同的计分文件。
+条目脚本接收提交给 web 服务的数据, 将其传递给模型, 并返回计分结果。 下面的脚本将在启动时加载 Tensorflow 模型, 然后使用该模型对数据进行评分。
+
+> [!TIP]
+> 条目脚本特定于您的模型。 例如, 脚本必须知道要用于模型的框架、数据格式等。
 
 ```python
 import json
@@ -82,16 +104,19 @@ import tensorflow as tf
 
 from azureml.core.model import Model
 
+
 def init():
     global X, output, sess
     tf.reset_default_graph()
     model_root = Model.get_model_path('tf-dnn-mnist')
-    saver = tf.train.import_meta_graph(os.path.join(model_root, 'mnist-tf.model.meta'))
+    saver = tf.train.import_meta_graph(
+        os.path.join(model_root, 'mnist-tf.model.meta'))
     X = tf.get_default_graph().get_tensor_by_name("network/X:0")
     output = tf.get_default_graph().get_tensor_by_name("network/output/MatMul:0")
-    
+
     sess = tf.Session()
     saver.restore(sess, os.path.join(model_root, 'mnist-tf.model'))
+
 
 def run(raw_data):
     data = np.array(json.loads(raw_data)['data'])
@@ -99,11 +124,13 @@ def run(raw_data):
     out = output.eval(session=sess, feed_dict={X: data})
     y_hat = np.argmax(out, axis=1)
     return y_hat.tolist()
-
 ```
+
+此文件的名称`score.py`为。 有关输入脚本的详细信息, 请参阅 "[如何部署" 和 "部署位置](how-to-deploy-and-where.md)"。
+
 ## <a name="define-the-conda-environment"></a>定义 conda 环境
 
-创建一个名`myenv.yml`为的 conda 环境文件以指定服务的依赖关系。 务必指定你使用`tensorflow-gpu`来实现更快的性能。
+Conda 环境文件指定服务的依赖关系。 它包括模型和条目脚本所需的依赖项。 以下 YAML 定义了 Tensorflow 模型的环境。 它指定`tensorflow-gpu`将使用在此部署中使用的 GPU:
 
 ```yaml
 name: project_environment
@@ -120,60 +147,102 @@ channels:
 - conda-forge
 ```
 
-## <a name="define-the-gpu-inferenceconfig-class"></a>定义 GPU InferenceConfig 类
+在此示例中, 该文件保存为`myenv.yml`。
 
-创建一个`InferenceConfig`对象, 该对象启用 gpu 并确保 CUDA 与 Docker 映像一起安装。
+## <a name="define-the-deployment-configuration"></a>定义部署配置
+
+部署配置定义用于运行 web 服务的 Azure Kubernetes 服务环境:
 
 ```python
-from azureml.core.model import Model
+from azureml.core.webservice import AksWebservice
+
+gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
+                                                    num_replicas=3,
+                                                    cpu_cores=2,
+                                                    memory_gb=4)
+```
+
+有关详细信息, 请参阅[AksService. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none-)的参考文档。
+
+## <a name="define-the-inference-configuration"></a>定义推理配置
+
+推理配置指向入口脚本和 conda 环境文件。 它还启用 GPU 支持, 它在为 web 服务创建的 docker 映像中安装 CUDA:
+
+```python
 from azureml.core.model import InferenceConfig
 
-aks_service_name ='aks-dnn-mnist'
-gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled = False, 
-                                                    num_replicas = 3, 
-                                                    cpu_cores=2, 
-                                                    memory_gb=4)
-model = Model(ws,"tf-dnn-mnist")
-
-inference_config = InferenceConfig(runtime= "python", 
+inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
-                                   conda_file="myenv.yml", 
+                                   conda_file="myenv.yml",
                                    enable_gpu=True)
 ```
 
-有关详细信息，请参阅：
-
-- [InferenceConfig 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)
-- [AksServiceDeploymentConfiguration 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
+有关详细信息, 请参阅[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)的参考文档。
 
 ## <a name="deploy-the-model"></a>部署模型
 
 将模型部署到 AKS 群集, 并等待其创建服务。
 
 ```python
+from azureml.core.model import Model
+
+# Name of the web service that is deployed
+aks_service_name = 'aks-dnn-mnist'
+# Get the registerd model
+model = Model(ws, "tf-dnn-mnist")
+# Deploy the model
 aks_service = Model.deploy(ws,
                            models=[model],
-                           inference_config=inference_config, 
+                           inference_config=inference_config,
                            deployment_config=gpu_aks_config,
                            deployment_target=aks_target,
                            name=aks_service_name)
 
-aks_service.wait_for_deployment(show_output = True)
+aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
 > [!NOTE]
-> Azure 机器学习服务不会使用`InferenceConfig`需要将 gpu 启用到没有 gpu 的群集的对象来部署模型。
+> 如果对象具有`enable_gpu=True`, 则`deployment_target`参数必须引用提供 GPU 的群集。 `InferenceConfig` 否则，部署会失败。
 
-有关详细信息, 请参阅[模型类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)。
+有关详细信息, 请参阅[模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)的参考文档。
 
-## <a name="issue-a-sample-query-to-your-model"></a>向模型发出示例查询
+## <a name="issue-a-sample-query-to-your-service"></a>向服务发出示例查询
 
-将测试查询发送到已部署的模型。 当你将 jpeg 图像发送到模型时, 它将对该图像进行评分。 下面的代码示例使用外部实用工具函数来加载图像。 可在[GitHub 上的 Pir TensorFlow 示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow/utils.py)中找到相关的代码。 
+将测试查询发送到已部署的模型。 当你将 jpeg 图像发送到模型时, 它将对该图像进行评分。 下面的代码示例将下载测试数据, 然后选择要发送到服务的随机测试映像。 
 
 ```python
 # Used to test your webservice
-from utils import load_data 
+import os
+import urllib
+import gzip
+import numpy as np
+import struct
+import requests
+
+# load compressed MNIST gz files and return numpy arrays
+def load_data(filename, label=False):
+    with gzip.open(filename) as gz:
+        struct.unpack('I', gz.read(4))
+        n_items = struct.unpack('>I', gz.read(4))
+        if not label:
+            n_rows = struct.unpack('>I', gz.read(4))[0]
+            n_cols = struct.unpack('>I', gz.read(4))[0]
+            res = np.frombuffer(gz.read(n_items[0] * n_rows * n_cols), dtype=np.uint8)
+            res = res.reshape(n_items[0], n_rows * n_cols)
+        else:
+            res = np.frombuffer(gz.read(n_items[0]), dtype=np.uint8)
+            res = res.reshape(n_items[0], 1)
+    return res
+
+# one-hot encode a 1-D array
+def one_hot_encode(array, num_of_classes):
+    return np.eye(num_of_classes)[array.reshape(-1)]
+
+# Download test data
+os.makedirs('./data/mnist', exist_ok=True)
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename='./data/mnist/test-images.gz')
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename='./data/mnist/test-labels.gz')
 
 # Load test data from model training
 X_test = load_data('./data/mnist/test-images.gz', False) / 255.0
@@ -184,17 +253,16 @@ random_index = np.random.randint(0, len(X_test)-1)
 input_data = "{\"data\": [" + str(list(X_test[random_index])) + "]}"
 
 api_key = aks_service.get_keys()[0]
-headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+headers = {'Content-Type': 'application/json',
+           'Authorization': ('Bearer ' + api_key)}
 resp = requests.post(aks_service.scoring_uri, input_data, headers=headers)
 
 print("POST to url", aks_service.scoring_uri)
-#print("input data:", input_data)
 print("label:", y_test[random_index])
 print("prediction:", resp.text)
 ```
 
-> [!IMPORTANT]
-> 若要最大程度地减少延迟和优化吞吐量, 请确保客户端与终结点位于同一 Azure 区域。 在此示例中, Api 是在美国东部 Azure 区域中创建的。
+有关创建客户端应用程序的详细信息, 请参阅[创建客户端以使用已部署的 web 服务](how-to-consume-web-service.md)。
 
 ## <a name="clean-up-the-resources"></a>清理资源
 

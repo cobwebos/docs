@@ -1,7 +1,7 @@
 ---
 title: 模型可解释性
 titleSuffix: Azure Machine Learning service
-description: 了解如何解释为什么您的模型进行预测使用 Azure 机器学习 SDK。 它可以用于在培训和推理过程了解您的模型进行预测的方式。
+description: 了解如何使用 Azure 机器学习 SDK 解释模型进行预测的原因。 可以在定型和推理期间使用它来了解模型如何进行预测。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,109 +10,109 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: cba46a277dfce93d0080d8f04a26fd135407de15
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 1e742c278b9356c7501964541802e0c96dc74b09
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536734"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358647"
 ---
-# <a name="model-interpretability-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务的模型 interpretability
+# <a name="model-interpretability-with-azure-machine-learning-service"></a>模型 interpretability 与 Azure 机器学习服务
 
-在本文中，您将了解如何解释为什么您的模型进行预测与 Azure 机器学习 Python SDK 的各种 interpretability 包。
+本文介绍了如何通过 Azure 机器学习 Python SDK 的各种 interpretability 包来解释模型进行预测的原因。
 
-使用 SDK 中的类和方法，可以获取：
-+ 功能原始和工程功能的重要性的值
-+ Interpretability 在大规模情况下，实际的数据集上，在培训和推理。
-+ 若要在定型时帮助你发现数据和说明中的模式中的交互式可视化效果
+使用 SDK 中的类和方法, 可以获取:
++ 原始和工程功能的功能重要性值
++ 在定型和推理期间, 大规模 Interpretability 实际数据集。
++ 交互式可视化效果, 可帮助发现数据中的模式以及定型时间的说明
 
-在开发周期的训练阶段，模型设计人员和评估者可使用 interpretability 输出模型的验证假设并与利益干系人建立信任。  它们也使用该模型的见解以进行调试，因此验证模型行为匹配其目标，并检查偏置。
+在开发周期的培训阶段, 模型设计器和计算器可以使用 interpretability 的模型输出来验证假设并与利益干系人建立信任。  它们还使用该模型进行调试, 验证模型行为与它们的目标, 并检查是否有偏差。
 
-在机器学习**功能**是用于预测目标数据点的数据字段。 例如，若要预测信用风险，可能使用年龄、 帐户大小和帐户年龄的数据字段。 在这种情况下，年龄、 帐户大小和帐户年龄都**功能**。 特征重要性告诉您每个数据字段会如何影响模型的预测。 例如，年龄可能很大程度使用在预测中时帐户大小和保留时间不预测准确性会显著影响。 此过程允许数据科学家以解释生成预测，以便利益干系人具有到哪些数据点是在模型中最重要的可见性。
+在机器学习中,**功能**是用于预测目标数据点的数据字段。 例如, 要预测信用风险, 可以使用 "年龄"、"帐户大小" 和 "帐户年龄" 数据字段。 在这种情况下, 年龄、帐户大小和帐户期限都是**功能**。 功能重要性告诉您每个数据字段对模型预测的影响。 例如, 在预测中, 年龄可能会很高, 而 "帐户大小" 和 "年龄" 不会显著影响预测准确性。 此过程允许数据科学家解释所产生的预测, 使利益干系人能够查看模型中最重要的数据点。
 
-使用这些工具，可以解释机器学习模型**上的所有数据从全球**，或**上的特定数据点的本地**易于使用且可缩放的方式使用先进的技术。
+使用这些工具, 您可以使用一种易于使用且可缩放的方式, 以**全局方式在所有数据上**或以**本地方式在特定数据点上**对机器学习模型进行说明。
 
-Interpretability 类均通过多个 SDK 包。 了解如何[适用于 Azure 机器学习安装 SDK 包](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+Interpretability 类通过多个 SDK 包提供。 了解如何[为 Azure 机器学习安装 SDK 包](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
-* [`azureml.explain.model`](https://docs.microsoft.com/python/api/azureml-explain-model/?view=azure-ml-py)包含由 Microsoft 支持的功能的主包。
+* [`azureml.explain.model`](https://docs.microsoft.com/python/api/azureml-explain-model/?view=azure-ml-py)主包, 其中包含 Microsoft 支持的功能。
 
-* `azureml.contrib.explain.model`预览并可以尝试的实验性功能。
+* `azureml.contrib.explain.model`可以尝试的、预览和实验性功能。
 
-* `azureml.train.automl.automlexplainer` 用于解释自动化的机器学习模型的包。
+* `azureml.train.automl.automlexplainer`用于解释自动机器学习模型的包。
 
 > [!IMPORTANT]
-> 中的内容`contrib`命名空间不完全支持。 随着实验性功能变得成熟，将逐渐将它们移到的主命名空间。
+> 命名空间中`contrib`的内容不完全受支持。 当实验性功能变得成熟时, 它们会逐渐移到主命名空间。
 
-## <a name="how-to-interpret-your-model"></a>如何解释您的模型
+## <a name="how-to-interpret-your-model"></a>如何解释模型
 
-您可以应用 interpretability 类和方法来了解模型的全局行为或特定的预测。 以前称为全局解释，后者调用本地说明。
+您可以应用 interpretability 类和方法来了解模型的全局行为或特定的预测。 前者称为全局说明, 后者称为本地说明。
 
-可以根据该方法是否是不可知的模型或模型特定还分类方法。 某些方法针对特定类型的模型。 例如，SHAP 的树说明仅适用于基于树的模型。 某些方法视为黑盒子，如模拟说明或 SHAP 的内核说明该模型。 `explain`包利用这些基于数据集、 模型类型和用例的不同方法。
+还可以根据方法是与模型无关还是特定于模型来分类这些方法。 某些方法面向特定类型的模型。 例如, SHAP 的树说明仅适用于基于树的模型。 某些方法将模型视为黑色框, 如模仿说明或 SHAP 的内核说明。 `explain`该包利用了基于数据集、模型类型和用例的各种不同方法。
 
-输出为一组给定的模型如进行其预测方式的信息：
-* 全局/本地相对特征重要性
+输出是有关给定模型如何进行预测的一组信息, 如:
+* 全局/局部相对功能重要性
 
-* 全局/本地功能和预测的关系
+* 全局/本地功能和预测关系
 
 ### <a name="explainers"></a>Explainers
 
-有两个组的 explainers:SDK 中的直接 Explainers 和 Meta Explainers。
+有两组 explainers:在 SDK 中直接 Explainers 和元 Explainers。
 
-__直接 explainers__来自集成的库。 SDK 可包装所有 explainers，以便它们公开的公共 API 和输出格式。 如果您是直接使用这些 explainers 起来更舒适，您可以直接调用它们而不是使用通用的 API 和输出格式。 在 SDK 中提供直接 explainers 列表如下：
+__直接 explainers__来自集成库。 SDK 包装所有 explainers, 使其公开公共 API 和输出格式。 如果直接使用这些 explainers, 可以直接调用它们, 而不是使用通用 API 和输出格式。 下面列出了 SDK 中可用的直接 explainers:
 
-* **SHAP 树说明**:SHAP 的树说明，重点介绍多项式时间快速 SHAP 值估计算法特定于树和树的整体。
-* **SHAP 深入说明**:基于从 SHAP，深入说明说明"是使用 DeepLIFT SHAP NIPS 文章所述生成在连接使用高速近似算法来 SHAP 深度学习模型中的值。 支持 TensorFlow 模型和使用 TensorFlow 后端的 Keras 模型 （还有 PyTorch 的初步支持）"。
-* **SHAP 内核说明**:SHAP 的内核说明使用专门加权的本地线性回归用于估算 SHAP 任何模型的值。
-* **模拟说明**:模拟说明基于全局代理项模型的概念。 全局代理项模型是以尽可能准确地估计黑色方框模型的预测进行定型的本质上可解释模型。 数据科学家可以解释为代理项模型得出的黑色方框模型有关的结论。 可以使用以下可解释模型之一作为代理项模型：LightGBM (LinearExplainableModel)、 (LinearExplainableModel) 进行线性回归、 随机梯度下降可以解释模型 (SGDExplainableModel) 和决策树 (DecisionTreeExplainableModel)。
-
-
-* **排列功能重要性说明**:排列特征重要性是一种技术，用于说明的灵感源自的分类和回归模型[Breiman 的随机林纸张](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf)（请参阅部分 10）。 在高级别，它的工作的方式是关注的通过随机随机排布数据一项功能，同时为整个数据集和计算多少性能指标会降低。 更大的更改，更重要的功能。
-
-* **暗黄说明**(`contrib`):根据为浅，酸橙色说明使用先进的本地可解释不限模型的说明 （酸橙色） 算法来创建本地代理项的模型。 全局代理项与模型不同，酸橙色侧重于训练本地代理项模型来解释单个预测。
-* **HAN 文本说明**(`contrib`):HAN 文本说明用于为给定的黑色框文本模型获取从文本数据的模型说明使用分层网络。 我们为在给定的教师模型的预测输出 HAN 代理项模型定型。 定型后全局在文本语料库，我们添加了特定文档的 fine-tune 步骤以提高准确性的说明。 HAN 使用两个关注层，使用双向 RNN 句子和词引起注意。 DNN 是教师模型定型并对特定文档进行微调，我们可以关注层从提取 word importances。 我们发现 HAN 是比酸橙色或 SHAP 更准确的文本数据，但成本更高的定型时间也方面。 但是，我们已训练时间改进了通过为用户提供选项来初始化通过手套字词嵌入网络，虽然仍很慢。 可以通过在远程 Azure GPU VM 上运行 HAN 显著改进的训练时间。 层次结构的文档分类 （Yang et 都 2016年） 注意网络中描述的 HAN 实现 ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf))。
+* **SHAP 树说明**:SHAP 的树说明, 侧重于多项式时间快速 SHAP 值估算算法, 特定于树和整体的树。
+* **SHAP Deep 说明**:根据 SHAP 中的说明, Deep 说明 "是一种高速近似算法, 适用于深度学习模型中的 SHAP 值, 这些值建立在与 SHAP NIPS 纸张中所述 DeepLIFT 的连接上。 支持使用 TensorFlow 后端的 TensorFlow 模型和 Keras 模型 (还支持 PyTorch 的初步支持) "。
+* **SHAP 内核说明**:SHAP 的内核说明使用特殊的加权本地线性回归来估算任何模型的 SHAP 值。
+* **模拟说明**:模拟说明基于全局代理项模型的概念。 全局代理项模型是一种固有的可解释模型, 经过训练, 可尽可能准确地估计黑色框模型的预测。 数据科研人员可以解释代理项模型, 以绘制关于黑色框模型的结论。 您可以使用以下可解释模型之一作为代理模型:LightGBM (LinearExplainableModel)、线性回归 (LinearExplainableModel)、随机梯度下降 explainable 模型 (SGDExplainableModel) 和决策树 (DecisionTreeExplainableModel)。
 
 
-__元 explainers__自动选择合适的直接说明并生成基于给定的模型和数据集的最佳说明信息。 元 explainers 利用所有的库 （SHAP、 酸橙色，模仿等） 已集成或开发。 以下是元 explainers SDK 中提供：
+* **排列特征重要性说明**:排列功能的重要性是一种技术, 用于说明通过[Breiman 的随机林](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf)的方式 (请参阅第10部分) 可以激发的分类和回归模型。 从较高层次来看, 它的工作方式是对整个数据集随机混排一项功能, 并计算出相关性能指标降低的程度。 更改越大, 该功能越重要。
 
-* **表格说明**:与表格数据集一起使用。
-* **文本说明**:与文本数据集一起使用。
-* **映像说明**:与图像数据集一起使用。
+* **酸橙色说明**(`contrib`):基于酸橙色, 酸橙色说明使用先进的本地可解释模式说明 (酸橙色) 算法来创建本地代理项模型。 与全局代理项模型不同, 酸橙色侧重于定型本地代理项模型来解释各个预测。
+* 中文**文本说明**(`contrib`):汉语文本说明使用分层注意网络从给定的黑色框文本模型的文本数据中获取模型说明。 我们在给定的老师型号的预测输出上定型了汉语代理模型。 在整个文本语料库中进行全局定型后, 我们为特定文档添加了微调步骤, 以便提高说明的准确性。 汉语使用双向 RNN, 其中包含两个注意层, 用于句子和单词。 DNN 在教师模型上定型并对特定文档进行微调后, 就可以从 "注意" 层中提取单词 "importances"。 对于文本数据, 我们发现了汉语比酸橙色或 SHAP 更精确, 但对于培训时间而言, 它的成本更高。 但是, 我们已通过向用户提供使用手套 word 嵌入初始化网络的选项 (尽管速度仍很慢) 来改进培训时间。 通过在远程 Azure GPU VM 上运行汉语, 可以显著提高训练时间。 汉字的实现在 "文档分类的分层注意网络 (阳 et al, 2016)" ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)) 中进行了介绍。
 
-除了为元选择的直接 explainers、 元 explainers 开发的基础库之上的其他功能和通过直接 explainers 提高速度和可伸缩性。
 
-当前`TabularExplainer`采用以下逻辑来调用直接 SHAP Explainers:
+__元 explainers__会自动选择合适的直接说明, 并根据给定的模型和数据集生成最佳解释信息。 元 explainers 利用我们集成或开发的所有库 (SHAP、酸橙色、模拟等)。 以下是 SDK 中可用的元 explainers:
 
-1. 如果它是基于树的模型，应用 SHAP `TreeExplainer`、 else
-2. 如果它是 DNN 模型，应用 SHAP `DeepExplainer`、 else
-3. 将其视为黑盒模型并将应用 SHAP `KernelExplainer`
+* **表格说明**:用于表格数据集。
+* **文本说明**:用于文本数据集。
+* **Image 说明**:用于图像数据集。
 
-内置的智能`TabularExplainer`将成为更复杂，因为更多库集成到 SDK，我们了解每个说明的优点和缺点。
+除了直接 explainers 的元选择以外, meta explainers 还在基础库之上开发附加功能, 并通过直接 explainers 提高速度和可伸缩性。
 
-`TabularExplainer` 通过直接 Explainers 已进行了重要的功能和性能增强功能：
+当前`TabularExplainer`采用以下逻辑调用直接 SHAP Explainers:
 
-* **初始化数据集的摘要**。 中的说明的速度最重要的情况下，我们汇总初始化数据集并生成一组较小的具有代表性的示例，这样可以加快全局和本地的说明。
-* **评估数据集进行抽样**。 如果用户通过一大组评估示例中，但实际上并不需要所有这些要计算，可以设置采样参数为 true，则全局说明提高速度。
+1. 如果它是基于树的模型, 则应用 SHAP `TreeExplainer`, 否则
+2. 如果这是一个 DNN 的模型, 则`DeepExplainer`应用 SHAP, 否则
+3. 将其视为一个黑白模型, 并应用 SHAP`KernelExplainer`
 
-下图显示了当前结构直接和 meta explainers。
+随着`TabularExplainer`将更多库集成到 SDK 中, 内置的智能将会变得更加复杂, 并了解每个说明的优缺点。
+
+`TabularExplainer`还通过直接 Explainers 实现了重大功能和性能增强:
+
+* **初始化数据集的摘要**。 在最重要的解释速度的情况下, 我们汇总了初始化数据集, 并生成了一小部分代表性示例, 这将加快全局和本地说明。
+* **采样计算数据集**。 如果用户传入一组大量的评估样本, 但实际上并不需要计算全部, 则可以将采样参数设置为 true, 以加快全局说明的速度。
+
+下图显示了 direct 和元 explainers 的当前结构。
 
 [![机器学习 Interpretability 体系结构](./media/machine-learning-interpretability-explainability/interpretability-architecture.png)](./media/machine-learning-interpretability-explainability/interpretability-architecture.png#lightbox)
 
 
 ### <a name="models-supported"></a>支持的模型
 
-在 Python 中的数据集训练所有模型`numpy.array`， `pandas.DataFrame`， `iml.datatypes.DenseData`，或`scipy.sparse.csr_matrix`格式受 interpretability`explain`的 sdk 包。
+SDK `numpy.array`的 interpretability `iml.datatypes.DenseData` `scipy.sparse.csr_matrix` `pandas.DataFrame`包支持`explain`对 Python、、或格式的数据集进行训练的任何模型。
 
-说明函数接受作为输入模型和管道。 如果提供一个模型，则模型必须实现的预测函数`predict`或`predict_proba`符合 Scikit 约定。 如果提供的管道 （管道脚本的名称），则说明函数假定正在运行的管道脚本返回预测。 我们支持通过 PyTorch、 TensorFlow 和深度学习框架的 Keras 训练的模型。
+解释函数接受模型和管道作为输入。 如果提供了模型, 则该模型必须实现预测函数`predict`或`predict_proba`符合 scikit-learn 约定。 如果提供了管道 (管道脚本的名称), 则说明函数假设正在运行的管道脚本返回一个预测。 我们支持通过 PyTorch、TensorFlow 和 Keras 深度学习框架训练的模型。
 
 ### <a name="local-and-remote-compute-target"></a>本地和远程计算目标
 
-`explain`包设计为使用这两个本地和远程计算目标。 如果本地运行，SDK 函数将不与任何 Azure 服务。 可以在 Azure 机器学习计算上远程运行说明并登录到 Azure 机器学习运行历史记录服务说明信息。 此信息在登录之后，报表和可视化效果中进行了说明上很容易下载用户分析的 Azure 机器学习工作区门户。
+`explain`包设计用于本地和远程计算目标。 如果在本地运行, SDK 函数将不会与任何 Azure 服务联系。 可以在 Azure 机器学习计算上远程运行说明, 并将说明信息记录到 Azure 机器学习运行历史记录服务中。 记录此信息后, 可在 Azure 机器学习工作区门户上轻松获取有关说明的报表和可视化效果, 以便进行用户分析。
 
-## <a name="interpretability-in-training"></a>Interpretability 培训
+## <a name="interpretability-in-training"></a>培训中的 Interpretability
 
-### <a name="train-and-explain-locally"></a>训练和本地说明
+### <a name="train-and-explain-locally"></a>本地训练和解释
 
-1. 训练的模型中的本地 Jupyter 笔记本。
+1. 在本地 Jupyter 笔记本中训练模型。
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -132,7 +132,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     model = clf.fit(x_train, y_train)
     ```
 
-2. 调用说明：若要初始化的说明对象，您需要将您的模型和一些定型数据传递给说明的构造函数。 可以选择性地传递功能名称和输出类名称 （如果进行分类），用于使信息更丰富的说明和可视化效果中。 下面介绍了如何实例化说明对象使用[TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py)， [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py)，并[PFIExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.permutation.permutation_importance.pfiexplainer?view=azure-ml-py)本地。 `TabularExplainer` 正在调用下面三个 SHAP explainers 之一 (`TreeExplainer`， `DeepExplainer`，或`KernelExplainer`)，并自动选择最适合的选项为你的用例。 但是，可以直接调用每个其三个基础 explainers。
+2. 调用说明:若要初始化说明对象, 需要将模型和一些定型数据传递给说明的构造函数。 您还可以选择传递功能名称和输出类名称 (如果要进行分类), 这将用于使您的说明和可视化内容更有信息。 下面介绍如何使用[TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py)、 [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py)和[PFIExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.permutation.permutation_importance.pfiexplainer?view=azure-ml-py)本地实例化说明对象。 `TabularExplainer`正在调用下三个 SHAP explainers 之一 (`TreeExplainer`、 `DeepExplainer`或`KernelExplainer`), 并自动为用例选择最适合的一个。 但是, 可以直接调用其三个基础 explainers 中的每一个。
 
     ```python
     from azureml.explain.model.tabular_explainer import TabularExplainer
@@ -177,7 +177,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
                              classes=classes)
     ```
 
-3. 获取全局功能重要性的值。
+3. 获取全局功能重要性值。
 
     ```python
     # you can use the training data or the test data here
@@ -195,7 +195,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     global_explanation.get_feature_importance_dict()
     ```
 
-4. 获取局部特征重要性的值： 使用以下函数调用来解释的单个实例的组。 请注意，PFIExplainer 不支持本地的说明。
+4. 获取本地功能重要性值: 使用以下函数调用说明单个实例或一组实例。 请注意, PFIExplainer 不支持本地说明。
 
     ```python
     # explain the first data point in the test set
@@ -217,11 +217,11 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
     ```
 
-### <a name="train-and-explain-remotely"></a>训练和远程解释
+### <a name="train-and-explain-remotely"></a>远程训练和解释
 
-虽然您可以在 Azure 机器学习服务支持的各种计算目标上进行训练，本部分中的示例演示如何实现此目的的 Azure 机器学习计算目标。
+虽然你可以在 Azure 机器学习服务支持的各种计算目标上进行定型, 但本部分中的示例演示如何使用 Azure 机器学习计算目标来执行此操作。
 
-1. 在本地 Jupyter 笔记本 (例如，run_explainer.py) 中创建训练脚本。
+1. 在本地 Jupyter 笔记本中创建训练脚本 (例如 run_explainer. py)。
 
     ```python
     from azureml.contrib.explain.model.explanation.explanation_client import ExplanationClient
@@ -251,7 +251,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-2. 按照上的说明[设置用于为模型定型的计算目标](how-to-set-up-training-targets.md#amlcompute)若要了解有关如何设置 Azure 机器学习计算用作计算目标和提交训练运行。
+2. 按照为[模型定型设置计算目标](how-to-set-up-training-targets.md#amlcompute)中的说明, 了解如何将 Azure 机器学习计算设置为计算目标并提交定型运行。
 
 3. 下载本地 Jupyter 笔记本中的说明。
 
@@ -273,40 +273,40 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 
 ## <a name="visualizations"></a>可视化效果
 
-使用可视化效果面板来了解和解释您的模型：
+使用可视化面板来理解和解释模型:
 
-### <a name="global-visualizations"></a>全局可视化效果
+### <a name="global-visualizations"></a>全局可视化
 
-以下图表提供经过训练的模型及其预测和说明的全局视图。
-
-|绘图|描述|
-|----|-----------|
-|数据浏览| 数据集并预测值的概述。|
-|全局重要性|全局范围内显示的 top K (可配置 K) 重要的功能。 此图表可用于了解全局基础模型的行为。|
-|说明探索|演示如何一项功能负责在模型的预测值 （或预测值的概率） 中进行更改。 |
-|摘要| 使用跨所有数据点值的有符号的本地功能重要性来显示的每个功能影响的预测值的分布。|
-
-[![全局可视化仪表板](./media/machine-learning-interpretability-explainability/global-charts.png)](./media/machine-learning-interpretability-explainability/global-charts.png#lightbox)
-
-### <a name="local-visualizations"></a>本地可视化效果
-
-您可以单击任何单个数据点在前面的图形加载给定的数据点将局部特征重要性任何的绘图时间。
+以下图形提供了定型模型的全局视图及其预测和说明。
 
 |绘图|描述|
 |----|-----------|
-|本地的重要性|全局范围内显示的 top K (可配置 K) 重要的功能。 此图表可用于了解特定的数据点上的基础模型的本地行为。|
-|Perturbation 探索|可以更改所选的数据值的点，并观察这些更改将如何影响预测值的功能。|
-|单个条件假定条件下 (ICE)| 可以从最小值的功能值更改为最大值，以查看数据点的预测功能发生更改时的变化。|
+|数据浏览| 数据集概述以及预测值。|
+|全局重要性|全局显示前 K (可配置的 K) 重要功能。 此图表对于了解基础模型的全局行为很有用。|
+|解释探索|演示如何使用某一功能来更改模型的预测值 (或预测值的概率)。 |
+|总结| 对所有数据点使用签名的本地功能重要性值, 以显示每个特征对预测值的影响的分布情况。|
 
-[![可视化效果的仪表板本地特征重要性](./media/machine-learning-interpretability-explainability/local-charts.png)](./media/machine-learning-interpretability-explainability/local-charts.png#lightbox)
+[![可视化面板全局](./media/machine-learning-interpretability-explainability/global-charts.png)](./media/machine-learning-interpretability-explainability/global-charts.png#lightbox)
+
+### <a name="local-visualizations"></a>本地可视化
+
+您可以在上一图中的任何时间单击任意单个数据点, 为给定的数据点加载本地功能重要的绘图。
+
+|绘图|描述|
+|----|-----------|
+|本地重要性|全局显示前 K (可配置的 K) 重要功能。 此图表用于了解特定数据点上基础模型的本地行为。|
+|Perturbation 探索|允许您更改所选数据点的功能值, 并观察这些更改将如何影响预测值。|
+|单个条件预计 (ICE)| 允许您将功能值从 "最小值" 更改为 "最大值", 以查看在功能更改时数据点的预测如何变化。|
+
+[![可视化面板本地功能重要性](./media/machine-learning-interpretability-explainability/local-charts.png)](./media/machine-learning-interpretability-explainability/local-charts.png#lightbox)
 
 
-[![可视化效果的仪表板功能 Perturbation](./media/machine-learning-interpretability-explainability/perturbation.gif)](./media/machine-learning-interpretability-explainability/perturbation.gif#lightbox)
+[![可视化面板功能 Perturbation](./media/machine-learning-interpretability-explainability/perturbation.gif)](./media/machine-learning-interpretability-explainability/perturbation.gif#lightbox)
 
 
-[![可视化效果的仪表板 ICE 绘图](./media/machine-learning-interpretability-explainability/ice-plot.png)](./media/machine-learning-interpretability-explainability/ice-plot.png#lightbox)
+[![可视化仪表板 ICE 绘图](./media/machine-learning-interpretability-explainability/ice-plot.png)](./media/machine-learning-interpretability-explainability/ice-plot.png#lightbox)
 
-请注意需要能够在 Jupyter 内核启动之前启用可视化仪表板的小组件扩展。
+请注意, 在开始 Jupyter 内核之前, 你将需要启用可视化仪表板的小组件扩展。
 
 * Jupyter 笔记本
 
@@ -323,7 +323,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
     jupyter labextension install microsoft-mli-widget
     ```
-若要加载的可视化效果的仪表板，请使用以下代码：
+若要加载可视化仪表板, 请使用以下代码:
 
 ```python
 from azureml.contrib.explain.model.visualize import ExplanationDashboard
@@ -333,11 +333,11 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 ## <a name="raw-feature-transformations"></a>原始功能转换
 
-（可选） 可以将你的功能转换管道传递到说明转换 （而非工程的特征） 副本接收的原始特征方面的说明。 如果您跳过这，说明提供了在工程特征方面的解释。
+(可选) 可以将功能转换管道传递给说明, 以便在转换前通过原始功能 (而不是工程功能) 接收解释。 如果跳过此项, 说明将提供工程功能的说明。
 
-如中所述的其中一个受支持的转换的格式是相同[sklearn pandas](https://github.com/scikit-learn-contrib/sklearn-pandas)。 一般情况下，只要它们对单个列，因此显然一对多支持任何转换。 
+支持的转换的格式与[spark-sklearn-pandas](https://github.com/scikit-learn-contrib/sklearn-pandas)中描述的转换的格式相同。 通常情况下, 只要转换在单个列上操作, 就会支持任何转换, 因此很明显都是一对多转换。 
 
-我们可以通过使用介绍原始特征`sklearn.compose.ColumnTransformer`或拟合的转换器元组的列表。 使用下面的单元格`sklearn.compose.ColumnTransformer`。 
+可以通过使用`sklearn.compose.ColumnTransformer`或合适的转换器元组列表来解释原始功能。 下面的单元格`sklearn.compose.ColumnTransformer`使用。 
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -361,7 +361,6 @@ clf = Pipeline(steps=[('preprocessor', preprocessor),
                       ('classifier', LogisticRegression(solver='lbfgs'))])
 
 
-
 # append classifier to preprocessing pipeline.
 # now we have a full prediction pipeline.
 clf = Pipeline(steps=[('preprocessor', preprocessor),
@@ -371,14 +370,14 @@ clf = Pipeline(steps=[('preprocessor', preprocessor),
 # clf.steps[-1][1] returns the trained classification model
 # pass transformation as an input to create the explanation object
 # "features" and "classes" fields are optional
-tabular_explainer = TabularExplainer(clf.steps[-1][1], 
-                                    initialization_examples=x_train, 
-                                    features=dataset_feature_names, 
-                                    classes=dataset_classes, 
-                                    transformations=preprocessor) 
+tabular_explainer = TabularExplainer(clf.steps[-1][1],
+                                     initialization_examples=x_train,
+                                     features=dataset_feature_names,
+                                     classes=dataset_classes,
+                                     transformations=preprocessor)
 ```
 
-如果你想要运行该示例使用拟合的转换器元组的列表，请使用以下代码： 
+如果希望使用合适的转换器元组列表运行该示例, 请使用以下代码: 
 ```python
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
@@ -388,35 +387,37 @@ from sklearn_pandas import DataFrameMapper
 
 # assume that we have created two arrays, numerical and categorical, which holds the numerical and categorical feature names
 
-numeric_transformations = [([f], Pipeline(steps=[('imputer', SimpleImputer(strategy='median')), ('scaler', StandardScaler())])) for f in numerical]
+numeric_transformations = [([f], Pipeline(steps=[('imputer', SimpleImputer(
+    strategy='median')), ('scaler', StandardScaler())])) for f in numerical]
 
-categorical_transformations = [([f], OneHotEncoder(handle_unknown='ignore', sparse=False)) for f in categorical]
+categorical_transformations = [([f], OneHotEncoder(
+    handle_unknown='ignore', sparse=False)) for f in categorical]
 
 transformations = numeric_transformations + categorical_transformations
 
 # append model to preprocessing pipeline.
 # now we have a full prediction pipeline.
 clf = Pipeline(steps=[('preprocessor', DataFrameMapper(transformations)),
-                    ('classifier', LogisticRegression(solver='lbfgs'))])
+                      ('classifier', LogisticRegression(solver='lbfgs'))])
 
 # clf.steps[-1][1] returns the trained classification model
 # pass transformation as an input to create the explanation object
 # "features" and "classes" fields are optional
-tabular_explainer = TabularExplainer(clf.steps[-1][1], 
-                                     initialization_examples=x_train, 
-                                     features=dataset_feature_names, 
-                                     classes=dataset_classes, 
+tabular_explainer = TabularExplainer(clf.steps[-1][1],
+                                     initialization_examples=x_train,
+                                     features=dataset_feature_names,
+                                     classes=dataset_classes,
                                      transformations=transformations)
 ```
 
-## <a name="interpretability-at-inferencing-time"></a>在推断时 interpretability
+## <a name="interpretability-at-inferencing-time"></a>推断时的 Interpretability
 
-说明可以与原始模型一起部署，并可用于在评分时间提供本地说明信息。 我们还提供轻量的评分 explainers，以使在推断 interpretability 时间更高的性能。 部署轻量的计分概要说明的过程类似于部署模型，包括以下步骤：
-
-
+说明可以与原始模型一起部署, 并且可以在评分时间使用以提供本地解释信息。 我们还提供了更轻量的评分 explainers, 使 interpretability 的性能更高。 部署较轻量评分说明的过程与部署模型类似, 包括以下步骤:
 
 
-1. 创建说明对象 （例如，使用 TabularExplainer）：
+
+
+1. 创建解释对象 (例如, 使用 TabularExplainer):
 
    ```python
    from azureml.contrib.explain.model.tabular_explainer import TabularExplainer
@@ -428,7 +429,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
                                 transformations=transformations)
    ```
 
-1. 创建使用说明对象计分概要说明：
+1. 使用解释对象创建计分说明:
 
    ```python
    from azureml.contrib.explain.model.scoring.scoring_explainer import KernelScoringExplainer, save
@@ -442,7 +443,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
    save(scoring_explainer, directory=OUTPUT_DIR, exist_ok=True)
    ```
 
-1. 配置和注册使用计分概要说明模型的图像。
+1. 配置和注册使用计分说明模型的映像。
 
    ```python
    # register explainer model using the path from ScoringExplainer.save - could be done on remote compute
@@ -454,7 +455,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
    print(scoring_explainer_model.name, scoring_explainer_model.id, scoring_explainer_model.version, sep = '\t')
    ```
 
-1. [可选]从云中检索评分的说明和测试说明
+1. 可有可无从云中检索评分说明并测试说明
 
    ```python
    from azureml.contrib.explain.model.scoring.scoring_explainer import load
@@ -471,9 +472,9 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
    print(preds)
    ```
 
-1. 将映像部署到计算目标：
+1. 将映像部署到计算目标:
 
-   1. 创建计分概要文件 (在此步骤中之前, 按照中的步骤[部署模型与 Azure 机器学习服务](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)注册原始预测模型)
+   1. 创建评分文件 (在此步骤之前, 请遵循[使用 Azure 机器学习服务部署模型](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)中的步骤来注册原始预测模型)
 
         ```python
         %%writefile score.py
@@ -510,7 +511,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
             return {'predictions': predictions.tolist(), 'local_importance_values': local_importance_values}
         ```
 
-   1. 定义部署配置 （此配置取决于您的模型的要求。 下面的示例定义一个 CPU 核心和 1 GB 的内存使用的配置）
+   1. 定义部署配置 (此配置取决于模型的要求。 下面的示例定义了一个使用一个 CPU 核心和 1 GB 内存的配置
 
         ```python
         from azureml.core.webservice import AciWebservice
@@ -545,14 +546,14 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
             print(f.read())
         ```
 
-   1. 使用 g + + 安装创建自定义 dockerfile
+   1. 创建已安装 g + + 的自定义 dockerfile
 
         ```python
         %%writefile dockerfile
         RUN apt-get update && apt-get install -y g++
         ```
 
-   1. 部署创建的映像 (估计时间：5 分钟）
+   1. 部署创建的映像 (时间估算:5分钟)
 
         ```python
         from azureml.core.webservice import Webservice
@@ -593,32 +594,11 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     print("prediction:", resp.text)
     ```
 
-1. 清理：若要删除已部署的 Web 服务，请使用 `service.delete()`。
+1. 清理:若要删除已部署的 Web 服务，请使用 `service.delete()`。
 
-## <a name="interpretability-in-automated-ml"></a>自动化机器学习中 interpretability
 
-自动化的机器学习包含用于解释中自动训练模型的特征重要性的包。 此外，分类方案允许你检索类级别特征重要性。 有两种方法，以启用自动的机器学习中的此行为：
 
-* 若要启用已训练的系综模型的特征重要性，请使用[ `explain_model()` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py)函数。
-
-    ```python
-    from azureml.train.automl.automlexplainer import explain_model
-
-    shap_values, expected_values, overall_summary, overall_imp, \
-        per_class_summary, per_class_imp = explain_model(fitted_model, X_train, X_test)
-    ```
-
-* 若要启用培训之前每次单独运行的特征重要性，设置`model_explainability`参数`True`中`AutoMLConfig`对象，并提供验证数据。 然后，使用[ `retrieve_model_explanation()` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py)函数。
-
-    ```python
-    from azureml.train.automl.automlexplainer import retrieve_model_explanation
-
-    shap_values, expected_values, overall_summary, overall_imp, per_class_summary, \
-        per_class_imp = retrieve_model_explanation(best_run)
-    ```
-
-有关详细信息，请参阅[操作方法](how-to-configure-auto-train.md#explain-the-model-interpretability)上启用 interpretability 自动化的机器学习中的功能。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看一系列 Jupyter notebook 演示上面的说明，请参阅[Azure 机器学习 Interpretability 示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)。
+若要查看演示上述说明的 Jupyter 笔记本的集合, 请参阅[Azure 机器学习 Interpretability 示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)。

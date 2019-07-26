@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6507c39faecfa0e56fc19597e414e9d25d368567
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 619a4de993f052f143e4117f0100ed1e0aa77b03
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460874"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498592"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
 通过 Azure API 管理来发布和管理 API，即可充分利用容错和基础结构功能，否则需手动设计、实现和管理这些功能。 Azure 平台通过花费少量成本消除大量潜在故障。
 
-若要从影响托管着 API 管理服务的区域的可用性问题中恢复，应随时准备好在另一区域中重建服务。 具体取决于恢复时间目标，可能想要保留备用服务在一个或多个区域中。 你可能尝试以维护其配置和内容与活动服务根据恢复点目标保持同步。 服务备份和还原功能为实现灾难恢复策略提供必要的构建基块。
+若要从影响托管着 API 管理服务的区域的可用性问题中恢复，应随时准备好在另一区域中重建服务。 根据恢复时间目标，你可能希望在一个或多个区域中保留备用服务。 你还可以根据自己的恢复点目标，尝试将其配置和内容与活动服务保持同步。 服务备份和还原功能为实现灾难恢复策略提供必要的构建基块。
 
-备份和还原操作还可用于运行环境，例如开发和暂存之间复制 API 管理服务配置。 请注意该运行时数据，如用户和订阅将被复制，这可能并不合适。
+备份和还原操作还可用于在操作环境（例如，开发环境和过渡环境）之间复制 API 管理服务配置。 请注意，运行时数据（如用户和订阅）也将被复制，这可能并不总是理想的。
 
-本指南演示如何自动备份和还原操作以及如何确保成功进行身份验证的备份和还原请求由 Azure 资源管理器。
+本指南介绍如何自动执行备份和还原操作，以及如何确保 Azure 资源管理器成功验证备份和还原请求。
 
 > [!IMPORTANT]
-> 还原操作不会更改目标服务的自定义主机名配置。 我们建议使用相同的自定义主机名和 TLS 证书对于活动和备用服务，以便还原操作完成后，可以重定向到备用实例通过简单的 DNS CNAME 更改流量。
+> 还原操作不会更改目标服务的自定义主机名配置。 我们建议对活动服务和备用服务使用相同的自定义主机名和 TLS 证书，以便在还原操作完成后，可以通过简单的 DNS CNAME 更改将流量重定向到备用实例。
 >
-> 备份操作不会捕获在 Azure 门户中的分析边栏选项卡上显示的报表中使用预先聚合的日志数据。
+> 备份操作不会捕获 Azure 门户的 Analytics 边栏选项卡上显示的报告中使用的预聚合日志数据。
 
 > [!WARNING]
 > 每个备份都会在 30 天后过期。 如果在 30 天有效期到期后尝试还原备份，还原会失败并显示 `Cannot restore: backup expired` 消息。
@@ -56,34 +56,34 @@ ms.locfileid: "67460874"
 ### <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 使用包含 API 管理服务实例的订阅导航到 Azure Active Directory 中的“应用注册”选项卡（Azure Active Directory > 管理/应用注册）。  
+2. 使用包含 API 管理服务实例的订阅导航到 Azure Active Directory 中的“应用注册”选项卡（Azure Active Directory > 管理/应用注册）。
 
     > [!NOTE]
     > 如果 Azure Active Directory 默认目录对帐户不可见，请联系 Azure 订阅的管理员，要求他们向你的帐户授予必要的权限。
 
-3. 单击“新建应用程序注册”  。
+3. 单击“新建应用程序注册”。
 
-    此时将在右侧显示“创建”窗口。  可以在其中输入 AAD 应用相关信息。
+    此时将在右侧显示“创建”窗口。 可以在其中输入 AAD 应用相关信息。
 
 4. 输入应用程序的名称。
-5. 对于应用程序类型，选择“本机”。 
-6. 输入占位符 URL，例如，为“重定向 URI”  输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
-7. 单击**创建**。
+5. 对于应用程序类型，选择“本机”。
+6. 输入占位符 URL，例如，为“重定向 URI”输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
+7. 单击“创建”。
 
 ### <a name="add-an-application"></a>添加应用程序
 
-1. 创建应用程序后，单击“设置”  。
-2. 单击“所需权限”  。
-3. 单击“+添加”  。
-4. 按“选择 API”  。
-5. 选择“Windows Azure 服务管理 API”。  
-6. 按“选择”  。
+1. 创建应用程序后，单击“设置”。
+2. 单击“所需权限”。
+3. 单击“+添加”。
+4. 按“选择 API”。
+5. 选择“Windows Azure 服务管理 API”。
+6. 按“选择”。
 
     ![添加权限](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
-7. 单击新添加的应用程序旁边的“委派的权限”  ，选中“访问 Azure 服务管理(预览版)”复选框。 
-8. 按“选择”  。
-9. 单击“授予权限”  。
+7. 单击新添加的应用程序旁边的“委派的权限”，选中“访问 Azure 服务管理(预览版)”复选框。
+8. 按“选择”。
+9. 单击“授予权限”。
 
 ### <a name="configuring-your-app"></a>配置应用
 
@@ -116,12 +116,12 @@ namespace GetTokenResourceManagerRequests
 
 根据以下说明替换 `{tenant id}`、`{application id}` 和 `{redirect uri}`。
 
-1. 将 `{tenant id}` 替换为已创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” -> “终结点”访问此 ID。  
+1. 将 `{tenant id}` 替换为已创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” -> “终结点”访问此 ID。
 
     ![终结点][api-management-endpoint]
 
-2. 将 `{application id}` 替换为通过导航到“设置”  页面获得的值。
-3. 将 `{redirect uri}` 替换为 Azure Active Directory 应用程序“重定向 URI”选项卡上的值。 
+2. 将 `{application id}` 替换为通过导航到“设置”页面获得的值。
+3. 将 `{redirect uri}` 替换为 Azure Active Directory 应用程序“重定向 URI”选项卡上的值。
 
     指定这些值后，代码示例应返回类似于以下示例的令牌：
 
@@ -153,7 +153,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - 订阅的 ID，该订阅包含的 API 管理服务是你尝试备份的
 -   `resourceGroupName` - Azure API 管理服务的资源组名称
 -   `serviceName` - 正在创建其备份的 API 管理服务的名称，在创建时指定
--   `api-version` -将替换为 `2018-06-01-preview`
+-   `api-version`-替换为`2018-06-01-preview`
 
 在请求正文中，指定目标 Azure 存储帐户名称、访问密钥、blob 容器名称和备份名称：
 
@@ -178,7 +178,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   用于创建分析报表的**用法数据** **不包括**在备份中。 使用 [Azure API 管理 REST API][azure api management rest api] 定期检索分析报表以保证安全。
 -   执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实施定期备份，以及在对 API 管理服务进行更改后执行按需备份。
 -   备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改** **可能不包含在备份中，会丢失**。
-
+-   **允许**从控制平面访问 Azure 存储帐户。 客户应在存储帐户上打开以下一组入站 Ip 以进行备份。 
+    > 13.84.189.17/32、13.85.22.63/32、23.96.224.175/32、23.101.166.38/32、52.162.110.80/32、104.214.19.224/32、13.64.39.16/32、40.81.47.216/32、51.145.179.78/32、52.142.95.35/32、40.90.185.46/32、20.40.125.155/32
 ### <a name="step2"></a>还原 API 管理服务
 
 若要从之前创建的备份还原 API 管理服务，请发出以下 HTTP 请求：
@@ -192,7 +193,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - 订阅 ID，该订阅包含的 API 管理服务是需要将备份还原到其中的
 -   `resourceGroupName` - 资源组的名称，该资源组包含的 Azure API 管理服务是需要将备份还原到其中的
 -   `serviceName` - 要将备份还原到其中的 API 管理服务的名称，在创建时指定
--   `api-version` -将替换为 `2018-06-01-preview`
+-   `api-version`-替换为`2018-06-01-preview`
 
 在请求正文中，指定备份文件位置。 也就是说，添加 Azure 存储帐户名称、访问密钥、Blob 容器名称和备份名称：
 
@@ -217,7 +218,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> 也可分别运行 PowerShell Backup-AzApiManagement  和 Restore-AzApiManagement  命令，执行备份和还原操作。
+> 也可分别运行 PowerShell Backup-AzApiManagement 和 Restore-AzApiManagement 命令，执行备份和还原操作。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -226,7 +227,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   [复制 Azure API 管理帐户](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [使用逻辑应用自动执行 API 管理备份和还原](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
 -   [Azure API 管理：备份和还原配置](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-     Stuart 详述的方法与官方指南不匹配，但非常有趣。 
+     Stuart 详述的方法与官方指南不匹配，但非常有趣。
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

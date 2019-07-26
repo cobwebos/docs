@@ -2,7 +2,7 @@
 title: 连接到 Azure SQL 数据仓库 |Microsoft Docs
 description: 连接到 Azure SQL 数据仓库。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2c937285b9c54072c6d1e1b0628c3d5fbfe786f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71f5c8ca56bc188c0664604a78c38a05be3c3b01
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873653"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479747"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>连接到 Azure SQL 数据仓库
 连接到 Azure SQL 数据仓库。
@@ -24,14 +24,14 @@ ms.locfileid: "65873653"
 以下示例中的服务器名称是 samplesvr.database.windows.net。 若要查找完全限定的服务器名称，请执行以下操作：
 
 1. 转到 [Azure 门户][Azure portal]。
-2. 单击“SQL 数据仓库”。 
+2. 单击“SQL 数据仓库”。
 3. 单击要连接到的数据仓库。
 4. 找到完整的服务器名称。
    
     ![完整服务器名称][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>支持的驱动程序和连接字符串
-Azure SQL 数据仓库支持 [ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP] 和 [JDBC][JDBC]。 单击前述的某个驱动程序，查找最新版本和文档。 若要自动生成通过 Azure 门户使用的驱动程序的连接字符串，请单击前述示例中的“显示数据库连接字符串”  。 下面也是一些示例，说明了每个驱动程序的连接字符串的样式。
+Azure SQL 数据仓库支持[ADO.NET][ADO.NET], [ODBC][ODBC]、 [php][php]和[JDBC][JDBC]。 单击前述的某个驱动程序，查找最新版本和文档。 若要自动生成通过 Azure 门户使用的驱动程序的连接字符串，请单击前述示例中的“显示数据库连接字符串”。 下面也是一些示例，说明了每个驱动程序的连接字符串的样式。
 
 > [!NOTE]
 > 请考虑将连接超时值设置为 300 秒，以便连接可以经受住短时间内不可用。
@@ -61,15 +61,15 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ## <a name="connection-settings"></a>连接设置
 SQL 数据仓库在连接和创建对象期间标准化一些设置。 这些设置不能重写，其中包括：
 
-| 数据库设置 | 值 |
+| 数据库设置 | ReplTest1 |
 |:--- |:--- |
-| [ANSI_NULLS][ANSI_NULLS] |ON |
-| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |ON |
+| [ANSI_NULLS][ANSI_NULLS] |开 |
+| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |开 |
 | [DATEFORMAT][DATEFORMAT] |mdy |
 | [DATEFIRST][DATEFIRST] |7 |
 
 ## <a name="next-steps"></a>后续步骤
-若要使用 Visual Studio 进行连接和查询，请参阅 [Query with Visual Studio][Query with Visual Studio]（使用 Visual Studio 进行查询）。 若要详细了解身份验证选项，请参阅 [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse]（向 Azure SQL 数据仓库进行身份验证）。
+若要通过 Visual Studio 进行连接和查询, 请参阅. To learn more about authentication options, see [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse][通过 visual studio 进行查询][Query with Visual Studio]。
 
 <!--Articles-->
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md

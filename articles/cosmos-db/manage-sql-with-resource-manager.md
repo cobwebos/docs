@@ -1,32 +1,34 @@
 ---
-title: 创建和管理 Azure Cosmos DB 使用 Azure 资源管理器模板
-description: 使用 Azure 资源管理器模板来创建和配置 Azure Cosmos DB sql （核心） API
+title: 使用 Azure 资源管理器模板创建和管理 Azure Cosmos DB
+description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB for SQL (Core) API
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5683fd072961c7793d8f4bbeb9ecc16a93dd7373
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cd66c9da0650c9eb9de5b51ce82b48fe781c6f4
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242586"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500507"
 ---
-# <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>管理 Azure Cosmos DB SQL (Core) API 资源使用 Azure 资源管理器模板
+# <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB SQL (Core) API 资源
 
-## 创建 Azure Cosmos 帐户、 数据库和容器 <a id="create-resource"></a>
+## 创建 Azure Cosmos 帐户、数据库和容器<a id="create-resource"></a>
 
-创建使用 Azure 资源管理器模板的 Azure Cosmos DB 资源。 此模板将创建 Azure Cosmos 帐户，所使用的两个容器在数据库级别共享 400 RU/秒的吞吐量。 复制模板和部署，如下所示，或者访问[Azure 快速入门库](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/)和从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
+使用 Azure 资源管理器模板创建 Azure Cosmos DB 资源。 此模板将创建 Azure Cosmos 帐户，所使用的两个容器在数据库级别共享 400 RU/秒的吞吐量。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
 
 > [!NOTE]
-> 当前不能通过使用资源管理器模板中部署用户定义 Functions(UDFs)、 存储的过程和触发器。 
+>
+> - 当前，无法使用资源管理器模板部署用户定义函数 (UDF)、存储过程和触发器。
+> - 不能同时在 Azure Cosmos 帐户中添加或删除位置, 也不能修改其他属性。 这些操作必须作为单独的操作完成。
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 
 ### <a name="deploy-via-powershell"></a>通过 PowerShell 部署
 
-若要部署使用 PowerShell、 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
+若要使用 PowerShell 部署资源管理器模板，请**复制**脚本并选择“试用”以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurepowershell-interactive
 
@@ -54,11 +56,11 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2015-04-08" --ResourceGroupName $resourceGroupName).name
 ```
 
-如果您选择使用从 Azure Cloud shell 中的本地安装而不是 PowerShell 版本，必须[安装](/powershell/azure/install-az-ps)Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。
+如果选择使用本地安装的 PowerShell 版本, 而不是 Azure Cloud shell, 则必须[安装](/powershell/azure/install-az-ps)Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。
 
 ### <a name="deploy-via-azure-cli"></a>通过 Azure CLI 部署
 
-若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
+若要使用 Azure CLI 部署资源管理器模板，请选择“试用”打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -79,17 +81,17 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 如果选择而不是使用 CloudShell 中使用本地安装的 Azure CLI 版本，请参阅[Azure 命令行接口 (CLI)](/cli/azure/)一文。
+`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 如果选择使用 Azure CLI 本地安装的版本, 而不是使用 CloudShell, 请参阅[Azure 命令行接口 (CLI) 一](/cli/azure/)文。
 
-## 更新数据库上的吞吐量 (RU/s) <a id="database-ru-update"></a>
+## 更新数据库的吞吐量（RU/秒）<a id="database-ru-update"></a>
 
-以下模板将更新数据库的吞吐量。 复制模板和部署，如下所示，或者访问[Azure 快速入门库](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-database-ru-update/)和从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
+以下模板将更新数据库的吞吐量。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-database-ru-update/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
 
 [!code-json[cosmosdb-sql-database-ru-update](~/quickstart-templates/101-cosmosdb-sql-database-ru-update/azuredeploy.json)]
 
-### <a name="deploy-database-template-via-powershell"></a>部署数据库模板通过 PowerShell
+### <a name="deploy-database-template-via-powershell"></a>通过 PowerShell 部署数据库模板
 
-若要部署使用 PowerShell、 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
+若要使用 PowerShell 部署资源管理器模板，请**复制**脚本并选择“试用”以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -105,9 +107,9 @@ New-AzResourceGroupDeployment `
     -throughput $throughput
 ```
 
-### <a name="deploy-database-template-via-azure-cli"></a>部署数据库模板通过 Azure CLI
+### <a name="deploy-database-template-via-azure-cli"></a>通过 Azure CLI 部署数据库模板
 
-若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
+若要使用 Azure CLI 部署资源管理器模板，请选择“试用”打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -120,15 +122,15 @@ az group deployment create --resource-group $resourceGroupName \
    --parameters accountName=$accountName databaseName=$databaseName throughput=$throughput
 ```
 
-## 更新容器的吞吐量 (RU/s) <a id="container-ru-update"></a>
+## 更新容器上的吞吐量 (RU/s)<a id="container-ru-update"></a>
 
-以下模板将更新容器的吞吐量。 复制模板和部署，如下所示，或者访问[Azure 快速入门库](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-ru-update/)和从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
+以下模板将更新容器的吞吐量。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-ru-update/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
 
 [!code-json[cosmosdb-sql-container-ru-update](~/quickstart-templates/101-cosmosdb-sql-container-ru-update/azuredeploy.json)]
 
-### <a name="deploy-container-template-via-powershell"></a>部署容器模板通过 PowerShell
+### <a name="deploy-container-template-via-powershell"></a>通过 PowerShell 部署容器模板
 
-若要部署使用 PowerShell、 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
+若要使用 PowerShell 部署资源管理器模板，请**复制**脚本并选择“试用”以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -146,9 +148,9 @@ New-AzResourceGroupDeployment `
     -throughput $throughput
 ```
 
-### <a name="deploy-container-template-via-azure-cli"></a>部署容器模板通过 Azure CLI
+### <a name="deploy-container-template-via-azure-cli"></a>通过 Azure CLI 部署容器模板
 
-若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
+若要使用 Azure CLI 部署资源管理器模板，请选择“试用”打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName

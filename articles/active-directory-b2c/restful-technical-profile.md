@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 21a2ea861df96a057db0ec13eacd0906ed51fff1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f535bc7d67198b3fe06326260bc1910b6afd36f2
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512742"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346771"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 ## <a name="protocol"></a>Protocol
 
-“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
+“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
 以下示例演示了一个 RESTful 技术配置文件：
 
@@ -83,7 +83,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 ## <a name="metadata"></a>元数据
 
-| 特性 | 必选 | 描述 |
+| 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 终结点的 URL。 | 
 | AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None`、`Basic` 或 `ClientCertificate`。 `None` 值表示 REST API 不是匿名的。 `Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 `ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）能够访问你的服务。 | 
@@ -109,7 +109,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 如果身份验证类型设置为 `Basic`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | 是 | 用于身份验证的用户名。 | 
 | BasicAuthenticationPassword | 是 | 用于身份验证的密码。 |
@@ -134,7 +134,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 如果身份验证类型设置为 `ClientCertificate`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | ClientCertificate | 是 | 用于身份验证的 X509 证书（RSA 密钥集）。 | 
 
@@ -157,10 +157,10 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 发生错误时，REST API 应返回包含以下属性的 HTTP 409 错误消息（冲突响应状态代码）：
 
-| 特性 | 必选 | 描述 |
+| 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | version | 是 | 1.0.0 | 
-| status | 是 | 409 | 
+| 状态 | 是 | 409 | 
 | code | 否 | 来自 RESTful 终结点提供程序的错误代码，启用 `DebugMode` 后会显示。 | 
 | requestId | 否 | 来自 RESTful 终结点提供程序的请求标识符，启用 `DebugMode` 后会显示。 | 
 | userMessage | 是 | 向用户显示的错误消息。 | 
@@ -183,7 +183,7 @@ REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该
 
 以下示例演示了一个返回错误消息的 C# 类：
 
-```C#
+```csharp
 public class ResponseContent
 {
   public string version { get; set; }
@@ -196,7 +196,7 @@ public class ResponseContent
 }
 ```
 
-## <a name="examples"></a>示例：
+## <a name="examples"></a>示例:
 - [在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](active-directory-b2c-custom-rest-api-netfw.md) 
 - [使用 HTTP 基本身份验证保护 RESTful 服务](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [使用客户端证书保护 RESTful 服务](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: a0cd2952633293bfa1d29bf3a399c67bf092d288
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ad30bd4f77c5f4314956e39f26a30b72d72a208a
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318321"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361172"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -33,7 +33,7 @@ ms.locfileid: "68318321"
 > [!NOTE]
 > 本文中的说明适用于:
 >1. 64位版本的 Windows Server 2008 R2 和更高版本的 Windows Server 操作系统。 有关在 Azure 中运行32位操作系统的信息, 请参阅对[Azure vm 中的32位操作系统的支持](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)。
->2. 如果任何灾难恢复工具将用于迁移工作负荷 (如 Azure Site Recovery 或 Azure Migrate), 则仍需执行此过程, 然后在来宾 OS 上执行迁移之前准备映像的操作。
+>2. 如果任何灾难恢复工具将用于迁移工作负荷 (如 Azure Site Recovery 或 Azure Migrate), 则仍需要执行此过程, 然后在来宾 OS 上执行迁移之前准备映像的操作。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>将虚拟磁盘转换为固定大小和 VHD
 
@@ -59,13 +59,13 @@ ms.locfileid: "68318321"
 4. 如果需要从 VHDX 进行转换, 请选择 " **VHD** >  **"。**
 5. 如果需要从动态扩展磁盘进行转换, 请选择 "**固定大小** >  **"。**
 6. 找到并选择新 VHD 文件的保存路径。
-7. 选择“完成”。 
+7. 选择“完成”。
 
 > [!NOTE]
 > 使用提升的 PowerShell 会话运行本文中的命令。
 
 ### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 转换磁盘 
-可以使用 Windows PowerShell 中的 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) 命令转换虚拟磁盘。 启动 PowerShell 时，选择“以管理员身份运行”  。 
+可以使用 Windows PowerShell 中的 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) 命令转换虚拟磁盘。 启动 PowerShell 时，选择“以管理员身份运行”。 
 
 下面的示例命令将磁盘从 VHDX 转换为 VHD。 此命令还会将磁盘从动态扩展磁盘转换为固定大小磁盘。
 
@@ -214,7 +214,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 
 9. 如果 VM 将是域的一部分, 请检查以下策略, 以确保不会还原以前的设置。 
     
-    | 目标                                     | 策略                                                                                                                                                       | 值                                                                                    |
+    | 目标                                     | 策略                                                                                                                                                       | ReplTest1                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | RDP 已启用                           | 计算机配置\策略\Windows 设置\管理模板\组件\远程桌面服务\远程桌面会话主机\连接         | 允许用户使用远程桌面进行远程连接                                  |
     | NLA 组策略                         | 设置\管理模板\组件\远程桌面服务\远程桌面会话主机\安全性                                                    | 使用 NLA 需要用户身份验证才能进行远程访问 |
@@ -347,9 +347,9 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 
    - 备份操作员
 
-   - 所有人
+   - 每个人
 
-   - 用户
+   - 位用户
 
 10. 重新启动 VM, 确保 Windows 仍正常运行, 并可通过 RDP 连接访问。 此时, 你可能需要在本地 Hyper-v 中创建一个 VM, 确保 VM 完全启动。 然后进行测试, 以确保可通过 RDP 访问 VM。
 
@@ -419,13 +419,13 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 > 在执行`sysprep.exe`以下步骤后, 关闭 VM。 在 Azure 中创建映像之前, 请不要将其重新打开。
 
 1. 登录到 Windows VM。
-1. 以管理员身份运行命令提示符。  
+1. 以管理员身份运行命令提示符。 
 1. 将目录更改为`%windir%\system32\sysprep`。 然后运行 `sysprep.exe`。
-1. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。   
+1. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。
 
     ![系统准备工具](media/prepare-for-upload-vhd-image/syspre.png)
-1. 在“关机选项”  中选择“关机”  。
-1. 选择“确定”  。
+1. 在“关机选项”中选择“关机”。
+1. 选择“确定”。
 1. Sysprep 完成后, 关闭 VM。 不要使用 "**重新启动**" 来关闭 VM。
 
 现在，VHD 已准备就绪，可以上传了。 有关如何从通用化磁盘创建 VM 的详细信息, 请参阅[上传通用化 VHD 并使用它在 Azure 中创建新 vm](sa-upload-generalized.md)。

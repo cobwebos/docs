@@ -6,14 +6,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 07/23/2019
 ms.author: normesta
-ms.openlocfilehash: fd3875c5c78a02efab1251166ec7113902be3e08
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 010b7bc38caf83c12dd0d8b8e731fdbad6e45256
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723233"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422881"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
 
@@ -35,7 +35,7 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 ## <a name="create-a-file-system"></a>创建文件系统
 
-文件系统  是一个包含文件夹和文件的容器。 必须至少有其中一个，然后才能将数据引入存储帐户中。  下面是可以用来创建它们的工具的列表。
+文件系统是一个包含文件夹和文件的容器。 必须至少有其中一个，然后才能将数据引入存储帐户中。  下面是可以用来创建它们的工具的列表。
 
 |Tool | 指南 |
 |---|--|
@@ -81,7 +81,7 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 * [文件和目录上的访问控制列表](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories)
 
-若要了解如何设置安全性的其他方面，请参阅 [Azure Data Lake Storage Gen2 安全指南](https://review.docs.microsoft.com/azure/storage/common/storage-data-lake-storage-security-guide?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+若要了解如何设置安全性的其他方面，请参阅 [Azure Data Lake Storage Gen2 安全指南](https://docs.microsoft.com/azure/storage/common/storage-data-lake-storage-security-guide?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ## <a name="ingest-the-data"></a>引入数据
 
@@ -142,7 +142,7 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 |---|--|
 |Apache DistCp | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
 |AzCopy 工具 | [使用 AzCopy 传输数据](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
-|Azure 数据工厂 | [使用 Azure 数据工厂向 / 从 Azure 数据湖存储第 2 代复制数据](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2) |
+|Azure 数据工厂 | [使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2) |
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>存储在本地或 IaaS Hadoop 群集的数据
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: d7ca566b86ed79aa773d7af2553223c79ed9944a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f2aa4b848172ab8b6a7e74de7dc1bc5f80639a1
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701844"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335647"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric 应用程序的容量规划
 本文档介绍如何评估运行 Azure Service Fabric 应用程序所需的资源量（CPU、RAM 和磁盘存储空间）。 资源要求经常会随着时间而变化。 开发/测试服务时需要的资源通常很少，之后进入生产环境且应用程序受欢迎度提高时需要的资源会更多。 设计应用程序时，应仔细规划长期要求并做出选择，以便到时服务可以缩放以应对较高的客户需求。
@@ -51,7 +51,7 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 上面假设只有一个有状态服务。 如果有多个有状态服务，则必须将与其他服务关联的 DB_Size 添加到公式中。 或者，可以单独为每个有状态服务计算节点数。  服务可能包含不平衡的副本或分区。 请记住，有些分区的数据可能比其他分区要多。 有关分区的详细信息，请参阅[分区最佳实践文章](service-fabric-concepts-partitioning.md)。 但是，上述公式不受分区或副本影响，因为 Service Fabric 可确保副本以优化方式分散在节点之间。
 
 ## <a name="use-a-spreadsheet-for-cost-calculation"></a>使用电子表格进行成本计算
-现在，让我们在公式中放入一些实际数字。 [示例电子表格](https://servicefabricsdkstorage.blob.core.windows.net/publicrelease/SF%20VM%20Cost%20calculator-NEW.xlsx)显示如何规划包含三种数据对象类型的应用程序的容量。 针对每个对象，我们将估算其大小以及预期需要的对象数。 我们还将选择对每个对象类型需要的副本数。 电子表格将计算要在群集中存储的总内存量。
+现在，让我们在公式中放入一些实际数字。 [示例电子表格](https://github.com/Azure/service-fabric/raw/master/docs_resources/SF_VM_Cost_calculator-NEW.xlsx)显示如何规划包含三种数据对象类型的应用程序的容量。 针对每个对象，我们将估算其大小以及预期需要的对象数。 我们还将选择对每个对象类型需要的副本数。 电子表格将计算要在群集中存储的总内存量。
 
 然后，输入 VM 大小和每月成本。 根据 VM 大小，电子表格将告知必须至少要使用多少个分区来拆分数据，才能使其能够实际包含在节点中。 可能需要大量的分区才能应对应用程序的特定计算和网络流量需求。 电子表格显示目前管理用户配置文件对象的分区数已从 1 个增加到 6 个。
 
@@ -60,7 +60,7 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 ![用于成本计算的电子表格][Image1]
 
 ## <a name="next-steps"></a>后续步骤
-查看 [Service Fabric 服务分区][10]，了解有关对服务进行分区的详细信息。
+查看[分区 Service Fabric 服务][10], 详细了解如何对服务进行分区。
 
 <!--Image references-->
 [Image1]: ./media/SF-Cost.png

@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6c5d60bb51a96725f766c6b49d61ac20fb2a1b58
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 08cf646d63e1a295a1bc2ff28180983cc462f084
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297919"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360934"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>使用 Azure 机器学习数据准备 SDK 转换数据
 
@@ -46,11 +46,11 @@ dflow = dprep.read_csv(path=r'data\crime0-10.csv')
 dflow.head(3)
 ```
 
-||id|案例号|Date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
+||id|案例号|Date|阻止|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年|更新时间|纬度|经度|Location|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-|0|10140490|HY329907|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
-|第|10139776|HY329265|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
-|2|10140270|HY329253|07/05/2015 11:20:00 PM|121XX S FRONT AVE|0486|BATTERY|DOMESTIC BATTERY SIMPLE|STREET|false|true|...|9|53|08B|||2015|07/12/2015 12:42:46 PM|
+|0|10140490|HY329907|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|假|假|...|41|10|06|1129230|1933315|2015|07/12/2015 12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
+|1|10139776|HY329265|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|假|真|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
+|2|10140270|HY329253|07/05/2015 11:20:00 PM|121XX S FRONT AVE|0486|BATTERY|DOMESTIC BATTERY SIMPLE|STREET|假|真|...|9|53|08B|||2015|07/12/2015 12:42:46 PM|
 
 
 使用 `substring(start, length)` 表达式从“案例号”列中提取前缀，再将该字符串放入新列“`Case Category`”中。 将 `substring_expression` 变量传递给 `expression` 参数会创建一个新的计算列，该列在每条记录上执行表达式。
@@ -63,11 +63,11 @@ case_category = dflow.add_column(new_column_name='Case Category',
 case_category.head(3)
 ```
 
-||id|案例号|案例类别|Date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
+||id|案例号|案例类别|Date|阻止|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年|更新时间|纬度|经度|Location|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|------|
-|0|10140490|HY329907|HY|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
-|1|10139776|HY329265|HY|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
-|2|10140270|HY329253|HY|07/05/2015 11:20:00 PM|121XX S FRONT AVE|0486|BATTERY|DOMESTIC BATTERY SIMPLE|STREET|false|true|...|9|53|08B|||2015|07/12/2015 12:42:46 PM|
+|0|10140490|HY329907|HY|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|假|假|...|41|10|06|1129230|1933315|2015|07/12/2015 12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
+|1|10139776|HY329265|HY|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|假|真|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
+|2|10140270|HY329253|HY|07/05/2015 11:20:00 PM|121XX S FRONT AVE|0486|BATTERY|DOMESTIC BATTERY SIMPLE|STREET|假|真|...|9|53|08B|||2015|07/12/2015 12:42:46 PM|
 
 
 使用 `substring(start)` 表达式仅从“案例号”列中提取编号并新建一列。 使用 `to_number()` 函数将其转换为数值数据类型，并将字符串列名作为参数传递。
@@ -96,9 +96,9 @@ dflow.head(3)
 
 ||id|逮捕|纬度|经度|
 |-----|------|-----|------|-----|
-|0|10140490|false|41.973309|-87.800175|
-|1|10139776|false|42.008124|-87.659550|
-|2|10140270|false|NaN|NaN|
+|0|10140490|假|41.973309|-87.800175|
+|1|10139776|假|42.008124|-87.659550|
+|2|10140270|假|NaN|NaN|
 
 第三条记录缺少纬度和经度值。 若要归结这些缺失值, 可[`ImputeMissingValuesBuilder`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py)使用来了解固定表达式。 它可使用计算得出的 `MIN`、`MAX`、`MEAN` 值或 `CUSTOM` 值来估算列。 如果指定 `group_by_columns`，将使用每组计算得出的 `MIN`、`MAX` 和 `MEAN` 按组估算缺失值。
 
@@ -106,16 +106,16 @@ dflow.head(3)
 
 ```python
 dflow_mean = dflow.summarize(group_by_columns=['Arrest'],
-                       summary_columns=[dprep.SummaryColumnsValue(column_id='Latitude',
-                                                                 summary_column_name='Latitude_MEAN',
-                                                                 summary_function=dprep.SummaryFunction.MEAN)])
+                             summary_columns=[dprep.SummaryColumnsValue(column_id='Latitude',
+                                                                        summary_column_name='Latitude_MEAN',
+                                                                        summary_function=dprep.SummaryFunction.MEAN)])
 dflow_mean = dflow_mean.filter(dprep.col('Arrest') == 'false')
 dflow_mean.head(1)
 ```
 
 ||逮捕|Latitude_MEAN|
 |-----|-----|----|
-|0|false|41.878961|
+|0|假|41.878961|
 
 纬度的 `MEAN` 值看上去是准确的，用 `ImputeColumnArguments` 函数来估算它。 此函数接受 `column_id` 字符串，并使用 `ReplaceValueFunction` 指定估算类型。 对于缺失的经度值，将根据外部知识使用 42 进行估算。
 
@@ -130,7 +130,7 @@ impute_custom = dprep.ImputeColumnArguments(column_id='Longitude',
                                             custom_impute_value=42)
 # get instance of ImputeMissingValuesBuilder
 impute_builder = dflow.builders.impute_missing_values(impute_columns=[impute_mean, impute_custom],
-                                                   group_by_columns=['Arrest'])
+                                                      group_by_columns=['Arrest'])
 
 impute_builder.learn()
 dflow_imputed = impute_builder.to_dataflow()
@@ -139,9 +139,9 @@ dflow_imputed.head(3)
 
 ||id|逮捕|纬度|经度|
 |-----|------|-----|------|-----|
-|0|10140490|false|41.973309|-87.800175|
-|1|10139776|false|42.008124|-87.659550|
-|2|10140270|false|41.878961|42.000000|
+|0|10140490|假|41.973309|-87.800175|
+|1|10139776|假|42.008124|-87.659550|
+|2|10140270|假|41.878961|42.000000|
 
 如以上结果所示，缺少的纬度是使用 `Arrest=='false'` 组的 `MEAN` 值进行估算。 缺少的经度是使用 42 进行估算。
 
@@ -156,11 +156,12 @@ Azure 机器学习数据准备 SDK 中更高级的一个工具能使用所需结
 
 ```python
 import azureml.dataprep as dprep
-dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/BostonWeather.csv')
+dflow = dprep.read_csv(
+    path='https://dpreptestfiles.blob.core.windows.net/testfiles/BostonWeather.csv')
 dflow.head(4)
 ```
 
-||DATE|REPORTTPYE|HOURLYDRYBULBTEMPF|HOURLYRelativeHumidity|HOURLYWindSpeed|
+||日期|REPORTTPYE|HOURLYDRYBULBTEMPF|HOURLYRelativeHumidity|HOURLYWindSpeed|
 |----|----|----|----|----|----|
 |0|1/1/2015 0:54|FM-15|22|50|10|
 |1|1/1/2015 1:00|FM-12|22|50|10|
@@ -170,12 +171,14 @@ dflow.head(4)
 假设需要将此文件与日期和时间格式为“Mar 10, 2018 | 2AM-4AM”的数据集联接起来。
 
 ```python
-builder = dflow.builders.derive_column_by_example(source_columns=['DATE'], new_column_name='date_timerange')
-builder.add_example(source_data=dflow.iloc[1], example_value='Jan 1, 2015 12AM-2AM')
-builder.preview(count=5) 
+builder = dflow.builders.derive_column_by_example(
+    source_columns=['DATE'], new_column_name='date_timerange')
+builder.add_example(
+    source_data=dflow.iloc[1], example_value='Jan 1, 2015 12AM-2AM')
+builder.preview(count=5)
 ```
 
-||DATE|date_timerange|
+||日期|date_timerange|
 |----|----|----|
 |0|1/1/2015 0:54|Jan 1, 2015 12AM-2AM|
 |1|1/1/2015 1:00|Jan 1, 2015 12AM-2AM|
@@ -196,10 +199,10 @@ builder.preview(count=5)
 builder.preview(skip=30, count=5)
 ```
 
-||DATE|date_timerange|
+||日期|date_timerange|
 |-----|-----|-----|
 |0|1/1/2015 22:54|Jan 1, 2015 10PM-12AM|
-|第|1/1/2015 23:54|Jan 1, 2015 10PM-12AM|
+|1|1/1/2015 23:54|Jan 1, 2015 10PM-12AM|
 |2|1/1/2015 23:59|Jan 1, 2015 10PM-12AM|
 |3|1/2/2015 0:54|Feb 1, 2015 12AM-2AM|
 |4|1/2/2015 1:00|Feb 1, 2015 12AM-2AM|
@@ -207,14 +210,15 @@ builder.preview(skip=30, count=5)
 此处可以发现生成的程序存在问题。 仅根据你上面提供的一个示例，派生程序选择了将日期分析为“日/月/年”，但这并不符合本示例的需求。 若要解决此问题, 请以特定记录索引为目标, 并提供`add_example()`另一个`builder`对变量使用函数的示例。
 
 ```python
-builder.add_example(source_data=dflow.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
+builder.add_example(
+    source_data=dflow.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
 builder.preview(skip=30, count=5)
 ```
 
-||DATE|date_timerange|
+||日期|date_timerange|
 |-----|-----|-----|
 |0|1/1/2015 22:54|Jan 1, 2015 10PM-12AM|
-|第|1/1/2015 23:54|Jan 1, 2015 10PM-12AM|
+|1|1/1/2015 23:54|Jan 1, 2015 10PM-12AM|
 |2|1/1/2015 23:59|Jan 1, 2015 10PM-12AM|
 |3|1/2/2015 0:54|Jan 2, 2015 12AM-2AM|
 |4|1/2/2015 1:00|Jan 2, 2015 12AM-2AM|
@@ -226,20 +230,21 @@ builder.preview(skip=75, count=5)
 ```
 
 
-||DATE|date_timerange|
+||日期|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|1月3日, 2015 早晨-早晨8点|
 |1|1/3/2015 7:54|1月3日, 2015 早晨-早晨8点|
 |2|1/29/2015 6:54|无|
 |3|1/29/2015 7:00|无|
-|4|1/29/2015 7:54|无|
+|4|1/29/2015 7:54|None|
 
 ```python
-builder.add_example(source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
+builder.add_example(
+    source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
 builder.preview(skip=75, count=5)
 ```
 
-||DATE|date_timerange|
+||日期|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|1月3日, 2015 早晨-早晨8点|
 |1|1/3/2015 7:54|1月3日, 2015 早晨-早晨8点|
@@ -253,7 +258,7 @@ builder.preview(skip=75, count=5)
 examples = builder.list_examples()
 ```
 
-| |DATE|示例|example_id|
+| |日期|示例|example_id|
 | -------- | -------- | -------- | -------- |
 |0|1/1/2015 1:00|Jan 1, 2015 12AM-2AM|-1|
 |1|1/2/2015 0:54|Jan 2, 2015 12AM-2AM|-2|
@@ -270,30 +275,31 @@ dflow = builder.to_dataflow()
 df = dflow.to_pandas_dataframe()
 ```
 
-## <a name="filtering"></a>Filtering
+## <a name="filtering"></a>筛选
 
 SDK 包括方法[`drop_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow)和[`filter()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) , 以便筛选出列或行。
 
 ### <a name="initial-setup"></a>初始设置
 
 > [!Note]
-> 此同一个示例中的 URL 不是完整的 URL。 相反, 它引用 blob 中的 demo 文件夹。 数据的完整 URL 是 https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
+> 此同一示例中的 URL 不是完整的 URL， 而是引用 blob 中的 demo 文件夹。 数据的完整 URL 是 https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 在本教程中, 我们要做的就是加载文件夹内的所有文件, 并将结果聚合到 green_df_raw 和 yellow_df_raw 中。
 
 ```python
 import azureml.dataprep as dprep
 from datetime import datetime
-dflow = dprep.read_csv(path='https://dprepdata.blob.core.windows.net/demo/green-small/*')
+dflow = dprep.read_csv(
+    path='https://dprepdata.blob.core.windows.net/demo/green-small/*')
 dflow.head(5)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|0|无|无|无|无|无|无|无|无|无|无|无|无|无|
-|1|2013-08-01 08:14:37|2013-08-01 09:09:06|N|第|0|0|0|0|1|.00|0|0|21.25|
-|2|2013-08-01 09:13:00|2013-08-01 11:38:00|N|第|0|0|0|0|2|.00|0|0|75|
-|3|2013-08-01 09:48:00|2013-08-01 09:49:00|N|5|0|0|0|0|第|.00|0|1|2.1|
+|0|None|无|None|无|无|无|None|None|无|无|无|无|无|
+|1|2013-08-01 08:14:37|2013-08-01 09:09:06|N|1|0|0|0|0|1|.00|0|0|21.25|
+|2|2013-08-01 09:13:00|2013-08-01 11:38:00|N|1|0|0|0|0|2|.00|0|0|75|
+|3|2013-08-01 09:48:00|2013-08-01 09:49:00|N|5|0|0|0|0|1|.00|0|1|2.1|
 |4|2013-08-01 10:38:35|2013-08-01 10:38:51|N|1|0|0|0|0|1|.00|0|0|3.25|
 
 ### <a name="filtering-columns"></a>筛选列
@@ -311,7 +317,7 @@ dflow.head(2)
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|0|无|无|无|无|无|无|无|无|无|无|无|
+|0|None|None|无|None|无|None|无|无|无|无|None|
 |1|2013-08-01 08:14:37|2013-08-01 09:09:06|0|0|0|0|1|.00|0|0|21.25|
 
 #### <a name="filtering-columns-with-regex"></a>使用正则表达式筛选列
@@ -319,13 +325,14 @@ dflow.head(2)
 也可以使用 `ColumnSelector` 表达式，删除与正则表达式匹配的列。 下面的示例删除与表达式 `Column*|.*longitude|.*latitude` 匹配的所有列。
 
 ```python
-dflow = dflow.drop_columns(dprep.ColumnSelector('Column*|.*longitud|.*latitude', True, True))
+dflow = dflow.drop_columns(dprep.ColumnSelector(
+    'Column*|.*longitud|.*latitude', True, True))
 dflow.head(2)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
-|0|无|无|无|无|无|无|无|
+|0|无|无|None|无|None|无|None|
 |1|2013-08-01 08:14:37|2013-08-01 09:09:06|1|.00|0|0|21.25|
 
 ## <a name="filtering-rows"></a>筛选行
@@ -360,7 +367,8 @@ dflow.head(2)
 
 ```python
 dflow = dflow.to_number(['Passenger_count', 'Tolls_amount'])
-dflow = dflow.filter(dprep.f_and(dprep.col('Passenger_count') < 5, dprep.col('Tolls_amount') > 0))
+dflow = dflow.filter(dprep.f_and(
+    dprep.col('Passenger_count') < 5, dprep.col('Tolls_amount') > 0))
 dflow.head(2)
 ```
 
@@ -375,9 +383,10 @@ dflow.head(2)
 > `lpep_pickup_datetime` 和 `Lpep_dropoff_datetime` 先转换为日期/时间，这便于生成将它与其他日期/时间值进行比较的表达式。
 
 ```python
-dflow = dflow.to_datetime(['lpep_pickup_datetime', 'Lpep_dropoff_datetime'], ['%Y-%m-%d %H:%M:%S'])
+dflow = dflow.to_datetime(
+    ['lpep_pickup_datetime', 'Lpep_dropoff_datetime'], ['%Y-%m-%d %H:%M:%S'])
 dflow = dflow.to_number(['Total_amount', 'Trip_distance'])
-mid_2013 = datetime(2013,7,1)
+mid_2013 = datetime(2013, 7, 1)
 dflow = dflow.filter(
     dprep.f_and(
         dprep.f_or(
@@ -412,28 +421,31 @@ dflow.head(2)
 import azureml.dataprep as dprep
 col = dprep.col
 
-dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv', skip_rows=1)
+dflow = dprep.read_csv(
+    path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv', skip_rows=1)
 dflow.head(2)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|
-|0|ALABAMA|1|101710|Hale County|10171002158| |
-|第|ALABAMA|1|101710|Hale County|10171002162| |
+|0|阿拉巴马州|1|101710|Hale County|10171002158| |
+|1|阿拉巴马州|1|101710|Hale County|10171002162| |
 
 剪裁数据集并执行一些基本转换, 包括删除列、替换值和转换类型。
 
 ```python
-dflow = dflow.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
-dflow = dflow.replace_na(columns=['leanm10', 'MAM_MTH00numvalid_1011'], custom_na_list='.')
+dflow = dflow.keep_columns(
+    ['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
+dflow = dflow.replace_na(
+    columns=['leanm10', 'MAM_MTH00numvalid_1011'], custom_na_list='.')
 dflow = dflow.to_number(['ncessch', 'MAM_MTH00numvalid_1011'])
 dflow.head(2)
 ```
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
-|0|ALABAMA|Hale County|1.017100e+10|无|
-|1|ALABAMA|Hale County|1.017100e+10|无|
+|0|阿拉巴马州|Hale County|1.017100e+10|None|
+|1|阿拉巴马州|Hale County|1.017100e+10|无|
 
 使用以下筛选器查找空值。
 
@@ -443,8 +455,8 @@ dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
-|0|ALABAMA|Hale County|1.017100e+10|无|
-|1|ALABAMA|Hale County|1.017100e+10|无|
+|0|阿拉巴马州|Hale County|1.017100e+10|无|
+|1|阿拉巴马州|Hale County|1.017100e+10|None|
 
 ### <a name="transform-partition"></a>转换分区
 
@@ -463,8 +475,8 @@ df.head(2)
 
 ||stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
-|0|ALABAMA|Hale County|1.017100e+10|0.0|
-|1|ALABAMA|Hale County|1.017100e+10|0.0|
+|0|阿拉巴马州|Hale County|1.017100e+10|0.0|
+|1|阿拉巴马州|Hale County|1.017100e+10|0.0|
 
 ### <a name="new-script-column"></a>新脚本列
 
@@ -482,8 +494,8 @@ dflow.head(2)
 
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
-|0|ALABAMA|Hale County|Hale County, Alabama|1.017100e+10|0.0|
-|第|ALABAMA|Hale County|Hale County, Alabama|1.017100e+10|0.0|
+|0|阿拉巴马州|Hale County|Hale County, Alabama|1.017100e+10|0.0|
+|1|阿拉巴马州|Hale County|Hale County, Alabama|1.017100e+10|0.0|
 
 ### <a name="new-script-filter"></a>新脚本筛选器
 
@@ -500,8 +512,8 @@ dflow.head(2)
 
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
-|0|ALABAMA|Jefferson County|Jefferson County, Alabama|1.019200e+10|1.0|
-|1|ALABAMA|Jefferson County|Jefferson County, Alabama|1.019200e+10|0.0|
+|0|阿拉巴马州|Jefferson County|Jefferson County, Alabama|1.019200e+10|1.0|
+|1|阿拉巴马州|Jefferson County|Jefferson County, Alabama|1.019200e+10|0.0|
 
 ## <a name="next-steps"></a>后续步骤
 

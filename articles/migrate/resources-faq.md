@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: snehaa
-ms.openlocfilehash: e5b4777adfcbb5babbf5db792a10d025c79b1a8b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302369"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372485"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -20,20 +20,8 @@ ms.locfileid: "68302369"
 ## <a name="general"></a>常规
 
 ### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Azure Migrate 支持哪些 Azure 地域？
-Azure Migrate 当前支持可在其中创建 Azure Migrate 项目的多个地理区域。 即使你只能在这些地理位置创建项目, 你仍可以评估或迁移其他目标位置的计算机。 项目地域仅用于存储已发现的元数据。
 
-
-**地域** | **元数据存储位置**
---- | ---
-Azure Government | 美国政府弗吉尼亚州
-亚洲 | 东南亚或东亚
-欧洲 | 欧洲南部或西欧
-英国 | 英国南部或英国西部
-美国 | 美国中部或美国西部2
-
-
-> [!NOTE]
-> Azure 政府版支持目前仅适用于[较旧版本](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions)的 Azure Migrate。
+可在[此处找到 VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects)列表, 并在[此处找到 hyper-v](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects)。
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Azure Migrate 与 Azure Site Recovery 有何不同？
 
@@ -51,7 +39,7 @@ Azure Migrate 提供了一个集中式中心, 用于启动、执行和跟踪计�
 
 ### <a name="can-i-harden-the-appliance-vm-i-set-up-with-the-template"></a>是否可以强化通过模板设置的设备 VM？
 
-可以将其他组件 (例如防病毒软件) 添加到模板中, 只要 Azure Migrate 设备所需的通信和防火墙规则仍保持原样。   
+可以将其他组件 (例如防病毒软件) 添加到模板中, 只要 Azure Migrate 设备所需的通信和防火墙规则保持原样。   
 
 ### <a name="what-data-is-collected-by-azure-migrate-appliance"></a>Azure Migrate 设备收集哪些数据？
 
@@ -99,7 +87,7 @@ Azure Migrate 设备不断地收集有关本地环境的信息。 但是, 评估
 
 使用单个迁移设备, 最多可以发现10000个 VMware Vm 和最多5000个 Hyper-v Vm。  如果本地环境中有更多计算机, 请了解如何缩放[hyper-v](scale-hyper-v-assessment.md)和[VMware](scale-vmware-assessment.md)评估。
 
-## <a name="azure-migrate-server-assessment"></a>Azure Migrate：服务器评估
+## <a name="azure-migrate-server-assessment"></a>“Azure Migrate:服务器评估”评估 VMware VM
 
 ### <a name="does-azure-migrate-server-assessment-support-assessment-of-physical-servers"></a>Azure Migrate:服务器评估支持物理服务器的评估？
 
@@ -111,11 +99,11 @@ Azure Migrate 设备不断地收集有关本地环境的信息。 但是, 评估
 
 ### <a name="whats-the-difference-between-using-azure-migrate-server-assessment-and-the-map-toolkit"></a>使用 Azure Migrate 之间有何区别:服务器评估和地图工具包？
 
-Azure Migrate：服务器评估提供迁移评估来帮助迁移准备情况, 并评估要迁移到 Azure 的工作负荷。 [Microsoft 评估和计划 (MAP) 工具包](https://www.microsoft.com/download/details.aspx?id=7826)具有其他功能, 如针对较新版本的 Windows 客户端和服务器操作系统的迁移规划以及软件使用跟踪。 对于这些情况，继续使用 MAP Toolkit。
+“Azure Migrate:服务器评估提供迁移评估来帮助迁移准备情况, 并评估要迁移到 Azure 的工作负荷。 [Microsoft 评估和计划 (MAP) 工具包](https://www.microsoft.com/download/details.aspx?id=7826)具有其他功能, 如针对较新版本的 Windows 客户端和服务器操作系统的迁移规划以及软件使用跟踪。 对于这些情况，继续使用 MAP Toolkit。
 
 ### <a name="how-is-azure-migrate-server-assessment-different-from-azure-site-recovery-deployment-planner"></a>如何 Azure Migrate:服务器评估不同于 Azure Site Recovery 部署规划器？
 
-Azure Migrate：服务器评估是一种迁移规划工具。 Azure Site Recovery 部署规划器是一种灾难恢复规划工具。
+“Azure Migrate:服务器评估是一种迁移规划工具。 Azure Site Recovery 部署规划器是一种灾难恢复规划工具。
 
 - **从 VMware/Hyper-v 迁移到 Azure**:如果打算将本地服务器迁移到 Azure, 请使用 Azure Migrate:用于迁移规划的服务器评估工具。 该工具可评估本地工作负荷, 并提供指导、见解和机制来帮助迁移到 Azure。 准备好迁移计划后, 可以使用 Azure Migrate 的工具:服务器迁移, 将计算机迁移到 Azure。
 - **从 VMware/Hyper-V 到 Azure 的灾难恢复**：对于使用 Site Recovery 的到 Azure 的灾难恢复, 请使用 Site Recovery 部署规划器进行灾难恢复计划。 Site Recovery 部署规划器对本地环境进行深入的、Site Recovery 特定的评估。 它提供 Site Recovery 的建议, 以实现成功的灾难操作, 如复制和 Vm 故障转移。
@@ -195,11 +183,11 @@ Azure Migrate 当前不支持[企业协议提议](https://azure.microsoft.com/of
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>包含 10 个以上 VM 的组是否支持依赖项可视化？
 可以可视化最多为10个 Vm[的组的依赖项](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 如果有10个以上 Vm 的组, 我们建议将该组拆分为较小的组, 然后可视化依赖项。
 
-## <a name="azure-migrate-server-migration"></a>Azure Migrate：服务器迁移
+## <a name="azure-migrate-server-migration"></a>“Azure Migrate:Server 迁移
 
 ### <a name="how-is-azure-migrate-server-migration-different-from-azure-site-recovery"></a>如何 Azure Migrate:服务器迁移不同于 Azure Site Recovery？
 
-Azure Migrate：服务器迁移利用 Site Recovery 的复制引擎, 对 VMware Vm 进行基于代理的迁移, 迁移 Hyper-v Vm, 并将物理服务器迁移到 Azure。 用于迁移 VMware Vm 的无代理选项在本地构建的服务器迁移中。
+“Azure Migrate:服务器迁移利用 Site Recovery 的复制引擎, 对 VMware Vm 进行基于代理的迁移, 迁移 Hyper-v Vm, 并将物理服务器迁移到 Azure。 用于迁移 VMware Vm 的无代理选项在本地构建的服务器迁移中。
 
 ## <a name="next-steps"></a>后续步骤
 阅读 [Azure Migrate 概述](migrate-services-overview.md)

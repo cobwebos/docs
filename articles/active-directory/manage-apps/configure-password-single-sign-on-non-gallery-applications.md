@@ -1,6 +1,6 @@
 ---
-title: 如何配置非库应用程序的密码单一登录 | Microsoft Docs
-description: 自定义的非库应用程序未在 Azure AD 应用程序库中列出时，如何对其配置安全的基于密码的单一登录
+title: 如何为 Azure AD 应用配置密码单一登录 |Microsoft Docs
+description: 如何将密码单一登录 (SSO) 配置到 Microsoft 标识平台 (Azure AD) 中的 Azure AD 企业应用程序
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -8,33 +8,23 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df52e0c25ecaff451f133e3a9207fb04b11f4a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d191abafbaad123ed47f8eaae6cdd4e48478da7a
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824932"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422634"
 ---
-# <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的密码单一登录
+# <a name="configure-password-single-sign-on"></a>配置密码单一登录
 
-除了 Azure AD 应用程序库中存在的选项外，还可以在所需应用程序未在此处列出时选择添加**非库应用程序**。 使用此功能，可以添加已存在于组织中的任何应用程序或任何你可能使用的来自供应商（该供应商尚不在 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)中）的第三方应用程序。
+向 Azure AD 企业应用程序[添加库应用](add-gallery-app.md)或[非库 web 应用](add-non-gallery-app.md)时, 可以使用的单一登录选项之一是[基于密码的单一登录](what-is-single-sign-on.md#password-based-sso)。 此选项可用于任何使用 HTML 登录页的 web。 基于密码的 SSO 也称为密码保管，可用于管理不支持标识联合的 Web 应用程序中的用户访问权限和密码。 在多个用户需要共享单个帐户 (例如组织的社交媒体应用帐户) 的情况下, 此方法也非常有用。 
 
-添加非库应用程序后，可以通过在 [Azure 门户](https://portal.azure.com/)中的“企业应用程序”上选择“单一登录”  导航项，来配置此应用程序使用的单一登录方法。
+基于密码的 SSO 非常适合于快速将应用程序集成到 Azure AD, 并使你能够:
 
-可用的单一登录方法之一是[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)选项。 通过**添加非库应用程序**体验，可以集成任何呈现基于 HTML 的用户名和密码输入字段的应用程序，即使该应用程序不在我们的预集成应用程序集中。
-
-此处的原理是页面抓取技术，该技术是“访问面板”扩展的一部分，允许自动检测用户名和密码输入字段，并为特定应用程序实例安全地存储这些字段。 然后在用户通过应用程序访问面板导航到该应用程序时，安全地向这些字段重播用户名和密码。
-
-这是开始将任何类型的应用程序快速集成到 Azure AD 中的绝佳方式，并且可以：
-
--   将**世界上的任何应用程序**与 Azure AD 租户集成，前提是该应用程序呈现 HTML 用户名和密码输入字段
-
--   通过安全地存储和重播已集成到 Azure AD 的应用程序用户名和密码，启用“用户单一登录” 
-
--   为任何应用程序**自动检测输入**字段，并允许在自动检测无法找到的情况下使用访问面板浏览器扩展进行手动检测
+-   通过安全地存储和重播已集成到 Azure AD 的应用程序用户名和密码，启用“用户单一登录”
 
 -   **支持需要多个登录字段的应用程序**，这适用于不只需要用户名和密码字段才能登录的应用程序
 
@@ -44,148 +34,65 @@ ms.locfileid: "65824932"
 
 -   允许**业务组的成员**使用[自助应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)功能指定分配给用户的用户名和密码
 
--   允许管理员  在将用户分配到应用程序时，使用更新凭据功能指定分配给用户的用户名和密码
+-   允许**管理员**指定个人或组在使用 "更新凭据" 功能登录到应用程序时使用的用户名和密码。 
 
--   允许**管理员**在[将组分配到应用程序](#assign-an-application-to-a-group-directly)时，使用更新凭据功能指定组中人员使用的共享用户名和密码
+## <a name="before-you-begin"></a>开始之前
 
-以下部分介绍了如何对使用**添加非库应用程序**体验添加的任何应用程序启用[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果尚未将应用程序添加到 Azure AD 租户, 请参阅[添加库应用](add-gallery-app.md)或[添加非库应用](add-non-gallery-app.md)。
 
-## <a name="overview-of-steps-required"></a>所需步骤概述
+## <a name="open-the-app-and-select-password-single-sign-on"></a>打开应用并选择 "密码单一登录"
 
-从 Azure AD 库中配置应用程序时需：
+1. 以 Azure AD 租户的云应用程序管理员或应用程序管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
 
--   [添加非库应用程序](#add-a-non-gallery-application)
+2. 导航到**Azure Active Directory** > **企业应用程序**。 此时会显示 Azure AD 租户中应用程序的随机示例。 
 
--   [将应用程序配置为密码单一登录](#configure-the-application-for-password-single-sign-on)
+3. 在“应用程序类型”菜单中选择“所有应用程序”，然后选择“应用”。
 
--   将应用程序分配给用户或组
+4. 在 "搜索" 框中输入应用程序的名称, 然后从结果中选择应用程序。
 
-    -   [直接将用户分配到应用程序](#assign-a-user-to-an-application-directly)
+5. 在“管理”部分选择“单一登录”。 
 
-    -   [直接将应用程序分配给组](#assign-an-application-to-a-group-directly)
+6. 选择 "**基于密码**"。
 
-## <a name="add-a-non-gallery-application"></a>添加非库应用程序
+7. 输入应用程序的基于 web 的登录页的 URL。 此字符串必须是包含 "用户名" 输入字段的页面。
 
-若要从 Azure AD 库添加应用程序，请执行以下步骤：
+   ![基于密码的单一登录](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
-1.  打开 [Azure 门户](https://portal.azure.com)，并以“全局管理员”  或“共同管理员”  身份登录
+8. 选择**保存**。 Azure AD 尝试分析用户名输入和密码输入的登录页。 如果尝试成功, 则已完成。 
+ 
+> [!NOTE]
+> 下一步是[将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)。 分配用户和组后, 你可以提供凭据, 以便在用户登录到应用程序时代表用户使用。 选择 "**用户和组**", 选中用户或组所在行的复选框, 然后单击 "**更新凭据**"。 然后, 输入代表用户或组使用的用户名和密码。 否则, 系统将在启动时提示用户输入凭据。
+ 
 
-2.  在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
+## <a name="manual-configuration"></a>手动配置
 
-3.  在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
+如果 Azure AD 的分析尝试失败, 你可以手动配置登录。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”  。
+1. 在 "  **\<应用程序名称 > 配置**" 下, 选择 "**配置\<应用程序名称" > "密码单一登录设置**" 以显示 "**配置登录**" 页。 
 
-5.  在“企业应用程序”  窗格的右上角，单击“添加”  按钮。
+2. 选择 **"手动检测登录字段"** 。 将显示说明手动检测登录字段的其他说明。
 
-6.  单击“非库应用程序”  。
+   ![手动配置基于密码的单一登录](./media/configure-password-single-sign-on/password-configure-sign-on.png)
+3. 选择 **"捕获登录字段"** 。 此时将在新选项卡中打开 "捕获状态" 页, 显示消息 "**元数据捕获当前正在进行**"。
 
-7.  在“名称”  文本框中输入应用程序的名称。 选择“添加”  。
+4. 如果新选项卡中出现 "**需要访问面板扩展**" 框, 请选择 "**立即安装**" 以安装 "**我的应用安全登录扩展**浏览器扩展"。 (浏览器扩展需要 Microsoft Edge、Chrome 或 Firefox。)然后安装、启动和启用该扩展, 并刷新 "捕获状态" 页。
 
-稍等片刻，便可看到应用程序的配置窗格。
+   然后, 浏览器扩展将打开一个显示输入的 URL 的选项卡。
+5. 在包含所输入 URL 的选项卡中, 完成登录过程。 填写 "用户名" 和 "密码" 字段, 然后尝试登录。 (不需要提供正确的密码。)
 
-## <a name="configure-the-application-for-password-single-sign-on"></a>将应用程序配置为密码单一登录
+   会出现一个提示, 要求您保存捕获的登录字段。
+6. 选择“确定”。 浏览器扩展更新 "捕获状态" 页, 其中包含**为应用程序更新的消息元数据**。 "浏览器" 选项卡关闭。
 
-若要为应用程序配置单一登录，请执行以下步骤：
+7. 在 Azure AD**配置登录**"页上, 选择 **" 确定 ", 我可以成功登录到应用**。
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。  
+8. 选择“确定”。
 
-2. 在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
+捕获登录页后, 可以分配用户和组, 并且可以设置凭据策略, 就像常规[密码 SSO 应用程序](what-is-single-sign-on.md)一样。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
-
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”  。
-
-5. 单击“所有应用程序”  ，查看所有应用程序的列表。
-
-   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”  顶部的“筛选器”  控件，并将“显示”  选项设为“所有应用程序”  。
-
-6. 选择要配置单一登录的应用程序。
-
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”  。
-
-8. 选择“基于密码的登录”  模式。
-
-9. 输入“登录 URL”  。 这就是用户在其中输入用户名和密码进行登录时的 URL。 确保登录字段在 URL 中可见。
-
-10. 将用户分配到应用程序。
-
-11. 此外，还可以通过下列步骤代表用户提供凭据：选择用户对应的行，单击“更新凭据”  ，并代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
-
-
-## <a name="assign-a-user-to-an-application-directly"></a>直接将用户分配到应用程序
-
-若要直接将一个或多个用户分配到应用程序，请执行以下步骤：
-
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
-
-2. 在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
-
-3. 在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
-
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”  。
-
-5. 单击“所有应用程序”  ，查看所有应用程序的列表。
-
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”  顶部的“筛选器”  控件，并将“显示”  选项设置为“所有应用程序”  。
-
-6. 从列表中选择要向其分配用户的应用程序。
-
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”  。
-
-8. 若要打开“添加分配”窗格，请单击“用户和组”列表顶部的“添加”按钮。   
-
-9. 在“添加分配”  窗格中，单击“用户和组”  选择器。
-
-10. 在“按名称或电子邮件地址搜索”  搜索框中，键入要分配的用户的**全名**或**电子邮件地址**。
-
-11. 将鼠标悬停在列表中的“用户”  上方以显示“复选框”  。 单击用户个人资料头像或徽标旁边的复选框，将用户添加到“已选择”  列表。
-
-12. **可选：** 如果要“添加多个用户”，请在“按名称或电子邮件地址搜索”搜索框中键入其他“全名”或“电子邮件地址”，然后单击复选框以将此用户添加到“已选择”列表      。
-
-13. 在完成用户的选择后，单击“选择”  按钮将他们添加到要分配给应用程序的用户和组列表。
-
-14. **可选：** 单击“添加分配”  窗格中的“选择角色”  选择器，选择一个角色来分配给所选用户。
-
-15. 单击“分配”  按钮，将应用程序分配给选定用户。
-
-## <a name="assign-an-application-to-a-group-directly"></a>直接将应用程序分配给组
-
-若要直接将一个或多个组分配到应用程序，请执行以下步骤：
-
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
-
-2. 在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
-
-3. 在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
-
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”  。
-
-5. 单击“所有应用程序”  ，查看所有应用程序的列表。
-
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”  顶部的“筛选器”  控件，并将“显示”  选项设置为“所有应用程序”  。
-
-6. 从列表中选择要向其分配用户的应用程序。
-
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”  。
-
-8. 若要打开“添加分配”窗格，请单击“用户和组”列表顶部的“添加”按钮。   
-
-9. 在“添加分配”  窗格中，单击“用户和组”  选择器。
-
-10. 在“按名称或电子邮件地址搜索”  搜索框中，键入要分配的组的**完整组名**。
-
-11. 将鼠标悬停在列表中的**组**上以显示**复选框**。 单击组头像或徽标旁边的复选框以将用户添加到“已选择”  列表。
-
-12. **可选：** 如果要“添加多个组”，请在“按名称或电子邮件地址搜索”搜索框中键入其他“完整组名”，然后单击复选框以将此组添加到“已选择”列表     。
-
-13. 选择完所有组后，单击“选择”  按钮将所有已选择的组添加到要分配给应用程序的用户和组的列表中。
-
-14. **可选：** 单击“添加分配”  窗格中的“选择角色”  选择器，选择一个角色来分配给所选组。
-
-15. 单击“分配”  按钮，将应用程序分配给所选组。
-
-在很短一段时间后，所选用户便能够在访问面板中启动这些应用程序。
+> [!NOTE]
+> 可以在应用程序的“配置”选项卡中使用“上传徽标”按钮来上传应用程序的磁贴徽标。
 
 ## <a name="next-steps"></a>后续步骤
-[使用应用程序代理为应用提供单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
+
+- [将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)
+- [配置自动用户帐户预配](configure-automatic-user-provisioning-portal.md)

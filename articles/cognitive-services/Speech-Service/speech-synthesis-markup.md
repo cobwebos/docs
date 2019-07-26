@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: dd535f96c60a3f9259a108f3e8aff643eed1870d
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e2b1e02a622dfe4ae488e372e44c8440f20d7034
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414713"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501150"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>语音合成标记语言 (SSML)
 
@@ -288,7 +288,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 | 推广 | 指示文本的基线间距。 你可以表达以下内容:<ul><li>一个绝对值, 以数字开头, 后跟 "Hz" (赫兹)。 例如, 600Hz。</li><li>一个相对值, 表示为以 "+" 或 "-" 开头、"Hz" 或 "st" 开头的数字, 用于指定要更改的间距。 例如: + 80Hz 或-2st。 "St" 表示变更单位为半音, 这是标准 diatonic 比例的半色调 (半步)。</li><li>常量值:<ul><li>x-低</li><li>低</li><li>中等</li><li>高</li><li>x-高</li><li>默认</li></ul></li></ul>. | 可选 |
 | 轮廓 | 神经语音不支持等高线。 等高线表示语音内容在语音输出中指定时间位置作为目标数组的间距变化。 每个目标由参数对的集合定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每组参数中的第一个值指定间距更改的位置 (以文本持续时间的百分比表示)。 第二个值指定升高或降低跨度的量, 使用相对值或音调的枚举值 (请参见`pitch`)。 | 可选 |
 | range  | 一个值, 该值表示文本的间距范围。 您可以使用`range`相同的绝对值、相对值或用于描述`pitch`的枚举值表示。 | 可选 |
-| 分级  | 指示文本的说话速率。 可以表达`rate`如下:<ul><li>一个相对值, 表示为作为默认值的倍数的数字。 例如, 如果值为*1* , 则费率不会更改。 如果值为*0.5* , 则会产生一半。 如果值为*3* , 则会 tripling 速率。</li><li>常量值:<ul><li>x-慢</li><li>slow</li><li>中等</li><li>Fast</li><li>x-fast</li><li>默认</li></ul></li></ul> | 可选 |
+| 分级  | 指示文本的说话速率。 可以表达`rate`如下:<ul><li>一个相对值, 表示为作为默认值的倍数的数字。 例如, 如果值为*1* , 则费率不会更改。 如果值为*0.5* , 则会产生一半。 如果值为*3* , 则会 tripling 速率。</li><li>常量值:<ul><li>x-慢</li><li>slow</li><li>中等</li><li>fast</li><li>x-fast</li><li>默认</li></ul></li></ul> | 可选 |
 | 持续时间  | 语音合成 (TTS) 服务读取文本时应经过的时间段 (以秒或毫秒为单位)。 例如 *, 2* /2 或*1800ms*。 | 可选 |
 | 卷  | 指示语音的音量级别。 你可以将卷表示为:<ul><li>一个绝对值, 表示为0.0 到100.0 范围内的一个数字, 从*quietest*到*loudest*。 例如, 75。 默认值为100.0。</li><li>一个相对值, 表示为以 "+" 或 "-" 开头的数字, 用于指定更改卷的量。 例如 + 10 或-5.5。</li><li>常量值:<ul><li>自行</li><li>x-soft</li><li>音</li><li>中等</li><li>音量</li><li>大</li><li>默认</li></ul></li></ul> | 可选 |
 
@@ -351,6 +351,78 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
+    </voice>
+</speak>
+```
+
+## <a name="add-recorded-audio"></a>添加录制的音频
+
+`audio`是一个可选元素, 可用于在 SSML 文档中插入 MP3 音频。 如果音频文件不可用或播放, 则音频元素的正文可能包含明文或 SSML 标记。 `audio`此外, 元素还可以包含文本和以下元素: `phoneme` `break` `s` `p` `audio` 、、、`say-as`、 `sub`、、和。 `prosody`
+
+SSML 文档中包含的任何音频都必须满足以下要求:
+
+* MP3 必须托管在可通过 Internet 访问的 HTTPS 终结点上。 HTTPS 是必需的, 托管 MP3 文件的域必须提供有效的、受信任的 SSL 证书。
+* MP3 必须是有效的 MP3 文件 (MPEG v2)。
+* 比特率必须为 48 kbps。
+* 采样率必须为 16000 Hz。
+* 单个响应中所有文本和音频文件的总时间不能超过 90 (90) 秒。
+* MP3 不得包含任何客户特定信息或其他敏感信息。
+
+**语法**
+
+```xml
+<audio src="string"/></audio>
+```
+
+**属性**
+
+| 特性 | 描述 | 必需/可选 |
+|-----------|-------------|---------------------|
+| src | 指定音频文件的位置/URL。 | 如果在 SSML 文档中使用音频元素, 则是必需的。 |
+
+**示例**
+
+```xml
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <p>
+        <audio src="https://contoso.com/opinionprompt.wav"/>
+        Thanks for offering your opinion. Please begin speaking after the beep.
+        <audio src="https://contoso.com/beep.wav">
+        Could not play the beep, please voice your opinion now. </audio>
+    </p>
+</speak>
+```
+
+## <a name="add-background-audio"></a>添加背景音频
+
+`mstts:backgroundaudio`元素允许向 SSML 文档添加背景音频 (或将音频文件与文本到语音混合一起使用)。 利用`mstts:backgroundaudio` , 你可以在后台循环播放音频文件, 在文本到语音转换开始时淡入, 并在文本到语音的结尾处淡出。
+
+如果提供的背景音频小于文本到语音转换或淡化, 则会循环。 如果它的长度大于文本到语音转换的长度, 它将在淡化完成后停止。
+
+每个 SSML 文档只允许一个背景音频文件。 但是, 你可以在`audio` `voice`元素内点播标记, 以便将其他音频添加到 SSML 文档中。
+
+**语法**
+
+```XML
+<mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
+```
+
+**属性**
+
+| 特性 | 描述 | 必需/可选 |
+|-----------|-------------|---------------------|
+| src | 指定后台音频文件的位置/URL。 | 如果在 SSML 文档中使用背景音频, 则是必需的。 |
+| 卷 | 指定后台音频文件的卷。 **接受值**: `0`到`100`包含的值。 默认值为 `1`。 | 可选 |
+| fadein | 指定背景音频淡入的持续时间。 **接受值**: `0`到`10000`包含的值。  | 可选 |
+| fadeout | 指定背景音频淡出的持续时间。**接受值**: `0`到`10000`包含的值。  | 可选 |
+
+**示例**
+
+```xml
+<speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
+    <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)">
+        The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>
 ```

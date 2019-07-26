@@ -1,6 +1,6 @@
 ---
 title: Azure 订阅限制和配额
-description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 此文章包括有关如何增加限制以及最大值的信息。
+description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包含有关如何增加限制以及最大值的信息。
 services: multiple
 author: rothja
 manager: jeffreyg
@@ -10,31 +10,31 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: d1043f254d2a2cc2804ab8a4d68770b6d57cbed4
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 1c30d9e70facaf9ab47bd33e5ca1fc1d35c6c979
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295954"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405857"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
-本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间推移，将扩展和更新，包含更多服务列表。
+本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移, 将展开并更新该列表以涵盖更多服务。
 
-若要了解有关 Azure 定价的详细信息，请参阅[Azure 定价概述](https://azure.microsoft.com/pricing/)。 可通过使用评估你的成本[定价计算器](https://azure.microsoft.com/pricing/calculator/)。 您也可以转到特定服务的定价详细信息页等[Windows Vm](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing/billing-getting-started.md)。
+若要了解有关 Azure 定价的详细信息, 请参阅[azure 定价概述](https://azure.microsoft.com/pricing/)。 可以通过使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来估算成本。 你还可以前往特定服务 (例如, [Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) 的定价详细信息页。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing/billing-getting-started.md)。
 
 > [!NOTE]
-> 如果你想要提高限制或配额超出默认限制[打开免费的联机客户支持请求](azure-resource-manager/resource-manager-quota-errors.md)。 限制不能将提高到超过下表中显示的最大限制值。 如果没有最大限制列，则资源没有可调整的限制。
+> 如果要提高限制或配额超过默认限制, 请免费[打开联机客户支持请求](azure-resource-manager/resource-manager-quota-errors.md)。 此限制不能高于下表中显示的最大限制值。 如果没有最大限制列，则资源没有可调整的限制。
 >
-> [免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合增加限制或配额。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅[将 Azure 免费试用版订阅升级到即用即付订阅](billing/billing-upgrade-azure-subscription.md)并[免费试用版订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
+> [免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息, 请参阅将[Azure 免费试用版订阅升级到即用即付订阅](billing/billing-upgrade-azure-subscription.md)和[免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>限制和 Azure 资源管理器
-现可以将多个 Azure 资源组合为单个 Azure 资源组。 当使用资源组时，在区域级别使用 Azure 资源管理器管理以前针对全局的限制。 有关 Azure 资源组的详细信息，请参阅[Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)。
+现在可以将多个 Azure 资源合并到单个 Azure 资源组中。 在使用资源组时，以前针对全局的限制会通过 Azure 资源管理器在区域级别进行管理。 有关 Azure 资源组的详细信息，请参阅 [Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)。
 
-在以下列表中的限制，新表时使用 Azure 资源管理器反映在限制的任何差异。 例如，没有**订阅限制**表和一个**订阅数限制-Azure 资源管理器**表。 当某个限制同时适用于这两种方案时，它仅显示第一个表中。 除非另有说明，否则限制是跨所有区域的全局限制。
+在下面的限制列表中，一个新表反映了在使用 Azure 资源管理器时的限制差异。 例如，会存在一个“订阅限制”表和一个“订阅数限制 - Azure 资源管理器”表。 如果某个限制同时适用于这两种方案，它会仅显示在第一个表中。 除非另有说明，否则限制是跨所有区域的全局限制。
 
 > [!NOTE]
-> Azure 资源组中的资源配额是每个区域由你的订阅，不根据订阅可访问的服务管理配额一样。 让我们以 vCPU 配额为例。 若要请求增加配额对 Vcpu 的支持，您必须决定你想要在哪些区域中使用多少 Vcpu。 您然后进行 Azure 资源组 vCPU 配额的特定请求的数量和所需的区域。 如果需要使用在西欧的 30 个 Vcpu 那里运行应用程序，则专门请求在西欧的 30 个 Vcpu。 只有西欧具有 30 个 vCPU 配额，不是任何其他区域-增加 vCPU 配额。
+> Azure 资源组中的资源配额是用户的订阅可以访问的每个区域，而不像服务管理配额那样是可以访问的每个订阅。 让我们以 vCPU 配额为例。 若要请求提高 vCPU 支持数目的配额，必须确定要在哪些区域中使用多少 vCPU。 然后针对所需的 Azure 资源组 vCPU 配额的数量和区域发出特定请求。 如果需要在西欧使用 30 个 vCPU 以在那里运行应用程序，则应专门在西欧请求 30 个 vCPU。 这不会增加任何其他区域的 vCPU 配额 - 西欧的配额为 30 个 vCPU。
 > <!-- -->
 > 因此，请考虑针对任意区域中的工作负荷来确定所需的 Azure 资源组配额， 然后在需将内容部署到其中的每个区域中请求相应的量。 若要了解如何确定特定区域的当前配额，请参阅[排查部署问题](resource-manager-common-deployment-errors.md)。
 >
@@ -73,7 +73,7 @@ ms.locfileid: "67295954"
 * [数据库迁移服务](#database-migration-service-limits)
 * [事件网格](#event-grid-limits)
 * [事件中心](#event-hubs-limits)
-* [第一道防线服务](#azure-front-door-service-limits)
+* [前门服务](#azure-front-door-service-limits)
 * [标识管理器](#identity-manager-limits)
 * [IoT 中心](#iot-hub-limits)
 * [IoT 中心设备预配服务](#iot-hub-device-provisioning-service-limits)
@@ -84,7 +84,7 @@ ms.locfileid: "67295954"
 * [网络](#networking-limits)
   * [应用程序网关](#application-gateway-limits)
   * [Azure DNS](#azure-dns-limits)
-  * [Azure 的第一道防线服务](#azure-front-door-service-limits)
+  * [Azure 前门服务](#azure-front-door-service-limits)
   * [Azure 防火墙](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [负载均衡器](#load-balancer)
@@ -108,11 +108,11 @@ ms.locfileid: "67295954"
 * [虚拟机规模集](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>订阅限制
-#### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>订阅数限制-Azure 服务管理 （经典部署模型）
+#### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>订阅限制 - Azure 服务管理（经典部署模型）
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>订阅限制 - Azure 资源管理器
-使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。 未列出尚未更改与 Azure 资源管理器的限制。 请参阅上的表，了解这些限制。
+使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。 Azure 资源管理器的未有变化的限制未列出。 请参阅上表了解这些限制。
 
 有关资源管理器 API 读写限制的信息，请参阅[限制资源管理器请求](resource-manager-request-limits.md)。
 
@@ -126,11 +126,11 @@ ms.locfileid: "67295954"
 [!INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 #### <a name="virtual-machines-limits---azure-resource-manager"></a>虚拟机限制 - Azure 资源管理器
-使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。 未列出尚未更改与 Azure 资源管理器的限制。 请参阅上的表，了解这些限制。
+使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。 Azure 资源管理器的未有变化的限制未列出。 请参阅上表了解这些限制。
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
-#### <a name="shared-image-gallery-limits"></a>共享映像库限制
+#### <a name="shared-image-gallery-limits"></a>共享图像库限制
 
 使用共享映像库部署资源时，每个订阅存在限制：
 - 每个区域的每个订阅限制为 100 个共享映像库
@@ -152,7 +152,7 @@ ms.locfileid: "67295954"
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
 ### <a name="azure-machine-learning-service-limits"></a>Azure 机器学习服务限制
-可在 Azure 机器学习计算配额的最新值[Azure 机器学习配额页](../articles/machine-learning/service/how-to-manage-quotas.md)
+可以在 " [Azure 机器学习配额" 页](../articles/machine-learning/service/how-to-manage-quotas.md)中找到 Azure 机器学习计算配额的最新值
 
 ### <a name="networking-limits"></a>网络限制
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
@@ -184,7 +184,7 @@ ms.locfileid: "67295954"
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-有关存储帐户限制的详细信息，请参阅[Azure 存储可伸缩性和性能目标](storage/common/storage-scalability-targets.md)。
+有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage/common/storage-scalability-targets.md)。
 
 #### <a name="storage-resource-provider-limits"></a>存储资源提供程序限制 
 
@@ -194,7 +194,7 @@ ms.locfileid: "67295954"
 [!INCLUDE [storage-blob-scale-targets](../includes/storage-blob-scale-targets.md)]
 
 #### <a name="azure-files-limits"></a>Azure 文件限制
-有关 Azure 文件限制的详细信息，请参阅[Azure 文件可伸缩性和性能目标](storage/files/storage-files-scale-targets.md)。
+有关 Azure 文件限制的详细信息，请参阅 [Azure 文件可伸缩性和性能目标](storage/files/storage-files-scale-targets.md)。
 
 [!INCLUDE [storage-files-scale-targets](../includes/storage-files-scale-targets.md)]
 
@@ -231,7 +231,7 @@ ms.locfileid: "67295954"
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
-### <a name="functions-limits"></a>函数限制
+### <a name="functions-limits"></a>Functions 限制
 [!INCLUDE [functions-limits](../includes/functions-limits.md)]
 
 ### <a name="scheduler-limits"></a>计划程序限制
@@ -246,7 +246,7 @@ ms.locfileid: "67295954"
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB 限制
-有关 Azure Cosmos DB 限制，请参阅[Azure Cosmos DB 中的限制](cosmos-db/concepts-limits.md)。
+有关 Azure Cosmos DB 的限制，请参阅 [Azure Cosmos DB 中的限制](cosmos-db/concepts-limits.md)。
 
 ### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 有关 Azure Database for MySQL 限制，请参阅 [Azure Database for MySQL 中的限制](mysql/concepts-limits.md)。
@@ -257,9 +257,9 @@ ms.locfileid: "67295954"
 ### <a name="azure-search-limits"></a>Azure 搜索限制
 定价层决定了搜索服务的容量和限制。 层包括：
 
-* **免费**多租户服务，与其他 Azure 订户共享仅用于评估和小型开发项目。
-* 基本层  为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
-* **标准**，其中包括 S1、 S2、 S3 和 S3 High Density 为更大的生产工作负荷。 以便你可以选择最符合您工作负荷的配置文件的资源配置的标准层中有多个级别。
+* “免费”层为多租户服务，可与其他 Azure 订阅用户共享，仅用于评估和小型开发项目。
+* 基本层为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
+* “标准”层（包括 S1、S2、S3 和 S3 高密度）适用于较大型生产工作负荷。 “标准”层内有多个级别，以便可以选择与工作负荷配置文件最匹配的资源配置。
 
 **基于订阅的限制**
 
@@ -274,13 +274,13 @@ ms.locfileid: "67295954"
 ### <a name="media-services-limits"></a>媒体服务限制
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
 
-### <a name="content-delivery-network-limits"></a>内容交付网络限制
+### <a name="content-delivery-network-limits"></a>内容分发网络限制
 [!INCLUDE [cdn-limits](../includes/cdn-limits.md)]
 
 ### <a name="mobile-services-limits"></a>移动服务限制
 [!INCLUDE [mobile-services-limits](../includes/mobile-services-limits.md)]
 
-### <a name="azure-monitor-limits"></a>Azure 监视限制
+### <a name="azure-monitor-limits"></a>Azure Monitor 限制
 
 #### <a name="alerts"></a>警报
 
@@ -289,6 +289,10 @@ ms.locfileid: "67295954"
 #### <a name="action-groups"></a>操作组
 
 [!INCLUDE [monitoring-limits](../includes/azure-monitor-limits-action-groups.md)]
+
+#### <a name="log-queries-and-language"></a>日志查询和语言
+
+[!INCLUDE [monitoring-limits](../includes/azure-monitor-limits-log-queries.md)]
 
 #### <a name="log-analytics-workspaces"></a>Log Analytics 工作区
 
@@ -377,12 +381,12 @@ ms.locfileid: "67295954"
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>SQL 数据库限制
-有关 SQL 数据库限制，请参阅[单一数据库的 SQL 数据库资源限制](sql-database/sql-database-vcore-resource-limits-single-databases.md)，[弹性池和入池的数据库的 SQL 数据库资源限制](sql-database/sql-database-vcore-resource-limits-elastic-pools.md)，和[SQL 数据库资源限制托管实例](sql-database/sql-database-managed-instance-resource-limits.md)。
+有关 SQL 数据库的限制，请参阅[单一数据库的 SQL 数据库资源限制](sql-database/sql-database-vcore-resource-limits-single-databases.md)、[弹性池和共用数据库的 SQL 数据库资源限制](sql-database/sql-database-vcore-resource-limits-elastic-pools.md)以及[托管实例的 SQL 数据库资源限制](sql-database/sql-database-managed-instance-resource-limits.md)。
 
 ### <a name="sql-data-warehouse-limits"></a>SQL 数据仓库限制
-有关 SQL 数据仓库限制，请参阅[SQL 数据仓库资源限制](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+有关 SQL 数据仓库的限制, 请参阅[Sql 数据仓库资源限制](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
-## <a name="see-also"></a>另请参阅
-- [了解 Azure 限制和增加](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+## <a name="see-also"></a>请参阅
+- [了解 Azure 限制及如何提高限制](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 - [Azure 的虚拟机和云服务大小](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 云服务的大小](cloud-services/cloud-services-sizes-specs.md)

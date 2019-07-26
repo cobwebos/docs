@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ba774f5d4e2b6a6baeb41d93d08c98326000f6d1
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
-ms.translationtype: HT
+ms.openlocfilehash: 318a9c2df7902ae89a731ca45b24b8bb6241faa1
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377351"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498379"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -368,11 +368,14 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 1. 证书续订过程中，可以在菜单的“通知”下面跟踪进度。
 
-若要使用 PowerShell 续订证书, 请在[GitHub](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1)上使用以下脚本。
+## <a name="auto-cert-renewal"></a>使用自动化 runbook 设置自动证书续订
+
+若要自动续订证书, 可以使用自动化 runbook。 [GitHub](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1)上的以下脚本将在自动化帐户中启用此功能。
 
 - 此`GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1`脚本创建每周计划以续订运行方式帐户证书。
 - 该脚本将**AutomationRunAsCredential** runbook 添加到自动化帐户。
   - 你还可以在 GitHub 上的脚本中查看 runbook 代码:[Update-AutomationRunAsCredential](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1)。
+  - 还可以根据需要, 使用文件中的 PowerShell 代码手动续订证书。
 
 若要立即测试续订过程, 请使用以下步骤:
 

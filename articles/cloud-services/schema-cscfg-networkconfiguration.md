@@ -3,22 +3,17 @@ title: Azure 云服务 NetworkConfiguration 架构 | Microsoft Docs
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
-ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
 ms.topic: reference
-ms.assetid: c1b94a9e-46e8-4a18-ac99-343c94b1d4bd
 caps.latest.revision: 28
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: fb833904502c0c42b46201fd46a368de0376277c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: georgewallace
+ms.author: gwallace
+ms.openlocfilehash: 4c2a85daba259f2b676174176753af90dd489491
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130256"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360697"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure 云服务的配置 NetworkConfiguration 架构
 
@@ -74,8 +69,8 @@ ms.locfileid: "62130256"
 | DnsServer | 可选。 指定 DNS 服务器的设置。 可以指定不使用虚拟网络的 DNS 服务器的设置。 DNS 服务器的名称由 `name` 属性的字符串定义。 DNS 服务器的 IP 地址由 `IPAddress` 属性的字符串定义。 该 IP 地址必须是有效的 IPv4 地址。|
 | VirtualNetworkSite | 可选。 指定要在其中部署云服务的虚拟网络站点的名称。 此设置不会创建虚拟网络站点。 它引用之前已在虚拟网络的网络文件中定义的站点。 一个云服务只能是一个虚拟网络的成员。 如未指定此设置，则云服务不会部署到虚拟网络。 虚拟网络站点的名称由 `name` 属性的字符串定义。|
 | InstanceAddress | 可选。 指定角色与虚拟网络中的子网或子网集的关联。 将角色名称关联到实例地址时，可以指定要将此角色与之关联的子网。 `InstanceAddress` 包含 Subnets 元素。 与一个或多个子网相关联的角色的名称由 `roleName` 属性的字符串定义。|
-| 子网 | 可选。 指定与网络配置文件中的子网名称相对应的子网。 子网的名称由 `name` 属性的字符串定义。|
+| Subnet | 可选。 指定与网络配置文件中的子网名称相对应的子网。 子网的名称由 `name` 属性的字符串定义。|
 | ReservedIP | 可选。 指定应与部署关联的保留 IP 地址。 必须使用“创建保留 IP 地址”创建保留的 IP 地址。 云服务中的每个部署均可与一个保留 IP 地址相关联。 保留 IP 地址的名称由 `name` 属性的字符串定义。|
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [云服务（经典）配置架构](schema-cscfg-file.md)

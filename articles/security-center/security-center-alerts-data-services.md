@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 7/24/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 1cafd8a3c766e57aed67634d7da8498c9a6ee120
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f33b69ac443a1bb8f6b7d6e1b19f2f077bf38f58
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295825"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501485"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Azure 安全中心中的数据服务威胁检测
 
@@ -27,6 +27,7 @@ ms.locfileid: "68295825"
 
 * [Azure SQL 数据库和 SQL 数据仓库](#data-sql)
 * [Azure 存储](#azure-storage)
+* [Cosmos DB](#cosmos-db)
 
 ## Azure SQL 数据库和 SQL 数据仓库<a name="data-sql"></a>
 
@@ -46,7 +47,7 @@ SQL 威胁检测可检测异常活动, 指示对访问或利用数据库的异�
 ## Azure 存储<a name="azure-storage"></a>
 
 >[!NOTE]
-> Azure 存储的高级威胁防护目前仅适用于 Blob 存储。 
+> Azure 存储的高级威胁防护目前仅适用于 Blob 存储。
 
 Azure 存储高级威胁防护提供额外的一层安全智能，用于检测试图访问或利用存储帐户的异常或可能有害的企图。 利用这一层保护, 你无需成为安全专家, 就能解决威胁, 并管理安全监视系统。
 
@@ -70,3 +71,14 @@ Azure 存储高级威胁防护提供额外的一层安全智能，用于检测�
 >Azure 存储的高级威胁防护当前在 Azure 政府版和主权云区域中不可用。
 
 有关存储警报的详细信息, 请参阅[Azure 存储的高级威胁防护](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)一文, 并查看保护警报部分。
+
+## Cosmos DB<a name="cosmos-db"></a>
+
+以下警报由异常和可能有害的访问或利用 Azure Cosmos DB 帐户的尝试生成:
+
+|警报|描述|
+|---|---|
+|**从异常位置访问**|指示 Cosmos DB 帐户的访问模式发生更改。 用户已从不熟悉的 IP 地址 (与最近的活动) 访问了此帐户。 攻击者已访问 Cosmos DB 帐户, 或者合法用户已从新的和不正常的地理位置访问了 Cosmos DB 帐户。 例如: 来自远程的新应用程序或开发人员维护。|
+|**异常数据渗透**|指示 Cosmos DB 帐户的数据提取模式发生了更改。 与最近的活动相比, 有人提取了异常的数据量。 攻击者从 Cosmos DB 数据库中提取了大量数据。 例如: data 渗透/泄露、未经授权的数据传输。 或者合法用户或应用程序已从容器中提取了异常数据量。 例如: 维护备份活动。|
+
+有关详细信息, 请参阅[Azure Cosmos DB 的高级威胁防护](../cosmos-db/cosmos-db-advanced-threat-protection.md)。

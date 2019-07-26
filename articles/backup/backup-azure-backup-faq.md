@@ -1,19 +1,18 @@
 ---
 title: Azure 备份常见问题解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
-services: backup
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: aecad4273493cd573935c78cae51bd0f59461e2e
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: c60b2bfae0d974d454c03b7eba655cbdacab5943
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806969"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466687"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 本文回答有关 Azure 备份服务的常见问题。
@@ -40,7 +39,7 @@ ms.locfileid: "67806969"
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>是否可以对备份到恢复服务保管库的 VM 执行项级别还原 (ILR)？
 - 由 Azure VM 备份支持的 Azure VM 支持 ILR。 有关详细信息，请参见[文章](backup-azure-restore-files-from-vm.md)
-- ILR 不由 Azure 备份服务器或 System Center DPM 备份的在线恢复点的本地 Vm 的支持。
+- Azure 备份服务器或 System Center DPM 备份的本地 Vm 的在线恢复点不支持 ILR。
 
 
 ## <a name="azure-backup-agent"></a>Azure 备份代理
@@ -99,7 +98,7 @@ Azure VM | 16 个数据磁盘<br/><br/> 数据磁盘最大为 4095 GB
 
 **数据源** | **详细信息**
 --- | ---
-数据量(Volume) |从正在备份的单个卷 VM 备份的数据量。
+卷 |从正在备份的单个卷 VM 备份的数据量。
 SQL Server 数据库 |正在备份的单个 SQL 数据库的大小。
 SharePoint | 正在备份的 SharePoint 场中内容和配置数据库的总和。
 Exchange |正在备份 Exchange 服务器中所有 Exchange 数据库的总和。
@@ -144,7 +143,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 典型的长期保留点产品将备份数据存储为完整的点。
 
 - 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。
-- 增量复制为高效  存储，但要求还原数据链，这会影响恢复时间
+- 增量复制为高效存储，但要求还原数据链，这会影响恢复时间
 
 Azure 备份存储体系结构提供这两个领域的最佳产品，它以最佳方式用于快速恢复的数据存储中，产生较低的存储成本。 这种方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 了解有关[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的更多信息。
 
@@ -154,7 +153,7 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 - 了解有关[备份和保留](./backup-overview.md#backup-and-retention)的更多信息。
 
 
-### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>能否恢复备份到 Azure 的数据多少次？
+### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>可以在多长时间后恢复备份到 Azure 的数据？
 从 Azure 备份执行恢复的次数没有限制。
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>还原数据时，Azure 的出口流量是否需要付费？

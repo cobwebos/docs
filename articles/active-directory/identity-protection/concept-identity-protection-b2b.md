@@ -4,19 +4,19 @@ description: 对 B2B 用户使用 Identity Protection 其工作原理和已知�
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32b664fcf12db4e75afc5ab32c7f9868d4d7870f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 9128a747dcd42ada2feefd72ad8bfebdf7bfb25a
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278562"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334042"
 ---
 # <a name="identity-protection-and-b2b-users"></a>标识保护和 B2B 用户
 

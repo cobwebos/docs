@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 05/28/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1ebb2fd77830074648a580dddad98e05e10c9c75
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 1dbbb6e7bd88e08520225515c422529dc260e1b2
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850020"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377370"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -25,9 +25,9 @@ Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是在类及�
 
 Azure Functions 基于 ASP.NET Core 依赖项注入功能。 在 Azure Functions 应用中使用 DI 功能之前，建议了解 [ASP.NET Core 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)的服务、生存期和设计模式。
 
-对于依赖关系注入的支持从 Azure Functions 1.x 开始。
+对依赖项注入的支持始于 Azure Functions 2.x。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 必须先安装以下 NuGet 包，然后才能使用依赖项注入：
 
@@ -35,13 +35,13 @@ Azure Functions 基于 ASP.NET Core 依赖项注入功能。 在 Azure Functions
 
 - [Microsoft.NET.Sdk.Functions 包](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/)版本 1.0.28 或更高版本
 
-- 可选：仅在启动时注册 HttpClient 所需的[Microsoft extension](https://www.nuget.org/packages/Microsoft.Extensions.Http/)
+- 可选：[Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) 仅在启动时注册 HttpClient 时才需要
 
 ## <a name="register-services"></a>注册服务
 
 若要注册服务，可以创建一个方法来配置组件并将组件添加到 `IFunctionsHostBuilder` 实例。  Azure Functions 主机创建 `IFunctionsHostBuilder` 的实例并将其直接传递到你的方法。
 
-若要注册方法，请添加 `FunctionsStartup` 程序集属性来指定在启动期间使用的类型名称。 此外, 代码还在 Nuget 上引用[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的预发布版本。
+若要注册方法，请添加 `FunctionsStartup` 程序集属性来指定在启动期间使用的类型名称。 此外，代码还引用了 Nuget 上 [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 的预发布版本。
 
 ```csharp
 using System;
@@ -94,7 +94,7 @@ namespace MyNamespace
         public HttpTrigger(IMyService service, IHttpClientFactory httpClientFactory)
         {
             _service = service;
-            _client = httpClientFactory.CreateClient();;
+            _client = httpClientFactory.CreateClient();
         }
 
         [FunctionName("GetPosts")]

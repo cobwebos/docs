@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 628a96c4e912341226d67a7ed8f241194e7b7825
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5a3ba8c25107317e7c47ee358f9a6ebe7d4556f
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080038"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479117"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>实体类型及其在 LUIS 中的目的
 
@@ -44,10 +44,10 @@ ms.locfileid: "67080038"
 
 实体是要从话语中提取的数据。 可以是姓名、日期、产品名称或任何词组。 
 
-|话语|实体|数据|
+|话语|实体|Data|
 |--|--|--|
-|购买 3 张到纽约的机票|预生成的数字<br>Location.Destination|3<br>纽约|
-|购买 3 月 5 日从纽约到伦敦的机票|Location.Origin<br>Location.Destination<br>预生成的 datetimeV2|纽约<br>伦敦<br>2018 年 3 月 5 日|
+|购买 3 张到纽约的机票|预生成的数字<br>Location.Destination|3<br>New York|
+|购买 3 月 5 日从纽约到伦敦的机票|Location.Origin<br>Location.Destination<br>预生成的 datetimeV2|New York<br>伦敦<br>2018 年 3 月 5 日|
 
 ## <a name="entities-are-optional-but-highly-recommended"></a>实体是可选的（但强烈建议使用）
 
@@ -94,7 +94,7 @@ LUIS 提供许多类型的实体。 请根据数据的提取方式以及提取�
 
 提取实体后，可将实体数据表示为单个信息单元，或者将它与其他实体相结合，构成客户端应用程序可以使用的信息单元。
 
-|机器学习|可以标记|教程|示例<br>响应|实体类型|目的|
+|机器学习|可以标记|教程|示例<br>响应|实体类型|用途|
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**复合**](#composite-entity)|实体的分组，不考虑实体类型。|
 |||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**列表**](#list-entity)|使用文本完全匹配法提取的项列表及其同义词。|
@@ -103,91 +103,47 @@ LUIS 提供许多类型的实体。 请根据数据的提取方式以及提取�
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**正则表达式**](#regular-expression-entity)|使用正则表达式来匹配文本。|
 |✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**简单**](#simple-entity)|包含单词或短语中的单个概念。|
 
-只有机器学习的内容的实体需要标记的示例语音样本。 机器学习到的实体最适合通过[终结点查询](luis-concept-test.md#endpoint-testing)和[查看终结点话语](luis-how-to-review-endoint-utt.md)进行测试。 
+只需在示例话语中标记机器学习实体。 机器学习到的实体最适合通过[终结点查询](luis-concept-test.md#endpoint-testing)和[查看终结点话语](luis-how-to-review-endoint-utt.md)进行测试。 
 
 需要在[模式](luis-how-to-model-intent-pattern.md)模板示例而不是意向用户示例中标记 Pattern.any 实体。 
 
 混合实体使用实体检测方法的组合。
 
-## <a name="machine-learned-entities-use-context"></a>机器学习的内容的实体使用上下文
+## <a name="machine-learned-entities-use-context"></a>计算机学习的实体使用上下文
 
-将语音样本中的上下文从学习，机器学习的内容的实体。 这使得放置的变体的示例查询文本中有意义。 
+计算机学习的实体从查询文本中的上下文学习。 这会使最谈话的位置变体变得很重要。 
 
-## <a name="non-machine-learned-entities-dont-use-context"></a>非机器学习实体不使用上下文
+## <a name="non-machine-learned-entities-dont-use-context"></a>非计算机获知实体不使用上下文
 
-以下非-机器学习的内容匹配的实体时实体做考虑需要查询文本上下文： 
+当对实体进行匹配时, 以下非计算机学习实体不会将查询文本上下文纳入考虑范围: 
 
 * [预生成实体](#prebuilt-entity)
-* [正则表达式的实体](#regular-expression-entity)
+* [Regex 实体](#regular-expression-entity)
 * [列表实体](#list-entity) 
 
-这些实体不需要标签或定型模型。 一旦添加或配置实体，提取实体。 弊端是，这些实体可以 overmatched 好，其中如果上下文考虑在内，则匹配将不进行了。 
+这些实体不需要标签或定型模型。 添加或配置实体后, 将提取实体。 其缺点在于, 这些实体可以是 overmatched 的, 如果已考虑到上下文, 则不会进行匹配。 
 
-发生这种情况列表实体与新模型上频繁。 生成和测试您的模型与列表实体但时您将模型发布并从终结点收到的查询，您意识到您的模型 overmatching 上下文所致。 
+这种情况下, 经常在新模型上列出实体。 您可以使用 list 实体生成和测试模型, 但当您发布模型并从终结点接收查询时, 由于缺少上下文, 因此会 overmatching 模型。 
 
-如果你想要匹配单词或短语，并考虑到上下文，您有两个选项。 第一种是使用简单实体搭配短语列表。 短语列表不会用于匹配，但改为将帮助信号相对相似的单词 （可互换列表）。 如果必须完全匹配而不是短语列表的变体，使用列表实体与一个角色，如下所述。
+如果要匹配单词或短语并将上下文纳入考虑范围, 可以使用两个选项。 第一种方式是使用与短语列表配对的简单实体。 短语列表将不用于匹配, 但会帮助发出相对相似的字词 (可互换列表)。 如果必须完全匹配而不是短语列表的变体, 请使用具有角色的列表实体, 如下所述。
 
-### <a name="context-with-non-machine-learned-entities"></a>使用机器学习实体上下文
+### <a name="context-with-non-machine-learned-entities"></a>具有非计算机学习实体的上下文
 
-如果所需的查询文本以进行非机器学习实体上下文，则应使用[角色](luis-concept-roles.md)。
+如果希望查询文本的上下文对非计算机学习的实体而言很重要, 则应使用[角色](luis-concept-roles.md)。
 
-如果您有机器学习的实体，如[预生成的实体](#prebuilt-entity)，[正则表达式](#regular-expression-entity)实体或[列表](#list-entity)超出所需的实例匹配的实体，请考虑创建一个实体具有两个角色。 一个角色将捕获的要查找的内容，一个角色将捕获不查找的内容。 这两个版本都需要标记为中的示例查询文本。  
+如果你有一个非计算机学习实体, 如[预生成实体](#prebuilt-entity)、 [regex](#regular-expression-entity)实体或[列表](#list-entity)实体 (在你想要的实例之外进行匹配), 请考虑创建一个具有两个角色的实体。 一个角色将捕获你要查找的内容, 一个角色将捕获你未查找的内容。 这两个版本都需要标记为示例最谈话。  
 
 ## <a name="composite-entity"></a>复合实体
 
-复合实体由组成的其他实体，如预生成的实体，简单，正则表达式和列表实体。 各种单独的实体构成整个实体。 
-
-如果数据具有以下特征，则非常适合使用此实体：
-
-* 彼此相关。 
-* 在使用陈述的情况下彼此相关。
-* 使用各种实体类型。
-* 需要由客户端应用程序作为一个信息单元进行分组和处理。
-* 包含需要机器学习的各种用户话语。
-
-![复合实体](./media/luis-concept-entities/composite-entity.png)
-
-[教程](luis-tutorial-composite-entity.md)<br>
-[实体的 JSON 响应示例](luis-concept-data-extraction.md#composite-entity-data)<br>
+[复合实体](reference-entity-composite.md)由其他实体 (例如预生成实体、简单、正则表达式和列表实体) 组成。 各种单独的实体构成整个实体。 
 
 ## <a name="list-entity"></a>列表实体
 
-列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议  。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。 
-
-如果文本数据具有以下特征，则非常适合使用该实体：
-
-* 是已知的集。
-* 不经常更改。 如果需要经常更改的列表或者想要自助展开的列表，提升的短语列表的简单实体是更好的选择。 
-* 此集不超出此实体类型的最大 LUIS [边界](luis-boundaries.md)。
-* 话语中的文本是同义项或规范名称的完全匹配。 LUIS 不会使用除文本完全匹配项之外的列表。 模糊匹配、 区分大小写属性、 词干分析、 复数形式和其他变体未解析列表实体中。 若要管理变体，请考虑使用带有可选文本语法的[模式](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance)。
-
-![列表实体](./media/luis-concept-entities/list-entity.png)
-
-[教程](luis-quickstart-intent-and-list-entity.md)<br>
-[实体的 JSON 响应示例](luis-concept-data-extraction.md#list-entity-data)
+[列表实体](reference-entity-list.md)表示固定的、封闭的相关单词集及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。 
 
 ## <a name="patternany-entity"></a>Pattern.any 实体
 
-Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中使用，用于标记实体的起始和结束位置。  
-
-在以下情况下，非常适合使用该实体：
-
-* 实体的末尾可能与话语的其余文本相混淆。 
-[教程](luis-tutorial-pattern.md)<br>
-[实体的 JSON 响应示例](luis-concept-data-extraction.md#patternany-entity-data)
-
-**示例**  
-假设某个客户端应用程序需要基于标题搜索书籍，则 pattern.any 会提取完整的标题。 一个使用 pattern.any 进行这种书籍搜索的模板话语是 `Was {BookTitle} written by an American this year[?]`。 
-
-在下表中，每行包含话语的两个版本。 最上面的话语是 LUIS 最初看到的话语，其中，书籍的开头和末尾部分并不明确。 最下面的话语表明在实施用于提取的模式后，LUIS 如何知道书籍的标题。 
-
-|话语|
-|--|
-|《错把太太当成帽子的男人与其他医疗故事》是某位美国人在今年撰写的吗？<br><br>《错把太太当成帽子的男人与其他医疗故事》是某位美国人在今年撰写的吗？ |
-|《在宽大睡衣中半梦半睡》是某位美国人在今年撰写的吗？<br><br>《在宽大睡衣中半梦半睡》是某位美国人在今年撰写的吗？ |
-|《小说：柠檬蛋糕的特种忧伤》是某位美国人在今年撰写的吗？<br><br>《小说：柠檬蛋糕的特种忧伤》  是某位美国人在今年撰写的吗？|
-|《口袋里的毛怪！》 是某位美国人在今年撰写的吗？<br><br>《口袋里的毛怪！》  是某位美国人在今年撰写的吗？|
-||
+[Pattern。 any](reference-entity-pattern-any.md)是仅在模式的模板查询文本中使用的可变长度占位符, 用于标记实体开始和结束的位置。  
 
 ## <a name="prebuilt-entity"></a>预生成实体
 
@@ -210,7 +166,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 在 LUIS 门户中，如果标记了预生成实体而非你的自定义实体，则可以使用多种方法来纠正此问题。
 
-“始终”  会返回添加到应用的预生成实体，即使话语应当提取同一文本的自定义实体。 
+“始终”会返回添加到应用的预生成实体，即使话语应当提取同一文本的自定义实体。 
 
 #### <a name="change-tagged-entity-in-example-utterance"></a>更改示例话语中标记的实体
 
@@ -228,68 +184,36 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 1. 删除示例话语。
 1. 重新训练应用。 
 1. 仅将是实体的字词或短语（标记为预生成实体）作为完整的示例话语添加回来。 字词或短语仍然标记为预生成实体。 
-1. 在“意向”  页面上的示例话语中选择实体，更改为你的自定义实体并重新训练。 这应当会阻止 LUIS 将此确切文本在使用该文本的任何示例话语中标记为预生成实体。 
+1. 在“意向”页面上的示例话语中选择实体，更改为你的自定义实体并重新训练。 这应当会阻止 LUIS 将此确切文本在使用该文本的任何示例话语中标记为预生成实体。 
 1. 将整个原始示例话语添加回意向。 应当会继续标记自定义实体而非预生成实体。 如果未标记自定义实体，则你需要在话语中添加该文本的更多示例。
 
 #### <a name="remove-prebuilt-entity-to-fix-tagging"></a>删除预生成实体来纠正标记
 
 1. 从应用中删除预生成实体。 
-1. 在“意向”  页面上，在示例话语中标记自定义实体。
+1. 在“意向”页面上，在示例话语中标记自定义实体。
 1. 将应用定型。
 1. 将预生成实体添加回应用并训练应用。 此纠正假定预生成实体不是复合实体的一部分。
 
 ## <a name="regular-expression-entity"></a>正则表达式实体 
 
-正则表达式最适合用于原始话语文本。 不区分大小写，并忽略区域性变体。  完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。 如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 使用部分但并非全部 [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) 库。 
+[正则表达式实体](reference-entity-regular-expression.md)基于您提供的正则表达式模式提取实体。
 
-在以下情况下，非常适合使用该实体：
+## <a name="simple-entity"></a>简单实体
 
-* 数据的格式一致，并且其任何变体也是一致的。
-* 正则表达式不需要 2 个级别以上的嵌套。 
-
-![正则表达式实体](./media/luis-concept-entities/regex-entity.png)
-
-[教程](luis-quickstart-intents-regex-entity.md)<br>
-[实体的 JSON 响应示例](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
-
-正则表达式可能与您希望匹配更匹配。 此示例是匹配如数值字`one`和`two`。 例如，以下正则表达式，与匹配`one`以及其他数字：
-
-```javascript
-(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
-
-此正则表达式的表达式还匹配任何单词，如结尾这些数字`phone`。 若要解决此类问题，请确保正则表达式匹配将帐户词的边界。 以下正则表达式中使用正则表达式要用于此示例中的词的边界：
-
-```javascript
-\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
-```
-
-## <a name="simple-entity"></a>简单实体 
-
-简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 由于简单实体采用概括性的名称，例如公司名称、产品名称或其他类别的名称，因此，在使用简单实体时，请添加一个[短语列表](luis-concept-feature.md)，以提升所用名称的信号。 
-
-在以下情况下，非常适合使用该实体：
-
-* 数据格式不一致，但指示相同的事物。 
-
-![简单实体](./media/luis-concept-entities/simple-entity.png)
-
-[教程](luis-quickstart-primary-and-secondary-data.md)<br/>
-[实体响应示例](luis-concept-data-extraction.md#simple-entity-data)<br/>
-
+[简单实体](reference-entity-simple.md)是一种机器学习值。 它可以是一个单词或短语。
 ## <a name="entity-limits"></a>实体限制
 
 查看[限制](luis-boundaries.md#model-boundaries)，了解可添加到模型中的每种类型的实体的数量。
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>如果所需实体数超过最大实体数 
 
-您可能需要使用复合实体与实体角色结合使用。
+可能需要将复合实体与实体角色结合使用。
 
 复合实体表示整体的一部分。 例如，名为 PlaneTicketOrder 的复合实体可能具有子实体 Airline、Destination、DepartureCity、DepartureDate 和 PlaneTicketClass。
 
 LUIS 还提供非机器学习的列表实体类型，可让 LUIS 应用指定固定的值列表。 请参阅 [LUIS 边界](luis-boundaries.md)参考内容，查看列表实体类型的限制。 
 
-如果您已考虑过这些实体，并仍需要更多限制，请联系支持。 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”  。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
+如果已考虑这些实体，但所需仍超过限制，请与支持部门联系。 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,7 +2,7 @@
 title: 为 Azure SQL 数据仓库中的表编制索引 | Microsoft Azure
 description: 在 Azure SQL 数据仓库中为表编制索引的建议和示例。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 158b229c2c45a14ed0fd5433d1903eca92f32401
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d51bd6906a8299a25fe50ca817b1a2b6082ab91
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851653"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479838"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>为 SQL 数据仓库中的表编制索引
 
@@ -154,7 +154,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 运行查询后就可以开始查看数据并分析结果。 下表解释了要在行组分析中查看的内容。
 
-| 列 | 如何使用此数据 |
+| 柱形图 | 如何使用此数据 |
 | --- | --- |
 | [table_partition_count] |如果表被分区，那么你可能希望看到更高的打开的行组的计数。 在理论上分布式架构中每个分区具有一个与之相关联的打开的行组。 请在分析中考虑这一点。 可以通过完全删除分区来优化已分区的小型表，因为这样可以改进压缩。 |
 | [row_count_total] |表的行总数。 例如，可以使用此值来计算处于压缩状态的行的百分比。 |
@@ -200,7 +200,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 - 插入某行会将该行添加到名为增量行组的内部行存储表中。 在增量行组已满且标记为已关闭之前，插入的行不会转换成列存储。 达到 1,048,576 个行的容量上限后，行组会关闭。
 - 更新采用列存储格式的行将依次作为逻辑删除和插入进行处理。 插入的行可以存储在增量存储中。
 
-超出每个分区对齐分布区的 102,400 行批量阈值的批次更新和插入操作将直接写入列存储格式。 但是，假设在平均分布的情况下，需要在单个操作中修改超过 6.144 百万行才发生这种情况。 如果给定的分区对齐分布的行数少于 102,400 行转到增量存储，并继续保留在那里，直到足够的行已插入、 修改，以关闭行组或重新生成索引。
+超出每个分区对齐分布区的 102,400 行批量阈值的批次更新和插入操作将直接写入列存储格式。 但是，假设在平均分布的情况下，需要在单个操作中修改超过 6.144 百万行才发生这种情况。 如果给定分区对齐分布区的行数小于 102400, 则这些行将转为到增量存储, 并在插入或修改足够的行以关闭行组或重新生成索引之前停留在该处。
 
 ### <a name="small-or-trickle-load-operations"></a>小型或渗透负载操作
 
@@ -210,7 +210,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 ### <a name="too-many-partitions"></a>过多的分区
 
-另一个考虑因素是分区对聚集列存储表的影响。  分区之前，SQL 数据仓库已将数据分散到 60 个数据库。  进一步分区会分割数据。  如果将分区，则要考虑的是**每个**分区必须至少有 100 万行，使用聚集列存储索引才有益。  如果将表分割成 100 个分区，则表必须至少包含 60 亿行才能受益于聚集列存储索引 (60 个分布区*100 个分区*1 百万行)。 如果包含 100 个分区的表没有 60 亿行，请减少分区数目，或考虑改用堆表。
+另一个考虑因素是分区对聚集列存储表的影响。  分区之前，SQL 数据仓库已将数据分散到 60 个数据库。  进一步分区会分割数据。  如果将分区，则要考虑的是**每个**分区必须至少有 100 万行，使用聚集列存储索引才有益。  如果将表分区为100个分区, 则表需要至少6000000000行才能受益于聚集列存储索引 (60 分布*100 分区*1000000 行)。 如果包含 100 个分区的表没有 60 亿行，请减少分区数目，或考虑改用堆表。
 
 在表中加载一些数据后，请遵循以下步骤来识别并重建聚集列存储索引质量欠佳的表。
 
@@ -228,7 +228,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>步骤 2：使用更高的用户资源类重建聚集列存储索引
 
-以用户身份登录步骤 1 中 (例如 LoadUser)，这是现在使用更高的资源类，并执行 ALTER INDEX 语句。 请确保此用户对重建索引的表拥有 ALTER 权限。 这些示例演示如何重新生成整个列存储索引或如何重建单个分区。 对于大型表，一次重建一个分区的索引比较合适。
+以步骤1中的用户身份登录 (例如 LoadUser), 该用户现在使用更高的资源类, 并执行 ALTER INDEX 语句。 请确保此用户对重建索引的表拥有 ALTER 权限。 这些示例演示如何重新生成整个列存储索引或如何重建单个分区。 对于大型表，一次重建一个分区的索引比较合适。
 
 或者，可以[使用 CTAS](sql-data-warehouse-develop-ctas.md) 将表复制到新表，而不要重建索引。 哪种方法最合适？ 如果数据量很大，CTAS 的速度通常比 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql) 要快。 对于少量的数据，ALTER INDEX 更容易使用，不需要换出表。
 

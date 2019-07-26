@@ -1,19 +1,18 @@
 ---
 title: 使用 PowerShell 将 Windows Server 备份到 Azure
 description: 了解如何使用 PowerShell 部署和管理 Azure 备份
-services: backup
 author: pvrk
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: shivamg
-ms.openlocfilehash: f29acfc58c281622973f2f16ea36763a78751ed0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5533b52ab984510b0e860f7fdfded8ac9005e5a8
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704916"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465240"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -200,7 +199,7 @@ Server properties updated successfully.
 
 发送到 Azure 备份的备份数据会加密，以保护数据的机密性。 加密通行短语是在还原时用于解密数据的“密码”。
 
-必须在 Azure 门户的“恢复服务保管库”  部分的“设置”   > “属性”   > “安全 PIN”  下选择“生成”  来生成一个安全 PIN。 然后，将其用作命令中的 `generatedPIN`：
+必须在 Azure 门户的“恢复服务保管库”部分的“设置” > “属性” > “安全 PIN”下选择“生成”来生成一个安全 PIN。 然后，将其用作命令中的 `generatedPIN`：
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force
@@ -393,7 +392,7 @@ PolicyState     : Valid
 ```
 ## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>在 MABS 代理中备份 Windows Server 系统状态
 
-本部分介绍了用于在 MABS 代理中设置系统状态的 PowerShell 命令
+本部分介绍用于在 MABS 代理中设置系统状态的 PowerShell 命令
 
 ### <a name="schedule"></a>计划
 ```powershell
@@ -716,7 +715,7 @@ The recovery operation completed successfully.
 
 围绕 Azure 备份代理、策略和数据源的所有管理工作都可通过 Azure PowerShell 远程完成。 要远程管理的计算机需要经过适当的准备。
 
-默认情况下，WinRM 服务已配置为手动启动。 必须将启动类型设置为“自动”，并且应该启动该服务  。 若要确认 WinRM 服务正在运行，“状态”属性的值应该是“*正在运行*”。
+默认情况下，WinRM 服务已配置为手动启动。 必须将启动类型设置为“自动”，并且应该启动该服务。 若要确认 WinRM 服务正在运行，“状态”属性的值应该是“*正在运行*”。
 
 ```powershell
 Get-Service -Name WinRM

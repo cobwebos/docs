@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights OpenCensus 分布式跟踪本地转发器 （预览版） |Microsoft docs
+title: Azure 应用程序 Insights OpenCensus 分布式跟踪本地转发器 (预览版) |Microsoft 文档
 description: 将 Python 和 Go 等语言的 OpenCensus 分布式跟踪与范围转发到 Azure Application Insights
 services: application-insights
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: a7efe663a75fa29a31e7157c5eab24c2973a3758
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa64755b636005f4ed8ea5c074ffaada51fb8dd9
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699298"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348150"
 ---
 # <a name="local-forwarder-preview"></a>本地转发器（预览版）
 
@@ -57,9 +57,9 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
         
      ![本地转发器服务的屏幕截图](./media/opencensus-local-forwarder/002-services.png)
 
-3. **右键单击**新的本地转发器并选择“启动”。  现在，该服务将进入运行状态。
+3. **右键单击**新的本地转发器并选择“启动”。 现在，该服务将进入运行状态。
 
-4. 默认情况下，创建的服务不提供任何恢复操作。 可以**单击右键**，并选择“属性” > “恢复”来配置发生服务故障时的自动响应方式。  
+4. 默认情况下，创建的服务不提供任何恢复操作。 可以**单击右键**，并选择“属性” > “恢复”来配置发生服务故障时的自动响应方式。
 
     或者，如果你偏向于以编程方式设置发生故障时的自动恢复选项，可以使用：
 
@@ -69,7 +69,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 5. 在 ``Microsoft.LocalForwarder.WindowsServiceHost.exe`` 文件所在的同一位置（在本示例中为 ``C:\LF-WindowsServiceHost``），有一个名为 ``LocalForwarder.config`` 的文件。 这是一个基于 XML 的文件，可用于调整本地转发器的配置，并指定分布式跟踪数据要转发到的 Application Insights 资源的检测密钥。 
 
-    通过编辑 ``LocalForwarder.config`` 文件添加检测密钥后，请务必重启“本地转发器服务”，使更改生效。 
+    通过编辑 ``LocalForwarder.config`` 文件添加检测密钥后，请务必重启“本地转发器服务”，使更改生效。
     
 6. 若要确认所需的设置是否已准备就绪并且本地转发器正在按预期侦听跟踪数据，请检查 ``LocalForwarder.log`` 文件。 在该文件的底部，应会看到下图所示的结果：
 
@@ -154,7 +154,7 @@ systemctl start localforwarder
 ### <a name="self-hosting"></a>自托管
 本地转发器还作为 .NET Standard NuGet 包分发，可将它托管在你自己的 .NET 应用程序中。
 
-```C#
+```csharp
 using Library;
 ...
 Host host = new Host();

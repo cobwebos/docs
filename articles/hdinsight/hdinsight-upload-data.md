@@ -8,31 +8,31 @@ ms.service: hdinsight
 ms.custom: hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: fceea6273f00fdf16d8934533f08bc3494795bc4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f75933940aa97606ca33ab6bfc18fe5871811eef
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433288"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441970"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Apache Hadoop 作业的数据
 
-Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Storage（Gen1 和 Gen2）的功能完备的 Hadoop 分布式文件系统 (HDFS)。 Azure 存储以及 Data Lake Storage Gen1 和 Data Lake Storage Gen2 设计为一个 HDFS 扩展，为客户提供无缝体验。 它们通过启用 Hadoop 生态系统中的整套组件以直接操作其管理的数据。 Azure 存储、Data Lake Storage Gen1 和 Data lake Storage Gen2 是独特的文件系统，并且已针对数据的存储和计算进行了优化。 使用 Azure 存储的优点的信息，请参阅[将 Azure 存储用于 HDInsight](hdinsight-hadoop-use-blob-storage.md)，[与 HDInsight 使用的数据湖存储 Gen1](hdinsight-hadoop-use-data-lake-store.md)，和[与使用数据湖存储 Gen2HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Storage（Gen1 和 Gen2）的功能完备的 Hadoop 分布式文件系统 (HDFS)。 Azure 存储以及 Data Lake Storage Gen1 和 Data Lake Storage Gen2 设计为一个 HDFS 扩展，为客户提供无缝体验。 它们通过启用 Hadoop 生态系统中的整套组件以直接操作其管理的数据。 Azure 存储、Data Lake Storage Gen1 和 Data lake Storage Gen2 是独特的文件系统，并且已针对数据的存储和计算进行了优化。 有关使用 Azure 存储的好处的信息, 请参阅[将 Azure 存储与 hdinsight 配合](hdinsight-hadoop-use-blob-storage.md)使用、[将 Data Lake Storage Gen1 与 hdinsight](hdinsight-hadoop-use-data-lake-store.md)配合使用和[将 Data Lake Storage Gen2 与 hdinsight 配合使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 在开始下一步之前，请注意以下要求：
 
-* 一个 Azure HDInsight 群集。 有关说明，请参阅[开始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)或[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+* 一个 Azure HDInsight 群集。 有关说明，请参阅 [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)或[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 * 了解以下文章：
 
-    - [使用 Azure 存储与 HDInsight](hdinsight-hadoop-use-blob-storage.md)
+    - [将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)
     - [将 Data Lake Storage Gen1 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)
     - [将 Data Lake Storage Gen2 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
 ## <a name="upload-data-to-azure-storage"></a>将数据上传到 Azure 存储
 
-## <a name="utilities"></a>实用程序
+## <a name="utilities"></a>公用事业
 Microsoft 提供以下实用工具用于操作 Azure 存储：
 
 | Tool | Linux | OS X | Windows |
@@ -56,12 +56,12 @@ Microsoft 提供以下实用工具用于操作 Azure 存储：
 连接之后，可以使用以下语法将文件上传到存储。
 
 ```bash
-hadoop -copyFromLocal <localFilePath> <storageFilePath>
+hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 ```
 
 例如： `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
-由于 HDInsight 的默认文件系统在 Azure 存储中，/example/data.txt 实际是在 Azure 存储中。 也可以将该文件表示为：
+由于 HDInsight 的默认文件系统位于 Azure 存储中, 因此/example/data/data.txt 实际位于 Azure 存储中。 也可以将该文件表示为：
 
     wasbs:///example/data/data.txt
 
@@ -77,7 +77,7 @@ hadoop -copyFromLocal <localFilePath> <storageFilePath>
 ## <a name="graphical-clients"></a>图形客户端
 某些应用程序还提供可配合 Azure 存储空间使用的图形界面。 下表是其中一些应用程序的列表：
 
-| Client | Linux | OS X | Windows |
+| 客户端 | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [用于 HDInsight 的 Microsoft Visual Studio 工具](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
 | [Azure 存储空间资源管理器](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
@@ -103,7 +103,7 @@ Azure 数据工厂服务是完全托管的服务，可将数据存储、数据�
 ### <a id="sqoop"></a>Apache Sqoop
 Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工具。 可以使用此工具将数据从关系数据库管理系统 (RDBMS)（如 SQL Server、MySQL 或 Oracle）中导入到 Hadoop 分布式文件系统 (HDFS)，在 Hadoop 中使用 MapReduce 或 Hive 转换数据，然后回过来将数据导出到 RDBMS。
 
-有关详细信息，请参阅[将 sqoop 与 HDInsight 配合](hadoop/hdinsight-use-sqoop.md)。
+有关详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用](hadoop/hdinsight-use-sqoop.md)。
 
 ### <a name="development-sdks"></a>开发 SDK
 还可以使用 Azure SDK 通过以下编程语言来访问 Azure 存储：
@@ -117,7 +117,7 @@ Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工
 
 有关安装 Azure SDK 的详细信息，请参阅 [Azure 下载](https://azure.microsoft.com/downloads/)
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 ### <a id="storageexception"></a>在 Blob 上编写时的存储异常
 **症状**：使用 `hadoop` 或 `hdfs dfs` 命令在 HBase 群集上编写大于或等于 ~12 GB 的文件时，可能会遇到以下错误：
 
@@ -151,11 +151,11 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 还可使用 Apache Ambari 以全局方式增加 `fs.azure.write.request.size` 的值。 可使用以下步骤在 Ambari Web UI 中更改该值：
 
-1. 在浏览器中，转到群集的 Ambari Web UI。 这是`https://CLUSTERNAME.azurehdinsight.net`，其中`CLUSTERNAME`是群集的名称。
+1. 在浏览器中，转到群集的 Ambari Web UI。 这是`https://CLUSTERNAME.azurehdinsight.net`, 其中`CLUSTERNAME`是群集的名称。
 
     出现提示时，输入群集的管理员名称和密码。
-2. 在屏幕左侧选择“HDFS”  ，并选择“配置”  选项卡。
-3. 在“筛选...”  字段中输入 `fs.azure.write.request.size`。 这会在页面中间显示字段和当前值。
+2. 在屏幕左侧选择“HDFS”，并选择“配置”选项卡。
+3. 在“筛选...”字段中输入 `fs.azure.write.request.size`。 这会在页面中间显示字段和当前值。
 4. 将值从 262144 (256 KB) 更改为新的值。 例如，4194304 (4 MB)。
 
     ![通过 Ambari Web UI 更改值的图像](./media/hdinsight-upload-data/hbase-change-block-write-size.png)

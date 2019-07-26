@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
-ms.openlocfilehash: a5f8735df2b230de2b0ddcdcccff09430bada9e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f33b25112b5c4ee77f1f7d2a419ffb8e926a27d9
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684694"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501363"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 节点类型与虚拟机规模集
 [虚拟机规模集](/azure/virtual-machine-scale-sets)是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 Azure Service Fabric 群集中定义的每个节点类型均设置了独立的规模集。  规模集中每个虚拟机上均通过 Microsoft.Azure.ServiceFabric 虚拟机扩展安装了 Service Fabric 运行时。 可独立增加或减少每个节点类型、更改每个群集节点上运行的 OS SKU、打开不同的端口集，并使用不同的容量指标。
@@ -34,7 +34,7 @@ ms.locfileid: "64684694"
 扩展规模集时，将创建新的实例。 新的规模集实例名称通常是规模集名称加上下一个实例编号。 在本示例中，即 BackEnd_5。
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>将规模集负载均衡器映射到节点类型和规模集
-如果已在 Azure 门户部署群集，或使用了示例 Azure 资源管理器模板，将列出资源组下所有的资源。 可看到每个规模集或节点类型的负载均衡器。 负载均衡器名称使用以下格式：LB-&lt;节点类型名称&gt;  。 例如，下图中显示的 LB-sfcluster4doc-0：
+如果已在 Azure 门户部署群集，或使用了示例 Azure 资源管理器模板，将列出资源组下所有的资源。 可看到每个规模集或节点类型的负载均衡器。 负载均衡器名称使用以下格式：LB-&lt;节点类型名称&gt;。 例如，下图中显示的 LB-sfcluster4doc-0：
 
 ![资源][Resources]
 
@@ -60,6 +60,7 @@ Service Fabric 虚拟机扩展用于将 Service Fabric 启动到 Azure 虚拟机
          "durabilityLevel": "Silver",
          "enableParallelJobs": true,
          "nicPrefixOverride": "[variables('subnet0Prefix')]",
+         "dataPath": "D:\\\\SvcFab",
          "certificate": {
            "commonNames": [
              "[parameters('certificateCommonName')]"
@@ -76,18 +77,19 @@ Service Fabric 虚拟机扩展用于将 Service Fabric 启动到 Azure 虚拟机
 
 | **名称** | **允许的值** | ** --- ** | **指导或简短说明** |
 | --- | --- | --- | --- |
-| name | 字符串 | --- | 扩展的唯一名称 |
+| name | string | --- | 扩展的唯一名称 |
 | type | “ServiceFabricLinuxNode”或“ServiceFabricWindowsNode” | --- | 确定 OS Service Fabric 正启动到 |
 | autoUpgradeMinorVersion | true 或 false | --- | 启用自动升级 SF 运行时次要版本的功能 |
 | publisher | Microsoft.Azure.ServiceFabric | --- | Service Fabric 扩展发布者的名称 |
-| clusterEndpont | 字符串 | --- | 管理终结点的 URI:PORT |
-| nodeTypeRef | 字符串 | --- | nodeType 的名称 |
+| clusterEndpont | string | --- | 管理终结点的 URI:PORT |
+| nodeTypeRef | string | --- | nodeType 的名称 |
 | durabilityLevel | 青铜、白银、黄金、白金 | --- | 允许用于暂停不可变 Azure 基础结构的时间 |
 | enableParallelJobs | true 或 false | --- | 启用计算 ParallelJobs，例如在同一规模集中以并行方式删除 VM 和重启 VM |
-| nicPrefixOverride | 字符串 | --- | 子网前缀，例如“10.0.0.0/24” |
+| nicPrefixOverride | string | --- | 子网前缀，例如“10.0.0.0/24” |
 | commonNames | string[] | --- | 已安装群集证书的公用名 |
-| x509StoreName | 字符串 | --- | 已安装群集证书所在的存储的名称 |
+| x509StoreName | string | --- | 已安装群集证书所在的存储的名称 |
 | typeHandlerVersion | 1.1 | --- | 扩展版本。 建议使用 1.0 经典版扩展来升级到 1.1 |
+| 数据路径 | string | --- | 用于保存 Service Fabric 系统服务和应用程序数据状态的驱动器路径。 
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[“随地部署”功能的概述及其与 Azure 托管群集的比较](service-fabric-deploy-anywhere.md)。

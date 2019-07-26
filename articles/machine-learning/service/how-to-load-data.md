@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0fa60198af66154e0ddc703f90224adf5be89447
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bd60d9f9bee55ef1342fe344e8b4f2f64e313331
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876413"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360975"
 ---
 # <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>用 Azure 机器学习数据准备 SDK 加载和读取数据
 本文介绍使用 Azure 机器学习数据准备 SDK 加载数据的不同方法。  SDK 支持多个数据引入功能，包括：
@@ -68,7 +68,7 @@ dflow = dprep.read_lines(path='./data/text_lines.txt')
 dflow.head(5)
 ```
 
-||折线图|
+||行|
 |----|-----|
 |0|日期\|\|  最低温度\|\|  最高温度|
 |1|2015-07-1 \|\|  -4.1 \|\|  10.0|
@@ -93,29 +93,29 @@ dflow.head(5)
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|-----|
 |0|stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|第|ALABAMA|1|101710|Hale County|10171002158| |
-|2|ALABAMA|1|101710|Hale County|10171002162| |
+|1|阿拉巴马州|1|101710|Hale County|10171002158| |
+|2|阿拉巴马州|1|101710|Hale County|10171002162| |
 
 
 若要在加载过程中排除行，请定义 `skip_rows` 参数。 此参数将跳过加载在 CSV 文件中以降序排列的行（使用基于 1 的索引）。
 
 ```python
 dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
-                          skip_rows=1)
+                       skip_rows=1)
 dflow.head(5)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|
-|0|ALABAMA|1|101710|Hale County|10171002158|29|
-|第|ALABAMA|1|101710|Hale County|10171002162|40 |
+|0|阿拉巴马州|1|101710|Hale County|10171002158|29|
+|1|阿拉巴马州|1|101710|Hale County|10171002162|40 |
 
 运行以下代码，显示列数据类型。
 
 ```python
 dflow.dtypes
 ```
-输出：
+输出:
 
     stnam                     object
     fipst                     object
@@ -134,7 +134,7 @@ dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfi
                           inference_arguments=dprep.InferenceArguments.current_culture())
 dflow.dtypes
 ```
-输出：
+输出:
 
     stnam                      object
     fipst                     float64
@@ -159,19 +159,20 @@ dflow.head(5)
 
 | |Column1|Column2|Column3|Column4|Column5|Column6|Column7|Column8| | |
 |-|-------|-------|-------|-------|-------|-------|-------|-------|-|-|
-|0|无|无|无|无|无|无|无|无|无| |
-|1|无|无|无|无|无|无|无|无|无| |
-|2|无|无|无|无|无|无|无|无|无| |
-|3|Rank|标题|工作室|全球|国内 / %|Column1|海外 / %|Column2|年份^| |
+|0|无|无|无|无|无|None|无|无|无| |
+|1|None|无|无|无|None|无|None|None|无| |
+|2|无|无|None|None|None|None|None|None|无| |
+|3|设置级别|标题|工作室|全球|国内 / %|Column1|海外 / %|Column2|年份^| |
 |4|1|Avatar|Fox|2788|760.5|0.273|2027.5|0.727|2009^|5|
 
 输出显示第二个工作表中的数据在标头前有三个空行。 `read_excel()` 函数包含用于跳过行和使用标头的可选参数。 运行以下代码以跳过前三行，并将第四行用作标头。
 
 ```python
-dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
+dflow = dprep.read_excel(path='./data/excel.xlsx',
+                         sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
 ```
 
-||Rank|标题|工作室|全球|国内 / %|Column1|海外 / %|Column2|年份^|
+||设置级别|标题|工作室|全球|国内 / %|Column1|海外 / %|Column2|年份^|
 |------|------|------|-----|------|-----|-------|----|-----|-----|
 |0|1|Avatar|Fox|2788|760.5|0.273|2027.5|0.727|2009^|
 |1|2|Titanic|Par.|2186.8|658.7|0.301|1528.1|0.699|1997^|
@@ -181,7 +182,8 @@ dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_colu
 若要加载固定宽度的文件, 请指定字符偏移量列表。 始终假定第一列从偏移量零处开始。
 
 ```python
-dflow = dprep.read_fwf('./data/fixed_width_file.txt', offsets=[7, 13, 43, 46, 52, 58, 65, 73])
+dflow = dprep.read_fwf('./data/fixed_width_file.txt',
+                       offsets=[7, 13, 43, 46, 52, 58, 65, 73])
 dflow.head(5)
 ```
 
@@ -195,8 +197,8 @@ dflow.head(5)
 
 ```python
 dflow = dprep.read_fwf('./data/fixed_width_file.txt',
-                          offsets=[7, 13, 43, 46, 52, 58, 65, 73],
-                          header=dprep.PromoteHeadersMode.NONE)
+                       offsets=[7, 13, 43, 46, 52, 58, 65, 73],
+                       header=dprep.PromoteHeadersMode.NONE)
 ```
 
 ||Column1|Column2|Column3|Column4|Column5|Column6|Column7|Column8|Column9|
@@ -228,10 +230,10 @@ dflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
 dflow.head(5)
 ```
 
-| |ProductID|名称|ProductNumber|颜色|StandardCost|ListPrice|Size|重量|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|ThumbNailPhoto|ThumbnailPhotoFileName|rowguid|ModifiedDate| |
+| |ProductID|姓名|ProductNumber|颜色|StandardCost|ListPrice|Size|权重|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|ThumbNailPhoto|ThumbnailPhotoFileName|rowguid|ModifiedDate| |
 |-|---------|----|-------------|-----|------------|---------|----|------|-----------------|--------------|-------------|-----------|----------------|--------------|----------------------|-------|------------|-|
-|0|680|HL Road Frame - 黑色，58|FR-R92B-58|黑色|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00+00:00|无|无|b'GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|43dd68d6-14a4-461f-9069-55309d90ea7e|2008-03-11 |0:01:36.827000+00:00|
-|第|706|HL Road Frame - 红色，58|FR-R92R-58|红色|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00+00:00|无|无|b'GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|9540ff17-2712-4c90-a3d1-8ce5568b2462|2008-03-11 |10:01:36.827000+00:00|
+|0|680|HL Road Frame - 黑色，58|FR-R92B-58|黑色|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00+00:00|None|无|b'GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|43dd68d6-14a4-461f-9069-55309d90ea7e|2008-03-11 |0:01:36.827000+00:00|
+|1|706|HL Road Frame - 红色，58|FR-R92R-58|红色|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00+00:00|None|无|b'GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|9540ff17-2712-4c90-a3d1-8ce5568b2462|2008-03-11 |10:01:36.827000+00:00|
 |2|707|Sport-100 Helmet，红色|HL-U509-R|红色|13.0863|34.99|无|无|35|33|2005-07-01 00:00:00+00:00|无|无|b'GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|2e1ef41a-c08a-4ff6-8ada-bde58b64a712|2008-03-11 |10:01:36.827000+00:00|
 
 
@@ -300,13 +302,16 @@ servicePrincipalAppId = "8dd38f34-1fcb-4ff9-accd-7cd60b757174"
 import adal
 from azureml.dataprep.api.datasources import DataLakeDataSource
 
-ctx = adal.AuthenticationContext('https://login.microsoftonline.com/microsoft.onmicrosoft.com')
-token = ctx.acquire_token_with_client_certificate('https://datalake.azure.net/', servicePrincipalAppId, certificate, certThumbprint)
-dflow = dprep.read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', accessToken=token['accessToken']))
+ctx = adal.AuthenticationContext(
+    'https://login.microsoftonline.com/microsoft.onmicrosoft.com')
+token = ctx.acquire_token_with_client_certificate(
+    'https://datalake.azure.net/', servicePrincipalAppId, certificate, certThumbprint)
+dflow = dprep.read_csv(path=DataLakeDataSource(
+    path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', accessToken=token['accessToken']))
 dflow.to_pandas_dataframe().head()
 ```
 
-||FMID|MarketName|网站|street|city|县|
+||FMID|MarketName|网站|street|city|郡/县|
 |----|------|-----|----|----|----|----|
 |0|1012063|喀里多尼亚农贸市场协会 - 丹维尔|https://sites.google.com/site/caledoniafarmers.. ||丹维尔|喀里多尼亚|
 |1|1011871|斯特恩斯家园农贸市场|http://Stearnshomestead.com |6975 Ridge Road|帕尔马|凯霍加河|

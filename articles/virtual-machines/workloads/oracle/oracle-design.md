@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 8058246ea5f4ac87c24fab8c5ec64032eb8a1f0b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ebe6f27818df8407504e4254f16d952aa298b6cc
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710639"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348320"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
 ## <a name="assumptions"></a>假设
 
 - 计划将 Oracle 数据库从本地迁移到 Azure。
-- 你有[诊断包](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm)要迁移的 Oracle 数据库
+- 你具有要迁移的 Oracle Database 的[诊断包](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm)
 - 了解 Oracle AWR 报表中的各种指标。
 - 了解应用程序性能和平台利用率的基线。
 
@@ -45,14 +45,14 @@ ms.locfileid: "67710639"
 下表列出了 Oracle 数据库的本地实现和 Azure 实现之间的一些区别。
 
 > 
-> |  | 本地实现  | Azure 实现  |
+> |  | 本地实现 | Azure 实现 |
 > | --- | --- | --- |
 > | **网络** |LAN/WAN  |SDN（软件定义的网络）|
-> | 安全组  |IP/端口限制工具 |[网络安全组 (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
+> | 安全组 |IP/端口限制工具 |[网络安全组 (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 > | **复原能力** |MTBF（平均无故障时间） |MTTR（平均恢复时间）|
 > | **计划内维护** |修补/升级|[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)（由 Azure 管理的修补/升级） |
 > | **资源** |专用  |与其他客户端共享|
-> | **区域** |数据中心 |[区域对](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
+> | **区域** |数据中心 |[区域对](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
 > | **存储** |SAN/物理磁盘 |[Azure 托管的存储](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **缩放** |垂直缩放 |横向缩放|
 
@@ -73,11 +73,11 @@ ms.locfileid: "67710639"
 
 ### <a name="generate-an-awr-report"></a>生成 AWR 报表
 
-如果有现有的 Oracle 数据库并且计划将其迁移到 Azure，则有多个选项可供使用。 如果有[诊断包](https://www.oracle.com/technetwork/oem/pdf/511880.pdf)Oracle 实例，可以运行 Oracle AWR 报表来获取指标 （IOPS、 Mbps、 Gib 等）。 然后基于收集的指标选择虚拟机。 或者，也可以联系基础结构团队，获取类似的信息。
+如果有现有的 Oracle 数据库并且计划将其迁移到 Azure，则有多个选项可供使用。 如果你有 Oracle 实例的[诊断包](https://www.oracle.com/technetwork/oem/pdf/511880.pdf), 则可以运行 oracle AWR 报表来获取指标 (IOPS、Mbps、gib 等等)。 然后基于收集的指标选择虚拟机。 或者，也可以联系基础结构团队，获取类似的信息。
 
 可考虑分别在正常工作负荷与峰值工作负荷期间运行 AWR 报表，以便进行比较。 根据这些报表，可基于平均工作负荷或最大工作负荷来调整虚拟机的大小。
 
-下面是如何生成 AWR 报表的示例 （生成 AWR 报表使用 Oracle 企业管理器，如果您当前的安装有一个）：
+下面是一个示例, 说明如何生成 AWR 报表 (使用 Oracle 企业管理器生成 AWR 报表, 如果当前安装有一个):
 
 ```bash
 $ sqlplus / as sysdba
@@ -144,22 +144,22 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - 与本地部署相比，网络延迟更高。 减少网络往返次数可显著提高性能。
 - 若要减少网络往返，可在同一虚拟机上合并事务繁多的应用或“聊天式”应用。
-- 使用与虚拟机[加速网络](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)以提高网络性能。
-- 对于某些 Linux distrubutions，请考虑启用[TRIM/UNMAP 支持](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)。
-- 安装[Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html)上单独的虚拟机。
-- Linux 上，巨页未默认情况下启用。 请考虑启用巨页并设置`use_large_pages = ONLY`上 Oracle DB。 这可能有助于提高性能。 可在[此处](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到更多信息。
+- 使用带有[加速](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)网络的虚拟机以获得更好的网络性能。
+- 对于某些 Linux distrubutions, 请考虑启用[剪裁/取消映射支持](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)。
+- 在单独的虚拟机上安装[Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 。
+- 默认情况下, linux 上并未启用大页面。 请考虑启用大型页面并`use_large_pages = ONLY`在 Oracle DB 上设置。 这可以帮助提高性能。 可在[此处](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到更多信息。
 
 ### <a name="disk-types-and-configurations"></a>磁盘类型和配置
 
-- 默认 OS 磁盘  ：这些磁盘类型提供永久性数据和缓存。 它们针对启动时的 OS 访问进行了优化，不适用于事务性或数据仓库（分析）工作负荷。
+- 默认 OS 磁盘：这些磁盘类型提供永久性数据和缓存。 它们针对启动时的 OS 访问进行了优化，不适用于事务性或数据仓库（分析）工作负荷。
 
 - *非托管磁盘*：使用这些磁盘类型，可管理存储虚拟硬盘 (VHD) 文件（这些文件与虚拟机磁盘相对应）的存储帐户。 VHD 文件作为页 Blob 存储在 Azure 存储帐户中。
 
-- 托管磁盘  ：由 Azure 管理用于 VM 磁盘的存储帐户。 需要指定所需的磁盘类型（高级或标准）和磁盘大小。 Azure 将创建和管理该磁盘。
+- 托管磁盘：由 Azure 管理用于 VM 磁盘的存储帐户。 需要指定所需的磁盘类型（高级或标准）和磁盘大小。 Azure 将创建和管理该磁盘。
 
-- 高级存储磁盘  ：这些磁盘类型最适用于生产工作负荷。 高级存储支持可附加到特定大小系列虚拟机（例如 DS、DSv2、GS 和 F 系列虚拟机）的虚拟机磁盘。 高级磁盘大小各异，可选择的磁盘大小范围为 32 GB 到 4,096 GB。 每种磁盘大小都有自身的性能规范。 根据应用程序的要求，可将一个或多个磁盘附加到 VM。
+- 高级存储磁盘：这些磁盘类型最适用于生产工作负荷。 高级存储支持可附加到特定大小系列虚拟机（例如 DS、DSv2、GS 和 F 系列虚拟机）的虚拟机磁盘。 高级磁盘大小各异，可选择的磁盘大小范围为 32 GB 到 4,096 GB。 每种磁盘大小都有自身的性能规范。 根据应用程序的要求，可将一个或多个磁盘附加到 VM。
 
-从门户创建新托管磁盘时，可选择要使用的磁盘类型对应的“帐户类型”  。 请注意，下拉菜单中并未显示全部的可用磁盘。 选择特定虚拟机大小后，菜单将只显示以此虚拟机大小为基础的可用高级存储 SKU。
+从门户创建新托管磁盘时，可选择要使用的磁盘类型对应的“帐户类型”。 请注意，下拉菜单中并未显示全部的可用磁盘。 选择特定虚拟机大小后，菜单将只显示以此虚拟机大小为基础的可用高级存储 SKU。
 
 ![“托管磁盘”页的屏幕截图](./media/oracle-design/premium_disk01.png)
 
@@ -188,7 +188,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 - 使用数据压缩来降低 I/O（针对数据和索引）。
 - 将重做日志、system、temps 和 undo TS 分隔在不同的数据磁盘上。
 - 不要将任何应用程序文件放在默认 OS 磁盘 (/dev/sda) 中。 这些磁盘未针对快速 VM 启动时间进行优化，可能无法为应用程序提供良好的性能。
-- 当使用高级存储上的 M 系列 Vm，启用[写入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)上重做日志磁盘。
+- 在高级存储上使用 M 系列 Vm 时, 请在重做日志磁盘上启用[写入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)。
 
 ### <a name="disk-cache-settings"></a>磁盘缓存设置
 
@@ -198,17 +198,17 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - *ReadWrite*:这是一种“预读”算法。 将缓存所有读取和写入，供将来读取。 非直写式写入首先会保存在本地缓存中。 它还为轻型工作负荷提供最低的磁盘延迟。 对不负责保留所需数据的应用程序使用 ReadWrite 缓存可能会在 VM 崩溃时导致数据丢失。
 
-- 无（已禁用）：  使用此选项可绕过缓存。 所有数据都传输到磁盘，并保存在 Azure 存储中。 此方法可为 I/O 密集型工作负荷提供最高的 I/O 速率。 此外，还需要考虑“事务成本”。
+- 无（已禁用）：使用此选项可绕过缓存。 所有数据都传输到磁盘，并保存在 Azure 存储中。 此方法可为 I/O 密集型工作负荷提供最高的 I/O 速率。 此外，还需要考虑“事务成本”。
 
 **建议**
 
-若要最大化吞吐量，我们建议您开始**None**个主机缓存。 请注意，对于高级存储，在使用“只读”  或“无”  选项来装载文件系统时，必须禁用“屏障”。 通过 UUID 将 /etc/fstab 文件更新到磁盘。
+为了最大限度地提高吞吐量, 建议对主机缓存启用 "**无**"。 请注意，对于高级存储，在使用“只读”或“无”选项来装载文件系统时，必须禁用“屏障”。 通过 UUID 将 /etc/fstab 文件更新到磁盘。
 
 ![“托管磁盘”页的屏幕截图](./media/oracle-design/premium_disk02.png)
 
-- 对于 OS 磁盘，请使用默认的“读取/写入”  缓存。
-- 对于 SYSTEM、TEMP 和 UNDO，请使用“无”  选项进行缓存。
-- 对于 DATA，使用“无”  选项进行缓存。 但是，如果数据库为只读或读取密集型数据库，请使用“只读”  缓存。
+- 对于 OS 磁盘，请使用默认的“读取/写入”缓存。
+- 对于 SYSTEM、TEMP 和 UNDO，请使用“无”选项进行缓存。
+- 对于 DATA，使用“无”选项进行缓存。 但是，如果数据库为只读或读取密集型数据库，请使用“只读”缓存。
 
 保存数据磁盘设置后，将无法更改主机缓存设置，除非在 OS 级别卸载驱动器，然后在进行更改后重新装载它。
 
@@ -216,14 +216,14 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 设置并配置 Azure 环境后，下一步是保护网络的安全。 以下是一些建议：
 
-- NSG 策略  ：NSG 可由子网或 NIC 定义。 它是可更轻松地控制子网级别，同时为安全性和强制路由对于诸如应用程序防火墙等内容的访问。
+- NSG 策略：NSG 可由子网或 NIC 定义。 控制子网级别的访问权限更简单, 无论是出于安全目的, 还是强制路由, 如应用程序防火墙。
 
 - *Jumpbox*：为了提高访问的安全性，管理员不应直接连接到应用程序服务或数据库。 使用 Jumpbox 作为管理员计算机与 Azure 资源之间的媒介。
 ![“Jumpbox 拓扑”页屏幕截图](./media/oracle-design/jumpbox.png)
 
     应将管理员计算机的 IP 限制为仅允许访问 jumpbox。 Jumpbox 应有权访问应用程序和数据库。
 
-- 专用网络（子网）：  建议将应用程序服务和数据库置于单独的子网上，以便通过 NSG 策略可以更好地进行控制。
+- 专用网络（子网）：建议将应用程序服务和数据库置于单独的子网上，以便通过 NSG 策略可以更好地进行控制。
 
 
 ## <a name="additional-reading"></a>其他阅读材料

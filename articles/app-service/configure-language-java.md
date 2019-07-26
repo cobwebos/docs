@@ -1,5 +1,5 @@
 ---
-title: 配置 Windows Java 应用程序-Azure 应用服务 |Microsoft Docs
+title: 配置 Windows Java 应用-Azure App Service |Microsoft Docs
 description: 了解如何将 Java 应用配置为在 Azure 应用服务中的默认 Windows 实例上运行。
 keywords: azure 应用服务, web 应用, windows, oss, java
 services: app-service
@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 25434360bcc0155411451dbac065e0b7fad9c3bf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c1ea306d8a6b5c1876ac6a9288820e1592dbfda6
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617471"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498515"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Windows Java 应用
 
@@ -28,14 +28,14 @@ Azure 应用服务可让 Java 开发人员在完全托管的基于 Windows 的�
 本指南提供了 Java 开发人员可在应用服务中使用的重要概念和说明。 如果你从未用过 Azure 应用服务，首先应该通读 [Java 快速入门](app-service-web-get-started-java.md)。 [应用服务 Windows 常见问题解答](faq-configuration-and-management.md)中解答了有关使用应用服务且非特定于 Java 开发的一般问题。
 
 > [!NOTE]
-> 找不到要查找的内容？ 请参阅[Windows OSS 常见问题解答](faq-configuration-and-management.md)或[Java Linux 配置指南](containers/configure-language-java.md)有关部署和保护您的 Java 应用程序的信息。
+> 找不到要查找的内容？ 有关部署和保护 Java 应用的信息, 请参阅[WINDOWS OSS 常见问题解答](faq-configuration-and-management.md)或[Java Linux 配置指南](containers/configure-language-java.md)。
 
 ## <a name="configuring-tomcat"></a>配置 Tomcat
 
 若要编辑 Tomcat 的 `server.xml` 或其他配置文件，请首先记下门户中你的 Tomcat 主版本。
 
 1. 通过运行 `env` 命令查找你的版本的 Tomcat 主目录。 搜索以 `AZURE_TOMCAT` 开头并且与你的主版本匹配的环境变量。 例如，`AZURE_TOMCAT85_HOME` 指向 Tomcat 8.5 的 Tomcat 目录。
-1. 查明你的版本的 Tomcat 主目录后，将配置目录复制到 `D:\home`。 例如，如果 `AZURE_TOMCAT85_HOME` 的值为 `D:\Program Files (x86)\apache-tomcat-8.5.37`，则所复制的配置目录的完整路径将是 `D:\home\tomcat\conf`。
+1. 查明你的版本的 Tomcat 主目录后，将配置目录复制到 `D:\home`。 例如, 如果`AZURE_TOMCAT85_HOME`值为`D:\Program Files (x86)\apache-tomcat-8.5.37`, 则复制的目录的新路径将为`D:\home\apache-tomcat-8.5.37`。
 
 最后，请重启应用服务。 你的部署应当转到 `D:\home\site\wwwroot\webapps`，跟以前完全一样。
 
@@ -63,7 +63,7 @@ Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.
 
 ### <a name="development-support"></a>开发支持
 
-产品支持[支持 Azure 的 Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/)针对 Azure 进行开发时可通过 Microsoft 或[Azure Stack](https://azure.microsoft.com/overview/azure-stack/)与[限定的 Azure 支持计划](https://azure.microsoft.com/support/plans/)。
+使用[合格的 azure 支持计划](https://azure.microsoft.com/support/plans/)开发 azure 或[Azure Stack](https://azure.microsoft.com/overview/azure-stack/)时, [AZURE 支持的 Azul 祖鲁 JDK](https://www.azul.com/downloads/azure-only/zulu/)的产品支持可通过 Microsoft 获得。
 
 ### <a name="runtime-support"></a>运行时支持
 

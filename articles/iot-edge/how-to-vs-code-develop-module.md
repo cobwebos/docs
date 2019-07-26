@@ -6,28 +6,32 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 06/25/2019
+ms.date: 07/23/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 2d190edfac71705590135988b64ed043784125ec
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
-ms.translationtype: HT
+ms.openlocfilehash: a9c38d82c4b460564077690d3cddd731ec6c2b89
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305558"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414501"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
 
 可以将业务逻辑转变为用于 Azure IoT Edge 的模块。 本文展示了如何使用 Visual Studio Code 作为主要工具来开发和调试模块。
 
+对于用 C#、Node.js 或 Java 编写的模块，有两种方法可以在 Visual Studio Code 中调试模块：可在模块容器中附加一个进程，或在调试模式下启动模块代码。 对于用 Python 或 C 编写的模块，只能通过附加到 Linux amd64 容器中的进程来调试。
+
+如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[Debugging](https://code.visualstudio.com/Docs/editor/debugging)（调试）的信息。
+
+本文提供了针对多个体系结构的多种语言开发和调试模块的说明。 目前, Visual Studio Code 为以C#、C、Python、Node.js 和 Java 编写的模块提供支持。 支持的设备体系结构为 X64 和 ARM32。 有关支持的操作系统、语言和体系结构的详细信息, 请参阅[语言和体系结构支持](module-development.md#language-and-architecture-support)。
+
+>[!NOTE]
+>开发和调试对 Linux ARM64 设备的支持是[公开预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关详细信息, 请参阅[在 Visual Studio Code 中开发和调试 ARM64 IoT Edge 模块 (预览)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
+
 ## <a name="prerequisites"></a>先决条件
 
 可以使用运行 Windows、macOS 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一台物理设备。
-
-对于用 C#、Node.js 或 Java 编写的模块，有两种方法可以在 Visual Studio Code 中调试模块：可在模块容器中附加一个进程，或在调试模式下启动模块代码。 对于用 Python 或 C 编写的模块，只能通过附加到 Linux amd64 容器中的进程来调试。
-
-> [!TIP]
-> 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[Debugging](https://code.visualstudio.com/Docs/editor/debugging)（调试）的信息。
 
 首先安装 [Visual Studio Code](https://code.visualstudio.com/)，然后添加以下扩展：
 
@@ -64,10 +68,9 @@ ms.locfileid: "68305558"
    pip install --upgrade iotedgehubdev
    ```
 > [!NOTE]
-> 如果有多个 python, 包括预安装的 python 2.7 (例如, 在 Ubuntu 或 macOS 上), 请确保使用正确`pip`的或`pip3`安装**iotedgehubdev**
+> 如果有多个 Python，包括预安装的 python 2.7（例如，在 Ubuntu 或 macOS 上），请确保使用正确的 `pip` 或 `pip3` 来安装 **iotedgehubdev**
 
-> [!NOTE]
-> 若要在设备上测试模块，至少需要一个 IoT Edge 设备和一个活动的 IoT 中心。 若要将计算机用作 IoT Edge 设备，请按照 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 快速入门中的步骤操作。 如果正在开发计算机上运行 IoT Edge 守护程序，则可能需要先停止 EdgeHub 和 EdgeAgent，然后再继续下一步。
+若要在设备上测试模块，至少需要一个 IoT Edge 设备和一个活动的 IoT 中心。 若要将计算机用作 IoT Edge 设备，请按照 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 快速入门中的步骤操作。 如果正在开发计算机上运行 IoT Edge 守护程序，则可能需要先停止 EdgeHub 和 EdgeAgent，然后再继续下一步。
 
 ## <a name="create-a-new-solution-template"></a>创建新的解决方案模板
 

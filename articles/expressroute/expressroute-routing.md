@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6c475ab0a2e47cf654d1299a4c5638b34fb5e4b6
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 458808f9d2c496ae4c29b05bd8a3531b94ba78c0
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508536"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422670"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -83,8 +83,8 @@ ms.locfileid: "67508536"
 ### <a name="private-peering"></a>专用对等互连
 进行专用对等互连时，可以选择使用公共的或专用的 IPv4 地址。 我们会对用户的流量进行端到端隔离，因此在进行专用对等互连时，不可能出现与其他客户的地址发生重叠的情况。 这些地址不会播发到 Internet。 
 
-### <a name="microsoft-peering"></a>Microsoft 对等互连
-可以使用 Microsoft 对等互连路径连接到 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Dynamics 365。 Microsoft 支持在 Microsoft 对等互连时进行双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
+### <a name="microsoft-peering"></a>Microsoft 对等
+可以使用 Microsoft 对等互连路径连接到 Microsoft 云服务。 服务列表包括 Office 365 服务, 例如 Exchange Online、SharePoint Online、Skype for Business、Microsoft 团队和 Dynamics 365。 Microsoft 支持在 Microsoft 对等互连时进行双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
 
 确保 IP 地址和 AS 号码已在下列其中一个注册表中注册：
 
@@ -154,7 +154,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 
 可以针对每个地缘政治区域购买多个 ExpressRoute 线路。 如果拥有多个连接，则可以从异地冗余中获得明显的高可用性优势。 如果具有多条 ExpressRoute 线路，将在 Microsoft 对等互连和公共对等互连路径收到 Microsoft 播发的同一组前缀。 这意味着可以使用多个路径从网络接入 Microsoft。 这可能会导致在网络中做出欠佳的路由决策。 因此，可能会在不同的服务上遇到欠佳的连接体验。 可以依赖社区值做出适当的路由决策，[向用户提供最佳路由](expressroute-optimize-routing.md)。
 
-| **Microsoft Azure 区域** | **区域的 BGP 社区** | **存储 BGP 社区** | **SQL BGP 社区** | **Cosmos DB BGP 社区** |
+| **Microsoft Azure 区域** | **区域 BGP 社区** | **存储 BGP 社区** | **SQL BGP 社区** | **Cosmos DB BGP 社区** |
 | --- | --- | --- | --- | --- |
 | **北美** | |
 | 美国东部 | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
@@ -198,7 +198,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | **南非**| |
 | 南非北部 | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
 | 南非西部 | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
-| **UAE**| |
+| **阿拉伯联合酋长国**| |
 | 阿拉伯联合酋长国北部 | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
 | 阿拉伯联合酋长国中部 | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
@@ -210,7 +210,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 > 
 > 
 
-### <a name="service-to-bgp-community-value"></a>服务与 BGP 社区值
+### <a name="service-to-bgp-community-value"></a>服务到 BGP 团体值
 除了上述各项，Microsoft 还会根据其所属的服务加上标记及前缀。 这只适用于 Microsoft 对等互连。 下表提供了服务与 BGP 社区值之间的映射。
 
 | **服务** | **BGP 社区值** |

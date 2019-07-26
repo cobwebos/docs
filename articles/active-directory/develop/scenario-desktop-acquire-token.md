@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c301bb1eabf77184a292a84e2de750662a167ad
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 05596365dfa011675f38beda2435fdda1a53a5a3
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276696"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488863"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>调用 Web API 的桌面应用 - 获取令牌
 
@@ -179,7 +179,7 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 - IWA 适用于针对 .NET Framework、.NET Core 和 UWP 平台编写的应用
 - IWA 不会绕过 MFA（多重身份验证）。 如果配置了 MFA，需要 MFA 质询时，IWA 可能会失败，因为 MFA 需要用户交互。
   > [!NOTE]
-  > 此问题比较棘手。 IWA 不是交互式的，但 2FA 需要用户交互。 你无法控制标识提供者何时请求执行 2FA，但租户管理员可以。 根据我们的观察，在未通过 VPN 连接到企业网络（有时，甚至已通过 VPN 连接到企业网络）的情况下，从不同的国家/地区登录时都需要执行 2FA。 Azure Active Directory 不会料想存在一组确定性的规则，而是使用 AI 来连续判断是否需要执行 2FA。 如果 IWA 失败，应回退到用户提示（交互式身份验证或设备代码流）。
+  > 此问题比较棘手。 IWA 是非交互式的, 但 MFA 需要用户交互。 不控制标识提供者请求执行 MFA 的时间, 租户管理员会执行此操作。 从观察值开始, 当你从不同国家/地区进行登录时, 需要进行 MFA, 而不是通过 VPN 连接到公司网络, 有时甚至是通过 VPN 进行连接时。 不需要确定一组规则, Azure Active Directory 使用 AI 来持续了解是否需要 MFA。 如果 IWA 失败，应回退到用户提示（交互式身份验证或设备代码流）。
 
 - 在 `PublicClientApplicationBuilder` 中传入的颁发机构需要：
   - 租户化（采用 `https://login.microsoftonline.com/{tenant}/` 格式，其中，`tenant` 是表示租户 ID 或者与该租户关联的域的 GUID）。
@@ -191,8 +191,8 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
   - 应用程序的用户必须已事先许可使用该应用程序
   - 或者，租户管理员必须已事先许可租户中的所有用户使用该应用程序。
   - 换言之：
-    - 开发人员已在 Azure 门户上自行按下“授权”按钮 
-    - 或者，租户管理员已在应用程序注册的“API 权限”选项卡中按下“授予/撤销 {租户域} 的管理员许可”按钮（请参阅[添加用于访问 Web API 的权限](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis)）  
+    - 开发人员已在 Azure 门户上自行按下“授权”按钮
+    - 或者，租户管理员已在应用程序注册的“API 权限”选项卡中按下“授予/撤销 {租户域} 的管理员许可”按钮（请参阅[添加用于访问 Web API 的权限](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis)）
     - 或者，你已提供某种方式让用户许可应用程序（请参阅[请求单个用户的许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent)）
     - 或者，你已提供某种方式让租户管理员许可应用程序（请参阅[管理员许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant)）
 
@@ -650,7 +650,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
   ![image](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 
 > [!IMPORTANT]
-> MSAL.NET 为你创建了标记缓存, 并在调用`IToken`应用程序的`UserTokenCache`和`AppTokenCache`属性时提供缓存。 最好是不要自行实现接口。 实现自定义令牌缓存序列化时，你的责任是：
+> MSAL.NET 将为你创建令牌缓存，当你调用应用程序的 `UserTokenCache` 和 `AppTokenCache` 属性时，它会提供 `IToken` 缓存。 最好是不要自行实现接口。 实现自定义令牌缓存序列化时，你的责任是：
 >
 > - 对`BeforeAccess`和`AfterAccess` "events" (或*异步*对应项) 做出反应。 `BeforeAccess` 委托负责反序列化缓存，而 `AfterAccess` 负责序列化缓存。
 > - 其中的一部分事件存储或加载 Blob，这些 Blob 将通过事件参数传递到所需的任何存储。

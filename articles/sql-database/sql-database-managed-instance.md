@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: 028b3b2287e9d37a87ae2caf828c8855be331a1f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f4dc00623694fa1fd218f43e7bbd19edef48dec4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327018"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348125"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什么是 Azure SQL 数据库托管实例？
 
@@ -47,7 +47,7 @@ ms.locfileid: "68327018"
 | --- | --- |
 |无需采购和管理硬件 <br>不产生底层基础结构的管理开销 <br>快速预配和服务缩放 <br>自动修补和版本升级 <br>与其他 PaaS 数据服务集成 |99.99% 的运行时间 SLA  <br>内置[高可用性](sql-database-high-availability.md) <br>使用[自动备份](sql-database-automated-backups.md)保护数据 <br>客户可配置的备份保留期 <br>用户发起的[备份](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[数据库时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)功能 |
 |**安全性和符合性** | **管理**|
-|隔离的环境（[VNet 集成](sql-database-managed-instance-connectivity-architecture.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD 身份验证](sql-database-aad-authentication.md)、单一登录支持 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 服务器主体（登录名）</a>（公开预览版）  <br>符合 Azure SQL 数据库遵循的相同法规标准 <br>[SQL 审核](sql-database-managed-instance-auditing.md) <br>[威胁检测](sql-database-managed-instance-threat-detection.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
+|隔离的环境（[VNet 集成](sql-database-managed-instance-connectivity-architecture.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD 身份验证](sql-database-aad-authentication.md)、单一登录支持 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 服务器主体（登录名）</a>（公开预览版） <br>符合 Azure SQL 数据库遵循的相同法规标准 <br>[SQL 审核](sql-database-managed-instance-auditing.md) <br>[威胁检测](sql-database-managed-instance-threat-detection.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
 
 > [!IMPORTANT]
 > Azure SQL 数据库（所有部署选项）已通过了许多合规性标准的认证。 有关详细信息, 请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), 你可以在其中找到最新的 SQL 数据库符合性认证列表。
@@ -62,7 +62,7 @@ ms.locfileid: "68327018"
 | 自动软件修补 | 是 |
 | 最新的数据库引擎功能 | 是 |
 | 每个数据库的数据文件 (ROWS) 数目 | 多个 |
-| 每个数据库的日志文件 (LOG) 数目 | 第 |
+| 每个数据库的日志文件 (LOG) 数目 | 1 |
 | VNet - Azure 资源管理器部署 | 是 |
 | VNet - 经典部署模型 | 否 |
 | 门户支持 | 是|
@@ -148,7 +148,7 @@ Azure SQL 数据库提供管理操作, 你可以使用这些操作来自动部�
 
 下表总结了操作和典型的总持续时间:
 
-|类别  |操作  |长时间运行的段  |估计持续时间  |
+|类别  |操作  |长时间运行的段  |估计的持续时间  |
 |---------|---------|---------|---------|
 |**部署** |空子网中的第一个实例|创建虚拟群集|90% 的操作在4小时内完成|
 |部署 |非空子网中的第一个硬件生成的第一个实例 (例如, 子网中的第一个第1代实例, 具有第4代实例)|虚拟群集创建 *|90% 的操作在4小时内完成|
@@ -159,7 +159,7 @@ Azure SQL 数据库提供管理操作, 你可以使用这些操作来自动部�
 |Update |实例存储扩展/缩减 (业务关键服务层)|-虚拟群集大小调整<br>-Always On 可用性组种子设定|90% 的操作在2.5 小时内完成, 为所有数据库设定种子 (220 GB/小时)|
 |Update |实例计算 (Vcore) 增加和减少 (常规用途)|-虚拟群集大小调整<br>-附加数据库文件|90% 的操作在2.5 小时内完成|
 |Update |实例计算 (Vcore) 增加和减少 (业务关键)|-虚拟群集大小调整<br>-Always On 可用性组种子设定|90% 的操作在2.5 小时内完成, 为所有数据库设定种子 (220 GB/小时)|
-|Update |实例缩减到4个 Vcore (常规用途)|-虚拟群集大小调整 (如果是首次完成, 则可能需要创建虚拟群集 * *)<br>-附加数据库文件|90% 的操作在 4 h 5 分钟内完成|
+|Update |实例缩减到4个 Vcore (常规用途)|-虚拟群集大小调整 (如果是首次完成, 则可能需要创建虚拟群集 * *)<br>-附加数据库文件|90% 的操作完成, 4 h 5 分钟 * *|
 |Update |实例缩减到4个 Vcore (常规用途)|-虚拟群集大小调整 (如果是首次完成, 则可能需要创建虚拟群集 * *)<br>-Always On 可用性组种子设定|90% 的操作将在4小时内完成, 并对所有数据库进行种子计算 (220 GB/小时)|
 |Update |实例服务层更改 (常规用途为业务关键, 反之亦然)|-虚拟群集大小调整<br>-Always On 可用性组种子设定|90% 的操作在2.5 小时内完成, 为所有数据库设定种子 (220 GB/小时)|
 |**予以**|实例删除|所有数据库的日志尾备份|90% 的操作最多可完成1分钟。<br>注意: 如果删除了子网中的最后一个实例, 此操作将在12小时后计划删除虚拟群集|
@@ -220,9 +220,9 @@ Azure SQL 数据库提供一组可用于保护数据的高级安全功能。
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory 集成
 
-托管实例部署选项支持传统的 SQL Server 数据库引擎登录名，以及与 Azure Active Directory (AAD) 集成的登录名。 Azure AD 服务器主体（登录名）（公共预览版）是在本地环境中使用的本地数据库登录名的 Azure 云版本  。 利用 Azure AD 服务器主体 (登录名), 可以将 Azure Active Directory 租户中的用户和组指定为真正的实例范围内的主体, 这可以执行任何实例级别的操作, 包括相同托管的中的跨数据库查询。实例.
+托管实例部署选项支持传统的 SQL Server 数据库引擎登录名，以及与 Azure Active Directory (AAD) 集成的登录名。 Azure AD 服务器主体（登录名）（公共预览版）是在本地环境中使用的本地数据库登录名的 Azure 云版本。 利用 Azure AD 服务器主体 (登录名), 可以将 Azure Active Directory 租户中的用户和组指定为真正的实例范围内的主体, 这可以执行任何实例级别的操作, 包括相同托管的中的跨数据库查询。实例.
 
-引入了用来创建 Azure AD 服务器主体（登录名）（公共预览版）的一个新语法：FROM EXTERNAL PROVIDER   。 有关该语法的详细信息，请参阅 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>，并查看[为托管实例预配 Azure Active Directory 管理员](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)一文。
+引入了用来创建 Azure AD 服务器主体（登录名）（公共预览版）的一个新语法：FROM EXTERNAL PROVIDER。 有关该语法的详细信息，请参阅 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>，并查看[为托管实例预配 Azure Active Directory 管理员](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)一文。
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 集成和多重身份验证
 

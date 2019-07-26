@@ -1,19 +1,18 @@
 ---
 title: 排查 System Center Data Protection Manager 和 Azure 备份问题
 description: 排查 System Center Data Protection Manager 中的问题。
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: 4108616e3ae41e2c88b74bb08d5f846c0035101f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5e4aa113eda6ea53c520e6de52e4fa17d75f4095
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236199"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465378"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>排查 System Center Data Protection Manager 问题
 
@@ -22,7 +21,7 @@ ms.locfileid: "60236199"
 有关 System Center Data Protection Manager 的最新发行说明，请参阅 [System Center 文档](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016)。 可在[此矩阵](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016)中详细了解 Data Protection Manager 支持的功能。
 
 
-## <a name="error-replica-is-inconsistent"></a>错误：副本不一致
+## <a name="error-replica-is-inconsistent"></a>错误：副本内容不一致
 
 副本可能出于以下原因而不一致：
 - 副本创建作业失败。
@@ -35,7 +34,7 @@ ms.locfileid: "60236199"
 若要解决此问题，请执行以下操作：
 - 若要消除不一致状态，请手动运行一致性检查，或计划每日一致性检查。
 - 确保使用最新版本的 Microsoft Azure 备份服务器和 Data Protection Manager。
-- 确保启用“自动一致性”设置。 
+- 确保启用“自动一致性”设置。
 - 尝试从命令提示符重启服务。 使用 `net stop dpmra` 命令，后接 `net start dpmra`。
 - 确保符合网络连接和带宽要求。
 - 检查源计算机是否意外关闭。
@@ -60,7 +59,7 @@ ms.locfileid: "60236199"
 若要解决此问题，请执行以下操作：
 - 确保使用最新版本的 Azure 备份代理。
 - 确保在 Data Protection Manager 服务器与受保护服务器之间建立连接（网络/防火墙/代理）。
-- 若要保护 SQL 服务器，请确保“登录属性” > “NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。   
+- 若要保护 SQL 服务器，请确保“登录属性” > “NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>错误：未根据保管库凭据文件中的指定注册服务器
 

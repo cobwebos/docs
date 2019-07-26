@@ -1,6 +1,6 @@
 ---
-title: 为 Vm （预览版） 使用 Azure PowerShell 或 Resource Manager 模板中启用 Azure Monitor |Microsoft Docs
-description: 本文介绍如何在 Azure Monitor 为 Vm 启用一个或更多的 Azure 虚拟机或虚拟机规模集使用 Azure PowerShell 或 Azure 资源管理器模板。
+title: 通过 Azure PowerShell 或资源管理器模板启用用于 VM 的 Azure Monitor（预览版）| Microsoft Docs
+description: 本文介绍如何使用 Azure PowerShell 或 Azure 资源管理器模板为一个或多个 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,39 +11,39 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2019
+ms.date: 07/09/2019
 ms.author: magoedte
-ms.openlocfilehash: ff284ea0adf6021ace84cd6a41f0a0e4e987a9c8
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 1025041ae69f2048a6c5396aaebb50b5fa884f86
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144252"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444168"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>为 Vm （预览版） 使用 Azure PowerShell 或 Resource Manager 模板中启用 Azure Monitor
+# <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>通过 Azure PowerShell 或资源管理器模板启用用于 VM 的 Azure Monitor（预览版）
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文介绍如何为 Vm （预览版） 中启用 Azure Monitor 的 Azure 虚拟机或虚拟机规模集使用 Azure PowerShell 或 Azure 资源管理器模板。 在此过程结束时，你将具有已成功开始监视的所有虚拟机，并了解是否任何遇到性能或可用性问题。
+本文介绍如何通过 Azure PowerShell 或 Azure 资源管理器模板为 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor（预览版）。 在此过程结束时，你将开始成功监视所有虚拟机，并了解是否有虚拟机遇到性能或可用性问题。
 
 ## <a name="set-up-a-log-analytics-workspace"></a>设置 Log Analytics 工作区 
 
-如果没有 Log Analytics 工作区，需要创建一个。 查看中建议的方法[先决条件](vminsights-enable-overview.md#log-analytics)部分之前继续对其进行配置的步骤。 然后可以使用 Azure 资源管理器模板方法完成适用于 Vm 的 Azure Monitor 部署。
+如果没有 Log Analytics 工作区，则需创建一个。 请先查看[先决条件](vminsights-enable-overview.md#log-analytics)部分建议的方法，然后继续执行配置它的步骤。 然后即可使用 Azure 资源管理器模板方法完成用于 VM 的 Azure Monitor 的部署。
 
 ### <a name="enable-performance-counters"></a>启用性能计数器
 
-如果解决方案引用的 Log Analytics 工作区尚未配置为收集解决方案所需的性能计数器，则需要启用性能计数器。 您可以执行操作在两种方式之一：
+如果解决方案引用的 Log Analytics 工作区尚未配置为收集解决方案所需的性能计数器，则需要启用性能计数器。 为此，可以采用下面两种方式之一：
 * 手动方式，如 [Log Analytics 中的 Windows 和 Linux 性能数据源](../../azure-monitor/platform/data-sources-performance-counters.md)所述
-* 通过下载并运行 PowerShell 脚本，可从[Azure PowerShell 库](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
+* 通过下载并运行可从 [Azure PowerShell 库](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)获取的 PowerShell 脚本
 
 ### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>安装 ServiceMap 和 InfrastructureInsights 解决方案
 此方法包含一个 JSON 模板，其中指定了用于在 Log Analytics 工作区中启用解决方案组件的配置。
 
-如果不知道如何使用模板部署资源，请参阅：
+如果不知道如何使用模板部署资源，请参阅以下内容：
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
 * [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-若要使用 Azure CLI，首先需要本地安装并使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 若要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+若要使用 Azure CLI，首先需要在本地安装并使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 若要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 1. 将以下 JSON 语法复制并粘贴到文件中：
 
@@ -121,7 +121,7 @@ ms.locfileid: "67144252"
         New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
         ```
 
-        配置更改可能需要几分钟才能完成。 完成后，则显示一条消息，类似于以下和包括的结果：
+        配置更改可能需要几分钟才能完成。 在完成后，系统会显示如下所示的消息，其中包括相应的结果：
 
         ```powershell
         provisioningState       : Succeeded
@@ -135,54 +135,54 @@ ms.locfileid: "67144252"
         az group deployment create --name DeploySolutions --resource-group <ResourceGroupName> --template-file InstallSolutionsForVMInsights.json --parameters WorkspaceName=<workspaceName> WorkspaceLocation=<WorkspaceLocation - example: eastus>
         ```
 
-        配置更改可能需要几分钟才能完成。 完成后，将显示一条消息，类似于以下和包括的结果：
+        配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
 
         ```azurecli
         provisioningState       : Succeeded
         ```
 
-## <a name="enable-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板进行启用
-我们创建了示例 Azure 资源管理器模板为载入虚拟机和虚拟机规模集。 这些模板包括可用于现有的资源上启用监视和创建新的资源具有启用监视的方案。
+## <a name="enable-with-azure-resource-manager-templates"></a>通过 Azure 资源管理器模板来启用
+我们已创建示例性的 Azure 资源管理器模板，用于载入虚拟机和虚拟机规模集。 这些模板中包含的方案可以用来在现有的资源上启用监视，并可创建新的启用了监视的资源。
 
 >[!NOTE]
->该模板需要同一资源组中的资源将被在板上部署。
+>模板需要部署在要载入的资源所在的资源组中。
 
-如果不知道如何使用模板部署资源，请参阅：
+如果不知道如何使用模板部署资源，请参阅以下内容：
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
 * [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-若要使用 Azure CLI，首先需要本地安装并使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 若要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+若要使用 Azure CLI，首先需要在本地安装并使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 若要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ### <a name="download-templates"></a>下载模板
 
-在存档文件 (.zip) 中，你可以提供 Azure 资源管理器模板[下载](https://aka.ms/VmInsightsARMTemplates)从 GitHub 存储库。 该文件的内容包括表示每个部署方案使用的模板和参数文件的文件夹。 在运行它们之前，修改参数文件，并指定所需的值。 除非需要进行自定义，以支持特定的要求，否则不要修改的模板文件。 修改参数文件后，可以使用更高版本在本文中所述的以下方法来部署它。 
+Azure 资源管理器模板在存档文件 (.zip) 中提供，该文件可以从 GitHub 存储库[下载](https://aka.ms/VmInsightsARMTemplates)。 文件内容中包含文件夹，这些文件夹代表每个带模板和参数文件的部署方案。 在运行它们之前，请修改参数文件并指定所需值。 请勿修改模板文件，除非你要根据自己的特定需求来自定义它。 修改参数文件以后，可以部署它，只需按照本文后面介绍的以下方法操作即可。 
 
-下载文件包含不同的方案的以下模板：
+下载文件包含下述适用于不同方案的模板：
 
-- **ExistingVmOnboarding**模板为 Vm 启用 Azure 监视器，如果虚拟机已存在。
-- **NewVmOnboarding**模板创建虚拟机，并启用 Azure Vm 来对其进行监视的监视器。
-- **ExistingVmssOnboarding**模板为 Vm 启用 Azure 监视器，如果虚拟机规模集已存在。
-- **NewVmssOnboarding**模板创建虚拟机规模集并启用要监视这些 Vm 的 Azure Monitor。
-- **ConfigureWorksapce**模板配置 Log Analytics 工作区以支持 Azure Monitor 的 Vm 通过启用的解决方案和 Linux 和 Windows 操作系统性能计数器的集合。
+- **ExistingVmOnboarding** 模板可启用用于 VM 的 Azure Monitor，前提是虚拟机已存在。
+- **NewVmOnboarding** 模板用于创建虚拟机并启用用于 VM 的 Azure Monitor 来监视它。
+- **ExistingVmssOnboarding** 模板可启用用于 VM 的 Azure Monitor，前提是虚拟机规模集已存在。
+- **NewVmssOnboarding** 模板用于创建虚拟机规模集并启用用于 VM 的 Azure Monitor 来监视它们。
+- **ConfigureWorksapce** 目标可将 Log Analytics 工作区配置为支持用于 VM 的 Azure Monitor，只需启用相关解决方案以及 Linux 和 Windows 操作系统性能计数器集合即可。
 
 >[!NOTE]
->如果虚拟机规模集已经存在并且升级策略设置为**手动**，Vm 的 Azure Monitor 不会为启用实例默认情况下运行之后**ExistingVmssOnboarding**Azure 资源管理器模板。 您必须手动升级的实例。
+>如果虚拟机规模集已经存在，且升级策略已设置为“手动”，则不需在运行 **ExistingVmssOnboarding** Azure 资源管理器模板后默认为实例启用用于 VM 的 Azure Monitor。 必须手动升级实例。
 
 ### <a name="deploy-by-using-azure-powershell"></a>使用 Azure PowerShell 进行部署
 
-以下步骤可使用 Azure PowerShell 进行监视。
+以下步骤使用 Azure PowerShell 来启用监视。
 
 ```powershell
 New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile <Template.json> -TemplateParameterFile <Parameters.json>
 ```
-配置更改可能需要几分钟才能完成。 完成后，则显示一条消息，类似于以下和包括的结果：
+配置更改可能需要几分钟才能完成。 在完成后，系统会显示如下所示的消息，其中包括相应的结果：
 
 ```powershell
 provisioningState       : Succeeded
 ```
 ### <a name="deploy-by-using-the-azure-cli"></a>使用 Azure CLI 进行部署
 
-以下步骤可使用 Azure CLI 进行监视。
+以下步骤使用 Azure CLI 来启用监视。
 
 ```azurecli
 az login
@@ -198,15 +198,15 @@ provisioningState       : Succeeded
 
 ## <a name="enable-with-powershell"></a>使用 PowerShell 启用
 
-若要为多个虚拟机或虚拟机规模集为 Vm 启用 Azure Monitor，请使用 PowerShell 脚本[安装 VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)。 也可以从 Azure PowerShell 库。 此脚本循环访问：
+若要为多个 VM 或虚拟机规模集启用用于 VM 的 Azure Monitor，请使用 PowerShell 脚本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)。 它在 Azure PowerShell 库中提供。 此脚本循环访问：
 
-- 每个虚拟机和虚拟机规模集在订阅中。
-- 由指定的作用域内的资源组*ResourceGroup*。 
-- 单一的虚拟机或虚拟机规模集，指定*名称*。
+- 订阅中的每个虚拟机和虚拟机规模集。
+- 通过 *ResourceGroup* 指定的具有作用域的资源组。 
+- 通过 *Name* 指定的单个 VM 或虚拟机规模集。
 
 对于每个 VM 或虚拟机规模集，该脚本将验证是否已安装 VM 扩展。 如果未安装 VM 扩展，脚本会尝试重新安装它。 如果已安装 VM 扩展，脚本将安装 Log Analytics 代理和 Dependency Agent VM 扩展。
 
-此脚本需要 Azure PowerShell 模块 Az 版本 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+验证正在使用的`Enable-AzureRM` Azure PowerShell 模块 Az 版本1.0.0 或更高版本是否已启用兼容性别名。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 若要获取脚本的参数详细信息和示例用法的列表，请运行 `Get-Help`。
 
@@ -361,9 +361,9 @@ Failed: (0)
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你的虚拟机启用监视，此信息是可用于分析的 Vm 的 Azure monitor。
+现已为虚拟机启用了监视，可在用于 VM 的 Azure Monitor 中使用此信息进行分析。
  
-- 若要了解如何使用运行状况的功能，请参阅[查看 Azure Vm 运行状况的监视器](vminsights-health.md)。 
+- 若要了解如何使用运行状况功能，请参阅[查看用于 VM 的 Azure Monitor 的运行状况](vminsights-health.md)。 
 - 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。 
-- 若要标识瓶颈和 VM 的性能的整体利用率，请参阅[查看 Azure VM 性能](vminsights-performance.md)。 
+- 若要通过 VM 的性能了解瓶颈和整体利用率，请参阅[查看 Azure VM 性能](vminsights-performance.md)。 
 - 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。

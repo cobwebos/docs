@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7c1f3fc7861f5e1b895423d502218b9b07302c1c
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 23386139364a72b0275936cdc458c8cd2a5771c9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659754"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68386819"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP 是否在所有 Azure VPN 网关 SKU 上受支持？
-否，BGP 在 Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、标准  VPN 网关和高性能  VPN 网关上受支持。 **基本** SKU。
+否，BGP 在 Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、标准 VPN 网关和高性能 VPN 网关上受支持。 **基本** SKU。
 
 ### <a name="can-i-use-bgp-with-azure-policy-based-vpn-gateways"></a>能否将 BGP 用于基于 Azure Policy 的 VPN 网关？
 否，只有基于路由的 VPN 网关支持 BGP。
@@ -85,10 +85,10 @@ Azure VPN 网关会将以下路由播发到本地 BGP 设备：
 是的。 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Azure VPN 网关将哪个地址用于 BGP 对等节点 IP？
-Azure VPN 网关将从主动-待机连接 VPN 网关的 GatewaySubnet 范围内或主动-主动 VPN 网关的两个 IP 地址分配单个 IP 地址。 你可以获取使用 PowerShell (Get-AzVirtualNetworkGateway，查找"bgpPeeringAddress"属性)，或 （在网关配置页上的"配置 BGP ASN"属性） 在 Azure 门户中分配的实际 BGP IP 地址。
+Azure VPN 网关将为主动-备用 VPN 网关的 GatewaySubnet 范围分配单个 IP 地址, 或为主动-主动 VPN 网关分配两个 IP 地址。 你可以使用 PowerShell (AzVirtualNetworkGateway、查找 "bgpPeeringAddress" 属性) 或 Azure 门户 (在 "网关配置" 页上的 "配置 BGP ASN" 属性下) 来获取分配的实际 BGP IP 地址。
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>VPN 设备上的 BGP 对等节点 IP 地址的要求是什么？
-本地 BGP 对等节点地址 **不能** 与 VPN 设备的公共 IP 地址相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是一个分配给设备上环回接口的地址，但请注意，它不能是 APIPA (169.254.x.x) 地址。 在表示该位置的相应本地网关中指定此地址。
+本地 BGP 对等机地址**不**能与 vpn 设备的公共 IP 地址或 Vpn 网关的 Vnet 地址空间相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是一个分配给设备上环回接口的地址，但请注意，它不能是 APIPA (169.254.x.x) 地址。 在表示该位置的相应本地网关中指定此地址。
 
 ### <a name="what-should-i-specify-as-my-address-prefixes-for-the-local-network-gateway-when-i-use-bgp"></a>使用 BGP 时应将什么指定为本地网关的地址前缀？
 Azure 本地网关为本地网络指定初始地址前缀。 使用 BGP 时，必须分配 BGP 对等节点 IP 地址的主机前缀（/32 前缀）作为本地网络的地址空间。 如果 BGP 对等节点 IP 为 10.52.255.254，则应指定“10.52.255.254/32”作为表示此本地网络的本地网关的 localNetworkAddressSpace。 这是为了确保 Azure VPN 网关通过 S2S VPN 隧道建立 BGP 会话。

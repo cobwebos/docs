@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: danlep
-ms.openlocfilehash: 48682163d1c1a516cff69f2a0e91b27c33ca7c61
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
-ms.translationtype: HT
+ms.openlocfilehash: 5100418651e24d74ad747e8c436ffce53c899a92
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480522"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500895"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>使用云本机 Buildpack 从应用生成并推送映像
 
@@ -25,14 +25,14 @@ Azure CLI 命令`az acr pack build`使用[Buildpacks](https://buildpacks.io/)中
 
 ## <a name="use-the-build-command"></a>使用生成命令
 
-若要使用云本机 Buildpacks 生成并推送容器映像, 请运行[az acr pack 生成][az-acr-pack-build] command. Whereas the [az acr build][az-acr-build]命令生成并从 Dockerfile 源和相关代码中推送图像, 同时`az acr pack build`直接指定应用程序源树。
+若要使用云本机 Buildpacks 生成并推送容器映像, 请运行[az acr pack build][az-acr-pack-build]命令。 [Az acr build][az-acr-build]命令从 Dockerfile 源和相关代码生成并推送图像, 同时`az acr pack build`直接指定应用程序源树。
 
 至少需要在运行`az acr pack build`时指定以下内容:
 
 * 运行命令的 Azure 容器注册表
 * 生成的映像的映像名称和标记
 * ACR 任务[支持的上下文位置](container-registry-tasks-overview.md#quick-task)之一, 例如本地目录、GitHub 存储库或远程 tarball
-* Buildpack 生成器图像的名称, 如`cloudfoundry/cnb:bionic:18`。  
+* Buildpack 生成器图像的名称, 如`cloudfoundry/cnb:bionic`。  
 
 `az acr pack build`支持 ACR 任务命令的其他功能, 包括流式传输并保存的[运行变量](container-registry-tasks-reference-yaml.md#run-variables)和[任务运行日志](container-registry-tasks-overview.md#view-task-logs), 以便以后检索。
 

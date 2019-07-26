@@ -9,24 +9,24 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: 79288f2204030790b2308905d90ff8e035fe2dd9
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: f1001df52b3bbb54f3b872f23276957fa01a7da5
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621866"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68403197"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>通过 .NET 使用 IoT 中心将文件从设备上传到云
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-本教程中的代码为基础[发送云到设备消息通过 IoT 中心](iot-hub-csharp-csharp-c2d.md)教程向您展示如何使用 IoT 中心文件上传功能。 其中了说明了如何：
+本教程基于使用[Iot 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)教程中的代码, 演示如何使用 iot 中心的文件上传功能。 其中了说明了如何：
 
 * 安全提供具有 Azure blob URI 的设备，用于上传文件。
 
 * 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-[将遥测从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)快速入门和[发送云到设备消息通过 IoT 中心](iot-hub-csharp-csharp-c2d.md)IoT 的基本设备到云和云到设备消息传送功能教程中心。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+使用 IoT 中心将[遥测数据从设备发送到 iot 中心](quickstart-send-telemetry-dotnet.md)快速入门教程和[使用 iot 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)教程显示 iot 中心的基本设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频
@@ -37,7 +37,7 @@ ms.locfileid: "67621866"
 
 在本教程结束时，会运行 2 个 .NET 控制台应用：
 
-* **SimulatedDevice**，在中创建的应用的修改的版本[将使用 IoT 中心设备到云消息发送](iot-hub-csharp-csharp-c2d.md)教程。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
+* **SimulatedDevice**, 在[使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)教程中创建的应用的修改版本。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
 
 * **ReadFileUploadNotification**，它可以接收来自 IoT 中心的文件上传通知。
 
@@ -54,7 +54,7 @@ ms.locfileid: "67621866"
 
 ## <a name="upload-a-file-from-a-device-app"></a>从设备应用上传文件
 
-在本部分中，会修改中创建的设备应用[发送云到设备消息通过 IoT 中心](iot-hub-csharp-csharp-c2d.md)以接收来自 IoT 中心设备到云消息。
+在本部分中, 会修改在[通过 Iot 中心发送云到设备消息](iot-hub-csharp-csharp-c2d.md)中创建的设备应用, 以接收来自 iot 中心的云到设备消息。
 
 1. 在 Visual Studio 中，右键单击 **SimulatedDevice** 项目，单击“**添加**”，并单击“**现有项**”。 导航到某个图像文件并将它包含在项目中。 本教程假设图像名称为 `image.jpg`。
 
@@ -98,6 +98,12 @@ ms.locfileid: "67621866"
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按文章 [Transient Fault Handling](/azure/architecture/best-practices/transient-faults)（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
 
+## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
+
+在本文中, 你将创建一个后端服务, 以接收从[设备发送遥测到 iot 中心](quickstart-send-telemetry-dotnet.md)中创建的 IoT 中心的文件上传通知消息。 若要接收文件上传通知消息, 您的服务需要**服务连接**权限。 默认情况下, 每个 IoT 中心都创建有一个名为 "**服务**" 的共享访问策略, 该策略将授予此权限。
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
+
 ## <a name="receive-a-file-upload-notification"></a>接收文件上传通知
 
 在本部分中，会编写一个 .NET 控制台应用，用于接收来自 IoT 中心的文件上传通知消息。
@@ -106,9 +112,9 @@ ms.locfileid: "67621866"
 
     ![Visual Studio 中的新项目](./media/iot-hub-csharp-csharp-file-upload/file-upload-project-csharp1.png)
 
-2. 在“解决方案资源管理器”中，右键单击 **ReadFileUploadNotification** 项目，并单击“管理 NuGet 包...”。 
+2. 在“解决方案资源管理器”中，右键单击 **ReadFileUploadNotification** 项目，并单击“管理 NuGet 包...”。
 
-3. 在“NuGet 包管理器”窗口中，搜索“Microsoft.Azure.Devices”，并单击“安装”并接受使用条款。   
+3. 在“NuGet 包管理器”窗口中，搜索“Microsoft.Azure.Devices”，并单击“安装”并接受使用条款。
 
     此操作会下载、安装 [Azure IoT 服务 SDK NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Devices/)，并在 **ReadFileUploadNotification** 项目中添加对它的引用。
 
@@ -118,7 +124,7 @@ ms.locfileid: "67621866"
     using Microsoft.Azure.Devices;
     ```
 
-5. 将以下字段添加到 Program 类  。 将占位符值替换为[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)中的 IoT 中心连接字符串：
+5. 将以下字段添加到 Program 类。 将`{iot hub connection string}`占位符值替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串:
 
     ```csharp
     static ServiceClient serviceClient;

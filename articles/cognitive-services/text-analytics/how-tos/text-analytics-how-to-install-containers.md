@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 7f178152fb5b6d540c2cecdfa42687469dfe3881
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 39f15cf8d1374ca95b10ccbddb8a59ec3e98f4f8
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356992"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488746"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -34,9 +34,11 @@ ms.locfileid: "68356992"
 
 |必填|用途|
 |--|--|
-|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br>  在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
+|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
 |文本分析资源 |若要使用容器，必须具有：<br><br>用于获取关联的 API 密钥和终结点 URI 的 Azure[文本分析](text-analytics-how-to-access-key.md)资源。 这两个值可以从 Azure 门户中的“文本分析概述”和“密钥”页面获得，并且是启动容器时所必需的。<br><br>**{API_KEY}** :"**密钥**" 页上有两个可用的资源键之一<br><br>**{ENDPOINT_URI}** :"**概述**" 页中提供的终结点|
+
+[!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
 ### <a name="the-host-computer"></a>主计算机
 
@@ -48,9 +50,9 @@ ms.locfileid: "68356992"
 
 | 容器 | 最低要求 | 建议 | TPS<br>(最小值, 最大值)|
 |-----------|---------|-------------|--|
-|关键短语提取 | 单核, 2 GB 内存 | 1核, 4 GB 内存 |15、30|
-|语言检测 | 单核, 2 GB 内存 | 1核, 4 GB 内存 |15、30|
-|情绪分析 | 单核, 2 GB 内存 | 1核, 4 GB 内存 |15、30|
+|关键短语提取 | 单核，2-GB 内存 | 单核，4-GB 内存 |15、30|
+|语言检测 | 单核，2-GB 内存 | 单核，4-GB 内存 |15、30|
+|情绪分析 | 单核，2-GB 内存 | 单核，4-GB 内存 |15、30|
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 * TPS - 每秒事务数
@@ -107,14 +109,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 该命令使用以下参数：
-
-| 占位符 | 值 |
-|-------------|-------|
-|{API_KEY} | 此密钥用于启动容器，可以从 Azure 门户中的`Text Analytics`“密钥”页上获取该密钥。 |
-|{ENDPOINT_URI} | Azure `Text Analytics`“概览”页面上提供了账单终结点 URI 值。 |
-
-在以下示例 `docker run` 命令中，请将这些参数替换为自己的值。
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 有关如何获取`{Endpoint_URI}`和`{API_Key}`值的详细信息, 请参阅[收集必需的参数](#gathering-required-parameters)。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -156,7 +151,7 @@ ApiKey={API_KEY}
 
 如果运行启用了输出[装入点](../text-analytics-resource-container-config.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。 
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>帐单
 
 文本分析容器使用 Azure 帐户中的_文本分析_资源向 Azure 发送账单信息。 
 

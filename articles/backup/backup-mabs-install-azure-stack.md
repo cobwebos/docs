@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Stack 上安装 Azure 备份服务器 | Microsoft Docs
 description: 使用 Azure 备份服务器保护或备份 Azure Stack 中的工作负荷。
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
@@ -10,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77f418a37c47850cf8a763dc399109d86925feff
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60851714"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465256"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安装 Azure 备份服务器
 
@@ -77,7 +76,7 @@ Azure备份服务器将备份数据存储在附加到虚拟机的 Azure 磁盘�
   - 卸载数据 - 将旧数据发送到 Azure，并仅保留附加到 Azure 备份服务器的存储上的最新数据。
   - 横向扩展 - 添加更多 Azure 备份服务器来保护工作负荷。
 
-### <a name="net-framework"></a>.NET framework
+### <a name="net-framework"></a>.NET Framework
 
 必须在虚拟机上安装 .NET Framework 3.5 SP1 或更高版本。
 
@@ -108,8 +107,8 @@ Azure 备份服务器虚拟机必须加入域。 拥有管理员特权的域用�
 
 若要编辑存储复制设置，请执行以下操作：
 
-1. 选择保管库以打开保管库仪表板和“设置”菜单。 如果“设置”菜单未打开，请在保管库仪表板中单击“所有设置”   。
-2. 在“设置”菜单中，单击“备份基础结构” > “备份配置”，打开“备份配置”菜单     。 在“备份配置”菜单中，选择保管库的存储复制选项  。
+1. 选择保管库以打开保管库仪表板和“设置”菜单。 如果“设置”菜单未打开，请在保管库仪表板中单击“所有设置”。
+2. 在“设置”菜单中，单击“备份基础结构” > “备份配置”，打开“备份配置”菜单。 在“备份配置”菜单中，选择保管库的存储复制选项。
 
     ![备份保管库列表](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -118,11 +117,11 @@ Azure 备份服务器虚拟机必须加入域。 拥有管理员特权的域用�
 可通过两种方式下载 Azure 备份服务器安装程序。 从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=55269)下载 Azure 备份服务器安装程序。 也可以在配置恢复服务保管库时下载 Azure 备份服务器安装程序。 以下步骤引导你在配置恢复服务保管库时从 Azure 门户下载安装程序。
 
 1. 在 Azure 门户中，从 Azure Stack 虚拟机[登录到自己的 Azure 订阅](https://portal.azure.com/)。
-2. 在左侧菜单中，选择“所有服务”  。
+2. 在左侧菜单中，选择“所有服务”。
 
     ![在主菜单中选择“所有服务”选项](./media/backup-mabs-install-azure-stack/click-all-services.png)
 
-3. 在“所有服务”对话框中，键入“恢复服务”。   开始键入时，会根据输入筛选资源列表。 出现“恢复服务保管库”时，请选择它  。
+3. 在“所有服务”对话框中，键入“恢复服务”。 开始键入时，会根据输入筛选资源列表。 出现“恢复服务保管库”时，请选择它。
 
     ![在“所有服务”对话框中键入“恢复服务”](./media/backup-mabs-install-azure-stack/all-services.png)
 
@@ -132,7 +131,7 @@ Azure 备份服务器虚拟机必须加入域。 拥有管理员特权的域用�
 
     ![在“所有服务”对话框中键入“恢复服务”](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
 
-5. 在保管库的“开始使用”菜单中，单击“备份”打开“开始使用”向导。 
+5. 在保管库的“开始使用”菜单中，单击“备份”打开“开始使用”向导。
 
     ![备份入门](./media/backup-mabs-install-azure-stack/getting-started-backup.png)
 
@@ -140,23 +139,23 @@ Azure 备份服务器虚拟机必须加入域。 拥有管理员特权的域用�
 
     ![Backup-goals-default-opened](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
 
-6. 在备份菜单中，从“工作负荷的运行位置”菜单中选择“本地”。   从“希望备份什么内容?”下拉菜单中，选择想要使用 Azure 备份服务器保护的工作负荷。  如果不确定要选择哪个工作负荷，请选择“Hyper-V 虚拟机”，然后单击“准备基础结构”。  
+6. 在备份菜单中，从“工作负荷的运行位置”菜单中选择“本地”。 从“希望备份什么内容?”下拉菜单中，选择想要使用 Azure 备份服务器保护的工作负荷。 如果不确定要选择哪个工作负荷，请选择“Hyper-V 虚拟机”，然后单击“准备基础结构”。
 
     ![用作目标的“本地”和“工作负荷”](./media/backup-mabs-install-azure-stack/getting-started-menu-onprem-hyperv.png)
 
-    此时会打开“准备基础结构”菜单。 
+    此时会打开“准备基础结构”菜单。
 
-7. 在“准备基础结构”菜单中，单击“下载”打开用于下载 Azure 备份服务器安装文件的网页。  
+7. 在“准备基础结构”菜单中，单击“下载”打开用于下载 Azure 备份服务器安装文件的网页。
 
     ![快速启动向导更改](./media/backup-mabs-install-azure-stack/prepare-infrastructure.png)
 
     此时会打开存放了 Azure 备份服务器可下载文件的 Microsoft 网页。
 
-8. 在 Microsoft Azure 备份服务器下载页中选择一种语言，然后单击“下载”。 
+8. 在 Microsoft Azure 备份服务器下载页中选择一种语言，然后单击“下载”。
 
     ![下载中心打开](./media/backup-mabs-install-azure-stack/mabs-download-center-page.png)
 
-9. Azure 备份服务器安装程序由 8 个文件组成 - 1 个安装程序，以及 7 个 .bin 文件。 检查“文件名”选择全部所需的文件，然后单击“下一步”。   将所有文件下载到同一个文件夹。
+9. Azure 备份服务器安装程序由 8 个文件组成 - 1 个安装程序，以及 7 个 .bin 文件。 检查“文件名”选择全部所需的文件，然后单击“下一步”。 将所有文件下载到同一个文件夹。
 
     ![下载中心 1](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
@@ -168,21 +167,21 @@ Azure 备份服务器虚拟机必须加入域。 拥有管理员特权的域用�
 
 ![下载中心 1](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
-1. 若要开始安装，请在下载的文件列表中单击“MicrosoftAzureBackupserverInstaller.exe”。 
+1. 若要开始安装，请在下载的文件列表中单击“MicrosoftAzureBackupserverInstaller.exe”。
 
     > [!WARNING]
     > 至少需要有 4GB 的可用空间才能解压缩安装程序文件。
     >
 
-2. 在 Azure 备份服务器向导中，单击“下一步”继续。 
+2. 在 Azure 备份服务器向导中，单击“下一步”继续。
 
     ![Microsoft Azure 备份安装向导](./media/backup-mabs-install-azure-stack/mabs-install-wiz-1.png)
 
-3. 选择 Azure 备份服务器文件的路径，然后单击“下一步”。 
+3. 选择 Azure 备份服务器文件的路径，然后单击“下一步”。
 
    ![Microsoft Azure 备份安装向导](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
 
-4. 验证提取位置，然后单击“提取”。 
+4. 验证提取位置，然后单击“提取”。
 
    ![Microsoft Azure 备份安装向导](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
 
@@ -190,39 +189,39 @@ Azure 备份服务器虚拟机必须加入域。 拥有管理员特权的域用�
 
    ![Microsoft Azure 备份安装向导](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. 提取过程完成后，单击“完成”。  默认已选择“执行 setup.exe”。  单击“完成”后，Setup.exe 会将 Microsoft Azure 备份服务器安装到指定的位置。 
+6. 提取过程完成后，单击“完成”。 默认已选择“执行 setup.exe”。 单击“完成”后，Setup.exe 会将 Microsoft Azure 备份服务器安装到指定的位置。
 
    ![Microsoft Azure 备份安装向导](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 
 ## <a name="install-the-software-package"></a>安装软件包
 
-在前一步骤中，我们已单击“完成”退出了提取阶段，并启动了 Azure 备份服务器安装向导。 
+在前一步骤中，我们已单击“完成”退出了提取阶段，并启动了 Azure 备份服务器安装向导。
 
 ![Microsoft Azure 备份安装向导](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
 Azure 备份服务器与 Data Protection Manager 共享代码。 在 Azure 备份服务器安装程序中会看到对 Data Protection Manager 和 DPM 的引用。 尽管 Azure 备份服务器和 Data Protection Manager 属于不同的产品，但两者密切相关。
 
-1. 若要启动安装向导，请单击“Microsoft Azure 备份服务器”。 
+1. 若要启动安装向导，请单击“Microsoft Azure 备份服务器”。
 
    ![Microsoft Azure 备份安装向导](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
 
-2. 在“欢迎”屏幕上，单击“下一步”。  
+2. 在“欢迎”屏幕上，单击“下一步”。
 
     ![Azure 备份服务器 - 欢迎页和先决条件检查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-setup-6.png)
 
-3. 在“先决条件检查”屏幕上，单击“检查”以确定是否符合 Azure 备份服务器的硬件和软件先决条件。  
+3. 在“先决条件检查”屏幕上，单击“检查”以确定是否符合 Azure 备份服务器的硬件和软件先决条件。
 
     ![Azure 备份服务器 - 欢迎页和先决条件检查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    如果环境符合先决条件，则会显示一条消息，指出计算机符合要求。 单击“下一步”。   
+    如果环境符合先决条件，则会显示一条消息，指出计算机符合要求。 单击“下一步”。  
 
     ![Azure 备份服务器 - 已通过先决条件检查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
-    如果环境不符合先决条件，屏幕上会指明问题。 不符合的先决条件也会列在 DpmSetup.log 中。 解决先决条件错误，然后运行“再次检查”。  只有在符合所有先决条件之后，安装才能继续。
+    如果环境不符合先决条件，屏幕上会指明问题。 不符合的先决条件也会列在 DpmSetup.log 中。 解决先决条件错误，然后运行“再次检查”。 只有在符合所有先决条件之后，安装才能继续。
 
     ![Azure 备份服务器 - 不符合安装先决条件](./media/backup-mabs-install-azure-stack/installation-errors.png)
 
-4. Microsoft Azure 备份服务器需要 SQL Server。 Azure 备份服务器安装包与相应的 SQL Server 二进制文件捆绑在一起。 可以根据需要使用自己的 SQL 安装。 但是，建议的选项是让安装程序添加新的 SQL Server 实例。 为了确保选项符合环境，请单击“检查并安装”。 
+4. Microsoft Azure 备份服务器需要 SQL Server。 Azure 备份服务器安装包与相应的 SQL Server 二进制文件捆绑在一起。 可以根据需要使用自己的 SQL 安装。 但是，建议的选项是让安装程序添加新的 SQL Server 实例。 为了确保选项符合环境，请单击“检查并安装”。
 
    > [!NOTE]
    > Azure 备份服务器不能与远程 SQL Server 实例配合使用。 Azure 备份服务器使用的实例必须在本地。
@@ -230,23 +229,23 @@ Azure 备份服务器与 Data Protection Manager 共享代码。 在 Azure 备�
 
     ![Azure 备份服务器 - 欢迎页和先决条件检查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
 
-    检查后，如果虚拟机满足安装 Azure 备份服务器的先决条件，请单击“下一步”。 
+    检查后，如果虚拟机满足安装 Azure 备份服务器的先决条件，请单击“下一步”。
 
     ![Azure 备份服务器 - 欢迎页和先决条件检查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
 
-    如果发生失败并出现重启计算机的建议，请重启计算机。 重新启动计算机之后重启安装程序，出现“SQL 设置”屏幕时，单击“再次检查”。  
+    如果发生失败并出现重启计算机的建议，请重启计算机。 重新启动计算机之后重启安装程序，出现“SQL 设置”屏幕时，单击“再次检查”。
 
-5. 在“安装设置”中，提供 Microsoft Azure 备份服务器文件的安装位置，然后单击“下一步”。  
+5. 在“安装设置”中，提供 Microsoft Azure 备份服务器文件的安装位置，然后单击“下一步”。
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
     备份到 Azure 需有暂存位置。 确保暂存位置的大小至少为要备份到 Azure 的数据的 5%。 在磁盘保护方面，安装完成之后需要配置独立的磁盘。 有关存储池的详细信息，请参阅[配置存储池和磁盘存储](https://technet.microsoft.com/library/hh758075.aspx)。
 
-6. 在“安全设置”屏幕上，为受限的本地用户帐户提供强密码，然后单击“下一步”。  
+6. 在“安全设置”屏幕上，为受限的本地用户帐户提供强密码，然后单击“下一步”。
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
 
-7. 在“选择使用 Microsoft 更新”屏幕上选择是否要使用“Microsoft 更新”来检查更新，然后单击“下一步”。   
+7. 在“选择使用 Microsoft 更新”屏幕上选择是否要使用“Microsoft 更新”来检查更新，然后单击“下一步”。
 
    > [!NOTE]
    > 我们建议让 Windows 更新重定向到 Microsoft 更新，此网站为 Windows 和 Microsoft Azure 备份服务器等其他产品提供了安全更新与重要更新。
@@ -260,41 +259,41 @@ Azure 备份服务器与 Data Protection Manager 共享代码。 在 Azure 备�
 
     Azure 备份服务器完成安装时，安装程序会立即启动 Microsoft Azure 恢复服务代理安装程序。
 
-9. Microsoft Azure 恢复服务代理安装程序将打开，并检查是否已建立 Internet 连接。 如果已建立 Internet 连接，则继续安装。 如果未建立连接，则提供代理详细信息用于连接到 Internet。 指定代理设置后，单击“下一步”。 
+9. Microsoft Azure 恢复服务代理安装程序将打开，并检查是否已建立 Internet 连接。 如果已建立 Internet 连接，则继续安装。 如果未建立连接，则提供代理详细信息用于连接到 Internet。 指定代理设置后，单击“下一步”。
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
 
-10. 若要安装 Microsoft Azure 恢复服务代理，请单击“安装”。 
+10. 若要安装 Microsoft Azure 恢复服务代理，请单击“安装”。
 
     ![Azure 备份服务器先决条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-mars-agent-16.png)
 
     Microsoft Azure 恢复服务代理（也称为 Azure 备份代理）会将 Azure 备份服务器配置为恢复服务保管库。 配置后，Azure 备份服务器始终将数据备份到同一个恢复服务保管库。
 
-11. 完成 Microsoft Azure 恢复服务代理安装后，单击“下一步”开始下一阶段：将 Azure 备份服务器注册到恢复服务保管库。 
+11. 完成 Microsoft Azure 恢复服务代理安装后，单击“下一步”开始下一阶段：将 Azure 备份服务器注册到恢复服务保管库。
 
     ![Azure 备份服务器先决条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
 
-    安装程序启动“注册服务器向导”。 
+    安装程序启动“注册服务器向导”。
 
-12. 切换到自己的 Azure 订阅和恢复服务保管库。 在“准备基础结构”菜单中，单击“下载”以下载保管库凭据。   如果步骤 2 中的“下载”按钮处于非活动状态，请选择“已下载或使用最新的 Azure 备份服务器安装”激活该按钮。   保管库凭据将下载到存储下载内容的位置。 请记住此位置，因为下一步骤需要指定它。
+12. 切换到自己的 Azure 订阅和恢复服务保管库。 在“准备基础结构”菜单中，单击“下载”以下载保管库凭据。 如果步骤 2 中的“下载”按钮处于非活动状态，请选择“已下载或使用最新的 Azure 备份服务器安装”激活该按钮。 保管库凭据将下载到存储下载内容的位置。 请记住此位置，因为下一步骤需要指定它。
 
     ![Azure 备份服务器先决条件 2](./media/backup-mabs-install-azure-stack/download-mars-credentials-17.png)
 
-13. 在“保管库标识”菜单中，单击“浏览”找到恢复服务保管库凭据。  
+13. 在“保管库标识”菜单中，单击“浏览”找到恢复服务保管库凭据。
 
     ![Azure 备份服务器先决条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-vault-id-18.png)
 
-    在“选择保管库凭据”对话框中转到下载位置，选择保管库凭据，然后单击“打开”。  
+    在“选择保管库凭据”对话框中转到下载位置，选择保管库凭据，然后单击“打开”。
 
-    凭据的路径会显示在保管库标识菜单中。 单击“下一步”转到“加密设置”。 
+    凭据的路径会显示在保管库标识菜单中。 单击“下一步”转到“加密设置”。
 
-14. 在“加密设置”对话框中，提供用于备份加密的通行短语，以及用于存储通行短语的位置，然后单击“下一步”。  
+14. 在“加密设置”对话框中，提供用于备份加密的通行短语，以及用于存储通行短语的位置，然后单击“下一步”。
 
     ![Azure 备份服务器先决条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-encryption-19.png)
 
     可以提供自己的通行短语，或使用通行短语生成器来创建一个。 通行短语属于你本人，Microsoft 不会保存或管理此通行短语。 为了应对灾难，请将通行短语保存在易于访问的位置。
 
-    单击“下一步”后，Azure 备份服务器将注册到恢复服务保管库。  安装程序继续安装 SQL Server 和 Azure 备份服务器。
+    单击“下一步”后，Azure 备份服务器将注册到恢复服务保管库。 安装程序继续安装 SQL Server 和 Azure 备份服务器。
 
     ![Azure 备份服务器先决条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-still-installing-20.png)
 
@@ -309,7 +308,7 @@ Azure 备份服务器与 Data Protection Manager 共享代码。 在 Azure 备�
 第一个备份副本保存在已附加到 Azure 备份服务器计算机的存储中。 有关添加磁盘的详细信息，请参阅[添加新式备份存储](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801)。
 
 > [!NOTE]
-> 即使你打算将数据发送到 Azure，也需要添加备份存储。 在 Azure 备份服务器体系结构中，恢复服务保管库将保存数据的第二个副本，而本地存储将保存第一个（必需的）备份副本。 
+> 即使你打算将数据发送到 Azure，也需要添加备份存储。 在 Azure 备份服务器体系结构中，恢复服务保管库将保存数据的第二个副本，而本地存储将保存第一个（必需的）备份副本。
 >
 >
 
@@ -324,9 +323,9 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 | 连接状态 | Azure 订阅 | 备份到 Azure | 备份到磁盘 | 从 Azure 还原 | 从磁盘还原 |
 | --- | --- | --- | --- | --- | --- |
 | 已连接 |活动 |允许 |允许 |允许 |允许 |
-| 连续 |已过期 |已停止 |已停止 |允许 |允许 |
-| 连续 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
-| 连接断开超过 15 天 |活动 |已停止 |已停止 |允许 |允许 |
+| 已连接 |已过期 |已停止 |已停止 |允许 |允许 |
+| 已连接 |已解除设置 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
+| 连接断开超过 15 天 |活跃 |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |Expired |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 
@@ -340,16 +339,16 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 - \*.microsoftonline.com
 - \*.windows.net
 
-在 Azure 备份服务器上恢复与 Azure 的连接后，Azure 订阅状态将确定可执行的操作。 服务器变为“已连接”状态后，请使用[“网络连接”](backup-mabs-install-azure-stack.md#network-connectivity)中的表查看可用操作。 
+在 Azure 备份服务器上恢复与 Azure 的连接后，Azure 订阅状态将确定可执行的操作。 服务器变为“已连接”状态后，请使用[“网络连接”](backup-mabs-install-azure-stack.md#network-connectivity)中的表查看可用操作。
 
 ### <a name="handling-subscription-states"></a>处理订阅状态
 
-可将 Azure 订阅从“已过期”或“已取消预配”状态更改为“活动”状态。    当订阅状态不是“活动”时： 
+可将 Azure 订阅从“已过期”或“已取消预配”状态更改为“活动”状态。 当订阅状态不是“活动”时：
 
-- 订阅处于“已取消预配”状态时，会失去功能。  将订阅还原到“活动”状态可以挽回备份/还原功能。  如果以够长的保留期来保存本地磁盘上的备份数据，则可以检索这些备份数据。 但是，一旦订阅进入“已取消预配”状态，Azure 中的备份数据便会丢失且不可检索。 
-- 订阅处于“已过期”状态时，会失去功能。  当订阅处于“已过期”状态时，计划的备份不会运行。 
+- 订阅处于“已取消预配”状态时，会失去功能。 将订阅还原到“活动”状态可以挽回备份/还原功能。 如果以够长的保留期来保存本地磁盘上的备份数据，则可以检索这些备份数据。 但是，一旦订阅进入“已取消预配”状态，Azure 中的备份数据便会丢失且不可检索。
+- 订阅处于“已过期”状态时，会失去功能。 当订阅处于“已过期”状态时，计划的备份不会运行。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果 Microsoft Azure 备份服务器在安装阶段（或者备份或还原时）失败并出现错误，请参阅[错误代码文档](https://support.microsoft.com/kb/3041338)。
 此外，还可以参考 [Azure 备份相关的常见问题](backup-azure-backup-faq.md)

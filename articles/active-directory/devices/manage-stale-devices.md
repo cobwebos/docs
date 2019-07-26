@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e9c11613a9bdcaedad1a69662b2d6bd7bfefc3b
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 3661b3f7fd37a329857a74d32d292678d98f5aef
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867261"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499835"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理陈旧的设备
 
@@ -53,7 +53,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 可通过两个选项检索活动时间戳的值：
 
-- Azure 门户中[设备页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)上的“活动”列 
+- Azure 门户中[设备页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)上的“活动”列
 
     ![活动时间戳](./media/manage-stale-devices/01.png)
 
@@ -69,8 +69,8 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 若要更新 Azure AD 中的设备，需要一个具有以下角色之一的帐户：
 
-- 全局管理员角色
-- 云设备管理员（现已推出新角色！）
+- 全局管理员
+- 云设备管理员
 - Intune 服务管理员
 
 在清理策略中，选择具有所需角色的帐户。 

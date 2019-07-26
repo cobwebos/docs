@@ -1,5 +1,5 @@
 ---
-title: 在 Azure AD 应用代理中使用连接器组在单独的网络和位置上发布应用程序 | Microsoft Docs
+title: 在单独的网络上发布应用 Azure AD 应用代理连接器组 |Microsoft Docs
 description: 介绍如何在 Azure AD 应用程序代理中创建和管理连接器组。
 services: active-directory
 author: msmimart
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 574ce6def407f302439f6c53356fe69259240b2e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: dae4eea3e08818d43482c995595cc9fbc3f91910
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702478"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381484"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
 
@@ -41,21 +41,21 @@ ms.locfileid: "67702478"
 使用以下步骤创建任意数量的连接器组。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 选择“Azure Active Directory”   > “企业应用程序”   > “应用程序代理”  。
-1. 选择“新建连接器组”  。 此时会显示“新建连接器组”边栏选项卡。
+1. 选择“Azure Active Directory” > “企业应用程序” > “应用程序代理”。
+1. 选择“新建连接器组”。 此时会显示“新建连接器组”边栏选项卡。
 
-   ![显示屏幕，以选择新的连接器组](./media/application-proxy-connector-groups/new-group.png)
+   ![显示用于选择新连接器组的屏幕](./media/application-proxy-connector-groups/new-group.png)
 
 1. 为新的连接器组提供一个名称，并使用下拉菜单选择哪些连接器属于此组。
-1. 选择“保存”  。
+1. 选择“保存”。
 
 ## <a name="assign-applications-to-your-connector-groups"></a>将应用程序分配到连接器组
 
 对已使用应用程序代理发布的每个应用程序使用以下步骤。 首次发布应用程序时，可以将其分配到连接器组，也可以在任何时候使用以下步骤更改分配。
 
-1. 在目录的管理仪表板中，选择“企业应用程序”   >   “所有应用程序”> 需要分配到连接器组的应用程序 >  “应用程序代理”。
-1. 使用“连接器组”  下拉菜单选择要让应用程序使用的组。
-1. 单击“保存”应用所做的更改。 
+1. 在目录的管理仪表板中，选择“企业应用程序” > “所有应用程序”> 需要分配到连接器组的应用程序 >“应用程序代理”。
+1. 使用“连接器组”下拉菜单选择要让应用程序使用的组。
+1. 单击“保存”应用所做的更改。
 
 ## <a name="use-cases-for-connector-groups"></a>连接器组用例
 
@@ -77,7 +77,7 @@ ms.locfileid: "67702478"
 
 例如，组织有许多虚拟机连接到其自己的 IaaS 托管虚拟网络。 为了允许员工使用这些应用程序，这些专用网络使用站点到站点 VPN 连接到公司网络。 这为位于本地的员工提供了良好的体验。 但是，这可能不适合远程员工，因为它需要额外的本地基础结构来路由访问权限，如下图所示：
 
-![图演示了 Azure AD IaaS 网络](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![阐释 Azure AD IaaS 网络的关系图](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 使用 Azure AD 应用程序代理连接器组，可以启用常见服务来保护对所有应用程序的访问，而不会对公司网络创建额外的依赖项：
 
@@ -108,7 +108,7 @@ ms.locfileid: "67702478"
 
 如果不使用连接器组，配置将如下所示：
 
-![示例 Azure AD 无连接器组](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![示例 Azure AD 没有连接器组](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
 此配置足以用于小型部署和测试。 如果组织具有平面网络拓扑，则此配置也非常适用。
 
@@ -116,7 +116,7 @@ ms.locfileid: "67702478"
 
 此配置是默认配置的演变，其中存在一个运行在隔离网络（如 IaaS 虚拟网络）的特定应用：
 
-![示例 Azure AD 无连接器组和隔离的网络](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![示例 Azure AD 没有连接器组和隔离的网络](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>建议配置 - 几个特定组和一个用于空闲连接器的默认组
 
@@ -124,7 +124,7 @@ ms.locfileid: "67702478"
 
 在下面的示例中，公司有两个数据中心，数据中心 A 和数据中心 B，每个站点有两个连接器。 每个站点都有不同的应用程序在其上运行。
 
-![公司有 2 个数据中心和 2 个连接器的示例](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+![具有2个数据中心和2个连接器的公司示例](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
 ## <a name="next-steps"></a>后续步骤
 

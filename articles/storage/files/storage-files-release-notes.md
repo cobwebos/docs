@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 7/12/2019
+ms.date: 7/24/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5a2ec72f835b720e0c760069b58ef8f092aedcb2
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: de0482f49e919d0cbb500e9ee8b27ccf8287fb99
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875827"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489573"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,6 +25,7 @@ ms.locfileid: "67875827"
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
+| 2019年7月更新汇总- [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019年7月24日 | 支持-[试验](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
 | 2019年7月更新汇总- [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019年7月12日 | 支持-[试验](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
 | V7 版本- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019年6月19日 | 支持 |
 | 2019年6月更新汇总- [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019年6月27日 | 支持 |
@@ -45,6 +46,14 @@ ms.locfileid: "67875827"
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-7200"></a>代理版本7.2.0。0
+以下发行说明适用于2019年7月24日发布的 Azure 文件同步代理的版本7.2.0.0。 除了为版本7.0.0.0 列出的发行说明外, 还提供了这些说明。
+
+此版本修复的问题列表：  
+- 如果代理配置为 null, 则存储同步代理 (FileSyncSvc) 崩溃。
+- 如果服务器上有多个终结点具有相同的名称, 服务器终结点将启动 BCDR (错误 0x80c80257-ECS_E_BCDR_IN_PROGRESS)。
+- 云分层可靠性改进。
 
 ## <a name="agent-version-7100"></a>代理版本7.1.0。0
 以下发行说明适用于2019年7月12日发布的 Azure 文件同步代理的版本7.1.0.0。 除了为版本7.0.0.0 列出的发行说明外, 还提供了这些说明。

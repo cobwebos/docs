@@ -3,23 +3,17 @@ title: 云服务和管理证书 | Microsoft Docs
 description: 了解如何使用 Microsoft Azure 创建和使用证书
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: fc70d00d-899b-4771-855f-44574dc4bfc6
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 82d1114451b677880b0b02234546d9cdb2e743e2
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: gwallace
+ms.openlocfilehash: 3c84c6832856986a45be7d275fb94a6c5fc066f0
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593049"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359195"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure 云服务证书概述
 证书在 Azure 中用于云服务（[服务证书](#what-are-service-certificates)）以及用于通过管理 API 进行身份验证（[管理证书](#what-are-management-certificates)）。 本主题同时提供了有关这两种证书类型的一般概述，并说明了如何[创建](#create)并将其部署到 Azure。
@@ -39,7 +33,7 @@ Azure 使用的证书可以包含一个私钥或公钥。 证书具有指纹，�
 服务证书可与服务分开管理，且可由不同的人员管理。 例如，一名开发人员可以上传服务包，该服务包引用 IT 管理员以前上传到 Azure 的证书。 IT 管理员可以管理并续订该证书（更改服务配置）而无需上传新的服务包。 可以在没有新服务包的情况下进行更新的原因是，证书的逻辑名称、存储名称和位置是在服务定义文件中指定的，而证书指纹是在服务配置文件中指定的。 若要更新证书，只需上传新证书并更改服务配置文件中的指纹值。
 
 >[!Note]
->[云服务常见问题-配置和管理](cloud-services-configuration-and-management-faq.md)文章提供了有关证书一些有用信息。
+>[云服务常见问题-配置和管理一](cloud-services-configuration-and-management-faq.md)文包含有关证书的一些有用信息。
 
 ## <a name="what-are-management-certificates"></a>什么是管理证书？
 管理证书使你可以使用经典部署模型进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）会使用这些证书来自动配置和部署各种 Azure 服务。 实际上，这些证书与云服务并无关系。 
@@ -64,7 +58,7 @@ Azure 使用的证书可以包含一个私钥或公钥。 证书具有指纹，�
     > 无法获取 cloudapp.net 域（或与 Azure 相关的任何域）的 SSL 证书；该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，**contoso.net**，而不是 **contoso.cloudapp.net**。
 
 * 至少为 2048 位加密。
-* **仅服务证书**：客户端证书必须驻留在个人  证书存储区。
+* **仅服务证书**：客户端证书必须驻留在个人证书存储区。
 
 有两种简单的方法可在 Windows 上创建证书，即使用 `makecert.exe` 实用程序或 IIS。
 
@@ -82,7 +76,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 > 如果要将此证书用于某个 IP 地址而不是域，请在 -DnsName 参数中使用该 IP 地址。
 
 
-如果要将此[证书用于管理门户](../azure-api-management-certs.md)，请将其导出到 .cer  文件：
+如果要将此[证书用于管理门户](../azure-api-management-certs.md)，请将其导出到 .cer 文件：
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer

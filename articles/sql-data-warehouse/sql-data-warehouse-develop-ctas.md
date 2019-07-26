@@ -2,7 +2,7 @@
 title: Azure SQL 数据仓库中的 CREATE TABLE AS SELECT (CTAS) | Microsoft Docs
 description: 有关使用 Azure SQL 数据仓库中的 CREATE TABLE AS SELECT (CTAS) 语句开发解决方案的介绍和示例。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 91de474cc0610099b4264cc6d0dfbd26e8df0618
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b4ccd7742f8a84eec2d63a86e1387733d4c1864
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851451"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479695"
 ---
 # <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的 CREATE TABLE AS SELECT (CTAS)
 
@@ -132,7 +132,7 @@ DROP TABLE FactInternetSales_old;
 * MERGE 语句
 
 > [!TIP]
-> 试着考虑"CTAS 第一个。" 一般情况下，最好是使用 CTAS 来解决问题，即使因此要写入更多数据。
+> 请尝试考虑 "CTAS first"。 一般情况下，最好是使用 CTAS 来解决问题，即使因此要写入更多数据。
 
 ## <a name="ansi-join-replacement-for-update-statements"></a>替换 Update 语句的 ANSI Join
 
@@ -345,7 +345,7 @@ AS
 SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 ```
 
-注意以下事项：
+请注意以下事项：
 
 * 可以使用 CAST 或 CONVERT。
 * 使用 ISNULL 而不是 COALESCE 来强制可为 NULL 性。 请参阅以下注释。

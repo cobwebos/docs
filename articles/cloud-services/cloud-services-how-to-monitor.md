@@ -3,23 +3,17 @@ title: 监视 Azure 云服务 | Microsoft Docs
 description: 介绍监视 Azure 云服务需要涉及到哪些操作，以及可以选择哪些选项。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: ''
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 844fef9a87c1db06c6415c59d4be26caf928382b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: ac0ea7557774f0e59cb6a6eca1fc739592ab971d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61432887"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359114"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
 
@@ -60,7 +54,7 @@ ms.locfileid: "61432887"
 
 首先，如果你没有**经典**存储帐户，请[创建一个](../storage/common/storage-quickstart-create-account.md)。 确保为创建的存储帐户指定**经典部署模型**。
 
-接下来，导航到“存储帐户(经典)”资源。  选择“设置” > “访问密钥”，并复制“主连接字符串”值。    云服务需要此值。 
+接下来，导航到“存储帐户(经典)”资源。 选择“设置” > “访问密钥”，并复制“主连接字符串”值。 云服务需要此值。 
 
 必须更改两个配置文件才能启用高级诊断：**ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg**。
 

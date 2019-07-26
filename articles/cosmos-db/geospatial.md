@@ -4,14 +4,14 @@ description: 了解如何使用 Azure Cosmos DB 和 SQL API 创建、索引和�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: d0571608e154915a473145374ce007854aaa57f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1654ccabab751896fcbbab09d112080ccc2f67b6
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480122"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467715"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>在 Azure Cosmos DB SQL API 帐户中使用地理空间和 GeoJSON 位置数据
 
@@ -32,7 +32,7 @@ Azure Cosmos DB 支持对使用 [GeoJSON 规范](https://tools.ietf.org/html/rfc
 ### <a name="points-linestrings-and-polygons"></a>点、LineString 和多边形
 **点**代表空间中的单一位置。 在地理空间数据中，某个点所代表的确切位置可能是杂货店、电话亭、汽车或城市的街道地址。  点使用其坐标对或经纬度，以 GeoJSON 格式（和 Azure Cosmos DB）表示。 以下是点的 JSON 示例。
 
-Azure Cosmos DB 中的点 
+Azure Cosmos DB 中的点
 
 ```json
 {
@@ -50,7 +50,7 @@ Azure Cosmos DB 中的点
 
 如下面包含位置数据的用户配置文件示例所示，此数据可以嵌入 Azure Cosmos DB 文档中：
 
-存储在 Azure Cosmos DB 中包含位置的用户配置文件 
+存储在 Azure Cosmos DB 中包含位置的用户配置文件
 
 ```json
 {
@@ -67,7 +67,7 @@ Azure Cosmos DB 中的点
 
 除了点之外，GeoJSON 也支持 LineString 和多边形。 **LineString** 表示空间中一连串的点（两个或更多个）以及连接这些点的线段。 在地理空间数据中，LineString 通常用来表示高速公路或河流。 **多边形**是由相连接的点组成的边界，并形成闭合的 LineString。 多边形通常用来表示自然构成物（例如湖泊），或表示政治管辖权（例如省/市/自治区）。 以下是 Azure Cosmos DB 中多边形的示例。 
 
-GeoJSON 中的多边形 
+GeoJSON 中的多边形
 
 ```json
 {
@@ -89,7 +89,7 @@ GeoJSON 中的多边形
 > 
 > 
 
-除了点、LineString 和多边形之外，GeoJSON 也会针对如何对多个地理空间位置分组以及如何将任意属性与地理位置关联成为特征  指定表示形式。 由于这些对象都是有效的 JSON，因此均可在 Azure Cosmos DB 中存储及处理。 不过，Azure Cosmos DB 仅支持自动编制点的索引。
+除了点、LineString 和多边形之外，GeoJSON 也会针对如何对多个地理空间位置分组以及如何将任意属性与地理位置关联成为特征指定表示形式。 由于这些对象都是有效的 JSON，因此均可在 Azure Cosmos DB 中存储及处理。 不过，Azure Cosmos DB 仅支持自动编制点的索引。
 
 ### <a name="coordinate-reference-systems"></a>坐标参考系统
 由于地球的形状不规则，地理空间数据的坐标可以用许多坐标参考系统 (CRS) 来表示，而这些系统各有自己的参考框架和测量单位。 例如，“英国国家网格”对英国而言是非常精确的参考系统，但对其他地区则不是。 
@@ -142,7 +142,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-如果您没有的纬度和经度信息，但具有物理地址或位置名称，如城市或国家/地区，可以通过使用必应地图 REST 服务等地理编码服务来查找实际的坐标。 在[此处](https://msdn.microsoft.com/library/ff701713.aspx)详细了解必应地图地理编码。
+如果没有经纬度信息，但有物理地址或位置名称，如城市或国家/地区，则可以使用必应地图 REST 服务等地理编码服务来查找实际的坐标。 在[此处](https://msdn.microsoft.com/library/ff701713.aspx)详细了解必应地图地理编码。
 
 ## <a name="querying-spatial-types"></a>查询空间类型
 我们已经探讨过如何插入地理空间数据，现在就来看看如何通过 SQL 和 LINQ 使用 Azure Cosmos DB 查询此数据。
@@ -194,7 +194,7 @@ ST_WITHIN 中的多边形参数只能包含单个环形，也就是说，多边�
     }]
 
 > [!NOTE]
-> 与 Azure Cosmos DB 查询中不匹配类型的工作方式类似，如果任一参数中指定的位置值格式不正确或无效，则会评估为“未定义”  ，并且会在查询结果中跳过已评估的文档。 如果查询没有返回任何结果，请运行 ST_ISVALIDDETAILED 进行调试，以了解空间类型无效的原因。     
+> 与 Azure Cosmos DB 查询中不匹配类型的工作方式类似，如果任一参数中指定的位置值格式不正确或无效，则会评估为“未定义”，并且会在查询结果中跳过已评估的文档。 如果查询没有返回任何结果，请运行 ST_ISVALIDDETAILED 进行调试，以了解空间类型无效的原因。     
 > 
 > 
 
@@ -287,7 +287,7 @@ SQL .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用户在 LI
 ## <a name="indexing"></a>索引
 如[使用 Azure Cosmos DB 进行架构不可知的索引](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)一文中所述，我们设计的 Azure Cosmos DB 数据库引擎具有真正不可知的架构，并提供一流的 JSON 支持。 Azure Cosmos DB 的写入优化数据库引擎可以通过本机方式了解用 GeoJSON 标准表示的空间数据（点、多边形和线）。
 
-简单来说，测地坐标的几何图形会投影在 2D 平面上，并使用**四叉树**以渐进方式划分成单元格。 这些单元格会根据 **Hilbert 空间填充曲线**内的单元格位置映射到 1D，并保留点的位置。 此外，当位置数据进行索引编制后，会经历称为“分割”  的过程，也就是说，在某个位置上相交的所有单元格都会被识别为键并存储在 Azure Cosmos DB 索引中。 在查询时，点和多边形等参数也会经过分割，以提取相关的格子 ID 范围，并用于从索引检索数据。
+简单来说，测地坐标的几何图形会投影在 2D 平面上，并使用**四叉树**以渐进方式划分成单元格。 这些单元格会根据 **Hilbert 空间填充曲线**内的单元格位置映射到 1D，并保留点的位置。 此外，当位置数据进行索引编制后，会经历称为“分割”的过程，也就是说，在某个位置上相交的所有单元格都会被识别为键并存储在 Azure Cosmos DB 索引中。 在查询时，点和多边形等参数也会经过分割，以提取相关的格子 ID 范围，并用于从索引检索数据。
 
 如果指定的索引策略包含 /*（所有路径）的空间索引，则表示在集合中找到的所有点均已编制索引，能进行有效的空间查询（ST_WITHIN 和 ST_DISTANCE）。 空间索引没有精度值，并且始终使用默认的精度值。
 

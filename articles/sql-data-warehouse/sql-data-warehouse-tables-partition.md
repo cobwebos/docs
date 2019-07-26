@@ -2,7 +2,7 @@
 title: 对 Azure SQL 数据仓库中的表进行分区 | Microsoft Docs
 description: 在 Azure SQL 数据仓库中使用表分区的建议和示例。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: af9fa49d274036888fd266f8983c523a3b077cbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6791ff2f2a9719a19d2c9abc4ff480435de7bb00
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851511"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477090"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>对 SQL 数据仓库中的表进行分区
 在 Azure SQL 数据仓库中使用表分区的建议和示例。
@@ -36,7 +36,7 @@ ms.locfileid: "65851511"
 ## <a name="sizing-partitions"></a>调整分区大小
 虽然在某些情况下可以使用分区来改进性能，但如果在创建表时使用**过多**分区，则在某些情况下可能会降低性能。  对于聚集列存储表，尤其要考虑到这一点。 若要使数据分区有益于性能，务必了解使用数据分区的时机，以及要创建的分区的数目。 对于多少分区属于分区过多并没有简单的硬性规定，具体取决于数据，以及要同时加载多少分区。 一个成功的分区方案通常只有数十到数百的分区，没有数千个。
 
-在“聚集列存储”表上创建分区时，务请考虑每个分区可容纳的行数  。 对于聚集列存储表来说，若要进行最合适的压缩并获得最佳性能，则每个分布和分区至少需要 1 百万行。 在创建分区之前，SQL 数据仓库已将每个表细分到 60 个分布式数据库中。 向表添加的任何分区都是基于在后台创建的分布。 根据此示例，如果销售事实表包含 36 个月的分区，并假设 SQL 数据仓库有 60 个分布区，则销售事实表每个月应包含 6000 万行，或者在填充所有月份时包含 21 亿行。 如果表包含的行数少于每个分区行数的最小建议值，可考虑使用较少的分区，以增加每个分区的行数。 有关详细信息，请参阅[索引编制](sql-data-warehouse-tables-index.md)一文，其中包含的查询可用于评估群集列存储索引的质量。
+在“聚集列存储”表上创建分区时，务请考虑每个分区可容纳的行数。 对于聚集列存储表来说，若要进行最合适的压缩并获得最佳性能，则每个分布和分区至少需要 1 百万行。 在创建分区之前，SQL 数据仓库已将每个表细分到 60 个分布式数据库中。 向表添加的任何分区都是基于在后台创建的分布。 根据此示例，如果销售事实表包含 36 个月的分区，并假设 SQL 数据仓库有 60 个分布区，则销售事实表每个月应包含 6000 万行，或者在填充所有月份时包含 21 亿行。 如果表包含的行数少于每个分区行数的最小建议值，可考虑使用较少的分区，以增加每个分区的行数。 有关详细信息，请参阅[索引编制](sql-data-warehouse-tables-index.md)一文，其中包含的查询可用于评估群集列存储索引的质量。
 
 ## <a name="syntax-differences-from-sql-server"></a>与 SQL Server 的语法差异
 SQL 数据仓库引入了一种定义比 SQL Server 简单的分区的方法。 在 SQL 数据仓库中不像在 SQL Server 中一样使用分区函数和方案。 只需识别分区列和边界点。 尽管分区的语法可能与 SQL Server 稍有不同，但基本概念是相同的。 SQL Server 和 SQL 数据仓库支持一个表一个分区列，后者可以是范围分区。 若要详细了解分区，请参阅[已分区表和已分区索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes)。

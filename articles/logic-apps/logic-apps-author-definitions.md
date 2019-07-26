@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 121e2d2595b63a313d9307f7d47f90adacc30fc2
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 89a77c25c75617be0e1ef92b73eec28263f53f82
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296124"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385586"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>为 Azure 逻辑应用中的逻辑应用定义创建、编辑或扩展 JSON
 
@@ -31,9 +31,9 @@ ms.locfileid: "67296124"
 
 1. 登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。
 
-2. 在左侧菜单中选择“所有服务”。  在搜索框中查找“逻辑应用”，然后在结果中选择择自己的逻辑应用。
+2. 在左侧菜单中选择“所有服务”。 在搜索框中查找“逻辑应用”，然后在结果中选择择自己的逻辑应用。
 
-3. 在逻辑应用菜单中的“开发工具”  下，选择“逻辑应用代码视图”  。
+3. 在逻辑应用菜单中的“开发工具”下，选择“逻辑应用代码视图”。
 
    “代码视图”编辑器将会打开并显示 JSON 格式的逻辑应用定义。
 
@@ -47,123 +47,36 @@ ms.locfileid: "67296124"
 
 2. 找到并打开逻辑应用的定义，默认情况下，该定义显示在[资源管理器模板](../azure-resource-manager/resource-group-overview.md#template-deployment)中，其名为 **LogicApp.json**。 可以使用并自定义此模板，以部署到不同的环境中。
 
-3. 打开逻辑应用定义和模板的快捷菜单。 选择“使用逻辑应用设计器打开”  。
+3. 打开逻辑应用定义和模板的快捷菜单。 选择“使用逻辑应用设计器打开”。
 
    ![在 Visual Studio 解决方案中打开逻辑应用](./media/logic-apps-author-definitions/open-logic-app-designer.png)
 
    > [!TIP]
-   > 如果在 Visual Studio 2019 中没有此命令，检查你的 Visual Studio 具有最新的更新。
+   > 如果你的 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 的最新更新。
 
-4. 在设计器底部，选择“代码视图”  。 
+4. 在设计器底部，选择“代码视图”。 
 
    “代码视图”编辑器将会打开并显示 JSON 格式的逻辑应用定义。
 
-5. 若要返回设计器视图，请在“代码视图”编辑器的底部选择“设计”  。
+5. 若要返回设计器视图，请在“代码视图”编辑器的底部选择“设计”。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 
-使用参数可以在整个逻辑应用中重复使用值，适合替换可能经常更改的值。 例如，如果要在多个位置使用某个电子邮件地址，应将该电子邮件地址定义为参数。
+部署生命周期通常具有不同的环境用于开发、测试、过渡和生产。 如果你有想要在不硬编码的情况下重复使用的值, 或根据你的部署需求而异的值, 则可以为工作流定义创建[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md), 以便还可以自动执行逻辑应用部署. 
 
-另外，当需要在不同的环境中重写参数时，参数也很有用。有关详细信息，请参阅[用于部署的参数](#deployment-parameters)和 [Azure 逻辑应用适用的 REST API 文档](https://docs.microsoft.com/rest/api/logic)。
+请按照以下常规步骤*将这些*值参数化或定义并使用参数。 然后, 你可以在将这些值传递给模板的单独参数文件中提供值。 这样, 你就可以更轻松地更改这些值, 而无需更新和重新部署逻辑应用。 有关完整详细信息, [请参阅概述:利用 Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)自动部署逻辑应用。
 
-> [!NOTE]
-> 仅可以在代码视图中使用参数。
+1. 在模板中, 定义模板参数和工作流定义参数, 分别用于接受在部署和运行时中使用的值。
 
-在[第一个示例逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)中，将创建工作流以在网站的 RSS 源中出现新帖子时发送电子邮件。 该源的 URL 是硬编码，因此此示例演示如何将查询值替换为参数，以便更轻松地更改该源的 URL。
+   模板参数在工作流定义之外的参数部分中定义, 而工作流定义参数则在工作流定义内的参数部分中定义。
 
-1. 在代码视图中找到 `parameters : {}` 对象，然后添加 `currentFeedUrl` 对象：
+1. 将硬编码值替换为引用这些参数的表达式。 模板表达式使用不同于工作流定义表达式的语法。
 
-   ``` json
-   "currentFeedUrl" : {
-      "type" : "string",
-      "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
-   }
-   ```
+   避免在部署时 (在运行时计算的工作流定义表达式内), 不使用模板表达式来使代码复杂化。 仅在工作流定义之外使用模板表达式。 仅使用工作流定义中的工作流定义表达式。
 
-2. 在 `When_a_feed-item_is_published` 操作中，找到 `queries` 部分，然后将该查询值替换为 `"feedUrl": "#@{parameters('currentFeedUrl')}"`。
+   指定工作流定义参数的值时, 可以使用工作流定义之外的参数部分引用模板参数, 但仍会在逻辑应用的资源定义中引用模板参数。 这样, 便可以将模板参数值传递到工作流定义参数。
 
-   **之前**
-   ``` json
-   }
-      "queries": {
-          "feedUrl": "https://s.ch9.ms/Feeds/RSS"
-       }
-   },
-   ```
-
-   **之后**
-   ``` json
-   }
-      "queries": {
-          "feedUrl": "#@{parameters('currentFeedUrl')}"
-       }
-   },
-   ```
-
-   若要联接两个或更多符串，还可以使用 `concat` 函数。 
-   例如，`"@concat('#',parameters('currentFeedUrl'))"` 的工作方式与前面的示例相同。
-
-3.  完成后，选择“保存”  。
-
-现在，可通过将其他 URL 传递到 `currentFeedURL` 对象来更改网站的 RSS 源。
-
-<a name="deployment-parameters"></a>
-
-## <a name="deployment-parameters-for-different-environments"></a>适用于不同环境的部署参数
-
-通常，部署生命周期具有用于开发、过渡和生产环境。 例如，用户可能会将同一逻辑应用定义用于所有这些环境，但使用不同的数据库。 同样，可能会需要在不同区域中使用同一定义以实现高可用性，但需要每个逻辑应用实例使用该区域的数据库。
-
-> [!NOTE]
-> 这种情况不同于在*运行时*使用参数，后一情况应改用 `trigger()` 函数。
-
-下面是基本定义：
-
-``` json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "uri": {
-            "type": "string"
-        }
-    },
-    "triggers": {
-        "request": {
-          "type": "request",
-          "kind": "http"
-        }
-    },
-    "actions": {
-        "readData": {
-            "type": "Http",
-            "inputs": {
-                "method": "GET",
-                "uri": "@parameters('uri')"
-            }
-        }
-    },
-    "outputs": {}
-}
-```
-在逻辑应用的实际 `PUT` 请求中，可以提供参数 `uri`。 在每个环境中，可为 `connection` 参数提供不同值。 默认值不再存在，因此逻辑应用有效负载需要以下参数：
-
-``` json
-{
-    "properties": {},
-        "definition": {
-          /// Use the definition from above here
-        },
-        "parameters": {
-            "connection": {
-                "value": "https://my.connection.that.is.per.enviornment"
-            }
-        }
-    },
-    "location": "westus"
-}
-```
-
-若要了解详细信息，请参阅 [Azure 逻辑应用适用的 REST API 文档](https://docs.microsoft.com/rest/api/logic/)。
+1. 在单独的[参数文件](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)中存储参数的值, 并将该文件包含在你的部署中。
 
 ## <a name="process-strings-with-functions"></a>使用函数处理字符串
 
