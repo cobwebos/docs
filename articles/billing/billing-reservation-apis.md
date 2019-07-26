@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2019
 ms.author: banders
-ms.openlocfilehash: 6d63f9a393dbb40c3b0952eba9ab9449fd7b558d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20ed2bcf793ab5c3913ccf66d338e71c1a99a003
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702620"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478923"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>适用于 Azure 预留自动化的 API
 
@@ -30,9 +30,9 @@ ms.locfileid: "64702620"
 
 ## <a name="buy-a-reservation"></a>购买预留项
 
-你可以购买 Azure 保留和软件计划以编程方式使用 REST Api。 若要了解详细信息，请参阅[预订订单的采购 API](/rest/api/reserved-vm-instances/reservationorder/purchase)。
+你可以使用 REST Api 以编程方式购买 Azure 预订和软件计划。 若要了解详细信息, 请参阅[保留订单-采购 API](/rest/api/reserved-vm-instances/reservationorder/purchase)。
 
-下面是购买使用 REST API 的示例请求：
+下面是使用 REST API 购买的示例请求:
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/<GUID>?api-version=2019-04-01
@@ -61,7 +61,7 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 }
 ```
 
-您还可以购买保留在 Azure 门户中。 有关详细信息，请参阅以下文章：
+你还可以在 Azure 门户中购买保留项。 有关详细信息，请参阅以下文章：
 
 服务计划：
 - [虚拟机](../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
@@ -104,11 +104,11 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 
 ## <a name="change-scope-for-a-reservation"></a>更改预留范围
 
-预订范围可以是计费上下文中的单个订阅或所有订阅。 如果将范围设置为单个订阅，预留将与所选订阅中正在运行的资源匹配。 如果将范围设置为共享，Azure 会将预留与计费上下文内所有订阅中运行的资源匹配。 计费上下文依赖于用于购买预留的订阅。 有关详细信息，请参阅[管理预留 - 更改范围](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)。
+预订的作用域可以是单个订阅、单个资源组或计费上下文中的所有订阅。 如果将范围设置为单个订阅或单个资源组, 则预订将与所选订阅中正在运行的资源相匹配。 如果删除或移动订阅或资源组, 则不会使用保留。  如果将范围设置为共享，Azure 会将预留与计费上下文内所有订阅中运行的资源匹配。 计费上下文依赖于用于购买预留的订阅。 你可以选择购买范围或在购买后随时更改。 有关详细信息，请参阅[管理预留 - 更改范围](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)。
 
 若要以编程方式更改范围，请使用 API [预留 - 更新](/rest/api/reserved-vm-instances/reservation/update)。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解详情
 
 - [什么是适用于 Azure 的预留](billing-save-compute-costs-reservations.md)
 - [了解 VM 预留折扣的应用方式](billing-understand-vm-reservation-charges.md)

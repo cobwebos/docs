@@ -1,110 +1,126 @@
 ---
-title: 返回 Azure 数据框边缘设备 |Microsoft Docs
-description: 介绍如何返回 Azure 数据框边缘设备并删除设备的顺序。
+title: 返回或替换 Azure Data Box Edge 设备 |Microsoft Docs
+description: 描述如何返回或替换 Azure Data Box Edge 设备。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 07/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 9aeae0ab68d809b36a3316054f12a5a9657721f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5fee604a529e9ca6153f6c189f199577ae65426
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65468599"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356145"
 ---
-# <a name="return-your-azure-data-box-edge-device"></a>返回 Azure 数据框边缘设备
+# <a name="return-or-replace-your-azure-data-box-edge-device"></a>返回或替换 Azure Data Box Edge 设备
 
-本文介绍如何擦除的数据，然后返回 Azure 数据框边缘设备。 返回设备后，您还可以删除与设备关联的资源。
+本文介绍如何擦除数据, 然后返回 Azure Data Box Edge 设备。 返回设备后, 还可以删除与设备关联的资源, 或订购更换设备。
 
 在本文中，学习如何：
 
 > [!div class="checklist"]
-> * 擦除设备上的数据磁盘上的数据
-> * 打开支持票证以返回你的设备
-> * 设备设置包和安排提货
+> * 擦除设备上的数据磁盘中的数据
+> * 打开支持票证以返回设备
+> * 打包设备并安排分拣
 > * 删除 Azure 门户中的资源
+> * 获取更换设备
 
-## <a name="erase-data-from-the-device"></a>从设备中擦除数据
+## <a name="erase-data-from-the-device"></a>擦除设备上的数据
 
-若要擦除的设备的数据磁盘上的数据，您需要重置你的设备。 你可以重置你的设备使用本地 web UI 或 PowerShell 接口。
+若要将数据从设备的数据磁盘中擦除, 需要重置设备。 你可以使用本地 web UI 或 PowerShell 界面重置设备。
 
-重置之前，如果需要创建在设备上本地数据的副本。 可以将数据从设备复制到 Azure 存储容器中。
+重置之前, 请根据需要在设备上创建本地数据的副本。 可以将设备中的数据复制到 Azure 存储容器。
 
-若要重置你的设备使用本地 web UI，请执行以下步骤。
+若要使用本地 web UI 重置设备, 请执行以下步骤。
 
-1. 在本地 web UI 中，转到**维护 > 设备重置**。
-2. 选择**重置设备**。
+1. 在本地 web UI 中, 请参阅**维护 > 设备重置**。
+2. 选择 "**重置设备**"。
 
     ![重置设备](media/data-box-edge-return-device/device-reset-1.png)
 
-3. 如果出现确认提示，请查看警告，然后选择**是**以继续。
+3. 出现确认提示时, 查看警告, 然后选择 **"是"** 以继续。
 
     ![确认重置](media/data-box-edge-return-device/device-reset-2.png)  
 
-重置将擦除设备数据磁盘上的数据。 具体取决于你的设备上的数据量，此过程大约需要 30 到 40 分钟。
+Reset 会清除设备数据磁盘中的数据。 根据设备上的数据量, 此过程大约需30-40 分钟。
 
-或者，连接到设备以及如何使用 PowerShell 界面`Reset-HcsAppliance`cmdlet 要清除的数据磁盘中的数据。 有关详细信息，请参阅[重置设备](data-box-edge-connect-powershell-interface.md#reset-your-device)。
+或者, 连接到设备的 PowerShell 接口, 并使用`Reset-HcsAppliance` cmdlet 从数据磁盘中擦除数据。 有关详细信息, 请参阅[重置设备](data-box-edge-connect-powershell-interface.md#reset-your-device)。
 
 > [!NOTE]
-> - 如果您要交换或升级到新设备，我们建议仅后收到了新的设备重置你的设备。
-> - 仅重置的设备中删除设备的所有本地数据。 在云中的数据不会被删除，并收集[费用](https://azure.microsoft.com/pricing/details/storage/)。 此数据需要删除使用之类的云存储管理工具单独[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
+> - 如果正在交换或升级到新设备, 我们建议你在收到新设备后重置设备。
+> - 设备重置仅删除设备上的所有本地数据。 云中的数据不会被删除, 并会收取[费用](https://azure.microsoft.com/pricing/details/storage/)。 此数据需要使用云存储管理工具 (如[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)) 单独删除。
 
 ## <a name="open-a-support-ticket"></a>打开支持票证
 
-若要开始返回过程，请执行以下步骤。
+若要开始返回过程, 请执行以下步骤。
 
-1. 与 Microsoft 支持部门，该值指示你想要返回的设备打开支持票证。 选择问题类型为**数据框边缘硬件**。
+1. 使用 Microsoft 支持部门打开支持票证, 表示你希望返回设备。 选择问题类型作为**Data Box Edge 硬件**。
 
     ![打开支持票证](media/data-box-edge-return-device/open-support-ticket-1.png)  
 
-2. Microsoft 支持工程师将与你联系。 提供寄送详细信息。
-3. 如果您需要返回传送框中，可以请求它。 答案**是**问题**需要返回一个空框**。
+2. Microsoft 支持部门工程师将与你联系。 提供寄送详细信息。
+3. 如果需要退回寄盒, 可以请求它。 对于问题回答 **"是"** ,**需要一个空的框返回**。
 
 
-## <a name="schedule-a-pickup"></a>安排提货
+## <a name="schedule-a-pickup"></a>计划分拣
 
-1. 关闭设备。 在本地 Web UI 中，转到“维护”>“电源设置”。 
-2. 选择**关闭**。 当系统提示确认，单击**是**以继续。 有关详细信息，请参阅[管理能力](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)。
-3. 拔下电源线，并从设备中删除所有网络电缆。
-4. 使用你自己的框或从 Azure 收到的空框准备发货包。 将设备和与在框中的设备附带的电源线。
-5. 粘贴从 Azure 收到包的发货标签。
-6. 安排区域快递公司取件。 如果在美国返回设备，您的运营商为 UPS。 安排提货：
+1. 关闭设备。 在本地 Web UI 中，转到“维护”>“电源设置”。
+2. 选择 "**关闭**"。 出现确认提示时, 单击 **"是"** 以继续。 有关详细信息, 请参阅[管理电源](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)。
+3. 拔下电源线, 并拔下设备的所有网络电缆。
+4. 使用自己的 box 或从 Azure 接收到的空框来准备发货包。 将设备和设备附带的电源线置于包装盒中。
+5. 将从 Azure 接收的装运标签添加到包中。
+6. 安排区域快递公司取件。 如果返回美国的设备, 则你的运营商处于 UPS。 安排提货：
 
     1. 给本地 UPS 打电话（特定于国家/地区的免费电话号码）。
-    2. 在您调用中，用引号括起来反向发货跟踪号上打印标签所示。
-    3. 如果不带引号的跟踪号，UPS 将要求您在提取期间支付额外费用。
+    2. 在调用中, 将反向发货跟踪号括起来, 如打印的标签所示。
+    3. 如果跟踪号未加引号, 则 UPS 会要求你在装货期间支付额外的费用。
 
-    而不是安排提货，您还可以删除数据框边缘最接近放置位置关闭。
+    你还可以将 Data Box Edge 放置在最近的下拉位置, 而不是计划分拣。
 
 ## <a name="delete-the-resource"></a>删除资源
 
-在 Azure 数据中心收到设备后，设备检查的损坏或被篡改的任何迹象。
+在 Azure 数据中心接收到设备后, 会检查设备是否损坏或任何篡改迹象。
 
-- 如果设备到达时保持不变并保持良好状态，则会停止该资源计费测定仪。 Microsoft 支持部门会联系你以确认设备已返回。 然后，可以删除与 Azure 门户中的设备关联的资源。
-- 如果设备到达时损坏严重，可能会应用罚金。 有关详细信息，请参阅[上丢失或损坏设备的常见问题](https://azure.microsoft.com/pricing/details/databox/edge/)并[产品服务条款](https://www.microsoft.com/licensing/product-licensing/products)。  
-
-
-可以删除 Azure 门户中的设备：
--   下订单后之前由 Microsoft 准备设备。
--   向 Microsoft 返回设备后，它在 Azure 数据中心，传递物理检查，Microsoft 支持部门调用以确认设备已返回。
-
-如果你已激活设备的另一个订阅或位置，则 Microsoft 将在一个工作日内你的订单移动到新订阅或位置。 移动顺序后，可以删除此资源。
+- 如果设备的运行状况不佳, 则该资源的计费指示器将停止。 Microsoft 支持部门将与你联系以确认返回了设备。 然后, 你可以在 Azure 门户中删除与设备关联的资源。
+- 如果设备出现严重损坏, 可能会收取罚款。 有关详细信息, 请参阅[丢失或损坏的设备](https://azure.microsoft.com/pricing/details/databox/edge/)和[产品条款的](https://www.microsoft.com/licensing/product-licensing/products)常见问题。  
 
 
-执行以下步骤来删除该设备和 Azure 门户中的资源。
+可以在 Azure 门户中删除设备:
+-   在您放置了订单后, 在 Microsoft 准备好设备之前。
+-   将设备返回给 Microsoft 后, 它会通过 Azure 数据中心的物理检测, 并 Microsoft 支持部门调用以确认返回了设备。
 
-1. 在 Azure 门户中，转到资源然后**概述**。 从命令栏中，选择**删除**。
+如果你已根据另一个订阅或位置激活了设备, Microsoft 将在一个工作日内将你的订单转移到新的订阅或位置。 移动订单后, 可以删除此资源。
+
+
+执行以下步骤以删除 Azure 门户中的设备和资源。
+
+1. 在 Azure 门户中, 请先前往资源, 然后再切换到 "**概述**"。 在命令栏中, 选择 "**删除**"。
 
     ![选择“删除”](media/data-box-edge-return-device/delete-resource-1.png)
 
-2. 在中**删除设备**边栏选项卡中，键入你想要删除选择的设备的名称**删除**。
+2. 在 "**删除设备**" 边栏选项卡中, 键入要删除的设备的名称, 然后选择 "**删除**"。
 
     ![确认删除](media/data-box-edge-return-device/delete-resource-2.png)
 
-收到通知后设备和已成功删除关联的资源。
+设备和关联的资源成功删除后, 会收到通知。
+
+## <a name="get-a-replacement-device"></a>获取更换设备
+
+如果现有设备有硬件故障或需要升级, 则需要更换设备。 当设备出现硬件问题时, 请执行以下步骤:
+
+1. 提出[硬件问题的支持票证](#open-a-support-ticket)。 Microsoft 支持部门将确定字段替换单元 (FRU) 在此实例上不可用, 或者设备需要硬件升级。 在这两种情况下, 支持将对替换设备进行排序。
+2. 为替代设备[创建新资源](data-box-edge-deploy-prep.md#create-a-new-resource)。 请确保选中 "**我有 Data Box Edge 设备**" 复选框。 
+3. 收到更换设备后, 请根据新资源[安装](data-box-edge-deploy-install.md)和[激活](data-box-edge-deploy-connect-setup-activate.md)替代设备。
+4. 按照所有步骤操作, 返回原始设备:
+    1. 打开另一个票证以返回原始设备。
+    2. [擦除设备上的数据](#erase-data-from-the-device)。
+    3. [计划分拣](#schedule-a-pickup)。
+    5. 删除与返回的设备关联[的资源](#delete-the-resource)。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

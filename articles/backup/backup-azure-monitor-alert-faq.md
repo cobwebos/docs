@@ -1,22 +1,21 @@
 ---
-title: Azure 备份监视警报的常见问题
+title: Azure 备份监视警报常见问题解答
 description: 针对以下常见问题的解答：Azure 备份监视警报
-services: backup
 author: srinathvasireddy
 manager: sivan
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: srinathv
-ms.openlocfilehash: bb684f65539b4429862b2dce0e378d8f659d2975
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: dc68b68ffa0ae2ee4f1bdd8f2c7ac0d7ff5ebb8c
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705027"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465856"
 ---
-# <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报-常见问题解答
-本文回答有关 Azure 监视警报的常见问题。
+# <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报 - 常见问题解答
+本文解答有关 Azure 备份监视警报的常见问题。
 
 ## <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -26,9 +25,9 @@ ms.locfileid: "67705027"
 ### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>数据多久向存储帐户和 Power BI 中的 Azure 备份内容包推送一次？
   在用户配置存储帐户当天，数据大约需要 24 小时才能推送到存储帐户。 在这一次初始推送完成后，将按下图中所示频率刷新数据。
 
-  * 与“作业”  、“警报”  、“备份项”  、“保管库”  、“受保护的服务器”  和“策略”  相关的数据：在客户登录时推送到客户存储帐户。
+  * 与“作业”、“警报”、“备份项”、“保管库”、“受保护的服务器”和“策略”相关的数据：在客户登录时推送到客户存储帐户。
 
-  * 与“存储”  相关的数据：每 24 小时推送到客户存储帐户一次。
+  * 与“存储”相关的数据：每 24 小时推送到客户存储帐户一次。
 
        ![Azure 备份报表数据推送频率](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
 

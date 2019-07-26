@@ -1,19 +1,18 @@
 ---
 title: 使用 Azure 备份服务器将工作负荷备份到 Azure
 description: 使用 Azure 备份服务器保护工作负荷或将其备份到 Azure 门户。
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: 12ec1ce4a774178be621d7d8626ead7f1b106189
-ms.sourcegitcommit: 20bb149fe74459e59b648361235324b0674fe55b
+ms.openlocfilehash: bf0e964c46088947fa50d1eadbcc12b78978251f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298528"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466379"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 > [!div class="op_single_selector"]
@@ -78,8 +77,8 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 若要编辑存储复制设置，请执行以下操作：
 
-1. 选择保管库以打开保管库仪表板和“设置”菜单。 如果“设置”菜单未打开，请在保管库仪表板中单击“所有设置”   。
-2. 在“设置”菜单中，单击“备份基础结构” > “备份配置”，打开“备份配置”边栏选项卡     。 在“备份配置”菜单中，选择保管库的存储复制选项  。
+1. 选择保管库以打开保管库仪表板和“设置”菜单。 如果“设置”菜单未打开，请在保管库仪表板中单击“所有设置”。
+2. 在“设置”菜单中，单击“备份基础结构” > “备份配置”，打开“备份配置”边栏选项卡。 在“备份配置”菜单中，选择保管库的存储复制选项。
 
     ![备份保管库列表](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -88,10 +87,10 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 ## <a name="software-package"></a>软件包
 ### <a name="downloading-the-software-package"></a>下载软件包
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 如果已打开恢复服务保管库，请转到步骤 3。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请在主菜单中单击“浏览”  。
+2. 如果已打开恢复服务保管库，请转到步骤 3。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请在主菜单中单击“浏览”。
 
-   * 在资源列表中，键入“恢复服务”  。
-   * 开始键入时，会根据输入筛选该列表。 出现“恢复服务保管库”时，请单击它  。
+   * 在资源列表中，键入“恢复服务”。
+   * 开始键入时，会根据输入筛选该列表。 出现“恢复服务保管库”时，请单击它。
 
      ![创建恢复服务保管库步骤 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -101,24 +100,24 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
      此时会打开选定的保管库仪表板。
 
      ![打开保管库边栏选项卡](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
-3. 默认情况下会打开“设置”  边栏选项卡。 如果“设置”边栏选项卡已关闭，请单击“设置”  将它打开。
+3. 默认情况下会打开“设置”边栏选项卡。 如果“设置”边栏选项卡已关闭，请单击“设置”将它打开。
 
     ![打开保管库边栏选项卡](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
-4. 单击“备份”  打开“开始使用”向导。
+4. 单击“备份”打开“开始使用”向导。
 
     ![备份入门](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
-    在打开的“开始备份”  边栏选项卡中，会自动选择“备份目标”  。
+    在打开的“开始备份”边栏选项卡中，会自动选择“备份目标”。
 
     ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
-5. 在“备份目标”  边栏选项卡中，从“工作负荷的运行位置”  菜单中选择“本地”  。
+5. 在“备份目标”边栏选项卡中，从“工作负荷的运行位置”菜单中选择“本地”。
 
     ![用作目标的“本地”和“工作负荷”](./media/backup-azure-microsoft-azure-backup/backup-goals-azure-backup-server.png)
 
-    从“希望备份什么内容?”  下拉菜单上，选择想要使用 Azure 备份服务器保护的工作负荷，并单击“确定”  。
+    从“希望备份什么内容?”下拉菜单上，选择想要使用 Azure 备份服务器保护的工作负荷，并单击“确定”。
 
-    “开始备份”  向导可切换“准备基础结构”  选项以将工作负荷备份到 Azure。
+    “开始备份”向导可切换“准备基础结构”选项以将工作负荷备份到 Azure。
 
    > [!NOTE]
    > 如果只想备份文件和文件夹，建议使用 Azure 备份代理，并遵循[初步了解：备份文件和文件夹](backup-try-azure-backup-in-10-mins.md)一文中的指南。 如果要保护的不止是文件和文件夹，或者计划在将来扩大保护需求，请选择这些工作负荷。
@@ -127,7 +126,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![快速启动向导更改](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. 在打开的“准备基础结构”  边栏选项卡中，单击用于安装 Azure 备份服务器和下载保管库凭据的“下载”  链接。 在将 Azure 备份服务器注册到恢复服务保管库期间，请使用保管库凭据。 使用此链接转到“下载中心”，可从中下载软件包。
+6. 在打开的“准备基础结构”边栏选项卡中，单击用于安装 Azure 备份服务器和下载保管库凭据的“下载”链接。 在将 Azure 备份服务器注册到恢复服务保管库期间，请使用保管库凭据。 使用此链接转到“下载中心”，可从中下载软件包。
 
     ![为 Azure 备份服务器准备基础结构](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
@@ -153,7 +152,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 1. 单击“**Microsoft Azure 备份**”以启动安装向导。
 
     ![Microsoft Azure 备份安装向导](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
-2. 在“欢迎”屏幕上单击“**下一步**”按钮。 随后将转到“*先决条件检查*”部分。 在此屏幕上单击“检查”  ，以确定是否符合 Azure 备份服务器的硬件和软件先决条件。 如果完全符合所有先决条件，将看到一条指明计算机符合要求的消息。 单击“**下一步**”按钮。
+2. 在“欢迎”屏幕上单击“**下一步**”按钮。 随后将转到“*先决条件检查*”部分。 在此屏幕上单击“检查”，以确定是否符合 Azure 备份服务器的硬件和软件先决条件。 如果完全符合所有先决条件，将看到一条指明计算机符合要求的消息。 单击“**下一步**”按钮。
 
     ![Azure 备份服务器 - 欢迎页和先决条件检查](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 3. Microsoft Azure 备份服务器需要 SQL Server Enterprise。 此外，如果你不想使用自己的 SQL，Azure 备份服务器安装包还会根据需要随附相应的 SQL Server 二进制文件。 在开始全新安装 Azure 备份服务器时，应该选择“**在此安装程序中安装新的 SQL Server 实例**”，并单击“**检查并安装**”按钮。 成功安装必备组件后，单击“**下一步**”。
@@ -163,7 +162,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
     如果发生故障并且系统建议重新启动计算机，请按说明操作，并单击“**再次检查**”。 如果遇到任何 SQL 配置问题，请根据 SQL 指导原则重新配置 SQL，然后使用现有的 SQL 实例重试安装/升级 MABS。
 
    > [!NOTE]
-   > Azure 备份服务器不能与远程 SQL Server 实例配合使用。 Azure 备份服务器使用的实例需在本地。 如果对 MABS 使用现有的 SQL Server，MABS 安装程序仅支持使用 SQL Server 的命名实例。 
+   > Azure 备份服务器不能与远程 SQL Server 实例配合使用。 Azure 备份服务器使用的实例需在本地。 如果对 MABS 使用现有的 SQL Server，MABS 安装程序仅支持使用 SQL Server 的命名实例。
 
    **手动配置**
 
@@ -226,20 +225,20 @@ MABS 使用 System Center Data Protection Manager 保护代理。 [此处](https
 
 以下部分介绍如何更新客户端计算机的保护代理。
 
-1. 在备份服务器管理员控制台中，选择“管理”   > “代理”  。
+1. 在备份服务器管理员控制台中，选择“管理” > “代理”。
 
 2. 在显示窗格中，选择要为其更新保护代理的客户端计算机。
 
    > [!NOTE]
-   > “代理更新”  列指示每个受保护计算机何时有保护代理更新可用。 在“操作”  窗格中，仅当选择了受保护计算机并且有可用更新时，“更新”  操作才可用。
+   > “代理更新”列指示每个受保护计算机何时有保护代理更新可用。 在“操作”窗格中，仅当选择了受保护计算机并且有可用更新时，“更新”操作才可用。
    >
    >
 
-3. 要在所选计算机上安装更新的保护代理，请在“操作”  窗格中，选择“更新”  。
+3. 要在所选计算机上安装更新的保护代理，请在“操作”窗格中，选择“更新”。
 
-4. 对于未连接到网络的客户端计算机，在计算机连接到网络之前，“代理状态”  列会显示“挂起更新”  状态。
+4. 对于未连接到网络的客户端计算机，在计算机连接到网络之前，“代理状态”列会显示“挂起更新”状态。
 
-   在客户端计算机连接到网络之后，客户端计算机的“代理更新”  列会显示“正在更新”  状态。
+   在客户端计算机连接到网络之后，客户端计算机的“代理更新”列会显示“正在更新”状态。
 
 ## <a name="move-mabs-to-a-new-server"></a>将 MABS 移到新服务器
 
@@ -277,9 +276,9 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 | 连接状态 | Azure 订阅 | 备份到 Azure | 备份到磁盘 | 从 Azure 还原 | 从磁盘还原 |
 | --- | --- | --- | --- | --- | --- |
 | 已连接 |活动 |允许 |允许 |允许 |允许 |
-| 连续 |已过期 |已停止 |已停止 |允许 |允许 |
-| 连续 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
-| 连接断开超过 15 天 |活动 |已停止 |已停止 |允许 |允许 |
+| 已连接 |已过期 |已停止 |已停止 |允许 |允许 |
+| 已连接 |已解除设置 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
+| 连接断开超过 15 天 |活跃 |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |Expired |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 
@@ -325,7 +324,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
    >
    >  在升级到 SQL 2017 的过程中，我们会备份 SQL 加密密钥并卸载报告服务。 升级 SQL Server 后，将安装报告服务 (14.0.6827.4788) 并还原加密密钥。
    >
-   > 手动配置 SQL 2017 时，请参阅“安装说明”下的“使用 SQL 2017 时的 SSRS 配置”部分。 
+   > 手动配置 SQL 2017 时，请参阅“安装说明”下的“使用 SQL 2017 时的 SSRS 配置”部分。
 
 3. 在受保护的服务器上更新保护代理。
 4. 备份应会继续，而无需重启生产服务器。

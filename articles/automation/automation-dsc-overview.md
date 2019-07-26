@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a5d4657f87b0a6cbae0699c5a2f95773ff55f633
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 3f6d15e67122afcbea3cc294c803a302e961bdbd
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798447"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372548"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
 
@@ -41,7 +41,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 
 使用 Azure Automation State Configuration 进行管理的节点将详细的报表状态数据发送到内置拉取服务器。 可以将 Azure Automation State Configuration 配置为将此数据发送到 Log Analytics 工作区。 若要了解如何将 State Configuration 状态数据发送到 Log Analytics 工作区，请参阅[将 Azure Automation State Configuration 报表数据转发到 Azure Monitor 日志](automation-dsc-diagnostics.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 在使用 Azure Automation State Configuration (DSC) 时，请考虑以下要求。
 
@@ -62,7 +62,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 
 DSC Linux 扩展支持所有[在 Azure 上认可的](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Linux 发行版，除了以下这些：
 
-分发 | Version
+分发组 | Version
 -|-
 Debian  | 所有版本
 Ubuntu  | 18.04
@@ -73,26 +73,26 @@ Ubuntu  | 18.04
 
 对于在 Azure 中运行的所有 Linux 节点，[PowerShell DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) 将在载入时安装。
 
-### <a name="network-planning"></a>配置私有网络
+### <a name="network-planning"></a>配置专用网络
 
-如果节点位于专用网络内，以下端口和 Url 所需的状态配置 (DSC) 与自动化通信：
+如果节点位于专用网络内, 则状态配置 (DSC) 需要以下端口和 Url 才能与自动化通信:
 
-* 端口：只需使用 TCP 443 即可进行出站 Internet 访问。
+* 端口:只需使用 TCP 443 即可进行出站 Internet 访问。
 * 全局 URL：*.azure-automation.net
 * 美国弗吉尼亚州政府的全局 URL：*.azure-automation.us
 * 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.net
 
-这提供了要与 Azure 自动化通信的托管节点的网络连接。
-如果你使用的 DSC 资源，如节点之间进行通信[WaitFor * 资源](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource)，还需要允许节点之间的流量。
-请参阅文档以了解这些网络要求每个 DSC 资源。
+这为托管节点提供网络连接, 以与 Azure 自动化通信。
+如果使用在节点之间进行通信的 DSC 资源 (如[WaitFor * 资源](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource)), 则还需要允许节点之间的流量。
+请参阅每个 DSC 资源的文档, 以了解这些网络要求。
 
 #### <a name="proxy-support"></a>代理支持
 
-在 Windows 1809 和更高版本中提供了 DSC 代理的代理支持。
-若要配置此选项，设置为值**ProxyURL**并**ProxyCredential**中[元配置脚本](automation-dsc-onboarding.md#generating-dsc-metaconfigurations)用于注册节点。
-代理不在 DSC 可用于以前版本的 Windows。
+Windows 版本1809及更高版本中提供了适用于 DSC 代理的代理支持。
+若要配置此选项, 请在用于注册节点的元配置[脚本](automation-dsc-onboarding.md#generating-dsc-metaconfigurations)中设置**ProxyURL**和**ProxyCredential**的值。
+代理在以前版本的 Windows 的 DSC 中不可用。
 
-对于 Linux 节点，DSC 代理支持代理，将使用新的 http_proxy 变量，以确定的 url。
+对于 Linux 节点, DSC 代理支持代理, 并将使用 http_proxy 变量来确定 url。
 
 #### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Azure 状态配置网络范围和命名空间
 
@@ -104,6 +104,7 @@ Ubuntu  | 18.04
 | --- | --- |
 | 美国中西部 | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | 美国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| East US   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
 | 美国东部 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | 加拿大中部 |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | 西欧 |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
@@ -113,7 +114,7 @@ Ubuntu  | 18.04
 | 日本东部 |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | 澳大利亚东南部 |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| 美国政府弗吉尼亚州 | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| US Gov 弗吉尼亚州 | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 有关区域 IP 地址列表（非区域名称列表），请从 Microsoft 下载中心下载 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653) XML 文件。
 

@@ -4,7 +4,7 @@ description: 有关在 Azure 中防御推理执行旁道漏洞的指南。
 services: cloud-services
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: 幽灵,崩溃,鬼魂
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: cynthn
-ms.openlocfilehash: 3382907cf3267bc5a326daca2131829e82e76371
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e669b3923a2019b071ae9abe2b78db299a24f572
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60613629"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360667"
 ---
 # <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>有关在 Azure 中防御推理执行旁道漏洞的指南
 

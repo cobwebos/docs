@@ -2,54 +2,43 @@
 title: Azure Active Directory 中有关“标识保护”（已刷新）的常见问题解答和已知问题 | Microsoft Docs
 description: Azure Active Directory 中有关“标识保护”（已刷新）的常见问题解答和已知问题。
 services: active-directory
-keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/24/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 392b7a08d9422658c5620f60e9c1caca074bc85e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d5aa50aec98b3944aed92b9da49182f0608f34c
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60452667"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333890"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Azure Active Directory 中有关“标识保护”（已刷新）的常见问题解答和已知问题
 
+## <a name="dismiss-user-risk-known-issues"></a>消除用户面临的已知问题
 
-## <a name="dismiss-user-risk-known-issues"></a>消除已知问题的用户风险
+经典“标识保护”中的“消除用户风险”将“标识保护”（已刷新）的用户风险历史记录中的参与者设置为 Azure AD。
 
-经典 Identity Protection 中的“消除用户风险”  将 Identity Protection（已刷新）的用户风险历史记录中的参与者设置为 Azure AD  。
-
-
-Identity Protection（已刷新）中的“消除用户风险”  将 Identity Protection（已刷新）的用户风险历史记录中的参与者设置为 \<管理员名称，并提供指向用户边栏选项卡的超链接\>  。
+“标识保护”（已刷新）中的“消除用户风险”将“标识保护”（已刷新）的用户风险历史记录中的参与者设置为\<管理员名称，并提供指向用户边栏选项卡的超链接\>。
 
 当前存在一个已知问题，该问题导致用户风险消除流中发生延迟。 如果具有“用户风险策略”，则该策略将在单击“消除用户风险”后的几分钟内阻止应用于已消除的用户。 但是，UX 刷新已消除用户的“风险状态”时，存在已知延迟。 要解决此问题，请在浏览器级刷新页面以查看最新的用户“风险状态”。
 
+## <a name="risky-users-report-known-issues"></a>有风险的用户报告已知问题
 
-## <a name="risky-users-report-known-issues"></a>有风险的用户报告的已知的问题
+username 字段上的查询区分大小写，而 Name 字段上的查询不区分大小写。
 
-username  字段上的查询区分大小写，而 Name  字段上的查询不区分大小写。
+切换“日期显示形式”隐藏“风险上次更新时间”列。 要读取该列，请单击“有风险的用户”边栏选项卡顶部的“列”。
 
-切换“日期显示形式”  隐藏“风险上次更新时间”  列。 要读取该列，请单击“有风险的用户”边栏选项卡顶部的“列”  。
+经典“标识保护”中的“消除所有事件”将风险事件的状态设置为“已关闭(已解决)”。
 
-经典 Identity Protection 中的“消除所有事件”  将风险事件的状态设置为“已关闭(已解决)”  。
+## <a name="risky-sign-ins-report-known-issues"></a>有风险的登录报告已知问题
 
-
-## <a name="risky-sign-ins-report-known-issues"></a>已知问题的风险登录报表
-
-风险事件上的“解决”  将状态设置为“用户已通过基于风险的策略驱动的 MFA”  。
-
+风险事件上的“解决”将状态设置为“用户已通过基于风险的策略驱动的 MFA”。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -57,33 +46,29 @@ username  字段上的查询区分大小写，而 Name  字段上的查询不区
 
 “标识保护”中的风险级别依赖于检测的精度，并由我们的监督式机器学习提供支持。 若要自定义用户体验，管理员可以在用户风险和登录风险策略中包含/排除某些用户/组。
 
-
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>为什么登录位置与用户真正登录的位置不匹配？
 
 IP 地理位置映射是整个行业面临的挑战。 如果认为登录报告中列出的位置与实际位置不匹配，请联系支持人员。 
 
-
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>“标识保护”中的反馈机制是如何工作的？
 
-**确认泄漏**（在登录时） - 通知 Azure AD Identity Protection，该登录不是由标识所有者执行的，并指示受到存在泄漏。
+**确认泄漏**（在登录时） - 通知 Azure AD 标识保护，该登录不是由标识所有者执行的，并指示存在泄漏。
 
-- 在收到此反馈后，我们将登录和用户风险状态改为“已确认泄漏”  ，并将风险级别改为“高”  。
-
-- 此外，我们还为我们的机器学习系统提供信息，以便今后改进风险评估。
-
-    > [!NOTE]
-    > 如果已对用户采取修正措施，不要单击“确认泄漏”  ，因为这会将登录和用户风险状态改为“已确认泄漏”  ，并将风险级别改为“高”  。
-
-**确认安全**（在登录时） - 通知 Azure AD Identity Protection 登录是由标识所有者执行的，不指示存在泄漏。
-
-- 收到此反馈后，我们将登录（而非用户）风险状态改为“已确认安全”  ，将风险级别改为 -  。
+- 在收到此反馈后，我们将登录和用户风险状态改为“已确认泄漏”，并将风险级别改为“高”。
 
 - 此外，我们还为我们的机器学习系统提供信息，以便今后改进风险评估。
 
     > [!NOTE]
-    > 如果认为用户没有遭到泄漏，请使用用户级别的“消除用户风险”  ，而不是登录级别的“已确认安全”  。 用户级别的“消除用户风险”  会关闭用户风险和所有过去的有风险登录和风险事件。
+    > 如果已对用户采取修正措施，不要单击“确认泄漏”，因为这会将登录和用户风险状态改为“已确认泄漏”，并将风险级别改为“高”。
 
+**确认安全**（在登录时） - 通知 Azure AD 标识保护，登录是由标识所有者执行的，不指示存在泄漏。
 
+- 收到此反馈后，我们将登录（而非用户）风险状态改为“已确认安全”，将风险级别改为 -。
+
+- 此外，我们还为我们的机器学习系统提供信息，以便今后改进风险评估。
+
+    > [!NOTE]
+    > 如果认为用户没有遭到泄漏，请使用用户级别的“消除用户风险”，而不是登录级别的“已确认安全”。 用户级别的“消除用户风险”会关闭用户风险和所有过去的有风险登录和风险事件。
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-events-are-shown-in-identity-protection"></a>即使在“标识保护”中没有显示有风险登录或风险事件，为什么会出现较低（或较高）的用户风险评分？
 

@@ -1,23 +1,22 @@
 ---
 title: 管理 Azure 恢复服务保管库和服务器
 description: 在 Azure 恢复服务保管库中管理作业和警报。
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: raynew
-ms.openlocfilehash: b447290a6910d144703bb796290908d0fc21b924
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5876ce4a511617d8465cdf008ea0ce14b3ad15d4
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705142"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466358"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
-本文介绍如何使用恢复服务保管库的“概述”仪表板来监视和管理恢复服务保管库。  从列表中打开恢复服务保管库时，将打开所选保管库的“概述”仪表板。  仪表板提供有关该保管库的各种详细信息。 其中的磁贴显示：严重和警告性警报的状态、正在进行的和失败的备份作业，以及本地冗余存储 (LRS) 和异地冗余存储 (GRS) 使用量。  如果将 Azure VM 备份到保管库，则[“备份预检查状态”磁贴将显示所有严重或警告项](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)。  下图是 **Contoso-vault** 的“概述”仪表板。  “备份项”磁贴显示有九个项已注册到保管库。 
+本文介绍如何使用恢复服务保管库的“概述”仪表板来监视和管理恢复服务保管库。 从列表中打开恢复服务保管库时，将打开所选保管库的“概述”仪表板。 仪表板提供有关该保管库的各种详细信息。 其中的磁贴显示：严重和警告性警报的状态、正在进行的和失败的备份作业，以及本地冗余存储 (LRS) 和异地冗余存储 (GRS) 使用量。 如果将 Azure VM 备份到保管库，则[“备份预检查状态”磁贴将显示所有严重或警告项](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)。 下图是 **Contoso-vault** 的“概述”仪表板。 “备份项”磁贴显示有九个项已注册到保管库。
 
 ![恢复服务保管库仪表板](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -32,15 +31,15 @@ ms.locfileid: "67705142"
 
 1. 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 在门户中，单击“所有服务”  。
+2. 在门户中，单击“所有服务”。
 
    ![打开恢复服务保管库列表步骤 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
 
-3. 在“所有服务”对话框中，键入“恢复服务”。   开始键入时，会根据输入筛选该列表。 当“恢复服务保管库”选项出现时，请单击它，以打开订阅中恢复服务保管库的列表。 
+3. 在“所有服务”对话框中，键入“恢复服务”。 开始键入时，会根据输入筛选该列表。 当“恢复服务保管库”选项出现时，请单击它，以打开订阅中恢复服务保管库的列表。
 
     ![创建恢复服务保管库步骤 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. 在保管库列表中，单击某个保管库打开其“概述”仪表板。 
+4. 在保管库列表中，单击某个保管库打开其“概述”仪表板。
 
     ![恢复服务保管库仪表板](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
@@ -48,11 +47,11 @@ ms.locfileid: "67705142"
 
 ## <a name="monitor-backup-jobs-and-alerts"></a>监视备份作业和警报
 
-恢复服务保管库的“概述”仪表板提供磁贴来显示“监视”和“使用情况”信息。  “监视”部分的磁贴显示“严重”和“警告”警报，以及“正在进行”和“失败”的作业。 单击特定的警报或作业可打开已根据该作业或警报进行筛选的“备份警报”或“备份作业”菜单。
+恢复服务保管库的“概述”仪表板提供磁贴来显示“监视”和“使用情况”信息。 “监视”部分的磁贴显示“严重”和“警告”警报，以及“正在进行”和“失败”的作业。 单击特定的警报或作业可打开已根据该作业或警报进行筛选的“备份警报”或“备份作业”菜单。
 
 ![备份仪表板任务](./media/backup-azure-manage-windows-server/monitor-dashboard-tiles-warning.png)
 
-“监视”部分显示预定义的“备份警报”和“备份作业”查询的结果。   “监视”磁贴提供有关以下项的最新信息：
+“监视”部分显示预定义的“备份警报”和“备份作业”查询的结果。 “监视”磁贴提供有关以下项的最新信息：
 
 * 备份作业的“严重”和“警告”警报（过去 24 小时）
 * Azure VM 的预检查状态 - 有关预检查状态的完整信息，请参阅[有关备份预检查状态的博客文章](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)。
@@ -71,7 +70,7 @@ ms.locfileid: "67705142"
 
 ## <a name="manage-backup-alerts"></a>管理备份警报
 
-若要访问“备份警报”菜单，请在恢复服务保管库菜单中单击“备份警报”。 
+若要访问“备份警报”菜单，请在恢复服务保管库菜单中单击“备份警报”。
 
 ![备份警报](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
@@ -85,17 +84,17 @@ ms.locfileid: "67705142"
 
 | 警报级别 | 生成警报的事件 |
 | ----------- | ----------- |
-| 严重 | 出现以下情况时，会收到严重警报：备份作业失败、恢复作业失败，以及在服务器上停止保护但保留了数据时。|
+| 关键 | 出现以下情况时，会收到严重警报：备份作业失败、恢复作业失败，以及在服务器上停止保护但保留了数据时。|
 | 警告 | 出现以下情况时，会收到警告性警报：备份作业完成但出现警告，例如，由于出现损坏问题，有 100 个以下的文件未备份；或者成功备份了 1,000,000 个以上的文件。 |
 | 信息性 | 目前未使用信息性警报。 |
 
 ### <a name="viewing-alert-details"></a>查看警报详细信息
 
-“备份警报”报告跟踪每条警报的八项详细信息。 使用“选择列”按钮可以编辑报告中的详细信息。 
+“备份警报”报告跟踪每条警报的八项详细信息。 使用“选择列”按钮可以编辑报告中的详细信息。
 
 ![备份警报](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
-默认情况下，除“最近发生时间”以外所有的详细信息会显示在报告中。 
+默认情况下，除“最近发生时间”以外所有的详细信息会显示在报告中。
 
 * 警报
 * 备份项
@@ -108,29 +107,29 @@ ms.locfileid: "67705142"
 
 ### <a name="change-the-details-in-alerts-report"></a>更改警报报告中的详细信息
 
-1. 若要更改报告信息，请在“备份警报”菜单中单击“选择列”。  
+1. 若要更改报告信息，请在“备份警报”菜单中单击“选择列”。
 
    ![备份警报](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
 
-   此时会打开“选择列”菜单。 
+   此时会打开“选择列”菜单。
 
-2. 在“选择列”菜单中，选择要在报告中显示的详细信息。 
+2. 在“选择列”菜单中，选择要在报告中显示的详细信息。
 
     ![“选择列”菜单](./media/backup-azure-manage-windows-server/choose-columns-menu.png)
 
-3. 单击“完成”以保存更改，并关闭“选择列”菜单。 
+3. 单击“完成”以保存更改，并关闭“选择列”菜单。
 
-   如果做了更改但不想要保留更改，请单击“重置”以将选定的设置还原到上次保存的配置。 
+   如果做了更改但不想要保留更改，请单击“重置”以将选定的设置还原到上次保存的配置。
 
 ### <a name="change-the-filter-in-alerts-report"></a>更改警报报告中的筛选器
 
-使用“筛选器”菜单可以更改警报的“严重性”、“状态”、“开始时间”和“结束时间”。 
+使用“筛选器”菜单可以更改警报的“严重性”、“状态”、“开始时间”和“结束时间”。
 
 > [!NOTE]
 > 编辑“备份警报”筛选器不会更改保管库“概述”仪表板中的“严重”或“警告”警报。
 >  
 
-1. 若要更改“备份警报”筛选器，请在“备份警报”菜单中单击“筛选器”。 
+1. 若要更改“备份警报”筛选器，请在“备份警报”菜单中单击“筛选器”。
 
    ![选择筛选器菜单](./media/backup-azure-manage-windows-server/alerts-menu-choose-filter.png)
 
@@ -138,7 +137,7 @@ ms.locfileid: "67705142"
 
    ![选择筛选器菜单](./media/backup-azure-manage-windows-server/filter-alert-menu.png)
 
-2. 编辑“严重性”、“状态”、“开始时间”或“结束时间”，然后单击“完成”以保存更改。 
+2. 编辑“严重性”、“状态”、“开始时间”或“结束时间”，然后单击“完成”以保存更改。
 
 ## <a name="configuring-notifications-for-alerts"></a>配置警报的通知
 
@@ -146,17 +145,17 @@ ms.locfileid: "67705142"
 
    ![筛选警报](./media/backup-azure-manage-windows-server/configure-notification.png)
 
-电子邮件通知默认已**打开**。 单击“关闭”会停止电子邮件通知。 
+电子邮件通知默认已**打开**。 单击“关闭”会停止电子邮件通知。
 
-如果不想要分组，或者没有许多可能生成警报的项，请在“通知”控件上选择“按警报”。   每个警报均会发送一条通知（默认设置），此外还会立即发送解决方法电子邮件。
+如果不想要分组，或者没有许多可能生成警报的项，请在“通知”控件上选择“按警报”。 每个警报均会发送一条通知（默认设置），此外还会立即发送解决方法电子邮件。
 
-如果选择“每小时摘要”，则会向收件人发送一封电子邮件，解释过去一小时生成的未解决警报。  在该小时结束时，会发送解决方法电子邮件。
+如果选择“每小时摘要”，则会向收件人发送一封电子邮件，解释过去一小时生成的未解决警报。 在该小时结束时，会发送解决方法电子邮件。
 
 选择用于生成电子邮件的警报严重性（“严重”或“警告”）。 当前没有“信息”警报。
 
 ## <a name="manage-backup-items"></a>管理备份项
 
-恢复服务保管库保存许多类型的备份数据。 [了解详细信息](backup-overview.md#what-can-i-back-up)有关你可以备份的内容。 若要管理各种服务器、计算机、数据库和工作负荷，请单击“备份项”磁贴查看保管库的内容。 
+恢复服务保管库保存许多类型的备份数据。 [详细了解](backup-overview.md#what-can-i-back-up)可以备份的内容。 若要管理各种服务器、计算机、数据库和工作负荷，请单击“备份项”磁贴查看保管库的内容。
 
 ![备份项磁贴](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -164,7 +163,7 @@ ms.locfileid: "67705142"
 
 ![备份项列表](./media/backup-azure-manage-windows-server/list-backup-items.png)
 
-若要浏览特定类型的受保护实例，请在“备份管理类型”列中单击该项。 例如，上图的保管库中保护了两个 Azure 虚拟机。 单击“Azure 虚拟机”会打开此保管库中受保护虚拟机的列表。 
+若要浏览特定类型的受保护实例，请在“备份管理类型”列中单击该项。 例如，上图的保管库中保护了两个 Azure 虚拟机。 单击“Azure 虚拟机”会打开此保管库中受保护虚拟机的列表。
 
 ![备份类型列表](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
@@ -174,17 +173,17 @@ ms.locfileid: "67705142"
 
 ## <a name="manage-backup-jobs"></a>管理备份作业
 
-保管库仪表板中的“备份作业”磁贴显示过去 24 小时“正在进行”或“失败”的作业数。  磁贴提供“备份作业”菜单的概览。
+保管库仪表板中的“备份作业”磁贴显示过去 24 小时“正在进行”或“失败”的作业数。 磁贴提供“备份作业”菜单的概览。
 
 ![设置中的备份项](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
-若要查看有关作业的其他详细信息，请单击“正在进行”或“失败”，打开根据该状态筛选的“备份作业”菜单。  
+若要查看有关作业的其他详细信息，请单击“正在进行”或“失败”，打开根据该状态筛选的“备份作业”菜单。
 
 ### <a name="backup-jobs-menu"></a>“备份作业”菜单
 
-“备份作业”菜单显示有关“项类型”、“操作”、“状态”、“开始时间”和“持续时间”的信息。   
+“备份作业”菜单显示有关“项类型”、“操作”、“状态”、“开始时间”和“持续时间”的信息。  
 
-若要打开“备份作业”菜单，请在保管库的主菜单中单击“备份作业”。 
+若要打开“备份作业”菜单，请在保管库的主菜单中单击“备份作业”。
 
 ![设置中的备份项](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
@@ -192,11 +191,11 @@ ms.locfileid: "67705142"
 
 ![设置中的备份项](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
 
-“备份作业”菜单显示过去 24 小时针对所有备份类型执行的所有操作的状态。 使用“筛选器”可更改筛选器。  后续部分将介绍筛选器。
+“备份作业”菜单显示过去 24 小时针对所有备份类型执行的所有操作的状态。 使用“筛选器”可更改筛选器。 后续部分将介绍筛选器。
 
 若要更改筛选器：
 
-1. 在保管库的“备份作业”菜单中单击“筛选器”。 
+1. 在保管库的“备份作业”菜单中单击“筛选器”。
 
    ![设置中的备份项](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
@@ -204,7 +203,7 @@ ms.locfileid: "67705142"
 
    ![设置中的备份项](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
-2. 选择筛选器设置，并单击“完成”。  筛选的列表会根据新设置刷新。
+2. 选择筛选器设置，并单击“完成”。 筛选的列表会根据新设置刷新。
 
 #### <a name="item-type"></a>项类型
 
@@ -234,10 +233,10 @@ ms.locfileid: "67705142"
 
 * 所有状态
 * 已完成
-* 正在进行
+* 进行中
 * 已失败
 * 已取消
-* 已完成但出现警告
+* 已完成，包含警告
 
 #### <a name="start-time"></a>开始时间
 
@@ -249,9 +248,9 @@ ms.locfileid: "67705142"
 
 ### <a name="export-jobs"></a>导出作业
 
-使用“导出作业”可以创建一个包含所有“作业”菜单信息的电子表格。  该电子表格包含一个工作表，其中保存了所有作业的摘要，每个作业有单独的工作表。
+使用“导出作业”可以创建一个包含所有“作业”菜单信息的电子表格。 该电子表格包含一个工作表，其中保存了所有作业的摘要，每个作业有单独的工作表。
 
-若要将作业信息导出到电子表格，请单击“导出作业”。  服务使用保管库名称和日期创建电子表格，但你可以更改名称。
+若要将作业信息导出到电子表格，请单击“导出作业”。 服务使用保管库名称和日期创建电子表格，但你可以更改名称。
 
 ## <a name="monitor-backup-usage"></a>监视备份使用情况
 
@@ -267,9 +266,9 @@ ms.locfileid: "67705142"
 
 **故障排除步骤：** ```OBRecoveryServicesManagementAgent``` 进程将作业和警报数据发送到 Azure 备份服务。 此进程偶尔会被阻塞或关闭。
 
-1. 若要验证此进程是否未运行，请打开“任务管理器”  并检查 ```OBRecoveryServicesManagementAgent``` 是否正在运行。
+1. 若要验证此进程是否未运行，请打开“任务管理器”并检查 ```OBRecoveryServicesManagementAgent``` 是否正在运行。
 
-2. 如果此进程未运行，请打开“控制面板”  ，并浏览服务列表。 启动或重启 **Microsoft Azure 恢复服务管理代理**。
+2. 如果此进程未运行，请打开“控制面板”，并浏览服务列表。 启动或重启 **Microsoft Azure 恢复服务管理代理**。
 
     有关详细信息，请浏览位于以下位置的日志：<br/>
    `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` 例如：<br/>

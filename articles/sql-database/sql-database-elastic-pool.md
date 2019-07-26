@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 02/28/2019
-ms.openlocfilehash: c1db16475224cc3c91a5353ead0aabd091098e14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 775e1abe1f3d6412171b8ff5427fd905e37480b5
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240358"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489692"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -117,8 +117,8 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 1. 通过如下方式来估算池所需的 eDTU 或 vCore：
 
-   对于基于 DTU 的购买模型：MAX（<数据库的总数目  X 每一数据库的平均 DTU 使用率  >、<br>  
-   <并发高峰数据库的数目  X 每一数据库的高峰 DTU 使用率  )
+   对于基于 DTU 的购买模型：MAX（<数据库的总数目 X 每一数据库的平均 DTU 使用率>、<br>  
+   <并发高峰数据库的数目 X 每一数据库的高峰 DTU 使用率)
 
    对于基于 vCore 的购买模型：MAX（<*数据库的总数目* X *每一数据库的平均 vCore 使用率*>、<br>  
    <*并发高峰数据库的数目* X *每一数据库的高峰 vCore 使用率*)
@@ -156,15 +156,15 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 在 Azure 门户中可以通过两种方法创建弹性池。
 
-1. 可以通过在**市场**中搜索“SQL 弹性池”  或者通过在 SQL 弹性池浏览边栏选项卡中单击“+添加”  来创建弹性池。 可以通过此池预配工作流指定新的或现有的服务器。
-2. 或者可以创建一个弹性池：导航到现有 SQL 服务器，然后单击“创建池”，直接在该服务器中创建一个池。  此处的唯一差别是要跳过在池预配工作流期间指定服务器的步骤。
+1. 可以通过在**市场**中搜索“SQL 弹性池”或者通过在 SQL 弹性池浏览边栏选项卡中单击“+添加”来创建弹性池。 可以通过此池预配工作流指定新的或现有的服务器。
+2. 或者可以创建一个弹性池：导航到现有 SQL 服务器，然后单击“创建池”，直接在该服务器中创建一个池。 此处的唯一差别是要跳过在池预配工作流期间指定服务器的步骤。
 
 > [!NOTE]
 > 可以在服务器上创建多个池，但不能将数据库从不同的服务器添加到同一个池中。
 
 该池的服务层级决定了池中弹性数据库的可用功能，以及每个数据库可用的最大资源量。 有关详细信息，请参阅 [DTU 模型](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)中弹性池的资源限制。 有关弹性池的基于 vCore 的资源限制，请参阅[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
 
-若要配置池的资源和定价，请单击“配置池”。  然后选择服务层级，将数据库添加到池，并配置池及其数据库的资源限制。
+若要配置池的资源和定价，请单击“配置池”。 然后选择服务层级，将数据库添加到池，并配置池及其数据库的资源限制。
 
 完成配置池后，可以单击“应用”，将池命名，然后单击“确定”以创建池。
 
@@ -181,9 +181,9 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 ![池视图](./media/sql-database-elastic-pool-manage-portal/basic.png)
 
-如需有关池的详细信息，可在此概述中单击任何可用信息。 单击“资源利用率”图表会转到“Azure 监视”视图，在其中可以自定义图表中显示的指标和时间段。  单击任何显示的通知会转到一个边栏选项卡，其中显示了该警报或建议的完整详细信息。
+如需有关池的详细信息，可在此概述中单击任何可用信息。 单击“资源利用率”图表会转到“Azure 监视”视图，在其中可以自定义图表中显示的指标和时间段。 单击任何显示的通知会转到一个边栏选项卡，其中显示了该警报或建议的完整详细信息。
 
-若要监视池中的数据库，可在左侧资源菜单“监视”部分中单击“数据库资源利用率”。  
+若要监视池中的数据库，可在左侧资源菜单“监视”部分中单击“数据库资源利用率”。
 
 ![数据库资源利用率页](./media/sql-database-elastic-pool-manage-portal/db-utilization.png)
 
@@ -191,11 +191,11 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 可以编辑图表和指标页以显示其他指标，如 CPU 百分比、数据 IO 百分比和已用日志 IO 百分比。
 
-在“编辑图表”窗体中，可选择固定时间范围，或单击“自定义”选择过去两周内的任何 24 小时时间段，然后选择要监视的资源   。
+在“编辑图表”窗体中，可选择固定时间范围，或单击“自定义”选择过去两周内的任何 24 小时时间段，然后选择要监视的资源。
 
 ### <a name="to-select-databases-to-monitor"></a>选择要监视的数据库
 
-默认情况下，“数据库资源利用率”边栏选项卡中的图表按 DTU 或 CPU（取决于服务层级）显示排名靠前的 5 个数据库。  可以在图表下面的列表中，通过选中和取消选中左侧的复选框，在此图表中显示或隐藏相应的数据库。
+默认情况下，“数据库资源利用率”边栏选项卡中的图表按 DTU 或 CPU（取决于服务层级）显示排名靠前的 5 个数据库。 可以在图表下面的列表中，通过选中和取消选中左侧的复选框，在此图表中显示或隐藏相应的数据库。
 
 还可以选择在此数据库表中并列查看更多的指标，以获取更完整的数据库性能视图。
 
@@ -205,19 +205,19 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 - [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
 
-  SnelStart 使用 Azure SQL 数据库弹性池来快速扩展其业务服务每月 1,000 个新的 Azure SQL 数据库的速率。
+  SnelStart 在 Azure SQL 数据库中使用弹性池, 以每月快速扩展其业务服务, 每个 Azure SQL 数据库1000。
 
 - [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
 
-  Umbraco 使用 Azure SQL 数据库使用弹性池为数千个租户在云中快速预配和缩放服务。
+  Umbraco 对 Azure SQL 数据库使用弹性池, 以便在云中为数千个租户快速预配和缩放服务。
 
 - [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
 
-  Daxko/CSI 使用 Azure SQL 数据库弹性池来加速其开发周期和增强其客户服务和性能。
+  Daxko/CSI 使用弹性池和 Azure SQL 数据库来加速其开发周期和增强其客户服务和性能。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要缩放弹性池，请参阅[缩放弹性池](sql-database-elastic-pool.md)和[缩放弹性池 - 示例代码](scripts/sql-database-monitor-and-scale-pool-powershell.md)
+- 若要缩放弹性池，请参阅[缩放弹性池](sql-database-elastic-pool-scale.md)和[缩放弹性池 - 示例代码](scripts/sql-database-monitor-and-scale-pool-powershell.md)
 - 有关视频，请参阅[有关 Azure SQL 数据库弹性功能的 Microsoft 虚拟大学视频课程](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅 [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 - 有关使用弹性池的 SaaS 教程，请参阅 [Wingtip SaaS 应用程序简介](sql-database-wtp-overview.md)。

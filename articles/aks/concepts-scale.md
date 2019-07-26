@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 2070c79a6ce0627280b1793e412002783f385cc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3230d85dfcf57bfd4e2e1684f4f5620600ec4e3a
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074041"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424202"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 
@@ -57,9 +57,9 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 群集自动缩放程序通常与水平 Pod 自动缩放程序配合使用。 当两者组合在一起时，水平 Pod 自动缩放程序会根据应用程序需求增加或减少 Pod 数量，群集自动缩放程序会根据需要调整节点数以相应地运行额外的 Pod。
 
-群集自动缩放程序只应在单个节点池与 AKS 群集上的预览版中进行测试。
+群集自动缩放程序只能在 AKS 群集上以预览进行测试。
 
-若要开始使用 AKS 中的群集自动缩放程序，请参阅 [AKS 上的群集自动缩放程序][aks-cluster-autoscaler]。
+若要开始在 AKS 中自动缩放程序群集, 请参阅[AKS 上的群集自动缩放程序][aks-cluster-autoscaler]。
 
 ### <a name="scale-up-events"></a>纵向扩展事件
 
@@ -93,7 +93,7 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 若要开始缩放应用程序，请首先按照[使用 Azure CLI 创建 AKS 群集的快速入门][aks-quickstart]进行操作。 然后，可以开始手动或自动缩放 AKS 群集中的应用程序：
 
-- 手动缩放 [Pod][aks-manually-scale-pods] 或[节点][aks-manually-scale-nodes]
+- 手动缩放 [Pod][aks-manually-scale-pods] or [nodes][aks-manually-scale-nodes]
 - 使用[水平 Pod 自动缩放程序][aks-hpa]
 - 使用[群集自动缩放程序][aks-cluster-autoscaler]
 

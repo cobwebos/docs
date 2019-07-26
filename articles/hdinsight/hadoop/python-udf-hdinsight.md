@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: d74c40264e8ed535d250e938487885a848ba6b47
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 49fd69c124ff9053f3934aefd349e039b437df0d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484199"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68354958"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)
 
@@ -25,7 +25,7 @@ Python2.7 默认安装在 HDInsight 3.0 和更高版本上。 可以结合此 Py
 
 HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython 直接在 Java 虚拟机上运行，不使用流式处理。 将 Python 与 Pig 配合使用时，我们建议将 Jython 用作 Python 解释器。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * **HDInsight 上的 Hadoop 群集**。 请参阅 [Linux 上的 HDInsight 入门](apache-hadoop-linux-tutorial-get-started.md)。
 * **SSH 客户端**。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
@@ -45,7 +45,7 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython
 > * 在本地开发环境中创建 Python 脚本。
 > * 使用 `scp` 命令或使用提供的 PowerShell 脚本将脚本上传到 HDInsight。
 >
-> 如果你想要使用[Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview)若要使用 HDInsight，则您必须：
+> 如果要使用[Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview)来使用 HDInsight, 则必须:
 >
 > * 在 Cloud Shell 环境内部创建脚本。
 > * 使用 `scp` 将文件从 Cloud Shell 上传到 HDInsight。
@@ -99,7 +99,7 @@ while True:
 1. 从 STDIN 读取一行数据。
 2. 可以使用 `string.strip(line, "\n ")` 删除尾随的换行符。
 3. 执行流式处理时，一个行就包含了所有值，每两个值之间有一个制表符。 因此，`string.split(line, "\t")` 可用于在每个制表符处拆分输入，并只返回字段。
-4. 在处理完成后，必须将输出以单行形式写入到 STDOUT，并在每两个字段之间提供一个制表符。 例如，`print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])` 。
+4. 在处理完成后，必须将输出以单行形式写入到 STDOUT，并在每两个字段之间提供一个制表符。 例如， `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])` 。
 5. `while` 循环会一直重复到无法读取 `line`。
 
 脚本输出是 `devicemake` 和 `devicemodel` 的输入值的连接，并且是连接值的哈希。
@@ -323,6 +323,7 @@ DUMP DETAILS;
 # Uncomment the following if using C Python
 #from pig_util import outputSchema
 
+
 @outputSchema("log: {(date:chararray, time:chararray, classname:chararray, level:chararray, detail:chararray)}")
 def create_structure(input):
     if (input.startswith('java.lang.Exception')):
@@ -414,7 +415,7 @@ def create_structure(input):
     #from pig_util import outputSchema
     ```
 
-    此行会修改 Python 脚本以使用 C Python 而不是 Jython。 更改后，请使用 Ctrl+X 退出编辑器  。 选择 Y，然后选择 Enter 保存更改   。
+    此行会修改 Python 脚本以使用 C Python 而不是 Jython。 更改后，请使用 Ctrl+X 退出编辑器。 选择 Y，然后选择 Enter 保存更改。
 
 6. 使用 `pig` 命令再次启动 shell。 在 `grunt>` 提示符下，使用以下命令运行带有 Jython 解释器的 Python 脚本。
 

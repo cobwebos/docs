@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/17/2018
 ms.author: sedusch
-ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28a3183114db206e55814d1b25eaef37a2819c1d
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462955"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68495012"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
 
@@ -30,6 +30,7 @@ ms.locfileid: "61462955"
 [2562184]: https://launchpad.support.sap.com/#/notes/2562184
 [2628497]: https://launchpad.support.sap.com/#/notes/2628497
 [2445033]: https://launchpad.support.sap.com/#/notes/2445033
+[2815988]: https://launchpad.support.sap.com/#/notes/2815988
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -60,14 +61,14 @@ ms.locfileid: "61462955"
 
 ## <a name="general-remarks"></a>一般备注
 
-* 请务必在“设置”->“设置”->“引擎”中启用“自动装入点创建”   
+* 请务必在“设置”->“设置”->“引擎”中启用“自动装入点创建”  
   在未启用此设置的情况下，如果 SAP LaMa 使用虚拟机上的 SAP 自适应扩展装载卷，则该装入点必须存在。
 
 * 使用单独的子网而不要使用动态 IP 地址，以防止在部署新 VM 并且未准备好 SAP 实例时发生 IP 地址“窃用”  
   如果在子网中使用动态 IP 地址分配（SAP LaMa 也使用这种分配），则使用 SAP LaMa 准备 SAP 系统可能会失败。 如果未准备好 SAP 系统，IP 地址将不会保留，可能会分配到其他虚拟机。
 
-* 如果登录到托管主机，请确保不要阻止卸载文件系统  
-  如果登录到 Linux 虚拟机并将工作目录更改为装入点中的某个目录（例如 /usr/sap/AH1/ASCS00/exe），则卷可能无法卸载，并且重定位或取消准备操作将会失败。
+* 如果登录到托管主机, 请确保未卸载文件系统  
+  如果登录到 Linux 虚拟机, 并将工作目录更改为装入点中的某个目录 (例如/usr/sap/AH1/ASCS00/exe), 则无法卸载该卷, 并且重定位或 unprepare 失败。
 
 ## <a name="set-up-azure-connector-for-sap-lama"></a>为 SAP LaMa 设置 Azure 连接器
 
@@ -77,7 +78,7 @@ ms.locfileid: "61462955"
 1. 打开“Azure Active Directory”边栏选项卡
 1. 单击“应用注册”
 1. 单击“添加”
-1. 输入一个名称，选择应用程序类型"Web 应用 /API"，输入登录 URL (例如 http:\//localhost)，然后单击创建
+1. 输入名称, 选择 "应用程序类型" "Web 应用/API", 输入登录 URL (例如 http:\//localhost), 然后单击 "创建"
 1. 不会使用登录 URL，可为它输入任何有效的 URL
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
@@ -226,7 +227,7 @@ SAP LaMa 不能重定位 SQL Server 本身，因此，要用于重定位数据�
 
 以下示例假设要安装系统 ID 为 HN1 的 SAP HANA，以及系统 ID 为 AH1 的 SAP NetWeaver 系统。 HANA 实例、SAP NetWeaver 系统使用的 HANA 租户、SAP NetWeaver ASCS 和第一个 SAP NetWeaver 应用程序服务器的虚拟主机名分别是 hn1-db、ah1-db、ah1-ascs 和 ah1-di-0。
 
-#### <a name="install-sap-netweaver-ascs-for-sap-hana"></a>安装 SAP HANA 的 SAP NetWeaver ASCS
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-using-azure-managed-disks"></a>使用 Azure 托管磁盘为 SAP HANA 安装 SAP NetWeaver ASCS
 
 在启动 SAP Software Provisioning Manager (SWPM) 之前，需要装载 ASCS 虚拟主机名的 IP 地址。 建议的方法是使用 sapacext。 如果使用 sapacext 装载 IP 地址，请务必在重新启动后重新装载该 IP 地址。
 
@@ -244,13 +245,100 @@ SAP LaMa 不能重定位 SQL Server 本身，因此，要用于重定位数据�
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-ascs -n 255.255.255.128
 ```
 
-运行 SWPM，并为“ASCS 实例主机名”使用 *ah1-ascs*。 
+运行 SWPM，并为“ASCS 实例主机名”使用 *ah1-ascs*。
 
 ![Linux][Logo_Linux] Linux  
 将以下配置文件参数添加到位于 /usr/sap/hostctrl/exe/host_profile 的 SAP 主机代理配置文件。 有关详细信息，请参阅 SAP 说明 [2628497]。
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 ```
+
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>在 Azure NetAppFiles (和) BETA 上安装 SAP NetWeaver ASCS for SAP HANA
+
+> [!NOTE]
+> 此功能尚不公开。 有关详细信息, 请参阅 SAP 说明[2815988] (仅对预览版客户可见)。
+打开组件 BC 上的 SAP 事件-VCM-HYPERV, 并请求加入 Azure NetApp 文件预览版的 LaMa 存储适配器
+
+和为 Azure 提供 NFS。 在 SAP LaMa 的上下文中, 这简化了 ABAP Central Services (ASCS) 实例和应用程序服务器的后续安装。 以前, ASCS 实例还必须充当 NFS 服务器, 并且必须将参数 acosprep/nfs_paths 添加到 SAP Hostagent 的 host_profile 中。
+
+#### <a name="anf-is-currently-available-in-these-regions"></a>和目前在以下区域中提供:
+
+澳大利亚东部、美国中部、美国东部、美国东部2、北欧、美国中南部、西欧和美国西部2。
+
+#### <a name="network-requirements"></a>网络要求
+
+和需要委派的子网, 该子网必须与 SAP 服务器属于同一 VNET。 下面是此类配置的示例。
+此屏幕显示 VNET 和第一个子网的创建:
+
+![SAP LaMa 为 Azure 和创建虚拟网络 ](media/lama/sap-lama-createvn-50.png)
+
+下一步将为 Microsoft NetApp/卷创建委托子网。
+
+![SAP LaMa 添加委托子网 ](media/lama/sap-lama-addsubnet-50.png)
+
+![SAP LaMa 子网列表 ](media/lama/sap-lama-subnets.png)
+
+现在, 需要在 Azure 门户中创建一个 NetApp 帐户:
+
+![SAP LaMa 创建 NetApp 帐户 ](media/lama/sap-lama-create-netappaccount-50.png)
+
+![已创建 SAP LaMa NetApp 帐户 ](media/lama/sap-lama-netappaccount.png)
+
+在 NetApp 帐户内, 容量池为每个池指定磁盘的大小和类型:
+
+![SAP LaMa 创建 NetApp 容量池 ](media/lama/sap-lama-capacitypool-50.png)
+
+![已创建 SAP LaMa NetApp 容量池 ](media/lama/sap-lama-capacitypool-list.png)
+
+现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷, 因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例, 需要以下装载:/sapmnt/\<sid\>、/usr/sap/\<sid\>和/home/\<SID\>adm。 中央传输目录的可选/usr/sap/trans, 它至少适用于一台横向的所有系统。
+
+> [!NOTE]
+> 在测试阶段, 卷的名称在订阅中必须是唯一的。
+
+![SAP LaMa 创建卷1 ](media/lama/sap-lama-createvolume-80.png)
+
+![SAP LaMa 创建卷2 ](media/lama/sap-lama-createvolume2-80.png)
+
+![SAP LaMa 创建卷3 ](media/lama/sap-lama-createvolume3-80.png)
+
+对于其他卷, 还需要重复这些步骤。
+
+![SAP LaMa 创建的卷列表 ](media/lama/sap-lama-volumes.png)
+
+现在, 需要将这些卷装载到将执行具有 SAP SWPM 的初始安装的系统。
+
+首先需要创建装入点。 在这种情况下, SID 是 AN1 的, 因此需要执行以下命令:
+
+```bash
+mkdir -p /home/an1adm
+mkdir -p /sapmnt/AN1
+mkdir -p /usr/sap/AN1
+mkdir -p /usr/sap/trans
+```
+接下来, 将通过以下命令装载和卷:
+
+```bash
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-home-sidadm /home/an1adm
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-sapmnt-sid /sapmnt/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-usr-sap-sid /usr/sap/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/global-usr-sap-trans /usr/sap/trans
+```
+装载命令也可以从门户派生。 需要调整本地装入点。
+
+使用 df-h 命令验证。
+
+![SAP LaMa 装入点操作系统级别 ](media/lama/sap-lama-mounts.png)
+
+现在必须执行具有 SWPM 的安装。
+
+对于至少一个实例, 必须执行相同的步骤。
+
+成功安装后, 必须在 SAP LaMa 内发现系统。
+
+对于 ASCS 和 AS 实例, 装载点应如下所示:
+
+![LaMa ](media/lama/sap-lama-ascs.png)中的 SAP LaMa 装入点 (这是一个示例。 IP 地址和导出路径与之前使用的路径不同)
+
 
 #### <a name="install-sap-hana"></a>安装 SAP HANA
 
@@ -264,7 +352,7 @@ acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-db -n 255.255.255.128
 ```
 
-在应用程序服务器虚拟机（而不是 HANA 虚拟机）上运行 SWPM 数据库实例安装。 在“SAP 系统的数据库”对话框中，为“数据库主机”使用 *ah1-db*。  
+在应用程序服务器虚拟机（而不是 HANA 虚拟机）上运行 SWPM 数据库实例安装。 在“SAP 系统的数据库”对话框中，为“数据库主机”使用 *ah1-db*。
 
 #### <a name="install-sap-netweaver-application-server-for-sap-hana"></a>安装 SAP HANA 的 SAP NetWeaver 应用程序服务器
 
@@ -300,7 +388,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-di
 /usr/sap/AH1/hdbclient/hdbuserstore SET DEFAULT ah1-db:35041@AH1 SAPABAP1 <password>
 ```
 
-在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *ah1-di-0*。  
+在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *ah1-di-0*。
 
 #### <a name="post-installation-steps-for-sap-hana"></a>SAP HANA 的安装后步骤
 
@@ -319,7 +407,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-di
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-ascs -n 255.255.255.128
 ```
 
-运行 SWPM，并为“ASCS 实例主机名”使用 *as1-ascs*。 
+运行 SWPM，并为“ASCS 实例主机名”使用 *as1-ascs*。
 
 #### <a name="install-sql-server"></a>安装 SQL Server
 
@@ -343,9 +431,9 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di-0 -n 255.255.255.128
 ```
 
-在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *as1-di-0*。  
+在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *as1-di-0*。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="errors-and-warnings-during-discover"></a>发现期间的错误和警告
 
@@ -372,19 +460,19 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
   * 解决方案  
     为源 HANA 系统中的所有数据库创建备份
 
-* 数据库实例的系统复制步骤开始 
+* 数据库实例的系统复制步骤开始
   * 主机代理操作 '000D3A282BC91EE8A1D76CF1F92E2944' 失败(OperationException。 FaultCode:'127'，消息:“命令执行失败。 : [Microsoft][SQL Server Driver][SQL Server] 用户无权更改数据库 'AS2'、该数据库不存在，或者该数据库不处于允许访问检查的状态。)
   * 解决方案  
     确保 *NT AUTHORITY\SYSTEM* 可以访问 SQL Server。 参阅 SAP 说明 [2562184]
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>系统克隆期间的错误和警告
 
-* 尝试在应用程序服务器或 ASCS 的“强制注册并启动实例代理”步骤中注册实例代理时出错 
+* 尝试在应用程序服务器或 ASCS 的“强制注册并启动实例代理”步骤中注册实例代理时出错
   * 尝试注册实例代理时出错。 (RemoteException:“无法从配置文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' 加载实例数据:无法访问配置文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0':没有此类文件或目录。”)
   * 解决方案  
    确保 ASCS/SCS 上的 sapmnt 共享对 SAP_AS1_GlobalAdmin 拥有完全访问权限
 
-* “为克隆启用启动保护”步骤出错 
+* “为克隆启用启动保护”步骤出错
   * 无法打开文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0'。原因:没有此类文件或目录
   * 解决方案  
     应用程序服务器的计算机帐户需要拥有配置文件的写访问权限

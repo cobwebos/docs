@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中删除企业应用的用户或组分配 | Microsoft Docs
+title: 从 Azure Active Directory 中的应用删除用户或组分配 |Microsoft Docs
 description: 如何在 Azure Active Directory 的企业应用中删除对用户或组的访问权限分配
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6524a757d885e95637cb05480838db8ac37259
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 380816283156969c47f45a9b47435688df91f4ca
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701942"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381043"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中删除企业应用的用户或组分配
 
-若要删除用户或组从已分配的访问，与 Azure Active Directory (Azure AD) 中对企业应用程序的容易。 你需要具有合适的权限才能管理企业应用。 而且，你必须是目录的全局管理员。
+在 Azure Active Directory (Azure AD) 中, 可以轻松地从分配给某个企业应用程序的用户或组中删除该用户或组。 你需要具有合适的权限才能管理企业应用。 而且，你必须是目录的全局管理员。
 
 > [!NOTE]
 > 对于 Microsoft 应用程序（例如 Office 365 应用），请使用 PowerShell 删除到企业应用的用户分配。
@@ -33,11 +33,11 @@ ms.locfileid: "67701942"
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-in-the-azure-portal"></a>如何在 Azure 门户中删除到企业应用的用户或组分配？
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 选择“所有服务”  ，在文本框中输入 **Azure Active Directory**，并选择“Enter”  。
-1. 在“Azure Active Directory - *directoryname*”页面（即，正在管理的目录的 Azure AD 页面）上，选择“企业应用程序”。  
-1. 在“企业应用程序 - 所有应用程序”  页上，你会看到你可以管理的应用的列表。 选择一个应用。
-1. 在 ***appname*** 概览页面（即标题中包含所选应用的名称的页面）上，选择“用户和组”  。
-1. 在“***appname*** - 用户和组分配”页面上，选择一个或多个用户或组，并选择“删除”命令。   出现提示时确认所作的决定。
+1. 选择“所有服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
+1. 在“Azure Active Directory - *directoryname*”页面（即，正在管理的目录的 Azure AD 页面）上，选择“企业应用程序”。
+1. 在“企业应用程序 - 所有应用程序”页上，你会看到你可以管理的应用的列表。 选择一个应用。
+1. 在 ***appname*** 概览页面（即标题中包含所选应用的名称的页面）上，选择“用户和组”。
+1. 在“***appname*** - 用户和组分配”页面上，选择一个或多个用户或组，并选择“删除”命令。 出现提示时确认所作的决定。
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-using-powershell"></a>如何使用 PowerShell 删除到企业应用的用户或组分配？
 

@@ -3,25 +3,17 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 07/11/2019
-ms.openlocfilehash: 766856438b22661b961bfbadc0b63376031622f6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.date: 07/19/2019
+ms.openlocfilehash: 763d424d9d462c4a9531df84f3e5e26bfc1b0a14
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850801"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68502264"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>用 Azure 保留 VM 实例 (RI) 为虚拟机预付
 
-通过 Azure 虚拟机 (VM) 预留实例预付虚拟机并节省资金。 有关详细信息，请参阅 [Azure 虚拟机预留实例产品/服务](https://azure.microsoft.com/pricing/reserved-vm-instances/)。
-
-可在 [Azure 门户](https://portal.azure.com)中购买虚拟机预留实例。 若要购买实例：
-
-- 你必须是至少一个企业订阅的所有者角色, 或者是使用即用即付费率的订阅。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
-- 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理才能购买预留。
-
-预订折扣将自动应用于正在运行的与预订范围和属性匹配的虚拟机数量。 可以通过 [Azure 门户](https://portal.azure.com)、PowerShell、CLI 或 API 更新预留的范围。
+通过 Azure 虚拟机 (VM) 预留实例预付虚拟机并节省资金。 预订折扣将自动应用于正在运行的与预订范围和属性匹配的虚拟机数量。 无需为虚拟机分配预订即可获取折扣。 购买的预订实例仅涵盖 VM 使用率的计算部分。 对于 Windows Vm, 使用情况计量分为两个不同的计量器。 有一个计算计量器, 与 Linux 计量和 Windows IP 指标相同。 进行购买时看到的费用仅适用于计算成本。 费用不包括 Windows 软件费用。 有关软件成本的详细信息, 请参阅[Azure 保留 VM 实例中未包含的软件成本](../articles/billing/billing-reserved-instance-windows-software-costs.md)。
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>在购买前确定正确的 VM 大小
 
@@ -34,7 +26,7 @@ ms.locfileid: "67850801"
 - 在 Azure 门户中购买 VM 预留实例时, 将显示 "购买建议" 和 "推荐数量"。
 - Azure 顾问为各个订阅提供购买建议。  
 - 可以使用 Api 获取共享范围和单个订阅范围的购买建议。 有关详细信息, 请参阅[保留实例购买适用于企业客户的建议 api](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)。
-- 对于 EA 客户, 可通过[Azure 使用见解 Power BI 内容包](/power-bi/service-connect-to-azure-consumption-insights)获取共享订阅范围和单个订阅范围的购买建议。
+- 对于企业协议 (EA) 客户, [Azure 使用见解 Power BI 内容包](/power-bi/service-connect-to-azure-consumption-insights)提供了针对共享订阅范围和单一订阅范围的购买建议。
 
 ### <a name="services-that-get-vm-reservation-discounts"></a>获取 VM 保留折扣的服务
 
@@ -78,7 +70,7 @@ VM 预留适用于从多个服务发出的 VM 使用量, 而不仅仅适用于�
 
 - **VM 系列**-A 系列、Av2 系列或 G 系列。
 
-- **预览中的 vm** -处于预览阶段的任何 vm 系列或大小。
+- **预览或促销 vm** -任何采用预览版或使用促销计量的 vm 系列或大小。
 
 - **云**预订不适用于德国或中国地区的购买。
 
@@ -88,22 +80,38 @@ VM 预留适用于从多个服务发出的 VM 使用量, 而不仅仅适用于�
 
 ## <a name="buy-a-reserved-vm-instance"></a>购买虚拟机预留实例
 
+可以在[Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买保留 VM 实例。
+
+这些要求适用于购买保留 VM 实例:
+
+- 对于至少一个 EA 订阅或具有即用即付费率的订阅, 必须是所有者角色。
+- 对于 EA 订阅, 必须在[ea 门户](https://ea.azure.com/)中启用 "**添加保留实例**" 选项。 或者, 如果禁用此设置, 则必须是订阅的 EA 管理员。
+- 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理才能购买预留。
+
+若要购买实例：
+
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 选择“所有服务”   > “预订”  。
+1. 选择“所有服务” > “预订”。
 1. 选择 "**添加**" 购买新的预订, 然后单击 "**虚拟机**"。
 1. 输入必填字段。 与所选属性匹配的正在运行的 VM 实例有资格获得预订折扣。 实际获得折扣的 VM 实例数取决于所选范围和数量。
 
 | 字段      | 描述|
 |------------|--------------|
 |订阅|用于支付预订费用的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须为企业协议（套餐编号：BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或使用即用即付费率的单个订阅 (产品编号:MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于使用即用即付费率的订阅, 将对订阅上的信用卡或发票付款方式收取费用。|    
-|范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>**单个资源组范围**-仅将预订折扣应用于所选资源组中的匹配资源。</li><li>**单个订阅范围**-将预订折扣应用于所选订阅中的匹配资源。</li><li>**共享作用域**-将预订折扣应用于计费上下文中符合条件的订阅中的匹配资源。 对于企业协议客户, 计费上下文是注册。 对于使用即用即付费率的各个订阅, 计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>|
-|区域    |预订涵盖的 Azure 区域。|    
+|范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>**单个资源组范围**-仅将预订折扣应用于所选资源组中的匹配资源。</li><li>**单个订阅范围**-将预订折扣应用于所选订阅中的匹配资源。</li><li>**共享作用域**-将预订折扣应用于计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户, 计费上下文为 "注册"。 对于使用即用即付费率的各个订阅, 计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>|
+|地区    |预订涵盖的 Azure 区域。|    
 |VM 大小     |VM 实例的大小。|
 |优化对象     |默认情况下选择了 VM 实例大小灵活性。 单击 "**高级设置**" 以更改实例大小的灵活性值, 以将预订折扣应用于同一[VM 大小组](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)中的其他 vm。 容量优先级可以对部署优先使用数据中心容量。 它可让你在需要时启动 VM 实例, 从而提供更多的信心。 仅当预留范围为单个订阅时，容量优先级才可用。 |
 |术语        |一年或三年。|
 |数量    |预订中购买的实例数。 数量是可以获得计费折扣的正在运行的 VM 实例数。 例如, 如果你在美国东部运行10个 Standard_D2 Vm, 则会将数量指定为 10, 以最大程度地提高所有正在运行的 Vm 的权益。 |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
+
+## <a name="usage-data-and-reservation-utilization"></a>使用情况数据和预订利用率
+
+对于获取预订折扣的使用量, 使用情况数据的有效价格为零。 你可以看到哪个 VM 实例收到每个预订的预订折扣。
+
+有关如何在使用情况数据中显示预订折扣的详细信息, 请参阅[了解企业注册的 Azure 保留使用情况](../articles/billing/billing-understand-reserved-instance-usage-ea.md)(如果你是 EA 客户)。 如果有单独的订阅, 请参阅[了解即用即付订阅的 Azure 保留使用情况](../articles/billing/billing-understand-reserved-instance-usage.md)。
 
 ## <a name="change-a-reservation-after-purchase"></a>在购买后更改保留
 
@@ -126,13 +134,13 @@ VM 预留适用于从多个服务发出的 VM 使用量, 而不仅仅适用于�
 
 ## <a name="cancellations-and-exchanges"></a>取消和更换
 
-如果需要取消预留，可能会产生 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要请求取消，请在 Azure 门户中访问该预留，并选择“退款”  创建支持请求。
+如果需要取消预留，可能会产生 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要取消, 请跳到 Azure 门户中的预订, 然后选择 "**退款**"。
 
-如果需要将保留 VM 实例保留更改为其他区域、VM 大小组或术语, 则可以进行交换。 Exchange 必须为等于或大于值的另一个预留。 新订购项目的期限开始日期不是从交换的订购项目延续。 当你创建新的预订时, 从一年或三年开始。 若要请求交换，请在 Azure 门户中访问该预留，并选择“交换”  创建支持请求。
+如果需要将保留 VM 实例保留更改为其他区域、VM 大小组或术语, 则可以进行交换。 Exchange 必须为等于或大于值的另一个预留。 新订购项目的期限开始日期不是从交换的订购项目延续。 当你创建新的预订时, 从一年或三年开始。 若要交换, 请在 Azure 门户中找到保留项, 然后选择 " **exchange**"。
 
 有关如何交换或退款预订的详细信息, 请参阅[保留交换和退款](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+## <a name="need-help-contact-us"></a>需要帮助? 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

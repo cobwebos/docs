@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1bf90ec8987ec419131ba21137972a0905e33f19
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 557d25c4921c9906be75bce03c326903e63432de
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654142"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464797"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 Twitter 帐户的登录
 
@@ -23,7 +23,7 @@ ms.locfileid: "67654142"
 
 本文展示了如何在 Azure Active Directory (Azure AD) B2C 中使用[自定义策略](active-directory-b2c-overview-custom.md)为来自 Twitter 帐户的用户实现登录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 - 完成 [Azure Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
 - 如果还没有 Twitter 帐户，请在 [Twitter 注册页面](https://twitter.com/signup)上创建一个。
@@ -33,28 +33,28 @@ ms.locfileid: "67654142"
 若要将 Twitter 用作 Azure AD B2C 中的身份提供程序，则需要创建 Twitter 应用程序。
 
 1. 使用 Twitter 帐户凭据登录到 [Twitter 开发人员](https://developer.twitter.com/en/apps)网站。
-2. 选择“创建应用”。 
-3. 输入“应用名称”和“应用程序说明”   。
-4. 在“网站 URL”  中，输入 `https://your-tenant.b2clogin.com`。 将 `your-tenant` 替换为租户的名称。 例如， https://contosob2c.b2clogin.com 。
-5. 对于“回调 URL”  ，输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`。 将 `your-tenant` 替换为你的租户的名称，并将 `your-policy-Id` 替换为你的策略的标识符。 例如， `b2c_1A_signup_signin_twitter` 。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
-6. 在页面底部，阅读并接受条款，然后选择“创建”。 
-7. 在“应用详细信息”  页上，选择“编辑”>“编辑详细信息”  ，勾选“启用 Twitter 登录”  框，然后选择“保存”  。
-8. 选择“密钥和令牌”  并记录“使用者 API 密钥”  和“使用者 API 密钥”  的值，以便稍后使用。
+2. 选择“创建应用”。
+3. 输入“应用名称”和“应用程序说明”。
+4. 在“网站 URL”中，输入 `https://your-tenant.b2clogin.com`。 将 `your-tenant` 替换为租户的名称。 例如， https://contosob2c.b2clogin.com 。
+5. 对于“回调 URL”，输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`。 将 `your-tenant` 替换为你的租户的名称，并将 `your-policy-Id` 替换为你的策略的标识符。 例如， `b2c_1A_signup_signin_twitter` 。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
+6. 在页面底部，阅读并接受条款，然后选择“创建”。
+7. 在“应用详细信息”页上，选择“编辑”>“编辑详细信息”，勾选“启用 Twitter 登录”框，然后选择“保存”。
+8. 选择“密钥和令牌”并记录“使用者 API 密钥”和“使用者 API 密钥”的值，以便稍后使用。
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
 你需要存储前面在 Azure AD B2C 租户中记录的机密密钥。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-4. 在“概述”页上选择“标识体验框架”  。
-5. 选择“策略密钥”  ，然后选择“添加”  。
-6. 对于“选项”  ，请选择 `Manual`。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+4. 在“概述”页上选择“标识体验框架”。
+5. 选择“策略密钥”，然后选择“添加”。
+6. 对于“选项”，请选择 `Manual`。
 7. 输入策略密钥的**名称**。 例如， `TwitterSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
-8. 在“机密”中，输入前面记录的应用程序机密  。
-9. 在“密钥用法”处选择 `Encryption`。 
-10. 单击“创建”。 
+8. 在“机密”中，输入前面记录的应用程序机密。
+9. 在“密钥用法”处选择 `Encryption`。
+10. 单击“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -110,11 +110,11 @@ ms.locfileid: "67654142"
 
 ### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
 
-现在，你已配置了策略，因此 Azure AD B2C 知道如何与 LinkedIn 帐户进行通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
+至此, 已配置策略, 以便 Azure AD B2C 知道如何与 Twitter 帐户通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
 
-1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”   。
-2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件  。
-3. 单击“上传” 。 
+1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
+2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
+3. 单击“上传” 。
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
 
@@ -157,12 +157,12 @@ ms.locfileid: "67654142"
 通过在租户中创建的应用程序与 Azure AD B2C 进行通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-4. 选择“应用程序”，然后选择“添加”   。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序的名称，例如 *testapp1*。
-6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`   。
-7. 单击“创建”。 
+6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`。
+7. 单击“创建”。
 
 ## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 
@@ -173,4 +173,4 @@ ms.locfileid: "67654142"
 3. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_twitter`
 4. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，以匹配所创建的新用户旅程的 ID (SignUpSignTwitter)。
 5. 保存更改并上传文件，然后选择列表中的新策略。
-6. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试   。
+6. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试。

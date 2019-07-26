@@ -5,23 +5,23 @@ ms.author: rimman
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
-ms.openlocfilehash: 7d252aed830e24719be2112391f0e77d9a6ff9c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/23/2019
+ms.openlocfilehash: 1bfa7104425b5013f9cdf36ff3c1dd88107d3ec7
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953718"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467861"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区
 
-Azure Cosmos DB 使用分区缩放数据库中的单个容器，以满足应用程序的性能需求。 在分区中，可将容器中的项分割成不同的子集（称作“逻辑分区”）。  逻辑分区是根据与容器中每个项关联的分区键值形成的。  逻辑分区中的所有项具有相同的分区键值。
+Azure Cosmos DB 使用分区缩放数据库中的单个容器，以满足应用程序的性能需求。 在分区中，可将容器中的项分割成不同的子集（称作“逻辑分区”）。 逻辑分区是根据与容器中每个项关联的分区键值形成的。 逻辑分区中的所有项具有相同的分区键值。
 
 例如，某个容器保存项。 每个项具有唯一的 `UserID` 属性值。 如果 `UserID` 充当容器中的项的分区键，并且有 1,000 个唯一的 `UserID` 值，则会为容器创建 1,000 个逻辑分区。
 
-确定项的逻辑分区的分区键，除了在容器中的每个项还具有*项目中的 ID* （逻辑分区中唯一）。 将分区键与项 ID 相结合可以创建项的索引用于唯一标识该项。 
+除了确定项的逻辑分区的分区键外, 容器中的每一项都有一个*项 ID* (在逻辑分区中是唯一的)。 将分区键与项 ID 相结合可以创建项的索引用于唯一标识该项。
 
-[选择分区键](partitioning-overview.md#choose-partitionkey)是一项重要决策将影响应用程序的性能。
+[选择分区键](partitioning-overview.md#choose-partitionkey)是将影响应用程序性能的一项重要决定。
 
 ## <a name="managing-logical-partitions"></a>管理逻辑分区
 

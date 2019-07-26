@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 03d39ed01907a2ad61e089946673b96b8a2cc83e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e672e7bd43dcd05d048d22205939749c1d96579
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65916965"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348065"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -25,7 +25,7 @@ ms.locfileid: "65916965"
 例如，你可能想要检查设备在预配过程中所使用的证书，并根据证书属性将该设备分配到 IoT 中心。 你可能在数据库中存储了你的设备的信息，并需要查询数据库以确定应将该设备分配到哪个 IoT 中心。
 
 
-本文演示使用 C# 编写的 Azure 函数的自定义分配策略。 创建了两个新的 IoT 中心，分别表示 Contoso 烤箱分区  和 Contoso 热泵分区  。 请求预配的设备必须具有含以下后缀之一的注册 ID 才能被接受进行预配：
+本文演示使用 C# 编写的 Azure 函数的自定义分配策略。 创建了两个新的 IoT 中心，分别表示 Contoso 烤箱分区和 Contoso 热泵分区。 请求预配的设备必须具有含以下后缀之一的注册 ID 才能被接受进行预配：
 
 - **-contoso-tstrsd-007**：Contoso 烤箱分区
 - **-contoso-hpsd-088**：Contoso 热泵分区
@@ -34,7 +34,7 @@ ms.locfileid: "65916965"
 
 你将在本文中执行以下步骤：
 
-* 使用 Azure CLI 创建两个 Contoso 分区 IoT 中心（Contoso 烤箱分区  和 Contoso 热泵分区  ）
+* 使用 Azure CLI 创建两个 Contoso 分区 IoT 中心（Contoso 烤箱分区和 Contoso 热泵分区）
 * 使用 Azure 函数为自定义分配策略创建新的组注册
 * 为两个设备模拟创建设备密钥。
 * 为 Azure IoT C SDK 设置开发环境
@@ -43,7 +43,7 @@ ms.locfileid: "65916965"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
 * 启用了[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本。
@@ -53,19 +53,19 @@ ms.locfileid: "65916965"
 
 ## <a name="create-two-divisional-iot-hubs"></a>创建两个分区 IoT 中心
 
-在本部分，将使用 Azure Cloud Shell 创建表示 Contoso 烤箱分区  和 Contoso 热泵分区  的两个新的 IoT 中心。
+在本部分，将使用 Azure Cloud Shell 创建表示 Contoso 烤箱分区和 Contoso 热泵分区的两个新的 IoT 中心。
 
 1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
-    以下示例在“eastus”  区域创建名为“contoso-us-resource-group”  的资源组。 建议对本文中创建的所有资源使用该组。 此方法使你能够在完成后更为轻松地进行清理。
+    以下示例在“eastus”区域创建名为“contoso-us-resource-group”的资源组。 建议对本文中创建的所有资源使用该组。 此方法使你能够在完成后更为轻松地进行清理。
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 烤箱分区  IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group  。
+2. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 烤箱分区 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group。
 
-    以下示例在“eastus”  位置创建名为“contoso-toasters-hub-1098”  的 IoT 中心。 必须使用你自己的唯一中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-toasters-`。
+    以下示例在“eastus”位置创建名为“contoso-toasters-hub-1098”的 IoT 中心。 必须使用你自己的唯一中心名称。 在中心名称中的 1098 位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-toasters-`。
 
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
@@ -73,9 +73,9 @@ ms.locfileid: "65916965"
     
     此命令可能需要花费几分钟时间完成。
 
-3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 热泵分区  IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group  。
+3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 热泵分区 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group。
 
-    以下示例在“eastus”  位置创建名为“contoso-heatpumps-hub-1098”  的 IoT 中心。 必须使用你自己的唯一中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-heatpumps-`。
+    以下示例在“eastus”位置创建名为“contoso-heatpumps-hub-1098”的 IoT 中心。 必须使用你自己的唯一中心名称。 在中心名称中的 1098 位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-heatpumps-`。
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
@@ -92,22 +92,22 @@ ms.locfileid: "65916965"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，并打开你的设备预配服务实例。
 
-2. 选择“管理注册”  选项卡，然后单击页面顶部的“添加注册组”  按钮。 
+2. 选择“管理注册”选项卡，然后单击页面顶部的“添加注册组”按钮。 
 
-3. 在“添加注册组”  中输入以下信息，然后单击“保存”  按钮。
+3. 在“添加注册组”中输入以下信息，然后单击“保存”按钮。
 
     **组名称**：输入 **contoso-custom-allocated-devices**。
 
-    **证明类型**：选择“对称密钥”  。
+    **证明类型**：选择“对称密钥”。
 
     **自动生成密钥**：此复选框应已处于选中状态。
 
-    **选择要如何将设备分配到中心**：选择“自定义(使用 Azure Function)”。 
+    **选择要如何将设备分配到中心**：选择“自定义(使用 Azure Function)”。
 
     ![为对称密钥证明添加自定义分配注册组](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
 
-4. 在“添加注册组”  上，单击“链接新的 IoT 中心”  以链接这两个新的分区 IoT 中心。 
+4. 在“添加注册组”上，单击“链接新的 IoT 中心”以链接这两个新的分区 IoT 中心。 
 
     必须为这两个分区 IoT 中心执行此步骤。
 
@@ -115,32 +115,32 @@ ms.locfileid: "65916965"
 
     **IoT 中心**：选择你创建的分区中心之一。
 
-    **访问策略**：选择“iothubowner”。 
+    **访问策略**：选择“iothubowner”。
 
     ![使用预配服务链接分区 IoT 中心](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
 
 
-5. 在“添加注册组”  上，一旦链接这两个分区 IoT 中心后，必须将其选择为注册组的 IoT 中心组，如下所示：
+5. 在“添加注册组”上，一旦链接这两个分区 IoT 中心后，必须将其选择为注册组的 IoT 中心组，如下所示：
 
     ![为注册创建分区中心组](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
 
 
-6. 在“添加注册组”  上，向下滚动到“选择 Azure 函数”  部分，然后单击“创建新的函数应用”  。
+6. 在“添加注册组”上，向下滚动到“选择 Azure 函数”部分，然后单击“创建新的函数应用”。
 
-7. 在打开的“函数应用”  创建页上，为新函数输入以下设置，然后单击“创建”  。
+7. 在打开的“函数应用”创建页上，为新函数输入以下设置，然后单击“创建”。
 
-    **应用名称**：输入唯一函数应用名称。 contoso-function-app-1098  作为示例显示。
+    **应用名称**：输入唯一函数应用名称。 contoso-function-app-1098 作为示例显示。
 
-    **资源组**：选择“使用现有”  和“contoso-us-resource-group”  以将本文中创建的所有资源保留在一起。
+    **资源组**：选择“使用现有”和“contoso-us-resource-group”以将本文中创建的所有资源保留在一起。
 
     **Application Insights**：对于此练习，可以关闭该功能。
 
     ![创建函数应用](./media/how-to-use-custom-allocation-policies/function-app-create.png)
 
 
-8. 回到你的“添加注册组”  页，确保新函数应用处于选中状态。 可能需要重新选择订阅，以刷新函数应用列表。
+8. 回到你的“添加注册组”页，确保新函数应用处于选中状态。 可能需要重新选择订阅，以刷新函数应用列表。
 
-    选中新函数应用后，单击“创建新函数”  。
+    选中新函数应用后，单击“创建新函数”。
 
     ![创建函数应用](./media/how-to-use-custom-allocation-policies/click-create-new-function.png)
 
@@ -150,13 +150,13 @@ ms.locfileid: "65916965"
 
     ![创建函数应用](./media/how-to-use-custom-allocation-policies/new-function.png)
 
-    对于新函数，使用默认设置创建新的 Webhook + API  （使用 CSharp  语言）。 单击“创建此函数”  。
+    对于新函数，使用默认设置创建新的 Webhook + API（使用 CSharp 语言）。 单击“创建此函数”。
 
-    这将创建一个名为 HttpTriggerCSharp1  的新 C# 函数。
+    这将创建一个名为 HttpTriggerCSharp1 的新 C# 函数。
 
-10. 将新 C# 函数的代码替换为以下代码，然后单击“保存”  ：    
+10. 将新 C# 函数的代码替换为以下代码，然后单击“保存”：    
 
-    ```C#
+    ```csharp
     #r "Newtonsoft.Json"
     using System.Net;
     using System.Text;
@@ -266,32 +266,32 @@ ms.locfileid: "65916965"
     ```
 
 
-11. 返回到你的“添加注册组”  页，并确保新函数处于选中状态。 可能需要重新选择函数应用，以刷新函数列表。
+11. 返回到你的“添加注册组”页，并确保新函数处于选中状态。 可能需要重新选择函数应用，以刷新函数列表。
 
-    选中新函数后，单击“保存”  以保存注册组。
+    选中新函数后，单击“保存”以保存注册组。
 
     ![最后，保存注册组](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
 
 
-12. 保存注册后，重新打开它，并记录“主键”  。 必须先保存注册，才能生成密钥。 此密钥稍后将用于为模拟设备生成唯一设备密钥。
+12. 保存注册后，重新打开它，并记录“主键”。 必须先保存注册，才能生成密钥。 此密钥稍后将用于为模拟设备生成唯一设备密钥。
 
 
 ## <a name="derive-unique-device-keys"></a>派生唯一设备密钥
 
 在本部分中，你将创建两个唯一的设备密钥。 一个密钥将用于模拟的烤箱设备。 另一个密钥将用于模拟的热泵设备。
 
-为了生成设备密钥，将使用前面记录的“主密钥”  来计算每个设备的设备注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。 有关使用注册组创建派生设备密钥的详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)的组注册部分。
+为了生成设备密钥，将使用前面记录的“主密钥”来计算每个设备的设备注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。 有关使用注册组创建派生设备密钥的详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)的组注册部分。
 
 对于本文中的示例，使用以下两个设备注册 ID 并计算这两个设备的设备密钥。 这两个注册 ID 都具有有效的后缀，以与自定义分配策略的示例代码结合使用：
 
-- breakroom499-contoso-tstrsd-007 
-- mainbuilding167-contoso-hpsd-088 
+- breakroom499-contoso-tstrsd-007
+- mainbuilding167-contoso-hpsd-088
 
 #### <a name="linux-workstations"></a>Linux 工作站
 
 如果使用的是 Linux 工作站，可以使用 openssl 生成派生的设备密钥，如以下示例中所示。
 
-1. 将“键”  值替换为前面记录的“主键”  。
+1. 将“键”值替换为前面记录的“主键”。
 
     ```bash
     KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
@@ -316,7 +316,7 @@ ms.locfileid: "65916965"
 
 如果使用的是基于 Windows 的工作站，可以使用 PowerShell 生成派生的设备密钥，如以下示例中所示。
 
-1. 将“键”  值替换为前面记录的“主键”  。
+1. 将“键”值替换为前面记录的“主键”。
 
     ```powershell
     $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
@@ -400,23 +400,23 @@ ms.locfileid: "65916965"
 
 ## <a name="simulate-the-devices"></a>模拟设备
 
-在本部分，你将更新你在较早前设置的位于 Azure IoT C SDK 中的名为 prov\_dev\_client\_sample  的预配示例。 
+在本部分，你将更新你在较早前设置的位于 Azure IoT C SDK 中的名为 prov\_dev\_client\_sample 的预配示例。 
 
 此示例代码模拟将预配请求发送到你的设备预配服务实例的设备启动序列。 启动序列将导致烤箱设备被识别，且使用自定义分配策略将其配置到 IoT 中心。
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。    
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。 
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. 在 Visual Studio 中，打开较早前通过运行 CMake 生成的 azure_iot_sdks.sln  解决方案文件。 解决方案文件应位于以下位置：
+2. 在 Visual Studio 中，打开较早前通过运行 CMake 生成的 azure_iot_sdks.sln 解决方案文件。 解决方案文件应位于以下位置：
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。  展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。 
+3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。 展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。
 
-4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。  
+4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。 
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -431,7 +431,7 @@ ms.locfileid: "65916965"
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
+6. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
 
 
 #### <a name="simulate-the-contoso-toaster-device"></a>模拟 Contoso 烤箱设备
@@ -450,9 +450,9 @@ ms.locfileid: "65916965"
     prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
     ```
    
-    保存文件。
+    保存该文件。
 
-2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。 
+2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
 
     以下输出是模拟烤箱设备成功启动并连接到预配服务实例以通过自定义分配策略分配到烤箱 IoT 中心的一个示例：
 
@@ -480,9 +480,9 @@ ms.locfileid: "65916965"
     prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
    
-    保存文件。
+    保存该文件。
 
-2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。 
+2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
 
     以下输出是模拟热泵设备成功启动并连接到预配服务实例以通过自定义分配策略分配到 Contoso 热泵 IoT 中心的一个示例：
 
@@ -506,7 +506,7 @@ ms.locfileid: "65916965"
 下表显示了预期方案和你可能遇到的结果错误代码。 使用此表来帮助你解决使用 Azure 函数时自定义分配策略失败的问题。
 
 
-| 场景 | 预配服务的注册结果 | 预配 SDK 结果 |
+| 应用场景 | 预配服务的注册结果 | 预配 SDK 结果 |
 | -------- | --------------------------------------------- | ------------------------ |
 | Webhook 返回 200 OK，其中“iotHubHostName”被设置为有效的 IoT 中心主机名 | 结果状态：已分配  | SDK 返回 PROV_DEVICE_RESULT_OK 和中心信息 |
 | Webhook 返回 200 OK，其中在响应中显示“iotHubHostName”，但被设置为空字符串或 null | 结果状态：已失败<br><br> 错误代码：CustomAllocationIotHubNotSpecified (400208) | SDK 返回 PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
@@ -520,7 +520,7 @@ ms.locfileid: "65916965"
 
 如果打算继续使用本文中创建的资源，则可以保留它们。 如果不打算继续使用这些资源，请使用以下步骤删除本文创建的所有资源，以避免不必要的费用。
 
-此处的步骤假定你按照名为 contoso-us-resource-group  的同一资源组的指示创建了本文中的所有资源。
+此处的步骤假定你按照名为 contoso-us-resource-group 的同一资源组的指示创建了本文中的所有资源。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
@@ -528,13 +528,13 @@ ms.locfileid: "65916965"
 
 若要按名称删除资源组：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。 
+1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
 
-2. 在“按名称筛选...”  文本框中，键入包含资源的资源组名称“contoso-us-resource-group”  。 
+2. 在“按名称筛选...”文本框中，键入包含资源的资源组名称“contoso-us-resource-group”。 
 
-3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”   。
+3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”。
 
-4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”  。 片刻之后，将会删除该资源组及其包含的所有资源。
+4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

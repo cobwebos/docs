@@ -5,22 +5,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 01/11/2018
+ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 54050116f9894f9a7903dad53caf6b01228313b7
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e692b4704d14a1f0d18f2a3be7397a13a969bc40
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326966"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371767"
 ---
-下表介绍 Azure 常规用途 v1、v2 和 Blob 存储帐户的默认限制。 “传入”  限制是指请求中发送到存储帐户的所有数据。 “传出”  限制是指响应中从存储帐户接收的所有数据。
+下表介绍 Azure 常规用途 v1、v2 和 Blob 存储帐户的默认限制。 “传入”限制是指请求中发送到存储帐户的所有数据。 “传出”限制是指响应中从存储帐户接收的所有数据。
 
 | Resource | 默认限制 |
 | --- | --- |
 | 每个订阅每个区域的存储帐户数，包括标准帐户和高级帐户 | 250 |
-| 最大存储帐户容量 | 2 PB, 适用于美国和欧洲, 所有其他地区为 500 TB (包括英国) <sup>1</sup>|
+| 最大存储帐户容量 | 2 PB, 适用于美国和欧洲, 所有其他地区为 500 TB (包括英国)<sup>1</sup>|
 | 每个存储帐户的 Blob 容器、Blob、文件共享、表、队列、实体或消息数上限 | 无限制 |
 | 每个存储帐户的最大请求速率<sup>1</sup> | 每秒 20,000 个请求 |
 | 每个存储帐户的最大入口<sup>1</sup> (美国, 欧洲区域) | 25 Gbps |

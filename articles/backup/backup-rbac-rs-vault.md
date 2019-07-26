@@ -1,19 +1,18 @@
 ---
 title: 使用 Azure 基于角色的访问控制管理备份
 description: 使用基于角色的访问控制来管理对恢复服务保管库中的备份管理操作的访问。
-services: backup
 author: utraghuv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: utraghuv
-ms.openlocfilehash: 3b4585422a36992241fb4839238b1f6aa46c659f
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 928c08862fdb8a447b6b7afdd7fc12317a201224
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565638"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464961"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用基于角色的访问控制管理 Azure 备份恢复点
 Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。
@@ -21,9 +20,9 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访�
 > [!IMPORTANT]
 > Azure 备份提供的角色仅限于执行可在 Azure 门户中执行的操作，或者通过 REST API 或恢复服务保管库 PowerShell 或 CLI cmdlet 执行的操作。 这些角色对在 Azure 备份代理客户端 UI、System Center Data Protection Manager UI 或 Azure 备份服务器 UI 中执行的操作不具有控制。
 
-Azure 备份提供了三个用于控制备份管理操作的内置角色。 详细了解 [Azure RBAC 内置角色](../role-based-access-control/built-in-roles.md)
+Azure 备份提供了三种内置角色来控制备份管理操作。 详细了解 [Azure RBAC 内置角色](../role-based-access-control/built-in-roles.md)
 
-* [备份参与者](../role-based-access-control/built-in-roles.md#backup-contributor)-此角色具有所有权限来创建和管理备份删除恢复服务保管库和授予他人访问权限除外。 可以把该角色想象成可执行每个备份管理操作的备份管理的管理员。
+* [备份参与者](../role-based-access-control/built-in-roles.md#backup-contributor) - 此角色具有创建和管理备份的所有权限，但删除恢复服务保管库和授予其他人访问权限除外。 可以把该角色想象成可执行每个备份管理操作的备份管理的管理员。
 * [备份操作员](../role-based-access-control/built-in-roles.md#backup-operator) - 此角色具有除删除备份和管理备份策略之外的针对参与者操作的所有权限。 此角色等效于参与者，但它不能执行破坏性操作，例如通过删除数据或删除本地资源的注册来停止备份。
 * [备份读取器](../role-based-access-control/built-in-roles.md#backup-reader) - 此角色具有查看所有备份管理操作的权限。 可以把该角色想象成一位监视者。
 
@@ -40,7 +39,7 @@ Azure 备份提供了三个用于控制备份管理操作的内置角色。 详�
 | 启用 Azure VM 备份 | 备份操作员 | 包含保管库的资源组 |
 | | 虚拟机参与者 | VM 资源 |
 | 按需 VM 备份 | 备份操作员 | 恢复保管库资源 |
-| 还原 VM | 备份操作员 | 恢复服务保管库 |
+| 还原 VM | 备份操作员 | 恢复服务保存库 |
 | | 参与者 | 将在其中部署 VM 的资源组 |
 | | 虚拟机参与者 | 得到备份的源 VM |
 | 还原非托管磁盘 VM 备份 | 备份操作员 | 恢复保管库资源 |
@@ -62,20 +61,20 @@ Azure 备份提供了三个用于控制备份管理操作的内置角色。 详�
 > [!IMPORTANT]
 > 如果在 VM 资源范围内指定 VM 参与者并单击“备份”作为 VM 设置的一部分，则即使已经备份 VM，它也将打开“启用备份”屏幕，因为验证备份状态的调用仅在订阅级别起作用。 若要避免此问题，请转到保管库并打开 VM 的备份项视图，或者在订阅级别指定“VM 参与者”角色。
 
-## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure 文件共享备份的最小角色要求
-下表列出了备份管理操作和执行的 Azure 文件共享操作所需的相应角色。
+## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure 文件共享备份的最低角色要求
+下表列出了备份管理操作以及执行 Azure 文件共享操作所需的相应角色。
 
 | 管理操作 | 所需的角色 | 资源 |
 | --- | --- | --- |
-| 启用 Azure 文件共享的备份 | 备份参与者 | 恢复服务保管库 |
+| 启用 Azure 文件共享的备份 | 备份参与者 | 恢复服务保存库 |
 | | 存储帐户 | 参与者存储帐户资源 |
-| 按需 VM 备份 | 备份操作员 | 恢复服务保管库 |
-| 还原文件共享 | 备份操作员 | 恢复服务保管库 |
-| | 存储帐户参与者 | 还原源和目标文件共享存在的存储帐户资源 |
-| 还原单个文件 | 备份操作员 | 恢复服务保管库 |
-| | 存储帐户参与者 |   还原源和目标文件共享存在的存储帐户资源 |
-| 停止保护 | 备份参与者 | 恢复服务保管库 |      
-| 取消注册保管库中的存储帐户 |   备份参与者 | 恢复服务保管库 |
+| 按需 VM 备份 | 备份操作员 | 恢复服务保存库 |
+| 还原文件共享 | 备份操作员 | 恢复服务保存库 |
+| | 存储帐户参与者 | 存在还原源和目标文件共享的存储帐户资源 |
+| 还原单个文件 | 备份操作员 | 恢复服务保存库 |
+| | 存储帐户参与者 |   存在还原源和目标文件共享的存储帐户资源 |
+| 停止保护 | 备份参与者 | 恢复服务保存库 |      
+| 从保管库中注销存储帐户 |   备份参与者 | 恢复服务保存库 |
 | | 存储帐户参与者 | 存储帐户名称|
 
 

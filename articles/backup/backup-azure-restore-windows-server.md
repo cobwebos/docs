@@ -1,23 +1,22 @@
 ---
 title: 将 Azure 中的数据还原到 Windows Server 或 Windows 计算机
 description: 了解如何将 Azure 中存储的数据还原到 Windows Server 或 Windows 计算机。
-services: backup
 author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: 9c2f8ce0dfb866826de549946bc3ee1acc2b677f
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: e22db587c698594170c3b08ea04ff6699b6a61c8
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460261"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465683"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型将文件还原到 Windows
 
-本文介绍如何从备份保管库还原数据。 若要还原数据，请在 Microsoft Azure 恢复服务 (MARS) 代理中使用“恢复数据”向导。 可以：
+本文介绍如何从备份保管库还原数据。 若要还原数据，请在 Microsoft Azure 恢复服务 (MARS) 代理中使用“恢复数据”向导。 你可以：
 
 * 将数据还原到备份时所在的同一台计算机。
 * 将数据还原到备用计算机。
@@ -36,38 +35,38 @@ ms.locfileid: "67460261"
 
 如果意外删除了某个文件并想要在同一台计算机（备份位置）中还原文件，以下步骤可帮助你恢复数据。
 
-1. 打开“Microsoft Azure 备份”管理单元  。 如果不知道管理单元的安装位置，请在计算机或服务器中搜索“Microsoft Azure 备份”  。
+1. 打开“Microsoft Azure 备份”管理单元。 如果不知道管理单元的安装位置，请在计算机或服务器中搜索“Microsoft Azure 备份”。
 
     该桌面应用应该会显示在搜索结果中。
 
-2. 选择“恢复数据”以启动向导。 
+2. 选择“恢复数据”以启动向导。
 
     ![Azure 备份的屏幕截图，其中突出显示了“恢复数据”](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 若要将数据还原到同一台服务器或计算机，请在“开始”页上选择“此服务器(`<server name>`)” > “下一步”。   
+3. 若要将数据还原到同一台服务器或计算机，请在“开始”页上选择“此服务器(`<server name>`)” > “下一步”。
 
     ![恢复数据向导“开始”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. 在“选择恢复模式”页上，选择“单个文件和文件夹”>“下一步”。   
+4. 在“选择恢复模式”页上，选择“单个文件和文件夹”>“下一步”。
 
     ![恢复数据向导“选择恢复模式”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
-   > 还原单个文件和文件夹的选项需要 .NET Framework 4.5.2 或更高版本。 如果未看到“单个文件和文件夹”选项，则必须将 .NET Framework 升级到 4.5.2 或更高版本，然后重试  。
+   > 还原单个文件和文件夹的选项需要 .NET Framework 4.5.2 或更高版本。 如果未看到“单个文件和文件夹”选项，则必须将 .NET Framework 升级到 4.5.2 或更高版本，然后重试。
 
    > [!TIP]
-   > 使用“单个文件和文件夹”选项  可以快速访问恢复点数据。 它适用于恢复各个单独的文件，各个文件的总大小不能超过 80 GB，在恢复期间，它的传输或复制速度最高可达 6 MBps。 “卷”  选项恢复指定卷中的所有备份数据。 此选项可提供更快的传输速度（高达 60 MBps），这适用于恢复大量数据或整个卷。
+   > 使用“单个文件和文件夹”选项可以快速访问恢复点数据。 它适用于恢复各个单独的文件，各个文件的总大小不能超过 80 GB，在恢复期间，它的传输或复制速度最高可达 6 MBps。 “卷”选项恢复指定卷中的所有备份数据。 此选项可提供更快的传输速度（高达 60 MBps），这适用于恢复大量数据或整个卷。
 
-5. 在“选择卷和日期”页上，选择包含想要还原的文件和文件夹的卷。 
+5. 在“选择卷和日期”页上，选择包含想要还原的文件和文件夹的卷。
 
-    在日历中选择一个恢复点。 以**粗体**显示的日期指示至少有一个可用的恢复点。 如果单个日期有多个可用的恢复点，请从“时间”下拉菜单中选择特定的恢复点。 
+    在日历中选择一个恢复点。 以**粗体**显示的日期指示至少有一个可用的恢复点。 如果单个日期有多个可用的恢复点，请从“时间”下拉菜单中选择特定的恢复点。
 
     ![恢复数据向导“选择卷和日期”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
-6. 选择要还原的恢复点之后，选择“装载”。 
+6. 选择要还原的恢复点之后，选择“装载”。
 
     Azure 备份会装载本地恢复点，并将其用作恢复卷。
 
-7. 在“浏览和恢复文件”页上，选择“浏览”打开 Windows 资源管理器并找到所需的文件和文件夹。  
+7. 在“浏览和恢复文件”页上，选择“浏览”打开 Windows 资源管理器并找到所需的文件和文件夹。
 
     ![恢复数据向导“浏览和恢复文件”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
@@ -77,12 +76,12 @@ ms.locfileid: "67460261"
     ![Windows 资源管理器的屏幕截图，其中已突出显示“复制”](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
 
-9. 完成后，在“浏览和恢复文件”页上，选择“卸载”。   然后选择“是”，确认要卸载该卷  。
+9. 完成后，在“浏览和恢复文件”页上，选择“卸载”。 然后选择“是”，确认要卸载该卷。
 
     ![恢复数据向导“浏览和恢复文件”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果不选择“卸载”，恢复卷将保持装载 6 个小时（从装载时算起）。  但是，如果正在持续进行文件复制，装载时间延长至最多 24 小时。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
+    > 如果不选择“卸载”，恢复卷将保持装载 6 个小时（从装载时算起）。 但是，如果正在持续进行文件复制，装载时间延长至最多 24 小时。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
     >
 
 
@@ -97,44 +96,44 @@ ms.locfileid: "67460261"
 * *示例保管库* – 源计算机和目标计算机注册到的恢复服务保管库。 <br/>
 
 > [!NOTE]
-> 无法将备份还原到运行较低 操作系统版本的目标计算机。 例如，可以在 Windows 7 （或更高版本） 计算机上还原执行从 Windows 7 计算机的备份。 但是，在 Windows 8 计算机上创建的备份无法还原到 Windows 7 计算机。
+> 无法将备份还原到运行较低 操作系统版本的目标计算机。 例如, 可以在 Windows 7 (或更高版本) 计算机上还原从 Windows 7 计算机中创建的备份。 但是，在 Windows 8 计算机上创建的备份无法还原到 Windows 7 计算机。
 >
 >
 
-1. 在目标计算机中打开“Microsoft Azure 备份”管理单元  。
+1. 在目标计算机中打开“Microsoft Azure 备份”管理单元。
 
 2. 确保目标计算机和源计算机已还原到同一个恢复服务保管库。
 
-3. 选择“恢复数据”打开“恢复数据向导”。  
+3. 选择“恢复数据”打开“恢复数据向导”。
 
     ![Azure 备份的屏幕截图，其中突出显示了“恢复数据”](./media/backup-azure-restore-windows-server/recover.png)
 
-4. 在“开始”页上选择“另一台服务器”。  
+4. 在“开始”页上选择“另一台服务器”。
 
     ![恢复数据向导“开始”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
 
-5. 提供对应于示例保管库的保管库凭据文件，并选择“下一步”。 
+5. 提供对应于示例保管库的保管库凭据文件，并选择“下一步”。
 
     如果保管库凭据文件无效（或已过期），请在 Azure 门户中从示例保管库下载新的保管库凭据文件。 提供有效的保管库凭据后，会显示相应备份保管库的名称。
 
 
-6. 在“选择备份服务器”窗格中，从显示的计算机列表中选择源计算机并提供通行短语。  然后，选择“下一步”  。
+6. 在“选择备份服务器”窗格中，从显示的计算机列表中选择源计算机并提供通行短语。 然后，选择“下一步”。
 
     ![恢复数据向导“选择备份服务器”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. 在“选择恢复模式”页上，选择“单个文件和文件夹” > “下一步”。   
+7. 在“选择恢复模式”页上，选择“单个文件和文件夹” > “下一步”。
 
     ![恢复数据向导“选择恢复模式”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
-8. 在“选择卷和日期”页上，选择包含想要还原的文件和文件夹的卷。 
+8. 在“选择卷和日期”页上，选择包含想要还原的文件和文件夹的卷。
 
-    在日历中选择一个恢复点。 以**粗体**显示的日期指示至少有一个可用的恢复点。 如果单个日期有多个可用的恢复点，请从“时间”下拉菜单中选择特定的恢复点。 
+    在日历中选择一个恢复点。 以**粗体**显示的日期指示至少有一个可用的恢复点。 如果单个日期有多个可用的恢复点，请从“时间”下拉菜单中选择特定的恢复点。
 
     ![恢复数据向导“选择卷和日期”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
 
-9. 选择“装载”，在本地将恢复点装载为目标计算机上的恢复卷。 
+9. 选择“装载”，在本地将恢复点装载为目标计算机上的恢复卷。
 
-10. 在“浏览和恢复文件”页上，选择“浏览”打开 Windows 资源管理器并找到所需的文件和文件夹。  
+10. 在“浏览和恢复文件”页上，选择“浏览”打开 Windows 资源管理器并找到所需的文件和文件夹。
 
     ![恢复数据向导“浏览和恢复文件”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
@@ -142,12 +141,12 @@ ms.locfileid: "67460261"
 
     ![Windows 资源管理器的屏幕截图，其中已突出显示“复制”](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. 完成后，在“浏览和恢复文件”页上，选择“卸载”。   然后选择“是”，确认要卸载该卷  。
+12. 完成后，在“浏览和恢复文件”页上，选择“卸载”。 然后选择“是”，确认要卸载该卷。
 
     ![恢复数据向导“浏览和恢复文件”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果不选择“卸载”，恢复卷将保持装载 6 个小时（从装载时算起）。  但是，如果正在持续进行文件复制，装载时间延长至最多 24 小时。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
+    > 如果不选择“卸载”，恢复卷将保持装载 6 个小时（从装载时算起）。 但是，如果正在持续进行文件复制，装载时间延长至最多 24 小时。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
     >
 
 ## <a name="next-steps"></a>后续步骤

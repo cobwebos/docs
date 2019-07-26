@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: e9100a764ba3922e0254b7fa5cd03b18e204925f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8528ac81f2248e417d7d25d0f3c2650845c3d7d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596017"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404301"
 ---
 # <a name="get-started-with-device-management-java"></a>设备管理入门 (Java)
 
@@ -30,7 +30,7 @@ ms.locfileid: "65596017"
 
 本教程结束时，将会创建两个 Java 控制台应用：
 
-simulated-device  。 此应用：
+simulated-device。 此应用：
 
 * 使用之前创建的设备标识连接到 IoT 中心。
 
@@ -40,7 +40,7 @@ simulated-device  。 此应用：
 
 * 通过报告属性报告上次重启的时间。
 
-trigger-reboot  。 此应用：
+trigger-reboot。 此应用：
 
 * 在模拟设备应用中调用直接方法。
 
@@ -63,11 +63,13 @@ trigger-reboot  。 此应用：
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>检索 IoT 中心的连接字符串
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
+
+## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
+
+[!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>使用直接方法在设备上触发远程重新启动
 
@@ -83,13 +85,13 @@ trigger-reboot  。 此应用：
 
 1. 创建名为 dm-get-started 的空文件夹。
 
-2. 使用命令提示符中的以下命令，在 dm-get-started 文件夹中创建名为 trigger-reboot 的 Maven 项目  。 以下内容演示了一条很长的命令：
+2. 使用命令提示符中的以下命令，在 dm-get-started 文件夹中创建名为 trigger-reboot 的 Maven 项目。 以下内容演示了一条很长的命令：
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
 3. 在命令提示符下，导航到 trigger-reboot 文件夹。
 
-4. 使用文本编辑器打开 trigger-reboot 文件夹中的 pom.xml 文件，并在 dependencies 节点中添加以下依赖项  。 此依赖项使得可以使用应用中的 iot-service-client 包来与 IoT 中心进行通信：
+4. 使用文本编辑器打开 trigger-reboot 文件夹中的 pom.xml 文件，并在 dependencies 节点中添加以下依赖项。 此依赖项使得可以使用应用中的 iot-service-client 包来与 IoT 中心进行通信：
 
     ```xml
     <dependency>
@@ -140,7 +142,7 @@ trigger-reboot  。 此应用：
     import java.util.concurrent.ExecutorService;
     ```
 
-9. 将以下类级变量添加到 **App** 类。 将 `{youriothubconnectionstring}` 替换为在“创建 IoT 中心”部分记下的 IoT 中心连接字符串： 
+9. 将以下类级变量添加到 **App** 类。 将`{youriothubconnectionstring}`替换为之前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -151,7 +153,7 @@ trigger-reboot  。 此应用：
     private static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
     ```
 
-10. 若要实现每隔 10 秒读取一次设备孪生提供的报告属性的线程，请将以下嵌套类添加到 App 类  ：
+10. 若要实现每隔 10 秒读取一次设备孪生提供的报告属性的线程，请将以下嵌套类添加到 App 类：
 
     ```java
     private static class ShowReportedProperties implements Runnable {
@@ -172,13 +174,13 @@ trigger-reboot  。 此应用：
     }
     ```
 
-11. 将 main  方法签名修改为抛出以下异常：
+11. 将 main 方法签名修改为抛出以下异常：
 
     ```java
     public static void main(String[] args) throws IOException
     ```
 
-12. 若要在模拟设备上调用重启直接方法，请将以下代码添加到 main 方法  ：
+12. 若要在模拟设备上调用重启直接方法，请将以下代码添加到 main 方法：
 
     ```java
     System.out.println("Starting sample...");
@@ -203,7 +205,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-13. 若要启动轮询模拟设备提供的报告属性的线程，请将以下代码添加到 main 方法  ：
+13. 若要启动轮询模拟设备提供的报告属性的线程，请将以下代码添加到 main 方法：
 
     ```java
     ShowReportedProperties showReportedProperties = new ShowReportedProperties();
@@ -211,7 +213,7 @@ trigger-reboot  。 此应用：
     executor.execute(showReportedProperties);
     ```
 
-14. 若要能够停止应用，请将以下代码添加到 main 方法  ：
+14. 若要能够停止应用，请将以下代码添加到 main 方法：
 
     ```java
     System.out.println("Press ENTER to exit.");
@@ -222,21 +224,21 @@ trigger-reboot  。 此应用：
 
 15. 保存并关闭 trigger-reboot\src\main\java\com\mycompany\app\App.java 文件。
 
-16. 生成 trigger-reboot 后端应用并更正任何错误  。 在命令提示符下，导航到 trigger-reboot 文件夹并运行以下命令：
+16. 生成 trigger-reboot 后端应用并更正任何错误。 在命令提示符下，导航到 trigger-reboot 文件夹并运行以下命令：
 
     `mvn clean package -DskipTests`
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 
-本部分中将创建一个模拟设备的 Java 控制台应用。 该应用侦听 IoT 中心发出的重启直接方法调用并快速响应该调用。 然后该应用会休眠一段时间，以模拟重启过程，之后该应用会使用报告属性通知 trigger-reboot 后端应用重启已完成  。
+本部分中将创建一个模拟设备的 Java 控制台应用。 该应用侦听 IoT 中心发出的重启直接方法调用并快速响应该调用。 然后该应用会休眠一段时间，以模拟重启过程，之后该应用会使用报告属性通知 trigger-reboot 后端应用重启已完成。
 
-1. 使用命令提示符中的以下命令，在 dm-get-started 文件夹中创建名为 simulated-device 的 Maven 项目  。 以下内容是一条很长的命令：
+1. 使用命令提示符中的以下命令，在 dm-get-started 文件夹中创建名为 simulated-device 的 Maven 项目。 以下内容是一条很长的命令：
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
 2. 在命令提示符下，导航到 simulated-device 文件夹。
 
-3. 使用文本编辑器打开 simulated-device 文件夹中的 pom.xml 文件，并在 dependencies 节点中添加以下依赖项  。 此依赖项使得可以使用应用中的 iot-service-client 包来与 IoT 中心进行通信：
+3. 使用文本编辑器打开 simulated-device 文件夹中的 pom.xml 文件，并在 dependencies 节点中添加以下依赖项。 此依赖项使得可以使用应用中的 iot-service-client 包来与 IoT 中心进行通信：
 
     ```xml
     <dependency>
@@ -285,7 +287,7 @@ trigger-reboot  。 此应用：
     import java.util.HashSet;
     ```
 
-7. 将以下类级变量添加到 **App** 类。 使用“创建设备标识”部分所述的设备连接字符串替换 `{yourdeviceconnectionstring}`  ：
+7. 将以下类级变量添加到 **App** 类。 使用“创建设备标识”部分所述的设备连接字符串替换 `{yourdeviceconnectionstring}`：
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -296,7 +298,7 @@ trigger-reboot  。 此应用：
     private static DeviceClient client;
     ```
 
-8. 若要为直接方法状态事件实现回调处理程序，请将以下嵌套类添加到 App 类  ：
+8. 若要为直接方法状态事件实现回调处理程序，请将以下嵌套类添加到 App 类：
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
@@ -308,7 +310,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-9. 若要为设备孪生状态事件实现回调处理程序，请将以下嵌套类添加到 App 类  ：
+9. 若要为设备孪生状态事件实现回调处理程序，请将以下嵌套类添加到 App 类：
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
@@ -320,7 +322,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-10. 若要为属性事件实现回调处理程序，请将以下嵌套类添加到 App 类  ：
+10. 若要为属性事件实现回调处理程序，请将以下嵌套类添加到 App 类：
 
     ```java
     protected static class PropertyCallback implements PropertyCallBack<String, String>
@@ -333,7 +335,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-11. 若要实现一个模拟设备重启的线程，请将以下嵌套类添加到 App 类  。 线程会休眠五秒，然后设置 lastReboot 报告属性  ：
+11. 若要实现一个模拟设备重启的线程，请将以下嵌套类添加到 App 类。 线程会休眠五秒，然后设置 lastReboot 报告属性：
 
     ```java
     protected static class RebootDeviceThread implements Runnable {
@@ -354,7 +356,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-12. 若要在设备上实现直接方法，请将以下嵌套类添加到 App 类  。 模拟应用接收到重启直接方法的调用时，会向调用方返回确认，然后启动处理重启的线程  ：
+12. 若要在设备上实现直接方法，请将以下嵌套类添加到 App 类。 当模拟应用收到对**reboot**直接方法的调用时, 它会向调用方返回确认, 然后启动一个线程来处理重启:
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -386,20 +388,20 @@ trigger-reboot  。 此应用：
     }
     ```
 
-13. 修改 main 方法的签名以引发以下异常  ：
+13. 修改 main 方法的签名以引发以下异常：
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-14. 若要实例化 DeviceClient，请将以下代码添加到 main 方法   ：
+14. 若要实例化 DeviceClient，请将以下代码添加到 main 方法：
 
     ```java
     System.out.println("Starting device client sample...");
     client = new DeviceClient(connString, protocol);
     ```
 
-15. 若要开始侦听直接方法调用，请将以下代码添加到 main 方法  ：
+15. 若要开始侦听直接方法调用，请将以下代码添加到 main 方法：
 
     ```java
     try
@@ -417,7 +419,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-16. 若要关闭设备模拟器，请将以下代码添加到 main 方法  ：
+16. 若要关闭设备模拟器，请将以下代码添加到 main 方法：
 
     ```java
     System.out.println("Press any key to exit...");
@@ -430,7 +432,7 @@ trigger-reboot  。 此应用：
 
 17. 保存并关闭 simulated-device\src\main\java\com\mycompany\app\App.java 文件。
 
-18. 生成 simulated-device 后端应用并更正任何错误  。 在命令提示符下，导航到 simulated-device 文件夹并运行以下命令：
+18. 生成 simulated-device 后端应用并更正任何错误。 在命令提示符下，导航到 simulated-device 文件夹并运行以下命令：
 
     `mvn clean package -DskipTests`
 

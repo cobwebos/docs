@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8bea47467d141869b1a668668bc57451a882a54b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448450"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423005"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>如何处理和提取认知搜索方案中的图像中的信息
 
@@ -30,7 +30,7 @@ ms.locfileid: "67448450"
 
 在文档破解过程中，可以使用新的一组索引器配置参数来处理图像文件或嵌入文件中的图像。 这些参数用于将图像规范化，以便进行进一步的下游处理。 规范化图像可以使图像更统一。 可以根据最大高度和宽度来重设大型图像的大小，使之可用。 对于提供方向元数据的图像，可以调整图像旋转，使之适合垂直加载。 元数据调整项在为每个图像创建的复杂类型中捕获。 
 
-无法关闭图像规范化功能。 循环访问图像的技术需要规范化的图像。 启用映像的索引器上的标准化要求方面的技能将附加到该索引器。
+无法关闭图像规范化功能。 循环访问图像的技术需要规范化的图像。 启用索引器上的图像规范化需要将技能组合附加到该索引器。
 
 | 配置参数 | 描述 |
 |--------------------|-------------|
@@ -103,8 +103,6 @@ ms.locfileid: "67448450"
 
 [OCR 技术](cognitive-search-skill-ocr.md)可从图像文件（例如 JPG、PNG、位图）中提取文本。 它可以提取文本和布局信息。 布局信息为每个确定的字符串提供边框。
 
-可以通过 OCR 技术选择用于在图像中检测文本的算法。 它目前支持两种算法，一种适用于印刷体文本，另一种适用于手写体文本。
-
 ## <a name="embedded-image-scenario"></a>嵌入图像场景
 
 常见的场景包括通过执行以下步骤，创建单个包含所有文件内容的字符串，既有文本，又有图像原点文本：  
@@ -113,7 +111,7 @@ ms.locfileid: "67448450"
 1. 运行 OCR 技术，使用 `"/document/normalized_images"` 作为输入
 1. 将这些图像的文本表示形式与从文件提取的原始文本合并。 可以使用[文本合并](cognitive-search-skill-textmerger.md)技术将两个文本区块合并成单个大型字符串。
 
-以下示例技术集会创建的 merged_text  字段包含文档的文本内容， 以及每个嵌入图像中的 OCR 化文本。 
+以下示例技术集会创建的 merged_text 字段包含文档的文本内容， 以及每个嵌入图像中的 OCR 化文本。 
 
 #### <a name="request-body-syntax"></a>请求正文语法
 ```json
@@ -217,7 +215,7 @@ ms.locfileid: "67448450"
         }
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 + [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [分析图像技术](cognitive-search-skill-image-analysis.md)
 + [OCR 技术](cognitive-search-skill-ocr.md)

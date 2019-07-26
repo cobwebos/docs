@@ -2,24 +2,17 @@
 title: 如何更新云服务 | Microsoft Docs
 description: 了解如何在 Azure 中更新云服务。 了解如何云服务上进行更新以确保可用性。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 10d919b21e05195e8a7b6b351a742a4f9a57ee2b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653865"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360703"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新云服务
 
@@ -106,7 +99,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 
 在将服务从单个实例升级到多个实例时，由于 Azure 升级服务的方式，会在执行升级时停止服务。 保证服务可用性的服务级别协议仅适用于部署的具有多个实例的服务。 以下列表描述了每种 Azure 服务升级方案如何影响每个驱动器上的数据：
 
-|场景|C 盘|D 盘|E 盘|
+|应用场景|C 盘|D 盘|E 盘|
 |--------|-------|-------|-------|
 |VM 重启|已保留|已保留|已保留|
 |门户重启|已保留|已保留|已破坏|
@@ -141,7 +134,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
   1. Locked 元素用于检测何时可以在给定部署上调用变动操作。
   2. RollbackAllowed 元素用于检测何时可以在给定部署上调用“[回滚更新或升级](/previous-versions/azure/reference/hh403977(v=azure.100))”操作。
 
-  要执行回滚，不需要检查 Locked 和 RollbackAllowed 元素。 确认 RollbackAllowed 设置为 true 就足够了。 如果使用请求标头设置为调用这些方法时，才会返回这些元素"x ms 版本：2011-10-01"或更高版本。 有关版本控制标头的详细信息，请参阅[服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
+  要执行回滚，不需要检查 Locked 和 RollbackAllowed 元素。 确认 RollbackAllowed 设置为 true 就足够了。 仅当使用设置为 "x-ms-版本" 的请求标头调用这些方法时, 才会返回这些元素。2011-10-01 "或更高版本。 有关版本控制标头的详细信息，请参阅[服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
 
 在某些情况下，不支持回滚更新或升级，这些情况包括：
 
@@ -162,11 +155,11 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 
 在进行第一个更新的同时启动第二个更新操作以类似回滚操作的方式执行。 如果第二个更新是在自动模式下执行的，将立即升级第一个升级域，这可能会导致多个升级域中的实例在同一时刻处于脱机状态。
 
-变异操作如下所示：[更改部署配置](/previous-versions/azure/reference/ee460809(v=azure.100))，[升级部署](/previous-versions/azure/reference/ee460793(v=azure.100))，[更新部署状态](/previous-versions/azure/reference/ee460808(v=azure.100))，[删除部署](/previous-versions/azure/reference/ee460815(v=azure.100))，和[回滚更新或升级](/previous-versions/azure/reference/hh403977(v=azure.100))。
+变异操作如下所示:[更改部署配置](/previous-versions/azure/reference/ee460809(v=azure.100))、[升级部署](/previous-versions/azure/reference/ee460793(v=azure.100))、[更新部署状态](/previous-versions/azure/reference/ee460808(v=azure.100))、[删除部署](/previous-versions/azure/reference/ee460815(v=azure.100))以及[回滚更新或升级](/previous-versions/azure/reference/hh403977(v=azure.100))。
 
 “[获取部署](/previous-versions/azure/reference/ee460804(v=azure.100))”和“[获取云服务属性](/previous-versions/azure/reference/ee460806(v=azure.100))”这两个操作返回 Locked 标志，可以通过检查该标志，以确定是否可以在给定部署上调用变动操作。
 
-若要调用返回 Locked 标志的这些方法版本，必须将请求标头设置为"x-ms-version 的：2011-10-01"或更高版本。 有关版本控制标头的详细信息，请参阅[服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
+若要调用返回 Locked 标志的这些方法的版本, 必须将请求标头设置为 "x-ms-版本:2011-10-01 "或更高版本。 有关版本控制标头的详细信息，请参阅[服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
 
 <a name="distributiondfroles"></a>
 

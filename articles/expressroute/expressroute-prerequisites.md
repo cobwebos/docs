@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: mialdrid
+ms.date: 07/23/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: afe8d3971a51d57498e3e32b7e1cf5bf5a3263d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f16f797afca6d60029c1f39fea7235ce84e4f954
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883215"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442212"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute 先决条件和清单
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需确认是否符合以下部分中所列的要求。
@@ -50,10 +50,7 @@ ms.locfileid: "60883215"
 * [Office 365 中的 ExpressRoute 高级培训视频](https://channel9.msdn.com/series/aer/)
 
 ## <a name="dynamics-365"></a>Dynamics 365
-如果打算在 ExpressRoute 上启用 Dynamics 365，请参阅以下文档，详细了解 Dynamics 365
-
-* [Dynamics 365 和 ExpressRoute 白皮书](https://download.microsoft.com/download/B/2/8/B2896B38-9832-417B-9836-9EF240C0A212/Microsoft%20Dynamics%20365%20and%20ExpressRoute.pdf)
-* [Dynamics 365 URL](https://support.microsoft.com/kb/2655102) 和 [IP 地址范围](https://support.microsoft.com/kb/2728473)
+如果打算在 ExpressRoute 上启用 Dynamics 365, 请查看[dynamics 365 url](https://support.microsoft.com/kb/2655102)和[IP 地址范围](https://support.microsoft.com/kb/2728473)。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。

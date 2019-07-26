@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, sstein
 manager: craigg
 ms.date: 05/10/2019
-ms.openlocfilehash: 7f5b4cfa8b61259987fc7a6d1f1556af52160519
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5bdbd9bebfb819ae18de884a014c574e12c53ebf
+ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261039"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371703"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>功能比较：Azure SQL 数据库与 SQL Server
 
@@ -48,21 +48,21 @@ Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的
 | [内置函数](https://docs.microsoft.com/sql/t-sql/functions/functions) | 大多数 - 请参阅单个函数 | 是 - 请参阅[存储过程、函数和触发器差异](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) | 
 | [BULK INSERT 语句](https://docs.microsoft.com/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server) | 是，但是只能从充当源的 Azure Blob 存储进行。 | 是的, 但只需从 Azure Blob 存储作为源-请参阅[不同之处](sql-database-managed-instance-transact-sql-information.md#bulk-insert--openrowset)。 |
 | [证书和非对称密钥](https://docs.microsoft.com/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | 是，无法访问文件系统完成 `BACKUP` 和 `CREATE` 操作。 | 是, 无需访问文件系统进行`BACKUP`和`CREATE`操作-请参阅[证书差异](sql-database-managed-instance-transact-sql-information.md#certificates)。 | 
-| [更改数据捕获](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | 否 | 是 |
+| [变更数据捕获-CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | 否 | 是 |
 | [更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | 是 |是 |
 | [排序规则 - 数据库](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation) | 是 | 是 |
 | [排序规则 - 服务器/实例](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | 不能, 始终使用默认`SQL_Latin1_General_CP1_CI_AS`的逻辑服务器排序规则。 | 是, 可以在[创建实例](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)时设置, 稍后不能更新。 |
 | [列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | 是 - [高级层、标准层 - S3 及以上层、常规用途层和业务关键层](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |是 |
-| [公共语言运行时 (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | 否 | 是, 但在语句中`CREATE ASSEMBLY`没有对文件系统的访问权限-请参阅[CLR 差异](sql-database-managed-instance-transact-sql-information.md#clr) |
+| [公共语言运行时-CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | 否 | 是, 但在语句中`CREATE ASSEMBLY`没有对文件系统的访问权限-请参阅[CLR 差异](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | 是 | 目前没有[因为还原时出现故障 (包括时间点还原)](sql-database-managed-instance-transact-sql-information.md#cant-restore-contained-database)。 这是即将修复的缺陷。 |
 | [包含的用户](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | 是 | 是 |
 | [流控制语言关键字](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | 是 | 是 |
-| [凭据](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | 是，但是仅限[数据库范围的凭据](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)。 | 是, 但仅  支持 Azure Key Vault `SHARED ACCESS SIGNATURE`和, 请参阅[详细信息](sql-database-managed-instance-transact-sql-information.md#credential) |
-| [跨数据库查询](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | 否 - 请参阅[弹性查询](sql-database-elastic-query-overview.md) | 是，外加[弹性查询](sql-database-elastic-query-overview.md) |
+| [凭据](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | 是，但是仅限[数据库范围的凭据](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)。 | 是, 但仅支持 Azure Key Vault `SHARED ACCESS SIGNATURE`和, 请参阅[详细信息](sql-database-managed-instance-transact-sql-information.md#credential) |
+| [跨数据库/三部分名称查询](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | 否 - 请参阅[弹性查询](sql-database-elastic-query-overview.md) | 是，外加[弹性查询](sql-database-elastic-query-overview.md) |
 | [跨数据库事务](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | 否 | 是, 在实例中。 有关跨实例查询, 请参阅[链接服务器差异](sql-database-managed-instance-transact-sql-information.md#linked-servers)。 |
 | [游标](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | 是 |是 |
 | [Data compression](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression)（数据压缩） | 是 |是 |
-| [数据库邮件](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | 否 | 是 |
+| [数据库邮件-DbMail](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | 否 | 是 |
 | [数据库镜像](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server) | 否 | [否](sql-database-managed-instance-transact-sql-information.md#database-mirroring) |
 | [数据库配置设置](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) | 是 | 是 |
 | [数据库快照](https://docs.microsoft.com/sql/relational-databases/databases/database-snapshots-sql-server) | 否 | 否 |
@@ -78,11 +78,11 @@ Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的
 | [动态数据屏蔽](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)|[是](sql-database-dynamic-data-masking-get-started.md)| [是](sql-database-dynamic-data-masking-get-started.md) |
 | [事件通知](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | 否 - 请参阅[警报](sql-database-insights-alerts-portal.md) | 否 |
 | [表达式](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |是 | 是 |
-| [扩展事件](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | 部分 - 请参阅 [SQL 数据库中的扩展事件](sql-database-xevent-db-diff-from-svr.md) | 是 - 请参阅[扩展事件的差异](sql-database-managed-instance-transact-sql-information.md#extended-events) |
+| [扩展事件 (XEvent)](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | 部分 - 请参阅 [SQL 数据库中的扩展事件](sql-database-xevent-db-diff-from-svr.md) | 是 - 请参阅[扩展事件的差异](sql-database-managed-instance-transact-sql-information.md#extended-events) |
 | [扩展的存储过程](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | 否 | 否 |
 | [文件和文件组](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | 仅限主文件组 | 是的。 文件路径是自动分配的, 不能在`ALTER DATABASE ADD FILE` [语句](sql-database-managed-instance-transact-sql-information.md#alter-database-statement)中指定文件位置。  |
 | [文件流](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | 否 | [否](sql-database-managed-instance-transact-sql-information.md#filestream-and-filetable) |
-| [全文搜索](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  是，但不支持第三方断字符 | 是, 但[不支持第三方断字符](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) |
+| [全文搜索 (FT 数)](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  是，但不支持第三方断字符 | 是, 但[不支持第三方断字符](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) |
 | [函数](https://docs.microsoft.com/sql/t-sql/functions/functions) | 大多数 - 请参阅单个函数 | 是 - 请参阅[存储过程、函数和触发器差异](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
 | [图形处理](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | 是 | 是 |
 | [内存中优化](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | 是 - [仅限高级层和业务关键层](sql-database-in-memory.md) | 是 - [仅限业务关键层](sql-database-managed-instance.md) |
@@ -102,7 +102,7 @@ Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的
 | [OPENXML](https://docs.microsoft.com/sql/t-sql/functions/openxml-transact-sql)|是|是|
 | [运算符](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | 大多数 - 请参阅单个运算符 |是 - 请参阅 [T-SQL 差异](sql-database-managed-instance-transact-sql-information.md) |
 | [分区](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | 是 | 是 |
-| 公共 IP 地址 | 是的。 访问权限可以使用防火墙或服务终结点来限制。  | 是的。 需要显式启用端口 3342, 且必须在 NSG 规则中启用。 如果需要, 可以禁用公共 IP。 有关更多详细信息, 请参阅[公共终结点](sql-database-managed-instance-public-endpoint-securely.md)。 | 
+| 公用 IP 地址 | 是的。 访问权限可以使用防火墙或服务终结点来限制。  | 是的。 需要显式启用端口 3342, 且必须在 NSG 规则中启用。 如果需要, 可以禁用公共 IP。 有关更多详细信息, 请参阅[公共终结点](sql-database-managed-instance-public-endpoint-securely.md)。 | 
 | [数据库时间点还原](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | 是-除超大规模以外的所有服务层-请参阅[SQL 数据库恢复](sql-database-recovery-using-backups.md#point-in-time-restore) | 是 - 请参阅 [SQL 数据库恢复](sql-database-recovery-using-backups.md#point-in-time-restore) |
 | [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | 否。 可以使用`OPENROWSET`函数查询放置在 Azure Blob 存储上的文件中的数据。 | 否。 可以使用`OPENROWSET`函数查询放置在 Azure Blob 存储上的文件中的数据。 |
 | [Predicates](https://docs.microsoft.com/sql/t-sql/queries/predicates)（谓词） | 是 | 是 |
@@ -111,7 +111,7 @@ Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的
 | [资源调控器](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | 否 | 是 |
 | [RESTORE 语句](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | 否 | 是, 对于放置`FROM URL`在 Azure Blob 存储上的备份文件, 有必需的选项。 请参阅[还原差异](sql-database-managed-instance-transact-sql-information.md#restore-statement) |
 | [从备份还原数据库](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | 仅从自动备份 - 请参阅 [SQL 数据库恢复](sql-database-recovery-using-backups.md) | 从自动备份-请参阅[SQL 数据库恢复](sql-database-recovery-using-backups.md)和来自 Azure Blob 存储的完整备份-请参阅[备份差异](sql-database-managed-instance-transact-sql-information.md#backup) |
-| [将数据库还原到 SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | 否。 | 不能, 因为托管实例中使用的 SQL Server 数据库引擎的版本高于在本地使用的任何 SQL Server RTM 版本。 |
+| [将数据库还原到 SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | 否。 使用 BACPAC 或 BCP 而不是本机还原。 | 不能, 因为托管实例中使用的 SQL Server 数据库引擎的版本高于在本地使用的任何 SQL Server RTM 版本。 请改用 BACPAC、BCP 或事务复制。 |
 | [行级别安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) | 是 | 是 |
 | [语义搜索](https://docs.microsoft.com/sql/relational-databases/search/semantic-search-sql-server) | 否 | 否 |
 | [序列号](https://docs.microsoft.com/sql/relational-databases/sequence-numbers/sequence-numbers) | 是 | 是 |
@@ -148,11 +148,9 @@ Azure 平台提供了许多 PaaS 功能, 这些功能添加为标准数据库功
 | [自动故障转移组](sql-database-auto-failover-group.md) | 是 - 除超大规模之外的所有服务层级 | 是，[处于公开预览状态](sql-database-auto-failover-group.md)|
 | [Azure 资源运行状况](/azure/service-health/resource-health-overview) | 是 | 否 |
 | [数据迁移服务 (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | 是 | 是 |
-| [Data Quality Services (DQS)](https://docs.microsoft.com/sql/data-quality-services/data-quality-services) | 否 | 否 |
 | [异地还原](sql-database-recovery-using-backups.md#geo-restore) | 是 - 除超大规模之外的所有服务层级 | 是-使用[Azure PowerShell](https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa)。 |
 | [超大规模体系结构](sql-database-service-tier-hyperscale.md) | 是 | 否 |
 | [长期备份保留-从左向右](sql-database-long-term-retention.md) | 是, 保持自动备份最多10年。 | 还不可以。 使用`COPY_ONLY` [手动备份](sql-database-managed-instance-transact-sql-information.md#backup)作为临时解决方法。 |
-| [Master Data Services (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | 否 | 否 |
 | [基于策略的管理](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | 否 | 否 |
 | 资源池 | 是, 作为[弹性池](sql-database-elastic-pool.md) | 内置 - 单个托管实例可以有多个共享同一资源池的数据库 |
 | 增加或减少 (联机) | 是的, 你可以更改 DTU 或保留的 Vcore 或最大停机时间, 但停机时间最短。 | 是的, 你可以更改保留的 Vcore 或最大的存储, 但停机时间最短。 | 
@@ -165,7 +163,7 @@ Azure 平台提供了许多 PaaS 功能, 这些功能添加为标准数据库功
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | 否，[Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) 是一项单独的 Azure 云服务。 | 否，[Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) 是一项单独的 Azure 云服务。 |
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | 是，使用 Azure 数据工厂 (ADF) 环境中的托管 SSIS ，其中程序包存储在由 Azure SQL 数据库承载的 SSISDB 中并在 Azure SSIS 集成运行时 (IR) 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 <br/><br/>若要比较 SQL 数据库服务器和托管实例中的 SSIS 功能，请参阅[比较 Azure SQL 数据库单一数据库/弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance)。 | 是，使用 Azure 数据工厂 (ADF) 环境中的托管 SSIS ，其中程序包存储在由托管实例承载的 SSISDB 中并在 Azure SSIS 集成运行时 (IR) 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 <br/><br/>若要比较 SQL 数据库和托管实例中的 SSIS 功能，请参阅[比较 Azure SQL 数据库单一数据库/弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance)。 |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | 否 - 请参阅 [Power BI](https://docs.microsoft.com/power-bi/) | 否 - 请参阅 [Power BI](https://docs.microsoft.com/power-bi/) |
-| [查询性能见解](sql-database-query-performance.md) | 是 | 否。 使用 SQL Server Management Studio 和 Azure Data Studio 中的内置报表。 |
+| [查询性能见解 (QPI)](sql-database-query-performance.md) | 是 | 否。 使用 SQL Server Management Studio 和 Azure Data Studio 中的内置报表。 |
 | [VNet](../virtual-network/virtual-networks-overview.md) | Partial, 它使用[VNet 终结点](sql-database-vnet-service-endpoint-rule-overview.md)启用受限访问 | 是的, 托管实例注入到客户的 VNet 中。 请参阅[子网](sql-database-managed-instance-transact-sql-information.md#subnet)和[VNet](sql-database-managed-instance-transact-sql-information.md#vnet) |
 
 ## <a name="tools"></a>工具
@@ -176,10 +174,12 @@ Azure SQL 数据库支持各种数据工具, 可帮助 uou 管理数据。
 | [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | 是 | 是 |
 | [BACPAC 文件（导出）](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | 是 - 请参阅 [SQL 数据库导出](sql-database-export.md) | 是 - 请参阅 [SQL 数据库导出](sql-database-export.md) |
 | [BACPAC 文件（导入）](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | 是 - 请参阅 [SQL 数据库导入](sql-database-import.md) | 是 - 请参阅 [SQL 数据库导入](sql-database-import.md) |
+| [Data Quality Services (DQS)](https://docs.microsoft.com/sql/data-quality-services/data-quality-services) | 否 | 否 |
+| [Master Data Services (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | 否 | 否 |
 | [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | 是 | 是 |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | 是 | 是[版本18.0 和更高版本](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | 否 - 请参阅[扩展事件](sql-database-xevent-db-diff-from-svr.md) | 是 |
-| [System Center-Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) | [是](https://www.microsoft.com/download/details.aspx?id=38829) | 否 |
+| [System Center Operations Manager-SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [是](https://www.microsoft.com/download/details.aspx?id=38829) | 否 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: b298d73620990dd8f6c6577818adaef9788122e9
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 50703ede205b42032e9618c1b16b0de2bd7f3a23
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326327"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424140"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>状态监视器 v2 API：ApplicationInsightsMonitoringStatus
 
@@ -39,7 +39,6 @@ ms.locfileid: "68326327"
 运行命令`Get-ApplicationInsightsMonitoringStatus`以显示网站的监视状态。
 
 ```
-Machine Identifier:
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
 Machine Identifier:
 811D43F7EC807E389FEA2E732381288ACCD70AFFF9F569559AC3A75F023FA639
@@ -183,12 +182,12 @@ listdlls64.exe -accepteula w3wp
 
 
 ### <a name="-powershellmodule"></a>-PowerShellModule
-可选  。 使用此开关报告监视所需的 Dll 的版本号和路径。
+可选。 使用此开关报告监视所需的 Dll 的版本号和路径。
 如果需要标识任何 DLL 的版本（包括 Application Insights SDK），请使用此选项。
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-可选  。 使用此开关报告 IIS 是否正在运行。
+可选。 使用此开关报告 IIS 是否正在运行。
 它还将下载外部工具，以确定是否将必要的 DLL 加载到 IIS 运行时。
 
 
@@ -200,7 +199,7 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="-force"></a>-Force
 
-可选  。 仅与 InspectProcess 一起使用。 使用此开关可跳过在下载其他工具之前出现的用户提示。
+可选。 仅与 InspectProcess 一起使用。 使用此开关可跳过在下载其他工具之前出现的用户提示。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,5 +1,5 @@
 ---
-title: 具有 Azure Active Directory 应用程序代理的本地应用程序的 SAML 单一登录 (预览) |Microsoft Docs
+title: Azure AD 应用 Proxy 的本地应用的 SAML 单一登录 |Microsoft Docs
 description: 了解如何为通过 SAML 身份验证保护的本地应用程序提供单一登录。 使用应用程序代理提供对本地应用的远程访问。
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f4ab79a9fc9b8fec26cce98d9a878b6fa2a0c3
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: ff5152a2d65ea3921f0fef7f3a020bcea80d1769
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853767"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421252"
 ---
-# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>具有应用程序代理的本地应用程序的 SAML 单一登录 (预览版)
+# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>具有应用程序代理的本地应用程序的 SAML 单一登录
 
 你可以向使用 SAML 身份验证保护的本地应用程序提供单一登录 (SSO), 并通过应用程序代理提供对这些应用程序的远程访问。 使用 SAML 单一登录, Azure Active Directory (Azure AD) 使用用户的 Azure AD 帐户对应用程序进行身份验证。 Azure AD 通过连接协议将登录信息传递给应用程序。 还可以根据在 SAML 声明中定义的规则将用户映射到特定应用程序角色。 除了启用 SAML SSO 外, 还可以通过启用应用程序代理来访问应用程序和无缝 SSO 体验。
 
@@ -49,7 +49,7 @@ ms.locfileid: "67853767"
 
 5. 选择 " **SAML** " 作为 "单一登录方法"。
 
-6. 首先, 将 SAML SSO 设置为在公司网络上工作。 在 "**设置 SAML 的单一登录**" 页中, 选择 "**基本 SAML 配置**" 标题, 并选择其**编辑**图标 (铅笔)。 按照[输入基本 SAML 配置](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on)中的步骤为应用程序配置基于 SAML 的身份验证。
+6. 首先, 将 SAML SSO 设置为在公司网络上工作。 在 "**设置 SAML 的单一登录**" 页中, 选择 "**基本 SAML 配置**" 标题, 并选择其**编辑**图标 (铅笔)。 按照[输入基本 SAML 配置](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration)中的步骤为应用程序配置基于 SAML 的身份验证。
 
 7. 至少将一个用户添加到应用程序, 并确保测试帐户有权访问该应用程序。 连接到企业网络时, 请使用测试帐户查看应用程序的单一登录。 
 

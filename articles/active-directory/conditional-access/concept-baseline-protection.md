@@ -1,6 +1,6 @@
 ---
-title: 条件性访问基线保护策略的 Azure Active Directory
-description: 基线条件性访问策略以保护组织免受常见攻击
+title: 条件性访问基线保护策略-Azure Active Directory
+description: 用于保护组织免受常见攻击的基准条件性访问策略
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,92 +11,95 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 970fdaba1870097e253b51c70e523e399bc88dfc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c2fc552211ed55239259ce84d84584c451733d70
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440773"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499856"
 ---
-# <a name="what-are-baseline-policies"></a>什么是基线策略？
+# <a name="what-are-baseline-policies"></a>什么是基准策略？
 
-基线策略是一组预定义策略来帮助保护组织针对许多常见的攻击。 这些常见的攻击可以包含密码喷射、 重播和网页仿冒欺诈。 所有版本的 Azure AD 中提供了基线策略。 Microsoft 向这些基线保护策略提供每个人都因为基于标识的攻击已过去几年的上升。 以下四个策略的目标是确保所有组织都都基线级别的安全性启用，无需额外付费。  
+基准策略是一组预定义策略, 可帮助组织防范多种常见攻击。 这些常见攻击包括密码喷涂、重播和网络钓鱼。 所有版本的 Azure AD 都提供基准策略。 Microsoft 将这些基准保护策略提供给所有人, 因为基于身份的攻击已经在过去几年的时间上升。 这四个策略的目标是确保所有组织都启用了基线级别 "安全", 无需额外付费。  
 
-管理自定义的条件性访问策略需要将 Azure AD Premium 许可证。
+管理自定义条件访问策略需要 Azure AD Premium 许可证。
 
 ## <a name="baseline-policies"></a>基线策略
 
-![在 Azure 门户中的条件性访问基线策略](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
+![Azure 门户中的条件性访问基线策略](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
-有四个可以让组织的基线策略：
+组织可以启用四个基准策略:
 
-* [有关管理员 （预览版） 要求进行 MFA](howto-baseline-protect-administrators.md)
-* [最终用户保护 （预览版）](howto-baseline-protect-end-users.md)
-* [块旧式身份验证 （预览版）](howto-baseline-protect-legacy-auth.md)
-* [服务管理 （预览版） 要求进行 MFA](howto-baseline-protect-azure.md)
+* [要求对管理员进行 MFA (预览)](howto-baseline-protect-administrators.md)
+* [最终用户保护 (预览版)](howto-baseline-protect-end-users.md)
+* [阻止旧身份验证 (预览)](howto-baseline-protect-legacy-auth.md)
+* [需要 MFA 进行服务管理 (预览版)](howto-baseline-protect-azure.md)
 
-这些策略的所有四个会影响 POP、 IMAP 和较旧的 Office 桌面客户端等传统的身份验证流。
+这四个策略都将影响旧版身份验证流, 如 POP、IMAP 和旧版 Office 桌面客户端。
 
-### <a name="require-mfa-for-admins-preview"></a>有关管理员 （预览版） 要求进行 MFA
+### <a name="require-mfa-for-admins-preview"></a>要求对管理员进行 MFA (预览)
 
-由于的功能和管理员帐户的访问权限，应将它们视为特殊谨慎。 改进的保护特权帐户的一种常见方法是使用登录时需要更强的帐户验证形式。 在 Azure Active Directory 中，可以通过要求管理员可以注册并使用 Azure 多重身份验证来获取更强的帐户验证。
+由于管理员帐户具有的强大功能和访问权限, 你应特别小心对待它们。 改善特权帐户保护的一种常见方法是在使用登录时需要更强大的帐户验证形式。 在 Azure Active Directory 中, 你可以通过要求管理员注册并使用 Azure 多重身份验证来获取更强的帐户验证。
 
-[有关管理员 （预览版） 要求使用 MFA](howto-baseline-protect-administrators.md) 要求多重身份验证 (MFA) 的基准策略为以下目录角色，被视为最高特权的 Azure AD 角色：
+["需要对管理员的 MFA (预览版)](howto-baseline-protect-administrators.md) " 是需要对以下目录角色进行多重身份验证 (MFA) 的基准策略, 被认为是最特权的 Azure AD 角色:
 
 * 全局管理员
 * SharePoint 管理员
 * Exchange 管理员
 * 条件访问管理员
 * 安全管理员
-* 支持管理员 / 密码管理员
-* 计费管理员
+* 支持人员管理员/密码管理员
+* 帐务管理员
 * 用户管理员
 
-如果你的组织中的脚本或代码中使用这些帐户，请考虑将它们替换为 [托管标识](../managed-identities-azure-resources/overview.md)。
+如果你的组织在脚本或代码中使用这些帐户, 请考虑将它们替换为 [托管标识](../managed-identities-azure-resources/overview.md)。
 
-### <a name="end-user-protection-preview"></a>最终用户保护 （预览版）
+### <a name="end-user-protection-preview"></a>最终用户保护 (预览版)
 
-高特权的管理员不是针对的攻击是唯一的。 不良参与方可能会针对普通用户。 获得访问权限之后, 这些不良参与方可以请求对代表原始帐户持有者的特权信息的访问或下载整个目录并执行在整个组织的网络钓鱼攻击。 改善的所有用户保护的一种常见方法是检测有风险登录中时，需要更强的帐户验证形式。
+高特权管理员并不是攻击者的唯一目标。 不良的执行组件往往面向普通用户。 获取访问权限后, 这类不良的执行组件可以代表原始帐户持有者请求对特权信息的访问权限, 也可以下载整个目录并对整个组织执行网络钓鱼攻击。 提高所有用户保护的一种常见方法是在检测到风险登录时需要更强大的帐户验证形式。
 
-**最终用户保护 （预览版）** 是保护目录中的所有用户的基线策略。 如果启用此策略要求所有用户在 14 天内注册 Azure 多重身份验证。 注册后，用户将会提示进行 MFA 仅在有风险的登录尝试。 密码重置和风险上诉之前，将阻止用户帐户泄露。
+**最终用户保护 (预览版)** 是保护目录中所有用户的基准策略。 如果启用此策略, 则需要所有用户在14天内注册 Azure 多重身份验证。 注册后, 仅在有风险的登录尝试期间, 系统才会提示用户进行 MFA。 在密码重置和风险消除之前, 会阻止泄露的用户帐户。 
 
-### <a name="block-legacy-authentication-preview"></a>块旧式身份验证 （预览版）
+[!NOTE]
+之前标记为风险的任何用户都将被阻止, 直到重置密码, 并在策略激活时消除。
 
-旧式身份验证协议 (例如：IMAP、 SMTP、 POP3） 是通常使用较旧的邮件客户端进行身份验证的协议。 旧协议不支持多重身份验证。 即使为你的目录要求多重身份验证的策略，恶意参与者可以使用其中一种旧协议进行身份验证，并绕过多重身份验证。
+### <a name="block-legacy-authentication-preview"></a>阻止旧身份验证 (预览)
 
-保护你的帐户免受恶意身份验证请求所做的旧协议的最佳方法是阻止它们。
+旧身份验证协议 (例如:IMAP、SMTP、POP3) 是较早的邮件客户端通常用来进行身份验证的协议。 旧版协议不支持多重身份验证。 即使你具有需要对目录进行多重身份验证的策略, 糟糕的执行组件也可以使用其中一种旧协议进行身份验证, 并绕过多重身份验证。
 
-**块旧式身份验证 （预览版）** 基准策略阻止使用旧版协议进行的身份验证请求。 若要成功登录的所有用户，必须使用新式身份验证。 与其他基线策略结合使用，将阻止旧版协议从传入请求。 此外，所有用户都都需要 MFA 时需要。 此策略不会阻止 Exchange ActiveSync。
+保护你的帐户不受传统协议发出的恶意身份验证请求的最佳方式是阻止它们。
 
-### <a name="require-mfa-for-service-management-preview"></a>服务管理 （预览版） 要求进行 MFA
+"**阻止旧身份验证 (预览版)** " 基准策略阻止使用旧版协议发出的身份验证请求。 必须使用新式身份验证才能成功登录所有用户。 与其他基准策略结合使用时, 将阻止来自旧协议的请求。 此外, 在需要时, 所有用户都需要进行 MFA。 此策略不会阻止 Exchange ActiveSync。
 
-组织使用各种 Azure 服务和管理它们的基于 Azure 资源管理器之类的工具：
+### <a name="require-mfa-for-service-management-preview"></a>需要 MFA 进行服务管理 (预览版)
+
+组织使用各种 Azure 服务, 并通过 Azure 资源管理器工具 (如下所示) 对其进行管理:
 
 * Azure 门户
 * Azure PowerShell
 * Azure CLI
 
-使用任何一种工具来执行资源管理是高特权的操作。 这些工具可以更改订阅范围的配置，例如服务设置和订阅计费。
+使用这些工具中的任何一种执行资源管理是一种高度特权的操作。 这些工具可能会改变订阅范围的配置, 例如服务设置和订阅计费。
 
-若要保护的特权的操作，这**服务管理 （预览版） 要求使用 MFA**策略需要多重身份验证访问 Azure 门户、 Azure PowerShell 或 Azure CLI 的任何用户。
+若要保护特权操作, 此操作需要针对任何用户访问 Azure 门户、Azure PowerShell 或 Azure CLI 的**服务管理 (预览版)** 策略进行多重身份验证。
 
 ## <a name="enable-a-baseline-policy"></a>启用基线策略
 
-若要启用基线策略：
+启用基线策略:
 
-1. 登录到 **Azure 门户** 作为全局管理员、 安全管理员或条件性访问管理员。
+1. 以全局管理员、安全管理员或条件访问管理员身份登录到 **Azure 门户** 。
 1. 浏览到**Azure Active Directory** > **条件性访问**。
-1. 在策略列表中，选择你想要启用的基线策略。
-1. 设置**启用策略**到**上**。
-1. 单击保存。
+1. 在策略列表中, 选择要启用的基准策略。
+1. 将 "**启用策略**" 设置为 **"开"** 。
+1. 单击 "保存"。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅：
 
 * [保护标识基础结构的五个步骤](../../security/azure-ad-secure-steps.md)
-* [什么是 Azure Active Directory 中条件性访问？](overview.md)
-* [有关管理员 （预览版） 要求进行 MFA](howto-baseline-protect-administrators.md)
-* [最终用户保护 （预览版）](howto-baseline-protect-end-users.md)
-* [块旧式身份验证 （预览版）](howto-baseline-protect-legacy-auth.md)
-* [服务管理 （预览版） 要求进行 MFA](howto-baseline-protect-azure.md)
+* [什么是 Azure Active Directory 中的条件访问？](overview.md)
+* [要求对管理员进行 MFA (预览)](howto-baseline-protect-administrators.md)
+* [最终用户保护 (预览版)](howto-baseline-protect-end-users.md)
+* [阻止旧身份验证 (预览)](howto-baseline-protect-legacy-auth.md)
+* [需要 MFA 进行服务管理 (预览版)](howto-baseline-protect-azure.md)

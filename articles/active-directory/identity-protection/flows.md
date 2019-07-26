@@ -2,29 +2,24 @@
 title: Azure AD 标识保护中的登录体验 | Microsoft Docs
 description: 概述了当“标识保护”已缓解或补救某个用户问题时或当某个策略要求使用多重身份验证时的用户体验。
 services: active-directory
-keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 449f808e98c4e0db2972071e160f5335153a88f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e513027eed44ec7649f41f8786882aed8511bc6
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295176"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335495"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD 标识保护中的登录体验
+
 使用 Azure Active Directory 标识保护时，可以：
 
 * 要求用户注册多重身份验证
@@ -104,11 +99,11 @@ ms.locfileid: "60295176"
 
 ![补救](./media/flows/104.png "补救")
 
-## <a name="reset-password"></a>重置密码
+## <a name="reset-password"></a>重新设置密码
 如果遭到入侵的用户已被阻止登录，管理员可以为其生成临时密码。 在下一次登录期间，用户必须更改其密码。
 
 ![补救](./media/flows/160.png "补救")
 
-## <a name="see-also"></a>另请参阅
-* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 
+## <a name="see-also"></a>请参阅
 
+* [Azure Active Directory 标识保护](../active-directory-identityprotection.md) 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9776126687832485bf329061dfeedce928918d9
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 901cf3e25ed63421f7e07d7773b6381fc54ea8a2
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321142"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489114"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 
@@ -40,6 +40,7 @@ ms.locfileid: "68321142"
 > SharePoint Online 不支持可配置的令牌生存期策略。  即使可以通过 PowerShell 创建策略，SharePoint Online 也不会承认此策略。 了解有关配置空闲会话超时的详细信息，请参阅 [SharePoint Online 博客](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208)。
 >* SharePoint Online 访问令牌的默认生存期为 1 个小时。 
 >* SharePoint Online 刷新令牌的默认停用时间最长为 90 天。
+
 
 ## <a name="token-types"></a>令牌类型
 
@@ -68,7 +69,7 @@ ID 令牌将传递给网站和本机客户端。 ID 令牌包含有关用户的�
 ### <a name="single-sign-on-session-tokens"></a>单一登录会话令牌
 当用户通过 Azure AD 进行身份验证时，系统将在用户的浏览器与 Azure AD 之间建立单一登录会话 (SSO)。 SSO 令牌采用 Cookie 形式，代表此会话。 SSO 会话令牌未绑定到特定的资源/客户端应用程序。 SSO 会话令牌可以吊销，每次使用它们时，系统都会检查其有效性。
 
-Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。 浏览器将持久性会话令牌存储为持久性 Cookie， 将非持久性会话令牌存储为会话 Cookie。 （关闭浏览器会销毁会话 Cookie。）通常会存储一个非持久性会话令牌。 但如果用户在身份验证期间选择“使我保持登录状态”复选框，则存储的是持久性会话令牌  。
+Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。 浏览器将持久性会话令牌存储为持久性 Cookie， 将非持久性会话令牌存储为会话 Cookie。 （关闭浏览器会销毁会话 Cookie。）通常会存储一个非持久性会话令牌。 但如果用户在身份验证期间选择“使我保持登录状态”复选框，则存储的是持久性会话令牌。
 
 非持久性会话令牌的生存期为 24 小时。 持久性令牌的生存期为 180 天。 只要在其有效期内使用 SSO 会话令牌, 有效期就会延长24小时或180天, 具体取决于标记类型。 如果 SSO 会话令牌在其有效期内未被使用，则将它视为过期，不再被系统接受。
 
@@ -80,7 +81,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 ### <a name="configurable-token-lifetime-properties"></a>可配置的令牌生存期属性
 | 属性 | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
 | --- | --- | --- | --- | --- | --- |
-| 访问令牌生存期 |AccessTokenLifetime |访问令牌、ID 令牌、SAML2 令牌 |1 小时 |10 分钟 |1 天 |
+| 访问令牌生存期 |AccessTokenLifetime<sup>4</sup> |访问令牌、ID 令牌、SAML2 令牌 |1 小时 |10 分钟 |1 天 |
 | 刷新令牌最大非活动时间 |MaxInactiveTime |刷新令牌 |90 天 |10 分钟 |90 天 |
 | 单因素刷新令牌最大期限 |MaxAgeSingleFactor |刷新令牌（适用于任何用户） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
 | 多因素刷新令牌最大期限 |MaxAgeMultiFactor |刷新令牌（适用于任何用户） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
@@ -88,6 +89,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 | 多因素会话令牌最大期限 |MaxAgeSessionMultiFactor<sup>3</sup> |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
 
 * <sup>1</sup>365 天是可针对这些属性设置的最大显式时间长短。
+* <sup>4</sup>若要使 Microsoft 团队 Web 客户端工作, 建议为 Microsoft 团队将 AccessTokenLifetime 设置为大于15分钟。
 
 ### <a name="exceptions"></a>Exceptions
 | 属性 | 影响 | 默认 |
@@ -202,7 +204,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 * 为调用 Web API 的本机应用创建策略
 * 管理高级策略
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果是 Azure AD 新手，我们建议在继续学习这些示例之前，先了解[如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。  
 
 若要开始，请执行以下步骤：
@@ -243,7 +245,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3. 若要查看新策略并获取其  ObjectId，请运行以下命令：
+    3. 若要查看新策略并获取其 ObjectId，请运行以下命令：
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
