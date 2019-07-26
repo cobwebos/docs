@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18b5f3877538d26e55bf0550a995ca0c50699de5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a164276d41d182c5b439efc691d80693f1ac831e
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65914135"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360131"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
@@ -56,7 +56,7 @@ ms.locfileid: "65914135"
 
 旧的运行历史记录不再可访问，你仍然可以在最新版本中查看运行情况。 
 
-运行历史记录现在称为“试验”。 可使用 SDK、CLI 或 Azure 门户收集并探索模型的试验。
+运行历史记录现在称为“试验”  。 可使用 SDK、CLI 或 Azure 门户收集并探索模型的试验。
 
 门户的工作区仪表板仅在 Microsoft Edge、Chrome 和 Firefox 浏览器上受支持：
 
@@ -78,7 +78,8 @@ ms.locfileid: "65914135"
 
 大部分项目内容已存在于本地计算机上。 因此，只需在相应目录中创建配置文件，并在代码中引用它，即可连接到工作区。 要继续使用包含文件和脚本的本地目录，请在[“experiment.submit”](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)Python 命令中指定该目录的名称或使用 `az ml project attach` CLI 命令。  例如：
 ```python
-run = exp.submit(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
+run = exp.submit(source_directory=script_folder,
+                 script='train.py', run_config=run_config_system_managed)
 ```
 
 [创建工作区](setup-create-workspace.md#portal)以开始使用。

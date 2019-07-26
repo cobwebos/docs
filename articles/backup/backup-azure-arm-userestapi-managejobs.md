@@ -1,7 +1,6 @@
 ---
-title: Azure 备份：管理备份作业使用 REST API
+title: Azure 备份：使用 REST API 管理备份作业
 description: 使用 REST API 管理 Azure 备份的备份和还原作业
-services: backup
 author: pvrk
 manager: shivamg
 keywords: REST API、Azure VM 备份、Azure VM 还原；
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: eb8b7dc77d180eb56c2585e93e60a36742f6c84c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d497fc714e0ad5f61873d4c1f95ab35837532646
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646616"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466763"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 跟踪备份和还原作业
 
@@ -23,7 +22,7 @@ Azure 备份服务会触发在各种情况下在后台运行的作业，例如�
 
 ## <a name="fetch-job-information-from-operations"></a>从操作中提取作业信息
 
-操作（例如触发备份）将始终返回 jobID。 有关例如：最终的响应[触发备份 REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)如下所示：
+操作（例如触发备份）将始终返回 jobID。 例如:[触发器备份 REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)的最终响应如下所示:
 
 ```http
 {
@@ -51,9 +50,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="response"></a>响应
 
-|名称  |类型  |描述  |
+|姓名  |类型  |描述  |
 |---------|---------|---------|
-|200 正常     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
+|200 正常     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | 确定        |
 
 #### <a name="example-response"></a>示例响应
 

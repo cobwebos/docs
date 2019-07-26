@@ -8,34 +8,34 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: 88df7ae0d4e6054d82302ad5f0adabcf656cb0f5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 729385a2ce9feb6e69f9be29c2175b403093be3f
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620802"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413361"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
 
 Azure 流分析中的查询以类似 SQL 的查询语言表示。 这些语言构造记录在[流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)指南中。 
 
-查询设计可以表示简单传递逻辑来从一个输入流的事件数据移动到输出数据存储，也可以不丰富模式匹配和临时分析，以按各种时间范围中计算聚合[构建 IoT通过 Stream Analytics 的解决方案](stream-analytics-build-an-iot-solution-using-stream-analytics.md)指南。 可以联接来自多个输入组合流式处理事件数据，可以执行针对静态引用数据来丰富的事件值查找。 您还可以向多个输出写入数据。
+查询设计可以表达简单的传递逻辑, 以将事件数据从一个输入流移动到一个输出数据存储, 或者可以执行丰富的模式匹配和临时分析, 以便在不同时间窗口上计算聚合,[如使用使用流分析](stream-analytics-build-an-iot-solution-using-stream-analytics.md)指南。 您可以联接多个输入中的数据以合并流式处理事件, 并且可以对静态引用数据执行查找以丰富事件值。 你还可以将数据写入多个输出。
 
-本文概述了几个常见查询模式，基于实际方案的解决方案。
+本文概述了基于实际方案的多个常见查询模式的解决方案。
 
 ## <a name="work-with-complex-data-types-in-json-and-avro"></a>使用 JSON 和 AVRO 中的复杂数据类型
 
 Azure 流分析支持处理采用 CSV、JSON 和 Avro 数据格式的事件。
 
-JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。 有关使用这些复杂数据类型的详细信息，请参阅[分析 JSON 和 AVRO 数据](stream-analytics-parsing-json.md)一文。
+JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。 有关使用这些复杂数据类型的详细信息, 请参阅[分析 JSON 和 AVRO 数据](stream-analytics-parsing-json.md)一文。
 
 ## <a name="query-example-convert-data-types"></a>查询示例：转换数据类型
 
-**说明**：定义输入流中的属性类型。 例如，车重即将在输入流以字符串形式发布，需要转换为**INT**执行**总和**。
+**说明**：定义输入流中的属性类型。 例如, 汽车权重作为字符串传入输入流, 需要转换为**INT**才能执行**SUM**。
 
 **输入**：
 
-| 制造商 | Time | 重量 |
+| 制造商 | Time | 权重 |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
@@ -59,9 +59,9 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
         TumblingWindow(second, 10)
 ```
 
-**说明**：在“重量”字段中使用 CAST 语句来指定它的数据类型   。 请参阅[数据类型（Azure 流分析）](/stream-analytics-query/data-types-azure-stream-analytics)中支持的数据类型列表。
+**说明**：在“重量”字段中使用 CAST 语句来指定它的数据类型。 请参阅[数据类型（Azure 流分析）](/stream-analytics-query/data-types-azure-stream-analytics)中支持的数据类型列表。
 
-## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>查询示例：使用 like/not 等进行模式匹配
+## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>查询示例：使用 LIKE/NOT LIKE 进行模式匹配
 
 **说明**：检查事件上的字段值是否与特定的模式相匹配。
 例如，检查返回以 A 开头并以 9 结尾的车牌的结果。
@@ -92,7 +92,7 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
         LicensePlate LIKE 'A%9'
 ```
 
-**说明**：使用 LIKE 语句检查 LicensePlate 字段的值   。 它应以字母 A 开头然后零个或多个字符的任意字符串，然后结尾的数字是 9。 
+**说明**：使用 LIKE 语句检查 LicensePlate 字段的值。 它应以字母 A 开头, 并具有零个或多个字符的任何字符串, 然后以数字9结尾。 
 
 ## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>查询示例：指定不同案例/值的逻辑（CASE 语句）
 
@@ -121,7 +121,7 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
             WHEN COUNT(*) = 1 THEN CONCAT('1 ', Make)
             ELSE CONCAT(CAST(COUNT(*) AS NVARCHAR(MAX)), ' ', Make, 's')
         END AS CarsPassed,
-        System.TimeStamp() AS Time
+        System.TimeStamp() AS AsaTime
     FROM
         Input TIMESTAMP BY Time
     GROUP BY
@@ -129,7 +129,7 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
         TumblingWindow(second, 10)
 ```
 
-**说明**：CASE  表达式将表达式与一组简单表达式进行比较以确定结果。 在此示例中，计数为 1 的车返回的是与计数不为 1 的车不同的字符串说明。
+**说明**：CASE 表达式将表达式与一组简单表达式进行比较以确定结果。 在此示例中，计数为 1 的车返回的是与计数不为 1 的车不同的字符串说明。
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>查询示例：将数据发送到多个输出
 
@@ -173,7 +173,7 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
 
     SELECT
         Make,
-        System.TimeStamp() AS Time,
+        System.TimeStamp() AS AsaTime,
         COUNT(*) AS [Count]
     INTO
         AlertOutput
@@ -186,9 +186,9 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
         [Count] >= 3
 ```
 
-**说明**：INTO 子句告知流分析哪一个输出可通过此语句写入数据  。 第一个查询将接收到名为输出的数据传递**ArchiveOutput**。 第二个查询进行了一些简单的聚合和筛选，并且它将结果发送到下游的报警系统**AlertOutput**。
+**说明**：INTO 子句告知流分析哪一个输出可通过此语句写入数据。 第一个查询是收到的数据传递到名为**ArchiveOutput**的输出。 第二个查询执行一些简单的聚合和筛选, 并将结果发送到下游警报系统**AlertOutput**。
 
-请注意，还可重复使用多个输出语句中的公用表表达式 (CTE) 结果（例如 WITH 语句  ）。 此选项可提供额外权益，即在输入源打开较少的读取器。
+请注意，还可重复使用多个输出语句中的公用表表达式 (CTE) 结果（例如 WITH 语句）。 此选项可提供额外权益，即在输入源打开较少的读取器。
 
 例如： 
 
@@ -231,7 +231,7 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
 ```SQL
 SELECT
      COUNT(DISTINCT Make) AS CountMake,
-     System.TIMESTAMP() AS TIME
+     System.TIMESTAMP() AS AsaTIME
 FROM Input TIMESTAMP BY TIME
 GROUP BY 
      TumblingWindow(second, 2)
@@ -239,7 +239,7 @@ GROUP BY
 
 
 **说明：** 
-COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值数目   。
+COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值数目。
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>查询示例：确定某个值是否已更改
 
@@ -270,7 +270,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
         LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
 ```
 
-**说明**：使用 LAG 来查看后退一个事件之后的输入流，并获得“制造商”字段的值   。 然后，将它与当前事件的“制造商”字段进行比较，如果二者不同，则输出该事件  。
+**说明**：使用 LAG 来查看后退一个事件之后的输入流，并获得“制造商”字段的值。 然后，将它与当前事件的“制造商”字段进行比较，如果二者不同，则输出该事件。
 
 ## <a name="query-example-find-the-first-event-in-a-window"></a>查询示例：查找时间范围内的第一个事件
 
@@ -379,10 +379,9 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 **说明**：查询中包含两个步骤。 第一个步骤是在 10 分钟的时间范围内查找最新的时间戳。 第二个步骤是将第一个查询的结果与原始流联接，查找每个时间范围内与最后一个时间戳相匹配的事件。 
 
-## <a name="query-example-detect-the-absence-of-events"></a>查询示例：检测缺少的事件
+## <a name="query-example-locate-correlated-events-in-a-stream"></a>查询示例：在流中找到相关事件
 
-**说明**：查看流的值是否不与某个条件相匹配。
-例如，两辆同一制造商的汽车是否在 90 秒内先后进入收费路段？
+**说明**：查找流中的相关事件。 例如，两辆同一制造商的汽车是否在 90 秒内先后进入收费路段？
 
 **输入**：
 
@@ -414,7 +413,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
         LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
 ```
 
-**说明**：使用 LAG 来查看后退一个事件之后的输入流，并获得“制造商”字段的值   。 将它与当前事件的“制造商”字段进行比较，如果二者相同，则输出该事件  。 还可使用 LAG 获取前一辆汽车的数据  。
+**说明**：使用 LAG 来查看后退一个事件之后的输入流，并获得“制造商”字段的值。 将它与当前事件的“制造商”字段进行比较，如果二者相同，则输出该事件。 还可使用 LAG 获取前一辆汽车的数据。
 
 ## <a name="query-example-detect-the-duration-between-events"></a>查询示例：检测事件之间的持续时间
 
@@ -448,7 +447,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
         Event = 'end'
 ```
 
-**说明**：使用 LAST 函数检索上次事件类型为“开始”时的时间值    。 LAST 函数使用 PARTITION BY [user] 指示结果应按唯一用户计算   。 该查询在“开始”和“停止”事件之间有 1 小时的最大时差阈值，但也可按需配置 (LIMIT DURATION(hour, 1)    。
+**说明**：使用 LAST 函数检索上次事件类型为“开始”时的时间值。 LAST 函数使用 PARTITION BY [user] 指示结果应按唯一用户计算。 该查询在“开始”和“停止”事件之间有 1 小时的最大时差阈值，但也可按需配置 (LIMIT DURATION(hour, 1)。
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>查询示例：检测某个条件的持续时间
 **说明**：查看某个条件的持续时间。
@@ -456,7 +455,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 **输入**：
 
-| 制造商 | Time | 重量 |
+| 制造商 | Time | 权重 |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |
@@ -494,7 +493,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
         AND previousWeight > 20000
 ```
 
-**说明**：使用 LAG 查看 24 小时内的输入流并查找因重量 < 20000 而持续的 StartFault 和 StopFault 实例    。
+**说明**：使用 LAG 查看 24 小时内的输入流并查找因重量 < 20000 而持续的 StartFault 和 StopFault 实例。
 
 ## <a name="query-example-fill-missing-values"></a>查询示例：填充缺失值
 
@@ -504,7 +503,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 | t | value |
 | --- | --- |
-| "2014-01-01T06:01:00" |第 |
+| "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
 | "2014-01-01T06:01:10" |3 |
 | "2014-01-01T06:01:15" |4 |
@@ -546,7 +545,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 **输入**：
 
-| time | deviceId | sensorName | value |
+| 时间 | deviceId | sensorName | value |
 | --- | --- | --- | --- |
 | "2018-01-01T16:01:00" | "Oven1" | "temp" |120 |
 | "2018-01-01T16:01:00" | "Oven1" | "power" |15 |
@@ -615,7 +614,7 @@ WHERE
 
 ## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>查询示例：处理与设备时钟偏差无关的事件（子流）
 
-**说明**：由于事件生成器之间的时钟偏差、分区之间的时钟偏差或网络延迟，事件可能会迟到或不按顺序到达。 在以下示例中，针对 TollID 2 的设备时钟是延迟 TollID 1，5 （秒） 和 TollID 3 的设备时钟为十秒 TollID 1 后面。 
+**说明**：由于事件生成器之间的时钟偏差、分区之间的时钟偏差或网络延迟，事件可能会迟到或不按顺序到达。 在以下示例中, TollID 2 的设备时钟在 TollID 1 后5秒, TollID 3 的设备时钟为 TollID 1 后面的十秒。 
 
 **输入**：
 
@@ -634,7 +633,7 @@ WHERE
 
 | TollID | Count |
 | --- | --- |
-| 第 | 2 |
+| 1 | 2 |
 | 2 | 2 |
 | 1 | 1 |
 | 3 | 1 |
@@ -656,11 +655,11 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 
 ## <a name="query-example-remove-duplicate-events-in-a-window"></a>查询示例：删除时间范围内的重复事件
 
-**说明**：执行某项操作（例如计算给定时间范围内事件的平均值）时，应筛选出重复事件。 在以下示例中，第二个事件是第一个重复项。
+**说明**：执行某项操作（例如计算给定时间范围内事件的平均值）时，应筛选出重复事件。 在下面的示例中, 第二个事件是第一个事件的副本。
 
 **输入**：  
 
-| DeviceId | Time | 特性 | ReplTest1 |
+| DeviceId | Time | 特性 | 值 |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000Z |温度 |50 |
 | 1 |2018-07-27T00:00:01.0000000Z |温度 |50 |
@@ -673,7 +672,7 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 
 | AverageValue | DeviceId |
 | --- | --- |
-| 70 | 第 |
+| 70 | 1 |
 |45 | 2 |
 
 **解决方案**；
@@ -702,13 +701,13 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 **说明**：[COUNT(DISTINCT Time)](/stream-analytics-query/count-azure-stream-analytics) 返回时间范围内的“时间”列的非重复值数目。 然后，你可以使用此步骤的输出按设备计算平均值，只需去掉重复值即可。
 
 ## <a name="geofencing-and-geospatial-queries"></a>地理围栏和地理空间查询
-Azure Stream Analytics 提供内置的地理空间函数可用于实现方案，例如车队管理、 骑共享、 已连接的汽车和资产跟踪。 地理空间数据可以作为事件流的一部分引入 GeoJSON 或 WKT 格式，或引用数据。 有关详细信息，请参阅[地理围栏和地理空间的聚合方案中使用 Azure Stream Analytics](geospatial-scenarios.md)一文。
+Azure 流分析提供内置的地理空间功能, 这些功能可用于实现各种方案, 如汽油管理、联系、共享、连接汽车和资产跟踪。 地理空间数据可引入为 GeoJSON 或 WKT 格式, 作为事件流或引用数据的一部分。 有关详细信息, 请参阅[地理围栏和地理空间聚合方案和 Azure 流分析](geospatial-scenarios.md)一文。
 
-## <a name="language-extensibility-through-javascript-and-c"></a>通过 JavaScript 语言的扩展性和C#
-可使用以 JavaScript 编写的自定义函数的扩展 azure Stream Ananlytics 查询 langugae 或C#语言。 有关详细信息，请参阅 foolowing 文章：
-* [Azure Stream Analytics JavaScript 用户定义的函数](stream-analytics-javascript-user-defined-functions.md)
-* [Azure Stream Analytics JavaScript 用户定义聚合](stream-analytics-javascript-user-defined-aggregates.md)
-* [开发 Azure Stream Analytics Edge 作业的.NET Standard 的用户定义函数](stream-analytics-edge-csharp-udf-methods.md)
+## <a name="language-extensibility-through-javascript-and-c"></a>通过 JavaScript 和C#
+可以用 JavaScript 或C#语言编写的自定义函数扩展 Azure Stream Ananlytics query langugae。 有关详细信息, 请参阅 foolowing 文章:
+* [Azure 流分析 JavaScript 用户定义的函数](stream-analytics-javascript-user-defined-functions.md)
+* [Azure 流分析 JavaScript 用户定义的聚合](stream-analytics-javascript-user-defined-aggregates.md)
+* [为 Azure 流分析边缘作业开发 .NET Standard 用户定义函数](stream-analytics-edge-csharp-udf-methods.md)
 
 ## <a name="get-help"></a>获取帮助
 

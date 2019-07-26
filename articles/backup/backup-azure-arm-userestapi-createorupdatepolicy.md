@@ -1,7 +1,6 @@
 ---
-title: Azure 备份：创建使用 REST API 的备份策略
+title: Azure 备份：使用 REST API 创建备份策略
 description: 使用 REST API 管理备份策略（计划和保留期）
-services: backup
 author: pvrk
 manager: shivamg
 keywords: REST API; Azure VM 备份; Azure VM 还原
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 657a777da0e984a145c1c617a6194bf4ef56306e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0729a49c3dc72a28431d711e6783abda96d2ce3
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648799"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466819"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
 
@@ -30,8 +29,8 @@ ms.locfileid: "60648799"
   - Azure 文件共享
 - 可将一个策略分配到多个资源。 可以使用一个 Azure VM 备份策略来保护多个 Azure VM。
 - 策略由两个部分组成
-  - 计划：执行备份的时间
-  - 保留期：应保留每个备份的时间长度。
+  - 编制进行备份的时间
+  - 保留每个备份应保留多长时间。
 - 可将计划定义为带有特定时间点的“每日”或“每周”计划。
 - 可以针对“每日”、“每周”、“每月”、“每年”备份点定义保留期。
 - “每周”是指在特定的星期日期进行备份，“每月”是指在特定的月份日期进行备份，“每年”是指在特定的年份日期进行备份。
@@ -50,7 +49,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要为 Azure VM 备份创建策略，需在请求正文中包含以下组成部分。
 
-|名称  |必选  |Type  |描述  |
+|名称  |必填  |类型  |描述  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
 |标记     |         | Object        |  资源标记       |
@@ -158,9 +157,9 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
 
-|名称  |类型  |描述  |
+|姓名  |类型  |描述  |
 |---------|---------|---------|
-|200 正常     |    [Protection PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
+|200 正常     |    [Protection PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  确定       |
 |202 已接受     |         |     已接受    |
 
 ### <a name="example-responses"></a>示例响应

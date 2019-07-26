@@ -133,7 +133,7 @@ dev 空间始终包含最新状态的存储库（基线），以便开发人员�
 当所有任务完成时完成发布。
 
 > [!TIP]
-> 如果发布失败并看到“升级失败:等待条件超时”等错误消息，请尝试[使用 Kubernetes 仪表板](../../aks/kubernetes-dashboard.md)检查群集中的 Pod。 如果发现 Pod 无法起动，并看到“无法拉取映像 "azdsexample.azurecr.io/mywebapi:122": rpc 错误:代码 = Unknown 说明 = 来自守护程序的错误响应:获取 https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: 未经授权:需要进行身份验证*等错误消息，可能是因为未授权群集从 Azure 容器注册表拉取映像。 请务必已完成[授权 AKS 群集从 Azure 容器注册表拉取映像](../../container-registry/container-registry-auth-aks.md)先决条件。
+> 如果发布失败并看到“升级失败:等待条件超时”等错误消息，请尝试[使用 Kubernetes 仪表板](../../aks/kubernetes-dashboard.md)检查群集中的 Pod。 如果发现 Pod 无法起动，并看到“无法拉取映像 "azdsexample.azurecr.io/mywebapi:122": rpc 错误:代码 = Unknown 说明 = 来自守护程序的错误响应:获取 https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: 未经授权:需要进行身份验证等错误消息，可能是因为未授权群集从 Azure 容器注册表拉取映像。 请务必已完成[授权 AKS 群集从 Azure 容器注册表拉取映像](../../container-registry/container-registry-auth-aks.md)先决条件。
 
 此时，已针对 Dev Spaces 示例应用的 GitHub 分支拥有全自动 CI/CD 管道。 每当你提交和推送代码，生成管道都会生成 mywebapi 和 webfrontend 映像，并将它们推送到自定义 ACR 实例。 然后，发布管道会将每个应用的 Helm 图表部署到已启用 Dev Spaces 的群集上的 dev 空间。
 

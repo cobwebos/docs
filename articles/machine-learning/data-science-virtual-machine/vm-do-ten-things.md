@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1e59b9a34d075002e8129fe1588c95e207f8273
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60365803"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359025"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -61,9 +61,9 @@ Windows 数据科学虚拟机 (DSVM) 是一个功能强大的数据科研开发�
 
 对于 Python，可以使用已预安装针对 Visual Studio 的 Python 工具 (PTVS) 扩展的 Visual Studio Community Edition 之类的 IDE。 默认情况下，PTVS 上仅配置基本的 conda 环境 Python 3.6。 若要启用 Anaconda Python 2.7，需要执行以下步骤：
 
-* 按以下方法操作为每个版本创建自定义环境：在 Visual Studio Community Edition 中，导航到“工具”   -> “Python 工具”   -> “Python 环境”  ，并单击“+ 自定义” 
-* 提供描述并将环境前缀路径设置为 c:\anaconda\envs\python2（适用于 Anaconda Python 2.7） 
-* 单击“自动检测”  ，并单击“应用”  以保存环境。
+* 按以下方法操作为每个版本创建自定义环境：在 Visual Studio Community Edition 中，导航到“工具” -> “Python 工具” -> “Python 环境”，并单击“+ 自定义”
+* 提供描述并将环境前缀路径设置为 c:\anaconda\envs\python2（适用于 Anaconda Python 2.7）
+* 单击“自动检测”，并单击“应用”以保存环境。
 
 以下是自定义环境设置在 Visual Studio 中的外观。
 
@@ -71,19 +71,19 @@ Windows 数据科学虚拟机 (DSVM) 是一个功能强大的数据科研开发�
 
 有关如何创建 Python 环境的更多详细信息，请参阅 [PTVS 文档](https://aka.ms/ptvsdocs)。
 
-现在即可开始创建新的 Python 项目。 导航到“文件”   -> “新建”   -> “项目”   -> “Python”  ，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”  ，选择“添加/删除 Python 环境”  ，然后选择所需环境。 要详细了解如何使用 PTVS，请参阅产品[文档](https://aka.ms/ptvsdocs)。
+现在即可开始创建新的 Python 项目。 导航到“文件” -> “新建” -> “项目” -> “Python”，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”，选择“添加/删除 Python 环境”，然后选择所需环境。 要详细了解如何使用 PTVS，请参阅产品[文档](https://aka.ms/ptvsdocs)。
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2.借助 Jupyter Notebook，可使用 Python 或 R 探索数据并建模
 Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供基于浏览器的“IDE”。 可以在 Jupyter Notebook 中使用 Python 2、Python 3 或 R（开源和 Microsoft R Server）。
 
-若要启动 Jupyter Notebook，请单击标题为“Jupyter Notebook”  的“开始”菜单图标/桌面图标。 在 DSVM 命令提示符处，还可以从包含现有 Notebook 或想在其中创建新 Notebook 的目录中运行 ```jupyter notebook``` 命令。  
+若要启动 Jupyter Notebook，请单击标题为“Jupyter Notebook”的“开始”菜单图标/桌面图标。 在 DSVM 命令提示符处，还可以从包含现有 Notebook 或想在其中创建新 Notebook 的目录中运行 ```jupyter notebook``` 命令。  
 
 开始使用 Jupyter 后，应当会看到一个目录，其中包含了预打包到 DSVM 中的多个 Notebook 示例。 现在可以：
 
 * 单击要查看代码的 Notebook。
 * 通过按 **SHIFT-ENTER** 执行每个单元格。
-* 依次单击“单元” -> “运行”，运行整个 Notebook  
-* 按以下方法操作创建新的 Notebook：单击 Jupyter 图标（左上角）、单击右侧的“新建”按钮，并选择 Notebook 语言（也称为内核）  。   
+* 依次单击“单元” -> “运行”，运行整个 Notebook
+* 按以下方法操作创建新的 Notebook：单击 Jupyter 图标（左上角）、单击右侧的“新建”按钮，并选择 Notebook 语言（也称为内核）。   
 
 > [!NOTE]
 > Jupyter 当前支持 Python 2.7、Python 3.6、R、Julia 和 PySpark 内核。 R 内核编程支持在开源 R 和高性能的 Microsoft R 中进行编程。   
@@ -106,7 +106,7 @@ Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供
 以下是一段在 Python Jupyter Notebook 中开发的代码，它使用 SciKit-learn 库生成一个简单模型。
 
 ```python
-#IRIS classification
+# IRIS classification
 from sklearn import datasets
 from sklearn import svm
 clf = svm.SVC()
@@ -120,10 +120,12 @@ clf.fit(X, y)
 ```python
 from azureml import services
 @services.publish(workspaceid, auth_token)
-@services.types(sep_l = float, sep_w = float, pet_l=float, pet_w=float)
-@services.returns(int) #0, or 1, or 2
+@services.types(sep_l=float, sep_w=float, pet_l=float, pet_w=float)
+@services.returns(int)  # 0, or 1, or 2
 def predictIris(sep_l, sep_w, pet_l, pet_w):
     inputArray = [sep_l, sep_w, pet_l, pet_w]
+
+
 return clf.predict(inputArray)
 ```
 
@@ -155,7 +157,7 @@ IrisPredictor(3,2,3,4)
 
 以下是可用于在 Azure 机器学习中设置、生成、发布和使用模型为 Web 服务的过程和代码片段。
 
-#### <a name="setup"></a>设置
+#### <a name="setup"></a>安装
 
 * 在主目录下名为 ```.azureml``` 的目录下创建 settings.json 文件，并输入 Azure 机器学习工作区的参数：
 
@@ -265,7 +267,7 @@ DSVM 已在命令行以及 GUI 上加载了用于访问 GitHub 存储库的客�
 
     git clone https://github.com/Azure/DataScienceVM.git
 
-在 Visual Studio 中，可以执行相同的克隆操作。 以下屏幕截图显示了如何访问 Visual Studio 中的 Git 和 GitHub 工具。
+在 Visual Studio 中，可以执行相同的克隆操作。 以下屏幕截图演示了如何在 Visual Studio 中访问 Git 和 GitHub 工具。
 
 ![Visual Studio 的屏幕截图，其中显示了 GitHub 连接](./media/vm-do-ten-things/VSGit.PNG)
 
@@ -286,7 +288,7 @@ Azure Blob 是适合大小数据的经济可靠云存储。 本部分介绍如�
 
 ![Azure 存储资源管理器访问存储帐户时的屏幕截图](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-将数据从 VM 移动到 Azure Blob：  AzCopy
+将数据从 VM 移动到 Azure Blob：AzCopy
 
 若要在本地文件和 Blob 存储之间移动数据，可以在命令行或 PowerShell 中使用 AzCopy：
 
@@ -311,20 +313,20 @@ Azure Blob 是适合大小数据的经济可靠云存储。 本部分介绍如�
 
 ![存储帐户的屏幕截图，其中显示了上传的 CSV 文件](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-将数据从 VM 移动到 Azure Blob：  Azure 存储资源管理器
+将数据从 VM 移动到 Azure Blob：Azure 存储资源管理器
 
 还可以在 VM 中使用 Azure 存储资源管理器上传本地文件中的数据：
 
-* 要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。  ![Azure 存储资源管理器中的上传按钮的屏幕截图](./media/vm-do-ten-things/storage-accounts.png)
-* 单击“文件”框右侧的“...”，选择要从文件系统上传的一个或多个文件，然后单击“上传”开始上传文件。    ![上传文件对话框的屏幕截图](./media/vm-do-ten-things/upload-files-to-blob.png)
+* 要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。![Azure 存储资源管理器中的上传按钮的屏幕截图](./media/vm-do-ten-things/storage-accounts.png)
+* 单击“文件”框右侧的“...”，选择要从文件系统上传的一个或多个文件，然后单击“上传”开始上传文件。![上传文件对话框的屏幕截图](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-读取 Azure Blob 中的数据：  机器学习阅读器模块
+读取 Azure Blob 中的数据：机器学习阅读器模块
 
-在 Azure 机器学习工作室中，可以使用“导入数据模块”  读取 Blob 中的数据。
+在 Azure 机器学习工作室中，可以使用“导入数据模块”读取 Blob 中的数据。
 
 ![机器学习工作室中的导入数据模块的屏幕截图](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-读取 Azure Blob 中的数据：  Python ODBC
+读取 Azure Blob 中的数据：Python ODBC
 
 在 Jupyter Notebook 或 Python 程序中，可以使用 **BlobService** 库直接读取 Blob 中的数据。
 
@@ -385,11 +387,11 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 ![在 Azure 门户中创建 Data Lake Analytics 的屏幕截图](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
-* 在此[链接](https://www.microsoft.com/download/details.aspx?id=49504)处找到的 Visual Studio 中的 Azure Data Lake 工具，已安装在虚拟机上的 Visual Studio Community Edition 中   。 在启动 Visual Studio 并登录 Azure 订阅后，应当会在 Visual Studio 的左侧看到 Azure Data Analytics 帐户和存储。
+* 在此[链接](https://www.microsoft.com/download/details.aspx?id=49504)处找到的 Visual Studio 中的 Azure Data Lake 工具，已安装在虚拟机上的 Visual Studio Community Edition 中。 在启动 Visual Studio 并登录 Azure 订阅后，应当会在 Visual Studio 的左侧看到 Azure Data Analytics 帐户和存储。
 
 ![Visual Studio 中的 Data Lake 工具的屏幕截图](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-将数据从 VM 移动到 Data Lake：  Azure Data Lake 资源管理器
+将数据从 VM 移动到 Data Lake：Azure Data Lake 资源管理器
 
 可以使用 **Azure Data Lake 资源管理器**将虚拟机的本地文件中的数据上传到 Data Lake 存储。
 
@@ -397,9 +399,9 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 还可以使用 [Azure 数据工厂 (ADF)](https://azure.microsoft.com/services/data-factory/) 生成用于实现与 Azure Data Lake 之间移动数据操作的数据管道。 有关介绍如何生成数据管道的步骤，请参阅此[文章](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/)。
 
-将数据从 Azure Blob 读取到 Data Lake：  U-SQL
+将数据从 Azure Blob 读取到 Data Lake：U-SQL
 
-如果数据驻留在 Azure Blob 存储中，可以使用 U-SQL 查询直接读取 Azure 存储 Blob 中的数据。 编写 U-SQL 查询之前，确保 Blob 存储帐户已链接到 Azure Data Lake。 转到 **Azure 门户**、找到 Azure Data Lake Analytics 仪表板、单击“添加数据源”  、选择 **Azure 存储**的存储类型，并插入你的 Azure 存储帐户名称和密钥。 然后，你将能够引用存储帐户中存储的数据。
+如果数据驻留在 Azure Blob 存储中，可以使用 U-SQL 查询直接读取 Azure 存储 Blob 中的数据。 编写 U-SQL 查询之前，确保 Blob 存储帐户已链接到 Azure Data Lake。 转到 **Azure 门户**、找到 Azure Data Lake Analytics 仪表板、单击“添加数据源”、选择 **Azure 存储**的存储类型，并插入你的 Azure 存储帐户名称和密钥。 然后，你将能够引用存储帐户中存储的数据。
 
 ![“添加数据源”对话框的屏幕截图](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
@@ -453,7 +455,7 @@ USING Outputters.Csv();
 
 ![作业对话框状态的屏幕截图](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
-查询 Data Lake 中的数据：  U-SQL
+查询 Data Lake 中的数据：U-SQL
 
 在数据集引入 Azure Data Lake 后，即可使用 [U-SQL 语言](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md)查询和浏览数据。 U-SQL 语言与 T-SQL 类似，但结合了 C＃ 的一些功能，以便用户可以编写自定义的模块、用户定义的函数等。可以使用上一步骤中的脚本。
 
@@ -480,7 +482,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
 
 ![指向使用 HDInsight 群集创建的存储帐户的链接](./media/vm-do-ten-things/Create_HDI_v4.PNG)
 
-* 创建群集后，启用对其头节点的远程访问  。 请记住你在此处指定的远程访问凭据，你在后续步骤中将会用到它们。
+* 创建群集后，启用对其头节点的远程访问。 请记住你在此处指定的远程访问凭据，你在后续步骤中将会用到它们。
 
 ![启用对 HDInsight 群集的远程访问](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
@@ -495,7 +497,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
 * 使用 IPython Notebook 上传数据 首先导入所需程序包、插入凭据、在存储帐户中创建数据库，然后将数据上传到 HDI 群集。
 
 ```python
-#Import required Packages
+# Import required Packages
 import pyodbc
 import time as time
 import json
@@ -510,12 +512,12 @@ from azure.storage.blob import BlobService
 warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
 
 
-#Create the connection to Hive using ODBC
-SERVER_NAME='xxx.azurehdinsight.net'
-DATABASE_NAME='nyctaxidb'
-USERID='xxx'
-PASSWORD='xxxx'
-DB_DRIVER='Microsoft Hive ODBC Driver'
+# Create the connection to Hive using ODBC
+SERVER_NAME = 'xxx.azurehdinsight.net'
+DATABASE_NAME = 'nyctaxidb'
+USERID = 'xxx'
+PASSWORD = 'xxxx'
+DB_DRIVER = 'Microsoft Hive ODBC Driver'
 driver = 'DRIVER={' + DB_DRIVER + '}'
 server = 'Host=' + SERVER_NAME + ';Port=443'
 database = 'Schema=' + DATABASE_NAME
@@ -523,12 +525,13 @@ hiveserv = 'HiveServerType=2'
 auth = 'AuthMech=6'
 uid = 'UID=' + USERID
 pwd = 'PWD=' + PASSWORD
-CONNECTION_STRING = ';'.join([driver,server,database,hiveserv,auth,uid,pwd])
+CONNECTION_STRING = ';'.join(
+    [driver, server, database, hiveserv, auth, uid, pwd])
 connection = pyodbc.connect(CONNECTION_STRING, autocommit=True)
-cursor=connection.cursor()
+cursor = connection.cursor()
 
 
-#Create Hive database and tables
+# Create Hive database and tables
 queryString = "create database if not exists nyctaxidb;"
 cursor.execute(queryString)
 
@@ -576,11 +579,13 @@ queryString = """
 cursor.execute(queryString)
 
 
-#Upload data from blob storage to HDI cluster
-for i in range(1,13):
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);"%(i,i)
+# Upload data from blob storage to HDI cluster
+for i in range(1, 13):
+    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);" % (
+        i, i)
     cursor.execute(queryString)
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);"%(i,i)  
+    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);" % (
+        i, i)
     cursor.execute(queryString)
 ```
 
@@ -592,7 +597,7 @@ for i in range(1,13):
 
 在数据加载到 HDI 群集后，可以在 Azure 存储资源管理器中检查数据。 并且在 HDI 群集中创建数据库 nyctaxidb。
 
-数据浏览：  Python 中的 Hive 查询
+数据浏览：Python 中的 Hive 查询
 
 由于数据在 Hadoop 群集中，因此可以 pyodbc 包连接到 Hadoop 群集并使用 Hive 查询数据库，以执行探索和特征工程。 可以查看我们在先决条件步骤中创建的现有表。
 
@@ -600,7 +605,7 @@ for i in range(1,13):
 queryString = """
     show tables in nyctaxidb2;
     """
-pd.read_sql(queryString,connection)
+pd.read_sql(queryString, connection)
 ```
 
 ![查看现有表](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
@@ -633,7 +638,7 @@ queryString = """
     )tc
     GROUP BY tipped;
     """
-results = pd.read_sql(queryString,connection)
+results = pd.read_sql(queryString, connection)
 
 results.columns = ['tipped', 'trip_count']
 df = results.copy()
@@ -661,7 +666,7 @@ queryString = """
                         and dropoff_longitude between -90 and -30
                         and dropoff_latitude between 30 and 90;
             """
-results = pd.read_sql(queryString,connection)
+results = pd.read_sql(queryString, connection)
 results.head(5)
 ```
 
@@ -669,9 +674,9 @@ results.head(5)
 
 ```python
 results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
-                    'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
-df = results.loc[results['trip_distance']<=100] #remove outliers
-df = df.loc[df['direct_distance']<=100] #remove outliers
+                   'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
+df = results.loc[results['trip_distance'] <= 100]  # remove outliers
+df = df.loc[df['direct_distance'] <= 100]  # remove outliers
 plt.scatter(df['direct_distance'], df['trip_distance'])
 ```
 
@@ -812,7 +817,7 @@ queryString = """
     select * from nyctaxi_downsampled_dataset limit 10;
     """
 cursor.execute(queryString)
-pd.read_sql(queryString,connection)
+pd.read_sql(queryString, connection)
 ```
 
 ![表中前几行的数据](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
@@ -844,7 +849,7 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许使用 JSON 等文档�
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
-导入数据后，可以转到 Jupyter 并打开名为 DocumentDBSample  的 Notebook，其中包含用于访问 Azure Cosmos DB 和执行一些基本查询的 python 代码。 访问服务的[文档页](https://docs.microsoft.com/azure/cosmos-db/)可了解有关 Cosmos DB 的详细信息。
+导入数据后，可以转到 Jupyter 并打开名为 DocumentDBSample 的 Notebook，其中包含用于访问 Azure Cosmos DB 和执行一些基本查询的 python 代码。 访问服务的[文档页](https://docs.microsoft.com/azure/cosmos-db/)可了解有关 Cosmos DB 的详细信息。
 
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.使用 Power BI Desktop 生成报表和仪表板
 可以在 Power BI 中可视化从上述 Cosmos DB 示例中看到的 Volcano JSON 文件，以获取对数据的视觉洞察。 [Power BI 文章](../../cosmos-db/powerbi-visualize.md)中提供了详细步骤。 下面是概要步骤：
@@ -855,7 +860,7 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许使用 JSON 等文档�
 4. 通过单击展开图标（在列右侧有“左箭头和右箭头”图标的展开图标）展开列
 5. 请注意，位置是一个“记录”字段。 展开记录并仅选择坐标。 坐标是一个列表列
 6. 添加新的列，以使用公式 ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})``` 将列表坐标列转换为逗号分隔的经纬度列（连接坐标列表字段中的两个元素）。
-7. 最后，将 ```Elevation``` 列转换为小数，并选择“关闭”  和“应用”  。
+7. 最后，将 ```Elevation``` 列转换为小数，并选择“关闭”和“应用”。
 
 你可以不执行上述步骤，而是将以下代码（该代码以脚本方式输出所使用的步骤）粘贴到 Power BI 中的高级编辑器，可以使用该编辑器以查询语言编写数据转换。
 
@@ -896,8 +901,8 @@ in
 ## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10.在虚拟机上安装其他工具
 DSVM 中内置了好几种工具，这些工具可以满足许多常见数据分析需求。 并通过避免必须逐个安装和配置环境而节省时间，且只需为所使用的资源付费而节省成本。
 
-可以利用本文中介绍的其他 Azure 数据和分析服务来增强分析环境。 在某些情况下，需求可能需要其他工具（包括一些专用第三方工具）。 在虚拟机上具有完全的管理访问权限，可安装所需的新工具。 还可以安装未预安装的 Python 和 R 中的其他程序包。 对于 Python，可以使用 ```conda``` 或 ```pip```。 对于 R，可以在 R 控制台中使用 ```install.packages()```，或者使用 IDE 并依次选择“程序包”   -> “安装程序包...”  。
+可以利用本文中介绍的其他 Azure 数据和分析服务来增强分析环境。 在某些情况下，需求可能需要其他工具（包括一些专用第三方工具）。 在虚拟机上具有完全的管理访问权限，可安装所需的新工具。 还可以安装未预安装的 Python 和 R 中的其他程序包。 对于 Python，可以使用 ```conda``` 或 ```pip```。 对于 R，可以在 R 控制台中使用 ```install.packages()```，或者使用 IDE 并依次选择“程序包” -> “安装程序包...”。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 这些只是 Microsoft 数据科研虚拟机上的一部分功能。 有更多使它成为有效分析环境的功能。
 
