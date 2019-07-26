@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 01fd5b06a2e534a85c88d5c1a706713f07f40106
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d44877e35687745ddba51d4d015729e62106c9ca
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277552"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348446"
 ---
 # <a name="quickstart-change-model-using-c"></a>快速入门：使用 C# 更改模型
 
@@ -57,7 +57,7 @@ Visual Studio 项目需要 **JsonFormatterPlus** 和 **CommandLineParser**。 �
 ### <a name="write-the-c-code"></a>编写 C# 代码
 **Program.cs** 文件应为：
 
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;

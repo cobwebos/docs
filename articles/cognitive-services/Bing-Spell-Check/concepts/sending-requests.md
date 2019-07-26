@@ -1,6 +1,6 @@
 ---
 title: 将请求发送到必应拼写检查 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解必应拼写检查模式、设置和与 API 相关的其他信息。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 2b33c27e7af603c73bf7b7c6188bd9aef5ebc669
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: ef5d812b1e55713f30928582d9aa9e61bba7c7a6
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542717"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423548"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>将请求发送到必应拼写检查 API
 

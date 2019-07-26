@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6b93a7848e5c8516507c825d3064fb61a404e3cf
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 339b118e48a01469312a40e6b0652a4ffb90291a
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507766"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347133"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 授予对 ASP.NET Web API 的访问权限
 
@@ -46,7 +46,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 5. 输入应用程序的名称。 例如，“webapi1”  。
 6. 对于“包括 Web 应用/Web API”和“允许隐式流”，请选择“是”。   
 7. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点  。 本教程中的示例在本地运行并在 `https://localhost:44332` 上进行侦听。
-8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。  包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api`。
+8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。  包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api` 。
 9. 单击“创建”。 
 10. 在属性页上，记录在配置 Web 应用程序时要使用的应用程序 ID。
 
@@ -91,13 +91,13 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 2. 打开 **TaskWebApp** 项目中的 **Web.config**。
 3. 若要在本地运行 API，请使用针对 **api:TaskServiceUrl** 的 localhost 设置。 更改 Web.config，如下所示： 
 
-    ```C#
+    ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
 3. 配置 API 的 URI。 这是 Web 应用程序用来发起 API 请求的 URI。 另请配置所请求的权限。
 
-    ```C#
+    ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
     <add key="api:ReadScope" value="Hello.Read" />
     <add key="api:WriteScope" value="Hello.Write" />
@@ -108,25 +108,25 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 1. 打开 **TaskService** 项目中的 **Web.config**。
 2. 配置要使用租户的 API。
 
-    ```C#
+    ```csharp
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
 3. 将客户端 ID 设置为 API 的注册应用程序 ID。
 
-    ```C#
+    ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
 4. 使用注册和登录用户流的名称更新用户流设置。
 
-    ```C#
+    ```csharp
     <add key="ida:SignUpSignInUserFlowId" value="B2C_1_signupsignin1" />
     ```
 
 5. 配置作用域设置，使之与门户中创建的设置相匹配。
 
-    ```C#
+    ```csharp
     <add key="api:ReadScope" value="Hello.Read" />
     <add key="api:WriteScope" value="Hello.Write" />
     ```

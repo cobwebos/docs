@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: aahi
-ms.openlocfilehash: fdef4bc582a61033a45b88d2ab7dcf9da92a91f1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 69f22d92cc586942d3e368a164d6e95f52aa3eea
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305502"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356896"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Python REST API 调用文本分析认知服务 
 <a name="HOLTop"></a>
@@ -73,18 +73,18 @@ language_api_url = text_analytics_base_url + "languages"
 API 的有效负载由 `documents` 列表组成，而列表中的项是包含 `id` 和 `text` 属性的元组。 `text` 属性存储要分析的文本，而 `id` 则可以是任何值。 
 
 ```python
-documents = { "documents": [
-    { "id": "1", "text": "This is a document written in English." },
-    { "id": "2", "text": "Este es un document escrito en Español." },
-    { "id": "3", "text": "这是一个用中文写的文件" }
+documents = {"documents": [
+    {"id": "1", "text": "This is a document written in English."},
+    {"id": "2", "text": "Este es un document escrito en Español."},
+    {"id": "3", "text": "这是一个用中文写的文件"}
 ]}
 ```
 
 使用请求库将文档发送到 API。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并发送带 `requests.post()` 的请求。 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(language_api_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(language_api_url, headers=headers, json=documents)
 languages = response.json()
 pprint(languages)
 ```
@@ -142,19 +142,23 @@ sentiment_url = text_analytics_base_url + "sentiment"
 与语言检测示例一样，请创建一个字典，其 `documents` 键由一系列文档组成。 每个文档都是一个由 `id`、要分析的 `text` 和文本的 `language` 组成的元组。 
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
-  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
-  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
-  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
+documents = {"documents": [
+    {"id": "1", "language": "en",
+        "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+    {"id": "2", "language": "en",
+        "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},
+    {"id": "3", "language": "es",
+        "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},
+    {"id": "4", "language": "es",
+     "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
 使用请求库将文档发送到 API。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并发送带 `requests.post()` 的请求。 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(sentiment_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(sentiment_url, headers=headers, json=documents)
 sentiments = response.json()
 pprint(sentiments)
 ```
@@ -202,19 +206,23 @@ keyphrase_url = text_analytics_base_url + "keyPhrases"
 此文档集合与用于情绪分析示例的文档集合相同。
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
-  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
-  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
-  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
+documents = {"documents": [
+    {"id": "1", "language": "en",
+        "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+    {"id": "2", "language": "en",
+        "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},
+    {"id": "3", "language": "es",
+        "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},
+    {"id": "4", "language": "es",
+     "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
 使用请求库将文档发送到 API。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并发送带 `requests.post()` 的请求。 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(keyphrase_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(keyphrase_url, headers=headers, json=documents)
 key_phrases = response.json()
 pprint(key_phrases)
 ```
@@ -276,16 +284,16 @@ entities_url = text_analytics_base_url + "entities"
 创建文档集合，就像以前的示例一样。 
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."}
+documents = {"documents": [
+    {"id": "1", "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."}
 ]}
 ```
 
 使用请求库将文档发送到 API。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并发送带 `requests.post()` 的请求。
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(entities_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(entities_url, headers=headers, json=documents)
 entities = response.json()
 pprint(entities)
 ```

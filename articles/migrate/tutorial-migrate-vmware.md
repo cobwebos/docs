@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3510c0505a5a3c1353642baf5060a83d13fdd43a
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 885c877f219f59ab5049cf7b8e01243077d6d3eb
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67808107"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348400"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -104,7 +104,7 @@ Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure�
 **Action** | **详细信息** | **说明**
 --- | --- | ---
 确保 Azure VM 中的 Windows 卷使用的驱动器号分配与本地 VM 相同。 | 将 SAN 策略配置为“全部联机”。 | 1.使用管理员帐户登录到 VM，然后打开命令窗口。<br/> 2.键入 **diskpart** 运行 Diskpart 实用工具。<br/> 3.键入 **SAN POLICY=OnlineAll**<br/> 4.键入 Exit 退出 Diskpart，然后关闭命令提示符。
-为 Azure VM 启用 Azure 串行访问控制台 | 这有助于完成故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动，这相当于重新启动新的 VM。 | 遵照[这些说明](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console#enable-serial-console-in-custom-or-older-images)启用控制台。
+为 Azure VM 启用 Azure 串行访问控制台 | 这有助于完成故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动，这相当于重新启动新的 VM。 | 遵照[这些说明](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console)启用控制台。
 安装 Hyper-V 来宾集成 | 如果要迁移的计算机运行 Windows Server 2003，请在 VM 操作系统上安装 Hyper-V 来宾 Integration Services。 | [了解详细信息](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)。
 远程桌面 | 在 VM 上启用远程桌面，并在所有网络配置文件中检查 Windows 防火墙是否未阻止远程桌面访问。 | [了解详细信息](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)。
 

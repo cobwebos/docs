@@ -3,7 +3,7 @@ title: 使用 Azure Batch 进行并行 R 模拟
 description: 教程 - 分步说明如何在 Azure Batch 中使用 R doAzureParallel 包运行 Monte Carlo 财务模拟
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a3f760f31bcd27c5f3d3289aa799d6886df17e15
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7fad37af268d3dcd3d4d974d8e839ac47f171b50
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779975"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321905"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教程：使用 Azure Batch 运行并行 R 模拟 
 
@@ -226,7 +226,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-此模拟将任务分发到 Batch 池中的节点。 在 Azure 门户中，可以查看池的热度地图中的活动。 转到“Batch 帐户” > “myBatchAccount”。 单击“池” > “myPoolName”。 
+此模拟将任务分发到 Batch 池中的节点。 在 Azure 门户中，可以查看池的热度地图中的活动。 转到“Batch 帐户”   >   “myBatchAccount”。 单击“池”   >   “myPoolName”。 
 
 ![运行并行 R 任务的池的热度地图](media/tutorial-r-doazureparallel/pool.png)
 

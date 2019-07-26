@@ -1,6 +1,6 @@
 ---
 title: 向必应视频搜索 API 发送搜索请求
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何向必应视频搜索 API 发送搜索查询。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: bf0f74fe76ec7a83e0ce23ca83141276a677a5df
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: f1d433dd7d919aa5d11f2f59b74a5e3f2dca0b59
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868089"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500283"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>使用必应视频搜索 API 来搜索视频
 
