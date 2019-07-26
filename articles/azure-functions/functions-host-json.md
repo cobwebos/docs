@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 89c4723e83979f89721677146810abdf99fb5d11
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: ecb2059e529347b7eff72bf6af74b82558a4c251
+ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310473"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371693"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
 
-> [!div class="op_single_selector" title1="选择正在使用的 Azure Functions 运行时版本： "]
+> [!div class="op_single_selector" title1="选择要使用的 Azure Functions 运行时的版本： "]
 > * [版本 1](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
@@ -116,7 +116,7 @@ ms.locfileid: "67310473"
 
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
-|isEnabled|true|启用或禁用采样。| 
+|isEnabled|真|启用或禁用采样。| 
 |maxTelemetryItemsPerSecond|5|开始采样所要达到的阈值。| 
 
 ## <a name="cosmosdb"></a>CosmosDB
@@ -135,7 +135,7 @@ ms.locfileid: "67310473"
 
 该属性返回一个对象，其中包含所有特定于绑定的设置，例如 [http](#http) 和 [eventHub](#eventhub)。
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>函数
 
 作业主机运行的函数列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 的函数应用中，应改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤禁用特定函数，而不是使用此设置。
 
@@ -147,7 +147,7 @@ ms.locfileid: "67310473"
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-指示所有函数的超时持续时间。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。 在专用应用服务计划中，没有任何总体限制和默认值为 30 分钟。 值为`-1`指示不受限制的执行。
+指示所有函数的超时持续时间。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。 在应用服务计划中，没有总体限制，默认值取决于运行时版本。 在版本 2.x 中，适用于应用服务计划的默认值为 30 分钟。 在版本 1.x 中，它是 *null*，表示无超时。 它不能设置为无限。 如果未显式设置此值, 将采用默认的30分钟值。
 
 ```json
 {
@@ -173,7 +173,7 @@ ms.locfileid: "67310473"
 
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
-|enabled|true|指定是否已启用该功能。 | 
+|enabled|真|指定是否已启用该功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -209,10 +209,10 @@ ms.locfileid: "67310473"
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
 |logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本 2.x 遵循 ASP.NET Core 布局进行日志类别筛选。 这允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
-|console|不适用| [console](#console)日志记录设置。 |
+|控制台|不适用| [console](#console)日志记录设置。 |
 |applicationInsights|不适用| [applicationInsights](#applicationinsights) 设置。 |
 
-## <a name="console"></a>console
+## <a name="console"></a>控制台
 
 此设置是[日志记录](#logging)的子项。 它在未处于调试模式时控制控制台日志记录。
 
@@ -230,7 +230,7 @@ ms.locfileid: "67310473"
 
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
-|isEnabled|false|启用或禁用控制台日志记录。| 
+|isEnabled|假|启用或禁用控制台日志记录。| 
 
 ## <a name="queues"></a>queues
 
@@ -284,7 +284,7 @@ ms.locfileid: "67310473"
 
 ## <a name="manageddependency"></a>managedDependency
 
-托管依赖项是一项预览功能当前仅支持使用基于 PowerShell 函数。 这样，依赖关系，以将自动由服务管理。 如果已启用的属性设置为 true， [requirements.psd1](functions-reference-powershell.md#dependency-management)文件将处理。 任何次要版本发布时，将更新依赖项。
+托管依赖项是当前仅支持基于 PowerShell 的函数的预览功能。 它允许服务自动管理依赖项。 如果 enabled 属性设置为 true, 则将处理[psd1](functions-reference-powershell.md#dependency-management)文件。 发布任何次要版本时, 将更新依赖项。
 
 ```json
 {

@@ -11,33 +11,33 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80bb7af0f7ed20336ab08d4f3ca9639057b9c67f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 206a8d9ba45dcb948dfffff86bab17b58a33e464
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149758"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358609"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure 机器学习服务的已知问题和故障排除
 
 本文可帮助你查找和更正使用 Azure 机器学习服务时遇到的错误或失败。
 
-## <a name="visual-interface-issues"></a>可视界面问题
+## <a name="visual-interface-issues"></a>视觉对象接口问题
 
-机器学习服务问题的可视界面。
+机器学习服务问题的可视化界面。
 
-### <a name="long-compute-preparation-time"></a>长时间的计算准备时间
+### <a name="long-compute-preparation-time"></a>长计算准备时间
 
-创建新的计算或调用它保留计算会花费些时间，可能是数分钟或更长时间。 团队正在进行优化。
+创建新的计算或调用它保留计算需要时间, 可能需要几分钟甚至更长时间。 团队正在努力优化。
 
 
-### <a name="cannot-run-an-experiment-only-contains-dataset"></a>不能运行试验仅包含数据集 
+### <a name="cannot-run-an-experiment-only-contains-dataset"></a>无法运行只包含数据集的试验 
 
-你可能想要运行试验仅包含要直观显示数据集的数据集。 但是，它具有不允许运行试验仅现在包含数据集。 我们一直在解决此问题。
+你可能想要运行一个试验, 只包含数据集来可视化数据集。 但是, 不允许运行仅包含数据集的试验。 我们正在积极地解决此问题。
  
-之前修复，可以将数据集连接到的任何数据转换模块 （选择的列，在数据集、 编辑元数据、 拆分数据等） 并运行此试验。 然后可以直观显示数据集。 
+在修复之前, 可以将数据集连接到任何数据转换模块 (选择数据集中的列, 编辑元数据, 拆分数据等) 并运行试验。 然后, 可以可视化数据集。 
 
-下图显示了如何： ![visulize 数据](./media/resource-known-issues/aml-visualize-data.png)
+下图显示了如何![: visulize](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>SDK 安装问题
 
@@ -65,13 +65,13 @@ pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 
 你将无法在 FPGA 上部署模型，直到已请求并获得 FPGA 配额批准为止。 若要请求访问权限，请填写配额请求表单： https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>自动化机器学习
+## <a name="automated-machine-learning"></a>自动机器学习
 
-Tensor Flow 自动执行机器学习当前不支持 tensor flow 版本 1.13。 安装此版本将导致包依赖项停止工作。 我们正在努力在将来的版本中修复此问题。 
+Tensor Flow 自动化机器学习当前不支持 Tensor 流版本1.13。 安装此版本将导致包依赖关系停止工作。 我们正在努力解决此问题。 
 
-### <a name="experiment-charts"></a>实验图
+### <a name="experiment-charts"></a>试验图
 
-二元分类图自动化机器学习试验迭代中所示 （精度和召回率 ROC，获得曲线等） 不是自 4 月 12 呈现若要正确用户界面中。 图表绘图当前是显示反结果，其中具有较低结果显示了更好的执行模型。 解决方法是在调查下。
+自动 ML 试验迭代中所示的二元分类图 (精度召回、ROC、增益曲线等) 在正确中不呈现在用户界面中, 因为4/12。 图表绘图当前显示的是反转结果, 在这种情况下, 较低的结果显示更好的模型。 正在调查解决方案。
 
 ## <a name="databricks"></a>Databricks
 
@@ -79,44 +79,52 @@ Databricks 和 Azure 机器学习问题。
 
 ### <a name="failure-when-installing-packages"></a>安装包时失败
 
-安装多个包时，azure 机器学习 SDK 安装在 Azure Databricks 上失败。 某些包（如 `psutil`）可能会导致冲突。 若要避免出现安装错误，请通过冻结的库版本安装包。 此问题与到 Databricks 而不适用于 Azure 机器学习服务 SDK。 您也可能会遇到其他库，这一问题。 示例：
+安装更多包时, Azure 机器学习 SDK 安装在 Azure Databricks 上失败。 某些包（如 `psutil`）可能会导致冲突。 若要避免安装错误, 请通过冻结库版本来安装包。 此问题与 Databricks 相关, 而不是与 Azure 机器学习服务 SDK 相关。 其他库也可能会遇到此问题。 例如：
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 ```
 
-或者，可以使用 init 脚本，如果保留安装的 Python 库的问题。 此方法不正式支持。 有关详细信息，请参阅[群集范围 init 脚本](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)。
+或者, 如果在 Python 库中保留了饰面安装问题, 则可以使用 init 脚本。 此方法并不正式支持。 有关详细信息, 请参阅[群集范围的初始化脚本](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)。
 
-### <a name="cancel-an-automated-machine-learning-run"></a>取消的自动化的机器学习运行
+### <a name="cancel-an-automated-machine-learning-run"></a>取消自动机器学习运行
 
-当使用自动化的机器学习在 Azure Databricks 上的功能时，若要取消运行并开始新的试验运行，请重新启动 Azure Databricks 群集。
+在 Azure Databricks 上使用自动机器学习功能时, 若要取消运行并启动新的试验运行, 请重新启动 Azure Databricks 群集。
 
-### <a name="10-iterations-for-automated-machine-learning"></a>> 自动的机器学习的 10 余次迭代
+### <a name="10-iterations-for-automated-machine-learning"></a>自动机器学习 > 10 次迭代
 
-在自动化机器学习设置，如果有超过 10 个迭代，设置`show_output`到`False`提交运行时。
+在自动机器学习设置中, 如果有10个以上的迭代, `show_output`请`False`在提交运行时将设置为。
 
-### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>在 Azure 机器学习 SDK/自动化机器学习的小组件
+### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Azure 机器学习 SDK/自动机器学习的小组件
 
-Azure 机器学习 SDK 小组件不支持在 Databricks 笔记本中，因为笔记本不能分析的 HTML 小组件。 在 Azure Databricks notebook 单元格中使用以下 Python 代码，可以在门户中查看该小组件：
+Databricks 笔记本不支持 Azure 机器学习 SDK 小组件, 因为笔记本无法解析 HTML 小组件。 可以通过在 Azure Databricks 笔记本单元中使用此 Python 代码在门户中查看小组件:
 
 ```
 displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
 ```
 
-### <a name="import-error-no-module-named-pandascoreindexes"></a>导入错误：名为 pandas.core.indexes 没有模块
+### <a name="import-error-no-module-named-pandascoreindexes"></a>导入错误:没有名为 "pandas" 的模块
 
-如果看到此错误时使用自动机器学习：
+如果你在使用自动机器学习时看到此错误:
 
-1. 运行以下命令在 Azure Databricks 群集中安装两个包： 
+1. 运行以下命令, 在 Azure Databricks 群集中安装两个包: 
 
    ```
    scikit-learn==0.19.1
    pandas==0.22.0
    ```
 
-1. 分离并重新附加到你的 notebook 群集。 
+1. 分离群集, 然后将其重新连接到笔记本。 
 
-如果以上步骤无法解决此问题，请尝试重新启动群集。
+如果这些步骤不能解决问题, 请尝试重新启动群集。
+
+### <a name="failtosendfeather"></a>FailToSendFeather
+
+如果读取 Azure Databricks 群集上的数据时出现错误,请参阅以下解决方案:`FailToSendFeather`
+
+* 将`azureml-sdk[automl_databricks]`包升级到最新版本。
+* 添加`azure-dataprep`版本1.1.8 或更高版本。
+* 添加`pyarrow`版本0.11 或更高版本。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -124,7 +132,7 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
-如果在请求帮助时可以提供诊断信息，有时会很有帮助。 若要查看某些日志，请访问[Azure 门户](https://portal.azure.com)并转到工作区并选择**工作区 > 试验 > 运行 > 日志**。
+如果在请求帮助时可以提供诊断信息，有时会很有帮助。 若要查看某些日志, 请访问[Azure 门户](https://portal.azure.com)并访问工作区, 并选择 "**工作区" > 试验 > 运行 > 日志**。
 
 ## <a name="resource-quotas"></a>资源配额
 

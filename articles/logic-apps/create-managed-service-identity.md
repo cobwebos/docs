@@ -9,23 +9,23 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b157db5032bd62ab443209f201b4ceded6e44cb5
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65416133"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385570"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识进行身份验证并访问资源
 
 若要在不登录的情况下访问其他 Azure Active Directory (Azure AD) 租户中的资源并对你的标识进行身份验证，逻辑应用可以使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（以前称为托管服务标识或 MSI），而非使用凭据或机密。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 本文介绍如何为逻辑应用设置和使用系统分配的托管标识。 有关托管标识的详细信息，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!NOTE]
-> 逻辑应用可将仅用于支持管理的标识的连接器管理的标识。 目前，仅 HTTP 连接器支持托管的标识。
+> 逻辑应用只能将托管标识用于支持托管标识的连接器。 目前, 只有 HTTP 连接器支持托管标识。
 >
 > 当前，每个 Azure 订阅中最多可以有 10 个具有系统分配的托管标识的逻辑应用工作流。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅，如果没有订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
@@ -45,13 +45,13 @@ ms.locfileid: "65416133"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要通过 Azure 门户为逻辑应用启用系统分配的托管标识，请打开逻辑应用标识设置中的“系统分配”设置  。
+若要通过 Azure 门户为逻辑应用启用系统分配的托管标识，请打开逻辑应用标识设置中的“系统分配”设置。
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
-1. 在逻辑应用菜单的“设置”下，选择“标识”   。 
+1. 在逻辑应用菜单的“设置”下，选择“标识”。 
 
-1. 在“系统分配” > “状态”，选择“打开”    。 然后选择“保存” > “是”   。
+1. 在“系统分配” > “状态”，选择“打开”。 然后选择“保存” > “是”。
 
    ![打开托管标识设置](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "65416133"
 
 ### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
-希望自动创建和部署 Azure 资源（例如逻辑应用）时，可以使用 [Azure 资源管理器模板](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md)。 若要通过模板为逻辑应用创建系统分配的托管标识，请将 `"identity"` 元素和 `"type"` 属性添加到部署模板中的逻辑应用工作流定义中。 
+希望自动创建和部署 Azure 资源（例如逻辑应用）时，可以使用 [Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。 若要通过模板为逻辑应用创建系统分配的托管标识，请将 `"identity"` 元素和 `"type"` 属性添加到部署模板中的逻辑应用工作流定义中。 
 
 ```json
 "identity": {
@@ -132,43 +132,43 @@ ms.locfileid: "65416133"
 
 1. 在 Azure 门户中，转到你要在其中为托管标识分配访问权限的 Azure 资源。 
 
-1. 从资源的菜单中选择**访问控制 (IAM)** 。 在工具栏中，选择**外** > **添加角色分配**。
+1. 从资源的菜单中, 选择 "**访问控制 (IAM)** "。 在工具栏上, 选择 "**添加** > " "**添加角色分配**"。
 
    ![添加角色分配](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. 在“添加角色分配”  下，选择该标识所需的“角色”  。 
+1. 在“添加角色分配”下，选择该标识所需的“角色”。 
 
-1. 在“分配其访问权限”  属性中，选择“Azure AD 用户、组或服务主体”  （如果尚未选择）。
+1. 在“分配其访问权限”属性中，选择“Azure AD 用户、组或服务主体”（如果尚未选择）。
 
-1. 在“选择”  框中，从逻辑应用名称中的第一个字符开始，输入你的逻辑应用的名称。 当你的逻辑应用出现时，选择该逻辑应用。
+1. 在“选择”框中，从逻辑应用名称中的第一个字符开始，输入你的逻辑应用的名称。 当你的逻辑应用出现时，选择该逻辑应用。
 
    ![选择具有托管标识的逻辑应用](./media/create-managed-service-identity/add-permissions-select-logic-app.png)
 
-1. 完成后，选择“保存”  。
+1. 完成后，选择“保存”。
 
 ### <a name="authenticate-with-managed-identity-in-logic-app"></a>使用逻辑应用中的托管标识进行身份验证
 
 为逻辑应用设置系统分配的托管标识并为该标识分配对资源的所需权限后，现在可以使用该标识进行身份验证。 例如，可以使用一个 HTTP 操作，以便逻辑应用可以向该资源发送 HTTP 请求或调用。 
 
-1. 在逻辑应用中，添加“HTTP”操作  。
+1. 在逻辑应用中，添加“HTTP”操作。
 
-1. 为该操作提供必要的详细信息，例如要调用的资源的请求“方法”和“URI”位置   。
+1. 为该操作提供必要的详细信息，例如要调用的资源的请求“方法”和“URI”位置。
 
    例如，假设配合使用 Azure Active Directory (Azure AD) 身份验证和[其中一种支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 
-   在“URI”框中，输入该 Azure 服务的终结点 URL  。 
-   因此，如果使用 Azure 资源管理器，请在“URI”属性中输入此值  ：
+   在“URI”框中，输入该 Azure 服务的终结点 URL。 
+   因此，如果使用 Azure 资源管理器，请在“URI”属性中输入此值：
 
    `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version=2016-06-01`
 
-1. 在 HTTP 操作中，选择“显示高级选项”  。
+1. 在 HTTP 操作中，选择“显示高级选项”。
 
-1. 从“身份验证”列表选择“托管标识”   。 选择此身份验证后，“访问群体”属性将随默认资源 ID 值显示  ：
+1. 从“身份验证”列表选择“托管标识”。 选择此身份验证后，“访问群体”属性将随默认资源 ID 值显示：
 
    ![选择“托管标识”](./media/create-managed-service-identity/select-managed-service-identity.png)
 
    > [!IMPORTANT]
    > 
-   > 在“访问群体”属性中，资源 ID 值必须完全匹配 Azure AD 的预期，包括任何必需的尾部反斜杠  。 
+   > 在“访问群体”属性中，资源 ID 值必须完全匹配 Azure AD 的预期，包括任何必需的尾部反斜杠。 
    > 可以在此[描述支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)表中找到这些资源 ID 值。 
    > 例如，如果使用 Azure 资源管理器资源 ID，请确保 URI 具有尾部反斜杠。
 
@@ -184,13 +184,13 @@ ms.locfileid: "65416133"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要通过 Azure 门户为逻辑应用删除系统分配的托管标识，请关闭逻辑应用标识设置中的“系统分配”设置  。
+若要通过 Azure 门户为逻辑应用删除系统分配的托管标识，请关闭逻辑应用标识设置中的“系统分配”设置。
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
-1. 在逻辑应用菜单的“设置”下，选择“标识”   。 
+1. 在逻辑应用菜单的“设置”下，选择“标识”。 
 
-1. 在“系统分配” > “状态”下，选择“关闭”    。 然后选择“保存” > “是”   。
+1. 在“系统分配” > “状态”下，选择“关闭”。 然后选择“保存” > “是”。
 
    ![关闭托管标识设置](./media/create-managed-service-identity/turn-off-managed-service-identity.png)
 
