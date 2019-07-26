@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 72be96e89cd46267d0c0795bd5121de76e48cf6f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: a9de7c75ef2bd29b2e401ba387ca16a5dfda34fb
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484099"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442050"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
@@ -46,9 +46,9 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 | Apache Storm | - | 1.1.0 | 1.0.1 | 0.10.0 | 0.10.0 | 0.9.3 |
 | Apache Mahout | - | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0 |
 | Apache Phoenix | 5 | 4.7.0 | 4.7.0 | 4.4.0 | 4.4.0 | 4.2.0 |
-| Apache Spark | 2.3.1, 2.4 | 2.3.0、2.2.0、2.1.0 | 1.6.2, 2.0 | 1.6.0 | 1.5.2 | 1.3.1（仅限 Windows） |
-| Apache Livy | 0.5 | 0.4, 0.4, 0.3 | 0.3 | 0.3 | 0.2 | - |
-| Apache Kafka | 1.1.1, 2.1 | 1.1、1.0 *（请参阅下面的“注意”） | 0.10.0 | 0.9.0 | - | - |
+| Apache Spark | 2.3.1、2.4 | 2.3.0、2.2.0、2.1.0 | 1.6.2, 2.0 | 1.6.0 | 1.5.2 | 1.3.1（仅限 Windows） |
+| Apache Livy | 0.5 | 0.4、0.4、0.3 | 0.3 | 0.3 | 0.2 | - |
+| Apache Kafka | 1.1.1、2.1 | 1.1、1.0 *（请参阅下面的“注意”） | 0.10.0 | 0.9.0 | - | - |
 | Apache Ambari | 2.7.0 | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 | - |
 | Apache Zeppelin | 0.8.0 | 0.7.0 | - | - | - | - |
 | Mono | 4.2.1 | 4.2.1 | 4.2.1 | 3.2.8 | - | - |
@@ -58,7 +58,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>检查当前的 Hadoop 组件版本信息
 
-与 HDInsight 群集版本关联的组件版本可能会随 HDInsight 的更新而更改。 若要检查 Hadoop 组件并验证正在为群集使用哪些版本，请使用 Ambari REST API。 **GetComponentInformation** 命令检索有关服务组件的信息。 有关详细信息，请参阅[Apache Ambari 文档](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。
+与 HDInsight 群集版本关联的组件版本可能会随 HDInsight 的更新而更改。 若要检查 Hadoop 组件并验证正在为群集使用哪些版本，请使用 Ambari REST API。 **GetComponentInformation** 命令检索有关服务组件的信息。 有关详细信息，请参阅 [Apache Ambari 文档](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。
 
 ### <a name="release-notes"></a>发行说明
 
@@ -75,7 +75,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 | HDInsight 版本 | HDP 版本 | VM OS | 发布日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户上的可用性 | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |是 |是 |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 于 2020 年 6 月 30日日 |于 2020 年 12 月 31日日 |是 |是 |
+| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 2020 年 6 月 30 日 |2020 年 12 月 31 日 |是 |是 |
 
 
 > [!NOTE]  
@@ -111,7 +111,7 @@ Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建�
 
     有关详细信息，请参阅：
 
-    - [已加入域的 HDInsight 群集的 Apache Hadoop 安全性简介](./domain-joined/apache-domain-joined-introduction.md)
+    - [已加入域的 HDInsight 群集的 Apache Hadoop 安全性简介](./domain-joined/hdinsight-security-overview.md)
     - [在 HDInsight 中计划 Azure 已加入域的 Apache Hadoop 群集](./domain-joined/apache-domain-joined-architecture.md)
     - [配置已加入域的沙盒环境](./domain-joined/apache-domain-joined-configure.md)
     - [使用 Azure Active Directory 域服务配置已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
@@ -133,7 +133,7 @@ Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建�
 
 - Hadoop（仅限 HDInsight 3.6）
 - Spark
-- 交互式查询
+- Interactive Query
 
 ### <a name="support-for-azure-data-lake-storage"></a>支持 Azure Data Lake Storage
 
@@ -146,12 +146,12 @@ Enterprise Security 包支持使用 Azure Data Lake Storage 作为主存储和�
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight 群集版本的服务级别协议
 
-服务级别协议 (SLA) 是按“支持窗口”  定义的。 支持窗口是 HDInsight 群集版本受 Microsoft 客户服务和支持部门支持的时间段。 如果版本的“支持到期日期”已过，则 HDInsight 处于支持窗口外。  指定的 HDInsight 版本 X 的支持到期日期（在提供更新的 X+1 版本后）为按以下公式计算所得时间的较晚者：  
+服务级别协议 (SLA) 是按“支持窗口”定义的。 支持窗口是 HDInsight 群集版本受 Microsoft 客户服务和支持部门支持的时间段。 如果版本的“支持到期日期”已过，则 HDInsight 处于支持窗口外。 指定的 HDInsight 版本 X 的支持到期日期（在提供更新的 X+1 版本后）为按以下公式计算所得时间的较晚者：  
 
 * 公式 1：发布 HDInsight 群集版本 X 的日期加 180 天。
 * 公式 2：在 Azure 门户中提供 HDInsight 群集版本 X+1 的日期加 90 天。
 
- “停用日期”是指在此后不能在 HDInsight 上创建此群集版本的日期。 从 2017 年 7 月 31 日开始，无法在停用日期后调整 HDInsight 群集的大小。 
+“停用日期”是指在此后不能在 HDInsight 上创建此群集版本的日期。 从 2017 年 7 月 31 日开始，无法在停用日期后调整 HDInsight 群集的大小。 
 
 > [!NOTE]  
 > HDInsight Windows 群集（包括版本 2.1、3.0、3.1, 3.2 和 3.3）在 Azure 来宾 OS 系列版本 4 上运行，该版本使用 64 位版本的 Windows Server 2012 R2。 Azure 来宾 OS 系列版本 4 支持 .NET Framework 版本 4.0、4.5、4.5.1 和 4.5.2。
@@ -161,19 +161,19 @@ Enterprise Security 包支持使用 Azure Data Lake Storage 作为主存储和�
 本部分提供了与 HDInsight 一起使用的 Hortonworks 数据平台分发版和 Apache 组件的发行说明的链接。
 * HDInsight 群集版本 4.0 使用基于 [Hortonworks 数据平台 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) 的 Hadoop 分发版
 * HDInsight 群集版本 3.6 使用基于 [Hortonworks 数据平台 2.6](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) 的 Hadoop 分发版。
-* HDInsight 群集版本 3.5 使用基于 [Hortonworks 数据平台 2.5](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html) 的 Hadoop 分发版。 HDInsight 群集版本 3.5 是在 Azure 门户中创建的“默认”  Hadoop 群集。
+* HDInsight 群集版本 3.5 使用基于 [Hortonworks 数据平台 2.5](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html) 的 Hadoop 分发版。 HDInsight 群集版本 3.5 是在 Azure 门户中创建的“默认”Hadoop 群集。
 * HDInsight 群集版本 3.4 使用基于 [Hortonworks 数据平台 2.4](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html) 的 Hadoop 分发版。
 * HDInsight 群集版本 3.3 使用基于 [Hortonworks 数据平台 2.3](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html) 的 Hadoop 分发版。
 
   * Apache 网站上提供了 [Apache Storm 发行说明](https://storm.apache.org/2015/11/05/storm0100-released.html)。
   * Apache 网站上提供了 [Apache Hive 发行说明](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843)。
-* HDInsight 群集版本 3.2 使用基于的 Hadoop 分发[Hortonworks 数据平台 2.2][hdp-2-2]。
+* HDInsight 群集版本 3.2 使用基于 [Hortonworks 数据平台 2.2][hdp-2-2] 的 Hadoop 分发版。
 
   * 特定 Apache 组件的发行说明以如下形式提供：[Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450)、[Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954)、[HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810)、[Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581)、[M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180)、[HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181)、[YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197)、[Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179)、[Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742)、[Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486)、[Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112) 和 [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620)。
-* HDInsight 群集版本 3.1 使用基于的 Hadoop 分发[Hortonworks 数据平台 2.1.7][hdp-2-1-7]. HDInsight 3.1 clusters created before November, 7, 2014, are based on [Hortonworks Data Platform 2.1.1][hdp-2-1-1]。
-* HDInsight 群集版本 3.0 使用基于的 Hadoop 分发[Hortonworks 数据平台 2.0][hdp-2-0-8]。
-* HDInsight 群集版本 2.1 使用基于的 Hadoop 分发[Hortonworks 数据平台 1.3][hdp-1-3-0]。
-* HDInsight 群集版本 1.6 使用基于的 Hadoop 分发[Hortonworks 数据平台 1.1][hdp-1-1-0]。
+* HDInsight 群集版本 3.1 使用基于 [Hortonworks 数据平台 2.1.7][hdp-2-1-7]. HDInsight 3.1 clusters created before November, 7, 2014, are based on [Hortonworks Data Platform 2.1.1][hdp-2-1-1] 的 Hadoop 分发版。
+* HDInsight 群集版本 3.0 使用基于 [Hortonworks 数据平台 2.0][hdp-2-0-8] 的 Hadoop 分发版。
+* HDInsight 群集版本 2.1 使用基于 [Hortonworks 数据平台 1.3][hdp-1-3-0] 的 Hadoop 分发版。
+* HDInsight 群集版本 1.6 使用基于 [Hortonworks 数据平台 1.1][hdp-1-1-0] 的 Hadoop 分发版。
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>群集的默认节点配置和虚拟机大小
 
@@ -184,7 +184,7 @@ Enterprise Security 包支持使用 Azure Data Lake Storage 作为主存储和�
 
 * 除巴西南部和日本西部外的所有受支持区域：
 
-|群集类型|Hadoop|HBase|交互式查询|Storm|Spark|ML Server|Kafka|
+|群集类型|Hadoop|HBase|Interactive Query|Storm|Spark|ML Server|Kafka|
 |---|---|---|---|---|---|---|---|
 |头：默认 VM 大小|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
 |头：建议的 VM 大小|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
@@ -204,8 +204,8 @@ Enterprise Security 包支持使用 Azure Data Lake Storage 作为主存储和�
 |Zookeeper：建议的 VM 大小||A4 v2||A2 v2|||A2M v2|
 |||A8 v2||A4 v2|||D3 v2|
 |||A2m v2||A8 v2|||E8 v3|
-|机器学习服务： 默认 VM 大小||||||D4 v2||
-|机器学习服务： 建议的 VM 大小||||||D4 v2||
+|ML 服务: 默认 VM 大小||||||D4 v2||
+|ML 服务: 建议的 VM 大小||||||D4 v2||
 |||||||D12 v2||
 |||||||D13 v2||
 |||||||D14 v2||
@@ -216,7 +216,7 @@ Enterprise Security 包支持使用 Azure Data Lake Storage 作为主存储和�
 
 * 仅限巴西南部和日本西部（无 v2 大小）：
 
-  | 群集类型 | Hadoop | HBase | 交互式查询 |Storm | Spark | ML Services |
+  | 群集类型 | Hadoop | HBase | Interactive Query |Storm | Spark | ML Services |
   | --- | --- | --- | --- | --- | --- | --- |
   | 头：默认 VM 大小 |D12 |D12  | D13 |A3 |D12 |D12 |
   | 头：建议的 VM 大小 |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3,<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
@@ -224,13 +224,13 @@ Enterprise Security 包支持使用 Azure Data Lake Storage 作为主存储和�
   | 辅助角色：建议的 VM 大小 |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
   | Zookeeper：默认 VM 大小 | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
   | Zookeeper：建议的 VM 大小 | |A2,<br/> A3,<br/> A4 | |A2,<br/> A3,<br/> A4 | | |
-  | 机器学习服务： 默认 VM 大小 | | | | | |D4 |
-  | 机器学习服务： 建议的 VM 大小 | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
+  | ML 服务: 默认 VM 大小 | | | | | |D4 |
+  | ML 服务: 建议的 VM 大小 | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
 
 > [!NOTE]
 > - 对于 Storm 群集类型，头称为 *Nimbus*。
-> - 对于 Storm 群集类型，辅助角色称为“主管”。 
-> - 对于 HBase 群集类型，辅助角色称为“区域”。 
+> - 对于 Storm 群集类型，辅助角色称为“主管”。
+> - 对于 HBase 群集类型，辅助角色称为“区域”。
 
 ## <a name="next-steps"></a>后续步骤
 - [为 HDInsight 上的 Apache Hadoop、Spark 和其他组件设置群集](hdinsight-hadoop-provision-linux-clusters.md)

@@ -1,19 +1,18 @@
 ---
 title: 使用 Azure 备份服务通过 VM 设置备份 Azure VM
 description: 了解如何使用 Azure 备份服务备份 Azure VM
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 80739fac8317014c74c6a86cef9aa23696cfb42e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 994762098027f7051591b8bf89bfa5cb7c380373
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443002"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465272"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>通过 VM 设置备份 Azure VM
 
@@ -40,16 +39,16 @@ ms.locfileid: "67443002"
 
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击“所有服务”，在“筛选器”中键入“虚拟机”，然后单击“虚拟机”    。
+2. 单击“所有服务”，在“筛选器”中键入“虚拟机”，然后单击“虚拟机”。
 3. 从 VM 列表中选择要备份的 VM。
-4. 在 VM 菜单上单击“备份”。 
-5. 在“恢复服务保管库”中执行以下操作： 
-   - 如果已有一个保管库，请单击“选择现有”，然后选择一个保管库  。
-   - 如果没有保管库，请单击“新建”。  指定保管库的名称。 它在 VM 所在的区域和资源组中创建。 直接通过 VM 设置启用备份时，不能修改这些设置。
+4. 在 VM 菜单上单击“备份”。
+5. 在“恢复服务保管库”中执行以下操作：
+   - 如果已有一个保管库，请单击“选择现有”，然后选择一个保管库。
+   - 如果没有保管库，请单击“新建”。 指定保管库的名称。 它在 VM 所在的区域和资源组中创建。 直接通过 VM 设置启用备份时，不能修改这些设置。
 
    ![启用备份向导](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. 在“选择备份策略”中执行以下操作： 
+6. 在“选择备份策略”中执行以下操作：
 
    - 保留默认策略。 这样会每天一次在指定的时间备份 VM，并在保管库中保留备份 30 天。
    - 选择现有的备份策略（如果有）。
@@ -57,36 +56,36 @@ ms.locfileid: "67443002"
 
    ![选择备份策略](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
-7. 单击“启用备份”。  这样会将备份策略与 VM 相关联。
+7. 单击“启用备份”。 这样会将备份策略与 VM 相关联。
 
     ![“启用备份”按钮](./media/backup-azure-vms-first-look-arm/vm-management-menu-enable-backup-button.png)
 
 8. 可在门户通知中跟踪配置进度。
-9. 待作业完成后，请在 VM 菜单中单击“备份”。  页面会显示 VM 的备份状态、有关恢复点的信息、正在运行的作业以及发出的警报。
+9. 待作业完成后，请在 VM 菜单中单击“备份”。 页面会显示 VM 的备份状态、有关恢复点的信息、正在运行的作业以及发出的警报。
 
    ![备份状态](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
 10. 启用备份后，会运行初始备份。 可以立即启动初始备份，也可以等待它按备份计划启动。
-    - 在初始备份完成之前，“上次备份状态”  显示为“警告(初始备份挂起)”  。
+    - 在初始备份完成之前，“上次备份状态”显示为“警告(初始备份挂起)”。
     - 若要查看下一个计划的备份何时运行，请单击备份策略名称。
 
 
 > [!NOTE]
-> Azure 备份服务创建单独的资源组 （而不是 VM 资源组） 来存储快照，使用的命名格式**AzureBackupRG_geography_number** (示例：AzureBackupRG_northeurope_1）。 此资源组中的数据将以天为单位指定的持续时间内保留在"保留即时恢复快照"部分中的 Azure 虚拟机备份策略。 对此资源组应用锁可能会导致备份失败。<br>
-根据限制策略会阻止创建资源点集合中其再次导致备份失败，则还应从任何名称/标记限制排除此资源组。
+> Azure 备份服务会创建一个单独的资源组（而非 VM 资源组）来存储快照，采用的命名格式为 **AzureBackupRG_geography_number**（例如：AzureBackupRG_northeurope_1）。 此资源组中的数据将保留在 Azure 虚拟机备份策略的 "保留即时恢复快照" 部分中指定的天数内。 对此资源组应用锁定可能会导致备份失败。<br>
+此资源组还应排除在任何名称/标记限制之外，因为限制策略会阻止在其中再次创建“资源点”集合，从而导致备份失败。
 
 
 ## <a name="run-a-backup-immediately"></a>立即运行备份
 
-1. 若要立即运行备份，请在 VM 菜单中单击“备份”   >   “立即备份”。
+1. 若要立即运行备份，请在 VM 菜单中单击“备份” > “立即备份”。
 
     ![运行备份](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
-2. 在“立即备份”中，使用日历控件选择保留此恢复点的最后一天，然后单击“确定”   。
+2. 在“立即备份”中，使用日历控件选择保留此恢复点的最后一天，然后单击“确定”。
 
     ![备份保留日期](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
-3. 门户通知会告知你备份作业已触发。 若要监视备份进度，请单击“查看所有作业”  。
+3. 门户通知会告知你备份作业已触发。 若要监视备份进度，请单击“查看所有作业”。
 
 
 

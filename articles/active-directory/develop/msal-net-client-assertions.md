@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a938f85b2047ea5cceada98df6adba2c560c1a1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: e1ea75499334f3f6eb2f5d3c15526067fcef4eb8
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278663"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442508"
 ---
 # <a name="confidential-client-assertions"></a>机密客户端断言
 为了证明其身份, 机密客户端应用程序使用 Azure AD 交换密码。 机密可以是:
@@ -34,7 +34,7 @@ ms.locfileid: "68278663"
 MSAL.NET 有四种方法可向机密客户端应用提供凭据或断言:
 - `.WithClientSecret()`
 - `.WithCertificate()`
-- `.WithSignedAssertion()`
+- `.WithClientAssertion()`
 - `.WithClientClaims()`
 
 ### <a name="signed-assertions"></a>签名断言
@@ -50,7 +50,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD 所需的声明如下:
 
-声明类型 | 值 | 描述
+声明类型 | ReplTest1 | 描述
 ---------- | ---------- | ----------
 aud | https://login.microsoftonline.com/{tenantId}/v2.0 | "Aud" (受众) 声明标识 JWT 适用的收件人 (此处 Azure AD), 请参阅 [RFC 7519, Section 4.1.3]
 exp | Thu 六月 27 2019 15:04:17 GMT + 0200 (罗马夏令时) | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请参阅 [RFC 7519, Section 4.1.4]

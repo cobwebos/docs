@@ -2,7 +2,7 @@
 title: 用于开发 Azure 中的数据仓库的资源 | Microsoft Docs
 description: SQL 数据仓库的开发概念、设计决策、建议和编程技术。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 613bcb05dab993989a2ae00b71fef95794953ab8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a78d78618a4cd9bf8d2aaebbd0c0da13697549bc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850733"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479478"
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>SQL 数据仓库的设计决策和编程技术
 请阅读以下开发文章，以更好地了解 SQL 数据仓库的关键设计决策、建议和编程技术。
@@ -27,7 +27,7 @@ ms.locfileid: "65850733"
 * [并发][concurrency]
 * [事务][transactions]
 * [用户定义的架构][user-defined schemas]
-* [表分发][table distribution]
+* [表分布][table distribution]
 * [表索引][table indexes]
 * [表分区][table partitions]
 * [CTAS][CTAS]
@@ -42,7 +42,7 @@ ms.locfileid: "65850733"
 * [临时表][temporary tables]
 * [动态 SQL][dynamic SQL]
 * [循环][looping]
-* [“分组依据”选项][group by options]
+* [group by 选项][group by options]
 * [变量赋值][variable assignment]
 
 ## <a name="next-steps"></a>后续步骤

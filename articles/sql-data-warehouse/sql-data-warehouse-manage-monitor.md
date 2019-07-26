@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/12/2019
+ms.date: 07/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: ff1f613dfdfb5c43b727bcc9c7f7a1f0afca0975
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2dab34ea0ef64f4062819e9b2d475e6a226856b
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748760"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405432"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>使用 DMV 监视工作负荷
 本文介绍如何使用动态管理视图 (DMV) 监视工作负荷。 这包括调查 Azure SQL 数据仓库中的查询执行情况。
@@ -59,18 +59,13 @@ SELECT TOP 10 *
 FROM sys.dm_pdw_exec_requests 
 ORDER BY total_elapsed_time DESC;
 
--- Find a query with the Label 'My Query'
--- Use brackets when querying the label column, as it it a key word
-SELECT  *
-FROM    sys.dm_pdw_exec_requests
-WHERE   [label] = 'My Query';
 ```
 
 从前面的查询结果中，记下想要调查的查询的**请求 ID**。
 
-由于存在大量活动的运行查询，因此处于“挂起”  状态的查询可以排队。 这些查询也出现在类型为 UserConcurrencyResourceType 的 [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) 等待查询中。 有关并发限制的信息，请参阅[性能层](performance-tiers.md)或[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。 查询也可能因其他原因（如对象锁定）处于等待状态。  如果查询正在等待资源，请参阅本文后面的[调查等待资源的查询][Investigating queries waiting for resources]。
+由于存在大量活动的运行查询，因此处于“挂起”状态的查询可以排队。 这些查询也出现在类型为 UserConcurrencyResourceType 的 [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) 等待查询中。 有关并发限制的信息，请参阅[性能层](performance-tiers.md)或[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。 查询也可能因其他原因（如对象锁定）处于等待状态。  如果查询正在等待资源，请参阅本文后面的[调查等待资源的查询][Investigating queries waiting for resources]。
 
-为了简化在 [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 表中查找查询的过程，请使用 [LABEL][LABEL] 将注释分配给可在 sys.dm_pdw_exec_requests 视图中查找的查询。
+若要简化对[sys.databases _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)表中的查询的查找, 请使用[标签][LABEL]为可以在 sys.databases _pdw_exec_requests 视图中查找的查询分配注释。
 
 ```sql
 -- Query with Label
@@ -78,6 +73,12 @@ SELECT *
 FROM sys.tables
 OPTION (LABEL = 'My Query')
 ;
+
+-- Find a query with the Label 'My Query'
+-- Use brackets when querying the label column, as it it a key word
+SELECT  *
+FROM    sys.dm_pdw_exec_requests
+WHERE   [label] = 'My Query';
 ```
 
 ### <a name="step-2-investigate-the-query-plan"></a>步骤 2：调查查询计划
@@ -96,8 +97,8 @@ ORDER BY step_index;
 
 若要进一步调查单个步骤的详细信息，可检查长时间运行的查询步骤的 *operation_type* 列并记下**步骤索引**：
 
-* 针对 SQL 操作  继续执行步骤 3a：OnOperation、RemoteOperation、ReturnOperation。
-* 针对数据移动操作  继续执行步骤 3b：ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
+* 针对 SQL 操作继续执行步骤 3a：OnOperation、RemoteOperation、ReturnOperation。
+* 针对数据移动操作继续执行步骤 3b：ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>步骤 3a：调查分布式数据库上的 SQL
 使用请求 ID 和步骤索引从 [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests] 中检索详细信息，其中包含所有分布式数据库上的查询步骤的执行信息。
@@ -262,7 +263,7 @@ GROUP BY t.pdw_node_id, nod.[type]
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关 DMV 的详细信息，请参阅[系统视图][System views]。
+有关 Dmv 的详细信息, 请参阅[系统视图][System views]。
 
 
 <!--Image references-->

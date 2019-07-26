@@ -1,19 +1,18 @@
 ---
 title: 跨 Azure 订阅移动恢复服务保管库或将其移到另一个资源组
 description: 有关跨 Azure 订阅和资源组移动恢复服务保管库的说明。
-services: backup
 author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sogup
-ms.openlocfilehash: 57263dfd1e226f2ff4321b2d097d30106fae87fa
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 0e351a842a303430e66a52a87305cba23f774ef2
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304922"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465820"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 订阅和资源组移动恢复服务保管库
 
@@ -50,27 +49,27 @@ ms.locfileid: "68304922"
 将恢复服务保管库及其关联的资源移到不同的资源组
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 打开“恢复服务保管库”列表，并选择要移动的保管库。  当保管库仪表板打开时，其外观如下图所示。
+2. 打开“恢复服务保管库”列表，并选择要移动的保管库。 当保管库仪表板打开时，其外观如下图所示。
 
    ![打开恢复服务保管库](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-   如果未看到保管库的“概要”信息，请单击下拉图标。  现在，应会看到保管库的“概要”信息。
+   如果未看到保管库的“概要”信息，请单击下拉图标。 现在，应会看到保管库的“概要”信息。
 
    ![“概要”信息选项卡](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. 在保管库概述菜单中，单击“资源组”旁边的“更改”打开“移动资源”边栏选项卡。   
+3. 在保管库概述菜单中，单击“资源组”旁边的“更改”打开“移动资源”边栏选项卡。
 
    ![更改资源组](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
-4. 在“移动资源”边栏选项卡中，对于选定的保管库，建议通过选中下图所示的复选框，移动可选的相关资源。 
+4. 在“移动资源”边栏选项卡中，对于选定的保管库，建议通过选中下图所示的复选框，移动可选的相关资源。
 
    ![移动订阅](./media/backup-azure-move-recovery-services/move-resource.png)
 
-5. 若要添加目标资源组，请在“资源组”下拉列表中选择现有的资源组，或单击“创建新组”选项。  
+5. 若要添加目标资源组，请在“资源组”下拉列表中选择现有的资源组，或单击“创建新组”选项。
 
    ![创建资源](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
-6. 添加资源组后，确认“我了解与已移动资源关联的工具和脚本在更新为使用新资源 ID 之前将不可用”选项，然后单击“确定”完成保管库移动操作。  
+6. 添加资源组后，确认“我了解与已移动资源关联的工具和脚本在更新为使用新资源 ID 之前将不可用”选项，然后单击“确定”完成保管库移动操作。
 
    ![确认消息](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
@@ -84,24 +83,24 @@ ms.locfileid: "68304922"
 
     ![打开恢复服务保管库](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-    如果未看到保管库的“概要”信息，请单击下拉图标。  现在，应会看到保管库的“概要”信息。
+    如果未看到保管库的“概要”信息，请单击下拉图标。 现在，应会看到保管库的“概要”信息。
 
     ![“概要”信息选项卡](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. 在保管库概述菜单中，单击“订阅”旁边的“更改”打开“移动资源”边栏选项卡。   
+3. 在保管库概述菜单中，单击“订阅”旁边的“更改”打开“移动资源”边栏选项卡。
 
    ![更改订阅](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
-4. 选择要移动的资源。此处我们建议使用“全选”选项来选择列出的所有可选资源。 
+4. 选择要移动的资源。此处我们建议使用“全选”选项来选择列出的所有可选资源。
 
    ![移动资源](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
-5. 在“订阅”下拉列表中选择目标订阅，保管库将移到该订阅。 
-6. 若要添加目标资源组，请在“资源组”下拉列表中选择现有的资源组，或单击“创建新组”选项。  
+5. 在“订阅”下拉列表中选择目标订阅，保管库将移到该订阅。
+6. 若要添加目标资源组，请在“资源组”下拉列表中选择现有的资源组，或单击“创建新组”选项。
 
    ![添加订阅](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. 单击“我了解与已移动资源关联的工具和脚本在更新为使用新资源 ID 之前将不可用”选项以确认，然后单击“确定”。  
+7. 单击“我了解与已移动资源关联的工具和脚本在更新为使用新资源 ID 之前将不可用”选项以确认，然后单击“确定”。
 
 > [!NOTE]
 > 不支持跨订阅的备份（RS 保管库和受保护 VM 位于不同的订阅中）。 此外，在执行保管库移动操作期间，无法将存储冗余选项从本地冗余存储 (LRS) 修改为全局冗余存储 (GRS)，反之亦然。

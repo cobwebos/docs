@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2019
 ms.author: kumud
-ms.openlocfilehash: 759b61e5fb444643bf83e1cca47b6f7152a96590
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
-ms.translationtype: HT
+ms.openlocfilehash: 9fb7fc9b4f0e5af0847876ff41b6a307f8a09749
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305653"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348041"
 ---
 # <a name="azure-networking"></a>Azure 网络
 
@@ -36,7 +36,7 @@ Azure 中的网络服务提供各种网络功能, 这些功能可一起使用, �
 |[虚拟网络](#vnet)|使 Azure 资源能够安全地与其他网络、internet 和本地网络通信。| <p>[筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[路由网络流量](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[限制对资源的网络访问](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[连接虚拟网络](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
 |[ExpressRoute](#expressroute)|通过连接服务提供商所提供的专用连接, 将本地网络扩展到 Microsoft 云。|<p>[创建和修改 ExpressRoute 线路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[创建和修改 ExpressRoute 线路的对等互连](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[将 VNet 链接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[配置和管理 ExpressRoute 线路的路由筛选器](../expressroute/how-to-routefilter-portal.md)</p>|
 |[VPN 网关](#vpngateway)|通过公共 Internet 在 Azure 虚拟网络与本地位置之间发送加密流量。|<p>[站点到站点连接](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[VNet 到 VNet 连接](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
-|[虚拟 WAN](#virtualwan)|优化与 Azure 的分支连接并实现其自动化。 Azure 区域充当可以选择将分支连接到的中心。|<p>[站点到站点连接](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute 连接](../virtual-wan/virtual-wan-expressroute-portal.md)</p> <p>[点到站点连接](../virtual-wan/virtual-wan-point-to-site-portal.md)</p> |
+|[虚拟 WAN](#virtualwan)|优化与 Azure 的分支连接并实现其自动化。 Azure 区域充当可以选择将分支连接到的中心。|<p>[站点到站点连接](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute 连接](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|承载通过使用 Microsoft Azure 基础结构提供名称解析的 DNS 域。|<p>[在 Azure DNS 中托管域](../dns/dns-delegate-domain-azure-dns.md)</p><p>[为 web 应用创建 DNS 记录](../dns/dns-web-sites-custom-domain.md)</p> <p>[为流量管理器创建别名记录](../dns/tutorial-alias-tm.md)</p> <p>[为公共 IP 地址创建别名记录](../dns/tutorial-alias-pip.md)</p> <p>[为区域资源记录创建别名记录](../dns/tutorial-alias-rr.md)</p>|
 |[Azure 堡垒 (预览版)](#bastion)|直接在 Azure 门户中配置与虚拟机之间通过 SSL 的安全、无缝 RDP/SSH 连接。 通过 Azure 堡垒连接时, 虚拟机不需要公共 IP 地址|<p>[创建 Azure 堡垒主机](../bastion/bastion-create-host-portal.md)</p><p>[使用 SSH 连接到 Linux VM](../bastion/bastion-connect-vm-ssh.md)</p><p>[使用 RDP 连接到 Windows VM](/bastion/bastion-connect-vm-rdp.md)</p>|
 ||||
@@ -101,6 +101,8 @@ Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在
 Azure Web 应用程序防火墙 (WAF) 为 web 应用程序提供保护, 使其免受常见 web 攻击和漏洞 (如 SQL 注入和跨站点脚本编写) 的攻击。 Azure WAF 提供了通过托管规则 OWASP 前10个漏洞的现成保护。 此外, 客户还可以配置自定义规则, 这些规则是客户托管规则, 用于根据源 IP 范围提供额外的保护, 以及请求属性 (如标头、cookie、表单数据字段或查询字符串参数)。
 
 客户可以选择部署[AZURE WAF 应用程序网关](../application-gateway/waf-overview.md), 为公用和专用地址空间中的实体提供区域保护。 客户还可以选择部署[具有前门的 AZURE WAF](../frontdoor/waf-overview.md) , 它提供网络边缘到公共终结点的保护。
+
+![Web 应用程序防火墙](./media/networking-overview/waf-overview.png)
 
 
 ### <a name="firewall"></a>Azure 防火墙

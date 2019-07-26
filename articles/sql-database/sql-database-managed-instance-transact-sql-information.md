@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fa5e8a1f51284d93f51a1a197e2612f356b8b0d5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c9b481e63ecf7a92af679c0f32d4b3ab71486021
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228273"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360793"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -193,7 +193,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持[缓冲池扩展](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension)。
 - 不支持 `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION`。 请参阅 [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql)。
 
-### <a name="collation"></a>Collation
+### <a name="collation"></a>排序规则
 
 默认实例排序规则为 `SQL_Latin1_General_CP1_CI_AS` 并可以被指定为创建参数。 请参阅[排序规则](https://docs.microsoft.com/sql/t-sql/statements/collations)。
 
@@ -278,7 +278,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 - 当前在托管实例中不支持启用和禁用 SQL Server 代理。 SQL 代理始终运行。
 - SQL Server 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。 
-- 作业
+- 作业(Job)
   - 支持 T-SQL 作业步骤。
   - 支持以下复制作业：
     - 事务日志读取器
@@ -417,7 +417,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持的语法：
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
-- 源： 
+- 源: 
   - `FROM URL`（Azure Blob 存储）是唯一受支持的选项。
   - 不支持 `FROM DISK`/`TAPE`/备份设备。
   - 不支持备份集。
@@ -554,7 +554,7 @@ SQL Server 代理使用的数据库邮件配置文件必须名为 `AzureManagedI
 
 如果在同一事务范围中将两个查询发送到了同一实例内的两个数据库，则 .NET 中的 `TransactionScope` 类不会工作。
 
-```C#
+```csharp
 using (var scope = new TransactionScope())
 {
     using (var conn1 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))

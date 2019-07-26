@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f86dfd414309e8420dc19c92c1cd20c40a5a13a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99c7947b6469f64f2ea05b2290305710db1ee796
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108184"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477109"
 ---
 # <a name="managing-access-to-apps"></a>管理对应用的访问
 将应用集成到组织的标识系统之后，进行中的访问管理、使用评估和报告将持续成为一项挑战。 在许多情况下，IT 管理员或支持人员需要对应用访问管理持续采取主动措施。 有时，分配由一般或分部 IT 小组执行。 分配决策往往由业务决策人委派，在 IT 人员进行分配之前需要其批准。  其他组织会投资来与现有自动化标识与访问管理系统集成，例如基于角色的访问控制 (RBAC) 或基于属性的访问控制 (ABAC)。 集成与规则开发往往是针对性的且费用高昂。 对任一管理方式进行监视或报告本身是一项独立、昂贵且复杂的投资。
@@ -27,7 +27,7 @@ ms.locfileid: "67108184"
 ## <a name="how-does-azure-active-directory-help"></a>Azure Active Directory 有何帮助？
  Azure AD 针对已配置的应用程序支持广泛的访问管理，使组织能够轻松实现正确的访问策略，范围包括自动的基于分配的策略（ABAC 或 RBAC 方案）到委派和纳入管理员管理。 有了 Azure AD，可以轻松地实现复杂策略，结合单个应用程序的多个管理模型，甚至在具有相同受众的应用程序之间重复使用管理规则。
 
-* [添加新的或现有的应用程序](configure-single-sign-on-portal.md)
+* [添加新的或现有的应用程序](add-gallery-app.md)
 
   Azure AD 的应用程序分配着重于两种主要分配模式：
 
@@ -51,7 +51,7 @@ ms.locfileid: "67108184"
 
 在此情况下，所有分配的用户会自动预配到 Salesforce，因为当他们添加到不同组时，他们的角色分配会在 Salesforce 中更新。 用户可以通过 Microsoft 应用程序访问面板、Office Web 客户端甚至通过浏览到其组织的 Salesforce 登录页来发现和访问 Salesforce。 管理员可以使用 Azure AD 报告轻松查看使用情况和分配状态。
 
-管理员可以运用[Azure AD 条件访问](../active-directory-conditional-access-azure-portal.md)设置对特定角色的访问策略。 这些策略可能包括是否允许从企业环境外部访问、多重身份验证或设备要求，以在各种情况下实现访问。
+管理员可以使用[Azure AD 条件访问](../active-directory-conditional-access-azure-portal.md)来设置特定角色的访问策略。 这些策略可能包括是否允许从企业环境外部访问、多重身份验证或设备要求，以在各种情况下实现访问。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用条件性访问保护应用](../active-directory-conditional-access-azure-portal.md)

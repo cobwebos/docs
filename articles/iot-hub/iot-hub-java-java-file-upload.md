@@ -9,24 +9,24 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 27cdada0bfbb4236e16d17c263aaba0f4f5c511f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3893e496b41b0f3df8dc5a580daf298888578d6e
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620136"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404175"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中心将文件从设备上传到云
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-本教程中的代码为基础[发送云到设备消息通过 IoT 中心](iot-hub-java-java-c2d.md)教程向您展示如何使用[文件上传功能的 IoT 中心](iot-hub-devguide-file-upload.md)若要将文件上载到[Azure blob存储](../storage/index.yml)。 本教程介绍如何：
+本教程基于使用[Iot 中心发送云到设备的消息](iot-hub-java-java-c2d.md)教程中的代码, 演示如何使用[iot 中心的文件上传功能](iot-hub-devguide-file-upload.md)将文件上传到[Azure blob 存储](../storage/index.yml)。 本教程介绍如何：
 
 * 安全提供具有 Azure blob URI 的设备，用于上传文件。
 
 * 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-[将遥测从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)快速入门和[发送云到设备消息通过 IoT 中心](iot-hub-java-java-c2d.md)IoT 的基本设备到云和云到设备消息传送功能教程中心。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+使用 IoT 中心将[遥测数据从设备发送到 iot 中心](quickstart-send-telemetry-java.md)快速入门教程和[使用 iot 中心发送云到设备的消息](iot-hub-java-java-c2d.md)教程显示 iot 中心的基本设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频
@@ -37,7 +37,7 @@ ms.locfileid: "67620136"
 
 在本教程的最后，将运行两个 Java 控制台应用：
 
-* **模拟设备**，[使用 IoT 中心发送云到设备消息] 教程中创建的应用的修改的版本。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
+* **模拟设备**, 在 [使用 IoT 中心发送云到设备的消息] 教程中创建的应用的修改版本。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
 
 * **read-file-upload-notification**，它可以接收来自 IoT 中心的文件上传通知。
 
@@ -56,7 +56,7 @@ ms.locfileid: "67620136"
 
 ## <a name="upload-a-file-from-a-device-app"></a>从设备应用上传文件
 
-在本部分中，会修改中创建的设备应用[发送云到设备消息通过 IoT 中心](iot-hub-java-java-c2d.md)文件上传到 IoT 中心。
+在本部分中, 会修改在[使用 Iot 中心发送云到设备消息](iot-hub-java-java-c2d.md)中创建的设备应用, 以便将文件上传到 iot 中心。
 
 1. 将一个图像文件复制到 `simulated-device` 文件夹并将其重命名为 `myimage.png`。
 
@@ -120,11 +120,15 @@ ms.locfileid: "67620136"
     mvn clean package -DskipTests
     ```
 
+## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
+
+在本文中, 你将创建一个后端服务, 以接收从[设备发送遥测到 iot 中心](quickstart-send-telemetry-java.md)中创建的 IoT 中心的文件上传通知消息。 若要接收文件上传通知消息, 您的服务需要**服务连接**权限。 默认情况下, 每个 IoT 中心都创建有一个名为 "**服务**" 的共享访问策略, 该策略将授予此权限。
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
+
 ## <a name="receive-a-file-upload-notification"></a>接收文件上传通知
 
 本部分中的操作将创建一个 Java 控制台应用，用于接收来自 IoT 中心的文件上传通知消息。
-
-需要使用 IoT 中心的 **iothubowner** 的连接字符串才能完成本部分。 可以在 [Azure 门户](https://portal.azure.com/)上的“共享访问策略”边栏选项卡中找到该连接字符串。 
 
 1. 在命令提示符下使用以下命令，创建名为 **read-file-upload-notification** 的 Maven 项目。 请注意，此命令是一条很长的命令：
 
@@ -161,7 +165,7 @@ ms.locfileid: "67620136"
     import java.util.concurrent.Executors;
     ```
 
-7. 将以下类级变量添加到 **App** 类：
+7. 将以下类级变量添加到 **App** 类。 将`{Your IoT Hub connection string}`占位符值替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串:
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";

@@ -1,5 +1,5 @@
 ---
-title: 安全中心与 Azure 安全产品的集成 |Microsoft Docs
+title: Azure 安全中心中的 Azure 安全产品集成 |Microsoft Docs
 description: 本主题介绍与 Azure 安全中心集成的 Azure 安全产品。
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 64a636cc4452de1ef4a2d0e94629e7d8e3a5878d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 847748d1c56221119d8f74a2aee716ee08448e28
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295735"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335818"
 ---
-# <a name="security-center-integration-with-azure-security-products-in-asc"></a>安全中心与 Azure 安全产品在 ASC 中的集成
+# <a name="integration-of-azure-security-products-in-azure-security-center"></a>Azure 安全中心中的 Azure 安全产品集成
 
 安全中心向客户提供额外的 Microsoft 许可证, 以将其发现登记到安全中心, 并以合并的方式进行查看。
 

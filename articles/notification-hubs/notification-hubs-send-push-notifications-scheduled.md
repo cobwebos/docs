@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: af0de9e8c18644f4ae200f6546c0dd0a41320f9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 94af0dede158c091ae64ae317db3c3153063ce79
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61457679"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347359"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>如何：发送预定通知
 
@@ -30,7 +30,7 @@ ms.locfileid: "61457679"
 ## <a name="schedule-your-notifications"></a>计划通知
 发送通知时，只需如以下示例中所示，使用通知中心 SDK 中的 [`ScheduledNotification` 类](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx)：
 
-```c#
+```csharp
 Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");
 var scheduled = await hub.ScheduleNotificationAsync(notification, new DateTime(2014, 7, 19, 0, 0, 0));
 ```
@@ -38,7 +38,7 @@ var scheduled = await hub.ScheduleNotificationAsync(notification, new DateTime(2
 ## <a name="cancel-scheduled-notifications"></a>取消预定通知
 此外，可以使用其 notificationId 取消以前计划的通知：
 
-```c#
+```csharp
 await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
 ```
 

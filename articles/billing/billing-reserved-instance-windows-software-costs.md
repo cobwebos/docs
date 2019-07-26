@@ -3,8 +3,8 @@ title: Azure 的预留软件成本 | Microsoft Docs
 description: 了解 Azure 虚拟机预留实例成本中不包含哪些软件计量。
 services: billing
 documentationcenter: ''
-author: manish-shukla01
-manager: manshuk
+author: yashar
+manager: yashar
 editor: ''
 tags: billing
 ms.service: billing
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 52e2e2503303c2a7525a3a6c156f648c097b27dd
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371166"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478625"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure 虚拟机预留实例未包含的软件成本
 
-如果没有 Azure 混合权益保留的虚拟机实例上，你进行计费的下一节中列出的软件计量。
+虚拟机保留实例和 SQL 保留容量折扣仅适用于基础结构成本, 不适用于软件成本。 如果使用的是 Windows VM, 但保留虚拟机实例上没有 Azure 混合权益, 则会向你收取以下部分中所列软件计量的费用。 对于 SQL PaaS 部署, 如果未选择 Azure 混合权益, 则将继续使用单独的计量器对 IP 成本进行收费。
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>预留成本中未包括的 Windows 软件计量
 
@@ -69,15 +69,15 @@ ms.locfileid: "60371166"
 可以通过 Azure RateCard API 来获取上述每个计量的成本。 有关如何获取 azure 计量的费率的信息，请参阅[获取 Azure 订阅中使用的资源的价格和元数据信息](/previous-versions/azure/reference/mt219004(v=azure.100))。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关 Azure 的保留项的详细信息，请参阅以下文章：
+若要详细了解 Azure 的预订, 请参阅以下文章:
 
-- [什么是 Azure 的保留项？](billing-save-compute-costs-reservations.md)
+- [Azure 的保留内容是什么？](billing-save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [管理 Azure 的保留项](billing-manage-reserved-vm-instance.md)
+- [管理 Azure 的预订](billing-manage-reserved-vm-instance.md)
 - [了解预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
+## <a name="need-help-contact-us"></a>需要帮助? 联系我们
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如果你有疑问或需要帮助, 请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

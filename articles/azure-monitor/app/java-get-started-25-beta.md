@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: 189b201f9cbdeb728e334f2ff5da3ebd32839e37
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c56b979bf5a4f1e0868dd0542cb71c2da6a85df7
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298303"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494476"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project-250-beta"></a>Java web 项目中的 Application Insights 入门 (2.5.0)
 
@@ -82,7 +82,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
   * `applicationinsights-web`还提供了跟踪 HTTP servlet 请求计数和响应时间的指标, 但需要在应用程序中手动注册 Application Insights servlet 筛选器。
   * `applicationinsights-core`仅为你提供了一个简单的 API, 例如, 你的应用程序不是基于 servlet 的。
   
-*  应怎样将 SDK 更新到最新版本？
+* 应怎样将 SDK 更新到最新版本？
   * 如果使用 Gradle 或 Maven...
     * 更新生成文件以指定最新版本。
   * 如果是手动管理依赖项...
@@ -143,8 +143,6 @@ Application Insights SDK 按以下顺序查找密钥：
         TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
     }
 ```
-
-请注意,[实时度量值](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)不支持从代码读取检测密钥。
 
 ## <a name="4-add-agent"></a>4.添加代理
 
@@ -232,7 +230,7 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 [AI-Agent.xml](java-agent.md) 文件中定义了传出 SDK 配置。
 
 ## <a name="performance-counters"></a>性能计数器
-打开“调查”、“指标”，查看一系列性能计数器   。
+打开“调查”、“指标”，查看一系列性能计数器。
 
 ![已选中进程专用字节的指标窗格的屏幕截图](./media/java-get-started/011-perf-counters.png)
 
@@ -304,7 +302,7 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 
 [详细了解如何设置可用性 web 测试。][availability]
 
-## <a name="questions-problems"></a>有疑问？ 遇到问题？
+## <a name="questions-problems"></a>问题? 遇到问题？
 [Java 故障排除](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>后续步骤

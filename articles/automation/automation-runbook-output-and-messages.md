@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 27dd9888d83e01ea522b2532fc1d65284f2fe8d1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: c129391c0830e0194c32a041853482f92340bbb9
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476924"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405787"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
 大多数 Azure 自动化 runbook 都有某种形式的输出。 此输出可能是发给用户的错误消息，也可能是你打算用于另一个 runbook 的复杂对象。 Windows PowerShell 提供[多个流](/powershell/module/microsoft.powershell.core/about/about_redirection)，以便从脚本或工作流发送输出。 Azure 自动化以不同方式处理每个流。 在创建 runbook 时，应遵循如何使用每种方法的最佳实践。
@@ -23,9 +23,9 @@ ms.locfileid: "67476924"
 
 | Stream | 描述 | 已发布 | 测试 |
 |:--- |:--- |:--- |:--- |
-| 输出 |对象旨在由其他 Runbook 使用。 |写入作业历史记录。 |显示在测试输出窗格中。 |
+| Output |对象旨在由其他 Runbook 使用。 |写入作业历史记录。 |显示在测试输出窗格中。 |
 | 警告 |面向用户的警告消息。 |写入作业历史记录。 |显示在测试输出窗格中。 |
-| 错误 |面向用户的错误消息。 与发生异常时不同，默认情况下，在出现错误消息后，Runbook 会继续执行。 |写入作业历史记录。 |显示在测试输出窗格中。 |
+| Error |面向用户的错误消息。 与发生异常时不同，默认情况下，在出现错误消息后，Runbook 会继续执行。 |写入作业历史记录。 |显示在测试输出窗格中。 |
 | 详细 |提供一般信息或调试信息的消息。 |仅当为 Runbook 启用了详细日志记录时，才写入作业历史记录。 |仅当在 Runbook 中将 $VerbosePreference 设置为 Continue 时，才显示在“测试输出”窗格中。 |
 | 进度 |完成 Runbook 中每个活动之前和之后自动生成的记录。 由于 runbook 面向交互式用户，因此不应尝试创建自身的进度记录。 |仅当为 Runbook 启用了进度日志记录时，才写入作业历史记录。 |不显示在测试输出窗格中。 |
 | 调试 |面向交互式用户的消息。 不应在 Runbook 中使用。 |不会写入作业历史记录。 |不会写入测试输出窗格。 |
@@ -100,9 +100,9 @@ Workflow Test-Runbook
 }
  ```
 
-若要在图形或图形 PowerShell 工作流 Runbook 中声明输出类型，可选择“输入和输出”菜单选项，并键入输出类型的名称  。 建议使用完整的 .NET 类名，以便从父 runbook 引用该类时可轻松识别它。 这会向 Runbook 中的数据总线公开该类的所有属性，并在将其用于条件逻辑、日志记录和作为 Runbook 中其他活动的值引用时提供很大灵活性。<br> ![Runbook 输入和输出选项](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
+若要在图形或图形 PowerShell 工作流 Runbook 中声明输出类型，可选择“输入和输出”菜单选项，并键入输出类型的名称。 建议使用完整的 .NET 类名，以便从父 runbook 引用该类时可轻松识别它。 这会向 Runbook 中的数据总线公开该类的所有属性，并在将其用于条件逻辑、日志记录和作为 Runbook 中其他活动的值引用时提供很大灵活性。<br> ![Runbook 输入和输出选项](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
-以下示例使用两个图形 Runbook 来演示此功能。 如果应用模块式 Runbook 设计模型，则有一个 Runbook，它作为身份验证 Runbook 模板  来管理使用运行方式帐户通过 Azure 进行的身份验证。 在此情况下，通常执行核心逻辑以自动实施给定方案的第二个 Runbook 将执行该身份验证 Runbook 模板  ，并在“测试”  输出窗格中显示结果。 在正常情况下，会使用此 Runbook 针对利用子 Runbook 输出的资源执行某些操作。
+以下示例使用两个图形 Runbook 来演示此功能。 如果应用模块式 Runbook 设计模型，则有一个 Runbook，它作为身份验证 Runbook 模板来管理使用运行方式帐户通过 Azure 进行的身份验证。 在此情况下，通常执行核心逻辑以自动实施给定方案的第二个 Runbook 将执行该身份验证 Runbook 模板，并在“测试”输出窗格中显示结果。 在正常情况下，会使用此 Runbook 针对利用子 Runbook 输出的资源执行某些操作。
 
 下面是 **AuthenticateTo-Azure** Runbook 的基本逻辑。<br> ![身份验证 Runbook 模板示例](media/automation-runbook-output-and-messages/runbook-authentication-template.png)。  
 
@@ -160,7 +160,7 @@ Windows PowerShell 使用[首选项变量](https://technet.microsoft.com/library
 
 下表列出了可在 Runbook 中使用的 preference 变量及其有效值和默认值。 此表仅包含在 Runbook 中有效的值。 preference 变量的其他值在 Azure 自动化外部的 Windows PowerShell 中使用时有效。
 
-| 变量 | 默认值 | 有效值 |
+| 变量 | Default Value | 有效值 |
 |:--- |:--- |:--- |
 | WarningPreference |继续 |停止<br>继续<br>SilentlyContinue |
 | ErrorActionPreference |继续 |停止<br>继续<br>SilentlyContinue |
@@ -168,7 +168,7 @@ Windows PowerShell 使用[首选项变量](https://technet.microsoft.com/library
 
 下表列出了在 Runbook 中有效的 preference 变量值的行为。
 
-| 值 | 行为 |
+| ReplTest1 | 行为 |
 |:--- |:--- |
 | 继续 |记录消息并继续执行 Runbook。 |
 | SilentlyContinue |继续执行 Runbook 但不记录消息。 该值会导致忽略消息。 |
@@ -184,23 +184,23 @@ Windows PowerShell 使用[首选项变量](https://technet.microsoft.com/library
 以下示例将启动一个示例 Runbook，然后等待该 Runbook 完成。 完成后，从作业收集该 Runbook 的输出流。
 
 ```powershell
-$job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
+$job = Start-AzAutomationRunbook -ResourceGroupName "ResourceGroup01" `
   –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
 
 $doLoop = $true
 While ($doLoop) {
-  $job = Get-AzureRmAutomationJob -ResourceGroupName "ResourceGroup01" `
+  $job = Get-AzAutomationJob -ResourceGroupName "ResourceGroup01" `
     –AutomationAccountName "MyAutomationAccount" -Id $job.JobId
   $status = $job.Status
   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
 }
 
-Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
   –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
 
-# For more detailed job output, pipe the output of Get-AzureRmAutomationJobOutput to Get-AzureRmAutomationJobOutputRecord
-Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzureRmAutomationJobOutputRecord
+# For more detailed job output, pipe the output of Get-AzAutomationJobOutput to Get-AzAutomationJobOutputRecord
+Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzAutomationJobOutputRecord
 ``` 
 
 ### <a name="graphical-authoring"></a>图形创作
@@ -213,14 +213,14 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 **若要启用活动级别跟踪，请执行以下步骤：**
 
 1. 在 Azure 门户中，打开自动化帐户。
-2. 在“流程自动化”下选择“Runbook”，打开 Runbook 的列表。  
+2. 在“流程自动化”下选择“Runbook”，打开 Runbook 的列表。
 3. 在“Runbook”页上，单击以从 Runbook 列表中选择图形 Runbook。
-4. 在“设置”  下，单击“日志记录和跟踪”  。
-5. 在“日志记录和跟踪”页的“日志详细记录”下，单击“启用”以启用详细日志记录；在“活动级别跟踪”下，根据所需的跟踪级别，将跟踪级别更改为“基本”或“详细”    。<br>
+4. 在“设置”下，单击“日志记录和跟踪”。
+5. 在“日志记录和跟踪”页的“日志详细记录”下，单击“启用”以启用详细日志记录；在“活动级别跟踪”下，根据所需的跟踪级别，将跟踪级别更改为“基本”或“详细”。<br>
    
    ![“图形创作日志记录和跟踪”页面](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure Monitor 日志
+### <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure 监视日志
 自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics 工作区。 可以使用 Azure Monitor 日志进行以下操作：
 
 * 获取有关自动化作业的见解 

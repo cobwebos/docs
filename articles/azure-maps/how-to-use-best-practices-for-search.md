@@ -1,6 +1,6 @@
 ---
-title: 如何有效地使用 Azure Maps 搜索服务搜索 |Microsoft Docs
-description: 了解如何使用 Azure Maps 搜索服务搜索使用最佳方案
+title: 如何使用 Azure Maps 搜索服务有效搜索 |Microsoft Docs
+description: 了解如何使用 Azure Maps 搜索服务搜索的最佳实践
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/08/2019
@@ -8,80 +8,80 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8c4347eb0f89c17a285aaa4b51760300b9c89aa7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 996a084fd653b2100d94313e8801d915b4bf2cf3
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617861"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348175"
 ---
-# <a name="best-practices-to-use-azure-maps-search-service"></a>使用 Azure 地图搜索服务的最佳做法
+# <a name="best-practices-to-use-azure-maps-search-service"></a>使用 Azure Maps 搜索服务的最佳实践
 
-Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包含使用各种功能，例如中的 Api 的搜索兴趣点 (POI) 数据以某一位置的地址搜索。 在本文中，我们将分享调用通过 Azure Maps 搜索服务的数据的最佳做法。 将了解如何执行以下操作：
+Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括具有各种功能的 api, 例如, 从地址搜索, 到围绕特定位置搜索兴趣点 (POI) 数据。 本文介绍如何通过 Azure Maps 搜索服务来调用数据的最佳做法。 将了解如何执行以下操作：
 
-* 生成查询，以返回相关的匹配项
+* 生成查询以返回相关的匹配项
 * 限制搜索结果
-* 了解不同结果类型之间的差异
-* 读取地址搜索响应结构
+* 了解各种结果类型之间的差异
+* 阅读地址搜索响应结构
 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要调用任何 Maps 服务 API，需要具有 Maps 帐户和密钥。 有关创建帐户和检索密钥的信息，请参阅[如何管理 Azure Maps 帐户和密钥](how-to-manage-account-keys.md)。
 
 > [!Tip]
-> 若要查询的搜索服务，可以使用[Postman 应用](https://www.getpostman.com/apps)来生成 REST 调用，也可以使用任何您喜欢的 API 开发环境。
+> 若要查询搜索服务, 可以使用[Postman 应用](https://www.getpostman.com/apps)来构建 REST 调用, 也可以使用所需的任何 API 开发环境。
 
 
 ## <a name="best-practices-for-geocoding"></a>地理编码的最佳做法
 
-在搜索使用 Azure Maps 搜索服务的完整或部分地址时，它采用搜索词，并返回地址的经度和纬度坐标。 此过程称为地理编码。 在国家/地区中进行地理编码的能力取决于道路数据覆盖范围和地理编码服务的地理编码精度。
+使用 Azure Maps 搜索服务搜索完整或部分地址时, 将使用搜索词并返回地址的经度和纬度坐标。 此过程称为地理编码。 在国家/地区中进行地理编码的能力取决于道路数据覆盖范围和地理编码服务的地理编码精度。
 
-请参阅[地理编码覆盖区域](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)按国家/地区中了解有关 Azure Maps 地理编码功能的详细信息。
+若要详细了解按国家/地区 Azure Maps 地理编码功能, 请参阅[地理编码覆盖率](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)。
 
 ### <a name="limit-search-results"></a>限制搜索结果
 
-   在本部分中，将了解如何使用 Azure Maps 搜索 Api 限制搜索结果。 
+   在本部分中, 你将了解如何使用 Azure Maps 搜索 Api 来限制搜索结果。 
 
    > [!Note]
-   > 并非所有搜索 Api 完全都支持下面列出的参数
+   > 并非所有搜索 Api 完全支持下面列出的参数
 
-   **地理偏置搜索结果**
+   **地理偏向搜索结果**
 
-   地理偏置到您的结果与你的用户的相关区域您应始终添加详细的最大可能位置输入。 若要限制搜索结果，请考虑添加以下输入的类型：
+   为了将结果地理偏向到用户的相关区域, 你应该始终添加最大可能的详细位置输入。 若要限制搜索结果, 请考虑添加以下输入类型:
 
-   1. 设置`countrySet`参数，例如"美国，FR"。 默认搜索行为是搜索整个世界，可能会返回不必要的结果。 如果您的查询不包括`countrySet`参数，搜索可能返回不准确的结果。 例如，搜索名为的城市**贝尔维尤**将返回结果来自美国和法国，由于没有名为城市**贝尔维尤**法国和美国境内。
+   1. `countrySet`设置参数, 例如 "US, FR"。 默认的搜索行为是搜索整个世界, 可能会返回不必要的结果。 如果查询不包含`countrySet`参数, 搜索可能会返回不准确的结果。 例如, 搜索名为 " **Bellevue** " 的城市将返回来自美国和法国的结果, 因为在法国和美国有名为**Bellevue**的城市。
 
-   2. 可以使用`btmRight`和`topleft`参数来设置边界框以将搜索限制在地图上的特定区域。
+   2. 您可以使用`btmRight`和`topleft`参数来设置边界框, 以将搜索限制到地图上的特定区域。
 
-   3. 若要影响的区域关系的结果，可以定义`lat`并`lon`协调参数和设置的搜索区域使用 radius`radius`参数。
+   3. 若要影响结果的相关性区域, 可以使用`lat` `radius`参数定义和`lon`坐标参数并设置搜索区域的半径。
 
 
    **模糊搜索参数**
 
-   1. `minFuzzyLevel`和`maxFuzzyLevel`，帮助返回相关的匹配项，即使查询参数并不完全对应于所需的信息。 大多数搜索查询默认`minFuzzyLevel=1`和`maxFuzzyLevel=2`以提高性能并减少不正常的结果。 需要"restrant"的搜索词的示例，它当匹配到"餐馆"`maxFuzzyLevel`设置为 2。 根据请求的需求，可以重写默认模糊级别。 
+   1. 即使查询`maxFuzzyLevel`参数并不与所需的信息完全对应,帮助也会返回相关的匹配项。`minFuzzyLevel` 大多数搜索查询都默认`minFuzzyLevel=1`为`maxFuzzyLevel=2`和, 以提高性能并减少异常结果。 采用搜索词 "restrant" 的示例, 当设置为2时`maxFuzzyLevel` , 它将与 "餐馆" 匹配。 根据请求的需要, 可以重写默认的模糊级别。 
 
-   2. 此外可以指定要使用返回的结果类型的确切一`idxSet`参数。 为此可以提交的索引以逗号分隔列表，项顺序并不重要。 以下是受支持的索引：
+   2. 您还可以通过使用`idxSet`参数来指定要返回的结果类型的确切集合。 出于此目的, 你可以提交以逗号分隔的索引列表, 项目顺序并不重要。 下面是受支持的索引:
 
-       * `Addr` - **地址范围**:对于某些街道有开头和结尾街道; 的内插的地址点这些点表示为地址范围。
-       * `Geo` - **地理区域**:它是表示管理部门的土地的地图、 国家/地区、 状态、 城市的区域。
-       * `PAD` - **点地址**:街道名称和编号与特定地址所在在索引中，例如，Soquel Dr 2501 在地图上的点。 它是准确性的最高级别的可用地址。  
-       * `POI` - **兴趣点**:值得注意，可能感兴趣点，在地图上。  [获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)不会返回 Poi。  
-       * `Str` - **街道**:在地图上的街道的表示形式。
-       * `XStr` - **跨街道/交集**:表示形式的交接点;两个街道相交的位置。
+       * `Addr` - **地址范围**:对于某些街道, 存在从街道的开头和结尾处插值的地址点;这些点表示为地址范围。
+       * `Geo` - **地理**位置:地图上表示土地的管理部门的区域, 即国家/地区、省/市/自治区。
+       * `PAD` - **点地址**:位于地图上的点, 可以在索引中找到具有街道名称和编号的特定地址, 例如 Soquel Dr 2501。 它是可用于地址的最高级别的准确性。  
+       * `POI` - **兴趣点**:需要注意的地图上的点, 并且可能会很感兴趣。  [Get Search Address](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)不会返回 poi。  
+       * `Str` - **街道**:地图上的街道的表示形式。
+       * `XStr` - **交叉街道/交点**:联接的表示形式;两个街道相交的位置。
 
 
        **用法示例**:
 
-       * idxSet = POI （只搜索兴趣点） 
+       * idxSet = POI (仅搜索兴趣点) 
 
-       * idxSet = 键盘，Addr (搜索仅，解决了板 = 点地址，Addr = 地址范围)
+       * idxSet = PAD, Addr (仅限搜索地址, PAD = 点地址, 地址 = 地址范围)
 
 ### <a name="reverse-geocode-and-geography-entity-type-filter"></a>反向地理编码和地理实体类型筛选器
 
-执行与反向地理编码搜索时[搜索地址反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)，该服务有能力，可以返回的管理区域的多边形。 只需提供参数`entityType`在请求中，您可以缩小搜索范围的指定的地理实体类型。 生成的响应将包含 geography ID，以及匹配的实体类型。 如果提供多个实体，终结点将返回**可用的最小实体**。 返回几何图形 ID 可用于获取通过该地理几何图形[获取多边形服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)。
+使用[搜索地址反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)执行反向地理编码搜索时, 服务可以返回管理区域的多边形。 通过在请求中`entityType`提供参数, 可以缩小指定地理实体类型的搜索范围。 生成的响应将包含 geography ID 以及匹配的实体类型。 如果提供了多个实体, 则终结点将返回**可用的最小实体**。 返回的 Geometry ID 可用于通过[获取多边形服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)获取该地理位置的几何。
 
-**示例请求：**
+**示例请求:**
 
 ```HTTP
 https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
@@ -128,14 +128,14 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 
 ### <a name="search-results-language"></a>搜索结果语言
 
-`language`参数，可设置应在哪些语言搜索中返回结果。 如果未在请求中设置语言，搜索服务将自动默认为国家/地区中最常用的语言。 此外，当指定的语言中的数据不可用，则使用默认语言。 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)有关相对于按国家/地区的 Azure Maps 服务支持的语言的列表。
+`language`参数允许设置应在其中返回语言搜索结果的。 如果未在请求中设置语言, 则搜索服务将自动默认为国家/地区的最常见语言。 此外, 当指定语言中的数据不可用时, 将使用默认语言。 有关按国家/地区 Azure Maps 服务的支持语言的列表, 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)。
 
 
-### <a name="predictive-mode-auto-suggest"></a>预测模式 （自动建议）
+### <a name="predictive-mode-auto-suggest"></a>预测模式 (自动建议)
 
-若要查找更多匹配项的部分查询`typeahead`参数应设置为 'true'。 该查询将被解释为部分输入和搜索将在进入预测的模式。 否则该服务将假定传入的所有相关信息。
+若要查找部分查询的更多`typeahead`匹配项, 参数应设置为 "true"。 查询将被解释为部分输入, 搜索将进入 "预测" 模式。 否则, 服务将假定已传入所有相关信息。
 
-在此示例下面的查询可以看到"Microso"中，查询搜索地址服务与`typeahead`参数设置为**true**。 如果发现响应，可以看到，搜索服务解释作为部分查询的查询和响应包含的自动建议查询的结果。
+在下面的示例查询中, 你可以看到搜索地址服务查询了 "Microso" `typeahead` , 参数设置为**true**。 如果观察到响应, 可以看到搜索服务将查询解释为部分查询, 响应包含自动建议查询的结果。
 
 **示例查询：**
 
@@ -239,34 +239,34 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 ```
 
 
-### <a name="uri-encoding-to-handle-special-characters"></a>URI 编码来处理特殊字符 
+### <a name="uri-encoding-to-handle-special-characters"></a>用于处理特殊字符的 URI 编码 
 
-若要查找交叉街道地址，即"第一种途径 & 联合 Street，西雅图"、 特殊字符 & 发送请求之前要编码的需求。 我们建议编码的 URI 中的字符数据使用 %字符进行编码的所有字符的位置以及为其 utf-8 字符相对应的两个字符十六进制值。
+若要查找跨街道地址, 即 "第一号 & 联合街道, 西雅图", 需要在发送请求之前对特殊字符 "&" 进行编码。 建议在 URI 中编码字符数据, 其中, 所有字符均使用 "%" 字符和两个字符的十六进制值 (对应于其 UTF-8 字符) 进行编码。
 
 **用法示例**:
 
-获取搜索地址：
+获取搜索地址:
 
 ```
 query=1st Avenue & E 111th St, New York
 ```
 
- 应编码为：
+ 应编码为:
 
 ```
 query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 ```
 
 
-以下是要用于不同的语言的不同方法： 
+下面是用于不同语言的不同方法: 
 
 JavaScript/TypeScript:
 ```Javascript
 encodeURIComponent(query)
 ```
 
-C#/ VB:
-```C#
+C#VB
+```csharp
 Uri.EscapeDataString(query)
 ```
 
@@ -292,32 +292,32 @@ PHP：
 urlencode(query)
 ```
 
-Ruby:
+拼音
 ```Ruby
 CGI::escape(query) 
 ```
 
-Swift:
+反应
 ```Swift
 query.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) 
 ```
 
-转到：
+至
 ```Go
 import ("net/url") 
 url.QueryEscape(query)
 ```
 
 
-## <a name="best-practices-for-poi-search"></a>POI 搜索最佳实践
+## <a name="best-practices-for-poi-search"></a>POI 搜索的最佳实践
 
-感兴趣 (POI) 搜索的点，可按名称，例如，按名称搜索业务请求 POI 结果。 我们强烈建议你使用`countrySet`参数来指定国家/地区，应用程序需要覆盖，因为默认行为将搜索整个世界，可能会返回不必要的结果和/或导致更长的搜索时间。
+兴趣点 (POI) 搜索允许按名称请求 POI 结果, 例如, 按名称搜索业务。 我们强烈建议你使用`countrySet`参数来指定你的应用程序需要覆盖的国家/地区, 因为默认行为是搜索整个世界, 可能会返回不必要的结果和/或导致更长的搜索时间。
 
 ### <a name="brand-search"></a>品牌搜索
 
-若要提高相关性的结果以及在响应中的信息，感兴趣点 (POI) 搜索响应包括可用于进一步分析的响应的品牌信息。
+若要改善结果与响应中的信息的相关性, 兴趣点 (POI) 搜索响应包括可进一步用于分析响应的品牌信息。
 
-让我们[POI 类别搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)加油站附近 Microsoft 园区 （华盛顿州雷德蒙德） 的请求。 如果发现响应时，可以看到返回每个 POI 的品牌信息。
+接下来, 让我们在 Microsoft 校园 (Redmond, WA) 附近对加油站进行[POI 类别搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)请求。 如果观察到响应, 可以查看每个返回的 POI 的品牌信息。
 
 **示例查询：**
 
@@ -484,7 +484,7 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 
 ### <a name="airport-search"></a>机场搜索
 
-POI 搜索支持通过使用正式的机场代码搜索机场。 例如， **SEA** （西雅图塔科马国际机场）。 
+POI 搜索支持使用官方机场代码搜索机场。 例如,**海平面**(西雅图-Tacoma 国际机场)。 
 
 ```HTTP
 https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=SEA 
@@ -492,11 +492,11 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 
 ### <a name="nearby-search"></a>邻近搜索
 
-若要检索仅 POI 结果以某一位置[附近的搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby)可能是正确的选择。 此终结点将仅返回 POI 结果，而不使用搜索查询参数中。 若要限制结果，建议将半径设置。
+若要仅检索特定位置周围的 POI 结果,[附近的搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby)可能是正确的选择。 此终结点将只返回 POI 结果, 而不会在搜索查询参数中使用。 若要限制结果, 建议设置半径。
 
 ## <a name="understanding-the-responses"></a>了解响应
 
-让我们将地址搜索请求向 Azure Maps [search 服务](https://docs.microsoft.com/rest/api/maps/search)西雅图中的地址。 如果您仔细查看下面的请求 URL 中，我们将设置`countrySet`参数**美国**搜索美国中的地址。
+让我们对西雅图中某个地址的 Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)发出地址搜索请求。 如果你仔细查看下面的请求 URL, 我们已将`countrySet`参数设置为**US** , 以便在美国美国搜索该地址。
 
 **示例查询：**
 
@@ -504,21 +504,21 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400%20Broad%20Street%2C%20Seattle%2C%20WA&countrySet=US
 ```
 
-进一步让我们看下面的响应结构。 在响应中的结果对象的结果类型是不同的。 如果仔细观察你可以看到我们有三种不同类型的结果对象，它是"点地址"、"Street"和"跨 Street"。 请注意，该地址搜索未返回 Poi。 `Score`为每个响应对象的参数指示相对的匹配分数对同一响应中其他对象的分数。 请参阅[获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)若要了解有关响应对象参数的详细信息。
+接下来, 让我们看一下下面的响应结构。 响应中的结果对象的结果类型不同。 如果你仔细观察, 你会看到我们具有三种不同类型的结果对象, 即 "点地址"、"街道" 和 "十字街道"。 请注意, 地址搜索不返回 Poi。 每`Score`个响应对象的参数指示相同响应中其他对象的分数的相对匹配分数。 请参阅[获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)了解有关 response object 参数的详细信息。
 
-**支持的结果类型：**
+**支持的结果类型:**
 
-* **点地址：** 具有街道名称和编号与特定地址的映射的点。 可用地址的准确性最高级别。 
+* **点地址:** 使用带有街道名称和号码的特定地址的地图上的点。 地址的最高准确性。 
 
-* **地址范围：** 对于某些街道有开头和结尾街道; 的内插的地址点这些点表示为地址范围。 
+* **地址范围:** 对于某些街道, 存在从街道的开头和结尾处插值的地址点;这些点表示为地址范围。 
 
-* **地理位置：** 它是表示管理部门的土地的地图、 国家/地区、 状态、 城市的区域。 
+* **Geography**地图上表示土地的管理部门的区域, 即国家/地区、省/市/自治区。 
 
-* **POI-（感兴趣的点）：** 值得注意，可能感兴趣点，在地图上。
+* **POI-(兴趣点):** 需要注意的地图上的点, 并且可能会很感兴趣。
 
-* **街道：** 在地图上的街道的表示形式。 地址将解析为包含地址的街道名的纬度/经度坐标。 门牌号码可能不会处理。 
+* **街道**地图上的街道的表示形式。 地址解析为包含地址的街道的纬度/经度坐标。 门牌号码可能不会处理。 
 
-* **十字路口：** 交集。 交接点; 的表示形式两个街道相交的位置。
+* **交叉街道:** 交. 联接的表示形式;两个街道相交的位置。
 
 **响应：**
 
@@ -684,12 +684,12 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 }
 ```
 
-### <a name="geometry"></a>geometry
+### <a name="geometry"></a>几何图形
 
-当响应类型是**几何图形**，它可以包括在返回的 geometry ID**数据源**"geometry"和"id"下的对象。 例如，[获取多边形服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)可以请求以 GeoJSON 格式，如一组实体的城市或机场轮廓的几何图形数据。 可以使用此边界数据用于[地理围栏](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence)或[的几何图形内搜索 Poi](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)。
+当响应类型为**Geometry**时, 它可以包括在 "geometry" 和 "ID" 下的数据**源**对象中返回的 geometry ID。 例如, "[获取多边形服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)" 允许您以 GeoJSON 格式请求几何数据, 例如一组实体的 "城市" 或 "机场" 大纲。 可以将此边界数据用于[地理围栏](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence)或在[几何图形内搜索 poi](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)。
 
 
-[搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)或[模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)API 响应可以包括**geometry ID** "geometry"和"id"下的数据源对象中返回。
+[搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)或[搜索模糊](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)API 响应可以包括在 "geometry" 和 "ID" 下的数据源对象中返回的**geometry ID** 。
 
 
 ```JSON 
@@ -703,4 +703,4 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[如何构建 Azure Maps 搜索服务请求](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)。
-* 探索 Azure Maps[搜索服务 API 文档](https://docs.microsoft.com/rest/api/maps/search)。 
+* 浏览 Azure Maps[搜索服务 API 文档](https://docs.microsoft.com/rest/api/maps/search)。 

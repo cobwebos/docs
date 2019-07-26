@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f53d3bd64b4f837fe29baa338cd338158d59d95d
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61424697"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466956"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用字符串
 
 
 > [!NOTE]
-> 应完成[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)并[开始使用 Azure Monitor 日志查询](get-started-queries.md)之前完成本教程。
+> 在完成本教程之前, 应完成[Azure Monitor Log Analytics](get-started-portal.md)和[Azure Monitor 日志查询](get-started-queries.md)入门。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -38,6 +38,10 @@ ms.locfileid: "61424697"
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
+```
+
+```Kusto
+print 'this is a "string" literal in single \' quotes'
 ```
 
 为了防止“\\”用作转义字符，请添加“\@”作为字符串的前缀：
@@ -93,7 +97,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 countof(text, search [, kind])
 ```
 
-### <a name="arguments"></a>参数：
+### <a name="arguments"></a>参数:
 - `text` - 输入字符串 
 - `search` - 用于在文本内部匹配的纯字符串或正则表达式。
 - `kind` - _normal_ | _regex_（默认值：normal）。
@@ -164,7 +168,7 @@ Heartbeat
 | project ComputerIP, last_octet, next_ip
 ```
 
-以下示例在字符串 *Trace* 中搜索“Duration”的定义。 匹配项强制转换为 *real* 并与时间常量 (1 s) 相乘，该常量将 Duration 强制转换为 timespan 类型。 
+以下示例在字符串 *Trace* 中搜索“Duration”的定义。 匹配项强制转换为 *real* 并与时间常量 (1 s) 相乘，该常量将 Duration 强制转换为 timespan 类型。
 ```Kusto
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
@@ -274,7 +278,7 @@ activities                                        |替换的内容
 split(source, delimiter [, requestedIndex])
 ```
 
-### <a name="arguments"></a>参数：
+### <a name="arguments"></a>参数:
 
 - `source` - 要根据指定的分隔符拆分的字符串。
 - `delimiter` - 用于拆分源字符串的分隔符。
@@ -331,7 +335,7 @@ print strlen("hello")   // result: 5
 substring(source, startingIndex [, length])
 ```
 
-### <a name="arguments"></a>参数：
+### <a name="arguments"></a>参数:
 
 - `source` - 从中提取子字符串的源字符串。
 - `startingIndex` - 请求子字符串的从零开始的起始字符位置。

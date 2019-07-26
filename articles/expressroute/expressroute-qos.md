@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9bdeb91b145f8c7f31be8c1dcd5c5158d50ff2f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eed6113442b4080341ff08b3983880f3afe66c00
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712325"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385124"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS 要求
 Skype for Business 具有各种工作负荷，它们要求的 QoS 处理方式各有差异。 如果打算通过 ExpressRoute 使用语音服务，应遵守以下所述要求。
@@ -25,11 +25,11 @@ Skype for Business 具有各种工作负荷，它们要求的 QoS 处理方式�
 > 
 > 
 
-下表提供了通过 Microsoft Teams 和 Skype for Business 使用的 DSCP 标记列表。 有关详细信息，请参阅 [管理 Skype for Business 的 QoS](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS) 。
+下表提供了 Microsoft 团队和 Skype for Business 使用的 DSCP 标记的列表。 有关详细信息，请参阅 [管理 Skype for Business 的 QoS](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS) 。
 
-| **流量类** | **处理方式（DSCP 标记）** | **Microsoft Teams 和 Skype for Business 工作负荷** |
+| **流量类** | **处理方式（DSCP 标记）** | **Microsoft 团队和 Skype for business 工作负荷** |
 | --- | --- | --- |
-| **语音** |EF (46) |Skype/Lync 语音 |
+| **语音** |EF (46) |Skype/Microsoft 团队/Lync 语音 |
 | **交互式** |AF41 (34) |视频，VBSS |
 | |AF21 (18) |应用共享 | 
 | **默认** |AF11 (10) |文件传输 |

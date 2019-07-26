@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/18/2019
 ms.author: raiye
-ms.openlocfilehash: edf120fa7997cf2d0381dcb7cd3ee0d4e16dd72b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321405"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405552"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用*自动*进行来宾 OS 更新，则不一定要阅读本页面。
@@ -76,7 +76,7 @@ ms.locfileid: "68321405"
 ###### <a name="october-12-2018"></a>**2018 年 10 月12 日**
 9 月版来宾 OS 已发布。
 
-## <a name="releases"></a>发行版本
+## <a name="releases"></a>发布
 
 ## <a name="family-6-releases"></a>系列 6 发行版
 **Windows Server 2019**
@@ -110,7 +110,7 @@ ms.locfileid: "68321405"
 ## <a name="family-5-releases"></a>系列 5 发行版本
 **Windows Server 2016**
 
-已安装的 .NET Framework：3.5、4.6.2、4.7。2
+已安装的 .NET Framework：3.5、4。6
 
 > [!NOTE]
 > OS 系列 5 的 RDP 密码至少必须有 10 个字符。
@@ -197,12 +197,12 @@ ms.locfileid: "68321405"
 | 4 |版本 2.1+ |
 | 3 |版本 1.8+ |
 | 2 |版本 1.3+ |
-| 第 |版本 1.0+ |
+| 1 |版本 1.0+ |
 
 ## <a name="guest-os-release-information"></a>来宾 OS 版本信息
-来宾 OS 发行版有三个重要的日期：**发行日期**、**停用日期**和**失效日期**。 来宾 OS 在门户中可用，并可选作目标来宾 OS。 当来宾 OS 到达停用  日期时，将从 Azure 中删除。 但是，面向该来宾 OS 的任何云服务仍会正常运行。
+来宾 OS 发行版有三个重要的日期：**发行日期**、**停用日期**和**失效日期**。 来宾 OS 在门户中可用，并可选作目标来宾 OS。 当来宾 OS 到达停用日期时，将从 Azure 中删除。 但是，面向该来宾 OS 的任何云服务仍会正常运行。
 
-在停用  日期与失效  日期之间有一个缓冲期，可让你轻松地从一个来宾 OS 版本转换到新的版本。 如果正在使用*自动更新版*的来宾 OS，则始终可以获得最新版本，而无需担心失效的问题。
+在停用日期与失效日期之间有一个缓冲期，可让你轻松地从一个来宾 OS 版本转换到新的版本。 如果正在使用*自动更新版*的来宾 OS，则始终可以获得最新版本，而无需担心失效的问题。
 
 **到期**日期过后，仍旧使用该来宾 OS 的所有云服务将被停止、删除或强行升级。 可以在[此处][retirepolicy]了解有关停用策略的详细信息。
 

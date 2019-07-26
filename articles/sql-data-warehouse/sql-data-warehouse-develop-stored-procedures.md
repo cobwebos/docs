@@ -2,7 +2,7 @@
 title: 使用 Azure SQL 数据仓库中的存储过程 | Microsoft Docs
 description: 有关在开发解决方案时实现 Azure SQL 数据仓库中的存储过程的技巧。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,17 +10,17 @@ ms.subservice: development
 ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 200433d95d62edf2e878e58e5089a6baff290775
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c12a679ed5f0a1574deb34df8c0151e737d2d01
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850587"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479593"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>使用 SQL 数据仓库中的存储过程
 有关在开发解决方案时实现 Azure SQL 数据仓库中的存储过程的技巧。
 
-## <a name="what-to-expect"></a>期望
+## <a name="what-to-expect"></a>预期结果
 
 SQL 数据仓库支持 SQL Server 中使用的许多 T-SQL 功能。 更重要的是，可使用特定的横向扩展功能将解决方案的性能最大化。
 
@@ -71,7 +71,7 @@ SQL 数据仓库不允许通过 INSERT 语句使用存储过程的结果集。 �
 ## <a name="limitations"></a>限制
 SQL 数据仓库中未实现 Transact-SQL 存储过程的某些方面。
 
-它们是：
+它们分别是：
 
 * 临时存储过程
 * 编号的存储过程

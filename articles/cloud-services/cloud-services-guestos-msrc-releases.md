@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/12/2019
+ms.date: 7/18/2019
 ms.author: raiye
-ms.openlocfilehash: 848adffc4937b97759881c13c05e7c1c1c14312e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
-ms.translationtype: HT
+ms.openlocfilehash: 9d84339bb51d3694323bfdd272216cccb11287c0
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872023"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333621"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
@@ -41,7 +41,6 @@ ms.locfileid: "67872023"
 |  Rel 19-07   |  [4506964]  |  .NET 4.5.2 安全性   |  4.68  |  2019年7月9日  |
 |  Rel 19-07   |  [4506977]  |  .NET 3.5 安全性   |  4.68  |  2019年7月9日  |
 |  Rel 19-07   |  [4507457]  |  Windows 安全性   |  4.68  |  2019年7月9日  |
-|  Rel 19-07   |  [4506986]  |  .NET 4.8 安全   |  5.33  |  2019年7月9日  |
 |  Rel 19-07   |  [4507460]  |  Windows 安全性   |  5.33  |  2019年7月9日  |
 |  Rel 19-07   |  [4506998]  |  .NET 3.5 & 4.7.2 安全   |  6.9  |  2019年7月9日  |
 |  Rel 19-07   |  [4507469]  |  Windows 安全性   |  6.9  |  2019年7月9日  |
@@ -62,7 +61,6 @@ ms.locfileid: "67872023"
 [4506964]: https://support.microsoft.com/kb/4506964
 [4506977]: https://support.microsoft.com/kb/4506977
 [4507457]: https://support.microsoft.com/kb/4507457
-[4506986]: https://support.microsoft.com/kb/4506986
 [4507460]: https://support.microsoft.com/kb/4507460
 [4506998]: https://support.microsoft.com/kb/4506998
 [4507469]: https://support.microsoft.com/kb/4507469
@@ -1067,7 +1065,7 @@ ms.locfileid: "67872023"
 | MS15-075 |[3072633] |OLE 中的漏洞可能导致提升权限 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
 | MS15-076 |[3067505] |Windows 远程过程调用中的漏洞可能导致提升权限 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
 | MS15-077 |[3077657] |ATM 字体驱动程序中的漏洞可能导致提升权限 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
-| NA |[3057154] |更新为限制使用 DES 加密 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
+| 不可用 |[3057154] |更新为限制使用 DES 加密 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
 
 ## <a name="june-2015-guest-os"></a>2015 年 6 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
@@ -1100,7 +1098,7 @@ ms.locfileid: "67872023"
 | MS15-040 |[3045711] |ADFS 中的漏洞可能导致信息泄露 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-041 |[3048010] |.NET Framework 中的漏洞可能导致信息泄露 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-042 |[3047234] |Windows Hyper-V 中的漏洞可能导致拒绝服务 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
-| NA |[3045755] |更新后改进了 PKU2U 身份验证 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
+| 不可用 |[3045755] |更新后改进了 PKU2U 身份验证 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 
 ## <a name="april-2015-guest-os"></a>2015 年 4 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |

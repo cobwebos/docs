@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 67da7d67a3165583a872c2b435c3cdca9763d4dd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 22860e0798ec852b6d25da27e108befe8a3089a2
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443804"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488830"
 ---
 # <a name="immersive-reader-sdk-reference"></a>沉浸式读者 SDK 参考
 
@@ -37,7 +37,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | 名称 | 类型 | 描述 |
 | ---- | ---- |------------ |
-| `token` | string | Azure AD 身份验证令牌。 请参阅[Azure AD authentication 教程](./azure-active-directory-authentication.md)。 |
+| `token` | string | Azure AD 身份验证令牌。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
 | `subdomain` | string | Azure 中沉浸式读者资源的自定义子域。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
 | `content` | [内容](#content) | 一个对象, 该对象包含要在沉浸式读取器中显示的内容。 |
 | `options` | [选项](#options) | 用于配置沉浸式读者的某些行为的选项。 可选。 |

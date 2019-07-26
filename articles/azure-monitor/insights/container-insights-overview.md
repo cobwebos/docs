@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.date: 07/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 7d8fb7bc0e837ba78d86a39524d869c9bb01895d
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 96a312630c92048f36f79e3bec18f83ed5a445ff
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867566"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414127"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>用于容器的 Azure Monitor 概述
 
@@ -44,12 +44,18 @@ ms.locfileid: "67867566"
 >目前, 对 Prometheus 的支持是公共预览版中的一项功能。
 >
 
+请观看以下视频, 提供中级深入探讨, 帮助你了解如何使用容器 Azure Monitor 来监视 AKS 群集。
+
+> [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
+
 ## <a name="how-do-i-access-this-feature"></a>如何访问此功能？
+
 可以通过两种方式访问用于容器的 Azure Monitor：从 Azure Monitor 访问或直接从所选 AKS 群集访问。 在 Azure Monitor 中可以从全局角度查看已部署的所有容器（受到监视的容器和未受监视的容器），从而可以跨订阅和资源组进行搜索和筛选，然后从所选容器钻取到用于容器的 Azure Monitor。  否则，可以直接从 AKS 页上选定的 AKS 容器访问该功能。  
 
 ![访问用于容器的 Azure Monitor 的方法概述](./media/container-insights-overview/azmon-containers-experience.png)
 
-如果想要监视和管理 Docker 和 Windows 容器主机以查看配置、审核和资源利用率，请参阅[容器监视解决方案](../../azure-monitor/insights/containers.md)。
+如果你有兴趣监视和管理在 AKS 外部运行的 Docker 和 Windows 容器主机以查看配置、审核和资源使用情况, 请参阅[容器监视解决方案](../../azure-monitor/insights/containers.md)。
 
 ## <a name="next-steps"></a>后续步骤
+
 若要开始监视 AKS 群集，请查看[如何为容器启用 Azure Monitor](container-insights-onboard.md) 以了解启用监视的要求和可用方法。  

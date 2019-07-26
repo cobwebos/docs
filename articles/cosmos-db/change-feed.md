@@ -5,15 +5,15 @@ author: rimman
 ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e450c0682a22a6e667a2bca153ce5d706a5bea96
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 40caea40637c57aedb6315ff6fc032898ff07af7
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986238"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467946"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的更改源 - 概述
 
@@ -35,10 +35,10 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 | **客户端驱动程序** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API**|**表 API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | NA | 是 | 否 | 否 | 是 | 否 |
-|Java|NA|是|否|否|是|否|
-|Python|NA|是|否|否|是|否|
-|Node/JS|NA|是|否|否|是|否|
+| .NET | 不可用 | 是 | 否 | 否 | 是 | 否 |
+|Java|不可用|是|否|否|是|否|
+|Python|不可用|是|否|否|是|否|
+|Node/JS|不可用|是|否|否|是|否|
 
 ## <a name="change-feed-and-different-operations"></a>更改源和不同操作
 

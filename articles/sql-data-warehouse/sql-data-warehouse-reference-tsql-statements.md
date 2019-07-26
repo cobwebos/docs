@@ -2,7 +2,7 @@
 title: T-SQL 语句 - Azure SQL 数据仓库 | Microsoft Docs
 description: 有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: af8aa85488240dbbe4a07811d73ebdbaafefcfef
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5704ee4bf84b396dcef5a4f9edd887128ba95fb1
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588616"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479388"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中支持的 T-SQL 语句
 有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。
@@ -23,7 +23,7 @@ ms.locfileid: "67588616"
 ## <a name="data-definition-language-ddl-statements"></a>数据定义语言 (DDL) 语句
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
 * [ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
-* [ALTER MATERIALIZED VIEW](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) （预览版） 
+* [ALTER 具体化视图](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest)效果 
 * [ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)
 * [ALTER SCHEMA](https://msdn.microsoft.com/library/ms173423.aspx)
 * [ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)
@@ -35,7 +35,7 @@ ms.locfileid: "67588616"
 * [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
 * [CREATE FUNCTION](https://msdn.microsoft.com/library/mt203952.aspx)
 * [创建索引](https://msdn.microsoft.com/library/ms188783.aspx)
-* [创建 MATERIALIZED 视图 AS 选择](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)（预览版） 
+* [创建具体化视图为 SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)效果 
 * [CREATE PROCEDURE](https://msdn.microsoft.com/library/ms187926.aspx)
 * [CREATE SCHEMA](https://msdn.microsoft.com/library/ms189462.aspx)
 * [CREATE STATISTICS](https://msdn.microsoft.com/library/ms188038.aspx)
@@ -54,7 +54,7 @@ ms.locfileid: "67588616"
 * [DROP VIEW](https://msdn.microsoft.com/library/ms173492.aspx)
 * [DROP WORKLOAD CLASSIFIER](/sql/t-sql/statements/drop-workload-classifier-transact-sql)
 * [RENAME](https://msdn.microsoft.com/library/mt631611.aspx)
-* [SET RESULT_SET_CACHING](/sql/t-sql/statements/set-result-set-caching-transact-sql) 
+* [设置 RESULT_SET_CACHING](/sql/t-sql/statements/set-result-set-caching-transact-sql) 
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
@@ -65,12 +65,12 @@ ms.locfileid: "67588616"
 
 ## <a name="database-console-commands"></a>数据库控制台命令
 * [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
-* [DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest) （预览版）
+* [DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)效果
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
 * [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
 * [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)
-* [DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql) （预览版）
+* [DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql)效果
 * [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
 * [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
 * [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
@@ -94,7 +94,7 @@ ms.locfileid: "67588616"
 * [子查询](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>安全语句
-* 权限：[GRANT](https://msdn.microsoft.com/library/ms187965.aspx)、[DENY](https://msdn.microsoft.com/library/ms188338.aspx)、[REVOKE](https://msdn.microsoft.com/library/ms187728.aspx)
+* 权限:[GRANT](https://msdn.microsoft.com/library/ms187965.aspx)、[DENY](https://msdn.microsoft.com/library/ms188338.aspx)、[REVOKE](https://msdn.microsoft.com/library/ms187728.aspx)
 * [ALTER AUTHORIZATION](https://msdn.microsoft.com/library/ms187359.aspx)
 * [ALTER CERTIFICATE](https://msdn.microsoft.com/library/ms189511.aspx)
 * [ALTER DATABASE ENCRYPTION KEY](https://msdn.microsoft.com/library/bb630389.aspx)

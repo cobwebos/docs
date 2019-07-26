@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 32352a857f0a74dc008dc1ad76b4a5951a36b956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4578e26df5a6c29e80a0bbd2e0a30725e3733ee
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024550"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370636"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>有关在 Azure 搜索中优化性能的部署策略和最佳做法
 
@@ -49,7 +49,7 @@ ms.locfileid: "65024550"
 2. **增加搜索层：** Azure 搜索来自[许多层](https://azure.microsoft.com/pricing/details/search/)，其中每个层都提供不同级别的性能。  在某些情况下，可能有太多查询，即使在副本数超出限制时，所在的层仍无法提供足够的低延迟速率。在这种情况下，可能需要考虑利用其中一个较高的搜索层，比如 Azure 搜索 S3 层，该层非常适合包含大量文档和极高查询工作负荷的方案。
 
 ## <a name="scaling-for-slow-individual-queries"></a>针对单个查询速度缓慢进行缩放
-延迟率增大的另一个原因是，完成单个查询花费了太长的时间。 在这种情况下，添加副本不起作用。 有作用的两个可能选项包括：
+延迟率增大的另一个原因是，完成单个查询花费了太长的时间。 在这种情况下，添加副本不起作用。 可能有两个可能的选项可帮助包括:
 
 1. **增加分区数**：分区是一种机制，可在额外资源之间拆分数据。 添加第二个分区会将数据拆分为两部分，添加第三个分区会将数据拆分为三部分，依此类推。 一个有利的副作用是，由于并行计算，较慢的查询有时执行速度更快。 我们在低选择性查询（例如，匹配许多文档的查询，或提供大量文档的计数的分面）上注意到了并行化效果。 由于为文档相关性评分或统计文档数目需要消耗大量的计算资源，添加额外的分区有助于加快查询的完成速度。  
    
@@ -88,7 +88,7 @@ ms.locfileid: "65024550"
    ![具有分布式索引器和服务组合的单一数据源][2]
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>使用 REST API 在多个服务中推送内容更新
-如果使用 Azure 搜索 REST API [推送 Azure 搜索索引中的内容](https://docs.microsoft.com/rest/api/searchservice/update-index)，则可以在需要更新时，可以通过将更改推送到所有搜索服务，以保持各种搜索服务同步。 在代码中，请确保处理好这种情况：对一个搜索服务的更新失败，但对于其他搜索服务也失败。
+如果使用 Azure 搜索 REST API [推送 Azure 搜索索引中的内容](https://docs.microsoft.com/rest/api/searchservice/update-index)，则可以在需要更新时，可以通过将更改推送到所有搜索服务，以保持各种搜索服务同步。 在代码中, 请确保处理对一个搜索服务的更新失败但对其他搜索服务成功的情况。
 
 ## <a name="leverage-azure-traffic-manager"></a>利用 Azure 流量管理器
 通过使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)，可以将请求路由到多个地理定位的网站，而这些网站由多个 Azure 搜索服务支持。 流量管理器的一个优点是，它可以探测 Azure 搜索以确保其可用，并在发生停机时会用户路由到备用搜索服务。 此外，如果通过 Azure 网站路由搜索请求，Azure 流量管理器允许在网站启动但没有 Azure 搜索的情形下进行负载均衡。 下面是利用流量管理器的体系结构的示例。

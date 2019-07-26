@@ -3,23 +3,17 @@ title: 如何创建和部署云服务 | Microsoft Docs
 description: 了解如何使用 Azure 门户创建和部署云服务。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 56ea2f14-34a2-4ed9-857c-82be4c9d0579
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: a6cf2276da463f71f008c4bfb6eee4c232b18308
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 3d5b3f291eb42edc1f7999f33cf6c0879c33bcf4
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61433668"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359128"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
 Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和*自定义创建*。
@@ -27,7 +21,7 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和
 本文介绍如何使用“快速创建”方法创建新的云服务，并使用“**上载**”在 Azure 中上载和部署云服务包。 使用此方法时，Azure 门户在进行操作时会提供方便的链接供你完成所有要求。 如果在创建云服务时还准备部署该云服务，则可以使用“自定义创建”同时执行这两项操作。
 
 > [!NOTE]
-> 如果计划从 Azure DevOps 发布云服务，请使用“快速创建”，然后从“Azure 快速入门”或仪表板设置 Azure DevOps 发布。 有关详细信息，请参阅[使用 Azure DevOps 向 Azure 持续交付][TFSTutorialForCloudService]，或查看“快速入门”  页的帮助。
+> 如果计划从 Azure DevOps 发布云服务，请使用“快速创建”，然后从“Azure 快速入门”或仪表板设置 Azure DevOps 发布。 有关详细信息, 请参阅[使用 Azure DevOps 向 Azure 持续交付][TFSTutorialForCloudService], 或查看**快速入门**页面的帮助。
 >
 >
 
@@ -60,15 +54,15 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和
 
 ## <a name="create-and-deploy"></a>创建和部署
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击“创建资源”>“计算”  ，向下滚动到“云服务”并单击它  。
+2. 单击“创建资源”>“计算”，向下滚动到“云服务”并单击它。
 
     ![发布云服务](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
-3. 在新的“云服务”  窗格中，输入“DNS 名称”  的值。
+3. 在新的“云服务”窗格中，输入“DNS 名称”的值。
 4. 创建一个新“**资源组**”或选择一个现有的资源组。
-5. 选择“位置”  。
-6. 单击“**包**”。 这将打开“上载包”  窗格。 填写必填字段。 如果任何角色包含单个实例，请确保选中“**即使一个或多个角色包含单个实例也进行部署**”。
+5. 选择“位置” 。
+6. 单击“**包**”。 这将打开“上载包”窗格。 填写必填字段。 如果任何角色包含单个实例，请确保选中“**即使一个或多个角色包含单个实例也进行部署**”。
 7. 请确保选中“**开始部署**”。
-8. 单击“确定”  ，这将关闭“上载包”  窗格。
+8. 单击“确定”，这将关闭“上载包”窗格。
 9. 如果不添加任何证书，请单击“**创建**”。
 
     ![发布云服务](media/cloud-services-how-to-create-deploy-portal/select-package.png)
@@ -76,9 +70,9 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和
 ## <a name="upload-a-certificate"></a>上传证书
 如果部署包已[配置为使用证书](cloud-services-configure-ssl-certificate-portal.md#modify)，现在就可以上传证书。
 
-1. 选择“证书”  ，并在“添加证书”  窗格中，选择 SSL 证书 .pfx 文件，并提供证书的**密码**，
-2. 单击“附加证书”  ，然后在“添加证书”  窗格上单击“确定”  。
-3. 在“云服务”  窗格上单击“创建”  。 当部署达到“**就绪**”状态时，可以继续执行后续步骤。
+1. 选择“证书”，并在“添加证书”窗格中，选择 SSL 证书 .pfx 文件，并提供证书的**密码**，
+2. 单击“附加证书”，然后在“添加证书”窗格上单击“确定”。
+3. 在“云服务”窗格上单击“创建”。 当部署达到“**就绪**”状态时，可以继续执行后续步骤。
 
     ![发布云服务](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 

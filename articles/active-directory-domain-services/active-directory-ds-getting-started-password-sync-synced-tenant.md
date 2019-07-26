@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: e252774d99eecac3623fcbae4ce9fdc0e1591672
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3ea4ebe652679ee9e4c0a165493fa86756ca7868
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67474113"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494554"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>允许将密码同步到 Azure Active Directory 域服务
 在前述任务中，你为 Azure Active Directory (Azure AD) 租户启用了 Azure Active Directory 域服务。 下一个任务是使 NT LAN Manager (NTLM) 和 Kerberos 身份验证所需的凭据哈希同步到 Azure AD 域服务。 设置凭据同步以后，用户即可使用其公司凭据登录到托管域。
@@ -41,7 +41,7 @@ ms.locfileid: "67474113"
 已同步的 Azure AD 租户设置为使用 Azure AD Connect 与组织的本地目录同步。 默认情况下，Azure AD Connect 不会将 NTLM 和 Kerberos 凭据哈希同步到 Azure AD。 要使用 Azure AD 域服务，需要将 Azure AD Connect 配置为同步 NTLM 和 Kerberos 身份验证所需的凭据哈希。 通过以下步骤可将所需的凭据哈希从本地目录同步到 Azure AD 租户。
 
 > [!NOTE]
-> **如果组织的用户帐户是从本地目录同步的，则必须启用 NTLM 和 Kerberos 哈希的同步，然后才能使用托管域。** 已同步用户帐户是指在本地目录中创建并使用 Azure AD Connect 同步到 Azure AD 租户中的帐户。
+> **如果组织的用户帐户是从本地目录同步的，则必须启用 NTLM 和 Kerberos 哈希的同步，然后才能使用托管域。** 已同步用户帐户是指在本地目录中创建并使用 Azure AD Connect 同步到 Azure AD 租户中的帐户。  密码哈希同步不同于用户/对象同步过程。你需要禁用/启用密码哈希同步才能获取完整密码同步, 然后你将在应用程序事件日志中看到该批次密码哈希更新。
 >
 >
 
@@ -77,6 +77,9 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 ```
 
 Azure AD 的凭据哈希同步需要一些时间，具体取决于目录的大小（用户、组的数量等）。 将凭据哈希同步到 Azure AD 后不久，即可在受 Azure AD 域服务管理的域中使用密码。
+
+> [!NOTE]
+> **密码哈希同步**不同于用户/对象同步过程。你需要禁用/启用密码哈希同步才能获取完整密码同步, 然后你将在应用程序事件日志中看到该批次密码哈希更新。
 
 ## <a name="related-content"></a>相关内容
 * [对仅限云的 Azure AD 目录启用 AAD 域服务的密码同步](active-directory-ds-getting-started-password-sync.md)

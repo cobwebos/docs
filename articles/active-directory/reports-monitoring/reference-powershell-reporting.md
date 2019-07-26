@@ -17,21 +17,18 @@ ms.date: 07/12/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27fa3d7be5238527f86e9dfde3be70ae09259d69
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 2d9d5fdb9091d51c67fd5d778bac189c08647741
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302739"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359751"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>用于报告的 Azure AD PowerShell cmdlet
 
-通过 Azure Active Directory (Azure AD) 报告，可以获取确定环境运行状况所需的信息。 您可以使用用于报表的 Azure AD PowerShell cmdlet 来检索报表数据。
+通过 Azure Active Directory (Azure AD) 报表, 你可以在你的方向 (审核日志) 和身份验证数据 (登录日志) 中获取有关所有写入操作的活动的详细信息。 尽管该信息可通过使用 MS 图形 API 获取, 但现在可以使用用于报告的 Azure AD PowerShell cmdlet 来检索相同的数据。
 
-本文提供 cmdlet 的概述。
-
-
-
+本文概述了用于审核日志和登录日志的 PowerShell cmdlet。
 
 ## <a name="audit-logs"></a>审核日志
 

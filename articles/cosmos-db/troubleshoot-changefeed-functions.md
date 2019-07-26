@@ -1,26 +1,26 @@
 ---
-title: 诊断和排查在 Azure Functions 中使用 Azure Cosmos DB 触发器时出现的问题
-description: 在 Azure Functions 中使用 Azure Cosmos DB 触发器时出现的常见问题及其解决方案和诊断步骤
+title: 诊断并解决使用 Cosmos DB 的 Azure Functions 触发器时的问题
+description: 使用 Cosmos DB 的 Azure Functions 触发器时, 常见问题、解决方法和诊断步骤
 author: ealsur
 ms.service: cosmos-db
-ms.date: 05/23/2019
+ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9c728a735e56e461e49dd3f594186c9c0192a3f0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b90986e449df7e81f97f9ef86ce3cf69621c76d6
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250015"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335753"
 ---
-# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>诊断和排查在 Azure Functions 中使用 Azure Cosmos DB 触发器时出现的问题
+# <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>诊断并解决使用 Cosmos DB 的 Azure Functions 触发器时的问题
 
-本文介绍在 Azure Functions 中使用 [Azure Cosmos DB 触发器](change-feed-functions.md)时出现的常见问题及其解决方案和诊断步骤。
+本文介绍使用[Cosmos DB 的 Azure Functions 触发器](change-feed-functions.md)时的常见问题、解决方法和诊断步骤。
 
 ## <a name="dependencies"></a>依赖项
 
-Azure Cosmos DB 触发器和绑定通过基本 Azure Functions 运行时依赖于扩展包。 请始终保持这些包的更新状态，因为它们可能包含用于解决你所遇到的任何潜在问题的修复程序和新功能：
+Cosmos DB 的 Azure Functions 触发器和绑定依赖于基础 Azure Functions 运行时上的扩展包。 请始终保持这些包的更新状态，因为它们可能包含用于解决你所遇到的任何潜在问题的修复程序和新功能：
 
 * 对于 Azure Functions V2，请参阅 [Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)。
 * 对于 Azure Functions V1，请参阅 [Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB)。
@@ -29,7 +29,7 @@ Azure Cosmos DB 触发器和绑定通过基本 Azure Functions 运行时依赖�
 
 ## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>独立使用 Azure Cosmos DB SDK
 
-扩展包的关键功能是为 Azure Cosmos DB 触发器和绑定提供支持。 它还包括 [Azure Cosmos DB.NET SDK](sql-api-sdk-dotnet-core.md)，用于帮助你以编程方式来与 Azure Cosmos DB 交互，而无需使用触发器和绑定。
+扩展包的主要功能是为 Cosmos DB 的 Azure Functions 触发器和绑定提供支持。 它还包括 [Azure Cosmos DB.NET SDK](sql-api-sdk-dotnet-core.md)，用于帮助你以编程方式来与 Azure Cosmos DB 交互，而无需使用触发器和绑定。
 
 若要使用 Azure Cosmos DB SDK，请务必不要将项目添加到另一个 NuGet 包引用。 而是**让 SDK 引用通过 Azure Functions 的扩展包进行解析**。 独立于触发器和绑定使用 Azure Cosmos DB SDK
 
@@ -58,7 +58,7 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 ### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>尝试运行触发器时， Azure Functions 日志中出现“值不能为 null。参数名称: o”
 
-如果使用 Azure 门户，并在检查使用触发器的 Azure 函数时选择屏幕上的“运行”按钮，则会出现此问题。  触发器不需要选择“运行”即可启动，部署 Azure 函数时它会自动启动。 若要在 Azure 门户上检查 Azure 函数的日志流，只需转到受监视的容器并插入一些新项，然后自然就会看到触发器正在执行。
+如果使用 Azure 门户，并在检查使用触发器的 Azure 函数时选择屏幕上的“运行”按钮，则会出现此问题。 触发器不需要选择“运行”即可启动，部署 Azure 函数时它会自动启动。 若要在 Azure 门户上检查 Azure 函数的日志流，只需转到受监视的容器并插入一些新项，然后自然就会看到触发器正在执行。
 
 ### <a name="my-changes-take-too-long-be-received"></a>接收更改花费了过长的时间
 
@@ -74,14 +74,14 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 如果你发现 Azure 函数未拾取 Azure Cosmos 容器中发生的某些更改，则需要执行一个初始调查步骤。
 
-当 Azure 函数收到更改时，它通常会处理这些更改，并可能会选择性地将结果发送到另一个目标。 调查丢失更改的问题时，请确保度量在引入时间点（启动 Azure 函数时）收到的更改，而不要度量目标上的更改。 
+当 Azure 函数收到更改时，它通常会处理这些更改，并可能会选择性地将结果发送到另一个目标。 调查丢失更改的问题时，请确保度量在引入时间点（启动 Azure 函数时）收到的更改，而不要度量目标上的更改。
 
 如果目标中缺少某些更改，可能意味着在收到更改后执行 Azure 函数期间发生了某种错误。
 
 在这种情况下，最佳措施是在代码中以及在可能正在处理更改的循环中添加 `try/catch blocks`，以检测特定的项子集中出现的任何失败，并相应地对其进行处理（将这些项发送到另一个存储以做进一步的分析或重试）。 
 
 > [!NOTE]
-> 默认情况下, 如果在代码执行过程中出现未经处理的异常, Azure Cosmos DB 触发器将不会重试一批更改。 这意味着，更改未抵达目标的原因是无法处理它们。
+> 默认情况下, 如果在代码执行过程中出现未经处理的异常, 则 Cosmos DB 的 Azure Functions 触发器将不会重试一批更改。 这意味着，更改未抵达目标的原因是无法处理它们。
 
 如果你发现触发器根本未收到某些更改，则最常见的情形是有**另一个 Azure 函数正在运行**。 该函数可能是部署在 Azure 中的另一个 Azure 函数，或者是在开发人员计算机本地运行的、采用**完全相同配置**（相同的受监视容器和租约容器）的 Azure 函数，并且此 Azure 函数正在窃取你的 Azure 函数预期要处理的更改子集。
 

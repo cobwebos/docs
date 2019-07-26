@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5bdd5049b7ddeaac4425734aa6f4d633b08cd3b4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0707f08d7c1447ff9aaae919cabfe1a668b25e3d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057470"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404371"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
 
@@ -36,11 +36,11 @@ ms.locfileid: "67057470"
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>检查 HDInsight 中 Hadoop 组件的可用性
 
-每个 HDInsight 版本是一系列 Hadoop 生态系统组件的云分发。 有关所有 HDInsight 组件及其最新版本的详细信息，请参阅 [HDInsight 组件版本控制](../hdinsight-component-versioning.md)。
+每个 HDInsight 版本都是一组 Hadoop 生态系统组件的云分发版。 有关所有 HDInsight 组件及其最新版本的详细信息，请参阅 [HDInsight 组件版本控制](../hdinsight-component-versioning.md)。
 
 还可以使用 Apache Ambari UI 或 Ambari REST API 来检查 HDInsight 中的 Hadoop 组件和版本。
 
-边缘节点上或在与 HDInsight 群集相同的 VNet 的 VM 上，可以添加应用程序或在本地群集中可用但不是 HDInsight 群集的一部分的组件。 可以在 HDInsight 群集中使用“应用程序”选项，来安装 Azure HDInsight 中未提供的第三方 Hadoop 应用程序。 可以使用“脚本操作”在 HDInsight 群集上安装自定义的 Hadoop 应用程序。 下表列出了一些常见的应用程序及其 HDInsight 集成选项：
+本地群集中提供但不是 HDInsight 群集的一部分的应用程序或组件可以添加到与 HDInsight 群集位于同一 VNet 中的边缘节点或 VM 上。 可以在 HDInsight 群集中使用“应用程序”选项，来安装 Azure HDInsight 中未提供的第三方 Hadoop 应用程序。 可以使用“脚本操作”在 HDInsight 群集上安装自定义的 Hadoop 应用程序。 下表列出了一些常见的应用程序及其 HDInsight 集成选项：
 
 |**应用程序**|**集成**
 |---|---|
@@ -55,7 +55,7 @@ ms.locfileid: "67057470"
 |Ignite|IaaS
 |Jethro|IaaS 
 |Mapador|IaaS 
-|Mongo|IaaS（CosmosDB，Azure 上的替代产品）
+|蒙戈语|IaaS（CosmosDB，Azure 上的替代产品）
 |NiFi|IaaS 
 |Presto|IaaS 或 HDInsight 边缘节点
 |Python 2|PaaS 
@@ -73,7 +73,7 @@ ms.locfileid: "67057470"
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义 HDInsight 群集
 
-HDInsight 提供名为“脚本操作”的群集配置方法。  脚本操作是一个 Bash 脚本，在 HDInsight 群集中的节点上运行，可用于安装附加的组件和更改配置设置。
+HDInsight 提供名为“脚本操作”的群集配置方法。 脚本操作是一个 Bash 脚本，在 HDInsight 群集中的节点上运行，可用于安装附加的组件和更改配置设置。
 
 必须将脚本操作存储在可从 HDInsight 群集访问的 URI 上。 在创建群集期间或之后可以使用脚本操作，也可以将它们限制为只能在特定的节点类型上运行。
 
@@ -86,8 +86,8 @@ HDInsight 提供预先编写的脚本用于在 HDInsight 群集上安装以下�
 - 安装 Presto
 - 安装 Solr
 - 安装 Giraph
-- 预加载 Hive 库
-- 安装或更新 Mono
+- 预加载配置单元库
+- 安装或升级 Mono
 
 > [!Note]  
 > HDInsight 不直接支持自定义 Hadoop 组件或使用脚本操作安装的组件。
@@ -102,7 +102,7 @@ HDInsight 提供预先编写的脚本用于在 HDInsight 群集上安装以下�
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 配置
 
-可以使用 Bootstrap 对 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml` 等配置文件中的配置进行更改。 以下脚本是使用 Powershell 示例[AZ 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)cmdlet[新建 AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
+可以使用 Bootstrap 对 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml` 等配置文件中的配置进行更改。 以下脚本是使用 Powershell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) cmdlet [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 的示例：
 
 ```powershell
 # hive-site.xml configuration
@@ -127,7 +127,7 @@ New—AzHDInsightCluster `
     —Config $config
 ```
 
-有关详细信息，请参阅 [使用 Bootstrap 自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-bootstrap.md)一文。  此外，请参阅[使用 Apache Ambari REST API 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari-rest-api.md)。
+有关详细信息，请参阅 [使用 Bootstrap 自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-bootstrap.md)一文。  另请参阅 [使用 Apache Ambari REST API 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari-rest-api.md)。
 
 ## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>从 HDInsight Hadoop 群集边缘节点访问客户端工具
 
@@ -160,7 +160,7 @@ Azure 虚拟网络可以筛选和路由网络流量，使 Azure 资源（例如 
 - 将 HDInsight 连接到 Azure 虚拟网络中的数据存储。
 - 直接访问无法通过 Internet 公开访问的 Hadoop 服务。 例如，Kafka API 或 HBase Java API。
 
-可将 HDInsight 添加到新的或现有的 Azure 虚拟网络。 如果将 HDInsight 添加到现有的虚拟网络，则需要更新现有的网络安全组和用户定义的路由，以便能够不受限制地访问 Azure 数据中心内的[多个 IP 地址](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)。 此外，请确保不要阻止流向[端口](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports)，其正在使用的 HDInsight 服务。
+可将 HDInsight 添加到新的或现有的 Azure 虚拟网络。 如果将 HDInsight 添加到现有的虚拟网络，则需要更新现有的网络安全组和用户定义的路由，以便能够不受限制地访问 Azure 数据中心内的[多个 IP 地址](../hdinsight-management-ip-addresses.md)。 此外, 请确保不要阻止对 HDInsight 服务使用的[端口](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)的流量。
 
 > [!Note]  
 > HDInsight 目前不支持强制隧道。 强制隧道是一种子网设置，将出站 Internet 流量强制定向到设备以进行检查和记录。 在将 HDInsight 安装到子网之前删除强制隧道，或者为 HDInsight 创建新的子网。 此外，HDInsight 不支持限制出站网络连接。
@@ -168,11 +168,11 @@ Azure 虚拟网络可以筛选和路由网络流量，使 Azure 资源（例如 
 有关详细信息，请参阅以下文章：
 
 - [Azure 虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
-- [使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight-extend-hadoop-virtual-network.md)
+- [使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>使用 Azure 虚拟网络服务终结点安全地连接到 Azure 服务
 
-HDInsight 支持[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)，这样便可以安全地连接到 Azure Blob 存储、 Azure 数据湖存储第 2 代，Cosmos DB 和 SQL 数据库。 为 Azure HDInsight 启用服务终结点后，流量将通过 Azure 数据中心内部的受保护路由传送。 在网络层实施这种增强的安全级别后，可将大数据存储帐户锁定到其指定的虚拟网络 (VNET)，同时仍可以顺畅地使用 HDInsight 群集来访问和处理这些数据。
+HDInsight 支持[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md), 使你能够安全地连接到 Azure Blob 存储、Azure Data Lake Storage Gen2、COSMOS DB 和 SQL 数据库。 为 Azure HDInsight 启用服务终结点后，流量将通过 Azure 数据中心内部的受保护路由传送。 在网络层实施这种增强的安全级别后，可将大数据存储帐户锁定到其指定的虚拟网络 (VNET)，同时仍可以顺畅地使用 HDInsight 群集来访问和处理这些数据。
 
 有关详细信息，请参阅以下文章：
 

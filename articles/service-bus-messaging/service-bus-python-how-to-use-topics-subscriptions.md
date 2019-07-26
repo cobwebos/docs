@@ -14,18 +14,18 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: cd75ba9d407399703a382596019d5f370808b20a
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: d294ceaaf77175a3010131b18864b71c7b26b88b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543661"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360831"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>如何通过 Python 使用服务总线主题和订阅
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-本文介绍了如何使用服务总线主题和订阅。 这些示例用 Python 编写并使用[Azure Python SDK 包][Azure Python package]。 涉及的方案包括：
+本文介绍了如何使用服务总线主题和订阅。 示例是用 Python 编写的, 并使用了[Azure PYTHON SDK 包][Azure Python package]。 涉及的方案包括：
 
 - 创建主题和订阅 
 - 创建订阅筛选器 
@@ -33,7 +33,7 @@ ms.locfileid: "67543661"
 - 从订阅接收消息
 - 删除主题和订阅
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 你可以[激活 Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或者注册[免费试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)中的步骤来创建服务总线**命名空间**并获取**连接字符串**。
 
@@ -79,13 +79,13 @@ bus_service.create_topic('mytopic', topic_options)
 主题订阅也是使用 **ServiceBusService** 对象创建的。 为订阅命名，并且订阅可以具有可选筛选器，以限制传送到订阅的虚拟队列的消息集。
 
 > [!NOTE]
-> 默认情况下，订阅是永久性的并且将一直存在直到它们，或向其他们已订阅，会删除的主题。
+> 默认情况下, 订阅是永久性的, 并且将继续存在, 直到删除这些订阅或它们所订阅的主题。
 > 
-> 你可以通过设置自动删除的订阅[auto_delete_on_idle 属性](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python)。
+> 可以通过设置[auto_delete_on_idle 属性](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python)来自动删除订阅。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
 
-如果在创建新订阅时未指定任何筛选器，则将使用默认的 MatchAll  筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为 `AllMessages` 的订阅，并使用默认的 **MatchAll** 筛选器。
+如果在创建新订阅时未指定任何筛选器，则将使用默认的 MatchAll 筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为 `AllMessages` 的订阅，并使用默认的 **MatchAll** 筛选器。
 
 ```python
 bus_service.create_subscription('mytopic', 'AllMessages')
@@ -100,11 +100,11 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 可使用 **ServiceBusService** 对象的 **create\_rule** 方法向订阅添加筛选器。 此方法允许向现有订阅中添加新筛选器。
 
 > [!NOTE]
-> 由于默认筛选器会自动应用到所有新订阅，因此，必须首先删除默认筛选器，否则 MatchAll 会替代可能指定的任何其他筛选器  。 可以使用 ServiceBusService 对象的 `delete_rule` 方法删除默认规则  。
+> 由于默认筛选器会自动应用到所有新订阅，因此，必须首先删除默认筛选器，否则 MatchAll 会替代可能指定的任何其他筛选器。 可以使用 ServiceBusService 对象的 `delete_rule` 方法删除默认规则。
 > 
 > 
 
-以下示例创建一个名为 `HighMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择自定义 `messagenumber` 属性大于 3 的消息  ：
+以下示例创建一个名为 `HighMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择自定义 `messagenumber` 属性大于 3 的消息：
 
 ```python
 bus_service.create_subscription('mytopic', 'HighMessages')
@@ -117,7 +117,7 @@ bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
 ```
 
-同样，以下示例创建一个名为 `LowMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择 `messagenumber` 属性小于或等于 3 的消息  ：
+同样，以下示例创建一个名为 `LowMessages` 的订阅，该订阅包含一个 SqlFilter，它仅选择 `messagenumber` 属性小于或等于 3 的消息：
 
 ```python
 bus_service.create_subscription('mytopic', 'LowMessages')
@@ -134,13 +134,14 @@ bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 
 ## <a name="send-messages-to-a-topic"></a>将消息发送到主题
 
-要将消息发送到服务总线主题，应用程序必须使用 ServiceBusService 对象的 `send_topic_message` 方法  。
+要将消息发送到服务总线主题，应用程序必须使用 ServiceBusService 对象的 `send_topic_message` 方法。
 
 以下示例演示如何向 `mytopic` 发送五条测试消息。 每条消息的 `messagenumber` 属性值因循环迭代而异（这会确定哪些订阅接收它）：
 
 ```python
 for i in range(5):
-    msg = Message('Msg {0}'.format(i).encode('utf-8'), custom_properties={'messagenumber':i})
+    msg = Message('Msg {0}'.format(i).encode('utf-8'),
+                  custom_properties={'messagenumber': i})
     bus_service.send_topic_message('mytopic', msg)
 ```
 
@@ -148,18 +149,19 @@ for i in range(5):
 
 ## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
 
-对 ServiceBusService 对象使用 `receive_subscription_message` 方法可从订阅接收消息  ：
+对 ServiceBusService 对象使用 `receive_subscription_message` 方法可从订阅接收消息：
 
 ```python
-msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
+msg = bus_service.receive_subscription_message(
+    'mytopic', 'LowMessages', peek_lock=False)
 print(msg.body)
 ```
 
-参数 `peek_lock` 设置为“False”时，会在读取消息后将其从订阅删除  。 通过将参数 `peek_lock` 设置为“True”，可读取（速览）并锁定消息而不会将其从队列中删除  。
+参数 `peek_lock` 设置为“False”时，会在读取消息后将其从订阅删除。 通过将参数 `peek_lock` 设置为“True”，可读取（速览）并锁定消息而不会将其从队列中删除。
 
 在接收过程中读取并删除消息的行为是最简单的模式，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解此行为，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线已将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它就漏掉了在发生故障前使用的消息。
 
-如果将 `peek_lock` 参数设置为“True”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序  。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序处理完消息（或安全存储该消息以供将来处理）后，会通过对 Message 对象调用 `delete` 方法完成接收过程的第二个阶段  。 `delete` 方法会将消息标记为已使用，并将其从订阅中删除。
+如果将 `peek_lock` 参数设置为“True”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序处理完消息（或安全存储该消息以供将来处理）后，会通过对 Message 对象调用 `delete` 方法完成接收过程的第二个阶段。 `delete` 方法会将消息标记为已使用，并将其从订阅中删除。
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)
@@ -170,7 +172,7 @@ msg.delete()
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
 
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 Message 对象调用 `unlock` 方法  。 此方法会导致服务总线解锁订阅中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 Message 对象调用 `unlock` 方法。 此方法会导致服务总线解锁订阅中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
 
 另外，还存在与订阅中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线会自动解锁该消息并使其可再次被接收。
 
@@ -178,7 +180,7 @@ msg.delete()
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
 
-主题和订阅具有持久性除非[auto_delete_on_idle 属性](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python)设置。 也可以删除通过[Azure 门户][Azure portal]或以编程方式。 以下示例说明如何删除名为 `mytopic` 的主题：
+除非设置[auto_delete_on_idle 属性](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python), 否则主题和订阅是永久性的。 可以通过[Azure 门户][Azure portal]或以编程方式删除这些方法。 以下示例说明如何删除名为 `mytopic` 的主题：
 
 ```python
 bus_service.delete_topic('mytopic')

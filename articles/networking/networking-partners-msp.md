@@ -1,34 +1,34 @@
 ---
-title: 网络合作伙伴：Azure 网络 |Microsoft Docs
-description: 本文提供了一系列 MSP 网络合作伙伴
+title: 网络伙伴:Azure 网络 |Microsoft Docs
+description: 本文提供了 MSP 网络合作伙伴列表
 services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 922749591bdc9222e5f97b2bb6828c5660c0dbac
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ffcfd48d9a93ee7c73e2597ff9bea704e0378440
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840326"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385212"
 ---
-# <a name="about-azure-networking-msp-partners"></a>有关 Azure 网络 MSP 合作伙伴
+# <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
-Azure 网络管理服务提供程序 (MSP) 合作伙伴计划启用网络服务主要围绕 Azure 的产品组合的网络产品托管服务提供商、 电信和系统集成商 (Si) 可提供云和混合网络中心的服务和服务。
+Azure 网络托管服务提供商 (MSP) 合作伙伴计划可让网络服务重点 Msp、Telcos 和系统集成商 (Si) 提供围绕 Azure 的网络产品组合的云和混合网络服务, 并服务器.
 
-Azure 网络 Msp 是专用的一组托管的服务提供商，跨云的混合网络的所有方面解决企业云网络需求和挑战。 托管的网络服务包括一个或多个以下服务： 网络体系结构、 规划、 部署、 操作、 维护和优化。
+Azure 网络 Msp 是一套专用的托管服务提供商, 可解决云和混合网络的各个方面的企业云网络需求和挑战。 托管网络服务包括以下一项或多项服务: 网络体系结构、规划、部署、操作、维护和优化。
 
 ![MSP][0]
 
-客户可以购买 Azure Marketplace 中或直接从 MSP MSP 托管服务产品/服务。 托管服务提供商可以部署和使用 Azure Lighthouse 管理客户的订阅和资源组中的 Azure 网络资源。
+客户可以在 Azure Marketplace 中或从 MSP 直接购买 MSP 托管服务产品/服务。 Msp 可以使用 Azure Lighthouse 在客户的订阅和资源组中部署和管理 Azure 网络资源。
 
 ## <a name="msp"></a>MSP 合作伙伴
 
-在本部分中使用的链接，详细了解网络服务提供的 Azure 网络 MSP 合作伙伴托管的云。 如果下面的部分中未列出你的云网络服务合作伙伴，让提供程序，请与我们联系。 他们可以通过向 ManagedVirtualWAN@microsoft.com 发送电子邮件来与我们联系。 
+使用此部分中的链接, 了解有关 Azure 网络 MSP 合作伙伴提供的托管云网络服务的详细信息。 如果你的云网络服务合作伙伴未在以下部分中列出, 请提供提供商联系我们。 他们可以通过向 ManagedVirtualWAN@microsoft.com 发送电子邮件来与我们联系。 
 
-[Aryaka Networks](https://www.aryaka.com/)
+[Aryaka networks、网络](https://www.aryaka.com/)
 
 [BT](https://www.bt.com/)
 
@@ -38,19 +38,19 @@ Azure 网络 Msp 是专用的一组托管的服务提供商，跨云的混合网
 
 [InterCloud](https://www.intercloud.com/)
 
-[IIJ](https://www.riverbed.com/go/steelconnect-azurewan.html)
+[IIJ](https://www.iij.ad.jp/en/)
 
 [Megaport](https://www.megaport.com/)
 
-[Tata Communications](https://www.tatacommunications.com/)
+[Tata 通信](https://www.tatacommunications.com/)
 
 ## <a name="expressroute"></a>ExpressRoute 合作伙伴
 
-有关合作伙伴的信息，请参阅[ExpressRoute 合作伙伴和位置](../expressroute/expressroute-locations-providers.md)。
+有关合作伙伴的详细信息, 请参阅[ExpressRoute 合作伙伴和位置](../expressroute/expressroute-locations-providers.md)。
 
 ## <a name="vwan"></a>虚拟 WAN 合作伙伴
 
-有关合作伙伴的信息，请参阅[虚拟 WAN 的合作伙伴和提供程序](../virtual-wan/virtual-wan-locations-partners.md)。
+有关合作伙伴的详细信息, 请参阅[虚拟 WAN 合作伙伴和提供商](../virtual-wan/virtual-wan-locations-partners.md)。
 
 <!--Image References-->
 [0]: ./media/networking-partners-msp/msp.png "MSP 计划说明"

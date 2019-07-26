@@ -12,20 +12,20 @@ ms.date: 07/17/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3b23aa7db29390ef50a72f73fb153fef5301b92
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ddbb233bb9d0970169f040e3040b44a0b75aa1f8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304835"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477177"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>单一登录到 Azure Active Directory 中的应用程序
 
 当用户在 Azure Active Directory (Azure AD) 中登录到应用程序时，单一登录 (SSO) 可以增加安全性和便利性。 本文介绍单一登录方法，并帮助你选择在配置应用程序时最适合的 SSO 方法。
 
-- 使用单一登录，用户可以使用一个帐户登录一次，即可访问加入域的设备、公司资源、软件即服务 (SaaS) 应用程序和 Web 应用程序  。 登录后，用户可以从 Office 365 门户或 Azure AD MyApps 访问面板启动应用程序。 管理员可以集中管理用户帐户，并根据组成员身份自动添加或删除用户对应用程序的访问权限。
+- 使用单一登录，用户可以使用一个帐户登录一次，即可访问加入域的设备、公司资源、软件即服务 (SaaS) 应用程序和 Web 应用程序。 登录后，用户可以从 Office 365 门户或 Azure AD MyApps 访问面板启动应用程序。 管理员可以集中管理用户帐户，并根据组成员身份自动添加或删除用户对应用程序的访问权限。
 
-- 不使用单一登录，用户必须记住特定于应用程序的密码并登录每个应用程序  。 IT 人员需要为每个应用程序（如 Office 365、Box 和 Salesforce）创建和更新用户帐户。 用户需要记住他们的密码，并且花时间登录每个应用程序。
+- 不使用单一登录，用户必须记住特定于应用程序的密码并登录每个应用程序。 IT 人员需要为每个应用程序（如 Office 365、Box 和 Salesforce）创建和更新用户帐户。 用户需要记住他们的密码，并且花时间登录每个应用程序。
 
 ## <a name="choosing-a-single-sign-on-method"></a>选择单一登录方法
 
@@ -62,7 +62,7 @@ ms.locfileid: "68304835"
 
 ## <a name="saml-sso"></a>SAML SSO
 
-使用“SAML 单一登录”，Azure AD 通过用户的 Azure AD 帐户向应用程序进行身份验证  。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色。
+使用“SAML 单一登录”，Azure AD 通过用户的 Azure AD 帐户向应用程序进行身份验证。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色。
 
 选择基于 SAML 的单一登录（如果应用程序支持）。
 
@@ -71,9 +71,9 @@ ms.locfileid: "68304835"
 - SAML 2.0
 - WS 联合身份验证
 
-若要为基于 SAML 的单一登录配置 SaaS 应用程序, 请参阅[配置基于 saml 的单一登录](configure-single-sign-on-portal.md)。 此外，许多软件即服务 (SaaS) 应用程序都有[特定于应用程序的教程](../saas-apps/tutorial-list.md)，可以让用户详细了解基于 SAML 的单一登录的配置。
+若要为基于 SAML 的单一登录配置 SaaS 应用程序, 请参阅[配置基于 saml 的单一登录](configure-single-sign-on-non-gallery-applications.md)。 此外，许多软件即服务 (SaaS) 应用程序都有[特定于应用程序的教程](../saas-apps/tutorial-list.md)，可以让用户详细了解基于 SAML 的单一登录的配置。
 
-若要为 WS 联合身份验证配置应用程序, 请遵循相同的指导为基于 SAML 的单一登录配置应用程序, 请参阅[配置基于 saml 的单一登录](configure-single-sign-on-portal.md)。 在将应用程序配置为使用 Azure AD 的步骤中, 需要替换 WS 联合身份验证终结点`https://login.microsoftonline.com/<tenant-ID>/wsfed`的 Azure AD 登录 URL。
+若要为 WS 联合身份验证配置应用程序, 请遵循相同的指导为基于 SAML 的单一登录配置应用程序, 请参阅[配置基于 saml 的单一登录](configure-single-sign-on-non-gallery-applications.md)。 在将应用程序配置为使用 Azure AD 的步骤中, 需要替换 WS 联合身份验证终结点`https://login.microsoftonline.com/<tenant-ID>/wsfed`的 Azure AD 登录 URL。
 
 若要为基于 SAML 的单一登录配置本地应用程序, 请参阅[使用应用程序代理的本地应用程序的 SAML 单一登录](application-proxy-configure-single-sign-on-on-premises-apps.md)。
 
@@ -100,7 +100,7 @@ ms.locfileid: "68304835"
 - Windows 7 或更高版本以及 MacOS X 或更高版本上的 Chrome
 - Windows XP SP2 或更高版本以及 Mac OS X 10.6 或更高版本上的 Firefox 26.0 或更高版本
 
-要将云应用程序配置为基于密码的单一登录，请参阅[将应用程序配置为密码单一登录](application-sign-in-problem-password-sso-gallery.md#configure-the-app-for-password-sso)。
+若要将云应用程序配置为基于密码的单一登录, 请参阅[配置密码单一登录](configure-password-single-sign-on-non-gallery-applications.md)。
 
 要使用应用程序代理将本地应用程序配置为单一登录，请参阅[使用应用程序代理通过密码存储进行单一登录](application-proxy-configure-single-sign-on-password-vaulting.md)
 
@@ -127,8 +127,7 @@ Azure AD 管理员管理凭据时：
 - 管理员仍可以为应用程序设置新凭据。
 
 ## <a name="linked-sign-on"></a>联合登录
-
-链接登录使 Azure AD 能够为已配置为其他服务中的单一登录的应用程序提供单一登录。 链接的应用程序可以在 Office 365 门户或 Azure AD MyApps 门户中向最终用户显示。 例如，用户可以从 Office 365 门户启动配置为 Active Directory 联合身份验证服务 2.0 (AD FS) 中的单一登录的应用程序。 对于从 Office 365 门户或 Azure AD MyApps 门户启动的链接的应用程序，还可以使用其他报告。
+链接登录使 Azure AD 能够为已配置为其他服务中的单一登录的应用程序提供单一登录。 链接的应用程序可以在 Office 365 门户或 Azure AD MyApps 门户中向最终用户显示。 例如，用户可以从 Office 365 门户启动配置为 Active Directory 联合身份验证服务 2.0 (AD FS) 中的单一登录的应用程序。 对于从 Office 365 门户或 Azure AD MyApps 门户启动的链接的应用程序，还可以使用其他报告。 若要配置用于链接登录的应用程序, 请参阅[配置链接登录](configure-linked-sign-on.md)。
 
 ### <a name="linked-sign-on-for-application-migration"></a>应用程序迁移的链接登录
 
@@ -176,7 +175,7 @@ Azure AD 管理员管理凭据时：
 
 要配置基于标头的身份验证，请参阅[使用应用程序代理通过基于标头的身份验证进行单一登录](application-proxy-configure-single-sign-on-with-ping-access.md)。
 
-### <a name="what-is-pingaccess-for-azure-ad"></a>什么是 PingAccess for Azure AD？
+### <a name="what-is-pingaccess-for-azure-ad"></a>什么是适用于 Azure AD 的 PingAccess?
 
 使用 PingAccess for Azure AD，用户可以访问使用标头进行身份验证的应用程序并进行单一登录。 应用程序代理将这些应用程序视为与其他任何应用程序一样，它使用 Azure AD 对访问进行身份验证，然后通过连接器服务传递流量。 进行身份验证后，PingAccess 服务将 Azure AD 访问令牌转换为发送给应用程序的标头格式。
 
@@ -189,8 +188,9 @@ Azure AD 管理员管理凭据时：
 有关详细信息，请参阅 [Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。
 
 ## <a name="related-articles"></a>相关文章
-
-- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](../saas-apps/tutorial-list.md)
-- [用于配置单一登录的教程](configure-single-sign-on-portal.md)
-- [管理对应用程序的访问简介](what-is-access-management.md)
-- 下载链接：[单一登录部署计划](https://aka.ms/SSODeploymentPlan)
+* [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](../saas-apps/tutorial-list.md)
+* [配置基于 SAML 的单一登录](configure-single-sign-on-non-gallery-applications.md)
+* [配置基于密码的单一登录](configure-password-single-sign-on-non-gallery-applications.md)
+* [配置链接登录](configure-linked-sign-on.md)
+* [管理对应用程序的访问简介](what-is-access-management.md)
+* 下载链接：[单一登录部署计划](https://aka.ms/SSODeploymentPlan)。

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: d69861beb5848679aa00c8b39f0caa84c7c5d847
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: f27dfd1f907d106ddb3b1b9dd7534d56380149c2
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986840"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385497"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure 逻辑应用中的安全访问和数据
 
@@ -69,7 +69,7 @@ ms.locfileid: "67986840"
 
 1. 在 Azure 门户中，打开包含要重新生成密钥的逻辑应用。
 
-1. 在逻辑应用菜单的“设置”下，选择“访问密钥”   。
+1. 在逻辑应用菜单的“设置”下，选择“访问密钥”。
 
 1. 选择要重新生成的密钥并完成该过程。
 
@@ -107,13 +107,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在 Azure 门户的逻辑应用设计器中打开逻辑应用。
 
-1. 在逻辑应用的菜单中，在“设置”  下，选择“工作流设置”  。
+1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。
 
-1. 在“访问控制配置” > “允许的入站 IP 地址”下，请选择“特定 IP 范围”。   
+1. 在“访问控制配置” > “允许的入站 IP 地址”下，请选择“特定 IP 范围”。
 
-1. 在“触发器的 IP 范围”下，请指定触发器接受的 IP 地址范围  。
+1. 在“触发器的 IP 范围”下，请指定触发器接受的 IP 地址范围。
 
-   有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x  
+   有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x
 
 如果希望逻辑应用仅作为嵌套逻辑应用触发, 请在 "**允许的入站 IP 地址**" 列表中, 选择 "**仅限其他逻辑应用**"。 此选项将空数组写入逻辑应用资源。 这样一来, 只有来自逻辑应用服务 (父逻辑应用) 的调用才能触发嵌套的逻辑应用。
 
@@ -193,9 +193,9 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
   此选项可让你基于特定 IP 地址范围内的请求来保护对运行历史记录的访问。
 
-* [使用模糊处理在运行历史记录中隐藏输入和输出](#obfuscate)。
+* [使用混淆隐藏运行历史记录中的数据](#obfuscate)。
 
-  此选项可让你在运行历史记录中隐藏基于触发器或操作的输入和输出。
+  在许多触发器和操作中, 可以从逻辑应用的运行历史记录中隐藏其输入和/或输出。
 
 <a name="restrict-ip"></a>
 
@@ -207,13 +207,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在 Azure 门户的逻辑应用设计器中打开逻辑应用。
 
-1. 在逻辑应用的菜单中，在“设置”  下，选择“工作流设置”  。
+1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。
 
-1. 在“访问控制配置” > “允许的入站 IP 地址”下，请选择“特定 IP 范围”    。
+1. 在“访问控制配置” > “允许的入站 IP 地址”下，请选择“特定 IP 范围”。
 
-1. 在“内容的 IP 范围”下，指定可以访问输入和输出中内容的 IP 地址范围  。 
+1. 在“内容的 IP 范围”下，指定可以访问输入和输出中内容的 IP 地址范围。 
 
-   有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x  
+   有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x
 
 #### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>限制 Azure 资源管理器模板中的 IP 范围
 
@@ -258,7 +258,11 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 <a name="obfuscate"></a>
 
-### <a name="hide-inputs-and-outputs-in-run-history-by-using-obfuscation"></a>使用模糊处理在运行历史记录中隐藏输入和输出
+### <a name="hide-data-from-run-history-by-using-obfuscation"></a>使用混淆隐藏运行历史记录中的数据
+
+许多触发器和操作都具有从逻辑应用的运行历史记录中隐藏输入和/或输出的设置。 当你使用这些设置来保护此类数据时, 请[注意以下事项](#obfuscation-considerations)。
+
+#### <a name="secure-inputs-and-outputs-in-the-designer"></a>设计器中的安全输入和输出
 
 1. 如果[Azure 门户](https://portal.azure.com)中没有打开逻辑应用, 请在逻辑应用设计器中打开逻辑应用。
 
@@ -268,7 +272,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    ![打开 "设置"](media/logic-apps-securing-a-logic-app/open-settings.png)
 
-1. 启用**安全输入**和/或**安全输出**。 完成后，选择“完成”  。
+1. 启用**安全输入**和/或**安全输出**。 完成后，选择“完成”。
 
    ![启用安全输入或输出](media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
 
@@ -290,9 +294,38 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
       ![运行历史记录中隐藏的数据](media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
+<a name="secure-data-code-view"></a>
+
+#### <a name="secure-inputs-and-outputs-in-code-view"></a>在代码视图中保护输入和输出
+
+在基础触发器或操作定义中, 添加或更新`runtimeConfiguration.secureData.properties`包含以下两个值中的一个或两个值的数组:
+
+* `"inputs"`：保护运行历史记录中的输入。
+* `"outputs"`：保护运行历史记录中的输出。
+
+当你使用这些设置来保护此类数据时, 请[注意以下事项](#obfuscation-considerations)。
+
+```json
+"<trigger-or-action-name>": {
+   "type": "<trigger-or-action-type>",
+   "inputs": {
+      <trigger-or-action-inputs>
+   },
+   "runtimeConfiguration": {
+      "secureData": {
+         "properties": [
+            "inputs",
+            "outputs"
+         ]
+      }
+   },
+   <other-attributes>
+}
+```
+
 <a name="obfuscation-considerations"></a>
 
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>保护输入和输出时的注意事项
+#### <a name="considerations-when-hiding-inputs-and-outputs"></a>隐藏输入和输出时的注意事项
 
 * 当你保护触发器或操作的输入或输出时, 逻辑应用不会将受保护的数据发送到 Azure Log Analytics。 此外, 不能将[跟踪的属性](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)添加到该触发器或操作进行监视。
 
@@ -564,3 +597,4 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 * [创建部署模板](logic-apps-create-deploy-template.md)  
 * [监视逻辑应用](logic-apps-monitor-your-logic-apps.md)  
 * [诊断逻辑应用的错误和问题](logic-apps-diagnosing-failures.md)  
+* [自动部署逻辑应用](logic-apps-azure-resource-manager-templates-overview.md)

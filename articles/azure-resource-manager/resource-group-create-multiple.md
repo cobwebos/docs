@@ -5,20 +5,20 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 07/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 22317372a7d954286ebcb0b59aea293c746b2a58
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: dbacec6e8f91480996150e73f2a81dbcde67550b
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508170"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494790"
 ---
-# <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>资源、 属性或 Azure 资源管理器模板中的变量迭代
+# <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的资源、属性或变量迭代
 
-本文介绍如何在 Azure 资源管理器模板中创建的资源、 变量或属性的多个实例。 若要创建多个实例，请添加`copy`到模板的对象。
+本文介绍如何在 Azure 资源管理器模板中创建资源、变量或属性的多个实例。 若要创建多个实例，请将 `copy` 对象添加到模板。
 
-与资源使用时，复制对象采用以下格式：
+与资源一起使用时，复制对象的格式如下：
 
 ```json
 "copy": {
@@ -29,7 +29,7 @@ ms.locfileid: "67508170"
 }
 ```
 
-如果使用的变量或属性，复制对象采用以下格式：
+与变量或属性一起使用时，复制对象的格式如下：
 
 ```json
 "copy": [
@@ -41,23 +41,23 @@ ms.locfileid: "67508170"
 ]
 ```
 
-这篇文章中更详细地介绍这两种用法。 有关教程，请参阅[教程：使用资源管理器模板创建多个资源实例](./resource-manager-tutorial-create-multiple-instances.md)。
+本文将更详细地介绍这两种用法。 有关教程，请参阅[教程：使用资源管理器模板创建多个资源实例](./resource-manager-tutorial-create-multiple-instances.md)。
 
 如需指定究竟是否部署资源，请参阅 [condition 元素](resource-group-authoring-templates.md#condition)。
 
 ## <a name="copy-limits"></a>复制限制
 
-若要指定迭代次数，请为计数属性提供值。 计数不能超过 800。
+若要指定迭代次数，请为 count 属性提供值。 count 不能超过 800。
 
-计数不能为负数。 如果部署具有 REST API 版本的模板**2019年-05-10**或更高版本，可以将计数设置为零。 REST API 的早期版本不支持用于计数为零。 目前，Azure CLI 或 PowerShell 不支持零计数，但这将在未来的版本中添加支持。
+count 不能为负数。 如果使用 REST API 版本 **2019-05-10** 或更高版本部署模板，则可以将 count 设置为零。 更早版本的 REST API 不支持将 count 设为零。 目前，Azure CLI 或 PowerShell 不支持将 count 设为零，但在未来的版本中将添加该支持。
 
-小心使用[完成模式下部署](deployment-modes.md)副本。 如果重新部署到资源组的完整模式下，会删除解决复制循环之后，在模板中未指定任何资源。
+将[完整模式部署](deployment-modes.md)与复制一起使用时要小心。 如果以完整模式重新部署到资源组，则在解析复制循环后会删除模板中未指定的任何资源。
 
-是否与资源、 变量或属性一起使用，用于计数限制都是相同的。
+无论与资源、变量还是属性一起使用，count 的限制都是相同的。
 
 ## <a name="resource-iteration"></a>资源迭代
 
-在部署期间必须决定创建一个还是多个资源实例时，请将 `copy` 元素添加到资源类型。 在 copy 元素中，指定迭代次数和此循环的名称。
+在部署期间必须决定创建一个还是多个资源实例时，请将 `copy` 元素添加到资源类型。 在 copy 元素中，为此循环指定迭代次数和名称。
 
 要多次创建的资源采用以下格式：
 
@@ -98,7 +98,7 @@ ms.locfileid: "67508170"
 * storage1
 * storage2。
 
-若要偏移索引值，可以在 copyIndex() 函数中传递一个值。 迭代次数仍指定在 copy 元素中，但 copyIndex 的值减去指定的值。 因此，以下示例：
+若要偏移索引值，可以在 copyIndex() 函数中传递一个值。 迭代次数仍在 copy 元素中指定，但 copyIndex 的值会按指定的值发生偏移。 因此，以下示例：
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -141,9 +141,9 @@ ms.locfileid: "67508170"
 * storagefabrikam
 * storagecoho
 
-默认情况下，资源管理器将并行创建资源。 不会保证它们的创建顺序。 但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。
+默认情况下，资源管理器将并行创建资源。 它不限制并行部署的资源数, 而不是模板中800资源的总限制。 不会保证它们的创建顺序。
 
-若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量  。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
+但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。 若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
 
 例如，若要按顺序一次部署两个存储帐户，请使用：
 

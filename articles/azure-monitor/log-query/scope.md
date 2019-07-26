@@ -1,83 +1,96 @@
 ---
-title: Azure 监视器 Log Analytics 中日志查询作用域 |Microsoft Docs
-description: 介绍 Azure 监视器 Log Analytics 中的日志查询的范围和时间范围。
+title: Azure Monitor Log Analytics 中的日志查询范围 | Microsoft Docs
+description: 介绍 Azure Monitor Log Analytics 中的日志查询的范围和时间范围。
 services: log-analytics
 author: bwren
 manager: carmonm
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 06/25/2019
 ms.author: bwren
-ms.openlocfilehash: a948b80f6524339f0908a2fb19c4a83d70b3b140
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: e67dcb1236fd5ef113835dfe99de444fc2594481
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67297354"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405738"
 ---
-# <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure 监视器 Log Analytics 中的日志查询作用域和时间范围
-在运行时[日志查询](log-query-overview.md)中[在 Azure 门户中的 Log Analytics](get-started-portal.md)，计算由查询的数据集取决于作用域和你选择的时间范围。 本文介绍了范围和时间范围以及如何设置每个具体取决于您的要求。 它还介绍了不同类型的作用域的行为。
+# <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics 中的日志查询范围和时间范围
+在 [Azure 门户上的 Log Analytics 中](get-started-portal.md)运行[日志查询](log-query-overview.md)时，该查询评估的数据集取决于所选的范围和时间范围。 本文介绍范围和时间范围，以及如何根据要求设置这两项。 本文还介绍了不同范围类型的行为。
 
 
-## <a name="query-scope"></a>查询作用域
-查询作用域定义计算由查询的记录。 通常，这将在单个 Log Analytics 工作区或 Application Insights 应用程序中包括的所有记录。 Log Analytics 还可以设置特定的受监视 Azure 资源的作用域。 这允许资源所有者仅专注于其数据，即使该资源将写入到多个工作区。
+## <a name="query-scope"></a>查询范围
+查询范围定义查询评估的记录。 通常，这包括单个 Log Analytics 工作区或 Application Insights 应用程序中的所有记录。 Log Analytics 还允许针对特定的受监视 Azure 资源设置范围。 这样，资源所有者就可以专注于其数据，即使该资源向多个工作区写入数据。
 
-作用域始终显示在顶部的 Log Analytics 窗口中。 一个图标指示作用域是 Log Analytics 工作区或 Application Insights 应用程序。 没有图标表示另一个 Azure 资源。
+范围始终显示在 Log Analytics 窗口的左上方。 如果出现了图标，则表示范围是 Log Analytics 工作区或 Application Insights 应用程序。 如果没有图标，则表示范围是另一个 Azure 资源。
 
 ![范围](media/scope/scope.png)
 
-你用于启动 Log Analytics，以及在某些情况下可以更改作用域，通过单击方法决定作用域。 下表列出了不同类型的使用作用域并为每个不同的详细信息。
+范围由启动 Log Analytics 所用的方法确定，在某些情况下，可以通过单击范围来更改范围。 下表列出了所用的不同类型的范围及其各种详细信息。
 
-| 查询作用域 | 作用域中的记录 | 如何选择 | 更改作用域 |
+| 查询范围 | 范围中的记录 | 如何选择 | 更改范围 |
 |:---|:---|:---|:---|
-| Log Analytics 工作区 | Log Analytics 工作区中的所有记录。 | 选择**日志**从**Azure Monitor**菜单或**Log Analytics 工作区**菜单。  | 可以更改为任何其他资源类型的作用域。 |
-| Application Insights 应用程序 | 在 Application Insights 应用程序中的所有记录。 | 选择**Analytics**从**概述**Application Insights 的页。 | 只能将作用域更改为另一个 Application Insights 应用程序中。 |
-| 资源组 | 创建的资源组中的所有资源记录。 可能包括多个 Log Analytics 工作区中的数据。 | 选择**日志**从资源组菜单。 | 不能更改作用域。|
-| 订阅 | 创建的订阅中的所有资源记录。 可能包括多个 Log Analytics 工作区中的数据。 | 选择**日志**从订阅菜单。   | 不能更改作用域。 |
-| 其他 Azure 资源 | 创建的资源记录。 可能包括多个 Log Analytics 工作区中的数据。  | 选择**日志**资源菜单中。<br>或<br>选择**日志**从**Azure Monitor**菜单，然后选择新作用域。 | 只能更改作用域为相同的资源类型。 |
+| Log Analytics 工作区 | Log Analytics 工作区中的所有记录。 | 从“Azure Monitor”菜单或“Log Analytics 工作区”菜单中选择“日志”。  | 可将范围更改为任何其他资源类型。 |
+| Application Insights 应用程序 | Application Insights 应用程序中的所有记录。 | 从 Application Insights 的“概述”页中选择“分析”。 | 只能将范围更改为另一个 Application Insights 应用程序。 |
+| 资源组 | 资源组中的所有资源创建的记录。 可以包含多个 Log Analytics 工作区中的数据。 | 从资源组菜单中选择“日志”。 | 无法更改范围。|
+| 订阅 | 订阅中的所有资源创建的记录。 可以包含多个 Log Analytics 工作区中的数据。 | 从订阅菜单中选择“日志”。   | 无法更改范围。 |
+| 其他 Azure 资源 | 资源创建的记录。 可以包含多个 Log Analytics 工作区中的数据。  | 从资源菜单中选择“日志”。<br>OR<br>从“Azure Monitor”菜单中选择“日志”，然后选择新范围。 | 只能将范围更改为相同的资源类型。 |
 
-### <a name="limitations-when-scoped-to-a-resource"></a>应用范围限定为某个资源时的限制
+### <a name="limitations-when-scoped-to-a-resource"></a>将范围限定为资源时的限制
 
-查询作用域是 Log Analytics 工作区或 Application Insights 应用程序，在门户中的所有选项和所有查询命令时可用。 因为它们与单个工作区或应用程序相关联的以下时但仅限于资源，选项在门户中不可用：
+如果查询范围是 Log Analytics 工作区或 Application Insights 应用程序，门户中的所有选项以及所有查询命令均可用。 不过，如果将范围限定为资源，则门户中的以下选项不可用，因为它们与单个工作区或应用程序相关联：
 
 - 保存
 - 查询资源管理器
-- 新建警报规则
+- 新建预警规则
 
-在查询时作用域为资源，因为查询作用域将已包含该资源或资源组的数据的任何工作区中，不能使用以下命令：
+将范围限定为资源时无法使用以下命令，因为查询范围已经包含了带有该资源或资源集的数据的所有工作区：
 
 - [app](app-expression.md)
 - [工作区](workspace-expression.md)
  
 
+## <a name="query-limits"></a>查询限制
+对于将数据写入多个 Log Analytics 工作区的 Azure 资源, 你可能有业务要求。 工作区不需要与资源位于同一区域, 一个工作区可能会从多个区域中的资源收集数据。  
+
+将作用域设置为资源或资源集是 Log Analytics 的一项特别强大的功能, 因为它允许您在单个查询中自动合并分布式数据。 但如果需要跨多个 Azure 区域从工作区中检索数据, 则可能会显著影响性能。
+
+当使用特定数量的区域时, Log Analytics 可通过发出警告或错误, 帮助防止跨多个区域中的工作区的查询产生过多的开销。 如果作用域包括5个或更多区域中的工作区, 则查询将收到警告。 它仍将运行, 但可能需要花费很长时间才能完成。
+
+![查询警告](media/scope/query-warning.png)
+
+如果作用域包括20个或更多区域中的工作区, 则查询将被阻止运行。 在这种情况下, 系统将提示你减少工作区区域的数量, 并尝试再次运行查询。 下拉列表将显示查询范围内的所有区域, 并且应在尝试再次运行查询之前减少区域数。
+
+![查询失败](media/scope/query-failed.png)
+
 
 ## <a name="time-range"></a>时间范围
-时间范围内指定的组，其计算结果为时已创建了记录，基于查询的记录。 这被定义工作区或为下表中指定的应用程序中的每个记录的标准属性。
+时间范围根据记录的创建时间，指定查询要评估的记录集。 此项设置由工作区或应用程序中每条记录上的标准属性定义，下表指定了这些属性。
 
 | Location | 属性 |
 |:---|:---|
 | Log Analytics 工作区          | TimeGenerated |
 | Application Insights 应用程序 | timestamp     |
 
-设置 Log Analytics 窗口顶部的时间选取器中选择时间范围。  可以选择一个预定义时间段，也可以选择**自定义**来指定特定的时间范围。
+若要设置时间范围，可在 Log Analytics 窗口顶部的时间选取器中进行选择。  可以选择预定义的时间段，或选择“自定义”来指定特定的时间范围。
 
 ![时间选取器](media/scope/time-picker.png)
 
-如果使用标准时间属性，如上面的表中所示的查询中设置筛选器，时间选取器将更改为**在查询中设置**，且时间选取器被禁用。 在这种情况下，它是查询的最有效，将顶部筛选器，以便任何后续处理仅需要使用经过筛选的记录。
+如果在使用上表所示的标准时间属性的查询中设置筛选器，时间选取器将更改为“在查询中设置”，且会禁用时间选取器。 在这种情况下，最有效的做法是将筛选器放在查询的顶部，这样，以后只需处理筛选的记录。
 
 ![筛选的查询](media/scope/query-filtered.png)
 
-如果您使用[工作区](workspace-expression.md)或[应用](app-expression.md)命令从另一个工作区或应用程序中检索数据时，时间选取器的行为可能有所不同。 如果作用域是 Log Analytics 工作区，并且使用**应用程序**，或如果作用域是 Application Insights 应用程序并使用**工作区**，然后 Log Analytics 可能不了解该属性使用中筛选器应确定时间筛选器。
+如果使用 [workspace](workspace-expression.md) 或 [app](app-expression.md) 命令从另一个工作区或应用程序检索数据，时间选取器的行为可能有所不同。 如果范围是 Log Analytics 工作区，而你使用的是 **app**，或者，如果范围是 Application Insights 应用程序，而你使用的是 **workspace**，则 Log Analytics 可能不知道应该由筛选器中使用的属性来确定时间筛选器。
 
-在以下示例中，作用域设置为 Log Analytics 工作区。  该查询使用**工作区**从另一个 Log Analytics 工作区中检索数据。 时间选取器将变为**在查询中设置**因为它会看到使用预期的筛选器**TimeGenerated**属性。
+在以下示例中，范围设置为 Log Analytics 工作区。  查询使用 **workspace** 从另一个 Log Analytics 工作区检索数据。 时间选取器将更改为“在查询中设置”，因为它会看到一个使用预期 **TimeGenerated** 属性的筛选器。
 
-![查询与工作区](media/scope/query-workspace.png)
+![使用 workspace 的查询](media/scope/query-workspace.png)
 
-如果查询使用**应用程序**不过从 Application Insights 应用程序检索数据，Log Analytics 不能识别**时间戳**筛选器和时间选取器的属性保持不变。 在这种情况下，应用这两个筛选器。 在示例中，仅在过去 24 小时中创建的记录都包含在查询即使它指定在 7 天**其中**子句。
+不过，如果查询使用 **app** 从 Application Insights 应用程序检索数据，Log Analytics 将无法识别筛选器中的 **timestamp** 属性，而时间选取器将保持不变。 在这种情况下，会应用这两个筛选器。 在该示例中，即使查询在 **where** 子句中指定了 7 天，它也只包含过去 24 小时创建的记录。
 
-![使用应用程序进行查询](media/scope/query-app.png)
+![使用 app 的查询](media/scope/query-app.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 逐步[教程在 Azure 门户中使用 Log Analytics](get-started-portal.md)。
-- 逐步[查询编写教程](get-started-queries.md)。
+- 演练[有关在 Azure 门户中使用 Log Analytics 的教程](get-started-portal.md)。
+- 演练[有关编写查询的教程](get-started-queries.md)。

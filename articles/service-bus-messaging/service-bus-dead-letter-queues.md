@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: aschhab
-ms.openlocfilehash: af67b27dacf3bb86c2dd5c878a2751e027a53acb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79bc5e640498788ef805d07a26dd29e943117b58
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003121"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68476980"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 
-Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)”的辅助子队列  。 死信队列不需要显式创建，并且不能删除或以其他方式独立于主实体进行管理。
+Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)”的辅助子队列。 死信队列不需要显式创建，并且不能删除或以其他方式独立于主实体进行管理。
 
 本文介绍服务总线中的死信队列。 GitHub 上的[死信队列示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/DeadletterQueue)对很多讨论进行了说明。
  
@@ -49,7 +49,7 @@ Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)�
 | !TopicDescription。<br />EnableFilteringMessagesBeforePublishing 和 SubscriptionDescription。<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
 | EnableDeadLetteringOnMessageExpiration |TTLExpiredException |消息过期并已设为死信。 |
 | SubscriptionDescription.RequiresSession |会话ID 为 null。 |启用会话的实体不允许使用会话标识符为 null 的消息。 |
-| !死信队列 |MaxTransferHopCountExceeded |Null |
+| !死信队列 | MaxTransferHopCountExceeded | 在队列之间转发时允许的最大跃点数。 值设置为4。 |
 | 应用程序显式设为死信 |由应用程序指定 |由应用程序指定 |
 
 ## <a name="exceeding-maxdeliverycount"></a>超过 MaxDeliveryCount
@@ -103,15 +103,15 @@ while(true)
 }
 ```
 
-## <a name="path-to-the-dead-letter-queue"></a>死信队列路径
-可以使用以下语法来访问死信队列：
+## <a name="path-to-the-dead-letter-queue"></a>死信队列的路径
+可以使用以下语法访问死信队列：
 
 ```
 <queue path>/$deadletterqueue
 <topic path>/Subscription/<subscription path>/$deadletterqueue
 ```
 
-如果使用.NET SDK，您可以通过使用 SubscriptionClient.FormatDeadLetterPath() 方法获取死信队列的路径。 此方法将主题名称中的订阅名称，并使用后缀 **/$DeadLetterQueue**。
+如果使用的是 .NET SDK，则可以通过使用 SubscriptionClient.FormatDeadLetterPath() 方法获取死信队列的路径。 此方法使用 **/$DeadLetterQueue** 接受主题名称/订阅名称和后缀。
 
 
 ## <a name="next-steps"></a>后续步骤

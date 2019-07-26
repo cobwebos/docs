@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8947637a42adfca12268c3f84e208079768870e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ee7db3ade594958729deeb12007f528376d5179
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65921215"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442414"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 
@@ -58,19 +58,19 @@ ms.locfileid: "65921215"
 
 ### <a name="elements"></a>元素
 
-| 名称         | 描述                                                                                                                                   | 需要 |
+| 名称         | 描述                                                                                                                                   | 必填 |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | check-header | 根元素。                                                                                                                                 | 是      |
 | value        | 允许的 HTTP 标头值。 指定了多个值元素时，如果任何一个值匹配，则可认为检查成功。 | 否       |
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-| 名称                       | 描述                                                                                                                                                            | 需要 | 默认 |
+| 名称                       | 描述                                                                                                                                                            | 必填 | 默认 |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| failed-check-error-message | 在标头不存在或其值无效的情况下，需要在 HTTP 响应正文中返回的错误消息。 此消息必须对任何特殊字符正确地进行转义。 | 是      | 不适用     |
-| failed-check-httpcode      | 在标头不存在或其值无效时需返回的 HTTP 状态代码。                                                                                        | 是      | 不适用     |
-| header-name                | 要检查的 HTTP 标头的名称。                                                                                                                                  | 是      | 不适用     |
-| ignore-case                | 可以设置为 True 或 False。 如果设置为 True，则在将标头值与一组可接受的值进行比较时，会忽略大小写。                                    | 是      | 不适用     |
+| failed-check-error-message | 在标头不存在或其值无效的情况下，需要在 HTTP 响应正文中返回的错误消息。 此消息必须对任何特殊字符正确地进行转义。 | 是      | 不可用     |
+| failed-check-httpcode      | 在标头不存在或其值无效时需返回的 HTTP 状态代码。                                                                                        | 是      | 不可用     |
+| header-name                | 要检查的 HTTP 标头的名称。                                                                                                                                  | 是      | 不可用     |
+| ignore-case                | 可以设置为 True 或 False。 如果设置为 True，则在将标头值与一组可接受的值进行比较时，会忽略大小写。                                    | 是      | 不可用     |
 
 ### <a name="usage"></a>使用情况
 
@@ -78,9 +78,9 @@ ms.locfileid: "65921215"
 
 -   **策略节：** 入站、出站
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
-## <a name="LimitCallRate"></a>按订阅限制调用速率
+## <a name="LimitCallRate"></a> 按订阅限制调用速率
 
 `rate-limit` 策略可以对调用速率进行限制，使指定时段的调用不超出指定的数目，避免单个订阅的 API 使用量暴增。 触发此策略时，调用方会收到`429 Too Many Requests`响应状态代码。
 
@@ -118,19 +118,19 @@ ms.locfileid: "65921215"
 
 ### <a name="elements"></a>元素
 
-| Name      | 描述                                                                                                                                                                                                                                                                                              | 必选 |
+| 姓名      | 描述                                                                                                                                                                                                                                                                                              | 必填 |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | set-limit | 根元素。                                                                                                                                                                                                                                                                                            | 是      |
-| api       | 添加一个或多个这些元素，对施加调用速率限制的 Api 产品内部的。 产品和 API 的调用速率限制是分别应用的。 可以通过 `name` 或 `id` 引用 API。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。                    | 否       |
-| operation | 添加一个或多个这些元素，对施加调用速率限制 API 中的操作。 产品、API 和操作的调用速率限制是分别应用的。 可以通过 `name` 或 `id` 引用 Operation。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。 | 否       |
+| API       | 添加一个或多个此类元素, 对产品中的 Api 施加调用速率限制。 产品和 API 的调用速率限制是分别应用的。 可以通过 `name` 或 `id` 引用 API。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。                    | 否       |
+| 操作 | 添加一个或多个此类元素, 对 API 中的操作施加调用速率限制。 产品、API 和操作的调用速率限制是分别应用的。 可以通过 `name` 或 `id` 引用 Operation。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。 | 否       |
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-| Name           | 描述                                                                                           | 需要 | 默认 |
+| 名称           | 描述                                                                                           | 必填 | 默认 |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | 要对其应用速率限制的 API 的名称。                                                | 是      | 不适用     |
-| calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 不适用     |
-| renewal-period | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 不适用     |
+| name           | 要对其应用速率限制的 API 的名称。                                                | 是      | 不可用     |
+| calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 不可用     |
+| renewal-period | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 不可用     |
 
 ### <a name="usage"></a>使用情况
 
@@ -138,12 +138,12 @@ ms.locfileid: "65921215"
 
 -   **策略段：** 入站
 
--   **策略范围：** 产品
+-   **策略范围:** 产品、api、操作
 
 ## <a name="LimitCallRateByKey"></a> 按密钥限制调用速率
 
 > [!IMPORTANT]
-> 此功能在 API 管理的“消耗”  层中不可用。
+> 此功能在 API 管理的“消耗”层中不可用。
 
 `rate-limit-by-key` 策略可以对调用速率进行限制，使指定时段的调用不超出指定的数目，避免单个密钥的 API 使用量暴增。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定在决定是否到达限制值时应该进行计数的请求。 触发此策略时，调用方会收到`429 Too Many Requests`响应状态代码。
 
@@ -183,28 +183,28 @@ ms.locfileid: "65921215"
 
 ### <a name="elements"></a>元素
 
-| 名称      | 描述   | 必选 |
+| 名称      | 描述   | 必填 |
 | --------- | ------------- | -------- |
 | set-limit | 根元素。 | 是      |
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-| 名称                | 描述                                                                                           | 需要 | 默认 |
+| 名称                | 描述                                                                                           | 必填 | 默认 |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 不适用     |
-| counter-key         | 用于速率限制策略的密钥。                                                             | 是      | 不适用     |
-| increment-condition | 一个布尔表达式，指定是否应将请求计入配额 (`true`)。        | 否       | 不适用     |
-| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 不适用     |
+| 调用               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 不可用     |
+| counter-key         | 用于速率限制策略的密钥。                                                             | 是      | 不可用     |
+| increment-condition | 一个布尔表达式，指定是否应将请求计入配额 (`true`)。        | 否       | 不可用     |
+| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 不可用     |
 
 ### <a name="usage"></a>使用情况
 
 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略段：** 入站
+-   **策略节：** 入站
 
--   **策略范围：** 全局、产品、API、操作
+-   **策略范围：** 所有范围
 
-## <a name="RestrictCallerIPs"></a>限制调用方 IP
+## <a name="RestrictCallerIPs"></a> 限制调用方 IP
 
 `ip-filter` 策略筛选（允许/拒绝）来自特定 IP 地址和/或地址范围的调用。
 
@@ -230,27 +230,27 @@ ms.locfileid: "65921215"
 
 ### <a name="elements"></a>元素
 
-| 名称                                      | 描述                                         | 需要                                                       |
+| 名称                                      | 描述                                         | 必填                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | ip-filter                                 | 根元素。                                       | 是                                                            |
 | 地址                                   | 指定要对其进行筛选的单个 IP 地址。   | 至少一个 `address` 或 `address-range` 元素是必需的。 |
 | address-range from="address" to="address" | 指定要对其进行筛选的 IP 地址范围。 | 至少一个 `address` 或 `address-range` 元素是必需的。 |
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-| Name                                      | 描述                                                                                 | 需要                                           | 默认 |
+| 名称                                      | 描述                                                                                 | 必填                                           | 默认 |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| address-range from="address" to="address" | 允许或拒绝其访问的某个 IP 地址范围。                                        | 使用 `address-range` 元素时必需。 | 不适用     |
-| ip-filter action="allow &#124; forbid"    | 指定是否应允许指定的 IP 地址和范围执行调用。 | 是                                                | 不适用     |
+| address-range from="address" to="address" | 允许或拒绝其访问的某个 IP 地址范围。                                        | 使用 `address-range` 元素时必需。 | 不可用     |
+| ip-filter action="allow &#124; forbid"    | 指定是否应允许指定的 IP 地址和范围执行调用。 | 是                                                | 不可用     |
 
 ### <a name="usage"></a>使用情况
 
 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略段：** 入站
--   **策略范围：** 全局、产品、API、操作
+-   **策略节：** 入站
+-   **策略范围：** 所有范围
 
-## <a name="SetUsageQuota"></a>按订阅设置使用量配额
+## <a name="SetUsageQuota"></a> 按订阅设置使用量配额
 
 `quota` 策略允许根据订阅强制实施可续订或有生存期的调用量和/或带宽配额。
 
@@ -285,20 +285,20 @@ ms.locfileid: "65921215"
 
 ### <a name="elements"></a>元素
 
-| Name      | 描述                                                                                                                                                                                                                                                                                  | 必选 |
+| 名称      | 描述                                                                                                                                                                                                                                                                                  | 必填 |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | 根元素。                                                                                                                                                                                                                                                                                | 是      |
-| api       | 添加一个或多个这些元素，设置产品内部的 api 调用配额。 产品和 API 的调用配额是分别应用的。 可以通过 `name` 或 `id` 引用 API。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。                    | 否       |
-| operation | 添加一个或多个这些元素，设置调用配额在 API 中的操作。 产品、API 和操作的调用配额是分别应用的。 可以通过 `name` 或 `id` 引用 Operation。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。 | 否       |
+| API       | 添加一个或多个此类元素, 以便对产品中的 Api 施加调用配额。 产品和 API 的调用配额是分别应用的。 可以通过 `name` 或 `id` 引用 API。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。                    | 否       |
+| 操作 | 添加一个或多个此类元素, 以便对 API 中的操作施加调用配额。 产品、API 和操作的调用配额是分别应用的。 可以通过 `name` 或 `id` 引用 Operation。 如果同时提供了这两个属性，则将使用 `id` 并忽略 `name`。 | 否       |
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-| Name           | 描述                                                                                               | 需要                                                         | 默认 |
+| 姓名           | 描述                                                                                               | 必填                                                         | 默认 |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| name           | 要向其应用配额的 API 或操作的名称。                                             | 是                                                              | 不适用     |
-| bandwidth      | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
-| calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
-| renewal-period | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 不适用     |
+| name           | 要向其应用配额的 API 或操作的名称。                                             | 是                                                              | 不可用     |
+| bandwidth      | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不可用     |
+| calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不可用     |
+| renewal-period | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 不可用     |
 
 ### <a name="usage"></a>使用情况
 
@@ -310,7 +310,7 @@ ms.locfileid: "65921215"
 ## <a name="SetUsageQuotaByKey"></a> 按密钥设置使用量配额
 
 > [!IMPORTANT]
-> 此功能在 API 管理的“消耗”  层中不可用。
+> 此功能在 API 管理的“消耗”层中不可用。
 
 `quota-by-key` 策略允许根据密钥强制实施可续订或有生存期的调用量和/或带宽配额。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定应在配额范围内的请求。 如果多个策略增加相同的键值，则每个请求的键值仅增加一次。 达到调用限制时，调用方会收到 `403 Forbidden` 响应状态代码。
 
@@ -347,28 +347,28 @@ ms.locfileid: "65921215"
 
 ### <a name="elements"></a>元素
 
-| Name  | 描述   | 必选 |
+| 名称  | 描述   | 必填 |
 | ----- | ------------- | -------- |
 | quota | 根元素。 | 是      |
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-| 名称                | 描述                                                                                               | 需要                                                         | 默认 |
+| 名称                | 描述                                                                                               | 必填                                                         | 默认 |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| bandwidth           | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
-| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
-| counter-key         | 用于配额策略的密钥。                                                                      | 是                                                              | 不适用     |
-| increment-condition | 一个布尔表达式，指定是否应将请求计入配额 (`true`)             | 否                                                               | 不适用     |
-| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 不适用     |
+| 带宽           | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不可用     |
+| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不可用     |
+| counter-key         | 用于配额策略的密钥。                                                                      | 是                                                              | 不可用     |
+| increment-condition | 一个布尔表达式，指定是否应将请求计入配额 (`true`)             | 否                                                               | 不可用     |
+| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 不可用     |
 
 ### <a name="usage"></a>使用情况
 
 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略段：** 入站
--   **策略范围：** 全局、产品、API、操作
+-   **策略节：** 入站
+-   **策略范围：** 所有范围
 
-## <a name="ValidateJWT"></a>验证 JWT
+## <a name="ValidateJWT"></a> 验证 JWT
 
 `validate-jwt` 策略强制从指定 HTTP 标头或指定查询参数提取的 JWT 必须存在且有效。
 
@@ -518,7 +518,7 @@ ms.locfileid: "65921215"
 
 ### <a name="elements"></a>元素
 
-| 元素             | 描述                                                                                                                                                                                                                                                                                                                                           | 需要 |
+| 元素             | 描述                                                                                                                                                                                                                                                                                                                                           | 必填 |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | validate-jwt        | 根元素。                                                                                                                                                                                                                                                                                                                                         | 是      |
 | audiences           | 包含一系列可接受且可存在于令牌上的受众声明。 如果存在多个受众值，则会对每个值进行尝试，直到有一个值成功（如果所有值都试完却没有一个成功，则表明验证失败）。 必须指定至少一个受众。                                                                     | 否       |
@@ -529,31 +529,31 @@ ms.locfileid: "65921215"
 | required-claims     | 包含一系列应存在于令牌上的声明，否则令牌会被视为无效。 将 `match` 属性设置为 `all` 时，策略中的每个声明值都必须存在于令牌中才会使验证成功。 将 `match` 属性设置为 `any` 时，至少一个声明必须存在于令牌中，这样验证才会成功。 | 否       |
 | zumo-master-key     | Azure 移动服务颁发的令牌的主密钥                                                                                                                                                                                                                                                                                                 | 否       |
 
-### <a name="attributes"></a>属性
+### <a name="attributes"></a>特性
 
-| 名称                            | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                            | 需要                                                                         | 默认                                                                           |
+| 名称                            | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                            | 必填                                                                         | 默认                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | clock-skew                      | 时间跨度。 用于指定令牌颁发者的系统时钟与 API 管理实例之间的最大预期时间差。                                                                                                                                                                                                                                                                                                               | 否                                                                               | 0 秒                                                                         |
 | failed-validation-error-message | JWT 未通过验证时会在 HTTP 响应正文中返回的错误消息。 此消息必须对任何特殊字符正确地进行转义。                                                                                                                                                                                                                                                                                                 | 否                                                                               | 默认错误消息取决于验证问题，例如“JWT 不存在”。 |
 | failed-validation-httpcode      | JWT 未通过验证时会返回的 HTTP 状态代码。                                                                                                                                                                                                                                                                                                                                                                                         | 否                                                                               | 401                                                                               |
-| header-name                     | 包含令牌的 HTTP 标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                         | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不适用                                                                               |
-| query-parameter-name            | 包含令牌的查询参数的名称。                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不适用                                                                               |
-| token-value                     | 一个表达式，返回的字符串包含 JWT 令牌                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不适用                                                                               |
-| id                              | 使用 `key` 元素的 `id` 属性可以指定一个字符串，该字符串将与令牌中的 `kid` 声明（如果存在）进行比较，以便找出进行签名验证时需要使用的适当密钥。                                                                                                                                                                                                                                           | 否                                                                               | 不适用                                                                               |
-| match                           | `claim` 元素的 `match` 属性用于指定：是否策略中的每个声明值都必须存在于令牌中验证才会成功。 可能的值包括：<br /><br /> - `all` - 策略中的每个声明值都必须存在于令牌中验证才会成功。<br /><br /> - `any` - 至少一个声明值必须存在于令牌中验证才会成功。                                                       | 否                                                                               | 本应返回的所有记录的总数，                                                                               |
-| require-expiration-time         | 布尔值。 指定令牌中是否需要到期声明。                                                                                                                                                                                                                                                                                                                                                                               | 否                                                                               | true                                                                              |
-| require-scheme                  | 令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 不适用                                                                               |
-| require-signed-tokens           | 布尔值。 指定令牌是否需要签名。                                                                                                                                                                                                                                                                                                                                                                                           | 否                                                                               | true                                                                              |
-| 分隔符                       | 字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。                                                                                                                                                                                                                                                                                                                                          | 否                                                                               | 不适用                                                                               |
-| url                             | Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 不适用                                                                               |
-output-token-variable-name|字符串。 成功进行令牌验证后，将作为 [`Jwt`](api-management-policy-expressions.md) 类型的对象接收令牌值的上下文变量的名称|否|不适用
+| header-name                     | 包含令牌的 HTTP 标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                         | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不可用                                                                               |
+| query-parameter-name            | 包含令牌的查询参数的名称。                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不可用                                                                               |
+| token-value                     | 一个表达式，返回的字符串包含 JWT 令牌                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不可用                                                                               |
+| id                              | 使用 `key` 元素的 `id` 属性可以指定一个字符串，该字符串将与令牌中的 `kid` 声明（如果存在）进行比较，以便找出进行签名验证时需要使用的适当密钥。                                                                                                                                                                                                                                           | 否                                                                               | 不可用                                                                               |
+| match                           | `claim` 元素的 `match` 属性用于指定：是否策略中的每个声明值都必须存在于令牌中验证才会成功。 可能的值包括：<br /><br /> - `all` - 策略中的每个声明值都必须存在于令牌中验证才会成功。<br /><br /> - `any` - 至少一个声明值必须存在于令牌中验证才会成功。                                                       | 否                                                                               | 全部                                                                               |
+| require-expiration-time         | 布尔值。 指定令牌中是否需要到期声明。                                                                                                                                                                                                                                                                                                                                                                               | 否                                                                               | 真                                                                              |
+| require-scheme                  | 令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 不可用                                                                               |
+| require-signed-tokens           | 布尔值。 指定令牌是否需要签名。                                                                                                                                                                                                                                                                                                                                                                                           | 否                                                                               | 真                                                                              |
+| 分隔符                       | 字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。                                                                                                                                                                                                                                                                                                                                          | 否                                                                               | 不可用                                                                               |
+| url                             | Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 不可用                                                                               |
+output-token-variable-name|字符串。 成功进行令牌验证后，将作为 [`Jwt`](api-management-policy-expressions.md) 类型的对象接收令牌值的上下文变量的名称|否|不可用
 
 ### <a name="usage"></a>使用情况
 
 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
--   **策略段：** 入站
--   **策略范围：** 全局、产品、API、操作
+-   **策略节：** 入站
+-   **策略范围：** 所有范围
 
 ## <a name="next-steps"></a>后续步骤
 

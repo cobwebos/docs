@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项 | Microsoft 文档
+title: Azure AD 应用程序代理的网络拓扑注意事项 |Microsoft Docs
 description: 介绍使用 Azure AD 应用程序代理时的网络拓扑注意事项。
 services: active-directory
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2017
+ms.date: 07/22/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 734fd1d0c150cfb655279b7978a3dd1512923e49
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a7320df63885f562b4724285a3ca5c3cf6ea2a52
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702247"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381438"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项
 
@@ -39,7 +39,7 @@ ms.locfileid: "67702247"
 
 ## <a name="tenant-location-and-application-proxy-service"></a>租户位置和应用程序代理服务
 
-当你注册 Azure AD 租户时，租户的区域由你指定的国家/地区/区域决定。 启用应用程序代理时，将在 Azure AD 租户所在的同一区域或者与它最靠近的区域中选择或创建租户的应用程序代理服务实例。
+当你注册 Azure AD 租户时, 你的租户区域由指定的国家/地区确定。 启用应用程序代理时，将在 Azure AD 租户所在的同一区域或者与它最靠近的区域中选择或创建租户的应用程序代理服务实例。
 
 例如，如果你的 Azure AD 租户所在的区域为英国，则所有 Azure AD 应用程序代理连接器都使用位于 EU 数据中心内的服务实例。 当用户访问发布的应用程序时，其流量会流经此位置中的应用程序代理服务实例。
 
@@ -78,7 +78,7 @@ ms.locfileid: "67702247"
 
 ## <a name="focus-your-optimization-strategy"></a>注重优化策略
 
-很难控制用户与应用程序代理之间的连接。 用户可以从家庭网络、 咖啡店或其他国家/地区访问你的应用。 不过，可以优化从应用程序代理服务到应用程序代理连接器再到应用的连接。 考虑在环境中整合以下模式。
+很难控制用户与应用程序代理之间的连接。 用户可以从家庭网络、咖啡店或其他国家/地区访问应用。 不过，可以优化从应用程序代理服务到应用程序代理连接器再到应用的连接。 考虑在环境中整合以下模式。
 
 ### <a name="pattern-1-put-the-connector-close-to-the-application"></a>模式 1：将连接器放在靠近应用程序的位置
 
@@ -124,7 +124,7 @@ ms.locfileid: "67702247"
 
 这是一个简单的模式。 可以通过将连接器放置在应用附近来优化跃点 3。 这也是一种自然而然的选择，因为安装的连接器通常与应用和数据中心建立直通连接，以便执行 KCD 操作。
 
-![显示用户、 代理、 连接器和应用都位于美国的关系图](./media/application-proxy-network-topology/application-proxy-pattern1.png)
+![显示用户、代理、连接器和应用的关系图](./media/application-proxy-network-topology/application-proxy-pattern1.png)
 
 ### <a name="use-case-2"></a>用例 2
 
@@ -134,7 +134,7 @@ ms.locfileid: "67702247"
 
 同样，常见的模式是优化跃点 3，其中的连接器放置在应用附近。 如果将整个跃点 3 放在同一区域，则它的系统开销通常不大。 但是，根据用户所在的位置，跃点 1 的系统开销可能更大，因为世界各地的用户必须访问位于美国的应用程序代理实例。 值得注意的是，由于用户遍布全球各地，任何代理解决方案将具有类似的特征。
 
-![用户遍布全球，但其他所有内容位于美国的](./media/application-proxy-network-topology/application-proxy-pattern2.png)
+![用户在全球范围内传播, 但其他所有内容都在美国](./media/application-proxy-network-topology/application-proxy-pattern2.png)
 
 ### <a name="use-case-3"></a>用例 3
 
@@ -158,7 +158,7 @@ ms.locfileid: "67702247"
 
 可将连接器放置在 Azure 数据中心内。 由于连接器仍旧通过专用网络与应用程序和数据中心建立直通连接，跃点 3 将保持优化。 此外，跃点 2 会进一步优化。
 
-![连接器在 Azure 数据中心，连接器与应用之间的 ExpressRoute](./media/application-proxy-network-topology/application-proxy-pattern4.png)
+![Azure 数据中心中的连接器, 连接器与应用之间的 ExpressRoute](./media/application-proxy-network-topology/application-proxy-pattern4.png)
 
 ### <a name="use-case-5"></a>用例 5
 
@@ -166,11 +166,11 @@ ms.locfileid: "67702247"
 
 **建议：** 将连接器放置在应用的附近。 由于美国用户访问的应用程序代理实例正好处于同一区域，因此跃点 1 的系统开销也不会太高。 跃点 3 经过优化。 考虑使用 ExpressRoute 来优化跃点 2。
 
-![关系图显示了用户和代理在美国、 连接器和应用位于欧盟](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
+![关系图显示了 EU 中的用户和代理、连接器和应用](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
 还可以考虑对此用例使用另一种变化形式。 如果组织中的大多数用户位于美国，则组织有可能也会将网络扩展到美国。 将连接器放置在美国，使用专用的内部企业网络线路访问位于欧盟的应用程序。 因此，跃点 2 和跃点 3 将得到优化。
 
-![关系图显示了用户、 代理和连接器位于美国，应用位于欧盟](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
+![关系图显示了美国、欧盟应用中的用户、代理和连接器](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
 
 ## <a name="next-steps"></a>后续步骤
 

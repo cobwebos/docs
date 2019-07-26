@@ -10,43 +10,43 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/2018
-ms.openlocfilehash: 6d9a2929d7b8b1687b602093d0e9de35508dbd8c
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 95eca4c7f3e8170f6559799fc4c706e95df70e9e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273089"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385521"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
 
-[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)通过提供[数百个随时可用的连接器](../connectors/apis-list.md)(范围从本地 SQL Server 或 SAP 到 Microsoft 认知服务), 帮助你安排和集成不同的服务。 逻辑应用服务“无服务器”，因此无需担心规模或实例。 只需定义带有触发器的工作流和工作流执行的操作。 基础平台处理缩放、可用性和性能。 逻辑应用尤其适用于需要在多个系统中协调多个操作的用例和方案。
+[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)通过提供[数百个随时可用的连接器](../connectors/apis-list.md)(范围从本地 SQL Server 或 SAP 到 Azure 认知服务), 帮助你安排和集成不同的服务。 逻辑应用服务“无服务器”，因此无需担心规模或实例。 只需定义带有触发器的工作流和工作流执行的操作。 基础平台处理缩放、可用性和性能。 逻辑应用尤其适用于需要在多个系统中协调多个操作的用例和方案。
 
 为了帮助你详细了解 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)支持的多种模式和功能，下面提供了一些常见示例和方案。
 
 ## <a name="popular-starting-points-for-logic-app-workflows"></a>逻辑应用工作流的常用起点
 
-每个逻辑应用均由[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)启动，并且只有一个触发器，该触发器可启动逻辑应用工作流并将任何数据作为该触发器的一部分进行传递  。 某些连接器提供触发器，类型包括：
+每个逻辑应用均由[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)启动，并且只有一个触发器，该触发器可启动逻辑应用工作流并将任何数据作为该触发器的一部分进行传递。 某些连接器提供触发器，类型包括：
 
-* 轮询触发器：  定期检查服务终结点以获取新数据。 如果存在新数据，触发器会创建并运行新的工作流实例（将数据作为输入）。
+* 轮询触发器：定期检查服务终结点以获取新数据。 如果存在新数据，触发器会创建并运行新的工作流实例（将数据作为输入）。
 
-* 推送触发器：  侦听服务终结点上的数据并等到特定事件发生。 事件发生时触发器会立即触发，创建并运行新的工作流实例（将任何可用数据用作输入）。
+* 推送触发器：侦听服务终结点上的数据并等到特定事件发生。 事件发生时触发器会立即触发，创建并运行新的工作流实例（将任何可用数据用作输入）。
 
 下面提供了几个常用触发器示例：
 
 * 轮询： 
 
-  * 使用[计划 - 重复触发器](../connectors/connectors-native-recurrence.md)可设置启动日期和时间以及触发逻辑应用的重复周期  。 
+  * 使用[计划 - 重复触发器](../connectors/connectors-native-recurrence.md)可设置启动日期和时间以及触发逻辑应用的重复周期。 
   例如，可以选择在星期几和一天中某个时间触发逻辑应用。
 
   * “收到电子邮件时”触发器允许逻辑应用从逻辑应用支持的任何邮件提供程序检查是否有新的电子邮件，例如 [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、[Gmail](https://docs.microsoft.com/connectors/gmail/) 和 [Outlook.com](https://docs.microsoft.com/connectors/outlook/) 等。
 
-  * [HTTP 触发器](../connectors/connectors-native-http.md)允许逻辑应用通过使用 HTTP 进行通信来检查指定的服务终结点  。
+  * [HTTP 触发器](../connectors/connectors-native-http.md)允许逻辑应用通过使用 HTTP 进行通信来检查指定的服务终结点。
   
 * 推送：
 
-  * [请求/响应 - 请求触发器](../connectors/connectors-native-reqres.md)允许逻辑应用接收 HTTP 请求并以某种方式实时响应事件  。
+  * [请求/响应 - 请求触发器](../connectors/connectors-native-reqres.md)允许逻辑应用接收 HTTP 请求并以某种方式实时响应事件。
 
-  * [HTTP Webhook 触发器](../connectors/connectors-native-webhook.md)通过向该服务注册回叫 URL 来订阅服务终结点   。 
+  * [HTTP Webhook 触发器](../connectors/connectors-native-webhook.md)通过向该服务注册回叫 URL 来订阅服务终结点。 
   这样一来，服务可只在指定事件发生时通知触发器，触发器便无需轮询服务。
 
 收到有关新数据或事件的通知后，触发器随即触发，创建新的逻辑应用工作流实例并在工作流中运行操作。 通过工作流可访问触发器中任何数据。 例如，“发布新推文时”触发器会将推文内容传递到逻辑应用运行。 
@@ -80,7 +80,7 @@ ms.locfileid: "68273089"
 
 * [使用 Visual Studio 创建和部署逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [在现有的逻辑应用上启用监视、日志记录和警报](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [创建自动部署模板](../logic-apps/logic-apps-create-deploy-template.md)
+* [自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>运行中的内容类型转换和变换
 
@@ -98,7 +98,7 @@ ms.locfileid: "68273089"
 * [从逻辑应用调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md)
 * [教程：使用 Azure Functions 触发逻辑应用](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
-* [教程：创建一个与 Azure 逻辑应用和 Microsoft 认知服务集成的函数以分析 Twitter post 情绪](../azure-functions/functions-twitter-email.md)
+* [教程：创建一个与 Azure 逻辑应用和 Azure 认知服务集成的函数, 用于分析 Twitter post 情绪](../azure-functions/functions-twitter-email.md)
 * [教程：通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [博客：从逻辑应用调用 SOAP 终结点](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 07/15/2019
-ms.openlocfilehash: fa64177dfa5bfadad5db4116224b94ffac2fadc0
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.date: 07/19/2019
+ms.openlocfilehash: 1cc8828f5a936b130480c2c7516d00b8bee6760f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233055"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357279"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用
 
@@ -29,7 +29,7 @@ ms.locfileid: "68233055"
 可在 [Azure 门户](https://portal.azure.com)中购买 Azure SQL 数据库预留容量。 购买 SQL 数据库预留容量：
 
 - 对于至少一个企业或个人订阅, 你必须以即用即付费率作为所有者角色。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 SQL 数据库预留容量。
 
 有关预留购买如何针对企业客户和即用即付客户进行计费的详细信息，请参阅[了解适用于企业合约的 Azure 预留使用情况](../billing/billing-understand-reserved-instance-usage-ea.md)和[了解即用即付订阅的 Azure 预留使用情况](../billing/billing-understand-reserved-instance-usage.md)。
@@ -43,7 +43,7 @@ ms.locfileid: "68233055"
 ## <a name="buy-sql-database-reserved-capacity"></a>购买 SQL 数据库预留容量
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”   > “预订”  。
+2. 选择“所有服务” > “预订”。
 3. 选择 "**添加**", 然后在 "购买预订" 窗格中选择 " **sql 数据库**", 为 sql 数据库购买新的保留。
 4. 填写必填字段。 与所选属性匹配的现有或新的单一数据库、弹性池或托管实例符合享受预留容量折扣的条件。 获得折扣的 SQL 数据库实例的实际数目取决于所选范围和数量。
     ![提交 SQL 数据库保留容量购买之前的屏幕截图](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
@@ -54,21 +54,21 @@ ms.locfileid: "68233055"
 |------------|--------------|
 |订阅|用于支付 SQL 数据库预留容量预订费用的订阅。 订阅付款方式是收取 SQL 数据库预留容量的预付费用。 订阅类型必须为企业协议（套餐编号：BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或使用即用即付定价的单个协议 (产品/服务编号:MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于使用即用即付定价的单个订阅, 将对订阅上的信用卡或发票付款方式收取费用。|
 |范围       |vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： <br/><br/>**共享**, vCore 预订折扣应用于计费上下文内任何订阅中运行的 SQL 数据库实例。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。<br/><br/>**单个订阅**, vCore 预订折扣将应用到此订阅中的 SQL 数据库实例。 <br/><br/>**单个资源组**, 预订折扣应用于所选订阅中的 SQL 数据库实例, 以及该订阅内的所选资源组。|
-|区域      |预订的 SQL 数据库预留容量涵盖的 Azure 区域。|
+|地区      |预订的 SQL 数据库预留容量涵盖的 Azure 区域。|
 |RootFile|要为其购买预留容量的 SQL 资源类型。|
 |性能层|SQL 数据库实例的服务层级。
 |术语        |一年或三年。|
 |数量    |在 SQL 数据库保留容量保留内购买的计算资源量。 该数量是所选 Azure 区域和正在保留的性能层中的 Vcore 数, 将获得计费折扣。 例如, 如果你正在运行或计划运行的 SQL 数据库实例的总计算能力为 "美国东部" 区域的 Gen5 16 Vcore, 则需将 "数量" 指定为 16, 以最大程度地提高所有实例的权益。 |
 
 1. 在**费用**部分查看 SQL 数据库预留容量的预订费用。
-1. 选择“购买”。 
-1. 选择“查看此预订”  以查看购买的状态。
+1. 选择“购买”。
+1. 选择“查看此预订”以查看购买的状态。
 
 ## <a name="cancellations-and-exchanges"></a>取消和更换
 
-如果需要取消你的 SQL 数据库预留容量预订，可能会产生 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要请求取消，请在 Azure 门户中访问该预留，并选择“退款”  创建支持请求。
+如果需要取消你的 SQL 数据库预留容量预订，可能会产生 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要取消, 请跳到 Azure 门户中的预订, 然后选择 "**退款**"。
 
-如果需要将 SQL 数据库预留容量预订更改为其他区域、部署类型、性能层或期限，可以将其更换为价值相等或更高的另一个预订。 新订购项目的期限开始日期不是从交换的订购项目延续。 1 年或 3 年期限从创建新订购项目开始算起。 若要请求交换，请在 Azure 门户中访问该预留，并选择“交换”  创建支持请求。
+如果需要将 SQL 数据库预留容量预订更改为其他区域、部署类型、性能层或期限，可以将其更换为价值相等或更高的另一个预订。 新订购项目的期限开始日期不是从交换的订购项目延续。 1 年或 3 年期限从创建新订购项目开始算起。 若要交换, 请在 Azure 门户中找到保留项, 然后选择 " **exchange**"。
 
 有关如何交换或退款预订的详细信息, 请参阅[保留交换和退款](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "68233055"
 
 vCore 大小灵活性有助于在同一性能层和区域内纵向扩展或收缩，且不会丢失预留容量权益。 SQL 数据库预留容量还提供了灵活性，使用户可以在正常操作过程中临时在池和单一数据库之间移动正在使用的数据库（在同一区域和性能层内），而不会失去预留容量权益。 通过在预订中保留一个未应用的缓冲区，你可以在不超出预算的情况下有效地管理性能峰值。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
+## <a name="need-help-contact-us"></a>需要帮助? 联系我们
 
 如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

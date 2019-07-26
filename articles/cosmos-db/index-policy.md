@@ -4,23 +4,23 @@ description: 了解如何配置和更改默认索引策略，以便自动编制�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 07/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 791779bfc2262bb13dc2c3a192d9c74ae69cb30e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 01e3e1f1c9bffee0604de1260e8e466f5b1d229d
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722536"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467874"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
 在 Azure Cosmos DB 中，每个容器都有一个确定了如何为容器项编制索引的索引策略。 新建容器的默认索引策略会对每个项的每个属性编制索引，对任何字符串或数字强制使用范围索引，对 Point 类型的任何 GeoJSON 对象强制使用空间索引。 这样，无需提前考虑索引和索引管理，就能获得较高的查询性能。
 
-在某些情况下，你可能想要替代此自动行为，以便更好地满足自己的要求。 可以通过设置容器索引策略的索引模式来自定义该策略，并可以包含或排除属性路径。  
+在某些情况下，你可能想要替代此自动行为，以便更好地满足自己的要求。 可以通过设置容器索引策略的索引模式来自定义该策略，并可以包含或排除属性路径。
 
 > [!NOTE]
-> 更新这篇文章中所述的索引策略的方法仅适用于 Azure Cosmos DB 的 SQL （核心） API。
+> 本文中所述的更新索引策略的方法仅适用于 Azure Cosmos DB 的 SQL (核心) API。
 
 ## <a name="indexing-mode"></a>索引模式
 
@@ -72,9 +72,9 @@ Azure Cosmos DB 支持两种索引模式：
 - 包含根路径可以选择性地排除不需要编制索引的路径。 这是建议的方法，因为这样可以让 Azure Cosmos DB 主动为可以添加到模型的任何新属性编制索引。
 - 排除根路径可以选择性地包含需要编制索引的路径。
 
-- 有关路径替换为包含的常规字符： 字母数字字符和 _ （下划线），无需转义围绕双引号括起来 （例如，"/ 路径 /？"） 的路径字符串。 对于包含其他特殊字符的路径，需要在双引号中转义路径字符串（例如 "/\"path-abc\"/?"）。 如果预期路径中会出现特殊字符，出于安全考虑，可以转义每个路径。 功能上，如果转义 Vs 不仅仅具有特殊字符的每个路径，它不起作用。
+- 对于包含以下字符的路径: 字母数字字符和 _ (下划线), 无需转义双引号的路径字符串 (例如 "/path/？")。 对于包含其他特殊字符的路径，需要在双引号中转义路径字符串（例如 "/\"path-abc\"/?"）。 如果预期路径中会出现特殊字符，出于安全考虑，可以转义每个路径。 在功能上, 如果你转义每个路径, 而不是包含特殊字符的路径, 则不会产生任何差别。
 
-- 除非 etag 添加到索引的包含路径，将从默认情况下，索引中排除的系统属性"etag"。
+- 默认情况下, 系统属性 "etag" 将从索引中排除, 除非将 etag 添加到要索引的包含路径。
 
 请参阅[此部分](how-to-manage-indexing-policy.md#indexing-policy-examples)中的索引策略示例。
 

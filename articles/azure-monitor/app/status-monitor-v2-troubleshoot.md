@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c61d54fc49ddd0a8a9ac5063c1a2a3edea66a899
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: e34beba32eace370664893225dd85b6f4b79c886
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326230"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424104"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>对状态监视器 v2 进行故障排除
 
@@ -78,11 +78,13 @@ HttpModule 无法注入到此共享配置中。
 
 ### <a name="iis-nested-applications"></a>IIS 嵌套应用程序
 
-我们不会在版本1.0 中检测到 IIS 中的嵌套应用程序, 我们将在[此处](https://github.com/microsoft/ApplicationInsights-Home/issues/369)跟踪此问题。
+我们不会在1.0 版的 IIS 中检测嵌套的应用程序。
+我们将在[此处](https://github.com/microsoft/ApplicationInsights-Home/issues/369)跟踪此问题。
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>高级 SDK 配置不可用。
 
-SDK 配置未向最终用户公开版本1.0 中, 我们会在[此处](https://github.com/microsoft/ApplicationInsights-Home/issues/375)跟踪此问题。
+SDK 配置未向最终用户公开, 版本为1.0。
+我们将在[此处](https://github.com/microsoft/ApplicationInsights-Home/issues/375)跟踪此问题。
 
     
     
@@ -116,7 +118,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 ```
 
 #### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>确定状态监视器 v2 模块的当前版本
-运行 `Get-ApplicationInsightsMonitoringStatus` 命令来显示有关该模块的以下信息：
+运行 `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` 命令来显示有关该模块的以下信息：
    - PowerShell 模块版本
    - Application Insights SDK 版本
    - PowerShell 模块的文件路径
@@ -140,21 +142,21 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 
 1. 从 [GitHub](https://github.com/Microsoft/perfview/releases) 下载 PerfView.exe 和 PerfView64.exe。
 2. 启动 PerfView64.exe。
-3. 展开“高级选项”  。
+3. 展开“高级选项”。
 4. 清除这些复选框：
     - **Zip**
     - **合并**
     - **.NET 符号集合**
-5. 设置以下“其他提供程序”  ：`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. 设置以下“其他提供程序”：`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
-#### <a name="collecting-logs"></a>收集日志
+#### <a name="collecting-logs"></a>正在收集日志
 
 1. 在具有管理员权限的命令控制台中，运行 `iisreset /stop` 命令以禁用 IIS 和所有 Web 应用。
-2. 在 PerfView 中，选择“开始收集”  。
+2. 在 PerfView 中，选择“开始收集”。
 3. 在具有管理员权限的命令控制台中，运行 `iisreset /start` 命令以启动 IIS。
 4. 尝试浏览到你的应用。
-5. 在应用加载后，请返回到 PerfView，然后选择“停止收集”  。
+5. 在应用加载后，请返回到 PerfView，然后选择“停止收集”。
 
 
 

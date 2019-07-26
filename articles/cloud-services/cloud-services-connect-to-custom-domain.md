@@ -2,24 +2,17 @@
 title: 将云服务连接到自定义域控制器 | Microsoft Docs
 description: 了解如何使用 PowerShell 和 AD 域扩展将 Web/辅助角色连接到自定义 AD 域
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 1e2d7c87-d254-4e7a-a832-67f84411ec95
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 8bee2e2038ee39c777e1ca09994ad21872d2029a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 97a24720e65539a68745a5a1bb3f13ce1cafb9be
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337334"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359184"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>将 Azure 云服务角色连接到 Azure 中托管的自定义 AD 域控制器
 我们先在 Azure 中设置一个虚拟网络 (VNet)。 然后将 Active Directory 域控制器（托管在 Azure 虚拟机上）添加到该 VNet。 接下来，将现有云服务角色添加预先创建的 VNet，然后将它们连接到域控制器。
@@ -34,7 +27,7 @@ ms.locfileid: "60337334"
 由云服务引用的网络必须为**经典虚拟网络**。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
-可以使用 Azure 门户或 PowerShell 在 Azure 中创建虚拟网络。 在本教程中，使用 PowerShell。 要使用 Azure 门户创建虚拟网络，请参阅[创建虚拟网络](../virtual-network/quick-create-portal.md)。 本文介绍创建虚拟网络（资源管理器），但必须创建用于云服务的虚拟网络（经典）。 为此，请在门户中选择“创建资源”，在“搜索”框中键入“虚拟网络”，然后按 Enter     。 在搜索结果的“所有内容”中，选择“虚拟网络”   。 在“选择部署模型”  下，选择“经典”  ，然后选择“创建”  。 然后可以执行本文中的步骤。
+可以使用 Azure 门户或 PowerShell 在 Azure 中创建虚拟网络。 在本教程中，使用 PowerShell。 要使用 Azure 门户创建虚拟网络，请参阅[创建虚拟网络](../virtual-network/quick-create-portal.md)。 本文介绍创建虚拟网络（资源管理器），但必须创建用于云服务的虚拟网络（经典）。 为此，请在门户中选择“创建资源”，在“搜索”框中键入“虚拟网络”，然后按 Enter。 在搜索结果的“所有内容”中，选择“虚拟网络”。 在“选择部署模型”下，选择“经典”，然后选择“创建”。 然后可以执行本文中的步骤。
 
 ```powershell
 #Create Virtual Network

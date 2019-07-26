@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4ab30f5f737b0f5188958c4686f82a0084c3ac35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 301ad4f940e6bd4eedb3a4df64e4740d29effe03
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059357"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406223"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 管理 HDInsight 群集
 
@@ -25,7 +25,7 @@ ms.locfileid: "67059357"
 
 [Apache Ambari](https://ambari.apache.org) 提供基于 [REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 的简单易用型 Web UI 来简化 Hadoop 群集的管理和监视。  基于 Linux 的 HDInsight 群集已按默认提供 Ambari。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * **HDInsight 上的 Hadoop 群集**。 请参阅 [Linux 上的 HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -37,9 +37,9 @@ ms.locfileid: "67059357"
 
 ## <a name="base-uri-for-ambari-rest-api"></a>Ambari Rest API 的基本 URI
 
- 在 HDInsight 上 Ambari REST API 基统一资源标识符 (URI) 是`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`，其中`CLUSTERNAME`是群集的名称。  URI 中的群集名称**区分大小写**。  虽然 URI 的完全限定的域名 (fqdn) 部分中的群集名称 (`CLUSTERNAME.azurehdinsight.net`) 是不区分大小写，在 URI 中的其他匹配项区分大小写。
+ HDInsight 上 Ambari REST API 的基本统一资源标识符 (URI) 为 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`，其中 `CLUSTERNAME` 是群集的名称。  URI 中的群集名称**区分大小写**。  虽然 URI (`CLUSTERNAME.azurehdinsight.net`) 的完全限定域名 (FQDN) 部分中的群集名称不区分大小写，但 URI 中的其他部分是区分大小写的。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 连接到 HDInsight 上的 Ambari 需要 HTTPS。 使用在群集创建过程中提供的管理员帐户名称（默认值是 **admin**）和密码。
 
@@ -161,7 +161,7 @@ $respObj.host_components.HostRoles.host_name
 
 本部分中的示例返回的 IP 地址不可直接通过 Internet 进行访问。 它们只可在包含 HDInsight 群集的 Azure 虚拟网络内访问。
 
-有关将 HDInsight 与虚拟网络配合使用的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)。
+有关使用 HDInsight 和虚拟网络的详细信息, 请参阅为[Hdinsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
 要查找 IP 地址，必须知道群集节点的内部完全限定的域名 (FQDN)。 在知悉 FQDN 后，可以获取主机的 IP 地址。 以下示例首先从 Ambari 查询所有主机节点的 FQDN，然后从 Ambari 查询每个主机的 IP 地址。
 
@@ -380,7 +380,7 @@ $resp.Content
     $resp.Content
     ```  
 
-    这些命令将 **newconfig.json** 文件的内容作为新的所需配置提交到群集。 该请求会返回一个 JSON 文档。 此文档中的 versionTag 元素应该与提交的版本相匹配，并且 configs 对象包含你请求的配置更改   。
+    这些命令将 **newconfig.json** 文件的内容作为新的所需配置提交到群集。 该请求会返回一个 JSON 文档。 此文档中的 versionTag 元素应该与提交的版本相匹配，并且 configs 对象包含你请求的配置更改。
 
 ### <a name="restart-a-service-component"></a>重启服务组件
 
@@ -451,7 +451,7 @@ $resp.Content
     ```
 
     > [!IMPORTANT]  
-    > 此 URI 返回的 `href` 值正在使用群集节点的内部 IP 地址。 若要使用它从群集外部的将为`10.0.0.18:8080`部分与群集的 FQDN。  
+    > 此 URI 返回的 `href` 值正在使用群集节点的内部 IP 地址。 若要从群集外部使用它, 请将`10.0.0.18:8080`部分替换为群集的 FQDN。  
 
 4. 验证请求。  
     编辑以下命令，将 `29` 替换为上一步骤返回的 `id` 实际值。  以下命令检索请求状态：

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746049"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348355"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
 
@@ -26,7 +26,7 @@ ms.locfileid: "60746049"
 
 ## <a name="symmetric-key-creation"></a>对称密钥创建
 
-默认情况下，当保存新注册且启用“自动生成密钥”选项时，设备预配服务会创建默认长度为 32 个字节的新对称密钥  。
+默认情况下，当保存新注册且启用“自动生成密钥”选项时，设备预配服务会创建默认长度为 32 个字节的新对称密钥。
 
 ![自动生成对称密钥](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "60746049"
 
 使用 IoT 中心支持的相同[安全令牌](../iot-hub/iot-hub-devguide-security.md#security-token-structure)来执行含设备预配服务的对称密钥证明，以标识设备。 这些安全令牌都是[共享访问签名 (SAS) 令牌](../service-bus-messaging/service-bus-sas.md)。 
 
-SAS 令牌具有使用对称密钥创建的哈希签名  。 设备预配服务会重新创建该签名，以验证在证明期间显示的安全令牌是否可信。
+SAS 令牌具有使用对称密钥创建的哈希签名。 设备预配服务会重新创建该签名，以验证在证明期间显示的安全令牌是否可信。
 
 SAS 令牌的格式如下：
 
@@ -46,13 +46,13 @@ SAS 令牌的格式如下：
 
 下面是每个令牌的组成元素：
 
-| 值 | 描述 |
+| ReplTest1 | 描述 |
 | --- | --- |
-| {signature} |HMAC-SHA256 签名字符串。 对于单个注册，此签名通过使用对称密钥（主密钥或辅助密钥）执行哈希而生成。 对于注册组，从注册组密钥中派生的密钥用于执行哈希。 哈希在以下格式的消息上执行：`URL-encoded-resourceURI + "\n" + expiry`。 **重要**：必须先从 base64 解码密钥，然后才能将其用于执行 HMAC-SHA256 计算。 此外，签名结果必须为 URL 编码。 |
+| {signature} |HMAC-SHA256 签名字符串。 对于单个注册，此签名通过使用对称密钥（主密钥或辅助密钥）执行哈希而生成。 对于注册组，从注册组密钥中派生的密钥用于执行哈希。 哈希在以下格式的消息上执行：`URL-encoded-resourceURI + "\n" + expiry`。 **重要说明**：必须先从 base64 解码密钥，然后才能将其用于执行 HMAC-SHA256 计算。 此外，签名结果必须为 URL 编码。 |
 | {resourceURI} |以设备预配服务实例的范围 ID 开头、可通过此令牌访问的注册终结点的 URI。 例如： `{Scope ID}/registrations/{Registration ID}` |
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
 | {URL-encoded-resourceURI} |小写资源 URI 的小写 URL 编码 |
-| {policyName} |此令牌所引用的共享访问策略名称。 使用对称密钥证明预配时使用的策略名称是“注册”  。 |
+| {policyName} |此令牌所引用的共享访问策略名称。 使用对称密钥证明预配时使用的策略名称是“注册”。 |
 
 当设备使用单个注册进行证明时，设备将使用在单个注册条目中定义的对称密钥创建 SAS 令牌的哈希签名。
 
@@ -75,7 +75,7 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 为设备定义注册 ID 后，注册组的对称密钥用于计算注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) 哈希，以生成派生的设备密钥。 可使用以下 C# 代码执行注册 ID 的哈希处理：
 
-```C#
+```csharp
 using System; 
 using System.Security.Cryptography; 
 using System.Text;  
@@ -92,7 +92,7 @@ public static class Utils
 } 
 ```
 
-```C#
+```csharp
 String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(masterKey), registrationId);
 ```
 
@@ -102,7 +102,7 @@ String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(mas
 
 理想情况下，在中心中派生和安装设备密钥。 此方法可保证不会在部署到设备的任何软件中包含组密钥。 向设备分配 MAC 地址或序列号后，可以派生密钥，并将其注入到设备，而无论制造商选择以何种方式来存储它。
 
-请考虑下图，该图显示了一个设备密钥表，这些设备密钥通过以下方式在中心中生成：通过组注册密钥 (K) 对每个设备注册 ID 进行哈希处理  。 
+请考虑下图，该图显示了一个设备密钥表，这些设备密钥通过以下方式在中心中生成：通过组注册密钥 (K) 对每个设备注册 ID 进行哈希处理。 
 
 ![从中心分配的设备密钥](./media/concepts-symmetric-key-attestation/key-diversification.png)
 

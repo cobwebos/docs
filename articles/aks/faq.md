@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 554eba87efc56e2dadb3fb2d0cb78cd8b7ea7237
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 7aff0fe47d1586b63157d5df7882fc338637f714
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302730"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381963"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -89,16 +89,16 @@ Azure 会按夜间计划自动将安全修补程序应用到群集中的 Linux �
 
 AKS 支持以下[许可控制器][admission-controllers]：
 
-- NamespaceLifecycle 
-- LimitRanger 
-- ServiceAccount 
-- DefaultStorageClass 
-- DefaultTolerationSeconds 
-- MutatingAdmissionWebhook 
-- ValidatingAdmissionWebhook 
-- ResourceQuota 
-- DenyEscalatingExec 
-- AlwaysPullImages 
+- NamespaceLifecycle
+- LimitRanger
+- ServiceAccount
+- DefaultStorageClass
+- DefaultTolerationSeconds
+- MutatingAdmissionWebhook
+- ValidatingAdmissionWebhook
+- ResourceQuota
+- DenyEscalatingExec
+- AlwaysPullImages
 
 目前, 无法在 AKS 中修改许可控制器的列表。
 
@@ -140,6 +140,50 @@ AKS 代理节点按标准 Azure 虚拟机计费, 因此, 如果你已为在 AKS 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>是否可以在订阅之间移动/迁移群集？
 
 当前不支持在订阅之间移动群集。
+
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>是否可以将我的 AKS 群集从当前的 azure 订阅移到另一个？ 
+
+不支持在 Azure 订阅之间移动 AKS 群集及其关联的资源。
+
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>为什么群集删除花费很长时间呢？ 
+
+大多数群集会在用户请求时删除;在某些情况下, 特别是在客户引入自己的资源组或执行跨 RG 任务删除时, 可能需要额外的时间或失败。 如果删除有问题, 请仔细检查是否在 RG 上没有锁, RG 之外的任何资源是否与 RG 关联, 等等。
+
+## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>如果我的 pod/部署状态为 "NodeLost" 或 "未知", 是否仍可升级我的群集？
+
+您可以, 但 AKS 不推荐这样做。 理想情况下, 应在群集状态为已知且正常时执行升级。
+
+## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>如果群集中的一个或多个节点处于不正常状态或已关闭, 是否可以执行升级？
+
+不, 请删除/删除处于失败状态的任何节点, 或在升级之前从群集中删除。
+
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>我运行了群集删除, 但出现了错误`[Errno 11001] getaddrinfo failed` 
+
+最常见的原因是, 具有一个或多个网络安全组 (Nsg) 仍在使用并与群集关联的用户。  请删除它们, 然后重试删除。
+
+## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>我运行了升级, 但现在我的 pod 处于崩溃循环, 并且准备情况探测失败了？
+
+请确认你的服务主体未过期。  请参阅：[AKS 服务主体](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)和[AKS 更新凭据](https://docs.microsoft.com/azure/aks/update-credentials)。
+
+## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>我的群集运行正常, 但突然无法预配 LoadBalancers、装载 Pvc 等。 
+
+请确认你的服务主体未过期。  请参阅：[AKS 服务主体](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)和[AKS 更新凭据](https://docs.microsoft.com/azure/aks/update-credentials)。
+
+## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>能否使用虚拟机规模集 Api 手动进行缩放？
+
+不支持, 不支持使用虚拟机规模集 Api 缩放操作。 使用 AKS Api (`az aks scale`)。
+
+## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>能否使用虚拟机规模集手动缩放到0个节点？
+
+不支持, 不支持使用虚拟机规模集 Api 缩放操作。
+
+## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>是否可以停止或取消分配所有 Vm？
+
+尽管 AKS 具有可经受此类配置并从中恢复的复原机制, 但这不是推荐的配置。
+
+## <a name="can-i-use-custom-vm-extensions"></a>能否使用自定义 VM 扩展？
+
+没有 AKS 是托管服务, 不支持操作 IaaS 资源。 安装自定义组件等。 请使用 kubernetes Api 和机制。 例如, 利用 Daemonset 安装所需的组件。
 
 <!-- LINKS - internal -->
 

@@ -2,24 +2,17 @@
 title: 云服务角色配置 XPath 速查表 | Microsoft Docs
 description: 可在云服务角色配置中用来将设置公开为环境变量的各种 XPath 设置。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c51e4493-0643-4d05-bc44-06c76bcbf7d1
+author: georgewallace
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 53a262af421dd986e6b70af173a6e8b3f7c06f64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: cd2bdc4fc4b2a135907851ca4d3034430618e0cd
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60527297"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359003"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>使用 XPath 将角色配置设置公共为环境变量
 在云服务辅助角色或 Web 角色服务定义文件中，可以将运行时配置值公开为环境变量。 支持以下 XPath 值（分别对应于 API 值）。
@@ -29,7 +22,7 @@ ms.locfileid: "60527297"
 ## <a name="app-running-in-emulator"></a>应用在模拟器中运行
 指示应用正在模拟器中运行。
 
-| Type | 示例 |
+| 类型 | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/Deployment/@emulated" |
 | 代码 |var x = RoleEnvironment.IsEmulated; |
@@ -37,7 +30,7 @@ ms.locfileid: "60527297"
 ## <a name="deployment-id"></a>部署 ID
 检索实例的部署 ID。
 
-| Type | 示例 |
+| 类型 | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/Deployment/@id" |
 | 代码 |var deploymentId = RoleEnvironment.DeploymentId; |
@@ -45,7 +38,7 @@ ms.locfileid: "60527297"
 ## <a name="role-id"></a>角色 ID
 检索实例的当前角色 ID。
 
-| Type | 示例 |
+| 类型 | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@id" |
 | 代码 |var id = RoleEnvironment.CurrentRoleInstance.Id; |
@@ -61,7 +54,7 @@ ms.locfileid: "60527297"
 ## <a name="fault-domain"></a>容错域
 检索实例的容错域。
 
-| Type | 示例 |
+| 类型 | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
 | 代码 |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
@@ -69,7 +62,7 @@ ms.locfileid: "60527297"
 ## <a name="role-name"></a>角色名称
 检索实例的角色名称。
 
-| Type | 示例 |
+| 类型 | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@roleName" |
 | 代码 |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
@@ -77,7 +70,7 @@ ms.locfileid: "60527297"
 ## <a name="config-setting"></a>配置设置
 检索指定配置设置的值。
 
-| Type | 示例 |
+| 类型 | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='Setting1']/@value" |
 | 代码 |var setting = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
@@ -85,7 +78,7 @@ ms.locfileid: "60527297"
 ## <a name="local-storage-path"></a>本地存储路径
 检索实例的本地存储路径。
 
-| Type | 示例 |
+| 类型 | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@path" |
 | 代码 |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1").RootPath; |
@@ -93,7 +86,7 @@ ms.locfileid: "60527297"
 ## <a name="local-storage-size"></a>本地存储大小
 检索实例的本地存储大小。
 
-| Type | 示例 |
+| 类型 | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@sizeInMB" |
 | 代码 |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1").MaximumSizeInMegabytes; |
@@ -101,7 +94,7 @@ ms.locfileid: "60527297"
 ## <a name="endpoint-protocol"></a>终结点协议
 检索实例的终结点协议。
 
-| Type | 示例 |
+| 类型 | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@protocol" |
 | 代码 |var prot = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].Protocol; |
@@ -109,7 +102,7 @@ ms.locfileid: "60527297"
 ## <a name="endpoint-ip"></a>终结点 IP
 获取指定终结点的 IP 地址。
 
-| Type | 示例 |
+| type | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@address" |
 | 代码 |var address = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Address |
@@ -117,7 +110,7 @@ ms.locfileid: "60527297"
 ## <a name="endpoint-port"></a>终结点端口
 检索实例的终结点端口。
 
-| Type | 示例 |
+| 类型 | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@port" |
 | 代码 |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Port; |

@@ -1,123 +1,123 @@
 ---
-title: SaaS 履行 API v2 |Azure Marketplace
-description: 此文章介绍了如何创建和管理 Azure Marketplace 和 AppSource 上的 SaaS 产品/服务使用关联的执行第 2 版 Api。
+title: SaaS 履单 API v2 |Azure Marketplace
+description: 本文介绍如何使用关联的履单 v2 Api 在 AppSource 和 Azure Marketplace 上创建和管理 SaaS 产品/服务。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 476aaacbe6f1bf6d1920df0f12599976bfcc27b7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a8196370a93a6ce8eed83002397c2f09efbc777f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701138"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358581"
 ---
-# <a name="saas-fulfillment-apis-version-2"></a>SaaS 履行 Api，版本 2 
+# <a name="saas-fulfillment-apis-version-2"></a>SaaS 履单 Api, 版本2 
 
-本文详细介绍了使合作伙伴能够销售 SaaS 应用程序 AppSource marketplace 和 Azure Marketplace 中的 Api。 这些 Api 都是在 AppSource 和 Azure Marketplace 上提供了适用于事务的 SaaS 要求。
+本文详细介绍了允许合作伙伴在 AppSource marketplace 和 Azure Marketplace 中销售其 SaaS 应用程序的 Api。 AppSource 和 Azure Marketplace 上的事务 SaaS 产品/服务需要这些 Api。
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>管理 SaaS 订阅生命周期
 
-Azure SaaS 管理整个生命周期的 SaaS 订阅购买。 它使用履行 Api 作为一种机制来驱动实际履行，更改为计划和订阅的合作伙伴的删除。 客户的帐单根据 Microsoft 维护的 SaaS 订阅的状态。 下图描绘了状态和状态之间驱动器所做的更改的操作。
+Azure SaaS 管理 SaaS 订阅购买的整个生命周期。 它使用履单 Api 作为一种机制来推动实际执行、对计划的更改和删除合作伙伴的订阅。 客户的帐单基于 Microsoft 维护的 SaaS 订阅的状态。 下图描述了驱动状态之间的更改的状态和操作。
 
 ![SaaS 订阅生命周期状态](./media/saas-subscription-lifecycle-api-v2.png)
 
 
 ### <a name="states-of-a-saas-subscription"></a>SaaS 订阅的状态
 
-下表列出了 SaaS 订阅，每个包括说明和序列关系图 （如果适用） 的预配状态。 
+下表列出了 SaaS 订阅的预配状态, 包括每个订阅的说明和序列图 (如果适用)。 
 
-#### <a name="provisioning"></a>设置
+#### <a name="provisioning"></a>预配
 
-当客户启动购买时，合作伙伴接收此信息在授权代码在客户交互的网页上使用的 URL 参数。 例如， `https://contoso.com/signup?token=..`，而在合作伙伴中心登录页面的 URL 是`https://contoso.com/signup`。 可以验证并通过调用解决 API 用于预配服务的详细信息交换授权代码。  完成一种 SaaS 服务预配后，它将发送的激活调用以指示执行已完成并可以按客户进行计费。 
+当客户启动购买时, 合作伙伴会在使用 URL 参数的客户交互式网页上的授权代码中收到此信息。 例如`https://contoso.com/signup?token=..`, 伙伴中心中的登陆页 URL 是`https://contoso.com/signup`。 可以通过调用解析 API 来验证和交换授权代码, 以获取预配服务的详细信息。  当 SaaS 服务完成预配后, 它将发送一个激活呼叫, 通知完成完成并且客户可计费。 
 
-下图显示了预配方案的 API 调用的顺序。  
+下图显示了预配方案的 API 调用序列。  
 
-![为预配 SaaS 服务的 API 调用](./media/saas-post-provisioning-api-v2-calls.png)
+![用于预配 SaaS 服务的 API 调用](./media/saas-post-provisioning-api-v2-calls.png)
 
-#### <a name="provisioned"></a>已预配
+#### <a name="provisioned"></a>已设置
 
 此状态是预配服务的稳定状态。
 
-##### <a name="provisioning-for-update"></a>更新预配 
+##### <a name="provisioning-for-update"></a>用于更新的设置 
 
-此状态表示对现有服务的更新处于挂起状态。 此类更新可由客户通过 marketplace 或 SaaS 服务 （仅适用于直接客户事务） 上启动。
+此状态表示对现有服务的更新处于挂起状态。 此类更新可以由客户启动, 无论是从 marketplace 还是 SaaS 服务 (仅适用于直接到客户的事务)。
 
-##### <a name="provisioning-for-update-when-its-initiated-from-the-marketplace"></a>（如果它从 marketplace 启动的） 更新的预配
+##### <a name="provisioning-for-update-when-its-initiated-from-the-marketplace"></a>预配更新 (从 marketplace 启动时)
 
-从 marketplace 启动更新时下, 图显示操作的序列。
+下图显示了从 marketplace 启动更新时的操作序列。
 
 ![从 marketplace 启动更新时的 API 调用](./media/saas-update-api-v2-calls-from-marketplace-a.png)
 
-##### <a name="provisioning-for-update-when-its-initiated-from-the-saas-service"></a>（如果它从 SaaS 服务启动的） 更新的预配
+##### <a name="provisioning-for-update-when-its-initiated-from-the-saas-service"></a>预配更新 (从 SaaS 服务启动时)
 
-更新从 SaaS 服务启动时下, 图显示的操作。 （webhook 调用将替换为对由 SaaS 服务启动的订阅的更新。） 
+下图显示了从 SaaS 服务启动更新时的操作。 (Webhook 调用由 SaaS 服务启动的订阅的更新替代。) 
 
-![API 调用更新从 SaaS 服务启动时](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
+![从 SaaS 服务启动更新时的 API 调用](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
 
-#### <a name="suspended"></a>Suspended
+#### <a name="suspended"></a>暂停
 
-此状态表明尚未收到的客户的付款。 通过策略，我们将提供一个宽限期之前取消订阅的客户。 当订阅处于此状态： 
+此状态表示尚未收到客户的付款。 按照策略, 我们将在取消订阅之前向客户提供宽限期。 当订阅处于此状态时: 
 
-- 作为合作伙伴，你可以选择降低或阻止对服务的用户的访问。
-- 订阅必须保存在可恢复状态，可以还原不会丢失任何数据或设置的全部功能。 
-- 希望在宽限期结束时执行 Api 通过此订阅或取消其预配请求获取复原请求。 
+- 作为合作伙伴, 你可以选择降级或阻止用户访问服务。
+- 订阅必须保留为可恢复状态, 该状态可以还原完整功能, 而不会丢失任何数据或设置。 
+- 在宽限期结束时, 应通过履行 Api 或取消预配请求来获取对此订阅的复原请求。 
 
-#### <a name="unsubscribed"></a>已取消的订阅 
+#### <a name="unsubscribed"></a>取消订阅 
 
-订阅达到此状态的显式客户请求或由于未付款 dues 的响应。 从合作伙伴的假定条件下是保留特定天数请求上进行恢复，然后删除客户的数据。 
+订阅达到此状态是为了响应明确的客户请求或由于未付款的情况。 合作伙伴的期望是保留客户的数据, 以便在特定天数的请求中恢复, 然后删除。 
 
 
 ## <a name="api-reference"></a>API 参考
 
-本部分介绍 SaaS*订阅 API*并*操作 API*。  值`api-version`参数在版本 2 Api 是`2018-08-31`。  
+本部分介绍 SaaS*订阅 api*和*操作 api*。  版本 2 api 的`api-version`参数值为。 `2018-08-31`  
 
 
 ### <a name="parameter-and-entity-definitions"></a>参数和实体定义
 
-下表列出了常见参数和执行 Api 使用实体的定义。
+下表列出了履行 Api 使用的通用参数和实体的定义。
 
 |     实体/参数     |     定义                         |
 |     ----------------     |     ----------                         |
 | `subscriptionId`         | SaaS 资源的 GUID 标识符。  |
-| `name`                   | 此资源的客户提供的友好名称。 |
-| `publisherId`            | 每个发布服务器的唯一字符串标识符 (例如:"contoso")。 |
-| `offerId`                | 每个产品/服务的唯一字符串标识符 (例如:"offer1")。  |
-| `planId`                 | 每个计划和 SKU 的唯一字符串标识符 (例如:"silver")。 |
+| `name`                   | 客户为此资源提供的友好名称。 |
+| `publisherId`            | 每个发布服务器的唯一字符串标识符 (例如: "contoso")。 |
+| `offerId`                | 每个产品/服务的唯一字符串标识符 (例如: "offer1")。  |
+| `planId`                 | 每个计划/SKU (例如: "白银") 的唯一字符串标识符。 |
 | `operationId`            | 特定操作的 GUID 标识符。  |
-|  `action`                | 在资源上，可以执行的操作`unsubscribe`， `suspend`， `reinstate`，或`changePlan`， `changeQuantity`， `transfer`。  |
+|  `action`                | 对资源执行的操作`unsubscribe`, 为`reinstate`、 `suspend`、或`changePlan` `changeQuantity`。 `transfer`  |
 |   |   |
 
-全局唯一标识符 ([Guid](https://en.wikipedia.org/wiki/Universally_unique_identifier)) 通常会自动生成的 128 位 （32-十六进制） 号。 
+全局唯一标识符 ([guid](https://en.wikipedia.org/wiki/Universally_unique_identifier)) 是通常自动生成的128位 (32-十六进制) 数字。 
 
 #### <a name="resolve-a-subscription"></a>解决订阅 
 
-解决终结点，发布服务器以解析 marketplace 令牌为持久资源 id。 资源 ID 是 SaaS 订阅的唯一标识符。 当用户重定向到合作伙伴的网站时，URL 将包含在查询参数中的令牌。 合作伙伴应使用此令牌并发出请求，以解决该问题。 响应包含唯一 SaaS 的订阅 ID、 名称、 产品/服务 ID 和资源的计划。 此令牌的有效期为一小时。 
+解析终结点使发布服务器能够将 marketplace 令牌解析为永久性资源 ID。 资源 ID 是 SaaS 订阅的唯一标识符。 将用户重定向到合作伙伴的网站时, URL 在查询参数中包含一个令牌。 合作伙伴应使用此令牌并发出请求来解决该问题。 响应包含唯一的 SaaS 订阅 ID、名称、服务 ID 和规划资源。 此令牌仅在一小时内有效。 
 
 ##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>发布<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
 
-*查询参数：*
+*查询参数:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  ApiVersion        |  用于此请求的操作的版本。  |
 
-*请求标头：*
+*请求标头:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json` |
-|  x-ms-requestid    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。 |
-|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 |
-|  x-ms-marketplace-token  |  当用户重定向到 SaaS 合作伙伴的网站从 Azure 的 URL 中的令牌的查询参数 (例如： `https://contoso.com/signup?token=..`)。 *注意：* URL 解码然后再使用它从浏览器的令牌值。  |
+|  x-ms-requestid    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值, 将在响应标头中生成并提供一个值。 |
+|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 例如: "`Bearer <access_token>`"。 |
+|  x-ms-marketplace-token  |  当用户从 Azure 重定向到 SaaS 合作伙伴的网站时, URL 中的令牌查询参数 (例如: `https://contoso.com/signup?token=..`)。 *注意：* URL 在使用之前对浏览器中的标记值进行解码。  |
 
-*响应代码：*
+*响应代码:*
 
-代码：200<br>
-解析为 SaaS 订阅的不透明的令牌。 响应正文：
+代码:200<br>
+将不透明标记解析为 SaaS 订阅。 响应正文:
  
 
 ```json
@@ -130,16 +130,16 @@ Azure SaaS 管理整个生命周期的 SaaS 订阅购买。 它使用履行 Api 
 }
 ```
 
-代码：400<br>
-请求错误。 x ms marketplace 令牌已丢失、 格式不正确，或已过期。
+代码:400<br>
+请求错误。 x-ms-缺少令牌、格式不正确或已过期。
 
-代码：403<br>
-未授权。 身份验证令牌未提供或无效，或请求尝试访问不属于当前发布服务器获取。
+代码:403<br>
+未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。
 
-代码：404<br>
+代码:404<br>
 未找到。
 
-代码：500<br>
+代码:500<br>
 内部服务器错误。
 
 ```json
@@ -153,35 +153,35 @@ Azure SaaS 管理整个生命周期的 SaaS 订阅购买。 它使用履行 Api 
 
 ### <a name="subscription-api"></a>订阅 API
 
-订阅 API 支持 HTTPS 执行以下操作：**获取**， **Post**，**修补程序**，并且**删除**。
+订阅 API 支持以下 HTTPS 操作:**Get**、 **Post**、 **Patch**和**Delete**。
 
 
 #### <a name="list-subscriptions"></a>列出订阅
 
-列出发布者的所有 SaaS 订阅。
+列出发布服务器的所有 SaaS 订阅。
 
 ##### <a name="getbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>获取<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
-*查询参数：*
+*查询参数:*
 
 |             |                   |
 |  --------   |  ---------------  |
 | ApiVersion  |  用于此请求的操作的版本。  |
 
-*请求标头：*
+*请求标头:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 | Content-Type       |  `application/json`  |
-| x-ms-requestid     |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。 |
-| x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+| x-ms-requestid     |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值, 将在响应标头中生成并提供一个值。 |
+| x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。  |
+| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 例如: "`Bearer <access_token>`"。  |
 
-*响应代码：*
+*响应代码:*
 
-代码：200 <br/>
-获取发布服务器和发布服务器的所有产品/服务，基于身份验证令牌的相应订阅。
-响应有效负载：<br>
+代码:200 <br/>
+基于身份验证令牌获取发布服务器的所有发布服务器和相应订阅。
+响应负载:<br>
 
 ```json
 {
@@ -216,12 +216,12 @@ Azure SaaS 管理整个生命周期的 SaaS 订阅购买。 它使用履行 Api 
 }
 ```
 
-继续标记将会显示仅在没有计划要检索的其他"页"。 
+仅当存在要检索的计划的其他 "页" 时, 继续标记才会出现。 
 
-代码：403 <br>
-未授权。 身份验证令牌未提供或无效，或请求尝试访问不属于当前发布服务器获取。 
+代码:403 <br>
+未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。 
 
-代码：500<br>
+代码:500<br>
 内部服务器错误。
 
 ```json
@@ -235,30 +235,30 @@ Azure SaaS 管理整个生命周期的 SaaS 订阅购买。 它使用履行 Api 
 
 #### <a name="get-subscription"></a>获取订阅
 
-获取指定的 SaaS 订阅。 使用此调用以获取许可证信息并计划信息。
+获取指定的 SaaS 订阅。 使用此调用获取许可证信息和计划信息。
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>获取<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`
 
-*查询参数：*
+*查询参数:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| subscriptionId     |   解决通过解决 API 令牌后获取的 SaaS 订阅的唯一标识符。   |
+| subscriptionId     |   在通过解析 API 解析令牌后获取的 SaaS 订阅的唯一标识符。   |
 |  ApiVersion        |   用于此请求的操作的版本。   |
 
-*请求标头：*
+*请求标头:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      |  `application/json`  |
-|  x-ms-requestid    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。 |
-|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 |
+|  x-ms-requestid    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值, 将在响应标头中生成并提供一个值。 |
+|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 例如: "`Bearer <access_token>`"。  |
 
-*响应代码：*
+*响应代码:*
 
-代码：200<br>
-获取从标识符 SaaS 订阅。 响应有效负载：<br>
+代码:200<br>
+从标识符获取 SaaS 订阅。 响应负载:<br>
 
 ```json
 Response Body:
@@ -287,13 +287,13 @@ Response Body:
 }
 ```
 
-代码：403<br>
-未授权。 身份验证令牌未提供或无效，或请求尝试访问不属于当前发布服务器获取。
+代码:403<br>
+未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。
 
-代码：404<br>
+代码:404<br>
 未找到。<br> 
 
-代码：500<br>
+代码:500<br>
 内部服务器错误。<br>
 
 ```json
@@ -304,31 +304,31 @@ Response Body:
     }  
 ```
 
-#### <a name="list-available-plans"></a>可用计划列表
+#### <a name="list-available-plans"></a>列出可用计划
 
-使用此调用来找出是否存在当前发布服务器的任何私有或公共产品/服务。
+使用此调用可了解当前发布服务器是否有任何私有或公共产品/服务。
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>获取<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
 
-*查询参数：*
+*查询参数:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  ApiVersion        |   用于此请求的操作的版本。  |
 
-*请求标头：*
+*请求标头:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     |  `application/json` |
-|   x-ms-requestid   |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。 |
-|  x-ms-correlationid  | 在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。 |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 |
+|   x-ms-requestid   |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值, 将在响应标头中生成并提供一个值。 |
+|  x-ms-correlationid  | 在客户端上执行的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。 |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例如: "`Bearer <access_token>`"。 |
 
-*响应代码：*
+*响应代码:*
 
-代码：200<br>
-获取客户的可用计划列表。 响应正文：
+代码:200<br>
+获取客户的可用计划的列表。 响应正文:
 
 ```json
 {
@@ -340,13 +340,13 @@ Response Body:
 }
 ```
 
-代码：404<br>
+代码:404<br>
 未找到。<br> 
 
-代码：403<br>
-未授权。 身份验证令牌未提供或无效，或请求尝试访问不属于当前发布服务器获取。 <br> 
+代码:403<br>
+未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。 <br> 
 
-代码：500<br>
+代码:500<br>
 内部服务器错误。<br>
 
 ```json
@@ -361,23 +361,23 @@ Response Body:
 
 ##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>发布<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
 
-*查询参数：*
+*查询参数:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  ApiVersion        |  用于此请求的操作的版本。  |
-| subscriptionId     | 通过使用解决 API 解析令牌后获得的 SaaS 订阅的唯一标识符。  |
+| subscriptionId     | 使用解析 API 解析令牌后获取的 SaaS 订阅的唯一标识符。  |
 
-*请求标头：*
+*请求标头:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json`  |
-|  x-ms-requestid    | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  x-ms-correlationid  | 在客户端上执行的操作的唯一字符串值。 此字符串将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 |
+|  x-ms-requestid    | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值, 将在响应标头中生成并提供一个值。  |
+|  x-ms-correlationid  | 在客户端上执行的操作的唯一字符串值。 此字符串将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例如: "`Bearer <access_token>`"。 |
 
-*请求有效负载：*
+*请求负载:*
 
 ```json
 {
@@ -386,21 +386,21 @@ Response Body:
 }
 ```
 
-*响应代码：*
+*响应代码:*
 
-代码：200<br>
+代码:200<br>
 激活订阅。<br>
 
-代码：400<br>
-错误的请求： 验证失败。
+代码:400<br>
+错误的请求: 验证失败。
 
-代码：403<br>
-未授权。 身份验证令牌未提供或无效，或请求尝试访问不属于当前发布服务器获取。
+代码:403<br>
+未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。
 
-代码：404<br>
+代码:404<br>
 未找到。
 
-代码：500<br>
+代码:500<br>
 内部服务器错误。
 
 ```json
@@ -412,29 +412,29 @@ Response Body:
 }
 ```
 
-#### <a name="change-the-plan-on-the-subscription"></a>更改计划的订阅
+#### <a name="change-the-plan-on-the-subscription"></a>更改订阅的计划
 
-更新的订阅计划。
+更新订阅的计划。
 
 ##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>修补程序<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
-*查询参数：*
+*查询参数:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  ApiVersion        |  用于此请求的操作的版本。  |
-| subscriptionId     | 通过使用解决 API 解析令牌后获得的 SaaS 订阅的唯一标识符。  |
+| subscriptionId     | 使用解析 API 解析令牌后获取的 SaaS 订阅的唯一标识符。  |
 
-*请求标头：*
+*请求标头:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json` |
-|  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。    |
-| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+|  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值, 将在响应标头中生成并提供一个值。  |
+|  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。    |
+| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例如: "`Bearer <access_token>`"。  |
 
-*请求有效负载：*
+*请求负载:*
 
 ```json
 Request Body:
@@ -443,27 +443,27 @@ Request Body:
 }
 ```
 
-*请求标头：*
+*请求标头:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| Operation-Location | 若要获取操作的状态的资源链接。   |
+| Operation-Location | 用于获取操作状态的资源链接。   |
 
-*响应代码：*
+*响应代码:*
 
-代码：202<br>
-若要更改计划的请求已被接受。 合作伙伴应轮询操作位置来确定成功或失败。 <br>
+代码:202<br>
+已接受更改计划的请求。 伙伴应轮询操作-位置以确定成功或失败。 <br>
 
-代码：400<br>
-错误的请求： 验证失败。
+代码:400<br>
+错误的请求: 验证失败。
 
-代码：403<br>
-未授权。 身份验证令牌未提供或无效，或请求尝试访问不属于当前发布服务器获取。
+代码:403<br>
+未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。
 
-代码：404<br>
+代码:404<br>
 未找到。
 
-代码：500<br>
+代码:500<br>
 内部服务器错误。
 
 ```json
@@ -476,31 +476,31 @@ Request Body:
 ```
 
 >[!Note]
->仅对计划或数量可以一次修补，而不是两者。 对与某一订阅编辑**更新**不在`allowedCustomerOperations`。
+>一次只能修补一个计划或数量, 而不是同时进行修补。 对包含**更新**的订阅的编辑内容`allowedCustomerOperations`不在中。
 
-#### <a name="change-the-quantity-on-the-subscription"></a>更改的订阅数量
+#### <a name="change-the-quantity-on-the-subscription"></a>更改订阅的数量
 
-更新订阅的数量。
+更新订阅上的数量。
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>修补程序：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>跳<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
-*查询参数：*
+*查询参数:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  ApiVersion        |  用于此请求的操作的版本。  |
-| subscriptionId     | 通过使用解决 API 解析令牌后获得的 SaaS 订阅的唯一标识符。  |
+| subscriptionId     | 使用解析 API 解析令牌后获取的 SaaS 订阅的唯一标识符。  |
 
-*请求标头：*
+*请求标头:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json` |
-|  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。    |
-| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+|  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值, 将在响应标头中生成并提供一个值。  |
+|  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。    |
+| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例如: "`Bearer <access_token>`"。  |
 
-*请求有效负载：*
+*请求负载:*
 
 ```json
 Request Body:
@@ -509,28 +509,28 @@ Request Body:
 }
 ```
 
-*请求标头：*
+*请求标头:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 | Operation-Location | 链接到资源以获取操作的状态。   |
 
-*响应代码：*
+*响应代码:*
 
-代码：202<br>
-更改数量的请求已被接受。 合作伙伴应轮询操作位置来确定成功或失败。 <br>
+代码:202<br>
+已接受更改数量的请求。 伙伴应轮询操作-位置以确定成功或失败。 <br>
 
-代码：400<br>
-错误的请求： 验证失败。
+代码:400<br>
+错误的请求: 验证失败。
 
 
-代码：403<br>
-未授权。 身份验证令牌未提供或无效，或请求尝试访问不属于当前发布服务器获取。
+代码:403<br>
+未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。
 
-代码：404<br>
+代码:404<br>
 未找到。
 
-代码：500<br>
+代码:500<br>
 内部服务器错误。
 
 ```json
@@ -543,45 +543,45 @@ Request Body:
 ```
 
 >[!Note]
->仅对计划或数量可以一次修补，而不是两者。 对与某一订阅编辑**更新**不在`allowedCustomerOperations`。
+>一次只能修补一个计划或数量, 而不是同时进行修补。 对包含**更新**的订阅的编辑内容`allowedCustomerOperations`不在中。
 
 #### <a name="delete-a-subscription"></a>删除订阅
 
-取消订阅，并删除指定的订阅。
+取消订阅并删除指定的订阅。
 
 ##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionid-api-versionapiversion"></a>DELETE<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`
 
-*查询参数：*
+*查询参数:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  ApiVersion        |  用于此请求的操作的版本。  |
-| subscriptionId     | 通过使用解决 API 解析令牌后获得的 SaaS 订阅的唯一标识符。  |
+| subscriptionId     | 使用解析 API 解析令牌后获取的 SaaS 订阅的唯一标识符。  |
 
-*请求标头：*
+*请求标头:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     |  `application/json` |
-|  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。   |
-|  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。   |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+|  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值, 将在响应标头中生成并提供一个值。   |
+|  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。   |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例如: "`Bearer <access_token>`"。  |
 
-*响应代码：*
+*响应代码:*
 
-代码：202<br>
-合作伙伴启动取消订阅 SaaS 订阅的调用。<br>
+代码:202<br>
+合作伙伴发起了对 SaaS 订阅的取消订阅调用。<br>
 
-代码：400<br>
-对与某一订阅删除**删除**不在`allowedCustomerOperations`。
+代码:400<br>
+删除订阅,**删除不在**中`allowedCustomerOperations`。
 
-代码：403<br>
-未授权。 身份验证令牌未提供或无效，或请求尝试访问不属于当前发布服务器获取。
+代码:403<br>
+未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。
 
-代码：404<br>
+代码:404<br>
 未找到。
 
-代码：500<br>
+代码:500<br>
 内部服务器错误。
 
 ```json
@@ -596,33 +596,33 @@ Request Body:
 
 ### <a name="operations-api"></a>操作 API
 
-操作 API 支持以下修补程序和 Get 操作。
+操作 API 支持以下修补和获取操作。
 
-#### <a name="list-outstanding-operations"></a>列出未完成操作 
+#### <a name="list-outstanding-operations"></a>列出未完成的操作 
 
 列出当前发布服务器的未完成操作。 
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>获取<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
-*查询参数：*
+*查询参数:*
 
 |             |        |
 |  ---------------   |  ---------------  |
 |    ApiVersion                |   用于此请求的操作的版本。                |
-| subscriptionId     | 通过使用解决 API 解析令牌后获得的 SaaS 订阅的唯一标识符。  |
+| subscriptionId     | 使用解析 API 解析令牌后获取的 SaaS 订阅的唯一标识符。  |
 
-*请求标头：*
+*请求标头:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     |  `application/json` |
-|  x-ms-requestid    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+|  x-ms-requestid    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值, 将在响应标头中生成并提供一个值。  |
+|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例如: "`Bearer <access_token>`"。  |
 
-*响应代码：*
+*响应代码:*
 
-代码：200<br> 获取挂起的订阅上的操作的列表。 响应有效负载：
+代码:200<br> 获取订阅上挂起的操作的列表。 响应负载:
 
 ```json
 [{
@@ -640,16 +640,16 @@ Request Body:
 ```
 
 
-代码：400<br>
-错误的请求： 验证失败。
+代码:400<br>
+错误的请求: 验证失败。
 
-代码：403<br>
-未授权。 身份验证令牌未提供或无效，或请求尝试访问不属于当前发布服务器获取。
+代码:403<br>
+未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。
 
-代码：404<br>
+代码:404<br>
 未找到。
 
-代码：500<br>
+代码:500<br>
 内部服务器错误。
 
 ```json
@@ -664,28 +664,28 @@ Request Body:
 
 #### <a name="get-operation-status"></a>获取操作状态
 
-使发布服务器上，若要跟踪指定触发的异步操作状态 (如`subscribe`， `unsubscribe`， `changePlan`，或`changeQuantity`)。
+允许发布服务器跟踪指定的触发异步操作的状态`subscribe`(例如`changePlan`、 `unsubscribe`、或`changeQuantity`)。
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>获取<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
-*查询参数：*
+*查询参数:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  ApiVersion        |  用于此请求的操作的版本。  |
 
-*请求标头：*
+*请求标头:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      |  `application/json`   |
-|  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+|  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值, 将在响应标头中生成并提供一个值。  |
+|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 例如: "`Bearer <access_token>`"。  |
 
-*响应代码：*<br>
+*响应代码:*<br>
 
-代码：200<br> 获取指定挂起 SaaS 操作。 响应有效负载：
+代码:200<br> 获取指定的挂起 SaaS 操作。 响应负载:
 
 ```json
 Response body:
@@ -704,16 +704,16 @@ Response body:
 
 ```
 
-代码：400<br>
-错误的请求： 验证失败。
+代码:400<br>
+错误的请求: 验证失败。
 
-代码：403<br>
-未授权。 身份验证令牌未提供或无效，或请求尝试访问不属于当前发布服务器获取。
+代码:403<br>
+未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。
  
-代码：404<br>
+代码:404<br>
 未找到。
 
-代码：500<br> 内部服务器错误。
+代码:500<br> 内部服务器错误。
 
 ```json
 {
@@ -726,28 +726,28 @@ Response body:
 ```
 #### <a name="update-the-status-of-an-operation"></a>更新操作的状态
 
-更新操作以指示成功或失败与提供的值的状态。
+使用提供的值更新操作的状态, 以指示成功或失败。
 
 ##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>修补程序<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
-*查询参数：*
+*查询参数:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   ApiVersion       |  用于此请求的操作的版本。  |
-| subscriptionId     | 通过使用解决 API 解析令牌后获得的 SaaS 订阅的唯一标识符。  |
-|  operationId       | 为正在完成该操作。 |
+| subscriptionId     | 使用解析 API 解析令牌后获取的 SaaS 订阅的唯一标识符。  |
+|  operationId       | 要完成的操作。 |
 
-*请求标头：*
+*请求标头:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     | `application/json`   |
-|   x-ms-requestid   |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。 |
-|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。 |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+|   x-ms-requestid   |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值, 将在响应标头中生成并提供一个值。 |
+|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值, 将在响应标头中生成并提供一个值。 |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例如: "`Bearer <access_token>`"。  |
 
-*请求有效负载：*
+*请求负载:*
 
 ```json
 {
@@ -758,23 +758,23 @@ Response body:
 
 ```
 
-*响应代码：*
+*响应代码:*
 
-代码：200<br> 若要通知合作伙伴端操作的完成的调用。 例如，此响应可能表示席位或计划的更改。
+代码:200<br> 对伙伴端的操作完成的通知。 例如, 此响应可以通知座位或计划的更改。
 
-代码：400<br>
-错误的请求： 验证失败。
+代码:400<br>
+错误的请求: 验证失败。
 
-代码：403<br>
-未授权。 身份验证令牌未提供或无效，或请求尝试访问不属于当前发布服务器获取。
+代码:403<br>
+未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。
 
-代码：404<br>
+代码:404<br>
 未找到。
 
-代码：409<br>
-冲突。 例如，已满足更高版本的事务。
+代码:409<br>
+合并. 例如, 已经满足了较新的事务。
 
-代码：500<br> 内部服务器错误。
+代码:500<br> 内部服务器错误。
 
 ```json
 {
@@ -788,7 +788,7 @@ Response body:
 
 ## <a name="implementing-a-webhook-on-the-saas-service"></a>在 SaaS 服务上实现 webhook
 
-发布服务器必须实现以主动通知用户其服务中的更改此 SaaS 服务中的 webhook。 SaaS 服务需要调用 API 进行验证和授权对 webhook 通知采取操作之前的操作。
+发布者必须在此 SaaS 服务中实现 webhook, 以主动向用户通知其服务中的更改。 SaaS 服务应在对 webhook 通知执行操作之前调用操作 API 进行验证和授权。
 
 ```json
 {
@@ -805,34 +805,34 @@ Response body:
 
 }
 ```
-其中可以将下列任一操作： 
-- `unsubscribe` （当该资源已被删除）
-- `changePlan` （当更改计划操作已完成）
-- `changeQuantity` （当更改数量操作已完成）
-- `suspend` （当资源已被挂起）
-- `reinstate` （当资源具有已恢复暂挂后）
+其中, 操作可以是以下项之一: 
+- `unsubscribe`(删除资源时)
+- `changePlan`(更改计划操作完成后)
+- `changeQuantity`(更改数量操作完成后)
+- `suspend`(资源挂起时)
+- `reinstate`(在挂起后恢复资源时)
 
-其中状态可以是以下值之一： 
+其中, 状态可以是下列其中一项: 
 - **NotStarted** <br>
  - **InProgress** <br>
-- 成功  <br>
-- 失败  <br>
+- 成功 <br>
+- 失败 <br>
 - **Conflict** <br>
 
-在 webhook 通知中，可操作状态是任一**Succeeded**并**失败**。 操作的生命周期是从**NotStarted**终端状态等**Succeeded**，**失败**，或者**冲突**。 如果你收到**NotStarted**或**InProgress**，继续执行操作之前，该操作进入终止状态之前请求通过获取 API 的状态。 
+在 webhook 通知中, 可操作的状态为 "**成功**" 和 "**失败**"。 操作的生命周期是从**NotStarted**到终端状态, 例如**成功**、**失败**或**冲突**。 如果收到**NotStarted**或**InProgress**, 请继续通过 GET API 请求状态, 直到操作在执行操作之前进入终端状态。 
 
 ## <a name="mock-apis"></a>模拟 Api
 
-我们的模拟 Api 可用于帮助你开始进行开发，特别是原型设计也作为测试项目。 
+您可以使用模拟 Api 来帮助您开始开发、特别设计原型以及测试项目。 
 
-主机终结点： `https://marketplaceapi.microsoft.com/api` （不要求进行验证）<br/>
-API 版本： `2018-09-15`<br/>
-示例 URI: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15` <br/>
+主机终结点`https://marketplaceapi.microsoft.com/api` : (不需要进行身份验证)<br/>
+API 版本:`2018-09-15`<br/>
+示例 URI:`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15` <br/>
 
-API 终结点路径是相同的模拟和真实的 api，但不同的 API 版本。 版本是`2018-09-15`为 mock 版本和`2018-08-31`生产版本。 
+模拟和真实 Api 中的 API 终结点路径是相同的, 但 API 版本不同。 版本`2018-09-15`适用于模拟版本和`2018-08-31`生产版本。 
 
-在本文中的 API 调用的任何可对模拟主机终结点。 一般情况下，希望获取返回作为响应的模拟数据。 对模拟 API 上的更新订阅方法的调用始终返回 500。 
+本文中的任何 API 调用均可与 mock 主机终结点建立。 通常情况下, 应将模拟数据恢复为响应。 对模拟 API 的更新订阅方法的调用始终返回500。 
 
 ## <a name="next-steps"></a>后续步骤
 
-开发人员可以以编程方式检索和使用操作工作负载、 产品/服务，以及发布服务器配置文件[云合作伙伴门户 REST Api](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)。
+开发人员还可以使用[云合作伙伴门户 REST api](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)以编程方式检索和处理工作负荷、产品/服务和发布者配置文件。

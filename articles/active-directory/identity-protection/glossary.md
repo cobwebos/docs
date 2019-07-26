@@ -2,45 +2,40 @@
 title: Azure Active Directory 标识保护术语表 | Microsoft Docs
 description: Azure Active Directory 标识保护术语表
 services: active-directory
-keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略, 术语表
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 01/15/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c371254f344b321969dcc9b3c36212b7536aa95a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6751fe74bfd9b8a07aec2263582d9f1a4bc0b2ac
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109003"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333987"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory 标识保护术语表
+
 ### <a name="at-risk-user"></a>有风险（用户）
 具有一个或多个活动风险事件的用户。 
 
 ### <a name="atypical-sign-in-location"></a>异常登录位置
 从特定用户、类似用户或租户不常用的地理位置登录。
 
-### <a name="azure-ad-identity-protection"></a>Azure AD 标识保护
+### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
 Azure Active Directory 的安全模块，提供合并的视图用于洞察影响组织标识的风险事件和潜在漏洞。
 
-### <a name="conditional-access"></a>条件性访问
-用于保护资源访问的策略。 条件性访问规则存储在 Azure Active Directory 中，并授予对资源的访问之前由 Azure AD 进行评估。  示例规则包括根据用户的位置、设备运行状况或用户身份验证方法来限制访问。
+### <a name="conditional-access"></a>条件访问
+用于保护资源访问的策略。 条件性访问规则存储在 Azure Active Directory 中, 并在授予对资源的访问权限之前 Azure AD 进行评估。  示例规则包括根据用户的位置、设备运行状况或用户身份验证方法来限制访问。
 
 ### <a name="credentials"></a>凭据
 包含标识以及用于获取访问本地和网络资源的身份证明的信息。 凭据的示例包括用户名和密码、智能卡与证书。
 
-### <a name="event"></a>事件
+### <a name="event"></a>Event
 Azure Active Directory 中的活动记录。
 
 ### <a name="false-positive-risk-event"></a>误报（风险事件）
@@ -94,7 +89,7 @@ Azure Active Directory 中的活动记录。
 ### <a name="remediated-risk-event"></a>已补救（风险事件）
 “标识保护”自动设置的风险事件状态，指示已使用此风险事件类型的标准补救措施来补救此风险事件。 例如，当用户密码重置时，指示以前的密码已遭入侵的风险事件可自动补救。
 
-### <a name="remediation"></a>补救
+### <a name="remediation"></a>更正
 保护以前疑似或已知遭到入侵的标识或设备的措施。 补救措施可让标识或设备还原到安全状态，解决以前与标识或设备关联的风险事件。
 
 ### <a name="resolved-risk-event"></a>已解决（风险事件）
@@ -146,7 +141,7 @@ Azure Active Directory 中的活动记录。
 请参阅“风险级别（登录）”
 
 ### <a name="sign-in-risk-policy"></a>登录风险策略
-条件性访问策略的评估特定登录的风险，并根据预先定义的条件和规则应用缓解措施。
+一种条件性访问策略, 可评估特定登录的风险, 并根据预定义的条件和规则来应用缓解措施。
 
 ### <a name="user-compromise-risk"></a>用户泄漏风险
 请参阅“风险级别（用户入侵）”
@@ -155,7 +150,7 @@ Azure Active Directory 中的活动记录。
 请参阅“风险级别（用户入侵）”。
 
 ### <a name="user-risk-policy"></a>用户风险策略
-条件性访问策略，登录会考虑应用缓解措施根据预先定义的条件和规则。
+一种条件性访问策略, 可考虑登录并根据预定义的条件和规则来应用缓解措施。
 
 ### <a name="users-flagged-for-risk"></a>已标记为存在风险的用户
 存在活动或已补救的风险事件的用户
@@ -163,6 +158,5 @@ Azure Active Directory 中的活动记录。
 ### <a name="vulnerability"></a>漏洞
 Azure Active Directory 中导致目录容易遭到入侵或威胁的配置或状态。
 
-## <a name="see-also"></a>另请参阅
-* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-
+## <a name="see-also"></a>请参阅
+* [Azure Active Directory 标识保护](../active-directory-identityprotection.md)

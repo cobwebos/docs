@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 5eb3e94ff65e8a8b74f357a4cb8a517fd3837c5a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1bfc415b2e4dbc66e2afeae73b78079fb027a60c
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871816"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358842"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>在 Azure 门户 (预览版) 中创建和探索自动化机器学习试验
 
@@ -30,7 +30,7 @@ ms.locfileid: "67871816"
 
 * Azure 机器学习服务工作区。 请参阅[创建 Azure 机器学习服务工作区](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 导航到工作区的左窗格。 选择 "创作 (预览)" 部分下的 "自动机器学习。
 
@@ -180,7 +180,7 @@ ms.locfileid: "67871816"
 
 ### <a name="view-training-run-details"></a>查看定型运行详细信息
 
-向下钻取任何输出模型, 以查看定型运行详细信息, 如性能指标和分布图。 [了解有关图表的详细信息](how-to-track-experiments.md#understanding-automated-ml-charts)。
+向下钻取任何输出模型, 以查看定型运行详细信息, 如性能指标和分布图。 [了解有关图表的详细信息](how-to-understand-automated-ml.md)。
 
 ![迭代详细信息](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -213,7 +213,7 @@ ms.locfileid: "67871816"
 
     您可以通过其描述来确定模型, 其中包括运行 ID、迭代号, 格式如下: *< Run_ID > _ < Iteration_number > _Model*
 
-    ![机型创建映像](media/how-to-create-portal-experiments/model-create-image.png)
+    ![模型:创建映像](media/how-to-create-portal-experiments/model-create-image.png)
 
 1. 输入图像的名称。 
 1. 选择 "计分文件" 框旁的 "**浏览**" 按钮, 上传先前下载的评分文件 (scoring.py)。
@@ -236,11 +236,12 @@ ms.locfileid: "67871816"
 
      ![幅创建部署](media/how-to-create-portal-experiments/images-create-deployment.png)
 
-1. 完成后，选择“创建”。  部署模型可能需要几分钟时间才能完成运行。
+1. 完成后，选择“创建”。 部署模型可能需要几分钟时间才能完成运行。
 
 1. 就这么简单！ 你具有可用于生成预测的操作 web 服务。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [了解有关自动化机器学习](concept-automated-ml.md)和 Azure 机器学习的详细信息。
+* [了解自动化机器学习结果](how-to-understand-automated-ml.md)。
 * [了解如何使用 web 服务](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service)。

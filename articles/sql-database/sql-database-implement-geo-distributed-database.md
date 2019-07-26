@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 6022c016b83ffe1362db4d826a5ee4397afd4128
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5be3efa5544e47f40ab9f0a31f6658b134977e2
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60338953"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444527"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>教程：实现地理分散的数据库
 
@@ -30,7 +30,7 @@ ms.locfileid: "60338953"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -39,15 +39,15 @@ ms.locfileid: "60338953"
 若要完成本教程，请确保已安装以下各项：
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- Azure SQL 数据库。 若要创建一个，请使用以下各项：
+- Azure SQL 数据库中的单一数据库。 若要创建一个，请使用以下各项：
   - [门户](sql-database-single-database-get-started.md)
   - [CLI](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)
 
   > [!NOTE]
-  > 本教程使用 AdventureWorksLT 示例数据库  。
+  > 本教程使用 AdventureWorksLT 示例数据库。
 
-- Java 和 Maven，请参阅[使用 SQL Server 生成应用](https://www.microsoft.com/sql-server/developer-get-started/)，突出显示“Java”并选择环境，然后按步骤操作  。
+- Java 和 Maven，请参阅[使用 SQL Server 生成应用](https://www.microsoft.com/sql-server/developer-get-started/)，突出显示“Java”并选择环境，然后按步骤操作。
 
 > [!IMPORTANT]
 > 请务必设置防火墙规则，以使用本教程中执行步骤的计算机的公共 IP 地址。 数据库级防火墙规则会自动复制到辅助服务器。
@@ -102,7 +102,7 @@ ms.locfileid: "60338953"
        -FailoverGroupName $myfailovergroupname
    ```
 
-还可以通过选择数据库，然后选择“设置” > “异地复制”，在 Azure 门户中更改异地复制设置   。
+还可以通过选择数据库，然后选择“设置” > “异地复制”，在 Azure 门户中更改异地复制设置。
 
 ![异地复制设置](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
@@ -114,7 +114,7 @@ ms.locfileid: "60338953"
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. 键入“Y”，然后按 ENTER   。
+1. 键入“Y”，然后按 ENTER。
 
 1. 将目录切换到新项目。
 
@@ -122,7 +122,7 @@ ms.locfileid: "60338953"
    cd SqlDbSample
    ```
 
-1. 使用喜爱的编辑器，打开项目文件夹中的 pom.xml 文件夹  。
+1. 使用喜爱的编辑器，打开项目文件夹中的 pom.xml 文件夹。
 
 1. 通过添加以下 `dependency` 部分添加 Microsoft JDBC Driver for SQL Server。 依赖项必须粘贴在更大的 `dependencies` 部分中。
 
@@ -164,9 +164,9 @@ ms.locfileid: "60338953"
    </build>
    ```
 
-1. 保存并关闭 pom.xml 文件  。
+1. 保存并关闭 pom.xml 文件。
 
-1. 打开 App.java 文件（位于 ..\SqlDbSample\src\main\java\com\sqldbsamples）并将内容替换为以下代码  ：
+1. 打开 App.java 文件（位于 ..\SqlDbSample\src\main\java\com\sqldbsamples）并将内容替换为以下代码：
 
    ```java
    package com.sqldbsamples;
@@ -272,7 +272,7 @@ ms.locfileid: "60338953"
    }
    ```
 
-1. 保存并关闭 App.java 文件  。
+1. 保存并关闭 App.java 文件。
 
 1. 在命令控制台中运行以下命令：
 

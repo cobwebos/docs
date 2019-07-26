@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure 帐单
-description: 了解如何阅读并理解您的使用情况和你的 Azure 订阅的帐单。
+description: 了解如何阅读并理解 Azure 订阅的使用情况和帐单。
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: c8b0d6febbffb80cb4e8bcbf62febb51d059282c
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 69659e700ee47c8961ec21f0fb23573e13d72588
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490317"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383627"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>了解 Microsoft Azure 帐单
-若要了解 Azure 帐单，您比较发票与每日使用情况明细文件和 Azure 门户中的成本管理报表。
+若要了解 Azure 帐单, 请将发票与详细的每日使用情况文件和 Azure 门户中的成本管理报表进行比较。
 
-本文不适用于签署企业协议的 Azure 客户（EA 客户）。 如果你是 EA 客户，请参阅[具有企业协议的 Azure 客户了解帐单](billing-understand-your-bill-ea.md)。
+本文不适用于签署企业协议的 Azure 客户（EA 客户）。 如果你是 EA 客户, 请参阅[使用企业协议了解 Azure 客户的帐单](billing-understand-your-bill-ea.md)。
 
-本文不能应用于 Azure 客户[Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。 如果你有 Microsoft 客户协议，请参阅[了解 Microsoft 客户协议发票上的 Azure 费用](billing-mca-understand-your-bill.md)。
+本文不适用于具有[Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)的 Azure 客户。 如果你有 Microsoft 客户协议, 请参阅[了解你的 Microsoft 客户协议发票上的 Azure 费用](billing-mca-understand-your-bill.md)。
 
 有关 Azure 云解决方案提供商 (Azure CSP) 计划中的计费原理的说明（包括结算周期，定价和使用情况），请参阅 [Azure CSP 计费概述](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/)。
 
@@ -35,52 +35,52 @@ ms.locfileid: "67490317"
 
 ### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>选项 1：通过使用情况文件比较使用情况和成本
 
-使用情况明细 CSV 文件按计费周期和每日使用情况显示费用信息。 若要下载或查看该文件，请参阅[获取 Azure 帐单发票和每日使用情况数据](billing-download-azure-invoice-daily-usage-date.md)。
+使用情况明细 CSV 文件按计费周期和每日使用情况显示费用信息。 若要下载或查看该文件, 请参阅[获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)。
 
 在计量级别显示使用费。 下方的术语在发票和使用情况明细文件中表示同一事物。 例如，发票中的计费周期等同于使用情况明细文件中的计费周期。
 
  | 发票（PDF） | 使用情况明细 (CSV)|
  | --- | --- |
-|计费周期 | 计费周期 |
+|计费周期 | 计费期间 |
  |名称 |测定仪类别 |
- |Type |测定仪子类别 |
- |Resource |测定仪名称 |
- |区域 |测定仪区域 |
- |已耗用 |已耗用数量 |
- |附送 |附送数量 |
- |可计费 |超额数量 |
+ |类型 |测定仪子类别 |
+ |Resource |计量名称 |
+ |地区 |计量区域 |
+ |已耗用 |已使用数量 |
+ |已包含 |已包含数量 |
+ |可计费 |超额 |
 
-**使用费**发票的部分显示计费周期内使用每种计量的总价值。 例如下, 图显示了 Azure 计划程序服务的使用费。
+发票的 "**使用费**" 部分显示了在计费期间使用的每个计量的总价值。 例如, 下图显示了 Azure 计划程序服务的使用费用。
 
 ![发票使用费](./media/billing-understand-your-bill/1.png)
 
-在使用情况明细 CSV 的“帐目报告”部分也显示了同样的费用  。 “已使用”量和“值”都与发票上的数据匹配   。
+在使用情况明细 CSV 的“帐目报告”部分也显示了同样的费用。 “已使用”量和“值”都与发票上的数据匹配。
 
 ![CSV 使用费](./media/billing-understand-your-bill/2.png)
 
-若要查看费用的日常明细，请转到**每日使用情况**CSV 文件的部分。 筛选*计划程序*下*计量类别*。 可以查看计量的使用日期和使用量。 *资源*并*资源组*信息也显示进行比较。 *已使用*值应将最多添加并匹配发票上显示的内容。
+若要查看每日计费, 请访问 CSV 文件的 "**每日使用情况**" 部分。 在 "计量"*类别*下筛选*计划程序*。 可以查看计量的使用日期和使用量。 还显示了*资源*和*资源组*信息以进行比较。 *使用*的值应增加到并匹配发票上显示的内容。
 
 ![CSV 的“每日使用情况”部分](./media/billing-understand-your-bill/3.png)
 
-若要获取每日成本，请将“报表”部分中的“已使用”量与“费率”值相乘    。
+若要获取每日成本，请将“报表”部分中的“已使用”量与“费率”值相乘。
 
 若要了解更多信息，请参阅以下文章：
 
 - [了解 Azure 发票](billing-understand-your-invoice.md)
 - [了解 Azure 的详细使用情况](billing-understand-your-invoice.md)
 
-### <a name="option-2-compare-the-usage-and-costs-in-the-azure-portal"></a>选项 2：使用情况和在 Azure 门户中的成本相比较
+### <a name="option-2-compare-the-usage-and-costs-in-the-azure-portal"></a>选项 2：比较 Azure 门户的使用情况和成本
 
 还可以通过 Azure 门户验证费用。 若要快速了解发票上的使用情况和费用，请查看成本管理图表。
 
 1. 在 Azure 门户中，转到 [订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 选择你的订阅 >“成本分析”。 
-1. 按“时间范围”筛选。 
+1. 选择你的订阅 >“成本分析”。
+1. 按“时间范围”筛选。
 1. 若要继续以前的示例，请查看 Azure 计划程序服务的使用费。
 
    ![Azure 门户中成本分析视图](./media/billing-understand-your-bill/4.png)
 
-1. 选择显示的费用如何查看每日成本明细行。
+1. 选择显示每日成本细分的行。
 
    ![Azure 门户中的成本历史记录视图](./media/billing-understand-your-bill/5.png)
 
@@ -94,9 +94,9 @@ ms.locfileid: "67490317"
 
 ## <a name="resources-billed-by-usage-meters"></a>资源按使用计量计费
 
-Azure 不直接根据资源成本计费。 资源费用按一个或多个计量来计算。 指标用于跟踪其整个生存期内的资源的使用情况。 随后会使用这些计量指标来计算费用。
+Azure 不直接根据资源成本计费。 资源费用按一个或多个计量来计算。 计量用于跟踪资源在其整个生存期内的使用情况。 随后会使用这些计量指标来计算费用。
 
-例如，创建单个 Azure 资源（例如虚拟机）时，会创建一个或多个计量实例。 指标用于跟踪一段时间内对资源的使用。 每个计量都会发送使用情况记录，这些记录由 Azure 用来计算账单费用。
+例如，创建单个 Azure 资源（例如虚拟机）时，会创建一个或多个计量实例。 计量用于跟踪资源在一段时间内的使用情况。 每个计量都会发送使用情况记录，这些记录由 Azure 用来计算账单费用。
 
 例如，如果在 Azure 中创建了一个虚拟机 (VM)，那么可能会创建以下计量指标来跟踪其使用情况：
 
@@ -111,17 +111,17 @@ Azure 不直接根据资源成本计费。 资源费用按一个或多个计量�
 - 标准 IO 块 Blob 写入
 - 标准 IO 块 Blob 删除
 
-创建 VM 时，每种计量开始发出使用情况记录。 此使用情况和计量的价格在 Azure 计量系统中进行跟踪。
+创建 VM 后, 每个计量开始发出使用记录。 此使用情况和计量的价格在 Azure 计量系统中进行跟踪。
 
 ## <a name="payment"></a>支付账单
 
-如果已将信用卡或借记卡设置为付款方式，则会在计费周期结束后的 10 天内自动进行付款。 在信用卡对帐单上，行项会显示 **MSFT Azure**。
+如果将信用卡设置为付款方式, 则会在计费周期结束后10天内自动对付款进行收费。 在信用卡对帐单上，行项会显示 **MSFT Azure**。
 
-若要更改用于付款的信用卡或借记卡，请参阅[添加、更新或删除用于 Azure 的信用卡或借记卡](billing-how-to-change-credit-card.md)。
+若要更改付费的信用卡, 请参阅[添加、更新或删除 Azure 信用卡](billing-how-to-change-credit-card.md)。
 
 如果[按发票付款](billing-how-to-pay-by-invoice.md)，可将款项寄送到发票底部列出的地点。
 
-若要检查您的付款状态[创建支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+若要检查付款状态, 请[创建支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 
 ## <a name="tips-for-cost-management"></a>成本管理建议
@@ -132,14 +132,14 @@ Azure 不直接根据资源成本计费。 资源费用按一个或多个计量�
   - [每项服务的详细定价信息](https://azure.microsoft.com/pricing/)
 - [在 Azure 门户中定期查看使用情况和成本](billing-getting-started.md#costs)。
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+## <a name="need-help-contact-us"></a>需要帮助? 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如果你有疑问或需要帮助, 请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解详情
 
 - [获取 Azure 计费发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)
 - [了解 Microsoft Azure 发票的条款](billing-understand-your-invoice.md)

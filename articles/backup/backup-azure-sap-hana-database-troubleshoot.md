@@ -1,25 +1,24 @@
 ---
 title: 使用 Azure 备份在备份 SAP HANA 数据库时排查错误 |Microsoft Docs
 description: 介绍如何对使用 Azure 备份来备份 SAP HANA 数据库时可能发生的常见错误进行故障排除。
-services: backup
 author: pvrk
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 07/22/2019
 ms.author: pullabhk
-ms.openlocfilehash: 32e814ea83f30b48af5ce507ce250f37a34390da
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 221b669c141681749709d6a5a406c78499f21032
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249492"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465476"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上 SAP HANA 数据库的备份问题
 
 本文提供了有关在 Azure 虚拟机上备份 SAP HANA 数据库的疑难解答信息。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 作为[先决条件](backup-azure-sap-hana-database.md#prerequisites)的一部分, 请确保预先注册脚本已在安装了 HANA 的虚拟机上运行。
 
@@ -61,12 +60,12 @@ ms.locfileid: "68249492"
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-data| 错误消息 | 可能的原因 | 建议的操作 |
+data| 错误消息 | 可能的原因 | 推荐的操作 |
 |---|---|---|
 | 未能连接到 HANA 系统。 验证你的系统是否已启动并正在运行。| Azure 备份服务无法连接到 HANA, 因为 HANA 数据库已关闭。 或 HANA 正在运行, 但不允许 Azure 备份服务连接。 | 检查 HANA 数据库或服务是否已关闭。 如果 HANA 数据库或服务已启动并正在运行, 请检查是否[已设置所有权限](#setting-up-permissions)。 如果缺少该密钥, 请重新运行预先注册脚本来创建新密钥。 |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
-| 错误消息 | 可能的原因 | 建议的操作 |
+| 错误消息 | 可能的原因 | 推荐的操作 |
 |---|---|---|
 | 检测到无效的 Backint 配置。 停止保护并重新配置数据库。| 错误地为 Azure 备份指定了 backInt 参数。 | 检查是否[已设置参数](#setting-up-backint-parameters)。 如果主机中存在基于 backInt 的参数, 请将其删除。 如果在主机级别上没有参数, 但在数据库级别手动修改了这些参数, 则将它们还原到前面所述的相应值。 或者, 运行 "**停止保护" 并保留**Azure 门户中的备份数据, 然后选择 "**恢复备份**"。|

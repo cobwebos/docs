@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 49b8554f6064f036d4305cf7a5c1450c2f18c48d
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
-ms.translationtype: MT
+ms.openlocfilehash: ba774f5d4e2b6a6baeb41d93d08c98326000f6d1
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798486"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377351"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -34,12 +34,12 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
   * 在指定的自动化帐户中创建名为 *AzureClassicRunAsCertificate* 的自动化证书资产。 该证书资产保存管理证书使用的证书私钥。
   * 在指定的自动化帐户中创建名为 *AzureClassicRunAsConnection* 的自动化连接资产。 该连接资产保存订阅名称、subscriptionId 和证书资产名称。
   * 必须是订阅的共同管理员才能进行创建或续订
-  
+
   > [!NOTE]
   > Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 使用 CSP 订阅时，不会创建 Azure 经典运行方式帐户。 仍会创建 Azure 运行方式帐户。 若要了解有关 CSP 订阅的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)。
 
   > [!NOTE]
-  > 默认情况下，运行方式帐户的服务主体没有读取 Azure Active Directory 的权限。 如果希望添加读取或管理 Azure Active directory 的权限，需要在“API 权限”  下对服务主体授予该权限。 若要了解详细信息，请参阅[添加用于访问 Web API 的权限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
+  > 默认情况下，运行方式帐户的服务主体没有读取 Azure Active Directory 的权限。 如果希望添加读取或管理 Azure Active directory 的权限，需要在“API 权限”下对服务主体授予该权限。 若要了解详细信息，请参阅[添加用于访问 Web API 的权限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
 
 ## <a name="permissions"></a>配置运行方式帐户时所需的权限
 
@@ -54,9 +54,9 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 |创建或删除自动化证书|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | 资源组中的参与者         |自动化帐户资源组|
 |创建或删除自动化连接|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|资源组中的参与者 |自动化帐户资源组|
 
-<sup>1</sup> Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)，前提是 Azure AD 租户的“用户设置”页中的“用户可以注册应用程序”选项已设置为“是”。    如果“应用注册设置”设置为“否”，则执行此操作的用户必须是上表中定义的用户  。
+<sup>1</sup> Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)，前提是 Azure AD 租户的“用户设置”页中的“用户可以注册应用程序”选项已设置为“是”。 如果“应用注册设置”设置为“否”，则执行此操作的用户必须是上表中定义的用户。
 
-如果你在被添加到订阅的“全局管理员”  角色之前不是订阅的 Active Directory 实例的成员，则会将你添加为来宾。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create…` 警告。  已添加到用户**全局管理员**角色第一次可以从订阅的 Active Directory 实例中删除和重新添加，使其在 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。     用户配置文件下的“用户类型”属性值不应等于“来宾”。  
+如果你在被添加到订阅的“全局管理员”角色之前不是订阅的 Active Directory 实例的成员，则会将你添加为来宾。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create…` 警告。 首先添加到**全局管理员**角色的用户可以从订阅的 Active Directory 实例中删除, 然后重新添加, 使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
 
 ## <a name="permissions-classic"></a>配置经典运行方式帐户时所需的权限
 
@@ -64,31 +64,31 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 ## <a name="create-a-run-as-account-in-the-portal"></a>在门户中创建运行方式帐户
 
-在本部分，请执行以下步骤，在 Azure 门户中更新 Azure 自动化帐户。 可以单独创建运行方式帐户和经典运行方式帐户。 如果不需管理经典资源，可以只创建 Azure 运行方式帐户。  
+在本部分，请执行以下步骤，在 Azure 门户中更新 Azure 自动化帐户。 可以单独创建运行方式帐户和经典运行方式帐户。 如果不需管理经典资源，可以只创建 Azure 运行方式帐户。
 
 1. 以订阅管理员角色成员和订阅共同管理员的帐户登录 Azure 门户。
-2. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“自动化”  。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”  。
-3. 在“自动化帐户”页的自动化帐户列表中选择自动化帐户。 
-4. 在左侧窗格的“帐户设置”部分下，选择“运行方式帐户”   。  
-5. 根据所需帐户，选择“Azure 运行方式帐户”或“Azure 经典运行方式帐户”   。 选择后，便会出现“添加 Azure 运行方式帐户”或“添加 Azure 经典运行方式帐户”页。查看概述信息后，单击“创建”，继续创建运行方式帐户    。  
-6. 在 Azure 创建运行方式帐户时，可以在菜单的“通知”下面跟踪进度  。 此外还显示一个横幅，指出正在创建帐户。 此过程可能需要几分钟才能完成。  
+2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“自动化”。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”。
+3. 在“自动化帐户”页的自动化帐户列表中选择自动化帐户。
+4. 在左侧窗格的“帐户设置”部分下，选择“运行方式帐户”。
+5. 根据所需帐户，选择“Azure 运行方式帐户”或“Azure 经典运行方式帐户”。 选择后，便会出现“添加 Azure 运行方式帐户”或“添加 Azure 经典运行方式帐户”页。查看概述信息后，单击“创建”，继续创建运行方式帐户。
+6. 在 Azure 创建运行方式帐户时，可以在菜单的“通知”下面跟踪进度。 此外还显示一个横幅，指出正在创建帐户。 此过程可能需要几分钟才能完成。
 
 ## <a name="create-run-as-account-using-powershell"></a>使用 PowerShell 创建运行方式帐户
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 以下列表提供了在 PowerShell 中创建运行方式帐户所要满足的要求：
 
 * 装有 Azure 资源管理器模块 3.4.1 和更高版本的 Windows 10 或 Windows Server 2016。 PowerShell 脚本不支持早期版本的 Windows。
 * Azure PowerShell 1.0 和更高版本。 有关 PowerShell 1.0 版本的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
-* 作为  –AutomationAccountName 和  -ApplicationDisplayName 参数的值引用的自动化帐户。
+* 作为 –AutomationAccountName 和 -ApplicationDisplayName 参数的值引用的自动化帐户。
 * 与[配置运行方式帐户时所需的权限](#permissions)中所列权限相当的权限
 
-若要获取脚本的必需参数 SubscriptionID、ResourceGroup 和 AutomationAccountName 的值，请完成以下步骤    ：
+若要获取脚本的必需参数 SubscriptionID、ResourceGroup 和 AutomationAccountName 的值，请完成以下步骤：
 
-1. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“自动化”  。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”  。
-1. 在“自动化帐户”页中选择自动化帐户，然后在“帐户设置”下  选择“属性”  。  
-1. 记下“属性”页上的“订阅 ID”、“名称”和“资源组”值。    
+1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“自动化”。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”。
+1. 在“自动化帐户”页中选择自动化帐户，然后在“帐户设置”下选择“属性”。
+1. 记下“属性”页上的“订阅 ID”、“名称”和“资源组”值。
 
    ![自动化帐户的“属性”页](media/manage-runas-account/automation-account-properties.png)
 
@@ -104,7 +104,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 1. 将以下脚本保存到计算机。 在本示例中，请使用文件名 *New-RunAsAccount.ps1* 保存。
 
-   该脚本使用多个 Azure 资源管理器 cmdlet 来创建资源。 在前面[权限](#permissions)表显示了 cmdlet 和他们所需的权限。
+   该脚本使用多个 Azure 资源管理器 cmdlet 来创建资源。 前面的[权限](#permissions)表显示了所需的 cmdlet 及其权限。
 
     ```powershell
     #Requires -RunAsAdministrator
@@ -158,18 +158,18 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
         Export-Certificate -Cert ("Cert:\localmachine\my\" + $Cert.Thumbprint) -FilePath $certPathCer -Type CERT | Write-Verbose
     }
 
-    function CreateServicePrincipal([System.Security.Cryptography.X509Certificates.X509Certificate2] $PfxCert, [string] $applicationDisplayName) {  
+    function CreateServicePrincipal([System.Security.Cryptography.X509Certificates.X509Certificate2] $PfxCert, [string] $applicationDisplayName) {
         $keyValue = [System.Convert]::ToBase64String($PfxCert.GetRawCertData())
         $keyId = (New-Guid).Guid
 
         # Create an Azure AD application, AD App Credential, AD ServicePrincipal
 
         # Requires Application Developer Role, but works with Application administrator or GLOBAL ADMIN
-        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $keyId) 
+        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $keyId)
         # Requires Application administrator or GLOBAL ADMIN
         $ApplicationCredential = New-AzureRmADAppCredential -ApplicationId $Application.ApplicationId -CertValue $keyValue -StartDate $PfxCert.NotBefore -EndDate $PfxCert.NotAfter
         # Requires Application administrator or GLOBAL ADMIN
-        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId
         $GetServicePrincipal = Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id
 
         # Sleep here for a few seconds to allow the service principal application to become active (ordinarily takes a few seconds)
@@ -187,7 +187,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
     }
 
     function CreateAutomationCertificateAsset ([string] $resourceGroup, [string] $automationAccountName, [string] $certifcateAssetName, [string] $certPath, [string] $certPlainPassword, [Boolean] $Exportable) {
-        $CertPassword = ConvertTo-SecureString $certPlainPassword -AsPlainText -Force   
+        $CertPassword = ConvertTo-SecureString $certPlainPassword -AsPlainText -Force
         Remove-AzureRmAutomationCertificate -ResourceGroupName $resourceGroup -AutomationAccountName $automationAccountName -Name $certifcateAssetName -ErrorAction SilentlyContinue
         New-AzureRmAutomationCertificate -ResourceGroupName $resourceGroup -AutomationAccountName $automationAccountName -Path $certPath -Name $certifcateAssetName -Password $CertPassword -Exportable:$Exportable  | write-verbose
     }
@@ -212,7 +212,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
     # Enable-AzureRmAlias
 
 
-    Connect-AzureRmAccount -Environment $EnvironmentName 
+    Connect-AzureRmAccount -Environment $EnvironmentName
     $Subscription = Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
     # Create a Run As account by using a service principal
@@ -286,32 +286,32 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
     ```
 
     > [!IMPORTANT]
-    > Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名   。 搜索库项时，如果未看到 **Connect-AzureRMAccount**，可以使用 **Add-AzureRmAccount**，或者在自动化帐户中[更新模块](automation-update-azure-modules.md)。
+    > Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名。 搜索库项时，如果未看到 **Connect-AzureRMAccount**，可以使用 **Add-AzureRmAccount**，或者在自动化帐户中[更新模块](automation-update-azure-modules.md)。
 
-1. 在计算机上，从“开始”屏幕以提升的用户权限启动 **Windows PowerShell**  。
-1. 在提升权限的命令行外壳中，转到包含步骤 1 所创建脚本的文件夹。  
+1. 在计算机上，从“开始”屏幕以提升的用户权限启动 **Windows PowerShell**。
+1. 在提升权限的命令行外壳中，转到包含步骤 1 所创建脚本的文件夹。
 1. 使用所需配置的参数值执行该脚本。
 
-    **使用自签名证书创建运行方式帐户**  
+    **使用自签名证书创建运行方式帐户**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false
     ```
 
-    **使用自签名证书创建运行方式帐户和经典运行方式帐户**  
+    **使用自签名证书创建运行方式帐户和经典运行方式帐户**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true
     ```
 
-    **使用企业证书创建运行方式帐户和经典运行方式帐户**  
+    **使用企业证书创建运行方式帐户和经典运行方式帐户**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>
     ```
 
     **在 Azure 政府版云中使用自签名证书创建运行方式帐户和经典运行方式帐户**
-  
+
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment
     ```
@@ -331,15 +331,15 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 1. 在 Azure 门户中，打开自动化帐户。
 
-2. 在“自动化帐户”  页上，选择“运行方式帐户”  。
+2. 在“自动化帐户”页上，选择“运行方式帐户”。
 
-3. 在“运行方式帐户”属性页上，选择要删除的运行方式帐户或经典运行方式帐户。  然后，在所选帐户的“属性”窗格中单击“删除”。  
+3. 在“运行方式帐户”属性页上，选择要删除的运行方式帐户或经典运行方式帐户。 然后，在所选帐户的“属性”窗格中单击“删除”。
 
    ![删除运行方式帐户](media/manage-runas-account/automation-account-delete-runas.png)
 
-1. 帐户删除过程中，可以在菜单的“通知”  下面跟踪进度。
+1. 帐户删除过程中，可以在菜单的“通知”下面跟踪进度。
 
-1. 删除该帐户后，可以通过在“运行方式帐户”属性页中选择创建选项“Azure 运行方式帐户”来重新创建该帐户。  
+1. 删除该帐户后，可以通过在“运行方式帐户”属性页中选择创建选项“Azure 运行方式帐户”来重新创建该帐户。
 
    ![重新创建自动化运行方式帐户](media/manage-runas-account/automation-account-create-runas.png)
 
@@ -356,28 +356,62 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 1. 在 Azure 门户中，打开自动化帐户。
 
-1. 在“帐户设置”下选择“运行方式帐户”。  
+1. 在“帐户设置”下选择“运行方式帐户”。
 
     ![自动化帐户属性窗格](media/manage-runas-account/automation-account-properties-pane.png)
 
-1. 在“运行方式帐户”属性页上，选择要为其续订证书的运行方式帐户或经典运行方式帐户。 
+1. 在“运行方式帐户”属性页上，选择要为其续订证书的运行方式帐户或经典运行方式帐户。
 
-1. 在所选帐户的“属性”窗格中，单击“续订证书”。  
+1. 在所选帐户的“属性”窗格中，单击“续订证书”。
 
     ![续订运行方式帐户的证书](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
-1. 证书续订过程中，可以在菜单的“通知”  下面跟踪进度。
+1. 证书续订过程中，可以在菜单的“通知”下面跟踪进度。
+
+若要使用 PowerShell 续订证书, 请在[GitHub](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1)上使用以下脚本。
+
+- 此`GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1`脚本创建每周计划以续订运行方式帐户证书。
+- 该脚本将**AutomationRunAsCredential** runbook 添加到自动化帐户。
+  - 你还可以在 GitHub 上的脚本中查看 runbook 代码:[Update-AutomationRunAsCredential](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1)。
+
+若要立即测试续订过程, 请使用以下步骤:
+
+1. 编辑**AutomationRunAsCredential** runbook, 并将注释字符 (`#`) 放置在`Exit(1)`命令前面的第122行, 如下所示。
+
+   ```powershell
+   #Exit(1)
+   ```
+
+2. 发布 runbook。
+3. 启动 runbook。
+4. 验证是否已成功续订, 并提供以下代码:
+
+   ```powershell
+   (Get-AzAutomationCertificate -AutomationAccountName TestAA
+                                -Name AzureRunAsCertificate
+                                -ResourceGroupName TestAutomation).ExpiryTime.DateTime
+   ```
+
+   ```Output
+   Thursday, November 7, 2019 7:00:00 PM
+   ```
+
+5. 测试完成后, 编辑 runbook, 并删除在**步骤 1**中添加的注释字符。
+6. **发布**runbook。
+
+> [!NOTE]
+> 你需要成为 Azure Active Directory 中的**全局管理员**或**公司管理员**, 才能执行该脚本。
 
 ## <a name="limiting-run-as-account-permissions"></a>限制运行方式帐户权限
 
-若要控制对 Azure 中的资源的自动化的目标，可以运行[更新 AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8)若要更改现有运行方式帐户服务主体到 PowerShell 库中的脚本创建和使用自定义角色定义。 此角色将具有除之外的所有资源的权限[Key Vault](https://docs.microsoft.com/azure/key-vault/)。 
+若要针对 Azure 中的资源控制自动化的目标, 可以在 PowerShell 库中运行[Update-AutomationRunAsAccountRoleAssignments](https://aka.ms/AA5hug8)脚本, 以更改现有运行方式帐户服务主体以创建和使用自定义角色定义. 此角色将拥有除[Key Vault](https://docs.microsoft.com/azure/key-vault/)之外的所有资源的权限。
 
 > [!IMPORTANT]
-> 运行之后`Update-AutomationRunAsAccountRoleAssignments.ps1`脚本中，通过使用运行方式帐户访问密钥保管库的 runbook 将不再起作用。 在你的帐户对 Azure 密钥保管库的调用中，应查看的 runbook。
+> 运行该`Update-AutomationRunAsAccountRoleAssignments.ps1`脚本后, 通过使用 RunAs 帐户访问 KeyVault 的 runbook 将不再工作。 你应在帐户中查看 runbook, 以便调用 Azure KeyVault。
 >
-> 若要通过 Azure 自动化 runbook 将需要访问密钥保管库[将运行方式帐户添加到密钥保管库的权限](#add-permissions-to-key-vault)。
+> 若要从 Azure 自动化 runbook 启用对 KeyVault 的访问, 需要[将运行方式帐户添加到 KeyVault 的权限](#add-permissions-to-key-vault)。
 
-如果你需要限制运行方式服务主体可以执行的操作更多，则可以添加到其他资源类型`NotActions`的自定义角色定义。 下面的示例限制访问`Microsoft.Compute`。 如果您将添加到**NotActions**的角色定义中，将无法再访问任何计算资源，此角色。 若要了解有关角色定义的详细信息，请参阅[了解有关 Azure 资源的角色定义](../role-based-access-control/role-definitions.md)。
+如果需要限制 RunAs 服务主体可以执行的操作, 则可以将其他资源类型添加到`NotActions`自定义角色定义的。 下面的示例限制对的`Microsoft.Compute`访问。 如果将此添加到角色定义的**NotActions** , 此角色将不能访问任何计算资源。 若要了解有关角色定义的详细信息, 请参阅[了解 Azure 资源的角色定义](../role-based-access-control/role-definitions.md)。
 
 ```powershell
 $roleDefinition = Get-AzureRmRoleDefinition -Name 'Automation RunAs Contributor'
@@ -385,20 +419,20 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzureRMRoleDefinition
 ```
 
-若要确定是否在由你运行方式帐户使用的服务主体**参与者**或自定义角色定义转到自动化帐户并在**帐户设置**，选择**以运行帐户** > **Azure 运行方式帐户**。 下**角色**您会发现正在使用的角色定义。 
+若要确定运行方式帐户所使用的服务主体是否在**参与者**中或自定义角色定义, 请在 "**帐户设置**" 下, 选择 "**运行方式** > 帐户" "**Azure 运行方式帐户"** . 在 "**角色**" 下, 可以找到正在使用的角色定义。
 
 [![](media/manage-runas-account/verify-role.png "验证运行方式帐户角色")](media/manage-runas-account/verify-role-expanded.png#lightbox)
 
-若要确定角色定义中的自动化运行方式帐户用于多个订阅或自动化帐户，可以使用[检查 AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) PowerShell 库中的脚本。
+若要确定由多个订阅或自动化帐户的自动化运行方式帐户使用的角色定义, 可以在 PowerShell 库中使用[Check-AutomationRunAsAccountRoleAssignments](https://aka.ms/AA5hug5)脚本。
 
-### <a name="add-permissions-to-key-vault"></a>将权限添加到密钥保管库
+### <a name="add-permissions-to-key-vault"></a>将权限添加到 Key Vault
 
-如果你想要允许 Azure 自动化管理密钥保管库和运行方式帐户服务主体使用自定义角色定义你将需要执行其他步骤来进行此项操作：
+如果要允许 Azure 自动化管理 Key Vault 并且运行方式帐户服务主体使用自定义角色定义, 则需要执行其他步骤以允许此行为:
 
-* 向 Key Vault 中授予权限
+* 向 Key Vault 授予权限
 * 设置访问策略
 
-可以使用[扩展 AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb)到密钥保管库，为你的运行方式帐户的权限或访问在 PowerShell 库中的脚本[授予对密钥保管库的应用程序访问权限](../key-vault/key-vault-group-permissions-for-apps.md)有关密钥保管库上设置权限的详细信息。
+你可以使用 PowerShell 库中的[Extend-AutomationRunAsAccountRoleAssignmentToKeyVault](https://aka.ms/AA5hugb)脚本为 KeyVault 授予运行方式帐户权限, 或者访问[授予应用程序访问密钥保管库](../key-vault/key-vault-group-permissions-for-apps.md)的权限, 以了解有关设置的更多详细信息KeyVault 上的权限。
 
 ## <a name="misconfiguration"></a>配置错误
 
@@ -409,11 +443,11 @@ $roleDefinition | Set-AzureRMRoleDefinition
 * 运行方式帐户已从参与者角色中删除
 * Azure AD 中的服务主体或应用程序
 
-在上述和其他错误配置的实例中，自动化将检测更改，并在该帐户的“运行方式帐户”属性窗格中显示“不完整”状态。  
+在上述和其他错误配置的实例中，自动化将检测更改，并在该帐户的“运行方式帐户”属性窗格中显示“不完整”状态。
 
 ![不完整的运行方式帐户配置状态](media/manage-runas-account/automation-account-runas-incomplete-config.png)
 
-选择该运行方式帐户时，该帐户的“属性”窗格中会显示以下错误消息： 
+选择该运行方式帐户时，该帐户的“属性”窗格中会显示以下错误消息：
 
 ```text
 The Run As account is incomplete. Either one of these was deleted or not created - Azure Active Directory Application, Service Principal, Role, Automation Certificate asset, Automation Connect asset - or the Thumbprint is not identical between Certificate and Connection. Please delete and then re-create the Run As Account.

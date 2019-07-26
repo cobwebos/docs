@@ -2,7 +2,7 @@
 title: 创建、更新统计信息 - Azure SQL 数据仓库 | Microsoft Docs
 description: 用于创建和更新 Azure SQL 数据仓库中表的查询优化统计信息的建议和示例。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: c5043d99dd130bc7dc7b35eaa5ecadf11d7644db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00643e303b3352ce9ce39e5a27fd8b42246aac51
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851525"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479171"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的表统计信息
 
@@ -46,7 +46,7 @@ SET AUTO_CREATE_STATISTICS ON
 
 当检测到包含联接或存在某个谓词时，这些语句将触发统计信息的自动创建：
 
-- SELECT
+- 选择
 - INSERT-SELECT
 - CTAS
 - UPDATE
@@ -71,7 +71,7 @@ table_name 是包含要显示的统计信息的表的名称。 该表不能为�
 
 ## <a name="updating-statistics"></a>更新统计信息
 
-最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些操作会更改数据分布情况并使统计信息过时。 相反地，customer 表中的国家/地区列的统计信息可能永远不会需要更新，因为值的分布通常不会变化。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。 但是，如果数据仓库只包含一个国家/地区，并且引入了来自新国家/地区的数据，从而导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
+最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些操作会更改数据分布情况并使统计信息过时。 相反地, 客户表中的国家/地区列的统计信息可能永远不需要更新, 因为值的分布通常不会更改。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。 但是，如果数据仓库只包含一个国家/地区，并且引入了来自新国家/地区的数据，从而导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
 
 下面是关于更新统计信息的建议：
 
@@ -82,7 +82,7 @@ table_name 是包含要显示的统计信息的表的名称。 该表不能为�
 
 在排查查询问题时，首先要询问的问题之一就是 **“统计信息是最新的吗？”**
 
-此问题不可以根据数据期限提供答案。 如果对基础数据未做重大更改，则最新的统计信息对象有可能非常陈旧。 如果行数有明显变化或给定列的值分布有重大变化，则  需要更新统计信息。
+此问题不可以根据数据期限提供答案。 如果对基础数据未做重大更改，则最新的统计信息对象有可能非常陈旧。 如果行数有明显变化或给定列的值分布有重大变化，则需要更新统计信息。
 
 没有任何动态管理视图可用于确定自上次更新统计信息以来表中的数据是否发生更改。 如果知道统计信息的期限，可以大致猜出更新状态。 可以使用以下查询来确定上次更新每个表的统计信息的时间。
 
@@ -134,7 +134,7 @@ WHERE
 
 有关详细信息，请参阅[基数估计](/sql/relational-databases/performance/cardinality-estimation-sql-server)。
 
-## <a name="examples-create-statistics"></a>示例：创建统计信息
+## <a name="examples-create-statistics"></a>示例:创建统计信息
 
 以下示例演示如何使用各种选项来创建统计信息。 用于每个列的选项取决于数据特征以及在查询中使用列的方式。
 
@@ -210,7 +210,7 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 > [!NOTE]
 > 用于估计查询结果中行数的直方图只适用于统计信息对象定义中所列的第一个列。
 
-在此示例中，直方图位于 product\_category  。 跨列统计信息是根据 *product\_category* 和 *product\_sub_category* 计算的：
+在此示例中，直方图位于 product\_category。 跨列统计信息是根据 *product\_category* 和 *product\_sub_category* 计算的：
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
@@ -352,7 +352,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 基于所有列创建示例统计信息
 
-## <a name="examples-update-statistics"></a>示例：Update statistics
+## <a name="examples-update-statistics"></a>示例:Update statistics
 
 要更新统计信息，可以：
 
@@ -389,7 +389,7 @@ UPDATE STATISTICS [schema_name].[table_name];
 UPDATE STATISTICS dbo.table1;
 ```
 
-UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的所有统计信息，因此执行的工作可能会超过所需的数量。  如果性能不是一个考虑因素，这是保证拥有最新统计信息的最简单、最全面的操作方式。
+UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的所有统计信息，因此执行的工作可能会超过所需的数量。 如果性能不是一个考虑因素，这是保证拥有最新统计信息的最简单、最全面的操作方式。
 
 > [!NOTE]
 > 更新表中的所有统计信息时，SQL 数据仓库将执行扫描，以针对每个统计信息对象进行表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。

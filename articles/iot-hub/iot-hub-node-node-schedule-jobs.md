@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure IoT 中心安排作业 (Node) | Microsoft Docs
-description: 如何安排 Azure IoT 中心作业对多台设备调用直接方法。 使用 Azure IoT SDK for Node.js 实现模拟设备应用以及用于运行作业的服务应用。
+description: 逼 ﹚ Azure IoT 中心作业调用多个设备上的直接方法，请按照。 使用 Azure IoT SDK for Node.js 实现模拟设备应用以及用于运行作业的服务应用。
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.openlocfilehash: af35a84c299544e43988547771ddce75fd71bd90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3a07f54d77577085951b2bccfa1213adef5b20d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065785"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68403916"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>计划和广播作业 (Node)
 
@@ -32,13 +32,13 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 * 设备孪生和属性：[设备孪生入门](iot-hub-node-node-twin-getstarted.md)和[教程：如何使用设备孪生属性](tutorial-device-twins.md)
 
-* 直接方法：[IoT 中心开发人员指南-直接方法](iot-hub-devguide-direct-methods.md)和[教程： 直接方法](quickstart-control-device-node.md)
+* 直接方法：[IoT 中心开发人员指南-直接方法](iot-hub-devguide-direct-methods.md)和[教程: 直接方法](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 本教程演示如何：
 
-* 创建一个具有直接方法的 Node.js 模拟设备应用，启用可由解决方案后端进行调用的 lockDoor  。
+* 创建一个具有直接方法的 Node.js 模拟设备应用，启用可由解决方案后端进行调用的 lockDoor。
 
 * 创建一个 Node.js 控制台应用，该应用使用作业调用模拟设备应用中的 **lockDoor** 直接方法，并使用设备作业更新所需属性。
 
@@ -46,11 +46,11 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 * **simDevice.js**，它使用设备标识连接到 IoT 中心，并接收 **lockDoor** 直接方法。
 
-* scheduleJobService.js，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性  。
+* scheduleJobService.js，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性。
 
 要完成本教程，需要以下各项：
 
-* Node.js 版本 10.0.x 或更高版本[准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何为本教程在 Windows 或 Linux 上安装 Node.js。
+* Node.js 版本 10.0. x 或更高版本[准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍如何在 Windows 或 Linux 上安装本教程的 node.js。
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
@@ -58,15 +58,11 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>检索 IoT 中心的连接字符串
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 
-本部分将创建一个 Node.js 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法  。
+本部分将创建一个 Node.js 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法。
 
 1. 新建名为 **simDevice** 的空文件夹。  在 **simDevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
@@ -134,6 +130,12 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章 [Transient Fault Handling](/azure/architecture/best-practices/transient-faults)（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
 >
+
+## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
+
+[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
+
+[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>安排作业，用于调用直接方法和更新设备孪生的属性
 
@@ -265,7 +267,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 现在，已准备就绪，可以运行应用程序了。
 
-1. 在 simDevice  文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
+1. 在 simDevice 文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
    
     ```
     node simDevice.js
@@ -283,6 +285,6 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 在本教程中，使用了作业来安排用于设备的直接方法以及设备孪生属性的更新。
 
-若要继续开始使用 IoT 中心和设备管理模式，如远程无线固件更新，请参阅[教程：如何执行固件更新](tutorial-firmware-update.md)。
+若要继续了解 IoT 中心和设备管理模式 (如远程通过无线固件更新) 的入门, [请参阅教程:如何执行固件更新](tutorial-firmware-update.md)。
 
-若要继续开始使用 IoT 中心，请参阅[开始使用 Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)。
+若要继续了解 IoT 中心入门, 请参阅[Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)入门。

@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 40a783f702db580618d49fa34a1dae67e3e067da
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: e1285f6bc3bd081eae03cf1e5a124a86cac7a2ae
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327053"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335989"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -55,11 +55,11 @@ ms.locfileid: "68327053"
 
   * **开发人员 SKU**:单个[免费层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)集成帐户
 
-  每个 ISE SKU 限制为5个集成帐户的总数。 为实现额外的成本, 你可以根据 ISE SKU 获得更多的集成帐户:
+  每个 ISE SKU 限制为5个集成帐户的总数。 为实现额外的成本, 可以根据 ISE SKU 创建更多的集成帐户:
 
-  * **高级 SKU**:最多4个标准帐户, 无免费或基本帐户
+  * **高级 SKU**:最多4个标准帐户。 无免费帐户或基本帐户。
 
-  * **开发人员 SKU**:最多4个标准帐户或最多5个标准帐户, 无基本帐户
+  * **开发人员 SKU**:最多4个标准帐户或最多5个标准帐户。 无基本帐户。
 
 有关集成帐户限制的详细信息, 请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 可以在本主题的后面部分了解有关[集成帐户层及其定价模型](#integration-accounts)的详细信息。 
 
@@ -88,13 +88,13 @@ Azure 逻辑应用连接器通过提供[触发器](#triggers)和/或[操作](#ac
 
 * **Webhook 触发器**：此触发器等待客户端向特定的终结点发送请求。 发送到 webhook 终结点的每个请求都会计为操作执行。 例如，请求和 HTTP Webhook 触发器都是 Webhook 触发器。
 
-* 重复周期触发器：  此触发器基于在触发器中设置的重复间隔创建逻辑应用实例。 例如，可以设置每隔三天运行的，或者根据更复杂的计划运行的定期触发器。
+* 重复周期触发器：此触发器基于在触发器中设置的重复间隔创建逻辑应用实例。 例如，可以设置每隔三天运行的，或者根据更复杂的计划运行的定期触发器。
 
 <a name="actions"></a>
 
-## <a name="actions"></a>操作
+## <a name="actions"></a>个操作
 
-Azure 逻辑应用将 HTTP 等“内置”操作作为本机操作进行计量。 例如，内置操作包括 HTTP 调用、来自 Azure Functions 或 API 管理的调用，以及条件、循环和开关语句等控制流步骤。 每个操作具有自身的操作类型。 例如，调用[连接器](https://docs.microsoft.com/connectors)的操作为“ApiConnection”类型。 这些连接器分类为“标准”或“企业”连接器，根据各自的[定价](https://azure.microsoft.com/pricing/details/logic-apps)进行计量。 预览版的企业连接器按标准连接器计费。 
+Azure 逻辑应用将 HTTP 等“内置”操作作为本机操作进行计量。 例如，内置操作包括 HTTP 调用、来自 Azure Functions 或 API 管理的调用，以及条件、循环和开关语句等控制流步骤。 每个操作具有自身的操作类型。 例如，调用[连接器](https://docs.microsoft.com/connectors)的操作为“ApiConnection”类型。 这些连接器分类为“标准”或“企业”连接器，根据各自的[定价](https://azure.microsoft.com/pricing/details/logic-apps)进行计量。 预览版的企业连接器按标准连接器计费。
 
 Azure 逻辑应用将所有成功和不成功的操作作为执行进行计量。 但是，逻辑应用不会计量以下操作：
 

@@ -1,5 +1,5 @@
 ---
-title: 何时以及如何使用 Azure 多重身份验证提供程序？ - Azure Active Directory
+title: 何时以及如何使用 Azure 多重身份验证提供程序？ -Azure Active Directory
 description: 何时应使用 Azure MFA 的身份验证提供程序？
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b1461999679935587370f66349a440d588465cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 399fccf9aaaeb9e252527e80a6549ee286bb1898
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052532"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68369375"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>何时使用 Azure 多重身份验证提供程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "67052532"
 使用 Azure 多重身份验证提供程序以便利用 Azure 多重身份验证为**没有许可证的用户**提供的功能。
 
 > [!NOTE]
-> 自 2018 年 9 月 1 日起，可能无法再创建新的身份验证提供程序。 现有的身份验证提供程序可以继续使用和更新，但迁移时不可能。 多重身份验证将继续以 Azure AD Premium 许可证中的功能的形式提供。
+> 自 2018 年 9 月 1 日起，可能无法再创建新的身份验证提供程序。 现有的身份验证提供程序可能继续使用和更新, 但不可能再进行迁移。 多重身份验证将继续以 Azure AD Premium 许可证中的功能的形式提供。
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>与 Azure MFA SDK 相关的注意事项
 
@@ -42,6 +42,35 @@ ms.locfileid: "67052532"
 如果购买了足够多的许可证，可以覆盖启用 MFA 的所有用户，则可以删除整个 MFA 提供程序。
 
 如果 MFA 提供程序未与 Azure AD 租户相关联，或者你将新的 MFA 提供程序与其他 Azure AD 租户相关联，则用户设置和配置选项不会进行转移。 此外，需要使用通过 MFA 提供程序生成的激活凭据，重新激活现有 Azure MFA 服务器。 重新激活 MFA 服务器并将其链接到 MFA 提供程序不会影响电话和短信身份验证，但所有用户将不再会收到移动应用通知，除非他们重新激活移动应用。
+
+### <a name="removing-an-authentication-provider"></a>删除身份验证提供程序
+
+> [!CAUTION]
+> 删除身份验证提供程序时, 不会出现任何确认。 选择 "**删除**" 是永久性过程。
+
+可在**Azure 门户** > **Azure Active Directory** > MFA提供 > **程序**中找到身份验证提供程序。 单击列出的提供程序, 查看与该提供程序关联的详细信息和配置。
+
+在删除身份验证提供程序之前, 请记下在提供程序中配置的任何自定义设置。 确定需要从提供商迁移到常规 MFA 设置的设置, 并完成这些设置的迁移。 
+
+链接到提供程序的 Azure MFA 服务器需要使用**Azure 门户** > **Azure Active Directory** > **MFA** > **服务器设置**下生成的凭据重新激活。 在重新激活之前, 必须从你的环境中`\Program Files\Multi-Factor Authentication Server\Data\`的 Azure MFA 服务器上的目录中删除以下文件:
+
+- caCert
+- cert
+- groupCACert
+- groupKey
+- groupName
+- licenseKey
+- pkey
+
+![从 Azure 门户删除身份验证提供程序](./media/concept-mfa-authprovider/authentication-provider-removal.png)
+
+确认已迁移所有设置后, 可以浏览到**Azure 门户** > **Azure Active Directory** > **MFA** > **提供程序**, 然后选择省略号 **...** 然后选择 "**删除**"。
+
+> [!WARNING]
+> 删除身份验证提供程序将删除与该提供程序关联的任何报表信息。 你可能需要在删除提供程序之前保存活动报告。
+
+> [!NOTE]
+> 具有较旧版本 Microsoft Authenticator 应用和 Azure MFA 服务器的用户可能需要重新注册其应用。
 
 ## <a name="next-steps"></a>后续步骤
 

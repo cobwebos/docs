@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d26df6aeb09934408b9081ac077af52ffc24d66
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 70f9264357ca1a0c1a612481f4254e86f05e41d8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709063"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479174"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -213,10 +213,10 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 故障转移群集是由 1+n 个独立服务器（节点）构成的组，这些服务器配合工作以提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集会计算可能发生的故障数并保留正常运行的群集以提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 在开始本文所述的任务之前，请先查看此文：
 
-* [Azure 虚拟机高可用性体系结构和方案适用于 SAP NetWeaver][sap-high-availability-architecture-scenarios]
+* [适用于 SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案][sap-high-availability-architecture-scenarios]
 
 > [!IMPORTANT]
 > 将 SAP NetWeaver 7.40（及更高版本）与 SAP 内核 7.49（及更高版本）配合使用时，即可通过文件共享来群集化 SAP ASCS/SCS 实例。
@@ -231,7 +231,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 Azure 云平台不提供配置虚拟 IP 地址（例如浮动 IP 地址）的选项。 需要一个替代解决方案来设置虚拟 IP，以便连接到云中的群集资源。 
 
-Azure 负载均衡器服务提供适用于 Azure 的内部负载均衡器  。 借助内部负载均衡器，客户端通过群集虚拟 IP 地址访问群集。 
+Azure 负载均衡器服务提供适用于 Azure 的内部负载均衡器。 借助内部负载均衡器，客户端通过群集虚拟 IP 地址访问群集。 
 
 在包含群集节点的资源组中部署内部负载均衡器。 然后，使用内部负载均衡器的探测端口配置所有必要的端口转发规则。 客户端可以通过虚拟主机名连接。 DNS 服务器解析群集 IP 地址。 内部负载均衡器处理目标为群集活动节点的端口转发。
 
@@ -292,9 +292,11 @@ _**图 4：** 用于保护 SAP 全局主机文件的横向扩展文件共享_
 
 存储空间直通用作横向扩展文件共享的共享磁盘。 可以借助存储空间直通，使用具有本地存储的服务器构建高度可用且可缩放的存储。 用于横向扩展文件共享（例如 SAP 全局主机文件）的共享存储不是单一故障点。
 
-> [!IMPORTANT]
->如果不打算  设置灾难恢复，建议使用横向扩展文件共享作为解决方案，使文件共享在 Azure 中高度可用。
->
+选择存储空间直通时, 请考虑以下用例:
+
+- 需要在 Azure 可用性集中部署用于构建存储空间直通群集的虚拟机。
+- 对于存储空间直通群集的灾难恢复, 可以使用[Azure Site Recovery 服务](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)。
+- 不支持将存储空间直通群集延伸到不同的 Azure 可用性区域。
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure 中的横向扩展文件共享的 SAP 先决条件
 
@@ -302,7 +304,7 @@ _**图 4：** 用于保护 SAP 全局主机文件的横向扩展文件共享_
 
 * 至少有两个群集节点用于横向扩展文件共享。
 * 每个节点必须至少包含两个本地磁盘。
-* 出于性能原因，必须使用  镜像复原：
+* 出于性能原因，必须使用镜像复原：
     * 双向镜像适用于两个群集节点的横向扩展文件共享。
     * 三向镜像适用于三个（或三个以上）群集节点的横向扩展文件共享。
 * 建议使用三个（或三个以上）群集节点进行横向扩展文件共享，启用三向镜像。
@@ -310,20 +312,19 @@ _**图 4：** 用于保护 SAP 全局主机文件的横向扩展文件共享_
 * 必须使用 Azure 高级磁盘。
 * 建议使用 Azure 托管磁盘。
 * 建议使用复原文件系统 (ReFS) 来格式化卷。
-    * 有关详细信息，请参阅[SAP 说明 1869038-SAP 支持 ReFs 文件系统][1869038]and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem]文章规划卷存储空间直通中的一章。
-    * 请务必在安装[Microsoft KB4025334 累积更新][kb4025334]。
+    * 有关详细信息, 请参阅存储空间直通 " [sap 说明 1869038-对 ReFs][1869038] and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem]的 sap 支持"。
+    * 请确保安装[MICROSOFT KB4025334 累积更新][kb4025334]。
 * 可以使用“DS 系列”或“DSv2 系列”Azure VM 大小。
 * 若要获得良好的 VM 间网络性能以顺利进行存储空间直通磁盘同步，请使用至少能够提供“高”网络带宽的 VM 类型。
-    有关详细信息，请参阅[DSv2 系列][dv2-series]and [DS-Series][ds-series]规范。
-* 建议在存储池中保留一些未分配的容量。 在存储池中留一些未分配的容量可以使卷空间能够在驱动器故障时进行“就地”修复。 这样可提高数据安全性和性能。  有关详细信息，请参阅[选择卷大小][choosing-the-size-of-volumes-s2d]。
-* 必须在自有的 Azure 可用性集中部署横向扩展文件共享 Azure VM。
+    有关详细信息, 请参阅[DSv2 系列][dv2-series] and [DS-Series][ds-series]规范。
+* 建议在存储池中保留一些未分配的容量。 在存储池中留一些未分配的容量可以使卷空间能够在驱动器故障时进行“就地”修复。 这样可提高数据安全性和性能。  有关详细信息, 请参阅[选择卷大小][choosing-the-size-of-volumes-s2d]。
 * 不需针对横向扩展文件共享网络名称（例如 \<SAP 全局主机\>）来配置 Azure 内部负载均衡器。 此操作针对 SAP ASCS/SCS 实例的 \<ASCS/SCS 虚拟主机名\>，或者针对 DBMS。 横向扩展文件共享将负载横向扩展到所有群集节点。 \<SAP 全局主机\> 将本地 IP 地址用于所有群集节点。
 
 
 > [!IMPORTANT]
 > 不能重命名指向 \<SAP 全局主机\> 的 SAPMNT 文件共享。 SAP 仅支持共享名“sapmnt”。
 >
-> 有关详细信息，请参阅[SAP 说明 2492395-是否可以更改共享名 sapmnt？][2492395]
+> 有关详细信息, 请参阅[SAP 说明 2492395-是否可以更改共享名 sapmnt？][2492395]
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>在两个群集中配置 SAP ASCS/SCS 实例和横向扩展文件共享
 
@@ -338,17 +339,11 @@ _**图 4：** 用于保护 SAP 全局主机文件的横向扩展文件共享_
 _**图 5：** 在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文件共享_
 
 > [!IMPORTANT]
-> 在 Azure 云中，每个用于 SAP 和横向扩展文件共享的群集都必须部署在自己的 Azure 可用性集中。 这样可确保将群集 VM 分散放置在其下的 Azure 基础结构中。
+> 在 Azure 云中, 用于 SAP 和横向扩展文件共享的每个群集都必须部署在其自己的 Azure 可用性集中或跨 Azure 可用性区域。 这样可确保将群集 VM 分散放置在其下的 Azure 基础结构中。 此技术支持可用性区域部署。
 >
 
 ## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>将 SIOS DataKeeper 用作群集共享磁盘的通用文件共享
 
-
-> [!IMPORTANT]
-> 建议使用横向扩展文件共享解决方案，使文件共享高度可用。
->
-> 如果还打算为高可用性文件共享设置灾难恢复，则必须对群集共享磁盘使用通用文件共享和 SISO DataKeeper。
->
 
 通用文件共享是实现高可用性文件共享的另一个选项。
 
@@ -356,8 +351,8 @@ _**图 5：** 在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [通过针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP ha 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-file-share]
-* [SAP NetWeaver HA 上安装 SAP ASCS/SCS 实例的 Windows 故障转移群集和文件共享][sap-high-availability-installation-wsfc-shared-disk]
-* [部署为 UPD 存储在 Azure 中的双节点存储空间直通的横向扩展文件服务器][deploy-sofs-s2d-in-azure]
+* [为 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享, 为 SAP HA 准备 Azure 基础结构][sap-high-availability-infrastructure-wsfc-file-share]
+* [在 SAP ASCS/SCS 实例的 Windows 故障转移群集和文件共享上安装 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]
+* [在 Azure 中部署 UPD 存储的双节点存储空间直通横向扩展文件服务器][deploy-sofs-s2d-in-azure]
 * [Windows Server 2016 中的存储空间直通][s2d-in-win-2016]
-* [深入探讨：存储空间中的卷直接][deep-dive-volumes-in-s2d]
+* [深入探讨：存储空间直通中的卷][deep-dive-volumes-in-s2d]

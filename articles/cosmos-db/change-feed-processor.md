@@ -5,15 +5,15 @@ author: rimman
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 42b7cd8a60e70ab75afc30910c46eb49f1f6d62a
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: e5142e9b4e7c2c79fd2b7e41123db4422334b730
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000949"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467793"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器 
 
@@ -62,7 +62,7 @@ ms.locfileid: "68000949"
 1. 如果有更改, 请将其发送到**委托**。
 1. 当委托**成功**处理更改后, 请用最新的已处理时间点更新租约存储, 并中转到 #1。
 
-## <a name="error-handling"></a>错误处理。
+## <a name="error-handling"></a>错误处理
 
 更改源处理器可复原用户代码错误。 这意味着, 如果委托实现具有未经处理的异常 (步骤 #4), 则将停止处理特定批更改的线程, 并将创建一个新线程。 新线程将进行检查, 该时间点是租约存储区的最新时间点, 并从该处重新开始, 从而有效地将同一批更改发送到委托。 此行为将继续, 直到你的委托正确地处理更改, 这是因为如果委托代码引发, 它将会重试该批处理。
 

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 0239111ca56dfe431a00eee83c79eedccc66c927
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: b0cf6eab86b0b932e44b6824305c23df01f35808
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226149"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383818"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>为 Azure 数据资源管理器群集选择正确的 VM SKU 
 
@@ -39,11 +39,11 @@ Azure 数据资源管理器提供两种类型的群集:
 
 创建 Azure 数据资源管理器群集时, 为计划的工作负荷选择*最佳*VM SKU。 Azure 数据资源管理器有两个 SKU 系列可供选择:
 
-* **D_V2**:**D** SKU 经过优化, 提供两种风格。
+* **D_V2**:D SKU 经过优化, 提供两种风格。
     * VM 本身
     * 与高级存储磁盘捆绑在一起的 VM
 
-* **LS**:**L** SKU 存储优化。 与类似的定价**D** SKU 相比, 它的 SSD 大小要大得多。
+* **LS**:L SKU 存储优化。 与类似的定价**D** SKU 相比, 它的 SSD 大小要大得多。
 
 下表提供了可用 SKU 类型的主要区别:
  

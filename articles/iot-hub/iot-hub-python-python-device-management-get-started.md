@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 04fc1da04d9da715acfed8ca9d26e9c325afb403
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4c8957e8d9b355216e10503d58915977c3b9b1a
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569436"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68403406"
 ---
 # <a name="get-started-with-device-management-python"></a>设备管理入门 (Python)
 
@@ -36,11 +36,11 @@ ms.locfileid: "64569436"
 
 要完成本教程，需要以下各项：
 
-* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip  - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
+* [Python 2.x 或](https://www.python.org/downloads/)3.x。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
 
-* 安装[azure iot 中心的设备客户端](https://pypi.org/project/azure-iothub-device-client/)打包，请使用命令       `pip install azure-iothub-device-client`
+* 使用命令安装[iothub-设备-客户端](https://pypi.org/project/azure-iothub-device-client/)包`pip install azure-iothub-device-client`
 
-* 安装[azure iot 中心的服务客户端](https://pypi.org/project/azure-iothub-service-client/)打包，请使用命令       `pip install azure-iothub-service-client`
+* 使用命令安装[iothub-客户端](https://pypi.org/project/azure-iothub-service-client/)包`pip install azure-iothub-service-client`
 
 * 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包](https://www.microsoft.com/download/confirmation.aspx?id=48145)，以便使用 Python 中的本机 DLL。
 
@@ -50,9 +50,7 @@ ms.locfileid: "64569436"
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>检索 IoT 中心的连接字符串
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+[!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 
@@ -77,7 +75,7 @@ ms.locfileid: "64569436"
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError, DeviceMethodReturnValue
     ```
 
-3. 添加变量（包括 CONNECTION_STRING  变量）和客户端初始化。  将连接字符串替换为设备连接字符串。  
+3. 添加变量（包括 CONNECTION_STRING 变量）和客户端初始化。  将连接字符串替换为设备连接字符串。  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -162,6 +160,11 @@ ms.locfileid: "64569436"
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章 [Transient Fault Handling](/azure/architecture/best-practices/transient-faults)（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
 
+## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
+
+[!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>使用直接方法在设备上触发远程重新启动
 

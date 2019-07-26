@@ -1,5 +1,5 @@
 ---
-title: 为 Azure AD 租户中的特定应用自定义在令牌中发出的声明（公共预览版）
+title: 为 Azure AD 租户中的应用自定义声明 (公共预览版)
 description: 本页介绍 Azure Active Directory 声明映射。
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e923cde3cfcffe594226f6b8b665053d1fc584f6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 97de45ef94afa9da8a5e928a3d4a8911db052107
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324988"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381067"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -158,10 +158,10 @@ ms.locfileid: "68324988"
 | refresh_token |
 | refreshtoken |
 | request_nonce |
-| resource |
+| 资源 |
 | role |
 | roles |
-| scope |
+| 范围 |
 | scp |
 | sid |
 | signature |
@@ -292,7 +292,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | 用户 | givenname | 名字 |
 | 用户 | displayname | 显示名称 |
 | 用户 | objectid | ObjectID |
-| 用户 | mail | 电子邮件地址 |
+| 用户 | 邮件 | 电子邮件地址 |
 | 用户 | userprincipalname | 用户主体名称 |
 | 用户 | department|系|
 | 用户 | onpremisessamaccountname | 本地 SAM 帐户名 |
@@ -323,11 +323,11 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | 用户 | othermail | 其他邮件 |
 | 用户 | country | 国家/地区 |
 | 用户 | city | 城市 |
-| 用户 | state | 状态 |
+| 用户 | 省/自治区/直辖市 | 状态 |
 | 用户 | jobtitle | 职务 |
 | 用户 | employeeid | 员工 ID |
 | 用户 | facsimiletelephonenumber | 传真电话号码 |
-| application、resource、audience | displayname | 显示名称 |
+| application、resource、audience | displayname | 显示名 |
 | application、resource、audience | objected | ObjectID |
 | application、resource、audience | 标记 | 服务主体标记 |
 | 公司 | tenantcountry | 租户的国家/地区 |
@@ -363,7 +363,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 |TransformationMethod|预期输入|预期输出|描述|
 |-----|-----|-----|-----|
 |联接|string1、string2、separator|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
-|ExtractMailPrefix|mail|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
+|ExtractMailPrefix|邮件|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
 
 **InputClaims：** 使用 InputClaims 元素可将数据从声明架构条目传递给转换。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
@@ -388,7 +388,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 |Source|id|描述|
 |-----|-----|-----|
-| 用户 | mail|电子邮件地址|
+| 用户 | 邮件|电子邮件地址|
 | 用户 | userprincipalname|用户主体名称|
 | 用户 | onpremisessamaccountname|本地 Sam 帐户名称|
 | 用户 | employeeid|员工 ID|
@@ -413,7 +413,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | TransformationMethod | 限制 |
 | ----- | ----- |
 | ExtractMailPrefix | 无 |
-| Join | 所联接的后缀必须是资源租户的已验证域。 |
+| 加入 | 所联接的后缀必须是资源租户的已验证域。 |
 
 ### <a name="custom-signing-key"></a>自定义签名密钥
 
@@ -431,7 +431,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
 
-#### <a name="prerequisites"></a>系统必备
+#### <a name="prerequisites"></a>先决条件
 
 在以下示例中，会为服务主体创建、更新、链接和删除策略。 如果你是 Azure AD 新手，我们建议在继续学习这些示例之前，先[了解如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。
 

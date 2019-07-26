@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a03a778b2a057235b31d02e90e5ce87e9559b38a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f886cb71d4dbc191dae317e8ea72d8c896f37c03
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058558"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442076"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
 
@@ -21,7 +21,7 @@ ms.locfileid: "67058558"
 
 ## <a name="why-to-migrate-to-azure-hdinsight"></a>迁移到 Azure HDInsight 的原因
 
-Azure HDInsight 是 Hadoop 组件的云分发。 可以通过 Azure HDInsight 轻松、快速且经济有效地处理大量数据。 HDInsight 包括最常用的开源框架，例如：
+Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight 轻松、快速且经济有效地处理大量数据。 HDInsight 包括最常用的开源框架，例如：
 
 - Apache Hadoop
 - Apache Spark
@@ -43,7 +43,7 @@ Azure HDInsight 是 Hadoop 组件的云分发。 可以通过 Azure HDInsight �
 
 - **全球可用性** - 提供 HDInsight 的[区域](https://azure.microsoft.com/regions/services/)要多于提供任何其他大数据分析产品/服务的区域。 Azure HDInsight 还在中国和德国的 Azure 政府版中提供，满足关键主权领域的企业需求。
 
-- **安全性和符合性** - HDInsight 允许通过  [Azure 虚拟网络](../hdinsight-extend-hadoop-virtual-network.md)、 [加密](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)以及与  [Azure Active Directory](../domain-joined/apache-domain-joined-introduction.md) 集成来保护企业数据资产。 HDInsight 还满足最常用的行业和政府 [符合性标准](https://azure.microsoft.com/overview/trusted-cloud)。
+- **安全性和符合性** - HDInsight 允许通过  [Azure 虚拟网络](../hdinsight-plan-virtual-network-deployment.md)、 [加密](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)以及与  [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) 集成来保护企业数据资产。 HDInsight 还满足最常用的行业和政府 [符合性标准](https://azure.microsoft.com/overview/trusted-cloud)。
 
 - **简化版本管理** - Azure HDInsight 管理 Hadoop 生态系统组件的版本并使其保持最新。 软件更新在内部部署过程中通常比较复杂。
 
@@ -53,7 +53,7 @@ Azure HDInsight 是 Hadoop 组件的云分发。 可以通过 Azure HDInsight �
 
 - **自定义工具或第三方应用程序的可扩展性** - HDInsight 群集可使用已安装的组件进行扩展，也可以通过 Azure 市场中的[一键式](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 部署与其他大数据解决方案进行集成。
 
-- **轻松管理、 管理和监视**-与 Azure HDInsight 集成 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md) 以提供单一界面可以监视所有群集。
+- **易于管理、管理和监视**-Azure HDInsight 与 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md) 集成, 提供单个界面, 可用于监视所有群集。
 
 - **与其他 Azure 服务集成** - HDInsight 可轻松地与其他常用 Azure 服务进行集成，例如：
 
@@ -94,7 +94,7 @@ Azure HDInsight 是 Hadoop 组件的云分发。 可以通过 Azure HDInsight �
 |大数据生态系统组件|HDFS、Yarn、Hive、LLAP、Impala、Kudu、HBase、Spark、MapReduce、Kafka、Zookeeper、Solr、Sqoop、Oozie、Ranger、Atlas、Falcon、Zeppelin、R|
 |群集类型|Hadoop、Spark、Confluent Kafka、Storm、Solr|
 |群集数|4|
-|主节点数量|2|
+|主节点数|2|
 |辅助角色节点数|100|
 |边缘节点数| 5|
 |总磁盘空间|100 TB|
@@ -106,7 +106,7 @@ Azure HDInsight 是 Hadoop 组件的云分发。 可以通过 Azure HDInsight �
 |灾难恢复/备份|是否备份群集？|  
 |依赖于群集的系统|SQL Server、Teradata、Power BI、MongoDB|
 |第三方集成|Tableau、GridGain、Qubole、Informatica、Splunk|
-|**主题**：安全性 |||
+|**主题**：安全性|||
 |外围安全性|防火墙|
 |群集身份验证和授权|Active Directory、Ambari、Cloudera Manager，不进行身份验证|
 |HDFS 访问控制|  手动，SSH 用户|
@@ -121,7 +121,7 @@ Azure HDInsight 是 Hadoop 组件的云分发。 可以通过 Azure HDInsight �
 
 |**问题**|**示例**|**答案**|
 |---|---|---|
-|**主题**：工作负载和频率 |||
+|**主题**：工作负载和频率|||
 |MapReduce 作业|10 个作业 -- 每天两次||
 |Hive 作业|100 个作业 -- 每小时||
 |Spark 批处理作业|50 个作业 -- 每 15 分钟||
@@ -135,35 +135,35 @@ Azure HDInsight 是 Hadoop 组件的云分发。 可以通过 Azure HDInsight �
 |数据业务流程|Oozie 工作流、气流||
 |内存中查找|Apache Ignite、Redis||
 |数据目标|HDFS、RDBMS、Kafka、MPP ||
-|**主题**：元数据 |||
+|**主题**：元数据|||
 |Hive 数据库类型|Mysql、Postgres||
-|不。 Hive 元存储|2||
-|不。 Hive 表|100||
-|不。 Ranger 策略|20||
-|不。 Oozie 工作流|100||
+|否。 Hive 元存储|2||
+|否。 Hive 表|100||
+|否。 Ranger 策略|20||
+|否。 Oozie 工作流|100||
 |**主题**：**缩放**|||
 |数据量包括复制|100 TB||
 |每日引入量|50 GB||
 |数据增长率|每年 10%||
 |群集节点增长率|每年 5%
-|**主题**：群集利用率 |||
+|**主题**：群集利用率|||
 |已使用的平均 CPU 百分比|60%||
 |已使用的平均内存百分比|75%||
 |已使用的磁盘空间|75%||
 |已使用的平均网络百分比|25%
-|**主题**：人员 |||
-|不。 管理员|2||
-|不。 开发人员|10||
-|不。 最终用户|100||
+|**主题**：人员|||
+|否。 管理员|2||
+|否。 开发人员|10||
+|否。 最终用户|100||
 |技能|Hadoop、Spark||
-|不。 可用于迁移工作的资源|2||
+|否。 可用于迁移工作的资源|2||
 |**主题**：**限制**|||
 |当前限制|延迟较高||
 |当前挑战|并发问题||
 
 ### <a name="azure-requirements-questionnaire"></a>Azure 需求问卷
 
-|**主题**：基础结构  |||
+|**主题**：基础结构 |||
 |---|---|---|
 |**问题**|**示例**|**答案**|
 | 首选区域|美国东部||
@@ -174,13 +174,13 @@ Azure HDInsight 是 Hadoop 组件的云分发。 可以通过 Azure HDInsight �
 |初始加载首选项|DistCp、Data box、ADF、WANDisco||
 |数据传输增量|DistCp、AzCopy||
 |正在进行的增量数据传输|DistCp、Sqoop||
-|**主题**： 监视和警报  |||
+|**主题**： 监视和警报 |||
 |使用 Azure 监控和警报与集成第三方监视|使用 Azure 监视和警报||
-|**主题**： 安全性首选项  |||
+|**主题**： 安全性首选项 |||
 |专用和受保护的数据管道？|是||
 |已加入域的群集 (ESP)？|     是||
 |本地 AD 同步到云？|     是||
-|不。 AD 用户同步？|          100||
+|否。 AD 用户同步？|          100||
 |确定将密码同步到云？|    是||
 |仅云用户？|                 是||
 |需要 MFA？|                       否|| 
@@ -189,7 +189,7 @@ Azure HDInsight 是 Hadoop 组件的云分发。 可以通过 Azure HDInsight �
 |需要审核？|                  是||
 |静态数据加密？|          是||
 |在传输中进行数据加密？|       是||
-|**主题**： 重建体系结构首选项  |||
+|**主题**： 重建体系结构首选项 |||
 |单个群集与特定群集类型|特定群集类型||
 |共存存储与远程存储？|远程存储||
 |在远程存储数据群集大小更小？|群集大小更小||
