@@ -1,6 +1,6 @@
 ---
 title: 教程：创建自定义搜索网页 - 必应自定义搜索
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 介绍如何配置自定义搜索实例并将其集成到网页。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 0870983fe9f0ae64090652f02c526a370064b8ab
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 3a8d6a831adf24212191a103dcf356bbe74d7962
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595888"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405231"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教程：构建自定义搜索网页
 

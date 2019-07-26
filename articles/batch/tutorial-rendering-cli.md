@@ -3,18 +3,18 @@ title: 在云中渲染场景 - Azure Batch
 description: 教程 - 如何使用 Batch 渲染服务和 Azure 命令行界面通过 Arnold 来渲染 Autodesk 3ds Max 场景
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 5abc2e673438a1ffa22e8d010bf2ee395cd521ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c87a6968e5c6fd0e587c240b0a5df0a73f9909b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127308"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321656"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
@@ -43,7 +43,7 @@ Azure Batch 提供云规模的渲染功能，按使用付费。 Azure Batch 支�
 
 在订阅中创建资源组、Batch 帐户和链接存储帐户（如果尚未这样做）。 
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 以下示例在“eastus2”位置创建名为“myResourceGroup”的资源组。
+使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 以下示例在“eastus2”  位置创建名为“myResourceGroup”的资源组  。
 
 ```azurecli-interactive 
 az group create \

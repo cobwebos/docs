@@ -3,19 +3,19 @@ title: 快速入门：识别语音，Unity - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 参考本指南使用 Unity 和适用于 Unity 的语音 SDK (Beta) 创建语音转文本应用程序。 完成后，可以使用计算机的麦克风实时将语音转录为文本。
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
-ms.author: wolfma
-ms.openlocfilehash: b55c6535184a905790f575b98c1b5a60a83f5daf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.date: 07/23/2019
+ms.author: jhakulin
+ms.openlocfilehash: 425cacb22865e64a996c653477120a5f7f410c9a
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606384"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405939"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>快速入门：使用适用于 Unity 的语音 SDK (Beta) 识别语音
 

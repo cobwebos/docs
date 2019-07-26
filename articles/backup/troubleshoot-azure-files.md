@@ -1,19 +1,18 @@
 ---
 title: 排查 Azure 文件共享备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
-services: backup
 ms.service: backup
 author: rayne-wiselman
 ms.author: raynew
-ms.date: 01/31/2019
+ms.date: 07/22/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: eec30ec8ff85f2d9a2ba78da2872b081e90c9e33
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c44819bfda2f48195c25ad6be7608383162f3c61
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240164"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467115"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>排查 Azure 文件共享备份问题
 可参考下表中所列信息，排查使用 Azure 文件共享备份时遇到的问题和错误。

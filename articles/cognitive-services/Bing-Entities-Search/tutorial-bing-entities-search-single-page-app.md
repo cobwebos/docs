@@ -1,6 +1,6 @@
 ---
 title: 教程：必应实体搜索单页 Web 应用
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 介绍如何在单页 Web 应用程序中使用必应实体搜索 API。
 services: cognitive-services
 author: aahill
@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 02/01/2019
+ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: 1b8cf36c631755458bc0c531773a6b2aba7f1038
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 5a8276f06207eb69ffec0e21c6d92794973f3b83
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406382"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423988"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
 
-必应实体搜索 API 用于在 Web 中搜索实体和场所的信息。 可以在给定查询中请求一种或两种结果。 场所和实体的定义在下面提供。
+必应实体搜索 API 用于在 Web 中搜索实体和场所的信息。   可以在给定查询中请求一种或两种结果。 场所和实体的定义在下面提供。
 
 |||
 |-|-|
 |实体|按名称查找的知名人物、场所和事物|
-|场所|按名称或类型查找的餐馆、酒店和其他本地商业场所（例如，意大利餐馆）|
+|场所|按名称或类型查找的餐馆、酒店和其他本地商业场所（例如，意大利餐馆） |
 
 本教程将生成一个单页 Web 应用程序，该应用程序使用必应实体搜索 API 直接在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。
 
@@ -247,7 +247,7 @@ function bingMapsCallback(response) {
 }
 ```
 
-除了纬度和经度，必应实体搜索查询还需要一个 *radius*（半径），用于指示位置信息的精确度。 我们使用在必应地图响应中提供的边界框来计算半径。 边界框是一个将整个位置包围住的矩形。 例如，如果用户输入 `NYC`，则结果大致包含纽约市的中心坐标以及一个围绕该市的边界框。 
+除了纬度和经度，必应实体搜索查询还需要一个 *radius*（半径），用于指示位置信息的精确度。 我们使用在必应地图响应中提供的边界框来计算半径。  边界框是一个将整个位置包围住的矩形。 例如，如果用户输入 `NYC`，则结果大致包含纽约市的中心坐标以及一个围绕该市的边界框。 
 
 首先使用函数 `haversineDistance()`（未显示）计算从主坐标分别到边界框的四个角的距离。 在这四个距离中，使用最大的一个作为半径。 最小半径为一公里。 如果响应中未提供边界框，则此值也会用作默认值。
 
@@ -376,7 +376,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> HTTP 请求成功不一定意味着搜索本身成功。 如果搜索操作中出现错误，必应实体搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
+> HTTP 请求成功  不一定意味着搜索本身成功。 如果搜索操作中出现错误，必应实体搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
 
 上面两个函数中的很多代码专用于错误处理。 以下阶段可能会出现错误：
 
@@ -404,7 +404,7 @@ function handleBingResponse() {
 
 | | |
 |-|-|
-|`id`|`id` 看起来像 URL，但不应将其用于链接。 排名结果的 `id` 类型与答案集合中某个搜索结果项的 `id` 匹配，或者与整个答案集合（例如 `Entities`）匹配。
+|`id`|`id` 看起来像 URL，但不应将其用于链接。 排名结果的 `id` 类型与答案集合中某个搜索结果项的 `id` 匹配，或者  与整个答案集合（例如 `Entities`）匹配。
 |`answerType`<br>`resultIndex`|`answerType` 是指包含结果的顶级答案集合（例如 `Entities`）。 `resultIndex` 是指结果在该集合中的索引。 如果省略 `resultIndex`，则排名结果指整个集合。
 
 > [!NOTE]
@@ -432,7 +432,7 @@ function renderSearchResults(results) {
 
 ## <a name="rendering-result-items"></a>呈现结果项
 
-在 JavaScript 代码中有一个对象 `searchItemRenderers`，其中包含呈现器函数，为每种搜索结果生成 HTML。
+在 JavaScript 代码中有一个对象 `searchItemRenderers`，其中包含呈现器  函数，为每种搜索结果生成 HTML。
 
 ```javascript
 searchItemRenderers = { 
@@ -535,7 +535,7 @@ searchItemRenderers = {
 
 接下来，在 HTML 文件中将必应 Web 搜索终结点更改为：
 
-    https://localhost:9090/httpss://api.cognitive.microsoft.com/bing/v7.0/search
+    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
 最后，使用以下命令启动 CORS 代理：
 

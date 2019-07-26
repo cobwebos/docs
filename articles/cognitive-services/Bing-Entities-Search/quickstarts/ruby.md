@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 Ruby 向必应实体搜索 REST API 发送搜索请求
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 Ruby 将请求发送到必应实体搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: b5653ffbfeb22bc59c48dd92b558178fcd89b2de
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: e470173dc9e747547ff5085f3c804fb18c0c3594
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384500"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423930"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>通过 Ruby 使用必应实体搜索 API 快速入门
 

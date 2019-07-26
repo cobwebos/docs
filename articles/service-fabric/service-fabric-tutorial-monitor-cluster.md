@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/13/2019
+ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 9838c6e31e3bb7031d98e615fd96049f22dd8d30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63069dcdebf19c64d7bcde298fa234622a6d9a2b
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158069"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385278"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中监视 Service Fabric 群集
 
@@ -62,9 +62,9 @@ Azure Monitor 日志收集并分析云中托管的应用程序和服务的遥测
 
 要访问 Service Fabric 分析解决方案，请转至 [Azure 门户](https://portal.azure.com)，然后选择你在其中创建 Service Fabric 分析解决方案的资源组。
 
-选择资源“ServiceFabric(mysfomsworkspace)”。
+选择资源“ServiceFabric(mysfomsworkspace)”  。
 
-在“概述”中，将看到每个已启用解决方案的图形磁贴，包括 Service Fabric 的磁贴。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
+在“概述”中，将看到每个已启用解决方案的图形磁贴，包括 Service Fabric 的磁贴  。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
 
 ![Service Fabric 解决方案](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
@@ -83,7 +83,7 @@ Azure Monitor 日志收集并分析云中托管的应用程序和服务的遥测
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>查看 Service Fabric 事件，包括对节点执行的操作
 
-在“Service Fabric 分析”页上，单击“群集事件”对应的图形。  将显示已收集的所有系统事件的日志。 以下内容摘自 Azure 存储帐户中的“WADServiceFabricSystemEventsTable”以供参考，类似地，接下来看到的 Reliable Services 和 Reliable Actors 事件也都摘自相应的表。
+在“Service Fabric 分析”页上，单击“群集事件”对应的图形  。  将显示已收集的所有系统事件的日志。 以下内容摘自 Azure 存储帐户中的“WADServiceFabricSystemEventsTable”以供参考，类似地，接下来看到的 Reliable Services 和 Reliable Actors 事件也都摘自相应的表  。
     
 ![查询操作通道](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
 
@@ -96,7 +96,7 @@ ServiceFabricOperationalEvent
 
 Kusto 查询语言非常强大。 以下是一些其他有用的查询。
 
-通过将查询保存为具有别名 ServiceFabricEvent 的函数，将 ServiceFabricEvent 查找表创建为用户定义的函数：
+通过将查询保存为具有别名 ServiceFabricEvent 的函数，将 ServiceFabricEvent 查找表创建为用户定义的函数  ：
 
 ```kusto
 let ServiceFabricEvent = datatable(EventId: int, EventName: string)
@@ -192,7 +192,7 @@ app('PlunkoServiceFabricCluster').traces
 
 ### <a name="view-service-fabric-application-events"></a>查看 Service Fabric 应用程序事件
 
-可以查看在群集上部署的 Reliable Services 和 Reliable Actors 应用程序的事件。  在“Service Fabric 分析”页上，单击“应用程序事件”对应的图形。
+可以查看在群集上部署的 Reliable Services 和 Reliable Actors 应用程序的事件。  在“Service Fabric 分析”页上，单击“应用程序事件”对应的图形  。
 
 运行以下查询以查看 Reliable Services 应用程序的事件：
 ```kusto
@@ -236,15 +236,15 @@ ServiceFabricReliableActorEvent
 ## <a name="view-performance-counters-with-azure-monitor-logs"></a>使用 Azure Monitor 日志查看性能计数器
 要查看性能计数器，请转至 [Azure 门户](https://portal.azure.com)以及你在其中创建 Service Fabric 分析解决方案的资源组。 
 
-选择资源“ServiceFabric (mysfomsworkspace)”，并选择“Log Analytics 工作区”，然后选择“高级设置”。
+选择资源“ServiceFabric (mysfomsworkspace)”，并选择“Log Analytics 工作区”，然后选择“高级设置”    。
 
-单击“数据”，然后单击“Windows 性能计数器”。 此时会显示一个可以选择的默认计数器列表，此外还可以设置收集间隔。 还可以添加要收集的[其他性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 此[参考文章](/windows/desktop/PerfCtrs/specifying-a-counter-path)中介绍了正确的格式。 单击“保存”，然后单击“确定”。
+单击“数据”  ，然后单击“Windows 性能计数器”  。 此时会显示一个可以选择的默认计数器列表，此外还可以设置收集间隔。 还可以添加要收集的[其他性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 此[参考文章](/windows/desktop/PerfCtrs/specifying-a-counter-path)中介绍了正确的格式。 单击“保存”，然后单击“确定”   。
 
-关闭“高级设置”边栏选项卡，然后在“常规”标题下选择“工作区摘要”。 对于启用的每个解决方案，都有一个图形磁贴，包括 Service Fabric 的磁贴。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
+关闭“高级设置”边栏选项卡，然后在“常规”标题下选择“工作区摘要”   。 对于启用的每个解决方案，都有一个图形磁贴，包括 Service Fabric 的磁贴。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
 
-操作通道和 Reliable Services 事件也有图形磁贴。 已选择计数器的流入数据的图形表示形式将会显示在“节点指标”下。 
+操作通道和 Reliable Services 事件也有图形磁贴。 已选择计数器的流入数据的图形表示形式将会显示在“节点指标”下  。 
 
-选择“容器指标”图形可了解更多详细信息。 还可以使用 Kusto 查询语言，像查询群集事件一样查询性能计数器数据，以及基于节点、性能计数器名称和值进行筛选。
+选择“容器指标”图形可了解更多详细信息  。 还可以使用 Kusto 查询语言，像查询群集事件一样查询性能计数器数据，以及基于节点、性能计数器名称和值进行筛选。
 
 ## <a name="query-the-eventstore-service"></a>查询 EventStore 服务
 [EventStore 服务](service-fabric-diagnostics-eventstore.md)提供了在给定时间点了解群集或工作负载状态的方法。 EventStore 是有状态 Service Fabric 服务，它维护群集中的事件。 事件通过 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)、REST 和 API 公开。 EventStore 直接查询群集以获取群集中任何实体的诊断数据，要查看 EventStore 中可用事件的完整列表，请参阅 [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)。

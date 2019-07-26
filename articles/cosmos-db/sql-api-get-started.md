@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 07/09/2019
+ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 6fd7efe38aeb1f1094d240cf1675d432f3766229
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 36d172daed487372401691c7046215fb6c4a63ee
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985721"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384939"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
 
@@ -56,22 +56,22 @@ ms.locfileid: "67985721"
 
 ## <a id="SetupVS"></a>步骤 2：设置 Visual Studio 项目
 1. 在计算机上打开 **Visual Studio 2017**。
-1. 在“文件”菜单中，选择“新建”，并选择“项目”。
-1. 在“新建项目”对话框中，选择“Visual C#” / “控制台应用(.NET Framework)”，为项目命名，并单击“确定”。
+1. 在“文件”菜单中，选择“新建”，并选择“项目”。   
+1. 在“新建项目”  对话框中，选择“Visual C#” / “控制台应用(.NET Framework)”，为项目命名，并单击“确定”。   
     ![“新建项目”窗口的屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-new-project.png)
 
     > [!NOTE]
-    > 对于 .NET Core 目标，请在“新建项目”对话框中，选择“Visual C#” / “控制台应用(.NET Core)”，为项目命名，然后单击“确定”
+    > 对于 .NET Core 目标，请在“新建项目”对话框中，选择“Visual C#” / “控制台应用(.NET Core)”，为项目命名，然后单击“确定”    
 
-1. 在“解决方案资源管理器”中，右键单击 Visual Studio 解决方案下方的新控制台应用程序，并单击“管理 NuGet 包...”
+1. 在“解决方案资源管理器”  中，右键单击 Visual Studio 解决方案下方的新控制台应用程序，并单击“管理 NuGet 包...” 
 
     ![项目的右键菜单的屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget.png)
-1. 在“NuGet”选项卡上，单击“浏览”，并在搜索框中键入 **Microsoft.Azure.Cosmos**。
-1. 在结果中找到“Microsoft.Azure.Cosmos”，并单击“安装”。
+1. 在“NuGet”选项卡上，单击“浏览”，并在搜索框中键入 **Microsoft.Azure.Cosmos**。  
+1. 在结果中找到“Microsoft.Azure.Cosmos”  ，并单击“安装”  。
    Azure Cosmos DB SQL API 客户端库的程序包 ID 是 [Microsoft Azure Cosmos DB 客户端库](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)。
    ![用于查找 Azure Cosmos DB 客户端 SDK 的 NuGet 菜单屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
 
-    如果获得有关查看解决方案更改的消息，请单击“确定”。 如果获得有关接受许可证的消息，请单击“我接受”。
+    如果获得有关查看解决方案更改的消息，请单击“确定”  。 如果获得有关接受许可证的消息，请单击“我接受”。 
 
 很好！ 现在，我们已完成安装，让我们开始编写一些代码。 可以在 [GitHub](https://github.com/Azure-Samples/cosmos-dotnet-getting-started)上找到本教程的完整代码项目。
 
@@ -118,7 +118,7 @@ ms.locfileid: "67985721"
 
 1. 从 [Azure 门户](https://portal.azure.com)检索终结点 URL 和主密钥。
 
-    在 Azure 门户中，导航到 Azure Cosmos DB 帐户，然后单击“密钥”。
+    在 Azure 门户中，导航到 Azure Cosmos DB 帐户，然后单击“密钥”  。
 
     从门户中复制该 URI 并将它粘贴到 ```Program.cs``` 文件中的 `<your endpoint URL>`。 从门户中复制“主密钥”并将它粘贴到 `<your primary key>`。
 
@@ -155,7 +155,7 @@ ms.locfileid: "67985721"
 ## <a name="step-4-create-a-database"></a>步骤 4：创建数据库
 可以使用 ``CosmosClient`` 类的 [**CreateDatabaseIfNotExistsAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient) 或 [**CreateDatabaseAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient) 函数创建一个数据库。 数据库是跨容器分区的项的逻辑容器。
 
-1. 将 **CreateDatabaseAsync** 方法复制并粘贴到 **GetStartedDemoAsync** 方法下面。 “CreateDatabaseAsync”会使用通过 ``databaseId`` 字段指定的 ID ``FamilyDatabase`` 来创建新数据库（如果不存在）。 
+1. 将 **CreateDatabaseAsync** 方法复制并粘贴到 **GetStartedDemoAsync** 方法下面。 “CreateDatabaseAsync”会使用通过 ``databaseId`` 字段指定的 ID ``FamilyDatabase`` 来创建新数据库（如果不存在）  。 
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateDatabaseAsync&highlight=7)]
 
@@ -263,7 +263,7 @@ ms.locfileid: "67985721"
 
 可以使用 **CosmosDatabase** 类中的 [**CreateContainerIfNotExistsAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabase) 或 [**CreateContainerAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabase) 函数创建容器。 容器包含项（在使用 SQL API 的情况下为 JSON 文档）和关联的 JavaScript 服务器端应用程序逻辑，例如存储过程、用户定义的函数以及触发器。
 
-1. 将 **CreateContainerAsync** 方法复制并粘贴到 **CreateDatabaseAsync** 方法下面。 “CreateContainerAsync”会使用通过 ``containerId`` 字段指定的 ID ``FamilyContainer`` 来创建按 ``LastName`` 属性分区的新容器（如果不存在）。
+1. 将 **CreateContainerAsync** 方法复制并粘贴到 **CreateDatabaseAsync** 方法下面。 “CreateContainerAsync”会使用通过 ``containerId`` 字段指定的 ID ``FamilyContainer`` 来创建按 ``LastName`` 属性分区的新容器（如果不存在）  。
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
 
@@ -286,15 +286,15 @@ ms.locfileid: "67985721"
 祝贺你！ 已成功创建 Azure Cosmos DB 容器。  
 
 ## <a id="CreateDoc"></a>步骤 6：向容器添加项
-可以使用“CosmosContainer”类的 [CreateItemAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmoscontainer) 函数创建项。 使用 SQL API 时，项会投射为文档，后者是用户定义的（任意）JSON 内容。 现在，可以将项插入 Azure Cosmos DB 容器中。
+可以使用“CosmosContainer”类的 [CreateItemAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmoscontainer) 函数创建项   。 使用 SQL API 时，项会投射为文档，后者是用户定义的（任意）JSON 内容。 现在，可以将项插入 Azure Cosmos DB 容器中。
 
 在本例中，让我们首先创建 **Family** 类来表示存储在 Azure Cosmos DB 中的对象。 此外还将创建 **Family** 中使用的 **Parent**、**Child**、**Pet** 和 **Address** 子类。 注意，项必须将 **ID** 属性序列化为 JSON 格式的 **ID**。
 
-1. 选择“Ctrl + Shift + A”以打开“添加新项”对话框。 将新类“Family.cs”添加到项目中。
+1. 选择“Ctrl + Shift + A”以打开“添加新项”对话框   。 将新类“Family.cs”添加到项目中  。
 
     ![显示向项目添加新的 Family.cs 类的屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
 
-1. 将“Family”、“Parent”、“Child”、“Pet”和“Address”类复制并粘贴到“Family.cs”。
+1. 将“Family”、“Parent”、“Child”、“Pet”和“Address”类复制并粘贴到“Family.cs”       。
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
@@ -462,7 +462,7 @@ End of demo, press any key to exit.
 * 一个 [Azure Cosmos DB 帐户][cosmos-db-create-account]。
 * GitHub 上提供的 [GetStarted](https://github.com/Azure-Samples/cosmos-dotnet-getting-started) 解决方案。
 
-若要在 Visual Studio 中还原 Azure Cosmos DB .NET SDK 的引用，请在解决方案资源管理器中右键单击“GetStarted”解决方案，并单击“还原 NuGet 包”。 接下来，按照[连接到 Azure Cosmos DB 帐户](#Connect)中所述的方法在 App.config 文件中更新 EndPointUri 和 PrimaryKey 值。
+若要在 Visual Studio 中还原 Azure Cosmos DB .NET SDK 的引用，请在解决方案资源管理器中右键单击“GetStarted”解决方案，并单击“还原 NuGet 包”   。 接下来，按照[连接到 Azure Cosmos DB 帐户](#Connect)中所述的方法在 App.config 文件中更新 EndPointUri 和 PrimaryKey 值。
 
 就这么简单，生成以后即可开始操作！
 

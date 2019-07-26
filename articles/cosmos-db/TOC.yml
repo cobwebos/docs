@@ -272,6 +272,8 @@
         - name: 基于角色的访问控制
           displayName: rbac
           href: role-based-access-control.md
+        - href: cosmos-db-advanced-threat-protection.md
+          name: 高级威胁防护
         - name: 安全属性
           href: cosmos-db-security-attributes.md
     - name: 企业就绪情况

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：通过 C# 执行 Web 搜索 - 必应 Web 搜索 REST API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过使用 Java 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 351bc71046df1bdd677d8c64411b6ae09dfc1ef1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 414287b4a279ac76abf62d3721a51627380a8668
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206118"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423756"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>快速入门：使用 Java 和必应新闻搜索 REST API 执行新闻搜索
 

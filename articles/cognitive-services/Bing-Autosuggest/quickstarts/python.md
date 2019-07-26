@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应自动建议 REST API 和 Python 建议搜索查询
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用必应自动建议 API。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 38cc9440e3cb5492ef1f45b3907fd2c00867f350
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 733b3a943c0699d4a3af6771c917849b0b0eb528
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66385014"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405265"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>快速入门：使用必应自动建议 REST API 和 Python 建议搜索查询
 

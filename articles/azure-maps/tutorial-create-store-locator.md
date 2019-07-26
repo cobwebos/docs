@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0d7ca38ecb66dbf92678eae4da7d8706f68cbaa2
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 4cc21a4dbab7d5114eed8414c6530eab5f42bb00
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273815"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478860"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>使用 Azure Maps 创建店铺定位器
 
@@ -139,7 +139,7 @@ ms.locfileid: "67273815"
 1. 添加对 Azure Maps 服务模块的引用。 该模块是一个 JavaScript 库，用于包装 Azure Maps REST 服务，并使其可在 JavaScript 中方便使用。 该模块可用于增强搜索功能。
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
 1. 添加对 *index.js* 和 *index.css* 的引用：

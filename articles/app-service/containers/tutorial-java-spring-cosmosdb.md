@@ -8,13 +8,13 @@ ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18
-ms.openlocfilehash: 069bc213695de813ad6b878db54f38a909efd1df
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.custom: seodec18, seo-java-july2019
+ms.openlocfilehash: 625e40b4dcb8ac558831508b292fd5cbcfb90b5b
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956034"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489457"
 ---
 # <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>教程：使用 Spring 和 Azure Cosmos DB 生成 Java Web 应用
 
@@ -169,7 +169,7 @@ bash-3.2$ mvn package spring-boot:run
 
 启动应用后，可在本地使用以下链接访问 Spring TODO 应用：[http://localhost:8080/](http://localhost:8080/)。
 
- ![](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![在 Azure appservice 中运行的 Java 应用](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 如果看到了异常而不是“已启动 TodoApplication”消息，请检查上一步骤所述的 `bash` 脚本是否正确导出了环境变量，并且是否为创建的 Azure Cosmos DB 数据库提供了正确的值。
 
@@ -263,7 +263,7 @@ open https://spring-todo-app.azurewebsites.net
 
 在地址栏中，应会看到正在使用远程 URL 运行的应用：
 
- ![](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![在 Azure appservice 中运行的 Java 应用](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>流式传输诊断日志
 
