@@ -307,6 +307,8 @@
           href: 'https://azure.microsoft.com/pricing/details/lab-services/'
         - name: 堆栈溢出
           href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
+        - name: 常见问题
+          href: classroom-labs/classroom-labs-faq.md
     - name: 开发测试实验室
       items:
         - name: Azure 更新
