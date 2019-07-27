@@ -1,6 +1,6 @@
 ---
-title: 列表实体类型
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 列出实体类型-LUIS
+titleSuffix: Azure Cognitive Services
 description: 列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用 "建议" 功能可查看基于当前列表的新词建议。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: c278a72327d476be8963b10db5e8231b6d859a4a
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: ca9f8b570ee28b1913c8ec81c66a5b70827c04d6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480183"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559958"
 ---
 # <a name="list-entity"></a>列表实体 
 
@@ -81,7 +81,7 @@ ms.locfileid: "68480183"
 ]
 ```
 
-|数据对象|实体名称|ReplTest1|
+|数据对象|实体名称|值|
 |--|--|--|
 |简单实体|`Customer`|`bob jones`|
 

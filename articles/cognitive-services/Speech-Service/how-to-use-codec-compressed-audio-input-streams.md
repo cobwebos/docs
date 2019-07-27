@@ -1,7 +1,7 @@
 ---
-title: Stream 编解码器压缩的音频和语音 SDK-语音服务
+title: 通过 Speech SDK-语音服务流式处理编解码器压缩音频
 titleSuffix: Azure Cognitive Services
-description: 了解如何将流式传输到 Azure 使用语音 SDK 的语音服务的压缩的音频。 适用于C++， C#，并适用于 Linux 的 Java。
+description: 了解如何通过语音 SDK 将压缩音频流式传输到 Azure 语音服务。 适用于C++Linux C#的、和 Java。
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,39 +10,39 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: d23190dc8f7980cb8a94ba295f45ae67fc7d4678
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b29b42dea9522526d49c1bda017a522855946def
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605091"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559558"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>使用编解码器压缩音频输入使用语音 SDK
+# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
-Speech SDK**压缩音频输入 Stream** API 提供了一种方法来流式传输到语音服务的压缩的音频使用 PullStream 或 PushStream。
+语音 SDK 的**压缩音频输入流**API 提供了使用 PullStream 或 PushStream 将压缩音频流式传输到语音服务的方法。
 
 > [!IMPORTANT]
-> 仅支持流式处理压缩的音频C++， C#，并在 Linux （Ubuntu 16.04、 Ubuntu 18.04、 Debian 9） 上的 Java。
-> 语音 SDK 版本 1.4.0 或更高版本是必需的。
+> 仅 Linux (ubuntu 16.04、ubuntu C++18.04 C#、Debian 9) 上的、和 Java 支持流式压缩音频。
+> 需要语音 SDK 版本1.4.0 或更高版本。
 
-Wav/PCM 请参阅主线语音文档。  外部 wav/PCM，支持以下编解码器压缩输入的格式：
+对于 wav/PCM, 请参阅主线语音文档。  在 wav/PCM 外部, 支持以下编解码器压缩输入格式:
 
 - MP3
-- 大作/OGG
+- OPUS/OGG
 
-## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>必备组件以使用编解码器压缩音频输入
+## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>使用编解码器压缩的音频输入的先决条件
 
-安装适用于 Linux 的语音 SDK 使用压缩的音频输入这些其他依赖项：
+安装这些附加的依赖项, 以便在适用于 Linux 的语音 SDK 中使用压缩的音频输入:
 
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 ```
 
-## <a name="example-code-using-codec-compressed-audio-input"></a>示例代码使用编解码器压缩音频输入
+## <a name="example-code-using-codec-compressed-audio-input"></a>使用编解码器压缩的音频输入的示例代码
 
-若要流式传输到语音服务以压缩音频格式，创建`PullAudioInputStream`或`PushAudioInputStream`。 然后，创建`AudioConfig`流类的实例，从指定流的压缩格式。
+若要以压缩的音频格式流式传输到语音服务, `PullAudioInputStream`请`PushAudioInputStream`创建或。 然后, `AudioConfig`通过指定流的压缩格式, 从 stream 类的实例创建。
 
-我们假设您有一个名为的输入的流类`myPushStream`并且正在使用大作/OGG。 你的代码可能如下所示：
+假设你有一个名`myPushStream`为的输入流类, 并使用 OPUS/OGG。 你的代码可能如下所示:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;

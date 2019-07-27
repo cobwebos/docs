@@ -1,5 +1,5 @@
 ---
-title: 快速入门：翻译语音，C# (UWP) - 语音服务
+title: 快速入门：转换语音, C# (UWP)-语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将创建一个简单的通用 Windows 平台 (UWP) 应用程序来捕获用户语音，将其翻译为另一种语言，并将文本输出到命令行。 本指南适用于 Windows 用户。
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.date: 07/23/2019
 ms.author: erhopf
-ms.openlocfilehash: dafcbd6bbe7f542d4eabc6b7cf858ac4871caae8
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: e73f15525aa679a3ba0242dab897adf999fe7e09
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404903"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559254"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>快速入门：使用适用于 C# 的语音 SDK 翻译语音 (UWP)
 

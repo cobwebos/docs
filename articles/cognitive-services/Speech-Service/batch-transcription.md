@@ -1,6 +1,6 @@
 ---
-title: 如何使用批量听录 - 语音服务
-titlesuffix: Azure Cognitive Services
+title: 如何使用批操作-语音服务
+titleSuffix: Azure Cognitive Services
 description: 如果要听录存储（如 Azure Blob）中的大量音频，则批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 services: cognitive-services
 author: PanosPeriorellis
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: b71400c3ae3c1cc6737d9194b4d94bf0b9c7efa9
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 088b6ef93631cb964979de3621453caa430c5b1e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606744"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559705"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
 如果要听录存储（如 Azure Blob）中的大量音频，则批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="subscription-key"></a>订阅密钥
 
@@ -82,31 +82,31 @@ Batch 听录 API 支持以下格式：
 
 ### <a name="configuration-properties"></a>配置属性
 
-使用以下可选属性来配置脚本：
+使用以下可选属性来配置脚本:
 
 | 参数 | 描述 |
 |-----------|-------------|
 | `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `none`（禁用不雅内容筛选）、`masked`（将不雅内容替换为星号）、`removed`（从结果中删除所有不雅内容）或 `tags`（添加“不雅内容”标记）。 默认设置是 `masked`。 |
 | `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `none`（禁用标点）、`dictated`（表示使用显式标点）、`automatic`（允许解码器处理标点）或 `dictatedandautomatic`（表示使用专用标点符号或自动使用标点）。 |
  | `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 |
- | `AddSentiment` | 指定情绪应添加到查询文本。 接受的值是`true`可让每个查询文本的情绪和`false`（默认值） 以禁用它。 |
- | `AddDiarization` | 指定该 diarization alalysis 应执行上输入这应为包含两个语音的单通道。 接受的值是`true`这样 diarization 和`false`（默认值） 以禁用它。 它还需要`AddWordLevelTimestamps`设置为 true。|
+ | `AddSentiment` | 指定应将情绪添加到查询文本中。 接受`true`的值允许每个查询文本的情绪`false`和 (默认值) 禁用。 |
+ | `AddDiarization` | 指定应在输入上执行 diarization alalysis, 该输入应是包含两个声音的 mono 通道。 接受`true`的值使 diarization 和`false` (默认值) 可以禁用它。 还需要`AddWordLevelTimestamps`将设置为 true。|
 
 ### <a name="storage"></a>存储
 
-批处理脚本支持[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)音频和编写转录到存储中读取。
+批处理脚本支持[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview), 用于读取音频并将转录写入存储。
 
-## <a name="webhooks"></a>Webhook
+## <a name="webhooks"></a>Webhooks
 
-轮询听录状态不能性能最好，或提供最佳用户体验。 若要轮询状态，可以注册将在长时间运行的脚本任务已完成时通知客户端的回调。
+轮询脚本状态可能不是最高性能, 也可能是最佳的用户体验。 若要轮询状态, 可以注册回调, 这会在长时间运行的脚本任务完成时通知客户端。
 
-有关更多详细信息，请参阅[Webhook](webhooks.md)。
+有关更多详细信息, 请参阅[webhook](webhooks.md)。
 
 ## <a name="speaker-separation-diarization"></a>演讲者分离 (Diarization)
 
-Diarization 是音频的分离扬声器段中的过程。 我们批处理的管道支持 Diarization，能够识别两个扬声器单通道记录。
+Diarization 是将扬声器分离成一片音频的过程。 批处理管道支持 Diarization, 并且能够识别 mono 通道录制上的两个扬声器。
 
-若要请求你的音频听录请求为 diarization 处理，只是需要在 HTTP 请求中添加相关参数，如下所示。
+若要请求为 diarization 处理音频脚本请求, 只需在 HTTP 请求中添加相关参数, 如下所示。
 
  ```json
 {
@@ -122,30 +122,30 @@ Diarization 是音频的分离扬声器段中的过程。 我们批处理的管�
 }
 ```
 
-Word 级别时间戳还必须为开启为更高版本的请求中的参数，表示。
+由于上述请求中的参数指示, Word 级别时间戳还必须 "打开"。
 
-对应的音频将包含由一个编号标识发言人 (目前我们支持只有两个语音，因此演讲者将被标识为演讲者 1 和"演讲者 2") 后跟脚本输出。
+对应的音频将包含由号码标识的扬声器 (当前仅支持两个语音, 因此扬声器将标识为 "演讲者 1" 和 "音箱 2"), 后接脚本输出。
 
-另请注意，Diarization 选项不适用于立体声录制。 此外，所有的 JSON 输出将包含演讲者标记。 如果未使用 diarization，它将显示演讲者：Null' JSON 输出中。
+另请注意, Diarization 不能用于立体声录音。 此外, 所有 JSON 输出都将包含发言人标记。 如果未使用 diarization, 则会显示 "演讲者:JSON 输出中的 Null "。
 
 > [!NOTE]
-> 在所有区域中，对于所有区域设置，diarization 已推出 ！
+> Diarization 在所有区域和所有区域设置中都可用!
 
 ## <a name="sentiment"></a>情绪
 
-情绪是批处理脚本 API 中的新功能和是调用 center 域中的重要功能。 客户可以使用`AddSentiment`为其请求的参数
+情绪是批处理脚本中的一项新功能, 是呼叫中心域中的一项重要功能。 客户可以使用其`AddSentiment`请求的参数
 
-1.  深入了解客户满意度
-2.  获取有关代理 （团队采用调用） 的性能的见解
-3.  当调用了一个轮次负方向中的时间找出的确切位置
-4.  找出启用负正调用时也发生了什么
-5.  标识客户喜欢什么以及什么他们不喜欢有关产品或服务
+1.  获取有关客户满意度的见解
+2.  深入了解代理的性能 (执行调用的团队)
+3.  找出调用负方向的确切时间点
+4.  确定在对正调用负
+5.  确定用户喜欢的内容及其对产品或服务不喜欢的内容
 
-情感评分音频段的每个音频段指查询文本 （偏移量） 的开始日期和检测出 silence 的字节流的末尾之间的时间推移。 在该时间段内的整个文本用于计算情绪。 我们不计算整个调用或每个通道的整个语音的任何聚合情绪值。 向域所有者进一步应用也会保留这些聚合。
+情绪按每个音频段评分, 其中音频段定义为查询文本 (偏移) 开始与字节流结束的检测无声之间的时间间隔。 该段内的整个文本用于计算情绪。 我们不会为整个调用或每个通道的整个语音计算任何聚合情绪值。 这些聚合将留给域所有者进一步应用。
 
-情绪应用词法窗体上。
+情绪应用于词法窗体。
 
-JSON 输出示例类似于下面：
+JSON 输出示例如下所示:
 
 ```json
 {
@@ -180,11 +180,11 @@ JSON 输出示例类似于下面：
   ]
 }
 ```
-该功能使用一个情绪模型，它目前处于 beta 版本。
+此功能使用的是情绪模型, 该模型当前为 Beta 版本。
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
-完整示例位于[GitHub 示例存储库](https://aka.ms/csspeech/samples)内`samples/batch`子目录。
+`samples/batch`子目录中的[GitHub 示例存储库](https://aka.ms/csspeech/samples)中提供了完整的示例。
 
 如要使用自定义声学或语言模型，必须使用订阅信息、服务区域、指向要转录的音频文件的 SAS URI 和模型 ID 来自定义示例代码。
 

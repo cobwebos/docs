@@ -1,5 +1,5 @@
 ---
-title: 实体角色
+title: 实体角色-LUIS
 titleSuffix: Azure Cognitive Services
 description: 角色是仅在模式中使用的实体的已命名上下文子类型。 例如，在表述 `buy a ticket from New York to London` 中，纽约和伦敦都是城市，但是两者在句中的含义不同。 纽约为出发城市，伦敦为目标城市。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 318e71b68bbabeeef34c75a412f9fdd5b6db754a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c437450ead6f05a36725588215ac03b83790373
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073015"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563937"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>上下文子类型的实体角色
 
@@ -35,9 +35,9 @@ buy a ticket from New York to London
 
 角色为这些差异命名：
 
-|实体类型|实体名称|角色|目的|
+|实体类型|实体名称|Role|用途|
 |--|--|--|--|
-|简单|Location|origin|飞机起飞地|
+|简单|Location|原点|飞机起飞地|
 |简单|Location|destination|飞机降落地|
 
 ## <a name="non-machine-learned-entity-example-of-roles"></a>角色的非机器学习实体示例
@@ -48,7 +48,7 @@ buy a ticket from New York to London
 Schedule the meeting from 8 to 9
 ```
 
-|实体类型|角色名称|值|
+|实体类型|角色名|ReplTest1|
 |--|--|--|
 |预生成的 datetimeV2|Starttime|8|
 |预生成的 datetimeV2|Endtime|9|
@@ -91,7 +91,7 @@ Schedule the meeting from 8 to 9
 ## <a name="role-syntax-in-patterns"></a>模式中的角色语法
 实体和角色在括号 `{}` 内。 实体和角色由冒号分隔。 
 
-## <a name="entity-roles-versus-collaborator-roles"></a>实体与协作者角色的角色
+## <a name="entity-roles-versus-collaborator-roles"></a>实体角色与协作者角色
 
 实体角色适用于 LUIS 应用的数据模型。 [协作者](luis-concept-collaborator.md)角色适用于创作访问级别。 
 
@@ -99,5 +99,5 @@ Schedule the meeting from 8 to 9
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用[动手教程](tutorial-entity-roles.md)实体角色使用机器学习实体
+* 使用具有非计算机学习实体的实体角色的[动手教程](tutorial-entity-roles.md)
 * 了解如何添加[角色](luis-how-to-add-entities.md#add-a-role-to-pattern-based-entity)

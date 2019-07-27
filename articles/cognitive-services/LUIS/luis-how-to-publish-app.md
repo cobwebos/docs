@@ -1,5 +1,5 @@
 ---
-title: 发布应用
+title: 发布应用-LUIS
 titleSuffix: Azure Cognitive Services
 description: 当完成生成和测试活动 LUIS 应用时，可通过将其发布到终结点使其可用于客户端应用程序。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: diberry
-ms.openlocfilehash: 22bed877d853c7023f8efe6bfb3dd21b4aa4c8df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fdbdb2cd13d131019c4230aa369af31240d25f0d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194402"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563655"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
 
@@ -24,9 +24,9 @@ ms.locfileid: "60194402"
 
 <a name="publish-your-trained-app-to-an-http-endpoint"></a>
 
-## <a name="publishing"></a>发布
+## <a name="publishing"></a>正在发布
 
-若要发布到终结点，请在右上方的面板中选择“发布”  。 
+若要发布到终结点，请在右上方的面板中选择“发布”。 
 
 ![右上方的导航栏](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
@@ -40,11 +40,11 @@ ms.locfileid: "60194402"
 
 ![“发布”弹出窗口，其中包含指向终结点的链接](./media/luis-how-to-publish-app/publish-success.png)
 
-如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择“管理”  ，然后在左侧菜单中选择“密钥和终结点”来访问终结点 URL  。 
+如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择“管理”，然后在左侧菜单中选择“密钥和终结点”来访问终结点 URL。 
 
 ## <a name="configuring-publish-settings"></a>配置发布设置
 
-通过在右上方导航栏中选择“管理”  ，然后选择“发布设置”  来配置发布设置。 
+通过在右上方导航栏中选择“管理”，然后选择“发布设置”来配置发布设置。 
 
 ![发布设置](./media/luis-how-to-publish-app/publish-settings.png)
 

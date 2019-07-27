@@ -1,6 +1,6 @@
 ---
-title: 简单实体类型
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 简单实体类型-LUIS
+titleSuffix: Azure Cognitive Services
 description: 简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 因为简单实体通常是名称 (如公司名称、产品名称或其他类别名称), 所以, 在使用简单实体时添加短语列表, 以提高所使用的名称的信号。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 3f03b33f685bb5c7c9ba8f2267b8556c5dadade4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: c1514b6cd512924a162a524d11e888055fa06514
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480216"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563212"
 ---
 # <a name="simple-entity"></a>简单实体 
 

@@ -1,7 +1,7 @@
 ---
-title: 新增-语言理解
+title: 新增功能-语言理解 (LUIS)
 titleSuffix: Azure Cognitive Services
-description: 本文包含有关语言理解的消息。
+description: 本文包含有关语言理解的新闻。
 author: diberry
 manager: nitinme
 ms.custom: experiment-luis-0519
@@ -11,24 +11,24 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 2efc48df906117a8d01ea8c309f001d2f623444f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 63a898bd807b168ae17ec90e442c6ee6c001c715
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485072"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559892"
 ---
-# <a name="whats-new-in-language-understanding"></a>什么是语言理解中的新增功能
+# <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
-了解什么是服务中的新增功能。 这些项可能会发布说明、 视频、 博客文章和其他类型的信息。 若要跟踪的最新服务此页加入书签。  
+了解该服务中的新增功能。 这些项可能会包括发行说明、视频、博客文章和其他类型的信息。 将此页添加为书签，以便及时了解该服务。  
 
 ## <a name="release-notes"></a>发行说明 
 
-### <a name="june-24-2019"></a>2019 年 6 月 24日日
+### <a name="june-24-2019"></a>2019 年 6 月 24 日
 
-* [OrdinalV2 预建的实体](luis-reference-prebuilt-ordinal-v2.md)支持下一步，如排序之前，和最后一个。 英语的区域性。
+* [序号 V2 预生成实体](luis-reference-prebuilt-ordinal-v2.md)，以支持排序，如下一个、上一个和最后一个。 仅限英语区域性。
 
-### <a name="may-6-2019---build-conference"></a>2019-5 月 6日日 //Build 会议
+### <a name="may-6-2019---build-conference"></a>2019 年 5 月 6 日 - //Build 会议
 
 以下功能是在 Build 2019 大会上发布的：
 
@@ -40,14 +40,14 @@ ms.locfileid: "67485072"
 
 ## <a name="blogs"></a>博客
 
-[智能机器人应用程序框架](https://blog.botframework.com/)
+[Bot Framework](https://blog.botframework.com/)
 
 ## <a name="videos"></a>视频
 
-### <a name="2019-build-videos"></a>2019 build 视频
+### <a name="2019-build-videos"></a>2019 Build 视频
 
-[如何使用 Azure 对话 AI 来为下一代扩展业务](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+[如何使用 Azure 对话 AI 为下一代扩展业务](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="service-updates"></a>服务更新
 
-[认知服务的 azure 更新公告](https://azure.microsoft.com/updates/?product=cognitive-services)
+[有关认知服务的 Azure 更新公告](https://azure.microsoft.com/updates/?product=cognitive-services)

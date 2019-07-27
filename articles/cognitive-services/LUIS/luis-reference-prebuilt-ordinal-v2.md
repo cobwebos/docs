@@ -1,7 +1,7 @@
 ---
-title: 序号 V2 预生成的实体
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: 本文包含序号 V2 预生成的实体信息在语言理解 (LUIS)。
+title: 序号 V2 预生成的实体-LUIS
+titleSuffix: Azure Cognitive Services
+description: 本文包含了语言理解 (LUIS) 中序号 V2 预生成实体的信息。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 862b962f5642e01d7ed8250f49d51a6132447083
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 972f75fd1c977e79a2fa70c44bb3069e2c69a2c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486136"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563411"
 ---
-# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>序号 V2 LUIS 应用程序的预建的实体
-序号 V2 数量展开[序号](luis-reference-prebuilt-ordinal.md)提供相对引用，例如`next`， `last`，和`previous`。 这些将不会提取使用序号预生成的实体。
+# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的序号 V2 预生成实体
+序号 V2 扩展了[序号](luis-reference-prebuilt-ordinal.md)以提供相关引用，如 `next`、`last` 和 `previous`。 这些无法使用序号预生成实体提取。
 
-## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>预生成的序号 V2 实体解析
+## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>序号 V2 预生成实体的解析
 
 ### <a name="api-version-2x"></a>API 版本 2.x
 
-下面的示例演示的分辨率**builtin.ordinalV2**实体。
+以下示例展示了 **builtin.ordinalV2** 实体的解析。
 
 ```json
 {
@@ -124,4 +124,4 @@ ms.locfileid: "67486136"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[百分比](luis-reference-prebuilt-percentage.md)，[电话号码](luis-reference-prebuilt-phonenumber.md)，并[温度](luis-reference-prebuilt-temperature.md)实体。 
+了解[百分比](luis-reference-prebuilt-percentage.md)、[电话号码](luis-reference-prebuilt-phonenumber.md)和[温度](luis-reference-prebuilt-temperature.md)实体。 

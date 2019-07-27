@@ -1,5 +1,5 @@
 ---
-title: 与 Kubernetes 和 Jenkins 配合使用
+title: 与 Kubernetes 和 Helm 服务一起使用
 titleSuffix: Azure Cognitive Services
 description: 使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像, 我们将创建一个 Kubernetes 包。 此包将部署到本地的 Kubernetes 群集。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: ba292a7d3bdf58ff78764bc2095fdf4a8c486070
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 06f2db708385c4c3fbf8d005b701b633ac52776a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326207"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559135"
 ---
 # <a name="use-with-kubernetes-and-helm"></a>与 Kubernetes 和 Jenkins 配合使用
 
@@ -30,7 +30,7 @@ ms.locfileid: "68326207"
 | Azure 帐户 | 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][free-azure-account]。 |
 | 容器注册表访问 | 为了使 Kubernetes 能够将 docker 映像提取到群集中, 需要访问容器注册表。 需要首先请求对[容器注册表的访问权限][speech-preview-access]。 |
 | Kubernetes CLI | 从容器注册表管理共享凭据需要[KUBERNETES CLI][kubernetes-cli] 。 Helm 之前还需要 Kubernetes, 这是 Kubernetes 包管理器。 |
-| Helm CLI | 作为[HELM CLI][helm-install] install, you'll also need to initialize Helm, which will install [Tiller][tiller-install]的一部分。 |
+| Helm CLI | 作为[HELM CLI][helm-install]安装的一部分, 你还需要初始化 Helm, 这将安装[Tiller][tiller-install]。 |
 |语音资源 |若要使用这些容器，必须具有：<br><br>用于获取关联的计费密钥和计费终结点 URI 的_语音_Azure 资源。 Azure 门户的 "**语音**概述" 和 "密钥" 页上都有这两个值, 并且需要启动容器。<br><br>**{API_KEY}** : 资源键<br><br>**{ENDPOINT_URI}** : 终结点 URI 示例为:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>建议的主机计算机配置

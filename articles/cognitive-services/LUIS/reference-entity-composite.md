@@ -1,6 +1,6 @@
 ---
-title: 复合实体类型
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 复合实体类型-LUIS
+titleSuffix: Azure Cognitive Services
 description: 复合实体由其他实体构成，例如预生成实体、简单实体、正则表达式实体和列表实体。 各种单独的实体构成整个实体。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 55dcc5666e63b8a87ddcb13696991fe02843fbbd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: ea258275cf954bc6e06da03324c2ae93de0e7fde
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480150"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563239"
 ---
 # <a name="composite-entity"></a>复合实体 
 

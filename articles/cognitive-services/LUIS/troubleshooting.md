@@ -1,5 +1,5 @@
 ---
-title: 常见问题 (FAQ)
+title: 常见问题 (FAQ)-LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: diberry
-ms.openlocfilehash: 7e1e61d96b066c395668ce1dd9cdba4cb4ecb2be
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: bccdcce52b9e62048d7eb307a4783abda0f9d17c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204107"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563169"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -24,7 +24,7 @@ ms.locfileid: "67204107"
 
 ## <a name="whats-new"></a>新增功能
 
-[了解详细信息](whats-new.md)有关什么是语言理解中的新增功能。
+[详细了解](whats-new.md)语言理解中的新增功能。
 
 <a name="luis-authoring"></a>
 
@@ -110,7 +110,7 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>为何在应用的“仪表板”中看不到终结点命中数？
 应用的“仪表板”中的终结点总命中数会定期更新，但 Azure 门户中与 LUIS 终结点密钥相关联的指标的更新频率更高。
 
-如果在“仪表板”中看不到更新的终结点命中数，请登录到 Azure 门户，找到与 LUIS 终结点密钥相关联的资源，然后打开“指标”以选择“总调用数”指标   。 如果将终结点密钥用于多个 LUIS 应用，则 Azure 门户中的指标会显示使用该密钥的所有 LUIS 应用进行的调用的聚合数。
+如果在“仪表板”中看不到更新的终结点命中数，请登录到 Azure 门户，找到与 LUIS 终结点密钥相关联的资源，然后打开“指标”以选择“总调用数”指标。 如果将终结点密钥用于多个 LUIS 应用，则 Azure 门户中的指标会显示使用该密钥的所有 LUIS 应用进行的调用的聚合数。
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>是否有 PowerShell 命令进入终结点？
 
@@ -168,7 +168,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ## <a name="app-publishing"></a>应用发布
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>“向应用添加密钥”窗口中的租户 ID 是什么？
-在 Azure 中，租户代表与服务关联的客户或组织。 若要在 Azure 门户的“目录 ID”框中查找租户 ID，  请选择“Azure Active Directory”   > “管理”   >   “属性”。
+在 Azure 中，租户代表与服务关联的客户或组织。 若要在 Azure 门户的“目录 ID”框中查找租户 ID，请选择“Azure Active Directory” > “管理” > “属性”。
 
 ![Azure 门户中的租户 ID](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -189,18 +189,18 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>我收到有关超出配额的错误。 如何解决问题？ 
 
-查看，请[修复 HTTP 状态代码 403 和 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429)若要了解详细信息。
+请参阅[修复 HTTP 状态代码 403 和 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) 以了解详细信息。
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>我需要处理更多的终结点查询。 我该怎么做？ 
 
-查看，请[修复 HTTP 状态代码 403 和 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429)若要了解详细信息。
+请参阅[修复 HTTP 状态代码 403 和 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) 以了解详细信息。
 
 
 
 ## <a name="app-management"></a>应用管理
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>如何下载用户表述的日志？
-默认情况下，LUIS 应用会记录用户提供的表述。 若要下载用户发送至 LUIS 应用的表述的日志，请转到“我的应用”  ，然后选择此应用。 在上下文工具栏中，选择“导出终结点日志”  。 日志格式化为逗号分隔值 (CSV) 文件。
+默认情况下，LUIS 应用会记录用户提供的表述。 若要下载用户发送至 LUIS 应用的表述的日志，请转到“我的应用”，然后选择此应用。 在上下文工具栏中，选择“导出终结点日志”。 日志格式化为逗号分隔值 (CSV) 文件。
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>如何禁用表述的日志记录？
 若要关闭用户表述的日志记录，可以在客户端应用程序用来查询 LUIS 的终结点 URL 中设置 `log=false`。 但是，关闭日志记录会禁用 LUIS 应用提供表述建议或改进基于[主动学习](luis-concept-review-endpoint-utterances.md#what-is-active-learning)的性能的功能。 如果因为数据隐私顾虑而设置 `log=false`，则不能从 LUIS 下载这些用户表述的记录，也不能使用这些表述来改进应用。
@@ -215,7 +215,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ### <a name="can-i-delete-data-from-luis"></a>能否从 LUIS 中删除数据？
 
 * 可以随意删除用于训练 LUIS 的示例表述。 如果从 LUIS 应用中删除某个示例表述，则会将其从 LUIS Web 服务中删除，导致其无法导出。
-* 可以从 LUIS 在“查看终结点表述”页中建议的用户表述列表中删除表述。  从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
+* 可以从 LUIS 在“查看终结点表述”页中建议的用户表述列表中删除表述。 从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
 * 如果删除某个帐户，则会删除所有应用及其示例表述和日志。 数据可以保留在服务器上 60 天，然后就会被永久删除。
 
 ### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Microsoft 如何管理我发送给 LUIS 的数据？
@@ -248,13 +248,13 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>在 Azure 机器人服务中解决问题
 
-如果在使用 Azure 机器人服务时遇到“网上聊天中的测试”返回 `Sorry, my bot code is having an issue` 问题，请查看日志  ：
+如果在使用 Azure 机器人服务时遇到“网上聊天中的测试”返回 `Sorry, my bot code is having an issue` 问题，请查看日志：
 
-1. 在 Azure 门户中，对于机器人，从“机器人管理”部分选择“生成”   。
+1. 在 Azure 门户中，对于机器人，从“机器人管理”部分选择“生成”。
 1. 打开联机代码编辑器。 
 1. 在顶部的蓝色导航栏中，选择智能机器人名称（从右起的第二项）。
-1. 在生成的下拉列表中，选择“打开 Kudu 控制台”  。
-1. 选择“LogFiles”，然后选择“应用程序”   。 查看所有日志文件。 如果应用程序文件夹中没有错误，请查看“LogFiles”下的所有日志文件  。 
+1. 在生成的下拉列表中，选择“打开 Kudu 控制台”。
+1. 选择“LogFiles”，然后选择“应用程序”。 查看所有日志文件。 如果应用程序文件夹中没有错误，请查看“LogFiles”下的所有日志文件。 
 1. 如果使用经过编译的语言（如 C#），请记住重新生成项目。
 
 > [!Tip] 
@@ -267,7 +267,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ## <a name="integrating-luis"></a>集成 LUIS
 
 ### <a name="where-is-my-luis-app-created-during-the-azure-web-app-bot-subscription-process"></a>在 Azure Web 应用机器人订阅过程中创建的 LUIS 应用位于何处？
-如果选择一个 LUIS 模板，然后在模板窗格中选择“选择”按钮，  则左侧窗格在更改后会包括模板类型，并询问在什么区域创建 LUIS 模板。 不过，Web 应用机器人过程不会创建 LUIS 订阅。
+如果选择一个 LUIS 模板，然后在模板窗格中选择“选择”按钮，则左侧窗格在更改后会包括模板类型，并询问在什么区域创建 LUIS 模板。 不过，Web 应用机器人过程不会创建 LUIS 订阅。
 
 ![LUIS 模板 Web 应用机器人区域](./media/luis-faq/web-app-bot-location.png)
 
@@ -304,7 +304,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 视频：
 
-* [如何使用 Azure 对话 AI 来为下一代扩展业务](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+* [如何使用 Azure 对话 AI 为下一代扩展业务](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="next-steps"></a>后续步骤
 

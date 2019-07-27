@@ -1,6 +1,6 @@
 ---
-title: 版本控制
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 版本控制-LUIS
+titleSuffix: Azure Cognitive Services
 description: LUIS 中的版本与传统编程中的版本类似。 每个版本都是应用的即时快照。 在对应用进行更改之前，请创建新版本。 可更轻松地返回到确切应用，然后尝试将应用的意向和话语还原到以前的状态。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: 9da79e5b744f8ba70c0e265f0d1f0126b37eba49
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75e82cf8a9da7b75f372f35270b16b10ec6e3da6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60509665"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563860"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>了解如何以及何时使用 LUIS 版本
 
@@ -41,23 +41,23 @@ LUIS 中的版本与传统编程中的版本类似。 每个版本都是应用�
 可以发布到暂存或生产槽。 每个槽可以具有不同的版本或相同的版本。 这对于通过终结点验证模型版本之间的变化非常有用，该终结点可用于机器人或其他 LUIS 调用应用程序。 
 
 ## <a name="clone-a-version"></a>克隆版本
-克隆版本以创建现有版本的副本，并将其保存为新版本。 克隆版本以使用现有版本的相同内容作为新版本的起始点。 克隆版本后，新版本将成为活动版本  。 
+克隆版本以创建现有版本的副本，并将其保存为新版本。 克隆版本以使用现有版本的相同内容作为新版本的起始点。 克隆版本后，新版本将成为活动版本。 
 
 ## <a name="import-and-export-a-version"></a>导入和导出版本
 可以在应用级别导入版本。 该版本将成为活动版本，并使用应用文件的“versionId”属性中的版本 ID。 还可以在版本级别导入到现有应用。 新版本将成为活动版本。 
 
-可以在应用级别导出版本，也可以在版本级别导出版本。 唯一的区别是应用级别导出的版本是当前活动版本，而在版本级别，可以在“[设置](luis-how-to-manage-versions.md)”页上选择任意要导出的版本  。 
+可以在应用级别导出版本，也可以在版本级别导出版本。 唯一的区别是应用级别导出的版本是当前活动版本，而在版本级别，可以在“[设置](luis-how-to-manage-versions.md)”页上选择任意要导出的版本。 
 
 导出的文件不包含机器学习信息，因为应用在导入后会经过重新训练。 导出的文件不包含协作者，因此在版本导入到新应用后，需要重新添加协作者。
 
 ## <a name="export-each-version-as-app-backup"></a>导出各个版本作为应用备份
-为了备份 LUIS 应用，请在“[设置](luis-how-to-manage-versions.md)”页上导出每个版本  。
+为了备份 LUIS 应用，请在“[设置](luis-how-to-manage-versions.md)”页上导出每个版本。
 
 ## <a name="delete-a-version"></a>删除版本
 可以从“设置”页上的“版本”列表中删除活动版本之外的所有版本。 
 
 ## <a name="version-availability-at-the-endpoint"></a>终结点上的版本可用性
-训练的版本在应用[终结点](luis-glossary.md#endpoint)中不会自动可用。 为使版本在终结点中可用，必须[发布](luis-how-to-publish-app.md)或重新发布版本。 可以发布到“暂存”和“生产”，从而提供最多两个在终结点中可用的应用版本   。 如果需要更多版本的应用在终结点上可用，应导出版本并重新导入到新的应用。 新的应用具有不同的应用 ID。
+训练的版本在应用[终结点](luis-glossary.md#endpoint)中不会自动可用。 为使版本在终结点中可用，必须[发布](luis-how-to-publish-app.md)或重新发布版本。 可以发布到“暂存”和“生产”，从而提供最多两个在终结点中可用的应用版本。 如果需要更多版本的应用在终结点上可用，应导出版本并重新导入到新的应用。 新的应用具有不同的应用 ID。
 
 ## <a name="collaborators"></a>协作者
 所有者和所有[协作者](luis-how-to-collaborate.md)具有所有应用版本的完全访问权限。

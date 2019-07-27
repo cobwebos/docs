@@ -1,7 +1,7 @@
 ---
 title: 免费试用语音服务
 titleSuffix: Azure Cognitive Services
-description: 以简单、经济的方式开始使用语音服务。 可利用 30 天免费试用了解此服务的功能并确定它能否满足应用程序需求。
+description: 语音服务入门简单且经济实惠。 可利用 30 天免费试用了解此服务的功能并确定它能否满足应用程序需求。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 203526b23a9571f0cccf3ebed432978772282418
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a8797afdfacfcfc75445c7f35083aeb9bb847ac1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226424"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562925"
 ---
 # <a name="try-speech-services-for-free"></a>免费试用语音服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "68226424"
 
 最后，语音服务提供适合用于开发应用程序的免费、低容量层。 服务额度到期后，仍可以保留此免费订阅。
 
-## <a name="free-trial"></a>免费试用
+## <a name="free-trial"></a>免费使用版
 
 利用 30 天免费试用版，可在有限时间内访问标准定价层。
 
@@ -34,11 +34,11 @@ ms.locfileid: "68226424"
 
 1. 转到[试用认知服务](https://azure.microsoft.com/try/cognitive-services/)。
 
-1. 选择“语音 API”选项卡。 
+1. 选择“语音 API”选项卡。
 
    ![“语音服务”选项卡](media/index/try-speech-api-free-trial1.png)
 
-1. 在“语音服务”下，选择“获取 API 密钥”按钮   。
+1. 在“语音服务”下，选择“获取 API 密钥”按钮。
 
    ![API 密钥](media/index/try-speech-api-free-trial2.png)
 
@@ -48,9 +48,9 @@ ms.locfileid: "68226424"
 
 1. 使用 Microsoft、Facebook、LinkedIn 或 GitHub 帐户登录。
 
-    可以在 [Microsoft 帐户门户](https://account.microsoft.com/account)中注册免费的 Microsoft 帐户。 若要开始，请单击“Microsoft 登录”，然后，当系统要求登录时，请单击“创建帐户”。   按步骤创建并验证新的 Microsoft 帐户。
+    可以在 [Microsoft 帐户门户](https://account.microsoft.com/account)中注册免费的 Microsoft 帐户。 若要开始，请单击“Microsoft 登录”，然后，当系统要求登录时，请单击“创建帐户”。 按步骤创建并验证新的 Microsoft 帐户。
 
-登录到“试用认知服务”后，免费试用开始。 显示的网页中将列出你当前具有其试用订阅的所有 Azure 认知服务服务。 “语音服务”旁将列出两个订阅密钥  。 可以在应用程序中使用任一密钥。
+登录到“试用认知服务”后，免费试用开始。 显示的网页中将列出你当前具有其试用订阅的所有 Azure 认知服务服务。 “语音服务”旁将列出两个订阅密钥。 可以在应用程序中使用任一密钥。
 
 > [!NOTE]
 > 所有免费试用订阅均位于美国西部区域。 发出请求时，请确保使用 `westus` 终结点。
@@ -59,9 +59,9 @@ ms.locfileid: "68226424"
 
 新 Azure 帐户将收到使用时间长达 30 天的 200 美元服务额度。 可使用此额度深入探索语音服务或者开始应用程序开发。
 
-若要注册新的 Azure 帐户，请转到 [Azure 注册页](https://azure.microsoft.com/free/ai/)，单击“免费开始”，  然后使用 Microsoft 帐户创建新的 Azure 帐户。
+若要注册新的 Azure 帐户，请转到 [Azure 注册页](https://azure.microsoft.com/free/ai/)，单击“免费开始”，然后使用 Microsoft 帐户创建新的 Azure 帐户。
 
-可以在 [Microsoft 帐户门户](https://account.microsoft.com/account)中注册免费的 Microsoft 帐户。 若要开始，请单击“Microsoft 登录”，然后，当系统要求登录时，请单击“创建帐户”。   按步骤创建并验证新的 Microsoft 帐户。
+可以在 [Microsoft 帐户门户](https://account.microsoft.com/account)中注册免费的 Microsoft 帐户。 若要开始，请单击“Microsoft 登录”，然后，当系统要求登录时，请单击“创建帐户”。 按步骤创建并验证新的 Microsoft 帐户。
 
 创建 Azure 帐户后，请按照下一部分的步骤开始订阅语音服务。
 
@@ -71,37 +71,37 @@ ms.locfileid: "68226424"
 
 1. 使用 Microsoft 帐户登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 选择门户左上角的“创建资源”。 
+1. 选择门户左上角的“创建资源”。
 
     ![创建资源](media/index/try-speech-api-create-speech1.png)
 
-1. 在“新建”窗口中，搜索“语音”。  
+1. 在“新建”窗口中，搜索“语音”。
 
-1. 在搜索结果中，选择“语音”。 
+1. 在搜索结果中，选择“语音”。
 
     ![选择语音](media/index/try-speech-api-create-speech2.png)
 
-1. 在“语音”下，选择“创建”   按钮。
+1. 在“语音”下，选择“创建”按钮。
 
     ![选择“创建”按钮](media/index/try-speech-api-create-speech3.png)
 
-1. 在“创建”下输入： 
+1. 在“创建”下输入：
 
    * 新资源的名称。 名称有助于区分同一服务的多个订阅。
    * 选择新资源关联的 Azure 订阅，以确定计费方式。
-   * 选择[区域](regions.md)其中将使用的资源。
-   * 选择免费或付费定价层。 单击“查看全部定价详细信息”，获取每个层的定价和用量配额的完整信息  。
+   * 选择将使用该资源的[区域](regions.md)。
+   * 选择免费或付费定价层。 单击“查看全部定价详细信息”，获取每个层的定价和用量配额的完整信息。
    * 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
-   * 为了以后可便捷访问订阅，请选中“固定到仪表板”复选框  。
-   * 选择“创建”  。
+   * 为了以后可便捷访问订阅，请选中“固定到仪表板”复选框。
+   * 选择“创建”。
 
      ![选择“创建”按钮](media/index/try-speech-api-create-speech4.png)
 
-     创建和部署新语音资源需要一些时间。 选择“快速入门”，查看新资源的信息。 
+     创建和部署新语音资源需要一些时间。 选择“快速入门”，查看新资源的信息。
 
      ![“快速启动”面板](media/index/try-speech-api-create-speech5.png)
 
-1. 在“快速入门”下，单击步骤 1 中的“密钥”链接，以显示订阅密钥   。 每个订阅有两个密钥；可在应用程序中使用任意一个密钥。 选择每个密钥旁的按钮，可将其复制到剪贴板以粘贴到代码中。
+1. 在“快速入门”下，单击步骤 1 中的“密钥”链接，以显示订阅密钥。 每个订阅有两个密钥；可在应用程序中使用任意一个密钥。 选择每个密钥旁的按钮，可将其复制到剪贴板以粘贴到代码中。
 
 > [!NOTE]
 > 可在一个或多个区域中创建数量不受限的标准层订阅。 但是，只能创建一个免费层订阅。 在免费层上进行的模型部署如果连续 7 天处于未使用状态，则会被系统自动停用。

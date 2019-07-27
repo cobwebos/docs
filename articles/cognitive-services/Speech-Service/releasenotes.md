@@ -1,7 +1,7 @@
 ---
-title: 发行说明 - 语音服务
-titlesuffix: Azure Cognitive Services
-description: 请参阅 Azure 语音服务的功能发布、改进、bug 修复和已知问题的运行日志。
+title: 发行说明-语音服务
+titleSuffix: Azure Cognitive Services
+description: 请参阅语音服务的运行中的功能版本、改进、bug 修复和已知问题的日志。
 services: cognitive-services
 author: BrianMouncer
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: e641051b75620ef5308bc81bca21b3ceda105d09
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 12eecc4998153cbeedeb907ecad33c56141a50e6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404831"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559129"
 ---
 # <a name="release-notes"></a>发行说明
 
