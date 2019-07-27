@@ -1,5 +1,5 @@
 ---
-title: Geography V2 预生成实体
+title: 地域 V2 预构建实体-LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中的 geographyV2 预构建实体信息。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 5b9ace8a2402d96c4bb54864eb59a56b46d04067
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2628dd30e09f4c52517ccb0a284cda235fb0c33f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071971"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560234"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 GeographyV2 预生成实体
 预构建的 geographyV2 可以检测地点。 由于此实体已经过训练，因此不需要将包含 GeographyV2 的陈述示例添加到应用程序意向中。 GeographyV2 实体支持英语[区域性](luis-reference-prebuilt-entities.md)。
@@ -24,7 +24,7 @@ ms.locfileid: "65071971"
 ## <a name="subtypes"></a>子类型
 地理位置具有以下子类型：
 
-|子类型|目的|
+|子类型|用途|
 |--|--|
 |`poi`|兴趣点|
 |`city`|城市名称|
@@ -37,7 +37,7 @@ ms.locfileid: "65071971"
 
 ### <a name="api-version-2x"></a>API 版本 2.x
 
-以下示例显示了 builtin.geographyV2 实体的解析  。
+以下示例显示了 builtin.geographyV2 实体的解析。
 
 ```json
 {

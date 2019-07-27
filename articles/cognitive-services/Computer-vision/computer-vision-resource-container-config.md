@@ -1,6 +1,6 @@
 ---
 title: 配置容器 - 计算机视觉
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 在计算机视觉中为识别文本容器配置各种设置。
 services: cognitive-services
 author: IEvangelist
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 90358d54077a0c320e8d3186e806b8a61d951c82
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 3e1dc68ec67e8a7a24c3459519df80a8faf2fc01
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321341"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565646"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>配置“识别文本”Docker 容器
 
-“识别文本”  容器运行时环境是使用 `docker run` 命令参数配置。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
+“识别文本”容器运行时环境是使用 `docker run` 命令参数配置。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
 ## <a name="configuration-settings"></a>配置设置
 
@@ -31,11 +31,11 @@ ms.locfileid: "68321341"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-此`ApiKey`设置指定用于跟踪`Cognitive Services`容器的计费信息的 Azure 资源密钥。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”  资源的有效密钥。
+此`ApiKey`设置指定用于跟踪`Cognitive Services`容器的计费信息的 Azure 资源密钥。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**“资源管理”部分的“密钥”下 
+* Azure 门户：**认知服务**“资源管理”部分的“密钥”下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,7 +43,7 @@ ms.locfileid: "68321341"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”  资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”  资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
@@ -102,7 +102,7 @@ ms.locfileid: "68321341"
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](computer-vision-how-to-install-containers.md#billing)。
-> ApiKey 值是来自 Azure `Cognitive Services`“资源密钥”页的“密钥”  。 
+> ApiKey 值是来自 Azure `Cognitive Services`“资源密钥”页的“密钥”。 
 
 ## <a name="recognize-text-container-docker-examples"></a>“识别文本”容器 Docker 示例
 

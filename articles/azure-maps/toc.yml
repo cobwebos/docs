@@ -5,6 +5,7 @@
     - name: 什么是 Azure Maps？
       href: about-azure-maps.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 创建 Web 应用
       href: quick-demo-map-app.md

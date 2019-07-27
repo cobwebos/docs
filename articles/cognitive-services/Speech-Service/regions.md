@@ -1,6 +1,6 @@
 ---
-title: 区域 - 语音服务
-titlesuffix: Azure Cognitive Services
+title: 区域-语音服务
+titleSuffix: Azure Cognitive Services
 description: 语音服务区域的参考。
 services: cognitive-services
 author: mahilleb-msft
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1ad618e9eb70fd75f433030584c0f6538532928f
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: c0414277b4851891911908ba4f42e92abedc86e4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466986"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553189"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -28,15 +28,15 @@ ms.locfileid: "67466986"
 
 在[语音 SDK](speech-sdk.md) 中，区域指定为字符串（例如，在 C# 语音 SDK 中用作 `SpeechConfig.FromSubscription` 的参数）。
 
-### <a name="speech-to-text-text-to-speech-and-translation"></a>语音转文本、 文本到语音转换和转换
+### <a name="speech-to-text-text-to-speech-and-translation"></a>语音到文本、文本到语音转换和翻译
 
-Speech SDK 仅在这些区域可用**语音识别**，**文本到语音转换**，并**翻译**:
+语音 SDK 在这些区域提供**语音识别**、**文本到语音** **转换和翻译**:
 
-  区域 | 语音 SDK 参数 | 语音自定义门户
+  地区 | 语音 SDK 参数 | 语音自定义门户
  ------|-------|--------
  美国西部 | `westus` | https://westus.cris.ai
  美国西部 2 | `westus2` | https://westus2.cris.ai
- 美国东部 | `eastus` | https://eastus.cris.ai
+ East US | `eastus` | https://eastus.cris.ai
  美国东部 2 | `eastus2` | https://eastus2.cris.ai
  美国中部 | `centralus` | https://centralus.cris.ai
  美国中北部 | `northcentralus` | https://northcentralus.cris.ai
@@ -57,32 +57,32 @@ Speech SDK 仅在这些区域可用**语音识别**，**文本到语音转换**�
 
 通过语音 SDK 实现**意向识别**的可用区域如下：
 
- 全球区域 | 区域 | 语音 SDK 参数
+ 全球区域 | 地区 | 语音 SDK 参数
  ------|-------|--------
  亚洲 | 东亚 | `eastasia`
  亚洲 | 东南亚 | `southeastasia`
  澳大利亚 | 澳大利亚东部 | `australiaeast`
  欧洲 | 北欧 | `northeurope`
  欧洲 | 西欧 | `westeurope`
- 北美 | 美国东部 | `eastus`
+ 北美 | East US | `eastus`
  北美 | 美国东部 2 | `eastus2`
  北美 | 美国中南部 | `southcentralus`
  北美 | 美国中西部 | `westcentralus`
  北美 | 美国西部 | `westus`
  北美 | 美国西部 2 | `westus2`
- 南美洲 | 巴西南部 | `brazilsouth`
+ 南美 | 巴西南部 | `brazilsouth`
 
 这是[语言理解服务 (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) 支持的发布区域的子集。
 
 ### <a name="voice-first-virtual-assistants"></a>语音优先虚拟助手
 
-[Speech SDK](speech-sdk.md)支持**语音第一个虚拟助手**中这些区域的功能：
+[语音 SDK](speech-sdk.md)支持以下区域中的 "**语音优先" 虚拟助手**功能:
 
-区域 | 语音 SDK 参数
+地区 | 语音 SDK 参数
 -------|---------------------
 美国西部 | `westus`
 美国西部 2 | `westus2`
-美国东部 | `eastus`
+East US | `eastus`
 美国东部 2 | `eastus2`
 西欧 | `westeurope`
 北欧 | `northeurope`
@@ -94,12 +94,12 @@ Speech SDK 仅在这些区域可用**语音识别**，**文本到语音转换**�
 
 ### <a name="speech-to-text"></a>语音转文本
 
-语音到文本的参考文档，请参阅[REST API，语音转文本](rest-speech-to-text.md)。
+有关语音到文本的参考文档, 请参阅[语音到文本 REST API](rest-speech-to-text.md)。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 ### <a name="text-to-speech"></a>文本转语音
 
-有关文本到语音转换的参考文档，请参阅[文本到语音转换 REST API](rest-text-to-speech.md)。
+有关文本到语音的参考文档, 请参阅[文本到语音 REST API](rest-text-to-speech.md)。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

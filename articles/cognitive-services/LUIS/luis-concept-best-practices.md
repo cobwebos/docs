@@ -1,6 +1,6 @@
 ---
-title: 最佳做法
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 最佳做法-LUIS
+titleSuffix: Azure Cognitive Services
 description: 学习 LUIS 最佳做法以从 LUIS 应用的模型中获取最佳结果。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5cbdf94ef1899c4963f6ebe0149024baed4916a7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812917"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564031"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>使用认知服务生成语言理解应用的最佳做法
 使用应用创作进程生成 LUIS 应用。 
@@ -122,7 +122,7 @@ ms.locfileid: "60812917"
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>应利用主动学习的建议功能
 
-定期使用[主动学习](luis-how-to-review-endpoint-utterances.md)的“查看终结点话语”功能，而不是将更多话语示例添加到意向  。 因为应用会不断接收终结点话语，所以此列表会不断变化。
+定期使用[主动学习](luis-how-to-review-endpoint-utterances.md)的“查看终结点话语”功能，而不是将更多话语示例添加到意向。 因为应用会不断接收终结点话语，所以此列表会不断变化。
 
 更多相关信息：
 * 概念：[通过评审终结点话语启用主动学习的相关概念](luis-concept-review-endpoint-utterances.md)
@@ -155,7 +155,7 @@ LUIS 会预期一个意向的话语会存在变体。 在总体意思相同的�
 
 为聊天机器人将执行的任何操作创建一个意向。 将实体用作实现操作的参数。 
 
-为执行航班预订操作的聊天机器人创建一个“BookFlight”意向  。 请勿为每条航线或每个目的地都创建一个意向。 将这些数据用作[实体](luis-concept-entity-types.md)，并在话语示例中进行标记。 
+为执行航班预订操作的聊天机器人创建一个“BookFlight”意向。 请勿为每条航线或每个目的地都创建一个意向。 将这些数据用作[实体](luis-concept-entity-types.md)，并在话语示例中进行标记。 
 
 ## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>请勿使用所有可能的值创建短语列表
 

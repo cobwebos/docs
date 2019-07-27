@@ -1,6 +1,6 @@
 ---
 title: 发行说明 - 自定义影像服务
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -9,47 +9,47 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 4b4e449b9260debbe90523141cacc4ed76219490
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79f3f2a5545b8cdcee86e52f35bd22a31e93d387
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787955"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564093"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
 
-## <a name="may-2-2019-and-may-10-2019"></a>2019 年 5 月 2 日和 2019 年 5 月 10 日，
+## <a name="may-2-2019-and-may-10-2019"></a>5月2日, 2019 和5月10日5月 10 2019 日
 
-- Bug 修复和后端方面的改进
+- Bug 修复和后端改进
 
-## <a name="may-23-2019"></a>2019 年 5 月 23 日，
+## <a name="may-23-2019"></a>2019 年 5 月 23 日
 
-- 改进了的门户体验的用户体验与 Azure 订阅，使其更轻松地选择你的 Azure 目录。
+- 改善了与 Azure 订阅相关的门户 UX 体验, 使你可以更轻松地选择 Azure 目录。
 
-## <a name="april-18-2019"></a>2019 年 4 月 18日日 
+## <a name="april-18-2019"></a>2019年4月18日 
 
-- 添加了的视觉 AI 开发人员工具包的对象检测导出。
-- 包括项目搜索的用户界面调整。
+- 为远景 AI 开发工具包添加了对象检测导出。
+- UI 调整, 包括项目搜索。
 
-## <a name="april-3-2019"></a>2019 年 4 月 3日日
+## <a name="april-3-2019"></a>2019年4月3日
 
-- 增加每个到 200 个图像的边界框的数量限制。 
-- Bug 修复，包括显著的性能更新模型导出到 TensorFlow。 
+- 增加了每个图像的边界框数到200的限制。 
+- Bug 修复, 包括导出到 TensorFlow 的模型的重大性能更新。 
 
 ## <a name="march-26-2019"></a>2019 年 3 月 26 日
 
-- 自定义影像服务已在 Azure 上进入正式发布 ！
-- 添加了新的机器学习为改进性能，尤其是在具有挑战性的数据集和精细分类上的后端的高级培训功能。 高级培训，可以指定培训和自定义视觉的计算时间预算呈下降趋式确定最佳的培训和扩充设置。 对于快速迭代，你可以继续使用现有快速的定型。
-- 引入了 3.0 Api。 宣布即将弃用的 pre 3.0 Api 于 2019 年 10 月 1 日。 请参阅的文档快速入门教程[.Net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)， [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)，[节点](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)， [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)，或[转](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial)有关示例有关如何开始。
-- 替换为"默认迭代"使用发布/取消发布在 3.0 中的 Api。
-- 已添加新模型导出目标。 Dockerfile 导出已升级以支持 ARM 的 Raspberry Pi 3。 导出支持添加到[愿景 AI 开发人员工具包。](https://visionaidevkit.com/)。
-- 标记的每个项目为 500 的 S0 级别的增加的限制。 映像的每个项目为 100,000 的 S0 级别的增加的限制。
-- 已删除的成人域。 常规域建议改为。
-- 宣布推出[定价](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)公开上市。  
+- 自定义影像服务在 Azure 上输入了正式上市!
+- 添加了新的机器学习后端高级培训功能以提高性能, 尤其是在有挑战性的数据集和精细分类的情况下。 使用高级培训, 你可以指定定型的计算时间预算, 自定义视觉将 experimentally 确定最佳训练和扩大设置。 对于快速迭代, 您可以继续使用现有的快速训练。
+- 引入了 3.0 Api。 在2019年10月1日宣布弃用了3.0 之前的 Api。 有关如何开始操作的示例, 请参阅[.net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)、 [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)、 [Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)、 [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)或[中转](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial)的文档快速入门。
+- 已在 3.0 Api 中将 "默认迭代" 替换为发布/取消发布。
+- 添加了新的模型导出目标。 Dockerfile 导出已升级到支持 ARM for Raspberry Pi 3。 已将导出支持添加到了[远景 AI 开发工具包。](https://visionaidevkit.com/)
+- 对于 S0 层, 每个项目的标记数增加到500。 对于 S0 层, 每个项目的映像数限制增加到100000。
+- 删除成人域。 建议改用常规域。
+- 公开上市的[定价](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)。  
 
-## <a name="february-25-2019"></a>2019 年 2 月 25日日
+## <a name="february-25-2019"></a>2019年2月25日
 
-- 宣布推出的限时试用项目 （不与 Azure 资源关联的项目），最终当自定义视觉接近完成其迁移到 Azure 公共预览版。 从 2019 年 3 月 25 日，CustomVision.ai 站点仅支持与 Azure 资源，例如免费的自定义视觉资源相关联的查看项目。 通过 2019 年 10 月 1 日，你仍可以访问自定义视觉 Api 通过现有的受限试用版项目。 这将授予更新 API 密钥的任何应用程序已使用自定义视觉编写您的时间。 2019 年 10 月 1 日之后, 将删除任何有限的试用版项目尚未移到 Azure。
+- 公布了有限试用项目 (不与 Azure 资源关联的项目) 的结束, 因为自定义视觉接近完成其迁移到 Azure 公共预览。 从2019年3月25日开始, CustomVision.ai 站点将仅支持查看与 Azure 资源关联的项目, 如免费自定义视觉资源。 2019年10月1日起, 你仍可以通过自定义视觉 Api 访问现有的有限试用项目。 这会让你有时间为你通过自定义视觉编写的任何应用更新 API 密钥。 2019年10月1日后, 你未移动到 Azure 的任何受限试用项目都将被删除。
 
 ## <a name="january-22-2019"></a>2019 年 1 月 22 日
 
@@ -72,7 +72,7 @@ ms.locfileid: "65787955"
 - 对象检测进入付费预览版。 现在可以使用 Azure 资源创建对象检测项目。
 - 向网站添加了“移至 Azure”功能，以便更轻松地升级有限试用版项目以链接到 Azure。 资源链接的项目（F0 或 S0）。可以在产品的“设置”页上找到此信息。  
 - 添加了导出到 ONNX 1.2 的功能，以支持 Windows ML 的 Windows 2018 10 月更新版本。
-Bug 修复，包括为 ONNX 导出带有特殊字符。
+Bug 修复, 其中包括带有特殊字符的 ONNX 导出。
 
 ## <a name="august-14-2018"></a>2018 年 8 月 14 日
 
@@ -81,8 +81,8 @@ Bug 修复，包括为 ONNX 导出带有特殊字符。
 
 ## <a name="june-28-2018"></a>2018 年 6 月 28 日
 
-- Bug 修复和后端的改进。
-- 启用多类分类，对于映像都具有一个标签的项目。 在为多类模式的预测，概率总和将其中一个 （在你指定的标记之间进行分类的所有映像）。
+- Bug 修复 & 后端改进。
+- 已启用多类分类, 适用于图像恰好有一个标签的项目。 在多类模式预测中, 概率总和为 1 (在指定的标记之间对所有图像进行分类)。
 
 ## <a name="june-13-2018"></a>2018 年 6 月 13 日
 
@@ -102,7 +102,7 @@ Bug 修复，包括为 ONNX 导出带有特殊字符。
 
 ## <a name="march-1-2018"></a>2018 年 3 月 1 日
 
-- 输入付费的预览版和载入到 Azure 门户上。 现在，可将项目附加到 F0（免费）或 S0（标准）层的 Azure 资源。 引入了 S0 层项目，最多允许 100 个标记和 25,000 张图像。
+- 在 Azure 门户中输入付费预览和载入。 现在，可将项目附加到 F0（免费）或 S0（标准）层的 Azure 资源。 引入了 S0 层项目，最多允许 100 个标记和 25,000 张图像。
 - 对机器学习管道/规范化参数做了后端更改。 客户在调整概率阈值时，可以更好地控制精度和召回率之间的权衡。 作为这些更改的一部分，CustomVision.ai 门户中的默认概率阈值已设置为 50%。
 
 ## <a name="december-19-2017"></a>2017 年 12 月 19 日

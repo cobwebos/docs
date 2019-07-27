@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET 创建评审 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 如何使用用于 .NET 的 Azure 内容审查器 SDK 创建评审。
 services: cognitive-services
 author: sanjeev3
@@ -10,23 +10,23 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 153d42bf4ce4322536d6837be3058d1f9bfb49a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9938c79c2ba1b2f80c8f147fafe6ce79e247df43
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607193"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564456"
 ---
-# <a name="create-human-reviews-net"></a>创建人工审阅 (.NET)
+# <a name="create-human-reviews-net"></a>创建人机评审 (.NET)
 
-评审存储和显示审阅人，若要评估的内容。 当用户完成评审时，结果将发送到指定的回调终结点。 本指南提供信息和代码示例来帮助你开始使用[内容审查器 SDK for.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)到：
+查看存储并显示要评估的人的内容。 当用户完成评审后, 结果将发送到指定的回调终结点。 本指南提供了信息和代码示例, 帮助你开始使用[适用于 .net 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
 
 - 为人工审查方创建一组审阅
 - 获取人工审查方的现有审阅的状态
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 登录或在内容审查器上创建一个帐户[审阅工具](https://contentmoderator.cognitive.microsoft.com/)站点。
+- 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>确保 API 密钥可以调用评审 API 以创建评审
 
@@ -38,9 +38,9 @@ ms.locfileid: "60607193"
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用(.NET Framework)”  项目。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”项目。
 
-   在示例代码中，将此项目命名为“CreateReviews”  。
+   在示例代码中，将此项目命名为“CreateReviews”。
 
 1. 将此项目选为解决方案的单一启动项目。
 
@@ -73,7 +73,7 @@ using System.Threading;
 添加以下代码来为订阅创建内容审查器客户端。
 
 > [!IMPORTANT]
-> 使用区域标识符和订阅密钥的值更新  AzureRegion 和 CMSubscriptionKey  字段。
+> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
 
 ```csharp
 /// <summary>
@@ -121,7 +121,7 @@ public static class Clients
 
 ## <a name="create-a-class-to-associate-internal-content-information-with-a-review-id"></a>创建将内部内容信息与审阅 ID 相关联的类
 
-将以下类添加到 Program  类。 此类用于将审阅 ID 与项的内部内容 ID 相关联。
+将以下类添加到 Program 类。 此类用于将审阅 ID 与项的内部内容 ID 相关联。
 
 ```csharp
 /// <summary>
@@ -159,7 +159,7 @@ public static class Clients
 >
 > 免费层密钥有一个 RPS 速率限制。
 
-#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>添加到以下常量**程序**Program.cs 中的类
+#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>将以下常量添加到 Program.cs 中的**Program**类。
 
 ```csharp
 /// <summary>
@@ -181,14 +181,14 @@ public static class Clients
     private const string OutputFile = "OutputLog.txt";
 ```
 
-#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>添加以下常量和静态字段以**程序**Program.cs 中的类
+#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>在 Program.cs 中将以下常量和静态字段添加到**Program**类中。
 
 将这些值更新为包含订阅和团队专用信息。
 
 > [!NOTE]
-> 将 TeamName 常数设置为，创建[内容审查器“审阅”工具](https://contentmoderator.cognitive.microsoft.com/)订阅时使用的名称。 从“设置”  （齿轮）菜单的“凭据”  部分检索 TeamName。
+> 将 TeamName 常数设置为，创建[内容审查器“审阅”工具](https://contentmoderator.cognitive.microsoft.com/)订阅时使用的名称。 从“设置”（齿轮）菜单的“凭据”部分检索 TeamName。
 >
-> 团队名称是“API”  部分中的“ID”  字段值。
+> 团队名称是“API”部分中的“ID”字段值。
 
 ```csharp
 /// <summary>
@@ -238,7 +238,7 @@ private const string MetadataKey = "sc";
 private const string MetadataValue = "true";
 ```
 
-#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>添加到以下静态字段**程序**Program.cs 中的类
+#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>将以下静态字段添加到 Program.cs 中的**Program**类。
 
 这些字段可用于跟踪应用状态。
 
@@ -380,9 +380,9 @@ private static void CreateReviews(ContentModeratorClient client)
 
 ## <a name="add-code-to-create-a-set-of-reviews-and-check-its-status"></a>添加用于创建一组审阅并检查其状态的代码
 
-将以下代码添加到 Main  方法。
+将以下代码添加到 Main 方法。
 
-此代码模拟在定义和管理列表以及使用列表筛查图像时执行的诸多操作。 日志记录功能，可以查看由对内容 mModerator 服务的 SDK 调用生成的响应对象。
+此代码模拟在定义和管理列表以及使用列表筛查图像时执行的诸多操作。 使用日志记录功能, 可以查看由 SDK 调用内容 mModerator 服务生成的响应对象。
 
 ```csharp
 using (TextWriter outputWriter = new StreamWriter(OutputFile, false))
@@ -427,9 +427,9 @@ Creating reviews for the following images:
     Review 201712i46950138c61a4740b118a43cac33f434 for item ID 0 is Pending.
 ```
 
-登录内容审查器“审阅”工具，查看 sc  标签设置为 true  的待处理图像审阅。 还可以查看默认的 a  和 r  标记，以及可能已在“审阅”工具中定义的任何自定义标记。
+登录内容审查器“审阅”工具，查看 sc 标签设置为 true 的待处理图像审阅。 还可以查看默认的 a和 r 标记，以及可能已在“审阅”工具中定义的任何自定义标记。
 
-按“下一步”  按钮，以提交结果。
+按“下一步”按钮，以提交结果。
 
 ![供人工审查方审阅的图像](images/moderation-reviews-quickstart-dotnet.PNG)
 
@@ -536,4 +536,4 @@ Creating reviews for the following images:
 
 ## <a name="next-steps"></a>后续步骤
 
-获取[内容审查器.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ，并下载[Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)这和用于.NET 的其他内容审查器快速入门并开始使用你的集成。
+获取[内容审查器 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) , 并下载适用于 .net 的其他内容审查器快速入门的[Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator), 并开始进行集成。

@@ -1,6 +1,6 @@
 ---
-title: 功能
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 功能-LUIS
+titleSuffix: Azure Cognitive Services
 description: 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 7889f223b607912fd88c798b31ec028f97dfbbd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1aed6f9a0ceec18ca800e5030ec09bbb8d98cb76
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812939"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560726"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS 应用中的短语列表特征
 
@@ -44,16 +44,16 @@ ms.locfileid: "60812939"
 * 虽来自另一种语言，但在应用中经常使用的语言
 * 示例言语中的关键字和短语
 
-输入几个字词或短语后，立即使用“建议”  功能来查找相关值。 先检查相关值，再添加到短语列表值。
+输入几个字词或短语后，立即使用“建议”功能来查找相关值。 先检查相关值，再添加到短语列表值。
 
-|列表类型|目的|
+|列表类型|用途|
 |--|--|
 |可互换|将其更换为列表中的其他字词后具有相同意向和实体提取的同义词或字词。|
 |不可互换|相对于该语言中的其他通用字词，更特定于应用的应用词汇。|
 
 ### <a name="interchangeable-lists"></a>可交换列表
 
-可交换  短语列表适用于作为同义词的值。 例如，如果希望找到所有水体，且有示例言语，如： 
+可交换短语列表适用于作为同义词的值。 例如，如果希望找到所有水体，且有示例言语，如： 
 
 * 什么城市靠近五大湖？ 
 * 什么道路沿着哈瓦苏湖城走？
@@ -65,7 +65,7 @@ ms.locfileid: "60812939"
 * 什么道路沿着 [bodyOfWater] 走？
 * [bodyOfWater] 的起点和终点在哪里？ 
 
-由于水体的字词或短语是同义词，并能在言语中交换使用，因此对短语列表使用“可交换”  设置。 
+由于水体的字词或短语是同义词，并能在言语中交换使用，因此对短语列表使用“可交换”设置。 
 
 ### <a name="non-interchangeable-lists"></a>不可交换列表
 
@@ -100,7 +100,7 @@ ms.locfileid: "60812939"
 ### <a name="dont-use-a-phrase-list"></a>请勿使用短语列表 
 列表实体显式定义实体可以采用的每个值，并仅标识完全匹配的值。 列表实体可能适用于其中某实体的所有实例已知且不常更改的应用。 例如餐厅菜单上不常更改的菜品项。 如果需要实体的完全文本匹配，请勿使用短语列表。 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤

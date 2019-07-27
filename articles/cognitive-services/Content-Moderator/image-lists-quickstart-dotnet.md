@@ -1,6 +1,6 @@
 ---
 title: 在 C# 中针对自定义列表检查图像 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 如何通过适用于 C# 的内容审查器 SDK 使用自定义图像列表进行图像审查。
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 49f87b7cf3d7f46a66c0992edf25968b1dbae073
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 915b308b0129d714e51ac50b4230d8447b5c933a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603410"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564477"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>在 C# 中通过自定义图像列表进行审查
 
@@ -30,9 +30,9 @@ ms.locfileid: "67603410"
 - 删除自定义列表
 
 > [!NOTE]
-> 最多只能使用 5 个图像列表  ，每个列表中的图像数不得超过 10,000 张  。
+> 最多只能使用 5 个图像列表，每个列表中的图像数不得超过 10,000 张。
 
-本指南的控制台应用程序模拟一些可以使用图像列表 API 执行的任务。
+本指南的控制台应用程序模拟了一些可使用图像列表 API 执行的任务。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
@@ -42,9 +42,9 @@ ms.locfileid: "67603410"
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用 (.NET Framework)”项目  。
+1. 向解决方案添加新的“控制台应用 (.NET Framework)”项目。
 
-   在示例代码中，将项目命名为“ImageLists”  。
+   在示例代码中，将项目命名为“ImageLists”。
 
 1. 将此项目选为解决方案的单一启动项目。
 
@@ -76,7 +76,7 @@ using System.Threading;
 添加以下代码来为订阅创建内容审查器客户端。
 
 > [!IMPORTANT]
-> 使用区域标识符和订阅密钥的值更新  AzureRegion 和 CMSubscriptionKey  字段。
+> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
 
 ```csharp
 /// <summary>
@@ -125,7 +125,7 @@ public static class Clients
 
 ### <a name="initialize-application-specific-settings"></a>初始化应用专用设置
 
-向 Program.cs 中的 Program 类添加以下类和静态字段  。
+向 Program.cs 中的 Program 类添加以下类和静态字段。
 
 ```csharp
 /// <summary>
@@ -303,7 +303,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>创建一个方法来向列表添加图像集合
 
-将以下方法添加到 **Program** 类。 本指南不演示如何将标记应用于列表中的图像。 
+将以下方法添加到 **Program** 类。 本指南不演示如何将标记应用到列表中的图像。 
 
 ```csharp
 /// <summary>
@@ -598,7 +598,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>添加代码以模拟使用图像列表
 
-将以下代码添加到 Main 方法  。 此代码将模拟在定义和管理列表以及使用列表来屏蔽图像时执行的诸多操作。 日志记录功能允许你查看通过 SDK 调用内容审查器服务生成的响应对象。
+将以下代码添加到 Main 方法。 此代码将模拟在定义和管理列表以及使用列表来屏蔽图像时执行的诸多操作。 日志记录功能允许你查看通过 SDK 调用内容审查器服务生成的响应对象。
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.

@@ -5,7 +5,7 @@ metadata:
   title: 数据科学虚拟机文档 - Azure
   description: 了解如何使用数据科学虚拟机，这是 Azure 云中的一个试验环境，专为进行数据科学研究而构建。 它预装并预配了许多热门数据科学和其他工具，可为高级分析快速生成智能应用程序。
   services: machine-learning
-  author: gopitk
+  author: vijetajo
   manager: cgronlun
   ms.service: machine-learning
   ms.subservice: data-science-vm
@@ -13,7 +13,7 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/18/2018
-  ms.author: gokuma
+  ms.author: vijetaj
 abstract:
   description: “数据科学和深入学习虚拟机”是 Azure 上的自定义 VM 映像，带有用于生成智能应用程序以进行高级分析的数据科学工具。
 sections:

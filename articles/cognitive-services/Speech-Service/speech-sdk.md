@@ -1,5 +1,5 @@
 ---
-title: 关于语音 SDK - 语音服务
+title: 关于语音 SDK-语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音软件开发工具包 (SDK)，应用程序可以本机访问语音服务的功能，这使得软件开发工作更为容易。 本文提供了有关适用于 Windows、Linux 和 Android 的 SDK 的其他详细信息。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 120dd4a6a342732f3e07d87786009779d23be829
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c5e12812a4305493be2cdc234946796b21dd26d8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606422"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558944"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
-语音软件开发工具包 (SDK) 为您的应用程序的访问权限提供功能的语音服务，使其更轻松地开发支持语音的软件。 目前，Sdk 提供访问权限**语音到文本**，**文本到语音转换**，**语音翻译**，**意图识别**，和**Bot Framework 直接行语音通道**。 可以在文档上找到有关功能和支持的平台的常规概述[入口页](https://aka.ms/csspeech)。
+通过语音软件开发工具包 (SDK), 你的应用程序可以访问语音服务的功能, 使你能够更轻松地开发支持语音的软件。 目前, Sdk 提供对**语音到文本**、**文本到语音**、**语音翻译**、**意向识别**和**机器人框架的直接线路语音通道**的访问。 有关功能和支持的平台的一般概述, 请参阅文档[条目页](https://aka.ms/csspeech)。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
@@ -31,16 +31,16 @@ ms.locfileid: "67606422"
 
 对于 Windows，我们支持以下语言：
 
-* C#（UWP 和 .NET）、C++：可以引用和使用语音 SDK NuGet 包的最新版本。 此包包括 32 位和 64 位客户端库，以及托管 (.NET) 库。 可以使用 NuGet 在 Visual Studio 中安装该 SDK。 搜索 Microsoft.CognitiveServices.Speech NuGet  。
+* C#（UWP 和 .NET）、C++：可以引用和使用语音 SDK NuGet 包的最新版本。 此包包括 32 位和 64 位客户端库，以及托管 (.NET) 库。 可以使用 NuGet 在 Visual Studio 中安装该 SDK。 搜索 Microsoft.CognitiveServices.Speech NuGet。
 
 * Java:可以引用和使用语音 SDK Maven 包的最新版本，该包仅支持 Windows x64。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` 引用为一个依赖项。
 
 ### <a name="linux"></a>Linux
 
 > [!NOTE]
-> 目前，在 PC 上支持 Ubuntu 16.04、 Ubuntu 18.04 和 Debian 9 (x86 或 x64 的C++开发和 x64 的.NET Core、 Java 和 Python)。
+> 目前, 我们仅支持计算机上的 Ubuntu 16.04、Ubuntu 18.04 和 Debian 9 (适用C++于开发的 x86 或 x64, 以及适用于 .net Core、Java 和 Python 的 x64)。
 
-请确保已通过运行以下 shell 命令来安装所需的库：
+请确保已通过运行以下 shell 命令来安装所需的库:
 
 在 Ubuntu 上：
 
@@ -68,7 +68,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
   |Path|描述|
   |-|-|
-  |`license.md`|许可|
+  |`license.md`|许可证|
   |`ThirdPartyNotices.md`|第三方声明|
   |`include`|用于 C 和 C++ 的头文件|
   |`lib/x64`|用于与应用程序链接的本机 x64 库|

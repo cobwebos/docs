@@ -1,6 +1,6 @@
 ---
 title: 通过人工评审审查视频 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用计算机辅助视频审查和人工审阅工具来审查是否有不当内容
 services: cognitive-services
 author: sanjeev3
@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: sajagtap
-ms.openlocfilehash: a6c467d3153400815e37a5d461766140abd1fa32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69075f6b36a0be7cd4d0dd4453ea9cdfc08d77dc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228125"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561159"
 ---
 # <a name="video-moderation-with-human-review"></a>通过人工评审审查视频
 
-使用内容审查器的计算机辅助[视频审查](video-moderation-api.md)并[人工审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)审查视频和成人 （显式） 的脚本和挑逗性 （建议） 的内容，以获得最佳的结果你的业务。
+使用内容审查器的计算机辅助[视频审核](video-moderation-api.md)和[人工审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)来为您的业务提供最佳结果, 从而对成人 (显式) 和猥亵 (暗示性) 内容进行适中的视频和脚本。
 
 ## <a name="video-trained-classifier-preview"></a>视频定型分类器（预览）
 

@@ -1,6 +1,6 @@
 ---
-title: 配置容器
-titlesuffix: Text Analytics - Azure Cognitive Services
+title: 配置容器-文本分析
+titleSuffix: Azure Cognitive Services
 description: 文本分析为每个容器提供一个通用配置框架，以便可以轻松配置和管理容器的存储、日志记录、遥测和安全性设置。
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: dapine
-ms.openlocfilehash: 2a9b9ce5109315d940d6dcadf395489612faddec
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 65d88e6c201f633a260e31544444341e636e9941
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356937"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552251"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>配置文本分析 docker 容器
 
@@ -49,7 +49,7 @@ ms.locfileid: "68356937"
 
 * Azure 门户：**文本分析**概述, 标记`Endpoint`
 
-|必填| 名称 | 数据类型 | 描述 |
+|必填| 姓名 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 所需计费终结点 URI |
 

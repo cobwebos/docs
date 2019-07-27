@@ -1,5 +1,5 @@
 ---
-title: PersonName 预生成实体
+title: PersonName 预生成的实体-LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中的 personName 预构建实体信息。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 3b12c69b7c6710e774d50e631d2423fd72ce828a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63e32fe79d1f3f6d2573d9a8f94f937cb9eb31ef
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072170"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560187"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 PersonName 预生成实体
 预构建 personName 实体会检测人的姓名。 此实体已定型，因此不需要将包含 personName 的陈述示例添加到应用程序意向中。 英语和中文[区域性](luis-reference-prebuilt-entities.md)支持 personName 实体。
@@ -25,7 +25,7 @@ ms.locfileid: "65072170"
 
 ### <a name="api-version-2x"></a>API 版本 2.x
 
-以下示例显示了 builtin.personName 实体的解析  。
+以下示例显示了 builtin.personName 实体的解析。
 
 ```json
 {

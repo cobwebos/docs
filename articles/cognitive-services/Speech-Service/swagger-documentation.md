@@ -1,5 +1,5 @@
 ---
-title: Swagger 文档 - 语音服务
+title: Swagger 文档-语音服务
 titleSuffix: Azure Cognitive Services
 description: Swagger 文档可用于自动生成适用于多种编程语言的 SDK。 Swagger 支持服务中的所有操作
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f6420ea8918816f7356e567ec48cb0f7456065e0
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 232435a424d2461bce4598356a986473cb1d3644
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604773"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552570"
 ---
 # <a name="swagger-documentation"></a>Swagger 文档
 
@@ -31,9 +31,9 @@ ms.locfileid: "67604773"
 你需要将 Swagger 设置为与语音服务订阅相同的区域。 可在 Azure 门户中的语音服务资源下确认区域。 有关受支持的区域的完整列表，请参阅[区域](regions.md)。
 
 1. 转到 https://editor.swagger.io
-2. 单击“文件”，然后单击“导入”  
+2. 单击“文件”，然后单击“导入”
 3. 输入 swagger URL，包括语音服务订阅的区域`https://<your-region>.cris.ai/docs/v2.0/swagger`
-4.  单击“生成客户端”，然后选择 Python
+4. 单击“生成客户端”，然后选择 Python
 5. 保存客户端库
 
 可使用 [GitHub 上的语音服务示例](https://aka.ms/csspeech/samples)生成的 Python 库。

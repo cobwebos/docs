@@ -1,6 +1,6 @@
 ---
-title: DatetimeV2 预生成实体
-titleSuffix: Azure
+title: DatetimeV2 预生成实体-LUIS
+titleSuffix: Azure Cognitive Services
 description: 本文包含语言理解 (LUIS) 中的 datetimeV2 预生成实体信息。
 services: cognitive-services
 author: diberry
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: e7577dcf4859b1192121fe0406d0efb63a9f5990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a19ab6e02249bad689f1a05c5761150b7a817df
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148637"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560276"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 DatetimeV2 预生成实体
 
-**datetimeV2** 预生成实体提取日期和时间值。 将以标准化格式解析这些值，使客户端程序能够使用它们。 当某条陈述包含不完整的日期或时间时，LUIS 会在终结点响应中包含过去的值和未来的值。  由于此实体已经过训练，因此不需要将包含 datetimeV2 的陈述示例添加到应用程序意向中。 
+**datetimeV2** 预生成实体提取日期和时间值。 将以标准化格式解析这些值，使客户端程序能够使用它们。 当某条陈述包含不完整的日期或时间时，LUIS 会在终结点响应中包含过去的值和未来的值。 由于此实体已经过训练，因此不需要将包含 datetimeV2 的陈述示例添加到应用程序意向中。 
 
 ## <a name="types-of-datetimev2"></a>datetimeV2 的类型
 通过 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub 存储库管理 DatetimeV2
@@ -50,14 +50,14 @@ ms.locfileid: "65148637"
 
 ## <a name="json-property-descriptions"></a>JSON 属性说明
 
-|属性名称 |属性类型和说明|
+|属性名 |属性类型和说明|
 |---|---|
 |实体|**string** - 从类型为日期、时间、日期范围或时间范围的陈述中提取的文本。|
 |type|**string** - [datetimeV2 的子类型](#subtypes-of-datetimev2)之一
 |startIndex|**int** - 陈述中实体开始处的索引。|
 |endIndex|**int** - 陈述中实体结束处的索引。|
 |resolution|包含一个 `values` 数组，其中包含 1 个、2 个或 4 个[解析值](#values-of-resolution)。|
-|end|时间或日期范围的结束值，格式与 `value` 相同。 仅当 `type` 为 `daterange`、`timerange` 或 `datetimerange` 时才使用|
+|结束|时间或日期范围的结束值，格式与 `value` 相同。 仅当 `type` 为 `daterange`、`timerange` 或 `datetimerange` 时才使用|
 
 ## <a name="subtypes-of-datetimev2"></a>datetimeV2 的子类型
 
@@ -79,7 +79,7 @@ ms.locfileid: "65148637"
 
 `values` 数组的每个元素可以包含以下字段： 
 
-|属性名称|属性说明|
+|属性名|属性说明|
 |--|--|
 |timex|遵循 [ISO 8601 标准](https://en.wikipedia.org/wiki/ISO_8601)的、以 TIMEX 格式表示的时间、日期或日期范围，以及使用 TimeML 语言的注释的 TIMEX3 属性。 [TIMEX 准则](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)中描述了此注释。|
 |type|子类型，可以是下述项目之一：`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set`。|
@@ -89,7 +89,7 @@ ms.locfileid: "65148637"
 
 **datetimeV2** 支持以下范围内的日期：
 
-| Min | Max |
+| 最小值 | 最大 |
 |----------|-------------|
 | 1900 年 1 月 1 日   | 2099 年 12 月 31 日 |
 
@@ -291,14 +291,14 @@ DatetimeV2 JSON 响应在 API V3 中已更改。
 
 ## <a name="deprecated-prebuilt-datetime"></a>已弃用的预生成日期时间
 
-`datetime` 预生成实体已弃用，已由 datetimeV2 取代  。 
+`datetime` 预生成实体已弃用，已由 datetimeV2 取代。 
 
 若要在 LUIS 应用中将 `datetime` 替换为 `datetimeV2`，请完成以下步骤：
 
-1. 打开 LUIS Web 界面的“实体”窗格。  
+1. 打开 LUIS Web 界面的“实体”窗格。 
 2. 删除 **datetime** 预生成实体。
-3. 单击“添加预生成实体” 
-4. 选择“datetimeV2”并单击“保存”。  
+3. 单击“添加预生成实体”
+4. 选择“datetimeV2”并单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 

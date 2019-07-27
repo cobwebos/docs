@@ -1,5 +1,6 @@
 ---
 title: 文本审查 - 内容审查器
+titleSuffix: Azure Cognitive Services
 description: 对可能不需要的文本、PII 和自定义字词列表使用文本审查。
 services: cognitive-services
 author: sanjeev3
@@ -9,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1d5224d8dc86c82624613b0d2a984ceef3ae5bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607124"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564383"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
@@ -46,7 +47,7 @@ ms.locfileid: "60607124"
 > [!NOTE]
 > 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
 >
-> 对于不雅用语  检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
+> 对于不雅用语检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
 
 ## <a name="classification"></a>分类
 
@@ -149,7 +150,7 @@ PII 功能检测可能存在以下信息：
 尽管在默认情况下，全局字词列表能够很好地满足大部分需要，但你可能想要根据自己的具体业务需求筛选字词。 例如，你可能想要从用户的发布内容中，筛选出所有竞争品牌名称。
 
 > [!NOTE]
-> 最多只能使用 5 个术语列表  ，每个列表中的术语数不得超过 10,000 个  。
+> 最多只能使用 5 个术语列表，每个列表中的术语数不得超过 10,000 个。
 >
 
 以下示例显示匹配的列表 ID：

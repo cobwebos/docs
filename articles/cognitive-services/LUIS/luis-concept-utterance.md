@@ -1,6 +1,6 @@
 ---
-title: 不错的示例话语
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 好示例最谈话-LUIS
+titleSuffix: Azure Cognitive Services
 description: 话语是应用需要解释的用户输入。 收集你认为用户会输入的短语。 包括意思相同但在单词长度和单词位置上以不同方式构造的陈述。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: fdf5508475d868ccb8c271daaac7449d3c940301
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43f4b289bb2d072961eb3dabe6970f11726e0ed3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073157"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560600"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
 
@@ -88,7 +88,7 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-如果应用打开规范化，则对于使用音调符号或标点的所有话语来说，“测试”窗格、批量测试和终结点查询中的分数会变化。 
+如果应用打开规范化，则对于使用音调符号或标点的所有话语来说，“测试”窗格、批量测试和终结点查询中的分数会变化。
 
 在 `settings` 参数中针对 LUIS JSON 应用文件的音调符号或标点打开话语规范化。
 
@@ -128,7 +128,7 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 在模型经过训练、发布并接收[终结点](luis-glossary.md#endpoint)查询后，请[审查 LUIS 建议的陈述](luis-how-to-review-endpoint-utterances.md)。 LUIS 会选择意向或实体得分较低的终结点陈述。 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 查看[最佳做法](luis-concept-best-practices.md)并将其应用为常规创作周期的一部分。
 

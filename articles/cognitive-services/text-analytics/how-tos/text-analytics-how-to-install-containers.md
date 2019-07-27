@@ -1,6 +1,6 @@
 ---
-title: 安装和运行容器
-titleSuffix: Text Analytics -  Azure Cognitive Services
+title: 安装和运行容器-文本分析
+titleSuffix: Azure Cognitive Services
 description: 通过本演练教程了解如何下载、安装和运行文本分析容器。
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 39f15cf8d1374ca95b10ccbddb8a59ec3e98f4f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 143e5439cb418d262c4b870491a7f904570daef1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488746"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552598"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -24,7 +24,7 @@ ms.locfileid: "68488746"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 若要运行任何文本分析容器, 你必须拥有主机计算机和容器环境。
 

@@ -1,6 +1,6 @@
 ---
-title: 模型有助于预测
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 模式帮助预测-LUIS
+titleSuffix: Azure Cognitive Services
 description: 使用模式可在不提供更多话语的情况下获得更高的意向准确度。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acbcaa7e5588c0fecf2c20751e69442e1373cbb5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813560"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563990"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
 模式旨在多条话语非常类似的情况下提升准确性。  使用模式可在不提供更多话语的情况下获得更高的意向准确度。 
@@ -59,7 +59,7 @@ ms.locfileid: "60813560"
 模式的匹配顺序是先检测模式内的实体，再验证模式的其余字词和字词顺序。 要匹配模式，需要在模式中包含实体。 模式在标记级别应用，而不在字符级别应用。 
 
 ## <a name="pattern-syntax"></a>模式语法
-模式语法是一个话语模板。 该模板应包含要匹配的字词和实体，还要包含希望忽略的字词和标点。 它不是一个正则表达式  。 
+模式语法是一个话语模板。 该模板应包含要匹配的字词和实体，还要包含希望忽略的字词和标点。 它不是一个正则表达式。 
 
 模式中的实体用花括号 `{}` 括起。 模式可包含实体和带角色的实体。 [Pattern.any](luis-concept-entity-types.md#patternany-entity) 是仅在模式中使用的实体。 
 
@@ -128,7 +128,7 @@ ms.locfileid: "60813560"
 ## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>用于向模式模板添加 pattern.any 的语法
 Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照模式模板操作，pattern.any 即可为任意长度。 
 
-要向模式模板添加 Pattern.any 实体，需用花括号将 Pattern.any 实体括起，比如 `How much does {Booktitle} cost and what format is it available in?`  。  
+要向模式模板添加 Pattern.any 实体，需用花括号将 Pattern.any 实体括起，比如 `How much does {Booktitle} cost and what format is it available in?`。  
 
 |模式与 Pattern.any 实体|
 |--|
@@ -136,9 +136,9 @@ Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照�
 
 |模式中的书名|
 |--|
-|《偷书》的价格是多少？它适合哪种格式  ？|
-|《询问》的价格是多少？它适合哪种格式  ？|
-|《深夜小狗神秘事件》的价格是多少？它适合哪种格式  ？| 
+|《偷书》的价格是多少？它适合哪种格式？|
+|《询问》的价格是多少？它适合哪种格式？|
+|《深夜小狗神秘事件》的价格是多少？它适合哪种格式？| 
 
 对于 LUIS 而言，书名的字词不容易混淆，因为 LUIS 可以根据 Pattern.any 实体知道书名在哪里结尾。
 
@@ -153,7 +153,7 @@ Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照�
 
 请考虑使用模式“[find] email about {subject} [from {person}]”。
 
-在下面的话语中，主题和人员实体一个提取正确，一个提取错误   ：
+在下面的话语中，主题和人员实体一个提取正确，一个提取错误：
 
 |话语|实体|提取是否正确|
 |--|--|:--:|
@@ -177,7 +177,7 @@ Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照�
 ## <a name="pattern-only-apps"></a>只有模式的应用
 你可以构建其中的意向没有示例话语的应用，只要每个意向具有模式即可。 对于只有模式的应用，模式不能包含通过机器学习到的实体，因为这些实体要求具有示例话语。 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤

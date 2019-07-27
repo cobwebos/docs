@@ -1,7 +1,7 @@
 ---
-title: 将使用.NET-内容审查器审查作业
-titlesuffix: Azure Cognitive Services
-description: 使用内容审查器.NET SDK 来启动 Azure 内容审查器中的图像或文本内容的端到端内容审查作业。
+title: 使用 .NET 内容审查器审核作业
+titleSuffix: Azure Cognitive Services
+description: 使用内容审查器 .NET SDK 来启动 Azure 内容审查器中图像或文本内容的端到端内容审核作业。
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 24d5483cf3b418cada3c5b7f03eedbff13cc36d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d98c88a6e1d6dfa23f53c32c85c013b4cf2c468d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62113862"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565602"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>定义和使用审查作业 (.NET)
+# <a name="define-and-use-moderation-jobs-net"></a>定义和使用审核作业 (.NET)
 
-审查作业可作为一种类型的包装器的功能的内容审查、 工作流和评审。 本指南提供信息和代码示例来帮助你开始使用[内容审查器 SDK for.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)到：
+裁决作业作为内容审核、工作流和评论功能的一种包装。 本指南提供了信息和代码示例, 帮助你开始使用[适用于 .net 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
 
 - 启动审核工作以扫描和创建人工审查器评审
 - 获取待处理的评审状态
 - 跟踪和获取评审的最终状态
-- 提交到回调 URL 评审结果
+- 将评审结果提交给回调 URL
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
-- 登录或在内容审查器上创建一个帐户[审阅工具](https://contentmoderator.cognitive.microsoft.com/)站点。
+- 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>确保 API 密钥可以调用评审 API 以创建评审
 
@@ -40,16 +40,16 @@ ms.locfileid: "62113862"
 
 ## <a name="define-a-custom-moderation-workflow"></a>定义自定义审核工作流
 
-审核工作使用 API 扫描内容，并使用工作流  确定是否创建评审。
+审核工作使用 API 扫描内容，并使用工作流确定是否创建评审。
 虽然审查工具包含默认工作流，但还是为此快速入门[定义一个自定义工作流](Review-Tool-User-Guide/Workflows.md)。
 
 可以在代码中使用工作流的名称，从而启动审核工作。
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用(.NET Framework)”  项目。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”项目。
 
-   在示例代码中，将此项目命名为“CreateReviews”  。
+   在示例代码中，将此项目命名为“CreateReviews”。
 
 1. 将此项目选为解决方案的单一启动项目。
 
@@ -81,7 +81,7 @@ using System.Threading;
 添加以下代码来为订阅创建内容审查器客户端。
 
 > [!IMPORTANT]
-> 使用区域标识符和订阅密钥的值更新  AzureRegion 和 CMSubscriptionKey  字段。
+> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
 
 ```csharp
 /// <summary>
@@ -129,13 +129,13 @@ public static class Clients
 
 ### <a name="initialize-application-specific-settings"></a>初始化应用专用设置
 
-向 Program.cs 中的 Program  类添加以下常数和静态字段。
+向 Program.cs 中的 Program 类添加以下常数和静态字段。
 
 > [!NOTE]
 > 将 TeamName 常数设置为创建内容审查器订阅时使用的名称。 从[内容审查器网站](https://westus.contentmoderator.cognitive.microsoft.com/)检索 TeamName。
-> 登录后，从“设置”  （齿轮）菜单中选择“凭据”  。
+> 登录后，从“设置”（齿轮）菜单中选择“凭据”。
 >
-> 团队名称是“API”  部分中的“ID”  字段值。
+> 团队名称是“API”部分中的“ID”字段值。
 
 ```csharp
 /// <summary>
@@ -183,9 +183,9 @@ private const string CallbackEndpoint = "";
 ## <a name="add-code-to-auto-moderate-create-a-review-and-get-the-job-details"></a>将代码添加到自动-审核、创建评审，并获取作业详细信息
 
 > [!Note]
-> 在实践中，将回调 URL CallbackEndpoint  设置为接收人工评审结果的 URL（通过 HTTP POST 请求）。
+> 在实践中，将回调 URL CallbackEndpoint 设置为接收人工评审结果的 URL（通过 HTTP POST 请求）。
 
-首先，将以下代码添加到 Main  方法。
+首先，将以下代码添加到 Main 方法。
 
 ```csharp
 using (TextWriter writer = new StreamWriter(OutputFile, false))
@@ -256,14 +256,14 @@ Then, press any key to continue.
 
 登录内容审查器审阅工具，查看待处理的图像审查。
 
-使用“下一步”  按钮进行提交。
+使用“下一步”按钮进行提交。
 
 ![人工审查器的图像审查](images/ocr-sample-image.PNG)
 
 ## <a name="see-the-sample-output-in-the-log-file"></a>查看日志文件中的示例输出
 
 > [!NOTE]
-> 在输出文件中，字符串 Teamname  、ContentId  、CallBackEndpoint  和 WorkflowId  反映之前使用的值。
+> 在输出文件中，字符串 Teamname、ContentId、CallBackEndpoint 和 WorkflowId 反映之前使用的值。
 
 ```json
 Create moderation job for an image.
@@ -303,7 +303,7 @@ Get review details.
 可以看到如下示例响应：
 
 > [!NOTE]
-> 在回调响应中，字符串 ContentId  和 WorkflowId  反应之前使用的值。
+> 在回调响应中，字符串 ContentId 和 WorkflowId 反应之前使用的值。
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: 运行 Azure Kubernetes 服务
-titleSuffix: Text Analytics - Azure Cognitive Services
+title: 运行 Azure Kubernetes 服务-文本分析
+titleSuffix: Azure Cognitive Services
 description: 使用情绪分析映像将文本分析容器部署到 Azure Kubernetes 服务, 并在 web 浏览器中对其进行测试。
 services: cognitive-services
 author: IEvangelist
@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 290a01e7e478f718607c0550702474cd31979a63
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 44ee5fab5b4e8900b823453e5674fc9bdb5fe9ac
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377398"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552278"
 ---
 # <a name="deploy-a-sentiment-analysis-container-to-azure-kubernetes-service"></a>将情绪分析容器部署到 Azure Kubernetes 服务
 
 了解如何通过情绪分析映像将 Azure 认知[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers)服务部署到 Azure Kubernetes 服务 (AKS)。 此过程说明如何创建文本分析资源、如何创建关联的情绪分析映像, 以及如何从浏览器中执行这两种操作的业务流程。 使用容器可以从管理基础结构中转移, 而不是关注应用程序开发。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 此过程要求必须在本地安装和运行多个工具。 不要使用 Azure Cloud Shell。 需要满足以下条件：
 

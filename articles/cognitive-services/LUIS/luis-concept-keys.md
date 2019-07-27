@@ -1,6 +1,6 @@
 ---
-title: 订阅密钥
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 订阅密钥-LUIS
+titleSuffix: Azure Cognitive Services
 description: LUIS 使用两种密钥，其中免费创作密钥用于创建模型，按流量计费的终结点密钥用于使用用户话语查询预测终结点。
 services: cognitive-services
 author: diberry
@@ -11,17 +11,17 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: feb4622be14b51cfa72c33cda6c2477f799758c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d52445d82965973c2d1e0f4fca2ef463312ad5f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473592"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560740"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>LUIS 中的创作密钥和查询预测终结点密钥
 LUIS 使用两种密钥：[创作](#programmatic-key)密钥和[终结点](#endpoint-key)密钥。 在创建 LUIS 帐户时会自动创建创作密钥。 准备好发布 LUIS 应用时，需要[创建终结点密钥](luis-how-to-azure-subscription.md)、将[终结点密钥分配](luis-how-to-azure-subscription.md)到 LUIS 应用并[将其与终结点查询配合使用](#use-endpoint-key-in-query)。 
 
-|密钥|目的|
+|Key|用途|
 |--|--|
 |[创作密钥](#programmatic-key)|创作、发布、管理协作者、版本控制|
 |[终结点密钥](#endpoint-key)| 查询|
@@ -33,11 +33,11 @@ LUIS 使用两种密钥：[创作](#programmatic-key)密钥和[终结点](#endpo
 
 创作密钥也称为初学者密钥，是在创建 LUIS 帐户时自动创建的免费密钥。 每个创作[区域](luis-reference-regions.md)的所有 LUIS 应用共享一个创作密钥。 创作密钥用于创作 LUIS 应用或测试终结点查询。 
 
-若要找到创作密钥，请登录 [LUIS](luis-reference-regions.md#luis-website) 并单击右上方导航栏中的帐户名称，打开“帐户设置”  。
+若要找到创作密钥，请登录 [LUIS](luis-reference-regions.md#luis-website) 并单击右上方导航栏中的帐户名称，打开“帐户设置”。
 
 ![创作密钥](./media/luis-concept-keys/programatic-key.png)
 
-如果想进行生产终结点查询，请创建 Azure [LUIS 订阅](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)  。 
+如果想进行生产终结点查询，请创建 Azure [LUIS 订阅](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)。 
 
 > [!CAUTION]
 > 为了方便起见，很多示例都采用创作密钥，因为它在[配额](luis-boundaries.md#key-limits)中提供了几个终结点调用。  
@@ -71,12 +71,12 @@ LUIS API 使用标头 `Ocp-Apim-Subscription-Key`。 标头名称不会基于所
 不能为创作 API 传递终结点密钥。 如果这样做，则会遇到 401 错误 - 由于终结点密钥无效，访问被拒绝。 
 
 ## <a name="key-limits"></a>密钥限制
-请参阅[密钥限制](luis-boundaries.md#key-limits)和 [Azure 区域](luis-reference-regions.md)。 创作密钥是用于创作的免费密钥。 LUIS 终结点密钥有一个免费层，但是必须由你创建并与“发布”页面上的 LUIS 应用关联  。 它不能用于创作，只能用于终结点查询。
+请参阅[密钥限制](luis-boundaries.md#key-limits)和 [Azure 区域](luis-reference-regions.md)。 创作密钥是用于创作的免费密钥。 LUIS 终结点密钥有一个免费层，但是必须由你创建并与“发布”页面上的 LUIS 应用关联。 它不能用于创作，只能用于终结点查询。
 
 发布区域不同于创作区域。 请确保在对应于所需发布区域的创作区域中创建应用。
 
 ## <a name="key-limit-errors"></a>密钥限制错误
-如果超过了每秒配额，则会遇到 HTTP 429 错误。 如果超过了每月配额，则会遇到 HTTP 403 错误。 若要修复这些错误，请获取一个 LUIS [终结点](#endpoint-key)密钥，将该密钥[分配](luis-how-to-azure-subscription.md)到 [LUIS](luis-reference-regions.md#luis-website) 网站“发布”页面上的应用  。
+如果超过了每秒配额，则会遇到 HTTP 429 错误。 如果超过了每月配额，则会遇到 HTTP 403 错误。 若要修复这些错误，请获取一个 LUIS [终结点](#endpoint-key)密钥，将该密钥[分配](luis-how-to-azure-subscription.md)到 [LUIS](luis-reference-regions.md#luis-website) 网站“发布”页面上的应用。
 
 ## <a name="assignment-of-the-endpoint-key"></a>分配终结点密钥
 

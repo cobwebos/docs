@@ -1,6 +1,6 @@
 ---
-title: 运行 Kubernetes 服务
-titleSuffix: Text Analytics - Azure Cognitive Services
+title: 运行 Kubernetes 服务-文本分析
+titleSuffix: Azure Cognitive Services
 description: 使用正在运行的示例将语言检测容器部署到 Azure Kubernetes 服务，并在 Web 浏览器中对其进行测试。
 services: cognitive-services
 author: IEvangelist
@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: ba6fde66b6173bdbff8e9acc08b16f47c5bf7ea4
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 7b6621273b04d019791f604ca0db26a73c289f2b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377099"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562616"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>将语言检测容器部署到 Azure Kubernetes 服务
 
 了解如何部署语言检测容器。 此过程说明如何创建本地 Docker 容器, 将容器推送到自己的专用容器注册表, 在 Kubernetes 群集中运行容器, 并在 web 浏览器中对其进行测试。 使用容器可以从管理基础结构中转移, 而不是关注应用程序开发。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 此过程要求必须在本地安装和运行多个工具。 不要使用 Azure Cloud Shell。 需要满足以下条件：
 
@@ -78,7 +78,7 @@ ms.locfileid: "68377099"
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    保存结果，以获取 loginServer 属性  。 此属性是托管容器的地址的一部分, 该地址稍后会在`language.yml`文件中使用。
+    保存结果，以获取 loginServer 属性。 此属性是托管容器的地址的一部分, 该地址稍后会在`language.yml`文件中使用。
 
     ```console
     > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic

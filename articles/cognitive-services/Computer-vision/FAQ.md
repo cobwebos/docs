@@ -1,6 +1,6 @@
 ---
 title: 常见问题解答 - 计算机视觉
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 获取 Azure 认知服务中计算机视觉 API 的常见问题解答。
 services: cognitive-services
 author: KellyDF
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: fce3242746d47809c4fbbb1448453369d6460a9b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e8ab205a43e5cb1e8e2b96dbd9600e1fceb29403
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203223"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564597"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>计算机视觉 API 常见问题解答
 
@@ -25,7 +25,7 @@ ms.locfileid: "67203223"
 
 ---
 
-**问**：我能否将计算机视觉 API 定型为使用自定义标记？  例如，我要提供猫品种图片来“定型”AI，然后通过 AI 请求接收品种值。
+**问**：我能否将计算机视觉 API 定型为使用自定义标记？例如，我要提供猫品种图片来“定型”AI，然后通过 AI 请求接收品种值。
 
 **答**：此功能目前不可用。 不过，我们的工程师正在努力将此功能引入计算机视觉。
 

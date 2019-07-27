@@ -1,7 +1,7 @@
 ---
 title: 短语列表-语音服务
-titlesuffix: Azure Cognitive Services
-description: 了解如何提供与短语列表使用语音服务`PhraseListGrammar`对象以改进语音到文本识别结果。
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用`PhraseListGrammar`对象向语音服务提供短语列表, 以改进语音到文本识别的结果。
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 0e552d502184d1b537263c2c1f6b2a8562cdf791
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226352"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562776"
 ---
-# <a name="phrase-lists-for-speech-to-text"></a>语音到文本的短语列表
+# <a name="phrase-lists-for-speech-to-text"></a>用于语音到文本的短语列表
 
-通过提供与短语列表语音服务，可以提高语音识别的准确性。 短语列表用于确定音频数据，例如一个人的名称或某个特定位置中的已知的短语。
+通过向语音服务提供短语列表, 你可以提高语音识别的准确性。 短语列表用于标识音频数据中的已知短语, 如人员姓名或特定位置。
 
-例如，如果您有一个命令"移动到"和"Ward"，可能就读的可能目标可以添加的"移动到 Ward"条目。 添加一个短语将增加的可能性，当"移动到 Ward"将会被识别而不是"推动"识别音频。
+例如, 如果你有一个 "移动到" 命令和可能会说 "Ward" 的可能目标, 则可以添加 "移动到 Ward" 的条目。 添加短语会增加识别音频时, 将识别出 "移动到 Ward" 而不是 "移到" 的概率。
 
-将单个单词或完整的短语可以添加到短语列表。 识别过程如果音频中包含的完全匹配项，则使用短语列表中的条目。 如果短语列表中包含"到 Ward 移动"，并捕获该短语生成上一示例中，为"移动到缓慢"，则识别结果将为"缓慢移动到 Ward"。
+可以将一个词或完整短语添加到短语列表。 在识别期间, 如果音频中包含完全匹配项, 则使用短语列表中的条目。 基于前面的示例, 如果 "短语" 列表包含 "移动到 Ward", 而捕获的短语 "移到缓慢", 则识别结果将为 "移动到 Ward 缓慢"。
 
 >[!Note]
-> 目前，短语列出了仅支持英语语音到文本。
+> 目前, 短语列表仅支持用于语音到文本的英语。
 
 ## <a name="how-to-use-phrase-lists"></a>如何使用短语列表
 
-下面的示例演示了如何以生成短语列表使用`PhraseListGrammar`对象。
+下面的示例演示了如何使用`PhraseListGrammar`对象构建词组列表。
 
 ```C++
 auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
@@ -68,9 +68,9 @@ phraseListGrammar.addPhrase("Move to Ted");
 ```
 
 >[!Note]
-> 语音服务将用于匹配语音短语列表的最大数目是 1024年短语。
+> 语音服务将用于匹配语音的短语列表的最大数目为1024个短语。
 
-此外可清除与相关联的短语`PhraseListGrammar`通过调用 clear （）。
+还可以`PhraseListGrammar`通过调用 clear () 来清除与相关联的短语。
 
 ```C++
 phraselist->Clear();
@@ -93,7 +93,7 @@ phraseListGrammar.clear();
 ```
 
 > [!NOTE]
-> 将更改为`PhraseListGrammar`对象或重新连接到语音服务后面的下一步识别上生效。
+> `PhraseListGrammar`对对象所做的更改将在下一次识别或重新连接到语音服务时生效。
 
 ## <a name="next-steps"></a>后续步骤
 

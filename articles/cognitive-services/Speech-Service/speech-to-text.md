@@ -1,7 +1,7 @@
 ---
-title: 借助 Azure 语音服务的语音到文本
+title: 语音到文本语音服务
 titleSuffix: Azure Cognitive Services
-description: 来自 Azure 语音服务的语音到文本 (也称为语音到文本) 使实时传输音频流成为文本, 应用程序、工具或设备可以使用、显示该文本, 并作为命令输入执行操作。 此服务由 Microsoft 为 Cortana 和 Office 产品使用的同一识别技术提供支持, 并与翻译和文本到语音功能无缝协作。
+description: Speech Services 中的语音到文本功能 (也称为语音到文本) 使实时传输音频流成为文本, 应用程序、工具或设备可以使用、显示该文本, 并作为命令输入执行操作。 此服务由 Microsoft 为 Cortana 和 Office 产品使用的同一识别技术提供支持, 并与翻译和文本到语音功能无缝协作。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cb9362c4d58deb5472c8d5adab39cdd1cc4e2600
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 435de6e6516256d350ad93b121dd5a38d1512ddc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333572"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558853"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音到文本？
 
@@ -29,7 +29,7 @@ ms.locfileid: "68333572"
 
 以下是通过语音 SDK 和 REST Api 提供的功能:
 
-| 使用案例 | SDK 中 IsInRole 中的声明 | REST |
+| 使用案例 | SDK | REST |
 |----------|-----|------|
 | 转录 short 最谈话 (< 15 秒)。 仅支持最终的脚本结果。 | 是 | 是 |
 | 持续处理长最谈话和流式传输音频 (> 15 秒)。 支持临时和最终的脚本结果。 | 是 | 否 |

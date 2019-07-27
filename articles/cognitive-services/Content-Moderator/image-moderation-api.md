@@ -1,6 +1,6 @@
 ---
 title: 图像审查 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用内容审查器的机器辅助图像审查和人工循环评审工具来调整具有成人和猥亵内容的图像。
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9f1df23d1f0f24787bb9267064ffd647eda2cb74
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b3449edb539ab56fcf206a367f9b81e43290733
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699267"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564907"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
 
@@ -106,7 +106,7 @@ ms.locfileid: "60699267"
 可以将令人反感的图像添加到阻止内容的自定义列表中，而不是多次审核同一图像。 这样，内容审核系统就会将传入图像与自定义列表进行比较，并停止任何进一步处理。
 
 > [!NOTE]
-> 最大限制为“5 个图像列表”  ，每个列表“不超过 10,000 个图像”  。
+> 最大限制为“5 个图像列表”，每个列表“不超过 10,000 个图像”。
 >
 
 内容审查器提供了完整的[图像列表管理 API](try-image-list-api.md)，其中包含用于管理自定义图像列表的操作。 从[图像列表 API 控制台](try-image-list-api.md)开始，使用 REST API 代码示例。 如果熟悉 Visual Studio 和 C#，还请参阅[图像列表 .NET 快速入门](image-lists-quickstart-dotnet.md)。

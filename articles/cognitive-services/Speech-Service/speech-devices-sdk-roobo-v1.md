@@ -1,7 +1,7 @@
 ---
-title: 语音设备 SDK Roobo 智能音频开发人员工具包 v1-语音服务
+title: 语音设备 SDK Roobo 智能音频开发工具包 v1-语音服务
 titleSuffix: Azure Cognitive Services
-description: 先决条件和开始使用语音设备 SDK Roobo 智能音频适用于开发人员工具包 v1 的说明。
+description: 语音设备 SDK 入门的先决条件和说明 Roobo 智能音频开发工具包 v1。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: e4aba26238a0d87c8e708ae27c7b2dbdb73f16ab
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 08bac7cd833f52d2dfec4561c2f87330a4119748
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604829"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552861"
 ---
-# <a name="device-roobo-smart-audio-dev-kit"></a>设备：Roobo 智能音频的开发人员工具包
+# <a name="device-roobo-smart-audio-dev-kit"></a>设备:Roobo 智能音频开发工具包
 
-本文提供了 Roobo 智能音频开发工具包的设备特定信息。
+本文提供 Roobo 智能音频开发工具包的设备特定信息。
 
 ## <a name="set-up-the-development-kit"></a>设置开发工具包
 
@@ -29,7 +29,7 @@ ms.locfileid: "67604829"
 
 1. 使用 micro USB 数据线为开发工具包接通电源，将电源端口连接到 PC 或电源适配器。 顶部板下的绿色电源指示灯将亮起。
 
-1. 若要控制开发工具包，请使用第二个 micro USB 电缆连接计算机调试端口。 务必使用高品质的数据线，以确保可靠的通信。
+1. 若要控制开发工具包, 请使用第二个微 USB 电缆将调试端口连接到计算机。 务必使用高品质的数据线，以确保可靠的通信。
 
 1. 摆放好开发工具包以进行环形或线性配置。
 
@@ -40,7 +40,7 @@ ms.locfileid: "67604829"
 
     ![线性开发工具包方向](media/speech-devices-sdk/qsg-2.png)
 
-1. 安装证书和设置的权限的声音的设备。 在命令提示符窗口中键入以下命令：
+1. 安装证书并设置声音设备的权限。 在命令提示符窗口中键入以下命令：
 
    ```powershell
    adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/
@@ -54,22 +54,22 @@ ms.locfileid: "67604829"
     > [!NOTE]
     > 这些命令使用 Android Debug Bridge `adb.exe`，它是 Android Studio 安装的一部分。 此工具位于 C:\Users\[用户名]\AppData\Local\Android\Sdk\platform-tools 中。 可将该目录添加到你的路径，以便更轻松地调用 `adb`。 否则，必须在调用 `adb` 的每个命令中指定安装 adb.exe 的完整路径。
     >
-    > 如果看到错误`no devices/emulators found`然后检查您的 USB 电缆连接，并且是高质量电缆。 可使用 `adb devices` 检查并确保计算机可与开发工具包通信，因为它将返回设备列表。
+    > 如果出现错误`no devices/emulators found` , 请检查 USB 电缆是否已连接, 以及是否具有高质量的电缆。 可使用 `adb devices` 检查并确保计算机可与开发工具包通信，因为它将返回设备列表。
     >
     > [!TIP]
     > 将电脑的麦克风和扬声器调为静音，以确保使用开发工具包的麦克风。 这可以避免电脑中的音频意外触发设备。
 
-1. 如果希望将扬声器连接到开发工具包，可将其连接到音频线路输出。应该选择与 3.5mm 模拟插件良好质量演讲者。
+1. 如果希望将扬声器连接到开发工具包，可将其连接到音频线路输出。应选择具有 3.5 mm 模拟插头的优质扬声器。
 
     ![Vysor 音频](media/speech-devices-sdk/qsg-14.png)
 
-## <a name="development-information"></a>开发的信息
+## <a name="development-information"></a>开发信息
 
-有关开发的详细信息，请参阅[Roobo 开发指南](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf)。
+有关更多开发信息, 请参阅[Roobo 开发指南](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf)。
 
-## <a name="audio"></a>音频
+## <a name="audio"></a>收听验证码
 
-Roobo 提供捕获所有音频闪存的工具。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 上[Roobo 站点](https://ddk.roobo.com/)，选择你的设备，并选择**Roobo 工具**在页面底部的链接。
+Roobo 提供将所有音频捕获到闪存的工具。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 在[Roobo 站点](https://ddk.roobo.com/)上, 选择你的设备, 然后选择页面底部的 " **Roobo 工具**" 链接。
 
 ## <a name="next-steps"></a>后续步骤
 

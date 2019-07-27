@@ -1,6 +1,6 @@
 ---
-title: 预测评分
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 预测分数-LUIS
+titleSuffix: Azure Cognitive Services
 description: 预测分数表示 LUIS API 服务基于用户话语对于预测结果的置信度。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: 383ce4c4248f7e21f745f503c74a29cb613983e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccbdb60687bd81de57ff675634f9d124f10784e1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813990"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563946"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>预测评分指示意向和实体的预测准确性
 
@@ -26,12 +26,12 @@ ms.locfileid: "60813990"
 
 |分数值|Confidence|
 |--|--|
-|第|明确匹配|
+|1|明确匹配|
 |0.99|高置信度|
 |0.01|低置信度|
 |0|明确匹配失败|
 
-如果某个话语的得分为低置信度，LUIS 会在 [LUIS](luis-reference-regions.md) 网页“意向”页面上突出显示该话语，并以红色边框标记识别到的意向   。
+如果某个话语的得分为低置信度，LUIS 会在 [LUIS](luis-reference-regions.md) 网页“意向”页面上突出显示该话语，并以红色边框标记识别到的意向。
 
 ![分数差异](./media/luis-concept-score/score-discrepancy.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "60813990"
 
 ## <a name="e-exponent-notation"></a>E（指数）表示法
 
-预测分数可采用指数表示法，显示超过 0 到 1 这个范围的值，例如 `9.910309E-07`  。 此分数指示的是非常小的数  。
+预测分数可采用指数表示法，显示超过 0 到 1 这个范围的值，例如 `9.910309E-07`。 此分数指示的是非常小的数。
 
 |E 表示法分数 |实际分数|
 |--|--|

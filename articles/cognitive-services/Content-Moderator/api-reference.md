@@ -1,6 +1,6 @@
 ---
 title: API 参考 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解多种内容审查器的内容审核和评审 API。
 services: cognitive-services
 author: sanjeev3
@@ -10,19 +10,19 @@ ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 05/29/2019
 ms.author: sajagtap
-ms.openlocfilehash: f802c64e141e8757f633d82ad577fa50f7d076fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ad911a95dbe6209fcf55adcac3cf2937b06d1ff
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688885"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565615"
 ---
 # <a name="content-moderator-api-reference"></a>内容审查器 API 参考
 
-你可以开始使用 Azure 内容审查器 Api 中的以下方法：
+可以通过以下方式开始 Azure 内容审查器 Api 入门:
 
-- 在 Azure 门户中，[订阅内容审查器 API](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)。
-- 请参阅[尝试在 web 上找到的内容审查器](quick-start.md)使用注册[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)。
+- 在 Azure 门户中,[订阅内容审查器 API](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)。
+- 请参阅[尝试在 web 上内容审查器](quick-start.md), 以利用[内容审查器审阅工具](https://contentmoderator.cognitive.microsoft.com/)进行注册。
 
 ## <a name="moderation-apis"></a>审查 API
 
@@ -33,11 +33,11 @@ ms.locfileid: "66688885"
 | **图像审查 API**<br /><br />通过使用标记、置信度分数和其他提取的信息扫描图像并检测潜在的成人和不雅内容。 <br /><br />使用此信息发布、拒绝或查看审查后工作流中的内容。 <br /><br />| [图像审查 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c "图像审查 API 参考")   |
 | **文本审查 API**<br /><br />扫描文本内容。 返回不雅用语和个人数据。 <br /><br />使用此信息发布、拒绝或查看审查后工作流中的内容。<br /><br /> | [文本审查 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "文本审查 API 参考")   |
 | **视频审查 API**<br /><br />扫描视频并检测潜在的成人和不雅内容。 <br /><br />使用此信息发布、拒绝或查看审查后工作流中的内容。<br /><br /> | [视频审查 API 概述](video-moderation-api.md "视频审查 API 概述")   |
-| **列表管理 API**<br /><br />创建并管理图像和文本的自定义排除或包含列表。 如果启用，则“图像 - 匹配”  和“文本 - 屏幕”  操作会将提交的内容与你的自定义列表进行模糊匹配。 <br /><br />为了提高效率，可以跳过基于机器学习的审查步骤。<br /><br /> | [列表管理 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f675 "列表管理 API 参考")   |
+| **列表管理 API**<br /><br />创建并管理图像和文本的自定义排除或包含列表。 如果启用，则“图像 - 匹配”和“文本 - 屏幕”操作会将提交的内容与你的自定义列表进行模糊匹配。 <br /><br />为了提高效率，可以跳过基于机器学习的审查步骤。<br /><br /> | [列表管理 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f675 "列表管理 API 参考")   |
 
 ## <a name="review-apis"></a>查看 API
 
-查看 Api 具有以下组件：
+评审 API 包含以下组件：
 
 | 描述 | 参考 |
 | -------------------- |-------------|

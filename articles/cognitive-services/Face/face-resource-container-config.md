@@ -1,6 +1,6 @@
 ---
-title: 配置容器
-titlesuffix: Face - Azure Cognitive Services
+title: 配置容器-人脸 API
+titleSuffix: Azure Cognitive Services
 description: 容器配置设置。
 services: cognitive-services
 author: IEvangelist
@@ -11,16 +11,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dapine
-ms.openlocfilehash: c5044428b6f9c7c8fd343c93b06c1774eba8e17f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6dd047b0ba7f9a123ffcc014cff5604466946d07
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320511"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564098"
 ---
 # <a name="configure-face-docker-containers"></a>配置人脸 Docker 容器
 
-使用 `docker run` 命令参数配置人脸  容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
+使用 `docker run` 命令参数配置人脸容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
 ## <a name="configuration-settings"></a>配置设置
 
@@ -31,11 +31,11 @@ ms.locfileid: "68320511"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”  资源的有效密钥。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**“资源管理”部分的“密钥”下 
+* Azure 门户：**认知服务**“资源管理”部分的“密钥”下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,7 +43,7 @@ ms.locfileid: "68320511"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”  资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”  资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
@@ -143,7 +143,7 @@ ms.locfileid: "68320511"
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](face-how-to-install-containers.md#billing)。
-> ApiKey 值是来自 Azure `Cognitive Services`“资源密钥”页的“密钥”  。 
+> ApiKey 值是来自 Azure `Cognitive Services`“资源密钥”页的“密钥”。 
 
 ## <a name="face-container-docker-examples"></a>人脸容器 Docker 示例
 

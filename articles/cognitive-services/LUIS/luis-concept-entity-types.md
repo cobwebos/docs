@@ -1,6 +1,6 @@
 ---
-title: 实体类型
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 实体类型-LUIS
+titleSuffix: Azure Cognitive Services
 description: 实体从话语中提取数据。 实体类型为你提供可预测的数据提取。 有两种类型的实体：机器学习的和非机器学习的。 请务必知道你在话语中使用的是哪种类型的实体。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: a5a3ba8c25107317e7c47ee358f9a6ebe7d4556f
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 9919b6d07e874bd306bdba9da2cd3357bedc48f0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479117"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564008"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>实体类型及其在 LUIS 中的目的
 

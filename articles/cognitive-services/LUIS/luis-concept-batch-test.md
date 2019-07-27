@@ -1,6 +1,6 @@
 ---
-title: 批处理测试
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 批处理测试-LUIS
+titleSuffix: Azure Cognitive Services
 description: 使用批处理测试持续优化应用程序并改进其语言理解能力。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9a6e7ae48a51ab10e6ba2e5d3996e61938c6f3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813289"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560850"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>对 LUIS 门户中的 1000 个话语执行批处理测试
 
@@ -28,7 +28,7 @@ ms.locfileid: "60813289"
 
 ## <a name="a-dataset-of-utterances"></a>表达数据集
 
-提交表达批处理文件（称为数据集  ），以用于批处理测试。 该数据集是一个 JSON 格式的文件，包含最多 1,000 个被标记为非重复  的表达。 可以在一个应用中测试最多 10 个数据集。 如果需要测试更多数据集，请删除数据集，然后添加新数据集。
+提交表达批处理文件（称为数据集），以用于批处理测试。 该数据集是一个 JSON 格式的文件，包含最多 1,000 个被标记为非重复的表达。 可以在一个应用中测试最多 10 个数据集。 如果需要测试更多数据集，请删除数据集，然后添加新数据集。
 
 |**规则**|
 |--|
@@ -74,7 +74,7 @@ ms.locfileid: "60813289"
 ]
 ```
 
-批处理文件使用 startPos 和 endPos 属性来记录实体的开始和结束   。 值从零开始，不得以空格开始或结束。 这与使用 startIndex 和 endIndex 属性的查询日志不同。 
+批处理文件使用 startPos 和 endPos 属性来记录实体的开始和结束。 值从零开始，不得以空格开始或结束。 这与使用 startIndex 和 endIndex 属性的查询日志不同。 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
@@ -114,7 +114,7 @@ LUIS 跟踪每个数据集的最后一次测试的状态。 这包括大小（�
 
 批处理测试结果是散点图，称为错误矩阵。 此图表对批处理文件中的话语和当前模型的预测意向和实体进行四个方面的比较。 
 
-“假正”  和“假负”  部分上的数据点指示错误，应对其进行调查。 如果所有数据点都在“真正”  和“真负”  部分上，则你的应用在此数据集上的准确性很好。
+“假正”和“假负”部分上的数据点指示错误，应对其进行调查。 如果所有数据点都在“真正”和“真负”部分上，则你的应用在此数据集上的准确性很好。
 
 ![图表的四个部分](./media/luis-concept-batch-test/chart-sections.png)
 

@@ -1,6 +1,6 @@
 ---
-title: 协作时的安全性
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 协作时的安全性-LUIS
+titleSuffix: Azure Cognitive Services
 description: 所有者和协作者具有创作访问权限。 对于专用应用，所有者和协作者具有终结点访问权限。
 services: cognitive-services
 author: diberry
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: b52b0fffe9c32ab14600a3e296852faa626d794d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25f6b675846f028b4ba9d49cce9e075bc79eece9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058530"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560671"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>创作和终结点用户访问权限
-所有者和协作者具有创作访问权限。 对于专用应用，所有者和协作者具有终结点访问权限。 对于公共应用，终结点访问可供每个人都具有其自己的 Azure[认知服务](../cognitive-services-apis-create-account.md)或[LUIS](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal)资源，并且具有公共应用程序的 id。 
+所有者和协作者具有创作访问权限。 对于专用应用，所有者和协作者具有终结点访问权限。 对于公共应用程序, 终结点访问可供拥有自己的 Azure[认知服务](../cognitive-services-apis-create-account.md)或[LUIS](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal)资源的所有人使用, 并且具有公共应用的 ID。 
 
 ## <a name="access-to-authoring"></a>访问创作
 从 [LUIS](luis-reference-regions.md#luis-website) 网站或[创作 API](https://go.microsoft.com/fwlink/?linkid=2092087) 访问应用的权限由应用的所有者控制。 
@@ -40,7 +40,7 @@ ms.locfileid: "67058530"
 
 ## <a name="access-to-endpoint"></a>访问终结点
 
-查询终结点的访问权限由“应用程序信息”  页上的“管理”  部分中的设置进行控制。 
+查询终结点的访问权限由“应用程序信息”页上的“管理”部分中的设置进行控制。 
 
 ![将应用设置为公共](./media/luis-concept-security/set-application-as-public.png)
 
@@ -66,9 +66,9 @@ ms.locfileid: "67058530"
 
 ### <a name="public-app-endpoint-access"></a>公共应用终结点访问权限
 
-应用配置为公共后，任何有效的 LUIS 创作密钥或 LUIS 终结点密钥都可以查询应用，只要该密钥未使用整个终结点配额  。
+应用配置为公共后，任何有效的 LUIS 创作密钥或 LUIS 终结点密钥都可以查询应用，只要该密钥未使用整个终结点配额。
 
-如果用户不是所有者或协作者，则只有在给定应用 ID 时才能访问公共应用。 LUIS 不提供公共市场或其他搜索公共应用的方式  。  
+如果用户不是所有者或协作者，则只有在给定应用 ID 时才能访问公共应用。 LUIS 不提供公共市场或其他搜索公共应用的方式。  
 
 公共应用在所有区域中发布，以便有基于区域的 LUIS 资源密钥的用户可以在与资源密钥关联的任何区域中访问该应用。
 

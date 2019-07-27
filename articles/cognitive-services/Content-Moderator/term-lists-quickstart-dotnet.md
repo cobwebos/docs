@@ -1,6 +1,6 @@
 ---
 title: 对照以 C# 编写的自定义术语列表检查文本 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 如何通过自定义术语列表使用适用于 C# 的内容审查器 SDK 对文本进行审查。
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 0ab11d8ef9fd481d2b3ea7029664a1ec2778cf4b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 144137109f97a8c2049430ed1e05117ea6c95d7f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604083"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564418"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>对照以 C# 编写的自定义术语列表检查文本
 
@@ -40,9 +40,9 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用 (.NET Framework)”项目  。
+1. 向解决方案添加新的“控制台应用 (.NET Framework)”项目。
 
-1. 将该项目命名为 TermLists  。 将此项目选为解决方案的单一启动项目。
+1. 将该项目命名为 TermLists。 将此项目选为解决方案的单一启动项目。
 
 ### <a name="install-required-packages"></a>安装所需程序包
 
@@ -73,7 +73,7 @@ using System.Threading;
 添加以下代码来为订阅创建内容审查器客户端。
 
 > [!IMPORTANT]
-> 使用区域标识符和订阅密钥的值更新  AzureRegion 和 CMSubscriptionKey  字段。
+> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
 
 ```csharp
 /// <summary>
@@ -144,10 +144,10 @@ private const double latencyDelay = 0.5;
 
 ## <a name="create-a-term-list"></a>创建术语列表
 
-使用 ContentModeratorClient.ListManagementTermLists.Create 创建术语列表  。 要创建的第一个参数是一个包含 MIME 类型的字符串，此类型应为“application/json”  。 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)。 第二个参数是 Body 对象，该对象包含新术语列表的名称和说明  。
+使用 ContentModeratorClient.ListManagementTermLists.Create 创建术语列表。 要创建的第一个参数是一个包含 MIME 类型的字符串，此类型应为“application/json”。 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)。 第二个参数是 Body 对象，该对象包含新术语列表的名称和说明。
 
 > [!NOTE]
-> 最多只能使用 5 个术语列表  ，每个列表中的术语数不得超过 10,000 个  。
+> 最多只能使用 5 个术语列表，每个列表中的术语数不得超过 10,000 个。
 
 将以下方法定义添加到 TermLists 命名空间中的 Program 类。
 
@@ -182,7 +182,7 @@ static string CreateTermList (ContentModeratorClient client)
 
 ## <a name="update-term-list-name-and-description"></a>更新术语列表名称和说明
 
-使用 ContentModeratorClient.ListManagementTermLists.Update 更新术语列表信息  。 要更新的第一个参数是术语列表 ID  。 第二个参数是应为“application/json”的 MIME 类型。 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685)。 第三个参数是 Body 对象，它包含新名称和说明  。
+使用 ContentModeratorClient.ListManagementTermLists.Update 更新术语列表信息。 要更新的第一个参数是术语列表 ID。 第二个参数是应为“application/json”的 MIME 类型。 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685)。 第三个参数是 Body 对象，它包含新名称和说明。
 
 将以下方法定义添加到 TermLists 命名空间中的 Program 类。
 
@@ -249,7 +249,7 @@ static void GetAllTerms(ContentModeratorClient client, string list_id)
 
 对术语列表进行更改后，刷新其搜索索引，使更改在下次使用术语列表时包含在内。 此步骤类似于桌面上的搜索引擎（如果启用）或 Web 搜索引擎的操作，即不断刷新其索引以包含新文件或页面。
 
-使用 ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod 刷新术语列表搜索索引  。
+使用 ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod 刷新术语列表搜索索引。
 
 将以下方法定义添加到 TermLists 命名空间中的 Program 类。
 
@@ -269,18 +269,18 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 
 ## <a name="screen-text-using-a-term-list"></a>屏蔽使用术语列表的文本
 
-通过 ContentModeratorClient.TextModeration.ScreenText 屏蔽使用术语列表的文本，它将采用以下参数  。
+通过 ContentModeratorClient.TextModeration.ScreenText 屏蔽使用术语列表的文本，它将采用以下参数。
 
 - 术语列表中的术语所采用的语言。
 - MIME 类型，可以是“text/html”、“text/xml”、“text/markdown”或“text/plain”。
 - 要屏蔽的文本。
-- 布尔值。 将此字段设置为 true，在屏蔽它之前自动更正文本  。
-- 布尔值。 将此字段设置为 true，检测文本中的个人身份信息 (PII)  。
+- 布尔值。 将此字段设置为 true，在屏蔽它之前自动更正文本。
+- 布尔值。 将此字段设置为 true，检测文本中的个人身份信息 (PII)。
 - 术语列表 ID。
 
 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)。
 
-ScreenText 返回 Screen 对象，该对象具有 Terms 属性，此属性可列出内容审查器在屏蔽期间检测到的任何术语    。 请注意，如果屏蔽期间内容审查器未检测到任何术语，则 Terms 属性的值为 null   。
+ScreenText 返回 Screen 对象，该对象具有 Terms 属性，此属性可列出内容审查器在屏蔽期间检测到的任何术语。 请注意，如果屏蔽期间内容审查器未检测到任何术语，则 Terms 属性的值为 null。
 
 将以下方法定义添加到 TermLists 命名空间中的 Program 类。
 

@@ -1,5 +1,5 @@
 ---
-title: 创建自定义唤醒词 - 语音服务
+title: 创建自定义唤醒字词-语音服务
 titleSuffix: Azure Cognitive Services
 description: 设备始终在侦听唤醒词（或短语）。 当用户说唤醒词时，设备会将所有后续音频发送到云，直到用户停止说话为止。 自定义唤醒词是区分设备和加强品牌效应的有效方式。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f43cbedc633b26a3a7fcbfb5f6a75da514bf0c45
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 2bc1a6cbbf1e0d790326849a41b0788e332daa31
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604869"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553113"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>使用语音服务创建自定义唤醒词
 
@@ -46,26 +46,26 @@ ms.locfileid: "67604869"
 
 ## <a name="create-your-wake-word"></a>创建唤醒词
 
-你的设备上使用自定义唤醒文字之前，您需要使用自定义唤醒 Microsoft Word 生成服务创建唤醒文字。 提供唤醒文字，则服务将生成的文件后你将部署到开发工具包来启用你的设备上的唤醒一词。
+在你的设备上使用自定义唤醒字词之前, 你需要使用 Microsoft 自定义唤醒字词生成服务创建一个唤醒词。 提供唤醒字词后, 服务将生成一个文件, 该文件将部署到开发工具包以在设备上启用唤醒词。
 
-1. 转到[自定义语音服务门户](https://aka.ms/sdsdk-speechportal)并**登录**或如果没有选择语音订阅[**创建订阅**](https://go.microsoft.com/fwlink/?linkid=2086754)
+1. 转到[自定义语音服务门户](https://aka.ms/sdsdk-speechportal)并登录, 如果你没有语音订阅, 请选择 **"** [**创建订阅**](https://go.microsoft.com/fwlink/?linkid=2086754)"
 
     ![自定义语音服务门户](media/speech-devices-sdk/wake-word-4.png)
 
-1. 在[自定义唤醒 Word](https://aka.ms/sdsdk-wakewordportal)页上，键入在唤醒文字的选择，然后单击**添加唤醒文字**。 我们有一些[指导原则](#choose-an-effective-wake-word)若要帮助选择一个有效的关键字。 目前仅支持 EN-US 语言。
+1. 在所选的 "[自定义唤醒字词](https://aka.ms/sdsdk-wakewordportal)" 页上键入, 并单击 "**添加唤醒词**"。 我们有一些[指导原则](#choose-an-effective-wake-word)来帮助选择有效的关键字。 目前仅支持 en-us 语言。
 
     ![输入唤醒词](media/speech-devices-sdk/wake-word-5.png)
 
-1. 将创建三个其他发音的唤醒文字。 你可以选择您喜欢的所有发音。 然后选择**提交**生成唤醒文字。 如果你想要更改唤醒文字请删除现有首先，将鼠标悬停时的发音行上将显示删除图标。
+1. 将创建唤醒词的三个替代发音。 您可以选择喜欢的所有发音。 然后选择 "**提交**" 以生成唤醒字词。 如果要更改唤醒词, 请先删除现有的单词, 将鼠标悬停在发音行后, 将显示 "删除" 图标。
 
-    ![查看唤醒文字](media/speech-devices-sdk/wake-word-6.png)
+    ![查看唤醒字词](media/speech-devices-sdk/wake-word-6.png)
 
-1. 可能需要一分钟生成的模型。 系统将提示您下载文件。
+1. 生成模型最多可能需要一分钟。 系统将提示您下载该文件。
 
-    ![下载唤醒文字](media/speech-devices-sdk/wake-word-7.png)
+    ![下载唤醒字词](media/speech-devices-sdk/wake-word-7.png)
 
-1. 将 .zip 文件保存到计算机。 你将需要此文件以将自定义唤醒文字部署到开发工具包。
+1. 将 .zip 文件保存到计算机。 需要此文件将自定义唤醒词部署到开发工具包。
 
 ## <a name="next-steps"></a>后续步骤
 
-测试与你自定义唤醒文字[语音设备 SDK 快速入门](https://aka.ms/sdsdk-quickstart)。
+测试[语音设备 SDK 快速入门](https://aka.ms/sdsdk-quickstart)中的自定义唤醒词。

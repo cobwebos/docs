@@ -1,5 +1,5 @@
 ---
-title: 如何使用语音 SDK 选择音频输入设备 - 语音服务
+title: 如何使用语音 SDK 语音服务选择音频输入设备
 titleSuffix: Azure Cognitive Services
 description: 了解如何在语音 SDK 中选择音频输入设备。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 16b8f81a09efc60f1214a2dc6ac60da9155e7794
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8324f9fccbe46cf6fc0ce297aac29b0d8025b078
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605111"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562724"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>使用语音 SDK 选择音频输入设备
 
@@ -381,7 +381,7 @@ iOS 不支持通过语音 SDK 来选择音频设备。
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的示例](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [自定义声学模型](how-to-customize-acoustic-models.md)
 - [自定义语言模型](how-to-customize-language-model.md)

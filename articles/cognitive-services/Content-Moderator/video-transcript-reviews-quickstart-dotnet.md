@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET 创建视频脚本评审 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用用于 .NET 的内容审查器 SDK 创建视频脚本评审
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: fa782f687979f1d32cdf1c18bd08f6672e39adfe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bbdfb995ab6c819b0782a30e2ade4df4e5e0551
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868589"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564244"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>使用 .NET 创建视频脚本评论
 
@@ -25,9 +25,9 @@ ms.locfileid: "64868589"
 - 向评论中添加已审查的脚本
 - 发布评论
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
-- 登录或在内容审查器上创建一个帐户[审阅工具](https://contentmoderator.cognitive.microsoft.com/)如果尚未这样做已经。
+- 如果尚未这样做, 请登录或在内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上创建帐户。
 - 本文假定你已[审查视频](video-moderation-api.md)，并在评论工具中[创建了视频评论](video-reviews-quickstart-dotnet.md)以便进行人工决策。 你现在想要在评论工具中添加已审查的视频脚本。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>确保 API 密钥可以调用评审 API（创建作业）
@@ -48,9 +48,9 @@ ms.locfileid: "64868589"
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用(.NET Framework)”项目  。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”项目。
 
-1. 将项目命名为“VideoTranscriptReviews”  。
+1. 将项目命名为“VideoTranscriptReviews”。
 
 1. 将此项目选为解决方案的单一启动项目。
 
@@ -157,12 +157,12 @@ public static ContentModeratorClient NewClient()
 1. **IList\<CreateVideoReviewsBodyItem >** 对象。 每个 CreateVideoReviewsBodyItem  对象表示一次视频审查。 本快速入门一次创建一条评论。
 
 **CreateVideoReviewsBodyItem** 具有多个属性。 至少应设置以下属性：
-- Content  。 要评论的视频的 URL。
-- ContentId  。 要分配给视频评论的 ID。
-- Status  。 将该值设置为“未发布”。 如果未进行设置，则默认为“挂起”，这意味着视频评论已发布并且正在等待人工评论。 视频评论发布后，就无法再向其中添加视频帧、脚本或脚本审查结果。
+- Content。 要评论的视频的 URL。
+- ContentId。 要分配给视频评论的 ID。
+- Status。 将该值设置为“未发布”。 如果未进行设置，则默认为“挂起”，这意味着视频评论已发布并且正在等待人工评论。 视频评论发布后，就无法再向其中添加视频帧、脚本或脚本审查结果。
 
 > [!NOTE]
-> **CreateVideoReviews**返回 IList\<字符串 >。 这些字符串中的每一个都包含视频评论 ID。 这些 ID 是 GUID，与 **ContentId** 属性的值不同。
+> **CreateVideoReviews**返回 > 的\<IList 字符串。 这些字符串中的每一个都包含视频评论 ID。 这些 ID 是 GUID，与 **ContentId** 属性的值不同。
 
 将以下方法定义添加到 VideoReviews 命名空间中的 Program 类。
 
@@ -252,7 +252,7 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 
 脚本必须采用 WebVTT 格式。 有关更多信息，请参阅 [WebVTT：Web 视频文本轨道格式](https://www.w3.org/TR/webvtt1/)。
 
-将以下方法定义添加到 VideoTranscriptReviews 命名空间中的 Program 类。 此方法将脚本提交到 **ContentModeratorClient.TextModeration.ScreenText** 方法。 它还将结果转换到 IList\<TranscriptModerationBodyItem >，并将提交给**AddVideoTranscriptModerationResult**。
+将以下方法定义添加到 VideoTranscriptReviews 命名空间中的 Program 类。 此方法将脚本提交到 **ContentModeratorClient.TextModeration.ScreenText** 方法。 它还将结果转换为 IList\<TranscriptModerationBodyItem >, 并将其提交给**AddVideoTranscriptModerationResult**。
 
 ```csharp
 /// <summary>
@@ -376,7 +376,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>导航到视频脚本评论
 
-转到“评论”>“视频”>“视频”屏幕上内容审查器评论工具中的的视频脚本评论    。
+转到“评论”>“视频”>“视频”屏幕上内容审查器评论工具中的的视频脚本评论。
 
 你会看到以下功能：
 - 你添加的两行脚本

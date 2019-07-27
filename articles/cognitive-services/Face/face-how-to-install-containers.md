@@ -1,6 +1,6 @@
 ---
-title: 安装和运行容器
-titlesuffix: Face - Azure Cognitive Services
+title: 安装和运行容器-人脸 API
+titleSuffix: Azure Cognitive Services
 description: 在本演练教程中下载、安装和运行用于面部的容器。
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: f4abf17c774fb75a0314c8890f5f4383058e37fd
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 93a6d0a42d6d7f07dd8947ce9f8ae99a39d44475
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321383"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564140"
 ---
 # <a name="install-and-run-face-containers"></a>安装并运行人脸容器
 
@@ -46,9 +46,9 @@ Azure 认知服务面部为 Docker 提供标准化的 Linux 容器, 用于检测
 
 下表显示了为每个人脸 API 容器分配的最小和建议的 CPU 核心数和内存。
 
-| 容器 | 最低要求 | 建议 | 每秒事务数<br>(最小值、最大值)|
+| 容器 | 最低要求 | 建议 | 每秒创建的事务数<br>(最小值、最大值)|
 |-----------|---------|-------------|--|
-|人脸 | 单核, 2 GB 内存 | 1核, 4 GB 内存 |10, 20|
+|人脸 | 单核，2-GB 内存 | 单核，4-GB 内存 |10, 20|
 
 * 每个核心都必须至少为 2.6 GHz 或更快。
 * 每秒事务数 (TPS)。
@@ -134,7 +134,7 @@ ApiKey={API_KEY}
 如果在启用了输出[装载](./face-resource-container-config.md#mount-settings)并启用了日志记录的情况下运行容器, 则容器将生成日志文件, 这些文件有助于排查启动或运行容器时所发生的问题。 
 
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>帐单
 
 人脸 API 容器使用 Azure 帐户上的人脸 API 资源将计费信息发送到 Azure。 
 

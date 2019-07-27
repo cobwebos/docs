@@ -1,7 +1,7 @@
 ---
 title: 语音设备 SDK 麦克风阵列建议-语音服务
 titleSuffix: Azure Cognitive Services
-description: 语音设备 SDK 的麦克风阵列建议。 以下数组几何图形被建议使用与 Microsoft 音频堆栈。 声音的源位置和避免环境噪音拒绝得到改进，更多的麦克风具有依赖项特定的应用程序、 用户方案和设备外观造型上。
+description: 语音设备 SDK 麦克风阵列建议。 建议将以下数组几何图形用于 Microsoft 音频堆栈。 对于特定的应用程序、用户方案和设备外形规格, 具有更多麦克风的位置和环境噪音拒绝的位置会得到改善。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,104 +10,104 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: cb30b476471e140f96fa1d159e9a16898f529607
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b110e9ddc42d07c8356eb25b9ea2294e470d5fdc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277494"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558951"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>语音设备 SDK 麦克风阵列建议
 
-在本文中，您将了解如何设计的语音设备 SDK 的麦克风阵列。
+本文介绍如何为语音设备 SDK 设计麦克风数组。
 
-语音设备 SDK 最适用于旨在根据以下指导原则，包括麦克风几何图形和组件选择麦克风阵列。 指南还提供了集成和电力注意事项。
+语音设备 SDK 最适用于根据以下准则设计的麦克风阵列, 其中包括麦克风几何和组件选择。 还提供了有关集成和电气注意事项的指南。
 
-## <a name="microphone-geometry"></a>麦克风 geometry
+## <a name="microphone-geometry"></a>麦克风几何
 
-以下数组几何图形被建议使用与 Microsoft 音频堆栈。 声音的源位置和避免环境噪音拒绝得到改进，更多的麦克风具有依赖项特定的应用程序、 用户方案和设备外观造型上。
+建议将以下数组几何图形用于 Microsoft 音频堆栈。 对于特定的应用程序、用户方案和设备外形规格, 具有更多麦克风的位置和环境噪音拒绝的位置会得到改善。
 
-|          | 循环的数组    |       |  线性数组              |                |
+|          | 循环数组    |       |  线性数组              |                |
 |----------|-------------------|-------------------|----------------|----------------|
 |          |<img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/>|<img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/>|
-| \# 接通麦克风  | 7                 | 4                 | 4              | 2              |
-| geometry | 6 的外部，1 Center、 半径 = 42.5 mm，均匀分布| 3 个外部，1 Center、 半径 = 42.5 mm，均匀分布 | 长度 = 120 mm 间距 = 40 mm | 间距 = 40 mm |
+| \#Mic  | 7                 | 4                 | 4              | 2              |
+| 几何图形 | 6个外, 1 个中心, 半径 = 42.5 毫米, 平均间距| 3个外, 1 个中心, 半径 = 42.5 毫米, 平均间距 | 长度 = 120 mm, 间距 = 40 mm | 间距 = 40 mm |
 
-应根据为每个数组，从 0 增加上面所示的编号排序麦克风通道。  Microsoft 音频堆栈将需要执行回声抵消的音频播放的附加引用流。
+应根据上述每个数组中所示的编号, 按0增加麦克风频道的顺序。  Microsoft 音频堆栈需要额外的音频播放流来执行回声取消。
 
-## <a name="component-selection"></a>选择组件
+## <a name="component-selection"></a>组件选择
 
-应选择麦克风组件来准确地重现免费的干扰和失真的信号。
+应选择麦克风组件以便准确地重现无噪音和失真的信号。
 
-选择麦克风时的建议的属性包括：
+选择麦克风时建议的属性如下:
 
 | 参数                         | 建议                       |
 |-----------------------------------|-----------------------------------|
-| SNR                               | \>= 65 dB （1khz 信号 94 dBSPL，一个加权干扰）   |
-| Amplitude 匹配                | 为 @ 1khz 1 个 dB                     |
-| 匹配阶段                    | 为 @ 1khz 2 °                       |
-| 声学重载点 (AOP)     | \>= 120 dBSPL (THD = 10%)          |
-| 比特率                          | 最小值 24 位                    |
+| SNR                               | \>= 65 dB (1 kHz 信号 94 dBSPL, 加权噪音)   |
+| 振幅匹配                | ± 1 dB @ 1 kHz                     |
+| 阶段匹配                    | ±2° @ 1 kHz                       |
+| 声音重载点 (AOP)     | \>= 120 dBSPL (THD = 10%)          |
+| 比特率                          | 最小24位                    |
 | 采样率                     | 最小 16 kHz\*                   |
-| 频率响应                | 为 3 个 dB，200 8000 Hz 浮点掩码\*|
-| 可靠性                       | 存储温度范围-40 ° C 到 70 ° C<br />操作-20 ° C 到 55 ° C 的温度范围  |
+| 频率响应                | ± 3 dB, 200-8000 Hz 浮动掩码\*|
+| 可靠性                       | 存储温度范围-40 ° C 到70° C<br />操作温度范围-20 ° C 到55° C  |
 
-*\* 更高版本的采样率或"宽"频率范围可能有必要为高质量通信 (VoIP) 应用程序*
+*\*高质量通信 (VoIP) 应用程序可能需要更高的采样率或 "更宽" 频率范围*
 
-选择好组件必须与完美 electroacoustic 集成成对使用以避免因而会影响使用的组件的性能。 唯一的用例可能还需要其他要求 (例如： 操作系统温度范围)。
+良好的组件选择必须与良好的 electroacoustic 集成配对, 以避免从而降低所用组件的性能。 唯一用例也可能需要额外的需求 (例如: 工作温度范围)。
 
 ## <a name="microphone-array-integration"></a>麦克风阵列集成
 
-麦克风阵列时集成到设备的性能将不同于组件规范。 请务必确保麦克风很好地匹配后的集成。 因此设备性能测量后获得任何修复或 EQ 应满足以下建议：
+麦克风阵列集成到设备时, 其性能将不同于组件规范。 确保在集成后正确匹配麦克风非常重要。 因此, 在任何固定增益或 EQ 之后测量的设备性能应满足以下建议:
 
 |  参数        |    建议 |
 |--------------------|----------------------------------------------------|
-|  SNR                 | \> 63 dB （1khz 信号 94 dBSPL，一个加权干扰） |
-|  输出敏感度  | -26 dBFS/Pa @ 1khz （推荐） |
-|  Amplitude 匹配  | 为 2 个 dB，200 8000 Hz |
-| THD %\*                 | ≤ 1%、 200 8000 Hz，94 dBSPL，第五个顺序 |
-|  频率响应  | 为 6 的 dB，200 8000 Hz 浮点掩码\*\* |
+|  SNR                 | \>63 dB (1 kHz 信号 94 dBSPL, 加权噪音) |
+|  输出敏感度  | -26 dBFS/Pa @ 1 kHz (推荐) |
+|  振幅匹配  | ± 2 dB, 200-8000 Hz |
+| THD%\*                 | ≤ 1%, 200-8000 Hz, 94 dBSPL, 第5个顺序 |
+|  频率响应  | ± 6 dB, 200-8000 Hz 浮动掩码\*\* |
 
-*\*\* 低失真演讲者所需度量值 THD (例如 Neumann KH120)*
+*\*\*测量 THD (例如 Neumann KH120) 需要较低的扭曲音箱*
 
-*\*\* "宽度"频率范围可能有必要为高质量通信 (VoIP) 应用程序*
+*\*\*高质量通信 (VoIP) 应用程序可能需要 "更宽" 频率范围*
 
-## <a name="speaker-integration-recommendations"></a>演讲者集成的建议
+## <a name="speaker-integration-recommendations"></a>演讲者集成建议
 
-由于包含说话人的语音识别设备所需回显取消，则其他建议提供的演讲者选择和集成。
+由于包含发言人的语音识别设备需要回声取消功能, 因此提供了有关扬声器选择和集成的其他建议。
 
 | 参数                         | 建议                       |
 |-----------------------------------|-----------------------------------|
-| 线性注意事项          | 任何非线性演讲者引用之后，否则基于硬件的环回引用流所需的处理  |
-| 演讲者 Loopback                  | 提供通过 wasapi 就可以了、 专用 Api、 自定义 ALSA 插件 (Linux)，或通过固件通道提供      |
-| THD %                              | 第三个八度音带区最小第五个订单，70 dBA 播放 @ 0.8 m ≤ 6.3%，315 500 Hz ≤ 5%、 630 5000 Hz                 |
-| Echo 耦合到麦克风      | \> -10 dB TCLw 使用 ITU-T G.122 Annex B.4 方法被规范化为麦克风输入级别<br />TCLw = TCLwmeasured \+ （级别-测量以目标输出敏感度）<br />TCLw = TCLwmeasured \+ （单位级别--(26)） |
+| 线性注意事项          | 演讲者引用后无非线性处理, 否则, 需要基于硬件的环回引用流  |
+| 扬声器环回                  | 通过 WASAPI、私有 Api、自定义 ALSA 插件 (Linux) 提供, 或通过固件通道提供      |
+| THD%                              | 第三个 Octave 区段最少5个订单, 70 dBA 播放 @ 0.8 m ≤ 6.3%, 315-500 Hz ≤ 5%, 630-5000 Hz                 |
+| 回音耦合到麦克风      | \>-10 dB TCLw 使用 ITU-T G a i G G G T, 规范化为 mic level<br />TCLw = TCLwmeasured \+ (度量级别-目标输出敏感度)<br />TCLw = TCLwmeasured \+ (度量级别-(-26)) |
 
 ## <a name="integration-design-architecture"></a>集成设计体系结构
 
-将麦克风集成到设备时，所需体系结构的以下准则：
+将麦克风集成到设备时, 需要以下体系结构准则:
 
 | 参数                         | 建议                    |
 |-----------------------------------|-----------------------------------|
-| Mic 端口相似性               | 麦克风的所有端口都都在数组中相同的长度    |
-| Mic 端口维度               | 端口大小 Ø0.8 1.0 毫米。 端口长度 / 端口直径\<2              |
-| Mic 密封                       | 密封垫片均匀地实施中累积。 建议\>泡沫垫片的 70%压缩率     |
-| Mic 可靠性                   | 应使用网格来避免灰尘和入口 （PCB 的底部之间移植麦克风和密封垫片/top 封面）  |
-| Mic 隔离                     | 橡胶垫片和振动分离通过结构，特别是对于隔离集成扬声器由于任何振动路径      |
-| 采样时钟                    | 设备音频必须是自由的抖动和退出的情况具有低偏差    |
+| 麦克风端口相似性               | 阵列中的所有麦克风端口都具有相同的长度    |
+| Mic 端口尺寸               | 端口大小Ø 0.8-1.0 毫米。 端口长度/端口直径\< 2              |
+| Mic 密封                       | 密封堆栈中统一实现的垫片。 为\>泡沫塑料垫片建议 70% 的压缩率     |
+| Mic 可靠性                   | 应该使用网格来防止灰尘和入口 (在 PCB 下的出口麦克风之间并密封衬垫/顶盖)  |
+| Mic 隔离                     | 橡胶垫片和振动通过结构分离, 特别是由于集成的扬声器隔离任何振动路径      |
+| 采样时钟                    | 设备音频必须具有抖动和低偏差的下沉    |
 | 记录功能                 | 设备必须能够同时记录单个通道原始流 |
-| USB                               | 所有 USB 音频输入的设备必须都设置根据描述符[USB 音频设备 Rev3 规范](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) |
-| 麦克风 Geometry               | 驱动程序必须实现[麦克风阵列 Geometry 描述符](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry)正确  |
-| 可发现性                   | 设备必须没有任何不可发现的或无法控制的硬件、 固件或与设备的第三方基于软件的非线性音频处理算法|
-| 捕获格式                    | 捕获格式必须使用 16 kHz 和建议的 24 位深度的最小采样率      |
+| USB                               | 所有 USB 音频输入设备必须根据[USB 音频设备 Rev3 规范](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement)设置描述符 |
+| 麦克风几何               | 驱动程序必须正确实现[麦克风数组几何描述符](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry)  |
+| 可发现性                   | 设备不能将任何无法发现或不可控硬件、固件或基于第三方软件的非线性音频处理算法与设备一起使用|
+| 捕获格式                    | 捕获格式必须使用 16 kHz 的最小采样速率和建议的24位深度      |
 
-## <a name="electrical-architecture-considerations"></a>电力体系结构注意事项
+## <a name="electrical-architecture-considerations"></a>电气体系结构注意事项
 
-数组在适用的情况下，可能会连接到 USB 主机 （例如运行 Microsoft 音频堆栈 SoC) 和语音服务或其他应用程序的接口。
+在适用的情况下, 阵列可以连接到 USB 主机 (例如, 运行 Microsoft 音频堆栈的 SoC), 并将接口连接到语音服务或其他应用程序。
 
-硬件组件，如 PDM TDM 转换应确保在重新取样器保留的动态范围和 SNR 麦克风。
+诸如 PDM 到 TDM 转换之类的硬件组件应确保在重新取样器中保留麦克风的动态范围和 SNR。
 
-为了提供最多七个通道在更高版本的采样速率和位深度的必要带宽，应内任何音频 Mcu 支持高速 USB 音频类 2.0。
+在任何音频 Mcu 中, 都应支持高速 USB 音频类 2.0, 以便在更高的采样速率和比特深度为多达7个通道提供所需的带宽。
 
 ## <a name="next-steps"></a>后续步骤
 

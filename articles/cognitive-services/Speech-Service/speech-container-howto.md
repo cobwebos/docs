@@ -1,5 +1,5 @@
 ---
-title: 安装语音容器
+title: 安装语音容器-语音服务
 titleSuffix: Azure Cognitive Services
 description: 安装并运行语音容器。 语音转文本可将音频流实时听录为应用程序、工具或设备可以使用或显示的文本。 文本转语音可将输入文本转换为类似人类的合成语音。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 089b9030debc7489e123d49b5c78052f597ca469
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 0778814d4a228afe3a986426684c7d1f2080b517
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348413"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553219"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装和运行语音服务容器
 
@@ -23,7 +23,7 @@ ms.locfileid: "68348413"
 
 这两个语音容器是**语音到文本**和**文本到语音**转换。 
 
-|函数|功能|最近|
+|函数|功能|最新|
 |-|-|--|
 |语音转文本| <li>转录连续实时语音或批处理音频记录到带有中间结果的文本中。|1.1.3|
 |文本到语音转换| <li>将文本转换为自然发音的语音。 带有纯文本输入或语音合成标记语言 (SSML)。 |1.1.0|
@@ -36,7 +36,7 @@ ms.locfileid: "68348413"
 
 |必填|用途|
 |--|--|
-|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br>  在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
+|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
 |语音资源 |若要使用这些容器，必须具有：<br><br>用于获取关联的 API 密钥和终结点 URI 的 Azure_语音_资源。 Azure 门户的 "**语音**概述" 和 "密钥" 页上都有这两个值。 它们都是启动容器所必需的。<br><br>**{API_KEY}** :"**密钥**" 页上有两个可用的资源键之一<br><br>**{ENDPOINT_URI}** :"**概述**" 页中提供的终结点|
 
@@ -54,7 +54,7 @@ ms.locfileid: "68348413"
 
 ### <a name="advanced-vector-extension-support"></a>高级矢量扩展支持
 
- 主机是运行 docker 容器的计算机。 主机必须支持[高级矢量扩展](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2)(AVX2)。 可以通过以下命令在 Linux 主机上查看此支持: 
+主机是运行 docker 容器的计算机。 主机必须支持[高级矢量扩展](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2)(AVX2)。 可以通过以下命令在 Linux 主机上查看此支持: 
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
@@ -274,7 +274,7 @@ speech_config = speechsdk.SpeechConfig(
 
 运行该容器时，该容器将使用 **stdout** 和 **stderr** 来输出信息，这些信息有助于排查启动或运行容器时发生的问题。
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>帐单
 
 语音容器使用 Azure 帐户中的_语音_资源将计费信息发送到 azure。
 

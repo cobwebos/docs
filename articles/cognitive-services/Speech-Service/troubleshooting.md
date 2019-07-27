@@ -1,5 +1,5 @@
 ---
-title: 排查语音 SDK 问题 - 语音服务
+title: 语音 SDK 语音服务疑难解答
 titleSuffix: Azure Cognitive Services
 description: 本文提供的信息可帮助你解决在使用语音 SDK 时可能遇到的问题。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
-ms.openlocfilehash: 99cb23afcdb40f74485a7dcec34435a46d0e7476
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 3beda852b3e711ee969b7f80f8f326285cc2cad6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405901"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558879"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>排查语音 SDK 问题
 
