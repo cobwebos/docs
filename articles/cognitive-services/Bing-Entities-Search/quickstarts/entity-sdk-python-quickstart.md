@@ -1,21 +1,21 @@
 ---
-title: 快速入门：必应实体搜索 SDK，Python
-titlesuffix: Azure Cognitive Services
-description: 设置必应实体搜索 SDK 控制台应用程序。
+title: 快速入门：使用适用于 Python 的必应实体搜索 SDK 搜索实体
+titleSuffix: Azure Cognitive Services
+description: 按照本快速入门使用适用于 Python 的必应实体搜索 SDK 搜索实体。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 9a66df03ceb03885ba5f61b4adeb54cb1876338d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0a4a4e3ce6f318a693b8ee760a0d892eaecb2c82
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813618"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479008"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>快速入门：通过 Python 使用必应实体搜索 SDK
 
@@ -27,7 +27,7 @@ ms.locfileid: "65813618"
 
 * [适用于 Python 的必应实体搜索 SDK](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
 
-建议使用 Python 虚拟环境。 可以使用 venv 模块安装并初始化虚拟环境。 可以通过以下命令为 Python 2.7 安装 virtualenv：
+建议使用 Python 虚拟环境。 可以使用 venv 模块安装并初始化虚拟环境。 可以使用以下命令安装 virtualenv：
 
 ```Console
 python -m venv mytestenv

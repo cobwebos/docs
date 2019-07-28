@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 803fe6eff8804dbd407642386865fe975c8db524
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0c50a321cbeb0d07a5039038ff796df00463ac8a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123262"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385669"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -113,14 +113,14 @@ ms.locfileid: "67123262"
 可以使用以下步骤来设置每个用户的配额： 
 
 1. 如果页面尚未处于活动状态，请在左侧菜单中选择“用户”  。 
-2. 在工具栏上选择“每用户配额:”  。 
+2. 在工具栏上选择“每个用户的配额:  10 小时”。 
 3. 在“每用户配额”  页上，指定要提供给每个用户（学生）的小时数： 
+    1. **每个用户的实验室小时总数**。 **除计划的时间外**，用户还可以在设置的小时数（为此字段指定）内使用其 VM。 如果选择了此选项，请在文本框中输入**小时数**。 
+
+        ![每个用户的小时数](../media/how-to-configure-student-usage/number-of-hours-per-user.png). 
     1. **0 小时(仅计划)** 。 用户只能在计划的时间内或当实验室所有者为其打开 VM 时才能使用其 VM。
 
         ![零小时 - 仅计划的时间](../media/how-to-configure-student-usage/zero-hours.png)
-    1. **每个用户的实验室小时总数**。 **除计划的时间外**，用户还可以在设置的小时数（为此字段指定）内使用其 VM。 如果选择了此选项，请在文本框中输入**小时数**。 
-
-        ![每个用户的小时数](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
     4. 选择“保存”。  
 5. 现在可以在工具栏上看到已更改的值：**每个用户的配额: &lt;小时数&gt;** 。 
 

@@ -12,16 +12,16 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcd0338f9195afae0e326155dbc4e10dd4fc1f91
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 5d1ebb4b094ab5c03343486e7af6624273288453
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723902"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421204"
 ---
 # <a name="application-management-with-azure-active-directory"></a>使用 Azure Active Directory 进行应用程序管理
 
-Azure Active Directory (Azure AD) 为云和本地应用程序提供单一标识系统，以此简化了应用程序的管理方式。 可将软件即服务 (SaaS) 应用程序、本地应用程序和业务线 (LOB) 应用添加到 Azure AD。 然后，用户只需登录一次，即可安全无缝地访问这些应用程序，以及 Microsoft 提供的 Office 365 和其他商务应用程序。 可以通过自动化用户预配来降低管理成本。 还可以使用多重身份验证和条件访问策略提供安全的应用程序访问。
+Azure Active Directory (Azure AD) 为云和本地应用程序提供单一标识系统，以此简化了应用程序的管理方式。 可将软件即服务 (SaaS) 应用程序、本地应用程序和业务线 (LOB) 应用添加到 Azure AD。 然后，用户只需登录一次，即可安全无缝地访问这些应用程序，以及 Microsoft 提供的 Office 365 和其他商务应用程序。 可以通过[自动执行用户预配](user-provisioning.md)来降低管理成本。 还可以使用多重身份验证和条件访问策略提供安全的应用程序访问。
 
 ![显示通过 Azure AD 进行联合的应用的关系图](media/what-is-application-management/app-management-overview.png)
 

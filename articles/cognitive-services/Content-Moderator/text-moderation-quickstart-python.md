@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 0fef3bffd30c19d0313e5fce7eb610ae7f6349f5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: bb0e44f83e2101a7b21e7b7ec6fdc75974c6d6d8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606997"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333609"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>快速入门：使用 Python 分析文本内容中是否存在令人反感的材料
 
@@ -38,41 +38,34 @@ pip install azure-cognitiveservices-vision-contentmoderator
 
 ## <a name="import-modules"></a>导入模块
 
-创建名为 ContentModeratorQS.py 的新 Python 脚本，并添加以下代码来导入 SDK 的必要部分  。
+创建名为 ContentModeratorQS.py 的新 Python 脚本，并添加以下代码来导入 SDK 的必要部分  。 包含了 pretty print 模块，以便更容易地读取 JSON 响应。
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=1-10)]
-
-另外，导入“pretty print”函数来处理最终输出。
-
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=12)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=imports)]
 
 
 ## <a name="initialize-variables"></a>初始化变量
 
-接下来，为内容审查器订阅密钥和终结点 URL 添加变量。 需将 `<your subscription key>` 替换为密钥的值。 可能还需更改 `endpoint_url` 的值，以便使用与订阅密钥对应的区域标识符。 免费试用订阅密钥在 **westus** 区域中生成。
+接下来，为内容审查器订阅密钥和终结点 URL 添加变量。 将名称 `CONTENT_MODERATOR_SUBSCRIPTION_KEY` 添加到环境变量中，并将订阅密钥作为其值。 对于基本终结点 URL，请将 `CONTENT_MODERATOR_ENDPOINT` 添加到环境变量，并将特定于区域的 URL 作为其值，例如 `https://westus.api.cognitive.microsoft.com`。 免费试用订阅密钥在 **westus** 区域中生成。
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=14-16)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=authentication)]
 
+将审查文件中的多行文本字符串。 将 [content_moderator_text_moderation.txt](https://github.com/Azure-Samples/cognitive-services-content-moderator-samples/blob/master/documentation-samples/python/content_moderator_text_moderation.txt) 文件包含到本地根文件夹中，并将其文件名添加到变量中：
 
-为简单起见，将直接从脚本中分析文本。 定义文本内容的一个新字符串进行审查：
-
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=18-21)]
-
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=textModerationFile)]
 
 ## <a name="query-the-moderator-service"></a>查询审查器服务
 
-使用订阅密钥和终结点 URL 创建 ContentModeratorClient 实例  。 然后，使用其成员 TextModerationOperations 实例调用审查 API  。 有关如何调用的详细信息，请参阅 **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** 参考文档。
+使用订阅密钥和终结点 URL 创建 ContentModeratorClient 实例  。 
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=client)]
 
-## <a name="print-the-response"></a>输出响应
+然后，使用客户端及其成员 **TextModerationOperations** 实例通过函数 `screen_text` 来调用审查 API。 有关如何调用的详细信息，请参阅 **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** 参考文档。
 
-最后，检查调用是否成功完成并返回“屏幕”实例  。 然后将返回的数据输出到控制台。
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=textModeration)]
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=38-39)]
+## <a name="check-the-printed-response"></a>检查输出的响应
 
-
-本快速入门中使用的示例文本的输出如下：
+运行示例并确认响应。 成功完成后，将返回 **Screen** 实例。 成功的结果如下所示：
 
 ```console
 {'auto_corrected_text': '" Is this a garbage email abide@ abed. com, phone: '

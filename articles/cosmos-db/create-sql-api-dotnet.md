@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
-ms.openlocfilehash: 1687a81952418c0b751fe0b9ec0ec560ae0b2b2b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c738b2d44c5faca1ef95b2da8fd1f90a1b3af919
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297618"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371024"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>快速入门：生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 资源
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 * 查询数据 
 * 删除数据库
 
-[API 参考文档](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-cosmos-dotnet-v3) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
+[API 参考文档](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-cosmos-dotnet-v3) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -126,9 +126,25 @@ dotnet add package Microsoft.Azure.Cosmos
 
 复制帐户的 URI 和主键以后，请将其保存到运行应用程序的本地计算机的新环境变量中   。 若要设置环境变量，请打开控制台窗口，并运行以下命令。 请确保替换 `<Your_Azure_Cosmos_account_URI>` 和 `<Your_Azure_Cosmos_account_PRIMARY_KEY>` 值。
 
+**Windows**
+
 ```console
-setx EndpointUrl <Your_Azure_Cosmos_account_URI>
-setx PrimaryKey <Your_Azure_Cosmos_account_PRIMARY_KEY>
+setx EndpointUrl "<Your_Azure_Cosmos_account_URI>"
+setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+```
+
+**Linux**
+
+```bash
+export EndpointUrl "<Your_Azure_Cosmos_account_URI>"
+export PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+```
+
+**MacOS**
+
+```bash
+export EndpointUrl "<Your_Azure_Cosmos_account_URI>"
+export PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 ```
 
  ## <a id="object-model"></a>对象模型
@@ -142,16 +158,17 @@ setx PrimaryKey <Your_Azure_Cosmos_account_PRIMARY_KEY>
 
 若要进一步了解不同实体的层次结构，请参阅[在 Azure Cosmos DB 中使用数据库、容器和项](databases-containers-items.md)。 使用以下 .NET 类与这些资源进行交互：
 
-* [CosmosClient]() - 此类为 Azure Cosmos DB 服务提供客户端逻辑表示。 此客户端对象用于对服务进行配置和执行请求。
+* [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient?view=azure-dotnet) - 此类为 Azure Cosmos DB 服务提供客户端逻辑表示。 此客户端对象用于对服务进行配置和执行请求。
 
-* [CreateDatabaseIfNotExistsAsync]() - 若数据库资源不存在，则此方法以异步操作的形式创建数据库资源；若数据库资源已存在，则此方法以异步操作的形式获取它。 
+* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet) - 若数据库资源不存在，则此方法以异步操作的形式创建数据库资源；若数据库资源已存在，则此方法以异步操作的形式获取它。 
 
-* [CreateContainerIfNotExistsAsync]() - 若容器不存在，则此方法以异步操作的形式创建容器；若容器已存在，则此方法以异步操作的形式获取它。 可查看响应中的状态代码，确定是新创建了容器 (201) 还是返回了现有容器 (200)。 
-* [CreateItemAsync]() - 此方法在容器中创建项。 
+* [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet) - 若容器不存在，则此方法以异步操作的形式创建容器；若容器已存在，则此方法以异步操作的形式获取它。 可查看响应中的状态代码，确定是新创建了容器 (201) 还是返回了现有容器 (200)。 
+* [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet) - 此方法在容器中创建项。 
 
-* [QueryItemsAsync]() - 运行查询以获取所需的项。 在此方法中传递 SQL 查询。 
+* [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet
+) - 此方法使用带有参数化值的 SQL 语句在 Azure Cosmos 数据库的容器下创建项查询。 
 
-* [DeleteAsync]() - 从 Azure Cosmos 帐户中删除指定的数据库。 `DeleteAsync` 方法只删除数据库。 应单独处理 `Cosmosclient` 实例（DeleteDatabaseandCleanupAsync 方法中如此操作）。 
+* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet) - 从 Azure Cosmos 帐户中删除指定的数据库。 `DeleteAsync` 方法只删除数据库。 应单独处理 `Cosmosclient` 实例（DeleteDatabaseandCleanupAsync 方法中如此操作）。 
 
  ## <a id="code-examples"></a>代码示例
 

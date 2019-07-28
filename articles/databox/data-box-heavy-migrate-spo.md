@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: d74539ec1de8f503b0d0e423adf6273d1422fed5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592335"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325273"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>使用 Azure Data Box Heavy 将文件共享内容迁移到 SharePoint Online
 
@@ -66,8 +66,8 @@ Microsoft Azure Data Box 服务可你通过 Microsoft Azure 门户订购设备�
 2. 收到 Data Box Heavy 后，[设置 Data Box Heavy](data-box-heavy-deploy-set-up.md)。 需要对设备的两个节点进行布线和配置。
 3. [将数据复制到 Azure Data Box Heavy](data-box-heavy-deploy-copy-data.md)。 复制时，请确保：
 
-    - 仅使用 Data Box Heavy 中的 *AzureFile* 文件夹来复制数据。 这是因为，数据最终会进入 Azure 文件共享，而不是进入块 Blob 或页 Blob。
-    - 将文件复制到“AzureFile”文件夹中的文件夹  。 *AzureFile* 文件夹中的子文件夹会创建文件共享。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传  。 这是要在下一步骤中装载到 VM 上的文件共享。
+    - 仅使用 Data Box Heavy 中的 StorageAccountName_AzFile  文件夹来复制数据。 这是因为，数据最终会进入 Azure 文件共享，而不是进入块 Blob 或页 Blob。
+    - 将文件复制到 StorageAccountName_AzFile  文件夹中的文件夹。 StorageAccountName_AzFile  文件夹中的子文件夹会创建文件共享。 直接复制到 StorageAccountName_AzFile 文件夹的文件会失败，并作为块 blob 上传  。 这是要在下一步骤中装载到 VM 上的文件共享。
     - 将数据复制到 Data Box Heavy 的两个节点。
 3. 在设备上运行[准备交付](data-box-heavy-deploy-picked-up.md#prepare-to-ship)。 成功完成准备交付过程可确保将文件成功上传到 Azure。
 4. [退回设备](data-box-heavy-deploy-picked-up.md#ship-data-box-heavy-back)。
@@ -75,7 +75,7 @@ Microsoft Azure Data Box 服务可你通过 Microsoft Azure 门户订购设备�
 
 ## <a name="use-spmt-to-migrate-data"></a>使用 SPMT 迁移数据
 
-收到 Azure 数据团队的已完成数据复制的确认后，接下来可以继续将数据迁移到 SharePoint Online。
+收到 Azure 数据团队的已完成数据复制的确认后，可以继续将数据迁移到 SharePoint Online。
 
 为获得最佳性能和连接性，我们建议创建一个 Azure 虚拟机 (VM)。
 

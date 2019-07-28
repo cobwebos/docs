@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/13/2019
+ms.date: 07/22/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: dabbefa8ca2073e30948f1c70782f730bceae030
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e98b159443cec868040298d76e87a8de6b507ae
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158098"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385095"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
 
@@ -91,7 +91,7 @@ ms.locfileid: "66158098"
 
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
 
-在 Microsoft.Network/loadBalancers 资源中配置负载均衡器。 为以下端口设置探测和规则：
+在 Microsoft.Network/loadBalancers  资源中配置负载均衡器。 为以下端口设置探测和规则：
 
 * 客户端连接终结点：19000
 * HTTP 网关终结点：19080
@@ -99,7 +99,7 @@ ms.locfileid: "66158098"
 * 应用程序端口：443
 * Service Fabric 反向代理：19081
 
-如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量。
+如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量   。
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>虚拟网络、子网和网络安全组
 
@@ -119,7 +119,7 @@ ms.locfileid: "66158098"
 * 应用程序端口范围：49152 到 65534（用于测试服务间的通信。 其他端口不会在负载平衡器上打开）。
 * 阻止其他所有端口
 
-如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量。
+如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量   。
 
 ### <a name="windows-defender"></a>Windows Defender
 默认情况下，[Windows Defender 防病毒程序](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)已安装在 Windows Server 2016 上并在其上运行。 用户界面默认安装在一些 SKU 上，但不是必需的。 对于在模板中声明的每个节点类型/VM 规模集，将会使用 [Azure VM 防病毒扩展](/azure/virtual-machines/extensions/iaas-antimalware-windows)排除 Service Fabric 目录和进程：
@@ -194,11 +194,11 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 > [!NOTE]
 > 对于区域云（例如，Azure 政府、Azure 中国、Azure 德国），请指定 `-Location` 参数。
 
-可在 [Azure 门户](https://portal.azure.com)中找到 *TenantId* 或目录 ID。 选择“Azure Active Directory” > “属性”并复制“目录 ID”值。
+可在 [Azure 门户](https://portal.azure.com)中找到 *TenantId* 或目录 ID。 选择“Azure Active Directory” > “属性”并复制“目录 ID”值    。
 
-将 ClusterName 用作脚本创建的 Azure AD 应用程序的前缀。 无需完全匹配实际的群集名称。 只是为了操作更加简便，可将 Azure AD 项目映射到正在使用的 Service Fabric 群集。
+将 ClusterName 用作脚本创建的 Azure AD 应用程序的前缀  。 无需完全匹配实际的群集名称。 只是为了操作更加简便，可将 Azure AD 项目映射到正在使用的 Service Fabric 群集。
 
-WebApplicationReplyUrl 是 Azure AD 在完成登录过程之后返回给用户的默认终结点。 将此终结点设置为群集的 Service Fabric Explorer 的终结点，默认值为：
+WebApplicationReplyUrl 是 Azure AD 在完成登录过程之后返回给用户的默认终结点  。 将此终结点设置为群集的 Service Fabric Explorer 的终结点，默认值为：
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
@@ -280,7 +280,7 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 
 上传和收集日志的方式之一是使用可将日志上传到 Azure 存储、也能选择发送日志到 Azure Application Insights 或事件中心的 Azure 诊断 (WAD) 扩展。 也可以使用外部进程读取存储中的事件，并将其放在分析平台产品（例如 Azure Monitor 日志或其他日志分析解决方案）中。
 
-如果是按照本教程执行的操作，则已在[模板][template] 中配置了诊断集合。
+如果是按照本教程执行的操作，则已在[模板][template]中配置了诊断集合。
 
 如果存在尚未部署诊断的现有群集，可以通过群集模板来添加或更新该扩展。 修改用于创建现有群集的资源管理器模板，或者从门户下载该模板。 执行以下任务来修改 template.json 文件：
 
@@ -332,7 +332,7 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 }
 ```
 
-下一步，将 IaaSDiagnostics 扩展名添加到群集中每个 Microsoft.Compute/virtualMachineScaleSets 资源的 VirtualMachineProfile 属性的扩展数组中。  如果使用的是[示例模板][template]，则有三个虚拟机规模集（每个节点类型对应集群中的一个规模集）。
+下一步，将 IaaSDiagnostics 扩展名添加到群集中每个 Microsoft.Compute/virtualMachineScaleSets 资源的 VirtualMachineProfile 属性的扩展数组中    。  如果使用的是[示例模板][template]，则有三个虚拟机规模集（群集中的每个节点类型对应一个规模集）。
 
 ```json
 "apiVersion": "2018-10-01",
@@ -412,7 +412,7 @@ EventStore 服务是 Service Fabric 中的监视选项。 EventStore 提供了�
 
 
 
-要在群集上启用 EventStore 服务，请将以下内容添加到 Microsoft.ServiceFabric/clusters 资源的 fabricSettings 属性中：
+要在群集上启用 EventStore 服务，请将以下内容添加到 Microsoft.ServiceFabric/clusters 资源的 fabricSettings 属性中   ：
 
 ```json
 "apiVersion": "2018-02-01",
@@ -444,7 +444,7 @@ EventStore 服务是 Service Fabric 中的监视选项。 EventStore 提供了�
 
 要监视群集级别的事件，建议使用 Azure Monitor 日志。 要设置 Azure Monitor 日志来监视群集，需要[启用诊断功能以查看群集级别事件](#configure-diagnostics-collection-on-the-cluster)。  
 
-需要将工作区连接到来自群集的诊断数据。  此日志数据存储在 applicationDiagnosticsStorageAccountName 存储帐户、WADServiceFabric*EventTable、WADWindowsEventLogsTable 和 WADETWEventTable 表中。
+需要将工作区连接到来自群集的诊断数据。  此日志数据存储在 applicationDiagnosticsStorageAccountName 存储帐户、WADServiceFabric*EventTable、WADWindowsEventLogsTable 和 WADETWEventTable 表中  。
 
 添加 Azure Log Analytics 工作区并将解决方案添加到该工作区：
 

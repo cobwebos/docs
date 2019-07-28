@@ -17,12 +17,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b5169d3f06e265b3effa3ec18ad8e4f69959d3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 328db116cebda5eb288f04cc89e2c85550c38083
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121957"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421188"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS 与 ADAL JS 的差异
 
@@ -59,13 +59,13 @@ ms.locfileid: "66121957"
 
     v2.0 协议在请求中使用范围而不是资源。 换而言之，当应用程序需要使用某个资源（例如 MS Graph）的权限请求令牌时，传递给库方法的值的差异如下：
 
-    v1.0：resource=https://graph.microsoft.com
+    v1.0：resource = https\://graph.microsoft.com
 
-    v2.0：scope = https://graph.microsoft.com/User.Read
+    v2.0：scope = https\://graph.microsoft.com/User.Read
 
     可以使用 API 的 URI 按“应用 ID URI/范围”格式请求任何资源 API 的范围。例如：https:\//mytenant.onmicrosoft.com/myapi/api.read
 
-    仅对于 MS Graph API 而言，范围值 `user.read` 将映射到 https://graph.microsoft.com/User.Read，并且两者可以换用。
+    仅对于 MS Graph API 而言，范围值 `user.read` 将映射到 https://graph.microsoft.com/User.Read ，并且两者可以换用。
 
     ```javascript
     var request = {

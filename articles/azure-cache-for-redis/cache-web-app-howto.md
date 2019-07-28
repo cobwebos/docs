@@ -15,28 +15,21 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: bac43ef17116dcb2d6a6bb3dd7c1617d91a010d9
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 7cca9d020d5e999bda2c494853295957da5cca1a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864820"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326500"
 ---
-# <a name="quickstart-create-an-aspnet-web-app"></a>快速入门：创建 ASP.NET Web 应用 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入门：将 Azure Redis 缓存与 ASP.NET Web 应用配合使用 
 
-## <a name="introduction"></a>介绍
-
-本快速入门展示了如何使用 Visual Studio 2019 创建 ASP.NET Web 应用程序并将其部署到 Azure 应用服务。 示例应用程序连接到 Azure Redis 缓存，以在缓存中存储并检索数据。 完成本快速入门后，Azure 中会托管一个正常运行的 Web 应用，该应用在 Azure Redis 缓存中读取和写入数据。
-
-![对完成的 Azure 项目进行简单测试](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+在本快速入门中，将使用 Visual Studio 2019 创建一个 ASP.NET Web 应用程序，该应用程序连接到 Azure Redis 缓存以存储和检索缓存中的数据。 然后，将该应用部署到 Azure 应用服务。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本快速入门，需使用以下环境安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)：
-* ASP.NET 和 Web 开发
-* Azure 开发
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/)，其中包含 **ASP.NET 和 Web 开发**以及 **Azure 开发**工作负载。
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 

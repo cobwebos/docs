@@ -3,17 +3,18 @@ title: 快速入门 - 在 Azure 中创建专用 Docker 注册表 - PowerShell
 description: 快速了解如何使用 PowerShell 在 Azure 中创建专用 Docker 容器注册表。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82771d005ce38972cdb1484a02e071a30e577a06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f99b4ee6dd11a109d1c563c84debc2157cb03337
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66152153"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309492"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用容器注册表
 
@@ -25,7 +26,7 @@ Azure 容器注册表是托管的专用 Docker 容器注册表服务，用于生
 
 本快速入门需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可确定已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
-还必须在本地安装 Docker。 Docker 提供的包适用于 [macOS][docker-mac]、[Windows][docker-windows] 和 [Linux][docker-linux] 系统。
+还必须在本地安装 Docker。 Docker 提供了适用于 [macOS][docker-mac], [Windows][docker-windows] 和 [Linux][ Docker - Linux] 系统的包。
 
 由于 Azure Cloud Shell 并不包括所有必需的 Docker 组件（`dockerd` 守护程序），因此不能将 Cloud Shell 用于本快速入门。
 
@@ -55,11 +56,11 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-本快速入门将创建一个“基本”注册表。该注册表已针对成本进行优化，是可供开发人员了解 Azure 容器注册表的选项。 有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+本快速入门将创建一个“基本”注册表。该注册表已针对成本进行优化，是可供开发人员了解 Azure 容器注册表的选项。  有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
 
 ## <a name="log-in-to-registry"></a>登录到注册表
 
-在推送和拉取容器映像之前，必须登录到注册表。 在生产方案中，应该使用个人标识或服务主体进行容器注册表访问，但为了简洁起见，本快速入门使用 [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] 命令在注册表上启用管理员用户：
+在推送和拉取容器映像之前，必须登录到注册表。 在生产方案中，应该使用个人标识或服务主体访问容器注册表，但为了简洁起见，本快速入门使用 [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] 命令在注册表上启用管理员用户：
 
 ```powershell
 $creds = Get-AzContainerRegistryCredential -Registry $registry
@@ -79,7 +80,7 @@ $creds.Password | docker login $registry.LoginServer -u $creds.Username --passwo
 
 ## <a name="clean-up-resources"></a>清理资源
 
-用完在本快速入门中创建的资源后，请通过 [Remove-AzResourceGroup][Remove-AzResourceGroup] 命令删除资源组、容器注册表以及其中存储的容器映像：
+用完在本快速入门中创建的资源后，请使用 [Remove-AzResourceGroup][Remove-AzResourceGroup] 命令删除资源组、容器注册表以及其中存储的容器映像：
 
 ```powershell
 Remove-AzResourceGroup -Name myResourceGroup

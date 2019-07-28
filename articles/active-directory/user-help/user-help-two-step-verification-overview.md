@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a38b91cd17e2107fe85bfc77da8ead86196173
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d33a18aaca923bd49858671546ab053cf3fb21a3
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174038"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382140"
 ---
 # <a name="two-step-verification-overview"></a>双重验证概述
 
@@ -30,9 +30,9 @@ ms.locfileid: "56174038"
 
 |文章 |说明 |
 |------|------------|
-|[设置体验](multi-factor-authentication-end-user-first-time.md) |介绍第一次时如何设置双重验证。|
-|[双重验证入门](multi-factor-authentication-end-user.md)|介绍双重验证的意义。| 
-|[如何登录](user-help-sign-in.md)|介绍如何使用指定的验证方法登录。|
-|[更改设置](multi-factor-authentication-end-user-manage-settings.md) |介绍如何更改设置，例如电话号码或首选的注册方法。|
-|[有关双重验证的帮助](multi-factor-authentication-end-user-troubleshoot.md) |介绍如何排查双重验证的常见问题。|
-|[管理应用密码](multi-factor-authentication-end-user-app-passwords.md) |介绍如何创建和使用应用密码。|
+| [设置体验](multi-factor-authentication-end-user-first-time.md) |介绍第一次时如何设置双重验证。|
+| [双重验证入门](multi-factor-authentication-end-user.md)介绍双重验证对你的意义。| 
+| [如何登录](user-help-sign-in.md)介绍如何使用指定的验证方法登录。|
+| [更改设置](multi-factor-authentication-end-user-manage-settings.md) |介绍如何更改设置，例如电话号码或首选的注册方法。|
+| [有关双重验证的帮助](multi-factor-authentication-end-user-troubleshoot.md) |介绍如何排查双重验证的常见问题。|
+| [管理应用密码](multi-factor-authentication-end-user-app-passwords.md) |介绍如何创建和使用应用密码。|

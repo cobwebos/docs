@@ -1,5 +1,5 @@
 ---
-title: 生成使用 Azure Active Directory 登录和注销的 AngularJS 单页应用 | Microsoft Docs
+title: 生成使用 Azure AD 登录和注销的 AngularJS 单页应用 | Microsoft Docs
 description: 了解如何生成一个与 Azure AD 集成以方便登录，并使用 OAuth 调用 Azure AD 保护 API 的 AngularJS 单页应用程序。
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1fdbcd04504181a20f5245b6f2378be5b9d405
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 20c62d379006382d4208e4b111202581bc75454f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001209"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380756"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>快速入门：生成使用 Azure Active Directory 登录和注销的 AngularJS 单页应用
 

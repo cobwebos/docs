@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Java 执行 Web 搜索 - 必应 Web 搜索 REST API
+title: 快速入门：使用 Java 调用必应 Web 搜索 REST API
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 Java 将请求发送到必应 Web 搜索 REST API，并接收 JSON 响应
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 07/22/2019
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 8282838f778516e31080960400e5b1435f0b5673
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: seodec2018, seo-java-july2019
+ms.openlocfilehash: 42cb270955846f1333b79389c3ca979dc4808f05
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57866320"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489633"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>快速入门：使用必应 Web 搜索 REST API 和 Java 搜索网页
 

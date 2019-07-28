@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2554501ecf6d4ef115e3283fa635c24510b8c797
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 728bf785edebcd17599b6a56edea1e26ed2d2fbc
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249585"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311796"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>将物理服务器或虚拟化服务器迁移到 Azure 
 
@@ -214,7 +214,7 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
 4. 将安装程序文件复制到要迁移的计算机。
 5. 确保已准备好在部署设备时生成的通行短语。
     - 将该通行短语存储在计算机上的某个临时文本文件中。
-    - 可在复制设备上获取通行短语。 在命令行中，运行 **C:\ProgramData\ASR\svsystems\bin\genpassphrase.exe -v** 查看当前的通行短语。
+    - 可在复制设备上获取通行短语。 在命令行中，运行 **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe -v** 查看当前的通行短语。
     - 不要重新生成通行短语。 否则会中断连接，并需要重新注册复制设备。
 
 

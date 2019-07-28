@@ -10,24 +10,24 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 43133810c6f8b7cb9fdacb2503103e09f345acfc
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 3da0e5bb9ecb8557ac8b51b3aa6faf60a52dddf9
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551175"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312114"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
-本快速入门介绍如何创建一个 Azure Databricks 工作区，并在该工作区中创建一个 Apache Spark 群集。 最后，介绍如何在 Databricks 群集中运行 Spark 作业。 有关 Azure Databricks 的详细信息，请参阅[什么是 Azure Databricks？](what-is-azure-databricks.md)
+在本快速入门中，将使用 Azure 门户创建一个具有 Apache Spark 群集的 Azure Databricks 工作区。 你在群集上运行作业，并使用自定义图表根据波士顿安全数据生成实时报告。
 
-在运行本快速入门所述的 Spark 作业期间，我们将通过分析波士顿安全数据，了解不同的报告方法。
+## <a name="prerequisites"></a>先决条件
 
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。 不能使用 Azure 免费试用订阅执行本教程。 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 

@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: a8857d62b3078d78bdd0a339ebadf766ddb2fb43
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 51d1af24a22f7ed86b01b1c7c79b204cd552a7ea
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295824"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385408"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建自动化任务、流程和工作流 - Visual Studio
 
@@ -64,6 +64,8 @@ ms.locfileid: "67295824"
   例如，对于 Dynamics CRM Online 连接，设计器会在 CRM 实例中检查默认属性和自定义属性。
 
 * 逻辑应用支持的（例如 Office 365 Outlook、Outlook.com 或 Gmail）电子邮件帐户。 至于其他提供商，请[查看此处的连接器列表](https://docs.microsoft.com/connectors/)。 本示例使用 Office 365 Outlook。 如果使用其他提供商，整个步骤仍然是相同的，但 UI 可能稍有不同。
+
+<a name="create-resource-group-project"></a>
 
 ## <a name="create-azure-resource-group-project"></a>创建 Azure 资源组项目
 
@@ -141,6 +143,8 @@ ms.locfileid: "67295824"
 
 1. 保存你的 Visual Studio 解决方案。 （键盘：Ctrl + S）
 
+<a name="deploy-to-Azure"></a>
+
 ## <a name="deploy-logic-app-to-azure"></a>将逻辑应用部署到 Azure
 
 必须先将逻辑应用从 Visual Studio 部署到 Azure，然后才能运行并测试逻辑应用。
@@ -173,6 +177,22 @@ ms.locfileid: "67295824"
    ![Outlook 针对每个新的 RSS 项发送电子邮件](./media/quickstart-create-logic-apps-with-visual-studio/outlook-email.png)
 
 祝贺你，你已使用 Visual Studio 成功生成并部署了逻辑应用。 若要管理逻辑应用并查看其运行历史记录，请参阅[使用 Visual Studio 管理逻辑应用](../logic-apps/manage-logic-apps-with-visual-studio.md)。
+
+## <a name="add-new-logic-app"></a>添加新逻辑应用
+
+如果你有现有的 Azure 资源组项目，则可以使用“JSON 大纲”窗口向该项目添加一个新的空白逻辑应用。
+
+1. 在“解决方案资源管理器”中，打开 `<logic-app-name>.json` 文件。
+
+1. 在“视图”  菜单中，选择“其他窗口”   > “JSON 大纲”  。
+
+1. 要将资源添加到模板文件，请在“JSON 大纲”窗口顶部选择“添加资源”  。 或者在“JSON 大纲”窗口中，右键单击“资源”  ，并选择“添加新资源”  。
+
+   ![“JSON 大纲”窗口](./media/quickstart-create-logic-apps-with-visual-studio/jsonoutline.png)
+
+1. 在“添加资源”  对话框中，找到并选择“逻辑应用”  。 为逻辑应用命名，并选择“添加”  。
+
+   ![添加资源](./media/quickstart-create-logic-apps-with-visual-studio/addresource.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

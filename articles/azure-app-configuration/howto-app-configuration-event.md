@@ -13,24 +13,20 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 2cb9ad28a21842987f8c0f7c75151ab8c7fe6fa0
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735806"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326604"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>快速入门：使用 Azure CLI 将 Azure 应用程序配置事件路由到 Web 终结点
 
-Azure 应用程序配置用户可以订阅每当键-值发生修改时发出的事件。 这些事件可以触发 Webhook、Azure Functions、Azure 存储队列，或 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/event-handlers)支持的任何其他事件处理程序。 本文将介绍如何使用 Azure CLI 订阅 Azure 应用程序配置事件。
+本快速入门介绍如何设置 Azure 应用程序配置事件订阅，以将键-值修改事件发送到 Web 终结点。 Azure 应用程序配置用户可以订阅每当键-值发生修改时发出的事件。 这些事件可以触发 Webhook、Azure Functions、Azure 存储队列，或 Azure 事件网格支持的任何其他事件处理程序。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
 
-通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
+## <a name="prerequisites"></a>先决条件
 
-完成本文所述步骤后，即可看到事件数据已发送到 Web 应用。
-
-![查看订阅事件](./media/quickstarts/event-grid/view-results.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+- Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。 可以选择使用 Azure Cloud Shell。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -144,3 +140,4 @@ az group delete --name <resource_group_name>
 
 - [对键-值事件作出反应](concept-app-configuration-event.md)
 - [关于事件网格](../event-grid/overview.md)
+- [Azure 事件网格处理程序](../event-grid/event-handlers.md)

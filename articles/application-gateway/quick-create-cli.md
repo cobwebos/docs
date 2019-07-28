@@ -1,23 +1,23 @@
 ---
 title: 快速入门 - 使用 Azure 应用程序网关定向 Web 流量 - Azure CLI | Microsoft Docs
-description: 了解如何使用 Azure CLI 创建 Azure 应用程序网关，用以将 Web 流量重定向到后端池中的虚拟机。
+description: 了解如何使用 Azure CLI 创建 Azure 应用程序网关，用以将 Web 流量定向到后端池中的虚拟机。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/8/2019
+ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 56b655b07314d5ebc2d0cb47389988f1a89e6a56
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: dd68f4a565c28f1dbac7e94442a8f8231af01328
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304332"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314895"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI
 
-本快速入门介绍如何使用 Azure CLI 创建应用程序网关。  创建应用程序网关后，请测试该网关以确保其正常运行。 使用 Azure 应用程序网关，可以为端口分配侦听器、创建规则以及向后端池添加资源，以便将应用程序 Web 流量定向到特定资源。 为简单起见，本文使用了带有公共前端 IP 的简单设置、在此应用程序网关上托管单个站点的基本侦听器、用于后端池的两台虚拟机以及基本请求传递规则。
+本快速入门介绍如何使用 Azure CLI 创建应用程序网关。  创建应用程序网关后，请测试该网关以确保其正常运行。 使用 Azure 应用程序网关，可以为端口分配侦听器、创建规则以及向后端池添加资源，以便将应用程序 Web 流量定向到特定资源。 本文使用一个简单的设置，其中包含一个公共前端 IP、一个在应用程序网关上托管单个站点的基本侦听器、两个用于后端池的虚拟机，以及一个基本请求传递规则。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -67,7 +67,7 @@ az network public-ip create \
 
 ### <a name="backend-servers"></a>后端服务器
 
-后端可以包含 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 在此示例中，将创建两个虚拟机，供 Azure 用作应用程序网关的后端服务器。 还可以在虚拟机上安装 IIS，以验证 Azure 是否已成功创建应用程序网关。
+后端可以具有 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 在此示例中，你将创建用作应用程序网关的后端服务器的两个虚拟机。 还会在虚拟机上安装 IIS 以测试应用程序网关。
 
 #### <a name="create-two-virtual-machines"></a>创建两个虚拟机
 
@@ -181,7 +181,7 @@ az network public-ip show \
     
 ![测试应用程序网关](./media/quick-create-cli/application-gateway-nginxtest.png)
 
-刷新浏览器时，会看到另一 VM 的名称。 有效响应将验证应用程序网关是否已成功创建，并且是否能够成功连接后端。
+刷新浏览器时，会看到另一 VM 的名称。 这表示应用程序网关创建成功，可以与后端连接。
 
 ## <a name="clean-up-resources"></a>清理资源
 

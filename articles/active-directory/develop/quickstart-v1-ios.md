@@ -1,5 +1,5 @@
 ---
-title: 生成一个 iOS 应用，使其与 Azure AD 集成以方便登录，并使用 OAuth 2.0 调用受保护的 API | Microsoft Docs
+title: 构建与 Azure AD 集成的 iOS 应用，以便使用 OAuth 2.0 登录 | Microsoft Docs
 description: 了解如何从 iOS 应用将用户登录并调用 Microsoft Graph API。
 services: active-directory
 documentationcenter: ios
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6274557ede35d7640eba37e5777cb0cb67d459a
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 8a82a7cad9b9176589824b6febb5cfdde89fce8a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497082"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380874"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>快速入门：从 iOS 应用将用户登录并调用 Microsoft Graph API
 

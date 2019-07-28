@@ -15,27 +15,21 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 73c14b3d3023dcca113589d63276216fcfdd17f1
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 70a8e4cd694a90e83bf78e00a7c725a8c887b2eb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513439"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324077"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>快速入门：将 Azure Redis 缓存与 Python 配合使用
 
-
-## <a name="introduction"></a>介绍
-
-本快速入门展示如何通过 Python 连接到 Azure Redis 缓存来从缓存中读取数据以及向其中写入数据。 
-
-![完成的 Python 测试](./media/cache-python-get-started/cache-python-completed.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+在本快速入门中，会将 Azure Redis 缓存合并到 Python 应用中，以便能够访问 Azure 中的任何应用程序都可以访问的安全专用缓存。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 安装有 [pip](https://pypi.org/project/pip/) 的 [Python 2 或 Python 3 环境](https://www.python.org/downloads/)。 
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- [Python 2 或 Python 3](https://www.python.org/downloads/)
 
 ## <a name="create-an-azure-cache-for-redis-on-azure"></a>在 Azure 上创建 Azure Redis 缓存
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -127,13 +121,10 @@ for c in result:
 
 片刻之后，将会删除该资源组及其包含的所有资源。
 
-
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [创建简单的使用 Azure Redis 缓存的 ASP.NET Web 应用。](./cache-web-app-howto.md)
-
-
 
 <!--Image references-->
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png

@@ -3,17 +3,18 @@ title: 教程 - 自动化容器映像生成 - Azure 容器注册表任务
 description: 本教程介绍如何配置一个 Azure 容器注册表任务，以便在向 Git 存储库提交源代码时在云中自动触发容器映像生成。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7a9a1e3d3c92f43d19a75e7cd0e10b3fd395a9b5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: ea3f4f295da747b3a53956c0888797a5f8607d6e
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545000"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310474"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时，在云中自动化容器映像生成
 
@@ -208,7 +209,7 @@ Run ID: da2 was successful after 27s
 
 通过手动运行任务对其进行测试后，可通过更改源代码手动触发该任务。
 
-首先，确保目录中包含[存储库][sample-repo]的本地克隆：
+首先，确保你位于包含[存储库][sample-repo]的本地克隆的目录中：
 
 ```azurecli-interactive
 cd acr-build-helloworld-node

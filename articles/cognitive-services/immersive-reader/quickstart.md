@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 3b408de6b60e7e7704ee228b52c399e5b80e3a9e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 6386c22044483a0ac4a324397cf2f9d22e83b579
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718417"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442863"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>快速入门：创建用于启动沉浸式阅读器的 Web 应用 (C#)
 
@@ -28,7 +28,7 @@ ms.locfileid: "67718417"
 ## <a name="prerequisites"></a>先决条件
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads)
-* 沉浸式阅读器的订阅密钥。 按照[这些说明](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)获取一个订阅密钥。
+* 为 Azure Active Directory (Azure AD) 身份验证配置的沉浸式阅读器资源。 按照[这些说明](./azure-active-directory-authentication.md)进行设置。 在配置示例项目属性时，将需要在此处创建的一些值。 将会话的输出保存到文本文件中，以供将来参考。
 
 ## <a name="create-a-web-app-project"></a>创建 Web 应用项目
 
@@ -38,64 +38,117 @@ ms.locfileid: "67718417"
 
 ![新建 ASP.NET Core Web 应用程序](./media/vsmvc.png)
 
-## <a name="acquire-an-access-token"></a>获取访问令牌
+## <a name="acquire-an-azure-ad-authentication-token"></a>获取 Azure AD 身份验证令牌
 
-在下一步中，需要订阅密钥和终结点。 可以在 Azure 门户中的沉浸式阅读器资源的“秘钥”页中找到订阅密钥。 可以在“概述”页中找到终结点。
+此部分需要来自上面的 Azure AD 身份验证配置先决条件步骤的一些值。 请回头参考保存的该会话的文本文件。
 
-右键单击_解决方案资源管理器_中的项目，然后选择“管理用户机密”  。 这将打开一个名为 _secrets.json_ 的文件。 将该文件的内容替换为以下内容，并在适当的位置提供订阅密钥和终结点。
+````text
+TenantId     => Azure subscription TenantId
+ClientId     => Azure AD ApplicationId
+ClientSecret => Azure AD Application Service Principal password
+Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
+````
+
+右键单击_解决方案资源管理器_中的项目，然后选择“管理用户机密”  。 这将打开一个名为 _secrets.json_ 的文件。 将该文件的内容替换为以下内容，提供上面的自定义属性值。
 
 ```json
 {
-  "SubscriptionKey": YOUR_SUBSCRIPTION_KEY,
-  "Endpoint": YOUR_ENDPOINT
+  "TenantId": YOUR_TENANT_ID,
+  "ClientId": YOUR_CLIENT_ID,
+  "ClientSecret": YOUR_CLIENT_SECRET,
+  "Subdomain": YOUR_SUBDOMAIN
 }
 ```
 
-打开 _Controllers\HomeController.cs_，并使用以下代码替换 `HomeController` 类。
+打开 _Controllers\HomeController.cs_，并使用以下代码替换该文件。
 
 ```csharp
-public class HomeController : Controller
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+
+namespace QuickstartSampleWebApp.Controllers
 {
-    private readonly string SubscriptionKey;
-    private readonly string Endpoint;
-
-    public HomeController(Microsoft.Extensions.Configuration.IConfiguration configuration)
+    public class HomeController : Controller
     {
-        SubscriptionKey = configuration["SubscriptionKey"];
-        Endpoint = configuration["Endpoint"];
+        private readonly string TenantId;     // Azure subscription TenantId
+        private readonly string ClientId;     // Azure AD ApplicationId
+        private readonly string ClientSecret; // Azure AD Application Service Principal password
+        private readonly string Subdomain;    // Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
 
-        if (string.IsNullOrEmpty(Endpoint) || string.IsNullOrEmpty(SubscriptionKey))
+        public HomeController(Microsoft.Extensions.Configuration.IConfiguration configuration)
         {
-            throw new ArgumentNullException("Endpoint or subscriptionKey is null!");
-        }
-    }
+            TenantId = configuration["TenantId"];
+            ClientId = configuration["ClientId"];
+            ClientSecret = configuration["ClientSecret"];
+            Subdomain = configuration["Subdomain"];
 
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-    [Route("token")]
-    public async Task<string> Token()
-    {
-        return await GetTokenAsync();
-    }
-
-    /// <summary>
-    /// Exchange your Azure subscription key for an access token
-    /// </summary>
-    private async Task<string> GetTokenAsync()
-    {
-        using (var client = new System.Net.Http.HttpClient())
-        {
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", SubscriptionKey);
-            using (var response = await client.PostAsync(Endpoint, null))
+            if (string.IsNullOrWhiteSpace(TenantId))
             {
-                return await response.Content.ReadAsStringAsync();
+                throw new ArgumentNullException("TenantId is null! Did you add that info to secrets.json?");
             }
+
+            if (string.IsNullOrWhiteSpace(ClientId))
+            {
+                throw new ArgumentNullException("ClientId is null! Did you add that info to secrets.json?");
+            }
+
+            if (string.IsNullOrWhiteSpace(ClientSecret))
+            {
+                throw new ArgumentNullException("ClientSecret is null! Did you add that info to secrets.json?");
+            }
+
+            if (string.IsNullOrWhiteSpace(Subdomain))
+            {
+                throw new ArgumentNullException("Subdomain is null! Did you add that info to secrets.json?");
+            }
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [Route("subdomain")]
+        public string GetSubdomain()
+        {
+            return Subdomain;
+        }
+
+        [Route("token")]
+        public async Task<string> GetToken()
+        {
+            return await GetTokenAsync();
+        }
+
+        /// <summary>
+        /// Get an Azure AD authentication token
+        /// </summary>
+        private async Task<string> GetTokenAsync()
+        {
+            string authority = $"https://login.windows.net/{TenantId}";
+            const string resource = "https://cognitiveservices.azure.com/";
+
+            AuthenticationContext authContext = new AuthenticationContext(authority);
+            ClientCredential clientCredential = new ClientCredential(ClientId, ClientSecret);
+
+            AuthenticationResult authResult = await authContext.AcquireTokenAsync(resource, clientCredential);
+
+            return authResult.AccessToken;
         }
     }
 }
+```
+
+## <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>添加 Microsoft.IdentityModel.Clients.ActiveDirectory NuGet 包
+
+上面的代码使用 **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet 包中的对象，因此需要在项目中添加对该包的引用。
+
+从“工具”->“NuGet 包管理器”->“包管理器控制台”  打开 NuGet 包管理器控制台，然后键入以下内容：
+
+```powershell
+    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 5.1.0
 ```
 
 ## <a name="add-sample-content"></a>添加示例内容
@@ -111,9 +164,9 @@ public class HomeController : Controller
 <div class='immersive-reader-button' data-button-style='iconAndText' onclick='launchImmersiveReader()'></div>
 
 @section scripts {
-<script type='text/javascript' src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.1.js'></script>
-<script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-<script type='text/javascript'>
+    <script type='text/javascript' src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js'></script>
+    <script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script type='text/javascript'>
     function getImmersiveReaderTokenAsync() {
         return new Promise((resolve) => {
             $.ajax({
@@ -121,6 +174,18 @@ public class HomeController : Controller
                 type: 'GET',
                 success: token => {
                     resolve(token);
+                }
+            });
+        });
+    }
+
+    function getSubdomainAsync() {
+        return new Promise((resolve) => {
+            $.ajax({
+                url: '/subdomain',
+                type: 'GET',
+                success: subdomain => {
+                    resolve(subdomain);
                 }
             });
         });
@@ -136,9 +201,11 @@ public class HomeController : Controller
         };
 
         const token = await getImmersiveReaderTokenAsync();
-        ImmersiveReader.launchAsync(token, content, { uiZIndex: 1000000 });
+        var subdomain = await getSubdomainAsync();
+
+        ImmersiveReader.launchAsync(token, subdomain, content, { uiZIndex: 1000000 });
     }
-</script>
+    </script>
 }
 ```
 

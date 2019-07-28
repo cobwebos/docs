@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a99488025dc79a16006af4088555a67b23704cb1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fd89d70bfe7a7f5e72e7fcabe167bafac5777672
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162809"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382254"
 ---
 # <a name="manage-my-devices-overview"></a>设备管理概述
 
@@ -28,5 +28,5 @@ ms.locfileid: "56162809"
 
 |文章 |说明 |
 |------|------------|
-|[加入工作设备](user-help-join-device-on-network.md)|了解如何将工作专用设备加入组织的网络。|
-|[注册个人设备](user-help-register-device-on-network.md)|了解如何在组织的网络上注册个人设备。|
+| [加入工作设备](user-help-join-device-on-network.md)了解如何将工作专用设备加入组织的网络。|
+| [注册个人设备](user-help-register-device-on-network.md)了解如何在组织的网络上注册个人设备。|

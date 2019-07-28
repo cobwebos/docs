@@ -1,7 +1,7 @@
 ---
-title: 快速入门：提取手写文本 - REST、C#
+title: 快速入门：提取印刷体文本和手写文本 - REST、C#
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用计算机视觉 API 和 C# 从图像中提取手写文本。
+description: 在本快速入门中，你将使用计算机视觉 API 和 C# 从图像中提取印刷体文本和手写文本。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 04c3c255e4218ef2fcd0bbd1d33da1abe3fc0c7f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7646a079d9cbc2f6362a38c5ac12371d3f32d4e5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604476"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312021"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>快速入门：使用计算机视觉 REST API 和 C# 提取手写文本
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>快速入门：使用计算机视觉 REST API 和 C# 提取印刷体文本和手写文本
 
-在本快速入门中，你将使用计算机视觉的 REST API 从图像中提取手写文本。 使用[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API 和[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API，可以检测图像中的手写文本，并将识别的字符提取到计算机可读的字符流中。
+在本快速入门中，你将使用计算机视觉 REST API 从图像中提取印刷体文本和/或手写文本。 使用[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)和[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法，可以检测图像中的文本，并将识别的字符提取到计算机可读的字符流中。 该 API 将确定用于每行文本的识别模型，因此它支持同时包含印刷体文本和手写文本的图像。
 
 > [!IMPORTANT]
-> 不同于 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 但是，读取方法返回 `Operation-Location` 响应标头字段中的 URI。 然后就可以调用此 URI，它表示[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法，以便检查状态并返回批量读取方法调用的结果。
+> [批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 但是，读取方法返回 `Operation-Location` 响应标头字段中的 URI。 然后就可以使用此 URI，它表示[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法，以便检查状态并返回批量读取方法调用的结果。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
 
@@ -77,16 +77,16 @@ namespace CSHttpClientSample
         static void Main()
         {
             // Get the path and filename to process from the user.
-            Console.WriteLine("Handwriting Recognition:");
+            Console.WriteLine("Text Recognition:");
             Console.Write(
-                "Enter the path to an image with handwritten text you wish to read: ");
+                "Enter the path to an image with text you wish to read: ");
             string imageFilePath = Console.ReadLine();
 
             if (File.Exists(imageFilePath))
             {
                 // Call the REST API method.
                 Console.WriteLine("\nWait a moment for the results to appear.\n");
-                ReadHandwrittenText(imageFilePath).Wait();
+                ReadText(imageFilePath).Wait();
             }
             else
             {
@@ -97,11 +97,11 @@ namespace CSHttpClientSample
         }
 
         /// <summary>
-        /// Gets the handwritten text from the specified image file by using
+        /// Gets the text from the specified image file by using
         /// the Computer Vision REST API.
         /// </summary>
-        /// <param name="imageFilePath">The image file with handwritten text.</param>
-        static async Task ReadHandwrittenText(string imageFilePath)
+        /// <param name="imageFilePath">The image file with text.</param>
+        static async Task ReadText(string imageFilePath)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace CSHttpClientSample
 
                 HttpResponseMessage response;
 
-                // Two REST API methods are required to extract handwritten text.
+                // Two REST API methods are required to extract text.
                 // One method to submit the image for processing, the other method
                 // to retrieve the text found in the image.
 
@@ -161,9 +161,9 @@ namespace CSHttpClientSample
                 // If the first REST API method completes successfully, the second 
                 // REST API method retrieves the text written in the image.
                 //
-                // Note: The response may not be immediately available. Handwriting
+                // Note: The response may not be immediately available. Text
                 // recognition is an asynchronous operation that can take a variable
-                // amount of time depending on the length of the handwritten text.
+                // amount of time depending on the length of the text.
                 // You may need to wait or retry this operation.
                 //
                 // This example checks once per second for ten seconds.

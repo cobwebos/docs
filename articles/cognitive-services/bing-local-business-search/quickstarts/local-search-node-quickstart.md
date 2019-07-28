@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Node.js 将查询发送到必应当地企业搜索 API | Microsoft Docs
+title: 快速入门 - 使用 Node.js 将查询发送到必应当地企业搜索 API
 titleSuffix: Azure Cognitive Services
 description: 开始在 Node 中使用必应当地企业搜索 API。
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 07b238f900a7f0ba15ad7b37ba7e194567fa0f6a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 0c91a66539bc276fdf2e6e4056f3b67f770398b8
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592707"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423338"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>快速入门：使用 Node.js 将查询发送到必应当地企业搜索 API
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5c689c6624a47a01e8e85c8aec33b956459981f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f631a641ab63d33d27d1e4520a000b4b01132be
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095370"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478571"
 ---
 # <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>教程：将 OutSystems Azure AD 与 Azure Active Directory 集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "67095370"
 
 ### <a name="configure-outsystems-azure-ad"></a>配置 OutSystems Azure AD
 
-若要在 **OutSystems** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [OutSystems 支持团队](mailto:support@outsystems.com)  。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 OutSystems 端配置单一登录，需要下载 [IdP forge](https://www.outsystems.com/forge/component-overview/599/idp) 组件，并按照[说明](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Configure_your_application_to_use_IdP_connector)中所述对其进行配置。 安装该组件并进行必要的代码更改后，按照以下[说明](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Azure_AD_.2F_ADFS)，通过从 Azure 门户下载联合元数据 XML 并通过 OutSystems IDP 组件上传来配置 Azure AD。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -135,7 +135,7 @@ ms.locfileid: "67095370"
 
 ### <a name="create-outsystems-azure-ad-test-user"></a>创建 OutSystems Azure AD 测试用户
 
-在本部分中，将在 OutSystems 中创建一个名为 Britta Simon 的用户。 OutSystems 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 OutSystems 中尚不存在用户，则会在身份验证后创建一个新用户。
+在本部分中，将在 OutSystems 中创建一个名为 B.Simon 的用户。 OutSystems 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 OutSystems 中尚不存在用户，则会在身份验证后创建一个新用户。
 
 ### <a name="test-sso"></a>测试 SSO
 

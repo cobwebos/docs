@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 607e5aded52375190878de6b48ffa4aa2ab49767
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c7d6116ed2925e57f094a67f27a11f9e2d61831
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104085"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499247"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>教程：Azure Active Directory 与 DocuSign 的集成
 
@@ -47,7 +47,7 @@ ms.locfileid: "67104085"
 
 * DocuSign 支持 **SP** 发起的 SSO
 
-* DocuSign 支持**实时**用户预配
+* DocuSign 支持[自动用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)
 
 ## <a name="adding-docusign-from-the-gallery"></a>从库中添加 DocuSign
 

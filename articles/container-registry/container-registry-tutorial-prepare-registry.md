@@ -3,17 +3,18 @@ title: 教程 - 在 Azure 中创建异地复制的 Docker 注册表
 description: 创建 Azure 容器注册表，配置异地复制，准备 Docker 映像，并将该映像部署到注册表。 由三个部分构成的系列教程的第一部分。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 87746bd39e624699612bf5221258ad757cd462b3
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533658"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309571"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教程：准备异地复制的 Azure 容器注册表
 
@@ -43,7 +44,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 登录到 [Azure 门户](https://portal.azure.com)。
 
-选择“创建资源” > “容器” > “Azure 容器注册表”。
+选择“创建资源” > “容器” > “Azure 容器注册表”。   
 
 ![在 Azure 门户中创建容器注册表][tut-portal-01]
 
@@ -55,7 +56,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 * **管理员用户**：`Enable`（用于容器的 Web 应用需使用此帐户来提取映像）
 * **SKU**：`Premium`（异地复制需要此项设置）
 
-选择“创建”，部署 ACR 实例。
+选择“创建”，部署 ACR 实例  。
 
 ![在 Azure 门户中创建容器注册表][tut-portal-02]
 
@@ -69,7 +70,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 获取高级注册表后，可以配置异地复制。 Web 应用（在下一篇教程中，会将其配置为在两个区域中运行）可从最靠近的注册表中提取其容器映像。
 
-在 Azure 门户中导航到新的容器注册表，选择“服务”下面的“复制项”：
+在 Azure 门户中导航到新的容器注册表，选择“服务”下面的“复制项”：  
 
 ![Azure 门户容器注册表 UI 中的“复制项”][tut-portal-03]
 
@@ -77,11 +78,11 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
  ![Azure 门户中的区域地图][tut-map-01]
 
-选择注册表对应的绿色六边形将它复制到“美国东部”区域，然后选择“创建复制项”下面的“创建”：
+选择注册表对应的绿色六边形将它复制到“美国东部”区域，然后选择“创建复制项”下面的“创建”：  
 
  ![Azure 门户中的“创建复制项”UI][tut-portal-04]
 
-完成复制后，门户会显示两个区域的“就绪”状态。 使用“刷新”按钮刷新复制状态；创建并同步副本可能需要大约一分钟时间。
+完成复制后，门户会显示两个区域的“就绪”状态。  使用“刷新”按钮刷新复制状态；创建并同步副本可能需要大约一分钟时间。 
 
 ![Azure 门户中的复制状态 UI][tut-portal-05]
 
@@ -114,7 +115,7 @@ cd acr-helloworld
 
 ## <a name="update-dockerfile"></a>更新 Dockerfile
 
-示例中包含的 Dockerfile 演示如何生成容器。 它首先创建一个正式的 [aspnetcore][dockerhub-aspnetcore] 映像，将应用程序文件复制到容器，安装依赖项，使用正式的 [aspnetcore-build][dockerhub-aspnetcore-build] 映像编译输出，最后生成优化的 aspnetcore 映像。
+示例中包含的 Dockerfile 演示如何生成容器。 它从一个正式的 [aspnetcore][dockerhub-aspnetcore]image, copies the application files into the container, installs dependencies, compiles the output using the official [aspnetcore-build][dockerhub-aspnetcore-build] 映像开始，最后生成优化的 aspnetcore 映像。
 
 在克隆的源中，[Dockerfile][dockerfile] 位于 `./AcrHelloworld/Dockerfile`。
 
@@ -160,7 +161,7 @@ AcrLoginServer
 uniqueregistryname.azurecr.io
 ```
 
-接下来，使用注册表登录服务器的 FQDN 更新 `ENV DOCKER_REGISTRY` 行。 本示例体现了示例注册表名称，uniqueregistryname：
+接下来，使用注册表登录服务器的 FQDN 更新 `ENV DOCKER_REGISTRY` 行。 本示例体现了示例注册表名称，uniqueregistryname  ：
 
 ```Dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
@@ -209,7 +210,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-由于已经为异地复制配置了注册表，因此，使用这一条 `docker push` 命令，即可将映像自动复制到“美国西部”和“美国东部”区域。
+由于已经为异地复制配置了注册表，因此，使用这一条 `docker push` 命令，即可将映像自动复制到“美国西部”和“美国东部”区域。  
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

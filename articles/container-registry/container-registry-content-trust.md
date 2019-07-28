@@ -3,16 +3,17 @@ title: Azure 容器注册表中的内容信任
 description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取签名的映像。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: ca9ef32a830f56edb471256b3b9175ba0fbec51d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d2132f060076aefe6ae0eccb6d5300c78c96ece5
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65069229"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356551"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
@@ -173,7 +174,7 @@ No valid trust data for unsigned
 ~/.docker/trust/private
 ```
 
-请备份根密钥和存储库密钥，方法是先在存档中将其压缩，然后将其安全地进行脱机存储（例如存储在 USB 存储设备上）。 例如，在 Bash 中执行以下代码：
+通过将根密钥和存储库密钥压缩到存档中并将其存储在安全位置来备份它们。 例如，在 Bash 中执行以下代码：
 
 ```bash
 umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; umask 022
@@ -194,7 +195,9 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 
 ## <a name="next-steps"></a>后续步骤
 
-有关内容信任的其他信息，请参阅 [Docker 中的内容信任][docker-content-trust]。 虽然本文介绍了一些要点，但内容信任是一个范围广泛的主题，若要深入进行了解，请查看 Docker 文档。
+* 有关内容信任的其他信息，请参阅 [Docker 中的内容信任][docker-content-trust]。 虽然本文介绍了一些要点，但内容信任是一个范围广泛的主题，若要深入进行了解，请查看 Docker 文档。
+
+* 有关在生成和推送 Docker 映像时使用内容信任的示例，请参阅 [Azure Pipelines](/azure/devops/pipelines/build/content-trust) 文档。
 
 <!-- IMAGES> -->
 [content-trust-01-portal]: ./media/container-registry-content-trust/content-trust-01-portal.png

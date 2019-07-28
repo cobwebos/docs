@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/09/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3de6a2cbdfe7a6d006a3bbfab16792376eda0d07
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 466660a1e064ef41eb330b36107dbdcb1d097498
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702534"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477306"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>快速入门：向 Azure Active Directory 租户添加应用程序
 
@@ -137,9 +137,8 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已了解如何将库应用程序添加到 Azure AD 租户， 以及如何编辑应用程序的属性。
+现在你已将应用程序添加到 Azure AD 组织，请[选择要使用的单一登录方法](what-is-single-sign-on.md#choosing-a-single-sign-on-method)，并参考下面的相应文章：
 
-现在，可以配置进行单一登录的应用程序了。
-
-> [!div class="nextstepaction"]
-> [配置单一登录](configure-single-sign-on-portal.md)
+- [配置基于 SAML 的单一登录](configure-single-sign-on-non-gallery-applications.md)
+- [配置密码单一登录](configure-password-single-sign-on-non-gallery-applications.md)
+- [配置链接登录](configure-linked-sign-on.md)

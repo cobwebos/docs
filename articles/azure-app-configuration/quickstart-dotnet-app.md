@@ -14,24 +14,22 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: f5837e06f347a4f822ac007dfe54c99fc7457dbb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 8aa8c8132220965d55097c4fed8ba1b2e9501301
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872978"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326527"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 .NET Framework 应用
 
-Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码即可在一个位置轻松存储和管理所有应用程序设置。 本快速入门将介绍如何将服务合并到基于 .NET Framework 的Windows 桌面控制台应用。
-
-![在本地完成该快速入门](./media/quickstarts/dotnet-fx-app-run.png)
+在本快速入门中，会将 Azure 应用程序配置合并到基于 .NET Framework 的控制台应用中，以集中存储和管理与代码分离的应用程序设置。
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成此快速入门，请安装 [Visual Studio 2019](https://visualstudio.microsoft.com/vs) 和 [.NET Framework 4.7.1](https://dotnet.microsoft.com/download) 或更高版本（如果尚未安装）。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
+- [.NET Framework 4.7.1](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 

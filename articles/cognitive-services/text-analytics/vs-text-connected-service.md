@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 75228b8c939cb5b8dd04471662ba86b46cfc808c
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ff4c703070d6a7ebd545de3043e5f59b764fe4c9
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860481"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478460"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>教程：使用 Visual Studio 中连接服务连接到文本分析服务
 
@@ -32,7 +32,7 @@ ms.locfileid: "65860481"
 
 ## <a name="add-support-to-your-project-for-the-text-analytics-service"></a>添加对文本分析服务项目的支持
 
-1. 新建一个名为 TextAnalyticsDemo 的 ASP.NET Core Web 项目。 使用具有所有默认设置的 Web 应用程序（模型 - 视图 - 控制器）项目模板。 有必要将项目命名为 MyWebApplication；这样，将代码复制到项目中时，命名空间会匹配。  本文中的示例使用 MVC，但文本分析连接服务可与任何 ASP.NET 项目类型一起使用。
+1. 新建一个名为 TextAnalyticsDemo 的 ASP.NET Core Web 项目。 使用具有所有默认设置的 Web 应用程序（模型 - 视图 - 控制器）项目模板。 有必要将项目命名为 MyWebApplication；这样，将代码复制到项目中时，命名空间会匹配。  本文中的示例使用 MVC，但你可以将文本分析连接服务与任何 ASP.NET 项目类型一起使用。
 
 1. 在解决方案资源管理器中，双击“连接服务”项   。
    此时显示“连接服务”页，其中包含可添加到项目的服务。
@@ -54,7 +54,7 @@ ms.locfileid: "65860481"
    请单击链接，查看定价层的详细信息。
 
 1. 选择“添加”以添加对连接服务的支持  。
-   Visual Studio 会修改项目来添加 NuGet 包、配置文件条目和其他更改，以支持与文本分析服务的连接。 “输出窗口”显示项目发生情况的日志  。 会看到下面这样的内容：
+   Visual Studio 会修改项目来添加 NuGet 包、配置文件条目和其他更改，以支持与文本分析服务的连接。 “输出窗口”显示项目发生情况的日志  。 输出应如下所示：
 
    ```output
     [6/1/2018 3:04:02.347 PM] Adding Text Analytics to the project.
@@ -90,7 +90,7 @@ ms.locfileid: "65860481"
       }
    ```
 
-1. 在“控制器”文件夹中添加一个名为 DemoTextAnalyzeController 的类文件，并使用以下代码替换其内容：
+1. 在“控制器”  文件夹中添加一个名为 `DemoTextAnalyzeController` 的类文件，并将其内容替换为以下代码：
 
     ```csharp
     using System;
@@ -153,7 +153,7 @@ ms.locfileid: "65860481"
     }
     ```
     
-    该代码包含 GetTextAnalyzeClient 和一个请求处理程序，前者获取可用于调用文本分析 API 的客户端对象，后者用于在给定文本上调用 DetectLanguage。
+    该代码包括 `GetTextAnalyzeClient` 以获取用于调用文本分析 API 的客户端对象，以及一个对给定文本调用 DetectLanguage 的请求处理程序。
 
 1. 添加上述代码使用的 MyHandler 帮助程序类。
 
@@ -171,7 +171,7 @@ ms.locfileid: "65860481"
         }
     ```
 
-1. 在“模型”文件夹中，为模型添加一个类。
+1. 在“模型”  文件夹中，为模型添加一个类。
 
     ```csharp
     using System;

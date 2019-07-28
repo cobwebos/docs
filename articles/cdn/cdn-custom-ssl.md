@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/17/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 9cc18c7442a55c14ad759201aaf195d2d1bf3309
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f22273a28d5e4207712bdba71ef788629d51916e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594047"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321667"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
 
@@ -190,15 +190,11 @@ CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* �
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>自定义域未映射到 CDN 终结点
 
 >[!NOTE]
->如果使用 **Akamai 的 Azure CDN** 配置文件，则目前不能对自定义域所有权进行电子邮件验证。 如果使用的是 **Akamai 的 Azure CDN**，则必须按上面所述使用 CNAME 记录将自定义域映射到 CDN 终结点。  此功能目前尚未完成。 
+>如果使用的是 **Akamai 的 Azure CDN**，则必须按上面所述使用 CNAME 记录将自定义域映射到 CDN 终结点。  此功能目前尚未完成。 
 
 如果 CNAME 记录条目包含 cdnverify 子域，请按照此步骤中的其余说明进行操作。
 
-在自定义域上提交启用 HTTPS 的请求后，DigiCert CA 会根据域的 [WHOIS](http://whois.domaintools.com/) 注册者信息，通过联系域的注册者来验证域的所有权。 通过 WHOIS 注册中列出的电子邮件地址（默认）或电话号码进行联系。 必须先完成域验证，才能在自定义域上激活 HTTPS。 可在 6 个工作日内批准域。 自动取消 6 个工作日内未批准的请求。 
-
-![WHOIS 记录](./media/cdn-custom-ssl/whois-record.png)
-
-DigiCert 还会将验证电子邮件发送到其他电子邮件地址。 如果 WHOIS 注册信息属于隐私，请验证是否可直接从以下任一地址进行审批：
+DigiCert 会向以下电子邮件地址发送验证电子邮件。 请验证是否可直接从以下地址之一进行审批：
 
 admin@&lt;your-domain-name.com&gt;  
 administrator@&lt;your-domain-name.com&gt;  
@@ -206,7 +202,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;your-domain-name.com&gt;  
 
-应会在几分钟内收到如以下所示的电子邮件，要求你批准请求。 如果使用垃圾邮件筛选，请将 admin@digicert.com 添加到允许列表。 如果未在 24 小时内收到电子邮件，请与 Microsoft 支持部门联系。
+应会在几分钟内收到如以下所示的电子邮件，要求你批准请求。 如果使用垃圾邮件筛选，请将 verification@digicert.com 添加到允许列表。 如果未在 24 小时内收到电子邮件，请与 Microsoft 支持部门联系。
     
 ![域验证电子邮件](./media/cdn-custom-ssl/domain-validation-email.png)
 

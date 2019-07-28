@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 颜色, RGB, IMU, 麦克风, 阵列
-ms.openlocfilehash: d0b01f798c57ce5727491fa15ac87a34f3ec1c8d
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 563225083acb0bc0eec0041b541a9e2e1717d42f
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509487"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334584"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK 硬件规格 
 
@@ -78,7 +78,7 @@ Azure Kinect DK 包含 OV12A10 12MP CMOS 滚动快门传感器。 下面列出�
 |       4096x3072                          |          4:3           |          MJPEG             |          0、5、15           |          90°x74.3°                            |
 |       2048x1536                          |          4:3           |          MJPEG             |          0、5、15、30       |          90°x74.3°                            |
 
-RGB 相机与 USB 视频类兼容，可以在未安装传感器 SDK 的情况下使用。
+RGB 相机与 USB 视频类兼容，可以在未安装传感器 SDK 的情况下使用。 RGB 相机颜色空间：BT.601 全范围 [0..255]。 
 
 > [!NOTE]
 > 传感器 SDK 能够以 BGRA 像素格式提供彩色图像。 这并非设备支持的本机模式，如果使用，会导致 CPU 负载增大。 主机 CPU 用于转换从设备收到的 MJPEG 图像。

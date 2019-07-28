@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: c8c99d976f416d0c1d07fb3a266d37ecd6235fdb
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: fef551c254eb4fa212333a55bde3d642645a16b6
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295359"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489811"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>教程：在 HDInsight 中使用 Azure 事件中心和 Apache Spark 处理推文
 
@@ -46,9 +46,9 @@ ms.locfileid: "67295359"
 
     |属性 |值 |
     |---|---|
-    |名称|提供应用程序名称。 本教程使用的值为 **HDISparkStreamApp0423**。 此名称必须是唯一的名称。|
+    |Name|提供应用程序名称。 本教程使用的值为 **HDISparkStreamApp0423**。 此名称必须是唯一的名称。|
     |说明|提供应用程序的简短说明。 本教程使用的值为“一个简单的 HDInsight Spark 流式处理应用程序”。 |
-    |网站|提供应用程序的网站。 不必是有效网站。  本教程使用的值为 **http://www.contoso.com** 。|
+    |网站|提供应用程序的网站。 不必是有效网站。  本教程使用的值为 `http://www.contoso.com`。|
     |回调 URL|可以将其留空。|
 
 1. 选择“是，我已阅读并同意 Twitter 开发人员协议”，然后选择“创建 Twitter 应用程序”。  
@@ -82,10 +82,10 @@ ms.locfileid: "67295359"
 
     |属性 |值 |
     |---|---|
-    |名称|输入事件中心的名称。  本教程使用的值为 **myeventhubns20180403**。|
+    |Name|输入事件中心的名称。  本教程使用的值为 **myeventhubns20180403**。|
     |定价层|选择“标准”  。|
-    |订阅|选择相应的订阅。|
-    |资源组|从下拉列表中选择现有资源组，或者选择“新建”来创建新的资源组  。|
+    |Subscription|选择相应的订阅。|
+    |Resource group|从下拉列表中选择现有资源组，或者选择“新建”来创建新的资源组  。|
     |位置|选择与 HDInsight 中 Apache Spark 群集相同的“位置”，以降低延迟和成本。 |
     |启用自动膨胀（可选） |当流量超出了分配给事件中心命名空间的吞吐量单位数时，自动膨胀会自动扩展该数量。  |
     |自动膨胀最大吞吐量单位数（可选）|只有当选中了“启用自动膨胀”时才会显示此滑块。   |

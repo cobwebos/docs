@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: b6ef08be346aebd220b7234253ce45c4615e38a9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 53a46c6137c3336c405eb62dc7b254ac26c13d9e
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445508"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406013"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Storm 与 Apache Kafka on HDInsight 配合使用
 
@@ -58,7 +58,7 @@ ms.locfileid: "67445508"
 > 
 > 为方便起见，本文档链接到了一个模板，该模板可创建所有所需 Azure 资源。 
 >
-> 有关在虚拟网络中使用 HDInsight 的详细信息，请参阅[使用虚拟网络扩展 HDInsight](hdinsight-extend-hadoop-virtual-network.md) 文档。
+> 有关在虚拟网络中使用 HDInsight 的详细信息，请参阅[为 HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)文档。
 
 ## <a name="storm-and-kafka"></a>Storm 和 Kafka
 
@@ -408,8 +408,8 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
       | 设置 | 值 |
       | --- | --- |
-      | 订阅 | Azure 订阅 |
-      | 资源组 | 包含资源的资源组。 |
+      | Subscription | Azure 订阅 |
+      | Resource group | 包含资源的资源组。 |
       | 位置 | 创建资源时所在的 Azure 区域。 |
       | Kafka 群集名称 | Kafka 群集的名称。 |
       | Storm 群集名称 | Storm 群集的名称。 |

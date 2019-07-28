@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Java 调用文本分析 API
+title: 快速入门：使用 Java 调用文本分析 REST API
 titleSuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以便快速完成 Azure 认知服务中的文本分析 API 的使用入门。
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/22/2019
 ms.author: aahi
-ms.openlocfilehash: fc848feb3f9a0e1160a8e36014ca4a469f792c96
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.custom: seo-java-july2019
+ms.openlocfilehash: c5e47918cb31d127842cb7a45883cf4c47fb56e0
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008573"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489222"
 ---
 # <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Java 调用文本分析认知服务
 <a name="HOLTop"></a>

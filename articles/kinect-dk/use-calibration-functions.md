@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 坐标系, 校准, 函数, 内部, 外部, 相机, 投影, 取消投影, 转换, rgb-d, 点云
-ms.openlocfilehash: d96d70db6128e18c1560211d3e76a441dd40da4f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d1f5a9b8823fa1ad2807e5690b50eb7806588e9d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621431"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327099"
 ---
 # <a name="use-azure-kinect-calibration-functions"></a>使用 Azure Kinect 校准函数
 
@@ -42,11 +42,11 @@ ms.locfileid: "67621431"
 
 函数 [k4a_calibration_3d_to_2d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga2ed8b51d727425caa942aab190fc2ba9.html#ga2ed8b51d727425caa942aab190fc2ba9) 将源坐标系的 3D 点转换为目标相机的 2D 像素坐标。 此函数通常称为投影函数。 尽管源可以设置为四个 3D 坐标系中的任何一个，但目标必须是深度相机或彩色相机。 如果源和目标不同，则会使用 [k4a_calibration_3d_to_3d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gaacd1eab997ef964b5e436afa5295726e.html#gaacd1eab997ef964b5e436afa5295726e) 将输入的 3D 点转换为目标相机的 3D 坐标系。 以目标相机坐标系表示 3D 点后，将使用目标相机的内部校准计算相应的 2D 像素坐标。 如果 3D 点超出了目标相机的可视区域，则有效值将设置为 0。
 
-函数 [k4a_calibration_2d_to_3d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga664602bdb48dab38117a6c1d14b880de.html#ga664602bdb48dab38117a6c1d14b880de) 将源相机的 2D 像素坐标转换为目标相机坐标系的 3D 点。 源必须是彩色相机或深度相机。 目标可设置为四个 3D 坐标系中的任何一个。 除了 2D 像素坐标以外，必须使用源相机图像中像素的深度值（以毫米为单位）作为函数的输入。 该函数使用源相机的内部校准通过指定的像素坐标计算源相机焦点引出的 3D 射线。 然后，使用深度值查找此射线的确切 3D 点位置。 此操作通常称为取消投影函数。 如果源和目标相机不同，该函数会通过 [k4a_calibration_3d_to_3d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gaacd1eab997ef964b5e436afa5295726e.html#gaacd1eab997ef964b5e436afa5295726e) 将 3D 点转换为目标的坐标系。 如果 2D 像素坐标超出了源相机的可视区域，则有效值将设置为 0。
+函数 [k4a_calibration_2d_to_3d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga664602bdb48dab38117a6c1d14b880de.html#ga664602bdb48dab38117a6c1d14b880de) 将源相机的 2D 像素坐标转换为目标相机坐标系的 3D 点。 源必须是彩色相机或深度相机。 目标可设置为四个 3D 坐标系中的任何一个。 除了 2D 像素坐标外，源相机图像中像素的深度值（以毫米为单位）也需要作为函数的输入，在彩色相机几何中推导出深度值的一种方法是使用函数 [k4a_transformation_depth_image_to_color_camera()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514)。 该函数使用源相机的内部校准通过指定的像素坐标计算源相机焦点引出的 3D 射线。 然后，使用深度值查找此射线的确切 3D 点位置。 此操作通常称为取消投影函数。 如果源和目标相机不同，该函数会通过 [k4a_calibration_3d_to_3d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gaacd1eab997ef964b5e436afa5295726e.html#gaacd1eab997ef964b5e436afa5295726e) 将 3D 点转换为目标的坐标系。 如果 2D 像素坐标超出了源相机的可视区域，则有效值将设置为 0。
 
 ### <a name="converting-between-2d-coordinate-systems"></a>在 2D 坐标系之间转换
 
-函数 [k4a_calibration_2d_to_2d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3b6bf6dedbfe67468e2f895dcce68ed4.html#ga3b6bf6dedbfe67468e2f895dcce68ed4) 将源相机的 2D 像素坐标转换为目标相机的 2D 像素坐标。 源和目标必须设置为彩色相机或深度相机。 该函数需要使用源相机图像中的像素深度值（以毫米为单位）作为输入。 它将调用 [k4a_calibration_2d_to_3d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga664602bdb48dab38117a6c1d14b880de.html#ga664602bdb48dab38117a6c1d14b880de) 转换为源相机系统的 3D 点。 然后，它将调用 [k4a_calibration_3d_to_2d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga2ed8b51d727425caa942aab190fc2ba9.html#ga2ed8b51d727425caa942aab190fc2ba9) 转换为目标相机图像的 2D 像素坐标。 如果 [k4a_calibration_2d_to_3d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga664602bdb48dab38117a6c1d14b880de.html#ga664602bdb48dab38117a6c1d14b880ded) 或 [k4a_calibration_3d_to_2d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga2ed8b51d727425caa942aab190fc2ba9.html#ga2ed8b51d727425caa942aab190fc2ba9) 返回无效的结果，则有效值将设置为 0。
+函数 [k4a_calibration_2d_to_2d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3b6bf6dedbfe67468e2f895dcce68ed4.html#ga3b6bf6dedbfe67468e2f895dcce68ed4) 将源相机的 2D 像素坐标转换为目标相机的 2D 像素坐标。 源和目标必须设置为彩色相机或深度相机。 该函数需要将源相机图像中像素的深度值（以毫米为单位）作为输入，在彩色相机几何中推导出深度值的一种方法是使用函数 [k4a_transformation_depth_image_to_color_camera()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514)。 它将调用 [k4a_calibration_2d_to_3d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga664602bdb48dab38117a6c1d14b880de.html#ga664602bdb48dab38117a6c1d14b880de) 转换为源相机系统的 3D 点。 然后，它将调用 [k4a_calibration_3d_to_2d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga2ed8b51d727425caa942aab190fc2ba9.html#ga2ed8b51d727425caa942aab190fc2ba9) 转换为目标相机图像的 2D 像素坐标。 如果 [k4a_calibration_2d_to_3d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga664602bdb48dab38117a6c1d14b880de.html#ga664602bdb48dab38117a6c1d14b880ded) 或 [k4a_calibration_3d_to_2d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga2ed8b51d727425caa942aab190fc2ba9.html#ga2ed8b51d727425caa942aab190fc2ba9) 返回无效的结果，则有效值将设置为 0。
 
 ## <a name="related-samples"></a>相关示例
 

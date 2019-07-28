@@ -3,17 +3,18 @@ title: 教程 - 多步骤容器任务 - Azure 容器注册表任务
 description: 本教程介绍如何配置一个 Azure 容器注册表任务，以便在向 Git 存储库提交源代码时，在云中自动触发多步骤工作流来生成、运行和推送容器映像。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 09b8e5d31bc6a4ec24633889920e2768bb7ce538
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: c78c2c8279972108aee12b9b386175d0f27b7fee
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546551"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310415"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时在云中运行多步骤容器工作流
 
@@ -91,7 +92,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-此任务指定，每当向 `--context` 指定的主分支存储库提交代码时，ACR 任务都要基于该分支中的代码运行该多步骤任务。 存储库根目录中的 `--file` 指定的 YAML 文件将定义步骤。 
+此任务指定，每当向 `--context` 指定的主分支存储库提交代码时，ACR 任务都要基于该分支中的代码运行该多步骤任务。  存储库根目录中的 `--file` 指定的 YAML 文件将定义步骤。 
 
 成功的 [az acr task create][az-acr-task-create] 命令的输出应如下所示：
 
@@ -220,7 +221,7 @@ Run ID: cf19 was successful after 18s
 
 通过手动运行任务对其进行测试后，可通过更改源代码手动触发该任务。
 
-首先，确保目录中包含[存储库][sample-repo]的本地克隆：
+首先，确保你位于包含[存储库][sample-repo]的本地克隆的目录中：
 
 ```azurecli-interactive
 cd acr-build-helloworld-node
@@ -356,7 +357,7 @@ az acr task credential add --name example2 \
 
 ### <a name="test-the-multi-step-workflow"></a>测试多步骤工作流
 
-与在前面的示例中一样，若要测试多步骤任务，请执行 [az acr task run][az-acr-task-run] 命令手动将其触发。 若要通过向 Git 存储库提交代码来触发任务，请参阅[通过提交触发生成](#trigger-a-build-with-a-commit)部分。
+与前面的示例一样，若要测试多步骤任务，请执行 [az acr task run][az-acr-task-run] 命令手动将其触发。 若要通过向 Git 存储库提交代码来触发任务，请参阅[通过提交触发生成](#trigger-a-build-with-a-commit)部分。
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example2

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 06/25/2019
+ms.date: 07/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7e7a1f119a2f2b0e60645cb776b26c124910cacb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ca42532fe6ba954180ce06ed0e3561e42f1fb447
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448218"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424236"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>教程：退回 Azure Data Box Disk 并验证到 Azure 的数据上传
 
 这是本系列的最后一个教程：部署 Azure Data Box Disk。 在本教程中，将了解如何：
@@ -28,6 +30,7 @@ ms.locfileid: "67448218"
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保已完成[教程：将数据复制到 Azure Data Box Disk 并进行验证](data-box-disk-deploy-copy-data.md)。
+
 
 ## <a name="ship-data-box-disk-back"></a>寄回 Data Box 磁盘
 
@@ -229,5 +232,41 @@ ms.locfileid: "67448218"
 
 > [!div class="nextstepaction"]
 > [使用 Azure 门户管理 Azure Data Box 磁盘](./data-box-portal-ui-admin.md)
+
+::: zone-end
+
+
+::: zone target="chromeless"
+
+# <a name="return-the-disk-and-verify-upload-to-azure"></a>退回磁盘并验证到 Azure 的数据上传
+
+## <a name="ship-to-azure"></a>寄送到 Azure
+
+1. 数据验证完成后，请取出磁盘。 拔下连接线。
+2. 将磁盘和连接线包装在汽泡袋中，并在其放入包装箱。 如果缺少附件，我们可能会收取费用。
+    - 重复使用最初的发货包装。  
+    - 我们建议使用加固的气泡袋包装磁盘。
+    - 确保填塞物贴合，以避免磁盘在包装箱中发生移动。
+3. 接下来的步骤根据在何处退回设备而定。
+    - [如果在美国或加拿大境内退回设备，请安排 UPS 取件](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada)。
+    - 通过访问 DHL 网站并指定航空帐单编号，[安排欧洲 DHL 取件](data-box-disk-deploy-picked-up.md#pick-up-in-europe)。
+    - [为澳大利亚 - 太平洋地区的国家/地区（如澳大利亚、日本、韩国和新加坡等）安排取件](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific-region)。
+4. 承运人收取磁盘后，门户中的订单状态将更新，并显示跟踪 ID。
+
+## <a name="verify-upload-to-azure"></a>验证到 Azure 的数据上传
+
+将数据上传到 Azure 后，从源中删除数据之前，请确认数据已存储在存储帐户中。 你的数据可位于：
+
+- Azure 存储帐户。 将数据复制到 Data Box 时，会根据类型将数据将上传到 Azure 存储帐户中的以下路径之一。
+
+    - **对于块 blob 和页 blob**： https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt
+
+    - **对于 Azure 文件存储**： https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt
+
+    或者，可以转到 Azure 门户中的 Azure 存储帐户并从那里导航。
+
+- 托管磁盘资源组。 创建托管磁盘时，VHD 作为页 blob 进行上传，然后转换为托管磁盘。 托管磁盘会附加到在创建排序时指定的资源组上。
+
+::: zone-end
 
 

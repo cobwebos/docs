@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 041bcf32035ab6cdc3ee4df06050f75186759f5e
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835655"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464764"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在 Web 应用程序中启用身份验证
 
@@ -64,8 +64,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 将示例更改为使用已在租户中注册的应用程序，包括前面记下的应用程序 ID 和密钥。 此外，配置所创建的用户流。 该示例在 Web.config 文件中将配置值作为设置来定义。 若要更改设置，请执行以下操作：
 
 1. 在 Visual Studio 中打开 **B2C-WebAPI-DotNet** 解决方案。
-2. 在 **TaskWebApp** 项目中打开 **Web.config** 文件。 将 `ida:Tenant` 的值替换为所创建租户的名称。 将 `ida:ClientId` 的值替换为所记录的应用程序 ID。 将 `ida:ClientSecret` 的值替换为所记录的密钥。
+2. 在 **TaskWebApp** 项目中打开 **Web.config** 文件。 将 `ida:Tenant` 的值替换为所创建租户的名称。 将 `ida:ClientId` 的值替换为所记录的应用程序 ID。 将 `ida:ClientSecret` 的值替换为所记录的密钥。 在将客户端密码添加到 Web.config 之前，必须对其进行 XML 编码。
 3. 在 **Web.config** 文件中，将 `ida:SignUpSignInPolicyId` 的值替换为 `b2c_1_signupsignin1`。 将 `ida:EditProfilePolicyId` 的值替换为 `b2c_1_profileediting1`。 将 `ida:ResetPasswordPolicyId` 的值替换为 `b2c_1_passwordreset1`。
+
 
 ## <a name="run-the-sample"></a>运行示例
 

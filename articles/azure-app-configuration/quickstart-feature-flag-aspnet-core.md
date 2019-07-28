@@ -14,26 +14,23 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 38b404ec10fb7b66b5e276665b0c9047d0576c15
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 41947de18ae27b41d046fd4358f0039a1b56374d
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798389"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347910"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入门：将功能标志添加到 ASP.NET Core 应用
 
-可以通过将应用程序连接到 Azure 应用程序配置，来启用 ASP.NET Core 中的功能管理。 使用此托管服务可以存储所有功能标志，以及集中控制其状态。 本快速入门介绍如何将应用程序配置整合到 ASP.NET Core Web 应用，以创建功能管理的端到端实现。
+在本快速入门中，会将 Azure 应用程序配置合并到 ASP.NET Core Web 应用中，以创建功能管理的端到端实现。 可以使用应用程序配置服务集中存储所有功能标志并控制其状态。 
 
 .NET Core 功能管理库使用全面的功能标志支持扩展了该框架。 这些库在 .NET Core 配置系统的基础上构建。 它们可以通过其 .NET Core 配置提供程序无缝集成到应用程序配置。
 
-你可使用任意代码编辑器来执行该快速入门中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
-
 ## <a name="prerequisites"></a>先决条件
 
-要完成本快速入门，请安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- [.NET Core SDK](https://dotnet.microsoft.com/download)。
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
@@ -135,7 +132,7 @@ ms.locfileid: "67798389"
 1. 打开 *Startup.cs*，并添加对 .NET Core 功能管理器的引用：
 
     ```csharp
-    using Microsoft.FeatureManagement.AspNetCore;
+    using Microsoft.FeatureManagement;
     ```
 
 1. 通过调用 `services.AddFeatureManagement()` 方法更新 `ConfigureServices` 方法以添加功能标志支持。 （可选）可以通过调用 `services.AddFeatureFilter<FilterType>()` 来包括要与功能标志一起使用的任何筛选器：

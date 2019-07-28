@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 05/20/2019
-ms.openlocfilehash: dc29cc6d3cc2a07214fb638a10039a4c3ea2d92b
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 75f1554f7522723d71666633a03761d07e797e33
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953618"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443503"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>通过 .NET SDK 开始使用 Azure Cosmos DB 表 API 和 Azure 表存储
 
@@ -110,9 +110,19 @@ ms.locfileid: "65953618"
 
 1. 按如下所示定义方法 `CreateStorageAccountFromConnectionString`。 此方法将分析连接字符串详细信息，并验证“Settings.json”文件中提供的帐户名称和帐户密钥详细信息是否有效。 
 
-   ```csharp
-   public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
+ ```csharp
+using System;
+
+namespace CosmosTableSamples
+{
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.Azure.Documents;
+
+    public class Common
     {
+        public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
+        {
             CloudStorageAccount storageAccount;
             try
             {
@@ -132,6 +142,8 @@ ms.locfileid: "65953618"
 
             return storageAccount;
         }
+    }
+}
    ```
 
 
@@ -378,6 +390,29 @@ namespace CosmosTableSamples
 在本教程中，你生成了对表 API 帐户中存储的数据执行基本 CRUD 操作的代码。 还可以执行高级操作，例如批量插入数据、查询分区中的所有数据、查询分区中的一系列数据、列出名称以指定前缀开头的帐户中的表。 可以从 [azure-cosmos-table-dotnet-core-getting-started](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started) GitHub 存储库中下载完整的示例。 [AdvancedSamples.cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/master/CosmosTableSamples/AdvancedSamples.cs) 类具有可对数据执行的更多操作。  
 
 ## <a name="run-the-project"></a>运行项目
+
+从项目“CosmosTableSamples”  ， 打开名为“Program.cs”  的类。然后将以下代码添加到其中，以便在项目运行时调用 BasicSamples。
+
+```csharp
+using System;
+
+namespace CosmosTableSamples
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Azure Cosmos Table Samples");
+            BasicSamples basicSamples = new BasicSamples();
+            basicSamples.RunSamples().Wait();
+           
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit");
+            Console.Read();
+        }
+    }
+}
+```
 
 立即生成解决方案并按 F5 运行该项目。 运行项目时，将在命令提示符中看到以下输出：
 

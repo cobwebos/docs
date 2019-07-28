@@ -4,14 +4,14 @@ description: 了解如何配置 IP 访问控制策略，以对 Azure Cosmos DB �
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 24ebc7eb4c9abc72a89419611e4b4b3fa2db88b4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 0b8ad6c5addbff293e9f7e9b8af6ed34d4dd274b
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241965"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494877"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
 
@@ -49,7 +49,7 @@ ms.locfileid: "66241965"
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>允许来自全球的 Azure 数据中心或 Azure 中的其他源的请求
 
-如果通过不提供静态 IP 的服务（例如 Azure 流分析和 Azure Functions）访问 Azure Cosmos DB 帐户，仍可使用 IP 防火墙来限制访问。 若要允许从此类服务访问 Azure Cosmos DB 帐户，请将 IP 地址 0.0.0.0 添加到允许的 IP 地址列表。 0.0.0.0 地址限制从 Azure 数据中心 IP 范围向 Azure Cosmos DB 帐户发出的请求。 此设置不允许任何其他 IP 范围访问 Azure Cosmos DB 帐户。
+如果通过不提供静态 IP 的服务（例如 Azure 流分析和 Azure Functions）访问 Azure Cosmos DB 帐户，仍可使用 IP 防火墙来限制访问。 若要允许从此类服务访问 Azure Cosmos DB 帐户，请将 IP 地址 0.0.0.0 添加到允许的 IP 地址列表。 0\.0.0.0 地址限制从 Azure 数据中心 IP 范围向 Azure Cosmos DB 帐户发出的请求。 此设置不允许任何其他 IP 范围访问 Azure Cosmos DB 帐户。
 
 > [!NOTE]
 > 该选项将防火墙配置为允许来自 Azure 的所有请求，包括来自 Azure 中部署的其他客户的订阅的请求。 此选项允许的 IP 地址较为广泛，因为限制了防火墙策略的有效性。 仅当请求并非来自虚拟网络中的静态 IP 或子网时，才使用此选项。 选择此选项将自动允许从 Azure 门户进行访问，因为 Azure 门户在 Azure 中部署。
@@ -94,21 +94,24 @@ ms.locfileid: "66241965"
 
 ## <a id="configure-ip-firewall-arm"></a>使用资源管理器模板配置 IP 防火墙
 
-若要配置对 Azure Cosmos DB 帐户的访问控制，请确保资源管理器模板指定 **ipRangeFilter** 属性，其中包含允许的 IP 范围列表。 例如，将以下 JSON 代码添加到模板：
+若要配置对 Azure Cosmos DB 帐户的访问控制，请确保资源管理器模板指定 **ipRangeFilter** 属性，其中包含允许的 IP 范围列表。 如果将 IP 防火墙配置为已部署的 Cosmos 帐户，请确保 `locations` 数组与当前部署的位置匹配。 不能同时修改 `locations` 数组和其他属性。 有关 Azure Cosmos DB 的 ARM 模板的详细信息和示例，请参阅[用于 Azure Cosmos DB 的 Azure 资源管理器模板](resource-manager-samples.md)
 
 ```json
-   {
-     "apiVersion": "2015-04-08",
-     "type": "Microsoft.DocumentDB/databaseAccounts",
-     "kind": "GlobalDocumentDB",
-     "name": "[parameters('databaseAccountName')]",
-     "location": "[resourceGroup().location]",
-     "properties": {
-       "databaseAccountOfferType": "Standard",
-       "name": "[parameters('databaseAccountName')]",
-       "ipRangeFilter":"183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
-     }
-   }
+{
+  "type": "Microsoft.DocumentDB/databaseAccounts",
+  "name": "[variables('accountName')]",
+  "apiVersion": "2016-03-31",
+  "location": "[parameters('location')]",
+  "kind": "GlobalDocumentDB",
+  "properties": {
+    "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+    "locations": "[variables('locations')]",
+    "databaseAccountOfferType": "Standard",
+    "enableAutomaticFailover": "[parameters('automaticFailover')]",
+    "enableMultipleWriteLocations": "[parameters('multipleWriteLocations')]",
+    "ipRangeFilter":"183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
+  }
+}
 ```
 
 ## <a id="configure-ip-firewall-cli"></a>使用 Azure CLI 配置 IP 访问控制策略

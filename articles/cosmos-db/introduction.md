@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB。 此全球分布式多模型数据库是�
 author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: a338cec213b82d54b08f2a11a969ddecf72ea7e5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: ee863b6003444ec099753a6488f3fe4078338e60
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953906"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384120"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
@@ -74,11 +74,11 @@ Cosmos DB 已通过[各种符合性标准](compliance.md)认证。 此外，Cosm
 
 Cosmos DB 是第一个也是唯一一个提供[业界领先复合型 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) 的服务，实现了 99.999% 高可用性、第 99 个百分位的读写延迟、可靠吞吐量和一致性。
 
-### <a name="globally-distributed-operational-analytics-with-spark"></a>使用 Spark 的全球分布式运营分析
+### <a name="globally-distributed-operational-analytics-and-ai-with-natively-built-in-apache-spark"></a>具有本机内置 Apache Spark 的全球分布式运营分析和 AI
 
 可以在 Cosmos DB 中存储的数据上直接运行 [Spark](spark-connector.md)。 凭借该功能，你可以在全球范围内执行低延迟的操作分析，而不会影响直接针对 Cosmos DB 进行操作的事务工作负载。 有关详细信息，请参阅[全球分布式运营分析](lambda-architecture.md)。
 
-### <a name="develop-applications-on-cosmos-db-using-popular-nosql-apis"></a>使用常用的 NoSQL API 在 Cosmos DB 上开发应用程序
+### <a name="develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis"></a>使用常用的开放源代码软件 (OSS) API 在 Cosmos DB 上开发应用程序
 
 Cosmos DB 提供多种 API 来处理存储在 Cosmos 数据库中的数据。 默认情况下，[可以使用 SQL](how-to-sql-query.md)（核心 API）来查询 Cosmos 数据库。 Cosmos DB 还实现用于 [Cassandra](cassandra-introduction.md)、[MongoDB](mongodb-introduction.md)、[Gremlin](graph-introduction.md) 和 [Azure 表存储](table-introduction.md)的 API。 可以将常用 NoSQL（例如，MongoDB、Cassandra、Gremlin）的客户端驱动程序（和工具）直接指向 Cosmos 数据库。 Cosmos DB 支持常用 NoSQL API 的网络协议，因此可用其实现以下目标：
 

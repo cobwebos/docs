@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1dae1b8577c4f90211c3b377dbf88efe6907326
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 66cb7218b5217565529e1e15d875c23dff10e06f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243890"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382269"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>概述：重置自己的工作或学校密码
 
@@ -34,5 +34,5 @@ ms.locfileid: "66243890"
 
 |文章 |说明 |
 |------|------------|
-|[注册自助密码重置](active-directory-passwords-reset-register.md)| 说明如何验证身份验证方法并注册自助密码重置，以便重置自己的密码。|
-|[重置密码](user-help-reset-password.md)| 说明如何重置或解锁工作或学校帐户的密码。|
+| [注册自助式密码重置](active-directory-passwords-reset-register.md)说明如何验证身份验证方法并注册自助式密码重置，以便重置自己的密码。|
+| [重置密码](user-help-reset-password.md)说明如何重置或解锁工作或学校帐户的密码。|

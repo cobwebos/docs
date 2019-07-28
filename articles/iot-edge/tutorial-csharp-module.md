@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b9ced0b08ed26057a45959f759fb90cbd7efe2a5
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 305804682ede9833619837807d6f174ec670560e
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239784"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414259"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教程：开发适用于 Linux 设备的 C# IoT Edge 模块
 
@@ -42,6 +42,9 @@ ms.locfileid: "66239784"
 | -- | ------------------ | ------------- |
 | **Linux AMD64** | ![VS Code 中适用于 LinuxAMD64 的 C# 模块](./media/tutorial-c-module/green-check.png) | ![Visual Studio 中适用于 LinuxAMD64 的 C# 模块](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![VS Code 中适用于 LinuxARM32 的 C# 模块](./media/tutorial-c-module/green-check.png) | ![Visual Studio 中适用于 LinuxARM64 的 C# 模块](./media/tutorial-c-module/green-check.png) |
+
+>[!NOTE]
+>[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中提供对 Linux ARM64 设备的支持。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -93,7 +96,7 @@ ms.locfileid: "66239784"
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 
-目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发 C 模块。 你需要选择每种解决方案的目标体系结构，因为容器是针对每种体系结构类型以不同的方式生成和运行的。 默认设置为 Linux AMD64。 
+目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发 C# 模块。 需要选择面向每个解决方案的体系结构，因为每种体系结构类型的容器的生成和运行方式均不相同。 默认设置为 Linux AMD64。 
 
 1. 打开命令面板并搜索 **Azure IoT Edge:Set Default Target Platform for Edge Solution**，或选择窗口底部侧栏中的快捷方式图标。 
 

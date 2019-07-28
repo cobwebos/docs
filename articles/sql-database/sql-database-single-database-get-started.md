@@ -1,6 +1,6 @@
 ---
-title: Azure 门户：创建单一数据库 - Azure SQL 数据库 | Microsoft Docs
-description: 使用 Azure 门户在 Azure SQL 数据库中创建和查询单一数据库。
+title: 创建单一数据库 - Azure SQL 数据库 | Microsoft Docs
+description: 使用 Azure 门户、PowerShell 和 Azure CLI 在 Azure SQL 数据库中创建和查询单一数据库。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,14 +12,14 @@ ms.author: ninarn
 ms.reviewer: carlrab, sstein
 manager: craigg
 ms.date: 04/23/2019
-ms.openlocfilehash: 1c24c8a10e35c0cf8979538c67fa8fb71b712741
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 470dca235b9a3212c09052f7535fa90d076fe4d3
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070164"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444464"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>快速入门：使用 Azure 门户、PowerShell 和 Azure CLI 在 Azure SQL 数据库中创建单一数据库
 
 在 Azure SQL 数据库中创建数据库时，创建[单一数据库](sql-database-single-database.md)是最快速且最简单的部署选项。 本快速入门介绍如何使用 Azure 门户创建并查询单一数据库。
 
@@ -41,59 +41,7 @@ ms.locfileid: "67070164"
 
 若要创建包含 Adventure Works LT 示例数据的单一数据库，请执行以下操作：
 
-1. 在 Azure 门户的左上角选择“创建资源”。 
-2. 选择“数据库”，然后选择“SQL 数据库”打开“创建 SQL 数据库”页。   
-
-   ![创建单一数据库](./media/sql-database-get-started-portal/create-database-1.png)
-
-3. 在“项目详细信息”部分的“基本信息”选项卡上，键入或选择以下值：  
-
-   - **订阅**：下拉列表并选择正确的订阅（如果它没有出现）。
-   - **资源组**：选择“新建”，键入 `myResourceGroup`，然后选择“确定”   。
-
-     ![“新建 SQL 数据库 - 基本信息”选项卡](media/sql-database-get-started-portal/new-sql-database-basics.png)
-
-4. 在“数据库详细信息”部分，键入或选择以下值： 
-
-   - **数据库名称**：输入 `mySampleDatabase` 。
-   - **服务器**：选择“新建”并输入以下值，然后选择“创建”。  
-       - **服务器名称**：键入 `mysqlserver` 和一些数字，使名称唯一。
-       - **服务器管理员登录名**：键入 `azureuser`。
-       - **密码**：键入符合密码要求的复杂密码。
-       - **位置**：从下拉列表中选择一个位置，例如 `West US 2`。
-
-         ![新建服务器](media/sql-database-get-started-portal/new-server.png)
-
-      > [!IMPORTANT]
-      > 请记得记录服务器管理员登录名和密码，以便可以登录服务器和数据库以获取此快速入门和其他快速入门。 如果忘记了登录名或密码，可在“SQL 服务器”页上获取登录名或重置密码  。 若要打开“SQL 服务器”页，请在创建数据库后在数据库“概述”页上选择服务器名称   。
-
-        ![SQL 数据库详细信息](media/sql-database-get-started-portal/sql-db-basic-db-details.png)
-
-   - **想要使用 SQL 弹性池**：选择“否”选项。 
-   - **计算 + 存储**：选择“配置数据库”，对于此快速入门，选择“基于 vCore 的购买选项”  
-
-     ![基于 vCore 的购买选项](media/sql-database-get-started-portal/create-database-vcore.png)
-
-   - 选择“无服务器”  。
-
-     ![无服务器计算层](media/sql-database-get-started-portal/create-database-serverless.png)
-
-   - 查看“最大 vCore 数目”、“最小 vCore 数目”、“自动暂停延迟”和“数据最大大小”的设置     。 根据需要进行更改。
-   - 接受预览版条款，然后单击“确定”  。
-   - 选择“应用”。 
-
-5. 选择“其他设置”选项卡。  
-6. 在“数据源”部分的“使用现有数据”下，选择 `Sample`。   
-
-   ![其他 SQL 数据库设置](media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
-
-   > [!IMPORTANT]
-   > 确保选择“示例(AdventureWorksLT)”数据，这样就可以轻松地按照本指南以及使用此数据的其他 Azure SQL 数据库快速入门进行操作  。
-
-7. 将剩余字段保留默认值，然后选择窗体底部的“查看 + 创建”。 
-8. 检查最终的设置，然后选择“创建”。 
-
-9. 在“SQL 数据库”窗体中，选择“创建”来部署和预配资源组、服务器和数据库   。
+[!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
 ## <a name="query-the-database"></a>查询数据库
 

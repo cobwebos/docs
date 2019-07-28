@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8a200df2f474cead197a0e74ae7e27927f814d2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d981ad0f02e9cef31a01a9d407de22cf63352c01
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242273"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382211"
 ---
 # <a name="security-info-preview-overview"></a>安全信息（预览版）概述
 
@@ -32,13 +32,14 @@ ms.locfileid: "66242273"
 
 有关添加、更新和删除安全信息的详细信息和说明，请（根据所用的方法）参阅以下文章：
 
-|文章 |说明 |
-|------|------------|
-|[根据登录页上的提示添加安全方法](security-info-setup-signin.md)| 说明如何根据登录页上的提示设置安全信息。 仅当尚未设置组织所要求的安全信息时，才会显示此提示。 如果未看到该提示，仍可以参考此表中的其他文章更改和添加验证方法。|
-|[将 Microsoft Authenticator 应用添加为验证方法](security-info-setup-auth-app.md)| 说明如何将 Microsoft Authenticator 应用设置为验证方法。|
-|[添加短信作为验证方法](security-info-setup-text-msg.md)| 说明如何将短信设置为验证方法。|
-|[添加电话呼叫作为验证方法](security-info-setup-phone-number.md)| 说明如何将电话号码设置为验证方法。|
-|[添加用于重置自己密码的电子邮件地址](security-info-setup-email.md)| 说明如何添加电子邮件地址，以便可以重置自己的密码。|
-|[添加用于重置自己密码的安全提问](security-info-setup-questions.md)| 说明如何添加预定义的安全提问，以便可以重置自己的密码。|
-|[管理不支持双重验证的应用的应用密码](security-info-app-passwords.md)| 说明如何在使用双重验证的组织中，为不支持双重验证的应用创建应用密码。|
-|[如何登录](user-help-sign-in.md)|介绍如何使用指定的验证方法登录。|
+| 文章 | 说明 |
+| ------ | ------------ |
+| [根据登录页上的提示添加安全方法](security-info-setup-signin.md) | 说明如何根据登录页上的提示设置安全信息。 仅当尚未设置组织所要求的安全信息时，才会显示此提示。 如果未看到该提示，仍可以参考此表中的其他文章更改和添加验证方法。 |
+| [将 Microsoft Authenticator 应用添加为验证方法](security-info-setup-auth-app.md) | 说明如何将 Microsoft Authenticator 应用设置为验证方法。 |
+| [添加短信作为验证方法](security-info-setup-text-msg.md) | 说明如何将短信设置为验证方法。 |
+| [添加电话呼叫作为验证方法](security-info-setup-phone-number.md) | 说明如何将电话号码设置为验证方法。 |
+| [添加安全密钥作为验证方法](security-info-setup-security-key.md) | 有关如何将与 Microsoft 兼容的安全密钥注册为验证方法的说明。 |
+| [添加用于重置自己密码的电子邮件地址](security-info-setup-email.md) | 说明如何添加电子邮件地址，以便可以重置自己的密码。 |
+| [添加用于重置自己密码的安全提问](security-info-setup-questions.md) | 说明如何添加预定义的安全提问，以便可以重置自己的密码。 |
+| [管理不支持双重验证的应用的应用密码](security-info-app-passwords.md) | 说明如何在使用双重验证的组织中，为不支持双重验证的应用创建应用密码。 |
+| [如何登录](user-help-sign-in.md) |介绍如何使用指定的验证方法登录。 |

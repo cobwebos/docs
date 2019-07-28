@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: a1df79c59ede8cd9ad72a2ebb2edb4bdb64b802a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 963e4f7e9db638450a89dd4ae0091019fc58e2a4
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588972"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359426"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>教程：使用自动化机器学习和开放数据集生成回归模型
 
@@ -62,7 +62,7 @@ ms.locfileid: "67588972"
     ```
 1. 安装本教程所需的包。 这些包很大，需要 5-10 分钟时间才能安装完成。
     ```
-    pip install azureml-sdk[automl] azureml-contrib-opendatasets
+    pip install azureml-sdk[automl] azureml-opendatasets
     ```
 1. 在环境中启动笔记本内核。
     ```
@@ -77,7 +77,7 @@ ms.locfileid: "67588972"
 
 
 ```python
-from azureml.contrib.opendatasets import NycTlcGreen
+from azureml.opendatasets import NycTlcGreen
 import pandas as pd
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
@@ -90,8 +90,8 @@ from dateutil.relativedelta import relativedelta
 
 ```python
 green_taxi_df = pd.DataFrame([])
-start = datetime.strptime("1/1/2016","%m/%d/%Y")
-end = datetime.strptime("1/31/2016","%m/%d/%Y")
+start = datetime.strptime("1/1/2016", "%m/%d/%Y")
+end = datetime.strptime("1/31/2016", "%m/%d/%Y")
 
 for sample_month in range(12):
     temp_df_green = NycTlcGreen(start + relativedelta(months=sample_month), end + relativedelta(months=sample_month)) \
@@ -401,7 +401,9 @@ def build_time_features(vector):
 
     return pd.Series((month_num, day_of_month, day_of_week, hour_of_day, country_code))
 
-green_taxi_df[["month_num", "day_of_month","day_of_week", "hour_of_day", "country_code"]] = green_taxi_df[["lpepPickupDatetime"]].apply(build_time_features, axis=1)
+
+green_taxi_df[["month_num", "day_of_month", "day_of_week", "hour_of_day", "country_code"]
+              ] = green_taxi_df[["lpepPickupDatetime"]].apply(build_time_features, axis=1)
 green_taxi_df.head(10)
 ```
 
@@ -695,11 +697,12 @@ green_taxi_df.head(10)
 columns_to_remove = ["lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
                      "improvementSurcharge", "tollsAmount", "ehailFee", "tripType", "rateCodeID",
                      "storeAndFwdFlag", "paymentType", "fareAmount", "tipAmount"
-                    ]
+                     ]
 for col in columns_to_remove:
     green_taxi_df.pop(col)
 
-green_taxi_df = green_taxi_df.rename(columns={"lpepPickupDatetime": "datetime"})
+green_taxi_df = green_taxi_df.rename(
+    columns={"lpepPickupDatetime": "datetime"})
 green_taxi_df["datetime"] = green_taxi_df["datetime"].dt.normalize()
 green_taxi_df.head(5)
 ```
@@ -830,7 +833,7 @@ green_taxi_df.head(5)
 至此，已下载并粗略地准备了出租车数据。是时候将节假日数据添加为额外特征了。 节假日专属特征有助于提高模型准确度，因为在重大节假日期间，出租车需求大幅增加，供应变得有限。 节假日数据集相对较小，因此使用不含任何筛选参数的 `PublicHolidays` 类构造函数来提取整个集合。 通过预览数据来检查格式。
 
 ```python
-from azureml.contrib.opendatasets import PublicHolidays
+from azureml.opendatasets import PublicHolidays
 # call default constructor to download full dataset
 holidays_df = PublicHolidays().to_pandas_dataframe()
 holidays_df.head(5)
@@ -921,12 +924,14 @@ holidays_df.head(5)
 将 `countryRegionCode` 和 `date` 列重命名为与出租车数据中的相应字段名称匹配，并将时间规范化为可用作键。 接下来，使用 Pandas `merge()` 函数执行左联接，联接节假日数据与出租车数据。 这会保留 `green_taxi_df` 中的所有记录，但也会添加相应 `datetime` 和 `country_code`（在本示例中始终为 `"US"`）的现有节假日数据。 通过预览数据来验证它们是否已正确合并。
 
 ```python
-holidays_df = holidays_df.rename(columns={"countryRegionCode": "country_code", "date": "datetime"})
+holidays_df = holidays_df.rename(
+    columns={"countryRegionCode": "country_code", "date": "datetime"})
 holidays_df["datetime"] = holidays_df["datetime"].dt.normalize()
 holidays_df.pop("countryOrRegion")
 holidays_df.pop("holidayName")
 
-taxi_holidays_df = pd.merge(green_taxi_df, holidays_df, how="left", on=["datetime", "country_code"])
+taxi_holidays_df = pd.merge(green_taxi_df, holidays_df, how="left", on=[
+                            "datetime", "country_code"])
 taxi_holidays_df.head(5)
 ```
 
@@ -1068,11 +1073,11 @@ taxi_holidays_df.head(5)
 现在，将 NOAA 的地面天气数据追加到出租车数据和节假日数据中。 使用类似方法（即以迭代方式一次下载一个月的数据）提取天气数据。 此外，使用一组字符串来指定 `cols` 参数，以筛选要下载的列。 这是一个非常大的数据集，其中包含世界各地的地面天气数据。因此，在追加各月的数据前，请先对数据帧使用 `query()` 函数，将纬度/经度字段筛选为接近纽约的值。 这样可确保 `weather_df` 不至于过大。
 
 ```python
-from azureml.contrib.opendatasets import NoaaIsdWeather
+from azureml.opendatasets import NoaaIsdWeather
 
 weather_df = pd.DataFrame([])
-start = datetime.strptime("1/1/2016","%m/%d/%Y")
-end = datetime.strptime("1/31/2016","%m/%d/%Y")
+start = datetime.strptime("1/1/2016", "%m/%d/%Y")
+end = datetime.strptime("1/31/2016", "%m/%d/%Y")
 
 for sample_month in range(12):
     tmp_df = NoaaIsdWeather(cols=["temperature", "precipTime", "precipDepth", "snowDepth"], start_date=start + relativedelta(months=sample_month), end_date=end + relativedelta(months=sample_month))\
@@ -1254,7 +1259,8 @@ weather_df.pop("latitude")
 weather_df = weather_df.query("temperature==temperature")
 
 # group by datetime
-aggregations = {"snowDepth": "mean", "precipTime": "max", "temperature": "mean", "precipDepth": "max"}
+aggregations = {"snowDepth": "mean", "precipTime": "max",
+                "temperature": "mean", "precipDepth": "max"}
 weather_df_grouped = weather_df.groupby("datetime").agg(aggregations)
 weather_df_grouped.head(10)
 ```
@@ -1370,7 +1376,8 @@ weather_df_grouped.head(10)
 将所准备的出租车数据和节假日数据与新的天气数据合并。 这次只需要 `datetime` 键，因此重新执行数据左联接。 对新数据帧运行 `describe()` 函数，以查看各个字段的汇总统计信息。
 
 ```python
-taxi_holidays_weather_df = pd.merge(taxi_holidays_df, weather_df_grouped, how="left", on=["datetime"])
+taxi_holidays_weather_df = pd.merge(
+    taxi_holidays_df, weather_df_grouped, how="left", on=["datetime"])
 taxi_holidays_weather_df.describe()
 ```
 
@@ -1569,13 +1576,16 @@ taxi_holidays_weather_df.describe()
 使用查询函数筛选掉这些异常，然后删除定型不需要的最后几列。
 
 ```python
-final_df = taxi_holidays_weather_df.query("pickupLatitude>=40.53 and pickupLatitude<=40.88")
-final_df = final_df.query("pickupLongitude>=-74.09 and pickupLongitude<=-73.72")
+final_df = taxi_holidays_weather_df.query(
+    "pickupLatitude>=40.53 and pickupLatitude<=40.88")
+final_df = final_df.query(
+    "pickupLongitude>=-74.09 and pickupLongitude<=-73.72")
 final_df = final_df.query("tripDistance>0 and tripDistance<75")
 final_df = final_df.query("passengerCount>0 and passengerCount<100")
 final_df = final_df.query("totalAmount>0")
 
-columns_to_remove_for_training = ["datetime", "pickupLongitude", "pickupLatitude", "dropoffLongitude", "dropoffLatitude", "country_code"]
+columns_to_remove_for_training = ["datetime", "pickupLongitude",
+                                  "pickupLatitude", "dropoffLongitude", "dropoffLatitude", "country_code"]
 for col in columns_to_remove_for_training:
     final_df.pop(col)
 ```
@@ -1755,7 +1765,8 @@ x_df = final_df
 ```python
 from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=222)
+X_train, X_test, y_train, y_test = train_test_split(
+    x_df, y_df, test_size=0.2, random_state=222)
 ```
 
 ### <a name="load-workspace-and-configure-experiment"></a>加载工作区并配置试验
@@ -1767,7 +1778,8 @@ X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 from azureml.core.workspace import Workspace
 from azureml.core.experiment import Experiment
 
-workspace = Workspace.get(subscription_id="<your-subscription-id>", name="<your-workspace-name>", resource_group="<your-resource-group>")
+workspace = Workspace.get(subscription_id="<your-subscription-id>",
+                          name="<your-workspace-name>", resource_group="<your-resource-group>")
 experiment = Experiment(workspace, "opendatasets-ml")
 ```
 
@@ -1792,7 +1804,7 @@ automl_config = AutoMLConfig(task="regression",
                              primary_metric="spearman_correlation",
                              preprocess=True,
                              n_cross_validations=5
-                            )
+                             )
 ```
 
 ### <a name="submit-experiment"></a>提交试验
@@ -1919,7 +1931,7 @@ print(1 - mean_abs_percent_error)
     Model Accuracy:
     0.8507638035507564
 
-由于我们使用的数据样本相对完整数据集 (n=11748) 而言非常小，因此模型准确度非常高（为 85%），且在预测出租车车费价格时的 RMSE 误差约为 +- $4.00。 下一步若要提高准确度，请返回到此笔记本的第 2 个单元格，并从每月 2,000 条记录开始增加样本大小，然后重新运行整个试验，以使用更多数据来重新定型此模型。
+由于你使用的数据样本相对完整数据集 (n=11748) 而言非常小，因此模型准确度非常高（为 85%），且在预测出租车车费价格时的 RMSE 误差约为 +- $4.00。 下一步若要提高准确度，请返回到此笔记本的第 2 个单元格，并从每月 2,000 条记录开始增加样本大小，然后重新运行整个试验，以使用更多数据来重新定型此模型。
 
 ## <a name="clean-up-resources"></a>清理资源
 

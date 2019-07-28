@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Python 将查询发送到必应当地企业搜索 API | Microsoft Docs
+title: 快速入门 - 使用 Python 将查询发送到必应当地企业搜索 API
 titleSuffix: Azure Cognitive Services
 description: 使用本文开始在 Python 中使用必应当地企业搜索 API。
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: cfc4bd95214c56dfbe940b7a2785d297f59105a9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c6da3c9a169f3b6e5885499d3a7bc5347902782e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592734"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423323"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>快速入门：使用 Python 将查询发送到必应当地企业搜索 API
 

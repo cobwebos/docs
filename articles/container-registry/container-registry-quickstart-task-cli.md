@@ -3,17 +3,18 @@ title: 快速入门 - 在 Azure 容器注册表中生成和运行容器映像
 description: 使用 Azure 容器注册表快速运行任务，以便在云中按需生成和运行容器映像。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: be120ea8ae588da486c9a5acd4eb7bfdb4e45dee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e5e02d8194f9164a03bb27d932df45d91486c518
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701572"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310630"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入门：使用 Azure 容器注册表任务生成和运行容器映像
 
@@ -21,7 +22,7 @@ ms.locfileid: "64701572"
 
 完成本快速入门后，请探索 ACR 任务的更高级功能。 ACR 任务可以基于代码提交或基础映像更新自动生成映像，或者同时测试多个容器，此外还支持其他一些方案。 
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户][azure-account]。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][azure-account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -29,9 +30,9 @@ ms.locfileid: "64701572"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-如果没有容器注册表，请先使用 [az group create][az-group-create] 命令创建一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+如果还没有容器注册表，请先使用 [az group create][az-group-create] 命令创建一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -45,7 +46,7 @@ az group create --name myResourceGroup --location eastus
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-此示例创建一个基本注册表，该注册表已针对成本进行优化，可让开发人员了解 Azure 容器注册表。 有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+此示例创建一个基本注册表，该注册表已针对成本进行优化，可让开发人员了解 Azure 容器注册表。  有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
 
 ## <a name="build-an-image-from-a-dockerfile"></a>基于 Dockerfile 生成映像
 

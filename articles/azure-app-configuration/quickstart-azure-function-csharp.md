@@ -14,26 +14,22 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a4900964fb6feeb4c7cb0f147d3681031cac6a7b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 5eb9d0631a4d5f4221b5184198290a5109655408
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798425"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326584"
 ---
-# <a name="quickstart-create-an-azure-function-with-app-configuration"></a>快速入门：使用应用配置创建 Azure 函数
+# <a name="quickstart-create-an-azure-function-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 Azure 函数
 
-Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码即可在一个位置轻松存储和管理所有应用程序设置。 该快速入门展示了如何将此服务融入 Azure 函数。 
-
-你可使用任意代码编辑器来执行该快速入门中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
-
-![在本地完成该快速入门](./media/quickstarts/dotnet-core-function-launch-local.png)
+在本快速入门中，会将 Azure 应用程序配置服务合并到 Azure 函数中，以集中存储和管理与代码分离的所有应用程序设置。
 
 ## <a name="prerequisites"></a>先决条件
 
-要学习该快速入门，请安装 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。 确保还安装了 **Azure 开发**工作负荷。 另请安装 [latest Azure Functions 工具](../azure-functions/functions-develop-vs.md#check-your-tools-version)。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- 包含 **Azure 开发**工作负载的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
+- [Azure Functions 工具](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 

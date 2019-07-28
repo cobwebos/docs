@@ -1,7 +1,7 @@
 ---
-title: 快速入门：提取手写文本 - REST、Python
+title: 快速入门：提取印刷体文本和手写文本 - REST、Python
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用计算机视觉 API 和 Python 从图像中提取手写文本。
+description: 在本快速入门中，你将使用计算机视觉 API 和 Python 从图像中提取印刷体文本和手写文本。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ec58617556ff54bd2273160bb4af80e473ac1693
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 729228b224bdf708fbcf9caf4742f9bb7ad5cff3
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603559"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311979"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>快速入门：使用计算机视觉 REST API 和 Python 提取手写文本
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>快速入门：使用计算机视觉 REST API 和 Python 提取印刷体文本和手写文本
 
-在本快速入门中，你将使用计算机视觉的 REST API 从图像中提取手写文本。 使用[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API 和[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API，可以检测图像中的手写文本，并将识别的字符提取到计算机可用的字符流中。
+在本快速入门中，你将使用计算机视觉 REST API 从图像中提取印刷体文本和/或手写文本。 使用[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)和[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法，可以检测图像中的文本，并将识别的字符提取到计算机可读的字符流中。 该 API 将确定用于每行文本的识别模型，因此它支持同时包含印刷体文本和手写文本的图像。
 
 > [!IMPORTANT]
 > 不同于 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，批量读取方法返回 `Operation-Content` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API，同时检查状态并返回批量读取方法调用的结果。
@@ -44,10 +44,10 @@ ms.locfileid: "67603559"
 1. 必要时在代码中进行如下更改：
     1. 将 `subscription_key` 的值替换为你的订阅密钥。
     1. 如有必要，请将 `vision_base_url` 的值替换为获取的订阅密钥所在的 Azure 区域中的计算机视觉资源的终结点 URL。
-    1. （可选）将 `image_url` 的值替换为要从中提取手写文本的另一图像的 URL。
-1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`get-handwritten-text.py`。
+    1. （可选）将 `image_url` 的值替换为要从中提取文本的另一图像的 URL。
+1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`get-text.py`。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `python` 命令运行示例。 例如，`python get-handwritten-text.py` 。
+1. 在提示符处，使用 `python` 命令运行示例。 例如，`python get-text.py` 。
 
 ```python
 import requests
@@ -83,7 +83,7 @@ response = requests.post(
     text_recognition_url, headers=headers, json=data)
 response.raise_for_status()
 
-# Extracting handwritten text requires two API calls: One call to submit the
+# Extracting text requires two API calls: One call to submit the
 # image for processing, the other to retrieve the text found in the image.
 
 # Holds the URI used to retrieve the recognized text.

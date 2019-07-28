@@ -6,6 +6,7 @@ documentationcenter: dev-center-name
 author: danieldobalian
 manager: CelesteDG
 ms.service: active-directory
+ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
 ms.date: 07/15/2019
@@ -13,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 910069ab89cef18794e637b6bfbbc57fb732871c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f22cf95fcf13f0038525b2cac282f01959fa7eb6
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872087"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335534"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-app"></a>从 iOS 应用将用户登录并调用 Microsoft Graph
 
@@ -51,21 +52,21 @@ ms.locfileid: "67872087"
 
 ## <a name="create-a-new-project"></a>创建新项目
 
-1. 打开 Xcode，并选择“新建 Xcode 项目”。
-2. 选择“iOS” > “单一视图应用”，然后选择“下一步”。
+1. 打开 Xcode，并选择“新建 Xcode 项目”  。
+2. 选择“iOS” > “单一视图应用”，然后选择“下一步”。   
 3. 提供产品名称。
-4. 将“语言”设置为“Swift”，然后选择“下一步”。
-5. 选择一个文件夹以创建应用，然后单击“创建”。
+4. 将“语言”设置为“Swift”，然后选择“下一步”。   
+5. 选择一个文件夹以创建应用，然后单击“创建”  。
 
 ## <a name="register-your-application"></a>注册应用程序
 
 1. 转到 [Azure 门户](https://aka.ms/MobileAppReg)
-2. 打开[“应用注册”边栏选项卡](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)，单击“+新建注册”。
-3. 输入应用的“名称”，然后在不设置重定向 URI 的情况下单击“注册”。
-4. 在显示的窗格的“管理”部分，选择“身份验证”。
-5. 单击靠近屏幕顶部的“尝试新体验”，打开新的应用注册体验，然后单击“+ 新建注册” > “+ 添加平台” > “iOS”。
-    - 输入项目的捆绑 ID。 如果下载了代码，则为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。此时捆绑标识符会显示在“标识”部分。
-6. 单击 `Configure` 并保存出现在“iOS 配置”页中的“MSAL 配置”，以便在稍后配置应用时输入它。  单击“完成”。
+2. 打开[“应用注册”边栏选项卡](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)，单击“+新建注册”。 
+3. 输入应用的“名称”，然后在不设置重定向  URI 的情况下单击“注册”。 
+4. 在显示的窗格的“管理”部分，  选择“身份验证”  。
+5. 单击靠近屏幕顶部的“尝试新体验”，  打开新的应用注册体验，然后单击“+ 新建注册”   > “+ 添加平台”   >   “iOS”。
+    - 输入项目的捆绑 ID。 如果下载了代码，则为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。  此时捆绑标识符会显示在“标识”部分。 
+6. 单击 `Configure` 并保存出现在“iOS 配置”页中的“MSAL 配置”   ，以便在稍后配置应用时输入它。  单击“完成”  。
 
 ## <a name="add-msal"></a>添加 MSAL
 
@@ -128,7 +129,7 @@ var applicationContext : MSALPublicClientApplication?
 
 在此步骤中需注册 `CFBundleURLSchemes`，以便用户在登录后可重定向回应用。 另外，`LSApplicationQueriesSchemes` 也允许应用使用 Microsoft Authenticator。
 
-在 Xcode 中将 `Info.plist` 作为源代码文件打开，在 `<dict>` 节中添加以下内容。 将 `[BUNDLE_ID]` 替换为在 Azure 门户中使用过的值。如果你已下载代码，则应知道该值为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。此时捆绑标识符会显示在“标识”部分。
+在 Xcode 中将 `Info.plist` 作为源代码文件打开，在 `<dict>` 节中添加以下内容。 将 `[BUNDLE_ID]` 替换为在 Azure 门户中使用过的值。如果你已下载代码，则应知道该值为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。  此时捆绑标识符会显示在“标识”部分。 
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -450,8 +451,8 @@ MSAL 公开了获取令牌的两种主要方法：`acquireTokenSilently()` 和 `
 默认情况下，MSAL 会在 iOS 密钥链中缓存你的应用令牌。 
 
 若要启用令牌缓存，请执行以下操作：
-1. 转到 Xcode 项目设置 >“功能”选项卡 > “启用密钥链共享”
-2. 单击“+”，输入 `com.microsoft.adalcache` 作为“密钥链组”条目。
+1. 转到 Xcode 项目设置 >“功能”选项卡   >   “启用密钥链共享”
+2. 单击“+”，  输入 `com.microsoft.adalcache` 作为“密钥链组”条目。 
 
 ### <a name="add-helper-methods"></a>添加帮助程序方法
 
@@ -498,3 +499,8 @@ MSAL 公开了获取令牌的两种主要方法：`acquireTokenSilently()` 和 `
 ## <a name="get-help"></a>获取帮助
 
 如果对本教程或 Microsoft 标识平台有疑问，请访问[帮助和支持](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)。
+
+帮助我们改进 Microsoft 标识平台。 通过完成简短的两问题调查，告诉我们你的想法。
+
+> [!div class="nextstepaction"]
+> [Microsoft 标识平台调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

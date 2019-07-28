@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 7d4e51ec9564bfb123cf73d9fe89d040f42fe650
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 11f32b1f1349ef0f9826f95832648e6949cc2f8c
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807546"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421400"
 ---
 # <a name="what-is-azure-data-share-preview"></a>什么是 Azure Data Share 预览版？
 
@@ -25,6 +25,8 @@ ms.locfileid: "67807546"
 
 可以使用 Azure Data Share 轻松地组合使用第三方提供的数据来丰富分析和 AI 方案，使见解更有说服力。 可以轻松地利用 Azure 分析工具来准备、处理和分析通过 Azure Data Share 共享的数据。 
 
+数据提供者和数据使用者都必须拥有 Azure 订阅才能共享和接收数据。 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
+
 ## <a name="scenarios-for-azure-data-share"></a>适用于 Azure Data Share 的场景
 
 Azure Data Share 可以用在许多不同的行业中。 例如，零售商可能需要与其供应商共享最近的销售点数据。 使用 Azure Data Share，零售商可以为所有供应商设置一个包含销售点数据的数据共享，按小时或按天共享销售情况。 
@@ -37,7 +39,7 @@ Azure Data Share 的另一个用例是建立数据联盟。 例如，许多不�
 
 Azure Data Share 使用基于快照的共享方法，将数据从数据提供者的 Azure 订阅移到数据使用者的 Azure 订阅。 你作为数据提供者预配一个数据共享，然后邀请接收者加入数据共享。 数据使用者通过电子邮件接收数据共享邀请。 数据使用者接受邀请以后，即可触发已共享的数据共享的完整快照。 该数据将接收到数据使用者的存储帐户中。 数据使用者可以接收已共享数据的定期增量更新，因此可以始终拥有最新版的数据。 
 
-数据提供者可以通过快照计划为数据使用者提供已共享数据的增量更新。 快照计划按小时或天提供。 数据使用者可以在接受和配置数据共享时订阅快照计划。 在共享数据会定期进行更新，而数据使用者需要最新数据的情况下，这很有用。 
+数据提供者可以通过快照计划向其数据使用者提供对与其共享的数据的增量更新。 快照计划按小时或天提供。 数据使用者可以在接受和配置数据共享时订阅快照计划。 在共享数据会定期进行更新，而数据使用者需要最新数据的情况下，这很有用。 
 
 ![数据共享流](media/data-share-flow.png)
 
@@ -78,6 +80,7 @@ Azure Data Share 利用 Azure 提供的基础安全措施来保护静态数据�
 可以在 Azure Data Share 资源级别设置访问控制，确保它由那些获得授权的用户访问。 
 
 Azure Data Share 利用 Azure 资源的托管标识（以前称为 MSI）在 Azure Active Directory 中进行自动标识管理。 利用 Azure 资源的托管标识，可以访问用于数据共享的存储帐户。 在数据提供者和数据使用者之间没有凭据交换。 有关详细信息，请参阅 [Azure 资源的托管标识页](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。 
+
 
 ## <a name="supported-regions"></a>支持的区域
 

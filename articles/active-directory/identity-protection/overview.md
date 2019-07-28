@@ -2,33 +2,27 @@
 title: Azure Active Directory 标识保护 | Microsoft Docs
 description: 了解如何使用 Azure AD 标识保护来限制攻击者利用已泄露标识或设备的能力，以及保护之前怀疑或已知受到威胁的标识或设备。
 services: active-directory
-keywords: Azure Active Directory 标识保护, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 01/29/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 660793cdba61b5438283ea54a9f7349bdfbc98e1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440501"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335390"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护是什么？
 
-Azure Active Directory[标识](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)保护，组织可以配置自动的响应检测到与用户标识相关的可疑操作。
+组织使用 Azure Active Directory [标识](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)保护可以配置对检测到的与用户标识相关的可疑操作的自动响应。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 Microsoft 在基于云的标识保护方面拥有数十载的经验。 通过 Azure Active Directory 标识保护，可以在环境中使用与 Microsoft 用于保护标识相同的保护系统。
 
@@ -37,12 +31,11 @@ Microsoft 在基于云的标识保护方面拥有数十载的经验。 通过 Az
 因此需要：
 
 - 保护任何权限级别的所有标识
-
 - 主动防止滥用遭到入侵的标识
 
 发现标识是否遭到入侵并不容易。 Azure Active Directory 使用自适应机器学习算法和试探法来检测异常和可疑事件，这些事件能指示可能遭到入侵的标识。 “标识保护”使用此数据生成报告和警报，使你能够评估检测到的问题并采取相应的缓解措施或补救措施。
 
-Azure Active Directory 标识保护不只是一个监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。 这些策略，除了提供 Azure Active Directory 的其他条件性访问控制和[企业移动性 + 安全性](https://docs.microsoft.com/enterprise-mobility-security/)(EMS)，可以自动阻止或启动自适应补救措施包括重置密码和强制实施多重身份验证。
+Azure Active Directory 标识保护不只是一个监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。 除了 Azure Active Directory 与[企业移动性 + 安全性](https://docs.microsoft.com/enterprise-mobility-security/) (EMS) 提供的条件访问控制以外，这些策略也可以自动阻止或启用自适应补救措施，包括密码重置和强制实施多重身份验证。
 
 ### <a name="identity-protection-capabilities"></a>“标识保护”功能
 
@@ -59,7 +52,7 @@ Azure Active Directory 标识保护不只是一个监视和报告工具。 若�
 - 提供基本工作流来跟踪调查
 - 轻松使用补救措施，例如密码重置
 
-**基于风险的条件性访问策略：**
+**基于风险的条件访问策略：**
 
 - 通过阻止登录或需要多重身份验证来降低风险的策略
 - 阻止或保护有风险用户帐户的策略
@@ -118,4 +111,4 @@ Azure Active Directory 使用自适应机器学习算法和试探法来检测与
 ## <a name="next-steps"></a>后续步骤
 
 - [第 9 频道：Azure AD 和标识展示：“标识保护”预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
-- [启用 Azure Active Directory Identity Protection](enable.md)
+- [启用 Azure Active Directory 标识保护](enable.md)

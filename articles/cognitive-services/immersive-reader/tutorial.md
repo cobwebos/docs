@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: f8697042ed46e0ff333f736454346908d76cf039
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 73f9ee597682cc995f3a2cc783abeee92bf11bd2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718377"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501137"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>教程：启动沉浸式阅读器 (Node.js)
 
@@ -33,7 +33,7 @@ ms.locfileid: "67718377"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 沉浸式阅读器的订阅密钥。 按照[这些说明](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)获取一个订阅密钥。
+* 为 Azure Active Directory (Azure AD) 身份验证配置的沉浸式阅读器资源。 按照[这些说明](./azure-active-directory-authentication.md)进行设置。 在配置环境属性时，将需要在此处创建的一些值。 将会话的输出保存到文本文件中，以供将来参考。
 * [Node.js](https://nodejs.org/) 和 [Yarn](https://yarnpkg.com)
 * IDE 如 [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -55,20 +55,31 @@ yarn add request
 yarn add dotenv
 ```
 
-## <a name="acquire-an-access-token"></a>获取访问令牌
+## <a name="acquire-an-azure-ad-authentication-token"></a>获取 Azure AD 身份验证令牌
 
-接下来，编写后端 API 来使用订阅密钥检索访问令牌。 需要订阅密钥和终结点才能完成下一步。 可以在 Azure 门户中的沉浸式阅读器资源的“秘钥”页中找到订阅密钥。 可以在“概述”页面中找到终结点。
+接下来，编写后端 API 以检索 Azure AD 身份验证令牌。
 
-拥有订阅密钥和终结点后，创建一个名为 .env 的新文件，并将下面的代码粘贴到其中，将 `{YOUR_SUBSCRIPTION_KEY}` 和 `{YOUR_ENDPOINT}` 分别替换为订购密钥和终结点  。
+此部分需要来自上面的 Azure AD 身份验证配置先决条件步骤的一些值。 请回头参考保存的该会话的文本文件。
+
+````text
+TenantId     => Azure subscription TenantId
+ClientId     => Azure AD ApplicationId
+ClientSecret => Azure AD Application Service Principal password
+Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
+````
+
+获得这些值后，创建一个名为“.env”  的新文件，并将以下代码粘贴到其中，提供上面的自定义属性值。
 
 ```text
-SUBSCRIPTION_KEY={YOUR_SUBSCRIPTION_KEY}
-ENDPOINT={YOUR_ENDPOINT}
+TENANT_ID={YOUR_TENANT_ID}
+CLIENT_ID={YOUR_CLIENT_ID}
+CLIENT_SECRET={YOUR_CLIENT_SECRET}
+SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
 请确保不要将此文件提交到源代码管理中，因为它包含不应公开的秘密。
 
-接下来，打开 app.js 并将以下内容添加到文件顶部  。 这会将订阅密钥和终结点作为环境变量加载到 Node 中。
+接下来，打开 app.js 并将以下内容添加到文件顶部  。 这会将 .env 文件中定义的属性作为环境变量加载到 Node 中。
 
 ```javascript
 require('dotenv').config();
@@ -80,31 +91,45 @@ require('dotenv').config();
 var request = require('request');
 ```
 
-接下来，在该行的正下方添加以下代码。 此代码创建一个 API 终结点，它使用订阅密钥获取访问令牌，然后返回该令牌。
+接下来，在该行的正下方添加以下代码。 此代码创建一个 API 终结点，该终结点使用服务主体密码获取 Azure AD 身份验证令牌，然后返回该令牌。 还有一个用于检索子域的第二个终结点。
 
 ```javascript
-router.get('/token', function(req, res, next) {
-  request.post({
-    headers: {
-        'Ocp-Apim-Subscription-Key': process.env.SUBSCRIPTION_KEY,
-        'content-type': 'application/x-www-form-urlencoded'
-    },
-    url: process.env.ENDPOINT
-  },
-  function(err, resp, token) {
-    return res.send(token);
-  });
+router.get('/getimmersivereadertoken', function(req, res) {
+  request.post ({
+          headers: {
+              'content-type': 'application/x-www-form-urlencoded'
+          },
+          url: `https://login.windows.net/${process.env.TENANT_ID}/oauth2/token`,
+          form: {
+              grant_type: 'client_credentials',
+              client_id: process.env.CLIENT_ID,
+              client_secret: process.env.CLIENT_SECRET,
+              resource: 'https://cognitiveservices.azure.com/'
+          }
+      },
+      function(err, resp, token) {
+          if (err) {
+              return res.status(500).send('CogSvcs IssueToken error');
+          }
+
+          return res.send(JSON.parse(token).access_token);
+      }
+  );
+});
+
+router.get('/subdomain', function (req, res) {
+    return res.send(process.env.SUBDOMAIN);
 });
 ```
 
-应该以某种形式的身份验证（例如 [OAuth](https://oauth.net/2/)）来保护此 API 终结点；这项工作超出了本教程的范围。
+**getimmersivereadertoken** API 终结点应该以某种形式的身份验证（例如，[OAuth](https://oauth.net/2/)）进行保护，以防止未经授权的用户获取令牌以用于你的沉浸式阅读器服务和计费；该工作超出了本教程的范围。
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>启动沉浸式阅读器以显示示例内容
 
 1. 打开 views\layout.pug，并在 `head` 标记之下、`body` 标记之上添加以下代码  。 这些 `script` 标记将加载[沉浸式阅读器 SDK ](https://github.com/Microsoft/immersive-reader-sdk)和 jQuery。
 
     ```pug
-    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.1.js')
+    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
@@ -118,21 +143,47 @@ router.get('/token', function(req, res, next) {
       p(id='content') The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers.
       div(class='immersive-reader-button' data-button-style='iconAndText' data-locale='en-US' onclick='launchImmersiveReader()')
       script.
-        function launchImmersiveReader() {
-          // First, get a token using our /token endpoint
-          $.ajax('/token', { success: token => {
-            // Second, grab the content from the page
+
+        function getImmersiveReaderTokenAsync() {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: '/getimmersivereadertoken',
+                    type: 'GET',
+                    success: token => {
+                        resolve(token);
+                    },
+                    error: err => {
+                        console.log('Error in getting token!', err);
+                        reject(err);
+                    }
+                });
+            });
+        }
+
+        function getSubdomainAsync() {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: '/subdomain',
+                    type: 'GET',
+                    success: subdomain => { resolve(subdomain); },
+                    error: err => { reject(err); }
+                });
+            });
+        }
+
+        async function launchImmersiveReader() {
             const content = {
-              title: document.getElementById('title').innerText,
-              chunks: [ {
-                content: document.getElementById('content').innerText + '\n\n',
-                lang: 'en'
-              } ]
+                title: document.getElementById('title').innerText,
+                chunks: [{
+                    content: document.getElementById('content').innerText + '\n\n',
+                    lang: 'en'
+                }]
             };
 
-            // Third, launch the Immersive Reader
-            ImmersiveReader.launchAsync(token, content);
-          }});
+            const token = await getImmersiveReaderTokenAsync();
+            const subdomain = await getSubdomainAsync();
+
+            ImmersiveReader.launchAsync(token, subdomain, content);
         }
     ```
 
@@ -214,4 +265,4 @@ router.get('/token', function(req, res, next) {
 ## <a name="next-steps"></a>后续步骤
 
 * 浏览[沉浸式阅读器 SDK ](https://github.com/Microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](./reference.md)
-* 在[ GitHub ](https://github.com/microsoft/immersive-reader-sdk/samples/advanced-csharp)上查看代码示例
+* 在[ GitHub ](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/advanced-csharp)上查看代码示例

@@ -3,7 +3,7 @@ title: Microsoft 标识平台 iOS 快速入门 | Azure
 description: 了解如何在 iOS 应用程序中将用户登录并查询 Microsoft Graph。
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: brandwe
 manager: CelesteDG
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.author: brandwe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3802d8f92913e416cc6a80f899179fde80cec30
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: bfb136529c606cafa235a525fcbe6e03b1d583d0
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962591"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335593"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>快速入门：从 iOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -90,8 +90,7 @@ ms.locfileid: "65962591"
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_here"
 >    let kAuthority = "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
->
->    ```
+>    ``` 
 > 1. 右键单击 **Info.plist**，然后选择“打开为”   > “源代码”。 
 > 1. 在 dict 根节点下，将相关内容替换为你的***捆绑 ID***：
 >
@@ -108,6 +107,10 @@ ms.locfileid: "65962591"
 > 
 >    ```
 > 1. 生成并运行应用！ 
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > 本快速入门支持 Enter_the_Supported_Account_Info_Here。
 
 > [!div renderon="docs"]
 >
@@ -253,3 +256,8 @@ applicationContext.acquireTokenSilent(with: parameters) { (result, error) in /* 
 > [调用 Graph API iOS 教程](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+帮助我们改进 Microsoft 标识平台。 通过完成简短的两问题调查，告诉我们你的想法。
+
+> [!div class="nextstepaction"]
+> [Microsoft 标识平台调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

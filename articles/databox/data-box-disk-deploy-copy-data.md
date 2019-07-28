@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 07/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 70890dcd72cadc55e56410381a94ac071b248a91
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 336cc7dae00d06e38e4be8671f1cb11ed73e5edc
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147519"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414643"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box Disk 并进行验证
 
 本教程介绍如何从主机复制数据，然后生成校验和来验证数据完整性。
@@ -287,3 +289,43 @@ ms.locfileid: "67147519"
 
 > [!div class="nextstepaction"]
 > [将 Azure Data Box 寄回到 Microsoft](./data-box-disk-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-disks"></a>将数据复制到磁盘
+
+执行以下步骤，连接到计算机并将其上的数据复制到 Data Box Disk。
+
+1. 查看已解锁的驱动器的内容。 根据放置 Data Box Disk 顺序时选择的选项，驱动器中预先创建的文件夹和子文件夹的列表会有所不同。
+2. 将数据复制到与适当数据格式对应的文件夹中。 例如，将非结构化数据复制到 BlockBlob  文件夹，将 VHD 或 VHDX 数据复制到 PageBlob  文件夹，并将文件复制到 AzureFile  文件夹。 如果数据格式与相应的文件夹（存储类型）不匹配，则在后续步骤中，数据将无法上传到 Azure。
+
+    - 在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob  和 PageBlob  文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 $root 中。 
+    - $root 容器中的所有文件将始终作为块 blob 上传。
+    - 将文件复制到“AzureFile”文件夹中的文件夹  。 AzureFile 文件夹中的子文件夹创建文件共享  。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传  。
+    - 如果根目录中存在文件和文件夹，则必须先将它们移到另一个文件夹，然后开始复制数据。
+    - 如果你的订单将托管磁盘作为存储目标之一，请参阅[托管磁盘](data-box-disk-limits.md#managed-disk-naming-conventions)的命名约定。
+
+    > [!IMPORTANT]
+    > 所有容器、blob 和文件都应符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)和 [Azure 对象大小限制](data-box-disk-limits.md#azure-object-size-limits)。 如果不遵循这些规则或限制，则无法将数据上传到 Azure。
+
+3. 使用文件资源管理器或任何与 SMB 兼容的文件复制工具（如 Robocopy）通过拖放来复制数据。 可以使用以下命令启动多个复制作业：
+
+    ```
+    Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt
+    ```
+4. 打开目标文件夹，查看并验证复制的文件。 如果复制过程中遇到任何错误，请下载用于故障排除的日志文件。 日志文件位于 robocopy 命令中指定的位置。
+
+如果使用多个磁盘，并且需要拆分大型数据集并将其复制到所有磁盘中，请使用[拆分和复制](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks)的可选过程。
+
+## <a name="validate-data"></a>验证数据
+
+执行以下步骤以验证数据。
+
+1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *DataBoxDiskImport* 文件夹中进行校验和验证。
+2. 使用选项 2 验证文件并生成校验和。 根据具体的数据大小，此步骤可能需要一段时间。 如果在验证和校验和生成过程中出现任何错误，则会向你发送通知并提供指向错误日志的链接。
+
+    如果在验证过程中看到错误，请参阅[排查验证错误](data-box-disk-troubleshoot.md)。
+
+::: zone-end

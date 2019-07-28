@@ -3,17 +3,18 @@ title: 快速入门 - 在 Azure 中创建专用 Docker 注册表 - Azure CLI
 description: 快速了解如何使用 Azure CLI 创建专用 Docker 容器注册表。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 24bdd52673c65d039166dc28f9f0a0a784569a1a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 6c511c56ab8df14cc6ea81363772ae0fd6d61272
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678694"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309534"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建专用容器注册表
 
@@ -21,7 +22,7 @@ Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专
 
 本快速入门需要运行 Azure CLI（建议运行 2.0.55 或更高版本）。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
-还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
+还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac], [Windows][docker-windows] 或 [Linux][docker-Linux] 系统上轻松配置 Docker。
 
 由于 Azure Cloud Shell 并不包括所有必需的 Docker 组件（`dockerd` 守护程序），因此不能将 Cloud Shell 用于本快速入门。
 
@@ -29,7 +30,7 @@ Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专
 
 使用 [az group create][az-group-create] 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -37,9 +38,9 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-在本快速入门中，请创建一个基本注册表。该注册表已优化过成本，是供开发者了解 Azure 容器注册表的选项。 有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+本快速入门将创建一个“基本”注册表。该注册表已针对成本进行优化，是可供开发人员了解 Azure 容器注册表的选项。  有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
 
-使用 [az acr create][az-acr-create] 命令创建 ACR 实例。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 以下示例使用 myContainerRegistry007。 将其更新为唯一值。
+使用 [az acr create][az-acr-create] 命令创建 ACR 实例。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 以下示例使用 myContainerRegistry007  。 将其更新为唯一值。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic
@@ -98,7 +99,7 @@ Result
 hello-world
 ```
 
-以下示例列出了 hello-world 存储库中的标记。
+以下示例列出了 hello-world 存储库中的标记  。
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository hello-world --output table
@@ -124,7 +125,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何使用 Azure CLI 创建 Azure 容器注册表，如何将容器映像推送到注册表，以及如何拉取并运行注册表中的映像。 若要加深对 ACR 的了解，请继续阅读 Azure 容器注册表教程。
+本快速入门介绍了如何使用 Azure CLI 创建 Azure 容器注册表，如何将容器映像推送到注册表，以及如何拉取并运行注册表中的映像。 请继续阅读 Azure 容器注册表教程，以更深入地了解 ACR。
 
 > [!div class="nextstepaction"]
 > [Azure 容器注册表教程][container-registry-tutorial-quick-task]

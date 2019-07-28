@@ -1,7 +1,7 @@
 ---
-title: 快速入门：提取手写文本 - JavaScript
+title: 快速入门：提取印刷体文本和手写文本 - REST、JavaScript
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用计算机视觉 API 和 JavaScript 从图像中提取手写文本。
+description: 在本快速入门中，你将使用计算机视觉 API 和 JavaScript 从图像中提取印刷体文本和手写文本。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f4e627286f6a32816eafa84e860cb8eb49111f67
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 42bb85b5dfab6c9799d89ff92ab5e5b3c0230019
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604347"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311993"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 提取手写文本
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 提取印刷体文本和手写文本
 
-在本快速入门中，你将使用计算机视觉的 REST API 从图像中提取手写文本。 使用[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API 和[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API，可以检测图像中的手写文本，并将识别的字符提取到计算机可用的字符流中。
+在本快速入门中，你将使用计算机视觉 REST API 从图像中提取印刷体文本和/或手写文本。 使用[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)和[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法，可以检测图像中的文本，并将识别的字符提取到计算机可读的字符流中。 该 API 将确定用于每行文本的识别模型，因此它支持同时包含印刷体文本和手写文本的图像。
 
 > [!IMPORTANT]
 > 不同于 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，批量读取方法返回 `Operation-Content` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法，用于检查状态并返回批量读取方法调用的结果。
@@ -39,8 +39,8 @@ ms.locfileid: "67604347"
 1. 必要时在代码中进行如下更改：
     1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
     1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法的终结点 URL。
-    1. （可选）将 `inputImage` 控件的 `value` 属性的值替换为要从中提取手写文本的另一图像的 URL。
-1. 将代码保存为以 `.html` 为扩展名的文件。 例如，`get-handwriting.html`。
+    1. （可选）将 `inputImage` 控件的 `value` 属性的值替换为要从中提取文本的另一图像的 URL。
+1. 将代码保存为以 `.html` 为扩展名的文件。 例如，`get-text.html`。
 1. 打开一个浏览器窗口。
 1. 在浏览器中，将文件拖放到浏览器窗口。
 1. 在浏览器中显示网页时，选择“读取图像”按钮  。
@@ -49,7 +49,7 @@ ms.locfileid: "67604347"
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Handwriting Sample</title>
+    <title>Text Recognition Sample</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
@@ -99,10 +99,10 @@ ms.locfileid: "67604347"
 
         .done(function(data, textStatus, jqXHR) {
             // Show progress.
-            $("#responseTextArea").val("Handwritten text submitted. " +
+            $("#responseTextArea").val("Text submitted. " +
                 "Waiting 10 seconds to retrieve the recognized text.");
 
-            // Note: The response may not be immediately available. Handwriting
+            // Note: The response may not be immediately available. Text
             // recognition is an asynchronous operation that can take a variable
             // amount of time depending on the length of the text you want to
             // recognize. You may need to wait or retry the GET operation.
@@ -160,8 +160,8 @@ ms.locfileid: "67604347"
         });
     };
 </script>
-<h1>Read handwritten image:</h1>
-Enter the URL to an image of handwritten text, then click
+<h1>Read text from image:</h1>
+Enter the URL to an image of text, then click
 the <strong>Read image</strong> button.
 <br><br>
 Image to read:

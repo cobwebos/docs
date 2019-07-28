@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: 51f84234ac35be5f60d1aaa5dac661ad9ce5e0c2
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: da31b6a880344de918a3b3e0f89f60d985db2ce7
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257898"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406018"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Spark 结构化流式处理与 Apache Kafka on HDInsight 配合使用
 
@@ -44,7 +44,7 @@ Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这�
 > 
 > 为方便起见，本文档链接到了一个模板，该模板可创建所有所需 Azure 资源。 
 >
-> 有关在虚拟网络中使用 HDInsight 的详细信息，请参阅[使用虚拟网络扩展 HDInsight](hdinsight-extend-hadoop-virtual-network.md) 文档。
+> 有关在虚拟网络中使用 HDInsight 的详细信息，请参阅[为 HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)文档。
 
 ## <a name="structured-streaming-with-apache-kafka"></a>将结构化流式处理与 Apache Kafka 配合使用
 
@@ -142,8 +142,8 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     | 设置 | 值 |
     | --- | --- |
-    | 订阅 | Azure 订阅 |
-    | 资源组 | 包含资源的资源组。 |
+    | Subscription | Azure 订阅 |
+    | Resource group | 包含资源的资源组。 |
     | 位置 | 创建资源时所在的 Azure 区域。 |
     | Spark 群集名称 | Spark 群集的名称。 前六个字符必须与 Kafka 群集名称不同。 |
     | Kafka 群集名称 | Kafka 群集的名称。 前六个字符必须与 Spark 群集名称不同。 |

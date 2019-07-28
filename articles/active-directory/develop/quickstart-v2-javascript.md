@@ -8,20 +8,20 @@ manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
+ms.custom: aaddev
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2182708ea459b578a2a9a94213ab41e76821aefc
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 3ca7e7f282d63160cd1f729fba00f6d7d7704270
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514353"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334131"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>快速入门：通过 JavaScript 单页应用程序将用户登录并获取访问令牌
 
@@ -60,7 +60,7 @@ ms.locfileid: "67514353"
 > 1. “注册应用程序”页显示后，请输入应用程序的名称。 
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
 > 1. 在“重定向 URI”部分的下拉列表中，选择“Web”平台，然后将值设置为 `http://localhost:30662/`。  
-> 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用。  
+> 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用   。
 > 1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”。 
 > 1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框。     由于此应用需要将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
 > 1. 在窗格顶部，选择“保存”  。
@@ -113,7 +113,7 @@ var msalConfig = {
 > [!div renderon="docs"]
 >
 > 其中：
-> - *\<Enter_the_Application_Id_here>* 是已注册的应用程序的“应用程序(客户端) ID”。 
+> - *\<Enter_the_Application_Id_here>* 是已注册的应用程序的“应用程序(客户端) ID”  。
 > - *\<Enter_the_Tenant_info_here >* 设置为以下选项之一：
 >    - 如果应用程序支持“此组织目录中的帐户”  ，请将此值替换为“租户 ID”  或“租户名称”  （例如，*contoso.microsoft.com*）。
 >    - 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**  。
@@ -275,3 +275,8 @@ myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
 
 > [!div class="nextstepaction"]
 > [MSAL.js GitHub 存储库](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+
+帮助我们改进 Microsoft 标识平台。 通过完成简短的两问题调查，告诉我们你的想法。
+
+> [!div class="nextstepaction"]
+> [Microsoft 标识平台调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

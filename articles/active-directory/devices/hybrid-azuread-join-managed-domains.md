@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24888934d7e89a13b1b07b7138be476575fc306
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c7781651536275eba60bfde49e00a450dde6d3e1
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204616"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357044"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
@@ -143,7 +143,7 @@ ms.locfileid: "67204616"
 
 ### <a name="configure-seamless-sso"></a>配置无缝 SSO
 
-若要在使用 [PHS]../hybrid/whatis-phs.md) 或 [PTA](../hybrid/how-to-connect-pta.md) 作为 Azure AD 云身份验证方法的托管域中成功完成 Windows 下层设备的混合 Azure AD 联接，还必须[配置无缝 SSO](../hybrid/how-to-connect-sso-quick-start.md#step-2-enable-the-feature)。
+若要在使用 [PHS](../hybrid/whatis-phs.md) 或 [PTA](../hybrid/how-to-connect-pta.md) 作为 Azure AD 云身份验证方法的托管域中成功完成 Windows 下层设备的混合 Azure AD 联接，还必须[配置无缝 SSO](../hybrid/how-to-connect-sso-quick-start.md#step-2-enable-the-feature)。
 
 ### <a name="install-microsoft-workplace-join-for-windows-downlevel-computers"></a>安装适用于 Windows 下层计算机的 Microsoft Workplace Join
 

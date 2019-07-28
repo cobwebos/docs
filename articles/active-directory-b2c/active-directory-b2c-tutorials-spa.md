@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 07/08/2019
+ms.date: 07/24/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 496cf801a44638af61306b43791abce9466e2cb2
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 6884cb7b10da3996977f2aea7693625bc45c3139
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835685"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68369573"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在单页应用程序中启用身份验证
 
@@ -41,7 +41,7 @@ ms.locfileid: "67835685"
 另外，需要在本地开发环境中备好以下项：
 
 * 代码编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/) 或 [Visual Studio 2019](https://www.visualstudio.com/downloads/)
-* [.NET Core SDK 2.0.0](https://www.microsoft.com/net/core) 或更高版本
+* [.NET Core SDK 2.2](https://dotnet.microsoft.com/download) 或更高版本
 * [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="update-the-application"></a>更新应用程序
@@ -58,7 +58,7 @@ ms.locfileid: "67835685"
 
 ## <a name="get-the-sample-code"></a>获取示例代码
 
-在本教程中，我们配置一个从 GitHub 下载的代码示例。 该示例演示单页应用程序可以如何使用 Azure AD B2C 执行用户注册和登录，以及如何调用受保护的 Web API。
+在本教程中，我们配置一个从 GitHub 下载的代码示例。 该示例演示单页应用程序如何使用 Azure AD B2C 执行用户注册和登录，以及如何调用受保护的 Web API。
 
 从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)或克隆该示例。
 
@@ -115,7 +115,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ### <a name="sign-up-using-an-email-address"></a>使用电子邮件地址注册
 
-1. 单击“登录”  ，注册为应用程序用户。 这将使用在前面的步骤中指定的 **B2C_1_signupsignin1** 用户流。
+1. 单击“登录”  以启动在前面步骤中指定的 B2C_1_signupsignin1  用户流。
 1. Azure AD B2C 会显示带注册链接的登录页面。 由于你还没有帐户，因此请单击“立即注册”链接。 
 1. 注册工作流会显示一个页面，用于收集用户的标识并通过电子邮件地址对其进行验证。 注册工作流还收集用户的密码和请求的属性（在用户流中定义）。
 
@@ -133,11 +133,15 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 登录后，应用显示“权限不足”错误 - 这是**预期行为**：
 
-`ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.`
+```Output
+ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.
+Correlation ID: ce15bbcc-0000-0000-0000-494a52e95cd7
+Timestamp: 2019-07-20 22:17:27Z
+```
 
-收到此错误是因为你正在尝试从演示目录访问资源，但你的访问令牌仅适用于 Azure AD 目录。 因此，该 API 调用未经授权。
+你会收到此错误，是因为 Web 应用程序正在尝试访问受演示目录 fabrikamb2c  保护的 Web API。 由于你的访问令牌仅对 Azure AD 目录有效，因此 API 调用是未经授权的。
 
-请继续学习此系列中的下一教程（参见[后续步骤](#next-steps)），了解如何为目录创建受保护的 Web API。
+若要修复此错误，请继续学习本系列中的下一教程（请参阅[后续步骤](#next-steps)），了解如何为目录创建受保护的 Web API。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -151,4 +155,4 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 现在可转到此系列的下一教程，了解如何授予用户访问权限，以便从 SPA 访问受保护的 Web API：
 
 > [!div class="nextstepaction"]
-> [教程：从单页应用使用 Azure Active Directory B2C 授予对 ASP.NET Core Web API 的访问权限](active-directory-b2c-tutorials-spa-webapi.md)
+> [教程：使用 Azure AD B2C 授予从 SPA 访问 ASP.NET Core Web API 的权限](active-directory-b2c-tutorials-spa-webapi.md)
