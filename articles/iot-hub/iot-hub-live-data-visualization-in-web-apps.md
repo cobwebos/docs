@@ -143,7 +143,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 在浏览器中打开 `http://localhost:3000`。
 
-在“选择设备”列表中选择你的设备，以查看设备发送到 IoT 中心的最后 50 个温度和湿度数据点的运行图。 
+在“选择设备”列表中选择你的设备，以查看设备发送到 IoT 中心的最后 50 个温度和湿度数据点的运行图。
 
 ![显示实时温度和湿度的 Web 应用页](./media/iot-hub-live-data-visualization-in-web-apps/web-page-output.png)
 
@@ -249,9 +249,9 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ### <a name="azure-app-service-issues"></a>Azure 应用服务问题
 
-* 在 Azure 门户中转到你的 Web 应用。 在左窗格中的“监视”下，选择“应用服务日志”。   启用“应用程序日志记录(文件系统)”，将“级别”设置为“错误”，并选择“保存”。    然后打开“日志流”（在“监视”下）。  
+* 在 Azure 门户中转到你的 Web 应用。 在左窗格中的“监视”下，选择“应用服务日志”。 启用“应用程序日志记录(文件系统)”，将“级别”设置为“错误”，并选择“保存”。 然后打开“日志流”（在“监视”下）。
 
-* 在 Azure 门户上的 Web 应用中，在“开发工具”下选择“控制台”，然后使用 `node -v` 和 `npm -v` 验证 node 和 npm 版本。  
+* 在 Azure 门户上的 Web 应用中，在“开发工具”下选择“控制台”，然后使用 `node -v` 和 `npm -v` 验证 node 和 npm 版本。
 
 * 如果看到了有关找不到包的错误，则可能表示步骤的运行顺序不当。 部署站点（使用 `git push`）时，应用服务将会根据当前配置的 node 版本运行 `npm install`。 如果以后在配置中更改此版本，则需要对代码进行无意义的更改，然后再次推送。
 

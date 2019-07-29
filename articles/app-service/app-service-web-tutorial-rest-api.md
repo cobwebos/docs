@@ -158,7 +158,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 dotnet run
 ```
 
-导航到浏览器应用 (`http://localhost:5000`)。 在浏览器中打开开发人员工具窗口（在用于 Windows 的 Chrome 中使用 `Ctrl`+`Shift`+`i`），检查“控制台”选项卡。此时会看到错误消息：`No 'Access-Control-Allow-Origin' header is present on the requested resource`。
+导航到浏览器应用 (`http://localhost:5000`)。 在浏览器中打开开发人员工具窗口（在用于 Windows 的 Chrome 中使用 `Ctrl`+`Shift`+`i`），检查“控制台”选项卡。  此时会看到错误消息：`No 'Access-Control-Allow-Origin' header is present on the requested resource`。
 
 ![浏览器客户端中的 CORS 错误](./media/app-service-web-tutorial-rest-api/cors-error.png)
 
@@ -181,7 +181,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 
 ### <a name="test-cors-again"></a>再次测试 CORS
 
-刷新浏览器应用 (`http://localhost:5000`)。 “控制台”窗口中的错误消息现在已消失，可以看到已部署 API 中的数据并与之交互。 远程 API 现在支持对本地运行的浏览器应用使用 CORS。 
+刷新浏览器应用 (`http://localhost:5000`)。 “控制台”窗口中的错误消息现在已消失，  可以看到已部署 API 中的数据并与之交互。 远程 API 现在支持对本地运行的浏览器应用使用 CORS。 
 
 ![CORS 在浏览器客户端中成功](./media/app-service-web-tutorial-rest-api/cors-success.png)
 

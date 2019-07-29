@@ -173,7 +173,7 @@ $lb = New-AzLoadBalancer `
 ### <a name="create-an-availability-set"></a>创建可用性集
 要提高应用的高可用性，请将 VM 放置在可用性集中。
 
-使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为“myAvailabilitySet”  的可用性集：
+使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为“myAvailabilitySet”的可用性集：
 
 ```azurepowershell-interactive
 $avset = New-AzAvailabilitySet `
@@ -236,7 +236,7 @@ $nsg = New-AzNetworkSecurityGroup `
 ```
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 以下示例创建具有“mySubnet”  的名为“myVnet”  的虚拟网络：
+使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 以下示例创建具有“mySubnet”的名为“myVnet”的虚拟网络：
 
 ```azurepowershell-interactive
 # Create dual stack subnet
@@ -361,7 +361,7 @@ foreach ($NIC in $NICsInRG) {
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 门户中查看 IPv6 双堆栈虚拟网络
 可以在 Azure 门户中查看 IPv6 双堆栈虚拟网络, 如下所示:
 1. 在门户的搜索栏中, 输入 " *dsVnet*"。
-2. 当“myVirtualNetwork”出现在搜索结果中时，将其选中。  这将启动名为*dsVnet*的双堆栈虚拟网络的 "**概述**" 页。 双堆栈虚拟网络将显示两个 Nic, 它们都位于名为*dsSubnet*的双堆栈子网中。
+2. 当“myVirtualNetwork”出现在搜索结果中时，将其选中。 这将启动名为*dsVnet*的双堆栈虚拟网络的 "**概述**" 页。 双堆栈虚拟网络将显示两个 Nic, 它们都位于名为*dsSubnet*的双堆栈子网中。
 
   ![Azure 中的 IPv6 双堆栈虚拟网络](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 

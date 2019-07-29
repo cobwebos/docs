@@ -36,7 +36,7 @@ ms.locfileid: "67705311"
 
 使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
-以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -145,7 +145,7 @@ ssh azureuser@<publicIpAddress>
 
 3. 设置 Oracle 变量
 
-在连接之前，需要设置两个环境变量：ORACLE_HOME  和 ORACLE_SID  。
+在连接之前，需要设置两个环境变量：ORACLE_HOME 和 ORACLE_SID。
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
@@ -311,7 +311,7 @@ export ORACLE_SID=cdb1
     https://<VM ip address or hostname>:5502/em
     ```
 
-可以使用 **SYS** 帐户登录，并选中“以 sysdba 身份”复选框。  使用你在安装期间设置的密码 **OraPasswd1**。 
+可以使用 **SYS** 帐户登录，并选中“以 sysdba 身份”复选框。 使用你在安装期间设置的密码 **OraPasswd1**。 
 
 ![Oracle OEM Express 登录页面的屏幕截图](./media/oracle-quick-start/oracle_oem_express_login.png)
 

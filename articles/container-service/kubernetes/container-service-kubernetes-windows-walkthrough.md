@@ -36,7 +36,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 
 
-以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 
 
-以下示例创建名为 myK8sCluster  的群集，其中包含一个 Linux 主节点和两个 Windows 代理节点。 此示例创建连接到 Linux 主节点所需的 SSH 密钥。 此示例使用 azureuser  作为管理用户名，使用 myPassword12  作为 Windows 节点上的密码。 更新这些值，使其适用于环境。 
+以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和两个 Windows 代理节点。 此示例创建连接到 Linux 主节点所需的 SSH 密钥。 此示例使用 azureuser 作为管理用户名，使用 myPassword12 作为 Windows 节点上的密码。 更新这些值，使其适用于环境。 
 
 
 
@@ -100,7 +100,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.5.3
 
 ## <a name="deploy-a-windows-iis-container"></a>部署 Windows IIS 容器
 
-可在包含一个或多个容器的 Kubernetes Pod 内运行 Docker 容器  。 
+可在包含一个或多个容器的 Kubernetes Pod 内运行 Docker 容器。 
 
 此基本示例使用 JSON 文件指定 Microsoft Internet Information Server (IIS) 容器，然后使用 `kubctl apply` 命令创建 Pod。 
 

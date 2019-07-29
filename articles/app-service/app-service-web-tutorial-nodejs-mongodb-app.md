@@ -108,13 +108,13 @@ MEAN.JS version: 0.5.0
 --
 ```
 
-在浏览器中导航至 `http://localhost:3000` 。 单击菜单顶部的“注册”，并创建测试用户。 
+在浏览器中导航至 `http://localhost:3000` 。 单击菜单顶部的“注册”  ，并创建测试用户。 
 
 MEAN.js 示例应用程序将用户数据存储在数据库中。 如果创建用户和登录成功，应用向本地 MongoDB 数据库写入数据。
 
 ![MEAN.js 成功连接至 MongoDB](./media/app-service-web-tutorial-nodejs-mongodb-app/mongodb-connect-success.png)
 
-选择“管理员”>“管理文章”，添加一些文章。
+选择“管理员”>“管理文章”  ，添加一些文章。
 
 在终端按 `Ctrl+C`，随时停止 Node.js。 
 
@@ -136,7 +136,7 @@ MEAN.js 示例应用程序将用户数据存储在数据库中。 如果创建�
 ### <a name="create-a-cosmos-db-account"></a>创建 Cosmos DB 帐户
 
 > [!NOTE]
-> 在本教程中，在你自己的 Azure 订阅中创建 Azure Cosmos DB 数据库需付费。 若要使用七天免费的 Azure Cosmos DB 帐户，可以使用[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 体验。 直接单击 MongoDB 磁贴中的“创建”按钮即可在 Azure 上创建免费的 MongoDB 数据库。 创建数据库以后，请在门户中导航到“连接字符串”，然后检索 Azure Cosmos DB 连接字符串，以便在本教程的后面使用。
+> 在本教程中，在你自己的 Azure 订阅中创建 Azure Cosmos DB 数据库需付费。 若要使用七天免费的 Azure Cosmos DB 帐户，可以使用[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 体验。 直接单击 MongoDB 磁贴中的“创建”按钮  即可在 Azure 上创建免费的 MongoDB 数据库。 创建数据库以后，请在门户中导航到“连接字符串”，然后检索 Azure Cosmos DB 连接字符串，以便在本教程的后面使用。 
 >
 
 在 Cloud Shell 中，使用 [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) 命令创建 Cosmos DB 帐户。
@@ -147,7 +147,7 @@ MEAN.js 示例应用程序将用户数据存储在数据库中。 如果创建�
 az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
 ```
 
---kind MongoDB 参数启用 MongoDB 客户端连接。
+--kind MongoDB  参数启用 MongoDB 客户端连接。
 
 创建 Cosmos DB 帐户后，Azure CLI 会显示类似于以下示例的信息：
 
@@ -197,7 +197,7 @@ Azure CLI 显示类似于以下示例的信息：
 
 在本地 MEAN.js 存储库的 _config/env/_ 文件夹中，创建名为 _local-production.js_ 的文件。 默认情况下，通过配置 _.gitignore_ 确保此文件位于存储库之外。 
 
-将以下代码复制到该文件中。 请确保将两个 \<cosmosdb_name> 占位符替换为 Cosmos DB 数据库名称，将 \<primary_master_key> 占位符替换为在先前步骤中复制的键。
+将以下代码复制到该文件中。 请确保将两个 \<cosmosdb_name> 占位符替换为 Cosmos DB 数据库名称，将 \<primary_master_key> 占位符替换为在先前步骤中复制的键   。
 
 ```javascript
 module.exports = {
@@ -245,7 +245,7 @@ App version:     0.5.0
 MEAN.JS version: 0.5.0
 ```
 
-在浏览器中导航至 `http://localhost:8443` 。 单击菜单顶部的“注册”，并创建测试用户。 如果创建用户并登录成功，则应用会将数据写入 Azure 中的 Cosmos DB 数据库。 
+在浏览器中导航至 `http://localhost:8443` 。 单击菜单顶部的“注册”  ，并创建测试用户。 如果创建用户并登录成功，则应用会将数据写入 Azure 中的 Cosmos DB 数据库。 
 
 在终端中，通过键入 `Ctrl+C` 停止 Node.js。 
 
@@ -272,7 +272,7 @@ MEAN.JS version: 0.5.0
 
 若要设置应用设置，请在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 
 
-以下示例在 Azure 应用中配置 `MONGODB_URI` 应用设置。 替换 \<app_name >\<cosmosdb_name > 和 \<primary_master_key >占位符。
+以下示例在 Azure 应用中配置 `MONGODB_URI` 应用设置。 替换 \<app_name >  \<cosmosdb_name >  和 \<primary_master_key >  占位符。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true"
@@ -328,15 +328,15 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 http://<app_name>.azurewebsites.net 
 ``` 
 
-单击菜单顶部的“注册”，创建虚拟用户。 
+单击菜单顶部的“注册”  ，创建虚拟用户。 
 
 如果操作成功，且应用自动登录到已创建的用户，则 Azure 中的 MEAN.js 应用已连接至 MongoDB (Cosmos DB) 数据库。 
 
 ![在 Azure 应用服务中运行的 MEAN.js 应用](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
-选择“管理员”>“管理文章”，添加一些文章。 
+选择“管理员”>“管理文章”  ，添加一些文章。 
 
-祝贺你！ 正在 Azure 应用服务中运行数据驱动的 Node.js 应用。
+祝贺你！  正在 Azure 应用服务中运行数据驱动的 Node.js 应用。
 
 ## <a name="update-data-model-and-redeploy"></a>更新数据模型和重新部署
 
@@ -369,7 +369,7 @@ const ArticleSchema = new Schema({
 
 需修改的文件共计五个：服务器控制器以及四个客户端视图。 
 
-打开 modules/articles/server/controllers/articles.server.controller.js。
+打开 modules/articles/server/controllers/articles.server.controller.js  。
 
 在 `update` 函数中，添加 `article.comment` 的赋值。 以下代码显示完整的 `update` 函数：
 
@@ -385,7 +385,7 @@ exports.update = function (req, res) {
 };
 ```
 
-打开 modules/articles/client/views/view-article.client.view.html。
+打开 modules/articles/client/views/view-article.client.view.html  。
 
 在 `</section>` 结尾标记正上方，添加下列行以显示 `comment` 和其余文章数据：
 
@@ -393,7 +393,7 @@ exports.update = function (req, res) {
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
-打开 modules/articles/client/views/list-articles.client.view.html。
+打开 modules/articles/client/views/list-articles.client.view.html  。
 
 在 `</a>` 结尾标记正上方，添加下列行以显示 `comment` 和其余文章数据：
 
@@ -401,7 +401,7 @@ exports.update = function (req, res) {
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
-打开 modules/articles/client/views/admin/list-articles.client.view.html。
+打开 modules/articles/client/views/admin/list-articles.client.view.html  。
 
 在 `<div class="list-group">` 元素内，以及 `</a>` 结尾标记正上方，添加下列行以显示 `comment` 和其余文章数据：
 
@@ -409,7 +409,7 @@ exports.update = function (req, res) {
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
-打开 modules/articles/client/views/admin/form-article.client.view.html。
+打开 modules/articles/client/views/admin/form-article.client.view.html  。
 
 查找包含提交按钮的 `<div class="form-group">` 元素，如下所示：
 
@@ -447,7 +447,7 @@ node server.js
 
 在浏览器中导航至 `http://localhost:8443`，并确保已登录。
 
-选择“管理员”>“管理文章”，然后选择 **+** 按钮添加文章。
+选择“管理员”>“管理文章”  ，然后选择 **+** 按钮添加文章。
 
 现在你将看到新 `Comment` 文本框。
 
@@ -488,11 +488,11 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 转到 [Azure 门户](https://portal.azure.com)查看创建的应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。 
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-nodejs-mongodb-app/access-portal.png)
 
-默认情况下，门户将显示应用的“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示应用的  “概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/app-service-web-tutorial-nodejs-mongodb-app/web-app-blade.png)
 

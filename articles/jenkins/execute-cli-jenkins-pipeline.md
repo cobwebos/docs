@@ -33,10 +33,10 @@ ms.locfileid: "66162220"
 ## <a name="create-and-configure-jenkins-instance"></a>创建和配置 Jenkins 实例
 如果还没有 Jenkins Master，请先使用[解决方案模板](install-jenkins-solution-template.md)，该模板默认包含所需的 [Azure 凭据](https://plugins.jenkins.io/azure-credentials)插件。 
 
-使用 Azure 凭据插件可将 Microsoft Azure 服务主体凭据存储在 Jenkins 中。 1.2 版中已添加相应支持，以便 Jenkins 管道获取 Azure 凭据。 
+使用 Azure 凭据插件可将 Microsoft Azure 服务主体凭据存储在 Jenkins 中。 1\.2 版中已添加相应支持，以便 Jenkins 管道获取 Azure 凭据。 
 
 确保有 1.2 版或更高版本：
-* 在 Jenkins 仪表板中，单击“Manage Jenkins”（管理 Jenkins）->“Plugin Manager”（插件管理器），搜索“Azure Credential”（Azure 凭据）。 
+* 在 Jenkins 仪表板中，单击“Manage Jenkins”（管理 Jenkins）->“Plugin Manager”（插件管理器）  ，搜索“Azure Credential”（Azure 凭据）  。 
 * 如果版本低于 1.2，请更新插件。
 
 Jenkins Master 还需要 Java JDK 和 Maven。 若要安装，请使用 SSH 登录到 Jenkins Master，并运行以下命令：
@@ -49,14 +49,14 @@ sudo apt-get install -y maven
 
 需要 Azure 凭据才能执行 Azure CLI。
 
-* 在 Jenkins 仪表板中，单击“Credentials”（凭据）->“System”（系统）。 单击“Global credentials(unrestricted)”（全局凭据(不受限制)）。
-* 单击“Add Credentials”（添加凭据），通过填写订阅 ID、客户端 ID、客户端密码和 OAuth 2.0 令牌终结点，添加 [Microsoft Azure 服务主体](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)。 提供一个 ID 供后续步骤使用。
+* 在 Jenkins 仪表板中，单击“Credentials”（凭据）->“System”（系统）  。 单击“Global credentials(unrestricted)”（全局凭据(不受限制)）  。
+* 单击“Add Credentials”（添加凭据）  ，通过填写订阅 ID、客户端 ID、客户端密码和 OAuth 2.0 令牌终结点，添加 [Microsoft Azure 服务主体](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)。 提供一个 ID 供后续步骤使用。
 
 ![添加凭据](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>创建 Azure 应用服务以部署 Java Web 应用
 
-使用 [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) CLI 命令通过“免费”定价层创建 Azure 应用服务计划。 appservice 计划定义用于托管应用的物理资源。 分配到 appservice 计划的所有应用程序共享这些资源，因此在托管多个应用时可以节省成本。 
+使用 [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) CLI 命令通过“免费”  定价层创建 Azure 应用服务计划。 appservice 计划定义用于托管应用的物理资源。 分配到 appservice 计划的所有应用程序共享这些资源，因此在托管多个应用时可以节省成本。 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -129,7 +129,7 @@ az webapp config set \
 ```
 
 ## <a name="prepare-a-github-repository"></a>准备 GitHub 存储库
-打开[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)存储库。 要将存储库分叉到自己的 GitHub 帐户，请单击右上角的“分叉”按钮。
+打开[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)存储库。 要将存储库分叉到自己的 GitHub 帐户，请单击右上角的“分叉”按钮。 
 
 * 在 GitHub Web UI 中，打开 **Jenkinsfile** 文件。 单击铅笔图标编辑此文件，分别更新第 20 行和第 21 行上的资源组和 Web 应用名称。
 
@@ -145,18 +145,18 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ```
 
 ## <a name="create-jenkins-pipeline"></a>创建 Jenkins 管道
-在 Web 浏览器中打开 Jenkins，单击“New Item”（新建项）。 
+在 Web 浏览器中打开 Jenkins，单击“New Item”（新建项）  。 
 
-* 为该作业提供一个名称并选择“Pipeline”（管道）。 单击“确定”。
-* 接下来单击“Pipeline”（管道）选项卡。 
-* 对于“Definition”（定义），选择“Pipeline script from SCM”（来自 SCM 的管道脚本）。
-* 对于“SCM”，选择“Git”。
+* 为该作业提供一个名称并选择“Pipeline”（管道）  。 单击“确定”。 
+* 接下来单击“Pipeline”（管道）  选项卡。 
+* 对于“Definition”（定义）  ，选择“Pipeline script from SCM”（来自 SCM 的管道脚本）  。
+* 对于“SCM”  ，选择“Git”  。
 * 输入分叉存储库的 GitHub URL：https:\<your forked repo\>.git
-* 单击“保存”
+* 单击“保存” 
 
 ## <a name="test-your-pipeline"></a>测试管道
-* 转到所创建的管道，单击“Build Now”（立即生成）
-* 生成操作应该会在几秒钟内成功完成，可以转到该生成，单击“Console Output”（控制台输出）查看详细信息
+* 转到所创建的管道，单击“Build Now”（立即生成） 
+* 生成操作应该会在几秒钟内成功完成，可以转到该生成，单击“Console Output”（控制台输出）  查看详细信息
 
 ## <a name="verify-your-web-app"></a>验证 Web 应用
 确保 WAR 文件已成功部署到 Web 应用。 打开 Web 浏览器：

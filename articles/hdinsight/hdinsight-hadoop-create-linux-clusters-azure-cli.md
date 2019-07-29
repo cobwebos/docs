@@ -33,7 +33,7 @@ Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://
 
 ## <a name="create-a-cluster"></a>创建群集
 
-1. 登录到 Azure 订阅。 如果你打算使用 Azure Cloud Shell，则只需要在代码块的右上角选择“尝试”  。 否则，请输入以下命令：
+1. 登录到 Azure 订阅。 如果你打算使用 Azure Cloud Shell，则只需要在代码块的右上角选择“尝试”。 否则，请输入以下命令：
 
     ```azurecli-interactive
     az login

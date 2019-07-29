@@ -8,14 +8,13 @@ ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
-manager: craigg-msft
 ms.date: 02/08/2019
-ms.openlocfilehash: 31246f44be5645715c5c7041d0cf9bcff9c0fa52
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: f6f0160e06ac10a6f1e4e51c93bfa133818117c8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303287"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568970"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>教程：在 Azure SQL 数据库 C&#x23; 和 ADO.NET 的单一数据库中设计关系数据库
 

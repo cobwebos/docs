@@ -82,7 +82,7 @@ az network lb create \
 
 ## <a name="create-health-probe-on-port-80"></a>在端口 80 上创建运行状况探测
 
-运行状况探测器会检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。 使用 az network lb probe create 创建运行状况探测，以监视虚拟机的运行状况。 若要创建 TCP 运行状况探测，请使用 [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create)。 以下示例创建名为“myHealthProbe”  的运行状况探测：
+运行状况探测器会检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。 使用 az network lb probe create 创建运行状况探测，以监视虚拟机的运行状况。 若要创建 TCP 运行状况探测，请使用 [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create)。 以下示例创建名为“myHealthProbe”的运行状况探测：
 
 ```azurecli-interactive
 az network lb probe create \
@@ -218,7 +218,7 @@ runcmd:
 ### <a name="create-the-zonal-virtual-machines"></a>创建区域虚拟机
 使用 [az vm create](/cli/azure/vm#az-vm-create) 在区域 1、区域 2 和区域 3 中创建 VM。 以下示例在每个区域中创建一个 VM，并生成 SSH 密钥（如果不存在）：
 
-在“westeurope”位置的每个区域（区域 1、区域 2 和区域 3）中创建 VM  。
+在“westeurope”位置的每个区域（区域 1、区域 2 和区域 3）中创建 VM。
 
 ```azurecli-interactive
 for i in `seq 1 3`; do

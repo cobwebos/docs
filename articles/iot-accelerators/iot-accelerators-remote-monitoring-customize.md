@@ -77,7 +77,7 @@ ms.locfileid: "66143502"
 
 ## <a name="customize-the-layout"></a>自定义布局
 
-远程监视解决方案中的每个页面包括一组控件，在源代码中称为“面板”。  “仪表板”  页由五个窗格组成：概述、映射、警报、遥测和分析。 可以在 [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub 存储库中找到定义每个页面及其面板的源代码。 例如，在 [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) 文件夹中可以找到定义“仪表板”页面、其布局及其面板的代码。 
+远程监视解决方案中的每个页面包括一组控件，在源代码中称为“面板”。 “仪表板”页由五个窗格组成：概述、映射、警报、遥测和分析。 可以在 [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub 存储库中找到定义每个页面及其面板的源代码。 例如，在 [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) 文件夹中可以找到定义“仪表板”页面、其布局及其面板的代码。
 
 由于面板管理自身的布局和大小，因此你可以轻松修改页面的布局。 对 `src/components/pages/dashboard/dashboard.js` 文件中的 **PageContent** 元素进行以下更改将会：
 
@@ -241,7 +241,7 @@ ms.locfileid: "66143502"
 
 ## <a name="duplicate-and-customize-an-existing-control"></a>复制和自定义现有控件
 
-以下步骤概述如何复制现有面板、对其进行修改，然后使用修改后的版本。 这些步骤以“警报”面板为例： 
+以下步骤概述如何复制现有面板、对其进行修改，然后使用修改后的版本。 这些步骤以“警报”面板为例：
 
 1. 在存储库的本地副本中，复制 `src/components/pages/dashboard/panels` 文件夹中的 **alerts** 文件夹。 将新副本命名为 **cust_alerts**。
 
@@ -281,7 +281,7 @@ ms.locfileid: "66143502"
     </Cell>
     ```
 
-现已将原始“警报”面板替换为名为 **CustAlerts** 的副本。  此副本与原始版本相同。 现在可以修改副本。 例如，若要更改“警报”面板中的列顺序： 
+现已将原始“警报”面板替换为名为 **CustAlerts** 的副本。 此副本与原始版本相同。 现在可以修改副本。 例如，若要更改“警报”面板中的列顺序：
 
 1. 打开 `src/components/pages/dashboard/panels/cust_alerts/alertsPanel.js` 文件。
 
@@ -302,13 +302,13 @@ ms.locfileid: "66143502"
     ];
     ```
 
-以下屏幕截图显示了“警报”面板的新版本： 
+以下屏幕截图显示了“警报”面板的新版本：
 
 ![已更新警报面板](./media/iot-accelerators-remote-monitoring-customize/reorder-columns.png)
 
 ## <a name="customize-the-telemetry-chart"></a>自定义遥测图表
 
-`src/components/pages/dashboard/panels/telemtry` 文件夹中的文件定义“仪表板”页面上的遥测图表。  UI 从 `src/services/telemetryService.js` 文件中的解决方案后端检索遥测数据。 以下步骤说明如何将遥测图表上显示的时间段从 15 分钟更改为 5 分钟：
+`src/components/pages/dashboard/panels/telemtry` 文件夹中的文件定义“仪表板”页面上的遥测图表。 UI 从 `src/services/telemetryService.js` 文件中的解决方案后端检索遥测数据。 以下步骤说明如何将遥测图表上显示的时间段从 15 分钟更改为 5 分钟：
 
 1. 在 `src/services/telemetryService.js` 文件中，找到名为 **getTelemetryByDeviceIdP15M** 的函数。 复制此函数，并按如下所示修改副本：
 
@@ -335,7 +335,7 @@ ms.locfileid: "66143502"
 
 ## <a name="add-a-new-kpi"></a>添加新 KPI
 
-“仪表板”页面在“分析”面板中显示 KPI。   这些 KPI 在 `src/components/pages/dashboard/dashboard.js` 文件中计算。 KPI 由 `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` 文件呈现。 以下步骤说明如何在“仪表板”页面上计算和呈现新 KPI 值。  所示的示例在警告警报 KPI 中添加新的百分比更改：
+“仪表板”页面在“分析”面板中显示 KPI。 这些 KPI 在 `src/components/pages/dashboard/dashboard.js` 文件中计算。 KPI 由 `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` 文件呈现。 以下步骤说明如何在“仪表板”页面上计算和呈现新 KPI 值。 所示的示例在警告警报 KPI 中添加新的百分比更改：
 
 1. 打开 `src/components/pages/dashboard/dashboard.js` 文件。 按如下所示修改 **initialState** 对象，以包含 **warningAlertsChange** 属性：
 
@@ -469,7 +469,7 @@ ms.locfileid: "66143502"
     </div>
     ```
 
-“仪表板”页面现在会显示新 KPI 值： 
+“仪表板”页面现在会显示新 KPI 值：
 
 ![警告 KPI](./media/iot-accelerators-remote-monitoring-customize/new-kpi.png)
 

@@ -55,26 +55,26 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 需要执行两个步骤将 IoT Edge 设备添加到远程监视解决方案加速器。 本部分介绍以下操作：
 
-* 在远程监视 Web UI 中的“设备资源管理器”页上添加 IoT Edge 设备。
+* 在远程监视 Web UI 中的“设备资源管理器”页上添加 IoT Edge 设备。 
 * 在 Linux 虚拟机 (VM) 中安装 IoT Edge 运行时。
 
 ### <a name="add-an-iot-edge-device-to-your-solution"></a>将 IoT Edge 设备添加到解决方案
 
-若要将 IoT Edge 设备添加到远程监视解决方案加速器，请在 Web UI 中导航到“设备资源管理器”页，然后单击“+ 新建设备”。
+若要将 IoT Edge 设备添加到远程监视解决方案加速器，请在 Web UI 中导航到“设备资源管理器”页，然后单击“+ 新建设备”。  
 
-在“新建设备”面板中选择“IoT Edge 设备”，然后输入 **oil-pump** 作为设备 ID。 对于其他设置，可以保留默认值。 然后单击“应用”：
+在“新建设备”面板中选择“IoT Edge 设备”，然后输入 **oil-pump** 作为设备 ID。   对于其他设置，可以保留默认值。 然后单击“应用”： 
 
 [![添加 IoT Edge 设备](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-expanded.png#lightbox)
 
 记下设备连接字符串，因为本教程的下一部分需要用到。
 
-将设备注册到远程监视解决方案加速器中的 IoT 中心后，该设备将列在 Web UI 的“设备资源管理器”页上：
+将设备注册到远程监视解决方案加速器中的 IoT 中心后，该设备将列在 Web UI 的“设备资源管理器”页上： 
 
 [![新建 IoT Edge 设备](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
 为了便于在解决方案中管理 IoT Edge 设备，请创建一个设备组并添加 IoT Edge 设备：
 
-1. 在“设备资源管理器”页上的列表中选择“oil-pump”设备，然后单击“作业”。
+1. 在“设备资源管理器”页上的列表中选择“oil-pump”设备，然后单击“作业”。   
 
 1. 使用以下设置创建一个作业，用于将 **IsEdge** 标记添加到设备：
 
@@ -88,11 +88,11 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
     [![添加标记](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
-1. 依次单击“应用”、“关闭”。
+1. 依次单击“应用”、“关闭”。  
 
-1. 在“设备资源管理器”页上，单击“管理设备组”。
+1. 在“设备资源管理器”页上，单击“管理设备组”。  
 
-1. 单击“创建新的设备组”。 使用以下设置创建新的设备组：
+1. 单击“创建新的设备组”。  使用以下设置创建新的设备组：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -154,9 +154,9 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 先在门户中定义流分析作业，然后将其打包成 Edge 模块。
 
-1. 在 Azure 门户中，使用“IoTEdgeDevices”资源组中的默认选项创建 Azure 存储帐户。 记下所选的名称。
+1. 在 Azure 门户中，使用“IoTEdgeDevices”资源组中的默认选项创建 Azure 存储帐户。  记下所选的名称。
 
-1. 在 Azure 门户上的“IoTEdgeDevices”资源组中创建一个**流分析作业**。 使用以下配置值：
+1. 在 Azure 门户上的“IoTEdgeDevices”资源组中创建一个**流分析作业**。  使用以下配置值：
 
     | 选项 | 值 |
     | ------ | ----- |
@@ -167,13 +167,13 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
     | 宿主环境 | Microsoft Edge |
     | 流式处理单位 | 1 |
 
-1. 在门户中打开“EdgeDeviceJob”流分析作业，单击“输入”，然后添加名为 **telemetry** 的 **Edge 中心**流输入。
+1. 在门户中打开“EdgeDeviceJob”流分析作业，单击“输入”，然后添加名为 **telemetry** 的 **Edge 中心**流输入。 
 
-1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“输出”，然后添加名为 **output** 的 **Edge 中心**输出。
+1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“输出”，然后添加名为 **output** 的 **Edge 中心**输出。  
 
-1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“输出”，然后添加名为 **alert** 的另一个 **Edge 中心**输出。
+1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“输出”，然后添加名为 **alert** 的另一个 **Edge 中心**输出。  
 
-1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“查询”，然后添加以下 **select** 语句：
+1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“查询”，然后添加以下 **select** 语句：  
 
     ```sql
     SELECT  
@@ -189,7 +189,7 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
     HAVING avg(machine.temperature) > 400
     ```
 
-1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“存储帐户设置”。 添加在本部分开头添加到“IoTEdgeDevices”资源组的存储帐户。 创建名为 **edgeconfig** 的新容器。
+1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“存储帐户设置”。   添加在本部分开头添加到“IoTEdgeDevices”资源组的存储帐户。  创建名为 **edgeconfig** 的新容器。
 
 以下屏幕截图显示保存的流分析作业：
 
@@ -203,21 +203,21 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 1. 在 Azure 门户中，导航到远程监视解决方案中的 IoT 中心。 可在与远程监视解决方案同名的资源组中找到 IoT 中心。
 
-1. 在 IoT 中心，单击“自动设备管理”部分中的“IoT Edge”。 单击“添加 IoT Edge 部署”。
+1. 在 IoT 中心，单击“自动设备管理”部分中的“IoT Edge”。   单击“添加 IoT Edge 部署”。 
 
-1. 在“创建部署”>“名称和标签”页上，输入名称 **oil-pump-device**。 单击“下一步”。
+1. 在“创建部署”>“名称和标签”页上，输入名称 **oil-pump-device**。  单击“下一步”。 
 
-1. 在“创建部署”>“添加模块”页上，单击“+ 添加”。 选择“IoT Edge 模块”。
+1. 在“创建部署”>“添加模块”页上，单击“+ 添加”。   选择“IoT Edge 模块”  。
 
-1. 在“IoT Edge 自定义模块”面板中，输入 **temperatureSensor** 作为名称，输入 **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** 作为映像 URI。 单击“ **保存**”。
+1. 在“IoT Edge 自定义模块”面板中，输入 **temperatureSensor** 作为名称，输入 **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** 作为映像 URI。  单击“ **保存**”。
 
-1. 在“创建部署”>“添加模块”页上，单击“+ 添加”以添加另一个模块。 选择“Azure 流分析模块”。
+1. 在“创建部署”>“添加模块”页上，单击“+ 添加”以添加另一个模块。   选择“Azure 流分析模块”  。
 
-1. 在“Edge 部署”面板中选择你的订阅以及在上一部分创建的 **EdgeDeviceJob**。 单击“ **保存**”。
+1. 在“Edge 部署”面板中选择你的订阅以及在上一部分创建的 **EdgeDeviceJob**。  单击“ **保存**”。
 
-1. 在“创建部署”>“添加模块”页上，单击“下一步”。
+1. 在“创建部署”>“添加模块”页上，单击“下一步”。  
 
-1. 在“创建部署”>“指定路由”页上添加以下代码：
+1. 在“创建部署”>“指定路由”页上添加以下代码： 
 
     ```sql
     {
@@ -231,19 +231,19 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
     此代码将流分析模块的输出路由到正确的位置。
 
-    单击“下一步”。
+    单击“下一步”。 
 
-1. 在“创建部署”>“指定指标”页上，单击“下一步”。
+1. 在“创建部署”>“指定指标”页上，单击“下一步”。  
 
-1. 在“创建部署”>“目标设备”页上，输入 10 作为优先级。 单击“下一步”。
+1. 在“创建部署”>“目标设备”页上，输入 10 作为优先级。  单击“下一步”。 
 
-1. 在“创建部署”>“检查部署”页上，单击“提交”：
+1. 在“创建部署”>“检查部署”页上，单击“提交”：  
 
     [![检查部署](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-expanded.png#lightbox)
 
-1. 在“IoT Edge”主页上，单击“IoT Edge 部署”。 在部署列表中可以看到“oil-pump-device”。
+1. 在“IoT Edge”主页上，单击“IoT Edge 部署”。   在部署列表中可以看到“oil-pump-device”。 
 
-1. 单击“oil-pump-device”部署，然后单击“下载 IoT Edge 清单”。 将该文件作为 **oil-pump-device.json** 保存到本地计算机上的适当位置。 在本教程的下一部分需要用到此文件。
+1. 单击“oil-pump-device”部署，然后单击“下载 IoT Edge 清单”。   将该文件作为 **oil-pump-device.json** 保存到本地计算机上的适当位置。 在本教程的下一部分需要用到此文件。
 
 现已创建一个可以包的形式导入到远程监视解决方案的 IoT Edge 清单。 通常，开发人员会创建 IoT Edge 模块和清单文件。
 
@@ -251,15 +251,15 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 在本部分，我们将在远程监视解决方案中以包的形式导入 Edge 清单。
 
-1. 在远程监视 Web UI 中，导航到“包”页并单击“+ 新建包”：
+1. 在远程监视 Web UI 中，导航到“包”页并单击“+ 新建包”：  
 
     [![新建包](./media/iot-accelerators-remote-monitoring-edge/newpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newpackage-expanded.png#lightbox)
 
-1. 在“新建包”面板中，选择“Edge 清单”作为包类型，单击“浏览”在本地计算机上找到“oil-pump-device.json”文件，然后单击“上传”：
+1. 在“新建包”面板中，选择“Edge 清单”作为包类型，单击“浏览”在本地计算机上找到“oil-pump-device.json”文件，然后单击“上传”：     
 
     [![上传包](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
 
-    现在，包列表包含“oil-pump-device.json”包。
+    现在，包列表包含“oil-pump-device.json”包。 
 
 在下一部分，我们将创建一个将该包应用到 Edge 设备的部署。
 
@@ -267,11 +267,11 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 现已准备好将该包部署到设备。
 
-1. 在远程监视 Web UI 中，导航到“部署”页并单击“+ 新建部署”：
+1. 在远程监视 Web UI 中，导航到“部署”页并单击“+ 新建部署”：  
 
     [![新建部署](./media/iot-accelerators-remote-monitoring-edge/newdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newdeployment-expanded.png#lightbox)
 
-1. 在“新建部署”面板中，使用以下设置创建部署：
+1. 在“新建部署”面板中，使用以下设置创建部署： 
 
     | 选项 | 值 |
     | ------ | ----- |
@@ -283,25 +283,25 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
     [![创建部署](./media/iot-accelerators-remote-monitoring-edge/createdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdeployment-expanded.png#lightbox)
 
-    单击“应用”。
+    单击“应用”  。
 
 需要等待几分钟，以便将包部署到设备，并使遥测数据开始流出设备。
 
 [![活动的部署](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-inline.png)](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-expanded.png#lightbox)
 
-“部署”页显示以下指标：
+“部署”页显示以下指标： 
 
-* “目标”显示设备组中的设备数。
-* “已应用”显示已应用部署内容的设备数。
-* “成功”显示部署中报告 IoT Edge 客户端运行时成功的 Edge 设备数。
-* “失败”显示部署中报告 IoT Edge 客户端运行时失败的 Edge 设备数。
+* “目标”显示设备组中的设备数。 
+* “已应用”显示已应用部署内容的设备数。 
+* “成功”显示部署中报告 IoT Edge 客户端运行时成功的 Edge 设备数。 
+* “失败”显示部署中报告 IoT Edge 客户端运行时失败的 Edge 设备数。 
 
 ## <a name="monitor-the-device"></a>监视设备
 
 可在远程监视 Web UI 中查看油泵设备发出的温度遥测数据：
 
-1. 导航到“设备资源管理器”页并选择油泵设备。
-1. 在“设备详细信息”面板中的“遥测”部分，单击“温度”：
+1. 导航到“设备资源管理器”页并选择油泵设备。 
+1. 在“设备详细信息”面板中的“遥测”部分，单击“温度”：   
 
     [![查看遥测数据](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)
 
@@ -309,7 +309,7 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 若要在达到阈值时通知操作员，可在远程监视 Web UI 中创建一个规则：
 
-1. 导航到“规则”页并单击“+ 新建规则”。
+1. 导航到“规则”页并单击“+ 新建规则”。  
 1. 使用以下设置创建新规则：
 
     | 选项 | 值 |
@@ -325,9 +325,9 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
     [![创建规则](./media/iot-accelerators-remote-monitoring-edge/newrule-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newrule-expanded.png#lightbox)
 
-    单击“应用”。
+    单击“应用”  。
 
-1. 导航到“仪表板”页。 当 **oil-pump** 设备的温度超过 300 时，“警报”面板中会显示一条警报。
+1. 导航到“仪表板”页。  当 **oil-pump** 设备的温度超过 300 时，“警报”面板中会显示一条警报。 
 
 ## <a name="next-steps"></a>后续步骤
 

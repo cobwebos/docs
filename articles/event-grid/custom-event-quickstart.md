@@ -38,7 +38,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 
 
-以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
+以下示例在“westus2”  位置创建名为“gridResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2

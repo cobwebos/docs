@@ -230,7 +230,7 @@ $privateSubnet = Get-AzVirtualNetwork `
   -Name "Private"
 ```
 
-使用 [Add-AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig) 允许从 Private  子网对存储帐户进行网络访问。
+使用 [Add-AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig) 允许从 Private 子网对存储帐户进行网络访问。
 
 ```azurepowershell-interactive
 Add-AzStorageAccountNetworkRule `
@@ -245,7 +245,7 @@ Add-AzStorageAccountNetworkRule `
 
 ### <a name="create-the-first-virtual-machine"></a>创建第一个虚拟机
 
-使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在 Public  子网中创建虚拟机。 运行以下命令时，会提示输入凭据。 输入的值将配置为用于 VM 的用户名和密码。 `-AsJob` 选项会在后台创建 VM，因此可继续执行下一步。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在 Public 子网中创建虚拟机。 运行以下命令时，会提示输入凭据。 输入的值将配置为用于 VM 的用户名和密码。 `-AsJob` 选项会在后台创建 VM，因此可继续执行下一步。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -297,7 +297,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机。 打开下载的 rdp 文件。 出现提示时，选择“连接”  。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。 选择“确定”  。 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。  
+此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机。 打开下载的 rdp 文件。 出现提示时，选择“连接”。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”，然后选择“使用其他帐户”，以指定在创建 VM 时输入的凭据。 选择“确定”。 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。
 
 在 *myVmPrivate* VM 上，使用 PowerShell 将 Azure 文件共享映射到驱动器 Z。 在运行下面的命令之前，将 `<storage-account-key>` 和 `<storage-account-name>` 替换为在[创建存储帐户](#create-a-storage-account)中提供或检索的值。
 
@@ -323,7 +323,7 @@ Azure 文件共享已成功映射到驱动器 Z。
 ping bing.com
 ```
 
-不会收到回复，因为除了分配给 Azure 存储服务的地址以外，关联到“专用”子网的网络安全组不允许与其他公共 IP 地址建立出站访问。 
+不会收到回复，因为除了分配给 Azure 存储服务的地址以外，关联到“专用”子网的网络安全组不允许与其他公共 IP 地址建立出站访问。
 
 关闭与 *myVmPrivate* VM 建立的远程桌面会话。
 
@@ -352,7 +352,7 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-对该共享的访问被拒绝，并且将收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在 *Public* 子网中。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。   
+对该共享的访问被拒绝，并且将收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在 *Public* 子网中。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。
 
 关闭与 *myVmPublic* VM 建立的远程桌面会话。
 

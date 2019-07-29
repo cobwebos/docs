@@ -8,14 +8,13 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 5d168264cbc392e1ba426707429f47dea70d1ea8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 87bd22ec4f2cfae62d1f80284ad8346ca292d016
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882049"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567675"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 数据库中托管实例的安全性
 
@@ -73,7 +72,7 @@ ms.locfileid: "58882049"
 
 1. 在 [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) 中使用充当 `sysadmin` 的标准 SQL Server 帐户（非 Azure AD）登录到托管实例。
 
-2. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。
+2. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。  
 
 3. 在查询窗口中，使用以下语法为本地 Azure AD 帐户创建登录名：
 
@@ -93,7 +92,7 @@ ms.locfileid: "58882049"
     GO
     ```
 
-4. 在工具栏上，选择“执行”以创建登录名。
+4. 在工具栏上，选择“执行”以创建登录名。 
 
 5. 执行以下 T-SQL 命令检查新添加的登录名：
 
@@ -126,7 +125,7 @@ ms.locfileid: "58882049"
 
 1. 再次登录到托管实例，或通过充当 `sysadmin` 的 SQL 主体使用现有连接。
 
-1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。
+1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。  
 
 1. 使用以下 T-SQL 语法向 Azure AD 服务器主体（登录名）授予 `sysadmin` 服务器角色：
 
@@ -156,11 +155,11 @@ ms.locfileid: "58882049"
 
      有关详细信息，请参阅以下文章：[使用 SQL 数据库和 SQL 数据仓库进行通用身份验证（MFA 的 SSMS 支持）](sql-database-ssms-mfa-authentication.md)
 
-1. 选择“Active Directory - 支持 MFA 的通用方法”。 此时会打开“多重身份验证(MFA)登录”窗口。 使用 Azure AD 密码登录。
+1. 选择“Active Directory - 支持 MFA 的通用方法”。  此时会打开“多重身份验证(MFA)登录”窗口。 使用 Azure AD 密码登录。
 
     ![mfa-login-prompt.png](media/sql-database-managed-instance-security-tutorial/mfa-login-prompt.png)
 
-1. 在 SSMS 的“对象资源管理器”中右键服务器，然后选择“新建查询”。
+1. 在 SSMS 的“对象资源管理器”中右键服务器，然后选择“新建查询”。  
 1. 在查询窗口中，使用以下语法为另一个 Azure AD 帐户创建登录名：
 
     ```sql
@@ -182,7 +181,7 @@ ms.locfileid: "58882049"
     ```
 
 1. 使用 [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) 语法在托管实例中创建数据库。 在下一部分，此数据库将用于测试用户登录名。
-    1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。
+    1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。  
     1. 在查询窗口中，使用以下语法创建名为 **MyMITestDB** 的数据库。
 
         ```sql
@@ -204,7 +203,7 @@ ms.locfileid: "58882049"
     ```
 
 1. 为了进行测试，请使用新建的登录名或组登录到托管实例。 与托管实例建立新的连接，并在身份验证时使用新登录名。
-1. 在“对象资源管理器”中右键服务器，然后选择新连接对应的“新建查询”。
+1. 在“对象资源管理器”中右键服务器，然后选择新连接对应的“新建查询”。  
 1. 执行以下命令，检查新建的 Azure AD 服务器主体（登录名）的服务器权限：
 
       ```sql
@@ -228,7 +227,7 @@ ms.locfileid: "58882049"
 ### <a name="create-an-azure-ad-user-and-create-a-sample-table"></a>创建 Azure AD 用户并创建示例表
 
 1. 在 SQL Server Management Studio 中使用 `sysadmin` 帐户登录到托管实例。
-1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。
+1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。  
 1. 在查询窗口中，使用以下语法基于 Azure AD 服务器主体（登录名）创建 Azure AD 用户：
 
     ```sql
@@ -294,7 +293,7 @@ ms.locfileid: "58882049"
 
 1. 在 SQL Server Management Studio 中使用 `sysadmin` 帐户登录到托管实例。
 
-1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。
+1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。  
 
 1. 使用以下 T-SQL 语法向 Azure AD 用户授予 `db_datareader` 数据库角色：
 
@@ -323,7 +322,7 @@ ms.locfileid: "58882049"
     ```
 
 1. 使用已添加到 `db_datareader` 角色的用户身份与托管实例建立新的连接。
-1. 在“对象资源管理器”中展开数据库，以查看表。
+1. 在“对象资源管理器”中展开数据库，以查看表。 
 
     ![ssms-test-table.png](media/sql-database-managed-instance-security-tutorial/ssms-test-table.png)
 
@@ -346,7 +345,7 @@ ms.locfileid: "58882049"
 
 1. 在 SQL Server Management Studio 中使用 `sysadmin` 帐户登录到托管实例。
 
-1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。
+1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。  
 
 1. 在查询窗口中，使用以下命令创建新的存储过程：
 
@@ -360,7 +359,7 @@ ms.locfileid: "58882049"
     GO
     ```
 
-1. 使用以下命令来查看执行该存储过程时模拟的用户是否为 bob\@aadsqlmi.net。
+1. 使用以下命令来查看执行该存储过程时模拟的用户是否为 bob\@aadsqlmi.net  。
 
     ```sql
     Exec dbo.usp_Demo
@@ -386,7 +385,7 @@ ms.locfileid: "58882049"
 使用 Azure AD 服务器主体（登录名）的 Azure AD 帐户支持跨数据库查询。 若要使用 Azure AD 组测试跨数据库查询，需要创建另一个数据库和表。 如果已存在一个数据库和表，则无需额外创建。
 
 1. 在 SQL Server Management Studio 中使用 `sysadmin` 帐户登录到托管实例。
-1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。
+1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。  
 1. 在查询窗口中，使用以下命令创建名为 **MyMITestDB2** 的数据库和名为 **TestTable2** 的表。
 
     ```sql

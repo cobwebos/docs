@@ -66,7 +66,7 @@ npm start
 
 打开 Web 浏览器并导航到 `http://localhost:1337` 处的示例应用。
 
-页面中会显示该示例应用发出的 Hello World 消息。
+页面中会显示该示例应用发出的 Hello World  消息。
 
 ![本地运行应用的示例](media/app-service-web-get-started-nodejs-poc/localhost-hello-world-in-browser.png)
 
@@ -155,7 +155,7 @@ Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-祝贺你！ 现已将第一个 Node.js 应用部署到应用服务。
+祝贺你！  现已将第一个 Node.js 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
@@ -177,7 +177,7 @@ Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
 
 将此新的 ZIP 文件部署到应用服务，使用的步骤与[部署 ZIP 文件](#deploy-zip-file)中的步骤相同。
 
-切换回在“浏览到应用”步骤中打开的浏览器窗口，然后刷新页面。
+切换回在“浏览到应用”  步骤中打开的浏览器窗口，然后刷新页面。
 
 ![已更新的在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
@@ -185,7 +185,7 @@ Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 

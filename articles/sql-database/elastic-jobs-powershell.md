@@ -10,14 +10,13 @@ ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
-manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 53e10636535c553ac5fa17b5f4aac1000cd138bc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 064d55b96c8817f4b7ccc5f0925eeecfaf310424
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445376"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68550523"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>使用 PowerShell 创建弹性作业代理
 
@@ -295,12 +294,12 @@ $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 |**创建时间** | 作业执行刚刚创建，还没有进行。|
 |**InProgress** | 作业执行目前正在进行中。|
 |**WaitingForRetry** | 作业执行无法完成其操作，正在等待重试。|
-|成功 | 作业执行已成功完成。|
+|成功  | 作业执行已成功完成。|
 |**SucceededWithSkipped** | 作业执行已成功完成，但跳过了它的一些子项。|
-|失败 | 作业执行失败，已用尽重试次数。|
+|失败  | 作业执行失败，已用尽重试次数。|
 |**TimedOut** | 作业执行已超时。|
 |**已取消** | 作业执行已取消。|
-|已跳过 | 已跳过作业执行，因为同一作业步骤的另一个执行已在同一目标上运行。|
+|已跳过  | 已跳过作业执行，因为同一作业步骤的另一个执行已在同一目标上运行。|
 |**WaitingForChildJobExecutions** | 作业执行正在等待其子执行完成。|
 
 ## <a name="schedule-the-job-to-run-later"></a>计划要在以后运行的作业

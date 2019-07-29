@@ -8,16 +8,15 @@ ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
-manager: craigg
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 2a5fb6fcd9b1f0c327df23741284ec0d5fc26c71
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f6051c5c83f43f20e453b5f87aabb1a80d7a0487
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447880"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569982"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>使用 CLI 创建单一 Azure SQL 数据库并配置防火墙规则
 

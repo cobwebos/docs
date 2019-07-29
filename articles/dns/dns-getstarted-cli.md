@@ -92,7 +92,7 @@ az network dns record-set list -g MyResourceGroup -z contoso.xyz
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-主机名 www\.contoso.xyz 解析为 10.10.10.10，正如你配置的那样。 此结果表明名称解析正常工作。
+主机名 www\.contoso.xyz 解析为 10.10.10.10，正如你配置的那样   。 此结果表明名称解析正常工作。
 
 ## <a name="delete-all-resources"></a>删除所有资源
 

@@ -48,7 +48,7 @@ az group create --name myresourcegroup --location westus
 设置 | 示例值 | 说明
 ---|---|---
 名称 | **mydemoserver** | 输入用于标识 Azure Database for MariaDB 服务器的唯一名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 它必须包含 3 到 63 个字符。
-resource-group | myresourcegroup | 输入 Azure 资源组的名称。
+resource-group |  myresourcegroup | 输入 Azure 资源组的名称。
 sku-name | **GP_Gen5_2** | SKU 的名称。 请遵循简写约定：*定价层*\_*计算代*\_*vCore 数*。 有关 **sku-name** 参数的详细信息，请查看此表后面的部分。
 backup-retention | **7** | 保留备份的时长。 单位为天。 范围：7 到 35。 
 geo-redundant-backup | **已禁用** | 是否应该为此服务启用异地冗余备份。 允许的值：**Enabled**、**Disabled**。
@@ -56,8 +56,8 @@ location | **westus** | 服务器的 Azure 位置。
 ssl-enforcement | **已启用** | 是否应该为此服务器启用 SSL。 允许的值：**Enabled**、**Disabled**。
 storage-size | **51200** | 服务器的存储容量（单位是兆字节）。 有效的存储大小最小为 5120 MB，以 1024 MB 为增量。 有关存储大小限制的详细信息，请参阅[定价层](./concepts-pricing-tiers.md)。 
 版本 | **10.2** | MariaDB 主要引擎版本。
-admin-user | **myadmin** | 用于管理员登录的用户名。 admin-user 参数不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。
-admin-password | 你的密码 | 管理员用户的密码。 密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字和非字母数字字符。
+admin-user | **myadmin** | 用于管理员登录的用户名。 admin-user 参数不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。       
+admin-password | 你的密码  | 管理员用户的密码。 密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字和非字母数字字符。
 
 sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如以下示例中所示：
 + `--sku-name B_Gen5_1` 映射到基本、第 5 代和 1 个 vCore。 此选项是可用的最小 SKU。
@@ -108,7 +108,7 @@ az mariadb server update --resource-group myresourcegroup --name mydemoserver --
 az mariadb server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-结果采用 JSON 格式。 记下 fullyQualifiedDomainName 和 administratorLogin 的值。
+结果采用 JSON 格式。 记下 fullyQualifiedDomainName  和 administratorLogin  的值。
 
 ```json
 {
@@ -141,7 +141,7 @@ az mariadb server show --resource-group myresourcegroup --name mydemoserver
 
 ## <a name="connect-to-the-server-by-using-the-mysql-command-line-tool"></a>使用 mysql 命令行工具连接到服务器
 
-使用 mysql 命令行工具连接到服务器。 可[下载](https://dev.mysql.com/downloads/)命令行工具并将其安装在计算机上。 还可以通过以下方式访问命令行工具：在本文的代码示例中选择“试用”按钮。 访问命令行工具的另一种方式是在 Azure 门户的右上工具栏中选择 **>_** 按钮，以便打开 **Azure Cloud Shell**。
+使用 mysql 命令行工具连接到服务器。 可[下载](https://dev.mysql.com/downloads/)命令行工具并将其安装在计算机上。 还可以通过以下方式访问命令行工具：在本文的代码示例中选择“试用”按钮。  访问命令行工具的另一种方式是在 Azure 门户的右上工具栏中选择 **>_** 按钮，以便打开 **Azure Cloud Shell**。
 
 若要使用 mysql 命令行工具连接到服务器，请执行以下操作：
 
@@ -207,7 +207,7 @@ az mariadb server show --resource-group myresourcegroup --name mydemoserver
 
 1. 打开客户端计算机上的 MySQL Workbench。 如果尚未安装，请[下载](https://dev.mysql.com/downloads/workbench/)并安装此应用程序。
 
-2. 在“设置新连接”对话框的“参数”选项卡上，输入以下信息：
+2. 在“设置新连接”  对话框的“参数”  选项卡上，输入以下信息：
 
    ![设置新连接](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
 
@@ -218,9 +218,9 @@ az mariadb server show --resource-group myresourcegroup --name mydemoserver
    | 主机名 | **mydemoserver.mariadb.database.azure.com** | 前面记下的服务器名称。 |
    | 端口 | **3306** | Azure Database for MariaDB 的默认端口。 |
    | 用户名 | **myadmin\@mydemoserver** | 前面记下的服务器管理员登录名。 |
-   | 密码 | 你的密码 | 使用之前设置的管理员帐户密码。 |
+   | 密码 | 你的密码  | 使用之前设置的管理员帐户密码。 |
 
-3. 若要检查所有参数是否已正确配置，请选择“测试连接”。
+3. 若要检查所有参数是否已正确配置，请选择“测试连接”  。
 
 4. 选择该连接，成功连接到服务器。
 

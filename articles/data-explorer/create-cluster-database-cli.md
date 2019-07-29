@@ -87,8 +87,8 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
    | cluster-name | *azureclitest* | 将在其中创建数据库的群集的名称。|
    | name | *clidatabase* | 数据库名称。|
    | resource-group | *testrg* | 将在其中创建群集的资源组名称。 |
-   | soft-delete-period | P365D  | 表示供查询使用的数据的保留时间。 有关详细信息，请参阅[保留策略](/azure/kusto/concepts/retentionpolicy)。 |
-   | hot-cache-period | P31D  | 表示数据将在缓存中保留的时间。 有关详细信息，请参阅[缓存策略](/azure/kusto/concepts/cachepolicy)。 |
+   | soft-delete-period | P365D | 表示供查询使用的数据的保留时间。 有关详细信息，请参阅[保留策略](/azure/kusto/concepts/retentionpolicy)。 |
+   | hot-cache-period | P31D | 表示数据将在缓存中保留的时间。 有关详细信息，请参阅[缓存策略](/azure/kusto/concepts/cachepolicy)。 |
 
 1. 若要查看已创建的数据库，请运行以下命令：
 

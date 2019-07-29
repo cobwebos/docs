@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 19ced9767d77b0d7bfcec6f01425ab1089a55d54
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dad99a7e3d0463263e912aa05b5312edbcb89c0b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069232"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597670"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 
@@ -31,7 +31,7 @@ ms.locfileid: "67069232"
 接下来，选择要在其中安装扩展的组织。 
 
 > [!NOTE]
-> 要将扩展安装到 Azure DevOps 组织，必须是帐户所有者或项目集合管理员。 如果你没有权限，但却是帐户成员，可以改为请求扩展。 [了解详细信息。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
+> 要将扩展安装到 Azure DevOps 组织，必须是帐户所有者或项目集合管理员。 如果你没有权限，但却是帐户成员，可以改为请求扩展。 [了解详细信息。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
 ![选择要在其中安装扩展的 Azure DevOps 组织](./media/tutorial-setup-ci-cd/addExtension_2.png)
 

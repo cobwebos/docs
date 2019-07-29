@@ -32,13 +32,13 @@ ms.locfileid: "64692642"
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>创建资源组和虚拟网络
 
-在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 eastus 位置中创建一个名为 myResourceGroup 的资源组：
+在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 eastus 位置中创建一个名为 myResourceGroup 的资源组   ：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 此示例创建名为 myVirtualNetwork 的默认虚拟网络，它具有一个名为 default 的子网：
+使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 此示例创建名为 myVirtualNetwork 的默认虚拟网络，它具有一个名为 default 的子网   ：
 
 ```azurecli-interactive
 az network vnet create \
@@ -53,7 +53,7 @@ az network vnet create \
 
 ### <a name="create-the-first-vm"></a>创建第一个 VM
 
-使用 [az vm create](/cli/azure/vm) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建 VM，因此可继续执行下一步。 此示例创建名为 myVm1 的 VM：
+使用 [az vm create](/cli/azure/vm) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建 VM，因此可继续执行下一步。 此示例创建名为 myVm1 的 VM  ：
 
 ```azurecli-interactive
 az vm create \
@@ -66,7 +66,7 @@ az vm create \
 
 ### <a name="create-the-second-vm"></a>创建第二个 VM
 
-由于已在上一步骤中使用了 `--no-wait` 选项，因此可以继续并创建名为 myVm2 的第二个 VM。
+由于已在上一步骤中使用了 `--no-wait` 选项，因此可以继续并创建名为 myVm2 的第二个 VM  。
 
 ```azurecli-interactive
 az vm create \
@@ -94,11 +94,11 @@ az vm create \
 }
 ```
 
-记下 publicIpAddress。 在下一步中，此地址将用于从 Internet 连接到 VM。
+记下 publicIpAddress。  在下一步中，此地址将用于从 Internet 连接到 VM。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-在此命令中，将 `<publicIpAddress>` 替换为 myVm2 VM 的公用 IP 地址：
+在此命令中，将 `<publicIpAddress>` 替换为 myVm2 VM 的公用 IP 地址  ：
 
 ```bash
 ssh <publicIpAddress>
@@ -106,13 +106,13 @@ ssh <publicIpAddress>
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 
-若要确认 myVm2 VM 和 myVm1 VM 之间的私下通信，请输入此命令：
+若要确认 myVm2 VM 和 myVm1 VM 之间的私下通信，请输入此命令   ：
 
 ```bash
 ping myVm1 -c 4
 ```
 
-将从 10.0.0.4 收到四条回复。
+将从 10.0.0.4 收到四条回复  。
 
 退出与 *myVm2* VM 的 SSH 会话。
 

@@ -35,7 +35,7 @@ az group create --name TestRG1 --location eastus
 
 ## <a name="vnet"></a>创建虚拟网络
 
-使用 [az network vnet create](/cli/azure/network/vnet) 命令创建虚拟网络。 以下示例在“EastUS”位置创建一个名为“VNet1”的虚拟网络   ：
+使用 [az network vnet create](/cli/azure/network/vnet) 命令创建虚拟网络。 以下示例在“EastUS”位置创建一个名为“VNet1”的虚拟网络：
 
 ```azurecli-interactive 
 az network vnet create \

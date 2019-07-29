@@ -67,7 +67,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | 名称 | mykustocluster  | 所需的群集名称。|
+   | 名称 | mykustocluster | 所需的群集名称。|
    | SKU | *D13_v2* | 将用于群集的 SKU。 |
    | ResourceGroupName | *testrg* | 将在其中创建群集的资源组名称。 |
 
@@ -91,8 +91,8 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | ClusterName | mykustocluster  | 将在其中创建数据库的群集的名称。|
-   | Name | mykustodatabase  | 数据库名称。|
+   | ClusterName | mykustocluster | 将在其中创建数据库的群集的名称。|
+   | Name | mykustodatabase | 数据库名称。|
    | ResourceGroupName | *testrg* | 将在其中创建群集的资源组名称。 |
    | SoftDeletePeriod | *3650:00:00:00* | 供查询使用的数据的保留时间。 |
    | HotCachePeriod | *3650:00:00:00* | 数据将在缓存中保留的时间。 |

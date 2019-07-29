@@ -177,7 +177,7 @@ az vm create \
 }
 ```
 
-记下 publicIpAddress。  在后面的步骤中会使用此地址通过 Internet 访问 VM。  创建充当管理服务器的 VM：
+记下 publicIpAddress。 在后面的步骤中会使用此地址通过 Internet 访问 VM。  创建充当管理服务器的 VM：
 
 ```azurecli-interactive
 az vm create \
@@ -196,7 +196,7 @@ az vm create \
 
 ## <a name="test-traffic-filters"></a>测试流量筛选器
 
-使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将 \<publicIpAddress>  替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
+使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将 \<publicIpAddress> 替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
 
 ```bash 
 ssh azureuser@<publicIpAddress>

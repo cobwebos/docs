@@ -3,8 +3,8 @@ title: Azure Service Fabric CLI (sfctl) 脚本部署示例
 description: 使用 Azure Service Fabric CLI 将应用程序部署到 Azure Service Fabric 群集
 services: service-fabric
 documentationcenter: ''
-author: rockboyfor
-manager: digimobile
+author: athinanthny
+manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -12,16 +12,15 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-origin.date: 04/16/2018
-ms.date: 04/29/2019
-ms.author: v-yeche
+ms.date: 04/16/2018
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: f3ab32101a46c1044954f2efe88ac05ab81af24a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d25ed8d27c13e20641d1495c47fdcf6ce2edeb75
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621992"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592207"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>将应用程序部署到 Service Fabric 群集
 
@@ -31,33 +30,7 @@ ms.locfileid: "60621992"
 
 ## <a name="sample-script"></a>示例脚本
 
-```sh
-#!/bin/bash
-
-# Select cluster
-sfctl cluster select \
-    --endpoint http://svcfab1.chinanorth.cloudapp.chinacloudapi.cn:19080
-
-# Upload the application files to the image store
-# (note the last folder name, Debug in this example)
-sfctl application upload \
-    --path  C:\Code\svcfab-vs\svcfab-vs\pkg\Debug \
-    --show-progress
-
-# Register the application (manifest files) from the image store
-# (Note the last folder from the previous command is used: Debug)
-sfctl application provision \
-    --application-type-build-path Debug \
-    --timeout 500
-
-# Create an instance of the registered application and 
-# auto deploy any defined services
-sfctl application create \
-    --app-name fabric:/MyApp \
-    --app-type MyAppType \
-    --app-version 1.0.0
-
-```
+[!code-sh[main](../../../cli_scripts/service-fabric/deploy-application/deploy-application.sh "Deploy an application to a cluster")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -68,5 +41,3 @@ sfctl application create \
 有关详细信息，请参阅 [Service Fabric CLI 文档](../service-fabric-cli.md)。
 
 在 [Service Fabric CLI 示例](../samples-cli.md)中可找到 Azure Service Fabric 的其他 Service Fabric CLI 示例。
-
-<!--Update_Description: update meta properties, update link -->

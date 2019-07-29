@@ -100,7 +100,7 @@ az login
 
 以下示例在西欧区域中创建资源组。 选择资源组的唯一名称。
 
-如果使用 Azure Cloud Shell，请单击“试用”，按照屏幕提示登录，然后将命令复制到命令提示符中。
+如果使用 Azure Cloud Shell，请单击“试用”  ，按照屏幕提示登录，然后将命令复制到命令提示符中。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West Europe"
@@ -204,7 +204,7 @@ npm start
 
 此时应会显示一条控制台消息，告知开发环境已启动并运行。 
 
-在浏览器中导航至 `http://localhost:3000` 。 在顶部菜单中单击“注册”，并尝试创建两个虚构的用户。 
+在浏览器中导航至 `http://localhost:3000` 。 在顶部菜单中单击“注册”，并尝试创建两个虚构的用户。  
 
 MEAN.js 示例应用程序将用户数据存储在数据库中。 如果上述操作成功并且 MEAN.js 可自动登录到已创建的用户，则表示 Azure Cosmos DB 连接可正常工作。 
 

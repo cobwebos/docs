@@ -43,7 +43,7 @@ ms.locfileid: "64695120"
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive
 az group create \
@@ -227,7 +227,7 @@ az storage account network-rule add \
 
 ### <a name="create-the-first-virtual-machine"></a>创建第一个虚拟机
 
-使用 [az vm create](/cli/azure/vm) 在公共子网中创建一个 VM。  如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
+使用 [az vm create](/cli/azure/vm) 在公共子网中创建一个 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
 
 ```azurecli-interactive
 az vm create \
@@ -272,7 +272,7 @@ az vm create \
 
 ## <a name="confirm-access-to-storage-account"></a>确认对存储帐户的访问
 
-通过 SSH 登录到 *myVmPrivate* VM。 将 \<publicIpAddress>  替换为 myVmPrivate  VM 的公共 IP 地址。
+通过 SSH 登录到 *myVmPrivate* VM。 将 \<publicIpAddress> 替换为 myVmPrivate VM 的公共 IP 地址。
 
 ```bash 
 ssh <publicIpAddress>
@@ -334,7 +334,7 @@ az storage share list \
   --account-key <account-key>
 ```
 
-访问被拒绝，你将收到“此请求无权执行此操作”  错误，因为你的计算机不在 *MyVirtualNetwork* 虚拟网络的 *Private* 子网中。
+访问被拒绝，你将收到“此请求无权执行此操作” 错误，因为你的计算机不在 *MyVirtualNetwork* 虚拟网络的 *Private* 子网中。
 
 ## <a name="clean-up-resources"></a>清理资源
 

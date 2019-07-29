@@ -36,7 +36,7 @@ az login
 ## <a name="create-a-resource-group"></a>创建资源组
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 如果还没有 Azure 资源组，可以使用 [az group create](/cli/azure/group) 命令创建一个。 
 
-以下示例在“美国东部”位置创建名为“myResourceGroup”的资源组：
+以下示例在“美国东部”  位置创建名为“myResourceGroup”  的资源组：
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>创建存储帐户
 存储帐户是一个存储共享池，在其中可以部署 Azure 文件共享或其他存储资源，例如 Blob 或队列。 一个存储帐户可以包含无数个文件共享。 一个共享可以存储无数个文件，直到达到存储帐户的容量限制为止。
 
-以下示例使用 [az storage account create](/cli/azure/storage/account) 命令创建名为 mystorageaccount\<随机数字\> 的存储帐户，然后将该存储帐户的名称置于 `$STORAGEACCT` 变量中。 存储帐户名称必须是唯一的，因此请确保将“mystorageacct”替换为唯一名称。
+以下示例使用 [az storage account create](/cli/azure/storage/account) 命令创建名为  mystorageaccount\<随机数字\> 的存储帐户，然后将该存储帐户的名称置于 `$STORAGEACCT` 变量中。 存储帐户名称必须是唯一的，因此请确保将“mystorageacct”替换为唯一名称。
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \

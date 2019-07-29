@@ -56,7 +56,7 @@ openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.cr
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组   。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -220,7 +220,7 @@ az network public-ip show \
 
 ![安全警告](./media/redirect-http-to-https-cli/application-gateway-secure.png)
 
-若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。   随即显示受保护的 NGINX 站点，如下例所示：
+若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。 随即显示受保护的 NGINX 站点，如下例所示：
 
 ![在应用程序网关中测试基 URL](./media/redirect-http-to-https-cli/application-gateway-nginxtest.png)
 

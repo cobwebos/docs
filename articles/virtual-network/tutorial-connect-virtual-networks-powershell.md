@@ -43,7 +43,7 @@ ms.locfileid: "66727756"
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
@@ -114,7 +114,7 @@ Add-AzVirtualNetworkPeering `
   -RemoteVirtualNetworkId $virtualNetwork1.Id
 ```
 
-在上一个命令执行后返回的输出中，可以看到 **peeringState** 为 *Connected*。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为 *Connected*。 使用 [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) 确认 myVirtualNetwork1-myVirtualNetwork2  对等互连的对等互连状态是否已更改为“Connected”  。
+在上一个命令执行后返回的输出中，可以看到 **peeringState** 为 *Connected*。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为 *Connected*。 使用 [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) 确认 myVirtualNetwork1-myVirtualNetwork2 对等互连的对等互连状态是否已更改为“Connected”。
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkPeering `
@@ -160,7 +160,7 @@ New-AzVm `
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 
-可以从 Internet 连接到 VM 的公用 IP 地址。 使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 返回 VM 的公共 IP 地址。 以下示例返回 myVm1 VM 的公共 IP 地址  ：
+可以从 Internet 连接到 VM 的公用 IP 地址。 使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 返回 VM 的公共 IP 地址。 以下示例返回 myVm1 VM 的公共 IP 地址：
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -168,13 +168,13 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-从本地计算机使用以下命令创建与 myVm1 VM 的远程桌面会话  。 将 `<publicIpAddress>` 替换为上一命令返回的 IP 地址。
+从本地计算机使用以下命令创建与 myVm1 VM 的远程桌面会话。 将 `<publicIpAddress>` 替换为上一命令返回的 IP 地址。
 
 ```
 mstsc /v:<publicIpAddress>
 ```
 
-此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机，同时打开该文件。 输入用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后单击“确定”。    你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。  
+此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机，同时打开该文件。 输入用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后单击“确定”。 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。
 
 在 *myVm1* VM 上，允许 Internet 控制消息协议 (ICMP) 通过 Windows 防火墙，以便在稍后的步骤中使用 PowerShell 从 *myVm2* ping 此 VM：
 

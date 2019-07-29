@@ -149,7 +149,7 @@ Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 > [!NOTE]
 > 在 Azure 应用服务中，此应用在 IIS 中使用 [iisnode](https://github.com/Azure/iisnode) 运行。 为了让应用能够使用 iisnode 运行，根应用目录包含一个 web.config 文件。 此文件可以由 IIS 读取，与 iisnode 相关的设置记录在 [iisnode GitHub 存储库](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)中。
 
-祝贺你！ 现已将第一个 Node.js 应用部署到应用服务。
+祝贺你！  现已将第一个 Node.js 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
@@ -174,7 +174,7 @@ zip -r myUpdatedAppFiles.zip *.*
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src myUpdatedAppFiles.zip
 ```
 
-切换回在“浏览到应用”步骤中打开的浏览器窗口，然后刷新页面。
+切换回在“浏览到应用”  步骤中打开的浏览器窗口，然后刷新页面。
 
 ![已更新的在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
@@ -182,7 +182,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 

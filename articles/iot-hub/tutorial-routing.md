@@ -130,21 +130,21 @@ az servicebus queue create --name $sbQueueName \
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-1. 在 [Azure 门户](https://portal.azure.com)中选择“资源组”，然后选择你的资源组。 本教程使用 ContosoResources。
+1. 在 [Azure 门户](https://portal.azure.com)中选择“资源组”，然后选择你的资源组  。 本教程使用 ContosoResources  。
 
-2. 在资源列表下选择“IoT 中心”。 本教程使用 ContosoTestHub。
+2. 在资源列表下选择“IoT 中心”。 本教程使用 ContosoTestHub  。
 
-3. 选择“消息路由”。 在“消息路由”窗格中，选择“+添加”。 在“添加路由”窗格中，选择“终结点”字段旁边的“+添加”以显示支持的终结点，如下图所示：
+3. 选择“消息路由”  。 在“消息路由”窗格中，选择“+添加”   。 在“添加路由”窗格中，选择“终结点”字段旁边的“+添加”以显示支持的终结点，如下图所示   ：
 
    ![开始添加路由的终结点](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
 
-4. 选择“Blob 存储”。 此时会显示“添加存储终结点”窗格。
+4. 选择“Blob 存储”  。 此时会显示“添加存储终结点”窗格  。
 
    ![添加终结点](./media/tutorial-routing/message-routing-add-storage-ep.png)
 
 5. 为终结点输入名称。 本教程使用 **ContosoStorageEndpoint**。
 
-6. 选择“选取容器”。 将转到存储帐户列表。 选择在准备步骤中设置的存储账户。 本教程使用 **contosostorage**。 它显示该存储帐户中的容器列表。 **选择**在准备步骤中设置的容器。 本教程使用 contosoresults。 返回到“添加存储终结点”窗格并查看所做的选择。
+6. 选择“选取容器”  。 将转到存储帐户列表。 选择在准备步骤中设置的存储账户。 本教程使用 **contosostorage**。 它显示该存储帐户中的容器列表。 **选择**在准备步骤中设置的容器。 本教程使用 contosoresults  。 返回到“添加存储终结点”窗格并查看所做的选择。 
 
 7. 将编码设置为 AVRO 或 JSON。 在本教程中，其余字段使用默认值。 如果所选的区域不支持 JSON 编码，则此字段将会灰显。
 
@@ -156,7 +156,7 @@ az servicebus queue create --name $sbQueueName \
    > Blob 以 Avro 格式写入。
    >
 
-8. 选择“创建”以创建存储终结点，并将其添加到路由。 随即返回到“添加路由”窗格。
+8. 选择“创建”以创建存储终结点，并将其添加到路由  。 随即返回到“添加路由”窗格  。
 
 9. 现在完成余下的路由查询信息。 此查询指定将消息发送到刚刚添加为终结点的存储容器的条件。 填充屏幕上的字段。
 
@@ -164,7 +164,7 @@ az servicebus queue create --name $sbQueueName \
 
    **终结点**：选择刚刚设置的终结点。
 
-   **数据源**：从下拉列表选择“设备遥测消息”。
+   **数据源**：从下拉列表选择“设备遥测消息”  。
 
    **启用路由**：确保此字段设置为 `enabled`。
    
@@ -172,17 +172,17 @@ az servicebus queue create --name $sbQueueName \
 
    ![为存储帐户创建路由查询](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
 
-   选择“保存”。 完成后，返回到“消息路由”窗格，可在其中看到存储的新路由查询。 关闭“路由”窗格，将返回到资源组页。
+   选择“保存”。  完成后，返回到“消息路由”窗格，可在其中看到存储的新路由查询。 关闭“路由”窗格，将返回到资源组页。
 
 ### <a name="route-to-a-service-bus-queue"></a>路由到服务总线队列
 
 现在为服务总线队列设置路由。 你转到“消息路由”窗格，然后添加路由。 添加路由时，请为路由定义新的终结点。 设置此路由后，**level** 属性设置为 **critical** 的消息将写入服务总线队列，这会触发某个逻辑应用，然后发送包含相关信息的电子邮件。
 
-1. 在“资源组”页上选择你的 IoT 中心，然后选择“消息路由”。
+1. 在“资源组”页上选择你的 IoT 中心，然后选择“消息路由”  。
 
-2. 在“消息路由”窗格中，选择“+添加”。
+2. 在“消息路由”窗格中，选择“+添加”   。
 
-3. 在“添加路由”窗格中，选择“终结点”字段旁边的“+添加”。 选择“服务总线队列”。 随即看到“添加服务总线终结点”窗格。
+3. 在“添加路由”窗格中，选择“终结点”字段旁边的“+添加”   。 选择“服务总线队列”  。 随即看到“添加服务总线终结点”窗格  。
 
    ![添加服务总线终结点](./media/tutorial-routing/message-routing-add-sbqueue-ep.png)
 
@@ -190,11 +190,11 @@ az servicebus queue create --name $sbQueueName \
 
    **终结点名称**：为终结点输入名称。 本教程使用 **ContosoSBQueueEndpoint**。
    
-   **服务总线命名空间**：使用下拉列表选择在准备步骤中设置的服务总线命名空间。 本教程使用 ContosoSBNamespace。
+   **服务总线命名空间**：使用下拉列表选择在准备步骤中设置的服务总线命名空间。 本教程使用 ContosoSBNamespace  。
 
-   **服务总线队列**：使用下拉列表选择服务总线队列。 本教程使用 contososbqueue。
+   **服务总线队列**：使用下拉列表选择服务总线队列。 本教程使用 contososbqueue  。
 
-5. 选择“创建”以添加服务总线队列终结点。 随即返回到“添加路由”窗格。
+5. 选择“创建”以添加服务总线队列终结点  。 随即返回到“添加路由”窗格  。
 
 6. 现在完成余下的路由查询信息。 此查询指定将消息发送到刚刚添加为终结点的服务总线队列的条件。 填充屏幕上的字段。 
 
@@ -202,17 +202,17 @@ az servicebus queue create --name $sbQueueName \
 
    **终结点**：选择刚刚设置的终结点。
 
-   **数据源**：从下拉列表选择“设备遥测消息”。
+   **数据源**：从下拉列表选择“设备遥测消息”  。
 
    **路由查询**：输入 `level="critical"` 作为查询字符串。 
 
    ![为服务总线队列创建路由查询](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 
-7. 选择“保存”。 返回到“路由”窗格时，可看到这两个新的路由，如此处所示。
+7. 选择“保存”。  返回到“路由”窗格时，可看到这两个新的路由，如此处所示。
 
    ![刚刚设置的路由](./media/tutorial-routing/message-routing-show-both-routes.png)
 
-8. 可以通过选择“自定义终结点”选项卡来查看设置的自定义终结点。
+8. 可以通过选择“自定义终结点”选项卡来查看设置的自定义终结点  。
 
    ![刚刚设置的自定义终结点](./media/tutorial-routing/message-routing-show-custom-endpoints.png)
 

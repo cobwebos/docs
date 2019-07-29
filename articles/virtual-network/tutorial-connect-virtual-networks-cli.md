@@ -41,7 +41,7 @@ ms.locfileid: "67203874"
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -99,7 +99,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已启动”  。 对等互连将保持“已启动”  状态，直到你创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 
+在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已启动”。 对等互连将保持“已启动”状态，直到你创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -110,7 +110,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已连接”  。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为“已连接”  。 使用 [az network vnet peering show](/cli/azure/network/vnet/peering) 确认 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态是否已更改为“已连接”  。
+在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已连接”。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为“已连接”。 使用 [az network vnet peering show](/cli/azure/network/vnet/peering) 确认 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态是否已更改为“已连接”。
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -120,7 +120,7 @@ az network vnet peering show \
   --query peeringState
 ```
 
-在两个虚拟网络中的对等互连的 **peeringState** 为“已连接”  之前，在一个虚拟网络中的资源无法与另一个虚拟网络中的资源通信。 
+在两个虚拟网络中的对等互连的 **peeringState** 为“已连接”之前，在一个虚拟网络中的资源无法与另一个虚拟网络中的资源通信。 
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
@@ -170,7 +170,7 @@ az vm create \
 }
 ```
 
-记下 publicIpAddress。  在后面的步骤中会使用此地址通过 Internet 访问 VM。
+记下 publicIpAddress。 在后面的步骤中会使用此地址通过 Internet 访问 VM。
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 

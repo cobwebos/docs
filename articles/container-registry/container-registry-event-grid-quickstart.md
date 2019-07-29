@@ -101,7 +101,7 @@ az group deployment create \
 
 ## <a name="subscribe-to-registry-events"></a>订阅注册表事件
 
-在事件网格中订阅一个主题，以告知你要跟踪哪些事件，以及要将事件发送到何处。  以下[az eventgrid event-订阅 create][az-eventgrid-event-subscription-create]命令订阅你创建的容器注册表, 并将你的 web 应用的 URL 指定为它应将事件发送到的终结点。 此处可以重复使用在前面几个部分填充的环境变量，因此无需进行编辑。
+在事件网格中订阅一个主题，以告知你要跟踪哪些事件，以及要将事件发送到何处。 以下[az eventgrid event-订阅 create][az-eventgrid-event-subscription-create]命令订阅你创建的容器注册表, 并将你的 web 应用的 URL 指定为它应将事件发送到的终结点。 此处可以重复使用在前面几个部分填充的环境变量，因此无需进行编辑。
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)

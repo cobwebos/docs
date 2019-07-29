@@ -34,7 +34,7 @@ ms.locfileid: "68275710"
 
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“eastus2”  位置创建名为“myresourcegroupoutbound”的资源组  ：
+以下示例在“eastus2”位置创建名为“myresourcegroupoutbound”的资源组：
 
 ```azurecli-interactive
   az group create \

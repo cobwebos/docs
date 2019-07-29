@@ -31,7 +31,7 @@ ms.locfileid: "65149582"
 ## <a name="setting-up-storage-account-cors-rules"></a>设置存储帐户 CORS 规则 
 必须先将帐户配置为启用[跨域资源共享](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)（简称 CORS），然后 Web 应用程序才能从客户端访问 Blob 存储。 
 
-返回到 Azure 门户，然后选择存储帐户。 若要定义新的 CORS 规则，请返回到“设置”部分，然后单击“CORS”链接。 接下来，请单击“添加”按钮，打开“添加 CORS 规则”窗口。 对于本快速入门，请创建开放的 CORS 规则：
+返回到 Azure 门户，然后选择存储帐户。 若要定义新的 CORS 规则，请返回到“设置”部分，然后单击“CORS”链接。   接下来，请单击“添加”按钮，打开“添加 CORS 规则”窗口。   对于本快速入门，请创建开放的 CORS 规则：
 
 ![Azure Blob 存储帐户 CORS 设置](media/storage-quickstart-blobs-javascript-client-libraries/azure-blob-storage-cors-settings.png)
 
@@ -252,7 +252,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > 若要使用此代码示例，需为 *blobName* 提供字符串值。
 
 ## <a name="clean-up-resources"></a>清理资源
-若要清理在本快速入门过程中创建的资源，请返回到 [Azure 门户](https://portal.azure.com)，然后选择存储帐户。 选中以后，即可转到“概览”>“删除存储帐户”来删除该存储帐户。
+若要清理在本快速入门过程中创建的资源，请返回到 [Azure 门户](https://portal.azure.com)，然后选择存储帐户。 选中以后，即可转到“概览”>“删除存储帐户”来删除该存储帐户。 
 
 ## <a name="next-steps"></a>后续步骤
 浏览示例，了解如何下载 Blob 以及如何在文件上传过程中报告进度。

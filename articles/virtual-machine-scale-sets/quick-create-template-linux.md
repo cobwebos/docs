@@ -133,7 +133,7 @@ Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaSc
 
 
 ## <a name="deploy-the-template"></a>部署模板
-可以通过下面的“部署到 Azure”按钮部署[基于 Linux 的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)模板。 此按钮可打开 Azure 门户、加载完整的模板，以及提示输入一些参数，例如规模集名称、实例计数和管理员凭据。
+可以通过下面的“部署到 Azure”按钮部署[基于 Linux 的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)模板。  此按钮可打开 Azure 门户、加载完整的模板，以及提示输入一些参数，例如规模集名称、实例计数和管理员凭据。
 
 [![将模板部署到 Azure](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
@@ -161,7 +161,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-以“http:\//publicIpAddress:9000/do_work” 格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
+以“http:\//publicIpAddress:9000/do_work”  格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
 
 ![NGINX 中的默认网页](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 
