@@ -1,7 +1,7 @@
 ---
-title: 转录语音 SDK-语音服务与多个参与者对话
+title: 转录与语音 SDK 语音服务的多参与者对话
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用语音 SDK 会话的脚本。 适用于C++， C#，和 Java。
+description: 了解如何通过语音 SDK 使用对话脚本。 适用于C++、 C#和 Java。
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -10,40 +10,40 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 215209a5b8e3ed46b25fbfa492c305785a9a0070
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606469"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559473"
 ---
-# <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>转录语音 SDK 与多个参与者对话
+# <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>通过语音 SDK 转录多参与者对话
 
-Speech SDK **ConversationTranscriber** API 允许你能够添加、 删除和标识参与者通过流式处理到语音服务使用的音频转录会议/会话`PullStream`或`PushStream`.
+通过语音 SDK 的**ConversationTranscriber** API, 你可以通过使用`PullStream`或`PushStream`将音频流式传输到语音服务, 使用添加、删除和标识参与者的能力转录会议/对话。
 
 ## <a name="limitations"></a>限制
 
-* 支持会话 transcriber C++， C#，并在 Windows、 Linux 和 Android 的 Java。
-* ROOBO DevKit 是用于创建会话转录，如说话人识别有效地提供可利用的循环多麦克风阵列支持的硬件环境。 [有关详细信息，请参阅语音设备 SDK](speech-devices-sdk.md)。
-* 会话脚本为语音 SDK 支持仅限于使用的音频拉取和推送模式下使用八个频道的 16 位 16 kHz PCM 音频流。
-* 会话的脚本是目前推出的以下区域中的"EN-US"和"zh CN"语言版本： centralus 和东亚。
+* Windows、Linux 和 Android C++上C#的、和 Java 支持会话 transcriber。
+* ROOBO DevKit 是支持用于创建会话转录的硬件环境, 因为它提供了环形多麦克风阵列, 可以有效地利用该阵列来识别演讲者。 [有关详细信息, 请参阅语音设备 SDK](speech-devices-sdk.md)。
+* 对会话脚本的语音 SDK 支持仅限于使用带有8个16位 16 kHz 音频 PCM 音频通道的音频拉取和推送模式流。
+* 会话脚本目前在以下区域的 "en-us" 和 "zh-chs" 语言中提供: centralus 和 eastasia。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* [了解如何使用语音到文本和语音 SDK。](quickstart-csharp-dotnet-windows.md)
-* [获取语音试用版订阅。](https://azure.microsoft.com/try/cognitive-services/)
-* 语音 SDK 版本 1.5.1 或更高版本。
+* [了解如何通过语音 SDK 使用语音到文本。](quickstart-csharp-dotnet-windows.md)
+* [获取你的语音试用订阅。](https://azure.microsoft.com/try/cognitive-services/)
+* 需要语音 SDK 版本1.5.1 或更高版本。
 
-## <a name="create-voice-signatures-for-participants"></a>为参与方创建语音签名
+## <a name="create-voice-signatures-for-participants"></a>为参与者创建语音签名
 
-第一步是为会话参与者创建语音签名。 创建语音签名是必需的高效说话人识别。
+第一步是为会话参与者创建语音签名。 若要高效地进行发言人识别, 需要创建语音签名。
 
-### <a name="requirements-for-input-wave-file"></a>要求输入的波形文件
+### <a name="requirements-for-input-wave-file"></a>输入波形文件的要求
 
-* 创建语音签名的输入音频波形文件应是 16 位样本、 16 kHz 采样率和单通道 (Mono) 格式。
-* 每个音频采样的推荐的长度为 30 秒到两分钟。
+* 用于创建语音签名的输入音频波形文件应为16位示例、16 kHz 采样率和单通道 (单声道) 格式。
+* 每个音频采样的建议长度介于30秒到2分钟之间。
 
-下面的示例演示两种不同方式创建通过语音签名[使用 REST API](https://aka.ms/cts/signaturegenservice)从C#:
+下面的示例演示了使用中C#[的 REST API](https://aka.ms/cts/signaturegenservice)两种不同的方法来创建语音签名:
 
 ```csharp
 class Program
@@ -87,9 +87,9 @@ class Program
 
 ## <a name="transcribing-conversations"></a>转录对话
 
-若要转录与多个参与者的对话，创建`ConversationTranscriber`与关联的对象`AudioConfig`对话会话中和音频流使用创建的对象`PullAudioInputStream`或`PushAudioInputStream`。
+若要转录多个参与者的会话, `ConversationTranscriber`请创建`AudioConfig`与为会话会话创建的对象关联的对象, 并使用`PullAudioInputStream`或`PushAudioInputStream`流式传输音频。
 
-我们假设您有一个名为 ConversationTranscriber 类`MyConversationTranscriber`。 你的代码可能如下所示：
+假设你有一个名`MyConversationTranscriber`为的 ConversationTranscriber 类。 你的代码可能如下所示:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
