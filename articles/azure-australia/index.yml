@@ -1,0 +1,35 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure 澳大利亚文档
+metadata:
+  title: Azure 澳大利亚文档 | Microsoft Docs
+  description: Microsoft Azure 澳大利亚提供构建在安全性、隐私性与控制性、合规性和透明性基本原则之上的云平台。
+  author: Galey801
+  ms.service: azure-australia
+  ms.topic: landing-page
+  ms.date: 07/22/2019
+  ms.author: grgale
+abstract:
+  description: 'Microsoft Azure 澳大利亚提供构建在安全性、隐私性与控制性、合规性和透明性基本原则之上的云平台。 Microsoft Azure 澳大利亚已通过澳大利亚网络安全中心 (ACSC) 认证，并包含在已认证的云服务列表 (CCSL) 中。 Azure 澳大利亚在 CCSL 上的 PROTECTED 和 Unclassified:DLM（现为 Official:Sensitive）分类下列出。 对于在其体系结构上构建的所有系统和应用程序，Azure 澳大利亚使用了对“澳大利亚政府和关键基础结构”组织及其供应商至关重要的世界级安全性和合规性服务。'
+sections:
+  - title: 从哪里开始？
+    items:
+      - type: paragraph
+        text: 有关 Azure 澳大利亚的更多详细信息，请开始查看可使用以下链接访问的概述。
+      - html: <a href="australia-overview.md">什么是 Azure 澳大利亚？</a>
+  - title: 免费 Pluralsight 视频培训
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure 管理员
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+          - title: 在 Microsoft Azure 中启用平台保护
+            href: 'https://app.pluralsight.com/paths/skills/enabling-platform-protection-in-microsoft-azure'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/paths/skills/enabling-platform-protection-in-microsoft-azure'

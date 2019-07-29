@@ -148,6 +148,8 @@
               href: stream-analytics-scale-jobs.md
         - name: 利用 ML 函数进行缩放
           href: stream-analytics-scale-with-machine-learning-functions.md
+        - name: 使用重新分区功能进行缩放
+          href: repartition.md
     - name: 自动化
       items:
         - name: 使用 .NET SDK

@@ -308,7 +308,13 @@
               displayname: 'live, quickpulse, quick pulse, live metrics'
               href: app/live-stream.md
             - name: 度量值
-              href: app/metrics-explorer.md
+              items:
+                - name: 基于日志的和预聚合的指标
+                  href: app/pre-aggregated-metrics-log-metrics.md
+                - name: 基于日志的指标定义
+                  href: platform/app-insights-metrics.md
+                - name: 经典指标资源管理器
+                  href: app/metrics-explorer.md
             - name: 搜索
               href: app/diagnostic-search.md
             - name: 探查器
@@ -425,8 +431,6 @@
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
                   href: app/configuration-with-applicationinsights-config.md
-                - name: 基于日志的和预聚合的指标
-                  href: app/pre-aggregated-metrics-log-metrics.md
                 - name: 事务诊断
                   href: app/transaction-diagnostics.md
                 - name: 关联自定义数据源
@@ -659,15 +663,13 @@
                 - name: 在日志中收集
                   href: platform/diagnostic-logs-stream-log-store.md
                 - name: 从 Azure 存储中收集
-                  href: platform/collect-azure-metrics-logs.md
+                  href: platform/azure-storage-iis-table.md
                 - name: 存档到存储
                   href: platform/archive-diagnostic-logs.md
                 - name: 将数据流式传输到事件中心
                   href: platform/diagnostic-logs-stream-event-hubs.md
                 - name: 通过资源管理器模板启用
                   href: platform/diagnostic-logs-stream-template.md
-                - name: 服务日志和指标
-                  href: platform/azure-storage-iis-table.md
             - name: 将数据流式传输到事件中心
               href: platform/stream-monitoring-data-event-hubs.md
             - name: 密钥保管库分析
@@ -736,8 +738,8 @@
               href: platform/metrics-getting-started.md
             - name: 指标资源管理器的高级功能
               href: platform/metrics-charts.md
-            - name: 基于日志的指标
-              href: platform/app-insights-metrics.md
+            - name: 指标图表示例
+              href: platform/metric-chart-samples.md
             - name: 排查指标图表问题
               href: platform/metrics-troubleshoot.md
         - name: 日志
