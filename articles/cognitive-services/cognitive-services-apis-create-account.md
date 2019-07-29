@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 门户中创建认知服务资源
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 通过在 Azure 门户中创建并订阅资源, 开始使用 Azure 认知服务。
 services: cognitive-services
 author: aahill
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: e9616f3014288e4b2580f474c49c646928db5a08
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 4a74133a4a34f07db3813d3b9f9a47794c05ec49
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334249"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594650"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 门户创建认知服务资源
 
@@ -30,7 +30,7 @@ ms.locfileid: "68334249"
 
 在创建认知服务资源之前, 必须具有 Azure 资源组才能包含资源。 创建新资源时, 可以选择创建新的资源组或使用现有资源组。 本文介绍如何创建新资源组。
 
-1. 登录 [Azure 门户](https://portal.azure.com)，然后单击“创建资源”  。
+1. 登录 [Azure 门户](https://portal.azure.com)，然后单击“创建资源”。
 
     ![选择认知服务 API](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
 
@@ -40,11 +40,11 @@ ms.locfileid: "68334249"
 
         ![搜索“认知服务”](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
 
-    * 若要查看所有可用认知服务，请选择“Azure 市场”下的“AI + 机器学习”   。 如果看不到你感兴趣的服务，请单击“查看全部”，并滚动到“认知服务”   。 单击“更多”  以查看认知服务 API 的整个目录。
+    * 若要查看所有可用认知服务，请选择“Azure 市场”下的“AI + 机器学习”。 如果看不到你感兴趣的服务，请单击“查看全部”，并滚动到“认知服务”。 单击“更多”以查看认知服务 API 的整个目录。
     
         ![选择认知服务 API](media/cognitive-services-apis-create-account/azureMarketplace.png)
 
-3. 在“创建”页中提供以下信息： 
+3. 在“创建”页中提供以下信息：
 
     > [!IMPORTANT]
     > 请记住你的 Azure 位置，因为在调用 Azure 认知服务时可能需要用到它。
@@ -62,7 +62,7 @@ ms.locfileid: "68334249"
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 
-创建资源后，如果已固定该资源，则可以从 Azure 仪表板对其进行访问。 否则，可以在“资源组”中查找该资源  。 在选择了资源后，可以通过选择“资源管理”下的“密钥”获取所需的密钥   。
+创建资源后，如果已固定该资源，则可以从 Azure 仪表板对其进行访问。 否则，可以在“资源组”中查找该资源。 在选择了资源后，可以通过选择“资源管理”下的“密钥”获取所需的密钥。
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 
@@ -72,9 +72,9 @@ ms.locfileid: "68334249"
 
 若要使用 Azure 门户删除资源组，请执行以下操作：
 
-1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。 
+1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。
 2. 找到要删除的资源组，并右键单击列表右侧的“更多”按钮 (...)。
-3. 选择“删除资源组”并进行确认。 
+3. 选择“删除资源组”并进行确认。
 
 ## <a name="see-also"></a>请参阅
 

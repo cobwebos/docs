@@ -3,18 +3,18 @@ title: 数据筛选 - 自定义翻译器
 titleSuffix: Azure Cognitive Services
 description: 提交用于训练自定义系统的文档时，这些文档需要经历一系列的处理和筛选步骤，为训练做准备。
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a224a30114d03468c5764528e6c7472572a93f1c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1028443eaaf6c483cd7cd57289b0dcf2a9f11902
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443433"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595903"
 ---
 # <a name="data-filtering"></a>数据筛选
 
@@ -23,7 +23,7 @@ ms.locfileid: "67443433"
 ## <a name="sentence-alignment"></a>句子对齐
 如果文档不是 XLIFF、TMX 或 ALIGN 格式，则自定义翻译器会将源文档和目标文档的句子一句句地互相对齐。 翻译器并不执行文档对齐操作，而是根据文档的命名找出另一语言的匹配文档。 在文档中，自定义翻译器会尝试找出另一语言的相应句子。 它使用类似于嵌入式 HTML 标记的文档标记来帮助进行对齐。  
 
-如果看到的源中的语句的数目较大差异，并且目标端的文档，文档可能不会进行并行第一个位置中，或由于其他原因而无法对齐。 如果文档配对时每侧的句子存在大的差异 (>10%)，则必须再次进行查看，确保这些句子确实已对齐。 如果句子计数差异令人怀疑，自定义翻译器会在文档旁边显示一个警告。  
+如果在源和目标端文档中的句子数与目标端文档中的句子数之间存在较大的差异, 可能是因为你的文档可能没有在第一位置并行, 或者无法对齐其他原因。 如果文档配对时每侧的句子存在大的差异 (>10%)，则必须再次进行查看，确保这些句子确实已对齐。 如果句子计数差异令人怀疑，自定义翻译器会在文档旁边显示一个警告。  
 
 
 ## <a name="deduplication"></a>重复数据删除
@@ -45,7 +45,7 @@ ms.locfileid: "67443433"
 将多个句末标点字符替换为单个实例。  
 
 ## <a name="japanese-character-normalization"></a>日语字符规范化
-将全角字符字母和数字转换为半角字符。
+将全角字母和数字转换为半角字符。
 
 ## <a name="unescaped-xml-tags"></a>非转义的 XML 标记
 筛选会将非转义的标记转换为转义的标记：

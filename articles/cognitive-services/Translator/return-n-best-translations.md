@@ -1,6 +1,6 @@
 ---
 title: 返回 N 个最佳翻译 - 文本翻译 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用 Microsoft 文本翻译 API 返回 N 个最佳翻译。
 services: cognitive-services
 author: swmachan
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: d3e64fff8fa0d2d815ea3bff4a44962d74a7118b
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 7aec6bb81f3ca99ead744767668c2e4f1d1d4d53
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357620"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594885"
 ---
 # <a name="how-to-return-n-best-translations"></a>如何返回 N 个最佳翻译
 
@@ -39,14 +39,14 @@ Microsoft Translator API 的 GetTranslations() 和 GetTranslationsArray() 方法
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | text | **必需** 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|
-| from | **必需** 一个字符串，表示要翻译的文本的语言代码。 |
-| 至 | **必需** 一个字符串，表示要将文本翻译成的语言代码。 |
+| 来自 | **必需** 一个字符串，表示要翻译的文本的语言代码。 |
+| to | **必需** 一个字符串，表示要将文本翻译成的语言代码。 |
 | maxTranslations | **必需** 一个整数，表示要返回的最大翻译数。 |
 | options | **可选** 一个 TranslateOptions 对象，包含下面列出的值。 它们都是可选的，并且默认为最常用的设置。
 
 * 类别：唯一支持也是默认的选项为“general”。
 * ContentType：唯一支持也是默认的选项为“text/plain”。
-* 状态：用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
+* 状态:用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
 * IncludeMultipleMTAlternatives：一个标志，用于确定是否从 MT 引擎返回一个以上替代项。 默认值为 false，并且仅包括 1 个备选项。
 
 ## <a name="ratings"></a>评级

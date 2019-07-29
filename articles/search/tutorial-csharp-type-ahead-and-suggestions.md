@@ -93,7 +93,7 @@ ms.locfileid: "67434643"
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>添加对控制器的 Suggest 操作
 
-1. 在主控制器中，添加 Suggest  操作（即添加在 Page ** **操作之后）。
+1. 在主控制器中，添加 Suggest  操作（即添加在 Page ** ** 操作之后）。
 
     ```cs
         public async Task<ActionResult> Suggest(bool highlights, bool fuzzy, string term)

@@ -3,18 +3,18 @@ title: 什么是并行文档？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 并行文档是配对的文档，其中的一个文档是另一个文档的翻译。 该对中的一个文档包含采用源语言的句子，另一个文档包含这些句子的目标语言翻译。
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3b7997adfa38fa24bdf41f22c99f06e9a0ba1bf0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fb54df2e1eb89d30e62ae80355635356343994ee
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447393"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595444"
 ---
 # <a name="what-are-parallel-documents"></a>什么是并行文档？
 
@@ -23,7 +23,7 @@ ms.locfileid: "67447393"
 
 ## <a name="requirements"></a>要求
 
-你将需要的 10,000 唯一的并行语句来训练一个系统的最小值。 作为最佳做法，可以不断添加更多的并行内容并重新训练，以提高翻译系统的质量。
+你将需要至少10000个唯一并行句子来训练系统。 作为最佳做法，可以不断添加更多的并行内容并重新训练，以提高翻译系统的质量。
 
 Microsoft 要求上传到自定义翻译的文档不违反第三方的版权或知识产权。 有关详细信息，请参阅[使用条款](https://azure.microsoft.com/support/legal/cognitive-services-terms/)。
 使用门户上传文档不会改变文档本身的知识产权所有权。

@@ -3,28 +3,28 @@ title: 查看模型详细信息 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 任何项目下的“模型”选项卡会显示每个模型的详细信息，例如模型名称、模型状态、BLEU 评分、训练、优化、测试句子计数。
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 92f5275b85b4a257e8841f43424d356db702cacd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 64f446c3b331c1aa6ddaae9081b7f61943f74ab2
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442470"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595564"
 ---
 # <a name="view-model-details"></a>查看模型详细信息
 
 项目下的“模型”选项卡显示该项目中的所有模型。 为该项目训练的所有模型列在此选项卡中。
 
-在项目中每个模型，显示了这些详细信息。
+对于项目中的每个模型, 将显示这些详细信息。
 
 1.  模型名称：显示给定模型的模型名称。
 
-2.  状态：显示给定模型的状态。 新的训练在接受之前一直显示为“已提交”状态。 在服务评估文档的内容时，状态将更改为“正在处理数据”。 文档评估完成时，状态将更改为“正在运行”，此时可以查看训练中包含的句子数，包括系统自动创建的优化和测试集。 下面是描述模型状态的模型状态列表。
+2.  状态:显示给定模型的状态。 新的训练在接受之前一直显示为“已提交”状态。 在服务评估文档的内容时，状态将更改为“正在处理数据”。 文档评估完成时，状态将更改为“正在运行”，此时可以查看训练中包含的句子数，包括系统自动创建的优化和测试集。 下面是描述模型状态的模型状态列表。
 
     -  已提交：指定后端正在处理该模型的文档。
 

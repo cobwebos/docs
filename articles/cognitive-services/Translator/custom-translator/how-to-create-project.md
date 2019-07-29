@@ -3,18 +3,18 @@ title: 如何创建项目？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 如何在自定义翻译中创建项目？
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 6c8b46c35c03b472863bdc71d29552198dbb0d77
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a62cc6133fe01bf7478166c526e32b3215ceebf1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448336"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595747"
 ---
 # <a name="create-a-project"></a>创建一个项目
 
@@ -32,7 +32,7 @@ ms.locfileid: "67448336"
 
     a.  项目名称（必需）：为项目提供唯一且有意义的名称。 不需要在标题中提到语言。
 
-    b.  说明:有关项目的简短摘要。 此说明对自定义翻译的行为或生成的自定义系统没有影响，但可以帮助区分不同的项目。
+    b.  描述:有关项目的简短摘要。 此说明对自定义翻译的行为或生成的自定义系统没有影响，但可以帮助区分不同的项目。
 
     c.  语言对（必需）：选择翻译的源语言和目标语言。
 
@@ -40,7 +40,7 @@ ms.locfileid: "67448336"
 
     e.  类别说明：使用此字段可以更好地描述你工作所在的特定领域或行业。 例如，如果你的类别是“医疗”，则你可以添加特定的文档，例如“外科”或“儿科”。 此说明对自定义翻译的行为或生成的自定义系统没有影响。
 
-    f.  项目标签：[项目标签](workspace-and-project.md#project-labels)可以区分具有相同语言对和类别的项目。 最佳做法是，仅当你打算为相同语言对和相同类别生成多个项目，并且想要使用不同的 CategoryID 访问这些项目时，才使用标签。  如果只为一个类别生成系统，请不要使用此字段。 项目标签不是必需的，对区分不同的语言对没有帮助。 可对多个项目使用同一个标签。
+    f.  项目标签：[项目标签](workspace-and-project.md#project-labels)可以区分具有相同语言对和类别的项目。 最佳做法是，仅当你打算为相同语言对和相同类别生成多个项目，并且想要使用不同的 CategoryID 访问这些项目时，才使用标签。 如果只为一个类别生成系统，请不要使用此字段。 项目标签不是必需的，对区分不同的语言对没有帮助。 可对多个项目使用同一个标签。
 
     ![“创建项目”对话框](media/how-to/how-to-create-project-dialog.png)
 

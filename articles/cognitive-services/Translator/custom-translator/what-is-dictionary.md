@@ -3,18 +3,18 @@ title: 什么是字典？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 字典一个对齐的文档，其中指定了你始终希望 Microsoft Translator 以相同方式翻译的短语或句子（及其译文）的列表。 字典有时也称为词汇表或术语库。
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: c837399778723b0b084c26422b7bea762f0e7709
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5103526956b5041771a1d8e4abb5e8800b971059
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447365"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595386"
 ---
 # <a name="what-is-a-dictionary"></a>什么是字典？
 
@@ -34,7 +34,7 @@ ms.locfileid: "67447365"
 >[!Note]
 >自定义翻译不会在字典文件中进行句子对齐，因此，必须确保字典文档中的源和目标短语/句子数相同，并且它们已准确对齐。
 
-## <a name="recommendations"></a>建议
+## <a name="recommendations"></a>推荐
 
 - 字典不可取代使用训练数据训练的模型。  字典本质上只是查找并替换单词或句子。  让系统从完整句子中的训练材料进行学习，通常比使用字典的做法更好。
 - 应谨慎使用短语字典。 如果替换了某个句子中的短语，该句子中的上下文将会丢失，或者仅限用于翻译该句子的余下部分。 结果是，尽管会根据短语字典翻译该句子中的短语或单词，但句子的整体翻译质量往往会降低。

@@ -3,18 +3,18 @@ title: 训练模型 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 生成翻译模型时，对模型进行训练是一个重要步骤。 训练将根据你选择用于训练的文档进行。
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 8804285bf419bce5ca85cc5070cd47ce9a87392a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a875cc8f5e69be8b940f9d177d3b915bfaa2c973
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447960"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595681"
 ---
 # <a name="train-a-model"></a>训练模型
 
@@ -53,7 +53,7 @@ ms.locfileid: "67447960"
     ![“训练模型”页面](media/how-to/how-to-train-model-3.png)
 
 >[!Note]
->自定义转换器支持时间中的任何位置工作区中的 10 个并发培训。
+>自定义转换器在某个时间点在工作区中支持10个并发培训。
 
 
 ## <a name="edit-a-model"></a>编辑模型

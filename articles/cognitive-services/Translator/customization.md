@@ -1,6 +1,6 @@
 ---
 title: 翻译自定义 - 文本翻译 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 通过 Microsoft Translator Hub 使用首选的术语和样式构建自己的机器翻译系统。
 services: cognitive-services
 author: swmachan
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 87c47fc970ccb96419818e3b3e39c939201708f0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e6771a0d72592f1952853642ceea196b02774ada
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447321"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595311"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
 
@@ -27,7 +27,7 @@ Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允
 
 使用自定义翻译，可以构建神经翻译系统，以了解自己的业务和行业中使用的术语。 然后，自定义的翻译系统将集成到现有的应用程序、工作流和网站中。
 
-### <a name="how-does-it-work"></a>工作原理
+### <a name="how-does-it-work"></a>它是如何工作的?
 
 使用以前翻译过的文档（传单、网页、文档等）构建一个翻译系统，以反映领域特定的术语和样式，比通用翻译系统更好。 用户可以上传 TMX、XLIFF、TXT、DOCX 和 XLSX 文档。  
 
@@ -43,7 +43,7 @@ Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
 > [!NOTE]
-> Microsoft Translator 中心将于 2019 年 5 月 17 日，停用旧。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
+> 旧版 Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
 
 ## <a name="custom-translator-versus-hub"></a>自定义翻译与 Hub
 

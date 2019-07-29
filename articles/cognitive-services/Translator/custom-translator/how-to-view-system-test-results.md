@@ -3,18 +3,18 @@ title: 查看系统测试结果和部署 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 训练成功后，可以审查系统测试以分析训练结果。 如果对训练结果感到满意，可以针对训练的模型下达部署请求。
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ec15851ae7ff59a752fbf0d823d87aa6e68f10e9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f5e1a21f24fdd2458d4803d6ed1675455fa5037d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442486"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595598"
 ---
 # <a name="view-system-test-results"></a>查看系统测试结果
 
@@ -26,7 +26,7 @@ ms.locfileid: "67442486"
 
 “测试”选项卡显示：
 
-1.  **系统测试结果：** 在培训中测试过程的结果。 测试过程生成 BLEU 评分。
+1.  **系统测试结果:** 培训过程中测试过程的结果。 测试过程生成 BLEU 评分。
 
     **句子计数：** 在测试集中使用了多少个并行句子。
 
@@ -73,32 +73,32 @@ ms.locfileid: "67442486"
     ![部署模型](media/how-to/how-to-deploy-model.png)
 
 3.  单击“部署”。
-4.  针对要在其中部署模型的区域选择“已部署”  ，然后单击“保存”。 可以为多个区域选择“已部署”。 
+4.  针对要在其中部署模型的区域选择“已部署”，然后单击“保存”。 可以为多个区域选择“已部署”。
 
     ![部署模型](media/how-to/how-to-deploy-model-regions.png)
 
 5.  可在“状态”列中查看模型的状态。
 
 >[!Note]
->自定义转换器支持时间中的任何位置工作区中的 10 个已部署的模型。
+>自定义转换器在任一时间点在工作区中支持10个已部署的模型。
 
 ## <a name="update-deployment-settings"></a>更新部署设置
 
 若要更新部署设置，请执行以下操作：
 
-1.  选择一个项目，并转到“模型”  选项卡。
+1.  选择一个项目，并转到“模型”选项卡。
 
-2. 对于已成功部署的模型，它会显示“更新”  按钮。
+2. 对于已成功部署的模型，它会显示“更新”按钮。
 
     ![部署模型](media/how-to/how-to-update-undeploy-model.png)
 
-3.  选择“更新”  。
-4.  针对要在其中部署或取消部署模型的区域选择“已部署”或“已取消部署”，然后单击“保存”。   
+3.  选择“更新”。
+4.  针对要在其中部署或取消部署模型的区域选择“已部署”或“已取消部署”，然后单击“保存”。
 
     ![部署模型](media/how-to/how-to-undeploy-model.png)
 
 >[!Note]
->如果针对所有区域选择“已取消部署”，则会将模型从所有区域取消部署，并将其置于已取消部署状态。  它现在不可使用。
+>如果针对所有区域选择“已取消部署”，则会将模型从所有区域取消部署，并将其置于已取消部署状态。 它现在不可使用。
 
 ## <a name="next-steps"></a>后续步骤
 

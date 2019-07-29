@@ -1,6 +1,6 @@
 ---
 title: 文本翻译 API 语言方法
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用文本翻译 API 语言方法。
 services: cognitive-services
 author: swmachan
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 7bac97b7edbfa0f7a03a65e462106b33160c6d1a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c5298c038f056942ddc754482cbf4ec8cd77b48b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435078"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595019"
 ---
-# <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：Languages
+# <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：语言
 
 获取文本翻译 API 的其他操作当前支持的语言集。 
 
@@ -40,8 +40,8 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
     <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
   <tr>
-    <td>scope</td>
-    <td> 可选参数。<br/>逗号分隔的名称列表，用于定义要返回的语言组。 允许的组名称为：`translation`、`transliteration` 和 `dictionary`。 如果未指定范围，则返回所有组，这相当于传递了 `scope=translation,transliteration,dictionary`。 若要确定哪个支持的语言集适合你的场景，请参阅[响应对象](#response-body)的说明。</td>
+    <td>范围</td>
+    <td>可选参数。<br/>逗号分隔的名称列表，用于定义要返回的语言组。 允许的组名称为：`translation`、`transliteration` 和 `dictionary`。 如果未指定范围，则返回所有组，这相当于传递了 `scope=translation,transliteration,dictionary`。 若要确定哪个支持的语言集适合你的场景，请参阅[响应对象](#response-body)的说明。</td>
   </tr>
 </table> 
 
@@ -52,12 +52,12 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>描述</th>
   <tr>
     <td>Accept-Language</td>
-    <td>可选请求标头  。<br/>要用于用户界面字符串的语言。 响应中的某些字段是语言的名称，或区域的名称。 使用此参数可以定义要以哪种语言返回这些名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 例如，使用值 `fr` 来请求法语名称，或使用值 `zh-Hant` 来请求繁体中文名称。<br/>如果未指定目标语言或者本地化不可用，则以英语提供名称。
+    <td>可选请求标头。<br/>要用于用户界面字符串的语言。 响应中的某些字段是语言的名称，或区域的名称。 使用此参数可以定义要以哪种语言返回这些名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 例如，使用值 `fr` 来请求法语名称，或使用值 `zh-Hant` 来请求繁体中文名称。<br/>如果未指定目标语言或者本地化不可用，则以英语提供名称。
     </td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选请求标头  。<br/>客户端生成的 GUID，用于唯一地标识请求。</td>
+    <td>可选请求标头。<br/>客户端生成的 GUID，用于唯一地标识请求。</td>
   </tr>
 </table> 
 
@@ -226,7 +226,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 支持的语言列表不会频繁变化。 若要节省网络带宽并提高响应能力，客户端应用程序应考虑缓存语言资源和相应的实体标记 (`ETag`)。 然后，客户端应用程序可以定期（例如，每隔 24 小时）查询服务，以提取最新的受支持语言集。 在 `If-None-Match` 标头字段中传递当前的 `ETag` 值可让服务优化响应。 如果未修改资源，则服务将返回状态代码 304 和空响应正文。
 
-## <a name="response-headers"></a>响应标头
+## <a name="response-headers"></a>响应头
 
 <table width="100%">
   <th width="20%">标头</th>
@@ -267,7 +267,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>500</td>
-    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>发生意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>

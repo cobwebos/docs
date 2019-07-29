@@ -1,7 +1,7 @@
 ---
 title: 认知服务和机器学习
-titlesuffix: Azure Cognitive Services
-description: 了解 Azure 认知服务与其他用于机器学习的 Azure 产品/服务的配合。
+titleSuffix: Azure Cognitive Services
+description: 了解在哪些情况下适合将 Azure 认知服务与其他用于机器学习的 Azure 产品/服务配合使用。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: 15faacccfa1e0f7dd759f719c02e106918d735bb
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: bae772e9fcc9f275fcf593cfd5bf9d0506a89f7c
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414688"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594687"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 

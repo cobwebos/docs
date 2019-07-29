@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 创建认知服务资源
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 通过使用 Azure 命令行接口创建和订阅资源, 开始使用 Azure 认知服务。
 services: cognitive-services
 author: aahill
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: 05b679fd969dc766d697070979416312c3bad622
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c0a89a61f50d245389c9cdbd8a0aa9ba09eec004
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334266"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594606"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "68334266"
 
 本快速入门介绍如何使用 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 注册 Azure 认知服务以及创建包含单服务或多服务订阅的帐户。 这些服务由 Azure [资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示，可用于连接到一个或多个 Azure 认知服务 API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * 有效的 Azure 订阅-免费[创建一个](https://azure.microsoft.com/free/)。
 * [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -38,7 +38,7 @@ ms.locfileid: "68334266"
 az login
 ```
 
-也可以使用绿色的“尝试”按钮在浏览器中运行这些命令。 
+也可以使用绿色的“尝试”按钮在浏览器中运行这些命令。
  
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>创建新的 Azure 认知服务资源组
 
@@ -77,7 +77,7 @@ az group create \
 > [!NOTE]
 > 许多认知服务提供免费层让客户试用相应的服务。 若要使用免费层，请使用 `F0` 作为资源的 SKU。
 
-### <a name="vision"></a>影像
+### <a name="vision"></a>视觉
 
 | 服务                    | 种类                      |
 |----------------------------|---------------------------|

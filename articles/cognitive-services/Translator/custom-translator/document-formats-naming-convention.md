@@ -3,18 +3,18 @@ title: 文档格式和命名约定 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 本指南介绍自定义翻译中的文档格式和命名约定。 这些概念可帮助你更好地管理文档名称，避免发生命名冲突。
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2f7a83be510e608bb3f630a2fb1860502d8e4475
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 41b15cc998a7bacd033ef2fe083fc99f1bff0286
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443429"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595847"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文档格式和命名约定指南
 
@@ -22,7 +22,7 @@ ms.locfileid: "67443429"
 
 下表包含了可用于生成翻译系统的所有受支持文件格式：
 
-| 格式            | 扩展   | 描述                                                                                                                                                                                                                                                                    |
+| 格式            | Extensions   | 描述                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | .XLF、.XLIFF | 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。                                                                                                                                                              |
 | TMX               | .TMX         | 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。                                                                                                                                                              |
@@ -31,13 +31,13 @@ ms.locfileid: "67443429"
 | Microsoft Word    | .DOCX        | Microsoft Word 文档                                                                                                                                                                                                                                                        |
 | Adobe Acrobat     | .PDF         | Adobe Acrobat 可移植文档                                                                                                                                                                                                                                                |
 | HTML              | .HTML、.HTM  | HTML 文档                                                                                                                                                                                                                                                                  |
-| 文本文件         | .TXT         | Utf-16 或 utf-8 编码文本文件。 文件名称必须不包含日语字符。                                                                                                                                                                                        |
+| 文本文件         | .TXT         | UTF-16 或 UTF-8 编码的文本文件。 文件名不得包含日语字符。                                                                                                                                                                                        |
 | 对齐的文本文件 | .ALIGN       | `.ALIGN` 是一个特殊的扩展名，如果你知道文档对中的句子已完美对齐，则可以使用此扩展名。 如果提供 `.ALIGN` 文件，自定义翻译不会对齐句子。 |
 | Excel 文件        | .XLSX        | Excel 文件（2013 或更高版本）。 电子表格的第一行应是语言代码。                                                                                                                                                                                                                                                      |
 
 ## <a name="dictionary-formats"></a>字典格式
 
-对于字典，自定义转换器支持的定型集支持的所有文件格式。 如果使用 Excel 字典中，第一行的电子表格的行应为语言代码。
+对于字典, 自定义转换器支持定型集支持的所有文件格式。 如果使用的是 Excel 字典, 则电子表格的第一行/行应为语言代码。
 
 ## <a name="zip-file-formats"></a>Zip 文件格式
 
