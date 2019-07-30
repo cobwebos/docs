@@ -7,6 +7,7 @@
     - name: 与应用服务移动应用集成
       href: notification-hubs-app-service.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 创建通知中心 - Azure 门户
       href: create-notification-hub-portal.md

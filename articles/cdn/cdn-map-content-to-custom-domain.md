@@ -145,7 +145,7 @@ ms.locfileid: "67666095"
  
 1. 确保在终结点缓存了公共内容。 例如，如果 CDN 终结点与某个存储帐户相关联，则 Azure CDN 会将内容缓存在公共容器中。 若要测试自定义域，请验证容器是否已设置为允许公共访问，并至少包含一个文件。
 
-2. 在浏览器中，使用自定义域导航到文件的地址。 例如，如果自定义域为 www.contoso.com，则指向已缓存文件的 URL 应该类似于以下 URL：http:\//www.contoso.com/my-public-container/my-file.jpg。 验证结果是否与直接在 *&lt;终结点主机名&gt;* .azureedge.net 上访问 CDN 终结点时的结果相同。
+2. 在浏览器中，使用自定义域导航到文件的地址。 例如，如果自定义域为 [www.contoso.com](www.contoso.com)，则指向已缓存文件的 URL 应该类似于以下 URL：http:\//www.contoso.com/my-public-container/my-file.jpg。 验证结果是否与直接在 *&lt;终结点主机名&gt;* .azureedge.net 上访问 CDN 终结点时的结果相同。
 
 
 ## <a name="map-the-permanent-custom-domain"></a>映射永久自定义域

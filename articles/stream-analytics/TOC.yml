@@ -7,6 +7,7 @@
     - name: 端到端解决方案模式
       href: stream-analytics-solution-patterns.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 创建作业 - Azure 门户
       href: stream-analytics-quick-create-portal.md

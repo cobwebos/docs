@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 1aed6f9a0ceec18ca800e5030ec09bbb8d98cb76
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560726"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639214"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS 应用中的短语列表特征
 
@@ -35,7 +35,7 @@ ms.locfileid: "68560726"
 
 ## <a name="how-to-use-phrase-lists"></a>如何使用短语列表
 
-创建短语列表的情况为，应用有对应用重要的字词或短语，如：
+当你的应用程序包含对应用程序很重要的词或短语 (如) 时, 请[创建短语](luis-how-to-add-features.md)列表:
 
 * 行业术语
 * 俚语
@@ -44,7 +44,7 @@ ms.locfileid: "68560726"
 * 虽来自另一种语言，但在应用中经常使用的语言
 * 示例言语中的关键字和短语
 
-输入几个字词或短语后，立即使用“建议”功能来查找相关值。 先检查相关值，再添加到短语列表值。
+输入几个字词或短语后，立即使用“建议”  功能来查找相关值。 先检查相关值，再添加到短语列表值。
 
 |列表类型|用途|
 |--|--|
@@ -53,7 +53,7 @@ ms.locfileid: "68560726"
 
 ### <a name="interchangeable-lists"></a>可交换列表
 
-可交换短语列表适用于作为同义词的值。 例如，如果希望找到所有水体，且有示例言语，如： 
+可交换  短语列表适用于作为同义词的值。 例如，如果希望找到所有水体，且有示例言语，如： 
 
 * 什么城市靠近五大湖？ 
 * 什么道路沿着哈瓦苏湖城走？
@@ -65,7 +65,7 @@ ms.locfileid: "68560726"
 * 什么道路沿着 [bodyOfWater] 走？
 * [bodyOfWater] 的起点和终点在哪里？ 
 
-由于水体的字词或短语是同义词，并能在言语中交换使用，因此对短语列表使用“可交换”设置。 
+由于水体的字词或短语是同义词，并能在言语中交换使用，因此对短语列表使用“可交换”  设置。 
 
 ### <a name="non-interchangeable-lists"></a>不可交换列表
 
@@ -88,7 +88,7 @@ ms.locfileid: "68560726"
 添加短语列表是将更多示例表述添加到意向的替代方法。 
 
 ## <a name="when-to-use-phrase-lists-versus-list-entities"></a>何时使用短语列表与列表实体
-尽管短语列表和列表实体都可以影响所有意向中的表述，但各自实现的方式不同。 短语列表用于影响意向预测评分。 列表实体用于影响完全文本匹配的实体提取。 
+尽管短语列表和[列表实体](reference-entity-list.md)都可能会影响最谈话, 但每个实体都以不同的方式进行。 短语列表用于影响意向预测评分。 列表实体用于影响完全文本匹配的实体提取。 
 
 ### <a name="use-a-phrase-list"></a>使用短语列表
 有了短语列表，LUIS 仍可以考虑上下文并进行归纳，从而标识与列表项相似但并非完全匹配的项。 如果需要 LUIS 应用能够归纳和识别分类中的新项，请使用短语列表。 

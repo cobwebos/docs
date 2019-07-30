@@ -2,19 +2,19 @@
 title: 个性化体验创建服务的工作原理 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 个性化体验创建服务使用机器学习来发现要在上下文中使用的操作。 每个学习循环都包含一个模型，该模型是专门使用通过排名和奖励调用发送的数据训练的。 各个学习循环彼此完全独立。
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 7bdafafc0d542a98b80f2b6f5db2c14c8777bf5b
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.author: diberry
+ms.openlocfilehash: e55ccb508760c4473f71245c183948219f31985c
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423258"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663918"
 ---
 # <a name="how-personalizer-works"></a>个性化体验创建服务的工作原理
 
@@ -33,7 +33,7 @@ ms.locfileid: "68423258"
 **奖励** API：
 
 * 通过记录每个排名调用的特征和奖励评分来收集用于训练模型的数据。
-* 根据学习策略中指定的设置，使用该数据更新模型。
+* 根据学习策略中指定的设置，使用该数据更新模型。 
 
 ## <a name="architecture"></a>体系结构
 
@@ -57,7 +57,7 @@ ms.locfileid: "68423258"
 
 * **学习循环**：可为受益于个性化的应用程序的每个部分创建学习循环。 如果需要个性化多个体验，请为每个体验创建一个循环。 
 
-* **操作**：操作是可供选择的内容项，例如产品或促销。 个性化体验创建服务通过排名 API 选择要向用户显示的最相关操作，称为“奖励操作”。 每个操作可以包含连同排名请求一起提交的特征。
+* **操作**：操作是可供选择的内容项，例如产品或促销。 个性化体验创建服务通过排名 API 选择要向用户显示的最相关操作，称为“奖励操作”。  每个操作可以包含连同排名请求一起提交的特征。
 
 * **Context**：若要提供更准确的排名，请提供有关上下文的信息，例如：
     * 你的用户。

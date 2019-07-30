@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 05769bb284a89f16af79a03cdc471b339c7af855
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7028c3bee549603dc29bfcdeb386bcabc52ff03c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563549"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637868"
 ---
 # <a name="add-prebuilt-domains-for-common-usage-scenarios"></a>为常用使用方案添加预生成域 
 
@@ -24,25 +24,25 @@ LUIS 通过预生成域提供了一组预生成意向，用以快速添加常用
 
 ## <a name="add-a-prebuilt-domain"></a>添加预生成域
 
-1. 在“我的应用”页面上，选择你的应用。 这将打开你的应用并显示该应用的“生成”部分。 
+1. 在“我的应用”  页面上，选择你的应用。 这将打开你的应用并显示该应用的“生成”部分。  
 
-1. 在“意向”页面上，从左下角的工具栏中选择“添加预生成域”。 
+1. 在“意向”  页面上，从左下角的工具栏中选择“添加预生成域”  。 
 
-1. 选择“日历”意向并选择“添加域”按钮。
+1. 选择“日历”  意向并选择“添加域”  按钮。
 
     ![添加“日历”预生成域](./media/luis-prebuilt-domains/add-prebuilt-domain.png)
 
-1. 在左侧导航栏中选择“意向”以查看“日历”意向。 此域中每个意向都具有前缀 `Calendar.`。 与话语一起，此域的以下两个实体也添加到应用：`Calendar.Location` 和 `Calendar.Subject`。 
+1. 在左侧导航栏中选择“意向”  以查看“日历”意向。 此域中每个意向都具有前缀 `Calendar.`。 与话语一起，此域的以下两个实体也添加到应用：`Calendar.Location` 和 `Calendar.Subject`。 
 
 ## <a name="train-and-publish"></a>训练并发布
 
-1. 添加域后，通过在右上角的工具栏中选择“训练”来训练应用。 
+1. 添加域后，通过在右上角的工具栏中选择“训练”来训练应用。  
 
-1. 在顶部工具栏中，选择“发布”。 发布到“生产”。 
+1. 在顶部工具栏中，选择“发布”  。 发布到“生产”  。 
 
-1. 当出现绿色的成功通知后，选择“参阅终结点列表”链接来查看终结点。
+1. 当出现绿色的成功通知后，选择“参阅终结点列表”  链接来查看终结点。
 
-1. 选择一个终结点。 将会在新的浏览器选项卡中打开该终结点。 使浏览器选项卡保持打开状态，并继续执行“测试”部分。
+1. 选择一个终结点。 将会在新的浏览器选项卡中打开该终结点。 使浏览器选项卡保持打开状态，并继续执行“测试”  部分。
 
 ## <a name="test"></a>测试
 

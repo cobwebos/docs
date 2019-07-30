@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 5cbdf94ef1899c4963f6ebe0149024baed4916a7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564031"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639270"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>使用认知服务生成语言理解应用的最佳做法
-使用应用创作进程生成 LUIS 应用。 
+使用应用创作过程构建你的 LUIS 应用: 
 
 * 生成语言模型
 * 添加几个训练话语示例（每个意向 10 到 15 个）
@@ -27,7 +27,7 @@ ms.locfileid: "68564031"
 * 从终结点进行测试 
 * 添加特征
 
-[发布](luis-how-to-publish-app.md)应用后，请采用后列创作周期：添加特征、发布和从终结点进行测试。 请勿通过添加更多话语示例来启动下一个创作周期。 这无法让 LUIS 通过真实的用户话语来学习相关模型。 
+[发布](luis-how-to-publish-app.md)应用后, 请使用创作周期来添加功能、发布和测试终结点。 请勿通过添加更多话语示例来启动下一个创作周期。 这无法让 LUIS 通过真实的用户话语来学习相关模型。 
 
 为了让 LUIS 高效学习，请勿在当前示例话语与终结点话语配对组返回较高的可信度和预测分数之前展开话语。 使用[主动学习](luis-concept-review-endpoint-utterances.md)、[模式](luis-concept-patterns.md)和[短语列表](luis-concept-feature.md)来提高分数。 
 
@@ -78,7 +78,7 @@ ms.locfileid: "68564031"
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>应在后续的迭代中添加短语列表和模式
 
-最佳做法是在测试应用之前不要应用这些做法。 在添加短语列表和模式之前，你应该了解应用的行为方式，因为这些功能比示例话语的权重更大，会影响置信度。 
+最佳做法是在测试应用之前不要应用这些做法。 在添加[短语列表](luis-concept-feature.md)和[模式](luis-concept-patterns.md)之前, 你应了解应用的行为方式, 因为这些功能的加权比示例最谈话更高, 并将会歪曲置信度。 
 
 在了解没有这些项时你的应用的行为方式后，在这些功能适用于你的应用时再添加每个功能。 你不需要在每次[迭代](luis-concept-app-iteration.md)中都添加这些功能，也不需要在每个版本中都更改这些功能。 
 
@@ -122,7 +122,7 @@ ms.locfileid: "68564031"
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>应利用主动学习的建议功能
 
-定期使用[主动学习](luis-how-to-review-endpoint-utterances.md)的“查看终结点话语”功能，而不是将更多话语示例添加到意向。 因为应用会不断接收终结点话语，所以此列表会不断变化。
+定期使用[主动学习](luis-how-to-review-endpoint-utterances.md)的“查看终结点话语”功能，而不是将更多话语示例添加到意向  。 因为应用会不断接收终结点话语，所以此列表会不断变化。
 
 更多相关信息：
 * 概念：[通过评审终结点话语启用主动学习的相关概念](luis-concept-review-endpoint-utterances.md)
@@ -155,7 +155,7 @@ LUIS 会预期一个意向的话语会存在变体。 在总体意思相同的�
 
 为聊天机器人将执行的任何操作创建一个意向。 将实体用作实现操作的参数。 
 
-为执行航班预订操作的聊天机器人创建一个“BookFlight”意向。 请勿为每条航线或每个目的地都创建一个意向。 将这些数据用作[实体](luis-concept-entity-types.md)，并在话语示例中进行标记。 
+为执行航班预订操作的聊天机器人创建一个“BookFlight”意向  。 请勿为每条航线或每个目的地都创建一个意向。 将这些数据用作[实体](luis-concept-entity-types.md)，并在话语示例中进行标记。 
 
 ## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>请勿使用所有可能的值创建短语列表
 

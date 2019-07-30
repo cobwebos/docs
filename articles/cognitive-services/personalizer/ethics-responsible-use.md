@@ -3,19 +3,19 @@ title: 道德和负责任的使用 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 这些指南旨在帮助你以特定方式实现个性化，而该方式有助于你培养他人对你的公司和服务的信任。 请务必抽些空出来，研究、了解并仔细考虑一下个性化对人们生活的影响。 如有疑问，请寻求指导。
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: edjez
-ms.openlocfilehash: ceb32e9e378ba1e58db11e55be8bd551faf08c2a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: f565d95f8270612a8d83dd44a1e1bb895d1a4373
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722405"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662783"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>有关如何以负责任的方式实现个性化体验创建服务的指南
 
@@ -183,7 +183,7 @@ AI 系统应该既安全又尊重隐私  。 使用个性化体验创建服务�
 
 任何人在考虑技术使用过程中造成的副作用时，都会囿于其自身的观察角度和生活体验。 为团队、用户或咨询委员会带来更多不一致的声音，集思广益，营造大胆说话的氛围。 考虑提供培训和学习资料，进一步扩大团队在此领域的知识，使大家具备讨论复杂、敏感主题的能力。
 
-考虑将与负责任的使用相关的任务视为应用程序生命周期中的其他交叉任务，例如与用户体验、安全性或 DevOps 相关的任务。 对这些任务及其要求的考虑不能事后进行。 在整个应用程序生命周期中，都应讨论并验证负责任的使用这一准则。
+请考虑在应用程序生命周期中处理与责任使用相关的任务, 如应用程序生命周期中的其他横切关注任务, 如与用户体验、安全性或 DevOps 相关的任务。 对这些任务及其要求的考虑不能事后进行。 在整个应用程序生命周期中，都应讨论并验证负责任的使用这一准则。
  
 ## <a name="questions-and-feedback"></a>问题和反馈
 

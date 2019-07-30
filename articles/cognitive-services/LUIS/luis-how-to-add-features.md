@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 75764fd0a3f862157d9377d7dc886334ef1231db
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0ce1fb182320b04aebb45b0f848d8c8f6c965fd9
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563716"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638155"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>使用短语列表来增强字词列表的信号
 
 可以将功能添加到 LUIS 应用以提高其准确性。 特征通过提供某些字词和短语是应用域词汇表的一部分的提示来帮助 LUIS。 
 
-[短语列表](luis-concept-feature.md)包括一组值（词或短语），它们属于同一个类，并且必须以同样的方式处理它们（例如城市或产品名称）。 LUIS 对其中一个值的了解也自动应用到其他值。 此列表不是匹配字词的封闭列表实体（完全文本匹配）。
+[短语列表](luis-concept-feature.md)包括一组值（词或短语），它们属于同一个类，并且必须以同样的方式处理它们（例如城市或产品名称）。 LUIS 对其中一个值的了解也自动应用到其他值。 此列表的内容与匹配的单词的[列表实体](reference-entity-list.md)(精确文本匹配) 不同。
 
 短语列表添加到应用域的词汇中，作为这些字词的第二个 LUIS 信号。
 
@@ -30,30 +30,30 @@ ms.locfileid: "68563716"
 
 LUIS 允许每个应用最多有 10 个短语列表。 
 
-1. 单击“我的应用”页上的名称打开应用，单击“构建”，然后单击应用左侧面板中的“短语列表”。 
+1. 单击“我的应用”页上的名称打开应用，单击“构建”，然后单击应用左侧面板中的“短语列表”    。 
 
-2. 在“短语列表”页上，单击“新建短语列表”。 
+1. 在“短语列表”页上，单击“新建短语列表”   。 
  
-3. 在“添加短语列表”对话框中，键入“城市”作为短语列表的名称。 在“值”框中，键入短语列表的值。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter。
+1. 在 "**添加短语列表**" 对话框中, `Cities`键入作为短语列表的名称。 在“值”框中，键入短语列表的值  。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter  。
 
     ![添加短语列表“城市”](./media/luis-add-features/add-phrase-list-cities.png)
 
-4. LUIS 可以建议相关值，用于添加到短语列表。 单击“建议”，获取一组与添加的值在语义上相关的建议值。 可以单击任何建议的值，或单击“全部添加”添加所有值。
+1. LUIS 可以建议相关值，用于添加到短语列表。 单击“建议”，获取一组与添加的值在语义上相关的建议值  。 可以单击任何建议的值，或单击“全部添加”添加所有值  。
 
     ![短语列表建议的值 - 全部添加](./media/luis-add-features/related-values.png)
 
-5. 如果添加的短语列表值是可交换使用的替代值，则单击“这些值可以交换”。
+1. 如果添加的短语列表值是可交换使用的替代值，则单击“这些值可以交换”  。
 
     ![短语列表建议的值 - 选择可互换框](./media/luis-add-features/interchangeable.png)
 
-6. 单击“保存” 。 将“城市”短语列表添加到“短语列表”页。
+1. 单击“完成”  。 将“城市”短语列表添加到“短语列表”页  。
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> 可以在“短语列表”页上，删除或取消激活上下文工具栏中的短语列表。
+> 可以在“短语列表”  页上，删除或取消激活上下文工具栏中的短语列表。
 
 ## <a name="next-steps"></a>后续步骤
 

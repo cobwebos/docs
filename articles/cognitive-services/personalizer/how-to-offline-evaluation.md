@@ -3,19 +3,19 @@ title: 脱机评估-Personalizer
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用脱机评估分析学习循环
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: b719e6e693471415350007a4f4fabed917b8e12d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: f14403422e2c783d75634bb929d8c2130bd505b6
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722326"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663876"
 ---
 # <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>如何使用脱机评估分析学习循环
 
@@ -27,7 +27,7 @@ ms.locfileid: "67722326"
 请阅读[脱机评估](concepts-offline-evaluation.md)了解详细信息。
 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 1. 必须配置了一个个性化体验创建服务循环
 1. 个性化体验创建服务循环日志中必须至少包含 50,000 个事件，这样才能生成有意义的评估结果。

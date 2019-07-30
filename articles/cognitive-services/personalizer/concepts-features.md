@@ -3,19 +3,19 @@ title: 功能：操作和上下文 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 个性化体验创建服务使用特征（有关操作和上下文的信息）来做出更好的排名建议。 特征可能非常宽泛，也可能特定于某个项。
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: edjez
-ms.openlocfilehash: 2dab7447e6051d4559f7f3985579cac9376ac7be
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.author: diberry
+ms.openlocfilehash: 1960856ce2f15945d1b1bfa093f349771d481ffc
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423284"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663843"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>特征是指有关操作和上下文的信息
 
@@ -25,9 +25,9 @@ ms.locfileid: "68423284"
 
 例如，**特征**可能与以下对象相关：
 
-* 用户，例如 `UserID`。 
-* 内容，视频是 `Documentary`、`Movie` 还是 `TV Series`，或者某个零售商品在商店中是否有货。
-* 当前时间段，例如星期几。
+* 用户，例如 `UserID`。  
+* 内容，视频是 `Documentary`、`Movie` 还是 `TV Series`，或者某个零售商品在商店中是否有货。 
+* 当前时间段，例如星期几。 
 
 Personalizer 不规定、限制或修复您可以为操作和上下文发送哪些功能:
 
@@ -106,7 +106,7 @@ JSON 对象可以包括嵌套的 JSON 对象和简单的属性/值。 仅当数�
 
 * 有足够的特征可以促成个性化。 针对内容的精度越高，所需的特征就越多。
 
-* 有足够的多样化密度特征。 如果将许多的项分组到少数几个桶中，则认为特征是密集的。 例如，可将数千个视频分类为“长”（时长超过 5 分钟）和“短”（时长短于 5 分钟）。 这是一个非常密集的特征。 另一方面，数千个项可能有一个名为“标题”的属性，而每个项的此属性几乎永远不会使用相同的值。 这是一个极不密集的特征，也称为稀疏特征。  
+* 有足够的多样化密度特征。  如果将许多的项分组到少数几个桶中，则认为特征是密集的。  例如，可将数千个视频分类为“长”（时长超过 5 分钟）和“短”（时长短于 5 分钟）。 这是一个非常密集的特征。  另一方面，数千个项可能有一个名为“标题”的属性，而每个项的此属性几乎永远不会使用相同的值。 这是一个极不密集的特征，也称为稀疏特征。   
 
 使用高密度特征可帮助个性化体验创建服务在不同的项之间进行推理学习。 但是，如果只存在少数几个特征，并且这些特征过于密集，则个性化体验创建服务只会使用少数几个可供选择的桶，来尝试精确针对内容。
 
@@ -184,7 +184,7 @@ JSON 对象可以包括嵌套的 JSON 对象和简单的属性/值。 仅当数�
 
 * 包含操作特征的特征。 例如，这是一部电影还是电视连续剧？
 * 有关用户在过去如何与此操作交互的特征。 例如，人口统计特征 A 和 B 的人员基本上都看过这部电影，该电影往往上映过多次。
-* 有关用户如何查看操作的特征。 例如，缩略图中显示的电影海报是否包含人脸、汽车或布局？
+* 有关用户如何查看操作的特征。  例如，缩略图中显示的电影海报是否包含人脸、汽车或布局？
 
 ### <a name="load-actions-from-the-client-application"></a>从客户端应用程序加载操作
 
@@ -194,7 +194,7 @@ JSON 对象可以包括嵌套的 JSON 对象和简单的属性/值。 仅当数�
 
 在某些情况下，你不希望向用户显示某些操作。 防止将某个操作排名在最前面的最佳方法是不要将此操作包含在排名 API 操作列表中的第一个位置。
 
-在某些情况下，只能稍后在业务逻辑中确定是否要向用户显示排名 API 调用的最终操作。 对于这种情况，应使用非活动事件。
+在某些情况下，只能稍后在业务逻辑中确定是否要向用户显示排名 API 调用的最终操作。  对于这种情况，应使用非活动事件。 
 
 ## <a name="json-format-for-actions"></a>操作的 JSON 格式
 
@@ -267,7 +267,7 @@ JSON 对象可以包括嵌套的 JSON 对象和简单的属性/值。 仅当数�
 
 ## <a name="examples-of-context-information"></a>上下文信息示例
 
-上下文信息取决于每个应用程序和用例，但往往包括如下所述的信息：
+上下文信息取决于每个应用程序和用例，但往往包括如下所述的信息： 
 
 * 有关用户的人口统计和档案信息。
 * 从 HTTP 标头提取的信息（例如用户代理），或派生自 HTTP 信息的信息，例如基于 IP 地址的反向地理查找。

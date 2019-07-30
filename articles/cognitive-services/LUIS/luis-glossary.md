@@ -7,26 +7,26 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/23/2019
+ms.topic: reference
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 595a835018475ed3aa915971f5ff2b78981e7bdf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0bf7fe649a5a604c610307b9be0717dce01cb238
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560500"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638290"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS API 服务时可能遇到的术语。
 
 ## <a name="active-version"></a>活动版本
 
-活动 LUIS 版本是接收所有模型更改的版本。 在 [LUIS](luis-reference-regions.md) 网站中，如果想对非活动版本进行更改，需先将其设为活动版本。
+活动 LUIS 版本是接收所有模型更改的版本。 在[LUIS](luis-reference-regions.md)门户中, 如果要对非活动版本的版本进行更改, 则需要先将该版本设置为 "活动"。
 
 ## <a name="authoring"></a>创作
 
-创作是使用 [LUIS](luis-reference-regions.md) 网站或[创作 API](https://go.microsoft.com/fwlink/?linkid=2092087) 创建、管理和部署 [LUIS 应用](#luis-app)的能力。
+创作是指使用[LUIS](luis-reference-regions.md)门户或[创作 api](https://go.microsoft.com/fwlink/?linkid=2092087)创建、管理和部署[LUIS 应用程序](#luis-app)的功能。
 
 ## <a name="authoring-key"></a>创作密钥
 
@@ -34,30 +34,12 @@ ms.locfileid: "68560500"
 
 ## <a name="batch-test-json-file"></a>批文本 JSON 文件
 
-批文件是一个 JSON 数组。 数组中的每个元素都有三个属性：`text`、`intent` 和 `entities`。 `entities` 属性是一个数组。 该数组可以为空。 如果 `entities` 数组不为空，则该数组需要准确识别实体。
+批处理测试是指使用用户最谈话的一致且已知测试集验证当前 LUIS 应用的模型。 批处理测试在[JSON 格式的文件](luis-concept-batch-test.md#batch-file-format)中定义。
 
-```JSON
-[
-    {
-        "text": "drive me home",
-        "intent": "None",
-        "entities": []
-    },
-    {
-        "text": "book a flight to orlando on the 25th",
-        "intent": "BookFlight",
-        "entities": [
-            {
-                "entity": "orlando",
-                "type": "Location",
-                "startIndex": 18,
-                "endIndex": 25
-            }
-        ]
-    }
-]
-
-```
+另请参阅： 
+* [概念](luis-concept-batch-test.md)
+* [操作指南](luis-how-to-batch-test.md)
+* [教程] luis-testing.md)
 
 
 ## <a name="collaborator"></a>协作者
@@ -70,7 +52,7 @@ ms.locfileid: "68560500"
 
 ## <a name="domain"></a>域
 
-在 LUIS 上下文中，域是一个知识领域。 域特定于应用的知识领域。 这可以是一个宽泛领域，例如旅行代理应用。 旅行代理应用还可特定于公司的信息领域，例如特定的地理位置、语言和服务。
+在 LUIS 上下文中，域是一个知识领域  。 域特定于应用的知识领域。 这可以是一个宽泛领域，例如旅行代理应用。 旅行代理应用还可特定于公司的信息领域，例如特定的地理位置、语言和服务。
 
 ## <a name="endpoint"></a>终结点
 
@@ -114,7 +96,7 @@ ms.locfileid: "68560500"
 
 ## <a name="labeling"></a>标记
 
-标记是将某个意向的[话语](#utterance)中的词或短语与[实体](#entity)（数据类型）相关联的过程。
+标记或标记是将意图[查询文本](#utterance)中的词或短语与[实体](#entity)(数据类型) 关联的过程。
 
 ## <a name="luis-app"></a>LUIS 应用
 
@@ -177,7 +159,7 @@ LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可
 
 ## <a name="subscription-key"></a>订阅密钥
 
-订阅密钥是与 [Azure 中创建](luis-how-to-azure-subscription.md)的 LUIS 服务关联的“终结点”密钥。 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS](luis-reference-regions.md) 网站中的[“密钥和终结点”页](luis-how-to-azure-subscription.md)底部的终结点 URL 内看到当前的终结点密钥。 它是“subscription-key”名称/值对的值。
+订阅密钥是与 [Azure 中创建](luis-how-to-azure-subscription.md)的 LUIS 服务关联的“终结点”密钥  。 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS](luis-reference-regions.md) 网站中的[“密钥和终结点”页](luis-how-to-azure-subscription.md)底部的终结点 URL 内看到当前的终结点密钥  。 它是“subscription-key”名称/值对的值  。
 
 ## <a name="test"></a>测试
 

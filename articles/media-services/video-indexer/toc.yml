@@ -53,6 +53,8 @@
       href: use-editor-create-project.md
     - name: 将小组件嵌入应用程序
       href: video-indexer-embed-widgets.md
+    - name: 灾难恢复
+      href: video-indexer-disaster-recovery.md
     - name: 自定义内容模型
       items:
         - name: 人员

@@ -3,19 +3,19 @@ title: 方案评估 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 在应用程序能够选择要显示的正确项、操作或产品的任何场合下，都可以应用个性化体验创建服务，以改善体验，实现更好的业务成果，或提高工作效率。
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: a5bf0d7d0478ad836ed1921b302ab01b004ec73c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 465fba3a466aceaf9ef7b71e4b1957bfdbcad766
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722213"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663639"
 ---
 # <a name="where-can-you-use-personalizer"></a>可在哪种场合下使用个性化体验创建服务？
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: ccbdb60687bd81de57ff675634f9d124f10784e1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 34ec5588a510574f4ea9f01bd23c6f6487e288da
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563946"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638358"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>预测评分指示意向和实体的预测准确性
 
@@ -31,7 +31,7 @@ ms.locfileid: "68563946"
 |0.01|低置信度|
 |0|明确匹配失败|
 
-如果某个话语的得分为低置信度，LUIS 会在 [LUIS](luis-reference-regions.md) 网页“意向”页面上突出显示该话语，并以红色边框标记识别到的意向。
+如果某个话语的得分为低置信度，LUIS 会在 [LUIS](luis-reference-regions.md) 网页“意向”页面上突出显示该话语，并以红色边框标记识别到的意向   。
 
 ![分数差异](./media/luis-concept-score/score-discrepancy.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "68563946"
 
 ## <a name="e-exponent-notation"></a>E（指数）表示法
 
-预测分数可采用指数表示法，显示超过 0 到 1 这个范围的值，例如 `9.910309E-07`。 此分数指示的是非常小的数。
+预测分数可采用指数表示法，显示超过 0 到 1 这个范围的值，例如 `9.910309E-07`  。 此分数指示的是非常小的数  。
 
 |E 表示法分数 |实际分数|
 |--|--|
@@ -69,7 +69,7 @@ ms.locfileid: "68563946"
 
 ## <a name="punctuation"></a>标点
 
-标点是 LUIS 中单独的标记。 在末尾包含句号的话语与末尾不包含句号的话语是两个单独话语并可能得到两种不同预测。 请确保模型在[示例话语](luis-concept-utterance.md)（有标点和没有标点）或在更容易使用特殊语法忽略标点的[模式](luis-concept-patterns.md)中处理标点：`I am applying for the {Job} position[.]`
+[了解](luis-concept-utterance.md#punctuation-marks)有关如何使用或忽略标点符号的详细信息。 
 
 ## <a name="next-steps"></a>后续步骤
 

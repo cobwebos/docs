@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: fdf60a454aeb19b83ce455a771b8399c90af3bce
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b42ab9155f5b9719ef6477934722021e3fbac99
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563754"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638263"
 ---
 # <a name="create-entities-without-utterances"></a>创建不包含话语的实体
 
 实体表示要提取的话语中的字词或短语。 实体表示包含类似对象 (地点、内容、人员、事件或概念) 集合的类。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 在将话语添加到意向或将话语添加到意向之外（之前或之后）时，可以创建实体。
 
-可在 LUIS 应用中通过“实体”页上的“实体列表”来编辑或删除实体。 LUIS 提供两种主要的实体类型：[预生成实体](luis-reference-prebuilt-entities.md)和自己的[自定义实体](luis-concept-entity-types.md#types-of-entities)。
+可在 LUIS 应用中通过“实体”页上的“实体列表”来编辑或删除实体   。 LUIS 提供两种主要的实体类型：[预生成实体](luis-reference-prebuilt-entities.md)和自己的[自定义实体](luis-concept-entity-types.md#types-of-entities)。
 
 创建了机器学习实体后，需要在该实例所在的所有意向的所有示例话语中标记该实体。
 
@@ -30,13 +30,13 @@ ms.locfileid: "68563754"
 
 ## <a name="add-a-prebuilt-entity-to-your-app"></a>将预生成实体添加到应用
 
-添加到应用程序的常见预生成实体为 number 和 datetimeV2。 
+添加到应用程序的常见预生成实体为 number 和 datetimeV2   。 
 
-1. 在应用中，从“生成”部分的左侧面板中选择“实体”。
+1. 在应用中，从“生成”部分的左侧面板中选择“实体”   。
  
-1. 在“实体”页上，选择“添加预生成实体”。
+1. 在“实体”页上，选择“添加预生成实体”   。
 
-1. 在“添加预生成实体”对话框中，选择 **number** 和 **datetimeV2** 预生成实体。 然后选择“完成”。
+1. 在“添加预生成实体”对话框中，选择 **number** 和 **datetimeV2** 预生成实体  。 然后选择“完成”  。
 
     ![“添加预生成实体”对话框屏幕截图](./media/add-entities/list-of-prebuilt-entities.png)
 
@@ -44,11 +44,11 @@ ms.locfileid: "68563754"
 
 ## <a name="add-simple-entities-for-single-concepts"></a>为单一概念添加简单实体
 
-简单实体描述单一概念。 使用以下过程创建一个实体，用于提取“人力资源”或“运营”等公司部门名称。   
+简单实体描述单一概念。 使用以下过程创建一个实体，用于提取“人力资源”或“运营”等公司部门名称。     
 
-1. 在应用中选择“生成”部分，在左侧面板中选择“实体”，然后选择“创建新实体”。
+1. 在应用中选择“生成”部分，在左侧面板中选择“实体”，然后选择“创建新实体”    。
 
-1. 在弹出对话框中，在“实体名称”框中键入 `Location`，从“实体类型”列表选择“简单”，然后选择“完成”。
+1. 在弹出对话框中，在“实体名称”框中键入 `Location`，从“实体类型”列表选择“简单”，然后选择“完成”     。
 
     创建此实体后，转到包含该实体的示例话语所在的所有意向。 选择示例话语中的文本，并将文本标记为实体。 
 
@@ -60,9 +60,9 @@ ms.locfileid: "68563754"
 
 基于提供的正则表达式，正则表达式实体用来从话语中拉取数据。 
 
-1. 在应用中，从左侧导航栏选择“实体”，然后选择“创建新实体”。
+1. 在应用中，从左侧导航栏选择“实体”，然后选择“创建新实体”   。
 
-1. 在弹出对话框中，在“实体名称”框中输入 `Human resources form name`，从“实体类型”列表中选择“正则表达式”，输入正则表达式 `hrf-[0-9]{6}`，然后选择“完成”。 
+1. 在弹出对话框中，在“实体名称”框中输入 `Human resources form name`，从“实体类型”列表中选择“正则表达式”，输入正则表达式 `hrf-[0-9]{6}`，然后选择“完成”     。 
 
     此正则表达式与文本字符 `hrf-` 匹配，后接 6 位数来表示“人力资源”表单的表单编号。
 
@@ -74,21 +74,21 @@ ms.locfileid: "68563754"
 
 在话语 `Send hrf-123456 to John Smith` 中，文本 `hrf-123456` 将与人力资源[正则表达式](#add-regular-expression-entities)匹配，并提取包含预生成实体 personName 的 `John Smith`。 每个实体是更大父实体的一部分。 
 
-1. 在应用中，从“生成”部分的左侧导航栏中选择“实体”，然后选择“添加预生成实体”。
+1. 在应用中，从“生成”部分的左侧导航栏中选择“实体”，然后选择“添加预生成实体”。   
 
 1. 添加预生成实体 **PersonName**。 有关说明，请参阅[添加预生成实体](#add-prebuilt-entity)。 
 
-1. 从左侧导航栏选择“实体”，然后选择“创建新实体”。
+1. 从左侧导航栏选择“实体”，然后选择“创建新实体”   。
 
-1. 在弹出对话框的“实体名称”框中输入 `SendHrForm`，然后从“实体类型”列表选择“复合”。
+1. 在弹出对话框的“实体名称”框中输入 `SendHrForm`，然后从“实体类型”列表选择“复合”    。
 
-1. 选择“添加子级”，添加新的子级。
+1. 选择“添加子级”，添加新的子级  。
 
-1. 在“子级 #1”中，从列表选择实体 number。
+1. 在“子级 #1”中，从列表选择实体 number   。
 
-1. 在“子级 #2”中，从列表中选择实体“人力资源表单名称”。 
+1. 在“子级 #2”中，从列表中选择实体“人力资源表单名称”。   
 
-1. 选择“完成”。
+1. 选择“完成”  。
 
 <a name="add-pattern-any-entities"></a>
 
@@ -100,11 +100,11 @@ ms.locfileid: "68563754"
 
 在话语 `Where is Request relocation from employee new to the company on the server?` 中，表单标题比较棘手，因为标题结束和其他话语开始的位置不是很明显。 标题可以是任意顺序的字词，包括单字、有标点的复杂短语和无意义排序的字词。 通过模式，可以在可提取完整、确切实体的位置创建实体。 找到标题后，预测 `FindHumanResourcesForm` 意向，因为这是模式的意向。
 
-1. 在“生成”部分的左侧面板中选择“实体”，然后选择“创建新实体”。
+1. 在“生成”部分的左侧面板中选择“实体”，然后选择“创建新实体”    。
 
-1. 在“添加实体”对话框的“实体名称”框中输入 `HumanResourcesFormTitle`，然后选择“Pattern.any”作为“实体类型”。
+1. 在“添加实体”对话框的“实体名称”框中输入 `HumanResourcesFormTitle`，然后选择“Pattern.any”作为“实体类型”     。
 
-    若要使用 pattern.any 实体，请在“模式”页的“提升应用性能”部分中，通过正确的大括号语法（例如 `Where is **{HumanResourcesFormTitle}** on the server?`）添加模式。
+    若要使用 pattern.any 实体，请在“模式”页的“提升应用性能”部分中，通过正确的大括号语法（例如 `Where is **{HumanResourcesFormTitle}** on the server?`）添加模式   。
 
     如果发现模式在包含 Pattern.any 时错误提取实体，请使用[显式列表](luis-concept-patterns.md#explicit-lists)来更正此问题。 
 
@@ -114,15 +114,15 @@ ms.locfileid: "68563754"
 
 角色是基于上下文的命名子类型。 它在所有实体中提供，包括预生成的和非机器学习到的实体。 
 
-角色的语法为 **`{Entityname:Rolename}`** ，即，实体名称后接冒号再后接角色名称。 例如， `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}` 。
+角色的语法为 **`{Entityname:Rolename}`** ，即，实体名称后接冒号再后接角色名称。 例如， `Move {personName} from {Location:Origin} to {Location:Destination}` 。
 
-1. 在“生成”部分的左侧面板中选择“实体”。
+1. 在“生成”部分的左侧面板中选择“实体”   。
 
-1. 选择“创建新实体”。 输入 `LocationUsingRoles` 名称。 选择类型“简单”，然后选择“完成”。 
+1. 选择“创建新实体”  。 输入 `Location` 名称。 选择类型“简单”，然后选择“完成”。   
 
-1. 在左侧面板中选择“实体”，然后选择在前一步骤中创建的新实体 **LocationUsingRoles**。
+1. 从左侧面板中选择 "**实体**", 然后选择在上一步中创建的新实体**位置**。
 
-1. 在“角色名称”文本框中，输入角色 `Origin` 的名称并按 Enter。 添加 `Destination` 的第二个角色名。 
+1. 在“角色名称”文本框中，输入角色 `Origin` 的名称并按 Enter  。 添加 `Destination` 的第二个角色名。 
 
     ![将 Origin 角色添加到 Location 实体的屏幕截图](./media/add-entities/roles-enter-role-name-text.png)
 
@@ -134,20 +134,20 @@ ms.locfileid: "68563754"
 
 对于人力资源应用，可以创建所有部门以及任何部门同义词的列表。 创建实体时，不需了解所有值。 可以在查看真实的用户表述后使用同义词添加更多值。
 
-1. 在“生成”部分的左侧面板中选择“实体”，然后选择“创建新实体”。
+1. 在“生成”部分的左侧面板中选择“实体”，然后选择“创建新实体”    。
 
-1. 在“添加实体”对话框中，在“实体名称”框中键入 `Department`，然后选择“列表”作为“试题类型”。 选择“完成”。
+1. 在“添加实体”对话框中，在“实体名称”框中键入 `Department`，然后选择“列表”作为“试题类型”     。 选择“完成”  。
   
-1. 通过此列表实体页可以添加规范化名称。 在“值”文本中，输入列表中的某个部门名称（例如 `HumanResources`），然后按键盘上的 Enter。 
+1. 通过此列表实体页可以添加规范化名称。 在“值”文本中，输入列表中的某个部门名称（例如 `HumanResources`），然后按键盘上的 Enter  。 
 
 1. 在规范化值的右侧输入同义词，并在输入每个项后按键盘上的 Enter。
 
-1. 如果想要更多适用于此列表的规范化项，请选择“建议”，查看[语义字典](luis-glossary.md#semantic-dictionary)的选项。
+1. 如果想要更多适用于此列表的规范化项，请选择“建议”，查看[语义字典](luis-glossary.md#semantic-dictionary)的选项  。
 
     ![选择推荐功能以查看选项的屏幕截图](./media/add-entities/hr-list-2.png)
 
 
-1. 在建议列表中选择一项添加为规范化值，或者选择“全部添加”添加所有项。 
+1. 在建议列表中选择一项添加为规范化值，或者选择“全部添加”添加所有项  。 
     可使用以下 JSON 格式将值导入现有列表实体：
 
     ```JSON

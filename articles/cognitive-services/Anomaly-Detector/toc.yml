@@ -16,7 +16,7 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: 使用 Python
           href: quickstarts/detect-data-anomalies-python.md
-    - name: SDK 中 IsInRole 中的声明
+    - name: Client
       items:
         - name: '使用 C#'
           href: quickstarts/detect-data-anomalies-csharp-sdk.md

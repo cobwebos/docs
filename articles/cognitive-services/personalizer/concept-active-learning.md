@@ -3,19 +3,19 @@ title: 主动学习 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: edjez
-ms.openlocfilehash: c44afc81a7ec9d05cdc04cc8bc46c77cd51ceaf8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722528"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663714"
 ---
 # <a name="active-learning-and-learning-policies"></a>主动学习和学习策略 
 

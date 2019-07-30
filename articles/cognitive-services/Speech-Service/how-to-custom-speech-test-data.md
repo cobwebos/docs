@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8821ce46c65ac8bca36f006ef77bcaf475b0573d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559625"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663599"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音的数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "68559625"
 |-----------|-----------------|----------|-------------------|----------|
 | [音频](#audio-data-for-testing) | 是<br>用于视觉检测 | 5 + 音频文件 | 否 | 不适用 |
 | [音频和人为标记的脚本](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用于评估准确性 | 0.5-5 小时的音频 | 是 | 1-1000 小时的音频 |
-| [相关文本](##related-text-data-for-training) | 否 | 不适用 | 是 | 1-200 MB 相关文本 |
+| [相关文本](#related-text-data-for-training) | 否 | 不适用 | 是 | 1-200 MB 相关文本 |
 
 文件应按类型分组, 并上传为 zip 文件。 每个数据集只能包含一种数据类型。
 
@@ -73,7 +73,7 @@ ms.locfileid: "68559625"
 
 若要在处理音频文件时测量 Microsoft 语音到文本准确性的准确性, 必须提供人机标记的转录 (单词字词) 进行比较。 尽管人为标记的脚本通常非常耗时, 但还是需要评估准确性并为用例定型模型。 请记住, 识别的改进仅适用于所提供的数据。 出于此原因, 仅上传高质量的脚本很重要。  
 
-| 属性 | 值 |
+| 属性 | ReplTest1 |
 |----------|-------|
 | 文件格式 | RIFF (WAV) |
 | 采样频率 | 8000 hz 或 16000 Hz |
@@ -94,7 +94,7 @@ ms.locfileid: "68559625"
 > [!NOTE]
 > 听录应编码为 UTF-8 字节顺序标记 (BOM)。
 
-听录内容应经过文本规范化，以便可由系统处理。 但是，用户在将数据上传到自定义语音服务之前，必须完成一些重要的规范化操作。 若要在准备转录时使用合适的语言, 请参阅[如何创建带标签的](how-to-custom-speech-human-labeled-transcriptions.md)脚本
+听录内容应经过文本规范化，以便可由系统处理。 但是，用户在将数据上传到自定义语音服务之前，必须完成一些重要的规范化操作。  若要在准备转录时使用合适的语言, 请参阅[如何创建带标签的](how-to-custom-speech-human-labeled-transcriptions.md)脚本
 
 收集音频文件和相应的转录后, 应在上传到自定义语音门户之前将它们打包为一个 .zip 文件。 这是一个包含三个音频文件和一个人标记的脚本文件的示例数据集:
 
@@ -155,7 +155,7 @@ ms.locfileid: "68559625"
 
 使用此表可确保发音的相关数据文件的格式正确。 发音文件较小, 不应超过几 Kb。
 
-| 属性 | ReplTest1 |
+| 属性 | 值 |
 |----------|-------|
 | 文本编码 | UTF-8 BOM (英语还支持 ANSI) |
 | 每行的发音数 | 1 |
