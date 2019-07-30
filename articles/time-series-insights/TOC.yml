@@ -5,6 +5,7 @@
     - name: 关于时序见解
       href: time-series-insights-update-overview.md
 - name: 快速入门
+  expanded: true
   items:
     - name: Azure 时序见解 GA
       items:

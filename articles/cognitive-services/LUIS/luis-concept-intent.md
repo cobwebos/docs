@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2b574e0a545091263fce7949f997a3ba2dc8e5a8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bb7fa9d930f4c1ab3c241048804060e17fe5a8e4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563970"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619922"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>关于 LUIS 应用中的意向的概念
 
@@ -42,12 +42,15 @@ ms.locfileid: "68563970"
 ## <a name="intent-compared-to-entity"></a>意向与实体
 意向表示聊天机器人应为用户采取的操作，以整个陈述为基础。 实体表示陈述中包含的词或短语。 陈述仅可具有一个得分最高的意向，但可具有多个实体。 
 
-<a name="how-do-intents-relate-to-entities"></a> 当用户的意向将在客户端应用程序中触发操作时（例如，调用 checkweather() 函数），请创建意图。 然后创建实体来表示执行操作所需的参数。 
+<a name="how-do-intents-relate-to-entities"></a>
+
+在用户希望在客户端应用程序中触发操作 (如调用 checkweather () 函数) 时创建意向。 然后创建实体来表示执行操作所需的参数。 
 
 |示例意向   | 实体 | 示例陈述中的实体   | 
 |------------------|------------------------------|------------------------------|
 | CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | What's the weather like in `Seattle` `tomorrow`?（西雅图明天天气怎样？） |
 | CheckWeather | { "type": "date_range", "entity": "this weekend" } | Show me the forecast for `this weekend`（显示本周末的天气预报） | 
+||||
 
 ## <a name="custom-intents"></a>自定义意向
 

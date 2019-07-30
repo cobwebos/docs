@@ -5,14 +5,12 @@ metadata:
   title: Azure 容器实例文档 - 教程 | Microsoft Docs
   description: Azure 容器实例提供了在 Azure 中运行容器的最简捷方式，既无需预配任何虚拟机，也不必采用更高级的服务。
   services: container-instances
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-instances
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: Azure 容器实例提供了在 Azure 中运行容器的最简捷方式，既无需预配任何虚拟机，也不必采用更高级的服务。 使用快速入门、教程和示例，了解如何创建和管理容器实例。<p>如果需要完整的容器协调解决方案，请参阅 <a href="/azure/aks/">Azure Kubernetes 服务 (AKS) 文档</a>。</p>
 sections:

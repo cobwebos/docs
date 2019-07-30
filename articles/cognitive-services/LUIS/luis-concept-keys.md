@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 0d52445d82965973c2d1e0f4fca2ef463312ad5f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 69b4a92470b33ab6615eead16be044a88436d64e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560740"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619761"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>LUIS 中的创作密钥和查询预测终结点密钥
 LUIS 使用两种密钥：[创作](#programmatic-key)密钥和[终结点](#endpoint-key)密钥。 在创建 LUIS 帐户时会自动创建创作密钥。 准备好发布 LUIS 应用时，需要[创建终结点密钥](luis-how-to-azure-subscription.md)、将[终结点密钥分配](luis-how-to-azure-subscription.md)到 LUIS 应用并[将其与终结点查询配合使用](#use-endpoint-key-in-query)。 
@@ -29,6 +29,7 @@ LUIS 使用两种密钥：[创作](#programmatic-key)密钥和[终结点](#endpo
 请务必在想进行发布和查询的[区域](luis-reference-regions.md#publishing-regions)中创作 LUIS 应用。
 
 <a name="programmatic-key" ></a>
+
 ## <a name="authoring-key"></a>创作密钥
 
 创作密钥也称为初学者密钥，是在创建 LUIS 帐户时自动创建的免费密钥。 每个创作[区域](luis-reference-regions.md)的所有 LUIS 应用共享一个创作密钥。 创作密钥用于创作 LUIS 应用或测试终结点查询。 

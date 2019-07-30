@@ -6,14 +6,12 @@ metadata:
   title: “将 Azure 容器服务与 DC/OS 和 Swarm 配合使用”文档 - 教程和 API 参考 | Microsoft Docs
   meta.description: 'Azure Container Service allows you to quickly deploy a production ready DC/OS or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
   services: container-service
-  author: carolz
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-service
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07-21-2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 使用 Azure 容器服务可以快速部署已准备好用于生产的 DC/OS 或 Docker Swarm 群集。 使用这些快速入门、教程和示例，了解如何使用 Azure 容器服务。
 sections:

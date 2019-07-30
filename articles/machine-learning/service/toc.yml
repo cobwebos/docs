@@ -239,6 +239,9 @@
           href: how-to-deploy-fpga-web-service.md
         - name: IoT Edge
           href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: Azure 应用服务
+          displayName: web app
+          href: how-to-deploy-app-service.md
         - name: 自定义 Docker 映像
           href: how-to-deploy-custom-docker-image.md
         - name: 部署现有模型

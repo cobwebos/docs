@@ -556,6 +556,8 @@
           href: how-to-create-schedule-trigger.md
         - name: 创建翻转窗口触发器
           href: how-to-create-tumbling-window-trigger.md
+        - name: 创建翻转窗口触发器依赖项
+          href: tumbling-window-trigger-dependency.md
     - name: 模板
       items:
         - name: 模板概述

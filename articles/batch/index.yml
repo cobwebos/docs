@@ -5,14 +5,12 @@ metadata:
   title: Batch 文档 - 教程和 API 参考 | Microsoft Docs
   description: 使用 Batch 在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 定义 Azure 计算资源，以并行执行或大规模执行应用程序，无需手动配置或管理基础结构。 按要求计划计算密集型任务并动态添加或删除计算资源。 使用我们的快速入门、教程和示例了解如何使用 Azure Batch。
   services: batch
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: batch
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/30/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 使用 Batch 在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 定义 Azure 计算资源，以并行执行或大规模执行应用程序，无需手动配置或管理基础结构。 按要求计划计算密集型任务并动态添加或删除计算资源。 使用我们的快速入门、教程和示例了解如何使用 Azure Batch。
 sections:

@@ -5,16 +5,13 @@ metadata:
   title: Azure Service Fabric 文档 - 教程和 API 参考 | Microsoft 文档
   meta.description: 'Learn how to use Service Fabric middleware platform to package and deploy microservices for cloud-scale applications. Tutorials, API references, and code samples.'
   services: service-fabric
-  author: null
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   layout: LandingPage
-  ms.assetid: null
   ms.service: service-fabric
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/03/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打包、部署和管理可缩放的可靠微服务和容器。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。 参考我们的快速入门、教程和示例了解如何使用 Azure Service Fabric。
 sections:
