@@ -44,7 +44,7 @@ ms.locfileid: "67274849"
 
 
 ## <a name="protecting-against-outages-and-disasters---service-bus-standard"></a>防范中断和灾难 - 服务总线标准版
-为了在使用标准消息传送定价层时实现针对数据中心中断的恢复，服务总线支持两种方法：主动  和被动  复制。 对于每一种方法，如果必须在数据中心中断的情况下仍可访问给定的队列或主题，可在两个命名空间中进行创建。 两个实体可以具有相同的名称。 例如，可在 **contosoPrimary.servicebus.windows.net/myQueue** 下访问主要队列，而在 **contosoSecondary.servicebus.windows.net/myQueue** 下访问其辅助队列。
+为了在使用标准消息传送定价层时实现针对数据中心中断的恢复，服务总线支持两种方法：主动和被动复制。 对于每一种方法，如果必须在数据中心中断的情况下仍可访问给定的队列或主题，可在两个命名空间中进行创建。 两个实体可以具有相同的名称。 例如，可在 **contosoPrimary.servicebus.windows.net/myQueue** 下访问主要队列，而在 **contosoSecondary.servicebus.windows.net/myQueue** 下访问其辅助队列。
 
 >[!NOTE]
 > **主动复制**和**被动复制**设置是常规用途解决方案，不是服务总线的特定功能。 复制逻辑（发送到 2 个不同的命名空间）存在于发送方应用程序上，而接收方必须具有用于检测重复项的自定义逻辑。

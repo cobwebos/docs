@@ -54,18 +54,18 @@ ms.locfileid: "66128313"
 
 1. 打开 web 浏览器，导航到 `https://github.com` 并登录帐户。
 
-2. 对于帐户，导航到“设置” > “开发人员设置”，然后单击“注册新应用程序”或“OAuth 应用”下的“新建 OAuth 应用”      。
+2. 对于帐户，导航到“设置” > “开发人员设置”，然后单击“注册新应用程序”或“OAuth 应用”下的“新建 OAuth 应用”。
 
-3. 为新 OAuth 应用使用以下设置，然后单击“注册应用程序”  ：
+3. 为新 OAuth 应用使用以下设置，然后单击“注册应用程序”：
 
     | 设置名称 | 建议的值 | 说明 |
     | ------------ | --------------- | ----------- |
-    | 应用程序名称 | Azure SignalR 聊天  | GitHub 用户应能识别并信任他们要用于身份验证的应用。   |
+    | 应用程序名称 | Azure SignalR 聊天 | GitHub 用户应能识别并信任他们要用于身份验证的应用。   |
     | 主页 URL | `http://localhost:5000/home` | |
-    | 应用程序说明 | 配合使用 Azure SignalR 服务和 GitHub 身份验证的聊天室示例  | 有效的应用程序说明可帮助应用程序用户理解所用的身份验证上下文。 |
-    | 授权回调 URL | `http://localhost:5000/signin-github` | 这是 OAuth 应用程序最重要的设置。 它是身份验证成功后 GitHub 返回用户的回调 URL。 在本教程中，必须使用 AspNet.Security.OAuth.GitHub 包的默认回调 URL“/signin-github”   。  |
+    | 应用程序说明 | 配合使用 Azure SignalR 服务和 GitHub 身份验证的聊天室示例 | 有效的应用程序说明可帮助应用程序用户理解所用的身份验证上下文。 |
+    | 授权回调 URL | `http://localhost:5000/signin-github` | 这是 OAuth 应用程序最重要的设置。 它是身份验证成功后 GitHub 返回用户的回调 URL。 在本教程中，必须使用 AspNet.Security.OAuth.GitHub 包的默认回调 URL“/signin-github”。  |
 
-4. 新的 OAuth 应用注册完成后，使用以下命令将客户端 ID 和客户端密码添加到机密管理器   。 将 Your_GitHub_Client_Id 和 Your_GitHub_Client_Secret 替换为 OAuth 应用的值   。
+4. 新的 OAuth 应用注册完成后，使用以下命令将客户端 ID 和客户端密码添加到机密管理器。 将 Your_GitHub_Client_Id 和 Your_GitHub_Client_Secret 替换为 OAuth 应用的值。
 
         dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
         dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
@@ -80,7 +80,7 @@ ms.locfileid: "66128313"
         dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
         dotnet restore
 
-1. 打开 Startup.cs，并为以下命名空间添加 `using` 语句  ：
+1. 打开 Startup.cs，并为以下命名空间添加 `using` 语句：
 
     ```csharp
     using System.Net.Http;
@@ -150,9 +150,9 @@ ms.locfileid: "66128313"
 
 在本部分中，将实现 `Login` API，它使用 GitHub OAuth 应用对客户端进行身份验证。 身份验证后，API 会在将客户端重定向回聊天应用前向 Web 客户端响应添加 cookie。 该 cookie 稍后将用于标识客户端。
 
-1. 将新的控制器代码文件添加到 chattest\Controllers 目录  。 将文件命名为 AuthController.cs  。
+1. 将新的控制器代码文件添加到 chattest\Controllers 目录。 将文件命名为 AuthController.cs。
 
-2. 为身份验证控制器添加以下代码。 如果项目目录不是 chattest，请务必更新命名空间  ：
+2. 为身份验证控制器添加以下代码。 如果项目目录不是 chattest，请务必更新命名空间：
 
     ```csharp
     using AspNet.Security.OAuth.GitHub;
@@ -188,7 +188,7 @@ ms.locfileid: "66128313"
 
 在本部分中，通过向集线器类添加 `Authorize` 属性，并将集线器方法更新为从经身份验证的用户声明中读取用户名，启动真实身份验证。
 
-1. 打开 Hub\Chat.cs 并添加对以下命名空间的引用  ：
+1. 打开 Hub\Chat.cs 并添加对以下命名空间的引用：
 
     ```csharp
     using System.Threading.Tasks;
@@ -225,9 +225,9 @@ ms.locfileid: "66128313"
 
 ### <a name="update-the-web-client-code"></a>更新 Web 客户端代码
 
-1. 打开 wwwroot\index.html，将提示用户名的代码替换为使用身份验证控制器返回的 cookie 的代码  。
+1. 打开 wwwroot\index.html，将提示用户名的代码替换为使用身份验证控制器返回的 cookie 的代码。
 
-    从 index.html 中删除以下代码  ：
+    从 index.html 中删除以下代码：
 
     ```javascript
     // Get the user name and store it to prepend to messages.
@@ -318,7 +318,7 @@ ms.locfileid: "66128313"
     }
     ```
 
-4. 在 index.html 底部，更新 `connection.start()` 的错误处理程序（如下所示），提示用户进行登录  。
+4. 在 index.html 底部，更新 `connection.start()` 的错误处理程序（如下所示），提示用户进行登录。
 
     ```javascript
     connection.start()
@@ -359,11 +359,11 @@ ms.locfileid: "66128313"
         Now listening on: http://localhost:5000
         Application started. Press Ctrl+C to shut down.
 
-4. 启动浏览器窗口并导航到 `http://localhost:5000`。 单击顶部的“此处”链接，使用 GitHub 进行登录  。
+4. 启动浏览器窗口并导航到 `http://localhost:5000`。 单击顶部的“此处”链接，使用 GitHub 进行登录。
 
     ![托管在 Azure 中的 OAuth 完成](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-    系统将提示授予聊天应用访问 GitHub 帐户的权限。 单击“授权”按钮  。
+    系统将提示授予聊天应用访问 GitHub 帐户的权限。 单击“授权”按钮。
 
     ![授权 OAuth 应用](media/signalr-concept-authenticate-oauth/signalr-authorize-oauth-app.png)
 
@@ -379,17 +379,17 @@ ms.locfileid: "66128313"
 
 在本部分中，您将使用 Azure 命令行接口 (CLI) 从 Azure Cloud Shell 创建中的新 web 应用[Azure 应用服务](https://docs.microsoft.com/azure/app-service/)来承载 ASP.NET 应用程序在 Azure 中的。 Web 应用将配置为使用本地 Git 部署。 还将使用 SignalR 连接字符串、GitHub OAuth 应用密码和部署用户配置 Web 应用。
 
-本部分中的步骤使用 Azure CLI 的 signalr 扩展  。 执行以下命令，安装 Azure CLI 的 signalr 扩展  ：
+本部分中的步骤使用 Azure CLI 的 signalr 扩展。 执行以下命令，安装 Azure CLI 的 signalr 扩展：
 
 ```azurecli-interactive
 az extension add -n signalr
 ```
 
-创建以下资源时，请确保使用的资源组与 SignalR 服务资源驻留的资源组相同。 通过此方法，稍后若要删除所有资源，可更轻松地进行清理。 给定示例假定使用之前教程中建议的组名称 SignalRTestResources  。
+创建以下资源时，请确保使用的资源组与 SignalR 服务资源驻留的资源组相同。 通过此方法，稍后若要删除所有资源，可更轻松地进行清理。 给定示例假定使用之前教程中建议的组名称 SignalRTestResources。
 
 ### <a name="create-the-web-app-and-plan"></a>创建 Web 应用和计划
 
-复制下面命令的文本并更新参数。 将更新的脚本粘贴到 Azure Cloud Shell，然后按 Enter 创建新的应用服务计划和 Web 应用  。
+复制下面命令的文本并更新参数。 将更新的脚本粘贴到 Azure Cloud Shell，然后按 Enter 创建新的应用服务计划和 Web 应用。
 
 ```azurecli-interactive
 #========================================================================
@@ -426,7 +426,7 @@ az webapp create --name $WebAppName --resource-group $ResourceGroupName \
 * GitHub OAuth 应用客户端 ID
 * GitHub OAuth 应用客户端密码
 
-复制下面命令的文本并更新参数。 将更新的脚本粘贴到 Azure Cloud Shell，然后按 Enter 添加应用设置  ：
+复制下面命令的文本并更新参数。 将更新的脚本粘贴到 Azure Cloud Shell，然后按 Enter 添加应用设置：
 
 ```azurecli-interactive
 #========================================================================
@@ -537,11 +537,11 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 ### <a name="update-the-github-oauth-app"></a>更新 GitHub OAuth 应用
 
-需要执行的最后一步是更新 GitHub OAuth 应用的“主页 URL”和“授权回调 URL”，指向新的托管应用   。
+需要执行的最后一步是更新 GitHub OAuth 应用的“主页 URL”和“授权回调 URL”，指向新的托管应用。
 
-1. 在浏览器中打开 [https://github.com](https://github.com) 并导航到帐户的“设置” > “开发人员设置” > “Oauth 应用”    。
+1. 在浏览器中打开 [https://github.com](https://github.com) 并导航到帐户的“设置” > “开发人员设置” > “Oauth 应用”。
 
-2. 单击身份验证应用并更新“主页 URL”和“授权回调 URL”，如下所示   ：
+2. 单击身份验证应用并更新“主页 URL”和“授权回调 URL”，如下所示：
 
     | 设置 | 示例 |
     | ------- | ------- |
@@ -561,13 +561,13 @@ az webapp deployment source config-local-git --name $WebAppName \
 > [!IMPORTANT]
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。 
+登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
 
-在“按名称筛选...”文本框中键入资源组的名称  。 本文的说明使用名为“SignalRTestResources”的资源组  。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”   。
+在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用名为“SignalRTestResources”的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”。
 
 ![删除](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 
-系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”  。
+系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
 
 片刻之后，将会删除该资源组及其包含的所有资源。
 
