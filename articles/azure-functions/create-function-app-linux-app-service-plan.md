@@ -34,7 +34,7 @@ ms.locfileid: "65153810"
 
 必须使用函数应用在 Linux 上托管函数的执行。 函数应用提供一个用于执行函数代码的环境。 它可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 在本文中，我们将在创建函数应用时创建应用服务计划。
 
-1. 选择 Azure 门户左上角的“创建资源”按钮，然后选择“计算” > “函数应用”。
+1. 选择 Azure 门户左上角的“创建资源”按钮，然后选择“计算” > “函数应用”。   
 
     ![在 Azure 门户中创建函数应用](./media/create-function-app-linux-app-service-plan/function-app-create-flow.png)
 
@@ -46,22 +46,22 @@ ms.locfileid: "65153810"
     | ------------ |  ------- | -------------------------------------------------- |
     | **应用名称** | 全局唯一名称 | 用于标识新 Function App 的名称。 有效的字符是 `a-z`、`0-9` 和 `-`。  | 
     | **订阅** | 订阅 | 要在其下创建此新函数应用的订阅。 | 
-    | [资源组](../azure-resource-manager/resource-group-overview.md) |  myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 |
+    |  [资源组](../azure-resource-manager/resource-group-overview.md) |  myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 |
     | **OS** | Linux | 该函数应用在 Linux 上运行。 |
     | **发布** | 代码 | 将使用**运行时堆栈**的默认 Linux 容器。 只需提供函数应用项目代码即可。 另一个选项是发布自定义的 [Docker 映像](functions-create-function-linux-custom-image.md)。 |
-    | [托管计划](functions-scale.md) | 应用服务计划 | 定义如何将资源分配给 Function App 的托管计划。 在应用服务计划中运行时，可以控制[函数应用的缩放](functions-scale.md)。  |
-    | **应用服务计划/位置** | 创建计划 | 选择“新建”并提供**应用服务计划**的名称。 在与你靠近或者与函数要访问的其他服务靠近的[区域](https://azure.microsoft.com/regions/)中选择一个**位置**。 选择所需的 **[定价层](https://azure.microsoft.com/pricing/details/app-service/linux/)** 。 <br/>不能在同一个应用服务计划中同时运行 Linux 和 Windows 函数应用。 |
+    |  [托管计划](functions-scale.md) | 应用服务计划 | 定义如何将资源分配给 Function App 的托管计划。 在应用服务计划中运行时，可以控制[函数应用的缩放](functions-scale.md)。  |
+    | **应用服务计划/位置** | 创建计划 | 选择“新建”并提供**应用服务计划**的名称。  在与你靠近或者与函数要访问的其他服务靠近的[区域](https://azure.microsoft.com/regions/)中选择一个**位置**。 选择所需的 **[定价层](https://azure.microsoft.com/pricing/details/app-service/linux/)** 。 <br/>不能在同一个应用服务计划中同时运行 Linux 和 Windows 函数应用。 |
     | **运行时堆栈** | 首选语言 | 选择支持你喜欢的函数编程语言的运行时。 对于 C# 和 F# 函数，选择 **.NET**。 [Python 支持](functions-reference-python.md)目前为预览版。 |
     | **[存储](../storage/common/storage-quickstart-create-account.md)** |  全局唯一名称 |  创建函数应用使用的存储帐户。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可使用现有帐户，但该帐户必须符合[存储帐户要求](functions-scale.md#storage-account-requirements)。 |
     | **[Application Insights](functions-monitoring.md)** | 已启用 | 默认会启用 Application Insights。 我们建议立即启用 Application Insights 集成，并选择靠近应用服务计划位置的某个托管位置。 如果希望在以后执行此操作，请参阅[监视 Azure Functions](functions-monitoring.md)。  |
 
-3. 选择“创建”以预配和部署函数应用。
+3. 选择“创建”  以预配和部署函数应用。
 
-4. 选择门户右上角的“通知”图标，留意是否显示“部署成功”消息。
+4. 选择门户右上角的“通知”图标，留意是否显示“部署成功”消息。 
 
     ![定义新的函数应用设置](./media/create-function-app-linux-app-service-plan/function-app-create-notification.png)
 
-5. 选择“转到资源”，查看新的函数应用。
+5. 选择“转到资源”  ，查看新的函数应用。
 
 接下来，在新的 Function App 中创建一个函数。 即使函数应用可用，它也可能需要花费几分钟时间才能完全初始化。
 
@@ -72,15 +72,15 @@ ms.locfileid: "65153810"
 > [!NOTE]
 > 可以在门户开发体验中试用 Azure Functions。 对于大多数方案，请考虑在本地开发函数，然后使用 [Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) 或 [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project) 将项目发布到函数应用。  
 
-1. 在新函数应用中选择“概述”选项卡，完全加载该应用后，选择“+ 新建函数”。
+1. 在新函数应用中选择“概述”选项卡，完全加载该应用后，选择“+ 新建函数”。  
 
     ![通过“概述”选项卡创建新函数](./media/create-function-app-linux-app-service-plan/overview-create-function.png)
 
-1. 在“快速入门”选项卡中选择“门户中”，然后选择“继续”。
+1. 在“快速入门”选项卡中选择“门户中”，然后选择“继续”。   
 
     ![选择函数开发平台。](./media/create-function-app-linux-app-service-plan/function-app-quickstart-choose-portal.png)
 
-1. 选择“WebHook + API”，然后选择“创建”。
+1. 选择“WebHook + API”  ，然后选择“创建”  。
 
     ![Azure 门户中的函数快速入门。](./media/create-function-app-linux-app-service-plan/function-app-quickstart-node-webhook.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "65153810"
 
 ## <a name="test-the-function"></a>测试函数
 
-1. 在新函数中，单击右上角的“</> 获取函数 URL”，选择“默认(函数密钥)”，然后单击“复制”。 
+1. 在新函数中，单击右上角的“</> 获取函数 URL”，选择“默认(函数密钥)”，然后单击“复制”    。 
 
     ![从 Azure 门户复制函数 URL](./media/create-function-app-linux-app-service-plan/function-app-develop-tab-testing.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "65153810"
 
     请求 URL 包含通过 HTTP 访问函数默认所需的密钥。
 
-3. 运行函数时，会在日志中写入跟踪信息。 若要查看上次执行的跟踪输出，请返回到门户中的函数，并单击屏幕底部的箭头以展开“日志”。
+3. 运行函数时，会在日志中写入跟踪信息。 若要查看上次执行的跟踪输出，请返回到门户中的函数，并单击屏幕底部的箭头以展开“日志”  。
 
    ![Azure 门户中的“函数日志”查看器。](./media/create-function-app-linux-app-service-plan/function-view-logs.png)
 
