@@ -249,6 +249,8 @@
               href: devtest-lab-integrate-ci-cd-vsts.md
             - name: 将环境集成到 Azure DevOps CI/CD 管道中
               href: integrate-environments-devops-pipeline.md
+            - name: 在 Azure DevOps 生成和发布管道中使用开发测试实验室
+              href: use-devtest-labs-build-release-pipelines.md
         - name: 企业中的开发测试实验室
           items:
             - name: 企业规模的开发测试实验室

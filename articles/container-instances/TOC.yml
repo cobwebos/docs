@@ -61,7 +61,7 @@
           href: container-instances-restart-policy.md
         - name: 设置环境变量 (env)
           href: container-instances-environment-variables.md
-        - name: 替代容器入口点
+        - name: 设置容器启动命令（入口点）
           href: container-instances-start-command.md
         - name: 执行命令 (exec)
           href: container-instances-exec.md

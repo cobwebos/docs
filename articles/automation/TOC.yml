@@ -253,6 +253,9 @@
         - name: 编译 DSC 配置
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
+        - name: 修正不符合 DSC 的服务器
+          href: automation-dsc-remediate.md
+          displayName: 'state configuration, DSC, remediate'
         - name: 使用复合资源编写 DSC 配置
           href: compose-configurationwithcompositeresources.md
         - name: 使用 Chocolatey 进行连续部署

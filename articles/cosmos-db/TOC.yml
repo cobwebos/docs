@@ -738,6 +738,12 @@
           maintainContext: true
         - name: ODBC 驱动程序
           href: odbc-driver.md
+    - name: 将数据迁移到 Cosmos DB
+      items:
+        - name: 使用 Striim 迁移到 SQL API
+          href: cosmosdb-sql-api-migrate-data-striim.md
+        - name: 使用 Striim 迁移到 Cassandra API
+          href: cosmosdb-cassandra-api-migrate-data-striim.md
     - name: 批量执行程序库
       items:
         - name: 关于批量执行程序库

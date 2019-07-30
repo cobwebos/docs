@@ -1,4 +1,4 @@
-- name: 适用于 IoT 的 Azure 安全中心 (ASC) 预览版文档
+- name: 适用于 IoT 的 Azure 安全中心文档
   href: index.yml
 - name: 概述
   href: overview.md
@@ -11,16 +11,21 @@
       href: security-edge-architecture.md
     - name: 服务先决条件
       href: service-prerequisites.md
-    - name: 适用于 IoT 的 ASC 入门
+    - name: 适用于 IoT 的 Azure 安全中心入门
       href: getting-started.md
+      items:
+        - name: IoT 中心
+          href: iot-hub-integration.md
+        - name: 安全代理
+          href: security-agents.md
 - name: 快速入门
   expanded: true
   items:
-    - name: 在 IoT 中心启用适用于 IoT 的 ASC
+    - name: 在 IoT 中心启用适用于 IoT 的 Azure 安全中心
       href: quickstart-onboard-iot-hub.md
     - name: 配置解决方案
       href: quickstart-configure-your-solution.md
-    - name: 创建适用于 IoT 的 ASC 模块孪生
+    - name: 创建适用于 IoT 的 Azure 安全中心模块克隆
       href: quickstart-create-security-twin.md
     - name: 创建自定义安全警报
       href: quickstart-create-custom-alerts.md
@@ -34,6 +39,8 @@
       href: concept-security-alerts.md
     - name: 安全建议
       href: concept-recommendations.md
+    - name: 事件聚合
+      href: event-aggregation.md
     - name: 定价和关联的成本
       href: concept-pricing.md
 - name: 操作指南
@@ -48,6 +55,14 @@
           href: how-to-deploy-linux-cs.md
         - name: 在 Linux 设备上部署基于 C 的安全代理
           href: how-to-deploy-linux-c.md
+    - name: 排查安全代理问题
+      items:
+        - name: 排查适用于 IoT 的 Azure 安全中心 Linux 安全代理问题
+          href: troubleshoot-agent.md
+        - name: 本地配置 C
+          href: azure-iot-security-local-configuration-c.md
+        - name: '本地配置 C#'
+          href: azure-iot-security-local-configuration-csharp.md
     - name: 部署 Edge 安全模块
       href: how-to-deploy-edge.md
     - name: 配置安全代理

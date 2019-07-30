@@ -1,28 +1,29 @@
 ---
-title: 使用文本分析 REST API 进行关键短语提取 | Microsoft Docs
+title: 使用文本分析 REST API 提取关键短语
+titleSuffix: Azure Cognitive Services
 description: 如何通过 Azure 认知服务使用文本分析 REST API 提取关键短语。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
-ms.topic: sample
-ms.date: 06/05/2019
+ms.topic: article
+ms.date: 07/29/2019
 ms.author: raymondl
-ms.openlocfilehash: c803c85a0900a09b18909e2c81d52915a12cff1a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
-ms.translationtype: HT
+ms.openlocfilehash: dd3f0c5b82c1898d6e4bbe564556ee26e872dc94
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304068"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619680"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>示例：如何使用文本分析提取关键短语
 
-[关键短语提取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) 用于计算非结构化的文本，并针对每个 JSON 文档返回关键短语列表。 
+[关键短语提取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) 用于计算非结构化的文本，并针对每个 JSON 文档返回关键短语列表。
 
 如果需要快速确定文档集中的要点，此功能十分有用。 例如，给定输入文本“The food was delicious and there were wonderful staff”，服务会返回谈话要点：“food”和“wonderful staff”。
 
-有关详细信息，请参阅[支持的语言](../text-analytics-supported-languages.md)一文。 
+有关详细信息，请参阅[支持的语言](../text-analytics-supported-languages.md)。
 
 > [!TIP]
 > 文本分析还提供一个基于 Linux 的 Docker 容器映像，用于提取关键短语，因此可以在靠近数据的位置[安装并运行文本分析容器](text-analytics-how-to-install-containers.md)。
@@ -33,7 +34,7 @@ ms.locfileid: "67304068"
 
 必须拥有以下格式的 JSON 文档：ID、文本、语言
 
-每个文档的大小必须少于 5,120 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 以下示例例举了可能提交以进行关键短语提取的内容。
+每个文档的大小必须为 5,120 个或更少的字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 以下示例例举了可能提交以进行关键短语提取的内容。
 
 ```json
     {
@@ -57,7 +58,7 @@ ms.locfileid: "67304068"
                 "language": "en",
                 "id": "4",
                 "text": "It was foggy so we missed the spectacular views, but the trail was ok. Worth checking out if you are in the area."
-            },                
+            },
             {
                 "language": "en",
                 "id": "5",
@@ -65,26 +66,26 @@ ms.locfileid: "67304068"
             }
         ]
     }
-```    
-    
+```
+
 ## <a name="step-1-structure-the-request"></a>步骤 1：构造请求
 
-有关请求定义的详细信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
+有关请求定义的信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求  。 查看此请求的 API 文档：[关键短语 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)
++ 创建 POST 请求  。 查看此请求的 API 文档：[关键短语 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)。
 
-+ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 它必须包含 `/keyPhrases` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
++ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 它必须包含 `/keyPhrases` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`。
 
 + 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[如何查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
 
-+ 在请求正文中，提供为此分析准备的 JSON 文档集合
++ 在请求正文中，提供为此分析准备的 JSON 文档集合。
 
 > [!Tip]
 > 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)中的“API 测试控制台”来构造请求并将其 POST 到该服务  。
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
-在收到请求时执行分析。 有关每分钟和每秒可以发送的请求的大小和数量的信息，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
+在收到请求时执行分析。 有关每分钟或每秒可以发送的请求的大小和数量的信息，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
 
 记住，该服务是无状态服务。 帐户中未存储任何数据。 结果会立即在响应中返回。
 
@@ -97,66 +98,69 @@ ms.locfileid: "67304068"
 关键短语提取输出的示例如下所示：
 
 ```json
-    "documents": [
-        {
-            "keyPhrases": [
-                "year",
-                "trail",
-                "trip",
-                "views"
-            ],
-            "id": "1"
-        },
-        {
-            "keyPhrases": [
-                "marked trails",
-                "Worst hike",
-                "goners"
-            ],
-            "id": "2"
-        },
-        {
-            "keyPhrases": [
-                "trail",
-                "small children",
-                "family"
-            ],
-            "id": "3"
-        },
-        {
-            "keyPhrases": [
-                "spectacular views",
-                "trail",
-                "area"
-            ],
-            "id": "4"
-        },
-        {
-            "keyPhrases": [
-                "places",
-                "beautiful views",
-                "favorite trail"
-            ],
-            "id": "5"
-        }
+    {
+        "documents": [
+            {
+                "keyPhrases": [
+                    "year",
+                    "trail",
+                    "trip",
+                    "views"
+                ],
+                "id": "1"
+            },
+            {
+                "keyPhrases": [
+                    "marked trails",
+                    "Worst hike",
+                    "goners"
+                ],
+                "id": "2"
+            },
+            {
+                "keyPhrases": [
+                    "trail",
+                    "small children",
+                    "family"
+                ],
+                "id": "3"
+            },
+            {
+                "keyPhrases": [
+                    "spectacular views",
+                    "trail",
+                    "area"
+                ],
+                "id": "4"
+            },
+            {
+                "keyPhrases": [
+                    "places",
+                    "beautiful views",
+                    "favorite trail"
+                ],
+                "id": "5"
+            }
+        ],
+        "errors": []
+    }
 ```
 
-如上所述，分析器查找和放弃不重要的字词，并保留似乎是句子主语或宾语的字词或短语。 
+如上所述，分析器查找和放弃不重要的字词，并保留似乎是句子主语或宾语的字词或短语。
 
 ## <a name="summary"></a>摘要
 
-在本文中，你已了解使用认知服务中的文本分析进行关键短语提取的概念和工作流。 摘要：
+在本文中，你已了解使用认知服务中的文本分析进行关键短语提取的概念和工作流。 综上所述：
 
 + [关键短语提取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) 适用于所选语言。
 + 请求正文中的 JSON 文档包括 ID、文本和语言代码。
 + POST 请求的目标是 `/keyphrases` 终结点，方法是使用对订阅有效的个性化[访问密钥和终结点](text-analytics-how-to-access-key.md)。
-+ 响应输出包含每个文档 ID 的关键单词和短语，可以流式传输到接受 JSON 的任何应用，包括 Excel 和 Power BI（仅举几例）。
++ 响应输出包含每个文档 ID 的关键单词和短语，可以流式传输到接受 JSON 的任何应用，包括 Microsoft Office Excel 和 Power BI（仅举几例）。
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>另请参阅
 
- [文本分析概述](../overview.md)  
- [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
- [文本分析产品页](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [文本分析概述](../overview.md)[常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
+ [文本分析产品页](//go.microsoft.com/fwlink/?LinkID=759712)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -286,6 +286,8 @@
           href: application-proxy-security.md
         - name: 网络拓扑
           href: application-proxy-network-topology.md
+        - name: 高可用性和负载均衡
+          href: application-proxy-high-availability-load-balancing.md
         - name: 比较远程访问解决方案
           href: application-proxy-migration.md
     - name: 操作指南

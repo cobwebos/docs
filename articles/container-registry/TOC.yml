@@ -77,6 +77,8 @@
       items:
         - name: 使用虚拟网络限制访问（预览版）
           href: container-registry-vnet.md
+        - name: 在防火墙后访问
+          href: container-registry-firewall-access-rules.md
         - name: Authentication
           items:
             - name: 身份验证概述

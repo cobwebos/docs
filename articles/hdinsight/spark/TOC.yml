@@ -50,6 +50,18 @@
       href: ../hdinsight-version-release.md
     - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
       href: ../hdinsight-cluster-availability.md
+    - name: 故障排除
+      items:
+        - name: OutOfMemoryError 异常
+          items:
+            - name: 堆内存不足
+              href: ./apache-spark-troubleshoot-outofmemory-heap.md
+        - name: IllegalArgumentException 异常
+          href: ./apache-spark-troubleshoot-illegalargumentexception.md
+        - name: Apache Spark 流式处理应用程序停止
+          href: ./apache-spark-troubleshoot-application-stops.md
+        - name: RpcTimeoutException 异常
+          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
 - name: 如何
   items:
     - name: 使用群集存储
