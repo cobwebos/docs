@@ -334,47 +334,47 @@
       href: ./fundamentals/pen-testing.md
     - name: Microsoft 威胁建模工具
       displayName: stride
-      href: azure-security-threat-modeling-tool.md
+      href: ./develop/threat-modeling-tool.md
       items:
         - name: 入门
-          href: azure-security-threat-modeling-tool-getting-started.md
+          href: ./develop/threat-modeling-tool-getting-started.md
         - name: 功能概述
-          href: azure-security-threat-modeling-tool-feature-overview.md
+          href: ./develop/threat-modeling-tool-feature-overview.md
         - name: 威胁
-          href: azure-security-threat-modeling-tool-threats.md
+          href: ./develop/threat-modeling-tool-threats.md
         - name: 发行版本
-          href: azure-security-threat-modeling-tool-releases.md
+          href: ./develop/threat-modeling-tool-releases.md
           items:
             - name: Threat Modeling Tool 正式版 7.1.5091.2 - 2018 年 9 月 12 日
-              href: azure-security-threat-modeling-tool-releases-71509112.md
+              href: ./develop/threat-modeling-tool-releases-71509112.md
             - name: Threat Modeling Tool 更新版 7.1.51023.1 - 2018 年 11 月 1 日
-              href: azure-security-threat-modeling-tool-releases-71510231.md
+              href: ./develop/threat-modeling-tool-releases-71510231.md
             - name: Threat Modeling Tool 更新版 7.1.60126.1 - 2019 年 1 月 29 日
-              href: azure-security-threat-modeling-tool-releases-71601261.md
+              href: ./develop/threat-modeling-tool-releases-71601261.md
             - name: Threat Modeling Tool 更新版 7.1.60408.1 - 2019 年 4 月 9 日
-              href: azure-security-threat-modeling-tool-releases-71604081.md
+              href: ./develop/threat-modeling-tool-releases-71604081.md
             - name: Threat Modeling Tool 更新版 7.1.60702.1 - 2019 年 7 月 2 日
-              href: azure-security-threat-modeling-tool-releases-71607021.md
+              href: ./develop/threat-modeling-tool-releases-71607021.md
         - name: 缓解措施
-          href: azure-security-threat-modeling-tool-mitigations.md
+          href: ./develop/threat-modeling-tool-mitigations.md
           items:
             - name: 审核和日志记录
-              href: azure-security-threat-modeling-tool-auditing-and-logging.md
+              href: ./develop/threat-modeling-tool-auditing-and-logging.md
             - name: Authentication
-              href: azure-security-threat-modeling-tool-authentication.md
+              href: ./develop/threat-modeling-tool-authentication.md
             - name: 授权
-              href: azure-security-threat-modeling-tool-authorization.md
+              href: ./develop/threat-modeling-tool-authorization.md
             - name: 通信安全
-              href: azure-security-threat-modeling-tool-communication-security.md
+              href: ./develop/threat-modeling-tool-communication-security.md
             - name: 配置管理
-              href: azure-security-threat-modeling-tool-configuration-management.md
+              href: ./develop/threat-modeling-tool-configuration-management.md
             - name: 加密
-              href: azure-security-threat-modeling-tool-cryptography.md
+              href: ./develop/threat-modeling-tool-cryptography.md
             - name: 异常管理
-              href: azure-security-threat-modeling-tool-exception-management.md
+              href: ./develop/threat-modeling-tool-exception-management.md
             - name: 输入验证
-              href: azure-security-threat-modeling-tool-input-validation.md
+              href: ./develop/threat-modeling-tool-input-validation.md
             - name: 敏感数据
-              href: azure-security-threat-modeling-tool-sensitive-data.md
+              href: ./develop/threat-modeling-tool-sensitive-data.md
             - name: 会话管理
-              href: azure-security-threat-modeling-tool-session-management.md
+              href: ./develop/threat-modeling-tool-session-management.md
