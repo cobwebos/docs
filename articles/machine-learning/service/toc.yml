@@ -24,11 +24,6 @@
         - name: 在本地运行试验
           displayName: 'workspace, install, sdk'
           href: quickstart-run-local-notebook.md
-    - name: 可视界面
-      items:
-        - name: 准备和可视化数据
-          displayName: experiment drag-and-drop
-          href: ui-quickstart-run-experiment.md
 - name: 教程
   items:
     - name: Python SDK

@@ -34,7 +34,6 @@ sections:
       - items:
           - html: <a href="service/quickstart-run-cloud-notebook">在云中运行试验</a>（不需要进行安装）
           - html: <a href="service/quickstart-run-local-notebook">使用本地 Notebook 服务器运行试验</a>（本地 SDK 安装）
-          - html: <a href="service/ui-quickstart-run-experiment">在可视界面中运行试验</a>（无代码）
         style: unordered
         type: list
       - text: <b>教程：使用 SDK 进行 MNIST 数据的图像分类：</b>

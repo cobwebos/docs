@@ -36,7 +36,6 @@ sections:
         items:
           - html: <a href="quickstart-run-cloud-notebook">在云中运行试验</a>（不需要进行安装）。
           - html: <a href="quickstart-run-local-notebook">使用本地 Notebook 服务器运行试验</a>（本地 SDK 安装）。
-          - html: 在可视界面中<a href="ui-quickstart-run-experiment">准备数据并将其可视化，无需编写代码</a>。
   - title: 分步教程
     items:
       - type: paragraph

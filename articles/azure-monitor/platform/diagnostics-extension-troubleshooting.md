@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: robb
 ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "65471789"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
@@ -29,7 +29,7 @@ ms.locfileid: "65471789"
 以下是一些重要日志和项目的路径。 文档剩余部分将始终引用此信息。
 
 ### <a name="azure-cloud-services"></a>Azure 云服务
-| 项目 | 路径 |
+| 项目 | Path |
 | --- | --- |
 | **Azure 诊断配置文件** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
 | **日志文件** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
@@ -40,7 +40,7 @@ ms.locfileid: "65471789"
 | **MonAgentHost 日志文件** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ### <a name="virtual-machines"></a>虚拟机
-| 项目 | 路径 |
+| 项目 | Path |
 | --- | --- |
 | **Azure 诊断配置文件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
 | **日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
@@ -81,7 +81,7 @@ Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果无法查
 如果配置设置正确，但仍看不到指标数据，请按照以下指南进行故障排除。
 
 
-## <a name="azure-diagnostics-is-not-starting"></a>Azure 诊断不启动
+## <a name="azure-diagnostics-is-not-starting"></a>Azure 诊断未启动
 有关为和 Azure 诊断无法启动的信息，请参阅之前提供的日志文件位置中的 DiagnosticsPluginLauncher.log 和 DiagnosticsPlugin.log 文件   。
 
 如果这些日志指示 `Monitoring Agent not reporting success after launch`，则表示启动 MonAgentHost.exe 失败。 在之前部分中指示 `MonAgentHost log file` 的位置查看日志。
@@ -207,14 +207,14 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 ```
 此代码生成四个表：
 
-| 事件 | 表名称 |
+| Event | 表单名称 |
 | --- | --- |
 | provider=”prov1” &lt;Event id=”1” /&gt; |WADEvent+MD5(“prov1”)+”1” |
 | provider=”prov1” &lt;Event id=”2” eventDestination=”dest1” /&gt; |WADdest1 |
 | provider=”prov1” &lt;DefaultEvents /&gt; |WADDefault+MD5(“prov1”) |
 | provider=”prov2” &lt;DefaultEvents eventDestination=”dest2” /&gt; |WADdest2 |
 
-## <a name="references"></a>参考
+## <a name="references"></a>参考资料
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>如何检查诊断扩展配置
 检查扩展配置的最简方法是转到 [Azure 资源浏览器](http://resources.azure.com)、再转到 Azure 诊断扩展 (IaaSDiagnostics/PaaDiagnostics) 所在的虚拟机或云服务。
@@ -250,7 +250,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 | -108 |无法将诊断配置文件转换为监视代理配置文件。<p><p>此内部错误应仅当使用无效的配置文件手动调用了诊断插件时才会发生。 |
 | -110 |常规诊断配置错误。<p><p>此内部错误应仅当使用无效的配置文件手动调用了诊断插件时才会发生。 |
 | -111 |无法启动监视代理。<p><p>解决方案：验证是否有足够的系统资源可用。 |
-| -112 |常规错误 |
+| -112 |常见错误 |
 
 ### <a name="local-log-extraction"></a>本地日志提取
 监视代理将日志和项目收集为 `.tsf` 文件。 `.tsf` 文件不可读，但可以将其转换为 `.csv`，如下所示：
