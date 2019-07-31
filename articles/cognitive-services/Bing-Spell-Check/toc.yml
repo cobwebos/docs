@@ -70,7 +70,8 @@
 - name: 资源
   items:
     - name: 适用于必应拼写检查 API 的分析
-      href: bing-spell-check-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: 语言和区域支持
       href: language-support.md
     - name: 定价

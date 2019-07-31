@@ -7,6 +7,8 @@
       href: overview.md
     - name: 示例用户方案
       href: text-analytics-user-scenarios.md
+    - name: 新增功能
+      href: whats-new.md
 - name: 快速入门
   expanded: true
   items:
