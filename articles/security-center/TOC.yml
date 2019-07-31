@@ -75,8 +75,6 @@
       href: security-center-provide-security-contact-details.md
     - name: 定价层
       href: security-center-pricing.md
-    - name: 安全配置
-      href: security-center-customize-os-security-config.md
     - name: 租户范围可见性
       href: security-center-management-groups.md
     - name: 实施安全建议
@@ -183,6 +181,8 @@
           href: security-center-alerts-type.md
         - name: 用于 Azure 资源和用户的 UEBA
           href: security-center-ueba-mcas.md
+        - name: 自定义安全配置
+          href: security-center-customize-os-security-config.md
 - name: 引用
   items:
     - name: REST API

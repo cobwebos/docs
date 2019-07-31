@@ -105,8 +105,14 @@
           href: container-registry-tasks-multi-step.md
         - name: 使用 Buildpacks 生成映像（预览版）
           href: container-registry-tasks-pack-build.md
-        - name: 与托管标识配合使用
-          href: container-registry-tasks-authentication-managed-identity.md
+        - name: 使用托管标识访问受保护的资源
+          items:
+            - name: 在任务上启用托管标识
+              href: container-registry-tasks-authentication-managed-identity.md
+            - name: 从任务中进行跨注册表身份验证
+              href: container-registry-tasks-cross-registry-authentication.md
+            - name: 使用密钥保管库进行外部身份验证
+              href: container-registry-tasks-authentication-key-vault.md
     - name: 注册表和其他 Azure 服务
       items:
         - name: Azure 容器实例
