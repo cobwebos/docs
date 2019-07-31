@@ -10,10 +10,10 @@ ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "64922831"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>使用事件中心流式处理热路径中的 Azure 诊断数据
@@ -34,7 +34,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 * 如何查看事件中心流数据
 * 如何排查连接问题  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 从 Azure SDK 2.9 和相应的 Azure Tools for Visual Studio 开始，云服务、VM、虚拟机规模集和 Service Fabric 将支持事件中心接收来自 Azure 诊断的数据。
 
 * Azure 诊断扩展 1.6（[Azure SDK for .NET 2.9 或更高版本](https://azure.microsoft.com/downloads/)默认以此为目标）

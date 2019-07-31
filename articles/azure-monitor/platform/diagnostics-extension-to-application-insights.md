@@ -9,10 +9,10 @@ ms.date: 03/19/2016
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "60396102"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights
@@ -70,8 +70,8 @@ Application Insights 接收器的示例配置：
         - 详细
         - 信息
         - 警告
-        - 错误
-        - 严重
+        - Error
+        - 关键
 
 通道的作用类似于筛选器，可让你选择要发送到目标接收器的特定日志级别。 例如，可以收集详细日志并将其发送到存储，但只将“错误”日志发送到接收器。
 

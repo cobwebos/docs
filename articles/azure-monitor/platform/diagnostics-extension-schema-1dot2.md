@@ -10,10 +10,10 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: dae74e730d6e175fa3e447150adce4caecd3d7a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "60237836"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Azure 诊断 1.2 配置架构
@@ -21,7 +21,7 @@ ms.locfileid: "60237836"
 > Azure 诊断是一个组件，用于从 Azure 虚拟机、虚拟机规模集、Service Fabric 和云服务收集性能计数器和其他统计信息。  在使用以下某个服务时，才需要参阅此页。
 >
 
-Azure 诊断是与 Azure Monitor，其中包括 Application Insights 和 Log Analytics 等其他 Microsoft 诊断产品结合使用。
+Azure 诊断与其他 Microsoft 诊断产品 (如 Azure Monitor) 结合使用, 其中包括 Application Insights 和 Log Analytics。
 
 此架构定义了多种可能的值，可以使用这些值在诊断监视器启动时初始化诊断配置设置。  
 
@@ -185,7 +185,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |元素名称|描述|  
 |------------------|-----------------|  
-|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> -                     **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time`。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> -                     **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。|  
+|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> -                     **counterSpecifier** - 性能计数器的名称。 例如， `\Processor(_Total)\% Processor Time` 。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> -                     **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。|  
 
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration 元素  
  下表介绍子元素：  
