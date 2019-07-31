@@ -52,7 +52,8 @@
     - name: 必应见解使用情况
       href: bing-insights-usage.md
     - name: 适用于视觉搜索 API 的分析
-      href: bing-visual-search-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
 - name: 操作指南
   items:
     - name: 使用令牌获取见解

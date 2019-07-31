@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: edaa36cf22e63d42eb347aea3da1816e2c93b45e
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: a61f196a509c3e84b518fffb4eb78f5f7430cb28
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479222"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667585"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>预览版：迁移到 API 版本 3.x, 适用于 LUIS 应用
 
@@ -108,7 +108,7 @@ V3 API 包含不同的查询字符串参数。
 }
 ```
 
-|属性|type|Version|默认|用途|
+|属性|类型|Version|默认|用途|
 |--|--|--|--|--|
 |`dynamicLists`|array|仅 V3|非必需。|使用[动态列表](#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
 |`externalEntities`|array|仅 V3|非必需。|[外部实体](#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
@@ -150,7 +150,9 @@ V3 的顶级 JSON 属性为：
 }
 ```
 
-`normalizedQuery`包含拼写更正。 这对应于 V2 API 属性`alteredQuery`。  
+<!--
+The `alteredQuery` contains spelling corrections. This corresponds to the V2 API property `alteredQuery`.  
+-->
 
 `intents` 对象是未排序的列表。 不要假设 `intents` 中的第一个子级对应于 `topIntent`。 请改用 `topIntent` 值来查找评分：
 
@@ -206,7 +208,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 |--|--|--|
 |`Yellow Bird Lane`|`Location`|`Destination`|
 
-在 V2 中，实体由实体名称以及用作对象属性的角色进行标识：
+在 V2 中，实体由实体名称以及用作对象属性的角色进行标识： 
 
 ```JSON
 "entities":[
@@ -221,7 +223,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 ]
 ```
 
-在 V3 中，如果预测针对角色，则实体由实体角色引用：
+在 V3 中，如果预测针对角色，则实体由实体角色引用： 
 
 ```JSON
 "entities":{
@@ -380,7 +382,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 #### <a name="resolution"></a>解决
 
-可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。 
+可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。  
 
 主要目的是扩展预生成实体，但并不局限于该实体类型。 
 

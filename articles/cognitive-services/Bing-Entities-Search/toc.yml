@@ -93,6 +93,7 @@
     - name: 必应实体搜索终结点
       href: entity-search-endpoint.md
     - name: 适用于必应实体搜索 API 的分析
-      href: bing-entity-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
