@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3d0295512452367cb0f70f1d9ca6e950d6649353
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2578202c2464248c1c765368d308ca669d918057
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669328"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562550"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>如何借助 C++/NDK 来使用 Azure 空间定位点创建和查找定位点
 
@@ -39,7 +39,7 @@ ms.locfileid: "67669328"
 - 通读 [Azure 空间定位点概述](../overview.md)。
 - 完成 [5 分钟快速入门](../index.yml)之一。
 - 对 C++ 和 <a href="https://developer.android.com/ndk/" target="_blank">Android 本机开发工具包</a>有一个基本的了解。
-- 对 <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.7 有一个基本的了解。
+- 对 <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 有一个基本的了解。
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 

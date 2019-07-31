@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4ed66e3a0237eced852c806e78a8af6bdf8d8579
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: b8c8d1a867f6872c5e3ec9e1b48dac8f80c84950
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417821"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602138"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练
 
@@ -88,6 +88,6 @@ ms.locfileid: "66417821"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [针对 VMware VM 运行故障转移和故障回复](vmware-azure-tutorial-failover-failback.md)。
-> [针对 Hyper-V VM 运行故障转移和故障回复](hyper-v-azure-failover-failback-tutorial.md)。
-> [针对物理计算机运行故障转移和故障回复](physical-to-azure-failover-failback.md)
+> [对 VMware VM 运行故障转移和故障回复](vmware-azure-tutorial-failover-failback.md)
+> [对 Hyper-V VM 运行故障转移和故障回复](hyper-v-azure-failover-failback-tutorial.md)
+> [对物理计算机运行故障转移和故障回复](physical-to-azure-failover-failback.md)

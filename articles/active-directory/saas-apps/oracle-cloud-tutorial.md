@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/10/2019
+ms.date: 07/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456c984e577e3427ce8cd62d6f63987118f2c8ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e0725988ff88baea2458f0a5e459440874e66088
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164151"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596436"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>教程：将 Oracle Cloud Infrastructure Console 与 Azure Active Directory 集成
 
@@ -165,7 +165,7 @@ ms.locfileid: "67164151"
 
       ![配置](./media/oracle-cloud-tutorial/config09.png)
 
-   1. 对于“标识提供者组”字段，输入在 Azure 门户中设置的组名和组 ID  。 此组需要与“OCI 组”字段中的相应组建立映射  。
+   1. “标识提供者组”  应选为“自定义组”。 “组 ID”应为 Azure Active Directory 中的组的 GUID。 此组需要与“OCI 组”字段中的相应组建立映射  。
 
    1. 可以根据 Azure 门户中的设置和组织需要来映射多个组。 单击“+ 添加映射”可添加所需数量的组  。
 

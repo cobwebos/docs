@@ -3,16 +3,16 @@ title: 备份 Azure 文件常见问题解答
 description: 本文详述如何保护 Azure 文件共享。
 author: dcurwin
 ms.author: dacurwin
-ms.date: 01/31/2019
+ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: e3f94badb3af2e3f26a857f27f0b68a78338db92
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 35a41abb156326612c2d60829980f73457cde881
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466316"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601765"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -33,7 +33,7 @@ ms.locfileid: "68466316"
 ### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>我在尝试备份文件共享时，单击了某个存储帐户，看能否发现其中的文件共享。 但是，我发现自己无法对其进行保护。 如何使用其他保管库来保护这些文件共享？
 尝试进行备份时，如果选择一个要发现其中的文件共享的存储帐户，则会将该存储帐户注册到在其中执行此操作的保管库。 如果选择使用其他保管库来保护文件共享，则请从该保管库[注销](troubleshoot-azure-files.md#configuring-backup)所选存储帐户。
 
-### <a name="can-i-change-the-vault-to-which-i-backup-my-file-shares"></a>是否可以更改将文件共享备份到其中的保管库？
+### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>是否可以更改将文件共享备份到的保管库？
 是的。 但是，需要先在连接的保管库中[停止保护](backup-azure-files.md#stop-protecting-an-azure-file-share)，[注销](troubleshoot-azure-files.md#configuring-backup)此存储帐户，然后在另一保管库中对其进行保护。
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>可以在哪些地理区域备份 Azure 文件共享？ <br/>
@@ -76,6 +76,9 @@ Azure 文件共享备份目前为预览版，只在以下地理区域提供：
 不是。 只能由同一保管库对某个存储帐户中的所有文件共享进行保护。
 
 ## <a name="backup"></a>备份
+
+### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>针对每个文件共享，可以配置多少个计划备份？
+Azure 备份当前支持对 Azure 文件共享配置计划的每日一次备份。 
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>每个文件共享可以进行多少个按需备份？ <br/>
 在任何时间点，最多可以有一个文件共享的 200 个快照。 此限制包括由 Azure 备份根据策略的定义创建的快照。 如果在达到此限制后无法进行备份，请删除按需还原点，以便将来能够成功地进行备份。

@@ -12,31 +12,31 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 17b68f71f4034e5eb637d40b975cc22d94438fb7
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.date: 07/26/2019
+ms.openlocfilehash: 9fa816b2a8e736f03c99b66b898f48bd2a483b31
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978709"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596774"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：使用 Azure SQL 数据库机器学习服务（预览版）在 R 中部署预测模型
 
-在这个由三部分组成的教程的第三部分中，使用 Azure SQL 数据库机器学习服务（预览版）在 R 中部署预测模型。
+在这个由三部分组成的教程的第三部分中，将使用 Azure SQL 数据库机器学习服务（预览版）将预测模型（使用 R 开发）部署到 SQL 数据库中。
 
 将使用嵌入式 R 脚本创建存储过程，该脚本使用模型进行预测。 由于模型在 Azure SQL 数据库中执行，因此可用存储在数据库中的数据轻松地对其进行训练。
 
-本文将介绍如何执行以下操作：
+本文介绍如何使用在第一部分和第二部分中已开发的 R 脚本执行以下操作：
 
 > [!div class="checklist"]
-> * 将预测模型存储在数据库表中
-> * 创建生成模型的存储过程
+> * 创建生成机器学习模型的存储过程
+> * 将模型存储在数据库表中
 > * 创建使用模型进行预测的存储过程
 > * 使用新数据执行模型
 
-[第一部分](sql-database-tutorial-predictive-model-prepare-data.md)介绍如何将示例数据库导入 Azure SQL 数据库，然后准备用于在 R 中训练预测模型的数据。
+[第一部分](sql-database-tutorial-predictive-model-prepare-data.md)介绍如何导入示例数据库，然后准备要用于通过 R 训练预测模型的数据。
 
-[第二部分](sql-database-tutorial-predictive-model-build-compare.md)介绍如何创建和训练多个模型，然后选择最准确的模型。
+[第二部分](sql-database-tutorial-predictive-model-build-compare.md)介绍如何使用 R 创建和训练多个机器学习模型，然后选择最准确的模型。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "65978709"
 
 ## <a name="create-a-stored-procedure-that-generates-the-model"></a>创建生成模型的存储过程
 
-在本教程系列的第二部分中，认为决策树 (dtree) 模型是最准确的。 现在创建一个存储过程 (`generate_rental_rx_model`)，它使用 RevoScaleR 包中的 rxDTree 训练并生成 dtree 模型。
+在本教程系列的第二部分中，认为决策树 (dtree) 模型是最准确的。 现在，使用已开发的 R 脚本创建一个存储过程 (`generate_rental_rx_model`)，以使用 RevoScaleR 包中的 rxDTree 训练并生成 dtree 模型。
 
 在 Azure Data Studio 或 SSMS 中运行以下命令。
 
@@ -214,8 +214,8 @@ RentalCount_Predicted
 
 在本教程系列的第三部分，你已完成以下步骤：
 
-* 将预测模型存储在数据库表中
-* 创建生成模型的存储过程
+* 创建生成机器学习模型的存储过程
+* 将模型存储在数据库表中
 * 创建使用模型进行预测的存储过程
 * 使用新数据执行模型
 

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: sngun
 ms.openlocfilehash: 85d9cbe7d0807ca0e7951e1e12d1edbbf7c921db
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67985879"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教程：通过 .NET SDK 开发使用 Azure Cosmos DB 的 ASP.NET Core MVC Web 应用程序 
@@ -66,19 +66,19 @@ ms.locfileid: "67985879"
 
 ## <a name="create-a-new-mvc-application"></a>步骤 2：新建 ASP.NET Core MVC 应用程序
 
-1. 在 Visual Studio 的“文件”菜单中，选择“新建”，然后选择“项目”。 将显示“新建项目”对话框。
+1. 在 Visual Studio 的“文件”  菜单中，选择“新建”  ，然后选择“项目”  。 将显示“新建项目”对话框  。
 
-2. 在“新建项目”窗口中，使用“搜索模板”输入框来搜索“Web”，然后选择“ASP.NET Core Web 应用程序”。 
+2. 在“新建项目”窗口中，使用“搜索模板”输入框来搜索“Web”，然后选择“ASP.NET Core Web 应用程序”。    
 
    ![新建 ASP.NET Core Web 应用程序项目](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
 
-3. 在“名称”框中，键入项目的名称。 本教程使用名称“todo”。 如果选择使用此名称之外的其他名称，则每当本教程提及 todo 命名空间时，请调整所提供的代码示例，以便使用为应用程序命名的名称。 
+3. 在“名称”框中，键入项目的名称。  本教程使用名称“todo”。 如果选择使用此名称之外的其他名称，则每当本教程提及 todo 命名空间时，请调整所提供的代码示例，以便使用为应用程序命名的名称。 
 
-4. 选择“浏览”，导航到要在其中创建项目的文件夹。 选择“创建”。 
+4. 选择“浏览”，导航到要在其中创建项目的文件夹。  选择“创建”  。 
 
-5. 此时会出现“新建 ASP.NET Core Web 应用程序”对话框。 在模板列表中，选择“Web 应用程序(模型-视图-控制器)”。
+5. 此时会出现“新建 ASP.NET Core Web 应用程序”对话框。  在模板列表中，选择“Web 应用程序(模型-视图-控制器)”  。
 
-6. 选择“创建”，让 Visual Studio 围绕空白 ASP.NET Core MVC 模板执行基架操作。 
+6. 选择“创建”，让 Visual Studio 围绕空白 ASP.NET Core MVC 模板执行基架操作。  
 
 7. 待 Visual Studio 创建好样板 MVC 应用程序之后，便有了可以在本地运行的空白 ASP.NET 应用程序。
 
@@ -86,13 +86,13 @@ ms.locfileid: "67985879"
 
 有了此解决方案所需的大多数 ASP.NET Core MVC 框架代码以后，即可添加连接到 Azure Cosmos DB 所需的 NuGet 包。
 
-1. Azure Cosmos DB .NET SDK 将打包并以 NuGet 包的形式分发。 若要在 Visual Studio 中获取 NuGet 包，请使用 Visual Studio 中的 NuGet 包管理器，方法是右键单击“解决方案资源管理器”中的项目，然后选择“管理 NuGet 包”。
+1. Azure Cosmos DB .NET SDK 将打包并以 NuGet 包的形式分发。 若要在 Visual Studio 中获取 NuGet 包，请使用 Visual Studio 中的 NuGet 包管理器，方法是右键单击“解决方案资源管理器”中的项目，然后选择“管理 NuGet 包”。  
    
    ![屏幕截图：解决方案资源管理器中 Web 应用程序项目的右键单击选项，其中突出显示了“管理 NuGet 包”。](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
    
-2. 此时会显示“管理 NuGet 包”对话框。 在 NuGet 的“浏览”框中，键入 **Microsoft.Azure.Cosmos**。 从结果中安装 **Microsoft.Azure.Cosmos** 包。 它会下载并安装 Azure Cosmos DB 包及其依赖项。 在“接受许可证”窗口中选择“我接受”，以完成安装。
+2. 此时会显示“管理 NuGet 包”对话框  。 在 NuGet 的“浏览”框中，键入 **Microsoft.Azure.Cosmos**。  从结果中安装 **Microsoft.Azure.Cosmos** 包。 它会下载并安装 Azure Cosmos DB 包及其依赖项。 在“接受许可证”窗口中选择“我接受”，以完成安装。  
    
-   也可使用包管理器控制台来安装 NuGet 包。 为此，请在“工具”菜单中选择“NuGet 包管理器”，然后选择“包管理器控制台”。 在提示符处键入以下命令：
+   也可使用包管理器控制台来安装 NuGet 包。 为此，请在“工具”  菜单中选择“NuGet 包管理器”  ，然后选择“包管理器控制台”  。 在提示符处键入以下命令：
    
    ```bash
    Install-Package Microsoft.Azure.Cosmos
@@ -110,9 +110,9 @@ ms.locfileid: "67985879"
 
 ### <a name="add-a-model"></a> 添加模型
 
-1. 在“解决方案资源管理器”中，右键单击“模型”文件夹，选择“添加”，然后选择“类”。 此时会显示“添加新项”对话框。
+1. 在“解决方案资源管理器”中，右键单击“模型”文件夹，选择“添加”，然后选择“类”。     此时会显示“添加新项”对话框。 
 
-1. 将新类命名为 **Item.cs**，然后选择“添加”。 
+1. 将新类命名为 **Item.cs**，然后选择“添加”。  
 
 1. 接下来，将“Item.cs”类中的代码替换为以下代码：
 
@@ -122,9 +122,9 @@ ms.locfileid: "67985879"
 
 ### <a name="add-a-controller"></a>添加控制器
 
-1. 在“解决方案资源管理器”中，右键单击“控制器”文件夹，选择“添加”，然后选择“控制器”。 此时会显示“添加基架”对话框。
+1. 在“解决方案资源管理器”中，右键单击“控制器”文件夹，选择“添加”，然后选择“控制器”。     此时会显示“添加基架”对话框。 
 
-1. 选择“MVC 控制器 - 空”，然后选择“添加”。
+1. 选择“MVC 控制器 - 空”，然后选择“添加”。  
 
    ![突出显示“MVC 控制器 - 空”选项的“添加基架”对话框屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "67985879"
 
    [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
 
-   此处使用的 **ValidateAntiForgeryToken** 属性可帮助此应用程序防止跨站点请求伪造攻击。 不仅需添加此属性，还应确保视图也适用于此防伪令牌。 有关此主题的详细信息以及如何正确实施此操作的示例，请参阅[防止跨网站请求伪造][Preventing Cross-Site Request Forgery]. The source code provided on [GitHub][GitHub]包含完整实现。
+   此处使用的 **ValidateAntiForgeryToken** 属性可帮助此应用程序防止跨站点请求伪造攻击。 不仅需添加此属性，还应确保视图也适用于此防伪令牌。 有关此主题的详细信息，以及如何正确实施此操作的示例，请参阅[防止跨站点请求伪造][Preventing Cross-Site Request Forgery]。 [GitHub][GitHub] 上提供的源代码已有完整实现。
 
    我们还会在方法参数中使用 **Bind** 属性，帮助防范过度提交攻击。 有关更多详细信息，请参阅 [ASP.NET MVC 中的基本 CRUD 操作][Basic CRUD Operations in ASP.NET MVC]。
 
@@ -146,32 +146,32 @@ ms.locfileid: "67985879"
 
 #### <a name="AddItemIndexView"></a>添加“列表项”视图
 
-1. 在“解决方案资源管理器”中，展开“视图”文件夹，右键单击先前在添加 **ItemController** 时 Visual Studio 创建的空白“项”文件夹，单击“添加”，然后单击“视图”。
+1. 在“解决方案资源管理器”中，展开“视图”文件夹，右键单击先前在添加 **ItemController** 时 Visual Studio 创建的空白“项”文件夹，单击“添加”，然后单击“视图”。     
    
    ![解决方案资源管理器的屏幕截图，显示了 Visual Studio 创建的项文件夹，并突出显示了“添加视图”命令](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view.png)
 
-2. 在“添加视图”对话框中，更新以下值：
+2. 在“添加视图”对话框中，更新以下值： 
    
-   * 在“视图名称”框中，键入“索引”。
-   * 在“模板”框中，选择“列表”。
-   * 在“模型类”框中，选择“项(todo.Models)”。
+   * 在“视图名称”框中，键入“索引”。  
+   * 在“模板”框中，选择“列表”。  
+   * 在“模型类”框中，选择“项(todo.Models)”。  
    * 在“布局页”框中，键入 ***~/Views/Shared/_Layout.cshtml***。
      
    ![屏幕截图：显示“添加视图”对话框](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view-dialog.png)
 
-3. 在添加这些值之后，选择“添加”，让 Visual Studio 创建新的模板视图。 完成之后，它会打开创建的 cshtml 文件。 可以在 Visual Studio 中关闭该文件，因为稍后会回头使用它。
+3. 在添加这些值之后，选择“添加”，让 Visual Studio 创建新的模板视图。  完成之后，它会打开创建的 cshtml 文件。 可以在 Visual Studio 中关闭该文件，因为稍后会回头使用它。
 
 #### <a name="AddNewIndexView"></a>添加“新建项”视图
 
 与创建视图来列出项一样，请执行以下步骤，以便创建新视图来创建项：
 
-1. 在“解决方案资源管理器”中，请再次右键单击“项”文件夹，选择“添加”，然后选择“视图”。
+1. 在“解决方案资源管理器”中，请再次右键单击“项”文件夹，选择“添加”，然后选择“视图”。    
 
-1. 在“添加视图”对话框中，更新以下值：
+1. 在“添加视图”对话框中，更新以下值： 
    
-   * 在“视图名称”框中，键入“创建”。
-   * 在“模板”框中，选择“创建”。
-   * 在“模型类”框中，选择“项(todo.Models)”。
+   * 在“视图名称”框中，键入“创建”。  
+   * 在“模板”框中，选择“创建”。  
+   * 在“模型类”框中，选择“项(todo.Models)”。  
    * 在“布局页”框中，键入 ***~/Views/Shared/_Layout.cshtml***。
    * 选择 **添加** 。
    
@@ -179,13 +179,13 @@ ms.locfileid: "67985879"
 
 最后，通过以下步骤添加一个用于编辑项目的视图：
 
-1. 在“解决方案资源管理器”中，请再次右键单击“项”文件夹，选择“添加”，然后选择“视图”。
+1. 在“解决方案资源管理器”中，请再次右键单击“项”文件夹，选择“添加”，然后选择“视图”。    
 
-1. 在“添加视图”对话框中，执行以下操作：
+1. 在“添加视图”对话框中，执行以下操作： 
    
-   * 在“视图名称”框中，键入“编辑”。
-   * 在“模板”框中，选择“编辑”。
-   * 在“模型类”框中，选择“项(todo.Models)”。
+   * 在“视图名称”框中，键入“编辑”。  
+   * 在“模板”框中，选择“编辑”。  
+   * 在“模型类”框中，选择“项(todo.Models)”。  
    * 在“布局页”框中，键入 ***~/Views/Shared/_Layout.cshtml***。
    * 选择 **添加** 。
 
@@ -199,9 +199,9 @@ ms.locfileid: "67985879"
 
 在这里，首先要执行的操作是添加类，其中包含连接并使用 Azure Cosmos DB 所需的逻辑。 在本教程中，我们会将该逻辑封装到名为 `CosmosDBService` 的类和名为 `ICosmosDBService` 的接口中。 此服务执行 CRUD 和读取源操作，例如列出不完整的项以及创建、编辑和删除项。 
 
-1. 在“解决方案资源管理器”的项目中创建名为 **Services** 的新文件夹。
+1. 在“解决方案资源管理器”的项目中创建名为 **Services** 的新文件夹。 
 
-1. 右键单击 **Services** 文件夹，选择“添加”，然后选择“类”。 将新类命名为 **CosmosDBService**，然后选择“添加”。
+1. 右键单击 **Services** 文件夹，选择“添加”，然后选择“类”。   将新类命名为 **CosmosDBService**，然后选择“添加”。 
 
 1. 将以下代码添加到 **CosmosDBService** 类，并将该文件中的代码替换为以下代码：
 
@@ -264,13 +264,13 @@ ms.locfileid: "67985879"
    
    ![按本教程创建的待办事项列表 Web 应用程序屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
        
-2. 单击“新建”链接，并在“名称”和“描述”字段中添加值。 让“已完成”复选框保持未选中状态，否则，新项会以已完成状态添加，不出现在初始列表中。
+2. 单击“新建”链接，并在“名称”和“描述”字段中添加值。    让“已完成”复选框保持未选中状态，否则，新项会以已完成状态添加，不出现在初始列表中。 
    
-3. 单击“创建”，此时会重定向回“索引”视图，创建的项会出现在列表中。 可以向待办事项列表添加更多项。
+3. 单击“创建”，此时会重定向回“索引”视图，创建的项会出现在列表中。   可以向待办事项列表添加更多项。
 
     ![屏幕截图：“索引”视图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
   
-4. 单击列表上某个**项**旁边的“编辑”将转到“编辑”视图，可以在此视图中更新对象的任何属性（包括“已完成”标志）。 如果标记“已完成”标志并单击“保存”，该**项**会在列表中显示为已完成。
+4. 单击列表上某个**项**旁边的“编辑”将转到“编辑”视图，可以在此视图中更新对象的任何属性（包括“已完成”标志）。    如果标记“已完成”标志并单击“保存”，该**项**会在列表中显示为已完成。  
    
    ![勾选了“已完成”框的“索引”视图屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
 
@@ -281,15 +281,15 @@ ms.locfileid: "67985879"
 ## <a name="deploy-the-application-to-azure"></a>步骤 7：部署应用程序 
 现在，已经拥有了可以使用 Azure Cosmos DB 正常工作的完整应用程序，接下来我们要将此 Web 应用部署到 Azure 应用服务。  
 
-1. 若要发布此应用程序，请右键单击“解决方案资源管理器”中的项目，然后选择“发布”。
+1. 若要发布此应用程序，请右键单击“解决方案资源管理器”中的项目，然后选择“发布”。  
    
-2. 在“发布”对话框中选择“应用服务”，然后选择“新建”以创建应用服务配置文件，或选择“选择现有”以使用现有配置文件。
+2. 在“发布”对话框中选择“应用服务”，然后选择“新建”以创建应用服务配置文件，或选择“选择现有”以使用现有配置文件     。
 
-3. 如果具有现有的 Azure 应用服务配置文件，请从下拉列表中选择“订阅”。 使用“视图”筛选器按资源组或资源类型进行筛选。 接下来搜索必需的 Azure 应用服务，然后选择“确定”。
+3. 如果具有现有的 Azure 应用服务配置文件，请从下拉列表中选择“订阅”。  使用“视图”筛选器按资源组或资源类型进行筛选  。 接下来搜索必需的 Azure 应用服务，然后选择“确定”。 
    
    ![Visual Studio 中的“应用服务”对话框](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service.png)
 
-4. 若要创建新的 Azure 应用服务配置文件，请单击“发布”对话框中的“新建”。 在“创建应用服务”对话框中，输入 Web 应用名称和相应的订阅、资源组和应用服务计划，然后选择“创建”。
+4. 若要创建新的 Azure 应用服务配置文件，请单击“发布”对话框中的“新建”   。 在“创建应用服务”对话框中，输入 Web 应用名称和相应的订阅、资源组和应用服务计划，然后选择“创建”   。
 
    ![Visual Studio 中的“创建应用服务”对话框](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service.png)
 

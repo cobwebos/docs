@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 07/25/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e8e251aa5031a8eadd2d567bff2830449c7decc3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e9be7ef5c4f37c66f7cbf2c6226936438b367108
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689508"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515167"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -63,7 +63,12 @@ ms.locfileid: "64689508"
    * **订阅** - 验证订阅。
    * **资源组** - 要使用的资源组。
    * **位置**
-4. 单击“显示高级”查看其他设置。  可以选择“BGP”  以启用 BGP，这会在 Azure 中为此站点创建的所有连接上启用 BGP 功能。 还可以输入**设备信息**（可选字段）。 这有助于 Azure 团队更好地了解你的环境，以便将来添加更多的可用优化选项，或帮助你进行故障排除。
+4. 单击“显示高级”查看其他设置。  
+
+   可以选择“BGP”  以启用 BGP，这会在 Azure 中为此站点创建的所有连接上启用 BGP 功能。 在虚拟 WAN 上配置 BGP 就等同于在 Azure VPN 网关上配置 BGP。 本地 BGP 对等节点地址不能  与 VPN 到设备的公共 IP 地址或 VPN 站点的 VNet 地址空间相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是分配给该设备上环回接口的地址。 但是，该地址不能  是 APIPA (169.254.*x*.*x*) 地址。 在表示该位置的相应本地网关中指定此地址。 有关 BGP 先决条件，请参阅[关于 Azure VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md)。
+
+   还可以输入**设备信息**（可选字段）。 这有助于 Azure 团队更好地了解你的环境，以便将来添加更多的可用优化选项，或帮助你进行故障排除。
+   
 5. 单击“确认”  。
 6. 单击“确认”后  ，在“VPN 站点”页上查看状态。 该站点将从“正在预配”  转为“已预配”  。
 

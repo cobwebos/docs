@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: e8daaaf5b6b15eb3095f11e94c707a33b4b18e28
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d8b6b1bfcbceb1168d0f74c73e72bd42b41bb2ec
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172637"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562510"
 ---
 选择“生成”  。 在打开的对话框中，选择要将 Xcode 项目导出到的文件夹。
 
@@ -18,7 +18,7 @@ ms.locfileid: "67172637"
 > [!NOTE]
 > 如果出现询问是否要替换或追加的窗口，建议选择“追加​​”，因为它速度更快  。 如果要更改场景中的资产，则只需选择“替换”  。 （例如，如果要添加、删除或更改父级/子级关系，或者要添加、删除或更改属性。）如果仅更改源代码，“追加​​”就足够了  。
 
-### <a name="open-the-xcode-project"></a>打开 XCode 项目
+### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>将 Xcode 项目转换为包含 Azure 空间定位点引用的 xcworkspace
 
 在导出的 Xcode 项目文件夹中，在终端中运行此命令，为项目安装必要的 CocoaPod：
 

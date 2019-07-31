@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 7/25/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52346e2ff9c47e58f2bd040582bee29eaf08bb13
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: cdfe22b67585221e2d7e17f47c6a09ba929d68ef
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621192"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599015"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>教程：在 Azure Sentinel 预览版中设置自动威胁响应
 
@@ -36,6 +36,7 @@ ms.locfileid: "67621192"
 > * 了解 playbook
 > * 创建 playbook
 > * 运行 playbook
+> * 自动响应威胁
 
 
 ## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Azure Sentinel 中的安全性 playbook 是指什么？
@@ -95,9 +96,29 @@ ms.locfileid: "67621192"
 
 
 
+## <a name="automate-threat-responses"></a>自动响应威胁
+
+SIEM/SOC 团队可能会定期收到海量的安全警报。 生成的警报量如此之大，以致于现有的安全管理员不堪重负。 这往往会导致以下情况：无法调查很多警报，使得组织易于在未注意到的情况下遭受攻击。 
+
+这些警报中的许多（如果不是大多数）警报都符合定期模式，可通过特定的修正操作和定义的修正操作进行处理。 Azure Sentinel 已允许在 Playbook 中定义修正操作。 此外，还可以将实时自动化设置为 Playbook 定义的一部分，以便能够完全自动化对特定安全警报的定义响应。 使用实时自动化，响应团队可以大幅减少其工作量，因为他们可以完全自动化对重复出现的警报类型的常规响应，从而让你可以更专注于处理独特警报，分析模式和搜寻威胁等活动。
+
+若要实现自动响应，请执行以下操作：
+
+1. 选择要对其实现自动响应的警报。
+1. 从 Azure Sentinel 工作区导航菜单中，选择“分析”  。
+1. 选择要自动响应的警报。 
+1. 在“编辑警报规则”  页的“实时自动化”  下，选择要在匹配此警报规则时运行的“触发的 Playbook”  。
+1. 选择“保存”。 
+
+   ![实时自动化](./media/tutorial-detect-threats/rt-configuration.png)
+
+
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，你学习了如何在 Azure Sentinel 中运行 playbook。 要详细了解 Azure Sentinel，请参阅以下文章：在本教程中，你学习了如何在 Azure Sentinel 中运行 playbook。 继续学习[如何使用 Azure Sentinel 来搜寻威胁](hunting.md)。
-> [!div class="nextstepaction"]
-> [搜寻威胁](hunting.md)以主动发现网络上的威胁。
+
+在本教程中，你学习了如何在 Azure Sentinel 中运行 playbook。 继续学习[如何使用 Azure Sentinel 来搜寻威胁](hunting.md)。
+
 

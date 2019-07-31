@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57244dd9f3365b3899bcc1dde6382cc3b51719d9
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 7e7d4a542146fb8d342cce6c34f9d97e72349f84
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722929"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561391"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 HoloLens Unity 应用的分步说明
 
@@ -23,7 +23,7 @@ ms.locfileid: "67722929"
 
 若要完成本教程，请确保做好以下准备：
 
-1. 具有  通用 Windows 平台开发工作负载和  Windows 10 SDK（10.0.17763.0 或更新版本）组件以及 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>，且安装了 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017+</a> 的 Windows 计算机。
+1. 具有  通用 Windows 平台开发工作负荷和  Windows 10 SDK（10.0.18362.0 或更新版本）组件以及<a href="https://git-scm.com/download/win" target="_blank">适用于 Windows 的 Git</a> 且安装了 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017+</a> 的 Windows 计算机。
 2. 适用于 Visual Studio 的 [C++/WinRT Visual Studio 扩展 (VSIX)](https://aka.ms/cppwinrt/vsix) 应从 [Visual Studio Marketplace](https://marketplace.visualstudio.com/) 安装。
 3. 启用了[开发人员模式](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)的 HoloLens 设备。 本文需要包含 [Windows 2018 年 10 月 10 日更新](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 )（也称为 RS5）的 HoloLens 设备。 要在 HoloLens 上更新为最新版本，请打开“设置”应用，转到“更新和安全”，然后选择“检查更新”按钮    。
 
@@ -57,10 +57,10 @@ ms.locfileid: "67722929"
 > [!NOTE]
 > 如果没有看到 Windows 应用商店图标，请仔细检查以确保在安装之前选择了 Windows 应用商店 .NET 脚本后端。 如果没有，可能需要使用正确的 Windows 安装重新安装 Unity。
 
-**验证 .NET 配置**
+**验证脚本后端配置**
 1. 转到“编辑” > “项目设置” > “播放器”（由于上一步操作，“播放器”可能仍处于打开的状态）     。
 2. 在“播放器设置”的“检查器面板”中，选择“Windows 应用商店”图标    。
-3. 在“其他设置”配置部分中，确保将“脚本后端”设置为“.NET”    。
+3. 在“其他设置”配置节中，确保将“脚本后端”设置为“IL2CPP”    。
 
 **设置功能**
 1. 转到“编辑” > “项目设置” > “播放器”（由于上一步操作，“播放器”可能仍处于打开的状态）     。
