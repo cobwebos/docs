@@ -22,6 +22,12 @@
     - name: 容量计划
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: 故障排除
+      items:
+        - name: OutOfMemoryError 异常
+          items:
+            - name: 超过 GC 开销限制
+              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
 - name: 如何
   items:
     - name: 将 Hive 工作负荷迁移到 HDInsight 4.0

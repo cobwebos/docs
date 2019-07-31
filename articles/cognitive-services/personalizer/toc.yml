@@ -43,6 +43,8 @@
         - name: 脱机评估
           href: concepts-offline-evaluation.md
           displayName: 'learning policy, Counterfactual, features'
+        - name: 功能评估
+          href: concept-feature-evaluation.md
     - name: 可伸缩性和性能
       href: concepts-scalability-performance.md
 - name: 操作指南

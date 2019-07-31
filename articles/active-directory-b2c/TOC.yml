@@ -289,6 +289,9 @@
           href: idp-pass-through-user-flow.md
         - name: 请求访问令牌
           href: active-directory-b2c-access-tokens.md
+        - name: 支持多个令牌颁发者
+          href: multiple-token-endpoints.md
+          displayName: 'migrate, b2clogin, owin, jwt'
     - name: 使用 b2clogin.com
       href: b2clogin.md
     - name: 使用 Azure AD 图形 API
