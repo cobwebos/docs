@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.service: cost-management
 ms.custom: seodec18
 ms.openlocfilehash: 6a4f7f5671562679a245d97ad8491764657cbb34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66242454"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>为 Azure 虚拟机添加扩展指标
@@ -28,10 +28,10 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 - 根据用量调整大小，以控制成本。
 - 获取 Cloudyn 提供的经济高效的大小调整优化建议。
 
-例如，你可能想要监视 Azure VM 的 CPU 百分比和内存百分比。 Azure VM 指标对应于_CPU 百分比_并 _\Memory\% Committed Bytes In Use_。
+例如，你可能想要监视 Azure VM 的 CPU 百分比和内存百分比。 Azure VM 指标对应于所_使用的 CPU 和\% \Memory 的已提交字节_ _百分比_。
 
 > [!NOTE]
-> 只有 Azure 来宾级监视支持扩展的指标数据收集。 Cloudyn 与不兼容的 Azure Monitor 日志 VM 扩展。
+> 只有 Azure 来宾级监视支持扩展的指标数据收集。 Cloudyn 与 Azure Monitor 日志 VM 扩展不兼容。
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>确定是否启用了扩展的指标
 
@@ -44,7 +44,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>在 Azure 门户中启用扩展指标
 
-标准指标属于主机指标。 _CPU 百分比_指标是一个示例。 来宾 VM 的某些基本指标也称为扩展指标。 扩展指标的示例包括 _\Memory\% Committed Bytes In Use_并 _\Memory\Available 字节_。
+标准指标属于主机指标。 _百分比 CPU_指标就是一个示例。 来宾 VM 的某些基本指标也称为扩展指标。 扩展指标的示例包括 _\Memory\%的已提交字节数_和 _\Memory\Available 字节_数。
 
 启用扩展指标的过程非常简单。 对每个 VM 启用来宾级监视。 启用来宾级监视时，将在 VM 上安装 Azure 诊断代理。 默认情况下会添加一组基本的扩展指标。 以下过程在经典和常规 VM，以及 Windows 和 Linux VM 上都是相同的。
 

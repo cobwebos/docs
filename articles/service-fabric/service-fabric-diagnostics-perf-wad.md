@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66110307"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 诊断扩展进行性能监视
@@ -206,4 +206,4 @@ ms.locfileid: "66110307"
 ## <a name="next-steps"></a>后续步骤
 * 收集群集的更多性能计数器。 有关应收集的计数器列表，请参阅[性能指标](service-fabric-diagnostics-event-generation-perf.md)。
 * [将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../virtual-machines/windows/extensions-diagnostics-template.md)，以进一步修改 `WadCfg`，包括配置向其发送诊断数据的其他存储帐户。
-* 请访问[WadCfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/)生成从零开始的模板，请确保你的语法是否正确。 (https://azure.github.io/azure-diagnostics-tools/config-builder/) 生成从零开始的模板，请确保你的语法是否正确。
+* 请访问[diagnostics.wadcfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/), 从头开始生成模板, 并确保语法正确。(https://azure.github.io/azure-diagnostics-tools/config-builder/) 若要从头开始生成模板, 请确保语法正确。

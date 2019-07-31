@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67876211"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
@@ -250,9 +250,9 @@ StorSimple 提供以下优势：
 
 根据前面的假设，将为每月和每年完整备份创建 26-TiB 的 StorSimple 分层卷。 将为每个每日增量备份创建 5-TiB 的 StorSimple 分层卷。
 
-| 每种备份类型的保留期 | 大小 (TiB) | GFS 乘数\* | 总容量 (TiB)  |
+| 每种备份类型的保留期 | 大小(TiB) | GFS 乘数\* | 总容量 (TiB)  |
 |---|---|---|---|
-| 每周完整备份 | 第 | 4  | 4 |
+| 每周完整备份 | 1 | 4  | 4 |
 | 每日增量备份 | 0.5 | 20（周期等于每月周数） | 12（使用 2 个以提高配额） |
 | 每月完整备份 | 1 | 12 | 12 |
 | 每年完整备份 | 1  | 10 | 10 |
@@ -397,7 +397,7 @@ StorSimple 提供以下优势：
 
 | 备份类型和保留期 | 配置的存储 | 大小 (TiB) | GFS 乘数 | 总容量\* (TiB) |
 |---|---|---|---|---|
-| 第 1 周（完整和增量） |本地磁盘（短期）| 第 | 1 | 1 |
+| 第 1 周（完整和增量） |本地磁盘（短期）| 1 | 1 | 1 |
 | StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 1 | 4 | 4 |
 | 每月完整备份 |StorSimple 磁盘（长期） | 1 | 12 | 12 |
 | 每年完整备份 |StorSimple 磁盘（长期） | 1 | 1 | 1 |
@@ -469,9 +469,9 @@ StorSimple 提供以下优势：
     ![NetBackup 管理控制台，增量备份的“更改计划”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
 
 
-| 每种备份类型的保留期 | 大小 (TiB) | GFS 乘数\* | 总容量 (TiB)  |
+| 每种备份类型的保留期 | 大小(TiB) | GFS 乘数\* | 总容量 (TiB)  |
 |---|---|---|---|
-| 每周完整备份 |  第  |  4 | 4  |
+| 每周完整备份 |  1  |  4 | 4  |
 | 每日增量备份  | 0.5  | 20（周期等于每月的周数） | 12（使用 2 个以提高配额） |
 | 每月完整备份  | 1 | 12 | 12 |
 | 每年完整备份 | 1  | 10 | 10 |

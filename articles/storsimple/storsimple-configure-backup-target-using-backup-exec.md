@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: 85c04b6ea3e40f1f1dcd12eb5d6f4a8f53836867
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67876783"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>用作备份目标的 StorSimple 与 Backup Exec 的集成
@@ -252,7 +252,7 @@ StorSimple 提供以下优势：
 
 根据前面的假设，将为每月和每年完整备份创建 26-TiB 的 StorSimple 分层卷。 将为每个每日增量备份创建 5-TiB 的 StorSimple 分层卷。
 
-| 每种备份类型的保留期 | 大小 (TiB) | GFS 乘数\* | 总容量 (TiB)  |
+| 每种备份类型的保留期 | 大小(TiB) | GFS 乘数\* | 总容量 (TiB)  |
 |---|---|---|---|
 | 每周完整备份 | 1 | 4  | 4 |
 | 每日增量备份 | 0.5 | 20（周期等于每月周数） | 12（使用 2 个以提高配额） |
@@ -370,7 +370,7 @@ StorSimple 提供以下优势：
 
 | 备份类型和保留期 | 配置的存储 | 大小 (TiB) | GFS 乘数 | 总容量\* (TiB) |
 |---|---|---|---|---|
-| 第 1 周（完整和增量） |本地磁盘（短期）| 1 | 1 | 第 |
+| 第 1 周（完整和增量） |本地磁盘（短期）| 1 | 1 | 1 |
 | StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 1 | 4 | 4 |
 | 每月完整备份 |StorSimple 磁盘（长期） | 1 | 12 | 12 |
 | 每年完整备份 |StorSimple 磁盘（长期） | 1 | 1 | 1 |
