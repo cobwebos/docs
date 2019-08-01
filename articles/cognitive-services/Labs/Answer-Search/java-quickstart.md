@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: fc0f8519644c5b9f722ab67f2e9d600a0be7960b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 26a9fc60c90f536e4ef9f03e96545e493a60f206
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883519"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698100"
 ---
 # <a name="quickstart-project-answer-search-query-in-java"></a>快速入门：Java 中的项目答应搜索查询
 本文使用 Java 来演示 Azure 上 Microsoft 认知服务中包含的必应搜索 API。 该 API 是一种 REST Web 服务，与任何可以发出 HTTP 请求和分析 JSON 的编程语言兼容。
@@ -24,7 +24,7 @@ ms.locfileid: "55883519"
 
 ## <a name="prerequisites"></a>先决条件
 
-获取[认知服务实验室](https://aka.ms/answersearchsubscription)免费试用版的访问密钥
+获取[认知服务实验室](https://labs.cognitive.microsoft.com/en-us/project-answer-search)免费试用版的访问密钥
 
 ## <a name="request"></a>请求 
 

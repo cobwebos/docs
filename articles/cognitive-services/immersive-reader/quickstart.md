@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 6386c22044483a0ac4a324397cf2f9d22e83b579
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 978b56f5c38a154c79544c7deb5d49396b1deff9
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442863"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688866"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>快速入门：创建用于启动沉浸式阅读器的 Web 应用 (C#)
 
 [沉浸式读取器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术以提高阅读理解能力。
 
-在本快速入门中，你将从头开始构建一个 Web 应用，并使用沉浸式阅读器 SDK 集成沉浸式阅读器。 本快速入门的完整工作示例可在[此处](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/quickstart-csharp)找到。
+在本快速入门中，你将从头开始构建一个 Web 应用，并使用沉浸式阅读器 SDK 集成沉浸式阅读器。 本快速入门的完整工作示例可在[此处](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)找到。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -224,4 +224,4 @@ namespace QuickstartSampleWebApp.Controllers
 ## <a name="next-steps"></a>后续步骤
 
 * 查看[教程](./tutorial.md)，了解使用沉浸式阅读器 SDK 还可以做什么
-* 探索[沉浸式阅读器 SDK](https://github.com/Microsoft/immersive-reader-sdk) 和[沉浸式阅读器 SDK 参考](./reference.md)
+* 探索[沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沉浸式阅读器 SDK 参考](./reference.md)

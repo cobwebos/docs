@@ -1,6 +1,6 @@
 ---
 title: 示例：实时视频分析 - 计算机视觉
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用计算机视觉 API 对实时视频流中的帧进行近实时分析。
 services: cognitive-services
 author: KellyDF
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: feafb983a7b9e4aea6091753842b03a65ccd3ca5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3432ea20f9fb59524940258e13c46ee6f4c4e890
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001552"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565697"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>如何实时分析视频
 
@@ -210,7 +210,7 @@ namespace VideoFrameConsoleApplication
     - 对于 BasicConsoleSample，人脸 API 密钥直接在  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中进行硬编码。
     - 对于 LiveCameraSample，应将密钥输入应用的“设置”窗格。 它们将作为用户数据保留在各会话中。
 
-当准备好进行集成时，只需从你自己的项目中引用 VideoFrameAnalyzer 库。
+当准备好进行集成时，只需从你自己的项目中引用 VideoFrameAnalyzer 库。 
 
 VideoFrameAnalyzer 的图像、语音、视频或文本理解功能使用 Azure 认知服务。 Microsoft 将接收你（通过此应用）上传的图像、音频、视频和其他数据，并可能将其用于服务改进目的。 你的应用发送了用户的数据给 Azure 认知服务，请协助我们保护这些用户。
 

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：从知识库获取答案 - REST、Go - QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 此基于 Go REST 的快速入门详细介绍如何以编程方式从知识库获取答案。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 49734e50d616b3f88149f3c759e2a306ff8f136a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b903dfea11e5ac2390eb437e699ee8ec790a5061
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794899"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562984"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-go"></a>使用 Go 从知识库获取问题的答案
 
@@ -25,8 +25,8 @@ ms.locfileid: "65794899"
 
 * [Go 1.10.1](https://golang.org/dl/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在适用于 QnA Maker 资源的 Azure 仪表板的“资源管理”下选择“密钥”。 
-* “发布”页设置。 如果没有已发布的知识库，请创建一个空的知识库，接着“设置”页上导入一个知识库，然后进行发布。 可以下载并使用[这个基本的知识库](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)。 
+* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在适用于 QnA Maker 资源的 Azure 仪表板的“资源管理”下选择“密钥”。   
+* “发布”页设置。  如果没有已发布的知识库，请创建一个空的知识库，接着“设置”页上导入一个知识库，然后进行发布。  可以下载并使用[这个基本的知识库](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)。 
 
     发布页设置包括 POST 路由值、Host 值和 EndpointKey 值。 
 
@@ -54,7 +54,7 @@ func main() {
 
 ## <a name="add-the-required-constants"></a>添加必需的常量
 
-在 `main` 函数的顶部，添加必需的常量来访问 QnA Maker。 发布知识库后，这些值会出现在“发布”页上。 
+在 `main` 函数的顶部，添加必需的常量来访问 QnA Maker。 发布知识库后，这些值会出现在“发布”页上。  
 
 [!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/get-answer/get-answer.go?range=17-33 "Add the required constants")]
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: a8a216a7d2ce048ed5131997df762942998aaa88
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 66effb095edf7927a38fca53b2ff317e9bad468e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444133"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619612"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>在 Linux 上使用自定义映像创建函数
 
@@ -190,7 +190,7 @@ v1.0.0: digest: sha256:be080d80770df71234eb893fbe4d... size: 1796
 
 ## <a name="create-a-premium-plan"></a>创建高级计划
 
-Linux 托管[专用（应用服务）计划](functions-scale.md#app-service-plan)和[高级计划](functions-scale.md#premium-plan)支持的自定义 Functions 容器。 本教程使用高级计划，该计划可以根据需要进行缩放。 若要了解有关托管的详细信息，请参阅 [Azure Functions 托管计划比较](functions-scale.md)。
+Linux 托管[专用（应用服务）计划](functions-scale.md#app-service-plan)和[高级计划](functions-premium-plan.md#features)支持的自定义 Functions 容器。 本教程使用高级计划，该计划可以根据需要进行缩放。 若要了解有关托管的详细信息，请参阅 [Azure Functions 托管计划比较](functions-scale.md)。
 
 以下示例在“弹性高级”  定价层 (`--sku EP1`)、美国西部区域 (`-location WestUS`) 和 Linux 容器 (`--is-linux`) 中创建一个名为 `myPremiumPlan` 的高级计划。
 

@@ -2,19 +2,19 @@
 title: Azure PowerShell 脚本示例 - 备份 Azure 虚拟机 | Microsoft Docs
 description: Azure PowerShell 脚本示例 - 备份 Azure 虚拟机
 documentationcenter: ''
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: sample
 ms.date: 03/05/2019
-ms.author: raynew
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 84581dd4dfd1cc993476e0e85f804f32d28e8ab4
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 59661f849567f3fef9f56a208334ed0baeef07fd
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467172"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639430"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>使用 PowerShell 备份已加密 Azure 虚拟机
 

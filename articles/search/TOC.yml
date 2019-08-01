@@ -344,7 +344,7 @@
           href: cognitive-search-skill-textsplit.md
         - name: 情绪
           href: cognitive-search-skill-sentiment.md
-        - name: 文本翻译（预览版）
+        - name: 文本翻译
           href: cognitive-search-skill-text-translation.md
         - name: 图像分析
           href: cognitive-search-skill-image-analysis.md

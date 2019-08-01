@@ -1,6 +1,6 @@
 ---
 title: 有关生成对象检测器的快速入门 - 自定义视觉服务
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将了解如何使用自定义视觉服务网站创建图像分类模型。
 services: cognitive-services
 author: anrothMSFT
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: a5f211f3e8b7a55ca5d933ed2296ff9e54cb29e4
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 40f30ddece9881f565f45f4ef6c9d0e2ad85fe95
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424338"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561131"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>快速入门：如何使用自定义视觉生成对象检测器
 

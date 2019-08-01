@@ -9,12 +9,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: c44be9779cf2b856ac2f5e9e017fd9d1040a018b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 21dda323cf465f56fb3f43160dd04c27a81d5590
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294036"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698077"
 ---
 # <a name="quickstart-project-answer-search-with-node"></a>快速入门：通过 Node 使用项目答案搜索
 
@@ -22,7 +22,7 @@ ms.locfileid: "58294036"
 
 ## <a name="prerequisites"></a>先决条件
 
-获取[认知服务实验室](https://aka.ms/answersearchsubscription)免费试用版的访问密钥
+获取[认知服务实验室](https://labs.cognitive.microsoft.com/en-us/project-answer-search)免费试用版的访问密钥
 
 本示例使用节点 v8.9.4
 
@@ -33,7 +33,7 @@ ms.locfileid: "58294036"
 1. 声明变量，以按主机和路径指定终结点。
 2. 指定要预览的查询 URL，然后添加查询参数。  
 3. 为响应创建处理程序函数。
-4. 定义搜索函数，用以创建请求并添加 Ocp-Apim-Subscription-Key 标头。
+4. 定义搜索函数，用以创建请求并添加 Ocp-Apim-Subscription-Key 标头  。
 5. 运行“搜索”函数。 
 
 本演示的完整代码如下：

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 36d85e11133e7197212ae1b37609628689b68a13
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b929d0c0da2a812a1c8595536f09931e4edd0fd9
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657940"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594916"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
 
@@ -48,7 +48,7 @@ ms.locfileid: "67657940"
 
 在继续之前，需要准备好以下各项：
 
-* 一个 Azure 认知服务订阅。 [获取认知服务密钥](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#multi-service-subscription)。
+* 一个 Azure 认知服务订阅。 [获取认知服务密钥](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#multi-service-resource)。
 * 一台 Windows 计算机
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) - Community 或 Enterprise 版
 
@@ -109,7 +109,7 @@ ms.locfileid: "67657940"
 
 用户界面包括以下组件：
 
-| 名称 | 类型 | 说明 |
+| Name | 类型 | 说明 |
 |------|------|-------------|
 | `FromLanguageComboBox` | 组合框 | 显示 Microsoft 文本翻译支持的语言列表。 用户选择他们要进行翻译的语言。 |
 | `ToLanguageComboBox` | 组合框 | 显示与 `FromComboBox` 相同的语言列表，但用于选择用户要翻译到的语言。 |

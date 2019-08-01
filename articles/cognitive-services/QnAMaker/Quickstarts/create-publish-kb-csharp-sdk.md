@@ -1,6 +1,6 @@
 ---
 title: 快速入门：适用于 .NET 的 QnA Maker 客户端库
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 适用于 .NET 的 QnA Maker 客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。  使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: f38cbfa0efd3b9be9ca091942dca7ffcd91b6019
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: af3de85cb2d32b4828a4641318f66f91c9254e24
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828056"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563013"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>快速入门：适用于 .NET 的 QnA Maker 客户端库
 
@@ -112,7 +112,7 @@ QnA Maker 客户端是 [QnAMakerClient](https://docs.microsoft.com/dotnet/api/mi
 
 接下来，使用密钥创建 [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.apikeyserviceclientcredentials?view=azure-dotnet) 对象，并将其与终结点一起创建 [QnAMakerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet) 对象。
 
-如果密钥不在 `westus` 区域，则按此示例代码所示更改 **Endpoint** 变量的位置。 此位置可以在 Azure 门户的 QnA Maker 资源的“概览”页上找到。
+如果密钥不在 `westus` 区域，则按此示例代码所示更改 **Endpoint** 变量的位置。 此位置可以在 Azure 门户的 QnA Maker 资源的“概览”页上找到。 
 
 [!code-csharp[Authorization to resource key](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=Authorization)]
 
@@ -138,7 +138,7 @@ QnA Maker 客户端是 [QnAMakerClient](https://docs.microsoft.com/dotnet/api/mi
 
 ## <a name="download-a-knowledge-base"></a>下载知识库
 
-使用 [DownloadAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.downloadasync?view=azure-dotnet) 方法，将知识库作为 [QnADocumentsDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.qnadocumentsdto?view=azure-dotnet) 列表下载。 这不等同于“设置”页中 QnA Maker 门户的导出，因为此方法的结果不是 TSV 文件。
+使用 [DownloadAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.downloadasync?view=azure-dotnet) 方法，将知识库作为 [QnADocumentsDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.qnadocumentsdto?view=azure-dotnet) 列表下载。 这不  等同于“设置”页中 QnA Maker 门户的导出，因为此方法的结果不是 TSV 文件。 
 
 [!code-csharp[Download a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=DownloadKB&highlight=2)]
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7aa0fd328e923df5882a2b6354dc61aac7ca4feb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1c83cd869142967b358aa5d234d7d487b3c54b4c
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695584"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607987"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视和更新 Azure 中的 Linux 虚拟机
 
@@ -207,7 +207,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 | 属性 | 说明 |
 | --- | --- |
-| 名称 |用于标识更新部署的唯一名称。 |
+| Name |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
 | 要更新的组 |对于 Azure 计算机，请定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 </br></br>对于非 Azure 计算机，请选择现有的已保存搜索，以选择要包含在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](../../automation/automation-update-management.md#using-dynamic-groups)|
 | 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示   。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/platform/computer-groups.md) |
@@ -313,4 +313,4 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 请转到下一教程来了解 Azure 安全中心。
 
 > [!div class="nextstepaction"]
-> [管理 VM 安全性](./tutorial-azure-security.md)
+> [管理 VM 安全性](../../security/fundamentals/overview.md)

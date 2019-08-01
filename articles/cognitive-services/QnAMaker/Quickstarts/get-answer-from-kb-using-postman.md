@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 Postman 从知识库获取答案 - QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 本快速入门详细介绍如何使用 Postman 从知识库获取答案。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 7083285ac81aa8eafee8de49175e40934e5d05b4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7c419ea7cb5c9ae1d1cc419798961ec67f250160
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253815"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562994"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>快速入门：使用 Postman 从知识库获取答案
 

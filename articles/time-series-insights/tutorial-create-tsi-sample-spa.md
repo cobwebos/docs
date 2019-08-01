@@ -8,12 +8,12 @@ ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 8ee4cd30d5742896df96ccfd714d85ebbab194f9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: bd50fb4a28aa0ab71c1fb0aeba772a2bd7d1df9d
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595696"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677728"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>教程：创建 Azure 时序见解单页 Web 应用
 
@@ -30,9 +30,9 @@ ms.locfileid: "67595696"
 > * 本教程的源代码在 [GitHub](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial) 上提供。
 > * 提供了时序见解[客户端示例应用](https://insights.timeseries.azure.com/clientsample)以演示在本教程中使用的完整应用。
 
-## <a name="prerequisites"></a>先决条件
+注册一个[免费的 Azure 订阅](https://azure.microsoft.com/free/)（如果还没有）。
 
-* 注册一个[免费的 Azure 订阅](https://azure.microsoft.com/free/)（如果还没有）。
+## <a name="prerequisites"></a>先决条件
 
 * Visual Studio 的免费副本。 下载 [2017 或 2019 Community 版本](https://www.visualstudio.com/downloads/)以开始使用。
 
@@ -57,7 +57,7 @@ ms.locfileid: "67595696"
 1. 创建一个存储应用程序项目文件的目录。 然后访问以下每个 URL。 右键单击页面右上角的“原始”  链接，然后选择“另存为”  以将文件保存在项目目录中。
 
    - [index.html  ](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html)：用于页面的 HTML 和 JavaScript
-   - [sampleStyles.css]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css)：CSS 样式表 
+   - [sampleStyles.css](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css)：CSS 样式表 
 
    > [!NOTE]
    > 根据浏览器，可能需要在保存文件之前将文件扩展名更改为 .html 或 .css。

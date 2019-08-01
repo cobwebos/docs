@@ -175,7 +175,7 @@
           href: sql-database-service-tier-hyperscale-faq.md
     - name: 单一数据库
       items:
-        - name: 单个数据库概述
+        - name: 单一数据库文档
           href: sql-database-single-index.yml
         - name: 单一数据库功能
           href: sql-database-single-database.md
@@ -215,7 +215,7 @@
           href: sql-database-elastic-pool-manage.md
     - name: 托管实例
       items:
-        - name: 托管实例概述
+        - name: 托管实例文档
           href: sql-database-managed-instance-index.yml
         - name: 托管实例功能
           href: sql-database-managed-instance.md
@@ -235,7 +235,7 @@
           href: sql-database-managed-instance-public-endpoint-securely.md
     - name: 平台即服务
       items:
-        - name: “平台即服务”概述
+        - name: “平台即服务”文档
           href: sql-database-paas.yml
         - name: 业务连续性
           href: sql-database-business-continuity.md
@@ -324,7 +324,7 @@
           href: sql-database-feature-restrictions.md
     - name: 可伸缩性
       items:
-        - name: 可伸缩性概述
+        - name: 可伸缩性文档
           href: sql-database-scalability-index.yml
         - name: 纵向扩展/缩减
           href: sql-database-scale-resources.md
@@ -354,7 +354,7 @@
           href: sql-database-elastic-transactions-overview.md
     - name: 监视和优化
       items:
-        - name: 监视和优化概述
+        - name: 监视和优化文档
           href: sql-database-monitoring-tuning-index.yml
         - name: 监视和性能优化
           href: sql-database-monitor-tune-overview.md
@@ -378,7 +378,7 @@
               href: sql-database-advisor.md
     - name: 数据库功能
       items:
-        - name: 概述
+        - name: SQL 数据库功能文档
           href: sql-database-features-index.yml
         - name: SQL 功能比较
           href: sql-database-features.md

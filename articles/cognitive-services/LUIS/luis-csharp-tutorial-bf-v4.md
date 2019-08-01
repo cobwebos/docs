@@ -1,6 +1,6 @@
 ---
 title: 语言理解机器人 C# v4
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用 C# 构建集成了语言理解 (LUIS) 的聊天机器人。 此机器人是使用 Bot Framework 4 和 Azure Web 应用机器人服务生成的。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: 8a03d87441f26d3116aff8af33fd94da0ef9a909
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 210724e8a8b9b585a3e308b8e321d809e4e897a1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67438433"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560661"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>教程：使用在 C# 中启用语言理解的 Web 应用机器人
 
@@ -47,8 +47,8 @@ ms.locfileid: "67438433"
     |设置|目的|建议的设置|
     |--|--|--|
     |机器人名称|资源名称|`luis-csharp-bot-` + `<your-name>`，例如 `luis-csharp-bot-johnsmith`|
-    |订阅|要在其中创建机器人的订阅。|你的主要订阅。
-    |资源组|Azure 资源的逻辑组|创建一个新组用于存储此机器人使用的所有资源，并将该组命名为 `luis-csharp-bot-resource-group`。|
+    |Subscription|要在其中创建机器人的订阅。|你的主要订阅。
+    |Resource group|Azure 资源的逻辑组|创建一个新组用于存储此机器人使用的所有资源，并将该组命名为 `luis-csharp-bot-resource-group`。|
     |位置|Azure 区域 - 不一定要与 LUIS 创作或发布区域相同。|`westus`|
     |定价层|用于服务请求限制和计费。|`F0` 是免费层。
     |应用程序名称|将机器人部署到云（例如，humanresourcesbot.azurewebsites.net）时，该名称用作子域。|`luis-csharp-bot-` + `<your-name>`，例如 `luis-csharp-bot-johnsmith`|
@@ -66,15 +66,15 @@ ms.locfileid: "67438433"
     |SDK 语言|机器人的编程语言|**C#**|
     |机器人|机器人类型|**基础机器人**|
     
-1. 选择“创建”  。 随即会创建机器人服务并将其部署到 Azure。 在此过程中，会创建名为 `luis-csharp-bot-XXXX` 的 LUIS 应用。 此名称基于/Azure 机器人服务应用名称。
+1. 选择“创建”  。 随即会创建机器人服务并将其部署到 Azure。 在此过程中，会创建名为 `luis-csharp-bot-XXXX` 的 LUIS 应用。 此名称基于 Azure 机器人服务应用名称。
 
     [![创建 Web 应用机器人](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
 
-    请等待，直到机器人服务创建后再继续执行操作。
+    请等到创建机器人服务后再继续操作。
 
-## <a name="the-bot-has-a-language-understanding-model"></a>机器人包含语言理解模型
+## <a name="the-bot-has-a-language-understanding-model"></a>该机器人包含语言理解模型
 
-在机器人服务创建过程中，也创建带有意图和示例言语的新 LUIS 应用。 机器人针对以下意向提供到新 LUIS 应用的意向映射： 
+在机器人服务创建过程中，还会创建带有意图和示例言语的新 LUIS 应用。 机器人针对以下意向提供到新 LUIS 应用的意向映射： 
 
 |基础机器人 LUIS 意向|示例话语|
 |--|--|
@@ -84,14 +84,14 @@ ms.locfileid: "67438433"
 
 ## <a name="test-the-bot-in-web-chat"></a>通过网上聊天测试机器人
 
-1. 虽然仍在新机器人的 Azure 门户中，但请选择“通过网上聊天执行测试”  。 
-1. 在“键入消息”文本框中，输入文本 `hello`  。 机器人响应有关机器人框架的信息，以及特定 LUIS 模型（例如，预订飞往巴黎的机票）的查询示例。 
+1. 在 Azure 门户中，为新机器人选择“通过网上聊天执行测试”  。 
+1. 在“键入消息”文本框中，输入文本 `hello`  。 机器人将答复有关机器人框架的信息，还会答复该特定 LUIS 模型的示例查询，例如预订飞往巴黎的机票。 
 
-    ![Azure 门户输入文本“你好”的屏幕截图。](./media/bfv4-csharp/ask-bot-question-in-portal-test-in-web-chat.png)
+    ![Azure 门户的屏幕截图，输入文本“你好”。](./media/bfv4-csharp/ask-bot-question-in-portal-test-in-web-chat.png)
 
-    可以使用测试功能快速对机器人执行测试。 要进行更完整的测试（包括调试），请下载机器人代码并使用 Visual Studio。 
+    可以使用测试功能对机器人进行快速测试。 要进行更完整的测试（包括调试），请下载机器人代码并使用 Visual Studio。 
 
-## <a name="download-the-web-app-bot-source-code"></a>下载 Web 应用机器人资源代码
+## <a name="download-the-web-app-bot-source-code"></a>下载 Web 应用机器人源代码
 若要开发 Web 应用机器人代码，请下载该代码并在本地计算机上使用。 
 
 1. 在 Azure 门户中，从“机器人管理”部分选择“生成”   。 
@@ -100,11 +100,11 @@ ms.locfileid: "67438433"
 
     [![下载基础机器人的 Web 应用机器人源代码](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. 弹出询问“在下载的 zip 文件中包含应用设置？”的对话框时，请选择“是”   。
+1. 弹出询问“是否在下载的 zip 文件中包含应用设置?”的对话框时，选择“是”   。
 
 1. 压缩源代码时，有一条消息会提供用于下载代码的链接。 选择该链接。 
 
-1. 将 zip 文件保存到本地计算机，然后解压缩该文件。 使用 Visual Studio 中打开项目。 
+1. 将 zip 文件保存到本地计算机，然后解压缩该文件。 使用 Visual Studio 打开项目。 
 
 ## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>查看代码以将言语发送到 LUIS 并获得响应
 
@@ -338,23 +338,23 @@ ms.locfileid: "67438433"
     }
     ```
 
-1. 在机器人模拟器中，输入 `Hello` 并获得与在“通过网上聊天执行测试”中收到的基本机器人相同的响应  。
+1. 在机器人模拟器中输入 `Hello`应可获得基本机器人的答复，与在“通过网上聊天执行测试”中收到的答复相同  。
 
     [![模拟器中的基础机器人响应](./media/bfv4-csharp/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-csharp/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 
-## <a name="ask-bot-a-question-for-the-book-flight-intent"></a>向机器人询问预定机票意图的问题
+## <a name="ask-bot-a-question-for-the-book-flight-intent"></a>向机器人询问关于预定机票的问题
 
-1. 在机器人模拟器中，通过输入以下言语来预订机票： 
+1. 在机器人模拟器中，输入以下言语来预订机票： 
 
     ```bot
     Book a flight from Paris to Berlin on March 22, 2020
     ```
 
-    机器人模拟器要求你进行确认。 
+    机器人模拟器将要求你进行确认。 
 
-1. 请选择“是”。  机器人以其行动的摘要作出响应。 
-1. 从机器人模拟器的日志中，选择包含 `Luis Trace` 的行。 这将显示来自 LUIS 的 JSON 响应，用于言语的意图和实体。
+1. 请选择“是”。  机器人将以其操作摘要答复你。 
+1. 从机器人模拟器的日志中，选择包含 `Luis Trace` 的行。 这将显示 LUIS 对言语的意图和本质的 JSON 答复。
 
     [![模拟器中的基础机器人响应](./media/bfv4-csharp/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-csharp/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 

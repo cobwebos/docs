@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用适用于 Node.js 的自定义视觉 SDK 创建图像分类项目
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用 Node.js SDK 创建项目、添加标记、上传图像、训练项目以及进行预测。
 services: cognitive-services
 author: areddish
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: 92713fe16e482a3ed65b9593581749270b67a487
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 2fe02bd48097b6e051f0203b4615c8c5683224cd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277590"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560974"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>快速入门：使用自定义视觉 Node.js SDK 创建图像分类项目
 

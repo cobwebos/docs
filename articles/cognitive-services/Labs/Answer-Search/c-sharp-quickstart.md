@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: dce13636cce299098c988ccea3a059f0f0e12acd
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: fe6758cb6b8d120862cbbe593574360c1bc7b17b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823264"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698109"
 ---
 # <a name="quickstart-project-answer-search-query-in-c"></a>快速入门：C# 中的项目应答搜索查询
 
@@ -25,7 +25,7 @@ ms.locfileid: "65823264"
 
 需要使用 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)才能在 Windows 上运行此代码。 （免费的社区版也可以。）
 
-获取[认知服务实验室](https://aka.ms/answersearchsubscription)免费试用版的访问密钥
+获取[认知服务实验室](https://labs.cognitive.microsoft.com/en-us/project-answer-search)免费试用版的访问密钥
 
 ## <a name="code-scenario"></a>代码方案
 

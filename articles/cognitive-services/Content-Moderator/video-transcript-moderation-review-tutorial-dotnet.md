@@ -1,6 +1,6 @@
 ---
 title: 教程：在 .NET 中审查视频和脚本 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 本教程可帮助你了解如何使用机器辅助审查和人工介入评论创建，来生成完整的视频和脚本审查解决方案。
 services: cognitive-services
 author: PatrickFarley
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b210af2a70a3ce858d8f53102a181c75373b4176
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e1c3d3d95261b959a7540aab73faf12f92801d4c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606949"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564279"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教程：视频和脚本审查
 

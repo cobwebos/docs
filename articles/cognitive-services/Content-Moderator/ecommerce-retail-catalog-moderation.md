@@ -1,6 +1,6 @@
 ---
 title: 教程：审查电子商务产品图像 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 设置一个应用程序，以通过指定的标签分析和分类产品图像（使用 Azure 计算机视觉和自定义视觉）。 标记令人反感的图像以作进一步的评审（使用 Azure 内容审查器）。
 services: cognitive-services
 author: PatrickFarley
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: ec17f9f0206ef639bd47d694880c064a012ea1cf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b118a509f72af2146abf854b881fa34d8de302a1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604195"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564918"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查电子商务产品图像
 

@@ -105,10 +105,14 @@
           href: sizes-previous-gen.md
         - name: Azure 计算单元 (ACU)
           href: acu.md
+        - name: vCPU 配额
+          href: quotas.md
         - name: 基准评分
           href: compute-benchmark-scores.md
     - name: 认可的发行版
       href: endorsed-distros.md
+    - name: 专用主机
+      href: dedicated-hosts.md
     - name: 维护和更新
       href: maintenance-and-updates.md
     - name: 磁盘存储
@@ -139,12 +143,8 @@
       href: monitor.md
     - name: 备份和恢复
       href: backup-recovery.md
-    - name: 部署注意事项
-      items:
-        - name: 基础结构指南
-          href: infrastructure-example.md
-        - name: vCPU 配额
-          href: quotas.md
+    - name: 基础结构指南
+      href: infrastructure-example.md
     - name: 安全属性
       href: virtual-machines-linux-security-attributes.md
 - name: 操作指南
@@ -160,6 +160,12 @@
           href: create-vm-rest-api.md
         - name: 复制或克隆 VM
           href: copy-vm.md
+        - name: 使用专用主机
+          items:
+            - name: CLI
+              href: dedicated-hosts-cli.md
+            - name: 门户
+              href: dedicated-hosts-portal.md
     - name: 保护 VM
       items:
         - name: 实时访问

@@ -258,6 +258,8 @@
           href: resource-group-template-functions-string.md
     - name: 完整模式删除
       href: complete-mode-deletion.md
+    - name: 资源实例限制
+      href: resources-without-rg-limit.md
     - name: 按服务分类的资源提供程序
       href: azure-services-resource-providers.md
     - name: REST - 资源管理器

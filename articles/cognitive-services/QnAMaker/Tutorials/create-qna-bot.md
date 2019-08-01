@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 07/31/2019
 ms.author: diberry
-ms.openlocfilehash: 1d475d988847bd4cc9e37b91a0c5d28678cb05f2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4bb987a5a091871bec2c0cc8cec6d9ab804bb244
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446654"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697990"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>教程：创建使用 Azure 机器人服务 v4 的 QnA 机器人
 
@@ -50,8 +50,8 @@ ms.locfileid: "67446654"
     |设置|值|目的|
     |--|--|--|
     |机器人名称|`my-tutorial-kb-bot`|这是机器人的 Azure 资源名称。|
-    |订阅|查看用途。|请选择创建 QnA Maker 资源时所用的同一个订阅。|
-    |资源组|`my-tutorial-rg`|与机器人相关的所有 Azure 资源使用的资源组。|
+    |Subscription|查看用途。|请选择创建 QnA Maker 资源时所用的同一个订阅。|
+    |Resource group|`my-tutorial-rg`|与机器人相关的所有 Azure 资源使用的资源组。|
     |位置|`west us`|机器人的 Azure 资源位置。|
     |定价层|`F0`|Azure 机器人服务的免费层。|
     |应用程序名称|`my-tutorial-kb-bot-app`|这是一个 Web 应用，仅用于为机器人提供支持。 此应用名称不能与 QnA Maker 服务已使用的名称相同。 不支持与任何其他资源共享 QnA Maker 的 Web 应用。|
@@ -101,7 +101,7 @@ ms.locfileid: "67446654"
 
 ## <a name="related-to-qna-maker-bots"></a>有关 QnA Maker 机器人
 
-* QnA Maker 门户中使用的 QnA Maker 帮助机器人可用作[机器人示例](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot)。
+* QnA Maker 门户中使用的 QnA Maker 帮助机器人可用作[机器人示例](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)。
     ![QnA Maker 帮助机器人图标是红色的机器人](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
 * [医疗保健机器人](https://docs.microsoft.com/HealthBot/qna_model_howto)使用 QnA Maker 作为其[语言模型](https://docs.microsoft.com/HealthBot/qna_model_howto)之一。
 

@@ -1,21 +1,18 @@
 ---
 title: 在 Azure 门户中验证存储帐户的吞吐量和延迟指标 | Microsoft Docs
 description: 了解如何在门户中验证存储帐户的吞吐量和延迟指标。
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 2fde9b2b88b4c758065ba4b38da48724bfbfcd75
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250089"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698977"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>验证存储帐户的吞吐量和延迟指标
 
@@ -31,11 +28,11 @@ ms.locfileid: "55250089"
 
 ## <a name="configure-metrics"></a>配置指标
 
-导航到存储帐户中“设置”下的“指标(预览)”。
+导航到存储帐户中“设置”下的“指标(预览)”   。
 
-从“子服务”下拉列表中选择 Blob。
+从“子服务”  下拉列表中选择 Blob。
 
-在“指标”下，选择下表中的指标之一：
+在“指标”  下，选择下表中的指标之一：
 
 可通过以下指标了解应用程序的延迟和吞吐量。 在门户中配置的指标在 1 分钟的平均值内。 如果事务在一分钟的中间完成，则该分钟的数据是平均值的一半。 在属于你应用程序的一个或多个进程和/或一个或多个计算机中，如果内存消耗量在较长的时间段（几个小时）内持续增加，将发出一个典型的通知。 可以通过将此信息与门户指标结合使用来全面了解吞吐量。
 
@@ -47,7 +44,7 @@ ms.locfileid: "55250089"
 |**流入量**|流入数据量。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。 |
 |**流出量**|流出数据量。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。 |
 
-在“时间”旁边选择“过去 24 小时(自动)”。 针对“时间粒度”选择“过去一小时”和“分钟”，然后单击“应用”。
+在“时间”  旁边选择“过去 24 小时(自动)”  。 针对“时间粒度”  选择“过去一小时”  和“分钟”  ，然后单击“应用”  。
 
 ![存储帐户指标](./media/storage-blob-scalable-app-verify-metrics/figure1.png)
 
@@ -55,7 +52,7 @@ ms.locfileid: "55250089"
 
 ## <a name="dimensions"></a>维度
 
-可使用[维度](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)深入了解图表和获取更多详细信息。 不同指标具有不同维度。 可用的一个维度是“API 名称”维度。 此维度将图表拆分为每个单独的 API 调用。 下面的第一个图显示存储帐户的总事务数的示例图表。 第二个图显示相同图表，但选中了“API 名称”维度。 如你所见，列出了每个事务，从而让你详细了解按 API 名称进行了多少个调用。
+可使用[维度](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)深入了解图表和获取更多详细信息。 不同指标具有不同维度。 可用的一个维度是“API 名称”  维度。 此维度将图表拆分为每个单独的 API 调用。 下面的第一个图显示存储帐户的总事务数的示例图表。 第二个图显示相同图表，但选中了“API 名称”维度。 如你所见，列出了每个事务，从而让你详细了解按 API 名称进行了多少个调用。
 
 ![存储帐户指标 - 不带维度的事务](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 

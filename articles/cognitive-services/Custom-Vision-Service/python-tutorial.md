@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用适用于 Python 的自定义视觉 SDK 创建图像分类项目
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用 Python SDK 创建项目、添加标记、上传图像、训练项目以及进行预测。
 services: cognitive-services
 author: areddish
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 44d9c7fcaf855a52234ba851792440b805fa93b0
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 25ee212bbcabb1697de1611cc67c5bfdf615c617
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606825"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560989"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>快速入门：使用自定义视觉 Python SDK 创建图像分类项目
 

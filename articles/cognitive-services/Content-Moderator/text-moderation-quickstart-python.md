@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 Python 分析文本内容 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 如何使用适用于 Python 的内容审查器 SDK 分析文本内容中是否存在各种令人反感的材料
 services: cognitive-services
 author: PatrickFarley
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: bb0e44f83e2101a7b21e7b7ec6fdc75974c6d6d8
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ceaaa9bdb5f6e5c977e0c1a71af080f22d52a5e7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333609"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561209"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>快速入门：使用 Python 分析文本内容中是否存在令人反感的材料
 

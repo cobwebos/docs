@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 03/26/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: c69bc4db35a198d73f9b29ee3ed2fa6b6f71be49
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f40f1b94b3e7c2732fd8bed0bc6e503277b533c3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721446"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565813"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入门：使用异常检测器 REST API 和 Python 检测时序数据的异常
 
@@ -50,7 +50,7 @@ ms.locfileid: "67721446"
     import json
     ```
 
-2. 为订阅密钥和终结点创建变量。 下面是可用于异常检测的 URI。 稍后会将这些 URI 追加到服务终结点，以创建 API 请求 URL。
+2. 为订阅密钥和终结点创建变量。 下面是可用于异常检测的 URI。 稍后会将这些 URL 追加到服务终结点，以创建 API 请求 URL。
 
     |检测方法  |URI  |
     |---------|---------|
@@ -98,7 +98,7 @@ def send_request(endpoint, url, subscription_key, request_data):
 
 3. 如果响应包含 `code` 字段，则输出错误代码和错误消息。
 
-4. 否则，查找异常在数据集中的位置。 响应的 `isAnomaly` 字段包含一个布尔值，该值与给定的数据点是否为异常相关。 循环访问该列表，并输出任何 `True` 值的索引。 如果找到任何此类值，这些值对应于异常数据点的索引。
+4. 否则，请查找异常在数据集中的位置。 响应的 `isAnomaly` 字段包含一个布尔值，该值与给定的数据点是否为异常相关。 循环访问该列表，并输出任何 `True` 值的索引。 如果找到任何此类值，这些值对应于异常数据点的索引。
 
 ```python
 def detect_batch(request_data):
@@ -148,7 +148,7 @@ detect_latest(json_data)
 
 ### <a name="example-response"></a>示例响应
 
-成功的响应以 JSON 格式返回。 单击以下链接以查看 GitHub 上的 JSON 响应：
+成功的响应以 JSON 格式返回。 单击以下链接在 GitHub 上查看 JSON 响应：
 * [批量检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [最新数据点检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
