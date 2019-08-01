@@ -9,12 +9,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 6902bf73707dc749da76cd32fe48911fcc88ba1e
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: cd02051c0ef1dfe93b1ee67a0a9605e1611f336b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305720"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565972"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -29,6 +29,8 @@ ms.locfileid: "68305720"
 
 请考虑这样一种情况: 数据在生命周期的早期阶段获得频繁的访问, 但在两周内偶尔发生。 一个月以后，该数据集很少被访问。 在这种场景下，早期阶段最适合使用热存储。 冷存储最适用于偶尔访问。 将数据保存在一个月后, 存档存储是最佳的 "层" 选项。 通过根据数据陈旧程度调整存储层，可根据需求设计出最具性价比的存储选项。 若要实现这种过渡，可以使用生命周期管理策略规则将陈旧数据转移到较冷的存储层。
 
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 ## <a name="storage-account-support"></a>存储帐户支持
 
 生命周期管理策略可用于常规用途 v2 (GPv2) 帐户、Blob 存储帐户和高级块 Blob 存储帐户。 在 Azure 门户中, 你可以将现有常规用途 (GPv1) 帐户升级为 GPv2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。  
@@ -37,9 +39,9 @@ ms.locfileid: "68305720"
 
 生命周期管理功能免费。 客户需要支付[列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 和[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 调用的常规操作费用。 删除操作免费。 有关定价的详细信息，请参阅[块 Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="regional-availability"></a>区域可用性
+## <a name="regional-availability"></a>适用区域
 
-生命周期管理功能适用于所有全球 Azure 和 Azure 政府区域。
+生命周期管理功能在所有 Azure 区域中均可用。
 
 ## <a name="add-or-remove-a-policy"></a>添加或删除策略
 
@@ -227,7 +229,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 策略内的每个规则都有多个参数:
 
-| 参数名称 | 参数类型 | 说明 | 需要 |
+| 参数名称 | 参数类型 | 说明 | 必填 |
 |----------------|----------------|-------|----------|
 | `name`         | String |规则名称最多可以包含256个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | True |
 | `enabled`      | Boolean | 一个可选的布尔值, 允许暂时禁用规则。 如果未设置, 则默认值为 true。 | False | 
@@ -281,7 +283,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 筛选器包括:
 
-| 筛选器名称 | 筛选器类型 | 说明 | 是否必需 |
+| 筛选器名称 | 筛选类型 | 说明 | 必需 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 预定义枚举值的数组。 | 当前版本支持`blockBlob`。 | 是 |
 | prefixMatch | 要匹配的前缀字符串数组。 每个规则最多可定义10个前缀。 前缀字符串必须以容器名称开头。 例如, 如果要匹配规则下`https://myaccount.blob.core.windows.net/container1/foo/...`的所有 blob, 则 prefixMatch 为。 `container1/foo` | 如果未定义 prefixMatch, 则规则将应用于存储帐户中的所有 blob。  | 否 |
@@ -296,7 +298,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 目前支持位于热层的 Blob         | 不支持 |
 | tierToArchive | 目前支持位于热层或冷层的 Blob | 不支持 |
-| delete        | 支持                                   | 支持     |
+| 删除        | 支持                                   | 支持     |
 
 >[!NOTE]
 >如果在同一 Blob 中定义了多个操作，生命周期管理将对该 Blob 应用开销最低的操作。 例如，操作 `delete` 的开销比 `tierToArchive` 更低。 操作 `tierToArchive` 的开销比 `tierToCool` 更低。
@@ -421,7 +423,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 **我创建了一个新策略, 为什么这些操作不会立即运行？**  
 平台每天运行一次生命周期策略。 配置策略后, 第一次运行某些操作可能需要长达24小时。  

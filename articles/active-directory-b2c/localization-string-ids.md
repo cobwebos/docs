@@ -11,17 +11,17 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: da1390de4e2eb0624032dc490416e7b6e5d61baa
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67846838"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Localization  元素使你能够在用户旅程的策略中支持多个区域设置或语言。 本文提供了可在策略中使用的本地化 ID 列表。 若要熟悉 UI 本地化，请参阅[本地化](localization.md)。
+Localization 元素使你能够在用户旅程的策略中支持多个区域设置或语言。 本文提供了可在策略中使用的本地化 ID 列表。 若要熟悉 UI 本地化，请参阅[本地化](localization.md)。
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>注册或登录页面元素
 
@@ -40,10 +40,10 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 | **password** | 密码 |
 | **requiredField_password** | 请输入密码 |
 | **invalid_password** | 你输入的密码格式不正确。 |
-| **forgotpassword_link** | 忘记密码了? |
-| **createaccount_intro** | 没有帐户？ |
+| **forgotpassword_link** | 忘记了密码? |
+| **createaccount_intro** | 没有帐户? |
 | **createaccount_link** | 立即注册 |
-| **divider_title** | 或 |
+| **divider_title** | OR |
 | **cancel_message** | 用户忘记了密码 |
 | **button_signin** | 登录 |
 | **social_intro** | 使用社交帐户登录 |
@@ -54,7 +54,7 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 
 ![注册或登录页面 UX 元素](./media/localization-string-ids/localization-susi.png)
 
-标识提供者的 ID 在用户旅程 ClaimsExchange  元素中配置。 若要本地化标识提供者的标题，请将 ElementType  设置为 `ClaimsProvider`，同时将 StringId  设置为 `ClaimsExchange` 的 ID。
+标识提供者的 ID 在用户旅程 ClaimsExchange 元素中配置。 若要本地化标识提供者的标题，请将 ElementType 设置为 `ClaimsProvider`，同时将 StringId 设置为 `ClaimsExchange` 的 ID。
 
 ```XML
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -86,7 +86,7 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 | **UserMessageIfInvalidPassword** | 密码不正确。 |
 | **UserMessageIfClaimsPrincipalDoesNotExist** | 似乎找不到你的帐户。 |
 | **UserMessageIfOldPasswordUsed** | 你可能使用的是旧密码。 |
-| **DefaultMessage** | 无效的用户名或密码。 |
+| **DefaultMessage** | 用户名或密码无效。 |
 | **UserMessageIfUserAccountDisabled** | 帐户已锁定。 请联系支持人员解除锁定，然后重试。 |
 | **UserMessageIfUserAccountLocked** | 帐户暂时锁定以防止未经授权的使用。 请稍后重试。 |
 | **AADRequestsThrottled** | 目前请求过多。 请等待一段时间，然后重试。 |
@@ -104,7 +104,7 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 | **ver_but_send** | 发送验证代码 |
 | **alert_yes** | 是 |
 | **error_fieldIncorrect** | 一个或多个字段填写不正确。 请检查条目并重试。 |
-| **year** | 年龄 |
+| **year** | 年 |
 | **verifying_blurb** | 正在处理你的信息，请稍候。 |
 | **button_cancel** | 取消 |
 | **ver_fail_no_retry** | 你进行不正确尝试的次数过多。 请稍后重试。 |
@@ -146,7 +146,7 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 
 下面的示例演示如何在注册页中使用某些用户界面元素：
 
-![带有标记的 UI 元素名称的注册页](./media/localization-string-ids/localization-sign-up.png)
+![标记了其 UI 元素名称的注册页](./media/localization-string-ids/localization-sign-up.png)
 
 下面的示例演示在用户单击“发送验证码”按钮后如何在注册页中使用某些用户界面元素：
 

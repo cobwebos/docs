@@ -10,31 +10,30 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 6713182003a280c1d53e904209159b55b4ad01c6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd8cabb14ad65b4da562c7d6048a52b574513b26
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331139"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566178"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell：创建适用于 SQL 的虚拟网络服务终结点和 VNet 规则
 
 *虚拟网络规则*是一种防火墙安全功能，用于控制是否允许 Azure [SQL 数据库](sql-database-technical-overview.md)中你的单一数据库和弹性池的数据库服务器或 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中你的数据库的数据库服务器接受从虚拟网络中的特定子网发送的通信。
 
 > [!IMPORTANT]
-> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 本文不  适用于 Azure SQL 数据库中的**托管实例**部署，因为它没有与之关联的服务终结点。
+> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 本文不适用于 Azure SQL 数据库中的**托管实例**部署，因为它没有与之关联的服务终结点。
 
 本文将提供并介绍执行以下操作的 PowerShell 脚本：
 
-1. 在子网上创建 Microsoft Azure 虚拟服务终结点  。
-2. 将终结点添加到 Azure SQL 数据库服务器的防火墙，以创建虚拟网络规则  。
+1. 在子网上创建 Microsoft Azure 虚拟服务终结点。
+2. 将终结点添加到 Azure SQL 数据库服务器的防火墙，以创建虚拟网络规则。
 
-创建规则的动机在以下几个方面进行了解释：[适用于 Azure SQL 数据库的虚拟服务终结点][sql-db-vnet-service-endpoint-rule-overview-735r]。
+创建规则的动机在以下几个方面进行了解释：[适用于 AZURE SQL 数据库的虚拟服务终结点][sql-db-vnet-service-endpoint-rule-overview-735r]。
 
 > [!TIP]
-> 如果只需访问或将 SQL 数据库的虚拟服务终结点类型名称  添加到子网，则可以直接跳至 [PowerShell 脚本](#a-verify-subnet-is-endpoint-ps-100)。
+> 如果只需访问或将 SQL 数据库的虚拟服务终结点类型名称添加到子网，则可以直接跳至 [PowerShell 脚本](#a-verify-subnet-is-endpoint-ps-100)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -44,7 +43,7 @@ ms.locfileid: "60331139"
 
 本文将着重介绍 **New-AzSqlServerVirtualNetworkRule** cmdlet，它用于将子网终结点添加到 Azure SQL 数据库服务器的访问控制列表 (ACL)，从而创建规则。
 
-下面的列表显示准备对 New-AzSqlServerVirtualNetworkRule  进行调用时必须运行的其他主要  cmdlet 的序列。 在本文中，这些调用出现在[脚本 3 虚拟网络规则](#a-script-30) 中：
+下面的列表显示准备对 New-AzSqlServerVirtualNetworkRule 进行调用时必须运行的其他主要cmdlet 的序列。 在本文中，这些调用出现在[脚本 3 虚拟网络规则](#a-script-30) 中：
 
 1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig)：创建子网对象。
 2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)：创建虚拟网络，向其提供子网。
@@ -55,7 +54,7 @@ ms.locfileid: "60331139"
 
 ## <a name="prerequisites-for-running-powershell"></a>运行 PowerShell 的先决条件
 
-- 已可以登录到 Azure，例如通过 [Azure 门户][http-azure-portal-link-ref-477t]。
+- 你可以已登录到 Azure, 例如通过[Azure 门户][http-azure-portal-link-ref-477t]。
 - 已可以运行 PowerShell 脚本。
 
 > [!NOTE]
@@ -116,7 +115,7 @@ Write-Host 'Completed script 1, the "Variables".';
 
 <a name="a-script-20" />
 
-### <a name="script-2-prerequisites"></a>脚本 2：必备组件
+### <a name="script-2-prerequisites"></a>脚本 2：先决条件
 
 此脚本为下一个脚本做准备，即终结点操作所在的位置。 此脚本将为你创建下面列出的各项（仅在这些项不存在的情况下）。 如果确认这些项已存在，则可以跳过脚本 2：
 
@@ -470,13 +469,13 @@ Completed script 4, the "Clean-Up".
 
 ## <a name="verify-your-subnet-is-an-endpoint"></a>验证子网是否是终结点。
 
-可能已拥有已被分配 Microsoft.Sql  类型名称的子网，这就说明它已是虚拟服务终结点。 可以使用 [Azure 门户][http-azure-portal-link-ref-477t] 从终结点创建虚拟网络规则。
+可能已拥有已被分配 Microsoft.Sql 类型名称的子网，这就说明它已是虚拟服务终结点。 可以使用[Azure 门户][http-azure-portal-link-ref-477t]从终结点创建虚拟网络规则。
 
-或者，如果不确定你的子网是否具有 Microsoft.Sql  类型名称， 则可以运行下面的 PowerShell 脚本执行以下操作：
+或者，如果不确定你的子网是否具有 Microsoft.Sql 类型名称， 则可以运行下面的 PowerShell 脚本执行以下操作：
 
-1. 确定你的子网是否具有 Microsoft.Sql  类型名称。
+1. 确定你的子网是否具有 Microsoft.Sql 类型名称。
 2. （可选）如果它不存在，则分配类型名称。
-    - 在对其应用缺少的类型名称前，脚本会要求你确认  。
+    - 在对其应用缺少的类型名称前，脚本会要求你确认。
 
 ### <a name="phases-of-the-script"></a>脚本阶段
 
@@ -484,15 +483,15 @@ Completed script 4, the "Clean-Up".
 
 1. 登录到你的 Azure 帐户，每个 PS 会话只需登录一次。  分配变量
 2. 搜索你的虚拟网络，然后搜索你的子网。
-3. 你的子网是否被标记为 Microsoft.Sql  终结点服务器类型？
-4. 在你的子网上，添加类型名称 Microsoft.Sql  的虚拟服务终结点。
+3. 你的子网是否被标记为 Microsoft.Sql 终结点服务器类型？
+4. 在你的子网上，添加类型名称 Microsoft.Sql 的虚拟服务终结点。
 
 > [!IMPORTANT]
 > 运行此脚本前，必须编辑分配给 $ 变量的值（在脚本顶部附近）。
 
 ### <a name="direct-powershell-source-code"></a>直接 PowerShell 源代码
 
-此 PowerShell 脚本不会更新任何内容，除非在它要求你确认时响应“是”。 此脚本可以将类型名称 Microsoft.Sql  添加到你的子网。 但是脚本只有在你的子网缺少类型名称时才会尝试添加。
+此 PowerShell 脚本不会更新任何内容，除非在它要求你确认时响应“是”。 此脚本可以将类型名称 Microsoft.Sql 添加到你的子网。 但是脚本只有在你的子网缺少类型名称时才会尝试添加。
 
 ```powershell
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.

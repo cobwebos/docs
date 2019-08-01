@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 960320e280a613a537f1918d93e4584a13a0b374
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: aac328806e2570bd124626e916c250d481a11311
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309964"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567587"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -105,7 +104,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
-| 名称       |Port          |Protocol|Source           |目标|Action|
+| 姓名       |Port          |Protocol|Source           |目标|Action|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
@@ -116,7 +115,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 \* MI SUBNET 是指子网的 IP 地址范围，采用 10.x.x.x/y 格式。 可以在 Azure 门户上的子网属性中找到此信息。
 
 > [!IMPORTANT]
-> 尽管所需的入站安全规则允许来自端口 9000、9003、1438、1440 和 1452 上的任意资源的流量，但这些端口受内置防火墙的保护  。 有关详细信息，请参阅[确定管理终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
+> 尽管所需的入站安全规则允许来自端口 9000、9003、1438、1440 和 1452 上的任意资源的流量，但这些端口受内置防火墙的保护。 有关详细信息，请参阅[确定管理终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
 > [!NOTE]
 > 如果在托管实例中使用事务复制，并使用任何实例数据库作为发布方或分发方，请在子网的安全规则中打开端口 445（TCP 出站）。 此端口允许访问 Azure 文件共享。
 

@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f39c914bce3fbc47775a76f1c3a1fb64de560505
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ade107f51fabb133e8e4046bf645f4dff284102b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498336"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565113"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -28,7 +28,7 @@ ms.locfileid: "68498336"
 ### <a name="azure-machine-learning-sdk-for-python-v1053"></a>用于 Python 的 Azure 机器学习 SDK 1.0.53
 
 + **新功能**
-    + 自动机器学习现在支持远程计算目标上的 ONNX 模型定型
+  + 自动机器学习现在支持远程计算目标上的 ONNX 模型定型
   + Azure 机器学习现在可以从以前的运行、检查点或模型文件恢复培训。
     + 了解如何[使用估算从上一次运行中恢复培训](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb)
 
@@ -80,9 +80,6 @@ ms.locfileid: "68498336"
     + 现在, 可以在注册后正确更新模型说明
     + 模型和图像删除现在提供了有关依赖于它们的上游对象的详细信息, 导致删除失败
     + 使用 mlflow 提高远程运行的资源利用率。
-  + **azureml-dataprep**
-    + 现在可以循环访问数据流对象, 从而生成一系列记录。
-    + 作为`_summarize_each`实验性功能添加`azureml.dataprep.Dataflow`到。
   + **azureml-explain-model**
     + 固定的转换参数, 适用于说明的原始功能重要性-contrib--说明-型号包
     + 添加 LimeExplainer 的 scipy 稀疏支持
@@ -115,6 +112,15 @@ ms.locfileid: "68498336"
   + **azureml-train-core**
     + 现在可将字符串作为自动超参数优化的计算目标接受
     + 未使用的 RunConfiguration 设置 auto_prepare_environment 已标记为已弃用。
+
+### <a name="azure-machine-learning-data-prep-sdk-v119"></a>Azure 机器学习数据准备 SDK 1.1。9
+
++ **新功能**
+  + 添加了对从 http 或 https url 直接读取文件的支持。
+
++ **Bug 修复和改进**
+  + 当尝试从远程源 (当前不支持) 读取 Parquet 数据集时, 改进了错误消息。
+  + 修复了在 ADLS 第2代中写入 Parquet 文件格式的 bug, 并更新了路径中的 ADLS 第2代容器名称。
 
 ## <a name="2019-07-09"></a>2019-07-09
 

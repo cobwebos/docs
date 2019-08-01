@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 47fd6c1e2bb342bc1a31fb16a45a5ebc749dca69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55b23b8d8e03a79aa0806a68306017f89c747760
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60702546"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567773"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL 数据库活动异地复制管理云应用程序的滚动升级
 
@@ -92,7 +91,7 @@ ms.locfileid: "60702546"
 
 1. 在主要区域中部署 Web 应用的过渡环境 (6)。
 2. 在主 Azure 区域中创建辅助数据库 (7)。 配置 Web 应用的过渡环境以便与它建立连接。 
-3. 通过在主要区域中复制辅助数据库，在备份区域中创建另一异地冗余的辅助数据库。 （此方法称为“链接的异地复制”）(8)。 
+3. 通过在主要区域中复制辅助数据库，在备份区域中创建另一异地冗余的辅助数据库。 （此方法称为“链接的异地复制”）(8)。
 4. 在备份区域中部署 Web 应用实例的过渡环境 (9)，并将其配置为连接在 (8) 中创建的异地冗余辅助数据库。
 
 > [!NOTE]
@@ -145,7 +144,7 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 此方法的主要缺点是它需要每个应用程序组件的双倍冗余，因此会导致更高的成本。 它还涉及更复杂的工作流。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文中所述的两种升级方法具有不同的复杂性和成本，但它们都注重于最小化用户仅限于执行只读操作的时间。 该时间由升级脚本的持续时间直接定义。 该时间不依赖于数据库大小、所选的服务层级、网站配置或你无法轻松控制的其他因素。 所有准备步骤都从升级步骤中分离出来，不影响生产应用程序。 升级脚本的效率是决定升级期间的用户体验的关键因素。 因此，改进体验的最佳做法是将工作重心放在尽可能提高升级脚本的效率上。
 

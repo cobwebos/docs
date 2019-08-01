@@ -9,16 +9,16 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: ab2413cfce8b87fbe1899a0b7c465c6e6c27a3f5
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 126c3fb348b1d53769a818ae4b21fcdbbef65615
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277644"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517235"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure 逻辑应用的连接器
 
-使用连接器可以从 Azure 逻辑应用快速访问其他应用、服务、系统、协议和平台上的事件、数据和操作。 使用逻辑应用中的连接器，可以扩展云中和本地应用的功能，以便对创建的数据和现有的数据执行任务。
+使用连接器可以从 Azure 逻辑应用快速访问其他应用、服务、系统、协议和平台上的事件、数据和操作。 使用逻辑应用中连接器，可以扩展云和本地应用的功能，以便对创建的数据和现有的数据执行任务。
 
 虽然逻辑应用提供了[数百个连接器](https://docs.microsoft.com/connectors), 但本文介绍了广泛且更常用的连接器, 这些连接器已成功由成千上万的应用程序和用于处理数据和信息的数百万次使用。 若要查找连接器的完整列表以及每个连接器的参考信息（例如触发器、操作和限制），请查看[连接器概述](https://docs.microsoft.com/connectors)下的连接器参考页。 另外，请详细了解[触发器和操作](#triggers-actions)、[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)以及[逻辑应用定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "68277644"
   > [集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用可以直接访问 Azure 虚拟网络中的资源。
   > 使用 ISE 时, 将在逻辑应用所在的 ISE 中运行显示 "**核心**" 标签的内置触发器和操作。 在 ISE 中运行的逻辑应用、内置触发器和内置操作使用不同于基于消耗的定价计划的定价计划。
   >
-  > 有关创建 ISEs 的详细信息, 请参阅[从 Azure 逻辑应用连接到 azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment)。 
+  > 有关创建 ISEs 的详细信息, 请参阅[从 Azure 逻辑应用连接到 azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。 
   > 有关定价的详细信息, 请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)。
 
 <a name="managed-connectors"></a>
@@ -63,7 +63,7 @@ ms.locfileid: "68277644"
   >
   > 对于连接到 Azure 虚拟网络的本地系统, 请将 ISE 注入该网络, 以便逻辑应用可以使用具有**ISE**标签、HTTP 操作或[自定义连接器](#custom)的连接器直接访问这些系统。 在 ISE 中运行的逻辑应用和连接器使用不同于基于消耗的定价计划的定价计划。 
   >
-  > 有关创建 ISEs 的详细信息, 请参阅[从 Azure 逻辑应用连接到 azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment)。
+  > 有关创建 ISEs 的详细信息, 请参阅[从 Azure 逻辑应用连接到 azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
   > 有关定价的详细信息, 请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)。
 
   有关连接器的完整列表以及每个连接器的参考信息（例如按 OpenAPI（以前称为 Swagger）说明定义的操作和任何触发器以及任何限制），可以在[连接器概述](/connectors/)下找到完整列表。 有关定价信息，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)和[逻辑应用定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)。 
@@ -76,8 +76,8 @@ ms.locfileid: "68277644"
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![API 图标][schedule-icon]<br/>**计划**][recurrence-doc] | - 使用“重复周期”触发器，按指定的计划以简单到复杂的重复方案运行逻辑应用。  <p>- 使用“延迟”操作，将逻辑应用暂停指定的持续时间。  <p>- 使用“延迟截止时间”操作，将逻辑应用暂停到指定的日期和时间。  | [![API 图标][http-icon]<br/>**HTTP**][http-doc] | 使用适用于 HTTP、HTTP + Swagger 和 HTTP + Webhook 的触发器和操作，通过 HTTP 与任何终结点通信。 | 
-| [![API 图标][http-request-icon]<br/>**请求**][http-request-doc] | - 使用“请求”触发器，使逻辑应用可从其他应用程序或服务调用、针对事件网格资源事件触发，或者针对 Azure 安全中心警报触发。  <p>- 使用“响应”操作将响应发送到应用或服务。  | [![API 图标][batch-icon]<br/>**批处理**][batch-doc] | - 使用“批处理消息”触发器来批量处理消息。  <p>- 使用“发送要批量处理的消息”操作调用具有现有批处理触发器的逻辑应用。  | 
+| [![API 图标][schedule-icon]<br/>**计划**][recurrence-doc] | - 使用“重复周期”触发器，按指定的计划以简单到复杂的重复方案运行逻辑应用。 <p>- 使用“延迟”操作，将逻辑应用暂停指定的持续时间。 <p>- 使用“延迟截止时间”操作，将逻辑应用暂停到指定的日期和时间。 | [![API 图标][http-icon]<br/>**HTTP**][http-doc] | 使用适用于 HTTP、HTTP + Swagger 和 HTTP + Webhook 的触发器和操作，通过 HTTP 与任何终结点通信。 | 
+| [![API 图标][http-request-icon]<br/>**请求**][http-request-doc] | - 使用“请求”触发器，使逻辑应用可从其他应用程序或服务调用、针对事件网格资源事件触发，或者针对 Azure 安全中心警报触发。 <p>- 使用“响应”操作将响应发送到应用或服务。 | [![API 图标][batch-icon]<br/>**批处理**][batch-doc] | - 使用“批处理消息”触发器来批量处理消息。 <p>- 使用“发送要批量处理的消息”操作调用具有现有批处理触发器的逻辑应用。 | 
 | [![API 图标][azure-functions-icon]<br/>**Azure Functions**][azure-functions-doc] | 从逻辑应用调用运行自定义代码片段（C# 或 Node.js）的 Azure 函数。 | [![Api 图标][azure-api-management-icon]</br>**Azure api 管理**][azure-api-management-doc] | 调用可以使用 Azure API 管理进行管理和发布的自有 API 定义的触发器与操作。 | 
 | [![API 图标][azure-app-services-icon]<br/>**Azure 应用服务**][azure-app-services-doc] | 调用 Azure 应用服务上托管的 Azure API 应用或 Web 应用。 包含 Swagger 后，这些应用定义的触发器和操作类似于其他任何第一类触发器和操作。 | [![API 图标][azure-logic-apps-icon]<br/>**Azure<br/>逻辑应用**][nested-logic-app-doc] | 调用使用“请求”触发器启动的其他逻辑应用。 | 
 ||||| 
@@ -89,7 +89,7 @@ ms.locfileid: "68277644"
 |   |   |   |   | 
 |---|---|---|---| 
 | [![内置图标][condition-icon]<br/>**条件**][condition-doc] | 评估条件，并根据条件是 true 还是 false 运行不同的操作。 | [![**每个的**内置][for-each-icon]</br>图标][for-each-doc] | 对数组中的每个项执行相同的操作。 | 
-| [![内置图标][scope-icon]<br/>**范围**][scope-doc] | 将操作分组到范围，以便在该范围内的操作完成运行后，获取这些操作的自身状态。  | [![内置图标][switch-icon]</br>**开关**][switch-doc] | 将操作分组到案例，而案例分配有唯一的值（默认案例除外）。  仅运行其分配值与表达式、对象或令牌的结果相匹配的案例。 如果不存在任何匹配项，则运行默认案例。 | 
+| [![内置图标][scope-icon]<br/>**范围**][scope-doc] | 将操作分组到范围，以便在该范围内的操作完成运行后，获取这些操作的自身状态。 | [![内置图标][switch-icon]</br>**开关**][switch-doc] | 将操作分组到案例，而案例分配有唯一的值（默认案例除外）。 仅运行其分配值与表达式、对象或令牌的结果相匹配的案例。 如果不存在任何匹配项，则运行默认案例。 | 
 | [![内置图标][terminate-icon]<br/>**终止**][terminate-doc] | 停止当前正在运行的逻辑应用工作流。 | [![内置图标][until-icon]<br/>**直到**][until-doc] | 重复操作，直到指定的条件为 true 或某个状态发生更改。 | 
 ||||| 
 
@@ -128,7 +128,7 @@ ms.locfileid: "68277644"
 
 |   |   |   |   |   | 
 |---|---|---|---|---| 
-| ![API 图标][biztalk-server-icon]<br/>**BizTalk**</br> **服务器** | [![API 图标][file-system-icon]<br/>**文件</br>系统**][file-system-doc] | [![API 图标][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [![API 图标][ibm-informix-icon]<br/>**IBM** Informix</br>  ][ibm-informix-doc] | ![API 图标][mysql-icon]<br/>**MySQL** | 
+| ![API 图标][biztalk-server-icon]<br/>**BizTalk**</br> **服务器** | [![API 图标][file-system-icon]<br/>**文件</br>系统**][file-system-doc] | [![API 图标][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [![API 图标][ibm-informix-icon]<br/>**IBM** Informix</br>][ibm-informix-doc] | ![API 图标][mysql-icon]<br/>**MySQL** | 
 | [![API 图标][oracle-db-icon]<br/>**Oracle DB**][oracle-db-doc] | ![API 图标][postgre-sql-icon]<br/>**PostgreSQL** | [![API 图标][sharepoint-server-icon]<br/>**SharePoint</br> Server**][sharepoint-server-doc] | [![API 图标][sql-server-icon]<br/>**SQL</br> Server**][sql-server-doc] | ![API 图标][teradata-icon]<br/>**Teradata** | 
 |||||
 
@@ -141,8 +141,8 @@ ms.locfileid: "68277644"
 |   |   |   |   | 
 |---|---|---|---| 
 | [![API 图标][as2-icon]<br/>**AS2</br>解码**][as2-doc] | [![API 图标][as2-icon]<br/>**AS2</br>编码**][as2-doc] | [![API 图标][edifact-icon]<br/>**EDIFACT</br>解码**][edifact-decode-doc] | [![API 图标][edifact-icon]<br/>**EDIFACT</br>编码**][edifact-encode-doc] | 
-| [![API 图标][flat-file-decode-icon]<br/>**平面文件</br>解码**][flat-file-decode-doc] | [![API 图标][flat-file-encode-icon]<br/>**平面文件</br>编码**][flat-file-encode-doc] | [![API 图标][integration-account-icon]<br/>**集成<br/>帐户**][integration-account-doc] | [![API 图标][liquid-icon]<br/>**液体**转换</br>  ][json-liquid-transform-doc] | 
-| [![API 图标][x12-icon]<br/>**X12</br>解码**][x12-decode-doc] | [![API 图标][x12-icon]<br/>**X12</br>编码**][x12-encode-doc] | [![API 图标][xml-transform-icon]<br/>**XML**转换</br>  ][xml-transform-doc] | [![API 图标][xml-validate-icon]<br/>**XML <br/>验证**][xml-validate-doc] |  
+| [![API 图标][flat-file-decode-icon]<br/>**平面文件</br>解码**][flat-file-decode-doc] | [![API 图标][flat-file-encode-icon]<br/>**平面文件</br>编码**][flat-file-encode-doc] | [![API 图标][integration-account-icon]<br/>**集成<br/>帐户**][integration-account-doc] | [![API 图标][liquid-icon]<br/>**液体**转换</br>][json-liquid-transform-doc] | 
+| [![API 图标][x12-icon]<br/>**X12</br>解码**][x12-decode-doc] | [![API 图标][x12-icon]<br/>**X12</br>编码**][x12-encode-doc] | [![API 图标][xml-transform-icon]<br/>**XML**转换</br>][xml-transform-doc] | [![API 图标][xml-validate-icon]<br/>**XML <br/>验证**][xml-validate-doc] |  
 ||||| 
 
 <a name="enterprise-connectors"></a>
@@ -160,24 +160,24 @@ ms.locfileid: "68277644"
 
 ## <a name="triggers-and-actions---more-info"></a>触发器和操作 - 更多信息
 
-连接器可以提供触发器和/或操作。   触发器是任何逻辑应用中的第一个步骤，它通常指定激发触发器并开始运行逻辑应用的事件。  例如，FTP 连接器中的某个触发器会在“添加或修改某个文件时”启动逻辑应用。 某些触发器定期检查指定的事件或数据，并在检测到指定的事件或数据时激发。 其他触发器会保持等待状态，但一旦发生特定的事件或者有新的数据可用，就会立即激发。 触发器还会将任何所需数据传递给逻辑应用。 在整个工作流中，逻辑应用都可以读取和使用该数据。
+连接器可以提供触发器和/或操作。 触发器是任何逻辑应用中的第一个步骤，它通常指定激发触发器并开始运行逻辑应用的事件。 例如，FTP 连接器中的某个触发器会在“添加或修改某个文件时”启动逻辑应用。 某些触发器定期检查指定的事件或数据，并在检测到指定的事件或数据时激发。 其他触发器会保持等待状态，但一旦发生特定的事件或者有新的数据可用，就会立即激发。 触发器还会将任何所需数据传递给逻辑应用。 在整个工作流中，逻辑应用都可以读取和使用该数据。
 例如，Twitter 连接器包含一个触发器“发布新推文时”，该触发器会将推文内容传入逻辑应用的工作流。 
 
-触发器激发后，Azure 逻辑应用将创建逻辑应用的实例，并开始运行逻辑应用工作流中的操作。  操作是激发触发器后的步骤，将执行逻辑应用工作流中的任务。 例如，可以创建一个逻辑应用来获取 SQL 数据库中的客户数据，并在后续的操作中处理该数据。 
+触发器激发后，Azure 逻辑应用将创建逻辑应用的实例，并开始运行逻辑应用工作流中的操作。 操作是激发触发器后的步骤，将执行逻辑应用工作流中的任务。 例如，可以创建一个逻辑应用来获取 SQL 数据库中的客户数据，并在后续的操作中处理该数据。 
 
 下面是 Azure 逻辑应用提供的常规类型的触发器：
 
-* 重复周期触发器：  此触发器按指定的计划运行，不与特定的服务或系统密切相关。
+* 重复周期触发器：此触发器按指定的计划运行，不与特定的服务或系统密切相关。
 
 * *轮询触发器*：此触发器根据指定的计划定期轮询特定的服务或系统，检查是否有可用的新数据或者是否发生了特定的事件。 如果有可用的新数据或者发生了特定的事件，该触发器将创建并运行逻辑应用的新实例，该实例现在可以使用作为输入传递的数据。
 
-* 推送触发器：  此触发器等待并侦听新数据或事件的发生。 如果有可用的新数据或者发生了该事件，该触发器将创建并运行逻辑应用的新实例，该实例现在可以使用作为输入传递的数据。
+* 推送触发器：此触发器等待并侦听新数据或事件的发生。 如果有可用的新数据或者发生了该事件，该触发器将创建并运行逻辑应用的新实例，该实例现在可以使用作为输入传递的数据。
 
 <a name="custom"></a>
 
 ## <a name="connector-configuration"></a>连接器配置
 
-每个连接器的触发器和操作提供其自身的属性，你可以配置这些属性。 许多连接器还要求先与目标服务或系统建立连接，并提供身份验证凭据或其他配置详细信息，然后，你才能在逻辑应用中使用某个触发器或操作。  例如，必须授权与 Twitter 帐户建立连接才能访问数据，或者让系统代表你发贴。 
+每个连接器的触发器和操作提供其自身的属性，你可以配置这些属性。 许多连接器还要求先与目标服务或系统建立连接，并提供身份验证凭据或其他配置详细信息，然后，你才能在逻辑应用中使用某个触发器或操作。 例如，必须授权与 Twitter 帐户建立连接才能访问数据，或者让系统代表你发贴。 
 
 对于使用 OAuth 的连接器，创建连接意味着要登录到服务（例如 Office 365、Salesforce 或 GitHub），其中的访问令牌已加密并安全存储在 Azure 机密存储中。 其他连接器（例如 FTP 和 SQL）需要提供包含服务器地址、用户名和密码等配置详细信息的连接。 这些连接配置详细信息同样加密并安全存储。 
 
@@ -187,7 +187,7 @@ ms.locfileid: "68277644"
 
 ## <a name="custom-apis-and-connectors"></a>自定义 API 和连接器
 
-若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。 
+若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。
 若要使自定义 API 应用或连接器可供任何人在 Azure 中使用，可以[提交连接器进行 Microsoft 认证](../logic-apps/custom-connector-submit-certification.md)。
 
 > [!NOTE]
@@ -196,7 +196,7 @@ ms.locfileid: "68277644"
 >
 > 在 ISE 中创建的自定义连接器不适用于本地数据网关。 但是, 这些连接器可以直接访问连接到托管 ISE 的 Azure 虚拟网络的本地数据源。 因此, 在与这些资源通信时, ISE 中的逻辑应用最有可能不需要数据网关。
 >
-> 有关创建 ISEs 的详细信息, 请参阅[从 Azure 逻辑应用连接到 azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment)。
+> 有关创建 ISEs 的详细信息, 请参阅[从 Azure 逻辑应用连接到 azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: cd2406bb4825ac295a6f9a3a18ba466cdc20c55d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98c522f3d2718691e32b4e78180027b69f28289f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67120856"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568011"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL 数据库
 
@@ -58,7 +57,7 @@ ms.locfileid: "67120856"
 ## <a name="configure-features"></a>配置功能
 
 - [配置 Azure AD 身份验证](sql-database-aad-authentication-configure.md)
-- [配置条件性访问](sql-database-conditional-access.md)
+- [配置条件访问](sql-database-conditional-access.md)
 - [多重 AAD 身份验证](sql-database-ssms-mfa-authentication.md)
 - [配置多重身份验证](sql-database-ssms-mfa-authentication-configure.md)
 - [配置时态保留策略](sql-database-temporal-tables-retention-policy.md)

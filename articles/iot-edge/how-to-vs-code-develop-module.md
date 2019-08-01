@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 07/23/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a9c38d82c4b460564077690d3cddd731ec6c2b89
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 39b8485ac3f98cb7ca6739fe31378726bea3452b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414501"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565355"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
 
@@ -27,7 +27,7 @@ ms.locfileid: "68414501"
 本文提供了针对多个体系结构的多种语言开发和调试模块的说明。 目前, Visual Studio Code 为以C#、C、Python、Node.js 和 Java 编写的模块提供支持。 支持的设备体系结构为 X64 和 ARM32。 有关支持的操作系统、语言和体系结构的详细信息, 请参阅[语言和体系结构支持](module-development.md#language-and-architecture-support)。
 
 >[!NOTE]
->开发和调试对 Linux ARM64 设备的支持是[公开预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关详细信息, 请参阅[在 Visual Studio Code 中开发和调试 ARM64 IoT Edge 模块 (预览)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
+>开发和调试对 Linux ARM64 设备的支持是[公开预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -100,7 +100,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 - 一个 .vscode 文件夹，包含调试配置。
 
-- 一个 modules 文件夹，包含每个模块的子文件夹。  每个模块的文件夹中都有一个文件, 即 "**模块**", 用于控制如何生成和部署模块。  需要修改此文件, 以将模块部署容器 regristry 从 localhost 更改为远程注册表。 此时, 只有一个模块。  但是可以在命令面板中使用以下命令添加更多模块：“Azure IoT Edge: Add IoT Edge Module”。
+- 一个 modules 文件夹，包含每个模块的子文件夹。  每个模块的文件夹中都有一个文件, 即 "**模块**", 用于控制如何生成和部署模块。  需要修改此文件, 以将模块部署容器注册表从 localhost 更改为远程注册表。 此时, 只有一个模块。  但是可以在命令面板中使用以下命令添加更多模块：“Azure IoT Edge:Add IoT Edge Module”。
 
 - 一个 .env 文件，列出环境变量。 如果 Azure 容器注册表是注册表，则其中将包含 Azure 容器注册表用户名和密码。
 
@@ -289,7 +289,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
       ```
 
 1. 在 Visual Studio Code 命令面板中：
-   1. 运行“Azure IoT Edge: Build and Push IoT Edge solution”命令。
+   1. 运行“Azure IoT Edge:Build and Push IoT Edge solution”命令。
 
    1. 选择解决方案的 `deployment.debug.template.json` 文件。
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mbullwin
 ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67876426"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时通过 Application Insights 无代码置备附加来检测 web 应用
@@ -64,7 +64,7 @@ ms.locfileid: "67876426"
 2. 如果尚未安装 Application Insights 状态监视器，请[下载并运行安装程序](#download)
 3. 在状态监视器中，选择已安装的 Web 应用程序或者要监视的网站。 使用 Azure 凭据登录。
 
-    配置资源，以便在其中通过 Application Insights 门户查看结果。 （通常情况下，最好是创建新的资源。 如果已针对此应用进行了 [Web 测试][availability]or [client monitoring][client]，请选择现有资源。） 
+    配置资源，以便在其中通过 Application Insights 门户查看结果。 （通常情况下，最好是创建新的资源。 如果已为此应用程序设置了[web 测试][availability]或[客户端监视][client], 请选择现有资源。) 
 
     ![选择应用和资源。](./media/monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
@@ -155,7 +155,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 ### <a name="insufficient-permissions"></a>权限不足
   
 * 如果在服务器上看到有关“权限不足”的消息，请尝试以下操作：
-  * 在 IIS 管理器中选择应用程序池，打开“高级设置”，并记下“进程模型”下的标识   。
+  * 在 IIS 管理器中选择应用程序池，打开“高级设置”，并记下“进程模型”下的标识。
   * 在计算机管理控制面板中，将此标识添加到性能监试器用户组。
 
 ### <a name="conflict-with-systems-center-operations-manager"></a>与 Systems Center Operations Manager 发生冲突

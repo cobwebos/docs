@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b22a9cf8c79530fd931cbe944ef5bfc876a02243
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61484832"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570132"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>探索如何使用 Azure SQL 数据库、SQL 数据仓库、数据工厂和 Power BI 运行 SaaS 分析
 
@@ -63,24 +62,24 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
 
 本教程提供了基本示例，演示可从 Wingtip Tickets 数据中收集的见解。 例如，如果 Wingtip Tickets 供应商了解每个会场使用该服务的方式，则他们就能思考如何针对或多或少的活跃会场运用不同的服务计划。 
 
-## <a name="setup"></a>设置
+## <a name="setup"></a>安装
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 > [!NOTE]
 > 本教程使用 Azure 数据工厂中目前以受限预览版提供的功能（链接服务参数化）。 若要完成本教程，请在[此处](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxrVywox1_tHk9wgd5P8SVJUNlFINjNEOElTVFdMUEREMjVVUlJCUDdIRyQlQCN0PWcu)提供订阅 ID。 启用订阅后，我们会发送确认邮件。
 
 若要完成本教程，请确保满足以下先决条件：
 - 已部署 Wingtip Tickets SaaS Database Per Tenant 应用程序。 若要在五分钟内进行部署，请参阅[部署并探究 Wingtip SaaS 应用程序](saas-dbpertenant-get-started-deploy.md)。
-- 已从 GitHub 下载 Wingtip Tickets SaaS Database Per Tenant 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)。 请参阅下载说明。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。 
+- 已从 GitHub 下载 Wingtip Tickets SaaS Database Per Tenant 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)。 请参阅下载说明。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。
 - 已安装 Power BI Desktop。 [下载 Power BI Desktop](https://powerbi.microsoft.com/downloads/)。
 - 已预配其他租户批，具体请参阅[**有关预配租户的教程**](saas-dbpertenant-provision-and-catalog.md)。
 
 ### <a name="create-data-for-the-demo"></a>创建用于演示的数据
 
-本教程探讨如何分析门票销量数据。 此步骤将为所有租户生成门票数据。 稍后的步骤将提取这些数据进行分析。 确保已按如前所述预配租户批，以便获得足够的数据来公开不同购票模式的范围。 
+本教程探讨如何分析门票销量数据。 此步骤将为所有租户生成门票数据。 稍后的步骤将提取这些数据进行分析。 确保已按如前所述预配租户批，以便获得足够的数据来公开不同购票模式的范围。
 
-1. 在 PowerShell ISE 中，打开“…\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1”，并设置以下值： 
+1. 在 PowerShell ISE 中，打开“…\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1”，并设置以下值：
     - **$DemoScenario** = **1** 购买所有会场举行的活动的门票
 2. 按 **F5** 运行脚本，并为所有会场创建购票历史记录。 针对 20 个租户，该脚本将生成数万张门票，整个过程可能需要 10 分钟或更长。
 
@@ -88,13 +87,13 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
 在 Wingtip Tickets 应用中，租户的事务数据分散在多个数据库中。 Azure 数据工厂 (ADF) 用于在数据仓库中协调此数据的提取、加载和转换 (ELT)。 为最有效地将数据载入 SQL 数据仓库，ADF 会将数据提取到中间 Blob 文件，然后使用 [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) 将数据载入数据仓库。   
 
 此步骤将部署本教程中使用的其他资源：名为 _tenantanalytics_ 的 SQL 数据仓库、名为 _dbtodwload-\<user\>_ 的 Azure 数据工厂，以及名为 _wingtipstaging\<user\>_ 的 Azure 存储帐户。 存储帐户用于暂时保存提取的数据文件，然后这些文件将会载入数据仓库。 此步骤还会部署数据仓库架构，并定义用于协调 ELT 过程的 ADF 管道。
-1. 在 PowerShell ISE 中，打开“…\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1”，并设置： 
+1. 在 PowerShell ISE 中，打开“…\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1”，并设置：
     - **$DemoScenario** = **2** 部署租户分析数据仓库、Blob 存储和数据工厂 
 1. 按 **F5** 运行演示脚本并部署 Azure 资源。 
 
 现在，查看部署的 Azure 资源：
 #### <a name="tenant-databases-and-analytics-store"></a>租户数据库和分析存储
-使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接到 **tenants1-dpt-&lt;user&gt;** 和 **catalog-dpt-&lt;user&gt;** 服务器。 将 &lt;user&gt; 替换为部署应用时使用的值。 使用登录名 =*开发人员*和密码 = *P\@ssword1*。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
+使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接到 **tenants1-dpt-&lt;user&gt;** 和 **catalog-dpt-&lt;user&gt;** 服务器。 将 &lt;user&gt; 替换为部署应用时使用的值。 使用 Login = *developer*和 Password = *P\@ssword1*。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
 
 ![从 SSMS 连接到 SQL 数据库服务器](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
@@ -116,7 +115,7 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
    ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
 
 1. 单击 **wingtipstaging\<user\>** 存储帐户浏览现有的对象。
-1. 单击“Blob”磁贴 
+1. 单击“Blob”磁贴
 1. 单击容器 **configfile**
 1. 确认 **configfile** 是否包含名为 **TableConfig.json** 的 JSON 文件。 此文件包含源和目标表名称、列名称和跟踪器列名称。
 
@@ -127,7 +126,7 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
 
 本部分探讨创建的数据工厂。 请遵循以下步骤启动数据工厂：
 1. 在门户中，单击名为 **dbtodwload-\<user\>** 的数据工厂。
-2. 单击“创作和监视”磁贴，在单独的选项卡中启动数据工厂设计器。  
+2. 单击“创作和监视”磁贴，在单独的选项卡中启动数据工厂设计器。 
 
 ## <a name="extract-load-and-transform-data"></a>提取、加载和转换数据
 Azure 数据工厂用于协调数据的提取、加载和转换。 从本教程中，我们将从每个租户数据库的四个不同 SQL 视图提取数据：**rawTickets**、**rawCustomers**、**rawEvents** 和 **rawVenues**。 这些视图包含会场 ID，因此你可以区分数据仓库中每个会场的数据。 数据将载入到数据仓库中的相应临时表：**raw_Tickets**、**raw_customers**、**raw_Events** 和 **raw_Venue**. 然后，某个存储过程将转换原始数据，并填充星型架构表：**fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events** 和 **dim_Dates**。
@@ -139,7 +138,7 @@ Azure 数据工厂用于协调数据的提取、加载和转换。 从本教程�
 
 ![adf_overview](media/saas-tenancy-tenant-analytics/adf-data-factory.PNG)
 
-在概述页中，切换到左侧面板中的“创作”选项卡，并观察是否已创建三个[管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)和三个[数据集](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)。 
+在概述页中，切换到左侧面板中的“创作”选项卡，并观察是否已创建三个[管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)和三个[数据集](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)。
 ![adf_author](media/saas-tenancy-tenant-analytics/adf_author_tab.JPG)
 
 三个嵌套管道为：SQLDBToDW、DBCopy 和 TableCopy。
@@ -150,7 +149,7 @@ Azure 数据工厂用于协调数据的提取、加载和转换。 从本教程�
 
 **管道 3 - TableCopy** 使用 SQL 数据库中的行版本号 (_rowversion_) 来识别已更改或更新的行。 此活动将会查找用于从源表提取行的起始和结束行版本。 每个租户数据库中存储的 **CopyTracker** 表跟踪在每次运行时从每个源表提取的最后一行。 新的或已更改的行将复制到数据仓库中的相应临时表：**raw_Tickets**、**raw_Customers**、**raw_Venues** 和 **raw_Events**。 最后，将在 **CopyTracker** 表中保存最后一个行版本，用作下次提取操作的初始行版本。 
 
-还有三个参数化的链接服务将数据工厂链接到源 SQL 数据库、目标 SQL 数据仓库和中间 Blob 存储。 在“创作”选项卡中，单击“连接”浏览这些链接服务，如下图所示：  
+还有三个参数化的链接服务将数据工厂链接到源 SQL 数据库、目标 SQL 数据仓库和中间 Blob 存储。 在“创作”选项卡中，单击“连接”浏览这些链接服务，如下图所示：
 
 ![adf_linkedservices](media/saas-tenancy-tenant-analytics/linkedservices.JPG)
 
@@ -167,14 +166,14 @@ SQL 数据仓库用作分析存储，对租户数据执行聚合。 本示例中
    
 ### <a name="trigger-the-pipeline-run"></a>触发管道运行
 遵循以下步骤，针对所有租户数据库运行完整的提取、加载和转换管道：
-1. 在 ADF 用户界面的“创作”选项卡上，从左窗格中选择“SQLDBToDW”管道。  
-1. 单击“触发器”，并在下拉菜单中单击“立即触发”。   此操作会立即运行管道。 在生产场景中，请定义一个时间表用于运行管道，以按计划刷新数据。
+1. 在 ADF 用户界面的“创作”选项卡上，从左窗格中选择“SQLDBToDW”管道。
+1. 单击“触发器”，并在下拉菜单中单击“立即触发”。 此操作会立即运行管道。 在生产场景中，请定义一个时间表用于运行管道，以按计划刷新数据。
   ![adf_trigger](media/saas-tenancy-tenant-analytics/adf_trigger.JPG)
-1. 在“管道运行”页上单击“完成”。  
+1. 在“管道运行”页上单击“完成”。
  
 ### <a name="monitor-the-pipeline-run"></a>监视管道运行
-1. 在 ADF 用户界面中，通过左侧菜单切换到“监视”选项卡。 
-1. 不断地单击“刷新”，直到 SQLDBToDW 管道的状态显示为“成功”。  
+1. 在 ADF 用户界面中，通过左侧菜单切换到“监视”选项卡。
+1. 不断地单击“刷新”，直到 SQLDBToDW 管道的状态显示为“成功”。
   ![adf_monitoring](media/saas-tenancy-tenant-analytics/adf_monitoring.JPG)
 1. 使用 SSMS 连接到数据仓库并查询星型架构表，验证数据是否已载入这些表中。
 
@@ -189,17 +188,17 @@ SQL 数据仓库用作分析存储，对租户数据执行聚合。 本示例中
 使用以下步骤连接到 Power BI，并导入前面创建的视图：
 
 1. 启动 Power BI Desktop。
-2. 在“开始”功能区上的菜单中，依次选择“获取数据”、“更多...”   从菜单中。
-3. 在“获取数据”窗口中，选择“Azure SQL 数据库”。  
-4. 在数据库登录窗口中，输入服务器名称 (**catalog-dpt-&lt;User&gt;.database.windows.net**)。 为“数据连接模式”选择“导入”，单击“确定”。    
+2. 在“开始”功能区上的菜单中，依次选择“获取数据”、“更多...” 从菜单中。
+3. 在“获取数据”窗口中，选择“Azure SQL 数据库”。
+4. 在数据库登录窗口中，输入服务器名称 (**catalog-dpt-&lt;User&gt;.database.windows.net**)。 为“数据连接模式”选择“导入”，单击“确定”。 
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 选择**数据库**在左窗格中，然后输入用户名 =*开发人员*，然后输入密码 = *P\@ssword1*。 单击“连接”  。  
+5. 选择左窗格中的 "**数据库**", 然后输入 "用户名 =*开发人员*", 并输入 password = *P\@ssword1*。 单击“连接”。  
 
     ![database-sign-in](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. 在“导航器”窗格中的分析数据库下，选择以下星型架构表：**fact_Tickets**、**dim_Events**、**dim_Venues**、**dim_Customers** 和 **dim_Dates**。  然后选择“加载”。  
+6. 在“导航器”窗格中的分析数据库下，选择以下星型架构表：**fact_Tickets**、**dim_Events**、**dim_Venues**、**dim_Customers** 和 **dim_Dates**。 然后选择“加载”。 
 
 祝贺你！ 数据已成功载入 Power BI。 现在，请浏览有趣的可视化效果，以深入了解租户。 本教程将逐步讲解分析功能如何向 Wingtip Tickets 业务团队提供一些数据驱动的建议。 借助建议可以优化业务模型和客户体验。
 
@@ -229,7 +228,7 @@ SQL 数据仓库用作分析存储，对租户数据执行聚合。 本示例中
 
 门票销售模式的见解可以引导 Wingtip Tickets 优化其业务模式。 Wingtip 也许可以不向所有租户收取相同的费用，而是推出具有不同计算大小的服务层级。 可以根据更高的服务级别协议 (SLA)，向每日售出较多门票的大型会场提供更高的层。 这些会场可将数据库放在具有更高的数据库资源限制的池中。 每个服务层级可以采用按小时售量分配，超出分配即会收取额外的费用。 定期出现销量喷发的大型会场将会受益于更高的层，而 Wingtip Tickets 可以更高效地将服务变现。
 
-同时，某些 Wingtip Tickets 客户抱怨他们正在努力售出足够多的票证，以抵消服务费用。 通过这些见解，绩效不佳的会场也许能够找到促升门票销量的机会。 销量提高会增大服务的认知价值。 右键单击“fact_Tickets”并选择“新建度量值”。  针对名为 **AverageTicketsSold** 的新度量值输入以下表达式：
+同时，某些 Wingtip Tickets 客户抱怨他们正在努力售出足够多的票证，以抵消服务费用。 通过这些见解，绩效不佳的会场也许能够找到促升门票销量的机会。 销量提高会增大服务的认知价值。 右键单击“fact_Tickets”并选择“新建度量值”。 针对名为 **AverageTicketsSold** 的新度量值输入以下表达式：
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
@@ -242,7 +241,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 上面的绘图显示，尽管大多数会场售出了 80% 以上的门票，但还有一些会场正在挣扎，力求将空座率降到一半以下。 尝试输入不同的合理值，以选择每个会场的最大或最小售出门票百分比。
 
 ## <a name="embedding-analytics-in-your-apps"></a>在应用中嵌入分析 
-本教程重点介绍了跨租户的分析，旨在改善软件供应商对其租户的了解。 分析功能还能为租户提供见解，帮助他们更有效地自行管理业务。  
+本教程重点介绍了跨租户的分析，旨在改善软件供应商对其租户的了解。 分析功能还能为租户提供见解，帮助他们更有效地自行管理业务。 
 
 在 Wingtip Tickets 示例中，我们已提前发现，门票销量往往遵循可预测的模式。 这项见解可能有助于业绩不佳的会场大幅促升其门票销量。 也许他们可以利用机器学习技术来预测每场活动的门票销量。 还可为价格变化造成的影响建模，以便能够预测优惠折扣的影响。 可将 Power BI Embedded 集成到事件管理应用程序，以可视化预测的销量数据，包括在销量不佳的活动中打折对门票总销量和收入造成的影响。 使用 Power BI Embedded，甚至可以直接在可视化体验中对门票价格真正实施折扣。
 

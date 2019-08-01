@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 66b54c027cde6341b23aef2c10b43fa21bf357da
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1afd78a0525be523f677cf0146c8a120155130ea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383464"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554681"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用情况和费用文件中的条款
 
@@ -28,7 +28,7 @@ ms.locfileid: "68383464"
 --- | --- | --- | --- | ---
 企业协议 (EA) | 是 | 是 | 是 | 否
 Microsoft 客户协议 (MCA) | 是 | 是 | 是 | 是
-即用即付 (PAYG) | 是 | 否 | 否 | 否
+即用即付 (PAYG) | 是 | 是 | 否 | 否
 
 若要了解有关 Marketplace 订单 (也称为外部服务) 的详细信息, 请参阅[了解 Azure 外部服务费用](billing-understand-your-azure-marketplace-charges.md)。
 
@@ -65,8 +65,6 @@ EffectivePrice | 全部 | 此期间的混合单价。 混合价格平均超出�
 ExchangeRateDate | MCA | 汇率的创建日期。
 ExchangeRatePricingToBilling | MCA | 用于将定价货币中的成本转换为计费货币的汇率。
 频率 | 全部 | 指示是否应重复收取费用。 费用可能发生一次 (**一次性**)、每月或每年重复一次 (**定期**) 或基于使用情况 (**UsageBased**)。
-IncludedQuantity | PAYG | 当前计费期间内免费提供的计量量。
-InstanceId | PAGY | 请参阅 ResourceId。
 InvoiceId | PAYG, MCA | 发票 PDF 上列出的唯一文档 ID。
 InvoiceSection | MCA | 请参阅 InvoiceSectionName。
 InvoiceSectionId | EA, MCA | EA 部门或 MCA 发票部分的唯一标识符。
@@ -105,6 +103,7 @@ ServicePeriodStartDate | MCA | 为已用或已购买的服务定义和锁定定�
 SubscriptionId | 全部 | Azure 订阅的唯一标识符。
 订阅名称 | 全部 | Azure 订阅的名称。
 Tags | 全部 | 分配给资源的标记。 不包含资源组标记。 可用于对内部费用分摊进行分组或分配成本。 有关详细信息，请参阅[使用标记来组织 Azure 资源](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)。
+术语 | 全部 | 显示产品/服务的有效性的术语。 例如：如果是保留实例, 则会将12个月显示为 "期限"。 对于一次性购买或定期购买, 期限为1个月 (SaaS, Marketplace 支持)。 这不适用于 Azure 消耗。
 UnitOfMeasure | 全部 | 服务的计费度量单位。 例如, 计算服务按小时计费。
 单价 | EA、PAYG | 收费单位的价格。
 

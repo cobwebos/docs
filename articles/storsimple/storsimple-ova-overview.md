@@ -12,16 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/14/2019
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cbfc69c7d8d9354ae4e727b9eb0180583165abab
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630273"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516709"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple 虚拟阵列简介
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 ## <a name="overview"></a>概述
 
@@ -37,7 +39,7 @@ Microsoft Azure StorSimple 虚拟阵列是一个集成式存储解决方案，�
 
 下表总结了 StorSimple 虚拟阵列的重要功能。
 
-| Feature | StorSimple 虚拟阵列 |
+| 功能 | StorSimple 虚拟阵列 |
 | --- | --- |
 | 安装要求 |使用虚拟化基础结构（HYPER-V 或 VMware） |
 | 可用性 |单节点 |
@@ -62,7 +64,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下表介绍了 StorSimple 虚拟阵列解决方案提供的某些主要优势。
 
-| Feature | 优势 |
+| 功能 | 优势 |
 | --- | --- |
 | 透明集成 |虚拟阵列支持 iSCSI 或 SMB 协议。 本地层和云层之间的数据移动是无缝的，并且对用户透明。 |
 | 降低存储成本 |借助 StorSimple，预配足够的本地存储来满足对最常使用的热门数据的当前需求。 随着存储需求的增长，StorSimple 将冷数据分层到经济高效的云存储中。 在发送到云之前对数据进行重复数据删除和压缩，以进一步降低存储要求和开支。 |
@@ -74,7 +76,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下面以表格形式列出了受支持的 StorSimple 工作负荷的摘要。
 
-|场景     |工作负荷     |支持      |限制               | 适用的版本|
+|应用场景     |工作负荷     |支持      |限制               | 适用版本|
 |-------------|-------------|---------------|---------------------------|--------------------|
 |远程办公室/分支机构 (ROBO)  |文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
 |云存档  |存档文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
@@ -87,7 +89,7 @@ StorSimple Virtual Array 最适用于不常访问的数据。 虽然 Virtual Arr
 
 StorSimple Virtual Array 不适用于需要高可用性的工作负载。 Virtual Array 是单节点设备，会在安装软件更新时出现停机。 管理员应每年计划 3 到 4 次 30 分钟的维护时段。
 
-## <a name="workflows"></a>工作流
+## <a name="workflows"></a>Workflows
 
 StorSimple 虚拟阵列尤其适合以下工作流：
 
@@ -101,7 +103,7 @@ StorSimple 虚拟阵列尤其适合以下工作流：
 ![基于云的存储管理](./media/storsimple-ova-overview/cloud-based-storage-management.png)
 
 ### <a name="location-independent-backup"></a>与位置无关的备份
-借助虚拟阵列，云快照提供卷或共享的与位置无关的时间点副本。 云快照默认处于启用状态，并且无法禁用。 所有卷和共享备份同时通过单个每日备份策略，并且可能需要根据需要随时的其他临时备份。
+借助虚拟阵列，云快照提供卷或共享的与位置无关的时间点副本。 云快照默认处于启用状态，并且无法禁用。 所有卷和共享通过单个每日备份策略同时备份, 你可以在必要时执行其他即席备份。
 
 ### <a name="data-protection-and-disaster-recovery"></a>数据保护和灾难恢复
 虚拟阵列支持以下数据保护和灾难恢复方案：
@@ -137,7 +139,7 @@ StorSimple 虚拟阵列尤其适合以下工作流：
 > [!NOTE]
 > 虚拟阵列无法扩展。 因此，在创建虚拟阵列时必须预配足够的存储。
 
-### <a name="storsimple-device-manager-service"></a>StorSimple Device Manager 服务
+### <a name="storsimple-device-manager-service"></a>StorSimple 设备管理器服务
 
 Microsoft Azure StorSimple 提供一个基于 Web 的用户界面（StorSimple Device Manager 服务），可用于集中管理 StorSimple 存储。 可以使用 StorSimple Device Manager 服务执行以下任务：
 

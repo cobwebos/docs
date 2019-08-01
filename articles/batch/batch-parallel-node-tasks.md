@@ -4,7 +4,7 @@ description: 通过减少所用的计算节点数并在 Azure Batch 池的每个
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/17/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79b45bd423ed6715cdb7cc7c0e079c150eefede5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc6a607da2227ecf9acd6209e31b7aa0ef1c62d8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717934"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68323363"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>以并发方式运行任务以最大程度地利用 Batch 计算节点 
 
@@ -51,9 +51,9 @@ Azure Batch 允许你将每个节点的任务数最多设置为（4 倍）核心
 ## <a name="distribution-of-tasks"></a>任务分发
 当池中的计算节点可以并行执行任务时，请务必指定任务在池中各节点之间的分布方式。
 
-可以通过 [CloudPool.TaskSchedulingPolicy][task_schedule] 属性指定任务，即让任务在池中所有节点之间平均分配（“散布式”）。 或者，先给池中的每个节点分配尽量多的任务，再将任务分配给池中的其他节点（“装箱式”）。
+可以通过 [CloudPool.TaskSchedulingPolicy][task_schedule] 属性指定任务应在池中所有节点之间平均分配（“散布式”）。 或者，先给池中的每个节点分配尽量多的任务，再将任务分配给池中的其他节点（“装箱式”）。
 
-此功能十分重要，如需示例，请参阅上面示例中 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) 节点的池，该池配置后的 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 值为 16。 如果对 [CloudPool.TaskSchedulingPolicy][task_schedule] 进行配置时，将 [ComputeNodeFillType][fill_type] 设置为 Pack  ，则会充分使用每个节点的所有 16 个核心，并可通过[自动缩放池](batch-automatic-scaling.md)将不使用的节点（没有分配任何任务的节点）从池中删除。 这可以最大程度地减少资源使用量并节省资金。
+此功能十分重要，如需示例，请参阅上面示例中 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) 节点的池，该池配置后的 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 值为 16。 如果对 [CloudPool.TaskSchedulingPolicy][task_schedule] 进行配置时，将 [ComputeNodeFillType][fill_type] 设置为 Pack，则会充分使用每个节点的所有 16 个核心，并可通过[自动缩放池](batch-automatic-scaling.md)将不使用的节点（没有分配任何任务的节点）从池中删除。 这可以最大程度地减少资源使用量并节省资金。
 
 ## <a name="batch-net-example"></a>Batch .NET 示例
 此 [Batch .NET][api_net] API 代码片段演示了一个请求，该请求要求创建一个包含四个节点的池，每个节点最多四个任务。 它指定了一个任务计划策略，要求先用任务填充一个节点，然后再将任务分配给池中的其他节点。 有关如何使用 Batch .NET API 添加池的详细信息，请参阅 [BatchClient.PoolOperations.CreatePool][poolcreate_net]。
@@ -72,7 +72,7 @@ pool.Commit();
 ```
 
 ## <a name="batch-rest-example"></a>Batch REST 示例
-此 [Batch REST][api_rest] API 代码片段演示了一个请求，该请求要求创建一个包含两个大型节点的池，每个节点最多四个任务。 有关如何使用 REST API 添加池的详细信息，请参阅[将池添加到帐户][rest_addpool]。
+此 [Batch REST][api_rest] API 代码片段演示了一个请求，该请求要求创建一个包含两个大型节点的池，每个节点最多四个任务。 有关如何使用 REST API 添加池的详细信息，请参阅 [Add a pool to an account][rest_addpool]（将池添加到帐户）。
 
 ```json
 {
@@ -126,7 +126,7 @@ Duration: 00:08:48.2423500
 
 ## <a name="next-steps"></a>后续步骤
 ### <a name="batch-explorer-heat-map"></a>Batch 资源管理器热度地图
-[Batch Explorer][batch_labs] 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 Batch Explorer 包含“热度地图”  功能，可提供任务执行的可视化效果。 执行 [ParallelTasks][parallel_tasks_sample] 示例应用程序时，可以使用“热度地图”功能轻松可视化每个节点上并行任务的执行。
+[Batch Explorer][batch_labs] 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 Batch Explorer 包含“热度地图”功能，可提供任务执行的可视化效果。 执行 [ParallelTasks][parallel_tasks_sample] 示例应用程序时，可以使用“热度地图”功能轻松直观显示每个节点上并行任务的执行。
 
 
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx

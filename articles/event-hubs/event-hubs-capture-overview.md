@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 4ba3109460616be98b5330ec7175f161a6a3b750
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326165"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件
@@ -73,7 +73,7 @@ https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhu
 
 ![Avro 架构][3]
 
-浏览 Avro 文件的一种简单方法是使用 [Avro 工具][Avro Tools]jar from Apache. You can also use [Apache Drill][Apache Drill]获得轻量级 SQL 驱动的体验，或使用 [Apache Spark][Apache Spark] 对引入的数据执行复杂的分布式处理。 
+浏览 Avro 文件的简单方法是使用 Apache 中的 [Avro 工具][Avro Tools] jar。 你还可以使用[Apache 钻取][Apache Drill]轻型 SQL 驱动的体验或[Apache Spark][Apache Spark]来对引入数据执行复杂的分布式处理。 
 
 ### <a name="use-apache-drill"></a>使用 Apache Drill
 
@@ -129,7 +129,7 @@ java -jar avro-tools-1.8.2.jar getschema <name of capture file>
 
 若要执行更高级的处理，请下载并安装适用于所选平台的 Avro。 在撰写本文时，有可用于 C、C++、C\#、Java、NodeJS、Perl、PHP、Python 和 Ruby 的实现。
 
-Apache Avro 针对 [Java][Java] and [Python][Python]提供了完整的入门指南。 还可以参阅[事件中心捕获入门](event-hubs-capture-python.md)一文。
+Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入门指南。 还可以参阅[事件中心捕获入门](event-hubs-capture-python.md)一文。
 
 ## <a name="how-event-hubs-capture-is-charged"></a>Azure 事件中心捕获的收费方式
 

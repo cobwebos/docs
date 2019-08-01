@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 96d55da713b8591b20f95ba36f332a340999181e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c92ffb6aa6db9c77a859661115d54ff63ea02401
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242739"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568206"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间
 
