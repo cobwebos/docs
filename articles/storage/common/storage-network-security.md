@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: cc0ba80f7aef53568e048b8285800982c818b004
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 3a49681c5c5fa081157e1264f3e9f757c3ee0e6c
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334600"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516967"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -348,19 +348,20 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 如果启用“允许受信任的 Microsoft 服务...”例外，以下服务（在订阅中注册后）有权访问存储帐户：
 
-|服务|资源提供程序名称|用途|
-|:------|:---------------------|:------|
-|Azure 备份|Microsoft.RecoveryServices|在 IAAS 虚拟机中运行非托管磁盘的备份和还原。 （不是托管磁盘的必需操作）。 [了解详细信息](/azure/backup/backup-introduction-to-azure-backup)。|
-|Azure Data Box|Microsoft.DataBox|允许使用 Data Box 将数据导入到 Azure。 [了解详细信息](/azure/databox/data-box-overview)。|
-|Azure 开发测试实验室|Microsoft.DevTestLab|自定义映像创建和项目安装。 [了解详细信息](/azure/devtest-lab/devtest-lab-overview)。|
-|Azure 事件网格|Microsoft.EventGrid|启用 Blob 存储事件发布并允许事件网格发布到存储队列。 了解有关 [blob 存储事件](/azure/event-grid/event-sources)和[发布到队列](/azure/event-grid/event-handlers)的信息。|
-|Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。 [了解详细信息](/azure/event-hubs/event-hubs-capture-overview)。|
-| Azure 文件同步| Microsoft.StorageSync| 使你能够将本地文件服务器转换为 Azure 文件共享的缓存。 允许多站点同步、快速灾难恢复和云端备份。 [了解详细信息](../files/storage-sync-files-planning.md)|
-|Azure HDInsight|Microsoft.HDInsight|为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详细信息](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。|
-|Azure Monitor|Microsoft.Insights|允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。|
-|Azure 网络|Microsoft.Network|存储和分析网络流量日志。 [了解详细信息](/azure/network-watcher/network-watcher-packet-capture-overview)。|
-|Azure Site Recovery|Microsoft.SiteRecovery |通过启用 Azure IaaS 虚拟机的复制来配置灾难恢复。 如果使用启用了防火墙的缓存存储帐户、源存储帐户或目标存储帐户，则这是必需的。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。|
-|Azure SQL 数据仓库|Microsoft.Sql|允许使用 PolyBase 从特定 SQL 数据库实例导入和导出方案。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。|
+| 服务                  | 资源提供程序名称     | 用途                                                                                                                                                                                                                                                                                                                      |
+|:-------------------------|:---------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure 备份             | Microsoft.RecoveryServices | 在 IAAS 虚拟机中运行非托管磁盘的备份和还原。 （不是托管磁盘的必需操作）。 [了解详细信息](/azure/backup/backup-introduction-to-azure-backup)。                                                                                                                                                     |
+| Azure Data Box           | Microsoft.DataBox          | 允许使用 Data Box 将数据导入到 Azure。 [了解详细信息](/azure/databox/data-box-overview)。                                                                                                                                                                                                                              |
+| Azure 开发测试实验室       | Microsoft.DevTestLab       | 自定义映像创建和项目安装。 [了解详细信息](/azure/devtest-lab/devtest-lab-overview)。                                                                                                                                                                                                                      |
+| Azure 事件网格         | Microsoft.EventGrid        | 启用 Blob 存储事件发布并允许事件网格发布到存储队列。 了解有关 [blob 存储事件](/azure/event-grid/event-sources)和[发布到队列](/azure/event-grid/event-handlers)的信息。                                                                                                     |
+| Azure 事件中心         | Microsoft.EventHub         | 使用事件中心捕获功能存档数据。 [了解详细信息](/azure/event-hubs/event-hubs-capture-overview)。                                                                                                                                                                                                                           |
+| Azure 文件同步          | Microsoft.StorageSync      | 使你能够将本地文件服务器转换为 Azure 文件共享的缓存。 允许多站点同步、快速灾难恢复和云端备份。 [了解详细信息](../files/storage-sync-files-planning.md)                                                                                                       |
+| Azure HDInsight          | Microsoft.HDInsight        | 为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详细信息](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。                                                                                                                                    |
+| Azure Monitor            | Microsoft.Insights         | 允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。                                                                                                                                                                        |
+| Azure 网络         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](/azure/network-watcher/network-watcher-packet-capture-overview)。                                                                                                                                                                                                        |
+| Azure Site Recovery      | Microsoft.SiteRecovery     | 通过启用 Azure IaaS 虚拟机的复制来配置灾难恢复。 如果使用启用了防火墙的缓存存储帐户、源存储帐户或目标存储帐户，则这是必需的。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
+| Azure SQL 数据仓库 | Microsoft.Sql              | 允许使用 PolyBase 从特定 SQL 数据库实例导入和导出方案。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。                                                                                                                                                 |
+| Azure 流分析   | Microsoft.StreamAnalytics  | 允许将流式处理作业中的数据写入 Blob 存储。 请注意, 此功能目前处于预览阶段。 [了解详细信息](../../stream-analytics/blob-output-managed-identity.md)。                                                                                                                                        |
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问
 

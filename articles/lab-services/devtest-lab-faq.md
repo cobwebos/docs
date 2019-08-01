@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 9f38502cc543f19855dbca32c4724a5651b1a3f2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318106"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565330"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -46,11 +46,11 @@ Twitter 的句柄:[@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 如果你的问题未在此处列出, 请告知我们, 以便我们可以帮助你找到答案。
 
-- 在本常见问题解答的末尾发布问题。 与 Azure 缓存团队和其他社区成员就本文进行讨论。
+- 在本常见问题解答的末尾发布问题。 
 - 若希望更多人看到问题，可以将问题发布在 [Azure 开发测试实验室 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)上。 与 Azure 开发测试实验室团队和其他社区成员进行讨论。
 - 要提出功能请求，请将请求和想法提交到 [Azure DevTest Labs User Voice](https://feedback.azure.com/forums/320373-azure-devtest-labs)（Azure 开发测试实验室用户之声）。
 
-### <a name="what-is-a-microsoft-account"></a>什么是 Microsoft 帐户？
+### <a name="what-is-a-microsoft-account"></a>什么是 Microsoft 帐户?
 Microsoft 帐户可用于通过 Microsoft 设备和服务执行的几乎所有操作。 它是一个电子邮件地址和密码, 用于登录到 Skype、Outlook.com、OneDrive、Windows phone、Azure 和 Xbox Live。 单一帐户意味着文件、照片、联系人和设置可跟随用户移动到任何设备。
  
 > [!NOTE]
@@ -99,7 +99,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 
 中心 IT 应该只拥有所需的内容, 使项目和应用程序团队能够获得所需的控制级别。 通常情况下，这意味着中心 IT 部门拥有订阅并负责核心 IT 功能，例如网络配置。 订阅的**所有者**集应该小。 这些所有者可以在需要时为其他所有者提供额外的所有者, 也可以应用订阅级别的策略, 例如 "无公共 IP"。
 
-部分用户（例如第 1 层或第 2 层支持人员）可能需要在整个订阅中进行访问。 在这种情况下，建议为这些用户提供管理资源所需的“参与者”访问权限，但不提供用户访问权限，也不调整策略。 
+部分用户（例如第 1 层或第 2 层支持人员）可能需要在整个订阅中进行访问。 在这种情况下，建议为这些用户提供管理资源所需的“参与者”访问权限，但不提供用户访问权限，也不调整策略。
 
 开发测试实验室资源应该由那些接近项目/应用程序团队的所有者拥有。 这是因为它们了解计算机的要求和所需的软件。 在大多数组织中，此开发测试实验室资源的所有者通常是项目/开发主管。 此所有者可以管理实验室环境中的用户和策略，可以管理开发测试实验室环境中的所有 VM。
 
@@ -109,7 +109,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 
 
 ### <a name="how-do-i-create-a-role-to-allow-users-to-do-a-specific-task"></a>如何实现创建角色来允许用户执行特定任务？
-有关如何创建自定义角色，并将权限分配给该角色的综合性文章，请参阅[向用户授予特定实验室策略的权限](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)。 下面的脚本示例创建“开发测试实验室高级用户”角色，该角色具有启动和停止实验室中所有 VM 的权限  ：
+有关如何创建自定义角色，并将权限分配给该角色的综合性文章，请参阅[向用户授予特定实验室策略的权限](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)。 下面的脚本示例创建“开发测试实验室高级用户”角色，该角色具有启动和停止实验室中所有 VM 的权限：
 
 
 ```powershell
@@ -176,7 +176,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 你还可以在 Azure DevOps Projects 中使用特定项目的实验室。 然后，通过允许访问这两组资源的指定 Azure Active Directory 组应用安全性。 分配到该实验室的虚拟网络可以是用于整合用户的另一个边界。
 
 ### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>如何防止删除实验室中的资源？
-我们建议在实验室级别设置适当的权限，以便只有经过授权的用户才能删除资源或更改实验室策略。 应将开发人员放置在“开发测试实验室用户”组中。  开发人员主管或基础结构主管应是“开发测试实验室所有者”。  建议仅有两个实验室所有者。 此策略根据代码存储库的扩展而扩展，以避免损坏。 实验室用户有权使用资源, 但无法更新实验室策略。 请参阅以下文章，其中列出了每个内置组在实验室中拥有的角色和权限：[在 Azure 开发测试实验室中添加所有者和用户](devtest-lab-add-devtest-user.md)。
+我们建议在实验室级别设置适当的权限，以便只有经过授权的用户才能删除资源或更改实验室策略。 应将开发人员放置在“开发测试实验室用户”组中。 开发人员主管或基础结构主管应是“开发测试实验室所有者”。 建议仅有两个实验室所有者。 此策略根据代码存储库的扩展而扩展，以避免损坏。 实验室用户有权使用资源, 但无法更新实验室策略。 请参阅以下文章，其中列出了每个内置组在实验室中拥有的角色和权限：[在 Azure 开发测试实验室中添加所有者和用户](devtest-lab-add-devtest-user.md)。
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>如何向我的实验室共享直接链接？
 
@@ -286,12 +286,12 @@ foreach($labVM in $labVMs)
 查找与实验室关联的目标存储帐户：
 
 1.  登录到 [Azure 门户](https://portal.azure.com)。
-2.  在左侧菜单上，选择“资源组”  。
+2.  在左侧菜单上，选择“资源组”。
 3.  查找并选择与实验室关联的资源组。
-4.  在“概述”下，选择一个存储帐户  。
-5.  选择“Blob”  。
+4.  在“概述”下，选择一个存储帐户。
+5.  选择“Blob”。
 6.  查找列表中的上传。 如果不存在，则返回到步骤 4，并尝试另一个存储帐户。
-7.  将该 URL 用作 AzCopy 命令中的目标  。
+7.  将该 URL 用作 AzCopy 命令中的目标。
 
 何时应使用 Azure 市场映像以及自己的自定义组织映像？
 
@@ -388,7 +388,7 @@ VM 是资源组中实验室下的子资源。 使用资源管理器模板通过 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM 部署失败时，可在何处查找错误详细信息？
 活动日志中会捕获 VM 部署错误。 你可以在实验室 VM 页面上的 "资源" 菜单上的 "**审核日志**" 或 "**虚拟机诊断**" 下找到实验室 vm 活动日志 (从 "我的虚拟机" 列表中选择 VM 后, 会显示此页)。
 
-有时，部署错误发生在 VM 部署开始之前。 一个示例是超过与 VM 一起创建的资源的订阅限制时。 在此情况下，会在实验室级别活动日志中捕获错误详细信息。 活动日志位于“配置和策略”设置的底部  。 若要深入了解如何在 Azure 中使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-resource-manager/resource-group-audit.md)。
+有时，部署错误发生在 VM 部署开始之前。 一个示例是超过与 VM 一起创建的资源的订阅限制时。 在此情况下，会在实验室级别活动日志中捕获错误详细信息。 活动日志位于“配置和策略”设置的底部。 若要深入了解如何在 Azure 中使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-resource-manager/resource-group-audit.md)。
 
 ### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>为什么在尝试创建实验室时出现 "资源类型的位置不可用" 错误？
 尝试创建实验室时, 可能会看到类似于下面的错误消息: 

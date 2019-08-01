@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 36b1fb96ac1dd89375588a65063ce729f6ac825d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1dc1d2780dcaf27e0c60cfffe84581c0278491dd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65794392"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566526"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 
@@ -42,7 +41,7 @@ ms.locfileid: "65794392"
 
 ## <a name="availability-capabilities"></a>可用性功能
 
-单个数据库、 弹性池，托管的实例都提供了许多的可用性特征。 有关信息，请参阅[可用性特征](sql-database-technical-overview.md#availability-capabilities)。
+单个数据库、弹性池和托管实例都提供许多可用性特征。 有关信息，请参阅[可用性特征](sql-database-technical-overview.md#availability-capabilities)。
 
 ## <a name="transact-sql-differences"></a>Transact-SQL 的差异
 
@@ -51,12 +50,12 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](sql-database-transact-sql-information.md)。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 SQL 数据库提供一系列[内置安全性和符合性](sql-database-security-overview.md)功能，帮助应用程序满足各种安全性和符合性要求。
 
 > [!IMPORTANT]
-> Azure SQL 数据库（所有部署选项）已通过了许多合规性标准的认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)在哪里可以找到 SQL 数据库法规认证的最新列表。
+> Azure SQL 数据库（所有部署选项）已通过了许多合规性标准的认证。 有关详细信息, 请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), 你可以在其中找到最新的 SQL 数据库符合性认证列表。
 
 ## <a name="next-steps"></a>后续步骤
 

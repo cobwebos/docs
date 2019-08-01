@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
 ms.openlocfilehash: 05c227e7de078c6bb371049f16e191598b9ca4e5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68310378"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>升级经典容器注册表
 
-Azure 容器注册表 (ACR) 分为多个服务层级（[称为“SKU”](container-registry-skus.md)）。 ACR 的初始版本提供的单一 SKU（即经典 SKU）缺乏基本 SKU、标准 SKU 和高级 SKU（统称托管注册表）固有的多项功能。 
+Azure 容器注册表 (ACR) 分为多个服务层级（[称为“SKU”](container-registry-skus.md)）。 ACR 的初始版本提供的单一 SKU（即经典 SKU）缺乏基本 SKU、标准 SKU 和高级 SKU（统称托管注册表）固有的多项功能。
 
 经典 SKU 即将弃用，2019 年 4 月之后将不可用。 本文详述了如何将非托管的经典注册表迁移到某个托管的 SKU，以便利用其增强的功能集。
 
@@ -53,7 +53,7 @@ Azure 容器注册表 (ACR) 分为多个服务层级（[称为“SKU”](contain
 
 ## <a name="how-to-upgrade"></a>如何升级
 
-可以通过多种方式将非托管的经典注册表升级为某个托管的 SKU。 在以下部分中, 我们将介绍使用[Azure CLI][azure-cli] and the [Azure portal][azure-portal]的过程。
+可以通过多种方式将非托管的经典注册表升级为某个托管的 SKU。 在以下部分中, 我们将介绍使用[Azure CLI][azure-cli]和[Azure 门户][azure-portal]的过程。
 
 ## <a name="upgrade-in-azure-cli"></a>在 Azure CLI 中升级
 
@@ -96,17 +96,17 @@ az acr update --name myclassicregistry --sku Premium
 
 使用 Azure 门户升级经典注册表时，Azure 会自动选择标准或高级 SKU，具体取决于哪个 SKU 可以容纳映像。 例如，如果注册表包含 100 GiB 以下的映像，Azure 会自动选择经典注册表并将其转换为标准注册表（最大容量为 100 GiB）。
 
-若要使用 Azure 门户升级经典注册表，请导航到容器注册表的“概览”页，然后选择“升级到托管的注册表”。  
+若要使用 Azure 门户升级经典注册表，请导航到容器注册表的“概览”页，然后选择“升级到托管的注册表”。
 
 ![Azure 门户 UI 中的经典注册表升级按钮][update-classic-01-upgrade]
 
-选择“确定”，确认要升级到托管的注册表。 
+选择“确定”，确认要升级到托管的注册表。
 
-在迁移过程中，门户会指示注册表的**预配状态**为“正在更新”。  如前所述，迁移操作还剩 10% 时，将禁用 `docker push` 操作。 迁移正在进行时，请不得删除或更新经典注册表使用的存储帐户，否则可能导致映像损坏。
+在迁移过程中，门户会指示注册表的**预配状态**为“正在更新”。 如前所述，迁移操作还剩 10% 时，将禁用 `docker push` 操作。 迁移正在进行时，请不得删除或更新经典注册表使用的存储帐户，否则可能导致映像损坏。
 
 ![Azure 门户 UI 中的经典注册表升级进度][update-classic-03-updating]
 
-迁移完成后，“预配状态”会指示“成功”，此时可以恢复注册表的正常操作   。
+迁移完成后，“预配状态”会指示“成功”，此时可以恢复注册表的正常操作。
 
 ![Azure 门户 UI 中的经典注册表升级完成状态][update-classic-04-updated]
 

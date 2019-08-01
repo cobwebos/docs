@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3230d85dfcf57bfd4e2e1684f4f5620600ec4e3a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c25bc316a345404c759b346b4fb877de42ee4d13
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424202"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561556"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 
@@ -45,9 +45,9 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 由于水平 Pod 自动缩放程序每 30 秒检查一次指标 API，因此在进行另一次检查之前，先前的缩放事件可能尚未成功完成。 此行为可能导致水平 Pod 自动缩放程序会在上一个缩放事件能够接收应用程序工作负载且需要对资源进行相应调整之前更改副本数。
 
-为最大限度地减少这些争用事件，可以设置冷却时间值或延迟值。 这些值定义水平 Pod 自动缩放程序在执行一个缩放事件之后，触发另一个缩放事件之前必须等待的时间。 此行为允许新副本计数生效，指标 API 反映分布式工作负载。 默认情况下，纵向扩展事件的延迟为 3 分钟，纵向缩减事件的延迟为 5 分钟
+若要最大程度减少争用事件, 请设置 cooldown 或延迟值。 这些值定义水平 Pod 自动缩放程序在执行一个缩放事件之后，触发另一个缩放事件之前必须等待的时间。 此行为允许新副本计数生效，指标 API 反映分布式工作负载。 默认情况下，纵向扩展事件的延迟为 3 分钟，纵向缩减事件的延迟为 5 分钟
 
-可能需要调整这些冷却时间值。 默认的冷却时间值可能会让人认为是水平 Pod 自动缩放程序没有足够快速地缩放副本计数。 例如，要更快地增加正在使用的副本数量，请在使用 `kubectl` 创建水平 Pod 自动缩放程序定义时减少 `--horizontal-pod-autoscaler-upscale-delay`。
+目前, 无法从默认值调整这些 cooldown 值。
 
 ## <a name="cluster-autoscaler"></a>群集自动缩放程序
 
@@ -93,7 +93,7 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 若要开始缩放应用程序，请首先按照[使用 Azure CLI 创建 AKS 群集的快速入门][aks-quickstart]进行操作。 然后，可以开始手动或自动缩放 AKS 群集中的应用程序：
 
-- 手动缩放 [Pod][aks-manually-scale-pods] or [nodes][aks-manually-scale-nodes]
+- 手动缩放[pod][aks-manually-scale-pods]或[节点][aks-manually-scale-nodes]
 - 使用[水平 Pod 自动缩放程序][aks-hpa]
 - 使用[群集自动缩放程序][aks-cluster-autoscaler]
 

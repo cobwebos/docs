@@ -10,10 +10,10 @@ ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: 6944755619ea5e8e63af04b9b3bca6f7376e29a9
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309446"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
@@ -25,7 +25,7 @@ Azure 容器注册表存储和管理专用 [Docker](https://hub.docker.com) 容�
 ## <a name="prerequisites"></a>先决条件
 
 * **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
-* **Docker CLI** - 还必须在本地安装 Docker。 Docker 提供的包可在任何[macOS][docker-mac], [Windows][docker-windows]或[linux][Docker-linux]系统上轻松配置 Docker。
+* **Docker CLI** - 还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
 
 ## <a name="log-in-to-a-registry"></a>登录到注册表
 

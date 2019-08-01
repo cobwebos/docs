@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b000610b5cba6f768a629ad797500a57597f2569
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 25f8c19ad1c574f6a3d84d50d911b4da6b52cfc3
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335695"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516503"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>将启用了 Azure 磁盘加密的虚拟机复制到另一个 Azure 区域
 
@@ -23,9 +23,9 @@ ms.locfileid: "68335695"
 >目前，Azure Site Recovery 仅支持运行 Windows OS 且已[使用 Azure Active Directory (Azure AD) 启用加密](https://aka.ms/ade-aad-app)的 Azure VM。
 
 ## <a id="required-user-permissions"></a>必需的用户权限
-Site Recovery 要求用户拥有在目标区域创建 Key Vault 以及将密钥复制到该区域的权限。
+Site Recovery 要求用户有权在目标区域中创建密钥保管库, 并将密钥从源区域密钥保管库复制到目标区域密钥保管库。
 
-若要通过 Azure 门户为启用了磁盘加密的 VM 启用复制，用户需要以下权限：
+若要启用从 Azure 门户复制启用磁盘加密的 Vm, 用户需要在**源区域和目标区域**密钥保管库中具有以下权限。
 
 - 密钥保管库权限
     - 列出、创建和获取

@@ -13,10 +13,10 @@ ms.workload: big-compute
 ms.date: 04/23/2019
 ms.author: lahugh
 ms.openlocfilehash: 2b9d6832422b98c1064a4e9e99774c4788e801e5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323659"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch 运行时环境变量
@@ -67,7 +67,7 @@ ms.locfileid: "68323659"
 | AZ_BATCH_POOL_ID                | 运行任务的池的 ID。 | 所有任务。 | batchpool001 |
 | AZ_BATCH_TASK_DIR               | 节点上[任务目录][files_dirs]的完整路径。 此目录包含任务的 `stdout.txt` 和 `stderr.txt`，以及 AZ_BATCH_TASK_WORKING_DIR。 | 所有任务。 | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | 当前任务的 ID。 | 除启动任务以外的所有任务。 | task001 |
-| AZ_BATCH_TASK_SHARED_DIR | 一个目录路径，对于[多实例任务][multi_instance]. The path exists on every node on which the multi-instance task runs, and is read/write accessible to the task commands running on that node (both the [coordination command][coord_cmd]和[应用程序命令][app_cmd] 的主要任务和每个子任务来说都相同。 在其他节点上执行的子任务或主要任务不具有对此目录（它不是“共享”的网络目录）的远程访问权限。 | 多实例主要和子任务。 | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
+| AZ_BATCH_TASK_SHARED_DIR | 一个目录路径，对于[多实例任务][multi_instance]的主要任务和每个子任务来说都相同。 该路径存在于运行多实例任务的每个节点上，并且在该节点上运行的任务命令（[协调命令][coord_cmd]和[应用程序命令][app_cmd]）对其具有读取/写入权限。 在其他节点上执行的子任务或主要任务不具有对此目录（它不是“共享”的网络目录）的远程访问权限。 | 多实例主要和子任务。 | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | 节点上[任务工作目录][files_dirs]的完整路径。 当前正在运行的任务具有对此目录的读取/写入权限。 | 所有任务。 | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
 | CCP_NODES                       | 分配给[多实例任务][multi_instance]的节点和每个节点的核心数的列表。 使用 `numNodes<space>node1IP<space>node1Cores<space>` 格式列出了节点和内核<br/>`node2IP<space>node2Cores<space> ...`，其中节点数后跟一个或多个节点 IP 地址和每个节点的内核数。 |  多实例主要和子任务。 |`2 10.0.0.4 1 10.0.0.5 1` |
 

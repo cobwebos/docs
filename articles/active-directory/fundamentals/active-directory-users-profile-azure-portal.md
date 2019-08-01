@@ -2,22 +2,22 @@
 title: 添加或更新用户的配置文件信息 - Azure Active Directory | Microsoft Docs
 description: 有关如何在 Azure Active Directory 中向用户配置文件添加信息（包括图片和作业详细信息）的说明。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 04/11/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4002c14ed6340a0e1a89ee295d47c98436515775
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248105"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561770"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>使用 Azure Active Directory 添加或更新用户的配置文件信息
 使用 Azure Active Directory (Azure AD) 来添加用户配置文件信息，包括配置文件图片、工作特定信息和某些设置。 有关添加新用户的详细信息，请参阅[如何添加或删除 Azure Active Directory 中的用户](add-users-azure-active-directory.md)。
@@ -28,13 +28,13 @@ ms.locfileid: "60248105"
 ## <a name="to-add-or-change-profile-information"></a>添加或更改配置文件信息的步骤
 1. 以组织的用户管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 依次选择“Azure Active Directory”、“用户”，然后选择一个用户   。 例如，Alain Charon  。
+2. 依次选择“Azure Active Directory”、“用户”，然后选择一个用户。 例如，Alain Charon。
 
-    Alain Charon - 配置文件页面随即出现  。
+    Alain Charon - 配置文件页面随即出现。
 
     ![用户的配置文件页面，其中包括可编辑信息](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
 
-3. 选择“编辑”以选择性地添加或更新每个可用部分中包含的信息  。
+3. 选择“编辑”以选择性地添加或更新每个可用部分中包含的信息。
 
     ![用户的配置文件页面，其中显示可编辑区域](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "60248105"
 
     - **身份验证联系人信息。** 验证此信息以确保用户的电话号码和电子邮件地址有效。 Azure Active Directory 使用此信息在登录期间确保用户为本人。 身份验证联系人信息只能由全局管理员更新。
 
-4. 选择“保存”。 
+4. 选择**保存**。
 
     为用户保存所做的所有更改。
 
