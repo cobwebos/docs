@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8180fc4db10019a3183af40cf21d9d92b0102201
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703160"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567887"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
-本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可以将发送到此诊断日志[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)， [Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)， [Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)，或自定义 DevOps 警报和报告的第三方解决方案功能。
+本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可以将此诊断日志发送到[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)、 [azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)、 [azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案, 以用于自定义 DevOps 警报和报告功能。
 
 ## <a name="log-header"></a>日志标头
 
@@ -114,7 +113,7 @@ Intelligent Insights 日志的下一部分提供关于受检测到的性能问�
 }]
 ```
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
 每个报告的指标的测量单位在指标 (metric) 属性下提供，可能的值有：秒、数字和百分比。 测量的指标值在值 (value) 属性中报告。
 
@@ -135,7 +134,7 @@ Intelligent Insights 性能日志的最后部分是对已确定的性能下降�
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-可以使用在 Intelligent Insights 性能日志[Azure Monitor 日志]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)或自定义 DevOps 警报和报告功能的第三方解决方案。
+可以将智能见解性能日志与[Azure Monitor 日志]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)或第三方解决方案结合使用, 以实现自定义 DevOps 警报和报告功能。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解有关 [Intelligent Insights](sql-database-intelligent-insights.md) 的概念。

@@ -11,10 +11,10 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67626153"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 6 月
@@ -111,7 +111,7 @@ start_time                | end_time                | command
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，有一点您了解 SQL 数据仓库，了解如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]. If you are new to Azure, you may find the [Azure glossary][Azure glossary]在遇到新术语。 或者，查看一下以下一些其他 SQL 数据仓库资源。  
+现在, 你已了解有关 SQL 数据仓库的一点, 接下来了解如何快速[创建 Sql 数据仓库][create a SQL Data Warehouse]。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表][Azure glossary] 可以提供帮助。 或者，查看一下以下一些其他 SQL 数据仓库资源。  
 
 * [客户成功案例]
 * [博客]

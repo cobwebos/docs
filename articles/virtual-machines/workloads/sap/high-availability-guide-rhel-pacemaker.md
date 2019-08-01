@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: cd56df8e88a84f52933e5ee43fecd598252ba6c0
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bffb92e37ccddd43c2a64466282084bb6226c338
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479757"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570565"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -39,8 +39,6 @@ ms.locfileid: "68479757"
 
 [virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
-> [!TIP]
-> 如果需要，Red Hat Enterprise Linux 上的 Pacemaker 将使用 Azure Fence Agent 来隔离群集节点。 新版本的 Azure 隔离代理可用且故障转移不再花费很长时间, 如果资源停止失败, 或者群集节点无法彼此通信, 则不会再进行通信。 有关详细信息，请阅读 [Azure VM running as a RHEL High Availability cluster member take a very long time to be fenced, or fencing fails / times-out before the VM shuts down](https://access.redhat.com/solutions/3408711)（隔离作为 RHEL 高可用性群集成员运行的 Azure VM 需要很长时间，或者在 VM 关闭之前隔离失败/超时）
 
 请先阅读以下 SAP 说明和文档：
 

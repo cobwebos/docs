@@ -10,10 +10,10 @@ ms.date: 07/08/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 25cac6a66baeb1587e4b5ba3f0923ca9c4394706
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325489"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器实例中装载 Azure 文件共享
@@ -55,7 +55,7 @@ az storage share create --name $ACI_PERS_SHARE_NAME --account-name $ACI_PERS_STO
 echo $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
-共享名已知（在上述脚本中定义为 acishare），因此剩下的就是找到存储帐户密钥，可使用以下命令  ：
+共享名已知（在上述脚本中定义为 acishare），因此剩下的就是找到存储帐户密钥，可使用以下命令：
 
 ```azurecli-interactive
 STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
@@ -79,17 +79,17 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-此`--dns-name-label`值在创建容器实例的 Azure 区域内必须是唯一的。 如果在执行命令时收到 DNS 名称标签错误消息，请更新前一命令中的值  。
+此`--dns-name-label`值在创建容器实例的 Azure 区域内必须是唯一的。 如果在执行命令时收到 DNS 名称标签错误消息，请更新前一命令中的值。
 
 ## <a name="manage-files-in-mounted-volume"></a>管理已装载卷中的文件
 
-启动容器后, 可以使用通过 Microsoft [aci-hellofiles][aci-hellofiles] image to create small text files in the Azure file share at the mount path you specified. Obtain the web app's fully qualified domain name (FQDN) with the [az container show][az-container-show]命令部署的简单 web 应用:
+启动容器后, 可以使用通过 Microsoft [aci-hellofiles][aci-hellofiles]映像部署的简单 web 应用, 在 Azure 文件共享中创建指定位置的小型文本文件。 用[az container show][az-container-show]命令获取 web 应用的完全限定的域名 (FQDN):
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn --output tsv
 ```
 
-使用应用保存文本后, 可以使用[Azure 门户][portal] or a tool like the [Microsoft Azure Storage Explorer][storage-explorer]检索和检查写入到文件共享的文件。
+使用应用保存文本后, 可以使用[Azure 门户][portal]或类似于[Microsoft Azure 存储资源管理器][storage-explorer]的工具来检索和检查写入到文件共享中的文件。
 
 ## <a name="deploy-container-and-mount-volume---yaml"></a>部署容器和装入卷-YAML
 
@@ -253,7 +253,7 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 }]
 ```
 
-接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `properties` 部分填充 `volumeMounts` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：  
+接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `properties` 部分填充 `volumeMounts` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：
 
 ```JSON
 "volumeMounts": [{

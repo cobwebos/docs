@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9468dbd71ee8da88cbabc3ca9f76c77d47adc221
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035901"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567933"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库和数据仓库创建警报
 
@@ -30,7 +29,7 @@ ms.locfileid: "61035901"
 可以根据监控指标或事件接收 Azure 服务的警报。
 
 * **指标值** - 指定指标的值超过在任一方向分配的阈值时，将触发警报。 也就是说，当条件先是满足以及之后不再满足该条件时，警报都会触发。    
-* **活动日志事件** - 每个  事件发生，或仅当出现一定次数的事件时，触发警报。
+* **活动日志事件** - 每个事件发生，或仅当出现一定次数的事件时，触发警报。
 
 可配置警报，使警报触发时执行以下操作：
 
@@ -47,21 +46,21 @@ ms.locfileid: "61035901"
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>使用 Azure 门户创建指标的警报规则
 1. 在此[门户](https://portal.azure.com/)，查找想要监视的资源并选中它。
-2. 在“监视”部分下，选择“警报(经典)”  。 对于不同的资源，文本和图标可能会略有不同。  
+2. 在“监视”部分下，选择“警报(经典)”。 对于不同的资源，文本和图标可能会略有不同。  
    
      ![监视](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **仅 SQL DW**：单击“DWU 使用情况”  图表。 选择“查看经典警报” 
+   - **仅 SQL DW**：单击“DWU 使用情况”图表。 选择“查看经典警报”
 
-3. 选择“添加指标警报(经典)”  按钮，并填写字段。
+3. 选择“添加指标警报(经典)”按钮，并填写字段。
    
     ![添加警报](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
-4. **命名**警报规则，并选择也在通知电子邮件中显示的“说明”  。
-5. 选择想要监视的“指标”  为该指标选择一个“条件”  和“阈值”  。 还选择触发警报前指标规则必须满足的时间段。  例如，如果使用时间段"PT5M"，且警报针对 CPU 高于 80% 的情况，则平均 CPU 高于 80% 达到 5 分钟时触发警报。  第一次触发结束后，当平均 CPU 低于 80% 的时间超过 5 分钟时，将再次触发。 每 1 分钟对 CPU 进行一次测量。 请参阅下表，了解支持的时间窗口和每个警报使用的聚合类型（并非所有警报都使用平均值）。   
-6. 如果触发警报时希望向管理员和共同管理员发送电子邮件，则选择“向所有者发送电子邮件...”  。
-7. 触发警报时，如果希望其他电子邮件收到通知，请将其添加到“其他管理员电子邮件”  字段下。 用分号隔开多个电子邮件 - *email\@contoso.com;email2\@contoso.com*
-8. 触发警报时，如果希望调用有效的 URI，请将其放入“Webhook”  字段。
-9. 警报创建完成后，选择“确定”  。   
+4. **命名**警报规则，并选择也在通知电子邮件中显示的“说明”。
+5. 选择想要监视的“指标”为该指标选择一个“条件”和“阈值”。 还选择触发警报前指标规则必须满足的时间段。 例如，如果使用时间段"PT5M"，且警报针对 CPU 高于 80% 的情况，则平均 CPU 高于 80% 达到 5 分钟时触发警报。 第一次触发结束后，当平均 CPU 低于 80% 的时间超过 5 分钟时，将再次触发。 每 1 分钟对 CPU 进行一次测量。 请参阅下表，了解支持的时间窗口和每个警报使用的聚合类型（并非所有警报都使用平均值）。   
+6. 如果触发警报时希望向管理员和共同管理员发送电子邮件，则选择“向所有者发送电子邮件...”。
+7. 触发警报时，如果希望其他电子邮件收到通知，请将其添加到“其他管理员电子邮件”字段下。 用分号隔开多个电子邮件 - *email\@contoso.com;email2\@contoso.com*
+8. 触发警报时，如果希望调用有效的 URI，请将其放入“Webhook”字段。
+9. 警报创建完成后，选择“确定”。   
 
 几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
@@ -77,42 +76,42 @@ ms.locfileid: "61035901"
 
 | 资源类型 | 指标名称 | 友好名称 | 聚合类型 | 最小警报时间窗口|
 | --- | --- | --- | --- | --- |
-| SQL 数据库 | cpu_percent | CPU 百分比 | 平均值 | 5 分钟 |
-| SQL 数据库 | physical_data_read_percent | 数据 IO 百分比 | 平均值 | 5 分钟 |
-| SQL 数据库 | log_write_percent | 日志 IO 百分比 | 平均值 | 5 分钟 |
-| SQL 数据库 | dtu_consumption_percent | DTU 百分比 | 平均值 | 5 分钟 |
+| SQL 数据库 | cpu_percent | CPU 百分比 | Average | 5 分钟 |
+| SQL 数据库 | physical_data_read_percent | 数据 IO 百分比 | Average | 5 分钟 |
+| SQL 数据库 | log_write_percent | 日志 IO 百分比 | Average | 5 分钟 |
+| SQL 数据库 | dtu_consumption_percent | DTU 百分比 | Average | 5 分钟 |
 | SQL 数据库 | storage | 数据库总大小 | 最大值 | 30 分钟 |
 | SQL 数据库 | connection_successful | 成功的连接数 | 总计 | 10 分钟 |
 | SQL 数据库 | connection_failed | 失败的连接数 | 总计 | 10 分钟 |
-| SQL 数据库 | blocked_by_firewall | 被防火墙阻止 | 总计 | 10 分钟 |
-| SQL 数据库 | deadlock | 死锁数 | 总计 | 10 分钟 |
+| SQL 数据库 | blocked_by_firewall | 由防火墙阻止 | 总计 | 10 分钟 |
+| SQL 数据库 | deadlock | 死锁 | 总计 | 10 分钟 |
 | SQL 数据库 | storage_percent | 数据库大小百分比 | 最大值 | 30 分钟 |
-| SQL 数据库 | xtp_storage_percent | In-Memory OLTP 存储百分比（预览） | 平均值 | 5 分钟 |
-| SQL 数据库 | workers_percent | 辅助角色百分比 | 平均值 | 5 分钟 |
-| SQL 数据库 | sessions_percent | 会话百分比 | 平均值 | 5 分钟 |
-| SQL 数据库 | dtu_limit | DTU 限制 | 平均值 | 5 分钟 |
-| SQL 数据库 | dtu_used | 已用的 DTU | 平均值 | 5 分钟 |
+| SQL 数据库 | xtp_storage_percent | In-Memory OLTP 存储百分比（预览） | Average | 5 分钟 |
+| SQL 数据库 | workers_percent | 工作线程百分比 | Average | 5 分钟 |
+| SQL 数据库 | sessions_percent | 会话百分比 | Average | 5 分钟 |
+| SQL 数据库 | dtu_limit | DTU 限制 | Average | 5 分钟 |
+| SQL 数据库 | dtu_used | 已用的 DTU | Average | 5 分钟 |
 ||||||
-| 弹性池 | cpu_percent | CPU 百分比 | 平均值 | 10 分钟 |
-| 弹性池 | physical_data_read_percent | 数据 IO 百分比 | 平均值 | 10 分钟 |
-| 弹性池 | log_write_percent | 日志 IO 百分比 | 平均值 | 10 分钟 |
+| 弹性池 | cpu_percent | CPU 百分比 | Average | 10 分钟 |
+| 弹性池 | physical_data_read_percent | 数据 IO 百分比 | Average | 10 分钟 |
+| 弹性池 | log_write_percent | 日志 IO 百分比 | Average | 10 分钟 |
 | 弹性池 | dtu_consumption_percent | DTU 百分比 | 平均值 | 10 分钟 |
-| 弹性池 | storage_percent | 存储百分比 | 平均值 | 10 分钟 |
-| 弹性池 | workers_percent | 辅助角色百分比 | 平均值 | 10 分钟 |
-| 弹性池 | eDTU_limit | eDTU 限制 | 平均值 | 10 分钟 |
-| 弹性池 | storage_limit | 存储限制 | 平均值 | 10 分钟 |
-| 弹性池 | eDTU_used | 已用的 eDTU | 平均值 | 10 分钟 |
-| 弹性池 | storage_used | 已用的存储量 | 平均值 | 10 分钟 |
+| 弹性池 | storage_percent | 存储百分比 | Average | 10 分钟 |
+| 弹性池 | workers_percent | 工作线程百分比 | Average | 10 分钟 |
+| 弹性池 | eDTU_limit | eDTU 限制 | Average | 10 分钟 |
+| 弹性池 | storage_limit | 存储限制 | Average | 10 分钟 |
+| 弹性池 | eDTU_used | 已用的 eDTU | Average | 10 分钟 |
+| 弹性池 | storage_used | 已用的存储量 | Average | 10 分钟 |
 ||||||               
-| SQL 数据仓库 | cpu_percent | CPU 百分比 | 平均值 | 10 分钟 |
-| SQL 数据仓库 | physical_data_read_percent | 数据 IO 百分比 | 平均值 | 10 分钟 |
+| SQL 数据仓库 | cpu_percent | CPU 百分比 | Average | 10 分钟 |
+| SQL 数据仓库 | physical_data_read_percent | 数据 IO 百分比 | Average | 10 分钟 |
 | SQL 数据仓库 | connection_successful | 成功的连接数 | 总计 | 10 分钟 |
 | SQL 数据仓库 | connection_failed | 失败的连接数 | 总计 | 10 分钟 |
-| SQL 数据仓库 | blocked_by_firewall | 被防火墙阻止 | 总计 | 10 分钟 |
+| SQL 数据仓库 | blocked_by_firewall | 由防火墙阻止 | 总计 | 10 分钟 |
 | SQL 数据仓库 | service_level_objective | 数据库服务层 | 总计 | 10 分钟 |
 | SQL 数据仓库 | dwu_limit | dwu 限制 | 最大值 | 10 分钟 |
-| SQL 数据仓库 | dwu_consumption_percent | DWU 百分比 | 平均值 | 10 分钟 |
-| SQL 数据仓库 | dwu_used | 已用的 DWU | 平均值 | 10 分钟 |
+| SQL 数据仓库 | dwu_consumption_percent | DWU 百分比 | Average | 10 分钟 |
+| SQL 数据仓库 | dwu_used | 已用的 DWU | Average | 10 分钟 |
 ||||||
 
 
