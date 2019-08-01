@@ -8,29 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 2aa43318eab9a8d1beb2b133ab9802d390de8a7f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 14d3864f654dac42566441b3729de0cf88482295
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552437"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697866"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
-对文本分析 API 的调用为 HTTP POST/GET 调用，可以用任何语言表示。 在本文中，我们将使用 REST 和 [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) 来演示这些关键概念。
+对文本分析 API  的调用为 HTTP POST/GET 调用，可以用任何语言表示。 在本文中，我们将使用 REST 和 [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) 来演示这些关键概念。
 
 每个请求必须包括访问密钥和 HTTP 终结点。 终结点指定你在注册期间选择的区域、服务 URL 和在请求上使用的资源：`sentiment`、`keyphrases`、`languages` 和 `entities`。 
 
 回想一下，文本分析是无状态的，因此，没有任何要管理的数据资产。 收到文本后将对其进行上传和分析，其结果会立即返回到调用应用程序。
 
 > [!Tip]
-> 对于一次性调用以了解 API 的工作原理，可以从内置 API 测试控制台发送 POST 请求，可在任何 [API 文档页](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)上使用。 没有任何设置，且唯一要求是将访问密钥和 JSON 文档粘贴到该请求。 
+> 对于一次性调用以了解 API 的工作原理，可以从内置 API 测试控制台  发送 POST 请求，可在任何 [API 文档页](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)上使用。 没有任何设置，且唯一要求是将访问密钥和 JSON 文档粘贴到该请求。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
-必须有带有文本分析 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)，以及在注册认知服务时生成的[终结点和访问密钥](text-analytics-how-to-access-key.md)。 
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 <a name="json-schema"></a>
 
@@ -54,7 +54,7 @@ ms.locfileid: "68552437"
 
 1. 在 Postman 中：
 
-   + 选择“Post”作为请求类型。
+   + 选择“Post”  作为请求类型。
    + 粘贴从门户页中复制的终结点。
    + 附加资源。
 
@@ -71,11 +71,11 @@ ms.locfileid: "68552437"
    + `Content-Type`：application/json。
    + `Accept`：application/json。
 
-   请求应类似于以下屏幕截图，假设 /keyPhrases 资源。
+   请求应类似于以下屏幕截图，假设 /keyPhrases  资源。
 
    ![请求带终结点和标头的屏幕截图](../media/postman-request-keyphrase-1.png)
 
-4. 单击“正文”，然后选择“原始”格式。
+4. 单击“正文”  ，然后选择“原始”  格式。
 
    ![请求具有正文设置的屏幕截图](../media/postman-request-body-raw.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "68552437"
   + [实体识别](text-analytics-how-to-entity-linking.md)  
 
 
-6. 单击“发送”以提交请求。 有关每分钟和每秒可以发送的请求数的信息，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
+6. 单击“发送”  以提交请求。 有关每分钟和每秒可以发送的请求数的信息，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
 
    在 Postman 中，响应会在下一个窗口中显示为单个 JSON 文档，请求中提供的每个文档 ID 对应一个条目。
 

@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 22860e0798ec852b6d25da27e108befe8a3089a2
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488830"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688319"
 ---
 # <a name="immersive-reader-sdk-reference"></a>沉浸式读者 SDK 参考
 
@@ -35,7 +35,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 #### <a name="parameters"></a>Parameters
 
-| 名称 | 类型 | 描述 |
+| 姓名 | 类型 | 描述 |
 | ---- | ---- |------------ |
 | `token` | string | Azure AD 身份验证令牌。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
 | `subdomain` | string | Azure 中沉浸式读者资源的自定义子域。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
@@ -136,5 +136,5 @@ SDK 为启动沉浸式阅读器的按钮提供默认样式。 `immersive-reader-
 
 ## <a name="next-steps"></a>后续步骤
 
-* 探索 [GitHub 上的沉浸式阅读器 SDK](https://github.com/Microsoft/immersive-reader-sdk)
+* 探索 [GitHub 上的沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk)
 * [快速入门：创建用于启动沉浸式读者 (C#) 的 web 应用](./quickstart.md)

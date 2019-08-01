@@ -91,6 +91,9 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
   items:
+    - name: 深度学习
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
     - name: 工作区
       displayName: concept definitions architecture
       href: concept-workspace.md
@@ -115,8 +118,6 @@
       href: concept-accelerate-with-fpgas.md
     - name: ONNX 和 ONNX 运行时
       href: concept-onnx.md
-    - name: 数据偏差监视
-      href: concept-data-drift.md
     - name: 安全
       items:
         - name: 企业安全概述

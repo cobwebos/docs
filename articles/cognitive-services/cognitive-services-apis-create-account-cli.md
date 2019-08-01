@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: c0a89a61f50d245389c9cdbd8a0aa9ba09eec004
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8f3d30866ac6db0cdece9af8144fcfa266871172
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594606"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697888"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "68594606"
 
 本快速入门介绍如何使用 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 注册 Azure 认知服务以及创建包含单服务或多服务订阅的帐户。 这些服务由 Azure [资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示，可用于连接到一个或多个 Azure 认知服务 API。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 订阅-免费[创建一个](https://azure.microsoft.com/free/)。
 * [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -38,7 +38,7 @@ ms.locfileid: "68594606"
 az login
 ```
 
-也可以使用绿色的“尝试”按钮在浏览器中运行这些命令。
+也可以使用绿色的“尝试”按钮在浏览器中运行这些命令。 
  
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>创建新的 Azure 认知服务资源组
 
@@ -162,6 +162,14 @@ az login
 ```
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
+
+## <a name="pricing-tiers-and-billing"></a>定价层和计费
+
+定价层 (以及您收取的费用) 基于使用身份验证信息发送的事务数。 每个定价层指定:
+* 每秒允许的最大事务数 (TPS)。
+* 在定价层中启用的服务功能。
+* 预定义事务量的成本。 超出此数量将导致服务的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)中指定额外的费用。
+
 
 ## <a name="clean-up-resources"></a>清理资源
 

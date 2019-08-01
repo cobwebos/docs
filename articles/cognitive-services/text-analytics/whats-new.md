@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: c090d7c5de4261891fdb3833c7ffec920f8de5b0
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: b5b7d43fc5a53bcf46874a48914bcda565a41c3e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668698"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697065"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -40,5 +40,5 @@ ms.locfileid: "68668698"
 * [示例用户方案](text-analytics-user-scenarios.md)
 * [情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [语言检测](how-tos/text-analytics-how-to-language-detection.md)
-* [实体链接](how-tos/text-analytics-how-to-entity-linking.md)
+* [实体识别](how-tos/text-analytics-how-to-entity-linking.md)
 * [关键短语提取](how-tos/text-analytics-how-to-keyword-extraction.md)
