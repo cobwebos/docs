@@ -3,7 +3,7 @@ title: Azure Service Fabric 容器和服务的资源治理 | Microsoft Docs
 description: Azure Service Fabric 允许指定在容器内部或外部运行的服务的资源限制。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: a2091ea1f8bf24468e41a88ba247a252c9445f2e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ed9ea8f9c340331fd9b8fcc014ab1af88e7b3bae
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612798"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599235"
 ---
 # <a name="resource-governance"></a>资源调控
 
@@ -133,7 +133,7 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
   </ServiceManifestImport>
 ```
 
-在此示例中，服务包 ServicePackageA  在驻留的节点上拥有一个内核的资源。 此服务包有两个代码包（CodeA1  和 CodeA2  ），并且都指定了 `CpuShares` 参数。 CpuShares 512:256 的比例将核心划分到两个代码包中。
+在此示例中，服务包 ServicePackageA 在驻留的节点上拥有一个内核的资源。 此服务包有两个代码包（CodeA1 和 CodeA2），并且都指定了 `CpuShares` 参数。 CpuShares 512:256 的比例将核心划分到两个代码包中。
 
 因此，在此示例中，CodeA1 分得三分之二个内核，CodeA2 分得三分之一个内核（和相同的软保证保留）。 如果没有为代码包指定 CpuShares，Service Fabric 会在这两个代码包之间平分内核。
 

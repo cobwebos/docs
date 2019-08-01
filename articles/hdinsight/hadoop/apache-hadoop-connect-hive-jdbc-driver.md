@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 56a2b89277cbf8866c1992a6738bd80106ef3313
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36233dc986752ded409389a0a8e267c92a40b5a5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480004"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562598"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive
 
@@ -23,7 +23,7 @@ ms.locfileid: "66480004"
 
 有关 Hive JDBC 接口的详细信息，请参阅 [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 * HDInsight Hadoop 群集。 要创建此群集，请参阅 [Azure HDInsight 入门](apache-hadoop-linux-tutorial-get-started.md)。
 * [Java 开发人员工具包 (JDK) 版本 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) 或更高版本。
@@ -37,7 +37,7 @@ JDBC 通过端口 443 连接到 Azure 上的 HDInsight 群集，并使用 SSL �
 
 将 `CLUSTERNAME` 替换为 HDInsight 群集的名称。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 建立连接时，必须使用 HDInsight 群集管理员名称和密码向群集网关进行身份验证。 从 JDBC 客户端（例如 SQuirreL SQL）进行连接时，必须在客户端设置中输入管理员名称和密码。
 
@@ -53,19 +53,19 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
 1. 创建一个目录来包含要从群集复制的某些文件。
 
-2. 在下面的脚本中，将 `sshuser` 替换为群集的 SSH 用户帐户名。  将 `CLUSTERNAME` 替换为 HDInsight 群集名称。  从命令行，将你的工作目录更改为在前面的步骤中创建并输入以下命令以将文件从 HDInsight 群集复制：
+2. 在下面的脚本中，将 `sshuser` 替换为群集的 SSH 用户帐户名。  将 `CLUSTERNAME` 替换为 HDInsight 群集名称。  从命令行将工作目录更改为上一步中创建的目录，然后输入以下命令以从 HDInsight 群集复制文件：
 
     ```cmd
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar} .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar,lib/curator-*.jar} .
 
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/{commons-codec*.jar,commons-logging-*.jar,hive-*-1.2*.jar,httpclient-*.jar,httpcore-*.jar,libfb*.jar,libthrift-*.jar} .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/{commons-codec*.jar,commons-logging-*.jar,hive-*-*.jar,httpclient-*.jar,httpcore-*.jar,libfb*.jar,libthrift-*.jar} .
     ```
 
-3. 启动 SQuirreL SQL 应用程序。 在窗口左侧中，选择“驱动程序”  。
+3. 启动 SQuirreL SQL 应用程序。 在窗口左侧中，选择“驱动程序”。
 
     ![窗口左侧的“驱动程序”选项卡](./media/apache-hadoop-connect-hive-jdbc-driver/squirreldrivers.png)
 
-4. 从“驱动程序”  对话框顶部的图标中，选择 **+** 图标来创建驱动程序。
+4. 从“驱动程序”对话框顶部的图标中，选择 **+** 图标来创建驱动程序。
 
     ![驱动程序图标](./media/apache-hadoop-connect-hive-jdbc-driver/driversicons.png)
 
@@ -73,43 +73,43 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
     * **名称**：Hive
     * **示例 URL**：`jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **额外类路径**：使用**添加**按钮添加的所有 jar 文件之前下载
+    * **额外类路径**：使用“添加”按钮添加此前下载的所有 jar 文件
     * **类名**：org.apache.hive.jdbc.HiveDriver
 
    ![添加驱动程序对话框](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
 
-   选择“确定”  保存这些设置。
+   选择“确定”保存这些设置。
 
-6. 在 SQuirreL SQL 窗口左侧，选择“别名”  。 然后选择 **+** 图标来创建连接别名。
+6. 在 SQuirreL SQL 窗口左侧，选择“别名”。 然后选择 **+** 图标来创建连接别名。
 
     ![添加新的别名](./media/apache-hadoop-connect-hive-jdbc-driver/aliases.png)
 
-7. 将以下值用于“添加别名”  对话框。
+7. 将以下值用于“添加别名”对话框。
 
     * **名称**：Hive on HDInsight
 
-    * **驱动程序**：使用下拉列表选择**Hive**驱动程序
+    * **驱动程序**：使用下拉选择**Hive**驱动程序
 
     * **URL：** `jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
 
         将 **CLUSTERNAME** 替换为 HDInsight 群集名。
 
-    * **用户名**：HDInsight 群集的群集登录帐户名。 默认为 `admin`。
+    * **用户名**：HDInsight 群集的群集登录帐户名。 默认值为 `admin`。
 
     * **密码**：群集登录帐户的密码。
 
    ![添加别名对话框](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
 
     > [!IMPORTANT] 
-    > 使用“测试”  按钮验证连接是否有效。 出现“连接到:  Hive on HDInsight”对话框时，选择“连接”  进行测试。 如果测试成功，会看到“连接成功”  对话框。 如果发生错误，请参阅[故障排除](#troubleshooting)。
+    > 使用“测试”按钮验证连接是否有效。 出现“连接到:Hive on HDInsight”对话框时，选择“连接”进行测试。 如果测试成功，会看到“连接成功”对话框。 如果发生错误，请参阅[故障排除](#troubleshooting)。
 
-    若要保存连接别名，请使用“添加别名”  对话框底部的“确定”  按钮。
+    若要保存连接别名，请使用“添加别名”对话框底部的“确定”按钮。
 
-8. 在 SQuirreL SQL 顶部的“连接到”  下拉列表中，选择“Hive on HDInsight”  。 出现提示时，选择“连接”  。
+8. 在 SQuirreL SQL 顶部的“连接到”下拉列表中，选择“Hive on HDInsight”。 出现提示时，选择“连接”。
 
     ![连接对话框](./media/apache-hadoop-connect-hive-jdbc-driver/connect.png)
 
-9. 连接后，在 SQL 查询对话框中输入以下查询，然后选择“运行”  图标（一个正在跑步的人）。 结果区域会显示查询的结果。
+9. 连接后，在 SQL 查询对话框中输入以下查询，然后选择“运行”图标（一个正在跑步的人）。 结果区域会显示查询的结果。
 
     ```hql
     select * from hivesampletable limit 10;
@@ -121,7 +121,7 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
 [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) 上提供了使用 Java 客户端查询 Hive on HDInsight 的示例。 按照存储库中的说明生成并运行该示例。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>尝试打开 SQL 连接时发生意外错误
 

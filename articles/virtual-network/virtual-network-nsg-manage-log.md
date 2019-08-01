@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: b3225d8d2f9eb7ccd0f4087d93cd9c1d940783d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 667d725653e9b668b18644e7d0c6d8f437e833ed
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714678"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570642"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>网络安全组的诊断日志记录
 
@@ -29,7 +29,7 @@ ms.locfileid: "64714678"
 
 诊断日志仅适用于通过 Azure 资源管理器部署模型部署的 NSG。 不能对通过经典部署模型部署的 NSG 启用诊断日志记录。 若要更好地了解这两种模型，请参阅[了解 Azure 部署模型](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-分别为要收集其诊断数据的  每个 NSG 启用诊断日志记录。 如果感兴趣的是操作日志或活动日志，请参阅 Azure [活动日志记录](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+分别为要收集其诊断数据的每个 NSG 启用诊断日志记录。 如果感兴趣的是操作日志或活动日志，请参阅 Azure [活动日志记录](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="enable-logging"></a>启用日志记录
 
@@ -38,18 +38,18 @@ ms.locfileid: "64714678"
 ### <a name="azure-portal"></a>Azure 门户
 
 1. 登录[门户](https://portal.azure.com)。
-2. 选择“所有服务”，然后键入“网络安全组”   。 “网络安全组”出现在搜索结果中时，将其选中  。
+2. 选择“所有服务”，然后键入“网络安全组”。 “网络安全组”出现在搜索结果中时，将其选中。
 3. 选择要为其启用日志记录的 NSG。
-4. 在“监视”下选择“诊断日志”，   然后选择“启用诊断”，如下图所示： 
+4. 在“监视”下选择“诊断日志”，然后选择“启用诊断”，如下图所示：
 
-   ![启用诊断](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
+   ![打开诊断](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
 
-5. 在“诊断设置”下输入或选择以下信息，然后选择“保存”   ：
+5. 在“诊断设置”下输入或选择以下信息，然后选择“保存”：
 
     | 设置                                                                                     | 值                                                          |
     | ---------                                                                                   |---------                                                       |
     | 名称                                                                                        | 所选名称。  例如：*myNsgDiagnostics*      |
-    | “存档到存储帐户”  、“流式传输到事件中心”  ，然后“发送到 Log Analytics”  | 可以随意选择多个目标。 若要详细了解每个目标，请参阅[日志目标](#log-destinations)。                                                                                                                                           |
+    | “存档到存储帐户”、“流式传输到事件中心”，然后“发送到 Log Analytics” | 可以随意选择多个目标。 若要详细了解每个目标，请参阅[日志目标](#log-destinations)。                                                                                                                                           |
     | 日志                                                                                         | 选择一个或两个日志类别。 若要详细了解为每个类别记录的数据，请参阅[日志类别](#log-categories)。                                                                                                                                             |
 6. 查看和分析日志。 有关详细信息，请参阅[查看和分析日志](#view-and-analyze-logs)。
 
@@ -57,11 +57,11 @@ ms.locfileid: "64714678"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果本地运行 PowerShell 时，还需要运行`Connect-AzAccount`若要使用具有的帐户登录到 Azure[必要的权限](virtual-network-network-interface.md#permissions)。
+可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell, 还需要运行`Connect-AzAccount` , 使用具有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
 
-若要启用诊断日志记录，需要现有 NSG 的 ID。 如果没有现有的 NSG，则可以创建一个与[新建 AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)。
+若要启用诊断日志记录，需要现有 NSG 的 ID。 如果没有现有的 NSG, 可以使用[AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)创建一个。
 
-检索你想要启用诊断日志记录级别使用的网络安全组[Get AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)。 例如，若要在名为 *myResourceGroup* 的资源组中检索现有的名为 *myNsg* 的 NSG，请输入以下命令：
+使用[AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)检索要为其启用诊断日志记录的网络安全组。 例如，若要在名为 *myResourceGroup* 的资源组中检索现有的名为 *myNsg* 的 NSG，请输入以下命令：
 
 ```azurepowershell-interactive
 $Nsg=Get-AzNetworkSecurityGroup `
@@ -69,7 +69,7 @@ $Nsg=Get-AzNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-可以将诊断日志写入三种目标类型。 有关详细信息，请参阅[日志目标](#log-destinations)。 例如，在本文中，日志发送到 *Log Analytics* 目标。 检索与现有的 Log Analytics 工作区[Get AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)。 例如，若要在名为 *myWorkspaces* 的资源组中检索名为 *myWorkspace* 的现有工作区，请输入以下命令：
+可以将诊断日志写入三种目标类型。 有关详细信息，请参阅[日志目标](#log-destinations)。 例如，在本文中，日志发送到 *Log Analytics* 目标。 使用[AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)检索现有 Log Analytics 工作区。 例如，若要在名为 *myWorkspaces* 的资源组中检索名为 *myWorkspace* 的现有工作区，请输入以下命令：
 
 ```azurepowershell-interactive
 $Oms=Get-AzOperationalInsightsWorkspace `
@@ -77,9 +77,9 @@ $Oms=Get-AzOperationalInsightsWorkspace `
   -Name myWorkspace
 ```
 
-如果没有现有的工作区，则可以创建一个与[新建 AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace)。
+如果没有现有的工作区, 可以使用[AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace)创建一个工作区。
 
-可以为日志启用两种类别的日志记录。 有关详细信息，请参阅[日志类别](#log-categories)。 启用诊断日志记录与 NSG[集 AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting)。 以下示例使用 NSG 的 ID 和以前检索的工作区将事件和计数器类别的数据记录到 NSG 的工作区：
+可以为日志启用两种类别的日志记录。 有关详细信息，请参阅[日志类别](#log-categories)。 使用[AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting)为 NSG 启用诊断日志记录。 以下示例使用 NSG 的 ID 和以前检索的工作区将事件和计数器类别的数据记录到 NSG 的工作区：
 
 ```azurepowershell-interactive
 Set-AzDiagnosticSetting `
@@ -132,13 +132,13 @@ az monitor diagnostic-settings create \
 诊断数据可以：
 - [写入到 Azure 存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以便进行审核或手动检查。 可以使用“资源诊断设置”指定保留时间（天）。
 - [流式传输到事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
-- [写入到 Azure Monitor 日志](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics)。
+- [写入 Azure Monitor 日志](../azure-monitor/platform/diagnostic-logs-stream-log-store.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="log-categories"></a>日志类别
 
 将为以下日志类别写入 JSON 格式的数据：
 
-### <a name="event"></a>事件
+### <a name="event"></a>Event
 
 此事件日志记录了根据 MAC 地址将哪些 NSG 规则应用于 VM。 对每个事件记录以下数据。 在以下示例中，对 IP 地址为 192.168.1.4 和 MAC 地址为 00-0D-3A-92-6A-7C 的虚拟机记录了数据：
 

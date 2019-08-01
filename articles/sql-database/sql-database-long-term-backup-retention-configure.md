@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 04/17/2019
-ms.openlocfilehash: 255f118d6dc6873364c2f8d4569e23c3e54ea83e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38ecd7797452c9a16b859da921287b8026f0660d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66164358"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567790"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 
@@ -34,15 +33,15 @@ ms.locfileid: "66164358"
 
 可以对 SQL 数据库进行配置，使其[保留自动备份](sql-database-long-term-retention.md)的时间长于你的服务层级的保留期。 
 
-1. 在 Azure 门户中，选择你的 SQL Server，然后单击“管理备份”  。 在“配置策略”  选项卡上，选中要为其设置或修改长期备份保留策略的数据库所对应的复选框  。 如果未选中数据库旁边的复选框，则策略的更改将不会应用于该数据库。  
+1. 在 Azure 门户中，选择你的 SQL Server，然后单击“管理备份”。 在“配置策略”选项卡上，选中要为其设置或修改长期备份保留策略的数据库所对应的复选框。 如果未选中数据库旁边的复选框，则策略的更改将不会应用于该数据库。  
 
    ![管理备份链接](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-2. 在“配置策略”  窗格中，选择是要保留每周、每月还是每年备份，并指定各自的保留期。 
+2. 在“配置策略”窗格中，选择是要保留每周、每月还是每年备份，并指定各自的保留期。 
 
    ![配置策略](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
-3. 完成后，单击“应用”  。
+3. 完成后，单击“应用”。
 
 > [!IMPORTANT]
 > 启用长期备份保留策略时，最长可能需要 7 天以后才能查看和还原第一个备份。 有关 LTR 备份频率的详细信息，请参阅[长期备份保留](sql-database-long-term-retention.md)。
@@ -51,25 +50,25 @@ ms.locfileid: "66164358"
 
 查看通过 LTR 策略为特定数据库保留的备份，并从这些备份进行还原。 
 
-1. 在 Azure 门户中，选择你的 SQL Server，然后单击“管理备份”  。 在“可用备份”  选项卡上，选择要查看其可用备份的数据库。
+1. 在 Azure 门户中，选择你的 SQL Server，然后单击“管理备份”。 在“可用备份”选项卡上，选择要查看其可用备份的数据库。
 
    ![选择数据库](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
 
-3. 在“可用备份”  窗格中，查看可用备份。 
+3. 在“可用备份”窗格中，查看可用备份。 
 
    ![查看备份](./media/sql-database-long-term-retention/ltr-available-backups.png)
 
 4. 选择要从中进行还原的备份，然后指定新的数据库名称。
 
-   ![还原](./media/sql-database-long-term-retention/ltr-restore.png)
+   ![还原 (restore)](./media/sql-database-long-term-retention/ltr-restore.png)
 
-5. 单击“确定”  将数据库从 Azure SQL 存储中的备份还原到新数据库。
+5. 单击“确定”将数据库从 Azure SQL 存储中的备份还原到新数据库。
 
 6. 在工具栏上，单击通知图标以查看还原作业的状态。
 
    ![检查作业进度](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
-5. 完成还原作业后，打开“SQL 数据库”  页面以查看新还原的数据库。
+5. 完成还原作业后，打开“SQL 数据库”页面以查看新还原的数据库。
 
 > [!NOTE]
 > 从此处，可使用 SQL Server Management Studio 连接到已还原的数据库，以执行所需任务，例如[从恢复的数据库中提取一部分数据，复制到现有数据库或删除现有数据库，并将已还原数据库的名称重命名为现有数据库名称](sql-database-recovery-using-backups.md#point-in-time-restore)。

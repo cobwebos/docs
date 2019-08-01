@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2872d106eea56a37c362195e7a3250058336768b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 13cec6f53af460a9e9372eedf3b7e17798d1c653
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295055"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610388"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>有关 Azure 磁盘加密的附录 
 
@@ -104,7 +104,7 @@ ms.locfileid: "67295055"
      ```
 
 ### <a name="bkmk_prereq-script"></a>使用 Azure 磁盘加密先决条件 PowerShell 脚本
-如果你已熟悉进行 Azure 磁盘加密的先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关此 PowerShell 脚本的用法示例，请参阅[有关加密 VM 的快速入门](quick-encrypt-vm-powershell.md)。 可以删除脚本的某个部分中的注释（从第 211 行开始），以加密现有资源组中现有 VM 的所有磁盘。 
+如果你已熟悉进行 Azure 磁盘加密的先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关此 PowerShell 脚本的用法示例，请参阅[有关加密 VM 的快速入门](fundamentals/quick-encrypt-vm-powershell.md)。 可以删除脚本的某个部分中的注释（从第 211 行开始），以加密现有资源组中现有 VM 的所有磁盘。 
 
 下表显示了可在 PowerShell 脚本中使用的参数： 
 
@@ -139,9 +139,9 @@ ms.locfileid: "67295055"
 
 - [在运行的 Windows 虚拟机规模集上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [部署虚拟机的规模集的 Linux Vm 与 Linux VMSS 上一个 jumpbox，并启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [使用 jumpbox 部署 Linux Vm 的虚拟机规模集, 并在 Linux VMSS 上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [部署虚拟机的规模集的 Windows Vm 使用 Windows VMSS 上一个 jumpbox，并启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [使用 jumpbox 部署 Windows Vm 的虚拟机规模集, 并在 Windows VMSS 上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [在运行的 Linux 虚拟机规模集上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -175,7 +175,7 @@ ms.locfileid: "67295055"
 以下部分介绍了必要操作，让你在 Azure IaaS 中准备将预加密的 Windows VHD 部署为加密 VHD。 使用该信息在 Azure Site Recovery 或 Azure 上准备和启动全新的 Windows VM (VHD)。 有关如何准备和上传 VHD 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](../virtual-machines/windows/upload-generalized-managed.md)。
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>更新组策略以允许使用非 TPM 保护 OS
-在“本地计算机策略”   > “计算机设置”   > “管理模板”   > “Windows 组件”  下配置名为“BitLocker 驱动器加密”  的 BitLocker 组策略设置。 如下图所示，将此设置更改为“操作系统驱动器”   > “启动时需要附加身份验证”   > “没有兼容的 TPM 时允许 BitLocker”  ：
+在“本地计算机策略” > “计算机设置” > “管理模板” > “Windows 组件”下配置名为“BitLocker 驱动器加密”的 BitLocker 组策略设置。 如下图所示，将此设置更改为“操作系统驱动器” > “启动时需要附加身份验证” > “没有兼容的 TPM 时允许 BitLocker”：
 
 ![Azure 中的 Microsoft Antimalware](./media/azure-security-disk-encryption/disk-encryption-fig8.png)
 
@@ -206,13 +206,13 @@ ms.locfileid: "67295055"
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>OS 磁盘加密的先决条件
 
-* VM 必须使用与 OS 磁盘加密兼容的分发中列出[Azure 磁盘加密支持的操作系统：Linux](azure-security-disk-encryption-prerequisites.md#linux) 
+* VM 必须使用与[Azure 磁盘加密支持的操作系统中列出的 OS 磁盘加密兼容的分发版:Linux](azure-security-disk-encryption-prerequisites.md#linux) 
 * 必须从 Azure 资源管理器中的市场映像创建 VM。
 * Azure VM，至少具有 4 GB RAM（建议大小为 7 GB）。
 * （针对 RHEL 和 CentOS）禁用 SELinux。 若要禁用 SELinux，请参阅 [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)（SELinux 用户和管理员指南）中针对 VM 的“4.4.2. Disabling SELinux（4.4.2. 禁用 SELinux）”。
 * 禁用 SELinux 后，重启 VM 至少一次。
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 1. 通过之前指定的分发版之一创建 VM。
 
    对于 CentOS 7.2，通过专门的映像支持 OS 磁盘加密。 若要使用此映像，请在创建 VM 时将“7.2n”指定为 SKU：
@@ -227,14 +227,14 @@ ms.locfileid: "67295055"
 
 3. 注销 SSH 会话。
 
-4. 若要加密 OS，请在启用加密时将 volumeType 指定为“All”或“OS”。  
+4. 若要加密 OS，请在启用加密时将 volumeType 指定为“All”或“OS”。
 
    > [!NOTE]
    > 未作为 `systemd` 服务运行的所有用户空间进程应使用 `SIGKILL` 终止。 重启 VM。 在正在运行的 VM 上启用 OS 磁盘加密时，请计划 VM 停机时间。
 
 5. 使用[下一部分](#monitoring-os-encryption-progress)中的说明，定期监视加密进度。
 
-6. Get AzVmDiskEncryptionStatus 显示"VMRestartPending"后，重新启动 VM，通过登录到它或通过使用门户、 PowerShell 或 CLI。
+6. 在 AzVmDiskEncryptionStatus 显示 "VMRestartPending" 后, 请通过登录到 VM 或使用门户、PowerShell 或 CLI 来重新启动 VM。
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -292,7 +292,7 @@ ms.locfileid: "67295055"
 ### <a name="bkmk_Ubuntu"></a>Ubuntu 16
 通过执行以下步骤在分发版安装过程中配置加密：
 
-1. 对磁盘进行分区时选择“配置加密卷”  。
+1. 对磁盘进行分区时选择“配置加密卷”。
 
    ![Ubuntu 16.04 安装 - 配置加密卷](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
@@ -382,7 +382,7 @@ ms.locfileid: "67295055"
 
 ### <a name="bkmk_openSUSE"></a>openSUSE 13.2
 若要在分发版安装期间配置加密，请执行以下步骤：
-1. 对磁盘进行分区时，选择“加密卷组”  ，并输入密码。 这是要上传到 Key Vault 的密码。
+1. 对磁盘进行分区时，选择“加密卷组”，并输入密码。 这是要上传到 Key Vault 的密码。
 
    ![openSUSE 13.2 安装 - 加密卷组](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
@@ -450,11 +450,11 @@ ms.locfileid: "67295055"
 
 ### <a name="bkmk_CentOS"></a>CentOS 7
 若要在分发版安装期间配置加密，请执行以下步骤：
-1. 对磁盘进行分区时，选择“加密我的数据”  。
+1. 对磁盘进行分区时，选择“加密我的数据”。
 
    ![CentOS 7 安装 - 安装目标](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
 
-2. 确保为根分区选择了“加密”  。
+2. 确保为根分区选择了“加密”。
 
    ![CentOS 7 安装 - 为根分区选择加密](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
 
@@ -546,7 +546,7 @@ ms.locfileid: "67295055"
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a>未使用 KEK 加密的磁盘加密机密
-若要设置密钥保管库中的机密，使用[集 AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 对于 Windows 虚拟机，需将 bek 文件编码为 base64 字符串，并使用 `Set-AzKeyVaultSecret` cmdlet 将其上传到 Key Vault。 对于 Linux，需将密码编码为 base64 字符串，然后将其上传到 Key Vault。 此外，请确保在 Key Vault 中创建机密时设置以下标记。
+若要在密钥保管库中设置机密, 请使用[AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 对于 Windows 虚拟机，需将 bek 文件编码为 base64 字符串，并使用 `Set-AzKeyVaultSecret` cmdlet 将其上传到 Key Vault。 对于 Linux，需将密码编码为 base64 字符串，然后将其上传到 Key Vault。 此外，请确保在 Key Vault 中创建机密时设置以下标记。
 
 #### <a name="windows-bek-file"></a>Windows BEK 文件
 ```powershell

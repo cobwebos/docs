@@ -4,7 +4,7 @@ description: 了解 Data Science Virtual Machine 支持的数据平台和工具�
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 27e0deae9c35ad8fa00659e3e3e505cace6e9014
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: a0fe4ee33769a6d8cf14f60dcc0c4615bb00c5e8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516497"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565299"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 
@@ -33,7 +33,7 @@ ms.locfileid: "60516497"
 
 | | |
 | ------------- | ------------- |
-| 它是什么？   | 本地关系数据库实例      |
+| 这是什么?   | 本地关系数据库实例      |
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 使用小型数据集在本地进行快速开发 <br/> 运行数据库内 R   |
 | 示例链接      |    New York City 数据集的小型示例在 SQL 数据库 `nyctaxi` 中加载。 <br/> 可在以下位置找到显示 Microsoft R 和数据库内分析的 Jupyter 示例：<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
@@ -43,7 +43,7 @@ ms.locfileid: "60516497"
 > SQL Server 2016 Developer Edition 只能用于开发和测试。 需要许可证或一个 SQL Server VM 才能在生产中运行。 
 
 
-### <a name="setup"></a>设置
+### <a name="setup"></a>安装
 
 数据库服务器已预先配置，与 SQL Server 相关的 Windows 服务（例如 `SQL Server (MSSQLSERVER)`）设置为自动运行。 唯一需要手动执行的步骤是使用 Microsoft R 启用数据库内分析。在 SQL Server Management Studio (SSMS) 中作为一次性操作运行以下命令即可，方法是以计算机管理员身份登录后，在 SSMS 中打开“新建查询”，确保所选数据库为 `master`，然后运行： 
 
@@ -68,7 +68,7 @@ SQL Server 采用标准方式安装。 可在 `C:\Program Files\Microsoft SQL Se
 
 | | |
 | ------------- | ------------- |
-| 它是什么？   | 常用 Apache Spark 平台的独立（单个进程内节点）实例，用于快速大规模数据处理和机器学习的系统     |
+| 这是什么?   | 常用 Apache Spark 平台的独立（单个进程内节点）实例，用于快速大规模数据处理和机器学习的系统     |
 | 支持的 DSVM 版本      | Linux <br /> Windows（试验）      |
 | 典型用途      | *使用小型数据集在本地快速开发 Spark/PySpark 应用程序，稍后在大型 Spark 群集（比如 Azure HDInsight）上部署<br/> *测试 Microsoft R Server Spark 上下文 <br />*使用 SparkML 或 Microsoft 的开源 [MMLSpark](https://github.com/Azure/mmlspark) 库来生成 ML 应用程序  |
 | 示例链接      |    Jupyter 示例： <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft R Server（Spark 上下文）：/dsvm/samples/MRS/MRSSparkContextSample.R |
@@ -84,7 +84,7 @@ SQL Server 采用标准方式安装。 可在 `C:\Program Files\Microsoft SQL Se
 
 
 
-### <a name="setup"></a>设置
+### <a name="setup"></a>安装
 在 Ubuntu Linux DSVM 版本上在 Microsoft R Server 的 Spark 上下文中运行前，需要执行一次性设置步骤来启用本地单节点 Hadoop HDFS 和 Yarn 实例。 默认情况下，Hadoop 服务已安装但在 DSVM 上禁用。 若要启用它，需要首次以 root 身份运行以下命令：
 
     echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa

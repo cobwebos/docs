@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3f733db97f79282bfc255e3ac4b9991a3b6abc18
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: beb0b89bdbf143c89a83c0813313a8bbda7235d4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477531"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564850"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>对更改跟踪和清单进行故障排除
 
@@ -35,7 +35,7 @@ ms.locfileid: "67477531"
 3. 用于更改跟踪的管理包未下载。
 4. 正在加入的 VM 可能来自未在安装 Microsoft Monitoring Agent 的情况下进行系统准备的克隆计算机。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解决
 
 1. 验证 **Microsoft Monitoring Agent** (HealthService.exe) 是否正在计算机上运行。
 1. 检查计算机上的**事件查看器**并查看包含 `changetracking` 一词的任何事件。
@@ -51,7 +51,7 @@ ms.locfileid: "67477531"
 在代理计算机上，导航到 `C:\Program Files\Microsoft Monitoring Agent\Agent\Tools` 并运行以下命令：
 
 ```cmd
-set stop healthservice
+net stop healthservice
 StopTracing.cmd
 StartTracing.cmd VER
 net start healthservice
@@ -66,4 +66,4 @@ net start healthservice
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

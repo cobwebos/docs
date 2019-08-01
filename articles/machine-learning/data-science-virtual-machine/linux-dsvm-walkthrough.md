@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: 如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 editor: cgronlun
 ms.custom: seodec18
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516869"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557342"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
 本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
@@ -31,13 +31,13 @@ ms.locfileid: "60516869"
 
 在本演练中，我们对 [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集进行了分析。 这一组电子邮件被标记为 spam 或 ham（即它们不是垃圾邮件），并且还包含电子邮件内容的一些统计信息。 包含的统计信息会在下一节中讨论。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在可以使用 Linux 数据科研虚拟机之前，必须具备以下条件：
 
 * **Azure 订阅帐户**。 如果没有，请参阅[立即创建免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 * [**Linux 数据科学 VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 有关预配此 VM 的信息，请参阅[预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)。
 * 计算机上安装了 [X2Go](https://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态。 若要深入了解安装和配置 **X2Go 客户端**的方法，请参阅[安装和配置 X2Go 客户端](linux-dsvm-intro.md#installing-and-configuring-x2go-client)。
-* 为了获得更平滑的滚动体验，请在 VM FireFox 浏览器中切换 about:config 中的 gfx.xrender.enabled 标志。 [在此处了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 另请考虑将 *mousewheel.enable_pixel_scrolling* 切换为 False。 请参阅[此处的说明](https://support.mozilla.org/en-US/questions/981140)。
+* 为了获得更平滑的滚动体验，请在 VM FireFox 浏览器中切换 about:config 中的 gfx.xrender.enabled 标志。 [在此处了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 另请考虑将 *mousewheel.enable_pixel_scrolling* 切换为 False。 请参阅[此处的说明](https://support.mozilla.org/questions/981140)。
 * **AzureML 帐户**。 如果还没有帐户，请在 [AzureML 主页](https://studio.azureml.net/)中注册一个新帐户。 里面有免费的使用等级可帮助用户开始使用。
 
 ## <a name="download-the-spambase-dataset"></a>下载 spambase 数据集
@@ -149,7 +149,7 @@ ms.locfileid: "60516869"
 
 结果如下：
 
-![第](./media/linux-dsvm-walkthrough/decision-tree.png)
+![1](./media/linux-dsvm-walkthrough/decision-tree.png)
 
 若要确定它对训练集的执行情况，请使用下面的代码：
 
@@ -363,14 +363,14 @@ Rattle 使用一个基于选项卡的接口。 大部分选项卡与 [Data Scien
 
 * 要加载文件，选择”**数据**“选项卡，然后
 * 选择 **Filename** 旁边的选择器，并选择 **spambaseHeaders.data**。
-* 要加载文件， 在按钮的首行中，选择“执行”  。 应看到每列的摘要，包括其标识的数据类型，是输入、目标还是其他类型的变量，以及唯一值的数量。
+* 要加载文件， 在按钮的首行中，选择“执行”。 应看到每列的摘要，包括其标识的数据类型，是输入、目标还是其他类型的变量，以及唯一值的数量。
 * Rattle 已经正确将”**spam**“列作为目标。 选择垃圾邮件列，然后将”**目标数据类型**“设置为 ”**类别**“。
 
 要浏览数据：
 
 * 选择”**浏览**“选项卡。
-* 依次单击“摘要”  和“执行”  ，然后会显示变量类型的相关信息和一些摘要统计信息。
-* 若要查看每个变量其他类型的统计信息，请选择其他选项，如“描述”  或“基本信息”  。
+* 依次单击“摘要”和“执行”，然后会显示变量类型的相关信息和一些摘要统计信息。
+* 若要查看每个变量其他类型的统计信息，请选择其他选项，如“描述”或“基本信息”。
 
 ”**浏览**“选项卡还允许生成多个具有洞察力的图形。 若要绘制数据直方图：
 
@@ -380,7 +380,7 @@ Rattle 使用一个基于选项卡的接口。 大部分选项卡与 [Data Scien
 
 ”关联“图形也很有意思。 要创建一个关联图形：
 
-* 选择“关联”作为“类型”，然后  
+* 选择“关联”作为“类型”，然后
 * 选择”**执行**“。
 * Rattle 会发出警告，建议最多使用 40 个变量。 选择”**是**“以查看该绘图。
 
@@ -403,27 +403,27 @@ Rattle 还可以执行群集分析。 让我们来排除某些功能，以使输
 * word_freq_business
 * spam
 
-然后返回“群集”选项卡，选择“KMeans”，将“群集数”设置为 4。    然后“执行”。  结果会显示在输出窗口中。 一个群集具有高频率的 "george" 和 "hp"，可能合法的商业电子邮件。
+然后返回“群集”选项卡，选择“KMeans”，将“群集数”设置为 4。 然后“执行”。 结果会显示在输出窗口中。 一个群集具有高频率的 "george" 和 "hp"，可能合法的商业电子邮件。
 
 构建简单的决策树机器学习模型：
 
 * 选择”**模型**“选项卡，
 * 选择”**树**“作为”**类型**“。
-* 选择“执行”  在输出窗口中以文本形式显示树。
+* 选择“执行”在输出窗口中以文本形式显示树。
 * 选择”**绘制**“按钮，以查看图形版本。 这看起来非常类似于我们早前使用 *rpart* 获取的树。
 
 Rattle 的一个不错的功能是它能够运行多个计算机学习方法，并快速对它们进行评估。 下面是该过程：
 
 * 选择”**所有**“作为”**类型**“。
-* 选择“执行”  。
+* 选择“执行”。
 * 完成后，可以单击任意单个”**类型**“（如 **SVM**）并查看结果。
-* 还可以使用“评估”  选项卡，在验证集上比较模型的性能。例如，”**错误矩阵**“选项显示验证集上每个模型的混淆矩阵、整体错误和平均类错误。
+* 还可以使用“评估”选项卡，在验证集上比较模型的性能。例如，”**错误矩阵**“选项显示验证集上每个模型的混淆矩阵、整体错误和平均类错误。
 * 此外还可以绘制 ROC 曲线，执行区分大小写分析，并执行其他类型的模型评估。
 
-成功生成模型后，可选择“日志”  选项卡查看会话期间 Rattle 运行的 R 代码。 可选择“导出”  按钮来保存它。
+成功生成模型后，可选择“日志”选项卡查看会话期间 Rattle 运行的 R 代码。 可选择“导出”按钮来保存它。
 
 > [!NOTE]
-> 当前版本的 Rattle 中存在一个 Bug。 若要修改脚本或使用它来重复步骤更高版本，必须插入 # 字符的前面*导出此日志...* 在日志文本中。
+> 当前版本的 Rattle 中存在一个 Bug。 若要修改脚本或将其用于稍后重复步骤, 必须在日志文本中的 "*导出此日志 ...* " 前面插入 # 字符。
 >
 >
 
@@ -481,25 +481,25 @@ DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据�
 
 * 选择”**Windows**“，并选择”**查看驱动程序**“。
 * 右键单击 **PostgreSQL**，并选择”**修改驱动程序**“。
-* 选择“额外类路径”  ，并选择“添加”  。
-* 在“文件名”  中输入 ***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar***，并
-* 选择“打开”  。
+* 选择“额外类路径”，并选择“添加”。
+* 在“文件名”中输入 ***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar***，并
+* 选择“打开”。
 * 选择”列出驱动程序“，在”**类名**“中选择 **org.postgresql.Driver**，并选择”**确定**“。
 
 设置与本地服务器的连接：
 
-* 选择“Windows”  ，并选择“查看别名”。 
-* 选择“+”  按钮创建新的别名。
-* 将其命名为*垃圾邮件数据库*，在“驱动程序”  下拉列表中，选择“PostgreSQL”  。
+* 选择“Windows”，并选择“查看别名”。
+* 选择“+”按钮创建新的别名。
+* 将其命名为*垃圾邮件数据库*，在“驱动程序”下拉列表中，选择“PostgreSQL”。
 * 将 URL 设置为 *jdbc:postgresql://localhost/spam*。
 * 输入*用户名*和*密码*。
-* 单击“确定”。 
-* 若要打开“连接”  窗口，请双击***垃圾邮件数据库***别名。
-* 选择“连接”  。
+* 单击 **“确定”** 。
+* 若要打开“连接”窗口，请双击***垃圾邮件数据库***别名。
+* 选择“连接”。
 
 运行一些查询：
 
-* 选择“SQL”  选项卡。
+* 选择“SQL”选项卡。
 * 在“SQL”选项卡顶部的查询文本框中输入一个简单查询，例如 `SELECT * from data;`。
 * 按 **Ctrl-Enter** 运行它。 默认情况下，Squirrel SQL 将从查询中返回前 100 行的内容。
 

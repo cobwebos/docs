@@ -5,7 +5,7 @@ description: 了解 Data Science Virtual Machine 上预安装的程序语言和�
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 1df3c986132de2a3e7ec9547a996abef60ea04ac
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502209"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558125"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>数据科学虚拟机支持的语言 
 
@@ -39,7 +39,7 @@ ms.locfileid: "60502209"
 | DSVM 上的相关工具      | PySpark、R、Julia      |
 
 > [!NOTE]
-> 2018 年 3 月之前创建的 Windows Server 2016 包含 Python 3.5 和 Python 2.7。 同样，Python 2.7 是 conda 根环境，py35 是 Python 3.5 环境   。 
+> 2018 年 3 月之前创建的 Windows Server 2016 包含 Python 3.5 和 Python 2.7。 同样，Python 2.7 是 conda 根环境，py35 是 Python 3.5 环境。 
 
 ### <a name="how-to-use--run-it"></a>如何使用/运行它？    
 
@@ -62,11 +62,11 @@ python --version
 使用安装在 Visual Studio Community Edition 中的针对 Visual Studio 的 Python 工具 (PTVS)。 在 PTVS 中默认自动设置的唯一环境是 Python 3.6。 
 
 > [!NOTE]
-> 要将 PTVS 指向 Python 2.7，则需要在 PTVS 中创建自定义环境。 要在 Visual Studio Community Edition 中设置此环境路径，请导航到“工具” -> “Python 工具” -> “Python 环境”，然后单击“+ 自定义”。     然后将位置设置为 `c:\anaconda\envs\python2`， 接着单击“自动检测”  。 
+> 要将 PTVS 指向 Python 2.7，则需要在 PTVS 中创建自定义环境。 要在 Visual Studio Community Edition 中设置此环境路径，请导航到“工具” -> “Python 工具” -> “Python 环境”，然后单击“+ 自定义”。 然后将位置设置为 `c:\anaconda\envs\python2`， 接着单击“自动检测”。 
 
 * 在 Jupyter 中使用
 
-打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，可以为 Python 3.6 选择“Python [Conda Root]”作为内核类型，为 Python 2.7 环境选择“Python [Conda env:python2]”作为内核类型   。 
+打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，可以为 Python 3.6 选择“Python [Conda Root]”作为内核类型，为 Python 2.7 环境选择“Python [Conda env:python2]”作为内核类型。 
 
 * 安装 Python 程序包
 
@@ -104,7 +104,7 @@ python --version
 
 * 在 Jupyter 中使用
 
-打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，你可以为 Python 2.7 选择“Python [Conda Root]”  作为内核类型，为 Python 3.5 环境选择“Python [Conda env:py35]”  作为内核类型。 
+打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，你可以为 Python 2.7 选择“Python [Conda Root]”作为内核类型，为 Python 3.5 环境选择“Python [Conda env:py35]”作为内核类型。 
 
 * 安装 Python 程序包
 
@@ -129,11 +129,11 @@ python --version
 
 使用安装在 Visual Studio Community Edition 中的针对 Visual Studio 的 Python 工具 (PTVS)。 在 Python 2.7 的 PTVS 中自动设置的唯一环境。 
 > [!NOTE]
-> 要将 PTVS 指向 Python 3.5，则需要在 PTVS 中创建自定义环境。 要在 Visual Studio Community Edition 中设置此环境路径，请导航到“工具” -> “Python 工具” -> “Python 环境”，然后单击“+ 自定义”。     然后将位置设置为 `c:\anaconda\envs\py35`， 接着单击“自动检测”  。 
+> 要将 PTVS 指向 Python 3.5，则需要在 PTVS 中创建自定义环境。 要在 Visual Studio Community Edition 中设置此环境路径，请导航到“工具” -> “Python 工具” -> “Python 环境”，然后单击“+ 自定义”。 然后将位置设置为 `c:\anaconda\envs\py35`， 接着单击“自动检测”。 
 
 * 在 Jupyter 中使用
 
-打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，你可以为 Python 2.7 选择“Python [Conda Root]”  作为内核类型，为 Python 3.5 环境选择“Python [Conda env:py35]”  作为内核类型。 
+打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，你可以为 Python 2.7 选择“Python [Conda Root]”作为内核类型，为 Python 3.5 环境选择“Python [Conda env:py35]”作为内核类型。 
 
 * 安装 Python 程序包
 
@@ -150,7 +150,7 @@ DSVM 上的默认 Python 环境是所有用户均可访问的全局环境。 但
 | DSVM 上的相关工具      | SparkR、Python、Julia      |
 ### <a name="how-to-use--run-it"></a>如何使用/运行它？    
 
-Windows  ：
+Windows：
 
 * 在命令提示符中运行
 
@@ -162,13 +162,13 @@ Windows  ：
 
 * 在 Jupyter 中使用
 
-打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，你可以选择 R  作为内核类型，以使用 Jupyter R 内核 (IRKernel)。 
+打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，你可以选择 R 作为内核类型，以使用 Jupyter R 内核 (IRKernel)。 
 
 * 安装 R 程序包
 
 R 安装在所有用户均可访问的全局环境中的 DSVM 上。 但只有管理员可以写入/安装全局程序包。 若要将程序包安装到全局环境，请使用上述方法之一运行 R。 然后，你可以运行程序包管理器 `install.packages()` 来安装或更新程序包。 
 
-Linux  ：
+Linux：
 
 * 在终端中运行
 
@@ -180,7 +180,7 @@ Linux  ：
 
 * 在 Jupyter 中使用
 
-打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，你可以选择 R  作为内核类型，以使用 Jupyter R 内核 (IRKernel)。 
+打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，你可以选择 R 作为内核类型，以使用 Jupyter R 内核 (IRKernel)。 
 
 * 安装 R 程序包
 
@@ -198,7 +198,7 @@ R 安装在所有用户均可访问的全局环境中的 DSVM 上。 但只有�
 | DSVM 上的相关工具      | Python、R      |
 ### <a name="how-to-use--run-it"></a>如何使用/运行它？    
 
-Windows  ：
+Windows：
 
 * 在命令提示符中运行
 
@@ -216,13 +216,13 @@ Windows  ：
 默认 Julia 位置为所有用户均可访问的全局环境。 但只有管理员可以写入/安装全局程序包。 若要将程序包安装到全局环境，请使用上述方法之一运行 Julia。 然后，你可以运行 Julia 程序包管理器命令（如 `Pkg.add()`）来安装或更新程序包。 
 
 
-Linux  ：
+Linux：
 * 在终端中运行。
 
 打开终端并运行 `julia` 即可。 
 * 在 IDE 中使用
 
-使用`Juno`DSVM 上已安装并可用作应用程序菜单快捷方式的 Julia IDE。
+使用`Juno`安装在 DSVM 上的 Julia IDE, 并将其作为应用程序菜单快捷方式使用。
 
 * 在 Jupyter 中使用
 
@@ -238,7 +238,7 @@ Linux  ：
 
 **Java**：OpenJDK 在 Linux 和 Windows 版本的 DSVM 上均可使用，并在路径上进行设置。 你可以在 Windows 中的命令提示符或 Linux 中的 bash shell 上键入 `javac` 或 `java` 命令来使用 Java。 
 
-node.js  ：node.js 在 Linux 和 Windows 版本的 DSVM 上均可使用，并在路径上进行设置。 你可以在 Windows 中的命令提示符或 Linux 中的 bash shell 上键入 `node` 或 `npm` 命令来使用 node.js。 在 Windows 上，安装了用于 Visual Studio 扩展的 Node.js 工具，以提供图形化 IDE 来开发 node.js 应用程序。 
+node.js：node.js 在 Linux 和 Windows 版本的 DSVM 上均可使用，并在路径上进行设置。 你可以在 Windows 中的命令提示符或 Linux 中的 bash shell 上键入 `node` 或 `npm` 命令来使用 node.js。 在 Windows 上，安装了用于 Visual Studio 扩展的 Node.js 工具，以提供图形化 IDE 来开发 node.js 应用程序。 
 
 **F#** ：在 Windows 上可用，并可通过 Visual Studio Community Edition 访问，或在 `Developer Command Prompt for Visual Studio` 上只需运行 `fsc` 命令即可进行访问。 
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: ecb2059e529347b7eff72bf6af74b82558a4c251
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: 4688cf6fb82eb8f726205d54d0c852fd3daf8dfb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371693"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564779"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
 
@@ -147,7 +147,10 @@ ms.locfileid: "68371693"
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-指示所有函数的超时持续时间。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。 在应用服务计划中，没有总体限制，默认值取决于运行时版本。 在版本 2.x 中，适用于应用服务计划的默认值为 30 分钟。 在版本 1.x 中，它是 *null*，表示无超时。 它不能设置为无限。 如果未显式设置此值, 将采用默认的30分钟值。
+指示所有函数的超时持续时间。 它遵循 timespan 字符串格式。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。  
+在专用 (应用服务) 计划中, 没有整体限制, 默认值取决于运行时版本: 
++ 版本 1.x: 默认值为*null*, 表示没有超时。   
++ 版本 2.x: 默认值为30分钟。 值为`-1`指示未绑定的执行。
 
 ```json
 {

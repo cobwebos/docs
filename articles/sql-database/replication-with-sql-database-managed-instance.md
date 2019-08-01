@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e4d056aacf8f3969b645747e2303574f3fea3bda
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 96571b55158733f8189ddf87402fb634330ca80d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357119"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570461"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 
@@ -36,7 +35,7 @@ ms.locfileid: "67357119"
 
 ## <a name="requirements"></a>要求
 
-配置为充当发布服务器和/或分发服务器的托管的实例需要：
+将托管实例配置为充当发布服务器和/或分发服务器的功能需要:
 
 - 该托管实例当前未加入异地复制关系。
 - 发布服务器托管实例位于分发服务器和订阅服务器所在的同一个虚拟网络中，或者已在所有三个实体的虚拟网络之间建立 [vNet 对等互连](../virtual-network/tutorial-connect-virtual-networks-powershell.md)。 
@@ -46,12 +45,12 @@ ms.locfileid: "67357119"
 
 
  > [!NOTE]
- > Azure SQL 数据库中的单一数据库和入池数据库只能用作订阅服务器。 
+ > Azure SQL 数据库中的单一数据库和共用数据库只能用作订阅服务器。 
 
 
 ## <a name="features"></a>功能
 
-支持：
+支持:
 
 - 对本地实例和 Azure SQL 数据库中的托管实例混合使用事务复制和快照复制。
 - 订阅服务器可以位于本地 SQL Server 数据库中、Azure SQL 数据库中的单一数据库/托管实例中，也可以位于 Azure SQL 数据库弹性池中的入池数据库中。
@@ -326,7 +325,7 @@ GO
 可以通过[从资源组中删除托管实例资源](../azure-resource-manager/manage-resources-portal.md#delete-resources)，然后删除资源组 `SQLMI-Repl`，来清理 Azure 资源。 
 
    
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [事务复制](sql-database-managed-instance-transactional-replication.md)
 - [什么是托管实例？](sql-database-managed-instance.md)
