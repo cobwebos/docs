@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 99e043adeac9a43432fb1eba85527b561c477354
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 665eeb60012d5cec08b8a3ad919d7ddfdadc2d23
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64570566"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609595"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -154,7 +154,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
   > 
   > **入门**：[在 Linux 上使用应用服务的自定义 Docker 映像](../../app-service/containers/quickstart-docker-go.md)。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
 重要的是：不仅要知道谁在使用你的应用程序，而且还要防止对资源的未授权访问。 Azure 提供了多种方式来对你的应用客户端进行身份验证。
 
@@ -170,7 +170,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
   > 
   > **入门**：若要了解有关应用服务中身份验证的详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../../app-service/overview-authentication-authorization.md)。
 
-若要了解有关 Azure 中安全最佳实践的详细信息，请参阅 [Azure 安全最佳实践和模式](../../security/security-best-practices-and-patterns.md)。
+若要了解有关 Azure 中安全最佳实践的详细信息，请参阅 [Azure 安全最佳实践和模式](../../security/fundamentals/best-practices-and-patterns.md)。
 
 ### <a name="monitoring"></a>监视
 
@@ -199,7 +199,7 @@ Azure 是一个全球性云平台，在世界各地的许多区域都可以使�
 
 ### <a name="choose-the-best-region-for-your-application-and-data"></a>选择应用程序和数据的最佳区域
 
-使用 Azure 的好处之一是，你可以将应用程序部署到全球范围内的各种数据中心。 你选择的区域可能会影响应用程序的性能。 例如，最好选择更接近于大部分客户的区域，以减少网络请求中的延迟。 您可能想要选择你的区域，符合在某些国家/地区分发应用的法律要求。 最佳的做法是，始终将应用程序数据存储在相同的数据中心，或尽可能靠近托管应用程序的数据中心的数据中心。
+使用 Azure 的好处之一是，你可以将应用程序部署到全球范围内的各种数据中心。 你选择的区域可能会影响应用程序的性能。 例如，最好选择更接近于大部分客户的区域，以减少网络请求中的延迟。 你可能还需要选择你的区域, 以满足在某些国家/地区分发应用的法律要求。 最佳的做法是，始终将应用程序数据存储在相同的数据中心，或尽可能靠近托管应用程序的数据中心的数据中心。
 
 ### <a name="multi-region-apps"></a>多区域应用
 
@@ -265,9 +265,9 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 每个 Azure 订阅都与某个 Azure AD 实例存在信任关系。 这意味着，此订阅信任该目录对用户、服务和设备执行身份验证。 多个订阅可以信任同一个目录，但一个订阅只能信任一个目录。 有关详细信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
-除了定义单个 Azure 帐户标识（也称为用户  ）之外，你还可以定义 Azure AD 中的组  。 创建用户组是通过使用基于角色的访问控制 (RBAC) 来管理订阅中资源的一种好方式。 若要了解如何创建组，请参阅[在 Azure Active Directory 预览版中创建组](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 此外，也可以通过[使用 PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md) 创建和管理组。
+除了定义单个 Azure 帐户标识（也称为用户）之外，你还可以定义 Azure AD 中的组。 创建用户组是通过使用基于角色的访问控制 (RBAC) 来管理订阅中资源的一种好方式。 若要了解如何创建组，请参阅[在 Azure Active Directory 预览版中创建组](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 此外，也可以通过[使用 PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md) 创建和管理组。
 
-### <a name="manage-your-subscriptions"></a>管理订阅
+### <a name="manage-your-subscriptions"></a>管理你的订阅
 
 订阅是链接到 Azure 帐户的 Azure 服务的逻辑分组。 一个 Azure 帐户可包含多个订阅。 Azure 服务计费是按照订阅量进行计算的。 对于按类型提供的可用订阅优惠列表，请参阅 [Microsoft Azure 优惠详细信息](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 订阅有一个帐户管理员和一个服务管理员，前者可以完全控制订阅，后者可以控制订阅中的所有服务。 有关经典订阅管理员的信息，请参阅[添加或更改 Azure 订阅管理员](../../billing/billing-add-change-azure-subscription-administrator.md)。 除了管理员外，还可以使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 对单个帐户授予对 Azure 资源的详细控制权限。
 
@@ -281,7 +281,7 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
 当你允许对 Azure 资源进行访问时，最佳做法是，始终为用户提供执行某个给定任务所需的最小特权。
 
-- **基于角色的访问控制 (RBAC)** ：在 Azure 中，可以在如下指定范围内授予对用户帐户（主体）的访问权限：订阅、资源组或单个资源。 通过 RBAC，可将一组资源部署到资源组，并为特定用户或组授予权限。 它还允许您限制对仅属于目标资源组的资源的访问。 此外，还可以授予对单个资源的访问权限，例如虚拟机或虚拟网络。 若要授予访问权限，请将角色分配给用户、组或服务主体。 预定义角色有很多，但也可定义自己的自定义角色。 有关详细信息，请参阅[什么是基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)。
+- **基于角色的访问控制 (RBAC)** ：在 Azure 中，可以在如下指定范围内授予对用户帐户（主体）的访问权限：订阅、资源组或单个资源。 通过 RBAC，可将一组资源部署到资源组，并为特定用户或组授予权限。 它还允许你将访问权限限制为仅属于目标资源组的资源。 此外，还可以授予对单个资源的访问权限，例如虚拟机或虚拟网络。 若要授予访问权限，请将角色分配给用户、组或服务主体。 预定义角色有很多，但也可定义自己的自定义角色。 有关详细信息，请参阅[什么是基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)。
 
   > **何时使用**：当需要对用户和组进行细致的访问管理时使用，或者当需要使用户成为订阅的所有者时使用。
   > 
@@ -291,11 +291,11 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
   > **何时使用**：当你以编程方式管理 Azure 资源或授予应用程序访问权限时。 有关详细信息，请参阅[创建 Active Directory 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-#### <a name="tags"></a>标记
+#### <a name="tags"></a>Tags
 
 通过 Azure 资源管理器，你可以将自定义标记分配给单个资源。 标记为键值对，在出于计费或监视目的而需要组织资源时，标记可能会十分有用。 标记提供了一种跨多个资源组跟踪的资源方法。 你可以将在门户、Azure 资源管理器模板中，或以编程方式，通过使用 REST API、Azure CLI 或 PowerShell 来分配标记。 你可以对每个资源分配多个标记。 若要了解详细信息，请参阅[使用标记来组织 Azure 资源](../../resource-group-using-tags.md)。
 
-### <a name="billing"></a>计费
+### <a name="billing"></a>帐单
 
 在从本地计算移动到云托管服务的过程中，对服务使用情况以及相关的成本进行跟踪和估计都是非常重要的问题。 能够对每月运行的新资源成本进行估算至关重要。 此外，你还需要能够根据当前的支出情况来规划某个给定月份的计费方式。
 

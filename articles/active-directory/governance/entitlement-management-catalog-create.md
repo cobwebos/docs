@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e563d86abe3817e4c77cc0d5c8df928e41563f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 1654e0a8cd11ac1c7a2f4ef0667d0e99187c2374
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489086"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618312"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 权限管理 (预览版) 中创建和管理目录
 
@@ -34,7 +34,7 @@ ms.locfileid: "68489086"
 
 目录是资源和访问包的容器。 需要对相关资源进行分组并访问包时, 可以创建目录。 创建目录的任何人都将成为第一个目录所有者。 目录所有者可以添加其他目录所有者。
 
-**必备角色：** 用户管理员或目录创建者
+**必备角色：** 全局管理员、用户管理员或目录创建者
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -102,7 +102,7 @@ ms.locfileid: "68489086"
 
 可以编辑目录的名称和描述。 用户在访问包的详细信息中看到此信息。
 
-**必备角色：** 用户管理员或目录所有者
+**必备角色：** 全局管理员、用户管理员或目录所有者
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -112,13 +112,13 @@ ms.locfileid: "68489086"
 
 1. 编辑目录的名称或说明。
 
-1. 单击“保存” 。
+1. 单击“保存”。
 
 ## <a name="delete-a-catalog"></a>删除目录
 
 您可以删除某个目录, 但前提是它不包含任何访问包。
 
-**必备角色：** 用户管理员或目录所有者
+**必备角色：** 全局管理员、用户管理员或目录所有者
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 

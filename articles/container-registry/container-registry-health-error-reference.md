@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: danlep
-ms.openlocfilehash: 672d446fa8dc27612c7b046cac109bfa4ca5fec5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4585749c83432c19b6e62f57c1d954b3afc5ee33
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309372"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608393"
 ---
 # <a name="health-check-error-reference"></a>运行状况检查错误引用
 
@@ -63,7 +63,7 @@ ms.locfileid: "68309372"
 
 ## <a name="connectivityforbiddenerror"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-此错误表示给定注册表的质询终结点响应403禁止的 HTTP 状态。 此错误表示用户无权访问注册表, 最有可能的原因是虚拟网络配置。
+此错误表示给定注册表的质询终结点响应403禁止的 HTTP 状态。 此错误表示用户无权访问注册表, 最有可能的原因是虚拟网络配置。 若要查看当前配置的防火墙规则, `az acr show --query networkRuleSet --name <registry>`请运行。
 
 *可能的解决方案*:删除虚拟网络规则, 或将当前客户端 IP 地址添加到允许列表。
 

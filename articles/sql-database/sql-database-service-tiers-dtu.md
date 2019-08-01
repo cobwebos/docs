@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 964a2931267ad2f1e2842693eadf43f8f629a084
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357228"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566691"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 
-基于 DTU 的购买模型中的服务层级根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 基于 DTU 的购买模型中的所有服务层都允许灵活更改只需极少的计算大小[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/); 但是，有一个开关段中是连接到数据库丢失短暂停留的时间，其中可以在降低使用重试逻辑。 单一数据库和弹性池根据服务层级和计算大小按小时计费。
+基于 DTU 的购买模型中的服务层级根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 基于 DTU 的购买模型中的所有服务层都可以灵活地更改计算规模, 使[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)最短;但是, 在一段较短的时间内, 会有一次与数据库的连接丢失的情况, 可以使用重试逻辑来缓解这种情况。 单一数据库和弹性池根据服务层级和计算大小按小时计费。
 
 > [!IMPORTANT]
 > SQL 数据库托管实例不支持基于 DTU 的购买模型。 有关详细信息，请参阅 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。
@@ -40,12 +39,12 @@ ms.locfileid: "67357228"
 |CPU|低|低、中、高|中、高|
 |IO 吞吐量（近似） |每个 DTU 2.5 IOPS| 每个 DTU 2.5 IOPS | 每个 DTU 48 IOPS|
 |IO 延迟（近似）|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
-|列存储索引 |不适用|S3 及更高版本|支持|
-|内存中 OLTP|不适用|不适用|支持|
+|列存储索引 |不可用|S3 及更高版本|支持|
+|内存中 OLTP|不可用|不可用|支持|
 |||||
 
 > [!NOTE]
-> 在配合 Azure 免费帐户探索 Azure 中的基本服务层，可以获取免费的 Azure SQL 数据库。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
+> 可以结合 Azure 免费帐户在基本服务层获取免费的 Azure SQL 数据库, 以探索 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
 
 ## <a name="single-database-dtu-and-storage-limits"></a>单一数据库 DTU 和存储限制
 
@@ -165,7 +164,7 @@ ms.locfileid: "67357228"
 
 | 服务等级 | 吞吐量度量值 | 响应时间要求 |
 | --- | --- | --- |
-| 高级 |每秒事务数 |0\.5 秒时达到 95% |
+| 高级 |每秒创建的事务数 |0\.5 秒时达到 95% |
 | 标准 |每分钟事务数 |1\.0 秒时达到 90% |
 | 基本 |每小时事务数 |2\.0 秒时达到 80% |
 

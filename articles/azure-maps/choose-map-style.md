@@ -3,17 +3,17 @@ title: Azure Maps 中的地图样式功能 | Microsoft Docs
 description: 了解 Azure Maps 样式的相关功能。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/08/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ffed12b9184c7b6a690c30db9826f031fe6c9f9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52936b14264bd4fe1846ae365e1de447d594b612
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60795898"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639064"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>在 Azure Maps 中选择地图样式
 

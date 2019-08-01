@@ -3,7 +3,7 @@ title: 配置 Azure Service Fabric 容器服务的网络模式 | Microsoft Docs
 description: 了解如何设置 Azure Service Fabric 支持的不同网络模式。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 2dcb678e8350ae0de3317db3682f0e51e27ab6f5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d749e1355e69ad93c8c211474043f88127ec76f0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621937"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599388"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器网络模式
 
-容器服务的 Azure Service Fabric 群集默认使用 nat 网络模式  。 使用 nat 模式时，如果多个容器服务在相同端口上进行侦听，则会发生部署错误。 为了支持在相同端口上进行多个容器服务侦听，Service Fabric 提供开放网络模式（版本 5.7 和更高版本）  。 在开放模式下，每个容器服务都具有动态分配的内部 IP 地址，支持在相同端口上同时侦听多个服务。  
+容器服务的 Azure Service Fabric 群集默认使用 nat 网络模式。 使用 nat 模式时，如果多个容器服务在相同端口上进行侦听，则会发生部署错误。 为了支持在相同端口上进行多个容器服务侦听，Service Fabric 提供开放网络模式（版本 5.7 和更高版本）。 在开放模式下，每个容器服务都具有动态分配的内部 IP 地址，支持在相同端口上同时侦听多个服务。  
 
 如果在服务清单中有一个带静态终结点的容器服务，则可以使用开放模式创建和删除新服务，这不会造成部署错误。 相同的 docker-compose.yml 文件还可结合使用静态端口映射，创建多个服务。
 
@@ -35,7 +35,7 @@ ms.locfileid: "67621937"
 
 ## <a name="set-up-open-networking-mode"></a>设置开放网络模式
 
-1. 设置 Azure 资源管理器模板。 在群集资源的 fabricSettings  部分中，启用 DNS 服务和 IP 提供程序： 
+1. 设置 Azure 资源管理器模板。 在群集资源的 fabricSettings 部分中，启用 DNS 服务和 IP 提供程序： 
 
     ```json
     "fabricSettings": [
@@ -202,7 +202,7 @@ ms.locfileid: "67621937"
 
    |设置 |ReplTest1 | |
    | --- | --- | --- |
-   |优先度 |2000 | |
+   |Priority |2000 | |
    |名称 |Custom_Dns  | |
    |Source |VirtualNetwork | |
    |目标 | VirtualNetwork | |
@@ -210,7 +210,7 @@ ms.locfileid: "67621937"
    |Action | Allow  | |
    | | |
 
-4. 在应用程序清单中为每个服务指定网络模式 `<NetworkConfig NetworkType="Open">`。 开放网络模式使服务获得专用 IP 地址  。 如果未指定模式，服务默认使用 nat 模式  。 在以下清单示例中，`NodeContainerServicePackage1` 和 `NodeContainerServicePackage2` 服务均可在相同端口上进行侦听（这两个服务都在 `Endpoint1` 上进行侦听）。 如果指定了开放网络模式，便无法指定 `PortBinding` 配置。
+4. 在应用程序清单中为每个服务指定网络模式 `<NetworkConfig NetworkType="Open">`。 开放网络模式使服务获得专用 IP 地址。 如果未指定模式，服务默认使用 nat 模式。 在以下清单示例中，`NodeContainerServicePackage1` 和 `NodeContainerServicePackage2` 服务均可在相同端口上进行侦听（这两个服务都在 `Endpoint1` 上进行侦听）。 如果指定了开放网络模式，便无法指定 `PortBinding` 配置。
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -245,7 +245,7 @@ ms.locfileid: "67621937"
     >Linux 群集上不支持混合不同服务的网络模式。 
     >
 
-5. 选择“打开”  模式时，服务清单中的**终结点**定义应显式指向终结点所对应的代码包，即使服务包中只有一个代码包，也是如此。 
+5. 选择“打开”模式时，服务清单中的**终结点**定义应显式指向终结点所对应的代码包，即使服务包中只有一个代码包，也是如此。 
    
    ```xml
    <Resources>

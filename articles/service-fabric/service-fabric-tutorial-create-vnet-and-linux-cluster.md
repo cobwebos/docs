@@ -3,7 +3,7 @@ title: 在 Azure 中创建 Linux Service Fabric 群集 | Microsoft Docs
 description: 了解如何使用 Azure CLI 将 Linux Service Fabric 群集部署到现有 Azure 虚拟网络。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 00d7e510fa43865f1427092f2f20b9847f1afa9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ba157d7bf2e6effbaf7ab129dbbbfd1ca8b9667
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60863778"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598853"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>将 Linux Service Fabric 群集部署到 Azure 虚拟网络
 
 本文介绍了如何使用 Azure CLI 和模板将 Linux Service Fabric 群集部署到 [Azure 虚拟网络 (VNET)](../virtual-network/virtual-networks-overview.md) 中。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。 若要使用 PowerShell 创建 Windows 群集，请参阅[在 Azure 上创建安全的 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 开始之前：
 
@@ -42,10 +42,10 @@ ms.locfileid: "60863778"
 
 下载以下资源管理器模板文件：
 
-* [AzureDeploy.json][template]
-* [AzureDeploy.Parameters.json][parameters]
+* [Azuredeploy.json][template]
+* [Azuredeploy.json][parameters]
 
-此模板将包含七个虚拟机和三个节点类型的安全群集部署到虚拟网络中。  其他示例模板可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) 上找到。 [AzureDeploy.json][template] 部署一些资源，包括以下资源。
+此模板将包含七个虚拟机和三个节点类型的安全群集部署到虚拟网络中。  其他示例模板可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) 上找到。 [Azuredeploy.json][template]部署了数个资源, 包括以下各项。
 
 ### <a name="service-fabric-cluster"></a>Service Fabric 群集
 
@@ -53,7 +53,7 @@ ms.locfileid: "60863778"
 
 * 三个节点类型
 * 主节点类型包含五个节点（可在模板参数中配置），其他节点类型各包含一个节点
-* OS：Ubuntu 16.04 LTS（可在模板参数中配置）
+* 操作系统:Ubuntu 16.04 LTS（可在模板参数中配置）
 * 证书保护（可在模板参数中配置）
 * 已启用 [DNS 服务](service-fabric-dnsservice.md)
 * 铜级[持久性级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)（可在模板参数中配置）
@@ -81,7 +81,7 @@ ms.locfileid: "60863778"
 
 ## <a name="set-template-parameters"></a>设置模板参数
 
-[AzureDeploy.Parameters][parameters] 参数文件声明用于部署群集和关联资源的多个值。 可能需要使用某些参数来修改部署：
+[Azuredeploy.json][parameters]参数文件声明了许多用于部署群集和关联资源的值。 可能需要使用某些参数来修改部署：
 
 |参数|示例值|说明|
 |---|---||
@@ -97,7 +97,7 @@ ms.locfileid: "60863778"
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>部署虚拟网络和群集
 
-接下来，设置网络拓扑并部署 Service Fabric 群集。 [AzureDeploy.json][template] 资源管理器模板为 Service Fabric 创建虚拟网络 (VNET) 和子网。 该模板还会部署一个已启用证书安全性的群集。  对于生产群集，请使用证书颁发机构 (CA) 提供的证书作为群集证书。 可以使用自签名证书来保护测试群集。
+接下来，设置网络拓扑并部署 Service Fabric 群集。 [Azuredeploy.json][template]资源管理器模板为 Service Fabric 创建一个虚拟网络 (VNET) 和一个子网。 该模板还会部署一个已启用证书安全性的群集。  对于生产群集，请使用证书颁发机构 (CA) 提供的证书作为群集证书。 可以使用自签名证书来保护测试群集。
 
 本文中的模板部署一个群集，该群集使用证书指纹来标识群集证书。  两个证书不能有相同的指纹，否则会增加证书管理的难度。 将已部署的群集从使用证书指纹切换为使用证书公用名称会使证书管理更加简单。  若要了解如何更新群集，以便使用证书公用名称进行证书管理，请阅读[将群集更改为使用证书公用名称进行管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
 

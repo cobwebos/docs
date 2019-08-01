@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 174184993e40b60dc89022d360f0c09fb31bc60b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: a928640aa6d56f0a39011a2cabcf979b4d907a46
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501270"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561472"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>使用媒体服务动态加密来保护内容
 
@@ -170,7 +170,7 @@ MPEG-短划线协议支持以下容器格式和加密方案。
 
 如果要向没有授权的任何人颁发许可证, 则可以使用开放限制的内容密钥策略。 例如, 如果你的收入基于 ad 而不是基于订阅。  
 
-使用令牌限制内容密钥策略时, 内容密钥仅发送到在许可证/密钥请求中提供有效 JWT 令牌或简单 web 令牌的客户端。 此令牌必须由 STS 颁发。 
+使用令牌限制内容密钥策略时, 内容密钥仅发送到在许可证/密钥请求中提供有效 JWT 令牌或简单 web 令牌 (SWT) 的客户端。 此令牌必须由 STS 颁发。 
 
 你可以使用 Azure AD 作为 STS 或部署自定义 STS。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名。 如果满足以下两个条件, 媒体服务许可证/密钥传送服务会将请求的许可证或密钥返回给客户端:
 
@@ -196,8 +196,10 @@ MPEG-短划线协议支持以下容器格式和加密方案。
 
 客户可以选择使用自定义 STS 来提供令牌。 原因包括：
 
-* 客户使用的 IDP 不支持 STS。 在此情况下，可以选择自定义 STS。
-* 客户在集成 STS 与客户的订户计费系统时可能需要更多弹性或更紧密的控制。 例如，MVPD 运营商可能提供多个 OTT 订户套餐，如高级、基本和运动。 运营商可能想要让令牌中的声明与订户套餐匹配，这样，只有特定套餐中的内容可供使用。 在此情况下，自定义 STS 可提供所需的弹性和控制度。
+* 客户使用的标识提供者 (IDP) 不支持 STS。 在此情况下，可以选择自定义 STS。
+* 客户在集成 STS 与客户的订户计费系统时可能需要更多弹性或更紧密的控制。 
+
+   例如, [OTT](https://en.wikipedia.org/wiki/Over-the-top_media_services)服务运营商可能会提供多个订户包, 如高级、基本和体育。 运营商可能想要让令牌中的声明与订户套餐匹配，这样，只有特定套餐中的内容可供使用。 在此情况下，自定义 STS 可提供所需的弹性和控制度。
 * 在令牌中包含自定义声明, 以便在不同的 ContentKeyPolicyOptions 之间选择不同的 DRM 许可证参数 (订阅许可证与租赁许可证)。
 * 包含声明, 该声明表示令牌授予访问权限的密钥的内容密钥标识符。
 

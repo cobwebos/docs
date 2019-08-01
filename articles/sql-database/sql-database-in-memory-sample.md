@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 2aa98c3958f1dffeb8adbad5e91a11f397d4a9fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f6f4ce4fc77533a4d893472298ef3a20f153136
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035704"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567991"
 ---
 # <a name="in-memory-sample"></a>内存中示例
 
@@ -46,7 +45,7 @@ ms.locfileid: "61035704"
 
 #### <a name="installation-steps"></a>安装步骤
 
-1. 通过 [Azure 门户](https://portal.azure.com/)，在服务器上创建一个高级或业务关键数据库。 将“源”  设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[创建第一个 Azure SQL 数据库](sql-database-single-database-get-started.md)。
+1. 通过 [Azure 门户](https://portal.azure.com/)，在服务器上创建一个高级或业务关键数据库。 将“源”设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[创建第一个 Azure SQL 数据库](sql-database-single-database-get-started.md)。
 
 2. 使用 SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx) 连接到该数据库。
 
@@ -88,7 +87,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 - Demo.DemoSalesOrderDetailSeed
 
 
-可以通过 SSMS 中的“对象资源管理器”检查内存优化表。  右键单击“表” > “筛选器” > “筛选器设置” > “内存优化”。     值等于 1。
+可以通过 SSMS 中的“对象资源管理器”检查内存优化表。 右键单击“表” > “筛选器” > “筛选器设置” > “内存优化”。 值等于 1。
 
 
 或者可以查询目录视图，例如：
@@ -237,10 +236,10 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>重置，编辑 _ondisk  ，然后重新运行
+#### <a name="reset-edit-for-ondisk-then-rerun"></a>重置，编辑 _ondisk，然后重新运行
 
 
-在获得 _inmem  运行结果之后，请针对 _ondisk  运行执行以下步骤：
+在获得 _inmem 运行结果之后，请针对 _ondisk 运行执行以下步骤：
 
 
 1. 在 SSMS 中运行以下命令重置数据库，删除前面运行的命令所插入的所有数据：
@@ -248,7 +247,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. 编辑 ostress.exe 命令行，将所有的 _inmem  替换为 _ondisk  。
+2. 编辑 ostress.exe 命令行，将所有的 _inmem 替换为 _ondisk。
 
 3. 再次重新运行 ostress.exe，并捕获持续时间结果。
 
@@ -257,7 +256,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 #### <a name="expected-comparison-results"></a>预期比较结果
 
-在与数据库相同的 Azure 区域的 Azure VM 上运行 `ostress`，内存中测试已显示此简化工作负荷大约有 9 倍的性能改善  。
+在与数据库相同的 Azure 区域的 Azure VM 上运行 `ostress`，内存中测试已显示此简化工作负荷大约有 9 倍的性能改善。
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 

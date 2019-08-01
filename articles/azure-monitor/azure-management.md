@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: b56993b9ad03f2ab50fe3954ab5e8855d0d8bc0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a0d3ea3f4a63e7c69a190cf856929437d6f0b9d8
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371627"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608288"
 ---
 # <a name="azure-management---monitoring"></a>Azure 管理 - 监视
 
@@ -33,7 +33,7 @@ Azure 中的监视是 Azure 管理的一个方面。  本文简要介绍了在 A
 
 下列部分简要介绍了不同的管理领域，并提供了用于处理这些领域的主要 Azure 服务的详细内容链接。
 
-## <a name="monitor"></a>监视
+## <a name="monitor"></a>监视器
 监视是一种数据收集和分析操作，用于确定商业应用程序的性能、运行状况及应用程序和其所依赖的资源的可用性。 通过实施有效的监视策略，可了解应用程序中不同组件的具体操作情况，通过主动发出有关关键问题的通知，可帮助在问题发生前解决问题，从而延长运行时间。 Azure 中的监视功能主要由 [Azure Monitor](../azure-monitor/overview.md) 提供，后者可以提供常用存储来存储监视数据、提供多个数据源从支持应用程序的不同层来收集数据，以及提供多项功能来分析和响应所收集的数据。
 
 ## <a name="configure"></a>配置
@@ -43,7 +43,7 @@ Azure 中的监视是 Azure 管理的一个方面。  本文简要介绍了在 A
 “治理”提供了机制和流程来保持对 Azure 中的应用程序和资源的控制。  它涉及规划计划和设置战略优先级。  Azure 中的治理主要是通过两个服务实现的。  [Azure Policy](../governance/policy/overview.md) 可用于创建、分配和管理策略定义，用以对资源强制实施不同的规则和操作，从而使这些资源保持符合公司标准和服务级别协议。 [Cloudyn 提供的 Azure 成本管理](../cost-management/overview.md)可用于跟踪 Azure 资源和其他云提供商（包括 AWS 和 Google）的云使用情况和开支。
 
 ## <a name="secure"></a>安全
-管理应用程序、资源和数据的安全性涉及以下事项的组合：评估威胁、收集和分析安全数据，以及确保应用程序和资源以安全方式设计并配置。  安全监视和威胁分析由 [Azure 安全中心](../security-center/security-center-intro.md)提供，该中心包括跨混合云工作负荷的统一安全管理和高级威胁防护。  另请参阅 [Azure 安全性简介](../security/azure-security.md)以了解有关 Azure 中的安全性的全面信息，以及有关安全配置 Azure 资源的指南。
+管理应用程序、资源和数据的安全性涉及以下事项的组合：评估威胁、收集和分析安全数据，以及确保应用程序和资源以安全方式设计并配置。  安全监视和威胁分析由 [Azure 安全中心](../security-center/security-center-intro.md)提供，该中心包括跨混合云工作负荷的统一安全管理和高级威胁防护。  另请参阅 [Azure 安全性简介](../security/fundamentals/overview.md)以了解有关 Azure 中的安全性的全面信息，以及有关安全配置 Azure 资源的指南。
 
 
 ## <a name="protect"></a>保护

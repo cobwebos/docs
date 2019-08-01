@@ -11,14 +11,13 @@ ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/28/2019
-ms.openlocfilehash: 52041ba3c057e871b60f283f293dd79a18f3b21e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3702c88d0a5cdc7aa1f854f71e3aee8a42d9c22c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508756"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569163"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>快速入门：使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据
 
@@ -125,7 +124,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    ```
 
 
-2. 选择“运行”在 `Product` 表中插入新行  。 “消息”窗格显示“查询已成功  ：受影响的行：1”  。
+2. 选择“运行”在 `Product` 表中插入新行  。 “消息”窗格显示“查询已成功  ：受影响的行：1”** 。
 
 
 ## <a name="update-data"></a>更新数据
@@ -140,7 +139,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“运行”更新 `Product` 表中的指定行  。 “消息”窗格显示“查询已成功  ：受影响的行：1”  。
+2. 选择“运行”更新 `Product` 表中的指定行  。 “消息”窗格显示“查询已成功  ：受影响的行：1”** 。
 
 ## <a name="delete-data"></a>删除数据
 
@@ -153,7 +152,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“运行”删除 `Product` 表中的指定行  。 “消息”窗格显示“查询已成功  ：受影响的行：1”  。
+2. 选择“运行”删除 `Product` 表中的指定行  。 “消息”窗格显示“查询已成功  ：受影响的行：1”** 。
 
 
 ## <a name="query-editor-considerations"></a>查询编辑器注意事项

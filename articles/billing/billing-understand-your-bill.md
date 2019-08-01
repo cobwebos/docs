@@ -2,28 +2,28 @@
 title: 了解 Azure 帐单
 description: 了解如何阅读并理解 Azure 订阅的使用情况和帐单。
 author: bandersmsft
-manager: jureid
+manager: dougeby
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/22/2019
+ms.date: 07/28/2019
 ms.author: banders
-ms.openlocfilehash: 69659e700ee47c8961ec21f0fb23573e13d72588
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 51143644a62a77a61c4540d9f2ad3dce401c496b
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383627"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610133"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>了解 Microsoft Azure 帐单
 若要了解 Azure 帐单, 请将发票与详细的每日使用情况文件和 Azure 门户中的成本管理报表进行比较。
 
-本文不适用于签署企业协议的 Azure 客户（EA 客户）。 如果你是 EA 客户, 请参阅[使用企业协议了解 Azure 客户的帐单](billing-understand-your-bill-ea.md)。
-
-本文不适用于具有[Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)的 Azure 客户。 如果你有 Microsoft 客户协议, 请参阅[了解你的 Microsoft 客户协议发票上的 Azure 费用](billing-mca-understand-your-bill.md)。
+本文不适用于以下客户:
+- 具有企业协议的 Azure 客户 (EA 客户)。 如果你是 EA 客户, 请参阅[使用企业协议了解 Azure 客户的帐单](billing-understand-your-bill-ea.md)。
+- 使用[Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)的 Azure 客户。 如果你有 Microsoft 客户协议, 请参阅[了解你的 Microsoft 客户协议发票上的 Azure 费用](billing-mca-understand-your-bill.md)。
 
 有关 Azure 云解决方案提供商 (Azure CSP) 计划中的计费原理的说明（包括结算周期，定价和使用情况），请参阅 [Azure CSP 计费概述](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "68383627"
  | 发票（PDF） | 使用情况明细 (CSV)|
  | --- | --- |
 |计费周期 | 计费期间 |
- |名称 |测定仪类别 |
+ |姓名 |测定仪类别 |
  |类型 |测定仪子类别 |
  |Resource |计量名称 |
  |地区 |计量区域 |
@@ -88,7 +88,7 @@ ms.locfileid: "68383627"
 
 ## <a name="external"></a>外部服务单独计费
 
-外部服务或市场费用针对的是由第三方软件供应商创建的资源。 这些资源可以通过 Azure 市场获取。 例如，Barracuda 防火墙是由第三方提供的 Azure 市场资源。 此防火墙的所有费用及其对应的计量指标都将显示为外部服务费用。
+外部服务或 marketplace 费用适用于由第三方软件供应商创建的资源。 可从 Azure Marketplace 使用这些资源。 例如, Barracuda 防火墙是由第三方提供的 Azure Marketplace 资源。 此防火墙的所有费用及其对应的计量指标都将显示为外部服务费用。
 
 外部服务单独计费。 Azure 发票上不会记录该费用。 若要了解详细信息，请参阅[了解 Azure 外部服务收费](billing-understand-your-azure-marketplace-charges.md)。
 
@@ -130,7 +130,7 @@ Azure 不直接根据资源成本计费。 资源费用按一个或多个计量�
   - [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)
   - [总拥有成本计算器](https://aka.ms/azure-tco-calculator)
   - [每项服务的详细定价信息](https://azure.microsoft.com/pricing/)
-- [在 Azure 门户中定期查看使用情况和成本](billing-getting-started.md#costs)。
+- [在 Azure 门户中定期查看使用情况和成本](billing-getting-started.md#costs)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: 803d05e1aaf4d9c26a6132bde30f101ce3905924
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5a996fe6be5aa839b78b6693accac9b1000cef8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61388291"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570421"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
 
@@ -46,14 +45,14 @@ ms.locfileid: "61388291"
 
 该目录还存储其他租户或数据库元数据，如架构版本、服务计划或提供给租户的 SLA。 该目录可以存储其他在进行应用程序管理、客户支持或 DevOps 时所需的信息。 
 
-除了 SaaS 应用程序，该目录还可以启用数据库工具。 在 Wingtip Tickets SaaS 租户各有数据库示例中，目录用于启用跨租户查询中, 进行了探讨[临时报表教程](saas-tenancy-cross-tenant-reporting.md)。 [架构管理](saas-tenancy-schema-management.md)和[租户分析](saas-tenancy-tenant-analytics.md)教程中探讨了跨数据库作业管理。 
+除了 SaaS 应用程序，该目录还可以启用数据库工具。 在 Wingtip 票证 SaaS 每个租户的数据库示例中, 目录用于启用跨租户查询, 这在[即席报表教程](saas-tenancy-cross-tenant-reporting.md)中进行了介绍。 [架构管理](saas-tenancy-schema-management.md)和[租户分析](saas-tenancy-tenant-analytics.md)教程中探讨了跨数据库作业管理。 
 
 在 Wingtip Tickets SaaS 示例中，目录通过使用[弹性数据库客户端库 (EDCL)](sql-database-elastic-database-client-library.md) 的“分片管理”功能来实现。 EDCL 在 Java 和 .NET Framework 中可用。 EDCL 允许应用程序创建、管理和使用支持数据库的分片映射。 
 
 分片映射包含分片（数据库）列表和密钥（租户）与分片之间的映射。 EDCL 函数用于在预配租户的过程中在分片映射中创建条目。 在运行时，应用程序使用这些函数连接到正确的数据库。 EDCL 会缓存连接信息以尽量减少到达目录数据库的流量并提高应用程序速度。 
 
 > [!IMPORTANT]
-> 可在目录数据库中访问映射数据，但请勿编辑这些数据  。 请仅使用弹性数据库客户端库 API 编辑映射数据。 直接操作映射数据有损坏目录的风险，不受支持。
+> 可在目录数据库中访问映射数据，但请勿编辑这些数据。 请仅使用弹性数据库客户端库 API 编辑映射数据。 直接操作映射数据有损坏目录的风险，不受支持。
 
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>SaaS 预配模式简介
@@ -82,9 +81,9 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
    * **$TenantName** = 新地点的名称（例如 *Bushwillow Blues*）。
    * **$VenueType** = 预定义的地点类型之一：_blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer_。
-   * **$DemoScenario** = **1**，预配单租户  。
+   * **$DemoScenario** = **1**，预配单租户。
 
-2. 通过将游标置于显示有“New-Tenant `”的行中的任意位置来添加断点  。 然后按 F9。
+2. 通过将游标置于显示有“New-Tenant `”的行中的任意位置来添加断点。 然后按 F9。
 
    ![断点](media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 
@@ -96,7 +95,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
 
 
-使用“调试”菜单选项跟踪脚本的执行。  按 F10 和 F11 逐步执行调用的函数， 有关调试 PowerShell 脚本的详细信息，请参阅[有关使用和调试 PowerShell 脚本的提示](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)。
+使用“调试”菜单选项跟踪脚本的执行。 按 F10 和 F11 逐步执行调用的函数， 有关调试 PowerShell 脚本的详细信息，请参阅[有关使用和调试 PowerShell 脚本的提示](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)。
 
 
 无需显式遵循此工作流。 此文档解释了如何调试脚本。
@@ -104,7 +103,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 * **导入 CatalogAndDatabaseManagement.psm1 模块。** 该模块通过[分片管理](sql-database-elastic-scale-shard-map-management.md)函数提供目录和租户级抽象。 此模块封装目录模式的大部分，值得浏览。
 * **导入 SubscriptionManagement.psm1 模块。** 该模块包含用于登录 Azure 和选择所使用 Azure 订阅的函数。
 * **获取配置详细信息。** 使用 F11 逐步执行 Get-Configuration 并了解如何指定应用配置。 资源名称和其他特定于应用的值在此处定义。 请勿更改这些值，除非已熟悉脚本。
-* **获取目录对象。** 逐步执行 Get-Catalog，其撰写并返回在更高级别的脚本中使用的目录对象。 此函数使用从“AzureShardManagement.psm1”  导入的分片管理功能。 目录对象由以下元素组成：
+* **获取目录对象。** 逐步执行 Get-Catalog，其撰写并返回在更高级别的脚本中使用的目录对象。 此函数使用从“AzureShardManagement.psm1”导入的分片管理功能。 目录对象由以下元素组成：
 
    * $catalogServerFullyQualifiedName 是使用标准主干加上用户名构造而成的：_catalog-\<user\>.database.windows.net_。
    * $catalogDatabaseName 从以下配置检索而来：*tenantcatalog*。
@@ -116,7 +115,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
     数据库名称是从租户名称构造的，可使用户清楚地知道哪个分片属于哪个租户。 也可使用其他数据库命名约定。 资源管理器模板通过复制目录服务器上的模板数据库 (_baseTenantDB_) 来创建租户数据库。 另一种方法是创建一个数据库，并通过导入 bacpac 对该数据库进行初始化。 或者从已知的位置执行初始化脚本。
 
-    资源管理器模板位于 …\Learning Modules\Common\ 文件夹中：tenantdatabasecopytemplate.json 
+    资源管理器模板位于 …\Learning Modules\Common\ 文件夹中：tenantdatabasecopytemplate.json
 
 * **租户数据库进一步初始化。** 已添加地点（租户）名称和地点类型。 其他初始化也可以在此处执行。
 
@@ -127,7 +126,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
     * 有关租户的其他元数据（地点的名称）会添加到目录中的“租户”表。 “租户”表不是分片管理架构的一部分，且不由 EDCL 安装。 此表说明了如何扩展目录数据库以支持其他特定于应用程序的数据。
 
 
-预配完成后，执行将返回到原始 *Demo-ProvisionAndCatalog* 脚本。 新租户的“事件”页会在浏览器中打开。 
+预配完成后，执行将返回到原始 *Demo-ProvisionAndCatalog* 脚本。 新租户的“事件”页会在浏览器中打开。
 
    ![“事件”页](media/saas-dbpertenant-provision-and-catalog/new-tenant.png)
 
@@ -138,14 +137,14 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
 1. 在 PowerShell ISE 中打开 ...\\Learning Modules\\ProvisionAndCatalog\\*Demo-ProvisionAndCatalog.ps1*。 将 *$DemoScenario* 参数更改为 3：
 
-   * **$DemoScenario** = **3**，预配一批租户  。
+   * **$DemoScenario** = **3**，预配一批租户。
 2. 若要运行脚本，请按 F5。
 
 该脚本部署一批其他租户。 它使用 [Azure 资源管理器模板](../azure-resource-manager/resource-manager-template-walkthrough.md)控制该批租户，将每个数据库的预配委托给链接的模板。 以这种方式使用模板允许 Azure 资源管理器中转脚本的预配过程。 这些模板并行预配数据库，并在需要时进行重试。 该脚本是幂等的，因此如果由于任何原因，它失败或停止，请重新运行它。
 
 ### <a name="verify-the-batch-of-tenants-that-successfully-deployed"></a>验证该批租户是否已成功部署
 
-* 在 [Azure 门户](https://portal.azure.com)中，浏览到服务器列表并打开 tenants1  服务器。 选择“SQL 数据库”  ，并验证一批 17 个额外数据库现已位于列表中。
+* 在 [Azure 门户](https://portal.azure.com)中，浏览到服务器列表并打开 tenants1 服务器。 选择“SQL 数据库”，并验证一批 17 个额外数据库现已位于列表中。
 
    ![数据库列表](media/saas-dbpertenant-provision-and-catalog/database-list.png)
 

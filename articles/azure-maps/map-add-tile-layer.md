@@ -3,18 +3,18 @@ title: 将图块层添加到 Azure Maps | Microsoft Docs
 description: 如何将图块层添加到 Javascript 地图
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/3/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3a773c24993d229f20df698113ff7535fea634ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e288e03b9e2c02ba963595f192dea7225c6d5762
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769220"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638985"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>将图块层添加到地图
 
@@ -73,4 +73,4 @@ ms.locfileid: "60769220"
 有关可向地图添加的更多代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"]
-> [添加图像图层](./map-add-image-layer.md)
+> [添加图像层](./map-add-image-layer.md)

@@ -3,7 +3,7 @@ title: 将现有可执行文件部署到 Azure Service Fabric | Microsoft 文档
 description: 了解如何将现有应用程序打包为来宾可执行文件，以便部署到 Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/15/2018
-ms.author: aljo
-ms.openlocfilehash: b7efeb1b4d83f6a6b372f73a7c0a5ca9bffdc052
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 521c7a198d9085cdc93d325e63ad9d46cc4c7928
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946665"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599456"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>将现有可执行文件部署到 Service Fabric
 可以在 Azure Service Fabric 中运行任何类型的代码（如 Node.js、Java 或 C++）作为服务。 Service Fabric 将这些类型的服务称为来宾可执行文件。
@@ -33,7 +33,7 @@ ms.locfileid: "60946665"
 * 运行状况监视。 Service Fabric 运行状况监视功能可检测应用程序是否正在运行，并在出现故障时提供诊断信息。   
 * 应用程序生命周期管理。 除了提供无需停机的升级，Service Fabric 还可以在升级过程中报告坏健康事件时自动回滚到先前的版本。    
 * 密度。 可以在群集中运行多个应用程序，这样便无需使每个应用程序在自己的硬件上运行。
-* 可发现性：使用 REST 可以调用要在群集中查找其他服务的 Service Fabric 命名服务。 
+* 可发现性使用 REST, 你可以调用 Service Fabric 命名服务以在群集中查找其他服务。 
 
 ## <a name="samples"></a>示例
 * [打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)

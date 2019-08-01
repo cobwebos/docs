@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: d58c596421cec2e69210dd39a5d4a9708c154b44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0b4a83b2c950683926be7fb3be3b0cbe977fef8
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66492755"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618400"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 存储中存储业务关键型数据
 
@@ -26,7 +26,7 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
 典型的应用程序包含：
 
-- **法规遵从**：Azure Blob 存储的不可变存储可帮助组织达到 SEC 17a-4(f)、CFTC 1.31(d)、FINRA 和其他法规要求。 通过 Cohasset 将相关联的技术白皮书详细介绍了不可变的存储地址，这些监管要求是通过可下载[Microsoft 服务信任门户](https://aka.ms/AzureWormStorage)。 [Azure 信任中心](https://www.microsoft.com/trustcenter/compliance/compliance-overview)包含有关我们的合规认证的详细信息。
+- **法规遵从**：Azure Blob 存储的不可变存储可帮助组织达到 SEC 17a-4(f)、CFTC 1.31(d)、FINRA 和其他法规要求。 Cohasset 技术白皮书通过[Microsoft 服务信任门户](https://aka.ms/AzureWormStorage)来关联不可变存储如何满足这些法规要求。 [Azure 信任中心](https://www.microsoft.com/trustcenter/compliance/compliance-overview)包含有关我们的合规认证的详细信息。
 
 - **安全的文档保留**：Azure Blob 存储的不可变存储确保用户（包括具有帐户管理特权的用户）无法修改或删除数据。
 
@@ -53,7 +53,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 ### <a name="time-based-retention"></a>基于时间的保留
 
 > [!IMPORTANT]
-> 必须是基于时间的保留策略*锁定*blob 在一个兼容的不可变 （写入和删除受保护） 状态的秒 17a-4 （f） 和其他法规遵从性。 我们建议先锁定策略在合理的时间，通常不超过 24 小时。 在应用的基于时间的保留策略的初始状态是*解锁*，从而可以测试此功能和对策略进行更改之前将其锁定。 虽然*解锁*状态提供程序不变性保护，我们不建议使用*解锁*短期功能试用版以外的任何目的状态。 
+> 根据 SEC 17a-4(f) 和其他法规符合性要求，基于时间的保留策略必须处于锁定状态才能确保 Blob 既兼容又不可变（不可写入和删除）。 我们建议将策略锁定合理的时间，通常不到 24 小时。 已应用的基于时间的保留策略的初始状态为“未锁定”，在此状态下可以先测试该功能，并在锁定之前对策略进行更改。 虽然“未锁定”状态提供不变性保护，但除非是短时功能试用，否则我们不建议使用未锁定状态。 
 
 在容器上应用基于时间的保留策略时，容器中的所有 Blob 都会保持在不可变的状态，其持续时间就是有效保留期。 现有 Blob 的有效保留期就是 Blob 修改时间与用户指定的保留时间间隔之间的差。
 
@@ -66,7 +66,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 >
 > 一个新的 Blob (_testblob2_) 现已上传到该容器。 此新 Blob 的有效保留期为五年。
 
-解锁基于时间的保留策略建议仅用于功能测试和策略必须锁定若要符合秒 17a-4 （f） 和其他法规遵从性。 一旦锁定基于时间的保留策略，不能删除的策略和最多 5 个增加到有效的保持期允许。 有关如何设置和锁定基于时间的保留策略的详细信息，请参阅[入门](#getting-started)部分。
+根据 SEC 17a-4(f) 和其他法规符合性要求，基于时间的未锁定保留策略只建议用于功能测试，而通常情况下策略必须处于锁定状态。 一旦基于时间的保留策略处于锁定状态，就不能将该策略删除，但允许延长有效保留期限，最多延迟 5 次。 若要详细了解如何设置和锁定基于时间的保留策略，请参阅[入门](#getting-started)部分。
 
 ### <a name="legal-holds"></a>法定保留
 
@@ -76,11 +76,11 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 下表显示了会因各种不可变方案而禁用的 Blob 操作的类型。 有关详细信息，请参阅 [Azure Blob 服务 API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) 文档。
 
-|场景  |Blob 状态  |不允许 Blob 操作  |
+|应用场景  |Blob 状态  |不允许 Blob 操作  |
 |---------|---------|---------|
 |Blob 的有效保留时间间隔尚未到期，并且/或者法定保留已设置     |不可变：不可删除和写入         | 放置 Blob<sup>1</sup>、放置块<sup>1</sup>、放置块列表<sup>1</sup>、删除容器、删除 Blob、设置 Blob 元数据、放置页、设置 Blob 属性、快照 Blob、增量复制 Blob、追加块         |
 |Blob 的有效保留时间间隔尚未到期     |仅仅不可写入（允许删除操作）         |放置 Blob<sup>1</sup>、放置块<sup>1</sup>、放置块列表<sup>1</sup>、设置 Blob 元数据、放置页、设置 Blob 属性、快照 Blob、增量复制 Blob、追加块         |
-|清除了所有法定保留，未在容器上设置任何基于时间的保留策略     |可变         |无         |
+|清除了所有法定保留，未在容器上设置任何基于时间的保留策略     |可变         |None         |
 |未创建任何 WORM 策略（基于时间的保留或法定保留）     |可变         |无         |
 
 <sup>1</sup> 应用程序允许这些操作创建新的 Blob 一次。 不允许针对不可变容器中的现有 Blob 路径执行任何后续覆盖操作。
@@ -91,7 +91,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 - 对于某个存储帐户而言，使用锁定的基于时间的不可变策略的最大容器数为 1,000。
 - 最小保留时间间隔为 1 天。 最大值为 146,000 天（400 年）。
 - 对于容器而言，为了延长锁定的基于时间的不可变策略的保留时间间隔而可执行的最大编辑次数为 5。
-- 对于容器而言，将根据策略的持续时间最多保留 7 个基于时间的保留策略审核日志。
+- 对于容器, 将为锁定的策略保留最多7个基于时间的保留策略审核日志。
 
 ### <a name="legal-hold"></a>法定保留
 - 对于某个存储帐户而言，使用法定保留设置的最大容器数为 1,000。
@@ -103,7 +103,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 使用此功能不会产生额外的费用。 不可变数据的定价方式与常规的可变数据相同。 有关 Azure Blob 存储的定价详细信息，请参阅 [Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 不可变存储仅适用于常规用途 v2 和 Blob 存储帐户。 必须通过 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)管理这些帐户。 有关升级现有常规用途 v1 存储帐户的信息，请参阅[升级存储帐户](../common/storage-account-upgrade.md)。
 
 最新版本的 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 和 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) 支持 Azure Blob 存储的不可变存储。 此外还提供[客户端库支持](#client-libraries)。
@@ -167,11 +167,11 @@ Az.Storage 模块支持不可变存储。  若要启用该功能，请执行以�
 - [Python 客户端库 2.0.0 候选发布版 2 和更高版本](https://pypi.org/project/azure-mgmt-storage/2.0.0rc2/)
 - [Java 客户端库](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/storage/resource-manager/Microsoft.Storage/preview/2018-03-01-preview)
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 **你们是否可以提供有关 WORM 合规性的文档？**
 
-是的。 文档符合性，Microsoft 保留前导独立评估公司，专注于记录管理和信息管理，Cohasset 相关联，若要评估 Azure 不可变的 Blob 存储和及其是否符合特定要求为金融服务行业。 经 Cohasset 验证，在用于保留 WORM 状态的基于时间的 Blob 时，Azure 不可变 Blob 存储符合 CFTC 规则 1.31(c)-(d)、FINRA 规则 4511 和 SEC 规则 17a-4 的相关存储要求。 Microsoft 针对这组规则，因为它们代表全局的金融机构记录保留期的最说明性指南。 Cohasset 报表现已推出[Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)。 若要请求来自 Microsoft 蠕虫法规遵从方面证明的字母，请联系 Azure 支持部门。
+是的。 为了记录相容性, Microsoft 保留了一个领先的独立评估事务所, 该公司专用于记录管理和信息管理、Cohasset 关联, 以评估 Azure 不可变 Blob 存储及其符合性特定要求金融服务行业。 经 Cohasset 验证，在用于保留 WORM 状态的基于时间的 Blob 时，Azure 不可变 Blob 存储符合 CFTC 规则 1.31(c)-(d)、FINRA 规则 4511 和 SEC 规则 17a-4 的相关存储要求。 Microsoft 以这组规则为目标, 因为它们表示针对金融机构的记录保留内容的最具规范性指导。 [Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)提供了 Cohasset 报告。 若要从 Microsoft 请求有关蠕虫符合性的证明, 请联系 Azure 支持部门。
 
 **此功能是只适用于块 Blob，还是也适用于页 Blob 和追加 Blob？**
 
@@ -189,9 +189,9 @@ Az.Storage 模块支持不可变存储。  若要启用该功能，请执行以�
 
 否。法定保留只是非基于时间的保留策略的概括术语。 它并非只用于诉讼相关的程序。 在保留期为未知的情况下，法定保留策略可用于禁用覆盖和删除，以保护重要的企业 WORM 数据。 可将它用作一种企业策略来保护任务关键的 WORM 工作负荷，或者在自定义事件触发器要求使用基于时间的保留策略之前，将它用作一种临时策略。 
 
-**可以删除*锁定*合法保留或基于时间的保留策略？**
+**是否可以删除锁定的基于时间的保留策略或法定保留？**
 
-可以从容器中删除仅解锁基于时间的保留策略。 一旦基于时间的保留策略被锁定，无法删除;仅有效的保持期允许扩展。 可以删除合法保留标记。 当所有法律标记将被删除时，将删除合法保留。
+只能从容器中删除未锁定的基于时间的保留策略。 一旦基于时间的保留策略处于锁定状态，就不能将其删除，只能进行有效的保留期延长。 法定保留标记可以删除。 删除所有法定标记以后，就会删除法定保留。
 
 **如果尝试删除某个容器，而该容器使用锁定的基于时间的保留策略或法定保留，会发生什么情况？**
 
@@ -219,7 +219,7 @@ Az.Storage 模块支持不可变存储。  若要启用该功能，请执行以�
 
 **该功能已在哪些区域推出？**
 
-Azure 公共区域、中国区域和政府区域均提供不可变存储。 如果不可变的存储区域中不可用，请联系支持和电子邮件azurestoragefeedback@microsoft.com。
+Azure 公共区域、中国区域和政府区域均提供不可变存储。 如果区域中没有不可变的存储, 请联系支持人员和电子azurestoragefeedback@microsoft.com邮件。
 
 ## <a name="sample-powershell-code"></a>示例 PowerShell 代码
 
@@ -381,7 +381,7 @@ $policy = Set-AzRmStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 13 -Etag $policy.Etag -ExtendPolicy
 ```
 
-删除未锁定的不可变性策略 （添加-Force 可以关闭提示）：
+删除未锁定的不可变策略（添加 -Force 以关闭提示）：
 ```powershell
 # with an immutability policy object
 $policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `

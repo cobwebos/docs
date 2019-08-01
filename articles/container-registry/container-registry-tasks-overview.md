@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
 ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68311871"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>利用 ACR 任务自动生成和维护容器映像
@@ -50,7 +50,7 @@ ms.locfileid: "68311871"
 | GitHub 子文件夹 | GitHub 存储库中某个子文件夹内的文件。 示例显示分支和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | 远程 tarball | 远程 Web 服务器上某个压缩存档中的文件。 | `http://remoteserver/myapp.tar.gz` |
 
-ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成到 CI/CD 解决方案。 通过执行[az login][az-login] with a [service principal][az-login-service-principal], CI/CD 解决方案可以发出[az acr build][az-acr-生成]命令来启动映像生成。
+ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成到 CI/CD 解决方案。 通过执行包含[服务主体][az-login-service-principal]的[AZ login][az-login] , CI/CD 解决方案可以发出[az acr build][az-acr-build]命令来启动映像生成。
 
 第一篇 ACR 任务教程[使用 Azure 容器注册表任务在云中生成容器映像](container-registry-tutorial-quick-task.md)中介绍了快速任务的用法。
 
@@ -67,7 +67,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 真正增强容器生成工作流的 ACR 任务的强大之处在于，它能够检测基础映像的更新。 在将更新的基本映像推送到注册表时, 或在公共存储库 (如 Docker Hub) 中更新基本映像时, ACR 任务可以根据它自动生成任何应用程序映像。
 
-在广义上，可将容器映像分类为基本映像和应用程序映像。   基本映像通常包括应用程序所基于的操作系统和应用程序框架，以及其他自定义项。 这些基础映像本身通常基于公共上游映像，例如：[Alpine Linux][base-alpine], [Windows][base-windows]、 [.net][dotnet]或[node.js][base-node]。 多个应用程序映像可以共享一个通用基本映像。
+在广义上，可将容器映像分类为基本映像和应用程序映像。 基本映像通常包括应用程序所基于的操作系统和应用程序框架，以及其他自定义项。 这些基础映像本身通常基于公共上游映像，例如：[Alpine Linux][base-alpine]、 [Windows][base-windows]、 [.net][base-dotnet]或[node.js][base-node]。 多个应用程序映像可以共享一个通用基本映像。
 
 当上游维护者更新 OS 或应用程序框架映像时（例如，使用关键 OS 安全修补），也必须更新基本映像以包含关键修复。 然后，还必须重新生成每个应用程序映像，以包含目前已包含在基础映像中的这些上游修复。
 

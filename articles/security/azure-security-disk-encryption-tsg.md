@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 35d494702673d59290a0073c55135138f533b8bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2464332727b0ef1e616c04a975df5ac475a7b19
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956697"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610287"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
@@ -52,11 +52,11 @@ uname -a
 
 ## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>更新 Azure 虚拟机代理和扩展版本
 
-Azure 磁盘加密操作使用不受支持的版本的 Azure 虚拟机代理的虚拟机映像上可能会失败。 在启用加密之前，应更新使用早于 2.2.38 代理版本的 Linux 映像。 有关详细信息，请参阅[如何更新 VM 上的 Azure Linux 代理](../virtual-machines/extensions/update-linux-agent.md)并[在 Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
+使用不受支持的 Azure 虚拟机代理版本的虚拟机映像上的 azure 磁盘加密操作可能会失败。 在启用加密之前, 应更新具有早于2.2.38 的代理版本的 Linux 映像。 有关详细信息, 请参阅[如何更新 VM 上的 Azure Linux 代理](../virtual-machines/extensions/update-linux-agent.md)和[azure 中虚拟机代理的最低版本支持](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
-此外，还需要 Microsoft.Azure.Security.AzureDiskEncryption 或 Microsoft.Azure.Security.AzureDiskEncryptionForLinux 来宾代理扩展的正确版本。 维护并满足 Azure 虚拟机代理先决条件并且使用支持的虚拟机代理版本时，自动更新由平台扩展版本。
+此外, 还需要正确的 AzureDiskEncryption 或 AzureDiskEncryptionForLinux 来宾代理扩展版本的版本。)。 满足 Azure 虚拟机代理先决条件并使用虚拟机代理的受支持版本时, 平台将自动维护和更新扩展版本。
 
-Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux 扩展已弃用，不再受支持。  
+Microsoft.ostcextensions. AzureDiskEncryptionForLinux 扩展已弃用, 不再受支持。  
 
 ## <a name="unable-to-encrypt-linux-disks"></a>无法加密 Linux 磁盘
 
@@ -64,7 +64,7 @@ Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux 扩展已弃用，不再受
 
 Linux OS 磁盘加密序列暂时卸载 OS 驱动器。 然后，它将对整个 OS 磁盘进行逐块加密，然后再将其重新安装为加密状态。 与 Windows 上的 Azure 磁盘加密不同，Linux 磁盘加密不允许在加密的同时并发使用 VM。 VM 的性能特点会在完成加密所需的时间上产生显著差异。 这些特点包括磁盘大小以及存储帐户为标准还是高级 (SSD) 存储。
 
-若要检查的加密状态，轮询**ProgressMessage**从返回的字段[Get AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus)命令。 加密 OS 驱动器时，VM 会进入维护状态，同时会禁用 SSH，以防止对进行中的进程造成任何干扰。 进行加密时，EncryptionInProgress  消息大部分时间都在提供报告。 几个小时之后，VMRestartPending  消息会提示重新启动 VM。 例如：
+若要检查加密状态, 请轮询从[AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus)命令返回的**ProgressMessage**字段。 加密 OS 驱动器时，VM 会进入维护状态，同时会禁用 SSH，以防止对进行中的进程造成任何干扰。 进行加密时，EncryptionInProgress 消息大部分时间都在提供报告。 几个小时之后，VMRestartPending 消息会提示重新启动 VM。 例如：
 
 
 ```azurepowershell
@@ -100,7 +100,7 @@ ProgressMessage            : OS disk successfully encrypted, please reboot the V
 使用 [Azure AD 凭据](azure-security-disk-encryption-prerequisites-aad.md)启用加密时，目标 VM 必须允许连接到 Azure Active Directory 终结点和密钥保管库终结点。 当前 Azure Active Directory 身份验证终结点在 [Office 365 URL 和 IP 地址范围](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges)文档中的第 56 和 59 节中进行维护。 在有关如何[访问防火墙保护下的 Azure 密钥保管库](../key-vault/key-vault-access-behind-firewall.md)的文档中提供了密钥保管库说明。
 
 ### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务 
-VM 必须能够访问这样的 [Azure 实例元数据服务](../virtual-machines/windows/instance-metadata-service.md)终结点：该终结点使用只能从 VM 内访问的已知不可路由 IP 地址 (`169.254.169.254`)。  不支持 alter 本地 HTTP 流量传输到此地址 （例如，添加 X 转发的标头） 的代理配置。
+VM 必须能够访问这样的 [Azure 实例元数据服务](../virtual-machines/windows/instance-metadata-service.md)终结点：该终结点使用只能从 VM 内访问的已知不可路由 IP 地址 (`169.254.169.254`)。  不支持将本地 HTTP 流量更改为此地址的代理配置 (例如, 添加 X 转发的标头)。
 
 ### <a name="linux-package-management-behind-a-firewall"></a>防火墙保护下的 Linux 程序包管理
 
@@ -148,15 +148,15 @@ If the expected encryption state does not match what is being reported in the po
 
 ## <a name="troubleshooting-encryption-status"></a>加密状态故障排除 
 
-在门户可能显示为加密磁盘，即使已在 VM 中未加密。  低级别的命令用于直接解密 VM，而不是使用更高级别 Azure 磁盘加密管理命令中的将磁盘从可以发生该错误。  更高级别命令不仅解密从 VM 中的磁盘，VM 外部它们还必须更新重要平台级别的加密设置和与 VM 关联的扩展插件设置。  如果这些不保存在对齐方式，请在平台不能以报告加密状态或正确预配 VM。   
+即使在 VM 内未加密后, 门户也可能会将磁盘显示为已加密。  当使用低级别命令从 VM 内部直接解密磁盘, 而不是使用较高级别的 Azure 磁盘加密管理命令时, 会发生这种情况。  较高级别的命令不仅从 VM 内解密磁盘, 还会更新与 VM 关联的重要平台级别的加密设置和扩展设置。  如果这些不是按对齐方式进行的, 则平台将无法报告加密状态或正确预配 VM。   
 
-若要禁用 PowerShell 使用 Azure 磁盘加密，请使用[禁用 AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)跟[删除 AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension)。 禁用加密前运行删除 AzVMDiskEncryptionExtension 将失败。
+若要使用 PowerShell 禁用 Azure 磁盘加密, 请使用[AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)后跟[AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension)。 禁用加密之前, 运行 AzVMDiskEncryptionExtension 会失败。
 
-若要禁用 CLI 使用 Azure 磁盘加密，请使用[az vm 加密禁用](/cli/azure/vm/encryption)。 
+若要使用 CLI 禁用 Azure 磁盘加密, 请使用[az vm Encryption disable](/cli/azure/vm/encryption)。 
 
 ## <a name="next-steps"></a>后续步骤
 
 本文档已详细描述有关 Azure 磁盘加密的一些常见问题和解决这些问题的方法。 有关此服务及其功能的详细信息，请参阅以下文章：
 
 - [在 Azure 安全中心应用磁盘加密](../security-center/security-center-apply-disk-encryption.md)
-- [Azure 静态数据加密](azure-security-encryption-atrest.md)
+- [Azure 静态数据加密](fundamentals/encryption-atrest.md)

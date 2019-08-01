@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4274b3684a2e9e79385a561b1cad426b4ffd954e
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60906426"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609942"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>使用 Azure 安全中心管理 Endpoint Protection 问题
-Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protection 问题”边栏选项卡下报告此状态。 安全中心会突出显示此类问题，如检测到威胁和保护不充分，这可能会导致虚拟机 (VM) 和计算机容易受到反恶意软件威胁的攻击。 参考“Endpoint Protection 问题”  下的信息，可以制定计划来解决发现的任何问题。
+Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protection 问题”边栏选项卡下报告此状态。 安全中心会突出显示此类问题，如检测到威胁和保护不充分，这可能会导致虚拟机 (VM) 和计算机容易受到反恶意软件威胁的攻击。 参考“Endpoint Protection 问题”下的信息，可以制定计划来解决发现的任何问题。
 
 安全中心报告以下 Endpoint Protection 问题：
 
@@ -41,17 +41,17 @@ Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protecti
     >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-Endpoint Protection 问题在安全中心内显示为建议。  如果环境容易受到反恶意软件威胁的攻击，“建议”  和“计算”  下显示此建议。 若要查看“Endpoint Protection 问题”仪表板  ，需要遵循“计算”工作流。
+Endpoint Protection 问题在安全中心内显示为建议。  如果环境容易受到反恶意软件威胁的攻击，“建议”和“计算”下显示此建议。 若要查看“Endpoint Protection 问题”仪表板，需要遵循“计算”工作流。
 
-此示例将使用“计算”  。  下文将介绍如何在 Azure VM 和非 Azure 计算机上安装反恶意软件。
+此示例将使用“计算”。  下文将介绍如何在 Azure VM 和非 Azure 计算机上安装反恶意软件。
 
 ## <a name="install-antimalware-on-azure-vms"></a>在 Azure VM 上安装反恶意软件
 
-1. 选择**计算和应用程序**在安全中心主菜单下或**概述**。
+1. 选择 "安全中心" 主菜单或 "**概述**" 下的 "**计算 & 应用**"。
 
    ![选择“计算”][1]
 
-2. 在“计算”  下，选择“Endpoint Protection 问题”  。 此时，将打开“Endpoint Protection 问题”  仪表板。
+2. 在“计算”下，选择“Endpoint Protection 问题”。 此时，将打开“Endpoint Protection 问题”仪表板。
 
    ![选择“Endpoint Protection 问题”][2]
 
@@ -60,7 +60,7 @@ Endpoint Protection 问题在安全中心内显示为建议。  如果环境容�
    - 已安装的 Endpoint Protection 提供程序 - 列出安全中心发现的各种提供程序。
    - 已安装的 Endpoint Protection 运行状况 - 显示已安装 Endpoint Protection 解决方案的 VM 和计算机的运行状况。 图表显示正常运行的 VM 和计算机数量，以及保护不充分的 VM 和计算机数量。
    - 检测到恶意软件 - 显示安全中心报告在其上检测到恶意软件的 VM 和计算机数量。
-   - 受攻击的计算机-显示 Vm 和安全中心，通过恶意软件报告攻击的计算机的数。
+   - 受攻击的计算机–显示安全中心报告恶意软件攻击的 Vm 和计算机的数目。
 
    仪表板底部列出了 Endpoint Protection 问题，可了解下列信息：  
 
@@ -70,27 +70,27 @@ Endpoint Protection 问题在安全中心内显示为建议。  如果环境容�
       - 红色 - 优先级高，应立即处理
       - 橙色 - 优先级中等，应尽快处理
 
-3. 选择“未在 Azure VM 上安装 Endpoint Protection”  。
+3. 选择“未在 Azure VM 上安装 Endpoint Protection”。
 
    ![选择“未在 Azure VM 上安装 Endpoint Protection”][3]
 
-4. “未在 Azure VM 上安装 Endpoint Protection”  下列出了没有安装反恶意软件的 Azure VM。  可以选择在列出的所有 VM 上安装反恶意软件，也可以逐个选择要安装反恶意软件的 VM，具体方法为单击特定的 VM。
-5. 在“选择 Endpoint Protection”  下，选择要使用的 Endpoint Protection 解决方案。 在此示例中，选择“Microsoft 反恶意软件”  。
-6. 将显示有关 Endpoint Protection 解决方案的其他信息。 选择“创建”  。
+4. “未在 Azure VM 上安装 Endpoint Protection”下列出了没有安装反恶意软件的 Azure VM。  可以选择在列出的所有 VM 上安装反恶意软件，也可以逐个选择要安装反恶意软件的 VM，具体方法为单击特定的 VM。
+5. 在“选择 Endpoint Protection”下，选择要使用的 Endpoint Protection 解决方案。 在此示例中，选择“Microsoft 反恶意软件”。
+6. 将显示有关 Endpoint Protection 解决方案的其他信息。 选择“创建”。
 
 ## <a name="install-antimalware-on-non-azure-computers"></a>在非 Azure 计算机上安装反恶意软件
 
-1. 返回到“Endpoint Protection 问题”  ，并选择“未在非 Azure 计算机上安装 Endpoint Protection”  。
+1. 返回到“Endpoint Protection 问题”，并选择“未在非 Azure 计算机上安装 Endpoint Protection”。
 
    ![选择“未在非 Azure 计算机上安装 Endpoint Protection”][4]
 
-2. 在“未在非 Azure 计算机上安装 Endpoint Protection”  下，选择一个工作区。 筛选到工作区的 Azure Monitor 日志搜索查询将打开并列出缺少反恶意软件的计算机。 选择列表中的计算机，以了解详细信息。
+2. 在“未在非 Azure 计算机上安装 Endpoint Protection”下，选择一个工作区。 筛选到工作区 Azure Monitor 日志搜索查询会打开并列出缺少反恶意软件的计算机。 选择列表中的计算机，以了解详细信息。
 
-   ![Azure 监视器日志搜索][5]
+   ![Azure Monitor 日志搜索][5]
 
 此时，将会打开另一个搜索结果，其中筛选出了相应计算机的信息。
 
-  ![Azure 监视器日志搜索][6]
+  ![Azure Monitor 日志搜索][6]
 
 > [!NOTE]
 > 建议为所有 VM 和计算机预配 Endpoint Protection，这样有助于确定并删除病毒、间谍软件和其他恶意软件。
@@ -100,7 +100,7 @@ Endpoint Protection 问题在安全中心内显示为建议。  如果环境容�
 ## <a name="next-steps"></a>后续步骤
 本文档演示如何实现安全中心建议“安装终结点保护。” 若要了解有关在 Azure 中启用 Microsoft 反恶意软件的详细信息，请参阅以下文档：
 
-* [适用于云服务和虚拟机的 Microsoft 反恶意软件](../security/azure-security-antimalware.md) - 了解如何部署 Microsoft 反恶意软件。
+* [适用于云服务和虚拟机的 Microsoft 反恶意软件](../security/fundamentals/antimalware.md) - 了解如何部署 Microsoft 反恶意软件。
 
 若要了解有关安全中心的详细信息，请参阅以下文档：
 

@@ -3,7 +3,7 @@ title: Azure Service Fabric Docker Compose 部署预览版
 description: Azure Service Fabric 接受 Docker Compose 格式，因此可以更轻松地安排使用 Service Fabric 的现有容器。 这种支持目前处于预览状态。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 6e8cbf30044f95c2514a3a1af15cb58868957a16
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: de02c9a8580527ab708418aa266f1b56411fb95b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620718"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599578"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中的 Docker Compose 部署支持（预览版）
 
@@ -138,8 +138,8 @@ sfctl compose upgrade-status --deployment-name TestContainerApp
 ### <a name="ports-section"></a>端口部分
 
 指定 Service Fabric 侦听程序将使用“端口”部分中的 http 还是 https 协议。 这将确保使用命名服务正确发布终结点协议，以允许反向代理转发请求：
-* 若要路由到不安全的 Service Fabric Compose 服务，请指定 /http  。 例如“80:80/http”  。
-* 若要路由到安全的 Service Fabric Compose 服务，请指定 /https  。 例如“443:443/https”  。
+* 若要路由到不安全的 Service Fabric Compose 服务，请指定 /http。 例如“80:80/http”。
+* 若要路由到安全的 Service Fabric Compose 服务，请指定 /https。 例如“443:443/https”。
 
 > [!NOTE]
 > /http 和 /https 端口部分语法特定于 Service Fabric，用于注册正确的 Service Fabric 侦听程序 URL。  如果以编程方式验证 Docker Compose 文件语法，则可能导致验证错误。

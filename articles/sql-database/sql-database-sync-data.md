@@ -10,21 +10,20 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: cfa94fc1c75bcd1eaa9a076cfe63369f60ce5f1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24e340d25cb57f9a35f06f6dbd5a394d60a14fad
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693082"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566436"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
 使用 SQL 数据同步这项基于 Azure SQL 数据库的服务，可以跨多个 SQL 数据库和 SQL Server 实例双向同步选定数据。
 
 > [!IMPORTANT]
-> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例  。
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
 
 ## <a name="when-to-use-data-sync"></a>何时使用 SQL 数据同步
 
@@ -36,7 +35,7 @@ ms.locfileid: "66693082"
 
 数据同步不是以下场景的首选解决方案：
 
-| 场景 | 一些建议的解决方案 |
+| 应用场景 | 一些建议的解决方案 |
 |----------|----------------------------|
 | 灾难恢复 | [Azure 异地冗余备份](sql-database-automated-backups.md) |
 | 读取缩放 | [使用只读副本对只读的查询工作负荷进行负载均衡（预览版）](sql-database-read-scale-out.md) |
@@ -50,9 +49,9 @@ SQL 数据同步以同步组的概念为依据。 同步组是一组要同步的
 
 SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的一个数据库定义为中心数据库。 其余数据库均为成员数据库。 仅在中心和各成员之间同步数据。
 
-- 中心数据库  必须是 Azure SQL 数据库。
-- 成员数据库  可以是 SQL 数据库、本地 SQL Server 数据库或 Azure 虚拟机上的 SQL Server 实例。
-- 同步数据库  包含数据同步的元数据和日志。同步数据库必须是与中心数据库位于同一区域的 Azure SQL 数据库。 同步数据库的创建者和所有者均为客户。
+- 中心数据库必须是 Azure SQL 数据库。
+- 成员数据库可以是 SQL 数据库、本地 SQL Server 数据库或 Azure 虚拟机上的 SQL Server 实例。
+- 同步数据库包含数据同步的元数据和日志。同步数据库必须是与中心数据库位于同一区域的 Azure SQL 数据库。 同步数据库的创建者和所有者均为客户。
 
 > [!NOTE]
 > 如果使用本地数据库作为成员数据库，则必须[安装并配置本地同步代理](sql-database-get-started-sql-data-sync.md#add-on-prem)。
@@ -61,25 +60,25 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 
 同步组具有以下属性：
 
-- “同步架构”  描述了在同步的数据。
-- “同步方向”  可以是双向同步，也可以仅为单向同步。 也就是说，“同步方向”可以是“从中心同步到成员”  和/或“从成员同步到中心”  。
-- “同步间隔”  描述多久执行一次同步。
-- “冲突解决策略”  是组级别策略，可以是“中心胜出”  ，也可以是“成员胜出”  。
+- “同步架构”描述了在同步的数据。
+- “同步方向”可以是双向同步，也可以仅为单向同步。 也就是说，“同步方向”可以是“从中心同步到成员”和/或“从成员同步到中心”。
+- “同步间隔”描述多久执行一次同步。
+- “冲突解决策略”是组级别策略，可以是“中心胜出”，也可以是“成员胜出”。
 
 ## <a name="how-does-data-sync-work"></a>数据同步的工作原理
 
 - **跟踪数据更改：** SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 更改记录在用户数据库中的端表内。 请注意，默认情况下 BULK INSERT 不会激发触发器。 如果未指定 FIRE_TRIGGERS，则不执行任何插入触发器操作。 添加 FIRE_TRIGGERS 选项，以便数据同步可以跟踪这些插入。 
 - **同步数据：** 根据设计，SQL 数据同步采用中心辐射型模型。 中心与各个成员同步数据。 中心内的更改会先下载到成员，然后成员内的更改会上传到中心。
-- **解决冲突：** SQL 数据同步提供两个冲突解决选项，即“中心胜出”或“成员胜出”   。
-  - 如果选择“中心胜出”  ，中心内的更改始终覆盖成员内的更改。
-  - 如果选择“成员胜出”  ，成员内的更改覆盖中心内的更改。 如果有多个成员，最终值取决于哪个成员最先同步。
+- **解决冲突：** SQL 数据同步提供两个冲突解决选项，即“中心胜出”或“成员胜出”。
+  - 如果选择“中心胜出”，中心内的更改始终覆盖成员内的更改。
+  - 如果选择“成员胜出”，成员内的更改覆盖中心内的更改。 如果有多个成员，最终值取决于哪个成员最先同步。
 
 ## <a name="compare-data-sync-with-transactional-replication"></a>将数据同步与事务复制进行比较
 
 | | 数据同步 | 事务复制 |
 |---|---|---|
 | 优点 | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 |
-| 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库单一数据库或入池数据库发布<br/>- 维护成本高 |
+| 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库单一数据库或共用数据库发布<br/>- 维护成本高 |
 | | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>SQL 数据同步入门
@@ -129,7 +128,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 - 对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
 - 不支持 Azure Active Directory 身份验证。
 - 不支持具有相同名称但架构不同（例如，dbo.customers 和 sales.customers）的表。
-- 不支持使用用户定义数据类型的列
+- 不支持具有用户定义数据类型的列
 
 #### <a name="unsupported-data-types"></a>不支持的数据类型
 
@@ -202,7 +201,7 @@ SQL 数据同步在所有区域中都可用。
 
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>数据同步是否可以同步加密的表或列
 
-- 如果数据库使用了 Always Encrypted，则只能同步“未”加密的表和列。  无法同步加密的列，因为数据同步无法对数据进行解密。
+- 如果数据库使用了 Always Encrypted，则只能同步“未”加密的表和列。 无法同步加密的列，因为数据同步无法对数据进行解密。
 - 如果某个列使用了列级加密 (CLE)，则可以对该列进行同步，只要行大小小于最大大小 24 MB。 数据同步将由密钥 (CLE) 加密的列视为普通的二进制数据。 若要解密其他同步成员上的数据，则需要具有相同的证书。
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>SQL 数据同步是否支持排序规则
@@ -229,7 +228,7 @@ SQL 数据同步在所有区域中都可用。
 
 SQL 数据同步是否按预期执行？ 若要监视活动和排查问题，请参阅以下文章：
 
-- [使用 Azure Monitor 监视 Azure SQL 数据同步日志](sql-database-sync-monitor-oms.md)
+- [利用 Azure Monitor 日志监视 Azure SQL 数据同步](sql-database-sync-monitor-oms.md)
 - [Azure SQL 数据同步问题疑难解答](sql-database-troubleshoot-data-sync.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>了解有关 Azure SQL 数据库的详细信息

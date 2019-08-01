@@ -3,25 +3,25 @@ title: 将气泡层添加到 Azure Maps | Microsoft Docs
 description: 如何将气泡层添加到 Javascript 地图
 author: rbrundritt
 ms.author: richbrun
-ms.date: 10/30/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f2c4c6b8655d5efb993a2dedf536000ac94328c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 516e4f35c88ae9c0e2d63e8a4ee40eb57c05ac29
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769679"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639042"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>将气泡层添加地图
 
 本文介绍如何将数据源中的点数据呈现为地图上的气泡层。 气泡层将点呈现为地图上具有固定像素半径的圆。 
 
 > [!TIP]
-> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 功能集限制在层，以便它仅呈现点几何图形`filter`到层的属性`['==', ['geometry-type'], 'Point']`或`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`如果想要包括多点功能。
+> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 若要将层限制为仅呈现点几何特征, 请将`filter`层的属性设置为`['==', ['geometry-type'], 'Point']` , `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`或者如果要包含 MultiPoint 功能, 则设置为。
 
 ## <a name="add-a-bubble-layer"></a>添加气泡层
 

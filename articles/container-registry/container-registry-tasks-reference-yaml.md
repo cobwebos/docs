@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 588c4c267c16c72a7673c09a4c5726058302fccb
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 27c38f51104dfb170c59860c96a8e3a86973bb1e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310500"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638917"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
 
@@ -23,7 +23,7 @@ ACR 任务中的多步骤任务定义提供注重于生成、测试和修补容�
 
 ## <a name="acr-taskyaml-file-format"></a>acr-task.yaml 文件格式
 
-ACR 任务支持采用标准 YAML 语法的多步骤任务声明。 在 YAML 文件中定义任务的步骤。 然后, 你可以通过将文件传递到在 Git 提交或基本映像更新上自动触发的[az acr 运行][az-acr-run] command. Or, use the file to create a task with [az acr task create][az-acr-task-create]来手动运行任务。 尽管本文将 `acr-task.yaml` 称作包含步骤的文件，但 ACR 任务支持带有[受支持扩展名](#supported-task-filename-extensions)的任何有效文件名。
+ACR 任务支持采用标准 YAML 语法的多步骤任务声明。 在 YAML 文件中定义任务的步骤。 然后, 你可以通过将文件传递到[az acr run][az-acr-run]命令手动运行该任务。 或者, 使用文件创建一个使用[az acr 任务创建][az-acr-task-create]的任务, 该任务会在 Git 提交或基本映像更新上自动触发。 尽管本文将 `acr-task.yaml` 称作包含步骤的文件，但 ACR 任务支持带有[受支持扩展名](#supported-task-filename-extensions)的任何有效文件名。
 
 顶级 `acr-task.yaml` 基元为**任务属性**、**步骤类型**和**步骤属性**：
 
@@ -56,13 +56,13 @@ steps: # A collection of image or container actions.
 
 ### <a name="supported-task-filename-extensions"></a>支持的任务文件扩展名
 
-ACR 任务具有多个保留的文件扩展名（包括 `.yaml`），它将这些文件作为任务文件进行处理。 ACR 任务将以下列表中未列出的任何扩展名视为 Dockerfile：.yaml、.yml、.toml、.json、.sh、.bash、.zsh、.ps1、.ps、.cmd、.bat、.ts、.js、.php、.py、.rb、.lua 
+ACR 任务具有多个保留的文件扩展名（包括 `.yaml`），它将这些文件作为任务文件进行处理。 ACR 任务将以下列表中未列出的任何扩展名视为 Dockerfile：.yaml、.yml、.toml、.json、.sh、.bash、.zsh、.ps1、.ps、.cmd、.bat、.ts、.js、.php、.py、.rb、.lua
 
 YAML 是 ACR 任务目前支持的唯一一种文件格式。 其他文件扩展名是保留的，将来可能受到支持。
 
 ## <a name="run-the-sample-tasks"></a>运行示例任务
 
-本文的后续部分参考了多个示例任务文件。 示例任务位于公共 GitHub 存储库、 [Azure 示例/acr-任务][acr-tasks]. You can run them with the Azure CLI command [az acr run][az-acr-run]中。 示例命令如下所示：
+本文的后续部分参考了多个示例任务文件。 示例任务位于公共 GitHub 存储库、 [Azure 示例/acr-任务][acr-tasks]中。 可以通过 Azure CLI 命令[az acr 运行][az-acr-run]来运行它们。 示例命令如下所示：
 
 ```azurecli
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -80,7 +80,7 @@ az configure --defaults acr=myregistry
 
 任务属性通常显示在`acr-task.yaml`文件的顶部, 是全局属性, 适用于整个任务步骤的整个执行。 其中的某些全局属性可在单个步骤中重写。
 
-| 属性 | type | 可选 | 描述 | 支持的重写 | 默认值 |
+| 属性 | 类型 | 可选 | 描述 | 支持的重写 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | string | 是 | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 如果未指定, 则默认为最新版本。 | 否 | 无 |
 | `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 如果在任务上指定了属性, 则会设置所有步骤`timeout`的默认属性。 如果在`timeout`步骤上指定了属性, 则它将覆盖任务提供的属性。 | 是 | 600（10 分钟） |
@@ -93,11 +93,11 @@ az configure --defaults acr=myregistry
 
 机密对象具有以下属性。
 
-| 属性 | 类型 | 可选 | 描述 | 默认值 |
+| 属性 | type | 可选 | 描述 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | string | 否 | 机密的标识符。 | 无 |
-| `keyvault` | string | 是 | Azure Key Vault 的机密 URL。 | 无 |
-| `clientID` | string | 是 | 用户为 Azure 资源分配的托管标识的客户端 ID。 | 无 |
+| `keyvault` | string | 是 | Azure Key Vault 的机密 URL。 | None |
+| `clientID` | string | 是 | 用户为 Azure 资源[分配的托管标识](container-registry-tasks-authentication-managed-identity.md)的客户端 ID。 | 无 |
 
 ### <a name="network"></a>网络
 
@@ -105,7 +105,7 @@ Network 对象具有以下属性。
 
 | 属性 | 类型 | 可选 | 描述 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | string | 否 | 网络的名称。 | 无 |
+| `name` | string | 否 | 网络的名称。 | None |
 | `driver` | string | 是 | 用于管理网络的驱动程序。 | 无 |
 | `ipv6` | bool | 是 | IPv6 网络是否已启用。 | `false` |
 | `skipCreation` | bool | 是 | 是否跳过网络创建。 | `false` |
@@ -367,8 +367,8 @@ steps:
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | 是 | 在运行时是否应分离容器。 | `false` |
 | `disableWorkingDirectoryOverride` | bool | 是 | 是否禁用`workingDirectory`重写功能。 将此与`workingDirectory`结合使用, 以完全控制容器的工作目录。 | `false` |
-| `entryPoint` | string | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 | 无 |
-| `env` | [字符串, 字符串, ...] | 是 | 采用 `key=value` 格式的字符串数组，定义步骤的环境变量。 | 无 |
+| `entryPoint` | string | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 | None |
+| `env` | [字符串, 字符串, ...] | 是 | 采用 `key=value` 格式的字符串数组，定义步骤的环境变量。 | None |
 | `expose` | [字符串, 字符串, ...] | 是 | 从容器公开的端口的数组。 |  无 |
 | [`id`](#example-id) | string | 是 | 唯一标识任务中的步骤。 任务中的其他步骤可以引用步骤的 `id`，例如，使用 `when` 执行依赖项检查。<br /><br />`id` 也是正在运行的容器的名称。 例如，在任务的其他容器中运行的进程可以引用 `id` 作为其 DNS 主机名，或者通过 Docker 日志 [id] 来访问该步骤。 | `acb_step_%d`, 其中`%d`是 YAML 文件中的第一步的从零开始的索引。 |
 | `ignoreErrors` | bool | 是 | 是否将步骤标记为成功, 而不管容器执行过程中是否发生了错误。 | `false` |
@@ -381,14 +381,14 @@ steps:
 | `repeat` | int | 是 | 用于重复执行容器的重试次数。 | 0 |
 | `retries` | int | 是 | 容器执行失败时的重试次数。 如果容器的退出代码为非零, 则仅尝试重试。 | 0 |
 | `retryDelay` | 整数（秒） | 是 | 容器执行重试之间的延迟 (以秒为单位)。 | 0 |
-| `secret` | object | 是 | 标识 Azure 资源的 Azure Key Vault 机密或托管标识。 | 无 |
+| `secret` | object | 是 | 标识 Azure 资源的 Azure Key Vault 机密或[托管标识](container-registry-tasks-authentication-managed-identity.md)。 | 无 |
 | `startDelay` | 整数（秒） | 是 | 延迟容器执行的秒数。 | 0 |
 | `timeout` | 整数（秒） | 是 | 步骤在终止之前可以执行的最大秒数。 | 600 |
 | [`when`](#example-when) | [字符串, 字符串, ...] | 是 | 配置某个步骤对任务中其他一个或多个步骤的依赖。 | 无 |
 | `user` | string | 是 | 容器的用户名或 UID | 无 |
 | `workingDirectory` | string | 是 | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `$HOME` |
 
-### <a name="examples-task-step-properties"></a>示例：任务步骤属性
+### <a name="examples-task-step-properties"></a>示例:任务步骤属性
 
 #### <a name="example-id"></a>示例：id
 

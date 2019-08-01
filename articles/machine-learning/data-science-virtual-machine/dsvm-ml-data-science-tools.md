@@ -4,7 +4,7 @@ description: 了解 Data Science Virtual Machine 上预装的机器学习工具�
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502075"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565253"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>机器学习和数据科学工具
 Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工具和库，这些工具和库以 Python、R 和 Julia 等热门语言提供。 
@@ -31,18 +31,18 @@ Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工
 ## <a name="azure-machine-learninghttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) SDK
 |    |           |
 | ------------- | ------------- |
-| 它是什么？   |   Azure 机器学习是一种可用于开发和部署 ML 模型的云服务。 可以在使用 Python SDK 构建、训练、缩放和管理模型时跟踪模型。 将模型部署为容器，并在云中、在本地或在 Azure IoT Edge 上运行它们。   |
+| 这是什么?   |   Azure 机器学习是一种可用于开发和部署 ML 模型的云服务。 可以在使用 Python SDK 构建、训练、缩放和管理模型时跟踪模型。 将模型部署为容器，并在云中、在本地或在 Azure IoT Edge 上运行它们。   |
 | 支持的版本     | Windows（conda 环境：AzureML），Linux（conda 环境：py36）    |
 | 典型用途      | 常规 ML 平台      |
 | 如何配置或安装它？      |  使用 GPU 支持安装   |
-| 如何使用或运行它      | 与 Python SDK 和 Azure CLI 一样。 激活到 Windows 版本上的 conda 环境 `AzureML` 或 Linux 版本上的 `py36`。       |
+| 如何使用或运行它      | 与 Python SDK 和 Azure CLI 一样。 激活到 Windows 版本上的 conda 环境 `AzureML` 或 Linux 版本上的 `py36`。      |
 | 指向示例的链接      | Notebook 下的 `AzureML` 目录中包含了示例 Jupyter Notebook。  |
 | 相关工具      | Visual Studio Code、Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |
 | ------------- | ------------- |
-| 它是什么？   |    XGBoost 是一个快速、可移植的分布式梯度提升（GBDT、GBRT 或 GBM）库，适用于 Python、R、Java、Scala、C++ 等。 它在单台计算机、Hadoop 和 Spark 上运行。    |
+| 这是什么?   |    XGBoost 是一个快速、可移植的分布式梯度提升（GBDT、GBRT 或 GBM）库，适用于 Python、R、Java、Scala、C++ 等。 它在单台计算机、Hadoop 和 Spark 上运行。    |
 | 支持的版本     | Windows、Linux     |
 | 典型用途      | 常规 ML 库      |
 | 如何配置或安装它？      |  使用 GPU 支持安装   |
@@ -55,7 +55,7 @@ Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
 |    |           |
 | ------------- | ------------- |
-| 它是什么？   |   Vowpal Wabbit（也称为“VW”）是一款开源、快速的核外学习系统库。    |
+| 这是什么?   |   Vowpal Wabbit（也称为“VW”）是一款开源、快速的核外学习系统库。    |
 | 支持的版本     | Windows、Linux     |
 | 典型用途      | 常规 ML 库      |
 | 如何配置或安装它？      |  Windows--msi 安装程序；Linux--apt-get |
@@ -67,17 +67,17 @@ Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| 它是什么？   |  Weka 是适用于数据挖掘任务的 ML 算法的集合。 这些算法可以直接应用于数据集，也可以从你自己的 Java 代码中调用。 Weka 包含用于数据预处理、分类、回归、群集、关联规则和可视化的工具。 |
+| 这是什么?   |  Weka 是适用于数据挖掘任务的 ML 算法的集合。 这些算法可以直接应用于数据集，也可以从你自己的 Java 代码中调用。 Weka 包含用于数据预处理、分类、回归、群集、关联规则和可视化的工具。 |
 | 支持的版本     | Windows、Linux     |
 | 典型用途      | 常规 ML 工具     |
-| 如何使用或运行它      | 在 Windows 上，在“开始”菜单中搜索 Weka。 在 Linux 上，使用 X2Go 进行登录，然后转到“应用程序” > “开发” > “Weka”。    |
+| 如何使用或运行它      | 在 Windows 上，在“开始”菜单中搜索 Weka。 在 Linux 上，使用 X2Go 进行登录，然后转到“应用程序” > “开发” > “Weka”。 |
 | 指向示例的链接      | [Weka 示例](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | 相关工具      |LightGBM、Rattle、XGBoost   |
 
 ## <a name="rattle"></a>Rattle
 |    |           |
 | ------------- | ------------- |
-| 它是什么？   |   Rattle 是一种使用 R 编写的用于数据挖掘的图形用户界面   |
+| 这是什么?   |   Rattle 是一种使用 R 编写的用于数据挖掘的图形用户界面   |
 | 支持的版本     | Windows、Linux     |
 | 典型用途      | R 适用的常规 UI 数据挖掘工具    |
 | 如何使用或运行它      | UI 工具。 在 Windows 上，启动命令提示符，运行 R，然后在 R 中运行 `rattle()`。 在 Linux 上，使用 X2Go 连接，启动终端，运行 R，然后在 R 中运行 `rattle()`。 |
@@ -87,7 +87,7 @@ Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工
 ## <a name="lightgbm"></a>LightGBM
 |    |           |
 | ------------- | ------------- |
-| 它是什么？   | LightGBM 是一个快速、分布式、高性能的梯度提升（GBDT、GBRT、GBM 或 MART）框架，基于决策树算法。 它用于排名、分类和许多其他 ML 任务。    |
+| 这是什么?   | LightGBM 是一个快速、分布式、高性能的梯度提升（GBDT、GBRT、GBM 或 MART）框架，基于决策树算法。 它用于排名、分类和许多其他 ML 任务。    |
 | 支持的版本      | Windows、Linux    |
 | 典型用途      | 常规用途的梯度提升框架      |
 | 如何配置或安装它？      | 在 Windows 上，LightGBM 作为 Python 程序包安装。 在 Linux 上，命令行可执行文件位于 `/opt/LightGBM/lightgbm` 中，安装了 R 程序包，并安装了 Python 程序包。     |
@@ -97,7 +97,7 @@ Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工
 ## <a name="h2o"></a>H2O
 |    |           |
 | ------------- | ------------- |
-| 它是什么？   | H2O 是一个支持内存中、分布式、快速且可缩放 ML 的开源 AI 平台。  |
+| 这是什么?   | H2O 是一个支持内存中、分布式、快速且可缩放 ML 的开源 AI 平台。  |
 | 支持的版本      | Linux   |
 | 典型用途      | 常规用途的分布式可缩放 ML   |
 | 如何配置或安装它？      | H2O 安装在 `/dsvm/tools/h2o` 中。      |

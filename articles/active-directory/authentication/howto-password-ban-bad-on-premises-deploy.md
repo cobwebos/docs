@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01a9cc4ec4788422337b77b285ed8ee440f6acd4
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346899"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666288"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -31,6 +31,12 @@ ms.locfileid: "68346899"
 * 需要改进现有的操作过程，以使用更安全的密码。
 * 用户经常使用不安全的密码。
 * 他们需要通知用户即将执行的安全强制更改、可能对这些更改的影响, 以及如何选择更安全的密码。
+
+还可以通过更强的密码验证来影响现有 Active Directory 域控制器部署自动化。 建议在审核期评估期间至少发生一次 DC 升级和一个 DC 降级, 以帮助提前发现此类问题。  有关详细信息，请参阅：
+
+* [Ntdsutil 无法设置弱目录服务修复模式密码](howto-password-ban-bad-on-premises-troubleshoot.md##ntdsutilexe-fails-to-set-a-weak-dsrm-password)
+* [由于目录服务修复模式密码弱, 域控制器副本升级失败](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
+* [由于本地管理员密码弱, 域控制器降级失败](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
 在一个合理的时间段内, 在审核模式下运行此功能后, 可以将该配置从*审核*切换为 "*强制执行*", 以要求更安全的密码。 在此期间最好是执行有针对性的监视。
 

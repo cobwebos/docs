@@ -3,20 +3,20 @@ title: Azure 流量管理器上的降级状态故障排除
 description: 如何在流量管理器显示为降级状态时对流量管理器配置文件进行故障排除。
 services: traffic-manager
 documentationcenter: ''
-author: chadmath
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: genli
-ms.openlocfilehash: 19a654215377ba0fac7dacf800bf87a3481679c0
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: rohink
+ms.openlocfilehash: f8f457623dff7840ca839ef57580b744a4d916c7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357224"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565876"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
 
@@ -30,11 +30,11 @@ ms.locfileid: "68357224"
 
 ## <a name="understanding-traffic-manager-probes"></a>了解流量管理器探测
 
-* 仅当探测从探测路径收到 HTTP 200 响应时，流量管理器才将终结点视为“联机”。 其他任何非 200 响应都被视为失败。
-* 即使重定向 URL 返回 200，30x 重定向也会失败。
+* 仅当探测从探测路径收到 HTTP 200 响应时，流量管理器才将终结点视为“联机”。 如果应用程序返回任何其他 HTTP 响应代码, 则应将该响应代码添加到流量管理器配置文件的[预期状态代码范围](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring)。
+* 如果在流量管理器配置文件的[预期状态代码范围](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring)内将此响应指定为有效的响应代码, 则会将30重定向响应视为失败。 流量管理器不探测重定向目标。
 * 对于 HTTPS 探测器，证书错误会被忽略。
 * 只要返回 200，就无需在意探测器路径的实际内容。 常用的技巧是探测某些静态内容的 URL，例如“/favicon.ico”。 即使应用程序处于正常状态，ASP 页等动态内容也不一定会返回 200。
-* 最佳实践是将探测路径设置为提供足够逻辑来确定站点是启动还是关闭的值。 在上面的示例中，如果将路径设置为“/favicon.ico”，只会测试 w3wp.exe 是否响应。 这种探测可能不会指示 Web 应用程序是否正常。 更好的选择是，将路径设置为诸如“/Probe.aspx”之类的值，可通过逻辑确定站点运行状况。 例如，可以使用性能计数器来查看 CPU 利用率，或者测量失败请求的数目。 或者，可以尝试访问数据库资源或会话状态，确保 Web 应用程序正常工作。
+* 最佳做法是将探测路径设置为具有足够逻辑的内容, 以确定站点的状态为 "已启动" 或 "已关闭"。 在上面的示例中，如果将路径设置为“/favicon.ico”，只会测试 w3wp.exe 是否响应。 这种探测可能不会指示 Web 应用程序是否正常。 更好的选择是，将路径设置为诸如“/Probe.aspx”之类的值，可通过逻辑确定站点运行状况。 例如，可以使用性能计数器来查看 CPU 利用率，或者测量失败请求的数目。 或者，可以尝试访问数据库资源或会话状态，确保 Web 应用程序正常工作。
 * 如果配置文件中的所有终结点都已降级，流量管理器会将所有终结点视为处于正常状态，并将流量路由到所有终结点。 此行为可确保探测机制中的问题不会导致服务完全中断。
 
 ## <a name="troubleshooting"></a>疑难解答

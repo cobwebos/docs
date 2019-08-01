@@ -9,14 +9,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c086f94a161853cba3a9ed2b98f13ea17b90dd20
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 662594f3ef0e4d5598b52cb07006b513e7f3c35a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478802"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564977"
 ---
  # <a name="application-insights-overriding-default-endpoints"></a>替代默认终结点的 Application Insights
 
@@ -158,6 +158,14 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 | Azure 政府 | 遥测通道 |`https://dc.applicationinsights.us/v2/track` |
 | Azure 政府 | QuickPulse（实时指标） |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
 | Azure 政府 | 配置文件查询 |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+
+如果你当前使用的[是通常](https://dev.applicationinsights.io/
+)通过 "api.applicationinsights.io" 访问的 Application Insights REST API, 你将需要使用区域的本地终结点:
+
+|地区 |  终结点名称 | ReplTest1 |
+|-----------------|:------------|:-------------|
+| Azure 中国 | REST API | `api.applicationinsights.azure.cn` |
+| Azure 政府 | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
 > Azure 应用服务的基于无代码代理/扩展的监视在这些区域**目前不受支持**。 一旦该功能可用，本文将立即更新。

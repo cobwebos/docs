@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07f9dbcc21840bec4b4487225dfb8108586865e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489205"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618373"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 授权管理 (预览版) 中编辑和管理现有访问包
 
@@ -38,7 +38,7 @@ ms.locfileid: "68489205"
 
 资源角色是与资源关联的权限的集合。 向用户提供资源以供用户请求的方式是将资源角色添加到访问包。 可以添加组、应用程序和 SharePoint 站点的资源角色。
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -62,7 +62,7 @@ ms.locfileid: "68489205"
 你可以选择任何 Office 365 组或 Azure AD 安全组。  管理员可以将任何组添加到目录;如果目录所有者是组的所有者, 则可以将任何组添加到目录中。 选择组时, 请牢记以下 Azure AD 约束:
 
 - 如果用户 (包括来宾) 作为成员添加到组中, 则他们可以看到该组的所有其他成员。
-- Azure AD 无法使用 Azure AD Connect 更改从 Windows Server Active Directory 同步的组的成员身份。  
+- Azure AD 无法使用 Azure AD Connect 更改从 Windows Server Active Directory 同步的组的成员身份, 或者无法更改在 Exchange Online 中创建为通讯组的组的成员身份。  
 - 动态组的成员身份无法通过添加或删除成员进行更新, 因此动态组成员身份不适用于授权管理。
 
 1. 在 "**将资源角色添加到 access 包**" 页面上, 单击 "**组**" 以打开 "选择组" 窗格。
@@ -136,7 +136,7 @@ ms.locfileid: "68489205"
 
 ## <a name="remove-resource-roles"></a>删除资源角色
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -158,7 +158,7 @@ ms.locfileid: "68489205"
 
 ![创建策略进程](./media/entitlement-management-access-package-edit/policy-process.png)
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -178,7 +178,7 @@ ms.locfileid: "68489205"
 
 你可以随时编辑策略。 如果更改策略的到期日期, 则已处于 "等待审批" 或 "已批准" 状态的请求的到期日期将不会更改。
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -200,7 +200,7 @@ ms.locfileid: "68489205"
 
 在某些情况下, 你可能希望将特定用户直接分配到访问包, 以便用户无需完成请求访问包的过程。 若要直接分配用户, 访问包必须具有允许管理员直接分配的策略。
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -228,7 +228,7 @@ ms.locfileid: "68489205"
 
 ## <a name="view-who-has-an-assignment"></a>查看谁有分配
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -248,7 +248,7 @@ ms.locfileid: "68489205"
 
 ## <a name="view-requests"></a>查看请求
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -260,7 +260,7 @@ ms.locfileid: "68489205"
 
 ## <a name="view-a-requests-delivery-errors"></a>查看请求的传递错误
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -280,7 +280,7 @@ ms.locfileid: "68489205"
 
 只能取消尚未传递的挂起的请求。
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -296,7 +296,7 @@ ms.locfileid: "68489205"
 
 目录中的大多数用户都可以登录到 "我的访问门户" 并自动查看他们可以请求的访问包的列表。 但是, 对于尚未在你的目录中的外部业务合作伙伴用户, 你将需要向他们发送一个可用于请求访问包的链接。 只要为外部用户启用了访问包, 并且拥有外部用户目录的策略, 外部用户就可以使用 "我的访问门户" 链接来请求访问包。
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -312,7 +312,7 @@ ms.locfileid: "68489205"
 
 默认情况下, 访问包是可发现的。 这意味着, 如果策略允许用户请求访问包, 则他们将自动看到其 "我的 Access" 门户中列出的访问包。
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
@@ -330,7 +330,7 @@ ms.locfileid: "68489205"
 
 仅当访问包没有活动的用户分配时, 才能将其删除。
 
-**必备角色：** 用户管理员、目录所有者或访问包管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 

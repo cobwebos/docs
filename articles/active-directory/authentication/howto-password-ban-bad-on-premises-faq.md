@@ -1,5 +1,5 @@
 ---
-title: 本地 Azure AD 密码保护常见问题-Azure Active Directory
+title: 本地 Azure AD 密码保护常见问题解答-Azure Active Directory
 description: 本地 Azure AD 密码保护常见问题解答
 services: active-directory
 ms.service: active-directory
@@ -11,14 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4879093ed80a554219b053cc5a2bc895126725
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9f1f2e06eb6b5f8d402515ff1c07a4163174495d
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702893"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666361"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>本地 Azure AD 密码保护 - 常见问题解答
+
+本部分提供有关 Azure AD 密码保护的许多常见问题的解答。
 
 ## <a name="general-questions"></a>一般问题
 
@@ -34,19 +36,23 @@ ms.locfileid: "67702893"
 
 **问：如何将 Azure AD 密码保护权益应用到我的一部分本地用户？**
 
-不支持。 部署并启用后，Azure AD 密码保护不会区分对待 - 所有用户都会获得均等的安全权益。
+不受支持。 部署并启用后，Azure AD 密码保护不会区分对待 - 所有用户都会获得均等的安全权益。
 
-**问：密码更改和密码设置 （或重置） 之间的区别是什么？**
+**问：密码更改和密码设置 (或重置) 之间有何区别？**
 
-证明他们已知道旧密码后，在用户选择新密码时，密码更改。 例如，这是当用户登录到 Windows，然后提示用户选择新密码时，会发生什么情况。
+密码更改是指用户在证明其了解旧密码后选择新密码。 例如, 当用户登录到 Windows 时, 系统会提示用户选择新密码。
 
-当管理员帐户的密码将使用替换新密码，例如使用 Active Directory 用户和计算机管理工具时，密码设置 （有时称为密码重置）。 此操作需要高级别的特权 （通常域管理员），并且通常执行该操作的人员没有知道旧密码。 技术支持方案通常执行此操作，例如当为忘记其密码的用户提供帮助。 您还会看到事件在第一次使用密码创建一个全新的用户帐户时设置的密码。
+密码集 (有时称为密码重置) 是指管理员使用新密码替换帐户的密码, 例如, 使用 Active Directory 用户和计算机管理工具。 此操作需要高级别的权限 (通常为域管理员), 执行该操作的人员通常不知道旧密码。 例如, 在帮助已忘记密码的用户时, 技术支持方案通常会执行此操作。 首次使用密码创建新用户帐户时, 还会看到密码设置事件。
 
-密码验证策略行为而不考虑是否完成密码更改一个或一组相同。 Azure AD 密码保护 DC 代理服务会记录不同的事件来通知你是否密码更改或设置操作已完成。  请参阅[Azure AD 密码保护监视和日志记录](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)。
+不管密码是否已更改或已设置, 密码验证策略的行为都是相同的。 Azure AD 密码保护 DC 代理服务会记录不同的事件, 以通知你是否已完成密码更改或设置操作。  请参阅[Azure AD 密码保护监视和日志记录](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)。
 
-**问：为什么使用 Active Directory 用户和计算机管理管理单元中重复的密码拒绝事件时试图设置弱密码记录？**
+**问：为什么在尝试使用 "Active Directory 用户和计算机管理" 管理单元尝试设置弱密码时记录重复的密码拒绝事件？**
 
-Active Directory 用户和计算机管理单元将首先尝试设置新密码使用 Kerberos 协议。 在失败时的管理单元中将第二个尝试设置使用的是旧的 (SAM RPC) 协议 （所使用的特定协议并不重要） 的密码。 如果新密码将被视为弱的由 Azure AD 密码保护，这将导致两个密码重置拒绝所记录的事件集。
+"Active Directory 用户和计算机管理" 管理单元将首先尝试使用 Kerberos 协议设置新密码。 失败时, 管理单元将再次尝试使用旧版 (SAM RPC) 协议设置密码 (使用的特定协议并不重要)。 如果 Azure AD 密码保护将新密码视为弱密码, 这将导致记录两组密码重置拒绝事件。
+
+**问：为什么使用空用户名记录 Azure AD 密码保护密码验证事件？**
+
+Active Directory 支持测试密码以查看是否通过了域的当前密码复杂性要求 (例如, 使用[NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) api) 的功能。 以这种方式验证密码时, 测试还包括通过密码筛选器基于 dll 的产品 (如 Azure AD 密码保护) 进行的验证-但传递到给定密码筛选器 dll 的用户名将为空。 在这种情况下 Azure AD 密码保护仍将使用当前生效的密码策略来验证密码, 并将发出事件日志消息来捕获结果, 但是事件日志消息将包含空的用户名字段。
 
 **问：是否支持与其他基于密码筛选器的产品一同安装 Azure AD 密码保护？**
 
@@ -54,11 +60,11 @@ Active Directory 用户和计算机管理单元将首先尝试设置新密码使
 
 **问：在不使用 Azure 的情况下，如何在 Active Directory 环境中部署和配置 Azure AD 密码保护？**
 
-不支持。 Azure AD 密码保护是旨在扩展到本地 Active Directory 环境中的一项 Azure 功能。
+不受支持。 Azure AD 密码保护是旨在扩展到本地 Active Directory 环境中的一项 Azure 功能。
 
 **问：如何在 Active Directory 级别修改策略的内容？**
 
-不支持。 只能使用 Azure AD 管理门户管理策略。 另请参阅前面的问题。
+不受支持。 只能使用 Azure AD 管理门户管理策略。 另请参阅前面的问题。
 
 **问：为何需要使用 DFSR 进行 sysvol 复制？**
 
@@ -86,9 +92,9 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 是的。 Azure AD 密码保护代理服务和 Azure AD Connect 永远不会直接相互冲突。
 
-**问：按什么顺序应 DC 代理和代理服务器必须安装并注册？**
+**问：DC 代理和代理的安装和注册顺序是什么？**
 
-支持的代理的代理安装、 DC 代理安装、 林注册和代理注册任何排序。
+支持对代理安装、DC 代理安装、林注册和代理注册进行排序。
 
 **问：部署此功能是否会导致域控制器上出现性能瓶颈？**
 
@@ -114,15 +120,15 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 否。
 
-**问：为什么 Azure 仍拒绝弱密码即使我已配置为审核模式的策略？**
+**问：即使已将策略配置为处于审核模式, Azure 为何仍会拒绝弱密码？**
 
-在本地 Active Directory 环境中仅支持审核模式。 Azure 是隐式始终在"强制实施"模式下评估密码时。
+仅本地 Active Directory 环境支持审核模式。 计算密码时, Azure 隐式始终处于 "强制" 模式。
 
 ## <a name="additional-content"></a>其他内容
 
 以下链接不是核心 Azure AD 密码保护文档的一部分，但可能有关该功能的其他信息的有用来源。
 
-[Azure AD 密码保护现已公开发布 ！](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
+[Azure AD 密码保护现已正式发布!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
 [Email Phishing Protection Guide – Part 15:Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)（电子邮件网络钓鱼保护指南 – 第 15 部分：实施 Microsoft Azure AD 密码保护服务（也适用于本地部署！））
 

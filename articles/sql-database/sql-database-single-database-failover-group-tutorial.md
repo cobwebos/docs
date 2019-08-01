@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
-manager: jroth
 ms.date: 06/19/2019
-ms.openlocfilehash: 6125fd087d40f9ac6ae24d9200fc0cd1e7843f82
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: d11dd72c65ea32fb5a262f325bdcad0b5a8ab863
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444976"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566654"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>教程：将 Azure SQL 数据库单一数据库添加到故障转移组
 
@@ -28,7 +27,7 @@ ms.locfileid: "68444976"
 > - 在两个逻辑 SQL 服务器之间为单一数据库创建[故障转移组](sql-database-auto-failover-group.md)。
 > - 测试故障转移。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 # <a name="azure-portaltabazure-portal"></a>[Azure 门户](#tab/azure-portal)
 若要完成本教程，请确保做好以下准备： 

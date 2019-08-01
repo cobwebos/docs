@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 233aa92b30404ac7ad2b93bb37380bea984be566
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: e5dc913d682088296f84fb6bd7595a09d9d3fe7b
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273228"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609866"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 
@@ -25,9 +25,9 @@ ms.locfileid: "68273228"
 * 帮助客户使用服务来管理专业或个人任务。
 * 扩展服务的市场宣传、可发现性和使用。
 
-连接器本质上是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成连接器，如 .NET、Java 或 Node.js。 此外，还可在 [Azure 应用服务](../app-service/overview.md)上托管API，前者是一款平台即服务 (PaaS) 产品，可为 API 托管提供一种最简单且可缩放性最高的最佳方法。 
+连接器本质上是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为连接器是通过 HTTP 终结点进行通信的 REST Api, 所以可以使用任何语言 (如 .NET、Java、Python 或 node.js) 来构建连接器。 此外，还可在 [Azure 应用服务](../app-service/overview.md)上托管API，前者是一款平台即服务 (PaaS) 产品，可为 API 托管提供一种最简单且可缩放性最高的最佳方法。 
 
-对于要用于逻辑应用的自定义 API，API 可以提供在逻辑应用工作流中执行特定任务的[操作](./logic-apps-overview.md#logic-app-concepts)  。 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)  ，在新数据或事件满足指定条件时启动逻辑应用工作流。 本主题介绍根据想要 API 提供的行为，在 API 中生成操作和触发器可以遵循的常见模式。
+对于要用于逻辑应用的自定义 API，API 可以提供在逻辑应用工作流中执行特定任务的[操作](./logic-apps-overview.md#logic-app-concepts)。 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用工作流。 本主题介绍根据想要 API 提供的行为，在 API 中生成操作和触发器可以遵循的常见模式。
 
 可在 [Azure App Service](../app-service/overview.md) 上托管API，它是一款平台即服务 (PaaS) 产品，可提供简单的高缩放性 API 托管。
 
@@ -45,7 +45,7 @@ ms.locfileid: "68273228"
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>自定义 API 和自定义连接器有何不同？
 
-本质上来说，自定义 API 和[自定义连接器](../logic-apps/custom-connector-overview.md)都是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为这些 API 和连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成自定义 API 和连接器，如 .NET、Java 或 Node.js。
+本质上来说，自定义 API 和[自定义连接器](../logic-apps/custom-connector-overview.md)都是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 由于这些 Api 和连接器是通过 HTTP 终结点进行通信的 REST Api, 因此可以使用任何语言 (如 .NET、Java、Python 或 node.js) 来构建自定义 Api 和连接器。
 
 自定义 API 允许调用非连接器 API，并提供可使用 HTTP + Swagger、Azure API 管理或应用程序服务调用的终结点。 自定义连接器的工作方式与自定义 API 类似，但它还具有以下属性：
 
@@ -70,7 +70,7 @@ ms.locfileid: "68273228"
 
 ## <a name="action-patterns"></a>操作模式
 
-对于执行任务的逻辑应用，自定义 API 应提供[操作](./logic-apps-overview.md#logic-app-concepts)  。 API 中的每个操作 (operation) 将映射到操作 (action)。 基本操作是接受 HTTP 请求并返回 HTTP 响应的控制器。 例如，逻辑应用将 HTTP 请求发送到 Web 应用或 API 应用。 然后应用返回 HTTP 响应及逻辑应用可处理的内容。
+对于执行任务的逻辑应用，自定义 API 应提供[操作](./logic-apps-overview.md#logic-app-concepts)。 API 中的每个操作 (operation) 将映射到操作 (action)。 基本操作是接受 HTTP 请求并返回 HTTP 响应的控制器。 例如，逻辑应用将 HTTP 请求发送到 Web 应用或 API 应用。 然后应用返回 HTTP 响应及逻辑应用可处理的内容。
 
 对于标准操作，可在 API 中编写 HTTP 请求方法，并在 Swagger 文件中描述该方法。 然后，可以使用 [HTTP 操作](../connectors/connectors-native-http.md)或 [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 操作直接调用 API。 默认情况下，必须在[请求超时限制](./logic-apps-limits-and-config.md)内返回响应。 
 
@@ -104,7 +104,7 @@ ms.locfileid: "68273228"
    
    `202 ACCEPTED` 响应应包含这些标头：
    
-   *  必需：`location` 标头，用于指定逻辑应用引擎检查 API 作业状态的 URL 的绝对路径
+   * 必需：`location` 标头，用于指定逻辑应用引擎检查 API 作业状态的 URL 的绝对路径
 
    * *可选*：`retry-after` 标头，用于指定引擎检查 `location` URL 获知作业状态之前应等待的秒数。 
 
@@ -141,7 +141,7 @@ ms.locfileid: "68273228"
 ![Webhook 操作模式](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
 > [!NOTE]
-> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook  操作](../connectors/connectors-native-webhook.md)并指定 URL、标头以及请求正文。 另请参阅[工作流操作和触发器](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
+> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook操作](../connectors/connectors-native-webhook.md)并指定 URL、标头以及请求正文。 另请参阅[工作流操作和触发器](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
 
 > [!TIP]
 > 有关 Webhook 模式的示例，查看 [GitHub 中的 Webhook 触发器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
@@ -150,13 +150,13 @@ ms.locfileid: "68273228"
 
 ## <a name="trigger-patterns"></a>触发器模式
 
-自定义 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用  。 此触发器可以定期检查或者等待侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器触发并启动正在侦听该触发器的逻辑应用。 若要以这种方式启动逻辑应用，API 可以遵循[轮询触发器](#polling-triggers)  或 [Webhook 触发器](#webhook-triggers)  模式。 这些模式类似于其[轮询操作](#async-pattern)和 [Webhook 操作](#webhook-actions)的对应项。 另请详细了解[触发器的用量计量](logic-apps-pricing.md)。
+自定义 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用。 此触发器可以定期检查或者等待侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器触发并启动正在侦听该触发器的逻辑应用。 若要以这种方式启动逻辑应用，API 可以遵循[轮询触发器](#polling-triggers)或 [Webhook 触发器](#webhook-triggers)模式。 这些模式类似于其[轮询操作](#async-pattern)和 [Webhook 操作](#webhook-actions)的对应项。 另请详细了解[触发器的用量计量](logic-apps-pricing.md)。
 
 <a name="polling-triggers"></a>
 
 ### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>使用轮询触发器模式定期检查新数据或事件
 
-轮询触发器  的行为非常类似于本主题中前面所述的[轮询操作](#async-pattern)。 逻辑应用引擎定期调用并检查触发器终结点，查看新数据或事件。 如果引擎发现满足指定条件的新数据或事件，触发器即触发。 然后，引擎创建将数据处理为输入的逻辑应用实例。 
+轮询触发器的行为非常类似于本主题中前面所述的[轮询操作](#async-pattern)。 逻辑应用引擎定期调用并检查触发器终结点，查看新数据或事件。 如果引擎发现满足指定条件的新数据或事件，触发器即触发。 然后，引擎创建将数据处理为输入的逻辑应用实例。 
 
 ![轮询触发器模式](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
 
@@ -167,8 +167,8 @@ ms.locfileid: "68273228"
 
 | 找到新数据或事件？  | API 响应 | 
 | ------------------------- | ------------ |
-| 已找到 | 返回 HTTP `200 OK` 状态与响应有效负载（下一步的输入）。 <br/>此响应创建逻辑应用实例，并启动工作流。 | 
-| 未找到 | 返回 HTTP `202 ACCEPTED` 状态与 `location` 标头和 `retry-after` 标头。 <br/>对于触发器，`location` 标头还应包含 `triggerState` 查询参数，通常是“时间戳”。 API 可以使用此标识符跟踪上次触发逻辑应用的时间。 | 
+| 找到 | 返回 HTTP `200 OK` 状态与响应有效负载（下一步的输入）。 <br/>此响应创建逻辑应用实例，并启动工作流。 | 
+| 找不到 | 返回 HTTP `202 ACCEPTED` 状态与 `location` 标头和 `retry-after` 标头。 <br/>对于触发器，`location` 标头还应包含 `triggerState` 查询参数，通常是“时间戳”。 API 可以使用此标识符跟踪上次触发逻辑应用的时间。 | 
 ||| 
 
 例如，若要定期检查服务的新文件，可生成具有以下行为的轮询触发器：
@@ -193,7 +193,7 @@ ms.locfileid: "68273228"
 
 ### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>使用 Webhook 触发器模式等待和侦听新数据或事件
 
-Webhook 触发器是推送触发器  ，等待并侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器即触发，并创建逻辑应用实例，然后将数据处理为输入。
+Webhook 触发器是推送触发器，等待并侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器即触发，并创建逻辑应用实例，然后将数据处理为输入。
 Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook 操作](#webhook-actions)，并设置有 `subscribe` 和 `unsubscribe` 终结点。 
 
 * `subscribe` 终结点：在逻辑应用中添加和保存 Webhook 触发器时，逻辑应用引擎调用 `subscribe` 终结点。 此步骤将导致逻辑应用创建 API 将存储的回叫 URL。 存在满足指定条件的新数据或事件时， API 通过 HTTP POST 回叫 URL。 内容有效负载和标头作为输入传递到逻辑应用。
@@ -203,7 +203,7 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 ![Webhook 触发器模式](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
 > [!NOTE]
-> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 触发器](../connectors/connectors-native-webhook.md)  并指定 URL、 标头以及请求正文。 另请参阅 [HTTPWebhook 触发器](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
+> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 触发器](../connectors/connectors-native-webhook.md)并指定 URL、 标头以及请求正文。 另请参阅 [HTTPWebhook 触发器](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
 >
 > 若要防止多次处理相同数据，触发器应清理已读取且传递到逻辑应用的数据。
 

@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: a53a62a7bc7a5c7f8d9bdabdf411588fdf7bd5e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7923ce10912ebb6f09c1c3d8390dd51b4f876bea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257070"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552000"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
@@ -53,7 +53,7 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
 
 7. **Power BI：** Power BI 用于可视化 Azure 流分析发送的数据。 可以构建一个仪表板来实时了解指标的变化。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 * Microsoft .NET Framework 4.7.1 或更高版本
 
@@ -71,18 +71,18 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
 
 创建 Azure 资源 - 解决方案所需的 Azure Cosmos DB、存储帐户、事件中心和流分析。 我们将通过 Azure 资源管理器模板部署这些资源。 使用以下步骤部署这些资源： 
 
-1. 将 Windows PowerShell 执行策略设置为“不受限制”。  为此，请**以管理员身份打开 Windows PowerShell** 并运行以下命令：
+1. 将 Windows PowerShell 执行策略设置为“不受限制”。 为此，请**以管理员身份打开 Windows PowerShell** 并运行以下命令：
 
    ```powershell
    Get-ExecutionPolicy
    Set-ExecutionPolicy Unrestricted 
    ```
 
-2. 在上一步骤下载的 GitHub 存储库中，导航到“Azure 资源管理器”文件夹，并打开名为 **parameters.json** 的文件。   
+2. 在上一步骤下载的 GitHub 存储库中，导航到“Azure 资源管理器”文件夹，并打开名为 **parameters.json** 的文件。  
 
 3. 为 **parameters.json** 文件中指定的 cosmosdbaccount_name、eventhubnamespace_name 和 storageaccount_name 参数提供值。 稍后需要对每个资源使用这些名称。  
 
-4. 在 **Windows PowerShell** 中，导航到“Azure 资源管理器”文件夹并运行以下命令： 
+4. 在 **Windows PowerShell** 中，导航到“Azure 资源管理器”文件夹并运行以下命令：
 
    ```powershell
    .\deploy.ps1
@@ -95,23 +95,23 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
 
 1. 转到 [Azure 门户](https://portal.azure.com/)并找到模板部署创建的 **Azure Cosmos DB 帐户**。  
 
-2. 在“数据资源管理器”窗格中，选择“新建集合”并在表单中填写以下详细信息：    
+2. 在“数据资源管理器”窗格中，选择“新建集合”并在表单中填写以下详细信息：  
 
-   * 对于“数据库 ID”字段，请选择“新建”，然后输入 **changefeedlabdatabase**。   将“预配数据库吞吐量”框保留未选中状态。   
-   * 对于“集合 ID”字段，请输入 **changefeedlabcollection**。   
-   * 对于“分区键”字段，请输入 **/Item**。  此值区分大小写，因此请务必正确输入。  
-   * 对于“吞吐量”字段，请输入 **10000**。   
-   * 选择“确定”  按钮。  
+   * 对于“数据库 ID”字段，请选择“新建”，然后输入 **changefeedlabdatabase**。 将“预配数据库吞吐量”框保留未选中状态。  
+   * 对于“集合 ID”字段，请输入 **changefeedlabcollection**。  
+   * 对于“分区键”字段，请输入 **/Item**。 此值区分大小写，因此请务必正确输入。  
+   * 对于“吞吐量”字段，请输入 **10000**。  
+   * 选择“确定”按钮。  
 
 3. 接下来，创建名为 **leases** 的另一个集合用于处理更改源。 租约 (lease) 集合协调处理跨多个辅助角色的更改源。 单独集合用于存储租用，一个分区一个租用。  
 
-4. 返回“数据资源管理器”窗格，选择“新建集合”并在表单中填写以下详细信息：  
+4. 返回“数据资源管理器”窗格，选择“新建集合”并在表单中填写以下详细信息：
 
-   * 对于“数据库 ID”字段，请选择“使用现有项”，然后输入 **changefeedlabdatabase**。    
-   * 对于“集合 ID”字段，请输入 **leases**。   
-   * 对于“存储容量”，请选择“固定”。    
-   * 将“吞吐量”字段保留设置为默认值。   
-   * 选择“确定”  按钮。
+   * 对于“数据库 ID”字段，请选择“使用现有项”，然后输入 **changefeedlabdatabase**。  
+   * 对于“集合 ID”字段，请输入 **leases**。  
+   * 对于“存储容量”，请选择“固定”。  
+   * 将“吞吐量”字段保留设置为默认值。  
+   * 选择“确定”按钮。
 
 ## <a name="get-the-connection-string-and-keys"></a>获取连接字符串和密钥
 
@@ -119,7 +119,7 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
 
 1. 转到 [Azure 门户](https://portal.azure.com/)并找到模板部署创建的 **Azure Cosmos DB 帐户**。  
 
-2. 导航到“密钥”窗格，将“主连接字符串”复制到记事本，或复制到可在整个实验室中访问的另一个文档。  应将其标记为“Cosmos DB 连接字符串”。  稍后需要将此字符串复制到代码中，因此请将其记下，并记住其存储位置。
+2. 导航到“密钥”窗格，将“主连接字符串”复制到记事本，或复制到可在整个实验室中访问的另一个文档。 应将其标记为“Cosmos DB 连接字符串”。 稍后需要将此字符串复制到代码中，因此请将其记下，并记住其存储位置。
 
 ### <a name="get-the-storage-account-key-and-connection-string"></a>获取存储帐户密钥和连接字符串
 
@@ -127,9 +127,9 @@ Azure 存储帐户允许用户存储数据。 在此实验室中，我们将通�
 
 1. 返回到资源组，并打开前面创建的存储帐户  
 
-2. 在左侧菜单中选择“访问密钥”。   
+2. 在左侧菜单中选择“访问密钥”。  
 
-3. 将“密钥 1”下的值复制到记事本，或复制到可在整个实验室中访问的另一个文档。  应将“密钥”标记为“存储密钥”，并将“连接字符串”标记为“存储连接字符串”。     稍后需将这些字符串复制到代码中，因此请将其记下，并记住其存储位置。  
+3. 将“密钥 1”下的值复制到记事本，或复制到可在整个实验室中访问的另一个文档。 应将“密钥”标记为“存储密钥”，并将“连接字符串”标记为“存储连接字符串”。 稍后需将这些字符串复制到代码中，因此请将其记下，并记住其存储位置。  
 
 ### <a name="get-the-event-hub-namespace-connection-string"></a>获取事件中心命名空间连接字符串
 
@@ -137,9 +137,9 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 1. 返回到资源组，打开前面在实验室中创建并命名的**事件中心命名空间**。  
 
-2. 在左侧菜单中选择“共享访问策略”。   
+2. 在左侧菜单中选择“共享访问策略”。  
 
-3. 选择“RootManageSharedAccessKey”。  将“连接字符串 - 主密钥”复制到记事本，或复制到可在整个实验室中访问的另一个文档。  应将其标记为“事件中心命名空间”连接字符串。  稍后需要将此字符串复制到代码中，因此请将其记下，并记住其存储位置。
+3. 选择“RootManageSharedAccessKey”。 将“连接字符串 - 主密钥”复制到记事本，或复制到可在整个实验室中访问的另一个文档。 应将其标记为“事件中心命名空间”连接字符串。 稍后需要将此字符串复制到代码中，因此请将其记下，并记住其存储位置。
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>将 Azure 函数设置为读取更改源
 
@@ -147,23 +147,23 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 1. 返回到在设备上克隆的存储库。  
 
-2. 右键单击名为“ChangeFeedLabSolution.sln”的文件，并选择“使用 Visual Studio 打开”。    
+2. 右键单击名为“ChangeFeedLabSolution.sln”的文件，并选择“使用 Visual Studio 打开”。  
 
-3. 在 Visual Studio 中导航到“local.settings.json”。  然后，使用前面记下的值来填写空白位置。  
+3. 在 Visual Studio 中导航到“local.settings.json”。 然后，使用前面记下的值来填写空白位置。  
 
-4. 导航到“ChangeFeedProcessor.cs”。  在 **Run** 函数的参数中执行以下操作：  
+4. 导航到“ChangeFeedProcessor.cs”。 在 **Run** 函数的参数中执行以下操作：  
 
    * 将文本 **YOUR COLLECTION NAME HERE** 替换为集合的名称。 如果已遵照前面的说明，则集合的名称是 changefeedlabcollection。  
    * 将文本 **YOUR LEASES COLLECTION NAME HERE** 替换为租约集合的名称。 如果已遵照前面的说明，则租约集合的名称是 **leases**。  
-   * 在 Visual Studio 的顶部，确保绿色箭头左侧的“启动项目”框中显示了“ChangeFeedFunction”。   
-   * 在页面顶部选择“启动”以运行程序   
+   * 在 Visual Studio 的顶部，确保绿色箭头左侧的“启动项目”框中显示了“ChangeFeedFunction”。  
+   * 在页面顶部选择“启动”以运行程序  
    * 如果控制台应用显示“作业宿主已启动”，即表示该函数正在运行。
 
 ## <a name="insert-data-into-azure-cosmos-db"></a>将数据插入 Azure Cosmos DB 
 
 若要查看更改源如何处理电子商务站点上的新操作，必须模拟数据来表示用户正在查看产品目录中的商品、将这些商品添加到购物车，以及购买这些商品。 此数据是任意性的，其目的是再现电子商务站点上的数据的大致形式。
 
-1. 导航回到文件资源管理器中的存储库，并右键单击“ChangeFeedFunction.sln”，在新的 Visual Studio 窗口中再次将其打开。   
+1. 导航回到文件资源管理器中的存储库，并右键单击“ChangeFeedFunction.sln”，在新的 Visual Studio 窗口中再次将其打开。  
 
 2. 导航到 **App.config** 文件。在 `<appSettings>` 块中，添加前面检索到的 Azure Cosmos DB 帐户的终结点和唯一**主密钥**。  
 
@@ -173,11 +173,11 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
  
 4. 保存对所有已编辑文件的更改。  
 
-5. 在 Visual Studio 的顶部，确保绿色箭头左侧的“启动项目”框中显示了“DataGenerator”。   然后，在页面顶部选择“启动”以运行程序。   
+5. 在 Visual Studio 的顶部，确保绿色箭头左侧的“启动项目”框中显示了“DataGenerator”。 然后，在页面顶部选择“启动”以运行程序。  
  
 6. 等待程序运行。 出现星星表示数据正在传入！ 让程序保持运行 - 必须收集大量的数据。  
 
-7. 如果依次导航到 [Azure 门户](https://portal.azure.com/)、资源组中的 Cosmos DB 帐户、“数据资源管理器”，则会看到 **changefeedlabcollection** 中导入的随机化数据。 
+7. 如果依次导航到 [Azure 门户](https://portal.azure.com/)、资源组中的 Cosmos DB 帐户、“数据资源管理器”，则会看到 **changefeedlabcollection** 中导入的随机化数据。
  
    ![门户中生成的数据](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
@@ -185,41 +185,41 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 Azure 流分析是实时处理流数据的完全托管式云服务。 在此实验室中，我们将使用流分析来处理事件中心发来的新事件（即，查看了商品、将商品添加到了购物车，或购买了商品）、将这些事件合并到实时数据分析，然后将其发送到 Power BI 进行可视化。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，依次导航到资源组和“streamjob1”（前面在实验室中创建的流分析作业）。   
+1. 在 [Azure 门户](https://portal.azure.com/)中，依次导航到资源组和“streamjob1”（前面在实验室中创建的流分析作业）。  
 
-2. 按如下所示选择“输入”。   
+2. 按如下所示选择“输入”。  
 
    ![创建输入](./media/changefeed-ecommerce-solution/create-input.png)
 
-3. 选择“+ 添加流输入”。  然后，从下拉菜单中选择“事件中心”。   
+3. 选择“+ 添加流输入”。 然后，从下拉菜单中选择“事件中心”。  
 
 4. 在“新建输入”表单中填写以下详细信息：
 
-   * 在“输入别名”字段中，输入 **input**。   
-   * 选择“从订阅选择事件中心”选项。   
-   * 将“订阅”字段设置为自己的订阅。   
-   * 在“事件中心命名空间”字段中，输入前面在实验室中创建的事件中心命名空间的名称。   
-   * 在“事件中心名称”字段中，选择“使用现有项”选项，然后从下拉菜单中选择“event-hub1”。     
-   * 将“事件中心策略名称”字段保留设置为默认值。   
-   * 将“事件序列化格式”保留为“JSON”。    
-   * 将“编码”字段保留设置为“UTF-8”。    
-   * 将“事件压缩类型”字段保留设置为“无”。    
-   * 选择“保存”按钮  。
+   * 在“输入别名”字段中，输入 **input**。  
+   * 选择“从订阅选择事件中心”选项。  
+   * 将“订阅”字段设置为自己的订阅。  
+   * 在“事件中心命名空间”字段中，输入前面在实验室中创建的事件中心命名空间的名称。  
+   * 在“事件中心名称”字段中，选择“使用现有项”选项，然后从下拉菜单中选择“event-hub1”。  
+   * 将“事件中心策略名称”字段保留设置为默认值。  
+   * 将“事件序列化格式”保留为“JSON”。  
+   * 将“编码”字段保留设置为“UTF-8”。  
+   * 将“事件压缩类型”字段保留设置为“无”。  
+   * 选择“保存”按钮。
 
-5. 导航回到流分析作业页，并选择“输出”。   
+5. 导航回到流分析作业页，并选择“输出”。  
 
-6. 选择 **+ 添加**。 然后，从下拉菜单中选择“Power BI”。   
+6. 选择 **+ 添加**。 然后，从下拉菜单中选择“Power BI”。  
 
 7. 若要创建新的 Power BI 输出来可视化平均价格，请执行以下操作：
 
-   * 在“输出别名”字段中，输入 **averagePriceOutput**。   
-   * 将“组工作区”字段保留设置为“授权连接以加载工作区”。    
-   * 在“数据集名称”字段中，输入 **averagePrice**。   
-   * 在“表名称”字段中，输入 **averagePrice**。   
-   * 选择“授权”按钮，然后遵照说明授权连接到 Power BI  。  
-   * 选择“保存”按钮  。  
+   * 在“输出别名”字段中，输入 **averagePriceOutput**。  
+   * 将“组工作区”字段保留设置为“授权连接以加载工作区”。  
+   * 在“数据集名称”字段中，输入 **averagePrice**。  
+   * 在“表名称”字段中，输入 **averagePrice**。  
+   * 选择“授权”按钮，然后遵照说明授权连接到 Power BI。  
+   * 选择“保存”按钮。  
 
-8. 返回到“streamjob1”并选择“编辑查询”   。
+8. 返回到“streamjob1”并选择“编辑查询”。
 
    ![编辑查询](./media/changefeed-ecommerce-solution/edit-query.png)
  
@@ -232,33 +232,33 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
     FROM input  
     GROUP BY Action, TumblingWindow(second,5) 
    ```
-10. 然后选择左上角的“保存”  。  
+10. 然后选择左上角的“保存”。  
 
-11. 现在，请返回到“streamjob1”并选择页面顶部的“启动”按钮   。 Azure 流分析可能需要几分钟才能启动，但最终其状态会从“正在启动”更改为“正在运行”。
+11. 现在，请返回到“streamjob1”并选择页面顶部的“启动”按钮。 Azure 流分析可能需要几分钟才能启动，但最终其状态会从“正在启动”更改为“正在运行”。
 
 ## <a name="connect-to-power-bi"></a>连接到 Power BI
 
 Power BI 是一套商业分析工具，可以分析数据和分享见解。 在这个典范性的服务中，我们能够策略性地将分析的数据可视化。
 
-1. 登录到 Power BI，并通过打开页面左侧的菜单导航到“我的工作区”。   
+1. 登录到 Power BI，并通过打开页面左侧的菜单导航到“我的工作区”。  
 
-2. 选择右上角的“+ 创建”，然后选择“仪表板”以创建仪表板。    
+2. 选择右上角的“+ 创建”，然后选择“仪表板”以创建仪表板。  
 
-3. 选择右上角的“+ 添加磁贴”。   
+3. 选择右上角的“+ 添加磁贴”。  
 
-4. 选择“自定义流数据”，然后选择“下一步”按钮   。  
+4. 选择“自定义流数据”，然后选择“下一步”按钮。  
  
-5. 从“你的数据集”中选择“averagePrice”，然后选择“下一步”    。  
+5. 从“你的数据集”中选择“averagePrice”，然后选择“下一步”。  
 
-6. 在“可视化效果类型”字段中，从下拉菜单中选择“簇状条形图”。   在“轴”下面添加操作。  跳过“图例”，不要添加任何内容。  在名为“值”的下一个部分下面，添加“avg”。   选择“下一步”，为图表指定标题，然后选择“应用”。   仪表板上应会出现一个新图表！  
+6. 在“可视化效果类型”字段中，从下拉菜单中选择“簇状条形图”。 在“轴”下面添加操作。 跳过“图例”，不要添加任何内容。 在名为“值”的下一个部分下面，添加“avg”。选择“下一步”，为图表指定标题，然后选择“应用”。 仪表板上应会出现一个新图表！  
 
-7. 现在，若要可视化更多的指标，可以返回到“streamjob1”，并使用以下字段额外创建三个输出。 
+7. 现在，若要可视化更多的指标，可以返回到“streamjob1”，并使用以下字段额外创建三个输出。
 
    a. **输出别名：** incomingRevenueOutput；数据集名称：incomingRevenue；表名称：incomingRevenue  
    b. **输出别名：** top5Output；数据集名称：top5；表名称：top5  
    c. **输出别名：** uniqueVisitorCountOutput；数据集名称：uniqueVisitorCount；表名称：uniqueVisitorCount
 
-   然后选择“编辑查询”，并将以下查询粘贴到所编写的查询的上面   。
+   然后选择“编辑查询”，并将以下查询粘贴到所编写的查询的上面。
 
    ```sql
     /*TOP 5*/
@@ -320,17 +320,17 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 现在，我们知道可以如何使用新的数据分析工具来连接实际的电子商务站点。 若要构建电子商务站点，请使用 Azure Cosmos DB 数据库来存储产品类别（女用、男用、不分性别）列表、产品目录和最受欢迎商品的列表。
 
-1. 依次导航到 [Azure 门户](https://portal.azure.com/)、**Cosmos DB 帐户**、“数据资源管理器”。   
+1. 依次导航到 [Azure 门户](https://portal.azure.com/)、**Cosmos DB 帐户**、“数据资源管理器”。  
 
-   在“changefeedlabdatabase  -  产品和类别”下添加具有“固定”存储容量的两个集合。   
+   在“changefeedlabdatabase  -  产品和类别”下添加具有“固定”存储容量的两个集合。
 
-   在 changefeedlabdatabase 的 topItems 和 /Item 下添加另一个集合作为分区键    。
+   在 changefeedlabdatabase 的 topItems 和 /Item 下添加另一个集合作为分区键。
 
-2. 选择“topItems”集合，然后在“规模和设置”下，将“生存时间”设置为“30 秒”，使 topItems 每隔 30 秒更新一次     。
+2. 选择“topItems”集合，然后在“规模和设置”下，将“生存时间”设置为“30 秒”，使 topItems 每隔 30 秒更新一次。
 
    ![生存时间](./media/changefeed-ecommerce-solution/time-to-live.png)
 
-3. 若要在 **topItems** 集合中填充最经常购买的商品，请导航回到“streamjob1”，并添加新的**输出**。  选择“Cosmos DB”。 
+3. 若要在 **topItems** 集合中填充最经常购买的商品，请导航回到“streamjob1”，并添加新的**输出**。 选择“Cosmos DB”。
 
 4. 按下图所示填写必填字段。
 
@@ -338,14 +338,14 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
  
 5. 如果在实验室的前一部分中添加了可选的 TOP 5 查询，请转到第 5a 部分。 否则，请转到第 5b 部分。
 
-   5a. 在“streamjob1”中选择“编辑查询”，并将以下查询粘贴到 Azure 流分析查询编辑器中 TOP 5 查询的下面、剩余查询的上面。  
+   5a. 在“streamjob1”中选择“编辑查询”，并将以下查询粘贴到 Azure 流分析查询编辑器中 TOP 5 查询的下面、剩余查询的上面。
 
    ```sql
    SELECT arrayvalue.value.item AS Item, arrayvalue.value.price, arrayvalue.value.countEvents
    INTO topItems
    FROM arrayselect
    ```
-   5b. 在“streamjob1”中选择“编辑查询”，并将以下查询粘贴到 Azure 流分析查询编辑器中其他所有查询的上面。  
+   5b. 在“streamjob1”中选择“编辑查询”，并将以下查询粘贴到 Azure 流分析查询编辑器中其他所有查询的上面。
 
    ```sql
    /*TOP 5*/
@@ -374,23 +374,23 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
    FROM arrayselect
    ```
 
-6. 在“解决方案资源管理器”中打开“EcommerceWebApp.sln”，并导航到“Web.config”文件。     
+6. 在“解决方案资源管理器”中打开“EcommerceWebApp.sln”，并导航到“Web.config”文件。  
 
-7. 在 `<appSettings>` 块中，将前面保存的“URI”和“主密钥”分别添加到带有“在此处提供 URI”和“在此处提供主密钥”字样的字段中。     然后，根据指示添加**数据库名称**和**集合名称**。 （除非你已选择不同的名称，否则这些名称应是 **changefeedlabdatabase** 和 **changefeedlabcollection**。）
+7. 在 `<appSettings>` 块中，将前面保存的“URI”和“主密钥”分别添加到带有“在此处提供 URI”和“在此处提供主密钥”字样的字段中。 然后，根据指示添加**数据库名称**和**集合名称**。 （除非你已选择不同的名称，否则这些名称应是 **changefeedlabdatabase** 和 **changefeedlabcollection**。）
 
    根据指示填写**产品集合名称**、**类别集合名称**和**排名靠前的商品集合名称**。 （除非你已选择不同的名称，否则这些名称应是 **products、categories 和 topItems**。）  
 
 8. 导航到 **EcommerceWebApp.sln** 中的 **Checkout 文件夹**并将其打开。 然后打开该文件夹中的 **Web.config** 文件。  
 
-9. 在 `<appSettings>` 块中，根据指示添加前面保存的“URI”和“主密钥”。   然后，根据指示添加**数据库名称**和**集合名称**。 （除非你已选择不同的名称，否则这些名称应是 **changefeedlabdatabase** 和 **changefeedlabcollection**。）  
+9. 在 `<appSettings>` 块中，根据指示添加前面保存的“URI”和“主密钥”。 然后，根据指示添加**数据库名称**和**集合名称**。 （除非你已选择不同的名称，否则这些名称应是 **changefeedlabdatabase** 和 **changefeedlabcollection**。）  
 
-10. 在页面顶部按“启动”以运行程序。   
+10. 在页面顶部按“启动”以运行程序。  
 
 11. 现在，可以任意体验该电子商务站点。 查看商品、将商品添加到购物车、更改购物车中的商品数量或购买商品时，这些事件将通过 Cosmos DB 更改源依次传递到事件中心、ASA 和 Power BI。 我们建议继续运行数据生成器以生成大量的 Web 流量数据，并在电子商务站点上提供一组实际的“热门产品”。
 
 ## <a name="delete-the-resources"></a>删除资源
 
-若要删除在此实验室中创建的资源，请在 [Azure 门户](https://portal.azure.com/)中导航到资源组，从页面顶部的菜单中选择“删除资源组”，然后遵照提供的说明操作。 
+若要删除在此实验室中创建的资源，请在 [Azure 门户](https://portal.azure.com/)中导航到资源组，从页面顶部的菜单中选择“删除资源组”，然后遵照提供的说明操作。
 
 ## <a name="next-steps"></a>后续步骤 
   

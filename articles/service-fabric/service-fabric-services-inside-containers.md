@@ -3,7 +3,7 @@ title: 在 Windows 上容器化 Azure Service Fabric 服务
 description: 了解如何在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors 服务。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: anmolah
 editor: roroutra
 ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 1210b34590484379ae487ad1b87e76a433e4582a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621823"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599205"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors
 
@@ -55,7 +55,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
           {
    ```
 
-4. 生成并[打包](service-fabric-package-apps.md#Package-App)项目。 若要生成并创建包，请在解决方案资源管理器中右键单击应用程序项目，选择“包”命令  。
+4. 生成并[打包](service-fabric-package-apps.md#Package-App)项目。 若要生成并创建包，请在解决方案资源管理器中右键单击应用程序项目，选择“包”命令。
 
 5. 对于每个需要容器化的代码包，运行 PowerShell 脚本 [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)。 用法如下：
 
@@ -121,7 +121,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
    ```
 
 > [!NOTE] 
-> 默认情况下，Service Fabric 应用程序有权接受特定于应用程序请求的终结点的窗体中的 Service Fabric 运行时。 请考虑在应用程序托管不受信任的代码时禁用此访问权限。 有关详细信息，请参阅[在 Service Fabric 中的安全最佳实践](service-fabric-best-practices-security.md#platform-isolation)。 若要禁止访问 Service Fabric 运行时，请将对应于导入的服务清单中，按如下所示的应用程序清单的策略部分中添加以下设置：
+> 默认情况下，Service Fabric 应用程序可以以接受特定于应用程序的请求的终结点的形式访问 Service Fabric 运行时。 当应用程序托管不受信任的代码时，请考虑禁用此访问。 有关详细信息，请参阅 [Service Fabric 中的安全最佳做法](service-fabric-best-practices-security.md#platform-isolation)。 若要禁用对 Service Fabric 运行时的访问，请在与导入的服务清单对应的应用程序清单的“策略”部分中添加以下设置，如下所示：
 >
 ```xml
   <Policies>

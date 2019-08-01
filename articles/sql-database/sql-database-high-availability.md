@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-manager: craigg
 ms.date: 06/10/2019
-ms.openlocfilehash: a88842802759a5c3ae7af7334bbe125344c978ea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 226b0c1cb11fc872cb7759e0d0e49275b9c2d9bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066913"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568153"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL 数据库
 
@@ -57,12 +56,12 @@ Azure SQL 数据库在最新稳定版本的 SQL Server 数据库引擎和 Window
 
 ## <a name="zone-redundant-configuration"></a>区域冗余配置
 
-默认情况下，同一数据中心内创建高级可用性模型的节点的群集。 通过引入[Azure 可用性区域](../availability-zones/az-overview.md)，SQL 数据库可以在群集到同一个区域中不同可用性区域中放置不同的副本。 若要消除单一故障点，还要将控件环跨区域地复制为三个网关环 (GW)。 到特定网关环的路由受 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md) (ATM) 控制。 由于高级或业务关键服务层中的区域冗余配置不会创建其他数据库冗余，则可以启用它，无需额外付费。 通过选择区域冗余配置，您可以对高级或业务关键数据库可复原更广的故障，包括灾难性的数据中心服务中断，而无需对应用程序逻辑的任何更改。 还可以将所有现有“高级”或“业务关键”数据库或池转换到区域冗余配置。
+默认情况下, 将在同一数据中心内创建高级可用性模型的节点群集。 引入[Azure 可用性区域](../availability-zones/az-overview.md)后, SQL 数据库可以将群集中的不同副本放置到同一区域中的不同可用性区域。 若要消除单一故障点，还要将控件环跨区域地复制为三个网关环 (GW)。 到特定网关环的路由受 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md) (ATM) 控制。 由于高级或业务关键服务层中的区域冗余配置不会创建其他数据库冗余, 因此你可以无需额外付费即可启用此功能。 通过选择区域冗余配置, 你可以使你的高级或业务关键数据库弹性应对一组更大的故障, 包括灾难性的数据中心中断, 而不会对应用程序逻辑进行任何更改。 还可以将所有现有“高级”或“业务关键”数据库或池转换到区域冗余配置。
 
-由于区域冗余数据库与它们之间一定距离的不同数据中心内有副本，增加了的网络延迟可能增加的提交时间，并因此影响某些 OLTP 工作负荷的性能。 始终可以通过禁用区域冗余设置返回到单个区域配置。 此过程是类似于常规服务层升级的联机操作。 在此进程结束时，该数据库或池将从区域冗余环迁移到单个区域环，反之亦然。
+由于区域冗余数据库的副本在不同的数据中心具有一定距离, 因此增加的网络延迟可能会增加提交时间, 从而影响某些 OLTP 工作负载的性能。 始终可以通过禁用区域冗余设置返回到单个区域配置。 此过程是一种联机操作, 类似于常规的服务层升级。 在此进程结束时，该数据库或池将从区域冗余环迁移到单个区域环，反之亦然。
 
 > [!IMPORTANT]
-> 区域冗余数据库和弹性池目前仅在选择区域中的高级和业务关键服务层中支持。 在使用业务关键层，选择 Gen5 计算硬件时才可用区域冗余配置。 有关支持区域冗余数据库的区域的最新信息，请参阅[按区域的服务支持](../availability-zones/az-overview.md#services-support-by-region)。  
+> 目前, 只有在 "高级" 和 "业务关键" 服务层中, 才支持区域冗余数据库和弹性池。 使用业务关键层时, 区域冗余配置仅在选择 Gen5 计算硬件时可用。 有关支持区域冗余数据库的区域的最新信息, 请参阅[按区域提供的服务支持](../availability-zones/az-overview.md#services-support-by-region)。  
 
 下图演示了高可用性体系结构的区域冗余版本：
 
@@ -70,7 +69,7 @@ Azure SQL 数据库在最新稳定版本的 SQL Server 数据库引擎和 Window
 
 ## <a name="accelerated-database-recovery-adr"></a>加速的数据库恢复 (ADR)
 
-[加速数据库恢复 (ADR)](sql-database-accelerated-database-recovery.md)新 SQL 数据库引擎功能的极大地提高了数据库的可用性，尤其是在存在长时间的情况下运行的事务。 ADR 目前可用于单个数据库、弹性池和 Azure SQL 数据仓库。
+[加速数据库恢复 (ADR)](sql-database-accelerated-database-recovery.md)是一项全新的 SQL 数据库引擎功能, 可大大提高数据库的可用性, 尤其是在存在长时间运行的事务时。 ADR 目前可用于单个数据库、弹性池和 Azure SQL 数据仓库。
 
 ## <a name="conclusion"></a>结束语
 

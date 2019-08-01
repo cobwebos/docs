@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: fd502a308d6298dc2941461632a2832ac336c45c
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: fe24ab21a9a7d227d58e50c58f9aff2bd91e767f
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849865"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598553"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>（已弃用）用于通过 Azure DevOps 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-本文基于[用于通过 Azure DevOps 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道](container-service-docker-swarm-setup-ci-cd.md)文档 
+本文基于[用于通过 Azure DevOps 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道](container-service-docker-swarm-setup-ci-cd.md)文档
 
 现今开发适用于云环境的新型应用程序时，最大的挑战之一是持续交付这些应用程序。 本文将说明如何通过以下方式实现完整持续集成和部署 (CI/CD) 管道： 
 * 使用 Docker Swarm 模式的 Azure 容器服务
@@ -62,7 +62,7 @@ ms.locfileid: "67849865"
 
 ## <a name="step-1-configure-your-azure-devops-organization"></a>步骤 1：配置 Azure DevOps 组织 
 
-在本部分，我们将配置 Azure DevOps 组织。 若要配置 Azure DevOps Services 终结点，请在 Azure DevOps 项目中的工具栏上单击“设置”图标，然后选择“服务”   。
+在本部分，我们将配置 Azure DevOps 组织。 若要配置 Azure DevOps Services 终结点，请在 Azure DevOps 项目中的工具栏上单击“设置”图标，然后选择“服务”。
 
 ![打开服务终结点](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/services-vsts.PNG)
 
@@ -70,8 +70,8 @@ ms.locfileid: "67849865"
 
 在 Azure DevOps 项目与 Azure 帐户之间建立连接。
 
-1. 在左侧，单击“新建服务终结点” > “Azure Resource Manager”   。
-2. 若要授权 Azure DevOps 使用你的 Azure 帐户，请选择“订阅”，然后单击“确定”   。
+1. 在左侧，单击“新建服务终结点” > “Azure Resource Manager”。
+2. 若要授权 Azure DevOps 使用你的 Azure 帐户，请选择“订阅”，然后单击“确定”。
 
     ![Azure DevOps - 授权 Azure](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-azure.PNG)
 
@@ -79,8 +79,8 @@ ms.locfileid: "67849865"
 
 在 Azure DevOps 项目与 GitHub 帐户之间建立连接。
 
-1. 在左侧，单击“新建服务终结点” > “GitHub”。  
-2. 要授权 Azure DevOps 使用 GitHub 帐户，请单击“Authorize”，并遵循打开的窗口中所述的过程。 
+1. 在左侧，单击“新建服务终结点” > “GitHub”。
+2. 要授权 Azure DevOps 使用 GitHub 帐户，请单击“Authorize”，并遵循打开的窗口中所述的过程。
 
     ![Azure DevOps - 授权 GitHub](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "67849865"
 
 在着手创建 CI/CD 管道之前的最后几个步骤是在 Azure 中配置 Docker Swarm 群集的外部连接。 
 
-1. 对于 Docker Swarm 群集，请添加一个“SSH”类型的终结点。  然后输入 Swarm 群集的 SSH 连接信息（主节点）。
+1. 对于 Docker Swarm 群集，请添加一个“SSH”类型的终结点。 然后输入 Swarm 群集的 SSH 连接信息（主节点）。
 
     ![Azure DevOps - SSH](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-ssh.png)
 
@@ -100,29 +100,29 @@ ms.locfileid: "67849865"
 
 ### <a name="initial-pipeline-setup"></a>初始管道设置
 
-1. 若要创建生成管道，请连接到 Azure DevOps 项目并单击“生成和发布”。  在“生成定义”部分中，单击“+ 新建”。   
+1. 若要创建生成管道，请连接到 Azure DevOps 项目并单击“生成和发布”。 在“生成定义”部分中，单击“+ 新建”。 
 
     ![Azure DevOps - 新建生成管道](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-build-vsts.PNG)
 
-2. 选择“空进程”  。
+2. 选择“空进程”。
 
     ![Azure DevOps - 新建空的生成管道](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-empty-build-vsts.PNG)
 
-4. 然后，单击“变量”选项卡，并创建两个新变量  ：RegistryURL 和 AgentURL   。 粘贴注册表和群集代理 DNS 的值。
+4. 然后，单击“变量”选项卡，并创建两个新变量：RegistryURL 和 AgentURL。 粘贴注册表和群集代理 DNS 的值。
 
     ![Azure DevOps - 生成变量配置](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 
-5. 在“生成定义”页上，首先打开“触发器”选项卡，将内部版本配置为使用与在先决条件部分中创建的 MyShop 项目的分叉的持续集成   。 然后选择“批更改”  。 请确保选择 docker-linux 作为分支规范   。
+5. 在“生成定义”页上，首先打开“触发器”选项卡，将内部版本配置为使用与在先决条件部分中创建的 MyShop 项目的分叉的持续集成。 然后选择“批更改”。 请确保选择 docker-linux 作为分支规范。
 
     ![Azure DevOps - 生成存储库配置](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github-repo-conf.PNG)
 
 
-6. 最后，单击“选项”选项卡并将默认代理队列配置为“托管 Linux 预览”   。
+6. 最后，单击“选项”选项卡并将默认代理队列配置为“托管 Linux 预览”。
 
     ![Azure DevOps - 主机代理配置](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-agent.png)
 
 ### <a name="define-the-build-workflow"></a>定义生成工作流
-后续步骤定义生成工作流。 首先，需要配置代码的源。 若要执行此操作，请选择“GitHub”、你的“存储库”和“分支”(docker-linux)    。
+后续步骤定义生成工作流。 首先，需要配置代码的源。 若要执行此操作，请选择“GitHub”、你的“存储库”和“分支”(docker-linux)。
 
 ![Azure DevOps - 配置代码源](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-source-code.png)
 
@@ -136,7 +136,7 @@ ms.locfileid: "67849865"
 
 每个映像都需要两个 Docker 步骤，其中一个步骤用于生成映像，另一个用于将映像推送到 Azure 容器注册表中。 
 
-1. 若要在生成工作流中添加步骤，请单击“+ 添加生成步骤”并选择“Docker”。  
+1. 若要在生成工作流中添加步骤，请单击“+ 添加生成步骤”并选择“Docker”。
 
     ![Azure DevOps - 添加生成步骤](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-add-task.png)
 
@@ -144,9 +144,9 @@ ms.locfileid: "67849865"
 
     ![Azure DevOps - Docker 生成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-build.png)
 
-    对于生成操作，请选择你的 Azure 容器注册表和“生成映像”操作，然后选择定义每个映像的 Dockerfile  。 将“工作目录”设置为 Dockerfile 根目录，然后定义“映像名称”并选择“包括最近标记”    。
+    对于生成操作，请选择你的 Azure 容器注册表和“生成映像”操作，然后选择定义每个映像的 Dockerfile。 将“工作目录”设置为 Dockerfile 根目录，然后定义“映像名称”并选择“包括最近标记”。
     
-    映像名称必须采用以下格式： ```$(RegistryURL)/[NAME]:$(Build.BuildId)```。 用映像名称替换 [NAME]  ：
+    映像名称必须采用以下格式： ```$(RegistryURL)/[NAME]:$(Build.BuildId)```。 用映像名称替换 [NAME]：
     - ```proxy```
     - ```products-api```
     - ```ratings-api```
@@ -157,19 +157,19 @@ ms.locfileid: "67849865"
 
     ![Azure DevOps - Docker 推送](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-push.png)
 
-    对于推送操作，请选择你的 Azure 容器注册表和“推送映像”操作，然后输入在上一步骤中生成的映像名称并选择“包括最新标记”    。
+    对于推送操作，请选择你的 Azure 容器注册表和“推送映像”操作，然后输入在上一步骤中生成的映像名称并选择“包括最新标记”。
 
 4. 为每个映像（共 5 个）配置生成和推送步骤后，请在生成工作流中另外添加 3 个步骤。
 
    ![Azure DevOps - 添加命令行任务](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-command-task.png)
 
-   1. 一个命令行任务，使用 bash 脚本将 docker-compose.yml 文件中出现的 RegistryURL 替换为 RegistryURL 变量  。 
+   1. 一个命令行任务，使用 bash 脚本将 docker-compose.yml 文件中出现的 RegistryURL 替换为 RegistryURL 变量。 
     
        ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
 
        ![Azure DevOps - 使用注册表 URL 更新 Compose 文件](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
 
-   2. 一个命令行任务，使用 bash 脚本将 docker-compose.yml 文件中出现的 AgentURL 替换为 AgentURL 变量  。
+   2. 一个命令行任务，使用 bash 脚本将 docker-compose.yml 文件中出现的 AgentURL 替换为 AgentURL 变量。
   
        ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
 
@@ -179,13 +179,13 @@ ms.locfileid: "67849865"
 
       ![Azure DevOps - 发布 Compose 文件](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
 
-5. 单击“保存和排队”以测试生成管道  。
+5. 单击“保存和排队”以测试生成管道。
 
    ![Azure DevOps - 保存和排队](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-save.png) 
 
    ![Azure DevOps - 新建队列](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-queue.png) 
 
-6. 如果生成正确，则一定会显示此屏幕  ：
+6. 如果生成正确，则一定会显示此屏幕：
 
    ![Azure DevOps - 生成成功](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
@@ -197,22 +197,22 @@ ms.locfileid: "67849865"
 
 ### <a name="initial-release-setup"></a>初始发布设置
 
-1. 若要创建发布管道，请单击“版本” > “+ 发布”  
+1. 若要创建发布管道，请单击“版本” > “+ 发布”
 
-2. 若要配置项目源，请单击“项目” > “链接项目源”。   在此处，请将此新发布管道链接到在上一步骤中定义的生成。 之后便可以在发布过程中使用 docker-compose.yml 文件。
+2. 若要配置项目源，请单击“项目” > “链接项目源”。 在此处，请将此新发布管道链接到在上一步骤中定义的生成。 之后便可以在发布过程中使用 docker-compose.yml 文件。
 
     ![Azure DevOps - 发布项目](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-artefacts.png) 
 
-3. 要配置发布触发器，请单击“触发器”，并选择“持续部署”。   针对同一个项目源设置触发器。 此项设置可确保在成功完成生成后，开始新的发布。
+3. 要配置发布触发器，请单击“触发器”，并选择“持续部署”。 针对同一个项目源设置触发器。 此项设置可确保在成功完成生成后，开始新的发布。
 
     ![Azure DevOps - 发布触发器](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-trigger.png) 
 
-4. 若要配置发布变量，请单击“变量”并选择“+Variable”以使用注册表的信息创建 3 个新变量：docker.username、docker.password 和 docker.registry      。 粘贴注册表和群集代理 DNS 的值。
+4. 若要配置发布变量，请单击“变量”并选择“+Variable”以使用注册表的信息创建 3 个新变量：docker.username、docker.password 和 docker.registry。 粘贴注册表和群集代理 DNS 的值。
 
     ![Azure DevOps - 生成存储库配置](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-variables.png)
 
     >[!IMPORTANT]
-    > 如上一个屏幕所示，请单击 docker.password 中的“锁定”复选框  。 此设置对于限制密码很重要。
+    > 如上一个屏幕所示，请单击 docker.password 中的“锁定”复选框。 此设置对于限制密码很重要。
     >
 
 ### <a name="define-the-release-workflow"></a>定义发布工作流
@@ -235,13 +235,13 @@ ms.locfileid: "67849865"
 
     在主节点上执行的命令使用 Docker CLI 和 Docker-Compose CLI 来执行以下任务：
 
-   - 登录到 Azure 容器注册表（使用“变量”选项卡中定义的三个生成变量） 
+   - 登录到 Azure 容器注册表（使用“变量”选项卡中定义的三个生成变量）
    - 将 **DOCKER_HOST** 变量定义为使用 Swarm 终结点 (:2375)
    - 导航到前面的安全复制任务创建的、包含 docker-compose.yml 文件的 *deploy* 文件夹 
    - 执行可以拉取新映像和创建容器的 `docker stack deploy` 命令。
 
      >[!IMPORTANT]
-     > 如之前的屏幕截图中所示，将“在 STDERR 中显示失败”复选框保持未选中状态  。 此设置可让我们完成发布过程，因为 `docker-compose` 会在标准错误输出中列显一些诊断消息，例如正在停止或删除容器。 如果选中该复选框，则即使一切正常，Azure DevOps 也会报告在发布期间出错。
+     > 如之前的屏幕截图中所示，将“在 STDERR 中显示失败”复选框保持未选中状态。 此设置可让我们完成发布过程，因为 `docker-compose` 会在标准错误输出中列显一些诊断消息，例如正在停止或删除容器。 如果选中该复选框，则即使一切正常，Azure DevOps 也会报告在发布期间出错。
      >
 3. 保存此项新发布管道。
 
@@ -251,6 +251,6 @@ ms.locfileid: "67849865"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用 Azure DevOps 实现 CI/CD 的详细信息，请参阅 [Azure DevOps 生成概述](https://www.visualstudio.com/docs/build/overview)。
+* 有关与 Azure DevOps 的 CI/CD 的详细信息, 请参阅[Azure Pipelines 文档](/azure/devops/pipelines/?view=azure-devops)文章。
 * 有关 ACS 引擎的详细信息，请参阅[ACS 引擎 GitHub 存储库](https://github.com/Azure/acs-engine)。
 * 有关 Docker Swarm 模式的详细信息，请参阅[Docker Swarm 模式概述](https://docs.docker.com/engine/swarm/)。

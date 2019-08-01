@@ -3,7 +3,7 @@ title: 在 Azure 中将 API 管理与 Service Fabric 集成 |Microsoft Docs
 description: 了解如何快速开始使用 Azure API 管理以及在 Service Fabric 中将流量路由到后端服务。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/10/2019
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: c290b13ccb65c68c32d63638b15e8a3f59ef8010
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 470eacee5c71742678497edf48169e14a4073829
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228101"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598826"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
 
@@ -75,8 +75,8 @@ az account set --subscription <guid>
 以管理员身份启动 Visual Studio 并创建 ASP.NET Core 服务：
 
  1. 在 Visual Studio 中，选择“文件”->“新建项目”。
- 2. 选择“云”下的 Service Fabric 应用程序模板并将其命名为“ApiApplication”  。
- 3. 选择无状态 ASP.NET Core 服务模板并将项目命名为“WebApiService”  。
+ 2. 选择“云”下的 Service Fabric 应用程序模板并将其命名为“ApiApplication”。
+ 3. 选择无状态 ASP.NET Core 服务模板并将项目命名为“WebApiService”。
  4. 选择 "Web API ASP.NET Core 2.1" 项目模板。
  5. 创建项目后，打开 `PackageRoot\ServiceManifest.xml` 并从终结点资源配置中删除 `Port` 属性：
 
@@ -100,7 +100,7 @@ az account set --subscription <guid>
 
     这是你通过 Azure 中的 API 管理公开的终结点。
 
- 7. 最后，将应用程序部署到 Azure 中的群集。 在 Visual Studio 中，右键单击“应用程序”项目，然后选择“发布”  。 提供群集终结点（例如，`mycluster.southcentralus.cloudapp.azure.com:19000`），将应用程序部署到 Azure 中的 Service Fabric 群集。
+ 7. 最后，将应用程序部署到 Azure 中的群集。 在 Visual Studio 中，右键单击“应用程序”项目，然后选择“发布”。 提供群集终结点（例如，`mycluster.southcentralus.cloudapp.azure.com:19000`），将应用程序部署到 Azure 中的 Service Fabric 群集。
 
 名为 `fabric:/ApiApplication/WebApiService` 的 ASP.NET Core 无状态服务现在应在 Azure 的 Service Fabric 群集中运行。
 
@@ -115,7 +115,7 @@ az account set --subscription <guid>
 
 *network-apim.json* 模板将新的子网和网络安全组部署在已部署的 Service Fabric 群集所在的虚拟网络中。
 
-以下部分介绍由 apim.json 模板定义的资源  。 有关详细信息，请访问每个部分中模板引用文档的链接。 文本稍后部分设置了 apim.parameters.json 参数文件中定义的可配置参数  。
+以下部分介绍由 apim.json 模板定义的资源。 有关详细信息，请访问每个部分中模板引用文档的链接。 文本稍后部分设置了 apim.parameters.json 参数文件中定义的可配置参数。
 
 ### <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
@@ -125,30 +125,30 @@ az account set --subscription <guid>
 
 [Microsoft.ApiManagement/service/certificates](/azure/templates/microsoft.apimanagement/service/certificates) 用于配置 API 管理安全性。 API 管理必须使用有权访问群集的客户端证书对用于服务发现的 Service Fabric 群集进行身份验证。 本文使用之前在创建 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md#createvaultandcert_anchor)时指定的同一证书，该证书默认可用于访问群集。
 
-本文对客户端身份验证和群集节点到节点安全性使用相同的证书。 如果你配置了一个单独的客户端证书，则可以使用它来访问 Service Fabric 群集。 提供创建 Service Fabric 群集时指定的群集证书私钥文件 (.pfx) 的“名称”、“密码”和“数据”（base-64 编码字符串）    。
+本文对客户端身份验证和群集节点到节点安全性使用相同的证书。 如果你配置了一个单独的客户端证书，则可以使用它来访问 Service Fabric 群集。 提供创建 Service Fabric 群集时指定的群集证书私钥文件 (.pfx) 的“名称”、“密码”和“数据”（base-64 编码字符串）。
 
 ### <a name="microsoftapimanagementservicebackends"></a>Microsoft.ApiManagement/service/backends
 
 [Microsoft.ApiManagement/service/backends](/azure/templates/microsoft.apimanagement/service/backends) 描述了流量转发到的后端服务。
 
-对于 Service Fabric 后端，后端是 Service Fabric 群集，而不是特定的 Service Fabric 服务。 这允许单个策略路由到群集中的多个服务。 如果后端策略中未指定任何服务名称，那么此处的 url 字段是群集中一个服务的完全限定的服务名称，默认情况下所有请求都路由到该服务  。 如果你不打算获取回退服务，可以使用一个假的服务名称，如“fabric:/fake/service”。 resourceId 指定群集管理终结点  。  clientCertificateThumbprint 和 serverCertificateThumbprints 标识用于对群集进行身份验证的证书   。
+对于 Service Fabric 后端，后端是 Service Fabric 群集，而不是特定的 Service Fabric 服务。 这允许单个策略路由到群集中的多个服务。 如果后端策略中未指定任何服务名称，那么此处的 url 字段是群集中一个服务的完全限定的服务名称，默认情况下所有请求都路由到该服务。 如果你不打算获取回退服务，可以使用一个假的服务名称，如“fabric:/fake/service”。 resourceId 指定群集管理终结点。  clientCertificateThumbprint 和 serverCertificateThumbprints 标识用于对群集进行身份验证的证书。
 
 ### <a name="microsoftapimanagementserviceproducts"></a>Microsoft.ApiManagement/service/products
 
 [Microsoft.ApiManagement/service/products](/azure/templates/microsoft.apimanagement/service/products) 用于创建产品。 在 Azure API 管理中，产品包含一个或多个 API 以及使用配额和使用条款。 一旦产品发布，开发人员可以订阅该产品，并开始使用产品的 API。
 
-为产品输入描述性“displayName”和“description”   。 对于本文，订阅是必需的，但不需要管理员批准订阅。  产品“state”为“已发布”，并对订阅者可见  。
+为产品输入描述性“displayName”和“description”。 对于本文，订阅是必需的，但不需要管理员批准订阅。  产品“state”为“已发布”，并对订阅者可见。
 
 ### <a name="microsoftapimanagementserviceapis"></a>Microsoft.ApiManagement/service/apis
 
 [Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagement/service/apis) 用于创建 API。 API 管理中的 API 表示一组可由客户端应用程序调用的操作。 一旦添加操作，该 API 添加到某一产品并可以发布。 发布 API 后，它可供开发人员订阅和使用。
 
-* “displayName”可以是 API 的任意名称  。 对于本文，请使用“Service Fabric App”。
-* “name”为 API 提供一个唯一且有描述性的名称，例如“service-fabric-app”  。 它显示在开发人员和发布者门户中。
-* “serviceUrl”引用实现 API 的 HTTP 服务  。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 你可以在此处设置任何值。 对于本文，例如“http:\//servicefabric”。
-* “path”附加到 API 管理服务的基础 URL  。 基础 URL 是常见的由 API 管理服务实例托管的所有 API。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。
-* “protocols”确定可用于访问 API 的协议  。 对于本文，列出 **http** 和 **https**。
-* “path”是 API 的后缀  。 对于本文，请使用“myapp”。
+* “displayName”可以是 API 的任意名称。 对于本文，请使用“Service Fabric App”。
+* “name”为 API 提供一个唯一且有描述性的名称，例如“service-fabric-app”。 它显示在开发人员和发布者门户中。
+* “serviceUrl”引用实现 API 的 HTTP 服务。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 你可以在此处设置任何值。 对于本文，例如“http:\//servicefabric”。
+* “path”附加到 API 管理服务的基础 URL。 基础 URL 是常见的由 API 管理服务实例托管的所有 API。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。
+* “protocols”确定可用于访问 API 的协议。 对于本文，列出 **http** 和 **https**。
+* “path”是 API 的后缀。 对于本文，请使用“myapp”。
 
 ### <a name="microsoftapimanagementserviceapisoperations"></a>Microsoft.ApiManagement/service/apis/operations
 
@@ -156,9 +156,9 @@ az account set --subscription <guid>
 
 要添加前端 API 操作，请填写以下值：
 
-* “displayName”和“description”描述操作   。 对于本文，请使用“Values”。
-* “method”指定 HTTP 谓词  。  对于本文，请指定 **GET**。
-* “urlTemplate”附加到 API 的基础 URL，并标识单个 HTTP 操作  。  对于本文，如果添加了.NET 后端服务，请使用 `/api/values`，如果添加了 Java 后端服务，请使用 `getMessage`。  默认情况下，在此处指定的 URL 路径是发送到后端 Service Fabric 服务的 URL 路径。 如果在此处使用服务所用的相同 URL 路径（例如“/api/values”），则无需进一步修改即可正常执行该操作。 还可以在此处指定一个与后端 Service Fabric 服务使用的 URL 路径不同的 URL 路径，这种情况下，还需要在以后的操作策略中指定路径重写。
+* “displayName”和“description”描述操作。 对于本文，请使用“Values”。
+* “method”指定 HTTP 谓词。  对于本文，请指定 **GET**。
+* “urlTemplate”附加到 API 的基础 URL，并标识单个 HTTP 操作。  对于本文，如果添加了.NET 后端服务，请使用 `/api/values`，如果添加了 Java 后端服务，请使用 `getMessage`。  默认情况下，在此处指定的 URL 路径是发送到后端 Service Fabric 服务的 URL 路径。 如果在此处使用服务所用的相同 URL 路径（例如“/api/values”），则无需进一步修改即可正常执行该操作。 还可以在此处指定一个与后端 Service Fabric 服务使用的 URL 路径不同的 URL 路径，这种情况下，还需要在以后的操作策略中指定路径重写。
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
@@ -171,7 +171,7 @@ az account set --subscription <guid>
 * 用于有状态服务的副本选择。
 * 解析重试条件，允许你指定用于重新解析服务位置并重新发送请求的条件。
 
-“policyContent”是策略的 JSON 转义 XML 内容  。  对于本文，请创建一个将请求直接路由到以前部署的 .NET 或 Java 无状态服务的后端策略。 在入站策略下添加 `set-backend-service` 策略。  如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。  *backend-id* 引用一个后端资源，在此示例中为在 *apim.json* 模板中定义的 `Microsoft.ApiManagement/service/backends` 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
+“policyContent”是策略的 JSON 转义 XML 内容。  对于本文，请创建一个将请求直接路由到以前部署的 .NET 或 Java 无状态服务的后端策略。 在入站策略下添加 `set-backend-service` 策略。  如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。  *backend-id* 引用一个后端资源，在此示例中为在 *apim.json* 模板中定义的 `Microsoft.ApiManagement/service/backends` 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
 
 ```xml
 <policies>
@@ -195,7 +195,7 @@ az account set --subscription <guid>
 
 ## <a name="set-parameters-and-deploy-api-management"></a>设置参数和部署 API 管理
 
-在部署的 apim.parameters.json 中填写以下空参数  。
+在部署的 apim.parameters.json 中填写以下空参数。
 
 |参数|值|
 |---|---|
@@ -210,9 +210,9 @@ az account set --subscription <guid>
 |clusterHttpManagementEndpoint|https://mysfcluster.southcentralus.cloudapp.azure.com:19080|
 |inbound_policy|&lt;XML 字符串&gt;|
 
-“certificatePassword”和“serviceFabricCertificateThumbprint”必须与用于设置群集的群集证书匹配   。
+“certificatePassword”和“serviceFabricCertificateThumbprint”必须与用于设置群集的群集证书匹配。
 
-“serviceFabricCertificate”是 base-64 编码字符串形式的证书，可以使用以下脚本生成  ：
+“serviceFabricCertificate”是 base-64 编码字符串形式的证书，可以使用以下脚本生成：
 
 ```powershell
 $bytes = [System.IO.File]::ReadAllBytes("C:\mycertificates\sfclustertutorialgroup220171109113527.pfx");
@@ -263,9 +263,9 @@ az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 现在可以尝试直接从 [Azure 门户](https://portal.azure.com)通过 API 管理将请求发送到 Service Fabric 中的后端服务。
 
- 1. 在 API 管理服务中，选择“API”  。
- 2. 在于之前的步骤中创建的“Service Fabric 应用”  API 中，选择“测试”  选项卡，然后选择“值”  操作。
- 3. 单击“发送”  按钮，将测试请求发送到后端服务。  应该会看到类似于以下内容的 HTTP 响应：
+ 1. 在 API 管理服务中，选择“API”。
+ 2. 在于之前的步骤中创建的“Service Fabric 应用”API 中，选择“测试”选项卡，然后选择“值”操作。
+ 3. 单击“发送”按钮，将测试请求发送到后端服务。  应该会看到类似于以下内容的 HTTP 响应：
 
     ```http
     HTTP/1.1 200 OK

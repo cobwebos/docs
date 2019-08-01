@@ -3,7 +3,7 @@ title: 为群集创建 Azure 负载均衡器规则
 description: 配置 Azure 负载均衡器，为 Azure Service Fabric 群集打开端口。
 services: service-fabric
 documentationcenter: na
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: d95d2802398a61b948ff6c59fb3eab0e1ddddbc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 440d5e37e03e58a39275e715ebce4fa07961cc84
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66147464"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598578"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>为 Service Fabric 群集打开端口
 
@@ -32,7 +32,7 @@ ms.locfileid: "66147464"
 
 ## <a name="configure-service-fabric"></a>配置 Service Fabric
 
-Service Fabric 应用程序 ServiceManifest.xml 配置文件定义应用程序应使用的终结点  。 更新配置文件以定义终结点后，必须更新负载均衡器，公开该（或其他）端口。 有关如何创建 Service Fabric 终结点的详细信息，请参阅[设置终结点](service-fabric-service-manifest-resources.md)。
+Service Fabric 应用程序 ServiceManifest.xml 配置文件定义应用程序应使用的终结点。 更新配置文件以定义终结点后，必须更新负载均衡器，公开该（或其他）端口。 有关如何创建 Service Fabric 终结点的详细信息，请参阅[设置终结点](service-fabric-service-manifest-resources.md)。
 
 ## <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
@@ -46,7 +46,7 @@ Service Fabric 应用程序 ServiceManifest.xml 配置文件定义应用程序�
 - 内部端口。
 
 ## <a name="azure-cli"></a>Azure CLI
-使用单个命令即可使用 Azure CLI 创建负载均衡器规则  。 你只需知道用于创建新规则的负载均衡器和资源组的名称。
+使用单个命令即可使用 Azure CLI 创建负载均衡器规则。 你只需知道用于创建新规则的负载均衡器和资源组的名称。
 
 >[!NOTE]
 >如果需要确定负载均衡器的名称，可使用此命令来快速获取所有负载均衡器和关联资源组的列表。
@@ -111,4 +111,4 @@ $lb | Set-AzLoadBalancer
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何[Service Fabric 中的网络](service-fabric-patterns-networking.md).rvice fabric 模式 networking.md)。
+详细了解[Service Fabric 中的网络](service-fabric-patterns-networking.md)rvice-fabric-patterns-networking.md)。

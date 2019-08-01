@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 129127a2a43cd9a86e0a1e1cf538358b62381257
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67706228"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
@@ -46,7 +46,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
-本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建和部署 Node.js 应用程序到 Azure 网站][nodejswebsite], [Node.js Cloud Service][Node.js Cloud Service]使用 Windows PowerShell 或[使用 webmatrix 构建网站][webmatrix]。
+本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、使用 Windows PowerShell 创建 [Node.js 云服务][Node.js Cloud Service]或[使用 WebMatrix 创建网站][webmatrix]。
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>将应用程序配置为使用通知中心
 
@@ -79,10 +79,10 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 通过执行以下步骤从 [Azure 门户] 获取连接 `connectionstring` 值：
 
-1. 在左侧导航窗格中，单击“浏览”。 
-2. 选择“通知中心”，并找到要用于示例的中心。  如果在创建新通知中心时需要帮助，可以参阅 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
-3. 选择“设置”。 
-4. 单击“访问策略”。  会看到共享连接字符串和完全访问连接字符串。
+1. 在左侧导航窗格中，单击“浏览”。
+2. 选择“通知中心”，并找到要用于示例的中心。 如果在创建新通知中心时需要帮助，可以参阅 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
+3. 选择“设置”。
+4. 单击“访问策略”。 会看到共享连接字符串和完全访问连接字符串。
 
 ![Azure 门户 — 通知中心](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
@@ -106,7 +106,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** — 消息的 JSON 或原始字符串的有效负载。
 - **Callback** — 回调函数。
 
-有关负载格式的详细信息，请参阅[有效负载文档](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
+有关负载格式的详细信息, 请参阅[有效负载文档](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
 
 以下代码使用由 `NotificationHubService` 公开的 `GcmService` 实例将推送通知发送到所有已注册的客户端。
 

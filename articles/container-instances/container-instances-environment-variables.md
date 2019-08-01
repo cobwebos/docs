@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
 ms.openlocfilehash: 9cd62c378270da31079a38f89b040985105a4218
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326033"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
@@ -33,7 +33,7 @@ ms.locfileid: "68326033"
 
 ## <a name="azure-cli-example"></a>Azure CLI 示例
 
-若要查看[wordcount][aci-wordcount] container, run it first with this [az container create][az-container-create]命令的默认输出 (未指定环境变量):
+若要查看[wordcount][aci-wordcount]容器的默认输出, 请先通过此[az container create][az-container-create]命令运行它 (未指定环境变量):
 
 ```azurecli-interactive
 az container create \
@@ -54,7 +54,7 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-两个容器的状态显示为 "已*终止*" 后 (使用[az container show][az-container-show] to check state), display their logs with [az container logs][az-container-logs]查看输出。
+当两个容器的状态显示为 "已*终止*" 时 (使用[az container show][az-container-show]来检查状态), 使用[az 容器日志][az-container-logs]显示其日志以查看输出。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -88,7 +88,7 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 在 PowerShell 中设置环境变量类似于在 CLI 中进行的相应操作，但需使用 `-EnvironmentVariable` 命令行参数。
 
-首先, 启动[wordcount][aci-wordcount] container in its default configuration with this [New-AzContainerGroup][new-Azcontainergroup]命令:
+首先, 通过以下[AzContainerGroup][new-Azcontainergroup]命令在其默认配置中启动[wordcount][aci-wordcount]容器:
 
 ```azurepowershell-interactive
 New-AzContainerGroup `

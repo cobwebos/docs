@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 3dab2da2d54efe73b7b782800b190ea8aac2b5cd
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: c42e70efc8543e1d255690070ffb51b865e1754f
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460689"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608577"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 >
 > * [版本 1](v1/data-factory-data-movement-security-considerations.md)
 > * [当前版本](data-movement-security-considerations.md)
@@ -59,7 +59,7 @@ ms.locfileid: "67460689"
 
 ### <a name="securing-data-store-credentials"></a>保护数据存储凭据
 
-- **在 Azure 数据工厂托管存储中存储加密的凭据**。 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而帮助为这些凭据提供保护。 这些证书每两年轮换一次（包括证书续订和凭据迁移）。 这些加密凭据安全地存储在由 Azure 数据工厂管理服务管理的 Azure 存储帐户中。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../security/security-storage-overview.md)。
+- **在 Azure 数据工厂托管存储中存储加密的凭据**。 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而帮助为这些凭据提供保护。 这些证书每两年轮换一次（包括证书续订和凭据迁移）。 这些加密凭据安全地存储在由 Azure 数据工厂管理服务管理的 Azure 存储帐户中。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../security/fundamentals/storage-overview.md)。
 - **在 Azure Key Vault 中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
 
 ### <a name="data-encryption-in-transit"></a>传输中的数据加密
@@ -112,14 +112,14 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和
 
 - **在本地存储凭据**。 如果想要在自承载集成运行时本地加密并存储凭据，请遵循[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)中的步骤。 所有连接器都支持此选项。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。 
 
-   使用**新建 AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 可加密链接的服务凭据和链接服务中的敏感详细信息。 然后，可以使用返回的 JSON (使用**EncryptedCredential**连接字符串中的元素) 若要使用创建的链接的服务**集 AzDataFactoryV2LinkedService** cmdlet。  
+   使用 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdle 可加密链接服务凭据和链接服务中的敏感详细信息。 然后，可以通过 **Set-AzDataFactoryV2LinkedService** cmdlet 使用返回的 JSON（结合连接字符串中的 **EncryptedCredential** 元素）创建链接服务。  
 
-- **在 Azure 数据工厂托管存储中存储**。 如果直接使用**集 AzDataFactoryV2LinkedService** cmdlet 与连接字符串和凭据 JSON 中的内联、 加密并存储在 Azure 数据工厂托管存储链接的服务。 敏感信息仍由证书加密，这些证书由 Microsoft 管理。
+- **在 Azure 数据工厂托管存储中存储**。 如果直接结合 JSON 中内联的连接字符串和凭据使用 **Set-AzDataFactoryV2LinkedService** cmdlet，则链接服务将加密并存储在 Azure 数据工厂托管存储中。 敏感信息仍由证书加密，这些证书由 Microsoft 管理。
 
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>在自承载集成运行时中加密链接服务时使用的端口
-默认情况下，PowerShell 在装有自承载的集成运行时进行安全通信的计算机上使用端口 8060。 如有必要，可以更改此端口。  
+默认情况下, PowerShell 在具有自承载集成运行时的计算机上使用端口8060来确保通信安全。 如有必要，可以更改此端口。  
 
 ![网关的 HTTPS 端口](media/data-movement-security-considerations/https-port-for-gateway.png)
 
@@ -135,11 +135,11 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表根据混合数据移动的源和目标位置的不同组合，汇总了有关网络和自承载集成运行时的配置建议。
 
-| source      | 目标                              | 网络配置                    | 集成运行时安装                |
+| Source      | 目标                              | 网络配置                    | 集成运行时安装                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 应在虚拟网络中的 Azure 虚拟机上安装自承载的集成运行时。  |
-| 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 应在虚拟网络中的 Azure 虚拟机上安装自承载的集成运行时。  |
-| 本地 | 具有公共终结点的基于 Azure 的服务 | ExpressRoute （Microsoft 对等互连）            | 自承载的集成运行时可安装在本地或 Azure 虚拟机上。 |
+| 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
+| 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
+| 本地 | 具有公共终结点的基于 Azure 的服务 | ExpressRoute (Microsoft 对等互连)            | 自承载集成运行时可以在本地安装，也可以安装在 Azure 虚拟机上。 |
 
 下图显示了如何使用自承载集成运行时通过 ExpressRoute 和 IPSec VPN（具有 Azure 虚拟网络）在本地数据库和 Azure 服务之间移动数据：
 
@@ -197,7 +197,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 **需要满足哪些端口要求才能让自承载集成运行时正常工作？**
 
-自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 打开入站的端口 8060 仅在计算机级别 （而不是企业防火墙级别） 为凭据管理器应用程序。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of-gateway)部分。 
+自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别 (不是企业防火墙级别) 为凭据管理器应用程序打开入站端口8060。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of-gateway)部分。 
 
 
 ## <a name="next-steps"></a>后续步骤

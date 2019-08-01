@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad2f25aac7f74c74eb63fd4666c5184ae751ec1f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: cce5de98fe4914e18ee0154d4ac5f1af008d32a6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499934"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561309"
 ---
 # <a name="enable-passwordless-sign-in-for-azure-ad-preview"></a>为 Azure AD 启用无密码登录 (预览版)
 
@@ -109,7 +109,7 @@ FIDO2 安全密钥的注册功能依赖于组合注册预览。 按照以下步�
 ### <a name="enable-new-passwordless-authentication-methods"></a>启用新的无密码身份验证方法
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 浏览到**Azure Active Directory** > **身份验证** > 方法**身份验证方法策略 (预览)**
+1. 浏览到**Azure Active Directory** > **安全** > **身份**验证方法 > **身份验证方法策略 (预览)**
 1. 在每个**方法**下, 选择以下选项
    1. **启用**-是或否
    1. **目标**-所有用户或选择用户

@@ -9,12 +9,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: a77cf20be30361abf6590dbd53bdb07c327eb9d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e46064076fb5d38fbde94bd4bb7e5dfbcff7e3b4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205003"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68556148"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -27,12 +27,14 @@ ms.locfileid: "65205003"
 > [!NOTE]
 >  存储分析日志记录目前仅适用于 Blob、队列和表服务。 但是，不支持高级存储帐户。
 
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 ## <a name="requests-logged-in-logging"></a>在日志记录中记录的请求
 ### <a name="logging-authenticated-requests"></a>记录经过身份验证的请求
 
  将记录以下类型的已经过身份验证的请求：
 
-- 成功的请求
+- 成功的请求数
 - 失败的请求，包括超时、限制、网络、授权和其他错误
 - 使用共享访问签名 (SAS) 或 OAuth 的请求，包括失败和成功的请求。
 - 分析数据请求
@@ -43,7 +45,7 @@ ms.locfileid: "65205003"
 
  将记录以下类型的匿名请求：
 
-- 成功的请求
+- 成功的请求数
 - 服务器错误
 - 客户端和服务器的超时错误
 - 失败的 GET 请求，错误代码为 304（未修改）
@@ -57,7 +59,7 @@ ms.locfileid: "65205003"
 > [!NOTE]
 >  执行容器列出操作（例如“列出容器”操作）时，不会显示 `$logs` 容器。 必须直接访问该容器。 例如，可以使用“列出 Blob”操作访问 `$logs` 容器中的 Blob。
 
-在记录请求时，存储分析将中间结果作为块进行上传。 存储分析定期提交这些块，并将其作为 Blob 提供。 最长可能需要在一小时后，日志才会显示在 **$logs** 容器中的 Blob 内，具体时间取决于存储服务刷新日志写入器的频率。 在同一小时内创建的日志中可能存在重复的记录。 可以通过检查 RequestId 和操作编号确定记录是否为重复记录。  
+在记录请求时，存储分析将中间结果作为块进行上传。 存储分析定期提交这些块，并将其作为 Blob 提供。 最长可能需要在一小时后，日志才会显示在 **$logs** 容器中的 Blob 内，具体时间取决于存储服务刷新日志写入器的频率。 在同一小时内创建的日志中可能存在重复的记录。 可以通过检查 RequestId 和操作编号确定记录是否为重复记录。
 
 如果每小时写入大量的日志数据和多个文件，则你可以使用 Blob 元数据并通过检查 Blob 元数据字段来确定日志包含哪些数据。 这种做法也很有效，因为将数据写入日志文件时，有时会出现延迟：与 Blob 名称相比，Blob 元数据能够更准确地指示 Blob 内容。
 
@@ -89,7 +91,7 @@ ms.locfileid: "65205003"
 
 |特性|描述|
 |---------------|-----------------|
-|`<service-name>`|存储服务的名称 例如： `blob`， `table`，或 `queue`|
+|`<service-name>`|存储服务的名称 例如: `blob`、 `table`或`queue`|
 |`YYYY`|用四位数表示的日志年份。 例如： `2011`|
 |`MM`|用两位数表示的日志月份。 例如： `07`|
 |`DD`|用两位数表示的日志日期。 例如： `31`|
@@ -105,7 +107,7 @@ ms.locfileid: "65205003"
 
  `https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log`
 
- 在记录存储请求时，生成的日志名称与完成请求的操作时间（小时）关联。 例如，如果在 2011 年 7 月 31 日下午 6:30 完成 GetBlob 请求，将具有以下前缀写入的日志： `blob/2011/07/31/1800/`
+ 在记录存储请求时，生成的日志名称与完成请求的操作时间（小时）关联。 例如, 如果 GetBlob 请求已在7/31/2011 的 6: 下午6:30 上完成, 则将使用以下前缀编写日志:`blob/2011/07/31/1800/`
 
 ### <a name="log-metadata"></a>日志元数据
 
@@ -113,7 +115,7 @@ ms.locfileid: "65205003"
 
 |特性|描述|
 |---------------|-----------------|
-|`LogType`|描述日志是否包含与读取、写入或删除操作有关的信息。 该值可能包含一种类型，也可能包含所有三种类型的组合并用逗号隔开。<br /><br /> 示例 1：`write`<br /><br /> 示例 2：`read,write`<br /><br /> 示例 3: `read,write,delete`|
+|`LogType`|描述日志是否包含与读取、写入或删除操作有关的信息。 该值可能包含一种类型，也可能包含所有三种类型的组合并用逗号隔开。<br /><br /> 示例 1：`write`<br /><br /> 示例 2：`read,write`<br /><br /> 示例 3:`read,write,delete`|
 |`StartTime`|日志中条目的最早时间，采用 `YYYY-MM-DDThh:mm:ssZ` 格式。 例如： `2011-07-31T18:21:46Z`|
 |`EndTime`|日志中条目的最晚时间，采用 `YYYY-MM-DDThh:mm:ssZ` 格式。 例如： `2011-07-31T18:22:09Z`|
 |`LogVersion`|日志格式的版本。|
@@ -131,7 +133,7 @@ ms.locfileid: "65205003"
 
 ### <a name="enable-storage-logging-using-the-azure-portal"></a>使用 Azure 门户启用存储日志记录  
 
-在 Azure 门户中，使用“诊断设置(经典)”边栏选项卡控制存储日志记录。可以通过存储帐户的“菜单”边栏选项卡的“监视(经典)”部分访问该项设置。   
+在 Azure 门户中，使用“诊断设置(经典)”边栏选项卡控制存储日志记录。可以通过存储帐户的“菜单”边栏选项卡的“监视(经典)”部分访问该项设置。
 
 可以指定要记录的存储服务，以及记录数据的保留期（以天为单位）。  
 
@@ -197,12 +199,12 @@ AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs
 
  AzCopy 还有一些有用的参数可以控制如何对下载的文件设置上次修改时间，以及是要尝试下载比本地计算机上现有任何文件更旧还是更新的文件。 还可以在可重启模式下运行此工具。 有关完整详细信息，请运行 **AzCopy /?** 命令 查看帮助  
 
- 有关如何以编程方式下载日志数据的示例，请参阅博客文章[Windows Azure 存储日志记录：使用日志跟踪存储请求](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx)并搜索"dumplogs 一"词的页上。  
+ 有关如何以编程方式下载日志数据的示例, 请参阅博客文章[microsoft Azure 存储日志记录:使用日志跟踪存储请求](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx)并搜索页面上的 "DumpLogs" 一词。  
 
- 下载日志数据后，可以查看文件中的日志条目。 这些日志文件使用带分隔符的文本格式，许多日志读取工具可分析，包括 Microsoft Message Analyzer (有关详细信息，请参阅指南[进行监视、 诊断和故障排除 Microsoft Azure 存储](storage-monitoring-diagnosing-troubleshooting.md)). 不同的工具提供不同的功能用于筛选、排序和搜索日志文件的内容及设置其格式。 有关存储日志记录日志文件格式和内容的详细信息，请参阅[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)以及[存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。
+ 下载日志数据后，可以查看文件中的日志条目。 这些日志文件使用一种分隔文本格式, 许多日志读取工具都可以对其进行分析, 包括 Microsoft Message Analyzer (有关详细信息, 请参阅指南[监视、诊断和疑难解答 Microsoft Azure 存储](storage-monitoring-diagnosing-troubleshooting.md))。 不同的工具提供不同的功能用于筛选、排序和搜索日志文件的内容及设置其格式。 有关存储日志记录日志文件格式和内容的详细信息，请参阅[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)以及[存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Storage Analytics Log Format](/rest/api/storageservices/storage-analytics-log-format)（存储分析日志格式）
 * [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
-* [存储分析指标 （经典）](storage-analytics-metrics.md)
+* [存储分析指标 (经典)](storage-analytics-metrics.md)

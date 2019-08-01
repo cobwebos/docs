@@ -10,25 +10,24 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 4834688496330210b273f40f1d6f11230a6ae1c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 996d4e2ba62c06992b0433fd255800ba8cea0af3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234123"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570172"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
 
-[弹性数据库工具](sql-database-elastic-scale-get-started.md)和[行级别安全性 (RLS)][rls] 一起使用时，可通过 Azure SQL 数据库缩放多租户应用程序的数据层。 将这些技术综合在一起，即可生成数据层高度可缩放的应用程序。 该数据层支持多租户分片，并使用 **ADO.NET SqlClient** 或**实体框架**。 有关详细信息，请参阅[具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
+[弹性数据库工具](sql-database-elastic-scale-get-started.md)和[行级安全性 (RLS)][rls]合作, 可以使用 Azure SQL 数据库缩放多租户应用程序的数据层。 将这些技术综合在一起，即可生成数据层高度可缩放的应用程序。 该数据层支持多租户分片，并使用 **ADO.NET SqlClient** 或**实体框架**。 有关详细信息，请参阅[具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
 
 - **弹性数据库工具**可让开发人员使用 .NET 库和 Azure 服务模板通过标准分片做法横向扩展数据层。 使用[弹性数据库客户端库][s-d-elastic-database-client-library]管理分片有助于自动化和简化通常与分片关联的许多基础结构任务。
 - **行级安全性**允许开发人员将多个租户的数据安全地存储在同一数据库中。 RLS 安全策略筛选掉不属于执行查询的租户的行。 将筛选逻辑集中在数据库中可简化维护过程，降低发生安全错误的风险。 替代方法是依赖所有客户端代码来强制实施安全措施，这是很危险的。
 
 将这些功能一起使用，应用程序可以在同一个分片数据库中存储多个租户的数据。 当租户共享数据库时，每个租户的成本会降低。 不过，该应用程序也可为高级租户提供使用单租户分片专用付费版的选择。 单租户隔离的一大优势是更好的性能保证。 在单租户数据库中，没有其他租户来竞争资源。
 
-这样做的目的是使用弹性数据库客户端库[数据依赖路由](sql-database-elastic-scale-data-dependent-routing.md) API，将每个指定的租户自动连接到正确的分片数据库。 只有一个分片包含适用于该指定租户的特定 TenantId 值。 TenantId 是分片键  。 建立连接后，就会执行数据库中的 RLS 安全策略，确保指定租户只能访问那些包含其 TenantId 的数据行。
+这样做的目的是使用弹性数据库客户端库[数据依赖路由](sql-database-elastic-scale-data-dependent-routing.md) API，将每个指定的租户自动连接到正确的分片数据库。 只有一个分片包含适用于该指定租户的特定 TenantId 值。 TenantId 是分片键。 建立连接后，就会执行数据库中的 RLS 安全策略，确保指定租户只能访问那些包含其 TenantId 的数据行。
 
 > [!NOTE]
 > 租户标识符可能由多个列组成。 在本讨论中，为方便起见，我们采用单列 TenantId（非正式）。
@@ -37,7 +36,7 @@ ms.locfileid: "66234123"
 
 ## <a name="download-the-sample-project"></a>下载示例项目
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 - 使用 Visual Studio（2012 或更高版本）
 - 创建三个 Azure SQL 数据库
@@ -302,12 +301,12 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ```
 
 > [!NOTE]
-> 如果对实体框架项目使用默认约束，则建议不要在 EF 数据模型中包括 TenantId 列。  之所以提供此建议，是因为实体框架查询会自动提供默认值，而这些值会重写在 T-SQL 中创建的使用 SESSION\_CONTEXT 的默认约束。
+> 如果对实体框架项目使用默认约束，则建议不要在 EF 数据模型中包括 TenantId 列。 之所以提供此建议，是因为实体框架查询会自动提供默认值，而这些值会重写在 T-SQL 中创建的使用 SESSION\_CONTEXT 的默认约束。
 > 举例来说，要在示例项目中使用默认约束，应该从 DataClasses.cs 中删除 TenantId（并在 Package Manager Console 中运行 Add-Migration），然后使用 T-SQL 来确保该字段仅存在于数据库表中。 这样，在插入数据时，EF 会自动提供不正确的默认值。
 
-### <a name="optional-enable-a-superuser-to-access-all-rows"></a>（可选）启用“超级用户”来访问所有行 
+### <a name="optional-enable-a-superuser-to-access-all-rows"></a>（可选）启用“超级用户”来访问所有行
 
-某些应用程序可能需要创建一个可访问所有行的超级用户。  超级用户可以启用跨所有分片上的所有租户进行报告的功能。 超级用户还可以在分片上执行拆分-合并操作，此类操作涉及在数据库之间移动租户行。
+某些应用程序可能需要创建一个可访问所有行的超级用户。 超级用户可以启用跨所有分片上的所有租户进行报告的功能。 超级用户还可以在分片上执行拆分-合并操作，此类操作涉及在数据库之间移动租户行。
 
 若要启用超级用户，请在每个分片数据库中创建新的 SQL 用户（在本例中为 `superuser`）。 然后，使用允许此用户访问所有行的新谓词函数更改安全策略。 接下来会提供此类函数。
 
@@ -344,7 +343,7 @@ GO
 - **添加新分片**：对所有新分片执行 T-SQL 脚本以启用 RLS，否则不会筛选针对这些分片的查询。
 - **添加新表**：每次创建新表时，将 FILTER 和 BLOCK 谓词添加到所有分片上的安全策略。 否则不会筛选对新表的查询。 根据 [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx)（自动向新建的表应用行级安全性）（博客）中所述，此添加操作可以使用 DDL 触发器来自动完成。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 可将弹性数据库工具和行级安全性一起使用，以扩大支持多租户和单租户分片的应用程序的数据层。 可以使用多租户分片来提高数据存储效率。 如果大量的租户只有几行数据，则此效率提升很显著。 单租户分片可以支持其性能和隔离要求更严格的高级租户。 有关详细信息，请参阅[行级安全性参考][rls]。
 

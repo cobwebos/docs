@@ -16,10 +16,10 @@ ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: c8b25858556538835d6a84bf0d6699f9906f1438
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68322660"
 ---
 ### <a name="general-requirements"></a>一般要求
@@ -38,7 +38,7 @@ ms.locfileid: "68322660"
 
 **支持的 VNet** - 仅限基于 Azure 资源管理器的 VNet
 
-**子网 ID** - 通过 Batch API 指定子网时，请使用子网的资源标识符。  标识符的形式为：
+**子网 ID** - 通过 Batch API 指定子网时，请使用子网的资源标识符。 标识符的形式为：
 
   ```
   /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}
@@ -58,7 +58,7 @@ ms.locfileid: "68322660"
 * 任何端口上通往 Internet 的出站流量。
 
 > [!IMPORTANT]
-> 在 Batch 配置的 NSG 中修改或添加入站或出站规则时，请务必小心。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”  。
+> 在 Batch 配置的 NSG 中修改或添加入站或出站规则时，请务必小心。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”。
 
 不需在子网级别指定 NSG，因为 Batch 会配置其自己的 NSG。 但是，如果指定的子网具有关联的网络安全组 (NSG) 和/或防火墙，则配置入站和出站安全规则，如以下各表中所示。 仅当你需要允许从外部源对池 Vm 进行远程访问时, 才在端口 3389 (Windows) 或 22 (Linux) 上配置入站流量。 不配置它也可使用池 VM。 请注意, 如果使用特定类型的多实例任务 (如 MPI), 则需要在适用于 Linux 的端口22上启用虚拟网络子网流量。
 
@@ -79,7 +79,7 @@ ms.locfileid: "68322660"
 
 **支持的 VNet** - 仅限经典 VNet
 
-**子网 ID** - 通过 Batch API 指定子网时，请使用子网的资源标识符。  标识符的形式为：
+**子网 ID** - 通过 Batch API 指定子网时，请使用子网的资源标识符。 标识符的形式为：
 
   ```
   /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}
@@ -91,7 +91,7 @@ ms.locfileid: "68322660"
 
 子网必须允许来自 Batch 服务的入站通信，才能在计算节点上计划任务，必须允许出站通信，才能与 Azure 存储或其他资源通信。
 
-不需指定 NSG，因为 Batch 将入站通信配置为只能从 Batch IP 地址到池节点。 但是，如果指定的子网具有关联的 NSG 和/或防火墙，则配置入站和出站安全规则，如以下各表中所示。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”  。
+不需指定 NSG，因为 Batch 将入站通信配置为只能从 Batch IP 地址到池节点。 但是，如果指定的子网具有关联的 NSG 和/或防火墙，则配置入站和出站安全规则，如以下各表中所示。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”。
 
 如果需要允许 RDP 访问池节点, 请在端口 3389 for Windows 上配置入站流量。 不配置它也可使用池节点。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa2254ff3223be4312f4e9b3db4d9d83da443c0
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 182b9da402e633033411f85eb59b31f76749f3cd
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311331"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666253"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>规划基于云的 Azure 多重身份验证部署
 
@@ -57,7 +57,7 @@ Azure 多重身份验证是通过使用条件访问实施策略来部署的。 [
 * 网络位置或地理位置的 IP 地址
 * 客户端应用程序
 * 登录风险 (需要标识保护)
-* 合规的设备
+* 兼容设备
 * 混合 Azure AD 加入设备
 * 批准的客户端应用程序
 
@@ -69,9 +69,9 @@ Azure 多重身份验证是通过使用条件访问实施策略来部署的。 [
 
 [Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md)同时为 Azure 多因素身份验证故事提供注册策略和自动风险检测和修正策略。 当存在被泄露的身份威胁时, 可以创建策略来强制更改密码, 或者在通过以下[事件](../reports-monitoring/concept-risk-events.md)认为登录有风险时要求进行 MFA:
 
-* 已泄漏凭据
+* 泄漏的凭据
 * 从匿名 IP 地址登录
-* 不可能前往异常位置
+* 不可能前往这些异常位置
 * 从不熟悉的位置登录
 * 从受感染的设备登录
 * 从具有可疑活动的 IP 地址登录
@@ -95,45 +95,45 @@ Azure 多重身份验证是通过使用条件访问实施策略来部署的。 [
       2. 指定 IP 范围
    2. 如果使用国家/地区
       1. 展开下拉菜单, 然后选择要为此命名位置定义的国家或地区。
-      2. 决定是否包含未知区域。 未知区域是无法映射到国家/地区的 IP 地址。
-7. 单击“创建” 
+      2. 决定是否包含未知区域。 未知区域是指无法映射到某国家/地区的 IP 地址。
+7. 单击“创建”
 
 ## <a name="plan-authentication-methods"></a>规划身份验证方法
 
 管理员可以选择他们想要供用户使用的[身份验证方法](../authentication/concept-authentication-methods.md)。 必须允许使用多种身份验证方法, 以便用户在其主要方法不可用的情况下具有可用的备份方法。 管理员可以通过以下方法启用:
 
-### <a name="notification-through-mobile-app"></a>通过移动应用发送通知
+### <a name="notification-through-mobile-app"></a>通过移动应用发送的通知
 
 向移动设备上的 Microsoft Authenticator 应用发送推送通知。 用户查看通知并选择 "**批准**" 以完成验证。 通过移动应用推送通知可为用户提供最具侵入性的选项。 它们也是最可靠和最安全的选项, 因为它们使用数据连接而不是电话服务。
 
 > [!NOTE]
 > 如果你的组织有员工在中国工作或出差, 则通过**Android 设备**上的**移动应用方法发出的通知**在该国家/地区不起作用。 应为这些用户提供备用方法。
 
-### <a name="verification-code-from-mobile-app"></a>通过移动应用发送验证码
+### <a name="verification-code-from-mobile-app"></a>通过移动应用发送的验证码
 
 移动应用 (如 Microsoft Authenticator 应用) 每隔30秒生成一次新的 OATH 验证码。 用户将此验证码输入到登录界面中。 无论手机是否有数据或手机信号, 都可以使用 "移动应用" 选项。
 
-### <a name="call-to-phone"></a>拨打电话
+### <a name="call-to-phone"></a>调用电话
 
 自动向用户发出语音呼叫。 用户应答呼叫, 并按 **#** 电话键盘以批准其身份验证。 电话呼叫是适用于移动应用中的通知或验证码的一种很好的备份方法。
 
-### <a name="text-message-to-phone"></a>向手机发送短信
+### <a name="text-message-to-phone"></a>向电话发送的文本信息
 
 将向用户发送包含验证码的短信, 系统将提示用户在登录界面中输入验证码。
 
 ### <a name="choose-verification-options"></a>选择验证选项
 
-1. 浏览至“Azure Active Directory”  、“用户”  、“多重身份验证”  。
+1. 浏览至“Azure Active Directory”、“用户”、“多重身份验证”。
 
    ![从 Azure 门户中的“Azure AD 用户”边栏选项卡访问“多重身份验证”门户](media/howto-mfa-getstarted/users-mfa.png)
 
-1. 在打开的新选项卡中，浏览至“服务设置”  。
-1. 在“验证选项”下，选中可供用户使用的方法旁的所有框  。
+1. 在打开的新选项卡中，浏览至“服务设置”。
+1. 在“验证选项”下，选中可供用户使用的方法旁的所有框。
 
    ![在多重身份验证服务设置选项卡中配置验证方法](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
-1. 单击“保存”  。
-1. 关闭“服务设置”选项卡  。
+1. 单击“保存”。
+1. 关闭“服务设置”选项卡。
 
 ## <a name="plan-registration-policy"></a>计划注册策略
 
@@ -243,25 +243,25 @@ function Set-MfaState {
 ### <a name="create-conditional-access-policy"></a>创建条件性访问策略
 
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到“Azure Active Directory”、“条件访问”。  
-1. 选择“新策略”  。
+1. 浏览到“Azure Active Directory”、“条件访问”。
+1. 选择“新策略”。
 1. 为策略提供一个有意义的名称。
-1. 在“用户和组”下  ：
-   * 在“包括”选项卡上，选中“所有用户”单选按钮  
+1. 在“用户和组”下：
+   * 在“包括”选项卡上，选中“所有用户”单选按钮
    * 在 "**排除**" 选项卡上, 选中 "**用户和组**" 旁边的框, 然后选择紧急访问帐户。
-   * 单击“完成”  。
-1. 在“云应用”下，选中“所有云应用”单选按钮   。
-   * 可选：在“排除”选项卡上，选择组织不需要对其执行 MFA 的云应用。 
-   * 单击“完成”  。
-1. 在“条件”部分下  ：
+   * 单击“完成”。
+1. 在“云应用”下，选中“所有云应用”单选按钮。
+   * 可选：在“排除”选项卡上，选择组织不需要对其执行 MFA 的云应用。
+   * 单击“完成”。
+1. 在“条件”部分下：
    * 可选：如果已启用 Azure 标识保护，则可以选择在实施该策略的过程中评估登录风险。
    * 可选：如果已配置受信任的位置或命名的位置，则可以指定在策略中包括或排除这些位置。
-1. 在“授予”下，确保选中“授权访问”单选按钮   。
-    * 选中“要求多重身份验证”复选框  。
-    * 单击“选择”  。
-1. 跳过“会话”  部分。
-1. 将“启用策略”  开关设置为“开”  。
-1. 单击“创建”。 
+1. 在“授予”下，确保选中“授权访问”单选按钮。
+    * 选中“要求多重身份验证”复选框。
+    * 单击“选择”。
+1. 跳过“会话”部分。
+1. 将“启用策略”开关设置为“开”。
+1. 单击“创建”。
 
 ![创建条件性访问策略, 以便在试点组中为 Azure 门户用户启用 MFA](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
@@ -361,13 +361,16 @@ Windows 安全日志和 AD FS 管理员日志中的标准 AD FS 2016 和2019日�
 1. 发送用户通信并使用户进行注册[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [跟踪注册者](#identify-non-registered-users)
 
+> [!TIP]
+> 政府云用户可以注册[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
+
 ## <a name="manage-your-solution"></a>管理解决方案
 
 Azure MFA 的报告
 
 Azure 多重身份验证通过 Azure 门户提供报告:
 
-| 报表 | Location | 描述 |
+| 报告 | Location | 描述 |
 | --- | --- | --- |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
 

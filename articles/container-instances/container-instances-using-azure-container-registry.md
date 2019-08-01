@@ -10,17 +10,17 @@ ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 502f178b66e7ba233552d7db4e095363c8bb8628
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325562"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
 [Azure 容器注册表](../container-registry/container-registry-intro.md)是基于 Azure 的托管容器注册表服务，用于存储专用的 Docker 容器映像。 本文介绍如何将存储在 Azure 容器注册表中的容器映像部署到 Azure 容器实例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 **Azure 容器注册表**：需要一个 Azure 容器注册表（注册表中的至少一个容器映像）才能完成本文中的步骤。 如果需要注册表，请参阅[使用 Azure CLI 创建容器注册表](../container-registry/container-registry-get-started-azure-cli.md)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "68325562"
 
 在以下部分中，将创建一个 Azure 密钥保管库和一个服务主体，并将服务主体的凭据存储在保管库中。 
 
-### <a name="create-key-vault"></a>创建 Key Vault
+### <a name="create-key-vault"></a>创建密钥保管库
 
 如果 [Azure Key Vault](../key-vault/key-vault-overview.md) 中没有保管库，请在 Azure CLI 中使用以下命令创建一个保管库。
 
@@ -50,7 +50,7 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 现在需要创建服务主体，并将其凭据存储在 Key Vault 中。
 
-以下命令使用[az ad sp create for rbac][az-ad-sp-create-for-rbac] to create the service principal, and [az keyvault secret set][az-keyvault-secret-set]将服务主体的**密码**存储在保管库中。
+以下命令使用[az ad sp create for-rbac][az-ad-sp-create-for-rbac]来创建服务主体, 并使用[az keyvault secret 将][az-keyvault-secret-set]服务主体的**密码**存储在保管库中。
 
 ```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
@@ -65,7 +65,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-上述命令中的 `--role` 参数使用“acrpull”  角色配置服务主体，该角色授予其对注册表的只拉取访问权限。 若要同时授予推送和拉取访问权限，请将 `--role` 参数更改为“acrpush”  。
+上述命令中的 `--role` 参数使用“acrpull”角色配置服务主体，该角色授予其对注册表的只拉取访问权限。 若要同时授予推送和拉取访问权限，请将 `--role` 参数更改为“acrpush”。
 
 接下来，将服务主体的 *appId*（传递给 Azure 容器注册表用于身份验证的**用户名**）存储在保管库中。
 
@@ -94,7 +94,7 @@ az keyvault secret set \
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $RES_GROUP --query "loginServer" --output tsv)
 ```
 
-执行以下[az container create][az-container-create]命令以部署容器实例。 该命令使用 Azure Key Vault 中存储的服务主体凭据对容器注册表进行身份验证，并假设事先已将 [aci-helloworld](container-instances-quickstart.md) 映像推送到注册表。 如果想要使用注册表中的不同映像，请更新 `--image` 值。
+执行以下 [az container create][az-container-create] 命令来部署容器实例。 该命令使用 Azure Key Vault 中存储的服务主体凭据对容器注册表进行身份验证，并假设事先已将 [aci-helloworld](container-instances-quickstart.md) 映像推送到注册表。 如果想要使用注册表中的不同映像，请更新 `--image` 值。
 
 ```azurecli
 az container create \
@@ -139,9 +139,9 @@ $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_L
 
 1. 在 Azure 门户中，导航到容器注册表。
 
-1. 若要确保启用管理员帐户，请选择“访问密钥”，然后在“管理员用户”下选择“启用”    。
+1. 若要确保启用管理员帐户，请选择“访问密钥”，然后在“管理员用户”下选择“启用”。
 
-1. 选择“存储库”，然后选择想要从中进行部署的存储库，右键单击想要部署的容器映像的标记，然后选择“运行实例”   。
+1. 选择“存储库”，然后选择想要从中进行部署的存储库，右键单击想要部署的容器映像的标记，然后选择“运行实例”。
 
     ![Azure 门户中 Azure 容器注册表中的“运行实例”][acr-runinstance-contextmenu]
 

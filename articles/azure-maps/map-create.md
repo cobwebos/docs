@@ -3,18 +3,18 @@ title: 使用 Azure Maps 创建地图 | Microsoft Docs
 description: 如何创建 JavaScript 地图
 author: jingjing-z
 ms.author: jinzh
-ms.date: 10/30/2018
+ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 222fc5e9083c03ff0d4e31927363c5f517cf32a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a4f67290e93d8b296added9023fe9b6947ba02c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62108593"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638682"
 ---
 # <a name="create-a-map"></a>创建地图
 
@@ -53,7 +53,7 @@ ms.locfileid: "62108593"
 
 ## <a name="try-out-the-code"></a>试用代码
 
-查看上面的示例代码。 可以在左侧的“JS”选项卡上编辑 JavaScript 代码，在右侧的“结果”选项卡上查看地图视图变化   。 还可以单击“编辑 CodePen”按钮，编辑 CodePen 中的代码  。
+查看上面的示例代码。 可以在左侧的“JS”选项卡上编辑 JavaScript 代码，在右侧的“结果”选项卡上查看地图视图变化。 还可以单击“编辑 CodePen”按钮，编辑 CodePen 中的代码。
 
 <a id="relatedReference"></a>
 

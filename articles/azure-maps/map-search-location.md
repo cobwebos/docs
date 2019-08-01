@@ -3,18 +3,18 @@ title: 使用 Azure Maps 显示搜索结果 | Microsoft Docs
 description: 如何使用 Azure Maps 执行搜索请求并在 Javascript 地图上显示结果
 author: jingjing-z
 ms.author: jinzh
-ms.date: 3/7/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 61eb42def53d44b947eba60e861fd12a37b52455
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 22b677ef4b21d3869e39d600910c271c935934ca
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476814"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638656"
 ---
 # <a name="show-search-results-on-the-map"></a>在地图上显示搜索结果
 
@@ -27,9 +27,9 @@ ms.locfileid: "68476814"
 <iframe height='500' scrolling='no' title='在地图上显示搜索结果（服务模块）' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/zLdYEB/'>在地图上显示搜索结果（服务模块）</a>。
 </iframe>
 
-在上面的代码中, 第一个代码块构造一个 map 对象, 并设置用于利用订阅密钥的身份验证机制。 有关说明，可以参阅[创建地图](./map-create.md)。
+在上面的代码中, 第一个代码块构造一个 map 对象, 并设置用于利用访问令牌的身份验证机制。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-第二个代码块创建`SubscriptionKeyCredentialPolicy`用于对 HTTP 请求进行身份验证, 以便与订阅密钥 Azure Maps。 然后, `atlas.service.MapsURL.newPipeline()`将接管`SubscriptionKeyCredential`策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)实例。 `searchURL` 表示 Azure Maps [搜索](https://docs.microsoft.com/rest/api/maps/search)操作的 URL。
+第二个代码块创建`TokenCredential` , 使用访问令牌对要 Azure Maps 的 HTTP 请求进行身份验证。 然后, 它将`TokenCredential`传递`atlas.service.MapsURL.newPipeline()`给并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)实例。 `searchURL` 表示 Azure Maps [搜索](https://docs.microsoft.com/rest/api/maps/search)操作的 URL。
 
 第三个代码块使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建一个数据源对象并向其添加搜索结果。 某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。  随后创建一个符号层并向其中添加数据源，然后将该符号层添加到地图。
 
@@ -45,7 +45,7 @@ ms.locfileid: "68476814"
 <iframe height='500' scrolling='no' title='在地图上显示搜索结果' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Show search results on a map</a>（在地图上显示搜索结果）。
 </iframe>
 
-在上面的代码中, 第一个代码块构造一个 map 对象, 并设置用于利用订阅密钥的身份验证机制。 有关说明，可以参阅[创建地图](./map-create.md)。
+在上面的代码中, 第一个代码块构造一个 map 对象, 并设置用于利用访问令牌的身份验证机制。 有关说明，可以参阅[创建地图](./map-create.md)。
 
 第二个代码块创建要向其发出搜索请求的 URL。 它还会创建两个数组, 用于存储搜索结果的边界和 pin。
 

@@ -9,14 +9,13 @@ ms.topic: conceptual
 author: monhaber
 ms.author: v-mohabe
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/31/2019
-ms.openlocfilehash: ce02fee31041222c48d62ef8410b97fedf74dfdb
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: b8fc82ca8f4b42adf595680541042ef38efe1470
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297676"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569549"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL 数据库的高级数据安全
 
@@ -40,7 +39,7 @@ ADS 定价遵循 Azure 安全中心“标准”层级定价，其中每个受保
 
 ## <a name="1-enable-ads"></a>1.启用 ADS
 
-若要启用 ADS，请导航到“安全”  下的“高级数据安全”  来访问 SQL 数据库服务器或托管实例。 若要为数据库服务器或托管实例上的所有数据库启用 ADS，请单击“在服务器上启用高级数据安全”  。
+若要启用 ADS，请导航到“安全”下的“高级数据安全”来访问 SQL 数据库服务器或托管实例。 若要为数据库服务器或托管实例上的所有数据库启用 ADS，请单击“在服务器上启用高级数据安全”。
 
 > [!NOTE]
 > 系统会自动创建一个存储帐户用于存储**漏洞评估**的扫描结果。 如果为同一个资源组和区域中的另一台服务器启用了 ADS，则使用现有的存储帐户。
@@ -52,23 +51,23 @@ ADS 定价遵循 Azure 安全中心“标准”层级定价，其中每个受保
 
 ## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2.开始对数据分类、跟踪漏洞和调查威胁警报
 
-单击“数据发现和分类”卡，查看建议进行分类的敏感列，并使用永久性敏感标签对数据分类  。 单击“漏洞评估”卡，查看和管理漏洞扫描和报告，并跟踪安全状况  。 如果收到安全警报, 请单击 "**高级威胁防护**卡" 查看警报的详细信息, 并通过 "Azure 安全中心安全警报" 页查看有关 Azure 订阅中的所有警报的合并报表。
+单击“数据发现和分类”卡，查看建议进行分类的敏感列，并使用永久性敏感标签对数据分类。 单击“漏洞评估”卡，查看和管理漏洞扫描和报告，并跟踪安全状况。 如果收到安全警报, 请单击 "**高级威胁防护**卡" 查看警报的详细信息, 并通过 "Azure 安全中心安全警报" 页查看有关 Azure 订阅中的所有警报的合并报表。
 
 ## <a name="3-manage-ads-settings-on-your-sql-database-server-or-managed-instance"></a>3.管理 SQL 数据库服务器或托管实例上的 ADS 设置
 
-要查看和管理 ADS 设置，请导航到“安全”下的“高级数据安全”来访问 SQL 数据库服务器或托管实例   。 在此页上, 可以启用或禁用广告, 并修改整个 SQL 数据库服务器或托管实例的漏洞评估和高级威胁防护设置。
+要查看和管理 ADS 设置，请导航到“安全”下的“高级数据安全”来访问 SQL 数据库服务器或托管实例。 在此页上, 可以启用或禁用广告, 并修改整个 SQL 数据库服务器或托管实例的漏洞评估和高级威胁防护设置。
 
 ![服务器设置](./media/sql-advanced-protection/server_settings.png) 
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4.管理 SQL 数据库的 ADS 设置
 
-要重写特定数据库的 ADS 设置，请勾选“在数据库级别启用高级数据安全”复选框  。 仅在以下情况下使用此选项, 即你有特定要求接收单独数据库的单独的高级威胁防护警报或漏洞评估结果, 以及在数据库服务器或托管实例。
+要重写特定数据库的 ADS 设置，请勾选“在数据库级别启用高级数据安全”复选框。 仅在以下情况下使用此选项, 即你有特定要求接收单独数据库的单独的高级威胁防护警报或漏洞评估结果, 以及在数据库服务器或托管实例。
 
 选中该复选框后，可以配置此数据库的相关设置。
  
 ![数据库和高级威胁防护设置](./media/sql-advanced-protection/database_threat_detection_settings.png) 
 
-还可以从 ADS 数据库窗格访问数据库服务器或托管实例的高级数据安全设置。 单击主 ADS 窗格中的“设置”  ，然后单击“查看高级数据安全服务器设置”  。 
+还可以从 ADS 数据库窗格访问数据库服务器或托管实例的高级数据安全设置。 单击主 ADS 窗格中的“设置”，然后单击“查看高级数据安全服务器设置”。 
 
 ![数据库设置](./media/sql-advanced-protection/database_settings.png) 
 

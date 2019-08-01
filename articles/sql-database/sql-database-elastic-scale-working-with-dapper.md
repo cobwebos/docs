@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: c6ca7637c8e251fa29781503ffc18227c51bb4da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1eafb123014effad9daca89dc1b852367d9cbbf1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335279"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568266"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>将弹性数据库客户端库与 Dapper 配合使用
 本文档面向依赖于使用 Dapper 生成应用程序，但同时想要运用[弹性数据库工具](sql-database-elastic-scale-introduction.md)创建应用程序来实现分片，以横向扩展其数据层的开发人员。  本文档演示了与弹性数据库工具集成所需的基于 Dapper 的应用程序发生的更改。 我们将重点介绍如何使用 Dapper 构建弹性数据库分片管理和数据依赖型路由。 
@@ -38,7 +37,7 @@ Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制�
 若要获取 Dapper 程序集，请参阅 [Dapper .NET](https://www.nuget.org/packages/Dapper/)。 有关 Dapper 扩展，请参阅 [DapperExtensions](https://www.nuget.org/packages/DapperExtensions)。
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>弹性数据库客户端库速览
-使用弹性数据库客户端库，可以定义应用程序数据的分区（称为 shardlet），将它们映射到数据库，并根据分片键来识别这些分区   。 可以根据需要创建任意数目的数据库，并在这些数据库之间分布 shardlet。 分片键值到数据库的映射由库的 API 提供的分片映射存储。 此功能称为**分片映射**管理。 分片映射还为带有分片键的请求充当数据库连接的代理。 此功能称为数据依赖型路由  。
+使用弹性数据库客户端库，可以定义应用程序数据的分区（称为 shardlet），将它们映射到数据库，并根据分片键来识别这些分区。 可以根据需要创建任意数目的数据库，并在这些数据库之间分布 shardlet。 分片键值到数据库的映射由库的 API 提供的分片映射存储。 此功能称为**分片映射**管理。 分片映射还为带有分片键的请求充当数据库连接的代理。 此功能称为数据依赖型路由。
 
 ![分片映射和数据依赖型路由][1]
 

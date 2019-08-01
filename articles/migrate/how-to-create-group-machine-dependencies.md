@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 7cde18f2da764a055443900e7daf160f72e2eeb5
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 4130bb746a4faa4907353654d16f7c20c0cc7817
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68301660"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598946"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>为评估设置依赖项可视化
 
-本文介绍如何在 Azure Migrate 中设置依赖项映射:服务器评估。
+本文介绍如何在 Azure Migrate 中设置依赖项映射:两种类型的评估。
 
 依赖关系映射有助于可视化要评估和迁移的计算机之间的依赖关系。
 
@@ -30,8 +30,8 @@ ms.locfileid: "68301660"
 ## <a name="before-you-start"></a>开始之前
 
 - 请确保已[创建](how-to-add-tool-first-time.md)Azure Migrate 项目。
-- 如果已创建项目, 请确保已[添加](how-to-assess.md)Azure Migrate:服务器评估工具。
-- 请确保已在 Azure Migrate 中发现了计算机;为此, 可以设置适用于[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 设备。 设备将发现本地计算机, 并将元数据和性能数据发送到 Azure Migrate:服务器评估。 [了解详细信息](migrate-appliance.md)。
+- 如果已创建项目, 请确保已[添加](how-to-assess.md)Azure Migrate:服务器评估”工具评估本地 VMware VM。
+- 请确保已在 Azure Migrate 中发现了计算机;为此, 可以设置适用于[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 设备。 设备将发现本地计算机, 并将元数据和性能数据发送到 Azure Migrate:两种类型的评估。 [了解详细信息](migrate-appliance.md)。
 
 
 **功能** | **注意**
@@ -39,7 +39,7 @@ ms.locfileid: "68301660"
 可用性 | 依赖关系可视化在 Azure 政府版中不可用。
 服务映射 | 依赖项可视化在 Azure Monitor 日志中使用服务映射解决方案。 [服务映射](../azure-monitor/insights/service-map-configure.md)会自动发现并显示服务器之间的连接。
 代理 | 若要使用依赖关系可视化, 请在要映射的计算机上安装几个代理:<br/> - [Azure Log Analytics](../azure-monitor/platform/log-analytics-agent.md)代理 (以前称为 MICROSOFT MONITORING AGENT (MMA)。<br/> -服务映射依赖关系代理。<br/><br/> 若要自动完成代理安装, 你可以使用部署工具 (如 System Center Configuration Manager) 或合作伙伴工具 (如[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)), 其中包含用于 Azure Migrate 的代理部署解决方案。
-依赖关系代理 | 查看[Windows](/azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems)和[Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)的依赖关系代理支持。<br/><br/> [了解](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)有关使用脚本安装依赖关系代理的详细信息。
+Dependency Agent | 查看[Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems)和[Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)的依赖关系代理支持。<br/><br/> [了解](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)有关使用脚本安装依赖关系代理的详细信息。
 Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)有关 MMA 安装方法的详细信息。<br/><br/> 对于 System Center Operations Manager 2012 R2 或更高版本监视的计算机, 无需安装 MMA 代理。 服务映射与 Operations Manager 集成。 你可以使用[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)的指南启用该集成。 但请注意，需要在这些计算机上安装依赖项代理。<br/><br/> [查看](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)Log Analytics 代理支持的 Linux 操作系统。
 评估组 | 要可视化其依赖项的组所包含的计算机不应超过 10 台。 如果计算机超过10台, 请将它们拆分成较小的组, 以可视化依赖项。
 
@@ -50,7 +50,7 @@ Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-ag
 - 只能在 Azure Migrate 项目订阅中附加工作区。
 - 可以附加现有的工作区, 或创建一个新的工作区。
 - 首次为计算机设置依赖项可视化效果时, 将附加工作区。
-- 仅在 Azure Migrate 项目中发现计算机后才能附加工作区。 为此, 可以设置适用于[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 设备。 设备将发现本地计算机, 并将元数据和性能数据发送到 Azure Migrate:服务器评估。 [了解详细信息](migrate-appliance.md)。
+- 仅在 Azure Migrate 项目中发现计算机后才能附加工作区。 为此, 可以设置适用于[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 设备。 设备将发现本地计算机, 并将元数据和性能数据发送到 Azure Migrate:两种类型的评估。 [了解详细信息](migrate-appliance.md)。
 
 按如下所示附加工作区:
 
@@ -83,10 +83,10 @@ Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-ag
 若要在 Windows 计算机上安装代理：
 
 1. 双击下载的代理。
-2. 在“欢迎”页面上，单击“下一步”。   在“许可条款”  页面上，单击“我接受”  以接受许可协议。
-3. 在“目标文件夹”  中，保留或修改默认安装文件夹，然后选择“下一步”  。
-4. 在“代理安装选项”  中，选择“Azure Log Analytics”   > “下一步”  。
-5. 单击“添加”  以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”  。
+2. 在“欢迎”页面上，单击“下一步”。 在“许可条款”页面上，单击“我接受”以接受许可协议。
+3. 在“目标文件夹”中，保留或修改默认安装文件夹，然后选择“下一步”。
+4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。
+5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
 #### <a name="install-the-agent-on-a-linux-machine"></a>在 Linux 计算机上安装代理
 
@@ -127,7 +127,7 @@ Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-ag
     - 若要添加计算机, 请再次运行发现, 并验证是否发现了计算机。
 
 8. 如果想要为该组创建评估，请选中相应复选框，为该组创建新的评估。
-8. 单击“确定”  以保存组。
+8. 单击“确定”以保存组。
 
 创建组后, 建议您在该组中的所有计算机上安装代理, 然后将整个组的依赖项可视化。
 
@@ -140,7 +140,7 @@ Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-ag
 
 为依赖关系数据运行查询, 如下所示:
 
-1. 安装代理后，请转到门户并单击“概述”  。
+1. 安装代理后，请转到门户并单击“概述”。
 2. 在**Azure Migrate 中:服务器评估**中, 单击 "**概述**"。 单击向下箭头以展开 " **Essentials**"。
 3. 在**OMS 工作区**中, 单击工作区名称。
 3. 在 "Log Analytics 工作区" 页上 > "**常规**", 单击 "**日志**"。
@@ -150,7 +150,7 @@ Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-ag
 
 我们提供了一系列可用于提取依赖关系数据的示例查询。
 
-- 您可以修改查询以提取首选数据点。
+- 可修改查询以提取首选数据点。
 - [查看](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)依赖关系数据记录的完整列表。
 - [查看](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)其他示例查询。
 
@@ -159,7 +159,7 @@ Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-ag
 查看一组 Vm 的入站连接。
 
 - 表中的连接指标 (VMConnection) 的记录并不表示单独的物理网络连接。
-- 多个物理网络连接分组为一个逻辑连接。
+- 多个物理网络连接分组到一个逻辑连接中。
 - [详细了解](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections)如何在 VMConnection 中聚合物理网络连接数据。
 
 ```

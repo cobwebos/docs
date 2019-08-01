@@ -3,18 +3,18 @@ title: 将图像层添加到 Azure Maps | Microsoft Docs
 description: 如何将图像层添加到 Javascript 地图
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/3/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5396fefca3a60dea7a503f8b4e84cc575753ea30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ea0f37e307196af4b27fd3f8fb1aa0d42443dfa
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769560"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638734"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>将图像层添加到地图
 
