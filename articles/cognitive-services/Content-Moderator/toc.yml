@@ -11,16 +11,16 @@
       href: quick-start.md
     - name: 使用客户端 SDK
       items:
-        - name: 'C#'
+        - name: 使用 .NET SDK
           items:
             - name: 分析图像内容
               href: image-moderation-quickstart-dotnet.md
             - name: 分析文本内容
               href: text-moderation-quickstart-dotnet.md
-        - name: Python
-          items:
-            - name: 分析文本内容
-              href: text-moderation-quickstart-python.md
+        - name: 使用 Python SDK
+          href: python-sdk-quickstart.md
+        - name: 使用 Java SDK
+          href: java-sdk-quickstart.md
 - name: 教程
   items:
     - name: 审查电子商务映像

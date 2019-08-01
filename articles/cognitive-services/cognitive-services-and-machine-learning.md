@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: bae772e9fcc9f275fcf593cfd5bf9d0506a89f7c
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594687"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697928"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -105,11 +105,11 @@ _利用_服务, 你可以提供数据来增强其自身的数据。 服务可能
 |[QnA Maker](./QnAMaker/Overview/overview.md)||X||
 |[发言人识别器](./speaker-recognition/home.md)||X||
 |[语音文本到语音转换 (TTS)](speech-service/text-to-speech.md)|X|X||
-|[语音转换到文本 (STT)](/speech-service/speech-to-text.md)|X|X||
+|[语音转换到文本 (STT)](speech-service/speech-to-text.md)|X|X||
 |[语音翻译](speech-service/speech-translation.md)|X|||
 |[文本分析](./text-analytics/overview.md)|X|||
 |[文本翻译](./translator/translator-info-overview.md)|X|||
-|[文本翻译-自定义转换器]()||X||
+|[文本翻译-自定义转换器](./translator/custom-translator/overview.md)||X||
 
 \* Personalizer 只需要服务收集的定型数据 (它在实时运行时) 来评估策略和数据。 Personalizer 不需要较大的历史数据集来进行前期或批处理培训。 
 
