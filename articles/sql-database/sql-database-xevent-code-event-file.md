@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: ce559e50d5a34ebad9113f0e21dcb732adc40dd2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0994f92444da338b18447eb1b248c74df9aa2d2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233793"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566102"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的事件文件目标代码
 
@@ -35,7 +34,7 @@ ms.locfileid: "65233793"
   * 将 Azure 存储容器分配到事件文件目标。
   * 创建和启动事件会话，等等。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]

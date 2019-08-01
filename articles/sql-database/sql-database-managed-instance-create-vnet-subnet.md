@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: d6e205c23545eb4a01ce58a8bc2b63c58200e32a
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 832f43d1f25393a29df4b836c353611a19e3a417
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228293"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567574"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例创建虚拟网络
 
@@ -44,7 +43,7 @@ Azure SQL 数据库托管实例必须部署在 Azure [虚拟网络](../virtual-n
 
 1. 登录到 Azure 门户。
 
-2. 选择“部署到 Azure”按钮： 
+2. 选择“部署到 Azure”按钮：
 
    <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="https://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
 
@@ -57,7 +56,7 @@ Azure SQL 数据库托管实例必须部署在 Azure [虚拟网络](../virtual-n
 
    ![用于配置 Azure 网络的资源管理器模板](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
 
-   可以更改虚拟网络和子网的名称，并调整与网络资源关联的 IP 范围。 选择“购买”按钮后，此窗体将创建并配置环境。  如果不需要两个子网，可以删除默认子网。
+   可以更改虚拟网络和子网的名称，并调整与网络资源关联的 IP 范围。 选择“购买”按钮后，此窗体将创建并配置环境。 如果不需要两个子网，可以删除默认子网。
 
 ## <a name="next-steps"></a>后续步骤
 

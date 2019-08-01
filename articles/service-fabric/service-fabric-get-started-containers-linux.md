@@ -3,7 +3,7 @@ title: 在 Linux 上创建 Azure Service Fabric 容器应用程序 | Microsoft D
 description: 在 Azure Service Fabric 上创建第一个 Linux 容器应用程序。 生成包含应用程序的 Docker 映像，将该映像推送到容器注册表，然后生成并部署 Service Fabric 容器应用程序。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
-ms.author: aljo
-ms.openlocfilehash: 16f117e7c5291216b5716aee40995e6f224705fa
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: atsenthi
+ms.openlocfilehash: dde124a568581c53a4168b1c84e5df8a9d55155f
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359363"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599567"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "68359363"
 > [!NOTE]
 > 本文适用于 Linux 开发环境。  Service Fabric 群集运行时和 Docker 运行时必须在同一 OS 上运行。  不能在 Windows 群集上运行 Linux 容器。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 * 一台运行以下软件的开发计算机：
   * [Service Fabric SDK 和工具](service-fabric-get-started-linux.md)。
   * [适用于 Linux 的 Docker CE](https://docs.docker.com/engine/installation/#prior-releases)。 
@@ -467,7 +467,7 @@ Service Fabric 运行时为下载和解压缩容器映像分配了 20 分钟的�
 
 ## <a name="set-container-retention-policy"></a>设置容器保留策略
 
-为了帮助诊断容器启动故障，Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器。 此策略可以在 ApplicationManifest.xml 文件中设置，如以下代码片段所示：
+为了帮助诊断容器启动故障，Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器。 此策略可以在ApplicationManifest.xml 文件中设置，如以下代码片段所示：
 
 ```xml
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 

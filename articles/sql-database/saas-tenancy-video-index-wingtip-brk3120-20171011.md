@@ -10,22 +10,21 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: bbe220780a3c21e7bfb15d0568904af4ed47f765
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c1f93bb7cfe1e088aa88d9ff194c8fbce9ea3c6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61486783"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570228"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>关于使用 Azure SQL 数据库的多租户 SaaS 应用的视频，包含索引和批注
 
 本文是有关 SaaS 租户模型或模式的 81 分钟视频的时间位置批注索引。 可以在本文中向后跳转或向前跳转至视频中感兴趣的部分。 视频介绍 Azure SQL 数据库上多租户数据库应用程序的主要设计选项。 该视频包括演示和管理代码演练，有时甚至可以通过实际操作提供比书面文档更加详细的信息。
 
 该视频扩充了以下书面文档中的信息： 
-- *概念：* 多租户 SaaS 数据库租户模式[saas-concept-design-patterns-563e]
-- *教程：* [Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
+- *概念：* [多租户 SaaS 数据库租户模式][saas-concept-design-patterns-563e]
+- *教程：* [Wingtip 票证 SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
 
 视频和文章描述在云中的 Azure SQL 数据库上创建多租户应用程序的多个阶段。 Azure SQL 数据库的特殊功能使多租户应用更易于开发、实施和管理且性能可靠。
 
@@ -37,14 +36,14 @@ ms.locfileid: "61486783"
 
 本节将在 81 分钟的视频中对 38 个讨论的时间位置进行索引。 每个时间索引都带有视频中屏幕截图的批注，有时还有其他信息。
 
-每个时间索引采用的格式均为 h:mm: ss  。 例如，标记为“会话目标”  的第二个索引时间位置大概始于 0:03:11  。
+每个时间索引采用的格式均为 h:mm: ss。 例如，标记为“会话目标”的第二个索引时间位置大概始于 0:03:11。
 
 
 ### <a name="compact-links-to-video-indexed-time-locations"></a>到视频索引时间位置的紧凑型链接
 
 以下标题是到本文后面相应批注部分的链接：
 
-- [1.（开始）  欢迎使用幻灯片，0:00:03](#anchor-image-wtip-min00001)
+- [1.（开始）欢迎使用幻灯片，0:00:03](#anchor-image-wtip-min00001)
 - [2.会话目标，0:03:11](#anchor-image-wtip-min00311)
 - [3.议程，0:04:17](#anchor-image-wtip-min00417)
 - [4.多租户 Web 应用，0:05:05](#anchor-image-wtip-min00505)
@@ -92,9 +91,9 @@ ms.locfileid: "61486783"
 
 
 &nbsp; <a name="anchor-image-wtip-min00001"/>
-#### <a name="1-start-welcome-slide-00001"></a>1.（开始）  欢迎使用幻灯片，0:00:01
+#### <a name="1-start-welcome-slide-00001"></a>1.（开始）欢迎使用幻灯片，0:00:01
 
-借鉴 MYOB：  设计 Azure SQL 数据库上的 SaaS 应用程序模式 - BRK3120
+借鉴 MYOB：设计 Azure SQL 数据库上的 SaaS 应用程序模式 - BRK3120
 
 [![欢迎使用幻灯片][image-wtip-min00003-brk3120-whole-welcome]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=1)
 
@@ -292,16 +291,16 @@ ms.locfileid: "61486783"
 #### <a name="38-resources-for-more-information-12035"></a>38.有关详细信息的资源，1:20:35
 [![有关详细信息的资源][image-wtip-min12042-resources-more-info]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=4835)
 
-- [博客文章，2017 年 5 月 22 日][resource-blog-saas-patterns-app-dev-sql-db-768h]
+- [博客文章, 5 月22日2017][resource-blog-saas-patterns-app-dev-sql-db-768h]
 
-- *概念：* 多租户 SaaS 数据库租户模式[saas-concept-design-patterns-563e]
+- *概念：* [多租户 SaaS 数据库租户模式][saas-concept-design-patterns-563e]
 
-- *教程：* [Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
+- *教程：* [Wingtip 票证 SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
 
 - Wingtip Tickets SaaS 租户应用程序风格的 GitHub 存储库：
-    - [GitHub 存储库 - 用于独立应用程序模型][github-wingtip-standaloneapp]。
-    - [GitHub 存储库 - 用于每个租户一个 DB 模型][github-wingtip-dbpertenant]。
-    - [GitHub 存储库 - 用于多租户 DB 模型][github-wingtip-multitenantdb]。
+    - [适用于-独立应用程序模型的 GitHub][github-wingtip-standaloneapp]存储库。
+    - [每个租户的 GitHub][github-wingtip-dbpertenant]存储库模型。
+    - [用于-多租户数据库模型的 GitHub][github-wingtip-multitenantdb]存储库。
 
 
 

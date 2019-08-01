@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: ad927de0274d415ac268d3a29abf2c135ee22d52
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: fc7cb7f82fce4f7da02f39b0b423841ac270dcbd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480213"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564813"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -103,7 +103,7 @@ blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创�
 
 以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Python 代码](functions-reference-python.md)。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -150,7 +150,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 
 以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [JavaScript 代码](functions-reference-node.md)。 在 `samples-workitems` 容器中添加或更新 Blob 时，该函数会写入日志。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -184,7 +184,7 @@ module.exports = function(context) {
 
 以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Python 代码](functions-reference-python.md)。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -219,9 +219,9 @@ def main(myblob: func.InputStream):
 
 ### <a name="trigger---java-example"></a>触发器 - Java 示例
 
-以下示例显示了 function.json 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Java 代码](functions-reference-java.md)  。 在 `myblob` 容器中添加或更新 Blob 时，该函数会写入日志。
+以下示例显示了 function.json 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Java 代码](functions-reference-java.md)。 在 `myblob` 容器中添加或更新 Blob 时，该函数会写入日志。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -261,7 +261,7 @@ public void run(
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  该特性的构造函数采用一个表示要监视的容器的路径字符串，并选择性地采用某种 [Blob 名称模式](#trigger---blob-name-patterns)。 下面是一个示例：
+  该特性的构造函数采用一个表示要监视的容器的路径字符串，并选择性地采用某种 [Blob 名称模式](#trigger---blob-name-patterns)。 以下是一个示例：
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -313,13 +313,13 @@ public void run(
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
-下表解释了在 function.json  文件和 `BlobTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `BlobTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#trigger---usage)部分中已阐述异常。 |
-|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
+|**名称** | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
 |**路径** | **BlobPath** |要监视的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可以是某种 [Blob 名称模式](#trigger---blob-name-patterns)。 |
 |**连接** | **Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 
@@ -339,7 +339,7 @@ public void run(
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`  。
+<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
 
 如果尝试绑定到某个存储 SDK 类型并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
@@ -392,7 +392,7 @@ public void run(
 
 Blob 触发器提供了几个元数据属性。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些值的语义与 [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) 类型相同。
 
-|属性  |Type  |描述  |
+|属性  |type  |描述  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|触发 Blob 的路径。|
 |`Uri`|`System.Uri`|主位置的 blob 的 URI。|
@@ -417,25 +417,25 @@ module.exports = function (context, myBlob) {
 
 ## <a name="trigger---blob-receipts"></a>触发器 - Blob 回执
 
-Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次调用 blob 触发器函数。 为了确定是否已处理给定的 blob 版本，它会维护 blob 回执  。
+Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次调用 blob 触发器函数。 为了确定是否已处理给定的 blob 版本，它会维护 blob 回执。
 
-Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts  的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
+Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts 的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
 
-* 触发的函数（"&lt;function app name>.Functions.&lt;function name>   "，例如："MyFunctionApp.Functions.CopyBlob"）
+* 触发的函数（"&lt;function app name>.Functions.&lt;function name>"，例如："MyFunctionApp.Functions.CopyBlob"）
 * 容器名称
 * Blob 类型（"BlockBlob" 或 "PageBlob"）
 * Blob 名称
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
 
-若要强制重新处理某个 blob，可从 azure-webjobs-hosts  容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。
+若要强制重新处理某个 blob，可从 azure-webjobs-hosts 容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。
 
 ## <a name="trigger---poison-blobs"></a>触发器 - 有害 Blob
 
 当给定 blob 的 blob 触发函数失败时，Azure Functions 将默认重试该函数共计 5 次。
 
-如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison  的存储队列。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
+如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison 的存储队列。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
-* FunctionId（格式为 &lt;function app name>.Functions.&lt;function name>   ）
+* FunctionId（格式为 &lt;function app name>.Functions.&lt;function name>）
 * BlobType（"BlockBlob" 或 "PageBlob"）
 * ContainerName
 * BlobName
@@ -492,7 +492,7 @@ public static void Run(
 
 <!--Same example for input and output. -->
 
-以下示例演示 function.json  文件中的 blob 输入和输出绑定，以及使用这些绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 此函数创建文本 blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
+以下示例演示 function.json 文件中的 blob 输入和输出绑定，以及使用这些绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 此函数创建文本 blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
 
 在 *function.json* 文件中，`queueTrigger` 元数据属性用于指定 `path` 属性中的 Blob 名称：
 
@@ -541,7 +541,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 <!--Same example for input and output. -->
 
-下面的示例展示了 function.json  文件中的 blob 输入和输出绑定，以及使用这些绑定的 [JavaScript 代码](functions-reference-node.md)。 该函数创建 Blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
+下面的示例展示了 function.json 文件中的 blob 输入和输出绑定，以及使用这些绑定的 [JavaScript 代码](functions-reference-node.md)。 该函数创建 Blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
 
 在 *function.json* 文件中，`queueTrigger` 元数据属性用于指定 `path` 属性中的 Blob 名称：
 
@@ -735,7 +735,7 @@ public static void Run(
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为 `blob`。 |
 |**direction** | 不适用 | 必须设置为 `in`。 [用法](#input---usage)部分中已阐述异常。 |
-|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
+|**名称** | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
 |**路径** |**BlobPath** | Blob 的路径。 |
 |**连接** |**Connection**| 包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 |不适用 | **Access** | 表示是要读取还是写入。 |
@@ -757,7 +757,7 @@ public static void Run(
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`  。
+<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
 
 如果尝试绑定到某个存储 SDK 类型并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
@@ -784,23 +784,40 @@ public static void Run(
 以下示例演示使用一个 blob 触发器和两个 blob 输出绑定的 [C# 函数](functions-dotnet-class-library.md)。 在 *sample-images* 容器中创建映像 Blob 时，会触发该函数。 该函数创建该映像 Blob 的小型和中型副本。
 
 ```csharp
+using System.Collections.Generic;
+using System.IO;
+using Microsoft.Azure.WebJobs;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
+
 [FunctionName("ResizeImage")]
 public static void Run(
     [BlobTrigger("sample-images/{name}")] Stream image,
     [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall,
     [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
 {
-    var imageBuilder = ImageResizer.ImageBuilder.Current;
-    var size = imageDimensionsTable[ImageSize.Small];
+    IImageFormat format;
 
-    imageBuilder.Build(image, imageSmall,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
+    using (Image<Rgba32> input = Image.Load(image, out format))
+    {
+      ResizeImage(input, imageSmall, ImageSize.Small, format);
+    }
 
     image.Position = 0;
-    size = imageDimensionsTable[ImageSize.Medium];
+    using (Image<Rgba32> input = Image.Load(image, out format))
+    {
+      ResizeImage(input, imageMedium, ImageSize.Medium, format);
+    }
+}
 
-    imageBuilder.Build(image, imageMedium,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
+public static void ResizeImage(Image<Rgba32> input, Stream output, ImageSize size, IImageFormat format)
+{
+    var dimensions = imageDimensionsTable[size];
+
+    input.Mutate(x => x.Resize(dimensions.Item1, dimensions.Item2));
+    input.Save(output, format);
 }
 
 public enum ImageSize { ExtraSmall, Small, Medium }
@@ -816,7 +833,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 
 <!--Same example for input and output. -->
 
-以下示例演示 function.json  文件中的 blob 输入和输出绑定，以及使用这些绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 此函数创建文本 blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
+以下示例演示 function.json 文件中的 blob 输入和输出绑定，以及使用这些绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 此函数创建文本 blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
 
 在 *function.json* 文件中，`queueTrigger` 元数据属性用于指定 `path` 属性中的 Blob 名称：
 
@@ -865,7 +882,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 <!--Same example for input and output. -->
 
-下面的示例展示了 function.json  文件中的 blob 输入和输出绑定，以及使用这些绑定的 [JavaScript 代码](functions-reference-node.md)。 该函数创建 Blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
+下面的示例展示了 function.json 文件中的 blob 输入和输出绑定，以及使用这些绑定的 [JavaScript 代码](functions-reference-node.md)。 该函数创建 Blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
 
 在 *function.json* 文件中，`queueTrigger` 元数据属性用于指定 `path` 属性中的 Blob 名称：
 
@@ -1064,13 +1081,13 @@ public static void Run(
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表解释了在 function.json  文件和 `Blob` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `Blob` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为 `blob`。 |
 |**direction** | 不适用 | 对于输出绑定，必须设置为 `out`。 [用法](#output---usage)部分中已阐述异常。 |
-|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。  设置为 `$return` 可引用函数返回值。|
+|**名称** | 不适用 | 表示函数代码中的 Blob 的变量的名称。  设置为 `$return` 可引用函数返回值。|
 |**路径** |**BlobPath** | Blob 容器的路径。 |
 |**连接** |**Connection**| 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 |不适用 | **Access** | 表示是要读取还是写入。 |
@@ -1093,9 +1110,9 @@ public static void Run(
 * `CloudPageBlob`<sup>2</sup>
 * `CloudAppendBlob`<sup>2</sup>
 
-<sup>1</sup> function.json 中需有 "in" 绑定 `direction` 或 C# 类库中需有 `FileAccess.Read`  。 但是，可以使用运行时提供的容器对象来执行写入操作，例如将 Blob 上传到容器。
+<sup>1</sup> function.json 中需有 "in" 绑定 `direction` 或 C# 类库中需有 `FileAccess.Read`。 但是，可以使用运行时提供的容器对象来执行写入操作，例如将 Blob 上传到容器。
 
-<sup>2</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`  。
+<sup>2</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
 
 如果尝试绑定到某个存储 SDK 类型并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 

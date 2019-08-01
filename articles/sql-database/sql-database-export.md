@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 07/16/2019
-ms.openlocfilehash: 8d795fe88721dfed65134b550eb0036c4e7310eb
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9b4770f565f256d444ab6a6f06bb369b8417eb18
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305798"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568255"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>将 Azure SQL 数据库导出到 BACPAC 文件
 
@@ -45,7 +44,7 @@ ms.locfileid: "68305798"
 > [!NOTE]
 > 处理通过 Azure 门户或 PowerShell 提交的导入/导出请求的计算机需要存储 BACPAC 文件以及由数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在大小相同的数据库之间发生了重大变化, 并且需要磁盘空间的大小最多可达数据库大小的3倍。 运行导入/导出请求的计算机仅具有450GB 的本地磁盘空间。 因此, 某些请求可能会失败并出现错误`There is not enough space on the disk`。 在这种情况下, 解决方法是在具有足够的本地磁盘空间的计算机上运行 sqlpackage。 我们鼓励使用[SqlPackage](#export-to-a-bacpac-file-using-the-sqlpackage-utility)导入/导出大于 150 gb 的数据库, 以避免此问题。
 
-1. 若要使用 [Azure 门户](https://portal.azure.com)导出数据库，请打开数据库页，并在工具栏上单击“导出”  。
+1. 若要使用 [Azure 门户](https://portal.azure.com)导出数据库，请打开数据库页，并在工具栏上单击“导出”。
 
    ![数据库导出](./media/sql-database-export/database-export1.png)
 
@@ -55,7 +54,7 @@ ms.locfileid: "68305798"
 
 3. 单击 **“确定”** 。
 
-4. 若要监视导出操作的进度，请打开包含待导出数据库的 SQL 数据库服务器的相应页面。 向下滚动到“设置”，并单击“导入/导出历史记录”   。
+4. 若要监视导出操作的进度，请打开包含待导出数据库的 SQL 数据库服务器的相应页面。 向下滚动到“设置”，并单击“导入/导出历史记录”。
 
    ![导出历史记录](./media/sql-database-export/export-history.png)
 
@@ -88,7 +87,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-若要检查导出请求的状态，请使用 [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet。 如果在提交请求后立即运行此命令，通常会返回“状态:  正在进行”。 显示“状态:  成功”时，表示导出完毕。
+若要检查导出请求的状态，请使用 [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet。 如果在提交请求后立即运行此命令，通常会返回“状态:正在进行”。 显示“状态:成功”时，表示导出完毕。
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 7fc945a00360e4eea4a5cf1e3962da2390d3bfeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506853"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568289"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>跨云数据库的分布式事务
 

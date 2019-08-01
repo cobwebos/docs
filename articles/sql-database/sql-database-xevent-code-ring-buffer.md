@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: bb493fc0a9d3a9173ef4faf17b3cdd4e3781a557
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f1ec9cd3a4256597ade409fb3e04d44171277554
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331020"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566155"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的环形缓冲区目标代码
 
@@ -41,7 +40,7 @@ ms.locfileid: "60331020"
 7. 删除环形缓冲区目标以释放其资源。
 8. 删除事件会话和演示表。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 可以在其中创建表的任何数据库。

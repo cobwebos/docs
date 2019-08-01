@@ -3,7 +3,7 @@ title: 创建 Azure Service Fabric 容器应用程序 | Microsoft Docs
 description: 在 Azure Service Fabric 上创建第一个 Windows 容器应用程序。 生成包含 Python 应用程序的 Docker 映像，将该映像推送到容器注册表，然后生成并部署 Service Fabric 容器应用程序。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: jpconnock
 editor: vturecek
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
-ms.author: aljo
-ms.openlocfilehash: 70dc458e341024797761262cd9a4fd1b3eb23ec3
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: atsenthi
+ms.openlocfilehash: 9ef1dad0e90ec3e48a4bf22325cba0beb197d290
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359794"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599527"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "68359794"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * 一台运行以下软件的开发计算机：
   * Visual Studio 2015 或 Visual Studio 2019。
@@ -460,7 +460,7 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 
 在“连接终结点”中输入群集的管理终结点。 例如，“containercluster.westus2.cloudapp.azure.com:19000”。 在 [Azure 门户](https://portal.azure.com)中，可以在群集的“概览”选项卡中查找客户端连接终结点。
 
-单击“发布” 。
+单击“发布”。
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 是一项基于 Web 的工具，用于检验和管理 Service Fabric 群集中的应用程序和节点。 打开浏览器，导航到 http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ ，并执行应用程序部署。 将映像下载到群集节点（这可能需要一段时间，具体时间取决于映像大小）之前，应用程序可部署但处于错误状态：![错误][1]
 
