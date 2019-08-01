@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5f41263113568cf9f3771119135be8db37119181
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dbcb0e87159efc7cc33101cdd5eee55afbdf3c10
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442944"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516636"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -174,11 +174,7 @@ Azure Maps 使用基于密钥的身份验证方案。 你的帐户将附带已�
 
 Azure Maps API 目前在除以下区域外的所有国家/地区都可用：
 
-* 阿根廷
 * 中国
-* 印度
-* 摩洛哥
-* 巴基斯坦
 * 韩国
 
 确认当前 IP 地址的位置不在上面所列的某个不受支持国家/地区。

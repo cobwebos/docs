@@ -2,23 +2,23 @@
 title: 注册 Premium 版本 - Azure Active Directory | Microsoft Docs
 description: 有关如何注册 Azure Active Directory Premium 版本的说明。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/07/2017
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed01b2b122724ba1428fb685bb3f1f52b7099a7b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 016fbc8808c11f861dd4388ea5fb062c840187ea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287054"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561974"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>注册 Azure Active Directory Premium 版本
 可购买 Azure Active Directory (Azure AD) Premium 版本并将其与 Azure 订阅进行关联。 如果需要创建新的 Azure 订阅，则还需要激活许可计划和 Azure AD 服务访问权限。
@@ -53,9 +53,9 @@ Azure 或 Office 365 订阅者可在线购买 Azure Active Directory Premium 版
 ## <a name="sign-up-using-your-microsoft-volume-licensing-plan"></a>通过 Microsoft 批量许可计划进行登录
 通过 Microsoft 批量许可计划，可根据要获取的许可证数量使用下述任一计划注册 Azure AD Premium：
 
-- 对于 250 个或更多许可证： [Microsoft 企业协议](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
+- 对于 250 个或更多许可证  ： [Microsoft 企业协议](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
 
-- 对于 5 个至 250 个许可证： [打开批量许可](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
+- 对于 5 个至 250 个许可证  ： [打开批量许可](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
 
 要详细了解批量许可购买选项，请参阅 [How to purchase through Volume Licensing](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx)（如何通过批量许可进行购买）。
 
@@ -63,13 +63,13 @@ Azure 或 Office 365 订阅者可在线购买 Azure Active Directory Premium 版
 如果已注册使用新的 Azure AD 许可计划，必须使用购买后收到的确认电子邮件为你的组织激活该计划。
 
 ### <a name="to-activate-your-license-plan"></a>激活许可计划
-- 打开在注册后从 Microsoft 处收到的确认电子邮件，然后单击“登录”或“注册”。
+- 打开在注册后从 Microsoft 处收到的确认电子邮件，然后单击“登录”或“注册”   。
    
     ![电子邮件与登录和注册链接的确认信息](media/active-directory-get-started-premium/MOLSEmail.png)
 
-    - 登录。 如果当前具有租户，则选择此链接，然后使用现有的管理员帐户进行登录。 你必须是要激活许可证的租户上的全局管理员。
+    - 登录  。 如果当前具有租户，则选择此链接，然后使用现有的管理员帐户进行登录。 你必须是要激活许可证的租户上的全局管理员。
 
-    - 注册。 如果要打开“创建帐户配置文件”页面并为许可计划创建新的 Azure AD 租户，请选择此链接。
+    - 注册  。 如果要打开“创建帐户配置文件”页面并为许可计划创建新的 Azure AD 租户，请选择此链接  。
 
         ![创建帐户配置文件页面，其中包含示例信息](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 
@@ -78,16 +78,16 @@ Azure 或 Office 365 订阅者可在线购买 Azure Active Directory Premium 版
 ![带有感谢使用信息的确认框](media/active-directory-get-started-premium/MOLSThankYou.png)
 
 ## <a name="activate-your-azure-ad-access"></a>激活 Azure AD 访问权限
-如果要向现有订阅添加新的 Azure AD Premium 许可证，则应已激活 Azure AD 访问权限。 否则，需在收到欢迎电子邮件后激活 Azure AD 访问权限。  
+如果要向现有订阅添加新的 Azure AD Premium 许可证，则应已激活 Azure AD 访问权限。 否则，需在收到欢迎电子邮件  后激活 Azure AD 访问权限。  
 
-在目录中预配了所购买的许可证之后，你将收到一封欢迎电子邮件。 此电子邮件确认你可开始管理 Azure AD Premium 或“企业移动性 + 安全性”的许可证和功能。 
+在目录中预配了所购买的许可证之后，你将收到一封欢迎电子邮件  。 此电子邮件确认你可开始管理 Azure AD Premium 或“企业移动性 + 安全性”的许可证和功能。 
 
 > [!TIP]
 > 在通过欢迎电子邮件激活 Azure AD 目录访问权限之前，无法访问新租户的 Azure AD。
 
 ### <a name="to-activate-your-azure-ad-access"></a>激活 Azure AD 访问权限
 
-1. 打开“欢迎电子邮件”，然后单击“登录”。
+1. 打开“欢迎电子邮件”，然后单击“登录”   。
    
     ![欢迎使用电子邮件，其中突出显示登录链接](media/active-directory-get-started-premium/AADEmail.png)
 

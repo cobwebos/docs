@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 370771d44e2fbbf0fca7af453f7425ebc1b1bdcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 99d17b354e267d003e23e507ca190b951e3ed4a0
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612613"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608090"
 ---
 # <a name="what-is-conditional-access"></a>什么是条件访问？
 
@@ -73,7 +73,7 @@ ms.locfileid: "67612613"
 
 ## <a name="azure-ad-conditional-access-and-federated-authentication"></a>Azure AD 条件访问和联合身份验证
 
-条件访问策略可以与[联合身份验证](../../security/azure-ad-choose-authn.md#federated-authentication)无缝地配合使用。 此支持包括所有支持的条件和控制，可以用来通过 [Azure AD 报表](../reports-monitoring/concept-sign-ins.md)了解策略是如何应用到活动用户登录的。
+条件访问策略可以与[联合身份验证](../../security/fundamentals/choose-ad-authn.md#federated-authentication)无缝地配合使用。 此支持包括所有支持的条件和控制，可以用来通过 [Azure AD 报表](../reports-monitoring/concept-sign-ins.md)了解策略是如何应用到活动用户登录的。
 
 *使用 Azure AD 进行的联合身份验证*是指由受信任的身份验证服务处理用户通过 Azure AD 进行的身份验证。 举例来说，受信任的身份验证服务是指 Active Directory 联合身份验证服务 (AD FS) 或任何其他的联合身份验证服务。 在此配置中，主用户身份验证会在服务中执行，然后会使用 Azure AD 登录到各个应用程序中。 在将访问权限授予用户访问的应用程序之前，会应用 Azure AD 条件访问。 
 

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6023e4bd4028cf1679051b6665297afd00b1eba7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: f1ebfce2b96da51b9c33646c1626495d280d7b8a
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482655"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592245"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -30,7 +30,7 @@ ms.locfileid: "67482655"
 
 如果你要开发 Android 应用程序，Microsoft 可让 Azure Active Directory (Azure AD) 用户拥有简单直接的登录体验。 Azure AD 允许应用程序通过 Microsoft Graph 或你自己的受保护 Web API 访问用户数据。
 
-Azure AD 身份验证库 (ADAL) Android 库使用行业标准的 OAuth 2.0 和 OpenID Connect 支持 [Microsoft Azure Active Directory 帐户](https://azure.microsoft.com/services/active-directory/)，因此你的应用能够开始使用 [Microsoft Azure 云](https://cloud.microsoft.com) 和 [Microsoft Graph API](https://developer.microsoft.com/graph)。
+Azure AD 身份验证库 (ADAL) Android 库使用行业标准的 OAuth 2.0 和 OpenID Connect 支持 [Microsoft Azure Active Directory 帐户](https://azure.microsoft.com/services/active-directory/)，因此你的应用能够开始使用 [Microsoft Azure 云](https://azure.microsoft.com/free/cloud-services/) 和 [Microsoft Graph API](https://developer.microsoft.com/graph)。
 
 在本快速入门中，你将学习如何：
 
