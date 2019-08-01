@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: yaya
 ms.openlocfilehash: 9dd336ef973b603108aad62c90e4dab385d20317
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67873900"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>下载 Azure SDK for PHP
@@ -45,7 +45,7 @@ Azure SDK for PHP 包括允许你针对 Azure 开发、部署和管理 PHP 应�
 
 Azure 的 PHP 客户端库提供了一个用于从任何操作系统访问 Azure 功能（例如，数据管理服务和云服务）的接口。 可以通过 Composer 安装这些库。
 
-有关如何使用适用于 Azure 的 PHP 客户端库的信息, 请参阅[如何使用 Blob 服务][blob-service], [How to Use the Table Service][table-service]和[如何使用队列服务][队列服务]。
+有关如何使用适用于 Azure 的 PHP 客户端库的信息, 请参阅[如何使用 Blob 服务][blob-service]、[如何使用表服务][table-service]以及[如何使用队列服务][queue-service]。
 
 ### <a name="install-via-composer"></a>通过 Composer 安装
 

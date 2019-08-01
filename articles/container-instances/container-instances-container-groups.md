@@ -10,15 +10,15 @@ ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: b17004e7821bcac61ca98afdbeaf87644da2a441
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326056"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
-Azure 容器实例中的顶层资源是容器组。  本文介绍容器组的定义和它们支持的方案类型。
+Azure 容器实例中的顶层资源是容器组。 本文介绍容器组的定义和它们支持的方案类型。
 
 ## <a name="how-a-container-group-works"></a>容器组工作原理
 
@@ -41,13 +41,13 @@ Azure 容器实例中的顶层资源是容器组。  本文介绍容器组的定
 
 ## <a name="deployment"></a>部署
 
-下面是部署多容器组的两种常见方法: 使用[资源管理器模板][resource-manager template] or a [YAML file][yaml-file]。 部署容器实例时, 如果需要部署其他 Azure 服务资源 (例如[Azure 文件共享][azure 文件]), 则建议使用资源管理器模板。 由于 YAML 格式更简洁, 因此当部署仅包含容器实例时, 建议使用 YAML 文件。
+下面是部署多容器组的两种常见方法: 使用[资源管理器模板][resource-manager template]或[YAML 文件][yaml-file]。 部署容器实例时, 如果需要部署其他 Azure 服务资源 (例如[Azure 文件共享][azure-files]), 则建议使用资源管理器模板。 由于 YAML 格式更简洁, 因此当部署仅包含容器实例时, 建议使用 YAML 文件。
 
 若要保留容器组的配置, 可以使用 Azure CLI 命令[az 容器 export][az-container-export]将配置导出到 YAML 文件。 通过导出, 你可以在版本控制中将容器组配置存储为 "配置为代码"。 还可以将导出的文件用作使用 YAML 开发新配置时的起点。
 
 ## <a name="resource-allocation"></a>资源分配
 
-Azure 容器实例分配资源, 如组中实例的 cpu、内存和可选[gpu][gpus] (preview) to a container group by adding the [resource requests][resource-requests] 。 取 CPU 资源示例: 如果创建包含两个实例的容器组, 每个实例请求1个 CPU, 则会为该容器组分配2个 cpu。
+Azure 容器实例通过在组中添加实例的[资源请求][resource-requests], 将 cpu、内存和可选[gpu][gpus] (预览版) 等资源分配到容器组。 取 CPU 资源示例: 如果创建包含两个实例的容器组, 每个实例请求1个 CPU, 则会为该容器组分配2个 cpu。
 
 容器组可用的最大资源取决于用于部署的[Azure 区域][region-availability]。
 

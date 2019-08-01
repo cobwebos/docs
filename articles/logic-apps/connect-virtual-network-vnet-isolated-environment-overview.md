@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/19/2019
-ms.openlocfilehash: 3e14604955a64c7a146a947c5c320b42ea3ebcba
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 07/26/2019
+ms.openlocfilehash: 831a1457d865429fd53af1887a14c363b806300c
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325411"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516609"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -60,7 +60,7 @@ ISE 和非 ISE 连接器之间的区别在于触发器和操作运行的位置�
 
   ![选择 "核心" 内置触发器和操作](./media/connect-virtual-network-vnet-isolated-environment-overview/select-core-built-in-actions-triggers.png)
 
-* 在 ISE 中运行的连接器具有可在全局逻辑应用服务中使用的公开托管版本。 对于提供两个版本的连接器, 具有**ISE**标签的连接器始终在与逻辑应用相同的 ISE 中运行。 没有 ISE  标签的连接器运行在全局逻辑应用服务中。
+* 在 ISE 中运行的连接器具有可在全局逻辑应用服务中使用的公开托管版本。 对于提供两个版本的连接器, 具有**ISE**标签的连接器始终在与逻辑应用相同的 ISE 中运行。 没有 ISE 标签的连接器运行在全局逻辑应用服务中。
 
   ![选择 ISE 连接器](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
@@ -80,7 +80,22 @@ ISE 还为运行持续时间、存储保留、吞吐量、HTTP 请求和响应�
 
   提供了可用于生产的 ISE, 并包括 SLA 支持、内置触发器和操作、标准连接器、企业连接器、单个[标准层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)集成帐户、用于扩展容量的选项, 以及在回收固定的每月价格。
 
+> [!IMPORTANT]
+> SKU 选项仅在创建 ISE 时可用, 不能在以后更改。
+
 有关定价费率, 请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 若要了解 ISEs 的定价和计费工作原理, 请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。
+
+<a name="endpoint-access"></a>
+
+## <a name="ise-endpoint-access"></a>ISE 终结点访问
+
+创建 ISE 时, 可以选择使用内部或外部访问终结点。 这些终结点确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。 这些终结点还会影响对逻辑应用运行历史记录中的输入和输出的访问。
+
+* **内部**：专用终结点, 允许调用 ISE 中的逻辑应用, 以及仅*从虚拟网络内部*访问运行历史记录中的输入和输出
+* **外部**：允许在 ISE 中调用逻辑应用的公共终结点, 以及*来自虚拟网络外部*的运行历史记录中的输入和输出的访问权限
+
+> [!IMPORTANT]
+> "访问终结点" 选项仅在创建 ISE 时可用, 不能在以后更改。
 
 <a name="on-premises"></a>
 
@@ -102,10 +117,12 @@ ISE 还为运行持续时间、存储保留、吞吐量、HTTP 请求和响应�
 
 ## <a name="integration-accounts-with-ise"></a>集成帐户与 ISE
 
-可以在集成服务环境 (ISE) 中将集成帐户与逻辑应用结合使用。 但是，这些集成帐户必须使用相同的 ISE  作为链接的逻辑应用。 ISE 中的逻辑应用只能引用同一 ISE 中的这些集成帐户。 创建集成帐户时，可以选择 ISE 作为集成帐户的位置。 若要了解如何使用 ISE 实现集成帐户的定价和计费, 请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率, 请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
+可以在集成服务环境 (ISE) 中将集成帐户与逻辑应用结合使用。 但是，这些集成帐户必须使用相同的 ISE 作为链接的逻辑应用。 ISE 中的逻辑应用只能引用同一 ISE 中的这些集成帐户。 创建集成帐户时，可以选择 ISE 作为集成帐户的位置。 若要了解如何使用 ISE 实现集成帐户的定价和计费, 请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率, 请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[从独立的逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+* [从隔离逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+* [向 integration service 环境添加项目](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [管理 integration service 环境](../logic-apps/ise-manage-integration-service-environment.md)
 * 详细了解 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)
 * 了解 [Azure 服务的虚拟网络集成](../virtual-network/virtual-network-for-azure-services.md)

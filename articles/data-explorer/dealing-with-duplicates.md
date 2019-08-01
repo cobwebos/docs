@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60ec2b86e0205060f907f1fe39d084dca3aac1cd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445764"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608228"
 ---
 # <a name="handle-duplicate-data-in-azure-data-explorer"></a>在 Azure 数据资源管理器中处理重复数据
 
@@ -70,7 +70,7 @@ DeviceEventsAll
 
 ### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>解决方法 #3：在引入过程中筛选重复项
 
-另一种解决方法是在引入过程中筛选重复项。 在引入到 Kusto 表期间，系统将忽略重复数据。 删除重复行之后，将数据引入到临时表并复制到另一个表中。 此解决方法的优点是，相比前一种解决方法，查询性能可以得到明显的改善。 缺点包括增大引入时间和数据存储成本。
+另一种解决方法是在引入过程中筛选重复项。 在引入到 Kusto 表期间，系统将忽略重复数据。 删除重复行之后，将数据引入到临时表并复制到另一个表中。 此解决方法的优点是，相比前一种解决方法，查询性能可以得到明显的改善。 缺点包括增大引入时间和数据存储成本。 Additionaly, 仅当重复不同时引入时, 此解决方案才有效。 如果有多个并发 ingestions 包含重复记录, 则所有这些都可能是引入的, 因为重复数据删除过程将不会在表中找到任何现有的匹配记录。    
 
 以下示例演示了此方法：
 
@@ -115,7 +115,7 @@ DeviceEventsAll
     .alter-merge table DeviceEventsAll policy retention softdelete = 1d
     ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 可以通过多种方式处理重复数据。 请评估不同的做法，同时考虑价格和性能，以确定符合业务需求的适当方法。
 
