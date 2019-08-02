@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: d03abee7c7a4adb65e1d6146501ee5b7d9e1534c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 3db63be8856b5bd57323ecd0be767d09032404e9
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348661"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741889"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>安装和运行表单识别器容器
 
@@ -65,7 +65,7 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 * 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
 > [!Note]
-> 最小值和建议值基于 Docker 限制，而不是基于主机资源。 
+> 最小值和建议值基于 Docker 限制，而不是基于主机资源。
 
 ## <a name="get-the-container-image-with-the-docker-pull-command"></a>使用 docker pull 命令获取容器映像
 
@@ -97,7 +97,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recogn
 
 当容器位于[主计算机](#the-host-computer)上以后，请通过以下过程使用容器。
 
-1. 使用所需的而不是所用的计费设置来[运行容器](#run-the-container-by-using-the-docker-run-command)。 提供 `docker run` 命令的多个[示例](form-recognizer-container-configuration.md#example-docker-run-commands)。
+1. 使用所需的计费设置[运行容器](#run-the-container-by-using-the-docker-run-command)。 提供 `docker run` 命令的多个[示例](form-recognizer-container-configuration.md#example-docker-run-commands)。
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-by-using-the-docker-run-command"></a>使用 docker run 命令运行容器
@@ -106,10 +106,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recogn
 
 | 占位符 | ReplTest1 |
 |-------------|-------|
-|{FORM_RECOGNIZER_API_KEY} | 此密钥用于启动容器。 可以从 Azure 门户的“表单识别器密钥”页获取它。   |
-|{FORM_RECOGNIZER_ENDPOINT_URI} | 可以从 Azure 门户的“表单识别器概览”页获取计费终结点 URI 值。 |
-|{COMPUTER_VISION_API_KEY}| 可以从 Azure 门户的“计算机视觉 API 密钥”页获取此密钥。 |
-|{COMPUTER_VISION_ENDPOINT_URI}|计费终结点。 如果使用基于云的计算机视觉资源，则可以从 Azure 门户的“计算机视觉 API 概览”页获取 URI 值。  如果使用 `cognitive-services-recognize-text` 容器，请使用在 `docker run` 命令中传递给容器的计费终结点 URL。|
+|{FORM_RECOGNIZER_API_KEY} | 此密钥用于启动容器。 可以从 Azure 门户的“表单识别器密钥”页获取它。  |
+|{FORM_RECOGNIZER_ENDPOINT_URI} | 可以从 Azure 门户的“表单识别器概览”页获取计费终结点 URI 值。|
+|{COMPUTER_VISION_API_KEY}| 可以从 Azure 门户的“计算机视觉 API 密钥”页获取此密钥。|
+|{COMPUTER_VISION_ENDPOINT_URI}|计费终结点。 如果使用基于云的计算机视觉资源，则可以从 Azure 门户的“计算机视觉 API 概览”页获取 URI 值。 如果使用 `cognitive-services-recognize-text` 容器，请使用在 `docker run` 命令中传递给容器的计费终结点 URL。|
 
 在以下示例 `docker run` 命令中，请将这些参数替换为自己的值。
 
@@ -287,9 +287,9 @@ formrecognizer_config =
 
 运行该容器时，该容器将使用 **stdout** 和 **stderr** 来输出信息，这些信息有助于排查启动或运行容器时发生的问题。
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>帐单
 
-表单识别器容器使用 Azure 帐户中的“表单识别器”资源向 Azure 发送账单信息。 
+表单识别器容器使用 Azure 帐户中的“表单识别器”资源向 Azure 发送账单信息。
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 0778814d4a228afe3a986426684c7d1f2080b517
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 14a360e7dc672266e8445a5ae5eb2168ae766af8
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553219"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741868"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装和运行语音服务容器
 
@@ -169,7 +169,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 一旦容器位于[主计算机](#the-host-computer)上，请通过以下过程使用容器。
 
-1. 使用所需的而不是所用的计费设置来[运行容器](#run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](speech-container-configuration.md#example-docker-run-commands)。
+1. 使用所需的计费设置[运行容器](#run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](speech-container-configuration.md#example-docker-run-commands)。
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
@@ -178,7 +178,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 在**预览期间**, 计费设置必须有效才能启动容器, 但不会对使用情况收费。
 
-| 占位符 | ReplTest1 |
+| 占位符 | 值 |
 |-------------|-------|
 |{API_KEY} | 此密钥用于启动容器, 并在 Azure 门户的语音密钥页上可用。  |
 |{ENDPOINT_URI} | Azure 门户的语音概述页上提供了 "计费终结点 URI" 值。|

@@ -55,7 +55,7 @@
 - name: 引用
   items:
     - name: 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?service=data-catalog'
+      href: data-catalog-samples.md
     - name: REST
       href: /rest/api/datacatalog/
     - name: 搜索语法参考
