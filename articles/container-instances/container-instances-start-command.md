@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 99440e22eb736522a25c2ee56bb07ef1d9967e66
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 40d946db48a65452d2da529098c07d0d0c60d472
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325666"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619662"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>在容器实例中设置命令行以覆盖默认的命令行操作
 
@@ -23,9 +23,9 @@ ms.locfileid: "68325666"
 
 ## <a name="command-line-guidelines"></a>命令行准则
 
-* 默认情况下, 命令行指定一个*进程, 该进程在容器中不带 shell 的情况下启动*。 例如, 命令行可能运行 Python 脚本或可执行文件。 
+* 默认情况下, 命令行指定一个*进程, 该进程在容器中不带 shell 的情况下启动*。 例如, 命令行可能运行 Python 脚本或可执行文件。 该进程可以指定其他参数或参数。
 
-* 若要执行多个命令, 请通过设置容器操作系统中支持的 shell 环境来开始命令行。 示例：
+* 若要执行多个命令, 请通过设置容器操作系统中支持的 shell 环境来开始命令行。 示例:
 
   |操作系统  |默认 shell  |
   |---------|---------|
@@ -66,7 +66,7 @@ ms.locfileid: "68325666"
 
 例如, 修改[microsoft/wordcount][aci-wordcount]容器映像的行为, 该映像分析莎士比亚的*哈姆雷特*中的文本, 以查找最常出现的单词。 您可以设置一个指向不同文本源的命令行, 而不是分析*哈姆雷特*。
 
-查看[microsoft/wordcount][aci-wordcount] container when it analyzes the default text, run it with the following [az container create][az-container-create]命令的输出。 未指定任何启动命令行, 因此默认容器命令将运行。 出于说明目的, 此示例将设置[环境变量](container-instances-environment-variables.md)以查找长度至少为五个字符的前3个单词:
+若要在分析默认文本时查看[microsoft/wordcount][aci-wordcount]容器的输出, 请运行以下[az container create][az-container-create]命令。 未指定任何启动命令行, 因此默认容器命令将运行。 出于说明目的, 此示例将设置[环境变量](container-instances-environment-variables.md)以查找长度至少为五个字符的前3个单词:
 
 ```azurecli-interactive
 az container create \
@@ -77,13 +77,13 @@ az container create \
     --restart-policy OnFailure
 ```
 
-容器状态显示为已*终止*后 (使用[az container show][az-container-show] to check state), display the log with [az container logs][az-container-logs]查看输出。
+容器状态显示为 "已*终止*" 后 (使用[az container show][az-container-show]来检查状态), 使用[az 容器日志][az-container-logs]显示日志以查看输出。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
 ```
 
-输出：
+输出:
 
 ```console
 [('HAMLET', 386), ('HORATIO', 127), ('CLAUDIUS', 120)]
@@ -109,7 +109,7 @@ az container create \
 az container logs --resource-group myResourceGroup --name mycontainer2
 ```
 
-输出：
+输出:
 
 ```console
 [('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]

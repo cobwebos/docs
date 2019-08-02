@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: dd800c0eeb18fe45b44a72aeb58b500623b2b366
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 99f14b14e9149f79ae992834ae75bcb8fdc3c74b
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705083"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601986"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>与对文件和文件夹进行备份相关的常见问题
 
@@ -41,7 +41,7 @@ ms.locfileid: "67705083"
 
 ### <a name="what-file-and-folder-types-are-supported"></a>支持哪些文件和文件夹类型？
 
-[了解详细信息](backup-support-matrix-mars-agent.md#supported-file-types-for-backup)有关文件和文件夹的备份支持的类型。
+[详细了解](backup-support-matrix-mars-agent.md#supported-file-types-for-backup)支持备份的文件和文件夹的类型。
 
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>是否可以使用 MARS 代理在 Azure VM 上备份文件和文件夹？  
 是的。 Azure 备份使用 Azure VM 代理的 VM 扩展为 Azure VM 提供 VM 级备份。 如果你希望在 VM 的来宾 Windows 操作系统上备份文件和文件夹，可以安装 MARS 代理来执行该操作。
@@ -49,12 +49,12 @@ ms.locfileid: "67705083"
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>是否可以使用 MARS 代理在 Azure VM 的临时存储上备份文件和文件夹？
 是的。 安装 MARS 代理，将来宾 Windows 操作系统上的文件和文件夹备份到临时存储。
 
-- 备份作业失败时擦除临时存储数据。
+- 擦除临时存储数据后, 备份作业将失败。
 - 如果临时存储数据被删除，则你只能还原到非易失性存储。
 
 ### <a name="how-do-i-register-a-server-to-another-region"></a>如何将服务器注册到其他区域？
 
-备份数据会发送到服务器注册到的保管库的数据中心。 更改数据中心的最简单方法是卸载并重新安装代理，并再将计算机注册到新的保管库所需的区域中。
+备份数据会发送到服务器注册到的保管库的数据中心。 更改数据中心的最简单方法是卸载并重新安装代理, 然后将该计算机注册到所需的区域中的新保管库。
 
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>MARS 代理是否支持 Windows Server 2012 重复数据删除？
 是的。 MARS 代理在准备备份操作时会将消除了重复的数据转换为常规数据。 然后，它将对数据进行优化以便备份、对数据进行加密，然后将已加密的数据发送到保管库。
@@ -66,7 +66,7 @@ ms.locfileid: "67705083"
 重命名 Windows 计算机时，所有当前已配置的备份都将停止。
 
 - 你需要向备份保管库注册新的计算机名称。
-- 向保管库注册新名称时，第一个操作是“完整”  备份。
+- 向保管库注册新名称时，第一个操作是“完整”备份。
 - 如果需要恢复备份到采用旧服务器名称的保管库的数据，请使用“恢复数据”向导中用于还原到其他位置的选项。 [了解详细信息](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>用于备份的最大文件路径长度是多少？
@@ -88,14 +88,14 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 缓存文件夹的大小由你正在备份的数据量确定。
 - 缓存文件夹卷的可用空间应当至少为备份数据总大小的 5-10%。
 - 如果卷的可用空间少于 5%，请增大卷大小，或将缓存文件夹移到具有足够空间的卷。
-- 如果备份 Windows 系统状态，则将需要额外的 30 到 35 gb 空间中包含的缓存文件夹的卷的可用空间。
+- 如果备份 Windows 系统状态, 则在包含缓存文件夹的卷上将需要额外的 30-35 GB 可用空间。
 
-### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>如何检查 scratch 文件夹是否有效且可访问？
+### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>如何检查暂存文件夹是否有效并可访问？
 
-1. 默认情况下 scratch 文件夹位于 `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
-2. 请确保与如下所示的注册表密钥条目的值相匹配的 scratch 文件夹位置的路径：
+1. 默认情况下, 暂存文件夹位于`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+2. 确保暂存文件夹位置的路径与下面显示的注册表项项的值匹配:
 
-  | 注册表路径 | 注册表项 | ReplTest1 |
+  | 注册表路径 | 注册表项 | 值 |
   | --- | --- | --- |
   | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新缓存文件夹位置* |
   | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新缓存文件夹位置* |
@@ -106,19 +106,22 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
     ```PS C:\> Net stop obengine```
 
-2. 不要移动文件。 请将缓存空间文件夹复制到具有足够空间的其他驱动器。
-3. 更新以下注册表项，使路径指向新的缓存文件夹的路径。<br/>
+2. 如果已配置系统状态备份, 请打开 "磁盘管理", 然后卸载其名称采用格式`"CBSSBVol_<ID>"`的磁盘。
+3. 不要移动文件。 请将缓存空间文件夹复制到具有足够空间的其他驱动器。
+4. 更新以下注册表项，使路径指向新的缓存文件夹的路径。<br/>
 
     | 注册表路径 | 注册表项 | 值 |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新缓存文件夹位置* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新缓存文件夹位置* |
 
-4. 在提升的命令提示符下重启备份引擎：
+5. 在提升的命令提示符下重启备份引擎：
+
+    ```PS C:\> Net stop obengine```
 
     ```PS C:\> Net start obengine```
 
-5. 在使用新位置成功完成备份后，可以删除原始缓存文件夹。
+6. 运行即席备份。 在使用新位置成功完成备份后，可以删除原始缓存文件夹。
 
 
 ### <a name="where-should-the-cache-folder-be-located"></a>缓存文件夹应当位于何处？
@@ -131,7 +134,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>缓存文件夹是否有任何不受支持的属性？
 缓存文件夹不支持以下属性或其组合：
 
-* 加密
+* 已加密
 * 已删除重复数据
 * 压缩
 * 稀疏
@@ -141,7 +144,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>是否有办法调整用于备份的带宽量？
 
-是的，可以使用 MARS 代理中的“更改属性”  选项来调整带宽和定时。 [了解详细信息](backup-configure-vault.md#enable-network-throttling)。
+是的，可以使用 MARS 代理中的“更改属性”选项来调整带宽和定时。 [了解详细信息](backup-configure-vault.md#enable-network-throttling)。
 
 ## <a name="restore"></a>还原
 

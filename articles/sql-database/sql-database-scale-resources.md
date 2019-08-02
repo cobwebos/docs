@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: d8949f63dfa9b409cc14fe9c3bbed70f23a73c86
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: abc6f8a7a2fda3578bbcf2947188752f8f3373cd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357136"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566824"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
-Azure SQL 数据库，可动态将更多资源添加到你的数据库只需极少[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/); 但是，有一个开关，段短暂停留的时间，可以是所在丢失数据库连接缓解使用重试逻辑。
+利用 Azure SQL 数据库, 你可以将更多资源动态添加到数据库, 使[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)最短;但是, 在一段较短的时间内, 会有一次与数据库的连接丢失的情况, 可以使用重试逻辑来缓解这种情况。
 
 ## <a name="overview"></a>概述
 
@@ -41,7 +40,7 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 可以在小型单一数据库中构建第一个应用，每个月只需在“常规用途”服务层级中花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式将服务层级更改为“业务关键”服务层级。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
 > [!NOTE]
-> 动态可伸缩性不同于自动缩放。 自动缩放是一项服务会自动基于条件，而缩放时，而动态可伸缩性允许停机时间最短的手动缩放。
+> 动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放的时间, 而动态可伸缩性允许在最短的停机时间内进行手动缩放。
 
 单个 Azure SQL 数据库支持手动动态可伸缩性，但不支持自动缩放。 若要获得更多*自动*体验，请考虑使用弹性池，它允许数据库根据各个数据库需求共享池中的资源。
 但是，有一些脚本可帮助自动执行单个 Azure SQL 数据库的可伸缩性。 有关示例，请参阅[使用 PowerShell 监视和缩放单个 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
@@ -57,7 +56,7 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 - [弹性池](sql-database-elastic-pool-scale.md)允许定义池中每组数据库的最大资源限制。
 
 > [!NOTE]
-> 您可以预计短时间的连接中断时规模向上/缩减进程完成。 如果已实现[针对标准的暂时性错误重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)，不会注意到在故障转移。
+> 缩小/缩小过程完成时, 可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), 则不会注意到故障转移。
 
 ## <a name="alternative-scale-methods"></a>替代缩放方法
 

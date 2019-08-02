@@ -6,18 +6,27 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 04/24/2019
+ms.date: 07/29/2019
 ms.author: dapatil
-ms.openlocfilehash: 2edf7ce3be1402a497ceab5b826a89ee43c5c39b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64927367"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620099"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery 部署规划器版本历史记录
 
 本文提供 Azure Site Recovery 部署规划器的所有版本历史记录和修复，以及每个版本的已知限制和发布日期。
+
+## <a name="version-25"></a>版本2。5
+
+**发布日期：2019年7月29日**
+
+**修复：**
+
+- 对于 VMware 虚拟机和物理计算机, 建议将更新为基于到托管磁盘的复制。
+- 添加了对 Windows 10 (x64)、Windows 8.1 (x64)、Windows 8 (x64)、Windows 7 (x64) SP1 或更高版本的支持
 
 ## <a name="version-24"></a>版本 2.4
 
@@ -28,8 +37,8 @@ ms.locfileid: "64927367"
 - 改进了操作系统兼容性，特别是处理基于本地化的错误方面的兼容性。
 - 在兼容性清单中添加了最大支持 20 Mbps 数据更改率（变动率）的 VM。
 - 改进了错误消息
-  - 添加了对 vCenter 6.7 的支持。
-  - 添加了的对 Windows Server 2019 和 Red Hat Enterprise Linux (RHEL) 的工作站。
+- 添加了对 vCenter 6.7 的支持。
+- 添加了对 Windows Server 2019 和 Red Hat Enterprise Linux (RHEL) 工作站的支持。
 
 
 
@@ -48,7 +57,7 @@ ms.locfileid: "64927367"
 **修复：**
 
 - GetVMList 操作：
-  - 修复了导致 GetVMList 若要在未指定的文件夹不存在问题。 它现在会创建默认目录，或创建 outputfile 参数中指定的目录。
+  - 修复了如果指定的文件夹不存在, 导致 GetVMList 失败的问题。 它现在会创建默认目录，或创建 outputfile 参数中指定的目录。
   - 添加了 GetVMList 的更详细失败原因。
 - 在部署规划器报告的兼容 VM 工作表中以列的形式添加了 VM 类型信息。
 - Hyper-V 到 Azure 的灾难恢复：
@@ -120,7 +129,7 @@ ms.locfileid: "64927367"
 
 - 对每个 VM 添加了启动类型（BIOS 或 EFI）检查，以确定 VM 是否与保护功能兼容。
 - 在兼容的 VM 和不兼容的 VM 工作表中添加了每个虚拟机的 OS 类型信息。
-- 添加了的对适用于美国政府部门和 Microsoft Azure 中国地区 GetThroughput 操作。
+- 添加了对美国政府和中国 Microsoft Azure 地区的 GetThroughput 操作的支持。
 - 添加了针对 vCenter 和 ESXi Server 的更多先决条件检查。
 - 修复了将区域设置指定为非英语时生成错误报告的问题。
 
@@ -140,6 +149,6 @@ ms.locfileid: "64927367"
 **已知限制：**
 
 - 仅支持 VMware 到 Azure 的灾难恢复方案。 对于 Hyper-V 到 Azure 的灾难恢复方案，请使用 [Hyper-V 容量规划器工具](./site-recovery-capacity-planning-for-hyper-v-replication.md)。
-- 不支持 GetThroughput 操作适用于美国政府部门和 Microsoft Azure 中国地区。
+- 不支持美国政府和中国 Microsoft Azure 地区的 GetThroughput 操作。
 - 如果 vCenter 服务器中有两个或更多个 VM 跨不同的 ESXi 主机使用相同的名称或 IP 地址，则该工具无法分析 VM。
 在此版本中，该工具将跳过 VMListFile 中针对重复 VM 名称或 IP 地址的分析。 解决方法是使用 ESXi 主机而不是 vCenter 服务器来分析 VM。 确保运行每个 ESXi 主机的一个实例。

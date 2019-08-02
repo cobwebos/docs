@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 07/30/2019
 ms.author: magoedte
-ms.openlocfilehash: f2c6c872abf7525a80856cd37c1bb9358cf91217
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 039a4db11adf66e0c28826106df5845b42fedef5
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489425"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688244"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>有关启用用于 VM 的 Azure Monitor（预览版）的概述
 
@@ -84,7 +84,11 @@ ms.locfileid: "68489425"
 |Windows Server 2016 | X | X | X |
 |Windows Server 2012 R2 | X | X | X |
 |Windows Server 2012 | X | X | |
-|Windows Server 2008 R2 | X | X| |
+|Windows Server 2008 R2 | X | X|  |
+|Windows 10 1803 | X | X | |
+|Windows 8.1 | X | X | |
+|Windows 8 | X | X | |
+|Windows 7 SP1 | X | X | |
 |Red Hat Enterprise Linux (RHEL) 6、7| X | X| X |
 |Ubuntu 14.04、16.04、18.04 | X | X | X |
 |CentOS Linux 6、7 | X | X | X |

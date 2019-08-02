@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-manager: craigg
 ms.date: 07/01/2019
-ms.openlocfilehash: 5188862c50895c8e3f1bdecb4e08d39409bb5f9e
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 313e8af0e42f5108a22261a475b5340208adb7bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491655"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568559"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
 
@@ -130,7 +129,7 @@ ms.locfileid: "67491655"
 > [!IMPORTANT]
 > 当前不支持使用 Azure Active Directory 通过弹性查询进行身份验证。
 
-## <a name="cost"></a>成本
+## <a name="cost"></a>开销
 
 弹性查询包含在 Azure SQL 数据库的数据库成本中。 请注意，支持远程数据库与弹性查询终结点在不同的数据中心的拓扑，但通常按 [Azure 费率](https://azure.microsoft.com/pricing/details/data-transfers/)对远程数据库的数据流出量进行收费。
 
@@ -140,10 +139,10 @@ ms.locfileid: "67491655"
 * 尚不支持从 SSMS 或 SSDT 对外部数据源或外部表进行脚本编写。
 * SQL 数据库的导入/导出尚不支持外部数据源和外部表。 如果需要使用导入/导出，请在导出之前删除这些对象，并在导入后重新创建它们。
 * 弹性查询当前仅支持对外部表进行只读访问。 但是，可以对在其中定义了外部表的数据库使用完整的 T-SQL 功能。 这可能对以下操作很有用：例如，使用（例如）SELECT <column_list> INTO <local_table>持久保存临时结果，或在引用外部表的弹性查询数据库中定义存储过程。
-* 除了 nvarchar （max），外部表定义中不支持 LOB 类型 （包括空间类型）。 一种解决方法是，可以在远程数据库上创建将 LOB 类型强制转换为 nvarchar(max) 的视图，通过该视图（而不是基表）定义外部表，然后在查询中将其强制转换回原始 LOB 类型。
+* 除了 nvarchar (max), LOB 类型 (包括空间类型) 在外部表定义中不受支持。 一种解决方法是，可以在远程数据库上创建将 LOB 类型强制转换为 nvarchar(max) 的视图，通过该视图（而不是基表）定义外部表，然后在查询中将其强制转换回原始 LOB 类型。
 * 结果集中的 nvarchar(max) 数据类型列禁用弹性查询实现中使用的高级批处理技术，并且在大量非聚合数据正在作为查询的结果进行传输的非规范用例中可能会影响一个数量级甚至两个数量级的查询性能。
 * 当前不支持外部表上的列统计信息。 支持表统计信息，但需要手动创建。
-* 弹性查询仅适用于 Azure SQL 数据库。 不能用于查询的本地 SQL Server 或在 VM 中的 SQL Server 使用它。
+* 弹性查询仅适用于 Azure SQL 数据库。 不能将其用于在 VM 中查询本地 SQL Server 或 SQL Server。
 
 ## <a name="feedback"></a>反馈
 

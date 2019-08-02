@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64e190e3e70459846b50e1f68158b0a5c458a216
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 14e7a4389c192dde8d086a69a35114f3b8b33e96
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482053"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562185"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理
 
@@ -40,7 +40,7 @@ ms.locfileid: "67482053"
 1. 向找到的 DC 发送本地域信息和用户凭据，以对用户进行身份验证。
 1. 接收用于访问已加入 AD 的资源的 Kerberos [票证授予票证 (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets)。
 
-当用户尝试访问针对 Windows 集成身份验证配置的所有应用时，它们将顺利进行 SSO  。  
+当用户尝试访问针对 Windows 集成身份验证配置的所有应用时，它们将顺利进行 SSO。  
 
 Windows Hello for Business 需要其他配置才能支持已加入 Azure AD 的设备的本地 SSO。 有关详细信息，请参阅[使用 Windows Hello for Business 配置已加入 Azure AD 的设备进行本地单一登录](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)。 
 
@@ -51,7 +51,7 @@ Windows Hello for Business 需要其他配置才能支持已加入 Azure AD 的�
 - 访问 AD 成员服务器上的 UNC 路径
 - 访问为 Windows 集成安全性配置的 AD 成员 Web 服务器 
 
-如果想要管理 Windows 设备的本地 AD，请安装[适用于 Windows 10 的远程服务器管理工具](https://www.microsoft.com/en-us/download/details.aspx?id=45520)。
+如果想要管理 Windows 设备的本地 AD，请安装[适用于 Windows 10 的远程服务器管理工具](https://www.microsoft.com/download/details.aspx?id=45520)。
 
 可以使用：
 

@@ -10,20 +10,21 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 95c2e9d3f54f967b3ebb434c742f69251b80573e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3b87e04c2d6380a0ee4157e73db0cd4057fadee1
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61336750"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704929"
 ---
 # <a name="query-expression-syntax"></a>查询表达式语法
 
-我们已经看到对 interpret  请求的响应包括查询表达式。 解释用户查询的语法为每个解释创建了一个查询表达式。 然后，可以使用查询表达式发出 evaluate  请求以检索实体搜索结果。
+我们已经看到对 interpret请求的响应包括查询表达式。 解释用户查询的语法为每个解释创建了一个查询表达式。 然后，可以使用查询表达式发出 evaluate请求以检索实体搜索结果。
 
-你还可以构造自己的查询表达式，并在 evaluate  请求中使用它们。 如果要构建自己的用户界面来创建查询表达式以响应用户的操作，这将非常有用。 为此，你需要了解查询表达式的语法。  
+你还可以构造自己的查询表达式，并在 evaluate请求中使用它们。 如果要构建自己的用户界面来创建查询表达式以响应用户的操作，这将非常有用。 为此，你需要了解查询表达式的语法。  
 
-可以包含在查询表达式中的每个实体属性都具有特定数据类型和一组可能的查询运算符。 [实体属性](EntityAttributes.md)中指定了每个属性的实体属性集和支持的运算符。 单值查询要求该属性支持 Equals  操作。 前缀查询要求该属性支持  StartsWith 操作。 数字范围查询要求该属性支持  IsBetween 操作。
+可以包含在查询表达式中的每个实体属性都具有特定数据类型和一组可能的查询运算符。 [实体属性](EntityAttributes.md)中指定了每个属性的实体属性集和支持的运算符。 单值查询要求该属性支持 Equals操作。 前缀查询要求该属性支持 StartsWith 操作。 数字范围查询要求该属性支持 IsBetween 操作。
 
 某些实体数据存储为复合属性，如属性名称中的点“.”所示。 例如，作者/关联信息表示为复合属性。 它包含 4 个组件：AuN、AuId、AfN、AfId。 这些组件是形成单个实体属性值的单独数据片段。
 
@@ -61,12 +62,12 @@ D='2010-02-04'
 D>'2010-02-03'  
 D=['2010-02-03','2010-02-05']
 
- And/Or 查询：  
+And/Or 查询：  
 And(Y=1985, Ti='电子系统无序')  
 Or(Ti='电子系统无序', Ti='容错原则和实践')  
 And(Or(Y=1985,Y=2008), Ti='电子系统无序')
  
- 复合查询：  
+复合查询：  
 要查询复合属性的组件，需要将引用复合属性的查询表达式的一部分括在 Composite() 函数中。 
 
 例如，要按作者姓名查询论文，请使用以下查询：

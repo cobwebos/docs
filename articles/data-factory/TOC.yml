@@ -584,6 +584,12 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: 在 Azure-SSIS IR 中排查包执行问题
           href: ssis-integration-runtime-ssis-activity-faq.md
+- name: 方案
+  items:
+    - name: Data Lake 与 EDW 的数据迁移
+      items:
+        - name: 为什么使用 Azure 数据工厂
+          href: data-migration-guidance-overview.md
 - name: 引用
   items:
     - name: .NET

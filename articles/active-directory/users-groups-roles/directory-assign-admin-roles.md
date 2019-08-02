@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d3da81fabf55bc0c3944f0c03829dee4fcce46
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 5167ba170181bed6dc76d4ca3df79306f432eaf2
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304414"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722669"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -41,12 +41,12 @@ ms.locfileid: "68304414"
 
 * **[应用程序开发人员](#application-developer)** ：在将设置“用户可以注册应用程序”设置为“否”时，充当此角色的用户可以创建应用程序注册。 当“用户可以同意应用代表他们访问公司数据”设置设为“否”时，此角色还能够代表自己授权同意。 在创建新应用程序注册或企业应用程序时，会将分配到此角色的用户添加为所有者。
 
-* **[身份验证管理员](#authentication-administrator)** ：具有此角色的用户可以设置或重置非密码凭据, 并可以更新所有用户的密码。 身份验证管理员可以要求用户重新注册现有非密码凭据（例如 MFA 或 FIDO），并可以撤销“在设备上记住 MFA”（当非管理员或仅分配有以下角色的用户下次登录时提示他们执行 MFA）： 
+* **[身份验证管理员](#authentication-administrator)** ：具有此角色的用户可以设置或重置非密码凭据, 并可以更新所有用户的密码。 身份验证管理员可以要求用户重新注册现有非密码凭据（例如 MFA 或 FIDO），并可以撤销“在设备上记住 MFA”（当非管理员或仅分配有以下角色的用户下次登录时提示他们执行 MFA）：
   * 身份验证管理员
-  * 目录读者
+  * 目录读取者
   * 来宾邀请者
   * 消息中心读取者
-  * 报告读者
+  * 报告读取者
 
   身份验证管理员角色目前以公共预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -82,7 +82,7 @@ ms.locfileid: "68304414"
 
 * **[合规性管理员](#compliance-administrator)** ：具有此角色的用户有权管理 Microsoft 365 合规中心、Microsoft 365 管理中心、Azure 和 Office 365 安全与合规中心中的合规性相关功能。 这些用户还可以管理 Exchange 管理中心、Teams 和 Skype for Business 管理中心内的所有功能，并可创建适用于 Azure 和 Microsoft 365 的支持票证。 [关于 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)中提供了详细信息。
 
-  In | 有权执行的操作
+  流入 | 有权执行的操作
   ----- | ----------
   [Microsoft 365 合规中心](https://protection.office.com) | 跨 Microsoft 365 服务保护和管理组织数据<br>管理合规性警报
   [合规性管理器](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 跟踪、分配并验证组织的法规合规性活动
@@ -92,7 +92,7 @@ ms.locfileid: "68304414"
 
 * **[符合性数据管理员](#compliance-data-administrator)** :具有此角色的用户有权在 Microsoft 365 相容性中心、Microsoft 365 管理中心和 Azure 中保护和跟踪数据。 这些用户还可以管理 Exchange 管理中心、Compliance Manager、Teams 和 Skype for Business 管理中心内的所有功能，并可创建适用于 Azure 和 Microsoft 365 的支持票证。
 
-  In | 有权执行的操作
+  流入 | 有权执行的操作
   ----- | ----------
   [Microsoft 365 合规中心](https://protection.office.com) | 跨 Microsoft 365 服务监视符合性相关的策略<br>管理合规性警报
   [合规性管理器](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 跟踪、分配并验证组织的法规合规性活动
@@ -121,7 +121,7 @@ ms.locfileid: "68304414"
   > [!NOTE] 
   > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Dynamics 365 服务管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“Dynamics 365 管理员”。
 
-* **[Exchange 管理员](#exchange-service-administrator)** ：具有此角色的用户具有 Microsoft Exchange Online 内的全局权限（如果该服务存在）。 还能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
+* **[Exchange 管理员](#exchange-service-administrator)** ：具有此角色的用户具有 Microsoft CRM Online 内的全局权限(如果该服务存在)。 还能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
   > [!NOTE]
   > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Exchange 服务管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“Exchange 管理员”。 它是 [Exchange 管理中心](https://go.microsoft.com/fwlink/p/?LinkID=529144)中的“Exchange Online 管理员”。 
 
@@ -136,7 +136,29 @@ ms.locfileid: "68304414"
   >
   >
 
-* **[来宾邀请者](#guest-inviter)** ：此角色的用户可在“成员可以邀请”用户设置设置为“否”时管理 Azure Active Directory B2B 来宾用户邀请  。 [关于 Azure AD B2B 协作](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)中提供了有关 B2B 协作的详细信息。 它不包括任何其他权限。
+* **[来宾邀请者](#guest-inviter)** ：此角色的用户可在“成员可以邀请”用户设置设置为“否”时管理 Azure Active Directory B2B 来宾用户邀请。 [关于 Azure AD B2B 协作](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)中提供了有关 B2B 协作的详细信息。 它不包括任何其他权限。
+
+* **[支持管理员](#helpdesk-administrator)** :具有此角色的用户可以更改密码、使刷新令牌失效、管理服务请求和监视服务运行状况。 使刷新令牌失效会强制用户重新登录。 对于非管理员或仅分配有以下角色的其他用户，支持管理员可以重置其密码，以及使其刷新令牌失效：
+  * 目录读取者
+  * 来宾邀请者
+  * 支持管理员
+  * 消息中心读取者
+  * 报告读取者
+  
+  <b>重要说明</b>：具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的密码。 更改用户的密码可能意味着假定用户标识和权限的能力。 例如：
+  * 应用程序注册和企业应用程序所有者，可以管理他们拥有的应用的凭据。 这些应用程序可能在 Azure AD 或其他位置拥有未授予支持人员管理员的特权。 通过此路径，支持人员管理员可能能够假定应用程序所有者的身份，然后通过更新应用程序的凭据来进一步假定特权应用程序的标识。
+  * Azure 订阅所有者，可能对 Azure 中的敏感或私有信息或关键配置拥有访问权限。
+  * 安全组和 Office 365 组所有者，可以管理组成员身份。 这些组可能会授予对 Azure AD 或其他位置敏感或私有信息或关键配置的访问权限。
+  * Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
+  * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
+
+
+  > [!NOTE]
+  > 使用[管理单元 (预览)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units)可以将管理权限委派给用户子集, 并将策略应用到部分用户。
+
+
+  > [!NOTE]
+  > 在 [Azure 门户](https://portal.azure.com/)中，此角色以前称为“密码管理员”。 我们已将其名称更改为 "支持管理员", 以匹配其在 Azure AD PowerShell 中的名称 Azure AD 图形 API 和 Microsoft Graph API。
 
 * **[Intune 管理员](#intune-service-administrator)** ：具有此角色的用户具有 Microsoft Intune Online 内的全局权限（如果该服务存在）。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关详细信息，请参阅[使用 Microsoft Intune 进行基于角色的管理控制 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)
   > [!NOTE]
@@ -155,28 +177,10 @@ ms.locfileid: "68304414"
 
 * **[合作伙伴二线支持人员](#partner-tier2-support)** ：请勿使用。 此角色已弃用，并将从 Azure AD 中删除。 此角色仅供少数 Microsoft 转售合作伙伴使用，不适用于一般用途。
 
-* **[支持（密码）管理员](#helpdesk-administrator)** ：具有此角色的用户可以更改密码、使刷新令牌失效、管理服务请求和监视服务运行状况。 使刷新令牌失效会强制用户重新登录。 对于非管理员或仅分配有以下角色的其他用户，支持管理员可以重置其密码，以及使其刷新令牌失效：
-  * 目录读者
+* **[密码管理员](#password-administrator)** :具有此角色的用户具有管理密码的有限能力。 此角色不会授予管理服务请求或监视服务运行状况的功能。 密码管理员可以重置非管理员或以下角色成员的其他用户的密码:
+  * 目录读取者
   * 来宾邀请者
-  * 支持管理员
-  * 消息中心读取者
-  * 报告读者
-  
-  <b>重要说明</b>：具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的密码。 更改用户的密码可能意味着假定用户标识和权限的能力。 例如：
-  * 应用程序注册和企业应用程序所有者，可以管理他们拥有的应用的凭据。 这些应用程序可能在 Azure AD 或其他位置拥有未授予支持人员管理员的特权。 通过此路径，支持人员管理员可能能够假定应用程序所有者的身份，然后通过更新应用程序的凭据来进一步假定特权应用程序的标识。
-  * Azure 订阅所有者，可能对 Azure 中的敏感或私有信息或关键配置拥有访问权限。
-  * 安全组和 Office 365 组所有者，可以管理组成员身份。 这些组可能会授予对 Azure AD 或其他位置敏感或私有信息或关键配置的访问权限。
-  * Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
-  * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
-
-
-  > [!NOTE]
-  > 使用[管理单元 (预览)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units)可以将管理权限委派给用户子集, 并将策略应用到部分用户。
-
-
-  > [!NOTE]
-  > 在 [Azure 门户](https://portal.azure.com/)中，此角色以前称为“密码管理员”。 其名称即将更改为“支持管理员”，以便与 Azure AD PowerShell、Azure AD 图形 API 和 Microsoft 图形 API 中的名称相匹配。 Azure 门户中的名称将暂时性地更改为“支持(密码)管理员”，不久之后将更改为“支持管理员”。
-
+  * 密码管理员
 
 * **[Power BI 管理员](#power-bi-service-administrator)** ：具有此角色的用户具有 Microsoft Power BI 内的全局权限（如果该服务存在），并且能够管理支持票证和监视服务运行状况。 有关详细信息，请参阅[了解 Power BI 管理员角色](https://docs.microsoft.com/power-bi/service-admin-role)。
   > [!NOTE]
@@ -198,11 +202,11 @@ ms.locfileid: "68304414"
 
 * **[安全管理员](#security-administrator)** ：具有此角色的用户有权管理 Microsoft 365 安全中心、Azure Active Directory 标识保护、Azure 信息保护和 Office 365 安全与合规中心中与安全相关的功能。 [Office 365 安全与合规中心](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
   
-  In | 有权执行的操作
+  流入 | 有权执行的操作
   --- | ---
   [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务监视与安全相关的策略<br>管理安全威胁和警报<br>查看报告
-  标识保护中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
-  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 安全读取者角色的所有权限<br>无法管理 Azure AD 角色分配或设置 
+  Identity Protection 中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
+  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 安全读取者角色的所有权限<br>无法管理 Azure AD 角色分配或设置
   [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 管理安全策略<br>查看、调查和响应安全威胁<br>查看报告
   Azure 高级威胁防护 | 监视和响应可疑安全活动
   Windows Defender ATP 和 EDR | 分配角色<br>管理计算机组<br>配置终结点威胁检测和自动修正<br>查看、调查并响应警报
@@ -213,10 +217,10 @@ ms.locfileid: "68304414"
 
 * **[安全操作员](#security-operator)** :具有此角色的用户可以管理警报并拥有对安全相关功能的全局只读访问权限, 包括 Microsoft 365 安全中心、Azure Active Directory、Identity Protection、Privileged Identity Management 和 Office 365 中的所有信息安全与合规中心。 [Office 365 安全与合规中心](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center)提供了有关 Office 365 权限的详细信息。
 
-  In | 有权执行的操作
+  流入 | 有权执行的操作
   --- | ---
   [Microsoft 365 安全中心](https://protection.office.com) | 安全读取者角色的所有权限<br>查看、调查和响应安全威胁警报
-  标识保护中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
+  Identity Protection 中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 安全读取者角色的所有权限
   [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 安全读取者角色的所有权限<br>查看、调查和响应安全警报
   Windows Defender ATP 和 EDR | 安全读取者角色的所有权限<br>查看、调查和响应安全警报
@@ -227,10 +231,10 @@ ms.locfileid: "68304414"
 
 * **[安全读取者](#security-reader)** ：具有此角色的用户对安全相关的功能具有全局只读访问权限，包括 Microsoft 365 安全中心、Azure Active Directory、标识保护、Privileged Identity Management 中的所有信息，并且能够阅读 Azure Active Directory 登录报告和审核日志，还授予了对 Office 365 安全与合规中心的只读权限。 [Office 365 安全与合规中心](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
 
-  In | 有权执行的操作
+  流入 | 有权执行的操作
   --- | ---
   [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务查看与安全相关的策略<br>查看安全威胁和警报<br>查看报告
-  标识保护中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>加密<li>数据丢失预防<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
+  Identity Protection 中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>加密<li>数据丢失预防<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 以只读方式访问 Azure AD PIM 中所显示的一切信息：Azure AD 角色分配的策略和报告、安全审阅，以及在未来还可通过读取来访问 Azure AD 角色分配以外的方案的策略数据和报告。<br>**不能**注册 Azure AD PIM 或对其进行任何更改。 充当此角色的人员可以在 PIM 门户中或通过 PowerShell 为符合条件的用户激活其他角色（例如，全局管理员或特权角色管理员）。
   [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 查看安全策略<br>查看并调查安全威胁<br>查看报告
   Windows Defender ATP 和 EDR | 查看并调查警报
@@ -268,7 +272,7 @@ ms.locfileid: "68304414"
   | --- | --- |
   |常规权限|<p>创建用户和组</p><p>创建和管理用户视图</p><p>管理 Office 支持票证<p>更新密码过期策略|
   |<p>适用于所有用户，包括所有管理员</p>|<p>管理许可证</p><p>管理除用户主体名称之外的所有用户属性</p>
-  |仅适用于不是管理员或具有以下任一管理员角色（权限有限）的用户：<ul><li>目录读者<li>来宾邀请者<li>支持管理员<li>消息中心读取者<li>报告读者<li>用户管理员|<p>删除和还原</p><p>禁用和启用</p><p>使刷新令牌失效</p><p>管理包括用户主体名称在内的所有用户属性</p><p>重置密码</p><p>更新 (FIDO) 设备密钥</p>
+  |仅适用于不是管理员或具有以下任一管理员角色（权限有限）的用户：<ul><li>目录读取者<li>来宾邀请者<li>支持管理员<li>消息中心读取者<li>报告读取者<li>用户管理员|<p>删除和还原</p><p>禁用和启用</p><p>使刷新令牌失效</p><p>管理包括用户主体名称在内的所有用户属性</p><p>重新设置密码</p><p>更新 (FIDO) 设备密钥</p>
   
   <b>重要说明</b>：具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的密码。 更改用户的密码可能意味着假定用户标识和权限的能力。 例如：
   * 应用程序注册和企业应用程序所有者，可以管理他们拥有的应用的凭据。 这些应用程序可能在 Azure AD 或其他位置拥有未授予用户管理员的特权。 通过此路径，用户管理员可能能够假定应用程序所有者的身份，然后通过更新应用程序的凭据来进一步假定特权应用程序的标识。
@@ -287,7 +291,7 @@ ms.locfileid: "68304414"
 | --- | --- |
 | microsoft.aad.directory/applications/audience/update | 更新 Azure Active Directory 中的 applications.audience 属性。 |
 | microsoft.aad.directory/applications/authentication/update | 更新 Azure Active Directory 中的 applications.authentication 属性。 |
-| microsoft.aad.directory/applications/basic/update | 更新 Azure Active Directory 中应用程序的基本属性。 |
+| microsoft.aad.directory/applications/basic/update | 更新 Azure Active Directory 中应用程序上的基本属性。 |
 | microsoft.aad.directory/applications/create | 在 Azure Active Directory 中创建应用程序。 |
 | microsoft.aad.directory/applications/credentials/update | 更新 Azure Active Directory 中的 applications.credentials 属性。 |
 | microsoft.aad.directory/applications/delete | 删除 Azure Active Directory 中的应用程序。 |
@@ -310,13 +314,13 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | 更新 Azure Active Directory 中的 servicePrincipals.appRoleAssignments 属性。 |
 | microsoft.aad.directory/servicePrincipals/audience/update | 更新 Azure Active Directory 中的 servicePrincipals.audience 属性。 |
 | microsoft.aad.directory/servicePrincipals/authentication/update | 更新 Azure Active Directory 中的 servicePrincipals.authentication 属性。 |
-| microsoft.aad.directory/servicePrincipals/basic/update | 更新 Azure Active Directory 中 servicePrincipals 的基本属性。 |
+| microsoft.aad.directory/servicePrincipals/basic/update | 更新 Azure Active Directory 中 servicePrincipals 上的基本属性。 |
 | microsoft.aad.directory/servicePrincipals/create | 在 Azure Active Directory 中创建 servicePrincipals。 |
 | microsoft.aad.directory/servicePrincipals/credentials/update | 更新 Azure Active Directory 中的 servicePrincipals.credentials 属性。 |
 | microsoft.aad.directory/servicePrincipals/delete | 删除 Azure Active Directory 中的 servicePrincipals。 |
 | microsoft.aad.directory/servicePrincipals/owners/update | 更新 Azure Active Directory 中的 servicePrincipals.owners 属性。 |
 | microsoft.aad.directory/servicePrincipals/permissions/update | 更新 Azure Active Directory 中的 servicePrincipals.permissions 属性。 |
-| microsoft.aad.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的 servicePrincipals.policies 属性。 |
+| microsoft.aad.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的servicePrincipals.policies 属性。 |
 | microsoft.aad.directory/signInReports/allProperties/read | 读取 Azure Active Directory 中 signInReports 上的所有属性（包括特权属性）。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
@@ -391,7 +395,7 @@ ms.locfileid: "68304414"
 | --- | --- |
 | microsoft.aad.b2c/trustFramework/policies/allTasks | 读取和配置 Azure Active Directory B2C 中的自定义策略。 |
 
-### <a name="billing-administrator"></a>计费管理员
+### <a name="billing-administrator"></a>帐务管理员
 可以执行与常见计费相关的任务，例如更新付款信息。
 
   > [!NOTE]
@@ -401,7 +405,7 @@ ms.locfileid: "68304414"
 
 | **操作** | **说明** |
 | --- | --- |
-| microsoft.aad.directory/organization/basic/update | 更新 Azure Active Directory 中组织的基本属性。 |
+| microsoft.aad.directory/organization/basic/update | 更新 Azure Active Directory 中组织上的基本属性。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.commerce.billing/allEntities/allTasks | 管理 Office 365 计费的各个方面。 |
@@ -410,14 +414,14 @@ ms.locfileid: "68304414"
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
 
-### <a name="cloud-application-administrator"></a>云应用管理员
+### <a name="cloud-application-administrator"></a>云应用程序管理员
 可以创建和管理应用注册和企业应用的所有方面，应用代理除外。
 
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/applications/audience/update | 更新 Azure Active Directory 中的 applications.audience 属性。 |
 | microsoft.aad.directory/applications/authentication/update | 更新 Azure Active Directory 中的 applications.authentication 属性。 |
-| microsoft.aad.directory/applications/basic/update | 更新 Azure Active Directory 中应用程序的基本属性。 |
+| microsoft.aad.directory/applications/basic/update | 更新 Azure Active Directory 中应用程序上的基本属性。 |
 | microsoft.aad.directory/applications/create | 在 Azure Active Directory 中创建应用程序。 |
 | microsoft.aad.directory/applications/credentials/update | 更新 Azure Active Directory 中的 applications.credentials 属性。 |
 | microsoft.aad.directory/applications/delete | 删除 Azure Active Directory 中的应用程序。 |
@@ -439,13 +443,13 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | 更新 Azure Active Directory 中的 servicePrincipals.appRoleAssignments 属性。 |
 | microsoft.aad.directory/servicePrincipals/audience/update | 更新 Azure Active Directory 中的 servicePrincipals.audience 属性。 |
 | microsoft.aad.directory/servicePrincipals/authentication/update | 更新 Azure Active Directory 中的 servicePrincipals.authentication 属性。 |
-| microsoft.aad.directory/servicePrincipals/basic/update | 更新 Azure Active Directory 中 servicePrincipals 的基本属性。 |
+| microsoft.aad.directory/servicePrincipals/basic/update | 更新 Azure Active Directory 中 servicePrincipals 上的基本属性。 |
 | microsoft.aad.directory/servicePrincipals/create | 在 Azure Active Directory 中创建 servicePrincipals。 |
 | microsoft.aad.directory/servicePrincipals/credentials/update | 更新 Azure Active Directory 中的 servicePrincipals.credentials 属性。 |
 | microsoft.aad.directory/servicePrincipals/delete | 删除 Azure Active Directory 中的 servicePrincipals。 |
 | microsoft.aad.directory/servicePrincipals/owners/update | 更新 Azure Active Directory 中的 servicePrincipals.owners 属性。 |
 | microsoft.aad.directory/servicePrincipals/permissions/update | 更新 Azure Active Directory 中的 servicePrincipals.permissions 属性。 |
-| microsoft.aad.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的 servicePrincipals.policies 属性。 |
+| microsoft.aad.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的servicePrincipals.policies 属性。 |
 | microsoft.aad.directory/signInReports/allProperties/read | 读取 Azure Active Directory 中 signInReports 上的所有属性（包括特权属性）。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
@@ -515,11 +519,11 @@ ms.locfileid: "68304414"
 | microsoft.commerce.billing/allEntities/allTasks | 管理 Office 365 计费的各个方面。 |
 | microsoft.intune/allEntities/allTasks | 管理 Intune 的各个方面。 |
 | microsoft.office365.complianceManager/allEntities/allTasks | 管理 Office 365 合规性管理器的各个方面 |
-| microsoft.office365.desktopAnalytics/allEntities/allTasks | 管理桌面分析的各个方面。 |
+| microsoft.office365.desktopAnalytics/allEntities/allTasks | 管理桌面分析的所有方面。 |
 | microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的各个方面。 |
 | microsoft.office365.lockbox/allEntities/allTasks | 管理 Office 365 客户密码箱的各个方面 |
 | microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
-| microsoft.office365.messageCenter/securityMessages/read | 读取 microsoft.office365.messageCenter 中的安全消息。 |
+| microsoft.office365.messageCenter/securityMessages/read | 读取 microsoft.office365.messageCenter 中的 securityMessages。 |
 | microsoft.office365.protectionCenter/allEntities/allTasks | 管理 Office 365 防护中心的各个方面。 |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | 创建和删除所有资源，然后读取和更新 microsoft.office365.securityComplianceCenter 中的标准属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
@@ -527,12 +531,12 @@ ms.locfileid: "68304414"
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | 管理 Skype for Business Online 的各个方面。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中的所有资源上的基本属性。 |
 | microsoft.powerApps.dynamics365/allEntities/allTasks | 管理 Dynamics 365 的各个方面。 |
 | microsoft.powerApps.powerBI/allEntities/allTasks | 管理 Power BI 的各个方面。 |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | 读取 microsoft.windows.defenderAdvancedThreatProtection 中的所有资源。 |
 
-### <a name="compliance-administrator"></a>符合性管理员
+### <a name="compliance-administrator"></a>合规性管理员
 可以读取和管理 Azure AD 和 Office 365 中的符合性配置和报表。
 
   > [!NOTE]
@@ -606,7 +610,7 @@ ms.locfileid: "68304414"
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
 ### <a name="customer-lockbox-access-approver"></a>客户密码箱访问审批者
-可以批准 Microsoft 支持人员访问客户组织数据的请求。
+可以批准要求访问客户组织数据的 Microsoft 支持请求。
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -631,7 +635,7 @@ ms.locfileid: "68304414"
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
-| microsoft.office365.desktopAnalytics/allEntities/allTasks | 管理桌面分析的各个方面。 |
+| microsoft.office365.desktopAnalytics/allEntities/allTasks | 管理桌面分析的所有方面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
@@ -640,54 +644,54 @@ ms.locfileid: "68304414"
 
 | **操作** | **说明** |
 | --- | --- |
-| microsoft.aad.directory/groupSettings/basic/read | 读取 Azure Active Directory 中 groupSettings 的基本属性。 |
-| microsoft.aad.directory/groupSettingTemplates/basic/read | 读取 Azure Active Directory 中 groupSettingTemplates 的基本属性。 |
+| microsoft.aad.directory/groupSettings/basic/read | 读取 Azure Active Directory 中 groupSettings 上的基本属性。 |
+| microsoft.aad.directory/groupSettingTemplates/basic/read | 读取 Azure Active Directory 中 groupSettingTemplates 上的基本属性。 |
 
-### <a name="directory-readers"></a>目录读者
+### <a name="directory-readers"></a>目录读取者
 可以读取基本目录信息。 用于授予对应用程序的访问权限，不针对用户。
 
 | **操作** | **说明** |
 | --- | --- |
-| microsoft.aad.directory/administrativeUnits/basic/read | 读取 Azure Active Directory 中 administrativeUnits 的基本属性。 |
+| microsoft.aad.directory/administrativeUnits/basic/read | 读取 Azure Active Directory 中 administrativeUnits 上的基本属性。 |
 | microsoft.aad.directory/administrativeUnits/members/read | 读取 Azure Active Directory 中的 administrativeUnits.members 属性。 |
-| microsoft.aad.directory/applications/basic/read | 读取 Azure Active Directory 中应用程序的基本属性。 |
+| microsoft.aad.directory/applications/basic/read | 读取 Azure Active Directory 中应用程序上的基本属性。 |
 | microsoft.aad.directory/applications/owners/read | 读取 Azure Active Directory 中的 applications.owners 属性。 |
 | microsoft.aad.directory/applications/policies/read | 读取 Azure Active Directory 中的 applications.policies 属性。 |
-| microsoft.aad.directory/contacts/basic/read | 读取 Azure Active Directory 中联系人的基本属性。 |
+| microsoft.aad.directory/contacts/basic/read | 读取 Azure Active Directory 中联系人上的基本属性。 |
 | microsoft.aad.directory/contacts/memberOf/read | 读取 Azure Active Directory 中的 contacts.memberOf 属性。 |
-| microsoft.aad.directory/contracts/basic/read | 读取 Azure Active Directory 中协定的基本属性。 |
-| microsoft.aad.directory/devices/basic/read | 读取 Azure Active Directory 中设备的基本属性。 |
+| microsoft.aad.directory/contracts/basic/read | 读取 Azure Active Directory 中合约上的基本属性。 |
+| microsoft.aad.directory/devices/basic/read | 读取 Azure Active Directory 中设备上的基本属性。 |
 | microsoft.aad.directory/devices/memberOf/read | 读取 Azure Active Directory 中的 devices.memberOf 属性。 |
 | microsoft.aad.directory/devices/registeredOwners/read | 读取 Azure Active Directory 中的 devices.registeredOwners 属性。 |
 | microsoft.aad.directory/devices/registeredUsers/read | 读取 Azure Active Directory 中的 devices.registeredUsers 属性。 |
-| microsoft.aad.directory/directoryRoles/basic/read | 读取 Azure Active Directory 中 directoryRoles 的基本属性。 |
+| microsoft.aad.directory/directoryRoles/basic/read | 读取 Azure Active Directory 中 directoryRoles 上的基本属性。 |
 | microsoft.aad.directory/directoryRoles/eligibleMembers/read | 读取 Azure Active Directory 中的 directoryRoles.eligibleMembers 属性。 |
 | microsoft.aad.directory/directoryRoles/members/read | 读取 Azure Active Directory 中的 directoryRoles.members 属性。 |
-| microsoft.aad.directory/domains/basic/read | 读取 Azure Active Directory 中域的基本属性。 |
+| microsoft.aad.directory/domains/basic/read | 读取 Azure Active Directory 中域上的基本属性。 |
 | microsoft.aad.directory/groups/appRoleAssignments/read | 读取 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
-| microsoft.aad.directory/groups/basic/read | 读取 Azure Active Directory 中组的基本属性。 |
+| microsoft.aad.directory/groups/basic/read | 读取 Azure Active Directory 中组上的基本属性。 |
 | microsoft.aad.directory/groups/memberOf/read | 读取 Azure Active Directory 中的 groups.memberOf 属性。 |
 | microsoft.aad.directory/groups/members/read | 读取 Azure Active Directory 中的 groups.members 属性。 |
 | microsoft.aad.directory/groups/owners/read | 读取 Azure Active Directory 中的 groups.owners 属性。 |
 | microsoft.aad.directory/groups/settings/read | 读取 Azure Active Directory 中的 groups.settings 属性。 |
-| microsoft.aad.directory/groupSettings/basic/read | 读取 Azure Active Directory 中 groupSettings 的基本属性。 |
-| microsoft.aad.directory/groupSettingTemplates/basic/read | 读取 Azure Active Directory 中 groupSettingTemplates 的基本属性。 |
-| microsoft.aad.directory/oAuth2PermissionGrants/basic/read | 读取 Azure Active Directory 中 oAuth2PermissionGrants 的基本属性。 |
-| microsoft.aad.directory/organization/basic/read | 读取 Azure Active Directory 中组织的基本属性。 |
+| microsoft.aad.directory/groupSettings/basic/read | 读取 Azure Active Directory 中 groupSettings 上的基本属性。 |
+| microsoft.aad.directory/groupSettingTemplates/basic/read | 读取 Azure Active Directory 中 groupSettingTemplates 上的基本属性。 |
+| microsoft.aad.directory/oAuth2PermissionGrants/basic/read | 读取 Azure Active Directory 中 oAuth2PermissionGrants 上的基本属性。 |
+| microsoft.aad.directory/organization/basic/read | 读取 Azure Active Directory 中组织上的基本属性。 |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/read | 读取 Azure Active Directory 中的 organization.trustedCAsForPasswordlessAuth 属性。 |
 | microsoft.aad.directory/roleAssignments/basic/read | 读取 Azure Active Directory 中 roleAssignments 上的基本属性。 |
-| microsoft.aad.directory/roleDefinitions/basic/read | 读取 Azure Active Directory 中 roleDefinitions 上的基本属性。 |
+| microsoft.aad.directory/roleDefinitions/basic/read | 读取 Azure Active Directory 中的 roleDefinitions 上的基本属性。 |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | 读取 Azure Active Directory 中的 servicePrincipals.appRoleAssignedTo 属性。 |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | 读取 Azure Active Directory 中的 servicePrincipals.appRoleAssignments 属性。 |
-| microsoft.aad.directory/servicePrincipals/basic/read | 读取 Azure Active Directory 中 servicePrincipals 的基本属性。 |
+| microsoft.aad.directory/servicePrincipals/basic/read | 读取 Azure Active Directory 中 servicePrincipals 上的基本属性。 |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | 读取 Azure Active Directory 中的 servicePrincipals.memberOf 属性。 |
 | microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | 读取 Azure Active Directory 中的 servicePrincipals.oAuth2PermissionGrants 属性。 |
 | microsoft.aad.directory/servicePrincipals/ownedObjects/read | 读取 Azure Active Directory 中的 servicePrincipals.ownedObjects 属性。 |
 | microsoft.aad.directory/servicePrincipals/owners/read | 读取 Azure Active Directory 中的 servicePrincipals.owners 属性。 |
 | microsoft.aad.directory/servicePrincipals/policies/read | 读取 Azure Active Directory 中的 servicePrincipals.policies 属性。 |
-| microsoft.aad.directory/subscribedSkus/basic/read | 读取 Azure Active Directory 中 subscribedSkus 的基本属性。 |
+| microsoft.aad.directory/subscribedSkus/basic/read | 读取 Azure Active Directory 中 subscribedSkus 上的基本属性。 |
 | microsoft.aad.directory/users/appRoleAssignments/read | 读取 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
-| microsoft.aad.directory/users/basic/read | 读取 Azure Active Directory 中用户的基本属性。 |
+| microsoft.aad.directory/users/basic/read | 读取 Azure Active Directory 中用户上的基本属性。 |
 | microsoft.aad.directory/users/directReports/read | 读取 Azure Active Directory 中的 users.directReports 属性。 |
 | microsoft.aad.directory/users/manager/read | 读取 Azure Active Directory 中的 users.manager 属性。 |
 | microsoft.aad.directory/users/memberOf/read | 读取 Azure Active Directory 中的 users.memberOf 属性。 |
@@ -704,8 +708,8 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/organization/dirSync/update | 更新 Azure Active Directory 中的 organization.dirSync 属性。 |
 | microsoft.aad.directory/policies/create | 在 Azure Active Directory 中创建策略。 |
 | microsoft.aad.directory/policies/delete | 删除 Azure Active Directory 中的策略。 |
-| microsoft.aad.directory/policies/basic/read | 读取 Azure Active Directory 中策略的基本属性。 |
-| microsoft.aad.directory/policies/basic/update | 更新 Azure Active Directory 中策略的基本属性。 |
+| microsoft.aad.directory/policies/basic/read | 读取 Azure Active Directory 中策略上的基本属性。 |
+| microsoft.aad.directory/policies/basic/update | 更新 Azure Active Directory 中策略上的基本属性。 |
 | microsoft.aad.directory/policies/owners/read | 读取 Azure Active Directory 中的 policies.owners 属性。 |
 | microsoft.aad.directory/policies/owners/update | 更新 Azure Active Directory 中的 policies.owners 属性。 |
 | microsoft.aad.directory/policies/policiesAppliedTo/read | 读取 Azure Active Directory 中的 policies.policiesAppliedTo 属性。 |
@@ -716,8 +720,8 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | 更新 Azure Active Directory 中的 servicePrincipals.appRoleAssignments 属性。 |
 | microsoft.aad.directory/servicePrincipals/audience/update | 更新 Azure Active Directory 中的 servicePrincipals.audience 属性。 |
 | microsoft.aad.directory/servicePrincipals/authentication/update | 更新 Azure Active Directory 中的 servicePrincipals.authentication 属性。 |
-| microsoft.aad.directory/servicePrincipals/basic/read | 读取 Azure Active Directory 中 servicePrincipals 的基本属性。 |
-| microsoft.aad.directory/servicePrincipals/basic/update | 更新 Azure Active Directory 中 servicePrincipals 的基本属性。 |
+| microsoft.aad.directory/servicePrincipals/basic/read | 读取 Azure Active Directory 中 servicePrincipals 上的基本属性。 |
+| microsoft.aad.directory/servicePrincipals/basic/update | 更新 Azure Active Directory 中 servicePrincipals 上的基本属性。 |
 | microsoft.aad.directory/servicePrincipals/create | 在 Azure Active Directory 中创建 servicePrincipals。 |
 | microsoft.aad.directory/servicePrincipals/credentials/update | 更新 Azure Active Directory 中的 servicePrincipals.credentials 属性。 |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | 读取 Azure Active Directory 中的 servicePrincipals.memberOf 属性。 |
@@ -730,7 +734,7 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的 servicePrincipals.policies 属性。 |
 | microsoft.aad.directorySync/allEntities/allTasks | 在 Azure AD Connect 中执行所有操作。 |
 
-### <a name="directory-writers"></a>目录编写人员
+### <a name="directory-writers"></a>目录编写者
 可以读取和写入基本目录信息。 用于授予对应用程序的访问权限，不针对用户。
 
 | **操作** | **说明** |
@@ -738,16 +742,16 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/groups/create | 在 Azure Active Directory 中创建组。 |
 | microsoft.aad.directory/groups/createAsOwner | 在 Azure Active Directory 中创建组。 添加创建者作为第一个所有者，创建的对象根据创建者的 250 个创建对象配额计数。 |
 | microsoft.aad.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
-| microsoft.aad.directory/groups/basic/update | 更新 Azure Active Directory 中组的基本属性。 |
+| microsoft.aad.directory/groups/basic/update | 更新 Azure Active Directory 中组上的基本属性。 |
 | microsoft.aad.directory/groups/members/update | 更新 Azure Active Directory 中的 groups.members 属性。 |
 | microsoft.aad.directory/groups/owners/update | 更新 Azure Active Directory 中的 groups.owners 属性。 |
 | microsoft.aad.directory/groups/settings/update | 更新 Azure Active Directory 中的 groups.settings 属性。 |
-| microsoft.aad.directory/groupSettings/basic/update | 更新 Azure Active Directory 中 groupSettings 的基本属性。 |
-| microsoft.aad.directory/groupSettings/create | 在 Azure Active Directory 中创建 groupSettings 属性。 |
+| microsoft.aad.directory/groupSettings/basic/update | 更新 Azure Active Directory 中 groupSettings 上的基本属性。 |
+| microsoft.aad.directory/groupSettings/create | 在 Azure Active Directory 中创建 groupSettings。 |
 | microsoft.aad.directory/groupSettings/delete | 删除 Azure Active Directory 中的 groupSettings。 |
 | microsoft.aad.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
 | microsoft.aad.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
-| microsoft.aad.directory/users/basic/update | 更新 Azure Active Directory 中用户的基本属性。 |
+| microsoft.aad.directory/users/basic/update | 更新 Azure Active Directory 中用户上的基本属性。 |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有用户刷新令牌无效。 |
 | microsoft.aad.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 属性。 |
 | microsoft.aad.directory/users/userPrincipalName/update | 更新 Azure Active Directory 中的 users.userPrincipalName 属性。 |
@@ -788,7 +792,7 @@ ms.locfileid: "68304414"
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/users/appRoleAssignments/read | 读取 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
-| microsoft.aad.directory/users/basic/read | 读取 Azure Active Directory 中用户的基本属性。 |
+| microsoft.aad.directory/users/basic/read | 读取 Azure Active Directory 中用户上的基本属性。 |
 | microsoft.aad.directory/users/directReports/read | 读取 Azure Active Directory 中的 users.directReports 属性。 |
 | microsoft.aad.directory/users/inviteGuest | 邀请 Azure Active Directory 中的来宾用户。 |
 | microsoft.aad.directory/users/manager/read | 读取 Azure Active Directory 中的 users.manager 属性。 |
@@ -822,17 +826,17 @@ ms.locfileid: "68304414"
 
 | **操作** | **说明** |
 | --- | --- |
-| microsoft.aad.directory/contacts/basic/update | 更新 Azure Active Directory 中联系人的基本属性。 |
+| microsoft.aad.directory/contacts/basic/update | 更新 Azure Active Directory 中联系人上的基本属性。 |
 | microsoft.aad.directory/contacts/create | 在 Azure Active Directory 中创建联系人。 |
 | microsoft.aad.directory/contacts/delete | 删除 Azure Active Directory 中的联系人。 |
-| microsoft.aad.directory/devices/basic/update | 更新 Azure Active Directory 中设备的基本属性。 |
+| microsoft.aad.directory/devices/basic/update | 更新 Azure Active Directory 中设备上的基本属性。 |
 | microsoft.aad.directory/devices/bitLockerRecoveryKeys/read | 读取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 属性。 |
 | microsoft.aad.directory/devices/create | 在 Azure Active Directory 中创建设备。 |
 | microsoft.aad.directory/devices/delete | 删除 Azure Active Directory 中的设备。 |
 | microsoft.aad.directory/devices/registeredOwners/update | 更新 Azure Active Directory 中的 devices.registeredOwners 属性。 |
 | microsoft.aad.directory/devices/registeredUsers/update | 更新 Azure Active Directory 中的 devices.registeredUsers 属性。 |
 | microsoft.aad.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
-| microsoft.aad.directory/groups/basic/update | 更新 Azure Active Directory 中组的基本属性。 |
+| microsoft.aad.directory/groups/basic/update | 更新 Azure Active Directory 中组上的基本属性。 |
 | microsoft.aad.directory/groups/create | 在 Azure Active Directory 中创建组。 |
 | microsoft.aad.directory/groups/createAsOwner | 在 Azure Active Directory 中创建组。 添加创建者作为第一个所有者，创建的对象根据创建者的 250 个创建对象配额计数。 |
 | microsoft.aad.directory/groups/delete | 删除 Azure Active Directory 中的组。 |
@@ -842,12 +846,12 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/groups/restore | 还原 Azure Active Directory 中的组。 |
 | microsoft.aad.directory/groups/settings/update | 更新 Azure Active Directory 中的 groups.settings 属性。 |
 | microsoft.aad.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
-| microsoft.aad.directory/users/basic/update | 更新 Azure Active Directory 中用户的基本属性。 |
+| microsoft.aad.directory/users/basic/update | 更新 Azure Active Directory 中用户上的基本属性。 |
 | microsoft.aad.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 属性。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.intune/allEntities/allTasks | 管理 Intune 的各个方面。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中的所有资源上的基本属性。 |
 
 ### <a name="kaizala-administrator"></a>Kaizala 管理员
 可以管理 Microsoft Kaizala 的设置。  
@@ -903,7 +907,7 @@ ms.locfileid: "68304414"
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
-| microsoft.office365.messageCenter/securityMessages/read | 读取 microsoft.office365.messageCenter 中的安全消息。 |
+| microsoft.office365.messageCenter/securityMessages/read | 读取 microsoft.office365.messageCenter 中的 securityMessages。 |
 
 ### <a name="message-center-reader"></a>消息中心读取者
 只能在 Office 365 消息中心查看其组织的消息和更新。 
@@ -918,7 +922,7 @@ ms.locfileid: "68304414"
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
 
-### <a name="partner-tier1-support"></a>合作伙伴一线支持人员
+### <a name="partner-tier1-support"></a>合作伙伴层级 1 支持
 不要使用 - 不适用于常规用途。
 
   > [!NOTE]
@@ -928,7 +932,7 @@ ms.locfileid: "68304414"
 
 | **操作** | **说明** |
 | --- | --- |
-| microsoft.aad.directory/contacts/basic/update | 更新 Azure Active Directory 中联系人的基本属性。 |
+| microsoft.aad.directory/contacts/basic/update | 更新 Azure Active Directory 中联系人上的基本属性。 |
 | microsoft.aad.directory/contacts/create | 在 Azure Active Directory 中创建联系人。 |
 | microsoft.aad.directory/contacts/delete | 删除 Azure Active Directory 中的联系人。 |
 | microsoft.aad.directory/groups/create | 在 Azure Active Directory 中创建组。 |
@@ -937,7 +941,7 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/groups/owners/update | 更新 Azure Active Directory 中的 groups.owners 属性。 |
 | microsoft.aad.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
 | microsoft.aad.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
-| microsoft.aad.directory/users/basic/update | 更新 Azure Active Directory 中用户的基本属性。 |
+| microsoft.aad.directory/users/basic/update | 更新 Azure Active Directory 中用户上的基本属性。 |
 | microsoft.aad.directory/users/delete | 删除 Azure Active Directory 中的用户。 |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有用户刷新令牌无效。 |
 | microsoft.aad.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 属性。 |
@@ -950,7 +954,7 @@ ms.locfileid: "68304414"
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
-### <a name="partner-tier2-support"></a>合作伙伴二线支持人员
+### <a name="partner-tier2-support"></a>合作伙伴层级 2 支持
 不要使用 - 不适用于常规用途。
 
   > [!NOTE]
@@ -960,7 +964,7 @@ ms.locfileid: "68304414"
 
 | **操作** | **说明** |
 | --- | --- |
-| microsoft.aad.directory/contacts/basic/update | 更新 Azure Active Directory 中联系人的基本属性。 |
+| microsoft.aad.directory/contacts/basic/update | 更新 Azure Active Directory 中联系人上的基本属性。 |
 | microsoft.aad.directory/contacts/create | 在 Azure Active Directory 中创建联系人。 |
 | microsoft.aad.directory/contacts/delete | 删除 Azure Active Directory 中的联系人。 |
 | microsoft.aad.directory/domains/allTasks | 创建和删除域，然后读取和更新 Azure Active Directory 中的标准属性。 |
@@ -968,10 +972,10 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/groups/delete | 删除 Azure Active Directory 中的组。 |
 | microsoft.aad.directory/groups/members/update | 更新 Azure Active Directory 中的 groups.members 属性。 |
 | microsoft.aad.directory/groups/restore | 还原 Azure Active Directory 中的组。 |
-| microsoft.aad.directory/organization/basic/update | 更新 Azure Active Directory 中组织的基本属性。 |
+| microsoft.aad.directory/organization/basic/update | 更新 Azure Active Directory 中组织上的基本属性。 |
 | microsoft.aad.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
 | microsoft.aad.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
-| microsoft.aad.directory/users/basic/update | 更新 Azure Active Directory 中用户的基本属性。 |
+| microsoft.aad.directory/users/basic/update | 更新 Azure Active Directory 中用户上的基本属性。 |
 | microsoft.aad.directory/users/delete | 删除 Azure Active Directory 中的用户。 |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有用户刷新令牌无效。 |
 | microsoft.aad.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 属性。 |
@@ -983,6 +987,14 @@ ms.locfileid: "68304414"
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+
+### <a name="password-administrator"></a>密码管理员
+可以重置非管理员和密码管理员的密码。
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.aad.directory/users/password/update | 更新 Azure Active Directory 中所有用户的密码。 有关详细信息，请参阅联机文档。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中的所有资源上的基本属性。 |
 
 ### <a name="power-bi-service-administrator"></a>Power BI 服务管理员
 可以管理 Power BI 产品的所有方面。
@@ -1024,15 +1036,15 @@ ms.locfileid: "68304414"
 
 | **操作** | **说明** |
 | --- | --- |
-| microsoft.aad.privilegedIdentityManagement/allEntities/allTasks | 创建和删除所有资源，然后读取和更新 microsoft.aad.privilegedIdentityManagement 中的标准属性。 |
+| microsoft.aad.privilegedIdentityManagement/allEntities/allTasks | 创建和删除所有资源，然后读取并更新 microsoft.aad.privilegedIdentityManagement 中的标准属性。 |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/allTasks | 读取并配置 Azure Active Directory 中的服务主体 appRoleAssignedTo 属性。 |
 | microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/allTasks | 读取并配置 Azure Active Directory 中的服务主体 oAuth2PermissionGrants 属性。 |
 | microsoft.aad.directory/administrativeUnits/allProperties/allTasks | 创建和管理管理单元 (包括成员) |
 | microsoft.aad.directory/roleAssignments/allProperties/allTasks | 创建和管理角色分配。 |
 | microsoft.aad.directory/roleDefinitions/allProperties/allTasks | 创建和管理角色定义。 |
 
-### <a name="reports-reader"></a>报告读者
-可以读取登录和审核报告。
+### <a name="reports-reader"></a>报告读取者
+可以读取登录和审核报表。
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -1061,7 +1073,7 @@ ms.locfileid: "68304414"
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中的所有资源上的基本属性。 |
 
 ### <a name="search-editor"></a>搜索编辑器
 可以创建和管理编辑内容, 例如书签、Q 和 As、位置、floorplan。
@@ -1090,12 +1102,12 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/applications/policies/update | 更新 Azure Active Directory 中的 applications.policies 属性。 |
 | microsoft.aad.directory/auditLogs/allProperties/read | 读取 Azure Active Directory 中 auditLogs 上的所有属性（包括特权属性）。 |
 | microsoft.aad.directory/devices/bitLockerRecoveryKeys/read | 读取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 属性。 |
-| microsoft.aad.directory/policies/basic/update | 更新 Azure Active Directory 中策略的基本属性。 |
+| microsoft.aad.directory/policies/basic/update | 更新 Azure Active Directory 中策略上的基本属性。 |
 | microsoft.aad.directory/policies/create | 在 Azure Active Directory 中创建策略。 |
 | microsoft.aad.directory/policies/delete | 删除 Azure Active Directory 中的策略。 |
 | microsoft.aad.directory/policies/owners/update | 更新 Azure Active Directory 中的 policies.owners 属性。 |
 | microsoft.aad.directory/policies/tenantDefault/update | 更新 Azure Active Directory 中的 policies.tenantDefault 属性。 |
-| microsoft.aad.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的 servicePrincipals.policies 属性。 |
+| microsoft.aad.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的servicePrincipals.policies 属性。 |
 | microsoft.aad.directory/signInReports/allProperties/read | 读取 Azure Active Directory 中 signInReports 上的所有属性（包括特权属性）。 |
 | microsoft.aad.identityProtection/allEntities/read | 读取 microsoft.aad.identityProtection 中的所有资源。 |
 | microsoft.aad.identityProtection/allEntities/update | 更新 microsoft.aad.identityProtection 中的所有资源。 |
@@ -1184,8 +1196,8 @@ ms.locfileid: "68304414"
 | microsoft.office365.sharepoint/allEntities/allTasks | 创建和删除所有资源，然后读取和更新 microsoft.office365.sharepoint 中的标准属性。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
-### <a name="teams-communications-administrator"></a>Teams 通信管理员
-可以管理 Microsoft Teams 服务中的通话和会议功能。
+### <a name="teams-communications-administrator"></a>Teams Communications 管理员
+可以管理 Microsoft Teams 服务内的通话和会议功能。
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -1201,8 +1213,8 @@ ms.locfileid: "68304414"
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 
-### <a name="teams-communications-support-engineer"></a>Teams 通信支持工程师
-可以使用高级工具排查 Teams 中的通信问题。
+### <a name="teams-communications-support-engineer"></a>Teams Communications 支持工程师
+使用高级工具可以排查 Teams 内的通信问题。
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -1215,8 +1227,8 @@ ms.locfileid: "68304414"
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 
-### <a name="teams-communications-support-specialist"></a>Teams 通信支持专家
-可以使用基本工具排查 Teams 中的通信问题。
+### <a name="teams-communications-support-specialist"></a>Teams Communications 支持专员
+使用基本工具可以排查 Teams 内的通信问题。
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -1261,11 +1273,11 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/appRoleAssignments/create | 在 Azure Active Directory 中创建 appRoleAssignments。 |
 | microsoft.aad.directory/appRoleAssignments/delete | 删除 Azure Active Directory 中的 appRoleAssignments。 |
 | microsoft.aad.directory/appRoleAssignments/update | 更新 Azure Active Directory 中的 appRoleAssignments。 |
-| microsoft.aad.directory/contacts/basic/update | 更新 Azure Active Directory 中联系人的基本属性。 |
+| microsoft.aad.directory/contacts/basic/update | 更新 Azure Active Directory 中联系人上的基本属性。 |
 | microsoft.aad.directory/contacts/create | 在 Azure Active Directory 中创建联系人。 |
 | microsoft.aad.directory/contacts/delete | 删除 Azure Active Directory 中的联系人。 |
 | microsoft.aad.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
-| microsoft.aad.directory/groups/basic/update | 更新 Azure Active Directory 中组的基本属性。 |
+| microsoft.aad.directory/groups/basic/update | 更新 Azure Active Directory 中组上的基本属性。 |
 | microsoft.aad.directory/groups/create | 在 Azure Active Directory 中创建组。 |
 | microsoft.aad.directory/groups/createAsOwner | 在 Azure Active Directory 中创建组。 添加创建者作为第一个所有者，创建的对象根据创建者的 250 个创建对象配额计数。 |
 | microsoft.aad.directory/groups/delete | 删除 Azure Active Directory 中的组。 |
@@ -1276,7 +1288,7 @@ ms.locfileid: "68304414"
 | microsoft.aad.directory/groups/settings/update | 更新 Azure Active Directory 中的 groups.settings 属性。 |
 | microsoft.aad.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
 | microsoft.aad.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
-| microsoft.aad.directory/users/basic/update | 更新 Azure Active Directory 中用户的基本属性。 |
+| microsoft.aad.directory/users/basic/update | 更新 Azure Active Directory 中用户上的基本属性。 |
 | microsoft.aad.directory/users/create | 在 Azure Active Directory 中创建用户。 |
 | microsoft.aad.directory/users/delete | 删除 Azure Active Directory 中的用户。 |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有用户刷新令牌无效。 |
@@ -1304,11 +1316,11 @@ B2C 用户流管理员 | B2C 用户流管理员 | 6e591065-9bad-43ed-90f3-e94243
 B2C 用户流属性管理员 | B2C 用户流属性管理员 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 B2C IEF 键集管理员 | B2C IEF 键集管理员 | aaf43236-0c0d-4d5f-883a-6955382ac081
 B2C IEF 策略管理员 | B2C IEF 策略管理员 | 3edaf663-341e-4475-9f94-5c398ef6c070
-计费管理员 | 计费管理员 | b0f54661-2d74-4c50-afa3-1ec803f12efe
-云应用管理员 | 云应用程序管理员 | 158c047a-c907-4556-b7ef-446551a6b5f7
+帐务管理员 | 帐务管理员 | b0f54661-2d74-4c50-afa3-1ec803f12efe
+云应用程序管理员 | 云应用程序管理员 | 158c047a-c907-4556-b7ef-446551a6b5f7
 云设备管理员 | 云设备管理员 | 7698a772-787b-4ac8-901f-60d6b08affd2
 公司管理员 | 全局管理员 | 62e90394-69f5-4237-9190-012177145e10
-符合性管理员 | 法规管理员 | 17315797-102d-40b4-93e0-432062caca18
+合规性管理员 | 符合性管理员 | 17315797-102d-40b4-93e0-432062caca18
 相容性数据管理员 | 相容性数据管理员 | e6d1a23a-da11-4be4-9570-befc86d067a7
 条件访问管理员 | 条件访问管理员 | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
 CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f96a
@@ -1318,9 +1330,9 @@ CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f
 设备联接 | 设备加入 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
 设备管理器 | 设备管理员 | 2b499bcd-da44-4968-8aec-78e1674fa64d
 设备用户 | 设备用户 | d405c6df-0af8-4e3b-95e4-4d06e542189e
-目录读者 | 目录读者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
+目录读取者 | 目录读取者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 目录同步帐户 | 目录同步帐户 | d29b2b05-8046-44ba-8758-1e26182fcf32
-目录编写人员 | 目录写入者 | 9360feb5-f418-4baa-8175-e2a00bac4301
+目录编写者 | 目录写入者 | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部标识提供者管理员 | 外部标识提供者管理员 | be2f45a1-457d-42af-a067-6ec1fa63bc45
 来宾邀请者 | 来宾邀请者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
@@ -1330,23 +1342,24 @@ Kaizala 管理员 | Kaizala 管理员 | 74ef975b-6605-40af-a5d2-b9539d836353
 许可证管理员 | 许可证管理员 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync 服务管理员 | Skype for Business 管理员 | 75941009-915a-4869-abe7-691bff18279e
 消息中心隐私读取器 | 消息中心隐私读取器 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
-消息中心读取者 | 消息中心读取器 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
-合作伙伴一线支持人员 | 合作伙伴一线支持人员 | 4ba39ca4-527c-499a-b93d-d9b492c50246
-合作伙伴二线支持人员 | 合作伙伴二线支持人员 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+消息中心读取者 | 消息中心读取者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+合作伙伴层级 1 支持 | 合作伙伴层级 1 支持 | 4ba39ca4-527c-499a-b93d-d9b492c50246
+合作伙伴层级 2 支持 | 合作伙伴层级 2 支持 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+密码管理员 | 密码管理员 | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI 服务管理员 | Power BI 管理员 | a9ea8996-122f-4c74-9520-8edcd192826c
 特权身份验证管理员 | 特权身份验证管理员 | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 特权角色管理员 | 特权角色管理员 | e8611ab8-c189-46e8-94e1-60213ab1f814
-报告读者 | 报告读者 | 4a5d8f65-41da-4de4-8968-e035b65339cf
+报告读取者 | 报告读取者 | 4a5d8f65-41da-4de4-8968-e035b65339cf
 搜索管理员 | 搜索管理员 | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
 搜索编辑器 | 搜索编辑器 | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 安全管理员 | 安全管理员 | 194ae4cb-b126-40b2-bd5b-6091b380977d
 安全操作员 | 安全操作员 | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
-安全读取者 | 安全读取者 | 5d6b6bb7-de71-4623-b4af-96380a352509
+安全读取者 | 安全读者 | 5d6b6bb7-de71-4623-b4af-96380a352509
 服务支持管理员 | 服务管理员 | f023fd81-a637-4b56-95fd-791ac0226033
 SharePoint 服务管理员 | SharePoint 管理员 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
-Teams 通信管理员 | Teams 通信管理员 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
-Teams 通信支持工程师 | Teams 通信支持工程师 | f70938a0-fc10-4177-9e90-2178f8765737
-Teams 通信支持专家 | Teams 通信支持专家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
+Teams Communications 管理员 | Teams Communications 管理员 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
+Teams Communications 支持工程师 | Teams Communications 支持工程师 | f70938a0-fc10-4177-9e90-2178f8765737
+Teams Communications 支持专员 | Teams Communications 支持专员 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2a7a8
 用户 | 用户 | a0b1b346-4d3e-4e8b-98f8-753987be4970
 用户帐户管理员 | 用户管理员 | fe930be7-5e62-47db-91af-98c3a49a38b1
@@ -1361,7 +1374,7 @@ Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2
 * 设备联接
 * 设备管理器
 * 设备用户
-* 经电子邮件验证的用户创建者
+* 电子邮件验证的用户创建者
 * 邮箱管理员
 * 工作区设备联接
 

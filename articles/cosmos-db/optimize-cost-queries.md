@@ -4,14 +4,14 @@ description: 了解如何评估查询的请求单位费用，并在查询性能�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 08/01/2019
 ms.author: rimman
-ms.openlocfilehash: 2d1ac054abf4bb8228bdb5cc20d79cb751af7a33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bdf223e60015c4e5d96416f95c410854a057c02c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967444"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717006"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的查询成本
 
@@ -33,7 +33,7 @@ Azure Cosmos DB 中的查询通常按吞吐量从最快/最高效到较慢/效�
 
 将一些数据存储在 Azure Cosmos 容器中后，可以使用 Azure 门户中的数据资源管理器来构建和运行查询。 此外可以通过使用数据资源管理器获取查询的成本。 此方法使你了解系统支持的典型查询和操作所涉及的实际费用。
 
-此外可以使用 SDK 以编程方式获取查询的成本。 要测量任何操作（如创建、更新或删除）的开销，请在使用 REST API 时检查 `x-ms-request-charge` 标头。 如果使用.NET 或 Java SDK`RequestCharge`属性是要获取的请求费用的等效属性和此属性是 ResourceResponse 或 FeedResponse 中存在。
+此外可以使用 SDK 以编程方式获取查询的成本。 要测量任何操作（如创建、更新或删除）的开销，请在使用 REST API 时检查 `x-ms-request-charge` 标头。 如果使用的是 .NET 或 Java SDK，则 `RequestCharge` 属性是获取请求费用的等效属性，并且此属性存在于 ResourceResponse 或 FeedResponse 中。
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -59,7 +59,7 @@ while (queryable.HasMoreResults)
 
 ## <a name="metrics-for-troubleshooting"></a>故障排除的指标
 
-查询、用户定义的函数 (UDF) 所使用的性能和吞吐量主要取决于函数本身。 查找 UDF 中查询执行花费的时间和使用的 RU 数量的最简单方法是启用查询指标。 如果使用.NET SDK，下面是由 SDK 返回的示例查询指标：
+查询、用户定义的函数 (UDF) 所使用的性能和吞吐量主要取决于函数本身。 查找 UDF 中查询执行花费的时间和使用的 RU 数量的最简单方法是启用查询指标。 如果使用的是 .NET SDK，则以下是 SDK 返回的示例查询指标：
 
 ```bash
 Retrieved Document Count                 :               1              

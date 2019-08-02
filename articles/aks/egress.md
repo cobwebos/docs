@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: mlearned
-ms.openlocfilehash: 094a696a12025dcfd575ce3f035b12b4a04aba10
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 67471d688e64244067a7537bc87c379da4a69c03
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615570"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696368"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的出口流量使用公用静态 IP 地址
 
@@ -22,19 +22,19 @@ ms.locfileid: "67615570"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal]。
+本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="egress-traffic-overview"></a>出口流量概述
 
-出站流量从 AKS 群集遵循[Azure 负载均衡器约定][outbound-connections]。 在创建 `LoadBalancer` 类型的第一个 Kubernetes 服务之前，AKS 群集中的代理节点不是任何 Azure 负载均衡器池的一部分。 在此配置中，节点没有实例级公用 IP 地址。 Azure 将出站流转换为不可配置的或确定性的公用源 IP 地址。
+来自 AKS 群集的出站流量遵循[Azure 负载均衡器约定][outbound-connections]。 在创建 `LoadBalancer` 类型的第一个 Kubernetes 服务之前，AKS 群集中的代理节点不是任何 Azure 负载均衡器池的一部分。 在此配置中，节点没有实例级公用 IP 地址。 Azure 将出站流转换为不可配置的或确定性的公用源 IP 地址。
 
 创建 `LoadBalancer` 类型的 Kubernetes 服务后，会向 Azure 负载均衡器池添加代理节点。 对于出站流，Azure 将其转换为在负载均衡器上配置的第一个公用 IP 地址。 此公用 IP 地址仅对该资源的生命期有效。 如果删除 Kubernetes 负载均衡器服务，则会同时删除关联的负载均衡器和 IP 地址。 如果要分配特定 IP 地址或保留已重新部署的 Kubernetes 服务的 IP 地址，请创建并使用静态公用 IP 地址。
 
 ## <a name="create-a-static-public-ip"></a>创建静态公共 IP
 
-创建静态公用 IP 地址以用于 AKS 时，必须在节点资源组中创建 IP 地址资源  。 获取资源组名称与[az aks show][az-aks-show]命令，并添加`--query nodeResourceGroup`查询参数。 以下示例获取名为 myResourceGroup  的资源组中 AKS 群集名称 myAKSCluster  的节点资源组：
+用[az aks show][az-aks-show]命令获取资源组名称, 并添加`--query nodeResourceGroup`查询参数。 以下示例获取名为 myResourceGroup 的资源组中 AKS 群集名称 myAKSCluster 的节点资源组：
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -42,7 +42,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-现在，创建具有静态公共 IP 地址[az 网络公共 ip 创建][az-network-public-ip-create]命令。 指定上一命令中获取的节点资源组名称，然后指定 IP 地址资源的名称，如 myAKSPublicIP  ：
+现在使用[az network 公共 ip create][az-network-public-ip-create]命令创建静态公共 ip 地址。 指定上一命令中获取的节点资源组名称，然后指定 IP 地址资源的名称，如 myAKSPublicIP：
 
 ```azurecli-interactive
 az network public-ip create \
@@ -65,7 +65,7 @@ az network public-ip create \
   }
 ```
 
-更高版本可以获取公共 IP 地址使用[az 网络公共 ip 列表][az-network-public-ip-list]命令。 指定节点资源组的名称，然后查询 ipAddress  ，如以下示例中所示：
+稍后可以使用[az network 公共 ip list][az-network-public-ip-list]命令获取公共 IP 地址。 指定节点资源组的名称，然后查询 ipAddress，如以下示例中所示：
 
 ```azurecli-interactive
 $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
@@ -101,7 +101,7 @@ kubectl apply -f egress-service.yaml
 
 若要验证是否正在使用静态公用 IP 地址，可以使用 DNS 查找服务，例如 `checkip.dyndns.org`。
 
-启动并附加到基本 Debian  pod：
+启动并附加到基本 Debian pod：
 
 ```console
 kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
@@ -113,7 +113,7 @@ kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
 apt-get update && apt-get install curl -y
 ```
 
-现在，使用 curl 访问 checkip.dyndns.org  站点。 将显示出口 IP 地址，如以下示例输出中所示。 此 IP 地址与为负载均衡器服务创建和定义的静态公用 IP 地址相匹配：
+现在，使用 curl 访问 checkip.dyndns.org站点。 将显示出口 IP 地址，如以下示例输出中所示。 此 IP 地址与为负载均衡器服务创建和定义的静态公用 IP 地址相匹配：
 
 ```console
 $ curl -s checkip.dyndns.org
@@ -123,7 +123,7 @@ $ curl -s checkip.dyndns.org
 
 ## <a name="next-steps"></a>后续步骤
 
-若要避免在 Azure 负载均衡器上维护多个公用 IP 地址，可以使用入口控制器。 入口控制器提供的其他好处包括：SSL/TLS 终止、对 URI 重写的支持以及上游 SSL/TLS 加密。 有关详细信息，请参阅[在 AKS 中创建基本入口控制器][ingress-aks-cluster]。
+若要避免在 Azure 负载均衡器上维护多个公用 IP 地址，可以使用入口控制器。 入口控制器提供的其他好处包括：SSL/TLS 终止、对 URI 重写的支持以及上游 SSL/TLS 加密。 有关详细信息, 请参阅[在 AKS 中创建基本入口控制器][ingress-aks-cluster]。
 
 <!-- LINKS - internal -->
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create

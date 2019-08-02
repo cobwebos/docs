@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 安全中心部署为 IoT Edge 模块 |Microsoft Docs
-description: 了解有关如何部署 Azure 安全中心的 IoT Edge 上的 IoT 安全代理。
+title: 部署 IoT Edge 模块的 Azure 安全中心 (预览版) |Microsoft Docs
+description: 了解如何在 IoT Edge 上部署适用于 IoT security agent 的 Azure 安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,71 +13,71 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/1/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 49ed4c6515f8fb63c3331b05e1bb29b13985e6b3
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7171923e4badb3355a64b63515d40e73fadca6b0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618327"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596362"
 ---
-# <a name="deploy-a-security-module-on-your-iot-edge-device"></a>部署 IoT Edge 设备上的安全模块
+# <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在 IoT Edge 设备上部署安全模块
 
 > [!IMPORTANT]
-> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
+> 用于 IoT IoT Edge 设备支持的 Azure 安全中心目前提供公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-**Azure 安全中心 (ASC) 为 IoT**模块的 IoT Edge 设备提供全面的安全解决方案。
-安全模块收集、 聚合，并分析来自你的操作系统和容器系统的原始安全数据到切实可行的安全建议和警报。
-若要了解详细信息，请参阅[IoT Edge 的安全模块](security-edge-architecture.md)。
+用于 IoT 模块的**Azure 安全中心**为 IoT Edge 设备提供了一个全面的安全解决方案。
+安全模块将收集、聚合和分析来自你的操作系统和容器系统的原始安全数据到可操作的安全建议和警报。
+若要了解详细信息, 请参阅[IoT Edge 的安全模块](security-edge-architecture.md)。
 
-在本指南中，您将了解如何部署 IoT Edge 设备上的安全模块。
+本文介绍如何在 IoT Edge 设备上部署安全模块。
 
 ## <a name="deploy-security-module"></a>部署安全模块
 
-使用以下步骤来为 IoT Edge 部署 IoT 安全模块 ASC。
+使用以下步骤为 IoT Edge 部署用于 IoT 安全模块的 Azure 安全中心。
 
 ### <a name="prerequisites"></a>先决条件
 
-- 在 IoT 中心，请确保你的设备[注册为 IoT Edge 设备](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)。
+- 在 IoT 中心中, 确保你的设备已[注册为 IoT Edge 设备](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)。
 
-- ASC 为 IoT Edge 模块需要[审核框架](https://linux.die.net/man/8/auditd)IoT Edge 设备上安装。
+- IoT Edge 模块的 Azure 安全中心要求在 IoT Edge 设备上安装[审核 framework](https://linux.die.net/man/8/auditd) 。
 
-    - 在 IoT Edge 设备上运行以下命令来安装 framework:
+    - 在 IoT Edge 设备上运行以下命令, 以安装框架:
    
       `sudo apt-get install auditd audispd-plugins`
    
-    - 验证审核处于活动状态的通过运行以下命令：
+    - 通过运行以下命令验证审核是否处于活动状态:
    
       `sudo systemctl status auditd`
       
-        预期的响应是`active (running)`。 
+        预期的响应为`active (running)`。 
 
-### <a name="deployment-using-azure-portal"></a>使用 Azure 门户进行部署
+### <a name="deployment-using-azure-portal"></a>使用 Azure 门户部署
 
-1. 从 Azure 门户中，打开**Marketplace**。
+1. 在 Azure 门户中, 打开**Marketplace**。
 
-1. 选择**物联网**，然后搜索**IoT 的 Azure 安全中心**并将其选中。
+1. 选择 "**物联网**", 然后搜索 "适用于**IoT 的 Azure 安全中心**" 并选择它。
 
-   ![选择 Azure 安全中心的 IoT](media/howto/edge-onboarding-8.png)
+   ![为 IoT 选择 Azure 安全中心](media/howto/edge-onboarding-8.png)
 
-1. 单击**创建**配置的部署。 
+1. 单击 "**创建**" 以配置部署。 
 
-1. 选择的 Azure**订阅**的 IoT 中心，然后选择你**IoT 中心**。<br>选择**部署到设备**到目标的单个设备，或选择**大规模部署**面向多个设备，然后单击**创建**。 大规模部署的详细信息，请参阅[如何部署](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor)。 
+1. 选择 IoT 中心的 Azure**订阅**, 并选择**iot 中心**。<br>选择 "**部署到设备**" 以面向单个设备, 或选择 "**大规模部署**" 以面向多个设备, 并单击 "**创建**"。 有关大规模部署的详细信息, 请参阅[如何部署](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor)。 
 
     >[!Note] 
-    >如果所选**大规模部署**，在继续之前添加的设备名称和详细信息**添加模块**下列说明中的选项卡。     
+    >如果选择了 "**大规模部署**", 请添加设备名称和详细信息, 然后继续执行以下说明中的 "**添加模块**" 选项卡。     
 
-有三个步骤，为 IoT 创建 Azure 安全中心的 IoT Edge 部署。 下列各节将引导完成每个步骤。 
+为 IoT 使用 Azure 安全中心创建 IoT Edge 部署有三个步骤。 下列各节将引导完成每个步骤。 
 
 #### <a name="step-1-add-modules"></a>步骤 1：添加模块
 
-1. 从**添加模块**选项卡上，**部署模块**区域中，单击**AzureSecurityCenterforIoT**。 
+1. 从 "**添加模块**" 选项卡的 "**部署模块**" 区域, 单击 " **AzureSecurityCenterforIoT**"。 
    
-1. 更改**名称**到**azureiotsecurity**。
-1. 更改**图像 URI**到**mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3**。
-1. 验证是否**容器创建选项**值设置为：      
+1. 将**名称**更改为**azureiotsecurity**。
+1. 将**映像 URI**更改为**mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3**。
+1. 验证 "**创建容器" 选项**值是否设置为:      
     ``` json
     {
         "NetworkingConfig": {
@@ -95,7 +95,7 @@ ms.locfileid: "67618327"
         }
     }    
     ```
-1. 确认**集模块孪生的所需属性**已选中，然后更改到的配置对象：
+1. 验证是否选择了 "**设置模块克隆的所需属性**", 并将配置对象更改为:
       
     ``` json
       "properties.desired": {
@@ -104,20 +104,17 @@ ms.locfileid: "67618327"
       }
       ```
 
-1. 单击“保存”  。
-1. 滚动到选项卡，然后选择底部**配置高级 Edge 运行时设置**。
+1. 单击“保存”。
+1. 滚动到选项卡的底部, 选择 "**配置高级边缘运行时设置**"。
    
-   >[!Note]
-   > 不要**不**禁用 IoT Edge 中心的 AMQP 通信。
-   > Azure 安全中心的 IoT 模块要求使用 IoT Edge 中心的 AMQP 通信。
    
-1. 更改**图像**下**边缘中心**到**mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview**。
+1. 将**Edge 中心**下的**图像**更改为**mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview**。
 
    >[!Note]
-   > Azure 安全中心的 IoT 模块需要 IoT Edge 中心，基于 SDK 版本 1.20 分叉的的版本。
-   > 通过更改映像 IoT Edge 中心，则会指示你的 IoT Edge 设备将最新稳定版本替换为 IoT Edge 中心，IoT Edge 服务不正式支持的分叉版本。
+   > 用于 IoT 模块的 Azure 安全中心需要基于 SDK 版本1.20 的 IoT Edge 集线器的分叉版本。
+   > 通过更改 IoT Edge 集线器映像, 你将指导 IoT Edge 设备将最新稳定版本替换为 IoT Edge 中心的分叉版本, 但 IoT Edge 服务并不正式支持该版本。
 
-1. 验证是否**创建选项**设置为： 
+1. 验证 "**创建选项**" 设置为: 
          
     ``` json
     {
@@ -131,50 +128,57 @@ ms.locfileid: "67618327"
     }
     ```
       
-1. 单击“保存”  。
+1. 单击“保存”。
    
-1. 单击“下一步”  。
+1. 单击“下一步”。
 
 #### <a name="step-2-specify-routes"></a>步骤 2：指定路由 
 
-1. 中**指定的路由**选项卡上，设置**ASCForIoTToIoTHub**将路由到 **"从/消息/模块/azureiotsecurity/\*到 $upstream"** ，然后单击**下一步**。
+1. 在 "**指定路由**" 选项卡中, 确保您具有将消息从**azureiotsecurity**模块转发到 **$upstream**的路由 (显式或隐式)。 
+1. 单击“下一步”。
 
-   ![指定路由](media/howto/edge-onboarding-9.png)
+    ~~~Default implicit route
+    "route": "FROM /messages/* INTO $upstream 
+    ~~~
 
-#### <a name="step-3-review-deployment"></a>步骤 3：检查部署
+    ~~~Explicit route
+    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream
+    ~~~
 
-1. 在中**查看部署**选项卡上，查看你部署的信息，然后选择**提交**以完成部署。
+#### <a name="step-3-review-deployment"></a>步骤 3：查看部署
+
+- 在 "**查看部署**" 选项卡中, 查看部署信息, 然后选择 "**提交**" 以完成部署。
 
 ## <a name="diagnostic-steps"></a>诊断步骤
 
-如果遇到问题，容器日志是了解有关 IoT Edge 安全模块设备的状态信息的最佳方式。 可以使用本部分中的命令和工具来收集信息。
+如果遇到问题, 则可以使用容器日志来了解 IoT Edge 安全模块设备的状态。 可以使用本部分中的命令和工具来收集信息。
 
-### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>验证所需的容器已安装且按预期方式工作
+### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>验证是否已安装所需的容器并按预期方式工作
 
-1. 在 IoT Edge 设备上运行以下命令：
+1. 在 IoT Edge 设备上运行以下命令:
     
      `sudo docker ps`
    
-1. 验证以下容器正在运行：
+1. 验证以下容器是否正在运行:
    
-   | 名称 | IMAGE |
+   | 姓名 | 影像 |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
    | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
-   如果容器不存在所需的最低，请检查对 IoT Edge 部署清单符合建议的设置。 有关详细信息，请参阅[部署 IoT Edge 模块](#deployment-using-azure-portal)。
+   如果所需的容器不存在, 请检查你的 IoT Edge 部署清单是否与推荐的设置一致。 有关详细信息, 请参阅[部署 IoT Edge 模块](#deployment-using-azure-portal)。
 
-### <a name="inspect-the-module-logs-for-errors"></a>检查模块日志中的错误
+### <a name="inspect-the-module-logs-for-errors"></a>检查模块日志中是否存在错误
    
-1. 在 IoT Edge 设备上运行以下命令：
+1. 在 IoT Edge 设备上运行以下命令:
 
    `sudo docker logs azureiotsecurity`
    
-1. 更详细的日志，将添加到以下环境变量**azureiotsecurity**部署模块： `logLevel=Debug`。
+1. 对于更详细的日志, 请将以下环境变量添加到**azureiotsecurity**模块部署`logLevel=Debug`:。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关配置选项的详细信息，请转到模块配置的操作方法指南。 
+若要了解有关配置选项的详细信息, 请转到模块配置的操作方法指南。 
 > [!div class="nextstepaction"]
 > [模块配置操作方法指南](./how-to-agent-configuration.md)

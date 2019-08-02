@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: ed254ea3db1c8f0e680cba71185e9b4505d8f200
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3f6094da7b103f1c99e9bb3fa9313354fcb2a8bc
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387653"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703989"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>如何使用实体检测回调
 
@@ -33,7 +34,7 @@ ms.locfileid: "66387653"
 ## <a name="details"></a>详细信息
 使用实体检测回调，可以通过代码修改实体识别行为以及对实体进行操作。 我们将通过完整介绍一个典型的实体检测回调设计模式来展示此功能。 例如，将“大苹果”解析为“纽约”。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="create-the-model"></a>创建模型
 

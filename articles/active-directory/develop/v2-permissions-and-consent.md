@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 032cc0edaa140d82124a7369232cb82bf6c00c10
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2c0fcb748262b20fd4550d08d74056c0219dbc09
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702709"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694004"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -36,7 +36,7 @@ ms.locfileid: "67702709"
 
 ## <a name="scopes-and-permissions"></a>范围和权限
 
-Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议。 OAuth 2.0 是一种方法，通过此方法，第三方应用可以代表用户访问 Web 托管资源。 与 Microsoft 标识平台集成的任何 Web 托管资源都有一个资源标识符，也称为“应用程序 ID URI”。  例如，Microsoft 的某些 Web 托管资源包括：
+Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议。 OAuth 2.0 是一种方法，通过此方法，第三方应用可以代表用户访问 Web 托管资源。 与 Microsoft 标识平台集成的任何 Web 托管资源都有一个资源标识符，也称为“应用程序 ID URI”。 例如，Microsoft 的某些 Web 托管资源包括：
 
 * Microsoft Graph：`https://graph.microsoft.com`
 * Office 365 邮件 API：`https://outlook.office.com`
@@ -53,7 +53,7 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 通过定义这些类型的权限，资源可以更精细地控制其数据以及 API 功能的公开方式。 第三方应用可以从用户和管理员请求这些权限，只有在用户或管理员批准该请求之后，应用才能代表用户访问或处理数据。 将资源的功能切割成较小的权限集，即可将第三方应用构建为只请求执行其功能所需的特定权限。 用户和管理员可以确切地知道应用有权访问哪些数据，并且他们可以更加确信应用不会怀有恶意的企图。 开发人员应始终遵守“最低特权”的概念，仅请求分配正常运行应用程序所需的权限。
 
-在 OAuth 2.0 中，这些类型的权限称为“范围”  。 它们通常也称为*权限*。 权限在 Microsoft 标识平台中以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的字符串值为：
+在 OAuth 2.0 中，这些类型的权限称为“范围”。 它们也通常称为 "*权限*"。 权限在 Microsoft 标识平台中以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的字符串值为：
 
 * 使用 `Calendars.Read` 读取用户的日历
 * 使用 `Calendars.ReadWrite` 写入用户的日历
@@ -69,13 +69,13 @@ Microsoft 标识平台支持两种类型的权限：**委托的权限**和**应�
 
 * **应用程序权限**由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。  应用程序权限只能[由管理员许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
 
-有效权限是应用在对目标资源发出请求时拥有的权限。  在对目标资源发出调用时，必须了解应用授予的委托权限和应用程序权限与其有效权限之间的差别。
+有效权限是应用在对目标资源发出请求时拥有的权限。 在对目标资源发出调用时，必须了解应用授予的委托权限和应用程序权限与其有效权限之间的差别。
 
-- 对于委托的权限，应用的有效权限是（通过许可）授予应用的委托权限与当前登录用户的特权的最低特权交集。  应用的特权永远不会超过登录用户的特权。 在组织内部，可以通过策略或者一个或多个管理员角色的成员身份来确定登录用户的特权。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
+- 对于委托的权限，应用的有效权限是（通过许可）授予应用的委托权限与当前登录用户的特权的最低特权交集。 应用的特权永远不会超过登录用户的特权。 在组织内部，可以通过策略或者一个或多个管理员角色的成员身份来确定登录用户的特权。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
 
    例如，假设为应用授予了 Microsoft Graph 中的 _User.ReadWrite.All_ 委托权限。 此权限在名义上会授予应用读取和更新组织中每个用户的个人资料的权限。 如果登录用户是全局管理员，则应用可以更新组织中每个用户的个人资料。 但是，如果登录用户不是充当管理员角色，则应用只能更新登录用户的个人资料。 它无法更新组织中其他用户的个人资料，因为该应用有权代表的用户没有这些特权。
   
-- 对于应用程序权限，应用的有效权限是权限默示的完整特权级别。  例如，拥有 _User.ReadWrite.All_ 应用程序权限的应用可以更新组织中每个用户的个人资料。 
+- 对于应用程序权限，应用的有效权限是权限默示的完整特权级别。 例如，拥有 _User.ReadWrite.All_ 应用程序权限的应用可以更新组织中每个用户的个人资料。 
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect 范围
 
@@ -124,7 +124,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 > [!NOTE]
 > 在此期间，`offline_access`（“维持对已授予访问权限的数据的访问”）和 `user.read`（“登录并读取配置文件”）权限将自动包含在对应用程序的初始许可中。  这些权限通常是应用功能正常所必需 - `offline_access` 授予应用对刷新令牌（对本机和 Web 应用十分重要）的访问权限，而 `user.read` 授予对 `sub` 声明的访问权限，允许客户端或应用随时间推移正确标识用户并访问基本用户信息。  
 
-![示例屏幕截图，显示工作帐户许可](./media/v2-permissions-and-consent/work_account_consent.png)
+![显示工作帐户同意的示例屏幕截图](./media/v2-permissions-and-consent/work_account_consent.png)
 
 当用户批准权限请求时，会记录许可，使用户在后续登录到应用程序时无需再次许可。
 
@@ -138,7 +138,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 ## <a name="admin-restricted-permissions"></a>管理员限制的权限
 
-Microsoft 生态系统中的某些高特权权限可以设置为受管理员限制  。 此类权限的示例包括：
+Microsoft 生态系统中的某些高特权权限可以设置为受管理员限制。 此类权限的示例包括：
 
 * 使用 `User.Read.All` 读取所有用户的完整个人资料
 * 使用 `Directory.ReadWrite.All` 将数据写入组织的目录
@@ -150,9 +150,12 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 
 如果应用程序请求高特权的委托权限，而管理员通过管理员许可终结点授予这些权限，则为租户中的所有用户授予许可。
 
-如果应用程序请求应用程序权限，而管理员通过管理员许可终结点授予这些权限，则不会代表任何特定用户进行此授权， 而是直接为客户端应用程序授予权限。  这些类型的权限只由守护程序服务以及后台运行的其他非交互式应用程序使用。
+如果应用程序请求应用程序权限，而管理员通过管理员许可终结点授予这些权限，则不会代表任何特定用户进行此授权， 而是直接为客户端应用程序授予权限。 这些类型的权限只由守护程序服务以及后台运行的其他非交互式应用程序使用。
 
 ## <a name="using-the-admin-consent-endpoint"></a>使用管理员同意终结点
+
+> [!NOTE] 
+> 请注意, 在使用管理员许可终结点授予管理员许可后, 你已完成授予管理员许可, 并且用户无需执行任何其他操作。 授予管理员许可后, 用户可以通过典型的身份验证流获取访问令牌, 并且生成的访问令牌将具有许可的权限。 
 
 当公司管理员使用你的应用程序并定向到授权终结点时，Microsoft 标识平台将检测用户的角色，并询问他们是否要代表整个租户许可请求的权限。 但是，如果你想要主动请求管理员代表整个租户授予权限，则还可以使用一个专用的管理员许可终结点。 请求应用程序权限（不能使用授权终结点来请求）时，也必须使用此终结点。
 
@@ -166,9 +169,9 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>配置应用程序的静态请求权限列表
 
-1. 转到你的应用程序中[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验，或[创建应用](quickstart-register-app.md)如果尚未准备好。
-2. 找到**API 权限**部分，然后单击添加权限中的 API 权限。
-3. 选择**Microsoft Graph**从可用 Api 的列表以及如何将应用所需的权限。
+1. 在 Azure 门户中,[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中转到你的应用程序, 或[创建应用](quickstart-register-app.md)(如果尚未这样做)。
+2. 找到 " **Api 权限**" 部分, 并在 API 权限中单击 "添加权限"。
+3. 从可用 Api 列表中选择 " **Microsoft Graph** ", 并添加应用所需的权限。
 3. **保存**应用注册。
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到应用
@@ -201,7 +204,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | 参数 | 条件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必填 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `common` 以一般方式引用，如示例所示。 |
-| `client_id` | 必填 | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。 |
+| `client_id` | 必填 | Azure 门户的**应用程序 (客户端) ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
 | `redirect_uri` | 必填 |要向其发送响应以供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 在发出身份验证请求出现之前，使用该状态对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
 
@@ -276,7 +279,7 @@ Content-Type: application/json
 
 由于 `/.default` 功能上等同于 `resource`-centric v1.0 终结点的行为，因此也附带了 v1.0 终结点的许可行为。 也就是说，如果用户在客户端和资源之间未授予任何权限，则 `/.default` 仅触发许可提示。 如果存在任何此类许可，则将返回一个令牌，该令牌包含由该资源的用户授予的所有范围。 但是，如果尚未授予任何权限，或未提供 `prompt=consent` 参数，则将对客户端应用程序注册的所有范围显示许可提示。
 
-#### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>示例 1：用户或租户管理员已授予权限
+#### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>示例 1:用户或租户管理员已授予权限
 
 用户（或租户管理员）已授予客户端 Microsoft Graph 权限 `mail.read` 和 `user.read`。 如果客户端发出 `scope=https://graph.microsoft.com/.default` 请求，则不会显示任何许可提示，而不考虑针对 Microsoft Graph 的客户端应用程序注册权限的许可。 将返回包含范围 `mail.read` 和 `user.read` 的令牌。
 

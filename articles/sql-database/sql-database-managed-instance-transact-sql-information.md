@@ -9,15 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
-manager: craigg
 ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c9b481e63ecf7a92af679c0f32d4b3ab71486021
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: fd029c1e7b67d308e3e1fdbedbdc90ea430b4f5b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360793"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567254"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -382,8 +381,9 @@ WITH PRIVATE KEY (<private_key_options>)
 
 托管实例中的链接服务器支持的目标数有限：
 
-- 支持的目标为 SQL Server 和 SQL 数据库。
-- 不支持的目标为文件、Analysis Services 和其他 RDBMS。
+- 支持的目标是托管实例、单一数据库和 SQL Server 实例。 
+- 链接服务器不支持分布式可写事务 (MS DTC)。
+- 不支持的目标为文件、Analysis Services 和其他 RDBMS。 尝试使用`BULK INSERT`或`OPENROWSET`作为文件导入的替代方法, 使用 Azure Blob 存储中的本机 CSV 导入。
 
 操作
 
@@ -391,6 +391,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 支持使用 `sp_dropserver` 删除链接服务器。 请参阅 [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql)。
 - `OPENROWSET` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 请参阅 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)。
 - `OPENDATASOURCE` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 仅支持将 `SQLNCLI`、`SQLNCLI11` 和 `SQLOLEDB` 值用作提供程序。 例如 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 请参阅 [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql)。
+- 链接服务器不能用于从网络共享读取文件 (Excel、CSV)。 尝试使用从 Azure Blob 存储读取 CSV 文件[BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)或[OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) 。 在[托管实例反馈项](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)上跟踪此请求|
 
 ### <a name="polybase"></a>PolyBase
 

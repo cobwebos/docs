@@ -1,18 +1,19 @@
 ---
 title: 有关使用 Azure 备份来备份 Azure VM 的常见问题
 description: 有关使用 Azure 备份来备份 Azure VM 的常见问题的解答。
-author: sogup
-manager: vijayts
+ms.reviewer: sogup
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
-ms.author: sogup
-ms.openlocfilehash: a26cc2fcdc381361912085b0980a736f040c5b0a
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 8948a620c27311f0371a557c91a971da37111cb9
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465293"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688593"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 

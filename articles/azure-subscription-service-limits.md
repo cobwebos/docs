@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 1c30d9e70facaf9ab47bd33e5ca1fc1d35c6c979
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405857"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698280"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移, 将展开并更新该列表以涵盖更多服务。
@@ -48,6 +48,7 @@ ms.locfileid: "68405857"
 * [自动化](#automation-limits)
 * [用于 Redis 的 Azure 缓存](#azure-cache-for-redis-limits)
 * [Azure 云服务](#azure-cloud-services-limits)
+* [Azure 认知服务](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
@@ -186,7 +187,7 @@ ms.locfileid: "68405857"
 
 有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage/common/storage-scalability-targets.md)。
 
-#### <a name="storage-resource-provider-limits"></a>存储资源提供程序限制 
+#### <a name="storage-resource-provider-limits"></a>存储资源提供程序限制
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -225,6 +226,9 @@ ms.locfileid: "68405857"
 
 ### <a name="azure-cloud-services-limits"></a>Azure 云服务限制
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
+
+### <a name="azure-cognitive-services-limits"></a>Azure 认知服务限制
+[!INCLUDE [azure-cloud-services-limits](../includes/azure-cognitive-services-limits.md)]
 
 ### <a name="app-service-limits"></a>应用服务限制
 以下应用服务限制包括 Web 应用、移动应用、API 应用的限制。

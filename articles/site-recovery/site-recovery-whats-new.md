@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery 新增功能 | Microsoft Docs
-description: 汇总 Azure Site Recovery 中引入的新功能
+description: 提供 Azure Site Recovery 中引入的新功能的摘要
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 07/30/2019
 ms.author: raynew
-ms.openlocfilehash: 0bfaf848b0b700c8d745acf8c6a63c898dc91140
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 1ce71665a924c6681af418075d8cc635c73f8a1a
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272866"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717676"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -21,29 +21,54 @@ ms.locfileid: "67272866"
 如果有关于 Site Recovery 功能的建议，请[提供反馈](https://feedback.azure.com/forums/256299-site-recovery)。
 
 
-## <a name="updates-june-2019"></a>更新 (2019 年 6 月)
+## <a name="installing-updates"></a>安装更新
 
-### <a name="update-rollup-37"></a>更新汇总 37
+请[查看本文](service-updates-how-to.md)了解 Site Recovery 更新支持和说明。
+
+## <a name="updates-july-2019"></a>更新 (2019 年7月)
+
+### <a name="update-rollup-38"></a>更新汇总38
+
+[更新汇总 38](https://support.microsoft.com/help/4513507/)提供了以下更新。
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 更新 Site Recovery 代理和提供程序 (在汇总中详细说明)
+**问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
+
+
+### <a name="general"></a>常规
+
+Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或目标存储。 以前仅支持 v1。
+
+### <a name="vmware-to-azure-disaster-recovery"></a>VMware 到 Azure 的灾难恢复
+
+复制到包含托管磁盘的 Azure VM 时, 你现在可以复制最多 8 TB 的磁盘。
+
+
+## <a name="updates-june-2019"></a>更新 (2019 年6月)
+
+### <a name="update-rollup-37"></a>更新汇总37
 
 [更新汇总 37](https://support.microsoft.com/help/4508614/)提供了以下更新。
 
 **更新** | **详细信息**
 --- | ---
-**提供程序和代理** | Site Recovery 代理和提供程序 （如所述汇总） 的更新
+**提供程序和代理** | 更新 Site Recovery 代理和提供程序 (在汇总中详细说明)
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理服务器灾难恢复
 
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
-**GPT 分区** | 从更新汇总 37 及更高版本 （移动服务版本 9.25.5241.1），最多五个 GPT 分区支持 UEFI。 在此更新中前, 四个受支持。
+**GPT 分区** | 从更新汇总37开始 (移动服务版本 9.25.5241.1), UEFI 最多支持五个 GPT 分区。 在此更新之前, 支持四个。
 
 
 
-## <a name="updates-may-2019"></a>更新 （2019 年 5）
+## <a name="updates-may-2019"></a>更新 (可能为 2019)
 
 ### <a name="update-rollup-36"></a>更新汇总 36
 
@@ -56,21 +81,21 @@ ms.locfileid: "67272866"
 
 ### <a name="azure-vm-disaster-recovery"></a>Azure VM 灾难恢复
 
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
-**复制添加的磁盘** | 为数据磁盘添加到已启用用于灾难恢复 Azure VM 启用复制。 [了解详细信息](azure-to-azure-enable-replication-added-disk.md)。
-**自动更新** | 在配置自动更新为灾难恢复启用的 Azure Vm 运行的移动服务扩展，现在可以选择一个现有的自动化帐户来使用，而不是使用 Site Recovery 创建的默认帐户。 [了解详细信息](azure-to-azure-autoupdate.md)。
+**复制添加的磁盘** | 为已启用灾难恢复的 Azure VM 添加的数据磁盘进行复制。 [了解详细信息](azure-to-azure-enable-replication-added-disk.md)。
+**自动更新** | 为在启用了灾难恢复的 Azure Vm 上运行的移动服务扩展配置自动更新时, 现在可以选择要使用的现有自动化帐户, 而不是使用 Site Recovery 创建的默认帐户。 [了解详细信息](azure-to-azure-autoupdate.md)。
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理服务器灾难恢复
 
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
-**处理服务器监视** | 对于在本地 VMware Vm 和物理服务器灾难恢复，监视和故障排除过程的改进的服务器运行状况报告和警报的服务器问题。 [了解详细信息](vmware-physical-azure-monitor-process-server.md)。 
+**进程服务器监视** | 对于本地 VMware Vm 和物理服务器的灾难恢复, 请监视服务器运行状况报告和警报的进程服务器问题并对其进行故障排除。 [了解详细信息](vmware-physical-azure-monitor-process-server.md)。 
 
 
 
@@ -89,12 +114,12 @@ ms.locfileid: "67272866"
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理服务器灾难恢复
 
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
 **托管磁盘** | 现在可将本地 VMware VM 和物理服务器直接复制到 Azure 中的托管磁盘。 本地数据将发送到 Azure 中的缓存存储帐户，恢复点将在目标位置的托管磁盘中创建。 这可确保无需管理多个目标存储帐户。
-**配置服务器** | Site Recovery 现在支持具有多个 NIC 的配置服务器。 必须先将附加的适配器添加到配置服务器 VM，然后在保管库中注册配置服务器。 如果在注册之后再添加，则需要在保管库中重新注册服务器。
+**配置服务器** | Site Recovery 现在支持具有多个 Nic 的配置服务器。 在保管库中注册配置服务器之前, 请将其他适配器添加到配置服务器 VM。 如果在注册之后再添加，则需要在保管库中重新注册服务器。
 
 
 ## <a name="updates-february-2019"></a>更新（2019 年 2 月）
@@ -120,7 +145,7 @@ ms.locfileid: "67272866"
 
 
 ### <a name="azure-vm-disaster-recovery"></a>Azure VM 灾难恢复 
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
@@ -130,7 +155,7 @@ ms.locfileid: "67272866"
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理服务器灾难恢复
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
@@ -143,7 +168,7 @@ ms.locfileid: "67272866"
 
 ### <a name="accelerated-networking-azure-vms"></a>加速网络 (Azure VM)
 
-使用加速网络可以实现对 VM 的单根 I/O 虚拟化 (SR-IOV)，提升网络性能。 为 Azure VM 启用复制时，Site Recovery 会检测是否启用了加速网络。 如果启用了加速网络，Site Recovery 会在故障转移后自动在目标副本 Azure VM 上针对 [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) 和 [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms) 配置加速网络。
+加速网络为 VM 启用单一根 i/o 虚拟化 (SR-IOV), 从而提高网络性能。 为 Azure VM 启用复制时，Site Recovery 会检测是否启用了加速网络。 如果启用了加速网络，Site Recovery 会在故障转移后自动在目标副本 Azure VM 上针对 [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) 和 [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms) 配置加速网络。
 
 [了解详细信息](azure-vm-disaster-recovery-with-accelerated-networking.md)。
 
@@ -158,20 +183,20 @@ ms.locfileid: "67272866"
 
 ### <a name="azure-vm-disaster-recovery"></a>Azure VM 灾难恢复
 
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
-**Linux 支持** | 有关 Ubuntu、 Debian 和 SUSE RedHat 工作站 7 月 6 日，以及新的内核版本添加了支持。
+**Linux 支持** | 为 RedHat 工作站6/7 添加了支持, 并为 Ubuntu、Debian 和 SUSE 添加了新的内核版本。
 **存储空间直通** | Site Recovery 支持使用存储空间直通 (S2D) 的 Azure VM。
 
 ### <a name="vmware-vmsphysical-servers-disaster-recovery"></a>VMware Vm/物理服务器灾难恢复
 
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
  
 **功能** | **详细信息**
 --- | ---
-**Linux 支持** | 有关 Ubuntu、 Debian 和 SUSE 的 Redhat Enterprise Linux 7.6、 RedHat 工作站 7 月 6 日，Oracle Linux 6.10/7.6 和新的内核版本添加了支持。
+**Linux 支持** | 添加了对 Redhat Enterprise Linux 7.6、RedHat Workstation 6/7、Oracle Linux 6.10/7.6 和新的 Ubuntu、Debian 和 SUSE 内核版本的支持。
 
 
 ### <a name="update-rollup-31"></a>更新汇总 31 
@@ -184,7 +209,7 @@ ms.locfileid: "67272866"
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。
 
 ### <a name="vmware-vmsphysical-servers-replication"></a>VMware VM/物理服务器复制 
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 **功能** | **详细信息**
 --- | ---
 **Linux 支持** | 添加了对 Oracle Linux 6.8 和 6.9/7.0 以及 UEK5 内核的支持。
@@ -195,13 +220,13 @@ ms.locfileid: "67272866"
 **UEFI 支持** | Azure VM 不支持 UEFI 启动类型。 现在可以通过 Site Recovery 将使用 UEFI 的本地物理服务器迁移到 Azure。 Site Recovery 在迁移服务器之前会将启动类型转换为 BIOS。 Site Recovery 以前仅支持对 VM 执行此转换。 该项支持适用于运行 Windows Server 2012 或更高版本的物理服务器。
 
 ### <a name="azure-vm-disaster-recovery"></a>Azure VM 灾难恢复
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
 **Linux 支持** | 添加了对 Oracle Linux 6.8 和 6.9/7.0 以及 UEK5 内核的支持。
 **Linux BRTFS 文件系统** | 支持对 Azure VM 使用。
-**可用性区域中的 azure Vm** | 可以启用部署在可用性区域中的 Azure Vm 的复制到另一个区域。 现在可以为 Azure VM 启用复制功能，并设置一个目标，以便故障转移到单个 VM 实例、可用性集中的 VM 或可用性区域中的 VM。 此设置不影响复制。 [阅读](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/)公告。
+**可用性区域中的 Azure Vm** | 可以为在可用性区域中部署的 Azure Vm 启用到另一个区域的复制。 现在可以为 Azure VM 启用复制功能，并设置一个目标，以便故障转移到单个 VM 实例、可用性集中的 VM 或可用性区域中的 VM。 此设置不影响复制。 [阅读](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/)公告。
 **已启用防火墙的存储（门户/PowerShell）** | 添加了对[已启用防火墙的存储帐户](https://docs.microsoft.com/azure/storage/common/storage-network-security)的支持。<br/><br/> 可将已启用防火墙的存储帐户中使用非托管磁盘的 Azure VM 复制到另一个 Azure 区域，以实现灾难恢复。<br/><br/> 可将已启用防火墙的存储帐户用作非托管磁盘的目标存储帐户。<br/><br/> 支持在门户和 PowerShell 中使用。
 
 ## <a name="updates-december-2018"></a>更新（2018 年 12 月）
@@ -236,11 +261,11 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。
 
 ### <a name="azure-vm-disaster-recovery"></a>Azure VM 灾难恢复
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
-**区域支持** | Site Recovery 支持为澳大利亚中部 1 和澳大利亚中部 2 添加了。
+**区域支持** | 为澳大利亚中部1和澳大利亚中部2添加了 Site Recovery 支持。
 **磁盘加密支持** | 添加了对在 Azure AD 应用中使用 Azure 磁盘加密 (ADE) 进行加密的 Azure VM 进行灾难恢复的支持。 [了解详细信息](azure-to-azure-how-to-enable-replication-ade-vms.md)。
 **磁盘排除** | 现在，在 Azure VM 复制期间会自动排除未初始化的磁盘。
 **已启用防火墙的存储 (PowerShell)** | 添加了对[已启用防火墙的存储帐户](https://docs.microsoft.com/azure/storage/common/storage-network-security)的支持。<br/><br/> 可将已启用防火墙的存储帐户中使用非托管磁盘的 Azure VM 复制到另一个 Azure 区域，以实现灾难恢复。<br/><br/> 可将已启用防火墙的存储帐户用作非托管磁盘的目标存储帐户。<br/><br/> 仅支持在 PowerShell 中使用。
@@ -267,21 +292,21 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）。
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。
 
-### <a name="azure-vms-disaster-recovery"></a>Azure VM 灾难恢复 
-这个月汇总表中添加功能。
+### <a name="azure-vm-disaster-recovery"></a>Azure VM 灾难恢复 
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
-**Linux 支持** | 添加受支持的 RedHat Enterprise Linux 6.10;CentOS 6.10。<br/><br/>
+**Linux 支持** | 添加了对 RedHat Enterprise Linux 6.10 的支持;CentOS 6.10。<br/><br/>
 **云支持** | 添加了对德国云中 Azure VM 灾难恢复的支持。
 **跨订阅灾难恢复** | 支持将一个区域中的 Azure VM 复制到同一 Azure Active Directory 租户中不同订阅内的另一个区域。 [了解详细信息](https://aka.ms/cross-sub-blog)。
 
 ### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理服务器灾难恢复 
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
-**Linux 支持** | 添加对 RedHat Enterprise Linux 6.10，CentOS 6.10 支持。<br/><br/> 现在支持基于 Linux 且在旧式 BIOS 兼容模式下使用 GUID 分区表 (GPT) 分区样式的 VM。 有关详细信息，请查看 [Azure VM 常见问题解答](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks)。 
+**Linux 支持** | 为 RedHat Enterprise Linux 6.10、CentOS 6.10 添加的支持。<br/><br/> 现在支持基于 Linux 且在旧式 BIOS 兼容模式下使用 GUID 分区表 (GPT) 分区样式的 VM。 有关详细信息，请查看 [Azure VM 常见问题解答](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks)。 
 **迁移后的 VM 灾难恢复** | 支持将已迁移到 Azure 的本地 VMware VM 灾难恢复到次要区域，启用复制之前无需在 VM 上卸载移动服务。
 **Windows Server 2008** | 支持迁移运行 Windows Server 2008 R2/2008 64 位和 32 位的计算机。<br/><br/> 仅限迁移（复制和故障转移）。 不支持故障回复。
 
@@ -296,9 +321,9 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）。
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。
 
-### <a name="azure-vms-disaster-recovery"></a>Azure VM 灾难恢复 
+### <a name="azure-vm-disaster-recovery"></a>Azure VM 灾难恢复 
 
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---
@@ -306,7 +331,7 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 
 ### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理服务器灾难恢复 
 
-这个月汇总表中添加功能。
+本月增加的功能在表中进行了总结。
 
 **功能** | **详细信息**
 --- | ---

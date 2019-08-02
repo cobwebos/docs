@@ -21,7 +21,7 @@
           href: connect-truffle.md
 - name: 教程
   items:
-    - name: 发送事务
+    - name: 使用智能合同
       href: send-transaction.md
 - name: 概念
   items:

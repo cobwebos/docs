@@ -1,21 +1,19 @@
 ---
-title: 使用.NET 的 Azure 存储的 Azure 队列存储入门
+title: 通过 .NET 开始使用 Azure 队列存储 - Azure 存储
 description: Azure 队列用于在应用程序组件之间进行可靠的异步消息传送。 应用程序组件可以利用云消息传送进行独立缩放。
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 05/21/2019
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 05/21/2019
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 59995715ab42b4682befa7d1512b14427740dea2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: aa92b72b09ed28b41d85ac7c7605077761657d40
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446856"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721565"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>通过 .NET 开始使用 Azure 队列存储
 
@@ -33,11 +31,11 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 
 **估计完成时间：** 45 分钟
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure 存储通用.NET 客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-* [适用于.NET 的 azure 存储队列客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
+* [适用于 .NET 的 Azure 存储通用客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+* [适用于 .NET 的 Azure 存储队列客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 * [适用于 .NET 的 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
 * 一个 [Azure 存储帐户](../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
@@ -53,36 +51,36 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 
 在 Visual Studio 中创建新的 Windows 控制台应用程序。 以下步骤演示了如何在 Visual Studio 2019 中创建控制台应用程序。 在其他版本的 Visual Studio 中，这些步骤是类似的。
 
-1. 选择“文件” > “新建” > “项目”   
-2. 选择**平台** > **Windows**
-3. 选择“控制台应用(.NET Framework)” 
-4. 选择“下一步” 
-5. 在中**项目名称**字段中，输入你的应用程序的名称
-6. 选择“创建” 
+1. 选择“文件” > “新建” > “项目”
+2. 选择“平台” > “Windows”
+3. 选择“控制台应用(.NET Framework)”
+4. 选择“下一步”
+5. 在“项目名称”字段中输入应用程序的名称
+6. 选择“创建”
 
-在本教程中的所有代码示例可以都添加到**main （)** 的控制台应用程序的方法**Program.cs**文件。
+本教程中的所有代码示例都可以添加到控制台应用程序的 **Program.cs** 文件的 **Main()** 方法。
 
-可以使用任何类型的.NET 应用程序，包括 Azure 云服务或 web 应用和桌面和移动应用程序中的 Azure 存储客户端库。 为简单起见，我们在本指南中使用控制台应用程序。
+可以在任意类型的 .NET 应用程序（包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序）中使用 Azure 存储客户端库。 为简单起见，我们在本指南中使用控制台应用程序。
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>使用 NuGet 安装所需包
 
-需要引用项目才能完成本教程中的以下三个包：
+为完成此教程，需要在项目中引用下述三个包：
 
-* [.NET 的 Microsoft Azure 存储通用客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/):此包提供以编程方式访问存储帐户中数据资源的权限。
-* [适用于.NET 的 Microsoft Azure 存储队列库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/):此客户端库，可以使用 Microsoft Azure 存储队列服务用于存储客户端可能访问的消息。
+* [适用于 .NET 的 Microsoft Azure 存储通用客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)：此包提供以编程方式访问存储帐户中数据资源的权限。
+* [适用于 .NET 的 Microsoft Azure 存储队列库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)：有了该客户端库，就可以使用 Microsoft Azure 存储队列服务来存储可供客户端访问的消息。
 * [适用于 .NET 的 Microsoft Azure 配置管理器库](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)：此包提供用于分析配置文件中连接字符串的类，而不考虑应用程序在何处运行。
 
-可以使用 NuGet 来获取这些包。 执行以下步骤:
+可以使用 NuGet 获取这些包。 请执行以下步骤：
 
-1. 在“解决方案资源管理器”  中，右键单击项目并选择“管理 NuGet 包”  。
-2. 选择“浏览” 
-3. 在线搜索"Microsoft.Azure.Storage.Queue"，然后选择**安装**若要安装存储客户端库及其依赖项。 这将安装 Microsoft.Azure.Storage.Common 库，这是队列库的依赖项。
-4. 在线搜索"Microsoft.Azure.ConfigurationManager"，然后选择**安装**安装 Azure Configuration Manager。
+1. 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包”。
+2. 选择“浏览”
+3. 在线搜索“Microsoft.Azure.Storage.Queue”，并选择“安装”以安装存储客户端库和依赖项。 这样也会安装 Microsoft.Azure.Storage.Common 库，该库是队列库的依赖项。
+4. 在线搜索“Microsoft.Azure.ConfigurationManager”，并选择“安装”以安装 Azure Configuration Manager。
 
 > [!NOTE]
-> 存储客户端库包还包括在[Azure SDK for.NET](https://azure.microsoft.com/downloads/)。 但是，我们建议您还通过 NuGet 以确保始终获得最新版本安装存储客户端库。
+> [用于 .NET 的 Azure SDK](https://azure.microsoft.com/downloads/)中也包含存储客户端库包。 但是我们建议同时从 NuGet 安装存储客户端库，以确保始终使用最新版本。
 >
-> 用于.NET 的存储客户端库中的 ODataLib 依赖项通过 NuGet (不是从 WCF 数据服务） 上提供的 ODataLib 包解析。 ODataLib 库可直接下载或者通过 NuGet 由代码项目引用。 使用存储客户端库的特定的 ODataLib 包为[OData](https://nuget.org/packages/Microsoft.Data.OData/)， [Edm](https://nuget.org/packages/Microsoft.Data.Edm/)，并[空间](https://nuget.org/packages/System.Spatial/)。 尽管这些库由 Azure 表存储类，它们是必需的依赖项，使用存储客户端库进行编程。
+> 适用于 .NET 的存储客户端库中的 ODataLib 依赖项通过 NuGet（而非 WCF 数据服务）上提供的 ODataLib 包来解析。 ODataLib 库可直接下载或者通过 NuGet 由代码项目引用。 存储空间客户端库使用的具体 ODataLib 包是 [OData](https://nuget.org/packages/Microsoft.Data.OData/)、[Edm](https://nuget.org/packages/Microsoft.Data.Edm/) 和 [Spatial](https://nuget.org/packages/System.Spatial/)。 尽管这些库由 Azure 表存储类使用，但是用存储空间客户端库进行编程时，它们是必需的依赖项。
 
 ### <a name="determine-your-target-environment"></a>确定目标环境
 
@@ -98,14 +96,14 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 
 ### <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
 
-用于.NET 支持使用存储连接字符串来配置终结点和凭据用于访问存储服务的 Azure 存储客户端库。 维护存储连接字符串的最佳方法在配置文件中。
+用于 .NET 的 Azure 存储客户端库支持使用存储连接字符串来配置终结点和用于访问存储服务的凭据。 维护存储连接字符串的最佳方法在配置文件中。
 
 有关连接字符串的详细信息，请参阅[配置 Azure 存储的连接字符串](../common/storage-configure-connection-string.md)。
 
 > [!NOTE]
 > 存储帐户密钥类似于存储帐户的根密码。 始终要小心保护存储帐户密钥。 避免将其分发给其他用户、对其进行硬编码或将其保存在其他人可以访问的纯文本文件中。 如果认为密钥可能已泄漏，请使用 Azure 门户重新生成密钥。
 
-若要配置你的连接字符串，请打开**app.config**从解决方案资源管理器在 Visual Studio 中的文件。 添加的内容 **\<appSettings\>** 元素如下所示。 替换*帐户名*你的存储帐户的名称和*帐户密钥*与你的帐户访问密钥：
+若要配置连接字符串，请从 Visual Studio 中的解决方案资源管理器打开 **app.config** 文件。 添加 **\<appSettings\>** 元素的内容，如下所示。 将 *account-name* 替换为存储帐户的名称，将 *account-key* 替换为帐户访问密钥：
 
 ```xml
 <configuration>
@@ -146,8 +144,8 @@ using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 2. 找到自己的存储帐户。
-3. 在存储帐户概述的“设置”部分，选择“访问密钥”。   此时会显示帐户访问密钥，以及每个密钥的完整连接字符串。
-4. 找到“密钥 1”下面的“连接字符串”值，单击“复制”按钮复制该连接字符串。    下一步需将此连接字符串值添加到某个环境变量。
+3. 在存储帐户概述的“设置”部分，选择“访问密钥”。 此时会显示帐户访问密钥，以及每个密钥的完整连接字符串。
+4. 找到“密钥 1”下面的“连接字符串”值，单击“复制”按钮复制该连接字符串。 下一步需将此连接字符串值添加到某个环境变量。
 
     ![显示如何从 Azure 门户复制连接字符串的屏幕截图](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
 ms.openlocfilehash: 7aff0fe47d1586b63157d5df7882fc338637f714
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68381963"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
@@ -25,7 +25,7 @@ ms.locfileid: "68381963"
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS 是否支持节点自动缩放？
 
-是的, 当前在预览版中提供自动缩放 AKS 中的代理节点的功能。 请参阅for instructions. AKS autoscaling is based on the [Kubernetes autoscaler][auto-scaler][自动缩放群集以满足 AKS 中的应用程序需求][aks-cluster-autoscaler]。
+是的, 当前在预览版中提供自动缩放 AKS 中的代理节点的功能。 有关说明, 请参阅[自动缩放群集以满足 AKS 中的应用程序需求][aks-cluster-autoscaler]。 AKS 自动缩放基于[Kubernetes 自动缩放程序][auto-scaler]。
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>是否可以将 AKS 部署到现有虚拟网络？
 
@@ -48,7 +48,7 @@ ms.locfileid: "68381963"
 Azure 会按夜间计划自动将安全修补程序应用到群集中的 Linux 节点。 但是, 你需要负责确保根据需要重新启动这些 Linux 节点。 可以使用多个选项来重新启动节点:
 
 - 通过 Azure 门户或 Azure CLI 手动执行。
-- 通过升级 AKS 群集。 群集升级[cordon 和排出节点][cordon-drain] automatically and then bring a new node online with the latest Ubuntu image and a new patch version or a minor Kubernetes version. For more information, see [Upgrade an AKS cluster][aks-upgrade]。
+- 通过升级 AKS 群集。 群集会自动升级[cordon 和排出节点][cordon-drain], 然后使用最新的 Ubuntu 映像和新的修补程序版本或次要 Kubernetes 版本使新节点联机。 有关详细信息, 请参阅[Upgrade a AKS cluster][aks-upgrade]。
 - 通过使用[Kured](https://github.com/weaveworks/kured), Kubernetes 的开源重新启动后台程序。 Kured 以[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)的形式运行, 并监视每个节点是否存在指示需要重新启动的文件。 在群集中, 操作系统重启由群集升级时的相同[cordon 和排出过程][cordon-drain]进行管理。
 
 有关使用 kured 的详细信息，请参阅[将安全性和内核更新应用于 AKS 中的节点][node-updates-kured]。

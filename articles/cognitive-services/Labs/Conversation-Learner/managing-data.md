@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 7ea0b246a16ff196a4160d9822b5db15cd39a4a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 857e899764d284e2d78f1172fa8eeac04c57d618
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385205"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705195"
 ---
 # <a name="managing-user-data"></a>管理用户数据
 
@@ -33,7 +34,7 @@ ms.locfileid: "66385205"
 
 在“对话日志”中，对话学习器会存储每次对话的用户输入、实体值、所选操作和时间戳。  这些日志存储一段时间后即会被删除（有关详细信息，请参阅“默认值和界限”的帮助页面）。  
 
-对话学习器会为记录的每个对话创建一个唯一的 ID。  对话学习器记录的对话中不会存储用户标识符  。  
+对话学习器会为记录的每个对话创建一个唯一的 ID。  对话学习器记录的对话中不会存储用户标识符。  
 
 ## <a name="associating-logged-dialogs-with-a-user-id"></a>将记录的对话与用户 ID 相关联
 

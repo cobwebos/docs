@@ -1,17 +1,17 @@
 ---
 title: 系统函数
-description: 了解有关 Azure Cosmos DB 中的 SQL 系统函数。
+description: 了解 Azure Cosmos DB 中的 SQL 系统函数。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 11a6fdad187670bcb5af4c56198fd7343680690d
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b0e9c751d46f805af75196da464a39783c95ae6a
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342662"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619991"
 ---
 # <a name="system-functions"></a>系统函数
 
@@ -26,18 +26,18 @@ ms.locfileid: "67342662"
 |[日期和时间函数](#date-time-functions)|使用日期和时间函数可以获取采用以下两种格式的当前 UTC 日期和时间：一个时间戳，其值为以毫秒为单位的 Unix 纪元；一个符合 ISO 8601 格式的字符串。|
 |[空间函数](#spatial-functions)|该空间函数对控件对象输入值执行操作，并返回数值或布尔值。|  
 
-以下是每个类别中的函数的列表：
+下面列出了每个类别中的函数:
 
 | 函数组 | 操作 |
 |---------|----------|
-| 数学函数 | ABS、CEILING、EXP、FLOOR、LOG、LOG10、POWER、ROUND、SIGN、SQRT、SQUARE、TRUNC、ACOS、ASIN、ATAN、ATN2、COS、COT、DEGREES、PI、RADIANS、SIN 和 TAN |
+| 数学函数 | ABS、天花板、EXP、FLOOR、LOG、LOG10、POWER、ROUND、SIGN、SQRT、方形、TRUNC、ACOS、ASIN、ATAN、ATN2、COS、COT、度数、PI、RADIANS、RAND、SIN、TAN |
 | 类型检查函数 | IS_ARRAY、IS_BOOL、IS_NULL、IS_NUMBER、IS_OBJECT、IS_STRING、IS_DEFINED 和 IS_PRIMITIVE |
 | 字符串函数 | CONCAT、CONTAINS、ENDSWITH、INDEX_OF、LEFT、LENGTH、LOWER、LTRIM、REPLACE、REPLICATE、REVERSE、RIGHT、RTRIM、STARTSWITH、SUBSTRING 和 UPPER |
 | 数组函数 | ARRAY_CONCAT、ARRAY_CONTAINS、ARRAY_LENGTH 和 ARRAY_SLICE |
-| 日期和时间函数 | GETCURRENTDATETIME，GETCURRENTTIMESTAMP，  |
+| 日期和时间函数 | GETCURRENTDATETIME, GETCURRENTTIMESTAMP,  |
 | 空间函数 | ST_DISTANCE、ST_WITHIN、ST_INTERSECTS、ST_ISVALID 和 ST_ISVALIDDETAILED |
 
-如果您当前正使用用户定义的函数 (UDF) 为其内置函数现已推出，相应的内置函数将运行更快、 更高效。
+如果当前正在使用内置函数可用的用户定义函数 (UDF), 则相应的内置函数将更快运行, 更有效率。
 
 Cosmos DB 函数与 ANSI SQL 函数之间的主要差别在于，Cosmos DB 函数能够很好地处理无架构数据和混合架构数据。 例如，如果某个属性缺失或包含类似于 `unknown` 的非数字值，则会跳过该项，而不是返回错误。
 
@@ -66,9 +66,9 @@ Cosmos DB 函数与 ANSI SQL 函数之间的主要差别在于，Cosmos DB 函�
 |[COS](#bk_cos)|[COT](#bk_cot)|[DEGREES](#bk_degrees)|  
 |[EXP](#bk_exp)|[FLOOR](#bk_floor)|[LOG](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
-|[RADIANS](#bk_radians)|[ROUND](#bk_round)|[SIN](#bk_sin)|  
-|[SQRT](#bk_sqrt)|[SQUARE](#bk_square)|[SIGN](#bk_sign)|  
-|[TAN](#bk_tan)|[TRUNC](#bk_trunc)||  
+|[RADIANS](#bk_radians)|[ROUND](#bk_round)|[RAND](#bk_rand)|
+|[SIN](#bk_sin)|[SQRT](#bk_sqrt)|[SQUARE](#bk_square)|
+|[SIGN](#bk_sign)|[TAN](#bk_tan)|[TRUNC](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
  返回指定数值表达式的绝对（正）值。  
@@ -85,7 +85,7 @@ ABS (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -118,7 +118,7 @@ ACOS(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -151,7 +151,7 @@ ASIN(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -184,7 +184,7 @@ ATAN(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -217,7 +217,7 @@ ATN2(<numeric_expression>, <numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -250,7 +250,7 @@ CEILING (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -283,7 +283,7 @@ COS(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -316,7 +316,7 @@ COT(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -349,7 +349,7 @@ DEGREES (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -382,7 +382,7 @@ FLOOR (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -415,15 +415,15 @@ EXP (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个数值表达式。  
   
   **注释**  
   
-  常数 e  (2.718281…) 是自然对数的底数  。  
+  常数 e  (2.718281…) 是自然对数的底数。  
   
-  某个数为指数表示常数 e 自乘的次数为该数  。 例如 EXP(1.0) = e^1.0 = 2.71828182845905，EXP(10) = e^10 = 22026.4657948067。  
+  某个数为指数表示常数 e 自乘的次数为该数。 例如 EXP(1.0) = e^1.0 = 2.71828182845905，EXP(10) = e^10 = 22026.4657948067。  
   
   某个数的自然对数的指数就是该数本身：EXP (LOG (n)) = n。 并且某个数的指数的自然对数也是该数本身：LOG (EXP (n)) = n。  
   
@@ -472,7 +472,7 @@ LOG (<numeric_expression> [, <base>])
   
    设置对数底数的可选数值参数。  
   
-  返回类型   
+  返回类型  
   
   返回一个数值表达式。  
   
@@ -480,7 +480,7 @@ LOG (<numeric_expression> [, <base>])
   
   默认情况下，LOG() 返回自然对数。 可以使用可选底数参数将对数的底数改为另一个值。  
   
-  自然对数是以 e 为底数的对数  ，其中 e 是一个约等于2.718281828 的无理数常数  。  
+  自然对数是以 e 为底数的对数，其中 e 是一个约等于2.718281828 的无理数常数。  
   
   某个数的指数的自然对数也是该数本身：LOG( EXP( n ) ) = n。 并且某个数的自然对数的指数就是该数本身：EXP( LOG( n ) ) = n。  
   
@@ -525,7 +525,7 @@ LOG10 (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个数值表达式。  
   
@@ -555,14 +555,8 @@ SELECT LOG10(100) AS log10
 ```  
 PI ()  
 ```  
-  
- **参数**  
-  
-- `numeric_expression`  
-  
-   是一个数值表达式。  
-  
-  返回类型   
+   
+  返回类型  
   
   返回数值表达式。  
   
@@ -632,7 +626,7 @@ RADIANS (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -671,19 +665,19 @@ ROUND(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个数值表达式。  
   
   **注释**
   
-  执行舍入运算遵循远离零方向舍入的中点。 如果输入是一个数值表达式，此范围恰好两个整数结果将是从零开始的最接近的整数值。  
+  执行的四舍五入运算遵循远离零的中点四舍五入。 如果输入是正好介于两个整数之间的数值表达式，则结果将是离零最近的整数值。  
   
-  |<numeric_expression>|舍入|
+  |<numeric_expression>|已四舍五入|
   |-|-|
   |-6.5000|-7|
   |-0.5|-1|
-  |0.5|第|
+  |0.5|1|
   |6.5000|7||
   
   **示例**  
@@ -699,7 +693,34 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 ```  
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
+
+#### <a name="bk_rand"></a>RAND
+ 从 [0, 1) 返回随机生成的数值。
+ 
+ **语法**  
   
+```  
+RAND ()  
+```  
+
+  返回类型  
+  
+  返回数值表达式。  
+  
+  **示例**  
+  
+  下面的示例返回一个随机生成的数值。  
+  
+```  
+SELECT RAND() AS rand 
+```  
+  
+ 结果集如下。  
+  
+```  
+[{"rand": 0.87860053195618093}]  
+``` 
+
 ####  <a name="bk_sign"></a> SIGN  
  返回指定数值表达式的正数 (+1)、零 (0) 或负数 (-1)。  
   
@@ -715,7 +736,7 @@ SIGN(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -748,7 +769,7 @@ SIN(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -781,7 +802,7 @@ SQRT(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -814,7 +835,7 @@ SQUARE(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -847,7 +868,7 @@ TAN (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -880,7 +901,7 @@ TRUNC(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -900,7 +921,7 @@ SELECT TRUNC(2.4) AS t1, TRUNC(2.6) AS t2, TRUNC(2.5) AS t3, TRUNC(-2.4) AS t4, 
 
 ## <a id="type-checking-functions"></a>类型检查函数
 
-使用类型检查函数可以检查 SQL 查询中表达式的类型。 当项中的属性可变或未知时，可以使用类型检查函数即时确定这些属性的类型。 下面是支持的内置类型检查函数表：
+使用类型检查函数可以检查 SQL 查询中表达式的类型。 当项中的属性可变或未知时，可以使用类型检查函数即时确定这些属性的类型。 下面是受支持的内置类型检查函数表:
 
 以下函数支持对输入值进行类型检查，并且每个都会返回一个布尔值。  
   
@@ -925,7 +946,7 @@ IS_ARRAY(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -965,7 +986,7 @@ IS_BOOL(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -1005,7 +1026,7 @@ IS_DEFINED(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -1038,7 +1059,7 @@ IS_NULL(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -1078,7 +1099,7 @@ IS_NUMBER(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -1118,7 +1139,7 @@ IS_OBJECT(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -1158,7 +1179,7 @@ IS_PRIMITIVE(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -1198,7 +1219,7 @@ IS_STRING(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -1225,7 +1246,7 @@ SELECT
 
 ## <a id="string-functions"></a>字符串函数
 
-以下标量函数对字符串输入值执行运算并返回一个字符串，数值或布尔值：
+下面的标量函数对字符串输入值执行操作, 并返回字符串、数值或布尔值:
   
 ||||  
 |-|-|-|  
@@ -1253,7 +1274,7 @@ CONCAT(<str_expr>, <str_expr> [, <str_expr>])
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -1286,7 +1307,7 @@ CONTAINS(<str_expr>, <str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -1319,7 +1340,7 @@ ENDSWITH(<str_expr>, <str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -1352,7 +1373,7 @@ INDEX_OF(<str_expr>, <str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -1389,7 +1410,7 @@ LEFT(<str_expr>, <num_expr>)
   
    为任何有效的数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -1422,7 +1443,7 @@ LENGTH(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -1455,7 +1476,7 @@ LOWER(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -1489,7 +1510,7 @@ LTRIM(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -1522,7 +1543,7 @@ REPLACE(<str_expr>, <str_expr>, <str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -1562,7 +1583,7 @@ REPLICATE(<str_expr>, <num_expr>)
   > [!NOTE]
   > 结果的最大长度为 10,000 个字符，即 (length(str_expr)  *  num_expr) <= 10,000。
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -1595,7 +1616,7 @@ REVERSE(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -1632,7 +1653,7 @@ RIGHT(<str_expr>, <num_expr>)
   
    为任何有效的数值表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -1665,7 +1686,7 @@ RTRIM(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -1698,7 +1719,7 @@ STARTSWITH(<str_expr>, <str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -1731,7 +1752,7 @@ StringToArray(<expr>)
   
    是否会将任何有效的标量表达式作为 JSON 数组表达式来计算？ 请注意，嵌套字符串值必须使用双引号编写，否则无效。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)
   
-  返回类型   
+  返回类型  
   
   返回一个数组表达式或未定义的表达式。  
   
@@ -1806,7 +1827,7 @@ StringToBoolean(<expr>)
   
    是否会将任何有效的标量表达式作为布尔表达式来计算？  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式或未定义的表达式。  
   
@@ -1879,7 +1900,7 @@ StringToNull(<expr>)
   
    是否会将任何有效的标量表达式作为 Null 表达式来计算？
   
-  返回类型   
+  返回类型  
   
   返回一个 Null 表达式或未定义的表达式。  
   
@@ -1951,7 +1972,7 @@ StringToNumber(<expr>)
   
    是否会将任何有效的标量表达式作为 JSON 数字表达式来计算？ JSON 中的数字必须是整数或浮点数。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
   
-  返回类型   
+  返回类型  
   
   返回一个数字表达式或未定义的表达式。  
   
@@ -2021,7 +2042,7 @@ StringToObject(<expr>)
   
    是否会将任何有效的标量表达式作为 JSON 对象表达式来计算？ 请注意，嵌套字符串值必须使用双引号编写，否则无效。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
   
-  返回类型   
+  返回类型  
   
   返回一个对象表达式或未定义的表达式。  
   
@@ -2116,7 +2137,7 @@ SUBSTRING(<str_expr>, <num_expr>, <num_expr>)
   
    是表示开始和结束字符的任何有效数字表达式。    
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -2148,7 +2169,7 @@ ToString(<expr>)
   
    为任何有效的标量表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -2230,7 +2251,7 @@ TRIM(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -2262,7 +2283,7 @@ UPPER(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型   
+  返回类型  
   
   返回字符串表达式。  
   
@@ -2282,7 +2303,7 @@ SELECT UPPER("Abc") AS upper
 
 ## <a id="array-functions"></a>数组函数
 
-以下标量函数执行对数组输入的值并返回数值、 布尔值或数组值的操作：
+下面的标量函数对数组输入值执行运算, 并返回数值、布尔值或数组值:
   
 ||||  
 |-|-|-|  
@@ -2304,7 +2325,7 @@ ARRAY_CONCAT (<arr_expr>, <arr_expr> [, <arr_expr>])
   
    为任何有效的数组表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数组表达式。  
   
@@ -2345,7 +2366,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
   
    为任何布尔表达式。 如果将其设置为“true”，并且指定的搜索值是对象，则该命令将检查部分匹配（搜索对象是其中一个对象的子集）。 如果将其设置为“false”，则该命令将检查数组中所有对象的完全匹配。 如果未指定，默认值为“false”。 
   
-  返回类型   
+  返回类型  
   
   返回一个布尔值。  
   
@@ -2399,7 +2420,7 @@ ARRAY_LENGTH(<arr_expr>)
   
    为任何有效的数组表达式。  
   
-  返回类型   
+  返回类型  
   
   返回数值表达式。  
   
@@ -2440,7 +2461,7 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
 
    结果数组中的最大元素数。    
 
-  返回类型   
+  返回类型  
   
   返回数组表达式。  
   
@@ -2481,7 +2502,7 @@ SELECT
 |-|-|
 |[GETCURRENTDATETIME](#bk_get_current_date_time)|[GETCURRENTTIMESTAMP](#bk_get_current_timestamp)||
 
-####  <a name="bk_get_current_date_time"></a> GETCURRENTDATETIME
+####  <a name="bk_get_current_date_time"></a>GETCURRENTDATETIME
  以 ISO 8601 字符串形式返回当前 UTC 日期和时间。
   
  **语法**
@@ -2490,7 +2511,7 @@ SELECT
 GETCURRENTDATETIME ()
 ```
   
-  返回类型 
+  返回类型
   
   以 ISO 8601 字符串值形式返回当前 UTC 日期和时间。 
 
@@ -2512,7 +2533,7 @@ GETCURRENTDATETIME ()
 
   **注释**
 
-  GETCURRENTDATETIME 是非确定性函数。 
+  GETCURRENTDATETIME 是不确定性函数。 
   
   返回的结果采用 UTC（协调世界时）格式。
 
@@ -2532,7 +2553,7 @@ SELECT GETCURRENTDATETIME() AS currentUtcDateTime
 }]  
 ```  
 
-####  <a name="bk_get_current_timestamp"></a> GETCURRENTTIMESTAMP
+####  <a name="bk_get_current_timestamp"></a>GETCURRENTTIMESTAMP
  返回自 1970 年 1 月 1 日星期四 00:00:00 开始消逝的毫秒数。 
   
  **语法**  
@@ -2541,13 +2562,13 @@ SELECT GETCURRENTDATETIME() AS currentUtcDateTime
 GETCURRENTTIMESTAMP ()  
 ```  
   
-  返回类型   
+  返回类型  
   
   返回一个数字值，表示自 Unix 纪元开始消逝的秒数，即自 1970 年 1 月 1 日星期四 00:00:00 开始消逝的毫秒数。
 
   **注释**
 
-  GETCURRENTTIMESTAMP 是非确定性函数。
+  GETCURRENTTIMESTAMP 是不确定性函数。
   
   返回的结果采用 UTC（协调世界时）格式。
 
@@ -2591,7 +2612,7 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
    为任何有效的 GeoJSON 点、多边形或 LineString 对象表达式。  
   
-  返回类型   
+  返回类型  
   
   返回包含距离的数值表达式。 默认参考系统以米为单位表示。  
   
@@ -2632,7 +2653,7 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
    为任何有效的 GeoJSON 点、多边形或 LineString 对象表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔值。  
   
@@ -2674,7 +2695,7 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
   
    为任何有效的 GeoJSON 点、多边形或 LineString 对象表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔值。  
   
@@ -2712,7 +2733,7 @@ ST_ISVALID(<spatial_expr>)
   
    为任何有效的 GeoJSON 点、多边形或 LineString 表达式。  
   
-  返回类型   
+  返回类型  
   
   返回一个布尔表达式。  
   
@@ -2749,7 +2770,7 @@ ST_ISVALIDDETAILED(<spatial_expr>)
   
    任何有效的 GeoJSON 点或多边形表达式。  
   
-  返回类型   
+  返回类型  
   
   如果指定的 GeoJSON 点或多边形表达式有效，则返回包含布尔值的 JSON 值；如果无效，则额外添加原因作为字符串值。  
   
@@ -2778,5 +2799,5 @@ SELECT ST_ISVALIDDETAILED({
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Cosmos DB 简介](introduction.md)
-- [UDFs](sql-query-udfs.md)
-- [聚合](sql-query-aggregates.md)
+- [Udf](sql-query-udfs.md)
+- [集中](sql-query-aggregates.md)
