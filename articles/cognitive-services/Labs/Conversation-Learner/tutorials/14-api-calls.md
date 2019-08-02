@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 1f7c7c72703d7c3134dd2acdcc466fc0182fa38a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 261536932cc82a28ad4ee3ffc3575ea41fe9ec5b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389945"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703924"
 ---
 # <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>如何将 API 调用添加到对话学习器模型
 
@@ -58,7 +59,7 @@ API 调用的代码在此文件中定义：`C:\<installedpath>\src\demos\tutoria
 - `ClearEntities` 回调会清除数字实体，以便用户能够输入另一个数字。 
     - 说明 API 调用如何才能操作实体。
 
-### <a name="actions"></a>操作
+### <a name="actions"></a>个操作
 我们已创建了四个操作。 其中三个操作为“非等待”API 操作，第四个操作为“文本”操作，该操作会询问用户一个问题，而该问题类似于我们在其他教程中看到过的问题。 若要了解每个操作是如何创建的，请执行以下操作：
 1. 在左面板中单击“操作”，然后单击在网格中列出的四个操作中的一个。
 2. 注意弹出的窗体中每个字段的值。

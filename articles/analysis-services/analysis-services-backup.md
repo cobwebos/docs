@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 31e8e65b382a3a6bcad2998a0babdf9605dc4968
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15d2d0a043271da18d7884b684ffe8cf5c1f4dc8
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023835"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619205"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -32,11 +32,11 @@ ms.locfileid: "61023835"
 
 
 ### <a name="to-configure-storage-settings"></a>配置存储设置
-1.  在 Azure 门户中，转到“设置”  ，单击“备份”  。
+1.  在 Azure 门户中，转到“设置”，单击“备份”。
 
     ![设置中的备份](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  单击“已启用”  ，并单击“存储设置”  。
+2.  单击“已启用”，并单击“存储设置”。
 
     ![启用](./media/analysis-services-backup/aas-backup-enable.png)
 
@@ -54,21 +54,21 @@ ms.locfileid: "61023835"
 
 ### <a name="to-backup-by-using-ssms"></a>使用 SSMS 备份
 
-1. 在 SSMS 中，右键单击某个数据库，转到“备份”  。
+1. 在 SSMS 中，右键单击某个数据库，转到“备份”。
 
-2. 在“备份数据库”   > “备份文件”  中，单击“浏览”  。
+2. 在“备份数据库” > “备份文件”中，单击“浏览”。
 
-3. 在“文件另存为”  对话框中，验证文件夹路径，并键入备份文件的名称。 
+3. 在“文件另存为”对话框中，验证文件夹路径，并键入备份文件的名称。 
 
-4. 在“备份数据库”  对话框中，选择选项。
+4. 在“备份数据库”对话框中，选择选项。
 
-    “允许覆盖文件”  - 选择此选项可覆盖具有相同名称的备份文件。 如果未选择此选项，则要保存的文件不能与同一位置中已存在的文件具有相同的名称。
+    “允许覆盖文件”- 选择此选项可覆盖具有相同名称的备份文件。 如果未选择此选项，则要保存的文件不能与同一位置中已存在的文件具有相同的名称。
 
-    “应用压缩”  - 选择此选项可压缩备份文件。 压缩的备份文件可节省磁盘空间，但需要稍高的 CPU 使用率。 
+    “应用压缩”- 选择此选项可压缩备份文件。 压缩的备份文件可节省磁盘空间，但需要稍高的 CPU 使用率。 
 
-    “加密备份文件”  - 选择此选项可加密备份文件。 此选项要求用户提供密码来保护备份文件。 密码可防止采用还原操作外的任何其他方式读取备份数据。 如果选择对备份加密，请将密码存储在安全位置。
+    “加密备份文件”- 选择此选项可加密备份文件。 此选项要求用户提供密码来保护备份文件。 密码可防止采用还原操作外的任何其他方式读取备份数据。 如果选择对备份加密，请将密码存储在安全位置。
 
-5. 单击“确定”  创建并保存备份文件。
+5. 单击“确定”创建并保存备份文件。
 
 
 ### <a name="powershell"></a>PowerShell
@@ -86,13 +86,13 @@ ms.locfileid: "61023835"
 
 ### <a name="to-restore-by-using-ssms"></a>使用 SSMS 还原
 
-1. 在 SSMS 中，右键单击某个数据库，转到“还原”  。
+1. 在 SSMS 中，右键单击某个数据库，转到“还原”。
 
-2. 在“备份文件”  的“备份数据库”  对话框中，单击“浏览”  。
+2. 在“备份文件”的“备份数据库”对话框中，单击“浏览”。
 
-3. 在“定位数据库文件”  对话框中，选择要还原的文件。
+3. 在“定位数据库文件”对话框中，选择要还原的文件。
 
-4. 在“还原数据库”  ，选择数据库。
+4. 在“还原数据库”，选择数据库。
 
 5. 指定选项。 安全选项必须与备份时使用的备份选项相匹配。
 

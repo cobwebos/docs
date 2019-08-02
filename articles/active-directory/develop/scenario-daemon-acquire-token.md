@@ -1,6 +1,6 @@
 ---
-title: 守护程序应用程序调用 web Api （获取令牌的应用）-Microsoft 标识平台
-description: 了解如何构建守护程序应用调用 web Api （获取令牌）
+title: 调用 Web API 的守护程序应用（获取应用的令牌）- Microsoft 标识平台
+description: 了解如何构建调用 Web API 的守护程序应用（获取令牌）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,20 +16,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa4f5dc7a5aceaf81f71eacd36d131471a57e5c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a5f15aa5264c0abf87cb15f0468e8a3a924e0b5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075365"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562358"
 ---
-# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>守护程序应用调用 web Api-获取令牌
+# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 Web API 的守护程序应用 - 获取令牌
 
-机密客户端应用程序构造后，您可以通过调用获取的应用令牌``AcquireTokenForClient``，传递作用域，并强制实施或未刷新令牌。
+构建机密客户端应用程序以后，可以获取应用的令牌，方法是调用 ``AcquireTokenForClient``，传递作用域，然后强制刷新或不刷新令牌。
 
-## <a name="scopes-to-request"></a>作用域，以请求
+## <a name="scopes-to-request"></a>请求的作用域
 
-作用域，以请求客户端凭据流是资源的名称后跟`/.default`。 此表示法告知 Azure AD 即可使用**应用程序级权限**应用程序注册过程中以静态方式声明。 此外，如上所述，API 授予这些权限必须由租户管理员
+请求客户端凭据流时，其作用域是资源的名称后跟 `/.default`。 这种表示法告知 Azure AD 使用在应用程序注册过程中静态声明的**应用程序级权限**。 另外，如前所示，这些 API 权限必须由租户管理员授予
 
 ### <a name="net"></a>.NET
 
@@ -40,7 +40,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ### <a name="python"></a>Python
 
-在 MSAL。Python，配置文件如以下代码片段所示：
+在 MSAL.Python 中，该配置文件应该如以下代码片段所示：
 
 ```Python
 {
@@ -59,13 +59,13 @@ public final static String KEYVAULT_DEFAULT_SCOPE = "https://vault.azure.net/.de
 
 ### <a name="all"></a>全部
 
-使用客户端凭据的作用域应始终为 resourceId +"/.default"
+用于客户端凭据的作用域应该始终为 resourceId+"/.default"
 
-### <a name="case-of-v10-resources"></a>用例的 1.0 版资源
+### <a name="case-of-azure-ad-v10-resources"></a>Azure AD (1.0) 资源的情况
 
 > [!IMPORTANT]
-> 对于要求接受 v1.0 访问令牌的资源的访问令牌 MSAL （v2.0 终结点），Azure AD 通过采用最后一个反斜杠之前的所有内容并将其用作资源标识符分析期望的受众，从所请求的范围。
-> 因此如果，如 Azure SQL ( **https://database.windows.net** ) 资源需要结尾斜杠的受众 (Azure sql: `https://database.windows.net/` )，你将需要请求的范围为`https://database.windows.net//.default` （请注意双斜杠）。 另请参阅 MSAL.NET 问题[#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747):省略资源 url 尾部反斜杠，导致 sql 身份验证失败。
+> 对于 MSAL (Microsoft 标识平台终结点), 请求获取用于接受 v1.0 访问令牌的资源的访问令牌, Azure AD 通过使用最后一个斜杠之前的所有内容并将其用作资源标识符, 来分析所请求范围内的所需受众。
+> 因此，如果像 Azure SQL ( **https://database.windows.net** ) 一样，资源预期受众以斜杠结尾（例如 Azure SQL：`https://database.windows.net/` ），则需请求作用域 `https://database.windows.net//.default` （注意其中的双斜杠）。 另请参阅 MSAL.NET 问题 [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
@@ -100,7 +100,7 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 
 #### <a name="application-token-cache"></a>应用程序令牌缓存
 
-在 MSAL.NET，`AcquireTokenForClient`使用**应用程序令牌缓存**（所有其他 AcquireTokenXX 方法使用用户令牌缓存），不要调用`AcquireTokenSilent`之前调用`AcquireTokenForClient`作为`AcquireTokenSilent`使用**用户**令牌缓存。 `AcquireTokenForClient` 检查**应用程序**令牌缓存本身并对其进行更新。
+在 MSAL.NET 中，`AcquireTokenForClient` 使用**应用程序令牌缓存**（所有其他 AcquireTokenXX 方法使用用户令牌缓存）。请勿在调用 `AcquireTokenForClient` 之前调用 `AcquireTokenSilent`，因为 `AcquireTokenSilent` 使用**用户**令牌缓存。 `AcquireTokenForClient` 会检查**应用程序**令牌缓存本身并对其进行更新。
 
 ### <a name="python"></a>Python
 
@@ -130,7 +130,7 @@ AuthenticationResult result = future.get();
 
 ### <a name="protocol"></a>Protocol
 
-如果您还没有你选择的语言的库，你可能想要直接使用协议：
+如果还没有所选语言的库，则可能需要直接使用协议：
 
 #### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
 
@@ -159,20 +159,20 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-### <a name="learn-more-about-the-protocol"></a>了解有关协议的详细信息
+### <a name="learn-more-about-the-protocol"></a>详细了解协议
 
-有关详细信息，请参阅协议文档：[Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流](v2-oauth2-client-creds-grant-flow.md)。
+有关详细信息，请参阅协议文档：[Microsoft 标识平台和 OAuth 2.0 客户端凭据流](v2-oauth2-client-creds-grant-flow.md)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
-### <a name="did-you-use-the-resourcedefault-scope"></a>未使用的资源/.default 范围？
+### <a name="did-you-use-the-resourcedefault-scope"></a>你是否使用过 resource/.default 作用域？
 
-如果收到错误消息，告诉您使用无效的作用域，则可能没有使用`resource/.default`作用域。
+如果出现一条错误消息，指出所使用的作用域无效，则表明你并未使用 `resource/.default` 作用域。
 
-### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>您是否忘记提供管理员许可？ 守护程序应用需要它 ！
+### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>你是否忘记提供管理员许可？ 守护程序应用需要它！
 
-如果调用 API 时遇到错误**特权不足以完成该操作**，租户管理员需要向应用程序授予权限。 请参阅上述客户端应用注册到的第 6 步。
-通常，会看到等错误显示以下错误说明：
+如果在调用 API 时出现错误“权限不足，无法完成该操作”，则租户管理员需要授予对应用程序的权限。 请查看上面的步骤 6：注册客户端应用。
+通常会看到类似以下错误描述的错误：
 
 ```JSon
 Failed to call the web API: Forbidden
@@ -191,4 +191,4 @@ Content: {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [守护程序应用-调用 web API](scenario-daemon-call-api.md)
+> [守护程序应用 - 调用 Web API](scenario-daemon-call-api.md)

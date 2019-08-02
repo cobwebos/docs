@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: shlo
-ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53ead1caed47ae442670f0b6bcd54cd84956a759
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60716673"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720620"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>以可视化方式监视 Azure 数据工厂
 Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
@@ -40,40 +40,40 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 | **列名称** | **说明** |
 | --- | --- |
 | 管道名称 | 管道的名称。 |
-| 操作 | 可用于查看活动运行的单个操作。 |
+| 个操作 | 可用于查看活动运行的单个操作。 |
 | 运行开始时间 | 管道运行的开始日期时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
 | Duration | 运行持续时间 (HH:MM:SS) |
 | 触发者 | 手动触发、计划触发 |
 | 状态 | 已失败、已成功、正在进行 |
-| parameters | 管道运行参数（名称-值对） |
-| 错误 | 管道运行错误（如果有） |
+| Parameters | 管道运行参数（名称-值对） |
+| Error | 管道运行错误（如果有） |
 | 运行 ID | 管道运行的 ID |
 
 ![监视管道运行](media/monitor-visually/pipeline-runs.png)
 
 ## <a name="monitor-activity-runs"></a>监视活动运行
-以下列表视图展示了与每个管道运行对应的活动运行。 单击“操作”列下的“活动运行”图标可查看每个管道运行的活动运行。   包括的列：
+以下列表视图展示了与每个管道运行对应的活动运行。 单击“操作”列下的“活动运行”图标可查看每个管道运行的活动运行。 包括的列：
 
 | **列名称** | **说明** |
 | --- | --- |
-| 活动名称 | 管道中的活动的名称。 |
+| 活动名 | 管道中的活动的名称。 |
 | 活动类型 | 活动类型，例如复制、HDInsightSpark、HDInsightHive，等等。 |
 | 运行开始时间 | 活动运行的开始日期时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
 | Duration | 运行持续时间 (HH:MM:SS) |
 | 状态 | 已失败、已成功、正在进行 |
 | 输入 | 描述了活动输入的 JSON 数组 |
-| 输出 | 描述了活动输出的 JSON 数组 |
-| 错误 | 活动运行错误（如果有） |
+| Output | 描述了活动输出的 JSON 数组 |
+| Error | 活动运行错误（如果有） |
 
 ![监视活动运行](media/monitor-visually/activity-runs.png)
 
 > [!IMPORTANT]
-> 需要单击顶部的“刷新”图标来刷新管道和活动运行的列表。  当前不支持自动刷新。
+> 需要单击顶部的“刷新”图标来刷新管道和活动运行的列表。 当前不支持自动刷新。
 
 ![刷新](media/monitor-visually/refresh.png)
 
 ## <a name="select-a-data-factory-to-monitor"></a>选择要监视的数据工厂
-将鼠标指针悬停在左上角的“数据工厂”  图标上。 单击“箭头”图标以查看可以监视的 azure 订阅和数据工厂的列表。
+将鼠标指针悬停在左上角的“数据工厂”图标上。 单击“箭头”图标以查看可以监视的 azure 订阅和数据工厂的列表。
 
 ![选择数据工厂](media/monitor-visually/select-datafactory.png)
 
@@ -89,7 +89,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 | 运行开始时间 | 管道运行的开始日期时间 |
 | 运行状态 | 按状态筛选运行 - 已成功、已失败、正在进行 |
 
-![筛选器](media/monitor-visually/filter.png)
+![筛选](media/monitor-visually/filter.png)
 
 ### <a name="add-or-remove-columns"></a>添加或删除列
 右键单击列表视图标题，并选择希望在列表视图中显示的列
@@ -101,7 +101,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ## <a name="promote-user-properties-to-monitor"></a>提升要监视的用户属性
 
-可以将任何管道活动属性提升为用户属性，使其成为可以监视的实体。 例如，可以将管道中复制活动的**源**和**目标**属性提升为用户属性。 还可以选择“自动生成”  ，为复制活动生成**源**和**目标**用户属性。
+可以将任何管道活动属性提升为用户属性，使其成为可以监视的实体。 例如，可以将管道中复制活动的**源**和**目标**属性提升为用户属性。 还可以选择“自动生成”，为复制活动生成**源**和**目标**用户属性。
 
 ![创建用户属性](media/monitor-visually/monitor-user-properties-image1.png)
 
@@ -118,7 +118,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ## <a name="rerun-activities-inside-a-pipeline"></a>重新运行管道中的活动
 
-现在可以重新运行管道中的活动。 单击“查看活动运行”  并选择要从管道中的活动中的哪个点重新运行管道。
+现在可以重新运行管道中的活动。 单击“查看活动运行”并选择要从管道中的活动中的哪个点重新运行管道。
 
 ![查看活动运行](media/monitor-visually/rerun-activities-image1.png)
 
@@ -134,6 +134,18 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ![查看管道运行的历史记录](media/monitor-visually/rerun-history-image2.png)
 
+## <a name="gantt-views"></a>甘特图视图
+
+使用甘特图视图可快速可视化管道和活动运行。 您可以查看每个管道的甘特图视图, 也可以按您在管道上创建的注释/标记进行分组。
+
+![甘特图](media/monitor-visually/gantt1.png)
+
+![甘特图批注](media/monitor-visually/gantt2.png)
+
+条的长度指示管道的持续时间。 还可以单击此栏以查看更多详细信息。
+
+![甘特图持续时间](media/monitor-visually/gantt3.png)
+
 ## <a name="guided-tours"></a>引导式演示
 单击左下角的“信息图标”并单击“引导式演示”来获取有关如何监视管道和活动运行的分步说明。
 
@@ -146,7 +158,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ## <a name="alerts"></a>警报
 
-可在数据工厂中发出有关受支持指标的警报。 在“数据工厂监视器”页面上选择“监视器”->“警报和指标”以开始。   
+可在数据工厂中发出有关受支持指标的警报。 在“数据工厂监视器”页面上选择“监视器”->“警报和指标”以开始。 
 
 ![](media/monitor-visually/alerts01.png)
 
@@ -156,7 +168,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ### <a name="create-alerts"></a>创建警报
 
-1.  单击“新建警报规则”以创建新警报。   
+1.  单击“新建警报规则”以创建新警报。 
 
     ![](media/monitor-visually/alerts02.png)
 

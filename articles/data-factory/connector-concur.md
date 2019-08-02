@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: f57a83fb83152055692e6f614b7958d099b6c70d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48ebdca1b6abf57a84927e25bca1f85b023fa208
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808913"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726171"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Concur 复制数据
 
@@ -78,7 +78,7 @@ Concur 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Concur 数据集支持的属性列表。
 
-要从 Concur 复制数据，请将数据集的 type 属性设置为“ConcurObject”  。 此类型的数据集中没有任何其他特定于类型的属性。 支持以下属性：
+要从 Concur 复制数据，请将数据集的 type 属性设置为“ConcurObject”。 此类型的数据集中没有任何其他特定于类型的属性。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -93,11 +93,12 @@ Concur 链接服务支持以下属性：
     "name": "ConcurDataset",
     "properties": {
         "type": "ConcurObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Concur linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -108,7 +109,7 @@ Concur 链接服务支持以下属性：
 
 ### <a name="concursource-as-source"></a>以 ConcurSource 作为源
 
-要从 Concur 复制数据，请将复制活动中的源类型设置为“ConcurSource”  。 复制活动源部分支持以下属性  ：
+要从 Concur 复制数据，请将复制活动中的源类型设置为“ConcurSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

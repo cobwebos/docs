@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: yagup
-ms.openlocfilehash: ca3174ad69185da88bf89c843f641dd2b20d9ac5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 03c0106d793fc7b77ccc8a9176f158a9928ab291
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872478"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620119"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -55,7 +55,7 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 
 ![NSG 流日志处理的数据流](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
-## <a name="supported-regions"></a>支持的区域
+## <a name="supported-regions-nsg"></a>支持的区域:NSG 
 
 可以在以下任何受支持的区域中对 NSG 使用流量分析：
 
@@ -83,7 +83,9 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 * 印度南部
 * 日本东部 
 * 日本西部
-* 美国政府弗吉尼亚州
+* US Gov 弗吉尼亚州
+
+## <a name="supported-regions-log-analytics-workspaces"></a>支持的区域:Log Analytics 工作区
 
 Log Analytics 工作区必须存在于以下区域中：
 * 加拿大中部
@@ -105,9 +107,9 @@ Log Analytics 工作区必须存在于以下区域中：
 * 韩国中部
 * 印度中部
 * 日本东部
-* 美国政府弗吉尼亚州
+* US Gov 弗吉尼亚州
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 ### <a name="user-access-requirements"></a>用户访问要求
 
@@ -117,7 +119,7 @@ Log Analytics 工作区必须存在于以下区域中：
 |---------          |---------               |
 |资源管理器   | 所有者                  |
 |                   | 参与者            |
-|                   | 读取器                 |
+|                   | 读者                 |
 |                   | 网络参与者    |
 
 如果未将帐户分配给内置角色之一，则必须在订阅级别将其分配给分配有以下操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)：
@@ -137,17 +139,17 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ### <a name="enable-network-watcher"></a>启用网络观察程序
 
-若要分析流量，需要提供现有的网络观察程序，或者在要分析其流量的 NSG 所在的每个区域[启用网络观察程序](network-watcher-create.md)。 可对任一[受支持区域](#supported-regions)中托管的 NSG 启用流量分析。
+若要分析流量，需要提供现有的网络观察程序，或者在要分析其流量的 NSG 所在的每个区域[启用网络观察程序](network-watcher-create.md)。 可对任一[受支持区域](#supported-regions-nsg)中托管的 NSG 启用流量分析。
 
 ### <a name="select-a-network-security-group"></a>选择网络安全组
 
 在启用 NSG 流日志记录之前，必须提供要记录其流的网络安全组。 如果没有网络安全组，请参阅[创建网络安全组](../virtual-network/manage-network-security-group.md#create-a-network-security-group)来创建一个。
 
-在 Azure 门户左侧选择“监视”，然后依次选择“网络观察程序”、“NSG 流日志”。    选择要为其启用 NSG 流日志的网络安全组，如下图所示：
+在 Azure 门户左侧选择“监视”，然后依次选择“网络观察程序”、“NSG 流日志”。 选择要为其启用 NSG 流日志的网络安全组，如下图所示：
 
 ![选择需要启用 NSG 流日志的 NSG](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
-尝试为[受支持区域](#supported-regions)以外的任何区域中托管的 NSG 启用流量分析时，会收到“未找到”错误。
+尝试为[受支持区域](#supported-regions-nsg)以外的任何区域中托管的 NSG 启用流量分析时，会收到“未找到”错误。
 
 ## <a name="enable-flow-log-settings"></a>启用流日志设置
 
@@ -172,25 +174,26 @@ New-AzStorageAccount `
 
 如图所示选择以下选项：
 
-1. 为“状态”选择“打开”  
+1. 为“状态”选择“打开”
 2. 选择*版本 2*作为**流日志版本**。 版本 2 包含流会话统计信息（字节和数据包）
-3. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。
-4. 将“保留期”设置为存储数据的天数。 
-5. 为“流量分析状态”选择“打开”。  
-6. 选择现有的 Log Analytics (OMS) 工作区，或选择“创建新工作区”来创建一个新工作区。  流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#supported-regions)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 有关查询语言的详细信息，请参阅[将 Azure Log Analytics 升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+3. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 确保你的存储未将 "已启用 Data Lake Storage Gen2 分层命名空间" 设置为 true。 此外, NSG 流日志不能存储在具有防火墙的存储帐户中。 
+4. 将“保留期”设置为存储数据的天数。
+5. 为“流量分析状态”选择“打开”。
+6. 选择处理时间间隔。 根据你的选择, 将从存储帐户收集流日志并由流量分析处理。 你可以选择每1小时或每10分钟的处理间隔。
+7. 选择现有的 Log Analytics (OMS) 工作区，或选择“创建新工作区”来创建一个新工作区。 流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#supported-regions-log-analytics-workspaces)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 有关查询语言的详细信息，请参阅[将 Azure Log Analytics 升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
     托管流量分析解决方案和 NSG 的 Log Analytics 工作区不一定要位于同一个区域。 例如，可将流量分析部署在西欧区域的某个工作区中，同时将 NSG 部署在美国东部和美国西部。 可在同一工作区中配置多个 NSG。
-7. 选择**保存**。
+8. 选择**保存**。
 
-    ![选择存储帐户和 Log Analytics 工作区并启用流量分析](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
+    ![选择存储帐户和 Log Analytics 工作区并启用流量分析](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区, 因此, 请确保你所在国家/地区的本地法律和法规允许在该工作区所在的区域存储数据。
+针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区，因此，请确保所在国家/地区的当地法律和法规允许将数据存储在工作区所在的区域。 如果为不同的 Nsg 设置了不同的处理间隔, 将以不同的时间间隔收集数据。 例如：对于关键 Vnet, 可以选择启用10分钟的处理间隔, 为非关键 Vnet 启用1小时。
 
 你还可以使用 Azure PowerShell 中的[AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
 ## <a name="view-traffic-analytics"></a>查看流量分析
 
-在门户左侧选择“所有服务”，并在“筛选器”框中输入“监视”。    当“监视”出现在搜索结果中时，请选择它。  若要开始浏览流量分析及其功能，请依次选择“网络观察程序”、“流量分析”   。
+在门户左侧选择“所有服务”，并在“筛选器”框中输入“监视”。 当“监视”出现在搜索结果中时，请选择它。 若要开始浏览流量分析及其功能，请依次选择“网络观察程序”、“流量分析”。
 
 ![访问流量分析仪表板](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 
@@ -214,7 +217,7 @@ New-AzStorageAccount `
 - 允许/阻止的恶意流量统计信息
   - 主机为何在接收恶意流量以及为何允许来自恶意源的流？ 对于此行为，需要进一步进行调查，并且可能需要对配置进行优化。
 
-    在“主机”下选择“查看全部”，如下图所示   ：
+    在“主机”下选择“查看全部”，如下图所示：
 
     ![展示处理大部分流量的主机详细信息的仪表板](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
 
@@ -230,7 +233,7 @@ New-AzStorageAccount `
     - 主机为何允许或阻止大量的流量？
 - 对话最活跃的主机对之间最常用的应用程序协议：
     - 此网络中是否允许这些应用程序？
-    - 应用程序的配置是否正确？ 它们是否使用适当的协议进行通信？ 在“频繁的对话”   下选择“查看全部”，如下图所示：
+    - 应用程序的配置是否正确？ 它们是否使用适当的协议进行通信？ 在“频繁的对话”下选择“查看全部”，如下图所示：
 
         ![展示最频繁对话的仪表板](./media/traffic-analytics/dashboard-showcasing-most-frequent-conversation.png)
 
@@ -242,7 +245,7 @@ New-AzStorageAccount `
 
 - 环境中最常使用的应用程序协议是哪个，哪些对话主机对最常使用该应用程序协议？
     - 此网络中是否允许这些应用程序？
-    - 应用程序的配置是否正确？ 它们是否使用适当的协议进行通信？ 预期行为是使用常用端口，例如 80 和 443。 如果为标准通信显示了任何非寻常端口，可能需要对端口进行配置更改。 在“应用程序端口”   下选择“查看全部”，如下图所示：
+    - 应用程序的配置是否正确？ 它们是否使用适当的协议进行通信？ 预期行为是使用常用端口，例如 80 和 443。 如果为标准通信显示了任何非寻常端口，可能需要对端口进行配置更改。 在“应用程序端口”下选择“查看全部”，如下图所示：
 
         ![展示最常使用的应用程序协议的仪表板](./media/traffic-analytics/dashboard-showcasing-top-application-protocols.png)
 
@@ -258,7 +261,7 @@ New-AzStorageAccount `
     - 每个 VPN SKU 允许特定的带宽量。 VPN 网关是否利用不足？
     - 网关是否即将达到容量？ 是否应升级到下一个更高的 SKU？
 - 哪些主机的对话最活跃，它们通过哪个 VPN 网关和端口对话？
-    - 此模式是否正常？ 在“VPN 网关”下选择“查看全部”，如下图所示   ：
+    - 此模式是否正常？ 在“VPN 网关”下选择“查看全部”，如下图所示：
 
         ![展示最活跃的 VPN 连接的仪表板](./media/traffic-analytics/dashboard-showcasing-top-active-vpn-connections.png)
 
@@ -274,7 +277,7 @@ New-AzStorageAccount `
   - 如果发现数据中心的负载增加，可以规划高效的流量分布。
   - 如果恶意网络在数据中心对话，请更正 NSG 规则以阻止这些网络。
 
-    在“你的环境”下选择“查看地图”，如下图所示   ：
+    在“你的环境”下选择“查看地图”，如下图所示：
 
     ![展示流量分布的仪表板](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
@@ -296,7 +299,7 @@ New-AzStorageAccount `
   - 了解哪两个虚拟网络正在对话。 如果对话不符合预期，可将其更正。
   - 如果恶意网络正在与虚拟网络对话，可以更正 NSG 规则以阻止恶意网络。
  
-    在“你的环境”下选择“查看 VNet”，如下图所示   ：
+    在“你的环境”下选择“查看 VNet”，如下图所示：
 
     ![展示虚拟网络分布的仪表板](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 

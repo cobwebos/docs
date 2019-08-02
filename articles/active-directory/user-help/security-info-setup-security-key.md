@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d2f06b054e433c0320019548c56539d102beaad
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 25ac894db42b2b5ee2612e2e3b2906bc2bffcc4c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386494"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717387"
 ---
 # <a name="set-up-security-info-to-use-a-security-key-preview"></a>设置安全信息以使用安全密钥 (预览)
 
@@ -30,26 +30,26 @@ ms.locfileid: "68386494"
 
 ## <a name="what-is-a-security-key"></a>什么是安全密钥？
 
-目前, 我们使用[快速标识 Online (FIDO)](https://fidoalliance.org/fido2/) (FIDO2) 无密码身份验证方法支持多个安全密钥设计和提供程序。 此方法允许你登录到你的工作或学校帐户一次, 以便访问你的组织的所有基于云的资源和支持的浏览器。
+目前, 我们使用[快速标识 Online (FIDO)](https://fidoalliance.org/fido2/) (FIDO2) 无密码身份验证协议支持多个安全密钥设计和提供商。 当你在受支持的设备和 web 浏览器上时, 这些密钥允许你登录到你的工作或学校帐户来访问你的组织的基于云的资源。
 
 如果你的管理员或组织需要为你的工作或学校帐户提供安全密钥, 则会向你提供该密钥。 你可以使用不同类型的安全密钥, 例如, 你插入到设备的 USB 密钥或你在 NFC 读卡器上点击的 NFC 密钥。 你可以从制造商的文档中了解有关安全密钥的详细信息, 包括其类型。
 
 > [!Note]
-> 如果你无法使用 FIDO2 安全密钥, 则可以使用其他无密码身份验证方法, 例如 Microsoft Authenticator 应用或 Windows Hello。 有关 Microsoft Authenticator 应用的详细信息, 请参阅[什么是 Microsoft Authenticator 应用？](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview)。 有关 Windows Hello 的详细信息, 请参阅[Windows hello 概述](https://www.microsoft.com/windows/windows-hello)。
+> 如果你无法使用 FIDO2 安全密钥, 则可以使用其他无密码身份验证方法, 例如 Microsoft Authenticator 应用或 Windows Hello。 有关 Microsoft Authenticator 应用的详细信息, 请参阅[什么是 Microsoft Authenticator 应用？](user-help-auth-app-overview.md)。 有关 Windows Hello 的详细信息, 请参阅[Windows hello 概述](https://www.microsoft.com/windows/windows-hello)。
 
 ## <a name="before-you-begin"></a>开始之前
 
-在开始注册安全密钥之前, 请仔细检查以下内容:
+在能够注册安全密钥之前, 必须满足以下条件:
 
 - 你的管理员已启用此功能, 以便在你的组织中使用。
 
-- 你处于至少运行 Windows 10 版本1903和 Microsoft Edge 浏览器的设备上。
+- 你在运行 Windows 10 的设备上运行 Windows 10 可能会2019更新并使用受支持的浏览器。
 
-- 你已收到管理员或你的组织的物理安全密钥。 安全密钥必须同时为 FIDO2 和 Microsoft 兼容。 如果你对安全密钥有任何疑问以及它是否兼容, 请与你的组织的技术支持部门联系。
+- 你有管理员或组织批准的物理安全密钥。 安全密钥必须同时为 FIDO2 和 Microsoft 兼容。 如果你对安全密钥有任何疑问以及它是否兼容, 请与你的组织的技术支持部门联系。
 
 ## <a name="register-your-security-key"></a>注册安全密钥
 
-必须先准备好安全密钥才能使用 Windows 和唯一的 PIN, 然后才能使用密钥登录到工作帐户或学校帐户。
+你必须创建安全密钥并为其指定唯一的 PIN, 然后才能使用密钥登录到你的工作或学校帐户。 你最多可以有10个注册到你的帐户的密钥。 
 
 1. 请在上 https://myprofile.microsoft.com 的 "**我的配置文件**" 页, 并登录 (如果尚未这样做)。
 
@@ -96,7 +96,7 @@ ms.locfileid: "68386494"
 
 ## <a name="delete-a-security-key-from-your-security-info"></a>从安全信息中删除安全密钥
 
-如果不再想要使用安全密钥, 可以从安全信息中删除该密钥。 尽管这会阻止安全密钥与你的工作或学校帐户一起使用, 但安全密钥会继续存储你的数据和凭据信息。 若要从安全密钥本身删除数据和凭据信息, 你必须按照本文[重置 Microsoft 兼容的安全密钥](#reset-your-security-key)部分中的说明进行操作。
+如果丢失或不再需要使用安全密钥, 可以从安全信息中删除该密钥。 尽管这会阻止安全密钥与你的工作或学校帐户一起使用, 但安全密钥会继续存储你的数据和凭据信息。 若要从安全密钥本身删除数据和凭据信息, 你必须按照本文[重置 Microsoft 兼容的安全密钥](#reset-your-security-key)部分中的说明进行操作。
 
 1. 选择要删除的安全密钥中的 "**删除**" 链接。
 
@@ -105,7 +105,7 @@ ms.locfileid: "68386494"
     你的安全密钥会被删除, 你将无法再使用它来登录到你的工作或学校帐户。
 
 >[!Important]
->如果错误地删除了此安全密钥, 则必须使用本文[如何注册安全密钥](#register-your-security-key)部分中的说明再次注册该安全密钥。
+>如果错误地删除了安全密钥, 则可以使用本文[如何注册安全密钥](#register-your-security-key)部分中的说明再次注册该安全密钥。
 
 ## <a name="manage-your-security-key-settings-from-windows-settings"></a>在 Windows 设置中管理安全密钥设置
 
@@ -138,29 +138,19 @@ ms.locfileid: "68386494"
 
 1. 打开 Windows "设置" 应用, 选择 "**帐户**", 选择 "**登录选项**", 选择 "**安全密钥**", 然后选择 "**管理**"。
 
-2. 将安全密钥插入 USB 端口, 或点击 NFC 读卡器来验证你的身份。5
+2. 将安全密钥插入 USB 端口, 或点击 NFC 读卡器来验证身份。
 3. 从 "**安全密钥**" "pin" 区域中选择 "**添加**", 键入并确认新的安全密钥 Pin, 然后选择 **"确定"** 。
 
-    使用新的安全密钥 PIN 更新安全密钥, 以便与工作或学校帐户一起使用。 如果你决定再次更改你的 PIN, 则可以选择 "**更改**" 按钮。6
+     使用新的安全密钥 PIN 更新安全密钥, 以便与工作或学校帐户一起使用。 如果你决定再次更改你的 PIN, 则可以选择 "**更改**" 按钮。
 4. 选择 "**关闭**" 以关闭 "**管理**" 屏幕。
 
 ## <a name="additional-security-info-methods"></a>其他安全信息方法
 
-基于你想要执行的操作，还可以选择组织如何联系你以验证你的身份的其他选项。 选项包括：
-
-- **Authenticator 应用。** 下载并使用验证器应用，获取双重验证或密码重置的审批通知或随机生成的审核代码。 有关如何设置和使用 Microsoft Authenticator 应用的分步说明，请参阅[设置安全信息以使用验证器应用](security-info-setup-auth-app.md)。
-
-- **移动设备短信。** 输入移动设备号码，获取将用于双重验证或密码重置的短信或代码。 有关如何通过短信 (SMS) 验证身份的分步说明，请参阅[设置安全信息以使用短信 (SMS)](security-info-setup-text-msg.md)。
-
-- **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
-
-- **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
-
-- **安全性问题。** 回答管理员为组织创建的一些安全性问题。 此选项仅适用于密码重置，不可用于双重验证。 有关如何设置安全问题的分步说明，请参阅[设置安全信息以使用安全性问题](security-info-setup-questions.md)一文。
+若要注册安全密钥, 你必须注册至少一个附加的安全验证方法。 有关详细信息, 请参阅[概述部分](security-info-add-update-methods-overview.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关无密码 authentication 方法的详细信息, 请阅读[Microsoft 的 Azure AD 开始 FIDO2 安全密钥的公共预览版, 启用无密码登录](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins)博客, 或阅读[什么是 Microsoft Authenticator 应用？](https://docs.microsoft.com/azure/active-directory/user-help8user-help-auth-app-overview)和[Windows Hello 概述](https://www.microsoft.com/windows/windows-hello)文章。
+- 有关无密码 authentication 方法的详细信息, 请阅读[Microsoft 的 Azure AD 开始 FIDO2 安全密钥的公共预览版, 启用无密码登录](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins)博客, 或阅读[什么是 Microsoft Authenticator 应用？](user-help-auth-app-overview.md)和[Windows Hello 概述](https://www.microsoft.com/windows/windows-hello)文章。
 
 - 有关[与 Microsoft 兼容的安全密钥](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)的详细信息。
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 1c9894772f440a568cbc08890feb961471d84137
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3ebd8b6f65ec86d338932579f5d4ccec6a90be3
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480215"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704734"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -33,6 +33,10 @@ ms.locfileid: "66480215"
 |**当前受支持的框架**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4-预览
+* Bug 修复
+* 提供 RestExecutorConfiguration 的 HttpClientTimeout 选项。
 
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 * Bug 修复
@@ -61,13 +65,15 @@ ms.locfileid: "66480215"
    >  0\.9.1 预览版尚不支持 Azure 存储表终结点。
 
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
-Microsoft 至少会在停用 SDK 前提前 12 个月  发出通知，以便顺利转换为更高版本/受支持版本。
+Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
 
-此跨平台.NET Standard 库[Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)将替换为.NET Framework 库[Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
+这种跨平台 .NET Standard 库将替换 .NET Framework 库[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) 。) 将替换[CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [1.0.1](#1.0.1) |2019 年 4 月 19日日 |--- |
+| [1.0.4-预览](#1.0.4-preview) |2019年7月26日 |--- |
+| 1.0.2-预览版 |5月2日, 2019 |--- |
+| [1.0.1](#1.0.1) |2019年4月19日 |--- |
 | [1.0.0](#1.0.0) |2019 年 3 月 13 日 |--- |
 | [0.11.0-preview](#0.11.0-preview) |2019 年 3 月 5 日 |--- |
 | [0.10.1 预览版](#0.10.1-preview) |2019 年 1 月 22 日 |--- |
@@ -75,9 +81,9 @@ Microsoft 至少会在停用 SDK 前提前 12 个月  发出通知，以便顺�
 | [0.9.1 预览版](#0.9.1-preview) |2018 年 10 月 18 日 |--- |
 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 若要了解有关 Azure Cosmos DB 表 API 的详细信息，请参阅 [Azure Cosmos DB 表 API 简介](table-introduction.md)。 

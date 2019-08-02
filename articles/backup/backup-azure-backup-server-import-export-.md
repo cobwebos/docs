@@ -1,18 +1,19 @@
 ---
 title: Azure 备份 - DPM 和 Azure 备份服务器的脱机备份
 description: 了解如何在 Azure 备份中使用 Azure 导入/导出服务离线发送数据。 本文介绍如何使用 Azure 导入导出服务来脱机设定初始备份数据的种子。
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
-ms.author: saurse
-ms.openlocfilehash: 8a8571230b24d76482c505ec22d6faaa0caec5e6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 4bc0421f16d56d34e3f3156700a7a141d38fd63d
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466723"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689384"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM 和 Azure 备份服务器的脱机备份工作流
 Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 Azure 备份可压缩初始备份。 通过脱机种子设定，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。
@@ -41,7 +42,7 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 > * 使用 System Center Data Protection Manager (SC DPM) 备份所有工作负荷和文件
 > * 使用 Microsoft Azure 备份服务器备份所有工作负荷和文件 <br/>
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 确保在启动脱机备份工作流之前已满足以下先决条件
 * 已创建[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)。 若要创建，请参阅[这篇文章](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)中的步骤
 * Windows Server/Windows 客户端上已安装了 Azure 备份代理、Azure 备份服务器或 SC DPM（若适用），并已向恢复服务保管库注册了计算机。 确保仅使用[最新版本的 Azure 备份](https://go.microsoft.com/fwlink/?linkid=229525)。

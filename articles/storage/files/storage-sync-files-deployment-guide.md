@@ -1,19 +1,18 @@
 ---
 title: 部署 Azure 文件同步 | Microsoft Docs
 description: 了解如何从头到尾部署 Azure 文件同步。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6a41830dcb7f681713db7a7802ab430581dc844f
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 7b9c9a7639ed7a9938052197758e5796fb9fc879
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371145"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699423"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -25,7 +24,7 @@ ms.locfileid: "68371145"
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#region-availability)。
     - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
 * 至少一个支持与 Azure 文件同步进行同步的 Windows Server 实例或 Windows Server 群集。有关支持的 Windows Server 版本的详细信息，请参阅 [Windows Server 的互操作性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)。
-* Az PowerShell 模块可与 PowerShell 5.1 或 PowerShell 6 + 一起使用。 你可以在任何支持的系统 (包括非 Windows 系统) 上使用 Az PowerShell module for Azure 文件同步, 但必须始终在要注册的 Windows Server 实例上运行服务器注册 cmdlet (可以直接或通过 PowerShell 执行此操作)远程处理)。 在 Windows Server 2012 R2 上, 可以验证是否至少运行了 PowerShell 5.1。通过查看 **$PSVersionTable**对象的 PSVersion 属性的值:  \*
+* Az PowerShell 模块可与 PowerShell 5.1 或 PowerShell 6 + 一起使用。 你可以在任何支持的系统 (包括非 Windows 系统) 上使用 Az PowerShell module for Azure 文件同步, 但必须始终在要注册的 Windows Server 实例上运行服务器注册 cmdlet (可以直接或通过 PowerShell 执行此操作)远程处理)。 在 Windows Server 2012 R2 上, 可以验证是否至少运行了 PowerShell 5.1。通过查看 **$PSVersionTable**对象的 PSVersion 属性的值: \*
 
     ```powershell
     $PSVersionTable.PSVersion

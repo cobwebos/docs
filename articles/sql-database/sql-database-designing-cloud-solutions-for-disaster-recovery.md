@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 46232afcaf9504d4cfbd80160e2d7e7ea958d600
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a79fa40568502a73194e467de2227d54931d0100
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61488039"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568940"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>使用 Azure SQL 数据库设计全球可用的服务
 
@@ -36,7 +35,7 @@ ms.locfileid: "61488039"
 * 必须并置 Web 层和数据层以减少延迟和流量成本
 * 从根本上讲，相比数据丢失，停机时间对于那些应用程序来说是更高的业务风险
 
-在这种情况下，当所有应用程序组件需要一同故障转移时，将针对处理区域灾难对应用程序部署拓扑进行优化。 下图展示了此拓扑。 对于地理冗余，应用程序的资源部署到区域 A 和 B。但是，只有当区域 A 失败后才会利用区域 B 中的资源。 两个区域之间会配置故障转移组，用于管理数据库连接、复制和故障转移。 两个区域中的 Web 服务配置为通过读写侦听器 &lt;failover-group-name&gt;.database.windows.net 访问数据库 (1)。  设置流量管理器以使用[优先级路由方法](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2)。  
+在这种情况下，当所有应用程序组件需要一同故障转移时，将针对处理区域灾难对应用程序部署拓扑进行优化。 下图展示了此拓扑。 对于地理冗余，应用程序的资源部署到区域 A 和 B。但是，只有当区域 A 失败后才会利用区域 B 中的资源。 两个区域之间会配置故障转移组，用于管理数据库连接、复制和故障转移。 两个区域中的 Web 服务配置为通过读写侦听器 &lt;failover-group-name&gt;.database.windows.net 访问数据库 (1)。 设置流量管理器以使用[优先级路由方法](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2)。  
 
 > [!NOTE]
 > [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)在这篇文章中仅供说明之用。 可以使用任何支持优先级路由方法的负载均衡解决方案。
@@ -67,7 +66,7 @@ ms.locfileid: "61488039"
 * 将同一 Web 应用程序部署到两个区域中时无需任何特定于区域的配置，也无需使用更多逻辑来管理故障转移。
 * 应用程序性能不受故障转移影响，因为 Web 应用程序和数据库始终共存。
 
-区域 B 中的应用程序资源大多时间利用不足，这是需要进行权衡的主要考量。 
+区域 B 中的应用程序资源大多时间利用不足，这是需要进行权衡的主要考量。
 
 ## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>方案 2：可实现业务连续性并提供最高数据保存性能的 Azure 区域
 
@@ -100,7 +99,7 @@ ms.locfileid: "61488039"
 * 它在临时服务中断期间可避免数据丢失。
 * 停机时间仅取决于流量管理器检测到连接故障的速度，此速度是可配置的。
 
-权衡是应用程序必须能够在只读模式下运行。 
+权衡是应用程序必须能够在只读模式下运行。
 
 ## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>方案 3：应用程序重新定位到其他地理位置而不发生数据丢失，且停机时间几乎为零
 
@@ -111,9 +110,9 @@ ms.locfileid: "61488039"
 * 应针对大多用户支持同一地理位置的数据写入访问权限
 * 读取延迟对最终用户体验而言很关键
 
-若要满足这些需求，需要保证用户设备始终连接至部署到同一地理位置的应用程序以实现只读操作，例如浏览数据、分析等。  然而，大多时候都在同一地理位置处理 OLTP 操作。  例如，工作时间在同一个地理位置处理 OLTP 操作，而非工作时间可能会在另一个地理位置处理这些操作。 如果终端用户活动大多发生在工作时间，那么可以保证大多时间对于大多用户，均可实现最佳性能。 下图显示了此拓扑。
+若要满足这些需求，需要保证用户设备始终连接至部署到同一地理位置的应用程序以实现只读操作，例如浏览数据、分析等。然而，大多时候都在同一地理位置处理 OLTP 操作。 例如，工作时间在同一个地理位置处理 OLTP 操作，而非工作时间可能会在另一个地理位置处理这些操作。 如果终端用户活动大多发生在工作时间，那么可以保证大多时间对于大多用户，均可实现最佳性能。 下图显示了此拓扑。
 
-应用程序的资源应部署到每个有大量使用需求的地理位置。 例如，如果在美国、欧盟和东南亚，应用程序使用率很高，则应在所有这些区域部署该应用程序。 主数据库应在工作时间结束时从一个地理区域动态转至下一个区域。 此方法称为“循日”。 OLTP 工作负载始终通过读写侦听器 &lt;failover-group-name&gt;.database.windows.net 连接到数据库 (1)。  只读工作负载直接使用数据库服务器终结点 &lt;server-name&gt;.database.windows.net 连接到本地数据库 (2)。  使用[性能路由方法](../traffic-manager/traffic-manager-configure-performance-routing-method.md)配置流量管理器。 它确保最终用户设备连接到最近的 Web 服务。 设置流量管理器时应为每个 Web 服务终结点启用终结点监视 (3)。
+应用程序的资源应部署到每个有大量使用需求的地理位置。 例如，如果在美国、欧盟和东南亚，应用程序使用率很高，则应在所有这些区域部署该应用程序。 主数据库应在工作时间结束时从一个地理区域动态转至下一个区域。 此方法称为“循日”。 OLTP 工作负载始终通过读写侦听器 &lt;failover-group-name&gt;.database.windows.net 连接到数据库 (1)。 只读工作负载直接使用数据库服务器终结点 &lt;server-name&gt;.database.windows.net 连接到本地数据库 (2)。 使用[性能路由方法](../traffic-manager/traffic-manager-configure-performance-routing-method.md)配置流量管理器。 它确保最终用户设备连接到最近的 Web 服务。 设置流量管理器时应为每个 Web 服务终结点启用终结点监视 (3)。
 
 > [!NOTE]
 > 故障转移组配置定义要用于故障转移的区域。 由于新的主区域位于另一个地理位置，所以对于 OLTP 和只读工作负载，故障转移会导致更长的延迟，直到受影响的区域恢复联机状态为止。
@@ -138,13 +137,13 @@ ms.locfileid: "61488039"
 > [!NOTE]
 > 可减少欧洲最终用户体验因长时间延迟而降级的时间。 为此，应该积极部署应用程序副本并在另一个本地区域（西欧）创建辅助数据库，作为北欧脱机应用程序实例的替换方案。 当后者回到联机状态时，可以决定是继续使用西欧还是删除当地应用程序副本并重新使用北欧。
 
-此设计的关键优势是： 
+此设计的关键优势是：
 
 * 只读应用程序工作负载可以随时访问最近区域的数据。
 * 读写应用程序工作负载在每个区域活动最频繁的时段可访问最近区域的数据
 * 由于应用程序被部署到多个区域，所以能够在一个区域中断后继续运行，而不产生显著的停运时间。
 
-但存在一些需要权衡的考量因素： 
+但存在一些需要权衡的考量因素：
 
 * 区域中断导致地理位置受延迟的影响时间更长。 读写工作负载和只读工作负载均由另一个地理位置的应用程序提供。
 * 只读工作负载须连接到每个区域中的另一个终结点。

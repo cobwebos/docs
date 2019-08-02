@@ -1,19 +1,18 @@
 ---
 title: 了解 Azure 文件同步的云分层 | Microsoft Docs
 description: 了解 Azure 文件同步的云分层功能
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1851e9b2bb5ff86583228136dee977001cf0a3fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 078582b98bca2137a7d25fa3a0833a4707565170
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714945"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699375"
 ---
 # <a name="cloud-tiering-overview"></a>云分层概述
 云分层是 Azure 文件同步的一项可选功能，其中经常访问的文件在服务器本地缓存，而所有其他文件根据策略设置分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性，这样第三方应用程序便能安全地识别分层文件。
@@ -26,7 +25,7 @@ ms.locfileid: "64714945"
 Azure 文件同步不支持对小于 64 KiB 的文件进行分层，因为分层和召回此类小文件的性能开销超过了节省的空间。
 
  > [!Important]  
- > 若要重新调用文件被分层，网络带宽应至少 1 Mbps。 如果网络带宽是小于 1 Mbps，文件可能无法撤回出现超时错误。
+ > 若要撤回已分层的文件, 网络带宽应至少为 1 Mbps。 如果网络带宽小于 1 Mbps, 则文件可能无法重新调用, 出现超时错误。
 
 ## <a name="cloud-tiering-faq"></a>云分层 FAQ
 
@@ -69,7 +68,7 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
 有多种查看文件是否已被分层到 Azure 文件共享的方法：
     
    *  **查看文件上的文件属性。**
-     右键单击文件，转到“详细信息”  ，再向下滚动到“属性”  属性。 分层的文件具有以下属性集：     
+     右键单击文件，转到“详细信息”，再向下滚动到“属性”属性。 分层的文件具有以下属性集：     
         
         | 属性字母 | 特性 | 定义 |
         |:----------------:|-----------|------------|
@@ -80,16 +79,16 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
 
         ![文件的“属性”对话框（“详细信息”选项卡被选中）](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
-        你可以通过向文件资源管理器的表显示添加“属性”  字段，查看文件夹中所有文件的属性。 若要执行此操作，请右键单击现有的列（例如“大小”  ），选择“更多”  ，然后从下拉列表中选择“属性”  。
+        你可以通过向文件资源管理器的表显示添加“属性”字段，查看文件夹中所有文件的属性。 若要执行此操作，请右键单击现有的列（例如“大小”），选择“更多”，然后从下拉列表中选择“属性”。
         
-   * “使用 `fsutil` 检查文件上的重分析点”。 
+   * “使用 `fsutil` 检查文件上的重分析点”。
        如前面的选项中所述，分层的文件始终具有重分析点集。 重分析指针是 Azure 文件同步文件系统筛选器 (StorageSync.sys) 的特殊指针。 若要查看文件是否包含重分析点，你可以在提升的命令提示符或 PowerShell 窗口中运行 `fsutil` 实用程序：
     
         ```powershell
         fsutil reparsepoint query <your-file-name>
         ```
 
-        如果文件包含重分析点，应能看到“重分析标记值:  0x8000001e”。 该十六进制值是 Azure 文件同步拥有的重分析点值。输出还会包含表示 Azure 文件共享中文件路径的重分析数据。
+        如果文件包含重分析点，应能看到“重分析标记值:0x8000001e”。 该十六进制值是 Azure 文件同步拥有的重分析点值。输出还会包含表示 Azure 文件共享中文件路径的重分析数据。
 
         > [!WARNING]  
         > 同时，`fsutil reparsepoint` 实用程序命令还包含删除重分析点的功能。 除非 Azure 文件同步工程团队要求，否则请不要执行此命令。 运行此命令可能会导致数据丢失。 
@@ -107,8 +106,8 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
     ```
 
 <a id="sizeondisk-versus-size"></a>
-### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>使用 Azure 文件同步后，为什么文件的“磁盘占用空间”  属性与“大小”  属性不一致？ 
-Windows 文件资源管理器公开了两个属性来表示文件的大小：即“大小”  和“占用空间”  。 这些属性的含义略有不同。 “大小”  表示文件的完整大小。 “占用空间”  表示存储在磁盘上的文件流的大小。 这些属性的值存在差异的原因有多种，例如压缩、使用重复数据删除，或使用 Azure 文件同步进行的云分层。如果文件被分层到 Azure 文件共享，则占用空间为零，因为该文件流存储在 Azure 文件共享中，而未存储在磁盘上。 另外，文件也可能会被部分分层（或部分召回）。 在部分分层文件中，该文件的一部分位于磁盘上。 应用程序（例如，多媒体播放器或压缩工具）对文件进行了部分读取时可能会发生此情况。 
+### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>使用 Azure 文件同步后，为什么文件的“磁盘占用空间”属性与“大小”属性不一致？ 
+Windows 文件资源管理器公开了两个属性来表示文件的大小：即“大小”和“占用空间”。 这些属性的含义略有不同。 “大小”表示文件的完整大小。 “占用空间”表示存储在磁盘上的文件流的大小。 这些属性的值存在差异的原因有多种，例如压缩、使用重复数据删除，或使用 Azure 文件同步进行的云分层。如果文件被分层到 Azure 文件共享，则占用空间为零，因为该文件流存储在 Azure 文件共享中，而未存储在磁盘上。 另外，文件也可能会被部分分层（或部分召回）。 在部分分层文件中，该文件的一部分位于磁盘上。 应用程序（例如，多媒体播放器或压缩工具）对文件进行了部分读取时可能会发生此情况。 
 
 <a id="afs-force-tiering"></a>
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>如何强制对文件或目录进行分层？

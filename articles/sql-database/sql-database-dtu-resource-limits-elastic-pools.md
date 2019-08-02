@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 03/14/2019
-ms.openlocfilehash: 6a2b3af4240a5c400bd1eaf4fd1e93b09fc702b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2bd193c53ee85a1423dc63bf669021de954231c8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075235"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568818"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>使用基于 DTU 的购买模型的弹性池的资源限制
 
@@ -27,12 +26,12 @@ ms.locfileid: "61075235"
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>弹性池：存储大小和计算大小
 
-对于 SQL 数据库弹性池，下表显示了每个服务层可用的资源和计算大小。 可通过 [Azure 门户](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) 或 [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) 设置服务层级、计算大小和存储量。
+对于 SQL 数据库弹性池，下表显示了每个服务层级可用的资源和计算大小。 可通过 [Azure 门户](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) 或 [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) 设置服务层级、计算大小和存储量。
 
 > [!IMPORTANT]
 > 有关缩放指南和注意事项，请参阅[缩放弹性池](sql-database-elastic-pool-scale.md)
 > [!NOTE]
-> 弹性池中各个数据库的资源限制通常与池外部基于 DTU 和服务层的各个数据库相同。 例如，S2 数据库的最大并发辅助进程数为 120 个。 因此，如果池中每个数据库的最大 DTU 是 50 个 DTU（这等效于 S2），则标准池中数据库的最大并发辅助进程数也是 120 个辅助进程。
+> 弹性池中各个数据库的资源限制通常与池外部基于 DTU 和服务层级的各个数据库相同。 例如，S2 数据库的最大并发辅助进程数为 120 个。 因此，如果池中每个数据库的最大 DTU 是 50 个 DTU（这等效于 S2），则标准池中数据库的最大并发辅助进程数也是 120 个辅助进程。
 
 ### <a name="basic-elastic-pool-limits"></a>基本弹性池限制
 
@@ -40,7 +39,7 @@ ms.locfileid: "61075235"
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | 每个池包含的存储 (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | 每个池的最大存储选择 (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| 每个池的最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 |
+| 每个池的最大内存中 OLTP 存储 (GB) | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 |
 | 每个池的最大数据库数 | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | 每个池的最大并发工作线程数（请求数） | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | 每个池的最大并发会话数 | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -55,7 +54,7 @@ ms.locfileid: "61075235"
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | 每个池包含的存储 (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | 每个池的最大存储选择 (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| 每个池的最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 |
+| 每个池的最大内存中 OLTP 存储 (GB) | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 |
 | 每个池的最大数据库数 | 100 | 200 | 500 | 500 | 500 | 500 |
 | 每个池的最大并发工作线程数（请求数） | 100 | 200 | 400 | 600 | 800 | 1600 |
 | 每个池的最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -70,7 +69,7 @@ ms.locfileid: "61075235"
 |:---|---:|---:|---:| ---: | ---: |
 | 每个池包含的存储 (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | 每个池的最大存储选择 (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| 每个池的最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 | 不适用 |
+| 每个池的最大内存中 OLTP 存储 (GB) | 不可用 | 不可用 | 不可用 | 不可用 | 不可用 |
 | 每个池的最大数据库数 | 500 | 500 | 500 | 500 | 500 |
 | 每个池的最大并发工作线程数（请求数） | 2400 | 3200 | 4000 | 5000 | 6000 |
 | 每个池的最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -85,7 +84,7 @@ ms.locfileid: "61075235"
 |:---|---:|---:|---:| ---: | ---: |
 | 每个池包含的存储 (GB) | 250 | 500 | 750 | 1024 | 1536 |
 | 每个池的最大存储选择 (GB) | 250, 500, 750, 1024 | 500, 750, 1024 | 750, 1024 | 1024 | 1536 |
-| 每个池的最大内存中 OLTP 存储 (GB) | 第 | 2 | 4 | 10 | 12 |
+| 每个池的最大内存中 OLTP 存储 (GB) | 1 | 2 | 4 | 10 | 12 |
 | 每个池的最大数据库数 | 50 | 100 | 100 | 100 | 100 |
 | 每个池的最大并发工作线程数（请求数） | 200 | 400 | 800 | 1600 | 2400 |
 | 每个池的最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -117,7 +116,7 @@ ms.locfileid: "61075235"
 > [!NOTE]
 > 有关 `tempdb` 限制，请参阅 [tempdb 限制](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)。
 
-### <a name="database-properties-for-pooled-databases"></a>入池数据库的数据库属性
+### <a name="database-properties-for-pooled-databases"></a>共用数据库的数据库属性
 
 下表介绍了共用数据库的属性。
 
@@ -125,7 +124,7 @@ ms.locfileid: "61075235"
 |:--- |:--- |
 | 每个数据库的最大 eDTU 数 |根据池中其他数据库的 eDTU 使用率，池中任何数据库可以使用的 eDTU 的最大数目。 每个数据库的 eDTU 上限并不是数据库的资源保障。 此设置是应用于池中所有数据库的全局设置。 将每个数据库的最大 eDTU 数设置得足够高，以处理数据库使用高峰情况。 因为池通常会假定数据库存在热使用模式和冷使用模式，在这些模式中并非所有数据库同时处于高峰使用状态，所以预期会存在某种程度的过量使用情况。 例如，假设每个数据库的高峰使用量为 20 个 eDTU，并且池中 100 个数据库仅有 20% 同时处于高峰使用中。 如果将每个数据库的 eDTU 最大值设为 20 个 eDTU，则可以认为超量 5 倍使用该池是合理的，并且将每个池的 eDTU 数设为 400。 |
 | 每个数据库的最小 eDTU 数 |池中任何数据库可以保证的 eDTU 最小数目。 此设置是应用于池中所有数据库的全局设置。 每个数据库的最小 eDTU 可能设为 0，这也是默认值。 该属性值可以设置为介于 0 和每个数据库的平均 eDTU 使用量之间的任意值。 池中数据库数目和每个数据库的 eDTU 下限的积不能超过每个池的 eDTU 数。 例如，如果一个池有 20 个数据库，每个数据库的 eDTU 最小值设为 10 个 eDTU，则池的 eDTU 数目必须大于或等于 200 个 eDTU。 |
-| 每个数据库的最大存储 |用户为池中的数据库设置的最大数据库大小。 但是，入池数据库共享已分配的池存储。 即使每个数据库  的总存储空间上限设置为大于池的可用总存储  空间，所有数据库实际使用的总空间也不能超出可用的池限制。 最大数据库大小是指数据文件的最大大小，不包括日志文件使用的空间。 |
+| 每个数据库的最大存储 |用户为池中的数据库设置的最大数据库大小。 但是，共用数据库共享已分配的池存储。 即使每个数据库的总存储空间上限设置为大于池的可用总存储空间，所有数据库实际使用的总空间也不能超出可用的池限制。 最大数据库大小是指数据文件的最大大小，不包括日志文件使用的空间。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤

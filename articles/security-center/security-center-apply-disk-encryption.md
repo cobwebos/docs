@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: c76e99c2588181a596a2a91ddd138cb9d7ae4a5a
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 1abb0a5f5523032440086932eb9a1621d4cef455
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610299"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726242"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>在 Azure 安全中心中应用磁盘加密
 Azure 安全中心建议：如有未使用 Azure 磁盘加密加密的 Windows 或 Linux VM 磁盘，则应用磁盘加密。 通过磁盘加密，可以对 Windows 和 Linux IaaS VM 磁盘进行加密。  对于 VM 上的 OS 和数据卷，建议使用加密。
@@ -44,7 +44,7 @@ Azure 安全中心建议：如有未使用 Azure 磁盘加密加密的 Windows �
 * 获取并运行 Azure 磁盘加密先决条件 Azure PowerShell 脚本。
 * 加密虚拟机。
 
-[使用 Azure PowerShell 加密 Windows IaaS VM](../security/fundamentals/quick-encrypt-vm-powershell.md) 将指导你完成这些步骤。 本主题假定你使用的是从中配置磁盘加密的 Windows 客户端计算机。
+[使用 Azure PowerShell 加密 Windows IaaS VM](../security/azure-disk-encryption-linux-powershell-quickstart.md) 将指导你完成这些步骤。 本主题假定你使用的是从中配置磁盘加密的 Windows 客户端计算机。
 
 有许多方法可用于 Azure 虚拟机。 如果用户已熟知 Azure PowerShell 或 Azure CLI，则用户可能更愿意使用备用方式。 若要了解这些其他方法，请参阅 [Azure 磁盘加密](../security/azure-security-disk-encryption.md)。
 

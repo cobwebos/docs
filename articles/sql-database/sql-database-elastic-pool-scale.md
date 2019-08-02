@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 3/14/2019
-ms.openlocfilehash: f73fc58abfa6cde4133bd56858b7f26bf0c3d4a3
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c96be7930a33185077134d051b49cba0695327e3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204820"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568643"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放弹性池资源
 
-本文介绍如何在 Azure SQL 数据库中缩放适用于弹性池和已共用数据库的计算和存储资源。
+本文介绍如何在 Azure SQL 数据库中缩放适用于弹性池和共用数据库的计算和存储资源。
 
 ## <a name="change-compute-resources-vcores-or-dtus"></a>更改计算资源（vCore 或 DTU）
 
@@ -37,14 +36,14 @@ ms.locfileid: "67204820"
 
 2. 将连接路由切换到新的计算实例
 
-    将删除与原始计算实例中的数据库建立的现有连接。 将与新计算实例中的数据库建立任何新的连接。 更改后，对于服务层级和计算大小的某些组合，在切换期间会分离再重新附加数据库文件。  无论如何，切换操作都可能会导致服务出现短暂的中断，此时，数据库一般会出现 30 秒以下的不可用情况（通常只有几秒钟）。 如果连接断开时有长时间运行的事务正在运行，则此步骤的持续时间可能会变长，以便恢复中止的事务。 [加速数据库恢复](sql-database-accelerated-database-recovery.md)可以减少从中止长时间运行的事务的影响。
+    将删除与原始计算实例中的数据库建立的现有连接。 将与新计算实例中的数据库建立任何新的连接。 更改后，对于服务层级和计算大小的某些组合，在切换期间会分离再重新附加数据库文件。  无论如何，切换操作都可能会导致服务出现短暂的中断，此时，数据库一般会出现 30 秒以下的不可用情况（通常只有几秒钟）。 如果连接断开时有长时间运行的事务正在运行，则此步骤的持续时间可能会变长，以便恢复中止的事务。 [加速数据库恢复](sql-database-accelerated-database-recovery.md)可以降低中止长时间运行事务的影响。
 
 > [!IMPORTANT]
 > 执行工作流中的任何步骤期间都不会丢失数据。
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小所造成的延迟
 
-若要更改服务层或重新缩放单一数据库或弹性池的计算大小的预计的延迟为参数化，如下所示：
+更改服务层或缩放单一数据库或弹性池的计算大小的估计延迟如下:
 
 |服务层|基本单一数据库，</br>标准 (S0-S1)|基本弹性池，</br>标准 (S2-S12)， </br>超大规模， </br>常规用途单一数据库或弹性池|高级或业务关键型单一数据库或弹性池|
 |:---|:---|:---|:---|
@@ -67,7 +66,7 @@ ms.locfileid: "67204820"
 
 ### <a name="billing-during-rescaling"></a>重新缩放期间的计费
 
-将根据使用最高服务层的数据库存在的每个小时 + 在该小时适用的计算大小进行计费，无论使用方式或数据库处于活动状态是否少于一小时。 例如，如果创建了单一数据库，五分钟后删除了它，则将按该数据库存在一小时收费。
+将根据使用最高服务层级的数据库存在的每个小时 + 在该小时适用的计算大小进行计费，无论使用方式或数据库处于活动状态是否少于一小时。 例如，如果创建了单一数据库，五分钟后删除了它，则将按该数据库存在一小时收费。
 
 ## <a name="change-elastic-pool-storage-size"></a>更改弹性池存储大小
 
@@ -78,8 +77,8 @@ ms.locfileid: "67204820"
 
 - 可将存储预配到最大大小限制。
 
-  - 对于标准或常规用途服务层中的存储，按 10 GB 增量增减大小
-  - 对于高级或业务关键服务层中的存储，按 250 GB 增量增减大小
+  - 对于“标准”或“常规用途”服务层级中的存储，按 10 GB 增量增减大小
+  - 对于“高级”或“业务关键”服务层级中的存储，按 250 GB 增量增减大小
 - 可以通过增大或减小其最大大小来预配弹性池的存储空间。
 - 弹性池的存储价格等于存储量乘以服务层级的存储单价。 有关额外存储价格的详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
 

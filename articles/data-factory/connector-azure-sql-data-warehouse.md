@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 24ee419e5c6eb4b8c148c61c232d2ab7ab07c74b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2d0c8cfb5e146694304d32eca27836f49d82e887
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449594"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618687"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
-> [!div class="op_single_selector" title1="选择要使用的数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本:"]
 > * [Version1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [当前版本](connector-azure-sql-data-warehouse.md)
 
@@ -28,9 +28,9 @@ ms.locfileid: "67449594"
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-此 Azure Blob 连接器支持以下活动：
+以下活动支持此 Azure Blob 连接器：
 
-- [复制活动](copy-activity-overview.md)与[支持源/接收器矩阵](copy-activity-overview.md)表
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)表的[复制活动](copy-activity-overview.md)
 - [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
@@ -58,14 +58,14 @@ ms.locfileid: "67449594"
 
 Azure SQL 数据仓库链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
-|:--- |:--- |:--- |
-| type | type 属性必须设置为 **AzureSqlDW**。 | 是 |
-| connectionString | 为 **connectionString** 属性指定连接到 Azure SQL 数据仓库实例所需的信息。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码/服务主体密钥放在 Azure 密钥保管库中，如果是 SQL 身份验证，则从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅表下方的 JSON 示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是 |
-| servicePrincipalId | 指定应用程序的客户端 ID。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
+| 属性            | 说明                                                  | 必选                                                     |
+| :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| type                | type 属性必须设置为 **AzureSqlDW**。             | 是                                                          |
+| connectionString    | 为 **connectionString** 属性指定连接到 Azure SQL 数据仓库实例所需的信息。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码/服务主体密钥放在 Azure 密钥保管库中，如果是 SQL 身份验证，则从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅表下方的 JSON 示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是                                                          |
+| servicePrincipalId  | 指定应用程序的客户端 ID。                         | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
-| tenant | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure 集成运行时或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 | 否 |
+| 租户              | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
+| connectVia          | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure 集成运行时或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 | 否                                                           |
 
 有关各种身份验证类型，请参阅关于先决条件和 JSON 示例的以下各部分：
 
@@ -111,13 +111,13 @@ Azure SQL 数据仓库链接服务支持以下属性：
                 "type": "SecureString",
                 "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             },
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -231,9 +231,9 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 若要从 Azure SQL 数据仓库复制数据或将数据复制到 Azure SQL 数据仓库，需要支持以下属性：
 
-| 属性 | 说明 | 必选 |
-|:--- |:--- |:--- |
-| type | 数据集的 **type** 属性必须设置为 **AzureSqlDWTable**。 | 是 |
+| 属性  | 说明                                                  | 必选                    |
+| :-------- | :----------------------------------------------------------- | :-------------------------- |
+| type      | 数据集的 **type** 属性必须设置为 **AzureSqlDWTable**。 | 是                         |
 | tableName | 链接服务引用的 Azure SQL 数据仓库实例中的表名称或视图名称。 | 对于源为“No”，对于接收器为“Yes” |
 
 #### <a name="dataset-properties-example"></a>数据集属性示例
@@ -264,12 +264,12 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 若要从 Azure SQL 数据仓库复制数据，请将复制活动源中的 **type** 属性设置为 **SqlDWSource**。 复制活动 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
-|:--- |:--- |:--- |
-| type | 复制活动源的 **type** 属性必须设置为 **SqlDWSource**。 | 是 |
-| sqlReaderQuery | 使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 | 否 |
-| sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 | 否 |
-| storedProcedureParameters | 存储过程的参数。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
+| 属性                     | 说明                                                  | 必选 |
+| :--------------------------- | :----------------------------------------------------------- | :------- |
+| type                         | 复制活动源的 **type** 属性必须设置为 **SqlDWSource**。 | 是      |
+| sqlReaderQuery               | 使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 | 否       |
+| sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 | 否       |
+| storedProcedureParameters    | 存储过程的参数。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否       |
 
 ### <a name="points-to-note"></a>需要注意的要点：
 
@@ -367,18 +367,18 @@ GO
 
 要向 Azure SQL 数据仓库复制数据，请将复制活动中的接收器类型设置为 **SqlDWSink**。 复制活动 **sink** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
-|:--- |:--- |:--- |
-| type | 复制活动接收器的 **type** 属性必须设置为 **SqlDWSink**。 | 是 |
-| allowPolyBase | 指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> 我们建议使用 PolyBase 将数据加载到 SQL 数据仓库。 有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。  | 否 |
-| polyBaseSettings | **allowPolybase** 属性设置为 **true** 时可以指定的一组属性。 | 否 |
-| rejectValue | 指定在查询失败之前可以拒绝的行数或百分比。<br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅 [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) 的“参数”部分。 <br/><br/>允许的值为 0（默认值）、1、2 等。 |否 |
-| rejectType | 指定 **rejectValue** 选项是文本值还是百分比。<br/><br/>允许的值为 **Value**（默认值）和 **Percentage**。 | 否 |
+| 属性          | 说明                                                  | 必选                                      |
+| :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
+| type              | 复制活动接收器的 **type** 属性必须设置为 **SqlDWSink**。 | 是                                           |
+| allowPolyBase     | 指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> 我们建议使用 PolyBase 将数据加载到 SQL 数据仓库。 有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。 | 否                                            |
+| polyBaseSettings  | **allowPolybase** 属性设置为 **true** 时可以指定的一组属性。 | 否                                            |
+| rejectValue       | 指定在查询失败之前可以拒绝的行数或百分比。<br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅 [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) 的“参数”部分。 <br/><br/>允许的值为 0（默认值）、1、2 等。 | 否                                            |
+| rejectType        | 指定 **rejectValue** 选项是文本值还是百分比。<br/><br/>允许的值为 **Value**（默认值）和 **Percentage**。 | 否                                            |
 | rejectSampleValue | 确定在 PolyBase 重新计算被拒绝行的百分比之前要检索的行数。<br/><br/>允许的值为 1、2 等。 | 如果 **rejectType** 是 **percentage**，则为“是” |
-| useTypeDefault | 指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。<br><br>**请查看与此设置相关的[故障排除提示](#polybase-troubleshooting)。** | 否 |
-| writeBatchSize | **每批**要插入到 SQL 表中的行数。 仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂会根据行大小动态确定适当的批大小。 | 否 |
-| writeBatchTimeout | 超时前等待批量插入操作完成的时间。仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **timespan**。 示例：“00:30:00”（30 分钟）。 | 否 |
-| preCopyScript | 每次运行时，将数据写入到 Azure SQL 数据仓库之前，指定复制活动要运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否 |
+| useTypeDefault    | 指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。<br><br> | 否                                            |
+| writeBatchSize    | **每批**要插入到 SQL 表中的行数。 仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂会根据行大小动态确定适当的批大小。 | 否                                            |
+| writeBatchTimeout | 超时前等待批量插入操作完成的时间。仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **timespan**。 例如：“00:30:00”（30 分钟）。 | 否                                            |
+| preCopyScript     | 每次运行时，将数据写入到 Azure SQL 数据仓库之前，指定复制活动要运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL 数据仓库接收器示例
 
@@ -402,7 +402,7 @@ GO
 
 使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是将大量数据加载到高吞吐量 Azure SQL 数据仓库的有效方法。 使用 PolyBase 而非默认 BULKINSERT 机制可以实现吞吐量的巨大增加。 有关详细比较，请参阅[性能参考](copy-activity-performance.md#performance-reference)。 有关带有用例的演练，请参阅[将 1 TB 的数据加载到 Azure SQL 数据仓库](v1/data-factory-load-sql-data-warehouse.md)。
 
-* 如果源数据位于**Azure Blob、 Azure 数据湖存储 Gen1 或 Azure 数据湖存储第 2 代**，并**格式为 PolyBase 兼容**，可以使用复制活动来直接调用 PolyBase 将让 AzureSQL 数据仓库源中提取数据。 有关详细信息，请参阅 **[使用 PolyBase 直接复制](#direct-copy-by-using-polybase)** 。
+* 如果源数据位于**Azure Blob 中、Azure Data Lake Storage Gen1 或 Azure Data Lake Storage Gen2**并且**格式与 PolyBase 兼容**, 则可以使用复制活动直接调用 POLYBASE, 使 Azure SQL 数据仓库从源中提取数据。 有关详细信息，请参阅 **[使用 PolyBase 直接复制](#direct-copy-by-using-polybase)** 。
 * 如果 PolyBase 最初不支持源数据存储和格式，请改用 **[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)** 功能。 暂存复制功能也能提供更高的吞吐量。 它自动将数据转换为 PolyBase 兼容的格式。 它将数据存储在 Azure Blob 存储中。 然后，它将数据载入 SQL 数据仓库。
 
 >[!TIP]
@@ -410,7 +410,7 @@ GO
 
 ### <a name="direct-copy-by-using-polybase"></a>使用 PolyBase 直接复制
 
-SQL 数据仓库 PolyBase 直接支持 Azure Blob、 Azure 数据湖存储 Gen1 和 Azure 数据湖存储第 2 代。 如果源数据满足本部分所述的条件，请使用 PolyBase 从源数据存储直接复制到 Azure SQL 数据仓库。 否则，请改用[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)。
+SQL 数据仓库 PolyBase 直接支持 Azure Blob、Azure Data Lake Storage Gen1 和 Azure Data Lake Storage Gen2。 如果源数据满足本部分所述的条件，请使用 PolyBase 从源数据存储直接复制到 Azure SQL 数据仓库。 否则，请改用[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)。
 
 > [!TIP]
 > 若要将数据有效复制到 SQL 数据仓库，请通过 [Azure Data Factory makes it even easier and convenient to uncover insights from data when using Data Lake Store with SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/)（将 Data Lake Store 与 SQL 数据仓库配合使用时，Azure 数据工厂能够更轻松且方便地分析数据）了解详细信息。
@@ -419,21 +419,21 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob、 Azure 数据湖存储 Gen1 
 
 1. **源链接的服务**使用以下类型和身份验证方法：
 
-    | 支持的源数据存储类型 | 支持的源身份验证类型 |
-    |:--- |:--- |
-    | [Azure Blob](connector-azure-blob-storage.md) | 帐户密钥身份验证, 托管标识身份验证 |
-    | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | 服务主体身份验证 |
+    | 支持的源数据存储类型                             | 支持的源身份验证类型                        |
+    | :----------------------------------------------------------- | :---------------------------------------------------------- |
+    | [Azure Blob](connector-azure-blob-storage.md)                | 帐户密钥身份验证, 托管标识身份验证 |
+    | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | 服务主体身份验证                            |
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | 帐户密钥身份验证, 托管标识身份验证 |
 
     >[!IMPORTANT]
-    >如果你的 Azure 存储配置与 VNet 服务终结点，则必须使用托管的标识进行身份验证-请参阅[对 Azure 存储使用 VNet 服务终结点的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 了解从数据工厂中所需的配置[Azure Blob-托管的标识身份验证](connector-azure-blob-storage.md#managed-identity)并[Azure 数据湖存储第 2 代-托管的标识身份验证](connector-azure-data-lake-storage.md#managed-identity)分别部分。
+    >如果 Azure 存储配置了 VNet 服务终结点，则必须使用托管标识身份验证 - 请参阅[将 VNet 服务终结点与 Azure 存储配合使用的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 分别从 [Azure Blob - 托管标识身份验证](connector-azure-blob-storage.md#managed-identity)和 [Azure Data Lake Storage Gen2 - 托管标识身份验证](connector-azure-data-lake-storage.md#managed-identity)部分了解数据工厂中所需的配置。
 
-2. **源数据格式**为 **Parquet**、**ORC** 或“分隔文本”，  使用以下配置：
+2. **源数据格式**为 **Parquet**、**ORC** 或“分隔文本”，使用以下配置：
 
    1. 文件夹路径不包含通配符筛选器。
    2. 文件名指向单个文件，或者为 `*` 或 `*.*`。
    3. `rowDelimiter` 必须是 **\n**。
-   4. 将 `nullValue` 设置为“空字符串”（“”）或保留为默认值，并将 `treatEmptyAsNull` 设置为默认值或 true  。
+   4. 将 `nullValue` 设置为“空字符串”（“”）或保留为默认值，并将 `treatEmptyAsNull` 设置为默认值或 true。
    5. `encodingName` 设置为 **utf-8**（默认值）。
    6. `quoteChar`、`escapeChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过可以在 ADF 中配置为 `firstRowAsHeader` 的标头行。
    7. `compression` 可为**无压缩**、**GZip** 或 **Deflate**。
@@ -472,10 +472,10 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob、 Azure 数据湖存储 Gen1 
 
 源数据不满足上一部分所述的条件时，请通过暂存 Azure Blob 存储实例启用数据复制。 该实例不能是 Azure 高级存储。 在这种情况下，Azure 数据工厂会自动针对数据运行转换，以满足 PolyBase 的数据格式要求。 然后，它使用 PolyBase 将数据加载到 SQL 数据仓库。 最后，它会从 Blob 存储中清理临时数据。 有关通过暂存 Azure Blob 存储实例复制数据的详细信息，请参阅[暂存复制](copy-activity-performance.md#staged-copy)。
 
-若要使用此功能，创建[Azure Blob 存储链接服务](connector-azure-blob-storage.md#linked-service-properties)，是指具有临时 blob 存储的 Azure 存储帐户。 然后指定`enableStaging`和`stagingSettings`对于复制活动中的以下代码所示的属性。
+若要使用此功能, 请创建一个[Azure Blob 存储链接服务](connector-azure-blob-storage.md#linked-service-properties), 该服务引用具有临时 Blob 存储的 azure 存储帐户。 然后, 为`enableStaging`复制`stagingSettings`活动指定和属性, 如下面的代码所示。
 
 >[!IMPORTANT]
->如果暂存的 Azure 存储配置与 VNet 服务终结点，则必须使用托管的标识进行身份验证-请参阅[对 Azure 存储使用 VNet 服务终结点的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 了解从数据工厂中所需的配置[Azure Blob-托管的标识身份验证](connector-azure-blob-storage.md#managed-identity)。
+>如果临时 Azure 存储配置了 VNet 服务终结点, 则必须使用托管标识身份验证-请参阅将[VNet 服务终结点与 Azure 存储配合使用的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 了解[Azure Blob-托管标识身份验证](connector-azure-blob-storage.md#managed-identity)中数据工厂所需的配置。
 
 ```json
 "activities":[
@@ -540,12 +540,10 @@ PolyBase 负载限制为小于 1 MB 的行。 不能用它加载到 VARCHR(MAX)�
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-解决方法是取消选择"**使用类型默认值**"（为 false) 在复制活动接收器中的选项-> PolyBase 设置。 “[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
+解决方案是在复制活动接收器 -> PolyBase 设置中取消选中“使用类型默认值”选项（为 false）。 “[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )”是 PolyBase 本机配置，用于指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。 
 
 **其他**
-
-有关 PolyBase 的更多已知问题，请参阅[故障排除 Azure SQL 数据仓库 PolyBase 负载](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase)。
 
 ### <a name="sql-data-warehouse-resource-class"></a>SQL 数据仓库资源类
 
@@ -555,12 +553,12 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 
 下表举例说明如何在 JSON 数据集中指定 **tableName** 属性。 其中显示了架构和表名称的多个组合。
 
-| DB 架构 | 表名称 | **tableName** JSON 属性 |
-| --- | --- | --- |
-| dbo | MyTable | MyTable 或 dbo.MyTable 或 [dbo].[MyTable] |
-| dbo1 | MyTable | dbo1.MyTable 或 [dbo1].[MyTable] |
-| dbo | My.Table | [My.Table] 或 [dbo].[My.Table] |
-| dbo1 | My.Table | [dbo1].[My.Table] |
+| DB 架构 | 表单名称 | **tableName** JSON 属性               |
+| --------- | ---------- | ----------------------------------------- |
+| dbo       | MyTable    | MyTable 或 dbo.MyTable 或 [dbo].[MyTable] |
+| dbo1      | MyTable    | dbo1.MyTable 或 [dbo1].[MyTable]          |
+| dbo       | My.Table   | [My.Table] 或 [dbo].[My.Table]            |
+| dbo1      | My.Table   | [dbo1].[My.Table]                         |
 
 如果看到以下错误，问题可能与为 **tableName** 属性指定的值有关。 有关为 **tableName** JSON 属性指定值的正确方法，请参阅上表。
 
@@ -587,37 +585,37 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的 Blob 
 从/向 Azure SQL 数据仓库复制数据时，以下映射用于从 Azure SQL 数据仓库数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
 >[!TIP]
->请参阅[表在 Azure SQL 数据仓库中的数据类型](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md)篇 SQL DW 支持数据类型和解决方法不受支持的。
+>请参阅 [Azure SQL 数据仓库中的表数据类型](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md)一文，了解 SQL DW 支持的数据类型和对于不支持数据类型的解决方法。
 
-| Azure SQL 数据仓库数据类型 | 数据工厂临时数据类型 |
-|:--- |:--- |
-| bigint | Int64 |
-| binary | Byte[] |
-| bit | Boolean |
-| char | String, Char[] |
-| date | DateTime |
-| Datetime | DateTime |
-| datetime2 | DateTime |
-| Datetimeoffset | DateTimeOffset |
-| Decimal | Decimal |
-| FILESTREAM attribute (varbinary(max)) | Byte[] |
-| Float | Double |
-| image | Byte[] |
-| int | Int32 |
-| money | Decimal |
-| nchar | String, Char[] |
-| numeric | Decimal |
-| nvarchar | String, Char[] |
-| real | Single |
-| rowversion | Byte[] |
-| smalldatetime | DateTime |
-| smallint | Int16 |
-| smallmoney | Decimal |
-| time | TimeSpan |
-| tinyint | Byte |
-| uniqueidentifier | Guid |
-| varbinary | Byte[] |
-| varchar | String, Char[] |
+| Azure SQL 数据仓库数据类型    | 数据工厂临时数据类型 |
+| :------------------------------------ | :----------------------------- |
+| bigint                                | Int64                          |
+| binary                                | Byte[]                         |
+| bit                                   | Boolean                        |
+| char                                  | String, Char[]                 |
+| date                                  | DateTime                       |
+| Datetime                              | DateTime                       |
+| datetime2                             | DateTime                       |
+| Datetimeoffset                        | DateTimeOffset                 |
+| Decimal                               | Decimal                        |
+| FILESTREAM attribute (varbinary(max)) | Byte[]                         |
+| Float                                 | Double                         |
+| image                                 | Byte[]                         |
+| int                                   | Int32                          |
+| money                                 | Decimal                        |
+| nchar                                 | String, Char[]                 |
+| numeric                               | Decimal                        |
+| nvarchar                              | String, Char[]                 |
+| real                                  | Single                         |
+| rowversion                            | Byte[]                         |
+| smalldatetime                         | DateTime                       |
+| smallint                              | Int16                          |
+| smallmoney                            | Decimal                        |
+| 时间                                  | TimeSpan                       |
+| tinyint                               | Byte                           |
+| uniqueidentifier                      | Guid                           |
+| varbinary                             | Byte[]                         |
+| varchar                               | String, Char[]                 |
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md##supported-data-stores-and-formats)。

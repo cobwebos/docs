@@ -9,20 +9,31 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 07/22/2019
 ms.author: diberry
-ms.openlocfilehash: 63a898bd807b168ae17ec90e442c6ee6c001c715
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ab30e201dc5e4e9a226e23a37e8dbd63f17dd742
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559892"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717442"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
 了解该服务中的新增功能。 这些项可能会包括发行说明、视频、博客文章和其他类型的信息。 将此页添加为书签，以便及时了解该服务。  
 
 ## <a name="release-notes"></a>发行说明 
+
+### <a name="july-23-2019"></a>2019年7月23日
+
+* 将[识别器文本](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3)更新为1.2。3
+    * 意大利语的年龄、温度、维度和币种识别器。
+    * 为了正确计算基于感恩节的日期, 可以改进英语的假日识别。
+    * 法语日期时间的改进, 可减少非日期和非时间实体的误报。
+    * 支持在英文 DateRange 中提供日历/学校/财政年度和首字母缩写词。
+    * 改进了中文和日语的 PhoneNumber 识别。
+    * 改进了对英语 NumberRange 的支持。
+    * 性能改进。
 
 ### <a name="june-24-2019"></a>2019 年 6 月 24 日
 

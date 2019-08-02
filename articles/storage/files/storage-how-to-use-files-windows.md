@@ -1,19 +1,18 @@
 ---
 title: 将 Azure 文件共享与 Windows 配合使用 | Microsoft Docs
 description: 了解如何将 Azure 文件共享与 Windows 和 Windows Server 配合使用。
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 02a8b825a513c75ef7c037348ccaecdf5026ded2
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: d2bad808d0bcbbd5dc8052db0f8fd32fc4c1180a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560480"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699472"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>将 Azure 文件共享与 Windows 配合使用
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文讨论将 Azure 文件共享与 Windows 和 Windows Server 配合使用时的注意事项。
@@ -43,14 +42,14 @@ ms.locfileid: "67560480"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>系统必备 
 * **存储帐户名称**：需提供存储帐户的名称才能装载 Azure 文件共享。
 
 * **存储帐户密钥**：需提供主要（或辅助）存储密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
 
 * **确保端口 445 处于打开状态**：SMB 协议要求 TCP 端口 445 处于打开状态；如果端口 445 被阻止，则连接会失败。 可以通过 `Test-NetConnection` cmdlet 来查看防火墙是否在阻止端口 445。 可以在此处了解[如何通过各种方式来解决端口 445 被阻止的问题](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。
 
-    以下 PowerShell 代码假定你具有 Azure PowerShell 模块安装，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)有关详细信息。 记得将 `<your-storage-account-name>` 和 `<your-resource-group-name>` 替换为存储帐户的相应名称。
+    以下 PowerShell 代码假设已安装 Azure PowerShell 模块, 有关详细信息, 请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 记得将 `<your-storage-account-name>` 和 `<your-resource-group-name>` 替换为存储帐户的相应名称。
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
@@ -185,11 +184,11 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. 打开文件资源管理器。 若要执行此操作，可从“开始”菜单打开，或者按 Win+E 快捷方式。
 
-2. 导航到窗口左侧的“此电脑”项。  这样会更改功能区中的可用菜单。 在“计算机”菜单中，选择“映射网络驱动器”。 
+2. 导航到窗口左侧的“此电脑”项。 这样会更改功能区中的可用菜单。 在“计算机”菜单中，选择“映射网络驱动器”。
     
     ![“映射网络驱动器”下拉菜单的屏幕截图](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. 从 Azure 门户的“连接”窗格中复制 UNC 路径。  
+3. 从 Azure 门户的“连接”窗格中复制 UNC 路径。 
 
     ![Azure 文件“连接”窗格中的 UNC 路径](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 
@@ -205,26 +204,26 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![Azure 文件共享现已装载](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. 做好卸载 Azure 文件共享的准备以后，即可在文件资源管理器中右键单击“网络位置”下对应于共享的条目，然后选择“断开连接”。  
+7. 做好卸载 Azure 文件共享的准备以后，即可在文件资源管理器中右键单击“网络位置”下对应于共享的条目，然后选择“断开连接”。
 
 ### <a name="accessing-share-snapshots-from-windows"></a>从 Windows 访问共享快照
 如果已手动或通过脚本或 Azure 备份等服务自动获取共享快照，则可以从 Windows 上的文件共享查看以前版本的共享、目录或特定文件。 可以通过 [Azure 门户](storage-how-to-use-files-portal.md)、[Azure PowerShell](storage-how-to-use-files-powershell.md) 和 [Azure CLI](storage-how-to-use-files-cli.md) 获取共享快照。
 
 #### <a name="list-previous-versions"></a>列出以前版本
-浏览到需要还原的项或父项。 通过双击转到所需的目录。 右键单击，然后从菜单中选择“属性”。 
+浏览到需要还原的项或父项。 通过双击转到所需的目录。 右键单击，然后从菜单中选择“属性”。
 
 ![所选目录的右键单击菜单](./media/storage-how-to-use-files-windows/snapshot-windows-previous-versions.png)
 
-选择"以前版本”  ，以查看此目录的共享快照列表。 列表可能需要几秒钟才能加载，具体要取决于网速和目录中共享快照的数量。
+选择"以前版本”，以查看此目录的共享快照列表。 列表可能需要几秒钟才能加载，具体要取决于网速和目录中共享快照的数量。
 
 ![“以前版本”选项卡](./media/storage-how-to-use-files-windows/snapshot-windows-list.png)
 
-可以选择“打开”  以打开特定快照。 
+可以选择“打开”以打开特定快照。 
 
 ![打开的快照](./media/storage-how-to-use-files-windows/snapshot-browse-windows.png)
 
 #### <a name="restore-from-a-previous-version"></a>从以前版本还原
-选择“还原”  ，以递归方式将整个目录在共享快照创建时包含的内容复制到原始位置。
+选择“还原”，以递归方式将整个目录在共享快照创建时包含的内容复制到原始位置。
  ![警告消息中的“还原”按钮](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>保护 Windows/Windows Server
@@ -246,7 +245,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 | Windows 7                                 | Enabled              | 通过注册表进行禁用       | 
 
 ### <a name="auditing-smb-1-usage"></a>审核 SMB 1 使用情况
-> 适用于 Windows Server 2019、 Windows Server 半年频道 （版本 1709年和 1803年）、 Windows Server 2016、 Windows 10 （版本 1507年、 1607年、 1703年、 1709 和 1803年）、 Windows Server 2012 R2 和 Windows 8.1
+> 适用于 Windows Server 2019、Windows Server 半年频道 (版本1709和 1803)、Windows Server 2016、Windows 10 (版本1507、1607、1703、1709和 1803)、Windows Server 2012 R2 和 Windows 8。1
 
 在删除环境中的 SMB 1 之前，可能需要审核 SMB 1 使用情况，看是否有客户端会因更改而受损。 如果有客户端通过 SMB 1 对 SMB 共享提出了请求，系统会在 `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` 下的事件日志中记录审核事件。 
 
@@ -260,7 +259,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>从 Windows Server 中删除 SMB 1
-> 适用于 Windows Server 2019，Windows Server 半年通道 （版本 1709年和 1803年），Windows Server 2016 中，Windows Server 2012 R2
+> 适用于 Windows Server 2019, Windows Server 半年频道 (版本1709和 1803), Windows Server 2016, Windows Server 2012 R2
 
 若要从 Windows Server 实例中删除 SMB 1，请通过权限提升的 PowerShell 会话执行以下 cmdlet：
 

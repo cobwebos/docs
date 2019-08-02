@@ -10,18 +10,19 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 183a307159adb5dfdb248eb0cf4862462a626db6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 37a353fbb86ca199b2316dcfba5904f4b46b0276
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60498740"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705059"
 ---
 # <a name="conference-instance-entity"></a>会议实例实体
 
 <sub> *以下属性特定于会议实例实体。(Ty = '4') </sub>
 
-Name    |描述                            |Type       | 操作
+名称    |描述                            |类型       | 操作
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |实体 ID                              |Int64      |等于
 CIN     |会议实例规范化名称 ({ConferenceSeriesNormalizedName} {ConferenceInstanceYear})        |String     |等于
@@ -43,6 +44,6 @@ ECC     |会议实例估计引文总计数 |Int32      |无
 
 ## <a name="extended-metadata-attributes"></a>扩展的元数据属性 ##
 
-Name    | 描述               
+名称    | 描述               
 --------|---------------------------    
 FN      | 会议实例全名

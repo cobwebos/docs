@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: bb0e146ef32ba24c3911bae86806c84768c005ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b62cbe6be7f48aa05bf3756580df0777aeee8cae
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405947"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726082"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle Eloqua 复制数据
 
@@ -32,7 +32,7 @@ ms.locfileid: "60405947"
 
 Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -44,10 +44,10 @@ Oracle Eloqua 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：Eloqua  | 是 |
-| endpoint | Eloqua 服务器的终结点。 Eloqua 支持多个数据中心，用于确定终结点、使用凭据登录 https://login.eloqua.com ，然后通过 `xxx.xxx.eloqua.com` 模式从重定向 URL 复制“基 URL”  部分。 | 是 |
-| username | Eloqua 帐户的站点名称和用户名采用以下格式：`SiteName\Username`，例如 `Eloqua\Alice`。  | 是 |
-| password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| type | type 属性必须设置为：Eloqua | 是 |
+| 终结点 | Eloqua 服务器的终结点。 Eloqua 支持多个数据中心，用于确定终结点、使用凭据登录 https://login.eloqua.com ，然后通过 `xxx.xxx.eloqua.com` 模式从重定向 URL 复制“基 URL”部分。 | 是 |
+| userName | Eloqua 帐户的站点名称和用户名采用以下格式：`SiteName\Username`，例如 `Eloqua\Alice`。  | 是 |
+| 密码 | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
@@ -75,11 +75,11 @@ Oracle Eloqua 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Oracle Eloqua 数据集支持的属性列表。
 
-要从 Oracle Eloqua 复制数据，请将数据集的 type 属性设置为“EloquaObject”  。 支持以下属性：
+要从 Oracle Eloqua 复制数据，请将数据集的 type 属性设置为“EloquaObject”。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：EloquaObject  | 是 |
+| type | 数据集的 type 属性必须设置为：EloquaObject | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -89,11 +89,12 @@ Oracle Eloqua 链接服务支持以下属性：
     "name": "EloquaDataset",
     "properties": {
         "type": "EloquaObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Eloqua linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -104,11 +105,11 @@ Oracle Eloqua 链接服务支持以下属性：
 
 ### <a name="eloqua-as-source"></a>以 Eloqua 作为源
 
-要从 Oracle Eloqua 复制数据，请将复制活动中的源类型设置为“EloquaSource”  。 复制活动源  部分支持以下属性：
+要从 Oracle Eloqua 复制数据，请将复制活动中的源类型设置为“EloquaSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：EloquaSource  | 是 |
+| type | 复制活动源的 type 属性必须设置为：EloquaSource | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Accounts"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

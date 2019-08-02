@@ -2,7 +2,7 @@
 title: 常见问题解答 (FAQ) - Azure Active Directory | Microsoft Docs
 description: 有关 Azure 和 Azure Active Directory、密码管理以及应用程序访问的常见问题和解答。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
@@ -10,15 +10,15 @@ ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c67eec3a17e949d630bedf920c690f9f5a36424d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4c1ee5e849d8004f828a2d92d728ad7925fc05c4
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204571"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693957"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -59,7 +59,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 ---
 **问：是否可以通过报表来查看我的 Azure AD 用户许可证何时会过期？**
 
-**答:** 不。  此功能目前不可用。
+**答:** 否。  此功能目前不可用。
 
 ---
 
@@ -68,7 +68,8 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 **问：如果我已被添加为协作者，该如何离开原来的租户？**
 
-<a name="a-when-you-are-added-to-another-organizations-tenant-as-a-collaborator-you-can-use-the-tenant-switcher-in-the-upper-right-to-switch-between-tenants--currently-there-is-no-way-to-leave-the-inviting-organization-and-microsoft-is-working-on-providing-this-functionality--until-this-feature-is-available-you-can-ask-the-inviting-organization-to-remove-you-from-their-tenant"></a>**答:** 如果被作为协作者添加到另一组织的租户，可使用右上角的“租户切换器”在租户之间切换。  目前还无法主动离开邀请组织，Microsoft 正致力于提供该功能。  在该功能可用之前，可以要求邀请阻止你将从其租户中删除。
+**答:** 如果被作为协作者添加到另一组织的租户，可使用右上角的“租户切换器”在租户之间切换。  目前还无法主动离开邀请组织，Microsoft 正致力于提供该功能。  在该功能可用之前，可以要求邀请阻止你将从其租户中删除。
+
 ---
 **问：如何将我的本地目录连接到 Azure AD？**
 
@@ -88,7 +89,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 ---
 **问：Azure AD 是否为组织中的用户提供自助服务门户？**
 
-**答:** 是的，Azure AD 提供 [Azure AD 访问面板](https://myapps.microsoft.com)，方便用户使用自助服务以及进行应用程序访问。 如果你是 Office 365 客户，你可以找到许多中相同的功能[Office 365 门户](https://portal.office.com)。
+**答:** 是的，Azure AD 提供 [Azure AD 访问面板](https://myapps.microsoft.com)，方便用户使用自助服务以及进行应用程序访问。 如果你是 Office 365 客户, 可以在[office 365 门户](https://portal.office.com)中找到许多相同的功能。
 
 有关详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
@@ -132,7 +133,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 
 ---
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 **问：帐户在经过特定次数的失败尝试后被锁定还是使用了更复杂的策略？**
 
 我们使用更复杂的策略来锁定帐户。  这基于请求的 IP 和输入的密码。 锁定的持续时间也会根据存在攻击的可能性而延长。  
@@ -196,7 +197,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 ---
 **问：如何要求访问特定应用程序的用户进行多重身份验证？**
 
-**答:** 使用 Azure AD 条件性访问，可以分配每个应用程序的独特的访问策略。 可以在策略中要求用户始终进行多重身份验证，或者在未连接到本地网络时才进行。  
+**答:** 使用 Azure AD 条件性访问, 你可以为每个应用程序分配唯一的访问策略。 可以在策略中要求用户始终进行多重身份验证，或者在未连接到本地网络时才进行。  
 
 有关详细信息，请参阅[保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](../active-directory-conditional-access-azure-portal.md)。
 
@@ -210,4 +211,4 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 ---
 **问：是否可以通过 Azure AD 设置安全的 LDAP 连接？**
 
-**答:** 不。 Azure AD 不支持的轻型目录访问协议 (ldap) 或安全 LDAP 直接。 但是，就可以启用 Azure AD 租户使用通过 Azure 网络以实现 LDAP 连接正确配置的网络安全组上的 Azure AD 域服务 (Azure AD DS) 实例。 有关详细信息，请参阅 https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap 。
+**答:** 否。 Azure AD 不支持轻型目录访问协议 (LDAP) 协议或直接安全 LDAP。 但是, 可以通过 Azure 网络通过正确配置的网络安全组在 Azure AD 租户上启用 Azure AD 域服务 (Azure AD DS) 实例, 以实现 LDAP 连接。 有关详细信息，请参阅 https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap 。

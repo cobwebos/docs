@@ -10,21 +10,20 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: bd68909f51ff6cead8484ae4ab9f2557e9d6554e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443324"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640091"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
 自动故障转移组是一项 SQL 数据库功能, 可用于管理 SQL 数据库服务器上的一组数据库的复制和故障转移, 或者管理托管实例中的所有数据库到另一个区域。 它是一种基于现有[活动异地复制](sql-database-active-geo-replication.md)功能的声明性抽象, 旨在简化大规模地部署和管理异地复制的数据库。 可以手动启动故障转移，也可以基于用户定义的策略委托 SQL 数据库服务进行故障转移。 使用后一种做法可在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的计划外事件。 故障转移组可以包含一个或多个数据库, 通常由同一应用程序使用。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 故障转移组中数据库的主服务器和辅助服务器必须位于同一订阅中。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。
 
 > [!NOTE]
-> 如果在 SQL 数据库服务器上使用单一数据库或共用数据库，并要在相同或不同的区域中使用多个辅助数据库，请使用[活动异地复制](sql-database-active-geo-replication.md)。
+> 如果在 SQL 数据库服务器上使用单一数据库或共用数据库，并要在相同或不同的区域中使用多个辅助数据库，请使用[活动异地复制](sql-database-active-geo-replication.md)。 
 
 将自动故障转移组与自动故障转移策略配合使用时，任何影响组中一个或多个数据库的服务中断都会导致自动故障转移。 此外，自动故障转移组提供在故障转移期间保持不变的读写和只读侦听器终结点。 无论使用手动故障转移激活还是自动故障转移激活，故障转移都会将组中所有的辅助数据库切换到主数据库。 数据库故障转移完成后，会自动更新 DNS 记录，以便将终结点重定向到新的区域。 有关具体的 RPO 和 RTO 数据，请参阅[业务连续性概述](sql-database-business-continuity.md)。
 
@@ -256,14 +255,14 @@ ms.locfileid: "68443324"
 
 ## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>在托管实例与其 Vnet 之间启用异地复制
 
-在两个不同的区域中的主要和辅助托管实例之间设置故障转移组时, 每个实例都是使用独立 VNet 隔离的。 若要允许这些 Vnet 之间的复制流量, 请确保满足以下先决条件:
+在两个不同的区域中的主要和辅助托管实例之间设置故障转移组时, 每个实例都是使用独立的虚拟网络隔离的。 若要允许这些 Vnet 之间的复制流量, 请确保满足以下先决条件:
 
 1. 这两个托管实例需要在不同的 Azure 区域中。
-2. 辅助节点必须是空的（无用户数据库）。
-3. 主要和次要托管实例必须位于同一个资源组中。
-4. Vnet 托管实例属于的一部分需要通过[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)进行连接。 不支持全局 VNet 对等互连。
-5. 这两个托管实例 Vnet 不能有重叠的 IP 地址。
-6. 需要设置网络安全组 (NSG), 以使端口5022和范围 11000 ~ 12000 为来自其他托管实例子网的连接打开入站和出站。 目的是允许实例之间的复制流量
+1. 这两个托管实例必须是相同的服务层, 并且具有相同的存储大小。 
+1. 辅助托管实例必须为空 (无用户数据库)。
+1. 托管实例使用的虚拟网络需要通过[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 Express Route 连接。 当两个虚拟网络通过本地网络连接时, 请确保没有阻止端口5022和11000-11999 的防火墙规则。 不支持全局 VNet 对等互连。
+1. 这两个托管实例 Vnet 不能有重叠的 IP 地址。
+1. 需要设置网络安全组 (NSG), 以使端口5022和范围 11000 ~ 12000 为来自其他托管实例子网的连接打开入站和出站。 目的是允许实例之间的复制流量
 
    > [!IMPORTANT]
    > NSG 安全规则配置不当会导致数据库复制操作停滞。
@@ -369,9 +368,9 @@ ms.locfileid: "68443324"
 ## <a name="next-steps"></a>后续步骤
 
 - 示例脚本请参阅：
-  - [配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-  - [配置共用数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-  - [针对单个数据库配置并故障转移一个故障转移组](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+  - [使用 PowerShell 为 Azure SQL 数据库中的单个数据库配置活动异地复制](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+  - [使用 PowerShell 为 Azure SQL 数据库中的池数据库配置活动异地复制](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+  - [使用 PowerShell 将 Azure SQL 数据库单一数据库添加到故障转移组](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
 - 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
 - 若要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)。

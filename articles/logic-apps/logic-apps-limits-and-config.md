@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: b649ea1c69f82840a663cf32391e4c74ac6cc33e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: dd4eef7998b83c7a527738762379d0d3e720d70f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319507"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699815"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -26,7 +26,7 @@ ms.locfileid: "68319507"
 
 下面是针对单个逻辑应用定义的限制：
 
-| 名称 | 限制 | 说明 |
+| 姓名 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 每个工作流的操作数 | 500 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
 | 操作的允许嵌套深度 | 8 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
@@ -63,9 +63,9 @@ ms.locfileid: "68319507"
 
 若要更改运行持续时间和存储保留期的默认限制，请执行以下步骤。 如果需要超出最大限制，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，提出你的需求以获取帮助。
 
-1. 在 Azure 门户的逻辑应用菜单中，选择“工作流设置”  。
+1. 在 Azure 门户的逻辑应用菜单中，选择“工作流设置”。
 
-2. 在“运行时选项”下，从“运行历史记录保留天数”列表中选择“自定义”    。
+2. 在“运行时选项”下，从“运行历史记录保留天数”列表中选择“自定义”。
 
 3. 输入或拖动滑块以获得所需的天数。
 
@@ -143,7 +143,7 @@ ms.locfileid: "68319507"
 
 | 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
-| 重试次数 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
+| 重试尝试 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最大延迟 | 1 天 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最小延迟 | 5 秒 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 ||||
@@ -164,7 +164,7 @@ ms.locfileid: "68319507"
 
 ## <a name="managed-identities"></a>托管标识
 
-| 名称 | 限制 |
+| 姓名 | 限制 |
 | ---- | ----- |
 | 每个 Azure 订阅中具有系统分配的托管标识的逻辑应用数量 | 100 |
 |||
@@ -175,7 +175,7 @@ ms.locfileid: "68319507"
 
 每个 Azure 订阅都有以下集成帐户限制:
 
-* 单个[免费层](../logic-apps/logic-apps-pricing.md#integration-accounts)集成帐户
+* 每个 Azure 区域一个[免费层](../logic-apps/logic-apps-pricing.md#integration-accounts)集成帐户
 
 * 1000集成帐户总数, 包括[开发人员和高级 sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)上任何[integration SERVICE 环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的集成帐户。
 
@@ -253,9 +253,9 @@ ms.locfileid: "68319507"
 
 ## <a name="firewall-configuration-ip-addresses"></a>防火墙配置：IP 地址
 
-同一区域中的所有逻辑应用都使用相同的 IP 地址范围。 若要支持逻辑应用通过 [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 和其他 HTTP 请求直接发出的调用，请根据这些逻辑应用所在的区域，使用逻辑应用服务所用的所有  [入站](#inbound)和  [出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“入站”  和“出站”  标题下，并按区域进行排序。
+同一区域中的所有逻辑应用都使用相同的 IP 地址范围。 若要支持逻辑应用通过 [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 和其他 HTTP 请求直接发出的调用，请根据这些逻辑应用所在的区域，使用逻辑应用服务所用的所有[入站](#inbound)和[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“入站”和“出站”标题下，并按区域进行排序。
 
-若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有  [出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”  标题下，并按区域进行排序。
+若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”标题下，并按区域进行排序。
 
 对于 [Azure 政府](../azure-government/documentation-government-overview.md)和 [Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)，连接器的保留 IP 地址目前不可用。
 
@@ -273,7 +273,7 @@ ms.locfileid: "68319507"
 
 ### <a name="inbound-ip-addresses---logic-apps-service-only"></a>入站 IP 地址 - 仅限逻辑应用服务
 
-| 区域 | IP |
+| 地区 | IP |
 |--------|----|
 | 澳大利亚东部 | 13.75.153.66, 52.187.231.161, 104.210.89.222, 104.210.89.244 |
 | 澳大利亚东南部 | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
@@ -305,7 +305,7 @@ ms.locfileid: "68319507"
 
 ### <a name="outbound-ip-addresses---logic-apps-service--managed-connectors"></a>出站 IP 地址 - 逻辑应用服务和托管连接器
 
-| 区域 | 逻辑应用 IP | 托管连接器 IP |
+| 地区 | 逻辑应用 IP | 托管连接器 IP |
 |--------|---------------|-----------------------|
 | 澳大利亚东部 | 13.75.149.4, 52.187.226.96, 52.187.226.139, 52.187.227.245, 52.187.229.130, 52.187.231.184, 104.210.90.241, 104.210.91.55 | 13.70.72.192 - 13.70.72.207, 13.72.243.10 |
 | 澳大利亚东南部 | 13.70.159.205, 13.73.114.207, 13.77.3.139, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75, 52.189.222.77 | 13.77.50.240 - 13.77.50.255, 13.70.136.174 |

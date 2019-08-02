@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 3b2b472407175df307c569704d4c7611737c4ea1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1416cbdc29d355e2ed83737140b46306de734127
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60694330"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568571"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
 
@@ -29,7 +28,7 @@ ms.locfileid: "60694330"
 
 对于非分片数据库，请参阅[跨具有不同架构的云数据库进行查询](sql-database-elastic-query-vertical-partitioning.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 使用弹性数据库客户端库创建分片映射。 [分片映射管理](sql-database-elastic-scale-shard-map-management.md)。 或者使用[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中的示例应用程序。
 * 另外，也可以参阅[将现有数据库迁移到横向扩展的数据库](sql-database-elastic-convert-to-use-elastic-tools.md)。
@@ -55,7 +54,7 @@ ms.locfileid: "60694330"
     [;]
 
 > [!NOTE]
-> 请确保“\<username\>”  中不包括任何“\@servername”  后缀。
+> 请确保“\<username\>”中不包括任何“\@servername”后缀。
 
 ## <a name="12-create-external-data-sources"></a>1.2 创建外部数据源
 
@@ -187,7 +186,7 @@ DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DI
 
 Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到分片映射管理器数据库和远程数据库。  
 
-示例：
+例如：
 
 ```sql
     EXEC sp_execute_remote
@@ -199,7 +198,7 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 
 可以使用常规 SQL Server 连接字符串将应用程序、BI 和数据集成工具连接到具有外部表定义的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后，引用弹性查询数据库，就像引用连接到工具的其他任何 SQL Server 数据库一样，并从工具或应用程序使用外部表，就像使用本地表一样。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 * 确保已向弹性查询终结点数据库授予通过 SQL 数据库防火墙访问分片映射数据库和所有分片的权限。  
 * 验证或强制执行由外部表定义的数据分布。 如果实际的数据分布不同于表定义中指定的分布，查询可能会产生意外的结果。

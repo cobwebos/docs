@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: cecdb9f9af9c5194eb56cfefd63b31348f111980
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 424a2c28176813abc10011c030971047ea50e3da
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400724"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726111"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Magento 复制数据
 
@@ -44,7 +44,7 @@ Magento 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | Type 属性必须设置为：Magento  | 是 |
+| type | Type 属性必须设置为：Magento | 是 |
 | host | Magento 实例的 URL。 （即 192.168.222.110/magento3）  | 是 |
 | accessToken | 来自 Magento 的访问令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
@@ -76,11 +76,11 @@ Magento 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Magento 数据集支持的属性列表。
 
-要从 Magento 复制数据，请将数据集的 type 属性设置为 MagentoObject  。 支持以下属性：
+要从 Magento 复制数据，请将数据集的 type 属性设置为 MagentoObject。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：MagentoObject  | 是 |
+| type | 数据集的 type 属性必须设置为：MagentoObject | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -90,11 +90,12 @@ Magento 链接的服务支持以下属性：
     "name": "MagentoDataset",
     "properties": {
         "type": "MagentoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Magento linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -105,11 +106,11 @@ Magento 链接的服务支持以下属性：
 
 ### <a name="magento-as-source"></a>Magento 作为源
 
-要从 Magento 复制数据，请将复制活动中的源类型设置为 MagentoSource  。 复制活动源部分支持以下属性  ：
+要从 Magento 复制数据，请将复制活动中的源类型设置为 MagentoSource。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：MagentoSource  | 是 |
+| type | 复制活动源的 type 属性必须设置为：MagentoSource | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Customers"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

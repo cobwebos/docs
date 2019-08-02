@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/31/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c60cb78c01d7e18801cbe43c8b767f622ef4b39
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473093"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694291"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 地址处理
 
@@ -83,8 +83,8 @@ IP 地址将作为遥测数据的一部分发送到 Application Insights。 到�
 
     ![屏幕截图将在 "IbizaAIExtension" 后添加一个逗号, 并在下面添加新行, 其中包含 "DisableIpMasking": true](media/ip-collection/save.png)
 
-    > [!NOTE]
-    > 如果遇到错误, 请注意:_资源组所在的位置不受模板中的一个或多个资源支持。请选择其他资源组。_ 临时从下拉列表中选择不同的资源组, 然后重新选择原始资源组以解决此错误。
+    > [!WARNING]
+    > 如果遇到错误, 请注意: **_资源组所在的位置不受模板中的一个或多个资源支持。请选择其他资源组。_** 临时从下拉列表中选择不同的资源组, 然后重新选择原始资源组以解决此错误。
 
 5. 选择 "**我同意** > **购买**"。 
 
@@ -130,10 +130,11 @@ Content-Length: 54
 
 如果需要记录整个 IP 地址而不只是前三个八位字节, 可以使用[遥测初始值设定项](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer)将 IP 地址复制到不会被屏蔽的自定义字段。
 
-### <a name="aspnetaspnet-core"></a>ASP.NET/ASP.NET 核心
+### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
 namespace MyWebApp
@@ -142,15 +143,20 @@ namespace MyWebApp
     {
         public void Initialize(ITelemetry telemetry)
         {
-            if(!string.IsNullOrEmpty(telemetry.Context.Location.Ip))
+            ISupportProperties propTelemetry = telemetry as ISupportProperties;
+
+            if (propTelemetry !=null && !propTelemetry.Properties.ContainsKey("client-ip"))
             {
-                telemetry.Context.Properties["client-ip"] = telemetry.Context.Location.Ip;
+                string clientIPValue = telemetry.Context.Location.Ip;
+                propTelemetry.Properties.Add("client-ip", clientIPValue);
             }
         }
-    }
-
+    } 
 }
 ```
+
+> [!NOTE]
+> 如果无法访问`ISupportProperties`, 请检查并确保运行 Application Insights SDK 的最新稳定版本。 `ISupportProperties`适用于高基数值, 而`GlobalProperties`更适用于较低基数值, 如区域名称、环境名称等。 
 
 ### <a name="enable-telemetry-initializer-for-aspnet"></a>为启用遥测初始值设定项。ASP.NET
 

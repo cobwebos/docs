@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6a332ce265a4bb41a9ad3c0c3a29683187a0f0d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccdd2443254da065a15911f567577672492ddb4f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62098399"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568879"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>使用 SQL 数据库弹性池的应用程序的灾难恢复策略
 
@@ -163,7 +162,7 @@ ms.locfileid: "62098399"
 * 它需要对管理数据库进行更复杂的设计。 例如，每个租户记录具有在故障转移和故障回复期间进行更改的位置标记。  
 * 完成区域 B 的池升级之前，付费客户可能遇到比平常更低性能。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文重点介绍了关于 SaaS ISV 多租户应用程序使用的数据库层的灾难恢复策略。 基于应用程序的需要选择策略，例如业务模式、想要为客户提供的 SLA、预算限制等。所述的每个策略都概述了其优点、进行了权衡比较，以便你做出明智的决策。 此外，特定应用程序可能包括其他 Azure 组件。 因此，请查看其业务连续性指南并根据指南安排数据库层的恢复。 若要深入了解如何管理 Azure 中的数据库应用程序恢复，请参阅[设计灾难恢复云解决方案](sql-database-designing-cloud-solutions-for-disaster-recovery.md)。  
 

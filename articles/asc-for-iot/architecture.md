@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure 安全中心的 IoT 解决方案体系结构预览 |Microsoft Docs
-description: 了解有关流的 IoT 服务在 Azure 安全中心中的信息。
+title: 了解 IoT 解决方案体系结构的 Azure 安全中心 |Microsoft Docs
+description: 了解用于 IoT 服务的 Azure 安全中心内的信息流。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,53 +13,56 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 5cab57343f9675df0702cf4281b3d74ca96d86ae
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a013d4cfcfddc709e60e91adf57bc27c98934a96
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618544"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596556"
 ---
-# <a name="azure-security-center-for-iot-architecture"></a>Azure 安全中心的 IoT 体系结构
+# <a name="azure-security-center-for-iot-architecture"></a>用于 IoT 体系结构的 Azure 安全中心
 
-本文介绍了功能的系统体系结构有关的 IoT 解决方案的 Azure 安全中心 (ASC)。 
+本文介绍了用于 IoT 解决方案的 Azure 安全中心的功能系统体系结构。 
 
-> [!IMPORTANT]
-> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
-> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+## <a name="azure-security-center-for-iot-components"></a>用于 IoT 组件的 Azure 安全中心
 
-## <a name="asc-for-iot-components"></a>ASC 为 IoT 组件的
-
-适用于 IoT 的 ASC 由以下组件组成：
-- 设备代理
+用于 IoT 的 Azure 安全中心由以下组件组成:
+- IoT 中心集成
+- 设备代理 (可选)
 - 发送安全消息 SDK
-- IoT 中心的集成
 - 分析管道
  
-### <a name="asc-for-iot-workflow"></a>ASC 为 IoT 工作流的
+### <a name="azure-security-center-for-iot-workflows"></a>用于 IoT 工作流的 Azure 安全中心
 
-ASC 为 IoT 设备代理，可轻松地从设备收集的原始安全事件。 原始安全事件可以包括 IP 连接、 创建进程、 用户登录名和其他安全相关信息。 ASC 为 IoT 设备代理还处理事件聚合以帮助避免高网络吞吐量。 代理是高度可自定义，从而允许您使用它们有关特定任务，例如发送的重要信息仅在最快的 SLA，或用于将提供广泛的安全信息和上下文聚合到更大的段，避免成本较高的服务。
- 
-设备代理和其他应用程序用途**Azure ASC 发送安全消息 SDK**发送到 Azure IoT 中心的安全信息。 IoT 中心提取此信息并将其转发到 ASC 为 IoT 服务。
+适用于 IoT 的 Azure 安全中心采用以下两种功能工作流之一:内置和增强  
 
-启用 ASC 为 IoT 服务后，除了转发的数据，IoT 中心还会发送出所有 asc 分析其内部数据的 IoT。 此数据包括设备云操作日志、 设备标识和集线器配置。 所有这些信息有助于创建 ASC 为 IoT 分析管道。
+### <a name="built-in"></a>内置
+在**内置**模式下, 在你选择启用 iot 中心中的 "**安全**" 选项时, 会启用 "用于 Iot 的 Azure 安全中心"。 内置模式提供实时监视、建议和警报, 提供单一步骤的设备可见性和无与伦比的安全性。 内置模式不需要在任何设备上安装代理, 并对记录的活动使用高级分析来分析和保护字段设备。 
+
+### <a name="enhanced"></a>增强版 
+在**增强**模式下, 在 IoT 中心启用**安全**选项并在设备上为 IoT 设备代理安装 Azure 安全中心后, 代理会从设备收集、聚合和分析原始安全事件。 原始安全事件可能包括 IP 连接、进程创建、用户登录和其他安全相关信息。 用于 IoT 设备代理的 Azure 安全中心还处理事件聚合, 以帮助避免高网络吞吐量。 代理具有高度可自定义性, 使你可以将其用于特定的任务, 例如, 仅在最快的 SLA 中发送重要信息, 或者将广泛的安全信息和上下文聚合到更大的段, 以避免服务成本更高。
+
+![用于 IoT 体系结构的 Azure 安全中心](./media/architecture/azure-iot-security-architecture.png)
  
-IoT 分析管道的 ASC 还从 Microsoft 和 Microsoft 中的各种源中接收其他威胁智能流合作伙伴。 ASC 为 IoT 整个分析管道可用于对该服务 （如自定义警报和使用的发送安全消息 SDK） 发出的每个客户配置。
+设备代理和其他应用程序使用**azure 发送安全消息 SDK**将安全信息发送到 Azure IoT 中心。 IoT 中心提取此信息并将其转发到用于 IoT 服务的 Azure 安全中心。
+
+启用用于 IoT 服务的 Azure 安全中心后, 除了已转发的数据以外, IoT 中心还会发出用于 IoT 的 Azure 安全中心分析的所有内部数据。 此数据包括设备云操作日志、设备标识和中心配置。 所有这些信息都有助于创建用于 IoT 分析管道的 Azure 安全中心。
  
-使用分析管道，iot ASC 将合并所有流的信息来生成可行的建议和警报。 管道包含两个自定义规则创建的安全研究人员和专家以及机器学习搜索偏离标准设备行为和风险分析的模型。
+用于 IoT 分析管道的 Azure 安全中心还可从 Microsoft 和 Microsoft 合作伙伴的各种来源接收其他威胁智能流。 适用于 IoT 的 Azure 安全中心整个分析管道适用于对服务进行的每个客户配置 (如自定义警报和发送安全消息 SDK 的使用)。
  
-ASC 为 IoT 建议和警报 （分析管道输出） 写入到 Log Analytics 工作区中的每个客户。 在工作区，以及警报和建议中包括的原始事件，深入调查和使用检测到的可疑活动的具体详细信息的查询。  
+使用分析管道, 适用于 IoT 的 Azure 安全中心结合所有的信息流来生成可操作的建议和警报。 该管道包含由安全研究人员和专家创建的自定义规则, 以及从标准设备行为和风险分析搜索偏差的机器学习模型。
+ 
+用于 IoT 建议和警报 (分析管道输出) 的 Azure 安全中心写入每个客户的 Log Analytics 工作区。 如果工作区中包含原始事件以及警报和建议, 则可以使用检测到的可疑活动的确切详细信息来深入探讨调查和查询。  
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您学习了基本体系结构和工作流的 ASC IoT 解决方案。 若要详细了解先决条件，如何开始并启用您在 IoT 中心的安全解决方案，请参阅以下文章：
+本文介绍了用于 IoT 解决方案的 Azure 安全中心的基本体系结构和工作流。 若要详细了解先决条件、如何开始和在 IoT 中心启用安全解决方案, 请参阅以下文章:
 
-- [服务的先决条件](service-prerequisites.md)
+- [服务先决条件](service-prerequisites.md)
 - [入门](getting-started.md)
 - [配置解决方案](quickstart-configure-your-solution.md)
-- [启用 IoT 中心内的安全性](quickstart-onboard-iot-hub.md)
-- [ASC iot 常见问题](resources-frequently-asked-questions.md)
-- [ASC 为 IoT 安全警报的](concept-security-alerts.md)
-
+- [启用 IoT 中心中的安全性](quickstart-onboard-iot-hub.md)
+- [Azure 安全中心的 IoT 常见问题](resources-frequently-asked-questions.md)
+- [用于 IoT 安全警报的 Azure 安全中心](concept-security-alerts.md)

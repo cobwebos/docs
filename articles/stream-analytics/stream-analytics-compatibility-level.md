@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
-ms.openlocfilehash: 8e3ae84242a1a9b76fbb18a8d8164c97a62a97d9
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: a6e5cd69a0655bf8235bf5755ab596ca2bde0387
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68003909"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716161"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
@@ -41,9 +41,9 @@ Azure 流分析目前支持三种兼容性级别：
 
 1. 使用 [Azure 门户](https://portal.azure.com)定位到你的流分析作业。
 2. **停止**该作业，然后更新兼容性级别。 如果作业处于运行状态，则无法更新兼容性级别。
-3. 在“配置”标题下，选择“兼容性级别”。  
+3. 在“配置”标题下，选择“兼容性级别”。
 4. 选择所需的兼容性级别值。
-5. 选择页面底部的“保存”  。
+5. 选择页面底部的“保存”。
 
 ![Azure 门户中的流分析兼容性级别](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
@@ -73,11 +73,11 @@ Azure 流分析支持地理空间参考数据索引编制。 可为包含地理�
 
 ### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>与 CosmosDB 输出的本机批量 API 集成
 
-**之前的级别:** 更新插入行为是“插入或合并”。 
+**之前的级别:** 更新插入行为是“插入或合并”。
 
 **1.2 级别:** 与 CosmosDB 输出的本机批量 API 集成可以最大程度地提高吞吐量，并有效地处理限制请求。 有关详细信息, 请参阅[Azure 流分析输出到 Azure Cosmos DB 页](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)。
 
-更新插入行为是“插入或替换”。 
+更新插入行为是“插入或替换”。
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>写入到 SQL 输出时的 DateTimeOffset
 
@@ -90,6 +90,12 @@ Azure 流分析支持地理空间参考数据索引编制。 可为包含地理�
 **之前的级别:** 根据目标类型截断值。
 
 **1.2 级别:** 不符合目标类型的值将根据输出错误策略进行处理。
+
+### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>写入 SQL 输出时记录和数组的序列化
+
+**之前的级别:** 记录是以 "记录" 形式编写的, 数组是以 "数组" 形式编写的。
+
+**1.2 级别:** 记录和数组按 JSON 格式进行序列化。
 
 ### <a name="strict-validation-of-prefix-of-functions"></a>严格验证函数的前缀
 

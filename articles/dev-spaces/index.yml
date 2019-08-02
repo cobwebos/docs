@@ -12,45 +12,46 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
 abstract:
-  description: 使用 Azure Dev Spaces，可以测试并以迭代方式开发在 Azure Kubernetes 服务 (AKS) 中运行的整个微服务应用程序，而无需复制或模拟依赖项。 Azure Dev Spaces 减少了在共享 Azure Kubernetes 服务 (AKS) 群集中与你的团队协作以及直接在 AKS 中运行和调试容器的负担，并降低了这些工作的复杂度。 了解如何利用这些快速入门使用 Azure Dev Spaces。
+  description: 使用 Azure Dev Spaces，可以通过在 Azure Kubernetes 服务 (AKS) 中运行来测试并以迭代方式开发整个微服务应用程序，而无需复制或模拟依赖项。 Azure Dev Spaces 在共享 Azure Kubernetes 服务 (AKS) 群集中通过直接在 AKS 中运行和调试容器，减少了与你的团队协作的负担和复杂度。 了解如何利用这些快速入门使用 Azure Dev Spaces。
 sections:
   - title: 5 分钟快速入门
     items:
       - type: paragraph
-        text: 了解如何在 AKS 中使用 Azure Dev Spaces：
+        text: 了解如何使用 Azure Dev Spaces 在 AKS 中针对微服务进行协作：
       - type: list
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: 作为团队的一部分进行开发
+              src: 'https://docs.microsoft.com/media/common/i_configure-teams.svg'
+            text: 作为团队的一部分开发微服务
             href: quickstart-team-development.md
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: 运行应用程序
-            href: quickstart-cli.md
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: 使用 Dockerfile 运行应用程序
-            href: quickstart-cli-dockerfile.md
       - type: paragraph
-        text: 了解如何使用 Azure Dev Spaces 直接在 AKS 中以迭代方式进行开发和调试：
+        text: 了解如何为内部循环开发体验使用 Azure Dev Spaces 进行快速迭代和调试：
       - type: list
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
-            text: 使用 Java 进行开发
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: 使用 Visual Studio Code 和 Java
             href: quickstart-java.md
           - image:
               src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: 使用 .NET 和 VS Code 进行开发
+            text: 使用 Visual Studio Code 和 .NET Core
             href: quickstart-netcore.md
           - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: 使用 .NET 和 Visual Studio 进行开发
-            href: quickstart-netcore-visualstudio.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
-            text: 使用 Node.js 进行开发
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: 使用 Visual Studio Code 和 Node.js
             href: quickstart-nodejs.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: 使用 Visual Studio 和 .NET Core
+            href: quickstart-netcore-visualstudio.md
+      - type: paragraph
+        text: 了解如何通过将 Azure CLI 与 Azure Dev Spaces 配合使用来为几乎任何语言开发微服务：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: 使用 Azure CLI 进行开发
+            href: quickstart-cli.md

@@ -9,18 +9,19 @@ manager: barbkess
 editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
 ms.service: security
+ms.subservice: security-develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 66719d43db277e6c82d89ee17c602309d16140f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0683c065285a6ddf8d966bbd3d22e88c39b34d5c
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489973"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728806"
 ---
 # <a name="develop-a-secure-web-app"></a>开发安全的 web 应用
 
@@ -129,7 +130,7 @@ Azure Database for PostgreSQL 会自动将 PostgreSQL 数据库中的数据加�
 若要在包含安全功能的示例应用程序中部署资源, 需要为一些高级功能付费。 随着应用规模和 Azure 提供的免费层和试用版的升级, 你的成本可能会增加。 使用 Azure[定价计算器](https://azure.microsoft.com/pricing/calculator/)估算成本。
 
 ## <a name="deploy-the-solution"></a>部署解决方案
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 若要启动并运行应用程序, 需要安装以下工具:
 
 - 用于修改和查看应用程序代码的代码编辑器。[Visual Studio Code](https://code.visualstudio.com/)为开源选项。
@@ -137,7 +138,7 @@ Azure Database for PostgreSQL 会自动将 PostgreSQL 数据库中的数据加�
 - 系统中的[Git](https://git-scm.com/) 。 Git 用于本地克隆源代码。
 - [jq](https://stedolan.github.io/jq/), 一种以用户友好的方式查询 JSON 的 UNIX 工具。
 
-需要一个 Azure 订阅来部署示例应用的资源。 如果没有 Azure 订阅, 可以[创建一个免费帐户](https://azure.microsoft.com/en-us/free/)来测试示例应用。
+需要一个 Azure 订阅来部署示例应用的资源。 如果没有 Azure 订阅, 可以[创建一个免费帐户](https://azure.microsoft.com/free/)来测试示例应用。
 
 安装这些工具后, 便可以在 Azure 上部署应用了。
 
@@ -353,7 +354,7 @@ $$ LANGUAGE PLPGSQL;
 根证书包含在容器中。 获取证书所采取的步骤如下:
 
 1. 从[证书颁发机构](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)下载证书文件。
-2. [在计算机上下载并安装 OpenSSL](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security#download-and-install-openssl-on-your-machine)。
+2. [在计算机上下载并安装 OpenSSL](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security)。
 3. 解码证书文件:
 
    ```powershell
@@ -679,7 +680,7 @@ az network application-gateway http-settings update --gateway-name $gwName `
 1. 在下一页上, 选择 "**添加 VNET (预览版)** "。
 
 1. 在下一菜单中, 选择在以开头`hello-vnet`的部署中创建的虚拟网络。 你可以创建一个新的子网, 也可以选择一个现有子网。
-   在这种情况下, 请创建新的子网。 将**地址范围**设置为**10.0.3.0/24** , 并将子网命名为子**网。**
+   在这种情况下, 请创建新的子网。 将**地址范围**设置为**10.0.3.0/24** , 并将子网命名为子网。
 
    ![应用服务虚拟网络配置](./media/secure-web-app/app-vnet-config.png)
 
@@ -768,7 +769,7 @@ az network application-gateway http-settings update --gateway-name $gwName `
 4. 系统会显示一个屏幕, 其中显示了已注册的应用及其信息。 需要将此信息添加到 Azure Key Vault 实例中。
    1. 复制应用程序 (客户端) ID, 并将其作为`CLIENTID`Key Vault 保存。
    2. 复制你在上一步中输入的重定向 URI, 并将`REDIRECTURI`其另存为。
-   3. 复制 Azure AD 默认目录名称 *, 格式为* `TENANT`microsoftonline.com, 并将其保存到 Key Vault 中。
+   3. 复制 Azure AD 默认目录名称, 格式为 `TENANT`microsoftonline.com, 并将其保存到 Key Vault 中。
    4. 请参阅之前创建的 Azure AD 应用的 "**证书 & 机密**" 选项卡, 然后选择 "**新建客户端密钥**", 如以下屏幕截图所示。 设置过期日期, 然后复制生成的值, 并将其保存到 Key Vault `CLIENTSECRET`中。
 
       ![Azure AD 授权机密](./media/secure-web-app/ad-auth-secrets.png)

@@ -221,6 +221,8 @@
           items:
             - name: 库应用的用户预配
               href: application-provisioning-config-how-to.md
+            - name: 为多租户应用启用自动用户预配
+              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: 配置自动用户预配
               href: configure-automatic-user-provisioning-portal.md
             - name: 自定义应用程序属性

@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 07/26/2019
 ms.author: larryfr
-ms.openlocfilehash: d59482c04c4875cb6b17ceb405e9d3ab97a741d6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b8913836baffdad200c198afa11475d617fe5d50
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565146"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68729320"
 ---
 `deploymentconfig.json`文档中的项将映射到 AksWebservice 的参数[。](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) 下表描述了 JSON 文档中的实体与方法的参数之间的映射:
 
@@ -24,7 +24,8 @@ ms.locfileid: "68565146"
 | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | 自动缩放程序应为此 web 服务尝试维护的目标利用率 (百分比为 100)。 默认值为。 `70` |
 | `dataCollection` | 不可用 | 包含数据集合的配置元素。 |
 | &emsp;&emsp;`storageEnabled` | `collect_model_data` | 是否为 web 服务启用模型数据收集。 默认值为。 `False` |
-| `authEnabled` | `auth_enabled` | 是否为 web 服务启用身份验证。 默认值为。 `True` |
+| `authEnabled` | `auth_enabled` | 是否为 web 服务启用密钥身份验证。 `True`和`tokenAuthEnabled` 都`authEnabled`不能为。 默认值为。 `True` |
+| `tokenAuthEnabled` | `token_auth_enabled` | 是否为 web 服务启用令牌身份验证。 `True`和`tokenAuthEnabled` 都`authEnabled`不能为。 默认值为。 `False` |
 | `containerResourceRequirements` | 不可用 | CPU 和内存实体的容器。 |
 | &emsp;&emsp;`cpu` | `cpu_cores` | 要分配给此 web 服务的 CPU 内核数。 出厂`0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | 为此 web 服务分配的内存量 (以 GB 为限)。 缺省值`0.5` |

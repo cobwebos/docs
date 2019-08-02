@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 1c62fb466774a3599972d6a9cc340cca300eee59
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: db295f7644cae96eb00670cecf6e4eeba9bb6bed
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67696190"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567223"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的单一数据库、共用数据库和实例数据库进行事务复制
 
@@ -59,7 +58,7 @@ ms.locfileid: "67696190"
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > 分发服务器是一种实例数据库和订阅服务器时，不支持请求订阅。 
+  > 如果分发服务器是实例数据库, 而订阅服务器不受支持, 则不支持请求订阅。 
 
 有不同的[复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)：
 
@@ -139,7 +138,7 @@ ms.locfileid: "67696190"
 
 ## <a name="next-steps"></a>后续步骤
 
-1. [配置两个托管实例之间复制](replication-with-sql-database-managed-instance.md)。 
+1. [配置两个托管实例之间的复制](replication-with-sql-database-managed-instance.md)。 
 1. [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
 1. 使用 Azure SQL 数据库服务器名称作为订阅服务器（例如 `N'azuresqldbdns.database.windows.net`）并使用 Azure SQL 数据库名称作为目标数据库（例如 **Adventureworks**）来[创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: d26d1ca1ebceed481604d08d12cd9d5010495ab6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: c7c2ba104b4d528cd3f8443e6f5615aa6ab3e672
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618427"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720374"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -366,7 +366,8 @@ az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.js
 
 ## <a name="consume-web-services"></a>使用 Web 服务
 
-每个已部署的 web 服务都提供 REST API, 因此你可以使用各种编程语言来创建客户端应用程序。 如果为服务启用了身份验证, 则需要提供服务密钥作为请求标头中的令牌。
+每个已部署的 web 服务都提供 REST API, 因此你可以使用各种编程语言来创建客户端应用程序。 如果已为服务启用密钥身份验证, 则需要提供服务密钥作为请求标头中的令牌。
+如果已为服务启用令牌身份验证, 则需要提供 Azure 机器学习 JWT 令牌作为请求标头中的持有者令牌。
 
 ### <a name="request-response-consumption"></a>请求-响应消耗
 
@@ -379,6 +380,8 @@ headers = {'Content-Type': 'application/json'}
 
 if service.auth_enabled:
     headers['Authorization'] = 'Bearer '+service.get_keys()[0]
+elif service.token_auth_enabled:
+    headers['Authorization'] = 'Bearer '+service.get_token()[0]
 
 print(headers)
 

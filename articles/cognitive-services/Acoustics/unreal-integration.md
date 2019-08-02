@@ -1,7 +1,7 @@
 ---
 title: 项目噪声 Unreal 和 Wwise 集成
 titlesuffix: Azure Cognitive Services
-description: 本操作指南介绍了与你的项目的项目噪声 Unreal 和 Wwise 插件集成。
+description: 本操作指南介绍项目中的 Unreal 和 Wwise 插件与项目的集成。
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,169 +10,170 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 6207808efb9bee327afd2de21ffa59535acf4e55
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5511dd6b9a7d77c0988a94fef747a30d25bb4fc3
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704795"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706628"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>项目噪声 Unreal 和 Wwise 集成
-本指南提供了现有的 Unreal 和 Wwise 游戏项目到项目噪声插件包的详细的集成步骤。 
+本操作说明提供项目噪声插件包到现有 Unreal 和 Wwise 游戏项目的详细集成步骤。 
 
 所需软件：
-* [Unreal 引擎](https://www.unrealengine.com/)4.20 或 4.21
-* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/)了对 2018.1。\*
-* [Unreal 的 Wwise 插件](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
-  * 如果使用的 Wwise SDK 的直接集成而不使用 Wwise Unreal 插件，请查阅项目噪声 Unreal 插件并调整 Wwise API 调用。
+* [Unreal 引擎](https://www.unrealengine.com/)4.20 或4.21
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1。\*
+* [适用于 Unreal 的 Wwise 插件](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
+  * 如果你使用的是 Wwise SDK 的直接集成, 而不是使用 Wwise Unreal 插件, 请参阅项目噪声 Unreal 插件并调整 Wwise API 调用。
 
-如果你想要用于音频引擎而不是 Wwise 项目噪声上, 进行的增强功能请求[项目噪声论坛](https://github.com/microsoft/ProjectAcoustics/issues)。 项目噪声 Unreal 插件可用于查询噪声数据，然后进行到引擎的 API 调用。
+如果要将项目噪声与 Wwise 以外的音频引擎一起使用, 请在[项目噪声论坛](https://github.com/microsoft/ProjectAcoustics/issues)上发出增强请求。 您可以使用项目噪声 Unreal 插件来查询噪声数据, 然后对您的引擎进行 API 调用。
 
 ## <a name="download-project-acoustics"></a>下载项目噪声
-如果你尚未下载[Unreal 项目噪声和 Wwise 插件包](https://www.microsoft.com/download/details.aspx?id=58090))。 
+如果尚未这样做, 请下载[项目噪声 Unreal & Wwise 插件包](https://www.microsoft.com/download/details.aspx?id=58090))。 
 
-在包中，我们已添加 Unreal Engine 插件和 Wwise 混音器插件。 Unreal 插件提供编辑器和运行时集成。 在玩游戏，期间项目噪声 Unreal 插件的每个帧计算参数，例如为每个游戏对象的阻挡物。 这些参数将转换为 Wwise API 调用。
+我们在包中包含了 Unreal 引擎插件和 Wwise 混音器插件。 Unreal 插件提供编辑器和运行时集成。 在游戏期间, 项目噪声 Unreal 插件将为每个帧的每个游戏对象计算参数, 如封闭。 这些参数转换为 Wwise API 调用。
 
-## <a name="review-integration-steps"></a>检查集成步骤
+## <a name="review-integration-steps"></a>查看集成步骤
 
-有以下主要步骤来安装包并将其部署在游戏中。
+安装包并将其部署到游戏中主要有以下步骤。
 1. 安装项目噪声 Wwise 混音器插件
-2. （重新） 将部署到您的游戏的 Wwise。 此步骤将传播到游戏项目的混音器插件。
-3. 将项目噪声 Unreal 插件添加到您的游戏
+2. (重新) 将 Wwise 部署到游戏。 此步骤将混音器插件传播到游戏项目。
+3. 将项目噪声 Unreal 插件添加到游戏
 4. 扩展 Wwise 的 Unreal 插件功能
-5. 构建游戏并检查已启用 Python
-6. 设置要使用项目噪声 Wwise 项目
+5. 生成游戏和检查 Python 已启用
+6. 将 Wwise 项目设置为使用项目噪声
 7. Unreal 中的音频设置
 
 ## <a name="1-install-the-project-acoustics-mixer-plugin"></a>1.安装项目噪声混音器插件
-* 打开 Wwise Launcher，然后在“插件”选项卡的“安装新插件”下，选择“从目录添加”    。 
+* 打开 Wwise Launcher，然后在“插件”选项卡的“安装新插件”下，选择“从目录添加”。 
 
-    ![安装插件 Wwise 启动器中的屏幕截图](media/wwise-install-new-plugin.png)
+    ![在 Wwise 启动器中安装插件的屏幕截图](media/wwise-install-new-plugin.png)
 
-* 选择下载的包中包含的 `AcousticsWwisePlugin\ProjectAcoustics` 目录。 它包含 Wwise mixer 插件捆绑包。
+* 选择下载的包中包含的 `AcousticsWwisePlugin\ProjectAcoustics` 目录。 它包含 Wwise 混音器插件捆绑包。
 
-* Wwise 将安装该插件。 项目噪声现在应显示在 Wwise 中安装了的插件列表中。
-![屏幕截图的 Wwise 项目噪声安装之后安装了插件列表](media/unreal-integration-post-mixer-plugin-install.png)
+* Wwise 将安装该插件。 项目噪声现在应显示在 Wwise 的 "已安装的插件" 列表中。
+![项目噪声安装后 Wwise 安装的插件列表的屏幕截图](media/unreal-integration-post-mixer-plugin-install.png)
 
-## <a name="2-redeploy-wwise-into-your-game"></a>2.（重新） 将 Wwise 部署到您的游戏
-即使已整合了 Wwise 重新部署 Wwise 到您的游戏。 这将提取项目噪声 Wwise 插件。
+## <a name="2-redeploy-wwise-into-your-game"></a>2.(重新) 将 Wwise 部署到游戏中
+即使已集成 Wwise, 也会将 Wwise 重新部署到游戏。 这会选取项目噪声 Wwise 插件。
 
-* **引擎插件：** 如果您有 Wwise 中 Unreal 的游戏插件作为安装C++项目中，跳过此步骤。 如果安装改成作为引擎插件实例，由于 Unreal 项目是使用我们 mixer 插件蓝图仅限 Wwise 部署已更复杂。 创建虚拟、 空 UnrealC++项目中，如果 Unreal 编辑器打开后，将其关闭并按照部署到此虚拟项目 Wwise 的剩余步骤。 然后将复制出的已部署的 Wwise 插件。
+* **引擎插件:** 如果已将 Wwise 作为游戏插件安装在 Unreal C++项目中, 请跳过此步骤。 例如, 如果已将它作为引擎插件安装, 例如, 由于 Unreal 项目只是蓝图, 使用混音器插件的 Wwise 部署更复杂。 创建一个虚拟的空 Unreal C++项目, 在打开 Unreal 编辑器时关闭该项目, 然后按照剩余过程将 Wwise 部署到此虚拟项目。 然后复制已部署的 Wwise 插件。
  
-* 在 Wwise Launcher 中，单击“Unreal Engine”选项卡，单击“最近的 Unreal Engine 项目”旁边的汉堡菜单，然后选择“浏览项目”    。 打开您的游戏 Unreal 项目`.uproject`文件。
+* 在 Wwise Launcher 中，单击“Unreal Engine”选项卡，单击“最近的 Unreal Engine 项目”旁边的汉堡菜单，然后选择“浏览项目”。 打开游戏的 Unreal 项目`.uproject`文件。
 
-    ![屏幕截图的 Wwise 启动器的 Unreal 选项卡](media/wwise-unreal-tab.png)
+    ![Wwise 启动程序的 "Unreal" 选项卡的屏幕截图](media/wwise-unreal-tab.png)
 
-* 然后单击**项目中集成 Wwise**或**项目中修改 Wwise**。 此步骤 （重新） 集成到你的项目，现在包括项目噪声 mixer 插件 Wwise 二进制文件。
+* 然后单击 "**在项目中集成 Wwise** " 或 "**修改项目中的 Wwise"** 。 此步骤 (re) 将 Wwise 二进制文件集成到你的项目中, 现在包括项目噪声混音器插件。
 
-* **引擎插件：** 如果使用 Wwise 作为引擎插件并创建虚拟项目按上面所述复制文件夹 Wwise 部署：`[DummyUProject]\Plugins\Wwise`并将其粘贴到`[UESource]\Engine\Plugins\Wwise`。 `[DummyUProject]` 是空的 UnrealC++项目路径，并`[UESource]`是您必须安装的 Unreal 引擎源。 一旦你完成了复制，可以删除 dummy 项目。
+* **引擎插件:** 如果使用 Wwise 作为引擎插件并创建了如上所示的虚拟项目, 请复制 Wwise 部署`[DummyUProject]\Plugins\Wwise`的文件夹, 并将其粘贴到`[UESource]\Engine\Plugins\Wwise`其中。 `[DummyUProject]`是空的 Unreal C++项目路径, 并且`[UESource]`是安装了 Unreal 引擎源的位置。 完成复制后, 可以删除虚拟项目。
 
-## <a name="3-add-the-project-acoustics-unreal-plugin-to-your-game"></a>3.将项目噪声 Unreal 插件添加到您的游戏
+## <a name="3-add-the-project-acoustics-unreal-plugin-to-your-game"></a>3.将项目噪声 Unreal 插件添加到游戏
  
-* 复制`Unreal\ProjectAcoustics`文件夹中的插件包并创建一个新文件夹`[UProjectDir]\Plugins\ProjectAcoustics`，其中`UProjectDir`您的游戏项目文件夹包含`.uproject`文件。
-  * **引擎插件**:如果使用 Wwise 作为引擎插件，您应该使用项目噪声作为一个的 Unreal 引擎插件。 而不是上述的目标目录中，使用： `[UESource]\Engine\Plugins\ProjectAcoustics`。
+* 复制插件`Unreal\ProjectAcoustics`包中的文件夹并创建一个新文件夹`[UProjectDir]\Plugins\ProjectAcoustics`, 其中`UProjectDir`是包含该`.uproject`文件的游戏项目文件夹。
+  * **引擎插件**:如果使用 Wwise 作为引擎插件, 还应使用项目噪声作为 Unreal 引擎插件。 使用: `[UESource]\Engine\Plugins\ProjectAcoustics`, 而不是上面的目标目录。
 
-* 确认你看到`Wwise`文件夹旁边`ProjectAcoustics`文件夹。 它包含在上面的步骤 2 中您重新部署该混音器插件的二进制文件以及 Wwise 插件。
+* 确认文件夹与`ProjectAcoustics`文件夹`Wwise`一起出现。 它包含 Wwise 插件以及您在上面步骤2中部署的混音器插件的二进制文件。
 
 ## <a name="4-extend-wwises-unreal-plugin-functionality"></a>4.扩展 Wwise 的 Unreal 插件功能
-* 项目噪声 Unreal 插件需要其他行为从每个 Wwise Unreal 插件 API 公开[这些准则](https://www.audiokinetic.com/library/?source=UE4&id=using__initialsetup.html)。 我们提供了一个批处理文件来自动执行修补过程。 
-* 在 `Plugins\ProjectAcoustics\Resources` 内，运行 `PatchWwise.bat`。 以下示例图使用我们 AcousticsGame 示例项目。
+* 项目噪声 Unreal 插件要求根据[这些准则](https://www.audiokinetic.com/library/?source=UE4&id=using__initialsetup.html), 从 Wwise UNREAL 插件 API 公开其他行为。 我们提供了一个批处理文件来自动完成修补过程。 
+* 在 `Plugins\ProjectAcoustics\Resources` 内，运行 `PatchWwise.bat`。 下面的示例图像使用我们的 AcousticsGame 示例项目。
 
-    ![资源管理器屏幕截图的 Windows 窗口突出显示提供修补 Wwise 脚本](media/patch-wwise-script.png)
+    ![Windows 资源管理器窗口的屏幕截图突出显示提供的脚本以修补 Wwise](media/patch-wwise-script.png)
 
 * 如果没有安装 DirectX SDK，则需要在 `[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` 中注释掉包含 DXSDK_DIR 的行
 
     ![显示注释掉 DXSDK 的代码编辑器的屏幕截图](media/directx-sdk-comment.png)
 
-## <a name="5-build-game-and-check-python-is-enabled"></a>5.构建游戏并检查已启用 Python
+## <a name="5-build-game-and-check-python-is-enabled"></a>5.生成游戏和检查 Python 已启用
 
-* 编译您的游戏，并确保正确生成。 否则，请继续操作之前请仔细前面的步骤。 
-* 在 Unreal 编辑器中打开你的项目。 
-* **引擎插件：** 如果使用 ProjectAcoustics 作为引擎插件，还要确保它已启用，下列出"内置"插件。
-* 应会看到新的模式，指示已集成项目噪声。
+* 编译您的游戏并确保其正确生成。 否则, 请仔细检查前面的步骤, 然后再继续。 
+* 在 Unreal 编辑器中打开项目。 
+* **引擎插件:** 如果使用 ProjectAcoustics 作为引擎插件, 还应确保它已启用, 并且在 "内置" 插件下列出。
+* 应该会看到一个新模式, 指示项目噪声已集成。
 
-    ![屏幕截图的 Unreal 显示噪声模式完整](media/acoustics-mode-full.png)
+    ![显示噪声模式已满的 Unreal 屏幕截图](media/acoustics-mode-full.png)
 
-* 确认你有 Python 插件的 Unreal 启用。 这是必需的编辑器集成才能正常工作。
+* 确认已启用适用于 Unreal 的 Python 插件。 这是编辑器集成正常运行所必需的。
 
-    ![启用 Python 扩展 Unreal 编辑器中的屏幕截图](media/ensure-python.png)
+    ![在 Unreal 编辑器中启用 Python 扩展的屏幕截图](media/ensure-python.png)
 
-## <a name="6-wwise-project-setup"></a>6.Wwise 项目安装程序
+## <a name="6-wwise-project-setup"></a>6.Wwise 项目设置
 
-在示例下载中包含示例 Wwise 项目。 我们建议查看它与这些说明。 下面的屏幕截图取自此项目。
+示例下载中包含了一个示例 Wwise 项目。 建议在这些说明中查看。 下面的屏幕截图取自此项目。
 
-### <a name="bus-setup"></a>总线安装程序
-* 项目噪声 Unreal 插件将查找与此总线上的关联的 mixer 插件***确切***名称： `Project Acoustics Bus`。 具有此名称创建新的音频总线。 Mixer 插件可以在不同的配置，但现在，我们假定将用于仅回响处理。 此总线将附带使用噪声的所有源的混合的混响信号。 它可以混合使用上游到混合使用结构任何总线，示例如下所示，从我们的示例下载中包含的 Wwise 示例项目。
+### <a name="bus-setup"></a>总线设置
+* 项目噪声 Unreal 插件将在具有此***确切***名称的总线上查找关联的混音器插件: `Project Acoustics Bus`。 使用此名称创建新的音频总线。 混音器插件可以使用各种配置, 但现在我们假设它仅用于执行回音处理。 此总线将为使用噪声的所有源传输混合回音信号。 它可以将上游混合为任何总线混合结构, 如下所示, 从示例下载中包含的 Wwise 示例项目中获取。
 
-    ![显示项目噪声总线的屏幕截图的 Wwise 总线](media/acoustics-bus.png)
+    ![显示项目噪声总线的 Wwise 总线的屏幕截图](media/acoustics-bus.png)
 
-* 必须设置为一个的总线上的通道配置： `1.0, 2.0, 4.0, 5.1 or 7.1`。 其他配置将导致此总线上没有输出。
+* 总线上的通道配置需要设置为以下其中一项: `1.0, 2.0, 4.0, 5.1 or 7.1`。 其他配置将导致此总线上无输出。
 
-    ![为项目噪声总线通道配置选项的屏幕截图](media/acoustics-bus-channel-config.png)
+    ![适用于项目噪声总线的通道配置选项的屏幕截图](media/acoustics-bus-channel-config.png)
 
-* 现在，转到项目噪声总线的详细信息，并确保您可以看到 Mixer 插件选项卡
+* 现在, 请进入项目噪声总线详细信息, 并确保可以看到 "混音器插件" 选项卡
 
-    ![显示如何启用 Mixer 插件选项卡为项目噪声总线 Wwise 的屏幕截图](media/mixer-tab-enable.png)
+    ![Wwise 的屏幕截图, 显示如何启用项目噪声总线的 "混音器插件" 选项卡](media/mixer-tab-enable.png)
 
-* 然后转到 Mixer 插件选项卡，将项目噪声 mixer 插件添加到总线
+* 然后, 中转到 "混音器插件" 选项卡, 并将项目噪声混音器插件添加到总线
 
-    ![显示如何添加项目噪声 Mixer 插件 Wwise 如总线](media/add-mixer-plugin.png)
+    ![Screenshow 的 Wwise 总线显示如何添加项目噪声混音器插件](media/add-mixer-plugin.png)
 
-### <a name="actor-mixer-hierarchy-setup"></a>执行组件 mixer 层次结构设置
-* 出于性能原因，项目噪声应用于音频 DSP 所有源同时。 这需要插件作为混音器插件。 Wwise 必须要在输出总线上进行的混音器插件，但输出总线通常携带 dry 输出信号。 项目噪声需要当湿的信号传输时通过 aux 总线路由 dry 信号`Project Acoustics Bus`。 以下过程支持逐步迁移到此信号流。
+### <a name="actor-mixer-hierarchy-setup"></a>执行组件-混合器层次结构设置
+* 出于性能原因, 项目噪声同时向所有源应用音频 DSP。 这要求插件作为混音器插件运行。 Wwise 要求将混音器插件置于输出总线上, 尽管输出总线通常携带干燥输出信号。 项目噪声要求在上`Project Acoustics Bus`携带湿信号时, 通过 aux 总线来路由晾干信号。 以下过程支持逐步迁移到此信号流。
 
-* 假设你有现有的项目包含效仿、 武器和其他人在最上面的执行组件 mixer 层次结构。 每个都有相应的输出总线对于其 dry 组合。 假设您要迁移效仿使用噪声允许。 首先创建相应的 aux 总线来执行其 dry submix 效仿输出总线的子级。 例如，我们使用"Dry"前缀在下图中来组织这些数据，尽管的确切名称并不重要。 任何计量器或必须效仿总线的效果将仍像以前一样正常。
+* 假设你有一个现有项目, 其中包含一个包含效仿、武器和其他顶级的参与者-混合器层次结构。 每个都有相应的输出总线用于其干布。 假设要将效仿迁移为使用噪声。 首先, 创建相应的 aux 总线来携带其干燥的 submix, 这是效仿输出总线的子项。 例如, 在下图中, 我们使用了 "干燥" 前缀来组织这些名称, 尽管确切名称并不重要。 效仿总线上的任何计量或效果仍将像以前一样工作。
 
-    ![建议 Wwise Dry 组合安装程序的屏幕截图](media/wwise-dry-mix-setup.png)
+    ![建议的 Wwise 晾干混合安装程序的屏幕截图](media/wwise-dry-mix-setup.png)
 
-* 然后，如下所示修改效仿 actor mixer 总线输出结构，用于将设置为输出总线和 Dry_Footsteps 项目噪声总线设置作为用户定义 aux 总线。
+* 然后, 按如下所示修改效仿执行组件-混合器的总线输出结构, 并将项目噪声总线设置为输出总线, 并将 Dry_Footsteps 设置为用户定义的 aux 总线。
 
-    ![建议 Wwise Actor Mixer 总线安装程序的屏幕截图](media/actor-mixer-bus-settings.png)
+    ![建议的 Wwise 执行组件混音总线设置的屏幕截图](media/actor-mixer-bus-settings.png)
 
-* 现在所有效仿获取噪声处理方式，并输出其混响项目噪声总线上。 Dry 的信号是通过 Dry_Footsteps 路由和 spatialized 像往常一样。
+* 现在, 所有效仿都可以获得噪声处理并在项目噪声总线上输出其回音。 通常, 使用 Dry_Footsteps 和 spatialized 来路由晾干信号。
 
-* 项目噪声仅适用于世界上有一个三维位置的声音。 遵循[Wwise 文档](https://blog.audiokinetic.com/out-with-the-old-in-with-the-new-positioning-revamped-in-wwise-2018.1/)、 定位属性必须按照所示设置。 根据需要可以是"位置"或"位置 + 方向"的"3D Spatialization"设置。
+* 项目噪声仅适用于在世界各地具有3D 位置的声音。 按照[Wwise 文档](https://blog.audiokinetic.com/out-with-the-old-in-with-the-new-positioning-revamped-in-wwise-2018.1/)中的说明, 必须按如下所示设置定位属性。 "3D Spatialization" 设置可以是 "位置" 或 "位置 + 方向" (根据需要)。
 
-    ![定位建议 Wwise 执行组件的设置的屏幕截图](media/wwise-positioning.png)
+    ![建议的 Wwise 参与者定位设置的屏幕截图](media/wwise-positioning.png)
 
-* 将输出总线设置为上游到混合使用某些其他总线**项目噪声总线**不起作用。 Wwise 实施此要求在混音器插件。
+* 将输出总线设置为将上游混合到**项目噪声总线**的其他总线将不起作用。 Wwise 在混音器插件上施加这一要求。
 
-* 如果你想要不使用噪声效仿 actor mixer 层次结构中的子项，您可以始终使用其上的"替代父"选择退出。
+* 如果希望在效仿的使用者-混音器层次结构中的某个子节点不使用噪声, 则可以始终在其上使用 "替代父项" 来选择它。
 
-* 如果您正在使用在游戏中的任何参与者 mixer 混响游戏或用户定义的发送，那些上关闭此执行组件 mixer 避免两次应用混响。
+* 如果在游戏中的任何执行组件上使用游戏或用户定义的回响来发送回音, 请在此执行组件混音器上将其关闭, 以避免应用回音两次。
 
 ### <a name="spatialization"></a>Spatialization
-默认情况下，项目噪声 Wwise 混音器插件应用卷积混响，离开 Wwise 执行平移 spatialization。 在这种默认仅混响配置中使用项目噪声时, 您可以随意 dry 混合，对使用任何通道配置和 spatialization 方法允许您混合和匹配项目噪声混响使用几乎任何 spatializer。 您的选择包括[Ambisonics 基于双耳 spatializers](https://www.audiokinetic.com/products/ambisonics-in-wwise/)并[Windows Sonic](https://docs.microsoft.com/windows/desktop/CoreAudio/spatial-sound)。
+默认情况下, 项目噪声 Wwise 混音器插件会应用卷积回音, 使 Wwise 能够执行平移 spatialization。 如果在此默认的 "仅回音" 配置中使用项目噪声, 则可以自由地在您的干布上使用任何通道配置和 spatialization 方法, 使您可以混合和匹配几乎任何 spatializer 与项目噪声的回音。 选项包括[基于 Ambisonics 的 binaural spatializers](https://www.audiokinetic.com/products/ambisonics-in-wwise/)和[Windows Sonic](https://docs.microsoft.com/windows/desktop/CoreAudio/spatial-sound)。
  
-项目噪声包括支持基于对象的高分辨率 HRTF 呈现和平移可选 spatializer。 选中"执行 Spatialization"复选框在 mixer 插件设置，并选择 HRTF 或移动或禁用设置上述到所有 dry 总线以避免两次，spatializing 项目噪声 mixer 插件和 Wwise 的用户定义 aux 发送。 不能实时更改 spatialization 模式，因为它需要声音银行重新生成。 必须重新启动 Unreal，然后重新 soundbanks 生成达到 play 选取混音器插件配置更改，例如执行 Spatialization 复选框之前。
+项目噪声包括一个可选的 spatializer, 它支持基于对象的高分辨率 HRTF 渲染和平移。 选中 "混音器插件" 设置中的 "执行 Spatialization" 复选框, 并在 HRTF 或平移之间进行选择, 并禁用用户定义的 aux 发送到所有干燥总线, 以避免 spatializing 两次, 同时提供项目噪声混音器插件和 Wwise。 不能实时更改 spatialization 模式, 因为它需要重新生成声音银行。 你必须重新启动 Unreal, 然后在点击 "播放" 之前重新生成 soundbanks, 以选取混音器插件配置更改, 如 "执行 Spatialization" 复选框。
 
-![Wwise Mixer 插件 Spatialization 屏幕快照设置](media/mixer-spatial-settings.png)
+![Wwise 混音器插件 Spatialization 设置的屏幕截图](media/mixer-spatial-settings.png)
 
-遗憾的是，其他对象基于 spatializer 插件不支持这一次它们并作为混音器插件、 实现和 Wwise 目前也不允许分配给单个执行组件的混音器的多个混音器插件。  
+遗憾的是, 目前不支持其他基于对象的 spatializer 插件, 因为它们作为混音器插件实现, 并且 Wwise 目前不允许将多个混音器插件分配给单个执行组件。  
 
 ## <a name="7-audio-setup-in-unreal"></a>7.Unreal 中的音频设置
-* 首先您将需要制作您的游戏级别以生成将放入的噪声资产`Content\Acoustics`。 请查阅[Unreal 制作教程](unreal-baking.md)和此处继续。 示例包中包含一些预先生成的级别。
-* 在您的场景中创建噪声空间执行组件。 仅这些参与者之一的级别中创建因为它表示整个级别噪声。 
+* 首先, 您需要制作您的游戏级别, 生成一个将放`Content\Acoustics`入的 "噪声资产"。 请参阅[Unreal 制作教程](unreal-baking.md)并在此处继续。 示例包中包含某些预融入级别。
+* 在场景中创建一个噪声空间参与者。 仅在一个级别中创建这些参与者之一, 因为它表示整个级别的噪声。 
 
-    ![屏幕截图的 Unreal 编辑器，显示的噪声空间执行组件的创建](media/create-acoustics-space.png)
+    ![显示创建噪声空间参与者的 Unreal 编辑器屏幕截图](media/create-acoustics-space.png)
 
-* 现在将生成的声学数据资产分配给噪声空间执行组件的噪声数据槽。 您的场景现在具有噪声 ！
+* 现在, 将融入声音数据资产分配到 "噪声空间" 执行组件上的噪声数据槽。 你的场景现在已有噪声!
 
-    ![屏幕截图的 Unreal 编辑器 s howing 噪声资产分配](media/acoustics-asset-assign.png)
+    ![Unreal editor howing 的 "噪声资产分配" 的屏幕截图](media/acoustics-asset-assign.png)
 
-* 现在添加空的执行组件，执行以下操作：
+* 现在, 添加一个空参与者并执行以下操作:
 
-    ![空执行组件中显示噪声组件使用情况的屏幕截图的 Unreal 编辑器](media/acoustics-component-usage.png)
+    ![Unreal 编辑器的屏幕截图, 显示空参与者中的噪声组件用法](media/acoustics-component-usage.png)
 
-1. 将噪声音频组件添加到执行组件。 此组件的项目噪声功能扩展 Wwise 音频组件。
-2. 默认情况下，这将触发上使用级别启动的关联的 Wwise 事件检查开始框上的播放。
-3. 使用显示噪声参数复选框屏幕上打印调试信息源。
-    ![使用调试值启用声音源上的 Unreal 屏幕截图编辑器噪声面板](media/debug-values.png)
-4. 分配每个常用 Wwise 工作流的 Wwise 事件
-5. 请确保使用空间音频处于关闭状态。 在此期间，如果使用项目噪声进行特定的音频组件，不能同时用于 Wwise 的空间音频引擎噪声。
+1. 向执行组件添加一个噪声音频组件。 此组件扩展 Wwise 音频组件的功能, 以用于项目噪声。
+2. 默认情况下, "开始播放" 框处于选中状态, 这将触发级别启动上关联的 Wwise 事件。
+3. 使用 "显示噪声参数" 复选框可以打印有关源的屏幕上的调试信息。
+    ![启用了调试值的声音源上 Unreal 编辑器噪声面板的屏幕截图](media/debug-values.png)
+4. 为每个常见的 Wwise 工作流分配 Wwise 事件
+5. 确保已关闭 "使用空间音频"。 此时, 如果对特定音频组件使用项目噪声, 则不能同时使用 Wwise 的空间音频引擎来进行噪声。
 
-已经完成全部设置。 场景中移动和浏览声学效果 ！
+已经完成全部设置。 四处移动并浏览声音效果!
 
 ## <a name="next-steps"></a>后续步骤
-* [设计](unreal-workflow.md)教程，了解在 Unreal/Wwise 项目噪声
-* [了解如何执行烘焙](unreal-baking.md)游戏场景的 
+* Unreal/Wwise 中的项目噪声[设计](unreal-workflow.md)教程
+* [了解如何](unreal-baking.md)为游戏场景执行烘焙 

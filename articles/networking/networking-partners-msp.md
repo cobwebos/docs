@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: ffcfd48d9a93ee7c73e2597ff9bea704e0378440
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 62f73f17d598cb2a22ef57d3ec0bcf91b8852298
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385212"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728786"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
@@ -30,7 +30,7 @@ Azure 网络 Msp 是一套专用的托管服务提供商, 可解决云和混合�
 
 [Aryaka networks、网络](https://www.aryaka.com/)
 
-[BT](https://www.bt.com/)
+[BT](https://www.globalservices.bt.com/en/aboutus/news-press/bt-named-one-of-the-first-global-managed-service-providers-for-a-new-microsoft-azure-networking-virtual-wan-services/)
 
 [维度数据](https://www.dimensiondata.com/)
 
@@ -39,6 +39,8 @@ Azure 网络 Msp 是一套专用的托管服务提供商, 可解决云和混合�
 [InterCloud](https://www.intercloud.com/)
 
 [IIJ](https://www.iij.ad.jp/en/)
+
+[ixreach](https://www.ixreach.com/)
 
 [Megaport](https://www.megaport.com/)
 

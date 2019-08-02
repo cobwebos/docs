@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 49b6b49d908a7426e7cfd1bae5260ff399d9953b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d6d7b4cda4bd3b3246b9bc5573246546d8020b38
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273229"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597379"
 ---
 # <a name="application-gateway-components"></a>应用程序网关组件
 
@@ -26,13 +26,13 @@ ms.locfileid: "67273229"
 
 ### <a name="static-versus-dynamic-public-ip-address"></a>静态与动态公共 IP 地址
 
-可以配置 Azure 应用程序网关 V2 SKU 以支持同时静态内部 IP 地址和静态公共 IP 地址或仅静态公共 IP 地址。 它不能配置为支持仅静态内部 IP 地址。
+Azure 应用程序网关 V2 SKU 可配置为支持静态内部 IP 地址和静态公共 IP 地址, 或仅支持静态公共 IP 地址。 不能将它配置为仅支持静态内部 IP 地址。
 
-V1 SKU 可以配置为支持静态内部 IP 地址和动态公共 IP 地址，只有静态内部 IP 地址或仅动态公共 IP 地址。 应用程序网关的动态 IP 地址上正在运行的网关不会更改。 仅在停止或启动网关时，可以更改它。 它不会更改系统故障、 更新、 Azure 主机上更新等。 
+V1 SKU 可配置为支持静态内部 IP 地址和动态公共 IP 地址、仅限静态内部 IP 地址或仅限动态公共 ip 地址或动态公共 ip 地址或动态专用 ip 地址。 应用程序网关的动态 IP 地址在运行的网关上不会更改。 它仅在停止或启动网关时才可以更改。 它不会因系统故障、更新、Azure 主机更新等而发生更改。 
 
 与应用程序网关关联的 DNS 名称在网关的整个生命周期内不会变化。 出于此原因，应使用 CNAME 别名并使其指向应用程序网关的 DNS 地址。
 
-## <a name="listeners"></a>侦听器
+## <a name="listeners"></a>侦听程序
 
 侦听器是检查传入连接请求的逻辑实体。 如果与请求关联的协议、端口、主机和 IP 地址匹配与侦听器配置关联的相同元素，侦听器将接受该请求。
 
@@ -44,7 +44,7 @@ V1 SKU 可以配置为支持静态内部 IP 地址和动态公共 IP 地址，�
 
 ### <a name="ports"></a>端口
 
-侦听器在某个端口上侦听客户端请求。 您可以配置端口范围从 1 到 65502 v1 sku 和 1 到 65199 v2 sku。
+侦听器在某个端口上侦听客户端请求。 对于 v2 sku, 你可以配置范围从1到65502的端口, 为 v2 sku 配置端口1到65199。
 
 ### <a name="protocols"></a>协议
 
@@ -100,11 +100,11 @@ V1 SKU 可以配置为支持静态内部 IP 地址和动态公共 IP 地址，�
 
 ### <a name="rewrite-http-headers"></a>重写 HTTP 标头
 
-通过使用请求路由规则，可以添加、 删除或更新 HTTP (S) 请求和响应标头以请求和响应数据包的形式移动客户端与后端池通过应用程序网关。
+通过使用请求路由规则, 你可以添加、删除或更新 HTTP (S) 请求和响应标头, 因为请求和响应数据包通过应用程序网关在客户端和后端池之间移动。
 
-将标头可以设置为静态值或为其他标头和服务器变量。 这有助于与重要用例，如提取客户端 IP 地址，删除敏感信息的后端，添加更高的安全性，依次类推。
+标头可以设置为静态值, 也可以设置为其他标头和服务器变量。 这有助于处理重要的用例, 如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
 
-有关详细信息，请参阅[应用程序网关上重写 HTTP 标头](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)。
+有关详细信息, 请参阅[在应用程序网关上重写 HTTP 标头](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)。
 
 ## <a name="http-settings"></a>HTTP 设置
 

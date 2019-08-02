@@ -1,7 +1,7 @@
 ---
-title: 在门户中创建和浏览试验
+title: 使用自动 ML 来构建和部署机器学习模型
 titleSuffix: Azure Machine Learning service
-description: 了解如何在门户中创建和管理自动化机器学习试验
+description: 在 Azure 门户中创建、管理和部署自动化机器学习试验
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,21 @@ ms.author: cgronlun
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/02/2019
-ms.openlocfilehash: 1bfc415b2e4dbc66e2afeae73b78079fb027a60c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 08/02/2019
+ms.openlocfilehash: eb6ae11bb4ffb39d9e9bcc692f17559fa2cde674
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358842"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720239"
 ---
-# <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>在 Azure 门户 (预览版) 中创建和探索自动化机器学习试验
+# <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>在 Azure 门户中创建、浏览和部署自动化机器学习试验 (预览版)
 
- 本文介绍如何在 Azure 门户中创建、运行和浏览自动化机器学习试验, 无需编写任何代码。 自动机器学习自动执行选择要用于特定数据的最佳算法的过程, 以便您可以快速生成机器学习模型。 [详细了解自动化机器学习](concept-automated-ml.md)。
+ 本文介绍如何在 Azure 门户中创建、浏览和部署自动化机器学习试验, 无需编写任何代码。 自动机器学习自动执行选择要用于特定数据的最佳算法的过程, 以便您可以快速生成机器学习模型。 [详细了解自动化机器学习](concept-automated-ml.md)。
 
  如果你更喜欢更多基于代码的体验, 还可以使用[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)[在 Python 中配置自动化机器学习试验](how-to-configure-auto-train.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -36,27 +36,19 @@ ms.locfileid: "68358842"
 
 ![Azure 门户导航窗格](media/how-to-create-portal-experiments/nav-pane.png)
 
- 如果这是你首次执行自动机器学习的试验, 将看到以下内容:
+ 如果这是你第一次执行任何试验, 将看到 "**欢迎使用自动机器学习**屏幕"。 
 
-![Azure 门户试验登录页](media/how-to-create-portal-experiments/landing-page.png)
-
-否则, 你将看到自动化机器学习仪表板, 其中概述了所有自动化机器学习试验, 其中包括使用 SDK 创建的实验。 在此处, 你可以按日期、实验名称和运行状态对运行进行筛选和浏览。
-
-![Azure 门户试验面板](media/how-to-create-portal-experiments/dashboard.png)
+否则, 你将看到**自动化机器学习**仪表板, 其中概述了所有自动化机器学习试验, 其中包括使用 SDK 创建的实验。 在此处, 你可以按日期、实验名称和运行状态对运行进行筛选和浏览。
 
 ## <a name="create-an-experiment"></a>创建试验
 
-选择 "创建实验" 按钮, 以填充以下窗体。
+选择 "**创建实验**", 并填充 "**创建新的自动机器学习试验**" 窗体。
 
-![创建试验窗体](media/how-to-create-portal-experiments/create-exp-name-compute.png)
-
-1. 输入实验名称。
+1. 输入一个唯一的实验名称。
 
 1. 为数据事件探查和定型作业选择计算。 下拉列表中提供了现有计算的列表。 若要创建新计算, 请按照步骤3中的说明进行操作。
 
-1. 选择 "创建新计算" 按钮以打开以下窗格, 并为此试验配置计算上下文。
-
-    ![为试验创建新计算](media/how-to-create-portal-experiments/create-new-compute.png)
+1. 选择 "**创建新计算**", 为此试验配置计算上下文。
 
     字段|描述
     ---|---
@@ -64,38 +56,35 @@ ms.locfileid: "68358842"
     虚拟机大小| 为计算选择虚拟机大小。
     其他设置| *最小节点*:输入计算的最小节点数。 AML 计算的最小节点数为0。 若要启用数据事件探查, 必须有1个或多个节点。 <br> *最大节点*:输入计算的最大节点数。 默认值为用于 AML 计算的6个节点。
 
-      若要开始创建新计算, 请选择 "**创建**"。 这可能需要几分钟的时间。
+      选择“创建”。 创建新计算可能需要几分钟时间。
 
       >[!NOTE]
       > 你的计算名称将指示你选择/创建的计算是否已*启用分析*。 (有关数据分析的详细信息, 请参阅 7b)。
 
-1. 为数据选择存储帐户。 公共预览版仅支持本地文件上传和 Azure Blob 存储帐户。
+1. 为数据选择存储帐户。 
 
 1. 选择存储容器。
 
-1. 从存储容器中选择数据文件, 或将本地计算机上的文件上传到容器中。
+1. 从存储容器中选择数据文件, 或将本地计算机上的文件上传到容器中。 公共预览版仅支持本地文件上传和 Azure Blob 存储帐户。
 
-    ![选择要试验的数据文件](media/how-to-create-portal-experiments/select-file.png)
+    [![选择数据文件](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
 
 1. 使用 "预览" 和 "配置文件" 选项卡进一步配置此试验的数据。
 
-    1. 在 "预览" 选项卡上, 指示你的数据是否包括标题, 并使用每个功能列中的 "已**包含**" 按钮选择用于定型的功能 (列)。
+    1. 在 "**预览**" 选项卡上, 指示你的数据是否包括标题, 并使用每个功能列中的 "已**包含**" 按钮选择用于定型的功能 (列)。
 
-        ![数据预览](media/how-to-create-portal-experiments/data-preview.png)
-
-    1. 在 "配置文件" 选项卡上, 可以按功能查看[数据配置文件](#profile), 以及每个的分布、类型和摘要统计信息 (平均值、中间值、最大/最小值等)。
-
-        ![数据配置文件选项卡](media/how-to-create-portal-experiments/data-profile.png)
+    1. 在 "**配置文件**" 选项卡上, 可以按功能查看[数据配置文件](#profile), 以及每个的分布、类型和摘要统计信息 (平均值、中间值、最大/最小值等)。
 
         >[!NOTE]
-        > 如果计算上下文未**启用分析,** 将显示以下错误消息:*数据事件探查仅适用于已在运行的计算目标*。
+        > 如果计算上下文未启用分析, 将显示以下错误消息:*数据事件探查仅适用于已在运行的计算目标*。
 
 1. 选择定型作业类型: 分类、回归或预测。
 
-1. 选择目标列。 要对其进行预测的列。
+1. 选择目标列;这是要对其进行预测的列。
 
 1. 对于预测:
     1. 选择时间列:此列包含要使用的时间数据。
+
     1. 选择预测范围:指示模型能够预测到未来的时间单位 (分钟/小时/天/周/月/年)。 需要进一步预测模型以预测未来, 它的准确性越低。 [了解有关预测和预测范围的详细信息](how-to-auto-train-forecast.md)。
 
 1. 可有可无高级设置: 可用于更好地控制训练作业的其他设置。
@@ -109,48 +98,35 @@ ms.locfileid: "68358842"
     并发| 选择要在使用多核计算时使用的多核限制。
     阻塞算法| 选择要从定型作业中排除的算法。
 
-   ![高级设置窗体](media/how-to-create-portal-experiments/advanced-settings.png)
-
-> [!NOTE]
-> 有关字段的详细信息, 请单击信息工具提示。
-
 <a name="profile"></a>
 
-### <a name="data-profiling"></a>数据事件探查
+## <a name="data-profiling--summary-stats"></a>数据事件探查 & 摘要统计信息
 
 你可以在数据集中获取各种摘要统计信息, 以验证你的数据集是否是 ML 就绪。 对于非数字列, 它们仅包含最小值、最大值和错误计数等基本统计信息。 对于数字列, 还可以查看其统计时间和估计分位数。 具体而言, 我们的数据配置文件包括:
 
-* **功能**: 正在汇总的列的名称。
+>[!NOTE]
+> 对于具有不相关类型的功能, 将显示空白条目。
 
-* **配置文件**: 基于所推断类型的行内可视化。 例如, 字符串、布尔值和日期具有值计数, 而小数 (数字) 则具有近似的直方图。 这使你可以快速了解数据的分布情况。
-
-* **类型分配**: 列中的类型的行内值计数。 Null 是其自己的类型, 因此此可视化效果可用于检测奇值或缺失值。
-
-* **类型**: 列的推断类型。 可能的值包括: 字符串、布尔值、日期和小数。
-
-* **最**小值: 列的最小值。 对于类型不具有固有顺序 (例如布尔值) 的功能, 将显示空白项。
-
-* **Max**: 列的最大值。 与 "最小值" 一样, 对于具有不相关类型的功能, 将显示空白条目。
-
-* **Count**: 列中缺失和缺失条目的总数。
-
-* **不缺少计数**: 列中不存在的条目数。 请注意, 空字符串和错误被视为值, 因此它们不会影响 "不缺少计数"。
-
-* **分位数**(在0.1、1、5、25、50、75、95、99和 99.9% 时间间隔): 每个分位上的近似值都可提供数据分布。 对于具有不相关类型的功能, 将显示空白条目。
-
-* **均值**: 列的算术平均值。 对于具有不相关类型的功能, 将显示空白条目。
-
-* **标准偏差**: 列的标准偏差。 对于具有不相关类型的功能, 将显示空白条目。
-
-* **方差**: 列的方差。 对于具有不相关类型的功能, 将显示空白条目。
-
-* **偏斜度**: 列的偏斜度。 对于具有不相关类型的功能, 将显示空白条目。
-
-* **峰值**: 列的峰值。 对于具有不相关类型的功能, 将显示空白条目。
+统计信息|描述
+------|------
+功能| 正在汇总的列的名称。
+配置文件| 基于推断类型的行内可视化。 例如, 字符串、布尔值和日期具有值计数, 而小数 (数字) 则具有近似的直方图。 这使你可以快速了解数据的分布情况。
+类型分发| 列中类型的行内值计数。 Null 是其自己的类型, 因此此可视化效果可用于检测奇值或缺失值。
+类型|推断列的类型。 可能的值包括: 字符串、布尔值、日期和小数。
+最小值| 列的最小值。 对于类型不具有固有顺序 (例如布尔值) 的功能, 将显示空白项。
+最大| 列的最大值。 
+Count| 列中缺失和缺失条目的总数。
+非缺失计数| 列中不存在的条目数。 空字符串和错误被视为值, 因此它们不会影响 "不缺少计数"。
+分位数| 每个分位上的近似值用于提供数据的分布。
+平均值| 列的算术平均值或平均值。
+标准偏差| 度量此列数据的散射量或变体量。
+Variance| 此列的数据超出其平均值的度量值。 
+倾斜| 衡量此列的数据与正态分布的不同之处。
+峰度| 对此列的数据与正态分布进行比较的尾量的度量值。
 
 <a name="preprocess"></a>
 
-### <a name="advanced-preprocessing"></a>高级预处理
+## <a name="advanced-preprocessing-options"></a>高级预处理选项
 
 配置试验时, 可以启用 "高级" 设置`Preprocess`。 这样做意味着会自动执行以下数据预处理和特征化步骤。
 
@@ -168,15 +144,15 @@ ms.locfileid: "68358842"
 
 ## <a name="run-experiment-and-view-results"></a>运行试验并查看结果
 
-若要运行试验, 请单击 "启动"。 试验过程只需几分钟即可完成。
+选择 "**启动**" 以运行试验。 试验过程只需几分钟即可完成。
 
 ### <a name="view-experiment-details"></a>查看试验详细信息
 
-试验准备阶段完成后, 你将看到 "运行详细信息" 屏幕。 这将提供创建的模型的完整列表。 默认情况下, 根据参数对最高分数进行评分的模型位于列表的顶部。 当定型作业尝试更多模型时, 它们将被添加到迭代列表和图表中。 使用迭代图可快速比较迄今为止生成的模型的指标。
+试验准备阶段完成后, 你将看到 "运行详细信息" 屏幕开始填充。 此屏幕提供了创建的模型的完整列表。 默认情况下, 根据所选指标为最高评分的模型位于列表的顶部。 当定型作业尝试更多模型时, 它们将被添加到迭代列表和图表中。 使用迭代图可快速比较迄今为止生成的模型的指标。
 
 训练作业可能需要一段时间才能完成每个管道的运行。
 
-![运行详细信息仪表板](media/how-to-create-portal-experiments/run-details.png)
+[![运行详细信息仪表板](media/how-to-create-portal-experiments/run-details.png)](media/how-to-create-portal-experiments/run-details-expanded.png#lightbox)
 
 ### <a name="view-training-run-details"></a>查看定型运行详细信息
 
@@ -184,64 +160,39 @@ ms.locfileid: "68358842"
 
 ![迭代详细信息](media/how-to-create-portal-experiments/iteration-details.png)
 
-## <a name="deploy-model"></a>部署模型
+## <a name="deploy-your-model"></a>部署模型
 
 获得最佳模型后, 就可以将其部署为 web 服务, 以便预测新数据。
 
 自动 ML 可帮助你在不编写代码的情况下部署模型:
 
 1. 部署有几个选项。 
-    1. 如果要根据为试验设置的指标条件部署最佳模型, 请从 "**运行详细信息**" 页中选择 "**部署最佳模型**"。
 
-        !["部署模型" 按钮](media/how-to-create-portal-experiments/deploy-model-button.png)
+    + 选项 1：若要部署最佳模型 (根据定义的指标条件), 请从 "运行详细信息" 页中选择 "部署最佳模型"。
 
-    1. 如果要部署特定的模型迭代, 请向下钻取模型以打开其特定的 "运行详细信息" 页, 然后选择 "**部署模型**"。
+    + 选项 2：若要从此试验部署特定的模型迭代, 请向下钻取到模型以打开其运行详细信息页, 然后选择 "部署模型"。
+1. 填充 "**部署模型**" 窗格,
 
-        !["部署模型" 按钮](media/how-to-create-portal-experiments/deploy-model-button2.png)
+    字段| 值
+    ----|----
+    部署名称| 输入部署的唯一名称。
+    部署说明| 输入说明以更好地识别此部署的用途。
+    评分脚本| 自动生成或上传自己的评分文件。 [详细了解计分脚本](how-to-deploy-and-where.md#script)
+    环境脚本| 自动生成或上传自己的环境文件。
+    >[!Important]
+    > 文件名的长度必须为32个字符, 并且必须以字母数字开头和结尾。 可能包括短划线、下划线、点和之间的字母数字。 不允许使用空格。
 
-1. 第一步是将模型注册到服务中。 选择 "注册模型" 并等待注册过程完成。
+1. 选择“部署”。 部署可能需要大约20分钟才能完成。
 
-    ![部署模型边栏选项卡](media/how-to-create-portal-experiments/deploy-model-blade.png)
+    部署成功完成后, 将显示以下消息。
 
-1. 注册模型后, 您将能够下载评分脚本 (scoring.py) 以及要在部署过程中使用的环境脚本 (condaEnv docker-compose.override.yml)。
+    ![部署完成](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png) 
 
-1. 下载计分脚本和环境脚本时, 请在左侧导航窗格的 "**资产**" 边栏选项卡中, 选择 "**模型**"。
-
-    ![导航窗格模型](media/how-to-create-portal-experiments/nav-pane-models.png)
-
-1. 选择已注册的模型, 然后选择 "创建映像"。
-
-    您可以通过其描述来确定模型, 其中包括运行 ID、迭代号, 格式如下: *< Run_ID > _ < Iteration_number > _Model*
-
-    ![模型:创建映像](media/how-to-create-portal-experiments/model-create-image.png)
-
-1. 输入图像的名称。 
-1. 选择 "计分文件" 框旁的 "**浏览**" 按钮, 上传先前下载的评分文件 (scoring.py)。
-
-1. 选择 "Conda 文件" 框旁的 "**浏览**" 按钮, 上传先前下载的环境文件 (condaEnv)。
-
-    你可以使用自己的评分脚本和 conda 文件, 还可以上传附加文件。 [了解有关评分脚本的详细信息](how-to-deploy-and-where.md#script)。
-
-      >[!Important]
-      > 文件名的长度必须为32个字符, 并且必须以字母数字开头和结尾。 可能包括短划线、下划线、点和之间的字母数字。 不允许使用空格。
-
-    ![创建映像](media/how-to-create-portal-experiments/create-image.png)
-
-1. 选择 "创建" 按钮, 开始创建映像。 这将需要几分钟才能完成, 完成后, 你会在顶部栏上看到一条消息。
-1. 请在 "映像" 选项卡上, 选中要部署的映像旁边的复选框, 然后选择 "创建部署"。 [了解有关部署的详细信息](how-to-deploy-and-where.md)。
-
-    有2个部署选项。
-     + Azure 容器实例 (ACI)-此操作更用于测试目的, 而不是大规模的操作部署。 请确保为_CPU 预留容量_至少填写一个内核的值, 为_内存预留容量_至少填写一个千兆字节 (GB)
-     + Azure Kubernetes 服务 (AKS))-此选项用于大规模部署。 你将需要准备好基于 AKS 的计算。
-
-     ![幅创建部署](media/how-to-create-portal-experiments/images-create-deployment.png)
-
-1. 完成后，选择“创建”。 部署模型可能需要几分钟时间才能完成运行。
-
-1. 就这么简单！ 你具有可用于生成预测的操作 web 服务。
+现在, 你已拥有一个可用于生成预测的操作 web 服务!
 
 ## <a name="next-steps"></a>后续步骤
 
+* 尝试[通过 Azure 机器学习创建首次自动 ML 试验](tutorial-first-experiment-automated-ml.md)的端到端教程。 
 * [了解有关自动化机器学习](concept-automated-ml.md)和 Azure 机器学习的详细信息。
 * [了解自动化机器学习结果](how-to-understand-automated-ml.md)。
 * [了解如何使用 web 服务](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service)。

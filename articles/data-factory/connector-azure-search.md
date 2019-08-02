@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: faf0cab55ec0cef034638d218f2172f3676ff39b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: edf475ac11168c33a6b11ccda3482ac44579e8d8
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245109"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726225"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 搜索索引
 
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-search-connector.md)
 > * [当前版本](connector-azure-search.md)
 
@@ -31,7 +31,7 @@ ms.locfileid: "66245109"
 
 可以将数据从任何支持的源数据存储复制到 Azure 搜索索引。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -45,11 +45,11 @@ Azure 搜索链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureSearch** | 是 |
 | url | Azure 搜索服务的 URL。 | 是 |
-| key | Azure 搜索服务的管理密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| 钥 | Azure 搜索服务的管理密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 > [!IMPORTANT]
-> 将数据从云数据存储复制到 Azure 搜索索引，在 Azure 搜索链接服务，需要显式区域位于 connactVia Azure 集成运行时，请参阅。 将此区域设置为 Azure 搜索所在的位置。 从 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 了解更多信息。
+> 将数据从云数据存储复制到 Azure 搜索索引时, 在 Azure 搜索链接服务中, 需要在 connactVia 中使用显式区域引用 Azure Integration Runtime。 将此区域设置为 Azure 搜索所在的位置。 从 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 了解更多信息。
 
 **示例：**
 
@@ -77,7 +77,7 @@ Azure 搜索链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Azure 搜索数据集支持的属性列表。
 
-若要将数据复制到 Azure 搜索，支持以下属性：
+若要将数据复制到 Azure 搜索, 支持以下属性:
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -91,12 +91,13 @@ Azure 搜索链接的服务支持以下属性：
     "name": "AzureSearchIndexDataset",
     "properties": {
         "type": "AzureSearchIndex",
+        "typeProperties" : {
+            "indexName": "products"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Search linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties" : {
-            "indexName": "products"
         }
    }
 }
@@ -108,7 +109,7 @@ Azure 搜索链接的服务支持以下属性：
 
 ### <a name="azure-search-as-sink"></a>Azure 搜索作为接收器
 
-要将数据复制到 Azure 搜索，请将复制活动中的源类型设置为“AzureSearchIndexSink”  。 复制活动接收器部分中支持以下属性  ：
+要将数据复制到 Azure 搜索，请将复制活动中的源类型设置为“AzureSearchIndexSink”。 复制活动接收器部分中支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

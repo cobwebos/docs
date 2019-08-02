@@ -1,20 +1,20 @@
 ---
 title: 了解没有密码的世界 Azure Active Directory |Microsoft Docs
 description: 本指南可帮助首席身份验证人员、Cio、Ciso、首席标识架构师、企业架构师以及负责为其 Azure Active Directory 实现选择无密码 authentication 方法的安全和 IT 决策制定者。
-services: active-directory
 keywords: 无密码、azuread
 author: martincoetzer
 ms.author: martinco
 ms.date: 07/09/2019
 ms.topic: article
-ms.service: active-directory
+ms.service: security
+ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 09a3c14734d86738a521cf765fcfac2880eee177
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 30c2eb2964f11b729b0ffaf58c532d5189cdc2cd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68616183"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727772"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>没有密码的世界 Azure Active Directory
 

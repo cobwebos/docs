@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9f854e1771eec1d02fd14e040510688bf33c59c8
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 9465c1991418c7ebef8c4eed825affc7b1d93492
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442431"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693344"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 LinkedIn 帐户的登录
 
@@ -27,7 +27,7 @@ ms.locfileid: "68442431"
 
 - 完成 [Azure Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
 - LinkedIn 帐户-如果你还没有帐户, 请[创建一个帐户](https://www.linkedin.com/start/join)。
-- LinkedIn 页面-需要一个[LinkedIn 页面](https://www.linkedin.com/company/setup/new/), 与下一节中创建的 LinkedIn 应用程序相关联。
+- LinkedIn 页面-需要一个[LinkedIn 页面](https://www.linkedin.com/help/linkedin/answer/710/creating-a-linkedin-company-page), 与下一节中创建的 LinkedIn 应用程序相关联。
 
 ## <a name="create-an-application"></a>创建应用程序
 

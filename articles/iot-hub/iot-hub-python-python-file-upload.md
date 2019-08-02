@@ -1,22 +1,21 @@
 ---
 title: 使用 Python 将设备上的文件上传到 Azure IoT 中心 | Microsoft Docs
 description: 如何使用适用于 Python 的 Azure IoT 设备 SDK 将文件上的设备上传到云端。 上传的文件存储在 Azure 存储 Blob 容器中。
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.author: kgremban
-ms.openlocfilehash: 23b0a2ac8e0264ddc1592479759cc8398d9ef5f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 07/30/2019
+ms.author: robinsh
+ms.openlocfilehash: a529933cf4af572deacab1ae3c615ec0a0eca68f
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621265"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667871"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中心将文件从设备上传到云
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>用 IoT 中心 (Python) 将文件从设备上传到云
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
@@ -26,27 +25,20 @@ ms.locfileid: "67621265"
 
 * 使用 Python 客户端通过 IoT 中心上传文件。
 
-[向 IoT 中心从设备发送遥测数据](quickstart-send-telemetry-python.md)快速入门演示了基本的 IoT 中心设备到云消息传送的功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
+[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-python.md)快速入门演示了 IoT 中心基本的设备到云的消息传送功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
 
 > [!NOTE]
-> IoT 中心 Python SDK 目前仅支持上传基于字符的文件，如 .txt 文件  。
+> IoT 中心 Python SDK 目前仅支持上传基于字符的文件，如 .txt 文件。
 
 在本教程最后，会运行下述 Python 控制台应用：
 
-* FileUpload.py，该应用使用 Python 设备 SDK 将文件上传到存储中  。
+* FileUpload.py，该应用使用 Python 设备 SDK 将文件上传到存储中。
 
-> [!NOTE]
-> IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET、Javascript、Python 和 Java）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot)。
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-要完成本教程，需要以下各项：
+下面是先决条件的安装说明。
 
-* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip  - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
-
-* 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包](https://www.microsoft.com/download/confirmation.aspx?id=48145)，以便使用 Python 中的本机 DLL。
-
-* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-
-* Azure 帐户中的 IoT 中心，具有用于测试文件上传功能的设备标识。 
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -63,11 +55,11 @@ ms.locfileid: "67621265"
 2. 使用文本编辑器创建将上传到 blob 存储的测试文件。
 
     > [!NOTE]
-    > IoT 中心 Python SDK 目前仅支持上传基于字符的文件，如 .txt 文件  。
+    > IoT 中心 Python SDK 目前仅支持上传基于字符的文件，如 .txt 文件。
 
-3. 使用文本编辑器，在工作文件夹中创建一个 FileUpload.py 文件  。
+3. 使用文本编辑器，在工作文件夹中创建一个 FileUpload.py 文件。
 
-4. 在 FileUpload.py 文件的开头添加以下 `import` 语句和变量  。 
+4. 在 FileUpload.py 文件的开头添加以下 `import` 语句和变量。 
 
     ```python
     import time
@@ -85,7 +77,7 @@ ms.locfileid: "67621265"
 
 5. 在文件中，将 `[Device Connection String]` 替换为 IoT 中心设备的连接字符串。 将 `[Full path to file]` 替换为创建的测试文件的路径，或是设备上要上传的任何文件的路径。 将 `[File name for storage]` 替换为要在文件上传到 blob 存储之后向它提供的名称。 
 
-6. 针对 upload_blob 函数创建一个回调  ：
+6. 针对 upload_blob 函数创建一个回调：
 
     ```python
     def blob_upload_conf_callback(result, user_context):
@@ -131,7 +123,7 @@ ms.locfileid: "67621265"
         iothub_file_upload_sample_run()
     ```
 
-8. 保存并关闭 UploadFile.py 文件  。
+8. 保存并关闭 UploadFile.py 文件。
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -143,7 +135,7 @@ ms.locfileid: "67621265"
     python FileUpload.py
     ```
 
-2. 以下屏幕截图显示来自 FileUpload 应用的输出  ：
+2. 以下屏幕截图显示来自 FileUpload 应用的输出：
 
     ![simulated-device 应用的输出](./media/iot-hub-python-python-file-upload/1.png)
 

@@ -1,19 +1,20 @@
 ---
 title: Azure 备份：使用 Azure 门户还原虚拟机
 description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
-author: geethalakshmig
-manager: vijayts
+ms.reviewer: geg
+author: dcurwin
+manager: carmonm
 keywords: 还原备份; 如何还原; 恢复点;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.author: geg
-ms.openlocfilehash: 951e42c4eb7a9d897140a7422364cdbfe83e57cc
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: f961f472c0b00932bf5ee6302af58f39fa8421ed
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466887"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720449"
 ---
 # <a name="restore-azure-vms"></a>还原 Azure VM
 
@@ -111,7 +112,8 @@ Azure 备份提供多种方法用于还原 VM。
 
 4. 在“还原配置”中，选择“确定”。 在“还原”中，单击“还原”以触发还原操作。
 
-在 VM 还原期间，Azure 备份不使用存储帐户。 但在使用**还原磁盘**和**即时还原**时，存储帐户用于存储模板。
+如果你的虚拟机使用托管磁盘, 并选择 "**创建虚拟机**" 选项, Azure 备份不会使用指定的存储帐户。 对于 "**还原磁盘**" 和 "**即时还原**", 存储帐户仅用于存储模板。 托管磁盘是在指定的资源组中创建的。
+当你的虚拟机使用非托管磁盘时, 它们将作为 blob 还原到存储帐户。
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>使用模板自定义还原 VM
 
@@ -162,7 +164,7 @@ Azure 备份提供多种方法用于还原 VM。
 **区域固定的 VM** | Azure Backup 支持备份和还原区域固定的 VM。 [了解详细信息](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>跟踪还原操作
-触发还原操作后，备份服务会创建一个作业用于跟踪。 Azure 备份在门户中显示有关作业的通知。 如果未显示通知，单击“通知”符号即可显示。
+触发还原操作后，备份服务会创建一个作业用于跟踪。 Azure 备份在门户中显示有关作业的通知。 如果不可见, 请选择 "**通知**" 符号, 然后选择 "**查看所有作业**" 查看还原过程状态。
 
 ![已触发还原](./media/backup-azure-arm-restore-vms/restore-notification1.png)
 

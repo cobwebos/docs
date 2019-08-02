@@ -1,19 +1,18 @@
 ---
 title: 规划 Azure 文件部署 | Microsoft Docs
 description: 了解规划 Azure 文件部署时应考虑的问题。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6282ce426b08c4ad9c44bead0bd4ec3d259f65fe
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 93c36ccb244931c12d8b038f448fbda4eff77f16
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501433"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721710"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -98,7 +97,7 @@ Azure 备份适用于高级文件共享, Azure Kubernetes 服务支持版本1.13
 > [!IMPORTANT]
 > 高级文件共享仅适用于 LRS, 可用于提供存储帐户的大多数区域。 若要确定高级文件共享当前是否在你的区域中可用, 请参阅 Azure 的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)" 页。
 
-### <a name="provisioned-shares"></a>预配的共享
+#### <a name="provisioned-shares"></a>预配的共享
 
 高级文件共享是基于固定的 GiB/IOPS/吞吐量比率预配的。 对于预配的每个 GiB，将向该共享分配 1 IOPS 和 0.1 MiB/秒的吞吐量，最多可达每个共享的最大限制。 允许的最小预配为 100 GiB 以及最小的 IOPS/吞吐量。
 
@@ -135,7 +134,7 @@ Azure 备份适用于高级文件共享, Azure Kubernetes 服务支持版本1.13
 > [!NOTE]
 > 文件共享性能受到计算机网络限制、可用网络带宽、IO 大小、并行性的限制, 还有许多其他因素。 若要实现最大性能规模, 请将负载分散到多个 Vm。 请参阅[故障排除指南](storage-troubleshooting-files-performance.md), 了解一些常见问题和解决方法。
 
-### <a name="bursting"></a>冲
+#### <a name="bursting"></a>冲
 
 高级文件共享可能会将其 IOPS 突发为三倍。 突发是自动进行的, 并基于信用系统运行。 突发会尽力工作, 而突发限制并不保证, 文件共享可能会突然*达到*限制。
 
@@ -206,11 +205,15 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 标准文件共享在所有区域中可用, 最高可达 5 TiB。 在某些区域, 可使用 100 TiB 限制, 下表列出了这些区域:
 
-|地区  |支持的冗余  |支持现有的存储帐户  |
-|---------|---------|---------|
-|东南亚     |LRS|否         |
-|西欧     |LRS、ZRS|否         |
-|美国西部 2     |LRS、ZRS|否         |
+|地区 |支持的冗余 |支持现有的存储帐户 |门户支持 *   |
+|-------|---------|---------|---------|
+|澳大利亚东部  |LRS|否         |是|
+|法国中部  |LRS|否         |尚不支持|
+|东南亚  |LRS、ZRS|否         |仅限 LRS, ZRS|
+|西欧     |LRS、ZRS|否       |是|
+|美国西部 2       |LRS、ZRS|否         |是|
+
+\* 对于没有门户支持的区域, 你仍可以使用 PowerShell 或 Azure 命令行接口 (CLI) 来创建大于 5 TiB 的共享。 Altenatively, 在不指定配额的情况下通过门户创建新的共享。 这会创建默认大小为 100 TiB 的共享, 稍后可通过 PowerShell 或 Azure CLI 进行更新。
 
 若要帮助我们确定新的区域和功能的优先级, 请填写此[调查](https://aka.ms/azurefilesatscalesurvey)。
 

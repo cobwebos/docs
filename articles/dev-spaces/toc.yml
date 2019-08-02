@@ -9,18 +9,18 @@
       items:
         - name: 团队开发
           href: quickstart-team-development.md
-        - name: 运行应用程序
+        - name: 调试和迭代
+          items:
+            - name: 使用 Visual Studio Code 和 Java
+              href: quickstart-java.md
+            - name: 使用 Visual Studio Code 和 .NET Core
+              href: quickstart-netcore.md
+            - name: 使用 Visual Studio Code 和 Node.js
+              href: quickstart-nodejs.md
+            - name: 使用 Visual Studio 和 .NET Core
+              href: quickstart-netcore-visualstudio.md
+        - name: 使用 CLI 进行开发
           href: quickstart-cli.md
-        - name: 使用 Dockerfile 运行应用程序
-          href: quickstart-cli-dockerfile.md
-        - name: 使用 VS Code 运行和调试 Java
-          href: quickstart-java.md
-        - name: 使用 VS Code 运行和调试 .NET Core
-          href: quickstart-netcore.md
-        - name: 使用 VS Code 运行和调试 Node.js
-          href: quickstart-nodejs.md
-        - name: 使用 Visual Studio 运行和调试 .NET Core
-          href: quickstart-netcore-visualstudio.md
     - name: 教程
       items:
         - name: Java（VS Code 和 CLI）

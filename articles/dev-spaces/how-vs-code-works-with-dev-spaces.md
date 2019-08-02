@@ -9,12 +9,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Visual Studio Code 如何处理 Azure Dev Spaces
 keywords: Azure Dev Spaces, Dev 空间, Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 0d80643b366b6d7313f24e73258056e492eb56fc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7809f0215137b0c473e13143404a031497906ebf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68297872"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725816"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Visual Studio Code 如何处理 Azure Dev Spaces
 
@@ -52,9 +52,9 @@ Dockerfile、Helm 图表和`azds.yaml`文件是运行`azds prep`时生成的相�
 
 在以下快速入门中, 可以看到 Visual Studio Code 和 Azure Dev Spaces 扩展使用 Azure Dev Spaces:
 
-* [用 Java 进行开发][quickstart-java]
-* [利用 .NET 进行开发][quickstart-netcore]
-* [利用 node.js 进行开发][quickstart-node]
+* [通过 Visual Studio Code 和 Java 快速循环访问和调试][quickstart-java]
+* [通过 Visual Studio Code 和 .NET 快速循环访问和调试][quickstart-netcore]
+* [通过 Visual Studio Code 和 node.js 快速循环访问和调试][quickstart-node]
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azds-yaml]: how-dev-spaces-works.md#prepare-your-code

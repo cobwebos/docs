@@ -9,25 +9,27 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 7d216a3706c13a5fff312850e244a521ab22ae9e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9e62dd25c3ff16e280eda1ad11053ef520a85e4d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386533"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706528"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>创建 Azure 资源管理器模板以便自动部署 Azure 逻辑应用
 
 为了帮助你自动创建和部署逻辑应用, 本文介绍了可为逻辑应用创建[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)的方式。 有关包含工作流定义和部署所需的其他资源的模板的结构和语法的概述, 请参阅[概述:利用 Azure 资源管理器模板](logic-apps-azure-resource-manager-templates-overview.md)自动部署逻辑应用。
 
-Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)，使用它不仅可以创建逻辑应用，还可以定义要对部署使用的资源和参数。 可以将此模板用于自己的业务方案，也可以根据需要自定义此模板。 有关 Azure 资源管理器模板的详细信息, 请参阅以下主题:
+Azure 逻辑应用提供了一个[预建的逻辑应用 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json), 你可以重复使用该模板来创建逻辑应用, 还可以定义用于部署的资源和参数。 可以将此模板用于自己的业务方案，也可以根据需要自定义此模板。
+
+> [!IMPORTANT]
+> 请确保模板中的连接与逻辑应用使用相同的 Azure 资源组和位置。
+
+有关 Azure 资源管理器模板的详细信息, 请参阅以下主题:
 
 * [Azure 资源管理器模板结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)
 * [创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)
 * [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates-cloud-consistency.md)
-
-> [!IMPORTANT]
-> 模板中的连接必须与逻辑应用使用相同的 Azure 资源组和位置。
 
 <a name="visual-studio"></a>
 
@@ -47,6 +49,13 @@ Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 
 可以通过将 Azure PowerShell 与[LogicAppTemplate 模块](https://github.com/jeffhollan/LogicAppTemplateCreator)一起使用来创建资源管理器模板。 此开源模块首先评估逻辑应用，以及逻辑应用使用的任何连接。 然后，该模块生成模板资源以及用于部署的必需参数。
 
 例如, 假设有一个逻辑应用, 该应用从 Azure 服务总线队列接收消息, 并将数据上传到 Azure SQL 数据库。 模块将保留所有业务流程逻辑, 并参数化 SQL 和服务总线连接字符串, 以便可以根据部署需要提供和更改这些值。
+
+这些示例演示如何使用 Azure 资源管理器模板、Azure Pipelines 在 Azure DevOps 中创建和部署逻辑应用, 并 Azure PowerShell:
+
+* [示例：从 Azure 逻辑应用连接到 Azure 服务总线队列](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：从 Azure 逻辑应用连接到 Azure 存储帐户](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：为 Azure 逻辑应用设置函数应用操作](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：从 Azure 逻辑应用连接到集成帐户](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>安装 PowerShell 模块
 

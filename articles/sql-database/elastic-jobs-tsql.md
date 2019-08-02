@@ -10,27 +10,26 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 683297e32c40f73c64dc40b18f279d92e2396e8d
-ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
+ms.openlocfilehash: d1123affa79f401b5142af604adbd757bdfb7d73
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568276"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641041"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
 本文通过许多示例方案说明了如何使用 T-SQL 来完成弹性作业的入门。
 
-这些示例使用[  作业数据库](sql-database-job-automation-overview.md#job-database)中提供的[存储过程](#job-stored-procedures)和[视图](#job-views)。
+这些示例使用[作业数据库](sql-database-job-automation-overview.md#job-database)中提供的[存储过程](#job-stored-procedures)和[视图](#job-views)。
 
-Transact-SQL (T-SQL) 用于创建、配置、执行和管理作业。 T-SQL 不支持创建弹性作业代理，因此必须先使用门户或 [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) 创建弹性作业代理  。
+Transact-SQL (T-SQL) 用于创建、配置、执行和管理作业。 T-SQL 不支持创建弹性作业代理，因此必须先使用门户或 [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) 创建弹性作业代理。
 
 
 ## <a name="create-a-credential-for-job-execution"></a>创建执行作业所需的凭据
 
-此凭据用于连接到目标数据库，以便执行脚本。 此凭据需要在目标组指定的数据库上拥有适当的权限，否则无法成功地执行脚本。 使用服务器和/或池目标组成员时，强烈建议创建一个用于刷新此凭据的主凭据，然后再在执行作业时扩展服务器和/或池。 数据库范围的凭据在作业代理数据库中创建。 必须使用同一凭据来创建登录名，并创建基于登录名的用户，以便在目标数据库上授予登录数据库权限。  
+此凭据用于连接到目标数据库，以便执行脚本。 此凭据需要在目标组指定的数据库上拥有适当的权限，否则无法成功地执行脚本。 使用服务器和/或池目标组成员时，强烈建议创建一个用于刷新此凭据的主凭据，然后再在执行作业时扩展服务器和/或池。 数据库范围的凭据在作业代理数据库中创建。 必须使用同一凭据来创建登录名，并创建基于登录名的用户，以便在目标数据库上授予登录数据库权限。
 
 
 ```sql
@@ -53,7 +52,7 @@ GO
 ## <a name="create-a-target-group-servers"></a>创建目标组（服务器）
 
 以下示例演示如何针对服务器中的所有数据库执行作业。  
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 
 ```sql
@@ -77,8 +76,8 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 
 ## <a name="exclude-an-individual-database"></a>排除单个数据库
 
-以下示例演示如何针对 SQL 数据库服务器中的所有数据库执行作业，名为 MappingDB  的数据库除外。  
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+以下示例演示如何针对 SQL 数据库服务器中的所有数据库执行作业，名为 MappingDB 的数据库除外。  
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -121,7 +120,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>创建目标组（池）
 
 以下示例演示如何以一个或多个弹性池中的所有数据库为目标。  
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -146,7 +145,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>将新架构部署到多个数据库
 
 以下示例演示如何将新架构部署到所有数据库。  
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 
 ```sql
@@ -195,7 +194,7 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 2. 数据类型为 uniqueidentifier 的 internal_execution_id 的其他列。
 3. internal_execution_id 列上名为 `IX_<TableName>_Internal_Execution_ID` 的非聚集索引。
 
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -266,7 +265,7 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 ## <a name="view-job-definitions"></a>查看作业定义
 
 以下示例演示了如何查看当前的作业定义。  
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -287,7 +286,7 @@ select * from jobs.jobsteps
 ## <a name="begin-ad-hoc-execution-of-a-job"></a>开始即席执行作业
 
 以下示例演示如何立即启动作业。  
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -310,7 +309,7 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 ## <a name="schedule-execution-of-a-job"></a>计划作业的执行
 
 以下示例演示如何计划一项将来执行的作业。  
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -325,7 +324,7 @@ EXEC jobs.sp_update_job
 ## <a name="monitor-job-execution-status"></a>监视作业执行状态
 
 以下示例演示如何查看所有作业的执行状态详细信息。  
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -354,7 +353,7 @@ ORDER BY start_time DESC
 ## <a name="cancel-a-job"></a>取消作业
 
 以下示例演示如何取消作业。  
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -373,7 +372,7 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ## <a name="delete-old-job-history"></a>删除旧的作业历史记录
 
 以下示例演示如何删除特定日期之前的作业历史记录。  
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -387,7 +386,7 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>删除作业及其所有历史记录
 
 以下示例演示如何删除作业以及所有相关的作业历史记录。  
-连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -1195,7 +1194,7 @@ GO
 
 |查看  |描述  |
 |---------|---------|
-|[jobs_executions](#jobs_executions-view)     |  显示作业执行历史记录。      |
+|[job_executions](#job_executions-view)     |  显示作业执行历史记录。      |
 |[jobs](#jobs-view)     |   显示所有作业。      |
 |[job_versions](#job_versions-view)     |   显示所有作业版本。      |
 |[jobsteps](#jobsteps-view)     |     显示每项作业的当前版本中的所有步骤。    |
@@ -1204,14 +1203,14 @@ GO
 |[target_group_members](#target_groups_members-view)     |   显示所有目标组的所有成员。      |
 
 
-### <a name="jobs_executions-view"></a>jobs_executions 视图
+### <a name="job_executions-view"></a>job_executions 视图
 
-[jobs].[jobs_executions]
+[作业]。[job_executions]
 
 显示作业执行历史记录。
 
 
-|列名称|   数据类型   |描述|
+|列名|   数据类型   |描述|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  一个作业执行操作实例的唯一 ID。
 |**job_name**   |nvarchar(128)  |作业的名称。
@@ -1239,7 +1238,7 @@ GO
 
 显示所有作业。
 
-|列名称|   数据类型|  描述|
+|列名|   数据类型|  描述|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1257,7 +1256,7 @@ GO
 
 显示所有作业版本。
 
-|列名称|   数据类型|  描述|
+|列名|   数据类型|  描述|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1270,7 +1269,7 @@ GO
 
 显示每项作业的当前版本中的所有步骤。
 
-|列名称    |数据类型| 描述|
+|列名    |数据类型| 描述|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| 作业的名称。|
 |**job_id** |uniqueidentifier   |作业的唯一 ID。|
@@ -1311,7 +1310,7 @@ GO
 
 列出所有目标组。
 
-|列名称|数据类型| 描述|
+|列名|数据类型| 描述|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |目标组（数据库集合）的名称。 
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。
@@ -1322,7 +1321,7 @@ GO
 
 显示所有目标组的所有成员。
 
-|列名称|数据类型| 描述|
+|列名|数据类型| 描述|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|目标组（数据库集合）的名称。 |
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。|

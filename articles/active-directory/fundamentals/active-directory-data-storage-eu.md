@@ -2,9 +2,9 @@
 title: 欧洲客户标识数据存储 - Azure Active Directory | Microsoft Docs
 description: 了解 MAzure Active Directory 在哪个位置存储其欧洲客户的标识相关数据。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
-ms.author: lizross
+ms.author: ajburnle
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
@@ -12,31 +12,33 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93ac5ef5f03f800a8f90259db3e382b3bc5c5e2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33704c3392726ccd12ca0fd74f26465a54697e11
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235168"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722133"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中的欧洲客户标识数据存储
-由 Azure AD 中标识数据存储在基于 Office 365 和 Azure 等 Microsoft Online 服务订阅时，你的组织提供的地址的地理位置时。 有关标识数据的存储位置的信息，可以使用[位于数据位于何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) Microsoft 信任中心部分。
+标识数据由 Azure AD 存储在地理位置, 在订阅 Microsoft Online services (如 Office 365 和 Azure) 时, 该地址基于组织提供的地址。 若要了解标识数据的存储位置, 可以使用 Microsoft 信任中心的 "[你的数据位于何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) " 部分。
 
-对于提供的地址在欧洲客户，Azure AD 会保留大多数欧洲数据中心内的标识数据。 本文档提供有关由 Azure AD 服务存储在欧洲之外的任何数据的信息。
+对于在欧洲提供地址的客户, Azure AD 保留欧洲数据中心内的大多数标识数据。 本文档提供了有关 Azure AD 服务在欧洲之外存储的任何数据的信息。
 
 ## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多重身份验证 (MFA)
     
-- 所有的双因素身份验证使用电话呼叫或短信来源于美国数据中心，并且也由全球提供商路由。
-- 推送通知使用 Microsoft Authenticator 应用源自美国数据中心。 此外，设备供应商特定的服务也可能会进入 play 和欧洲之外可能是这些服务。
+- 使用电话呼叫或短信的所有双因素身份验证都源自我们的数据中心, 并且还由全局提供商路由。
+- 使用 Microsoft Authenticator 应用推送通知来自美国数据中心。 此外, 特定于设备供应商的服务也可能会起作用, 这些服务可能在欧洲境外。
 - OATH 代码始终在美国验证。 
+
+有关 Azure 多重身份验证服务器 (MFA 服务器) 和基于云的 Azure MFA 收集的用户信息的详细信息, 请参阅[Azure 多重身份验证用户数据收集](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection)。
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
-Azure AD B2C 策略配置数据和密钥容器存储在美国数据中心。 这些不包含任何用户个人数据。 有关策略配置的详细信息，请参阅 [Azure Active Directory B2C：内置策略](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)一文。
+Azure AD B2C 策略配置数据和密钥容器存储在美国数据中心。 它们不包含任何用户个人数据。 有关策略配置的详细信息，请参阅 [Azure Active Directory B2C：内置策略](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)一文。
 
 ## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>Microsoft Azure Active Directory B2B (Azure AD B2B) 
     
-Azure AD B2B 存储邀请与兑换链接，并将重定向 URL 在美国数据中心中的信息。 此外，取消订阅接收 B2B 邀请的用户的电子邮件地址也存储在美国数据中心中。
+Azure AD B2B 用兑换链接来存储邀请, 并在美国数据中心重定向 URL 信息。 此外, 取消订阅接收 B2B 邀请的用户的电子邮件地址也存储在美国数据中心。
 
 ## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory 域服务 (Azure AD DS)
 
@@ -44,7 +46,7 @@ Azure AD DS 将用户数据存储在客户选择的 Azure 虚拟网络所在的�
 
 ## <a name="other-considerations"></a>其他注意事项
 
-服务和与 Azure AD 集成的应用程序有权访问标识数据。 评估每个服务和应用程序，用于确定如何标识数据处理由该特定服务和应用程序，以及它们是否满足你公司的数据存储要求。
+与 Azure AD 集成的服务和应用程序可以访问标识数据。 评估每个服务和应用程序, 以确定该特定服务和应用程序如何处理标识数据, 以及这些服务和应用程序是否符合公司的数据存储要求。
 
 有关 Microsoft 服务的数据存放的详细信息，请参阅 Microsoft 信任中心的[数据存储在何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。
 

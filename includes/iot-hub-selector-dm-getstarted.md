@@ -4,20 +4,20 @@ ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 19331f35ea2fa773325ec61e728677e37767ab54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 60c0c700dde5afda2ca93a92b334cbc4f0134043
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173054"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667990"
 ---
 > [!div class="op_single_selector"]
-> * [设备：Node.js 服务：Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
-> * [设备：C#服务：C#](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
-> * [设备：Java 服务：Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
-> * [设备：Python 服务：Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
+> * [Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
+> * [.NET](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
+> * [Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
+> * [Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
 
-后端应用可以使用 Azure IoT 中心基元（例如[设备孪生][lnk-devtwin]和[直接方法][lnk-c2dmethod]）远程启动和监视设备上的设备管理操作。 本教程说明后端应用和设备应用如何协同工作，以便使用 IoT 中心发起远程设备重启操作并对其进行监视。
+后端应用可以使用 Azure IoT 中心基元 (如[设备][lnk-devtwin]克隆和[直接方法][lnk-c2dmethod]) 远程启动和监视设备上的设备管理操作。 本教程说明后端应用和设备应用如何协同工作，以便使用 IoT 中心发起远程设备重启操作并对其进行监视。
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 

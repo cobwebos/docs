@@ -1,19 +1,18 @@
 ---
 title: Azure 文件性能故障排除指南
 description: Azure 文件共享和相关解决方法的已知性能问题。
-services: storage
 author: gunjanj
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 1a5e59bd0276477bad1eab9a544dc4070e662016
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 6b28d004ceacda3cec13e96ceae84d5d1ff1a2e5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249882"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699174"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>排查 Azure 文件性能问题
 
@@ -31,7 +30,7 @@ ms.locfileid: "68249882"
 
 1. 选择 "**所有服务**", 然后搜索 "**指标**"。
 
-1. 选择“指标”  。
+1. 选择“指标”。
 
 1. 选择存储帐户作为资源。
 

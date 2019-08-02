@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: cbb18212f70343d8b9933bd2c787ce6aae8b145d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61cdcb98fc5c0947a25954161676c55ebf902688
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400865"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720731"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Jira 复制数据
 
@@ -32,7 +32,7 @@ ms.locfileid: "61400865"
 
 Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -45,9 +45,9 @@ Jira 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Jira** | 是 |
-| host | Jira 服务的 IP 地址或主机名。 （例如，jira.example.com）  | 是 |
-| port | Jira 服务器用来侦听客户端连接的 TCP 端口。 默认值为 443（如果通过 HTTPS 进行连接）或 8080（如果通过 HTTP 进行连接）。  | 否 |
-| username | 用于访问 Jira 服务的用户名。  | 是 |
+| 主机 | Jira 服务的 IP 地址或主机名。 （例如，jira.example.com）  | 是 |
+| 端口 | Jira 服务器用来侦听客户端连接的 TCP 端口。 默认值为 443（如果通过 HTTPS 进行连接）或 8080（如果通过 HTTP 进行连接）。  | 否 |
+| userName | 用于访问 Jira 服务的用户名。  | 是 |
 | password | 在“用户名”字段中提供的用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
@@ -77,7 +77,7 @@ Jira 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Jira 数据集支持的属性列表。
 
-要从 Jira 复制数据，请将数据集的 type 属性设置为“JiraObject”  。 支持以下属性：
+要从 Jira 复制数据，请将数据集的 type 属性设置为“JiraObject”。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -91,11 +91,12 @@ Jira 链接服务支持以下属性：
     "name": "JiraDataset",
     "properties": {
         "type": "JiraObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Jira linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -106,7 +107,7 @@ Jira 链接服务支持以下属性：
 
 ### <a name="jirasource-as-source"></a>以 JiraSource 作为源
 
-要从 Jira 复制数据，请将复制活动中的源类型设置为“JiraSource”  。 复制活动源  部分支持以下属性：
+要从 Jira 复制数据，请将复制活动中的源类型设置为“JiraSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

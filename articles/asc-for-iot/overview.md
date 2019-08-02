@@ -1,6 +1,6 @@
 ---
-title: 什么是 IoT 预览版的 Azure 安全中心 |Microsoft Docs
-description: 了解 Azure 安全中心针对 IoT 功能和服务。
+title: 什么是用于 IoT 的 Azure 安全中心 |Microsoft Docs
+description: 了解 Azure 安全中心的 IoT 功能和服务。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,53 +13,47 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 2e454d3be536d908003ad9163a44089eb3a5eb99
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fdccf486cacabda4f363f4629a4d6daa4a00c8e4
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618045"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597168"
 ---
-# <a name="introducing-azure-security-center-for-iot"></a>Azure 安全中心简介 iot
+# <a name="introducing-azure-security-center-for-iot"></a>介绍 Azure 安全中心 IoT
 
-> [!IMPORTANT]
-> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+统一安全管理, 并跨混合云工作负荷和 Azure IoT 解决方案实现端到端的威胁检测和分析。 
 
-## <a name="secure-your-azure-iot-solution"></a>保护 Azure IoT 解决方案 
+## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>保护 IoT 和混合云工作负荷免受不断发展的网络攻击
 
-统一安全管理和跨混合云工作负荷和 Azure IoT 解决方案中启用端到端威胁分析和保护。 
+物联网会迅速转变我们的世界。 由于能够从所连接的设备和后端系统中获得见解, 你现在可以将这些见解转换为强大的应用程序和服务, 以帮助你的组织实现前所未有的运营和业务绩效级别。 然而, 由于数十亿的新设备已连接到 internet, 并集成到我们的日常生活和我们的业务中,安全运营团队需要确保其安全策略的发展速度足以涵盖这些新的攻击面。 与任何其他系统一样, 保护 IoT 解决方案在实现的每个阶段都需要保护。 
 
-## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>保护针对不断演变的网络攻击的 IoT 和混合云工作负荷
+用于 IoT 的 Azure 安全中心通过在边缘、本地、Azure 和其他中运行的工作负荷提供统一的可见性和控制、自适应威胁防护以及智能威胁检测和响应, 简化混合工作负荷保护云彩. 
 
-物联网正在迅速改变我们的世界。 能够发现从连接的设备和后端系统的见解，你现在可以转换这些强大的应用程序和服务来帮助组织获得了前所未有的操作级别和业务性能的见解。 但是，如数十亿台新设备连接到 internet，并将其集成到我们在日常生活和公司业务;你的安全操作团队需要确保，足够快的速度发展其安全策略以覆盖这些新的攻击面。 如任何其他系统，保护 IoT 解决方案需要在每个阶段的实施的保护。 
-
-适用于 IoT 的 azure 安全中心 (ASC) 通过跨工作负荷在边缘上，运行在本地，在 Azure 中，并在提供统一的可见性和控制、 自适应威胁防护和智能威胁检测和响应，简化了混合工作负荷保护其他云。 
-
-![ASC 为 IoT 体系结构的](./media/architecture/asc-for-iot-architecture.png)
+![用于 IoT 体系结构的 Azure 安全中心](./media/architecture/azure-iot-security-architecture.png)
 
 ### <a name="unified-visibility-and-control"></a>统一的可见性和控制
 
-跨所有本地和云工作负载（包括 Azure IoT 解决方案）获得统一的安全视图。 自动发现和载入新设备，同时在所有工作负载（叶设备、Edge 设备、IOT 中心）中应用安全策略，确保符合安全标准。
+跨所有本地和云工作负载（包括 Azure IoT 解决方案）获得统一的安全视图。 载入新设备, 并跨工作负荷 (叶设备、Microsoft Edge 设备、IoT 中心) 应用安全策略, 确保符合安全标准和改进的安全状况。
 
 ### <a name="adaptive-threat-prevention"></a>自适应威胁防护
 
-使用适用于 IoT 的 ASC 持续监控计算机、 网络和 Azure 服务，包括 Azure IoT 解决方案从边缘设备对应用程序的安全性。 您可以选择使用来自数百个内置安全评估或创建自己的 IoT 中心仪表板中心 ASC 中。 按照可操作的建议跨虚拟机、网络、应用和数据优化安全设置并提高安全功能分数。 借助新增的 IoT 功能，现可减小 Azure IoT 解决方案的受攻击面，同时在问题遭人利用之前解决它们。
+使用适用于 IoT 的 Azure 安全中心持续监视计算机、网络和 Azure 服务的安全性。 从数百个内置安全评估中进行选择, 或在用于 IoT 中心的中央 Azure 安全中心仪表板中创建自己的。 利用跨虚拟机、网络、应用和数据的可操作建议优化安全设置并提高安全分数。 利用新添加的 IoT 功能, 你现在可以减少 Azure IoT 解决方案的受攻击面, 并修正问题, 然后才能利用它们。
 
 ### <a name="intelligent-threat-detection-and-response"></a>智能威胁检测和响应
 
-使用高级的分析和 Microsoft Intelligent Security Graph，获得针对不断演变的网络攻击。 内置行为分析和机器学习识别攻击和零时差攻击。 监视 IoT 解决方案中即将发生的攻击和信息泄露后进行的活动。 简化设备的调查和修正与交互式工具和上下文威胁智能。
+使用高级分析和 Microsoft Intelligent Security Graph 来获得对不断演变的网络攻击的优势。 内置行为分析和机器学习识别攻击和零天攻击。 监视 IoT 解决方案中即将发生的攻击和信息泄露后进行的活动。 通过交互式工具和上下文威胁智能简化设备调查和修正。
 
 ## <a name="next-steps"></a>后续步骤
 
-在此概述中，您学习了有关功能和服务的 ASC 对 IoT。 若要详细了解 ASC 的 IoT 体系结构，系统必备组件，并了解如何开始，请参阅以下文章：
+本概述介绍了适用于 IoT 的 Azure 安全中心的功能和服务。 若要详细了解 IoT 体系结构的 Azure 安全中心、先决条件以及如何开始学习, 请参阅以下文章:
 
 - [体系结构](architecture.md)
-- [服务的先决条件](service-prerequisites.md)
+- [服务先决条件](service-prerequisites.md)
 - [入门](getting-started.md)
-- [定义你的解决方案](quickstart-configure-your-solution.md)
-- [ASC iot 常见问题](resources-frequently-asked-questions.md)
-- [ASC 为 IoT 警报的](concept-security-alerts.md)
+- [定义解决方案](quickstart-configure-your-solution.md)
+- [Azure 安全中心的 IoT 常见问题](resources-frequently-asked-questions.md)
+- [用于 IoT 警报的 Azure 安全中心](concept-security-alerts.md)
 

@@ -3,16 +3,16 @@ title: 创建 Azure 映像生成器模板 (预览版)
 description: 了解如何创建用于 Azure 映像生成器的模板。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/10/2019
+ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 065962614d0b85c4c50f86bef0b610c9b3577e07
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a623aa98cd26e1636e47cb0e2831eeced17935b9
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248151"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695402"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -185,6 +185,19 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 `imageVersionId`应为映像版本的 ResourceId。 使用[az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list)列出映像版本。
 
+## <a name="properties-buildtimeoutinminutes"></a>属性: buildTimeoutInMinutes
+默认情况下, 映像生成器将运行240分钟。 之后, 无论映像生成是否完成, 它都将超时和停止。 如果遇到超时, 你将看到类似于下面的错误:
+
+```text
+[ERROR] Failed while waiting for packerizer: Timeout waiting for microservice to
+[ERROR] complete: 'context deadline exceeded'
+```
+
+如果未指定 buildTimeoutInMinutes 值或将其设置为 0, 则将使用默认值。 可以增加或减少值, 最大值为 960mins (16hrs)。 对于 Windows, 我们建议不要在下面的60分钟内将其设置为。 如果发现遇到超时, 请检查[日志](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs), 以查看自定义步骤是否正在等待用户输入之类的内容。 
+
+如果你发现需要更多的时间来完成自定义, 请将此项设置为你所需的时间, 但会出现一些开销。 但是, 不要将它设置得太高, 因为可能需要等待它超时, 然后才会看到错误。 
+
+
 ## <a name="properties-customize"></a>属性: 自定义
 
 
@@ -194,7 +207,6 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 - 可以使用多个定制员, 但必须具有唯一`name`的。
 - 定制员按模板中指定的顺序执行。
 - 如果一个定制器出现故障, 则整个自定义组件将失败并报告回错误。
-- 考虑您的映像生成需要多长时间, 并调整 "buildTimeoutInMinutes" 属性以允许图像生成器足够的时间完成。
 - 强烈建议您在将脚本用于模板之前对其进行彻底的测试。 在自己的 VM 上调试脚本将会更容易。
 - 不要将敏感数据放在脚本中。 
 - 除非使用[MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage), 否则脚本位置需要可公开访问。

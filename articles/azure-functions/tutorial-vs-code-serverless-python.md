@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 587d8040039080e15c61292279c5e5637d296b08
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351484"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639088"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>通过 Visual Studio Code 将 Python 部署到 Azure Functions
 
@@ -94,7 +94,7 @@ ms.locfileid: "68351484"
 
 1. 在下面的提示中:
 
-    | Prompt | ReplTest1 | 描述 | 
+    | Prompt | 值 | 描述 | 
     | --- | --- | --- |
     | 为项目指定文件夹 | 当前打开的文件夹 | 要在其中创建项目的文件夹。 你可能想要在子文件夹中创建项目。 |
     | 选择函数应用项目的语言 | **Python** | 用于函数的语言, 该语言确定用于代码的模板。 |
@@ -253,7 +253,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 1. 此扩展执行以下操作, 你可以在 Visual Studio Code 弹出消息和 "**输出**" 窗口中观察此操作 (此过程需要几分钟时间):
 
     - 使用您提供的名称创建一个资源组 (删除连字符)。
-    - 在该资源组中, 创建存储帐户、托管计划和函数应用。 默认情况下, 将创建[消耗计划](functions-scale.md#consumption-plan)。 若要在专用计划中运行函数, 需要[启用高级创建选项的发布](functions-develop-vs-code.md#enabled-publishing-with-advanced-create-options)。
+    - 在该资源组中, 创建存储帐户、托管计划和函数应用。 默认情况下, 将创建[消耗计划](functions-scale.md#consumption-plan)。 若要在专用计划中运行函数, 需要[使用高级创建选项启用发布](functions-develop-vs-code.md)。
     - 将代码部署到 function app。
 
     **Azure:函数**资源管理器还显示进度:

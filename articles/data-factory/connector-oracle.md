@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 数据工厂向/从 Oracle 复制数据 | Microsoft Docs
-description: 了解如何使用数据工厂将数据从支持的源存储复制到 Oracle 数据库，或从 Oracle 复制到支持的接收器存储。
+description: 了解如何使用数据工厂将数据从支持的源存储复制到 Oracle 数据库, 或从 Oracle 复制到支持的接收器存储。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,41 +12,41 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 04f623a889a87c325b1f53e3b39656ca4b703961
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 0a71c7ffe9040c3002b1f5378ce298a047554b15
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509231"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640190"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
-> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-oracle-connector.md)
 > * [当前版本](connector-oracle.md)
 
-本文概述了如何在 Azure 数据工厂中使用复制活动从/向 Oracle 数据库复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂中的复制活动将数据从和复制到 Oracle 数据库。 它基于[复制活动概述](copy-activity-overview.md)进行构建。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 可以将数据从 Oracle 数据库复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Oracle 数据库。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 Oracle 连接器支持：
+具体而言, 此 Oracle 连接器支持:
 
-- 以下版本的 Oracle 数据库：
+- 以下版本的 Oracle 数据库:
   - Oracle 12c R1 (12.1)
   - Oracle 11g R1, R2 (11.1, 11.2)
   - Oracle 10g R1, R2 (10.1, 10.2)
   - Oracle 9i R1, R2 (9.0.1, 9.2)
   - Oracle 8i R3 (8.1.7)
-- 使用来复制数据**基本**或**OID**身份验证。
-- 从 Oracle 源的并行副本。 请参阅[并行复制从 Oracle](#parallel-copy-from-oracle)部分的详细信息。
+- 使用基本或 OID 身份验证复制数据。
+- 从 Oracle 源进行并行复制。 有关详细信息, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。
 
 > [!Note]
 > 不支持 Oracle 代理服务器。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-若要从/向不可公开访问的 Oracle 数据库复制数据，需要设置自承载集成运行时。 有关集成运行时的详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)。 集成运行时提供内置的 Oracle 驱动程序。 因此，在从/向 Oracle 复制数据时不需要手动安装驱动程序。
+若要从无法公开访问的 Oracle 数据库复制数据, 需要设置[自承载集成运行时](create-self-hosted-integration-runtime.md)。 集成运行时提供内置的 Oracle 驱动程序。 因此，在从/向 Oracle 复制数据时不需要手动安装驱动程序。
 
 ## <a name="get-started"></a>开始使用
 
@@ -56,30 +56,30 @@ ms.locfileid: "67509231"
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
-Oracle 链接服务支持以下属性。
+Oracle 链接服务支持以下属性:
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **Oracle**。 | 是 |
-| connectionString | 指定连接到 Oracle 数据库实例所需的信息。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密匙保管库中存储凭据](store-credentials-in-key-vault.md)一文。 <br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectionString | 指定连接到 Oracle 数据库实例所需的信息。 <br/>将此字段标记为 `SecureString`，以便安全地将其存储在数据工厂中。 你还可以将密码放在 Azure Key Vault 中, 并将`password`配置从连接字符串中提取出来。 有关更多详细信息, 请参阅以下示例并[将凭据存储在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 <br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可以使用自承载集成运行时或 Azure 集成运行时 (如果数据存储可公开访问)。 如果未指定此属性, 则此属性将使用默认的 Azure 集成运行时。 |否 |
 
 >[!TIP]
->如果遇到错误消息指出“ORA-01025: UPI 参数超出范围”，且 Oracle 版本为 8i，请将 `WireProtocolMode=1` 添加到连接字符串并重试。
+>如果收到错误 "TNSNAMES.ORA-01025:UPI 参数超出范围 ", 并且 Oracle 版本为 8i, 请将添加`WireProtocolMode=1`到连接字符串。 然后重试。
 
-若要在 Oracle 连接上启用加密，你有两种选择： 
+若要在 Oracle 连接上启用加密，你有两种选择：
 
-1.  若要使用三重 DES 加密 (3DES) 和高级加密标准 (AES)，在 Oracle 服务器端，转到“Oracle 高级安全性 (OAS)”并配置加密设置，请参阅[此处](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)的详细信息  。 ADF Oracle 连接器会自动协商加密方法，以便在建立与 Oracle 的连接时使用在 OAS 中配置的加密方法。
+-   若要使用**三重 DES (3des) 和高级加密标准 (AES)** , 请在 oracle 服务器端中转到 "Oracle 高级安全 (OAS)" 并配置加密设置。 有关详细信息, 请参阅此[Oracle 文档](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)。 Oracle 应用程序开发框架 (ADF) 连接器会自动协商加密方法, 以使用在建立与 Oracle 的连接时在 OAS 中配置的方法。
 
-2.  若要使用 SSL，请执行以下步骤  ：
+-   使用**SSL**:
 
-    1.  获取 SSL 证书信息。 获取 SSL 证书的 DER 编码证书信息，并将输出 (----- Begin Certificate … End Certificate -----) 另存为文本文件。
+    1.  获取 SSL 证书信息。 获取 SSL 证书的可辨别编码规则 (DER) 编码的证书信息, 并保存输出 (-----"开始证书 ..." End Certificate -----) 另存为文本文件。
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text
         ```
 
-        示例：从 DERcert.cer 提取证书信息；然后，将输出保存到 cert.txt 
+        **示例：** 从 DERcert 提取证书信息, 然后将输出保存到 cert。
 
         ```
         openssl x509 -inform DER -in DERcert.cer -text
@@ -93,20 +93,20 @@ Oracle 链接服务支持以下属性。
         -----END CERTIFICATE-----
         ```
     
-    2.  生成密钥存储或信任存储。 以下命令使用或不使用 PKCS-12 格式的密码来创建信任存储文件。
+    2.  `keystore`生成或。`truststore` 以下命令将创建`truststore`带或不带密码的文件, 采用 PKCS-12 格式。
 
         ```
         openssl pkcs12 -in [Path to the file created in the previous step] -out [Path and name of TrustStore] -passout pass:[Keystore PWD] -nokeys -export
         ```
 
-        **示例：** 创建名为密码 MyTrustStoreFile 的 PKCS12 truststore 文件
+        **示例：** 使用密码创建`truststore`名为 MyTrustStoreFile 的 PKCS12 文件。
 
         ```
         openssl pkcs12 -in cert.txt -out MyTrustStoreFile -passout pass:ThePWD -nokeys -export  
         ```
 
-    3.  将信任存储文件放于自承载 IR 计算机上，例如，C:\MyTrustStoreFile。
-    4.  在 ADF 中，使用 `EncryptionMethod=1` 和相应的 `TrustStore`/`TrustStorePassword` 值配置 Oracle 连接字符串，例如 `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`。
+    3.  将该`truststore`文件放在自承载 IR 计算机上。 例如, 将文件放在 C:\MyTrustStoreFile。
+    4.  在 Azure 数据工厂中, 配置的 Oracle 连接字符串`EncryptionMethod=1`和对应`TrustStore` / `TrustStorePassword`的值。 例如， `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>` 。
 
 **示例：**
 
@@ -159,13 +159,13 @@ Oracle 链接服务支持以下属性。
 ```
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Oracle 数据集支持的属性列表。
+本部分提供 Oracle 数据集支持的属性列表。 有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)。 
 
-若要从/向 OData 复制数据，请将数据集的 type 属性设置为“OracleTable”  。 支持以下属性。
+若要从和向 Oracle 复制数据, 请将数据集的 type 属性`OracleTable`设置为。 支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为 OracleTable  。 | 是 |
+| type | 数据集的 type 属性必须设置为`OracleTable`。 | 是 |
 | tableName |链接服务引用的 Oracle 数据库中表的名称。 | 是 |
 
 **示例：**
@@ -189,28 +189,28 @@ Oracle 链接服务支持以下属性。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Oracle 源和接收器支持的属性列表。
+本部分提供 Oracle 源和接收器支持的属性列表。 有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)。 
 
 ### <a name="oracle-as-a-source-type"></a>以 Oracle 作为源类型
 
 > [!TIP]
 >
-> 了解详细信息[并行复制从 Oracle](#parallel-copy-from-oracle)部分，了解如何从 Oracle 有效地使用数据分区加载数据。
+> 若要使用数据分区有效地从 Oracle 加载数据, 请参阅[从 oracle 进行并行复制](#parallel-copy-from-oracle)。
 
-要从 Oracle 复制数据，请将复制活动中的源类型设置为“OracleSource”  。 复制活动的 **source** 节支持以下属性。
+若要从 Oracle 复制数据, 请将复制活动中的源类型`OracleSource`设置为。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 OracleSource  。 | 是 |
-| oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区的负载，需要在查询中挂钩相应内置分区个参数。 请参阅中的示例[并行复制从 Oracle](#parallel-copy-from-oracle)部分。 | 否 |
-| partitionOptions | 指定分区选项用于将数据加载从 Oracle 的数据。 <br>允许的值为：**无**（默认值）， **PhysicalPartitionsOfTable**并**DynamicRange**。<br>当启用分区选项 (不 None)，请配置 **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** 设置复制活动，例如，4，用于确定并行度以并发方式将数据加载从 Oracle数据库。 | 否 |
-| partitionSettings | 指定的数据分区的设置的组。 <br>当分区选项不位于应用`None`。 | 否 |
-| partitionNames | 需要复制的物理分区的列表。 <br>将应用分区选项时`PhysicalPartitionsOfTable`。 如果使用查询来检索源数据，挂钩`?AdfTabularPartitionName`WHERE 子句中。 中的示例，请参阅[并行复制从 Oracle](#parallel-copy-from-oracle)部分。 | 否 |
-| partitionColumnName | 指定源列的名称**整数类型中**，将使用的并行复制分区范围。 如果未指定，表的主键将自动检测到并用作分区列。 <br>将应用分区选项时`DynamicRange`。 如果使用查询来检索源数据，挂钩`?AdfRangePartitionColumnName`WHERE 子句中。 中的示例，请参阅[并行复制从 Oracle](#parallel-copy-from-oracle)部分。 | 否 |
-| partitionUpperBound | 要将数据复制的分区列的最大值。 <br>将应用分区选项时`DynamicRange`。 如果使用查询来检索源数据，挂钩`?AdfRangePartitionUpbound`WHERE 子句中。 中的示例，请参阅[并行复制从 Oracle](#parallel-copy-from-oracle)部分。 | 否 |
-| PartitionLowerBound | 要将数据复制的分区列的最小值。 <br>将应用分区选项时`DynamicRange`。 如果使用查询来检索源数据，挂钩`?AdfRangePartitionLowbound`WHERE 子句中。 中的示例，请参阅[并行复制从 Oracle](#parallel-copy-from-oracle)部分。 | 否 |
+| type | 复制活动源的 type 属性必须设置为`OracleSource`。 | 是 |
+| oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时, 需要在查询中挂接任何对应的内置分区参数。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
+| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许值包括：**无**(默认值)、 **PhysicalPartitionsOfTable**和**DynamicRange**。<br>启用`None`分区选项后, 还会在复制活动上[`parallelCopies`](copy-activity-performance.md#parallel-copy)配置设置。 这将确定并行加载 Oracle 数据库中的数据的并行度。 例如, 你可以将此设置为4。 | 否 |
+| partitionSettings | 指定数据分区设置的组。 <br>当 partition 选项不`None`为时应用。 | 否 |
+| partitionNames | 需要复制的物理分区的列表。 <br>当 partition 选项为`PhysicalPartitionsOfTable`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfTabularPartitionName`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
+| partitionColumnName | 指定**整数类型**的源列名称, 将由范围分区用于并行复制。 如果未指定此参数, 则将自动检测该表的主键, 并将其用作分区列。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionColumnName`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
+| partitionUpperBound | 要向其复制数据的分区列的最大值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionUpbound`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
+| PartitionLowerBound | 要向其复制数据的分区列的最小值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionLowbound`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 
-**使用没有分区的基本查询的示例： 复制数据**
+**示例: 使用不带分区的基本查询复制数据**
 
 ```json
 "activities":[
@@ -242,18 +242,16 @@ Oracle 链接服务支持以下属性。
 ]
 ```
 
-请参阅中的更多示例[并行复制从 Oracle](#parallel-copy-from-oracle)部分。
-
 ### <a name="oracle-as-a-sink-type"></a>以 Oracle 作为接收器类型
 
-要向 Oracle 复制数据，请将复制活动中的接收器类型设置为“OracleSink”  。 复制活动 **sink** 节支持以下属性。
+若要向 Oracle 复制数据, 请将复制活动中的接收器类型`OracleSink`设置为。 复制活动 **sink** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 type 属性必须设置为 **OracleSink**。 | 是 |
-| writeBatchSize | 缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为 Integer（行数）。 |否（默认值为 10,000） |
-| writeBatchTimeout | 超时之前等待批插入操作完成时的等待时间。<br/>允许的值为 Timespan。 示例为 00:30:00（30 分钟）。 | 否 |
-| preCopyScript | 指定每次运行时，复制活动将数据写入到 Oracle 之前要执行的 SQL 查询。 可以使用此属性清除预加载的数据。 | 否 |
+| type | 复制活动接收器的 type 属性必须设置为`OracleSink`。 | 是 |
+| writeBatchSize | 当缓冲区大小达到`writeBatchSize`时, 将数据插入 SQL 表中。<br/>允许的值为 Integer（行数）。 |否（默认值为 10,000） |
+| writeBatchTimeout | 超时前等待批插入操作完成的时间。<br/>允许的值为 Timespan。 示例为 00:30:00（30 分钟）。 | 否 |
+| preCopyScript | 指定一个 SQL 查询, 以便在每次运行将数据写入 Oracle 之前运行复制活动。 可以使用此属性清除预加载的数据。 | 否 |
 
 **示例：**
 
@@ -288,22 +286,22 @@ Oracle 链接服务支持以下属性。
 
 ## <a name="parallel-copy-from-oracle"></a>从 Oracle 并行复制
 
-数据工厂的 Oracle 连接器提供了内置的数据分区，以将数据从 Oracle 复制优异的性能与并行。 您可以找到复制活动的数据分区选项-> Oracle 源：
+数据工厂 Oracle 连接器提供内置数据分区, 用于并行复制 Oracle 数据。 可以在复制活动的 "**源**" 选项卡上找到数据分区选项。
 
-![分区选项](./media/connector-oracle/connector-oracle-partition-options.png)
+![分区选项的屏幕截图](./media/connector-oracle/connector-oracle-partition-options.png)
 
-启用分区的副本时，数据工厂对 Oracle 源将数据加载分区运行并行查询。 配置并通过控制并行度 **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** 上复制活动设置。 例如，如果您设置`parallelCopies`为 4，数据工厂同时生成，并根据指定的分区选项和设置，Oracle 数据库中的数据的每个检索部分运行四个查询。
+启用分区副本时, 数据工厂对 Oracle 源运行并行查询以按分区加载数据。 并行度由 "复制" 活动[`parallelCopies`](copy-activity-performance.md#parallel-copy)的设置控制。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时生成并运行基于指定分区选项和设置的四个查询。 每个查询都从 Oracle 数据库中检索部分数据。
 
-建议以启用并行复制数据分区，尤其是当从 Oracle 数据库加载大量数据时使用。 以下是针对不同方案的建议的配置：
+使用数据分区启用并行复制是一个不错的主意, 尤其是在从 Oracle 数据库加载大量数据时。 以下是针对不同方案的建议配置:
 
-| 场景                                                     | 建议的设置                                           |
+| 应用场景                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 从具有物理分区的大型表的完全加载          | **分区选项**:物理分区的表。 <br><br/>在执行期间，数据工厂自动检测物理分区，并通过分区将数据复制。 |
-| 从大型表，而无需使用整数列的数据分区的物理分区完全加载 | **分区选项**:动态范围分区。<br>**分区列**:指定用于对数据进行分区的列。 如果未使用指定主键列。 |
-| 加载大量的自定义查询，其下方使用物理分区的数据 | **分区选项**:物理分区的表。<br>**查询**: `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`。<br>**分区名称**:指定从中复制数据的分区名称。 如果未指定，ADF 将自动检测中 Oracle 数据集指定的表上的物理分区。<br><br>在执行期间，数据工厂替换`?AdfTabularPartitionName`与实际分区名称并发送给 Oracle。 |
-| 加载大量数据使用自定义查询，其下方，而无需物理分区，而应用于整数列的数据分区 | **分区选项**:动态范围分区。<br>**查询**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**:指定用于对数据进行分区的列。 可以针对列分区使用整数数据类型。<br>**分区上界**并**分区下限**:指定你想要对分区列，以便只检索范围下限和上限之间的数据进行筛选。<br><br>在执行期间，数据工厂替换`?AdfRangePartitionColumnName`， `?AdfRangePartitionUpbound`，和`?AdfRangePartitionLowbound`使用实际的列名称和值范围为每个分区，并将发送到 Oracle。 <br>例如，如果分区列"ID"设置为 1，上限为 80，为 4，并行复制设置的下限 ADF 检索数据的 4 个分区之间 [1，20]，id 为 [21，40] [41，60] 和 [61，80]。 |
+| 包含物理分区的大型表的完全加载。          | **Partition 选项**:表的物理分区。 <br><br/>在执行期间, 数据工厂会自动检测物理分区, 并按分区复制数据。 |
+| 完全加载大型表, 没有物理分区, 而使用整数列进行数据分区。 | **分区选项**:动态范围分区。<br>**分区列**:指定用于对数据进行分区的列。 如果未指定, 则使用主键列。 |
+| 使用带有物理分区的自定义查询加载大量数据。 | **Partition 选项**:表的物理分区。<br>**查询**: `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`。<br>**分区名称**:指定要从中复制数据的分区名称。 如果未指定, 数据工厂会自动检测您在 Oracle 数据集中指定的表的物理分区。<br><br>在执行期间, 数据工厂`?AdfTabularPartitionName`将替换为实际分区名称, 并发送到 Oracle。 |
+| 使用自定义查询而不使用物理分区加载大量数据, 而使用整数列进行数据分区。 | **分区选项**:动态范围分区。<br>**查询**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**:指定用于对数据进行分区的列。 可以对具有整数数据类型的列进行分区。<br>**分区上限**和**分区下限**:指定是否要针对分区列进行筛选, 以便仅检索下限和上限之间的数据。<br><br>在执行期间, 数据工厂`?AdfRangePartitionColumnName`会`?AdfRangePartitionUpbound`将、 `?AdfRangePartitionLowbound`和替换为每个分区的实际列名称和值范围, 并将其发送到 Oracle。 <br>例如, 如果将分区列 "ID" 设置为下限为 1, 上限为 80, 并将 "并行副本" 设置为 "4", 则数据工厂将按4个分区检索数据。 它们的 Id 分别介于 [1, 20]、[21, 40]、[41、60] 和 [61, 80] 之间。 |
 
-**示例： 使用物理分区进行查询**
+**示例: 具有物理分区的查询**
 
 ```json
 "source": {
@@ -319,7 +317,7 @@ Oracle 链接服务支持以下属性。
 }
 ```
 
-**示例： 查询与动态范围分区**
+**示例: 包含动态范围分区的查询**
 
 ```json
 "source": {
@@ -336,7 +334,7 @@ Oracle 链接服务支持以下属性。
 
 ## <a name="data-type-mapping-for-oracle"></a>Oracle 的数据类型映射
 
-从/向 Oracle 复制数据时，以下映射用于从 Oracle 数据类型映射到数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+从和向 Oracle 复制数据时, 将应用以下映射。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
 | Oracle 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
@@ -344,7 +342,7 @@ Oracle 链接服务支持以下属性。
 | BLOB |Byte[]<br/>（仅支持 Oracle 10g 和更高版本） |
 | CHAR |String |
 | CLOB |String |
-| DATE |DateTime |
+| 日期 |日期时间 |
 | FLOAT |Decimal, String（如果精度 > 28） |
 | INTEGER |Decimal, String（如果精度 > 28） |
 | LONG |String |
@@ -355,10 +353,10 @@ Oracle 链接服务支持以下属性。
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| TIMESTAMP |DateTime |
+| TIMESTAMP |日期时间 |
 | TIMESTAMP WITH LOCAL TIME ZONE |String |
 | TIMESTAMP WITH TIME ZONE |String |
-| UNSIGNED INTEGER |Number |
+| UNSIGNED INTEGER |数量 |
 | VARCHAR2 |String |
 | XML |String |
 

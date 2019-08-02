@@ -1,19 +1,18 @@
 ---
 title: 管理已向 Azure 文件同步注册的服务器 | Microsoft Docs
 description: 了解如何向 Azure 文件同步存储同步服务注册和注销 Windows Server。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ef6def9f03a880d9fc8d649fe226caf597ba0ad5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bbeda33f25aec15124bacb605513a3c52c3f07e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991828"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699275"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>管理已向 Azure 文件同步注册的服务器
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -23,9 +22,9 @@ ms.locfileid: "65991828"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>向存储同步服务注册/注销服务器
-向 Azure 文件同步注册服务器可在 Windows Server 和 Azure 之间建立信任关系。 这种关系随后可用于创建服务器上的服务器终结点  ，该终结点表示应与 Azure 文件共享（也称为云终结点）  同步的特定文件夹。 
+向 Azure 文件同步注册服务器可在 Windows Server 和 Azure 之间建立信任关系。 这种关系随后可用于创建服务器上的服务器终结点，该终结点表示应与 Azure 文件共享（也称为云终结点）同步的特定文件夹。 
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>系统必备
 若要向存储同步服务注册服务器，首先必须确保服务器满足以下先决条件：
 
 * 服务器必须运行支持的 Windows Server 版本。 有关详细信息，请参阅 [Azure 文件同步系统要求和互操作性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)。
@@ -61,7 +60,7 @@ ms.locfileid: "65991828"
 ```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>向存储同步服务注册服务器
-服务器必须先向存储同步服务  注册，然后才能在 Azure 文件同步同步组  中用作服务器终结点  。 服务器一次只能向一个存储同步服务注册。
+服务器必须先向存储同步服务注册，然后才能在 Azure 文件同步同步组中用作服务器终结点。 服务器一次只能向一个存储同步服务注册。
 
 #### <a name="install-the-azure-file-sync-agent"></a>安装 Azure 文件同步代理
 1. [下载 Azure 文件同步代理](https://go.microsoft.com/fwlink/?linkid=858257)。
@@ -83,7 +82,7 @@ ms.locfileid: "65991828"
 > 云解决方案提供商 (CSP) 订阅不能使用服务器注册 UI。 请改用 PowerShell（在本部分下面介绍）。
 
 1. 如果服务器注册 UI 在完成 Azure 文件同步代理安装之后未立即启动，则可以通过执行 `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` 来手动启动它。
-2. 单击“登录”  以访问 Azure 订阅。 
+2. 单击“登录”以访问 Azure 订阅。 
 
     ![服务器注册 UI 的打开对话框](media/storage-sync-files-server-registration/server-registration-ui-1.png)
 
@@ -149,7 +148,7 @@ Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName
 #### <a name="unregister-the-server"></a>注销服务器
 现在已召回所有数据并已从所有同步组中删除服务器，服务器可以进行注销。 
 
-1. 在 Azure 门户中，导航到存储同步服务的“已注册的服务器”  部分。
+1. 在 Azure 门户中，导航到存储同步服务的“已注册的服务器”部分。
 2. 右键单击要注销的服务器，然后单击“注销服务器”。
 
     ![注销服务器](media/storage-sync-files-server-registration/unregister-server-1.png)
@@ -188,7 +187,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ### <a name="use-windows-server-storage-qos"></a>使用 Windows Server 存储 QoS 
 如果 Azure 文件同步在 Windows Server 虚拟主机上运行的虚拟机中进行托管，可以使用存储 QoS（存储服务质量）来调整存储 IO 消耗量。 存储 QoS 策略可以设置为最大值（或限制，如上述的 StorageSyncNetwork 限制）或设置为最小值（或预留）。 如果设置为最小值而非最大值，则允许 Azure 文件同步在没有其他工作负载使用的情况下突发使用可用的存储宽带。 有关详细信息，请参阅[存储服务质量](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)
 - [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)
 - [监视 Azure 文件同步](storage-sync-files-monitoring.md)

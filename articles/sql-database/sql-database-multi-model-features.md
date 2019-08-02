@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 84efdb0297a2dc69497baee5fb746fb51d02b1b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e319daf322d688828c7d05d78dacd2359273223f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939519"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567126"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL 数据库的多模型功能
 
@@ -30,7 +29,7 @@ Azure SQL 数据库设计为使用关系模型，在大多数情况下，该模�
 - 某些信息或结构更适合 NoSQL 模型，并且你不想要使用独立的 NoSQL 数据库。
 - 大部分数据适合关系模型，并且你需要以 NoSQL 形式为某些数据部分建模。
 - 希望利用丰富的 Transact-SQL 语言来查询和分析关系数据与 NoSQL 数据，并将其集成到可以使用 SQL 语言的各种工具和应用程序。
-- 你想要应用的数据库功能，如[内存中技术](sql-database-in-memory.md)提高你分析性能或处理在 NoSQL 数据 strucutres，使用[事务复制](sql-database-managed-instance-transactional-replication.md)或[可读副本](sql-database-read-scale-out.md)上其他位置创建了数据的副本并卸载某些分析工作负荷从主数据库。
+- 要应用数据库功能 (如[内存中技术](sql-database-in-memory.md)) 来提高分析或处理 NoSQL 数据 strucutres 的性能, 请使用[事务复制](sql-database-managed-instance-transactional-replication.md)或[可读副本](sql-database-read-scale-out.md)在上创建数据的副本其他位置, 并从主数据库中卸载一些分析工作负荷。
 
 ## <a name="overview"></a>概述
 
