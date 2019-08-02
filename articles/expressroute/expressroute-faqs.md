@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e5674ffb4325eb27af8d0673b2d6ad5ba3a6195e
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 9a5e5dc414d487efd5f6762c89cecb77da74e3d5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854349"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592053"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -57,11 +57,11 @@ ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连�
 
 ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-peerings.md)。
 
-### <a name="private-peering"></a>专用对等互连
+### <a name="private-peering"></a>私有对等
 
 * 虚拟网络，包括所有虚拟机和云服务
 
-### <a name="public-peering"></a>公共对等互连
+### <a name="public-peering"></a>公共对等
 
 >[!NOTE]
 >在新的 ExpressRoute 线路上已禁用公共对等互连。 Azure 服务在 Microsoft 对等互连上可用。
@@ -74,9 +74,9 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
     * CDN
     * Azure Front Door
     * 多重身份验证
-    * 流量管理器
+    * 通信管理器
 
-### <a name="microsoft-peering"></a>Microsoft 对等互连
+### <a name="microsoft-peering"></a>Microsoft 对等
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
@@ -139,7 +139,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 你必须在路由器上实施*本地首选项*属性, 以确保在 ExpressRoute 线路上始终首选从本地到 Azure 的路径。
 
-有关 BGP 路径选择和常见路由器配置, 请参阅[此处](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-of-microsoft-and-public-peerings)的其他详细信息。 
+有关 BGP 路径选择和常见路由器配置, 请参阅[此处](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings)的其他详细信息。 
 
 ### <a name="onep2plink"></a>如果我不在云交换中共置，而我的服务提供商提供点到点连接，我需要在本地网络与 Microsoft 之间订购两个物理连接吗？
 

@@ -1,5 +1,5 @@
 ---
-title: 语音转文本 API 参考 (REST)-语音服务
+title: 语音到文本 API 参考 (REST)-语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音到文本 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9d967fa4d5ba54e4470dadc5e797067454e1769a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6324c00d9b85a13ef6e69185e3b380b20f761f3b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606354"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552968"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
-作为一种替代方法[Speech SDK](speech-sdk.md)，语音服务允许将转换为语音到文本使用 REST API。 每个可访问的终结点都与某个区域相关联。 应用程序需要所用终结点的订阅密钥。
+作为[语音 SDK](speech-sdk.md)的替代方法, 语音服务允许使用 REST API 转换语音到文本。 每个可访问的终结点都与某个区域相关联。 应用程序需要所用终结点的订阅密钥。
 
-在使用语音到文本 REST API 之前, 了解：
-* 使用 REST API 的请求只能包含录制的音频的 10 秒。
+使用语音到文本 REST API 之前, 请先了解以下内容:
+* 使用 REST API 的请求只能包含10秒的录制音频。
 * 语音转文本 REST API 仅返回最终结果。 不提供部分结果。
 
 如果必须为应用程序发送更长的音频，请考虑使用[语音 SDK](speech-sdk.md) 或[批处理脚本](batch-transcription.md)。
@@ -41,22 +41,22 @@ ms.locfileid: "67606354"
 
 | 参数 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 需要 |
+| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必填 |
 | `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置是 `simple`。 | 可选 |
 | `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置是 `masked`。 | 可选 |
 
-## <a name="request-headers"></a>请求标头
+## <a name="request-headers"></a>请求头
 
 下表列出了语音转文本请求的必需和可选标头。
 
 |Header| 描述 | 必需/可选 |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | 你的语音服务的订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
+| `Ocp-Apim-Subscription-Key` | 你的语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
-| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 需要 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必填 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
-| `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务确认初始请求并等待其他数据。| 如果发送分块的音频数据，则是必需的。 |
-| `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务提供 JSON 中的结果。 如果未指定默认值，则某些 Web 请求框架会提供不兼容的默认值，因此，最佳做法是始终包含 `Accept`。 | 可选，但建议提供。 |
+| `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务会确认初始请求并等待额外的数据。| 如果发送分块的音频数据，则是必需的。 |
+| `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务提供 JSON 格式的结果。 如果未指定默认值，则某些 Web 请求框架会提供不兼容的默认值，因此，最佳做法是始终包含 `Accept`。 | 可选，但建议提供。 |
 
 ## <a name="audio-formats"></a>音频格式
 
@@ -68,7 +68,7 @@ ms.locfileid: "67606354"
 | OGG | OPUS | 16 位 | 16 kHz，单声道 |
 
 >[!NOTE]
->通过 REST API 和语音服务中的 WebSocket 支持更高版本的格式。 [语音 SDK](speech-sdk.md) 目前仅支持使用 PCM 编解码器的 WAV 格式。
+>通过语音服务中 REST API 和 WebSocket 支持上述格式。 [语音 SDK](speech-sdk.md) 目前仅支持使用 PCM 编解码器的 WAV 格式。
 
 ## <a name="sample-request"></a>示例请求
 
@@ -91,14 +91,14 @@ Expect: 100-continue
 | HTTP 状态代码 | 描述 | 可能的原因 |
 |------------------|-------------|-----------------|
 | 100 | 继续 | 已接受初始请求。 继续发送剩余的数据。 （与分块传输配合使用。） |
-| 200 | OK | 请求成功；响应正文是一个 JSON 对象。 |
+| 200 | 确定 | 请求成功；响应正文是一个 JSON 对象。 |
 | 400 | 错误的请求 | 语言代码未提供或不是支持的语言；音频文件无效。 |
-| 401 | 未授权 | 指定区域中的订阅密钥或授权令牌无效，或终结点无效。 |
-| 403 | 禁止 | 缺少订阅密钥或授权令牌。 |
+| 401 | 未经授权 | 指定区域中的订阅密钥或授权令牌无效，或终结点无效。 |
+| 403 | 不可用 | 缺少订阅密钥或授权令牌。 |
 
 ## <a name="chunked-transfer"></a>分块传输
 
-Chunked 传输 (`Transfer-Encoding: chunked`) 可以帮助减少识别的延迟，因为它允许语音服务以开始处理音频文件，而正在传输。 REST API 不提供部分结果或临时结果。 此选项专门用于改善响应能力。
+分块传输 (`Transfer-Encoding: chunked`) 可帮助减少识别延迟, 因为它允许语音服务在传输音频文件时开始处理该文件。 REST API 不提供部分结果或临时结果。 此选项专门用于改善响应能力。
 
 此代码示例演示如何以块的形式发送音频。 只有第一个区块应该包含音频文件的标头。 `request` 是连接到相应 REST 终结点的 HTTPWebRequest 对象。 `audioFile` 是音频文件在磁盘上的路径。
 
@@ -163,7 +163,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 > [!NOTE]
 > 如果音频仅包含亵渎内容，并且 `profanity` 查询参数设置为 `remove`，则服务不会返回语音结果。
 
-`detailed`格式包括相同的数据`simple`格式，以及与`NBest`，一组相同的识别结果的替代解释。 这些结果按从最有可能到最不可能。 第一个条目与主要识别结果相同。  使用 `detailed` 格式时，将以 `Display` 形式为 `NBest` 列表中的每条结果提供 `DisplayText`。
+格式包括与`simple`格式相同的数据, `NBest`以及相同识别结果的替代解释列表。 `detailed` 这些结果从最可能到最小可能的结果进行排序。 第一个条目与主要识别结果相同。  使用 `detailed` 格式时，将以 `Display` 形式为 `NBest` 列表中的每条结果提供 `DisplayText`。
 
 `NBest` 列表中的每个对象包括：
 

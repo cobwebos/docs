@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
-ms.author: erikre
-ms.openlocfilehash: 5722e05e5a5e3a57b4d12b70b14f8674364f824b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: banders
+ms.openlocfilehash: f706ad86493981d5b38248ec209a7c8b936f6817
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244812"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443218"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>面向企业客户的报告 API 概述
 报告 API 使企业 Azure 客户能够以编程方式将消耗数据和计费数据提取到首选的数据分析工具。 企业客户与 Azure 签订了[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)，以达成协商的货币承诺并获取自定义 Azure 资源定价的访问权限。
@@ -31,7 +31,7 @@ ms.locfileid: "66244812"
 
 |请求标头密钥 | 值|
 |-|-|
-|授权| 用以下格式指定该值：bearer {API_KEY}  <br/> 示例：bearer eyr....09| 
+|Authorization| 用以下格式指定该值：bearer {API_KEY}  <br/> 示例：bearer eyr....09| 
 
 ## <a name="consumption-apis"></a>消耗量 API
 可在[此处](https://consumption.azure.com/swagger/ui/index)找到为下面所述的 API 提供的 Swagger 终结点，该终结点可以使用 [AutoRest](https://github.com/Azure/AutoRest) 或 [Swagger CodeGen](https://swagger.io/swagger-codegen/) 进行简单的 API 自检并生成客户端 SDK。 2014 年 5 月 1 日开始的数据就是通过此 API 提供的。 
@@ -44,9 +44,9 @@ ms.locfileid: "66244812"
 
 * 价目表  - [价目表 API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) 为给定注册和计费周期的每个计量提供适用的费率。
 
-* **保留实例详细信息**-[保留实例使用情况 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)返回的使用情况的保留实例购买。 [保留实例费用 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)显示所做的计费事务。 
+* **保留实例详细信息**-[保留实例使用情况 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)返回保留实例购买的使用情况。 [预订实例的费用 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)显示了计费事务。 
 
-## <a name="data-freshness"></a>数据刷新
+## <a name="data-freshness"></a>数据新鲜度
 在上述所有 API 的响应中将返回 Etag。 Etag 中的更改指示数据已刷新。  在使用相同参数对同一 API 的后续调用中，将使用 http 请求标头中的键“If-None-Match”传递捕获的 Etag。 如果没有进一步刷新数据，则响应状态代码将为“NotModified”且不会返回任何数据。 只要存在 etag 更改，API 就会返回所需时段内的完整数据集。
 
 ## <a name="helper-apis"></a>帮助程序 API
@@ -54,10 +54,10 @@ ms.locfileid: "66244812"
 
 
 ## <a name="api-response-codes"></a>API 响应代码   
-|响应状态代码|Message|描述|
+|响应状态代码|消息|描述|
 |-|-|-|
-|200| OK|无错误|
-|401| 未授权| API 密钥找不到、无效、已过期等。|
+|200| 确定|无错误|
+|401| 未经授权| API 密钥找不到、无效、已过期等。|
 |404| 不可用| 找不到报表终结点|
 |400| 错误的请求| 参数无效 – 日期范围、EA 号等。|
 |500| 服务器错误| 处理请求时出现异常错误| 
