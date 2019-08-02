@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4332c921af770cb47e9a9a779d0bd148153fcd31
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6e58762bd5bf4342804767a200c94b432dd152a0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666141"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562217"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：计划 Azure AD 加入实现
 
@@ -24,23 +24,23 @@ ms.locfileid: "67666141"
 
 本文介绍计划 Azure AD 联接实现所需信息。
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 本文假设读者已阅读 [Azure Active Directory 中的设备管理简介](../device-management-introduction.md)。
 
 ## <a name="plan-your-implementation"></a>规划实施
 
-若要规划您的 Azure AD 联接实现，您应熟悉：
+若要计划 Azure AD 联接实现, 应熟悉以下内容:
 
 |   |   |
 |---|---|
-|![勾选标记][1]|查看方案|
-|![勾选标记][1]|查看标识基础结构|
-|![勾选标记][1]|评估设备管理|
-|![勾选标记][1]|了解有关应用程序和资源的注意事项|
-|![勾选标记][1]|了解预配选项|
-|![勾选标记][1]|配置企业状态漫游|
-|![勾选标记][1]|配置条件性访问|
+|![检查][1]|查看方案|
+|![检查][1]|查看标识基础结构|
+|![检查][1]|评估设备管理|
+|![检查][1]|了解有关应用程序和资源的注意事项|
+|![检查][1]|了解预配选项|
+|![检查][1]|配置企业状态漫游|
+|![检查][1]|配置条件访问|
 
 ## <a name="review-your-scenarios"></a>查看方案 
 
@@ -70,7 +70,7 @@ Azure AD 联接适用于托管环境和联合环境。
 - **WS-Fed：** 将设备联接到 Azure AD 时需要此协议。
 - **WS-Trust：** 登录到 Azure AD 联接设备时需要此协议。 
 
-如果标识提供者不支持这些协议，则 Azure AD 联接无法本机运行。 从 Windows 10 1809 开始，你的用户可使用基于 SAML 的标识提供者通过 [Windows 10 上的 Web 登录](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)登录到 Azure AD 联接设备。 目前，web 登录是一项预览功能，不建议用于生产部署。
+如果标识提供者不支持这些协议，则 Azure AD 联接无法本机运行。 从 Windows 10 1809 开始，你的用户可使用基于 SAML 的标识提供者通过 [Windows 10 上的 Web 登录](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)登录到 Azure AD 联接设备。 目前, web 登录是一项预览功能, 不建议用于生产部署。
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>智能卡和基于证书的身份验证
 
@@ -101,10 +101,10 @@ Azure AD 联接：
 
 ### <a name="management-platform"></a>管理平台
 
-Azure AD 加入设备的设备管理基于 MDM 平台，如 Intune 和 MDM Csp。 Windows 10 提供适用于所有兼容 MDM 解决方案的内置 MDM 代理。
+Azure AD 联接设备的设备管理基于 MDM 平台 (如 Intune) 和 MDM Csp。 Windows 10 提供适用于所有兼容 MDM 解决方案的内置 MDM 代理。
 
 > [!NOTE]
-> 如未连接到本地 Active Directory 中已加入 Azure AD 的设备不支持组策略。 管理 Azure AD 加入设备时，才能通过 MDM
+> Azure AD 联接的设备中不支持组策略, 因为它们未连接到本地 Active Directory。 仅可通过 MDM 管理 Azure AD 联接的设备
 
 管理 Azure AD 联接设备有两种方法：
 
@@ -208,23 +208,23 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 ## <a name="configure-your-device-settings"></a>配置设备设置
 
-通过Azure 门户可控制组织中 Azure AD 联接设备的部署。 若要配置相关设置，在“Azure Active Directory 页”中选择 `Devices > Device settings`  。
+通过Azure 门户可控制组织中 Azure AD 联接设备的部署。 若要配置相关设置，在“Azure Active Directory 页”中选择 `Devices > Device settings`。
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>用户可将设备联接到 Azure AD
 
-根据部署范围和你想允许设置 Azure AD 联接设备的人选，将此选项设置为“全部”或“选定”   。 
+根据部署范围和你想允许设置 Azure AD 联接设备的人选，将此选项设置为“全部”或“选定”。 
 
 ![用户可将设备联接到 Azure AD](./media/azureadjoin-plan/01.png)
 
 ### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Azure AD 联接设备上的其他本地管理员
 
-选择“选定”，并选择想要添加到所有 Azure AD 联接设备上的本地管理员组的用户  。 
+选择“选定”，并选择想要添加到所有 Azure AD 联接设备上的本地管理员组的用户。 
 
 ![Azure AD 联接设备上的其他本地管理员](./media/azureadjoin-plan/02.png)
 
 ### <a name="require-multi-factor-auth-to-join-devices"></a>需要进行多重身份验证才能联接设备
 
-如果将设备联接到 Azure AD 的同时需要用户执行多重身份验证，则选择“是”  。 对于使用多重身份验证将设备联接到 Azure AD 的用户，设备本身成为第 2 个因素。
+如果将设备联接到 Azure AD 的同时需要用户执行多重身份验证，则选择“是”。 对于使用多重身份验证将设备联接到 Azure AD 的用户，设备本身成为第 2 个因素。
 
 ![需要进行多重身份验证才能联接设备](./media/azureadjoin-plan/03.png)
 
@@ -234,8 +234,8 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 **若要添加 MDM 提供程序**：
 
-1. 在“Azure Active Directory 页”的“管理”部分，单击 `Mobility (MDM and MAM)`   。 
-1. 单击“添加应用程序”  。
+1. 在“Azure Active Directory 页”的“管理”部分，单击 `Mobility (MDM and MAM)`。 
+1. 单击“添加应用程序”。
 1. 从列表中选择 MDM 提供程序。
 
    ![添加应用程序](./media/azureadjoin-plan/04.png)
@@ -244,7 +244,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 ### <a name="mdm-user-scope"></a>MDM 用户范围
 
-根据部署范围，选择“部分”或“全部”   。 
+根据部署范围，选择“部分”或“全部”。 
 
 ![MDM 用户范围](./media/azureadjoin-plan/05.png)
 
@@ -271,17 +271,17 @@ MAM 不适用于 Azure AD 联接。
 
 ## <a name="configure-enterprise-state-roaming"></a>配置企业状态漫游
 
-如果想要启用 Azure AD 的状态漫游，以便用户可以跨设备同步其设置，请参阅[在 Azure Active Directory 中启用企业状态漫游](https://docs.microsoft.com/azure/active-directory/devices/enterprise-state-roaming-enable)。 
+如果想要启用 Azure AD 的状态漫游，以便用户可以跨设备同步其设置，请参阅[在 Azure Active Directory 中启用企业状态漫游](enterprise-state-roaming-enable.md)。 
 
 **建议**：即使对于混合 Azure AD 联接设备，也启用此设置。
 
-## <a name="configure-conditional-access"></a>配置条件性访问
+## <a name="configure-conditional-access"></a>配置条件访问
 
 如果为 Azure AD 联接设备配置的 MDM 提供程序，只要该设备处于管理状态，提供程序就将其标记为符合。 
 
-![合规的设备](./media/azureadjoin-plan/46.png)
+![兼容设备](./media/azureadjoin-plan/46.png)
 
-可以使用此实现[需要使用条件性访问的云应用访问权限的被管理的设备](../conditional-access/require-managed-devices.md)。
+你可以使用此实现来[要求使用条件访问的云应用访问的托管设备](../conditional-access/require-managed-devices.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

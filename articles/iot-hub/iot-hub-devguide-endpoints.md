@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 50a1e0a6bfa6fe33f432548a4a0b485134a60c72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 689a702863dda53870f775bd8520d5dd406d242f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055353"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640599"
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
 
@@ -21,7 +21,7 @@ ms.locfileid: "67055353"
 
 ## <a name="iot-hub-names"></a>IoT 中心名称
 
-可在中心的“概述”页上找到在门户中托管终结点的 IoT 中心的主机名  。 默认情况下，IoT 中心的 DNS 名称如下所示：`{your iot hub name}.azure-devices.net`。
+可在中心的“概述”页上找到在门户中托管终结点的 IoT 中心的主机名。 默认情况下，IoT 中心的 DNS 名称如下所示：`{your iot hub name}.azure-devices.net`。
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>内置 IoT 中心终结点列表
 
@@ -86,7 +86,7 @@ IoT 中心当前支持将以下 Azure 服务作为附加终结点：
 
 |运行状况状态|描述|
 |---|---|
-|healthy|终结点按预期方式接受消息。|
+|正常|终结点按预期方式接受消息。|
 |不正常|终结点未按预期方式接受消息，IoT 中心正重试将数据发送到此终结点。 当 IoT 中心建立了最终一致的运行状况状态以后，系统会将不正常终结点的状态更新为正常。|
 |未知|IoT 中心尚未建立与该终结点的连接。 尚未向该终结点传送任何消息，也未拒绝该终结点发送的任何消息。|
 |不活动|重试期间，在 IoT 中心重试发送消息以后，终结点不接受消息。|
@@ -104,3 +104,4 @@ IoT 中心当前支持将以下 Azure 服务作为附加终结点：
 * [用于设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)
 * [配额和限制](iot-hub-devguide-quotas-throttling.md)
 * [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)
+* [了解 IoT 中心 IP 地址](iot-hub-understand-ip-address.md)

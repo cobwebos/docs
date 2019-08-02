@@ -1,21 +1,19 @@
 ---
-title: 如何通过 Node.js-Azure 存储使用队列存储
+title: 如何通过 node.js 使用队列存储-Azure 存储
 description: 了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。 相关示例是使用 Node.js 编写的。
-services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.devlang: nodejs
-ms.topic: article
-ms.date: 12/08/2016
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 12/08/2016
 ms.subservice: queues
-ms.openlocfilehash: 01afe1ab7b9028f3f77d52f7d6f8ced27f6a79c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: 13da3adc1a3f95f9fdb29eb181eb9759e175cffe
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142713"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721267"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>如何通过 Node.js 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -326,10 +324,10 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
+在了解了有关队列存储的基础知识后，可使用以下链接来了解更复杂的存储任务。
 
 * 访问 [Azure 存储团队博客][Azure Storage Team Blog]。
-* 访问 GitHub 上[用于 Node 的 Azure 存储 SDK][Azure Storage SDK for Node] 存储库。
+* 访问 GitHub 上的 [Azure Storage SDK for Node][Azure Storage SDK for Node] 存储库。
 
 
 

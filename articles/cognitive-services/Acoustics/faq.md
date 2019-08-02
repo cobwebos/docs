@@ -1,5 +1,5 @@
 ---
-title: 项目噪声方面的常见问题
+title: 项目噪声常见问题解答
 titlesuffix: Azure Cognitive Services
 description: 本页面解答了有关 Project Acoustics 的常见问题，包括下载说明和制作流程。
 services: cognitive-services
@@ -10,26 +10,27 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: a18f6b57e203c40c0f667f07e8371348cb738c9b
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ROBOTS: NOINDEX
+ms.openlocfilehash: a965fc020c5c534616459ad661b71ac67dbc2425
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827569"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704808"
 ---
-# <a name="project-acoustics-frequently-asked-questions"></a>项目噪声方面的常见问题
+# <a name="project-acoustics-frequently-asked-questions"></a>项目噪声常见问题解答
 
 ## <a name="what-is-project-acoustics"></a>什么是项目音响效果？
 
-插件的项目噪声套件是一个计算之前运行时，类似于静态照明声波行为的噪声系统。 云可以执行繁重的声波物理学计算，因此运行时 CPU 成本较低。  
+项目的噪音套件是一个噪声系统, 它在运行时之前计算声波行为, 与静态照明类似。 云可以执行繁重的声波物理学计算，因此运行时 CPU 成本较低。  
 
 ## <a name="where-can-i-download-the-plugin"></a>在何处可以下载此插件？
 
-您可以下载[项目噪声 Unity 插件](https://www.microsoft.com/download/details.aspx?id=57346)或[项目噪声 Unreal 插件](https://www.microsoft.com/download/details.aspx?id=58090)。
+您可以下载项目的 "[噪声 Unity" 插件](https://www.microsoft.com/download/details.aspx?id=57346)或 "[项目噪声 Unreal 插件](https://www.microsoft.com/download/details.aspx?id=58090)"。
 
-## <a name="does-project-acoustics-support-ltxgt-platform"></a>支持项目噪声&lt;x&gt;平台？
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>项目噪声是否支持&lt;x&gt;平台？
 
-项目的发展平台支持基于客户需求的噪声。 在上，请联系我们[项目噪声问题论坛](https://github.com/microsoft/ProjectAcoustics/issues)就可以提出有关其他平台的支持。
+项目噪声平台支持根据客户需求发展。 请在[项目噪声问题论坛](https://github.com/microsoft/ProjectAcoustics/issues)上联系我们以查询对其他平台的支持。
 
 ## <a name="is-azure-used-at-runtime"></a>是否在运行时使用 Azure？
 
@@ -49,17 +50,17 @@ ms.locfileid: "67827569"
  
 ## <a name="whats-in-the-runtime-lookup-table"></a>运行时查找表中是什么？
 
-ACE 文件包括是大量源和侦听器位置对，以及用于参数内插 voxelized 场景几何图形之间的声学参数的表。
+ACE 文件包含在许多源和侦听器位置对之间的声音参数表以及用于参数内插的 voxelized 场景几何。
  
-## <a name="can-project-acoustics-handle-moving-sources"></a>项目噪声可以处理移动的源？
+## <a name="can-project-acoustics-handle-moving-sources"></a>能否项目噪声处理移动源？
 
-是，项目噪声参考查找表，并更新每个计时周期的音频 DSP，因此它可以处理移动源和侦听器。
+是的, 项目噪声参考查找表, 并更新每个时钟周期的音频 DSP, 使其可以处理移动源和侦听器。
  
-## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>项目噪声可以处理动态 geometry？ 关门？ 墙壁被吹走了？
+## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>项目噪声是否可以处理动态几何？ 关门？ 墙壁被吹走了？
 
-否。 声学参数是根据静态的游戏级别预先计算出来的。 我们建议保留从噪声，门几何图形，然后将应用其他封闭根据易损坏的状态，并且使用可移动的游戏对象建立技术。
+否。 声学参数是根据静态的游戏级别预先计算出来的。 建议使用已建立的技术, 根据易损坏和可移动游戏对象的状态, 将门几何图形从噪声中封闭出来。
  
-## <a name="does-project-acoustics-use-acoustic-materials"></a>项目噪声是否使用声学资料？
+## <a name="does-project-acoustics-use-acoustic-materials"></a>项目噪音是否使用音响材料？
 
 是的。 材料从你所处级别的物理材料名称中选取，促进吸音能力。
  
@@ -69,12 +70,12 @@ ACE 文件包括是大量源和侦听器位置对，以及用于参数内插 vox
  
 ## <a name="why-spend-so-much-compute-in-the-cloud-what-does-it-buy-me"></a>为什么要在云中进行如此多的计算？ 它提供哪些功能？
 
-Project Acoustics 提供准确可靠的声学参数，即便是面对超复杂的虚拟环境，仍将每个体系结构方面考虑在内。 它提供平滑的阻挡物和障碍物和绘制卷的动态混响而无需手动工作的变体。 同时，保持 CPU 在运行时期间轻负荷运行。
+Project Acoustics 提供准确可靠的声学参数，即便是面对超复杂的虚拟环境，仍将每个体系结构方面考虑在内。 它提供平滑的封闭、障碍和动态回音变化, 无需手动处理卷。 同时，保持 CPU 在运行时期间轻负荷运行。
 
 ## <a name="what-exactly-happens-during-baking"></a>“制作”期间究竟发生了什么？
 
-制作包含的中心位于每个侦听器探测 cuboid 模拟区域的声学批模拟。
+制作包含 cuboid 模拟区域的声波模拟, 并以每个侦听器探测为中心。
 
 ## <a name="next-steps"></a>后续步骤
-* 请尝试[项目噪声 Unity 示例内容](unity-quickstart.md)或[Unreal 示例内容](unreal-quickstart.md)
+* 尝试[项目噪声 Unity 示例内容](unity-quickstart.md)或[Unreal 示例内容](unreal-quickstart.md)
 

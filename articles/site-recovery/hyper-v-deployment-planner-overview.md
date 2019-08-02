@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/18/2019
+ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: a793de302eb0833c959f2486fc2cda1f2eec4674
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e7da548eb2cc6e314d446270cc04d1c57be7ae3
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149112"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618829"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>关于用于将 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 
@@ -73,13 +73,13 @@ Azure Site Recovery 部署规划器是一个命令行工具，适用于 Hyper-V 
 | | **VMware 到 Azure** |**Hyper-V 到 Azure**|**Azure 到 Azure**|**Hyper-V 到辅助站点**|**VMware 到辅助站点**
 --|--|--|--|--|--
 支持的方案 |是|是|否|是*|否
-支持的版本 | vCenter 6.7、6.5、6.0 或 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
-支持的配置|vCenter、ESXi| Hyper-V 群集、Hyper-V 主机|NA|Hyper-V 群集、Hyper-V 主机|NA|
-可以按 Azure Site Recovery 部署规划器的运行实例进行分析的服务器数 |单个（一次只能分析属于一个 vCenter Server 或一个 ESXi 服务器的 VM）|多个（一次可以分析多个主机或主机群集的 VM）| NA |多个（一次可以分析多个主机或主机群集的 VM）| NA
+支持的版本 | vCenter 6.7、6.5、6.0 或 5.5| Windows Server 2016、Windows Server 2012 R2 | 不可用 |Windows Server 2016、Windows Server 2012 R2|不可用
+支持的配置|vCenter、ESXi| Hyper-V 群集、Hyper-V 主机|不可用|Hyper-V 群集、Hyper-V 主机|不可用|
+可以按 Azure Site Recovery 部署规划器的运行实例进行分析的服务器数 |单个（一次只能分析属于一个 vCenter Server 或一个 ESXi 服务器的 VM）|多个（一次可以分析多个主机或主机群集的 VM）| 不可用 |多个（一次可以分析多个主机或主机群集的 VM）| 不可用
 
 *此工具主要用于 Hyper-V 到 Azure 灾难恢复方案。 对于 Hyper-V 到辅助站点灾难恢复，只能将其用于了解源端建议，例如所需网络带宽、每个源 Hyper-V 服务器上需要的可用存储空间，以及初始复制批处理数和批次定义。  忽略报表中的 Azure 建议和成本。 另外，“获取吞吐量”操作不适用于 Hyper-V 到辅助站点灾难恢复方案。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 此工具有三个针对 Hyper-V 的主要阶段：获取 VM 列表、分析，以及生成报表。 此外还有第死个选项，即仅计算吞吐量。 下表中显示了需要在其上执行不同阶段的服务器的要求：
 
 | 服务器要求 | 描述 |
@@ -135,7 +135,7 @@ E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
   >每个新的 Deployment Planner 都是 .zip 文件的累积更新。 不需将最新文件复制到旧文件夹。 可以创建和使用新文件夹。
 
 ## <a name="version-history"></a>版本历史记录
-最新的 Azure Site Recovery 部署规划器工具版本为 2.4。
+最新的 Azure Site Recovery 部署规划器工具版本是2.5。
 请参阅 [Azure Site Recovery 部署规划器版本历史记录](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)页，了解每个更新中增加的修补程序。
 
 

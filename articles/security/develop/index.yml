@@ -48,4 +48,11 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-dev-overview">安全开发最佳做法</a>
-          - html: <a href="/azure/security/azure-security-threat-modeling-tool">威胁建模</a>
+  - title: 资源
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/security-code-analysis-overview">Microsoft 安全代码分析</a>
+          - html: <a href="/azure/security/develop/threat-modeling-tool">威胁建模工具</a>

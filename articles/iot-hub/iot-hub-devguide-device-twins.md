@@ -8,22 +8,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: fbc68b551db1f68fe253a833ad26c88de1b92f30
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f4db353e3c2f625478df6a547d1b67c5d074d18a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055369"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640615"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
-设备孪生是存储设备状态信息（例如元数据、配置和条件）的 JSON 文档  。 Azure IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 
+设备孪生是存储设备状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 本文介绍：
 
-* 设备孪生的结构：标记、所需的属性和报告的属性    。
+* 设备孪生的结构：标记、所需的属性和报告的属性。
 * 设备应用和后端可在设备孪生上执行的操作。
 
 使用设备克隆可以：
@@ -182,7 +182,7 @@ ms.locfileid: "67055369"
 
   - 属性
 
-    | Name | 值 |
+    | 名称 | ReplTest1 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
@@ -196,7 +196,7 @@ ms.locfileid: "67055369"
 
     消息系统属性以 `$` 符号为前缀。
 
-  - 正文
+  - Body
         
     本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，
 
@@ -231,7 +231,7 @@ ms.locfileid: "67055369"
 
 设备应用使用以下原子操作对设备克隆执行操作：
 
-* **检索设备克隆**。 此操作返回当前连接的设备的设备孪生文档（包括标记、所需的系统属性和报告的系统属性）。
+* **检索设备克隆**。 此操作返回当前连接的设备的设备克隆文档 (包括所需的系统属性和报告的系统属性)。 (标记对设备应用不可见。)
 
 * **部分更新报告属性**。 使用此操作可以部分更新当前连接的设备的报告属性。 此操作使用的 JSON 更新格式与解决方案后端用于部分更新所需属性的格式相同。
 

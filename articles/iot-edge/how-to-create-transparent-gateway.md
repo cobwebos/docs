@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 50d91c03ac33c32577ddf3838ed6b10024133333
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: a91860e9ec8d503a01d079925466093d19bbbccf
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414537"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698608"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
 
@@ -50,8 +50,8 @@ ms.locfileid: "68414537"
 ## <a name="prerequisites"></a>先决条件
 
 要配置为网关的 Azure IoT Edge 设备。 对以下操作系统之一使用 IoT Edge 安装步骤：
-  * [Windows](/how-to-install-iot-edge-windows.md)
-  * [Linux](/how-to-install-iot-edge-linux.md)
+  * [Windows](how-to-install-iot-edge-windows.md)
+  * [Linux](how-to-install-iot-edge-linux.md)
 
 本文在多个位置提到了“网关主机名”。 网关主机名在 IoT Edge 网关设备上的 config.yaml 文件的 **hostname** 参数中声明。 它用于创建本文中所用的证书，并在下游设备的连接字符串中引用。 网关主机名必须能够解析成 IP 地址，不管是使用 DNS 还是主机文件条目。
 

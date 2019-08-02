@@ -6,14 +6,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 07/31/2019
 ms.author: normesta
-ms.openlocfilehash: fc2d7e4f611e1eee9c369ef26aa7bf66feb7c888
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 910e23814b627233395a2f7a646513d9cb6874d8
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385682"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699039"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -100,7 +100,7 @@ Blob 存储 API 已禁用，以防止可能出现的功能可操作性问题，�
 | **Blobfuse** |尚不支持|
 | **自定义域** |尚不支持|
 | **文件系统资源管理器** | 有限支持 |
-| **诊断日志记录** |仅当你在[Data Lake Storage 预览版上注册多协议访问](data-lake-storage-multi-protocol-access.md)时才支持此项。|
+| **诊断日志记录** |仅当你在 Data Lake Storage 预览中注册[多协议访问](data-lake-storage-multi-protocol-access.md)时, 才支持诊断日志。 <br><br>当前不支持在 Azure 门户中启用日志。 下面是如何使用 PowerShell 启用日志的示例。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzureStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`。 <br><br>请确保将指定`Blob`为`-ServiceType`参数的值, 如本示例中所示。 
 | **不可变存储** |尚不支持 <br><br>使用不可变存储可以 [WORM（一次写入，多次读取）](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)状态存储数据。|
 | **对象级层** |仅当你在[Data Lake Storage 预览版上注册多协议访问](data-lake-storage-multi-protocol-access.md)时, 才支持冷层和存档层。 <br><br> 目前尚不支持所有其他访问层。|
 | **Powershell 和 CLI 支持** | 受限功能 <br><br>支持创建帐户等管理操作。 数据平面操作 (如上传和下载文件) 作为[Data Lake Storage 上的多协议访问](data-lake-storage-multi-protocol-access.md)的一部分, 作为公共预览。 尚不支持使用目录和设置访问控制列表 (Acl)。 |

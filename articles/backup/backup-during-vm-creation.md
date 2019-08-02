@@ -1,18 +1,18 @@
 ---
 title: 在创建 Azure VM 时通过 Azure 备份启用备份
 description: 介绍了如何在创建 Azure VM 时通过 Azure 备份启用备份。
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.author: raynew
-ms.openlocfilehash: a19653f7ae3900fd7999f347ef4d3ef710be1430
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: dacurwin
+ms.openlocfilehash: 90f69371457bbfe37789b12971343f738ff35e8e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436335"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639712"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 
@@ -22,22 +22,22 @@ ms.locfileid: "67436335"
 
 ## <a name="before-you-start"></a>开始之前
 
-- [检查](backup-support-matrix-iaas.md#supported-backup-actions)如果创建 VM 时启用备份支持的操作系统。
+- 如果在创建 VM 时启用备份，请[检查](backup-support-matrix-iaas.md#supported-backup-actions)支持哪些操作系统。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录  Azure
 
 如果尚未登录到你的帐户，请先登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-vm-with-backup-configured"></a>创建配置了备份的 VM
 
-1. 在 Azure 门户中，单击“创建资源”  。
+1. 在 Azure 门户中，单击“创建资源”。
 
-2. 在 Azure 市场中，单击“计算”  ，然后选择一个 VM 映像。
+2. 在 Azure 市场中，单击“计算”，然后选择一个 VM 映像。
 
 3. 根据适用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) 的说明设置 VM。
 
-4. 在“管理”  选项卡上，在“启用备份”  中，单击“开启”  。
-5. Azure 备份将备份到恢复服务保管库。 如果没有现有的保管库，请单击“新建”  。
+4. 在“管理”选项卡上，在“启用备份”中，单击“开启”。
+5. Azure 备份将备份到恢复服务保管库。 如果没有现有的保管库，请单击“新建”。
 6. 接受建议的保管库名称或自己指定名称。
 7. 指定或创建保管库将位于其中的资源组。 资源组保管库可以不同于 VM 资源组。
 
@@ -54,8 +54,8 @@ ms.locfileid: "67436335"
 
 
 > [!NOTE]
-> Azure 备份服务创建单独的资源组 （而不是 VM 资源组） 来存储快照，使用的命名格式**AzureBackupRG_geography_number** (示例：AzureBackupRG_northeurope_1）。 此资源组中的数据将保留以天为单位中指定的持续时间*保留即时恢复快照*部分中的 Azure 虚拟机备份策略。  对此资源组应用锁可能会导致备份失败。<br>
-根据限制策略会阻止创建资源点集合中其再次导致备份失败，则还应从任何名称/标记限制排除此资源组。
+> Azure 备份服务会创建一个单独的资源组（而非 VM 资源组）来存储快照，采用的命名格式为 **AzureBackupRG_geography_number**（例如：AzureBackupRG_northeurope_1）。 此资源组中的数据将按 Azure 虚拟机备份策略的“保留即时恢复快照”部分中指定的天数保留。  对此资源组应用锁定可能会导致备份失败。<br>
+此资源组还应排除在任何名称/标记限制之外，因为限制策略会阻止在其中再次创建资源点集合，从而导致备份失败。
 
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>在创建 VM 后启动备份
@@ -64,8 +64,8 @@ ms.locfileid: "67436335"
 
 创建 VM 后，请执行以下操作：
 
-1. 在 VM 属性中，单击“备份”。  VM 状态将保持为“初始备份挂起”，直到初始备份运行
-2. 单击“立即备份”  来运行按需备份。
+1. 在 VM 属性中，单击“备份”。 VM 状态将保持为“初始备份挂起”，直到初始备份运行
+2. 单击“立即备份”来运行按需备份。
 
     ![运行按需备份](./media/backup-during-vm-creation/run-backup.png)
 

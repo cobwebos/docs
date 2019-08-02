@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/17/2019
+ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: 331a554332db8c05d4ece1a1df5d6557d6e86906
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b31a7c1cbd0f4f6cadc4ac139777d2cc3c451bcb
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310366"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706463"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -28,22 +28,28 @@ ms.locfileid: "68310366"
 > * [按位置列出的提供商](expressroute-locations-providers.md)
 
 
-本文中的表格提供有关 ExpressRoute 连接提供商、ExpressRoute 地理覆盖范围、通过 ExpressRoute 支持的 Microsoft 云服务以及 ExpressRoute 系统集成商 (SI) 的信息。
+本文中的表格提供有关 ExpressRoute 地理覆盖范围和位置、ExpressRoute 连接提供商和 ExpressRoute 系统集成商 (Si) 的信息。
 
-## <a name="partners"></a>ExpressRoute 连接服务提供商
-所有的 Azure 区域和位置都支持 ExpressRoute。 以下地图提供了 Azure 区域和 ExpressRoute 位置的列表。 ExpressRoute 位置是指 Microsoft 与多个服务提供商对等互连的位置。
+> [!Note]
+> Azure 区域和 ExpressRoute 位置是两个不同的不同概念, 了解这两者之间的区别对于探索 Azure 混合网络连接至关重要。 
+>
+>
 
-![位置地图][0]
+## <a name="azure-regions"></a>Azure 区域
+Azure 区域是 Azure 计算、网络和存储资源所在的全球数据中心。 创建 Azure 资源时, 客户需要选择资源位置。 资源位置确定在哪个 Azure 数据中心 (或可用性区域) 中创建资源。
+
+## <a name="expressroute-locations"></a>ExpressRoute 位置
+ExpressRoute 位置 (有时称为 "对等互连位置" 或 "满足我的位置") 是 Microsoft 企业边缘 (MSEE) 设备所在的归置设施。 ExpressRoute 位置是 Microsoft 网络的入口点, 是全球分布的, 为客户提供了连接到全球各地 Microsoft 网络的机会。 这些位置是 ExpressRoute 合作伙伴和 ExpressRoute 直销客户在与 Microsoft 网络之间建立交叉连接的地方。 通常, ExpressRoute 位置不需要匹配 Azure 区域。 例如, 客户可以在*西雅图*对等位置使用资源位置 "*美国东部*" 创建 ExpressRoute 线路。
 
 如果至少与地缘政治区域内的一个 ExpressRoute 位置连接，将有权访问地缘政治区域内所有区域中的 Azure 服务。 
 
-### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>地缘政治区域中 ExpressRoute 位置与 Azure 区域的映射
+## <a name="locations"></a>地缘政治区域中 ExpressRoute 位置的 Azure 区域
 下表提供了地缘政治区域内 ExpressRoute 位置与 Azure 区域的映射。
 
 | **地缘政治区域** | **区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- | --- |
 | **澳大利亚政府** | 1 | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
-| **欧洲** | 1 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹、Amsterdam2、都柏林、法兰克福、伦敦、London2、马赛、纽波特 (威尔士)、巴黎、瑞士 |
+| **欧洲** | 1 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹, Amsterdam2, 哥本哈根, 都柏林, 法兰克福, 伦敦, London2, 马赛, 纽波特 (威尔士), 巴黎, 斯德哥尔摩, 苏黎世 |
 | **北美** | 1 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、San Antonio、西雅图、硅谷、硅 Valley2、华盛顿特区、华盛顿 DC2、蒙特利尔、魁北克市、多伦多 |
 | **亚洲** | 2 |东亚、东南亚 |香港特别行政区, 吉隆坡, 新加坡, 新加坡 2, 台北 |
 | **印度** | 2 |印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
@@ -52,10 +58,10 @@ ms.locfileid: "68310366"
 | **韩国** | 2 |韩国中部、韩国南部 |釜山、首尔|
 | **阿拉伯联合酋长国** | 3 | 阿拉伯联合酋长国中部, 阿拉伯联合酋长国北部 | Dubai、Dubai2 |
 | **南非** | 3 |南非西部、南非北部 |开普敦、约翰内斯堡 |
-| **南美洲** | 3 |巴西南部 |圣保罗 |
+| **南美洲** | 3 |巴西南部 |Sao Paulo |
 
-### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>国家/地区云的区域和地缘政治边界
-下表提供了有关国家/地区云的区域和地缘政治边界的信息。
+## <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>适用于全国云的 Azure 区域和地缘政治边界
+下表提供了国家/地区云的区域和地缘政治边界的信息。
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- |
@@ -64,11 +70,11 @@ ms.locfileid: "68310366"
 | **中国北部** |中国北部、中国北部 2 |北京、北京 2 |
 | **德国** |德国中部、德国东部 |柏林、法兰克福 |
 
-标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。 需要启用 ExpressRoute 高级版附加组件才能支持全球连接。 不支持连接到国家/地区云环境。 如果需要，请与连接服务提供商合作。
+标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。 需要启用 ExpressRoute 高级版附加组件才能支持全球连接。 不支持连接到国家/地区云环境。 如有需要，请联系连接服务提供商。
 
-## <a name="locations"></a>连接服务提供商位置
+## <a name="partners"></a>ExpressRoute 连接服务提供商
 
-下表显示连接位置和每个位置的服务提供商。 若要查看服务提供商及其提供服务的位置，请参阅[按服务提供商列出的位置](expressroute-locations.md#locations)。 
+下表显示连接位置和每个位置的服务提供商。 若要查看服务提供商及其提供服务的位置，请参阅[按服务提供商列出的位置](expressroute-locations.md)。 
 
 **本地 Azure 区域**是每个对等位置的[ExpressRoute 本地](expressroute-faqs.md)可访问的区域。 **n/a**表示 ExpressRoute 本地在该对等位置不可用。
 
@@ -79,14 +85,15 @@ ms.locfileid: "68310366"
 | **阿姆斯特丹** | Equinix | 西欧 | Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、IX Reach、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Telia Carrier、Verizon、Zayo |
 | **阿姆斯特丹 2** | Interxion | 西欧 | CenturyLink Cloud Connect、CIX、Interxion、Vodafone |
 | **亚特兰大** | Equinix | 不适用 | Equinix、Megaport |
-| **奥克兰** | Vocus 组 NZ | 不适用 | Devoli、Kordia、Megaport、Vocus Group NZ |
-| **釜山** |LG CNS | 韩国南部 | LG CNS |
+| **奥克兰** | Vocus 组 NZ | 不适用 | Devoli、Kordia、Megaport、Spark NZ、Vocus Group NZ |
+| **釜山** |LG CNS | 韩国 | LG CNS |
 | **堪培拉** | CDC | 澳大利亚中部 | CDC |
 | **堪培拉 2** | CDC | 澳大利亚中部 2| CDC |
 | **开普敦** | Teraco | 南非西部 | Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
 | **金奈** | Tata Communications | 印度南部 | Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **金奈 2** | Airtel | 印度南部 | Airtel |
 | **芝加哥** | Equinix | 美国中北部 | Aryaka networks、网络, 在 & T NetBond, CenturyLink Cloud Connect, Cologix, Comcast, Coresite, Equinix, InterCloud, Internet2, Level 3 通信, Megaport, PacketFabric, PCCW 全局受限, 冲刺 (Sprint), Telia, Verizon, Zayo |
+| **哥本哈根** | Interxion | 不适用 | Interxion |
 | **达拉斯** | Equinix | 不适用 | Aryaka networks、网络, 在 & T NetBond, Cologix, Equinix, Internet2, Level 3 通信, Megaport, Neutrona 网络, Telmex Uninet, Telia 载波, Transtelco, Verizon, Zayo|
 | **丹佛** | CoreSite | 美国中西部 | CoreSite、Megaport、Zayo |
 | **Dubai** | Etisalat 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | Etisalat 阿拉伯联合酋长国 |
@@ -116,10 +123,11 @@ ms.locfileid: "68310366"
 | **圣保罗** | Equinix | 巴西南部 | Aryaka Networks、Ascenty Data Centers、British Telecom、Equinix、Level 3 Communications、Neutrona Networks、Orange、Tata Communications、Telefonica、UOLDIVEO |
 | **西雅图** | Equinix | 美国西部 2 | Aryaka networks、网络, Equinix, Level 3 通信, Megaport, Telus, Zayo |
 | **首尔** | KINX | 韩国中部 | KINX、LG CNS、Sejong Telecom |
-| **硅谷** | Equinix | 美国西部 | Aryaka networks、网络, 在 & T NetBond, 英国电信, CenturyLink Cloud Connect, Comcast, Coresite, Equinix, InterCloud, IX, 数据包, PacketFabric, Level 3 通信, Megaport, 橙色, 冲刺 (Sprint), Tata, Verizon, Zayo |
+| **硅谷** | Equinix | 美国西部 | Aryaka networks、网络, & T NetBond, 英国电信, CenturyLink Cloud Connect, Comcast, Coresite, Equinix, InterCloud, IX 到, 数据包, PacketFabric, Level 3 通信, Megaport, 橙色, 冲刺, Tata 通信, Telia 载波, Verizon, Zayo |
 | **硅 Valley2** | Coresite | 美国西部 | Coresite | 
 | **新加坡** | Equinix | 东南亚 | Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Telstra Corporation、Verizon、Vodafone |
 | **新加坡 2** | Global Switch | 东南亚 | Colt、Epsilon Global communication、Megaport、SingTel |
+| **斯德哥尔摩** | Equinix | 不适用 | Telia 承运商 |
 | **悉尼** | Equinix | 澳大利亚东部 | AARNet, AT & T NetBond, 英国电信, Devoli, Equinix, Kordia, Megaport, NEXTDC, NTT 通信, Optus, 橙色, Spark NZ, Telstra Corporation, TPG 电信, Verizon, Vocus 组 NZ |
 | **台北** | Chief Telecom | 不适用 | 首席电信, FarEasTone |
 | **东京** | Equinix | 日本东部 | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT EAST、Orange、Softbank、Verizon |

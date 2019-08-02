@@ -1,18 +1,19 @@
 ---
 title: Azure 备份 - 使用 Azure 导入/导出服务进行脱机备份或初始种子设定
 description: 了解如何在 Azure 备份中使用 Azure 导入/导出服务离线发送数据。 本文介绍如何使用 Azure 导入导出服务来脱机设定初始备份数据的种子。
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: saurse
-ms.openlocfilehash: e852e1595be5b564bd1a6326d41115496284506f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 2c628b94879e54616f294e4c5f349f241fbbb98b
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466792"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689476"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 通过脱机种子设定，Azure 备份可以使用磁盘将脱机备份数据上传到 Azure。
@@ -42,7 +43,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
   > [!NOTE]
   > 以下先决条件和工作流仅适用于使用[最新的 MARS 代理](https://aka.ms/azurebackup_agent)脱机备份文件和文件夹。 若要使用 System Center DPM 或 Azure 备份服务器执行工作负荷脱机备份，请参阅[此文](backup-azure-backup-server-import-export-.md)。 

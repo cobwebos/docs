@@ -2,23 +2,23 @@
 title: 体系结构概述 - Azure Active Directory | Microsoft Docs
 description: 了解什么是 Azure Active Directory 租户，以及如何使用 Azure Active Directory 管理 Azure。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed332f32fa9fdc154c72e45914e642a9dad4993
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b124475b44778ef3bb0dc9eba0c59bb3a277b85a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055714"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562043"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>什么是 Azure Active Directory 体系结构？
 使用 Azure Active Directory (Azure AD) 可以安全地管理用户对 Azure 服务和资源的访问。 Azure AD 随附了整套标识管理功能。 有关 Azure AD 功能的信息，请参阅[什么是 Azure Active Directory？](active-directory-whatis.md)
@@ -35,9 +35,9 @@ Azure AD 的地理分布式体系结构整合了全面监视、自动重新路�
  *  数据中心
 
 ### <a name="service-architecture-design"></a>服务体系结构设计
-构建可访问、可用且数据丰富的系统的最常见方法是通过独立的构建块或缩放单元。 对于 Azure AD 数据层，缩放单元称为“分区”  。 
+构建可访问、可用且数据丰富的系统的最常见方法是通过独立的构建块或缩放单元。 对于 Azure AD 数据层，缩放单元称为“分区”。 
 
-数据层包含多个可提供读写功能的前端服务。 下图显示了单目录分区的组件在整个地理分布式数据中心的传递方式。 
+数据层包含多个可提供读写功能的前端服务。 下图显示了单目录分区的组件在整个地理分布式数据中心内的交付方式。 
 
   ![单目录分区图示](./media/active-directory-architecture/active-directory-architecture.png)
 
@@ -45,11 +45,11 @@ Azure AD 体系结构的组件包括主要副本和次要副本。
 
 **主要副本**
 
-主要副本接收它所属的分区的所有写入操作   。 在向调用方返回成功消息之前，任何写入操作将立即复制到不同数据中心内的次要副本，从而确保写入操作具有异地冗余的持久性。
+主要副本接收它所属的分区的所有写入操作。 在向调用方返回成功消息之前，任何写入操作将立即复制到不同数据中心内的次要副本，从而确保写入操作具有异地冗余的持久性。
 
 **次要副本**
 
-所有目录*读取*从维护*辅助副本*，这是在物理分散在不同的地理区域的数据中心。 由于数据是以异步方式复制的，因此存在许多次要副本。 目录读取操作，例如身份验证请求是从靠近客户的数据中心提供服务。 次要副本负责提供读取可伸缩性。
+所有目录读取操作会通过物理分散在不同地理区域的数据中心内的次要副本提供服务。 由于数据是以异步方式复制的，因此存在许多次要副本。 目录读取操作（例如身份验证请求）通过靠近客户的数据中心提供服务。 次要副本负责提供读取可伸缩性。
 
 ### <a name="scalability"></a>可伸缩性
 
@@ -61,7 +61,7 @@ Azure AD 体系结构的组件包括主要副本和次要副本。
 
 ### <a name="continuous-availability"></a>连续可用性
 
-可用性（或运行时间）是指系统无中断运行的能力。 Azure AD 的高可用性的关键是服务跨多个地理位置分散的数据中心快速转移流量。 每个数据中心是独立的因此可以互不相干的故障模式。 通过这种高可用性设计，Azure AD 要求没有停机时间的维护活动。
+可用性（或运行时间）是指系统无中断运行的能力。 Azure AD 高可用性的关键在于，服务可跨多个地理分散的数据中心快速转移流量。 数据中心彼此独立，因此可以实现互不相干的故障模式。 通过这种高可用性设计，Azure AD 不需要停机即可进行维护活动。
 
 与企业 AD 设计相比，Azure AD 的分区设计得以简化，使用单主设计，其中包括精心编排的确定性主要副本故障转移过程。
 
@@ -73,7 +73,7 @@ Azure AD 体系结构的组件包括主要副本和次要副本。
 
 **数据持久性**
 
-执行写入操作就会永久提交到之前在确认至少两个数据中心。 通过第一个提交到主副本，写入以及然后立即将写入操作复制到至少一个其他数据中心发生这种情况。 此写操作可以确保托管主副本的数据中心的灾难性损失不会导致数据丢失。
+在确认某个写入操作之前，会持续将该操作提交到至少两个数据中心。 这通过首先将写入操作提交到主数据中心，然后立即将写入操作复制到其他至少一个数据中心来实现。 此写入操作可以确保托管主副本的数据中心发生潜在灾难性损失时不会导致数据丢失。
 
 Azure AD维护零[恢复时间目标 (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective)，以便不会丢失故障转移数据。 这包括：
 -  令牌颁发和目录读取操作
@@ -81,13 +81,13 @@ Azure AD维护零[恢复时间目标 (RTO)](https://en.wikipedia.org/wiki/Recove
 
 ### <a name="datacenters"></a>数据中心
 
-Azure AD 的副本存储在分布于世界各地的数据中心内。 有关详细信息，请参阅[Azure 全球基础结构](https://azure.microsoft.com/global-infrastructure/)。
+Azure AD 的副本存储在分布于世界各地的数据中心内。 有关详细信息，请参阅 [Azure 全球基础结构](https://azure.microsoft.com/global-infrastructure/)。
 
-Azure AD 具有以下特征的数据中心内进行操作：
+Azure AD 可跨数据中心运行，其特征如下：
 
- * 身份验证、Graph 其他 AD 服务驻留在网关服务的后面。 网关管理这些服务的负载均衡。 如果使用事务运行状况探测检测到任何不正常的服务器，网关会自动故障转移。 根据这些运行状况探测，网关动态地将流量路由到正常的数据中心。
- * 有关*读取*，目录中运行多个数据中心中的主动-主动配置具有次要副本和相应的前端服务。 如果出现的整个数据中心故障，流量将自动路由到不同的数据中心。
- *  有关*写入*，目录将跨数据中心故障转移主 （主控） 副本通过计划 （新的主副本同步到旧的主数据库） 或紧急故障转移过程。 复制到至少两个数据中心的任何提交，从而实现数据持久性。
+ * 身份验证、Graph 其他 AD 服务驻留在网关服务的后面。 网关管理这些服务的负载均衡。 如果使用事务运行状况探测检测到任何不正常的服务器，网关会自动故障转移。 网关根据这些运行状况探测，将流量动态路由到正常的数据中心。
+ * 对于读取操作，目录提供辅助副本以及在多个数据中心运行的、采用主动-主动配置的相应前端服务。 当整个数据中心发生故障时，流量将自动路由到其他数据中心。
+ *  对于写入操作，目录将通过计划的（将新的主副本同步到旧的主副本）或紧急故障转移过程，跨数据中心故障转移主（主控）副本。 通过将所有提交项复制到至少两个数据中心来实现数据持久性。
 
 **数据一致性**
 
@@ -95,7 +95,7 @@ Azure AD 具有以下特征的数据中心内进行操作：
 
 Azure AD 为面向次要副本的应用程序提供读写一致性，为此，它会将写入操作路由到主要副本，然后以异步方式将这些写入操作拉回到次要副本。
 
-使用 Azure AD 图形 API 的应用程序写入操作经过抽象化，可与目录副本保持相关性，实现读写一致性。 Azure AD Graph 服务维护具有关联的逻辑会话到辅助副本用于读取;graph 服务缓存使用的辅助副本数据中心中的分布式的缓存中的"副本令牌"，捕获关联。 然后，此令牌可用于同一个逻辑会话中的后续操作。 若要继续使用同一个逻辑会话，后续请求必须路由到同一个 Azure AD 数据中心。 不能继续逻辑会话，则目录客户端请求被传送到多个 Azure AD 数据中心;如果发生这种情况在客户端具有多个逻辑会话具有独立的读写一致性。
+使用 Azure AD 图形 API 的应用程序写入操作经过抽象化，可与目录副本保持相关性，实现读写一致性。 Azure AD Graph 服务维护一个逻辑会话, 该会话与用于读取的辅助副本关联;在 "副本令牌" 中捕获关系, 关系图服务在辅助副本数据中心使用分布式缓存进行缓存。 然后，此令牌可用于同一个逻辑会话中的后续操作。 若要继续使用同一个逻辑会话, 必须将后续请求路由到同一个 Azure AD datacenter。 如果目录客户端请求路由到多个 Azure AD 数据中心, 则无法继续逻辑会话;如果发生这种情况, 则客户端具有多个具有独立读写一致性的逻辑会话。
 
  >[!NOTE]
  >写入操作立即复制到逻辑会话读取操作所颁发到的次要副本。

@@ -10,18 +10,19 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: e9d6badf76efd03c0520a728af7b3e47b25f200a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: d54f3c72462e6702b09068092b7c18ea50f12048
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61339579"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704995"
 ---
 # <a name="field-of-study-entity"></a>研究领域实体
 
 <sub> *以下属性为研究领域实体专用属性。(Ty = '6') </sub>
 
-名称    |描述                            |Type       | 操作
+名称    |描述                            |类型       | 操作
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |实体 ID                              |Int64      |等于
 FN      |研究领域规范化名称         |String     |等于

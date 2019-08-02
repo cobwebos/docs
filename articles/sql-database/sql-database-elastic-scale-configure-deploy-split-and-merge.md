@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 5aff7e93dcfaa5320be0d6f7d427abcdc88c69e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8c50f492c28bf1e009d15d6332e939959190a49
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60585502"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568500"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 
@@ -33,9 +32,9 @@ ms.locfileid: "60585502"
 
 文件放置在名为 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目录中，其中 *x.x.xxx.x* 表示版本号。 拆分/合并服务文件可在 **content\splitmerge\service** 子目录中找到；拆分/合并 PowerShell 脚本（和所需的客户端 dll）可在 **content\splitmerge\powershell** 子目录中找到。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 1. 创建将用作拆分/合并状态数据库的 Azure SQL DB。 转到 [Azure 门户](https://portal.azure.com)。 创建新的 **SQL** 数据库。 为数据库指定一个名称，并创建一个新的管理员和密码。 确保记录该名称和密码以供日后使用。
-2. 确保 Azure SQL DB 服务器允许 Azure 服务与其连接。 在门户上的“防火墙设置”  中，确保“允许访问 Azure 服务”  设置设为“打开”  。 单击“保存”图标。
+2. 确保 Azure SQL DB 服务器允许 Azure 服务与其连接。 在门户上的“防火墙设置”中，确保“允许访问 Azure 服务”设置设为“打开”。 单击“保存”图标。
 3. 创建用于诊断输出的 Azure 存储帐户。
 4. 创建用于拆分/合并服务的 Azure 云服务。
 
@@ -74,7 +73,7 @@ ms.locfileid: "60585502"
     -sv MyCert.pvk MyCert.cer
    ```
 
-将要求提供密码以保护私钥。 输入强密码并进行确认。 之后，系统会提示再次输入该密码。 在完成后单击“是”  ，以将证书导入到“受信任的根证书颁发机构”存储中。
+将要求提供密码以保护私钥。 输入强密码并进行确认。 之后，系统会提示再次输入该密码。 在完成后单击“是”，以将证书导入到“受信任的根证书颁发机构”存储中。
 
 ### <a name="create-a-pfx-file"></a>创建 PFX 文件
 从执行 makecert 的相同窗口中执行以下命令；使用用于创建证书的相同密码：
@@ -82,19 +81,19 @@ ms.locfileid: "60585502"
     pvk2pfx -pvk MyCert.pvk -spc MyCert.cer -pfx MyCert.pfx -pi <password>
 
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>将客户端证书导入到个人存储中
-1. 在 Windows 资源管理器中，双击“MyCert.pfx”  。
-2. 在“证书导入向导”  中，选择“当前用户”  ，并单击“下一步”  。
-3. 确认文件路径，并单击“下一步”  。
-4. 键入密码，保持选中“包括所有扩展属性”  ，并单击“下一步”  。
-5. 保持选中“自动选择证书存储[…]”  ，并单击“下一步”  。
-6. 依次单击“完成”  和“确定”  。
+1. 在 Windows 资源管理器中，双击“MyCert.pfx”。
+2. 在“证书导入向导”中，选择“当前用户”，并单击“下一步”。
+3. 确认文件路径，并单击“下一步”。
+4. 键入密码，保持选中“包括所有扩展属性”，并单击“下一步”。
+5. 保持选中“自动选择证书存储[…]”，并单击“下一步”。
+6. 依次单击“完成”和“确定”。
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>将 PFX 文件上传到云服务
 1. 转到 [Azure 门户](https://portal.azure.com)。
-2. 选择“云服务”  。
+2. 选择“云服务”。
 3. 选择之前为拆分/合并服务创建的云服务。
-4. 单击顶部菜单上的“证书”  。
-5. 单击底部栏中的“上载”  。
+4. 单击顶部菜单上的“证书”。
+5. 单击底部栏中的“上载”。
 6. 选择 PFX 文件并输入上面所述的相同密码。
 7. 完成操作后，从列表中的新条目复制证书指纹。
 
@@ -122,10 +121,10 @@ ms.locfileid: "60585502"
 ## <a name="deploy-your-service"></a>部署服务
 1. 转到 [Azure 门户](https://portal.azure.com)
 2. 选择先前创建的云服务。
-3. 单击“概览”。 
-4. 选择过渡环境，并单击“上传”  。
+3. 单击“概览”。
+4. 选择过渡环境，并单击“上传”。
 5. 在对话框中，输入一个部署标签。 对于“程序包”和“配置”，单击“从本地”，并选择 **SplitMergeService.cspkg** 文件和之前配置的 cscfg 文件。
-6. 确保选中标记为“即使一个或多个角色包含单个实例也部署”  的复选框。
+6. 确保选中标记为“即使一个或多个角色包含单个实例也部署”的复选框。
 7. 点击右下角的勾选按钮以开始部署。 它预计需要几分钟的时间才能完成。
 
 
@@ -143,11 +142,11 @@ ms.locfileid: "60585502"
    ```
 
 * 确保服务器名称不以 **https://** 开头。
-* 确保 Azure SQL DB 服务器允许 Azure 服务与其连接。 为此，请在门户中打开数据库，并确保“允许访问 Azure 服务”  设置设为“启用”。
+* 确保 Azure SQL DB 服务器允许 Azure 服务与其连接。 为此，请在门户中打开数据库，并确保“允许访问 Azure 服务”设置设为“启用”。
 
 ## <a name="test-the-service-deployment"></a>测试服务部署
 ### <a name="connect-with-a-web-browser"></a>使用 Web 浏览器建立连接
-确定拆分/合并服务的 Web 终结点。 可以在门户中找到此终结点，方法是转到云服务的“概述”  并在右侧的“站点 URL”  下查找。 由于默认的安全设置将禁用 HTTP 终结点，因此请将 **http://** 替换为 **https://** 。 将此 URL 的页面加载到浏览器中。
+确定拆分/合并服务的 Web 终结点。 可以在门户中找到此终结点，方法是转到云服务的“概述”并在右侧的“站点 URL”下查找。 由于默认的安全设置将禁用 HTTP 终结点，因此请将 **http://** 替换为 **https://** 。 将此 URL 的页面加载到浏览器中。
 
 ### <a name="test-with-powershell-scripts"></a>使用 PowerShell 脚本进行测试
 可以通过运行包含的示例 PowerShell 脚本测试部署和环境。
@@ -163,7 +162,7 @@ ms.locfileid: "60585502"
    <table style="width:100%">
      <tr>
        <th>PowerShell 文件</th>
-       <th>Steps</th>
+       <th>步骤</th>
      </tr>
      <tr>
        <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
@@ -185,7 +184,7 @@ ms.locfileid: "60585502"
    <table style="width:100%">
      <tr>
        <th>PowerShell 文件</th>
-       <th>Steps</th>
+       <th>步骤</th>
      </tr>
    <tr>
        <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
@@ -311,7 +310,7 @@ ms.locfileid: "60585502"
 
 拆分/合并服务不会为用户创建目标数据库（或为数据库中的任何表创建架构）。 在将请求发送到服务之前，必须预先创建它们。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 在运行示例 powershell 脚本时，可能会看到下面的消息：
 
    ```

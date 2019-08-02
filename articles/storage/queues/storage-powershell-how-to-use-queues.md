@@ -1,20 +1,19 @@
 ---
 title: 使用 PowerShell 对 Azure 队列存储执行操作 - Azure 存储
 description: 如何使用 PowerShell 对 Azure 队列存储执行操作
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: conceptual
-ms.date: 05/15/2019
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 05/15/2019
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 6e8640b136c52f500de010f842ab73678acdce4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: bf5cf668620eb08e0d808c2052eac59b15af740c
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991351"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721228"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 队列存储操作
 
@@ -35,7 +34,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过 H
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录  Azure
 
 运行 `Connect-AzAccount` 命令以登录 Azure 订阅，并按照屏幕上的说明操作。
 
@@ -45,7 +44,7 @@ Connect-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>检索位置列表
 
-如果你不知道要使用哪个位置，可以列出可用的位置。 显示列表后，找到要使用的位置。 本练习使用 **eastus**。 将此内容存储在变量 location  中，以供以后使用。
+如果你不知道要使用哪个位置，可以列出可用的位置。 显示列表后，找到要使用的位置。 本练习使用 **eastus**。 将此内容存储在变量 location 中，以供以后使用。
 
 ```powershell
 Get-AzLocation | select Location
@@ -56,7 +55,7 @@ $location = "eastus"
 
 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 将资源组名称存储在变量中，以供以后使用。 本示例在 eastus  区域中创建名为 howtoqueuesrg  的资源组。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 将资源组名称存储在变量中，以供以后使用。 本示例在 eastus 区域中创建名为 howtoqueuesrg 的资源组。
 
 ```powershell
 $resourceGroup = "howtoqueuesrg"
@@ -104,7 +103,7 @@ Get-AzStorageQueue -Context $ctx | select Name
 
 ## <a name="add-a-message-to-a-queue"></a>向队列添加消息
 
-影响队列中的实际消息的操作使用 PowerShell 中公开的 .NET 存储客户端库。 若要向队列添加一条消息，创建消息对象的新实例[Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message)类。 接下来，调用 [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage) 方法。 可从字符串（UTF-8 格式）或字节数组创建 CloudQueueMessage。
+影响队列中的实际消息的操作使用 PowerShell 中公开的 .NET 存储客户端库。 若要在队列中添加消息，请创建消息对象 [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) 类的新实例。 接下来，调用 [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage) 方法。 可从字符串（UTF-8 格式）或字节数组创建 CloudQueueMessage。
 
 以下示例演示如何向队列中添加消息。
 
@@ -132,9 +131,9 @@ $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 **不可见超时**定义了消息在再次可供处理之前保持不可见的时间。 默认为 30 秒。
 
-代码分两步从队列中读取消息。 当您调用[Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage)方法时，你在队列中获取下一条消息。 从 **GetMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 若要完成从队列中删除消息，请调用[Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage)方法。
+代码分两步从队列中读取消息。 调用 [Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) 方法时，将获取队列中的下一条消息。 从 **GetMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 若要完成从队列中删除消息，请调用 [Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) 方法。
 
-在以下示例中，你将读完三条队列消息，然后等待 10 秒（不可见超时）。 然后再次读取这三条消息，读取后，通过调用 DeleteMessage   删除该消息。 如果在删除消息后尝试读取队列，$queueMessage 将返回为 NULL。
+在以下示例中，你将读完三条队列消息，然后等待 10 秒（不可见超时）。 然后再次读取这三条消息，读取后，通过调用 DeleteMessage 删除该消息。 如果在删除消息后尝试读取队列，$queueMessage 将返回为 NULL。
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue

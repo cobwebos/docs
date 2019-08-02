@@ -11,26 +11,25 @@ keywords: SQL Server 云, 云中 SQL Server, PaaS 数据库, 云 SQL Server, DBa
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/11/2019
-ms.openlocfilehash: 9e95569ba3fe65ea5bce7d6a95a24324235e9a7f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 344d201489a409824bb52f928ba5a87bd968500a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447754"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567090"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure"></a>在 Azure 中选择适当的 SQL Server 选项
 
-在 Azure 中，可让 SQL Server 工作负荷在托管的基础结构 (IaaS) 或托管的服务 ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) 中运行。 在 PaaS 中，有多个部署选项，每个部署选项中有多个服务层。 在 PaaS 与 IaaS 之间作出抉择时，需要提出的一个重要问题是，你是要自行管理数据库、应用修补程序、创建备份，还是将这些操作委托给 Azure？
+在 Azure 中，可让 SQL Server 工作负荷在托管的基础结构 (IaaS) 或托管的服务 ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) 中运行。 在 PaaS 中，有多个部署选项，每个部署选项中有多个服务层级。 在 PaaS 与 IaaS 之间作出抉择时，需要提出的一个重要问题是，你是要自行管理数据库、应用修补程序、创建备份，还是将这些操作委托给 Azure？
 根据具体的答案，可以选择以下选项：
 
-- [Azure SQL 数据库](sql-database-technical-overview.md)：完全托管的 SQL 数据库引擎，基于最新稳定的 SQL Server Enterprise Edition。 这是托管在 Azure 云中的关系数据库即服务 (DBaaS)，属于“平台即服务 (PaaS)”行业类别  。 SQL 数据库有多个部署选项，每个选项都以 Microsoft 所拥有、托管及维护的标准化硬件和软件为基础。 使用 SQL 数据库，可以使用当在 SQL Server（无论是本地的还是 Azure 虚拟机中的）中使用时需要进行广泛配置的内置特性和功能。 使用 SQL 数据库时，可以即用即付，并使用纵向扩展或横向扩展选项获得更强大的功能且不会中断服务。 SQL 数据库具有 SQL Server 所不能提供的其他功能，例如，内置的高可用性、智能和管理。 Azure SQL 数据库提供了以下部署选项：
+- [Azure SQL 数据库](sql-database-technical-overview.md)：完全托管的 SQL 数据库引擎，基于最新稳定的 SQL Server Enterprise Edition。 这是托管在 Azure 云中的关系数据库即服务 (DBaaS)，属于“平台即服务 (PaaS)”行业类别。 SQL 数据库有多个部署选项，每个选项都以 Microsoft 所拥有、托管及维护的标准化硬件和软件为基础。 使用 SQL 数据库，可以使用当在 SQL Server（无论是本地的还是 Azure 虚拟机中的）中使用时需要进行广泛配置的内置特性和功能。 使用 SQL 数据库时，可以即用即付，并使用纵向扩展或横向扩展选项获得更强大的功能且不会中断服务。 SQL 数据库具有 SQL Server 所不能提供的其他功能，例如，内置的高可用性、智能和管理。 Azure SQL 数据库提供了以下部署选项：
   
   - 作为[单一数据库](sql-database-single-database.md)，通过 SQL 数据库服务器托管自己的资源集。 单一数据库类似于 SQL Server 中的[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)。 此选项已针对新式应用程序开发进行优化，可用于开发新型的云原生应用程序。
   - 作为[弹性池](sql-database-elastic-pool.md)，它是一个数据库集合，具有通过 SQL 数据库服务器管理的共享资源集。 单一数据库可以移入或移出弹性池。 此选项已针对新式应用程序开发进行优化，可用于使用多租户 SaaS 应用程序开发新型的云原生应用程序。
   - 作为[托管实例](sql-database-managed-instance.md)，它是系统和用户数据库的集合，具有共享的资源集。 托管实例类似于 [Microsoft SQL Server 数据库引擎] 的实例，为数据库和实例范围内的其他功能提供共享的资源。 托管实例支持从本地迁移数据库，只要求对数据库进行极少量的更改，甚至根本不需要更改。 此选项提供 Azure SQL 数据库的所有 PaaS 优势，但同时也添加了以前只在 SQL VM 中提供的功能。 这包括本机虚拟网络 (VNet)，以及与本地 SQL Server 的接近 100% 的兼容性。
-- [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 属于“基础结构即服务 (IaaS)”行业类别，可让你在 Azure 云中的完全托管式虚拟机上运行 SQL Server。  [SQL Server 虚拟机](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)也在 Microsoft 所拥有、托管及维护的标准化硬件上运行。 使用 VM 上的 SQL Server 时，既可使用 SQL Server 映像中已包含的 SQL Server 许可证即付即用，也可方便地使用现有的许可证。 此外，可按需停止或恢复 VM。在 Azure 上运行的云中 Windows Server 或 Linux 虚拟机 (VM) 上安装并托管的 SQL Server 也称为基础结构即服务 (IaaS)。 Azure 虚拟机上的 SQL Server 非常适合用于迁移本地 SQL Server 数据库和应用程序，无需进行任何数据库更改。 所有当前 SQL Server 版本都可安装在 IaaS 虚拟机中。 与 SQL 数据库之间的最重要差别在于，SQL Server VM 允许完全控制数据库引擎。 可以选择维护/修补何时开始、将恢复模式更改为简单模式或批量记录模式，以更快地加载更少的日志、根据需要暂停或启动引擎，并可以完全自定义 SQL Server 数据库引擎。 控制度的提高也意味着在管理虚拟机方面需要承担更大的责任。
+- [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 属于“基础结构即服务 (IaaS)”行业类别，可让你在 Azure 云中的完全托管式虚拟机上运行 SQL Server。 [SQL Server 虚拟机](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)也在 Microsoft 所拥有、托管及维护的标准化硬件上运行。 使用 VM 上的 SQL Server 时，既可使用 SQL Server 映像中已包含的 SQL Server 许可证即付即用，也可方便地使用现有的许可证。 此外，可按需停止或恢复 VM。在 Azure 上运行的云中 Windows Server 或 Linux 虚拟机 (VM) 上安装并托管的 SQL Server 也称为基础结构即服务 (IaaS)。 Azure 虚拟机上的 SQL Server 非常适合用于迁移本地 SQL Server 数据库和应用程序，无需进行任何数据库更改。 所有当前 SQL Server 版本都可安装在 IaaS 虚拟机中。 与 SQL 数据库之间的最重要差别在于，SQL Server VM 允许完全控制数据库引擎。 可以选择维护/修补何时开始、将恢复模式更改为简单模式或批量记录模式，以更快地加载更少的日志、根据需要暂停或启动引擎，并可以完全自定义 SQL Server 数据库引擎。 控制度的提高也意味着在管理虚拟机方面需要承担更大的责任。
 
 下表列出了这些选项之间的主要差别：
 
@@ -75,13 +74,13 @@ ms.locfileid: "67447754"
 | | SQL 数据库中的单一数据库和弹性池 | SQL 数据库托管实例 |采用 SQL Server 的 Azure 虚拟机 |
 | --- | --- | --- |---|
 | **最适用于：** |需要使用最新的 SQL Server 稳定功能，且开发与面市时间有限的新云式设计应用程序。 | 需要使用最新的 SQL Server 稳定功能，并且在进行极少量更改的情况下迁移到云中的新应用程序或现有本地应用程序。  | 需要快速迁移到云中且只需进行极少量更改甚至不需要任何更改的现有应用程序。 想要快速完成开发和测试方案，但又不想购买本地 SQL Server 非生产硬件。 |
-|  | 需要对数据库内置高可用性、灾难恢复和升级的团队。 | 与 SQL 数据库中的单一数据库和池化数据库相同。 | 可为 SQL Server 配置、微调、自定义和管理高可用性、灾难恢复与修补的团队。 提供的某些自动化功能可极大地简化此操作。 |
-|  | 不想要管理基础操作系统和配置设置的团队。 | 与 SQL 数据库中的单一数据库和池化数据库相同。 | 需要一个具有完全管理权限的自定义环境。 |
+|  | 需要对数据库内置高可用性、灾难恢复和升级的团队。 | 与 SQL 数据库中的单一数据库和共用数据库相同。 | 可为 SQL Server 配置、微调、自定义和管理高可用性、灾难恢复与修补的团队。 提供的某些自动化功能可极大地简化此操作。 |
+|  | 不想要管理基础操作系统和配置设置的团队。 | 与 SQL 数据库中的单一数据库和共用数据库相同。 | 需要一个具有完全管理权限的自定义环境。 |
 |  | 最多 100 TB 的数据库。 | 最多 8 TB。 | 存储最大为 64 TB 的 SQL Server 实例。 此实例可以根据需要支持任意数目的数据库。 |
 | **兼容性** | 支持大多数本地数据库级功能。 | 几乎支持所有的本地实例级和数据库级功能。 | 支持所有本地功能。 |
-| **资源：** | 不想使用 IT 资源来配置和管理底层基础结构，而是重点关注应用层。 | 与 SQL 数据库中的单一数据库和池化数据库相同。 | 将一些 IT 资源用于配置和管理。 提供的某些自动化功能可极大地简化此操作。 |
-| **总拥有成本：** | 消除硬件成本并减少管理成本。 | 与 SQL 数据库中的单一数据库和池化数据库相同。 | 消除硬件成本。 |
-| **业务连续性：** |除[内置容错基础结构功能](sql-database-high-availability.md)以外，Azure SQL 数据库还提供[自动备份](sql-database-automated-backups.md)、[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)、[异地还原](sql-database-recovery-using-backups.md#geo-restore)、[活动异地复制](sql-database-active-geo-replication.md)和[自动故障转移组](sql-database-auto-failover-group.md)等功能来提高业务连续性。 有关详细信息，请参阅 [《SQL Database business continuity overview》](sql-database-business-continuity.md)（SQL 数据库业务连续性概述）。 | 与 SQL 数据库中的单一数据库和池化数据库相同，此外还提供用户启动的仅复制备份功能。 | 使用 Azure VM 上的 SQL Server 可以设置高可用性和灾难恢复解决方案，以满足数据库的具体需求。 因此，可以构建针对应用程序高度优化的系统。 可以按需求自行测试并运行故障转移。 有关详细信息，请参阅 [《High Availability and Disaster Recovery for SQL Server on Azure Virtual Machines》](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)（Azure 虚拟机中 SQL Server 的高可用性和灾难恢复）。 |
+| **资源：** | 不想使用 IT 资源来配置和管理底层基础结构，而是重点关注应用层。 | 与 SQL 数据库中的单一数据库和共用数据库相同。 | 将一些 IT 资源用于配置和管理。 提供的某些自动化功能可极大地简化此操作。 |
+| **总拥有成本：** | 消除硬件成本并减少管理成本。 | 与 SQL 数据库中的单一数据库和共用数据库相同。 | 消除硬件成本。 |
+| **业务连续性：** |除[内置容错基础结构功能](sql-database-high-availability.md)以外，Azure SQL 数据库还提供[自动备份](sql-database-automated-backups.md)、[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)、[异地还原](sql-database-recovery-using-backups.md#geo-restore)、[活动异地复制](sql-database-active-geo-replication.md)和[自动故障转移组](sql-database-auto-failover-group.md)等功能来提高业务连续性。 有关详细信息，请参阅 [《SQL Database business continuity overview》](sql-database-business-continuity.md)（SQL 数据库业务连续性概述）。 | 与 SQL 数据库中的单一数据库和共用数据库相同，此外还提供用户启动的仅复制备份功能。 | 使用 Azure VM 上的 SQL Server 可以设置高可用性和灾难恢复解决方案，以满足数据库的具体需求。 因此，可以构建针对应用程序高度优化的系统。 可以按需求自行测试并运行故障转移。 有关详细信息，请参阅 [《High Availability and Disaster Recovery for SQL Server on Azure Virtual Machines》](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)（Azure 虚拟机中 SQL Server 的高可用性和灾难恢复）。 |
 | **混合云：** |本地应用程序可以访问 Azure SQL 数据库中的数据。 | 使用 Azure Express Route 或 VPN 网关[实现本机虚拟网络](sql-database-managed-instance-vnet-configuration.md)并连接到本地环境。 | 使用 Azure VN 上的 SQL Server，应用程序可以一部分在云中运行，一部分在本地运行。 例如，可以通过 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)，将本地网络和 Active Directory 域扩展到云中。 有关混合云解决方案的详细信息，请参阅[将本地数据解决方案扩展到云](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)。 |
 |  | 作为订阅服务器支持使用 [SQL Server 事务复制](https://msdn.microsoft.com/library/mt589530.aspx) 来复制数据。 | 托管实例支持复制（目前为预览版功能）。 | 完全支持使用 [SQL Server 事务复制](https://msdn.microsoft.com/library/mt589530.aspx)、[Always On 可用性组](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)、集成服务和日志传送来复制数据。 此外，还完全支持传统的 SQL Server 备份 |
 |  | | |
@@ -91,25 +90,25 @@ ms.locfileid: "67447754"
 有多个因素可能会影响你决定选择 PaaS 或 IaaS 来托管 SQL 数据库：
 
 - [成本](#cost) - PaaS 和 IaaS 选项都包括基本价格，其中涵盖了底层基础结构和许可证的费用。 但是，使用 IaaS 选项时，需要投入额外的时间和资源来管理数据库，而 PaaS 的价格已包括这些管理功能的费用。 选择 IaaS 选项可以在不使用资源时将其关闭，以降低成本；对于 PaaS 版本，除非你删除资源，然后在需要时重新创建资源，否则它会一直运行。
-- [管理](#administration) - PaaS 选项可以减少管理数据库所要投入的时间量。 但是，它还会限制你可以执行或运行的自定义管理任务和脚本的范围。 例如，CLR 不支持使用单个或共用数据库，但支持的托管实例。 此外，在 PaaS 中任何部署选项不支持使用跟踪标志。
+- [管理](#administration) - PaaS 选项可以减少管理数据库所要投入的时间量。 但是，它还会限制你可以执行或运行的自定义管理任务和脚本的范围。 例如, 单个或共用数据库不支持 CLR, 但是对于托管实例, 不支持 CLR。 此外, PaaS 中没有部署选项支持使用跟踪标志。
 - [服务级别协议](#service-level-agreement-sla) - IaaS 和 PaaS 都提供较高的行业标准 SLA。 在基础结构方面，PaaS 选项保证 99.99% 的 SLA，而 IaaS 保证 99.95% 的 SLA，这意味着，需要实施附加的机制才能确保数据库的可用性。 在极端情况下，若要实施与 PaaS 相当的高可用性解决方案，可能需要在 VM 中创建附加的 SQL Server 并配置 AlwaysOn 可用性组，而这可能会数据库成本翻倍。
 - [迁移到 Azure 所需的时间](#market) - Azure VM 中 SQL Server 与你的环境完全匹配，因此，从本地迁移到 Azure SQL VM，与在不同的本地服务器之间迁移数据库没有什么不同。 托管实例还可以实现极其轻松的迁移；但是，在迁移到托管实例之前，可能需要应用某些更改。
 
 以下部分将更详细地讨论这些因素。
 
-### <a name="cost"></a>成本
+### <a name="cost"></a>开销
 
 无论是现金不足的新公司，或是在预算有限的情况下运作的已成立公司的小组，有限资金经常是决定数据库托管方式的主要考虑因素。 在本部分中，将了解 Azure 中有关以下两个关系数据库选项的计费和许可基本概念：SQL 数据库和 Azure VM 中的 SQL Server。 还将了解如何计算应用程序总成本。
 
 #### <a name="billing-and-licensing-basics"></a>计费和许可基础概念
 
-目前，**SQL 数据库**以服务的形式出售，提供了多个部署选项和多个服务层，根据资源采用不同的价格，所有资源根据所选的服务层和计算大小，以固定费率向你收取每小时费用。 有关当前支持的服务层级、计算大小和存储量的最新信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
+目前，**SQL 数据库**以服务的形式出售，提供了多个部署选项和多个服务层级，根据资源采用不同的价格，所有资源根据所选的服务层级和计算大小，以固定费率向你收取每小时费用。 有关当前支持的服务层级、计算大小和存储量的最新信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
-- 使用 SQL 数据库单一数据库时，可根据需求选择各种价格的服务层，基本层的价格为 5 美元/月。
+- 使用 SQL 数据库单一数据库时，可根据需求选择各种价格的服务层级，“基本”层级的价格为 5 美元/月。
 - 你可以创建[弹性池](sql-database-elastic-pool.md)，在数据库实例之间共享资源，以降低成本和应对使用高峰期。
 - 使用 Azure SQL 数据库托管实例时，还可以自带许可证。 有关自带许可的详细信息，请参阅 [Azure 上通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)，或使用 [Azure 混合权益计算器](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database)来了解如何将成本**最高节省 40%** 。
 
-此外，需要对固定的 [数据传输速率](https://azure.microsoft.com/pricing/details/data-transfers/)的 Internet 传出流量付费。 可以动态调整服务层和计算大小，以满足应用程序的不同吞吐量需求。
+此外，需要对固定的 [数据传输速率](https://azure.microsoft.com/pricing/details/data-transfers/)的 Internet 传出流量付费。 可以动态调整服务层级和计算大小，以满足应用程序的不同吞吐量需求。
 
 使用 **Azure SQL 数据库**，Microsoft 会自动配置、修补和升级数据库软件，从而可以降低管理成本。 此外，它的 [内置备份](sql-database-automated-backups.md) 功能可帮助你大幅降低成本，尤其是拥有大量的数据库时。
 
@@ -156,7 +155,7 @@ ms.locfileid: "67447754"
 
 ### <a name="market"></a>迁移到 Azure 的时机
 
-当开发人员工作效率和新解决方案的快速面市时间至关重要时，SQL 数据库单一数据库或弹性池  是云设计应用程序的理想解决方案。 此选项提供类似于编程 DBA 的功能，非常适合云架构师和开发员，因为它能降低管理基础操作系统和数据库的需求。
+当开发人员工作效率和新解决方案的快速面市时间至关重要时，SQL 数据库单一数据库或弹性池是云设计应用程序的理想解决方案。 此选项提供类似于编程 DBA 的功能，非常适合云架构师和开发员，因为它能降低管理基础操作系统和数据库的需求。
 
 **SQL 数据库托管实例**大大简化了将现有应用程序迁移到 Azure SQL 数据库的过程，从而能快速地将已迁移的数据库应用程序在 Azure 中推向市场。
 
@@ -167,4 +166,4 @@ ms.locfileid: "67447754"
 - 若要开始使用 SQL 数据库，请参阅[第一个 Azure SQL 数据库](sql-database-single-database-get-started.md)。
 - 请参阅 [《SQL Database pricing》](https://azure.microsoft.com/pricing/details/sql-database/)（SQL 数据库定价）。
 - 若要开始在 Azure VM 上使用 SQL Server，请参阅 [《Provision a SQL Server virtual machine in Azure》](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) （在 Azure 中预配 SQL Server 虚拟机）。
-- [确定适当 Azure SQL 数据库/托管实例的 SKU 的本地数据库](/sql/dma/dma-sku-recommend-sql-db/)。
+- [确定适合本地数据库的 Azure SQL 数据库/托管实例 SKU](/sql/dma/dma-sku-recommend-sql-db/)。

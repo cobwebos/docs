@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c962e95b3d213c4089b51f58139cab17a3332cbd
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: a96d17ae7fbe94877032e7b4b2aacb63f6e070ca
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853066"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562250"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>用于登录用户的 Web 应用 - 代码配置
 
@@ -104,16 +104,16 @@ ms.locfileid: "67853066"
 }
 ```
 
-在 Azure 门户中，需要在“身份验证”页中为应用程序注册的回复 URI  必须与这些 URL 匹配；也就是说，对于上面的两个配置文件，它们需要是 `https://localhost:44321/signin-oidc`（因为 applicationUrl 是 `http://localhost:3110`），但 `sslPort` 已指定 (44321)，且 `CallbackPath` 为 `/signin-oidc`（在 `appsettings.json` 中定义）。
+在 Azure 门户中，需要在“身份验证”页中为应用程序注册的回复 URI必须与这些 URL 匹配；也就是说，对于上面的两个配置文件，它们需要是 `https://localhost:44321/signin-oidc`（因为 applicationUrl 是 `http://localhost:3110`），但 `sslPort` 已指定 (44321)，且 `CallbackPath` 为 `/signin-oidc`（在 `appsettings.json` 中定义）。
   
 注销 URI 将采用相同方式设置为 `https://localhost:44321/signout-callback-oidc`。
 
 ### <a name="initialization-code"></a>初始化代码
 
-在 ASP.NET Core Web 应用（和 Web API）中，执行应用程序初始化的代码位于 `Startup.cs` 文件中。若要使用 Microsoft 标识平台（以前称为 Azure AD）v2.0 添加身份验证，需添加以下代码。 代码中的注释应该浅显易懂。
+在 ASP.NET Core web 应用 (和 web api) 中, 执行应用程序初始化的代码位于`Startup.cs`文件中, 若要添加 Microsoft 标识平台 (以前称为 Azure AD v2.0) 的身份验证, 则需要添加以下代码。 代码中的注释应该浅显易懂。
 
   > [!NOTE]
-  > 如果通过 Visual Studio 或 `dotnet new mvc` 使用默认的 ASP.NET Core Web 项目来启动项目，则可默认使用 `AddAzureAD` 方法，因为相关的包会自动加载。 但是，如果从头生成一个项目并尝试使用以下代码，则建议将 NuGet 包“Microsoft.AspNetCore.Authentication.AzureAD.UI”  添加到项目，使 `AddAzureAD` 方法可用。
+  > 如果通过 Visual Studio 或 `dotnet new mvc` 使用默认的 ASP.NET Core Web 项目来启动项目，则可默认使用 `AddAzureAD` 方法，因为相关的包会自动加载。 但是，如果从头生成一个项目并尝试使用以下代码，则建议将 NuGet 包“Microsoft.AspNetCore.Authentication.AzureAD.UI”添加到项目，使 `AddAzureAD` 方法可用。
   
 ```CSharp
  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
@@ -122,7 +122,7 @@ ms.locfileid: "67853066"
  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
  {
   // The ASP.NET core templates are currently using Azure AD v1.0, and compute
-  // the authority (as {Instance}/{TenantID}). We want to use the Microsoft Identity Platform v2.0 endpoint
+  // the authority (as {Instance}/{TenantID}). We want to use the Microsoft identity platform endpoint
   options.Authority = options.Authority + "/v2.0/";
 
   // If you want to restrict the users that can sign-in to specific organizations
@@ -133,7 +133,7 @@ ms.locfileid: "67853066"
 
   // Set the nameClaimType to be preferred_username.
   // This change is needed because certain token claims from Azure AD v1.0 endpoint
-  // (on which the original .NET core template is based) are different in Azure AD v2.0 endpoint.
+  // (on which the original .NET core template is based) are different in Microsoft identity platform endpoint.
   // For more details see [ID Tokens](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)
   // and [Access Tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
   options.TokenValidationParameters.NameClaimType = "preferred_username";
@@ -176,7 +176,7 @@ ms.locfileid: "67853066"
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
+     // The `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0
      // The `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
      ClientId = clientId,

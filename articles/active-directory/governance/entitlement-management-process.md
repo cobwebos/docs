@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ad17f4c4d338e1d0b8118c1a172e0aaad7118e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: eb5f322d8bc974274f7f2da7811b124499224635
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489101"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678131"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Azure AD 授权管理 (预览版) 中的请求流程和电子邮件通知
 
@@ -47,7 +47,7 @@ ms.locfileid: "68489101"
 | 已到期 | 如果审批请求超时时间内没有审批者批准请求, 则请求将过期。 若要重试, 用户必须重新提交请求。 |
 | 拒绝 | 审批者拒绝请求。 |
 | 已审批 | 审批者批准请求。 |
-| 正在传递 | 尚未为用户分配对访问包中所有资源的访问权限。 如果这是外部用户, 则用户尚未访问资源目录并已接受权限提示。 |
+| 正在传递 | 尚未为用户分配对访问包中所有资源的访问权限。 如果这是外部用户, 则用户可能尚未访问资源目录并已接受同意提示。 |
 | 已发送 | 已为用户分配访问包中所有资源的访问权限。 |
 | 访问扩展 | 如果策略中允许使用扩展, 则用户扩展了分配。 |
 | 访问过期 | 用户对访问包的访问已过期。 若要重新获得访问权限, 用户必须提交请求。 |

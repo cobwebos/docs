@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81b7030d0f45222a1641e34b341885d2ecc051e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6121ca6c1636c8839110712310a1b94fe7fada49
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107651"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619261"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 本主题概述了登录报告。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
 * 具有“安全管理员”、“安全读取者”和“报告读取者”角色的用户
@@ -55,25 +55,25 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 * 多少用户超过一周都有登录行为？
 * 这些登录的状态怎样？
 
-可以通过在 [Azure 门户](https://portal.azure.com)的“Azure Active Directory”  边栏选项卡的“活动”  部分中选择“登录”  来访问登录报告。 请注意，某些登录记录最多可能需要两个小时才会显示在门户中。
+可以通过在 [Azure 门户](https://portal.azure.com)的“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”来访问登录报告。 请注意，某些登录记录最多可能需要两个小时才会显示在门户中。
 
 ![登录活动](./media/concept-sign-ins/61.png "登录活动")
 
 > [!IMPORTANT]
-> 登录报告仅显示“交互式”登录，即用户使用其用户名和密码进行的手动登录  。 登录报告中不会显示服务到服务身份验证等非交互式登录。 
+> 登录报告仅显示“交互式”登录，即用户使用其用户名和密码进行的手动登录。 登录报告中不会显示服务到服务身份验证等非交互式登录。 
 
 登录日志有一个默认列表视图，用于显示：
 
 - 登录日期
 - 相关的用户
-- 用户登录到的应用程序
+- 用户已登录的应用程序
 - 登录状态
 - 风险检测的状态
 - 多重身份验证 (MFA) 要求的状态
 
 ![登录活动](./media/concept-sign-ins/01.png "登录活动")
 
-单击工具栏中的“列”即可自定义列表视图。 
+单击工具栏中的“列”即可自定义列表视图。
 
 ![登录活动](./media/concept-sign-ins/19.png "登录活动")
 
@@ -86,42 +86,35 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 ![登录活动](./media/concept-sign-ins/03.png "登录活动")
 
 > [!NOTE]
-> 客户现在可以进行条件性访问策略通过单一登录的所有报表故障排除。 通过单击**条件性访问**选项卡在登录记录的客户可以查看的条件性访问状态和深入了解应用于单一登录和每个策略的结果的策略的详细信息。
+> 现在, 客户可以通过所有登录报告对条件访问策略进行故障排除。 通过单击登录记录的 "**条件访问**" 选项卡, 客户可以查看条件访问状态, 并深入了解应用于登录的策略的详细信息以及每个策略的结果。
 > 有关详细信息，请参阅[有关所有登录中 CA 信息的常见问题解答](reports-faq.md#conditional-access)。
 
-![登录活动](./media/concept-sign-ins/ConditionalAccess.png "登录活动")
 
 
 ## <a name="filter-sign-in-activities"></a>筛选登录活动
 
-若要将所报告数据的范围缩小到适当的级别，可以使用以下默认字段筛选登录数据：
-
-- 用户
-- 应用程序
-- 登录状态
-- 条件性访问
-- 日期
+若要将报告的数据缩小到适合您的级别, 可以使用 "日期" 字段作为默认筛选器筛选登录数据。 此外, Azure AD 提供了可设置的各种附加筛选器。
 
 ![登录活动](./media/concept-sign-ins/04.png "登录活动")
 
-“用户”筛选器用于指定所关注的用户的名称或用户主体名称 (UPN)。 
+“用户”筛选器用于指定所关注的用户的名称或用户主体名称 (UPN)。
 
-“应用程序”  筛选器用于指定所关注的应用程序的名称。
+“应用程序”筛选器用于指定所关注的应用程序的名称。
 
-“登录状态”筛选器用于选择： 
+“登录状态”筛选器用于选择：
 
-- All
+- 全部
 - Success
 - 失败
 
-使用“条件访问”  筛选器可以选择登录的 CA 策略状态：
+使用“条件访问”筛选器可以选择登录的 CA 策略状态：
 
-- All
+- 全部
 - 未应用
 - Success
 - 失败
 
-“日期”筛选器用于定义已返回数据的时间范围。   
+“日期”筛选器用于定义已返回数据的时间范围。  
 可能的值包括：
 
 - 1 个月
@@ -131,32 +124,32 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 选择自定义时间范围时，可以配置开始时间和结束时间。
 
-如果向登录视图添加其他字段，这些字段会自动添加到筛选器列表。 例如，如果向列表添加“客户端应用”字段，则还会获得另一筛选器选项，用于设置以下筛选器：   
+如果向登录视图添加其他字段，这些字段会自动添加到筛选器列表。 例如，如果向列表添加“客户端应用”字段，则还会获得另一筛选器选项，用于设置以下筛选器：  
 ![登录活动](./media/concept-sign-ins/12.png "登录活动")
 
 - **浏览器**  
-    此筛选器显示所有使用浏览器通信流执行的登录尝试的事件。
-- **Exchange ActiveSync （支持）**  
-    此筛选器将显示所有登录尝试其中的 Exchange ActiveSync (EAS) 协议已尝试从受支持的平台，如 iOS、 Android 和 Windows Phone。
-- **Exchange ActiveSync （不支持）**  
-    此筛选器将显示所有登录尝试其中 EAS 协议已尝试从等 Linux 发行版不受支持平台。
-- **移动应用和桌面客户端**此筛选器显示没有使用浏览器通信流的所有登录尝试。 这可以是从使用任何协议的任何平台或桌面客户端应用程序，如 Windows 或 MacOS 上的 Office 移动应用。
+    此筛选器显示使用浏览器流执行登录尝试的所有事件。
+- **Exchange ActiveSync (支持)**  
+    此筛选器显示从支持的平台 (如 iOS、Android 和 Windows Phone) 尝试 Exchange ActiveSync (EAS) 协议的所有登录尝试。
+- **Exchange ActiveSync (不支持)**  
+    此筛选器显示从 Linux 发行版等不受支持的平台尝试 EAS 协议的所有登录尝试。
+- **移动应用和桌面客户端**此筛选器显示未使用浏览器流的所有登录尝试。 这可以是从任何平台使用任何协议或从 Windows 或 MacOS 上的 Office 等桌面客户端应用的移动应用。
   
 - **其他客户端**
     - **IMAP**  
-        使用 IMAP 检索电子邮件的旧邮件客户端。
+        使用 IMAP 检索电子邮件的旧版邮件客户端。
     - **MAPI**  
-        Office 2013，其中启用 ADAL 和它使用了 MAPI。
-    - **旧式 Office 客户端**  
-        Office 2013 中在未启用 ADAL 其默认配置，它使用 MAPI 或 Office 2016 ADAL 其中禁用了。
-    - **POP**  
-        使用 POP3 电子邮件中检索旧邮件客户端。
+        Office 2013, 其中 ADAL 处于启用状态, 并且使用 MAPI。
+    - **旧版 Office 客户端**  
+        Office 2013 在其默认配置中, ADAL 未启用且正在使用 MAPI, 或 Office 2016, 其中 ADAL 已禁用。
+    - **弹出**  
+        使用 POP3 检索电子邮件的旧版邮件客户端。
     - **SMTP**  
-        使用 SMTP 发送电子邮件的旧邮件客户端。
+        使用 SMTP 发送电子邮件的旧版邮件客户端。
 
 ## <a name="download-sign-in-activities"></a>下载登录活动
 
-如果想要在 Azure 门户外部使用登录活动数据，可以[下载登录数据](quickstart-download-sign-in-report.md)。 单击**下载**为您提供创建 CSV 或 JSON 文件中的最新 250,000 记录的选项。  
+如果想要在 Azure 门户外部使用登录活动数据，可以[下载登录数据](quickstart-download-sign-in-report.md)。 单击 "**下载**" 可选择创建最新250000记录的 CSV 或 JSON 文件。  
 
 ![下载](./media/concept-sign-ins/71.png "下载")
 
@@ -169,13 +162,13 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 除了 Azure AD 之外，Azure 门户也提供了登录数据的其他入口点：
 
 - 标识安全保护概述
-- 用户
-- 组
+- 位用户
+- 个组
 - 企业应用程序
 
 ### <a name="users-sign-ins-data-in-identity-security-protection"></a>标识安全保护中的用户登录数据
 
-用户在登录中的关系图**标识的安全保护**概述页显示在给定的时间段内按周汇总的所有用户的登录名。 默认时间为 30 天。
+"**标识安全保护**概述" 页中的用户登录图显示了给定时间段内所有用户的每周登录聚合。 默认时间为 30 天。
 
 ![登录活动](./media/concept-sign-ins/06.png "登录活动")
 
@@ -195,17 +188,17 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 用户名
 - 应用程序 ID
 - 应用程序
-- Client
-- 位置
+- 客户端
+- Location
 - IP 地址
-- 日期
+- Date
 - 需要 MFA
 - 登录状态
 
 > [!NOTE]
 > IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 从中心池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远，这会导致 IP 地址映射变得复杂。 目前，在 Azure AD 报告中，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。
 
-在“用户”页中单击“活动”部分的“登录”即可完全了解所有用户登录活动。   
+在“用户”页中单击“活动”部分的“登录”即可完全了解所有用户登录活动。
 
 ![登录活动](./media/concept-sign-ins/08.png "登录活动")
 
@@ -217,11 +210,11 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 * 组织中最常用的 3 个应用程序是哪些？
 * 我最近推出了一个应用程序。 它用起来怎样？
 
-该数据的入口点为“概览”部分的“企业应用程序”下面的组织过去 30 天的报告中最常用的 3 个应用程序   。
+该数据的入口点为“概览”部分的“企业应用程序”下面的组织过去 30 天的报告中最常用的 3 个应用程序。
 
 ![登录活动](./media/concept-sign-ins/10.png "登录活动")
 
-应用使用情况图按周汇总的登录为某个给定的时间段内前 3 个应用程序。 默认时间为 30 天。
+应用程序使用情况图每周在给定时间段内针对前3个应用程序的登录聚合。 默认时间为 30 天。
 
 ![登录活动](./media/concept-sign-ins/47.png "登录活动")
 
@@ -239,7 +232,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 可以从 [Microsoft 365 管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源，但只有 Microsoft 365 管理中心提供 Office 365 活动日志的完整视图。 
 
-此外可以使用 [Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
+你还可以使用[office 365 管理 api](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)以编程方式访问 office 365 活动日志。
 
 ## <a name="next-steps"></a>后续步骤
 

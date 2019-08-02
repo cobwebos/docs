@@ -1,19 +1,18 @@
 ---
 title: 将 Azurite 开源模拟器用于 blob 存储开发和测试 (预览)
 description: Azurite 开源模拟器 (预览版) 提供了一个免费的本地环境, 用于测试 Azure Blob 存储应用程序。
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: article
-ms.date: 06/12/2019
 ms.author: mhopkins
+ms.date: 06/12/2019
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 2ccb19253c762bad69875a7b7bba7cd11d46e132
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.topic: conceptual
+ms.openlocfilehash: ebecd6cf9af5395e4da2b395ca9b2ff974a75409
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869789"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721699"
 ---
 # <a name="use-the-azurite-open-source-emulator-for-blob-storage-development-and-testing-preview"></a>将 Azurite 开源模拟器用于 blob 存储开发和测试 (预览)
 
@@ -228,7 +227,7 @@ azurite -d path/debug.log
 
 ## <a name="authorization-for-tools-and-sdks"></a>工具和 Sdk 的授权
 
-使用任何身份验证策略, 从 Azure 存储 Sdk 或工具 (如[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)) 连接到 Azurite。 需要身份验证。 Azurite 支持使用共享密钥和共享访问签名 (SAS) 的授权。 Azurite 还支持匿名访问公共容器。
+使用任何身份验证策略, 从 Azure 存储 Sdk 或工具 (如[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)) 连接到 Azurite。 需要进行身份验证。 Azurite 支持使用共享密钥和共享访问签名 (SAS) 的授权。 Azurite 还支持匿名访问公共容器。
 
 ### <a name="well-known-storage-account-and-key"></a>众所周知的存储帐户和密钥
 
@@ -284,7 +283,7 @@ Azurite 的服务终结点不同于 Azure 存储帐户的终结点。 本地计�
 
 Azurite 不是可扩展的存储服务, 并且不支持大量并发客户端。 没有性能保证。 Azurite 旨在用于开发和测试目的。
 
-### <a name="error-handling"></a>错误处理。
+### <a name="error-handling"></a>错误处理
 
 Azurite 与 Azure 存储错误处理逻辑一致, 但有一些差异。 例如, 错误消息可能会不同, 而错误状态代码会对齐。
 

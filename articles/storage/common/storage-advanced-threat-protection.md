@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5d0b41344f4a77f3205799be7c30526e2a150523
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bb2d5733704b0b31dc010cec2a90e99e1be07b56
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479915"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592029"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Azure 存储的高级威胁防护
 
@@ -46,7 +46,7 @@ Azure 存储高级威胁防护提供额外的一层安全智能，用于检测�
 
 当你订阅 Azure 安全中心的 "标准" 层时, 会自动对所有存储帐户设置高级威胁防护。 你可以在特定订阅下为你的存储帐户启用或禁用高级威胁防护, 如下所示:
 
-1. 在[Azure 门户]([https://portal.azure.com)中启动**Azure 安全中心**。
+1. 在[Azure 门户](https://portal.azure.com)中启动**Azure 安全中心**。
 1. 在主菜单中, 单击 "**定价 & 设置**"。
 1. 单击要为其存储帐户启用或禁用威胁防护的订阅。
 
@@ -56,7 +56,7 @@ Azure 存储高级威胁防护提供额外的一层安全智能，用于检测�
 1. 在 "**按资源类型选择定价层**" 部分的 "**存储帐户**" 行中, 单击 "**已启用**" 或 "**已禁用**"。
 
     ![在安全中心启用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. 单击“保存” 。
+1. 单击“保存”。
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 

@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 07/29/2019
 ms.author: dwalther
-ms.openlocfilehash: f3239fa5d21078795e7b063cb0364e905cba25c1
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: d182a4aea00581b044b5734a5b7d6831f9e55c45
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846625"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638475"
 ---
 # <a name="public-preview-service-limits"></a>公共预览版服务限制
 
@@ -36,7 +36,7 @@ ms.locfileid: "67846625"
 反之，每个 Azure 数字孪生实例可以具有：
 
 - 有且仅有一个在服务预配期间自动创建的嵌入式 **IoTHub** 资源。
-- 只有一个 DeviceMessage 事件类型的 EventHub 终结点   。
+- 只有一个 DeviceMessage 事件类型的 EventHub 终结点。
 - 最多三个事件类型为 **SensorChange**、**SpaceChange**、**TopologyOperation** 或 **UdfCustom** 的 **EventHub**、**ServiceBus** 或 **EventGrid** 终结点。
 
 > [!NOTE]

@@ -5,26 +5,21 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/14/2019
+ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 8a36a80903a47bb4163666baf86ed8dac13a00de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f825b67baf36c9a1a9187d555522f5a5955d1c7
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471081"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620076"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>在 Site Recovery 部署规划器中查看针对从 VMware 灾难恢复到 Azure 的成本估算报告
 
 部署规划器报表以[建议](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)表的形式提供成本估算摘要，以“成本估算”表的形式提供详细的成本分析。 它按 VM 提供详细的成本分析。 
 
 >[!Note]
->部署规划器工具的当前版本不提供复制到托管磁盘的 Vm 的成本估算。
->* 使用托管磁盘参数设置为"Yes""计算和网络"边栏选项卡上，DR 演练成本估计将是相同的存储帐户和托管的磁盘。
->* 若要获取复制大约每年成本估计值，进行以下临时设置上**成本估算**表：
->    * 在中设置的"成本持续时间"的参数**设置**"Year"的表
->    * 在中**详细成本分析**表中，将"一年的 DR 演练的数"列设置为 12 和"每次 DR 演练的持续时间 （天）"为 30 
->    * 复制成本将是类似于在每年中的列 'R' 即 DR 演练的存储成本中填充的成本**每年的 DR 演练成本**子部分。
+>最新版本的部署规划器工具5v 为复制到托管磁盘的 Vm 提供了成本估算。
 
 ### <a name="cost-estimation-summary"></a>成本估算摘要 
 下图显示的摘要视图包含灾难恢复 (DR) 到所选目标区域的 Azure 时的总估算成本，以及生成报表时所用的指定货币。
@@ -94,7 +89,6 @@ ms.locfileid: "61471081"
 此表显示 Windows 和非 Windows VM 数及其 DR 演练计算成本。
 
 ### <a name="settings"></a>设置 
-**使用托管磁盘**：指定是否在 DR 演练时使用托管磁盘。 默认值为“是”。 如果已将 -UseManagedDisks 设置为“No”，则会使用非托管磁盘价格来计算成本。
 
 **货币**：生成报表时使用的货币。 成本持续时间：可以查看一个月或一整年的所有成本。 
 
@@ -107,7 +101,7 @@ ms.locfileid: "61471081"
 
 * VM 数、IaaS 大小(你的选择)
 * 存储类型(标准/高级)
-* VM 总存储大小(GB)
+* VM 总存储大小 (GB) 源计算机
 * 一年的 DR 演练次数 
 * 每次 DR 演练的持续时间(天) 
 * OS 类型
@@ -128,7 +122,7 @@ ms.locfileid: "61471081"
 
 **存储类型**：VM 使用的存储类型。 可以是标准存储或高级存储。
 
-**VM 总存储大小 (GB)** ：VM 的总存储。
+**VM 总存储大小(GB)** ：源 VM 的总存储空间。
 
 **一年的 DR 演练次数**：一年中进行 DR 演练的次数。 默认为一年 4 次。 可以修改特定 VM 的持续时间或将新值应用到所有 VM，只需在顶部行中输入新值，然后单击“应用到所有项”按钮即可。 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。  
 
@@ -156,16 +150,16 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>支持的货币
 Azure Site Recovery 部署规划器可以使用以下任何货币生成成本报表。
 
-|Currency|Name||Currency|名称||Currency|Name|
+|货币|名称||货币|名称||货币|名称|
 |---|---|---|---|---|---|---|---|
-|ARS|阿根廷比索 ($)||AUD|澳大利亚元 ($)||BRL|巴西雷亚尔 (R$)|
+|ARS|阿根廷比索($)||AUD|澳元($)||BRL|巴西雷亚尔(R$)|
 |CAD|加拿大元 ($)||CHF|瑞士法郎 (chf)||DKK|丹麦克朗 (kr)|
-|EUR|欧元 (€)||GBP|英镑 (£)||HKD|港元 (HK$)|
-|IDR|印度尼西亚卢比 (Rp)||INR|印度卢比 (₹)||JPY|日元 (¥)|
-|KRW|韩元 (₩)||MXN|墨西哥比索 (MX$)||MYR|马来西亚林吉特 (RM$)|
-|NOK|挪威克朗 (kr)||NZD|新西兰元 ($)||RUB|俄罗斯卢布 (руб)|
-|SAR|沙特里亚尔 (SR)||SEK|瑞典克朗 (kr)||TWD|台币 (NT$)|
-|TRY|土耳其里拉 (TL)||USD| 美元 ($)||ZAR|南非兰特 (R)|
+|EUR|欧元 (€)||GBP|英镑(£)||HKD|港元 (HK$)|
+|IDR|印度尼西亚卢比 (Rp)||INR|印度卢比(₹)||JPY|日元(¥)|
+|KRW|韩元(₩)||MXN|墨西哥比索 (MX$)||MYR|马来西亚吉特(RM$)|
+|NOK|挪威克朗 (kr)||NZD|新西兰元($)||RUB|俄罗斯卢布 (руб)|
+|SAR|沙特里亚尔 (SR)||SEK|瑞典克朗 (kr)||TWD|台币(NT$)|
+|TRY|土耳其里拉(TL)||美元| 美元($)||ZAR|南非兰特(R)|
 
 ## <a name="next-steps"></a>后续步骤
 详细了解如何[使用 Azure Site Recovery 将 VMware VM 转移到 Azure 进行保护](https://docs.microsoft.com/azure/site-recovery/tutorial-vmware-to-azure)。

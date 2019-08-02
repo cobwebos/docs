@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: c42c6175512105de38a29be260c370851e152137
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f191a9f589f54bdd657c017060f501b176a8647d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60330867"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596719"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 CLI：使用 Azure Key Vault 中由客户管理的密钥启用透明数据加密
 
@@ -33,15 +32,15 @@ ms.locfileid: "60330867"
 - [建议但可选] 提供硬件安全模块 (HSM) 或本地密钥存储，以便创建 TDE 保护器密钥材料的本地副本。
 - 必须安装并运行 Azure PowerShell。 
 - 创建用于 TDE 的 Azure Key Vault 和密钥。
-  - [Key Vault 的 PowerShell 说明](../key-vault/key-vault-overview.md)
+  - [Key Vault 的 PowerShell 说明](../key-vault/quick-create-powershell.md)
   - [有关使用硬件安全模块 (HSM) 和 Key Vault 的说明](../key-vault/key-vault-hsm-protected-keys.md)
     - Key Vault 必须包含用于 TDE 的以下属性：
-  - [软删除](../key-vault/key-vault-ovw-soft-delete.md)
+  - [软删除](../key-vault/key-vault-ovw-soft-delete.md)和清除保护
   - [如何将 Key Vault 软删除与 PowerShell 配合使用](../key-vault/key-vault-soft-delete-powershell.md) 
 - 密钥必须包含用于 TDE 的以下特性：
    - 无过期日期
    - 未禁用
-   - 能够执行“获取”、“包装密钥”和“解包密钥”操作   
+   - 能够执行“获取”、“包装密钥”和“解包密钥”操作
 
 ## <a name="step-1-assign-an-azure-ad-identity-to-your-server"></a>步骤 1。 将 Azure AD 标识分配到服务器 
 
@@ -79,6 +78,8 @@ ms.locfileid: "60330867"
 
 ## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>步骤 3. 将 Key Vault 密钥添加到服务器并设置 TDE 保护器
 
+
+- 使用[AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) cmdlet 从 key vault 中检索密钥 ID
 - 使用 [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) cmdlet 将 Key Vault 中的密钥添加到服务器。
 - 使用 [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet 将密钥设置为所有服务器资源的 TDE 保护器。
 - 使用 [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet 确认已按预期配置了 TDE 保护器。
@@ -174,7 +175,7 @@ ms.locfileid: "60330867"
    -ResourceGroupName <SQLDatabaseResourceGroupName>   
    ```
  
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果出现问题，请查看以下内容：
 - 如果找不到 Key Vault，请使用 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) cmdlet 来确认是否在正确的订阅中操作。
@@ -186,7 +187,7 @@ ms.locfileid: "60330867"
 
 - 如果无法将新密钥添加到服务器，或无法将新密钥更新为 TDE 保护器，请检查以下项：
    - 密钥不应有过期日期
-   - 密钥必须支持“获取”、“包装密钥”和“解包密钥”操作。   
+   - 密钥必须支持“获取”、“包装密钥”和“解包密钥”操作。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -207,7 +208,7 @@ ms.locfileid: "60330867"
 - 密钥必须包含用于 TDE 的以下特性：
    - 无过期日期
    - 未禁用
-   - 能够执行“获取”、“包装密钥”和“解包密钥”操作   
+   - 能够执行“获取”、“包装密钥”和“解包密钥”操作
    
 ## <a name="step-1-create-a-server-with-an-azure-ad-identity"></a>步骤 1。 创建具有 Azure AD 标识的服务器
       cli

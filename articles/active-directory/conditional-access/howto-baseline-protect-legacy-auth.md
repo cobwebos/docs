@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a313240685e539b613dee1c7ff8bd56bb24eb2ba
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227318"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608069"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>基准策略:阻止旧身份验证 (预览)
 
@@ -117,5 +117,5 @@ Office 2010 不支持新式身份验证。 需要使用 Office 2010 将任何用
 有关详细信息，请参阅：
 
 * [条件性访问基线保护策略](concept-baseline-protection.md)
-* [保护标识基础结构的五个步骤](../../security/azure-ad-secure-steps.md)
+* [保护标识基础结构的五个步骤](../../security/fundamentals/steps-secure-identity.md)
 * [什么是 Azure Active Directory 中的条件访问？](overview.md)

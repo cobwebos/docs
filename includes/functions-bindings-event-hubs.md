@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 1fcb308c73ee93308515d91398bedee3c41ccf38
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 938d7e0cbd493dcb269418e9fd364611d734a085
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362457"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68589928"
 ---
 ## <a name="trigger"></a>触发器
 
@@ -250,7 +250,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 JavaScript 代码如下所示：
 
 ```javascript
-module.exports = function (context, eventHubMessage) {
+module.exports = function (context, myEventHubMessage) {
     context.log('Function triggered to process a message: ', myEventHubMessage);
     context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
     context.log('SequenceNumber =', context.bindingData.sequenceNumber);
@@ -401,7 +401,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 事件中心触发器提供了几个[元数据属性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) 类的属性。
 
-|属性|type|描述|
+|属性|类型|描述|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` 实例。|
 |`EnqueuedTimeUtc`|`DateTime`|排队时间 (UTC)。|

@@ -1,20 +1,18 @@
 ---
 title: 如何使用适用于 Node.js v2 的客户端库在 Azure 存储中创建 Blob
 description: 在对象 (Blob) 存储中创建存储帐户和容器。 随后，使用适用于 Node.js v2 的 Azure 存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: conceptual
-ms.date: 02/04/2019
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 7ca1eacd1add7453833b4b9ad1d4bd0fbef13ca7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/04/2019
+ms.service: storage
+ms.subservice: blobs
+ms.topic: conceptual
+ms.openlocfilehash: 89dbd6cc9a03398427b157fa207adb898d3bfc56
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149421"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721970"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>如何使用适用于 Node.js v2 的客户端库上传、下载和列出 Blob
 
@@ -23,7 +21,7 @@ ms.locfileid: "65149421"
 > [!TIP]
 > 适用于 Node.js 的 Azure 存储客户端库的最新版本是 v10。 Microsoft 建议尽可能使用最新版本的客户端库。 若要开始使用 v10，请参阅[快速入门：使用适用于 JavaScript v10 的 Azure 存储客户端库上传、下载、列出和删除 Blob（预览版）](storage-quickstart-blobs-nodejs-v10.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -148,7 +146,7 @@ const createContainer = async (containerName) => {
 };
 ```
 
-**createContainerIfNotExists** 的第二个参数（选项  ）接受一个值作为 [publicAccessLevel](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest)。 如果 *publicAccessLevel* 的值为 *blob*，则表示会公开特定的 Blob 数据。 此设置不同于容器  级别的访问权限，后者授予列出容器内容的权限。
+**createContainerIfNotExists** 的第二个参数（选项）接受一个值作为 [publicAccessLevel](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest)。 如果 *publicAccessLevel* 的值为 *blob*，则表示会公开特定的 Blob 数据。 此设置不同于容器级别的访问权限，后者授予列出容器内容的权限。
 
 使用 **createContainerIfNotExists** 时，应用程序可以多次运行 *createContainer* 命令，在容器存在的情况下也不会返回错误。 在生产环境中，通常只调用 **createContainerIfNotExists** 一次，因为在应用程序中，从头至尾使用的是同一容器。 在这种情况下，可以通过门户或 Azure CLI 提前创建容器。
 

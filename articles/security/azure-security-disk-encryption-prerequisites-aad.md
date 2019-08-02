@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7226e10140cba768486a770237f61fce8598f58
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: da3cb81eaeaa3b1609ffe67b2aea92a69b6bb47a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609932"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726249"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure 磁盘加密先决条件（早期版本）
 
@@ -183,7 +183,7 @@ ms.locfileid: "68609932"
 
 ## <a name="prerequisite-workflow-for-key-vault-and-the-azure-ad-app"></a>Key Vault 和 Azure AD 应用的先决条件工作流
 
-如果你已熟悉进行 Azure 磁盘加密时的 Key Vault 和 Azure AD 先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关使用先决条件脚本的详细信息，请参阅[加密 VM 快速入门](fundamentals/quick-encrypt-vm-powershell.md)和 [Azure 磁盘加密附录](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)。 
+如果你已熟悉进行 Azure 磁盘加密时的 Key Vault 和 Azure AD 先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关使用先决条件脚本的详细信息, 请参阅[Azure 磁盘加密附录](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)。 
 
 1. 创建密钥保管库。 
 2. 设置 Azure AD 应用程序和服务主体。

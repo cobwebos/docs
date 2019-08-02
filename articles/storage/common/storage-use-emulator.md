@@ -1,20 +1,18 @@
 ---
 title: 使用 Azure 存储模拟器进行开发和测试 | Microsoft Docs
 description: Azure 存储模拟器为开发和测试 Azure 存储应用程序提供了免费的本地开发环境。 了解如何对请求进行授权、如何从应用程序连接到模拟器以及如何使用命令行工具。
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: article
-ms.date: 08/10/2018
 ms.author: mhopkins
-ms.reviewer: seguler
+ms.date: 08/10/2018
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 5f55228c80142b2a21af585cb04d16f148460af0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.openlocfilehash: 8737e3b2445f5b89c62cead5fae34b8ad076113a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149100"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721734"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -40,7 +38,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 ## <a name="start-and-initialize-the-storage-emulator"></a>启动和初始化存储模拟器
 
 若要启动 Azure 存储模拟器：
-1. 选择“开始”  按钮或按“Windows”  键。
+1. 选择“开始”按钮或按“Windows”键。
 2. 开始键入 `Azure Storage Emulator`。
 3. 从所示应用程序的列表中选择该模拟器。
 
@@ -78,7 +76,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 有关这些命令的详细信息，请参阅[存储模拟器命令行工具参考](#storage-emulator-command-line-tool-reference)。
 
 > [!TIP]
-> 可使用 [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 管理 SQL Server 实例，包括 LocalDB 安装。 在 SMSS“连接到服务器”  对话框的“服务器名称:”  字段中，指定 `(localdb)\MSSQLLocalDb` 以连接到 LocalDB 实例。
+> 可使用 [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 管理 SQL Server 实例，包括 LocalDB 安装。 在 SMSS“连接到服务器”对话框的“服务器名称:”字段中，指定 `(localdb)\MSSQLLocalDb` 以连接到 LocalDB 实例。
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>针对存储模拟器的请求进行身份验证
 安装并启动存储模拟器后，可针对此模拟器测试代码。 与云中的 Azure 存储一样，针对存储模拟器发出的每个请求都必须经过授权，除非它是匿名请求。 可以使用共享密钥身份验证或使用共享访问签名 (SAS) 针对存储模拟器的请求进行授权。
@@ -168,7 +166,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 ### <a name="options"></a>选项
 若要查看选项列表，请在命令提示符下键入 `/help`。
 
-| Option | 描述 | 命令 | 参数 |
+| 选项 | 描述 | Command | 参数 |
 | --- | --- | --- | --- |
 | **启动** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*：在当前进程中启动仿真器，而不是创建新的进程。 |
 | **Stop** |停止存储模拟器。 |`AzureStorageEmulator.exe stop` | |

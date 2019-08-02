@@ -1,24 +1,25 @@
 ---
 title: 使用 Azure 备份在备份 SAP HANA 数据库时排查错误 |Microsoft Docs
 description: 介绍如何对使用 Azure 备份来备份 SAP HANA 数据库时可能发生的常见错误进行故障排除。
-author: pvrk
-manager: vijayts
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: pullabhk
-ms.openlocfilehash: 221b669c141681749709d6a5a406c78499f21032
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: a2711339f5e952747adeeb6217b283770cb6cc6b
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465476"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689048"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上 SAP HANA 数据库的备份问题
 
 本文提供了有关在 Azure 虚拟机上备份 SAP HANA 数据库的疑难解答信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 作为[先决条件](backup-azure-sap-hana-database.md#prerequisites)的一部分, 请确保预先注册脚本已在安装了 HANA 的虚拟机上运行。
 

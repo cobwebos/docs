@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9128a747dcd42ada2feefd72ad8bfebdf7bfb25a
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c5d374f4ddac2e4d013bab1c5e88a87af1da2c1f
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334042"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667136"
 ---
 # <a name="identity-protection-and-b2b-users"></a>标识保护和 B2B 用户
 
@@ -47,7 +47,7 @@ B2B 用户的风险评估和修正发生在其主目录中。 由于此事实, �
 
 ### <a name="how-do-i-prevent-b2b-collaboration-users-from-being-impacted-by-risk-based-policies"></a>如何实现阻止 B2B 协作用户受到基于风险的策略的影响吗？
 
-从组织的基于风险的条件性访问策略中排除 B2B 用户会阻止 B2B 用户受到风险评估的影响或阻止。 若要排除这些 B2B 用户, 请在 Azure AD 中创建一个包含组织的所有来宾用户的组。 然后, 将此组添加为内置的标识保护用户风险和登录风险策略的排除, 以及用户作为条件登录的任何条件性访问策略。
+从组织的基于风险的条件性访问策略中排除 B2B 用户会阻止 B2B 用户受到风险评估的影响或阻止。 若要排除这些 B2B 用户, 请在 Azure AD 中创建一个包含组织的所有来宾用户的组。 然后, 将此组添加为内置身份保护用户风险和登录风险策略的排除项, 以及将登录风险作为条件的任何条件性访问策略。
 
 ## <a name="next-steps"></a>后续步骤
 

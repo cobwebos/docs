@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: f99a96f1b886f9f426c5dac64ac852368544475a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fdaef319235b90d05dc6ddc6d8eb1c5bb7ba294
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401240"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720695"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MariaDB 复制数据
 
@@ -31,7 +31,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 此连接器当前支持版本 10.0 到 10.2 的 MariaDB。
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -101,7 +101,7 @@ MariaDB 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 MariaDB 数据集支持的属性列表。
 
-要从 MariaDB 复制数据，请将数据集的 type 属性设置为“MariaDBTable”  。 此类型的数据集中没有任何其他特定于类型的属性。
+要从 MariaDB 复制数据，请将数据集的 type 属性设置为“MariaDBTable”。 此类型的数据集中没有任何其他特定于类型的属性。
 
 **示例**
 
@@ -110,11 +110,12 @@ MariaDB 链接服务支持以下属性：
     "name": "MariaDBDataset",
     "properties": {
         "type": "MariaDBTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<MariaDB linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -125,7 +126,7 @@ MariaDB 链接服务支持以下属性：
 
 ### <a name="mariadb-as-source"></a>以 MariaDB 作为源
 
-要从 MariaDB 复制数据，请将复制活动中的源类型设置为“MariaDBSource”  。 复制活动源  部分支持以下属性：
+要从 MariaDB 复制数据，请将复制活动中的源类型设置为“MariaDBSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

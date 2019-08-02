@@ -95,13 +95,12 @@
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
     - name: 工作区
-      displayName: concept definitions architecture
       href: concept-workspace.md
     - name: 计算目标
-      displayName: concept definitions architecture
+      displayName: 'compute, resource, target, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
     - name: 可视界面
-      displayName: concept
+      displayName: studio
       href: ui-concept-visual-interface.md
     - name: 自动化机器学习
       displayName: 'automl, auto ml'
@@ -114,9 +113,10 @@
     - name: 模型可解释性
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: FPGA 概述
+    - name: FPGA 与CPU GPU ASIC
+      displayName: 'field, programmable, arrays'
       href: concept-accelerate-with-fpgas.md
-    - name: ONNX 和 ONNX 运行时
+    - name: ONNX
       href: concept-onnx.md
     - name: 安全
       items:

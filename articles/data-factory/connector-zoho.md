@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 70f300d83d904537aab61b95de876f4ac2edb66c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e795e1de32ce51d80062d30d6880abbca37f9386
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808979"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720266"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Zoho 复制数据
 
@@ -32,7 +32,7 @@ ms.locfileid: "60808979"
 
 Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -45,7 +45,7 @@ Zoho 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为：**Zoho** | 是 |
-| endpoint | Zoho 服务器的终结点 (`crm.zoho.com/crm/private`)。 | 是 |
+| 终结点 | Zoho 服务器的终结点 (`crm.zoho.com/crm/private`)。 | 是 |
 | accessToken | 用于 Zoho 身份验证的访问令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
@@ -73,11 +73,11 @@ Zoho 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Zoho 数据集支持的属性列表。
 
-要从 Zoho 复制数据，请将数据集的 type 属性设置为“ZohoObject”  。 支持以下属性：
+要从 Zoho 复制数据，请将数据集的 type 属性设置为“ZohoObject”。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：ZohoObject  | 是 |
+| type | 数据集的 type 属性必须设置为：ZohoObject | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -87,11 +87,12 @@ Zoho 链接服务支持以下属性：
     "name": "ZohoDataset",
     "properties": {
         "type": "ZohoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Zoho linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -102,11 +103,11 @@ Zoho 链接服务支持以下属性：
 
 ### <a name="zoho-as-source"></a>Zoho 作为源
 
-要从 Zoho 复制数据，请将复制活动中的源类型设置为“ZohoSource”  。 复制活动源  部分支持以下属性：
+要从 Zoho 复制数据，请将复制活动中的源类型设置为“ZohoSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：ZohoSource  | 是 |
+| type | 复制活动源的 type 属性必须设置为：ZohoSource | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Accounts"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

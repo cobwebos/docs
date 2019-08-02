@@ -21,6 +21,12 @@
       href: tutorial-process-mailing-list-subscriptions-workflow.md
     - name: 处理电子邮件附件
       href: tutorial-process-email-attachments-workflow.md
+- name: 示例
+  items:
+    - name: Azure 代码示例
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-logic-apps'
+    - name: 资源管理器快速启动模板
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
 - name: 概念
   items:
     - name: 适用于逻辑应用的连接器
@@ -349,15 +355,15 @@
           href: /azure/architecture/reference-architectures/enterprise-integration/queues-events
     - name: 连接器 - 完整详细信息
       href: 'https://docs.microsoft.com/connectors/'
-    - name: 限制和配置
+    - name: 服务限制和配置
       href: logic-apps-limits-and-config.md
-    - name: 用量计量
+    - name: 定价模型与用量计量
       href: logic-apps-pricing.md
     - name: Azure PowerShell
       href: /powershell/module/az.logicapp
     - name: REST API
       href: /rest/api/logic/
-    - name: 资源管理器模板
+    - name: 资源管理器模板参考
       href: /azure/templates/microsoft.logic/allversions
     - name: 工作流定义语言架构
       href: logic-apps-workflow-definition-language.md
@@ -378,23 +384,27 @@
           href: logic-apps-track-integration-account-custom-tracking-schema.md
 - name: 资源
   items:
+    - name: 利用 Microsoft Learn 掌握技能
+      href: 'https://docs.microsoft.com/learn/browse/?products=azure-logic-apps'
     - name: Azure 逻辑应用路线图
       href: 'https://aka.ms/logicappsroadmap/'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 客户案例
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelogicapps'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
     - name: Twitter
       href: 'https://twitter.com/logicappsio'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
-    - name: 定价计算器
-      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 提供产品反馈
+      href: 'https://feedback.azure.com/forums/287593-logic-apps'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=logic-apps'
-    - name: 客户案例
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc'
-    - name: 视频
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest'

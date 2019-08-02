@@ -6,14 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 562daa024985a546ffb49c4da11eace3bc81a659
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: b5777300f5033569caf3868218e747df3ff83a76
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314813"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640233"
 ---
-# <a name="mapping-data-flow-schema-drift"></a>映射数据流架构偏差
+# <a name="mapping-data-flow-schema-drift"></a>映射数据流架构偏移
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -65,7 +65,7 @@ Azure 数据工厂数据流语法使用 $$ 来表示匹配模式中每个匹配�
 
 ```round(sum ($$))```
 
-可以使用 Azure 数据工厂数据流示例“出租车演示”对此进行测试。 使用数据流设计图面顶部的“调试”切换开关打开调试会话，以交互方式查看结果：
+使用 Azure 数据工厂数据流示例 "出租车演示" 时, 可以看到此架构偏移功能。 使用数据流设计图面顶部的“调试”切换开关打开调试会话，以交互方式查看结果：
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
@@ -75,6 +75,9 @@ Azure 数据工厂数据流语法使用 $$ 来表示匹配模式中每个匹配�
 * 使用 "byPosition" 按位置编号标识新列。
 * 使用 "byName" 按其名称标识新列。
 * 在列模式下, 使用 "名称"、"流"、"位置" 或 "类型" 或它们的任意组合来匹配新列。
+
+## <a name="rule-based-mapping"></a>基于规则的映射
+选择和接收器转换支持通过基于规则的映射的模式匹配。 这将允许你构建可将偏移列映射到列别名并将这些列接收到目标的规则。
 
 ## <a name="next-steps"></a>后续步骤
 在[数据流表达式语言](data-flow-expression-functions.md)中, 你将找到用于列模式和架构偏移的其他功能, 包括 "byName" 和 "byPosition"。

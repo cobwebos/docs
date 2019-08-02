@@ -579,6 +579,9 @@
         - name: 预配数据库吞吐量
           displayName: 'request units, RUs, RU, shared throughput, database level'
           href: how-to-provision-database-throughput.md
+        - name: 使用 Cosmos 容量规划器估算 RU/秒
+          displayName: 'request units, RUs, RU, capacity'
+          href: estimate-ru-with-capacity-planner.md
         - name: 查找请求单位费用
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md

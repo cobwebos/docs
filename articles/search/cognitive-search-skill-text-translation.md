@@ -1,6 +1,6 @@
 ---
 title: 文本转换认知搜索技能-Azure 搜索
-description: 计算文本, 对于每条记录, 将返回在 Azure 搜索扩充管道中转换为指定目标语言的文本。
+description: 计算文本, 对于每个记录, 将返回在 Azure 搜索扩充管道中转换为指定目标语言的文本。
 services: search
 manager: briansmi
 author: careyjmac
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cmacdo
 ms.custom: seodec2018
-ms.openlocfilehash: 0268a16ecc07d578e1e3dc2b15ad9208509c2a8c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c267d6b2b5a8606c8caaba15c9316a8dbcb989b9
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351474"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698825"
 ---
-#   <a name="text-translation-cognitive-skill-preview"></a>文本转换认知技能 (预览版)
+#   <a name="text-translation-cognitive-skill"></a>文本转换认知技能
 
-**文本翻译**技能计算文本, 对于每条记录, 将返回转换为指定目标语言的文本。 此技能使用认知服务中提供的[文本翻译 API 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) 。  虽然目前在最新的 Azure 搜索提供的 API 版本中可用, 但它被视为处于预览状态, 并且应将其视为已正式发布。
+**文本翻译**技能计算文本, 对于每个记录, 将返回转换为指定目标语言的文本。 此技能使用认知服务中提供的[文本翻译 API 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) 。
 
 如果你希望你的文档不能全部使用一种语言, 则此功能非常有用, 在这种情况下, 你可以通过转换文本来将文本标准化为单一语言, 然后再对其进行索引。  它还可用于本地化用例, 在这种情况下, 你可能想要在多种语言中使用相同的文本副本。
 

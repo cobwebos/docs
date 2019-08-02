@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 10a6e5c33f6a3c23d98e6eb3380de0d6dc6ac216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61a9b319b9ea44f766bc6f014b76bc48d15efc57
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544487"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598450"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -49,7 +49,7 @@ ms.locfileid: "65544487"
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 具有[Azure 订阅](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access)的[工作或学校帐户](../active-directory/fundamentals/sign-up-organization.md) 
 
@@ -77,7 +77,7 @@ ms.locfileid: "65544487"
     > [!TIP]
     > 为了尽量降低延迟，可将网关安装在尽可能靠近数据源的位置或同一台计算机上（假设你有相应的权限）。
 
-  * 在连接到 Internet 的计算机上安装网关，始终打开，并且不  进入休眠状态。 否则，网关不能运行。 
+  * 在连接到 Internet 的计算机上安装网关，始终打开，并且不进入休眠状态。 否则，网关不能运行。 
   此外，在通过无线网络工作时，性能可能会下降。
 
   * 安装期间，只能使用由 Azure Active Directory (Azure AD) 托管的[工作或学校帐户](../active-directory/sign-up-organization.md)，例如 @contoso.onmicrosoft.com，而不能使用 Azure B2B（来宾）帐户或个人 Microsoft 帐户，例如 @hotmail.com 或 @outlook.com。 
@@ -93,7 +93,7 @@ ms.locfileid: "65544487"
   > 然后在网关安装期间可以使用此用户名和密码登录。
 
   * 为网关安装选择的区域确定了稍后在 Azure 中通过创建 Azure 资源注册网关的位置。 
-  在 Azure 中创建此网关资源时，必须选择网关安装所在的同一位置。  默认区域是管理 Azure 帐户的 Azure AD 租户所在的同一位置，但在安装网关期间可以更改位置。
+  在 Azure 中创建此网关资源时，必须选择网关安装所在的同一位置。 默认区域是管理 Azure 帐户的 Azure AD 租户所在的同一位置，但在安装网关期间可以更改位置。
 
   * 如果使用版本低于 14.16.6317.4 的安装程序安装了网关，则无法通过运行最新的安装程序更改网关位置。 但是，可以使用最新的安装程序来安装改用所需位置的新网关。
   
@@ -109,7 +109,7 @@ ms.locfileid: "65544487"
 
 * 主网关必须运行网关 2017 年 11 月更新版或更高版本。
 
-满足这些要求后，在创建下一个网关时，请选择“添加到现有网关群集”，选择群集的主网关，然后提供该主网关的恢复密钥。 
+满足这些要求后，在创建下一个网关时，请选择“添加到现有网关群集”，选择群集的主网关，然后提供该主网关的恢复密钥。
 有关详细信息，请参阅[本地数据网关的高可用性群集](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters)。
 
 <a name="install-gateway"></a>
@@ -120,15 +120,15 @@ ms.locfileid: "65544487"
 
 2. 接受默认安装路径，或者在计算机上指定网关的安装位置。
 
-3. 查看并接受使用条款和隐私声明，然后选择“安装”。 
+3. 查看并接受使用条款和隐私声明，然后选择“安装”。
 
    ![接受使用条款和隐私声明](./media/logic-apps-gateway-install/accept-terms.png)
 
-4. 成功安装网关后，提供工作或学校帐户的电子邮件地址，然后选择“登录”。 
+4. 成功安装网关后，提供工作或学校帐户的电子邮件地址，然后选择“登录”。
 
    ![使用工作或学校帐户登录](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-5. 选择“在此计算机上注册新网关” > “下一步”，将网关安装注册到[网关云服务](#gateway-cloud-service)。   
+5. 选择“在此计算机上注册新网关” > “下一步”，将网关安装注册到[网关云服务](#gateway-cloud-service)。 
 
    ![注册网关](./media/logic-apps-gateway-install/register-new-gateway.png)
 
@@ -158,17 +158,17 @@ ms.locfileid: "65544487"
    或者，可以选择最靠近本地数据源的区域。 
    *Azure 中的网关资源*和逻辑应用可以有不同的位置。
 
-8. 若要接受默认区域，请选择“配置”。  若要更改默认区域，请执行以下步骤：
+8. 若要接受默认区域，请选择“配置”。 若要更改默认区域，请执行以下步骤：
 
-   1. 在当前区域的旁边，选择“更改区域”。  
+   1. 在当前区域的旁边，选择“更改区域”。 
 
       ![更改区域](./media/logic-apps-gateway-install/change-region.png)
 
-   2. 在下一页上打开“选择区域”列表，选择所需的区域，然后选择“完成”。  
+   2. 在下一页上打开“选择区域”列表，选择所需的区域，然后选择“完成”。
 
       ![选择其他区域](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-9. 显示确认页后，选择“关闭”。  
+9. 显示确认页后，选择“关闭”。 
 
    安装程序会确认网关现已联机，并可供使用。
 
@@ -182,23 +182,23 @@ ms.locfileid: "65544487"
 
 如果必须更改网关的位置、将网关安装移到新计算机、恢复已损坏的网关，或接管现有网关的所有权，需要使用安装网关期间提供的恢复密钥。 此操作会断开旧网关的连接。
 
-1. 在计算机上的“控制面板”中，转到“程序和功能”。   在程序列表中，依次选择“本地数据网关”、“卸载”。  
+1. 在计算机上的“控制面板”中，转到“程序和功能”。 在程序列表中，依次选择“本地数据网关”、“卸载”。
 
 2. [重新安装本地数据网关](https://aka.ms/on-premises-data-gateway-installer)。
 
 3. 安装程序打开后，使用之前用于安装网关的工作或学校帐户登录。
 
-4. 依次选择“迁移、还原或接管现有网关”、“下一步”。  
+4. 依次选择“迁移、还原或接管现有网关”、“下一步”。
 
    ![选择“迁移、还原或接管现有网关”](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
-5. 在“可用网关”或“可用网关群集”下，选择要更改的网关安装。   输入网关安装的恢复密钥。 
+5. 在“可用网关”或“可用网关群集”下，选择要更改的网关安装。 输入网关安装的恢复密钥。 
 
    ![选择主网关](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-6. 若要更改区域，请选择“更改区域”和新区域。 
+6. 若要更改区域，请选择“更改区域”和新区域。
 
-7. 完成后，选择“配置”  。
+7. 完成后，选择“配置”。
 
 ## <a name="configure-proxy-or-firewall"></a>配置代理或防火墙
 
@@ -246,8 +246,8 @@ TcpTestSucceeded       : True
 | *.login.windows.net | 443 | HTTPS | 
 | *.microsoftonline-p.com | 443 | 用于根据配置进行身份验证。 | 
 | *.msftncsi.com | 443 | 在 Power BI 服务无法访问网关时用于测试 Internet 连接。 | 
-| \* .servicebus.windows.net | 443, 9350-9354 | 通过 TCP 的服务总线中继上的侦听器（需要 443 来获取访问控制令牌） | 
-| \* .servicebus.windows.net | 5671-5672 | 高级消息队列协议 (AMQP) | 
+| *.servicebus.windows.net | 443, 9350-9354 | 通过 TCP 的服务总线中继上的侦听器（需要 443 来获取访问控制令牌） | 
+| *.servicebus.windows.net | 5671-5672 | 高级消息队列协议 (AMQP) | 
 | login.microsoftonline.com | 443 | HTTPS | 
 ||||
 
@@ -260,9 +260,9 @@ TcpTestSucceeded       : True
 
 1. 浏览到本地数据网关客户端所在的位置，通常可在此处找到：```C:\Program Files\On-premises data gateway\Microsoft.PowerBI.EnterpriseGateway.exe```
 
-   若要查找客户端位置，请在同一台计算机上打开服务控制台，找到“本地数据网关服务”，并查看“可执行文件的路径”属性。  
+   若要查找客户端位置，请在同一台计算机上打开服务控制台，找到“本地数据网关服务”，并查看“可执行文件的路径”属性。
 
-2. 打开以下配置  文件：**Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
+2. 打开以下配置文件：**Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
 
 3. 将 **ServiceBusSystemConnectivityModeString** 值从 **AutoDetect** 更改为 **Https**：
 
@@ -278,7 +278,7 @@ TcpTestSucceeded       : True
 
 在安装了本地数据网关的计算机上，网关作为名为“本地数据网关服务”的 Windows 服务帐户运行。 但是，网关使用“NT SERVICE\PBIEgwService”名称作为其“登录方式”帐户凭据。 默认情况下，网关在安装了网关的计算机上拥有“作为服务登录”权限。 网关的 Windows 服务帐户通常不同于用来连接到本地数据源的帐户，也不同于用于登录到云服务的工作或学校帐户。
 
-若要在 Azure 门户中创建和维护网关，此 Windows 服务帐户必须至少具有“参与者”  权限。 若要检查这些权限，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。 
+若要在 Azure 门户中创建和维护网关，此 Windows 服务帐户必须至少具有“参与者”权限。 若要检查这些权限，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。 
 
 <a name="restart-gateway"></a>
 
@@ -296,7 +296,7 @@ TcpTestSucceeded       : True
 
 ## <a name="tenant-level-administration"></a>租户级管理 
 
-目前没有单独的位置可让租户管理员管理其他用户安装和配置的所有网关。 如果你是租户管理员，你可能希望组织中的用户将你以管理员的身份添加到他们安装的每个网关。 这样，你便可以通过“网关设置”页面或通过 [PowerShell 命令](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters)管理组织中的所有网关。 
+目前没有单独的位置可让租户管理员管理其他用户安装和配置的所有网关。 如果你是租户管理员，你可能希望组织中的用户将你以管理员的身份添加到他们安装的每个网关。 这样，你便可以通过“网关设置”页面或通过 [PowerShell 命令](/data-integration/gateway/service-gateway-powershell-support)管理组织中的所有网关。 
 
 <a name="gateway-cloud-service"></a>
 
@@ -371,7 +371,7 @@ TcpTestSucceeded       : True
 **问**：恢复密钥的好处是什么？ <br/>
 **答**：使用恢复密钥可在发生灾难后迁移或恢复网关设置。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 本部分帮助你解决在设置和使用本地数据网关时可能遇到的一些常见问题。
 
@@ -382,14 +382,14 @@ TcpTestSucceeded       : True
 **答**：此问题的可能原因如下：
 
 * 网关安装已由 Azure 中的另一个网关资源注册并声明。 为网关安装创建网关资源后，实例列表中不会显示这些网关安装。
-若要在 Azure 门户中检查网关注册，请查看所有 Azure 订阅的“本地数据网关”类型的所有 Azure 资源。   
+若要在 Azure 门户中检查网关注册，请查看所有 Azure 订阅的“本地数据网关”类型的所有 Azure 资源。 
 
 * 网关安装人员的 Azure AD 标识不同于登录 Azure 门户的人员。 请检查你是否使用了用于安装网关的同一标识登录。
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
 **问**：网关日志在何处？ <br/>
-**答**：请参阅本文稍后的[“日志”  部分](#logs)。
+**答**：请参阅本文稍后的[“日志”部分](#logs)。
 
 **问**：如何查看正在发送到本地数据源的查询？ <br/>
 **答**：可以启用查询跟踪，包括要发送的查询。 请记得在完成故障排除后将查询跟踪改回原始值。 一直保持启用查询跟踪会创建大量的日志。
@@ -411,8 +411,8 @@ TcpTestSucceeded       : True
 为帮助故障排除，请始终先收集并检查网关日志。 可通过多种方式收集日志，但安装网关后最简单的日志收集方法是使用网关安装程序的用户界面。 
 
 1. 在计算机上打开本地数据网关安装程序。
-2. 在左侧菜单中，选择“诊断”。 
-3. 在“网关日志”下，选择“导出日志”。  
+2. 在左侧菜单中，选择“诊断”。
+3. 在“网关日志”下，选择“导出日志”。
 
    ![从网关安装程序导出日志](./media/logic-apps-gateway-install/export-logs.png)
 
@@ -429,9 +429,9 @@ TcpTestSucceeded       : True
 
 若要查找网关的事件日志，请执行以下步骤：
 
-1. 在安装网关的计算机上打开“事件查看器”。  
-2. 展开“事件查看器(本地)” > “应用程序和服务日志”。   
-3. 选择“本地数据网关服务”。 
+1. 在安装网关的计算机上打开“事件查看器”。 
+2. 展开“事件查看器(本地)” > “应用程序和服务日志”。 
+3. 选择“本地数据网关服务”。
 
    ![查看网关的事件日志](./media/logic-apps-gateway-install/event-viewer.png)
 
@@ -443,7 +443,7 @@ TcpTestSucceeded       : True
 
 1. 浏览到网关客户端所在的同一位置，通常可此处找到：```C:\Program Files\On-premises data gateway```
 
-   若要查找客户端位置，请在同一台计算机上打开服务控制台，找到“本地数据网关服务”，并查看“可执行文件的路径”属性。  
+   若要查找客户端位置，请在同一台计算机上打开服务控制台，找到“本地数据网关服务”，并查看“可执行文件的路径”属性。
 
 2. 如下所述打开并编辑这些配置文件：
 
@@ -472,12 +472,12 @@ TcpTestSucceeded       : True
        </setting>
        ```
 
-     * 打开网关安装程序，选择“诊断”，启用“附加日志记录”，然后选择“应用”：   
+     * 打开网关安装程序，选择“诊断”，启用“附加日志记录”，然后选择“应用”：
 
        ![启用附加日志记录](./media/logic-apps-gateway-install/turn-on-additional-logging.png)
 
      > [!IMPORTANT]
-     > 根据网关的使用情况，启用 TracingVerbosity 设置可能会显著增大日志大小。 检查完日志后，请确保在网关安装程序中禁用“附加日志记录”，或者在配置文件中将 TracingVerbosity 重置为 **4**，而不要让此设置长期处于启用状态。 
+     > 根据网关的使用情况，启用 TracingVerbosity 设置可能会显著增大日志大小。 检查完日志后，请确保在网关安装程序中禁用“附加日志记录”，或者在配置文件中将 TracingVerbosity 重置为 **4**，而不要让此设置长期处于启用状态。
 
 3. 若要找出查询的持续时间，请执行以下步骤：
 

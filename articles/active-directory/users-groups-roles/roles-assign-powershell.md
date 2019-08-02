@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 07/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6877c3e547d625cf58129a546dae798b37a24ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa4bddf84720265afe361dff665f10ff8184f6f6
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469088"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706488"
 ---
 # <a name="assign-azure-active-directory-admin-roles-using-powershell"></a>使用 PowerShell 分配 Azure Active Directory 管理员角色
 
@@ -149,16 +149,16 @@ $roleMember = Get-AzureADUser -ObjectId "username@contoso.com"
 
 #Fetch list of all directory roles with object id
 Get-AzureADDirectoryRole
- 
+
 # Fetch a directory role by id
 $role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543"
- 
+
 # Remove user from role
 Remove-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -MemberId $roleMember.ObjectId 
 
 # Fetch role membership for role to confirm
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
- 
+
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: 02281a1cad9c7e6f9680441a699fa5d34558b890
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 0504da45cbbd60629954d3e3ca3230e05761c1d6
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501489"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640383"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB 的高级威胁防护
 
@@ -23,7 +23,7 @@ ms.locfileid: "68501489"
 > [!NOTE]
 >
 > * Azure Cosmos DB 的高级威胁防护目前仅适用于 SQL API。
-> * Azure Cosmos DB 的高级威胁防护目前在 Azure 政府版和主权的云区域中提供。
+> * Azure Cosmos DB 的高级威胁防护目前不适用于 Azure 政府版和主权的云区域。
 
 为了获得安全警报的完整调查体验, 建议[在 Azure Cosmos DB 中启用诊断日志记录](https://docs.microsoft.com/azure/cosmos-db/logging), 这会在数据库本身上记录操作, 包括对所有文档、容器和数据库的 CRUD 操作。
 

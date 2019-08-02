@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/14/2019
-ms.openlocfilehash: adbe8dfd41725c11516f820656b0476ed1aa8881
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: da2107a0573fafd10394931be21fb446f83fd5f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144032"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569075"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>处理 SQL 数据库连接问题和暂时性错误
 
@@ -91,9 +90,9 @@ ms.locfileid: "67144032"
 可以测试重试逻辑的一种方法是在程序运行时断开客户端计算机与网络的连接。 错误为：
 
 - **SqlException.Number** = 11001
-- 消息：“此主机不存在”
+- 消息:“此主机不存在”
 
-作为第一次重试尝试的一部分，可以重新连接到网络客户端计算机并尝试连接。
+第一次重试时, 可以将客户端计算机重新连接到网络, 然后尝试连接。
 
 要使此测试可行，请从网络中断开计算机的连接，再启动程序。 然后，程序将识别促使它执行以下操作的运行时参数：
 
@@ -109,7 +108,7 @@ ms.locfileid: "67144032"
 在首次连接尝试之前，程序可以故意拼错用户名。 错误为：
 
 - **SqlException.Number** = 18456
-- 消息：“用户 'WRONG_MyUserName' 的登录失败。”
+- 消息:“用户 'WRONG_MyUserName' 的登录失败。”
 
 在首次重试过程中，程序可以更正拼写错误，然后尝试连接。
 
@@ -134,7 +133,7 @@ ms.locfileid: "67144032"
 为 **SqlConnection** 对象生成[连接字符串](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx)时，请在以下参数之间协调值：
 
 - **ConnectRetryCount**：&nbsp;&nbsp;默认值为 1。 范围为 0 到 255。
-- **ConnectRetryInterval**:&nbsp;&nbsp;默认值为 10 秒。 范围为 1 到 60。
+- **ConnectRetryInterval**&nbsp;:&nbsp;默认值为10秒。 范围为 1 到 60。
 - **Connection Timeout**：&nbsp;&nbsp;默认值为 15 秒。 范围为 0 到 2147483647。
 
 具体而言，所选的值应使以下等式成立：连接超时值 = ConnectRetryCount * ConnectionRetryInterval
@@ -150,7 +149,7 @@ ms.locfileid: "67144032"
 - mySqlConnection.Open 方法调用
 - mySqlConnection.Execute 方法调用
 
-有个很微妙的地方。 如果正在执行查询  时发生暂时性错误，**SqlConnection** 对象不会重试连接操作。 肯定不会重试查询。 但是，**SqlConnection** 在发送要执行的查询前会非常快速地检查连接。 如果快速检查检测到连接问题，**SqlConnection** 会重试连接操作。 如果重试成功，则会发送查询以执行。
+有个很微妙的地方。 如果正在执行查询时发生暂时性错误，**SqlConnection** 对象不会重试连接操作。 肯定不会重试查询。 但是，**SqlConnection** 在发送要执行的查询前会非常快速地检查连接。 如果快速检查检测到连接问题，**SqlConnection** 会重试连接操作。 如果重试成功，则会发送查询以执行。
 
 ### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>ConnectRetryCount 是否应结合应用程序重试逻辑？
 
@@ -188,7 +187,7 @@ ms.locfileid: "67144032"
 例如，当客户端程序托管在 Windows 计算机上时，则可以使用主机上的 Windows 防火墙打开端口 1433。
 
 1. 打开控制面板。
-2. 选择“所有控制面板项” > “Windows 防火墙” > “高级设置” > “出站规则” > “操作” > “新建规则”。      
+2. 选择“所有控制面板项” > “Windows 防火墙” > “高级设置” > “出站规则” > “操作” > “新建规则”。
 
 如果客户端程序托管在 Azure 虚拟机 (VM) 上，请阅读[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
 
@@ -355,7 +354,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 以下是 EntLib60 相关信息的某些链接：
 
 - 免费书籍下载：[Microsoft Enterprise Library 版本 2 开发人员指南](https://www.microsoft.com/download/details.aspx?id=41145)
-- 最佳做法：[重试的常规指南](../best-practices-retry-general.md)重试逻辑的深入探讨。
+- 最佳做法：[重试常规指南](../best-practices-retry-general.md)深入探讨了重试逻辑。
 - NuGet 下载：[Enterprise Library - 暂时性故障处理应用程序块 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)。
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>

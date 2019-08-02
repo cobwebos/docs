@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 用户、组、许可和角色
+    - name: Azure AD 用户、组、许可和角色
       href: directory-overview-user-model.md
 - name: 快速入门
   items:
@@ -10,6 +10,8 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 将许可证分配给用户
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 使用资源范围分配角色
+      href: roles-quickstart-app-registration-limits.md
     - name: 设置组过期策略
       href: groups-quickstart-expiration.md
     - name: 设置组命名策略
@@ -126,10 +128,24 @@
           href: directory-assign-admin-roles.md
         - name: 查看和分配角色
           href: directory-manage-roles-portal.md
-        - name: 使用 PowerShell 分配角色
+        - name: 在图形 API 中分配自定义角色
           href: roles-assign-powershell.md
-        - name: 委托应用管理角色
-          href: roles-delegate-app-roles.md
+        - name: 自定义角色预览版
+          items:
+            - name: 自定义角色预览版
+              href: roles-custom-overview.md
+            - name: 创建自定义角色
+              href: roles-create-custom.md
+            - name: 查看自定义角色分配
+              href: roles-view-assignments.md
+            - name: 在 Azure AD 管理中心分配角色
+              href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+            - name: 在图形 API 中分配自定义角色
+              href: roles-assign-graph.md
+            - name: 自定义角色预览权限
+              href: roles-custom-available-permissions.md
+            - name: 委托应用管理权限
+              href: roles-delegate-app-roles.md
         - name: 按任务分配的最低权限角色
           href: roles-delegate-by-task.md
         - name: Microsoft 365 角色

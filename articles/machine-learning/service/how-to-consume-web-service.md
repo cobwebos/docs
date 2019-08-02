@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 070dd07aa6705e97a532bdc5f53a08a9abe0f83d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7799b62b2c330610663e361bbb3930340b1ebdaf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361006"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726284"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
@@ -37,8 +37,10 @@ ms.locfileid: "68361006"
 
 [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) 类提供了创建客户端所需的信息。 创建客户端应用程序时，以下 `Webservice` 属性非常有用：
 
-* `auth_enabled` - 如果启用了身份验证，则为 `True`；否则为 `False`。
+* `auth_enabled`-如果启用密钥身份验证, `True`则为; `False`否则为。
+* `token_auth_enabled`-如果启用令牌身份验证, `True`则为; `False`否则为。
 * `scoring_uri` - REST API 地址。
+
 
 可通过三种方式检索已部署的 Web 服务的此信息：
 
@@ -67,7 +69,15 @@ ms.locfileid: "68361006"
     print(service.scoring_uri)
     ```
 
-### <a name="authentication-key"></a>身份验证密钥
+### <a name="authentication-for-services"></a>服务身份验证
+
+Azure 机器学习提供了两种方法来控制对 web 服务的访问。 
+
+|身份验证方法|ACI|AKS|
+|---|---|---|
+|Key|默认情况下禁用| 默认情况下启用|
+|令牌| 不可用| 默认情况下禁用 |
+#### <a name="authentication-with-keys"></a>密钥身份验证
 
 为部署启用身份验证时，会自动创建身份验证密钥。
 
@@ -85,6 +95,26 @@ print(primary)
 
 > [!IMPORTANT]
 > 如需重新生成密钥，请使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)。
+
+
+#### <a name="authentication-with-tokens"></a>带令牌的身份验证
+
+为 web 服务启用令牌身份验证时, 用户必须向 web 服务提供 Azure 机器学习 JWT 令牌才能访问该令牌。 
+
+* 在部署到 Azure Kubernetes 服务时, 令牌身份验证默认情况下处于禁用状态。
+* 在部署到 Azure 容器实例时, 令牌身份验证不受支持。
+
+若要控制令牌身份验证, `token_auth_enabled`请在创建或更新部署时使用参数。
+
+如果启用了令牌身份验证, 则可以使用`get_token`方法来检索持有者令牌, 并确保令牌过期时间:
+
+```python
+token, refresh_by = service.get_tokens()
+print(token)
+```
+
+> [!IMPORTANT]
+> 需要在令牌`refresh_by`时间之后请求新令牌。 
 
 ## <a name="request-data"></a>请求数据
 

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0ba818ef3c24d0e88e662adf87b22cc938fe5fab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d076e2b0057f0ba666fa47ffd0b3d7d1fcc14631
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60391036"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725588"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>关于 Azure 可用性区域中的区域冗余虚拟网络网关
 
@@ -57,22 +57,22 @@ ms.locfileid: "60391036"
 
 ## <a name="pipskus"></a>公共 IP SKU
 
-区域冗余网关和区块网关都依赖 Azure 公共 IP 资源标准  SKU。 Azure 公共 IP 资源的配置决定了是部署区域冗余网关，还是部署区块网关。 如果使用基本  SKU 创建公共 IP 资源，网关不会有任何区域冗余，且网关资源具有区域性。
+区域冗余网关和区块网关都依赖 Azure 公共 IP 资源标准 SKU。 Azure 公共 IP 资源的配置决定了是部署区域冗余网关，还是部署区块网关。 如果使用基本 SKU 创建公共 IP 资源，网关不会有任何区域冗余，且网关资源具有区域性。
 
 ### <a name="pipzrg"></a>区域冗余网关
 
-如果使用标准  公共 IP SKU 创建公共 IP 地址，但未指定区域，行为因网关是 VPN 网关还是 ExpressRoute 网关而异。 
+如果使用标准公共 IP SKU 创建公共 IP 地址，但未指定区域，行为因网关是 VPN 网关还是 ExpressRoute 网关而异。 
 
 * 对于 VPN 网关，两个网关实例会部署到这三个区域中的任意两个区域，以实现区域冗余。 
 * 对于 ExpressRoute 网关，由于可以有超过两个实例，因此网关可以跨所有这三个区域部署。
 
 ### <a name="pipzg"></a>区块网关
 
-如果使用标准  公共 IP SKU 创建公共 IP 地址，并指定区域（1、2 或 3），所有网关实例都会部署到同一区域中。
+如果使用标准公共 IP SKU 创建公共 IP 地址，并指定区域（1、2 或 3），所有网关实例都会部署到同一区域中。
 
 ### <a name="piprg"></a>区域网关
 
-如果使用基本  公共 IP SKU 创建公共 IP 地址，网关会部署为区域网关，并且不会内置有任何区域冗余。
+如果使用基本公共 IP SKU 创建公共 IP 地址，网关会部署为区域网关，并且不会内置有任何区域冗余。
 
 ## <a name="faq"></a>常见问题解答
 
@@ -86,7 +86,7 @@ ms.locfileid: "60391036"
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>我可以在哪些区域中使用新 SKU？
 
-新 SKU 可在具有 Azure 可用性区域的 Azure 区域（“美国中部”、“法国中部”、“北欧”、“西欧”和“美国西部 2”区域）中使用。 今后，我们将在其他 Azure 公共区域推出区域冗余网关。
+Azure 区域中提供了新的 Sku, 其中包含 Azure 可用性区域美国、法国中部、北欧、西欧和美国西部2区域、美国东部、美国东部2、东南亚、日本东部、英国南部。 今后，我们将在其他 Azure 公共区域推出区域冗余网关。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>我能否将现有虚拟网络网关更改/迁移/升级为区域冗余网关或区域网关？
 

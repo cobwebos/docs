@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a57335eccfce1e81fe0cc85ae6fa7b12aa27e1c3
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 0e59a28ce1fb3c562bf76420a5e62e347230e964
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805875"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669552"
 ---
-临时 OS 磁盘是在本地虚拟机 (VM) 存储中创建并不会保存到远程 Azure 存储。 临时 OS 磁盘工作也为无状态工作负载，其中应用程序都容许的单个 VM 失败，但更影响的 VM 部署时间或重置映像的单个 VM 实例。 使用临时 OS 磁盘后，您可以获得较低的读/写延迟，OS 磁盘和更快的 VM 重置映像。 
+在本地虚拟机 (VM) 存储上创建暂时的 OS 磁盘, 而不会将其保存到远程 Azure 存储。 临时 OS 磁盘适用于无状态工作负荷, 其中应用程序可以容忍单个 VM 故障, 但会受到 VM 部署时间或重新映像单个 VM 实例的影响。 通过临时 OS 磁盘, 可以更低的读取/写入延迟到 OS 磁盘和更快的 VM 重置。 
  
 临时磁盘 (ephemeral disk) 的重要功能包括： 
 - 适用于无状态应用程序。
-- 它们可以用于 Marketplace 和自定义映像。
-- 可以快速重置或重置映像 Vm 和规模集实例到原始的启动状态。  
-- 较低的滞后时间，类似于临时磁盘。 
-- 临时 OS 磁盘可免费使用，则会产生的 OS 磁盘存储免费。
-- 它们在所有 Azure 区域均可用。 
-- 通过支持临时 OS 磁盘[共享映像库](/azure/virtual-machines/linux/shared-image-galleries)。 
+- 它们可与 Marketplace 映像和自定义映像一起使用。
+- 能够快速将 Vm 和规模集实例重置或重新映像到原始启动状态。  
+- 延迟较低, 与临时磁盘类似。 
+- 临时 OS 磁盘是免费的, 操作系统磁盘不会产生存储费用。
+- 它们在所有 Azure 区域中均可用。 
+- [共享映像库](/azure/virtual-machines/linux/shared-image-galleries)支持临时 OS 磁盘。 
  
 
  
@@ -32,8 +32,8 @@ ms.locfileid: "67805875"
 
 |                             | 持久 OS 磁盘                          | 临时 OS 磁盘                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| OS 磁盘的大小限制      | 2 TiB                                                                                        | 缓存大小的 VM 大小或 2TiB，两者中较小。 有关**缓存以 GiB 为单位的大小**，请参阅[DS](../articles/virtual-machines/linux/sizes-general.md)， [ES](../articles/virtual-machines/linux/sizes-memory.md)， [M](../articles/virtual-machines/linux/sizes-memory.md)， [FS](../articles/virtual-machines/linux/sizes-compute.md)，和[GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
-| 支持的 VM 大小          | All                                                                                          | DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
+| OS 磁盘的大小限制      | 2 TiB                                                                                        | VM 大小或2TiB 的缓存大小, 以较小者为准。 有关**GiB 中的缓存大小**, 请[参阅 DS](../articles/virtual-machines/linux/sizes-general.md)、 [ES](../articles/virtual-machines/linux/sizes-memory.md)、 [M](../articles/virtual-machines/linux/sizes-memory.md)、 [FS](../articles/virtual-machines/linux/sizes-compute.md)和[GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
+| 支持的 VM 大小          | 全部                                                                                          | DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
 | 磁盘类型支持           | 托管和非托管 OS 磁盘                                                                | 仅托管 OS 磁盘                                                               |
 | 区域支持              | 所有区域                                                                                  | 所有区域                              |
 | 数据暂留            | 写入 OS 磁盘的 OS 磁盘数据存储在 Azure 存储中                                  | 写入 OS 磁盘的数据存储到本地 VM 存储，不保存到 Azure 存储。 |
@@ -44,19 +44,19 @@ ms.locfileid: "67805875"
 
 ## <a name="size-requirements"></a>大小要求
 
-你可以部署 VM 和实例的映像，最多 VM 缓存的大小。 例如，在 marketplace 中的标准 Windows Server 映像是约 127 GiB，这意味着你需要具有大于 127 GiB 的缓存的 VM 大小。 在这种情况下， [Standard_DS2_v2](/azure/virtual-machines/windows/sizes-general#dsv2-series)有的缓存大小为 86 GiB，这是不足够大。 Standard_ds2_v2，并具有 172 GiB 的缓存大小足够大。 在这种情况下，Standard_DS3_v2 是可以使用与此图像的 DSv2 系列中的最小大小。 由表示的应用商店和 Windows Server 映像中的基本 Linux 映像`[smallsize]`往往是大约 30 GiB 和可以使用大部分可用的 VM 大小。
+你可以部署 VM 和实例映像, 最大大小为 VM 缓存大小。 例如, marketplace 中的标准 Windows Server 映像大约为 127 GiB, 这意味着需要的 VM 大小的缓存大于 127 GiB。 在这种情况下, [Standard_DS2_v2](/azure/virtual-machines/windows/sizes-general#dsv2-series)的缓存大小为 86 GiB, 这不够大。 Standard_DS3_v2 缓存大小为 172 GiB, 它足够大。 在这种情况下, Standard_DS3_v2 是可与此图像一起使用的 DSv2 系列中的最小大小。 Marketplace 中的基本 Linux 映像和由表示的`[smallsize]` Windows Server 映像往往约为 30 GiB, 可以使用大多数可用的 VM 大小。
 
-临时磁盘也需要该 VM 大小支持高级存储。 大小通常 （但不是总是） 有`s`中的名称，如 DSv2 和 esv3 系列。 有关详细信息，请参阅[Azure VM 大小](../articles/virtual-machines/linux/sizes.md)有关围绕其大小支持高级存储的详细信息。
+临时磁盘还要求 VM 大小支持高级存储。 通常 (但不总是) `s`在名称中包含 (如 DSv2 和 EsV3)。 有关详细信息, 请参阅[AZURE VM 大小](../articles/virtual-machines/linux/sizes.md), 详细了解哪些大小支持高级存储。
 
 ## <a name="powershell"></a>PowerShell
 
-若要为 PowerShell VM 部署中使用临时磁盘，请使用[集 AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) VM 配置中。 设置`-DiffDiskSetting`到`Local`并`-Caching`到`ReadOnly`。     
+若要将临时磁盘用于 PowerShell VM 部署, 请在 VM 配置中使用[AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) 。 `Local`将设置`-DiffDiskSetting`为和。`-Caching` `ReadOnly`     
 
 ```powershell
 Set-AzVMOSDisk -DiffDiskSetting Local -Caching ReadOnly
 ```
 
-有关规模集部署，使用[集 AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile)在配置中的 cmdlet。 设置`-DiffDiskSetting`到`Local`并`-Caching`到`ReadOnly`。
+对于规模集部署, 请在配置中使用[AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile) cmdlet。 `Local`将设置`-DiffDiskSetting`为和。`-Caching` `ReadOnly`
 
 
 ```powershell
@@ -65,7 +65,7 @@ Set-AzVmssStorageProfile -DiffDiskSetting Local -OsDiskCaching ReadOnly
 
 ## <a name="cli"></a>CLI
 
-若要为 CLI VM 部署中使用临时磁盘，将`--ephemeral-os-disk`中的参数[az vm 创建](/cli/azure/vm#az-vm-create)到`true`并`--os-disk-caching`参数`ReadOnly`。
+`--ephemeral-os-disk`若要将临时磁盘用于 CLI VM 部署, 请将[az](/cli/azure/vm#az-vm-create) `true` VM create 中的参数设置为, `--os-disk-caching`并将`ReadOnly`参数设置为。
 
 ```azurecli-interactive
 az vm create \
@@ -78,19 +78,19 @@ az vm create \
   --generate-ssh-keys
 ```
 
-对于规模集，使用相同`--ephemeral-os-disk true`参数[az vmss 创建](/cli/azure/vmss#az-vmss-create)并设置`--os-disk-caching`参数`ReadOnly`。
+对于规模集, 可对[az-vmss](/cli/azure/vmss#az-vmss-create)使用同一个`--os-disk-caching` `--ephemeral-os-disk true`参数, 并将参数设置为`ReadOnly`。
 
 ## <a name="portal"></a>门户   
 
-在 Azure 门户中，您可以选择通过打开部署 VM 时使用临时磁盘**高级**一部分**磁盘**选项卡。有关**使用临时 OS 磁盘**选择**是**。
+在 Azure 门户中, 通过打开 "**磁盘**" 选项卡的 "**高级**" 部分, 可以选择在部署 VM 时使用临时磁盘。对于 "**使用临时 OS 磁盘**", 请选择 **"是"** 。
 
-![显示用于选择要使用临时 OS 磁盘的单选按钮的屏幕截图](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
+![显示用于选择使用临时 OS 磁盘的单选按钮的屏幕截图](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
 
-如果使用临时磁盘的选项灰显，您可能选择不具有大于 OS 映像的缓存大小或不支持高级存储的 VM 大小。 返回到**基础知识**页上，并尝试选择另一个 VM 大小。
+如果使用临时磁盘的选项灰显, 则可能是因为选择的 VM 大小的缓存大小不大于 OS 映像或不支持高级存储。 返回到 "**基本**信息" 页, 尝试选择另一个 VM 大小。
 
-此外可以使用临时 OS 磁盘使用门户创建规模集。 只需确保所选的 VM 大小足够大，缓存大小，然后在**使用临时 OS 磁盘**选择**是**。
+你还可以使用门户创建具有临时 OS 磁盘的规模集。 只需确保选择足够大的缓存大小, 然后在 "**使用临时 OS 磁盘**" 中选择 **"是"** , 即可选择一个 VM 大小。
 
-![显示用于选择要为规模集使用临时 OS 磁盘的单选按钮的屏幕截图](./media/virtual-machines-common-ephemeral/scale-set.png)
+![显示用于选择是否为规模集使用临时 OS 磁盘的单选按钮的屏幕截图](./media/virtual-machines-common-ephemeral/scale-set.png)
 
 ## <a name="scale-set-template-deployment"></a>规模集模板部署  
 创建一个使用临时 OS 磁盘的规模集时，其过程很简单，就是将 `diffDiskSettings` 属性添加到模板中的 `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` 资源类型。 另外，对于临时 OS 磁盘，必须将缓存策略设置为 `ReadOnly`。 
@@ -186,7 +186,7 @@ id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}
 
 **问：本地 OS 磁盘的大小是多少？**
 
-答：我们支持的平台和自定义映像，最大 VM 缓存大小，将在其中放置虚拟机作为在同一节点上本地所有读/写到 OS 磁盘。 
+答：我们支持平台和自定义映像, 最高可达 VM 缓存大小, 在此情况下, OS 磁盘的所有读/写操作都将在虚拟机所在的同一节点上本地运行。 
 
 **问：可以重设临时 OS 磁盘的大小吗？**
 

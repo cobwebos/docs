@@ -6,15 +6,16 @@ documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 ms.service: security
+ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: caac311930f2ce4e0ecdf89b5e3a980019e38381
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: be39a623dc5dac09dcfe47de67e025191b5c7de3
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68615832"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727500"
 ---
 # <a name="security-attributes-for-azure-services"></a>Azure 服务的安全属性
 
@@ -658,7 +659,7 @@ SQL 数据库同时包含[单一数据库](/azure/sql-database/sql-database-sing
 | 安全属性 | 是/否 | 说明|
 |---|---|--|
 | 身份验证| 是 | Azure Active Directory (Azure AD) |
-| Authorization| 是 | None |
+| Authorization| 是 | 无 |
 
 ### <a name="audit-trail"></a>审核线索
 
@@ -671,7 +672,7 @@ SQL 数据库同时包含[单一数据库](/azure/sql-database/sql-database-sing
 
 | 安全属性 | 是/否 | 说明|
 |---|---|--|
-| 配置管理支持, 例如配置的版本控制| 否  | None |
+| 配置管理支持, 例如配置的版本控制| 否  | 无 |
 
 ### <a name="additional-security-attributes-for-sql-database"></a>SQL 数据库的其他安全属性
 
