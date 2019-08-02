@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: e4530cd34097bb25dc7100df5852a72f4daae84f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69cdf248e299ce4fdf08540836d44958438a2665
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66727289"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699903"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet
 
@@ -123,7 +123,7 @@ New-AzResourceGroup -Name TestRG1 -Location 'East US'
 1. 设置变量。
 
    ```azurepowershell-interactive
-   $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name TestVet1
+   $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
    ```
 2. 创建网关子网。
 

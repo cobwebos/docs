@@ -9,14 +9,14 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: f78f53f259234dc949ce5b18ccc7714b32e239f9
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: da97dde43a6ef13db204f1d3be1229a0dfc30af5
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404031"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668040"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中心将文件从设备上传到云
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>通过 IoT 中心将文件从设备上传到云 (node.js)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "68404031"
 
 * 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-将[遥测数据从设备发送到 iot 中心](quickstart-send-telemetry-node.md)快速入门介绍 iot 中心的基本设备到云消息传送功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-node.md)快速入门演示了 IoT 中心基本的设备到云的消息传送功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频
@@ -62,13 +62,13 @@ ms.locfileid: "68404031"
     npm init
     ```
 
-2. 在 ```simulateddevice``` 文件夹的命令提示符处，运行下述命令以安装 azure-iot-device 设备 SDK 包和 azure-iot-device-mqtt 包：
+2. 在 ```simulateddevice``` 文件夹的命令提示符处，运行下述命令以安装azure-iot-device 设备 SDK 包和azure-iot-device-mqtt 包：
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. 在 ```simulateddevice``` 文件夹中，利用文本编辑器创建 SimulatedDevice.js 文件。
+3. 在 ```simulateddevice``` 文件夹中，利用文本编辑器创建SimulatedDevice.js 文件。
 
 4. 在 **SimulatedDevice.js** 文件的开头添加以下 ```require``` 语句：
 

@@ -14,18 +14,18 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a1dafb8e4c16a59bfed51016ce9ccb0ec3eb7d6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 460ea15b0827ea307d64d1bd92d9bd14d5919d73
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754762"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704379"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
 
-当整个 Azure 区域或数据中心（如果未使用[可用性区域](../availability-zones/az-overview.md)）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 在这种情况下，异地灾难恢复  和异地复制  对于任何企业而言都是至关重要的功能。 Azure 事件中心支持命名空间级别的异地灾难恢复和异地复制。 
+当整个 Azure 区域或数据中心（如果未使用[可用性区域](../availability-zones/az-overview.md)）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 在这种情况下，异地灾难恢复和异地复制对于任何企业而言都是至关重要的功能。 Azure 事件中心支持命名空间级别的异地灾难恢复和异地复制。 
 
-异地灾难恢复功能是全局适用于事件中心标准和专用 SKU。 请注意在相同的 SKU 层之间可以仅地理配对命名空间。 例如，如果仅在我们的专用 SKU 中提供的群集中有一个命名空间，则它仅可以进行配对使用另一个群集中的命名空间。 
+异地灾难恢复功能在全球范围内可用于事件中心标准和专用 SKU。 请注意, 只能在同一 SKU 层中进行地理对命名空间。 例如, 如果群集中的某个命名空间仅在专用 SKU 中提供, 则它只能与另一个群集中的命名空间配对。 
 
 ## <a name="outages-and-disasters"></a>中断和灾难
 
@@ -53,9 +53,9 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 以下部分概述了故障转移流程，并说明了如何设置初始故障转移。 
 
-![第][]
+![1][]
 
-### <a name="setup"></a>设置
+### <a name="setup"></a>安装
 
 首先，创建一个主要命名空间或使用现有的主要命名空间，并创建一个新的次要命名空间，然后将两者配对。 此配对提供可用于连接的别名。 由于使用别名，因此，无需更改连接字符串。 只有新的命名空间可以添加到故障转移配对。 最后，应添加一些监视功能，以检测是否有必要进行故障转移。 在大多数情况下，服务是一个大型生态系统的一部分，因此极少可能会发生自动故障转移，因为通常故障转移必须在与剩余子系统或基础结构保持同步的情况下进行。
 
@@ -84,7 +84,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 ## <a name="samples"></a>示例
 
-[GitHub 上的示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)演示如何设置和启动故障转移。 此示例演示以下概念：
+[GitHub 上的示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)演示如何设置和启动故障转移。 此示例演示以下概念：
 
 - 在 Azure Active Directory 中要将 Azure 资源管理器与事件中心配合使用所需的设置。 
 - 执行示例代码所需的步骤。 
@@ -115,7 +115,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [GitHub 上的示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)演练了一个针对灾难恢复方案创建地理配对并启动故障转移的简单工作流。
+* [GitHub 上的示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)演练了一个针对灾难恢复方案创建地理配对并启动故障转移的简单工作流。
 * [REST API 参考](/rest/api/eventhub/disasterrecoveryconfigs)介绍了用于执行异地灾难恢复配置的 API。
 
 有关事件中心的详细信息，请访问以下链接：

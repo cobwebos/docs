@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: ea7e4757aac0fccf60a44c70e9de6a63c1ec9498
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3338bed8cd8067d58eb2600854de6c0d8e34d1a3
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147014"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668467"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>将 Azure CLI 用于 Azure 存储
 
@@ -27,7 +27,9 @@ ms.locfileid: "65147014"
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
-## <a name="prerequisites"></a>必备组件
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
+## <a name="prerequisites"></a>先决条件
 本指南假设读者了解 Azure 存储的基本概念。 本指南还假定，用户能够满足下面为 Azure 和存储服务指定的帐户创建要求。
 
 ### <a name="accounts"></a>帐户
@@ -134,12 +136,12 @@ echo "Done"
 
 2. 接下来，更新脚本的变量以反映用户的配置设置。 按照明确的说明替换以下值：
 
-   * \<storage_account_name\>：存储帐户的名称  。
+   * \<storage_account_name\>：存储帐户的名称。
    * **\<storage_account_key\>** ：存储帐户的主访问密钥或辅助访问密钥。
    * **\<container_name\>** ：要创建的新容器的名称，例如“azure-cli-sample-container”。
    * **\<blob_name\>** ：容器中目标 Blob 的名称。
    * **\<file_to_upload\>** ：本地计算机上小文件的路径，例如：“~/images/HelloWorld.png”。
-   * \<destination_file\>：目标文件路径，如“~/downloadedImage.png”  。
+   * \<destination_file\>：目标文件路径，如“~/downloadedImage.png”。
 
 3. 更新了必要的变量后，保存脚本并退出编辑器。 后续步骤假定已将脚本命名为 **my_storage_sample.sh**。
 
@@ -173,7 +175,7 @@ Done
 
 ## <a name="manage-storage-accounts"></a>管理存储帐户
 
-### <a name="create-a-new-storage-account"></a>新建存储帐户
+### <a name="create-a-new-storage-account"></a>创建新的存储帐户
 若要使用 Azure 存储，用户需要一个存储帐户。 可以在将计算机配置为连接到订阅之后，创建新的 Azure 存储帐户。
 
 ```azurecli
@@ -323,6 +325,17 @@ az storage blob copy start \
 
 ```azurecli
 az storage blob delete --container-name <container_name> --name <blob_name>
+```
+
+### <a name="set-the-content-type"></a>设置内容类型
+
+内容类型（也称为 MIME 类型）标识 Blob 中数据的格式。 浏览器和其他软件使用内容类型来确定如何处理数据。 例如, PNG 图像的内容类型为`image/png`。 若要设置内容类型, 请使用`blob update`命令:
+
+```azurecli
+az storage blob update
+    --container-name <container_name> 
+    --name <blob_name>
+    --content-type <content_type>
 ```
 
 ## <a name="create-and-manage-file-shares"></a>创建和管理文件共享

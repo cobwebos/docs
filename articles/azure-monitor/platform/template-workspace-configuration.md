@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: a55a4b2f3045aac8dfe9e46a50074585ab3ef491
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 2acaba4e82f499ce1ca08a0ce17469ccb0a7e541
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827796"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698434"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -45,14 +45,14 @@ ms.locfileid: "67827796"
 
 | Resource | 资源类型 | API 版本 |
 |:---|:---|:---|
-| 工作区   | workspaces    | 2017-03-15-preview |
+| 工作区   | 工作区    | 2017-03-15-preview |
 | 搜索      | savedSearches | 2015-03-20 |
 | 数据源 | datasources   | 2015-11-01-preview |
-| 解决方案    | solutions     | 2015-11-01-preview |
+| 解决方案    | 解决方案     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
-以下示例将使用本地计算机的模板创建一个工作区。 JSON 模板配置为仅需要的名称和位置 （如定价层和保留的其他工作区参数使用默认值） 的新工作区。  
+以下示例将使用本地计算机的模板创建一个工作区。 JSON 模板配置为仅需要新工作区的名称和位置（使用其他工作区参数的默认值，例如定价层和保留期）。  
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
 
@@ -120,7 +120,7 @@ ms.locfileid: "67827796"
 
 2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。
-4. 已做好部署此模板的准备。 使用 PowerShell 或命令行来创建工作区中，将工作区名称和位置指定为命令的一部分。
+4. 已做好部署此模板的准备。 使用 PowerShell 或命令行创建工作区，并在命令中指定工作区名称和位置。
 
    * 对于 PowerShell，请在包含模板的文件夹中使用以下命令：
    
@@ -186,7 +186,6 @@ ms.locfileid: "67827796"
         "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
       }
     },
-    {
     "immediatePurgeDataOn30Days": {
       "type": "bool",
       "metadata": {

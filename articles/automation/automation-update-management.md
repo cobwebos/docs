@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4bd0b6f0652f49c16bd67bbca5a89d19e17a8b2c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 150d30085976c89e9053d4715da98e487684e45c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498415"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717256"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -23,7 +23,7 @@ ms.locfileid: "68498415"
 可以直接通过 Azure 自动化帐户为虚拟机启用更新管理。 若要了解如何通过自动化帐户为虚拟机启用更新管理，请参阅[管理多个虚拟机的更新](manage-update-multi.md)。 还可以通过 Azure 门户中的虚拟机页面为虚拟机启用更新管理。 此方案适用于 [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) 和 [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) 虚拟机。
 
 > [!NOTE]
-> 更新管理解决方案需要将 Log Analytics 工作区链接到自动化帐户。 有关受支持区域的权威列表, 请参阅 [./how-to/region-mappings.md]。 区域映射不会影响在不同于自动化帐户的区域中管理虚拟机的功能。
+> 更新管理解决方案需要将 Log Analytics 工作区链接到自动化帐户。 有关受支持区域的权威列表, 请参阅 https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings []。 区域映射不会影响在不同于自动化帐户的区域中管理虚拟机的功能。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -99,6 +99,11 @@ ms.locfileid: "68498415"
 #### <a name="windows"></a>Windows
 
 Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Microsoft 更新。 可以将更新管理与 System Center Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将 System Center Configuration Manager 与更新管理集成](oms-solution-updatemgmt-sccmintegration.md#configuration)。 需要 [Windows 代理](../azure-monitor/platform/agent-windows.md)。 如果加入 Azure 虚拟机，则会自动安装此代理。
+
+> [!NOTE]
+> 用户可以修改组策略以便计算机重启只能由用户执行, 而不能由系统执行。 如果更新管理无权重新启动计算机而无需手动交互用户, 托管计算机可能会停滞。
+>
+> 有关详细信息, 请参阅[配置自动更新组策略设置](https://docs.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)。
 
 #### <a name="linux"></a>Linux
 
@@ -231,7 +236,7 @@ Heartbeat
 
 | 属性 | Description |
 | --- | --- |
-| 名称 |用于标识更新部署的唯一名称。 |
+| 姓名 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
 | 要更新的组 |对于 Azure 计算机，请定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 </br></br>对于非 Azure 计算机，请选择现有的已保存搜索，以选择要包含在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
 | 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |

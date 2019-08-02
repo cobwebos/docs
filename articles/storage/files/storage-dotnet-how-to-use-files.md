@@ -1,7 +1,6 @@
 ---
 title: 使用 .NET 针对 Azure 文件进行开发 | Microsoft Docs
 description: 了解如何开发使用 Azure 文件来存储文件数据的 .NET 应用程序和服务。
-services: storage
 author: roygara
 ms.service: storage
 ms.devlang: dotnet
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 38bafdb4753b41a9c8acd599e6b7215e1777c6cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35f29e425fc471e4df4a037ef312af0fd041dcd7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779465"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699784"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
@@ -45,28 +44,28 @@ API | 使用时机 | 说明
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>创建控制台应用程序，并获取程序集
 在 Visual Studio 中创建新的 Windows 控制台应用程序。 以下步骤演示如何在 Visual Studio 2017 中创建控制台应用程序，但是，其他 Visual Studio 版本中的步骤是类似的。
 
-1. 选择“文件” > “新建” > “项目”   
-2. 选择“已安装”   > “模板”   >   “Visual C#” >   “Windows 经典桌面”
-3. 选择“控制台应用(.NET Framework)” 
-4. 在“名称:”字段中输入应用程序的名称 
-5. 选择“确定” 
+1. 选择“文件” > “新建” > “项目”
+2. 选择“已安装” > “模板” > “Visual C#” > “Windows 经典桌面”
+3. 选择“控制台应用(.NET Framework)”
+4. 在“名称:”字段中输入应用程序的名称
+5. 选择“确定”
 
 本教程中的所有代码示例都可以添加到控制台应用程序的 `Program.cs` 文件的 `Main()` 方法。
 
-可以使用任何类型的.NET 应用程序，包括 Azure 云服务或 web 应用和桌面和移动应用程序中的 Azure 存储客户端库。 为简单起见，我们在本指南中使用控制台应用程序。
+可以在任意类型的 .NET 应用程序（包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序）中使用 Azure 存储客户端库。 为简单起见，我们在本指南中使用控制台应用程序。
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>使用 NuGet 安装所需包
 为完成此教程，需要在项目中引用两个包：
 
-* [适用于.NET 的 Microsoft Azure 存储通用库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/):此包提供以编程方式访问存储帐户中的常见资源。
-* [适用于.NET 的 Microsoft Azure 存储 Blob 库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/):此包提供以编程方式访问你的存储帐户中的 Blob 资源。
+* [适用于 .NET 的 Microsoft Azure 存储通用库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)：使用此包能够以编程方式访问存储帐户中的公共资源。
+* [适用于 .NET 的 Microsoft Azure 存储 Blob 库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)：使用此包能够以编程方式访问存储帐户中的 Blob 资源。
 * [适用于 .NET 的 Microsoft Azure 配置管理器库](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)：此包提供用于分析配置文件中连接字符串的类，而不考虑应用程序在何处运行。
 
-可以使用 NuGet 获取这两个包。 执行以下步骤:
+可以使用 NuGet 获取这两个包。 请执行以下步骤：
 
-1. 在“解决方案资源管理器”  中，右键单击项目并选择“管理 NuGet 包”  。
-2. 在线搜索“WindowsAzure.Storage”，并单击“安装”  以安装存储客户端库和依赖项。
-3. 在线搜索“WindowsAzure.ConfigurationManager”，并单击“安装”  以安装 Azure Configuration Manager。
+1. 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包”。
+2. 在线搜索“WindowsAzure.Storage”，并单击“安装” 以安装存储客户端库和依赖项。
+3. 在线搜索“WindowsAzure.ConfigurationManager”，并单击“安装”以安装 Azure Configuration Manager。
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>将存储帐户凭据保存到 app.config 文件
 接下来，将凭据保存到项目的 app.config 文件中。 编辑 app.config 文件，使其看起来类似于下面的示例，将 `myaccount` 替换为存储帐户名称，并将 `mykey` 替换为存储帐户密钥。
@@ -233,7 +232,7 @@ if (share.Exists())
 > 
 > 
 
- 将文件复制到另一文件：以下示例将一个文件复制到同一共享中的另一个文件。 因为此操作在同一存储帐户中的文件之间进行复制，可以使用共享密钥身份验证来进行复制。
+将文件复制到另一文件：以下示例将一个文件复制到同一共享中的另一个文件。 因为此操作在同一存储帐户中的文件之间进行复制，可以使用共享密钥身份验证来进行复制。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -277,7 +276,7 @@ if (share.Exists())
 }
 ```
 
- 将文件复制到 Blob：以下示例创建一个文件并将其复制到同一存储帐户中的某个 Blob。 该示例为源文件创建一个 SAS，服务在复制操作期间使用该 SAS 授予对源文件的访问权限。
+将文件复制到 Blob：以下示例创建一个文件并将其复制到同一存储帐户中的某个 Blob。 该示例为源文件创建一个 SAS，服务在复制操作期间使用该 SAS 授予对源文件的访问权限。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -402,7 +401,7 @@ CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTim
 ## <a name="troubleshooting-azure-files-using-metrics"></a>使用指标对 Azure 文件进行故障排除
 Azure 存储分析现在支持用于 Azure 文件的指标。 使用指标数据，可以跟踪请求和诊断问题。
 
-可以为 Azure 文件启用指标[Azure 门户](https://portal.azure.com)。 还可以通过 REST API 或存储客户端库中的类似物之一调用“设置文件服务属性”操作，以编程方式启用指标。
+可以从[Azure 门户](https://portal.azure.com)为 Azure 文件启用指标。 还可以通过 REST API 或存储客户端库中的类似物之一调用“设置文件服务属性”操作，以编程方式启用指标。
 
 以下代码示例演示如何使用适用于 .NET 的存储客户端库启用 Azure 文件的指标。
 

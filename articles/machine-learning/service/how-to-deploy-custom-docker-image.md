@@ -1,7 +1,7 @@
 ---
-title: 如何部署模型使用自定义 Docker 映像
+title: 使用自定义 Docker 映像部署模型
 titleSuffix: Azure Machine Learning service
-description: 了解如何部署 Azure 机器学习服务模型时使用的自定义 Docker 映像。 在部署为训练的模型时，主机映像、 web 服务器和运行服务所需的其他组件中创建 Docker 映像。 虽然 Azure 机器学习服务为您提供的默认映像，也可以使用你自己的映像。
+description: 了解如何在部署 Azure 机器学习 service 模型时使用自定义 Docker 映像。 部署训练的模型时, 将创建一个 Docker 映像来托管运行该服务所需的映像、web 服务器和其他组件。 虽然 Azure 机器学习 service 为你提供了默认映像, 但你也可以使用自己的映像。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,82 +10,82 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: b8591fe750d4bb1441cdc28c488b2c860eb0bccb
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f51c6bdc6cb2e381d5d5b855bf2f87b07d7fc180
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840066"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638421"
 ---
-# <a name="deploy-a-model-using-a-custom-docker-image"></a>部署模型使用自定义 Docker 映像
+# <a name="deploy-a-model-using-a-custom-docker-image"></a>使用自定义 Docker 映像部署模型
 
-了解如何部署 Azure 机器学习服务的训练的模型时使用的自定义 Docker 映像。
+了解如何在使用 Azure 机器学习服务部署定型模型时使用自定义 Docker 映像。
 
-在训练的模型部署到 web 服务或 IoT Edge 设备时，创建 Docker 映像。 此映像包含模型、 conda 环境和使用该模型所需的资产。 它还包含 web 服务器以处理传入的请求时部署为 web 服务，并使用 Azure IoT 中心所必需的组件。
+将定型模型部署到 web 服务或 IoT Edge 设备时, 将创建 Docker 映像。 此映像包含使用模型所需的模型、conda 环境和资产。 它还包含一个 web 服务器, 用于处理在部署为 web 服务时传入的请求, 以及使用 Azure IoT 中心所需的组件。
 
-Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如何创建一个。 此外可以使用为创建的自定义映像_基本映像_。 为部署创建映像时，基础映像用作的起始点。 它提供了基础操作系统和组件。 然后，部署过程将其他组件，如模型、 conda 环境和其他资产添加到再将其部署的映像。
+Azure 机器学习服务提供了一个默认 Docker 映像, 因此你无需担心如何创建它。 你还可以使用创建的自定义映像作为_基本映像_。 为部署创建映像时, 将使用基本映像作为起始点。 它提供基本的操作系统和组件。 然后, 部署过程会在部署之前将其他组件 (如模型、conda 环境和其他资产) 添加到映像。
 
-通常情况下，当你想要控制组件版本或节省时间，在部署期间创建的自定义映像。 例如，你可能想要在特定版本的 Python、 Conda 或其他组件上实现标准化。 您可能想要安装软件所需的模型，其中安装过程需要很长时间。 创建基本映像时安装软件意味着无需安装每个部署。
+通常, 当你想要控制组件版本或在部署期间节省时间时, 可以创建自定义映像。 例如, 你可能希望在特定版本的 Python、Conda 或其他组件上实现标准化。 你可能还希望安装模型所需的软件, 安装过程需要较长时间。 在创建基础映像时安装软件意味着无需为每个部署安装软件。
 
 > [!IMPORTANT]
-> 部署模型，不能重写如 web 服务器的核心组件或 IoT Edge 的组件。 这些组件提供已知的经过测试且受 Microsoft 的工作环境。
+> 部署模型时, 不能重写核心组件 (如 web 服务器或 IoT Edge 组件)。 这些组件提供了由 Microsoft 测试和支持的已知的工作环境。
 
 > [!WARNING]
-> Microsoft 可能无法再以帮助解决问题引起的自定义映像。 如果遇到问题，可能需要使用的默认图像或 Microsoft 提供了以查看问题是否特定于你的映像的映像之一。
+> Microsoft 可能无法帮助解决自定义映像导致的问题。 如果遇到问题, 系统可能会要求你使用 Microsoft 提供的默认图像或一个映像, 以查看问题是否特定于你的映像。
 
-本文档分为两个部分：
+本文档分为两部分:
 
-* 创建自定义映像：提供有关创建自定义映像和配置到 Azure 容器注册表使用 Azure CLI 和机器学习 CLI 的身份验证向管理员和开发运营的信息。
-* 使用自定义映像：为数据科学家和开发运营/MLOps 提供有关部署从 Python SDK 或机器学习 CLI 训练的模型时使用的自定义映像的信息。
+* 创建自定义映像:提供有关使用 Azure CLI 和机器学习 CLI 创建自定义映像和配置 Azure 容器注册表身份验证的管理员和 DevOps 的信息。
+* 使用自定义映像:在从 Python SDK 或 ML CLI 部署训练的模型时, 向数据科学家和 DevOps/MLOps 提供有关使用自定义映像的信息。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习服务工作组。 有关详细信息，请参阅[创建工作区](setup-create-workspace.md)一文。
-* Azure 机器学习 SDK。 有关详细信息，请参阅 Python SDK 一部分[创建工作区](setup-create-workspace.md#sdk)一文。
+* Azure 机器学习服务工作组。 有关详细信息, 请参阅[创建工作区一](setup-create-workspace.md)文。
+* Azure 机器学习 SDK。 有关详细信息, 请参阅[创建工作区](setup-create-workspace.md#sdk)一文中的 Python SDK 部分。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
-* [适用于 Azure 机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)。
-* [Azure 容器注册表](/azure/container-registry)或其他可访问 internet 的 Docker 注册表。
-* 本文档中的步骤假定你熟悉创建和使用__推理配置__对象作为模型部署的一部分。 有关详细信息，请参阅的"准备部署"部分[部署的位置和方式](how-to-deploy-and-where.md#prepare-to-deploy)。
+* [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
+* 可在 internet 上访问的[Azure 容器注册表](/azure/container-registry)或其他 Docker 注册表。
+* 本文档中的步骤假定你熟悉如何创建和使用__推理配置__对象作为模型部署的一部分。 有关详细信息, 请参阅[部署位置和方式](how-to-deploy-and-where.md#prepare-to-deploy)的 "准备部署" 一节。
 
 ## <a name="create-a-custom-image"></a>创建自定义映像
 
-在本部分中的信息假定使用 Azure 容器注册表的目的用于存储 Docker 映像。 使用以下清单规划时创建 Azure 机器学习服务的自定义映像：
+本部分中的信息假定你使用 Azure 容器注册表来存储 Docker 映像。 计划为 Azure 机器学习服务创建自定义映像时, 请使用以下清单:
 
-* 将使用为 Azure 机器学习服务工作区中或独立的 Azure 容器注册表创建 Azure 容器注册表？
+* 是否将使用为 Azure 机器学习服务工作区或独立 Azure 容器注册表创建的 Azure 容器注册表？
 
-    当使用映像存储在__工作区的容器注册表__，不需要对注册表进行身份验证。 身份验证处理由工作区。
+    使用__工作区的容器注册表__中存储的图像时, 无需对注册表进行身份验证。 身份验证由工作区处理。
 
     > [!WARNING]
-    > 是你的工作区 Azure 容器 Rzegistry__训练或部署一个模型，首次创建__使用的工作区。 如果已创建新的工作区中，但不是受过培训或创建某一模型，无 Azure 容器注册表将存在的工作区。
+    > __第一次使用工作区训练或部署模型__时, 将创建工作区的 Azure 容器 Rzegistry。 如果已创建新的工作区, 但未定型或创建了模型, 则工作区不会存在任何 Azure 容器注册表。
 
-    检索工作区的 Azure 容器注册表名称的信息，请参阅[获取容器注册表名称](#getname)本文的部分。
+    有关检索工作区的 Azure 容器注册表名称的信息, 请参阅本文的[获取容器注册表名称](#getname)部分。
 
-    当使用映像存储在__独立容器注册表__，将需要配置至少具有读取访问权限的服务主体。 然后向从注册表使用映像的任何人提供的服务主体 ID （用户名） 和密码。 例外情况是如果您使容器注册表可公开访问。
+    使用存储在__独立容器注册表__中的映像时, 需要配置至少具有读取访问权限的服务主体。 然后, 将服务主体 ID (用户名) 和密码提供给使用注册表中的映像的任何人。 例外情况是使容器注册表可公开访问。
 
-    创建专用 Azure 容器注册表的信息，请参阅[创建专用容器注册表](/azure/container-registry/container-registry-get-started-azure-cli)。
+    有关创建私有 Azure 容器注册表的信息, 请参阅[创建专用容器注册表](/azure/container-registry/container-registry-get-started-azure-cli)。
 
-    有关使用服务主体的 Azure 容器注册表的信息，请参阅[使用服务主体的 Azure 容器注册表身份验证](/azure/container-registry/container-registry-auth-service-principal)。
+    有关将服务主体用于 Azure 容器注册表的信息, 请参阅[使用服务主体的 Azure 容器注册表身份验证](/azure/container-registry/container-registry-auth-service-principal)。
 
-* Azure 容器注册表和映像信息：映像名称提供给任何人都需要使用它。 例如，名为图像`myimage`，在名为注册表中存储`myregistry`，作为引用`myregistry.azurecr.io/myimage`时使用的模型部署的映像
+* Azure 容器注册表和映像信息:为需要使用该名称的任何人提供映像名称。 例如, 在名`myimage` `myregistry`为的注册表中存储的名为的映像在使用映像进行模型部署时被称为`myregistry.azurecr.io/myimage`
 
-* 图像要求：Azure 机器学习服务仅支持 Docker 映像提供了以下软件：
+* 映像要求:Azure 机器学习服务仅支持提供以下软件的 Docker 映像:
 
     * Ubuntu 16.04 或更高版本。
-    * Conda 4.5。 # 或更高版本。
-    * Python 3.5。 # 或 3.6。 #。
+    * Conda 4.5. # 或更高版本。
+    * Python 3.5. # 或 3.6. #。
 
 <a id="getname"></a>
 
 ### <a name="get-container-registry-information"></a>获取容器注册表信息
 
-在本部分中，了解如何获取 Azure 机器学习服务工作区的 Azure 容器注册表的名称。
+本部分介绍如何获取 Azure 机器学习服务工作区的 Azure 容器注册表的名称。
 
 > [!WARNING]
-> 你的工作区的 Azure 容器注册表是__训练或部署一个模型，首次创建__使用的工作区。 如果已创建新的工作区中，但不是受过培训或创建某一模型，无 Azure 容器注册表将存在的工作区。
+> __第一次使用工作区训练或部署模型__时, 将创建工作区的 Azure 容器注册表。 如果已创建新的工作区, 但未定型或创建了模型, 则工作区不会存在任何 Azure 容器注册表。
 
-如果已训练或部署使用 Azure 机器学习服务模型，已为你的工作区创建容器注册表。 若要查找此容器注册表的名称，请使用以下步骤：
+如果已使用 Azure 机器学习服务训练或部署了模型, 则会为工作区创建容器注册表。 若要查找此容器注册表的名称, 请使用以下步骤:
 
-1. 打开一个新的 shell 或命令提示符并使用以下命令向你的 Azure 订阅进行身份验证：
+1. 打开新的 shell 或命令提示符, 然后使用以下命令对 Azure 订阅进行身份验证:
 
     ```azurecli-interactive
     az login
@@ -93,7 +93,7 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
 
     按照提示对订阅进行身份验证。
 
-2. 使用以下命令列出工作区的容器注册表。 替换为`<myworkspace>`与你的 Azure 机器学习服务工作区名称。 替换为`<resourcegroup>`与包含你的工作区的 Azure 资源组：
+2. 使用以下命令列出工作区的容器注册表。 将`<myworkspace>`替换为 Azure 机器学习服务工作区名称。 将`<resourcegroup>`替换为包含工作区的 Azure 资源组:
 
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
@@ -105,13 +105,13 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
     /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.ContainerRegistry/registries/<registry_name>
     ```
 
-    `<registry_name>`值是你的工作区的 Azure 容器注册表的名称。
+    `<registry_name>`该值是工作区的 Azure 容器注册表的名称。
 
-### <a name="build-a-custom-image"></a>生成自定义映像
+### <a name="build-a-custom-image"></a>构建自定义映像
 
-本部分演练在 Azure 容器注册表中创建自定义 Docker 映像中的步骤。
+本部分中的步骤介绍如何在 Azure 容器注册表中创建自定义 Docker 映像。
 
-1. 创建一个名为的新文本文件`Dockerfile`，并使用以下文本作为内容：
+1. 创建一个名为`Dockerfile`的新文本文件, 并使用以下文本作为内容:
 
     ```text
     FROM ubuntu:16.04
@@ -138,43 +138,43 @@ Azure 机器学习服务提供了默认的 Docker 映像，因此无需担心如
         find / -type d -name __pycache__ -prune -exec rm -rf {} \;
     ```
 
-2. 从 shell 或命令提示符下，使用以下 Azure 容器注册表进行身份验证。 替换为`<registry_name>`具有你想要将映像存储在容器注册表的名称：
+2. 在 shell 或命令提示符下, 使用以下命令对 Azure 容器注册表进行身份验证。 将`<registry_name>`替换为要在其中存储映像的容器注册表的名称:
 
     ```azurecli-interactive
     az acr login --name <registry_name>
     ```
 
-3. 若要上传 Dockerfile，并生成它时，使用以下命令。 替换为`<registry_name>`具有你想要将映像存储在容器注册表的名称：
+3. 若要上传 Dockerfile 并生成它, 请使用以下命令。 将`<registry_name>`替换为要在其中存储映像的容器注册表的名称:
 
     ```azurecli-interactive
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
-    在生成过程中，信息是流式传输回命令行。 如果生成成功，你将收到类似于以下文本：
+    在生成过程中, 会将信息流式传输回命令行。 如果生成成功, 则会收到类似于以下文本的消息:
 
     ```text
     Run ID: cda was successful after 2m56s
     ```
 
-构建使用 Azure 容器注册表的映像的详细信息，请参阅[生成并运行使用 Azure 容器注册表任务的容器映像](https://docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli)
+有关使用 Azure 容器注册表生成映像的详细信息, 请参阅[使用 Azure 容器注册表任务构建并运行容器映像](https://docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli)
 
-将现有的映像上传到 Azure 容器注册表的详细信息，请参阅[将第一个映像推送到专用 Docker 容器注册表](/azure/container-registry/container-registry-get-started-docker-cli)。
+有关将现有映像上传到 Azure 容器注册表的详细信息, 请参阅将[第一个映像推送到专用 Docker 容器注册表](/azure/container-registry/container-registry-get-started-docker-cli)。
 
 ## <a name="use-a-custom-image"></a>使用自定义映像
 
-若要使用自定义映像，需要以下信息：
+若要使用自定义映像, 需要以下信息:
 
-* __映像名称__。 例如，`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda`是 Microsoft 提供的一个基本 Docker 映像的路径。
-* 如果图像位于__专用存储库__，需要以下信息：
+* __映像名称__。 例如, `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda`是 Microsoft 提供的基本 Docker 映像的路径。
+* 如果映像在__专用存储库__中, 则需要以下信息:
 
     * 注册表__地址__。 例如， `myregistry.azureecr.io` 。
-    * 服务主体__用户名__并__密码__对注册表具有读取访问权限。
+    * 具有注册表读取访问权限的服务主体__用户名__和__密码__。
 
-    如果没有此信息，Azure 容器注册表包含映像需求助管理员。
+    如果没有此信息, 请向管理员咨询包含映像的 Azure 容器注册表。
 
 ### <a name="publicly-available-images"></a>公开提供的映像
 
-Microsoft 提供多个 docker 映像上可公开访问存储库，可以在此部分中的步骤：
+Microsoft 在可公开访问的存储库上提供了几个 docker 映像, 可用于本部分中的步骤:
 
 | 图像 | 描述 |
 | ----- | ----- |
@@ -184,36 +184,36 @@ Microsoft 提供多个 docker 映像上可公开访问存储库，可以在此�
 | `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | 包含 ONNX 运行时和 TensorRT。 |
 
 > [!TIP]
-> 由于这些映像都是公开可用，您不需要使用它们时提供的地址、 用户名或密码。
+> 由于这些映像是公开提供的, 因此在使用这些映像时, 无需提供地址、用户名或密码。
 
 > [!IMPORTANT]
-> 使用 CUDA 或 TensorRT 的 Microsoft 映像必须仅使用 Microsoft Azure 服务上。
+> 只有使用 CUDA 或 TensorRT 的 Microsoft 映像才能 Microsoft Azure 服务上使用。
 
 > [!TIP]
->__如果 Azure 机器学习计算上训练模型__，并使用__1.0.22 版本或更高版本__的 Azure 机器学习 SDK，在定型过程中创建映像。 若要查找此映像的名称，使用`run.properties["AzureML.DerivedImageName"]`。 下面的示例演示如何使用此映像：
+>__如果您的模型在 Azure 机器学习计算上定型__, 则使用 Azure 机器学习 SDK 的__版本1.0.22 或更高版本__, 则在训练过程中将创建一个图像。 若要发现此映像的名称, 请`run.properties["AzureML.DerivedImageName"]`使用。 下面的示例演示如何使用此映像:
 >
 > ```python
 > # Use an image built during training with SDK 1.0.22 or greater
 > image_config.base_image = run.properties["AzureML.DerivedImageName"]
 > ```
 
-### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>与 Azure 机器学习配合使用的图像
+### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>将映像与 Azure 机器学习 SDK 一起使用
 
-若要使用自定义映像，将`base_image`的属性[推理配置对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)到图像的地址：
+若要使用自定义映像, 请`base_image`将[推理配置对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)的属性设置为映像的地址:
 
 ```python
 # use an image from a registry named 'myregistry'
 inference_config.base_image = "myregistry.azurecr.io/myimage:v1"
 ```
 
-此格式适用于这两个可公开访问你的工作区和容器注册表的 Azure 容器注册表存储映像。 例如，以下代码使用由 Microsoft 提供的默认映像：
+此格式适用于你的工作区的 Azure 容器注册表中存储的两个映像以及可公开访问的容器注册表。 例如, 以下代码使用 Microsoft 提供的默认映像:
 
 ```python
 # use an image available in public Container Registry without authentication
 inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-若要使用中的图像__专用容器注册表__不在你的工作区中，必须指定存储库的用户名和密码的地址：
+若要使用不在工作区中的__专用容器注册表__中的映像, 则必须指定存储库的地址以及用户名和密码:
 
 ```python
 # Use an image available in a private Container Registry
@@ -223,12 +223,12 @@ inference_config.base_image_registry.username = "username"
 inference_config.base_image_registry.password = "password"
 ```
 
-### <a name="use-an-image-with-the-machine-learning-cli"></a>使用机器学习 CLI 的图像
+### <a name="use-an-image-with-the-machine-learning-cli"></a>使用带有机器学习 CLI 的映像
 
 > [!IMPORTANT]
-> 当前机器学习 CLI 可以使用映像从 Azure 容器注册表的工作区或可公开访问的存储库。 它不能使用映像中独立专用注册表。
+> 目前机器学习 CLI 可以使用工作区的 Azure 容器注册表中的映像或可公开访问的存储库。 它不能使用独立的专用注册表中的映像。
 
-在部署时使用机器学习 CLI 的模型，您提供推理配置文件引用自定义映像。 下面的 JSON 文档演示如何引用中的公共容器注册表的映像：
+使用机器学习 CLI 部署模型时, 需要提供引用自定义映像的推理配置文件。 下面的 JSON 文档演示如何在公共容器注册表中引用图像:
 
 ```json
 {
@@ -243,15 +243,15 @@ inference_config.base_image_registry.password = "password"
 }
 ```
 
-此文件用于`az ml model deploy`命令。 `--ic`参数用于指定推理配置文件。
+此文件与`az ml model deploy`命令一起使用。 `--ic`参数用于指定推理配置文件。
 
 ```azurecli
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
 ```
 
-使用机器学习 CLI 部署模型的详细信息，请参阅"模型注册、 配置和部署"部分[适用于 Azure 机器学习服务 CLI 扩展](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment)一文。
+有关使用 ML CLI 部署模型的详细信息, 请参阅[Azure 机器学习服务的 CLI 扩展](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment)一文中的 "模型注册、分析和部署" 部分。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何[部署的位置和方式](how-to-deploy-and-where.md)。
-* 了解如何[训练和部署机器学习模型使用 Azure 管道](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops)。
+* 详细了解[部署位置和方式](how-to-deploy-and-where.md)。
+* 了解如何[使用 Azure Pipelines 训练和部署机器学习模型](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops)。

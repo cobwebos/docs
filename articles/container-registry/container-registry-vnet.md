@@ -8,22 +8,25 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 2030496548df312b4f4cfab60c216d5f332c7ac2
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310393"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619877"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>使用 Azure 虚拟网络或防火墙规则限制对 Azure 容器注册表的访问权限
 
 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)为 azure 和本地资源提供安全的专用网络。 通过限制对 Azure 虚拟网络中的专用 Azure 容器注册表的访问权限, 你可以确保仅虚拟网络中的资源访问注册表。 对于跨界方案, 你还可以将防火墙规则配置为仅允许来自特定 IP 地址的注册表访问。
 
-本文介绍两种创建网络访问规则以限制对 Azure 容器注册表的访问的方案: 从部署在虚拟网络中的虚拟机或从 VM 的公共 IP 地址。
+本文介绍两种方案, 用于在容器注册表上配置入站网络访问规则: 从部署在虚拟网络中的虚拟机或从 VM 的公共 IP 地址。
 
 > [!IMPORTANT]
 > 此功能目前以预览版提供，存在一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 >
+
+如果需要为资源设置访问规则以从防火墙后面访问容器注册表, 请参阅[配置规则以访问防火墙后面的 Azure 容器注册表](container-registry-firewall-access-rules.md)。
+
 
 ## <a name="preview-limitations"></a>预览版限制
 
@@ -39,7 +42,7 @@ ms.locfileid: "68310393"
 
 * 若要使用本文中 Azure CLI 的步骤, 需要 Azure CLI 版本2.0.58 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
-* 如果还没有容器注册表, 请创建一个 (需要高级 SKU), 并`hello-world`从 Docker Hub 推送示例映像。 例如, 使用[Azure 门户][quickstart-portal] or the [Azure CLI][quickstart-cli]创建注册表。 
+* 如果还没有容器注册表, 请创建一个 (需要高级 SKU), 并`hello-world`从 Docker Hub 推送示例映像。 例如, 使用[Azure 门户][quickstart-portal]或[Azure CLI][quickstart-cli]创建注册表。 
 
 * 如果要使用其他 Azure 订阅中的虚拟网络限制注册表访问, 则需要在该订阅中注册 Azure 容器注册表的资源提供程序。 例如：
 
@@ -108,7 +111,7 @@ sudo apt install docker.io -y
 sudo docker run -it hello-world
 ```
 
-输出：
+输出:
 
 ```
 Hello from Docker!
@@ -136,7 +139,7 @@ This message shows that your installation appears to be working correctly.
 az network vnet list --resource-group myResourceGroup --query "[].{Name: name, Subnet: subnets[0].name}"
 ```
 
-输出：
+输出:
 
 ```console
 [
@@ -168,7 +171,7 @@ az network vnet subnet show \
   --output tsv
 ``` 
 
-输出：
+输出:
 
 ```
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
@@ -200,7 +203,7 @@ az acr network-rule add --name mycontainerregistry --subnet <subnet-resource-id>
 
 将 Azure 容器注册表的服务终结点添加到子网:
 
-1. 在 " [Azure 门户][azure-portal]顶部的搜索框中, 输入"*虚拟网络*"。 当“虚拟网络”出现在搜索结果中时，请将其选中  。
+1. 在 " [Azure 门户][azure-portal]顶部的搜索框中, 输入"*虚拟网络*"。 当“虚拟网络”出现在搜索结果中时，请将其选中。
 1. 从虚拟网络列表中, 选择要在其中部署虚拟机的虚拟网络, 例如 " *myDockerVMVNET*"。
 1. 在 "**设置**" 下, 选择 "**子网**"。
 1. 选择要在其中部署虚拟机的子网, 例如 " *myDockerVMSubnet*"。
@@ -215,7 +218,7 @@ az acr network-rule add --name mycontainerregistry --subnet <subnet-resource-id>
 
 1. 在门户中, 导航到容器注册表。
 1. 在 "**设置**" 下, 选择 "**防火墙和虚拟网络**"。
-1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问  。 
+1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问。 
 1. 选择 "**添加现有虚拟网络**", 并选择使用服务终结点配置的虚拟网络和子网。 选择 **添加** 。
 1. 选择**保存**。
 

@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: raynew
-ms.openlocfilehash: 00ca474a6cb32c7ad3e47aef750126e958e43501
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: bbbec680cd2575cc63761c9fbe1335d548ec4d3b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372447"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640792"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>用于 VMware 评估和迁移的支持矩阵
 
-你可以使用[Azure Migrate 服务](migrate-overview.md)来评估计算机并将其迁移到 Microsoft Azure 云。 本文总结了用于评估和迁移本地 VMware Vm 的支持设置和限制。
+你可以使用[Azure Migrate](migrate-overview.md)来评估计算机并将其迁移到 Microsoft Azure 云。 本文总结了用于评估和迁移本地 VMware Vm 的支持设置和限制。
 
 
 ## <a name="vmware-scenarios"></a>VMware 方案
@@ -27,35 +27,32 @@ ms.locfileid: "68372447"
 **部署** | **详细信息**
 --- | ---
 **评估本地 VMware Vm** | [设置](tutorial-prepare-vmware.md)第一次评估。<br/><br/> [运行](scale-vmware-assessment.md)大规模评估。
-**迁移 VMware VM** | 你可以使用无代理迁移进行迁移, 但有一些限制, 或者使用基于代理的迁移。 [了解详细信息](server-migrate-overview.md)
+**迁移 VMware VM** | 你可以使用无代理迁移迁移, 或使用基于代理的迁移。 [了解详细信息](server-migrate-overview.md)
 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate 项目
 
 **支持** | **详细信息**
 --- | ---
-Azure 权限 | 你需要订阅中的 "参与者" 或 "所有者" 权限才能创建 Azure Migrate 项目。
-VMware 限制  | 在单个项目中最多评估35000个 VMware Vm。
+**Azure 权限** | 你需要订阅中的 "参与者" 或 "所有者" 权限才能创建 Azure Migrate 项目。
+**VMware 限制**  | 在单个项目中最多评估35000个 VMware Vm。 可以在 Azure 订阅中创建多个项目。
+**项目限制** | 项目可以包括 VMware Vm 和 Hyper-v Vm, 最高可达评估限制。
+**地域** | 你可以在多个地理区域中创建 Azure Migrate 项目。 尽管你只能在这些地理位置创建项目, 但你可以为其他目标位置评估或迁移计算机。 项目地域仅用于存储已发现的元数据。
 
-项目可以包括 VMware Vm 和 Hyper-v Vm, 最高可达评估限制。
-
-**Geography**可以在多个地理区域中创建 Azure Migrate 项目。 即使你只能在这些地理位置创建项目, 你仍可以评估或迁移其他目标位置的计算机。 项目地域仅用于存储已发现的元数据。
-
-
- **地域** | **元数据存储位置**
- --- | ---
- Azure 政府 | US Gov 弗吉尼亚州
- 亚太区 | 东南亚或东亚
- 欧洲 | 欧洲南部或西欧
- 英国 | 英国南部或英国西部
- 美国 | 美国中部或美国西部2
+**地域** | **元数据存储位置**
+--- | ---
+Azure 政府 | US Gov 弗吉尼亚州
+亚太区 | 东南亚或东亚
+欧洲 | 欧洲南部或西欧
+英国 | 英国南部或英国西部
+美国 | 美国中部或美国西部2
 
 
  > [!NOTE]
  > Azure 政府版支持目前仅适用于[较旧版本](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions)的 Azure Migrate。
 
 
-## <a name="assessment-vmware-server-requirements"></a>评估-VMware 服务器要求
+## <a name="assessment-vcenter-server-requirements"></a>评估-vCenter Server 要求
 
 此表总结了 VMware 虚拟化服务器的评估支持和限制。
 
@@ -65,12 +62,15 @@ VMware 限制  | 在单个项目中最多评估35000个 VMware Vm。
 
 ## <a name="assessment-vcenter-server-permissions"></a>评估-vCenter Server 权限
 
-若只进行评估，需要一个适用于 vCenter Server 的只读帐户。
+对于评估, 需要 vCenter Server 的只读帐户。
 
 ## <a name="assessment-appliance-requirements"></a>评估-设备要求
 
+使用导入到 vCenter Server 中的 .OVA 模板部署 VMware 的 Azure Migrate 设备。
+
 **支持** | **详细信息**
 --- | ---
+**vCenter Server** | VCenter Server 上需要足够的资源来分配具有 32 GB 内存的 VM、4个 vcpu 和外部虚拟交换机。<br/><br/> 设备需要直接或通过代理访问 internet。
 **ESXi** | 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。
 **Azure Migrate 项目** | 设备可以与单个项目关联。
 **vCenter Server** | 设备最多可在 vCenter Server 上发现 10000 VMware Vm。<br/> 设备可以连接到一个 vCenter Server。
@@ -81,7 +81,7 @@ VMware 限制  | 在单个项目中最多评估35000个 VMware Vm。
 Azure Migrate 设备需要 internet 连接到 internet。
 
 - 部署设备时, Azure Migrate 会对下表中汇总的 Url 进行连接性检查。
-- 如果你使用的是基于 URL 的防火墙, 则允许访问这些 Url, 确保代理解析查找 Url 时收到的任何 CNAME 记录。
+- 如果使用基于 URL 的代理连接到 internet, 则允许访问这些 Url, 确保代理解析查找 Url 时收到的任何 CNAME 记录。
 
 **URL** | **详细信息**  
 --- | --- |
@@ -94,14 +94,14 @@ dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.servicebus.windows.net | 设备与 Azure Migrate 服务之间的通信。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
 \* .blob.core.windows.net | 将数据上传到存储帐户。
-
+http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | 用于 Azure Migrate 设备更新。
 
 ## <a name="assessment-port-requirements"></a>评估-端口要求
 
 **设备** | **Connection**
 --- | ---
-设备 | TCP 端口3389上的入站连接, 允许到设备的远程桌面连接。<br/> 端口44368上的入站连接, 使用以下 URL 远程访问设备管理应用: https://< 设备-ip 或名称 >: 44368 <br/>端口443上的出站连接, 将发现和性能元数据发送到 Azure Migrate。
-vCenter Server | TCP 端口443上的入站连接, 使设备能够收集配置和性能元数据以进行评估。 <br/> 默认情况下, 设备会在端口443上连接到 vCenter。 如果 vCenter 服务器侦听其他端口, 则可以在设置发现时修改端口。
+设备 | TCP 端口3389上的入站连接, 允许到设备的远程桌面连接。<br/><br/> 端口44368上的入站连接, 使用 URL 远程访问设备管理应用程序:```https://<appliance-ip-or-name>:44368``` <br/><br/>端口443上的出站连接, 将发现和性能元数据发送到 Azure Migrate。
+vCenter Server | TCP 端口443上的入站连接, 使设备能够收集配置和性能元数据以进行评估。 <br/><br/> 默认情况下, 设备会在端口443上连接到 vCenter。 如果 vCenter 服务器侦听其他端口, 则可以在设置发现时修改端口。
 
 
 ## <a name="agentless-migration-vmware-server-requirements"></a>无代理迁移-VMware 服务器要求
@@ -110,7 +110,8 @@ vCenter Server | TCP 端口443上的入站连接, 使设备能够收集配置和
 
 **支持** | **详细信息**
 --- | ---
-**vCenter 服务器** | 使用无代理迁移迁移的 VMware Vm 必须由运行5.5、6.0、6.5 或6.7 的一个或多个 vCenter 服务器进行管理。
+vCenter 服务器 | 版本5.5、6.0、6.5 或6.7。
+VMware vSphere | 版本5.5、6.0、6.5 或 6.7,
 
 ## <a name="agentless-migration-vcenter-server-permissions"></a>无代理迁移-vCenter Server 权限
 
@@ -134,10 +135,20 @@ VirtualMachine.SnapshotManagement.* | 允许创建和管理用于复制的 VM �
 **Azure 所需的更改** | 某些 Vm 可能需要更改才能在 Azure 中运行。 Azure Migrate 会自动对以下操作系统进行这些更改:<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8<br/><br/> 对于其他操作系统, 需要在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。
 **Linux 启动** | 如果/boot 位于专用分区上, 则它应驻留在 OS 磁盘上, 而不会分布在多个磁盘上。<br/> 如果/boot 是根 (/) 分区的一部分, 则 "/" 分区应在 OS 磁盘上, 而不是在其他磁盘上。
 **UEFI 启动** | 迁移不支持具有 UEFI 引导的 Vm。
+**磁盘大小** | 2 TB 操作系统磁盘;对于数据磁盘为 4 TB。
+**磁盘限制** |  每个虚拟机最多60个磁盘。
 **加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
+**共享磁盘群集** | 不受支持。
+**独立磁盘** | 不受支持。
 **RDM/传递磁盘** | 如果 Vm 具有 RDM 或传递磁盘, 则这些磁盘不会复制到 Azure。
 **NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
-**目标磁盘** | Vm 只能迁移到 Azure 中的托管磁盘 (标准 HHD、高级 SSD)。
+**iSCSI 目标** | 具有 iSCSI 目标的 Vm 不支持无代理迁移。
+**多路径 IO** | 不受支持。
+**存储 vMotion** | 不受支持。 如果 VM 使用 storage vMotion, 则复制将不起作用。
+**成组 Nic** | 不受支持。
+**IPv6** | 不受支持。
+**目标磁盘** | Vm 只能迁移到 Azure 中的托管磁盘 (标准 HDD、高级 SSD)。
+**同时复制** | 100 Vm/vCenter Server。 如果有更多的, 请按批次100进行迁移。
 
 
 ## <a name="agentless-migration-appliance-requirements"></a>无代理迁移-设备要求
@@ -148,14 +159,14 @@ VirtualMachine.SnapshotManagement.* | 允许创建和管理用于复制的 VM �
 **ESXi** | 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。
 **Azure Migrate 项目** | 设备可以与单个项目关联。
 **vCenter Server** | 设备最多可在 vCenter Server 上发现 10000 VMware Vm。<br/> 设备可以连接到一个 vCenter Server。
-**VDDK** | 如果在 Azure Migrate 服务器迁移的情况下运行无代理迁移, 则必须在设备 VM 上安装 VMware vSphere 虚拟磁盘开发工具包 (VDDK)。
+**VDDK** | 如果在 Azure Migrate 服务器迁移的情况下运行无代理迁移, 则必须在设备 VM 上安装 VMware vSphere VDDK。
 
 ## <a name="agentless-migration-url-access-requirements"></a>无代理迁移-URL 访问要求
 
 Azure Migrate 设备需要 internet 连接到 internet。
 
 - 部署设备时, Azure Migrate 会对下表中汇总的 Url 进行连接性检查。
-- 如果你使用的是基于 URL 的防火墙, 则允许访问这些 Url, 确保代理解析查找 Url 时收到的任何 CNAME 记录。
+- 如果使用的是基于 URL 的代理, 则允许访问这些 Url, 确保代理在查找 Url 时解析接收到的任何 CNAME 记录。
 
 **URL** | **详细信息**  
 --- | ---
@@ -166,16 +177,17 @@ management.azure.com | 为设备创建 Active Directory 应用程序, 以便与 
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.azure.net | 管理 Azure Key Vault 中的机密。
 *.servicebus.windows.net | 设备与 Azure Migrate 服务之间的通信。
-*.discoverysrv.windowsazure.com<br/> *.migration.windowsazure.com<br/> *.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
 \* .blob.core.windows.net | 将数据上传到存储帐户。
+http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | 用于 Azure Migrate 设备更新。
 
 
 ## <a name="agentless-migration-port-requirements"></a>无代理迁移-端口要求
 
 **设备** | **Connection**
 --- | ---
-设备 | 用于将复制的数据上传到 Azure 的出站 TCP 端口 3389, 以及用于复制和迁移的 Azure Migrate。
-vCenter Server | TCP 端口443上的入站连接, 使设备能够协调复制-创建快照、复制数据、发布快照
+设备 | 端口443上的出站连接, 将复制的数据上传到 Azure, 并与 Azure Migrate 服务进行通信协调复制和迁移。
+vCenter Server | 端口443上的入站连接, 使设备能够协调复制-创建快照、复制数据、发布快照
 vSphere/EXSI 主机 | TCP 端口902上的入站, 用于从快照复制数据。
 
 
@@ -185,36 +197,12 @@ vSphere/EXSI 主机 | TCP 端口902上的入站, 用于从快照复制数据。
 
 **支持** | **详细信息**
 --- | ---
-**vCenter 服务器/ESXI** | 迁移的 VMware Vm 必须由运行5.5、6.0、6.5 或6.7 的一个或多个 vCenter 服务器管理, 或在 vSphere 版本为5.5、6.0、6.5 或6.7 的 ESXI 主机上运行。
+vCenter 服务器 | 版本5.5、6.0、6.5 或6.7。
+VMware vSphere | 版本5.5、6.0、6.5 或6.7。
 
 ### <a name="agent-based-migration-vcenter-server-permissions"></a>基于代理的迁移-vCenter Server 权限
 
-**权限** | **详细信息**
---- | ---
-Datastore.AllocateSpace | 允许 VM、快照、克隆或虚拟磁盘的数据存储空间分配。
-Datastore.Browse | 允许浏览 VM 日志文件来排除快照创建和删除故障。
-Datastore.LowLevelFileOperations | 允许数据存储浏览器中的读取、写入、删除和重命名操作, 用于排查快照创建/删除问题。
-Datastore.UpdateVirtualMachineFiles | Resignatured 数据存储后, 允许在数据存储中更新 VM 文件的路径。
-Network.AssignNetwork | 允许将网络分配给 VM 资源。
-AssignVirtualMachineToResourcePool | 允许将 VM 分配到资源池。
-Resource.MigratePoweredOffVirtualMachine | 允许将关闭的 VM 迁移到另一个资源池或主机。
-Resource.MigratePoweredOnVirtualMachine | 允许使用启用了虚拟机的虚拟机迁移到不同的资源池或主机。
-Tasks.CreateTask | 允许扩展创建用户定义任务。
-Tasks.UpdateTask | 允许扩展更新用户定义的任务。
-VirtualMachine。 | 允许配置 VM 选项和设备。
-虚拟机。 AnswerQuestion | 允许解决 VM 状态转换或运行时错误的问题。
-虚拟机。 DeviceConnection | 允许更改 VM disconnectable 虚拟设备的已连接状态。
-虚拟机。 ConfigureCDMedia | 允许配置虚拟 DVD 或 cd-rom 设备。
-虚拟机。 ConfigureFloppyMedia | 允许配置虚拟软盘设备。
-虚拟机。关机 | 允许 VM 在迁移到 Azure 期间关闭。
-虚拟机。 PowerOn | 允许打开已关闭的 VM, 并恢复挂起的 VM。
-虚拟机。 VMwareToolsInstall | 允许将 VMware 工具 CD 安装程序装载和卸载为来宾操作系统的 cd-rom。
-VirtualMachine.Inventory.CreateNew | 允许创建 VM 和分配所需的资源。
-VirtualMachine.Inventory.Register | 允许将现有 VM 添加到 vCenter Server 或主机清单中。
-VirtualMachine.Inventory.Unregister | 允许从 vCenter Server 或主机清单中注销 Vm。
-VirtualMachine.Provisioning.AllowVirtualMachineFilesUpload | 允许对与 VM 关联的文件进行写入操作, 包括 .vmx、磁盘、日志和 nvram。
-VirtualMachine.Provisioning.AllowVirtualMachineDownload | 允许对与 VM 关联的文件执行读取操作, 以便下载日志以进行故障排除。
-VirtualMachine.SnapshotManagement.RemoveSnapshot | 允许从快照历史记录中删除快照。
+VCenter Server 的只读帐户。
 
 ## <a name="agent-based-migration-replication-appliance-requirements"></a>基于代理的迁移-复制设备要求
 
@@ -228,8 +216,8 @@ VirtualMachine.SnapshotManagement.RemoveSnapshot | 允许从快照历史记录�
 组件 | 要求
 --- | ---
  | **VMware 设置**(VMware VM 设备)
-**PowerCLI** | 如果复制设备在 VMware VM 上运行, 则应安装[PowerCLI 版本 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) 。
-**NIC 类型** | VMXNET3 (如果设备是 VMware VM)
+PowerCLI | 如果复制设备在 VMware VM 上运行, 则应安装[PowerCLI 版本 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) 。
+NIC 类型 | VMXNET3 (如果设备是 VMware VM)
  | **硬件设置**
 CPU 核心数 | 8
 RAM | 16 GB
@@ -242,7 +230,7 @@ RAM | 16 GB
 TLS | 应启用 TLS 1.2。
 .NET Framework | 应在计算机上安装 .NET Framework 4.6 或更高版本 (启用了强密码。
 MySQL | MySQL 应安装在设备上。<br/> 应安装 MySQL。 可以手动安装, 也可以在设备部署期间安装 Site Recovery。
-其他应用 | 不应在复制设备上运行其他应用。
+其他应用 | 请勿在复制设备上运行其他应用。
 Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V
 组策略 | 请勿启用以下组策略： <br> - 阻止访问命令提示符。 <br> - 阻止访问注册表编辑工具。 <br> - 信任文件附件的逻辑。 <br> - 打开脚本执行。 <br> [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | - 无预先存在的默认网站 <br> - 端口 443 上没有预先存在的网站/应用程序侦听 <br>- 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 启用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 设置
@@ -273,11 +261,11 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 
 可以使用以下方法之一在复制设备上安装 MySQL。
 
-**安装** | **详细信息**
+**方法** | **详细信息**
 --- | ---
 手动下载和安装 | 下载 MySQL 应用程序 & 将其放在 C:\Temp\ASRSetup 文件夹中, 然后手动安装。<br/> 设置设备 MySQL 时, 将显示 "已安装"。
-不联机下载 | 将 MySQL 安装程序应用程序放在 C:\Temp\ASRSetup. 文件夹中。 安装设备并单击下载并安装 MySQL 时, 安装程序将使用所添加的安装程序。
-从 Azure Migrate 下载 | 当你安装设备并提示你安装 MySQL 时, 请选择 "**下载并安装**"。
+无在线下载 | 将 MySQL 安装程序应用程序放在 C:\Temp\ASRSetup. 文件夹中。 安装设备并单击下载并安装 MySQL 时, 安装程序将使用所添加的安装程序。
+下载并安装到 Azure Migrate | 当你安装设备并提示你安装 MySQL 时, 请选择 "**下载并安装**"。
 
 
 
@@ -291,16 +279,30 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 **网络/存储** | 有关最新信息, 请查看 Site Recovery 的[网络](../site-recovery/vmware-physical-azure-support-matrix.md#network)和[存储](../site-recovery/vmware-physical-azure-support-matrix.md#storage)必备组件。 Azure Migrate 提供完全相同的网络/存储要求。
 **Azure 要求** | 有关最新信息, 请查看 Site Recovery 的[Azure 网络](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[存储](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)和[计算](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute)要求。 对于 VMware 迁移, Azure Migrate 具有相同的要求。
 **移动服务** | 必须在要迁移的每个 VM 上安装移动服务代理。
-**目标磁盘** | Vm 只能迁移到 Azure 中的托管磁盘 (标准 HHD、高级 SSD)。
+**UEFI 启动** | Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。<br/><br/> OS 磁盘最多应有四个分区, 卷应使用 NTFS 进行格式化。
+**目标磁盘** | Vm 只能迁移到 Azure 中的托管磁盘 (标准 HDD、高级 SSD)。
+**磁盘大小** | 2 TB 操作系统磁盘;8 TB (适用于数据磁盘)。
+**磁盘限制** |  每个虚拟机最多63个磁盘。
+**加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
+**共享磁盘群集** | 不受支持。
+**独立磁盘** | 。
+**传递磁盘** | 。
+**NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
+iSCSI 目标 | 具有 iSCSI 目标的 Vm 不支持无代理迁移。
+**多路径 IO** | 不受支持。
+**存储 vMotion** | 支持
+**成组 Nic** | 不受支持。
+**IPv6** | 不受支持。
+
 
 
 
 ## <a name="agent-based-migration-url-access-requirements"></a>基于代理的迁移-URL 访问要求
 
-在 VMware Vm 上运行的移动服务需要 internet 连接到 internet。
+在 VMware Vm 上运行的移动服务需要 internet 连接。
 
-- 部署移动服务时, 它会对下表中汇总的 Url 执行连接性检查。
-- 如果你使用的是基于 URL 的防火墙, 则允许访问这些 Url, 确保代理解析查找 Url 时收到的任何 CNAME 记录。
+部署移动服务时, 它会对下表中汇总的 Url 执行连接性检查。
+
 
 **URL** | **详细信息**  
 --- | ---
@@ -318,9 +320,9 @@ dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 
 **设备** | **Connection**
 --- | ---
-VM | Vm 上运行的移动服务与本地配置443服务器进行通信, 以进行复制管理。<br/><br/> VM 将复制数据发送到 HTTPS 9443 入站端口上的进程服务器（在配置服务器计算机上运行）。 可以修改此端口。
+VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站上的本地复制设备 (配置服务器) 进行通信。<br/><br/> VM 将复制数据发送到 HTTPS 9443 入站端口上的进程服务器（在配置服务器计算机上运行）。 可以修改此端口。
 复制设备 | 复制设备通过端口 HTTPS 443 出站来协调与 Azure 的复制。
-进程服务器 | 进程服务器接收复制数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。<br/> 默认情况下, 进程服务器在复制设备上运行。
+进程服务器 | 进程服务器接收复制数据, 对其进行优化并对其进行加密, 并通过端口443出站发送到 Azure 存储。<br/> 默认情况下, 进程服务器在复制设备上运行。
 
 ## <a name="azure-vm-requirements"></a>Azure VM 要求
 

@@ -101,14 +101,18 @@
       items:
         - name: 管理应用程序
           href: howto-administer.md
+        - name: 管理用户和角色
+          href: howto-manage-users-roles.md
+        - name: 查看帐单
+          href: howto-view-bill.md
+        - name: 自定义应用程序 UI
+          href: howto-customize-ui.md
         - name: 准备和上传图像
           href: howto-prepare-images.md
         - name: 配置应用程序仪表板
           href: howto-configure-homepage.md
         - name: 使用仪表板磁贴
           href: howto-use-tiles.md
-        - name: 自定义应用程序 UI
-          href: howto-customize-ui.md
         - name: 使用应用程序模板
           href: howto-use-app-templates.md
         - name: 从 Azure 门户进行管理

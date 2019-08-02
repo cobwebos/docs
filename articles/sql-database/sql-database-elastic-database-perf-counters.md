@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 5c6c923c86ea0c5968079188c87ec3988ec30142
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae7666113bd3a4bdb595a8312fdb25007d4ed2c3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61475688"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568673"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>创建性能计数器，以便跟踪分片映射管理器的性能
 
@@ -28,7 +27,7 @@ ms.locfileid: "61475688"
 
 **有关最新版本：** 请转到 [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。 另请参阅[升级应用以使用最新的弹性数据库客户端库](sql-database-elastic-scale-upgrade-client-library.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 * 若要创建性能类别和计数器，用户必须属于托管应用程序的计算机上的本地**管理员**组。  
 * 若要创建性能计数器实例和更新计数器，用户必须是**管理员**或**性能监视器用户组**的成员。
@@ -61,12 +60,12 @@ ms.locfileid: "61475688"
 
 对分片映射和映射执行的所有缓存操作会更新性能计数器。 使用 DeleteShardMap() 成功删除分片映射会导致删除性能计数器实例。  
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 * 只应在创建 ShardMapManager 对象之前创建性能类别和计数器一次。 每次执行命令 CreatePerformanceCategoryAndCounters() 都会清除以前的计数器（丢失所有实例报告的数据），并创建新计数器。  
 * 性能计数器实例是按进程创建的。 任何应用程序崩溃或从缓存中删除分片映射都会导致删除性能计数器实例。  
 
-### <a name="see-also"></a>另请参阅
+### <a name="see-also"></a>请参阅
 
 [弹性数据库功能概述](sql-database-elastic-scale-introduction.md)  
 

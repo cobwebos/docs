@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 2a4d636ccb03e36f7c495f3c10c90033d7c3c93c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea6de5f42910457efa5ca6c458d7af63faa38e18
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417915"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637748"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 
@@ -29,8 +29,8 @@ ms.locfileid: "66417915"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [大容量执行程序-.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序-Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
@@ -44,9 +44,9 @@ ms.locfileid: "66417915"
 ### <a name="v2-builds"></a>v2 版本
 
 ### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
-* 改进的负载平衡方案的策略，获取所有租约时花费的时间超过租约过期的时间间隔，例如，由于网络问题：
-  * 在此方案中的负载平衡算法用于为已过期，错误地考虑租约活动所有者从导致窃取租约。 这可能会触发重新均衡的租用的很多不必要。
-  * 通过获取已过期的租约的所有者未发生更改以及 posponing 获取过期租约到下一步的负载平衡迭代时避免冲突时重试情况下，在此版本中修复此问题。
+* 改进了负载均衡策略, 适用于获得所有租约所用时间超过租约过期时间间隔的情况, 例如, 由于网络问题:
+  * 在此方案中, 用于将租约视为过期的负载平衡算法将导致活动所有者盗取租约。 这可能导致不必要地重新平衡大量租约。
+  * 在此版本中, 此问题已修复, 方法是避免在获取过期租约时重试, 而不会更改所有者, 并 posponing 获取过期租约以进行下一次负载平衡迭代。
 
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * 改进了对观察者异常的处理。
@@ -137,7 +137,7 @@ ms.locfileid: "66417915"
 
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 * 稳定性改进。
-  * 用于处理已取消的任务可能会导致的问题的修复某些分区上停止观察程序。
+  * 修复了可能导致在某些分区上停止观察程序的已取消任务问题。
 * 支持手动检查点。
 * 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21 及更高版本。
 
@@ -170,7 +170,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [2.2.7](#2.2.7) |2019 年 5 月 14 日， |--- |
+| [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |
 | [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |
 | [2.2.5](#2.2.5) |2018 年 12 月 13 日 |--- |
 | [2.2.4](#2.2.4) |2018 年 11 月 29 日 |--- |
@@ -185,10 +185,10 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | [1.1.0](#1.1.0) |2017 年 8 月 13 日 |--- |
 | [1.0.0](#1.0.0) |2017 年 7 月 7 日 |--- |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。

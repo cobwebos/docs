@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
 ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68381832"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于计算密集型工作负荷
@@ -20,7 +20,7 @@ ms.locfileid: "68381832"
 图形处理单元 (GPU) 通常用于计算密集型工作负荷，例如图形和可视化工作负荷。 AKS 支持创建启用 GPU 的节点池，以在 Kubernetes 中运行这些计算密集型工作负荷。 有关启用了 GPU 的可用 Vm 的详细信息, 请参阅[Azure 中的 gpu 优化 vm 大小][gpu-skus]。 对于 AKS 节点，我们建议最小大小为“Standard_NC6”。
 
 > [!NOTE]
-> 启用 GPU 的 VM 包含专用硬件，这些硬件定价较高，其可用性受区域限制。 有关详细信息, 请参阅[定价][azure-pricing] tool and [region availability][azure-availability]。
+> 启用 GPU 的 VM 包含专用硬件，这些硬件定价较高，其可用性受区域限制。 有关详细信息, 请参阅[定价][azure-pricing]工具和[区域可用性][azure-availability]。
 
 目前, 使用启用 GPU 的节点池仅适用于 Linux 节点池。
 

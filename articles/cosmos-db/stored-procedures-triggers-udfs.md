@@ -4,15 +4,15 @@ description: 本文介绍 Azure Cosmos DB 中存储过程、触发器和用户�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 53ff318dcc034fb11e2d554f9ad8e8814eb32879
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1c2bf53a610c566ac58df588f6d96389f2206563
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672587"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717537"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>存储过程、触发器和用户定义的函数
 
@@ -28,20 +28,20 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 
 * **性能：** JSON 数据在本质上会映射到 JavaScript 语言类型系统。 这种映射可以实现多种优化，例如，在缓冲池中将 JSON 文档惰性具体化，并使其可按需供执行代码使用。 还有其他与传送业务逻辑到数据库相关的性能优势，包括：
 
-   * 批处理：  可将插入等操作分组到一起并批量提交。 用于创建单独事务的网络流量延迟成本和存储开销显著降低。
+   * 批处理：可将插入等操作分组到一起并批量提交。 用于创建单独事务的网络流量延迟成本和存储开销显著降低。
 
-   * 预编译：  存储过程、触发器和 UDF 是隐式预编译成字节代码格式，这是为了避免每次脚本调用时产生编译成本。 预编译使得存储过程的调用速度加快，且占用空间减少。
+   * 预编译：存储过程、触发器和 UDF 是隐式预编译成字节代码格式，这是为了避免每次脚本调用时产生编译成本。 预编译使得存储过程的调用速度加快，且占用空间减少。
 
-   * 定序：  有时，操作需要通过某个触发机制来对数据执行一项或多项更新。 除了原子性以外，在服务器端执行还可以带来性能优势。
+   * 定序：有时，操作需要通过某个触发机制来对数据执行一项或多项更新。 除了原子性以外，在服务器端执行还可以带来性能优势。
 
 * **封装：** 使用存储过程可在一个位置分组逻辑。 封装在数据的顶层添加一个抽象层，使你能够独立于数据改进应用程序。 如果数据无架构，并且你无需管理直接将其他逻辑添加到应用程序的过程，则此抽象层非常有用。 借助这种抽象，可以通过从脚本简化访问来保证数据的安全。
 
 > [!TIP]
-> 存储的过程是最适合的写入密集型，并且需要跨分区键值的事务操作。 在决定是否要使用存储的过程，优化周围封装写入可能的最大数量。 通常情况下，存储的过程不执行大量的读取或查询操作的最有效方式，因此，使用存储过程向批处理大量读取返回到客户端不会产生任何所需的权益。 为了获得最佳性能，应在客户端，使用 Cosmos SDK 上执行这些读取密集型操作。 
+> 存储过程最适用于写入繁重的操作, 并且需要跨分区键值进行事务处理。 在决定是否使用存储过程时, 请围绕封装可能的最大写入量来进行优化。 一般而言, 存储过程不是执行大量读取或查询操作的最有效方法, 因此, 使用存储过程将大量读取操作返回到客户端将不会产生所需的权益。 为了获得最佳性能, 应在客户端使用 Cosmos SDK 完成这些大量读取操作。 
 
 ## <a name="transactions"></a>事务
 
-典型数据库中的事务可以定义为一系列作为单个逻辑单元工作执行的操作。 每个事务提供 **ACID 属性保证**。 ACID 是一个众所周知的缩写词，表示：原子性、一致性、隔离性和持久性。     
+典型数据库中的事务可以定义为一系列作为单个逻辑单元工作执行的操作。 每个事务提供 **ACID 属性保证**。 ACID 是一个众所周知的缩写词，表示：原子性、一致性、隔离性和持久性。 
 
 * 原子性保证将一个事务内部执行的所有操作视为一个单位，这些操作要么全部提交，要么都不提交。 
 
@@ -75,7 +75,7 @@ JavaScript 函数还有[预配的吞吐量容量](request-units.md)方面的约�
 
 ## <a name="triggers"></a>Triggers
 
-Azure Cosmos DB 支持两种类型的触发器：
+Azure Cosmos DB 支持两种类型的触发器:
 
 ### <a name="pre-triggers"></a>前触发器
 
@@ -83,10 +83,10 @@ Azure Cosmos DB 提供可以通过对 Azure Cosmos DB 项执行操作来调用�
 
 ### <a name="post-triggers"></a>后触发器
 
-类似于前触发器，后触发器也与针对 Azure Cosmos DB 项执行的操作相关联，但它们不需要任何输入参数。 后触发器在操作完成之后运行，且具有对发送到客户端的响应消息的访问权限。  有关示例，请参阅[如何编写触发器](how-to-write-stored-procedures-triggers-udfs.md#triggers)一文。
+类似于前触发器，后触发器也与针对 Azure Cosmos DB 项执行的操作相关联，但它们不需要任何输入参数。 后触发器在操作完成之后运行，且具有对发送到客户端的响应消息的访问权限。 有关示例，请参阅[如何编写触发器](how-to-write-stored-procedures-triggers-udfs.md#triggers)一文。
 
 > [!NOTE]
-> 注册触发器不自动运行时及其相应的操作 （创建 / 删除 / 替换 / 更新） 发生这种情况。 他们必须显式调用时执行这些操作。 若要了解详细信息，请参阅[如何运行触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)一文。
+> 已注册的触发器在执行相应的操作 (创建/删除/替换/更新) 时不会自动运行。 执行这些操作时, 必须显式调用它们。 若要了解详细信息, 请参阅[如何运行触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)一文。
 
 ## <a id="udfs"></a>用户定义的函数
 

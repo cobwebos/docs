@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a3a5555bf163aedd9b41a9c9aa363a883deb4cb8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60925831"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638519"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>设备连接与遥测数据入口
 
@@ -50,7 +50,7 @@ YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 | *YOUR_DEVICE_GUID* | 设备 ID |
 
 ```plaintext
-YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
+YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
 ```
 
 | 参数值 | 替换为 |
@@ -61,18 +61,18 @@ YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 
 ## <a name="device-to-cloud-message"></a>设备到云的消息
 
-可以自定义设备的消息格式和有效负载，以满足解决方案的需求。 使用任何可以序列化为 [Azure IoT Device Client Message 类 Message(byte[] byteArray)](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.-ctor?view=azure-dotnet#Microsoft_Azure_Devices_Client_Message__ctor_System_Byte___) 支持的字节数组或流的数据合同。 只要在相应的用户定义函数中解码数据合同，该消息就能采用所选的自定义二进制格式。 设备到云的消息只需满足一项要求。 必须维护一组属性，以确保将消息适当路由到处理引擎。
+可以自定义设备的消息格式和有效负载，以满足解决方案的需求。 使用任何可以序列化为 [Azure IoT Device Client Message 类 Message(byte[] byteArray)](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.-ctor?view=azure-dotnet#Microsoft_Azure_Devices_Client_Message__ctor_System_Byte___) 支持的字节数组或流的数据合同。 只要在相应的用户定义函数中解码数据合同，该消息就能采用所选的自定义二进制格式。 设备到云的消息只需满足一项要求。 维护一组属性以确保消息正确路由到处理引擎。
 
 ### <a name="telemetry-properties"></a>遥测属性
 
  **消息**的有效负载内容可以是最大为 256 KB 的任意数据。 [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) 类型的属性预期需要满足几项要求。 下表显示了系统支持的必需和可选属性。
 
-| 属性名称 | 值 | 需要 | 描述 |
+| 属性名 | 值 | 必填 | 描述 |
 |---|---|---|---|
-| DigitalTwins-Telemetry  | 1.0 | 是 | 在系统中标识消息的常量值。 |
-| DigitalTwins-SensorHardwareId  | `string(72)` | 是 | 发送**消息**的传感器的唯一标识符。 该值必须与对象的 HardwareId 属性匹配，以便系统可以处理它  。 例如，`00FF0643BE88-CO2`。 |
-| CreationTimeUtc  | `string` | 否 | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 格式的日期字符串，用于标识有效负载的采样时间。 例如，`2018-09-20T07:35:00.8587882-07:00`。 |
-| **CorrelationId** | `string` | 否 | 用于跟踪整个系统中的事件的 UUID。 例如，`cec16751-ab27-405d-8fe6-c68e1412ce1f`。
+| DigitalTwins-Telemetry | 1.0 | 是 | 在系统中标识消息的常量值。 |
+| DigitalTwins-SensorHardwareId | `string(72)` | 是 | 发送**消息**的传感器的唯一标识符。 该值必须与对象的 HardwareId 属性匹配，以便系统可以处理它。 例如， `00FF0643BE88-CO2` 。 |
+| CreationTimeUtc | `string` | 否 | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 格式的日期字符串，用于标识有效负载的采样时间。 例如， `2018-09-20T07:35:00.8587882-07:00` 。 |
+| **CorrelationId** | `string` | 否 | 用于跟踪整个系统中的事件的 UUID。 例如， `cec16751-ab27-405d-8fe6-c68e1412ce1f` 。
 
 ### <a name="send-your-message-to-digital-twins"></a>将消息发送到数字孪生
 

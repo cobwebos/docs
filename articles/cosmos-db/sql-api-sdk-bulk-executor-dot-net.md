@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB：批量执行程序 .NET API、SDK 和资源
+title: Azure Cosmos DB：批量执行器 .NET API, SDK & 资源
 description: 了解有关批量执行程序 .NET API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB 批量执行程序 .NET SDK 各版本之间所做的更改。
 author: tknandu
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 74eddadd7fd967daa1eebb9d7cb223fdc708025f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 098cc3d76fff69b6b213514ac85835e7474b6233
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66471420"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637723"
 ---
-# <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
+# <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行器库:下载信息 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
@@ -28,12 +28,12 @@ ms.locfileid: "66471420"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
+> * [大容量执行程序-.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序-Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-| **说明**| 批量执行程序库允许客户端应用程序在 Azure Cosmos DB 帐户中执行批量操作。 批量执行程序库提供了 BulkImport、BulkUpdate 和 BulkDelete 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以作为修补程序批量更新 Azure Cosmos DB 容器中的现有数据。 BulkDelete 模块可以批量以优化方式删除文档，以便最大程度地使用为集合配置的吞吐量。|
+| **说明**| .Net 批量执行器库允许客户端应用程序对 Azure Cosmos DB 帐户执行批量操作。 此库提供了 BulkImport、BulkUpdate 和 BulkDelete 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以作为修补程序批量更新 Azure Cosmos DB 容器中的现有数据。 BulkDelete 模块可以批量以优化方式删除文档，以便最大程度地使用为集合配置的吞吐量。|
 |**SDK 下载**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **GitHub 中的 BulkExecutor 库**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API 文档**|[ 参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
@@ -44,15 +44,15 @@ ms.locfileid: "66471420"
 
 ### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
 
-* 添加了的对图形批量执行器接受顶点和边缘上的 ttl
+* 添加了对 graph 大容量执行程序的支持, 以接受顶点和边缘上的 ttl
 
 ### <a name="a-name220-preview2220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-preview2
 
-* 修复了问题，弹性缩放的 Azure Cosmos DB 网关模式下运行时期间导致异常。 该修补程序使功能上等效于 1.4.1 发布。
+* 修复了一个问题: 在网关模式下运行时, 在弹性缩放 Azure Cosmos DB 期间导致异常。 此修补程序使其在功能上等效于1.4.1 版本。
 
 ### <a name="a-name210-preview2210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
 
-* 添加了批量删除支持 SQL API 帐户，以接受分区键，若要删除的文档 id 元组。 这一变化使得功能上等效于 1.4.0 发布。
+* 添加了对 SQL API 帐户的 BulkDelete 支持, 以接受分区键、要删除的文档 id 元组。 此更改使其在功能上等效于1.4.0 版本。
 
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
@@ -64,19 +64,19 @@ ms.locfileid: "66471420"
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 
-* 更新批量执行器，以便现在使用最新版本的 Azure Cosmos DB.NET SDK (2.4.0)
+* 已将批量执行程序更新为现在使用最新版本的 Azure Cosmos DB .NET SDK (2.4.0)
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
 
-* 添加了的对图形批量执行器接受顶点和边缘上的 ttl
+* 添加了对 graph 大容量执行程序的支持, 以接受顶点和边缘上的 ttl
 
 ### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
 
-* 修复了问题，弹性缩放的 Azure Cosmos DB 网关模式下运行时期间导致异常。
+* 修复了一个问题: 在网关模式下运行时, 在弹性缩放 Azure Cosmos DB 期间导致异常。
 
 ### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
 
-* 添加了批量删除支持 SQL API 帐户，以接受分区键，若要删除的文档 id 元组。
+* 添加了对 SQL API 帐户的 BulkDelete 支持, 以接受分区键、要删除的文档 id 元组。
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
@@ -114,6 +114,6 @@ ms.locfileid: "66471420"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解批量执行程序 Java 库，请参阅以下文章：
+若要了解批量执行器 Java 库, 请参阅以下文章:
 
-[Java 批量执行程序库 SDK 和发行信息](sql-api-sdk-bulk-executor-java.md)
+[Java 大容量执行器库 SDK 和发布信息](sql-api-sdk-bulk-executor-java.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 13ae1b74acbcab8d623c24d6a7b8d7e1355b80e8
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: bbce41271914df4bb8a75804bc66ae538fe766fa
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227158"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716754"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的用户界面自定义
 
@@ -48,15 +48,15 @@ Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源
 
 对于 v2 用户流，你可以选择一个预先设计的模板，它为你的默认页面提供更好的外观，并用作你的自定义的良好基础。
 
-在左侧菜单中，在“自定义”下选择“页面布局”。   然后，选择“模板(预览版)”  。
+在左侧菜单中，在“自定义”下选择“页面布局”。 然后，选择“模板(预览版)”。
 
-![Azure 门户的 "用户流" 页中的 "模板选择" 下拉](media/customize-ui-overview/template.png)
+![Azure 门户的用户流页中的模板选择下拉列表](media/customize-ui-overview/template.png)
 
-从列表中选择一个模板。 例如，“海蓝”  模板向用户流页面应用以下布局：
+从列表中选择一个模板。 例如，“海蓝”模板向用户流页面应用以下布局：
 
-!["注册登录" 页上呈现的海蓝色模板的示例](media/customize-ui-overview/ocean-blue.png)
+![注册登录页上呈现的“海蓝”模板的示例](media/customize-ui-overview/ocean-blue.png)
 
-选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”  字段中。
+选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”字段中。
 
 ## <a name="where-do-i-store-ui-content"></a>在何处存储 UI 内容？
 
@@ -124,7 +124,7 @@ Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源
 
 ## <a name="how-do-i-localize-content"></a>如何对内容进行本地化？
 
-可通过在 Azure AD B2C 租户中启用[语言自定义](active-directory-b2c-reference-language-customization.md)来本地化 HTML 内容。 启用此功能可让 Azure AD B2C 将 OpenID Connect 参数 `ui-locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
+可通过在 Azure AD B2C 租户中启用[语言自定义](active-directory-b2c-reference-language-customization.md)来本地化 HTML 内容。 启用此功能将允许 Azure AD B2C 将 OpenID connect 参数`ui-locales`转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
 
 可以基于所用的区域设置从不同位置拉取内容。 在已启用 CORS 的终结点中，可以设置文件夹结构以托管特定语言的内容。 如果使用通配符值 {Culture:RFC5646}，则会调用正确的语言。 例如，自定义的页面 URI 可能类似于以下内容：`https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html`。 可通过从 `https://contoso.blob.core.windows.net/fr/myHTML/unified.html` 提取内容来加载法语页面
 

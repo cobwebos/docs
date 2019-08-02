@@ -9,12 +9,12 @@ ms.date: 09/06/2017
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 6d80bc71c01d0f1c887d9161edee5516d6b0925b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 14cbc076f4c9eebd2647cd667acc856b393e4d93
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443688"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68665738"
 ---
 # <a name="azure-storage-client-tools"></a>Azure 存储客户端工具
 Azure 存储用户经常要使用 Azure 存储客户端工具来查看其数据或者与数据交互。 下表列出了可用于实现此目的的多种工具。 我们在每个能够枚举和/或访问数据抽象的块中打上“X”。 该表还指明了工具是否免费。 “试用”表示存在免费试用版，但完整版产品不是免费的。 “是/否”表示有一个免费版本，而提供的其他版本需要购买。
@@ -26,9 +26,9 @@ Azure 存储用户经常要使用 Azure 存储客户端工具来查看其数据�
 <table>
   <tr>
     <th rowspan="2">Azure 存储客户端工具</th>
-    <th rowspan="2">块 blob</th>
+    <th rowspan="2">块 Blob</th>
     <th rowspan="2">页 blob</th>
-    <th rowspan="2">追加 Blob</th>
+    <th rowspan="2">追加 blob</th>
     <th rowspan="2">表</th>
     <th rowspan="2">队列</th>
     <th rowspan="2">文件</th>
@@ -92,9 +92,9 @@ Azure 存储用户经常要使用 Azure 存储客户端工具来查看其数据�
 <table>
   <tr>
     <th rowspan="2">Azure 存储客户端工具</th>
-    <th rowspan="2">块 blob</th>
+    <th rowspan="2">块 Blob</th>
     <th rowspan="2">页 blob</th>
-    <th rowspan="2">追加 Blob</th>
+    <th rowspan="2">追加 blob</th>
     <th rowspan="2">表</th>
     <th rowspan="2">队列</th>
     <th rowspan="2">文件</th>
@@ -142,10 +142,10 @@ Azure 存储用户经常要使用 Azure 存储客户端工具来查看其数据�
     <td></td>
     <td>X</td>
     <td>X</td>
-    <td></td>
-    <td>Y</td>
-    <td></td>
     <td>X</td>
+    <td>Y</td>
+    <td>X</td>
+    <td></td>
     <td></td>
     <td></td>
   </tr>

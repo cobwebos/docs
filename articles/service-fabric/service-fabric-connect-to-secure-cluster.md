@@ -3,7 +3,7 @@ title: 安全连接 Azure Service Fabric 群集 | Microsoft Docs
 description: 介绍如何对访问 Service Fabric 群集的客户端进行身份验证，以及如何保护客户端与群集之间的通信。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2019
-ms.author: aljo
-ms.openlocfilehash: 703830778edb73781a263ae4d92529f7f79a0eb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: c350b53b2d0b235c5e34431386205f090f37b482
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306842"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599715"
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 
@@ -110,7 +110,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreLocation CurrentUser `
     -StoreName My 
 ```
-ServerCommonName 是群集节点上安装的服务器证书的公用名称  。 FindValue 是管理客户端证书的公用名称  。 填充参数以后，命令将如以下示例所示：
+ServerCommonName 是群集节点上安装的服务器证书的公用名称。 FindValue 是管理客户端证书的公用名称。 填充参数以后，命令将如以下示例所示：
 ```powershell
 $ClusterName= "sf-commonnametest-scus.southcentralus.cloudapp.azure.com:19000"
 $certCN = "sfrpe2eetest.southcentralus.cloudapp.azure.com"
@@ -355,7 +355,7 @@ Azure 门户的群集基本信息窗格中也提供了完整 URL。
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-系统自动会提示使用 AAD 登录。
+系统会自动提示你登录到 AAD。
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用客户端证书连接到安全群集
 

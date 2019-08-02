@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 备份在 Azure VM 上还原已备份的 SQL Server 数据库 |Microsoft Docs
 description: 本文介绍如何还原在 Azure VM 上运行并且使用 Azure 备份进行备份的 SQL Server 数据库。
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: raynew
-ms.openlocfilehash: f6bd9ea70a3334fbf3843a6b5d44d10a929e20ae
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 71867e520d9c98b4af4d4f18f3d08c9e8cc4a8c4
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467214"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639545"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -28,7 +28,7 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库, 如下所�
 - 还原特定的完整备份或差异备份以还原到特定恢复点。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 在还原数据库之前, 请注意以下事项:
 

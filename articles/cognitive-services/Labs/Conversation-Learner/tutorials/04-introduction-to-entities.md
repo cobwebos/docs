@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 3d9e2498a23ad49eb014cb0f81c819f3f63eef5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: cba12b6c09c1bdbf4e8f7841676a609c34109d93
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387803"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707336"
 ---
 # <a name="introduction-to-entities"></a>实体简介
 
@@ -36,11 +37,11 @@ ms.locfileid: "66387803"
 实体通过从用户话语中进行提取或通过使用自定义代码进行分配来捕获机器人执行其任务所需的信息片段。 实体自身还可以通过显式分类为“必需”或“取消资格”来约束操作可用性。
 
 - 必需实体必须存在于模型的内存中才能使操作可用
-- 取消资格实体必须不  存在于模型的内存中才能使操作可用
+- 取消资格实体必须不存在于模型的内存中才能使操作可用
 
 本教程重点介绍自定义实体。 预先训练的、多值、可否定的实体和编程实体在其他教程中进行介绍。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="create-the-model"></a>创建模型
 

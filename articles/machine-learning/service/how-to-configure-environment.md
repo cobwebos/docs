@@ -9,38 +9,36 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3738ffe8b3faedc328bde01173400289403652f4
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 45b28b4d88c670a8b2ec34b93a342f06b80e02d7
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297929"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668483"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
-本文介绍如何将开发环境配置为使用 Azure 机器学习服务。 机器学习服务不区分平台。
+本文介绍如何将开发环境配置为使用 Azure 机器学习服务。 Azure 机器学习服务与平台无关。 开发环境的唯一硬性要求是 Python 3。 还建议使用独立的环境, 如 Anaconda 或 Virtualenv。
 
-开发环境的唯一要求是 Python 3、Anaconda (适用于隔离环境) 以及包含 Azure 机器学习工作区信息的配置文件。
+下表显示了本文中所述的每个开发环境以及优点和缺点。
 
-本文重点介绍以下环境和工具：
+| 环境 | 优点 | 缺点 |
+| --- | --- | --- |
+| [基于云的笔记本 VM](#notebookvm) | 入门的最简单方法。 整个 SDK 已安装到你的工作区 VM 中, 笔记本教程已预克隆并可随时运行。 | 缺乏对开发环境和依赖项的控制。 Linux VM 产生的额外成本 (VM 可以在不使用时停止, 以避免收费)。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
+| [本地环境](#local) | 完全控制开发环境和依赖项。 在您选择的任何生成工具、环境或 IDE 中运行。 | 需要更长的时间才能开始。 必须安装必需的 SDK 包, 并且还必须安装环境 (如果尚未安装)。 |
+| [Azure Databricks](#aml-databricks) | 适用于在可扩展的 Apache Spark 平台上运行大规模密集型机器学习工作流。 | 用于试验机器学习或小规模试验和工作流的多余。 Azure Databricks 产生的额外成本。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/databricks/)。 |
+| [Data Science Virtual Machine (DSVM)](#dsvm) | 类似于基于云的笔记本 VM (已预装 Python, 并且已预装 SDK), 但预安装了其他热门数据科学和机器学习工具。 易于缩放, 并与其他自定义工具和工作流组合。 | 与基于云的笔记本 VM 相比, 较慢的入门体验。 |
+| [Azure Notebook](#aznotebooks) | 具有 Python 和 SDK 预装的免费和轻型入门体验。 | 与基于云的笔记本 VM 相比, 可提供更强大的 VM。 独立于工作区和其他资源。 |
 
-* 你自己[的基于云的笔记本 VM](#notebookvm):在工作站中使用计算资源来运行 Jupyter 笔记本。 这是最简单的入门方法，因为已安装 Azure 机器学习 SDK。
-
-* [Data Science Virtual Machine (DSVM)](#dsvm)：Azure 云中的预配置开发或试验环境，用于开展数据科学工作，可以部署到仅限 CPU 的 VM 实例或基于 GPU 的实例。 已安装 Python 3、Conda、Jupyter Notebook 和 Azure 机器学习 SDK。 VM 配备了用于开发机器学习解决方案的常用机器学习和深度学习框架、工具与编辑器。 对于 Azure 平台上的机器学习，它可能是最完整的开发环境。
+本文还提供了以下工具的其他使用技巧:
 
 * [Jupyter Notebook](#jupyter)：如果你已在使用 Jupyter Notebook，SDK 中包含了需要安装的某些附加功能。
 
 * [Visual Studio Code](#vscode)：如果使用 Visual Studio Code，其中包含了一些可以安装的有用扩展。
 
-* [Azure Databricks](#aml-databricks)：基于 Apache Spark 的常用数据分析平台。 了解如何将 Azure 机器学习 SDK 添加到群集中，以便部署模型。
-
-* [Azure Notebooks](#aznotebooks)：Azure 云中托管的 Jupyter Notebook 服务。 另外一种简单的方法是开始使用, 因为已安装 Azure 机器学习 SDK。  
-
-如果还没有 Python 3 环境，或者只想了解安装 SDK 的基本步骤，请参阅[本地计算机](#local)部分。
-
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。 工作区是您开始使用自己的[基于云的笔记本服务器](#notebookvm)、 [DSVM](#dsvm)、 [Azure Databricks](#aml-databricks)或[Azure Notebooks](#aznotebooks)所需的所有工作区。
 
@@ -57,9 +55,9 @@ Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azu
 
 ## <a id="notebookvm"></a>你自己的基于云的笔记本 VM
 
-笔记本虚拟机 (预览版) 是一种基于云的安全 Azure 工作站, 它向数据科学家提供 Jupyter 笔记本服务器、JupyterLab 和完全准备好的 ML 环境。 
+笔记本虚拟机 (预览版) 是一种基于云的安全 Azure 工作站, 它向数据科学家提供 Jupyter 笔记本服务器、JupyterLab 和完全准备好的 ML 环境。
 
-笔记本 VM 为: 
+笔记本 VM 为:
 
 + **安全**。 由于 VM 和笔记本访问权限在默认情况下使用 HTTPS 和 Azure Active Directory 进行保护, 因此 IT 专业人员可以轻松地强制执行单一登录和其他安全功能, 例如多重身份验证。
 
@@ -68,17 +66,17 @@ Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azu
   + 用于工作区的自动配置
   + Jupyter 笔记本服务器
   + JupyterLab 笔记本 IDE
-  + 预先配置的 GPU 驱动程序 
+  + 预先配置的 GPU 驱动程序
   + 深度学习框架的选择
- 
 
-  如果你使用的是代码, VM 将包括教程和示例, 以帮助你了解如何使用 Azure 机器学习服务。 示例笔记本存储在工作区的 Azure Blob 存储帐户中, 使其可在 Vm 之间共享。 运行时, 它们还可以访问工作区的数据存储和计算资源。 
+
+  如果你使用的是代码, VM 将包括教程和示例, 以帮助你了解如何使用 Azure 机器学习服务。 示例笔记本存储在工作区的 Azure Blob 存储帐户中, 使其可在 Vm 之间共享。 运行时, 它们还可以访问工作区的数据存储和计算资源。
 
 + **简单安装**:随时从 Azure 机器学习工作区中创建一个。 仅提供名称并指定 Azure VM 类型。 立即通过本[快速入门进行试用:通过基于云的 Notebook 服务器开始使用 Azure 机器学习](quickstart-run-cloud-notebook.md)。
 
 + **可自定义**。 尽管提供了托管安全的 VM 产品/服务, 但仍保留了对硬件功能的完全访问权限, 并对其进行自定义以满足你的需求。 例如, 快速创建最新的 NVidia V100 支持的 VM, 以执行 novel 神经网络体系结构的分步调试。
 
-若要停止产生笔记本 VM 费用, 请[停止笔记本 vm](quickstart-run-cloud-notebook.md#stop-the-notebook-vm)。 
+若要停止产生笔记本 VM 费用, 请[停止笔记本 vm](quickstart-run-cloud-notebook.md#stop-the-notebook-vm)。
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
@@ -264,7 +262,7 @@ Visual Studio Code 是跨平台代码编辑器。 它依赖于本地 Python 3 �
 1. 若要了解如何使用 Visual Studio Code 进行 Python 开发，请参阅 [VSCode 中的 Python 入门](https://code.visualstudio.com/docs/python/python-tutorial)。
 
 1. 若要选择 Conda 环境，请打开 VS Code，然后按 Ctrl-Shift-P（Linux 和 Windows）或 Command-Shift-P (Mac)。
-    此时会打开“命令面板”。 
+    此时会打开“命令面板”。
 
 1. 输入 Python:__Select Interpreter__，然后选择 Conda 环境。
 
@@ -285,9 +283,9 @@ Visual Studio Code 是跨平台代码编辑器。 它依赖于本地 Python 3 �
 Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它通过基于 CPU 或 GPU 的计算群集提供基于笔记本的协作环境。
 
 Azure Databricks 如何与 Azure 机器学习服务一起使用:
-+ 您可以使用 Spark MLlib 来训练模型, 并从 Azure Databricks 内将模型部署到 ACI/AKS。 
++ 您可以使用 Spark MLlib 来训练模型, 并从 Azure Databricks 内将模型部署到 ACI/AKS。
 + 你还可以在具有 Azure Databricks 的特殊 Azure ML SDK 中使用[自动机器学习](concept-automated-ml.md)功能。
-+ 您可以使用 Azure Databricks 作为[Azure 机器学习管道](concept-ml-pipelines.md)中的计算目标。 
++ 您可以使用 Azure Databricks 作为[Azure 机器学习管道](concept-ml-pipelines.md)中的计算目标。
 
 ### <a name="set-up-your-databricks-cluster"></a>设置 Databricks 群集
 
@@ -301,14 +299,14 @@ Azure Databricks 如何与 Azure 机器学习服务一起使用:
 | 群集名称 |始终| yourclustername |
 | Databricks 运行时 |始终| 任何非机器学习运行时（非机器学习 4.x、5.x） |
 | Python 版本 |始终| 3 |
-| 工作节点 |始终| 2 个或以上 |
+| 辅助程序 |始终| 2 个或以上 |
 | 工作节点 VM 类型 <br>(确定并发迭代的最大数目) |自动化机器学习<br>仅供参考| 首选内存优化的 VM |
 | 启用自动缩放 |自动化机器学习<br>仅供参考| 取消选中 |
 
 请等待群集运行完成，然后继续操作。
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>将正确的 SDK 安装到 Databricks 库
-群集运行后,[创建一个库](https://docs.databricks.com/user-guide/libraries.html#create-a-library), 将合适的 Azure 机器学习 SDK 包附加到群集。 
+群集运行后,[创建一个库](https://docs.databricks.com/user-guide/libraries.html#create-a-library), 将合适的 Azure 机器学习 SDK 包附加到群集。
 
 1. **仅选择一个**选项 (不支持其他 SDK 安装)
 
@@ -323,21 +321,21 @@ Azure Databricks 如何与 Azure 机器学习服务一起使用:
    * 不要选择 "**自动附加到所有群集**"。
    * 选择群集名称旁的 "**附加**"。
 
-1. 监视错误, 直到将状态更改为已**附加**, 这可能需要几分钟时间。  如果此步骤失败, 请检查以下各项: 
+1. 监视错误, 直到将状态更改为已**附加**, 这可能需要几分钟时间。  如果此步骤失败, 请检查以下各项:
 
    尝试通过以下方式重新启动群集:
-   1. 在左窗格中，选择“群集”  。
+   1. 在左窗格中，选择“群集”。
    1. 在表中选择你的群集名称。
-   1. 在“库”选项卡上，选择“重启”。  
-      
+   1. 在“库”选项卡上，选择“重启”。
+
    还应考虑:
    + 在 Automl 配置中, 使用 Azure Databricks 时, 请添加以下参数:
-       1. ```max_concurrent_iterations```基于群集中的辅助角色节点数。 
-        2. ```spark_context=sc```基于默认 spark 上下文。 
+       1. ```max_concurrent_iterations```基于群集中的辅助角色节点数。
+        2. ```spark_context=sc```基于默认 spark 上下文。
    + 或者, 如果你使用的是旧版本的 SDK, 请从群集的已安装库中取消选中它, 然后移到垃圾桶。 安装新的 SDK 版本并重启群集。 如果完成此操作后出现问题，请分离并重新附加群集。
 
 如果安装成功, 则导入的库应如下所示:
-   
+
 Sdk for Databricks, **_无_** 自动机器![学习 Azure 机器学习 sdk for Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
 适用**于 Databricks 的**SDK 与自动![机器学习 SDK 一起安装在 Databricks 上的自动机器学习](./media/how-to-configure-environment/automlonadb.jpg)
@@ -345,9 +343,9 @@ Sdk for Databricks, **_无_** 自动机器![学习 Azure 机器学习 sdk for Da
 ### <a name="start-exploring"></a>开始浏览
 
 试用:
-+ 下载 Azure Databricks/Azure 机器学习 SDK 的[笔记本存档文件](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc), 并将[该存档文件导入](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive)到 Databricks 群集。  
++ 下载 Azure Databricks/Azure 机器学习 SDK 的[笔记本存档文件](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc), 并将[该存档文件导入](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive)到 Databricks 群集。
   虽然有许多示例笔记本可用, 但**仅[这些示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)适用于 Azure Databricks。**
-  
+
 + 了解如何[使用 Databricks 作为训练计算创建管道](how-to-create-your-first-pipeline.md)。
 
 ## <a id="aznotebooks"></a>Azure Notebooks
@@ -381,7 +379,7 @@ Sdk for Databricks, **_无_** 自动机器![学习 Azure 机器学习 sdk for Da
 
 * **按照[创建 Azure 机器学习服务工作区](setup-create-workspace.md#sdk)中的步骤**操作:将在 Azure Notebooks 库中创建一个 *config.json* 文件。 该文件含包含工作区的配置信息。 可以下载 *config.json* 或将其复制到其他开发环境。
 
-* **下载文件**:在[Azure 门户](https://ms.portal.azure.com)中，选择工作区的“概览”  部分中的“下载 config.json”  。
+* **下载文件**:在[Azure 门户](https://ms.portal.azure.com)中，选择工作区的“概览”部分中的“下载 config.json”。
 
      ![Azure 门户](./media/how-to-configure-environment/configure.png)
 

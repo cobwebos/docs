@@ -8,20 +8,20 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 06/30/2019
+ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 937dc6eefbbfc37aaeee0801f410f9f99cb0c787
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ec3c7379c8c7f28765fbc4396d3e9804a6c127f6
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488684"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663750"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
 
-本文介绍如何将视频索引器小组件嵌入应用程序。 视频索引器支持将两类小组件嵌入应用程序：**认知见解**和**播放器**。 
+本文介绍如何将视频索引器小组件嵌入应用程序。 视频索引器支持在应用程序中嵌入三种类型的小组件:**认知见解**、**播放器**和**编辑器**。 
 
-从版本 2 开始，小组件的基 URL 将包含帐户所属的区域。 例如，美国西部区域中的帐户将生成：`https://wus2.videoindexer.ai/embed/insights/...`。
+从版本2开始, 小组件基 URL 包含指定帐户的区域。 例如，美国西部区域中的帐户将生成：`https://wus2.videoindexer.ai/embed/insights/...`。
 
 ## <a name="widget-types"></a>小组件类型
 
@@ -31,9 +31,9 @@ ms.locfileid: "67488684"
 
 |名称|定义|描述|
 |---|---|---|
-|widgets|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只呈现人物和品牌 UI 的见解<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>使用版本 2 时不支持在 URL 中提供<br/><br/>**注意：** 在版本 2 中不支持小组件 URL 参数。 |
-|区域设置|简短的语言代码|控制 insights 语言。 默认为 `en`。 例如：`language=de`。|
-|Tab|默认选择的选项卡|控制默认情况下呈现 insights 选项卡。 `tab=timeline` 选择时间线选项卡中呈现见解。|
+|`widgets`|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只呈现人物和品牌 UI 的见解<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>使用版本 2 时不支持在 URL 中提供<br/><br/>**注意：** 版本2中不支持小组件 URL 参数。 |
+|`locale`|短语言代码|控制 insights 语言。 默认为 `en`。 例如：`language=de`。|
+|`tab`|默认选定的选项卡|控制默认呈现的 "见解" 选项卡。 `tab=timeline`选择 "时间线" 选项卡以呈现见解。|
 
 ### <a name="player-widget"></a>播放器小组件
 
@@ -41,12 +41,24 @@ ms.locfileid: "67488684"
 
 |名称|定义|描述|
 |---|---|---|
-|t|数秒内从开始|让播放器从给定时间点开始播放。<br/>示例：`t=60`。|
-|captions|语言代码|在小组件加载过程中提取给定语言的字幕，使之在字幕菜单中可用。<br/>示例：`captions=en-US`。|
-|showCaptions|布尔值|使播放器与已启用的字幕一起加载。<br/>示例：`showCaptions=true`。|
-|type||激活音频播放器外观（视频部件已删除）。<br/>示例：`type=audio`。|
-|autoplay|布尔值|确定播放器是否会在加载后开始播放视频（默认值为 true）。<br/>示例：`autoplay=false`。|
-|language|语言代码|控制播放器语言（默认值为 en-US）<br/>示例：`language=de-DE`。|
+|`t`|开始时间 (秒)|让播放器从给定时间点开始播放。<br/>示例：`t=60`。|
+|`captions`|语言代码|在小组件加载过程中提取给定语言的字幕，使之在字幕菜单中可用。<br/>示例：`captions=en-US`。|
+|`showCaptions`|布尔值|使播放器与已启用的字幕一起加载。<br/>示例：`showCaptions=true`。|
+|`type`||激活音频播放器外观（视频部件已删除）。<br/>示例：`type=audio`。|
+|`autoplay`|布尔值|确定播放器是否会在加载后开始播放视频（默认值为 true）。<br/>示例：`autoplay=false`。|
+|`language`|语言代码|控制播放器语言（默认值为 en-US）<br/>示例：`language=de-DE`。|
+
+### <a name="editor-widget"></a>编辑器小组件 
+
+利用**编辑器**小组件, 您可以创建新项目并管理视频见解。
+
+|名称|定义|描述|
+|---|---|---|
+|`accessToken`<sup>*</sup>|String|使用`accessToken`编辑器小组件时, 需要使用参数。<br/>访问令牌提供仅用于嵌入小组件的帐户的访问权限。 |
+|`language`|语言代码|控制播放器语言（默认值为 en-US）<br/>示例：`language=de-DE`。|
+|`locale`|短语言代码|控制 insights 语言。 默认为 `en`。 例如：`language=de`。|
+
+<sup>*</sup>所有者应小心提供`accessToken` 。 
 
 ## <a name="embedding-public-content"></a>嵌入公共内容
 
@@ -57,15 +69,15 @@ ms.locfileid: "67488684"
     ![小组件](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
     单击按钮以后，一个嵌入模式会显示在屏幕上，你可以在其中选择要嵌入到应用程序中的具体小组件。
-    选择一个小组件（**播放器**或**认知见解**），生成可以粘贴在应用程序中的嵌入式代码。
+    选择小组件 (**认知见解**、**播放器**或**编辑器**) 会生成嵌入的代码, 以便在应用程序中进行粘贴。
  
-4. 选择所需小组件的类型（**认知见解**或**播放器**）。
+4. 选择所需的小组件类型 (**认知见解**、**播放器**或**编辑**)。
 5. 复制嵌入代码并将其添加到应用程序。 
 
     ![小组件](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
 > [!NOTE]
-> 如果必须共享视频 Url 的问题，请尝试将 location 参数添加到该链接。 参数应设置为[存在视频索引器的 Azure 区域](regions.md)。 例如，`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 。
+> 如果在共享视频 Url 时遇到问题, 请尝试将 "location" 参数添加到该链接。 应将参数设置为[视频索引器所在的 Azure 区域](regions.md)。 例如， `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 。
 
 ## <a name="embedding-private-content"></a>嵌入专用内容
 
@@ -94,7 +106,7 @@ ms.locfileid: "67488684"
 
 如果选择实施你自己的播放器代码并完成与**认知见解**小组件的集成，则你有责任验证来自 VideoIndexer.ai 的消息的域。
 
-### <a name="embed-both-types-of-widgets-in-your-application--blog-recommended"></a>在应用程序/博客中嵌入两种类型的小组件（推荐） 
+### <a name="embed-widgets-in-your-application--blog-recommended"></a>在应用程序中嵌入小组件/博客 (推荐) 
 
 本部分介绍如何在两个视频索引器小组件之间实现交互，这样当某个用户单击应用程序中的见解控件时，播放器就会跳到相关的时刻。
 
@@ -213,7 +225,7 @@ ms.locfileid: "67488684"
 
 ## <a name="adding-subtitles"></a>添加字幕
 
-如果将视频索引器见解嵌入到你自己的 AMP 播放器中，则可使用 **GetVttUrl** 方法获取隐藏式字幕。 也可从视频索引器 AMP 插件 **getSubtitlesUrl**（如前所示）调用 javascript 方法。 
+如果使用自己的[Azure Media Player](https://aka.ms/azuremediaplayer)嵌入视频索引器见解, 则可以使用**GetVttUrl**方法来获取隐藏式字幕 (副标题)。 也可从视频索引器 AMP 插件 **getSubtitlesUrl**（如前所示）调用 javascript 方法。 
 
 ## <a name="customizing-embeddable-widgets"></a>自定义可嵌入式小组件
 
@@ -260,4 +272,4 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 若要了解如何查看和编辑视频索引器见解，请参阅[此](video-indexer-view-edit.md)文。
 
-此外，请查看[视频索引器 CodePen](https://codepen.io/videoindexer/pen/eGxebZ)。
+此外, 请查看[视频索引器 CodePen](https://codepen.io/videoindexer/pen/eGxebZ)。

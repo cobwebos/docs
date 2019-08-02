@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: cc071d59a387c8ae4982eacbce6812526f447788
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7ab32fb421a2c0db72652d1bbf12d312bffd5d1e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388768"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706538"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>使用 Node.js 创建对话学习器模型
 
@@ -27,7 +28,7 @@ ms.locfileid: "66388768"
 
 项目对话学习器包括一个添加到机器人的 SDK，以及该 SDK 在执行机器学习时需要访问的一个云服务。  目前，访问项目对话学习器云服务需要邀请。  如果尚未收到邀请，请[请求邀请](https://aka.ms/conversation-learner-request-invite)。  在未收到邀请的情况下，无法访问云 API。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Node 8.5.0 或更高版本，以及 NPM 5.3.0 或更高版本。 从 [https://nodejs.org](https://nodejs.org) 安装。
   

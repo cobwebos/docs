@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: f2470f937d2d812bf79cea3c23d89a50717a5a92
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: aa43fe6c7999b8fa73419916870f9dfca0c01e3d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277131"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601296"
 ---
 | Resource | [消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan) | [高级计划](../articles/azure-functions/functions-scale.md#premium-plan) | [应用服务计划](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
@@ -27,12 +27,12 @@ ms.locfileid: "67277131"
 | [应用服务计划](../articles/app-service/overview-hosting-plans.md) | 每个[区域](https://azure.microsoft.com/global-infrastructure/regions/) 100 个 |每个资源组 100 个 |每个资源组 100 个 |
 | 存储<sup>6</sup> |1 GB |250 GB |50-1000 GB |
 | 每个应用的自定义域数</a> |500<sup>7</sup> |500 |500 |
-| 自定义域 [SSL 支持](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |包含不受限制的 SNI SSL 连接 | 包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 | 
+| 自定义域 [SSL 支持](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |包含无限制的 SNI SSL 连接 | 包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 | 
 
-<sup>1</sup>有关各种应用服务计划选项的特定限制，请参阅[应用服务计划限制](../articles/azure-subscription-service-limits.md#app-service-limits)。  
-<sup>2</sup>默认情况下，Functions 1.x 运行时在应用服务计划中的超时时间为无限。  
-<sup>3</sup>需要应用服务计划设置为[Always On](../articles/azure-functions/functions-scale.md#always-on)。 按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费。  
+<sup>1</sup> 有关各种应用服务计划选项的特定限制，请参阅[应用服务计划限制](../articles/azure-subscription-service-limits.md#app-service-limits)。  
+<sup>2</sup> 默认情况下，应用服务计划中的 Functions 1.x 运行时的超时是无限制的。  
+<sup>3</sup> 需要将应用服务计划设置为 [Always On](../articles/azure-functions/functions-scale.md#always-on)。 按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费。  
 <sup>4</sup> 这些限制[在主机中设置](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config)。  
-<sup>5</sup> 可以托管的函数应用的实际数目取决于应用的活动、计算机实例的大小和相应的资源利用率。
-<sup>6</sup>存储限制是内容总大小中临时存储的所有应用相同的应用服务计划中。 消耗计划使用 Azure 文件存储作为临时存储。  
-<sup>7</sup>函数应用中的托管时[消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan)，支持仅 CNAME 选项。 对于[高级计划](../articles/azure-functions/functions-scale.md#premium-plan)或[应用服务计划](../articles/azure-functions/functions-scale.md#app-service-plan)中的函数应用，可以使用 CNAME 或 A 记录映射自定义域。
+<sup>5</sup> 可以托管的函数应用的实际数目取决于应用的活动、计算机实例的大小和相应的资源利用率。  
+<sup>6</sup> 存储限制是同一应用服务计划中所有应用的临时存储中的总内容大小。 消耗计划使用 Azure 文件存储作为临时存储。  
+<sup>7</sup> 当函数应用托管在[消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan)中时，仅支持 CNAME 选项。 对于[高级计划](../articles/azure-functions/functions-scale.md#premium-plan)或[应用服务计划](../articles/azure-functions/functions-scale.md#app-service-plan)中的函数应用，可以使用 CNAME 或 A 记录映射自定义域。

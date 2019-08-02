@@ -4,15 +4,15 @@ description: 本文通过一些示例介绍如何了解 Azure Cosmos DB 帐单�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 08/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d30cd92456218284326263d7bd3c9c7820fa435c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: f800560aa4ddef52c2274fa8b3f5c98d68189f0f
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621286"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717524"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解 Azure Cosmos DB 帐单
 
@@ -22,7 +22,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 
 本文通过一些示例来帮助你了解每月帐单上的详细信息。 若存在以下情况，则示例中显示的数字可能会有所不同：Azure Cosmos 容器预配的吞吐量不同；容器跨多个区域；或在一个月内在不同时期运行。
 
->!注意：时钟小时，不 60 分钟持续时间的任何部分是计费。
+>!纪录帐单适用于时钟小时的任何部分, 而不是60分钟的持续时间。
 
 ## <a name="billing-examples"></a>计费示例
 
@@ -104,7 +104,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 |3 个其他区域（美国东部、北欧和东亚）的存储帐单      | 3 * 250 GB    |0\.25 美元/GB  |187.50 美元|
 |**总计**     |     |  |**2,554 美元**|
 
-此外，假定每月从美国西部的容器中导出 100 GB 数据，将数据复制到美国东部、北欧和东亚。  则需要按数据传输速率为导出部分付费。
+此外，假定每月从美国西部的容器中导出 100 GB 数据，将数据复制到美国东部、北欧和东亚。则需要按数据传输速率为导出部分付费。
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-multi-region-writes"></a>计费示例：多区域 Azure Cosmos 帐户，多个区域写入
 
@@ -118,7 +118,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 |3 个其他区域（美国东部、北欧和东亚）的存储帐单      | 3 * 250 GB    |0\.25 美元/GB  |187.50 美元|
 |**总计**     |     |  |**6,010 美元**|
 
-此外，假定每月从美国西部的容器中导出 100 GB 数据，将数据复制到美国东部、北欧和东亚。  则需要按数据传输速率为导出部分付费。
+此外，假定每月从美国西部的容器中导出 100 GB 数据，将数据复制到美国东部、北欧和东亚。则需要按数据传输速率为导出部分付费。
 
 ### <a name="billing-example-azure-cosmos-account-with-multi-master-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>计费示例：包含多主数据库的 Azure Cosmos 帐户，数据库级别的吞吐量包括某些容器的专用吞吐量模式
 
@@ -186,7 +186,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 | | |2 个其他区域的吞吐量帐单：美国东部、北欧（所有区域都可写入）  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |2,880 美元  |
 |[101-200] |D1:50K <br/>D2:70K <br/>C1: -- |美国西部容器的吞吐量帐单（所有区域都可写入）  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` |1920 美元  |
 | | |2 个其他区域的吞吐量帐单：美国东部、北欧（所有区域都可写入）  |`(2 + 1) * (120 K RU/sec /100 * $0.016) * 100 hours = $5,760`  |5,760 美元  |
-|[201-300]  |D1:50K <br/>D2:70K <br/>C1:20K |美国西部容器的吞吐量帐单（所有区域都可写入）  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$2,240  |
+|[201-300]  |D1:50K <br/>D2:70K <br/>C1:20K |美国西部容器的吞吐量帐单（所有区域都可写入）  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$2240  |
 | | |2 个其他区域的吞吐量帐单：美国东部、北欧（所有区域都可写入）  |`(2 + 1) * (140 K RU/sec /100 * $0.016-) * 100 hours = $6,720` |6,720 美元 |
 |[301-400] |D1:10K <br/>D2:80K <br/>C1: -- |美国西部容器的吞吐量帐单（所有区域都可写入）  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 80 K RU/sec/100 * $0.016 * 100 hours = $1,280`  |1,440 美元   |
 | | |2 个其他区域的吞吐量帐单：美国东部、北欧（所有区域都可写入）  |`(1 + 1) * (90 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |2,880 美元  |
@@ -224,7 +224,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 
 月度总成本 = 月度存储成本 + 月度吞吐量成本；月度总成本 = 25.00 美元 + 53.57 美元 = 78.57 美元
 
-区域不同定价可能有所不同。  有关最新定价，请参阅[定价页面](https://azure.microsoft.com/pricing/details/cosmos-db/)。
+区域不同定价可能有所不同。有关最新定价，请参阅[定价页面](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
 ## <a name="billing-with-azure-cosmos-db-reserved-capacity"></a>通过 Azure Cosmos DB 保留容量计费
 

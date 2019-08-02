@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 0bf5b71a4b0f51a586febbdaeaf8caba03c5b25a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: c657025ce588363cf76ce10868d809a9aff69222
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387917"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705613"
 ---
 # <a name="introduction-to-training"></a>训练简介
 
@@ -32,11 +33,11 @@ ms.locfileid: "66387917"
 
 ## <a name="details"></a>详细信息
 
-- 操作：机器人对用户输入的响应。
+- 操作:机器人对用户输入的响应。
 - 训练：以特定方式教导机器人对用户输入进行响应。
 - 分支：在保存的训练对话中修改用户输入，以便创建新的训练对话，该对话启动时与原始对话相同，但聊天的方向不同。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="create-a-new-model"></a>创建新模型
 

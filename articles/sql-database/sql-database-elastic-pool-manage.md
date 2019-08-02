@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: debf91f04cff3cb9705ebc5915e2e665679230a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b2a2029dec917672d6f4ee8db24aed60e4f5bc5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143304"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568665"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>在 Azure SQL 数据库中管理弹性池
 
@@ -25,7 +24,7 @@ ms.locfileid: "66143304"
 
 ## <a name="azure-portal-manage-elastic-pools-and-pooled-databases"></a>Azure 门户：管理弹性池和共用数据库
 
-可在一个位置找到所有池设置：“配置池”边栏选项卡。  若要转到该位置，请在门户中找到所需的弹性池，然后在边栏选项卡顶部，或者在左侧资源菜单中单击“配置池”。 
+可在一个位置找到所有池设置：“配置池”边栏选项卡。 若要转到该位置，请在门户中找到所需的弹性池，然后在边栏选项卡顶部，或者在左侧资源菜单中单击“配置池”。
 
 在此处，可以进行以下任意更改组合，并将所有这些更改保存到一个批处理文件中：
 
@@ -53,7 +52,7 @@ ms.locfileid: "66143304"
 | --- | --- |
 |[New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|创建弹性池。|
 |[Get-AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|获取弹性池及其属性值。|
-|[Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool)|修改弹性池的属性。例如，使用“StorageMB”  属性修改弹性池的最大存储。|
+|[Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool)|修改弹性池的属性。例如，使用“StorageMB”属性修改弹性池的最大存储。|
 |[Remove-AzSqlElasticPool](/powershell/module/az.sql/remove-azsqlelasticpool)|删除弹性池。|
 |[Get-AzSqlElasticPoolActivity](/powershell/module/az.sql/get-azsqlelasticpoolactivity)|获取弹性池的运行状态|
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|在现有池中创建新数据库或将其创建为单一数据库。 |
@@ -101,7 +100,7 @@ ms.locfileid: "66143304"
 
 若要创建和管理 SQL 数据库弹性池和共用数据库，请使用这些 REST API 请求。
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 |[弹性池 - 创建或更新](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|创建新弹性池或更新现有的弹性池。|
 |[弹性池 - 删除](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|删除弹性池。|

@@ -9,20 +9,19 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: adbccd5f9cfd5ddd1912e304f800f3ebe04912c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39a100c487588fb717c642036c7713150a95e047
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584762"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567084"
 ---
 # <a name="monitor-and-improve-performance"></a>监视和提高性能
 
 Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优化操作和建议来建议可以提高工作负荷性能的操作。
 
-若要查看数据库性能，请使用“概述”页上的“性能”  磁贴，或向下导航至“支持 + 故障排除”部分：
+若要查看数据库性能，请使用“概述”页上的“性能”磁贴，或向下导航至“支持 + 故障排除”部分：
 
    ![查看性能](./media/sql-database-performance/entries.png)
 
@@ -40,10 +39,10 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 
 ![性能](./media/sql-database-performance/performance.png)
 
-* “建议”  磁贴提供数据库的优化建议明细（如果建议超出 3 条，则将显示前 3 条）。 单击此磁贴可转到 **[性能建议](#performance-recommendations)** 。 
+* “建议”磁贴提供数据库的优化建议明细（如果建议超出 3 条，则将显示前 3 条）。 单击此磁贴可转到 **[性能建议](#performance-recommendations)** 。 
 * “**优化活动**”磁贴提供正在进行的和已完成的数据库优化操作摘要，可快速查看优化活动的历史记录。 单击此磁贴可转到数据库的完整优化历史记录视图。
-* “自动优化”  磁贴显示数据库的[自动优化配置](sql-database-automatic-tuning-enable.md)（自动应用于数据库的优化选项）。 单击此磁贴可打开自动化配置对话框。
-* “数据库查询”磁贴显示数据库的查询性能摘要（DTU 整体使用情况和排名靠前的资源消耗查询）。  单击此磁贴可转到 **[查询性能见解](#query-performance-insight)** 。
+* “自动优化”磁贴显示数据库的[自动优化配置](sql-database-automatic-tuning-enable.md)（自动应用于数据库的优化选项）。 单击此磁贴可打开自动化配置对话框。
+* “数据库查询”磁贴显示数据库的查询性能摘要（DTU 整体使用情况和排名靠前的资源消耗查询）。 单击此磁贴可转到 **[查询性能见解](#query-performance-insight)** 。
 
 ## <a name="performance-recommendations"></a>性能建议
 
@@ -63,7 +62,7 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 
 Azure SQL 数据库可以通过应用[性能建议](sql-database-advisor.md)自动优化数据库性能。 若要了解详细信息，请阅读[自动优化文章](sql-database-automatic-tuning.md)。 若要启用它，请阅读[如何启用自动优化](sql-database-automatic-tuning-enable.md)。
 
-## <a name="query-performance-insight"></a>查询性能见解
+## <a name="query-performance-insight"></a>Query Performance Insight
 
 [查询性能见解](sql-database-query-performance.md) 通过提供以下功能使排查数据库性能问题花费的时间更少：
 

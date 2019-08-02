@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 备份将 SAP HANA 数据库备份到 Azure |Microsoft Docs
 description: 本教程介绍如何使用 Azure 备份服务将 SAP HANA 数据库备份到 Azure。
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.author: raynew
-ms.openlocfilehash: 6ac686484ddafc47410cddebea3f789332f9286a
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: f88555c6a8b3d4122a1a8ef82f58788a46dd5226
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465464"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639841"
 ---
 # <a name="back-up-an-sap-hana-database"></a>备份 SAP HANA 数据库
 

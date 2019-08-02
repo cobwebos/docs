@@ -1,19 +1,20 @@
 ---
 title: 对 Azure 备份失败进行故障排除：来宾部署状态不可用
 description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、原因及解决方法。
-author: saurabhsensharma
-manager: saurabhsensharma
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 keywords: Azure 备份；VM 代理；网络连接；
 ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.author: saurse
-ms.openlocfilehash: e4337c9c89ca239bb664cbb7fb953ab9eedd3ac5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7fc288ad9e33088b1b5248c1b61ed439ac95a9c4
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465316"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688981"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -77,9 +78,9 @@ ms.locfileid: "68465316"
 **原因 2：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
 **原因 3：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**
 
-## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks - VMSnapshot 扩展操作失败
+## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks-VMSnapshot 扩展操作失败
 
-**错误代码**：ExtentionOperationFailedForManagedDisks <br>
+**错误代码**：ExtensionOperationFailedForManagedDisks <br>
 **错误消息**：VMSnapshot 扩展操作失败<br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
@@ -106,7 +107,7 @@ ms.locfileid: "68465316"
 **错误代码**：UserErrorUnsupportedDiskSize <br>
 **错误消息**：当前 Azure 备份不支持大于 4095GB 的磁盘大小 <br>
 
-对磁盘大小大于 4095GB 的 VM 进行备份时，备份操作可能会失败。 即将推出对大型磁盘的支持。  
+对磁盘大小大于 4095GB 的 VM 进行备份时，备份操作可能会失败。 若要注册 Azure 备份的专用预览版, 大磁盘支持大于4TB 的磁盘, 最大大小为 30TB, 请写回我们AskAzureBackupTeam@microsoft.com。
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 无法启动备份，因为另一个备份操作当前正在进行中
 

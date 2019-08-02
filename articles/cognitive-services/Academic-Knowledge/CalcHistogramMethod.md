@@ -10,16 +10,17 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9e84b1ad37b3224ec5553d0a66ba0fc84bc88f55
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60498822"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705071"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram 方法
 
-calchistogram  REST API 用于计算一组论文实体的属性值分布。          
+calchistogram REST API 用于计算一组论文实体的属性值分布。          
 
 
 **REST 终结点：**
@@ -30,18 +31,18 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 ## <a name="request-parameters"></a>请求参数
 
-Name  |值 | 必需？  |描述
+名称  |ReplTest1 | 必需?  |描述
 -----------|----------|--------|----------
 **expr**    |文本字符串 | 是  |指定计算哪些实体的直方图的查询表达式。
-**model** |文本字符串 | 否 |选择要查询的模型的名称。  默认值暂为“latest”  。
+**model** |文本字符串 | 否 |选择要查询的模型的名称。  默认值暂为“latest”。
 **attributes** | 文本字符串 | 否<br>默认值： | 指定响应中包含的属性值的逗号分隔列表。 属性名区分大小写。
-**计数** |Number | 否<br>默认值：10 |要返回的结果数。
-**offset**  |Number | 否<br>默认值：0 |要返回的第一个结果的索引。
-**timeout**  |Number | 否<br>默认值：1000 |超时（以毫秒为单位）。 仅返回在超时之前找到的解释。
+**计数** |数量 | 否<br>默认：10 |要返回的结果数。
+**offset**  |数量 | 否<br>默认：0 |要返回的第一个结果的索引。
+**timeout**  |数量 | 否<br>默认：1000 |超时（以毫秒为单位）。 仅返回在超时之前找到的解释。
 
 ## <a name="response-json"></a>响应 (JSON)
 
-Name | 描述
+名称 | 描述
 --------|---------
 **expr**  |请求中的 expr 参数。
 **num_entities** | 匹配实体总数。
@@ -56,23 +57,23 @@ Name | 描述
 **aborted** | 如果请求超时，则为 True。
 
 
-#### <a name="example"></a>示例：
+#### <a name="example"></a>例如：
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4
 ```
-<br>在此示例中，为了生成自 2010 年起某作者的出版物年计数直方图，可以先结合使用 interpret  API 和下面的查询字符串来生成查询表达式：papers by jaime teevan after 2012  。
+<br>在此示例中，为了生成自 2010 年起某作者的出版物年计数直方图，可以先结合使用 interpret API 和下面的查询字符串来生成查询表达式：papers by jaime teevan after 2012。
 
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime teevan after 2012
 ```
-<br>interpret API 返回的首个解释中的表达式是 And(Composite(AA.AuN=='jaime teevan'),Y>2012)  。
-<br>然后，此表达式值会传递给 calchistogram  API。 attributes=Y,F.FN  参数指明，论文计数分布应按“年份”和“研究领域”划分，例如：
+<br>interpret API 返回的首个解释中的表达式是 And(Composite(AA.AuN=='jaime teevan'),Y>2012)。
+<br>然后，此表达式值会传递给 calchistogram API。 attributes=Y,F.FN 参数指明，论文计数分布应按“年份”和“研究领域”划分，例如：
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4
 ```
-<br>此请求的响应首先指明，有 37 篇论文与查询表达式匹配。  对于“年份”  属性，有 3 个非重复值，2012 年后每年一个（即 2013 年、2014 年和 2015 年），如查询中所指定。  3 个非重复值的论文总计数为 37。  对于每个“年份”  ，直方图都显示值、自然对数总概率和匹配实体数。     
+<br>此请求的响应首先指明，有 37 篇论文与查询表达式匹配。  对于“年份”属性，有 3 个非重复值，2012 年后每年一个（即 2013 年、2014 年和 2015 年），如查询中所指定。  3 个非重复值的论文总计数为 37。  对于每个“年份”，直方图都显示值、自然对数总概率和匹配实体数。     
 
-“研究领域”  直方图显示，有 34 个不同的研究领域。 由于一篇论文可能与多个研究领域相关联，因此总计数 (53) 可能大于匹配实体数。  虽然有 34 个非重复值，但由于 count=4  参数，响应只包含前 4 个值。
+“研究领域”直方图显示，有 34 个不同的研究领域。 由于一篇论文可能与多个研究领域相关联，因此总计数 (53) 可能大于匹配实体数。  虽然有 34 个非重复值，但由于 count=4 参数，响应只包含前 4 个值。
 
 ```JSON
 {

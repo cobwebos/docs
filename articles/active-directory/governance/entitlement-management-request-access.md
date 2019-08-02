@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f78d1853194cad000aa2e54b40d1ac5003544
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489052"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678111"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>请求访问 Azure AD 授权管理 (预览版) 中的访问包
 
@@ -44,7 +44,7 @@ ms.locfileid: "68489052"
 
 1. 登录到 "我的访问门户"。
 
-    请确保使用你的组织帐户。 如果不确定, 请与项目或业务经理联系。
+    请确保使用组织 (工作或学校) 帐户。 如果你不确定, 请与你的项目或业务经理联系。
 
 ## <a name="request-an-access-package"></a>请求访问包
 
@@ -52,6 +52,9 @@ ms.locfileid: "68489052"
 
 **必备角色：** 请求者
 
+1. 在列表中查找访问包。  如果需要, 可以通过键入搜索字符串, 然后选择 "**名称**"、"**目录**" 或 "**资源**" 筛选器进行搜索。
+
+    ![我的访问门户-资源搜索](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
 1. 单击复选标记以选择访问包。
 
     ![我的访问权限门户 - 访问包](./media/entitlement-management-shared/my-access-access-packages.png)

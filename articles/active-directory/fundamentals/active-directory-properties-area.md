@@ -2,22 +2,22 @@
 title: 添加组织的隐私信息 - Azure Active Directory | Microsoft Docs
 description: 有关如何在 Azure Active Directory“属性”区域中添加组织的隐私信息的顺明。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/17/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98b4e3585f25a0b081e30c5524678a0f7bb27942
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0a2397662112bda6c6789b25691848344a4e611b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248495"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561807"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>使用 Azure Active Directory 添加组织的隐私信息
 本文介绍租户管理员如何通过 Azure 门户将与隐私相关的信息添加到组织的 Azure Active Directory (Azure AD) 租户。
@@ -27,15 +27,15 @@ ms.locfileid: "60248495"
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="add-your-privacy-info-on-azure-ad"></a>在 Azure AD 上添加隐私信息
-可以在 Azure AD 的“属性”区域中添加组织的隐私信息。 
+可以在 Azure AD 的“属性”区域中添加组织的隐私信息。
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>访问“属性”区域并添加隐私信息
 
 1.  以租户管理员身份登录到 Azure 门户。
 
-2.  在左侧导航栏中，选择“Azure Active Directory”  ，然后选择“属性”  。
+2.  在左侧导航栏中，选择“Azure Active Directory”，然后选择“属性”。
 
-    此时会显示“属性”区域。 
+    此时会显示“属性”区域。
 
     ![突出显示隐私信息区域的 Azure AD 属性区域](media/active-directory-properties-area/properties-area.png)
 
@@ -48,11 +48,11 @@ ms.locfileid: "60248495"
     - **隐私声明 URL。** 键入指向组织的文档的链接，该文档用于描述组织如何处理内部和外部来宾的数据隐私。
 
         >[!Important]
-        >如果未包括你自己的隐私声明或隐私联系人，外部来宾将在“审阅权限”  框中看到这样的文字：<_你的组织名称_> 尚未提供指向供你查看的条款的链接  。 例如，来宾用户将在收到通过 B2B 协作访问组织的邀请时看到此消息。
+        >如果未包括你自己的隐私声明或隐私联系人，外部来宾将在“审阅权限”框中看到这样的文字：<_你的组织名称_> 尚未提供指向供你查看的条款的链接。 例如，来宾用户将在收到通过 B2B 协作访问组织的邀请时看到此消息。
 
         ![带有消息的 B2B 协作审阅权限框](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.  选择“保存”。 
+4.  选择**保存**。
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure Active Directory B2B 协作邀请兑换](https://aka.ms/b2bredemption)

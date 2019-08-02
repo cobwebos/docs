@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 95830cdffb232e16f9fbae51cfa11fbd18172c3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec0b9fbdfdb96317e1e7f6fe00384ba4f8c42bcc
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447074"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607952"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义页面
 
@@ -24,7 +24,7 @@ ms.locfileid: "61447074"
 
 其他操作指南扩展此方案以向添加的页添加更多功能。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 要完成本操作指南中的步骤，需要在本地开发计算机上安装以下软件：
 
@@ -49,7 +49,7 @@ git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
 
 ### <a name="add-the-new-files-that-define-the-page"></a>添加定义页的新文件
 
-首先，src/walkthrough/components/pages/basicPage 文件夹包含定义简单页的四个文件  ：
+首先，src/walkthrough/components/pages/basicPage 文件夹包含定义简单页的四个文件：
 
 **basicPage.container.js**
 
@@ -67,13 +67,13 @@ git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
 
 [!code-javascript[Test code for basic page](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.test.js?name=test "Test code for basic page")]
 
-创建新文件夹 src/components/pages/example 并将此四个文件复制到其中  。
+创建新文件夹 src/components/pages/example 并将此四个文件复制到其中。
 
 ### <a name="add-the-new-page-to-the-web-ui"></a>将新页添加到 Web UI
 
 若要将新页添加到 Web UI，请对现有文件进行以下更改：
 
-1. 将新页容器添加到 src/components/pages/index.js 文件中  ：
+1. 将新页容器添加到 src/components/pages/index.js 文件中：
 
     ```js
     export * from './example/basicPage.container';
@@ -81,7 +81,7 @@ git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
 
 1. （可选）为新页添加 SVG 图标。 有关详细信息，请参阅 [webui/src/utilities/README.md](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/utilities/README.md)。 可使用现有 SVG 文件。
 
-1. 将页名添加到翻译文件 public/locales/en/translations.json 中  。 Web UI 使用 [i18next](https://www.i18next.com/) 支持国际化。
+1. 将页名添加到翻译文件 public/locales/en/translations.json 中。 Web UI 使用 [i18next](https://www.i18next.com/) 支持国际化。
 
     ```json
     "tabs": {
@@ -89,7 +89,7 @@ git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
     },
     ```
 
-1. 打开定义顶级应用程序页的 src/components/app.js 文件  。 将新页添加到导入列表：
+1. 打开定义顶级应用程序页的 src/components/app.js 文件。 将新页添加到导入列表：
 
     ```javascript
     // Page Components
@@ -160,7 +160,7 @@ npm start
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快再次禁用](../security/azure-security-network-security-best-practices.md)。
+    仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快再次禁用](../security/fundamentals/network-best-practices.md)。
 
 1. 使用 Azure 门户或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 查找虚拟机的名称和公共 IP 地址。 例如：
 
@@ -180,7 +180,7 @@ npm start
 
 1. 看到命令完成并且网站启动后，可从虚拟机断开连接。
 
-1. 在 [远程监视 WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) 存储库的本地副本中，编辑 .env 文件以添加部署的解决方案的 URL  ：
+1. 在 [远程监视 WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) 存储库的本地副本中，编辑 .env 文件以添加部署的解决方案的 URL：
 
     ```config
     NODE_PATH = src/

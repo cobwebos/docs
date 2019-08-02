@@ -16,14 +16,14 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896cc495d6f369c034171833a9b90aa53e6477b6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234630"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678160"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>什么是 Azure AD 权限管理？ （预览版）
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>什么是 Azure AD 权限管理？ (预览)
 
 > [!IMPORTANT]
 > Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
@@ -90,7 +90,7 @@ Azure AD 的权利管理可以帮助解决这些难题。
 
 - 资源
 - 用户需要的资源角色
-- 符合请求访问权限的内部用户和外部用户
+- 可请求访问的外部用户的内部用户和合作伙伴组织
 - 审批流程以及可批准或拒绝访问的用户
 - 用户访问的持续时间
 
@@ -120,15 +120,15 @@ Azure AD 的权利管理可以帮助解决这些难题。
 | 权利管理 | 分配、撤消和管理访问包的服务。 |
 | 访问包 | 用户可以请求的资源的权限集和策略的集合。 访问包始终包含在目录中。 |
 | 访问请求 | 访问访问包的请求。 请求通常通过工作流。 |
-| policy | 定义访问生命周期的一组规则, 如用户如何获取访问权限、谁可以批准以及用户有权访问的时间长短。 示例策略包括员工访问权限和外部访问权限。 |
+| 策略 | 定义访问生命周期的一组规则, 如用户如何获取访问权限、谁可以批准以及用户有权访问的时间长短。 示例策略包括员工访问权限和外部访问权限。 |
 | catalog | 相关资源和访问包的容器。 |
 | 常规目录 | 始终可用的内置目录。 若要将资源添加到一般目录, 需要特定权限。 |
-| resource | 用户可以向其授予权限的资产或服务 (如组、应用程序或站点)。 |
+| 资源 | 用户可以向其授予权限的资产或服务 (如 Office 组、安全组、应用程序或 SharePoint Online 网站)。 |
 | 资源类型 | 资源的类型, 包括组、应用程序和 SharePoint Online 站点。 |
 | 资源角色 | 与资源关联的权限的集合。 |
 | 资源目录 | 具有一个或多个要共享的资源的目录。 |
-| 分配的用户 | 向用户或组分配访问包。 |
-| enable | 使访问包可供用户请求的过程。 |
+| 分配的用户 | 向用户分配访问包, 以便用户拥有该访问包的所有资源角色。 |
+| 启用 | 使访问包可供用户请求的过程。 |
 
 ## <a name="license-requirements"></a>许可要求
 

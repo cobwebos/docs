@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: dc17cb48f7e06757dacdca5f291ed4604bfc10ee
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 923859fdb0b398d04e710810a96c33fb1c3cd9da
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414401"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698569"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>开发你自己的 IoT Edge 模块
 
@@ -79,7 +79,7 @@ IoT Edge 支持多种操作系统、设备体系结构和开发语言, 因此你
 | Python | Visual Studio Code |
 
 >[!NOTE]
->ARM64 Linux 设备的开发和调试支持是[公开预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关详细信息, 请参阅[在 Visual Studio Code 中开发和调试 ARM64 IoT Edge 模块 (预览)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
+>ARM64 Linux 设备的开发和调试支持是[公开预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
 
 ### <a name="windows"></a>Windows
 
@@ -98,4 +98,4 @@ IoT Edge 支持多种操作系统、设备体系结构和开发语言, 因此你
 
 [使用 Visual Studio Code 开发适用于 IoT Edge 的模块](how-to-vs-code-develop-module.md)
 
-[了解和使用 Azure IoT 中心 Sdk](/iot-hub/iot-hub-devguide-sdks.md)
+[了解和使用 Azure IoT 中心 Sdk](../iot-hub/iot-hub-devguide-sdks.md)

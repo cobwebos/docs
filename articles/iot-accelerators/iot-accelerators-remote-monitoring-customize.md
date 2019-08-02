@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: aed63e332375be4f8ed939cf162545c9f366f329
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143502"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608007"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>自定义远程监视解决方案加速器
 
@@ -37,7 +37,7 @@ ms.locfileid: "66143502"
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    仅在测试和开发期间启用 SSH 访问。 如果启用了 SSH，[应在用完后尽快将它禁用](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
+    仅在测试和开发期间启用 SSH 访问。 如果启用了 SSH，[应在用完后尽快将它禁用](../security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
 
 1. 使用 Azure 门户或 Azure Cloud Shell 查找虚拟机的名称和公共 IP 地址。 例如：
 
@@ -73,7 +73,7 @@ ms.locfileid: "66143502"
     npm start
     ```
 
-1. 前一命令 UI 在本地运行在 http:\//localhost:3000 / 仪表板。 可以在站点正在运行时编辑代码，并查看其动态更新。
+1. 上一个命令在本地运行 UI, 网址为\/http:/localhost: 3000/仪表板。 可以在站点正在运行时编辑代码，并查看其动态更新。
 
 ## <a name="customize-the-layout"></a>自定义布局
 

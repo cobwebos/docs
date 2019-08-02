@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 190aab1f321aa9014eea95a63d525b394288b03b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fd3c40d56e0ba9cdb50847832051606f81d0e952
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709259"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677671"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>针对通过 SSH 连接到 Azure Linux VM 时发生的失败、错误或被拒绝问题进行故障排除
 尝试连接到 Linux 虚拟机 (VM) 时，可能会由于安全外壳 (SSH) 错误、SSH 连接失败或 SSH 被拒绝而发生问题，本文可帮助你查找并更正这些问题。 可以使用 Azure 门户、Azure CLI 或适用于 Linux 的 VM 访问扩展来排查和解决连接问题。
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”  。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="quick-troubleshooting-steps"></a>快速故障排除步骤
 执行每个故障排除步骤后，请尝试重新连接到 VM。
@@ -49,7 +49,7 @@ ms.locfileid: "67709259"
 可以使用以下方法之一重置凭据或 SSH 配置：
 
 * [Azure 门户](#use-the-azure-portal) - 如果需要快速重置 SSH 配置或 SSH 密钥，并且没有安装 Azure 工具，则很适合使用此方法。
-* [Azure VM 的串行控制台](https://aka.ms/serialconsolelinux)-虚拟机串行控制台将工作而不考虑 SSH 配置，并将为您提供一个交互式控制台到 VM。 实际上，"不能 SSH"情况下都是尤其是串行控制台是旨在帮助解决。 下面的更多详细信息。
+* [AZURE Vm 串行控制台](https://aka.ms/serialconsolelinux)-无论 SSH 配置如何, vm 串行控制台都可正常工作, 并向你的 vm 提供交互式控制台。 事实上, "不能 SSH" 情况是串行控制台旨在帮助解决的具体情况。 更多详细信息。
 * [Azure CLI](#use-the-azure-cli) - 如果已打开命令行，则可以快速重置 SSH 配置或凭据。 如果要处理经典 VM，则可以使用 [Azure 经典 CLI](#use-the-azure-classic-cli)。
 * [Azure VMAccessForLinux 扩展](#use-the-vmaccess-extension) - 创建和重复使用 json 定义文件来重置 SSH 配置或用户凭据。
 
@@ -58,17 +58,17 @@ ms.locfileid: "67709259"
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 在 Azure 门户中，可以快速重置 SSH 配置或用户凭据，无需在本地计算机上安装任何工具。
 
-若要开始，请在 Azure 门户中选择你的 VM。 向下滚动到“支持 + 故障排除”部分并选择“重置密码”，如以下示例中所示   ：
+若要开始，请在 Azure 门户中选择你的 VM。 向下滚动到“支持 + 故障排除”部分并选择“重置密码”，如以下示例中所示：
 
 ![在 Azure 门户中重置 SSH 配置或凭据](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
 ### <a name="a-idreset-config-reset-the-ssh-configuration"></a><a id="reset-config" />重置 SSH 配置
-若要重置 SSH 配置，请如上面的屏幕截图所示在“模式”  部分中选择“`Reset configuration only`”，然后选择“更新”  。 完成此操作后，再次尝试访问 VM。
+若要重置 SSH 配置，请如上面的屏幕截图所示在“模式”部分中选择“`Reset configuration only`”，然后选择“更新”。 完成此操作后，再次尝试访问 VM。
 
 ### <a name="a-idreset-credentials-reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />重置用户的 SSH 凭据
-若要重置现有用户的凭据，请在“模式”  部分中选择“`Reset SSH public key`”或“`Reset password`”，如上面的屏幕截图中所示。 指定用户名和 SSH 密钥或新密码，然后选择“更新”  。
+若要重置现有用户的凭据，请在“模式”部分中选择“`Reset SSH public key`”或“`Reset password`”，如上面的屏幕截图中所示。 指定用户名和 SSH 密钥或新密码，然后选择“更新”。
 
-还可以通过此菜单在 VM 上创建具有 sudo 权限的用户。 输入新用户名和关联的密码或 SSH 密钥，然后选择“更新”  。
+还可以通过此菜单在 VM 上创建具有 sudo 权限的用户。 输入新用户名和关联的密码或 SSH 密钥，然后选择“更新”。
 
 ### <a name="a-idsecurity-rules-check-security-rules"></a><a id="security-rules" />检查安全规则
 
@@ -78,22 +78,22 @@ ms.locfileid: "67709259"
 
 使用网络观察程序的[下一跃点](../../network-watcher/network-watcher-check-next-hop-portal.md)功能确认路由未阻止将流量路由到虚拟机或从虚拟机路由流量。 还可以查看有效路由，以了解网络接口的所有有效路由。 有关详细信息，请参阅[使用有效路由排查 VM 流量流问题](../../virtual-network/diagnose-network-routing-problem.md)。
 
-## <a name="use-the-azure-vm-serial-console"></a>使用 Azure 虚拟机串行控制台
-[Azure 虚拟机串行控制台](./serial-console-linux.md)提供对 Linux 虚拟机用于基于文本的控制台的访问。 可以使用控制台进行故障排除交互式 shell 中建立的 SSH 连接。 请确保已满足[先决条件](./serial-console-linux.md#prerequisites)使用串行控制台，然后重试的以下命令进一步排查 SSH 连接。
+## <a name="use-the-azure-vm-serial-console"></a>使用 Azure VM 串行控制台
+[AZURE VM 串行控制台](./serial-console-linux.md)提供对 Linux 虚拟机的基于文本的控制台的访问。 可以使用控制台对交互式 shell 中的 SSH 连接进行故障排除。 确保满足使用串行控制台的[先决条件](./serial-console-linux.md#prerequisites), 并尝试以下命令, 进一步排查 SSH 连接问题。
 
-### <a name="check-that-ssh-is-running"></a>检查正在运行 SSH
-可以使用以下命令来验证 SSH 上你的 VM 是否正在运行：
+### <a name="check-that-ssh-is-running"></a>检查 SSH 是否正在运行
+你可以使用以下命令来验证 SSH 是否在 VM 上运行:
 ```
 $ ps -aux | grep ssh
 ```
-如果没有任何输出，则 SSH 已启动并运行。
+如果有任何输出, SSH 就会启动并运行。
 
-### <a name="check-which-port-ssh-is-running-on"></a>检查运行 SSH 的端口
-可以使用以下命令来检查运行 SSH 的端口：
+### <a name="check-which-port-ssh-is-running-on"></a>检查正在运行 SSH 的端口
+你可以使用以下命令来检查运行 SSH 的端口:
 ```
 $ sudo grep Port /etc/ssh/sshd_config
 ```
-你的输出将如下所示：
+你的输出将如下所示:
 ```
 Port 22
 ```
@@ -101,7 +101,7 @@ Port 22
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户（如果尚未这样做）。
 
-如果创建并上传了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux](../extensions/agent-windows.md) 代理 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
+如果创建并上传了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux](../extensions/agent-linux.md) 代理 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
 
 ### <a name="reset-ssh-configuration"></a>重置 SSH 配置
 最初可尝试将 SSH 配置重置为默认值，然后重新启动 VM 上的 SSH 服务器。 这不会更改用户帐户名、密码或 SSH 密钥。
@@ -176,7 +176,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 azure config mode arm
 ```
 
-如果创建并上传了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux](../extensions/agent-windows.md) 代理 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
+如果创建并上传了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux](../extensions/agent-linux.md) 代理 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
 
 ### <a name="reset-ssh-configuration"></a>重置 SSH 配置
 SSHD 配置本身可能有误或服务遇到错误。 可以重置 SSHD 以确保 SSH 配置本身是有效的。 要执行的第一个故障排除步骤应该是重置 SSHD。
@@ -207,7 +207,7 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
 如果已重置 SSH 配置和用户凭据，或者在执行此操作期间遇到错误，可以尝试重新启动 VM 来解决基本的计算问题。
 
 ### <a name="azure-portal"></a>Azure 门户
-若要使用 Azure 门户重启 VM，请选择你的 VM，然后单击“重启”  ，如以下示例中所示：
+若要使用 Azure 门户重启 VM，请选择你的 VM，然后单击“重启”，如以下示例中所示：
 
 ![在 Azure 门户中重新启动 VM](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
@@ -234,7 +234,7 @@ azure vm restart --resource-group myResourceGroup --name myVM
 >
 
 ### <a name="azure-portal"></a>Azure 门户
-要使用 Azure 门户重新部署 VM，请选择 VM，并向下滚动到“支持 + 故障排除”部分  。 选择“重新部署”  ，如以下示例中所示：
+要使用 Azure 门户重新部署 VM，请选择 VM，并向下滚动到“支持 + 故障排除”部分。 选择“重新部署”，如以下示例中所示：
 
 ![在 Azure 门户中重新部署 VM](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
@@ -255,8 +255,8 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 ## <a name="vms-created-by-using-the-classic-deployment-model"></a>使用经典部署模型创建的 VM
 若要解决使用经典部署模型创建的 VM 中最常见的 SSH 连接失败问题，请尝试以下步骤。 在执行每个步骤之后，请尝试重新连接到 VM。
 
-* 从 [Azure 门户](https://portal.azure.com)重置远程访问。 在 Azure 门户中，选择你的 VM，然后选择“重置远程...”  。
-* 重启 VM。 在 [Azure 门户](https://portal.azure.com)中，选择你的 VM，然后选择“重启”  。
+* 从 [Azure 门户](https://portal.azure.com)重置远程访问。 在 Azure 门户中，选择你的 VM，然后选择“重置远程...”。
+* 重启 VM。 在 [Azure 门户](https://portal.azure.com)中，选择你的 VM，然后选择“重启”。
 
 * 将 VM 重新部署到新的 Azure 节点。 有关如何重新部署 VM 的信息，请参阅[将虚拟机重新部署到新的 Azure 节点](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
@@ -267,7 +267,7 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
   * 创建 *sudo* 用户帐户。
   * 重置 SSH 配置。
 * 检查 VM 的资源运行状况，了解是否存在任何平台问题。<br>
-     选择 VM 并向下滚动到“设置” > “检查运行状况”   。
+     选择 VM 并向下滚动到“设置” > “检查运行状况”。
 
 ## <a name="additional-resources"></a>其他资源
 * 如果在执行后续步骤之后仍然无法通过 SSH 连接到 VM，请参阅[更详细的故障排除步骤](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，查看其他可以解决问题的步骤。

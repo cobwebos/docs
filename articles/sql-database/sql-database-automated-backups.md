@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 06/27/2019
-ms.openlocfilehash: c75b19fff478c14ff47996cf9159e48f3ff69724
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 1afe8a2e9179c768fd639b4a208de98b0789a53f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261197"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569463"
 ---
 # <a name="automated-backups"></a>自动备份
 
@@ -40,7 +39,7 @@ SQL 数据库使用 SQL Server 技术每周创建[完整备份](https://docs.mic
 - 若要执行还原，请参阅[从备份还原数据库](sql-database-recovery-using-backups.md)。
 
 > [!NOTE]
-> 在 Azure 存储中，术语*复制*是指将文件从一个位置复制到另一个位置。 SQL 的“数据库复制”是指让多个辅助数据库与主数据库保持同步  。
+> 在 Azure 存储中，术语*复制*是指将文件从一个位置复制到另一个位置。 SQL 的“数据库复制”是指让多个辅助数据库与主数据库保持同步。
 
 可以使用以下示例尝试一些操作:
 

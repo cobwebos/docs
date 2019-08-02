@@ -10,14 +10,14 @@ ms.author: tsikiksr
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 07/23/2019
-ms.openlocfilehash: 7c7d90d4ca1625edecc9d84e1ff7beec50032884
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 30dc731efdb6016f505b7a16860e0cb9c6480333
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444755"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716581"
 ---
-# <a name="tutorial-train-and-deploy-a-classification-model-with-automated-machine-learning-in-the-azure-portal-preview"></a>教程：在 Azure 门户中使用自动化机器学习培训和部署分类模型 (预览版)
+# <a name="tutorial-use-automated-machine-learning-to-train-and-deploy-your-first-classification-model-preview"></a>教程：使用自动机器学习来训练和部署第一个分类模型 (预览)
 
 在本教程中, 将了解如何在 Azure 门户中创建第一个自动化机器学习试验。 此示例将创建一个分类模型, 以预测客户端是否将订阅与银行一起使用的字词。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "68444755"
 
 1. 选择 "**创建新计算**" 并为此试验配置计算上下文。
 
-    字段| 值
+    字段| ReplTest1
     ---|---
     计算名称| 输入标识计算上下文的唯一名称。 在此示例中, 我们使用**automl**。
     虚拟机大小| 为计算选择虚拟机大小。 我们使用**Standard_DS12_V2**。
@@ -120,7 +120,7 @@ ms.locfileid: "68444755"
 
 1. 按如下所示填充 "**部署最佳模型**" 窗格:
 
-    字段| 值
+    字段| ReplTest1
     ----|----
     部署名称| 我的 automl-部署
     部署说明| 我第一次自动机器学习试验部署
