@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2030365cd78480c25e224edfea9e395aafa6661c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 55722c35dddcbf8a20f4f51958170938225e87e5
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227915"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668391"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>通过 MLflow 和 Azure 机器学习 service (预览版) 跟踪指标和部署模型
 
@@ -36,8 +36,9 @@ ms.locfileid: "68227915"
 
  MLflow 跟踪只提供指标日志记录和项目存储功能, 这些功能仅在[Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)中可用。
 
-| | MLflow 跟踪 & 部署 | Azure 机器学习 <br> Python SDK |  Azure 机器学习 <br> CLI | Azure 门户|
-|-|-|-|-|-|-|
+
+| | MLflow 跟踪 & 部署 | Azure 机器学习 Python SDK |  Azure 机器学习 CLI | Azure 门户|
+|---|---|---|---|---|
 | 管理工作区 |   | ✓ | ✓ | ✓ |
 | 使用数据存储  |   | ✓ | ✓ | |
 | 日志指标      | ✓ | ✓ |   | |
@@ -349,15 +350,15 @@ aks_service.wait_for_deployment(show_output=True)
 
 如果你不打算在工作区中使用记录的指标和项目, 则单独删除它们的功能当前不可用。 而是删除包含存储帐户和工作区的资源组, 这样就不会产生任何费用:
 
-1. 在 Azure 门户中，选择最左侧的“资源组”  。
+1. 在 Azure 门户中，选择最左侧的“资源组”。
 
    ![在 Azure 门户中删除](media/how-to-use-mlflow/delete-resources.png)
 
 1. 从列表中选择已创建的资源组。
 
-1. 选择“删除资源组”  。
+1. 选择“删除资源组”。
 
-1. 输入资源组名称。 然后选择“删除”  。
+1. 输入资源组名称。 然后选择“删除”。
 
 
 ## <a name="example-notebooks"></a>示例笔记本

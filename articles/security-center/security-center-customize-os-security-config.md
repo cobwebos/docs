@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7095992253fbbe5aafce1eab889965250f5d59a8
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 8216aee1c27fd5bcb722648aa6380044e1431452
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551361"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662472"
 ---
-# <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>在 Azure 安全中心自定义 OS 安全配置（预览）
+# <a name="customize-os-security-configurations-in-azure-security-center-retired"></a>自定义 Azure 安全中心中的 OS 安全配置 (已停用)
 
-本演练演示如何在 Azure 安全中心自定义 OS 安全配置评估。
+本演练演示如何在 Azure 安全中心自定义 OS 安全配置评估 (预览版)。
 
 > [!NOTE]
-> 自定义 OS 安全配置的功能将在 2019 年 7 月 31 日停用。 有关详细信息和备用服务，请参阅用[安全中心功能的停用（2019 年 7 月）](security-center-features-retirement-july2019.md#menu_securityconfigurations)。
+> 自定义 OS 安全配置 (预览功能) 的功能已于2019年7月31日停用。 有关详细信息和备用服务，请参阅用[安全中心功能的停用（2019 年 7 月）](security-center-features-retirement-july2019.md#menu_securityconfigurations)。
 
 ## <a name="what-are-os-security-configurations"></a>什么是 OS 安全配置？
 
@@ -46,7 +46,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 新规则的格式和结构必须与现有的其他同类规则相同。
 
 > [!NOTE]
-> 若要自定义 OS 安全配置，必须拥有“订阅所有者”、“订阅参与者”或“安全管理员”角色。   
+> 若要自定义 OS 安全配置，必须拥有“订阅所有者”、“订阅参与者”或“安全管理员”角色。
 >
 >
 
@@ -54,13 +54,13 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
 若要在安全中心自定义默认的 OS 安全配置，请执行以下操作：
 
-1.  打开“安全中心”  仪表板。
+1.  打开“安全中心”仪表板。
 
-2.  在左窗格中，选择**定价和设置**。
+2.  在左窗格中, 选择 "**定价 & 设置**"。
 
     ![安全策略列表](media/security-center-customize-os-security-config/manual-provision.png)
 
-4. 选择适用的订阅，然后选择**编辑安全配置**。  
+4. 选择适用的订阅, 然后选择 "**编辑安全配置**"。  
 
     ![“编辑安全配置”窗口](media/security-center-customize-os-security-config/blade.png)
 
@@ -70,13 +70,13 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
    > 默认情况下，下载的配置文件采用 *json* 格式。 有关修改此文件的说明，请转到[自定义配置文件](#customize-the-configuration-file)。
    >
 
-6. 若要提交更改，请选择“保存”。  否则不会存储该策略。
+6. 若要提交更改，请选择“保存”。 否则不会存储该策略。
 
     ![点击“保存”按钮](media/security-center-customize-os-security-config/save-successfully.png)
 
    成功保存文件后，配置将应用到与订阅下的工作区相连接的所有 VM 和计算机。 此过程通常需要几分钟或更长时间，具体时间取决于基础结构的大小。
 
-随时可将当前策略配置重置为默认状态。 为此，请在“编辑 OS 安全配置规则”窗口中选择“重置”。   在确认弹出窗口中选择“是”，确认选择此选项。 
+随时可将当前策略配置重置为默认状态。 为此，请在“编辑 OS 安全配置规则”窗口中选择“重置”。 在确认弹出窗口中选择“是”，确认选择此选项。
 
 ![“重置”确认窗口](media/security-center-customize-os-security-config/edit-alert.png)
 
@@ -91,13 +91,13 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 >
 >
 
-编辑自定义文件时，可以修改一条规则或所有规则。 每个规则集都包含“规则”  节，该节分为三个类别：注册表、审核策略和安全策略，如下所示：
+编辑自定义文件时，可以修改一条规则或所有规则。 每个规则集都包含“规则”节，该节分为三个类别：注册表、审核策略和安全策略，如下所示：
 
 ![三个规则集类别](media/security-center-customize-os-security-config/rules-section.png)
 
 每个类别有自身的属性集。 可更改以下属性：
 
-- **expectedValue**：此属性的字段数据类型必须与每种规则类型支持的值匹配，例如： 
+- **expectedValue**：此属性的字段数据类型必须与每种规则类型支持的值匹配，例如：
 
   - **baselineRegistryRules**：此值应与该规则中定义的 [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) 匹配。
 
@@ -111,9 +111,9 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
     - *No one*
 
-    - 允许的用户组列表，例如：管理员  、备份操作员 
+    - 允许的用户组列表，例如：管理员、备份操作员
 
--   **state**：该字符串可以包含选项 Disabled  或 Enabled  。 在此版本中，该字符串区分大小写。
+-   **state**：该字符串可以包含选项 Disabled 或 Enabled。 在此版本中，该字符串区分大小写。
 
 只能配置这些字段。 如果不符合文件格式或大小，则无法保存更改。 你会收到一条错误消息，指出需上传有效的 JSON 配置文件。
 
@@ -264,7 +264,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
 ## <a name="file-upload-failures"></a>文件上传失败
 
-如果由于值或格式错误而导致提交的配置文件无效，将会显示失败错误，例如“保存操作失败”。  可以下载详细的 csv 错误报告以补救和修复错误，然后重新提交更正的配置文件。
+如果由于值或格式错误而导致提交的配置文件无效，将会显示失败错误，例如“保存操作失败”。 可以下载详细的 csv 错误报告以补救和修复错误，然后重新提交更正的配置文件。
 
 错误文件的示例：
 
@@ -299,12 +299,12 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 | BaselineRuleTypeDoesntMatchError         | 规则的实际类型为 *{0}* ，但 *ruleType* 属性为 *{1}* 。                                                                          |
 | BaselineRuleUnpermittedChangesError      | 只允许更改 *expectedValue* 和 *state* 属性。                                                                       |
 | BaselineTooManyRules                     | 允许的最大自定义规则数为 {0} 个规则。 给定的配置包含 {1} 个规则，其中包括 {2} 个默认规则，{3} 个自定义规则。 |
-| ErrorNoConfigurationStatus               | 找不到配置状态。 请指明所需的配置状态：Default  或 Custom  。                                    |
+| ErrorNoConfigurationStatus               | 找不到配置状态。 请指明所需的配置状态：Default 或 Custom。                                    |
 | ErrorNonEmptyRulesetOnDefault            | 配置状态已设置为默认值。 *BaselineRulesets* 列表必须为 null 或空。                                                          |
 | ErrorNullRulesetsPropertyOnCustom        | 给定的配置状态为 *Custom*，但 *baselineRulesets* 属性为 null 或空。                                             |
 | ErrorParsingBaselineConfig               | 给定的配置无效。 定义的一个或多个值具有 null 值或无效类型。                                  |
 | ErrorParsingIsDefaultProperty            | 给定的 *configurationStatus* 值 *{0}* 无效。 该值只能是 *Default* 或 *Custom*。                                         |
-| InCompatibleViewVersion                  | 此工作区类型不支持视图版本 *{0}* 。                                                                                    |
+| InCompatibleViewVersion                  | 此工作区类型不支持视图版本 *{0}* 。                                                                                   |
 | InvalidBaselineConfigurationGeneralError | 在给定的基线配置中发现一个或多个类型验证错误。                                                          |
 | ViewConversionError                      | 视图的版本较旧，不受工作区的支持。 视图转换失败: {0}。                                                                 |
 

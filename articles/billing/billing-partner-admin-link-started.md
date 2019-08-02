@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 0448ffbccddc913bd6359f5f6bbf42988239afb4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502678"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706406"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
-Microsoft 合作伙伴提供的服务，帮助客户实现业务和使用 Microsoft 产品的关键任务目标。 当代表客户管理操作，配置和支持 Azure 服务，合作伙伴用户将需要对客户的环境的访问。 使用合作伙伴管理员链接，合作伙伴可以将其合作伙伴网络 ID 关联的服务交付使用的凭据。
+Microsoft 合作伙伴提供的服务可帮助客户使用 Microsoft 产品实现业务和任务目标。 当代表客户管理、配置和支持 Azure 服务时, 合作伙伴用户将需要访问客户的环境。 合作伙伴可以使用合作伙伴管理链接将其合作伙伴网络 ID 与用于服务传递的凭据关联起来。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -48,13 +48,13 @@ Microsoft 合作伙伴提供的服务，帮助客户实现业务和使用 Micros
 
    ![显示链接到合作伙伴 ID 的屏幕截图](./media/billing-link-partner-id/link-partner-ID.PNG)
 
-4. 若要链接另一个客户的合作伙伴 ID，请切换目录。 在“切换目录”下，选择你的目录  。
+4. 若要链接另一个客户的合作伙伴 ID，请切换目录。 在“切换目录”下，选择你的目录。
 
    ![显示“切换”目录的屏幕截图](./media/billing-link-partner-id/directory-switcher.png)
 
 ### <a name="use-powershell-to-link-to-a-new-partner-id"></a>使用 PowerShell 链接到新合作伙伴 ID
 
-1. 安装 [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) PowerShell 模块。
+1. 安装[ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/) PowerShell 模块。
 
 2. 使用用户帐户或服务主体登录到客户的租户。 有关详细信息，请参阅[使用 PowerShell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
 
@@ -139,22 +139,22 @@ C:\ az managementpartner delete --partner-id 12345
 该链接在用户帐户级别关联。 只有你可以编辑或删除合作伙伴 ID 的链接。 客户和其他合作伙伴无法更改合作伙伴 ID 的链接。
 
 
-**如果我的公司有多个应使用哪个 MPN ID？**
+**如果我的公司有多个 MPN, 我应该使用哪个 ID？**
 
-合作伙伴位置帐户关联的 MPN Id 应在用于链接合作伙伴 id。  详细了解[合作伙伴帐户](https://docs.microsoft.com/partner-center/account-structure)
+合作伙伴位置帐户和关联的 MPN Id 应该用于链接合作伙伴 ID。  了解有关[合作伙伴帐户](https://docs.microsoft.com/partner-center/account-structure)的详细信息
 
-**在哪里可以找到受影响的收入报告的链接的合作伙伴 ID？**
+**在哪里可以找到受链接合作伙伴 ID 影响的收入报告？**
 
-云产品性能报告可供在合作伙伴中心中的合作伙伴[我见解仪表板](https://partner.microsoft.com/membership/reports/myinsights)。 您需要选择合作伙伴管理员链接作为合作伙伴关联类型。
+在["我的 Insights" 仪表板](https://partner.microsoft.com/membership/reports/myinsights)中, 合作伙伴中心提供云产品性能报告。 需要选择 "合作伙伴管理" 链接作为 "合作伙伴关联类型"。
 
-**为何看不到我在报告中的客户？**
+**为什么我看不到报表中的客户？**
 
-您不能看到以下原因造成的报表中的客户
+由于以下原因, 无法在报表中查看客户
 
-1. 链接的用户帐户不具备[基于角色的访问](https://docs.microsoft.com/azure/role-based-access-control/overview)上的任何客户的 Azure 订阅或资源。
+1. 链接的用户帐户对任何客户 Azure 订阅或资源不具有[基于角色的访问权限](https://docs.microsoft.com/azure/role-based-access-control/overview)。
 
-2. 用户在其上的 Azure 订阅[基于角色的访问](https://docs.microsoft.com/azure/role-based-access-control/overview)访问没有任何使用情况。
+2. 用户具有[基于角色的访问](https://docs.microsoft.com/azure/role-based-access-control/overview)权限的 Azure 订阅没有任何使用权限。
 
-**链接的合作伙伴 ID 适用于 Azure Stack？**
+**链接伙伴 ID 是否与 Azure Stack 一起使用？**
 
-是的可以将你的合作伙伴 ID 链接适用于 Azure Stack。
+是的, 你可以链接 Azure Stack 的合作伙伴 ID。

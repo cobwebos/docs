@@ -18,10 +18,10 @@ ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f9264357ca1a0c1a612481f4254e86f05e41d8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479174"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -213,7 +213,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 故障转移群集是由 1+n 个独立服务器（节点）构成的组，这些服务器配合工作以提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集会计算可能发生的故障数并保留正常运行的群集以提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 在开始本文所述的任务之前，请先查看此文：
 
 * [适用于 SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案][sap-high-availability-architecture-scenarios]
@@ -312,11 +312,11 @@ _**图 4：** 用于保护 SAP 全局主机文件的横向扩展文件共享_
 * 必须使用 Azure 高级磁盘。
 * 建议使用 Azure 托管磁盘。
 * 建议使用复原文件系统 (ReFS) 来格式化卷。
-    * 有关详细信息, 请参阅存储空间直通 " [sap 说明 1869038-对 ReFs][1869038] and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem]的 sap 支持"。
+    * 有关详细信息, 请参阅[Sap 说明 1869038-对 ReFs 文件系统的 sap 支持][1869038]和[选择文件系统][planning-volumes-s2d-choosing-filesystem]一章中的 "规划卷" 存储空间直通。
     * 请确保安装[MICROSOFT KB4025334 累积更新][kb4025334]。
 * 可以使用“DS 系列”或“DSv2 系列”Azure VM 大小。
 * 若要获得良好的 VM 间网络性能以顺利进行存储空间直通磁盘同步，请使用至少能够提供“高”网络带宽的 VM 类型。
-    有关详细信息, 请参阅[DSv2 系列][dv2-series] and [DS-Series][ds-series]规范。
+    有关详细信息, 请参阅[DSv2 系列][dv2-series]和[DS 系列][ds-series]规范。
 * 建议在存储池中保留一些未分配的容量。 在存储池中留一些未分配的容量可以使卷空间能够在驱动器故障时进行“就地”修复。 这样可提高数据安全性和性能。  有关详细信息, 请参阅[选择卷大小][choosing-the-size-of-volumes-s2d]。
 * 不需针对横向扩展文件共享网络名称（例如 \<SAP 全局主机\>）来配置 Azure 内部负载均衡器。 此操作针对 SAP ASCS/SCS 实例的 \<ASCS/SCS 虚拟主机名\>，或者针对 DBMS。 横向扩展文件共享将负载横向扩展到所有群集节点。 \<SAP 全局主机\> 将本地 IP 地址用于所有群集节点。
 

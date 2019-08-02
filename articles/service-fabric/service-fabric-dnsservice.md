@@ -3,7 +3,7 @@ title: Azure Service Fabric DNS 服务 | Microsoft Docs
 description: 使用 Service Fabric 的 DNS 服务从群集内部发现微服务。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: vturecek
 ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
-ms.author: aljo
-ms.openlocfilehash: 3b3262eadc732c23000a66f24aaeeed4d9794db0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 94b2b807eb68d628165ca8fa4011b8f3e41d3c6d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60947612"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599643"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
 DNS 服务是可选的系统服务，可以在群集中启用，用于发现使用 DNS 协议的其他服务。 
@@ -46,14 +46,14 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 > [!NOTE]
 > 在 Linux 上尚不支持用于 Service Fabric 服务的 DNS 服务。
 
-使用门户创建群集时，默认情况下，在“群集配置”菜单的“包括 DNS 服务”复选框中启用 DNS 服务   ：
+使用门户创建群集时，默认情况下，在“群集配置”菜单的“包括 DNS 服务”复选框中启用 DNS 服务：
 
 ![通过门户启用 DNS 服务](./media/service-fabric-dnsservice/enable-dns-service.png)
 
 如果不使用门户创建群集或者要更新现有群集，则需要在模板中启用 DNS 服务：
 
 - 若要部署新的群集，可以使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建自己的资源管理器模板。 
-- 若要更新现有群集，可以导航到门户的群集资源组并单击“自动化脚本”，使用反映群集和组中其他资源当前状态的模板  。 若要了解详细信息，请参阅[从资源组导出模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)。
+- 若要更新现有群集，可以导航到门户的群集资源组并单击“自动化脚本”，使用反映群集和组中其他资源当前状态的模板。 若要了解详细信息，请参阅[从资源组导出模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)。
 
 有了模板后，可以通过以下步骤启用 DNS 服务：
 
@@ -111,7 +111,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
               ]
             }
        ```
-1. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它  。 
+1. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它。 
 
 
 ## <a name="setting-the-dns-name-for-your-service"></a>设置服务的 DNS 名称

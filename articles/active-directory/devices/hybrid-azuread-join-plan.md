@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb050eb527e65b4fd31f3251d37fef7d51e867e
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: ee3309bdd3629057d174866dde58ffd95e9e5ca8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655979"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562133"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
@@ -26,16 +26,16 @@ ms.locfileid: "67655979"
 - 混合 Azure AD 加入
 - Azure AD 注册
 
-借助将设备引入 Azure AD，可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 一次您可以安全访问你在本地和云资源与[条件性访问](../active-directory-conditional-access-azure-portal.md)。
+借助将设备引入 Azure AD，可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 同时, 可以使用[条件性访问](../active-directory-conditional-access-azure-portal.md)来保护对云和本地资源的访问。
 
-如果必须在本地 Active Directory (AD) 环境，并且你想要将你的 AD 已加入域的计算机加入到 Azure AD，可以通过执行混合 Azure AD 联接来实现此目的。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
+如果你有本地 Active Directory (AD) 环境, 并且想要将已加入 AD 域的计算机加入到 Azure AD, 则可以通过混合 Azure AD 加入来实现此目的。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假定你熟悉[Azure Active Directory 中的设备标识管理简介](../device-management-introduction.md)。
+本文假设你熟悉[Azure Active Directory 中设备标识管理的简介](../device-management-introduction.md)。
 
 > [!NOTE]
-> 所需的最低所需 Windows 10 混合 Azure AD join 是 Windows Server 2008 R2 域功能和林功能级别。
+> Windows 10 混合 Azure AD 联接所需的最小域功能和林功能级别为 Windows Server 2008 R2。
 
 ## <a name="plan-your-implementation"></a>规划实施
 
@@ -43,11 +43,11 @@ ms.locfileid: "67655979"
 
 |   |   |
 | --- | --- |
-| ![勾选标记][1] | 查看支持的设备 |
-| ![勾选标记][1] | 查看应该知道的事项 |
-| ![勾选标记][1] | 查看混合 Azure AD 联接的受控的验证 |
-| ![勾选标记][1] | 选择你的方案基于标识基础结构 |
-| ![勾选标记][1] | 查看在本地 AD UPN 支持混合的 Azure AD 联接 |
+| ![检查][1] | 查看支持的设备 |
+| ![检查][1] | 查看应该知道的事项 |
+| ![检查][1] | 查看混合 Azure AD 联接的受控验证 |
+| ![检查][1] | 基于标识基础结构选择方案 |
+| ![检查][1] | 查看本地 AD UPN 支持混合 Azure AD 联接 |
 
 ## <a name="review-supported-devices"></a>查看支持的设备
 
@@ -59,12 +59,12 @@ ms.locfileid: "67655979"
 - Windows Server 2016
 - Windows Server 2019
 
-对于运行 Windows 桌面操作系统的设备，这篇文章中列出受支持的版本[Windows 10 发布信息](https://docs.microsoft.com/windows/release-information/)。 最佳做法是，Microsoft 建议您升级到最新版本的 Windows 10。
+对于运行 Windows 桌面操作系统的设备, 受支持的版本将在[Windows 10 版本信息](https://docs.microsoft.com/windows/release-information/)中列出。 最佳做法是, Microsoft 建议升级到最新版本的 Windows 10。
 
 ### <a name="windows-down-level-devices"></a>Windows 下层设备
 
 - Windows 8.1
-- Windows 7. 有关在 Windows 7 上支持信息，请参阅此文章[结束支持适用于 Windows 7](https://www.microsoft.com/en-us/windowsforbusiness/end-of-windows-7-support)
+- Windows 7。 有关 Windows 7 的支持信息, 请查看此文章[对 windows 7 的支持正在结束](https://www.microsoft.com/windowsforbusiness/end-of-windows-7-support)
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2
@@ -73,35 +73,35 @@ ms.locfileid: "67655979"
 
 ## <a name="review-things-you-should-know"></a>查看应该知道的事项
 
-如果你的环境中包含的单个 AD 林同步到多个 Azure AD 租户的标识数据，是目前不支持混合 Azure AD 联接。
+如果你的环境包含将标识数据同步到多个 Azure AD 租户的单个 AD 林, 则当前不支持混合 Azure AD 联接。
 
-混合 Azure AD 联接当前不支持使用虚拟桌面基础结构 (VDI) 时。
+使用虚拟桌面基础结构 (VDI) 时, 当前不支持混合 Azure AD 联接。
 
-与 FIPS 兼容的 Tpm 不支持混合 Azure AD 联接。 如果你的设备具有与 FIPS 兼容的 Tpm，则必须在继续进行混合 Azure AD 加入之前禁用它们。 禁用 FIPS 模式下的 Tpm，因为它是依赖于 TPM 制造商，Microsoft 不提供任何工具。 请联系您的硬件 OEM 获取支持。
+对于符合 FIPS 标准的 Tpm, 不支持混合 Azure AD 联接。 如果设备具有符合 FIPS 标准的 Tpm, 则必须先禁用它们, 然后才能继续混合 Azure AD 联接。 Microsoft 不提供任何工具用于为 Tpm 禁用 FIPS 模式, 因为它依赖于 TPM 制造商。 请联系你的硬件 OEM 以获得支持。
 
 运行域控制器 (DC) 角色的 Windows Server 不支持混合 Azure AD 联接。
 
-使用凭据漫游用户配置文件时在 Windows 下层设备上不支持混合 Azure AD 联接。
+使用凭据漫游或用户配置文件漫游时, Windows 下层设备上不支持混合 Azure AD 联接。
 
-如果将依赖于系统准备工具 (Sysprep) 并使用**pre-Windows 10 1809年**安装映像，请确保该映像不是来自已注册到为混合 Azure AD 联接 Azure AD 的设备。
+如果你依赖于系统准备工具 (Sysprep), 并且你使用的是**Windows 之前的 10 1809**映像进行安装, 请确保映像不是从已注册到 Azure AD 混合 Azure AD 加入的设备。
 
-如果您依赖于要创建更多虚拟机的虚拟机 (VM) 快照，请确保该快照不是来自已注册到为混合 Azure AD 联接 Azure AD 的 VM。
+如果你依赖于虚拟机 (VM) 快照来创建其他 Vm, 请确保快照不是来自已注册到 Azure AD 的 VM, 因为混合 Azure AD 加入。
 
-如果加入 Windows 10 域的设备在你的租户中[已注册 Azure AD](https://docs.microsoft.com/azure/active-directory/devices/overview#getting-devices-in-azure-ad)，强烈建议在启用混合 Azure AD 加入之前删除该状态。 从 Windows 10 1809 版本开始，进行了以下更改来避免此双重状态：
+如果加入 Windows 10 域的设备在你的租户中[已注册 Azure AD](overview.md#getting-devices-in-azure-ad)，强烈建议在启用混合 Azure AD 加入之前删除该状态。 从 Windows 10 1809 版本开始，进行了以下更改来避免此双重状态：
 
 - 在设备加入混合 Azure AD 后，会自动删除任何现有的已注册 Azure AD 状态。
-- 可阻止您加入的域的设备成为 Azure AD 注册通过添加此注册表项-HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin，"BlockAADWorkplaceJoin"= dword: 00000001。
-- 此更改现已可供 Windows 10 1803年发布与 KB4489894 应用。 但是，如果您有 Windows hello 企业版配置，用户则需要以重新设置 Windows hello 企业版后双状态清理。
+- 可以通过添加此注册表项-HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin "BlockAADWorkplaceJoin" = dword: 00000001, 阻止已加入域的设备 Azure AD 注册。
+- 此更改现在适用于应用了 KB4489894 的 Windows 10 1803 版本。 但是, 如果你已配置 Windows Hello 企业版, 则在双重状态清除后, 用户需要重新设置 Windows Hello 企业版。
 
-## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>查看混合 Azure AD 联接的受控的验证
+## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>查看混合 Azure AD 联接的受控验证
 
-当所有系统必备组件到位，将自动为你的 Azure AD 租户中的设备注册 Windows 设备。 Azure AD 中的这些设备标识状态称为混合 Azure AD 联接。 可以在文章中找到有关本文中所述的概念的详细信息[Azure Active Directory 中的设备标识管理简介](overview.md)和[计划你的混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)。
+当所有先决条件都准备就绪后, Windows 设备将自动作为 Azure AD 租户中的设备进行注册。 Azure AD 中这些设备标识的状态称为 "混合 Azure AD 联接"。 有关本文中所述概念的详细信息, 请参阅文章[Azure Active Directory 中的设备标识管理](overview.md)和[规划混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)。
 
-组织可能想要执行混合 Azure AD 联接的一次性其整个组织启用之前受控的验证。 查看文章[控制的混合 Azure AD 联接验证](hybrid-azuread-join-control.md)若要了解如何完成该操作。
+在整个组织中同时启用混合 Azure AD 联接之前, 组织可能需要对其进行控制验证。 查看对[混合 Azure AD 联接的受控验证一](hybrid-azuread-join-control.md)文, 了解如何实现它。
 
-## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>选择你的方案基于标识基础结构
+## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>基于标识基础结构选择方案
 
-混合 Azure AD 联接适用于，托管和联合的环境。  
+混合 Azure AD 联接适用于、托管和联合环境。  
 
 ### <a name="managed-environment"></a>托管环境
 
@@ -111,24 +111,24 @@ ms.locfileid: "67655979"
 
 ### <a name="federated-environment"></a>联合环境
 
-联合的环境中应具有的标识提供程序支持以下要求：
+联合环境应具有支持以下要求的标识提供程序:
 
-- **WS 信任协议：** 此协议是需要对 Windows 进行身份验证当前的混合 Azure AD 加入与 Azure AD 的设备。
-- **WIAORMULTIAUTHN 声明：** 需要执行的 Windows 下层设备的混合 Azure AD 联接此声明。
+- **WS 信任协议:** 需要此协议来对 Windows 当前混合 Azure AD 与 Azure AD 进行联接的设备进行身份验证。
+- **WIAORMULTIAUTHN 声明:** 为 Windows 下层设备执行混合 Azure AD 联接需要此声明。
 
-如果必须使用 Active Directory 联合身份验证服务 (AD FS) 联合的环境，则已支持上述要求。
+如果你有使用 Active Directory 联合身份验证服务 (AD FS) 的联合环境, 则已支持上述要求。
 
 > [!NOTE]
 > Azure AD 不支持托管域中的智能卡或证书。
 
-自版本 1.1.819.0 起，Azure AD Connect 提供了混合 Azure AD 联接的配置向导。 使用该向导能够大幅简化配置过程。 如果无法安装所需版本的 Azure AD Connect，请参阅[如何手动配置设备注册](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual)。 
+自版本 1.1.819.0 起，Azure AD Connect 提供了混合 Azure AD 联接的配置向导。 使用该向导能够大幅简化配置过程。 如果无法安装所需版本的 Azure AD Connect，请参阅[如何手动配置设备注册](hybrid-azuread-join-manual.md)。 
 
-基于匹配标识基础结构的方案，请参阅：
+根据与标识基础结构匹配的方案, 请参阅:
 
-- [配置混合 Azure Active Directory 的联合环境中的联接](hybrid-azuread-join-federated-domains.md)
-- [配置托管环境的混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
+- [为联合环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-federated-domains.md)
+- [为托管环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
 
-## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>查看本地 AD UPN 支持用于混合 Azure AD 联接
+## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>查看混合 Azure AD 联接的本地 AD UPN 支持
 
 有时，本地 AD UPN 可能不同于 Azure AD UPN。 在此类情况下，Windows 10 混合 Azure AD 加入根据[身份验证方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、域类型和 Windows 10 版本对本地 AD UPN 提供有限支持。 环境中可以存在两种类型的本地 AD UPN：
 
@@ -141,14 +141,14 @@ ms.locfileid: "67655979"
 | ----- | ----- | ----- | ----- |
 | 可路由的 | 联合 | 从 1703 版本开始 | 正式发布 |
 | 非可路由的 | 联合 | 从 1803 版本开始 | 正式发布 |
-| 可路由的 | 托管 | 不支持 | |
-| 非可路由的 | 托管 | 不支持 | |
+| 可路由的 | 已管理 | 不支持 | |
+| 非可路由的 | 已管理 | 不支持 | |
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [有关联合的环境配置混合 Azure Active Directory 加入](hybrid-azuread-join-federated-domains.md)
-> [托管环境的配置混合 Azure Active Directory join](hybrid-azuread-join-managed-domains.md)
+> [为联合环境](hybrid-azuread-join-federated-domains.md)
+> 配置混合 Azure Active Directory 联接为[托管环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

@@ -3,7 +3,7 @@ title: 升级 Azure Service Fabric 独立群集 | Microsoft Docs
 description: 了解有关升级 Azure Service Fabric 独立群集的版本或配置的信息。  T
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
-ms.author: aljo
-ms.openlocfilehash: 1d96a2e81917af5e80bb847ea25610ccb71ad70f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: bf99d5d59354745508d8ca88abfc4b42fe608025
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711044"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599803"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>升级和更新 Service Fabric 独立群集
 
@@ -32,7 +32,7 @@ ms.locfileid: "60711044"
 
 ## <a name="customize-configuration-settings"></a>自定义配置设置
 
-可以在 ClusterConfig.json 文件中设置许多不同的[配置设置](service-fabric-cluster-manifest.md)，例如群集的可靠性级别和节点属性  。  若要了解详细信息，请阅读[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。  还可自定义许多其他更高级的设置。  有关详细信息，请参阅 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)。
+可以在 ClusterConfig.json 文件中设置许多不同的[配置设置](service-fabric-cluster-manifest.md)，例如群集的可靠性级别和节点属性。  若要了解详细信息，请阅读[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。  还可自定义许多其他更高级的设置。  有关详细信息，请参阅 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)。
 
 ## <a name="define-node-properties"></a>定义节点属性
 有时，可能需要确保仅在群集中特定类型的节点上运行某些工作负荷。 例如，某些工作负荷可能需要 GPU 或 SSD，而有些则不用。 对于群集中的每个节点类型，可以向群集节点添加自定义节点属性。 放置约束是附加到单个服务的语句，这些服务专供 1 个或多个节点属性选择。 放置约束定义服务运行的位置。

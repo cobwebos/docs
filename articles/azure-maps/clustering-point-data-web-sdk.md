@@ -1,28 +1,28 @@
 ---
-title: Azure Maps 中的点数据聚类分析 |Microsoft Docs
-description: 如何对 Web SDK 中的群集点数据
+title: Azure Maps 中的聚集点数据 |Microsoft Docs
+description: 如何在 Web SDK 中分类点数据
 author: rbrundritt
 ms.author: richbrun
-ms.date: 03/27/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 6dbd4461e7b8382ec3c4075b9688de59678f98f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69e95a9e6c76da5d502314a7190e99fc10e968f7
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957328"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639077"
 ---
-# <a name="clustering-point-data"></a>聚类分析点数据
+# <a name="clustering-point-data"></a>聚类数据
 
-可视化代码图上的多个数据点时, 点相互重叠、 地图显示混乱和变得非常困难，可以查看并使用。 可以使用聚类分析的点数据以提高这种用户体验。 聚类分析的数据点是合并彼此邻近点数据并代表它们将 map 作为单个群集的数据点上的过程。 因为用户将缩放在映射中，群集拆分到其单个数据点。
+当在地图上可视化多个数据点时, 点彼此重叠, 地图看起来显得有些混乱, 因而难以查看和使用。 可使用点数据的聚类分析来改善此用户的体验。 聚类数据是将相邻的点数据组合在一起并将其作为单个群集数据点表示在地图上的过程。 当用户放大到地图中时, 分类将分成各自的数据点。
 
-## <a name="enabling-clustering-on-a-data-source"></a>启用数据源进行聚类分析
+## <a name="enabling-clustering-on-a-data-source"></a>对数据源启用群集功能
 
-聚类分析可以轻松地在上启用`DataSource`通过设置类`cluster`选项为 true。 此外，像素 radius 选择邻近点组合成群集可以使用设置`clusterRadius`和缩放级别可以指定要禁用聚类分析的逻辑使用`clusterMaxZoom`选项。 下面是如何启用数据源中的聚类分析的示例。
+可以通过`DataSource` `cluster`将选项设置为 true, 在类上轻松启用群集。 此外, 还可以使用`clusterRadius`来设置用于选择要合并到群集中的相邻点的像素半径, 还可以指定缩放级别, 以`clusterMaxZoom`使用选项禁用聚类分析逻辑。 下面的示例演示如何在数据源中启用群集。
 
 ```javascript
 //Create a data source and enable clustering.
@@ -40,73 +40,73 @@ var datasource = new atlas.source.DataSource(null, {
 ```
 
 > [!TIP]
-> 如果两个数据点在地面上相差无几，则可能永远不会破坏相隔，无论在接近程度用户缩放群集。 若要解决此问题，可以设置`clusterMaxZoom`要禁用的聚类分析逻辑，并仅显示所有内容的缩放级别在指定的数据源的选项。
+> 如果两个数据点在地面上彼此接近, 则群集可能永远不会中断, 无论用户在多长时间内进行放大。 若要解决此情况, 可以设置`clusterMaxZoom`数据源的选项, 该选项在缩放级别指定以禁用聚类分析逻辑, 只显示所有内容。
 
-`DataSource`类还具有与群集相关的以下方法：
+`DataSource`类还具有以下与聚类分析相关的方法:
 
 | 方法 | 返回类型 | 描述 |
 |--------|-------------|-------------|
-| getClusterChildren(clusterId: number) | 承诺&lt;数组&lt;功能&lt;几何形状，任何&gt;\|形状&gt;&gt; | 检索给定群集上的下一步的缩放级别的子项。 这些子对象可能是形状和 subclusters 的组合。 Subclusters 将属性与匹配 ClusteredProperties 的功能。 |
-| getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | 计算群集将开始扩展或分离的缩放级别。 |
-| getClusterLeaves(clusterId: number, limit: number, offset: number) | 承诺&lt;数组&lt;功能&lt;几何形状，任何&gt;\|形状&gt;&gt; | 检索群集中的所有点。 设置`limit`以返回点的子集，并使用`offset`点翻页。 |
+| getClusterChildren (clusterId: number) | 承诺&lt;数组&lt;特征几何&lt;, 任何&gt;形状\|&gt;&gt; | 在下一个缩放级别检索给定分类的子项。 这些子级可以是形状和 subclusters 的组合。 Subclusters 将是具有与 ClusteredProperties 匹配的属性的功能。 |
+| getClusterExpansionZoom (clusterId: number) | 承诺&lt;编号&gt; | 计算群集开始展开或分离的缩放级别。 |
+| getClusterLeaves (clusterId: number, limit: number, offset: number) | 承诺&lt;数组&lt;特征几何&lt;, 任何&gt;形状\|&gt;&gt; | 检索群集中的所有点。 设置以返回部分点, 并`offset`使用逐页浏览点。 `limit` |
 
-## <a name="display-clusters-using-a-bubble-layer"></a>使用气泡图层显示群集
+## <a name="display-clusters-using-a-bubble-layer"></a>使用气泡图层显示分类
 
-气泡图层是呈现聚集的点，因为您可以轻松地缩放 radius 和更改它们使用表达式基于群集中的点的数目的颜色的好办法。 在显示时使用气泡图层的群集，还应呈现非群集的数据点使用一个单独的层。 通常是最好还能够显示在气泡之上群集的大小。 具有文本和没有图标的符号层可用来实现此行为。 
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="聚类分析的基本气泡图层" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅笔<a href='https://codepen.io/azuremaps/pen/qvzRZY/'>基本气泡图层的聚类分析</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
-</iframe>
-
-## <a name="display-clusters-using-a-symbol-layer"></a>显示使用符号层的聚类
-
-当可视化点数据使用符号层中，默认情况下将自动隐藏符号重叠以形成更清晰的体验时，但是这可能不是所需的体验如果你想要查看数据的密度在地图上点。 设置`allowOverlap`符号层的选项`iconOptions`属性设置为`true`禁用这种体验，但会导致显示的所有符号。 使用聚类分析，可创建清晰的良好用户体验时看到的所有数据的密度。 在此示例中，将使用自定义的符号来表示群集和各个数据点。
+气泡图层是一种呈现聚类的好方法, 因为可以轻松地缩放半径, 并使用表达式根据分类中的点数更改颜色。 使用气泡图层显示群集时, 还应使用单独的层来呈现非群集的数据点。 还可以在气泡顶部显示群集的大小, 这也是一种很好的方法。 带有文本和无图标的符号层可用于实现此行为。 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="聚集的符号层" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅笔<a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>聚集符号层</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="基本气泡层群集" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅<a href='https://codepen.io'>CodePen</a>上的 "通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 进行<a href='https://codepen.io/azuremaps/pen/qvzRZY/'>分类的基本气泡层</a>"。
 </iframe>
 
-## <a name="clustering-and-the-heat-maps-layer"></a>聚类分析和热映射层
+## <a name="display-clusters-using-a-symbol-layer"></a>使用符号层显示群集
 
-热图是在地图上显示数据的密度的好办法。 此可视化效果可以处理大量的数据点，但它可以处理更多数据，如果数据点簇和群集大小将用作热度地图的权重。 设置`weight`热度地图层选项`['get', 'point_count']`来实现此目的。 如果群集半径较小，热图看起来与使用非群集的数据点热度地图几乎完全相同，但将执行得更好。 但是，越小群集 radius、 更准确热度地图将但小于性能中受益。
+使用符号层可视化点数据时, 默认情况下, 它会自动隐藏彼此重叠的符号, 以创建更清晰的体验, 但如果您想要查看地图上数据点的密度, 这可能不是所需的体验。 设置 "符号层`iconOptions` " 属性的`true` 选项可以禁用此体验,但会导致所有符号都显示出来。`allowOverlap` 使用聚类分析可查看所有数据的密度, 同时创建良好的干净用户体验。 在此示例中, 自定义符号将用于表示群集和各个数据点。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="群集实施的加权热度地图" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅笔<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>群集实施的加权热度地图</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="聚集符号层" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅<a href='https://codepen.io'>CodePen</a>上的 "通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 进行的" 一<a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>层聚集符号层</a>"。
 </iframe>
 
-## <a name="mouse-events-on-clustered-data-points"></a>聚类数据点上的鼠标事件
+## <a name="clustering-and-the-heat-maps-layer"></a>聚类分析和热度地图层
 
-鼠标事件发生时包含聚集的数据点的图层上，将为 GeoJSON 点功能对象事件返回聚类数据点。 此点功能将具有以下属性：
+热度地图是在地图上显示数据密度的好方法。 此可视化效果可以自行处理大量数据点, 但如果数据点是聚集的, 则可以处理更多的数据, 并将群集大小用作热度地图的权重。 将热度地图层的`['get', 'point_count']` 选项设置为以实现此目的。`weight` 当群集的 radius 较小时, 热度地图看起来几乎与使用非群集数据点的热度地图完全相同, 但性能会更好。 然而, 分类半径越小, 热度地图就越精确, 但性能优势也就越小。
 
-| 属性名称 | Type | 描述 |
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="群集加权热度地图" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅<a href='https://codepen.io'>CodePen</a>上的 "通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 对笔<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>分类加权热度地图</a>。
+</iframe>
+
+## <a name="mouse-events-on-clustered-data-points"></a>群集数据点上的鼠标事件
+
+当鼠标事件发生在包含群集数据点的层上时, 群集数据点将作为 GeoJSON 点功能对象返回到事件。 此点功能将具有以下属性:
+
+| 属性名 | type | 描述 |
 |---------------|------|-------------|
-| cluster | boolean | 指示功能是否表示一个群集。 |
-| cluster_id | 字符串 | 可以在数据源的群集的唯一 ID `getClusterExpansionZoom`， `getClusterChildren`，和`getClusterLeaves`方法。 |
-| point_count | 数字 | 分类包含的点的数目。 |
-| point_count_abbreviated | 字符串 | 一个字符串，缩写`point_count`值如果声音太长。 （例如，4,000 成为 4k） |
+| 群集 | boolean | 指示功能是否表示群集。 |
+| cluster_id | string | 可用于数据源`getClusterExpansionZoom`、 `getClusterChildren`和`getClusterLeaves`方法的群集的唯一 ID。 |
+| point_count | 号 | 群集包含的点数。 |
+| point_count_abbreviated | string | 如果`point_count`值过长, 则为缩写值的字符串。 (例如, 4000 变为 4K) |
 
-此示例采用气泡图层的呈现群集点并添加一个单击事件的触发时，计算，并为下一步的缩放级别，群集将中断分开使用放大地图`getClusterExpansionZoom`方法的`DataSource`类和`cluster_id`属性被单击的聚集数据点。 
+此示例采用一个呈现分类点的气泡层, 并添加一个单击事件, 当触发、计算该地图并将其缩放到下一个缩放级别时, 将使用`getClusterExpansionZoom` `DataSource`类的方法和`cluster_id`已单击的群集数据点的属性。 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="群集 getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅笔<a href='https://codepen.io/azuremaps/pen/moZWeV/'>群集 getClusterExpansionZoom</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+请参阅<a href='https://codepen.io'>CodePen</a>上的 Azure Maps <a href='https://codepen.io/azuremaps/pen/moZWeV/'>getClusterExpansionZoom</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 中的 "笔群集"。
 </iframe>
 
 ## <a name="display-cluster-area"></a>显示群集区域 
 
-群集表示的点数据分散到一个区域中。 在此示例中当鼠标悬停于群集中，单个数据点包含 （叶） 将用于计算一个凸包并显示在该地图以显示区域上。 可以从使用数据源中检索包含在群集中的所有点`getClusterLeaves`方法。 一个凸包是一个封装一组点的多边形和等弹性外可以使用计算`atlas.math.getConvexHull`方法。
+分类所代表的点数据分散在某个区域。 在此示例中, 当鼠标悬停在群集上时, 它包含的各个数据点 (叶) 将用于计算凸形, 并显示在地图上以显示区域。 可以使用`getClusterLeaves`方法从数据源中检索包含在群集中的所有点。 凸形凸形是一种用于包装一组点 (如弹性带区) 的多边形, 可以`atlas.math.getConvexHull`使用方法进行计算。
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="群集区域凸包" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅笔<a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>群集区域凸球面</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+ <iframe height="500" style="width: 100%;" scrolling="no" title="群集区域凸凸" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅 CodePen 上的<a href='https://codepen.io'></a>(<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 的笔<a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>分类区域 Azure Maps 凸</a>凸。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤
@@ -114,13 +114,13 @@ var datasource = new atlas.source.DataSource(null, {
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [数据源类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
+> [DataSource 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [DataSourceOptions 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [atlas.math namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
+> [阿特拉斯命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
 
 请参阅向应用添加功能的代码示例：
 

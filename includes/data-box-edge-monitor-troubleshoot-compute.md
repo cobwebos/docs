@@ -2,16 +2,16 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 03/05/2019
+ms.date: 07/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 7058d7f46373f8adaacbcbf90e5ea591a15f8f37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f3bb391dceb1948820d00c0d09229f2c106ffc0b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173408"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601300"
 ---
-在数据框边缘设备上具有计算角色配置，子集 docker 命令可以用来监视或进行故障排除的模块。 若要查看可用命令的列表[连接到 PowerShell 界面](#connect-to-the-powershell-interface)，并使用`dkrdbe`函数。
+在配置了计算角色的 Data Box Edge 设备上, 可以使用 docker 命令的子集来监视模块或对其进行故障排除。 若要查看可用命令的列表, 请[连接到 PowerShell 接口](#connect-to-the-powershell-interface)并使用`dkrdbe`函数。
 
 ```powershell
 [10.100.10.10]: PS>dkrdbe -?
@@ -35,28 +35,28 @@ Commands:
 
 [10.100.10.10]: PS>
 ```
-下表提供了可用于命令的简短说明`dkrdbe`:
+下表简要说明了可用于`dkrdbe`的命令:
 
 |command  |描述 |
 |---------|---------|
-|`image`     | 管理映像       |
+|`image`     | 管理映像。 若要删除未使用的映像, 请使用:`dkrdbe image prune -a -f`       |
 |`images`     | 列出映像         |
-|`inspect`     | 在 Docker 对象上返回的低级别信息         |
+|`inspect`     | 返回 Docker 对象的低级别信息         |
 |`login`     | 登录到 Docker 注册表         |
-|`logout`     | 要从 Docker 注册表         |
-|`logs`     | 获取容器的日志        |
-|`port`     | 列出端口映射或特定映射的容器        |
+|`logout`     | 从 Docker 注册表注销         |
+|`logs`     | 提取容器的日志        |
+|`port`     | 列出端口映射或容器的特定映射        |
 |`ps`     | 列出容器        |
-|`pull`     | 拉取映像或从注册表存储库         |
+|`pull`     | 从注册表中提取映像或存储库         |
 |`start`     | 启动一个或多个已停止的容器         |
 |`stats`     | 显示容器资源使用情况统计信息的实时流         |
 |`stop`     | 停止一个或多个正在运行的容器        |
 |`system`     | 管理 Docker         |
 |`top`     | 显示容器的正在运行的进程         |
 
-若要获取任何可用的命令的帮助，请使用`dkrdbe <command-name> --help`。
+若要获取任何可用命令的帮助, `dkrdbe <command-name> --help`请使用。
 
-例如，若要了解的使用情况`port`命令中，键入：
+例如, 若要了解`port`命令的用法, 请键入:
 
 ```powershell
 [10.100.10.10]: P> dkrdbe port --help
@@ -78,13 +78,13 @@ Options:
 [10.100.10.10]: PS>
 ```
 
-有关可用命令`dkrdbe`函数与用于在正常的 docker 命令的使用相同的参数。 有关的选项和参数与 docker 命令一起使用，请转到[使用 Docker 命令行](https://docs.docker.com/engine/reference/commandline/docker/)。
+`dkrdbe`函数的可用命令与用于普通 docker 命令的命令使用的参数相同。 对于 docker 命令使用的选项和参数, 请参阅[使用 docker 命令行](https://docs.docker.com/engine/reference/commandline/docker/)。
 
-### <a name="to-check-if-the-module-deployed-successfully"></a>若要检查是否已成功部署该模块
+### <a name="to-check-if-the-module-deployed-successfully"></a>检查模块是否已成功部署
 
-计算模块是实现业务逻辑的容器。 若要检查计算模块已成功部署，请运行`ps`命令并检查是否正在运行 （对应于计算模块） 的容器。
+计算模块是已实现业务逻辑的容器。 若要检查是否成功部署了计算模块, 请运行`ps`命令, 并检查容器 (与计算模块对应) 是否正在运行。
 
-若要获取 （包括那些已暂停） 的所有容器的列表，请运行`ps -a`命令。
+若要获取所有容器的列表 (包括暂停的容器), 请运行`ps -a`命令。
 
 ```powershell
 [10.100.10.10]: P> dkrdbe ps -a
@@ -96,9 +96,9 @@ acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/s
 [10.100.10.10]: PS>
 ```
 
-如果创建的容器映像或 while 拉取映像时出错，运行`logs edgeAgent`。  `EdgeAgent` 是负责预配其他容器的 IoT Edge 运行时容器。
+如果在创建容器映像时出现错误, 或者在提取映像时出现错误, 请`logs edgeAgent`运行。  `EdgeAgent`是负责预配其他容器的 IoT Edge 运行时容器。
 
-因为`logs edgeAgent`转储所有日志，请参阅最近的错误是要使用该选项的好办法`--tail 20`。
+由于`logs edgeAgent`转储所有日志, 因此查看最近的错误的一种好方法是使用选项。 `--tail 20`
 
 
 ```powershell
@@ -117,12 +117,12 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
 2019-02-28 23:38:28.480 +00:00 [DBG] [Microsoft.Azure.Devices.Edge.Agent.Core.Planners.HealthRestartPlanner] - HealthRestartPlanner created Plan, with 0 command(s).
 ```
 
-### <a name="to-get-container-logs"></a>若要获取容器日志
+### <a name="to-get-container-logs"></a>获取容器日志
 
-若要获取特定容器日志，请首先列出的容器，然后获取您感兴趣的容器的日志。
+若要获取特定容器的日志, 请首先列出该容器, 然后获取你感兴趣的容器的日志。
 
-1. [连接到 PowerShell 界面](#connect-to-the-powershell-interface)。
-2. 若要获取正在运行的容器的列表，请运行`ps`命令。
+1. [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
+2. 若要获取正在运行的容器的列表, `ps`请运行命令。
 
     ```powershell
     [10.100.10.10]: P> dkrdbe ps
@@ -133,9 +133,9 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
     acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
     ```
 
-3. 记下所需的日志的容器的容器 ID。
+3. 记下需要其日志的容器的容器 ID。
 
-4. 若要获取特定容器的日志，请运行`logs`命令，并提供容器 id。
+4. 若要获取特定容器的日志, 请运行`logs`提供容器 ID 的命令。
 
     ```powershell
     [10.100.10.10]: PS>dkrdbe logs d99e2f91d9a8
@@ -150,18 +150,18 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
     02/26/2019 18:23:38: Info: Processed event.
     ```
 
-### <a name="to-monitor-the-usage-statistics-of-the-device"></a>若要监视的设备的使用情况统计信息
+### <a name="to-monitor-the-usage-statistics-of-the-device"></a>监视设备的使用统计信息
 
-若要在设备上监视内存、 CPU 使用率和 IO，使用`stats`命令。
+若要监视设备上的内存、CPU 使用率和 IO, 请使用`stats`命令。
 
-1. [连接到 PowerShell 界面](#connect-to-the-powershell-interface)。
-2. 运行`stats`以便禁用实时流和请求，只为第一个结果的命令。
+1. [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
+2. `stats`运行命令, 以便禁用实时流并仅提取第一个结果。
 
    ```powershell
    dkrdbe stats --no-stream
    ```
 
-   下面的示例显示了此 cmdlet 的用法：
+   以下示例显示了此 cmdlet 的用法:
 
     ```
     [10.100.10.10]: P> dkrdbe stats --no-stream

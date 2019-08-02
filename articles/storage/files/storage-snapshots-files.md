@@ -1,19 +1,18 @@
 ---
 title: Azure 文件的共享快照概述 | Microsoft Docs
 description: 作为备份共享的一种方式，共享快照是某个时间点拍摄的 Azure 文件共享的只读版本。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d83cf20c856d37d337f4eb22c30ee9b6823d096b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3cbf740016a4c162c63343be4cb9cd577f85935
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235815"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699349"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 文件的共享快照概述 
 Azure 文件提供了获取文件共享的共享快照的功能。 共享快照可以捕获在某个时间点的共享状态。 本文介绍共享快照提供的功能，以及如何在自定义用例中加以利用。

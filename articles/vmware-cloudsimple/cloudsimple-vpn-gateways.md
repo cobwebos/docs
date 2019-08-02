@@ -1,5 +1,5 @@
 ---
-title: 通过 CloudSimple-Azure 的 VMware 解决方案中的 VPN 网关
+title: VMware 解决方案中的 VPN 网关 (CloudSimple)-Azure
 description: 了解 CloudSimple 站点到站点 VPN 和点到站点 VPN 概念
 author: sharaths-cs
 ms.author: dikamath
@@ -8,69 +8,70 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2eae81f357904bd5034d7409ef42b681d1085930
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 47d61f80cae926965dd71342980302c2b3045c52
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695220"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689646"
 ---
 # <a name="vpn-gateways-overview"></a>VPN 网关概述
 
-VPN 网关用于在本地位置或通过公共 Internet 的计算机的 CloudSimple 区域网络之间发送加密的流量。  每个区域只能有一个 VPN 网关。 但是，可以创建连接到相同 VPN 网关的多个连接。 与同一个 VPN 网关建立多个连接时，所有 VPN 隧道共享可用的网关带宽。
+VPN 网关用于在本地位置的 CloudSimple 区域网络或通过公共 Internet 的计算机之间发送加密流量。  每个区域只能有一个 VPN 网关。 但是，可以创建连接到相同 VPN 网关的多个连接。 与同一个 VPN 网关建立多个连接时，所有 VPN 隧道共享可用的网关带宽。
 
-CloudSimple 提供了两种类型的 VPN 网关：
+CloudSimple 提供了两种类型的 VPN 网关:
 
 * 站点到站点 VPN 网关
 * 点到站点 VPN 网关
 
 ## <a name="site-to-site-vpn-gateway"></a>站点到站点 VPN 网关
 
-站点到站点 VPN 网关用于 CloudSimple 区域网络和本地数据中心之间发送加密的流量。 此连接用于定义子网/CIDR 范围，你的本地网络与 CloudSimple 区域网络之间的通信。
+站点到站点 VPN 网关用于在 CloudSimple 区域网络和本地数据中心之间发送加密流量。 使用此连接定义用于本地网络与 CloudSimple 区域网络之间的通信的子网/CIDR 范围。
 
-VPN 网关，可使用从本地对私有云的服务和服务在私有云，从本地网络上。  CloudSimple 提供基于策略的 VPN 服务器建立从本地网络连接。
+使用 VPN 网关, 可以从本地网络在私有云上使用本地服务, 并在私有云上使用服务。  CloudSimple 提供基于策略的 VPN 服务器, 用于建立从本地网络的连接。
 
-站点到站点 VPN 的用例包括：
+站点到站点 VPN 的用例包括:
 
-* 私有云 vCenter 从任何工作站的本地网络中的可访问性。
-* 将你的本地 Active Directory 用作 vCenter 标识源。
-* 方便的传输 VM 模板、 Iso 和和其他文件从你的本地资源到私有云 vCenter。
-* 从你的本地网络在私有云上运行的工作负荷的可访问性。
+* 本地网络中任何工作站的私有云 vCenter 的可访问性。
+* 使用本地 Active Directory 作为 vCenter 标识源。
+* 方便地将 VM 模板、Iso 和其他文件从本地资源传输到私有云 vCenter。
+* 从本地网络在私有云上运行的工作负荷的可访问性。
 
 ![站点到站点 VPN 连接拓扑](media/cloudsimple-site-to-site-vpn-connection.png)
 
 > [!IMPORTANT]
-> 在 1078 字节或更低，还必须将 TCP MSS。 或者，如果 VPN 设备不支持 MSS 固定，您可以或者设置 MTU 为 1118 字节的隧道接口上而不是。 
+> 必须将 TCP MSS 固定到1078字节或更低。 或者, 如果 VPN 设备不支持 MSS 钳位, 还可以改为将隧道接口上的 MTU 设置为1118字节。 
 
-### <a name="cryptographic-parameters"></a>加密的参数
+### <a name="cryptographic-parameters"></a>加密参数
 
-站点到站点 VPN 连接使用以下默认加密参数建立安全连接。  当你创建从本地 VPN 设备的连接时，使用任何本地 VPN 网关支持以下参数。
+站点到站点 VPN 连接使用以下默认加密参数建立安全连接。  当你从本地 VPN 设备创建连接时, 请使用本地 VPN 网关支持的以下任何参数。
 
-#### <a name="phase-1-proposals"></a>第 1 阶段征求建议书
+#### <a name="phase-1-proposals"></a>阶段1提议
 
-| 参数 | 方案 1 | 方案 2 | 方案 3 |
-|-----------|------------|------------|------------|
-| SDK 版本 | IKEv1 | IKEv1 | IKEv1 |
-| 加密 | AES 128 | AES 256 | AES 256 |
-| 哈希算法| SHA 256 | SHA 256 | SHA 1 |
-| Diffie Hellman 组 （DH 组） | 2 | 2 | 2 |
-| 生存时间 | 28,800 秒 | 28,800 秒 | 28,800 秒 |
-| 数据大小 | 4 GB | 4 GB | 4 GB |
+| 参数                       | 建议1     | 建议2     | 建议3     |
+|---------------------------------|----------------|----------------|----------------|
+| SDK 版本                     | IKEv1          | IKEv1          | IKEv1          |
+| 加密                      | AES 128        | AES 256        | AES 256        |
+| 哈希算法                  | SHA 256        | SHA 256        | SHA 1          |
+| Diffie-hellman 组 (DH 组) | 2              | 2              | 2              |
+| 生命时间                       | 28,800 秒 | 28,800 秒 | 28,800 秒 |
+| 数据大小                       | 4 GB           | 4 GB           | 4 GB           |
+| 死对等体检测 (DPD)       | 禁用/关闭   | 禁用/关闭   | 禁用/关闭   |
 
 
-#### <a name="phase-2-proposals"></a>第 2 阶段征求建议书 
+#### <a name="phase-2-proposals"></a>阶段2方案 
 
-| 参数 | 方案 1 | 方案 2 | 方案 3 |
-|-----------|------------|------------|------------|
-| 加密 | AES 128 | AES 256 | AES 256 |
-| 哈希算法| SHA 256 | SHA 256 | SHA 1 |
-| 完美正向保密组 （PFS 组） | 无 | 无 | 无 |
-| 生存时间 | 1800 秒 | 1800 秒 | 1800 秒 |
-| 数据大小 | 4 GB | 4 GB | 4 GB |
+| 参数                                 | 建议1    | 建议2    | 建议3    |
+|-------------------------------------------|---------------|---------------|---------------|
+| 加密                                | AES 128       | AES 256       | AES 256       |
+| 哈希算法                            | SHA 256       | SHA 256       | SHA 1         |
+| 完全向前保密组 (PFS 组) | None          | 无          | 无          |
+| 生命时间                                 | 1800秒 | 1800秒 | 1800秒 |
+| 数据大小                                 | 4 GB          | 4 GB          | 4 GB          |
 
 ## <a name="point-to-site-vpn-gateway"></a>点到站点 VPN 网关
 
-点到站点 VPN 用于 CloudSimple 区域网络和客户端计算机之间发送加密的流量。  点到站点 VPN 是访问你的私有云的网络，包括你的私有云 vCenter 和工作负荷 Vm 的最简单方法。  如果您要远程连接到私有云，请使用点到站点 VPN 连接。
+点到站点 VPN 用于在 CloudSimple 区域网络和客户端计算机之间发送加密流量。  点到站点 VPN 是访问私有云网络 (包括私有云 vCenter 和工作负荷 Vm) 的最简单方法。  如果要远程连接到私有云, 请使用点到站点 VPN 连接。
 
 ## <a name="next-steps"></a>后续步骤
 

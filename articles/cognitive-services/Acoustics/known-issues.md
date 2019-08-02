@@ -10,19 +10,20 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kylsto
-ms.openlocfilehash: 53df981564eb177da66b86022ecfc80b25f1c763
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ROBOTS: NOINDEX
+ms.openlocfilehash: df5a4ce62af0405ffab8f711fb40b3d92083a3a4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296533"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706661"
 ---
 # <a name="project-acoustics-known-issues"></a>项目噪声已知问题
 针对 Project Acoustics 使用设计器预览时，可能会遇到以下已知问题。
 
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>重命名场景时丢失声学参数
 
-如果重命名场景, 则属于该场景的所有声音参数都不会自动传输到新场景。 不过, 它们仍会存在于旧的资产文件中。 在场景文件旁边的“编辑器”目录内查找 SceneName_AcousticParameters.asset 文件   。 重命名文件以反映新的场景名称。
+如果重命名场景, 则属于该场景的所有声音参数都不会自动传输到新场景。 不过, 它们仍会存在于旧的资产文件中。 在场景文件旁边的“编辑器”目录内查找 SceneName_AcousticParameters.asset 文件。 重命名文件以反映新的场景名称。
 
 ## <a name="unity-crashes-when-closing-project"></a>关闭项目时，Unity 崩溃
 
@@ -34,7 +35,7 @@ ms.locfileid: "68296533"
 
 ## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>收到“找不到元数据文件 System.Security.dll”错误
 
-请确保播放机设置中的“脚本编写运行时版本”已设置为“.NET 4.x 等效版本”，并重启 Unity  。
+请确保播放机设置中的“脚本编写运行时版本”已设置为“.NET 4.x 等效版本”，并重启 Unity。
 
 ## <a name="im-having-authentication-problems-when-connecting-to-azure"></a>连接到 Azure 时遇到身份验证问题
 

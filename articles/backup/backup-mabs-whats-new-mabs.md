@@ -1,18 +1,19 @@
 ---
 title: Microsoft Azure 备份服务器中的新增功能
 description: Microsoft Azure 备份服务器提供用于保护 VM、文件和文件夹、工作负载等的增强备份功能。 了解如何安装或升级到 Azure 备份服务器 V3。
-author: rayne-wiselman
+ms.reviewer: adigan
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: adigan
-ms.openlocfilehash: 131f5ae31649bd1973a3048b8b52a451f27522b4
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: b7fc0e9819e3cbdd886271a8580af76923b6f819
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465007"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688537"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器中的新增功能
 

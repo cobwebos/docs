@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b6b4cd38ce5f591d43f27f735a48993cc1a1ab63
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 27f0ebab1fd87eb1870c5a8be21c4f80be4132f1
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414451"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698586"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
 
@@ -24,14 +24,6 @@ ms.locfileid: "68414451"
 若要转移到较新的版本，需要更新 IoT Edge 设备的两个组件。 第一个组件是安全守护程序，它在设备上运行并在设备启动时启动运行时模块。 目前，只能从设备本身更新安全守护程序。 第二个组件是由 IoT Edge 中心和 IoT Edge 代理模块组成的运行时。 根据部署的构造方式，可以从设备或者远程更新运行时。 
 
 若要查找最新版本的 Azure IoT Edge，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
-
->[!IMPORTANT]
->如果在 Windows 设备上运行 Azure IoT Edge，则在下述某个条件适用于设备的情况下，请勿将其更新到版本 1.0.5： 
->* 尚未将设备升级到 Windows 内部版本 17763。 IoT Edge 版本 1.0.5 不支持低于 17763 的 Windows 内部版本。
->* 在 Windows 设备上运行 Java 或 Node.js 模块。 跳过版本 1.0.5，即使已将 Windows 设备更新到最新的内部版本。 
->
->有关 IoT Edge 版本 1.0.5 的详细信息，请参阅 [1.0.5 发行说明](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5)。 若要详细了解如何不让开发工具更新到最新版本，请参阅 [IoT 开发人员博客](https://devblogs.microsoft.com/iotdev/)。
-
 
 ## <a name="update-the-security-daemon"></a>更新安全守护程序
 

@@ -11,14 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbba3f1b753738de57aa311387e522bae1b7b523
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499798"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706318"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
+
+## <a name="general-faq"></a>一般常见问题解答
 
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>问:我最近注册了设备。 但为什么在 Azure 门户中我的用户信息下看不到该设备？ 或者为什么为混合 Azure Active Directory (Azure AD) 加入的设备将设备所有者标记为不适用？
 
@@ -39,6 +41,11 @@ ms.locfileid: "68499798"
 
 - 对于 Windows 10 和 Windows Server 2016 或更高版本的设备，请运行 `dsregcmd.exe /status`。
 - 对于低级别操作系统版本，请运行 `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`。
+
+**答:** 有关排除故障的信息，请参阅以下文章：
+- [使用 dsregcmd.exe 命令对设备进行故障排除](troubleshoot-device-dsregcmd.md)
+- [排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题](troubleshoot-hybrid-join-windows-current.md)
+- [排查已加入混合 Azure Active Directory 的下层设备问题](troubleshoot-hybrid-join-windows-legacy.md)
 
 ---
 
@@ -65,6 +72,8 @@ ms.locfileid: "68499798"
 **答:** 此操作是有意为之。 在这种情况下, 设备无法访问云中的资源。 管理员可以对过时的、丢失或被盗的设备执行此操作, 以防止未经授权的访问。 如果无意中执行了此操作, 则需要重新启用或重新注册设备, 如下所述
 
 - 如果在 Azure AD 中禁用了设备, 则具有足够权限的管理员可以从 Azure AD 门户启用它。  
+  > [!NOTE]
+  > 如果要使用 Azure AD Connect 同步设备, 则会在下一个同步周期中自动重新启用混合 Azure AD 加入的设备。 因此, 如果需要禁用混合 Azure AD 连接的设备, 则需要从本地 AD 禁用它
 
  - 如果在 Azure AD 中删除了设备, 则需要重新注册设备。 若要重新注册, 必须在设备上执行手动操作。 请参阅下面的说明, 了解如何根据设备状态重新注册。 
 
@@ -114,20 +123,30 @@ ms.locfileid: "68499798"
 
 **问：用户为什么仍然可以通过我在 Azure 门户中禁用的设备访问资源？**
 
-**答:** 最长可能需要花费一小时才能应用撤销。
+**答:** 从 Azure AD 设备标记为禁用的时间起, 将需要长达一小时的时间。
 
 >[!NOTE] 
 >对于已注册的设备，建议擦除该设备，确保用户无法访问这些资源。 有关详细信息，请参阅[什么是设备注册？](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune)。 
 
 ---
 
+### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>问:为什么 "Azure 门户中的" 已注册 "列下的设备标记为" 挂起 "？
+
+**答**："挂起" 表示设备未注册。 此状态表示设备已使用 Azure AD 从本地 AD 进行连接并且已准备好进行设备注册。 这些设备的 "联接类型" 设置为 "混合 Azure AD 联接"。 了解有关[如何计划混合 Azure Active Directory 联接实现](hybrid-azuread-join-plan.md)的详细信息。
+
+>[!NOTE]
+>设备还可以从 "已注册" 状态更改为 "挂起"
+>* 如果删除了某个设备, 并从本地 AD 重新同步了该设备, 请使用 Azure AD。
+>* 如果从 Azure AD Connect 上的同步作用域中删除了某个设备, 并将其重新添加回来。
+>
+>在这两种情况下, 必须在每台设备上手动重新注册设备。 若要查看设备是否之前已注册, 可以[使用 dsregcmd.exe 命令对设备进行故障排除](troubleshoot-device-dsregcmd.md)。
+
+---
 ## <a name="azure-ad-join-faq"></a>Azure AD 加入常见问题解答
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>问:如何实现在设备本地脱离 Azure AD 已加入设备？
 
-**答:** 
-- 对于加入混合 Azure AD 的设备，请确保关闭自动注册。 然后计划任务不会再次注册设备。 接下来，以管理员身份打开命令提示符并输入 `dsregcmd.exe /debug /leave`。 或者将此命令作为脚本在多个设备上运行，以批量取消加入。
-- 对于已加入纯 Azure AD 的设备，请确保拥有脱机本地管理员帐户或创建一个该账户。 无法使用 Azure AD 用户凭据登录。 接下来，转到“设置” > “帐户” > “访问工作单位或学校”。 选择帐户，然后选择“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
+**答:** 对于已加入纯 Azure AD 的设备，请确保拥有脱机本地管理员帐户或创建一个该账户。 无法使用 Azure AD 用户凭据登录。 接下来，转到“设置” > “帐户” > “访问工作单位或学校”。 选择帐户，然后选择“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
 
 ---
 
@@ -223,6 +242,10 @@ ms.locfileid: "68499798"
 
 ## <a name="hybrid-azure-ad-join-faq"></a>混合 Azure AD 加入常见问题解答
 
+### <a name="q-how-do-i-unjoin-a-hybrid-azure-ad-joined-device-locally-on-the-device"></a>问:如何实现在设备本地脱离混合 Azure AD 已加入设备？
+
+**答:** 对于加入混合 Azure AD 的设备，请确保关闭自动注册。 然后计划任务不会再次注册设备。 接下来，以管理员身份打开命令提示符并输入 `dsregcmd.exe /debug /leave`。 或者将此命令作为脚本在多个设备上运行，以批量取消加入。
+
 ### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>问:在哪里可以找到疑难解答信息以诊断混合 Azure AD 联接失败？
 
 **答:** 有关排除故障的信息，请参阅以下文章：
@@ -234,7 +257,7 @@ ms.locfileid: "68499798"
 
 **答:** 用户在已加入域的设备上将其帐户添加到应用时，可能会提示他们“将帐户添加到 Windows？” 如果他们在提示时输入“确定”，设备会注册 Azure AD。 信任类型标记为已注册 Azure AD。 在组织中启用混合 Azure AD 加入后，设备还将加入混合 Azure AD。 然后显示同一设备的两种设备状态。 
 
-混合 Azure AD 加入优先于 Azure AD 已注册状态。 因此, 在进行任何身份验证和条件性访问评估时, 设备被视为混合 Azure AD 联接。 可以安全地从 Azure AD 门户中删除已注册 Azure AD 设备记录。 了解[避免或清理 Windows 10 计算机上的此双状态](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)。 
+混合 Azure AD 加入优先于 Azure AD 已注册状态。 因此, 在进行任何身份验证和条件性访问评估时, 设备被视为混合 Azure AD 联接。 可以安全地从 Azure AD 门户中删除已注册 Azure AD 设备记录。 了解[避免或清理 Windows 10 计算机上的此双状态](hybrid-azuread-join-plan.md#review-things-you-should-know)。 
 
 ---
 
@@ -258,10 +281,19 @@ ms.locfileid: "68499798"
 
 ## <a name="azure-ad-register-faq"></a>Azure AD 注册常见问题解答
 
+### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>问:如何实现在设备上本地删除 Azure AD 注册设备？
+
+**答:** 
+- 对于 Windows 10 Azure AD 注册的设备, 请访问**设置** > "**帐户** > " "**访问工作或学校**"。 选择帐户，然后选择“断开连接”。 设备注册为 Windows 10 上的每个用户配置文件。
+- 对于 iOS 和 Android, 你可以使用 Microsoft Authenticator 应用程序**设置** > "**设备注册**", 然后选择 "**注销设备**"。
+- 对于 macOS, 可以使用 Microsoft Intune 公司门户应用程序从管理中取消注册设备, 并删除任何注册。 
+
+---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>问:是否可以注册 Android 或 iOS BYOD 设备？
 
 **答:** 可以，但只有使用 Azure 设备注册服务的混合客户才能注册。 Active Directory 联合身份验证服务 (AD FS) 中的本地设备注册服务不支持此功能。
 
+---
 ### <a name="q-how-can-i-register-a-macos-device"></a>问:如何注册 macOS 设备？
 
 **答:** 执行以下步骤：
@@ -274,6 +306,7 @@ ms.locfileid: "68499798"
 - 你的条件访问策略中包含的用户需要[macOS 的支持的 Office 版本](../conditional-access/technical-reference.md#client-apps-condition)来访问资源。 
 - 在首次尝试访问期间，用户使用公司门户时会看到注册设备的提示。
 
+---
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[已注册到 Azure AD 的设备](concept-azure-ad-register.md)

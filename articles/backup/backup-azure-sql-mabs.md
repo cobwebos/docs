@@ -1,18 +1,19 @@
 ---
 title: 使用 Azure 备份服务器为 SQL Server 工作负荷配置 Azure 备份
 description: 使用 Azure 备份服务器备份 SQL Server 数据库简介
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.author: kasinh
-ms.openlocfilehash: 0aff75e37ec8184b6c23ff00cbf61e5cbe045b5f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 5e91d63f4479d0677c57342cb1b726e33a45bb86
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465437"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689088"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
 本文将引导使用 Microsoft Azure 备份服务器 (MABS) 来完成 SQL Server 数据库的备份配置步骤。

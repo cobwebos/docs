@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4e13075eabcdb482616f1e500fd739ca58a39003
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: f739bdbd295662006a964f890147ad67c373d7b5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501220"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698628"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -39,7 +39,7 @@ ms.locfileid: "68501220"
 下游设备可以是包含通过 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub)云服务创建的标识的任何应用程序或平台。 在许多情况下，这些应用程序使用 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游设备甚至可以是 IoT Edge 网关设备本身上运行的应用程序。 但是, 另一个 IoT Edge 设备不能是 IoT Edge 网关的下游。 
 
 >[!NOTE]
->具有在 IoT 中心内注册的标识的 IoT 设备可以使用[module 孪生](/iot-hub/iot-hub-devguide-module-twins.md)在单个设备上隔离不同的进程、硬件或功能。 IoT Edge 的网关支持使用对称密钥身份验证的下游模块连接, 但不支持 x.509 证书身份验证。 
+>具有在 IoT 中心内注册的标识的 IoT 设备可以使用[module 孪生](../iot-hub/iot-hub-devguide-module-twins.md)在单个设备上隔离不同的进程、硬件或功能。 IoT Edge 的网关支持使用对称密钥身份验证的下游模块连接, 但不支持 x.509 证书身份验证。 
 
 若要将下游设备连接到 IoT Edge 网关，需要准备好以下两项：
 

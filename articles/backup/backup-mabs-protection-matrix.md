@@ -1,19 +1,19 @@
 ---
 title: Azure 备份服务器可备份哪些内容
 description: 本文提供了一个支持矩阵，列出了受 Azure 备份服务器保护的所有工作负荷、数据类型和安装。
-author: rayne-wiselman
+author: dcurwin
 ms.service: backup
 keywords: ''
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.author: raynew
+ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 2e8004b07542efed3ddc2b5a390cfb12fd48cc1b
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: b601f37ad7e0f0071b38a97c84cf25d57ed11ee1
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465051"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639698"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure 备份服务器保护矩阵
 

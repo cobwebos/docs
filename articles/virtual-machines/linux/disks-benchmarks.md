@@ -1,20 +1,18 @@
 ---
 title: 在 Azure 磁盘存储上对应用程序进行基准测试 - 托管磁盘
 description: 了解在 Azure 上对应用程序进行基准测试的过程。
-services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
 ms.date: 01/11/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 21ed4e9a6b1da10d0ae4c276612459506e13d94f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5ac60811eb4fb7735feae6a62ee1b20c8983e0e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474362"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695858"
 ---
 # <a name="benchmarking-a-disk"></a>磁盘基准测试
 

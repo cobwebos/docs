@@ -3,7 +3,7 @@ title: 更改 Azure Service Fabric 群集设置 | Microsoft Docs
 description: 本文介绍可以自定义的结构设置和结构升级策略。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 7ced36bf-bd3f-474f-a03a-6ebdbc9677e2
@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/12/2019
-ms.author: aljo
-ms.openlocfilehash: 951c244d7f7d037c8d2ae117f36c18acd902436f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.author: atsenthi
+ms.openlocfilehash: c20e782423c60985adb9e18e275fde59e57e00a2
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850059"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599880"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
-本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json  文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
+本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
 
 有三种不同的升级策略：
 
@@ -41,7 +41,7 @@ ms.locfileid: "67850059"
 |CrlCheckingFlag|uint，默认值为 0x40000000 |动态| 应用程序/服务证书链验证的标记；例如 CRL 检查 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY 设置为 0 会禁用 CRL 检查，支持值的完整列表由 CertGetCertificateChain 的 dwFlags 记录： https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |以秒为单位的时间。 默认值为 120 |动态|指定以秒为单位的时间范围。  提供用于 http 应用网关中正在处理的 http 请求的默认请求超时时间。 |
 |ForwardClientCertificate|bool，默认值为 FALSE|动态|如果设置为 false，反向代理不会请求客户端证书。如果设置为 true，反向代理将在 SSL 握手期间请求客户端证书，并将 base64 编码的 PEM 格式字符串转发到名为 X-Client-Certificate 的标头中的服务。检查证书数据后，服务可能无法处理请求，并返回相应的状态代码。 如果此参数为 true 并且客户端不提供证书，反向代理将转发空标头，并让服务处理该情况。 反向代理将充当透明层。 若要了解详细信息，请参阅[设置客户端证书身份验证](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)。 |
-|GatewayAuthCredentialType |string，默认值为“None” |Static| 指示在 http 应用网关终结点处使用的安全凭据的类型有效值为 None/X509。 |
+|GatewayAuthCredentialType |string，默认值为“None” |Static| 指示在 http 应用网关终结点处使用的安全凭据的类型，有效值为“None/X509”。 |
 |GatewayX509CertificateFindType |string，默认值为“FindByThumbprint” |动态| 指示如何在由 GatewayX509CertificateStoreName（FindByThumbprint；FindBySubjectName）支持的值指定的存储中搜索证书。 |
 |GatewayX509CertificateFindValue | string，默认值为“” |动态| 用于查找 http 应用网关证书的搜索筛选器值。 此证书在 https 终结点上配置，并且如果服务需要，还可用于验证应用的标识。 首先查找 FindValue；如果其不存在，再查找 FindValueSecondary。 |
 |GatewayX509CertificateFindValueSecondary | string，默认值为“” |动态|用于查找 http 应用网关证书的搜索筛选器值。 此证书在 https 终结点上配置，并且如果服务需要，还可用于验证应用的标识。 首先查找 FindValue；如果其不存在，再查找 FindValueSecondary。|
@@ -101,7 +101,7 @@ ms.locfileid: "67850059"
 |UpgradeHealthCheckInterval |以秒为单位的时间，默认值为 60 |动态|受监视应用程序升级期间的运行状况检查频率 |
 |UpgradeStatusPollInterval |以秒为单位的时间，默认值为 60 |动态|轮询应用程序升级状态的频率。 此值确定任何 GetApplicationUpgradeProgress 调用的更新速率 |
 
-## <a name="common"></a>常见
+## <a name="common"></a>通用
 
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
@@ -254,7 +254,7 @@ ms.locfileid: "67850059"
 |StoredChaosEventCleanupIntervalInSeconds | Int，默认值为 3600 |Static|这是审核存储（以进行清理）的频率，如果事件数量超过 30000，则开始执行清理。 |
 |TargetReplicaSetSize |Int，默认值为 0 |Static|NOT_PLATFORM_UNIX_START，FaultAnalysisService 的 TargetReplicaSetSize。 |
 
-## <a name="federation"></a>联合
+## <a name="federation"></a>联合身份验证
 
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
@@ -744,7 +744,7 @@ ms.locfileid: "67850059"
 |PropertyWriteBatch |string，默认值为“Admin” |动态|用于命名属性写入操作的安全性配置。 |
 |ProvisionApplicationType |string，默认值为“Admin” |动态| 用于应用程序类型预配的安全性配置。 |
 |ProvisionFabric |string，默认值为“Admin” |动态| 用于预配 MSI 和/或群集清单的安全性配置。 |
-|Query |string，默认值为“Admin\|\|User” |动态| 用于查询的安全性配置。 |
+|查询 |string，默认值为“Admin\|\|User” |动态| 用于查询的安全性配置。 |
 |RecoverPartition |string，默认值为“Admin” | 动态|用于恢复分区的安全性配置。 |
 |RecoverPartitions |string，默认值为“Admin” | 动态|用于恢复多个分区的安全性配置。 |
 |RecoverServicePartitions |string，默认值为“Admin” |动态| 用于恢复服务分区的安全性配置。 |
@@ -780,7 +780,7 @@ ms.locfileid: "67850059"
 |UpgradeApplication |string，默认值为“Admin” |动态| 用于启动或中断应用程序升级的安全性配置。 |
 |UpgradeComposeDeployment|string，默认值为“Admin”| 动态|升级组合部署 |
 |UpgradeFabric |string，默认值为“Admin” |动态| 用于启动群集升级的安全性配置。 |
-|上载 |string，默认值为“Admin” | 动态|用于映像存储客户端上传操作的安全性配置。 |
+|上传 |string，默认值为“Admin” | 动态|用于映像存储客户端上传操作的安全性配置。 |
 
 ## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
 
@@ -828,7 +828,7 @@ ms.locfileid: "67850059"
 |FabricLogRoot |String | 不允许 |Service Fabric 日志根目录。 这是放置 SF 日志和跟踪信息的位置。 |
 |NodesToBeRemoved|string，默认值为“”| 动态 |应在配置升级过程中删除的节点。 （仅适用于独立部署）|
 |ServiceRunAsAccountName |String | 不允许 |运行 Fabric 主机服务的帐户名称。 |
-|SkipContainerNetworkResetOnReboot|bool，默认值为 FALSE|NotAllowed|是否在重启时跳过容器网络重置。|
+|SkipContainerNetworkResetOnReboot|bool，默认值为 FALSE|禁止|是否在重启时跳过容器网络重置。|
 |SkipFirewallConfiguration |Bool，默认值为 false | 不允许 |指定是否需要由系统设置防火墙设置。 仅当使用 Windows 防火墙时适用。 如果使用第三方防火墙，则必须打开端口以供系统和应用程序使用 |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService

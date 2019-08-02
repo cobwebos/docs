@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c38b11ceda010c122e17a7fad3df1684e0a1cf42
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023588"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696275"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -22,20 +22,20 @@ ms.locfileid: "61023588"
 定义角色的方式根据使用的工具有所差异，但效果却是相同的。
 
 角色权限包括：
-*  管理员 - 用户对数据库具有完全的权限。  具有管理员权限的数据库角色不同于服务器管理员。
-*  进程 - 用户可以连接到数据库并对其执行处理操作，分析模型数据库数据。 
-*  读取 - 用户可以使用客户端应用程序连接到模型数据库数据并进行分析。 
+*  管理员 - 用户对数据库具有完全的权限。 具有管理员权限的数据库角色不同于服务器管理员。
+*  进程 - 用户可以连接到数据库并对其执行处理操作，分析模型数据库数据。
+*  读取 - 用户可以使用客户端应用程序连接到模型数据库数据并进行分析。
 
-如果创建表格模型项目，请使用 SSDT 中的角色管理器创建角色并向这些角色添加用户或组。 如果向服务器部署，请使用 SSMS、[Analysis Services PowerShell cmdlet](/sql/analysis-services/powershell/analysis-services-powershell-reference) 或 [表格模型脚本语言](https://msdn.microsoft.com/library/mt614797.aspx) \(TMSL) 添加或删除角色和用户成员。
+创建表格模型项目时, 可以使用中的角色管理器创建角色并向这些角色添加用户或组 SQL Server Data Tools (SSDT)。 部署到服务器时, 可以使用 SQL Server Management Studio (SSMS)、 [Analysis Services PowerShell cmdlet](/sql/analysis-services/powershell/analysis-services-powershell-reference)或[表格模型脚本语言](https://msdn.microsoft.com/library/mt614797.aspx)(TMSL) 来添加或删除角色和用户成员。
 
-> [!NOTE]
-> 安全组必须已将 `MailEnabled` 属性设为 `True`。
+**安全组**必须[启用邮件](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups), 并`MailEnabled`将属性设置为。 `True` 通过电子邮件地址指定组时使用`obj:groupid@tenantid`。
+
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>在 SSDT 中添加或管理角色和用户  
   
-1.  在 SSDT 的表格模型资源管理器中，右键单击“角色”  。   
+1.  在 SSDT 的表格模型资源管理器中，右键单击“角色”。  
   
-2.  在“角色管理器”中单击“新建”。    
+2.  在“角色管理器”中单击“新建”。  
   
 3.  键入角色名称。  
   
@@ -47,15 +47,15 @@ ms.locfileid: "61023588"
     |----------------|-----------------|  
     |**无**|成员无法修改模型架构，也无法查询数据。|  
     |**读取**|成员可以（基于行筛选器）查询数据，但无法修改模型架构。|  
-    |读取和处理 |成员可以（基于行级筛选器）查询数据并运行“处理”和“全部处理”操作，但无法修改模型架构。|  
+    |读取和处理|成员可以（基于行级筛选器）查询数据并运行“处理”和“全部处理”操作，但无法修改模型架构。|  
     |**处理**|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
-    |管理员 |成员可以修改模型架构并查询所有数据。|   
+    |管理员|成员可以修改模型架构并查询所有数据。|   
   
-5.  如果正在创建的角色具有“读取”或“读取和处理”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”  选项卡，选择表，再单击“DAX 筛选器”  字段，然后键入一个 DAX 公式。
+5.  如果正在创建的角色具有“读取”或“读取和处理”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”选项卡，选择表，再单击“DAX 筛选器”字段，然后键入一个 DAX 公式。
   
-6.  单击“成员”   > “添加外部成员”   
+6.  单击“成员” > “添加外部成员”  
   
-8.  在“添加外部成员”  中，按电子邮件地址输入租户 Azure AD 中的用户或组。 单击“确定”并关闭角色管理器后，角色和角色成员将显示在表格模型资源管理器中。 
+8.  在“添加外部成员”中，按电子邮件地址输入租户 Azure AD 中的用户或组。 单击“确定”并关闭角色管理器后，角色和角色成员将显示在表格模型资源管理器中。 
  
      ![表格模型资源管理器中的角色和用户](./media/analysis-services-database-users/aas-roles-tmexplorer.png)
 
@@ -66,23 +66,23 @@ ms.locfileid: "61023588"
 
 若要向部署模型数据库添加角色和用户，必须以服务器管理员身份连接到服务器，或已经是具有管理员权限的数据库角色的成员。
 
-1. 在对象资源管理器中，右击“角色”   > “新建角色”  。
+1. 在对象资源管理器中，右击“角色” > “新建角色”。
 
-2. 在“创建角色”  中，输入角色名称和描述。
+2. 在“创建角色”中，输入角色名称和描述。
 
 3. 选择权限。
 
    |权限|描述|  
    |----------------|-----------------|  
-   |完全控制（管理员） |成员可以修改模型架构，处理并查询所有数据。| 
-   |处理数据库 |成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
+   |完全控制（管理员）|成员可以修改模型架构，处理并查询所有数据。| 
+   |处理数据库|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
    |**读取**|成员可以（基于行筛选器）查询数据，但无法修改模型架构。|  
   
-4. 单击“成员资格”  ，然后按电子邮件地址在租户 Azure AD 中输入用户或组。
+4. 单击“成员资格”，然后按电子邮件地址在租户 Azure AD 中输入用户或组。
 
      ![添加用户](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
-5. 如果正在创建的角色具有“读取”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”  ，选择表，然后在“DAX 筛选器”  字段中输入 DAX 公式。 
+5. 如果正在创建的角色具有“读取”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”，选择表，然后在“DAX 筛选器”字段中输入 DAX 公式。 
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>使用 TMSL 脚本添加角色和用户
 
@@ -134,19 +134,19 @@ ms.locfileid: "61023588"
   
 可仅为具有“读取”和“读取和处理”权限的角色定义行筛选器。 默认情况下，如果没有为特定表定义行筛选器，除非交叉筛选其他表中的适用项，否则成员可以查询表中的所有行。
   
- 行筛选器需要 DAX 公式，该公式的求值结果必须为 TRUE/FALSE，以定义该特定角色的成员可以查询的行。 无法查询未包含在 DAX 公式中的行。 例如，Customers 表的以下行筛选器表达式，=Customers [Country] = “USA”，Sales 角色的成员只能查看美国境内的客户。   
+ 行筛选器需要 DAX 公式，该公式的求值结果必须为 TRUE/FALSE，以定义该特定角色的成员可以查询的行。 无法查询未包含在 DAX 公式中的行。 例如，Customers 表的以下行筛选器表达式，=Customers [Country] = “USA”，Sales 角色的成员只能查看美国境内的客户。  
   
 行筛选器适用于指定的行和相关行。 如果表具有多个关系，筛选器将对处于活动状态的关系应用安全性。 行筛选器与为相关表定义的其他行筛选器相交，示例如下：  
   
 |表|DAX 表达式|  
 |-----------|--------------------|  
-|区域|=Region[Country]="USA"|  
+|地区|=Region[Country]="USA"|  
 |ProductCategory|=ProductCategory[Name]="Bicycles"|  
 |事务|=Transactions[Year]=2016|  
   
  净效果是指成员可以查询若干行数据，其中客户位于美国，产品类别为自行车，年份是 2016 年。 用户无法查询美国之外的事务，不是自行车事务或非 2016 年的事务，除非它们属于授予这些权限的另一角色。
   
- 可以使用筛选器 =FALSE() 拒绝访问整个表的所有行。 
+ 可以使用筛选器 =FALSE() 拒绝访问整个表的所有行。
 
 ## <a name="next-steps"></a>后续步骤
 

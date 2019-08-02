@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 2ec3b620138c4ae0487c29e38062c044a5210572
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 9bedb74f4e882ac6e4206ee7fef676c94dc2422d
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314794"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717448"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -30,7 +30,7 @@ ms.locfileid: "68314794"
 
 核心 API 在所有平台中是统一的，只有少许差异，例如 `GetMetric`（仅限 .NET）。
 
-| 方法 | 用途 |
+| 方法 | 用于 |
 | --- | --- |
 | [`TrackPageView`](#page-views) |页面、屏幕、边栏选项卡或窗体。 |
 | [`TrackEvent`](#trackevent) |用户操作和其他事件。 用于跟踪用户行为或监视性能。 |
@@ -54,11 +54,11 @@ ms.locfileid: "68314794"
   * [Java 项目](../../azure-monitor/app/java-get-started.md)
   * [Node.js 项目](../../azure-monitor/app/nodejs.md)
   * [每个网页中的 JavaScript](../../azure-monitor/app/javascript.md) 
-* 在设备或 Web 服务器代码中包含以下内容：
+* 在设备或 Web 服务器代码中，包括:
 
     *C#：* `using Microsoft.ApplicationInsights;`
 
-    Visual Basic：  `Imports Microsoft.ApplicationInsights`
+    Visual Basic：`Imports Microsoft.ApplicationInsights`
 
     *Java：* `import com.microsoft.applicationinsights.TelemetryClient;`
 
@@ -74,7 +74,7 @@ ms.locfileid: "68314794"
 private TelemetryClient telemetry = new TelemetryClient();
 ```
 
-Visual Basic 
+Visual Basic
 
 ```vb
 Private Dim telemetry As New TelemetryClient
@@ -114,7 +114,7 @@ telemetry.getContext().getDevice().setId("...");
 
 ## <a name="trackevent"></a>TrackEvent
 
-在 Application Insights 中，自定义事件  是一个数据点，它可在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中显示为聚合计数，在[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
+在 Application Insights 中，自定义事件是一个数据点，它可在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中显示为聚合计数，在[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
 
 在代码中插入 `TrackEvent` 调用来统计各种事件。 用户选择特定功能的频率、实现特定目标的频率，或可能制造特定类型的错误的频率。
 
@@ -132,7 +132,7 @@ appInsights.trackEvent("WinGame");
 telemetry.TrackEvent("WinGame");
 ```
 
-Visual Basic 
+Visual Basic
 
 ```vb
 telemetry.TrackEvent("WinGame")
@@ -163,8 +163,6 @@ telemetry.trackEvent({name: "WinGame"});
 *C#*
 
 ```csharp
-#pragma warning disable CA1716  // Namespace naming
-
 namespace User.Namespace.Example01
 {
     using System;
@@ -258,7 +256,7 @@ Application Insights 可绘制未附加到特定事件的指标。 例如，可�
 
 * 单个值。 每次在应用中执行测量时，会发送相应的值到 Application Insights。 例如，假设有个指标用于描述容器中项的数量。 在特定时间段，先将 3 个项放入容器中，再从容器中移除 2 个项。 相应地，将会调用 `TrackMetric` 两次：首先传递值 `3`，然后传递值 `-2`。 Application Insights 会替你存储这两个值。
 
-* 聚合。 使用指标时，每个单次测量几乎无关紧要。 反而特定时间段内发生活动的摘要很重要。 此类摘要名为聚合  。 在上一示例中，该时间段的聚合指标总数为 `1`，同时指标值的计数为 `2`。 使用聚合方法时，每个时间段只调用一次 `TrackMetric` 并发送聚合值。 建议采用此方法是因为它可以通过发送更少的数据点到 Application Insights 同时仍然收集所有相关信息来显著降低成本和性能开销。
+* 聚合。 使用指标时，每个单次测量几乎无关紧要。 反而特定时间段内发生活动的摘要很重要。 此类摘要名为聚合。 在上一示例中，该时间段的聚合指标总数为 `1`，同时指标值的计数为 `2`。 使用聚合方法时，每个时间段只调用一次 `TrackMetric` 并发送聚合值。 建议采用此方法是因为它可以通过发送更少的数据点到 Application Insights 同时仍然收集所有相关信息来显著降低成本和性能开销。
 
 ### <a name="examples"></a>示例
 
@@ -320,7 +318,7 @@ appInsights.trackPageView("tab1");
 telemetry.TrackPageView("GameReviewPage");
 ```
 
-Visual Basic 
+Visual Basic
 
 ```vb
 telemetry.TrackPageView("GameReviewPage")
@@ -340,7 +338,7 @@ appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
 ### <a name="timing-page-views"></a>计时页面视图
 
-默认情况下，报告为“页面视图加载时间”  的时间测量是从浏览器发送请求开始、调用浏览器的页面加载事件为止的时间。
+默认情况下，报告为“页面视图加载时间”的时间测量是从浏览器发送请求开始、调用浏览器的页面加载事件为止的时间。
 
 可以：
 
@@ -431,9 +429,9 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 在操作范围内报告的遥测项将成为此类操作的“子级”。 操作上下文可以嵌套。
 
-在搜索中，操作上下文可用于创建“相关项”  列表：
+在搜索中，操作上下文可用于创建“相关项”列表：
 
-![相关项](./media/api-custom-events-metrics/21.png)
+![相关项目](./media/api-custom-events-metrics/21.png)
 
 有关自定义操作跟踪的详细信息，请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](../../azure-monitor/app/custom-operations-tracking.md)。
 
@@ -741,7 +739,7 @@ telemetry.flush();
 
 理想情况下，应在应用程序的关闭活动中使用 flush() 方法。
 
-## <a name="authenticated-users"></a>经过身份验证的用户
+## <a name="authenticated-users"></a>已通过身份验证的用户
 
 在 Web 应用中，默认按 Cookie 标识用户。 如果用户从不同的计算机或浏览器访问应用或删除 Cookie，则可能会多次统计它们。
 
@@ -783,7 +781,7 @@ function Authenticated(signInId) {
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。  
+在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。
 
 还可以[搜索](../../azure-monitor/app/diagnostic-search.md)具有特定用户名和帐户的客户端数据点。
 
@@ -845,7 +843,7 @@ var metrics = {"Score": currentGame.Score, "Opponents": currentGame.OpponentCoun
 telemetry.trackEvent({name: "WinGame", properties: properties, measurements: metrics});
 ```
 
-Visual Basic 
+Visual Basic
 
 ```vb
 ' Set up some properties:
@@ -976,7 +974,7 @@ gameTelemetry.Context.Properties["Game"] = currentGame.Name;
 gameTelemetry.TrackEvent("WinGame");
 ```
 
-Visual Basic 
+Visual Basic
 
 ```vb
 Dim gameTelemetry = New TelemetryClient()
@@ -1013,7 +1011,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 *对于 JavaScript Web 客户端*，请使用 JavaScript 遥测初始化表达式。
 
-若要向所有遥测数据（包括来自标准收集模块的数据）添加属性  ，请[实现 `ITelemetryInitializer`](../../azure-monitor/app/api-filtering-sampling.md#add-properties)。
+若要向所有遥测数据（包括来自标准收集模块的数据）添加属性，请[实现 `ITelemetryInitializer`](../../azure-monitor/app/api-filtering-sampling.md#add-properties)。
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>采样、筛选和处理遥测数据
 
@@ -1077,7 +1075,7 @@ applicationInsights.setup()
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 ```
 
-Visual Basic 
+Visual Basic
 
 ```vb
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True

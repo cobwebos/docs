@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/03/2019
-ms.openlocfilehash: dc82ace4c5bf1204075bfa5e34d0b1489a3acb98
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e9cc5aaaf11a799b17cc87b40113e166fcd93afb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876275"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568996"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
@@ -42,7 +41,7 @@ Azure SQL 数据库提供多种方法, 用于在同一服务器或不同服务�
 
 ## <a name="copy-a-database-by-using-the-azure-portal"></a>使用 Azure 门户复制数据库
 
-要使用 Azure 门户复制数据库，请打开数据库页，并单击“复制”  。 
+要使用 Azure 门户复制数据库，请打开数据库页，并单击“复制”。 
 
    ![数据库复制](./media/sql-database-copy/database-copy.png)
 

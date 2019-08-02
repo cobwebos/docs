@@ -1,20 +1,18 @@
 ---
 title: 使用 Java 的 Azure 存储示例 | Microsoft 文档
 description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 Java 存储客户端库发现 Blob、队列、表和文件的入门示例。
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: java
-ms.topic: article
-ms.date: 05/03/2019
 ms.author: mhopkins
+ms.date: 05/03/2019
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 3d241f1905244d3a8039372262f84ba0fd25220d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.topic: sample
+ms.openlocfilehash: 4348400e66e4b975d1eeb899cab8bb5024260149
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209780"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721838"
 ---
 # <a name="azure-storage-samples-using-java"></a>使用 Java 的 Azure 存储示例
 
@@ -46,7 +44,7 @@ ms.locfileid: "65209780"
 </tr>
 <tr>
 <td>删除 Blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Getting Started with Azure Blob Service in Java</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java 中 Azure Blob 服务入门</a></td>
 </tr>
 <tr>
 <td>删除容器</td>
@@ -103,7 +101,7 @@ ms.locfileid: "65209780"
 </tr>
 <tr>
 <td>下载文件</td>
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Getting Started with Azure File Service in Java</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Java 中 Azure 文件服务入门</a></td>
 </tr>
 <tr>
 <td>文件属性/元数据/指标</td>
@@ -140,7 +138,7 @@ ms.locfileid: "65209780"
 </tr>
 <tr>
 <td>删除消息/队列</td>
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Getting Started with Azure Queue Service in Java</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Java 中 Azure 队列服务入门</a></td>
 </tr>
 <tr>
 <td>扫视消息</td>
@@ -181,7 +179,7 @@ ms.locfileid: "65209780"
 </tr>
 <tr>
 <td>表 ACL/属性</td>
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java">Getting Started with Azure Table Service in Java</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java">Java 中 Azure 表服务入门</a></td>
 </tr>
 <tr>
 <td>更新实体</td>
@@ -201,10 +199,10 @@ ms.locfileid: "65209780"
 
 如果要查找有关如何安装和开始使用 Azure 存储客户端库的说明，请查看以下指南。
 
-* [Java 中的 Azure Blob 服务入门](../blobs/storage-quickstart-blobs-java.md)
-* [Java 中的 Azure 队列服务入门](../queues/storage-java-how-to-use-queue-storage.md)
-* [Java 中的 Azure 表服务入门](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Java 中的 Azure 文件服务入门](../files/storage-java-how-to-use-file-storage.md)
+* [Java 中 Azure Blob 服务入门](../blobs/storage-quickstart-blobs-java.md)
+* [Java 中 Azure 队列服务入门](../queues/storage-java-how-to-use-queue-storage.md)
+* [Java 中 Azure 表服务入门](../../cosmos-db/table-storage-how-to-use-java.md)
+* [Java 中 Azure 文件服务入门](../files/storage-java-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,9 +3,8 @@ title: 更新 Azure Service Fabric 群集以使用证书公用名称 | Microsoft
 description: 了解如何将 Service Fabric 群集从使用证书指纹切换为使用证书公用名称。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
-editor: aljo
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
-ms.author: aljo
-ms.openlocfilehash: a94fda5a1f3aedd5842bad92b5348a77177b4137
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 6bf24a0948ecee68d1bbf3cd3fe8b2bec5634de9
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66302465"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600028"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>将群集从证书指纹更改为公用名称
 两个证书不能具有相同的指纹，具有相同的指纹会使群集证书滚动更新或管理变得困难。 但是，多个证书可以具有相同的公用名称或使用者。  将已部署的群集从使用证书指纹切换为使用证书公用名称会使证书管理更加简单。 本文介绍了如何将正在运行的 Service Fabric 群集更新为使用证书公用名称而非证书指纹。
 
 >[!NOTE]
-> 如果在模板中声明了两个指纹，则需要执行两次部署。  第一次部署是在执行本文中的步骤之前完成的。  第一次部署将模板中的“指纹”属性设置为正在使用的证书，并删除“thumbprintSecondary”属性   。  对于第二次部署，请按照本文中的步骤操作。
+> 如果在模板中声明了两个指纹，则需要执行两次部署。  第一次部署是在执行本文中的步骤之前完成的。  第一次部署将模板中的“指纹”属性设置为正在使用的证书，并删除“thumbprintSecondary”属性。  对于第二次部署，请按照本文中的步骤操作。
  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -102,7 +101,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
 > 规模集机密不支持对两个不同的机密使用相同的资源 ID，因为每个机密都是带有版本的唯一资源。 
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>从门户中下载并更新模板
-证书已安装在基础规模集上，但还需要将 Service Fabric 群集更新为使用该证书及其公用名称。  现在，为群集部署下载模板。  登录到[Azure 门户](https://portal.azure.com)并导航到承载群集的资源组。  在“设置”中，选择“部署”。    选择最新部署并单击“查看模板”。 
+证书已安装在基础规模集上，但还需要将 Service Fabric 群集更新为使用该证书及其公用名称。  现在，为群集部署下载模板。  登录到[Azure 门户](https://portal.azure.com), 并导航到托管群集的资源组。  在“设置”中，选择“部署”。  选择最新部署并单击“查看模板”。
 
 ![查看模板][image1]
 
@@ -127,9 +126,9 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
     },
     ```
 
-    此外请考虑删除*certificateThumbprint*，资源管理器模板中可能不再引用它。
+    还应考虑删除*certificateThumbprint*, 而不能再在资源管理器模板中对其进行引用。
 
-2. 在 **Microsoft.Compute/virtualMachineScaleSets** 资源中，更新虚拟机扩展以在证书设置中使用公用名称而非指纹。  在“virtualMachineProfile”  ->“extensionProfile”  ->“扩展”  ->“属性”  ->“设置”  ->“证书”  中，添加 `"commonNames": ["[parameters('certificateCommonName')]"],` 并删除 `"thumbprint": "[parameters('certificateThumbprint')]",`。
+2. 在 **Microsoft.Compute/virtualMachineScaleSets** 资源中，更新虚拟机扩展以在证书设置中使用公用名称而非指纹。  在“virtualMachineProfile”->“extensionProfile”->“扩展”->“属性”->“设置”->“证书”中，添加 `"commonNames": ["[parameters('certificateCommonName')]"],` 并删除 `"thumbprint": "[parameters('certificateThumbprint')]",`。
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {

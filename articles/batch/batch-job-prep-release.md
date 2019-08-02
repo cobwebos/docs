@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: a85ced787529db7e6d607665d81632ab1c450dfe
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68466975"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>在 Batch 计算节点上运行作业准备和作业发布任务
@@ -31,7 +31,7 @@ ms.locfileid: "68466975"
 
 作业准备和释放任务提供熟悉的批处理任务功能, 例如文件下载 ([资源文件][net_job_prep_resourcefiles])、提升的执行、自定义环境变量、最大执行持续时间、重试计数和文件保留时间。
 
-在以下部分中, 你将了解如何使用[Batch .net][api_net]库中的[JobPreparationTask][net_job_prep] and [JobReleaseTask][net_job_release]类。
+在以下部分中, 你将了解如何使用[Batch .net][api_net]库中的[JobPreparationTask][net_job_prep]和[JobReleaseTask][net_job_release]类。
 
 > [!TIP]
 > 作业准备和释放任务在“共享池”环境中特别有用。在这些环境中，计算节点池在任务运行之间保留，并由许多作业使用。
@@ -64,7 +64,7 @@ Batch 作业通常需要一组通用的数据作为作业任务的输入。 例�
 作业准备任务只会在计划运行任务的节点上运行。 例如，这可以防止未分配任务的节点不必要地执行准备任务， 当作业的任务数小于池中的节点数时，可能会出现这种情况。 此外，这也适用于在任务计数小于可能的并行任务总数的情况下启用[并行任务执行](batch-parallel-node-tasks.md)，从而留出一些空闲节点的情况。 不在空闲节点上运行作业准备任务可以节省数据传输费用。
 
 > [!NOTE]
-> [JobPreparationTask][net_job_prep_cloudjob]differs from [CloudPool.StartTask][pool_starttask]在每个作业开始时, JobPreparationTask 会执行, 而 StartTask 仅在计算节点首次加入池或重新启动时执行。
+> [JobPreparationTask][net_job_prep_cloudjob]不同于[CloudPool。 StartTask][pool_starttask]在每个作业开始时, JobPreparationTask 会执行, 而 StartTask 仅在计算节点首次加入池或重新启动时执行。
 > 
 > 
 
@@ -79,7 +79,7 @@ Batch 作业通常需要一组通用的数据作为作业任务的输入。 例�
 > 
 
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>使用 Batch .NET 执行作业准备和释放任务
-若要使用作业准备任务, 请分配[JobPreparationTask][net_job_prep] object to your job's [CloudJob.JobPreparationTask][net_job_prep_cloudjob]属性。 同样, 初始化[JobReleaseTask][net_job_release]并将其分配给作业的[CloudJob. JobReleaseTask][net_job_prep_cloudjob]属性, 以设置作业的发布任务。
+若要使用作业准备任务, 请将[JobPreparationTask][net_job_prep]对象分配给作业的[CloudJob. JobPreparationTask][net_job_prep_cloudjob]属性。 同样, 初始化[JobReleaseTask][net_job_release]并将其分配给作业的[CloudJob. JobReleaseTask][net_job_prep_cloudjob]属性, 以设置作业的发布任务。
 
 在此代码片段中`myBatchClient` , 是`myPool` [BatchClient][net_batch_client]的实例, 是 Batch 帐户中的现有池。
 
@@ -107,7 +107,7 @@ myJob.JobReleaseTask =
 await myJob.CommitAsync();
 ```
 
-如前所述，终止或删除作业时会执行释放任务。 使用 JobOperations 终止作业[。 TerminateJobAsync][net_job_terminate]. Delete a job with [JobOperations.DeleteJobAsync][net_job_delete]。 通常在作业的任务完成时或者达到定义的超时时终止或删除操作。
+如前所述，终止或删除作业时会执行释放任务。 使用 JobOperations 终止作业[。 TerminateJobAsync][net_job_terminate]。 使用 JobOperations 删除作业[。 joboperations.deletejobasync][net_job_delete]。 通常在作业的任务完成时或者达到定义的超时时终止或删除操作。
 
 ```csharp
 // Terminate the job to mark it as Completed; this will initiate the

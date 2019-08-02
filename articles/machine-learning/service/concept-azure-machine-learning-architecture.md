@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 887c27c765855424dbfb9a77f0b452da0f5de647
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 82d3656e0adc03157de57b700f8f0be6bde1f2ee
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868868"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663475"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -126,7 +126,7 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 
 数据集提供了一些方法, 用于处理常用格式的数据, `from_delimited_files()`例如`to_pandas_dataframe()`使用或。
 
-有关详细信息, 请参阅[创建和注册 Azure 机器学习数据集](how-to-create-register-datasets.md)。  有关使用数据集的更多示例, 请参阅[示例笔记本](https://aka.ms/dataset-tutorial)。
+有关详细信息, 请参阅[创建和注册 Azure 机器学习数据集](how-to-create-register-datasets.md)。  有关使用数据集的更多示例, 请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/work-with-data/datasets)。
 
 **数据**存储是通过 Azure 存储帐户进行的存储提取。 数据存储可以使用 Azure blob 容器或 Azure 文件共享作为后端存储。 每个工作区都有默认数据存储，并且你可以注册其他数据存储。 使用 Python SDK API 或 Azure 机器学习 CLI 可从数据存储中存储和检索文件。
 
@@ -142,7 +142,7 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 
 有关示例，请参阅[教程：使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。
 
-### <a name="runs"></a>运行次数
+### <a name="runs"></a>运行
 
 运行是包含以下信息的记录：
 
@@ -175,7 +175,7 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 
 活动可通过 SDK 或 Web UI 提供通知，使你能够轻松监视这些操作的进度。
 
-### <a name="images"></a>映像
+### <a name="images"></a>图像
 
 映像提供了一种可靠地部署模型的方法，以及使用该模型所需的所有组件。 映像包含以下项：
 

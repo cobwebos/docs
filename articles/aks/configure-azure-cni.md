@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
 ms.openlocfilehash: 1cc2849ffe55fff737993140a1d0f18182820eff
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68498566"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络

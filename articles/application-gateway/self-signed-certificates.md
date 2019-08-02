@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0b97f2f6df87255e10faaf58c40ea9136354bff6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9966164ec1b6a37538a24d2ef8cb80007e6f6d29
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386299"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698230"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自定义根 CA 生成 Azure 应用程序网关自签名证书
 
@@ -29,7 +29,7 @@ ms.locfileid: "68386299"
 - 创建由您的自定义 CA 签名的自签名证书
 - 将自签名的根证书上传到应用程序网关, 对后端服务器进行身份验证
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 - **运行 Windows 或 Linux 的计算机上的[OpenSSL](https://www.openssl.org/)** 
 
@@ -161,7 +161,7 @@ CSR 是申请证书时向 CA 提供的公钥。 CA 颁发此特定请求的证�
    ![受信任的根证书](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > 假设 DNS 已配置为将 web 服务器名称 (在本示例中为 www.fabrikam.com) 指向 web 服务器的 IP 地址。 如果不是, 则可以编辑[主机文件](https://answers.microsoft.com/windows/forum/windows_10-other_settings-winpc/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d)来解析名称。
+   > 假设 DNS 已配置为将 web 服务器名称 (在本示例中为 www.fabrikam.com) 指向 web 服务器的 IP 地址。 如果不是, 则可以编辑[主机文件](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d)来解析名称。
 1. 浏览到你的网站, 然后单击浏览器的 "地址" 框中的锁定图标以验证站点和证书信息。
 
 ## <a name="verify-the-configuration-with-openssl"></a>用 OpenSSL 验证配置

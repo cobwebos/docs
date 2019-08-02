@@ -3,9 +3,8 @@ title: 规划 Azure Service Fabric 群集部署 |Microsoft Docs
 description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群集部署。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
-editor: aljo
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2019
-ms.author: aljo
-ms.openlocfilehash: 0f3a9010805ec1a18490f6f530f60d7a3c763398
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387853"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599996"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
@@ -39,23 +38,23 @@ ms.locfileid: "60387853"
 * 群集的可靠性和耐久性特征
 
 ### <a name="select-the-initial-number-of-node-types"></a>选择初始节点类型数目
-首先，需要确定要创建的群集用于什么目的， 以及打算要将哪些类型的应用程序部署到此群集中。 应用程序是否有多个服务，其中是否有任何服务需是面向公众或面向 Internet 的服务？ （构成应用程序）的服务是否有不同的基础结构要求，例如，更多的 RAM 或更高的 CPU 周期？ Service Fabric 群集可以包括多个节点类型：主节点类型，以及一个或多个非主节点类型。 每个节点类型将映射到虚拟机规模集。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 可以设置[节点属性和放置约束][placementconstraints]，以将特定的服务限制为特定的节点类型。  有关详细信息，请参阅[群集一开始需要的节点类型数目](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with)。
+首先，需要确定要创建的群集用于什么目的， 以及打算要将哪些类型的应用程序部署到此群集中。 应用程序是否有多个服务，其中是否有任何服务需是面向公众或面向 Internet 的服务？ （构成应用程序）的服务是否有不同的基础结构要求，例如，更多的 RAM 或更高的 CPU 周期？ Service Fabric 群集可以包括多个节点类型：主节点类型，以及一个或多个非主节点类型。 每个节点类型将映射到虚拟机规模集。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 [节点属性和放置约束][placementconstraints]可以设置为将特定服务限制为特定节点类型。  有关详细信息，请参阅[群集一开始需要的节点类型数目](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with)。
 
 ### <a name="select-node-properties-for-each-node-type"></a>选择每个节点类型的节点属性
 节点类型定义关联规模集中 VM 的 VM SKU、数目和属性。
 
-每个节点类型的 VM 大小下限取决于为节点类型选择的[持久性层][durability]。
+每个节点类型的 Vm 的最小大小取决于为节点类型选择的[持久性层][durability]。
 
-主节点类型的 VM 数目下限取决于选择的[可靠性层][reliability]。
+主节点类型的 Vm 数目下限取决于选择的[可靠性层][reliability]。
 
 请参阅[主节点类型](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)、[非主节点类型上的有状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)和[非主节点类型上的无状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)的最低建议要求。 
 
 如果节点数目超过最小数目，应根据想要在此节点类型中运行的应用程序/服务的副本数目确定数目。  [Service Fabric 应用程序的容量规划](service-fabric-capacity-planning.md)可帮助你估算运行应用程序所需的资源。 以后始终可以纵向扩展或缩减群集，以根据不断变化的应用程序工作负荷做出调整。 
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>选择群集的持续性和可靠性级别
-耐久性层用于向系统指示 VM 对于基本 Azure 基础结构拥有的权限。 在主节点类型中，此权限可让 Service Fabric 暂停影响系统服务及有状态服务的仲裁要求的任何 VM 级别基础结构请求（例如，VM 重新启动、VM 重置映像或 VM 迁移）。 在非主节点类型中，此特权可让 Service Fabric 暂停影响其中运行的有状态服务的仲裁要求的任何 VM 级别基础结构请求，例如，VM 重新启动、VM 重置映像、VM 迁移，等等。  有关不同级别的优势、要使用哪种级别以及何时使用的建议，请参阅[群集的持久性特征][durability]。
+耐久性层用于向系统指示 VM 对于基本 Azure 基础结构拥有的权限。 在主节点类型中，此权限可让 Service Fabric 暂停影响系统服务及有状态服务的仲裁要求的任何 VM 级别基础结构请求（例如，VM 重新启动、VM 重置映像或 VM 迁移）。 在非主节点类型中，此特权可让 Service Fabric 暂停影响其中运行的有状态服务的仲裁要求的任何 VM 级别基础结构请求，例如，VM 重新启动、VM 重置映像、VM 迁移，等等。  要了解不同级别的优点和有关使用哪种级别以及何时使用的建议, 请参阅[群集的持续性特性][durability]。
 
-可靠性层用于设置要在此群集中的主节点类型上运行的系统服务副本数。 副本数越大，群集中的系统服务越可靠。  有关不同级别的优势、要使用哪种级别以及何时使用的建议，请参阅[群集的可靠性特征][reliability]。 
+可靠性层用于设置要在此群集中的主节点类型上运行的系统服务副本数。 副本数越大，群集中的系统服务越可靠。  要了解不同级别的优点和有关使用哪种级别的建议, 请参阅[群集的可靠性特征][reliability]。 
 
 ## <a name="enable-reverse-proxy-andor-dns"></a>启用反向代理和/或 DNS
 在群集内相互连接的服务通常可以直接访问其他服务的终结点，因为群集中的节点处于相同的本地网络上。 为了更轻松地在服务之间进行连接，Service Fabric 提供了附加的服务：[DNS 服务](service-fabric-dnsservice.md)和[反向代理服务](service-fabric-reverseproxy.md)。  部署群集时，可以启用这两个服务。

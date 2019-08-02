@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
 ms.openlocfilehash: 305901007180cfb197cf5c0dfb338800449560a1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68382033"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 在 Azure Kubernetes Service (AKS) 群集上创建 Windows Server 容器
@@ -42,7 +42,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要使用 Windows Server 容器, 需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用[az extension add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update]命令安装*aks-preview* Azure CLI 扩展::
+若要使用 Windows Server 容器, 需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展, 然后使用[az extension update][az-extension-update]命令检查是否有任何可用更新:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -120,7 +120,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-为了运行支持 Windows Server 容器的节点池的 AKS 群集, 群集需要使用使用[AZURE CNI][azure-cni-about] (advanced) network plugin. For more detailed information to help plan out the required subnet ranges and network considerations, see [configure Azure CNI networking][use-advanced-networking]的网络策略。 使用[az aks create][az-aks-create]命令创建名为*myAKSCluster*的 aks 群集。 如果这些资源不存在, 此命令将创建必要的网络资源。
+若要运行支持 Windows Server 容器的节点池的 AKS 群集, 群集需要使用使用[AZURE CNI][azure-cni-about] (advanced) 网络插件的网络策略。 若要详细了解如何计划所需的子网范围和网络注意事项, 请参阅[配置 AZURE CNI 网络][use-advanced-networking]。 使用[az aks create][az-aks-create]命令创建名为*myAKSCluster*的 aks 群集。 如果这些资源不存在, 此命令将创建必要的网络资源。
   * 群集配置有一个节点
   * *Windows 管理员密码*和*windows 管理员-用户名*参数为群集上创建的任何 windows Server 容器设置管理员凭据。
 
@@ -194,7 +194,7 @@ aksnpwin987654                      Ready    agent   108s   v1.14.1
 
 ## <a name="run-the-application"></a>运行应用程序
 
-Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本文中, 清单用于创建在 Windows Server 容器中运行 ASP.NET 示例应用程序所需的所有对象。 此清单包含用于从 internet 访问应用程序的[Kubernetes 部署][kubernetes-deployment] for the ASP.NET sample application and an external [Kubernetes service][kubernetes-service] 。
+Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本文中, 清单用于创建在 Windows Server 容器中运行 ASP.NET 示例应用程序所需的所有对象。 此清单包括用于 ASP.NET 示例应用程序的[Kubernetes 部署][kubernetes-deployment], 以及用于从 internet 访问应用程序的外部[Kubernetes 服务][kubernetes-service]。
 
 ASP.NET 示例应用程序作为[.NET Framework 示例][dotnet-samples]的一部分提供并在 Windows Server 容器中运行。 AKS 要求 Windows Server 容器基于*Windows server 2019*或更高版本的映像。 Kubernetes 清单文件还必须定义[节点选择器][node-selector], 以便告知 AKS 群集在可运行 Windows Server 容器的节点上运行 ASP.NET 示例应用程序的 pod。
 

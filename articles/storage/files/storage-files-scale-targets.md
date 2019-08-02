@@ -1,19 +1,18 @@
 ---
 title: Azure 文件可伸缩性和性能目标 | Microsoft Docs
 description: 了解 Azure 文件的可伸缩性和性能目标信息，包括容量、请求速率以及入站和出站带宽限制。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 91ec65e17b77ccb3864fce45e30729ff420a48b6
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: ed4aa832c4ec7ccda760d535aa920be8d5c4e2e3
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542649"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699626"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -30,30 +29,30 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 > [!Important]  
-> 常规用途存储帐户从其他存储服务的利用率会影响 Azure 文件共享存储帐户中。 例如，如果由于 Azure Blob 存储而达到了最大存储帐户容量，则将无法在 Azure 文件共享上创建新文件，即使 Azure 文件共享低于最大共享大小。
+> 其他存储服务中的常规用途存储帐户利用率会影响存储帐户中的 Azure 文件共享。 例如，如果由于 Azure Blob 存储而达到了最大存储帐户容量，则将无法在 Azure 文件共享上创建新文件，即使 Azure 文件共享低于最大共享大小。
 
 ## <a name="azure-files-scale-targets"></a>Azure 文件规模目标
 
-有三个类别的要考虑的 Azure 文件的限制： 存储帐户、 共享和文件。
+对于 Azure 文件, 有三种类别的限制: 存储帐户、共享和文件。
 
-例如：高级文件共享，请使用单个共享可以实现 100,000 IOPS 和单个文件可以扩展最多 5,000 个 IOPS。 因此，如果您有一个共享中的三个文件，就可以从该共享的最大 IOPS 为 15000。
+例如：使用高级文件共享时, 一个共享可以实现 100000 IOPS, 一个文件最多可以扩展到 5000 IOPS。 因此, 如果一个共享中有三个文件, 则可以从该共享获取的最大 IOPS 为15000。
 
 ### <a name="standard-storage-account-limits"></a>标准存储帐户限制
 
-请参阅[Azure 存储帐户规模目标](#azure-storage-account-scale-targets)部分，了解这些限制。
+有关这些限制, 请参阅[Azure 存储帐户缩放目标](#azure-storage-account-scale-targets)部分。
 
-### <a name="premium-filestorage-account-limits"></a>高级文件存储帐户限制
+### <a name="premium-filestorage-account-limits"></a>高级 FileStorage 帐户限制
 
 [!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
-> 存储帐户限制适用于所有共享。 最多缩放是只可实现，如果每个文件存储帐户只有一个共享的文件存储帐户的最大值。
+> 存储帐户限制适用于所有共享。 仅当每个 FileStorage 帐户只有一个共享时, 才能实现最大 FileStorage 帐户数。
 
 ### <a name="file-share-and-file-scale-targets"></a>文件共享和文件规模目标
 
 > [!NOTE]
-> 大于 5 TiB 的标准文件共享处于预览状态，存在一定的限制。
-> 有关列表的限制和要加入到的这些更大的文件共享大小的预览，请参阅[标准文件共享](storage-files-planning.md#standard-file-shares)计划指南的部分。
+> 超过 5 TiB 的标准文件共享处于预览阶段, 具有某些限制。
+> 若要获取限制列表, 并将这些较大文件共享大小的预览集成在一起, 请参阅规划指南的[标准文件共享](storage-files-planning.md#standard-file-shares)部分。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -87,8 +86,8 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 | 初始的一次性预配  |  |
 |-|-|
 | 对象数 | 2500 万个对象 |
-| 数据集大小| ~4.7 TiB |
-| 平均文件大小 | ~ 200 KiB (最大的文件：100 GiB） |
+| 数据集大小| ~ 4.7 TiB |
+| 平均文件大小 | ~ 200 KiB (最大文件:100 GiB） |
 | 上传吞吐量 | 每秒 20 个对象 |
 | 命名空间下载吞吐量* | 每秒 400 个对象 |
 
@@ -112,7 +111,7 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 - 对象吞吐量大约按服务器上的同步组数量成比例缩放。 在服务器上将数据拆分到多个同步组会实现更好的吞吐量，吞吐量还受限于服务器和网络。
 - 对象吞吐量与每秒 MiB 数这一吞吐量成反比。 对于较小的文件，每秒处理的对象数这一吞吐量较高，但每秒 MiB 数这一吞吐量较低。 相反，对于较大的文件，每秒处理的对象数较少，但每秒 MiB 数这一吞吐量较高。 每秒 MiB 数这一吞吐量受限于 Azure 文件规模目标。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [规划 Azure 文件部署](storage-files-planning.md)
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)

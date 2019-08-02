@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 08cf646d63e1a295a1bc2ff28180983cc462f084
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: add5584ccf3d9d6837e328bbf70d71598e5c0839
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360934"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694312"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>使用 Azure 机器学习数据准备 SDK 转换数据
 
@@ -102,7 +102,7 @@ dflow.head(3)
 
 第三条记录缺少纬度和经度值。 若要归结这些缺失值, 可[`ImputeMissingValuesBuilder`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py)使用来了解固定表达式。 它可使用计算得出的 `MIN`、`MAX`、`MEAN` 值或 `CUSTOM` 值来估算列。 如果指定 `group_by_columns`，将使用每组计算得出的 `MIN`、`MAX` 和 `MEAN` 按组估算缺失值。
 
-使用函数检查纬度列的值。`MEAN` [`summarize()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) 此函数接受 `group_by_columns` 参数中的列数组以指定聚合级别。 `summary_columns` 参数接受 `SummaryColumnsValue` 调用。 此函数调用指定当前列名、新计算字段的名称和要执行的 `SummaryFunction`。
+使用函数检查纬度列的值。`MEAN` [`summarize()`](/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-ml-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow--summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) 此函数接受 `group_by_columns` 参数中的列数组以指定聚合级别。 `summary_columns` 参数接受 `SummaryColumnsValue` 调用。 此函数调用指定当前列名、新计算字段的名称和要执行的 `SummaryFunction`。
 
 ```python
 dflow_mean = dflow.summarize(group_by_columns=['Arrest'],
@@ -235,8 +235,8 @@ builder.preview(skip=75, count=5)
 |0|1/3/2015 7:00|1月3日, 2015 早晨-早晨8点|
 |1|1/3/2015 7:54|1月3日, 2015 早晨-早晨8点|
 |2|1/29/2015 6:54|无|
-|3|1/29/2015 7:00|无|
-|4|1/29/2015 7:54|None|
+|3|1/29/2015 7:00|None|
+|4|1/29/2015 7:54|无|
 
 ```python
 builder.add_example(
@@ -296,7 +296,7 @@ dflow.head(5)
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|0|None|无|None|无|无|无|None|None|无|无|无|无|无|
+|0|无|无|无|无|None|无|无|None|无|无|无|无|无|
 |1|2013-08-01 08:14:37|2013-08-01 09:09:06|N|1|0|0|0|0|1|.00|0|0|21.25|
 |2|2013-08-01 09:13:00|2013-08-01 11:38:00|N|1|0|0|0|0|2|.00|0|0|75|
 |3|2013-08-01 09:48:00|2013-08-01 09:49:00|N|5|0|0|0|0|1|.00|0|1|2.1|
@@ -317,7 +317,7 @@ dflow.head(2)
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|0|None|None|无|None|无|None|无|无|无|无|None|
+|0|None|无|无|None|无|None|None|无|无|无|None|
 |1|2013-08-01 08:14:37|2013-08-01 09:09:06|0|0|0|0|1|.00|0|0|21.25|
 
 #### <a name="filtering-columns-with-regex"></a>使用正则表达式筛选列
@@ -332,7 +332,7 @@ dflow.head(2)
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
-|0|无|无|None|无|None|无|None|
+|0|None|None|无|None|None|None|无|
 |1|2013-08-01 08:14:37|2013-08-01 09:09:06|1|.00|0|0|21.25|
 
 ## <a name="filtering-rows"></a>筛选行
@@ -444,7 +444,7 @@ dflow.head(2)
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
-|0|阿拉巴马州|Hale County|1.017100e+10|None|
+|0|阿拉巴马州|Hale County|1.017100e+10|无|
 |1|阿拉巴马州|Hale County|1.017100e+10|无|
 
 使用以下筛选器查找空值。
@@ -455,8 +455,8 @@ dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
-|0|阿拉巴马州|Hale County|1.017100e+10|无|
-|1|阿拉巴马州|Hale County|1.017100e+10|None|
+|0|阿拉巴马州|Hale County|1.017100e+10|None|
+|1|阿拉巴马州|Hale County|1.017100e+10|无|
 
 ### <a name="transform-partition"></a>转换分区
 
