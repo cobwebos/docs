@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6260a619ad3dfda65fcdfc1180cba4002dd23d0
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 7011025a1d94a5c99bf2338d9f80c683c2fd7b35
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499896"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514973"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -35,7 +35,7 @@ ms.locfileid: "68499896"
 | 帐户锁定 | 如果连续有过多的身份验证尝试遭到拒绝，则将暂时在多重身份验证服务中锁定帐户。 此功能仅适用于输入 PIN 进行身份验证的用户。 （MFA 服务器） |
 | [阻止/解除阻止用户](#block-and-unblock-users) | 用于阻止特定用户接收多重身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户将在阻止日起 90 天内受到阻止。 |
 | [欺诈警报](#fraud-alert) | 配置与用户报告欺诈验证请求相关的设置 |
-| 通知 | 允许通过 MFA 服务器来通知事件。 |
+| [通知](#notifications) | 允许通过 MFA 服务器来通知事件。 |
 | [OATH 令牌](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | 用在基于云的 Azure MFA 环境中，为用户托管 OATH 令牌。 |
 | [电话呼叫设置](#phone-call-settings) | 为云和本地环境配置与电话呼叫和问候语相关的设置。 |
 | 提供程序 | 此项会显示任何现有的与帐户相关联的身份验证提供程序。 自 2018 年 9 月 1 日起，可能无法创建新的身份验证提供程序 |
@@ -99,6 +99,12 @@ ms.locfileid: "68499896"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory” > “登录”。标准 Azure AD 登录报告现包含欺诈报告。
+
+## <a name="notifications"></a>通知
+
+在此处为将收到欺诈警报电子邮件的用户配置电子邮件地址。
+
+![通知欺诈警报电子邮件示例](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
 ## <a name="phone-call-settings"></a>电话呼叫设置
 
@@ -372,7 +378,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 3. 选择“多重身份验证”。
 4. 在“多重身份验证”下，选择“服务设置”。
 5. 在“服务设置”页上的“验证选项”下，选择/取消选择要向用户提供的方法。
-6. 单击“保存” 。
+6. 单击“保存”。
 
 若要更详细地了解如何使用身份验证方法，可参阅[有哪些身份验证方法](concept-authentication-methods.md)一文。
 

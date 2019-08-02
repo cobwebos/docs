@@ -4,7 +4,7 @@ description: 了解 Data Science Virtual Machine 上预安装的工具和实用�
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 0a503b82c07da62b5c5c768d8e1c92cb19e75aee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: d48c2b849f875289c89201f20478deebf4c00db9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236481"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565234"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>了解数据科学虚拟机
 
 数据科学虚拟机 (DSVM) 包括多种常用数据科学、机器学习/AI 工具和数据平台。 工具配置已经过 Microsoft 数据科学家和开发人员以及更广泛的数据科学社区的严格测试，可确保稳定性和广泛可行性。
 
-DSVM 还可以在本地执行的 Jupyter Notebook 的形式中包含多个代码示例和演练。此外没有文档以帮助理解这些示例。 
+DSVM 还包含多个代码示例和演练, 其形式为 Jupyter 笔记本, 可以在本地执行。还提供了这些示例的文档来帮助理解。 
 
 > [!NOTE]
-> 可以使用[Azure Notebooks](/azure/notebooks/azure-notebooks-overview)来创建、 运行和共享 Jupyter notebook 在云中。 你可以[将数据科学 VM 附加到 Azure Notebooks](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)以展开的可用计算能力。
+> 你可以使用[Azure Notebooks](../../notebooks/azure-notebooks-overview.md)在云中创建、运行和共享 Jupyter 笔记本。 可以[将 Data Science VM 附加到 Azure Notebooks](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)以扩展可用计算能力。
 
 数据科学 VM 中包含的工具、平台、实用程序和示例分为以下几部分：
 

@@ -1,20 +1,18 @@
 ---
 title: 使用 .NET 的 Azure 存储示例 | Microsoft Docs
 description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 .NET 存储客户端库发现 Blob、队列、表和文件的入门示例。
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: dotnet
-ms.topic: article
-ms.date: 05/03/2019
 ms.author: mhopkins
+ms.date: 05/03/2019
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: df7c14f1ee83015303657f9a0babde3d60c92292
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.topic: sample
+ms.openlocfilehash: cec6b0498adf55428fade7ae00db6550496a20bd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209694"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721856"
 ---
 # <a name="azure-storage-samples-using-net"></a>使用 .NET 的 Azure 存储示例
 
@@ -144,7 +142,7 @@ ms.locfileid: "65209694"
 </tr> 
 <tr> 
 <td>扫视消息</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET（.NET 中 Azure 队列服务入门）</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET</a>（.NET 中 Azure 队列服务入门）</td> 
 </tr> 
 <tr> 
 <td>队列 ACL/元数据/统计信息</td> 
@@ -201,10 +199,10 @@ ms.locfileid: "65209694"
 
 如果要查找有关如何安装和开始使用 Azure 存储客户端库的说明，请查看以下指南。
 
-* [.NET 中的 Azure Blob 服务入门](../blobs/storage-dotnet-how-to-use-blobs.md)
-* [.NET 中的 Azure 队列服务入门](../storage-dotnet-how-to-use-queues.md)
+* [.NET 中 Azure Blob 服务入门](../blobs/storage-dotnet-how-to-use-blobs.md)
+* [Getting Started with Azure Queue Service in .NET](../storage-dotnet-how-to-use-queues.md)（.NET 中 Azure 队列服务入门）
 * [.NET 中 Azure 表服务入门](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-* [.NET 中的 Azure 文件服务入门](../storage-dotnet-how-to-use-files.md)
+* [Getting Started with Azure File Service in .NET](../storage-dotnet-how-to-use-files.md)（.NET 中 Azure 文件服务入门）
 
 ## <a name="next-steps"></a>后续步骤
 
