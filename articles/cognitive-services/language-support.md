@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 06/16/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 55127ee1226d7345f825c9571c16f12eaa956d94
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cd31215f578062548c67f8d14e724dc49f73b21c
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163861"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775005"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure 认知服务的自然语言支持
 
@@ -33,18 +33,18 @@ ms.locfileid: "67163861"
 * 德语
 * 意大利语
 * 日语
-* Korean¹
+* 韩语¹
 * 葡萄牙语
 * 西班牙语
 
 > [!NOTE]
-> ¹ LUIS 和视频索引器：不支持语音转文本。
+> ¹ LUIS 和视频索引器:不支持语音转文本。
 
 ## <a name="additional-language-availability-by-service"></a>按服务分类的其他语言可用性
 
 下面这些表按服务类别突出显示了语言可用性；不包括核心语言。 请通过下面的链接了解其他的语言支持、国家/地区和市场可用性。
 
-### <a name="vision"></a>影像
+### <a name="vision"></a>视觉
 
 | | 阿拉伯语 | 保加利亚语 | 加泰罗尼亚语 | 克罗地亚语 | 捷克语 | 丹麦语 | 荷兰语 | 爱沙尼亚语 | 芬兰语 | 希腊语 | 印地语 | 匈牙利语 | 冰岛语 | 印度尼西亚语 | 拉脱维亚语 | 立陶宛语 | 马来语 | 挪威语 | 波兰语 | 罗马尼亚语 | 俄语 | 塞尔维亚语 | 斯洛伐克语 | 斯洛文尼亚语 | 瑞典语 | 泰米尔语 | 泰语 | 土耳其语 | 乌克兰语 | 越南语 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -66,7 +66,6 @@ ms.locfileid: "67163861"
 | | 阿拉伯语 | 保加利亚语 | 加泰罗尼亚语 | 克罗地亚语 | 捷克语 | 丹麦语 | 荷兰语 | 爱沙尼亚语 | 芬兰语 | 希腊语 | 印地语 | 匈牙利语 | 冰岛语 | 印度尼西亚语 | 拉脱维亚语 | 立陶宛语 | 马来语 | 挪威语 | 波兰语 | 罗马尼亚语 | 俄语 | 塞尔维亚语 | 斯洛伐克语 | 斯洛文尼亚语 | 瑞典语 | 泰米尔语 | 泰语 | 土耳其语 | 乌克兰语 | 越南语 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | [必应拼写检查](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [内容审查器：文本筛选](https://docs.microsoft.com/azure/cognitive-services/content-moderator/text-moderation-api-languages) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [语言理解 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages) | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
 | [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/languages-supported) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [文本翻译](https://docs.microsoft.com/azure/cognitive-services/translator/languages) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -83,7 +82,19 @@ ms.locfileid: "67163861"
 | [必应视觉搜索](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/supported-countries-markets) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
 | [必应自定义搜索](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/supported-countries-markets) | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
 
-## <a name="see-also"></a>另请参阅
+### <a name="decision"></a>决定
+
+| | 阿拉伯语 | 保加利亚语 | 加泰罗尼亚语 | 克罗地亚语 | 捷克语 | 丹麦语 | 荷兰语 | 爱沙尼亚语 | 芬兰语 | 希腊语 | 印地语 | 匈牙利语 | 冰岛语 | 印度尼西亚语 | 拉脱维亚语 | 立陶宛语 | 马来语 | 挪威语 | 波兰语 | 罗马尼亚语 | 俄语 | 塞尔维亚语 | 斯洛伐克语 | 斯洛文尼亚语 | 瑞典语 | 泰米尔语 | 泰语 | 土耳其语 | 乌克兰语 | 越南语 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| [内容审查器：文本筛选](https://docs.microsoft.com/azure/cognitive-services/content-moderator/text-moderation-api-languages) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+
+以下认知服务是语言不可知的, 没有基于语言的限制。
+
+* [Personalizer (预览版)](https://docs.microsoft.com/azure/cognitive-services/personalizer/)
+* [异常探测器 (预览版)](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/overview)
+
+
+## <a name="see-also"></a>请参阅
 
 * [什么是认知服务？](welcome.md)
 * [创建帐户](cognitive-services-apis-create-account.md)
