@@ -209,10 +209,6 @@
           href: /azure/active-directory/saas-apps/
     - name: 概念
       items:
-        - name: 初始预配同步
-          href: user-provisioning.md
-        - name: 增量预配同步
-          href: user-provisioning.md
         - name: 对启用 SCIM 的应用自动执行预配
           href: use-scim-to-provision-users-and-groups.md
     - name: 操作指南
