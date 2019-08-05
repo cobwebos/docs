@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用异常检测器库和 Python 检测数据异常
+title: 快速入门：使用适用于 Python 的异常探测器客户端库检测数据异常
 titleSuffix: Azure Cognitive Services
 description: 使用异常检测器 API 能够以批或流数据的形式检测数据系列的异常。
 services: cognitive-services
@@ -8,20 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 9176ab84dd3f493604bd655e0498f5ad476776d0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: b78d19841bdca100211378f71e45a41dd37aad28
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721527"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639341"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>快速入门：适用于 Python 的异常检测器客户端库
 
 开始使用适用于 .NET 的异常检测器客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过异常检测器服务，可以对时序数据自动使用最佳适配模型，从而查找器其中的异常，不限行业、场景或数据量。
-
-## <a name="key-concepts"></a>关键概念
 
 使用适用于 Python 的异常检测器客户端库，可实现以下操作：
 
@@ -42,6 +40,18 @@ ms.locfileid: "67721527"
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
+获取试用订阅或资源的密钥后，请为该密钥创建名为 `ANOMALY_DETECTOR_KEY` 的[环境变量](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
+
+### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
+
+ 在首选编辑器或 IDE 中创建新的 Python 应用程序。 然后导入以下库。
+
+[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
+
+将密钥的变量创建为环境变量，同时创建时序数据文件的路径，以及订阅的 Azure 位置。 例如，`westus2` 。 
+
+[!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
+
 ### <a name="install-the-client-library"></a>安装客户端库
 
 在安装 Python 后，可以通过以下命令安装客户端库：
@@ -57,19 +67,6 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 时序数据作为 [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) 对象中的一系列 [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) 进行发送。 `Request` 对象包含描述数据的属性（例如[Granularity](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python)）以及异常检测的参数。 
 
 异常检测器响应是 [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) 或 [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) 对象，具体取决于所使用的方法。 
-
-## <a name="getting-started"></a>入门
-
-在首选编辑器或 IDE 中创建新的 Python 应用程序。 然后，将以下 import 声明添加到你的文件。 
-
-[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
-
-> [!NOTE]
-> 本快速入门假定你已为异常检测器密钥[创建了一个环境变量](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)，名为 `ANOMALY_DETECTOR_KEY`。
-
-将密钥的变量创建为环境变量，同时创建时序数据文件的路径，以及订阅的 Azure 位置。 例如，`westus2` 。 
-
-[!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
 
 ## <a name="code-examples"></a>代码示例 
 
@@ -89,8 +86,8 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 ### <a name="load-time-series-data-from-a-file"></a>从文件加载时序数据
 
 从 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv) 下载此快速入门中的示例数据：
-1. 在浏览器中，右键单击“Raw” 
-2. 单击“将链接另存为” 
+1. 在浏览器中，右键单击“原始”  。
+2. 单击“将链接另存为”  。
 3. 将文件另存为 .csv 文件，保存到你的应用程序目录。
 
 此时序数据的格式为 .csv 文件，它将被发送到异常检测器 API。
@@ -125,12 +122,6 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 
 * [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
-
-也可运行以下 Cloud Shell 命令以删除资源组及其相关资源。 完成此命令可能需要几分钟。 
-
-```azurecli-interactive
-az group delete --name example-anomaly-detector-resource-group
-```
 
 ## <a name="next-steps"></a>后续步骤
 

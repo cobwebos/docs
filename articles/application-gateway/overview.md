@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: e2e29bf0068fae5d6f4987ec5c3f2a52b883e4bd
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 5f7fd47a096ddd57150a466f85fabcfc2f7045d9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418112"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564868"
 ---
 # <a name="what-is-azure-application-gateway"></a>什么是 Azure 应用程序网关？
 
@@ -111,7 +111,7 @@ WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和
 
 应用程序网关允许你创建自定义错误页而非显示默认错误页。 你可以在自定义错误页上使用自己的品牌和布局。
 
-有关详细信息，请参阅[重写 HTTP 标头](rewrite-http-headers.md)。
+有关详细信息，请参阅[自定义错误](custom-error.md)。
 
 ## <a name="rewrite-http-headers"></a>重写 HTTP 标头
 

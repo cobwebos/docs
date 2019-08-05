@@ -1,21 +1,18 @@
 ---
 title: 从 Azure 存储下载大量随机数据 | Microsoft Docs
 description: 了解如何使用 Azure SDK 从 Azure 存储帐户下载大量随机数据
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 541d406d7416ff5f50fdcca7e85b8f87f6f377df
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794583"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699014"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>从 Azure 存储下载大量随机数据
 
@@ -98,7 +95,7 @@ dotnet build
 dotnet run
 ```
 
-应用程序读取位于 storageconnectionstring 中指定的存储帐户中的容器。 它使用容器中的 [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) 方法每次循环访问 10 个 blob，并使用 [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) 方法将它们下载到本地计算机。
+应用程序读取位于 storageconnectionstring 中指定的存储帐户中的容器  。 它使用容器中的 [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) 方法每次循环访问 10 个 blob，并使用 [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) 方法将它们下载到本地计算机。
 下表显示了每个 blob 下载完成后为其定义的 [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions)。
 
 |属性|值|说明|

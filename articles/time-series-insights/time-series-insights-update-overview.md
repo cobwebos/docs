@@ -11,14 +11,14 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: b32ff070a1ffa9f83132ecc1d3e43bae398f509d
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 964a010ee2b919ca56c467d3f7ca91b3e78ef590
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460749"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638857"
 ---
-# <a name="azure-time-series-insights-preview"></a>Azure 时序见解预览版
+# <a name="what-is-azure-time-series-insights-preview"></a>什么是 Azure 时序见解预览版？
 
 Azure 时序见解预览版是一种端到端的平台即服务 (PaaS) 产品/服务。 它用于收集、处理、分析和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是唯一可扩展且自定义的服务产品/服务，满足行业 IoT 部署的广泛需求。
 

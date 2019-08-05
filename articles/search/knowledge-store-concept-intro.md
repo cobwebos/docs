@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: 4a27e4d8f2fbaafe6d27a3e3cabd31aa715b9d80
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 6cbf8dfe51e8b553fd84e9eb81a2ea37a65c387e
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540749"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668277"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>什么是 Azure 搜索中的知识存储？
 
@@ -22,11 +22,13 @@ ms.locfileid: "65540749"
 > 知识存储目前为预览版，不适合在生产环境中使用。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持 .NET SDK。
 >
 
-知识存储是 Azure 搜索的一项可选功能，可保存基于 AI 的索引管道[（认知搜索）](cognitive-search-concept-intro.md)创建的扩充文档和元数据。 知识存储由配置为管道一部分的 Azure 存储帐户提供技术支持。 启用后，搜索服务使用此存储帐户来缓存每个扩充文档的表示形式。 
+知识存储是 Azure 搜索的一项功能，可保存基于 AI 的索引管道[（认知搜索）](cognitive-search-concept-intro.md)创建的扩充文档和元数据。 扩充文档是管道的输出，基于使用认知服务中的资源提取、结构化和分析的内容创建。 在标准的基于 AI 的管道中，扩充文档是临时的，仅在编制索引期间使用，然后被丢弃。 通过知识存储，文档将被保存起来，以供后续评估、探索，并可能成为下游数据科学工作负荷的输入。 
 
-如果过去使用过认知搜索，你已知道技能集可用于通过一系列扩充来迁移文档。 结果可以是 Azure 搜索索引，也可以是知识存储中的投影（此预览版中新增的）。
+如果过去使用过认知搜索，你已知道技能集用于通过一系列扩充来迁移文档。 结果可以是 Azure 搜索索引，也可以是知识存储中的投影（此预览版中新增的）。 搜索索引和知识存储这两个输出在物理上彼此不同。 它们共享相同的内容，但以非常不同的方式存储和使用。
 
-投影是构建数据结构以供用于下游应用的机制。 可以使用专为 Azure 存储打造的[存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)，或连接到 Azure 存储的任何应用，这为使用扩充文档开辟了新的可能性。 一些示例包括，数据科学管道和自定义分析。
+物理上，知识存储在 Azure 存储帐户中创建，可以是 Azure 表存储或 Blob 存储，具体取决于配置管道的方式。 任何可以连接到 Azure 存储的工具或进程都可以使用知识存储的内容。
+
+投影是用于在知识存储中构造数据的机制。 例如，通过投影，可以选择是将输出保存为单个 blob 还是相关表的集合。 查看知识存储内容的一种简单方法是通过 Azure 存储的内置[存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)。
 
 ![“管道中的知识存储”示意图](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "“管道中的知识存储”示意图")
 
@@ -138,7 +140,7 @@ ms.locfileid: "65540749"
 
 Azure 搜索提供了索引器功能，索引器用于端到端驱动整个过程，从而在 Azure 存储中生成持久化扩充文档。 索引器使用数据源、索引和技能集，所有这些都是创建和填充知识存储所必需的。
 
-| 对象 | REST API | 说明 |
+| Object | REST API | 说明 |
 |--------|----------|-------------|
 | 数据源 | [创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 标识外部 Azure 数据源的资源，数据源提供用于创建扩充文档的源数据。  |
 | 技能集 | [创建技能集 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 在编制索引期间协调扩充管道中所用[内置技能](cognitive-search-predefined-skills.md)和[自定义认知技能](cognitive-search-custom-skill-interface.md)的资源。 |

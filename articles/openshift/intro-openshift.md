@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.topic: overview
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 7cabedaec1190437aa9f225397afa8871cb06e88
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: f76f5d4dc84d1f8827248ab8399c1ae450a643a0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306377"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620156"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -38,7 +38,7 @@ Azure Red Hat OpenShift 节点在 Azure 虚拟机上运行。 可以将存储连
 
 ## <a name="virtual-networks-and-ingress"></a>虚拟网络和入口
 
-可通过对等互连将 Azure Red Hat OpenShift 群集连接到现有虚拟网络。 使用此配置，Pod 可连接到对等互连虚拟网络中的其他服务，也可通过 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) 或站点到站点 (S2S) VPN 连接到本地网络。
+可通过对等互连[将 Azure Red Hat OpenShift 群集连接到现有虚拟网络](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)。 在此配置中，Pod 可以连接到对等互连虚拟网络中的其他服务。
 
 有关详细信息，请参阅[将群集的虚拟网络连接到现有虚拟网络](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)。
 

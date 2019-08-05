@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 07/01/2019
+ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: e064faf3017b95cb3a5f3d9b89f178fb7f846766
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592625"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594539"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -26,17 +26,28 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 
 非监督式学习可让模型了解字段与项之间的布局和关系，而无需手动标记数据，或者进行繁琐的编程和维护。 相比之下，预先训练的机器学习模型需要标准化的数据。 这些模型使用了偏离传统格式（如行业特定的表单）的输入材料，因此不够准确。
 
-## <a name="pre-built-receipt-model"></a>预建的回执模型
+## <a name="prebuilt-receipt-model"></a>预生成的回执模型
 
-表单识别器还包括用于读取销售回执的模型。 此模型可提取关键信息，如交易的时间和日期、商家信息、税额和总计等。 此外，预建的回执模型经过训练，可识别和返回回执中的所有文本。
+表单识别器还包括用于读取销售回执的模型。 此模型可提取关键信息，如交易的时间和日期、商家信息、税额和总计等。 此外，预生成的回执模型经过训练，可识别和返回回执中的所有文本。
 
 ## <a name="what-it-includes"></a>组成部分
 
-表单识别器以 REST API 的形式提供。 可以创建和训练自定义模型并对其进行评分，也可通过调用这些 API 访问预建的模型。 如果需要，可在本地 Docker 容器中训练和运行自定义模型。
+表单识别器以 REST API 的形式提供。 可以创建和训练自定义模型并对其进行评分，也可通过调用这些 API 来访问预生成的模型。 如果需要，可在本地 Docker 容器中训练和运行自定义模型。
 
-## <a name="input-requirements-custom-model"></a>输入要求（自定义模型）
+## <a name="input-requirements"></a>输入要求
+### <a name="custom-model"></a>自定义模型
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
+
+### <a name="prebuilt-receipt-model"></a>预生成的回执模型
+
+回执模型的输入要求略有不同。
+
+* 格式必须为 JPEG、PNG、BMP、PDF（文本或扫描时间）或 TIFF。
+* 文件大小必须小于 20 MB。
+* 图像尺寸必须介于 50 x 50 像素与 10000 x 10000 像素之间。 
+* PDF 尺寸必须最多为 17 x 17 英寸，对应于 Legal 或 A3 纸张尺寸及更小。
+* 对于 PDF 和 TIFF，仅处理前 200 页（对于免费层订阅，仅处理前两页）。
 
 ## <a name="request-access"></a>请求访问权限
 

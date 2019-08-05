@@ -1,5 +1,5 @@
 ---
-title: 快速入门：识别语音，Java (Windows, Linux) - 语音服务
+title: 快速入门：识别语音，Java（Windows、Linux）- 语音服务
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何创建一个简单的 Java 应用程序，用于从计算机的麦克风中捕获和转录用户语音。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: dce0a1b2adf20b2301402f37307e7ee1284c9aee
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 498e41b08133113be9789ef49291b8e2bb0f3705
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605156"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554103"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>快速入门：使用适用于 Java 的语音 SDK 识别语音
 

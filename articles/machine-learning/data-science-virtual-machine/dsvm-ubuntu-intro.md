@@ -4,8 +4,8 @@ titleSuffix: Azure
 description: 在 Azure 上配置和创建适用于 Linux (Ubuntu) 的数据科学虚拟机，进行分析和机器学习。
 services: machine-learning
 documentationcenter: ''
-author: gopitk
-ms.author: gokuma
+author: vijetajo
+ms.author: vijetaj
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
@@ -14,14 +14,14 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.openlocfilehash: 5a9fdebc8db0c2a1acc20a894f80cfcc87fb89d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 8a19f414f31c307111edad876ed973ff4027d907
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236489"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591929"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
 
@@ -77,7 +77,7 @@ ms.locfileid: "66236489"
 
 [CentOS](linux-dsvm-intro.md) 映像同样可用，它包含多种与 Ubuntu 映像相同的工具。 [Windows](provision-vm.md) 映像同样可用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 创建适用于 Linux 的数据科学虚拟机之前，必须具备 Azure 订阅。 若要获取一项订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/free/)。
 
@@ -101,7 +101,7 @@ ms.locfileid: "66236489"
 
    b. **大小**：
 
-   * 选择能满足功能需求和成本约束的服务器类型。 选择 NC 或基于 GPU 的 VM 实例的 ND 类 VM。 [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/) 页列出了具有 GPU 的区域。
+   * 选择能满足功能需求和成本约束的服务器类型。 为基于 GPU 的 VM 实例选择 NC 或 ND 类 VM。 [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/) 页列出了具有 GPU 的区域。
 
    c. **设置**：
 
@@ -121,7 +121,7 @@ ms.locfileid: "66236489"
 1. 图形会话 X2Go
 1. Jupyter 笔记本的 JupyterHub 和 JupyterLab
 
-此外可以将数据科学 VM 附加到 Azure 笔记本，以在 VM 上运行的 Jupyter 笔记本并绕过限制的免费服务层。 有关详细信息，请参阅[管理和配置笔记本项目-计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。
+还可以将 Data Science VM 附加到 Azure Notebooks，以在 VM 上运行 Jupyter Notebook，并绕过免费服务层的限制。 有关详细信息，请参阅[管理和配置 Notebooks 项目 - 计算层](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)。
 
 ### <a name="ssh"></a>SSH
 
@@ -148,9 +148,9 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
 
 ### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub 和 JupyterLab
 
-Ubuntu DSVM 运行 [JupyterHub](https://github.com/jupyterhub/jupyterhub)，一个多用户 Jupyter 服务器。 若要连接，请浏览到 https:\// 你的 vm-ip:8000 便携式计算机或桌面，输入用户名和密码，用于创建 VM，并登录。 提供多个示例笔记本用于浏览和试用。
+Ubuntu DSVM 运行 [JupyterHub](https://github.com/jupyterhub/jupyterhub)，一个多用户 Jupyter 服务器。 若要连接，请在笔记本电脑或台式机上浏览到 https:\//your-vm-ip:8000，输入用来创建 VM 的用户名和密码，然后登录。 提供多个示例笔记本用于浏览和试用。
 
-也会提供 JupyterLab（下一代的 Jupyter 笔记本和 JupyterHub）。 若要访问它，请登录到 JupyterHub，然后浏览到 URL https:\// 你的 vm-ip:8000/用户/你的用户名/实验室。 您可以添加此代码行 JupyterLab 设置为默认笔记本服务器 */etc/jupyterhub/jupyterhub_config.py*:
+也会提供 JupyterLab（下一代的 Jupyter 笔记本和 JupyterHub）。 若要访问它，请登录到 JupyterHub，然后浏览到 URL https:\//your-vm-ip:8000/user/your-username/lab。 可以通过将此行添加到 /etc/jupyterhub/jupyterhub_config.py  ，将 JupyterLab 设置为默认笔记本服务器：
 
 ```python
 c.Spawner.default_url = '/lab'
@@ -209,7 +209,7 @@ DIGITS 也可在 Conda 根环境中作为 Python 模块安装。
 
 #### <a name="tensorflow"></a>TensorFlow
 
-TensorFlow 是 Google 的深度学习库。 它是使用数据流关系图的数值计算的开放源代码软件库。 TensorFlow 位于 py35 Python 环境中，一些示例笔记本位于 JupyterHub 中。
+TensorFlow 是 Google 的深度学习库。 它是使用数据流图进行数值计算的开源软件库。 TensorFlow 位于 py35 Python 环境中，一些示例笔记本位于 JupyterHub 中。
 
 #### <a name="theano"></a>Theano
 
@@ -225,7 +225,7 @@ PyTorch 也位于根 Anaconda 环境中。 示例位于 /dsvm/samples/pytorch。
 
 R 是数据分析和机器学习的最常用语言之一。 如果要使用 R 进行分析，则 VM 需具有带 Microsoft R Open (MRO) 和数学内核库 (MKL) 的 Microsoft R Server (MRS)。 MKL 优化分析算法中常用的数学运算。 MRO 与 CRAN-R 100％ 兼容，在 CRAN 中发布的任何 R 库都可以安装在 MRO 上。 使用 MRS 可将 R 模型缩放和实施为 Web 服务。 可以在其中一个默认编辑器（如 RStudio、vi 或 Emacs）中编辑 R 程序。 预安装了 Emacs 编辑器，可根据喜好使用。 Emacs 包 ESS (Emacs Speaks Statistics) 简化了 Emacs 编辑器内的 R 文件处理。
 
-若要启动 R 控制台，只需在 shell 中键入 **R**。 此命令将进入交互式环境。 要开发 R 程序，通常使用 Emacs 或 vi 等编辑器，并在 R 中运行脚本。使用 RStudio，便拥有一个完整的图形 IDE 环境来开发 R 程序。
+若要启动 R 控制台，只需在 shell 中键入 **R**。 执行此命令将进入交互式环境。 要开发 R 程序，通常使用 Emacs 或 vi 等编辑器，并在 R 中运行脚本。使用 RStudio，便拥有一个完整的图形 IDE 环境来开发 R 程序。
 
 还提供一个 R 脚本，可用于安装[前 20 个 R 程序包](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)（如果需要）。 此脚本可以在 R 交互式界面中运行，可以通过在 shell 中键入 **R** 来输入此脚本（如前所述）。  
 
@@ -286,11 +286,11 @@ Anaconda 分发版还附带 Jupyter 笔记本 - 用于共享代码和分析的�
 
 ### <a name="apache-spark-standalone"></a>Apache Spark Standalone
 
-Apache Spark 的独立实例预安装在 Linux DSVM 上，帮助用户先在本地开发 Spark 应用程序，再在大型群集上进行测试和部署。 可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 时，单击“新建”按钮，然后应该能够看到可用内核列表  。 “Spark - Python”是 PySpark 内核。借助它，可以使用 Python 语言生成 Spark 应用程序。 如 PyCharm 或 Spyder 为 Python IDE 还可用于生成 Spark 程序。 独立在本例中，因此 Spark 堆栈内调用的客户端程序可以更快、 更轻松地解决问题相比开发 Spark 群集上运行。
+Apache Spark 的独立实例预安装在 Linux DSVM 上，帮助用户先在本地开发 Spark 应用程序，再在大型群集上进行测试和部署。 可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 时，单击“新建”按钮，然后应该能够看到可用内核列表  。 “Spark - Python”是 PySpark 内核。借助它，可以使用 Python 语言生成 Spark 应用程序。 还可以使用 Python IDE（如 PyCharm 或 Spyder）生成 Spark 程序。 在这个独立的实例中，Spark 堆栈在调用客户端程序中运行，与在 Spark 群集上进行开发相比，这使得排查问题更快、更容易。
 
 Jupyter 上提供了一个示例 PySpark 笔记本，该笔记本可以在 Jupyter 主目录下的“SparkML”目录 ($HOME/notebooks/SparkML/pySpark) 中找到。 
 
-如果您针对 Spark 编程在 R 中，可以使用 Microsoft R Server、 SparkR 或 sparklyr。 
+如果要用 R for Spark 编程，可以使用 Microsoft R Server、SparkR 或 sparklyr。 
 
 在 Microsoft R Server 的 Spark 上下文中运行之前，需要执行一次性设置步骤以启用本地单节点 Hadoop HDFS 和 Yarn 实例。 默认情况下，Hadoop 服务已安装但在 DSVM 上禁用。 若要启用它，需要首次以 root 身份运行以下命令：
 
@@ -304,13 +304,13 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-你可以停止 Hadoop 相关服务，不需要通过运行时 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```
+不需要 Hadoop 相关服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 来停止这些服务
 
-演示如何开发和测试 MRS 在远程 Spark 上下文 （即 DSVM 上的独立 Spark 实例） 中的示例是提供，不可用于 */dsvm/samples/MRS*目录。
+/dsvm/samples/MRS  目录中提供了一个示例，演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 MRS。
 
 ### <a name="ides-and-editors"></a>IDE 和编辑器
 
-可以选择多个代码编辑器包括 vi/VIM、 Emacs、 PyCharm、 RStudio 和 IntelliJ。 IntelliJ、RStudio 和 PyCharm 是图形编辑器，需登录图形桌面才能使用。 这些编辑器具有用以启动的桌面和应用程序菜单快捷方式。
+可以选择多个代码编辑器，包括 vi/VIM、Emacs、PyCharm、RStudio 和 IntelliJ。 IntelliJ、RStudio 和 PyCharm 是图形编辑器，需登录图形桌面才能使用。 这些编辑器具有用以启动的桌面和应用程序菜单快捷方式。
 
 **VIM** 和 **Emacs** 是基于文本的编辑器。 Emacs 上已安装名为 Emacs Speaks Statistics (ESS) 的附加包，使得在 Emacs 编辑器中使用 R 更轻松。 可在 [ESS](https://ess.r-project.org/) 了找到更多信息。
 
@@ -320,7 +320,7 @@ systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
 #### <a name="graphical-sql-client"></a>图形化 SQL 客户端
 
-SQuirrel SQL  是一个图形化 SQL 客户端，用于连接到不同的数据库（如 Microsoft SQL Server 和 MySQL）和运行 SQL 查询。 你可以从图形桌面会话 （例如使用 X2Go 客户端） 运行 SQuirrel SQL 使用桌面图标，或通过在 shell 中使用以下命令：
+SQuirrel SQL  是一个图形化 SQL 客户端，用于连接到不同的数据库（如 Microsoft SQL Server 和 MySQL）和运行 SQL 查询。 可以使用桌面图标或使用 shell 中的以下命令从图形桌面会话（例如，使用 X2Go 客户端）运行 SQuirrel SQL：
 
 ```bash
 /usr/local/squirrel-sql-3.7/squirrel-sql.sh
@@ -359,7 +359,7 @@ R 和 Python 中提供可访问数据库的库。
 VM 上安装有以下 Azure 工具：
 
 * **Azure 命令行接口**：Azure CLI 允许通过 shell 命令创建和管理 Azure 资源。 若要调用 Azure 工具，只需键入 **azure 帮助**。 有关详细信息，请参阅 [Azure CLI 文档页](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
-* **Microsoft Azure 存储资源管理器**：Microsoft Azure 存储资源管理器是一个图形工具，用于浏览在 Azure 存储帐户中存储的对象，以及将数据上传到 Azure Blob 和从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 可以通过键入 **StorageExplorer** 从 shell 提示符调用。 您必须登录从 X2Go 客户端，或者已设置 X11 转发。
+* **Microsoft Azure 存储资源管理器**：Microsoft Azure 存储资源管理器是一个图形工具，用于浏览在 Azure 存储帐户中存储的对象，以及将数据上传到 Azure Blob 和从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 可以通过键入 **StorageExplorer** 从 shell 提示符调用。 必须从 X2Go 客户端登录，或设置 X11 转发。
 * **Azure 库**：下面是一些预安装的库。
   
   * **Python**：Python 中已安装的 Azure 相关库包括 **azure**、**azureml**、**pydocumentdb** 和 **pyodbc**。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 使用第四个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可以通过使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库。 输入 **pip 列表**查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
@@ -372,7 +372,7 @@ VM 上安装有以下 Azure 工具：
 
 Azure 机器学习是完全托管的云服务，允许构建、部署和共享预测分析解决方案。 从 Azure 机器学习工作室中构建实验和模型。 可从数据科学虚拟机上的 Web 浏览器，通过访问 [Microsoft Azure 机器学习](https://studio.azureml.net)来访问 Azure 机器学习工作室。
 
-登录 Azure 机器学习工作室后，可以访问实验画布，可在其中生成机器学习算法的逻辑流。 还可以访问在 Azure 机器学习上托管的 Jupyter 笔记本，并且可以无缝使用机器学习工作室中的实验。 通过将已构建的机器学习模型包装在 Web 服务接口中，来对它们执行操作。 实施机器学习模型，以任何语言编写的客户端来调用这些模型的预测。 有关详细信息，请参阅[机器学习文档](https://azure.microsoft.com/documentation/services/machine-learning/)。
+登录 Azure 机器学习工作室后，可以访问实验画布，可在其中生成机器学习算法的逻辑流。 还可以访问在 Azure 机器学习上托管的 Jupyter 笔记本，并且可以无缝使用机器学习工作室中的实验。 通过将已构建的机器学习模型包装在 Web 服务接口中，来对它们执行操作。 实施机器学习模型使得以任何语言编写的客户端都能从这些模型中调用预测。 有关详细信息，请参阅[机器学习文档](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
 还可以在 VM 上的 R 或 Python 中构建模型，并在 Azure 机器学习上将其部署到生产中。 我们已在 R (**AzureML**) 和 Python (**azureml**) 中分别安装了库以启用此功能。
 
@@ -400,7 +400,7 @@ VM 附带一些已经预编译并已在本地预安装的机器学习工具和�
 
 Vowpal Wabbit 是一种使用在线、哈希、allreduce、缩减、learning2search、主动和交互式学习等技术的机器学习系统。
 
-若要在基础示例上运行该工具，使用以下命令：
+若要在基本示例上运行该工具，请使用以下命令：
 
 ```bash
 cp -r /dsvm/tools/VowpalWabbit/demo vwdemo
@@ -455,7 +455,7 @@ library(rattle)
 rattle()
 ```
 
-现在，将打开具有一组选项卡的图形界面。 下面是快速入门教程步骤中使用示例天气数据集和生成模型所需的 Rattle。 以下某些步骤中，系统会提示自动安装并加载尚未安装在系统上的某些必需 R 包。
+现在，将打开具有一组选项卡的图形界面。 下面是 Rattle 中使用示例天气数据集并构建模型所需的快速入门步骤。 以下某些步骤中，系统会提示自动安装并加载尚未安装在系统上的某些必需 R 包。
 
 > [!NOTE]
 > 如果无权在系统目录（默认）中安装包，可能会在 R 控制台窗口中看到一个提示，提醒将包安装到个人库中。 如果看到这些提示，请回复 y  。

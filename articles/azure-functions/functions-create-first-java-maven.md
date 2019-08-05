@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中通过 Java 和 Maven 创建你的第一个函数 | Microsoft Docs
+title: 使用 Java 和 Maven 发布函数 - Azure Functions
 description: 通过 Java 和 Maven 创建一个简单的 HTTP 触发函数，并将其发布到 Azure。
 services: functions
 documentationcenter: na
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 20327e64080182518fd28b1d367ffe37be5ce9a4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: mvc, devcenter, seo-java-july2019
+ms.openlocfilehash: 9ed954eaf96196fdaa944778db8ea47dd5e6da9f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323969"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564795"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>使用 Java 和 Maven 创建你的第一个函数
 

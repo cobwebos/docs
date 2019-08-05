@@ -1,5 +1,5 @@
 ---
-title: 预生成意向和实体
+title: 预生成意向和实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，我们将预生成的意向和实体添加到某个应用，以便快速了解意向预测和数据提取。 不需要使用预生成的实体标记任何话语。 自动检测实体。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2018
 ms.author: diberry
-ms.openlocfilehash: 189514c51451dedfaab7b07f28d79f674b32f83a
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8c3fa2a68018e0eb45f37b54b16b6e7797cfa7c4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277532"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560035"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>教程：确定常见意向和实体
 

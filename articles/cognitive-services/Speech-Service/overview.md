@@ -1,7 +1,7 @@
 ---
-title: 什么是 Azure 语音服务？
+title: 什么是语音服务？
 titleSuffix: Azure Cognitive Services
-description: Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用语音 SDK、语音设备 SDK 或 REST API 可以轻松在应用程序、工具和设备中添加语音。 可将语音功能添加到现有的聊天机器人，在翻译应用程序中将文本转换为语音，或者听录大量的呼叫中心数据。
+description: 语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用语音 SDK、语音设备 SDK 或 REST API 可以轻松在应用程序、工具和设备中添加语音。 可将语音功能添加到现有的聊天机器人，在翻译应用程序中将文本转换为语音，或者听录大量的呼叫中心数据。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d9664ac9fb72a5f094674856a20230199270f01d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1d722d7e2886008aa5aa3acff8095fcf35ac38d8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603150"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554173"
 ---
 # <a name="what-are-the-speech-services"></a>什么是语音服务？
 

@@ -3,17 +3,16 @@ title: 使用 Azure CLI 运行第一个查询
 description: 本文将指导你完成为 Azure CLI 启用 Resource Graph 扩展并运行第一个查询的步骤。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 07/26/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 592b2c611888623c2753d7c4abc9fe57c28af30e
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: afe32c197b5eab24ba298395bb2c9e83f847d6c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823167"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562572"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>快速入门：使用 Azure CLI 运行你的第一个 Resource Graph 查询
 
@@ -36,7 +35,7 @@ ms.locfileid: "65823167"
    az extension add --name resource-graph
    ```
 
-1. 验证该扩展是否已安装以及是否为预期的版本（至少为 **0.1.7**）：
+1. 验证该扩展是否已安装以及是否为预期的版本（至少为 **0.1.11**）：
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -48,7 +47,7 @@ ms.locfileid: "65823167"
 
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
 
-将 Azure CLI 扩展添加到所选环境中后，即可尝试一个简单的 Resource Graph 查询。 该查询将返回前五个 Azure 资源，以及每个资源的名称和资源类型。
+将 Azure CLI 扩展添加到所选环境中后，即可尝试一个简单的 Resource Graph 查询。 该查询将返回前五个 Azure 资源，以及每个资源的名称和资源类型   。
 
 1. 使用 `graph` 扩展和 `query` 命令运行你的第一个 Azure Resource Graph 查询：
 
@@ -62,7 +61,7 @@ ms.locfileid: "65823167"
    > [!NOTE]
    > 由于此查询示例未提供排序修饰符（例如 `order by`），因此多次运行此查询可能会为每个请求生成一组不同的资源。
 
-1. 将查询更新为 `order by` Name 属性：
+1. 将查询更新为 `order by` Name 属性  ：
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
@@ -72,14 +71,14 @@ ms.locfileid: "65823167"
    > [!NOTE]
    > 与第一个查询一样，多次运行此查询可能会为每个请求生成一组不同的资源。 查询命令的顺序非常重要。 在本例中，`order by` 位于 `limit` 之后。 这将首先限制查询结果，然后对其进行排序。
 
-1. 将查询更新为先 `order by` Name 属性，然后再 `limit` 为前五个结果：
+1. 将查询更新为先 `order by` Name 属性，然后再 `limit` 为前五个结果  ：
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
    az graph query -q 'project name, type | order by name asc | limit 5'
    ```
 
-假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且符合预期的 -- 按 Name 属性排序，但仍限制为前五个结果。
+假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且符合预期的 -- 按 Name 属性排序，但仍限制为前五个结果  。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -89,9 +88,6 @@ ms.locfileid: "65823167"
 # Remove the Resource Graph extension from the Azure CLI environment
 az extension remove -n resource-graph
 ```
-
-> [!NOTE]
-> 这不会删除之前下载的扩展文件。 只会从正在运行的 Azure CLI 环境中将其删除。
 
 ## <a name="next-steps"></a>后续步骤
 

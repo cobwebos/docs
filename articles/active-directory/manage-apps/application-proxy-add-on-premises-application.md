@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecff60d1a1f808c4021476d136fe014175451672
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: c890288539a8abebe688ca4571ffa6c152e992ee
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723965"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694044"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -85,8 +85,6 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
    | 443 | 与应用程序代理服务进行所有出站通信 |
 
 如果防火墙根据发起方用户实施流量控制，另请针对来自作为网络服务运行的 Windows 服务的流量打开端口 80 和 443。
-
-如果你已在使用应用程序代理，则可能安装了旧版连接器。 请遵循本教程安装最新版本的连接器。 低于 1.5.132.0 的版本还需要打开以下端口：5671、8080、9090-9091、9350、9352、10100–10120。
 
 ### <a name="allow-access-to-urls"></a>允许访问 URL
 
@@ -180,7 +178,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
     | 字段 | 说明 |
     | :---- | :---------- |
-    | **后端应用程序超时** | 仅当应用程序身份验证和连接速度较慢时，才将此值设置为“长”  。 |
+    | **后端应用程序超时** | 仅当应用程序身份验证和连接速度较慢时，才将此值设置为“长”  。 默认情况下，后端应用程序超时的长度为 85 秒。 设置为 long 时，后端超时将增加到 180 秒。 |
     | **使用仅限 HTTP 的 Cookie** | 将此值设置为“是”，使应用程序代理 Cookie 在 HTTP 响应标头中包含 HTTPOnly 标志。  如果使用远程桌面服务，请将此值设置为“否”。 |
     | **使用安全 Cookie**| 将此值设置为“是”可通过安全通道（例如加密的 HTTPS 请求）传输 Cookie。 
     | **使用永久性 Cookie**| 始终将此值设置为“否”  。 仅对无法在进程之间共享 cookie 的应用程序使用此设置。 有关 Cookie 设置的详细信息，请参阅[用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)。

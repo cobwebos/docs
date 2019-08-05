@@ -1,6 +1,6 @@
 ---
-title: 创建、发布、回答
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 创建、发布、回答 - QnA Maker
+titleSuffix: Azure Cognitive Services
 description: 此基于 REST 的教程详细介绍如何以编程方式创建和发布知识库，然后通过知识库来回答问题。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: a14bc14e6115c1bc25582c3de71382ae17d7debd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dfd0a04da9f4f728bd43d8d3fcd4c671e9b95a47
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792283"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562896"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>教程：使用 C# 创建知识库并回答问题
 
@@ -41,10 +41,10 @@ ms.locfileid: "65792283"
 ## <a name="prerequisites"></a>先决条件
 
 * 最新的 [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/)。
-* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。 
+* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。   
 
 > [!NOTE] 
-> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-csharp GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)获得。
+> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-csharp GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)获得  。
 
 ## <a name="create-a-knowledge-base-project"></a>创建知识库项目
 
@@ -146,7 +146,7 @@ ms.locfileid: "65792283"
 对于任何其他响应，该响应将原样返回，不做任何更改。
 
 ## <a name="generating-an-answer"></a>生成答案
-为了访问 KB 以发送问题并接收最佳答案，程序需要 KB 详细信息 API 中提供的终结点主机，以及终结点 API 中提供的主终结点密钥。 这些方法与用于生成答案的方法一起位于以下部分。 
+为了访问 KB 以发送问题并接收最佳答案，程序需要 KB 详细信息 API 中提供的终结点主机，  以及终结点 API 中提供的主终结点密钥。  这些方法与用于生成答案的方法一起位于以下部分。 
 
 下表介绍了如何使用此数据来构造 URI：
 
@@ -154,7 +154,7 @@ ms.locfileid: "65792283"
 |--|
 |https://**HOSTNAME**.azurewebsites.net/qnamaker/knowledgebases/**KBID**/generateAnswer|
 
-主终结点作为标头传递，以便对请求进行身份验证，从而生成答案：
+主终结点  作为标头传递，以便对请求进行身份验证，从而生成答案：
 
 |标头名称|标头值|
 |--|--|

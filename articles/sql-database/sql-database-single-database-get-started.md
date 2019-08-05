@@ -10,20 +10,19 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-manager: craigg
-ms.date: 04/23/2019
-ms.openlocfilehash: 470dca235b9a3212c09052f7535fa90d076fe4d3
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.date: 07/29/2019
+ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444464"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640038"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>快速入门：使用 Azure 门户、PowerShell 和 Azure CLI 在 Azure SQL 数据库中创建单一数据库
 
 在 Azure SQL 数据库中创建数据库时，创建[单一数据库](sql-database-single-database.md)是最快速且最简单的部署选项。 本快速入门介绍如何使用 Azure 门户创建并查询单一数据库。
 
-如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/)。 
 
 执行本快速入门中的所有步骤都需要登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -37,7 +36,7 @@ ms.locfileid: "68444464"
 创建单一数据库时，也定义一个 [SQL 数据库服务器](sql-database-servers.md)来管理它并将它放置在指定区域的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中。
 
 > [!NOTE]
-> 本快速入门使用[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)和[无服务器](sql-database-serverless.md)计算层，但也可使用[基于 DTU 的购买模型](sql-database-service-tiers-DTU.md)。
+> 本快速入门使用的是[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，但[基于 DTU 的购买模型](sql-database-service-tiers-DTU.md)也可用。
 
 若要创建包含 Adventure Works LT 示例数据的单一数据库，请执行以下操作：
 

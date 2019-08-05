@@ -1,5 +1,5 @@
 ---
-title: Application Insights，C#
+title: Application Insights，C# - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本教程将机器人和语言理解信息添加到 Application Insights 遥测数据存储。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: 720352403fd5f5937669f9838f3974cb0d3f8797
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: bc8cf9973ed6889b0820e5ada5565d0541532fa3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657782"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560055"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-bot-in-c"></a>将 LUIS 结果从以 C# 编写的机器人添加到 Application Insights
 

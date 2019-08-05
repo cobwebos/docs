@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: 在 Azure 上配置和创建 Linux 数据科学虚拟机，用于进行分析和机器学习。
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
@@ -13,15 +13,15 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: e7b67905c96495382536555b87772e4eefada250
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.author: vijetaj
+ms.openlocfilehash: 50dd51cc204a6a22d14873114ba6d98e2a174251
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502312"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592018"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Linux CentOS 数据科学虚拟机
 
@@ -61,7 +61,7 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
 ## <a name="other-versions-of-the-data-science-virtual-machine"></a>其他版本的数据科学虚拟机
 [Ubuntu](dsvm-ubuntu-intro.md) 映像同样可用，它包含多种与 CentOS 映像相同的工具以及加深度学习框架。 [Windows](provision-vm.md) 映像同样可用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 创建 Linux 数据科学虚拟机之前，必须具备以下条件：
 
 * **Azure 订阅**：若要获取一项订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/free/)。
@@ -198,7 +198,7 @@ Jupyter 上提供了一个示例 PySpark 笔记本，该笔记本可以在 Jupyt
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-你可以停止 Hadoop 相关服务，不需要通过运行时```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```演示如何开发和测试 MRS 在远程 Spark 上下文 （即 DSVM 上的独立 Spark 实例） 中的示例是提供，可在`/dsvm/samples/MRS`目录。 
+不需要 Hadoop 相关服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 停止这些服务。`/dsvm/samples/MRS` 目录中提供了演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 MRS 的示例。 
 
 ### <a name="ides-and-editors"></a>IDE 和编辑器
 可以选择多个代码编辑器。 这包括 vi/VIM、Emacs、gEdit、PyCharm、RStudio、Eclipse 和 IntelliJ。 gEdit、Eclipse、IntelliJ、RStudio 和 PyCharm 是图形编辑器，需登录到图形桌面才能使用。 这些编辑器具有用以启动的桌面和应用程序菜单快捷方式。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 9800848b24523a0eb5992e64ce1580cc53b0e3a0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a24159a482c55496bb1e6031be951196258a6796
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173498"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565498"
 ---
 现在可以在 Azure 门户中使用数据资源管理器工具来创建图形数据库。 
 
@@ -28,8 +28,8 @@ ms.locfileid: "67173498"
     设置|建议的值|说明
     ---|---|---
     数据库 ID|sample-database|输入“sample-database”  作为新数据库的名称。 数据库名称的长度必须为 1 到 255 个字符，不能包含 `/ \ # ?` 或尾随空格。
-    图形 ID|sample-graph|输入“sample-graph”  作为新集合的名称。 图形名称与数据库 ID 的字符要求相同。
-    存储容量|固定 (10 GB)|保留默认值为“固定 (10 GB)”  。 此值是数据库的存储容量。
     Throughput|400 RU|将吞吐量更改为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。
+    图形 ID|sample-graph|输入“sample-graph”  作为新集合的名称。 图形名称与数据库 ID 的字符要求相同。
+    分区键| /pk |所有 Cosmos DB 帐户都需要一个分区键才能进行水平缩放。 在[图形数据分区](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning)一文中了解如何选择适当的分区键。
 
 3. 填写表单后，请单击“确定”  。

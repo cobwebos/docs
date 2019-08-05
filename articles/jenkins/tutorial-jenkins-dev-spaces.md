@@ -6,13 +6,13 @@ ms.author: tarcher
 ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/18/2019
-ms.openlocfilehash: f5f74ebeb803a5c493f1dbedb6501adf3a88c215
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.date: 07/31/2019
+ms.openlocfilehash: 10ff8f4645ee1e7023c96174236243a3b85de938
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785670"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679124"
 ---
 <!-- GMinchAQ, 06/18/19 -->
 
@@ -28,7 +28,7 @@ ms.locfileid: "67785670"
 > * 创建支持 Azure Dev Spaces 的 AKS 群集
 > * 将多服务应用程序部署到 AKS
 > * 准备 Jenkins 服务器
-> * 在 Jenkins 管道中使用 Azure Dev Spaces 插件预览代码变更后，再将它们合并到项目中
+> * 在 Jenkins 管道中使用 Azure Dev Spaces 插件预览代码更改后，再将它们合并到项目中
 
 本教程假设你具备核心 Azure 服务、AKS、ACR、Azure Dev Spaces、Jenkins [管道](https://jenkins.io/doc/book/pipeline/)和插件以及 GitHub 的中级知识。 基本熟悉支持工具（如 kubectl 和 Helm）是有帮助的。
 
@@ -175,7 +175,7 @@ ms.locfileid: "67785670"
 * 安装 Helm 和 Kubernetes CLI
 * 添加凭据
 
-### <a name="install-plugins"></a>安装插件
+### <a name="install-plug-ins"></a>安装插件
 
 1. 登录 Jenkins 服务器。 选择“管理 Jenkins”>“管理插件”。 
 2. 在“可用”选项卡上选择以下插件： 
@@ -184,7 +184,7 @@ ms.locfileid: "67785670"
     * [环境注入程序](https://plugins.jenkins.io/envinject)
     * [GitHub 集成](https://plugins.jenkins.io/github-pullrequest)
 
-    如果这些插件没有显示在列表中，检查“已安装”  选项卡以查看它们是否已安装。
+    如果这些插件没有显示在列表中，请检查“已安装”  选项卡以查看它们是否已安装。
 
 3. 若要安装插件，请选择“立即下载并在重启后安装”。 
 
@@ -415,7 +415,7 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你了解了如何使用适用于 Jenkins 的 Azure Dev Spaces 插件和 Azure 容器注册表插件来生成代码并部署到开发空间。
+本文介绍了如何使用适用于 Jenkins 的 Azure Dev Spaces 插件和 Azure 容器注册表插件来生成代码并部署到开发空间。
 
 下面的资源列表提供了关于 Azure Dev Spaces、ACR 任务以及 CI/CD 与 Jenkins 配合使用的更多信息。
 

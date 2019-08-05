@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 10f559295ff0598dea26fb30b089f020e2985889
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 993b0249bdcc8e0e54dbe0c222aa2335c3bf8d4a
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840347"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679144"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>准备 VMware VM 以进行评估和迁移到 Azure
 
@@ -45,9 +45,9 @@ ms.locfileid: "67840347"
 
 ### <a name="assign-permissions-to-create-project"></a>分配创建项目的权限
 
-1. 在 Azure 门户中打开订阅，然后选择“访问控制(IAM)”。
-2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。
-3. 你应该拥有“参与者”或“所有者”权限。
+1. 在 Azure 门户中打开订阅，然后选择“访问控制(IAM)”。 
+2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。 
+3. 你应该拥有“参与者”或“所有者”权限。  
     - 如果你刚刚创建了免费的 Azure 帐户，那么你就是订阅的所有者。
     - 如果你不是订阅所有者，请让所有者分配该角色。
 
@@ -72,8 +72,8 @@ ms.locfileid: "67840347"
 
 租户/全局管理员可按如下所述授予权限
 
-1. 在 Azure AD 中，租户/全局管理员应导航到“Azure Active Directory” > “用户” > “用户设置”。
-2. 管理员应将“应用注册”设置为“是”。
+1. 在 Azure AD 中，租户/全局管理员应导航到“Azure Active Directory” > “用户” > “用户设置”    。
+2. 管理员应将“应用注册”设置为“是”   。
 
     ![Azure AD 权限](./media/tutorial-prepare-vmware/aad.png)
 
@@ -90,11 +90,11 @@ ms.locfileid: "67840347"
 
 按如下所述分配对 Azure Migrate 项目所在的资源组的角色分配权限：
 
-1. 在 Azure 门户上的资源组中，选择“访问控制(IAM)”。
-2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。
+1. 在 Azure 门户上的资源组中，选择“访问控制(IAM)”。 
+2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。 
 
-    - 若要运行服务器评估，“参与者”权限足以。
-    - 若要运行无代理服务器迁移，应该拥有“所有者”（或“参与者”和“用户访问管理员”）权限。
+    - 若要运行服务器评估，“参与者”权限足以。 
+    - 若要运行无代理服务器迁移，应该拥有“所有者”（或“参与者”和“用户访问管理员”）权限。   
 
 3. 如果没有所需的权限，可请求资源组所有者分配这些权限。 
 
@@ -102,11 +102,11 @@ ms.locfileid: "67840347"
 
 ## <a name="prepare-for-vmware-vm-assessment"></a>准备 VMware VM 评估
 
-若要准备 VMware VM 评估，需验证 Hyper-V 主机和 VM 设置，并验证设备部署设置。
+若要准备 VMware VM 评估，需验证 VMware 主机和 VM 设置，并验证设备部署设置。
 
 ### <a name="verify-vmware-settings"></a>验证 VMware 设置
 
-1. [验证](migrate-support-matrix-vmware.md#assessment-vmware-server-requirements) VMware 服务器对 VM 评估的要求。
+1. [验证](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) VMware 服务器对 VM 评估的要求。
 2. [确保](migrate-support-matrix-vmware.md#assessment-port-requirements)在 vCenter 服务器上打开所需端口。
 
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6d2b9c8dd8fb89e201cff5155b1dec0857204752
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: bb60fa216c10b11b6a47c029fbef3698c6f7bd6d
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400051"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663503"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
@@ -96,8 +96,10 @@ ms.locfileid: "66400051"
 6. 对于“资源组”  ，请选择“使用现有”  ，然后选择“migrationRG”  。
 7. 对于“位置”  ，选择“西欧”  。
 8. 在“子网”  下，保留“名称”  和“IP 范围”  的默认值。
-9. 让“服务终结点”选项保持禁用状态。 
-10. 完成操作后，选择“创建”  。
+9. 添加针对 DDoS 防护设置的说明。
+10. 让“服务终结点”选项保持禁用状态。 
+11. 添加针对防火墙设置的说明。
+12. 完成操作后，选择“创建”  。
 
 ## <a name="prepare-the-infrastructure"></a>准备基础结构
 
@@ -157,7 +159,7 @@ ms.locfileid: "66400051"
 
 必须先创建复制策略，然后才能启用复制。
 
-1. 选择“复制并关联”  。
+1. 选择“创建并关联”  。
 2. 在“名称”  中输入 **myReplicationPolicy**。
 3. 其余选项均保留默认设置，然后选择“确定”  以创建策略。 新策略会自动与配置服务器关联。
 

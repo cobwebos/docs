@@ -1,5 +1,5 @@
 ---
-title: 正则表达式实体
+title: 正则表达式实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用正则表达式实体从话语中提取带有一致格式的数据。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 5e79de8dc8b4e81f427925b6e3d662bd4931804d
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 958d880829e9524389a25f029415786231644c04
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497022"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563595"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>教程：从话语中获取格式正确的数据
 在此教程中，创建使用“正则表达式”实体从话语中提取带有一致格式的数据的应用  。

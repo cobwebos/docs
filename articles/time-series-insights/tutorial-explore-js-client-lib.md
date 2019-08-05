@@ -1,20 +1,20 @@
 ---
 title: 教程：探索 Azure 时序见解 JavaScript 客户端库 | Microsoft Docs
-description: 了解 Azure 时序见解 JavaScript 客户端库和相关的编程模型。
+description: 本教程介绍 Azure 时序见解 JavaScript 客户端库和相关的编程模型。
 author: ashannon7
 manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 05/06/2019
+ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: c6cfd2069851138d738b1533eaab74d9d7aedda6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2c1013829a7e6e94712e22ae235a47490c8c5eaa
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243983"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677664"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>教程：探索 Azure 时序见解 JavaScript 客户端库
 
@@ -34,16 +34,18 @@ ms.locfileid: "66243983"
 > * 时序见解示例应用源文件在 [GitHub 示例存储库](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)中提供。
 > * 请阅读[时序见解客户端参考文档](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)。
 
+注册一个[免费的 Azure 订阅](https://azure.microsoft.com/free/)（如果还没有）。
+
+## <a name="prerequisites"></a>先决条件
+
+* 本教程使用浏览器的“开发人员工具”功能  。 现代 Web 浏览器（[Microsoft Edge](/microsoft-edge/devtools-guide)、[Chrome](https://developers.google.com/web/tools/chrome-devtools/)、[Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)、[Safari](https://developer.apple.com/safari/tools/) 等）通常可以通过键盘上的 F12 热键访问“Web 检查器视图”  。 访问该视图的另一种方法是右键单击网页，然后选择“检查元素”  。
+
 ## <a name="video"></a>视频
 
 在本视频中，我们将介绍开源时序见解 JavaScript SDK：
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
-
-## <a name="prerequisites"></a>先决条件
-
-本教程使用浏览器的“开发人员工具”功能  。 现代 Web 浏览器（[Microsoft Edge](/microsoft-edge/devtools-guide)、[Chrome](https://developers.google.com/web/tools/chrome-devtools/)、[Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)、[Safari](https://developer.apple.com/safari/tools/) 等）通常可以通过键盘上的 F12 热键访问“Web 检查器视图”  。 访问该视图的另一种方法是右键单击网页，然后选择“检查元素”  。
 
 ## <a name="time-series-insights-sample-application"></a>时序见解示例应用程序
 
@@ -100,7 +102,7 @@ ms.locfileid: "66243983"
 
 ## <a name="time-series-insights-javascript-client-library-concepts"></a>时序见解 JavaScript 客户端库概念
 
-时序见解客户端库 (*tsclient.js*) 为两个重要的 JavaScript 功能提供抽象：
+时序见解客户端库 (*tsiclient.js*) 为两个重要的 JavaScript 功能提供抽象：
 
 * **用于调用时序见解查询 API 的包装器方法**：可用于通过聚合表达式查询时序见解数据的 REST API。 这些方法组织在库的 TsiClient.Server 命名空间下。
 
@@ -307,6 +309,13 @@ ms.locfileid: "66243983"
 [!code-javascript[code-sample-brushes](~/samples-javascript/pages/tutorial/index.html?range=526-540&highlight=1,13)]
 
 [![包含用于通过画笔创建饼图和条形图的上下文菜单的折线图](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png#lightbox)
+
+## <a name="clean-up-resources"></a>清理资源
+
+现在你已完成本教程，请清除已创建的资源：
+
+1. 从 [Azure 门户](https://portal.azure.com)的左侧菜单中，选择“所有资源”  ，找到“Azure 时序见解”资源组。
+1. 通过选择“删除”  来删除整个资源组（以及其中包含的所有资源），或者单独删除每个资源。
 
 ## <a name="next-steps"></a>后续步骤
 

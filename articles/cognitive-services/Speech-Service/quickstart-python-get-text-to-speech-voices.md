@@ -1,5 +1,5 @@
 ---
-title: 快速入门：列出“文本转语音”语音 (Python) - 语音服务
+title: 快速入门：列出“文本转语音”语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 Python 获取某个区域/终结点的标准语音和神经语音的完整列表。 列表以 JSON 形式返回，语音可用性因区域而异。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 46595cdf665158d019c9b6def19ff6609db803bc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: ac96c3ce3924b8b2fe834e2b350e95ce23c52e1f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602984"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559352"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>快速入门：使用 Python 获取“文本转语音”语音的列表
 

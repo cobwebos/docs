@@ -1,6 +1,6 @@
 ---
-title: 获取意向，Node.js
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 获取意向，Node.js - LUIS
+titleSuffix: Azure Cognitive Services
 description: 本快速入门使用可用的公共 LUIS 应用从会话文本中确定用户的意向。 使用 Node.js 将用户的意向作为文本发送到公共应用的 HTTP 预测终结点。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 51ba4935afc2713fb0dc92ebbf6ca31f7c60355a
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 084d717c1001604a7fb8ed60518777f956dec8b9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276088"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563803"
 ---
 # <a name="quickstart-get-intent-using-nodejs"></a>快速入门：使用 Node.js 获取意向
 

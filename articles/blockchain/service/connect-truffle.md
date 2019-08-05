@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 8b1a701beac867c5f331ffa1ee1dee615961c6b3
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 9154bc749f7db337de67f501d5e5049dfd466156
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416303"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698468"
 ---
 # <a name="quickstart-use-truffle-to-connect-to-an-azure-blockchain-service-network"></a>快速入门：使用 Truffle 连接到 Azure 区块链服务网络
 
@@ -28,6 +28,8 @@ Truffle 是一个区块链开发环境，可以用来连接到 Azure 区块链�
 * [创建 Azure 区块链成员](create-member.md)
 * 安装 [Truffle](https://github.com/trufflesuite/truffle)。 Truffle 要求安装多个工具，包括 [Node.js](https://nodejs.org)、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)。
 * 安装 [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。 Web3 需要 Python。
+* 安装 [Visual Studio Code](https://code.visualstudio.com/download)。
+* 安装 [Visual Studio Code Solidity 扩展](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)。
 
 ## <a name="create-truffle-project"></a>创建 Truffle 项目
 
@@ -53,38 +55,51 @@ Truffle 是一个区块链开发环境，可以用来连接到 Azure 区块链�
     ```
 
     在安装过程中可能会收到 npm 警告。
+    
+## <a name="configure-truffle-project"></a>配置 Truffle 项目
 
-1. 启动 Truffle 的交互式开发控制台。
+若要配置 Truffle 项目，需要从 Azure 门户获取一些事务节点信息。
 
-    ``` bash
-    truffle develop
+### <a name="transaction-node-endpoint-addresses"></a>事务节点终结点地址
+
+1. 在 Azure 门户中，导航到每个事务节点并选择“事务节点”>“连接字符串”。 
+1. 复制并保存每个事务节点的“HTTPS (访问密钥 1)”中的终结点 URL  。 稍后在本教程中，需要在智能合同配置文件中提供终结点地址。
+
+    ![事务终结点地址](./media/send-transaction/endpoint.png)
+
+### <a name="edit-configuration-file"></a>编辑配置文件
+
+1. 启动 Visual Studio Code，使用“文件”>“打开文件夹”菜单打开 Truffle 项目目录文件夹。 
+1. 打开 Truffle 配置文件 `truffle-config.js`。
+1. 将该文件的内容替换为以下配置信息。 添加包含终结点地址的变量。 将尖括号替换为在前面部分中收集的值。
+
+    ``` javascript
+    var defaultnode = "<default transaction node connection string>";   
+    var Web3 = require("web3");
+    
+    module.exports = {
+      networks: {
+        defaultnode: {
+          provider: new Web3.providers.HttpProvider(defaultnode),
+          network_id: "*"
+        }
+      }
+    }
     ```
 
-    Truffle 会创建一个本地开发区块链，并提供一个交互式控制台。
+1. 保存对 `truffle-config.js` 的更改。
 
 ## <a name="connect-to-transaction-node"></a>连接到事务节点
 
-使用 Web3 连接到事务节点  。 可以从 Azure 门户获取 Web3 连接字符串  。
+使用 Web3 连接到事务节点  。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 导航到你的 Azure 区块链服务成员。 选择“事务节点”  和默认事务节点链接。
+1. 使用 Truffle 控制台连接到默认事务节点。
 
-    ![选择默认事务节点](./media/connect-truffle/transaction-nodes.png)
-
-1. 选择“示例代码”>“Web3”  。
-1. 从“HTTPS(访问密钥 1)”  中复制 JavaScript。 你需要将此代码用于 Truffle 的交互式开发控制台。
-
-    ![Web3 代码](./media/connect-truffle/web3-code.png)
-
-1. 将上一步中的 JavaScript 代码粘贴到 Truffle 交互式开发控制台。 该代码将创建连接到你的 Azure 区块链服务事务节点的一个 web3 对象。
-
-    示例输出：
-
-    ```bash
-    truffle(develop)> var Web3 = require("Web3");
-    truffle(develop)> var provider = new Web3.providers.HttpProvider("https://myblockchainmember.blockchain.azure.com:3200/hy5FMu5TaPR0Zg8GxiPwned");
-    truffle(develop)> var web3 = new Web3(provider);
+    ``` bash
+    truffle console --network defaultnode
     ```
+
+    Truffle 连接到默认事务节点并提供交互式控制台。
 
     你可以调用 **web3** 对象上的方法来与事务节点进行交互。
 
@@ -97,7 +112,7 @@ Truffle 是一个区块链开发环境，可以用来连接到 Azure 区块链�
     示例输出：
 
     ```bash
-    truffle(develop)> web3.eth.getBlockNumber();
+    truffle(defaultnode)> web3.eth.getBlockNumber();
     18567
     ```
 1. 退出 Truffle 开发控制台。

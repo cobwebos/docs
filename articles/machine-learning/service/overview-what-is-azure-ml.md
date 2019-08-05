@@ -10,12 +10,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9ebacd8caf992874969106df58531538ea399ed
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: c1ec9db2b026dd1853eceb1f110878d6b2beb4d4
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510437"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678020"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
@@ -32,13 +32,13 @@ Azure 机器学习服务是一项云服务，可以使用它来训练、部署�
 Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来准备数据、培训、测试、部署、管理和跟踪机器学习模型。 开始在本地计算机上训练，然后横向扩展到云。 此服务完全支持开源技术（例如 PyTorch、TensorFlow 和 scikit-learn），可以用于任何类型的机器学习，从经典机器学习到深度学习、监督式学习和非监督式学习，不一而足。 
 
 使用如下所示的丰富工具浏览并准备数据、训练并测试模型，以及对其进行部署：
-+ [可视界面](ui-quickstart-run-experiment.md)：可以在其中拖放模块，以便构建试验，然后部署模型
++ [可视界面](ui-tutorial-automobile-price-train-score.md)：可以在其中拖放模块，以便构建试验，然后部署模型
 + [Jupyter 笔记本](https://jupyter.org)：可以在其中使用 [SDK](https://docs.microsoft.com/azure/machine-learning/service/#reference) 编写你自己的代码，例如[这些示例笔记本](https://aka.ms/aml-notebooks)
 + [Visual Studio Code 扩展](how-to-vscode-tools.md)
 
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>通过 Azure 机器学习服务，我可以执行哪些操作？
 
-将 <a href="https://aka.ms/aml-sdk" target="_blank">Azure 机器学习 Python SDK</a> 与开源 Python 包配合使用，或者使用[可视界面（预览版）](ui-quickstart-run-experiment.md)，你自己可以在 Azure 机器学习服务工作区中生成并训练高度精确的机器学习和深度学习模型。
+将 <a href="https://aka.ms/aml-sdk" target="_blank">Azure 机器学习 Python SDK</a> 与开源 Python 包配合使用，或者使用[可视界面（预览版）](ui-tutorial-automobile-price-train-score.md)，你自己可以在 Azure 机器学习服务工作区中生成并训练高度精确的机器学习和深度学习模型。
 
 可以从开源 Python 包中提供的许多机器学习组件（例如 <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>、<a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>、<a href="https://pytorch.org" target="_blank">PyTorch</a> 和 <a href="https://mxnet.io" target="_blank">MXNet</a>）中进行选择。
 
@@ -88,7 +88,7 @@ Azure 机器学习服务提供 SDK **和**可视界面（预览版），可以�
 |部署计算目标| 专用 Web 服务格式，不可自定义 | 企业安全选项和 Azure Kubernetes 服务。 <br/>（SDK 中支持的[其他计算](how-to-deploy-and-where.md)） |
 |自动化模型训练和超参数优化 | 否 | 在可视界面中尚不支持。 <br/> （在 SDK 和 Azure 门户中受支持。） | 
 
-通过[快速入门：在不编写代码的情况下准备数据并将其可视化](ui-quickstart-run-experiment.md)尝试可视界面（预览版）
+参考以下教程试用可视界面（预览版）：[教程：使用可视界面预测汽车价格](ui-tutorial-automobile-price-train-score.md)。
 
 > [!NOTE]
 > 在工作室中创建的模型不能通过 Azure 机器学习服务来部署或管理。 但是，在服务可视界面中创建和部署的模型可以通过 Azure 机器学习服务工作区进行管理。

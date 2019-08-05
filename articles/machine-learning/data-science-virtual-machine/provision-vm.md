@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: 在 Azure 上配置和创建数据科学虚拟机，用于进行分析和机器学习。
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
@@ -12,15 +12,15 @@ ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 57768fc463f5ea1d2f1ec386f3f0975758220013
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
-ms.translationtype: MT
+ms.author: vijetaj
+ms.openlocfilehash: dfb3e9f6390d4c80b8f3c37b87f2659c671fa823
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626381"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591820"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows Data Science Virtual Machine
 
@@ -106,7 +106,7 @@ DSVM 中随附以下工具：
 
 创建并预配 VM 后，可以使用在前面的“基本信息”部分配置的管理员帐户凭据从远程桌面登录到 VM。  现在，可以开始使用 VM 上安装并配置的工具。 可以通过开始菜单磁贴和桌面图标访问许多工具。
 
-此外可以将数据科学 VM 附加到 Azure 笔记本，以在 VM 上运行的 Jupyter 笔记本并绕过限制的免费服务层。 有关详细信息，请参阅[管理和配置笔记本项目-计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。
+还可以将 Data Science VM 附加到 Azure Notebooks，以在 VM 上运行 Jupyter Notebook，并绕过免费服务层的限制。 有关详细信息，请参阅[管理和配置 Notebooks 项目 - 计算层](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)。
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Microsoft 数据科研虚拟机上安装的工具
 

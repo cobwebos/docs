@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 02/08/2019
+ms.date: 07/29/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ce9ba7c197bb604b9d71e2bf501ca67d32865f38
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566870"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640125"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>教程：保护单一数据库或共用数据库
 
@@ -38,6 +38,9 @@ Azure SQL 数据库允许你通过以下方式确保单一数据库或共用数�
 > 可以根据 [Azure SQL 数据库托管实例](sql-database-managed-instance-index.yml)和[连接体系结构](sql-database-managed-instance-connectivity-architecture.md)中的说明，使用网络安全规则和专用终结点来确保托管实例上的 Azure SQL 数据库的安全。
 
 若要了解详细信息，请参阅 [Azure SQL 数据库安全概述](/azure/sql-database/sql-database-security-index)和[功能](sql-database-security-overview.md)这两篇文章。
+
+> [!TIP]
+> 以下 Microsoft Learn 模块可帮助你免费学习如何[保护 Azure SQL 数据库](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)。
 
 ## <a name="prerequisites"></a>先决条件
 

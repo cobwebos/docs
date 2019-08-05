@@ -1,6 +1,6 @@
 ---
-title: 更改、训练应用，C#
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 更改、训练应用，C# - LUIS
+titleSuffix: Azure Cognitive Services
 description: 此 C# 快速入门将示例话语添加到家庭自动化应用并训练该应用。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: d44877e35687745ddba51d4d015729e62106c9ca
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 55251a553921e947e7c6522677e51e4eb1d3fa5b
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348446"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619951"
 ---
 # <a name="quickstart-change-model-using-c"></a>快速入门：使用 C# 更改模型
 
@@ -115,7 +115,7 @@ namespace ConsoleApp1
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>将 utterances.json 复制到输出目录
 
-在解决方案资源管理器中，通过右键单击解决方案资源管理器的项目名称，然后依次选择“添加”  、“现有项”  ，添加 `utterances.json`。 选择 `utterances.json` 文件。 这会将文件添加到项目。 然后需要将它添加到输出方向。 右键单击 `utterances.json` 并选择“属性”  。 在属性窗口中，标记 `Content` 的“生成操作”，并标记 `Copy Always` 的“复制到输出目录”。    
+在解决方案资源管理器中，通过右键单击解决方案资源管理器的项目名称，然后依次选择“添加”  、“现有项”  ，添加 `utterances.json`。 选择 `utterances.json` 文件。 这会将文件添加到项目。 然后需要将它添加到输出目录。 右键单击 `utterances.json` 并选择“属性”  。 在属性窗口中，标记 `Content` 的“生成操作”，并标记 `Copy Always` 的“复制到输出目录”。    
 
 ![将 JSON 文件标记为内容](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 

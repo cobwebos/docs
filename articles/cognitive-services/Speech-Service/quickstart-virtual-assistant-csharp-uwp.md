@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 22c18b573e7107163f858c79956ca6f5380f6834
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6d88bcc6d9d2c2e46ef3a3cb841c9268a544e37c
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604978"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609686"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>快速入门：使用语音 SDK 创建语音优先虚拟助手 (UWP)
 
 针对[语音转文本](quickstart-csharp-uwp.md)、[文本转语音](quickstart-text-to-speech-csharp-uwp.md)和[语音翻译](quickstart-translate-speech-uwp.md)也提供了快速入门。
 
-在本文中，你将使用[语音 SDK](speech-sdk.md) 开发一个 C# 通用 Windows 平台 (UWP) 应用程序。 该程序将连接到先前创作并配置的机器人，以从客户端应用程序启用语音优先虚拟助手体验。 该应用程序使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017（任何版本）生成。
+在本文中，你将使用[语音 SDK](speech-sdk.md) 开发一个 C# 通用 Windows 平台 (UWP) 应用程序。 该程序将连接到先前创作并配置的机器人，以从客户端应用程序启用语音优先虚拟助手体验。 该应用程序是使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017 或更高版本（任何版本）生成的。
 
 > [!NOTE]
 > 通用 Windows 平台允许开发在支持 Windows 10 的任何设备上运行的应用，包括电脑、Xbox、Surface Hub 和其他设备。
@@ -30,7 +30,7 @@ ms.locfileid: "67604978"
 
 本快速入门需要：
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 或更高版本
 * 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或在 [Azure 门户](https://portal.azure.com)上创建它。
 * 先前创建的并使用 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)配置的机器人
 

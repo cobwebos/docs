@@ -1,5 +1,5 @@
 ---
-title: 模式
+title: 模式 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用模式来改进意向和实体预测，同时提供更少的示例话语。 该模式通过模板话语示例提供，该示例包括用于标识实体和可忽略文本的语法。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: e559d4a3366c45bd054cbf3a235805e048de3493
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 96c58e18abce85354db0d3bdf579600506cf2d86
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276049"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563312"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>教程：添加常见的模式模板话语格式
 
@@ -357,7 +357,7 @@ ms.locfileid: "68276049"
 
 示例话语如下：
 
-|意向|包含可选文本和预构建的实体的示例话语|
+|Intent|包含可选文本和预构建的实体的示例话语|
 |:--|:--|
 |OrgChart-Manager|`Who was Jill Jones manager on March 3?`|
 |OrgChart-Manager|`Who is Jill Jones manager now?`|
@@ -368,7 +368,7 @@ ms.locfileid: "68276049"
 
 允许此可选信息的示例模板言语： 
 
-|意向|包含可选文本和预构建的实体的示例话语|
+|Intent|包含可选文本和预构建的实体的示例话语|
 |:--|:--|
 |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
 |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
@@ -397,7 +397,7 @@ ms.locfileid: "68276049"
 
 1. 仍然停留在“生成”  的“模式”  部分中，添加几个新的模式模板话语。 从“意向”下拉菜单中选择“OrgChart-Manager”  ，然后输入下面的每条模板话语：
 
-    |意向|包含可选文本和预构建的实体的示例话语|
+    |Intent|包含可选文本和预构建的实体的示例话语|
     |--|--|
     |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
@@ -428,7 +428,7 @@ ms.locfileid: "68276049"
 
 使用 group `()` 和 OR `|` 语法可将以下 2 个模式合并成单个模式。
 
-|意向|包含可选文本和预构建的实体的示例话语|
+|Intent|包含可选文本和预构建的实体的示例话语|
 |--|--|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|

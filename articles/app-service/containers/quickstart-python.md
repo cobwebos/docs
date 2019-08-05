@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/29/2019
 ms.author: cephalin
-ms.openlocfilehash: 557b917f53064f0e6e9ecd61e2d230a6a4fd2ad6
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 28e10389f65e0b64ed15c00eb2a8632229397383
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853679"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639171"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Python 应用
 
@@ -105,7 +105,7 @@ Checking connectivity... done.
 
 切换到包含示例代码的目录并运行 `az webapp up` 命令。
 
-在以下示例中，将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。
+在以下示例中，将 `<app-name>` 替换为全局唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`  ）。
 
 ```bash
 cd python-docs-hello-world

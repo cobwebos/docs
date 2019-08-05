@@ -1,6 +1,6 @@
 ---
-title: 更改、训练应用，Java
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 更改、训练应用，Java - LUIS
+titleSuffix: Azure Cognitive Services
 description: 在本 Java 快速入门中，你将向家庭自动化应用中添加示例话语并训练该应用。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: ce2cf0603e584684edda1b1f14a12b52fbbb928c
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: bfe195ecd4dd777d5073c03c2e4fbd4bfcaaaa06
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357136"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560593"
 ---
 # <a name="quickstart-change-model-using-java"></a>快速入门：使用 Java 更改模型 
 

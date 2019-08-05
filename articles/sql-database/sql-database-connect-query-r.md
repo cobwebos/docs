@@ -1,7 +1,7 @@
 ---
-title: 使用 R 查询 Azure SQL 数据库
+title: 将 R 与机器学习服务配合使用来查询 Azure SQL 数据库
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: 本文展示了如何使用 R 脚本连接到 Azure SQL 数据库并使用 Transact-SQL 语句对其进行查询。
+description: 本文演示如何将 R 脚本与 Azure SQL 数据库机器学习服务配合使用，以连接到 Azure SQL 数据库并使用 Transact-SQL 语句对其进行查询。
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,16 +13,16 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 1d4b17cf1e0349bf877c676cb4e591fc20ad4113
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: ff38346a9b3bd14db51383c116240b030d3ee42a
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416362"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514861"
 ---
-# <a name="quickstart-use-r-to-query-an-azure-sql-database-preview"></a>快速入门：使用 R 查询 Azure SQL 数据库（预览版）
+# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>快速入门：将 R 与机器学习服务配合使用来查询 Azure SQL 数据库（预览版）
 
- 本快速入门演示了如何将 [R](https://www.r-project.org/) 与机器学习服务配合使用来连接到 Azure SQL 数据库并使用 Transact-SQL 语句来查询数据。 机器学习服务是 Azure SQL 数据库的一项功能，用于执行数据库中的 R 脚本。 有关进一步的信息，请参阅[使用 R 的 Azure SQL 数据库机器学习服务（预览版）](sql-database-machine-learning-services-overview.md)。
+本快速入门演示了如何将 [R](https://www.r-project.org/) 与机器学习服务配合使用来连接到 Azure SQL 数据库并使用 Transact-SQL 语句来查询数据。 机器学习服务是 Azure SQL 数据库的一项功能，用于执行数据库中的 R 脚本。 有关进一步的信息，请参阅[使用 R 的 Azure SQL 数据库机器学习服务（预览版）](sql-database-machine-learning-services-overview.md)。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 

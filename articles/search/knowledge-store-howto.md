@@ -1,5 +1,5 @@
 ---
-title: 如何开始使用知识挖掘（预览版）- Azure 搜索
+title: 如何开始使用知识存储（预览版）- Azure 搜索
 description: 了解如何分步将 Azure 搜索 AI 索引管道创建的扩充文档发送到 Azure 存储帐户中的知识存储。 随后，可以在 Azure 搜索和其他应用中查看、整形和使用扩充文档。
 manager: cgronlun
 author: HeidiSteen
@@ -8,19 +8,19 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: e50dfcdc5ac2fbe2435066546a340874e1b8f682
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 5794a24931b613bf1bdddd983799367bb02cf44d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551054"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641008"
 ---
-# <a name="how-to-get-started-with-knowledge-mining-in-azure-search"></a>如何在 Azure 搜索中开始使用知识挖掘
+# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>如何开始使用 Azure 搜索中的知识存储
 
 > [!Note]
 > 知识存储目前为预览版，不适合在生产环境中使用。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持 .NET SDK。
 >
-[知识存储](knowledge-store-concept-intro.md)将在编制索引期间创建的 AI 扩充文档保存到你的 Azure 存储帐户以在其他应用中进行下游知识挖掘。 还可以使用已保存的扩充来了解和优化 Azure 搜索索引管道。 
+[知识存储](knowledge-store-concept-intro.md)将在编制索引期间创建的 AI 扩充文档保存到你的 Azure 存储帐户以在其他应用中进行下游数据挖掘。 还可以使用已保存的扩充来了解和优化 Azure 搜索索引管道。 
 
 知识存储由技能集定义，由索引器创建。   通过用于确定存储中数据结构的投影来指定知识存储的物理表达形式。  完成本演练后，即已创建所有这些对象，到时你就知道如何将它们拟合到一起。 
 

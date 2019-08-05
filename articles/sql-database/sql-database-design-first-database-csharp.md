@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
-ms.date: 02/08/2019
-ms.openlocfilehash: f6f0160e06ac10a6f1e4e51c93bfa133818117c8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/29/2019
+ms.openlocfilehash: 3359c39b21edad72ce0b9d7feb35d442c842f002
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568970"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640111"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>教程：在 Azure SQL 数据库 C&#x23; 和 ADO.NET 的单一数据库中设计关系数据库
 
@@ -29,6 +29,9 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 > * 查询数据 ADO.NET
 
 *如果还没有 Azure 订阅，请在开始前[创建免费帐户](https://azure.microsoft.com/free/)。
+
+> [!TIP]
+> 以下 Microsoft Learn 模块可帮助你免费学习如何[开发和配置可查询 Azure SQL 数据库的 ASP.NET 应用程序](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)，包括创建简单数据库。
 
 ## <a name="prerequisites"></a>先决条件
 

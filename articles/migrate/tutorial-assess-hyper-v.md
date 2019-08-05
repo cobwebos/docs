@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 83567a45980b29931f9b68bd6d60df0d427b09de
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: c790667c73adfed061b97b14ebb7df4c68461786
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813026"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663783"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估工具评估 Hyper-V VM
 
@@ -110,15 +110,17 @@ Azure Migrate 服务器评估运行一个轻型 Hyper-V VM 设备。
 在部署压缩文件之前检查其安全性。
 
 1. 在下载文件的计算机上，打开管理员命令窗口。
-2. 运行以下命令以生成 VHD 的哈希
-    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+
+2. 运行以下 PowerShell 命令以生成 ZIP 文件的哈希
+    - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
+    - 用法示例：```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
+
 3.  对于设备版本 1.19.06.27，生成的哈希应与这些设置匹配。
 
   **算法** | **哈希值**
   --- | ---
-  MD5 | 3681f745fa2b0a0a6910707d85161ec5
-  SHA256 | e6ca109afab9657bdcfb291c343b3e3abced9a273d25273059171f9954d25832
+  MD5 | 3681F745FA2B0A0A6910707D85161EC5
+  SHA256 | E6CA109AFAB9657BDCFB291C343B3E3ABCED9A273D25273059171F9954D25832
 
 
 
@@ -158,9 +160,9 @@ Azure Migrate 服务器评估运行一个轻型 Hyper-V VM 设备。
 1. 在 Web 应用 >“设置必备组件”中执行以下操作： 
     - **许可证**：接受许可条款，并阅读第三方信息。
     - **连接**：应用将检查 VM 是否可访问 Internet。 如果 VM 使用代理：
-        - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。 
-        - 如果代理需要身份验证，请指定凭据。
-        - 仅支持 HTTP 代理。
+      - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。 
+      - 如果代理需要身份验证，请指定凭据。
+      - 仅支持 HTTP 代理。
     - **时间同步**：将验证时间。 设备上的时间应与 Internet 时间同步，这样才能正常发现 VM。
     - **安装更新**：Azure Migrate 服务器评估将检查设备上是否安装了最新更新。
 
@@ -178,19 +180,31 @@ Azure Migrate 服务器评估运行一个轻型 Hyper-V VM 设备。
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>为 SMB VHD 委托凭据
 
-如果在 SMB 上运行 VHD，必须启用从设备到 Hyper-V 主机的凭据委托。 如果在[上一篇教程](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)中未在每台主机上执行此操作，现在请从设备执行此操作：
+如果在 SMB 上运行 VHD，必须启用从设备到 Hyper-V 主机的凭据委托。 这需要以下条件：
 
-1. 在设备 VM 上运行此命令。 HyperVHost1/HyperVHost2 是示例主机名。
+- 允许每个主机充当设备的代理。 在上一个教程中，当你准备要评估和迁移的 Hyper-V 时，应该已执行此操作。 应该已[手动](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)或通过[运行 Hyper-V 先决条件配置脚本](tutorial-prepare-hyper-v.md#hyper-v-prerequisites-configuration-script)为主机设置了 CredSSP。
+- 启用 CredSSP 委托，以便 Azure Migrate 设备可以充当客户端，将凭据委托给主机。
 
-    ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
-    ```
+在设备上启用，如下所示：
 
-2. 或者，在设备上的本地组策略编辑器中执行此操作：
-    - 在“本地计算机策略” > “计算机配置”中，单击“管理模板” > “系统” > “凭据委托”。     
-    - 双击“允许委托新凭据”，并选择“已启用”。  
-    - 在“选项”中单击“显示”，将要发现的每台 Hyper-V 主机添加到列表中，并使用 wsman/ 作为前缀。   
-    - 在“凭据委托”中，双击“允许允许新凭据并使用仅限 NTLM 的服务器身份验证”。   再次将要发现的每台 Hyper-V 主机添加到列表中，并使用 **wsman/** 作为前缀。
+#### <a name="option-1"></a>选项 1
+
+在设备 VM 上运行此命令。 HyperVHost1/HyperVHost2 是示例主机名。
+
+```
+Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+```
+
+示例： ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `
+
+#### <a name="option-2"></a>方法 2
+
+或者，在设备上的本地组策略编辑器中执行此操作：
+
+1. 在“本地计算机策略” > “计算机配置”中，单击“管理模板” > “系统” > “凭据委托”。     
+2. 双击“允许委托新凭据”，并选择“已启用”。  
+3. 在“选项”中单击“显示”，将要发现的每台 Hyper-V 主机添加到列表中，并使用 wsman/ 作为前缀。   
+4. 在“凭据分配”中，双击“允许分配新的凭据用于仅 NTLM 服务器身份验证”。   再次将要发现的每台 Hyper-V 主机添加到列表中，并使用 **wsman/** 作为前缀。
 
 ## <a name="start-continuous-discovery"></a>启动持续发现
 

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 37856c0833ecde1478d4bd588b8e3122e8eac0ca
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: be478a3f77996276f248d9b385954af813ac0397
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "67135234"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562486"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity iOS 应用
 
@@ -24,7 +24,6 @@ ms.locfileid: "67135234"
 > [!div class="checklist"]
 > * 创建空间定位点帐户
 > * 准备 Unity 生成设置
-> * 下载并导入 Unity ARKit 插件
 > * 配置空间定位点帐户标识符和帐户密钥
 > * 导出 XCode 项目
 > * 在 iOS 设备上部署和运行
@@ -35,7 +34,7 @@ ms.locfileid: "67135234"
 
 若要完成本快速入门，请确保具备以下项：
 
-- macOS 计算机，已安装 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3+</a>、<a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a> 和 <a href="https://cocoapods.org" target="_blank">CocoaPods</a>。
+- 安装了 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1+</a>、<a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a> 和 <a href="https://cocoapods.org" target="_blank">CocoaPods</a> 的 macOS 计算机。
 - 通过 HomeBrew 安装的 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后运行 `brew install git`。
 - 支持开发人员的 <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit 兼容</a> iOS 设备。
 
@@ -51,7 +50,7 @@ ms.locfileid: "67135234"
 
 ## <a name="configure-account-identifier-and-key"></a>配置帐户标识符和密钥
 
-在“项目”窗格中，导航到 `Assets/AzureSpatialAnchorsPlugin/Examples` 并打开 `AzureSpatialAnchorsBasicDemo.unity` 场景文件  。
+在“项目”窗格中，导航到 `Assets/AzureSpatialAnchors.Examples/Scenes` 并打开 `AzureSpatialAnchorsBasicDemo.unity` 场景文件  。
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
@@ -63,12 +62,13 @@ ms.locfileid: "67135234"
 
 [!INCLUDE [Configure Xcode](../../../includes/spatial-anchors-unity-ios-xcode.md)]
 
-按照应用中的说明，放置并重新调用定位标记。
+按照应用中的说明，放置并重新调用定位点。
 
-> [!NOTE]
-> 运行应用时，如果没看到作为背景的照相机（例如，你看到的是空白、蓝色或其他纹理），则可能需要重新导入 Unity 中的资产。 停止应用。 在 Unity 中的顶部菜单中，选择“资产”->“重新导入全部”  。 然后再次运行应用。
+完成后，通过在 Xcode 中按“停止”  来停止应用。
 
-在 Xcode 中，按“停止”来停止应用  。
+## <a name="troubleshooting"></a>故障排除
+
+运行应用时，如果没看到作为背景的照相机（例如，你看到的是空白、蓝色或其他纹理），则可能需要重新导入 Unity 中的资产。 停止应用。 在 Unity 中的顶部菜单中，选择“资产”->“重新导入全部”  。 然后再次运行应用。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

@@ -12,32 +12,34 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/17/2019
-ms.openlocfilehash: 83ef25f04012933c2665e63e4617d480eb336f7b
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.date: 07/29/2019
+ms.openlocfilehash: 800dbfc05c47a949bf024e9a5c671979b49ad201
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66419795"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639972"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：准备数据以使用 Azure SQL 数据库机器学习服务（预览版）在 R 中执行聚类
 
-本文是由三个部分组成的教程系列的第一部分，其中介绍了如何准备 Azure SQL 数据库中的数据，以使用 Azure SQL 数据库机器学习服务（预览版）在 R 中执行聚类。
+在这个由三部分组成的教程系列的第一部分中，将使用 R 从 Azure SQL 数据库导入和准备数据。在此系列中的后面部分，将通过 Azure SQL 数据库机器学习服务（预览版）借助 R 语言使用该数据训练和部署聚类分析模型。
 
 “聚类”是指将数据组织成组，其中的成员在某个方面具有类似性。 
 你将使用“K 平均值”算法针对某个产品采购和退货数据集中的客户执行聚类。  将客户聚类之后，可以专门针对特定的组，以更有效的方式展开营销活动。
 K 平均值聚类是一种非监督式学习算法，它会在数据中根据类似性查找模式。 
 
+在此系列的第一部分和第二部分中，将在 RStudio 中开发一些 R 脚本，以便准备数据和训练机器学习模型。 然后，在第三部分中，将使用存储过程在 SQL 数据库中运行这些 R 脚本。
+
 本文将介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将示例数据库导入 Azure SQL 数据库
-> * 在不同的维上分隔客户
-> * 使用 R 将 Azure SQL 数据库中的数据加载到数据帧中
+> * 使用 R 沿不同维度分离客户
+> * 将数据从 Azure SQL 数据库加载到 R 数据帧中
 
-在[第二部分](sql-database-tutorial-clustering-model-build.md)，你将了解如何创建和训练 K 平均值聚类模型。
+在[第二部分](sql-database-tutorial-clustering-model-build.md)中，你将了解如何使用 R 创建和训练 K-Means 群集模型。
 
-在[第 3 部分](sql-database-tutorial-clustering-model-deploy.md)，你将了解如何在 Azure SQL 数据库中，创建一个可以基于新数据执行聚类的存储过程。
+在[第 3 部分](sql-database-tutorial-clustering-model-deploy.md)中，你将了解如何在 Azure SQL 数据库中，创建一个可以使用 R 基于新数据执行聚类分析的存储过程。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -207,8 +209,8 @@ head(customer_data, n = 5);
 在本教程系列的第一部分，你已完成以下步骤：
 
 * 将示例数据库导入 Azure SQL 数据库
-* 在不同的维上分隔客户
-* 使用 R 将 Azure SQL 数据库中的数据加载到数据帧中
+* 使用 R 沿不同维度分离客户
+* 将数据从 Azure SQL 数据库加载到 R 数据帧中
 
 若要创建使用此客户数据的机器学习模型，请参阅本教程系列的第二部分：
 

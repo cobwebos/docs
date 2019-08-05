@@ -6,15 +6,15 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 06/20/2019
+ms.date: 07/20/2019
 ms.author: mhopkins
 ms.subservice: blobs
-ms.openlocfilehash: 70afb39be696b660d3f85ae0c4b2c108bceb318c
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: a030aee18303d20ccf91c6939d349285c4a4bac4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625677"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565932"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库
 
@@ -31,11 +31,13 @@ ms.locfileid: "67625677"
 
 [API 参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [示例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
+## <a name="required-before-you-begin"></a>开始前需要
 
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 * Azure 存储帐户 - [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* 适用于你的操作系统的 [NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet-core) 或更高版本
+* 适用于你的操作系统的 [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) 或更高版本。 确保获取 SDK，而不是运行时。
 
 ## <a name="setting-up"></a>设置
 
@@ -45,7 +47,7 @@ ms.locfileid: "67625677"
 
 首先，创建名为 blob-quickstart 的 .NET Core 应用程序  。
 
-1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 blob-quickstart  的新控制台应用程序。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：**Program.cs**。
+1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 blob-quickstart  的新控制台应用程序。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。
 
    ```console
    dotnet new console -n blob-quickstart
@@ -90,11 +92,11 @@ dotnet add package Microsoft.Azure.Storage.Blob
 
 从项目目录中执行以下操作：
 
-1. 在编辑器中打开 Program.cs 文件
-2. 删除 Console.WriteLine 语句 
-3. 添加 using 指令 
-4. 创建 ProcessAsync 方法，示例的 main 代码将保留在其中 
-5. 以异步方式从 Main 调用 ProcessAsync 方法  
+1. 在编辑器中打开 Program.cs  文件
+2. 删除 `Console.WriteLine` 语句
+3. 添加 `using` 指令
+4. 创建一个 `ProcessAsync` 方法，其中包含示例的主代码
+5. 从 `Main` 异步调用 `ProcessAsync` 方法
 
 代码如下：
 
@@ -142,25 +144,27 @@ namespace blob_quickstart
 
 复制连接字符串以后，请将其写入运行应用程序的本地计算机的新环境变量中。 若要设置环境变量，请打开控制台窗口，并遵照适用于操作系统的说明。 将 `<yourconnectionstring>` 替换为实际的连接字符串。
 
-添加环境变量后，可能需要重启任何正在运行的、需要读取环境变量的程序。 例如，如果使用 Visual Studio 作为编辑器，请在运行示例之前重启 Visual Studio。
-
 #### <a name="windows"></a>Windows
 
 ```cmd
-setx STORAGE_CONNECTION_STRING "<yourconnectionstring>"
+setx CONNECT_STR "<yourconnectionstring>"
 ```
+
+在 Windows 中添加环境变量后，必须启动命令窗口的新实例。
 
 #### <a name="linux"></a>Linux
 
 ```bash
-export STORAGE_CONNECTION_STRING="<yourconnectionstring>"
+export CONNECT_STR="<yourconnectionstring>"
 ```
 
 #### <a name="macos"></a>MacOS
 
 ```bash
-export STORAGE_CONNECTION_STRING="<yourconnectionstring>"
+export CONNECT_STR="<yourconnectionstring>"
 ```
+
+添加环境变量后，重启需要读取环境变量的任何正在运行的程序。 例如，重启开发环境或编辑器，然后再继续。
 
 ## <a name="object-model"></a>对象模型
 
@@ -176,10 +180,10 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 使用以下 .NET 类与这些资源进行交互：
 
-* [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount)：**CloudStorageAccount** 类表示你的 Azure 存储帐户。 借助此类，可使用帐户访问密钥授予对 Blob 存储的访问权限。
-* [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)：**CloudBlobClient** 类提供对代码中 Blob 服务的访问点。
-* [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)：**CloudBlobContainer** 类表示代码中的 blob 容器。
-* [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob)：**CloudBlockBlob** 对象表示代码中的块 blob。 块 Blob 由可以分别管理的数据块构成。
+* [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount)：`CloudStorageAccount` 类表示 Azure 存储帐户。 借助此类，可使用帐户访问密钥授予对 Blob 存储的访问权限。
+* [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)：`CloudBlobClient` 类提供对代码中 Blob 服务的访问点。
+* [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)：`CloudBlobContainer` 类表示代码中的 blob 容器。
+* [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob)：`CloudBlockBlob` 对象表示代码中的块 blob。 块 Blob 由可以分别管理的数据块构成。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -195,18 +199,18 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 ### <a name="authenticate-the-client"></a>验证客户端
 
-以下代码检查环境变量是否包含一个连接字符串，该字符串在经过分析后可以创建一个指向存储帐户的 [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) 对象。 若要检查连接字符串是否有效，请使用 [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet) 方法。 如果 **TryParse** 成功，它会初始化 *storageAccount* 变量并返回 **true**。
+以下代码检查环境变量是否包含一个连接字符串，该字符串在经过分析后可以创建一个指向存储帐户的 [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) 对象。 若要检查连接字符串是否有效，请使用 [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet) 方法。 如果 `TryParse` 成功，它将初始化 `storageAccount` 变量并返回 `true`。
 
-在 ProcessAsync 方法内添加此代码  ：
+在 `ProcessAsync` 方法内添加此代码：
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage 
 // connection string is stored in an environment variable on the machine 
-// running the application called STORAGE_CONNECTION_STRING. If the 
+// running the application called CONNECT_STR. If the 
 // environment variable is created after the application is launched in a 
 // console or with Visual Studio, the shell or application needs to be closed
 // and reloaded to take the environment variable into account.
-string storageConnectionString = Environment.GetEnvironmentVariable("STORAGE_CONNECTION_STRING");
+string storageConnectionString = Environment.GetEnvironmentVariable("CONNECT_STR");
 
 // Check whether the connection string can be parsed.
 CloudStorageAccount storageAccount;
@@ -221,7 +225,7 @@ else
     // Otherwise, let the user know that they need to define the environment variable.
     Console.WriteLine(
         "A connection string has not been defined in the system environment variables. " +
-        "Add an environment variable named 'STORAGE_CONNECTION_STRING' with your storage " +
+        "Add an environment variable named 'CONNECT_STR' with your storage " +
         "connection string as a value.");
     Console.WriteLine("Press any key to exit the application.");
     Console.ReadLine();
@@ -229,7 +233,7 @@ else
 ```
 
 > [!NOTE]
-> 若要执行本文中的其余操作，请使用以下部分中的代码片段替换上述代码中的 // ADD OTHER OPERATIONS HERE  。
+> 若要执行本文中的其余操作，请使用以下部分中的代码片段替换上述代码中的 `// ADD OTHER OPERATIONS HERE`。
 
 ### <a name="create-a-container"></a>创建容器
 
@@ -268,7 +272,7 @@ await cloudBlobContainer.SetPermissionsAsync(permissions);
 
 ### <a name="upload-blobs-to-a-container"></a>将 blob 上传到容器中
 
-以下代码片段通过针对前面部分创建的容器调用 [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference) 方法，获取 **CloudBlockBlob** 对象的引用。 然后，它会通过调用 [UploadFromFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync) 方法将所选本地文件上传到 blob。 此方法将创建 Blob（如果该 Blob 尚不存在），或者覆盖 Blob（如果该 Blob 已存在）。
+以下代码片段通过针对前面部分创建的容器调用 [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference) 方法，获取 `CloudBlockBlob` 对象的引用。 然后，它会通过调用 [UploadFromFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync) 方法将所选本地文件上传到 blob。 此方法将创建 Blob（如果该 Blob 尚不存在），或者覆盖 Blob（如果该 Blob 已存在）。
 
 ```csharp
 // Create a file in your local MyDocuments folder to upload to a blob.
@@ -291,7 +295,7 @@ await cloudBlockBlob.UploadFromFileAsync(sourceFile);
 
 通过使用 [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync) 方法列出容器中的 blob。 在这种情况下，只向容器添加了一个 blob，因此列表操作只返回那个 blob。
 
-如果一次调用需要返回的 Blob 数过多（默认为超过 5000 个），则 **ListBlobsSegmentedAsync** 方法会返回总结果集的一部分和一个继续令牌。 若要检索下一部分的 Blob，请提供前一调用返回的继续令牌，依此类推，直至继续令牌为 null。 继续令牌为 null 表明已检索所有 Blob。 代码演示如何根据最佳做法使用继续令牌。
+如果一次调用需要返回的 Blob 数过多（默认为超过 5000 个），则 `ListBlobsSegmentedAsync` 方法会返回总结果集的一部分和一个继续令牌。 若要检索下一部分的 Blob，请提供前一调用返回的继续令牌，依此类推，直至继续令牌为 null。 继续令牌为 null 表明已检索所有 Blob。 代码演示如何根据最佳做法使用继续令牌。
 
 ```csharp
 // List the blobs in the container.
@@ -344,11 +348,9 @@ File.Delete(destinationFile);
 
 ## <a name="run-the-code"></a>运行代码
 
-此应用在本地 **MyDocuments** 文件夹中创建一个测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对旧文件和新文件进行比较。
+此应用在本地 *MyDocuments* 文件夹中创建一个测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对旧文件和新文件进行比较。
 
-如果使用 Visual Studio 作为编辑器，可以按 **F5** 运行应用程序。
-
-否则，请导航到应用程序目录，然后生成并运行应用程序。
+导航到应用程序目录，然后生成并运行应用程序。
 
 ```console
 dotnet build
@@ -380,7 +382,7 @@ Downloading blob to C:\Users\myusername\Documents\QuickStart_c5e7f24f-a7f8-4926
 Press any key to delete the example files and example container.
 ```
 
-按 **Enter** 键时，应用程序会删除存储容器和文件。 在删除之前，请在 **MyDocuments** 文件夹中查看这两个文件。 可以打开它们，然后就会观察到它们完全相同。 从控制台窗口复制 Blob 的 URL，将其粘贴到浏览器中，查看 Blob 的内容。
+按 **Enter** 键时，应用程序会删除存储容器和文件。 在删除之前，请在 *MyDocuments* 文件夹中查看这两个文件。 可以打开它们，然后就会观察到它们完全相同。 从控制台窗口复制 Blob 的 URL，将其粘贴到浏览器中，查看 Blob 的内容。
 
 验证文件后，按任意键可完成演示并删除测试文件。
 

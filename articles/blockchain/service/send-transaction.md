@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 9037c7b5498a5e0a37b05e5ee09891bf8066393d
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 3cfbbdc5b95d1607738b132980320d2ff7c99788
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417483"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698382"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>教程：使用 Azure 区块链服务发送事务
 
@@ -52,7 +52,7 @@ ms.locfileid: "66417483"
 
     | 设置 | 值 | 说明 |
     |---------|-------|-------------|
-    | 名称 | `alpha` | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`alpha-mymanagedledger.blockchain.azure.com`。 |
+    | Name | `alpha` | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`alpha-mymanagedledger.blockchain.azure.com` 。 |
     | 密码 | 强密码 | 该密码用于通过基本身份验证访问事务节点终结点。
 
 1. 选择“创建”  。
@@ -72,30 +72,17 @@ ms.locfileid: "66417483"
     cd truffledemo
     ```
 
-1. 启动 Truffle 的交互式开发控制台。
+1. 使用 Truffle 控制台连接到默认事务节点。
 
     ``` bash
-    truffle develop
+    truffle console --network defaultnode
     ```
 
-    Truffle 会创建一个本地开发区块链，并提供一个交互式控制台。
+    Truffle 连接到默认事务节点并提供交互式控制台。
 
 ## <a name="create-ethereum-account"></a>创建 Ethereum 帐户
 
-使用 Web3 连接到默认事务节点并创建一个 Ethereum 帐户。 可以从 Azure 门户获取 Web3 连接字符串。
-
-1. 在 Azure 门户中，导航到默认事务节点并选择“事务节点”>“示例代码”>“Web3”。 
-1. 复制“HTTPS(访问密钥 1)”中的 JavaScript ![Web3 示例代码](./media/send-transaction/web3-code.png) 
-
-1. 将默认事务节点的 Web3 JavaScript 代码粘贴到 Truffle 交互式开发控制台中。 该代码将创建连接到你的 Azure 区块链服务事务节点的 Web3 对象。
-
-    ```bash
-    truffle(develop)> var Web3 = require("Web3");
-    truffle(develop)> var provider = new Web3.providers.HttpProvider("https://myblockchainmember.blockchain.azure.com:3200/hy5FMu5TaPR0Zg8GxiPwned");
-    truffle(develop)> var web3 = new Web3(provider);
-    ```
-
-    可以调用该 Web3 对象中的方法来与事务节点进行交互。
+使用 Web3 连接到默认事务节点并创建一个 Ethereum 帐户。 可以调用该 Web3 对象中的方法来与事务节点进行交互。
 
 1. 在默认事务节点上创建新帐户。 将 password 参数替换为你自己的强密码。
 
@@ -159,21 +146,21 @@ ms.locfileid: "66417483"
           })(),
     
           network_id: "*",
-          gas: 0,
           gasPrice: 0,
           from: myAccount
         },
         alpha: {
           provider: new Web3.providers.HttpProvider(alpha),
           network_id: "*",
-          gas: 0,
-          gasPrice: 0
         },
         beta: {
           provider: new Web3.providers.HttpProvider(beta),
           network_id: "*",
-          gas: 0,
-          gasPrice: 0
+        }
+      },
+      compilers: {
+        solc: {
+          evmVersion: "byzantium"
         }
       }
     }

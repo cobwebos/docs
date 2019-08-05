@@ -6,16 +6,16 @@ author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fafa7bd95801be46025727b2261fc95bc539988
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c3087f0ac69126c6d509eee77abe15cc35319dfb
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440535"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693924"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？
 
@@ -41,16 +41,14 @@ Azure AD 适用于：
 
 Microsoft Online 业务服务（例如 Office 365 或 Microsoft Azure）要求通过 Azure AD 来完成登录操作并进行标识保护。 如果订阅任何 Microsoft Online 业务服务，则会自动获得 Azure AD 并且能够访问所有免费功能。
 
-为了增强 Azure AD 实现，还可以通过升级到 Azure Active Directory Basic、Premium P1 或 Premium P2 许可证添加付费功能。 Azure AD 付费许可证建立在现有免费目录基础之上，提供自助服务、增强型监视、安全报告和移动用户安全访问。
+为了增强 Azure AD 实现，还可以通过升级到 Azure Active Directory Premium P1 或 Premium P2 许可证添加付费功能。 Azure AD 付费许可证建立在现有免费目录基础之上，提供自助服务、增强型监视、安全报告和移动用户安全访问。
 
 >[!Note]
 >有关这些许可证的定价选项，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
 >
->中国地区目前不支持 Azure Active Directory Premium P1、Premium P2 和 Azure Active Directory Basic。 有关 Azure AD 定价的详细信息，请访问 [Azure Active Directory 论坛](https://azure.microsoft.com/support/community/?product=active-directory)。
+>中国地区目前不支持 Azure Active Directory Premium P1 和 Premium P2。 有关 Azure AD 定价的详细信息，请访问 [Azure Active Directory 论坛](https://azure.microsoft.com/support/community/?product=active-directory)。
 
 - **Azure Active Directory Free。** 跨 Azure、Office 365 和许多常用 SaaS 应用提供用户和组管理、本地目录同步、基本报告、云用户的自助密码更改以及单一登录。
-
-- **Azure Active Directory Basic。** 除了 Free 版的功能，Basic 版还提供以云为中心的应用访问、基于组的访问管理、用于云应用的自助密码重置，以及 Azure AD 应用程序代理（使用 Azure AD 发布本地 Web 应用）功能。
 
 - **Azure Active Directory Premium P1。** 除了 Free 和 Basic 版功能，P1 还允许混合用户访问本地资源和云资源。 它还支持高级管理，例如动态组、自助服务组管理、Microsoft Identity Manager（一个本地标识与访问管理套件），以及允许本地用户进行自助密码重置的云写回功能。
 

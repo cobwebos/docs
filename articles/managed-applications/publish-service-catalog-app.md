@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc86943924cd0c47c465e9d3bac4ca91b73a3ff5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf6ae32a61504dc344e140a0e27c5a17b5422073
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171555"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609872"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>创建并发布托管应用程序定义
 
@@ -85,20 +85,20 @@ ms.locfileid: "66171555"
 
 保存 mainTemplate.json 文件。
 
-## <a name="create-the-user-interface-definition"></a>创建用户接口定义
+## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>使用 CreateUiDefinition.json 定义创建体验
 
-Azure 门户使用 **createUiDefinition.json** 文件为创建托管应用程序的用户生成用户界面。 定义用户如何为每个参数提供输入。 可以使用诸如下拉列表、文本框、密码框和其他输入工具之类的选项。 若要了解如何为托管应用程序创建 UI 定义文件，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
+作为发布者，可以使用 **createUiDefinition.json** 文件定义创建体验，该文件为创建托管应用程序的用户生成界面。 可以使用 [control elements] (create-uidefinition-elements.md)（包括下拉框、文本框和密码框）定义用户如何为每个参数提供输入。
 
-创建一个名为 **createUiDefinition.json** 的文件。 该名称区分大小写。
+创建一个名为 **createUiDefinition.json** 的文件（此名称区分大小写）
 
-将以下 JSON 添加到该文件。
+将以下起始 JSON 添加到该文件并保存。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-    "handler": "Microsoft.Compute.MultiVm",
-    "version": "0.1.2-preview",
-    "parameters": {
+   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+   "handler": "Microsoft.Azure.CreateUIDef",
+   "version": "0.1.2-preview",
+   "parameters": {
         "basics": [
             {}
         ],
@@ -139,10 +139,9 @@ Azure 门户使用 **createUiDefinition.json** 文件为创建托管应用程序
             "location": "[location()]"
         }
     }
-}
 ```
 
-保存 createUiDefinition.json 文件。
+若要了解详细信息，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
 
 ## <a name="package-the-files"></a>将文件打包
 

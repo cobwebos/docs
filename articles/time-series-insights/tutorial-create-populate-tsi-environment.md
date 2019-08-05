@@ -1,20 +1,20 @@
 ---
 title: 教程：创建 Azure 时序见解环境 | Microsoft Docs
-description: 了解如何创建时序见解环境，并在其中填充模拟设备的数据。
+description: 本教程介绍如何创建时序见解环境，并在其中填充模拟设备的数据。
 services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 06a450c47c7264bdecb663c9f71e3a9753df5e1e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 921528c50bae03b67800bf3ccab8b5cd9bb704f6
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273566"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677751"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>教程：创建 Azure 时序见解环境
 
@@ -27,16 +27,18 @@ ms.locfileid: "67273566"
 > * 运行设备模拟，将数据流式传输到时序见解环境。
 > * 验证模拟的遥测数据。
 
+> [!IMPORTANT]
+> 注册一个[免费的 Azure 订阅](https://azure.microsoft.com/free/)（如果还没有）。
+
+## <a name="prerequisites"></a>先决条件
+
+* 所用的 Azure 登录帐户还必须是订阅的“所有者”角色的成员。  有关详细信息，请参阅[使用基于角色的访问控制和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
+
 ## <a name="video"></a>视频
 
 ### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-time-series-insights-br"></a>了解如何使用 Azure IoT 解决方案加速器生成数据和开始使用时序见解。 </br>
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
-
-## <a name="prerequisites"></a>先决条件
-
-* 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/)。
-* 所用的 Azure 登录帐户还必须是订阅的“所有者”角色的成员。  有关详细信息，请参阅[使用基于角色的访问控制和 Azure 门户管理访问权限](/azure/role-based-access-control/role-assignments-portal)。
 
 ## <a name="overview"></a>概述
 

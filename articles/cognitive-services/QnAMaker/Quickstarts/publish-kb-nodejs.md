@@ -1,6 +1,6 @@
 ---
-title: 发布知识库，REST，Node.js
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 快速入门：发布知识库，REST、Node.js - QnA Maker
+titleSuffix: Azure Cognitive Services
 description: 本 Node.js 快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 915d5223b99f530978ade41f69420766cf591021
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d47359f92a2cebef10514b3746fbf32f7e952132
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787909"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562915"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>快速入门：在 QnA Maker 中使用 Node.js 发布知识库
 
@@ -28,7 +28,7 @@ ms.locfileid: "65787909"
 ## <a name="prerequisites"></a>先决条件
 
 * [Node.js 6+](https://nodejs.org/en/download/)
-* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。 
+* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。   
 * 在 kbid 查询字符串参数中的 URL 中找到的 QnA Maker 知识库 (KB) ID，如下所示。
 
     ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
@@ -37,7 +37,7 @@ ms.locfileid: "65787909"
 
 
 > [!NOTE] 
-> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-nodejs GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/publish-knowledge-base-short)获得。
+> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-nodejs GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/publish-knowledge-base-short)获得  。
 
 ## <a name="create-a-knowledge-base-nodejs-file"></a>创建知识库 Node.js 文件
 

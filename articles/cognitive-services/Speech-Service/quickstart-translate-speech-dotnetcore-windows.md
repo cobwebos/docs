@@ -1,5 +1,5 @@
 ---
-title: 快速入门：翻译语音，C# (.NET Core Windows)
+title: 快速入门：翻译语音，C# (.NET Core Windows) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将创建一个简单的 .NET Core 应用程序来捕获用户语音，将其翻译为另一种语言，并将文本输出到命令行。 本指南适用于 Windows 用户。
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8ab76a786f11677f5d8f0715b257bd2fb04e50bf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 81e652e6456b049c2f4fca938d02d1b0724f2ffd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602815"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609671"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>快速入门：使用适用于 .NET Core 的语音 SDK 翻译语音
 
 针对[语音转文本](quickstart-csharp-dotnet-windows.md)和[文本转语音](quickstart-text-to-speech-dotnetcore.md)也提供了快速入门。
 
-在本快速入门中，你将创建一个简单的 .NET Core 应用程序，该应用程序从计算机的麦克风中捕获用户语音，翻译语音，并将翻译后的文本实时转录到命令行。 此应用程序设计为在 64 位 Windows 上运行，并使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017 构建。
+在本快速入门中，你将创建一个简单的 .NET Core 应用程序，该应用程序从计算机的麦克风中捕获用户语音，翻译语音，并将翻译后的文本实时转录到命令行。 此应用程序设计为在 64 位 Windows 上运行，它是使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017 或更高版本生成的。
 
 有关可用于语音翻译的语言的完整列表，请参阅[语言支持](language-support.md)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "67602815"
 本快速入门需要：
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 或更高版本
 * 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目

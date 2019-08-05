@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e4337f0593933a4e877f391df8132a9b2cd4af
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 12027581ae62588550407c8350f3b74f1e743561
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702681"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601835"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft 标识平台 (v2.0) 概述
 
@@ -43,7 +43,7 @@ Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台�
 
 ## <a name="getting-started"></a>入门
 
-可以轻松使用标识。 选择适合你的方案 - 每个方案路径都有一个快速入门和一个概述页面，可以通过它们在数分钟内实现正常运转：
+可以轻松使用标识。 选择适合你的[方案](authentication-flows-app-scenarios.md) - 每个方案路径都有一个快速入门和一个概述页面，可以通过它们在几分钟内实现正常运转：
 
 - [构建单页应用](scenario-spa-overview.md)
 - [构建用于让用户登录的 Web 应用](scenario-web-app-sign-user-overview.md)
@@ -62,6 +62,7 @@ Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台�
 
 如果要详细了解核心身份验证概念，建议你先阅读以下主题：
 
+- [身份验证流和应用程序方案](authentication-flows-app-scenarios.md)
 - [身份验证基础知识](authentication-scenarios.md)
 - [应用程序和服务主体](app-objects-and-service-principals.md)
 - [受众](v2-supported-account-types.md)

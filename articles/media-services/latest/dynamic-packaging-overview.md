@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/03/2019
+ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 4836ec4bb66bbf8ced921dd1095665d004f8a28b
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 5979e34e7c186a0484c8db2d432a3c57a5ed1d15
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542570"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679157"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 
@@ -26,7 +26,7 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS 和
 
 在媒体服务中，[流式处理终结点](streaming-endpoint-concept.md)表示动态（即时）打包和源服务，该服务可使用一个常见流式处理媒体协议（HLS 或 DASH）直接将你的实时和按需内容发送到客户端播放器应用程序。 动态打包是所有**流式处理终结点**（标准或高级）的标准功能。 
 
-若要利用动态打包，你需要具有包含媒体服务动态打包所需的一组自适应比特率 MP4 文件和流式处理配置文件的**资产**。 获取这些文件的一种方式是使用媒体服务对夹层（源）文件进行编码。 若要使编码资产中的视频可供客户端进行播放，必须创建**流式处理定位符**，然后生成流式处理 URL。 然后，根据流式处理客户端清单中指定的格式（HLS、DASH 或平滑），使用你选择的协议接收流。
+若要利用动态打包，需要有一个[资产](assets-concept.md)，其中包含一组自适应比特率 MP4 文件和流式处理配置文件（.ism、.ismc、.mpi 等）。 获取这些文件的一种方式是使用媒体服务对夹层（源）文件进行编码。 要使编码资产中的视频可供客户端播放，必须创建[流式处理定位符](streaming-locators-concept.md)，然后生成流式处理 URL。 然后，根据流式处理客户端清单中指定的格式（HLS、DASH 或平滑），使用你选择的协议接收流。
 
 因此，只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。 
 
@@ -41,12 +41,22 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS 和
 
 1. 上传输入或源文件（称为夹层文件）  。 示例包括 MP4、MOV 或 MXF 文件。 
 1. 将夹层文件编码为 H.264 MP4 自适应比特率集。 
-1. 发布包含自适应比特率 MP4 集的资产。 通过创建流式处理定位符进行发布。
+1. 发布包含自适应比特率 MP4 集的输出资产。 通过创建流式处理定位符进行发布。
 1. 生成针对不同格式（HLS、MPEG-DASH 和平滑流式处理）的 URL。 流式处理终结点负责提供正确的清单并请求不同的格式。
 
 此关系图显示使用动态打包进行按需流式处理的工作流：
 
 ![使用动态打包进行按需流式处理的工作流关系图](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+
+### <a name="encoding-to-adaptive-bitrate-mp4s"></a>编码为自适应比特率 MP4
+
+以下文章介绍[如何使用媒体服务对视频进行编码](encoding-concept.md)的示例：
+
+* [使用内置预设从 HTTPS URL 进行编码](job-input-from-http-how-to.md)
+* [使用内置预设对本地文件进行编码](job-input-from-local-file-how-to.md)
+* [构建自定义预设，以确定特定方案或设备要求](customize-encoder-presets-how-to.md)
+
+请参阅 Media Encoder Standard [格式和编解码器](media-encoder-standard-formats.md)的列表。
 
 ## <a name="live-streaming-workflow"></a>实时传送视频流工作流
 
@@ -83,30 +93,23 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS 和
 |MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |平滑流| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
-## <a name="encode-to-adaptive-bitrate-mp4s"></a>编码为自适应比特率 MP4
+## <a name="delivery-codecs-support"></a>交付编解码器支持 
 
-以下文章介绍[如何使用媒体服务对视频进行编码](encoding-concept.md)的示例：
-
-* [使用内置预设从 HTTPS URL 进行编码](job-input-from-http-how-to.md)
-* [使用内置预设对本地文件进行编码](job-input-from-local-file-how-to.md)
-* [构建自定义预设，以确定特定方案或设备要求](customize-encoder-presets-how-to.md)
-
-请参阅 Media Encoder Standard [格式和编解码器](media-encoder-standard-formats.md)的列表。
-
-## <a name="video-codecs"></a>视频编解码器
+### <a name="video-codecs"></a>视频编解码器
 
 动态打包支持以下视频编解码器：
 * MP4 文件，其中包含使用 [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC)（MPEG-4 AVC 或 AVC1）或 [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding)（HEVC、hev1 或 hvc1）编码的视频。
 
-## <a name="audio-codecs"></a>音频编解码器
+### <a name="audio-codecs"></a>音频编解码器
 
-动态打包支持以下音频协议：
+动态打包支持下述音频协议：
+
 * MP4 文件
 * 多个音轨
 
 动态打包不支持包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音频（它是旧编解码器）的文件。
 
-### <a name="mp4-files"></a>MP4 文件
+#### <a name="mp4-files"></a>MP4 文件
 
 动态打包支持 MP4 文件，MP4 文件中包含使用以下协议编码的音频： 
 
@@ -123,21 +126,19 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS 和
     * DTS Express (dtse)
     * DTS-HD Lossless (no core) (dtsl)
 
-### <a name="multiple-audio-tracks"></a>多个音轨
+#### <a name="multiple-audio-tracks"></a>多个音轨
 
 动态打包支持 HLS 输出（版本 4 或更高版本）的多音轨，用于流式传输具有使用多个编解码器和语言的多音轨的资产。
 
-## <a name="dynamic-encryption"></a>动态加密
-
-可以使用动态加密借助 AES-128 或三种主要数字版权管理 (DRM) 系统中的任何一种对实时或按需内容进行动态加密  ：内容。 媒体服务还提供用于向已授权客户端传送 AES 密钥和 DRM 许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
-
-## <a name="manifest-examples"></a>清单示例 
+## <a name="manifests"></a>清单 
  
 在媒体服务动态打包中，HLS、MPEG-DASH 和平滑流式处理的流式处理客户端清单是基于 URL 中的格式选择器动态生成的。 有关详细信息，请参阅[传递协议](#delivery-protocols)。 
 
 清单文件包含流元数据，例如轨迹类型（音频、视频或文本）、轨迹名称、开始和结束时间、比特率（质量）、轨迹语言、演播窗口（持续时间固定的滑动窗口）和视频编解码器 (FourCC)。 此文件还会通过提供有关下一个可播放视频片段及其位置的信息，来指示播放器检索下一个片段。 片段（或段）实际上是视频内容的“区块”。
 
-### <a name="hls"></a>HLS
+### <a name="examples"></a>示例
+
+#### <a name="hls"></a>HLS
 
 以下示例是 HLS 清单文件，也称为 HLS 主播放列表： 
 
@@ -164,7 +165,7 @@ QualityLevels(3579827)/Manifest(video,format=m3u8-aapl)
 QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ```
 
-### <a name="mpeg-dash"></a>MPEG-DASH
+#### <a name="mpeg-dash"></a>MPEG-DASH
 
 以下示例是 MPEG-DASH 清单文件，也称为 MPEG-DASH 媒体演示说明 (MPD)：
 
@@ -197,7 +198,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
    </Period>
 </MPD>
 ```
-### <a name="smooth-streaming"></a>平滑流
+#### <a name="smooth-streaming"></a>平滑流
 
 下面是平滑流式处理清单文件的示例：
 
@@ -221,9 +222,37 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 </SmoothStreamingMedia>
 ```
 
+### <a name="naming-of-tracks-in-the-manifest"></a>命名清单中的曲目
+
+如果在 .ism 文件中指定了音轨名称，则媒体服务会在 `AdaptationSet` 中添加 `Label` 元素，以指定特定音轨的纹理信息。输出 DASH 清单的示例：
+
+```xml
+<AdaptationSet codecs="mp4a.40.2" contentType="audio" lang="en" mimeType="audio/mp4" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
+  <Label>audio_track_name</Label>
+  <Role schemeIdUri="urn:mpeg:dash:role:2011" value="main"/>
+  <Representation audioSamplingRate="48000" bandwidth="131152" id="German_Forest_Short_Poem_english-en-68s-2-lc-128000bps_seg">
+    <BaseURL>German_Forest_Short_Poem_english-en-68s-2-lc-128000bps_seg.mp4</BaseURL>
+  </Representation>
+</AdaptationSet>
+```
+
+播放机可以使用 `Label` 元素在其 UI 上显示。
+
+### <a name="signaling-audio-description-tracks"></a>发出音频描述轨道的信号
+
+客户可以将音轨批注为清单中的音频描述。 为此，他们会在 .ism 文件中添加“accessibility”和“role”参数。 如果音轨具有值为“description”的参数“accessibility”和值为“alternate”的参数“role”，则媒体服务将识别音频描述。 如果媒体服务检测到 .ism 文件中的音频描述，则将音频描述信息作为 `Accessibility="description"` 和 `Role="alternate"` 属性传递给客户端清单，并将其传递到 `StreamIndex` 元素中。
+
+如果在 .ism 文件中设置了“accessibility”=“description”和“role”=“alternate”的组合，则 DASH 清单和 Smooth 清单会携带“accessibility”和“role”参数中设置的值。 客户有责任将这两个值设置正确，并将音轨标记为音频描述。 根据 DASH 规范，“accessibility”=“description”和“role”=“alternate”一起设置意味着音轨是音频描述。
+
+对于 HLS v7 及更高版本 (`format=m3u8-cmaf`)，仅当在 .ism 文件中设置了“accessibility”=“description”和“role”=“alternate”的组合时，其播放列表才会带有 `CHARACTERISTICS="public.accessibility.describes-video"`。 
+
 ## <a name="dynamic-manifest"></a>动态清单
 
 若要控制发送到播放器的曲目数目、格式、比特率和呈现时间范围，可以将动态筛选与媒体服务动态包生成工具配合使用。 有关详细信息，请参阅[预筛选清单与动态包生成工具配合使用](filters-dynamic-manifest-overview.md)。
+
+## <a name="dynamic-encryption"></a>动态加密
+
+可以使用动态加密借助 AES-128 或三种主要数字版权管理 (DRM) 系统中的任何一种对实时或按需内容进行动态加密  ：内容。 媒体服务还提供用于向已授权客户端传送 AES 密钥和 DRM 许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
 
 ## <a name="more-information"></a>详细信息
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：翻译语音，Java (Windows, Linux) - 语音服务
+title: 快速入门：翻译语音，Java（Windows、Linux）- 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将创建一个简单的 Java 应用程序来捕获用户语音，将其翻译为另一种语言，并将文本输出到命令行。 本指南适用于 Windows 和 Linux 用户。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 68567e673cf6fb53b8d9b6f7b9ef96aee691ac3a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cbb86dd4b24cb325b8ea6708ebc2ffc89a697757
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604958"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553395"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>快速入门：使用适用于 Java 的语音 SDK 转换语音
 

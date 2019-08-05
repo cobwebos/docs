@@ -1,5 +1,5 @@
 ---
-title: 配置适用于 IoT 解决方案的 Azure 安全中心（预览版）| Microsoft Docs
+title: 配置适用于 IoT 的 Azure 安全中心解决方案 | Microsoft Docs
 description: 了解如何使用适用于 IoT 的 Azure 安全中心配置端到端 IoT 解决方案。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -13,35 +13,32 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 7f90dba899651b677740e9ceb88bdd579ebb073c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 15c8aabbcb19d009bb202d111dc7f80da4cebff1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616644"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597027"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>快速入门：配置 IoT 解决方案
 
-> [!IMPORTANT]
-> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本文介绍如何使用适用于 IoT 的 Azure 安全中心执行 IoT 安全解决方案的初始配置。 
 
-本文介绍如何使用 ASC for IoT 执行 IoT 安全解决方案的初始配置。 
+## <a name="azure-security-center-for-iot"></a>适用于 IoT 的 Azure 安全中心
 
-## <a name="azure-security-center-asc-for-iot"></a>适用于 IoT 的 Azure 安全中心 (ASC)
+适用于 IoT 的 Azure 安全中心为基于 Azure 的 IoT 解决方案提供全面的端到端安全性。
 
-ASC for IoT 为基于 Azure 的 IoT 解决方案提供全面的端到端安全性。
+使用适用于 IoT 的 Azure 安全中心时，可在一个仪表板中监视整个 IoT 解决方案，并显示 Azure 中你的所有 IoT 设备、IoT 平台和后端资源。
 
-使用适用于 IoT 的 ASC 时，可在一个仪表板中监视整个 IoT 解决方案，并显示 Azure 中你的所有 IoT 设备、IoT 平台和后端资源。
+在 IoT 中心启用后，适用于 IoT 的 Azure 安全中心会自动识别也连接到 IoT 中心并与 IoT 解决方案相关的其他 Azure 服务。
 
-在 IoT 中心启用后，ASC for IoT 会自动识别也已连接到你的 IoT 中心的，以及与你的 IoT 解决方案相关的其他 Azure 服务。
+除了自动关系检测以外，还可以选择要将其他哪些 Azure 资源组标记为 IoT 解决方案的一部分。
 
-除了自动关系检测以外，还可以选择要将其他哪些 Azure 资源标记为 IoT 解决方案的一部分。
 做出选择后，可以添加整个订阅、资源组或单个资源。
 
-定义所有资源关系后，ASC for IoT 将利用 Azure 安全中心来提供安全建议，并针对这些资源发出警报。
+定义所有资源关系后，适用于 IoT 的 Azure 安全中心将利用 Azure 安全中心来提供安全建议，并针对这些资源发出警报。
 
 ## <a name="add-azure-resources-to-your-iot-solution"></a>将 Azure 资源添加到 IoT 解决方案
 
@@ -49,13 +46,12 @@ ASC for IoT 为基于 Azure 的 IoT 解决方案提供全面的端到端安全�
 
 1. 在 Azure 门户中打开你的 **IoT 中心**。 
 2. 在左侧菜单中，选择并打开“安全性”下的“资源”。   
-3. 选择“添加资源”。 
-4. 选择属于该 IoT 解决方案的资源。
+3. 选择“编辑”  并选择属于 IoT 解决方案的资源组。
 5. 单击“添加”  。 
 
-祝贺你！ 现已将新资源添加到 IoT 解决方案。
+祝贺你！ 现已将新资源组添加到 IoT 解决方案。
 
-ASC for IoT 现在会监视新添加的资源，并在 IoT 解决方案中显示相关的安全建议和警报。
+适用于 IoT 的 Azure 安全中心现在会监视新添加的资源组，并在 IoT 解决方案中显示相关的安全建议和警报。
 
 ## <a name="next-steps"></a>后续步骤
 

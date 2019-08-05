@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 885c877f219f59ab5049cf7b8e01243077d6d3eb
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 7fba9cbbaa15359e7e4dd95e66645dd5f4022431
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348400"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640770"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -41,7 +41,7 @@ ms.locfileid: "68348400"
 
 若要确定是使用无代理迁移还是基于代理的迁移，请查看以下文章：
 
-- [了解[无代理迁移的工作原理，并](server-migrate-overview.md#agentless-migration-limitations)查看限制](server-migrate-overview.md)。
+- [了解](server-migrate-overview.md)无代理迁移的工作原理，并[比较迁移方法](server-migrate-overview.md#compare-migration-methods)。
 - 若要使用基于代理的方法，请[阅读此文](tutorial-migrate-vmware-agent.md)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -93,7 +93,7 @@ Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备。 该设备执
 
 Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure。
 
-- 对于某些[操作系统](server-migrate-overview.md#agentless-migration-limitations)，Azure Migrate 可自动做出这些更改。
+- 对于某些操作系统，Azure Migrate 可自动做出这些更改。 [了解详细信息](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)
 - 如果要迁移的 VM 不使用其中的某种操作系统，请遵照说明准备 VM。
 - 在开始迁移之前，必须做出这些更改。 如果在做出更改之前迁移 VM，VM 可能无法在 Azure 中启动。
 - 为本地 VM 启用复制后，对这些 VM 做出的配置更改将复制到 Azure。 为了确保复制这些更改，要迁移到的恢复点必须晚于在本地进行配置更改的时间。

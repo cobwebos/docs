@@ -1,6 +1,6 @@
 ---
 title: 快速入门：浏览 Azure 时序见解预览版演示环境 | Microsoft Docs
-description: 了解 Azure 时序见解预览版演示环境。
+description: 本快速入门介绍 Azure 时序见解预览版演示环境。
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,13 +10,13 @@ ms.reviewer: dpalled
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 04/22/2019
-ms.openlocfilehash: 547edb194ffdf52a805f573d338f61edff80623a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 07/29/2019
+ms.openlocfilehash: 3d098b1806e4fdf5b45030dfebf3dfe5959b7d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164877"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677714"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>快速入门：浏览 Azure 时序见解预览版演示环境
 
@@ -26,11 +26,12 @@ ms.locfileid: "67164877"
 
 本快速入门介绍如何使用时序见解在 Contoso 数据中找到可行的见解。 此外，你还执行一项简单的根本原因分析，以便更好地预测严重故障和执行维护。
 
+> [!IMPORTANT]
+> 创建 [免费 Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) （如果没有该帐户）。
+
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>在演示环境中浏览时序见解资源管理器
 
 时序见解预览版资源管理器演示历史数据和根本原因分析。 开始操作：
-
-1. 创建 [免费 Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) （如果没有该帐户）。
 
 1. 转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。  
 
@@ -73,10 +74,9 @@ ms.locfileid: "67164877"
 
 使用时序见解和传感器遥测数据，我们发现历史数据中隐藏着长期的有问题趋势。 使用这些新的见解，我们可以：
 
-> [!div class="checklist"]
-> * 解释实际发生了什么问题。
-> * 纠正问题。
-> * 部署高级警报通知系统。
+* 解释实际发生了什么问题。
+* 纠正问题。
+* 部署高级警报通知系统。
 
 ## <a name="root-cause-analysis"></a>根本原因分析
 
@@ -115,6 +115,13 @@ ms.locfileid: "67164877"
     * 更改显示内容，以将所有“发电机系统”传感器按同一图表比例叠加显示。 
 
       [![更改显示内容以包含所有信息](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+
+## <a name="clean-up-resources"></a>清理资源
+
+现在你已完成本教程，请清除已创建的资源：
+
+1. 从 [Azure 门户](https://portal.azure.com)的左侧菜单中，选择“所有资源”  ，找到“Azure 时序见解”资源组。
+1. 通过选择“删除”  来删除整个资源组（以及其中包含的所有资源），或者单独删除每个资源。
 
 ## <a name="next-steps"></a>后续步骤
 

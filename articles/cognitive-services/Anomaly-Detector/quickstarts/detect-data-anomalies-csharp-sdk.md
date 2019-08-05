@@ -1,21 +1,21 @@
 ---
-title: 快速入门：使用适用于 .NET 的异常检测器 SDK 检测时序数据中的异常
+title: 快速入门：使用适用于 .NET 的异常检测器客户端库检测时序数据中的异常
 titleSuffix: Azure Cognitive Services
-description: 使用异常检测器服务开始检测时序数据中的异常。
+description: 使用异常检测器 API 能够以批或流数据的形式检测数据系列的异常。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: a75196e035585a7501cdd842fb5b80ceff424dcc
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: c65b64608ade76a65dca42b72844d42ddc1b14fd
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721573"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639357"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>快速入门：适用于 .NET 的异常检测器客户端库
 
@@ -23,10 +23,10 @@ ms.locfileid: "67721573"
 
 使用适用于 .NET 的异常检测器客户端库，可实现以下操作：
 
-* 批量检测异常
-* 检测最新数据点的异常状态
+* 以批请求的形式检测整个时序数据集中的异常
+* 在时序中检测最新数据点的异常状态
 
-[API 参考文档](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [示例](https://github.com/Azure-Samples/anomalydetector)
+[库参考文档](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [示例](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,11 +39,13 @@ ms.locfileid: "67721573"
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
-### <a name="create-a-new-c-app"></a>创建新的 C# 应用
+获取试用订阅或资源的密钥后，请为该密钥创建名为 `ANOMALY_DETECTOR_KEY` 的[环境变量](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
+
+### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
 在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。 
 
-在控制台窗口（例如 CMD、PowerShell 或 Bash）中，使用 dotnet `new` 命令创建名为 `anomaly-detector-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：**Program.cs**。 
+在控制台窗口（例如 CMD、PowerShell 或 Bash）中，使用 dotnet `new` 命令创建名为 `anomaly-detector-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。 
 
 ```console
 dotnet new console -n anomaly-detector-quickstart
@@ -64,6 +66,14 @@ Build succeeded.
  0 Error(s)
 ...
 ```
+
+在首选的编辑器或 IDE 中，从项目目录打开 program.cs  文件。 使用 `directives` 添加以下内容：
+
+[!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=usingStatements)]
+
+在应用程序的 `main()` 方法中，为资源的 Azure 位置创建变量，并将密钥创建为环境变量。 如果在启动应用程序后创建了环境变量，则需要关闭并重新加载运行它的编辑器、IDE 或 shell 以访问该变量。
+
+[!code-csharp[Main method](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=mainMethod)]
 
 ### <a name="install-the-client-library"></a>安装客户端库
 
@@ -92,22 +102,6 @@ dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0
 * [在整个数据集中检测异常](#detect-anomalies-in-the-entire-data-set) 
 * [检测最新数据点的异常状态](#detect-the-anomaly-status-of-the-latest-data-point)
 
-### <a name="add-the-main-method"></a>添加主方法
-
-从项目目录中选择：
-
-1. 在你喜欢的编辑器或 IDE 中打开 Program.cs 文件
-2. 然后，添加以下 `using` 指令
-
-[!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=usingStatements)]
-
-> [!NOTE]
-> 本快速入门假定你已为异常检测器密钥[创建了一个环境变量](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)，名为 `ANOMALY_DETECTOR_KEY`。
-
-在应用程序的 `main()` 方法中，为资源的 Azure 位置创建变量，并将密钥创建为环境变量。 如果在启动应用程序后创建了环境变量，则需要关闭并重新加载运行它的编辑器、IDE 或 shell 以访问该变量。
-
-[!code-csharp[Main method](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=mainMethod)]
-
 ### <a name="authenticate-the-client"></a>验证客户端
 
 在新方法中，使用终结点和密钥实例化客户端。 使用密钥创建 [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials?view=azure-dotnet-preview) 对象，并将其与终结点一起创建 [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-dotnet-preview) 对象。 
@@ -117,8 +111,8 @@ dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0
 ### <a name="load-time-series-data-from-a-file"></a>从文件加载时序数据
 
 从 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv) 下载此快速入门中的示例数据：
-1. 在浏览器中，右键单击“Raw” 
-2. 单击“将链接另存为” 
+1. 在浏览器中，右键单击“原始”  。
+2. 单击“将链接另存为”  。
 3. 将文件另存为 .csv 文件，保存到你的应用程序目录。
 
 此时序数据的格式为 .csv 文件，它将被发送到异常检测器 API。

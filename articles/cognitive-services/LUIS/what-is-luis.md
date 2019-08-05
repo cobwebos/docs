@@ -1,5 +1,6 @@
 ---
-title: 什么是语言理解 (LUIS) - Azure 认知服务 | Microsoft Docs
+title: 什么是语言理解 (LUIS)？
+titleSuffix: Azure Cognitive Services
 description: 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 569b33d299f52f0da50d8a8992420754aa85b533
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41c5e2f01678996406c586eb20043516beaf2184
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062171"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563194"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -28,7 +29,7 @@ LUIS 的客户端应用程序可以是任何传统的应用程序，只要其能
 
 <a name="Accessing-LUIS"></a>
 
-LUIS 应用一旦发布，客户端应用程序即可向 LUIS 自然语言处理终结点 [API][endpoint-apis] 发送话语（文本）并接收结果作为 JSON 响应。 LUIS 的常用客户端应用程序是聊天机器人。
+LUIS 应用一旦发布，客户端应用程序即可向 LUIS 自然语言处理终结点 [API][endpoint-apis] 发送话语（文本）并将结果作为 JSON 响应接收。 LUIS 的常用客户端应用程序是聊天机器人。
 
 
 ![使用聊天机器人通过自然语言理解 (NLP) 来预测用户文本的 LUIS 的概念图像](./media/luis-overview/luis-overview-process-2.png "使用聊天机器人通过自然语言理解 (NLP") 来预测用户文本的 LUIS 的概念图像
@@ -57,7 +58,7 @@ LUIS 应用包含一个特定于域的自然语言模型。 可通过预构建�
 
 LUIS 模型从称为 **[意向](luis-concept-intent.md)** 的用户意向的类别开始。 每个意向都需要用户 **[话语](luis-concept-utterance.md)** 的示例。 每个话语都可以提供各种数据，这些数据需要通过 **[实体](luis-concept-entity-types.md)** 来提取。 
 
-|示例用户话语|意向|实体|
+|示例用户话语|Intent|实体|
 |-----------|-----------|-----------|
 |“预订到西雅图的航班？” |BookFlight|西雅图|
 |“你的店铺何时开门？” |店铺营业时间和位置|开门|

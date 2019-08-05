@@ -4,7 +4,7 @@ description: 适用于 Windows 和 Linux 数据科学虚拟机的关键分析方
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 384cb274496670e0b0b5a33e001e78a0babed3f0
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.author: vijetaj
+ms.openlocfilehash: 5816f53115f3ec54cbd9784894a5262b68dd6e95
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427794"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565172"
 ---
-# <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介
+# <a name="what-is-azure-data-science-virtual-machine-for-linux-and-windows"></a>什么是适用于 Linux 和 Windows 的 Azure 数据科学虚拟机？
 
 数据科学虚拟机 (DSVM) 是专为研究数据科学生成的 Microsoft Azure 云上的自定义 VM 映像。 它预装并预配了许多热门数据科学和其他工具，可为高级分析快速生成智能应用程序。 它在 Windows Server 和 Linux 上可用。 我们在 Server 2016 和 Server 2012 上提供了 Windows 版本的 DSVM。 我们在 Ubuntu 16.04 LTS 和 CentOS 7.4 上提供了 Linux 版本的 DSVM。
 
@@ -48,7 +48,7 @@ Data Science Virtual Machine (DSVM) 的目标在于向所有技能级别和各�
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>自定义 Azure Notebooks 的计算能力
 
-[Azure Notebooks](/azure/notebooks/azure-notebooks-overview) 是一项免费的托管服务，用于在云中开发、运行和共享 Jupyter 笔记本而无需进行安装。 不过，免费服务层限制为 4GB 内存和 1GB 数据。 若要放开所有限制，可以将 Notebooks 项目附加到 Data Science VM 或任何其他运行 Jupyter 服务器的 VM。 如果你经由使用 Azure Active Directory 的帐户（例如公司帐户）登录到 Azure Notebooks，则 Notebooks 会自动在与该帐户关联的任意订阅中显示 Data Science VM。 有关详细信息，请参阅[管理和配置项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。
+[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) 是一项免费的托管服务，用于在云中开发、运行和共享 Jupyter 笔记本而无需进行安装。 不过，免费服务层限制为 4GB 内存和 1GB 数据。 若要放开所有限制，可以将 Notebooks 项目附加到 Data Science VM 或任何其他运行 Jupyter 服务器的 VM。 如果你经由使用 Azure Active Directory 的帐户（例如公司帐户）登录到 Azure Notebooks，则 Notebooks 会自动在与该帐户关联的任意订阅中显示 Data Science VM。 有关详细信息，请参阅[管理和配置项目 - 计算层](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)。
 
 ### <a name="short-term-experimentation-and-evaluation"></a>短期实验和评估
 数据科学 VM 可用于评估或学习工具，例如 Microsoft ML Server、SQL Server、Visual Studio 工具、Jupyter、深度学习/ML 工具包以及社区热门且需要最少设置工作量的新工具。 由于可以快速设置 Data Science VM，因此可以将其应用于其他短期使用场景。 这些场景包括复制已发布的试验、执行演示、跟踪在线会话和会议教程中的演练。
@@ -64,7 +64,7 @@ Data Science VM 可用于在基于 GPU（图形处理单元）的硬件上使用
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | 预安装了常用包的 [Microsoft R Open](https://mran.microsoft.com/open/)   |Y                      | Y             |
 | [Microsoft ML Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) 开发者版包括： <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) 并行分布式高性能框架（R 和 Python）<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package) - Microsoft 提供的最先进的全新 ML 算法 <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R 和 Python 操作化](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |Y                      | Y |
-| 带有共享激活功能的 [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) Pro-Plus - Excel、Word 和 PowerPoint   |Y                      |N              |
+| 带有共享激活功能的 [Microsoft Office](https://products.office.com/business/office-365-proplus-business-software) Pro-Plus - Excel、Word 和 PowerPoint   |Y                      |N              |
 | 预安装了常用包的 [Anaconda Python](https://www.continuum.io/) 2.7、3.5    |Y                      |Y              |
 | 预安装了具有 Julia 语言的常用包的 [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |Y                      |Y              |
 | 关系数据库                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS)、<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) |

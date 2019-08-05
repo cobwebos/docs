@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d222936f93f90573a46cd7f6216fbde8043332c7
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 1ea736b560e2e910ede203e8ce8c0b157ebbce71
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261413"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640868"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -56,7 +56,7 @@ ms.locfileid: "68261413"
 若要确定是使用无代理迁移还是基于代理的迁移，请查看以下文章：
 
 - [了解](server-migrate-overview.md) VMware 迁移选项。
-- [查看](server-migrate-overview.md#agentless-migration-limitations)无代理迁移的限制。
+- [比较迁移方法](server-migrate-overview.md#compare-migration-methods)。
 - [遵循此文](tutorial-migrate-vmware.md)尝试进行无代理迁移。
 
 

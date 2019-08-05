@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9046af82388f99cfdd82c8cb816d4cda1e5f8237
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: f7387b210c1499ff0a19fe17667090be0c2c0933
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206864"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561400"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Android 应用
 
@@ -32,20 +32,34 @@ ms.locfileid: "67206864"
 
 若要完成本快速入门，请确保具备以下项：
 
-- 具有 <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 +</a> 的 Windows 或 macOS 计算机。
+- 具有 <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4+</a> 的 Windows 或 macOS 计算机。
   - 如果在 Windows 上运行，则还需要 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>。
   - 如果在 macOS 上运行，请通过 HomeBrew 安装 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后运行 `brew install git`。
-  - 若要生成 NDK 示例，还需要在 Android Studio 中安装 NDK 和 CMake 3.6 SDK Tools。
+  - 若要生成 NDK 示例，还需要在 Android Studio 中安装 NDK 和 CMake 3.6 或更高版本的 SDK Tools。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">支持开发人员</a>和 <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 功能</a>的 Android 设备。
-- 你的应用必须以 ARCore 1.7 为目标。
+- 你的应用必须以 ARCore **1.8** 为目标。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
 ## <a name="open-the-sample-project"></a>打开示例项目
 
+# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-如果正在构建 Android NDK 示例，则需要从[此处](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.7.0/libraries/include/arcore_c_api.h)下载 `arcore_c_api.h` 并将其放在 `Android\NDK\libraries\include` 中。
+# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+从[此处](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.8.0/libraries/include/arcore_c_api.h)下载 `arcore_c_api.h` 并将其置于 `Android\NDK\libraries\include` 中。
+
+在新克隆的存储库中，通过运行以下命令初始化子模块：
+
+```console
+git submodule update --init --recursive
+```
+
+---
 
 打开 Android Studio。
 

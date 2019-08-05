@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824d24b97f192583a42192b3bb90eb1818e1aa18
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b462f0c427020b1422b91fbd7ac34e3023e546b8
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272980"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677868"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>教程：设置 Azure 时序见解预览环境
 
@@ -23,14 +23,21 @@ ms.locfileid: "67272980"
 
 本教程介绍如何执行下列操作：
 
-* 创建 Azure 时序见解预览环境。
-* 将 Azure 时序见解预览环境连接到“Azure 事件中心”中的事件中心。
-* 运行解决方案加速器示例，以将数据流式传输到 Azure 时序见解预览版环境。
-* 对数据进行基本的分析。
-* 定义时序模型类型和层次结构，并将其与实例相关联。
+> [!div class="checklist"]
+> * 创建 Azure 时序见解预览环境。
+> * 将 Azure 时序见解预览环境连接到“Azure 事件中心”中的事件中心。
+> * 运行解决方案加速器示例，以将数据流式传输到 Azure 时序见解预览版环境。
+> * 对数据进行基本的分析。
+> * 定义时序模型类型和层次结构，并将其与实例相关联。
 
 >[!TIP]
-> [IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators)提供企业级的预配置解决方案，可用于加速开发自定义 IoT 解决方案。
+> [IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators)提供企业级的预配置解决方案，可用于加速自定义 IoT 解决方案的开发。
+
+注册一个[免费的 Azure 订阅](https://azure.microsoft.com/free/)（如果还没有）。
+
+## <a name="prerequisites"></a>先决条件
+
+* 所用的 Azure 登录帐户还必须是订阅的“所有者”角色的成员。  有关详细信息，请参阅[使用基于角色的访问控制和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="create-a-device-simulation"></a>创建设备模拟
 
@@ -321,6 +328,14 @@ ms.locfileid: "67272980"
 1. 若要查看事件详细信息，请选择一个区域，然后右键单击图表：
 
    [![事件的详细列表](media/v2-update-provision/define-eighteen.png)](media/v2-update-provision/define-eighteen.png#lightbox)
+
+
+## <a name="clean-up-resources"></a>清理资源
+
+现在你已完成本教程，请清除已创建的资源：
+
+1. 从 [Azure 门户](https://portal.azure.com)的左侧菜单中，选择“所有资源”  ，找到“Azure 时序见解”资源组。
+1. 通过选择“删除”  来删除整个资源组（以及其中包含的所有资源），或者单独删除每个资源。
 
 ## <a name="next-steps"></a>后续步骤
 

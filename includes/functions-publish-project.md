@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 48bb91b3b2e9a31de63e515edb857bc2a170ea79
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fbb537c9584c948af37694b3bfc77a7c345e084d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172735"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639110"
 ---
 ## <a name="deploy-the-function-app-project-to-azure"></a>将函数应用项目部署到 Azure
 
@@ -23,7 +23,7 @@ ms.locfileid: "67172735"
 func azure functionapp publish <APP_NAME>
 ```
 
-你将看到类似于以下内容的输出，为了提高可读性，已经截断了这些输出。
+你将看到类似于以下内容的输出，为了提高可读性，已经截断了这些输出：
 
 ```output
 Getting site publishing info...
@@ -39,4 +39,4 @@ Functions in myfunctionapp:
         Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
 ```
 
-复制你的 HttpTrigger 的调用 URL 值，现在可以使用它在 Azure 中测试你的函数。 该 URL 包含一个 `code` 查询字符串值，该值是你的函数密钥。 此密钥使得其他人难以在 Azure 中调用你的 HTTP 触发器终结点。
+复制 `HttpTrigger` 的 `Invoke url` 值，现在可以使用它在 Azure 中测试函数。 该 URL 包含一个 `code` 查询字符串值，该值是你的函数密钥。 此密钥使得其他人难以在 Azure 中调用你的 HTTP 触发器终结点。

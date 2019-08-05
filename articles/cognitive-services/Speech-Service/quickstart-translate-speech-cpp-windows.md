@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: ff577bc0fe7db05c71aab04f0aaa5525f30b255c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 379087ca94eee6ce3d45bfd97b4771c5f08d6333
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602898"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607700"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>快速入门：使用适用于 C++ 的语音 SDK 翻译语音
 
 针对[语音识别](quickstart-cpp-windows.md)和[文本转语音](quickstart-text-to-speech-cpp-windows.md)也提供了快速入门。
 
-在本快速入门中，你将创建一个简单的 C++ 应用程序，该应用程序从计算机的麦克风中捕获用户语音，翻译语音，并将翻译后的文本实时转录到命令行。 此应用程序设计为在 64 位 Windows 上运行，并使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017 构建。
+在本快速入门中，你将创建一个简单的 C++ 应用程序，该应用程序从计算机的麦克风中捕获用户语音，翻译语音，并将翻译后的文本实时转录到命令行。 此应用程序设计为在 64 位 Windows 上运行，它是使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017 或更高版本生成的。
 
 有关可用于语音翻译的语言的完整列表，请参阅[语言支持](language-support.md)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "67602898"
 
 本快速入门需要：
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 或更高版本
 * 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目

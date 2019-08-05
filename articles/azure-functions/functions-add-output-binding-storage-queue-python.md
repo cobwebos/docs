@@ -11,20 +11,20 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: c2565a5549cbca08b987883e5905f09070b5ab2c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 34ec7c678410b2e0814f8dbb7a69257886cb891d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443207"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639163"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>将 Azure 存储队列绑定添加到 Python 函数
 
-无需编写自己的集成代码，即可使用 Azure Functions 将 Azure 服务和其他资源连接到函数。 这些绑定表示输入和输出，在函数定义中声明。  绑定中的数据作为参数提供给函数。 触发器是一种特殊类型的输入绑定。 尽管一个函数只有一个触发器，但它可以有多个输入和输出绑定。 有关详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
+无需编写自己的集成代码，即可使用 Azure Functions 将 Azure 服务和其他资源连接到函数。 这些绑定表示输入和输出，在函数定义中声明。  绑定中的数据作为参数提供给函数。 触发器是一种特殊类型的输入绑定。  尽管一个函数只有一个触发器，但它可以有多个输入和输出绑定。 有关详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
 
-本文介绍如何将[前一篇快速入门文章](functions-create-first-function-python.md)中创建的函数与 Azure 存储队列相集成。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到队列中的消息。 
+本文介绍如何将[前一篇快速入门文章](functions-create-first-function-python.md)中创建的函数与 Azure 存储队列相集成。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到队列中的消息。
 
-大多数绑定都需要一个存储的连接字符串，函数将使用该字符串来访问绑定的服务。 为便于操作，请使用连同函数应用一起创建的存储帐户。 与此帐户建立的连接已存储在名为 `AzureWebJobsStorage` 的应用设置中。  
+大多数绑定都需要一个存储的连接字符串，函数将使用该字符串来访问绑定的服务。 为便于建立此连接，请使用连同函数应用一起创建的存储帐户。 与此帐户建立的连接已存储在名为 `AzureWebJobsStorage` 的应用设置中。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,20 +49,20 @@ func azure functionapp fetch-app-settings <APP_NAME>
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-现在，你可以将存储输出绑定添加到项目。
+现在，可将存储输出绑定添加到项目。
 
 ## <a name="add-an-output-binding"></a>添加输出绑定
 
 在 Functions 中，每种类型的绑定都需要一个 `direction`、`type`，以及要在 function.json 文件中定义的唯一 `name`。 根据绑定类型，可能还需要其他属性。 [队列输出配置](functions-bindings-storage-queue.md#output---configuration)描述 Azure 存储队列绑定所需的字段。
 
-若要创建绑定，请将绑定配置对象添加到 `function.json` 文件。 编辑 HttpTrigger 文件夹中的 function.json 文件，以将一个包含以下属性的对象添加到 `bindings` 数组：
+若要创建绑定，请将绑定配置对象添加到 function.json 文件。 编辑 HttpTrigger 文件夹中的 function.json 文件，以将一个包含以下属性的对象添加到 `bindings` 数组：
 
 | 属性 | 值 | 说明 |
 | -------- | ----- | ----------- |
 | **`name`** | `msg` | 用于标识代码中引用的绑定参数的名称。 |
 | **`type`** | `queue` | 该绑定是 Azure 存储队列绑定。 |
 | **`direction`** | `out` | 该绑定是输出绑定。 |
-| **`queueName`** | `outqueue` | 绑定要写入到的队列的名称。 如果 *queueName* 不存在，首次使用绑定时，它会创建该属性。 |
+| **`queueName`** | `outqueue` | 绑定要写入到的队列的名称。 如果 `queueName` 不存在，首次使用绑定时，它会创建该属性。 |
 | **`connection`** | `AzureWebJobsStorage` | 包含存储帐户连接字符串的应用设置的名称。 `AzureWebJobsStorage` 设置包含连同函数应用一起创建的存储帐户的连接字符串。 |
 
 function.json 文件现在应如以下示例所示：
@@ -99,7 +99,7 @@ function.json 文件现在应如以下示例所示：
 
 ## <a name="add-code-that-uses-the-output-binding"></a>添加使用输出绑定的代码
 
-配置绑定后，可以开始使用绑定的 `name`，以函数签名中的方法属性的形式来访问该绑定。 在以下示例中，`msg` 是 [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest) 的实例。
+配置 `name` 后，可以开始使用它来以函数签名中的方法属性的形式访问绑定。 在以下示例中，`msg` 是 [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest) 的实例。
 
 ```python
 import logging
@@ -139,9 +139,9 @@ func host start
 ```
 
 > [!NOTE]  
-> 由于前一篇文章已在 host.json 中启用扩展捆绑包，因此在启动期间已下载并安装[存储绑定扩展](functions-bindings-storage-blob.md#packages---functions-2x)以及其他 Microsoft 绑定扩展。
+> 由于在前一篇快速入门中，你已在 host.json 中启用扩展捆绑包，因此在启动期间已下载并安装[存储绑定扩展](functions-bindings-storage-blob.md#packages---functions-2x)以及其他 Microsoft 绑定扩展。
 
-从运行时输出中复制 `HttpTrigger` 函数的 URL，将其粘贴到浏览器的地址栏中。 将查询字符串 `?name=<yourname>` 追加到此 URL 并执行请求。 与在前一篇文章中一样，浏览器中应会显示相同的响应。
+从运行时输出中复制 `HttpTrigger` 函数的 URL，将其粘贴到浏览器的地址栏中。 将查询字符串 `?name=<yourname>` 追加到此 URL 并运行请求。 与在前一篇文章中一样，浏览器中应会显示相同的响应。
 
 这一次，输出绑定还会在存储帐户中创建名为 `outqueue` 的队列，并添加包含此字符串的消息。
 
@@ -155,7 +155,7 @@ func host start
 export AZURE_STORAGE_CONNECTION_STRING=<STORAGE_CONNECTION_STRING>
 ```
 
-在 `AZURE_STORAGE_CONNECTION_STRING` 环境变量中设置连接字符串后，无需每次都要提供身份验证，即可访问你的存储帐户。
+在 `AZURE_STORAGE_CONNECTION_STRING` 环境变量中设置连接字符串时，无需每次都要提供身份验证，即可访问你的存储帐户。
 
 ### <a name="query-the-storage-queue"></a>查询存储队列
 
@@ -167,7 +167,7 @@ az storage queue list --output tsv
 
 此命令的输出包含名为 `outqueue` 的队列，即运行函数时创建的队列。
 
-接下来，使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，如以下示例所示。
+接下来，使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，如以下示例所示：
 
 ```azurecli-interactive
 echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`

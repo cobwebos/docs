@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c29819d817138f2512420584947763247837a9ea
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 56f9901a1468207a295f8223e990f7a926b2d76e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "67135204"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561413"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity HoloLens 应用
 
@@ -33,8 +33,7 @@ ms.locfileid: "67135204"
 
 完成本快速入门教程需要：
 
-
-- 需要一个已安装 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> 或更高版本以及 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 或更高版本的 Windows 计算机。 Visual Studio 安装必须包含“通用 Windows 平台开发”工作负载  。 安装<a href="https://git-scm.com/download/win" target="_blank">适用于 Windows 的 Git</a>。
+- 需要一个已安装 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1</a> 或更高版本以及 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 或更高版本的 Windows 计算机。 Visual Studio 安装必须包括“通用 Windows 平台开发”  工作负载和 **Windows 10 SDK（10.0.18362.0 或更高版本）** 组件。 也必须安装 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>。
 - 需要一台启用了[开发者模式](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)的 HoloLens 设备。 [Windows 10 2018 年 10 月更新](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018)（也称为 RS5）必须安装在此设备上。 若要在 HoloLens 上更新为最新版本，请打开“设置”应用，转到“更新和安全”，然后选择“检查更新”    。
 - 在应用上，需要启用“SpatialPerception”功能  。 此设置在“生成设置” > “播放机设置” > “发布设置” > “功能”中     。
 - 在应用上，需要通过“Windows 混合现实 SDK”启用“支持的虚拟现实”   。 此设置在“生成设置” > “播放机设置” > “XR 设置”中    。
@@ -59,7 +58,7 @@ ms.locfileid: "67135204"
 
 ## <a name="configure-the-account-identifier-and-key"></a>配置帐户标识符和密钥
 
-在“项目”窗格中，转到 `Assets/AzureSpatialAnchorsPlugin/Examples` 并打开 `AzureSpatialAnchorsBasicDemo.unity` 场景文件  。
+在“项目”窗格中，转到 `Assets/AzureSpatialAnchors.Examples/Scenes` 并打开 `AzureSpatialAnchorsBasicDemo.unity` 场景文件  。
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
