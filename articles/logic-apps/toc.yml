@@ -305,6 +305,8 @@
           href: logic-apps-enterprise-integration-accounts.md
         - name: 管理集成服务环境
           href: ise-manage-integration-service-environment.md
+        - name: 移动逻辑应用资源
+          href: move-logic-app-resources.md
         - name: 迁移到最新架构
           href: ../connectors/connectors-schema-migration.md
     - name: 测试

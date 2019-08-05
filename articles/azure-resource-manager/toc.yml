@@ -87,6 +87,8 @@
       items:
         - name: 创建模板
           href: how-to-create-template.md
+        - name: 子资源名称和类型
+          href: child-resource-name-type.md
         - name: 在订阅级别创建资源组和资源
           displayName: subscription level deployment
           href: deploy-to-subscription.md

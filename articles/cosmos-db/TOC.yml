@@ -747,6 +747,8 @@
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: 使用 Striim 迁移到 Cassandra API
           href: cosmosdb-cassandra-api-migrate-data-striim.md
+        - name: 将数百 TB 的数据迁移到 Azure Cosmos DB
+          href: migrate-cosmosdb-data.md
     - name: 批量执行程序库
       items:
         - name: 关于批量执行程序库

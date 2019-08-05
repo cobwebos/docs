@@ -25,6 +25,10 @@
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+    - name: 故障排除
+      items:
+        - name: “hbase hbck”命令超时
+          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
 - name: 如何
   items:
     - name: 使用群集存储

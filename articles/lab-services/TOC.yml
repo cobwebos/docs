@@ -164,6 +164,8 @@
               href: devtest-lab-vmcli.md
             - name: 创建 VM - 资源管理器模板
               href: devtest-lab-use-resource-manager-template.md
+            - name: 使用共享映像库中的映像创建 VM
+              href: add-vm-use-shared-image.md
             - name: 使用 PowerShell 或 CLI 启动或停止 VM
               href: use-command-line-start-stop-virtual-machines.md
             - name: 重新启动 VM

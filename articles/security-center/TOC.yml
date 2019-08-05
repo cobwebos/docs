@@ -43,6 +43,8 @@
       href: security-center-incident.md
     - name: 事件响应
       href: security-center-incident-response.md
+    - name: 跨租户管理
+      href: security-center-cross-tenant-management.md
 - name: 操作指南
   items:
     - name: 提高安全分数
@@ -81,6 +83,8 @@
       items:
         - name: 安全建议是什么
           href: security-center-recommendations.md
+        - name: 修正建议
+          href: security-center-remediate-recommendations.md
         - name: 加强安全态势
           href: security-center-monitoring.md
         - name: 保护计算机和应用
