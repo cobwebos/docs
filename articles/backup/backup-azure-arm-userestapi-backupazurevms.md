@@ -1,21 +1,21 @@
 ---
-title: Azure 备份：使用 REST API 的 Azure Vm 备份
+title: Azure 备份：使用 REST API 备份 Azure Vm
 description: 使用 REST API 管理 Azure VM 备份的备份操作
-services: backup
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: REST API, Azure VM 备份, Azure VM 还原;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 295c4fed9ab674f0c9e812c02f6b82ee53ef1b91
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 7a69fc7c9077fa10ddf808f1cd953f6739eabe20
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274853"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688727"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
 
@@ -29,7 +29,7 @@ ms.locfileid: "67274853"
 
 ### <a name="discover-unprotected-azure-vms"></a>发现未受保护的 Azure VM
 
-首先，保管库应能够识别 Azure VM。 这是使用[刷新操作](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)触发的。 这是一种异步 POST 操作，可确保保险库获取当前订阅中所有未受保护的 VM 的最新列表并“缓存”它们  。 一旦 VM 完成缓存，恢复服务将能够访问 VM，并对其进行保护。
+首先，保管库应能够识别 Azure VM。 这是使用[刷新操作](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)触发的。 这是一种异步 POST 操作，可确保保险库获取当前订阅中所有未受保护的 VM 的最新列表并“缓存”它们。 一旦 VM 完成缓存，恢复服务将能够访问 VM，并对其进行保护。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
@@ -47,14 +47,14 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
 
-|Name  |类型  |描述  |
+|姓名  |类型  |描述  |
 |---------|---------|---------|
 |204 无内容     |         |  确定无内容返回      |
 |202 已接受     |         |     已接受    |
 
 ##### <a name="example-responses"></a>示例响应
 
-提交 POST 请求后，将返回 202（已接受）响应  。
+提交 POST 请求后，将返回 202（已接受）响应。
 
 ```http
 HTTP/1.1 202 Accepted
@@ -73,7 +73,7 @@ Location: https://management.azure.com/subscriptions//00000000-0000-0000-0000-00
 X-Powered-By: ASP.NET
 ```
 
-使用带有简单 GET 命令的“Location”标头跟踪生成的操作 
+使用带有简单 GET 命令的“Location”标头跟踪生成的操作
 
 ```http
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2016-12-01
@@ -100,23 +100,23 @@ X-Powered-By: ASP.NET
 
  可以通过在订阅下[列出所有可保护项](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list)来确认“缓存”已完成，并在响应中找到所需的 VM。 [此操作的响应](#example-responses-1)还提供有关恢复服务如何识别 VM 的信息。  熟悉此模式后，可以跳过此步骤直接进入[启用保护](#enabling-protection-for-the-azure-vm)。
 
-此操作是一种 GET 操作  。
+此操作是一种 GET 操作。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter=backupManagementType eq 'AzureIaasVM'
 ```
 
-“GET”URI 具有所有必需的参数  。 无需额外的请求正文。
+“GET”URI 具有所有必需的参数。 无需额外的请求正文。
 
 ##### <a name="responses-1"></a>响应
 
-|Name  |类型  |描述  |
+|名称  |类型  |描述  |
 |---------|---------|---------|
-|200 正常     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
+|200 正常     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       确定 |
 
 ##### <a name="example-responses-1"></a>示例响应
 
-提交 GET 请求后，将返回 200（确定）响应  。
+提交 GET 请求后，将返回 200（确定）响应。
 
 ```http
 HTTP/1.1 200 OK
@@ -153,7 +153,7 @@ X-Powered-By: ASP.NET
 ```
 
 > [!TIP]
-> GET 响应中每“页”的值数量限制为 200  。 使用“nextLink”字段获取下一组响应的 URL。
+> GET 响应中每“页”的值数量限制为 200。 使用“nextLink”字段获取下一组响应的 URL。
 
 响应包含所有未受保护的 Azure VM 的列表，并且每个 `{value}` 包含 Azure 恢复服务配置备份所需的所有信息。 若要配置备份，请注意 `{properties}` 节中的 `{name}` 字段和 `{virtualMachineId}` 字段。 按下方所示，通过这些字段值构造两个变量。
 
@@ -170,7 +170,7 @@ X-Powered-By: ASP.NET
 
 在“缓存”和“识别”相关 VM 后，选择要保护的策略。 若要了解有关保管库中现有策略的更多信息，请参阅[列出策略 API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)。 然后，通过引用策略名称来选择[相关策略](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get)。 若要创建策略，请参阅[创建策略教程](backup-azure-arm-userestapi-createorupdatepolicy.md)。 下面的示例中选择了“DefaultPolicy”。
 
-启用保护是一种异步 PUT 操作，可创建“受保护的项”  。
+启用保护是一种异步 PUT 操作，可创建“受保护的项”。
 
 ```http
 https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
@@ -186,7 +186,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 对于创建受保护的项，以下是请求正文的组成部分。
 
-|Name  |类型  |描述  |
+|名称  |类型  |描述  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem 资源属性         |
 
@@ -214,14 +214,14 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
 
-|名称  |类型  |描述  |
+|姓名  |类型  |描述  |
 |---------|---------|---------|
-|200 正常     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
+|200 正常     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  确定       |
 |202 已接受     |         |     已接受    |
 
 ##### <a name="example-responses"></a>示例响应
 
-一旦提交“PUT”请求以创建或更新受保护的项后，初始响应为 202（已接受），其中包含 location 标头或 Azure-async 标头  。
+一旦提交“PUT”请求以创建或更新受保护的项后，初始响应为 202（已接受），其中包含 location 标头或 Azure-async 标头。
 
 ```http
 HTTP/1.1 202 Accepted
@@ -241,7 +241,7 @@ Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作  。
+然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作。
 
 ```http
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
@@ -284,7 +284,7 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 配置 Azure VM 以进行备份后，将根据策略计划执行备份。 可以等待第一次计划备份或随时触发按需备份。 按需备份的保留期与备份策略的保留期是不同的，并且可以指定为特定的日期时间。 如果未指定，则假定为触发按需备份之日后的 30 天。
 
-触发按需备份是一种 POST 操作  。
+触发按需备份是一种 POST 操作。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup?api-version=2016-12-01
@@ -300,7 +300,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 对于触发按需备份，以下是请求正文的组成部分。
 
-|Name  |类型  |描述  |
+|名称  |类型  |描述  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource 属性         |
 
@@ -331,7 +331,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 ##### <a name="example-responses-3"></a>示例响应
 
-一旦提交按需备份的 POST 请求后，初始响应为 202（已接受），其中包含 location 标头或 Azure-async 标头  。
+一旦提交按需备份的 POST 请求后，初始响应为 202（已接受），其中包含 location 标头或 Azure-async 标头。
 
 ```http
 HTTP/1.1 202 Accepted
@@ -351,7 +351,7 @@ Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作  。
+然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作。
 
 ```http
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
@@ -393,7 +393,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="changing-the-policy-of-protection"></a>更改保护策略
 
-若更改受保护 VM 的策略，可以使用与[启用保护](#enabling-protection-for-the-azure-vm)相同的格式。 只需在[请求正文](#example-request-body)中提供新的策略 ID 并提交请求即可。 有关例如：若要更改到 ProdPolicy 从 DefaultPolicy testVM 的策略，提供请求正文中的 ProdPolicy id。
+若更改受保护 VM 的策略，可以使用与[启用保护](#enabling-protection-for-the-azure-vm)相同的格式。 只需在[请求正文](#example-request-body)中提供新的策略 ID 并提交请求即可。 例如:若要将 testVM 的策略从 "DefaultPolicy" 更改为 "ProdPolicy", 请在请求正文中提供 "ProdPolicy" id。
 
 ```http
 {
@@ -427,7 +427,7 @@ X-Powered-By: ASP.NET
 
 若要删除对受保护的 VM 的保护并删除备份数据，请执行[此处](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)详细的删除操作。
 
-停止保护和删除数据是一种 DELETE 操作  。
+停止保护和删除数据是一种 DELETE 操作。
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
@@ -441,9 +441,9 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 ### <a name="responses-2"></a>响应
 
-DELETE 操作是一种[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)  。 这意味着，此操作会创建另一个需要单独跟踪的操作。
+DELETE 操作是一种[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
-它将返回两个响应：202 （已接受） 时创建另一个操作，然后 204 (NoContent)，该操作完成时。
+它将返回两个响应：202 (接受): 创建另一个操作, 然后在该操作完成时执行 204 (NoContent)。
 
 |名称  |类型  |描述  |
 |---------|---------|---------|
