@@ -29,7 +29,7 @@ sections:
             image:
               src: ../media/index/i_overview.svg
             title: 什么是文本分析？
-          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
+          - href: /azure/cognitive-services/cognitive-services-apis-create-account
             html: <p>了解如何注册文本分析 API。</p>
             image:
               src: ../media/index/i_get-started.svg

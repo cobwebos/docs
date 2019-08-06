@@ -287,8 +287,6 @@
       items:
         - name: 升级到第 2 代
           href: upgrade-to-latest-generation.md
-        - name: 还原数据仓库
-          href: sql-data-warehouse-restore.md
         - name: 监视工作负荷 - 门户
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: 监视工作负荷 - DMV

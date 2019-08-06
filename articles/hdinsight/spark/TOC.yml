@@ -53,13 +53,7 @@
     - name: 故障排除
       items:
         - name: OutOfMemoryError 异常
-          items:
-            - name: 堆内存不足
-              href: ./apache-spark-troubleshoot-outofmemory-heap.md
-            - name: Java 堆空间
-              href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
-            - name: Livy 服务器无法启动
-              href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+          href: ./apache-spark-troubleshoot-outofmemory.md
         - name: Apache Spark 作业失败 - NoClassDefFoundError
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Apache Spark 作业失败 - InvalidClassException
