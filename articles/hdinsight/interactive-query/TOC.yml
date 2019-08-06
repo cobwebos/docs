@@ -28,6 +28,8 @@
           items:
             - name: 超过 GC 开销限制
               href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: ZooKeeperHiveClientException - HiveServer2 配置
+          href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
         - name: Apache Hive LLAP 查询性能
           href: ./interactive-query-troubleshoot-query-performance.md
 - name: 如何

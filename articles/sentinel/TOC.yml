@@ -13,7 +13,7 @@
   items:
     - name: 检测可疑威胁
       href: tutorial-detect-threats.md
-    - name: 调查案例
+    - name: 调查事件
       href: tutorial-investigate-cases.md
     - name: 应对威胁
       href: tutorial-respond-threats-playbook.md

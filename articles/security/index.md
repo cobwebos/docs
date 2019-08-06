@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 06/11/2019
 ms.author: angrobe
-ms.openlocfilehash: d921e529140bc7446e3c9f97b33ba226431d7b91
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 7c41b09c35de7ef8694f9215b8f3dc271e243de2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143515"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780496"
 ---
 # <a name="azure-security-documentation"></a>Azure 安全文档
 
@@ -70,7 +70,7 @@ ms.locfileid: "67143515"
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-infrastructure">
+        <a href="/azure/security/fundamentals/infrastructure">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -135,7 +135,7 @@ ms.locfileid: "67143515"
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-encryption-atrest">
+        <a href="/azure/security/fundamentals/encryption-atrest">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -192,13 +192,13 @@ ms.locfileid: "67143515"
                                 <a class="barLink" href="https://aka.ms/SecurityResponsepaper">云中的 Azure 安全响应</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-threat-detection">Azure 高级威胁检测</a>
+                                <a class="barLink" href="/azure/security/fundamentals/threat-detection">Azure 高级威胁检测</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-azure-network-security">Azure 网络安全</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-network-security>Azure network security"</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-develop-secure-apps">在 Azure 上开发安全的应用程序</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-develop-secure-apps">在 Azure 上开发安全的应用程序</a>
                             </li>
                         </ul>
                     </div>
@@ -218,25 +218,25 @@ ms.locfileid: "67143515"
                                 <a class="barLink" href="https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/">Azure 安全性最佳实践</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-network-security-best-practices">网络安全</a>
+                                <a class="barLink" href="/azure/security/fundamentals/network-best-practices">网络安全</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-data-encryption-best-practices">数据安全</a>
+                                <a class="barLink" href="/azure/security/fundamentals/data-encryption-best-practices">数据安全</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/azure-security-best-practices-vms">虚拟机安全</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-identity-management-best-practices">标识和访问</a>
+                                <a class="barLink" href="/azure/security/fundamentals/identity-management-best-practices">标识和访问</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-iaas">IaaS 安全</a>
+                                <a class="barLink" href="/azure/security/fundamentals/iaas">IaaS 安全</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/security-paas-deployments">保护 PaaS 部署</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-global-admin">保护 Azure 管理员帐户</a>
+                                <a class="barLink" href="/azure/security/fundamentals/global-admin">保护 Azure 管理员帐户</a>
                             </li>
                         </ul>
                     </div>
@@ -380,7 +380,7 @@ ms.locfileid: "67143515"
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-cyber-services">
+        <a href="/azure/security/fundamentals/cyber-services">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -393,7 +393,7 @@ ms.locfileid: "67143515"
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-pen-testing">
+        <a href="/azure/security/fundamentals/pen-testing">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -424,7 +424,7 @@ ms.locfileid: "67143515"
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">Azure 密钥保管库</p>
+                            <p style="font-size: 1.12rem;">Azure Key Vault</p>
                         </div>
                     </div>
                 </div>
