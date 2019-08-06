@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: dapine
-ms.openlocfilehash: f658e8d0f820ccec513b5665fc1ce94c083c3b3e
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: ddbe586c03d9f722d844d06968aa25e4b4a5aac0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68703531"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815299"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -24,7 +24,7 @@ ms.locfileid: "68703531"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要运行任何文本分析容器, 你必须拥有主机计算机和容器环境。
 
@@ -52,8 +52,7 @@ ms.locfileid: "68703531"
 |-----------|---------|-------------|--|
 |关键短语提取 | 单核，2-GB 内存 | 单核，4-GB 内存 |15、30|
 |语言检测 | 单核，2-GB 内存 | 单核，4-GB 内存 |15、30|
-|情绪分析2。x | 单核，2-GB 内存 | 单核，4-GB 内存 |15、30|
-|情绪分析1。x | 单核，2-GB 内存 | 4核, 4 GB 内存 |15、30|
+|情绪分析 | 单核，2-GB 内存 | 单核，4-GB 内存 |15、30|
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 * TPS - 每秒事务数
@@ -68,8 +67,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 |-----------|------------|
 |关键短语提取 | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 |语言检测 | `mcr.microsoft.com/azure-cognitive-services/language` |
-|情绪分析2。x| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
-|情绪分析1。x| `containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0` |
+|情绪分析| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
 使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令从 Microsoft 容器注册表下载容器映像。
 
@@ -93,16 +91,10 @@ docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
 docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 ```
 
-### <a name="docker-pull-for-the-sentiment-2x-container"></a>情绪2.x 容器的 Docker 拉取
+### <a name="docker-pull-for-the-sentiment-container"></a>适用于情绪容器的 Docker 拉取
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
-```
-
-### <a name="docker-pull-for-the-sentiment-3x-container"></a>情绪1.x 容器的 Docker 拉取
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0:latest
 ```
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
@@ -112,7 +104,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v
 一旦容器位于[主计算机](#the-host-computer)上，请通过以下过程使用容器。
 
 1. 使用所需的计费设置[运行容器](#run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](../text-analytics-resource-container-config.md#example-docker-run-commands)。
-1. 查询[v2](#query-the-containers-v2-prediction-endpoint)或[v3](#query-the-containers-v3-prediction-endpoint)的容器预测终结点。
+1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
 
@@ -120,7 +112,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v
 
 可用的[命令示例](../text-analytics-resource-container-config.md#example-docker-run-commands) `docker run` 。
 
-### <a name="run-v2-container-example-of-docker-run-command"></a>运行 docker 容器的 docker 运行命令示例
+### <a name="run-container-example-of-docker-run-command"></a>Docker run 命令的运行容器示例
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -137,134 +129,17 @@ ApiKey={API_KEY}
 * 公开 TCP 端口 5000，并为容器分配伪 TTY
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
-### <a name="run-v3-container-example-of-docker-run-command"></a>运行 docker 容器的 docker 运行命令示例
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
-containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0 \
-Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
-```
-
-此命令：
-
-* 从容器映像运行关键短语容器
-* 分配4个 CPU 内核和4千兆字节 (GB) 的内存
-* 公开 TCP 端口 5000，并为容器分配伪 TTY
-* 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing)。
 
 [!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
-## <a name="query-the-containers-v2-prediction-endpoint"></a>查询容器的 v2 预测终结点
+## <a name="query-the-containers-prediction-endpoint"></a>查询容器的预测终结点
 
 容器提供了基于 REST 的查询预测终结点 API。
 
 使用主机 `https://localhost:5000`，以获得容器 API。
-
-## <a name="query-the-containers-v3-prediction-endpoint"></a>查询容器的 v3 预测终结点
-
-容器提供了基于 REST 的查询预测终结点 API。
-
-使用主机 `https://localhost:5000`，以获得容器 API。
-
-### <a name="v3-api-request-post-body"></a>V3 API 请求 POST 正文
-
-以下 JSON 是 V3 API 请求的 POST 正文的示例:
-
-```json
-{
-  "documents": [
-    {
-      "language": "en",
-      "id": "1",
-      "text": "Hello world. This is some input text that I love."
-    },
-    {
-      "language": "en",
-      "id": "2",
-      "text": "It's incredibly sunny outside! I'm so happy."
-    }
-  ]
-}
-```
-
-### <a name="v3-api-response-body"></a>V3 API 响应正文
-
-以下 JSON 是 V3 API 请求的 POST 正文的示例:
-
-```json
-{
-    "documents": [
-        {
-            "id": "1",
-            "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.98570585250854492,
-                "neutral": 0.0001625834556762,
-                "negative": 0.0141316400840878
-            },
-            "sentences": [
-                {
-                    "sentiment": "neutral",
-                    "sentenceScores": {
-                        "positive": 0.0785155147314072,
-                        "neutral": 0.89702343940734863,
-                        "negative": 0.0244610067456961
-                    },
-                    "offset": 0,
-                    "length": 12
-                },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.98570585250854492,
-                        "neutral": 0.0001625834556762,
-                        "negative": 0.0141316400840878
-                    },
-                    "offset": 13,
-                    "length": 36
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.89198976755142212,
-                "neutral": 0.103382371366024,
-                "negative": 0.0046278294175863
-            },
-            "sentences": [
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.78401315212249756,
-                        "neutral": 0.2067587077617645,
-                        "negative": 0.0092281140387058
-                    },
-                    "offset": 0,
-                    "length": 30
-                },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.99996638298034668,
-                        "neutral": 0.0000060341349126,
-                        "negative": 0.0000275444017461
-                    },
-                    "offset": 31,
-                    "length": 13
-                }
-            ]
-        }
-    ],
-    "errors": []
-}
-```
 
 <!--  ## Validate container is running -->
 

@@ -36,7 +36,7 @@ ms.locfileid: "61400468"
 具体而言，此 MongoDB 连接器支持：
 
 - MongoDB **版本 2.4、2.6、3.0、3.2、3.4 和 3.6**。
-- 使用基本  或匿名  身份验证复制数据。
+- 使用基本或匿名身份验证复制数据。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -54,11 +54,11 @@ MongoDB 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type |type 属性必须设置为：MongoDb  |是 |
+| type |type 属性必须设置为：MongoDb |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
 | port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |否（默认值为 27017） |
 | databaseName |要访问的 MongoDB 数据库名称。 |是 |
-| authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许值包括：基本和匿名   。 |是 |
+| authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许值包括：基本和匿名。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
 | password |用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果使用基本身份验证）。 |
 | authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |不。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
@@ -97,7 +97,7 @@ MongoDB 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：MongoDbCollection  | 是 |
+| type | 数据集的 type 属性必须设置为：MongoDbCollection | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
 
 **示例：**
@@ -124,7 +124,7 @@ MongoDB 链接的服务支持以下属性：
 
 ### <a name="mongodb-as-source"></a>以 MongoDB 作为源
 
-复制活动源  部分支持以下属性：
+复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
