@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: bbbec680cd2575cc63761c9fbe1335d548ec4d3b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640792"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828276"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>用于 VMware 评估和迁移的支持矩阵
 
@@ -42,8 +42,12 @@ ms.locfileid: "68640792"
 **地域** | **元数据存储位置**
 --- | ---
 Azure 政府 | US Gov 弗吉尼亚州
-亚太区 | 东南亚或东亚
-欧洲 | 欧洲南部或西欧
+亚太区 | 东亚或东南亚
+澳大利亚 | 澳大利亚东部或澳大利亚东南部
+加拿大 | 加拿大中部或加拿大东部
+欧洲 | 欧洲北部或欧洲西部
+印度 | 印度中部或印度南部
+日本 |  日本东部或日本西部
 英国 | 英国南部或英国西部
 美国 | 美国中部或美国西部2
 
@@ -70,7 +74,7 @@ Azure 政府 | US Gov 弗吉尼亚州
 
 **支持** | **详细信息**
 --- | ---
-**vCenter Server** | VCenter Server 上需要足够的资源来分配具有 32 GB 内存的 VM、4个 vcpu 和外部虚拟交换机。<br/><br/> 设备需要直接或通过代理访问 internet。
+**vCenter Server** | VCenter Server 上需要足够的资源来分配具有 32 GB RAM、8个 vcpu 和外部虚拟交换机的 VM。<br/><br/> 设备需要直接或通过代理访问 internet。
 **ESXi** | 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。
 **Azure Migrate 项目** | 设备可以与单个项目关联。
 **vCenter Server** | 设备最多可在 vCenter Server 上发现 10000 VMware Vm。<br/> 设备可以连接到一个 vCenter Server。
@@ -78,7 +82,7 @@ Azure 政府 | US Gov 弗吉尼亚州
 
 ## <a name="assessment-url-access-requirements"></a>评估-URL 访问要求
 
-Azure Migrate 设备需要 internet 连接到 internet。
+Azure Migrate 设备需要连接到 internet。
 
 - 部署设备时, Azure Migrate 会对下表中汇总的 Url 进行连接性检查。
 - 如果使用基于 URL 的代理连接到 internet, 则允许访问这些 Url, 确保代理解析查找 Url 时收到的任何 CNAME 记录。

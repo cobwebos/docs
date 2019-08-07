@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 7128413e48fdeef9b9284bc6db11649016a06153
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: ebcc8301fa3693880974e45b594be218905e8311
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722816"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775415"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>从 Azure 下载 Windows VHD
 
@@ -36,14 +36,14 @@ ms.locfileid: "67722816"
 2.  [连接到 VM](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 3.  在 VM 上，以管理员身份打开“命令提示符”窗口。
 4.  将目录切换到 *%windir%\system32\sysprep*，然后运行 sysprep.exe。
-5.  在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”。  
-6.  在“关闭选项”中选择“关闭”  ，然后单击“确定”  。 
+5.  在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”。
+6.  在“关闭选项”中选择“关闭”，然后单击“确定”。 
 
 若要使用 VHD 作为现有 VM 的新实例的磁盘或数据磁盘，请完成以下步骤：
 
-1.  在 Azure 门户的“中心”菜单上，单击“虚拟机”  。
+1.  在 Azure 门户的“中心”菜单上，单击“虚拟机”。
 2.  从列表中选择 VM。
-3.  在 VM 的边栏选项卡上，单击“停止”  。
+3.  在 VM 的边栏选项卡上，单击“停止”。
 
     ![停止 VM](./media/download-vhd/export-stop.png)
 
@@ -51,12 +51,12 @@ ms.locfileid: "67722816"
 
 若要下载 VHD 文件，需要生成[共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL。 生成 URL 时，将为 URL 分配到期时间。
 
-1.  在 VM 的边栏选项卡的菜单上，单击“磁盘”  。
-2.  为 VM 选择操作系统磁盘，然后单击“导出”  。
+1.  在 VM 的边栏选项卡的菜单上，单击“磁盘”。
+2.  为 VM 选择操作系统磁盘, 并单击 "**磁盘导出**"。
 3.  将 URL 的到期时间设置为 *36000*。
-4.  单击“生成 URL”。 
+4.  单击“生成 URL”。
 
-    ![生成 URL](./media/download-vhd/export-generate.png)
+    ![生成 URL](./media/download-vhd/export-generate-new.png)
 
 > [!NOTE]
 > 从默认值增加到期时间，以便提供足够时间来下载 Windows Server 操作系统的大型 VHD 文件。 可能需要包含 Windows Server 操作系统的 VHD 文件，以便根据连接花几个小时下载。 如果下载的是数据磁盘的 VHD，则默认时间就足够了。 
@@ -69,7 +69,7 @@ ms.locfileid: "67722816"
 
     ![下载 VHD](./media/download-vhd/export-download.png)
 
-2.  可能需要单击浏览器中的“保存”  以开始下载。 VHD 文件的默认名称为 *abcd*。
+2.  可能需要单击浏览器中的“保存”以开始下载。 VHD 文件的默认名称为 *abcd*。
 
     ![单击浏览器中的“保存”](./media/download-vhd/export-save.png)
 

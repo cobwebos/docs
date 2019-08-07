@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 780b9ae6e4664af86fa655c9136193bed58526d9
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: a61ddf57d4f01fcaf4a949add29c677aa94060a9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708493"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827858"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>使用 Azure 数据工厂将数据从 data lake 或数据仓库迁移到 Azure 
 
@@ -26,7 +26,7 @@ ms.locfileid: "68708493"
 - 大数据工作负荷从 AWS S3 本地 Hadoop 文件系统迁移到 Azure。 
 - EDW 从 Oracle Exadata、Netezza、Teradata、AWS Redshift 迁移到 Azure。 
 
-Azure 数据工厂可以移动 PBs 的数据以进行 data lake 迁移, 为数据仓库迁移移动数十 TB 的数据。 
+Azure 数据工厂可移动用于 data lake 迁移的 PBs 数据, 以及用于数据仓库迁移的数十 TB 数据。 
 
 ## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Azure 数据工厂可用于数据迁移的原因 
 
@@ -59,4 +59,4 @@ Azure 数据工厂是一种典型的在线数据迁移工具, 用于通过网络
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 数据工厂复制多个容器中的文件](solution-template-copy-files-multiple-containers.md)
+- [将数据从 AWS S3 迁移到 Azure](data-migration-guidance-s3-azure-storage.md)

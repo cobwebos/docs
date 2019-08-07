@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 608338c628232f7f67ea6f6b7ba15e6bb1c3b315
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9dc4909db5560be6eb082dbad85d4b2d42113bdd
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698662"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828681"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>预览版：使用 Azure 映像生成器创建 Windows VM
 
@@ -164,7 +164,7 @@ az resource delete \
 ```
 
 ## <a name="start-the-image-build"></a>启动映像生成
-使用[az 资源 invoke](/cli/azure/resourceaz-resource-invoke-action)启动映像生成过程。
+使用[az 资源 invoke](/cli/azure/resource#az-resource-invoke-action)启动映像生成过程。
 
 ```azurecli-interactive
 az resource invoke-action \

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666288"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779662"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -282,12 +282,29 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 
    你可以使用标准 MSI 过程来自动完成软件安装。 例如：
 
-   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
+   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
-   > [!WARNING]
-   > 此处的示例 msiexec 命令会立即重新启动。 若要避免出现这种`/norestart`情况, 请使用标志。
+   如果希望让安装`/norestart`程序自动重新启动计算机, 则可以省略标志。
 
 在域控制器上安装了 DC 代理软件并重新启动该计算机后, 安装完成。 无需（也无法）进行其他配置。
+
+## <a name="upgrading-the-proxy-agent"></a>升级代理程序
+
+当 Azure AD 密码保护代理软件的较新版本可用时, 可以通过运行最新版本的`AzureADPasswordProtectionProxySetup.exe`软件安装程序来完成升级。 不需要卸载当前版本的代理软件, 安装程序将执行就地升级。 升级代理软件时, 不需要重新启动。 可以使用标准 MSI 过程自动执行软件升级, 例如: `AzureADPasswordProtectionProxySetup.exe /quiet`。
+
+代理程序支持自动升级。 自动升级使用与代理服务并行安装的 Microsoft Azure AD 连接代理更新程序服务。 自动升级默认情况下启用, 并且可以使用 AzureADPasswordProtectionProxyConfiguration cmdlet 启用或禁用。 可以使用 AzureADPasswordProtectionProxyConfiguration cmdlet 查询当前设置。 Microsoft 建议自动升级保持启用状态。
+
+`Get-AzureADPasswordProtectionProxy` Cmdlet 可用于查询林中所有当前已安装的代理代理的软件版本。
+
+## <a name="upgrading-the-dc-agent"></a>升级 DC 代理
+
+如果有较新版本的 Azure AD 密码保护 DC 代理软件, 则可通过运行最新版本的`AzureADPasswordProtectionDCAgentSetup.msi`软件包来完成升级。 不需要卸载最新版本的 DC 代理软件, 安装程序将执行就地升级。 升级 DC 代理软件时, 始终需要重新启动, 这是由核心 Windows 行为引起的。 
+
+可以使用标准 MSI 过程自动执行软件升级, 例如: `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`。
+
+如果希望让安装`/norestart`程序自动重新启动计算机, 则可以省略标志。
+
+`Get-AzureADPasswordProtectionDCAgent` Cmdlet 可用于查询林中所有当前已安装 DC 代理的软件版本。
 
 ## <a name="multiple-forest-deployments"></a>多林部署
 
@@ -301,7 +318,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 
 当林中的域控制器尝试从 Azure 下载新策略或其他数据时, 密码保护的主要可用性是代理服务器的可用性。 每个 DC 代理在决定要调用的代理服务器时使用简单的轮循机制算法。 代理跳过未响应的代理服务器。 对于大多数完全连接的 Active Directory 部署, 这些部署具有目录和 sysvol 文件夹状态的正常复制, 两个代理服务器足以确保可用性。 这将导致及时下载新策略和其他数据。 但你可以部署其他代理服务器。
 
-DC 代理软件的设计可减轻与高可用性相关的常见问题。 DC 代理维护最近下载的密码策略的本地缓存。 即使所有已注册的代理服务器都变为不可用, DC 代理仍会继续强制执行其缓存的密码策略。 大型部署中的密码策略合理的更新频率通常是*天*, 而不是小时或更短时间。 因此, 代理服务器的短暂中断不会显著影响 Azure AD 密码保护。
+DC 代理软件的设计可减轻与高可用性相关的常见问题。 DC 代理维护最近下载的密码策略的本地缓存。 即使所有已注册的代理服务器都变为不可用, DC 代理仍会继续强制执行其缓存的密码策略。 大型部署中的密码策略合理的更新频率通常是天, 而不是小时或更短时间。 因此, 代理服务器的短暂中断不会显著影响 Azure AD 密码保护。
 
 ## <a name="next-steps"></a>后续步骤
 

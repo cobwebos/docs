@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
-ms.openlocfilehash: f9fd9f88a0aa6af9cd4160bf5879b9b8f383dca1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720430"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780902"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Azure 机器学习服务的企业安全性
 
@@ -161,7 +161,7 @@ Azure 机器学习服务可将指标和元数据存储到 Azure 机器学习服�
 
 每个计算节点的 OS 磁盘存储在 Azure 存储中, 使用 Microsoft 托管密钥在 Azure 机器学习服务存储帐户中进行加密。 此计算是暂时的, 当没有排队的排队时, 通常会缩小群集。 底层虚拟机已取消预配, 操作系统磁盘已删除。 OS 磁盘不支持 Azure 磁盘加密。
 每个虚拟机还具有一个本地临时磁盘用于操作系统操作。 还可以选择使用此磁盘来暂存定型数据。 此磁盘未加密。
-若要深入了解 Azure 中的静态加密如何工作, 请参阅[Azure 静态数据加密](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)。
+若要深入了解 Azure 中的静态加密如何工作, 请参阅[Azure 静态数据加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)。
 
 ### <a name="encryption-in-transit"></a>传输中加密
 

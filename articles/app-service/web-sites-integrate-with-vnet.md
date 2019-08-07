@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 20ef71f98817a57f884e9c5a3cef4ceeaebe74eb
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498438"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740898"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure 应用服务虚拟网络集成功能，并说明如何在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中使用应用对其进行设置。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。  
@@ -136,11 +136,10 @@ VNet 集成不支持某些功能，其中包括：
 * 在应用服务计划中, 最多支持五个 Vnet 的集成 
 * 允许应用服务计划中的多个应用使用同一个 VNet, 而不会影响应用服务计划可以使用的总数。  如果在同一应用服务计划中有6个使用同一 VNet 的应用, 则会将其计为使用1个 VNet。 
 * 需要使用点到站点 VPN 配置的虚拟网络网关
-* 不支持用于 Linux 应用
 * 由于网关上的 SLA, 支持 99.9% 的 SLA
 
 此功能不支持:
-
+* 用于 Linux 应用
 * 跨 ExpressRoute 访问资源 
 * 跨服务终结点访问资源 
 

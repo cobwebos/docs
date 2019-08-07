@@ -1,6 +1,6 @@
 ---
-title: 适用于 Linux 的 azure 监视器依赖关系的虚拟机扩展 |Microsoft Docs
-description: 使用虚拟机扩展部署 Linux 虚拟机上的 Azure 监视器依赖关系代理。
+title: 适用于 Linux 的 Azure Monitor 依赖项虚拟机扩展 |Microsoft Docs
+description: 使用虚拟机扩展在 Linux 虚拟机上部署 Azure Monitor 依赖关系代理。
 services: virtual-machines-linux
 documentationcenter: ''
 author: mgoedtel
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 5faeebe799bd8cc0ba9a148508ac5b3a6d4b803a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b78bea88149d05067cf849000fef48f7b4dc5815
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67120198"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774391"
 ---
-# <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>适用于 Linux 的 azure 监视器依赖关系的虚拟机扩展
+# <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Azure Monitor 依赖项虚拟机扩展
 
-用于 VM 的 Azure Monitor 映射功能从 Microsoft Dependency Agent 获取其数据。 发布适用于 Linux 的 Azure VM 依赖关系代理虚拟机扩展和 Microsoft 支持。 扩展 Azure 虚拟机上安装依赖关系代理。 本文档详细介绍了支持的平台、 配置和适用于 Linux 的 Azure VM 依赖关系代理虚拟机扩展的部署选项。
+用于 VM 的 Azure Monitor 映射功能从 Microsoft Dependency Agent 获取其数据。 适用于 Linux 的 Azure VM 依赖关系代理虚拟机扩展由 Microsoft 发布和支持。 该扩展在 Azure 虚拟机上安装依赖关系代理。 本文档详细介绍适用于 Linux 的 Azure VM 依赖关系代理虚拟机扩展支持的平台、配置和部署选项。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
-可以针对中列出的受支持操作系统运行适用于 Linux 的 Azure VM 依赖关系代理扩展[受支持的操作系统](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)Vm 部署文章 Azure Monitor 的部分。
+适用于 Linux 的 Azure VM 依赖关系代理扩展可以针对用于 VM 的 Azure Monitor 部署一文的 "[支持的操作系统](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)" 部分中列出的受支持操作系统运行。
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -74,7 +74,7 @@ ms.locfileid: "67120198"
 
 ### <a name="property-values"></a>属性值
 
-| Name | 值/示例 |
+| 名称 | 值/示例 |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
@@ -83,11 +83,11 @@ ms.locfileid: "67120198"
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 中的 Azure 资源管理器模板在上一部分中详细介绍的 JSON 架构可用于 Azure 资源管理器模板部署期间运行的 Azure VM 依赖关系代理扩展。
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以使用 Azure 资源管理器模板上一部分中详细介绍的 JSON 架构, 在 Azure 资源管理器模板部署期间运行 Azure VM 依赖关系代理扩展。
 
-虚拟机扩展的 JSON 可以嵌套在虚拟机资源内。 或者，可以将其放置在根级别或顶级别的资源管理器 JSON 模板。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)。
+虚拟机扩展的 JSON 可以嵌套在虚拟机资源内。 也可以将其放置在资源管理器 JSON 模板的根级别或顶层。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/child-resource-name-type.md)。
 
-下面的示例假定的依赖关系代理扩展嵌套在虚拟机资源内。 当嵌套扩展资源时，JSON 放置在`"resources": []`的虚拟机的对象。
+下面的示例假定依赖关系代理扩展嵌套在虚拟机资源内。 在嵌套扩展资源时, 将 JSON 放置在虚拟机的`"resources": []`对象中。
 
 
 ```json
@@ -108,7 +108,7 @@ ms.locfileid: "67120198"
 }
 ```
 
-当你将扩展 JSON 放在模板的根时，资源名称包括对父虚拟机的引用。 类型反映了嵌套的配置。 
+将扩展 JSON 置于模板的根目录时, 资源名称包括对父虚拟机的引用。 类型反映了嵌套配置。 
 
 ```json
 {
@@ -130,7 +130,7 @@ ms.locfileid: "67120198"
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-可以使用 Azure CLI 将依赖关系代理 VM 扩展部署到现有的虚拟机。  
+你可以使用 Azure CLI 将依赖关系代理 VM 扩展部署到现有的虚拟机。  
 
 ```azurecli
 
@@ -146,7 +146,7 @@ az vm extension set \
 
 ### <a name="troubleshoot"></a>故障排除
 
-有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令：
+有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 检索。 若要查看给定 VM 的扩展部署状态, 请使用 Azure CLI 运行以下命令:
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -160,4 +160,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果您需要在本文中的任何位置的更多帮助上, 与 Azure 专家[MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)。 或者，可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”  。 有关如何使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果在本文的任何位置需要更多帮助, 请联系 MSDN Azure 上的 Azure 专家[并 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)。 或者, 你可以为 Azure 支持事件提供支持。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关如何使用 Azure 支持的信息, 请阅读[Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。

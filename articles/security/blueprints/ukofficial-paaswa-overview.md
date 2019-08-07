@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: e3ee5a0aa22d1231dca7d02a77d39e0a2b569314
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54bf4512785941ae1d09ae1436deefc032ec0037
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753846"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780656"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
 
@@ -57,7 +57,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 - API 应用
 - Azure DNS
 - Key Vault
-- Azure 监视器 （日志）
+- Azure Monitor (日志)
 - Application Insights
 - Azure 资源管理器
 - Azure 安全中心
@@ -68,7 +68,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 以下部分详细描述了部署和实施要素。
 
-### <a name="security"></a>安全
+### <a name="security"></a>安全性
 
 #### <a name="identity-and-authentication"></a>标识和身份验证
 
@@ -80,7 +80,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 - 使用 Azure AD 执行面向 Web 应用程序的操作员的身份验证和 Azure 资源管理的访问。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。
 - 数据库列加密使用 Azure AD 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅 [Always Encrypted：保护 SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
 - 为面向 Web 应用程序的用户配置公共访问。 要通过 Active Directory 或社交网络标识提供者创建并验证帐户，可根据需要集成 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/)。
-- [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 可以检测潜在漏洞，为风险帐户提供建议，以增强组织身份的安全状况，配置对检测到的与组织身份相关的可疑操作的自动响应，调查可疑事件并采取适当措施解决这些问题。
+- [Azure Active Directory 标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)可以检测潜在漏洞，为风险帐户提供建议，以增强组织标识的安全状况，配置对检测到的与组织标识相关的可疑操作的自动响应，调查可疑事件并采取适当措施解决这些问题。
 - [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 可在 Azure 中实现极有针对性的访问管理。 订阅访问仅限于订阅管理员，Azure Key Vault 访问仅限于需要密钥管理访问权限的用户。
 - 通过利用 [Azure Active Directory 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)，客户可以根据具体情况（如位置、设备、状态和登录风险），对其环境中的应用程序或用户实施额外的安全控制。
 - [Azure DDoS 防护](https://docs.microsoft.com/azure/security/security-paas-deployments#security-advantages-of-a-paas-cloud-service-model)与应用程序设计最佳做法相结合，提供针对 DDoS 攻击的防御，具有始终在线的流量监控，以及对常见网络级攻击的实时缓解。 通过 PaaS 体系结构，平台级 DDoS 防护对客户而言是透明的且被集成到平台中，但需要注意的是，应用程序安全设计责任在于客户。
@@ -95,7 +95,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-overview)是个性化的云顾问程序，可帮助遵循最佳做法来优化 Azure 部署。 它可分析资源配置和遥测使用情况，并推荐解决方案，有助于提高 Azure 资源的经济效益、性能、高可用性和安全性。
 
-[Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 默认情况下这基础 PaaS 虚拟机基础结构上安装，并通过以透明方式向客户的 Azure 结构进行管理。
+[Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 默认情况下, 这是在底层 PaaS 虚拟机基础结构上安装的, 并由 Azure 结构对客户透明地进行管理。
 
 ### <a name="paas-services-in-this-blueprint"></a>此蓝图中的 PaaS 服务
 
@@ -156,7 +156,7 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 ### <a name="secrets-management"></a>机密管理
 
-#### <a name="azure-key-vault"></a>Azure 密钥保管库
+#### <a name="azure-key-vault"></a>Azure Key Vault
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 用于保护应用程序密钥和机密，以确保第三方无法访问它们。 Key Vault 不适合用作用户密码的存储。 它被称为保管库，允许用户创建多个安全容器。 这些保管库受硬件安全模块 (HSM) 的支持。 保管库可以集中存储应用程序机密，降低安全信息意外丢失的可能性。 Key Vault 还控制并记录外界对其所存储内容的访问。 Azure Key Vault 负责处理传输层安全性 (TLS) 证书的请求和续订事宜，其提供的功能是可靠的证书生命周期管理解决方案所必需的。
 
@@ -170,9 +170,9 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 #### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)是可帮助收集和分析云中的资源生成的数据的 Azure 中的服务和本地环境。
+[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)是 Azure 中的一项服务, 可帮助收集和分析云和本地环境中资源生成的数据。
 
-#### <a name="azure-monitor-logs-in-this-blueprint"></a>此蓝图中的 azure Monitor 日志
+#### <a name="azure-monitor-logs-in-this-blueprint"></a>此蓝图中 Azure Monitor 日志
 
 - SQL 评估
 - Key Vault 诊断

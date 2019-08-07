@@ -1,6 +1,6 @@
 ---
 title: 计划 Azure 时序见解环境的缩放 | Microsoft Docs
-description: 本文介绍如何规划 Azure 时序见解环境时遵循最佳做法。 涵盖的方面包括存储容量、 数据保留、 入口容量、 监视和业务连续性和灾难恢复 (BCDR)。
+description: 本文介绍如何遵循最佳做法来规划 Azure 时序见解环境。 涉及的方面包括存储容量、数据保留、流入容量、监视及业务连续性和灾难恢复 (BCDR)。
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -10,52 +10,52 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2c11e3f623817894cea801173239cc386c6c3313
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1e0fee903372668d30db0686f6a23dd913428454
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165837"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828170"
 ---
-# <a name="plan-your-azure-time-series-insights-ga-environment"></a>规划 Azure 时间系列 Insights GA 环境
+# <a name="plan-your-azure-time-series-insights-ga-environment"></a>规划 Azure 时序见解正式版环境
 
-本文介绍如何规划 Azure 时序见解公开上市 (GA）) 环境基于预期的入口速率和数据保留要求。
+本文介绍如何根据预期流入速率和数据保留要求规划 Azure 时序见解正式版 (GA) 环境。
 
 ## <a name="video"></a>视频
 
-**观看此视频，了解有关在 Azure 时序见解和规划它的数据保留期的详细信息**:<br /><br />
+**观看此视频, 了解有关 Azure 时序见解中的数据保留的详细信息, 以及如何对其进行规划**:<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
-若要开始使用时序见解，最好是如果您知道想要按分钟，并且你需要将数据存储的长推送的数据量。  
+若要开始使用时序见解，最好要知道没分钟想要推送的数据量以及需要存储数据的时间。  
 
 有关时序见解 SKU 的容量和保留期的详细信息，请参阅[时序见解定价](https://azure.microsoft.com/pricing/details/time-series-insights/)。
 
-若要最规划长期成功的时序见解环境，请考虑以下属性：
+若要最合理地规划时序见解环境以取得长期成功，请考虑以下属性：
 
 - <a href="#storage-capacity">存储容量</a>
 - <a href="#data-retention">数据保留期</a>
-- <a href="#ingress-capacity">入口容量</a>
-- <a href="#shape-your-events">调整您的事件</a>
-- <a href="#ensure-that-you-have-reference-data">确保就地具有引用数据</a>
+- <a href="#ingress-capacity">流入容量</a>
+- <a href="#shape-your-events">调整事件</a>
+- <a href="#ensure-that-you-have-reference-data">确保已准备好参考数据</a>
 
 ## <a name="storage-capacity"></a>存储容量
 
-默认情况下，时序见解会将数据保留基于预配的存储量 (单位&#215;的每个单位的存储量) 和入口。
+默认情况下，时序见解根据预配的存储量（单位数乘以每个单位的存储量）和流入量来保留数据。
 
 ## <a name="data-retention"></a>数据保留
 
-您可以更改**数据保留时间**在时序见解环境中设置。 你可以启用最长 400 天的保留期。 
+可以更改时序见解环境中的“数据保留时间”设置。 可以启用最长 400 天的保留期。 
 
-时序见解有两种模式。 为确保您的环境具有最新的数据进行优化的一种模式。 此模式下，默认情况下处于打开状态。 
+时序见解具有两种模式。 其中一种模式为确保在环境中提供最新数据而经过优化。 此模式默认已启用。 
 
-为确保满足保留期限制，另一种模式进行优化。 在第二个模式下，如果满足该环境的整体存储容量，则暂停流入。 
+另一种模式为确保满足保留限制而经过优化。 在第二种模式下，如果达到了环境的总存储容量，则会暂停数据流入。 
 
-您可以调整保留期和 Azure 门户中的环境的配置页上的两种模式之间进行切换。
+可在 Azure 门户的环境配置页中调整保留期并在这两种模式之间切换。
 
 可在时序见解环境中配置最长 400 天的数据保留。
 
@@ -63,45 +63,45 @@ ms.locfileid: "67165837"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择时序见解环境。
 
-1. 在中**时序见解环境**窗格下**设置**，选择**配置**。
+1. 在“时序见解环境”窗格中的“设置”下，选择“配置”。
 
-1. 在中**数据保留时间 （以天为单位）** 框中，输入 1 到 400 之间的值。
+1. 在“数据保留时间(天)”框中，输入 1 到 400 的值。
 
    [![配置保留期](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
 
 > [!TIP]
-> 若要了解有关如何实施适当的数据保留策略的详细信息，请参阅[如何配置保留期](./time-series-insights-how-to-configure-retention.md)。
+> 若要详细了解如何实施适当的数据保留策略，请参阅[如何配置保留期](./time-series-insights-how-to-configure-retention.md)。
 
 ## <a name="ingress-capacity"></a>入口容量
 
-若要专注于为规划时序见解环境的第二个区域是入口容量。 入口容量是每分钟分配的派生。
+在规划时序见解环境时，需要重点考虑的第二个方面是流入容量。 流入容量是每分钟分配量的一个衍生属性。
 
-从限制的角度看的数据包大小为 32 KB 的入口数据包视为 32 事件，每个 1 KB 的大小。 允许的最大事件大小为 32 KB。 大小大于 32 KB 的数据包将被截断。
+从限制的角度看，大小达到 32 KB 的流入数据包被视为 32 个事件，每个事件的大小为 1 KB。 允许的最大事件为 32 KB。 大于 32 KB 的数据包将被截断。
 
-下表总结了每个单位的每个时序见解 SKU 的入口容量：
+下表汇总了每个时序见解 SKU 的每单位流入容量：
 
-|SKU  |每月的事件计数  |每月的事件大小  |每分钟的事件计数  |每分钟的事件大小  |
+|SKU  |每月事件计数  |每月事件大小  |每分钟事件计数  |每分钟事件大小  |
 |---------|---------|---------|---------|---------|
 |S1     |   3000 万     |  30 GB     |  720    |  720 KB   |
 |S2     |   3 亿    |   300 GB   | 7,200   | 7,200 KB  |
 
-可以在单一环境中，将 S1 或 S2 SKU 的容量增加到 10 个单位。 您不能从 S1 环境迁移到 S2。 不能从 S2 环境迁移到 S1。
+可以在单一环境中，将 S1 或 S2 SKU 的容量增加到 10 个单位。 无法从 S1 环境迁移到 S2 环境。 无法从 S2 环境迁移到 S1 环境。
 
-对于入口容量，首先要确定所需的每月按总入口。 接下来，确定你每分钟需求是什么。 
+对于流入容量，首先应该确定每月所需的流入总量。 接下来，确定每分钟的需求。 
 
-限制和延迟每分钟容量中扮演角色。 如果数据入口中数据的持续时间少于 24 小时激增时序见解可以"赶上"两次的速率上表中列出的入口速率。
+限制和延迟对每分钟容量的影响很大。 如果数据流入量会出现持续 24 小时以下的高峰，则时序见解可以两倍于上表中所列的速度“赶上”流入速率。
 
-例如，如果你有一个 S1 SKU，则传入数据的每分钟、 720 事件速率和数据速率小于或等于 1440 事件的速率的时间少于 1 小时的高峰，则没有明显的延迟在环境中。 但是，如果超过 1,440 每分钟超过一小时的事件，您可能会遇到数据可视化，可用于您的环境中的查询的延迟时间。
+例如，如果你使用单个 S1 SKU，流入数据的速率为每分钟 720 个事件，数据流入高峰的速率为 1,440 个事件（或更少）且持续时间不到 1 小时，则环境中不会出现明显的延迟。 但是，如果速率大于每分钟 1,440 个事件且超过 1 小时，则可能会发生数据延迟，这可在环境中查看并查询。
 
-您可能不知道想要推送提前多少数据。 在这种情况下，可以查找数据的遥测数据[Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)并[Azure 事件中心](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/)门户在 Azure 订阅中。 遥测可有助于确定如何预配环境。 使用**指标**要查看其遥测数据的相应的事件源在 Azure 门户中的窗格。 了解事件源指标后，可以更有效地计划和预配时序见解环境。
+你可能无法提前知道想要推送多少数据。 在这种情况下，可以在 Azure 门户订阅的 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)和 [Azure 事件中心](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/)查找遥测数据。 这些遥测数据有助于确定如何预配环境。 在 Azure 门户使用相应事件源的“指标”页查看遥测数据。 了解事件源指标后，可以更有效地计划和预配时序见解环境。
 
 ### <a name="calculate-ingress-requirements"></a>计算入口需求
 
-若要计算入口需求：
+若要计算流入要求：
 
-- 确认入口容量高于平均的每分钟费率和你的环境足够大，能够处理预期的入口等效于容量不超过一小时的两倍。
+- 确认流入容量高于平均每分钟的速率，并且环境足够大，能够在 1 小时内处理相当于两倍容量的预期流入量。
 
-- 如果入口激增用于上次的时间超过 1 小时，激增速率作为平均值。 预配容量足以处理激增速率的环境。
+- 如果发生持续超过 1 小时的流入高峰，请使用高峰速率作为平均值。 使用可以应对高峰速率的容量预配环境。
 
 ### <a name="mitigate-throttling-and-latency"></a>缓解限制和延迟
 
@@ -109,26 +109,26 @@ ms.locfileid: "67165837"
 
 ## <a name="shape-your-events"></a>塑造事件
 
-请务必确保发送到时序见解事件支持在预配的环境的大小的方式。 （相反，可以映射到多少个事件读取时序见解环境的大小和每个事件的大小。）还有一点需要考虑一下您可能想要使用进行切片和筛选依据的属性时查询数据。
+必须确保向时序见解发送事件的方式支持预配的环境大小。 （相反，可将环境大小映射到时序见解读取的事件数和每个事件的大小。）另外，必须考虑到在查询数据时要用作切片和筛选依据的属性。
 
 > [!TIP]
-> 查看 JSON 成型文档中的[将事件发送](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events)。
+> 请查看[发送事件](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events)中的 JSON 塑形文档。
 
-## <a name="ensure-that-you-have-reference-data"></a>确保有引用数据
+## <a name="ensure-that-you-have-reference-data"></a>确保已获得参考数据
 
-一个*引用数据集*是增加事件源中的事件的项的集合。 时序见解入口引擎将事件源与相应的数据行中的每个事件联接引用数据集内。 增强的事件就可用于查询。 联接基于**Primary Key**引用数据集内定义的列。
+参考数据集是对来自事件源的事件进行补充的项集合。 时序见解流入引擎将来自事件源的每个事件与参考数据集中的相应数据行联接到一起。 然后可以查询补充后的事件。 该联接基于参考数据集中定义的“主键”列。
 
 > [!NOTE]
-> 引用数据不以追溯方式进行联接。 仅当前和将来的入口数据匹配，并在已配置和上传后联接到引用数据集。 如果你打算将大量的历史数据发送到时序见解和不第一次上载或创建时序见解引用数据，您可能必须重做你的工作 (提示： 并不有趣)。  
+> 参考数据不以追溯方式进行联接。 在配置并上传参考数据集后，只会将当前和将来的流入数据与参考数据集相匹配并联接到其中。 如果你打算将大量的历史数据发送到时序见解，但未事先在时序见解中上传或创建参考数据，到时可能需要从头开始，这是一件很麻烦的事。  
 
-若要了解有关如何创建、 上载和管理时序见解中的引用数据的详细信息，请参阅我们[参考数据集文档](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)。
+若要详细了解如何在时序见解中创建、上传和管理参考数据，请参阅[参考数据集文档](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)。
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-- 开始创建[在 Azure 门户中的新时序见解环境](time-series-insights-get-started.md)。
+- 开始[在 Azure 门户中创建新的时序见解环境](time-series-insights-get-started.md)。
 
-- 了解如何[添加事件中心事件源](time-series-insights-how-to-add-an-event-source-eventhub.md)向时序见解。
+- 了解如何[将事件中心事件源添加](time-series-insights-how-to-add-an-event-source-eventhub.md)到时序见解。
 
-- 阅读有关如何[配置 IoT 中心事件源](time-series-insights-how-to-add-an-event-source-iothub.md)。
+- 了解如何[配置 IoT 中心事件源](time-series-insights-how-to-add-an-event-source-iothub.md)。

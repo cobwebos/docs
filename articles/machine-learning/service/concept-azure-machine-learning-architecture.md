@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 82d3656e0adc03157de57b700f8f0be6bde1f2ee
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 59ce6719c117db53b02ed6594de219010ee08ee6
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663475"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828232"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -40,13 +40,13 @@ ms.locfileid: "68663475"
 
 1. **监视**-监视已部署模型的定型数据集和推理数据之间的**数据偏移**。 必要时, 请循环返回到步骤 1, 以通过新的定型数据重新训练模型。
 
-## <a name="tools-for-azure-machine-learning"></a>用于 Azure 机器学习的工具 
+## <a name="tools-for-azure-machine-learning"></a>用于 Azure 机器学习的工具
 
 使用这些工具进行 Azure 机器学习:
 
 +  与[适用于 python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)的任何 Python 环境中的服务进行交互。
 + 通过[AZURE 机器学习 CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)自动执行机器学习活动。
-+ 用[Azure 机器学习 VS Code 扩展](how-to-vscode-tools.md)在 Visual Studio Code 中编写代码 
++ 用[Azure 机器学习 VS Code 扩展](how-to-vscode-tools.md)在 Visual Studio Code 中编写代码
 + 在不编写代码的情况下, 可以使用[Azure 机器学习服务的可视界面 (预览版)](ui-concept-visual-interface.md)来执行工作流步骤。
 
 ## <a name="glossary-of-concepts"></a>概念术语表
@@ -87,7 +87,7 @@ ms.locfileid: "68663475"
 
 试验是指定的脚本中多个运行的分组。 它始终属于工作区。 当你提交运行时，需提供试验名称。 运行的信息存储在该试验下。 如果提交运行，并指定一个不存在的试验名称，则系统将使用新指定的名称自动创建一个新试验。
 
-有关使用试验的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-run-cloud-notebook.md)。
+有关使用试验的示例, 请参阅[教程:训练您的第](tutorial-1st-experiment-sdk-train.md)一个模型。
 
 ### <a name="models"></a>Models
 
@@ -132,9 +132,9 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 
 ### <a name="compute-targets"></a>计算目标
 
-[计算目标](concept-compute-target.md)使你可以指定运行训练脚本或托管服务部署的计算资源。 此位置可以是本地计算机, 也可以是基于云的计算资源。 计算目标可以在不更改代码的情况下轻松更改你的计算环境。 
+[计算目标](concept-compute-target.md)使你可以指定运行训练脚本或托管服务部署的计算资源。 此位置可以是本地计算机, 也可以是基于云的计算资源。 计算目标可以在不更改代码的情况下轻松更改你的计算环境。
 
-详细了解[培训和部署可用的计算目标](concept-compute-target.md)。 
+详细了解[培训和部署可用的计算目标](concept-compute-target.md)。
 
 ### <a name="training-scripts"></a>定型脚本
 
@@ -153,7 +153,6 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 
 提交脚本以训练模型时，会生成运行。 运行可以有零次或多次子级运行。 例如，顶级运行可以有两次子级运行，其中每个可以有其自己的子级运行。
 
-有关查看由训练模型产生的运行次数的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-run-cloud-notebook.md)。
 
 ### <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
 
@@ -222,7 +221,9 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 ### <a name="ml-pipelines"></a>ML 管道
 
-使用机器学习管道可以创建和管理将各个机器学习阶段整合到一起的工作流。 例如, 管道可能包含数据准备、模型定型、模型部署和推理/评分阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。
+使用机器学习管道可以创建和管理将各个机器学习阶段整合到一起的工作流。 例如, 管道可能包含数据准备、模型定型、模型部署和推理/评分阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。 
+
+管道步骤可重复使用, 如果该步骤的输出未发生更改, 则可以运行, 而无需重新运行后续步骤。 例如, 如果数据未更改, 则可以重新训练模型, 而无需重新运行成本高昂的数据准备步骤。 管道还允许数据科学家协作, 同时处理机器学习工作流的不同区域。
 
 有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)。
 

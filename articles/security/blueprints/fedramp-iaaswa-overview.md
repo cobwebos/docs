@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1ba5b813843ce2f5d31f337ab4d3d94e521b0e0c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a0458525eaf985ac6b1ff2afde5726bbac45b4f2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60586099"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68778774"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure 安全性与合规性蓝图：适用于 FedRAMP 的 laaS Web 应用
 
@@ -68,11 +68,11 @@ ms.locfileid: "60586099"
 - Azure 存储
     - (7) 异地冗余存储帐户
 - Azure 云见证
-- 恢复服务保管库
-- Azure 密钥保管库
+- 恢复服务保存库
+- Azure Key Vault
 - Azure Active Directory (Azure AD)
 - Azure 资源管理器
-- Azure 监视器 （日志）
+- Azure Monitor (日志)
 
 ## <a name="deployment-architecture"></a>部署体系结构
 
@@ -122,12 +122,12 @@ ms.locfileid: "60586099"
 - [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 可在 Azure 中实现极有针对性的访问管理。 仅限订阅管理员进行订阅访问，而资源访问则取决于用户角色。
 - 可以通过部署的 IaaS Active Directory 实例在 OS 级别对部署的 IaaS 虚拟机进行标识管理。
 
-### <a name="security"></a>安全
+### <a name="security"></a>安全性
 **机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 Azure Key Vault 用于管理适用于此参考体系结构的 IaaS 虚拟机磁盘加密密钥和机密。
 
 **修补程序管理**：通过此 Azure 安全性和符合性蓝图自动化部署的 Windows 虚拟机默认配置为从 Windows 更新服务接收自动更新。 另外，此解决方案还部署 Azure 自动化解决方案，通过此方案可以创建更新部署，以便在需要时将修补程序部署到 Windows 服务器上。
 
-**恶意软件防护**：用于虚拟机的 [Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)提供实时保护功能，当已知的恶意软件或不需要的软件试图在受保护的虚拟机上进行安装或运行时，它使用可配置的警报帮助识别和删除病毒、间谍软件和其他恶意软件。
+**恶意软件防护**：用于虚拟机的 [Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)提供实时保护功能，当已知的恶意软件或不需要的软件试图在受保护的虚拟机上进行安装或运行时，它使用可配置的警报帮助识别和删除病毒、间谍软件和其他恶意软件。
 
 **应用程序网关**：体系结构在启用 Web 应用程序防火墙 (WAF) 和 OWASP 规则集的情况下使用应用程序网关，可降低安全漏洞风险。 其他功能包括：
 
@@ -147,11 +147,11 @@ ms.locfileid: "60586099"
 
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
-Azure Monitor 日志可广泛记录系统和用户活动以及系统运行状况。 [Azure Monitor 日志](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)解决方案收集和分析 Azure 中资源生成的数据，并在本地环境。
+Azure Monitor 日志提供了大量日志记录: 系统和用户活动以及系统运行状况。 [Azure Monitor 日志](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)解决方案收集并分析 Azure 和本地环境中资源生成的数据。
 
-- **活动日志：** [活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+- **活动日志：** [活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志：** [诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。
-- **日志存档：** 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Monitor 日志进行处理、 存储和仪表板报告。
+- **日志存档：** 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Monitor 日志以便进行处理、存储和仪表板报告。
 
 此外，以下监视解决方案作为此体系结构的一部分进行安装。 请注意，客户负责配置这些解决方案，使之符合 FedRAMP 安全控制的要求：
 -   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
@@ -189,7 +189,7 @@ Azure Monitor 日志可广泛记录系统和用户活动以及系统运行状况
 
 2. 运行预部署 PowerShell 脚本：azure-blueprint/predeploy/Orchestration_InitialSetup.ps1。
 
-3. 单击下面的按钮，登录到 Azure 门户，输入所需的 ARM 模板参数，然后单击“购买”。 
+3. 单击下面的按钮，登录到 Azure 门户，输入所需的 ARM 模板参数，然后单击“购买”。
 
     [![部署到 Azure](https://azuredeploy.net/AzureGov.png)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Ffedramp-iaas-webapp%2Fmaster%2Fazuredeploy.json)
 

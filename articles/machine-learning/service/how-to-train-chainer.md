@@ -1,7 +1,7 @@
 ---
-title: 训练和注册 Chainer 模型
+title: 用 Chainer 训练深度学习神经网络
 titleSuffix: Azure Machine Learning service
-description: 本文介绍如何使用 Azure 机器学习服务训练和注册 Chainer 模型。
+description: 了解如何使用 Azure 机器学习的 Chainer 估计器类在企业规模上运行 PyTorch 训练脚本。  示例脚本 classifis 手写数字图像, 使用在 numpy 顶部运行的 Chainer Python 库来构建深度学习神经网络。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,32 +9,32 @@ ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
-ms.date: 06/15/2019
-ms.openlocfilehash: 7cf5650708cd951e872e3df6ea533a62bde0389d
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.date: 08/02/2019
+ms.openlocfilehash: f95a7efd8b9303db0a9ba98c1be32e13d0c5e984
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618340"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780886"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Azure 机器学习服务, 大规模定型和注册 Chainer 模型
 
-本文介绍如何使用 Azure 机器学习服务训练和注册 Chainer 模型。 它使用常用的[MNIST 数据集](http://yann.lecun.com/exdb/mnist/), 通过使用在[numpy](https://www.numpy.org/)顶部运行的[Chainer Python 库](https://Chainer.org)生成的深度神经网络 (DNN) 对手写数字进行分类。
+在本文中, 了解如何使用 Azure 机器学习的[Chainer 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)类在企业范围内运行[Chainer](https://chainer.org/)训练脚本。 本文中的示例训练脚本使用常见的[MNIST 数据集](http://yann.lecun.com/exdb/mnist/), 通过使用在[numpy](https://www.numpy.org/)顶部运行的 Chainer Python 库生成的深度神经网络 (DNN) 对手写数字进行分类。
 
-Chainer 是一种高级神经网络 API, 能够在其他热门 DNN 框架之上运行以简化开发。 使用 Azure 机器学习 service, 你可以使用弹性云计算资源快速横向扩展培训作业。 还可以跟踪定型运行、版本模型、部署模型, 等等。
+无论是从头开始训练深度学习 Chainer 模型, 还是将现有模型引入云中, 都可以使用 Azure 机器学习来使用弹性云计算资源来横向扩展开源定型作业。 可以通过 Azure 机器学习来构建、部署、版本和监视生产级模型。 
 
-无论是从头开始开发 Chainer 模型, 还是将现有模型引入云中, Azure 机器学习服务都可以帮助您构建生产就绪模型。
+了解有关[深度学习与机器学习](concept-deep-learning-vs-machine-learning.md)的详细信息。
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 在以下任一环境中运行此代码:
 
 - Azure 机器学习笔记本 VM-无需下载或安装
 
-    - 完成[基于云的笔记本快速入门](quickstart-run-cloud-notebook.md), 创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
-    - 在笔记本服务器上的 "示例" 文件夹中, 在 "操作**方法"/"使用深度学习/超参数-chainer** " 文件夹中查找已完成的笔记本和文件。  此笔记本包含扩展的部分, 涵盖智能超参数优化、模型部署和笔记本小组件。
+    - 在开始本教程之前完成[教程：设置环境和工作](tutorial-1st-experiment-sdk-setup.md)区, 创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
+    - 在笔记本服务器上的示例深度学习文件夹中, 在 "操作**方法"/"使用深度学习/超参数-chainer** " 文件夹中查找已完成的笔记本和文件。  此笔记本包含扩展的部分, 涵盖智能超参数优化、模型部署和笔记本小组件。
 
 - 你自己的 Jupyter 笔记本服务器
 
@@ -94,7 +94,7 @@ import shutil
 shutil.copy('chainer_mnist.py', project_folder)
 ```
 
-### <a name="create-an-experiment"></a>创建试验
+### <a name="create-a-deep-learning-experiment"></a>创建深度学习试验
 
 创建试验。 在此示例中, 创建一个名为 "chainer-mnist" 的试验。
 
@@ -209,9 +209,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在 Azure 机器学习服务上训练 Chainer 模型。 
-
-* 若要了解如何部署模型, 请继续学习我们的[模型部署](how-to-deploy-and-where.md)一文。
+本文介绍了如何在 Azure 机器学习服务上使用 Chainer 训练和注册深度学习和神经网络。 若要了解如何部署模型, 请继续学习我们的[模型部署](how-to-deploy-and-where.md)一文。
 
 * [优化超参数](how-to-tune-hyperparameters.md)
 

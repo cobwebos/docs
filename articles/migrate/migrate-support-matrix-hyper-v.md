@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 787bcf28a64c98f82deb0725e2362bf8144d6c4e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: da68c0ae1dc92f5b854c30c90b93856248c43281
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640866"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828353"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>用于 Hyper-V 评估和迁移的支持矩阵
 
@@ -36,14 +36,18 @@ ms.locfileid: "68640866"
 **支持** | **详细信息**
 --- | ---
 Azure 权限 | 你需要订阅中的 "参与者" 或 "所有者" 权限才能创建 Azure Migrate 项目。
-Hyper-V VM | 在单个项目中最多评估10000个 Hyper-v Vm。 Azure 订阅中可以有多个项目。 项目可以包括 VMware Vm 和 Hyper-v Vm, 最高可达评估限制。
+Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅中可以有多个项目。 项目可以包括 VMware Vm 和 Hyper-v Vm, 最高可达评估限制。
 地理 | 你可以在多个地理区域中创建 Azure Migrate 项目。 尽管可以在特定 ographies 中创建项目, 但可以针对其他目标位置评估或迁移计算机。 项目地域仅用于存储已发现的元数据。
 
   **地域** | **元数据存储位置**
   --- | ---
   Azure 政府 | US Gov 弗吉尼亚州
-  亚太区 | 东南亚或东亚
-  欧洲 | 欧洲南部或西欧
+  亚太区 | 东亚或东南亚
+  澳大利亚 | 澳大利亚东部或澳大利亚东南部
+  加拿大 | 加拿大中部或加拿大东部
+  欧洲 | 欧洲北部或欧洲西部
+  印度 | 印度中部或印度南部
+  日本 |  日本东部或日本西部
   英国 | 英国南部或英国西部
   美国 | 美国中部或美国西部2
 
@@ -84,7 +88,7 @@ Hyper-V VM | 在单个项目中最多评估10000个 Hyper-v Vm。 Azure 订阅�
 | **支持**                | **详细信息**               
 | :-------------------       | :------------------- |
 | **Azure Migrate 项目**  |  设备可以与单个项目关联。<br/> 使用单个设备, 最多可以发现5000个 Hyper-v Vm。
-| **Hyper-V**    |  将设备部署为 Hyper-v VM。<br/> 提供的设备 VM 为 Hyper-v VM 版本5.0。<br/> VM 主机必须运行 Windows Server 2012 R2 或更高版本。<br/> 它需要足够的空间来分配 16 GB RAM、4个虚拟处理器和1个适用于设备 VM 的外部交换机。<br/> 设备需要静态或动态 IP 地址和 internet 访问权限。
+| **Hyper-V**    |  将设备部署为 Hyper-v VM。<br/> 提供的设备 VM 为 Hyper-v VM 版本5.0。<br/> VM 主机必须运行 Windows Server 2012 R2 或更高版本。<br/> 它需要足够的空间来为设备 VM 分配 16 GB RAM、8个 vcpu 和1个外部交换机。<br/> 设备需要静态或动态 IP 地址和 internet 访问权限。
 
 
 ## <a name="assessment-appliance-url-access"></a>评估-设备 URL 访问

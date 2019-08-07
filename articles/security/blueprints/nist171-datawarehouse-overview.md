@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: a1850ecfbb21eb9495bb0e6de362dc8dee3026a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5a308dfd5467aecb8b0ff6c661de1cb8b1740590
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60609595"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780734"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Azure 安全性和符合性蓝图 - 符合 NIST SP 800-171 的数据仓库
 
@@ -39,7 +39,7 @@ SQL Server 负载均衡器将管理 SQL 流量以确保高性能。 此参考体
 
 为了增强安全性，将通过 Azure 资源管理器以资源组的形式管理此解决方案中的所有资源。 Azure Active Directory (Azure AD) 基于角色的访问控制 (RBAC) 用于控制对已部署资源的访问。 这些资源包括 Azure Key Vault 中的客户密钥。 通过 Azure 安全中心和 Azure Monitor 监视系统运行状况。 客户可将这两个监视服务均配置为捕获日志。 系统运行状况在一个仪表板中显示，方便使用。
 
-VM 可作为管理守护主机。 它可为管理员提供安全连接以访问部署的资源。 数据将通过此管理守护主机加载到临时区域。 我们建议配置 VPN 或 Azure ExpressRoute 连接，以便进行管理和将数据导入参考体系结构子网。 
+VM 可作为管理守护主机。 它可为管理员提供安全连接以访问部署的资源。 数据将通过此管理守护主机加载到临时区域。 我们建议配置 VPN 或 Azure ExpressRoute 连接，以便进行管理和将数据导入参考体系结构子网。
 
 ![符合 NIST SP 800-171 的数据仓库的参考体系结构关系图](images/nist171-dw-architecture.png "符合 NIST SP 800-171 的数据仓库的参考体系结构关系图")
 
@@ -50,8 +50,8 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
     - SQL Server 群集节点和见证
 - Azure Active Directory
 - Azure 数据目录
-- Azure 密钥保管库
-- Azure 监视器 （日志）
+- Azure Key Vault
+- Azure Monitor (日志)
 - Azure 安全中心
 - Azure 负载均衡器
 - Azure 存储
@@ -64,23 +64,23 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
     - (1) /16 网络
     - (4) /24 网络
     - (4) 网络安全组
-- 恢复服务保管库
+- 恢复服务保存库
 - SQL 数据仓库
 - SQL Server Reporting Services
 
 ## <a name="deployment-architecture"></a>部署体系结构
 以下部分详细描述了部署和实施要素。
 
-**Azure SQL 数据仓库**:[SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)是充分利用大规模并行处理，以快速运行复杂查询对千万亿字节的数据的企业数据仓库。 用户可以使用简单的 PolyBase T-SQL 查询将大数据导入到 SQL 数据仓库中，并利用大规模并行处理的强大功能来运行高性能分析。
+**AZURE SQL 数据仓库**:[SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)是一种企业数据仓库, 它利用大规模并行处理来跨 pb 的数据快速运行复杂的查询。 用户可以使用简单的 PolyBase T-SQL 查询将大数据导入到 SQL 数据仓库中，并利用大规模并行处理的强大功能来运行高性能分析。
 
-**SQL Server Reporting Services**:[SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs)提供的报表的快速创建具有表、 图表、 地图、 仪表、 矩阵和更高，SQL 数据仓库。
+**SQL Server Reporting Services**:[SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs)提供了有关 SQL 数据仓库的表、图表、地图、仪表、矩阵等的快速创建报表。
 
 **Azure 数据目录**：[数据目录](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog)可帮助管理数据的用户更轻松地发现和理解数据源。 常见的数据源可以针对数据进行注册、标记和搜索。 数据将保留在现有位置，但其元数据的副本将添加到数据目录。 包含对数据源位置的引用。 会对元数据编制索引以轻松通过搜索发现每个数据源。 另外，索引编制还会让发现数据源的用户对其易于理解。
 
-**守护主机**：堡垒主机是入口的单一用户可用于访问此环境中的已部署的资源点。 守护主机通过仅允许来自安全列表中公共 IP 地址的远程流量来提供到已部署资源的安全连接。 若要允许远程桌面流量，必须在网络安全组中定义流量的源。
+**守护主机**：堡垒主机是用户可用于访问此环境中部署的资源的单一入口点。 守护主机通过仅允许来自安全列表中公共 IP 地址的远程流量来提供到已部署资源的安全连接。 若要允许远程桌面流量，必须在网络安全组中定义流量的源。
 
 此解决方案使用以下配置将 VM 创建为已加入域的守护主机：
--   [反恶意软件扩展](https://docs.microsoft.com/azure/security/azure-security-antimalware)。
+-   [反恶意软件扩展](https://docs.microsoft.com/azure/security/fundamentals/antimalware)。
 -   [Azure 诊断扩展](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)。
 -   使用 Key Vault 的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)。
 -   [自动关闭策略](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)，在不使用 VM 时可减少其资源消耗量。
@@ -97,7 +97,7 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 
 每个 NSG 都打开了特定的端口和协议，以便解决方案能够安全正确地工作。 此外，为每个 NSG 启用了以下配置：
   - [诊断日志和事件](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中。
-  - Azure Monitor 日志连接到[NSG 的诊断功能](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)。
+  - Azure Monitor 日志已连接到[NSG 的诊断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)。
 
 **子网**：每个子网与其相应的 NSG 关联。
 
@@ -117,7 +117,7 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 -   [加密列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)可以确保敏感数据永远不会在数据库系统中以明文形式显示。 启用数据加密后，只有具有密钥访问权限的客户端应用程序或应用服务器才能访问明文数据。
 - [扩展属性](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addextendedproperty-transact-sql)可用于停止处理数据主体。 用户可以向数据库对象添加自定义属性。 另外，他们还可以将数据标记为“已停止”，以支持应用程序逻辑防止处理关联的财务数据。
 - [行级别安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)使用户能够定义策略来限制对数据的访问，以停止处理。
-- [SQL 数据库动态数据掩码](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)通过对非特权用户或应用程序模糊化敏感数据来限制此类数据的泄露。 它可以自动发现潜在的敏感数据，并建议应用合适的掩码。 动态数据掩码有助于减少访问，以便敏感数据不会由未经授权访问而退出数据库。 客户需要负责根据其数据库架构调整设置。 
+- [SQL 数据库动态数据掩码](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)通过对非特权用户或应用程序模糊化敏感数据来限制此类数据的泄露。 它可以自动发现潜在的敏感数据，并建议应用合适的掩码。 动态数据掩码有助于减少访问，以便敏感数据不会由未经授权访问而退出数据库。 客户需要负责根据其数据库架构调整设置。
 
 ### <a name="identity-management"></a>身份管理
 以下技术在 Azure 环境中提供用于管理数据访问的功能：
@@ -125,9 +125,9 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 -   使用 Azure AD 对应用程序执行身份验证。 有关详细信息，请参阅如何[将应用程序与 Azure AD 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。 数据库列加密还使用 Azure AD 对访问 SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅如何[保护 SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
 -   [Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) 可供管理员用于定义细化的访问权限。 使用它，管理员可以仅授予用户执行其作业所需的访问次数。 无需向每个用户授予 Azure 资源的不受限访问权限，管理员可以只允许使用特定的操作来访问资源和数据。 订阅访问仅限于订阅管理员。
 - [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) 可供客户用来最大限度地减少有权访问特定信息（例如数据）的用户数量。 管理员可以使用 Azure AD Privileged Identity Management 来发现、限制和监视特权标识及其对资源的访问。 此外，还可以根据需要，使用此功能来实施按需、实时的管理性访问。
-- [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 可检测影响组织标识的潜在漏洞。 它将自动响应配置为检测与组织标识相关的可疑操作。 它还会调查可疑事件，以采取适当的措施进行解决。
+- [Azure Active Directory 标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)可检测到影响组织标识的潜在漏洞。 它将自动响应配置为检测与组织标识相关的可疑操作。 它还会调查可疑事件，以采取适当的措施进行解决。
 
-### <a name="security"></a>安全
+### <a name="security"></a>安全性
 **机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Key Vault 帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Key Vault 功能帮助客户保护数据：
 - 根据需要配置高级访问权限策略。
 - 使用对密钥和机密所需的最低权限来定义 Key Vault 访问策略。
@@ -137,9 +137,9 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 - Key Vault 的诊断日志已启用，其保留期至少为 365 天。
 - 对密钥进行允许的加密操作时，仅限必需的操作。
 
-**修补程序管理**：作为此参考体系结构的一部分部署的 Windows Vm 默认情况下从 Windows 更新服务接收自动更新配置。 此解决方案还包括 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)服务，可以在需要时创建更新部署，以修补 VM。
+**修补程序管理**：默认情况下, 在此参考体系结构中部署的 Windows Vm 配置为从 Windows 更新服务接收自动更新。 此解决方案还包括 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)服务，可以在需要时创建更新部署，以修补 VM。
 
-**恶意软件防护**：[Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)Vm 提供了实时保护功能，可帮助识别和删除病毒、 间谍软件和其他恶意软件。 客户可以配置当已知恶意软件或不需要的软件试图在受保护的 VM 上安装或运行时生成的警报。
+**恶意软件防护**：适用于 Vm 的[Microsoft 反恶意](https://docs.microsoft.com/azure/security/fundamentals/antimalware)软件提供了实时保护功能, 可帮助识别和删除病毒、间谍软件和其他恶意软件。 客户可以配置当已知恶意软件或不需要的软件试图在受保护的 VM 上安装或运行时生成的警报。
 
 **Azure 安全中心**：借助[安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)，客户可在工作负载中集中应用和管理安全策略、限制威胁暴露，以及检测和应对攻击。 此外，安全中心还会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护数据。
 
@@ -150,19 +150,19 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 此外，此参考体系结构还使用安全中心内的[漏洞评估](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)功能。 配置该功能后，合作伙伴代理（例如 Qualys）可向合作伙伴的管理平台报告漏洞数据。 反过来，合作伙伴的管理平台也会向安全中心提供漏洞和运行状况监视数据。 客户可以使用此信息来快速确定易受攻击的 VM。
 
 ### <a name="business-continuity"></a>业务连续性
-**高可用性**：服务器工作负荷中的分组[可用性集](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)以帮助确保 Azure 中 Vm 的高可用性。 计划内或计划外维护活动期间，至少有一台 VM 可用，满足 99.95% Azure SLA 的要求。
+**高可用性**：服务器工作负荷在[可用性集中](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)进行分组, 以帮助确保 Azure 中 vm 的高可用性。 计划内或计划外维护活动期间，至少有一台 VM 可用，满足 99.95% Azure SLA 的要求。
 
-**恢复服务保管库**:[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)存储备份数据和保护此体系结构中的 Vm 的所有配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM。 此过程可加快还原时间。
+**恢复服务保管库**:[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)包含备份数据并保护此体系结构中所有 vm 的配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM。 此过程可加快还原时间。
 
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
-- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、密钥保管库审核日志以及 Azure 应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
 
-**Azure Monitor 日志**：这些日志合并在[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)进行处理、 存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Azure Monitor 日志集成。 客户可以使用 Kusto 查询来访问其安全事件数据并将其与其他服务中的数据。
+**Azure Monitor 日志**：这些日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中, 以便进行处理、存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Azure Monitor 日志集成。 客户可以使用 Kusto 查询访问其安全事件数据, 并将其与其他服务中的数据合并。
 
-以下 Azure[监视解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)作为此体系结构的一部分包括在内：
+以下 Azure[监视解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)包括在此体系结构中:
 -   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。
 - [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案为客户提供了特定于已部署服务器基础结构的建议优先级列表。
 - [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告部署的代理数量及其地理分布状况。 此外，它还报告未响应代理数量和提交操作数据的代理数量。

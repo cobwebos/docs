@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: 305ff610c0f8962f2b50789d8af0a5f6e2fbf046
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: e06cd77a1d46208fe0f7aa166be3ccd3b9b7dbb4
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717377"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828611"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery 中的服务更新
 
@@ -72,7 +72,7 @@ Site Recovery 通过电子邮件 (如果订阅了电子邮件通知) 或在门�
 
 1. 升级操作系统/内核版本之前, 请验证 Site Recovery 是否支持目标版本。 
 
-    - [AZURE VM](/azure-to-azure-support-matrix.md#replicated-machine-operating-systems)支持。
+    - [AZURE VM](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)支持。
     - [VMware/物理服务器](vmware-physical-azure-support-matrix.md#replicated-machines)支持
     - [Hyper-v](hyper-v-azure-support-matrix.md#replicated-vms)支持。
 2. 查看[可用的更新](site-recovery-whats-new.md), 了解你要升级的内容。

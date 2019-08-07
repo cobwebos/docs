@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 52df4308020b03565c851b6969c0e2e31464d7d7
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: d0acbd02103ebd8dd3819579c85b4ddac22dba78
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234056"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68773099"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>将 Red Hat Enterprise Linux 7 虚拟机加入托管域
 本文说明如何将 Red Hat Enterprise Linux (RHEL) 7 虚拟机加入 Azure AD 域服务托管域。
@@ -88,7 +88,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
     ```
 
    > [!NOTE]
-   > **故障排除：** 如果“领域发现”找不到托管域： 
+   > **故障排除：** 如果“领域发现”找不到托管域：
    >   * 确保域可从虚拟机（请尝试 ping）进行访问。
    >   * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。
    >   * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
@@ -107,6 +107,8 @@ sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
 
     > [!TIP]
     > 使用在前一步骤中指定的同一用户帐户（“kinit”）。
+    >
+    > 如果 VM 无法加入域, 请确保 VM 的网络安全组允许 TCP + UDP 端口464上的出站 Kerberos 流量到 Azure AD DS 托管域的虚拟网络子网。
 
     ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'

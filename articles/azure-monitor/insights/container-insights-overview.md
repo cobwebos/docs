@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 08/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 96a312630c92048f36f79e3bec18f83ed5a445ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e1fca1532352c4955f478df70f818ee3151053c1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414127"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742206"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>用于容器的 Azure Monitor 概述
 
@@ -38,11 +38,13 @@ ms.locfileid: "68414127"
 * 查看在主机上运行的与支持 Pod 的标准过程无关的工作负荷的资源利用率。
 * 了解群集在平均负载和最重负载下的行为。 此信息有助于了解容量需求及确定群集可承受的最大负载。 
 * 配置警报，以便在节点或容器上的 CPU 和内存使用率超出阈值时主动通知你或将其记录下来。
-* 与[Prometheus](https://prometheus.io/docs/introduction/overview/)集成, 以查看它从节点和 Kubernetes 收集的应用程序和工作负荷指标使用[查询](container-insights-log-search.md)创建自定义警报、仪表板, 并详细执行详细分析。
+* 与 [Prometheus](https://prometheus.io/docs/introduction/overview/) 集成，以使用[查询](container-insights-log-search.md)查看从节点和 Kubernetes 收集的应用程序和工作负荷指标，以创建自定义警报、仪表板和详细的执行详细分析。
 
->[!NOTE]
->目前, 对 Prometheus 的支持是公共预览版中的一项功能。
->
+    >[!NOTE]
+    >目前，对 Prometheus 的支持是公共预览版中的一项功能。
+    >
+
+* 监视[部署到 AKS 的](https://github.com/microsoft/OMS-docker/tree/aks-engine)容器工作负荷。
 
 请观看以下视频, 提供中级深入探讨, 帮助你了解如何使用容器 Azure Monitor 来监视 AKS 群集。
 

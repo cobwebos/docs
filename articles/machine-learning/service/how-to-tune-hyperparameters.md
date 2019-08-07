@@ -1,7 +1,7 @@
 ---
 title: 优化模型的超参数
 titleSuffix: Azure Machine Learning service
-description: 使用 Azure 机器学习服务，有效地优化深度学习/机器学习模型的超参数。 本文将介绍如何定义参数搜索空间、指定要优化的主要指标，以及提前终止性能不佳的运行。
+description: 使用 Azure 机器学习服务，有效地优化深度学习/机器学习模型的超参数。 您将了解如何定义参数搜索空间, 指定要优化的主要指标, 并提前终止性能不佳的运行。
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 730f39bf0b05ef33bbbca150532f96f1e495a9ed
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302353"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815724"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务优化模型的超参数
 
@@ -45,7 +45,7 @@ ms.locfileid: "68302353"
 
 ### <a name="types-of-hyperparameters"></a>超参数的类型
 
-每个超参数可以是离散的，也可以是连续的。
+每个超参数既可以是离散的, 也可以是连续的, 并且具有由[参数表达式](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py)描述的值的分布。
 
 #### <a name="discrete-hyperparameters"></a>离散超参数 
 
@@ -129,7 +129,7 @@ param_sampling = GridParameterSampling( {
 
 使用贝叶斯采样时，并发运行的数目会影响优化效果。 通常情况下，数目较小的并发运行可能带来更好的采样收敛，因为较小的并行度会增加可从先前完成的运行中获益的运行的数量。
 
-贝叶斯采样仅支持搜索空间中的 `choice` 和 `uniform` 分布。 
+Bayesian 采样仅支持`choice`通过`uniform`搜索空间`quniform`的、和分布。
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
@@ -179,7 +179,7 @@ run_logger.log("accuracy", float(val_accuracy))
 
 ## <a name="specify-early-termination-policy"></a>指定提前终止策略
 
-使用 [提前终止策略, 自动终止性能不佳的运行。 终止可以减少资源浪费，并将这些资源用于探索其他参数配置。
+使用提前终止策略自动终止性能不佳的运行。 终止可以减少资源浪费，并将这些资源用于探索其他参数配置。
 
 使用提前终止策略时，可以配置以下参数来控制何时应用该策略：
 
@@ -234,7 +234,7 @@ from azureml.train.hyperdrive import TruncationSelectionPolicy
 early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, truncation_percentage=20, delay_evaluation=5)
 ```
 
-在此示例中，将在每个间隔应用提前终止策略，从评估间隔 5 开始。 如果某个运行在间隔 5 处的性能，在间隔 5 的所有运行中处于 20% 的性能最低的运行范围内，则会终止该运行。
+在此示例中，将在每个间隔应用提前终止策略，从评估间隔 5 开始。 如果某个运行的时间间隔为 5, 则该运行会在时间间隔5终止。
 
 ### <a name="no-termination-policy"></a>无终止策略
 
@@ -246,7 +246,7 @@ policy=None
 
 ### <a name="default-policy"></a>默认策略
 
-如果未指定策略，则超参数优化服务将让所有训练运行一直运行到完成。
+如果未指定任何策略, 超参数优化服务将允许执行所有定型运行, 直到完成。
 
 >[!NOTE] 
 >如果你正在寻找既可以节省成本又不会终止有前景的作业的保守策略，则可以使用 `evaluation_interval` 为 1 且 `delay_evaluation` 为 5 的中间值停止策略。 这属于保守的设置，可以提供大约 25%-35% 的节省，且不会造成主要指标损失（基于我们的评估数据）。
@@ -275,7 +275,7 @@ max_total_runs=20,
 max_concurrent_runs=4
 ```
 
-此代码会将超参数优化试验配置为总共最多使用 20 个运行，每次运行 4 个配置。
+此代码将超参数优化试验配置为使用最多20个总运行, 每次运行四个配置。
 
 ## <a name="configure-experiment"></a>配置试验
 

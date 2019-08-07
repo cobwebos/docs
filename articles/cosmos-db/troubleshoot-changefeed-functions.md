@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b90986e449df7e81f97f9ef86ce3cf69621c76d6
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 17fa443c3b0113d80a020f2a43c7099cf5a832d2
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335753"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772904"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>诊断并解决使用 Cosmos DB 的 Azure Functions 触发器时的问题
 
@@ -88,6 +88,15 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 此外，如果你知道正在运行多少个 Azure 函数应用实例，则也可以验证这种情况。 如果检查租约容器并统计其中包含的租约项数，这些项中的非重复 `Owner` 属性值应等于函数应用的实例数。 如果所有者数目超过已知的 Azure 函数应用实例数，则表示这些多出的所有者正在“窃取”更改。
 
 解决此问题的简单方法之一是将采用新值/不同值的 `LeaseCollectionPrefix/leaseCollectionPrefix` 应用到你的函数，或使用新的租约容器进行测试。
+
+### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>需要从头开始重新启动容器中的所有项, 然后重新处理它们 
+从头开始重新处理容器中的所有项:
+1. 如果 Azure 函数当前正在运行, 请停止它。 
+1. 删除租约集合中的文档 (或删除并重新创建租约集合, 使其为空)
+1. 将函数中的[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) CosmosDBTrigger 属性设置为 true。 
+1. 重新启动 Azure function。 现在它将读取并处理开始的所有更改。 
+
+如果将[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)设置为 true, 则会告知 Azure 函数开始从集合历史记录开始读取更改, 而不是从当前时间开始读取更改。 这仅适用于尚未创建的租约 (即租约集合中的文档)。 如果已创建租约, 则将此属性设置为 "true" 将不起任何作用;在此方案中, 当某个函数停止并重新启动时, 它将从最后一个检查点开始读取, 如租约集合中所定义。 若要从头开始重新处理, 请遵循上述步骤1-4。  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>仅可通过 IReadOnlyList\<文档 > 或 JArray 进行绑定
 

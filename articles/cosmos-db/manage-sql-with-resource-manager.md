@@ -4,14 +4,14 @@ description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB f
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4cd66c9da0650c9eb9de5b51ce82b48fe781c6f4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: b4d121e0628512f7bbd6aedc0a9067b31d46d0ed
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500507"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814968"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB SQL (Core) API 资源
 
@@ -23,6 +23,7 @@ ms.locfileid: "68500507"
 >
 > - 当前，无法使用资源管理器模板部署用户定义函数 (UDF)、存储过程和触发器。
 > - 不能同时在 Azure Cosmos 帐户中添加或删除位置, 也不能修改其他属性。 这些操作必须作为单独的操作完成。
+> - 帐户名称必须为小写并且 < 31 个字符。
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 

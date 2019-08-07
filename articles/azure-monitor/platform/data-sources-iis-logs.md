@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 05d9dc8f676589dcb301c19b0a2e80e9fd4c1fa0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: cc0fcbb2005ce2aaa70c9e1d2a9993d341169209
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249741"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814219"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure Monitor 中收集 IIS 日志
 Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Azure Monitor 进行收集并将其存储为[日志数据](data-platform.md)。
@@ -34,7 +34,7 @@ Azure Monitor 仅支持以 W3C 格式存储的 IIS 日志文件，不支持自�
 
 
 ## <a name="data-collection"></a>数据收集
-Azure Monitor 从每个代理收集 IIS 日志项, 每次日志时间戳发生更改或创建新文件时。 日志每5分钟读取一次。 创建新文件的频率由 IIS 站点的 "**日志文件滚动更新计划**" 设置控制, 默认情况下每天一次。 如果出于任何原因, IIS 在滚动更新之前不会更新时间戳, 则如果设置为每**小时, Azure Monitor**会每小时收集一次日志。 如果设置为 "**每日**", Azure Monitor 每24小时收集一次日志。
+每次日志时间戳更改时, Azure Monitor 从每个代理收集 IIS 日志条目。 日志每**5 分钟**读取一次。 如果出于任何原因, IIS 在创建新文件的滚动时间之前不会更新时间戳, 则会在创建新文件后收集条目。 创建新文件的频率由 IIS 站点的 "**日志文件滚动更新计划**" 设置控制, 默认情况下每天一次。 如果设置为 "**每小时**", 则 Azure Monitor 每小时收集一次日志。 如果设置为 "**每日**", Azure Monitor 每24小时收集一次日志。
 
 
 ## <a name="iis-log-record-properties"></a>IIS 日志记录属性
@@ -42,7 +42,7 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 
 | 属性 | 描述 |
 |:--- |:--- |
-| Computer |从中收集事件的计算机的名称。 |
+| 计算机 |从中收集事件的计算机的名称。 |
 | cIP |客户端的 IP 地址。 |
 | csMethod |请求的方法，如 GET 或 POST。 |
 | csReferer |用户通过链接转到当前站点的来源站点。 |
@@ -67,7 +67,7 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 ## <a name="log-queries-with-iis-logs"></a>使用 IIS 日志的日志查询
 下表提供了检索 IIS 日志记录的日志查询的不同示例。
 
-| Query | 描述 |
+| 查询 | 描述 |
 |:--- |:--- |
 | W3CIISLog |所有 IIS 日志记录。 |
 | W3CIISLog &#124; where scStatus==500 |返回状态为 500 的所有 IIS 日志记录。 |

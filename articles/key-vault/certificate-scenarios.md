@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 805f11d57a635f4e73309d025e185049b511570b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c2581106466f7d84cc694cd47d4ba02e40bf60b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427837"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815759"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -39,7 +39,7 @@ ms.locfileid: "66427837"
 -   对于任何给定公司（例如 Contoso）来说，以 IT 管理员、PKI 管理员或任何可以使用 CA 来管理帐户的人员的身份加入 是使用 Key Vault 证书的先决条件。  
     以下 CA 是目前可以与 Key Vault 配合使用的提供者：  
     -   DigiCert - Key Vault 提供 DigiCert 的 OV SSL 证书。  
-    -   Globaltrust - Key Vault 提供 Globaltrust 的 OV SSL 证书。  
+    -   GlobalSign-Key Vault 提供 OV-ES SSL 证书和 GlobalSign。  
 
 **步骤 2** - CA 提供者的帐户管理员创建可供 Key Vault 使用的凭据，以便通过 Key Vault 注册、续订和使用 SSL 证书。
 
@@ -47,7 +47,7 @@ ms.locfileid: "66427837"
 
 - 开始通过[设置证书颁发者](/rest/api/keyvault/setcertificateissuer/setcertificateissuer)资源，对密钥保管库执行添加凭据操作。 证书颁发者是 Azure Key Vault (KV) 中表示为 CertificateIssuer 资源的实体。 它用于提供有关 KV 证书来源的信息，例如颁发者名称、提供者、凭据和其他管理详细信息。
   - 例如： MyDigiCertIssuer  
-    -   提供程序  
+    -   提供商  
     -   凭据 - CA 帐户凭据。 每个 CA 都有其自身的特定数据。  
 
     若要详细了解如何通过 CA 提供者来创建帐户，请参阅 [Key Vault 博客](https://aka.ms/kvcertsblog)上的相关文章。  
@@ -125,6 +125,6 @@ ms.locfileid: "66427837"
 
   (5) - 应用程序在合并 CA 提供的 X509 证书后，就完成了新证书创建过程。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [关于键、密钥和证书](about-keys-secrets-and-certificates.md)

@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7a470674fa9ccdde2b33bb33bfb52bead1822895
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07faf03ee9b12d1bf4a200de47d6df714c2248d9
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639743"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737150"
 ---
-# <a name="about-azure-vm-backup"></a>关于 Azure VM 备份
+# <a name="an-overview-of-azure-vm-backup"></a>Azure VM 备份概述
 
 本文介绍 [Azure 备份服务](backup-introduction-to-azure-backup.md)如何备份 Azure 虚拟机 (VM)。
 

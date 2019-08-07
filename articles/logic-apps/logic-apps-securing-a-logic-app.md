@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: f27dfd1f907d106ddb3b1b9dd7534d56380149c2
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15ec46511f1269606e0b0416c7c4a25f93012bec
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385497"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736900"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure 逻辑应用中的安全访问和数据
 
@@ -183,7 +183,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ## <a name="access-to-run-history-data"></a>运行历史记录数据的访问权限
 
-在逻辑应用运行过程中, 所有数据都在传输和静态传输过程中进行加密。 逻辑应用完成运行后, 可以查看该运行的历史记录, 包括运行的步骤以及每个操作的状态、持续时间、输入和输出。 此丰富的详细信息可让你深入了解逻辑应用的运行情况, 以及你可以在何处开始解决出现的任何问题。
+在逻辑应用运行期间, 在传输过程中使用[传输层安全性 (TLS)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)和[静态](../security/fundamentals/encryption-atrest.md)加密所有数据。 逻辑应用完成运行后, 可以查看该运行的历史记录, 包括运行的步骤以及每个操作的状态、持续时间、输入和输出。 此丰富的详细信息可让你深入了解逻辑应用的运行情况, 以及你可以在何处开始解决出现的任何问题。
 
 访问逻辑应用的运行历史记录时, 逻辑应用会对访问进行身份验证, 并提供指向逻辑应用运行中的请求和响应的输入和输出的链接。 但是, 对于处理任何密码、机密、密钥或其他敏感信息的操作, 你希望阻止其他人查看和访问该数据。 例如, 如果逻辑应用从[Azure Key Vault](../key-vault/key-vault-whatis.md)获取要在对 HTTP 操作进行身份验证时使用的机密, 则需要将该机密从视图中隐藏。
 

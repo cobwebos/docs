@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: e815c038cce2e792fe7ea39f1ee43342be0b679f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726899"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828728"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 本文提供了一系列操作最佳实践, 用于保护 Azure 中的数据、应用程序和其他资产。
@@ -118,7 +118,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 **详细信息**：具有 SIEM 的大多数组织都将其用作需要分析程序响应的安全警报的中心交换。 安全中心生成的已处理事件会发布到 Azure 活动日志中, 其中一个日志通过 Azure Monitor 提供。 Azure Monitor 提供了一个综合管道，可将任何监视数据路由到 SIEM 工具。 请参阅[在安全中心集成安全解决方案](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem)了解相关说明。 如果使用的是 Azure Sentinel, 请参阅[连接 Azure 安全中心](../../sentinel/connect-azure-security-center.md)。
 
 **最佳做法**：将 Azure 日志与你的 SIEM 集成。   
-**详细信息**：使用[Azure Monitor 收集和导出数据](/azure/azure-monitor/overview.md#integrate-and-export-data)。 这种做法对于启用安全事件调查至关重要, 并限制联机日志保留。 如果使用的是 Azure Sentinel, 请参阅[连接数据源](../../sentinel/connect-data-sources.md)。
+**详细信息**：使用[Azure Monitor 收集和导出数据](/azure/azure-monitor/overview#integrate-and-export-data)。 这种做法对于启用安全事件调查至关重要, 并限制联机日志保留。 如果使用的是 Azure Sentinel, 请参阅[连接数据源](../../sentinel/connect-data-sources.md)。
 
 **最佳做法**：通过将终结点检测和响应 (EDR) 功能集成到攻击调查中, 加速调查和搜寻过程, 并减少误报。   
 **详细信息**：通过安全中心安全策略[启用 Windows DEFENDER ATP 集成](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration)。 请考虑使用 Azure Sentinel 进行威胁搜寻和事件响应。

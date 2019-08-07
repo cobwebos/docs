@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 92c3452e07dee126666e6ee1fe0c46b1f8f6dfa4
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f9ff6e19a0f0091cb5b831279eee90727bbb89fd
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876536"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742257"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 应用程序产品/服务发布指南
 
@@ -126,13 +126,13 @@ Microsoft 使用 Azure AD 对所有 Marketplace 用户进行身份验证, 因此
 ## <a name="saas-subscriptions"></a>SaaS 订阅
 
 使用 SaaS 应用产品/服务类型可让客户以订阅的形式购买基于 SaaS 的技术解决方案。 SaaS 应用必须满足以下要求：
-- 以平稳的每月费率计收服务费用。
+- 以平面 (每月或每年) 或按用户费率为服务定价并计费。
 - 提供随时升级或取消服务的方法。
-Microsoft 托管商业事务。 Microsoft 代你向客户计费。 若要以订阅的形式计收 SaaS 应用的费用，必须启用自己的订阅管理服务 API。 订阅管理服务 API 必须直接与 Azure 资源管理器 API 通信。 订阅管理服务 API 必须支持服务预配、升级和取消。
+Microsoft 托管商业事务。 Microsoft 代你向客户计费。 若要将 SaaS 应用作为订阅提供, 你必须与 SaaS 履单 Api 集成。  你的服务必须支持预配、升级和取消。
 
 | 要求 | 详细信息 |  
 |:--- |:--- |  
-|计费和计量 | 产品/服务按固定月费定价。 目前不支持基于使用情况的定价和基于使用情况的“校准”功能。 |  
+|计费和计量 | 你的产品/服务将基于你在发布之前选择的定价模型 (单层速率或每个用户)。  如果使用的是扁平速率模型, 则可以选择包含其他维度, 以对客户进行计费, 使其不包含在平整费率中。 |  
 |取消 | 客户可以随时取消你的产品/服务。 |  
 |事务登陆页 | 托管一个 Azure 联合品牌事务登陆页，用户可以在其中创建并管理其 SaaS 服务帐户。 |   
 | 订阅 API | 公开一个服务，该服务可以通过与 SaaS 订阅交互来创建、更新和删除用户帐户和服务计划。 必须在 24 小时内支持关键 API 更改。 非关键 API 更改将定期发布。 |  

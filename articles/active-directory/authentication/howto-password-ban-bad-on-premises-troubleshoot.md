@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d96f5bb189dfd20c65fc6fc6ddcb8fff66d52ff
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666239"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779622"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD 密码保护故障排除
 
@@ -32,7 +32,7 @@ ms.locfileid: "68666239"
 
 此问题的主要症状是 DC 代理管理事件日志中的30018事件。 此问题可能有几个可能的原因:
 
-1. DC 代理位于网络的隔离部分, 不允许与已注册的代理建立网络连接。 此问题可能是良性的, 因为其他 DC 代理可以与代理进行通信, 以便从 Azure 下载密码策略, 该策略随后将通过 sysvol 共享中的策略文件的复制获得。
+1. DC 代理位于网络的隔离部分, 不允许与已注册的代理建立网络连接。 此问题可能是良性的, 因为其他 DC 代理可以与代理进行通信, 以便从 Azure 下载密码策略。 下载之后, 这些策略将通过复制 sysvol 共享中的策略文件, 由独立 DC 获得。
 
 1. 代理主机正在阻止访问 RPC 终结点映射器终结点 (端口 135)
 
@@ -48,7 +48,7 @@ ms.locfileid: "68666239"
 
 1. 确保为同一 Azure 租户注册了林和所有代理服务器。
 
-   可以通过运行`Get-AzureADPasswordProtectionProxy`和 PowerShell cmdlet 来检查此`Get-AzureADPasswordProtectionDCAgent`要求, 并比较每个`AzureTenant`返回项的属性。 对于正确操作, 报告的租户名称在所有 DC 代理和代理服务器上必须相同。
+   可以通过运行`Get-AzureADPasswordProtectionProxy`和 PowerShell cmdlet 来检查此`Get-AzureADPasswordProtectionDCAgent`要求, 并比较每个`AzureTenant`返回项的属性。 对于正确的操作, 报告的租户名称在所有 DC 代理和代理服务器上必须相同。
 
    如果存在 Azure 租户注册不匹配条件, 可以根据需要运行`Register-AzureADPasswordProtectionProxy`和/或`Register-AzureADPasswordProtectionForest` PowerShell cmdlet 来解决此问题, 并确保使用同一 Azure 租户中的凭据进行所有注册。
 
@@ -69,6 +69,8 @@ KDS 服务无法启动的最常见根本原因是 Active Directory 域控制器�
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>正在接受弱密码, 但不应
 
 此问题可能有几个原因。
+
+1. 你的 DC 代理正在运行已过期的公共预览版软件版本。 请参阅[公共预览版 DC 代理软件已过期](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)。
 
 1. 你的 DC 代理无法下载策略或者无法解密现有策略。 检查上述主题中的可能原因。
 
@@ -99,7 +101,7 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-当 Azure AD 密码保护记录 Active Directory DSRM 密码的密码验证事件日志事件时, 事件日志消息应该不包括用户名。 出现这种情况的原因是 DSRM 帐户是不属于实际 Active Directory 域的本地帐户。  
+当 Azure AD 密码保护记录 Active Directory DSRM 密码的密码验证事件日志事件时, 事件日志消息应该不包括用户名。 出现此行为的原因是 DSRM 帐户是不属于实际 Active Directory 域的本地帐户。  
 
 ## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>由于使用弱 DSRM 密码, 域控制器副本升级失败
 
@@ -119,7 +121,67 @@ Install-ADDSDomainController : Verification of prerequisites for Domain Controll
 
 ## <a name="booting-into-directory-services-repair-mode"></a>启动进入目录服务修复模式
 
-如果域控制器启动到目录服务修复模式, 则 DC 代理服务会检测到这种情况, 并且无论当前活动的策略配置如何, 都将禁用所有密码验证或强制活动。
+如果域控制器已启动到目录服务修复模式, 则 DC 代理密码筛选器 dll 将检测到此情况, 并将导致所有密码验证或强制活动处于禁用状态, 而不考虑当前活动的策略configuration. DC 代理密码筛选器 dll 会将10023警告事件记录到管理事件日志, 例如:
+
+```text
+The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
+```
+## <a name="public-preview-dc-agent-software-has-expired"></a>公共预览版 DC 代理软件已过期
+
+在 Azure AD 密码保护公共预览版期间, DC 代理软件进行了硬编码, 以便在以下日期停止处理密码验证请求:
+
+* 版本1.2.65.0 将停止在 1 2019 年9月处理密码验证请求。
+* 版本1.2.25.0 和先前在7月 1 2019 处理密码验证请求。
+
+截止到截止时间, 在启动时, 所有限时的 DC 代理版本都将在 DC agent 管理事件日志中发出10021事件, 如下所示:
+
+```text
+The password filter dll has successfully loaded and initialized.
+
+The allowable trial period is nearing expiration. Once the trial period has expired, the password filter dll will no longer process passwords. Please contact Microsoft for an newer supported version of the software.
+
+Expiration date:  9/01/2019 0:00:00 AM
+
+This message will not be repeated until the next reboot.
+```
+
+截止到截止时间之后, 所有受时间限制的 DC 代理版本都将在启动时在 DC 代理管理事件日志中发出10022事件, 如下所示:
+
+```text
+The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
+
+No further messages will be logged until after the next reboot.
+```
+
+由于仅在初始启动时检查截止时间, 因此在日历截止时间过去之前, 你可能看不到这些事件。 一旦识别到截止时间, 就不会再对域控制器或更大的环境产生负面影响。
+
+> [!IMPORTANT]
+> Microsoft 建议将过期的公共预览版 DC 代理立即升级到最新版本。
+
+若要在需要升级的环境中发现 DC 代理, 一种简单的方法是运行`Get-AzureADPasswordProtectionDCAgent` cmdlet, 例如:
+
+```powershell
+PS C:\> Get-AzureADPasswordProtectionDCAgent
+
+ServerFQDN            : bpl1.bpl.com
+SoftwareVersion       : 1.2.125.0
+Domain                : bpl.com
+Forest                : bpl.com
+PasswordPolicyDateUTC : 8/1/2019 9:18:05 PM
+HeartbeatUTC          : 8/1/2019 10:00:00 PM
+AzureTenant           : bpltest.onmicrosoft.com
+```
+
+对于本主题, SoftwareVersion 字段显然是要查看的关键属性。 你还可以使用 PowerShell 筛选来筛选出已在所需基准版本或更高版本上的 DC 代理, 例如:
+
+```powershell
+PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
+PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
+```
+
+在任何版本中, Azure AD 密码保护代理软件不受时间限制。 Microsoft 仍建议将 DC 和代理代理发布到最新版本。 `Get-AzureADPasswordProtectionProxy` Cmdlet 可用于查找需要升级的代理程序, 类似于针对 DC 代理的示例。
+
+有关具体的升级过程的详细信息, 请参阅[升级 DC 代理](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)和[升级代理程序](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent)。
 
 ## <a name="emergency-remediation"></a>紧急补救
 

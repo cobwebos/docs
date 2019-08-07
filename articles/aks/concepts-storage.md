@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: eb9141d363bdb09b5773f80dfc5a1c4b9b92728f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fb15063e41e83b4c9a9f2e01b6ad18c8afed7f5f
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615814"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741004"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序存储选项
 
@@ -34,7 +34,9 @@ ms.locfileid: "67615814"
 用于存储和检索数据的传统卷作为 Azure 存储支持的 Kubernetes 资源创建。 你可以手动创建这些数据卷并直接分配给 Pod，也可以让 Kubernetes 自动创建它们。 这些数据卷可以使用 Azure 磁盘或 Azure 文件：
 
 - *Azure 磁盘*可用于创建 Kubernetes *DataDisk* 资源。 Azure 磁盘可以使用由高性能 SSD 支持的 Azure 高级存储，也可以使用由普通 HDD 支持 Azure 标准存储。 对于大部分生产和开发工作负荷，请使用高级存储。 Azure 磁盘以 *ReadWriteOnce* 的形式装载，因此仅可用于单个节点。 对于可以同时由多个节点访问的存储卷，请使用 Azure 文件。
-- *Azure 文件*可用于将 Azure 存储帐户支持的 SMB 3.0 共享装载到 Pod。 借助 Azure 文件,可跨多个节点和 Pod 共享数据。 目前，Azure 文件只能使用普通 HDD 支持的 Azure 标准存储。
+- *Azure 文件*可用于将 Azure 存储帐户支持的 SMB 3.0 共享装载到 Pod。 借助 Azure 文件,可跨多个节点和 Pod 共享数据。 文件可以使用由常规 Hdd 支持的 Azure 标准存储, 也可以使用由高性能 Ssd 支持的 Azure 高级存储。
+> [!NOTE] 
+> Azure 文件存储支持运行 Kubernetes 1.13 或更高版本的 AKS 群集中的高级存储。
 
 在 Kubernetes 中，卷不仅仅能够表示可以存储和检索信息的传统磁盘。 Kubernetes 卷还可以用于将数据注入 Pod 以供容器使用。 Kubernetes 中常见的其他卷类型包括：
 
@@ -125,18 +127,18 @@ spec:
 
 若要了解如何创建使用 Azure 磁盘或 Azure 文件的动态和静态卷，请参阅以下操作指南：
 
-- [创建静态卷使用 Azure 磁盘][aks-static-disks]
-- [创建静态卷使用 Azure 文件][aks-static-files]
-- [创建动态卷使用 Azure 磁盘][aks-dynamic-disks]
-- [创建动态卷使用 Azure 文件][aks-dynamic-files]
+- [使用 Azure 磁盘创建静态卷][aks-static-disks]
+- [使用 Azure 文件存储创建静态卷][aks-static-files]
+- [使用 Azure 磁盘创建动态卷][aks-dynamic-disks]
+- [使用 Azure 文件存储创建动态卷][aks-dynamic-files]
 
 有关核心 Kubernetes 和 AKS 概念的详细信息，请参阅以下文章：
 
 - [Kubernetes/AKS 群集和工作负荷][aks-concepts-clusters-workloads]
-- [Kubernetes / AKS 标识][aks-concepts-identity]
+- [Kubernetes/AKS 标识][aks-concepts-identity]
 - [Kubernetes/AKS 安全性][aks-concepts-security]
 - [Kubernetes/AKS 虚拟网络][aks-concepts-network]
-- [Kubernetes / AKS 缩放][aks-concepts-scale]
+- [Kubernetes/AKS 缩放][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
 

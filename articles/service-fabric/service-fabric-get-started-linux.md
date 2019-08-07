@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 49e80c3fc8935064aceef8ef4e2bd3257c41e5e7
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 6916eea26f03d7b9cd0b3792fa65354619f97f74
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514195"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828504"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "67514195"
 不支持在适用于 Linux 的 Windows 子系统上安装 Service Fabric 运行时和 SDK。 可以使用受支持的 Azure Service Fabric 命令行接口 (CLI) 来管理托管在云中或本地其他位置的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 支持使用以下操作系统版本进行开发。
 
@@ -54,7 +54,7 @@ ms.locfileid: "67514195"
 
 ### <a name="script-installation-ubuntu"></a>脚本安装 (Ubuntu)
 
-为方便起见，我们提供了一个脚本用于连同 sfctl CLI 一起安装 Service Fabric 运行时和 Service Fabric 通用 SDK  。 在以下部分中执行手动安装步骤。 可以看到正在安装的组件和相关许可证。 运行该脚本即认为你同意所要安装的所有软件的许可条款。
+为方便起见，我们提供了一个脚本用于连同 sfctl CLI 一起安装 Service Fabric 运行时和 Service Fabric 通用 SDK。 在以下部分中执行手动安装步骤。 可以看到正在安装的组件和相关许可证。 运行该脚本即认为你同意所要安装的所有软件的许可条款。
 
 成功运行脚本后，可以跳转到[设置本地群集](#set-up-a-local-cluster)。
 
@@ -106,8 +106,8 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
 7. 将 Azul JDK 密钥添加到 APT Keyring 并设置其存储库。
 
     ```bash
-    curl -fsSL https://repos.azul.com/azul-repo.key | sudo apt-key add -
-    sudo add-apt-repository 'deb http://repos.azulsystems.com/ubuntu stable main'
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
 8. 根据新添加的存储库刷新包列表。
@@ -272,21 +272,21 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 > 
 > 在 Ubuntu 上，建议直接从 Eclipse 站点进行安装，而不是使用包安装程序（`apt` 或 `apt-get`）。 这样做可确保获取最新版 Eclipse。 可以安装面向 Java 开发人员或 Java EE 开发人员的 Eclipse IDE。
 
-1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及 Buildship 2.2.1 版或更高版本。 可以通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看已安装组件的版本    。 可以按 [Eclipse Buildship：于 Gradle 的 eclipse 插件][buildship-update]。
+1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及 Buildship 2.2.1 版或更高版本。 可以通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看已安装组件的版本。 可以按 [Eclipse Buildship：适用于 Gradle 的 Eclipse 插件][buildship-update]中的说明更新 Buildship。
 
-2. 若要安装 Service Fabric 插件，请选择“帮助” > “安装新软件”   。
+2. 若要安装 Service Fabric 插件，请选择“帮助” > “安装新软件”。
 
-3. 在“使用”框中，输入 **https://dl.microsoft.com/eclipse** 。 
+3. 在“使用”框中，输入 **https://dl.microsoft.com/eclipse** 。
 
 4. 选择 **添加** 。
 
     ![“可用软件”页][sf-eclipse-plugin]
 
-5. 选择 ServiceFabric 插件，然后选择“下一步”   。
+5. 选择 ServiceFabric 插件，然后选择“下一步”。
 
 6. 执行安装步骤。 然后接受最终用户许可协议。
 
-如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看    。 然后，在已安装插件的列表中搜索 Service Fabric。如果可以使用更新的版本，请选择“更新”  。
+如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看。 然后，在已安装插件的列表中搜索 Service Fabric。如果可以使用更新的版本，请选择“更新”。
 
 有关详细信息，请参阅[使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序](service-fabric-get-started-eclipse.md)。
 

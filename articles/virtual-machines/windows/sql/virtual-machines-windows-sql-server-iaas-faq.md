@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/12/2018
+ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7f6ec1ee65727fb8c3c7d98f696c288e95ec880a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 4b50b4acf6ea655c40821e7c49824af11aeeb9ab
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876199"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816299"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -73,7 +73,7 @@ ms.locfileid: "67876199"
 
    首先，请创建装有 SQL Server 实例的 Azure 虚拟机。 然后将本地数据库迁转到该实例。 有关数据迁移策略，请参阅[将 SQL Server 数据库迁移到 Azure VM 中的 SQL Server](virtual-machines-windows-migrate-sql.md)。
 
-## <a name="licensing"></a>许可
+## <a name="licensing"></a>授权
 
 1. **如何在 Azure VM 上安装 SQL Server 的许可版本？**
 
@@ -122,6 +122,11 @@ ms.locfileid: "67876199"
 
     是的。 如果从自己的媒体部署 SQL Server，并安装 SQL IaaS 扩展，则可将 SQL Server VM 注册到资源提供程序，以便获取 SQL IaaS 扩展提供的可管理性权益。 但是，不能将自行部署的 SQL VM 转换为即用即付。
 
+1. **是否可以在使用经典模型部署的 SQL Server VM 上切换许可模型？**
+
+   否。 在经典 VM 上不支持更改许可模式。 可以将 VM 迁移到 resource manager 模型 (ARM), 并向 SQL VM 资源提供程序注册。 将 VM 注册到 SQL VM 资源提供程序后, 会在 VM 上提供授权模型更改。 
+   
+
 ## <a name="administration"></a>管理
 
 1. **是否可以在同一 VM 上安装另一个 SQL Server 实例？是否可以更改默认实例的已安装功能？**
@@ -130,7 +135,7 @@ ms.locfileid: "67876199"
 
 1. **是否可以卸载 SQL Server 的默认实例？**
 
-   可以，但需注意以下事项。 如前面的解答中所述，某些功能依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。  如果卸载默认实例但未同时删除 IaaS 扩展，该扩展会继续查找默认实例并可能生成事件日志错误。 这些错误来自以下两个源：Microsoft SQL Server 凭据管理和 Microsoft SQL Server IaaS 代理   。 其中一个错误可能类似于以下内容：
+   可以，但需注意以下事项。 如前面的解答中所述，某些功能依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。  如果卸载默认实例但未同时删除 IaaS 扩展，该扩展会继续查找默认实例并可能生成事件日志错误。 这些错误来自以下两个源：Microsoft SQL Server 凭据管理和 Microsoft SQL Server IaaS 代理。 其中一个错误可能类似于以下内容：
 
       建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问服务器。
 
@@ -146,9 +151,9 @@ ms.locfileid: "67876199"
    
 ## <a name="updating-and-patching"></a>更新和修补
 
-1. **如何实现在 Azure VM 中更改为不同版本的 SQL Server？**
+1. **如何将 Azure VM 中的 SQL Server 更改为另一版本？**
 
-   客户可以使用包含其所需版本 SQL Server 的安装媒体更改其版本的 SQL Server。 更改了版本后, 请使用 Azure 门户修改 VM 的 edition 属性以准确反映 VM 的计费。 有关详细信息, 请参阅[更改版本的 SQL Server VM](virtual-machines-windows-sql-change-edition.md)。 
+   客户可以使用包含所需 SQL Server 版本的安装介质来更改其 SQL Server 版本。 更改版本以后，使用 Azure 门户修改 VM 的版本属性，使之准确反映 VM 的计费。 有关详细信息, 请参阅[更改版本的 SQL Server VM](virtual-machines-windows-sql-change-edition.md)。 
 
 
 1. **如何将更新和服务包应用到 SQL Server VM？**

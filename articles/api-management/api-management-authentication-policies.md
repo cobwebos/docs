@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 5ca9bd4964cf190eaa2be6d66d57c7ada971d675
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: bd31d711c58a63b5c15712c1774d48433c62f18d
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442404"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774980"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理身份验证策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -83,64 +83,73 @@ ms.locfileid: "68442404"
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
 ```
 在此示例中，客户端证书是由资源名称标识的。
-```xml
-<authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />
+```xml  
+<authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
+```  
+
+### <a name="elements"></a>元素  
+  
+|名称|描述|必填|  
+|----------|-----------------|--------------|  
+|authentication-certificate|根元素。|是|  
+  
+### <a name="attributes"></a>特性  
+  
+|名称|描述|必填|默认|  
+|----------|-----------------|--------------|-------------|  
+|thumbprint|客户端证书的指纹。|必须提供 `thumbprint` 或 `certificate-id`。|不可用|  
+|certificate-id|证书资源名称。|必须提供 `thumbprint` 或 `certificate-id`。|不可用|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：** 入站  
+  
+-   **策略范围：** 所有范围  
+
+##  <a name="ManagedIdentity"></a> 使用托管标识进行身份验证  
+ 使用 `authentication-managed-identity` 策略通过 API 管理服务的托管标识向后端服务进行身份验证。 此策略实质上使用托管标识从 Azure Active Directory 获取用于访问指定资源的访问令牌。 成功获取令牌后, 策略将`Authorization` `Bearer`使用方案在标头中设置令牌的值。
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+```  
+  
+### <a name="example"></a>示例  
+#### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>使用托管标识向后端服务进行身份验证
+```xml  
+<authentication-managed-identity resource="https://graph.windows.net"/> 
+```
+  
+#### <a name="use-managed-identity-in-send-request-policy"></a>使用发送请求策略中的托管标识
+```xml  
+<send-request mode="new" timeout="20" ignore-error="false">
+    <set-url>https://example.com/</set-url>
+    <set-method>GET</set-method>
+    <authentication-managed-identity resource="ResourceID"/>
+</send-request>
 ```
 
-### <a name="elements"></a>元素
-
-|名称|描述|必填|
-|----------|-----------------|--------------|
-|authentication-certificate|根元素。|是|
-
-### <a name="attributes"></a>特性
-
-|名称|描述|必填|默认|
-|----------|-----------------|--------------|-------------|
-|thumbprint|客户端证书的指纹。|必须提供 `thumbprint` 或 `certificate-id`。|不可用|
-|certificate-id|证书资源名称。|必须提供 `thumbprint` 或 `certificate-id`。|不可用|
-
-### <a name="usage"></a>使用情况
- 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
-
--   **策略节：** 入站
-
--   **策略范围：** 所有范围
-
-##  <a name="ManagedIdentity"></a> 使用托管标识进行身份验证
- 使用 `authentication-managed-identity` 策略通过 API 管理服务的托管标识向后端服务进行身份验证。 此策略有效地使用托管标识来从 Azure Active Directory 获取用于访问指定资源的访问令牌。
-
-### <a name="policy-statement"></a>策略语句
-
-```xml
-<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>
-```
-
-### <a name="example"></a>示例
-
-```xml
-<authentication-managed-identity resource="https://graph.windows.net" output-token-variable-name="test-access-token" ignore-error="true" />
-```
-
-### <a name="elements"></a>元素
-
-|名称|描述|必填|
-|----------|-----------------|--------------|
-|authentication-managed-identity |根元素。|是|
-
-### <a name="attributes"></a>特性
-
-|名称|描述|必填|默认|
-|----------|-----------------|--------------|-------------|
-|资源|字符串。 Azure Active Directory 中的目标 Web API（受保护的资源）的应用 ID URI。|是|不可用|
-|output-token-variable-name|字符串。 上下文变量的名称，它将令牌值接收为对象类型 `string`。|否|不可用|
-|ignore-error|布尔值。 如果设置为 `true`，即使未获得访问令牌，策略管道也将继续执行。|否|假|
-
-### <a name="usage"></a>用法
- 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
-
--   **策略节：** 入站
-
+### <a name="elements"></a>元素  
+  
+|名称|描述|必填|  
+|----------|-----------------|--------------|  
+|authentication-managed-identity |根元素。|是|  
+  
+### <a name="attributes"></a>特性  
+  
+|名称|描述|必填|默认|  
+|----------|-----------------|--------------|-------------|  
+|资源|字符串。 Azure Active Directory 中的目标 Web API（受保护的资源）的应用 ID URI。|是|不可用|  
+|output-token-variable-name|字符串。 上下文变量的名称，它将令牌值接收为对象类型 `string`。 |否|不可用|  
+|ignore-error|布尔值。 如果设置为 `true`，即使未获得访问令牌，策略管道也将继续执行。|否|假|  
+  
+### <a name="usage"></a>用法  
+ 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：** 入站  
+  
 -   **策略范围：** 所有范围
 
 ## <a name="next-steps"></a>后续步骤

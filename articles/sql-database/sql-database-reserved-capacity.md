@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 07/19/2019
-ms.openlocfilehash: adbc2c8818a3d7eff679dadc2245fb0ff8686fc2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/02/2019
+ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566930"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781306"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用
 
@@ -63,13 +63,9 @@ ms.locfileid: "68566930"
 1. 选择“购买”。
 1. 选择“查看此预订”以查看购买的状态。
 
-## <a name="cancellations-and-exchanges"></a>取消和更换
+## <a name="cancel-exchange-or-refund-reservations"></a>取消、交换或退款预订
 
-如果需要取消你的 SQL 数据库预留容量预订，可能会产生 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要取消, 请跳到 Azure 门户中的预订, 然后选择 "**退款**"。
-
-如果需要将 SQL 数据库预留容量预订更改为其他区域、部署类型、性能层或期限，可以将其更换为价值相等或更高的另一个预订。 新订购项目的期限开始日期不是从交换的订购项目延续。 1 年或 3 年期限从创建新订购项目开始算起。 若要交换, 请在 Azure 门户中找到保留项, 然后选择 " **exchange**"。
-
-有关如何交换或退款预订的详细信息, 请参阅[保留交换和退款](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
+您可以取消、交换或退款保留, 但有一些限制。 有关详细信息, 请参阅[Azure 预订的自助服务交换和退款](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小灵活性
 

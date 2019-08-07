@@ -1,28 +1,28 @@
 ---
-title: 使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限 |Microsoft Docs
-description: 使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限。
+title: 使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限 | Microsoft Docs
+description: 使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 236d880af780114dfb906021f53d5c09aee75332
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: f33193e3102afca73344fcd640d14d9af9c1d46e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514892"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775343"
 ---
-# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限
+# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限
 
-Azure 存储支持使用 Azure Active Directory (AD) 对 Blob 和队列存储的请求进行授权。 使用 Azure AD, 你可以使用基于角色的访问控制 (RBAC) 向安全主体授予权限, 这可能是用户、组或应用程序服务主体。 通过 Azure AD 对安全主体进行身份验证, 以返回 OAuth 2.0 令牌。 令牌可用于授权请求访问 Blob 或队列存储中的资源。
+Azure 存储支持使用 Azure Active Directory (AD) 授予对 Blob 和队列存储的请求权限。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户、组或应用程序服务主体。 安全主体经 Azure AD 进行身份验证后会返回 OAuth 2.0 令牌。 可以使用令牌对用户要求访问 Blob 或队列存储中资源的请求进行授权。
 
-使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供更高的安全性, 并通过共享密钥授权和共享访问签名 (SAS) 轻松使用。 在 Azure AD 中, 无需将帐户访问密钥与代码一起存储, 并存在潜在的安全漏洞。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。 Microsoft 建议尽可能使用 Azure 存储应用程序 Azure AD 授权。
+与共享密钥授权和共享访问签名 (SAS) 相比，使用 Azure AD 返回的 OAuth 2.0 令牌对用户或应用程序授权具有更高的安全性和易用性。 使用 Azure AD 时，不需将帐户访问密钥与代码存储在一起，因此没有潜在的安全漏洞风险。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。 Microsoft 建议尽可能使用 Azure 存储应用程序 Azure AD 授权。
 
-使用 Azure AD 的授权适用于所有公共区域和全国云中的所有常规用途和 Blob 存储帐户。 仅通过 Azure 资源管理器部署模型创建的存储帐户支持 Azure AD 授权。
+可以针对所有公共区域和国家/地区云的所有常规用途帐户和 Blob 存储帐户使用 Azure AD 进行授权。 仅通过 Azure 资源管理器部署模型创建的存储帐户支持 Azure AD 授权。 Azure 表存储不支持带有 Azure AD 的授权。
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>适用于 Blob 和队列的 Azure AD 概述
 
@@ -32,7 +32,7 @@ Azure 存储支持使用 Azure Active Directory (AD) 对 Blob 和队列存储的
 
 授权步骤需要将一个或多个 RBAC 角色分配给安全主体。 Azure 存储提供 RBAC 角色，这些角色涵盖了针对 Blob 和队列数据的通用权限集。 分配给安全主体的角色确定了该主体拥有的权限。 若要详细了解如何为 Azure 存储分配 RBAC 角色，请参阅[通过 RBAC 管理存储数据访问权限](storage-auth-aad-rbac.md)。
 
-向 Azure Blob 或队列服务发出请求的本机应用程序和 web 应用程序也可以使用 Azure AD 授予访问权限。 若要了解如何请求访问令牌并使用它来授权对 blob 或队列数据的请求, 请参阅[使用 Azure 存储应用程序中的 Azure AD 授予对 Azure 存储的访问权限](storage-auth-aad-app.md)。
+向 Azure Blob 或队列服务发出请求的本机应用程序和 Web 应用程序也可以使用 Azure AD 进行访问授权。 若要了解如何请求访问令牌并使用它来授权对 Blob 或队列数据的请求，请参阅[从 Azure 存储应用程序使用 Azure AD 授予对 Azure 存储的访问权限](storage-auth-aad-app.md)。
 
 ## <a name="assigning-rbac-roles-for-access-rights"></a>分配 RBAC 角色以授予访问权限
 
@@ -62,7 +62,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 ## <a name="access-data-with-an-azure-ad-account"></a>使用 Azure AD 帐户访问数据
 
-可以通过使用用户的 Azure AD 帐户或使用帐户访问密钥 (共享密钥授权) 来授权通过 Azure 门户、PowerShell 或 Azure CLI 访问 blob 或队列数据。
+可以使用用户的 Azure AD 帐户或使用帐户访问密钥（共享密钥授权）来授权通过 Azure 门户、PowerShell 或 Azure CLI 访问 Blob 或队列数据。
 
 ### <a name="data-access-from-the-azure-portal"></a>通过 Azure 门户访问数据
 

@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: a623aa98cd26e1636e47cb0e2831eeced17935b9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: abaf96b11abee0bf519a276f825b9c47cd333c1b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695402"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816321"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -65,7 +65,11 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
 ```json
     "location": "<region>",
 ```
-    
+
+## <a name="tags"></a>Tags
+
+这些是可为生成的映像指定的键/值对。
+
 ## <a name="depends-on-optional"></a>取决于 (可选)
 
 此可选部分可用于确保在继续操作之前完成依赖项。 
@@ -344,7 +348,8 @@ Windows 目录和 Linux 路径支持此操作, 但有一些区别:
  
 如果尝试下载文件时出错, 或将其放在指定的目录中, 则自定义步骤会失败, 这将出现在自定义日志中。
 
->> 纪录! 文件定制器仅适用于小型文件下载, < 20MB。 对于较大的文件下载, 请使用脚本或内联命令, 使用代码下载文件, 如 Linux `wget`或`curl`、Windows、 `Invoke-WebRequest`。
+> [!NOTE]
+> 文件定制器仅适用于小型文件下载, < 20MB。 对于较大的文件下载, 请使用脚本或内联命令, 使用代码下载文件, 如 Linux `wget`或`curl`、Windows、 `Invoke-WebRequest`。
 
 可以使用[MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)从 Azure 存储下载文件定制器中的文件。
 

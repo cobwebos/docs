@@ -4,14 +4,14 @@ description: 使用声明性 JSON 语法描述 Azure 资源管理器模板的结
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 08/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: ab8e4f5f6506f80b62c112298f73f95bc7fedeaf
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9858e8a52888304edd48893db02faa992b356b3b
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204362"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774903"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 
@@ -36,7 +36,7 @@ ms.locfileid: "67204362"
 }
 ```
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 必填 | 描述 |
 |:--- |:--- |:--- |
 | $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。<br><br> 对于资源组部署，请使用：`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>对于订阅部署，请使用：`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |是 |模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用此值记录模板中的重要更改。 使用模板部署资源时，此值可用于确保使用正确的模板。 |
@@ -66,21 +66,21 @@ ms.locfileid: "67204362"
 
 模板函数及其参数不区分大小写。 例如，Resource Manager 将 **variables('var1')** 和 **VARIABLES('VAR1')** 视为相同。 在求值时，除非函数明确修改大小写（例如，使用 toUpper 或 toLower 进行修改），否则函数将保留大小写。 某些资源类型可能会提出大小写要求，而不考虑函数求值方式。
 
-具有文本字符串开头左方括号`[`和一个右方括号结尾`]`，但不是将其解释为表达式，添加一个额外的方括号来启动与字符串`[[`。 例如，变量：
+要使文本字符串以左方括号 `[` 开头，以右方括号 `]` 结尾，但不将其解释为表达式，请添加额外的方括号使字符串以 `[[` 开头。 例如，变量：
 
 ```json
 "demoVar1": "[[test value]"
 ```
 
-解析为`[test value]`。
+解析为 `[test value]`。
 
-但是，如果文字字符串并不止于一个方括号，未转义的第一个括号。 例如，变量：
+但是，如果文本字符串没有以方括号结束，则不要转义第一个方括号。 例如，变量：
 
 ```json
 "demoVar2": "[test] value"
 ```
 
-解析为`[test] value`。
+解析为 `[test] value`。
 
 若要将字符串值作为参数传递给函数，请使用单引号。
 
@@ -100,7 +100,7 @@ ms.locfileid: "67204362"
 
 有关模板函数的完整列表，请参阅 [Azure 资源管理器模板函数](resource-group-template-functions.md)。 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 
 在模板的 parameters 节中，可以指定在部署资源时能够输入的值。 提供针对特定环境（例如开发、测试和生产环境）定制的参数值可以自定义部署。 无需在模板中提供参数，但如果没有参数，模板始终部署具有相同名称、位置和属性的相同资源。
 
@@ -127,7 +127,7 @@ ms.locfileid: "67204362"
 }
 ```
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 必填 | 描述 |
 |:--- |:--- |:--- |
 | parameterName |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
 | type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 |
@@ -499,13 +499,13 @@ ms.locfileid: "67204362"
 ]
 ```
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 必填 | 描述 |
 |:--- |:--- |:--- |
 | 条件 | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 请参阅[条件](#condition)。 |
 | apiVersion |是 |用于创建资源的 REST API 版本。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
-| type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（例如 **Microsoft.Storage/storageAccounts**）的组合。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 对于子资源，类型的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[子资源](#child-resources)。 |
-| name |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 此外，向第三方公开资源名称的 Azure 服务会验证名称，以确保它不会尝试窃取另一身份。 对于子资源，名称的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[子资源](#child-resources)。 |
-| 位置 |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常最好选取一个接近用户的位置。 通常，在同一区域放置彼此交互的资源也很有用。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 |
+| type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（例如 **Microsoft.Storage/storageAccounts**）的组合。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 对于子资源，类型的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
+| name |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 此外，向第三方公开资源名称的 Azure 服务会验证名称，以确保它不会尝试窃取另一身份。 对于子资源，名称的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
+| location |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常最好选取一个接近用户的位置。 通常，在同一区域放置彼此交互的资源也很有用。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 |
 | 标记 |否 |与资源关联的标记。 应用标签以跨订阅按逻辑对资源进行组织。 |
 | 注释 |否 |用于描述模板中资源的注释。 有关详细信息，请参阅[模板中的注释](resource-group-authoring-templates.md#comments)。 |
 | 复制 |否 |需要多个实例时应创建的资源数。 默认模式为并行。 若不想同时部署所有资源，请指定为串行模式。 有关详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](resource-group-create-multiple.md)。 |
@@ -514,7 +514,7 @@ ms.locfileid: "67204362"
 | sku | 否 | 某些资源接受定义了要部署的 SKU 的值。 例如，可以为存储帐户指定冗余类型。 |
 | kind | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
 | 计划 | 否 | 某些资源接受定义了要部署的计划的值。 例如，可以为虚拟机指定市场映像。 | 
-| 资源 |否 |依赖于所定义的资源的子资源。 只能提供父资源的架构允许的资源类型。 不隐式表示对父资源的依赖。 必须显式定义该依赖关系。 请参阅[子资源](#child-resources)。 |
+| 资源 |否 |依赖于所定义的资源的子资源。 只能提供父资源的架构允许的资源类型。 不隐式表示对父资源的依赖。 必须显式定义该依赖关系。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
 
 ### <a name="condition"></a>条件
 
@@ -554,9 +554,9 @@ ms.locfileid: "67204362"
 * Azure 存储<sup>1</sup> 
 * Azure 应用服务的 Web 应用功能
 * SQL Server
-* Azure 密钥保管库
+* Azure Key Vault
 * 用于 Redis 的 Azure 缓存
-* Azure 批处理
+* Azure Batch
 * Azure 流量管理器
 * Azure 搜索
 * Azure HDInsight
@@ -654,75 +654,7 @@ ms.locfileid: "67204362"
 }
 ```
 
-### <a name="child-resources"></a>子资源
-
-在某些资源类型内，还可以定义子资源数组。 子资源是仅在另一个资源的上下文内存在的资源。 例如，如果没有 SQL 服务器，则不存在 SQL 数据库；因此，此数据库是此服务器的子资源。 可以在服务器的定义内定义数据库。
-
-```json
-{
-  "apiVersion": "2015-05-01-preview",
-  "type": "Microsoft.Sql/servers",
-  "name": "exampleserver",
-  ...
-  "resources": [
-    {
-      "apiVersion": "2017-10-01-preview",
-      "type": "databases",
-      "name": "exampledatabase",
-      ...
-    }
-  ]
-}
-```
-
-但是，无需在服务器内定义数据库。 可以定义顶级子资源。 如果父资源未部署在同一模板中，或者想要使用 `copy` 创建多个子资源，可以使用此方法。 使用此方法时，必须提供完整的资源类型，并在子资源名称中包括父资源名称。
-
-```json
-{
-  "apiVersion": "2015-05-01-preview",
-  "type": "Microsoft.Sql/servers",
-  "name": "exampleserver",
-  "resources": [ 
-  ],
-  ...
-},
-{
-  "apiVersion": "2017-10-01-preview",
-  "type": "Microsoft.Sql/servers/databases",
-  "name": "exampleserver/exampledatabase",
-  ...
-}
-```
-
-为类型和名称提供的值根据子资源是在父资源的内部还是外部定义而异。
-
-如果嵌套在父资源中，请使用：
-
-```json
-"type": "{child-resource-type}",
-"name": "{child-resource-name}",
-```
-
-如果在父资源的外部定义，请使用：
-
-```json
-"type": "{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}",
-"name": "{parent-resource-name}/{child-resource-name}",
-```
-
-如果是嵌套的，则类型将设置为 `databases`，但完整资源类型仍为 `Microsoft.Sql/servers/databases`。 可不提供 `Microsoft.Sql/servers/`，因为假设它继承父资源类型。 子资源名称设置为 `exampledatabase`，但完整名称包括父名称。 可不提供 `exampleserver`，因为假设它继承父资源。
-
-向资源构造完全限定的引用时，类型和名称的分段组合顺序并不是这两者的简单串联。 相反，在命名空间后，需采用“类型/名称”对从最不具体到最具体的序列  ：
-
-```json
-{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
-```
-
-例如：
-
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确，`Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 不正确
-
-## <a name="outputs"></a>Outputs
+## <a name="outputs"></a>outputs
 
 在 Outputs 节中，可以指定从部署返回的值。 一般情况下，将从已部署的资源返回值。
 
@@ -740,7 +672,7 @@ ms.locfileid: "67204362"
 }
 ```
 
-| 元素名称 | 需要 | 描述 |
+| 元素名称 | 必填 | 描述 |
 |:--- |:--- |:--- |
 | outputName |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
 | condition |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |
@@ -827,7 +759,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
   },
 ```
 
-对于参数，添加具有 `description` 属性的 `metadata` 对象  。
+对于参数，添加具有 `description` 属性的 `metadata` 对象。
 
 ```json
 "parameters": {
@@ -843,7 +775,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 
 ![显示参数提示](./media/resource-group-authoring-templates/show-parameter-tip.png)
 
-对于资源，添加 `comments` 元素或元数据对象  。 以下示例同时显示了注释元素和元数据对象。
+对于资源，添加 `comments` 元素或元数据对象。 以下示例同时显示了注释元素和元数据对象。
 
 ```json
 "resources": [
@@ -869,7 +801,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 ]
 ```
 
-对于输出，将元数据对象添加到输出值  。
+对于输出，将元数据对象添加到输出值。
 
 ```json
 "outputs": {
@@ -902,7 +834,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 
 1. 打开语言模式选择 (Ctrl+K M)
 
-1. 选择“带注释的 JSON”  。
+1. 选择“带注释的 JSON”。
 
    ![选择语言模式](./media/resource-group-authoring-templates/select-json-comments.png)
 

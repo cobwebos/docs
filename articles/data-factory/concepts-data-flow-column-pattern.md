@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8f1fa6f7823c643278e52ffd0faa1c0ce4972ef8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 41037e0687274d123bea742cee5cf2887548aa0f
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640251"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775210"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>映射数据流列模式
 
@@ -45,6 +45,16 @@ ms.locfileid: "68640251"
 映射源中的列并选择转换时, 可以选择 "固定映射" 或 "基于规则的映射"。 如果你知道数据的架构, 并且期望源数据集中始终匹配特定静态名称的特定列, 则可以使用固定映射。 但在使用灵活的架构时, 请使用基于规则的映射。 你将能够使用上述规则构建模式匹配。
 
 ![基于规则的映射](media/data-flow/rule2.png "基于规则的映射")
+
+使用 "表达式生成器" 生成规则。 表达式将返回一个布尔值, 以匹配列 (true) 或排除列 (false)。
+
+## <a name="pattern-matching-special-columns"></a>匹配特殊列的模式
+
+* `$$`将在设计时在调试模式下和在运行时转换为每个匹配项的名称
+* `name`表示每个传入列的名称
+* `type`表示每个传入列的数据类型
+* `stream`表示与流中的每个流或转换相关联的名称
+* `position`是数据流中列的序号位置
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关数据转换的 ADF 映射数据流[表达式语言](http://aka.ms/dataflowexpressions)的详细信息

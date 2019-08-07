@@ -6,20 +6,20 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: a2711339f5e952747adeeb6217b283770cb6cc6b
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0512facbdf5f2222aee1e9bb5d2be64e22bf1a69
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689048"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774631"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上 SAP HANA 数据库的备份问题
 
-本文提供了有关在 Azure 虚拟机上备份 SAP HANA 数据库的疑难解答信息。
+本文提供了有关在 Azure 虚拟机上备份 SAP HANA 数据库的疑难解答信息。 以下部分介绍了诊断 SAP HANA 备份中常见错误时所需的重要概念数据。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 作为[先决条件](backup-azure-sap-hana-database.md#prerequisites)的一部分, 请确保预先注册脚本已在安装了 HANA 的虚拟机上运行。
 
@@ -56,6 +56,26 @@ ms.locfileid: "68689048"
 
 > [!NOTE]
 > 请确保这些参数*不*存在于主机级别。 主机级别参数将重写这些参数, 并可能导致意外的行为。
+
+## <a name="restore-checks"></a>还原检查
+
+### <a name="single-container-database-sdc-restore"></a>单容器数据库 (SDC) 还原
+
+在将 HANA 的单个容器数据库 (SDC) 还原到另一个 SDC 计算机时执行输入。 数据库名称应以小写形式提供, 并在括号中追加 "sdc"。 HANA 实例将以大写字母显示。
+
+假设已备份 SDC HANA 实例 "H21"。 "备份项" 页面会将备份项名称显示为 **"h21 (sdc)"** 。 如果尝试将此数据库还原到另一个目标 SDC (如 H11), 则需要提供以下输入。
+
+![SDC 还原输入](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+
+注意以下
+- 默认情况下, 还原的数据库名称将用备份项名称 (即 h21 (sdc)) 填充。
+- 选择目标为 "H11" 不会自动更改还原的数据库名称。 **应将其编辑为 h11 (sdc)** 。 在 SDC 情况下, 还原的数据库名称将是带有小写字母的目标实例 ID, 并在括号中追加了 "SDC"。
+- 由于 SDC 只能有一个数据库, 因此还需要单击该复选框以允许使用恢复点数据覆盖现有的数据库数据。
+- Linux 区分大小写, 因此请务必保留大小写。
+
+### <a name="multiple-container-database-mdc-restore"></a>多容器数据库 (MDC) 还原
+
+在 HANA 的多个容器数据库中, 标准配置为 SYSTEMDB + 1 个或更多租户数据库。 还原整个 SAP HANA 实例意味着还原 SYSTEMDB 和租户数据库。 首先还原 SYSTEMDB, 然后继续进行租户数据库。 系统 DB 实质上是指覆盖所选目标上的系统信息。 这还会替代目标实例中的与 BackInt 相关的信息。 因此, 将系统数据库还原到目标实例后, 需要再次运行预注册脚本。 只有这样, 随后的租户数据库还原才会成功。
 
 ## <a name="common-user-errors"></a>常见用户错误
 

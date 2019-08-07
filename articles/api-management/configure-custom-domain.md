@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 9eb03be5cd9704c3b124bfb16fd30c5c3466890d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326145"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736257"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名
 
@@ -25,7 +25,7 @@ ms.locfileid: "68326145"
 > [!WARNING]
 > 想要使用证书固定改进其应用程序安全性的客户必须使用自定义域名和他们管理的证书，而不是使用默认证书。 改为固定默认证书的客户将硬依赖于他们不控制的证书属性，建议不要这样做。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -40,27 +40,29 @@ ms.locfileid: "68326145"
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>使用 Azure 门户设置自定义域名
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到自己的 API 管理实例。
-1. 选择“自定义域和 SSL”  。
+1. 选择 "**自定义域**"。
 
     可以为许多终结点分配自定义域名。 当前有以下终结点可用：
 
-    - **代理**（默认值为：`<apim-service-name>.azure-api.net`），
+    - **网关**(默认值为`<apim-service-name>.azure-api.net`:),
     - **门户**（默认值为：`<apim-service-name>.portal.azure-api.net`），
     - **管理**（默认值为：`<apim-service-name>.management.azure-api.net`），
     - **SCM**（默认值为：`<apim-service-name>.scm.azure-api.net`）。
 
     > [!NOTE]
-    > 可以更新所有终结点或者更新其中的一部分。 通常情况下，客户会更新**代理**（此 URL 用来调用通过 API 管理公开的 API）和**门户**（开发人员门户 URL）。 **管理**终结点和**SCM**终结点仅由 API 管理实例所有者在内部使用, 因此不太频繁地分配自定义域名。 在大多数情况下, 只能为给定终结点设置单个自定义域名。 但是,**高级**层支持为**代理**终结点设置多个主机名。
+    > 只有可用于配置的**网关**终结点才可用于配置。
+    > 可以更新所有终结点或者更新其中的一部分。 通常, 客户更新**网关**(此 URL 用于调用通过 api 管理公开的 api) 和**门户**(开发人员门户 URL)。
+    > **管理**终结点和**SCM**终结点仅由 API 管理实例所有者在内部使用, 因此不太频繁地分配自定义域名。 **高级**层支持为**网关**终结点设置多个主机名。
 
 1. 选择要更新的终结点。
-1. 在右侧窗口中，单击“自定义”  。
+1. 在右侧窗口中，单击“自定义”。
 
-    - 在“自定义域名”  中，指定要使用的名称。 例如， `api.contoso.com` 。 还支持通配符域名 (例如, \*. domain.com)。
+    - 在“自定义域名”中，指定要使用的名称。 例如， `api.contoso.com` 。 还支持通配符域名 (例如, \*. domain.com)。
     - 在**证书**中，从密钥保管库中选择证书。 如果证书受密码保护，你还可以上传有效的 .PFX 文件并提供其**密码**。
 
     > [!TIP]
     > 我们建议使用 Azure Key Vault 来管理证书并将其设置为“自动轮换”。
-    > 如果使用 Azure 密钥保管库来管理自定义域 SSL 证书，请确保该证书[作为证书  ](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)而不是机密  插入到密钥保管库中。
+    > 如果使用 Azure 密钥保管库来管理自定义域 SSL 证书，请确保该证书[作为证书](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)而不是机密插入到密钥保管库中。
     >
     > 若要提取 SSL 证书，API 管理必须使列表对包含证书的 Azure Key Vault 具有“获取机密”权限。 使用 Azure 门户时，所有必要的配置步骤都将自动完成。 使用命令行工具或管理 API 时，必须手动授予这些权限。 此过程分为两个步骤。 首先，使用 API 管理实例上的“托管标识”页确保已启用“托管标识”并记下该页上显示的主体 ID。 其次，在包含证书的 Azure Key Vault 上为此主体 ID 提供权限列表并获取机密权限。
     >

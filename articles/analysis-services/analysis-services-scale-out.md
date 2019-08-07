@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8297a2b1e78da6685b3129071612dc4457990bc1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 29188013b75dbefbaf80f3c59360f203ae5b5a82
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696404"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736754"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -143,9 +143,9 @@ ms.locfileid: "68696404"
 
 ![服务器名称](media/analysis-services-scale-out/aas-scale-out-name.png)
 
-## <a name="scale-up--down-vs-scale-out"></a>纵向扩展和横向扩展
+## <a name="scale-up-scale-down-vs-scale-out"></a>向上缩放、向下缩放与横向扩展
 
-可以在具有多个副本的服务器上更改服务器的定价层。 同一定价层适用于所有副本。 向上缩放和向下缩放操作将首先立即关闭所有副本, 然后在新的定价层上打开所有副本。
+可以在具有多个副本的服务器上更改定价层。 同一定价层适用于所有副本。 缩放操作首先将所有副本全部关闭, 然后在新的定价层上打开所有副本。
 
 ## <a name="troubleshoot"></a>故障排除
 

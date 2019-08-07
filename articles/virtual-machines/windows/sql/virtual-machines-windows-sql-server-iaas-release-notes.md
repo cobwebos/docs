@@ -12,18 +12,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 2/13/2019
-ms.openlocfilehash: e7dea69b507117ba8a3765b5e9bc1fad46be4c53
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.date: 08/01/2019
+ms.openlocfilehash: e656cd4d901ad9f3180963047a85cd980e56df8b
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444206"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774202"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Azure 虚拟机上的 SQL Server 发行说明
 
 Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总了 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 的最新版本中的新功能和改进。 本文还列出了不与此版本直接相关但在同一时间范围内发布的值得注意的内容更新。 有关对其他 Azure 服务的改进，请参阅[服务更新](https://azure.microsoft.com/updates)
 
+## <a name="july-2019"></a>2019年7月
+
+### <a name="documentation-improvements"></a>文档改进
+
+| 文档 | 详细信息 |
+| --- | --- |
+| **将 SQL VM 移到不同的区域** | 使用 Azure Site Recovery 将[SQL Server VM 从一个区域迁移到另一个区域](virtual-machines-windows-sql-move-different-region.md)。 |
+| &nbsp; | &nbsp; |
 
 ## <a name="june-2019"></a>2019 年 7 月
 
@@ -63,7 +71,7 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总�
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-| **扩展对 SQL Server 2008/2008R2 的支持** | 通过按*原样迁移到*Azure VM, 扩展对 SQL Server 2008 和 SQL Server 2008 R2 的[支持](virtual-machines-windows-sql-server-2008-eos-extend-support.md)。 | 
+| **扩展对 SQL Server 2008/2008R2 的支持** | 通过按原样迁移到 Azure VM, 扩展对 SQL Server 2008 和 SQL Server 2008 R2 的[支持](virtual-machines-windows-sql-server-2008-eos-extend-support.md)。 | 
 | &nbsp; | &nbsp; |
 
 

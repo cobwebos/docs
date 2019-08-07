@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 2df1ac6325f692e2d433238ae0b92d8e3f8482b5
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: acb001417b85b8ff45b2617e148e8b1961f3cbfa
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472283"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772975"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD 域服务 - 故障排除指南
 本文提供设置或管理 Azure Active Directory (AD) 域服务时可能遇到的问题的故障排除提示。
@@ -59,9 +59,9 @@ ms.locfileid: "67472283"
 
 执行以下步骤，检查是否存在该应用程序，如果存在，则将它删除：
 
-1. 导航至 [Azure 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)中 Azure AD 目录的“应用程序”部分  。
-2. 选择“显示”下拉列表中的“所有应用程序”   。 选择“应用程序状态”下拉列表中的“所有”   。 选择“应用程序可见性”下拉列表中的“所有”   。
-3. 在搜索框中键入“Azure AD 域服务同步”  。 如果该应用程序存在，单击它，然后单击工具栏中的“删除”按钮，将其删除  。
+1. 导航至 [Azure 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)中 Azure AD 目录的“应用程序”部分。
+2. 选择“显示”下拉列表中的“所有应用程序”。 选择“应用程序状态”下拉列表中的“所有”。 选择“应用程序可见性”下拉列表中的“所有”。
+3. 在搜索框中键入“Azure AD 域服务同步”。 如果该应用程序存在，单击它，然后单击工具栏中的“删除”按钮，将其删除。
 4. 删除该应用程序后，再次尝试启用 Azure AD 域服务。
 
 ### <a name="invalid-configuration"></a>配置无效
@@ -147,6 +147,9 @@ if ($sp -ne $null)
     1. net stop 'Microsoft Azure AD Sync'
     2. net start 'Microsoft Azure AD Sync'
 * **仅限云帐户**：如果受影响的用户帐户是仅限云的用户帐户，请确保在启用 Azure AD 域服务之后，用户已更改其密码。 执行此步骤可以生成 Azure AD 域服务所需的凭据哈希。
+* **验证用户帐户是否处于活动状态**:如果用户的帐户被锁定, 他们将无法登录, 直到其帐户再次处于活动状态。 在托管域上于 2 分钟内尝试五个无效密码将导致用户帐户锁定 30 分钟。 30 分钟后用户帐户将自动解锁。
+  * 托管域上的无效密码尝试不会 Azure AD 中锁定用户帐户。 仅在 Azure AD 域服务托管域中锁定用户帐户。 使用 Azure AD DS 托管域 (而不是 Azure AD) 的 Active Directory 管理控制台 (ADAC) 检查用户帐户状态。
+  * 你还可以[配置用于更改默认锁定阈值和持续时间的细化密码策略](https://docs.microsoft.com/azure/active-directory-domain-services/password-policy)。
 
 ## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>托管域上出现一个或多个警报
 

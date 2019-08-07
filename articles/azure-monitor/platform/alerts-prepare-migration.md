@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: bdbd45c2b10dec8f1c0a85110747a470e818dbf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5235db5cab39be6e36bdf145d3edc7c73fe9da54
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66015612"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827388"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>准备逻辑应用和 Runbook 以迁移经典警报规则
 
-作为[之前公布](monitoring-classic-retirement.md)，在 Azure Monitor 经典警报将被在 2019 年 9 月停用 (已最初年 7 月 2019年)。 Azure 门户中为使用经典警报规则并想要自行触发迁移的客户提供了一个迁移工具。
+根据[之前的公告](monitoring-classic-retirement.md)，Azure Monitor 中的经典警报即将在 2019 年 9 月（原来是 2019 年 7 月）停用。 Azure 门户中为使用经典警报规则并想要自行触发迁移的客户提供了一个迁移工具。
 
 > [!NOTE]
-> 由于推出的迁移工具中的延迟，经典警报迁移的停用日期已延长到 2019 年 8 月 31 日从 2019 年 6 月 30 日的最初公布日期。
+> 由于迁移工具的延迟推出，经典警报迁移的停用日期已从原来宣布的 2019 年 6 月 30 日推迟至 2019 年 8 月 31 日。
 
 如果你选择自愿将经典警报规则迁移到新的警报规则，请注意，这两个系统存在一些差异。 本文将会解释这些差异以及如何做好相应的准备。
 
@@ -52,7 +52,7 @@ ms.locfileid: "66015612"
 | 警报规则的说明 | **context.description** | **data.context.description** |
 | 警报规则条件 | **context.condition** | **data.context.condition** |
 | 指标名称 | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
-| 时间聚合（在评估期限内聚合指标的方式）| **data.context.condition.timeAggregation** | **data.context.condition.timeAggregation** |
+| 时间聚合（在评估期限内聚合指标的方式）| **timeAggregation** | **timeAggregation** |
 | 评估期 | **context.condition.windowSize** | **data.context.condition.windowSize** |
 | 运算符（如何将聚合指标值与阈值进行比较） | **context.condition.operator** | **data.context.condition.operator** |
 | 阈值 | **context.condition.threshold** | **data.context.condition.allOf[0].threshold** |
@@ -72,7 +72,7 @@ ms.locfileid: "66015612"
 
 ## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>修改逻辑应用以接收指标警报通知
 
-如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 执行以下步骤:
+如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 请执行以下步骤：
 
 1. 创建新的逻辑应用。
 

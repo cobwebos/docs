@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: danlep
-ms.openlocfilehash: 285d5592ce667f7b4d84f26d67a00af0698c2967
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 88b6da4e9bd2938adadadc1ef0e696399fc3c75e
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620956"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828001"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>配置规则以访问防火墙后面的 Azure 容器注册表
 
@@ -123,9 +123,9 @@ ms.locfileid: "68620956"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[网络安全的 Azure 最佳实践](../security/azure-security-network-security-best-practices.md)
+* 了解[网络安全的 Azure 最佳实践](../security/fundamentals/network-best-practices.md)
 
-* 详细了解 Azure 虚拟网络中的[安全组](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview.md)
+* 详细了解 Azure 虚拟网络中的[安全组](/azure/virtual-network/security-overview)
 
 
 

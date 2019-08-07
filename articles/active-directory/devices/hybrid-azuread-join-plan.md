@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee3309bdd3629057d174866dde58ffd95e9e5ca8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562133"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779458"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
@@ -111,12 +111,18 @@ ms.locfileid: "68562133"
 
 ### <a name="federated-environment"></a>联合环境
 
-联合环境应具有支持以下要求的标识提供程序:
+联合环境应具有支持以下要求的标识提供者。 如果你有使用 Active Directory 联合身份验证服务 (AD FS) 的联合环境, 则已支持以下要求。
 
-- **WS 信任协议:** 需要此协议来对 Windows 当前混合 Azure AD 与 Azure AD 进行联接的设备进行身份验证。
 - **WIAORMULTIAUTHN 声明:** 为 Windows 下层设备执行混合 Azure AD 联接需要此声明。
+- **WS 信任协议:** 需要此协议来对 Windows 当前混合 Azure AD 与 Azure AD 进行联接的设备进行身份验证。 使用 AD FS 时, 需要启用以下 WS-TRUST 终结点:`/adfs/services/trust/2005/windowstransport`  
+`/adfs/services/trust/13/windowstransport`  
+  `/adfs/services/trust/2005/usernamemixed` 
+  `/adfs/services/trust/13/usernamemixed`
+  `/adfs/services/trust/2005/certificatemixed` 
+  `/adfs/services/trust/13/certificatemixed` 
 
-如果你有使用 Active Directory 联合身份验证服务 (AD FS) 的联合环境, 则已支持上述要求。
+> [!WARNING] 
+> **Adfs/services/trust/2005/windowstransport**或**adfs/services/trust/13/windowstransport**只应启用为面向 intranet 的终结点, 而不能通过 Web 应用程序代理作为面向外的终结点公开。 若要详细了解如何禁用 WS-TRUST WIndows 终结点, 请参阅在[代理上禁用 Ws-trust windows 终结点](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。
 
 > [!NOTE]
 > Azure AD 不支持托管域中的智能卡或证书。
@@ -130,7 +136,7 @@ ms.locfileid: "68562133"
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>查看混合 Azure AD 联接的本地 AD UPN 支持
 
-有时，本地 AD UPN 可能不同于 Azure AD UPN。 在此类情况下，Windows 10 混合 Azure AD 加入根据[身份验证方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、域类型和 Windows 10 版本对本地 AD UPN 提供有限支持。 环境中可以存在两种类型的本地 AD UPN：
+有时，本地 AD UPN 可能不同于 Azure AD UPN。 在此类情况下，Windows 10 混合 Azure AD 加入根据[身份验证方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)、域类型和 Windows 10 版本对本地 AD UPN 提供有限支持。 环境中可以存在两种类型的本地 AD UPN：
 
 - 可路由的 UPN：可路由的 UPN 具有已向域注册机构注册的有效的已验证域。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.org 是 Contoso 拥有的且[已在 Azure AD 中验证](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)的本地 AD 中的主域
 - 非可路由的 UPN：非可路由的 UPN 没有已验证域。 它仅在组织的专用网络内适用。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.local 是本地 AD 中的主域，但在 Internet 中不是可验证的域，且仅可在 Contoso 的网络内使用。

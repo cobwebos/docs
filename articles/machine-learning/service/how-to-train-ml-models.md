@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93b26b2861c5603770a954943174d6436296ad07
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 10aee302377c4f71e47d93f5cd975043efcea375
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668374"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815917"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 
 凭借 Azure 机器学习，可以使用 [RunConfiguration 对象](how-to-set-up-training-targets.md#whats-a-run-configuration)和 [ScriptRunConfig 对象](how-to-set-up-training-targets.md#submit)轻松将训练脚本提交给[各种计算目标](how-to-set-up-training-targets.md#compute-targets-for-training)。 该模式提供了很强的灵活性和最大程度的控制度。
 
-为了便于深度学习模型训练，Azure 机器学习 Python SDK 提供了另一种可选择的高级抽象（即估算器类），其支持用户轻松构造运行配置。 可以创建并使用泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)提交使用了任何所选的学习框架（如 scikit-learn）的训练脚本，以在所需的任何计算目标上运行，无论是在本地计算机、Azure 中的单个 VM 还是 Azure 中的 GPU 群集。 对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供了相应的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) 和 [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) 估算器，以便使用这些框架进行简化。
+为了便于深度学习模型训练，Azure 机器学习 Python SDK 提供了另一种可选择的高级抽象（即估算器类），其支持用户轻松构造运行配置。 你可以创建和使用一般的[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py), 以便在所选的任何计算目标上使用你选择的任何学习框架 (如 scikit-learn) 提交定型脚本, 无论该目标是本地计算机、azure 中的单个 VM 还是 azure 中的 GPU 群集。 对于 PyTorch、TensorFlow 和 Chainer 任务, Azure 机器学习还提供相应的[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)估算以简化使用这些框架的操作。
 
 ## <a name="train-with-an-estimator"></a>使用估算器进行训练
 
@@ -58,13 +58,13 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 参数 | 描述
 --|--
-`source_directory`| 包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算 
-`script_params`| 指定训练脚本`entry_script`的命令行参数的字典, `<command-line argument, value>`格式为成对。 若要在中`script_params`指定详细标志, 请使用。 `<command-line argument, "">`
-`compute_target`| 运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 群集。 （请注意，即使 AmlCompute 集群是常用目标，也可以选择其他计算目标类型，比如 Azure VM 甚至是本地计算机。）
-`entry_script`| 要在远程计算上运行的训练脚本的文件路径（相对于 `source_directory`）。 此文件以及所依赖的任何其他文件应位于此文件夹中
+`source_directory`| 包含训练作业所需的所有代码的本地目录。 此文件夹将从您的本地计算机复制到远程计算。
+`script_params`| 指定要传递给训练脚本`entry_script`的命令行参数的字典, `<command-line argument, value>`格式为成对。 若要在中`script_params`指定详细标志, 请使用。 `<command-line argument, "">`
+`compute_target`| 运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 群集。 (请注意, 尽管 AmlCompute 群集是常用目标, 但也可以选择其他计算目标类型, 例如 Azure Vm, 甚至是本地计算机。)
+`entry_script`| 要在远程计算上运行的训练脚本的文件路径（相对于 `source_directory`）。 此文件以及它所依赖的任何其他文件都应位于此文件夹中。
 `conda_packages`| 要通过训练脚本所需的 conda 安装的 Python 包列表。  
 
-构造函数具有名为 `pip_packages` 的另一个参数，可以将其用于任何所需的 pip 包
+构造函数有另一个名`pip_packages`为的参数, 用于所需的任何 pip 包。
 
 创建了 `Estimator` 对象后，请提交要在远程计算上通过调用[实验](concept-azure-machine-learning-architecture.md#experiments)对象 `experiment` 上的 `submit` 函数来运行的训练作业。 
 
@@ -112,7 +112,7 @@ estimator = Estimator(source_directory='./my-keras-proj',
 `custom_docker_image`| 要使用的映像的名称。 仅提供公共 docker 存储库（这种情况下为 Docker 中心）中可用的映像。 若要使用专用 docker 存储库中的映像，请改为使用构造函数的 `environment_definition` 参数。 [请参阅示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)。 | `None`
 `node_count`| 要用于训练作业的节点数。 | `1`
 `process_count_per_node`| 要在每个节点上运行的进程（或“工作线程”）数。 在这种情况下，使用每个节点上均可用的 `2`GPU。| `1`
-`distributed_backend`| 用于启动由估算器通过 MPI 提供的分布式训练的后端。  如果要执行并行或分布式训练（例如，`node_count`>1 或 `process_count_per_node`>1，或两者），请设置 `distributed_backend='mpi'`。 AML 所使用的 MPI 实现是 [Open MPI](https://www.open-mpi.org/)。| `None`
+`distributed_backend`| 用于启动由估算器通过 MPI 提供的分布式训练的后端。  若要执行并行或分布式培训 (如`node_count`> 1 或`process_count_per_node`> 1 或两者), 请设置`distributed_backend='mpi'`。 AML 所使用的 MPI 实现是 [Open MPI](https://www.open-mpi.org/)。| `None`
 
 最后，提交训练作业：
 ```Python

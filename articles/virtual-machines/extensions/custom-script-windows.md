@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 8487b8477b1837fce0b1c2c6435174c48dfbded4
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 58b6531a394db8f9d29dcc0fe9b4b40d1725e70a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478424"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774585"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -23,7 +23,7 @@ ms.locfileid: "67478424"
 
 本文档详细说明如何通过 Azure PowerShell 模块、Azure 资源管理器模板使用自定义脚本扩展，同时详细说明 Windows 系统上的故障排除步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 > [!NOTE]  
 > 不要在将同一 VM 作为参数的情况下使用自定义脚本扩展运行 Update-AzVM，因为它将等待它本身响应。  
@@ -53,8 +53,9 @@ ms.locfileid: "67478424"
 * 扩展将只运行脚本一次，如果想要在每次启动时运行脚本，则需要使用扩展创建 Windows 计划任务。
 * 如果想要计划脚本何时运行，应使用扩展创建 Windows 计划任务。
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
-* 自定义脚本扩展本身不支持代理服务器，但可以在脚本中使用支持代理服务器的文件传输工具，如 Curl 
+* 自定义脚本扩展本身不支持代理服务器，但可以在脚本中使用支持代理服务器的文件传输工具，如 Curl
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对这种情况进行处理。
+* 自定义脚本扩展将在 LocalSystem 帐户下运行
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -108,7 +109,7 @@ ms.locfileid: "67478424"
 | publisher | Microsoft.Compute | string |
 | type | CustomScriptExtension | string |
 | typeHandlerVersion | 1.9 | int |
-| fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | 数组 |
+| fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp（示例） | 123456789 | 32 位整数 |
 | commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
 | storageAccountName（例如） | examplestorageacct | string |
@@ -207,7 +208,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
 * 扩展的 **Name** 参数与以前部署的扩展相同。
 * 更新配置，否则不会重新执行命令。 可以将动态属性添加到命令中，如时间戳。
 
-或者，可以设置[ForceUpdateTag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag)属性设置为**true**。
+或者，可以将 [ForceUpdateTag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag) 属性设置为 **true**。
 
 ### <a name="using-invoke-webrequest"></a>使用 Invoke-WebRequest
 
@@ -223,11 +224,11 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 ### <a name="azure-portal"></a>Azure 门户
 
-导航到经典 VM 资源。 在“设置”  下选择“扩展”  。
+导航到经典 VM 资源。 在“设置”下选择“扩展”。
 
-单击“+ 添加”，然后在资源列表中选择“自定义脚本扩展”   。
+单击“+ 添加”，然后在资源列表中选择“自定义脚本扩展”。
 
-在“安装扩展”页上，选择本地 PowerShell 文件，填写所有参数，然后单击“确定”。  
+在“安装扩展”页上，选择本地 PowerShell 文件，填写所有参数，然后单击“确定”。
 
 ### <a name="powershell"></a>PowerShell
 

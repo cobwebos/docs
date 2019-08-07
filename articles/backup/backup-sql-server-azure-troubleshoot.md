@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 849065460acda36426f8a594a984ad1cc8590c34
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 323470adfe56ee20fe0fb64aeba38b6af4330351
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688823"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827599"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 备份排查 SQL Server 数据库备份问题
 
@@ -119,6 +119,19 @@ ms.locfileid: "68688823"
 | 错误消息 | 可能的原因 | 推荐的操作 |
 |---|---|---|
 | 自动保护意向被删除或不再有效。 | 启用 SQL Server 实例的自动保护时, 为该实例中的所有数据库**配置备份**作业运行。 如果在作业运行时禁用自动保护，则会使用此错误代码取消**正在进行的**作业。 | 再次启用自动保护, 以帮助保护所有剩余的数据库。 |
+
+### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
+
+| 错误消息 | 可能的原因 | 推荐的操作 |
+|---|---|---|
+操作已被阻止，因为你已达到 24 小时内允许的操作数量限制。 | 如果已达到24小时内操作的最大允许限制, 则会出现此错误。 <br> 例如：如果已达到每日可触发的配置备份作业数的限制, 并且你尝试在新项上配置备份, 你将看到此错误。 | 通常, 在24小时后重试操作可解决此问题。 但是, 如果问题仍然存在, 可以联系 Microsoft 支持部门以获得帮助。
+
+### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
+
+| 错误消息 | 可能的原因 | 推荐的操作 |
+|---|---|---|
+操作被阻止, 因为保管库已达到范围24小时内允许的此类操作的最大限制。 | 如果已达到24小时内操作的最大允许限制, 则会出现此错误。 此错误通常发生在大规模操作 (如修改策略或自动保护) 的情况下。 与 CloudDosAbsoluteLimitReached 不同的是, 为了解决这种状态, 实际上, Azure 备份服务将为相关的所有项目重试操作。<br> 例如：如果有大量使用策略保护的数据源, 并且尝试修改该策略, 则会触发为每个受保护的项配置保护作业, 有时可能会达到每天允许的此类操作的最大限制。| Azure 备份服务会在24小时后自动重试此操作。 
+
 
 ## <a name="re-registration-failures"></a>重新注册失败
 

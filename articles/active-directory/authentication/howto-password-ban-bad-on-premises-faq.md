@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1f2e06eb6b5f8d402515ff1c07a4163174495d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666361"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779649"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>本地 Azure AD 密码保护 - 常见问题解答
 
@@ -40,19 +40,19 @@ ms.locfileid: "68666361"
 
 **问：密码更改和密码设置 (或重置) 之间有何区别？**
 
-密码更改是指用户在证明其了解旧密码后选择新密码。 例如, 当用户登录到 Windows 时, 系统会提示用户选择新密码。
+密码更改是指用户在证明其了解旧密码后选择新密码。 例如, 密码更改会在用户登录到 Windows 时执行, 然后系统会提示选择一个新密码。
 
-密码集 (有时称为密码重置) 是指管理员使用新密码替换帐户的密码, 例如, 使用 Active Directory 用户和计算机管理工具。 此操作需要高级别的权限 (通常为域管理员), 执行该操作的人员通常不知道旧密码。 例如, 在帮助已忘记密码的用户时, 技术支持方案通常会执行此操作。 首次使用密码创建新用户帐户时, 还会看到密码设置事件。
+密码集 (有时称为密码重置) 是指管理员使用新密码替换帐户的密码, 例如, 使用 Active Directory 用户和计算机管理工具。 此操作需要高级别的权限 (通常为域管理员), 执行该操作的人员通常不知道旧密码。 技术支持方案通常会执行密码集, 例如, 在协助用户忘记密码时。 首次使用密码创建新用户帐户时, 还会看到密码设置事件。
 
 不管密码是否已更改或已设置, 密码验证策略的行为都是相同的。 Azure AD 密码保护 DC 代理服务会记录不同的事件, 以通知你是否已完成密码更改或设置操作。  请参阅[Azure AD 密码保护监视和日志记录](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)。
 
 **问：为什么在尝试使用 "Active Directory 用户和计算机管理" 管理单元尝试设置弱密码时记录重复的密码拒绝事件？**
 
-"Active Directory 用户和计算机管理" 管理单元将首先尝试使用 Kerberos 协议设置新密码。 失败时, 管理单元将再次尝试使用旧版 (SAM RPC) 协议设置密码 (使用的特定协议并不重要)。 如果 Azure AD 密码保护将新密码视为弱密码, 这将导致记录两组密码重置拒绝事件。
+"Active Directory 用户和计算机管理" 管理单元将首先尝试使用 Kerberos 协议设置新密码。 出现故障时, 管理单元将再次尝试使用旧版 (SAM RPC) 协议设置密码 (使用的特定协议并不重要)。 如果 Azure AD 密码保护将新密码视为弱密码, 则此管理单元行为将导致记录两组密码重置拒绝事件。
 
 **问：为什么使用空用户名记录 Azure AD 密码保护密码验证事件？**
 
-Active Directory 支持测试密码以查看是否通过了域的当前密码复杂性要求 (例如, 使用[NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) api) 的功能。 以这种方式验证密码时, 测试还包括通过密码筛选器基于 dll 的产品 (如 Azure AD 密码保护) 进行的验证-但传递到给定密码筛选器 dll 的用户名将为空。 在这种情况下 Azure AD 密码保护仍将使用当前生效的密码策略来验证密码, 并将发出事件日志消息来捕获结果, 但是事件日志消息将包含空的用户名字段。
+Active Directory 支持测试密码以查看是否通过了域的当前密码复杂性要求 (例如, 使用[NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) api) 的功能。 以这种方式验证密码时, 测试还包括通过密码筛选器基于 dll 的产品 (如 Azure AD 密码保护) 进行的验证-但传递到给定密码筛选器 dll 的用户名将为空。 在此方案中, Azure AD 密码保护仍将使用当前生效的密码策略来验证密码, 并将发出事件日志消息来捕获结果, 但是事件日志消息将包含空的用户名字段。
 
 **问：是否支持与其他基于密码筛选器的产品一同安装 Azure AD 密码保护？**
 
@@ -115,6 +115,10 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 否。 如果在给定的非 PDC 域控制器上更改用户密码时，则明文密码永远不会发送到 PDC（这种想法是常见的错误认知）。 一旦在给定的 DC 上接受新密码，该 DC 将使用该密码来为该密码创建各种特定于身份验证协议的哈希，然后在目录中保存这些哈希。 不会保存明文密码。 然后，更新的哈希将复制到 PDC。 在某些情况下，用户密码可以直接在 PDC 上更改，同样，这取决于网络拓扑和 Active Directory 站点设计等多种因素。 （请参阅前面的问题。）
 
 总而言之，在 PDC 上部署 Azure AD 密码保护 DC 代理服务需要对整个跨中的功能实现 100% 的安全覆盖。 仅在 PDC 上部署该功能不能为域中的其他任何 DC 提供 Azure AD 密码保护安全优势。
+
+**问：为什么在本地 Active Directory 环境中安装代理后, 自定义智能锁定仍不起作用？**
+
+自定义智能锁定仅在 Azure 中受支持。 即使安装了代理, 对 Azure 管理门户中的自定义智能锁定设置的更改也不会影响本地 Active Directory 环境。
 
 **问：System Center Operations Manager 管理包是否适用于 Azure AD 密码保护？**
 

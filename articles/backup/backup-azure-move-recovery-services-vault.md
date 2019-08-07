@@ -1,5 +1,5 @@
 ---
-title: 跨 Azure 订阅移动恢复服务保管库或将其移到另一个资源组
+title: 跨 Azure 订阅或资源组移动恢复服务保管库-Azure 备份
 description: 有关跨 Azure 订阅和资源组移动恢复服务保管库的说明。
 ms.reviewer: sogup
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 83c1c19490470ba88837af4c1ced6352c62e36f4
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: c78a0a001e617b4db50f717fdf58f91a53d7fe10
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689166"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735520"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 订阅和资源组移动恢复服务保管库
 

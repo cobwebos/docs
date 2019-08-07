@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 9906fe5de9c24f1b1a8c3f713fa772e56ed4e13f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441964"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779545"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
 
@@ -25,7 +25,7 @@ ms.locfileid: "68441964"
 * 直接访问无法通过 Internet 公开访问的 [Apache Hadoop](https://hadoop.apache.org/) 服务。 例如，[Apache Kafka](https://kafka.apache.org/) API 或 [Apache HBase](https://hbase.apache.org/) Java API。
 
 > [!IMPORTANT]
-> 在 VNET 中创建 HDInsight 群集会创建多个网络资源, 例如 Nic 和负载均衡器。 请勿**删除这些**网络资源, 因为群集在 VNET 中正常工作需要它们。
+> 在 VNET 中创建 HDInsight 群集会创建多个网络资源, 例如 Nic 和负载均衡器。 请勿删除这些网络资源, 因为群集在 VNET 中正常工作需要它们。
 >
 > 2019年2月28日以后, 将在同一 HDInsight 群集资源组中预配在 VNET 中创建的新 HDInsight 群集的网络资源 (如 Nic、磅等)。 以前，这些资源在 VNET 资源组中预配。 当前运行的群集以及那些在没有 VNET 的情况下创建的群集没有任何更改。
 
@@ -117,7 +117,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 * Internet 上的任何可用资源。 例如，microsoft.com、windowsupdate.com。
 
-* 位于同一 Azure 虚拟网络中的任何资源（通过使用资源的内部 DNS 名称）。 例如，使用默认名称解析时，以下是分配到 HDInsight 辅助节点的示例内部 DNS 名称：
+* 位于同一 Azure 虚拟网络中的任何资源（通过使用资源的内部 DNS 名称）。 例如, 使用默认名称解析时, 以下是分配给 HDInsight 辅助角色节点的内部 DNS 名称的示例:
 
   * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
   * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net

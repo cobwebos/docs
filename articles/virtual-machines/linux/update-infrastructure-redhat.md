@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: 2add03d68b00fb18fb4323a6acd04480b3770c1c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: efc76616151776bc2f766f92ff9503413c6037d0
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708424"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774271"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -31,13 +31,13 @@ ms.locfileid: "67708424"
 可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。
 
 ## <a name="important-information-about-azure-rhui"></a>有关 Azure RHUI 的重要信息
-* Azure RHUI 的支持在 Azure 中创建的所有 RHEL PAYG Vm 的更新基础结构。 这不会阻止你使用订阅管理器或附属或其他源的更新，注册 PAYG RHEL Vm，但与 PAYG VM 执行此操作会导致间接双计费。 请参阅以下有关详细信息。
-* RHEL PAYG 映像价格涵盖了 Azure 托管 RHUI 的访问权限。 从 Azure 托管的 RHUI 注销 PAYG RHEL VM 不会将虚拟机转换为自带许可 (BYOL) 类型的 VM。 如果向另一更新源注册同一 VM，可能会产生间接双倍费用  。 第一次你需要支付 Azure RHEL 软件费。 第二次你需要支付之前已购买的 Red Hat 订阅费。 如果始终需要使用 Azure 托管的 RHUI 以外的更新基础结构，请考虑注册以使用[RHEL BYOS 映像](https://aka.ms/rhel-byos)。
-* RHUI 的默认行为是将 RHEL VM 升级到最新次要版本，在运行时`sudo yum update`。
+* Azure RHUI 是支持在 Azure 中创建的所有 RHEL PAYG Vm 的更新基础结构。 这不会阻止你向订阅管理器或附属或其他更新源注册 PAYG RHEL Vm, 但使用 PAYG VM 执行此操作将导致间接双重计费。 有关详细信息, 请参阅以下要点。
+* RHEL PAYG 映像价格涵盖了 Azure 托管 RHUI 的访问权限。 从 Azure 托管的 RHUI 注销 PAYG RHEL VM 不会将虚拟机转换为自带许可 (BYOL) 类型的 VM。 如果向另一更新源注册同一 VM，可能会产生间接双倍费用。 第一次你需要支付 Azure RHEL 软件费。 第二次你需要支付之前已购买的 Red Hat 订阅费。 如果你始终需要使用 Azure 托管的 RHUI 以外的更新基础结构, 请考虑注册使用[RHEL BYOS 映像](https://aka.ms/rhel-byos)。
+* RHUI 的默认行为是在运行`sudo yum update`时将 RHEL VM 升级到最新次要版本。
 
     例如，如果从 RHEL 7.4 PAYG 映像预配 VM 并运行 `sudo yum update`，最终会获得 RHEL 7.6 VM（RHEL7 系列中的最新次要版本）。
 
-    若要避免此行为，可以切换到[扩展更新支持渠道](#rhel-eus-and-version-locking-rhel-vms)或生成你自己的映像，如中所述[创建和上传基于 Red Hat 的虚拟机适用于 Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)一文。 如果生成你自己的映像，则需要将其连接到不同的更新基础结构 ([直接到 Red Hat 内容传送服务器](https://access.redhat.com/solutions/253273)或[Red Hat Satellite 服务器](https://access.redhat.com/products/red-hat-satellite))。
+    若要避免此行为, 可以切换到[扩展更新支持通道](#rhel-eus-and-version-locking-rhel-vms), 或根据[创建和上载适用于 Azure 的 Red Hat 虚拟机一](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)文中所述构建自己的映像。 如果你构建自己的映像, 则需要将其连接到不同的更新基础结构 ([直接连接到 Red hat 内容传送服务器](https://access.redhat.com/solutions/253273)或[red hat 卫星服务器](https://access.redhat.com/products/red-hat-satellite))。
 
 
 
@@ -46,18 +46,18 @@ ms.locfileid: "67708424"
 * 对 Azure 托管的 RHUI 的访问限制为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内的 VM。 若要通过本地网络基础结构代理所有 VM 流量，可能需要为 RHEL PAYG VM 设置用户定义的路由才能访问 Azure RHUI。
 
 ## <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS 和版本锁定 RHEL VM
-某些客户可能希望将其 RHEL VM 锁定在特定的 RHEL 次版本。 可以通过对存储库进行更新以指向扩展的更新支持存储库来将 RHEL VM 的版本锁定到特定的次版本。 您还可以撤销 EUS 版本锁定操作。
+某些客户可能希望将其 RHEL VM 锁定在特定的 RHEL 次版本。 可以通过对存储库进行更新以指向扩展的更新支持存储库来将 RHEL VM 的版本锁定到特定的次版本。 还可以撤消 EUS 版本锁定操作。
 
 >[!NOTE]
-> RHEL 附加程序不支持 EUS。 这意味着，如果您正在安装从 RHEL Extras 通道通常可用的包，您将不能为此，在 EUS。 详细介绍了 Red Hat Extras 产品生命周期[此处](https://access.redhat.com/support/policy/updates/extras/)。
+> RHEL 附加上不支持 EUS。 这意味着, 如果你要安装的包通常在 RHEL 额外通道中可用, 则在 EUS 上将无法执行此操作。 [此处](https://access.redhat.com/support/policy/updates/extras/)详细介绍了 Red Hat 额外产品生命周期。
 
-在撰写本文时，EUS 支持已结束适用于 RHEL < = 7.3。 请参阅中的"Red Hat Enterprise Linux 长支持外接程序"一节[Red Hat 文档](https://access.redhat.com/support/policy/updates/errata/)的更多详细信息。
-* RHEL 7.4 EUS 支持 2019 年 8 月 31 日结束
-* RHEL 7.5 EUS 支持于 2020 年 4 月 30 日结束
-* RHEL 7.6 EUS 支持于 2020 年 10 月 31 日结束
+撰写本文时, RHEL < = 7.3 的 EUS 支持已结束。 有关更多详细信息, 请参阅[Red Hat 文档](https://access.redhat.com/support/policy/updates/errata/)中的 "Red Hat Enterprise Linux 更长的支持外接程序" 部分。
+* RHEL 7.4 EUS 支持于8月 2019 31 日结束
+* RHEL 7.5 EUS 支持于年4月 30 2020 日结束
+* RHEL 7.6 EUS 支持于10月31日结束, 2020
 
-### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>切换到 EUS （版本-锁定到特定的次要版本） 的 RHEL VM
-以下说明用于锁定特定的次要版本 （以 root 身份运行） 将 RHEL VM:
+### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>将 RHEL VM 切换到 EUS (版本-锁定到特定的次版本)
+使用以下说明将 RHEL VM 锁定到特定次要版本 (以 root 身份运行):
 
 >[!NOTE]
 > 这仅适用于 EUS 可用的 RHEL 版本。 在撰写本文时，这包括 RHEL 7.2-7.6。 有关更多详细信息，请访问 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)页。
@@ -72,7 +72,7 @@ ms.locfileid: "67708424"
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. 锁定 releasever 变量 （以 root 身份运行）：
+1. 锁定 releasever 变量 (以 root 身份运行):
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
@@ -85,18 +85,23 @@ ms.locfileid: "67708424"
     sudo yum update
     ```
 
-### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>切换回非 EUS （删除版本锁） 的 RHEL VM
-以 root 身份运行以下命令：
-1. 删除 releasever 文件：
+### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>将 RHEL VM 切换回非 EUS (删除版本锁)
+以 root 身份运行以下内容:
+1. 删除 releasever 文件:
     ```bash
     rm /etc/yum/vars/releasever
      ```
 
-1. 禁用 EUS 存储库：
+1. 禁用 EUS 存储库:
     ```bash
     yum --disablerepo='*' remove 'rhui-azure-rhel7-eus'
    ```
 
+1. 配置 RHEL VM
+    ```bash
+    yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
+    ```
+    
 1. 更新 RHEL VM
     ```bash
     sudo yum update
@@ -132,7 +137,7 @@ ms.locfileid: "67708424"
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>更新 VM 上已过期的 RHUI 客户端证书
 
-如果使用较旧的 RHEL VM 映像（例如，RHEL 7.4（映像 URN：`RedHat:RHEL:7.4:7.4.2018010506`）），则由于 SSL 客户端证书现已过期，你将遇到与 RHUI 的连接问题。 你看到的错误可能类似于“SSL 对等机已拒绝你的证书，因为已过期”或“错误：  无法为存储库检索存储库元数据(repom .xml): ...请验证其路径并重试”_ 。 若要解决此问题，请使用以下命令更新 VM 上的 RHUI 客户端程序包：
+如果使用较旧的 RHEL VM 映像（例如，RHEL 7.4（映像 URN：`RedHat:RHEL:7.4:7.4.2018010506`）），则由于 SSL 客户端证书现已过期，你将遇到与 RHUI 的连接问题。 你看到的错误可能类似于“SSL 对等机已拒绝你的证书，因为已过期”或“错误：无法为存储库检索存储库元数据(repom .xml): ...请验证其路径并重试”_ 。 若要解决此问题，请使用以下命令更新 VM 上的 RHUI 客户端程序包：
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
@@ -140,7 +145,7 @@ sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 
 另外，运行 `sudo yum update` 也可能会更新客户端证书包（具体取决于 RHEL 版本），尽管你将看到其他存储库的“SSL 证书已过期”错误。 如果此更新成功，则应当还原与其他 RHUI 存储库的正常连接，以便能够成功运行 `sudo yum update`。
 
-如果遇到运行时的 404 错误`yum update`，尝试以下操作以刷新 yum 缓存：
+如果在运行`yum update`时遇到404错误, 请尝试以下操作来刷新 yum 缓存:
 ```bash
 sudo yum clean all;
 sudo yum makecache

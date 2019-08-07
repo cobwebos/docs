@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 81aac356f49f7bf8dc57f77054d10aa3e09d473f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 40b8f101d968514ac599b43a79b7e62b7fd837a4
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565256"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779465"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>基于数据科学虚拟机的团队分析和 AI 环境 
 [数据科学虚拟机](overview.md) (DSVM) 通过人工智能 (AI) 和数据分析的预建软件在 Azure 平台上提供丰富的环境。 
@@ -43,12 +43,12 @@ ms.locfileid: "68565256"
 
 此系列文章针对之前的每个项目提供指南和指针。 它不包括在大型企业配置中部署 DSVM 的所有注意事项和需求。 以下是在企业中实现 DSVM 实例时可以使用的其他 Azure 文档： 
 
-* [网络安全](https://docs.microsoft.com/azure/security/azure-network-security)
+* [网络安全](https://docs.microsoft.com/azure/security/fundamentals/network-security
 * [监视](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)和[管理](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [日志记录和审核](https://docs.microsoft.com/azure/security/azure-log-audit)
+* [日志记录和审核](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
 * [基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [策略设置和执行](../../governance/policy/overview.md)
-* [反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)
+* [反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [加密](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [数据发现和管理](https://docs.microsoft.com/azure/data-catalog/)
 

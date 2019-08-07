@@ -1,30 +1,30 @@
 ---
-title: 升级私有云权限-Azure CloudSimple VMware 解决方案
-description: 介绍如何在 vCenter 中的管理功能在私有云上的特权提升
+title: 提升私有云特权-Azure VMware 解决方案 (按 CloudSimple)
+description: 描述如何在 vCenter 中升级私有云上的管理功能的权限
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/05/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d11c88b91b13cca13120a9203e376fdc2c3d6d8d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 6e53d0d4f8f19a3cf81f1adb6c62b2797a50d146
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333234"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812225"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>从 CloudSimple 门户的私有云 vCenter 特权提升 
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>从 CloudSimple 门户升级私有云 vCenter 权限 
 
-为到私有云 vCenter 的管理访问权限，可以暂时提升 CloudSimple 特权。  使用提升的权限，可以安装 VMware 解决方案、 添加标识源，以及管理用户。
+对于私有云 vCenter 的管理访问权限, 可以暂时提升 CloudSimple 权限。  使用提升的权限, 你可以安装 VMware 解决方案、添加标识源以及管理用户。
 
-新用户可以在 vCenter SSO 域上创建并授予对 vCenter 访问权限。  在创建新用户时，将其添加到 CloudSimple 内置组用于访问 vCenter。  有关详细信息，请参阅[CloudSimple 私有云的权限模型的 VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/)。
+可以在 vCenter SSO 域上创建新用户, 并授予对 vCenter 的访问权限。  创建新用户时, 请将其添加到用于访问 vCenter 的 CloudSimple 内置组。  有关详细信息, 请参阅[VMware vCenter 的 CloudSimple 私有云权限模型](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/)。
 
 > [!CAUTION]
-> 不要进行任何配置更改管理组件。 期间已提升的特权状态采取的操作可能会反过来影响您的系统或可能导致系统变得不可用。
+> 不要对管理组件进行任何配置更改。 在提升的特权状态中执行的操作可能会对系统产生负面影响, 或者导致系统变得不可用。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录  Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
@@ -32,57 +32,57 @@ ms.locfileid: "67333234"
 
 1. 访问[CloudSimple 门户](access-cloudsimple-portal.md)。
 
-2. 打开**资源**页上，选择你想要提升权限的私有云。
+2. 打开 "**资源**" 页, 选择要提升其权限的私有云。
 
-3. 在摘要页底部附近**更改 vSphere 权限**，单击**升级**。
+3. 在 "**更改 vSphere 权限**" 下的 "摘要" 页面底部附近, 单击 "**升级**"。
 
-    ![更改 vSphere 特权](media/escalate-private-cloud-privilege.png)
+    ![更改 vSphere 权限](media/escalate-private-cloud-privilege.png)
 
-4. 选择 vSphere 用户类型。  仅 **CloudOwner@cloudsimple.local** 可升级本地用户。
+4. 选择 vSphere 用户类型。  只能 **CloudOwner@cloudsimple.local** 升级本地用户。
 
-5. 从下拉列表中选择的升级时间间隔。 选择将允许您完成任务的最短期限。
+5. 从下拉项中选择 "提升时间间隔"。 选择将允许您完成任务的最短时间。
 
-6. 选中复选框以确认你了解风险。
+6. 选中该复选框以确认你了解风险。
 
     ![提升权限对话框](media/escalate-private-cloud-privilege-dialog.png)
 
-7. 单击“确定”。 
+7. 单击 **“确定”** 。
 
-8. 升级过程可能需要几分钟的时间。 完成后，单击“确定”。 
+8. 升级过程可能需要几分钟的时间。 完成后，单击“确定”。
 
-权限提升开始并持续到所选间隔结束。  你可以登录到私有云 vCenter 来执行管理任务。
+权限提升开始, 并一直持续到所选间隔结束。  你可以登录到私有云 vCenter 来执行管理任务。
 
 > [!IMPORTANT]
-> 只有一个用户可以具有提升的权限。  之前可以提升另一个用户的权限，您必须取消提升用户的权限。
+> 只有一个用户可以具有提升的权限。  必须先取消升级用户的权限, 然后才能升级其他用户的权限。
 
 ## <a name="extend-privilege-escalation"></a>扩展权限提升
 
-如果需要额外的时间来完成任务，您可以扩展的权限升级期间。  选择其他升级，您可以完成管理任务的时间间隔。
+如果需要额外的时间来完成任务, 则可以扩展权限提升期限。  选择允许你完成管理任务的其他升级时间间隔。
 
-1. 上**资源** > **私有云**在 CloudSimple 门户中，选择你想要扩展权限提升的私有云。
+1. 在 CloudSimple 门户中的 "**资源** > "**私有云**上, 选择要为其扩展权限升级的私有云。
 
-2. 附近的摘要选项卡底部，单击**扩展权限提升**。
+2. 在 "摘要" 选项卡的底部附近, 单击 "**扩展权限提升**"。
 
     ![扩展权限提升](media/de-escalate-private-cloud-privilege.png)
 
-3. 从下拉列表中选择升级时间间隔。 查看新的升级结束时间。
+3. 从下拉项中选择一个升级时间间隔。 查看新的 "升级结束时间"。
 
-4. 单击**保存**来延长间隔。
+4. 单击 "**保存**" 以延长时间间隔。
 
-## <a name="de-escalate-privileges"></a>取消提升权限
+## <a name="de-escalate-privileges"></a>反呈报权限
 
-完成管理任务后，应取消升级你的特权。  
+完成管理任务后, 应取消对权限的升级。  
 
-1. 上**资源** > **私有云**在 CloudSimple 门户中，选择你想要取消提升特权的私有云。
+1. 在 CloudSimple 门户中的 "**资源** > "**私有云**上, 选择要为其解除升级权限的私有云。
 
-2. 单击**安抚**。
+2. 单击 "**取消升级**"。
 
-3. 单击“确定”。 
+3. 单击 **“确定”** 。
 
 > [!IMPORTANT]
-> 若要避免出现任何错误，注销 vCenter 并取消不断提高的权限后，再次登录。
+> 若要避免任何错误, 请注销 vCenter, 并在解除升级的权限后再次登录。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将 vCenter 标识源设置为使用 Active Directory](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
-* 安装备份解决方案来[备份工作负荷的虚拟机](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)
+* [设置要使用的 vCenter 标识源 Active Directory](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
+* 安装备份解决方案以[备份工作负荷虚拟机](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)

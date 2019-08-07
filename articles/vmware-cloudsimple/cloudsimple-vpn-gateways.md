@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 47d61f80cae926965dd71342980302c2b3045c52
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: d922f87e9a915bd5af9d2b1257dee8044773797e
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689646"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816155"
 ---
 # <a name="vpn-gateways-overview"></a>VPN 网关概述
 
@@ -65,7 +65,7 @@ CloudSimple 提供了两种类型的 VPN 网关:
 |-------------------------------------------|---------------|---------------|---------------|
 | 加密                                | AES 128       | AES 256       | AES 256       |
 | 哈希算法                            | SHA 256       | SHA 256       | SHA 1         |
-| 完全向前保密组 (PFS 组) | None          | 无          | 无          |
+| 完全向前保密组 (PFS 组) | 无          | 无          | 无          |
 | 生命时间                                 | 1800秒 | 1800秒 | 1800秒 |
 | 数据大小                                 | 4 GB          | 4 GB          | 4 GB          |
 

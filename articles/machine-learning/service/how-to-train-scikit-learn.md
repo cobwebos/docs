@@ -1,52 +1,54 @@
 ---
-title: 训练和注册 scikit-了解模型
+title: 用 scikit-learn 训练机器学习模型-了解
 titleSuffix: Azure Machine Learning service
-description: 本文介绍如何训练和注册 scikit-了解使用 Azure 机器学习服务的模型。
+description: 了解如何使用 Azure 机器学习的 Spark-sklearn 估计器类在企业级上了解培训脚本的运行情况。 示例脚本对 iris 花卉图像进行分类, 以便基于 scikit-learn 的 iris 数据集构建机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
-ms.date: 06/30/2019
+ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9e983f7981c1155964617694d2cce86aba741b7
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 98c04c50bc4a52e9b2e4e267895fdd94888885f5
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840021"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775165"
 ---
-# <a name="train-and-register-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>训练和大规模 scikit-learn 模型注册到 Azure 机器学习服务
+# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>构建 scikit-learn-通过 Azure 机器学习 service 大规模了解模型
 
-本文介绍如何训练和注册使用 Azure 机器学习服务对 scikit-learn 模型。 它使用热门[鸢尾花数据集](https://archive.ics.uci.edu/ml/datasets/iris)分类 iris 鲜花图像使用的自定义[scikit-了解](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)类。
+本文介绍如何使用 Azure 机器学习的[spark-sklearn 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)类在企业范围内运行 scikit-learn-了解培训脚本。 
 
-Scikit 了解是常用于机器学习的开放源代码计算框架。 使用 Azure 机器学习服务时，你可以快速横向扩展使用灵活的云计算资源的开放源代码培训作业。 您还可以跟踪训练运行、 版本模型部署模型，以及更多。
+本文中的示例脚本用于对 iris 花卉图像进行分类, 以便基于 scikit-learn 的[iris 数据集](https://archive.ics.uci.edu/ml/datasets/iris)构建机器学习模型。
 
-无论要开发思路加以 scikit-learn 模型还是正在将现有模型到云中，Azure 机器学习服务可以帮助你生成生产的模型。
+无论你是要从头开始培训机器学习 scikit-learn 模型, 还是将现有模型引入到云中, 都可以使用 Azure 机器学习来使用弹性云计算资源来横向扩展开源培训作业。 可以通过 Azure 机器学习来构建、部署、版本和监视生产级模型。
 
 ## <a name="prerequisites"></a>系统必备
 
-在两种环境上运行此代码：
- - Azure 机器学习 Notebook VM-无下载或安装有必要
+在以下任一环境中运行此代码:
+ - Azure 机器学习笔记本 VM-无需下载或安装
 
-    - 完成[基于云的笔记本快速入门](quickstart-run-cloud-notebook.md)来使用 SDK 和示例存储库创建的专用的笔记本服务器预加载。
-    - 在 notebook 服务器上的示例文件夹中，通过导航到此目录查找已完成和展开 notebook:**说明-到-使用-azureml > 培训 > train-hyperparameter-tune-deploy-with-sklearn**文件夹。
+    - 在开始本教程之前完成[教程：设置环境和工作](tutorial-1st-experiment-sdk-setup.md)区, 创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
+    - 在笔记本服务器上的 "示例训练" 文件夹中, 通过导航到以下目录查找已完成且扩展的笔记本: 操作**说明 > 培训 > 超参数-spark-sklearn**文件夹。
 
  - 你自己的 Jupyter 笔记本服务器
 
-    - [安装 Azure 机器学习的 Python SDK](setup-create-workspace.md#sdk)
+    - [安装适用于 Python 的 Azure 机器学习 SDK](setup-create-workspace.md#sdk)
     - [创建工作区配置文件](setup-create-workspace.md#write-a-configuration-file)
-    - [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn) `train_iris.py`
-    - 您还可以查找已完成[Jupyter 笔记本版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-sklearn.ipynb)本指南的 GitHub 示例页。 此 notebook 包括涵盖智能超参数优化和检索最佳的模型的主要度量值已展开的部分。
+    - 下载数据集和示例脚本文件 
+        - [iris 数据集](https://archive.ics.uci.edu/ml/datasets/iris)
+        - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn)
+    - 你还可以在 GitHub 示例页上找到本指南的已完成[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)。 笔记本包含一个扩展部分, 涵盖智能超参数优化, 并按主要指标检索最佳模型。
 
-## <a name="set-up-the-experiment"></a>设置的实验
+## <a name="set-up-the-experiment"></a>设置试验
 
-本部分会通过加载所需的 python 包、 初始化工作区、 创建试验，和上传的定型数据和训练脚本来设置训练实验。
+本部分通过加载所需的 python 包、初始化工作区、创建试验以及上传定型数据和训练脚本来设置训练实验。
 
 ### <a name="import-packages"></a>导入包
 
-首先，导入所需的 Python 库。
+首先, 导入必需的 Python 库。
 
 ```Python
 import os
@@ -63,17 +65,17 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>初始化工作区
 
-[Azure 机器学习服务工作区](concept-workspace.md)是服务的顶级资源。 它为您提供集中的位置来使用您创建的所有内容。 在 Python SDK 中，您可以通过创建访问工作区项目[ `workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)对象。
+" [Azure 机器学习服务" 工作区](concept-workspace.md)是服务的顶级资源。 它为您提供了一个集中的位置来处理您创建的所有项目。 在 Python SDK 中, 可以通过创建[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)对象来访问工作区项目。
 
-创建工作区对象从`config.json`文件中创建[先决条件部分](#prerequisites)。
+从 "[先决条件" 部分](#prerequisites)创建`config.json`的文件中创建工作区对象。
 
 ```Python
 ws = Workspace.from_config()
 ```
 
-### <a name="create-an-experiment"></a>创建试验
+### <a name="create-a-machine-learning-experiment"></a>创建机器学习试验
 
-创建试验和用于保存训练脚本的文件夹。 在此示例中，创建名为"sklearn 鸢尾花"的试验。
+创建试验和文件夹来保存训练脚本。 在此示例中, 创建一个名为 "spark-sklearn-iris" 的试验。
 
 ```Python
 project_folder = './sklearn-iris'
@@ -84,22 +86,22 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 ### <a name="upload-dataset-and-scripts"></a>上传数据集和脚本
 
-[数据存储](how-to-access-data.md)是一个位置可以存储和访问装载或将数据复制到计算目标的数据。 每个工作区提供了默认数据存储。 将数据和训练脚本上传到数据存储，这样用户可以轻松地访问在定型期间。
+数据[存储](how-to-access-data.md)是可通过装载数据或将数据复制到计算目标来存储和访问数据的位置。 每个工作区都提供默认数据存储。 将数据和培训脚本上传到数据存储, 以便在训练期间轻松访问这些脚本。
 
-1. 创建你的数据的目录。
+1. 为数据创建目录。
 
     ```Python
     os.makedirs('./data/iris', exist_ok=True)
     ```
 
-1. 将鸢尾花数据集上传到默认数据存储。
+1. 将 iris 数据集上传到默认数据存储。
 
     ```Python
     ds = ws.get_default_datastore()
     ds.upload(src_dir='./data/iris', target_path='iris', overwrite=True, show_progress=True)
     ```
 
-1. 上传 scikit-learn 训练脚本`train_iris.py`。
+1. 上传 scikit-learn 培训脚本`train_iris.py`。
 
     ```Python
     shutil.copy('./train_iris.py', project_folder)
@@ -107,9 +109,9 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 ## <a name="create-or-get-a-compute-target"></a>创建或获取计算目标
 
-创建 scikit-learn 作业上运行的计算目标。 Scikit 了解仅支持单个节点，CPU 计算。
+为要在其上运行的 scikit-learn 作业创建计算目标。 Scikit-learn-了解仅支持单节点 CPU 计算。
 
-下面的代码中，创建远程训练计算资源托管的 Azure 机器学习计算 (AmlCompute)。 创建的 AmlCompute 大约需要 5 分钟。 如果具有该名称 AmlCompute 已在工作区中，此代码将跳过创建过程。
+下面的代码创建了一个用于远程定型计算资源的 Azure 机器学习托管计算 (AmlCompute)。 AmlCompute 的创建时间大约为5分钟。 如果工作区中已存在具有该名称的 AmlCompute, 则此代码将跳过创建进程。
 
 ```Python
 cluster_name = "cpu-cluster"
@@ -127,13 +129,13 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-计算目标的详细信息，请参阅[什么是计算目标](concept-compute-target.md)一文。
+有关计算目标的详细信息, 请参阅[什么是计算目标一](concept-compute-target.md)文。
 
-## <a name="create-a-scikit-learn-estimator"></a>创建 scikit-learn 估算器
+## <a name="create-a-scikit-learn-estimator"></a>创建 scikit-learn-了解估计器
 
-[Scikit-learn 估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)提供简单的方法，启动 scikit-learn 的计算目标上的训练作业。 通过实现[ `SKLearn` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)类，该类可用于支持单节点 CPU 培训。
+[Scikit-learn 估计器](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py)提供了一种简单的方法来启动计算目标上的 scikit-learn 培训作业。 它通过[`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)类实现, 该类可用于支持单节点 CPU 定型。
 
-如果其他 pip 或 conda 包在运行，需要训练脚本，您可以通过传递通过其名称的结果 docker 映像上安装的程序包`pip_packages`和`conda_packages`参数。
+如果训练脚本需要额外的 pip 或 conda 包来运行, 则可以通过`pip_packages`和`conda_packages`参数传递包, 从而将包安装在生成的 docker 映像中。
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -153,28 +155,28 @@ estimator = SKLearn(source_directory=project_folder,
 
 ## <a name="submit-a-run"></a>提交运行
 
-[运行对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)运行作业时，完成后提供的运行历史记录的接口。
+[运行对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)在作业运行和完成后, 为运行历史记录提供接口。
 
 ```Python
 run = experiment.submit(estimator)
 run.wait_for_completion(show_output=True)
 ```
 
-执行运行时，它将经历以下阶段：
+在执行运行时, 它将经历以下几个阶段:
 
-- **正在准备**:TensorFlow 估算器根据创建 docker 映像。 图像上传到工作区的容器注册表并缓存的更高版本运行。 日志还流式传输到运行历史记录，可以查看，以监视进度。
+- **准备**:根据 TensorFlow 估计器创建 docker 映像。 该映像将上传到工作区的容器注册表中, 并进行缓存以供稍后运行。 还会将日志流式传输到运行历史记录, 并可以查看日志来监视进度。
 
-- **缩放**：群集会尝试纵向扩展如果 Batch AI 群集需要更多的节点不是当前可执行运行。
+- **缩放**：如果 Batch AI 群集需要的节点数多于当前可用的节点数, 则群集将尝试增加。
 
-- **Running**：脚本文件夹中的所有脚本都上载到计算目标、 数据存储已装载或复制，并执行 entry_script。 从 stdout 的输出和。 日志文件夹的流式传输到运行历史记录和可用于监视运行。
+- **Running**：脚本文件夹中的所有脚本都将上载到计算目标, 装载或复制数据存储, 并执行 entry_script。 输出从 stdout 开始,/logs 文件夹将流式传输到运行历史记录, 并可用于监视运行情况。
 
-- **后期处理**：。 / 输出运行的文件夹复制到运行历史记录。
+- **后期处理**：运行的/outputs 文件夹将复制到运行历史记录中。
 
 ## <a name="save-and-register-the-model"></a>保存并注册模型
 
-一旦已训练模型，您可以保存并将其注册到你的工作区。 模型注册允许您存储和版本来简化工作区中的模型[管理和部署的模型](concept-model-management-and-deployment.md)。
+对模型进行定型后, 可以将其保存并注册到工作区。 利用模型注册, 可以在工作区中存储模型并对模型进行版本管理, 从而简化[模型管理和部署](concept-model-management-and-deployment.md)。
 
-将以下代码添加到训练脚本，train_iris.py，若要保存该模型。 
+将以下代码添加到训练脚本 py, 以保存模型。 train_iris 
 
 ``` Python
 import joblib
@@ -182,7 +184,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-用下面的代码注册到你的工作区模型。
+用以下代码将模型注册到工作区。
 
 ```Python
 model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
@@ -190,10 +192,12 @@ model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，将训练和注册 Azure 机器学习服务的 scikit-learn 模型。
+本文介绍了如何使用 scikit-learn 训练和注册机器学习、分类模型-了解 Azure 机器学习服务。
 
-* 若要了解如何将模型部署，继续到我们[模型部署](how-to-deploy-and-where.md)一文。
+* 若要了解如何部署模型, 请继续学习我们的[模型部署](how-to-deploy-and-where.md)一文。
 
-* [优化超参数](how-to-tune-hyperparameters.md)
+* [优化超参数](how-to-tune-hyperparameters.md)。
 
-* [在训练期间跟踪运行指标](how-to-track-experiments.md)
+* [在定型期间跟踪运行指标](how-to-track-experiments.md)。
+
+* 了解有关[深度学习与机器学习](concept-deep-learning-vs-machine-learning.md)的详细信息。

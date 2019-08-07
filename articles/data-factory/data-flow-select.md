@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 974243da07a2570e851b7d44eac2556c201c2782
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678530"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774990"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>映射数据流选择转换
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
@@ -35,6 +35,8 @@ ms.locfileid: "68678530"
 * 选择 "跳过重复项" 以消除输入或输出元数据中的重复列。
 
 ![跳过重复项](media/data-flow/select-skip-dup.png "跳过重复项")
+
+* 选择跳过重复项时, 结果将显示在 "检查" 选项卡中。ADF 将保留列的第一次出现, 您将看到此同一列的每个后续匹配项已从您的流中删除。
 
 > [!NOTE]
 > 若要清除映射规则, 请按 "**重置**" 按钮。

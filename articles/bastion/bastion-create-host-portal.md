@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 881d89170c82731fca3f6977da486eac5be772f8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4c283e840208ab9f53d084ca17221ea2c835b794
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466995"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814139"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>创建 Azure 堡垒主机 (预览)
 
@@ -54,7 +54,7 @@ ms.locfileid: "68466995"
     * **名称**：新堡垒资源的名称
     * **区域**：将在其中创建资源的 Azure 公共区域。
     * **虚拟网络**：将在其中创建堡垒资源的虚拟网络。 在此过程中, 你可以在门户中创建新的虚拟网络, 以防你没有或不想使用现有虚拟网络。 如果使用现有的虚拟网络, 请确保现有虚拟网络有足够的可用地址空间来满足堡垒子网要求。
-    * **子网**：虚拟网络中新的堡垒主机资源将部署到的子网。 必须使用 name 值**AzureBastionSubnet**创建子网。 此值允许 Azure 知道要将堡垒资源部署到哪个子网。 这不同于网关子网。 强烈建议至少使用 a/27 或更大的子网 (/27、/26 等)。 创建不包含任何路由表或委托的**AzureBastionSubnet** 。 在**AzureBastionSubnet**上使用网络安全组时, 请参阅[使用 nsg](bastion-nsg.md)。
+    * **子网**：虚拟网络中新的堡垒主机资源将部署到的子网。 必须使用 name 值**AzureBastionSubnet**创建子网。 此值允许 Azure 知道要将堡垒资源部署到哪个子网。 这不同于网关子网。必须至少使用一个/27 或更大的子网 (/27、/26 等)。 创建不包含任何路由表或委托的**AzureBastionSubnet** 。 在**AzureBastionSubnet**上使用网络安全组时, 请参阅[使用 nsg](bastion-nsg.md)。
     * **公共 IP 地址**：要在其上访问 RDP/SSH 的堡垒资源 (通过端口 443) 的公共 IP。 创建新的公共 IP, 或使用现有的公共 IP。 公共 IP 地址必须与要创建的堡垒资源位于同一区域。
     * **公共 IP 地址名称**：公共 IP 地址资源的名称。
     * **公共 IP 地址 SKU**:默认预填充为 "**标准**"。 Azure 堡垒只使用/支持标准公共 IP SKU。

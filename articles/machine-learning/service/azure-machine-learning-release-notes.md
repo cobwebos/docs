@@ -10,18 +10,75 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade107f51fabb133e8e4046bf645f4dff284102b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565113"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828620"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
 本文介绍 Azure 机器学习服务版本。  有关完整的 SDK 参考内容, 请访问 Azure 机器学习的[**主要 sdk For Python**](https://aka.ms/aml-sdk)参考页。
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2019-08-05"></a>2019-08-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1055"></a>用于 Python 的 Azure 机器学习 SDK 1.0.55
+
++ **新功能**
+  + 对于在 AKS 上部署的评分终结点进行的调用, 现在支持基于令牌的身份验证。 我们将继续支持当前的基于密钥的身份验证, 用户可以一次使用其中一种身份验证机制。
+  + 能够将虚拟网络 (VNet) 后面的 blob 存储注册为数据存储。
+  
++ **Bug 修复和改进**
+  + **automl-核心**
+    + 修复了 CV 拆分的验证大小较小的 bug, 并产生了用于回归和预测的错误预测与真实图表。
+    + 远程运行的预测任务日志记录已改进, 现在用户在运行失败时提供全面的错误消息。
+    + 如果预处理标志为 True, 则修复了 Timeseries 故障。
+    + 做出一些预测数据验证错误消息。
+    + 通过删除和/或延迟加载数据集 (特别是在进程生成之间), 减少了 AutoML 运行的内存消耗
+  + **contrib-说明-模型**
+    + 向 explainers 添加了 model_task 标志, 以允许用户重写模型类型的默认自动推理逻辑
+    + 小组件更改:使用 contrib 自动安装, 无需更多 nbextension 安装/启用-支持说明, 仅具有全局功能重要性 (例如 Permutative)
+    + 面板更改:-Box 图形和 violin 图除了 "摘要" 页上的 "beeswarm" 绘图外, 还会在 "上 k" 滑块更改上以更快的速度 rerendering beeswarm 绘图未提供数据
+  + **azureml-core**
+    + 添加了 Model () 方法来创建 Docker 映像和封装模型及其依赖项的 Dockerfile。
+    + 更新了本地 webservices 以接受包含环境对象的 InferenceConfigs。
+    + 修复了在 "."(适用于当前目录) 将作为 model_path 参数进行传递。
+    + 添加 submit_child, 该功能会镜像试验。在将运行指定为提交的子运行的父项时提交。
+    + 支持 register_model 中的模型的配置选项。
+    + 能够在现有群集上运行 JAR 作业。
+    + 现在支持 instance_pool_id 和 cluster_log_dbfs_path 参数。
+    + 添加了对在将模型部署到 Webservice 时使用环境对象的支持。 现在, 环境对象可以作为 InferenceConfig 对象的一部分提供。
+    + 为新区域添加 appinsifht 映射-centralus-westus-northcentralus
+    + 为所有数据存储类中的所有属性添加了文档。
+    + 已将 blob_cache_timeout 参数`Datastore.register_azure_blob_container`添加到。
+    + 将 save_to_directory 和 load_from_directory 方法添加到 azureml。
+    + 向 CLI 添加了 "az ml 环境下载" 和 "az ml 环境 register" 命令。
+    + 添加了环境。添加 _private_pip_wheel 方法。
+  + **azureml-explain-model**
+    + 使用数据集服务 (预览版) 将数据集跟踪添加到说明中。
+    + 将全局说明从10k 流式传输到100时, 减少了默认的批大小。
+    + 向 explainers 添加了 model_task 标志, 以允许用户重写模型类型的默认自动推理逻辑。
+  + **azureml-mlflow**
+    + 修复了在 mlflow 中忽略了嵌套目录的 build_image 中的 bug。
+  + **azureml-pipeline-steps**
+    + 添加了在现有 Azure Databricks 群集上运行 JAR 作业的功能。
+    + 添加了 DatabricksStep 步骤的支持 instance_pool_id 和 cluster_log_dbfs_path 参数。
+    + 添加了对 DatabricksStep 步骤中管道参数的支持。
+  + **azureml-train-automl**
+    + 添加了系综相关文件的 docstrings。
+    + 针对和的更合适的语言`max_cores_per_iteration`更新了文档`max_concurrent_iterations`
+    + 远程运行的预测任务日志记录已改进, 现在用户在运行失败时提供全面的错误消息。
+    + 已从管道 automlstep 笔记本中删除 get_data。
+    + 已开始支持 automlstep 中的 dataprep。
+
+### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Azure 机器学习数据准备 SDK 1.1.10
+
++ **新功能**
+  + 你现在可以请求对特定列执行特定检查器 (例如直方图、散点图等)。
+  + 向`append_columns`添加了一个并行化参数。 如果为 True, 则数据将加载到内存中, 但执行将并行运行;如果为 False, 则执行将进行流式处理但单线程。
 
 ## <a name="2019-07-23"></a>2019-07-23
 
@@ -352,7 +409,7 @@ ms.locfileid: "68565113"
 ### <a name="notebook-virtual-machine"></a>笔记本虚拟机 
 
 使用笔记本 VM 作为适用于 Jupyter 笔记本的安全、企业就绪的托管环境, 你可以在其中计划机器学习试验, 将模型部署为 web 终结点, 并使用 Python 执行 Azure 机器学习 SDK 支持的所有其他操作。 它提供多种功能:
-+ [快速启动预配置的笔记本 VM](quickstart-run-cloud-notebook.md) , 该 VM 具有最新版本的 Azure 机器学习 SDK 和相关包。
++ [快速启动预配置的笔记本 VM](tutorial-1st-experiment-sdk-setup.md) , 该 VM 具有最新版本的 Azure 机器学习 SDK 和相关包。
 + 通过 Azure Active Directory 身份验证和授权等经验证的技术 (如 HTTPS) 来保护访问。
 + Azure 机器学习工作区 blob 存储帐户中的笔记本和代码的可靠云存储。 可以安全地删除笔记本 VM, 而不会丢失工作。
 + 预安装的示例笔记本, 用于探索和试验 Azure 机器学习服务功能。

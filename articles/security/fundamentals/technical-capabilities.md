@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 688492188bb8a29e33568011c2cf75439ca5f4af
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: fbce475e1f783595fb67e62e15d5a503a4c687ed
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726668"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780595"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 本文介绍了 Azure 中的安全服务, 可帮助你保护云中的数据、资源和应用程序, 并满足业务的安全需求。
@@ -331,7 +331,7 @@ Azure 还提供多种易用的功能，帮助保护应用的入站和出站流�
 
 - [使用混合连接安全连接应用与专用网络资源](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
-Azure 应用服务所使用的反恶意软件解决方案与 Azure 云服务和虚拟机使用的相同。 若要了解此方面的详细信息，请参阅[反恶意软件文档](https://docs.microsoft.com/azure/security/azure-security-antimalware)。
+Azure 应用服务所使用的反恶意软件解决方案与 Azure 云服务和虚拟机使用的相同。 若要了解此方面的详细信息，请参阅[反恶意软件文档](https://docs.microsoft.com/azure/security/fundamentals/antimalware)。
 
 ## <a name="secure-your-network"></a>保护网络
 Microsoft Azure 包括可靠的网络基础结构以支持应用程序和服务连接要求。 Azure 中的资源之间、本地资源与 Azure 托管的资源之间以及 Internet 与 Azure 之间都可能存在网络连接。
@@ -352,7 +352,7 @@ Azure 支持通过 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/
 
 借助 [Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/)，可以采用灵活的方式部署各种计算解决方案。 通过对 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk 服务的支持，可以在几乎所有操作系统上部署任何工作负荷和任何语言。
 
-借助 Azure，可以使用来自 Microsoft、Symantec、Trend Micro 和 Kaspersky 等安全性供应商的[反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)，保护虚拟机免受恶意文件、广告软件和其他威胁的侵害。
+借助 Azure，可以使用来自 Microsoft、Symantec、Trend Micro 和 Kaspersky 等安全性供应商的[反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)，保护虚拟机免受恶意文件、广告软件和其他威胁的侵害。
 
 适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 Microsoft 反恶意软件提供了已知恶意或不需要的软件试图安装自身或在 Azure 系统上运行时的可配置警报。
 
@@ -382,7 +382,7 @@ Microsoft 制定了[云服务审慎调查清单](https://aka.ms/cloudchecklist.d
 
 ## <a name="azure-infrastructure-and-application-security-validation"></a>Azure 基础结构和应用程序安全验证
 
-[Azure 操作安全性](https://docs.microsoft.com/azure/security/azure-operational-security)是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。
+[Azure 操作安全性](https://docs.microsoft.com/azure/security/fundamentals/operational-security 指的是可供用户在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。
 
 ![安全性验证（检测）](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 

@@ -8,31 +8,31 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 787445d5186a173b2cba674b36cd95879cc863e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 726fc2d2f53e904fdf7f50be5aef7b274dcc51ac
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389998"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736157"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure 时序见解预览版用例
 
-本文汇总了 Azure 时间系列 Insights 预览版的几个常见用例。 这篇文章中的建议作为起点来开发应用程序和使用时序见解的解决方案。
+本文汇总了 Azure 时序见解预览版的几个常见用例。 本文中的建议可以作为使用时序见解开发应用程序和解决方案的一个起点。
 
-具体而言，本文回答了以下问题：
+具体而言，本文将解答以下问题：
 
 * 时序见解的常见用例有哪些？
-* 使用的时序见解的优点是什么[进行数据探索和可视化的异常情况检测](#data-exploration-and-visual-anomaly-detection)？
-* 使用的时序见解的优点是什么[操作分析和流程效率](#operational-analysis-and-driving-process-efficiency)？
-* 使用的时序见解的优点是什么[高级分析](#advanced-analytics)？
+* 将时序见解用于[数据浏览和直观异常检测](#data-exploration-and-visual-anomaly-detection)有什么好处？
+* 使用时序见解来实现[操作分析和高效流程](#operational-analysis-and-driving-process-efficiency)有什么好处？
+* 使用时序见解进行[高级分析](#advanced-analytics)有什么好处？
 
-其中概述使用方案以下各节中所述。
+以下部分描述了这些使用方案的概述。
 
 ## <a name="introduction"></a>简介
 
-Azure 时序见解是一种端到端的平台即服务产品。 它用于收集、处理、分析和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是产品/服务，满足广泛需要工业 IoT 部署的唯一可扩展、 自定义服务。
+Azure 时序见解是一种端到端的平台即服务产品/服务。 它用于收集、处理、分析和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是唯一可扩展且自定义的服务产品/服务，满足行业 IoT 部署的广泛需求。
 
 ## <a name="data-exploration-and-visual-anomaly-detection"></a>数据浏览和直观异常检测
 
@@ -52,11 +52,11 @@ Azure 时序见解是一种端到端的平台即服务产品。 它用于收集�
 
 - 第二种方法是使用 JavaScript SDK 在 Web 应用程序中快速嵌入强大的图表和图形。 只需几行代码，即可编写功能强大的查询。 使用它们填充折线图、饼图、条形图、热度地图和数据网格等。 通过使用 SDK，所有这些元素都是现成可用的。 SDK 还提取时序见解查询 API。 可以使用它们来创建类似 SQL 的谓词，用于查询要在仪表板上显示的数据。 对于混合表示层解决方案，时序见解提供参数化 URL。 它们提供与时序见解预览版资源管理器之间的无缝连接点，可帮助深入分析数据。
 
-    * 读取[时间系列 Insights JS 客户端库](tutorial-explore-js-client-lib.md)并[时序见解客户端](https://github.com/Microsoft/tsiclient)文档，了解有关 JavaScript SDK 的详细信息。
+    * 请阅读[时序见解 JS 客户端库](tutorial-explore-js-client-lib.md)和[时序见解客户端](https://github.com/Microsoft/tsiclient)文档了解有关 JavaScript SDK 的详细信息。
 
-    * 了解有关通过查看共享 Url 和新的用户界面的详细信息[直观显示 Azure 时间系列 Insights 预览版资源管理器中的数据](time-series-insights-update-explorer.md)。
+    * 查看[在 Azure 时序见解预览版资源管理器中可视化数据](time-series-insights-update-explorer.md)来详细了解 URL 和新的 UI。
 
-- 第三种方法是使用功能强大的 API 查询存储在时序见解中的数据。 时序见解有临时运算符，如`from`， `to`， `first`，和`last`。 它具有聚合和转换等`average`， `min`， `max`， `split by`， `order by`，并`DateHistogram`。 它还具有如筛选运算符`has`， `in`， `and`， `or`， `greater than`，并`REGEX`。 所有这些运算符使下游应用程序能够快速找到数据中的相关趋势和模式。 可使用它们来填充自生成的可视化效果以发现异常。
+- 第三种方法是使用功能强大的 API 查询存储在时序见解中的数据。 时序见解具有 `from`、`to`、`first` 和 `last` 等时态运算符。 它还具有 `average`、`min`、`max`、`split by`、`order by` 和 `DateHistogram` 等聚合与转换。 它还具有 `has`、`in`、`and`、`or`、`greater than` 和 `REGEX` 等筛选运算符。 所有这些运算符使下游应用程序能够快速找到数据中的相关趋势和模式。 可使用它们来填充自生成的可视化效果以发现异常。
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>操作性分析和提高处理效率
 
@@ -82,7 +82,7 @@ Azure 时序见解是一种端到端的平台即服务产品。 它用于收集�
 
 与机器学习和 Azure Databricks 等高级分析服务集成。 时序见解从数百万台设备中引入原始数据。 它添加了可由 Azure 分析服务套件无缝使用的上下文数据。
 
-[![Analytics](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
+[![分析](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
 
 高级分析和机器学习会使用和处理大量数据。 该数据用于制定数据驱动的决策并执行预测分析。 在 IoT 用例中，高级分析算法可以从数百万台设备中收集数据。 这些设备每秒内会多次传输数据。 从 IoT 设备收集的数据是原始数据。 它缺少上下文信息，例如设备的位置和传感器读数的单位。 因此，原始数据很难直接用于高级分析。
 
@@ -97,5 +97,5 @@ Azure 时序见解是一种端到端的平台即服务产品。 它用于收集�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[时序见解预览版资源管理器](./time-series-insights-update-explorer.md)的详细信息。
-- 读取[时间系列 Insights 预览版规划](./time-series-insights-update-plan.md)规划您的环境。
+- 若要规划环境，请阅读[时序见解预览版规划](./time-series-insights-update-plan.md)。
 - 阅读[时序见解客户端](https://github.com/Microsoft/tsiclient)文档。

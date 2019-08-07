@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/29/2019
+ms.date: 08/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60474148d1eac6ca9d85fbc1d103ad612787aeae
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4af30a24c5913abec1c2c2287e1b0f145470f42c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607865"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828360"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -34,20 +34,8 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 
 在 Azure 中托管 SAP 工作负荷方案还可以创建标识集成和单一登录的要求。 当你使用 Azure Active Directory (Azure AD) 来连接不同的 SAP 组件和 SAP 软件即服务 (SaaS) 或平台即服务 (PaaS) 产品/服务 (PaaS) 产品/服务时, 可能会出现这种情况。 "AAD SAP 标识集成和单一登录" 一节中介绍并记录了包含 Azure AD 和 SAP 实体的此类集成和单一登录方案的列表。
 
-## <a name="change-log"></a>更改日志
-
-- 通过[使用 Azure 中的文件共享在 Windows 故障转移群集上对 SAP ASCS/SCS 实例进行群集](sap-high-availability-guide-wsfc-file-share.md)更改, 以反映 Azure Site Recovery 服务对存储空间直通的支持
-- 发布[Azure 邻近组, 以实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)
-- [在 Red Hat Enterprise Server 中发布 IBM DB2 HADR](high-availability-guide-rhel-ibm-db2-luw.md)的新指南
-- [与 sap 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux 上的 Sap NetWeaver 的高可用性](high-availability-guide-rhel-netapp-files.md)版本
-- 介绍[SAP HANA (大型实例)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)中的 HANA 大型实例的 ExpressRoute 快速路径和 Global Reach 网络体系结构和相关文档
-- [通过 Azure 门户发布 AZURE HANA 大型实例控制](hana-li-portal.md)
-- 在 azure [vm 上发布 Sap NetWeaver 的高可用性, 适用于 Sap 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server](high-availability-guide-suse-netapp-files.md)
-- [在 Azure NetAppFiles (和) BETA 版上安装 SAP NETWEAVER ASCS for SAP HANA](lama-installation.md)
-
-
-
-
+## <a name="changes-to-the-sap-workload-section"></a>SAP 工作负荷部分的更改
+本文末尾列出了 "Azure 上的 SAP 工作负荷" 部分中文档的更改。
 
 
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）
@@ -132,5 +120,13 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 - [Azure 数据工厂提供 SAP HANA 和业务数据仓库数据集成](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
+## <a name="change-log"></a>更改日志
+
+- 08/01/2019:更改了[在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)以将更改专门用于 SLES 15 的更改 
+- 07/23/2019:通过[使用 Azure 中的文件共享在 Windows 故障转移群集上对 SAP ASCS/SCS 实例进行群集](sap-high-availability-guide-wsfc-file-share.md)更改, 以反映 Azure Site Recovery 服务对存储空间直通的支持
+- 07/14/2019:发布[Azure 邻近组, 以实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)
+- 07/11/2019:涵盖 HANA 大型实例的各种文档中的更改, 涵盖 HANA 大型实例的修订版4
+- 07/09/2019:[在 Red Hat Enterprise Server 中发布 IBM DB2 HADR](high-availability-guide-rhel-ibm-db2-luw.md)的新指南
+- 06/13/2019:[与 sap 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux 上的 Sap NetWeaver 的高可用性](high-availability-guide-rhel-netapp-files.md)版本
 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 29a6cb69a818ed11e5f20dddd7299c01fbefbf47
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 78afec75269876c309b2c324d8a5973fd5ebf9a8
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234016"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68773036"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>将 Azure 中的 Ubuntu 虚拟机加入托管域
 本文介绍如何将 Ubuntu Linux 虚拟机加入 Azure AD 域服务托管域。
@@ -125,7 +125,7 @@ sudo systemctl start ntp
     ```
 
    > [!NOTE]
-   > **故障排除：** 如果“领域发现”找不到托管域： 
+   > **故障排除：** 如果“领域发现”找不到托管域：
    >   * 确保域可从虚拟机（请尝试 ping）进行访问。
    >   * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。
    >   * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
@@ -145,6 +145,8 @@ sudo systemctl start ntp
 
     > [!TIP]
     > 使用在前一步骤中指定的同一用户帐户（“kinit”）。
+    >
+    > 如果 VM 无法加入域, 请确保 VM 的网络安全组允许 TCP + UDP 端口464上的出站 Kerberos 流量到 Azure AD DS 托管域的虚拟网络子网。
 
     ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM' --install=/

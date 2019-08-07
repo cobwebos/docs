@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 67720256cfac68c350c800291653a4a0c1d7ee46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63768b83baafe00348a28c5c9c99e5f16619ac99
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427824"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815923"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
 
@@ -53,7 +53,7 @@ KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返
 
 ## <a name="first-creation"></a>第一次创建
  第一次创建 KV 证书时，也会创建可寻址密钥和机密，所用名称与证书的名称相同。 如果该名称已被使用，则操作会失败，并返回一个 http 状态代码“409 (冲突)”。
-可寻址密钥和机密从 KV 证书属性获取其属性。 以这种方式创建的可寻址密钥和机密将会标记为托管密钥和机密，其生存期由 Key Vault 管理。 托管密钥和机密为只读。 请注意:如果 KV 证书已过期或已禁用，则相应的密钥和机密将变得不可操作。  
+可寻址密钥和机密从 KV 证书属性获取其属性。 以这种方式创建的可寻址密钥和机密将会标记为托管密钥和机密，其生存期由 Key Vault 管理。 托管密钥和机密为只读。 注意:如果 KV 证书已过期或已禁用，则相应的密钥和机密将变得不可操作。  
 
  如果这是创建 KV 证书的首次操作，则需使用策略。  也可为策略提供连续的创建操作，以便替换策略资源。 如果未提供策略，则会使用服务的策略资源来创建下一版本的 KV 证书。 请注意，当创建下一版本的请求正在进行时，当前 KV 证书以及相应的可寻址密钥和机密保持不变。  
 
@@ -79,10 +79,10 @@ KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返
 ## <a name="partnered-ca-providers"></a>配合使用的 CA 提供程序
 可手动完成或使用“Self”证书颁发者来完成证书创建过程。 Key Vault 也可以与某些证书颁发者提供者配合使用，从而简化证书创建过程。 可为具有这些合作伙伴证书颁发者提供者的密钥保管库订购以下类型的证书。  
 
-|提供程序|证书类型|  
+|提供商|证书类型|  
 |--------------|----------------------|  
 |DigiCert|Key Vault 提供 DigiCert 的 OV 或 EV SSL 证书|
-|GlobalCert|Key Vault 提供 Globaltrust 的 OV 或 EV SSL 证书 |
+|GlobalSign|Key Vault 提供 GlobalSign 的 OV 或 EV SSL 证书|
 
  证书颁发者是 Azure Key Vault (KV) 中表示为 CertificateIssuer 资源的实体。 它用于提供有关 KV 证书来源的信息，例如颁发者名称、提供者、凭据和其他管理详细信息。
 
@@ -90,6 +90,6 @@ KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返
 
  Authorization:需要证书/创建权限。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
  - [关于密钥、机密和证书](about-keys-secrets-and-certificates.md)
  - [监视和管理证书创建](create-certificate-scenarios.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: dc3b9cceda10ae1ff648306236d5ac4868b5b426
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722152"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740889"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -101,7 +101,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 预配新的应用程序网关 v1 SKU 部署最多需 20 分钟。 更改实例大小或计数不会出现中断，且在此期间网关仍处于活动状态。
 
-使用 v2 SKU 的部署最多可能需要6分钟才能进行预配。
+使用 v2 SKU 的大多数部署需要大约6分钟的时间进行设置。 但是, 可能需要更长的时间, 具体取决于部署的类型。 例如, 在多个可用性区域具有多个实例的部署可能需要超过6分钟。 
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>使用应用程序网关时，能否将 Exchange 服务器用作后端？
 
@@ -323,10 +323,6 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有可从 v1 SKU 迁移到 v2 SKU 的指导？
 
 是的。 有关详细信息, 请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 V1 迁移到 v2](migrate-v1-v2.md)。
-
-### <a name="does-waf-support-non-utf-8-encoding"></a>WAF 是否支持非 UTF-8 编码？
-
-否。 WAF 目前仅支持 UTF-8 编码。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 

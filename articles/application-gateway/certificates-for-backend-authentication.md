@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: absha
-ms.openlocfilehash: 2d808548ef91ed416f27b0dbb3e3e93d79ade30c
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ae1ac3df3da4e5c25e5538f0e8cc4cd12f9186c6
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382056"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774789"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>创建证书以允许后端 Azure 应用程序网关
 
@@ -25,7 +25,7 @@ ms.locfileid: "68382056"
 > - 从后端证书导出身份验证证书 (适用于 v1 SKU)
 > - 从后端证书导出受信任的根证书 (适用于 v2 SKU)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 需要现有的后端证书来生成身份验证证书或允许使用应用程序网关的后端实例所需的受信任的根证书。 后端证书可以与 SSL 证书相同, 也可以不同, 以提高安全性。 应用程序网关不提供创建或购买 SSL 证书的任何机制。 出于测试目的, 你可以创建自签名证书, 但不应将其用于生产工作负荷。 
 
@@ -73,7 +73,7 @@ ms.locfileid: "68382056"
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>导出受信任的根证书 (适用于 v2 SKU)
 
-要求使用受信任的根证书, 以允许应用程序网关 v2 SKU 中的后端实例。 根证书是64编码的 x.509 (。CER) 通过后端服务器证书设置根证书的格式。 在此示例中, 将使用后端证书的 SSL 证书并导出其公钥。 然后, 将以 base64 编码格式从公钥导出受信任的 CA 的根证书, 以获取受信任的根证书。 
+应用程序网关 v2 SKU 中的后端实例需要受信任的根证书。 根证书是64编码的 x.509 (。CER) 通过后端服务器证书设置根证书的格式。 在此示例中, 我们将使用后端证书的 SSL 证书, 导出其公钥, 然后从采用 base64 编码格式的公钥导出受信任的 CA 的根证书, 以获取受信任的根证书。 中间证书应与服务器证书捆绑在一起, 并在后端服务器上安装。
 
 以下步骤可帮助你导出证书的 .cer 文件:
 
@@ -105,4 +105,5 @@ ms.locfileid: "68382056"
 
 ## <a name="next-steps"></a>后续步骤
 
-现已创建采用 Base-64 编码的 X.509(.CER) 格式身份验证证书/受信任的根证书。 可以将其添加到应用程序网关, 以允许后端服务器进行端到端 SSL 加密。 参阅[如何配置端到端 SSL 加密](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)。
+现已创建采用 Base-64 编码的 X.509(.CER) 格式身份验证证书/受信任的根证书。 可将此证书添加到应用程序网关，以将后端服务器加入白名单进行端到端的 SSL 加密。 参阅[如何配置端到端 SSL 加密](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)。
+

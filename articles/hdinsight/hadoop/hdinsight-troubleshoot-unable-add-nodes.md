@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/31/2019
-ms.openlocfilehash: ea36f8a6a8c1db031de8f6ce2b4e3a88d73907e7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 6c2e2c7395fcc45fe74c50beb3624eabb1d395c9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700322"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828026"
 ---
 # <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>方案:无法将节点添加到 Azure HDInsight 群集
 
@@ -27,7 +27,7 @@ ms.locfileid: "68700322"
 
 ## <a name="resolution"></a>解决
 
-使用 "[群集大小](/hdinsight-scaling-best-practices.md)" 功能, 计算群集所需的其他核心数。 此值基于新辅助角色节点中的核心总数。 然后尝试执行以下一个或多个步骤:
+使用 "[群集大小](../hdinsight-scaling-best-practices.md)" 功能, 计算群集所需的其他核心数。 此值基于新辅助角色节点中的核心总数。 然后尝试执行以下一个或多个步骤:
 
 * 检查群集的位置中是否有任何可用的内核。
 

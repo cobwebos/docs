@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: be39a623dc5dac09dcfe47de67e025191b5c7de3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 43eb7e5c4cab722eb97f9e2fe819c9c79bae45d9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727500"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828779"
 ---
 # <a name="security-attributes-for-azure-services"></a>Azure 服务的安全属性
 
@@ -350,7 +350,7 @@ ms.locfileid: "68727500"
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密） | 否 | |
 | 加密密钥处理（CMK、BYOK 等）| 不可用 |  |
 | 列级加密（Azure 数据服务）| 不可用 | |
-| 加密的 API 调用| 是 | 通过[Azure 资源管理器](/azure/azure-resource-manager/index)和 HTTPS。 |
+| 加密的 API 调用| 是 | 通过 [Azure 资源管理器](/azure/azure-resource-manager/index)和 HTTPS。 |
 
 ### <a name="network-segmentation"></a>网络分段
 
@@ -358,21 +358,21 @@ ms.locfileid: "68727500"
 |---|---|--|
 | 服务终结点支持| 不可用 |  |
 | VNet 注入支持| 不可用 | |
-| 网络隔离和防火墙支持| 是 | 每个客户都包含在其自己的路由域中并隧道到其自己的 VNet |
+| 网络隔离和防火墙支持| 是 | 每个客户都包含在自己的路由域中，并通过隧道连接到自己的 VNet |
 | 强制隧道支持| 不可用 | 通过边界网关协议 (BGP)。 |
 
 ### <a name="detection"></a>检测
 
 | 安全属性 | 是/否 | 说明|
 |---|---|--|
-| Azure 监视支持（Log Analytics、App Insights 等）| 是 | 请参阅[ExpressRoute 监视、指标和警报](/azure/expressroute/expressroute-monitoring-metrics-alerts)。|
+| Azure 监视支持（Log Analytics、App Insights 等）| 是 | 请参阅 [ExpressRoute 监视、指标和警报](/azure/expressroute/expressroute-monitoring-metrics-alerts)。|
 
 ### <a name="identity-and-access-management"></a>标识和访问管理
 
 | 安全属性 | 是/否 | 说明|
 |---|---|--|
-| 身份验证| 是 | 用于 Microsoft 的网关 (GWM) (控制器) 的服务帐户;用于开发和操作的实时 (JIT) 访问。 |
-| Authorization|  是 |用于 Microsoft 的网关 (GWM) (控制器) 的服务帐户;用于开发和操作的实时 (JIT) 访问。 |
+| 身份验证| 是 | 用于 Microsoft 的网关 (GWM)（控制器）的服务帐户；用于开发和操作的实时 (JIT) 访问。 |
+| Authorization|  是 |用于 Microsoft 的网关 (GWM)（控制器）的服务帐户；用于开发和操作的实时 (JIT) 访问。 |
 
 
 ### <a name="audit-trail"></a>审核线索
@@ -646,7 +646,7 @@ SQL 数据库同时包含[单一数据库](/azure/sql-database/sql-database-sing
 | 服务终结点支持| 是 | 仅适用于[单一数据库](/azure/sql-database/sql-database-single-index)。 |
 | Azure 虚拟网络注入支持| 是 | 仅适用于[托管实例](/azure/sql-database/sql-database-managed-instance)。 |
 | 网络隔离和防火墙支持| 是 | 数据库级别和服务器级别的防火墙。 网络隔离仅适用于[托管实例](/azure/sql-database/sql-database-managed-instance)。 |
-| 强制隧道支持| 是 | [托管实例](/azure/sql-database/sql-database-managed-instance)通过[ExpressRoute](/azure/expressroute/index.yml) VPN。 |
+| 强制隧道支持| 是 | [托管实例](/azure/sql-database/sql-database-managed-instance)通过[ExpressRoute](/azure/expressroute/index) VPN。 |
 
 ### <a name="detection"></a>检测
 
@@ -659,7 +659,7 @@ SQL 数据库同时包含[单一数据库](/azure/sql-database/sql-database-sing
 | 安全属性 | 是/否 | 说明|
 |---|---|--|
 | 身份验证| 是 | Azure Active Directory (Azure AD) |
-| Authorization| 是 | 无 |
+| Authorization| 是 | None |
 
 ### <a name="audit-trail"></a>审核线索
 
@@ -788,11 +788,11 @@ SQL 数据库同时包含[单一数据库](/azure/sql-database/sql-database-sing
 
 | 安全属性 | 是/否 | 说明 |
 |---|---|--|
-| 静态加密（例如服务器端加密、带客户托管密钥的服务器端加密，以及其他加密功能） | 不可用 | VPN 网关传输客户数据, 不存储客户数据 |
-| 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | VPN 网关对 Azure VPN 网关与客户本地 VPN 设备 (S2S) 或 VPN 客户端 (P2S) 之间的客户数据包进行加密。 VPN 网关还支持 VNet 到 VNet 加密。 |
-| 加密密钥处理（CMK、BYOK 等）| 否 | 静态加密客户指定的预共享密钥;但尚未与 CMK 集成。 |
+| 静态加密（例如服务器端加密、带客户托管密钥的服务器端加密，以及其他加密功能） | 不可用 | VPN 网关传输客户数据，不存储客户数据 |
+| 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | VPN 网关加密 Azure VPN 网关和客户本地 VPN 设备之间 (S2S) 或 VPN 客户端之间 (P2S) 的客户数据包。 VPN 网关还支持 VNet 到 VNet 加密。 |
+| 加密密钥处理（CMK、BYOK 等）| 否 | 客户指定的预共享密钥进行静态加密，但尚未与 CMK 集成。 |
 | 列级加密（Azure 数据服务）| 不可用 | |
-| 加密的 API 调用| 是 | 通过[Azure 资源管理器](/azure/azure-resource-manager/index)和 HTTPS  |
+| 加密的 API 调用| 是 | 通过 [Azure 资源管理器](/azure/azure-resource-manager/index)和 HTTPS  |
 
 ### <a name="network-segmentation"></a>网络分段
 
@@ -807,25 +807,25 @@ SQL 数据库同时包含[单一数据库](/azure/sql-database/sql-database-sing
 
 | 安全属性 | 是/否 | 说明|
 |---|---|--|
-| Azure 监视支持（Log Analytics、App Insights 等）| 是 | 请参阅[Azure Monitor 诊断日志/警报](/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log) & [Azure Monitor 指标/警报](/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric)。  |
+| Azure 监视支持（Log Analytics、App Insights 等）| 是 | 请参阅 [Azure Monitor 诊断日志/警报](/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log) & [Azure Monitor 指标/警报](/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric)。  |
 
 ### <a name="identity-and-access-management"></a>标识和访问管理
 
 | 安全属性 | 是/否 | 说明|
 |---|---|--|
-| 身份验证| 是 | [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) , 用于管理服务和配置 Azure VPN 网关。 |
-| Authorization| 是 | 支持通过[RBAC](/azure/role-based-access-control/overview)的授权。 |
+| 身份验证| 是 | [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)，用于管理服务和配置 Azure VPN 网关。 |
+| Authorization| 是 | 支持通过 [RBAC](/azure/role-based-access-control/overview) 进行授权。 |
 
 ### <a name="audit-trail"></a>审核线索
 
 | 安全属性 | 是/否 | 说明|
 |---|---|--|
 | 控制和管理平面日志记录和审核| 是 | Azure 资源管理器活动日志。 |
-| 数据平面日志记录和审核 | 是 | Azure Monitor VPN 连接日志记录和审核的[诊断日志](/azure/azure-resource-manager/resource-group-audit)。 |
+| 数据平面日志记录和审核 | 是 | [Azure Monitor 诊断日志](/azure/azure-resource-manager/resource-group-audit)，用于 VPN 连接日志记录和审核。 |
 
 ### <a name="configuration-management"></a>配置管理
 
 | 安全属性 | 是/否 | 说明|
 |---|---|--|
-| 配置管理支持（配置的版本控制等）| 是 | 对于管理操作, 可以将 Azure VPN 网关配置的状态导出为 Azure 资源管理器模板, 并随时间进行版本控制。 | 
+| 配置管理支持（配置的版本控制等）| 是 | 进行管理操作时，可以将 Azure VPN 网关配置的状态导出为 Azure 资源管理器模板，并在一段时间内进行版本控制。 | 
 

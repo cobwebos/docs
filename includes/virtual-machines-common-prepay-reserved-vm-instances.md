@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 07/19/2019
-ms.openlocfilehash: 763d424d9d462c4a9531df84f3e5e26bfc1b0a14
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 08/02/2019
+ms.openlocfilehash: 5c300cb7d5416ada435811872e2cea8865e3c657
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68502264"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781277"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>用 Azure 保留 VM 实例 (RI) 为虚拟机预付
 
@@ -132,13 +132,9 @@ VM 预留适用于从多个服务发出的 VM 使用量, 而不仅仅适用于�
 
 不过, 如果想要进行更改, 则可以*交换*预订。
 
-## <a name="cancellations-and-exchanges"></a>取消和更换
+## <a name="cancel-exchange-or-refund-reservations"></a>取消、交换或退款预订
 
-如果需要取消预留，可能会产生 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要取消, 请跳到 Azure 门户中的预订, 然后选择 "**退款**"。
-
-如果需要将保留 VM 实例保留更改为其他区域、VM 大小组或术语, 则可以进行交换。 Exchange 必须为等于或大于值的另一个预留。 新订购项目的期限开始日期不是从交换的订购项目延续。 当你创建新的预订时, 从一年或三年开始。 若要交换, 请在 Azure 门户中找到保留项, 然后选择 " **exchange**"。
-
-有关如何交换或退款预订的详细信息, 请参阅[保留交换和退款](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
+您可以取消、交换或退款保留, 但有一些限制。 有关详细信息, 请参阅[Azure 预订的自助服务交换和退款](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
 
 ## <a name="need-help-contact-us"></a>需要帮助? 请联系我们。
 

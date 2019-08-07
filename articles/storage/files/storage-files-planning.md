@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 93c36ccb244931c12d8b038f448fbda4eff77f16
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 287902c149fd3a8732ce9ce95b05b0d9fa36147b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721710"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816600"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -62,7 +62,7 @@ Azure 文件提供可确保数据安全的几个内置选项：
     * 不支持带加密功能的 SMB 3.0 的客户端可通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。 不允许 SMB 客户端通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。
     * 客户端可以通过 HTTP 或 HTTPS 与文件 REST 通信。
 * 静态加密（[Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)）：存储服务加密 (SSE) 对所有存储帐户启用。 静态数据使用完全托管的密钥进行加密。 静态加密不会增加存储成本，也不会降低性能。 
-* 加密数据在传输中的可选要求：选定后，Azure 文件拒绝通过未加密通道访问数据。 具体而言，仅允许具有加密连接的 HTTPS 和 SMB 3.0。
+* 加密数据在传输中的可选要求: 选择此项时, Azure 文件将拒绝通过未加密的通道访问数据。 具体而言，仅允许具有加密连接的 HTTPS 和 SMB 3.0。
 
     > [!Important]  
     > 要求安全传输数据将导致较早的 SMB 客户端无法与 SMB 3.0 通信，进而造成加密失败。 有关详细信息，请参阅[在 Windows 上装载](storage-how-to-use-files-windows.md)、[在 Linux 上装载](storage-how-to-use-files-linux.md)和[在 macOS 上装载](storage-how-to-use-files-mac.md)。
@@ -207,11 +207,12 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 |地区 |支持的冗余 |支持现有的存储帐户 |门户支持 *   |
 |-------|---------|---------|---------|
-|澳大利亚东部  |LRS|否         |是|
-|法国中部  |LRS|否         |尚不支持|
-|东南亚  |LRS、ZRS|否         |仅限 LRS, ZRS|
-|西欧     |LRS、ZRS|否       |是|
-|美国西部 2       |LRS、ZRS|否         |是|
+|澳大利亚东部  |LRS     |否    |是|
+|法国中部  |LRS     |否    |尚不支持|
+|法国南部    |LRS     |否    |尚不支持|
+|东南亚  |LRS、ZRS|否    |是|
+|西欧     |LRS、ZRS|否    |是|
+|美国西部 2       |LRS、ZRS|否    |是|
 
 \* 对于没有门户支持的区域, 你仍可以使用 PowerShell 或 Azure 命令行接口 (CLI) 来创建大于 5 TiB 的共享。 Altenatively, 在不指定配额的情况下通过门户创建新的共享。 这会创建默认大小为 100 TiB 的共享, 稍后可通过 PowerShell 或 Azure CLI 进行更新。
 

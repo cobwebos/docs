@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: b9bf3b41bcd0a79027c5dd9a4f3df979fb0bd9f0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: eb6b42a88e47e3fcb35700ec542c8ca642e17a6a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250155"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815808"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>将 Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
 
@@ -86,7 +86,7 @@ alter table myacidtable compact 'major';
 1. 在 HDInsight 3.6 群集中导航到 Ranger 服务管理器面板。
 2. 导航到名为 **HIVE** 的策略，并将该策略导出到某个 JSON 文件。
 3. 确保导出的策略 JSON 中引用的所有用户都存在于新群集中。 如果该策略 JSON 中引用的某个用户不存在于新群集中，请将该用户添加到新群集，或者从策略中删除引用。
-4. 在 HDInsight 4.0 群集中导航到“Ranger 服务管理器”面板。 
+4. 在 HDInsight 4.0 群集中导航到“Ranger 服务管理器”面板。
 5. 导航到名为 **HIVE** 的策略，并导入步骤 2 中导出的 Ranger 策略 JSON。
 
 ## <a name="query-execution-across-hdinsight-versions"></a>跨 HDInsight 版本执行查询
@@ -99,9 +99,7 @@ alter table myacidtable compact 'major';
 
 使用“头节点”作为执行的节点类型，针对群集启动某个脚本操作。 将以下 URI 粘贴到标有“Bash 脚本 URI”的文本框中： https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-可以通过以下 URL 启动数据分析工作室: https://\<> clustername clustername>.azurehdinsight.net/das/
-
-
+等待5到10分钟, 然后使用以下 URL 启动 Data Analytics Studio: https://\</> clustername/
 
 安装 DAS 后，如果看不到在查询查看器中运行的查询，请执行以下步骤：
 
